@@ -28,6 +28,7 @@ import android.os.Environment;
 import android.os.IMountService;
 import android.os.ServiceManager;
 import android.os.StatFs;
+import android.os.SystemProperties;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
@@ -40,12 +41,18 @@ import java.io.File;
 import java.text.DecimalFormat;
 
 public class Memory extends PreferenceActivity {
-    
+
+    private static final String EXTRA_SD_STORAGE_PATH = "/system/sd";
+
     private static final String TAG = "Memory";
 
     private static final String MEMORY_SD_SIZE = "memory_sd_size";
 
     private static final String MEMORY_SD_AVAIL = "memory_sd_avail";
+
+    private static final String MEMORY_SD_EXTRA_SIZE = "memory_sd_extra_size";
+
+    private static final String MEMORY_SD_EXTRA_AVAIL = "memory_sd_extra_avail";
 
     private static final String MEMORY_SD_UNMOUNT = "memory_sd_unmount";
 
@@ -54,6 +61,8 @@ public class Memory extends PreferenceActivity {
 
     private Preference mSdSize;
     private Preference mSdAvail;
+    private Preference mSdExtraSize;
+    private Preference mSdExtraAvail;
     private Preference mSdUnmount;
     private Preference mSdFormat;
     
@@ -69,6 +78,8 @@ public class Memory extends PreferenceActivity {
         mRes = getResources();
         mSdSize = findPreference(MEMORY_SD_SIZE);
         mSdAvail = findPreference(MEMORY_SD_AVAIL);
+        mSdExtraSize = findPreference(MEMORY_SD_EXTRA_SIZE);
+        mSdExtraAvail = findPreference(MEMORY_SD_EXTRA_AVAIL);
         mSdUnmount = findPreference(MEMORY_SD_UNMOUNT);
         mSdFormat = findPreference(MEMORY_SD_FORMAT);
     }
@@ -166,7 +177,18 @@ public class Memory extends PreferenceActivity {
                 
                 mSdSize.setSummary(formatSize(totalBlocks * blockSize));
                 mSdAvail.setSummary(formatSize(availableBlocks * blockSize) + readOnly);
-                mSdUnmount.setEnabled(true);
+
+                mSdUnmount.setEnabled(SystemProperties.get("cm.a2sd.active", "0").equals("0"));
+
+                File extraPath = new File(EXTRA_SD_STORAGE_PATH);
+                StatFs extraStat = new StatFs(extraPath.getPath());
+                long eBlockSize = extraStat.getBlockSize();
+                long eTotalBlocks = extraStat.getBlockCount();
+                long eAvailableBlocks = extraStat.getAvailableBlocks();
+
+                mSdExtraSize.setSummary(formatSize(eTotalBlocks * eBlockSize));
+                mSdExtraAvail.setSummary(formatSize(eAvailableBlocks * eBlockSize) + readOnly);
+
             } catch (IllegalArgumentException e) {
                 // this can occur if the SD card is removed, but we haven't received the 
                 // ACTION_MEDIA_REMOVED Intent yet.
@@ -176,6 +198,9 @@ public class Memory extends PreferenceActivity {
         } else {
             mSdSize.setSummary(mRes.getString(R.string.sd_unavailable));
             mSdAvail.setSummary(mRes.getString(R.string.sd_unavailable));
+            mSdExtraSize.setSummary(mRes.getString(R.string.sd_unavailable));
+            mSdExtraAvail.setSummary(mRes.getString(R.string.sd_unavailable));
+
             mSdUnmount.setEnabled(false);
 
             if (status.equals(Environment.MEDIA_UNMOUNTED) ||
