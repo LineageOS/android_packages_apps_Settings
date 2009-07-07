@@ -177,18 +177,24 @@ public class Memory extends PreferenceActivity {
                 
                 mSdSize.setSummary(formatSize(totalBlocks * blockSize));
                 mSdAvail.setSummary(formatSize(availableBlocks * blockSize) + readOnly);
+                
+                boolean a2sdDisabled = SystemProperties.get("cm.a2sd.active", "0").equals("0");
 
-                mSdUnmount.setEnabled(SystemProperties.get("cm.a2sd.active", "0").equals("0"));
+                mSdUnmount.setEnabled(a2sdDisabled);
 
-                File extraPath = new File(EXTRA_SD_STORAGE_PATH);
-                StatFs extraStat = new StatFs(extraPath.getPath());
-                long eBlockSize = extraStat.getBlockSize();
-                long eTotalBlocks = extraStat.getBlockCount();
-                long eAvailableBlocks = extraStat.getAvailableBlocks();
+                if (a2sdDisabled) {
+                    mSdExtraSize.setSummary(mRes.getString(R.string.sd_unavailable));
+                    mSdExtraAvail.setSummary(mRes.getString(R.string.sd_unavailable));
+                } else {
+                    File extraPath = new File(EXTRA_SD_STORAGE_PATH);
+                    StatFs extraStat = new StatFs(extraPath.getPath());
+                    long eBlockSize = extraStat.getBlockSize();
+                    long eTotalBlocks = extraStat.getBlockCount();
+                    long eAvailableBlocks = extraStat.getAvailableBlocks();
 
-                mSdExtraSize.setSummary(formatSize(eTotalBlocks * eBlockSize));
-                mSdExtraAvail.setSummary(formatSize(eAvailableBlocks * eBlockSize) + readOnly);
-
+                    mSdExtraSize.setSummary(formatSize(eTotalBlocks * eBlockSize));
+                    mSdExtraAvail.setSummary(formatSize(eAvailableBlocks * eBlockSize) + readOnly);
+                }
             } catch (IllegalArgumentException e) {
                 // this can occur if the SD card is removed, but we haven't received the 
                 // ACTION_MEDIA_REMOVED Intent yet.
