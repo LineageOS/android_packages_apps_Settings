@@ -21,8 +21,10 @@ import com.android.settings.wifi.WifiEnabler;
 
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
-import android.preference.PreferenceActivity;
 import android.preference.CheckBoxPreference;
+import android.preference.Preference;
+import android.preference.PreferenceActivity;
+import android.provider.Settings;
 
 public class WirelessSettings extends PreferenceActivity {
 
@@ -31,6 +33,9 @@ public class WirelessSettings extends PreferenceActivity {
     private static final String KEY_TOGGLE_WIFI = "toggle_wifi";
     private static final String KEY_TOGGLE_TETHERING = "toggle_tethering";
     
+    private static final String KEY_WIFI_SETTINGS = "wifi_settings";
+    private static final String KEY_VPN_SETTINGS = "vpn_settings";
+
     private WifiEnabler mWifiEnabler;
     private AirplaneModeEnabler mAirplaneModeEnabler;
     private BluetoothEnabler mBtEnabler;
@@ -67,22 +72,34 @@ public class WirelessSettings extends PreferenceActivity {
     
     private void initToggles() {
         
+        Preference airplanePreference = findPreference(KEY_TOGGLE_AIRPLANE);
+        Preference wifiPreference = findPreference(KEY_TOGGLE_WIFI);
+        Preference btPreference = findPreference(KEY_TOGGLE_BLUETOOTH);
+        Preference wifiSettings = findPreference(KEY_WIFI_SETTINGS);
+        Preference vpnSettings = findPreference(KEY_VPN_SETTINGS);
+        Preference tetheringPreference = findPreference(KEY_TOGGLE_TETHERING);
+
         mWifiEnabler = new WifiEnabler(
-                this,
-                (WifiManager) getSystemService(WIFI_SERVICE),
-                (CheckBoxPreference) findPreference(KEY_TOGGLE_WIFI));
-        
+                this, (WifiManager) getSystemService(WIFI_SERVICE),
+                (CheckBoxPreference) wifiPreference);
         mAirplaneModeEnabler = new AirplaneModeEnabler(
-                this,
-                (CheckBoxPreference) findPreference(KEY_TOGGLE_AIRPLANE));
+                this, (CheckBoxPreference) airplancePreference);
         
         mBtEnabler = new BluetoothEnabler(
-                this,
-                (CheckBoxPreference) findPreference(KEY_TOGGLE_BLUETOOTH));
+                this, (CheckBoxPreference) btPreference);
         
         mTetheringEnabler = new TetheringEnabler(
-        		this,
-        		(CheckBoxPreference) findPreference(KEY_TOGGLE_TETHERING));
+                this, (CheckBoxPreference) tetheringPreference);
+
+        // manually set up dependencies for Wifi if its radio is not toggleable in airplane mode
+        String toggleableRadios = Settings.System.getString(getContentResolver(),
+                Settings.System.AIRPLANE_MODE_TOGGLEABLE_RADIOS);
+        if (toggleableRadios == null || !toggleableRadios.contains(Settings.System.RADIO_WIFI)) {
+            wifiPreference.setDependency(airplanePreference.getKey());
+            wifiSettings.setDependency(airplanePreference.getKey());
+            vpnSettings.setDependency(airplanePreference.getKey());
+            tetheringPreference.setDependency(airplanePreference.getKey());
+        }
     }
-    
+
 }
