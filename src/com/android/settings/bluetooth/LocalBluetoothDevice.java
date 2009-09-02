@@ -96,7 +96,7 @@ public class LocalBluetoothDevice implements Comparable<LocalBluetoothDevice> {
             this.profile = profile;
             this.timeSent = 0;
         }
-        
+
         @Override
         public String toString() {
             StringBuilder sb = new StringBuilder();
@@ -147,7 +147,7 @@ public class LocalBluetoothDevice implements Comparable<LocalBluetoothDevice> {
             }
         }
     }
-    
+
     private boolean pruneQueue(BluetoothJob job) {
         boolean removedStaleItems = false;
         long now = System.currentTimeMillis();
@@ -186,7 +186,7 @@ public class LocalBluetoothDevice implements Comparable<LocalBluetoothDevice> {
     private boolean processCommand(BluetoothJob job) {
         boolean successful = false;
         if (job.timeSent == 0) {
-            job.timeSent = System.currentTimeMillis();                
+            job.timeSent = System.currentTimeMillis();
             switch (job.command) {
             case CONNECT:
                 successful = connectInt(job.device, job.profile);
@@ -379,6 +379,17 @@ public class LocalBluetoothDevice implements Comparable<LocalBluetoothDevice> {
         }
     }
 
+    public void preferAllProfiles() {
+        if (!ensurePaired()) return;
+
+        Context context = mLocalManager.getContext();
+        for (Profile profile : mProfiles) {
+            LocalBluetoothProfileManager profileManager =
+                    LocalBluetoothProfileManager.getProfileManager(mLocalManager, profile);
+            profileManager.setPreferred(mAddress, true);
+        }
+    }
+
     private void connectAndPreferAllProfiles() {
         if (!ensurePaired()) return;
 
@@ -450,7 +461,7 @@ public class LocalBluetoothDevice implements Comparable<LocalBluetoothDevice> {
     public void unpair() {
         synchronized (workQueue) {
             // Remove any pending commands for this device
-            boolean processNow = false;            
+            boolean processNow = false;
             Iterator<BluetoothJob> it = workQueue.iterator();
             while (it.hasNext()) {
                 BluetoothJob job = it.next();
