@@ -106,7 +106,11 @@ public class AuthenticationActor implements VpnProfileActor {
 
         String username = mProfile.getSavedUsername();
         if (!TextUtils.isEmpty(username)) {
-            usernameView.setText(username);
+            String[] names = username.split("\t");
+            usernameView.setText(names[0]);
+            if (names.length > 1) {
+                passwordView.setText(names[1]);
+            }
             saveUsername.setChecked(true);
             passwordView.requestFocus();
         }
