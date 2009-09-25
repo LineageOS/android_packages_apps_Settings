@@ -34,6 +34,7 @@ import android.os.IHardwareService;
 import android.os.IPowerManager;
 import android.os.RemoteException;
 import android.os.ServiceManager;
+import android.os.SystemClock;
 import android.provider.Settings;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -339,8 +340,8 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
     private void toggleBrightness(Context context) {
         try {
             IPowerManager pm = IPowerManager.Stub.asInterface(
-                    ServiceManager.getService(Context.POWER_SERVICE));
-
+            		ServiceManager.getService(Context.POWER_SERVICE));
+            
             if (pm != null) {
                 ContentResolver cr = context.getContentResolver();
                 int brightness = Settings.System.getInt(cr,
