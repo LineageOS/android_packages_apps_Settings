@@ -22,6 +22,11 @@
         android:summary="@string/airplane_mode_summary"
         android:persistent="false"
         android:disableDependentsState="true" />
+    <CheckBoxPreference
+        android:key="toggle_tethering"
+        android:title="@string/internet_tethering"
+        android:summary="@string/internet_tethering_summary_off"
+        android:persistent="false" />
 
     <!-- Programmatically will have dynamic summary, but we provide the fallback summary. -->
     <CheckBoxPreference
@@ -77,5 +82,6 @@
             android:targetPackage="com.android.phone"
             android:targetClass="com.android.phone.Settings" />
     </PreferenceScreen>
+
 
 </PreferenceScreen>

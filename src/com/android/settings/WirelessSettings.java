@@ -42,6 +42,7 @@ public class WirelessSettings extends PreferenceActivity {
     private static final String KEY_WIFI_SETTINGS = "wifi_settings";
     private static final String KEY_BT_SETTINGS = "bt_settings";
     private static final String KEY_VPN_SETTINGS = "vpn_settings";
+    private static final String KEY_TOGGLE_TETHERING = "toggle_tethering";
     public static final String EXIT_ECM_RESULT = "exit_ecm_result";
     public static final int REQUEST_CODE_EXIT_ECM = 1;
 
@@ -49,6 +50,7 @@ public class WirelessSettings extends PreferenceActivity {
     private AirplaneModeEnabler mAirplaneModeEnabler;
     private BluetoothEnabler mBtEnabler;
     private CheckBoxPreference mAirplaneModePreference;
+    private TetheringEnabler mTetheringEnabler;
 
     /**
      * Invoked on each preference click in this hierarchy, overrides
@@ -90,6 +92,7 @@ public class WirelessSettings extends PreferenceActivity {
         mWifiEnabler.resume();
         mBtEnabler.resume();
         mAirplaneModeEnabler.resume();
+        mTetheringEnabler.resume();
     }
     
     @Override
@@ -99,6 +102,7 @@ public class WirelessSettings extends PreferenceActivity {
         mWifiEnabler.pause();
         mAirplaneModeEnabler.pause();
         mBtEnabler.pause();
+        mTetheringEnabler.pause();
     }
     
     private void initToggles() {
@@ -131,6 +135,9 @@ public class WirelessSettings extends PreferenceActivity {
             wifiSettings.setDependency(airplanePreference.getKey());
             vpnSettings.setDependency(airplanePreference.getKey());
         }
+        
+        mTetheringEnabler = new TetheringEnabler(
+        		this, (CheckBoxPreference) findPreference(KEY_TOGGLE_TETHERING));
     }
 
     @Override
