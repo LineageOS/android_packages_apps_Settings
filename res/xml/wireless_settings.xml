@@ -72,6 +72,12 @@
                         android:targetClass="com.android.phone.Settings" />
                 </PreferenceScreen>
 
+				<CheckBoxPreference
+					android:key="toggle_tethering"
+					android:title="@string/internet_tethering"
+					android:summary="@string/internet_tethering_summary_off"
+					android:persistent="false" />
+				
                 <CheckBoxPreference
                     android:key="toggle_airplane"
                     android:title="@string/airplane_mode"

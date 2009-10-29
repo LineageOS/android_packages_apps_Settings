@@ -29,10 +29,12 @@ public class WirelessSettings extends PreferenceActivity {
     private static final String KEY_TOGGLE_AIRPLANE = "toggle_airplane";
     private static final String KEY_TOGGLE_BLUETOOTH = "toggle_bluetooth";
     private static final String KEY_TOGGLE_WIFI = "toggle_wifi";
-
+    private static final String KEY_TOGGLE_TETHERING = "toggle_tethering";
+    
     private WifiEnabler mWifiEnabler;
     private AirplaneModeEnabler mAirplaneModeEnabler;
     private BluetoothEnabler mBtEnabler;
+    private TetheringEnabler mTetheringEnabler;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,7 @@ public class WirelessSettings extends PreferenceActivity {
         mWifiEnabler.resume();
         mAirplaneModeEnabler.resume();
         mBtEnabler.resume();
+        mTetheringEnabler.resume();
     }
     
     @Override
@@ -59,6 +62,7 @@ public class WirelessSettings extends PreferenceActivity {
         mWifiEnabler.pause();
         mAirplaneModeEnabler.pause();
         mBtEnabler.pause();
+        mTetheringEnabler.pause();
     }
     
     private void initToggles() {
@@ -75,6 +79,10 @@ public class WirelessSettings extends PreferenceActivity {
         mBtEnabler = new BluetoothEnabler(
                 this,
                 (CheckBoxPreference) findPreference(KEY_TOGGLE_BLUETOOTH));
+        
+        mTetheringEnabler = new TetheringEnabler(
+        		this,
+        		(CheckBoxPreference) findPreference(KEY_TOGGLE_TETHERING));
     }
     
 }
