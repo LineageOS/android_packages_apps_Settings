@@ -58,6 +58,8 @@ public class TetheringEnabler implements OnPreferenceChangeListener {
 	
 	public void resume() {
 		mCheckBoxPref.setOnPreferenceChangeListener(this);
-		mCheckBoxPref.setChecked(SystemProperties.getBoolean(TETHER_PROP, false));
+		final boolean isEnabled = SystemProperties.getBoolean(TETHER_PROP, false);
+		mCheckBoxPref.setChecked(isEnabled);
+		mCheckBoxPref.setSummary(isEnabled ? R.string.internet_tethering_summary_on : R.string.internet_tethering_summary_off);
 	}
 }
