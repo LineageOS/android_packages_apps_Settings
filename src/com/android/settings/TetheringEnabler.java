@@ -34,7 +34,7 @@ public class TetheringEnabler implements OnPreferenceChangeListener {
 	/* (non-Javadoc)
 	 * @see android.preference.Preference.OnPreferenceChangeListener#onPreferenceChange(android.preference.Preference, java.lang.Object)
 	 */
-	@Override
+    //	@Override
 	public boolean onPreferenceChange(Preference preference, Object newValue) {
 		final Boolean v = (Boolean)newValue;
 		setTetheringEnabled(v);
