@@ -304,9 +304,11 @@ public class BatteryHistory extends Activity implements OnClickListener, OnItemS
 
                 PackageManager pm = BatteryHistory.this.getPackageManager();
                 List<String> names = new ArrayList<String>();
-                for (String name : mPackageNames) {
-                    names.add(BatteryHistory.getLabel(name, pm));
-                }
+                if ( mPackageNames != null ) {
+				  for (String name : mPackageNames) {
+					names.add(BatteryHistory.getLabel(name, pm));
+				}
+			}
                 Collections.sort(names);
                 for (String name : names) {
                     info.append("    ");
