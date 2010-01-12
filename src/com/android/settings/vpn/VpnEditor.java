@@ -24,6 +24,7 @@ import android.content.Intent;
 import android.net.vpn.L2tpIpsecProfile;
 import android.net.vpn.L2tpIpsecPskProfile;
 import android.net.vpn.L2tpProfile;
+import android.net.vpn.OpenvpnProfile;
 import android.net.vpn.PptpProfile;
 import android.net.vpn.VpnProfile;
 import android.net.vpn.VpnType;
@@ -33,6 +34,7 @@ import android.os.Parcelable;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -46,6 +48,8 @@ public class VpnEditor extends PreferenceActivity {
     private static final int MENU_CANCEL = Menu.FIRST + 1;
     private static final String KEY_PROFILE = "profile";
     private static final String KEY_ORIGINAL_PROFILE_NAME = "orig_profile_name";
+
+    private static final String TAG = VpnEditor.class.getSimpleName();
 
     private VpnProfileEditor mProfileEditor;
     private boolean mAddingProfile;
@@ -78,6 +82,17 @@ public class VpnEditor extends PreferenceActivity {
     }
 
     @Override
+    protected void onActivityResult(final int requestCode, final int resultCode,
+            final Intent data) {
+	System.out.println("ON ACTIVITY RESULT req=" + requestCode );
+        if ((resultCode == RESULT_CANCELED) || (data == null)) {
+            Log.d(TAG, "no result returned by editor");
+            return;
+        }
+	mProfileEditor.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         menu.add(0, MENU_SAVE, 0, R.string.vpn_menu_done)
@@ -86,6 +101,7 @@ public class VpnEditor extends PreferenceActivity {
                 mAddingProfile ? R.string.vpn_menu_cancel
                                : R.string.vpn_menu_revert)
             .setIcon(android.R.drawable.ic_menu_close_clear_cancel);
+	mProfileEditor.onCreateOptionsMenu(menu, MENU_CANCEL);
         return true;
     }
 
@@ -103,6 +119,9 @@ public class VpnEditor extends PreferenceActivity {
                     finish();
                 }
                 return true;
+	    default:
+		if (mProfileEditor.onOptionsItemSelected(this, item))
+		    return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -162,6 +181,9 @@ public class VpnEditor extends PreferenceActivity {
 
             case L2TP:
                 return new L2tpEditor((L2tpProfile) p);
+
+            case OPENVPN:
+		return new OpenvpnEditor((OpenvpnProfile) p);
 
             case PPTP:
                 return new PptpEditor((PptpProfile) p);

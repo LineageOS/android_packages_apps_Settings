@@ -19,15 +19,19 @@ package com.android.settings.vpn;
 import com.android.settings.R;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.vpn.VpnProfile;
 import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.text.method.PasswordTransformationMethod;
+import android.view.Menu;
+import android.view.MenuItem;
 
 /**
  * The common class for editing {@link VpnProfile}.
@@ -79,6 +83,17 @@ class VpnProfileEditor {
      * additional preferences in this method.
      */
     protected void loadExtraPreferencesTo(PreferenceGroup subpanel) {
+    }
+
+    protected void onCreateOptionsMenu(Menu menu, int last_item) {
+    }
+
+    protected boolean onOptionsItemSelected(PreferenceActivity p, MenuItem item) {
+	return false;
+    }
+
+    protected void onActivityResult(final int requestCode, final int resultCode,
+            final Intent data) {
     }
 
     /**
