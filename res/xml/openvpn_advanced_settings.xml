@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2010 James Bottomley <James.Bottomley@suse.de>
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+  
+          http://www.apache.org/licenses/LICENSE-2.0
+  
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        android:title="@string/vpn_openvpn_advanced_titlebar">
+
+    <EditTextPreference
+       android:key="set_port"
+       android:title="@string/vpn_openvpn_port"
+       android:dialogTitle="@string/vpn_openvpn_port"
+       android:singleLine="true"
+       android:inputType="number"
+       />
+
+    <ListPreference
+       android:key="set_protocol"
+       android:title="@string/vpn_openvpn_protocol"
+       android:dialogTitle="@string/vpn_openvpn_protocol"
+       android:entries="@array/vpn_openvpn_protocol_entries"
+       android:entryValues="@array/vpn_openvpn_protocol_entries"
+       />
+
+    <ListPreference
+       android:key="set_device"
+       android:title="@string/vpn_openvpn_device"
+       android:dialogTitle="@string/vpn_openvpn_device"
+       android:entries="@array/vpn_openvpn_device_entries"
+       android:entryValues="@array/vpn_openvpn_device_entries"
+       />
+
+    <CheckBoxPreference
+       android:key="set_comp_lzo"
+       android:title="@string/vpn_openvpn_comp_lzo"
+       android:summary="@string/vpn_openvpn_comp_lzo_summary"
+       />
+
+    <CheckBoxPreference
+       android:key="set_redirect_gateway"
+       android:title="@string/vpn_openvpn_redirect_gateway_title"
+       android:summary="@string/vpn_openvpn_redirect_gateway_summary"
+       />
+
+    <CheckBoxPreference
+       android:key="set_addr"
+       android:title="@string/vpn_openvpn_set_addr"
+       android:summary="@string/vpn_openvpn_set_addr_summary"
+       android:disableDependentsState="true"
+       />
+
+    <EditTextPreference
+       android:key="set_local_addr"
+       android:title="@string/vpn_openvpn_set_local_addr"
+       android:dialogTitle="@string/vpn_openvpn_set_local_addr"
+       android:dependency="set_addr"
+       android:singleLine="true"
+       />
+
+    <EditTextPreference
+       android:key="set_remote_addr"
+       android:title="@string/vpn_openvpn_set_remote_addr"
+       android:dialogTitle="@string/vpn_openvpn_set_remote_addr"
+       android:dependency="set_addr"
+       android:singleLine="true"
+       />
+
+    <EditTextPreference
+       android:key="set_cipher"
+       android:title="@string/vpn_openvpn_set_cipher"
+       android:dialogTitle="@string/vpn_openvpn_set_cipher"
+       android:dialogMessage="@string/vpn_openvpn_set_cipher_message"
+       android:singleLine="true"
+       android:inputType="textCapCharacters"
+       />
+
+    <EditTextPreference
+       android:key="set_keysize"
+       android:title="@string/vpn_openvpn_set_keysize"
+       android:dialogTitle="@string/vpn_openvpn_set_keysize"
+       android:dialogMessage="@string/vpn_openvpn_set_keysize_message"
+       android:singleLine="true"
+       android:inputType="number"
+       />
+
+    <EditTextPreference
+       android:key="set_extra"
+       android:title="@string/vpn_openvpn_set_extra"
+       android:dialogTitle="@string/vpn_openvpn_set_extra"
+       android:dialogMessage="@string/vpn_openvpn_set_extra_message"
+       android:singleLine="true"
+       android:inputType="text"
+       />
+
+</PreferenceScreen>
