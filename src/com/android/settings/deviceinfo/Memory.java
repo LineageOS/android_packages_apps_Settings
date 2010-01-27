@@ -57,6 +57,9 @@ public class Memory extends PreferenceActivity {
     private static final String MEMORY_SD_UNMOUNT = "memory_sd_unmount";
 
     private static final String MEMORY_SD_FORMAT = "memory_sd_format";
+    
+    private static final String MEMORY_SD_EXTRA_CATEGORY = "sd_extra_memory";
+    
     private Resources mRes;
 
     private Preference mSdSize;
@@ -82,6 +85,10 @@ public class Memory extends PreferenceActivity {
         mSdExtraAvail = findPreference(MEMORY_SD_EXTRA_AVAIL);
         mSdUnmount = findPreference(MEMORY_SD_UNMOUNT);
         mSdFormat = findPreference(MEMORY_SD_FORMAT);
+        
+        if (!SystemProperties.getBoolean("cm.a2sd.active", false)) {
+        	this.getPreferenceScreen().removePreference(findPreference(MEMORY_SD_EXTRA_CATEGORY));
+        }
     }
     
     @Override
@@ -99,7 +106,7 @@ public class Memory extends PreferenceActivity {
         intentFilter.addAction(Intent.ACTION_MEDIA_SCANNER_FINISHED);
         intentFilter.addDataScheme("file");
         registerReceiver(mReceiver, intentFilter);
-
+        
         updateMemoryStatus();
     }
     
