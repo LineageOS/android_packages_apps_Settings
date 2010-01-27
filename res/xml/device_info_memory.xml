@@ -33,7 +33,7 @@
             android:summary="@string/sd_format_summary"/>
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/sd_extra_memory">
+    <PreferenceCategory android:key="sd_extra_memory" android:title="@string/sd_extra_memory">
         <Preference android:key="memory_sd_extra_size"
             style="?android:attr/preferenceInformationStyle"
             android:title="@string/memory_size"
