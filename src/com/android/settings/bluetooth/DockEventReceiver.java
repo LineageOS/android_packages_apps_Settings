@@ -17,6 +17,7 @@
 package com.android.settings.bluetooth;
 
 import android.app.Service;
+import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -26,7 +27,7 @@ import android.util.Log;
 
 public class DockEventReceiver extends BroadcastReceiver {
 
-    private static final boolean DEBUG = false;
+    private static final boolean DEBUG = DockService.DEBUG;
 
     private static final String TAG = "DockEventReceiver";
 
@@ -35,16 +36,19 @@ public class DockEventReceiver extends BroadcastReceiver {
 
     private static final int EXTRA_INVALID = -1234;
 
-    static final Object mStartingServiceSync = new Object();
+    private static final Object mStartingServiceSync = new Object();
 
-    static PowerManager.WakeLock mStartingService;
+    private static final long WAKELOCK_TIMEOUT = 5000;
+
+    private static PowerManager.WakeLock mStartingService;
 
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent == null)
             return;
 
-        int state = intent.getIntExtra(Intent.EXTRA_DOCK_STATE, EXTRA_INVALID);
+        int state = intent.getIntExtra(Intent.EXTRA_DOCK_STATE, intent.getIntExtra(
+                BluetoothAdapter.EXTRA_STATE, EXTRA_INVALID));
         BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
 
         if (DEBUG) {
@@ -71,6 +75,13 @@ public class DockEventReceiver extends BroadcastReceiver {
                     if (DEBUG) Log.e(TAG, "Unknown state");
                     break;
             }
+        } else if (BluetoothAdapter.ACTION_STATE_CHANGED.equals(intent.getAction())) {
+            int btState = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, BluetoothAdapter.ERROR);
+            if (btState != BluetoothAdapter.STATE_TURNING_ON) {
+                Intent i = new Intent(intent);
+                i.setClass(context, DockService.class);
+                beginStartingService(context, i);
+            }
         }
     }
 
@@ -84,14 +95,12 @@ public class DockEventReceiver extends BroadcastReceiver {
                 PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
                 mStartingService = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,
                         "StartingDockService");
-                mStartingService.setReferenceCounted(false);
             }
 
-            mStartingService.acquire();
+            mStartingService.acquire(WAKELOCK_TIMEOUT);
 
             if (context.startService(intent) == null) {
                 Log.e(TAG, "Can't start DockService");
-                mStartingService.release();
             }
         }
     }
@@ -104,9 +113,7 @@ public class DockEventReceiver extends BroadcastReceiver {
         synchronized (mStartingServiceSync) {
             if (mStartingService != null) {
                 if (DEBUG) Log.d(TAG, "stopSelf id = "+ startId);
-                if (service.stopSelfResult(startId)) {
-                    mStartingService.release();
-                }
+                service.stopSelfResult(startId);
             }
         }
     }

@@ -62,7 +62,7 @@ public class DevelopmentSettings extends PreferenceActivity
     @Override
     protected void onResume() {
         super.onResume();
-        
+
         mEnableAdb.setChecked(Settings.Secure.getInt(getContentResolver(),
                 Settings.Secure.ADB_ENABLED, 0) != 0);
         mKeepScreenOn.setChecked(Settings.System.getInt(getContentResolver(),
@@ -74,9 +74,7 @@ public class DevelopmentSettings extends PreferenceActivity
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
 
-        // Those monkeys kept committing suicide, so we add this property
-        // to disable this functionality
-        if (!TextUtils.isEmpty(SystemProperties.get("ro.monkey"))) {
+        if (Utils.isMonkeyRunning()) {
             return false;
         }
 
