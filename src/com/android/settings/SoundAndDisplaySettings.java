@@ -59,8 +59,10 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
     private static final String KEY_PLAY_MEDIA_NOTIFICATION_SOUNDS =
             "play_media_notification_sounds";
     private static final String KEY_EMERGENCY_TONE = "emergency_tone";
-    private static final String KEY_SOUND_SETTINGS = "sound_settings";
+    private static final String KEY_SOUND_DISPLAY_SETTINGS = "sound_display_settings";
+    private static final String KEY_TRACKBALL_SETTINGS = "trackball_settings";
     private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
+    private static final String KEY_NOTIFICATION_SCREEN_ON = "notification_screen_on";
 
     private CheckBoxPreference mSilent;
 
@@ -82,6 +84,7 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
     private ListPreference mAnimations;
     private CheckBoxPreference mAccelerometer;
     private CheckBoxPreference mNotificationPulse;
+    private CheckBoxPreference mNotificationScreenOn;
     private float[] mAnimationScales;
 
     private AudioManager mAudioManager;
@@ -97,7 +100,8 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
         }
     };
 
-    private PreferenceGroup mSoundSettings;
+    private PreferenceGroup mSoundDisplaySettings;
+    private PreferenceGroup mTrackballSettings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,12 +156,15 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
             emergencyTonePreference.setOnPreferenceChangeListener(this);
         }
 
-        mSoundSettings = (PreferenceGroup) findPreference(KEY_SOUND_SETTINGS);
+        mSoundDisplaySettings = (PreferenceGroup) findPreference(KEY_SOUND_DISPLAY_SETTINGS);
+        mTrackballSettings = (PreferenceGroup) mSoundDisplaySettings.findPreference(KEY_TRACKBALL_SETTINGS);
         mNotificationPulse = (CheckBoxPreference)
-                mSoundSettings.findPreference(KEY_NOTIFICATION_PULSE);
+                mTrackballSettings.findPreference(KEY_NOTIFICATION_PULSE);
+        mNotificationScreenOn = (CheckBoxPreference)
+                mTrackballSettings.findPreference(KEY_NOTIFICATION_SCREEN_ON);
         if (mNotificationPulse != null &&
                 getResources().getBoolean(R.bool.has_intrusive_led) == false) {
-            mSoundSettings.removePreference(mNotificationPulse);
+            mSoundDisplaySettings.removePreference(mTrackballSettings);
         } else {
             try {
                 mNotificationPulse.setChecked(Settings.System.getInt(resolver,
@@ -165,6 +172,13 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
                 mNotificationPulse.setOnPreferenceChangeListener(this);
             } catch (SettingNotFoundException snfe) {
                 Log.e(TAG, Settings.System.NOTIFICATION_LIGHT_PULSE + " not found");
+            }
+            try {
+                mNotificationScreenOn.setChecked(Settings.System.getInt(resolver,
+                        Settings.System.NOTIFICATION_SCREEN_ON) == 1);
+                mNotificationScreenOn.setOnPreferenceChangeListener(this);
+            } catch (SettingNotFoundException snfe) {
+                Log.e(TAG, Settings.System.NOTIFICATION_SCREEN_ON + " not found");
             }
         }
 
@@ -276,6 +290,7 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        boolean value;
         if (preference == mSilent || preference == mVibrate) {
             setRingerMode(mSilent.isChecked(), mVibrate.isChecked());
             if (preference == mSilent) updateState(false);
@@ -306,9 +321,13 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
                     Settings.System.ACCELEROMETER_ROTATION,
                     mAccelerometer.isChecked() ? 1 : 0);
         } else if (preference == mNotificationPulse) {
-            boolean value = mNotificationPulse.isChecked();
+            value = mNotificationPulse.isChecked();
             Settings.System.putInt(getContentResolver(),
                     Settings.System.NOTIFICATION_LIGHT_PULSE, value ? 1 : 0);
+        } else if (preference == mNotificationScreenOn) {
+            value = mNotificationScreenOn.isChecked();
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.NOTIFICATION_SCREEN_ON, value ? 1 : 0);
         }
 
         return true;

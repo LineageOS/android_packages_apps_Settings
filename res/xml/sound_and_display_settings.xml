@@ -15,7 +15,8 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+        xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+        android:key="sound_display_settings">
 
     <PreferenceCategory android:key="sound_settings"
             android:title="@string/sound_settings">
@@ -75,19 +76,12 @@
                 android:ringtoneType="notification" />
 
         <CheckBoxPreference
-                android:key="notification_pulse"
-                android:title="@string/notification_pulse_title"
-                android:summary="@string/notification_pulse_summary"
-                android:order="8"
-                android:persistent="false" />
-
-        <CheckBoxPreference
                 android:key="dtmf_tone"
                 android:title="@string/dtmf_tone_enable_title"
                 android:summaryOn="@string/dtmf_tone_enable_summary_on"
                 android:summaryOff="@string/dtmf_tone_enable_summary_off"
                 android:dependency="silent"
-                android:order="9"
+                android:order="8"
                 android:defaultValue="true" />
 
         <CheckBoxPreference
@@ -96,7 +90,7 @@
                 android:summaryOn="@string/sound_effects_enable_summary_on"
                 android:summaryOff="@string/sound_effects_enable_summary_off"
                 android:dependency="silent"
-                android:order="10"
+                android:order="9"
                 android:defaultValue="true" />
 
         <CheckBoxPreference
@@ -105,7 +99,7 @@
                 android:summaryOn="@string/haptic_feedback_enable_summary_on"
                 android:summaryOff="@string/haptic_feedback_enable_summary_off"
                 android:dependency="silent"
-                 android:order="11"
+                 android:order="10"
                 android:defaultValue="true" />
 
         <CheckBoxPreference
@@ -114,8 +108,27 @@
                 android:summaryOn="@string/play_media_notification_sounds_enable_summary_on"
                 android:summaryOff="@string/play_media_notification_sounds_enable_summary_off"
                 android:dependency="silent"
-                android:order="12"
+                android:order="11"
                 android:defaultValue="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+            android:key="trackball_settings"
+            android:title="@string/trackball_settings">
+
+        <CheckBoxPreference
+                android:key="notification_pulse"
+                android:title="@string/notification_pulse_title"
+                android:summary="@string/notification_pulse_summary"
+                android:persistent="false" />
+
+        <CheckBoxPreference
+                android:key="notification_screen_on"
+                android:title="@string/notification_screen_on_title"
+                android:summary="@string/notification_screen_on_summary"
+                android:dependency="notification_pulse"
+                android:persistent="false" />
 
     </PreferenceCategory>
 
