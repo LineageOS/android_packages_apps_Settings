@@ -31,7 +31,8 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
-import android.security.CertTool;
+import android.security.Credentials;
+import android.security.KeyStore;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
@@ -50,6 +51,8 @@ class OpenvpnEditor extends VpnProfileEditor {
     private static final String TAG = OpenvpnEditor.class.getSimpleName();
 
     private int MENU_ID_ADVANCED;
+
+    private KeyStore mKeyStore = KeyStore.getInstance();
 
     private CheckBoxPreference mUserAuth;
     private ListPreference mCert;
@@ -80,7 +83,7 @@ class OpenvpnEditor extends VpnProfileEditor {
 	subpanel.addPreference(mUserAuth);
 	mCACert = createList(c, R.string.vpn_user_certificate_title,
             profile.getCAName(),
-	    CertTool.getInstance().getAllCaCertificateKeys(),
+	    mKeyStore.saw(Credentials.CA_CERTIFICATE),
             new Preference.OnPreferenceChangeListener() {
 		public boolean onPreferenceChange(Preference pref, Object newValue) {
 		    String f = (String) newValue;
@@ -95,7 +98,7 @@ class OpenvpnEditor extends VpnProfileEditor {
 	subpanel.addPreference(mCACert);
  	mCert = createList(c, R.string.vpn_ca_certificate_title,
             profile.getCertName(),
-            CertTool.getInstance().getAllUserCertificateKeys(),
+            mKeyStore.saw(Credentials.USER_CERTIFICATE),
             new Preference.OnPreferenceChangeListener() {
 		public boolean onPreferenceChange(Preference pref, Object newValue) {
 		    String f = (String) newValue;
