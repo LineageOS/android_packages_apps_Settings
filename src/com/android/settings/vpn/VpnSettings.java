@@ -630,8 +630,11 @@ public class VpnSettings extends PreferenceActivity implements
                         !TextUtils.isEmpty(l2tpProfile.getSecretString())) {
                     return true;
                 }
-                // pass through
 
+	    case OPENVPN:
+                return true;
+
+               // pass through
             default:
                 return false;
         }
@@ -642,6 +645,7 @@ public class VpnSettings extends PreferenceActivity implements
         switch (p.getType()) {
             case L2TP_IPSEC:
             case L2TP_IPSEC_PSK:
+	    case OPENVPN:
                 return true;
 
             case L2TP:
@@ -876,7 +880,12 @@ public class VpnSettings extends PreferenceActivity implements
     }
 
     private VpnProfileActor getActor(VpnProfile p) {
-        return new AuthenticationActor(this, p);
+	switch (p.getType()) {
+	case OPENVPN:
+	    return new OpenvpnAuthenticationActor(this, p);
+	default:
+	    return new AuthenticationActor(this, p);
+	}
     }
 
     private VpnProfile createVpnProfile(String type) {
