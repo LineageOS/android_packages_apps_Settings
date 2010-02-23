@@ -81,7 +81,7 @@ class OpenvpnEditor extends VpnProfileEditor {
 		}
 	    });
 	subpanel.addPreference(mUserAuth);
-	mCACert = createList(c, R.string.vpn_user_certificate_title,
+	mCACert = createList(c, R.string.vpn_ca_certificate_title,
             profile.getCAName(),
 	    mKeyStore.saw(Credentials.CA_CERTIFICATE),
             new Preference.OnPreferenceChangeListener() {
@@ -96,20 +96,21 @@ class OpenvpnEditor extends VpnProfileEditor {
 	    });
 	setSummary(mCACert, R.string.vpn_ca_certificate, profile.getCAName());
 	subpanel.addPreference(mCACert);
- 	mCert = createList(c, R.string.vpn_ca_certificate_title,
+	
+ 	mCert = createList(c, R.string.vpn_user_certificate_title,
             profile.getCertName(),
             mKeyStore.saw(Credentials.USER_CERTIFICATE),
             new Preference.OnPreferenceChangeListener() {
 		public boolean onPreferenceChange(Preference pref, Object newValue) {
 		    String f = (String) newValue;
 		    profile.setCertName(f);
-		    setSummary(mCert, R.string.vpn_ca_certificate,
+		    setSummary(mCert, R.string.vpn_user_certificate,
 			       profile.getCertName());
 
 		    return true;
 		}           
 	    });
-	setSummary(mCert, R.string.vpn_ca_certificate, profile.getCertName());
+	setSummary(mCert, R.string.vpn_user_certificate, profile.getCertName());
 	subpanel.addPreference(mCert);
     }
 
