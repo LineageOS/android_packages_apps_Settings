@@ -63,7 +63,8 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
     private static final String KEY_TRACKBALL_SETTINGS = "trackball_settings";
     private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
     private static final String KEY_NOTIFICATION_SCREEN_ON = "notification_screen_on";
-
+    private static final String KEY_USE_180_ORIENTATION = "use_180_orientation";
+    
     private CheckBoxPreference mSilent;
 
     private CheckBoxPreference mPlayMediaNotificationSounds;
@@ -83,6 +84,7 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
     private CheckBoxPreference mHapticFeedback;
     private ListPreference mAnimations;
     private CheckBoxPreference mAccelerometer;
+    private CheckBoxPreference mOrientation180;
     private CheckBoxPreference mNotificationPulse;
     private CheckBoxPreference mNotificationScreenOn;
     private float[] mAnimationScales;
@@ -141,6 +143,9 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
         mAnimations.setOnPreferenceChangeListener(this);
         mAccelerometer = (CheckBoxPreference) findPreference(KEY_ACCELEROMETER);
         mAccelerometer.setPersistent(false);
+        mAccelerometer.setOnPreferenceChangeListener(this);
+        mOrientation180 = (CheckBoxPreference) findPreference(KEY_USE_180_ORIENTATION);
+        mOrientation180.setPersistent(false);
 
         ListPreference screenTimeoutPreference =
             (ListPreference) findPreference(KEY_SCREEN_TIMEOUT);
@@ -261,6 +266,9 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
         mAccelerometer.setChecked(Settings.System.getInt(
                 getContentResolver(),
                 Settings.System.ACCELEROMETER_ROTATION, 0) != 0);
+        mOrientation180.setChecked(Settings.System.getInt(
+                getContentResolver(),
+                Settings.System.USE_180_ORIENTATION, 0) != 0);
     }
 
     private void updateAnimationsSummary(Object value) {
@@ -317,9 +325,15 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
                     mHapticFeedback.isChecked() ? 1 : 0);
 
         } else if (preference == mAccelerometer) {
-            Settings.System.putInt(getContentResolver(),
+            Settings.System.putInt(getContentResolver(), 
                     Settings.System.ACCELEROMETER_ROTATION,
                     mAccelerometer.isChecked() ? 1 : 0);
+            
+        } else if (preference == mOrientation180) {
+            Settings.System.putInt(getContentResolver(), 
+                    Settings.System.USE_180_ORIENTATION, 
+                    mOrientation180.isChecked() ? 1 : 0);
+            
         } else if (preference == mNotificationPulse) {
             value = mNotificationPulse.isChecked();
             Settings.System.putInt(getContentResolver(),
@@ -328,7 +342,7 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
             value = mNotificationScreenOn.isChecked();
             Settings.System.putInt(getContentResolver(),
                     Settings.System.NOTIFICATION_SCREEN_ON, value ? 1 : 0);
-        }
+        } 
 
         return true;
     }
