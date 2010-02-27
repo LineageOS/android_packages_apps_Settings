@@ -56,6 +56,7 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
     private static final String KEY_ACCELEROMETER = "accelerometer";
     private static final String KEY_PLAY_MEDIA_NOTIFICATION_SOUNDS = "play_media_notification_sounds";
     private static final String KEY_EMERGENCY_TONE ="emergency_tone";
+    private static final String KEY_USE_180_ORIENTATION = "use_180_orientation";
     
     private CheckBoxPreference mSilent;
 
@@ -75,6 +76,7 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
     private CheckBoxPreference mSoundEffects;
     private CheckBoxPreference mAnimations;
     private CheckBoxPreference mAccelerometer;
+    private CheckBoxPreference mOrientation180;
     private float[] mAnimationScales;
     
     private AudioManager mAudioManager;
@@ -122,7 +124,9 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
         mAnimations.setPersistent(false);
         mAccelerometer = (CheckBoxPreference) findPreference(KEY_ACCELEROMETER);
         mAccelerometer.setPersistent(false);
-        
+        mOrientation180 = (CheckBoxPreference) findPreference(KEY_USE_180_ORIENTATION);
+        mOrientation180.setPersistent(false);
+
         ListPreference screenTimeoutPreference =
             (ListPreference) findPreference(KEY_SCREEN_TIMEOUT);
         screenTimeoutPreference.setValue(String.valueOf(Settings.System.getInt(
@@ -208,6 +212,9 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
         mAccelerometer.setChecked(Settings.System.getInt(
                 getContentResolver(), 
                 Settings.System.ACCELEROMETER_ROTATION, 0) != 0);
+        mOrientation180.setChecked(Settings.System.getInt(
+                getContentResolver(),
+                Settings.System.USE_180_ORIENTATION, 0) != 0);
     }
 
     private void setRingerMode(boolean silent, boolean vibrate) {
@@ -260,10 +267,16 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
             }
             
         } else if (preference == mAccelerometer) {
-            Settings.System.putInt(getContentResolver(),
+            Settings.System.putInt(getContentResolver(), 
                     Settings.System.ACCELEROMETER_ROTATION,
                     mAccelerometer.isChecked() ? 1 : 0);
-        }
+            
+        } else if (preference == mOrientation180) {
+            Settings.System.putInt(getContentResolver(), 
+                    Settings.System.USE_180_ORIENTATION, 
+                    mOrientation180.isChecked() ? 1 : 0);
+        } 
+
         return true;
     }
 
