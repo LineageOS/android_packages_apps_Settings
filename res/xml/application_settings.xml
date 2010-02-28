@@ -25,6 +25,13 @@
             android:summaryOff="@string/install_unknown_applications"
             android:summaryOn="@string/install_unknown_applications"
             android:persistent="false" />
+
+    <CheckBoxPreference
+            android:key="apps2sd"
+            android:title="@string/apps2sd_title"
+            android:summaryOff="@string/apps2sd_summary_off"
+            android:summaryOn="@string/apps2sd_summary_on"
+            android:persistent="false" />
         
     <PreferenceScreen
             android:key="quick_launch"
