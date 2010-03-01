@@ -117,10 +117,11 @@ class OpenvpnEditor extends VpnProfileEditor {
 	if (result != null)
 	    return result;
 
-	result = validate(mCert, R.string.vpn_a_user_certificate);
-	if (result != null)
-	    return result;
-
+	if (!mUserAuth.isChecked()) {
+	    result = validate(mCert, R.string.vpn_a_user_certificate);
+	    if (result != null)
+	        return result;
+	}
 	return validate(mCert, R.string.vpn_a_ca_certificate);
     }
 
