@@ -83,7 +83,7 @@ public class WirelessSettings extends PreferenceActivity {
                 this, (WifiManager) getSystemService(WIFI_SERVICE),
                 (CheckBoxPreference) wifiPreference);
         mAirplaneModeEnabler = new AirplaneModeEnabler(
-                this, (CheckBoxPreference) airplancePreference);
+                this, (CheckBoxPreference) airplanePreference);
         
         mBtEnabler = new BluetoothEnabler(
                 this, (CheckBoxPreference) btPreference);
