@@ -129,6 +129,13 @@
                 android:summary="@string/notification_screen_on_summary"
                 android:dependency="notification_pulse"
                 android:persistent="false" />
+        
+        <CheckBoxPreference
+        		android:key="trackball_wake_screen"
+        		android:title="@string/trackball_wake_screen_title"
+        		android:summary="@string/trackball_wake_screen_summary"
+        		android:persistent="false"
+        		android:defaultValue="false" />
 
     </PreferenceCategory>
 

@@ -63,6 +63,7 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
     private static final String KEY_TRACKBALL_SETTINGS = "trackball_settings";
     private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
     private static final String KEY_NOTIFICATION_SCREEN_ON = "notification_screen_on";
+    private static final String KEY_TRACKBALL_WAKE_SCREEN = "trackball_wake_screen";
     private static final String KEY_USE_180_ORIENTATION = "use_180_orientation";
     
     private CheckBoxPreference mSilent;
@@ -87,6 +88,7 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
     private CheckBoxPreference mOrientation180;
     private CheckBoxPreference mNotificationPulse;
     private CheckBoxPreference mNotificationScreenOn;
+    private CheckBoxPreference mTrackballWakeScreen;
     private float[] mAnimationScales;
 
     private AudioManager mAudioManager;
@@ -167,6 +169,8 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
                 mTrackballSettings.findPreference(KEY_NOTIFICATION_PULSE);
         mNotificationScreenOn = (CheckBoxPreference)
                 mTrackballSettings.findPreference(KEY_NOTIFICATION_SCREEN_ON);
+        mTrackballWakeScreen = (CheckBoxPreference)
+                mTrackballSettings.findPreference(KEY_TRACKBALL_WAKE_SCREEN);
         if (mNotificationPulse != null &&
                 getResources().getBoolean(R.bool.has_intrusive_led) == false) {
             mSoundDisplaySettings.removePreference(mTrackballSettings);
@@ -185,6 +189,14 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
             } catch (SettingNotFoundException snfe) {
                 Log.e(TAG, Settings.System.NOTIFICATION_SCREEN_ON + " not found");
             }
+        }
+        
+        try {
+            mTrackballWakeScreen.setChecked(Settings.System.getInt(resolver, 
+                    Settings.System.TRACKBALL_WAKE_SCREEN) == 1);
+            mTrackballWakeScreen.setOnPreferenceChangeListener(this);
+        } catch (SettingNotFoundException snfe) {
+            Log.e(TAG, Settings.System.TRACKBALL_WAKE_SCREEN + " not found");
         }
 
     }
@@ -342,6 +354,10 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
             value = mNotificationScreenOn.isChecked();
             Settings.System.putInt(getContentResolver(),
                     Settings.System.NOTIFICATION_SCREEN_ON, value ? 1 : 0);
+        } else if (preference == mTrackballWakeScreen) {
+            value = mTrackballWakeScreen.isChecked();
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.TRACKBALL_WAKE_SCREEN, value ? 1 : 0);
         } 
 
         return true;
