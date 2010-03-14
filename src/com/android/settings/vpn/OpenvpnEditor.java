@@ -158,6 +158,7 @@ class OpenvpnEditor extends VpnProfileEditor {
         p.setPort(newP.getPort());
         p.setProto(newP.getProto());
         p.setUseCompLzo(newP.getUseCompLzo());
+        p.setRedirectGateway(newP.getRedirectGateway());
         p.setSupplyAddr(newP.getSupplyAddr());
         p.setLocalAddr(newP.getLocalAddr());
         p.setRemoteAddr(newP.getRemoteAddr());
@@ -183,6 +184,8 @@ class OpenvpnEditor extends VpnProfileEditor {
 
         private static final String KEY_COMP_LZO = "set_comp_lzo";
 
+        private static final String KEY_REDIRECT_GATEWAY = "set_redirect_gateway";
+        
         private static final String KEY_SET_ADDR = "set_addr";
 
         private static final String KEY_LOCAL_ADDR = "set_local_addr";
@@ -195,6 +198,8 @@ class OpenvpnEditor extends VpnProfileEditor {
 
         private CheckBoxPreference mCompLzo;
 
+        private CheckBoxPreference mRedirectGateway;
+        
         private CheckBoxPreference mSetAddr;
 
         private EditTextPreference mLocalAddr;
@@ -214,6 +219,7 @@ class OpenvpnEditor extends VpnProfileEditor {
             mPort = (EditTextPreference) findPreference(KEY_PORT);
             mProto = (ListPreference) findPreference(KEY_PROTO);
             mCompLzo = (CheckBoxPreference) findPreference(KEY_COMP_LZO);
+            mRedirectGateway = (CheckBoxPreference) findPreference(KEY_REDIRECT_GATEWAY);
             mSetAddr = (CheckBoxPreference) findPreference(KEY_SET_ADDR);
             mLocalAddr = (EditTextPreference) findPreference(KEY_LOCAL_ADDR);
             mRemoteAddr = (EditTextPreference) findPreference(KEY_REMOTE_ADDR);
@@ -254,6 +260,16 @@ class OpenvpnEditor extends VpnProfileEditor {
                 }
             });
 
+            mRedirectGateway.setChecked(profile.getRedirectGateway());
+            mRedirectGateway.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                public boolean onPreferenceChange(Preference pref, Object newValue) {
+                    Boolean b = (Boolean) newValue;
+                    profile.setRedirectGateway(b);
+
+                    return true;
+                }
+            });
+            
             // This is inverted to cope with the way dependencies work
             mSetAddr.setChecked(!profile.getSupplyAddr());
             mSetAddr.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
