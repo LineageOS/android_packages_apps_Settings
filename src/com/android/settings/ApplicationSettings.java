@@ -20,6 +20,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.SystemProperties;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -49,7 +50,11 @@ public class ApplicationSettings extends PreferenceActivity implements
 
         mApps2SD = (CheckBoxPreference) findPreference(KEY_APPS2SD);
         mApps2SD.setChecked(isApps2SDEnabled());
-
+        
+        if (!SystemProperties.getBoolean("cm.a2sd.active", false)) {
+            mApps2SD.setEnabled(false);
+        }
+        
         if (getResources().getConfiguration().keyboard == Configuration.KEYBOARD_NOKEYS) {
             // No hard keyboard, remove the setting for quick launch
             Preference quickLaunchSetting = findPreference(KEY_QUICK_LAUNCH);

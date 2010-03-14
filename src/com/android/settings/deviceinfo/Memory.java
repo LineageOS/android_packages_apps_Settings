@@ -42,8 +42,6 @@ import java.text.DecimalFormat;
 
 public class Memory extends PreferenceActivity {
 
-    private static final String EXTRA_SD_STORAGE_PATH = "/system/sd";
-
     private static final String TAG = "Memory";
 
     private static final String MEMORY_SD_SIZE = "memory_sd_size";
@@ -193,7 +191,7 @@ public class Memory extends PreferenceActivity {
                     mSdExtraSize.setSummary(mRes.getString(R.string.sd_unavailable));
                     mSdExtraAvail.setSummary(mRes.getString(R.string.sd_unavailable));
                 } else {
-                    File extraPath = new File(EXTRA_SD_STORAGE_PATH);
+                    File extraPath = Environment.getSdExtDirectory();
                     StatFs extraStat = new StatFs(extraPath.getPath());
                     long eBlockSize = extraStat.getBlockSize();
                     long eTotalBlocks = extraStat.getBlockCount();
