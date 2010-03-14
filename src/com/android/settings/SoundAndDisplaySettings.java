@@ -191,13 +191,10 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
             }
         }
         
-        try {
-            mTrackballWakeScreen.setChecked(Settings.System.getInt(resolver, 
-                    Settings.System.TRACKBALL_WAKE_SCREEN) == 1);
-            mTrackballWakeScreen.setOnPreferenceChangeListener(this);
-        } catch (SettingNotFoundException snfe) {
-            Log.e(TAG, Settings.System.TRACKBALL_WAKE_SCREEN + " not found");
-        }
+        mTrackballWakeScreen.setChecked(Settings.System.getInt(resolver, 
+                Settings.System.TRACKBALL_WAKE_SCREEN, 0) == 1);
+        mTrackballWakeScreen.setOnPreferenceChangeListener(this);
+
 
     }
 
