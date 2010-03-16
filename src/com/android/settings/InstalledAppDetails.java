@@ -70,6 +70,7 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
     private Button mActivitiesButton;
     private boolean localLOGV = false;
     private TextView mAppVersion;
+    private TextView mInstallLocation;
     private TextView mTotalSize;
     private TextView mAppSize;
     private TextView mDataSize;
@@ -196,9 +197,20 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
             showDialogInner(DLG_APP_NOT_FOUND);
             return;
         }
+        String installLocationStr = "Unavailable";
+        installLocationStr = mAppInfo.sourceDir;
+        if (installLocationStr.startsWith("/data")) {
+        	installLocationStr = "Internal";
+        } else if (installLocationStr.startsWith("/system")) {
+        	installLocationStr = "System";
+        } else {
+        	installLocationStr = "SD Card";
+        }
         setContentView(R.layout.installed_app_details);
         //TODO download str and download url
         // Set default values on sizes
+        mInstallLocation = (TextView)findViewById(R.id.install_location_text);
+        mInstallLocation.setText(installLocationStr);
         mTotalSize = (TextView)findViewById(R.id.total_size_text);
         mTotalSize.setText(totalSizeStr);
         mAppSize = (TextView)findViewById(R.id.application_size_text);
