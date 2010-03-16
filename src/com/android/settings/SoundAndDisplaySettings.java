@@ -55,7 +55,6 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
     private static final String KEY_SOUND_EFFECTS = "sound_effects";
     private static final String KEY_HAPTIC_FEEDBACK = "haptic_feedback";
     private static final String KEY_ANIMATIONS = "animations";
-    private static final String KEY_ACCELEROMETER = "accelerometer";
     private static final String KEY_PLAY_MEDIA_NOTIFICATION_SOUNDS =
             "play_media_notification_sounds";
     private static final String KEY_EMERGENCY_TONE = "emergency_tone";
@@ -64,7 +63,7 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
     private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
     private static final String KEY_NOTIFICATION_SCREEN_ON = "notification_screen_on";
     private static final String KEY_TRACKBALL_WAKE_SCREEN = "trackball_wake_screen";
-    private static final String KEY_USE_180_ORIENTATION = "use_180_orientation";
+    private static final String KEY_ACCELEROMETER_MODE = "accelerometer_mode";
     
     private CheckBoxPreference mSilent;
 
@@ -84,8 +83,7 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
     private CheckBoxPreference mSoundEffects;
     private CheckBoxPreference mHapticFeedback;
     private ListPreference mAnimations;
-    private CheckBoxPreference mAccelerometer;
-    private CheckBoxPreference mOrientation180;
+    private ListPreference mAccelerometerMode;
     private CheckBoxPreference mNotificationPulse;
     private CheckBoxPreference mNotificationScreenOn;
     private CheckBoxPreference mTrackballWakeScreen;
@@ -143,11 +141,8 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
                 Settings.System.HAPTIC_FEEDBACK_ENABLED, 0) != 0);
         mAnimations = (ListPreference) findPreference(KEY_ANIMATIONS);
         mAnimations.setOnPreferenceChangeListener(this);
-        mAccelerometer = (CheckBoxPreference) findPreference(KEY_ACCELEROMETER);
-        mAccelerometer.setPersistent(false);
-        mAccelerometer.setOnPreferenceChangeListener(this);
-        mOrientation180 = (CheckBoxPreference) findPreference(KEY_USE_180_ORIENTATION);
-        mOrientation180.setPersistent(false);
+        mAccelerometerMode = (ListPreference) findPreference(KEY_ACCELEROMETER_MODE);
+        mAccelerometerMode.setOnPreferenceChangeListener(this);
 
         ListPreference screenTimeoutPreference =
             (ListPreference) findPreference(KEY_SCREEN_TIMEOUT);
@@ -272,14 +267,24 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
         }
         mAnimations.setValueIndex(idx);
         updateAnimationsSummary(mAnimations.getValue());
-        mAccelerometer.setChecked(Settings.System.getInt(
+
+        int accelerometerEnabled = Settings.System.getInt(
                 getContentResolver(),
-                Settings.System.ACCELEROMETER_ROTATION, 0) != 0);
-        mOrientation180.setChecked(Settings.System.getInt(
-                getContentResolver(),
-                Settings.System.USE_180_ORIENTATION, 0) != 0);
+                Settings.System.ACCELEROMETER_ROTATION, 1);
+        int accelerometerMode = 0;
+        if (accelerometerEnabled > 0) {
+            accelerometerMode = 1 + Settings.System.getInt(
+                    getContentResolver(),
+                    Settings.System.ACCELEROMETER_ROTATION_MODE, 0);
+        }
+        mAccelerometerMode.setValueIndex(accelerometerMode);
+        updateOrientationSummary(accelerometerMode);
     }
 
+    private void updateOrientationSummary(int index) {
+        mAccelerometerMode.setSummary(getResources().getTextArray(R.array.accelerometer_mode_summaries)[index]);
+    }
+    
     private void updateAnimationsSummary(Object value) {
         CharSequence[] summaries = getResources().getTextArray(R.array.animations_summaries);
         CharSequence[] values = mAnimations.getEntryValues();
@@ -333,16 +338,6 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
             Settings.System.putInt(getContentResolver(), Settings.System.HAPTIC_FEEDBACK_ENABLED,
                     mHapticFeedback.isChecked() ? 1 : 0);
 
-        } else if (preference == mAccelerometer) {
-            Settings.System.putInt(getContentResolver(), 
-                    Settings.System.ACCELEROMETER_ROTATION,
-                    mAccelerometer.isChecked() ? 1 : 0);
-            
-        } else if (preference == mOrientation180) {
-            Settings.System.putInt(getContentResolver(), 
-                    Settings.System.USE_180_ORIENTATION, 
-                    mOrientation180.isChecked() ? 1 : 0);
-            
         } else if (preference == mNotificationPulse) {
             value = mNotificationPulse.isChecked();
             Settings.System.putInt(getContentResolver(),
@@ -397,8 +392,21 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
             } catch (NumberFormatException e) {
                 Log.e(TAG, "could not persist emergency tone setting", e);
             }
+        } else if (KEY_ACCELEROMETER_MODE.equals(key)) {
+            int value = Integer.parseInt((String) objValue);
+            try {
+                int enabled = value == 0 ? 0 : 1;
+                int mode = value > 0 ? value - 1 : 0;
+                Settings.System.putInt(getContentResolver(),
+                        Settings.System.ACCELEROMETER_ROTATION, enabled);
+                Settings.System.putInt(getContentResolver(),
+                        Settings.System.ACCELEROMETER_ROTATION_MODE, mode);
+                updateOrientationSummary(value);
+            } catch (NumberFormatException e) {
+                Log.e(TAG, "could not persist accelerometer mode setting", e);
+            }
+            
         }
-
         return true;
     }
 }
