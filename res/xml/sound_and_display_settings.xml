@@ -104,25 +104,19 @@
     <PreferenceCategory
             android:title="@string/display_settings">
 
-        <CheckBoxPreference 
-            android:key="accelerometer" 
-            android:title="@string/accelerometer_title" 
-            android:summaryOn="@string/accelerometer_summary_on"
-            android:summaryOff="@string/accelerometer_summary_off"/>
-
-        <CheckBoxPreference
-            android:key="use_180_orientation"
-            android:title="@string/use_180_orientation_title"
-            android:summaryOn="@string/use_180_orientation_summary_on"
-            android:summaryOff="@string/use_180_orientation_summary_off"
-            android:dependency="accelerometer" />            
-   
         <CheckBoxPreference
                 android:key="animations"
                 android:title="@string/animations_title"
                 android:summaryOn="@string/animations_summary_on"
                 android:summaryOff="@string/animations_summary_off" />
         
+        <ListPreference
+            android:key="accelerometer_mode"
+            android:title="@string/accelerometer_title"
+            android:persistent="false"
+            android:entries="@array/accelerometer_mode_entries"
+            android:entryValues="@array/accelerometer_mode_values" />
+
         <com.android.settings.BrightnessPreference
                 android:key="brightness"
                 android:title="@string/brightness"
