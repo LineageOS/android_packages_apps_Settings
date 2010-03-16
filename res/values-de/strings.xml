@@ -450,6 +450,9 @@
     <string name="screen_timeout" msgid="4882669461447531301">"Display-Timeout"</string>
     <string name="screen_timeout_summary" msgid="2905757633140605334">"Verzögerung vor automatischer Bildschirmabschaltung anpassen"</string>
     <string name="automatic_brightness" msgid="5014143533884135461">"Automatische Helligkeit"</string>
+    <!-- Sound & display settings screen, setting option for trackwall wake -->
+    <string name="trackball_wake_screen_title">Trackball weckt Gerät auf</string>
+    <string name="trackball_wake_screen_summary">Wecke das Gerät auf, wenn der Trackball gedrückt wird.</string>
     <string name="sim_lock_settings" msgid="3392331196873564292">"Einstellungen"</string>
     <string name="sim_lock_settings_category" msgid="5136244267576697004">"SIM-Sperrung einrichten"</string>
     <string name="sim_lock_settings_title" msgid="9018585580955414596">"SIM-Kartensperrung"</string>
@@ -642,6 +645,12 @@
     <string name="install_applications" msgid="4872012136210802181">"Unbekannte Quellen"</string>
     <string name="install_unknown_applications" msgid="4657036956866203596">"Installation von Nicht-Market-Anwendungen zulassen"</string>
     <string name="install_all_warning" msgid="1923717607319933741">"Anwendungen aus unbekannten Quellen können gefährlich für Ihr Telefon und Ihre persönlichen Daten sein. Sie stimmen zu, dass Sie die Verantwortung für alle Schäden an Ihrem Telefon oder jegliche Datenverluste tragen, die aus der Verwendung dieser Anwendungen entstehen können."</string>
+    <!-- Enable/Disable Apps2SD -->
+    <string name="apps2sd_title">Apps2SD</string>
+    <!-- Apps2SD Off Summary -->
+    <string name="apps2sd_summary_off">Installiere neue Anwendungen im internen Gerätespeicher.</string>
+    <!-- Apps2SD On Summary -->
+    <string name="apps2sd_summary_on">Installiere neue Anwendungen auf der SD-Karte.</string>
     <string name="application_info_label" msgid="1150486628158409543">"Anwendungsinfo"</string>
     <string name="storage_label" msgid="8700867073480107253">"Speicher"</string>
     <string name="auto_launch_label" msgid="3012617472833815382">"Standardmäßig starten"</string>
@@ -650,6 +659,8 @@
     <string name="clear_cache_btn_text" msgid="5756314834291116325">"Cache löschen"</string>
     <string name="cache_size_label" msgid="7505481393108282913">"Cache"</string>
     <string name="controls_label" msgid="7611113077086853799">"Steuerung"</string>
+    <!-- Manage applications, individual application info screen, label under Storage heading.  The current location of the APK. -->
+    <string name="install_location_label">Installationsort</string>
     <string name="force_stop" msgid="7435006169872876756">"Stoppen erzwingen"</string>
     <string name="total_size_label" msgid="1048676419552557254">"Insgesamt"</string>
     <string name="application_size_label" msgid="5055196275624686382">"Anwendung"</string>
@@ -962,13 +973,15 @@
     <string name="vpn_settings_summary" msgid="8849924181594963972">"Virtual Private Networks (VPNs) einrichten und verwalten"</string>
     <string name="vpn_secret_unchanged" msgid="8700613973594154529">"(nicht geändert)"</string>
     <string name="vpn_secret_not_set" msgid="1037792636371641845">"(nicht festgelegt)"</string>
-    <string name="vpn_openvpn_port">Port für Server</string>
-    <string name="vpn_openvpn_protocol">Protokoll für den Port</string>
+    <string name="vpn_openvpn_port">Serverport</string>
+    <string name="vpn_openvpn_protocol">Protokoll</string>
     <string name="vpn_openvpn_userauth">Benutzer Authentifizierung</string>
     <string name="vpn_openvpn_userauth_summary">Einschalten, wenn zusätzliche Name/Passwort Authentifizierung benutzt werden soll.</string>
     <string name="vpn_openvpn_advanced_titlebar">Erweiterte OpenVPN Einstellungen</string>
     <string name="vpn_openvpn_comp_lzo">LZO Kompression</string>
     <string name="vpn_openvpn_comp_lzo_summary">LZO Kompression erzwingen</string>
+    <string name="vpn_openvpn_redirect_gateway_title">Gateway Weiterleitung</string>
+    <string name="vpn_openvpn_redirect_gateway_summary">Erzwingen, den gesamten Verkehr durch den VPN Tunnel zu leiten.</string>
     <string name="vpn_openvpn_set_addr">Entfernter Server setzt Addressen</string>
     <string name="vpn_openvpn_set_addr_summary">Abwählen, um Tunneladressen manuell einzustellen.</string>
     <string name="vpn_openvpn_set_local_addr">Lokale IP Addresse</string>
