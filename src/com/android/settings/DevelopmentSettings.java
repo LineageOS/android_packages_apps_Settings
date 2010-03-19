@@ -28,6 +28,7 @@ import android.preference.PreferenceScreen;
 import android.preference.CheckBoxPreference;
 import android.provider.Settings;
 import android.text.TextUtils;
+import android.util.Log;
 
 /*
  * Displays preferences for application developers.
@@ -65,6 +66,7 @@ public class DevelopmentSettings extends PreferenceActivity
 
         mEnableAdb.setChecked(Settings.Secure.getInt(getContentResolver(),
                 Settings.Secure.ADB_ENABLED, 0) != 0);
+
         mKeepScreenOn.setChecked(Settings.System.getInt(getContentResolver(),
                 Settings.System.STAY_ON_WHILE_PLUGGED_IN, 0) != 0);
         mAllowMockLocation.setChecked(Settings.Secure.getInt(getContentResolver(),
@@ -92,6 +94,7 @@ public class DevelopmentSettings extends PreferenceActivity
                 mOkDialog.setOnDismissListener(this);
             } else {
                 Settings.Secure.putInt(getContentResolver(), Settings.Secure.ADB_ENABLED, 0);
+                SystemProperties.set("persist.service.adb.enable", "0");
             }
         } else if (preference == mKeepScreenOn) {
             Settings.System.putInt(getContentResolver(), Settings.System.STAY_ON_WHILE_PLUGGED_IN, 
@@ -115,6 +118,7 @@ public class DevelopmentSettings extends PreferenceActivity
         if (which == DialogInterface.BUTTON_POSITIVE) {
             mOkClicked = true;
             Settings.Secure.putInt(getContentResolver(), Settings.Secure.ADB_ENABLED, 1);
+            SystemProperties.set("persist.service.adb.enable", "1");
         } else {
             // Reset the toggle
             mEnableAdb.setChecked(false);
