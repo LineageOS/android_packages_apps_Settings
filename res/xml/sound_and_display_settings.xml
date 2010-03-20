@@ -129,6 +129,15 @@
                 android:summary="@string/notification_screen_on_summary"
                 android:dependency="notification_pulse"
                 android:persistent="false" />
+
+        <ListPreference
+                android:key="breathing_light_color"
+                android:defaultValue="white"
+                android:title="@string/breathing_light_color_title"
+                android:summary="@string/breathing_light_color_summary"
+                android:entries="@array/led_color_entries"
+                android:entryValues="@array/led_color_values"
+                android:dialogTitle="@string/breathing_light_color_title" />
         
         <CheckBoxPreference
         		android:key="trackball_wake_screen"
