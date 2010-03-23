@@ -23,6 +23,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.IMountService;
@@ -62,6 +63,7 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
     private static final String KEY_TRACKBALL_SETTINGS = "trackball_settings";
     private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
     private static final String KEY_NOTIFICATION_SCREEN_ON = "notification_screen_on";
+    private static final String KEY_BREATHING_LIGHT_COLOR = "breathing_light_color";
     private static final String KEY_TRACKBALL_WAKE_SCREEN = "trackball_wake_screen";
     private static final String KEY_ACCELEROMETER_MODE = "accelerometer_mode";
     
@@ -86,6 +88,7 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
     private ListPreference mAccelerometerMode;
     private CheckBoxPreference mNotificationPulse;
     private CheckBoxPreference mNotificationScreenOn;
+    private ListPreference mBreathingLightColor;
     private CheckBoxPreference mTrackballWakeScreen;
     private float[] mAnimationScales;
 
@@ -164,6 +167,9 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
                 mTrackballSettings.findPreference(KEY_NOTIFICATION_PULSE);
         mNotificationScreenOn = (CheckBoxPreference)
                 mTrackballSettings.findPreference(KEY_NOTIFICATION_SCREEN_ON);
+        mBreathingLightColor = (ListPreference)
+                mTrackballSettings.findPreference(KEY_BREATHING_LIGHT_COLOR);
+        mBreathingLightColor.setOnPreferenceChangeListener(this);
         mTrackballWakeScreen = (CheckBoxPreference)
                 mTrackballSettings.findPreference(KEY_TRACKBALL_WAKE_SCREEN);
         if (mNotificationPulse != null &&
@@ -406,6 +412,15 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
                 Log.e(TAG, "could not persist accelerometer mode setting", e);
             }
             
+        } else if (KEY_BREATHING_LIGHT_COLOR.equals(key)) {
+            int value = Color.parseColor((String) objValue);
+            try {
+                Settings.System.putInt(getContentResolver(),
+                        Settings.System.BREATHING_LIGHT_COLOR, value);
+                Log.d(TAG, "BREATHING_LIGHT_COLOR set to " + value);
+            } catch (NumberFormatException e) {
+                Log.e(TAG, "could not persist breathing light color settings", e);
+            }
         }
         return true;
     }
