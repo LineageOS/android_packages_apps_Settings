@@ -26,6 +26,7 @@ import android.content.IntentFilter;
 import android.graphics.Color;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.os.IHardwareService;
 import android.os.IMountService;
 import android.os.RemoteException;
 import android.os.ServiceManager;
@@ -362,6 +363,9 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
     }
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
+        IHardwareService hardware = IHardwareService.Stub.asInterface(
+                ServiceManager.getService("hardware"));
+
         final String key = preference.getKey();
         if (KEY_ANIMATIONS.equals(key)) {
             try {
@@ -415,11 +419,14 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
         } else if (KEY_BREATHING_LIGHT_COLOR.equals(key)) {
             int value = Color.parseColor((String) objValue);
             try {
+                hardware.pulseBreathingLightColor(value);
                 Settings.System.putInt(getContentResolver(),
                         Settings.System.BREATHING_LIGHT_COLOR, value);
                 Log.d(TAG, "BREATHING_LIGHT_COLOR set to " + value);
-            } catch (NumberFormatException e) {
-                Log.e(TAG, "could not persist breathing light color settings", e);
+            } catch (NumberFormatException nfe) {
+                Log.e(TAG, "could not persist breathing light color settings", nfe);
+            } catch (RemoteException re) {
+                Log.e(TAG, "could not preview breathing light color", re);
             }
         }
         return true;
