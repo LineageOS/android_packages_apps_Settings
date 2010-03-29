@@ -23,6 +23,7 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -30,6 +31,7 @@ import android.content.IntentFilter;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.IPackageDataObserver;
 import android.content.pm.IPackageDeleteObserver;
+import android.content.pm.IPackageInstallObserver;
 import android.content.pm.IPackageStatsObserver;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -37,12 +39,16 @@ import android.content.pm.PackageStats;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.os.RemoteException;
+import android.os.SystemProperties;
 import android.text.format.Formatter;
 import android.util.Config;
 import android.util.Log;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import android.content.ComponentName;
@@ -66,6 +72,7 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
     private static final String TAG="InstalledAppDetails";
     private static final int _UNKNOWN_APP=R.string.unknown;
     private ApplicationInfo mAppInfo;
+    private Button mMoveButton;
     private Button mAppButton;
     private Button mActivitiesButton;
     private boolean localLOGV = false;
@@ -82,6 +89,7 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
     private Button mClearCacheButton;
     private ClearCacheObserver mClearCacheObserver;
     private Button mForceStopButton;
+    private ProgressDialog mPD;
     
     PackageStats mSizeInfo;
     private Button mManageSpaceButton;
@@ -93,6 +101,7 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
     private static final int CLEAR_USER_DATA = 1;
     private static final int GET_PKG_SIZE = 2;
     private static final int CLEAR_CACHE = 3;
+    private static final int REFRESH_INSTALL_LOCATION = 4;
     private static final String ATTR_PACKAGE_STATS="PackageStats";
     
     // invalid size value used initially and also when size retrieval through PackageManager
@@ -133,6 +142,9 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
                     // Refresh size info
                     mPm.getPackageSizeInfo(mAppInfo.packageName, mSizeObserver);
                     break;
+                case REFRESH_INSTALL_LOCATION:
+                	// Refresh info.
+                	refreshAppInfo();
                 default:
                     break;
             }
@@ -197,26 +209,19 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
             showDialogInner(DLG_APP_NOT_FOUND);
             return;
         }
-        String installLocationStr = "Unavailable";
-        installLocationStr = mAppInfo.sourceDir;
-        if (installLocationStr.startsWith("/data")) {
-        	installLocationStr = "Internal";
-        } else if (installLocationStr.startsWith("/system")) {
-        	installLocationStr = "System";
-        } else {
-        	installLocationStr = "SD Card";
-        }
+
         setContentView(R.layout.installed_app_details);
         //TODO download str and download url
         // Set default values on sizes
         mInstallLocation = (TextView)findViewById(R.id.install_location_text);
-        mInstallLocation.setText(installLocationStr);
         mTotalSize = (TextView)findViewById(R.id.total_size_text);
         mTotalSize.setText(totalSizeStr);
         mAppSize = (TextView)findViewById(R.id.application_size_text);
         mAppSize.setText(appSizeStr);
         mDataSize = (TextView)findViewById(R.id.data_size_text);
         mDataSize.setText(dataSizeStr);
+         // Get MoveButton
+         mMoveButton = ((Button)findViewById(R.id.move_button));
          // Get AppButton
          mAppButton = ((Button)findViewById(R.id.uninstall_button));
          // Get ManageSpaceButton
@@ -263,11 +268,42 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
          }
     }
     
+    private void refreshAppInfo() {
+    	PackageInfo pkgInfo;
+        // Get application info again to refresh changed properties of application
+        try {
+            mAppInfo = mPm.getApplicationInfo(mAppInfo.packageName, 
+                    PackageManager.GET_UNINSTALLED_PACKAGES);
+            pkgInfo = mPm.getPackageInfo(mAppInfo.packageName,
+                    PackageManager.GET_UNINSTALLED_PACKAGES);
+        } catch (NameNotFoundException e) {
+            Log.e(TAG, "Exception when retrieving package:" + mAppInfo.packageName, e);
+            showDialogInner(DLG_APP_NOT_FOUND);
+            return;
+        }
+    	refreshAppAttributes(pkgInfo);
+    }
+    
+    private void refreshAppInstallLocation() {
+    	// Determine install location.
+        CharSequence installLocationStr = "";
+        if (isPackageOnExt()) {
+        	installLocationStr = getText(R.string.sdcard_text);
+        } else if ((mAppInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
+        	installLocationStr = getText(R.string.system_text);
+        } else {
+        	installLocationStr = getText(R.string.internal_text);
+        }
+        mInstallLocation.setText(installLocationStr);
+    }
+    
     private void refreshAppAttributes(PackageInfo pkgInfo) {
         setAppLabelAndIcon();
         // Version number of application
         setAppVersion(pkgInfo);
         setAppBtnState();
+        setMoveBtn();
+        refreshAppInstallLocation();
         // Refresh size info
         if (mAppInfo != null && mAppInfo.packageName != null) {
             mPm.getPackageSizeInfo(mAppInfo.packageName, mSizeObserver);
@@ -298,6 +334,19 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
         }
     }
 
+    private void setMoveBtn() {
+    	mMoveButton.setText(R.string.move_text);
+    	mMoveButton.setOnClickListener(this);
+    	if ((mAppInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
+    		mMoveButton.setVisibility(View.INVISIBLE);
+    	}
+    	
+    	// Do not show the Move button if A2SD is unavailable.
+    	if (!SystemProperties.getBoolean("cm.a2sd.active", false)) {
+    		mMoveButton.setVisibility(View.INVISIBLE);
+        }
+    }
+    
     // Utility method to set button state
     private void setAppBtnState() {
         boolean visible = true;
@@ -330,19 +379,7 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
     @Override
     public void onStart() {
         super.onStart();
-        PackageInfo pkgInfo;
-        // Get application info again to refresh changed properties of application
-        try {
-            mAppInfo = mPm.getApplicationInfo(mAppInfo.packageName, 
-                    PackageManager.GET_UNINSTALLED_PACKAGES);
-            pkgInfo = mPm.getPackageInfo(mAppInfo.packageName,
-                    PackageManager.GET_UNINSTALLED_PACKAGES);
-        } catch (NameNotFoundException e) {
-            Log.e(TAG, "Exception when retrieving package:" + mAppInfo.packageName, e);
-            showDialogInner(DLG_APP_NOT_FOUND);
-            return;
-        }
-        refreshAppAttributes(pkgInfo);
+        refreshAppInfo();
     }
     
     private void setIntentAndFinish(boolean finish, boolean appChanged) {
@@ -512,6 +549,42 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
         }
         return null;
     }
+    
+    private boolean isPackageOnExt() {
+    	if (mAppInfo.sourceDir.startsWith(Environment.getSdExtDirectory().toString())) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+    }
+    
+    private void movePkg() {
+    	// Kick off a dialog.
+    	mPD = ProgressDialog.show(this, "Please Wait", "Moving Application", true);
+    	
+    	int flags = 0;
+    	boolean extInstall;
+    	PackageInstallObserver observer = new PackageInstallObserver();
+    	
+    	// Generate a URI for the package we are moving.
+    	Uri packageURI = Uri.fromFile(new File(mAppInfo.sourceDir));
+    	
+    	// Set install flags.
+    	flags |= PackageManager.INSTALL_REPLACE_EXISTING;
+
+    	// Should we install on ext, or internal?
+    	if (isPackageOnExt()) {
+    		extInstall = false;
+    	} else {
+    		extInstall = true;
+    	}
+    	
+    	// Set FORWARD_LOCK if app is in an app-private path.
+    	if (packageURI.toString().contains("app-private")) {
+    		flags |= PackageManager.INSTALL_FORWARD_LOCK;
+    	}
+    	mPm.installPackageExt(packageURI, observer, flags, null, extInstall);
+    }
 
     private void uninstallPkg(String packageName) {
          // Create new intent to launch Uninstaller activity
@@ -535,6 +608,8 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
             } else if (mAppButtonState == AppButtonStates.UNINSTALL) {
                 uninstallPkg(packageName);
             }
+        } else if (v == mMoveButton) {
+        	movePkg();
         } else if(v == mActivitiesButton) {
             mPm.clearPackagePreferredActivities(packageName);
             mActivitiesButton.setEnabled(false);
@@ -567,6 +642,15 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
         } else {
             //cancel do nothing just retain existing screen
         }
+    }
+    
+    class PackageInstallObserver extends IPackageInstallObserver.Stub {
+		public void packageInstalled(String packageName, int returnCode)
+				throws RemoteException {
+			Message msg = mHandler.obtainMessage(REFRESH_INSTALL_LOCATION);
+			mHandler.sendMessage(msg);
+			mPD.dismiss();
+		}
     }
 }
 
