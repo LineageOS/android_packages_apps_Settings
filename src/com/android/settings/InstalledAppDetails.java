@@ -43,6 +43,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.os.RemoteException;
+import android.os.SystemProperties;
 import android.text.format.Formatter;
 import android.util.Config;
 import android.util.Log;
@@ -339,6 +340,11 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
     	if ((mAppInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
     		mMoveButton.setVisibility(View.INVISIBLE);
     	}
+    	
+    	// Do not show the Move button if A2SD is unavailable.
+    	if (!SystemProperties.getBoolean("cm.a2sd.active", false)) {
+    		mMoveButton.setVisibility(View.INVISIBLE);
+        }
     }
     
     // Utility method to set button state
