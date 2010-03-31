@@ -560,7 +560,7 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
     
     private void movePkg() {
     	// Kick off a dialog.
-    	mPD = ProgressDialog.show(this, "Please Wait", "Moving Application", true);
+    	mPD = ProgressDialog.show(this, getString(R.string.please_wait), getString(R.string.moving_app), true);
     	
     	int flags = 0;
     	boolean extInstall;
