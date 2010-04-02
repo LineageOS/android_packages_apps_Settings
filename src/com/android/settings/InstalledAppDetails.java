@@ -551,7 +551,7 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
     }
     
     private boolean isPackageOnExt() {
-    	if (mAppInfo.sourceDir.startsWith(Environment.getSdExtDirectory().toString())) {
+    	if (mAppInfo.sourceDir != null && mAppInfo.sourceDir.startsWith(Environment.getSdExtDirectory().toString())) {
     		return true;
     	} else {
     		return false;
