@@ -43,6 +43,7 @@ public class WirelessSettings extends PreferenceActivity {
     private static final String KEY_BT_SETTINGS = "bt_settings";
     private static final String KEY_VPN_SETTINGS = "vpn_settings";
     private static final String KEY_TOGGLE_TETHERING = "toggle_tethering";
+    private static final String KEY_PROXY_SETTING = "proxy_setting";
     public static final String EXIT_ECM_RESULT = "exit_ecm_result";
     public static final int REQUEST_CODE_EXIT_ECM = 1;
 
@@ -112,7 +113,8 @@ public class WirelessSettings extends PreferenceActivity {
         Preference btPreference = findPreference(KEY_TOGGLE_BLUETOOTH);
         Preference wifiSettings = findPreference(KEY_WIFI_SETTINGS);
         Preference vpnSettings = findPreference(KEY_VPN_SETTINGS);
-
+        Preference proxySetting = findPreference(KEY_PROXY_SETTING);
+        
         IBinder b = ServiceManager.getService(BluetoothAdapter.BLUETOOTH_SERVICE);
         if (b == null) {
             // Disable BT Settings if BT service is not available.
@@ -134,6 +136,7 @@ public class WirelessSettings extends PreferenceActivity {
             wifiPreference.setDependency(airplanePreference.getKey());
             wifiSettings.setDependency(airplanePreference.getKey());
             vpnSettings.setDependency(airplanePreference.getKey());
+            proxySetting.setDependency(airplanePreference.getKey());
         }
         
         mTetheringEnabler = new TetheringEnabler(
