@@ -35,6 +35,7 @@ public class WirelessSettings extends PreferenceActivity {
     
     private static final String KEY_WIFI_SETTINGS = "wifi_settings";
     private static final String KEY_VPN_SETTINGS = "vpn_settings";
+    private static final String KEY_PROXY_SETTING = "proxy_setting";
 
     private WifiEnabler mWifiEnabler;
     private AirplaneModeEnabler mAirplaneModeEnabler;
@@ -78,7 +79,8 @@ public class WirelessSettings extends PreferenceActivity {
         Preference wifiSettings = findPreference(KEY_WIFI_SETTINGS);
         Preference vpnSettings = findPreference(KEY_VPN_SETTINGS);
         Preference tetheringPreference = findPreference(KEY_TOGGLE_TETHERING);
-
+        Preference proxySetting = findPreference(KEY_PROXY_SETTING);
+        
         mWifiEnabler = new WifiEnabler(
                 this, (WifiManager) getSystemService(WIFI_SERVICE),
                 (CheckBoxPreference) wifiPreference);
@@ -99,7 +101,7 @@ public class WirelessSettings extends PreferenceActivity {
             wifiSettings.setDependency(airplanePreference.getKey());
             vpnSettings.setDependency(airplanePreference.getKey());
             tetheringPreference.setDependency(airplanePreference.getKey());
+            proxySetting.setDependency(airplanePreference.getKey());
         }
     }
-
 }
