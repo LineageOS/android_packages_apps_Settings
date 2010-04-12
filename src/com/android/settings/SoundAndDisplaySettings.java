@@ -223,19 +223,6 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
         mAccelerometerMode.setSummary(getResources().getTextArray(R.array.accelerometer_mode_summaries)[index]);
     }
     
-    private void updateAnimationsSummary(Object value) {
-        CharSequence[] summaries = getResources().getTextArray(R.array.animations_summaries);
-        CharSequence[] values = mAnimations.getEntryValues();
-        for (int i=0; i<values.length; i++) {
-            //Log.i("foo", "Comparing entry "+ values[i] + " to current "
-            //        + mAnimations.getValue());
-            if (values[i].equals(value)) {
-                mAnimations.setSummary(summaries[i]);
-                break;
-            }
-        }
-    }
-
     private void setRingerMode(boolean silent, boolean vibrate) {
         if (silent) {
             mAudioManager.setRingerMode(vibrate ? AudioManager.RINGER_MODE_VIBRATE :
@@ -307,7 +294,7 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
             } catch (NumberFormatException e) {
                 Log.e(TAG, "could not persist emergency tone setting", e);
             }
-        } else if (KEY_ACCELEROMETER_MODE.equals(key)) {
+        } else if (KEY_ACCELEROMETER_MODE.equals(preference.getKey())) {
             int value = Integer.parseInt((String) objValue);
             try {
                 int enabled = value == 0 ? 0 : 1;
