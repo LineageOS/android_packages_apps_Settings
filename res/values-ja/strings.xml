@@ -479,6 +479,9 @@
     <string name="baseband_version" msgid="1848990160763524801">"ベースバンドバージョン"</string>
     <string name="kernel_version" msgid="9192574954196167602">"カーネルバージョン"</string>
     <string name="build_number" msgid="3075795840572241758">"ビルド番号"</string>
+    <string name="mod_version">"Mod バージョン"</string>
+    <string name="mod_version_default">"不明"</string>
+
     <string name="device_info_not_available" msgid="8062521887156825182">"該当なし"</string>
     <string name="device_status_activity_title" msgid="1411201799384697904">"端末の状態"</string>
     <string name="device_status" msgid="607405385799807324">"端末の状態"</string>
@@ -503,6 +506,7 @@
     <string name="status_awake_time" msgid="2393949909051183652">"端末使用時間"</string>
     <string name="internal_memory" msgid="1130932766236387454">"端末内部メモリ"</string>
     <string name="sd_memory" msgid="151871913888051515">"SDカード"</string>
+    <string name="sd_extra_memory">"SD カード(セカンダリ)"</string>
     <string name="memory_available" msgid="418542433817289474">"空き容量"</string>
     <string name="memory_size" msgid="6629067715017232195">"合計容量"</string>
     <string name="sd_eject" msgid="6915293408836853020">"SDカードのマウント解除"</string>
@@ -646,6 +650,9 @@
     <string name="cache_size_label" msgid="7505481393108282913">"キャッシュ"</string>
     <string name="controls_label" msgid="7611113077086853799">"コントロール"</string>
     <string name="force_stop" msgid="7435006169872876756">"強制停止"</string>
+    <!-- Manage applications, individual application info screen, label under Storage heading.  The current location of the APK. -->
+    <string name="install_location_label">インストールの場所</string>
+
     <string name="total_size_label" msgid="1048676419552557254">"合計"</string>
     <string name="application_size_label" msgid="5055196275624686382">"アプリケーション"</string>
     <string name="data_size_label" msgid="8679376373625710107">"データ"</string>
@@ -1020,13 +1027,19 @@
 
     <!-- Sound settings screen, notification light while screen on title -->
     <string name="notification_screen_on_title">"スクリーンオンで点滅"</string>
+    <string name="notification_screen_on_summary">"スクリーンオンの間トラックボールを点滅させる"</string>
 
     <!-- Sound settings screen, breathing light color title -->
     <string name="breathing_light_color_title">"点滅時の色"</string>
+    <string name="breathing_light_color_summary">"点滅時の色設定"</string>
 
     <!-- Sound & display settings screen, setting option for trackwall wake -->
     <string name="trackball_wake_screen_title">"トラックボールで復帰"</string>
     <string name="trackball_wake_screen_summary">"トラックボールをクリックすると端末がスリープ状態から復帰する"</string>
+
+    <!-- Sound & display settings screen, setting option for trackwall unlock -->
+    <string name="trackball_unlock_screen_title">"トラックボールでロック解除"</string>
+    <string name="trackball_unlock_screen_summary">"トラックボールをクリックすると端末のロックスクリーンを解除する"</string>
 
     <!-- Apps2SD -->
     <!-- Text for the "Move" button. -->
@@ -1052,7 +1065,7 @@
     <string name="adb_notify_summary">"USBデバッグが接続されると通知を表示する"</string>
 
     <!-- Proxy settings -->
-    <string name="proxy_setting">プロキシ設定</string>
-    <string name="proxy_setting_summary">インターネットアクセスのためのプロキシ設定</string>
+    <string name="proxy_setting">"プロキシ設定"</string>
+    <string name="proxy_setting_summary">"インターネットアクセスのためのプロキシ設定"</string>
 
 </resources>
