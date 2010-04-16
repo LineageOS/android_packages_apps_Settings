@@ -124,11 +124,19 @@
                 android:persistent="false" />
 
         <CheckBoxPreference
+                android:key="notification_pulse_blend"
+                android:title="@string/notification_pulse_blend_title"
+                android:summary="@string/notification_pulse_blend_summary"
+                android:dependency="notification_pulse"
+                android:persistent="false" />
+
+        <CheckBoxPreference
                 android:key="notification_screen_on"
                 android:title="@string/notification_screen_on_title"
                 android:summary="@string/notification_screen_on_summary"
                 android:dependency="notification_pulse"
-                android:persistent="false" />
+                android:persistent="false"
+                android:defaultValue="false" />
 
         <ListPreference
                 android:key="breathing_light_color"

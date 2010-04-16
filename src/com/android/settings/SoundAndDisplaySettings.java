@@ -63,6 +63,7 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
     private static final String KEY_SOUND_DISPLAY_SETTINGS = "sound_display_settings";
     private static final String KEY_TRACKBALL_SETTINGS = "trackball_settings";
     private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
+    private static final String KEY_NOTIFICATION_PULSE_BLEND = "notification_pulse_blend";
     private static final String KEY_NOTIFICATION_SCREEN_ON = "notification_screen_on";
     private static final String KEY_BREATHING_LIGHT_COLOR = "breathing_light_color";
     private static final String KEY_TRACKBALL_WAKE_SCREEN = "trackball_wake_screen";
@@ -89,6 +90,7 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
     private ListPreference mAnimations;
     private ListPreference mAccelerometerMode;
     private CheckBoxPreference mNotificationPulse;
+    private CheckBoxPreference mNotificationPulseBlend;
     private CheckBoxPreference mNotificationScreenOn;
     private ListPreference mBreathingLightColor;
     private CheckBoxPreference mTrackballWakeScreen;
@@ -169,6 +171,8 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
         mTrackballSettings = (PreferenceGroup) mSoundDisplaySettings.findPreference(KEY_TRACKBALL_SETTINGS);
         mNotificationPulse = (CheckBoxPreference)
                 mTrackballSettings.findPreference(KEY_NOTIFICATION_PULSE);
+        mNotificationPulseBlend = (CheckBoxPreference)
+                mTrackballSettings.findPreference(KEY_NOTIFICATION_PULSE_BLEND);
         mNotificationScreenOn = (CheckBoxPreference)
                 mTrackballSettings.findPreference(KEY_NOTIFICATION_SCREEN_ON);
         mBreathingLightColor = (ListPreference)
@@ -189,6 +193,13 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
                 mNotificationPulse.setOnPreferenceChangeListener(this);
             } catch (SettingNotFoundException snfe) {
                 Log.e(TAG, Settings.System.NOTIFICATION_LIGHT_PULSE + " not found");
+            }
+            try {
+                mNotificationPulseBlend.setChecked(Settings.System.getInt(resolver,
+                        Settings.System.NOTIFICATION_PULSE_BLEND) == 1);
+                mNotificationPulseBlend.setOnPreferenceChangeListener(this);
+            } catch (SettingNotFoundException snfe) {
+                Log.e(TAG, Settings.System.NOTIFICATION_PULSE_BLEND + " not found");
             }
             try {
                 mNotificationScreenOn.setChecked(Settings.System.getInt(resolver,
@@ -362,6 +373,10 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
             value = mNotificationPulse.isChecked();
             Settings.System.putInt(getContentResolver(),
                     Settings.System.NOTIFICATION_LIGHT_PULSE, value ? 1 : 0);
+        } else if (preference == mNotificationPulseBlend) {
+            value = mNotificationPulseBlend.isChecked();
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.NOTIFICATION_PULSE_BLEND, value ? 1 : 0);
         } else if (preference == mNotificationScreenOn) {
             value = mNotificationScreenOn.isChecked();
             Settings.System.putInt(getContentResolver(),
