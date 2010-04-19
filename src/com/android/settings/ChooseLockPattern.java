@@ -19,10 +19,9 @@ package com.android.settings;
 import com.google.android.collect.Lists;
 
 import com.android.internal.widget.LinearLayoutWithDefaultTouchRecepient;
+import com.android.internal.widget.LockPatternFactory;
 import com.android.internal.widget.LockPatternUtils;
-import com.android.internal.widget.LockPatternView;
-import com.android.internal.widget.LockPatternView.Cell;
-import static com.android.internal.widget.LockPatternView.DisplayMode;
+import com.android.internal.widget.LockPattern;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -30,6 +29,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -56,36 +56,32 @@ public class ChooseLockPattern extends Activity implements View.OnClickListener{
      * result.
      */
     static final int RESULT_FINISHED = RESULT_FIRST_USER;
-    
+
     // how long after a confirmation message is shown before moving on
     static final int INFORMATION_MSG_TIMEOUT_MS = 3000;
 
-    // how long we wait to clear a wrong pattern
-    private static final int WRONG_PATTERN_CLEAR_TIMEOUT_MS = 2000;
-
     private static final int ID_EMPTY_MESSAGE = -1;
 
-
     protected TextView mHeaderText;
-    protected LockPatternView mLockPatternView;
+    protected LockPattern mLockPattern;
     protected TextView mFooterText;
     private TextView mFooterLeftButton;
     private TextView mFooterRightButton;
 
-    protected List<LockPatternView.Cell> mChosenPattern = null;
+    protected List<LockPattern.Cell> mChosenPattern = null;
 
     protected LockPatternUtils mLockPatternUtils;
 
     /**
      * The patten used during the help screen to show how to draw a pattern.
      */
-    private final List<LockPatternView.Cell> mAnimatePattern =
+    private final List<LockPattern.Cell> mAnimatePattern =
             Collections.unmodifiableList(
                 Lists.newArrayList(
-                        LockPatternView.Cell.of(0, 0),
-                        LockPatternView.Cell.of(0, 1),
-                        LockPatternView.Cell.of(1, 1),
-                        LockPatternView.Cell.of(2, 1)
+                        LockPattern.Cell.of(0, 0),
+                        LockPattern.Cell.of(0, 1),
+                        LockPattern.Cell.of(1, 1),
+                        LockPattern.Cell.of(2, 1)
                     ));
 
 
@@ -93,18 +89,20 @@ public class ChooseLockPattern extends Activity implements View.OnClickListener{
      * The pattern listener that responds according to a user choosing a new
      * lock pattern.
      */
-    protected LockPatternView.OnPatternListener mChooseNewLockPatternListener = new LockPatternView.OnPatternListener() {
-
+    protected LockPattern.EventListener mChooseNewLockPatternListener = new LockPattern.EventListener() {
             public void onPatternStart() {
-                mLockPatternView.removeCallbacks(mClearPatternRunnable);
+                mLockPattern.getView().removeCallbacks(mClearPatternRunnable);
                 patternInProgress();
             }
 
             public void onPatternCleared() {
-                mLockPatternView.removeCallbacks(mClearPatternRunnable);
+                mLockPattern.getView().removeCallbacks(mClearPatternRunnable);
             }
 
-            public void onPatternDetected(List<LockPatternView.Cell> pattern) {
+            public void onUserInteraction() {
+            }
+
+            public void onPatternDetected(List<LockPattern.Cell> pattern) {
                 if (mUiStage == Stage.NeedToConfirm || mUiStage == Stage.ConfirmWrong) {
                     if (mChosenPattern == null) throw new IllegalStateException("null chosen pattern in stage 'need to confirm");
                     if (mChosenPattern.equals(pattern)) {
@@ -116,17 +114,13 @@ public class ChooseLockPattern extends Activity implements View.OnClickListener{
                     if (pattern.size() < LockPatternUtils.MIN_LOCK_PATTERN_SIZE) {
                         updateStage(Stage.ChoiceTooShort);
                     } else {
-                        mChosenPattern = new ArrayList<LockPatternView.Cell>(pattern);
+                        mChosenPattern = new ArrayList<LockPattern.Cell>(pattern);
                         updateStage(Stage.FirstChoiceValid);
                     }
                 } else {
                     throw new IllegalStateException("Unexpected stage " + mUiStage + " when "
                             + "entering the pattern.");
                 }
-            }
-
-            public void onPatternCellAdded(List<Cell> pattern) { 
-
             }
 
             private void patternInProgress() {
@@ -246,7 +240,8 @@ public class ChooseLockPattern extends Activity implements View.OnClickListener{
 
     private Runnable mClearPatternRunnable = new Runnable() {
         public void run() {
-            mLockPatternView.clearPattern();
+            mLockPattern.clearPattern();
+            mLockPattern.setState(LockPattern.State.Record);
         }
     };
 
@@ -262,20 +257,20 @@ public class ChooseLockPattern extends Activity implements View.OnClickListener{
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         setupViews();
-        
+
         // make it so unhandled touch events within the unlock screen go to the
         // lock pattern view.
         final LinearLayoutWithDefaultTouchRecepient topLayout
                 = (LinearLayoutWithDefaultTouchRecepient) findViewById(
                 R.id.topLayout);
-        topLayout.setDefaultTouchRecepient(mLockPatternView);
+        topLayout.setDefaultTouchRecepient(mLockPattern.getView());
 
         if (savedInstanceState == null) {
             // first launch
             updateStage(Stage.Introduction);
             if (mLockPatternUtils.savedPatternExists()) {
                 confirmPattern();
-            } 
+            }
         } else {
             // restore from previous state
             final String patternString = savedInstanceState.getString(KEY_PATTERN_CHOICE);
@@ -285,19 +280,21 @@ public class ChooseLockPattern extends Activity implements View.OnClickListener{
             updateStage(Stage.values()[savedInstanceState.getInt(KEY_UI_STAGE)]);
         }
     }
-    
+
     /**
      * Keep all "find view" related stuff confined to this function since in
      * case someone needs to subclass and customize.
      */
     protected void setupViews() {
         setContentView(R.layout.choose_lock_pattern);
-        
+
         mHeaderText = (TextView) findViewById(R.id.headerText);
 
-        mLockPatternView = (LockPatternView) findViewById(R.id.lockPattern);
-        mLockPatternView.setOnPatternListener(mChooseNewLockPatternListener);
-        mLockPatternView.setTactileFeedbackEnabled(mLockPatternUtils.isTactileFeedbackEnabled());        
+        mLockPattern = LockPatternFactory.inject(
+            (FrameLayout) findViewById(R.id.lockPattern));
+
+        mLockPattern.setEventListener(mChooseNewLockPatternListener);
+        mLockPattern.setTactileFeedbackEnabled(mLockPatternUtils.isTactileFeedbackEnabled());
 
         mFooterText = (TextView) findViewById(R.id.footerText);
 
@@ -312,7 +309,7 @@ public class ChooseLockPattern extends Activity implements View.OnClickListener{
         if (v == mFooterLeftButton) {
             if (mUiStage.leftMode == LeftButtonMode.Retry) {
                 mChosenPattern = null;
-                mLockPatternView.clearPattern();
+                mLockPattern.clearPattern();
                 updateStage(Stage.Introduction);
             } else if (mUiStage.leftMode == LeftButtonMode.Cancel) {
                 // They are canceling the entire wizard
@@ -341,8 +338,6 @@ public class ChooseLockPattern extends Activity implements View.OnClickListener{
                     throw new IllegalStateException("Help screen is only mode with ok button, but " +
                             "stage is " + mUiStage);
                 }
-                mLockPatternView.clearPattern();
-                mLockPatternView.setDisplayMode(DisplayMode.Correct);
                 updateStage(Stage.Introduction);
             }
         }
@@ -411,10 +406,9 @@ public class ChooseLockPattern extends Activity implements View.OnClickListener{
      * @param stage
      */
     protected void updateStage(Stage stage) {
-
         mUiStage = stage;
 
-        // header text, footer text, visibility and 
+        // header text, footer text, visibility and
         // enabled state all known from the stage
         if (stage == Stage.ChoiceTooShort) {
             mHeaderText.setText(
@@ -443,36 +437,36 @@ public class ChooseLockPattern extends Activity implements View.OnClickListener{
 
         // same for whether the patten is enabled
         if (stage.patternEnabled) {
-            mLockPatternView.enableInput();
+            mLockPattern.enableInput();
         } else {
-            mLockPatternView.disableInput();
+            mLockPattern.disableInput();
         }
-
-        // the rest of the stuff varies enough that it is easier just to handle
-        // on a case by case basis.
-        mLockPatternView.setDisplayMode(DisplayMode.Correct);
 
         switch (mUiStage) {
             case Introduction:
-                mLockPatternView.clearPattern();
+                mLockPattern.clearPattern();
+                mLockPattern.setState(LockPattern.State.Record);
                 break;
             case HelpScreen:
-                mLockPatternView.setPattern(DisplayMode.Animate, mAnimatePattern);
+                mLockPattern.setPattern(LockPattern.State.Replay, mAnimatePattern);
                 break;
             case ChoiceTooShort:
-                mLockPatternView.setDisplayMode(DisplayMode.Wrong);
-                postClearPatternRunnable();
+                mLockPattern.setState(LockPattern.State.Incorrect);
+                postClearPatternRunnable(mLockPattern.getIncorrectDelay());
                 break;
             case FirstChoiceValid:
+                mLockPattern.setPattern(LockPattern.State.Replay, mChosenPattern);
                 break;
             case NeedToConfirm:
-                mLockPatternView.clearPattern();
+                mLockPattern.clearPattern();
+                mLockPattern.setState(LockPattern.State.Record);
                 break;
             case ConfirmWrong:
-                mLockPatternView.setDisplayMode(DisplayMode.Wrong);
-                postClearPatternRunnable();
+                mLockPattern.setState(LockPattern.State.Incorrect);
+                postClearPatternRunnable(mLockPattern.getIncorrectDelay());
                 break;
             case ChoiceConfirmed:
+                mLockPattern.setPattern(LockPattern.State.Replay, mChosenPattern);
                 break;
         }
     }
@@ -480,9 +474,9 @@ public class ChooseLockPattern extends Activity implements View.OnClickListener{
 
     // clear the wrong pattern unless they have started a new one
     // already
-    private void postClearPatternRunnable() {
-        mLockPatternView.removeCallbacks(mClearPatternRunnable);
-        mLockPatternView.postDelayed(mClearPatternRunnable, WRONG_PATTERN_CLEAR_TIMEOUT_MS);
+    private void postClearPatternRunnable(int delay) {
+        mLockPattern.getView().removeCallbacks(mClearPatternRunnable);
+        mLockPattern.getView().postDelayed(mClearPatternRunnable, delay);
     }
 
     private void saveChosenPatternAndFinish() {
@@ -495,7 +489,7 @@ public class ChooseLockPattern extends Activity implements View.OnClickListener{
             mLockPatternUtils.setVisiblePatternEnabled(true);
             mLockPatternUtils.setTactileFeedbackEnabled(false);
         }
-        
+
         setResult(RESULT_FINISHED);
         finish();
     }

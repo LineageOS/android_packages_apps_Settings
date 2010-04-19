@@ -17,9 +17,10 @@
 package com.android.settings;
 
 import com.android.internal.widget.LockPatternUtils;
-import com.android.internal.widget.LockPatternView;
+import com.android.internal.widget.LockPattern;
+import com.android.internal.widget.LockPatternFactory;
+
 import com.android.internal.widget.LinearLayoutWithDefaultTouchRecepient;
-import com.android.internal.widget.LockPatternView.Cell;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -27,6 +28,7 @@ import android.os.CountDownTimer;
 import android.os.SystemClock;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.FrameLayout;
 import android.view.Window;
 
 import java.util.List;
@@ -50,12 +52,9 @@ public class ConfirmLockPattern extends Activity {
     public static final String HEADER_WRONG_TEXT = "com.android.settings.ConfirmLockPattern.header_wrong";
     public static final String FOOTER_WRONG_TEXT = "com.android.settings.ConfirmLockPattern.footer_wrong";
 
-    // how long we wait to clear a wrong pattern
-    private static final int WRONG_PATTERN_CLEAR_TIMEOUT_MS = 2000;
-
     private static final String KEY_NUM_WRONG_ATTEMPTS = "num_wrong_attempts";
 
-    private LockPatternView mLockPatternView;
+    private LockPattern mLockPattern;
     private LockPatternUtils mLockPatternUtils;
     private int mNumWrongConfirmAttempts;
     private CountDownTimer mCountdownTimer;
@@ -86,7 +85,10 @@ public class ConfirmLockPattern extends Activity {
         setContentView(R.layout.confirm_lock_pattern);
 
         mHeaderTextView = (TextView) findViewById(R.id.headerText);
-        mLockPatternView = (LockPatternView) findViewById(R.id.lockPattern);
+
+        mLockPattern = LockPatternFactory.inject(
+            (FrameLayout) findViewById(R.id.lockPattern));
+
         mFooterTextView = (TextView) findViewById(R.id.footerText);
 
         // make it so unhandled touch events within the unlock screen go to the
@@ -94,7 +96,7 @@ public class ConfirmLockPattern extends Activity {
         final LinearLayoutWithDefaultTouchRecepient topLayout
                 = (LinearLayoutWithDefaultTouchRecepient) findViewById(
                 R.id.topLayout);
-        topLayout.setDefaultTouchRecepient(mLockPatternView);        
+        topLayout.setDefaultTouchRecepient(mLockPattern.getView());
 
         Intent intent = getIntent();
         if (intent != null) {
@@ -104,8 +106,8 @@ public class ConfirmLockPattern extends Activity {
             mFooterWrongText = intent.getCharSequenceExtra(FOOTER_WRONG_TEXT);
         }
 
-        mLockPatternView.setTactileFeedbackEnabled(mLockPatternUtils.isTactileFeedbackEnabled());
-        mLockPatternView.setOnPatternListener(mConfirmExistingLockPatternListener);
+        mLockPattern.setTactileFeedbackEnabled(mLockPatternUtils.isTactileFeedbackEnabled());
+        mLockPattern.setEventListener(mConfirmExistingLockPatternListener);
         updateStage(Stage.NeedToUnlock);
 
         if (savedInstanceState != null) {
@@ -161,10 +163,12 @@ public class ConfirmLockPattern extends Activity {
                 } else {
                     mFooterTextView.setText(R.string.lockpattern_need_to_unlock_footer);
                 }
-                
-                mLockPatternView.setEnabled(true);
-                mLockPatternView.enableInput();
+
+                mLockPattern.setState(LockPattern.State.Record);
+                mLockPattern.getView().setEnabled(true);
+                mLockPattern.enableInput();
                 break;
+
             case NeedToUnlockWrong:
                 if (mHeaderWrongText != null) {
                     mHeaderTextView.setText(mHeaderWrongText);
@@ -176,55 +180,62 @@ public class ConfirmLockPattern extends Activity {
                 } else {
                     mFooterTextView.setText(R.string.lockpattern_need_to_unlock_wrong_footer);
                 }
-                
-                mLockPatternView.setDisplayMode(LockPatternView.DisplayMode.Wrong);
-                mLockPatternView.setEnabled(true);
-                mLockPatternView.enableInput();
+
+                mLockPattern.setState(LockPattern.State.Incorrect);
+
+                mLockPattern.getView().postDelayed(
+                    mPatternWrongRunnable,
+                    mLockPattern.getIncorrectDelay());
+
                 break;
+
             case LockedOut:
-                mLockPatternView.clearPattern();
-                // enabled = false means: disable input, and have the
-                // appearance of being disabled.
-                mLockPatternView.setEnabled(false); // appearance of being disabled
+                mLockPattern.clearPattern();
+                mLockPattern.getView().setEnabled(false); // appearance of being disabled
                 break;
         }
     }
 
-    private Runnable mClearPatternRunnable = new Runnable() {
+    private Runnable mPatternCorrectRunnable = new Runnable() {
         public void run() {
-            mLockPatternView.clearPattern();
+            setResult(RESULT_OK);
+            finish();
         }
     };
 
-    // clear the wrong pattern unless they have started a new one
-    // already
-    private void postClearPatternRunnable() {
-        mLockPatternView.removeCallbacks(mClearPatternRunnable);
-        mLockPatternView.postDelayed(mClearPatternRunnable, WRONG_PATTERN_CLEAR_TIMEOUT_MS);
-    }
+    private Runnable mPatternWrongRunnable = new Runnable() {
+        public void run() {
+            mLockPattern.setState(LockPattern.State.Record);
+            mLockPattern.getView().setEnabled(true);
+            mLockPattern.enableInput();
+        }
+    };
 
     /**
      * The pattern listener that responds according to a user confirming
      * an existing lock pattern.
      */
-    private LockPatternView.OnPatternListener mConfirmExistingLockPatternListener = new LockPatternView.OnPatternListener()  {
-
+    private LockPattern.EventListener mConfirmExistingLockPatternListener = new LockPattern.EventListener()  {
         public void onPatternStart() {
-            mLockPatternView.removeCallbacks(mClearPatternRunnable);
+            mLockPattern.getView().removeCallbacks(mPatternCorrectRunnable);
+            mLockPattern.getView().removeCallbacks(mPatternWrongRunnable);
         }
 
         public void onPatternCleared() {
-            mLockPatternView.removeCallbacks(mClearPatternRunnable);
+            mLockPattern.getView().removeCallbacks(mPatternCorrectRunnable);
+            mLockPattern.getView().removeCallbacks(mPatternWrongRunnable);
         }
 
-        public void onPatternCellAdded(List<Cell> pattern) {
-
+        public void onUserInteraction() {
         }
 
-        public void onPatternDetected(List<LockPatternView.Cell> pattern) {
+        public void onPatternDetected(List<LockPattern.Cell> pattern) {
             if (mLockPatternUtils.checkPattern(pattern)) {
-                setResult(RESULT_OK);
-                finish();
+                mLockPattern.setState(LockPattern.State.Correct);
+
+                mLockPattern.getView().postDelayed(
+                    mPatternCorrectRunnable,
+                    mLockPattern.getCorrectDelay());
             } else {
                 if (pattern.size() >= LockPatternUtils.MIN_PATTERN_REGISTER_FAIL &&
                         ++mNumWrongConfirmAttempts >= LockPatternUtils.FAILED_ATTEMPTS_BEFORE_TIMEOUT) {
@@ -232,7 +243,6 @@ public class ConfirmLockPattern extends Activity {
                     handleAttemptLockout(deadline);
                 } else {
                     updateStage(Stage.NeedToUnlockWrong);
-                    postClearPatternRunnable();
                 }
             }
         }
