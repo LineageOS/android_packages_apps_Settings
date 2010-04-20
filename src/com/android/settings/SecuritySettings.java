@@ -66,6 +66,8 @@ public class SecuritySettings extends PreferenceActivity {
     private static final String KEY_LOCK_ENABLED = "lockenabled";
     private static final String KEY_VISIBLE_PATTERN = "visiblepattern";
     private static final String KEY_TACTILE_FEEDBACK_ENABLED = "tactilefeedback";
+    private static final String KEY_PIN_BASED_LOCKING_ENABLED = "pinbasedlocking";
+
     private static final int CONFIRM_PATTERN_THEN_DISABLE_AND_CLEAR_REQUEST_CODE = 55;
 
     private static final String PREFS_NAME = "location_prefs";
@@ -75,6 +77,7 @@ public class SecuritySettings extends PreferenceActivity {
     private CheckBoxPreference mLockEnabled;
     private CheckBoxPreference mVisiblePattern;
     private CheckBoxPreference mTactileFeedback;
+    private CheckBoxPreference mPinBasedLocking;
     private Preference mChoosePattern;
 
     private CheckBoxPreference mShowPassword;
@@ -171,6 +174,12 @@ public class SecuritySettings extends PreferenceActivity {
         mTactileFeedback.setTitle(R.string.lockpattern_settings_enable_tactile_feedback_title);
         inlinePrefCat.addPreference(mTactileFeedback);
 
+        // pin-based locking
+        mPinBasedLocking = new CheckBoxPreference(this);
+        mPinBasedLocking.setKey(KEY_PIN_BASED_LOCKING_ENABLED);
+        mPinBasedLocking.setTitle(R.string.lockpattern_settings_enable_pin_based_locking);
+        inlinePrefCat.addPreference(mPinBasedLocking);
+
         int activePhoneType = TelephonyManager.getDefault().getPhoneType();
 
         // do not display SIM lock for CDMA phone
@@ -219,10 +228,12 @@ public class SecuritySettings extends PreferenceActivity {
         mLockEnabled.setEnabled(patternExists);
         mVisiblePattern.setEnabled(patternExists);
         mTactileFeedback.setEnabled(patternExists);
+        mPinBasedLocking.setEnabled(!patternExists);
 
         mLockEnabled.setChecked(mLockPatternUtils.isLockPatternEnabled());
         mVisiblePattern.setChecked(mLockPatternUtils.isVisiblePatternEnabled());
         mTactileFeedback.setChecked(mLockPatternUtils.isTactileFeedbackEnabled());
+        mPinBasedLocking.setChecked(mLockPatternUtils.isPinLockingEnabled());
 
         int chooseStringRes = mLockPatternUtils.savedPatternExists() ?
                 R.string.lockpattern_settings_change_lock_pattern :
@@ -246,7 +257,9 @@ public class SecuritySettings extends PreferenceActivity {
             mLockPatternUtils.setVisiblePatternEnabled(isToggled(preference));
         } else if (KEY_TACTILE_FEEDBACK_ENABLED.equals(key)) {
             mLockPatternUtils.setTactileFeedbackEnabled(isToggled(preference));
-        } else if (preference == mShowPassword) {
+        } else if (KEY_PIN_BASED_LOCKING_ENABLED.equals(key)) {
+            mLockPatternUtils.setPinLockingEnabled(isToggled(preference)); 
+        }else if (preference == mShowPassword) {
             Settings.System.putInt(getContentResolver(), Settings.System.TEXT_SHOW_PASSWORD,
                     mShowPassword.isChecked() ? 1 : 0);
         } else if (preference == mNetwork) {
