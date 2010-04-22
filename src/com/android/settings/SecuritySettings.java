@@ -16,7 +16,6 @@
 
 package com.android.settings;
 
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -32,6 +31,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
@@ -67,6 +67,7 @@ public class SecuritySettings extends PreferenceActivity {
     private static final String KEY_VISIBLE_PATTERN = "visiblepattern";
     private static final String KEY_TACTILE_FEEDBACK_ENABLED = "tactilefeedback";
     private static final String KEY_PIN_BASED_LOCKING_ENABLED = "pinbasedlocking";
+    private static final String KEY_PIN_CHECK_TIMEOUT = "pinlockchecktimeout";
 
     private static final int CONFIRM_PATTERN_THEN_DISABLE_AND_CLEAR_REQUEST_CODE = 55;
 
@@ -78,6 +79,7 @@ public class SecuritySettings extends PreferenceActivity {
     private CheckBoxPreference mVisiblePattern;
     private CheckBoxPreference mTactileFeedback;
     private CheckBoxPreference mPinBasedLocking;
+    private ListPreference mPinCheckTimeout;
     private Preference mChoosePattern;
 
     private CheckBoxPreference mShowPassword;
@@ -95,6 +97,8 @@ public class SecuritySettings extends PreferenceActivity {
     private static final int CSTOR_CHANGE_PASSWORD_DIALOG = 2;
     private static final int CSTOR_UNLOCK_DIALOG = 3;
     private static final int CSTOR_RESET_DIALOG = 4;
+    
+    private static final int PIN_CHECK_TIMEOUT_INTERVAL = 500;
 
     private CredentialStorage mCredentialStorage = new CredentialStorage();
 
@@ -180,6 +184,16 @@ public class SecuritySettings extends PreferenceActivity {
         mPinBasedLocking.setTitle(R.string.lockpattern_settings_enable_pin_based_locking);
         inlinePrefCat.addPreference(mPinBasedLocking);
 
+        // pin check timeout
+        mPinCheckTimeout = new ListPreference(this);
+        mPinCheckTimeout.setKey(KEY_PIN_CHECK_TIMEOUT);
+        mPinCheckTimeout.setTitle(R.string.lockpattern_settings_set_pin_check_timeout);
+        mPinCheckTimeout.setEntries(R.array.lockpattern_pin_check_timeout_entries);
+        mPinCheckTimeout.setEntryValues(R.array.lockpattern_pin_check_timeout_values);
+        mPinCheckTimeout.setOnPreferenceChangeListener(mOnPinCheckTimeoutChangeListener);
+        
+        inlinePrefCat.addPreference(mPinCheckTimeout);
+        
         int activePhoneType = TelephonyManager.getDefault().getPhoneType();
 
         // do not display SIM lock for CDMA phone
@@ -229,12 +243,13 @@ public class SecuritySettings extends PreferenceActivity {
         mVisiblePattern.setEnabled(patternExists);
         mTactileFeedback.setEnabled(patternExists);
         mPinBasedLocking.setEnabled(!patternExists);
+        mPinCheckTimeout.setEnabled(mLockPatternUtils.isPinLockingEnabled());
 
         mLockEnabled.setChecked(mLockPatternUtils.isLockPatternEnabled());
         mVisiblePattern.setChecked(mLockPatternUtils.isVisiblePatternEnabled());
         mTactileFeedback.setChecked(mLockPatternUtils.isTactileFeedbackEnabled());
         mPinBasedLocking.setChecked(mLockPatternUtils.isPinLockingEnabled());
-
+        
         int chooseStringRes = mLockPatternUtils.savedPatternExists() ?
                 R.string.lockpattern_settings_change_lock_pattern :
                 R.string.lockpattern_settings_choose_lock_pattern;
@@ -246,6 +261,22 @@ public class SecuritySettings extends PreferenceActivity {
         mCredentialStorage.resume();
     }
 
+    private Preference.OnPreferenceChangeListener mOnPinCheckTimeoutChangeListener =
+    	new Preference.OnPreferenceChangeListener() {
+			public boolean onPreferenceChange(Preference preference, Object newValue) {
+				if (preference == mPinCheckTimeout) {
+					String value = mPinCheckTimeout.getValue();
+					int index = mPinCheckTimeout.findIndexOfValue((String) newValue) + 1;
+					
+					mLockPatternUtils.setPinCheckTimeout(PIN_CHECK_TIMEOUT_INTERVAL * index);
+					
+					return true;
+				}
+
+				return true;
+			}
+		};
+    
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
             Preference preference) {
@@ -258,8 +289,12 @@ public class SecuritySettings extends PreferenceActivity {
         } else if (KEY_TACTILE_FEEDBACK_ENABLED.equals(key)) {
             mLockPatternUtils.setTactileFeedbackEnabled(isToggled(preference));
         } else if (KEY_PIN_BASED_LOCKING_ENABLED.equals(key)) {
-            mLockPatternUtils.setPinLockingEnabled(isToggled(preference)); 
-        }else if (preference == mShowPassword) {
+            mLockPatternUtils.setPinLockingEnabled(isToggled(preference));
+            mPinCheckTimeout.setEnabled(mLockPatternUtils.isPinLockingEnabled());
+        } else if (KEY_PIN_CHECK_TIMEOUT.equals(key)) {
+            int valueIndex = (mLockPatternUtils.getPinCheckTimeout() / PIN_CHECK_TIMEOUT_INTERVAL) - 1;
+            mPinCheckTimeout.setValueIndex(Math.max(0, Math.min(valueIndex, 3)));
+        } else if (preference == mShowPassword) {
             Settings.System.putInt(getContentResolver(), Settings.System.TEXT_SHOW_PASSWORD,
                     mShowPassword.isChecked() ? 1 : 0);
         } else if (preference == mNetwork) {
