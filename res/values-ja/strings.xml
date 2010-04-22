@@ -371,6 +371,7 @@
     <string name="wifi_setting_sleep_policy_summary" msgid="7573693311804602041">"Wi-Fiをスリープに切り替えるタイミング"</string>
     <string name="wifi_setting_sleep_policy_error" msgid="5103670439972135148">"スリープポリシーの設定で問題が発生しました。"</string>
     <string name="wifi_advanced_mac_address_title" msgid="6571335466330978393">"MACアドレス"</string>
+    <string name="wifi_advanced_ip_address_title">"IPアドレス"</string>
     <string name="fragment_status_scanning" msgid="6278637764967888244">"スキャン中..."</string>
     <string name="fragment_status_connecting" msgid="1238623050972038297">"<xliff:g id="NETWORK_NAME">%1$s</xliff:g>に接続中..."</string>
     <string name="fragment_status_authenticating" msgid="8239692896109081272">"<xliff:g id="NETWORK_NAME">%1$s</xliff:g>による認証中..."</string>
@@ -479,6 +480,9 @@
     <string name="baseband_version" msgid="1848990160763524801">"ベースバンドバージョン"</string>
     <string name="kernel_version" msgid="9192574954196167602">"カーネルバージョン"</string>
     <string name="build_number" msgid="3075795840572241758">"ビルド番号"</string>
+    <string name="mod_version">"Mod バージョン"</string>
+    <string name="mod_version_default">"不明"</string>
+
     <string name="device_info_not_available" msgid="8062521887156825182">"該当なし"</string>
     <string name="device_status_activity_title" msgid="1411201799384697904">"端末の状態"</string>
     <string name="device_status" msgid="607405385799807324">"端末の状態"</string>
@@ -503,6 +507,7 @@
     <string name="status_awake_time" msgid="2393949909051183652">"端末使用時間"</string>
     <string name="internal_memory" msgid="1130932766236387454">"端末内部メモリ"</string>
     <string name="sd_memory" msgid="151871913888051515">"SDカード"</string>
+    <string name="sd_extra_memory">"SD カード(セカンダリ)"</string>
     <string name="memory_available" msgid="418542433817289474">"空き容量"</string>
     <string name="memory_size" msgid="6629067715017232195">"合計容量"</string>
     <string name="sd_eject" msgid="6915293408836853020">"SDカードのマウント解除"</string>
@@ -616,6 +621,7 @@
     <string name="lockpattern_settings_title" msgid="3207750489460466680">"ロック解除パターン"</string>
     <string name="lockpattern_settings_enable_title" msgid="6920616873671115281">"パターン入力が必要"</string>
     <string name="lockpattern_settings_enable_summary" msgid="1165707416664252167">"画面ロックを解除するにはパターンの入力が必要"</string>
+    <string name="lockpattern_settings_enable_pin_based_locking">"PINロックを使用"</string>
     <string name="lockpattern_settings_enable_visible_pattern_title" msgid="104851667540971729">"指の軌跡を線で表示"</string>
     <string name="lockpattern_settings_enable_tactile_feedback_title" msgid="972174133075372341">"入力時バイブレーション"</string>
     <string name="lockpattern_settings_choose_lock_pattern" msgid="1652352830005653447">"ロック解除パターン設定"</string>
@@ -646,6 +652,9 @@
     <string name="cache_size_label" msgid="7505481393108282913">"キャッシュ"</string>
     <string name="controls_label" msgid="7611113077086853799">"コントロール"</string>
     <string name="force_stop" msgid="7435006169872876756">"強制停止"</string>
+    <!-- Manage applications, individual application info screen, label under Storage heading.  The current location of the APK. -->
+    <string name="install_location_label">インストールの場所</string>
+
     <string name="total_size_label" msgid="1048676419552557254">"合計"</string>
     <string name="application_size_label" msgid="5055196275624686382">"アプリケーション"</string>
     <string name="data_size_label" msgid="8679376373625710107">"データ"</string>
@@ -994,4 +1003,71 @@
     <string name="backup_erase_dialog_title" msgid="6028429904055779443">"バックアップの設定"</string>
     <string name="backup_erase_dialog_message" msgid="9096433810456900531">"設定のバックアップを停止し、Googleサーバー上のすべてのコピーを消去してもよろしいですか？"</string>
     <string name="untitled_apn" msgid="1230060359198685513">"無題"</string>
+
+    <!-- Tethering settings -->
+    <string name="internet_tethering">"インターネットテザリング"</string>
+    <string name="internet_tethering_summary_on">"USBインターネットテザリングは有効"</string>
+    <string name="internet_tethering_summary_off">"USBインターネットテザリングは無効"</string>
+
+    <!-- OpenVPN settings -->
+    <string name="vpn_openvpn_port">"サーバポート番号"</string>
+    <string name="vpn_openvpn_protocol">"使用するプロトコル"</string>
+    <string name="vpn_openvpn_userauth">"ユーザ認証"</string>
+    <string name="vpn_openvpn_userauth_summary">"追加のユーザ認証が必要な場合設定する"</string>
+    <string name="vpn_openvpn_advanced_titlebar">"追加のOpenVPN設定"</string>
+    <string name="vpn_openvpn_comp_lzo">"LZO圧縮"</string>
+    <string name="vpn_openvpn_comp_lzo_summary">"LZO圧縮を有効にする"</string>
+    <string name="vpn_openvpn_redirect_gateway_title">"リダイレクトゲートウェイ"</string>
+    <string name="vpn_openvpn_redirect_gateway_summary">"すべてのトラフィックをOpenVPN経由にする"</string>
+    <string name="vpn_openvpn_set_addr">"リモートによるアドレス設定"</string>
+    <string name="vpn_openvpn_set_addr_summary">"トンネルアドレスを手動で設定するにはチェックを外す"</string>
+    <string name="vpn_openvpn_set_local_addr">"ローカルIPアドレス"</string>
+    <string name="vpn_openvpn_set_remote_addr">"リモートIPアドレス"</string>
+
+    <!-- Sound settings screen, trackball settings category -->
+    <string name="trackball_settings">トラックボールの設定</string>
+
+    <!-- Sound settings screen, notification light while screen on title -->
+    <string name="notification_screen_on_title">"スクリーンオンで点灯"</string>
+    <string name="notification_screen_on_summary">"スクリーンオン時にトラックボールを点灯させる"</string>
+
+    <!-- Sound settings screen, breathing light color title -->
+    <string name="breathing_light_color_title">"点灯時の色"</string>
+    <string name="breathing_light_color_summary">"点灯時の色設定"</string>
+
+    <!-- Sound & display settings screen, setting option for trackwall wake -->
+    <string name="trackball_wake_screen_title">"トラックボールで復帰"</string>
+    <string name="trackball_wake_screen_summary">"トラックボールをクリックすると端末がスリープ状態から復帰する"</string>
+
+    <!-- Sound & display settings screen, setting option for trackwall unlock -->
+    <string name="trackball_unlock_screen_title">"トラックボールでロック解除"</string>
+    <string name="trackball_unlock_screen_summary">"トラックボールをクリックすると端末のロックスクリーンを解除する"</string>
+
+    <!-- Apps2SD -->
+    <!-- Text for the "Move" button. -->
+    <string name="move_text">"移動"</string>
+    <!-- Text to indicate an application is installed on inernal memory -->
+    <string name="internal_text">"内蔵メモリ"</string>
+    <!-- Text to indicate an application is installed on the SD Card -->
+    <string name="sdcard_text">"SDカード"</string>
+    <!-- Text to indicate an application is installed on the system partition -->
+    <string name="system_text">"システム"</string>
+    <!-- Enable/Disable Apps2SD -->
+    <string name="apps2sd_title">"Apps2SD"</string>
+    <!-- Apps2SD Off Summary -->
+    <string name="apps2sd_summary_off">"新しいアプリケーションは内蔵システムメモリにインストールされる"</string>
+    <!-- Apps2SD On Summary -->
+    <string name="apps2sd_summary_on">"新しいアプリケーションはSDカードにインストールされる"</string>
+    <string name="please_wait">"しばらくお待ちください"</string>
+    <string name="moving_app">"アプリケーションを移動中"</string>
+
+    <!-- Setting checkbox title for displaying USB debugging notification -->
+    <string name="adb_notify">"USBデバッグの通知"</string>
+    <!-- Setting checkbox summary for displaying USB debugging notification -->
+    <string name="adb_notify_summary">"USBデバッグが接続されると通知を表示する"</string>
+
+    <!-- Proxy settings -->
+    <string name="proxy_setting">"プロキシ設定"</string>
+    <string name="proxy_setting_summary">"インターネットアクセスのためのプロキシ設定"</string>
+
 </resources>
