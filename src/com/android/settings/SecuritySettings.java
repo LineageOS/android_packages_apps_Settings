@@ -55,6 +55,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+import android.util.Log;
 
 /**
  * Gesture lock pattern settings.
@@ -65,9 +66,14 @@ public class SecuritySettings extends PreferenceActivity {
 
     private static final String KEY_LOCK_ENABLED = "lockenabled";
     private static final String KEY_VISIBLE_PATTERN = "visiblepattern";
+    private static final String KEY_INCORRECT_DELAY = "incorrectdelay";
     private static final String KEY_TACTILE_FEEDBACK_ENABLED = "tactilefeedback";
     private static final String KEY_PIN_BASED_LOCKING_ENABLED = "pinbasedlocking";
     private static final String KEY_PIN_CHECK_TIMEOUT = "pinlockchecktimeout";
+    private static final String KEY_VISIBLE_DOTS = "visibledots";
+    private static final String KEY_SHOW_ERROR_PATH = "showerrorpath";
+    private static final String KEY_SHOW_CUSTOM_MSG = "showcustommsg";
+    private static final String KEY_SHOW_SLIDERS = "showsliders";
 
     private static final int CONFIRM_PATTERN_THEN_DISABLE_AND_CLEAR_REQUEST_CODE = 55;
 
@@ -77,6 +83,12 @@ public class SecuritySettings extends PreferenceActivity {
     private LockPatternUtils mLockPatternUtils;
     private CheckBoxPreference mLockEnabled;
     private CheckBoxPreference mVisiblePattern;
+    private CheckBoxPreference mVisibleDots;
+    private CheckBoxPreference mShowErrorPath;
+    private CheckBoxPreference mShowCustomMsg;
+    private EditTextPreference mCustomMsg;
+    //private CheckBoxPreference mShowSliders;
+    private ListPreference mIncorrectDelay;
     private CheckBoxPreference mTactileFeedback;
     private CheckBoxPreference mPinBasedLocking;
     private ListPreference mPinCheckTimeout;
@@ -171,6 +183,48 @@ public class SecuritySettings extends PreferenceActivity {
         mVisiblePattern.setKey(KEY_VISIBLE_PATTERN);
         mVisiblePattern.setTitle(R.string.lockpattern_settings_enable_visible_pattern_title);
         inlinePrefCat.addPreference(mVisiblePattern);
+        
+        // visible dots
+        mVisibleDots = new CheckBoxPreference(this);
+        mVisibleDots.setKey(KEY_VISIBLE_DOTS);
+        mVisibleDots.setTitle(R.string.lockpattern_settings_enable_visible_dots_title);
+        inlinePrefCat.addPreference(mVisibleDots);
+        
+        // error path
+        mShowErrorPath = new CheckBoxPreference(this);
+        mShowErrorPath.setKey(KEY_SHOW_ERROR_PATH);
+        mShowErrorPath.setTitle(R.string.lockpattern_settings_show_error_path);
+        inlinePrefCat.addPreference(mShowErrorPath);
+
+        // show custom msg
+        mShowCustomMsg = new CheckBoxPreference(this);
+        mShowCustomMsg.setKey(KEY_SHOW_CUSTOM_MSG);
+        mShowCustomMsg.setTitle(R.string.lockpattern_settings_show_custom_msg);
+        inlinePrefCat.addPreference(mShowCustomMsg);
+        
+        // custom msg
+        mCustomMsg = new EditTextPreference(this);
+        mCustomMsg.setTitle(R.string.lockpattern_settings_custom_msg);
+        mCustomMsg.setDialogTitle(R.string.lockpattern_settings_custom_msg_dialog);
+        mCustomMsg.setOnPreferenceChangeListener(mOnCustomMsgChangeListener);
+        inlinePrefCat.addPreference(mCustomMsg);
+
+        // show sliders
+        /*
+        mShowSliders = new CheckBoxPreference(this);
+        mShowSliders.setKey(KEY_SHOW_SLIDERS);
+        mShowSliders.setTitle(R.string.lockpattern_settings_show_sliders);
+        inlinePrefCat.addPreference(mShowSliders);
+        */
+        
+        // incorrect delay
+        mIncorrectDelay = new ListPreference(this);
+        mIncorrectDelay.setKey(KEY_INCORRECT_DELAY);
+        mIncorrectDelay.setTitle(R.string.lockpattern_settings_incorrect_delay_title);
+        mIncorrectDelay.setEntries(R.array.incorrect_delay_entries);
+        mIncorrectDelay.setEntryValues(R.array.incorrect_delay_values);
+        mIncorrectDelay.setOnPreferenceChangeListener(mIncorrectDelayChangeListener);
+        inlinePrefCat.addPreference(mIncorrectDelay);
 
         // tactile feedback
         mTactileFeedback = new CheckBoxPreference(this);
@@ -241,12 +295,21 @@ public class SecuritySettings extends PreferenceActivity {
         boolean patternExists = mLockPatternUtils.savedPatternExists();
         mLockEnabled.setEnabled(patternExists);
         mVisiblePattern.setEnabled(patternExists);
+        mVisibleDots.setEnabled(patternExists);
+        mShowErrorPath.setEnabled(patternExists);
+        //mShowSliders.setEnabled(!patternExists);
+        mIncorrectDelay.setEnabled(patternExists);        
         mTactileFeedback.setEnabled(patternExists);
         mPinBasedLocking.setEnabled(!patternExists);
         mPinCheckTimeout.setEnabled(mLockPatternUtils.isPinLockingEnabled());
 
         mLockEnabled.setChecked(mLockPatternUtils.isLockPatternEnabled());
         mVisiblePattern.setChecked(mLockPatternUtils.isVisiblePatternEnabled());
+        mVisibleDots.setChecked(mLockPatternUtils.isVisibleDotsEnabled());
+        mShowErrorPath.setChecked(mLockPatternUtils.isShowErrorPath());
+        mShowCustomMsg.setChecked(mLockPatternUtils.isShowCustomMsg());
+        mCustomMsg.setText(mLockPatternUtils.getCustomMsg());
+        //mShowSliders.setChecked(mLockPatternUtils.isShowSliders());
         mTactileFeedback.setChecked(mLockPatternUtils.isTactileFeedbackEnabled());
         mPinBasedLocking.setChecked(mLockPatternUtils.isPinLockingEnabled());
         
@@ -260,17 +323,36 @@ public class SecuritySettings extends PreferenceActivity {
 
         mCredentialStorage.resume();
     }
+    
+    private Preference.OnPreferenceChangeListener mIncorrectDelayChangeListener =
+    	new Preference.OnPreferenceChangeListener() {
+			public boolean onPreferenceChange(Preference preference, Object newValue) {
+				if (preference == mIncorrectDelay) {
+					int value = Integer.parseInt(newValue.toString());
+					mLockPatternUtils.setIncorrectDelay(value);					
+				}
+
+				return true;
+			}
+		};
 
     private Preference.OnPreferenceChangeListener mOnPinCheckTimeoutChangeListener =
     	new Preference.OnPreferenceChangeListener() {
 			public boolean onPreferenceChange(Preference preference, Object newValue) {
 				if (preference == mPinCheckTimeout) {
-					String value = mPinCheckTimeout.getValue();
-					int index = mPinCheckTimeout.findIndexOfValue((String) newValue) + 1;
-					
-					mLockPatternUtils.setPinCheckTimeout(PIN_CHECK_TIMEOUT_INTERVAL * index);
-					
-					return true;
+					int index = mPinCheckTimeout.findIndexOfValue((String) newValue) + 1;					
+					mLockPatternUtils.setPinCheckTimeout(PIN_CHECK_TIMEOUT_INTERVAL * index);					
+				}
+
+				return true;
+			}
+		};
+		
+    private Preference.OnPreferenceChangeListener mOnCustomMsgChangeListener =
+    	new Preference.OnPreferenceChangeListener() {
+			public boolean onPreferenceChange(Preference preference, Object newValue) {
+				if (preference == mCustomMsg) {
+					mLockPatternUtils.setCustomMsg(newValue.toString());
 				}
 
 				return true;
@@ -283,10 +365,20 @@ public class SecuritySettings extends PreferenceActivity {
         final String key = preference.getKey();
 
         if (KEY_LOCK_ENABLED.equals(key)) {
-            mLockPatternUtils.setLockPatternEnabled(isToggled(preference));
+            boolean patternEnabled = isToggled(preference);            
+            mLockPatternUtils.setLockPatternEnabled(patternEnabled);
+            //mShowSliders.setEnabled(!patternEnabled);
         } else if (KEY_VISIBLE_PATTERN.equals(key)) {
             mLockPatternUtils.setVisiblePatternEnabled(isToggled(preference));
-        } else if (KEY_TACTILE_FEEDBACK_ENABLED.equals(key)) {
+        } else if (KEY_VISIBLE_DOTS.equals(key)) {
+            mLockPatternUtils.setVisibleDotsEnabled(isToggled(preference));
+        } else if (KEY_SHOW_ERROR_PATH.equals(key)) {
+            mLockPatternUtils.setShowErrorPath(isToggled(preference));
+        } else if (KEY_SHOW_CUSTOM_MSG.equals(key)) {
+            mLockPatternUtils.setShowCustomMsg(isToggled(preference));
+        } /*else if (KEY_SHOW_SLIDERS.equals(key)) {
+            mLockPatternUtils.setShowSliders(isToggled(preference));  
+        }*/ else if (KEY_TACTILE_FEEDBACK_ENABLED.equals(key)) {
             mLockPatternUtils.setTactileFeedbackEnabled(isToggled(preference));
         } else if (KEY_PIN_BASED_LOCKING_ENABLED.equals(key)) {
             mLockPatternUtils.setPinLockingEnabled(isToggled(preference));
