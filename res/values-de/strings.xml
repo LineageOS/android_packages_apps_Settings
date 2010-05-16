@@ -413,7 +413,7 @@
     <!-- Sound settings screen, notification light while screen on title -->
     <string name="notification_screen_on_title">Pulsieren wenn Anzeige an</string>
     <!-- Sound settings screen, notification light while screen on summary -->
-    <string name="notification_screen_on_summary">Trackball-Licht pulsieren auch wenn Anzeigr an ist</string>
+    <string name="notification_screen_on_summary">Trackball-Licht pulsieren auch wenn Anzeige an ist</string>
     <!-- Sound settings screen, breathing light color title -->
     <string name="breathing_light_color_title">Pulsierendes Licht</string>
     <!-- Sound settings screen, breathing light color summary TODO: find a better way to say this...-->
@@ -502,7 +502,7 @@
     <string name="build_number" msgid="3075795840572241758">"Build-Nummer"</string>
 
     <!-- About phone screen,  setting option name-->
-    <string name="mod_version">Mod Version</string>
+    <string name="mod_version">Mod-Version</string>
     <string name="mod_version_default">Unbekannt</string>
     <string name="device_info_not_available" msgid="8062521887156825182">"Nicht verfügbar"</string>
     <string name="device_status_activity_title" msgid="1411201799384697904">"Status"</string>
@@ -645,6 +645,12 @@
     <string name="lockpattern_settings_enable_pin_based_locking">PIN-Sperre einschalten</string>
     <string name="lockpattern_settings_set_pin_check_timeout">Zeitlimit für PIN-Abfrage</string>
     <string name="lockpattern_settings_enable_visible_pattern_title" msgid="104851667540971729">"Muster sichtbar"</string>
+    <string name="lockpattern_settings_enable_visible_dots_title">Punkte sichtbar</string>
+    <string name="lockpattern_settings_show_error_path">Zeige fehlerhaften Pfad bei Fehler</string>
+    <string name="lockpattern_settings_show_custom_msg">Zeige eigene Nachricht</string>
+    <string name="lockpattern_settings_show_sliders">Zeige Schieber</string>
+    <string name="lockpattern_settings_custom_msg">Eigene Nachricht</string>
+    <string name="lockpattern_settings_custom_msg_dialog">Gib eine eigene Nachricht ein</string>
     <string name="lockpattern_settings_enable_tactile_feedback_title" msgid="972174133075372341">"Haptisches Feedback"</string>
     <string name="lockpattern_settings_choose_lock_pattern" msgid="1652352830005653447">"Entsperrungsmuster"</string>
     <string name="lockpattern_settings_change_lock_pattern" msgid="1123908306116495545">"Muster ändern"</string>
@@ -777,9 +783,9 @@
     <string name="enable_adb" msgid="7982306934419797485">"USB-Debugging"</string>
     <string name="enable_adb_summary" msgid="4881186971746056635">"Debugmodus bei Anschluss eines USB-Geräts"</string>
     <!-- Setting checkbox title for displaying USB debugging notification -->
-    <string name="adb_notify">USB Debugging Benachrichtigung</string>
+    <string name="adb_notify">USB-Debugging Benachrichtigung</string>
     <!-- Setting checkbox summary for displaying USB debugging notification -->
-    <string name="adb_notify_summary">Zeige Benachrichtigung wenn USB Debugging verbunden ist</string>
+    <string name="adb_notify_summary">Zeige Benachrichtigung, wenn USB-Debugging verbunden ist</string>
     <string name="keep_screen_on" msgid="1146389631208760344">"Aktiv bleiben"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"Display wird beim Laden nie in den Ruhezustand versetzt"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"Falsche Standorte"</string>
@@ -995,15 +1001,15 @@
     <string name="vpn_openvpn_protocol">Protokoll</string>
     <string name="vpn_openvpn_userauth">Benutzer Authentifizierung</string>
     <string name="vpn_openvpn_userauth_summary">Einschalten, wenn zusätzliche Name/Passwort Authentifizierung benutzt werden soll.</string>
-    <string name="vpn_openvpn_advanced_titlebar">Erweiterte OpenVPN Einstellungen</string>
-    <string name="vpn_openvpn_comp_lzo">LZO Kompression</string>
-    <string name="vpn_openvpn_comp_lzo_summary">LZO Kompression erzwingen</string>
+    <string name="vpn_openvpn_advanced_titlebar">Erweiterte OpenVPN-Einstellungen</string>
+    <string name="vpn_openvpn_comp_lzo">LZO-Kompression</string>
+    <string name="vpn_openvpn_comp_lzo_summary">LZO-Kompression erzwingen</string>
     <string name="vpn_openvpn_redirect_gateway_title">Gateway Weiterleitung</string>
-    <string name="vpn_openvpn_redirect_gateway_summary">Erzwingen, den gesamten Verkehr durch den VPN Tunnel zu leiten.</string>
+    <string name="vpn_openvpn_redirect_gateway_summary">Erzwingen, den gesamten Verkehr durch den VPN-Tunnel zu leiten.</string>
     <string name="vpn_openvpn_set_addr">Entfernter Server setzt Adressen</string>
     <string name="vpn_openvpn_set_addr_summary">Abwählen, um Tunneladressen manuell einzustellen.</string>
-    <string name="vpn_openvpn_set_local_addr">Lokale IP Addresse</string>
-    <string name="vpn_openvpn_set_remote_addr">Entfernte IP Addresse</string>
+    <string name="vpn_openvpn_set_local_addr">Lokale IP-Addresse</string>
+    <string name="vpn_openvpn_set_remote_addr">Entfernte IP-Addresse</string>
     <string name="credentials_category" msgid="8536992056377271234">"Anmeldeinformationsspeicher"</string>
     <string name="credentials_access" msgid="4843187230913860492">"Sichere Anmeldeinformationen verwenden"</string>
     <string name="credentials_access_summary" msgid="319662078718574168">"Anwendungen können sichere Zertifikate und Anmeldeinformationen abrufen."</string>
@@ -1042,9 +1048,9 @@
     <string name="backup_erase_dialog_message" msgid="9096433810456900531">"Möchten Sie wirklich die Sicherung Ihrer Einstellungen beenden und alle Kopien auf den Google-Servern löschen?"</string>
     <string name="untitled_apn" msgid="1230060359198685513">"Unbenannt"</string>
     <!-- Tethering settings -->
-    <string name="internet_tethering">Internet Tethering</string>
-    <string name="internet_tethering_summary_on">Internet Tethering über USB ist eingeschaltet</string>
-    <string name="internet_tethering_summary_off">Internet Tethering über USB ist ausgeschaltet</string>
+    <string name="internet_tethering">Internet-Tethering</string>
+    <string name="internet_tethering_summary_on">Internet-Tethering über USB ist eingeschaltet</string>
+    <string name="internet_tethering_summary_off">Internet-Tethering über USB ist ausgeschaltet</string>
 
     <!-- Apps2SD -->
     <!-- Text for the "Move" button. -->
