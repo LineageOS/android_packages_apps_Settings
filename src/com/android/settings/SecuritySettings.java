@@ -55,6 +55,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+import android.util.Log;
 
 /**
  * Gesture lock pattern settings.
@@ -65,6 +66,7 @@ public class SecuritySettings extends PreferenceActivity {
 
     private static final String KEY_LOCK_ENABLED = "lockenabled";
     private static final String KEY_VISIBLE_PATTERN = "visiblepattern";
+    private static final String KEY_INCORRECT_DELAY = "incorrectdelay";
     private static final String KEY_TACTILE_FEEDBACK_ENABLED = "tactilefeedback";
     private static final String KEY_PIN_BASED_LOCKING_ENABLED = "pinbasedlocking";
     private static final String KEY_PIN_CHECK_TIMEOUT = "pinlockchecktimeout";
@@ -86,6 +88,7 @@ public class SecuritySettings extends PreferenceActivity {
     private CheckBoxPreference mShowCustomMsg;
     private EditTextPreference mCustomMsg;
     //private CheckBoxPreference mShowSliders;
+    private ListPreference mIncorrectDelay;
     private CheckBoxPreference mTactileFeedback;
     private CheckBoxPreference mPinBasedLocking;
     private ListPreference mPinCheckTimeout;
@@ -213,6 +216,15 @@ public class SecuritySettings extends PreferenceActivity {
         mShowSliders.setTitle(R.string.lockpattern_settings_show_sliders);
         inlinePrefCat.addPreference(mShowSliders);
         */
+        
+        // incorrect delay
+        mIncorrectDelay = new ListPreference(this);
+        mIncorrectDelay.setKey(KEY_INCORRECT_DELAY);
+        mIncorrectDelay.setTitle(R.string.lockpattern_settings_incorrect_delay_title);
+        mIncorrectDelay.setEntries(R.array.incorrect_delay_entries);
+        mIncorrectDelay.setEntryValues(R.array.incorrect_delay_values);
+        mIncorrectDelay.setOnPreferenceChangeListener(mIncorrectDelayChangeListener);
+        inlinePrefCat.addPreference(mIncorrectDelay);
 
         // tactile feedback
         mTactileFeedback = new CheckBoxPreference(this);
@@ -285,7 +297,8 @@ public class SecuritySettings extends PreferenceActivity {
         mVisiblePattern.setEnabled(patternExists);
         mVisibleDots.setEnabled(patternExists);
         mShowErrorPath.setEnabled(patternExists);
-        //mShowSliders.setEnabled(!patternExists);        
+        //mShowSliders.setEnabled(!patternExists);
+        mIncorrectDelay.setEnabled(patternExists);        
         mTactileFeedback.setEnabled(patternExists);
         mPinBasedLocking.setEnabled(!patternExists);
         mPinCheckTimeout.setEnabled(mLockPatternUtils.isPinLockingEnabled());
@@ -310,17 +323,25 @@ public class SecuritySettings extends PreferenceActivity {
 
         mCredentialStorage.resume();
     }
+    
+    private Preference.OnPreferenceChangeListener mIncorrectDelayChangeListener =
+    	new Preference.OnPreferenceChangeListener() {
+			public boolean onPreferenceChange(Preference preference, Object newValue) {
+				if (preference == mIncorrectDelay) {
+					int value = Integer.parseInt(newValue.toString());
+					mLockPatternUtils.setIncorrectDelay(value);					
+				}
+
+				return true;
+			}
+		};
 
     private Preference.OnPreferenceChangeListener mOnPinCheckTimeoutChangeListener =
     	new Preference.OnPreferenceChangeListener() {
 			public boolean onPreferenceChange(Preference preference, Object newValue) {
 				if (preference == mPinCheckTimeout) {
-					String value = mPinCheckTimeout.getValue();
-					int index = mPinCheckTimeout.findIndexOfValue((String) newValue) + 1;
-					
-					mLockPatternUtils.setPinCheckTimeout(PIN_CHECK_TIMEOUT_INTERVAL * index);
-					
-					return true;
+					int index = mPinCheckTimeout.findIndexOfValue((String) newValue) + 1;					
+					mLockPatternUtils.setPinCheckTimeout(PIN_CHECK_TIMEOUT_INTERVAL * index);					
 				}
 
 				return true;
