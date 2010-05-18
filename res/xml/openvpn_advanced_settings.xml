@@ -33,6 +33,14 @@
        android:entryValues="@array/vpn_openvpn_protocol_entries"
        />
 
+    <ListPreference
+       android:key="set_device"
+       android:title="@string/vpn_openvpn_device"
+       android:dialogTitle="@string/vpn_openvpn_device"
+       android:entries="@array/vpn_openvpn_device_entries"
+       android:entryValues="@array/vpn_openvpn_device_entries"
+       />
+
     <CheckBoxPreference
        android:key="set_comp_lzo"
        android:title="@string/vpn_openvpn_comp_lzo"
