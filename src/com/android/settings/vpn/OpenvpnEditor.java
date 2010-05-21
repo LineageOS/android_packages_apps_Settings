@@ -157,6 +157,7 @@ class OpenvpnEditor extends VpnProfileEditor {
         // manually copy across all advanced settings
         p.setPort(newP.getPort());
         p.setProto(newP.getProto());
+        p.setDevice(newP.getDevice());
         p.setUseCompLzo(newP.getUseCompLzo());
         p.setRedirectGateway(newP.getRedirectGateway());
         p.setSupplyAddr(newP.getSupplyAddr());
@@ -182,6 +183,8 @@ class OpenvpnEditor extends VpnProfileEditor {
 
         private static final String KEY_PROTO = "set_protocol";
 
+        private static final String KEY_DEVICE = "set_device";
+
         private static final String KEY_COMP_LZO = "set_comp_lzo";
 
         private static final String KEY_REDIRECT_GATEWAY = "set_redirect_gateway";
@@ -195,6 +198,8 @@ class OpenvpnEditor extends VpnProfileEditor {
         private EditTextPreference mPort;
 
         private ListPreference mProto;
+
+        private ListPreference mDevice;
 
         private CheckBoxPreference mCompLzo;
 
@@ -218,6 +223,7 @@ class OpenvpnEditor extends VpnProfileEditor {
 
             mPort = (EditTextPreference) findPreference(KEY_PORT);
             mProto = (ListPreference) findPreference(KEY_PROTO);
+            mDevice = (ListPreference) findPreference(KEY_DEVICE);
             mCompLzo = (CheckBoxPreference) findPreference(KEY_COMP_LZO);
             mRedirectGateway = (CheckBoxPreference) findPreference(KEY_REDIRECT_GATEWAY);
             mSetAddr = (CheckBoxPreference) findPreference(KEY_SET_ADDR);
@@ -245,6 +251,19 @@ class OpenvpnEditor extends VpnProfileEditor {
                     name.trim();
                     profile.setProto(name);
                     mProto.setSummary(profile.getProto());
+
+                    return true;
+                }
+            });
+
+            mDevice.setSummary(profile.getDevice());
+            mDevice.setValue(profile.getDevice());
+            mDevice.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                public boolean onPreferenceChange(Preference pref, Object newValue) {
+                    String name = (String) newValue;
+                    name.trim();
+                    profile.setDevice(name);
+                    mDevice.setSummary(profile.getDevice());
 
                     return true;
                 }
