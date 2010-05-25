@@ -74,6 +74,8 @@ public class SecuritySettings extends PreferenceActivity {
     private static final String KEY_SHOW_ERROR_PATH = "showerrorpath";
     private static final String KEY_SHOW_CUSTOM_MSG = "showcustommsg";
     private static final String KEY_SHOW_SLIDERS = "showsliders";
+    private static final String KEY_SHOW_UNLOCK_MSG = "showunlockmsg";
+    private static final String KEY_SHOW_UNLOCK_ERR_MSG = "showunlockerrmsg";
 
     private static final int CONFIRM_PATTERN_THEN_DISABLE_AND_CLEAR_REQUEST_CODE = 55;
 
@@ -87,6 +89,8 @@ public class SecuritySettings extends PreferenceActivity {
     private CheckBoxPreference mShowErrorPath;
     private CheckBoxPreference mShowCustomMsg;
     private EditTextPreference mCustomMsg;
+    private CheckBoxPreference mShowUnlockMsg;
+    private CheckBoxPreference mShowUnlockErrMsg;
     //private CheckBoxPreference mShowSliders;
     private ListPreference mIncorrectDelay;
     private CheckBoxPreference mTactileFeedback;
@@ -195,6 +199,18 @@ public class SecuritySettings extends PreferenceActivity {
         mShowErrorPath.setKey(KEY_SHOW_ERROR_PATH);
         mShowErrorPath.setTitle(R.string.lockpattern_settings_show_error_path);
         inlinePrefCat.addPreference(mShowErrorPath);
+        
+        // show unlock msg        
+        mShowUnlockMsg = new CheckBoxPreference(this);
+        mShowUnlockMsg.setKey(KEY_SHOW_UNLOCK_MSG);
+        mShowUnlockMsg.setTitle(R.string.lockpattern_settings_show_unlock_msg);
+        inlinePrefCat.addPreference(mShowUnlockMsg);
+        
+        // show unlock error msg        
+        mShowUnlockErrMsg = new CheckBoxPreference(this);
+        mShowUnlockErrMsg.setKey(KEY_SHOW_UNLOCK_ERR_MSG);
+        mShowUnlockErrMsg.setTitle(R.string.lockpattern_settings_show_unlock_error_msg);
+        inlinePrefCat.addPreference(mShowUnlockErrMsg);
 
         // show custom msg
         mShowCustomMsg = new CheckBoxPreference(this);
@@ -308,6 +324,8 @@ public class SecuritySettings extends PreferenceActivity {
         mVisibleDots.setChecked(mLockPatternUtils.isVisibleDotsEnabled());
         mShowErrorPath.setChecked(mLockPatternUtils.isShowErrorPath());
         mShowCustomMsg.setChecked(mLockPatternUtils.isShowCustomMsg());
+        mShowUnlockMsg.setChecked(mLockPatternUtils.isShowUnlockMsg());
+        mShowUnlockErrMsg.setChecked(mLockPatternUtils.isShowUnlockErrMsg());
         mCustomMsg.setText(mLockPatternUtils.getCustomMsg());
         //mShowSliders.setChecked(mLockPatternUtils.isShowSliders());
         mTactileFeedback.setChecked(mLockPatternUtils.isTactileFeedbackEnabled());
@@ -374,6 +392,10 @@ public class SecuritySettings extends PreferenceActivity {
             mLockPatternUtils.setVisibleDotsEnabled(isToggled(preference));
         } else if (KEY_SHOW_ERROR_PATH.equals(key)) {
             mLockPatternUtils.setShowErrorPath(isToggled(preference));
+        } else if (KEY_SHOW_UNLOCK_MSG.equals(key)) {
+            mLockPatternUtils.setShowUnlockMsg(isToggled(preference));
+        } else if (KEY_SHOW_UNLOCK_ERR_MSG.equals(key)) {
+            mLockPatternUtils.setShowUnlockErrMsg(isToggled(preference));
         } else if (KEY_SHOW_CUSTOM_MSG.equals(key)) {
             mLockPatternUtils.setShowCustomMsg(isToggled(preference));
         } /*else if (KEY_SHOW_SLIDERS.equals(key)) {
