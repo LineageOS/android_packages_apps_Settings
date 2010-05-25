@@ -89,7 +89,8 @@ public class BrightnessPreference extends SeekBarPreference implements
 
     public void onProgressChanged(SeekBar seekBar, int progress,
             boolean fromTouch) {
-        setBrightness(progress + MINIMUM_BACKLIGHT);
+        int newBrightness = progress + MINIMUM_BACKLIGHT;
+        setBrightness(newBrightness > MAXIMUM_BACKLIGHT ? MAXIMUM_BACKLIGHT : newBrightness);
     }
 
     public void onStartTrackingTouch(SeekBar seekBar) {
