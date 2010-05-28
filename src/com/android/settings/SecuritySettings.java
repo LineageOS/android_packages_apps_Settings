@@ -318,6 +318,8 @@ public class SecuritySettings extends PreferenceActivity {
         mTactileFeedback.setEnabled(patternExists);
         mPinBasedLocking.setEnabled(!patternExists);
         mPinCheckTimeout.setEnabled(mLockPatternUtils.isPinLockingEnabled());
+        mShowUnlockMsg.setEnabled(patternExists);
+        mShowUnlockErrMsg.setEnabled(patternExists);
 
         mLockEnabled.setChecked(mLockPatternUtils.isLockPatternEnabled());
         mVisiblePattern.setChecked(mLockPatternUtils.isVisiblePatternEnabled());
