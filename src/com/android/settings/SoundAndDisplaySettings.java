@@ -390,6 +390,10 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
             Settings.System.putInt(getContentResolver(),
                     Settings.System.TRACKBALL_UNLOCK_SCREEN, value ? 1 : 0);
         }
+        else
+        {
+            return super.onPreferenceTreeClick(preferenceScreen, preference);
+        }
 
         return true;
     }
