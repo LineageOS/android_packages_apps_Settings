@@ -235,6 +235,14 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="SilentChannels" android:label="@string/silent_channels_label">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="com.android.settings.SILENT_CHANNELS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <activity android:name="DockSettings"
                 android:label="@string/dock_settings_title"
                 android:clearTaskOnLaunch="true"
