@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2008 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+        android:key="silent_mode_settings">
+
+        <Preference
+                android:key="reset_to_default"
+                android:title="@string/silent_mode_settings_reset_to_default_title"
+                android:summary="@string/silent_mode_settings_reset_to_default_summary"
+                android:persistent="false" />
+
+        <Preference
+                android:key="mute_all"
+                android:title="@string/silent_mode_settings_mute_all_title"
+                android:summary="@string/silent_mode_settings_mute_all_summary"
+                android:persistent="false" />
+
+        <!-- Don't allow disabling the voice call channel.  It doesn't make sense to do
+             that and it'll probably just confuse people. -->
+        <!--
+        <CheckBoxPreference
+                android:key="stream_voice_call"
+                android:title="@string/silent_mode_settings_voice_call_title"
+                android:summary="@string/silent_mode_settings_voice_call_summary"
+                android:persistent="false" />
+        -->
+        <CheckBoxPreference
+                android:key="stream_system"
+                android:title="@string/silent_mode_settings_system_title"
+                android:summary="@string/silent_mode_settings_system_summary"
+                android:persistent="false" />
+
+        <CheckBoxPreference
+                android:key="stream_ring"
+                android:title="@string/silent_mode_settings_ring_title"
+                android:summary="@string/silent_mode_settings_ring_summary"
+                android:persistent="false" />
+
+        <CheckBoxPreference
+                android:key="stream_music"
+                android:title="@string/silent_mode_settings_music_title"
+                android:summary="@string/silent_mode_settings_music_summary"
+                android:persistent="false" />
+
+        <CheckBoxPreference
+                android:key="stream_alarm"
+                android:title="@string/silent_mode_settings_alarm_title"
+                android:summary="@string/silent_mode_settings_alarm_summary"
+                android:persistent="false" />
+
+        <CheckBoxPreference
+                android:key="stream_notification"
+                android:title="@string/silent_mode_settings_notification_title"
+                android:summary="@string/silent_mode_settings_notification_summary"
+                android:persistent="false" />
+
+        <!-- I'm not sure exactly what this silences.  Let's hide it until it's tested
+             to make sure it has any value.  It's pointless to silence a bluetooth headset. -->
+        <!--
+        <CheckBoxPreference
+                android:key="stream_bluetooth"
+                android:title="@string/silent_mode_settings_bluetooth_title"
+                android:summary="@string/silent_mode_settings_bluetooth_summary"
+                android:persistent="false" />
+        -->
+
+        <!-- Don't show the "system enforced" channel; users don't know what that means,
+             and if we want to allow silencing the camera sound, that should be done in
+             the camera settings.  Maybe we should tie this one to SYSTEM. -->
+        <!--
+        <CheckBoxPreference
+                android:key="stream_system_enforced"
+                android:title="@string/silent_mode_settings_system_enforced_title"
+                android:summary="@string/silent_mode_settings_system_enforced_summary"
+                android:persistent="false" />
+        -->
+
+        <!-- Hide the DTMF toggle.  DTMF sounds seem to be silenced regardless of this (they
+             must be going over a different channel). -->
+        <!--
+        <CheckBoxPreference
+                android:key="stream_dtmf"
+                android:title="@string/silent_mode_settings_dtmf_title"
+                android:summary="@string/silent_mode_settings_dtmf_summary"
+                android:persistent="false" />
+        -->
+
+        <!-- I havn't tested this one. -->
+        <!--
+        <CheckBoxPreference
+                android:key="stream_tts"
+                android:title="@string/silent_mode_settings_tts_title"
+                android:summary="@string/silent_mode_settings_tts_summary"
+                android:persistent="false" />
+        -->
+</PreferenceScreen>
