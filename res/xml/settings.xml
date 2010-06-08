@@ -42,8 +42,9 @@
         <!-- Launcher -->
 
         <com.android.settings.IconPreferenceScreen
-            settings:icon="@drawable/ic_settings_sound_display"
-            android:title="@string/launcher_settings_title">
+            settings:icon="@drawable/ic_settings_launcher"
+            android:title="@string/launcher_settings_title"
+            android:key="launcher_settings">
             <intent
                 android:action="android.intent.action.MAIN"
                 android:targetPackage="com.android.launcher"
@@ -190,14 +191,16 @@
         </com.android.settings.IconPreferenceScreen>
 
   		<!-- Spare Parts -->
-  		<PreferenceScreen
-            settings:icon="@drawable/ic_settings_about"
-      		android:title="@string/spare_settings_title">
+
+  		<com.android.settings.IconPreferenceScreen
+            settings:icon="@drawable/ic_settings_spareparts"
+      		android:title="@string/spare_settings_title"
+            android:key="spareparts_settings">
       		<intent
           		android:action="android.intent.action.MAIN"
           		android:targetPackage="com.android.spare_parts"
           		android:targetClass="com.android.spare_parts.SpareParts" />
-  		</PreferenceScreen>
+  		</com.android.settings.IconPreferenceScreen>
 
         <!-- About Device -->
 
