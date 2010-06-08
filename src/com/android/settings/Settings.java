@@ -16,11 +16,19 @@
 
 package com.android.settings;
 
+import java.util.List;
+
+import android.util.Log;
 import android.os.Bundle;
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.ActivityInfo;
+import android.content.pm.ResolveInfo;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
 import android.telephony.TelephonyManager;
+import android.content.pm.PackageManager;
 
 public class Settings extends PreferenceActivity {
 
@@ -43,8 +51,33 @@ public class Settings extends PreferenceActivity {
         PreferenceGroup parent = (PreferenceGroup) findPreference(KEY_PARENT);
         Utils.updatePreferenceToSpecificActivityOrRemove(this, parent, KEY_SYNC_SETTINGS, 0);
         Utils.updatePreferenceToSpecificActivityOrRemove(this, parent, KEY_SEARCH_SETTINGS, 0);
-		Utils.updatePreferenceToSpecificActivityOrRemove(this, parent, KEY_LAUNCHER, 0);
 		Utils.updatePreferenceToSpecificActivityOrRemove(this, parent, KEY_SPARE_PARTS, 0);
+
+		Intent intent = new Intent();
+		intent.setAction("android.intent.action.MAIN");
+		intent.addCategory("android.intent.category.HOME");
+		boolean found = true;
+		List<ResolveInfo> l = getPackageManager().queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+		if ( l.size() > 1 ){
+			found = false;
+			for (ResolveInfo r: l){
+ 				if (r.activityInfo != null){
+ 			   		Log.d("Settings", " - " + r.activityInfo.name + " : " + r.isDefault);
+					if (r.activityInfo.name.equals("com.android.launcher.Launcher") ){
+						if (r.isDefault ){
+							found = true;
+						}
+					}
+				}
+			}
+		}
+		if (!found){
+        	Preference launcherSettings = parent.findPreference(KEY_LAUNCHER);
+        	parent.removePreference(launcherSettings);
+		} else {
+			// Now check is system ADW.Launcher and not Market
+			Utils.updatePreferenceToSpecificActivityOrRemove(this, parent, KEY_LAUNCHER, 0);
+		}
 
         Preference dockSettings = parent.findPreference(KEY_DOCK_SETTINGS);
         if (getResources().getBoolean(R.bool.has_dock_settings) == false && dockSettings != null) {
