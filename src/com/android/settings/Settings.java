@@ -16,14 +16,10 @@
 
 package com.android.settings;
 
-import java.util.List;
-
-import android.util.Log;
 import android.os.Bundle;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.ActivityInfo;
-import android.content.pm.ResolveInfo;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
@@ -39,6 +35,8 @@ public class Settings extends PreferenceActivity {
     private static final String KEY_DOCK_SETTINGS = "dock_settings";
 	private static final String KEY_LAUNCHER = "launcher_settings";
 	private static final String KEY_SPARE_PARTS = "spareparts_settings";
+
+	private Preference mLauncherSettings;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,34 +50,9 @@ public class Settings extends PreferenceActivity {
         Utils.updatePreferenceToSpecificActivityOrRemove(this, parent, KEY_SYNC_SETTINGS, 0);
         Utils.updatePreferenceToSpecificActivityOrRemove(this, parent, KEY_SEARCH_SETTINGS, 0);
 		Utils.updatePreferenceToSpecificActivityOrRemove(this, parent, KEY_SPARE_PARTS, 0);
+        mLauncherSettings = parent.findPreference(KEY_LAUNCHER);
 
-		Intent intent = new Intent();
-		intent.setAction("android.intent.action.MAIN");
-		intent.addCategory("android.intent.category.HOME");
-		boolean found = true;
-		List<ResolveInfo> l = getPackageManager().queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
-		if ( l.size() > 1 ){
-			found = false;
-			for (ResolveInfo r: l){
- 				if (r.activityInfo != null){
- 			   		Log.d("Settings", " - " + r.activityInfo.name + " : " + r.isDefault);
-					if (r.activityInfo.name.equals("com.android.launcher.Launcher") ){
-						if (r.isDefault ){
-							found = true;
-						}
-					}
-				}
-			}
-		}
-		if (!found){
-        	Preference launcherSettings = parent.findPreference(KEY_LAUNCHER);
-        	parent.removePreference(launcherSettings);
-		} else {
-			// Now check is system ADW.Launcher and not Market
-			Utils.updatePreferenceToSpecificActivityOrRemove(this, parent, KEY_LAUNCHER, 0);
-		}
-
-        Preference dockSettings = parent.findPreference(KEY_DOCK_SETTINGS);
+		Preference dockSettings = parent.findPreference(KEY_DOCK_SETTINGS);
         if (getResources().getBoolean(R.bool.has_dock_settings) == false && dockSettings != null) {
             parent.removePreference(dockSettings);
         }
@@ -89,6 +62,24 @@ public class Settings extends PreferenceActivity {
     protected void onResume() {
         super.onResume();
         findPreference(KEY_CALL_SETTINGS).setEnabled(!AirplaneModeEnabler.isAirplaneModeOn(this));
+
+		Intent intent = new Intent();
+		intent.setAction("android.intent.action.MAIN");
+		intent.addCategory("android.intent.category.HOME");
+		
+        PreferenceGroup parent = (PreferenceGroup) findPreference(KEY_PARENT);
+
+		ActivityInfo a = getPackageManager().resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY).activityInfo;
+ 		if (a != null && a.name.equals("com.android.launcher.Launcher") && (a.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0 ){
+			if ( parent.findPreference(KEY_LAUNCHER) == null){
+				parent.addPreference(mLauncherSettings);
+			}
+		} else {
+			if ( parent.findPreference(KEY_LAUNCHER) != null){
+        		parent.removePreference(mLauncherSettings);
+			}
+		}
+
     }
 
 }
