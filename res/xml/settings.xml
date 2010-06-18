@@ -39,6 +39,18 @@
                 android:targetClass="com.android.phone.CallFeaturesSetting" />
         </com.android.settings.IconPreferenceScreen>
 
+        <!-- Launcher -->
+
+        <com.android.settings.IconPreferenceScreen
+            settings:icon="@drawable/ic_settings_launcher"
+            android:title="@string/launcher_settings_title"
+            android:key="launcher_settings">
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="com.android.launcher"
+                android:targetClass="com.android.launcher.MyLauncherSettings" />
+        </com.android.settings.IconPreferenceScreen>
+
         <!-- Sound and Display -->
 
         <com.android.settings.IconPreferenceScreen
@@ -177,6 +189,18 @@
                 android:targetPackage="com.android.settings"
                 android:targetClass="com.android.settings.DateTimeSettings" />
         </com.android.settings.IconPreferenceScreen>
+
+  		<!-- Spare Parts -->
+
+  		<com.android.settings.IconPreferenceScreen
+            settings:icon="@drawable/ic_settings_spareparts"
+      		android:title="@string/spare_settings_title"
+            android:key="spareparts_settings">
+      		<intent
+          		android:action="android.intent.action.MAIN"
+          		android:targetPackage="com.android.spare_parts"
+          		android:targetClass="com.android.spare_parts.SpareParts" />
+  		</com.android.settings.IconPreferenceScreen>
 
         <!-- About Device -->
 
