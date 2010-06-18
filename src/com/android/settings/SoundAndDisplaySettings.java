@@ -52,6 +52,7 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
 
     private static final String KEY_SILENT = "silent";
     private static final String KEY_VIBRATE = "vibrate";
+    private static final String KEY_SPEAKER_NOTIFICATIONS = "speaker_notifications";
     private static final String KEY_SCREEN_TIMEOUT = "screen_timeout";
     private static final String KEY_DTMF_TONE = "dtmf_tone";
     private static final String KEY_SOUND_EFFECTS = "sound_effects";
@@ -84,6 +85,7 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
      * setting.
      */
     private CheckBoxPreference mVibrate;
+    private CheckBoxPreference mSpeakerNotifications;
     private CheckBoxPreference mDtmfTone;
     private CheckBoxPreference mSoundEffects;
     private CheckBoxPreference mHapticFeedback;
@@ -136,6 +138,7 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
         mPlayMediaNotificationSounds = (CheckBoxPreference) findPreference(KEY_PLAY_MEDIA_NOTIFICATION_SOUNDS);
 
         mVibrate = (CheckBoxPreference) findPreference(KEY_VIBRATE);
+        mSpeakerNotifications = (CheckBoxPreference) findPreference(KEY_SPEAKER_NOTIFICATIONS);
         mDtmfTone = (CheckBoxPreference) findPreference(KEY_DTMF_TONE);
         mDtmfTone.setPersistent(false);
         mDtmfTone.setChecked(Settings.System.getInt(resolver,
@@ -266,6 +269,12 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
             mVibrate.setChecked(vibrateSetting);
         }
 
+	boolean speakerNotificationSetting = Settings.Secure.getInt(getContentResolver(),
+                Settings.System.NOTIFICATIONS_TO_SPEAKER, 1) != 0;
+        if (speakerNotificationSetting != mSpeakerNotifications.isChecked() || force) {
+            mSpeakerNotifications.setChecked(speakerNotificationSetting);
+        }
+
         int silentModeStreams = Settings.System.getInt(getContentResolver(),
                 Settings.System.MODE_RINGER_STREAMS_AFFECTED, 0);
         boolean isAlarmInclSilentMode = (silentModeStreams & (1 << AudioManager.STREAM_ALARM)) != 0;
@@ -368,6 +377,10 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
         } else if (preference == mHapticFeedback) {
             Settings.System.putInt(getContentResolver(), Settings.System.HAPTIC_FEEDBACK_ENABLED,
                     mHapticFeedback.isChecked() ? 1 : 0);
+
+        } else if (preference == mSpeakerNotifications) {
+            Settings.System.putInt(getContentResolver(), Settings.System.NOTIFICATIONS_TO_SPEAKER,
+                    mSpeakerNotifications.isChecked() ? 1 : 0);
 
         } else if (preference == mNotificationPulse) {
             value = mNotificationPulse.isChecked();

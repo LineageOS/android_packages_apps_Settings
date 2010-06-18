@@ -75,6 +75,13 @@
                 android:order="6"
                 android:persistent="false" />
 
+        <CheckBoxPreference
+                android:key="speaker_notifications"
+                android:title="@string/speaker_notifications"
+                android:summary="@string/speaker_notifications_summary"
+                android:order="7"
+                android:persistent="false" />
+
         <com.android.settings.DefaultRingtonePreference
                 android:key="notification_sound"
                 android:title="@string/notification_sound_title"
