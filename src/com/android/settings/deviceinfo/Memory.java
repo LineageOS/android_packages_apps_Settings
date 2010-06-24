@@ -302,7 +302,6 @@ public class Memory extends PreferenceActivity implements OnCancelListener {
             mSdSize.setSummary(mRes.getString(R.string.sd_unavailable));
             mSdAvail.setSummary(mRes.getString(R.string.sd_unavailable));
 
-
             if (status.equals(Environment.MEDIA_UNMOUNTED) ||
                 status.equals(Environment.MEDIA_NOFS) ||
                 status.equals(Environment.MEDIA_UNMOUNTABLE) ) {
