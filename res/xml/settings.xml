@@ -205,12 +205,12 @@
 
         <!-- CM Settings -->
         <com.android.settings.IconPreferenceScreen
-            settings:icon="@drawable/cm_icon"
+            settings:icon="@drawable/ic_cyanogenmod"
             android:title="@string/cm_settings_title">
             <intent
                 android:action="android.intent.action.MAIN"
-                android:targetPackage="com.android.settings"
-                android:targetClass="com.android.settings.CMSettings" />
+                android:targetPackage="com.cyanogenmod.cmparts"
+                android:targetClass="com.cyanogenmod.cmparts.activities.MainActivity" />
             </com.android.settings.IconPreferenceScreen>
 
         <!-- About Device -->
