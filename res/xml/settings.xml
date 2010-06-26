@@ -203,6 +203,16 @@
                 android:targetClass="com.android.settings.DateTimeSettings" />
         </com.android.settings.IconPreferenceScreen>
 
+        <!-- CM Settings -->
+        <com.android.settings.IconPreferenceScreen
+            settings:icon="@drawable/cm_icon"
+            android:title="@string/cm_settings_title">
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="com.android.settings"
+                android:targetClass="com.android.settings.CMSettings" />
+            </com.android.settings.IconPreferenceScreen>
+
         <!-- About Device -->
 
         <com.android.settings.IconPreferenceScreen
