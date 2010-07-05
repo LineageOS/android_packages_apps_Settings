@@ -34,6 +34,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.SystemProperties;
 import android.preference.CheckBoxPreference;
+import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -65,11 +66,28 @@ public class SecuritySettings extends PreferenceActivity {
     private static final String KEY_LOCK_ENABLED = "lockenabled";
     private static final String KEY_VISIBLE_PATTERN = "visiblepattern";
     private static final String KEY_TACTILE_FEEDBACK_ENABLED = "unlock_tactile_feedback";
+    
+    private static final String KEY_INCORRECT_DELAY = "incorrectdelay";
+    private static final String KEY_VISIBLE_DOTS = "visibledots";
+    private static final String KEY_SHOW_ERROR_PATH = "showerrorpath";
+    private static final String KEY_SHOW_CUSTOM_MSG = "showcustommsg";
+    private static final String KEY_CUSTOM_MSG = "custommsg";
+    private static final String KEY_SHOW_UNLOCK_MSG = "showunlockmsg";
+    private static final String KEY_SHOW_UNLOCK_ERR_MSG = "showunlockerrmsg";
 
     private CheckBoxPreference mVisiblePattern;
     private CheckBoxPreference mTactileFeedback;
 
     private CheckBoxPreference mShowPassword;
+
+    private CheckBoxPreference mVisibleDots;
+    private CheckBoxPreference mShowErrorPath;
+    private CheckBoxPreference mShowCustomMsg;
+    private EditTextPreference mCustomMsg;
+    private CheckBoxPreference mShowUnlockMsg;
+    private CheckBoxPreference mShowUnlockErrMsg;
+    private ListPreference mIncorrectDelay;
+
 
     // Location Settings
     private static final String LOCATION_NETWORK = "location_network";
@@ -161,6 +179,14 @@ public class SecuritySettings extends PreferenceActivity {
 
         // tactile feedback. Should be common to all unlock preference screens.
         mTactileFeedback = (CheckBoxPreference) pm.findPreference(KEY_TACTILE_FEEDBACK_ENABLED);
+        
+        mVisibleDots = (CheckBoxPreference) pm.findPreference(KEY_VISIBLE_DOTS);
+        mShowErrorPath = (CheckBoxPreference) pm.findPreference(KEY_SHOW_ERROR_PATH);
+        mShowCustomMsg = (CheckBoxPreference) pm.findPreference(KEY_SHOW_CUSTOM_MSG);        
+        mCustomMsg = (EditTextPreference) pm.findPreference(KEY_CUSTOM_MSG);        
+        mShowUnlockMsg = (CheckBoxPreference) pm.findPreference(KEY_SHOW_UNLOCK_MSG);        
+        mShowUnlockErrMsg = (CheckBoxPreference) pm.findPreference(KEY_SHOW_UNLOCK_ERR_MSG);        
+        mIncorrectDelay = (ListPreference) pm.findPreference(KEY_INCORRECT_DELAY);
 
         int activePhoneType = TelephonyManager.getDefault().getPhoneType();
 
@@ -223,12 +249,59 @@ public class SecuritySettings extends PreferenceActivity {
         if (mTactileFeedback != null) {
             mTactileFeedback.setChecked(lockPatternUtils.isTactileFeedbackEnabled());
         }
+        if (mVisibleDots != null) {
+            mVisibleDots.setChecked(lockPatternUtils.isVisibleDotsEnabled());
+        }
+        if (mShowErrorPath != null) {
+            mShowErrorPath.setChecked(lockPatternUtils.isShowErrorPath());
+        }
+        if (mShowCustomMsg != null) {
+            mShowCustomMsg.setChecked(lockPatternUtils.isShowCustomMsg());
+        }
+        if (mShowUnlockMsg != null) {
+            mShowUnlockMsg.setChecked(lockPatternUtils.isShowUnlockMsg());
+        }
+        if (mShowUnlockErrMsg != null) {
+            mShowUnlockErrMsg.setChecked(lockPatternUtils.isShowUnlockErrMsg());
+        }
+        if (mCustomMsg != null) {
+            mCustomMsg.setOnPreferenceChangeListener(mOnCustomMsgChangeListener);
+            mCustomMsg.setText(lockPatternUtils.getCustomMsg());
+        }
+        if (mIncorrectDelay != null) {
+            mIncorrectDelay.setOnPreferenceChangeListener(mIncorrectDelayChangeListener);
+        }
 
         mShowPassword.setChecked(Settings.System.getInt(getContentResolver(),
                 Settings.System.TEXT_SHOW_PASSWORD, 1) != 0);
 
         mCredentialStorage.resume();
     }
+    
+    private Preference.OnPreferenceChangeListener mIncorrectDelayChangeListener =
+    	new Preference.OnPreferenceChangeListener() {
+			public boolean onPreferenceChange(Preference preference, Object newValue) {
+				if (preference == mIncorrectDelay) {
+					int value = Integer.parseInt(newValue.toString());
+                    final LockPatternUtils lockPatternUtils = mChooseLockSettingsHelper.utils();
+					lockPatternUtils.setIncorrectDelay(value);					
+				}
+
+				return true;
+        }
+    };
+    
+    private Preference.OnPreferenceChangeListener mOnCustomMsgChangeListener =
+    	new Preference.OnPreferenceChangeListener() {
+			public boolean onPreferenceChange(Preference preference, Object newValue) {
+				if (preference == mCustomMsg) {
+                    final LockPatternUtils lockPatternUtils = mChooseLockSettingsHelper.utils();
+					lockPatternUtils.setCustomMsg(newValue.toString());
+				}
+
+				return true;
+        }
+	};
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
@@ -243,6 +316,16 @@ public class SecuritySettings extends PreferenceActivity {
             lockPatternUtils.setLockPatternEnabled(isToggled(preference));
         } else if (KEY_VISIBLE_PATTERN.equals(key)) {
             lockPatternUtils.setVisiblePatternEnabled(isToggled(preference));
+        } else if (KEY_VISIBLE_DOTS.equals(key)) {
+            lockPatternUtils.setVisibleDotsEnabled(isToggled(preference));
+        } else if (KEY_SHOW_ERROR_PATH.equals(key)) {
+            lockPatternUtils.setShowErrorPath(isToggled(preference));
+        } else if (KEY_SHOW_UNLOCK_MSG.equals(key)) {
+            lockPatternUtils.setShowUnlockMsg(isToggled(preference));
+        } else if (KEY_SHOW_UNLOCK_ERR_MSG.equals(key)) {
+            lockPatternUtils.setShowUnlockErrMsg(isToggled(preference));
+        } else if (KEY_SHOW_CUSTOM_MSG.equals(key)) {
+            lockPatternUtils.setShowCustomMsg(isToggled(preference));            
         } else if (KEY_TACTILE_FEEDBACK_ENABLED.equals(key)) {
             lockPatternUtils.setTactileFeedbackEnabled(isToggled(preference));
         } else if (preference == mShowPassword) {
