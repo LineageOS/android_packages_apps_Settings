@@ -231,6 +231,7 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
         }
         dataOnly = (info1 == null) && (mAppInfo != null);
         boolean moveDisable = true;
+
         if (dataOnly) {
             mMoveAppButton.setText(R.string.move_app);
         } else if ((mAppInfo.flags & ApplicationInfo.FLAG_EXTERNAL_STORAGE) != 0) {
@@ -263,7 +264,9 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
                 }
             }
         }
-        if (moveDisable) {
+        boolean allowMoveAllApps = android.provider.Settings.Secure.getInt(getContentResolver(),
+                android.provider.Settings.Secure.ALLOW_MOVE_ALL_APPS_EXTERNAL, 1) == 1;
+        if (!allowMoveAllApps && moveDisable) {
             mMoveAppButton.setEnabled(false);
         } else {
             mMoveAppButton.setOnClickListener(this);
