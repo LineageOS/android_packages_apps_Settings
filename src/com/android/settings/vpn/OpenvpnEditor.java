@@ -163,6 +163,9 @@ class OpenvpnEditor extends VpnProfileEditor {
         p.setSupplyAddr(newP.getSupplyAddr());
         p.setLocalAddr(newP.getLocalAddr());
         p.setRemoteAddr(newP.getRemoteAddr());
+        p.setCipher(newP.getCipher());
+        p.setKeySize(newP.getKeySize());
+        p.setExtra(newP.getExtra());
     }
 
     private ListPreference createList(Context c, int titleResId, String selection, String[] keys,
@@ -188,12 +191,18 @@ class OpenvpnEditor extends VpnProfileEditor {
         private static final String KEY_COMP_LZO = "set_comp_lzo";
 
         private static final String KEY_REDIRECT_GATEWAY = "set_redirect_gateway";
-        
+
         private static final String KEY_SET_ADDR = "set_addr";
 
         private static final String KEY_LOCAL_ADDR = "set_local_addr";
 
         private static final String KEY_REMOTE_ADDR = "set_remote_addr";
+
+        private static final String KEY_CIPHER = "set_cipher";
+
+        private static final String KEY_KEYSIZE = "set_keysize";
+
+        private static final String KEY_EXTRA = "set_extra";
 
         private EditTextPreference mPort;
 
@@ -204,12 +213,18 @@ class OpenvpnEditor extends VpnProfileEditor {
         private CheckBoxPreference mCompLzo;
 
         private CheckBoxPreference mRedirectGateway;
-        
+
         private CheckBoxPreference mSetAddr;
 
         private EditTextPreference mLocalAddr;
 
         private EditTextPreference mRemoteAddr;
+
+        private EditTextPreference mCipher;
+
+        private EditTextPreference mKeySize;
+
+        private EditTextPreference mExtra;
 
         private OpenvpnProfile profile;
 
@@ -229,6 +244,9 @@ class OpenvpnEditor extends VpnProfileEditor {
             mSetAddr = (CheckBoxPreference) findPreference(KEY_SET_ADDR);
             mLocalAddr = (EditTextPreference) findPreference(KEY_LOCAL_ADDR);
             mRemoteAddr = (EditTextPreference) findPreference(KEY_REMOTE_ADDR);
+            mCipher = (EditTextPreference) findPreference(KEY_CIPHER);
+            mKeySize = (EditTextPreference) findPreference(KEY_KEYSIZE);
+            mExtra = (EditTextPreference) findPreference(KEY_EXTRA);
 
             mPort.setSummary(profile.getPort());
             mPort.setText(profile.getPort());
@@ -288,7 +306,7 @@ class OpenvpnEditor extends VpnProfileEditor {
                     return true;
                 }
             });
-            
+
             // This is inverted to cope with the way dependencies work
             mSetAddr.setChecked(!profile.getSupplyAddr());
             mSetAddr.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
@@ -322,6 +340,60 @@ class OpenvpnEditor extends VpnProfileEditor {
                     profile.setRemoteAddr(name);
                     mRemoteAddr.setSummary(profile.getRemoteAddr());
 
+                    return true;
+                }
+            });
+
+            if (profile.getCipher() == null ||
+                profile.getCipher().equals(""))
+                mCipher.setSummary("default");
+            else
+                mCipher.setSummary(profile.getCipher());
+            mCipher.setText(profile.getCipher());
+            mCipher.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                public boolean onPreferenceChange(Preference pref, Object newValue) {
+                    String name = (String) newValue;
+                    name.trim();
+                    profile.setCipher(name);
+                    if (profile.getCipher().equals(""))
+                        mCipher.setSummary("default");
+                    else
+                        mCipher.setSummary(profile.getCipher());
+                    return true;
+                }
+            });
+
+            if (profile.getKeySize() == null ||
+                profile.getKeySize().equals("0")) {
+                mKeySize.setSummary("default");
+                mKeySize.setText("");
+            } else {
+                mKeySize.setSummary(profile.getKeySize());
+                mKeySize.setText(profile.getKeySize());
+            }
+            mKeySize.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                public boolean onPreferenceChange(Preference pref, Object newValue) {
+                    String name = (String) newValue;
+                    name.trim();
+                    if (name.equals(""))
+                        name = "0";
+                    profile.setKeySize(name);
+                    if (profile.getKeySize().equals("0"))
+                        mKeySize.setSummary("default");
+                    else
+                        mKeySize.setSummary(profile.getKeySize());
+                    return true;
+                }
+            });
+
+            mExtra.setSummary(profile.getExtra());
+            mExtra.setText(profile.getExtra());
+            mExtra.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                public boolean onPreferenceChange(Preference pref, Object newValue) {
+                    String name = (String) newValue;
+                    name.trim();
+                    profile.setExtra(name);
+                    mExtra.setSummary(profile.getExtra());
                     return true;
                 }
             });

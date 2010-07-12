@@ -75,5 +75,32 @@
        android:dependency="set_addr"
        android:singleLine="true"
        />
- 
-</PreferenceScreen>   
+
+    <EditTextPreference
+       android:key="set_cipher"
+       android:title="@string/vpn_openvpn_set_cipher"
+       android:dialogTitle="@string/vpn_openvpn_set_cipher"
+       android:dialogMessage="@string/vpn_openvpn_set_cipher_message"
+       android:singleLine="true"
+       android:inputType="textCapCharacters"
+       />
+
+    <EditTextPreference
+       android:key="set_keysize"
+       android:title="@string/vpn_openvpn_set_keysize"
+       android:dialogTitle="@string/vpn_openvpn_set_keysize"
+       android:dialogMessage="@string/vpn_openvpn_set_keysize_message"
+       android:singleLine="true"
+       android:inputType="number"
+       />
+
+    <EditTextPreference
+       android:key="set_extra"
+       android:title="@string/vpn_openvpn_set_extra"
+       android:dialogTitle="@string/vpn_openvpn_set_extra"
+       android:dialogMessage="@string/vpn_openvpn_set_extra_message"
+       android:singleLine="true"
+       android:inputType="text"
+       />
+
+</PreferenceScreen>
