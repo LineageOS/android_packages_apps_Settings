@@ -39,6 +39,7 @@ import android.util.Log;
 import android.widget.RemoteViews;
 import com.android.settings.R;
 import com.android.settings.bluetooth.LocalBluetoothManager;
+import android.net.ConnectivityManager;
 
 /**
  * Provides control of power-related settings from a widget.
@@ -57,6 +58,7 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
     private static final int BUTTON_SYNC = 2;
     private static final int BUTTON_GPS = 3;
     private static final int BUTTON_BLUETOOTH = 4;
+    private static final int BUTTON_DATA = 5;
 
     // This widget keeps track of two sets of states:
     // "3-state": STATE_DISABLED, STATE_ENABLED, STATE_INTERMEDIATE
@@ -418,6 +420,9 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
         views.setOnClickPendingIntent(R.id.btn_bluetooth,
                 getLaunchPendingIntent(context,
                         appWidgetId, BUTTON_BLUETOOTH));
+        views.setOnClickPendingIntent(R.id.btn_data,
+                getLaunchPendingIntent(context,
+                        appWidgetId, BUTTON_DATA));
 
         updateButtons(views, context);
         return views;
@@ -496,6 +501,13 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
         } else {
             views.setImageViewResource(R.id.img_sync, R.drawable.ic_appwidget_settings_sync_off);
             views.setImageViewResource(R.id.ind_sync, R.drawable.appwidget_settings_ind_off_c);
+        }
+        if (getDataState(context)) {
+            views.setImageViewResource(R.id.img_data, R.drawable.ic_appwidget_settings_data_on);
+            views.setImageViewResource(R.id.ind_data, R.drawable.appwidget_settings_ind_on_c);
+        } else {
+            views.setImageViewResource(R.id.img_data, R.drawable.ic_appwidget_settings_data_off);
+            views.setImageViewResource(R.id.ind_data, R.drawable.appwidget_settings_ind_off_c);
         }
         if (getGpsState(context)) {
             views.setImageViewResource(R.id.img_gps, R.drawable.ic_appwidget_settings_gps_on);
@@ -580,6 +592,8 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
                 toggleSync(context);
             } else if (buttonId == BUTTON_GPS) {
                 toggleGps(context);
+            } else if (buttonId == BUTTON_DATA) {
+                toggleData(context);
             } else if (buttonId == BUTTON_BLUETOOTH) {
                 sBluetoothState.toggleState(context);
             }
@@ -675,6 +689,30 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
         boolean enabled = getGpsState(context);
         Settings.Secure.setLocationProviderEnabled(resolver, LocationManager.GPS_PROVIDER,
                 !enabled);
+    }
+
+    /**
+     * Gets the state of data
+     *
+     * @return true if enabled.
+     */
+    private static boolean getDataState(Context context) {
+	ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.getMobileDataEnabled();
+    }
+
+    /**
+     * Toggles the state of data.
+     *
+     */
+    private void toggleData(Context context) {
+	boolean enabled = getDataState(context);
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+	if (enabled) {
+		cm.setMobileDataEnabled(false);
+	} else {
+		cm.setMobileDataEnabled(true);
+	}
     }
 
     /**
