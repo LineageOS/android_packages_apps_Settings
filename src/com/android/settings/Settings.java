@@ -23,6 +23,7 @@ import android.content.pm.ActivityInfo;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
+import android.content.pm.PackageManager;
 
 public class Settings extends PreferenceActivity {
 
