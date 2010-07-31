@@ -57,6 +57,9 @@ import com.android.internal.widget.LockPatternUtils;
  * Gesture lock pattern settings.
  */
 public class SecuritySettings extends PreferenceActivity {
+	
+	public static final String GPS_STATUS_CHANGED="com.android.settings.GPS_STATUS_CHANGED";
+	
     private static final String KEY_UNLOCK_SET_OR_CHANGE = "unlock_set_or_change";
 
     // Lock Settings
@@ -338,6 +341,11 @@ public class SecuritySettings extends PreferenceActivity {
             boolean enabled = mGps.isChecked();
             Settings.Secure.setLocationProviderEnabled(getContentResolver(),
                     LocationManager.GPS_PROVIDER, enabled);
+
+            //{PIAF - Send update of GPS status
+            Intent gpsStatus = new Intent(GPS_STATUS_CHANGED);
+            this.sendBroadcast(gpsStatus);
+            //PIAF}
             if (mAssistedGps != null) {
                 mAssistedGps.setEnabled(enabled);
             }

@@ -25,8 +25,10 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.IContentService;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
+import android.media.AudioManager;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
@@ -35,11 +37,16 @@ import android.os.IPowerManager;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.provider.Settings;
+import android.provider.Settings.SettingNotFoundException;
 import android.util.Log;
+import android.view.View;
 import android.widget.RemoteViews;
+
+import com.android.internal.telephony.Phone;
 import com.android.settings.R;
 import com.android.settings.bluetooth.LocalBluetoothManager;
 import android.net.ConnectivityManager;
+import com.android.settings.SecuritySettings;
 
 /**
  * Provides control of power-related settings from a widget.
@@ -59,6 +66,8 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
     private static final int BUTTON_GPS = 3;
     private static final int BUTTON_BLUETOOTH = 4;
     private static final int BUTTON_DATA = 5;
+    private static final int BUTTON_SOUND = 6;
+    private static final int BUTTON_2G3G = 7;
 
     // This widget keeps track of two sets of states:
     // "3-state": STATE_DISABLED, STATE_ENABLED, STATE_INTERMEDIATE
@@ -81,6 +90,16 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
     private static final StateTracker sWifiState = new WifiStateTracker();
     private static final StateTracker sBluetoothState = new BluetoothStateTracker();
 
+
+    public static final String NETWORK_MODE_CHANGED="com.android.internal.telephony.NETWORK_MODE_CHANGED";
+    public static final String REQUEST_NETWORK_MODE="com.android.internal.telephony.REQUEST_NETWORK_MODE";
+    public static final String MODIFY_NETWORK_MODE="com.android.internal.telephony.MODIFY_NETWORK_MODE";
+    public static final String MOBILE_DATA_CHANGED="com.android.internal.telephony.MOBILE_DATA_CHANGED";
+    public static final String NETWORK_MODE = "networkMode";
+    
+    private static final int NO_NETWORK_MODE_YET = -99;
+    private static final int NETWORK_MODE_UNKNOWN = -100;
+    private static int networkMode=NO_NETWORK_MODE_YET;
     /**
      * The state machine for Wifi and Bluetooth toggling, tracking
      * reality versus the user's intent.
@@ -379,10 +398,23 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 
         for (int i = 0; i < appWidgetIds.length; i++) {
             appWidgetManager.updateAppWidget(appWidgetIds[i], view);
-        }
+        }        
+        //{PIAF
+        checkFor2GStatus(context);
+        //PIAF}	
     }
 
-    @Override
+    //{PIAF
+    private void checkFor2GStatus(Context context) {
+        if (networkMode==NO_NETWORK_MODE_YET) {
+        	// No update received up to now. So request the first status
+            Intent intent = new Intent(REQUEST_NETWORK_MODE);
+            context.sendBroadcast(intent);                        	
+        }
+	}
+    //PIAF}	
+
+	@Override
     public void onEnabled(Context context) {
         PackageManager pm = context.getPackageManager();
         pm.setComponentEnabledSetting(
@@ -405,8 +437,14 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
      * Load image for given widget and build {@link RemoteViews} for it.
      */
     static RemoteViews buildUpdate(Context context, int appWidgetId) {
+    	SharedPreferences preferences = context.getSharedPreferences("widget_",Context.MODE_PRIVATE);
+    	int widgetLayout = R.layout.widget; 
+    	if (preferences.getBoolean("useTransparent", true)) {
+        	widgetLayout = R.layout.widget_transparent;     		
+    	}
+    	
         RemoteViews views = new RemoteViews(context.getPackageName(),
-                R.layout.widget);
+        		widgetLayout);
         views.setOnClickPendingIntent(R.id.btn_wifi, getLaunchPendingIntent(context, appWidgetId,
                 BUTTON_WIFI));
         views.setOnClickPendingIntent(R.id.btn_brightness,
@@ -423,8 +461,14 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
         views.setOnClickPendingIntent(R.id.btn_data,
                 getLaunchPendingIntent(context,
                         appWidgetId, BUTTON_DATA));
+        views.setOnClickPendingIntent(R.id.btn_sound,
+                getLaunchPendingIntent(context,
+                        appWidgetId, BUTTON_SOUND));
+        views.setOnClickPendingIntent(R.id.btn_2G3G,
+                getLaunchPendingIntent(context,
+                        appWidgetId, BUTTON_2G3G));
 
-        updateButtons(views, context);
+        updateButtons(views, context, appWidgetId);
         return views;
     }
 
@@ -446,19 +490,20 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
      * @param views   The RemoteViews to update.
      * @param context
      */
-    private static void updateButtons(RemoteViews views, Context context) {
+    private static void updateButtons(RemoteViews views, Context context, int widgetID) {
+    	SharedPreferences preferences = context.getSharedPreferences("widget_",Context.MODE_PRIVATE);
+    	
+    	if (preferences.getBoolean("toggleWifi", true)) {
         switch (sWifiState.getTriState(context)) {
             case STATE_DISABLED:
                 views.setImageViewResource(R.id.img_wifi,
-                                           R.drawable.ic_appwidget_settings_wifi_off);
-                views.setImageViewResource(R.id.ind_wifi,
-                                           R.drawable.appwidget_settings_ind_off_l);
+                                           R.drawable.ic_appwidget_settings_wifi_off);                
+                	views.setImageViewResource(R.id.ind_wifi,getViewState(preferences,STATE_DISABLED,R.id.ind_wifi));
                 break;
             case STATE_ENABLED:
                 views.setImageViewResource(R.id.img_wifi,
                                            R.drawable.ic_appwidget_settings_wifi_on);
-                views.setImageViewResource(R.id.ind_wifi,
-                                           R.drawable.appwidget_settings_ind_on_l);
+                views.setImageViewResource(R.id.ind_wifi,getViewState(preferences,STATE_ENABLED,R.id.ind_wifi));
                 break;
             case STATE_INTERMEDIATE:
                 // In the transitional state, the bottom green bar
@@ -470,64 +515,90 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
                     views.setImageViewResource(R.id.img_wifi,
                                                R.drawable.ic_appwidget_settings_wifi_on);
                     views.setImageViewResource(R.id.ind_wifi,
-                                               R.drawable.appwidget_settings_ind_mid_l);
+                    		getViewState(preferences,STATE_INTERMEDIATE,R.id.ind_wifi));
                 } else {
                     views.setImageViewResource(R.id.img_wifi,
                                                R.drawable.ic_appwidget_settings_wifi_off);
                     views.setImageViewResource(R.id.ind_wifi,
-                                               R.drawable.appwidget_settings_ind_off_l);
+                    		getViewState(preferences,STATE_DISABLED,R.id.ind_wifi));
                 }
                 break;
         }
+    	} else 
+		{
+    		views.setViewVisibility(R.id.btn_wifi, View.GONE);
+    	}
+    	
+       	if (preferences.getBoolean("toggleBrightness", true)) {
         if (getBrightnessMode(context)) {
             views.setImageViewResource(R.id.img_brightness,
                                        R.drawable.ic_appwidget_settings_brightness_auto);
             views.setImageViewResource(R.id.ind_brightness,
-                                       R.drawable.appwidget_settings_ind_on_r);
+            		getViewState(preferences,STATE_ENABLED,R.id.ind_brightness));
         } else if (getBrightness(context)) {
             views.setImageViewResource(R.id.img_brightness,
                                        R.drawable.ic_appwidget_settings_brightness_on);
             views.setImageViewResource(R.id.ind_brightness,
-                                       R.drawable.appwidget_settings_ind_on_r);
+            		getViewState(preferences,STATE_ENABLED,R.id.ind_brightness));
         } else {
             views.setImageViewResource(R.id.img_brightness,
                                        R.drawable.ic_appwidget_settings_brightness_off);
             views.setImageViewResource(R.id.ind_brightness,
-                                       R.drawable.appwidget_settings_ind_off_r);
+            		getViewState(preferences,STATE_DISABLED,R.id.ind_brightness));
         }
+    	} else {
+    		views.setViewVisibility(R.id.btn_brightness, View.GONE);
+    	}
+        
+       	if (preferences.getBoolean("toggleSync", true)) {
         if (getSync(context)) {
             views.setImageViewResource(R.id.img_sync, R.drawable.ic_appwidget_settings_sync_on);
-            views.setImageViewResource(R.id.ind_sync, R.drawable.appwidget_settings_ind_on_c);
+            views.setImageViewResource(R.id.ind_sync, getViewState(preferences,STATE_ENABLED,R.id.ind_sync));
         } else {
             views.setImageViewResource(R.id.img_sync, R.drawable.ic_appwidget_settings_sync_off);
-            views.setImageViewResource(R.id.ind_sync, R.drawable.appwidget_settings_ind_off_c);
+            views.setImageViewResource(R.id.ind_sync, getViewState(preferences,STATE_DISABLED,R.id.ind_sync));
         }
-        if (getDataState(context)) {
+    	} else {
+    		views.setViewVisibility(R.id.btn_sync, View.GONE);
+    	}
+
+       	if (preferences.getBoolean("toggleData", true)) {
+       	if (getDataState(context)) {
             views.setImageViewResource(R.id.img_data, R.drawable.ic_appwidget_settings_data_on);
-            views.setImageViewResource(R.id.ind_data, R.drawable.appwidget_settings_ind_on_c);
+            views.setImageViewResource(R.id.ind_data, getViewState(preferences,STATE_ENABLED,R.id.ind_data));
         } else {
             views.setImageViewResource(R.id.img_data, R.drawable.ic_appwidget_settings_data_off);
-            views.setImageViewResource(R.id.ind_data, R.drawable.appwidget_settings_ind_off_c);
+            views.setImageViewResource(R.id.ind_data,getViewState(preferences,STATE_DISABLED,R.id.ind_data));
         }
-        if (getGpsState(context)) {
+    	} else {
+    		views.setViewVisibility(R.id.btn_data, View.GONE);
+    	}
+
+       	if (preferences.getBoolean("toggleGPS", true)) {
+       	if (getGpsState(context)) {
             views.setImageViewResource(R.id.img_gps, R.drawable.ic_appwidget_settings_gps_on);
-            views.setImageViewResource(R.id.ind_gps, R.drawable.appwidget_settings_ind_on_c);
+            views.setImageViewResource(R.id.ind_gps, getViewState(preferences,STATE_ENABLED,R.id.ind_gps));
         } else {
             views.setImageViewResource(R.id.img_gps, R.drawable.ic_appwidget_settings_gps_off);
-            views.setImageViewResource(R.id.ind_gps, R.drawable.appwidget_settings_ind_off_c);
+            views.setImageViewResource(R.id.ind_gps, getViewState(preferences,STATE_DISABLED,R.id.ind_gps));
         }
+    	} else {
+    		views.setViewVisibility(R.id.btn_gps, View.GONE);
+    	}
+        
+       	if (preferences.getBoolean("toggleBluetooth", true)) {
         switch (sBluetoothState.getTriState(context)) {
             case STATE_DISABLED:
                 views.setImageViewResource(R.id.img_bluetooth,
                                            R.drawable.ic_appwidget_settings_bluetooth_off);
                 views.setImageViewResource(R.id.ind_bluetooth,
-                                           R.drawable.appwidget_settings_ind_off_c);
+                		getViewState(preferences,STATE_DISABLED,R.id.ind_bluetooth));
                 break;
             case STATE_ENABLED:
                 views.setImageViewResource(R.id.img_bluetooth,
                                            R.drawable.ic_appwidget_settings_bluetooth_on);
                 views.setImageViewResource(R.id.ind_bluetooth,
-                                           R.drawable.appwidget_settings_ind_on_c);
+                		getViewState(preferences,STATE_ENABLED,R.id.ind_bluetooth));
                 break;
             case STATE_INTERMEDIATE:
                 // In the transitional state, the bottom green bar
@@ -539,18 +610,85 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
                     views.setImageViewResource(R.id.img_bluetooth,
                                                R.drawable.ic_appwidget_settings_bluetooth_on);
                     views.setImageViewResource(R.id.ind_bluetooth,
-                                               R.drawable.appwidget_settings_ind_mid_c);
+                    		getViewState(preferences,STATE_INTERMEDIATE,R.id.ind_bluetooth));
                 } else {
                     views.setImageViewResource(R.id.img_bluetooth,
                                                R.drawable.ic_appwidget_settings_bluetooth_off);
                     views.setImageViewResource(R.id.ind_bluetooth,
-                                               R.drawable.appwidget_settings_ind_off_c);
+                    		getViewState(preferences,STATE_DISABLED,R.id.ind_bluetooth));
                 }
                 break;
         }
+    	} else {
+    		views.setViewVisibility(R.id.btn_bluetooth, View.GONE);
+    	}
+        
+        
+       	if (preferences.getBoolean("toggleSound", true)) {
+		int soundState = getSoundState(context);
+		if (soundState==AudioManager.RINGER_MODE_VIBRATE) {
+            views.setImageViewResource(R.id.img_sound, R.drawable.ic_appwidget_settings_sound_vibrate);
+            views.setImageViewResource(R.id.ind_sound,getViewState(preferences,STATE_ENABLED,R.id.ind_sound));
+		} else if (soundState==AudioManager.RINGER_MODE_SILENT) {
+            views.setImageViewResource(R.id.img_sound, R.drawable.ic_appwidget_settings_sound_silent);
+            views.setImageViewResource(R.id.ind_sound, getViewState(preferences,STATE_INTERMEDIATE,R.id.ind_sound));
+		} else {
+            views.setImageViewResource(R.id.img_sound, R.drawable.ic_appwidget_settings_sound_on);
+            views.setImageViewResource(R.id.ind_sound, getViewState(preferences,STATE_DISABLED,R.id.ind_sound));
+		}		
+    	} else {
+    		views.setViewVisibility(R.id.btn_sound, View.GONE);
+    	}
+        
+       	if (preferences.getBoolean("toggle2G3G", true)) {
+        if (networkMode==NO_NETWORK_MODE_YET) {
+            views.setImageViewResource(R.id.img_2G3G, R.drawable.ic_appwidget_settings_2g3g_off);
+            views.setImageViewResource(R.id.ind_2G3G, getViewState(preferences,STATE_DISABLED,R.id.ind_2G3G));
+        } else if (networkMode==NETWORK_MODE_UNKNOWN) {
+            views.setImageViewResource(R.id.ind_2G3G, getViewState(preferences,STATE_INTERMEDIATE,R.id.ind_2G3G));
+        } else if (networkMode==Phone.NT_MODE_GSM_ONLY) {
+            views.setImageViewResource(R.id.img_2G3G, R.drawable.ic_appwidget_settings_2g3g_off);
+            views.setImageViewResource(R.id.ind_2G3G, getViewState(preferences,STATE_DISABLED,R.id.ind_2G3G));
+        } else {
+            views.setImageViewResource(R.id.img_2G3G, R.drawable.ic_appwidget_settings_2g3g_on);
+            views.setImageViewResource(R.id.ind_2G3G, getViewState(preferences,STATE_ENABLED,R.id.ind_2G3G));
+        }
+    	} else {
+    		views.setViewVisibility(R.id.btn_2G3G, View.GONE);
+    	}
     }
 
-    /**
+	private static int getViewState(SharedPreferences preferences, int state, int indicator) {
+		if (preferences.getBoolean("useRoundCorners",true)) {
+			if (indicator== preferences.getInt("firstIconId",0)) {
+				if (state==STATE_ENABLED) {
+					return R.drawable.appwidget_settings_ind_on_l;    			
+				} else if (state==STATE_DISABLED) {
+					return R.drawable.appwidget_settings_ind_off_l;    			    			
+				} else {
+					return R.drawable.appwidget_settings_ind_mid_l;    			    			
+				}
+			} else if (indicator== preferences.getInt("lastIconId",0)) {
+				if (state==STATE_ENABLED) {
+					return R.drawable.appwidget_settings_ind_on_r;    			
+				} else if (state==STATE_DISABLED) {
+					return R.drawable.appwidget_settings_ind_off_r;    			    			
+				} else {
+					return R.drawable.appwidget_settings_ind_mid_r;    			    			
+				}    		
+			}
+		}
+		
+		if (state==STATE_ENABLED) {
+			return R.drawable.appwidget_settings_ind_on_c;    			
+		} else if (state==STATE_DISABLED) {
+  			return R.drawable.appwidget_settings_ind_off_c;    			    			
+		} else {
+  			return R.drawable.appwidget_settings_ind_mid_c;    			    			
+		}    		
+	}
+
+	/**
      * Creates PendingIntent to notify the widget of a button click.
      *
      * @param context
@@ -594,9 +732,17 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
                 toggleGps(context);
             } else if (buttonId == BUTTON_DATA) {
                 toggleData(context);
+            } else if (buttonId == BUTTON_SOUND) {
+                toggleSound(context);
+            } else if (buttonId == BUTTON_2G3G) {
+                toggle2G3G(context);
             } else if (buttonId == BUTTON_BLUETOOTH) {
                 sBluetoothState.toggleState(context);
             }
+        } else if (NETWORK_MODE_CHANGED.equals(intent.getAction())) {
+        	networkMode = intent.getExtras().getInt(NETWORK_MODE);
+        } else if (MOBILE_DATA_CHANGED.equals(intent.getAction()) || SecuritySettings.GPS_STATUS_CHANGED.equals(intent.getAction())) {
+        	//nothing needed. update will do the rest
         } else {
             // Don't fall-through to updating the widget.  The Intent
             // was something unrelated or that our super class took
@@ -707,9 +853,33 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
      */
     private void toggleData(Context context) {
 	boolean enabled = getDataState(context);
-        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+	SharedPreferences preferences = context.getSharedPreferences("widget_",Context.MODE_PRIVATE);
+	
+   	if (enabled && preferences.getBoolean("autoDisable3G", false)) {
+    	if (networkMode==Phone.NT_MODE_WCDMA_PREF) {
+    		Intent intent = new Intent(MODIFY_NETWORK_MODE);
+    		intent.putExtra(NETWORK_MODE, Phone.NT_MODE_GSM_ONLY);
+    		networkMode=NETWORK_MODE_UNKNOWN;
+    		context.sendBroadcast(intent);   		
+    	}
+   	}
+	
+   	if (!enabled && preferences.getBoolean("autoEnable3G", false)) {
+    	if (networkMode==Phone.NT_MODE_GSM_ONLY) {
+    		Intent intent = new Intent(MODIFY_NETWORK_MODE);
+        	intent.putExtra(NETWORK_MODE, Phone.NT_MODE_WCDMA_PREF);    		
+        	networkMode=NETWORK_MODE_UNKNOWN;
+        	context.sendBroadcast(intent);   		
+    	}
+   	}
+	
+    Intent intent = new Intent(MOBILE_DATA_CHANGED);
+    intent.putExtra(NETWORK_MODE, !enabled);
+    context.sendBroadcast(intent);                
+
+    ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 	if (enabled) {
-		cm.setMobileDataEnabled(false);
+		cm.setMobileDataEnabled(false);		
 	} else {
 		cm.setMobileDataEnabled(true);
 	}
@@ -813,4 +983,79 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
             Log.d(TAG, "toggleBrightness: " + e);
         }
     }
+    
+    /**
+     * Gets the state of 2G3G.
+     *
+     * @param context
+     * @return true if enabled.
+     */
+    private static boolean get2G3G(Context context) {
+        	Log.v(TAG, "Getting 2G3G state");
+            int state=99;
+			try {
+				state = android.provider.Settings.Secure.getInt(
+				        context.getContentResolver(),
+				        android.provider.Settings.Secure.PREFERRED_NETWORK_MODE);
+			} catch (SettingNotFoundException e) {
+	        	Log.v(TAG, "Settings not found");
+			}	
+        	Log.v(TAG, "Got state:"+state);
+    		if (state==Phone.NT_MODE_WCDMA_PREF) {
+            	Log.v(TAG, "It is NT_MODE_WCDMA_PREF");    			
+    			return true;
+    		} else {
+            	Log.v(TAG, "It is other");    			
+    			return false;
+    		}
+    }
+
+    /**
+     * Toggles the state of 2G3G.
+     *
+     * @param context
+     */
+    private void toggle2G3G(Context context) {
+    	Intent intent = new Intent(MODIFY_NETWORK_MODE);
+    	if (networkMode==Phone.NT_MODE_WCDMA_PREF) {
+    		intent.putExtra(NETWORK_MODE, Phone.NT_MODE_GSM_ONLY);
+    	} else {
+        	intent.putExtra(NETWORK_MODE, Phone.NT_MODE_WCDMA_PREF);    		
+    	}
+    	networkMode=NETWORK_MODE_UNKNOWN;
+    	context.sendBroadcast(intent);
+    }    
+    
+    /**
+     * Gets the state of 2G3G.
+     *
+     * @param context
+     * @return true if enabled.
+     */
+    private static int getSoundState(Context context) {
+		AudioManager mAudioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+        return mAudioManager.getRingerMode();
+    }
+
+    /**
+     * Toggles the state of 2G3G.
+     *
+     * @param context
+     */
+    private void toggleSound(Context context) {
+    	AudioManager mAudioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+        if (mAudioManager.getRingerMode()==AudioManager.RINGER_MODE_NORMAL) {
+        	mAudioManager.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);        	
+        } else if (mAudioManager.getRingerMode()==AudioManager.RINGER_MODE_VIBRATE) {
+        	mAudioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+        	if (mAudioManager.getVibrateSetting(AudioManager.VIBRATE_TYPE_RINGER)!=AudioManager.VIBRATE_SETTING_ON) {
+            	mAudioManager.setVibrateSetting(AudioManager.VIBRATE_TYPE_RINGER, AudioManager.VIBRATE_SETTING_ON);        		
+        	}
+        } else if (mAudioManager.getRingerMode()==AudioManager.RINGER_MODE_SILENT) {
+        	mAudioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL); 
+        	if (mAudioManager.getVibrateSetting(AudioManager.VIBRATE_TYPE_RINGER)!=AudioManager.VIBRATE_SETTING_ON) {
+            	mAudioManager.setVibrateSetting(AudioManager.VIBRATE_TYPE_RINGER, AudioManager.VIBRATE_SETTING_ON);        		
+        	}
+        }    	
+    }    
 }

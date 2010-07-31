@@ -787,6 +787,14 @@
             </intent-filter>
         </activity>
 
+  		<activity
+      		android:name="com.android.settings.widget.WidgetSettings"
+      		android:label="@string/gadget_title">
+	      <intent-filter>
+    	      <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+          </intent-filter>
+		</activity>
+
         <receiver android:name=".widget.SettingsAppWidgetProvider" android:label="@string/gadget_title">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -794,6 +802,9 @@
                 <action android:name="android.net.conn.BACKGROUND_DATA_SETTING_CHANGED" />
                 <action android:name="android.bluetooth.adapter.action.STATE_CHANGED" />
                 <action android:name="android.intent.action.CLOSE_SYSTEM_DIALOGS" /> <!-- pick up misc changes -->
+                <action android:name="com.android.internal.telephony.NETWORK_MODE_CHANGED" />
+                <action android:name="com.android.internal.telephony.MOBILE_DATA_CHANGED" />
+                <action android:name="com.android.settings.GPS_STATUS_CHANGED" />
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/appwidget_info" />
         </receiver>
