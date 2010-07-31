@@ -55,10 +55,31 @@
 			<CheckBox android:id="@+id/autoEnable3G" android:text="@string/autoEnable3G"
 				android:checked="true" android:layout_width="wrap_content" android:layout_height="wrap_content" />
 
+			<CheckBox android:id="@+id/autoDisableSyncWithWifi" android:text="@string/autoDisableSyncWithWifi"
+				android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+			<CheckBox android:id="@+id/autoEnableSyncWithWifi" android:text="@string/autoEnableSyncWithWifi"
+				android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+			<View
+			    android:layout_width="fill_parent"
+			    android:layout_height="1dp"
+			    android:background="?android:attr/listDivider"
+			    /> 
+			    
+			<CheckBox android:id="@+id/useTransparent" android:text="@string/useTransparent"
+			android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
 			<CheckBox android:id="@+id/useRoundCorners" android:text="@string/useRoundCorners"
 				android:checked="true" android:layout_width="wrap_content" android:layout_height="wrap_content" />
 
-			<CheckBox android:id="@+id/useTransparent" android:text="@string/useTransparent"
+			<View
+			    android:layout_width="fill_parent"
+			    android:layout_height="1dp"
+			    android:background="?android:attr/listDivider"
+			    /> 
+
+			<CheckBox android:id="@+id/ringModeVibrateAsOn" android:text="@string/ringModeVibrateAsOn"
 				android:layout_width="wrap_content" android:layout_height="wrap_content" />
 
 			<TextView android:id="@+id/space" android:text="@null"
@@ -67,6 +88,7 @@
 
 			<LinearLayout android:id="@+id/LinearLayout01"
 				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical|center_horizontal"
 				style="@android:style/ButtonBar" android:orientation="horizontal">
 
 				<Button android:layout_width="80dip"

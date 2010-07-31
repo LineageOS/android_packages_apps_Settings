@@ -93,6 +93,11 @@ public class WidgetSettings extends Activity {
         	editor.putBoolean("useRoundCorners", ((CheckBox)findViewById(R.id.useRoundCorners)).isChecked());
         	editor.putBoolean("useTransparent", ((CheckBox)findViewById(R.id.useTransparent)).isChecked());
 
+        	editor.putBoolean("autoDisableSyncWithWifi", ((CheckBox)findViewById(R.id.autoDisableSyncWithWifi)).isChecked());
+        	editor.putBoolean("autoEnableSyncWithWifi", ((CheckBox)findViewById(R.id.autoEnableSyncWithWifi)).isChecked());
+
+        	editor.putBoolean("ringModeVibrateAsOn", ((CheckBox)findViewById(R.id.ringModeVibrateAsOn)).isChecked());
+
         	editor.putInt("firstIconId", getFirstIconId());
         	editor.putInt("lastIconId", getLastIconId());
         	editor.commit();
