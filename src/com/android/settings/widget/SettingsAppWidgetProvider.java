@@ -23,7 +23,6 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.IContentService;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -68,6 +67,8 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 	private static final int BUTTON_DATA = 5;
 	private static final int BUTTON_SOUND = 6;
 	private static final int BUTTON_2G3G = 7;
+	private static final int BUTTON_SCREEN_TIMEOUT = 8;
+	private static final int BUTTON_AUTO_ROTATE = 9;
 
 	// This widget keeps track of two sets of states:
 	// "3-state": STATE_DISABLED, STATE_ENABLED, STATE_INTERMEDIATE
@@ -79,6 +80,9 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 	private static final int STATE_TURNING_OFF = 3;
 	private static final int STATE_UNKNOWN = 4;
 	private static final int STATE_INTERMEDIATE = 5;
+
+	private static final int STATE_DISABLED_RED = 10;
+	private static final int STATE_ENABLED_RED = 11;
 
 	/**
 	 * Minimum and maximum brightnesses. Don't go to 0 since that makes the
@@ -101,6 +105,11 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 	private static final int NETWORK_MODE_UNKNOWN = -100;
 	private static int networkMode = NO_NETWORK_MODE_YET;
 
+	public static final int SCREEN_MINIMUM_TIMEOUT = 15000;
+	public static final int SCREEN_NORMAL_TIMEOUT = 60000;
+	public static final int SCREEN_MAX_TIMEOUT = 300000;
+	
+	
 	/**
 	 * The state machine for Wifi and Bluetooth toggling, tracking reality
 	 * versus the user's intent.
@@ -407,17 +416,17 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager,
 			int[] appWidgetIds) {
 		// Update each requested appWidgetId
-		RemoteViews view = buildUpdate(context, -1);
-
-		for (int i = 0; i < appWidgetIds.length; i++) {
-			appWidgetManager.updateAppWidget(appWidgetIds[i], view);
+		//Log.d(TAG,"Received update with "+appWidgetIds.length+" widgets");
+		for (int widgetID:appWidgetIds) {
+			//Log.d(TAG,"Will update widgetID="+widgetID);
+			RemoteViews view = buildUpdate(context, widgetID);
+			//Log.d(TAG,"done build update widgetID="+widgetID);
+			appWidgetManager.updateAppWidget(widgetID, view);
+			//Log.d(TAG,"done updateAppWidget widgetID="+widgetID);
 		}
-		// {PIAF
 		checkFor2GStatus(context);
-		// PIAF}
 	}
 
-	// {PIAF
 	private void checkFor2GStatus(Context context) {
 		if (networkMode == NO_NETWORK_MODE_YET) {
 			// No update received up to now. So request the first status
@@ -426,10 +435,9 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 		}
 	}
 
-	// PIAF}
-
 	@Override
 	public void onEnabled(Context context) {
+		//Log.d(TAG,"Received request to enable new widget");
 		PackageManager pm = context.getPackageManager();
 		pm.setComponentEnabledSetting(new ComponentName("com.android.settings",
 				".widget.SettingsAppWidgetProvider"),
@@ -439,6 +447,7 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 
 	@Override
 	public void onDisabled(Context context) {
+		//Log.d(TAG,"Received request to disable a widget");
 		Class clazz = com.android.settings.widget.SettingsAppWidgetProvider.class;
 		PackageManager pm = context.getPackageManager();
 		pm.setComponentEnabledSetting(new ComponentName("com.android.settings",
@@ -451,13 +460,17 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 	 * Load image for given widget and build {@link RemoteViews} for it.
 	 */
 	static RemoteViews buildUpdate(Context context, int appWidgetId) {
-		SharedPreferences preferences = context.getSharedPreferences("widget_",
+		//Log.d(TAG,"Received to build update for :"+appWidgetId);
+		SharedPreferences preferences = context.getSharedPreferences("widget_"+appWidgetId,
 				Context.MODE_PRIVATE);
+		//Log.d(TAG,"Loaded preferences for:"+appWidgetId);
 		int widgetLayout = R.layout.widget;
 		if (preferences.getBoolean("useTransparent", true)) {
+			//Log.d(TAG,"Set widget transparent");
 			widgetLayout = R.layout.widget_transparent;
 		}
 
+		//Log.d(TAG,"Creating new remove views...");
 		RemoteViews views = new RemoteViews(context.getPackageName(),
 				widgetLayout);
 		views.setOnClickPendingIntent(R.id.btn_wifi, getLaunchPendingIntent(
@@ -478,8 +491,14 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 				context, appWidgetId, BUTTON_SOUND));
 		views.setOnClickPendingIntent(R.id.btn_2G3G, getLaunchPendingIntent(
 				context, appWidgetId, BUTTON_2G3G));
+		views.setOnClickPendingIntent(R.id.btn_screen_timeout, getLaunchPendingIntent(
+				context, appWidgetId, BUTTON_SCREEN_TIMEOUT));
+		views.setOnClickPendingIntent(R.id.btn_auto_rotate, getLaunchPendingIntent(
+				context, appWidgetId, BUTTON_AUTO_ROTATE));
 
+		//Log.d(TAG,"Will update buttons for widget:"+appWidgetId);
 		updateButtons(views, context, appWidgetId);
+		Log.d(TAG,"buildUpdate done for widget:"+appWidgetId);
 		return views;
 	}
 
@@ -489,11 +508,19 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 	 * @param context
 	 */
 	public static void updateWidget(Context context) {
-		RemoteViews views = buildUpdate(context, -1);
-		// Update specific list of appWidgetIds if given, otherwise default to
-		// all
+		//Log.d(TAG,"Enter updateWidget");
+		
+		AppWidgetManager manager = AppWidgetManager.getInstance(context);
+
+		int[] widgets = manager.getAppWidgetIds(THIS_APPWIDGET);
+		//Log.d(TAG,"Got all widgets");
 		final AppWidgetManager gm = AppWidgetManager.getInstance(context);
-		gm.updateAppWidget(THIS_APPWIDGET, views);
+		for (int widgetID:widgets) {
+			//Log.d(TAG,"Got all widgets");
+			RemoteViews views = buildUpdate(context, widgetID);
+			gm.updateAppWidget(widgetID, views);
+			//Log.d(TAG,"Update widget:"+widgetID );
+		}
 	}
 
 	/**
@@ -505,7 +532,9 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 	 */
 	private static void updateButtons(RemoteViews views, Context context,
 			int widgetID) {
-		SharedPreferences preferences = context.getSharedPreferences("widget_",
+		SharedPreferences preferencesGeneral = context.getSharedPreferences("widget_MAIN",
+				Context.MODE_PRIVATE);
+		SharedPreferences preferences = context.getSharedPreferences("widget_"+widgetID,
 				Context.MODE_PRIVATE);
 
 		if (preferences.getBoolean("toggleWifi", true)) {
@@ -589,13 +618,25 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 			if (getDataState(context)) {
 				views.setImageViewResource(R.id.img_data,
 						R.drawable.ic_appwidget_settings_data_on);
-				views.setImageViewResource(R.id.ind_data, getViewState(
-						preferences, STATE_ENABLED, R.id.ind_data));
+				if (preferencesGeneral.getBoolean("monitorDataRoaming", true) && getDataRomingEnabled(context)) {
+					views.setImageViewResource(R.id.ind_data, getViewState(
+							preferences, STATE_ENABLED_RED, R.id.ind_data));					
+				} else {
+					views.setImageViewResource(R.id.ind_data, getViewState(
+							preferences, STATE_ENABLED, R.id.ind_data));
+					
+				}
+				
 			} else {
 				views.setImageViewResource(R.id.img_data,
 						R.drawable.ic_appwidget_settings_data_off);
+				if (preferencesGeneral.getBoolean("monitorDataRoaming", true) && getDataRomingEnabled(context)) {
 				views.setImageViewResource(R.id.ind_data, getViewState(
-						preferences, STATE_DISABLED, R.id.ind_data));
+						preferences, STATE_DISABLED_RED, R.id.ind_data));
+				} else {
+					views.setImageViewResource(R.id.ind_data, getViewState(
+							preferences, STATE_DISABLED, R.id.ind_data));					
+				}
 			}
 		} else {
 			views.setViewVisibility(R.id.btn_data, View.GONE);
@@ -659,7 +700,7 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 			views.setViewVisibility(R.id.sep_bluetooth, View.GONE);
 		}
 
-		if (preferences.getBoolean("toggleSound", true)) {
+		if (preferences.getBoolean("toggleSound", false)) {
 			int soundState = getSoundState(context);
 			if (soundState == AudioManager.RINGER_MODE_VIBRATE) {
 				if (preferences.getBoolean("ringModeVibrateAsOn", true)) {
@@ -696,7 +737,7 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 			views.setViewVisibility(R.id.sep_sound, View.GONE);
 		}
 
-		if (preferences.getBoolean("toggle2G3G", true)) {
+		if (preferences.getBoolean("toggle2G3G", false)) {
 			if (networkMode == NO_NETWORK_MODE_YET) {
 				views.setImageViewResource(R.id.img_2G3G,
 						R.drawable.ic_appwidget_settings_2g3g_off);
@@ -720,6 +761,47 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 			views.setViewVisibility(R.id.btn_2G3G, View.GONE);
 			views.setViewVisibility(R.id.sep_2G3G, View.GONE);
 		}
+		
+		if (preferences.getBoolean("toggleScreenTimeout", false)) {
+
+			int timeout=getScreenTtimeout(context);
+		if (timeout <=SCREEN_MINIMUM_TIMEOUT) {
+			views.setImageViewResource(R.id.img_screen_timeout,
+			R.drawable.ic_appwidget_settings_screen_timeout_off);
+			views.setImageViewResource(R.id.ind_screen_timeout, getViewState(
+					preferences, STATE_DISABLED, R.id.ind_screen_timeout));			
+		} else if (timeout <=SCREEN_NORMAL_TIMEOUT) {
+			views.setImageViewResource(R.id.ind_screen_timeout, getViewState(
+					preferences, STATE_INTERMEDIATE, R.id.ind_screen_timeout));			
+			views.setImageViewResource(R.id.img_screen_timeout,
+			R.drawable.ic_appwidget_settings_screen_timeout_off);
+		} else {
+			views.setImageViewResource(R.id.img_screen_timeout,
+					R.drawable.ic_appwidget_settings_screen_timeout_on);
+			views.setImageViewResource(R.id.ind_screen_timeout, getViewState(
+					preferences, STATE_ENABLED, R.id.ind_screen_timeout));			
+		}		
+		} else {
+			views.setViewVisibility(R.id.btn_screen_timeout, View.GONE);
+			views.setViewVisibility(R.id.sep_screen_timeout, View.GONE);
+		}
+
+		if (preferences.getBoolean("toggleAutoRotate", false)) {
+			if (getOrientationState(context)==STATE_ENABLED) {
+				views.setImageViewResource(R.id.img_auto_rotate,
+						R.drawable.ic_appwidget_settings_orientation_on);
+				views.setImageViewResource(R.id.ind_auto_rotate, getViewState(
+						preferences, STATE_ENABLED, R.id.ind_auto_rotate));
+			} else {
+				views.setImageViewResource(R.id.img_auto_rotate,
+						R.drawable.ic_appwidget_settings_orientation_off);
+				views.setImageViewResource(R.id.ind_auto_rotate, getViewState(
+						preferences, STATE_DISABLED, R.id.ind_auto_rotate));
+			}
+		} else {
+			views.setViewVisibility(R.id.btn_auto_rotate, View.GONE);
+			views.setViewVisibility(R.id.sep_auto_rotate, View.GONE);
+		}
 	}
 
 	private static int getViewState(SharedPreferences preferences, int state,
@@ -730,6 +812,10 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 					return R.drawable.appwidget_settings_ind_on_l;
 				} else if (state == STATE_DISABLED) {
 					return R.drawable.appwidget_settings_ind_off_l;
+				} else if (state == STATE_ENABLED_RED) {
+					return R.drawable.appwidget_settings_ind_on_red_l;
+				} else if (state == STATE_DISABLED_RED) {
+					return R.drawable.appwidget_settings_ind_mid_red_l;
 				} else {
 					return R.drawable.appwidget_settings_ind_mid_l;
 				}
@@ -738,6 +824,10 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 					return R.drawable.appwidget_settings_ind_on_r;
 				} else if (state == STATE_DISABLED) {
 					return R.drawable.appwidget_settings_ind_off_r;
+				} else if (state == STATE_ENABLED_RED) {
+					return R.drawable.appwidget_settings_ind_on_red_r;
+				} else if (state == STATE_DISABLED_RED) {
+					return R.drawable.appwidget_settings_ind_mid_red_r;
 				} else {
 					return R.drawable.appwidget_settings_ind_mid_r;
 				}
@@ -748,6 +838,10 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 			return R.drawable.appwidget_settings_ind_on_c;
 		} else if (state == STATE_DISABLED) {
 			return R.drawable.appwidget_settings_ind_off_c;
+		} else if (state == STATE_ENABLED_RED) {
+			return R.drawable.appwidget_settings_ind_on_red_c;
+		} else if (state == STATE_DISABLED_RED) {
+			return R.drawable.appwidget_settings_ind_mid_red_r;
 		} else {
 			return R.drawable.appwidget_settings_ind_mid_c;
 		}
@@ -786,7 +880,7 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 		super.onReceive(context, intent);
 		if (WifiManager.WIFI_STATE_CHANGED_ACTION.equals(intent.getAction())) {
 			sWifiState.onActualStateChange(context, intent);
-			SharedPreferences preferences = context.getSharedPreferences("widget_",
+			SharedPreferences preferences = context.getSharedPreferences("widget_MAIN",
 					Context.MODE_PRIVATE);
 			int newState=sWifiState.getTriState(context);
 			if (newState==STATE_ENABLED && preferences.getBoolean("autoEnableSyncWithWifi", false) && !getSync(context)){
@@ -802,8 +896,6 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 			Uri data = intent.getData();
 			int buttonId = Integer.parseInt(data.getSchemeSpecificPart());
 			if (buttonId == BUTTON_WIFI) {
-				SharedPreferences preferences = context.getSharedPreferences("widget_",
-						Context.MODE_PRIVATE);
 				sWifiState.toggleState(context);
 				
 			} else if (buttonId == BUTTON_BRIGHTNESS) {
@@ -818,6 +910,10 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 				toggleSound(context);
 			} else if (buttonId == BUTTON_2G3G) {
 				toggle2G3G(context);
+			} else if (buttonId == BUTTON_SCREEN_TIMEOUT) {
+				toggleScreenTimeout(context);
+			} else if (buttonId == BUTTON_AUTO_ROTATE) {
+				toggleOrientationState(context);
 			} else if (buttonId == BUTTON_BLUETOOTH) {
 				sBluetoothState.toggleState(context);
 			}
@@ -939,7 +1035,7 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 	 */
 	private void toggleData(Context context) {
 		boolean enabled = getDataState(context);
-		SharedPreferences preferences = context.getSharedPreferences("widget_",
+		SharedPreferences preferences = context.getSharedPreferences("widget_MAIN",
 				Context.MODE_PRIVATE);
 
 		if (enabled && preferences.getBoolean("autoDisable3G", false)) {
@@ -949,7 +1045,7 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 				networkMode = NETWORK_MODE_UNKNOWN;
 				context.sendBroadcast(intent);
 			}
-		}
+		}	
 
 		if (!enabled && preferences.getBoolean("autoEnable3G", false)) {
 			if (networkMode == Phone.NT_MODE_GSM_ONLY) {
@@ -1087,7 +1183,7 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 	 * @return true if enabled.
 	 */
 	private static boolean get2G3G(Context context) {
-		Log.v(TAG, "Getting 2G3G state");
+		// Log.v(TAG, "Getting 2G3G state");
 		int state = 99;
 		try {
 			state = android.provider.Settings.Secure.getInt(context
@@ -1096,12 +1192,12 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 		} catch (SettingNotFoundException e) {
 			Log.v(TAG, "Settings not found");
 		}
-		Log.v(TAG, "Got state:" + state);
+		// Log.v(TAG, "Got state:" + state);
 		if (state == Phone.NT_MODE_WCDMA_PREF) {
-			Log.v(TAG, "It is NT_MODE_WCDMA_PREF");
+			// Log.v(TAG, "It is NT_MODE_WCDMA_PREF");
 			return true;
 		} else {
-			Log.v(TAG, "It is other");
+			// Log.v(TAG, "It is other");
 			return false;
 		}
 	}
@@ -1162,4 +1258,49 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 			}
 		}
 	}
+	
+	public static int getScreenTtimeout(Context context) {
+        return Settings.System.getInt(
+        		context.getContentResolver(), 
+                Settings.System.SCREEN_OFF_TIMEOUT, 0);
+	}    
+	
+	public static void toggleScreenTimeout(Context context) {
+		int screentimeout=SCREEN_MINIMUM_TIMEOUT;
+        if(getScreenTtimeout(context)==SCREEN_MAX_TIMEOUT) {
+        	screentimeout=SCREEN_MINIMUM_TIMEOUT;
+        } else if(getScreenTtimeout(context)==SCREEN_NORMAL_TIMEOUT) {
+        	screentimeout=SCREEN_MAX_TIMEOUT;
+        } else {
+        	screentimeout=SCREEN_NORMAL_TIMEOUT;
+        }        	
+        Settings.System.putInt(
+        		context.getContentResolver(), 
+        		Settings.System.SCREEN_OFF_TIMEOUT, screentimeout);        	
+	}    
+	
+	public static boolean getDataRomingEnabled(Context context) {
+        return Settings.Secure.getInt(context.getContentResolver(),
+                Settings.Secure.DATA_ROAMING,0) > 0;		
+	}
+	
+	public static int getOrientationState(Context context) {
+        return Settings.System.getInt(
+        		context.getContentResolver(), 
+                Settings.System.ACCELEROMETER_ROTATION, 0);
+	}    
+
+	public static void toggleOrientationState(Context context) {
+        if(getOrientationState(context)==STATE_DISABLED) {        	
+        	Settings.System.putInt(
+    		context.getContentResolver(), 
+            Settings.System.ACCELEROMETER_ROTATION, 1);        	
+        } else {
+        	Settings.System.putInt(
+            		context.getContentResolver(), 
+                    Settings.System.ACCELEROMETER_ROTATION, 0);
+        }		
+	}    
+	
+	
 }

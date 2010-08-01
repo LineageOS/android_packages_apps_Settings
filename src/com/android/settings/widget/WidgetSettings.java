@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -20,6 +21,8 @@ public class WidgetSettings extends Activity {
 
 	private static final String TAG = "WidgetSettings";		
     int widgetId  = AppWidgetManager.INVALID_APPWIDGET_ID;
+	SharedPreferences preferences;
+	SharedPreferences preferencesGeneral;
 
     @Override
     public void onCreate(Bundle state) {
@@ -28,6 +31,7 @@ public class WidgetSettings extends Activity {
         initWidgetSettings();
         setDefaultReturn();
         initControls();
+        initSettings();
     }
 
 	private void initWidgetSettings() {
@@ -44,6 +48,19 @@ public class WidgetSettings extends Activity {
 		findViewById(R.id.cancelbutton).setOnClickListener(cancelClickListener);
 	}
 
+	private void initSettings() {
+		Log.d("WidgetSettings: ", "create preference for widget_"+widgetId);
+		preferences = getSharedPreferences("widget_"+widgetId,Context.MODE_PRIVATE);
+		preferencesGeneral = getSharedPreferences("widget_MAIN",Context.MODE_PRIVATE);
+		((CheckBox)findViewById(R.id.autoDisable3G)).setChecked(preferencesGeneral.getBoolean("autoDisable3G", false));
+		((CheckBox)findViewById(R.id.autoEnable3G)).setChecked(preferencesGeneral.getBoolean("autoEnable3G", false));
+		((CheckBox)findViewById(R.id.autoDisableSyncWithWifi)).setChecked(preferencesGeneral.getBoolean("autoDisableSyncWithWifi", false));
+		((CheckBox)findViewById(R.id.autoEnableSyncWithWifi)).setChecked(preferencesGeneral.getBoolean("autoEnableSyncWithWifi", false));
+		((CheckBox)findViewById(R.id.monitorDataRoaming)).setChecked(preferencesGeneral.getBoolean("monitorDataRoaming", false));		
+		
+	}
+	
+	
 	private void setDefaultReturn() {
         Intent returnIntent = new Intent();
         returnIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, widgetId);		
@@ -76,7 +93,7 @@ public class WidgetSettings extends Activity {
         
         private void saveSettings() {
         	//SharedPreferences preferences = getSharedPreferences("widget_"+widgetId,Context.MODE_WORLD_WRITEABLE);
-        	SharedPreferences preferences = getSharedPreferences("widget_",Context.MODE_PRIVATE);
+    		Log.d("WidgetSettings: ", "Will save widget_"+widgetId);
 
         	Editor editor =preferences.edit();
         	editor.clear();
@@ -87,20 +104,26 @@ public class WidgetSettings extends Activity {
         	editor.putBoolean("toggle2G3G", ((CheckBox)findViewById(R.id.toggle2g3g)).isChecked());
         	editor.putBoolean("toggleSync", ((CheckBox)findViewById(R.id.toggleSync)).isChecked());
         	editor.putBoolean("toggleSound", ((CheckBox)findViewById(R.id.toggleSound)).isChecked());
+        	editor.putBoolean("toggleScreenTimeout", ((CheckBox)findViewById(R.id.toggleScreenTimeout)).isChecked());
+        	editor.putBoolean("toggleAutoRotate", ((CheckBox)findViewById(R.id.toggleAutoRotate)).isChecked());
         	editor.putBoolean("toggleBrightness", ((CheckBox)findViewById(R.id.toggleBrightness)).isChecked());
-        	editor.putBoolean("autoDisable3G", ((CheckBox)findViewById(R.id.autoDisable3G)).isChecked());
-        	editor.putBoolean("autoEnable3G", ((CheckBox)findViewById(R.id.autoEnable3G)).isChecked());
         	editor.putBoolean("useRoundCorners", ((CheckBox)findViewById(R.id.useRoundCorners)).isChecked());
         	editor.putBoolean("useTransparent", ((CheckBox)findViewById(R.id.useTransparent)).isChecked());
-
-        	editor.putBoolean("autoDisableSyncWithWifi", ((CheckBox)findViewById(R.id.autoDisableSyncWithWifi)).isChecked());
-        	editor.putBoolean("autoEnableSyncWithWifi", ((CheckBox)findViewById(R.id.autoEnableSyncWithWifi)).isChecked());
-
         	editor.putBoolean("ringModeVibrateAsOn", ((CheckBox)findViewById(R.id.ringModeVibrateAsOn)).isChecked());
-
         	editor.putInt("firstIconId", getFirstIconId());
         	editor.putInt("lastIconId", getLastIconId());
         	editor.commit();
+
+        	Editor editorGeneral =preferencesGeneral.edit();
+        	editorGeneral.clear();
+        	editorGeneral.putBoolean("autoDisable3G", ((CheckBox)findViewById(R.id.autoDisable3G)).isChecked());
+        	editorGeneral.putBoolean("autoEnable3G", ((CheckBox)findViewById(R.id.autoEnable3G)).isChecked());
+        	editorGeneral.putBoolean("autoDisableSyncWithWifi", ((CheckBox)findViewById(R.id.autoDisableSyncWithWifi)).isChecked());
+        	editorGeneral.putBoolean("autoEnableSyncWithWifi", ((CheckBox)findViewById(R.id.autoEnableSyncWithWifi)).isChecked());
+        	editorGeneral.putBoolean("monitorDataRoaming", ((CheckBox)findViewById(R.id.monitorDataRoaming)).isChecked());
+        	editorGeneral.commit();
+
+
         	
         	
         	// transparency

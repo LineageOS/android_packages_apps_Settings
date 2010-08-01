@@ -48,6 +48,7 @@
         </LinearLayout>
 
     <ImageView
+        android:id="@+id/sep_wifi"
         android:layout_width="1dip"
         android:layout_height="match_parent"
         android:background="@drawable/appwidget_settings_divider"
@@ -81,6 +82,7 @@
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/sep_bluetooth"
         android:layout_width="1dip"
         android:layout_height="match_parent"
         android:background="@drawable/appwidget_settings_divider"
@@ -113,6 +115,7 @@
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/sep_gps"
         android:layout_width="1dip"
         android:layout_height="match_parent"
         android:background="@drawable/appwidget_settings_divider"
@@ -145,6 +148,7 @@
         </LinearLayout>
 
     <ImageView
+        android:id="@+id/sep_data"
         android:layout_width="1dip"
         android:layout_height="match_parent"
         android:background="@drawable/appwidget_settings_divider"
@@ -177,6 +181,7 @@
         </LinearLayout>
 
     <ImageView
+        android:id="@+id/sep_2G3G"
         android:layout_width="1dip"
         android:layout_height="match_parent"
         android:background="@drawable/appwidget_settings_divider"
@@ -209,6 +214,7 @@
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/sep_sync"
         android:layout_width="1dip"
         android:layout_height="match_parent"
         android:background="@drawable/appwidget_settings_divider"
@@ -241,6 +247,73 @@
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/sep_sound"
+        android:layout_width="1dip"
+        android:layout_height="match_parent"
+        android:background="@drawable/appwidget_settings_divider"
+        />
+
+    <LinearLayout
+        android:id="@+id/btn_screen_timeout"
+        android:layout_width="0dip"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:background="@drawable/appwidget_button_center"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/img_screen_timeout"
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1"
+            android:scaleType="center"
+            />
+
+        <ImageView
+            android:id="@+id/ind_screen_timeout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/sep_screen_timeout"
+        android:layout_width="1dip"
+        android:layout_height="match_parent"
+        android:background="@drawable/appwidget_settings_divider"
+        />
+
+    <LinearLayout
+        android:id="@+id/btn_auto_rotate"
+        android:layout_width="0dip"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:background="@drawable/appwidget_button_center"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/img_auto_rotate"
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1"
+            android:scaleType="center"
+            />
+
+        <ImageView
+            android:id="@+id/ind_auto_rotate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/sep_auto_rotate"
         android:layout_width="1dip"
         android:layout_height="match_parent"
         android:background="@drawable/appwidget_settings_divider"
