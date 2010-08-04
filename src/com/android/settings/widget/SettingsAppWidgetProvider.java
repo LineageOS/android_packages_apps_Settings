@@ -465,7 +465,7 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 				Context.MODE_PRIVATE);
 		//Log.d(TAG,"Loaded preferences for:"+appWidgetId);
 		int widgetLayout = R.layout.widget;
-		if (preferences.getBoolean("useTransparent", true)) {
+		if (preferences.getBoolean("useTransparent", false)) {
 			//Log.d(TAG,"Set widget transparent");
 			widgetLayout = R.layout.widget_transparent;
 		}
@@ -701,6 +701,10 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 		}
 
 		if (preferences.getBoolean("toggleSound", false)) {
+			// Gone by default. so need to add them 
+			views.setViewVisibility(R.id.btn_sound, View.VISIBLE);
+			views.setViewVisibility(R.id.sep_sound, View.VISIBLE);
+			
 			int soundState = getSoundState(context);
 			if (soundState == AudioManager.RINGER_MODE_VIBRATE) {
 				if (preferences.getBoolean("ringModeVibrateAsOn", true)) {
@@ -738,6 +742,10 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 		}
 
 		if (preferences.getBoolean("toggle2G3G", false)) {
+			// Gone by default. so need to add them 
+			views.setViewVisibility(R.id.btn_2G3G, View.VISIBLE);
+			views.setViewVisibility(R.id.sep_2G3G, View.VISIBLE);
+			
 			if (networkMode == NO_NETWORK_MODE_YET) {
 				views.setImageViewResource(R.id.img_2G3G,
 						R.drawable.ic_appwidget_settings_2g3g_off);
@@ -763,6 +771,9 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 		}
 		
 		if (preferences.getBoolean("toggleScreenTimeout", false)) {
+			// Gone by default. so need to add them 
+			views.setViewVisibility(R.id.btn_screen_timeout, View.VISIBLE);
+			views.setViewVisibility(R.id.sep_screen_timeout, View.VISIBLE);
 
 			int timeout=getScreenTtimeout(context);
 		if (timeout <=SCREEN_MINIMUM_TIMEOUT) {
@@ -787,6 +798,10 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 		}
 
 		if (preferences.getBoolean("toggleAutoRotate", false)) {
+			// Gone by default. so need to add them 
+			views.setViewVisibility(R.id.btn_auto_rotate, View.VISIBLE);
+			views.setViewVisibility(R.id.sep_auto_rotate, View.VISIBLE);
+			
 			if (getOrientationState(context)==STATE_ENABLED) {
 				views.setImageViewResource(R.id.img_auto_rotate,
 						R.drawable.ic_appwidget_settings_orientation_on);
