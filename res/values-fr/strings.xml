@@ -304,9 +304,11 @@
     <string name="bluetooth_profile_a2dp" msgid="3259633293424539529">"Multimédia"</string>
     <string name="bluetooth_profile_headset" msgid="1874975688666658946">"Téléphone"</string>
     <string name="bluetooth_profile_opp" msgid="3799470046565284440">"Transfert"</string>
+    <string name="bluetooth_profile_hid">"Clavier/Souris"</string>
     <string name="bluetooth_summary_connected_to_a2dp" msgid="510833839847758664">"Connecté aux paramètres audio du média"</string>
     <string name="bluetooth_summary_connected_to_headset" msgid="4876496372728623918">"Connecté aux paramètres audio du téléphone"</string>
     <string name="bluetooth_summary_connected_to_a2dp_headset" msgid="3045032710457800891">"Connecté aux paramètres audio du téléphone et du média"</string>
+    <string name="bluetooth_summary_connected_to_hid">"Connecté avec le périphérique HID"</string>
     <string name="bluetooth_device_advanced_title" msgid="528816860793581131">"Options de <xliff:g id="DEVICE_NAME">%1$s</xliff:g>"</string>
     <string name="bluetooth_device_advanced_online_mode_title" msgid="3689050071425683114">"Se connecter"</string>
     <string name="bluetooth_device_advanced_online_mode_summary" msgid="1204424107263248336">"Connecter à un appareil Bluetooth"</string>
@@ -315,6 +317,8 @@
     <string name="bluetooth_headset_profile_summary_connected" msgid="7661070206715520671">"Connecté aux paramètres audio du téléphone"</string>
     <string name="bluetooth_opp_profile_summary_connected" msgid="2611913495968309066">"Connexion au serveur de transfert de fichiers"</string>
     <string name="bluetooth_opp_profile_summary_not_connected" msgid="1267091356089086285">"Connexion au serveur de transfert de fichiers non établie"</string>
+    <string name="bluetooth_hid_profile_summary_connected">"Connecté avec le périphérique HID"</string>
+    <string name="bluetooth_hid_profile_summary_use_for">"Utiliser en tant que périphérique d\'entrée"</string>
     <string name="bluetooth_a2dp_profile_summary_use_for" msgid="4630849022250168427">"Utiliser pour les paramètres audio du média"</string>
     <string name="bluetooth_headset_profile_summary_use_for" msgid="8705753622443862627">"Utiliser pour les paramètres audio du téléphone"</string>
     <string name="bluetooth_opp_profile_summary_use_for" msgid="1255674547144769756">"Utiliser pour le transfert de fichiers"</string>
@@ -376,6 +380,7 @@
     <string name="wifi_setting_sleep_policy_summary" msgid="7573693311804602041">"Indiquer quand basculer du Wi-Fi sur le réseau de données mobile"</string>
     <string name="wifi_setting_sleep_policy_error" msgid="5103670439972135148">"Un problème est survenu lors du paramétrage de la politique de veille."</string>
     <string name="wifi_advanced_mac_address_title" msgid="6571335466330978393">"Adresse MAC"</string>
+    <string name="wifi_advanced_ip_address_title">"Adresse IP"</string>
     <string name="wifi_ip_settings_titlebar" msgid="4345739031248760326">"Paramètres IP"</string>
     <string name="wifi_ip_settings_menu_save" msgid="7296724066102908366">"Enregistrer"</string>
     <string name="wifi_ip_settings_menu_cancel" msgid="6582567330136502340">"Annuler"</string>
@@ -492,6 +497,8 @@
     <string name="baseband_version" msgid="1848990160763524801">"Version de bande de base"</string>
     <string name="kernel_version" msgid="9192574954196167602">"Version du noyau"</string>
     <string name="build_number" msgid="3075795840572241758">"Numéro de build"</string>
+    <string name="mod_version">Version du mod</string>
+    <string name="mod_version_default">Inconnu</string>
     <string name="device_info_not_available" msgid="8062521887156825182">"Non disponible"</string>
     <string name="device_status_activity_title" msgid="1411201799384697904">"État"</string>
     <string name="device_status" msgid="607405385799807324">"État"</string>
@@ -665,6 +672,14 @@
     <string name="lockpattern_settings_help_how_to_record" msgid="2614673439060830433">"Comment dessiner un schéma de déverrouillage :"</string>
     <string name="lockpattern_too_many_failed_confirmation_attempts_header" msgid="819903817323783498">"Trop de tentatives échouées !"</string>
     <string name="lockpattern_too_many_failed_confirmation_attempts_footer" msgid="6759029360597122873">"Réessayer dans <xliff:g id="NUMBER">%d</xliff:g> secondes."</string>
+    <string name="lockpattern_settings_enable_visible_dots_title">Points visibles</string>
+    <string name="lockpattern_settings_show_error_path">Montrer le chemin incorrect</string>
+    <string name="lockpattern_settings_show_unlock_msg">Invite de déverrouillage</string>
+    <string name="lockpattern_settings_show_unlock_error_msg">Messages d\'erreur</string>
+    <string name="lockpattern_settings_show_custom_msg">Message personnalisé</string>
+    <string name="lockpattern_settings_custom_msg">Message personnalisé</string>
+    <string name="lockpattern_settings_custom_msg_dialog">Entrer un message personnalisé</string>
+    <string name="lockpattern_settings_incorrect_delay_title">Régler le délai après un schéma incorrect</string>
     <string name="skip_button_label" msgid="8680422740354436943">"Annuler"</string>
     <string name="next_button_label" msgid="8890792540116568321">"Suivant"</string>
     <string name="lock_title" msgid="4059246467204273930">"Sécurisation de votre téléphone"</string>
@@ -804,6 +819,9 @@
     <string name="development_settings_summary" msgid="2151320488701538355">"Définir les options pour le développement de l\'application"</string>
     <string name="enable_adb" msgid="7982306934419797485">"Débogage USB"</string>
     <string name="enable_adb_summary" msgid="4881186971746056635">"Mode débogage lorsqu\'un câble USB est connecté"</string>
+    <string name="adb_notify">Notification débogage USB</string>
+    <!-- Setting checkbox summary for displaying USB debugging notification -->
+    <string name="adb_notify_summary">Afficher une notification lorsque le débogage USB est activé et connecté</string>
     <string name="keep_screen_on" msgid="1146389631208760344">"Rester activé"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"L\'écran ne se met jamais en veille lors du chargement"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"Positions fictives"</string>
@@ -1022,6 +1040,26 @@
     <string name="vpn_a_l2tp_secret" msgid="6612042930810981845">"un secret L2TP"</string>
     <string name="vpn_pptp_encryption_title" msgid="2236795167467896499">"cryptage"</string>
     <string name="vpn_pptp_encryption" msgid="2602329949737259686">"Cryptage PPTP"</string>
+    <string name="vpn_openvpn_port">Port du serveur</string>
+    <string name="vpn_openvpn_protocol">Protocole à utiliser</string>
+    <string name="vpn_openvpn_device">Périphérique à utiliser</string>
+    <string name="vpn_openvpn_userauth">Authentification utilisateur</string>
+    <string name="vpn_openvpn_userauth_summary">Activer si une authentification nom d\'utilisateur/mot de passe doit être utilisée</string>
+    <string name="vpn_openvpn_advanced_titlebar">Paramètres avancés OpenVPN</string>
+    <string name="vpn_openvpn_comp_lzo">Compression LZO</string>
+    <string name="vpn_openvpn_comp_lzo_summary">Forcer l\'activation de la compression LZO</string>
+    <string name="vpn_openvpn_redirect_gateway_title">Rediriger la passerelle</string>
+    <string name="vpn_openvpn_redirect_gateway_summary">Forcer la redirection de tout le traffic réseau par le VPN</string>
+    <string name="vpn_openvpn_set_addr">Adresses automatiques</string>
+    <string name="vpn_openvpn_set_addr_summary">Désactiver pour définir les adresses manuellement</string>
+    <string name="vpn_openvpn_set_local_addr">Adresse IP Locale</string>
+    <string name="vpn_openvpn_set_remote_addr">Adresse IP Distante</string>
+    <string name="vpn_openvpn_set_cipher">Algorithme de chiffrement</string>
+    <string name="vpn_openvpn_set_cipher_message">Laisser vide afin d\'utiliser le chiffrement par défaut</string>
+    <string name="vpn_openvpn_set_keysize">Taile de la clé de chiffrement</string>
+    <string name="vpn_openvpn_set_keysize_message">Laisser vide afin d\'utiliser la taille par défaut</string>
+    <string name="vpn_openvpn_set_extra">Arguments supplémentaires</string>
+    <string name="vpn_openvpn_set_extra_message">Entrer les paramètres de ligne de commande supplémentaires</string>
     <string name="vpn_ipsec_presharedkey_title" msgid="2184060087690539175">"Définir la clé pré-partagée IPSec"</string>
     <string name="vpn_ipsec_presharedkey" msgid="5434316521616673741">"Clé pré-partagée IPSec"</string>
     <string name="vpn_a_ipsec_presharedkey" msgid="1255301923217898418">"une clé pré-partagée IPSec"</string>
@@ -1095,4 +1133,44 @@
     <string name="sound_category_calls_title" msgid="3688531959256239012">"Appels entrants"</string>
     <string name="sound_category_notification_title" msgid="3502115998790286943">"Notifications"</string>
     <string name="sound_category_feedback_title" msgid="4399742321363475393">"Commentaires"</string>
+    <string name="cm_settings_title">CyanogenMod</string>
+    <string name="launcher_settings_title">Accueil</string>    
+    <string name="possibleButtons">Commandes disponibles</string>
+    <string name="toggleWifi">Commande WiFi</string>
+    <string name="toggleBluetooth">Commande Bluetooth</string>
+    <string name="toggleGPS">Commande GPS</string>
+    <string name="toggleData">Commande Données cellulaires</string>
+    <string name="toggleSync">Commande Synchronisation</string>
+    <string name="toggle2g3g">Commande 2G/3G</string>
+    <string name="toggleSound">Commande Mode de sonnerie</string>
+    <string name="toggleBrightness">Commande Luminosité</string>
+    <string name="toggleAutoRotate">Commande Orientation</string>
+    <string name="toggleScreenTimeout">Commande Timeout de l\'écran</string>
+    <string name="toggleWifiDescription">Activer/désactiver le WiFi</string>
+    <string name="toggleBluetoothDescription">Activer/désactiver Bluetooth</string>
+    <string name="toggleGPSDescription">Activer/désactiver le GPS</string>
+    <string name="toggleDataDescription">Activer/désactiver les données par le réseau mobile</string>
+    <string name="toggleSyncDescription">Activer/désactiver la synchronisation automatique</string>
+    <string name="toggle2g3gDescription">Basculer entre 2G et 3G</string>
+    <string name="toggleSoundDescription">Basculer mode sonnerie/vibreur</string>
+    <string name="toggleBrightnessDescription">Basculer les différents modes de luminosité</string>
+    <string name="toggleAutoRotateDescription">Activer/désactiver le capteur d\'orientation</string>
+    <string name="toggleScreenTimeoutDescription">15sec, 1min, 5 minutes</string>    
+    <string name="generalSettings">Paramètres généraux</string>
+    <string name="autoDisable3G">Désactiver la 3G automatiquement</string>
+    <string name="autoEnable3G">Activer la 3G automatiquement</string>
+    <string name="useRoundCorners">Angles arrondis</string>
+    <string name="useTransparent">Widget transparent</string>
+    <string name="autoEnableSyncWithWifi">Activer la synchro automatiquement</string>
+    <string name="autoDisableSyncWithWifi">Désactiver la synchro automatiquement</string>
+    <string name="ringModeVibrateAsOn">Activé en mode vibreur</string>
+    <string name="monitorDataRoaming">Roaming data en rouge</string>
+    <string name="autoDisable3GDescription">2G quand les données mobiles sont désactivées</string>
+    <string name="autoEnable3GDescription">3G quand les données mobiles sont activées</string>
+    <string name="useRoundCornersDescription">Arrondir les coins du widget</string>
+    <string name="useTransparentDescription">Pas d\'arrière-plan</string>
+    <string name="autoEnableSyncWithWifiDescription">Activer la synchro avec le WiFi</string>
+    <string name="autoDisableSyncWithWifiDescription">Désactiver la synchro avec le WiFi</string>
+    <string name="ringModeVibrateAsOnDescription">Montrer le son comme étant activé en mode vibreur</string>
+    <string name="monitorDataRoamingDescription">Colorer le statut des données en rouge lorsque le roaming est activé</string>
 </resources>
