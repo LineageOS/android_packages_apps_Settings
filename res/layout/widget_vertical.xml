@@ -19,63 +19,63 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="@drawable/appwidget_bg" >
+    android:background="@drawable/appwidget_bg" 
+	android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/btn_wifi"
-        android:layout_width="0dip"
+        android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="match_parent"
+        android:layout_height="0dip"
         android:background="@drawable/appwidget_button_center"
         android:clickable="true"
-        android:focusable="true"
-        android:orientation="vertical">
+        android:focusable="true">
 
         <ImageView
             android:id="@+id/img_wifi"
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:scaleType="center"
             />
 
         <ImageView
             android:id="@+id/ind_wifi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:scaleType="fitXY"
             />
         </LinearLayout>
 
     <ImageView
         android:id="@+id/sep_wifi"
-        android:layout_width="1dip"
-        android:layout_height="match_parent"
-        android:background="@drawable/appwidget_settings_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@drawable/appwidget_settings_divider_v"
         />
 
     <LinearLayout
         android:id="@+id/btn_bluetooth"
-        android:layout_width="0dip"
+        android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="match_parent"
+        android:layout_height="0dip"
         android:background="@drawable/appwidget_button_center"
         android:clickable="true"
-        android:focusable="true"
-        android:orientation="vertical">
+        android:focusable="true">
+
 
         <ImageView
             android:id="@+id/img_bluetooth"
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:scaleType="center"
             />
 
         <ImageView
             android:id="@+id/ind_bluetooth"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:scaleType="fitXY"
             />
 
@@ -83,378 +83,375 @@
 
     <ImageView
         android:id="@+id/sep_bluetooth"
-        android:layout_width="1dip"
-        android:layout_height="match_parent"
-        android:background="@drawable/appwidget_settings_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@drawable/appwidget_settings_divider_v"
         />
 
     <LinearLayout
         android:id="@+id/btn_gps"
-        android:layout_width="0dip"
+        android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="match_parent"
+        android:layout_height="0dip"
         android:background="@drawable/appwidget_button_center"
         android:clickable="true"
-        android:focusable="true"
-        android:orientation="vertical">
+        android:focusable="true">
+
 
         <ImageView
             android:id="@+id/img_gps"
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:scaleType="center"
             />
 
         <ImageView
             android:id="@+id/ind_gps"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:scaleType="fitXY"
             />
     </LinearLayout>
 
     <ImageView
         android:id="@+id/sep_gps"
-        android:layout_width="1dip"
-        android:layout_height="match_parent"
-        android:background="@drawable/appwidget_settings_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@drawable/appwidget_settings_divider_v"
         />    
 
     <LinearLayout
         android:id="@+id/btn_data"
-        android:layout_width="0dip"
+        android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="match_parent"
+        android:layout_height="0dip"
         android:background="@drawable/appwidget_button_center"
         android:clickable="true"
-        android:focusable="true"
-        android:orientation="vertical">
+        android:focusable="true">
+
 
         <ImageView
             android:id="@+id/img_data"
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:scaleType="center"
             />
 
         <ImageView
             android:id="@+id/ind_data"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:scaleType="fitXY"
             />
         </LinearLayout>
 
     <ImageView
         android:id="@+id/sep_data"
-        android:layout_width="1dip"
-        android:layout_height="match_parent"
-        android:background="@drawable/appwidget_settings_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@drawable/appwidget_settings_divider_v"
         />    
 
     <LinearLayout
         android:id="@+id/btn_2G3G"
-        android:layout_width="0dip"
+        android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="match_parent"
+        android:layout_height="0dip"
         android:background="@drawable/appwidget_button_center"
         android:clickable="true"
         android:focusable="true"
-        android:visibility="gone"
-        
-        android:orientation="vertical">
+        android:visibility="gone">        
 
         <ImageView
             android:id="@+id/img_2G3G"
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:scaleType="center"
             />
 
         <ImageView
             android:id="@+id/ind_2G3G"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="fitXY"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+           android:scaleType="fitXY"
             />
         </LinearLayout>
 
     <ImageView
         android:id="@+id/sep_2G3G"
-        android:layout_width="1dip"
-        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
         android:visibility="gone"
-        android:background="@drawable/appwidget_settings_divider"
+        android:background="@drawable/appwidget_settings_divider_v"
         />
 
     <LinearLayout
         android:id="@+id/btn_sync"
-        android:layout_width="0dip"
+        android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="match_parent"
+        android:layout_height="0dip"
         android:background="@drawable/appwidget_button_center"
         android:clickable="true"
-        android:focusable="true"
-        android:orientation="vertical">
+        android:focusable="true">
+
 
         <ImageView
             android:id="@+id/img_sync"
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:scaleType="center"
             />
 
         <ImageView
             android:id="@+id/ind_sync"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:scaleType="fitXY"
             />
     </LinearLayout>
 
     <ImageView
         android:id="@+id/sep_sync"
-        android:layout_width="1dip"
-        android:layout_height="match_parent"
-        android:background="@drawable/appwidget_settings_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+       android:background="@drawable/appwidget_settings_divider_v"
         />
 
     <LinearLayout
         android:id="@+id/btn_sound"
-        android:layout_width="0dip"
+        android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="match_parent"
+        android:layout_height="0dip"
         android:background="@drawable/appwidget_button_center"
         android:clickable="true"
         android:focusable="true"
-        android:visibility="gone"
-        android:orientation="vertical">
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/img_sound"
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:scaleType="center"
             />
 
         <ImageView
             android:id="@+id/ind_sound"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:scaleType="fitXY"
             />
     </LinearLayout>
 
     <ImageView
         android:id="@+id/sep_sound"
-        android:layout_width="1dip"
-        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
         android:visibility="gone"
-        android:background="@drawable/appwidget_settings_divider"
+        android:background="@drawable/appwidget_settings_divider_v"
         />
 
     <LinearLayout
         android:id="@+id/btn_screen_timeout"
-        android:layout_width="0dip"
+        android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="match_parent"
+        android:layout_height="0dip"
         android:background="@drawable/appwidget_button_center"
         android:clickable="true"
         android:focusable="true"
-        android:visibility="gone"
-        android:orientation="vertical">
+        android:visibility="gone">
+
 
         <ImageView
             android:id="@+id/img_screen_timeout"
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:layout_weight="1"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+           android:layout_weight="1"
             android:scaleType="center"
             />
 
         <ImageView
             android:id="@+id/ind_screen_timeout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:scaleType="fitXY"
             />
     </LinearLayout>
 
     <ImageView
         android:id="@+id/sep_screen_timeout"
-        android:layout_width="1dip"
-        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
         android:visibility="gone"
-        android:background="@drawable/appwidget_settings_divider"
+        android:background="@drawable/appwidget_settings_divider_v"
         />
 
     <LinearLayout
         android:id="@+id/btn_auto_rotate"
-        android:layout_width="0dip"
+        android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="match_parent"
+        android:layout_height="0dip"
         android:background="@drawable/appwidget_button_center"
         android:clickable="true"
         android:focusable="true"
-        android:visibility="gone"
-        android:orientation="vertical">
+        android:visibility="gone">
+
 
         <ImageView
             android:id="@+id/img_auto_rotate"
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:scaleType="center"
             />
 
         <ImageView
             android:id="@+id/ind_auto_rotate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="fitXY"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+           android:scaleType="fitXY"
             />
     </LinearLayout>
 
     <ImageView
         android:id="@+id/sep_auto_rotate"
-        android:layout_width="1dip"
-        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
         android:visibility="gone"
-        android:background="@drawable/appwidget_settings_divider"
+        android:background="@drawable/appwidget_settings_divider_v"
         />
 
    <LinearLayout
         android:id="@+id/btn_lock_screen"
-        android:layout_width="0dip"
+        android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="match_parent"
+        android:layout_height="0dip"
         android:background="@drawable/appwidget_button_center"
         android:clickable="true"
         android:focusable="true"
-        android:visibility="gone"
-        android:orientation="vertical">
+        android:visibility="gone">
+
 
         <ImageView
             android:id="@+id/img_lock_screen"
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:scaleType="center"
             />
 
         <ImageView
             android:id="@+id/ind_lock_screen"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:scaleType="fitXY"
             />
     </LinearLayout>
 
     <ImageView
         android:id="@+id/sep_lock_screen"
-        android:layout_width="1dip"
-        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
         android:visibility="gone"
-        android:background="@drawable/appwidget_settings_divider"
+        android:background="@drawable/appwidget_settings_divider_v"
         />
 
    <LinearLayout
         android:id="@+id/btn_flashlight"
-        android:layout_width="0dip"
+        android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="match_parent"
+        android:layout_height="0dip"
         android:background="@drawable/appwidget_button_center"
         android:clickable="true"
         android:focusable="true"
-        android:visibility="gone"
-        android:orientation="vertical">
+        android:visibility="gone">
+
 
         <ImageView
             android:id="@+id/img_flashlight"
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:scaleType="center"
             />
 
         <ImageView
             android:id="@+id/ind_flashlight"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="fitXY"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+           android:scaleType="fitXY"
             />
     </LinearLayout>
 
     <ImageView
         android:id="@+id/sep_flashlight"
-        android:layout_width="1dip"
-        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
         android:visibility="gone"
-        android:background="@drawable/appwidget_settings_divider"
+        android:background="@drawable/appwidget_settings_divider_v"
         />
         
    <LinearLayout
         android:id="@+id/btn_airplane"
-        android:layout_width="0dip"
+        android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="match_parent"
+        android:layout_height="0dip"
         android:background="@drawable/appwidget_button_center"
         android:clickable="true"
         android:focusable="true"
-        android:visibility="gone"
-        android:orientation="vertical">
+        android:visibility="gone">
+
 
         <ImageView
             android:id="@+id/img_airplane"
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:layout_weight="1"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+           android:layout_weight="1"
             android:scaleType="center"
             />
 
         <ImageView
             android:id="@+id/ind_airplane"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:scaleType="fitXY"
             />
     </LinearLayout>
 
     <ImageView
         android:id="@+id/sep_airplane"
-        android:layout_width="1dip"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        android:background="@drawable/appwidget_settings_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+       android:visibility="gone"
+        android:background="@drawable/appwidget_settings_divider_v"
         />                
         
     <LinearLayout
         android:id="@+id/btn_brightness"
-        android:layout_width="0dip"
+        android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="match_parent"
+        android:layout_height="0dip"
         android:background="@drawable/appwidget_button_center"
         android:clickable="true"
-        android:focusable="true"
-        android:orientation="vertical">
+        android:focusable="true">
+
 
         <ImageView
             android:id="@+id/img_brightness"
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:scaleType="center"
             />
 
         <ImageView
             android:id="@+id/ind_brightness"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:scaleType="fitXY"
             />
     </LinearLayout>
