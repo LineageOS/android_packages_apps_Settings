@@ -161,7 +161,7 @@ public class WifiApButton extends WidgetButton{
 	void initButton() {
 		//SettingsAppWidgetProvider.logD("WifiAp: Init Button");
 		buttonID=WidgetButton.BUTTON_WIFI_AP;
-		isDefault=true;
+		isDefault=false;
 		preferenceName=WidgetSettings.TOGGLE_WIFI_AP;
 
 		buttonLayout=R.id.btn_wifi_ap;
