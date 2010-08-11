@@ -55,6 +55,38 @@
         />
 
     <LinearLayout
+        android:id="@+id/btn_wifi_ap"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dip"
+        android:background="@drawable/appwidget_button_center"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ImageView
+            android:id="@+id/img_wifi_ap"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="center"
+            />
+
+        <ImageView
+            android:id="@+id/ind_wifi_ap"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            />
+        </LinearLayout>
+
+    <ImageView
+        android:id="@+id/sep_wifi_ap"
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@drawable/appwidget_settings_divider_v"
+        />
+
+    <LinearLayout
         android:id="@+id/btn_bluetooth"
         android:layout_width="match_parent"
         android:layout_weight="1"

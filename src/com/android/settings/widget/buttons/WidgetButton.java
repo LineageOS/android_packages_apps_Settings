@@ -28,6 +28,7 @@ public abstract class WidgetButton {
 	public static final int BUTTON_FLASHLIGHT = 10;
 	public static final int BUTTON_AIRPLANE = 11;
 	public static final int BUTTON_LOCK_SCREEN = 12;
+	public static final int BUTTON_WIFI_AP = 13;
 
 	// This widget keeps track of two sets of states:
 	// "3-state": STATE_DISABLED, STATE_ENABLED, STATE_INTERMEDIATE

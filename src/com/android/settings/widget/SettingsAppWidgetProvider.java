@@ -46,6 +46,7 @@ import com.android.settings.widget.buttons.SoundButton;
 import com.android.settings.widget.buttons.SyncButton;
 import com.android.settings.widget.buttons.WidgetButton;
 import com.android.settings.widget.buttons.WifiButton;
+import com.android.settings.widget.buttons.WifiApButton;
 
 
 /**
@@ -159,6 +160,7 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 
 	private static void updateStates(Context context, SharedPreferences globalPreferences,  int[] appWidgetIds) {
 		WifiButton.getInstance().updateState(context, globalPreferences, appWidgetIds);
+		WifiApButton.getInstance().updateState(context, globalPreferences, appWidgetIds);
 		BluetoothButton.getInstance().updateState(context, globalPreferences, appWidgetIds);
 		GPSButton.getInstance().updateState(context, globalPreferences, appWidgetIds);
 		MobileDataButton.getInstance().updateState(context, globalPreferences, appWidgetIds);;
@@ -197,6 +199,7 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 			
 			
 				WifiButton.getInstance().updateView(context, views, globalPreferences, widgetPreferences, appWidgetId);
+				WifiApButton.getInstance().updateView(context, views, globalPreferences, widgetPreferences, appWidgetId);
 				BluetoothButton.getInstance().updateView(context, views, globalPreferences, widgetPreferences, appWidgetId);
 				GPSButton.getInstance().updateView(context, views, globalPreferences, widgetPreferences, appWidgetId);
 				MobileDataButton.getInstance().updateView(context, views, globalPreferences, widgetPreferences, appWidgetId);
@@ -232,6 +235,9 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 		if (WifiManager.WIFI_STATE_CHANGED_ACTION.equals(intent.getAction())) {
 			WifiButton.getInstance().onReceive(context, intent);
 			updateWidget(context,WidgetButton.BUTTON_WIFI);
+		} else if (WifiManager.WIFI_AP_STATE_CHANGED_ACTION.equals(intent.getAction())) {
+			WifiApButton.getInstance().onReceive(context, intent);
+			updateWidget(context,WidgetButton.BUTTON_WIFI_AP);
 		} else if (BluetoothAdapter.ACTION_STATE_CHANGED.equals(intent.getAction())) {
 			BluetoothButton.getInstance().onReceive(context, intent);
 			updateWidget(context,WidgetButton.BUTTON_BLUETOOTH);
@@ -244,6 +250,9 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 			if (buttonId == WidgetButton.BUTTON_WIFI) {
 				WifiButton.getInstance().toggleState(context);
 				updateWidget(context,WidgetButton.BUTTON_WIFI);
+			} else if (buttonId == WidgetButton.BUTTON_WIFI_AP) {
+				WifiApButton.getInstance().toggleState(context);
+				updateWidget(context,WidgetButton.BUTTON_WIFI_AP);
 			} else if (buttonId == WidgetButton.BUTTON_BLUETOOTH) {
 				BluetoothButton.getInstance().toggleState(context);				
 				updateWidget(context,WidgetButton.BUTTON_BLUETOOTH);

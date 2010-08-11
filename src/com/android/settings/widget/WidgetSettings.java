@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.Spinner;
+import android.net.ConnectivityManager;
 
 import com.android.settings.R;
 
@@ -36,6 +37,7 @@ public class WidgetSettings extends Activity {
 	public static final String TOGGLE_GPS = "toggleGPS";
 	public static final String TOGGLE_BLUETOOTH = "toggleBluetooth";
 	public static final String TOGGLE_WIFI = "toggleWifi";
+	public static final String TOGGLE_WIFI_AP = "toggleWifiAp";
 
 	public static final String TOGGLE_AIRPLANE = "toggleAirplane";
 	public static final String TOGGLE_FLASHLIGHT = "toggleFlashlight";
@@ -98,6 +100,13 @@ public class WidgetSettings extends Activity {
 		((CheckBox)findViewById(R.id.autoEnableSyncWithWifi)).setChecked(preferencesGeneral.getBoolean(AUTO_ENABLE_SYNC_WITH_WIFI, false));
 		((CheckBox)findViewById(R.id.monitorDataRoaming)).setChecked(preferencesGeneral.getBoolean(MONITOR_DATA_ROAMING, false));		
 		((CheckBox)findViewById(R.id.ringModeVibrateAsOn)).setChecked(preferencesGeneral.getBoolean(RING_MODE_VIBRATE_AS_ON, false));
+		
+		// disable the Wi-Fi AP preference if Wifi AP is not available
+		ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+		if (cm.getTetherableWifiRegexs().length <= 0) {
+			findViewById(R.id.toggleWifiApPreference).setVisibility(View.GONE);
+			findViewById(R.id.toggleWifiApPreferenceDivider).setVisibility(View.GONE);
+		}		
 		
 		Spinner spinner = (Spinner) findViewById(R.id.brightnessSpinner);
 	    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
@@ -178,6 +187,7 @@ public class WidgetSettings extends Activity {
         	editor.putBoolean(TOGGLE_AIRPLANE, ((CheckBox)findViewById(R.id.toggleAirplane)).isChecked());
         	editor.putBoolean(TOGGLE_LOCK_SCREEN, ((CheckBox)findViewById(R.id.toggleLockScreen)).isChecked());
         	editor.putBoolean(TOGGLE_FLASHLIGHT, ((CheckBox)findViewById(R.id.toggleFlashlight)).isChecked());
+        	editor.putBoolean(TOGGLE_WIFI_AP, ((CheckBox)findViewById(R.id.toggleWifiAp)).isChecked());
 
         	editor.putBoolean(USE_ROUND_CORNERS, ((CheckBox)findViewById(R.id.useRoundCorners)).isChecked());
         	editor.putBoolean(USE_TRANSPARENT, ((CheckBox)findViewById(R.id.useTransparent)).isChecked());
@@ -223,6 +233,7 @@ public class WidgetSettings extends Activity {
 			if ( ((CheckBox)findViewById(R.id.toggleData)).isChecked()) return R.id.ind_data;
 			if ( ((CheckBox)findViewById(R.id.toggleGPS)).isChecked()) return R.id.ind_gps;
 			if ( ((CheckBox)findViewById(R.id.toggleBluetooth)).isChecked()) return R.id.ind_bluetooth;
+			if ( ((CheckBox)findViewById(R.id.toggleWifiAp)).isChecked()) return R.id.ind_wifi_ap;
 			if ( ((CheckBox)findViewById(R.id.toggleWifi)).isChecked()) return R.id.ind_wifi;
 			return 0;
 		}
@@ -230,6 +241,7 @@ public class WidgetSettings extends Activity {
 
 		private int getFirstIconId() {
 			if ( ((CheckBox)findViewById(R.id.toggleWifi)).isChecked()) return R.id.ind_wifi;
+			if ( ((CheckBox)findViewById(R.id.toggleWifiAp)).isChecked()) return R.id.ind_wifi_ap;
 			if ( ((CheckBox)findViewById(R.id.toggleBluetooth)).isChecked()) return R.id.ind_bluetooth;
 			if ( ((CheckBox)findViewById(R.id.toggleGPS)).isChecked()) return R.id.ind_gps;
 			if ( ((CheckBox)findViewById(R.id.toggleData)).isChecked()) return R.id.ind_data;
