@@ -37,6 +37,36 @@
 			<View android:layout_width="fill_parent" android:layout_height="1dp"
 				android:background="?android:attr/listDivider" />
 
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/toggleWifiApPreference"
+                android:layout_width="fill_parent" android:layout_height="?android:attr/listPreferredItemHeight"
+                android:padding="6dip">
+
+                <LinearLayout android:orientation="vertical"
+                    android:layout_width="0dip" android:layout_weight="1"
+                    android:layout_height="fill_parent">
+
+                    <TextView android:textSize="20dip" android:layout_width="fill_parent"
+                        android:layout_height="0dip" android:layout_weight="1"
+                        android:textColor="#FFFFFF" android:gravity="center_vertical"
+                        android:text="@string/toggleWifiAp" />
+
+                    <TextView android:textSize="14dip" android:layout_width="fill_parent"
+                        android:layout_height="0dip" android:layout_weight="1"
+                        android:textColor="#808080" android:singleLine="true"
+                        android:text="@string/toggleWifiApDescription" />
+
+                </LinearLayout>
+
+                <CheckBox android:id="@+id/toggleWifiAp" android:checked="false"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <View android:layout_width="fill_parent" android:layout_height="1dp"
+                android:id="@+id/toggleWifiApPreferenceDivider"
+                android:background="?android:attr/listDivider" />
+
 			<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 				android:layout_width="fill_parent" android:layout_height="?android:attr/listPreferredItemHeight"
 				android:padding="6dip">
