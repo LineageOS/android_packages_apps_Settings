@@ -75,6 +75,24 @@
             android:summary="@string/notification_pulse_summary"
             android:persistent="false" />
 
+    <CheckBoxPreference
+            android:key="notification_blink"
+            android:title="@string/notification_blink_title"
+            android:summary="@string/notification_blink_summary"
+            android:persistent="false" />
+
+    <CheckBoxPreference
+            android:key="notification_always_on"
+            android:title="@string/notification_always_on_title"
+            android:summary="@string/notification_always_on_summary"
+            android:persistent="false" />
+
+    <CheckBoxPreference
+            android:key="notification_charging"
+            android:title="@string/notification_charging_title"
+            android:summary="@string/notification_charging_summary"
+            android:persistent="false" />
+
     <PreferenceCategory
             android:title="@string/sound_category_feedback_title"/>
 
