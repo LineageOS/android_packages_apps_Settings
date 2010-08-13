@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.provider.Settings.SettingNotFoundException;
+import android.widget.Toast;
 
 import com.android.internal.telephony.Phone;
 import com.android.settings.R;
@@ -99,9 +100,10 @@ public class NetworkModeButton extends WidgetButton{
 	public void toggleState(Context context, int newState) {
 		if (currentState!=SettingsAppWidgetProvider.STATE_INTERMEDIATE && currentState!=newState) {
 			toggleState(context,true);
-		} else {
-			SettingsAppWidgetProvider.logD("NetworkMode: Ignored request. currentState="+currentState+" newState="+newState);
-		}
+		} else if (currentState==SettingsAppWidgetProvider.STATE_INTERMEDIATE){
+			Toast toast = Toast.makeText(context, "Network mode state unknown. Please change it manually!",Toast.LENGTH_SHORT);
+			toast.show();
+		} 
 	}	
 
 	public void toggleState(Context context, boolean switchModes) {

@@ -618,6 +618,62 @@
 					<TextView android:textSize="20dip" android:layout_width="fill_parent"
 						android:layout_height="0dip" android:layout_weight="1"
 						android:textColor="#FFFFFF" android:gravity="center_vertical"
+						android:text="@string/autoDisable3GWithWifi" />
+
+					<TextView android:textSize="14dip" android:layout_width="fill_parent"
+						android:layout_height="0dip" android:layout_weight="1"
+						android:textColor="#808080" android:singleLine="true"
+						android:text="@string/autoDisable3GWithWifiDescription" />
+
+				</LinearLayout>
+
+				<CheckBox android:id="@+id/autoDisable3GWithWifi" android:checked="false"
+					android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+			</LinearLayout>
+
+			<View android:layout_width="fill_parent" android:layout_height="1dp"
+				android:background="?android:attr/listDivider" />
+
+			<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_width="fill_parent" android:layout_height="?android:attr/listPreferredItemHeight"
+				android:padding="6dip">
+
+				<LinearLayout android:orientation="vertical"
+					android:layout_width="0dip" android:layout_weight="1"
+					android:layout_height="fill_parent">
+
+					<TextView android:textSize="20dip" android:layout_width="fill_parent"
+						android:layout_height="0dip" android:layout_weight="1"
+						android:textColor="#FFFFFF" android:gravity="center_vertical"
+						android:text="@string/autoEnable3GWithWifi" />
+
+					<TextView android:textSize="14dip" android:layout_width="fill_parent"
+						android:layout_height="0dip" android:layout_weight="1"
+						android:textColor="#808080" android:singleLine="true"
+						android:text="@string/autoEnable3GWithWifiDescription" />
+
+				</LinearLayout>
+
+				<CheckBox android:id="@+id/autoEnable3GWithWifi" android:checked="false"
+					android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+			</LinearLayout>
+
+			<View android:layout_width="fill_parent" android:layout_height="1dp"
+				android:background="?android:attr/listDivider" />
+				
+			<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_width="fill_parent" android:layout_height="?android:attr/listPreferredItemHeight"
+				android:padding="6dip">
+
+				<LinearLayout android:orientation="vertical"
+					android:layout_width="0dip" android:layout_weight="1"
+					android:layout_height="fill_parent">
+
+					<TextView android:textSize="20dip" android:layout_width="fill_parent"
+						android:layout_height="0dip" android:layout_weight="1"
+						android:textColor="#FFFFFF" android:gravity="center_vertical"
 						android:text="@string/monitorDataRoaming" />
 
 					<TextView android:textSize="14dip" android:layout_width="fill_parent"
