@@ -190,5 +190,11 @@ public class WifiButton extends WidgetButton{
 
 	}
 
-
+	public void toggleState(Context context, int newState) {
+		int curState = sWifiState.getTriState(context);
+		if (curState!= SettingsAppWidgetProvider.STATE_INTERMEDIATE &&
+				curState!=newState) {
+			toggleState(context);
+		}
+	}	
 }

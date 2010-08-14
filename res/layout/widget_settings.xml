@@ -5,10 +5,16 @@
 	<ScrollView android:layout_width="fill_parent"
 		android:layout_height="match_parent" android:background="#000000">
 
+
+				
 		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 			android:layout_width="fill_parent" android:layout_height="wrap_content"
 			android:orientation="vertical">
 
+		<TextView android:id="@+id/possibleButtons" android:text="@string/possibleButtons"
+				style="?android:attr/listSeparatorTextViewStyle"/>
+			<View android:layout_width="fill_parent" android:layout_height="1dp"
+				android:background="?android:attr/listDivider" />
 			<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 				android:layout_width="fill_parent" android:layout_height="?android:attr/listPreferredItemHeight"
 				android:padding="6dip">
@@ -401,6 +407,11 @@
 
 			</LinearLayout>				
 
+			<View android:layout_width="fill_parent" android:layout_height="10dp"
+				android:background="@null" />
+							
+			<TextView android:id="@+id/widgetSettings" android:text="@string/settings_label"
+				style="?android:attr/listSeparatorTextViewStyle"/>
 			<View android:layout_width="fill_parent" android:layout_height="1dp"
 				android:background="?android:attr/listDivider" />
 				
@@ -485,12 +496,11 @@
 
 			</LinearLayout>
 
+			<View android:layout_width="fill_parent" android:layout_height="10dp"
+				android:background="@null" />
 
-			<TextView android:id="@+id/generalSettings" android:text="@string/settings_label"
+			<TextView android:id="@+id/wifiSettings" android:text="@string/wifiSettings"
 				style="?android:attr/listSeparatorTextViewStyle"/>
-			<View android:layout_width="fill_parent" android:layout_height="1dp"
-				android:background="?android:attr/listDivider" />
-
 			<View android:layout_width="fill_parent" android:layout_height="1dp"
 				android:background="?android:attr/listDivider" />
 
@@ -546,63 +556,6 @@
 					android:layout_width="wrap_content" android:layout_height="wrap_content" />
 
 			</LinearLayout>				
-				
-			<View android:layout_width="fill_parent" android:layout_height="1dp"
-				android:background="?android:attr/listDivider" />
-
-
-			<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-				android:layout_width="fill_parent" android:layout_height="?android:attr/listPreferredItemHeight"
-				android:padding="6dip">
-
-				<LinearLayout android:orientation="vertical"
-					android:layout_width="0dip" android:layout_weight="1"
-					android:layout_height="fill_parent">
-
-					<TextView android:textSize="20dip" android:layout_width="fill_parent"
-						android:layout_height="0dip" android:layout_weight="1"
-						android:textColor="#FFFFFF" android:gravity="center_vertical"
-						android:text="@string/autoDisable3G" />
-
-					<TextView android:textSize="14dip" android:layout_width="fill_parent"
-						android:layout_height="0dip" android:layout_weight="1"
-						android:textColor="#808080" android:singleLine="true"
-						android:text="@string/autoDisable3GDescription" />
-
-				</LinearLayout>
-
-				<CheckBox android:id="@+id/autoDisable3G" android:checked="false"
-					android:layout_width="wrap_content" android:layout_height="wrap_content" />
-
-			</LinearLayout>
-
-			<View android:layout_width="fill_parent" android:layout_height="1dp"
-				android:background="?android:attr/listDivider" />
-
-			<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-				android:layout_width="fill_parent" android:layout_height="?android:attr/listPreferredItemHeight"
-				android:padding="6dip">
-
-				<LinearLayout android:orientation="vertical"
-					android:layout_width="0dip" android:layout_weight="1"
-					android:layout_height="fill_parent">
-
-					<TextView android:textSize="20dip" android:layout_width="fill_parent"
-						android:layout_height="0dip" android:layout_weight="1"
-						android:textColor="#FFFFFF" android:gravity="center_vertical"
-						android:text="@string/autoEnable3G" />
-
-					<TextView android:textSize="14dip" android:layout_width="fill_parent"
-						android:layout_height="0dip" android:layout_weight="1"
-						android:textColor="#808080" android:singleLine="true"
-						android:text="@string/autoEnable3GDescription" />
-
-				</LinearLayout>
-
-				<CheckBox android:id="@+id/autoEnable3G" android:checked="false"
-					android:layout_width="wrap_content" android:layout_height="wrap_content" />
-
-			</LinearLayout>
 
 			<View android:layout_width="fill_parent" android:layout_height="1dp"
 				android:background="?android:attr/listDivider" />
@@ -660,8 +613,197 @@
 
 			</LinearLayout>
 
+			<View android:layout_width="fill_parent" android:layout_height="10dp"
+				android:background="@null" />
+				
+		<TextView android:id="@+id/dataSettings" android:text="@string/dataSettings"
+				style="?android:attr/listSeparatorTextViewStyle"/>
 			<View android:layout_width="fill_parent" android:layout_height="1dp"
 				android:background="?android:attr/listDivider" />
+				
+
+			<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_width="fill_parent" android:layout_height="?android:attr/listPreferredItemHeight"
+				android:padding="6dip">
+
+				<LinearLayout android:orientation="vertical"
+					android:layout_width="0dip" android:layout_weight="1"
+					android:layout_height="fill_parent">
+
+					<TextView android:textSize="20dip" android:layout_width="fill_parent"
+						android:layout_height="0dip" android:layout_weight="1"
+						android:textColor="#FFFFFF" android:gravity="center_vertical"
+						android:text="@string/autoDisable3G" />
+
+					<TextView android:textSize="14dip" android:layout_width="fill_parent"
+						android:layout_height="0dip" android:layout_weight="1"
+						android:textColor="#808080" android:singleLine="true"
+						android:text="@string/autoDisable3GDescription" />
+
+				</LinearLayout>
+
+				<CheckBox android:id="@+id/autoDisable3G" android:checked="false"
+					android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+			</LinearLayout>
+
+			<View android:layout_width="fill_parent" android:layout_height="1dp"
+				android:background="?android:attr/listDivider" />
+
+			<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_width="fill_parent" android:layout_height="?android:attr/listPreferredItemHeight"
+				android:padding="6dip">
+
+				<LinearLayout android:orientation="vertical"
+					android:layout_width="0dip" android:layout_weight="1"
+					android:layout_height="fill_parent">
+
+					<TextView android:textSize="20dip" android:layout_width="fill_parent"
+						android:layout_height="0dip" android:layout_weight="1"
+						android:textColor="#FFFFFF" android:gravity="center_vertical"
+						android:text="@string/autoEnable3G" />
+
+					<TextView android:textSize="14dip" android:layout_width="fill_parent"
+						android:layout_height="0dip" android:layout_weight="1"
+						android:textColor="#808080" android:singleLine="true"
+						android:text="@string/autoEnable3GDescription" />
+
+				</LinearLayout>
+
+				<CheckBox android:id="@+id/autoEnable3G" android:checked="false"
+					android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+			</LinearLayout>
+
+			<View android:layout_width="fill_parent" android:layout_height="10dp"
+				android:background="@null" />
+
+
+		<TextView android:id="@+id/poweSettings" android:text="@string/powerSettings"
+				style="?android:attr/listSeparatorTextViewStyle"/>
+			<View android:layout_width="fill_parent" android:layout_height="1dp"
+				android:background="?android:attr/listDivider" />
+				
+
+			<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_width="fill_parent" android:layout_height="?android:attr/listPreferredItemHeight"
+				android:padding="6dip">
+
+				<LinearLayout android:orientation="vertical"
+					android:layout_width="0dip" android:layout_weight="1"
+					android:layout_height="fill_parent">
+
+					<TextView android:textSize="20dip" android:layout_width="fill_parent"
+						android:layout_height="0dip" android:layout_weight="1"
+						android:textColor="#FFFFFF" android:gravity="center_vertical"
+						android:text="@string/autoEnableBluetoothWithPower" />
+
+					<TextView android:textSize="14dip" android:layout_width="fill_parent"
+						android:layout_height="0dip" android:layout_weight="1"
+						android:textColor="#808080" android:singleLine="true"
+						android:text="@string/autoEnableBluetoothWithPowerDescription" />
+
+				</LinearLayout>
+
+				<CheckBox android:id="@+id/autoEnableBluetoothWithPower" android:checked="false"
+					android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+			</LinearLayout>
+
+			<View android:layout_width="fill_parent" android:layout_height="1dp"
+				android:background="?android:attr/listDivider" />
+
+			<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_width="fill_parent" android:layout_height="?android:attr/listPreferredItemHeight"
+				android:padding="6dip">
+
+				<LinearLayout android:orientation="vertical"
+					android:layout_width="0dip" android:layout_weight="1"
+					android:layout_height="fill_parent">
+
+					<TextView android:textSize="20dip" android:layout_width="fill_parent"
+						android:layout_height="0dip" android:layout_weight="1"
+						android:textColor="#FFFFFF" android:gravity="center_vertical"
+						android:text="@string/autoDisableBluetoothWithPower" />
+
+					<TextView android:textSize="14dip" android:layout_width="fill_parent"
+						android:layout_height="0dip" android:layout_weight="1"
+						android:textColor="#808080" android:singleLine="true"
+						android:text="@string/autoDisableBluetoothWithPowerDescription" />
+
+				</LinearLayout>
+
+				<CheckBox android:id="@+id/autoDisableBluetoothWithPower" android:checked="false"
+					android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+			</LinearLayout>
+			
+			<View android:layout_width="fill_parent" android:layout_height="1dp"
+				android:background="?android:attr/listDivider" />
+				
+
+			<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_width="fill_parent" android:layout_height="?android:attr/listPreferredItemHeight"
+				android:padding="6dip">
+
+				<LinearLayout android:orientation="vertical"
+					android:layout_width="0dip" android:layout_weight="1"
+					android:layout_height="fill_parent">
+
+					<TextView android:textSize="20dip" android:layout_width="fill_parent"
+						android:layout_height="0dip" android:layout_weight="1"
+						android:textColor="#FFFFFF" android:gravity="center_vertical"
+						android:text="@string/autoEnableWifiWithPower" />
+
+					<TextView android:textSize="14dip" android:layout_width="fill_parent"
+						android:layout_height="0dip" android:layout_weight="1"
+						android:textColor="#808080" android:singleLine="true"
+						android:text="@string/autoEnableWifiWithPowerDescription" />
+
+				</LinearLayout>
+
+				<CheckBox android:id="@+id/autoEnableWifiWithPower" android:checked="false"
+					android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+			</LinearLayout>
+
+			<View android:layout_width="fill_parent" android:layout_height="1dp"
+				android:background="?android:attr/listDivider" />
+
+			<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_width="fill_parent" android:layout_height="?android:attr/listPreferredItemHeight"
+				android:padding="6dip">
+
+				<LinearLayout android:orientation="vertical"
+					android:layout_width="0dip" android:layout_weight="1"
+					android:layout_height="fill_parent">
+
+					<TextView android:textSize="20dip" android:layout_width="fill_parent"
+						android:layout_height="0dip" android:layout_weight="1"
+						android:textColor="#FFFFFF" android:gravity="center_vertical"
+						android:text="@string/autoDisableWifiWithPower" />
+
+					<TextView android:textSize="14dip" android:layout_width="fill_parent"
+						android:layout_height="0dip" android:layout_weight="1"
+						android:textColor="#808080" android:singleLine="true"
+						android:text="@string/autoDisableWifiWithPowerDescription" />
+
+				</LinearLayout>
+
+				<CheckBox android:id="@+id/autoDisableWifiWithPower" android:checked="false"
+					android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+			</LinearLayout>			
+
+			<View android:layout_width="fill_parent" android:layout_height="10dp"
+				android:background="@null" />
+
+
+		<TextView android:id="@+id/generalSettings" android:text="@string/generalSettings"
+				style="?android:attr/listSeparatorTextViewStyle"/>
+			<View android:layout_width="fill_parent" android:layout_height="1dp"
+				android:background="?android:attr/listDivider" />
+
 				
 			<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 				android:layout_width="fill_parent" android:layout_height="?android:attr/listPreferredItemHeight"
@@ -731,6 +873,12 @@
 		        android:drawSelectorOnTop="true"
 		        android:prompt="@string/networkModeSpinner"
 		    />
+		    
+			<View android:layout_width="fill_parent" android:layout_height="4dp"
+				android:background="@null" />
+
+			<View android:layout_width="fill_parent" android:layout_height="1dp"
+				android:background="?android:attr/listDivider" />
 
 		<TextView android:textSize="20dip" android:layout_width="fill_parent"
 			android:layout_height="0dip" android:layout_weight="1"
@@ -744,6 +892,9 @@
 		        android:drawSelectorOnTop="true"
 		        android:prompt="@string/ringModeSpinner"
 		    />
+
+			<View android:layout_width="fill_parent" android:layout_height="4dp"
+				android:background="@null" />
 
 			<View android:layout_width="fill_parent" android:layout_height="1dp"
 				android:background="?android:attr/listDivider" />
@@ -761,6 +912,12 @@
 		        android:prompt="@string/brightnessSpinner"
 		    />
 		    
+			<View android:layout_width="fill_parent" android:layout_height="4dp"
+				android:background="@null" />
+
+			<View android:layout_width="fill_parent" android:layout_height="1dp"
+				android:background="?android:attr/listDivider" />
+		    
 		<TextView android:textSize="20dip" android:layout_width="fill_parent"
 			android:layout_height="0dip" android:layout_weight="1"
 			android:textColor="#FFFFFF" android:gravity="center_vertical"
@@ -776,7 +933,10 @@
 
 			<View android:layout_width="fill_parent" android:layout_height="1dp"
 				android:background="?android:attr/listDivider" />
-
+				
+		<View android:layout_width="fill_parent" android:layout_height="10dp"
+				android:background="@null" />
+				
 			<LinearLayout android:id="@+id/LinearLayout01"
 				android:layout_width="fill_parent" android:layout_height="wrap_content"
 				android:orientation="horizontal" android:gravity="center">

@@ -824,6 +824,8 @@
                 <action android:name="com.android.internal.telephony.MOBILE_DATA_CHANGED" />
                 <action android:name="com.android.settings.GPS_STATUS_CHANGED" />
                 <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/appwidget_info" />
         </receiver>
