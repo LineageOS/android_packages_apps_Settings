@@ -41,6 +41,7 @@ import com.android.settings.widget.buttons.GPSButton;
 import com.android.settings.widget.buttons.LockScreenButton;
 import com.android.settings.widget.buttons.MobileDataButton;
 import com.android.settings.widget.buttons.NetworkModeButton;
+import com.android.settings.widget.buttons.PowerButton;
 import com.android.settings.widget.buttons.ScreenTimeoutButton;
 import com.android.settings.widget.buttons.SoundButton;
 import com.android.settings.widget.buttons.SyncButton;
@@ -244,6 +245,10 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 		} else if (NetworkModeButton.NETWORK_MODE_CHANGED.equals(intent.getAction())) {
 			logD("Received Network mode state change");
 			NetworkModeButton.getInstance().onReceive(context, intent);
+		} else if (Intent.ACTION_POWER_CONNECTED.equals(intent.getAction()) ||
+				Intent.ACTION_POWER_DISCONNECTED.equals(intent.getAction())) {
+			logD("Received power mode state change");
+			PowerButton.getInstance().onReceive(context, intent);
 		} else if (intent.hasCategory(Intent.CATEGORY_ALTERNATIVE)) {
 			Uri data = intent.getData();
 			int buttonId = Integer.parseInt(data.getSchemeSpecificPart());

@@ -53,6 +53,12 @@ public class WidgetSettings extends Activity {
 	public static final String AUTO_ENABLE_3G_WITH_WIFI = "autoEnable3GWithWifi";
 	public static final String AUTO_DISABLE_3G_WITH_WIFI = "autoDisable3GWithWifi";
 
+	public static final String AUTO_ENABLE_BLUETOOTH_WITH_POWER = "autoEnableBluetoothWithPower";
+	public static final String AUTO_DISABLE_BLUETOOTH_WITH_POWER = "autoDisableBluetoothWithPower";
+
+	public static final String AUTO_ENABLE_WIFI_WITH_POWER = "autoEnableWifiWithPower";
+	public static final String AUTO_DISABLE_WIFI_WITH_POWER = "autoDisableWifiWithPower";
+
 	public static final String NETWORK_MODE_SPINNER = "networkModeSpinner";
 	public static final String BRIGHTNESS_SPINNER = "brightnessSpinner";
 	public static final String RING_MODE_SPINNER = "ringModeSpinner";
@@ -101,6 +107,10 @@ public class WidgetSettings extends Activity {
 		((CheckBox)findViewById(R.id.autoEnable3G)).setChecked(preferencesGeneral.getBoolean(AUTO_ENABLE_3G, false));
 		((CheckBox)findViewById(R.id.autoDisable3GWithWifi)).setChecked(preferencesGeneral.getBoolean(AUTO_DISABLE_3G_WITH_WIFI, false));
 		((CheckBox)findViewById(R.id.autoEnable3GWithWifi)).setChecked(preferencesGeneral.getBoolean(AUTO_ENABLE_3G_WITH_WIFI, false));
+		((CheckBox)findViewById(R.id.autoEnableBluetoothWithPower)).setChecked(preferencesGeneral.getBoolean(AUTO_ENABLE_BLUETOOTH_WITH_POWER, false));
+		((CheckBox)findViewById(R.id.autoDisableBluetoothWithPower)).setChecked(preferencesGeneral.getBoolean(AUTO_DISABLE_BLUETOOTH_WITH_POWER, false));
+		((CheckBox)findViewById(R.id.autoEnableWifiWithPower)).setChecked(preferencesGeneral.getBoolean(AUTO_ENABLE_WIFI_WITH_POWER, false));
+		((CheckBox)findViewById(R.id.autoDisableWifiWithPower)).setChecked(preferencesGeneral.getBoolean(AUTO_DISABLE_WIFI_WITH_POWER, false));
 		((CheckBox)findViewById(R.id.autoDisableSyncWithWifi)).setChecked(preferencesGeneral.getBoolean(AUTO_DISABLE_SYNC_WITH_WIFI, false));
 		((CheckBox)findViewById(R.id.autoEnableSyncWithWifi)).setChecked(preferencesGeneral.getBoolean(AUTO_ENABLE_SYNC_WITH_WIFI, false));
 		((CheckBox)findViewById(R.id.monitorDataRoaming)).setChecked(preferencesGeneral.getBoolean(MONITOR_DATA_ROAMING, false));		
@@ -210,6 +220,10 @@ public class WidgetSettings extends Activity {
         	editorGeneral.putBoolean(AUTO_ENABLE_SYNC_WITH_WIFI, ((CheckBox)findViewById(R.id.autoEnableSyncWithWifi)).isChecked());
         	editorGeneral.putBoolean(AUTO_DISABLE_3G_WITH_WIFI, ((CheckBox)findViewById(R.id.autoDisable3GWithWifi)).isChecked());
         	editorGeneral.putBoolean(AUTO_ENABLE_3G_WITH_WIFI, ((CheckBox)findViewById(R.id.autoEnable3GWithWifi)).isChecked());
+        	editorGeneral.putBoolean(AUTO_ENABLE_BLUETOOTH_WITH_POWER, ((CheckBox)findViewById(R.id.autoEnableBluetoothWithPower)).isChecked());
+        	editorGeneral.putBoolean(AUTO_DISABLE_BLUETOOTH_WITH_POWER, ((CheckBox)findViewById(R.id.autoDisableBluetoothWithPower)).isChecked());
+        	editorGeneral.putBoolean(AUTO_ENABLE_WIFI_WITH_POWER, ((CheckBox)findViewById(R.id.autoEnableWifiWithPower)).isChecked());
+        	editorGeneral.putBoolean(AUTO_DISABLE_WIFI_WITH_POWER, ((CheckBox)findViewById(R.id.autoDisableWifiWithPower)).isChecked());
         	editorGeneral.putBoolean(MONITOR_DATA_ROAMING, ((CheckBox)findViewById(R.id.monitorDataRoaming)).isChecked());
         	editorGeneral.putBoolean(RING_MODE_VIBRATE_AS_ON, ((CheckBox)findViewById(R.id.ringModeVibrateAsOn)).isChecked());
 
