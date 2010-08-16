@@ -46,8 +46,8 @@ public class MobileDataButton extends WidgetButton {
 
 		ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 		if (enabled) {
+			cm.setMobileDataEnabled(false);
 			if (preferences.getBoolean(WidgetSettings.AUTO_DISABLE_3G, false)) {
-				cm.setMobileDataEnabled(false);
 				NetworkModeButton.getInstance().toggleState(context,SettingsAppWidgetProvider.STATE_DISABLED);
 			}
 		} else {

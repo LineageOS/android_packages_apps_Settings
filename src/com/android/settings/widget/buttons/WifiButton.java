@@ -134,7 +134,7 @@ public class WifiButton extends WidgetButton{
 
 	public void onReceive(Context context, Intent intent) {
 		//SettingsAppWidgetProvider.logD("Wifi: onReceive");		
-		sWifiState.onActualStateChange(context, intent);
+		sWifiState.onActualStateChange(context, intent);		
 	}
 
 
@@ -147,6 +147,14 @@ public class WifiButton extends WidgetButton{
 		SharedPreferences preferences = context.getSharedPreferences(WidgetSettings.WIDGET_PREF_MAIN,
 				Context.MODE_PRIVATE);
 
+		if (realstate==SettingsAppWidgetProvider.STATE_DISABLED && preferences.getBoolean(WidgetSettings.AUTO_DISABLE_3G_WITH_WIFI, false)){
+			//SettingsAppWidgetProvider.logD("Wifi: will enable Sync");
+			NetworkModeButton.getInstance().toggleState(context, SettingsAppWidgetProvider.STATE_DISABLED);
+		} else if (realstate==SettingsAppWidgetProvider.STATE_ENABLED && preferences.getBoolean(WidgetSettings.AUTO_ENABLE_3G_WITH_WIFI, false)){
+			//SettingsAppWidgetProvider.logD("Wifi: will disable Sync");
+			NetworkModeButton.getInstance().toggleState(context, SettingsAppWidgetProvider.STATE_ENABLED);
+		} 
+		
 		if (realstate==SettingsAppWidgetProvider.STATE_DISABLED && preferences.getBoolean(WidgetSettings.AUTO_ENABLE_SYNC_WITH_WIFI, false)){
 			//SettingsAppWidgetProvider.logD("Wifi: will enable Sync");
 			SyncButton.getInstance().toggleState(context, SettingsAppWidgetProvider.STATE_ENABLED);

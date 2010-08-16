@@ -116,7 +116,7 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 	 * 
 	 * @param context
 	 */
-	public static void updateWidget(Context context, Integer button) {
+	public static void updateWidget(Context context) {
 		logD(">> updateWidget IN");
 		AppWidgetManager manager = AppWidgetManager.getInstance(context);
 		int[] widgets = manager.getAppWidgetIds(THIS_APPWIDGET);
@@ -233,69 +233,66 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 		logD(">> onReceive IN");		
 		super.onReceive(context, intent);
 		if (WifiManager.WIFI_STATE_CHANGED_ACTION.equals(intent.getAction())) {
+			logD("Received Wifi state change");
 			WifiButton.getInstance().onReceive(context, intent);
-			updateWidget(context,WidgetButton.BUTTON_WIFI);
 		} else if (WifiManager.WIFI_AP_STATE_CHANGED_ACTION.equals(intent.getAction())) {
+			logD("Received Wifi AP state change");
 			WifiApButton.getInstance().onReceive(context, intent);
-			updateWidget(context,WidgetButton.BUTTON_WIFI_AP);
 		} else if (BluetoothAdapter.ACTION_STATE_CHANGED.equals(intent.getAction())) {
+			logD("Received Bluetooth state change");
 			BluetoothButton.getInstance().onReceive(context, intent);
-			updateWidget(context,WidgetButton.BUTTON_BLUETOOTH);
 		} else if (NetworkModeButton.NETWORK_MODE_CHANGED.equals(intent.getAction())) {
+			logD("Received Network mode state change");
 			NetworkModeButton.getInstance().onReceive(context, intent);
-			updateWidget(context,WidgetButton.BUTTON_2G3G);
 		} else if (intent.hasCategory(Intent.CATEGORY_ALTERNATIVE)) {
 			Uri data = intent.getData();
 			int buttonId = Integer.parseInt(data.getSchemeSpecificPart());
 			if (buttonId == WidgetButton.BUTTON_WIFI) {
+				logD("Received wifi button change request");
 				WifiButton.getInstance().toggleState(context);
-				updateWidget(context,WidgetButton.BUTTON_WIFI);
 			} else if (buttonId == WidgetButton.BUTTON_WIFI_AP) {
+				logD("Received wifi ap button change request");
 				WifiApButton.getInstance().toggleState(context);
-				updateWidget(context,WidgetButton.BUTTON_WIFI_AP);
 			} else if (buttonId == WidgetButton.BUTTON_BLUETOOTH) {
+				logD("Received bluetooth button change request");
 				BluetoothButton.getInstance().toggleState(context);				
-				updateWidget(context,WidgetButton.BUTTON_BLUETOOTH);
 			} else if (buttonId == WidgetButton.BUTTON_GPS) {
+				logD("Received GPS button change request");
 				GPSButton.getInstance().toggleState(context);				
-				updateWidget(context,WidgetButton.BUTTON_GPS);
 			} else if (buttonId == WidgetButton.BUTTON_DATA) {
+				logD("Received mobile data button change request");
 				MobileDataButton.getInstance().toggleState(context);				
-				updateWidget(context,WidgetButton.BUTTON_DATA);
 			} else if (buttonId == WidgetButton.BUTTON_2G3G) {
+				logD("Received network mode button change request");
 				NetworkModeButton.getInstance().toggleState(context);				
-				updateWidget(context,WidgetButton.BUTTON_2G3G);
 			} else if (buttonId == WidgetButton.BUTTON_SYNC) {
+				logD("Received sync button change request");
 				SyncButton.getInstance().toggleState(context);				
-				updateWidget(context,WidgetButton.BUTTON_SYNC);
 			} else if (buttonId == WidgetButton.BUTTON_SOUND) {
+				logD("Received sound button change request");
 				SoundButton.getInstance().toggleState(context);				
-				updateWidget(context,WidgetButton.BUTTON_SOUND);
 			} else if (buttonId == WidgetButton.BUTTON_SCREEN_TIMEOUT) {
+				logD("Received screen timeout change request");
 				ScreenTimeoutButton.getInstance().toggleState(context);				
-				updateWidget(context,WidgetButton.BUTTON_SCREEN_TIMEOUT);
 			} else if (buttonId == WidgetButton.BUTTON_AUTO_ROTATE) {
+				logD("Received auto rotate change request");
 				AutoRotateButton.getInstance().toggleState(context);
-				updateWidget(context,WidgetButton.BUTTON_AUTO_ROTATE);
 			} else if (buttonId == WidgetButton.BUTTON_BRIGHTNESS) {
+				logD("Received brightness change request");
 				BrightnessButton.getInstance().toggleState(context);				
-				updateWidget(context,WidgetButton.BUTTON_BRIGHTNESS);
 			} else if (buttonId == WidgetButton.BUTTON_FLASHLIGHT) {
+				logD("Received flahslight change request");
 				FlashlightButton.getInstance().toggleState(context);				
-				updateWidget(context,WidgetButton.BUTTON_FLASHLIGHT);
 			} else if (buttonId == WidgetButton.BUTTON_LOCK_SCREEN) {
+				logD("Received Lock Screen change request");
 				LockScreenButton.getInstance().toggleState(context);
-				updateWidget(context,WidgetButton.BUTTON_LOCK_SCREEN);
 			} else if (buttonId == WidgetButton.BUTTON_AIRPLANE) {
+				logD("Received airplane change request");
 				AirplaneButton.getInstance().toggleState(context);				
-				updateWidget(context,WidgetButton.BUTTON_AIRPLANE);
 			}
-		} else if (MobileDataButton.MOBILE_DATA_CHANGED.equals(intent.getAction())) {  
-			updateWidget(context,WidgetButton.BUTTON_DATA);
-		} else if (Intent.ACTION_USER_PRESENT.equals(intent.getAction())) {
-			updateWidget(context,null);
-		} else if (SecuritySettings.GPS_STATUS_CHANGED.equals(intent.getAction())) {
-			updateWidget(context,null);
+		} else if (MobileDataButton.MOBILE_DATA_CHANGED.equals(intent.getAction())||  
+					Intent.ACTION_USER_PRESENT.equals(intent.getAction()) ||
+					SecuritySettings.GPS_STATUS_CHANGED.equals(intent.getAction())) {
 		} else {
 			logD("Ignoring Action: "+intent.getAction());
 			// Don't fall-through to updating the widget. The Intent
@@ -304,7 +301,7 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 			logD("<< onReceive OUT");		
 			return;
 		}
-
+		updateWidget(context);
 		// State changes fall through
 		logD("<< onReceive OUT");		
 		
