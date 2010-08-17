@@ -147,13 +147,5 @@ public class BluetoothButton extends WidgetButton{
 
 	public void onReceive(Context context, Intent intent) {
 		sBluetoothState.onActualStateChange(context, intent);		
-	}
-
-	public void toggleState(Context context, int newState) {
-		int curState = sBluetoothState.getTriState(context);
-		if (curState!= SettingsAppWidgetProvider.STATE_INTERMEDIATE &&
-				curState!=newState) {
-			toggleState(context);
-		}
 	}	
 }
