@@ -59,6 +59,11 @@
             android:title="@string/lockpattern_settings_custom_msg"
             android:dialogTitle="@string/lockpattern_settings_custom_msg_dialog"/>
             
+        <Preference
+            android:key="custommsg_color"
+            android:title="@string/lockpattern_settings_custom_msg_color"
+            android:defaultValue="-1" />
+
         <ListPreference
             android:key="incorrectdelay"
             android:title="@string/lockpattern_settings_incorrect_delay_title"
