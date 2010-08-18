@@ -98,10 +98,11 @@ class WifiDialog extends AlertDialog implements View.OnClickListener,
             // If the user adds a network manually, assume that it is hidden.
             config.hiddenSSID = true;
         } else if (mAccessPoint.networkId == -1) {
-            config.SSID = AccessPoint.convertToQuotedString(
-                    mAccessPoint.ssid);
+            config.SSID = AccessPoint.convertToQuotedString(mAccessPoint.ssid);
+            config.adhocSSID = mAccessPoint.adhoc;
         } else {
             config.networkId = mAccessPoint.networkId;
+            config.adhocSSID = mAccessPoint.adhoc;
         }
 
         switch (mSecurity) {
