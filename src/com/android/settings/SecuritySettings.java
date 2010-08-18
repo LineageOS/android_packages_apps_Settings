@@ -363,16 +363,6 @@ public class SecuritySettings extends PreferenceActivity {
 
         return false;
     }
-    
-    ColorPickerDialog.OnColorChangedListener mCustomMsgColorListener = 
-        new ColorPickerDialog.OnColorChangedListener() {
-            public void colorChanged(int color) {
-                final LockPatternUtils lockPatternUtils = mChooseLockSettingsHelper.utils();            
-                lockPatternUtils.setCustomMsgColor(color);
-            }
-            public void colorUpdate(int color) {
-            }
-    };
 
     ColorPickerDialog.OnColorChangedListener mCustomMsgColorListener =
         new ColorPickerDialog.OnColorChangedListener() {
