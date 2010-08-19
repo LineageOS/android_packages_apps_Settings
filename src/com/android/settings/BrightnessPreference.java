@@ -40,6 +40,7 @@ public class BrightnessPreference extends SeekBarPreference implements
     
     private int mOldBrightness;
     private int mOldAutomatic;
+    private int mMinBrightness;
 
     private boolean mAutomaticAvailable;
     
@@ -56,6 +57,13 @@ public class BrightnessPreference extends SeekBarPreference implements
 
         setDialogLayoutResource(R.layout.preference_dialog_brightness);
         setDialogIcon(R.drawable.ic_settings_display);
+
+        mMinBrightness = MINIMUM_BACKLIGHT;
+        if (Settings.System.getInt(context.getContentResolver(),
+                Settings.System.LIGHT_SENSOR_CUSTOM, 0) != 0) {
+            mMinBrightness = Settings.System.getInt(context.getContentResolver(),
+                    Settings.System.LIGHT_SCREEN_DIM, mMinBrightness);
+        }
     }
 
     @Override
@@ -63,14 +71,14 @@ public class BrightnessPreference extends SeekBarPreference implements
         super.onBindDialogView(view);
 
         mSeekBar = getSeekBar(view);
-        mSeekBar.setMax(MAXIMUM_BACKLIGHT - MINIMUM_BACKLIGHT);
+        mSeekBar.setMax(MAXIMUM_BACKLIGHT - mMinBrightness);
         try {
             mOldBrightness = Settings.System.getInt(getContext().getContentResolver(), 
                 Settings.System.SCREEN_BRIGHTNESS);
         } catch (SettingNotFoundException snfe) {
             mOldBrightness = MAXIMUM_BACKLIGHT;
         }
-        mSeekBar.setProgress(mOldBrightness - MINIMUM_BACKLIGHT);
+        mSeekBar.setProgress(mOldBrightness - mMinBrightness);
 
         mCheckBox = (CheckBox)view.findViewById(R.id.automatic_mode);
         if (mAutomaticAvailable) {
@@ -90,7 +98,7 @@ public class BrightnessPreference extends SeekBarPreference implements
 
     public void onProgressChanged(SeekBar seekBar, int progress,
             boolean fromTouch) {
-        setBrightness(progress + MINIMUM_BACKLIGHT);
+        setBrightness(progress + mMinBrightness);
     }
 
     public void onStartTrackingTouch(SeekBar seekBar) {
@@ -105,7 +113,7 @@ public class BrightnessPreference extends SeekBarPreference implements
         setMode(isChecked ? Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC
                 : Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
         if (!isChecked) {
-            setBrightness(mSeekBar.getProgress() + MINIMUM_BACKLIGHT);
+            setBrightness(mSeekBar.getProgress() + mMinBrightness);
         }
     }
 
@@ -116,7 +124,7 @@ public class BrightnessPreference extends SeekBarPreference implements
         if (positiveResult) {
             Settings.System.putInt(getContext().getContentResolver(), 
                     Settings.System.SCREEN_BRIGHTNESS,
-                    mSeekBar.getProgress() + MINIMUM_BACKLIGHT);
+                    mSeekBar.getProgress() + mMinBrightness);
         } else {
             if (mAutomaticAvailable) {
                 setMode(mOldAutomatic);
