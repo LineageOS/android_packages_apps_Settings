@@ -5,7 +5,6 @@ import android.app.KeyguardManager;
 import android.app.KeyguardManager.KeyguardLock;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.view.Gravity;
 import android.widget.Toast;
 
@@ -70,13 +69,6 @@ public class LockScreenButton extends WidgetButton {
 		}
 	}	
 
-	private void writeState(Context context) {
-		SharedPreferences preferencesGeneral = context.getSharedPreferences(WidgetSettings.WIDGET_PREF_MAIN,Context.MODE_PRIVATE);
-		Editor editor =preferencesGeneral.edit();
-		editor.putBoolean(LOCK_SCREEN, lockScreen);
-		editor.commit();		
-	}
-
 	/**
 	 * Gets the state of GPS location.
 	 * 
@@ -109,14 +101,7 @@ public class LockScreenButton extends WidgetButton {
 	@Override
 	void initButton() {
 		buttonID=WidgetButton.BUTTON_LOCK_SCREEN;
-		isDefault=false;
 		preferenceName=WidgetSettings.TOGGLE_LOCK_SCREEN;
-
-		buttonLayout=R.id.btn_lock_screen;
-		buttonSep=R.id.sep_lock_screen;
-		buttonIcon=R.id.img_lock_screen;
-		buttonState=R.id.ind_lock_screen;
-
 	}
 
 }

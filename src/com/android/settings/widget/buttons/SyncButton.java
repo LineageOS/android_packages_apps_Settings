@@ -104,14 +104,7 @@ public class SyncButton extends WidgetButton {
 	@Override
 	void initButton() {
 		buttonID=WidgetButton.BUTTON_SYNC;
-		isDefault=true;
 		preferenceName=WidgetSettings.TOGGLE_SYNC;
-
-		buttonLayout=R.id.btn_sync;
-		buttonSep=R.id.sep_sync;
-		buttonIcon=R.id.img_sync;
-		buttonState=R.id.ind_sync;
-
 	}
 
 }

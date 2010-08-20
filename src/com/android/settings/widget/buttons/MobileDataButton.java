@@ -101,14 +101,7 @@ public class MobileDataButton extends WidgetButton {
 	@Override
 	void initButton() {
 		buttonID=WidgetButton.BUTTON_DATA;
-		isDefault=true;
 		preferenceName=WidgetSettings.TOGGLE_DATA;
-
-		buttonLayout=R.id.btn_data;
-		buttonSep=R.id.sep_data;
-		buttonIcon=R.id.img_data;
-		buttonState=R.id.ind_data;
-
 	}
 
 	public void networkModeChanged(Context context, int networkMode) {

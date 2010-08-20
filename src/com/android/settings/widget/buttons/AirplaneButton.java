@@ -60,14 +60,7 @@ public class AirplaneButton extends WidgetButton {
 	@Override
 	void initButton() {
 		buttonID=WidgetButton.BUTTON_AIRPLANE;
-		isDefault=false;
 		preferenceName=WidgetSettings.TOGGLE_AIRPLANE;
-
-		buttonLayout=R.id.btn_airplane;
-		buttonSep=R.id.sep_airplane;
-		buttonIcon=R.id.img_airplane;
-		buttonState=R.id.ind_airplane;
-
 	}
 
 }

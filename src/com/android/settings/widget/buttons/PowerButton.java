@@ -1,18 +1,15 @@
 package com.android.settings.widget.buttons;
 
-import com.android.settings.R;
 import com.android.settings.widget.SettingsAppWidgetProvider;
 import com.android.settings.widget.WidgetSettings;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
 
 public class PowerButton extends WidgetButton {
 
 	private static PowerButton ownButton;
-	private String[] mUsbRegexs;
 
 	@Override
 	void initButton() {
@@ -50,7 +47,7 @@ public class PowerButton extends WidgetButton {
 		} else if (globalPreferences.getBoolean(WidgetSettings.AUTO_DISABLE_WIFI_WITH_POWER, false) &&
 				Intent.ACTION_POWER_DISCONNECTED.equals(intent.getAction())) {
 			WifiButton.getInstance().toggleState(context,SettingsAppWidgetProvider.STATE_DISABLED);
-		}        
+		}
 	}
 
 	public static PowerButton getInstance() {
@@ -59,5 +56,4 @@ public class PowerButton extends WidgetButton {
 
 		return ownButton;
 	}
-	
 }

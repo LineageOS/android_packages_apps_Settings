@@ -73,7 +73,8 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 
 	private static final boolean DEBUG=true;
 
-	public static final int WIDGET_PRESENT = 2;
+	//New version that allows moving button position. Increase the WIDGET_PRESENT "version"
+	public static final int WIDGET_PRESENT = 3; 
 	public static final int WIDGET_NOT_CONFIGURED = 1;
 	public static final int WIDGET_DELETED = 0;
 		
@@ -137,16 +138,17 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 	
 	
 	/**
-	 * Load image for given widget and build {@link RemoteViews} for it.
+	 * update main method. Process all widget. Update state and process all widget instances.
 	 */
 	static void buildUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
 		logD(">> buildUpdate IN");
 
 		SharedPreferences globalPreferences = context.getSharedPreferences(WidgetSettings.WIDGET_PREF_MAIN,Context.MODE_PRIVATE);
 
-		//Query for current status of multiple options
+		//Query for current status of multiple options. Only to be done once
 		updateStates(context, globalPreferences, appWidgetIds);
 		
+		//Now process all widgets instances
 		for (int appWidgetId:appWidgetIds) {
 			Log.d(TAG,"Call buildUpdate for widget:"+appWidgetId);
 			RemoteViews views = updateViews(context, globalPreferences, appWidgetId);
@@ -159,6 +161,9 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 
 	}
 
+	/**
+	 * Method that will trigger the update for all options
+	 */
 	private static void updateStates(Context context, SharedPreferences globalPreferences,  int[] appWidgetIds) {
 		WifiButton.getInstance().updateState(context, globalPreferences, appWidgetIds);
 		WifiApButton.getInstance().updateState(context, globalPreferences, appWidgetIds);
@@ -176,20 +181,32 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 		BrightnessButton.getInstance().updateState(context, globalPreferences, appWidgetIds);
 	}
 
+	/**
+	 * Update of each widget instance. will check it's configuration
+	 */
 	private static RemoteViews updateViews(Context context, SharedPreferences globalPreferences, int appWidgetId) {
 		logD(">> updateViews IN - Widget:"+appWidgetId);
 		SharedPreferences widgetPreferences = context.getSharedPreferences(WidgetSettings.WIDGET_PREF_NAME+appWidgetId,
 				Context.MODE_PRIVATE);
 
-		
-		if(widgetPreferences.contains(WidgetSettings.TOGGLE_WIFI)) {
+		// If not configured do not refresh. Needed due to: 
+		// 1: Ghost instances of the launcher
+		// 2: Older version no longer compatible. So widget_present was increased
+		if(widgetPreferences.getInt(WidgetSettings.SAVED,WIDGET_NOT_CONFIGURED)==WIDGET_PRESENT) {
+			
+			//Set the selected background. On a widget it can only be done by a diferent layout.
+			
 			int widgetLayout = R.layout.widget;
-			boolean transparentLayout= widgetPreferences.getBoolean(WidgetSettings.USE_TRANSPARENT, false);
+			int backgroundLayout= widgetPreferences.getInt(WidgetSettings.BACKGROUND_IMAGE, 0);
 			boolean verticalLayout = widgetPreferences.getBoolean(WidgetSettings.USE_VERTICAL, false);
-			if (!verticalLayout && transparentLayout) {
+			if (!verticalLayout && backgroundLayout==WidgetSettings.TRANSPARENT_BACKGROUND) {
 				widgetLayout = R.layout.widget_transparent;
-			}else if (verticalLayout && transparentLayout) {
+			}else if (verticalLayout && backgroundLayout==WidgetSettings.TRANSPARENT_BACKGROUND) {
 				widgetLayout = R.layout.widget_vertical_transparent;
+/*			}else if (verticalLayout && backgroundLayout==WidgetSettings.WHITE_BACKGROUND) {
+				widgetLayout = R.layout.widget_white_vertical;
+			}else if (!verticalLayout && backgroundLayout==WidgetSettings.WHITE_BACKGROUND) {
+				widgetLayout = R.layout.widget_white;*/
 			}else if (verticalLayout) {
 				widgetLayout = R.layout.widget_vertical;
 			}		
@@ -198,7 +215,7 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 			RemoteViews views = new RemoteViews(context.getPackageName(),
 					widgetLayout);
 			
-			
+				//Now call each button to update it's state on this instance. 
 				WifiButton.getInstance().updateView(context, views, globalPreferences, widgetPreferences, appWidgetId);
 				WifiApButton.getInstance().updateView(context, views, globalPreferences, widgetPreferences, appWidgetId);
 				BluetoothButton.getInstance().updateView(context, views, globalPreferences, widgetPreferences, appWidgetId);
@@ -216,8 +233,12 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 
 			return views;
 		} else {
+			// Return the layout with widget configuration message.
+			RemoteViews views = new RemoteViews(context.getPackageName(),
+					R.layout.widget_configure);
+			
 			logD(">> updateViews IN - Widget:"+appWidgetId+" no longer present or not configured");
-			return null;
+			return views;
 		}
 	}
 

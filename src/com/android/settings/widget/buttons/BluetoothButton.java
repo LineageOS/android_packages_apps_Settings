@@ -104,14 +104,7 @@ public class BluetoothButton extends WidgetButton{
 	@Override
 	void initButton() {
 		buttonID=WidgetButton.BUTTON_BLUETOOTH;
-		isDefault=true;
 		preferenceName=WidgetSettings.TOGGLE_BLUETOOTH;
-
-		buttonLayout=R.id.btn_bluetooth;
-		buttonSep=R.id.sep_bluetooth;
-		buttonIcon=R.id.img_bluetooth;
-		buttonState=R.id.ind_bluetooth;
-
 	}
 
 	@Override

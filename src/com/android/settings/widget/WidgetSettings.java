@@ -2,18 +2,25 @@ package com.android.settings.widget;
 
 
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import android.app.Activity;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.net.ConnectivityManager;
 
 import com.android.settings.R;
@@ -23,7 +30,7 @@ public class WidgetSettings extends Activity {
 	public static final String LAST_ICON_ID = "lastIconId";
 	public static final String FIRST_ICON_ID = "firstIconId";
 	public static final String RING_MODE_VIBRATE_AS_ON = "ringModeVibrateAsOn";
-	public static final String USE_TRANSPARENT = "useTransparent";
+	public static final String BACKGROUND_IMAGE = "backgrounImage";
 	public static final String USE_ROUND_CORNERS = "useRoundCorners";
 	public static final String USE_VERTICAL = "useVertical";
 
@@ -42,7 +49,6 @@ public class WidgetSettings extends Activity {
 	public static final String TOGGLE_AIRPLANE = "toggleAirplane";
 	public static final String TOGGLE_FLASHLIGHT = "toggleFlashlight";
 	public static final String TOGGLE_LOCK_SCREEN = "toggleLockScreen";
-
 	
 	public static final String MONITOR_DATA_ROAMING = "monitorDataRoaming";
 	public static final String AUTO_ENABLE_SYNC_WITH_WIFI = "autoEnableSyncWithWifi";
@@ -66,25 +72,143 @@ public class WidgetSettings extends Activity {
 	
 	public static final String SAVED = "saved";
 	
-	
-	public static final String TOGGLE_3G_MODE = "toggle3GMode";
-
 	public static final String WIDGET_PREF_MAIN = "widget_MAIN";
 	public static final String WIDGET_PREF_NAME = "widget_";
+	
+	protected static final int TRANSPARENT_BACKGROUND = 1;
+
+	public static final String LAST_BUTTON = "lastButton";
+	
 	
     int widgetId  = AppWidgetManager.INVALID_APPWIDGET_ID;
 	SharedPreferences preferences;
 	SharedPreferences preferencesGeneral;
+	
+	private ArrayList<CheckBox> selectedButtons=new ArrayList<CheckBox>();
+	
+	View.OnClickListener listener = new View.OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			if (v instanceof CheckBox) {
+				toogleButtonView((CheckBox)v);
+			}
+		}
+	};
+	
 
     @Override
     public void onCreate(Bundle state) {
         super.onCreate(state);
 
         initWidgetSettings();
+        initToggleButtons();
         setDefaultReturn();
         initControls();
         initSettings();
     }
+
+    
+	private void initToggleButtons() {
+		
+		selectedButtons.add((CheckBox)findViewById(R.id.toggleWifi));
+		selectedButtons.add((CheckBox)findViewById(R.id.toggleBluetooth));
+		selectedButtons.add((CheckBox)findViewById(R.id.toggleGPS));
+		selectedButtons.add((CheckBox)findViewById(R.id.toggleData));
+		selectedButtons.add((CheckBox)findViewById(R.id.toggleSync));
+		selectedButtons.add((CheckBox)findViewById(R.id.toggleBrightness));
+		
+		findViewById(R.id.toggleWifi).setOnClickListener(listener);
+		findViewById(R.id.toggleBluetooth).setOnClickListener(listener);
+		findViewById(R.id.toggleGPS).setOnClickListener(listener);
+		findViewById(R.id.toggleData).setOnClickListener(listener);
+		findViewById(R.id.toggle2g3g).setOnClickListener(listener);
+		findViewById(R.id.toggleSync).setOnClickListener(listener);
+		findViewById(R.id.toggleSound).setOnClickListener(listener);
+		findViewById(R.id.toggleScreenTimeout).setOnClickListener(listener);
+		findViewById(R.id.toggleAutoRotate).setOnClickListener(listener);
+		findViewById(R.id.toggleBrightness).setOnClickListener(listener);
+		findViewById(R.id.toggleAirplane).setOnClickListener(listener);
+		findViewById(R.id.toggleLockScreen).setOnClickListener(listener);
+		findViewById(R.id.toggleFlashlight).setOnClickListener(listener);
+		findViewById(R.id.toggleWifiAp).setOnClickListener(listener);
+		findViewById(R.id.useRoundCorners).setOnClickListener(listener);
+		((Spinner)findViewById(R.id.backgroundImageSpinner)).setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view,
+					int position, long id) {
+				if (position==TRANSPARENT_BACKGROUND) {
+					findViewById(R.id.main).setBackgroundColor(Color.TRANSPARENT);										
+				} else {
+					findViewById(R.id.main).setBackgroundResource(R.drawable.appwidget_bg);
+				}
+				
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+			}
+			
+		});
+		
+	}
+
+	private void toogleButtonView(CheckBox button) {
+		if (button.getId()==R.id.backgroundImageSpinner) {
+			if (((CheckBox)button).isChecked()) {
+				findViewById(R.id.main).setBackgroundColor(Color.TRANSPARENT);					
+			} else {
+				findViewById(R.id.main).setBackgroundResource(R.drawable.appwidget_bg);
+			}
+		} else if (button.getId()!=R.id.useRoundCorners) {
+			if (button.isChecked()) {
+				SettingsAppWidgetProvider.logD("Add button");
+				selectedButtons.add(button);
+			} else {		
+				SettingsAppWidgetProvider.logD("Remove button");
+				selectedButtons.remove(button);
+			}
+		}
+
+		updateState();
+	}
+
+
+	private void updateState() {
+		SettingsAppWidgetProvider.logD("Buttons present:"+selectedButtons.size());
+		for (int posi=1;posi<=10;posi++) {
+			
+			if (posi<=selectedButtons.size()) {
+				CheckBox buttonPresent = selectedButtons.get(posi-1);
+				View btn=getButton(posi);
+				View sep=getSep(posi);
+				ImageView img=getImg(posi);
+				ImageView ind=getInd(posi);
+	
+				if (sep!=null) {			
+					sep.setVisibility(View.VISIBLE);
+				}
+				if (posi==1 && ((CheckBox)findViewById(R.id.useRoundCorners)).isChecked()) {
+					ind.setImageResource(R.drawable.appwidget_settings_ind_on_l);
+				} else if (posi==selectedButtons.size() && ((CheckBox)findViewById(R.id.useRoundCorners)).isChecked()) {
+					ind.setImageResource(R.drawable.appwidget_settings_ind_on_r);					
+				} else {
+				ind.setImageResource(R.drawable.appwidget_settings_ind_on_c);
+				}
+				img.setImageResource(getIcon(buttonPresent));
+				btn.setVisibility(View.VISIBLE);					
+			} else {
+				View btn=getButton(posi);
+				btn.setVisibility(View.GONE);					
+				View sep=getSep(posi);
+				if (sep!=null) {			
+					sep.setVisibility(View.GONE);
+				}
+			}
+		}
+	}
+	
 
 	private void initWidgetSettings() {
         setContentView(R.layout.widget_settings);
@@ -115,6 +239,8 @@ public class WidgetSettings extends Activity {
 		((CheckBox)findViewById(R.id.autoEnableSyncWithWifi)).setChecked(preferencesGeneral.getBoolean(AUTO_ENABLE_SYNC_WITH_WIFI, false));
 		((CheckBox)findViewById(R.id.monitorDataRoaming)).setChecked(preferencesGeneral.getBoolean(MONITOR_DATA_ROAMING, false));		
 		((CheckBox)findViewById(R.id.ringModeVibrateAsOn)).setChecked(preferencesGeneral.getBoolean(RING_MODE_VIBRATE_AS_ON, false));
+		
+
 		
 		// disable the Wi-Fi AP preference if Wifi AP is not available
 		ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -150,6 +276,12 @@ public class WidgetSettings extends Activity {
 	    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 	    spinner.setAdapter(adapter);
 	    spinner.setSelection(preferencesGeneral.getInt(RING_MODE_SPINNER, 0));		
+
+	    spinner = (Spinner) findViewById(R.id.backgroundImageSpinner);
+	    adapter = ArrayAdapter.createFromResource(
+	            this, R.array.backgroundWidget, android.R.layout.simple_spinner_item);
+	    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+	    spinner.setAdapter(adapter);
 	}
 	
 	
@@ -189,27 +321,29 @@ public class WidgetSettings extends Activity {
 
         	Editor editor =preferences.edit();
         	editor.clear();
-        	editor.putBoolean(TOGGLE_WIFI, ((CheckBox)findViewById(R.id.toggleWifi)).isChecked());
-        	editor.putBoolean(TOGGLE_BLUETOOTH, ((CheckBox)findViewById(R.id.toggleBluetooth)).isChecked());
-        	editor.putBoolean(TOGGLE_GPS, ((CheckBox)findViewById(R.id.toggleGPS)).isChecked());
-        	editor.putBoolean(TOGGLE_DATA, ((CheckBox)findViewById(R.id.toggleData)).isChecked());
-        	editor.putBoolean(TOGGLE_2G3G, ((CheckBox)findViewById(R.id.toggle2g3g)).isChecked());
-        	editor.putBoolean(TOGGLE_SYNC, ((CheckBox)findViewById(R.id.toggleSync)).isChecked());
-        	editor.putBoolean(TOGGLE_SOUND, ((CheckBox)findViewById(R.id.toggleSound)).isChecked());
-        	editor.putBoolean(TOGGLE_SCREEN_TIMEOUT, ((CheckBox)findViewById(R.id.toggleScreenTimeout)).isChecked());
-        	editor.putBoolean(TOGGLE_AUTO_ROTATE, ((CheckBox)findViewById(R.id.toggleAutoRotate)).isChecked());
-        	editor.putBoolean(TOGGLE_BRIGHTNESS, ((CheckBox)findViewById(R.id.toggleBrightness)).isChecked());
-        	editor.putBoolean(TOGGLE_AIRPLANE, ((CheckBox)findViewById(R.id.toggleAirplane)).isChecked());
-        	editor.putBoolean(TOGGLE_LOCK_SCREEN, ((CheckBox)findViewById(R.id.toggleLockScreen)).isChecked());
-        	editor.putBoolean(TOGGLE_FLASHLIGHT, ((CheckBox)findViewById(R.id.toggleFlashlight)).isChecked());
-        	editor.putBoolean(TOGGLE_WIFI_AP, ((CheckBox)findViewById(R.id.toggleWifiAp)).isChecked());
-
+						
+        	editor.putInt(TOGGLE_WIFI, selectedButtons.indexOf(findViewById(R.id.toggleWifi))+1);
+        	editor.putInt(TOGGLE_BLUETOOTH, selectedButtons.indexOf(findViewById(R.id.toggleBluetooth))+1);
+        	editor.putInt(TOGGLE_GPS, selectedButtons.indexOf(findViewById(R.id.toggleGPS))+1);
+        	editor.putInt(TOGGLE_DATA, selectedButtons.indexOf(findViewById(R.id.toggleData))+1);
+        	editor.putInt(TOGGLE_2G3G, selectedButtons.indexOf(findViewById(R.id.toggle2g3g))+1);
+        	editor.putInt(TOGGLE_SYNC, selectedButtons.indexOf(findViewById(R.id.toggleSync))+1);
+        	editor.putInt(TOGGLE_SOUND, selectedButtons.indexOf(findViewById(R.id.toggleSound))+1);
+        	editor.putInt(TOGGLE_SCREEN_TIMEOUT, selectedButtons.indexOf(findViewById(R.id.toggleScreenTimeout))+1);
+        	editor.putInt(TOGGLE_AUTO_ROTATE, selectedButtons.indexOf(findViewById(R.id.toggleAutoRotate))+1);
+        	editor.putInt(TOGGLE_BRIGHTNESS, selectedButtons.indexOf(findViewById(R.id.toggleBrightness))+1);
+        	editor.putInt(TOGGLE_AIRPLANE, selectedButtons.indexOf(findViewById(R.id.toggleAirplane))+1);
+        	editor.putInt(TOGGLE_LOCK_SCREEN, selectedButtons.indexOf(findViewById(R.id.toggleLockScreen))+1);
+        	editor.putInt(TOGGLE_FLASHLIGHT, selectedButtons.indexOf(findViewById(R.id.toggleFlashlight))+1);
+        	editor.putInt(TOGGLE_WIFI_AP, selectedButtons.indexOf(findViewById(R.id.toggleWifiAp))+1);
+        	editor.putInt(TOGGLE_WIFI_AP, selectedButtons.indexOf(findViewById(R.id.toggleWifiAp))+1);
+			
         	editor.putBoolean(USE_ROUND_CORNERS, ((CheckBox)findViewById(R.id.useRoundCorners)).isChecked());
-        	editor.putBoolean(USE_TRANSPARENT, ((CheckBox)findViewById(R.id.useTransparent)).isChecked());
+        	editor.putInt(BACKGROUND_IMAGE,((Spinner) findViewById(R.id.backgroundImageSpinner)).getSelectedItemPosition());
         	editor.putBoolean(USE_VERTICAL, ((CheckBox)findViewById(R.id.useVertical)).isChecked());
         	editor.putInt(SAVED, SettingsAppWidgetProvider.WIDGET_PRESENT);
-        	editor.putInt(FIRST_ICON_ID, getFirstIconId());
-        	editor.putInt(LAST_ICON_ID, getLastIconId());
+        	editor.putInt(LAST_BUTTON, selectedButtons.size());
+
         	editor.commit();
 
         	Editor editorGeneral =preferencesGeneral.edit();
@@ -233,50 +367,8 @@ public class WidgetSettings extends Activity {
         	editorGeneral.putInt(RING_MODE_SPINNER,((Spinner) findViewById(R.id.ringModeSpinner)).getSelectedItemPosition());
         	editorGeneral.putInt(SAVED, SettingsAppWidgetProvider.WIDGET_PRESENT);
         	editorGeneral.commit();
-
-
-        	
-        	
-        	// transparency
-        	// icon colors        	
+    	
         }
-
-        private int getLastIconId() {
-			if ( ((CheckBox)findViewById(R.id.toggleBrightness)).isChecked()) return R.id.ind_brightness;			
-			if ( ((CheckBox)findViewById(R.id.toggleAirplane)).isChecked()) return R.id.ind_airplane;
-			if ( ((CheckBox)findViewById(R.id.toggleFlashlight)).isChecked()) return R.id.ind_flashlight;
-			if ( ((CheckBox)findViewById(R.id.toggleLockScreen)).isChecked()) return R.id.ind_lock_screen;
-			if ( ((CheckBox)findViewById(R.id.toggleAutoRotate)).isChecked()) return R.id.ind_auto_rotate;
-			if ( ((CheckBox)findViewById(R.id.toggleScreenTimeout)).isChecked()) return R.id.ind_screen_timeout;
-			if ( ((CheckBox)findViewById(R.id.toggleSound)).isChecked()) return R.id.ind_sound;
-			if ( ((CheckBox)findViewById(R.id.toggleSync)).isChecked()) return R.id.ind_sync;
-			if ( ((CheckBox)findViewById(R.id.toggle2g3g)).isChecked()) return R.id.ind_2G3G;
-			if ( ((CheckBox)findViewById(R.id.toggleData)).isChecked()) return R.id.ind_data;
-			if ( ((CheckBox)findViewById(R.id.toggleGPS)).isChecked()) return R.id.ind_gps;
-			if ( ((CheckBox)findViewById(R.id.toggleBluetooth)).isChecked()) return R.id.ind_bluetooth;
-			if ( ((CheckBox)findViewById(R.id.toggleWifiAp)).isChecked()) return R.id.ind_wifi_ap;
-			if ( ((CheckBox)findViewById(R.id.toggleWifi)).isChecked()) return R.id.ind_wifi;
-			return 0;
-		}
-
-
-		private int getFirstIconId() {
-			if ( ((CheckBox)findViewById(R.id.toggleWifi)).isChecked()) return R.id.ind_wifi;
-			if ( ((CheckBox)findViewById(R.id.toggleWifiAp)).isChecked()) return R.id.ind_wifi_ap;
-			if ( ((CheckBox)findViewById(R.id.toggleBluetooth)).isChecked()) return R.id.ind_bluetooth;
-			if ( ((CheckBox)findViewById(R.id.toggleGPS)).isChecked()) return R.id.ind_gps;
-			if ( ((CheckBox)findViewById(R.id.toggleData)).isChecked()) return R.id.ind_data;
-			if ( ((CheckBox)findViewById(R.id.toggle2g3g)).isChecked()) return R.id.ind_2G3G;
-			if ( ((CheckBox)findViewById(R.id.toggleSync)).isChecked()) return R.id.ind_sync;
-			if ( ((CheckBox)findViewById(R.id.toggleSound)).isChecked()) return R.id.ind_sound;
-			if ( ((CheckBox)findViewById(R.id.toggleScreenTimeout)).isChecked()) return R.id.ind_screen_timeout;
-			if ( ((CheckBox)findViewById(R.id.toggleAutoRotate)).isChecked()) return R.id.ind_auto_rotate;
-			if ( ((CheckBox)findViewById(R.id.toggleLockScreen)).isChecked()) return R.id.ind_lock_screen;
-			if ( ((CheckBox)findViewById(R.id.toggleFlashlight)).isChecked()) return R.id.ind_flashlight;
-			if ( ((CheckBox)findViewById(R.id.toggleAirplane)).isChecked()) return R.id.ind_airplane;
-			if ( ((CheckBox)findViewById(R.id.toggleBrightness)).isChecked()) return R.id.ind_brightness;			
-			return 0;
-		}
 
 
 		private void updateWidget() {
@@ -284,4 +376,92 @@ public class WidgetSettings extends Activity {
         	SettingsAppWidgetProvider.buildUpdate(WidgetSettings.this, appWidgetManager, new int[]{widgetId});
         }        
     };
+    
+    public View getSep(int posi) {
+    	switch (posi) {
+    	case 1:	return findViewById(R.id.sep_1);
+    	case 2:	return findViewById(R.id.sep_2);
+    	case 3:	return findViewById(R.id.sep_3);
+    	case 4:	return findViewById(R.id.sep_4);
+    	case 5:	return findViewById(R.id.sep_5);
+    	case 6:	return findViewById(R.id.sep_6);
+    	case 7:	return findViewById(R.id.sep_7);
+    	case 8:	return findViewById(R.id.sep_8);
+    	case 9:	return findViewById(R.id.sep_9);
+    	// case 10:
+    	//No return as this will be the last button
+    	}
+    	return null;
+    }
+
+    public ImageView getInd(int posi) {
+
+    	switch (posi) {
+    	case 1:	return (ImageView)findViewById(R.id.ind_1);
+    	case 2:	return (ImageView)findViewById(R.id.ind_2);
+    	case 3:	return (ImageView)findViewById(R.id.ind_3);
+    	case 4:	return (ImageView)findViewById(R.id.ind_4);
+    	case 5:	return (ImageView)findViewById(R.id.ind_5);
+    	case 6:	return (ImageView)findViewById(R.id.ind_6);
+    	case 7:	return (ImageView)findViewById(R.id.ind_7);
+    	case 8:	return (ImageView)findViewById(R.id.ind_8);
+    	case 9:	return (ImageView)findViewById(R.id.ind_9);
+    	case 10:return (ImageView)findViewById(R.id.ind_10);
+    	}
+    	return null;		
+    }
+
+
+    public ImageView getImg(int posi) {
+    	switch (posi) {
+    	case 1:	return (ImageView)findViewById(R.id.img_1);
+    	case 2:	return (ImageView)findViewById(R.id.img_2);
+    	case 3:	return (ImageView)findViewById(R.id.img_3);
+    	case 4:	return (ImageView)findViewById(R.id.img_4);
+    	case 5:	return (ImageView)findViewById(R.id.img_5);
+    	case 6:	return (ImageView)findViewById(R.id.img_6);
+    	case 7:	return (ImageView)findViewById(R.id.img_7);
+    	case 8:	return (ImageView)findViewById(R.id.img_8);
+    	case 9:	return (ImageView)findViewById(R.id.img_9);
+    	case 10:return (ImageView)findViewById(R.id.img_10);
+    	}
+    	return null;		
+    }
+
+
+    public View getButton(int posi) {
+    	switch (posi) {
+    	case 1:	return findViewById(R.id.btn_1);
+    	case 2:	return findViewById(R.id.btn_2);
+    	case 3:	return findViewById(R.id.btn_3);
+    	case 4:	return findViewById(R.id.btn_4);
+    	case 5:	return findViewById(R.id.btn_5);
+    	case 6:	return findViewById(R.id.btn_6);
+    	case 7:	return findViewById(R.id.btn_7);
+    	case 8:	return findViewById(R.id.btn_8);
+    	case 9:	return findViewById(R.id.btn_9);
+    	case 10:return findViewById(R.id.btn_10);
+    	}
+    	return null;
+    }    
+
+    private int getIcon(CheckBox button) {
+    	switch (button.getId()) {
+    	case R.id.toggleWifi: return R.drawable.ic_appwidget_settings_wifi_on;
+    	case R.id.toggleWifiAp: return R.drawable.ic_appwidget_settings_wifi_ap_on;
+    	case R.id.toggleBluetooth: return R.drawable.ic_appwidget_settings_bluetooth_on;
+    	case R.id.toggleGPS: return R.drawable.ic_appwidget_settings_gps_on;
+    	case R.id.toggleData: return R.drawable.ic_appwidget_settings_data_on;
+    	case R.id.toggle2g3g: return R.drawable.ic_appwidget_settings_2g3g_on;
+    	case R.id.toggleSync: return R.drawable.ic_appwidget_settings_sync_on;
+    	case R.id.toggleSound: return R.drawable.ic_appwidget_settings_sound_ring_on;
+    	case R.id.toggleScreenTimeout: return R.drawable.ic_appwidget_settings_screen_timeout_on;
+    	case R.id.toggleAutoRotate: return R.drawable.ic_appwidget_settings_orientation_on;
+    	case R.id.toggleLockScreen: return R.drawable.ic_appwidget_settings_lock_screen_on;
+    	case R.id.toggleFlashlight: return R.drawable.ic_appwidget_settings_flashlight_on;
+    	case R.id.toggleAirplane: return R.drawable.ic_appwidget_settings_airplane_on;
+    	case R.id.toggleBrightness: return R.drawable.ic_appwidget_settings_brightness_on;
+    	}
+    	return 0;
+    }
 }

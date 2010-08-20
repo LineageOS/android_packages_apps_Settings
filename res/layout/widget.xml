@@ -22,17 +22,18 @@
     android:background="@drawable/appwidget_bg" >
 
     <LinearLayout
-        android:id="@+id/btn_wifi"
+        android:id="@+id/btn_w1"
         android:layout_width="0dip"
         android:layout_weight="1"
         android:layout_height="match_parent"
         android:background="@drawable/appwidget_button_center"
         android:clickable="true"
         android:focusable="true"
+        android:visibility="gone"        
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/img_wifi"
+            android:id="@+id/img_w1"
             android:layout_width="match_parent"
             android:layout_height="0dip"
             android:layout_weight="1"
@@ -40,7 +41,7 @@
             />
 
         <ImageView
-            android:id="@+id/ind_wifi"
+            android:id="@+id/ind_w1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
@@ -48,24 +49,26 @@
         </LinearLayout>
 
     <ImageView
-        android:id="@+id/sep_wifi"
+        android:id="@+id/sep_w1"
         android:layout_width="1dip"
         android:layout_height="match_parent"
+        android:visibility="gone"        
         android:background="@drawable/appwidget_settings_divider"
         />
 
     <LinearLayout
-        android:id="@+id/btn_wifi_ap"
+        android:id="@+id/btn_w2"
         android:layout_width="0dip"
         android:layout_weight="1"
         android:layout_height="match_parent"
         android:background="@drawable/appwidget_button_center"
         android:clickable="true"
         android:focusable="true"
+        android:visibility="gone"        
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/img_wifi_ap"
+            android:id="@+id/img_w2"
             android:layout_width="match_parent"
             android:layout_height="0dip"
             android:layout_weight="1"
@@ -73,7 +76,7 @@
             />
 
         <ImageView
-            android:id="@+id/ind_wifi_ap"
+            android:id="@+id/ind_w2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
@@ -81,24 +84,26 @@
         </LinearLayout>
 
     <ImageView
-        android:id="@+id/sep_wifi_ap"
+        android:id="@+id/sep_w2"
         android:layout_width="1dip"
         android:layout_height="match_parent"
+        android:visibility="gone"        
         android:background="@drawable/appwidget_settings_divider"
         />
 
     <LinearLayout
-        android:id="@+id/btn_bluetooth"
+        android:id="@+id/btn_w3"
         android:layout_width="0dip"
         android:layout_weight="1"
         android:layout_height="match_parent"
         android:background="@drawable/appwidget_button_center"
         android:clickable="true"
         android:focusable="true"
+        android:visibility="gone"        
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/img_bluetooth"
+            android:id="@+id/img_w3"
             android:layout_width="match_parent"
             android:layout_height="0dip"
             android:layout_weight="1"
@@ -106,7 +111,7 @@
             />
 
         <ImageView
-            android:id="@+id/ind_bluetooth"
+            android:id="@+id/ind_w3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
@@ -115,24 +120,26 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/sep_bluetooth"
+        android:id="@+id/sep_w3"
         android:layout_width="1dip"
         android:layout_height="match_parent"
+        android:visibility="gone"        
         android:background="@drawable/appwidget_settings_divider"
         />
 
     <LinearLayout
-        android:id="@+id/btn_gps"
+        android:id="@+id/btn_w4"
         android:layout_width="0dip"
         android:layout_weight="1"
         android:layout_height="match_parent"
         android:background="@drawable/appwidget_button_center"
         android:clickable="true"
         android:focusable="true"
+        android:visibility="gone"        
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/img_gps"
+            android:id="@+id/img_w4"
             android:layout_width="match_parent"
             android:layout_height="0dip"
             android:layout_weight="1"
@@ -140,7 +147,7 @@
             />
 
         <ImageView
-            android:id="@+id/ind_gps"
+            android:id="@+id/ind_w4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
@@ -148,24 +155,26 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/sep_gps"
+        android:id="@+id/sep_w4"
         android:layout_width="1dip"
         android:layout_height="match_parent"
+        android:visibility="gone"        
         android:background="@drawable/appwidget_settings_divider"
         />    
 
     <LinearLayout
-        android:id="@+id/btn_data"
+        android:id="@+id/btn_w5"
         android:layout_width="0dip"
         android:layout_weight="1"
         android:layout_height="match_parent"
         android:background="@drawable/appwidget_button_center"
         android:clickable="true"
         android:focusable="true"
+        android:visibility="gone"        
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/img_data"
+            android:id="@+id/img_w5"
             android:layout_width="match_parent"
             android:layout_height="0dip"
             android:layout_weight="1"
@@ -173,7 +182,7 @@
             />
 
         <ImageView
-            android:id="@+id/ind_data"
+            android:id="@+id/ind_w5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
@@ -181,14 +190,15 @@
         </LinearLayout>
 
     <ImageView
-        android:id="@+id/sep_data"
+        android:id="@+id/sep_w5"
         android:layout_width="1dip"
         android:layout_height="match_parent"
+        android:visibility="gone"        
         android:background="@drawable/appwidget_settings_divider"
         />    
 
     <LinearLayout
-        android:id="@+id/btn_2G3G"
+        android:id="@+id/btn_w6"
         android:layout_width="0dip"
         android:layout_weight="1"
         android:layout_height="match_parent"
@@ -200,7 +210,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/img_2G3G"
+            android:id="@+id/img_w6"
             android:layout_width="match_parent"
             android:layout_height="0dip"
             android:layout_weight="1"
@@ -208,7 +218,7 @@
             />
 
         <ImageView
-            android:id="@+id/ind_2G3G"
+            android:id="@+id/ind_w6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
@@ -216,7 +226,7 @@
         </LinearLayout>
 
     <ImageView
-        android:id="@+id/sep_2G3G"
+        android:id="@+id/sep_w6"
         android:layout_width="1dip"
         android:layout_height="match_parent"
         android:visibility="gone"
@@ -224,17 +234,18 @@
         />
 
     <LinearLayout
-        android:id="@+id/btn_sync"
+        android:id="@+id/btn_w7"
         android:layout_width="0dip"
         android:layout_weight="1"
         android:layout_height="match_parent"
         android:background="@drawable/appwidget_button_center"
         android:clickable="true"
         android:focusable="true"
+        android:visibility="gone"        
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/img_sync"
+            android:id="@+id/img_w7"
             android:layout_width="match_parent"
             android:layout_height="0dip"
             android:layout_weight="1"
@@ -242,7 +253,7 @@
             />
 
         <ImageView
-            android:id="@+id/ind_sync"
+            android:id="@+id/ind_w7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
@@ -250,14 +261,50 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/sep_sync"
+        android:id="@+id/sep_w7"
         android:layout_width="1dip"
         android:layout_height="match_parent"
+        android:visibility="gone"        
         android:background="@drawable/appwidget_settings_divider"
         />
 
     <LinearLayout
-        android:id="@+id/btn_sound"
+        android:id="@+id/btn_w8"
+        android:layout_width="0dip"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:background="@drawable/appwidget_button_center"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone"        
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/img_w8"
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1"
+            android:scaleType="center"
+            />
+
+        <ImageView
+            android:id="@+id/ind_w8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/sep_w8"
+        android:layout_width="1dip"
+        android:layout_height="match_parent"
+        android:visibility="gone"        
+        android:background="@drawable/appwidget_settings_divider"
+        />
+
+    <LinearLayout
+        android:id="@+id/btn_w9"
         android:layout_width="0dip"
         android:layout_weight="1"
         android:layout_height="match_parent"
@@ -268,7 +315,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/img_sound"
+            android:id="@+id/img_w9"
             android:layout_width="match_parent"
             android:layout_height="0dip"
             android:layout_weight="1"
@@ -276,7 +323,7 @@
             />
 
         <ImageView
-            android:id="@+id/ind_sound"
+            android:id="@+id/ind_w9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
@@ -284,7 +331,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/sep_sound"
+        android:id="@+id/sep_w9"
         android:layout_width="1dip"
         android:layout_height="match_parent"
         android:visibility="gone"
@@ -292,7 +339,7 @@
         />
 
     <LinearLayout
-        android:id="@+id/btn_screen_timeout"
+        android:id="@+id/btn_w10"
         android:layout_width="0dip"
         android:layout_weight="1"
         android:layout_height="match_parent"
@@ -303,7 +350,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/img_screen_timeout"
+            android:id="@+id/img_w10"
             android:layout_width="match_parent"
             android:layout_height="0dip"
             android:layout_weight="1"
@@ -311,181 +358,7 @@
             />
 
         <ImageView
-            android:id="@+id/ind_screen_timeout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="fitXY"
-            />
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/sep_screen_timeout"
-        android:layout_width="1dip"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        android:background="@drawable/appwidget_settings_divider"
-        />
-
-    <LinearLayout
-        android:id="@+id/btn_auto_rotate"
-        android:layout_width="0dip"
-        android:layout_weight="1"
-        android:layout_height="match_parent"
-        android:background="@drawable/appwidget_button_center"
-        android:clickable="true"
-        android:focusable="true"
-        android:visibility="gone"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/img_auto_rotate"
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:layout_weight="1"
-            android:scaleType="center"
-            />
-
-        <ImageView
-            android:id="@+id/ind_auto_rotate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="fitXY"
-            />
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/sep_auto_rotate"
-        android:layout_width="1dip"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        android:background="@drawable/appwidget_settings_divider"
-        />
-
-   <LinearLayout
-        android:id="@+id/btn_lock_screen"
-        android:layout_width="0dip"
-        android:layout_weight="1"
-        android:layout_height="match_parent"
-        android:background="@drawable/appwidget_button_center"
-        android:clickable="true"
-        android:focusable="true"
-        android:visibility="gone"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/img_lock_screen"
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:layout_weight="1"
-            android:scaleType="center"
-            />
-
-        <ImageView
-            android:id="@+id/ind_lock_screen"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="fitXY"
-            />
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/sep_lock_screen"
-        android:layout_width="1dip"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        android:background="@drawable/appwidget_settings_divider"
-        />
-
-   <LinearLayout
-        android:id="@+id/btn_flashlight"
-        android:layout_width="0dip"
-        android:layout_weight="1"
-        android:layout_height="match_parent"
-        android:background="@drawable/appwidget_button_center"
-        android:clickable="true"
-        android:focusable="true"
-        android:visibility="gone"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/img_flashlight"
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:layout_weight="1"
-            android:scaleType="center"
-            />
-
-        <ImageView
-            android:id="@+id/ind_flashlight"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="fitXY"
-            />
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/sep_flashlight"
-        android:layout_width="1dip"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        android:background="@drawable/appwidget_settings_divider"
-        />
-        
-   <LinearLayout
-        android:id="@+id/btn_airplane"
-        android:layout_width="0dip"
-        android:layout_weight="1"
-        android:layout_height="match_parent"
-        android:background="@drawable/appwidget_button_center"
-        android:clickable="true"
-        android:focusable="true"
-        android:visibility="gone"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/img_airplane"
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:layout_weight="1"
-            android:scaleType="center"
-            />
-
-        <ImageView
-            android:id="@+id/ind_airplane"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="fitXY"
-            />
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/sep_airplane"
-        android:layout_width="1dip"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        android:background="@drawable/appwidget_settings_divider"
-        />                
-        
-    <LinearLayout
-        android:id="@+id/btn_brightness"
-        android:layout_width="0dip"
-        android:layout_weight="1"
-        android:layout_height="match_parent"
-        android:background="@drawable/appwidget_button_center"
-        android:clickable="true"
-        android:focusable="true"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/img_brightness"
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:layout_weight="1"
-            android:scaleType="center"
-            />
-
-        <ImageView
-            android:id="@+id/ind_brightness"
+            android:id="@+id/ind_w10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
