@@ -32,6 +32,7 @@ public class BrightnessButton extends WidgetButton {
 	private static final int MODE_AUTO_MIN_DEF_MAX=0;
 	private static final int MODE_AUTO_MIN_LOW_MID_HIGH_MAX=1;
 	private static final int MODE_AUTO_LOW_MAX=2;
+	private static final int MODE_MIN_MAX=3;
 
 	private static final int DEFAULT_SETTTING = 0;
 
@@ -127,13 +128,15 @@ Low High Max
 		} else if (brightness < LOW_BACKLIGHT) {
 			if (currentMode==MODE_AUTO_LOW_MAX) {
 				return LOW_BACKLIGHT;
+			} else if (currentMode==MODE_MIN_MAX) {
+				return MAXIMUM_BACKLIGHT;
 			} else {
 				return DEFAULT_BACKLIGHT;				
 			}			
 		} else if (brightness < DEFAULT_BACKLIGHT) {
 			if (currentMode==MODE_AUTO_MIN_DEF_MAX) {
 				return DEFAULT_BACKLIGHT;
-			} else if (currentMode==MODE_AUTO_LOW_MAX) {
+			} else if (currentMode==MODE_AUTO_LOW_MAX || currentMode==MODE_MIN_MAX) {
 				return MAXIMUM_BACKLIGHT;
 			} else {
 				return MID_BACKLIGHT;				
@@ -152,7 +155,7 @@ Low High Max
 			}			
 		} else if (brightness < MAXIMUM_BACKLIGHT) {
 			return MAXIMUM_BACKLIGHT;
-		} else if (isAutomaticModeSupported(context)) {
+		} else if (isAutomaticModeSupported(context) && currentMode!=MODE_MIN_MAX) {
 			return AUTO_BACKLIGHT;
 		} else if(currentMode == MODE_AUTO_LOW_MAX){
 			return LOW_BACKLIGHT;				
@@ -204,13 +207,7 @@ Low High Max
 	@Override
 	void initButton() {
 		buttonID=WidgetButton.BUTTON_BRIGHTNESS;
-		isDefault=true;
 		preferenceName=WidgetSettings.TOGGLE_BRIGHTNESS;
-
-		buttonLayout=R.id.btn_brightness;
-		buttonIcon=R.id.img_brightness;
-		buttonState=R.id.ind_brightness;
-
 	}
 
 	@Override

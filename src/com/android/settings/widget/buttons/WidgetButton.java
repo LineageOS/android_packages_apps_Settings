@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RemoteViews;
 
 import com.android.settings.R;
@@ -42,19 +43,11 @@ public abstract class WidgetButton {
 	//The name of the preference to be read
 	String preferenceName = null;
 
-	//If this is a default button
-	boolean isDefault=false;
-
 	//Identifier for the Button for Intents
 	int buttonID;
 
 	int currentState;
 	int currentIcon;
-
-	int buttonLayout;
-	Integer buttonSep=null;
-	int buttonIcon;
-	int buttonState;
 
 
 
@@ -80,10 +73,18 @@ public abstract class WidgetButton {
 	public void updateView(Context context, RemoteViews views,
 			SharedPreferences globalPreferences,
 			SharedPreferences widgetPreferences, int appWidgetId) {
+		
+		int buttonPosi = widgetPreferences.getInt(preferenceName, -1);
+		
+		if (buttonPosi>0) {
+		
+			int buttonLayout=getButton(buttonPosi);
+			Integer buttonSep=getSep(buttonPosi);
+			int buttonIcon=getImg(buttonPosi);
+			int buttonState=getInd(buttonPosi);
 
-		//SettingsAppWidgetProvider.logD(">> updateView IN. Widget: "+appWidgetId+" Button:"+buttonID);		
+			//SettingsAppWidgetProvider.logD(">> updateView IN. Widget: "+appWidgetId+" Button:"+buttonID);		
 
-		if (isVisible(widgetPreferences, appWidgetId)) {
 			//SettingsAppWidgetProvider.logD("updateView -> Is Visible");		
 
 			//Set it visible
@@ -104,17 +105,8 @@ public abstract class WidgetButton {
 			//SettingsAppWidgetProvider.logD("updateView -> Set current State");		
 			views.setImageViewResource(buttonState, 
 					getButtonState(widgetPreferences));
-
-		} else {
-			//If not visible, remove it from the screen
-			//SettingsAppWidgetProvider.logD("updateView -> Button Not visible");		
-			views.setViewVisibility(buttonLayout, View.GONE);
-			if (buttonSep!=null) {
-				views.setViewVisibility(buttonSep, View.GONE);
-			}
 		}
 	}
-
 
 	/**
 	 * Creates PendingIntent to notify the widget of a button click.
@@ -185,25 +177,85 @@ public abstract class WidgetButton {
 	}
 
 	private boolean isRight(SharedPreferences widgetPreferences) {
-		return buttonState==widgetPreferences.getInt(WidgetSettings.LAST_ICON_ID, -1);
+		return widgetPreferences.getInt(WidgetSettings.LAST_BUTTON, 6)==widgetPreferences.getInt(preferenceName, -1);
 	}
 
 
 	private boolean isLeft(SharedPreferences widgetPreferences) {
-		return buttonState==widgetPreferences.getInt(WidgetSettings.FIRST_ICON_ID, -1);
+		return widgetPreferences.getInt(preferenceName, -1)==1;
 	}
 
 
 	protected boolean isVisible(SharedPreferences preferences, int appWidgetId) {
-		//SettingsAppWidgetProvider.logD("isVisible -> "+ preferenceName+"="+preferences.getBoolean(preferenceName, false));		
-		//SettingsAppWidgetProvider.logD("isVisible -> Saved="+preferences.getBoolean(SAVED_PREFERENCES, false));		
-
-		if (preferences.getBoolean(preferenceName, false) || (isDefault && preferences.getInt(WidgetSettings.SAVED, SettingsAppWidgetProvider.WIDGET_NOT_CONFIGURED)!=SettingsAppWidgetProvider.WIDGET_PRESENT)) {
-			return true;
-		} else {
-			return false;
-		}
+		return preferences.getInt(preferenceName, -1)!=-1;	
 	}	
 
+	public Integer getSep(int posi) {
+		switch (posi) {
+		case 1:	return R.id.sep_w1;
+		case 2:	return R.id.sep_w2;
+		case 3:	return R.id.sep_w3;
+		case 4:	return R.id.sep_w4;
+		case 5:	return R.id.sep_w5;
+		case 6:	return R.id.sep_w6;
+		case 7:	return R.id.sep_w7;
+		case 8:	return R.id.sep_w8;
+		case 9:	return R.id.sep_w9;
+		// case 10:
+		//No return as this will be the last button
+		}
+		return null;
+	}
+
+	public int getInd(int posi) {
+
+		switch (posi) {
+		case 1:	return R.id.ind_w1;
+		case 2:	return R.id.ind_w2;
+		case 3:	return R.id.ind_w3;
+		case 4:	return R.id.ind_w4;
+		case 5:	return R.id.ind_w5;
+		case 6:	return R.id.ind_w6;
+		case 7:	return R.id.ind_w7;
+		case 8:	return R.id.ind_w8;
+		case 9:	return R.id.ind_w9;
+		case 10:return R.id.ind_w10;
+		}
+		return -1;		
+	}
+
+
+	public int getImg(int posi) {
+		switch (posi) {
+		case 1:	return R.id.img_w1;
+		case 2:	return R.id.img_w2;
+		case 3:	return R.id.img_w3;
+		case 4:	return R.id.img_w4;
+		case 5:	return R.id.img_w5;
+		case 6:	return R.id.img_w6;
+		case 7:	return R.id.img_w7;
+		case 8:	return R.id.img_w8;
+		case 9:	return R.id.img_w9;
+		case 10:return R.id.img_w10;
+		}
+		return -1;		
+	}
+
+
+	public int getButton(int posi) {
+		switch (posi) {
+		case 1:	return R.id.btn_w1;
+		case 2:	return R.id.btn_w2;
+		case 3:	return R.id.btn_w3;
+		case 4:	return R.id.btn_w4;
+		case 5:	return R.id.btn_w5;
+		case 6:	return R.id.btn_w6;
+		case 7:	return R.id.btn_w7;
+		case 8:	return R.id.btn_w8;
+		case 9:	return R.id.btn_w9;
+		case 10:return R.id.btn_w10;
+		}
+		return -1;
+	}  	
 
 }

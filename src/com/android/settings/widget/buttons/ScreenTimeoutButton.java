@@ -81,14 +81,7 @@ public class ScreenTimeoutButton extends WidgetButton {
 	@Override
 	void initButton() {
 		buttonID=WidgetButton.BUTTON_SCREEN_TIMEOUT;
-		isDefault=false;
 		preferenceName=WidgetSettings.TOGGLE_SCREEN_TIMEOUT;
-
-		buttonLayout=R.id.btn_screen_timeout;
-		buttonSep=R.id.sep_screen_timeout;
-		buttonIcon=R.id.img_screen_timeout;
-		buttonState=R.id.ind_screen_timeout;
-
 	}
 
 	@Override

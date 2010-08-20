@@ -61,14 +61,7 @@ public class GPSButton extends WidgetButton {
 	@Override
 	void initButton() {
 		buttonID=WidgetButton.BUTTON_GPS;
-		isDefault=true;
 		preferenceName=WidgetSettings.TOGGLE_GPS;
-
-		buttonLayout=R.id.btn_gps;
-		buttonSep=R.id.sep_gps;
-		buttonIcon=R.id.img_gps;
-		buttonState=R.id.ind_gps;
-
 	}
 
 }

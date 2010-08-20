@@ -25,7 +25,6 @@ public class WifiButton extends WidgetButton{
 	private static final class WifiStateTracker extends StateTracker {
 		@Override
 		public int getActualState(Context context) {
-			//SettingsAppWidgetProvider.logD("Wifi: getActualState");		
 			WifiManager wifiManager = (WifiManager) context
 			.getSystemService(Context.WIFI_SERVICE);
 			if (wifiManager != null) {
@@ -37,8 +36,6 @@ public class WifiButton extends WidgetButton{
 		@Override
 		protected void requestStateChange(Context context,
 				final boolean desiredState) {
-			//SettingsAppWidgetProvider.logD("Wifi: requestStateChange");		
-
 			final WifiManager wifiManager = (WifiManager) context
 			.getSystemService(Context.WIFI_SERVICE);
 			if (wifiManager == null) {
@@ -70,8 +67,6 @@ public class WifiButton extends WidgetButton{
 
 		@Override
 		public void onActualStateChange(Context context, Intent intent) {
-			//SettingsAppWidgetProvider.logD("Wifi: onActualStateChange");		
-
 			if (!WifiManager.WIFI_STATE_CHANGED_ACTION.equals(intent
 					.getAction())) {
 				return;
@@ -106,8 +101,6 @@ public class WifiButton extends WidgetButton{
 
 	public void updateState(Context context,
 			SharedPreferences globalPreferences, int[] appWidgetIds) {	
-		//SettingsAppWidgetProvider.logD("Wifi: updateState");
-
 		currentState=sWifiState.getTriState(context);
 		switch (currentState) {
 		case SettingsAppWidgetProvider.STATE_DISABLED:
@@ -133,14 +126,11 @@ public class WifiButton extends WidgetButton{
 
 
 	public void onReceive(Context context, Intent intent) {
-		//SettingsAppWidgetProvider.logD("Wifi: onReceive");		
 		sWifiState.onActualStateChange(context, intent);		
 	}
 
 
 	public void toggleState(Context context) {
-		//SettingsAppWidgetProvider.logD("Wifi: toggleState");
-
 		int realstate = sWifiState.getActualState(context);		
 		sWifiState.toggleState(context);
 
@@ -148,28 +138,21 @@ public class WifiButton extends WidgetButton{
 				Context.MODE_PRIVATE);
 
 		if (realstate==SettingsAppWidgetProvider.STATE_DISABLED && preferences.getBoolean(WidgetSettings.AUTO_DISABLE_3G_WITH_WIFI, false)){
-			//SettingsAppWidgetProvider.logD("Wifi: will enable Sync");
 			NetworkModeButton.getInstance().toggleState(context, SettingsAppWidgetProvider.STATE_DISABLED);
 		} else if (realstate==SettingsAppWidgetProvider.STATE_ENABLED && preferences.getBoolean(WidgetSettings.AUTO_ENABLE_3G_WITH_WIFI, false)){
-			//SettingsAppWidgetProvider.logD("Wifi: will disable Sync");
 			NetworkModeButton.getInstance().toggleState(context, SettingsAppWidgetProvider.STATE_ENABLED);
 		} 
 		
 		if (realstate==SettingsAppWidgetProvider.STATE_DISABLED && preferences.getBoolean(WidgetSettings.AUTO_ENABLE_SYNC_WITH_WIFI, false)){
-			//SettingsAppWidgetProvider.logD("Wifi: will enable Sync");
 			SyncButton.getInstance().toggleState(context, SettingsAppWidgetProvider.STATE_ENABLED);
 		} else if (realstate==SettingsAppWidgetProvider.STATE_ENABLED && preferences.getBoolean(WidgetSettings.AUTO_DISABLE_SYNC_WITH_WIFI, false)){
-			//SettingsAppWidgetProvider.logD("Wifi: will disable Sync");
 			SyncButton.getInstance().toggleState(context, SettingsAppWidgetProvider.STATE_DISABLED);				
 		}
 	}
 
 
 	public static WifiButton getInstance() {
-		//SettingsAppWidgetProvider.logD("Wifi: Getting Instance");
-
 		if (ownButton==null) {
-			//SettingsAppWidgetProvider.logD("Wifi: New Wifi instance");
 			ownButton = new WifiButton();
 		}
 
@@ -178,16 +161,8 @@ public class WifiButton extends WidgetButton{
 
 	@Override
 	void initButton() {
-		//SettingsAppWidgetProvider.logD("Wifi: Init Button");
 		buttonID=WidgetButton.BUTTON_WIFI;
-		isDefault=true;
 		preferenceName=WidgetSettings.TOGGLE_WIFI;
-
-		buttonLayout=R.id.btn_wifi;
-		buttonSep=R.id.sep_wifi;
-		buttonIcon=R.id.img_wifi;
-		buttonState=R.id.ind_wifi;
-
 	}
 
 	public void toggleState(Context context, int newState) {

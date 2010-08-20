@@ -159,14 +159,7 @@ public class SoundButton extends WidgetButton {
 	@Override
 	void initButton() {
 		buttonID=WidgetButton.BUTTON_SOUND;
-		isDefault=false;
 		preferenceName=WidgetSettings.TOGGLE_SOUND;
-
-		buttonLayout=R.id.btn_sound;
-		buttonSep=R.id.sep_sound;
-		buttonIcon=R.id.img_sound;
-		buttonState=R.id.ind_sound;
-
 	}
 
 	@Override

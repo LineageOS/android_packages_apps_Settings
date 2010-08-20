@@ -46,14 +46,7 @@ public class FlashlightButton extends WidgetButton {
 	@Override
 	void initButton() {
 		buttonID=WidgetButton.BUTTON_FLASHLIGHT;
-		isDefault=false;
 		preferenceName=WidgetSettings.TOGGLE_FLASHLIGHT;
-
-		buttonLayout=R.id.btn_flashlight;
-		buttonSep=R.id.sep_flashlight;
-		buttonIcon=R.id.img_flashlight;
-		buttonState=R.id.ind_flashlight;
-
 	}
 
 }

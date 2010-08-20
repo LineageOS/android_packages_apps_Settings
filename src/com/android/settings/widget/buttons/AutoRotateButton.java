@@ -53,14 +53,7 @@ public class AutoRotateButton extends WidgetButton {
 	@Override
 	void initButton() {
 		buttonID=WidgetButton.BUTTON_AUTO_ROTATE;
-		isDefault=false;
 		preferenceName=WidgetSettings.TOGGLE_AUTO_ROTATE ;
-
-		buttonLayout=R.id.btn_auto_rotate;
-		buttonSep=R.id.sep_auto_rotate;
-		buttonIcon=R.id.img_auto_rotate;
-		buttonState=R.id.ind_auto_rotate;
-
 	}
 
 

@@ -82,14 +82,7 @@ public class NetworkModeButton extends WidgetButton{
 	@Override
 	void initButton() {
 		buttonID=WidgetButton.BUTTON_2G3G;
-		isDefault=false;
 		preferenceName=WidgetSettings.TOGGLE_2G3G;
-
-		buttonLayout=R.id.btn_2G3G;
-		buttonSep=R.id.sep_2G3G;
-		buttonIcon=R.id.img_2G3G;
-		buttonState=R.id.ind_2G3G;
-
 	}
 
 	@Override

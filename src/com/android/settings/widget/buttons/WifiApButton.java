@@ -25,7 +25,6 @@ public class WifiApButton extends WidgetButton{
 	private static final class WifiApStateTracker extends StateTracker {
 		@Override
 		public int getActualState(Context context) {
-			//SettingsAppWidgetProvider.logD("WifiAp: getActualState");		
 			WifiManager wifiManager = (WifiManager) context
 			.getSystemService(Context.WIFI_SERVICE);
 			if (wifiManager != null) {
@@ -37,7 +36,6 @@ public class WifiApButton extends WidgetButton{
 		@Override
 		protected void requestStateChange(Context context,
 				final boolean desiredState) {
-			//SettingsAppWidgetProvider.logD("WifiAp: requestStateChange");		
 
 			final WifiManager wifiManager = (WifiManager) context
 			.getSystemService(Context.WIFI_SERVICE);
@@ -70,7 +68,6 @@ public class WifiApButton extends WidgetButton{
 
 		@Override
 		public void onActualStateChange(Context context, Intent intent) {
-			//SettingsAppWidgetProvider.logD("WifiAp: onActualStateChange");		
 
 			if (!WifiManager.WIFI_AP_STATE_CHANGED_ACTION.equals(intent
 					.getAction())) {
@@ -106,7 +103,6 @@ public class WifiApButton extends WidgetButton{
 
 	public void updateState(Context context,
 			SharedPreferences globalPreferences, int[] appWidgetIds) {	
-		//SettingsAppWidgetProvider.logD("WifiAp: updateState");
 
 		currentState=sWifiApState.getTriState(context);
 		switch (currentState) {
@@ -133,24 +129,17 @@ public class WifiApButton extends WidgetButton{
 
 
 	public void onReceive(Context context, Intent intent) {
-		//SettingsAppWidgetProvider.logD("WifiAp: onReceive");		
 		sWifiApState.onActualStateChange(context, intent);
 	}
 
 
 	public void toggleState(Context context) {
-		//SettingsAppWidgetProvider.logD("WifiAp: toggleState");
-		
-		int realstate = sWifiApState.getActualState(context);		
 		sWifiApState.toggleState(context);
 	}
 
 
 	public static WifiApButton getInstance() {
-		//SettingsAppWidgetProvider.logD("WifiAp: Getting Instance");
-
 		if (ownButton==null) {
-			//SettingsAppWidgetProvider.logD("WifiAp: New WifiAp instance");
 			ownButton = new WifiApButton();
 		}
 
@@ -159,16 +148,8 @@ public class WifiApButton extends WidgetButton{
 
 	@Override
 	void initButton() {
-		//SettingsAppWidgetProvider.logD("WifiAp: Init Button");
 		buttonID=WidgetButton.BUTTON_WIFI_AP;
-		isDefault=false;
 		preferenceName=WidgetSettings.TOGGLE_WIFI_AP;
-
-		buttonLayout=R.id.btn_wifi_ap;
-		buttonSep=R.id.sep_wifi_ap;
-		buttonIcon=R.id.img_wifi_ap;
-		buttonState=R.id.ind_wifi_ap;
-
 	}
 
 
