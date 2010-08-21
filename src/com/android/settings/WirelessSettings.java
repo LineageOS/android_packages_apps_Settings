@@ -45,6 +45,7 @@ public class WirelessSettings extends PreferenceActivity {
     private static final String KEY_BT_SETTINGS = "bt_settings";
     private static final String KEY_VPN_SETTINGS = "vpn_settings";
     private static final String KEY_TETHER_SETTINGS = "tether_settings";
+    private static final String KEY_PROXY_SETTING = "proxy_setting";
     public static final String EXIT_ECM_RESULT = "exit_ecm_result";
     public static final int REQUEST_CODE_EXIT_ECM = 1;
 
