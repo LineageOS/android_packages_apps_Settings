@@ -20,6 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.net.ConnectivityManager;
 
@@ -78,6 +79,7 @@ public class WidgetSettings extends Activity {
 	protected static final int TRANSPARENT_BACKGROUND = 1;
 
 	public static final String LAST_BUTTON = "lastButton";
+	private static final int MAX_BUTTONS = 10;
 	
 	
     int widgetId  = AppWidgetManager.INVALID_APPWIDGET_ID;
@@ -163,8 +165,17 @@ public class WidgetSettings extends Activity {
 			}
 		} else if (button.getId()!=R.id.useRoundCorners) {
 			if (button.isChecked()) {
-				SettingsAppWidgetProvider.logD("Add button");
-				selectedButtons.add(button);
+				
+				//Add only if we still have buttons available on the layout
+				if (selectedButtons.size()<MAX_BUTTONS) {
+					SettingsAppWidgetProvider.logD("Add button");
+					selectedButtons.add(button);
+				} else {
+					button.setChecked(false);
+					SettingsAppWidgetProvider.logD("Button limit reached ");
+					Toast message = Toast.makeText(this, "Limited to "+MAX_BUTTONS+" buttons", Toast.LENGTH_SHORT);
+					message.show();
+				}
 			} else {		
 				SettingsAppWidgetProvider.logD("Remove button");
 				selectedButtons.remove(button);
@@ -177,7 +188,7 @@ public class WidgetSettings extends Activity {
 
 	private void updateState() {
 		SettingsAppWidgetProvider.logD("Buttons present:"+selectedButtons.size());
-		for (int posi=1;posi<=10;posi++) {
+		for (int posi=1;posi<=MAX_BUTTONS;posi++) {
 			
 			if (posi<=selectedButtons.size()) {
 				CheckBox buttonPresent = selectedButtons.get(posi-1);
