@@ -120,7 +120,7 @@ class OpenvpnEditor extends VpnProfileEditor {
                 return result;
         }
         
-        return validate(mCert, R.string.vpn_a_ca_certificate);
+        return validate(mCACert, R.string.vpn_a_ca_certificate);
     }
 
     @Override
