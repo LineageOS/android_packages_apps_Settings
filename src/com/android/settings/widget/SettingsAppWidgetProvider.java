@@ -145,6 +145,25 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 
 		SharedPreferences globalPreferences = context.getSharedPreferences(WidgetSettings.WIDGET_PREF_MAIN,Context.MODE_PRIVATE);
 
+		// If never initialized before. Populate the widget with defaults
+		if (!globalPreferences.contains(WidgetSettings.SAVED)) {
+			Log.d(TAG,"Widget is from a previous version... Let's update");
+			//It should be just one when the system is clean... but we never now. So let's process all
+			// We shall get them from the system since the update received can be for a single one.
+			int[] widgets = appWidgetManager.getAppWidgetIds(THIS_APPWIDGET);
+			for (int widget:widgets) {
+				Log.d(TAG,"Will set widget "+widget+" to default settings");
+				SharedPreferences widgetPreferences = context.getSharedPreferences(WidgetSettings.WIDGET_PREF_NAME+widget,
+						Context.MODE_PRIVATE);
+				WidgetSettings.initDefaultWidget(widgetPreferences);
+			}
+			
+			if(widgets.length>0) {
+				WidgetSettings.initDefaultSettings(globalPreferences);
+			} else {
+				Log.d(TAG,"No instances yet... Wait for at least one instance to exist before adding global settings");
+			}
+		}
 		//Query for current status of multiple options. Only to be done once
 		updateStates(context, globalPreferences, appWidgetIds);
 		

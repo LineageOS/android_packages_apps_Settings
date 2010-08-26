@@ -347,7 +347,6 @@ public class WidgetSettings extends Activity {
         	editor.putInt(TOGGLE_LOCK_SCREEN, selectedButtons.indexOf(findViewById(R.id.toggleLockScreen))+1);
         	editor.putInt(TOGGLE_FLASHLIGHT, selectedButtons.indexOf(findViewById(R.id.toggleFlashlight))+1);
         	editor.putInt(TOGGLE_WIFI_AP, selectedButtons.indexOf(findViewById(R.id.toggleWifiAp))+1);
-        	editor.putInt(TOGGLE_WIFI_AP, selectedButtons.indexOf(findViewById(R.id.toggleWifiAp))+1);
 			
         	editor.putBoolean(USE_ROUND_CORNERS, ((CheckBox)findViewById(R.id.useRoundCorners)).isChecked());
         	editor.putInt(BACKGROUND_IMAGE,((Spinner) findViewById(R.id.backgroundImageSpinner)).getSelectedItemPosition());
@@ -475,4 +474,57 @@ public class WidgetSettings extends Activity {
     	}
     	return 0;
     }
+
+
+	public static void initDefaultWidget(SharedPreferences widgetPreferences) {
+    	Editor editor =widgetPreferences.edit();
+    	editor.clear();
+					
+    	editor.putInt(TOGGLE_WIFI, 1);
+    	editor.putInt(TOGGLE_BLUETOOTH, 2);
+    	editor.putInt(TOGGLE_GPS, 3);
+    	editor.putInt(TOGGLE_DATA, 4);
+    	editor.putInt(TOGGLE_2G3G, 0);
+    	editor.putInt(TOGGLE_SYNC, 5);
+    	editor.putInt(TOGGLE_SOUND,0);
+    	editor.putInt(TOGGLE_SCREEN_TIMEOUT, 0);
+    	editor.putInt(TOGGLE_AUTO_ROTATE, 0);
+    	editor.putInt(TOGGLE_BRIGHTNESS, 6);
+    	editor.putInt(TOGGLE_AIRPLANE, 0);
+    	editor.putInt(TOGGLE_LOCK_SCREEN, 0);
+    	editor.putInt(TOGGLE_FLASHLIGHT, 0);
+    	editor.putInt(TOGGLE_WIFI_AP, 0);
+		
+    	editor.putBoolean(USE_ROUND_CORNERS,true);
+    	editor.putInt(BACKGROUND_IMAGE,0);
+    	editor.putBoolean(USE_VERTICAL, false);
+    	editor.putInt(SAVED, SettingsAppWidgetProvider.WIDGET_PRESENT);
+    	editor.putInt(LAST_BUTTON, 6);
+
+    	editor.commit();
+    }
+
+
+	public static void initDefaultSettings(SharedPreferences globalPreferences) {
+    	Editor editorGeneral =globalPreferences.edit();
+    	editorGeneral.clear();
+    	editorGeneral.putBoolean(AUTO_DISABLE_3G,false);
+    	editorGeneral.putBoolean(AUTO_ENABLE_3G, false);
+    	editorGeneral.putBoolean(AUTO_DISABLE_SYNC_WITH_WIFI, false);
+    	editorGeneral.putBoolean(AUTO_ENABLE_SYNC_WITH_WIFI, false);
+    	editorGeneral.putBoolean(AUTO_DISABLE_3G_WITH_WIFI, false);
+    	editorGeneral.putBoolean(AUTO_ENABLE_3G_WITH_WIFI, false);
+    	editorGeneral.putBoolean(AUTO_ENABLE_BLUETOOTH_WITH_POWER, false);
+    	editorGeneral.putBoolean(AUTO_DISABLE_BLUETOOTH_WITH_POWER, false);
+    	editorGeneral.putBoolean(AUTO_ENABLE_WIFI_WITH_POWER, false);
+    	editorGeneral.putBoolean(AUTO_DISABLE_WIFI_WITH_POWER, false);
+    	editorGeneral.putBoolean(MONITOR_DATA_ROAMING, false);
+    	editorGeneral.putBoolean(RING_MODE_VIBRATE_AS_ON, false);
+
+    	editorGeneral.putInt(BRIGHTNESS_SPINNER,0);
+    	editorGeneral.putInt(SCREEN_TIMEOUT_SPINNER,0);
+    	editorGeneral.putInt(NETWORK_MODE_SPINNER,0);
+    	editorGeneral.putInt(RING_MODE_SPINNER,0);
+    	editorGeneral.putInt(SAVED, SettingsAppWidgetProvider.WIDGET_PRESENT);
+    	editorGeneral.commit();	}
 }
