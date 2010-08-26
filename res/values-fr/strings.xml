@@ -679,6 +679,7 @@
     <string name="lockpattern_settings_show_custom_msg">Message personnalisé</string>
     <string name="lockpattern_settings_custom_msg">Message personnalisé</string>
     <string name="lockpattern_settings_custom_msg_dialog">Entrer un message personnalisé</string>
+    <string name="lockpattern_settings_custom_msg_color">Couleur du message</string>
     <string name="lockpattern_settings_incorrect_delay_title">Régler le délai après un schéma incorrect</string>
     <string name="skip_button_label" msgid="8680422740354436943">"Annuler"</string>
     <string name="next_button_label" msgid="8890792540116568321">"Suivant"</string>
@@ -768,6 +769,10 @@
     <string name="service_background_processes" msgid="5158600475629177758">"Disponible : <xliff:g id="FREE">%2$s</xliff:g>+<xliff:g id="MEMORY">%3$s</xliff:g> dans <xliff:g id="COUNT">%1$d</xliff:g>"</string>
     <string name="service_foreground_processes" msgid="4013890350284680796">"Autres : <xliff:g id="MEMORY">%2$s</xliff:g> dans <xliff:g id="COUNT">%1$d</xliff:g>"</string>
     <string name="service_process_name" msgid="8630408984456958400">"Processus : <xliff:g id="PROCESS">%1$s</xliff:g>"</string>
+    <string name="permission_settings_title">Afficher les permissions</string>
+    <string name="permission_settings_summary">Afficher la liste des permissions connues et les applications les utilisant</string>
+    <string name="permission_settings_loading">Chargement</string>
+    <string name="permission_settings_refresh">Actualiser la liste</string>
     <string name="language_settings" msgid="502219872342167227">"Langue et clavier"</string>
     <string name="language_keyboard_settings_title" msgid="3455826933385341107">"Paramètres de langue et clavier"</string>
     <string name="language_settings_summary" msgid="595647729475399987">"Définir la langue et la région, la saisie de texte et la correction automatique"</string>
@@ -1133,20 +1138,27 @@
     <string name="sound_category_calls_title" msgid="3688531959256239012">"Appels entrants"</string>
     <string name="sound_category_notification_title" msgid="3502115998790286943">"Notifications"</string>
     <string name="sound_category_feedback_title" msgid="4399742321363475393">"Commentaires"</string>
+
     <string name="cm_settings_title">CyanogenMod</string>
-    <string name="launcher_settings_title">Accueil</string>    
-    <string name="possibleButtons">Commandes disponibles</string>
-    <string name="toggleWifi">Commande WiFi</string>
-    <string name="toggleBluetooth">Commande Bluetooth</string>
-    <string name="toggleGPS">Commande GPS</string>
-    <string name="toggleData">Commande Données cellulaires</string>
-    <string name="toggleSync">Commande Synchronisation</string>
-    <string name="toggle2g3g">Commande 2G/3G</string>
-    <string name="toggleSound">Commande Mode de sonnerie</string>
-    <string name="toggleBrightness">Commande Luminosité</string>
-    <string name="toggleAutoRotate">Commande Orientation</string>
-    <string name="toggleScreenTimeout">Commande Timeout de l\'écran</string>
-    <string name="toggleWifiDescription">Activer/désactiver le WiFi</string>
+    <string name="launcher_settings_title">Accueil</string>
+
+    <string name="possibleButtons">Interrupteurs disponibles</string>
+    <string name="toggleWifi">Wi-Fi</string>
+    <string name="toggleWifiAp">Hotspot Wi-Fi mobile</string>
+    <string name="toggleBluetooth">Bluetooth</string>
+    <string name="toggleGPS">GPS</string>
+    <string name="toggleData">Données cellulaires</string>
+    <string name="toggleSync">Synchronisation</string>
+    <string name="toggle2g3g">2G/3G</string>
+    <string name="toggleSound">Mode de sonnerie</string>
+    <string name="toggleBrightness">Luminosité</string>
+    <string name="toggleAutoRotate">Orientation</string>
+    <string name="toggleScreenTimeout">Timeout de l\'écran</string>
+    <string name="toggleAirplane">Mode avion</string>
+    <string name="toggleFlashlight">Lampe torche</string>
+    <string name="toggleLockScreen">Écran de verrouillage</string>
+
+    <string name="toggleWifiDescription">Activer/désactiver le Wi-Fi</string>
     <string name="toggleBluetoothDescription">Activer/désactiver Bluetooth</string>
     <string name="toggleGPSDescription">Activer/désactiver le GPS</string>
     <string name="toggleDataDescription">Activer/désactiver les données par le réseau mobile</string>
@@ -1155,22 +1167,62 @@
     <string name="toggleSoundDescription">Basculer mode sonnerie/vibreur</string>
     <string name="toggleBrightnessDescription">Basculer les différents modes de luminosité</string>
     <string name="toggleAutoRotateDescription">Activer/désactiver le capteur d\'orientation</string>
-    <string name="toggleScreenTimeoutDescription">15sec, 1min, 5 minutes</string>    
+    <string name="toggleScreenTimeoutDescription">15sec, 1min, 5 minutes</string>
+    <string name="toggleAirplaneDescription">Activer/désactiver le mode avion</string>
+    <string name="toggleFlashlightDescription">Activer/désactiver la lampe torche</string>
+    <string name="toggleLockScreenDescription">Activer/désactiver l\'écran de verrouillage</string>
+
+    <string name="widgetSettings">Paramètres du widget</string>
+    <string name="wifiSettings">Paramètres des événements Wi-Fi</string>
+    <string name="dataSettings">Paramètres des événements data</string>
+    <string name="powerSettings">Paramètres des événements de l\'alimentation</string>
+
     <string name="generalSettings">Paramètres généraux</string>
-    <string name="autoDisable3G">Désactiver la 3G automatiquement</string>
-    <string name="autoEnable3G">Activer la 3G automatiquement</string>
+
+    <string name="autoDisable3G">Désactiver les data désactive la 3G</string>
+    <string name="autoEnable3G">Activer les data active la 3G</string>
+    <string name="autoDisable3GWithWifi">Activer le Wi-Fi désactive la 3G</string>
+    <string name="autoEnable3GWithWifi">Désactiver le Wi-Fi active la 3G</string>
     <string name="useRoundCorners">Angles arrondis</string>
+    <string name="useVertical">Disposition verticale</string>
     <string name="useTransparent">Widget transparent</string>
-    <string name="autoEnableSyncWithWifi">Activer la synchro automatiquement</string>
-    <string name="autoDisableSyncWithWifi">Désactiver la synchro automatiquement</string>
+    <string name="autoEnableSyncWithWifi">Activer la synchro avec le Wi-Fi</string>
+    <string name="autoDisableSyncWithWifi">Désactiver la synchro avec le Wi-Fi</string>
     <string name="ringModeVibrateAsOn">Activé en mode vibreur</string>
     <string name="monitorDataRoaming">Roaming data en rouge</string>
+    <string name="autoEnableBluetoothWithPower">Secteur active Bluetooth</string>
+    <string name="autoDisableBluetoothWithPower">Batterie désactive Bluetooth</string>
+    <string name="autoEnableWifiWithPower">Secteur active le Wi-Fi</string>
+    <string name="autoDisableWifiWithPower">Batterie désactive le Wi-Fi</string>
+
     <string name="autoDisable3GDescription">2G quand les données mobiles sont désactivées</string>
     <string name="autoEnable3GDescription">3G quand les données mobiles sont activées</string>
+    <string name="autoDisable3GWithWifiDescription">2G quand le Wi-Fi est activé</string>
+    <string name="autoEnable3GWithWifiDescription">3G quand le Wi-Fi est désactivé</string>
     <string name="useRoundCornersDescription">Arrondir les coins du widget</string>
     <string name="useTransparentDescription">Pas d\'arrière-plan</string>
-    <string name="autoEnableSyncWithWifiDescription">Activer la synchro avec le WiFi</string>
-    <string name="autoDisableSyncWithWifiDescription">Désactiver la synchro avec le WiFi</string>
+    <string name="useVerticalDescription">Afficher le widget verticalement</string>
+    <string name="autoEnableSyncWithWifiDescription">Activer la synchro avec le Wi-Fi</string>
+    <string name="autoDisableSyncWithWifiDescription">Désactiver la synchro avec le Wi-Fi</string>
     <string name="ringModeVibrateAsOnDescription">Montrer le son comme étant activé en mode vibreur</string>
     <string name="monitorDataRoamingDescription">Colorer le statut des données en rouge lorsque le roaming est activé</string>
+
+    <string name="autoEnableBluetoothWithPowerDescription">Le passage sur secteur active Bluetooth</string>
+    <string name="autoDisableBluetoothWithPowerDescription">Le passage sur batterie désactive Bluetooth</string>
+    <string name="autoEnableWifiWithPowerDescription">Le passage sur secteur active le Wi-Fi</string>
+    <string name="autoDisableWifiWithPowerDescription">Le passage sur batterie désactive le Wi-Fi</string>
+
+    <string name="networkModeSpinner">Choisir technologies réseau</string>
+    <string name="brightnessSpinner">Choisir niveaux de rétroéclairage</string>
+    <string name="ringModeSpinner">Choisir modes de sonnerie</string>
+    <string name="screenTimeoutSpinner">Choisir timeout de l\'écran</string>
+    <string name="backgroundImageSpinner">Choisir l\'arrière-plan</string>
+
+    <string name="notConfigured">Je ne suis pas configuré. Veuillez m\'ajouter à nouveau !</string>
+
+    <string name="ok">OK</string>
+
+    <string name="proxy_setting">Paramètres du proxy</string>
+    <string name="proxy_setting_summary">Configurer un serveur mandataire afin d\'accéder à Internet</string>
+    <string name="proxy_wifi_only">Utiliser le proxy uniquement en Wi-Fi</string>
 </resources>
