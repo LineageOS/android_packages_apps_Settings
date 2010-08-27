@@ -25,20 +25,15 @@
             android:title="@string/unlock_set_unlock_launch_picker_title"
             android:summary="@string/unlock_set_unlock_launch_picker_summary"
             android:persistent="false"/>
-            
+
         <CheckBoxPreference
             android:key="showcustommsg"
             android:title="@string/lockpattern_settings_show_custom_msg"/>
-            
+
         <EditTextPreference
             android:key="custommsg"
             android:title="@string/lockpattern_settings_custom_msg"
             android:dialogTitle="@string/lockpattern_settings_custom_msg_dialog"/>
-
-        <Preference
-            android:key="custommsg_color"
-            android:title="@string/lockpattern_settings_custom_msg_color"
-            android:defaultValue="-1" />
 
         <Preference
             android:key="custommsg_color"
