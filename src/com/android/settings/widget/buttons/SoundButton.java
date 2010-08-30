@@ -3,6 +3,7 @@ package com.android.settings.widget.buttons;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.media.AudioManager;
+import android.provider.Settings;
 
 import com.android.settings.R;
 import com.android.settings.widget.SettingsAppWidgetProvider;
@@ -63,56 +64,83 @@ public class SoundButton extends WidgetButton {
 		switch (currentMode) {
 		case RINGER_MODE_SOUND_AND_VIBRATE:
 			if(supports(RINGER_MODE_SOUND_ONLY)) {
-				mAudioManager.setVibrateSetting(AudioManager.VIBRATE_TYPE_RINGER,AudioManager.VIBRATE_SETTING_OFF);
+				Settings.System.putInt(context.getContentResolver(),Settings.System.VIBRATE_IN_SILENT,1);
+				mAudioManager.setVibrateSetting(AudioManager.VIBRATE_TYPE_RINGER,AudioManager.VIBRATE_SETTING_ONLY_SILENT);
+				mAudioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
 			} else if(supports(RINGER_MODE_VIBRATE_ONLY)) {
+				Settings.System.putInt(context.getContentResolver(),Settings.System.VIBRATE_IN_SILENT,1);
+				mAudioManager.setVibrateSetting(AudioManager.VIBRATE_TYPE_RINGER,AudioManager.VIBRATE_SETTING_ONLY_SILENT);
 				mAudioManager.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
 			} else if(supports(RINGER_MODE_SILENT)) {
+				Settings.System.putInt(context.getContentResolver(),Settings.System.VIBRATE_IN_SILENT,0);
+				mAudioManager.setVibrateSetting(AudioManager.VIBRATE_TYPE_RINGER,AudioManager.VIBRATE_SETTING_OFF);
 				mAudioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
-			} else {
+			} else { //Fall Back
+				Settings.System.putInt(context.getContentResolver(),Settings.System.VIBRATE_IN_SILENT,1);
+				mAudioManager.setVibrateSetting(AudioManager.VIBRATE_TYPE_RINGER,AudioManager.VIBRATE_SETTING_ON);
 				mAudioManager.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
 			}
 			break;
 		case RINGER_MODE_SOUND_ONLY:
 			if(supports(RINGER_MODE_VIBRATE_ONLY)) {
+				Settings.System.putInt(context.getContentResolver(),Settings.System.VIBRATE_IN_SILENT,1);
+				mAudioManager.setVibrateSetting(AudioManager.VIBRATE_TYPE_RINGER,AudioManager.VIBRATE_SETTING_ONLY_SILENT);
 				mAudioManager.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
 			} else if(supports(RINGER_MODE_SILENT)) {
+				Settings.System.putInt(context.getContentResolver(),Settings.System.VIBRATE_IN_SILENT,0);
+				mAudioManager.setVibrateSetting(AudioManager.VIBRATE_TYPE_RINGER,AudioManager.VIBRATE_SETTING_OFF);
 				mAudioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
 			} else if(supports(RINGER_MODE_SOUND_AND_VIBRATE)) {
+				Settings.System.putInt(context.getContentResolver(),Settings.System.VIBRATE_IN_SILENT,1);
 				mAudioManager.setVibrateSetting(AudioManager.VIBRATE_TYPE_RINGER,AudioManager.VIBRATE_SETTING_ON);
-			} else {
+				mAudioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+			} else { //Fall back
+				Settings.System.putInt(context.getContentResolver(),Settings.System.VIBRATE_IN_SILENT,1);
+				mAudioManager.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
 				mAudioManager.setVibrateSetting(AudioManager.VIBRATE_TYPE_RINGER,AudioManager.VIBRATE_SETTING_ON);
 			}
 			break;
 
 		case RINGER_MODE_VIBRATE_ONLY:
 			if(supports(RINGER_MODE_SILENT)) {
+				Settings.System.putInt(context.getContentResolver(),Settings.System.VIBRATE_IN_SILENT,0);
 				mAudioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+				mAudioManager.setVibrateSetting(AudioManager.VIBRATE_TYPE_RINGER,AudioManager.VIBRATE_SETTING_OFF);
 			} else if(supports(RINGER_MODE_SOUND_AND_VIBRATE)) {
+				Settings.System.putInt(context.getContentResolver(),Settings.System.VIBRATE_IN_SILENT,1);
 				mAudioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
 				mAudioManager.setVibrateSetting(AudioManager.VIBRATE_TYPE_RINGER,AudioManager.VIBRATE_SETTING_ON);
 			} else if(supports(RINGER_MODE_SOUND_ONLY)) {
+				Settings.System.putInt(context.getContentResolver(),Settings.System.VIBRATE_IN_SILENT,1);
 				mAudioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
-				mAudioManager.setVibrateSetting(AudioManager.VIBRATE_TYPE_RINGER,AudioManager.VIBRATE_SETTING_OFF);
-			} else {
+				mAudioManager.setVibrateSetting(AudioManager.VIBRATE_TYPE_RINGER,AudioManager.VIBRATE_SETTING_ONLY_SILENT);
+			} else { //Fall Back
+				Settings.System.putInt(context.getContentResolver(),Settings.System.VIBRATE_IN_SILENT,1);
 				mAudioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
 				mAudioManager.setVibrateSetting(AudioManager.VIBRATE_TYPE_RINGER,AudioManager.VIBRATE_SETTING_ON);
 			}
 			break;
 		case RINGER_MODE_SILENT:
 			if(supports(RINGER_MODE_SOUND_AND_VIBRATE)) {
+				Settings.System.putInt(context.getContentResolver(),Settings.System.VIBRATE_IN_SILENT,1);
 				mAudioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
 				mAudioManager.setVibrateSetting(AudioManager.VIBRATE_TYPE_RINGER,AudioManager.VIBRATE_SETTING_ON);
 			} else if(supports(RINGER_MODE_SOUND_ONLY)) {
+				Settings.System.putInt(context.getContentResolver(),Settings.System.VIBRATE_IN_SILENT,1);
 				mAudioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
-				mAudioManager.setVibrateSetting(AudioManager.VIBRATE_TYPE_RINGER,AudioManager.VIBRATE_SETTING_OFF);
+				mAudioManager.setVibrateSetting(AudioManager.VIBRATE_TYPE_RINGER,AudioManager.VIBRATE_SETTING_ONLY_SILENT);
 			} else if(supports(RINGER_MODE_VIBRATE_ONLY)) {
+				Settings.System.putInt(context.getContentResolver(),Settings.System.VIBRATE_IN_SILENT,1);
 				mAudioManager.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
-			} else {
+				mAudioManager.setVibrateSetting(AudioManager.VIBRATE_TYPE_RINGER,AudioManager.VIBRATE_SETTING_ONLY_SILENT);
+			} else { //Fall Back
+				Settings.System.putInt(context.getContentResolver(),Settings.System.VIBRATE_IN_SILENT,1);
 				mAudioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
 				mAudioManager.setVibrateSetting(AudioManager.VIBRATE_TYPE_RINGER,AudioManager.VIBRATE_SETTING_ON);
 			}
 			break;
 		default:
+			Settings.System.putInt(context.getContentResolver(),Settings.System.VIBRATE_IN_SILENT,1);
 			mAudioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
 			mAudioManager.setVibrateSetting(AudioManager.VIBRATE_TYPE_RINGER,AudioManager.VIBRATE_SETTING_ON);
 
