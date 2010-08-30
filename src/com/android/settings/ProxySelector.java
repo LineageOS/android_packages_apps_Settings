@@ -67,7 +67,7 @@ public class ProxySelector extends Activity
     EditText    mHostnameField;
     EditText    mPortField;
     Button      mOKButton;
-    CheckBox    mProxyWifiOnly;
+    CheckBox    mProxyWifiOn;
     
     // Matches blank input, ips, and domain names
     private static final String HOSTNAME_REGEXP = "^$|^[a-zA-Z0-9]+(\\-[a-zA-Z0-9]+)*(\\.[a-zA-Z0-9]+(\\-[a-zA-Z0-9]+)*)*$";
@@ -125,7 +125,7 @@ public class ProxySelector extends Activity
         mPortField.setOnClickListener(mOKHandler);
         mPortField.setOnFocusChangeListener(mOnFocusChangeHandler);
 
-        mProxyWifiOnly = (CheckBox)findViewById(R.id.wifi_only);
+        mProxyWifiOn = (CheckBox)findViewById(R.id.wifi_on);
         
         mOKButton = (Button)findViewById(R.id.action);
         mOKButton.setOnClickListener(mOKHandler);
@@ -142,12 +142,12 @@ public class ProxySelector extends Activity
         int port = -1;
         if (useDefault) {
             // Use the default proxy settings provided by the carrier
-            hostname = Proxy.getDefaultHost();
-            port = Proxy.getDefaultPort();
+            hostname = null;
+            port = 0;
         } else {
             // Use the last setting given by the user
-            hostname = Proxy.getHost(this);
-            port = Proxy.getPort(this);
+            hostname = Proxy.getWifiHost(this);
+            port = Proxy.getWifiPort(this);
         }
 
         if (hostname == null) {
@@ -159,7 +159,7 @@ public class ProxySelector extends Activity
         String portStr = port == -1 ? "" : Integer.toString(port);
         mPortField.setText(portStr);
 
-        mProxyWifiOnly.setChecked(Proxy.isProxyForWifiOn(this));
+        mProxyWifiOn.setChecked(Proxy.isProxyForWifiOn(this));
         
         Intent intent = getIntent();
 
@@ -238,8 +238,8 @@ public class ProxySelector extends Activity
         // FIXME: If the user types in a proxy that matches the default, should
         // we keep that setting? Can be fixed with a new UI.
         ContentResolver res = getContentResolver();
-        if (hostname.equals(Proxy.getDefaultHost())
-                && port == Proxy.getDefaultPort()) {
+        if (hostname.equals(null)
+                && port == 0) {
             // If the user hit the default button and didn't change any of
             // the input boxes, treat it as if the user has not specified a
             // proxy.
@@ -249,9 +249,9 @@ public class ProxySelector extends Activity
         if (!TextUtils.isEmpty(hostname)) {
             hostname += ':' + portStr;
         }
-        Settings.Secure.putString(res, Settings.Secure.HTTP_PROXY, hostname);
+        Settings.Secure.putString(res, Settings.Secure.HTTP_PROXY_WIFI, hostname);
         Settings.Secure.putInt(res, Settings.Secure.HTTP_PROXY_WIFI_ON,
-                mProxyWifiOnly.isChecked() ? 1 : 0);
+                mProxyWifiOn.isChecked() ? 1 : 0);
         sendBroadcast(new Intent(Proxy.PROXY_CHANGE_ACTION));
 
         return true;
@@ -269,7 +269,7 @@ public class ProxySelector extends Activity
             public void onClick(View v) {
                 mHostnameField.setText("");
                 mPortField.setText("");
-                mProxyWifiOnly.setChecked(true);
+                mProxyWifiOn.setChecked(true);
             }
         };
 
@@ -288,3 +288,4 @@ public class ProxySelector extends Activity
             }
         };
 }
+
