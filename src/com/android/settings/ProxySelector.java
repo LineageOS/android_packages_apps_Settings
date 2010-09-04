@@ -159,7 +159,7 @@ public class ProxySelector extends Activity
         String portStr = port == -1 ? "" : Integer.toString(port);
         mPortField.setText(portStr);
 
-        mProxyWifiOnly.setChecked(Proxy.isProxyForWifiOnly(this));
+        mProxyWifiOnly.setChecked(Proxy.isProxyForWifiOn(this));
         
         Intent intent = getIntent();
 
@@ -250,7 +250,7 @@ public class ProxySelector extends Activity
             hostname += ':' + portStr;
         }
         Settings.Secure.putString(res, Settings.Secure.HTTP_PROXY, hostname);
-        Settings.Secure.putInt(res, Settings.Secure.HTTP_PROXY_WIFI_ONLY,
+        Settings.Secure.putInt(res, Settings.Secure.HTTP_PROXY_WIFI_ON,
                 mProxyWifiOnly.isChecked() ? 1 : 0);
         sendBroadcast(new Intent(Proxy.PROXY_CHANGE_ACTION));
 
