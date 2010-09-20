@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:paddingTop="2dip"
+    android:paddingBottom="2dip"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+        <ImageView android:id="@+id/appwidgetpicker_imageview"
+            android:layout_marginLeft="10dip"
+            android:layout_marginTop="2dip"
+            android:layout_marginBottom="2dip"
+            android:src="@drawable/icon"
+            android:layout_width="48dip" android:layout_height="48dip" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/appwidgetpicker_imageview"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dip"
+            android:layout_marginTop="2dip"
+            android:layout_marginBottom="2dip"
+            android:orientation="vertical">
+            <TextView android:id="@+id/appwidgetpicker_textview"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textSize="20dip" />
+            <TextView android:id="@+id/appwidgetpicker_count"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13dip"
+                android:textColor="#000" />
+        </LinearLayout>
+</RelativeLayout>
