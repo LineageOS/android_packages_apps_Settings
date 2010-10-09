@@ -158,27 +158,17 @@ public class SoundSettings extends PreferenceActivity implements
         if (amberGreenLight) {
             mSoundSettings.removePreference(mNotificationPulse);
 
-            try {
-                mNotificationBlink.setChecked(Settings.System.getInt(resolver,
-                        Settings.System.NOTIFICATION_LIGHT_BLINK) == 1);
-                mNotificationBlink.setOnPreferenceChangeListener(this);
-            } catch (SettingNotFoundException snfe) {
-                Log.e(TAG, Settings.System.NOTIFICATION_LIGHT_BLINK + " not found");
-            }
-            try {
-                mNotificationAlwaysOn.setChecked(Settings.System.getInt(resolver,
-                        Settings.System.NOTIFICATION_LIGHT_ALWAYS_ON) == 1);
-                mNotificationAlwaysOn.setOnPreferenceChangeListener(this);
-            } catch (SettingNotFoundException snfe) {
-                Log.e(TAG, Settings.System.NOTIFICATION_LIGHT_ALWAYS_ON + " not found");
-            }
-            try {
-                mNotificationCharging.setChecked(Settings.System.getInt(resolver,
-                        Settings.System.NOTIFICATION_LIGHT_CHARGING) == 1);
-                mNotificationCharging.setOnPreferenceChangeListener(this);
-            } catch (SettingNotFoundException snfe) {
-                Log.e(TAG, Settings.System.NOTIFICATION_LIGHT_CHARGING + " not found");
-            }
+            mNotificationBlink.setChecked(Settings.System.getInt(resolver,
+                    Settings.System.NOTIFICATION_LIGHT_BLINK, 1) == 1);
+            mNotificationBlink.setOnPreferenceChangeListener(this);
+
+            mNotificationAlwaysOn.setChecked(Settings.System.getInt(resolver,
+                    Settings.System.NOTIFICATION_LIGHT_ALWAYS_ON, 1) == 1);
+            mNotificationAlwaysOn.setOnPreferenceChangeListener(this);
+
+            mNotificationCharging.setChecked(Settings.System.getInt(resolver,
+                    Settings.System.NOTIFICATION_LIGHT_CHARGING, 1) == 1);
+            mNotificationCharging.setOnPreferenceChangeListener(this);
 
         } else {
             mSoundSettings.removePreference(mNotificationBlink);
