@@ -409,6 +409,8 @@
     <string name="vibrate_in_silent_summary" msgid="3312600513070076281">"静音模式下允许振动反馈"</string>
     <string name="vibrate_title" msgid="6045820877942801599">"振动"</string>
     <string name="vibrate_summary" msgid="7378130397830790458">"在接到电话和通知时发出振动反馈"</string>
+    <string name="volume_control_silent_title">静音状态</string>
+    <string name="volume_control_silent_summary">在音量控制中添加一个完全静音的状态</string>
     <string name="notification_sound_title" msgid="6316316069880531693">"通知铃声"</string>
     <string name="notification_sound_summary" msgid="2953599929394109819"></string>
     <string name="notification_pulse_title" msgid="1247988024534030629">"闪动通知指示灯"</string>
@@ -665,6 +667,17 @@
     <string name="lockpattern_settings_help_how_to_record" msgid="2614673439060830433">"如何绘制解锁图案"</string>
     <string name="lockpattern_too_many_failed_confirmation_attempts_header" msgid="819903817323783498">"错误的尝试次数过多！"</string>
     <string name="lockpattern_too_many_failed_confirmation_attempts_footer" msgid="6759029360597122873">"<xliff:g id="NUMBER">%d</xliff:g> 秒后重试。"</string>
+
+    <string name="lockpattern_settings_enable_visible_dots_title">使用可见的点</string>
+    <string name="lockpattern_settings_show_error_path">显示出错的路径</string>
+    <string name="lockpattern_settings_show_unlock_msg">显示解锁信息</string>
+    <string name="lockpattern_settings_show_unlock_error_msg">显示解锁错误信息</string>
+    <string name="lockpattern_settings_show_custom_msg">显示自定义信息</string>
+    <string name="lockpattern_settings_custom_msg">自定义信息</string>
+    <string name="lockpattern_settings_custom_msg_dialog">输入自定义信息</string>
+    <string name="lockpattern_settings_custom_msg_color">自定义信息颜色</string>
+    <string name="lockpattern_settings_incorrect_delay_title">设置错误路径显示时间</string>
+
     <string name="skip_button_label" msgid="8680422740354436943">"取消"</string>
     <string name="next_button_label" msgid="8890792540116568321">"下一步"</string>
     <string name="lock_title" msgid="4059246467204273930">"手机安全设置"</string>
@@ -753,6 +766,17 @@
     <string name="service_background_processes" msgid="5158600475629177758">"可用：<xliff:g id="FREE">%2$s</xliff:g>+<xliff:g id="MEMORY">%3$s</xliff:g>，合计 <xliff:g id="COUNT">%1$d</xliff:g>"</string>
     <string name="service_foreground_processes" msgid="4013890350284680796">"其他：<xliff:g id="MEMORY">%2$s</xliff:g>，合计 <xliff:g id="COUNT">%1$d</xliff:g>"</string>
     <string name="service_process_name" msgid="8630408984456958400">"进程：<xliff:g id="PROCESS">%1$s</xliff:g>"</string>
+
+    <!-- Permission settings -->
+    <!-- Title of permission settings Screen -->
+    <string name="permission_settings_title">显示权限</string>
+    <!-- Summary of permission settings Screen -->
+    <string name="permission_settings_summary">显示一个权限列表，以及哪些应用正在它们</string>
+    <!-- Loading text displayed while loading permissions -->
+    <string name="permission_settings_loading">正在载入</string>
+    <!-- Text displayed on Refresh Menu option -->
+    <string name="permission_settings_refresh">刷新列表</string>
+
     <string name="language_settings" msgid="502219872342167227">"语言和键盘"</string>
     <string name="language_keyboard_settings_title" msgid="3455826933385341107">"语言和键盘设置"</string>
     <string name="language_settings_summary" msgid="595647729475399987">"设置语言区域（语言和区域）、文字输入和自动更正选项"</string>
@@ -802,8 +826,12 @@
     <string name="builtin_keyboard_settings_summary" msgid="6404687907454621637">"内置键盘设置"</string>
     <string name="development_settings_title" msgid="6719732334835420989">"开发"</string>
     <string name="development_settings_summary" msgid="2151320488701538355">"设置应用程序开发选项"</string>
+    <string name="kill_app_longpress_back">长按键来关闭应用程序</string>
+    <string name="kill_app_longpress_back_summary">长按 BACK 键来杀掉当前的程序</string>
     <string name="enable_adb" msgid="7982306934419797485">"USB 调试"</string>
     <string name="enable_adb_summary" msgid="4881186971746056635">"连接 USB 后启用调试模式"</string>
+    <string name="adb_notify">USB 调试通知</string>
+    <string name="adb_notify_summary">USB 调试连接后显示一个通知</string>
     <string name="keep_screen_on" msgid="1146389631208760344">"保持唤醒状态"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"充电时屏幕不会休眠"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"允许模拟地点"</string>
@@ -1095,6 +1123,11 @@
     <string name="sound_category_calls_title" msgid="3688531959256239012">"来电"</string>
     <string name="sound_category_notification_title" msgid="3502115998790286943">"通知"</string>
     <string name="sound_category_feedback_title" msgid="4399742321363475393">"反馈"</string>
+
+    <!-- Proxy settings -->
+    <string name="proxy_setting">代理设置</string>
+    <string name="proxy_setting_summary">配置访问互联网的代理服务器</string>
+    <string name="proxy_wifi_on">在 WIFI 上也使用代理</string>
 
     <!-- CyanogenMod -->
     <string name="cm_settings_title">CyanogenMod 设置</string>
