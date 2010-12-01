@@ -34,6 +34,7 @@ import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.text.format.Formatter;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -319,7 +320,7 @@ class WifiDialog extends AlertDialog implements View.OnClickListener,
             if (mAccessPoint != null && mAccessPoint.networkId != -1) {
                 WifiConfiguration config = mAccessPoint.getConfig();
                 setSelection(mEapMethod, config.eap.value());
-                setSelection(mPhase2, config.phase2.value());
+                setSelection(mPhase2, config.phase2.value().substring(5));
                 setCertificate(mEapCaCert, Credentials.CA_CERTIFICATE,
                         config.ca_cert.value());
                 setCertificate(mEapUserCert, Credentials.USER_PRIVATE_KEY,
