@@ -71,7 +71,7 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 			"com.android.settings",
 			"com.android.settings.widget.SettingsAppWidgetProvider");
 
-	private static final boolean DEBUG=true;
+	private static final boolean DEBUG=false;
 
 	//New version that allows moving button position. Increase the WIDGET_PRESENT "version"
 	public static final int WIDGET_PRESENT = 3; 
@@ -273,7 +273,8 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 	public void onReceive(Context context, Intent intent) {
 		logD(">> onReceive IN");		
 		super.onReceive(context, intent);
-		if (WifiManager.WIFI_STATE_CHANGED_ACTION.equals(intent.getAction())) {
+		if ("net.cactii.flash2.TORCH_STATE_CHANGED".equals(intent.getAction())) {
+		} else if (WifiManager.WIFI_STATE_CHANGED_ACTION.equals(intent.getAction())) {
 			logD("Received Wifi state change");
 			WifiButton.getInstance().onReceive(context, intent);
 		} else if (WifiManager.WIFI_AP_STATE_CHANGED_ACTION.equals(intent.getAction())) {

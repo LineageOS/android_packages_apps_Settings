@@ -1,8 +1,20 @@
 package com.android.settings.widget.buttons;
 
+import java.util.List;
+
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.database.ContentObserver;
+import android.net.Uri;
+import android.os.Handler;
+import android.provider.Settings;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.android.settings.R;
 import com.android.settings.widget.FlashlightActivity;
@@ -11,43 +23,50 @@ import com.android.settings.widget.WidgetSettings;
 
 public class FlashlightButton extends WidgetButton {
 
-	static FlashlightButton ownButton=null;
+    static FlashlightButton ownButton=null;
+    Context mContext;
 
-	public void updateState(Context context,
-			SharedPreferences globalPreferences, int[] appWidgetIds) {
-		
-		currentIcon=R.drawable.ic_appwidget_settings_flashlight_off;
-		currentState=SettingsAppWidgetProvider.STATE_DISABLED;					
-	}
-	
-	/**
-	 * Toggles the state 
-	 * 
-	 * @param context
-	 */
-	public void toggleState(Context context) {
-			toogleViaScreen(context);
-	}
+    public void updateState(Context context,
+            SharedPreferences globalPreferences, int[] appWidgetIds) {
+        mContext = context;
+        if (getFlashlightEnabled()) {
+            currentIcon=R.drawable.ic_appwidget_settings_flashlight_on;
+            currentState=SettingsAppWidgetProvider.STATE_ENABLED;
+        } else {
+            currentIcon=R.drawable.ic_appwidget_settings_flashlight_off;
+            currentState=SettingsAppWidgetProvider.STATE_DISABLED;
+        }
+    }
 
-	private void toogleViaScreen(Context context) {
-		Intent intent = new Intent(context, FlashlightActivity.class);
-		intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);			
-		context.startActivity(intent);
-	}
 
-	public static FlashlightButton getInstance() {
-		if (ownButton==null)
-			ownButton = new FlashlightButton();
+    public void toggleState(Context context) {
+        PackageManager pm = mContext.getPackageManager();
+        List<ResolveInfo> l = pm.queryBroadcastReceivers(new Intent("net.cactii.flash2.TOGGLE_FLASHLIGHT"), 0);
+        if (!l.isEmpty()) {
+            mContext.sendBroadcast(new Intent("net.cactii.flash2.TOGGLE_FLASHLIGHT"));
+        } else {
+            Intent intent = new Intent(context, FlashlightActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        }
+    }
 
-		return ownButton;
-	}
+    public static FlashlightButton getInstance() {
+        if (ownButton==null)
+            ownButton = new FlashlightButton();
+        return ownButton;
+    }
 
-	@Override
-	void initButton() {
-		buttonID=WidgetButton.BUTTON_FLASHLIGHT;
-		preferenceName=WidgetSettings.TOGGLE_FLASHLIGHT;
-	}
+    public boolean getFlashlightEnabled() {
+        return Settings.System.getInt(mContext.getContentResolver(), Settings.System.TORCH_STATE, 0) == 1;
+    }
+
+    @Override
+    void initButton() {
+        buttonID=WidgetButton.BUTTON_FLASHLIGHT;
+        preferenceName=WidgetSettings.TOGGLE_FLASHLIGHT;
+    }
+
 
 }
-
