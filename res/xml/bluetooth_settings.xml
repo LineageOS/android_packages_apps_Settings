@@ -32,6 +32,13 @@
         android:persistent="false"
         android:singleLine="true" />
 
+    <ListPreference
+            android:key="bt_discoverable_duration"
+            android:title="@string/bluetooth_discoverable_duration_title"
+            android:summary="@string/bluetooth_discoverable_duration_summary"
+            android:entries="@array/bluetooth_discoverable_duration_entries"
+            android:entryValues="@array/bluetooth_discoverable_duration_values" />
+
     <CheckBoxPreference
         android:key="bt_discoverable"
         android:title="@string/bluetooth_visibility"

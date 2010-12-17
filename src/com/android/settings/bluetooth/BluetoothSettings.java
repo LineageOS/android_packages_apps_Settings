@@ -31,9 +31,11 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.ParcelUuid;
 import android.preference.CheckBoxPreference;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
+import android.provider.Settings;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
@@ -48,11 +50,13 @@ import java.util.WeakHashMap;
  * connection management.
  */
 public class BluetoothSettings extends PreferenceActivity
-        implements LocalBluetoothManager.Callback {
+        implements LocalBluetoothManager.Callback,
+                   Preference.OnPreferenceChangeListener {
 
     private static final String TAG = "BluetoothSettings";
 
     private static final String KEY_BT_CHECKBOX = "bt_checkbox";
+    private static final String KEY_BT_DISCOVERABLE_DURATION = "bt_discoverable_duration";
     private static final String KEY_BT_DISCOVERABLE = "bt_discoverable";
     private static final String KEY_BT_DEVICE_LIST = "bt_device_list";
     private static final String KEY_BT_NAME = "bt_name";
@@ -73,6 +77,8 @@ public class BluetoothSettings extends PreferenceActivity
 
     private BluetoothEnabler mEnabler;
     private BluetoothDiscoverableEnabler mDiscoverableEnabler;
+
+    private ListPreference mDiscoverableDurationPreference;
 
     private BluetoothNamePreference mNamePreference;
 
@@ -141,6 +147,10 @@ public class BluetoothSettings extends PreferenceActivity
                     this,
                     (CheckBoxPreference) findPreference(KEY_BT_CHECKBOX));
 
+            mDiscoverableDurationPreference = (ListPreference)
+                    findPreference(KEY_BT_DISCOVERABLE_DURATION);
+            mDiscoverableDurationPreference.setOnPreferenceChangeListener(this);
+
             mDiscoverableEnabler = new BluetoothDiscoverableEnabler(
                     this,
                     (CheckBoxPreference) findPreference(KEY_BT_DISCOVERABLE));
@@ -169,6 +179,7 @@ public class BluetoothSettings extends PreferenceActivity
             mEnabler.resume();
             mDiscoverableEnabler.resume();
             mNamePreference.resume();
+            updateDiscoverableDurationPreferenceState();
         }
 
         mLocalManager.registerCallback(this);
@@ -362,5 +373,25 @@ public class BluetoothSettings extends PreferenceActivity
         }
         intent.putExtra(BluetoothDevice.EXTRA_DEVICE, device);
         sendBroadcast(intent);
+    }
+
+    public boolean onPreferenceChange(Preference preference, Object objValue) {
+        if (preference == mDiscoverableDurationPreference) {
+           int value = Integer.parseInt(objValue.toString());
+           Settings.System.putInt(getContentResolver(),
+                   Settings.System.BLUETOOTH_DISCOVERABILITY_TIMEOUT, value);
+            updateDiscoverableDurationPreferenceState();
+        }
+
+        return true;
+    }
+
+    private void updateDiscoverableDurationPreferenceState() {
+        int timeout = Settings.System.getInt(
+                getContentResolver(),
+                Settings.System.BLUETOOTH_DISCOVERABILITY_TIMEOUT,
+                BluetoothDiscoverableEnabler.DEFAULT_DISCOVERABLE_TIMEOUT);
+        mDiscoverableDurationPreference.setValue(String.valueOf(timeout));
+        mDiscoverableDurationPreference.setSummary(mDiscoverableDurationPreference.getEntry());
     }
 }

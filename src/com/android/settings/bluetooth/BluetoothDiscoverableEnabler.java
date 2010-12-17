@@ -28,6 +28,7 @@ import android.os.Handler;
 import android.os.SystemProperties;
 import android.preference.Preference;
 import android.preference.CheckBoxPreference;
+import android.provider.Settings;
 
 /**
  * BluetoothDiscoverableEnabler is a helper to manage the "Discoverable"
@@ -126,17 +127,20 @@ public class BluetoothDiscoverableEnabler implements Preference.OnPreferenceChan
             long endTimestamp = System.currentTimeMillis() + timeout * 1000;
             persistDiscoverableEndTimestamp(endTimestamp);
 
-            manager.setScanMode(BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE);
+            manager.setScanMode(BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE, timeout);
         } else {
             manager.setScanMode(BluetoothAdapter.SCAN_MODE_CONNECTABLE);
         }
     }
 
     private int getDiscoverableTimeout() {
-        int timeout = SystemProperties.getInt(SYSTEM_PROPERTY_DISCOVERABLE_TIMEOUT, -1);
-        if (timeout <= 0) {
+        int timeout = Settings.System.getInt(
+                mContext.getContentResolver(),
+                Settings.System.BLUETOOTH_DISCOVERABILITY_TIMEOUT, -1);
+        if (timeout < 0) {
             timeout = DEFAULT_DISCOVERABLE_TIMEOUT;
         }
+
 
         return timeout;
     }
