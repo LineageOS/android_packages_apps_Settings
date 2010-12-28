@@ -14,10 +14,18 @@
      limitations under the License.
 -->
 
-<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
-    android:minWidth="294dip"
-    android:minHeight="72dip"
-    android:initialLayout="@layout/widget_loading"
-    android:configure="com.android.settings.widget.WidgetSettings"    
-    >
-</appwidget-provider>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@drawable/appwidget_bg" >
+    
+	<TextView android:id="@+id/loading"
+	 android:text="@string/notConfigured"
+	 android:layout_width="wrap_content"
+	 android:layout_height="wrap_content"
+	/>
+
+
+</LinearLayout>

@@ -41,6 +41,7 @@
     <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
     <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.MOVE_PACKAGE" />
+    <uses-permission android:name="com.android.phone.CHANGE_NETWORK_MODE" />
 
     <application android:label="@string/settings_label"
             android:icon="@drawable/ic_launcher_settings"
@@ -816,13 +817,34 @@
             </intent-filter>
         </activity>
 
+  		<activity
+      		android:name="com.android.settings.widget.FlashlightActivity"
+      		android:label="@string/gadget_title">
+		</activity>
+
+  		<activity
+      		android:name="com.android.settings.widget.WidgetSettings"
+      		android:label="@string/gadget_title">
+	      <intent-filter>
+    	      <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+          </intent-filter>
+		</activity>
+
         <receiver android:name=".widget.SettingsAppWidgetProvider"
-                android:label="@string/gadget_title" android:exported="false">
+                android:label="@string/gadget_title">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+                <action android:name="android.net.wifi.WIFI_AP_STATE_CHANGED" />
                 <action android:name="android.net.conn.BACKGROUND_DATA_SETTING_CHANGED" />
                 <action android:name="android.bluetooth.adapter.action.STATE_CHANGED" />
+                <action android:name="com.android.internal.telephony.NETWORK_MODE_CHANGED" />
+                <action android:name="com.android.internal.telephony.MOBILE_DATA_CHANGED" />
+                <action android:name="com.android.settings.GPS_STATUS_CHANGED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+                <action android:name="net.cactii.flash2.TORCH_STATE_CHANGED" />
                 <action android:name="android.location.PROVIDERS_CHANGED" />
                 <action android:name="com.android.sync.SYNC_CONN_STATUS_CHANGED" />
             </intent-filter>

@@ -19,7 +19,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="@drawable/appwidget_bg" >
+    android:background="@null" >
 
     <LinearLayout
         android:id="@+id/btn_w1"
@@ -268,7 +268,7 @@
         android:background="@drawable/appwidget_settings_divider"
         />
 
-    <LinearLayout
+	<LinearLayout
         android:id="@+id/btn_w8"
         android:layout_width="0dip"
         android:layout_weight="1"
@@ -364,5 +364,5 @@
             android:scaleType="fitXY"
             />
     </LinearLayout>
-
+	
 </LinearLayout>
