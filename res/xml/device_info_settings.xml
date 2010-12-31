@@ -4,9 +4,9 @@
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
      You may obtain a copy of the License at
-  
+
           http://www.apache.org/licenses/LICENSE-2.0
-  
+
      Unless required by applicable law or agreed to in writing, software
      distributed under the License is distributed on an "AS IS" BASIS,
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -19,13 +19,13 @@
 
         <!-- Device status - launches activity -->
         <PreferenceScreen android:key="status_info"
-                android:title="@string/device_status" 
+                android:title="@string/device_status"
                 android:summary="@string/device_status_summary">
             <intent android:action="android.intent.action.MAIN"
                     android:targetPackage="com.android.settings"
                     android:targetClass="com.android.settings.deviceinfo.Status" />
         </PreferenceScreen>
-        
+
         <PreferenceScreen
                 android:key="power_usage"
                 android:title="@string/power_usage_summary_title"
@@ -39,7 +39,7 @@
         <PreferenceScreen
                 android:key="container"
                 android:title="@string/legal_information">
-                    
+
             <!-- Note: The titles given here probably won't be used.  Instead, we programmatically
                        fill the title with the label of the activity with the corresponding action.
                        If there is not an activity for an action, the item will be removed from the
@@ -67,7 +67,7 @@
             </PreferenceScreen>
 
         </PreferenceScreen>
-        
+
         <PreferenceScreen
                 android:key="safetylegal"
                 android:title="@string/settings_safetylegal_title">
@@ -75,7 +75,7 @@
         </PreferenceScreen>
 
         <!-- Contributors -->
-        <!-- 
+        <!--
         <PreferenceScreen
                 android:key="contributors"
                 android:title="@string/contributors_title">
@@ -84,31 +84,43 @@
         -->
         <!-- System Tutorial - launches activity -->
         <PreferenceScreen android:key="system_tutorial"
-                android:title="@string/system_tutorial_list_item_title" 
+                android:title="@string/system_tutorial_list_item_title"
                 android:summary="@string/system_tutorial_list_item_summary">
             <intent android:action="android.intent.action.SYSTEM_TUTORIAL" />
         </PreferenceScreen>
-        
+
+        <!-- Device cpu info -->
+        <Preference android:key="device_cpu"
+                style="?android:preferenceInformationStyle"
+                android:title="@string/cpu_info"
+                android:summary="@string/device_info_default"/>
+
+        <!-- Device mem info -->
+        <Preference android:key="device_memory"
+                style="?android:preferenceInformationStyle"
+                android:title="@string/mem_info"
+                android:summary="@string/device_info_default"/>
+
         <!-- Device hardware model -->
-        <Preference android:key="device_model" 
+        <Preference android:key="device_model"
                 style="?android:preferenceInformationStyle"
                 android:title="@string/model_number"
                 android:summary="@string/device_info_default"/>
-                
+
         <!-- Device firmware version -->
-        <Preference android:key="firmware_version" 
+        <Preference android:key="firmware_version"
                 style="?android:preferenceInformationStyle"
                 android:title="@string/firmware_version"
                 android:summary="@string/device_info_default"/>
-                
+
         <!-- Device Baseband version -->
-        <Preference android:key="baseband_version" 
+        <Preference android:key="baseband_version"
                 style="?android:preferenceInformationStyle"
                 android:title="@string/baseband_version"
                 android:summary="@string/device_info_default"/>
-        
+
         <!-- Device Kernel version -->
-        <Preference android:key="kernel_version" 
+        <Preference android:key="kernel_version"
                 style="?android:preferenceInformationStyle"
                 android:title="@string/kernel_version"
                 android:summary="@string/device_info_default"/>
@@ -121,7 +133,7 @@
 
 
         <!-- Detailed build version -->
-        <Preference android:key="build_number" 
+        <Preference android:key="build_number"
                 style="?android:preferenceInformationStyle"
                 android:title="@string/build_number"
                 android:summary="@string/device_info_default"/>

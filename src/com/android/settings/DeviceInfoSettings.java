@@ -33,8 +33,10 @@ import android.util.Log;
 import android.view.MotionEvent;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -70,6 +72,8 @@ public class DeviceInfoSettings extends PreferenceActivity {
             getPreferenceScreen().removePreference(findPreference("system_tutorial"));
         }
 
+        setStringSummary("device_cpu", getCPUInfo());
+        setStringSummary("device_memory", getMemAvail().toString()+" MB / "+getMemTotal().toString()+" MB");
         setStringSummary("firmware_version", Build.VERSION.RELEASE);
         findPreference("firmware_version").setEnabled(true);
         setValueSummary("baseband_version", "gsm.version.baseband");
@@ -156,6 +160,115 @@ public class DeviceInfoSettings extends PreferenceActivity {
         } catch (RuntimeException e) {
 
         }
+    }
+
+    private Long getMemTotal() {
+      Long total = null;
+      BufferedReader reader = null;
+
+      try {
+         // Grab a reader to /proc/meminfo
+         reader = new BufferedReader(new InputStreamReader(new FileInputStream("/proc/meminfo")), 1000);
+
+         // Grab the first line which contains mem total
+         String line = reader.readLine();
+
+         // Split line on the colon, we need info to the right of the colon
+         String[] info = line.split(":");
+
+         // We have to remove the kb on the end
+         String[] memTotal = info[1].trim().split(" ");
+
+         // Convert kb into mb
+         total = Long.parseLong(memTotal[0]);
+         total = total / 1024;
+      }
+      catch(Exception e) {
+         e.printStackTrace();
+         // We don't want to return null so default to 0
+         total = Long.parseLong("0");
+      }
+      finally {
+         // Make sure the reader is closed no matter what
+         try { reader.close(); }
+         catch(Exception e) {}
+         reader = null;
+      }
+
+      return total;
+    }
+
+    private Long getMemAvail() {
+      Long avail = null;
+      BufferedReader reader = null;
+
+      try {
+         // Grab a reader to /proc/meminfo
+         reader = new BufferedReader(new InputStreamReader(new FileInputStream("/proc/meminfo")), 1000);
+
+         // This is memTotal which we don't need
+         String line = reader.readLine();
+
+         // This is memFree which we need
+         line = reader.readLine();
+         String[] free = line.split(":");
+         // Have to remove the kb on the end
+         String [] memFree = free[1].trim().split(" ");
+
+         // This is Buffers which we don't need
+         line = reader.readLine();
+
+         // This is Cached which we need
+         line = reader.readLine();
+         String[] cached = line.split(":");
+         // Have to remove the kb on the end
+         String[] memCached = cached[1].trim().split(" ");
+
+         avail = Long.parseLong(memFree[0]) + Long.parseLong(memCached[0]);
+         avail = avail / 1024;
+      }
+      catch(Exception e) {
+         e.printStackTrace();
+         // We don't want to return null so default to 0
+         avail = Long.parseLong("0");
+      }
+      finally {
+         // Make sure the reader is closed no matter what
+         try { reader.close(); }
+         catch(Exception e) {}
+         reader = null;
+      }
+
+      return avail;
+    }
+
+   private String getCPUInfo() {
+      String[] info = null;
+      BufferedReader reader = null;
+
+      try {
+         // Grab a reader to /proc/cpuinfo
+         reader = new BufferedReader(new InputStreamReader(new FileInputStream("/proc/cpuinfo")), 1000);
+
+         // Grab a single line from cpuinfo
+         String line = reader.readLine();
+
+         // Split on the colon, we need info to the right of colon
+         info = line.split(":");
+      }
+      catch(IOException io) {
+         io.printStackTrace();
+         info = new String[1];
+         info[1] = "error";
+      }
+      finally {
+         // Make sure the reader is closed no matter what
+         try { reader.close(); }
+         catch(Exception e) {}
+         reader = null;
+      }
+
+      return info[1];
     }
 
     private String getFormattedKernelVersion() {
