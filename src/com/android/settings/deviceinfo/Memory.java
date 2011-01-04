@@ -34,10 +34,12 @@ import android.os.Environment;
 import android.os.storage.IMountService;
 import android.os.ServiceManager;
 import android.os.StatFs;
+import android.os.SystemProperties;
 import android.os.storage.StorageManager;
 import android.os.storage.StorageEventListener;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.text.format.Formatter;
@@ -47,6 +49,7 @@ import android.widget.Toast;
 import com.android.settings.R;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Memory extends PreferenceActivity implements OnCancelListener {
@@ -63,6 +66,16 @@ public class Memory extends PreferenceActivity implements OnCancelListener {
 
     private static final String MEMORY_SD_GROUP = "memory_sd";
 
+    private static final String MEMORY_ADDITIONAL_CATEGORY = "memory_additional_category";
+
+    private static final String MEMORY_ADDITIONAL_SIZE = "memory_additional_size";
+
+    private static final String MEMORY_ADDITIONAL_AVAIL = "memory_additional_avail";
+
+    private static final String MEMORY_INTERNAL_SIZE = "memory_internal_size";
+
+    private static final String MEMORY_INTERNAL_AVAIL = "memory_internal_avail";
+
     private static final int DLG_CONFIRM_UNMOUNT = 1;
     private static final int DLG_ERROR_UNMOUNT = 2;
 
@@ -75,11 +88,28 @@ public class Memory extends PreferenceActivity implements OnCancelListener {
     private PreferenceGroup mSdMountPreferenceGroup;
 
     boolean mSdMountToggleAdded = true;
+
+    private Preference mIntSize;
+    private Preference mIntAvail;
     
     // Access using getMountService()
     private IMountService mMountService = null;
 
     private StorageManager mStorageManager = null;
+
+    private List<String> getAdditionalVolumePaths() {
+        ArrayList<String> volumes = new ArrayList<String>();
+        String additionalVolumesProperty = SystemProperties.get("ro.additionalmounts");
+        if (null != additionalVolumesProperty) {
+            String[] additionalVolumes = additionalVolumesProperty.split(";");
+            for (String additionalVolume: additionalVolumes) {
+                if (!"".equals(additionalVolume)) {
+                    volumes.add(additionalVolume);
+                }
+            }
+        }
+        return volumes;
+    }
 
     @Override
     protected void onCreate(Bundle icicle) {
@@ -93,12 +123,36 @@ public class Memory extends PreferenceActivity implements OnCancelListener {
         addPreferencesFromResource(R.xml.device_info_memory);
         
         mRes = getResources();
+
         mSdSize = findPreference(MEMORY_SD_SIZE);
         mSdAvail = findPreference(MEMORY_SD_AVAIL);
         mSdMountToggle = findPreference(MEMORY_SD_MOUNT_TOGGLE);
         mSdFormat = findPreference(MEMORY_SD_FORMAT);
-
         mSdMountPreferenceGroup = (PreferenceGroup)findPreference(MEMORY_SD_GROUP);
+
+        mIntSize = findPreference(MEMORY_INTERNAL_SIZE);
+        mIntAvail = findPreference(MEMORY_INTERNAL_AVAIL);
+
+        for (String path: getAdditionalVolumePaths()) {
+            PreferenceCategory category = new PreferenceCategory(this);
+            category.setKey(MEMORY_ADDITIONAL_CATEGORY + path);
+            category.setTitle(mRes.getString(R.string.internal_memory) + ": " + path);
+            getPreferenceScreen().addPreference(category);
+
+            Preference size = new Preference(this, null,
+                    android.R.attr.preferenceInformationStyle);
+            size.setKey(MEMORY_ADDITIONAL_SIZE + path);
+            size.setTitle(R.string.memory_size);
+            size.setSummary(R.string.sd_unavailable);
+            category.addPreference(size);
+
+            Preference available = new Preference(this, null,
+                    android.R.attr.preferenceInformationStyle);
+            available.setKey(MEMORY_ADDITIONAL_AVAIL + path);
+            available.setTitle(R.string.memory_available);
+            available.setSummary(R.string.sd_unavailable);
+            category.addPreference(available);
+        }
     }
     
     @Override
@@ -209,8 +263,8 @@ public class Memory extends PreferenceActivity implements OnCancelListener {
         String extStoragePath = Environment.getExternalStorageDirectory().toString();
         try {
             mSdMountToggle.setEnabled(false);
-            mSdMountToggle.setTitle(mRes.getString(R.string.sd_ejecting_title));
-            mSdMountToggle.setSummary(mRes.getString(R.string.sd_ejecting_summary));
+            mSdMountToggle.setTitle(R.string.sd_ejecting_title);
+            mSdMountToggle.setSummary(R.string.sd_ejecting_summary);
             mountService.unmountVolume(extStoragePath, force);
         } catch (RemoteException e) {
             // Informative dialog to user that
@@ -296,8 +350,8 @@ public class Memory extends PreferenceActivity implements OnCancelListener {
                 mSdAvail.setSummary(formatSize(availableBlocks * blockSize) + readOnly);
 
                 mSdMountToggle.setEnabled(true);
-                mSdMountToggle.setTitle(mRes.getString(R.string.sd_eject));
-                mSdMountToggle.setSummary(mRes.getString(R.string.sd_eject_summary));
+                mSdMountToggle.setTitle(R.string.sd_eject);
+                mSdMountToggle.setSummary(R.string.sd_eject_summary);
 
             } catch (IllegalArgumentException e) {
                 // this can occur if the SD card is removed, but we haven't received the 
@@ -306,8 +360,8 @@ public class Memory extends PreferenceActivity implements OnCancelListener {
             }
             
         } else {
-            mSdSize.setSummary(mRes.getString(R.string.sd_unavailable));
-            mSdAvail.setSummary(mRes.getString(R.string.sd_unavailable));
+            mSdSize.setSummary(R.string.sd_unavailable);
+            mSdAvail.setSummary(R.string.sd_unavailable);
 
 
             if (!Environment.isExternalStorageRemovable()) {
@@ -323,20 +377,47 @@ public class Memory extends PreferenceActivity implements OnCancelListener {
                 status.equals(Environment.MEDIA_NOFS) ||
                 status.equals(Environment.MEDIA_UNMOUNTABLE) ) {
                 mSdMountToggle.setEnabled(true);
-                mSdMountToggle.setTitle(mRes.getString(R.string.sd_mount));
-                mSdMountToggle.setSummary(mRes.getString(R.string.sd_mount_summary));
+                mSdMountToggle.setTitle(R.string.sd_mount);
+                mSdMountToggle.setSummary(R.string.sd_mount_summary);
             } else {
                 mSdMountToggle.setEnabled(false);
-                mSdMountToggle.setTitle(mRes.getString(R.string.sd_mount));
-                mSdMountToggle.setSummary(mRes.getString(R.string.sd_insert_summary));
+                mSdMountToggle.setTitle(R.string.sd_mount);
+                mSdMountToggle.setSummary(R.string.sd_insert_summary);
+            }
+        }
+
+        for (String path: getAdditionalVolumePaths()) {
+            Preference size = findPreference(MEMORY_ADDITIONAL_SIZE + path);
+            Preference available = findPreference(MEMORY_ADDITIONAL_AVAIL + path);
+            if (null == size || null == available) {
+                continue;
+            }
+
+            try {
+                status = getMountService().getVolumeState(path);
+            } catch (RemoteException ex) {
+                status = Environment.MEDIA_UNMOUNTED;
+            }
+            if (status.equals(Environment.MEDIA_MOUNTED)) {
+                StatFs stat = new StatFs(path);
+                long blockSize = stat.getBlockSize();
+                long totalBlocks = stat.getBlockCount();
+                long availableBlocks = stat.getAvailableBlocks();
+                size.setSummary(formatSize(totalBlocks * blockSize));
+                available.setSummary(formatSize(availableBlocks * blockSize));
+            } else {
+                size.setSummary(R.string.sd_unavailable);
+                available.setSummary(R.string.sd_unavailable);
             }
         }
 
         File path = Environment.getDataDirectory();
         StatFs stat = new StatFs(path.getPath());
         long blockSize = stat.getBlockSize();
+        long totalBlocks = stat.getBlockCount();
         long availableBlocks = stat.getAvailableBlocks();
-        findPreference("memory_internal_avail").setSummary(formatSize(availableBlocks * blockSize));
+        mIntSize.setSummary(formatSize(totalBlocks * blockSize));
+        mIntAvail.setSummary(formatSize(availableBlocks * blockSize));
     }
     
     private String formatSize(long size) {
