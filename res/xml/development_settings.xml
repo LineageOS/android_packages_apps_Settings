@@ -155,6 +155,17 @@
             android:title="@string/adb_authorization_timeout_title"
             android:summary="@string/adb_authorization_timeout_summary" />
 
+        <org.lineageos.internal.preference.HostnamePreference
+            android:key="device_hostname"
+            android:title="@string/device_hostname"
+            android:dialogTitle="@string/device_hostname"
+            android:positiveButtonText="@string/wifi_save"
+            android:negativeButtonText="@string/wifi_cancel"
+            android:selectAllOnFocus="true"
+            android:imeOptions="actionDone"
+            android:inputType="textNoSuggestions"
+            android:persistent="false" />
+
         <SwitchPreference
             android:key="enable_terminal"
             android:title="@string/enable_terminal_title"
