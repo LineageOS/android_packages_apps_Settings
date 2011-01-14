@@ -43,4 +43,15 @@
         android:title="@string/kill_app_longpress_back"
         android:summary="@string/kill_app_longpress_back_summary" />
 
+    <com.android.settings.HostnamePreference
+        android:key="device_hostname"
+        android:title="@string/device_hostname"
+        android:dialogTitle="@string/device_hostname"
+        android:positiveButtonText="@string/hostname_save"
+        android:negativeButtonText="@string/hostname_cancel"
+        android:selectAllOnFocus="true"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        android:persistent="false" />
+
 </PreferenceScreen>
