@@ -214,6 +214,7 @@
     <string name="settings_shortcut" msgid="3672145147925639262">"Einstellungen"</string>
     <string name="airplane_mode" msgid="8837269988154128601">"Flugmodus"</string>
     <string name="airplane_mode_summary" msgid="3154817401368780988">"Alle drahtlosen Verbindungen deaktivieren"</string>
+    <string name="device_hostname">Gerätename</string>
     <string name="airplane_mode_turning_on" msgid="8871739222526957255">"Drahtlosverbindungen werden deaktiviert..."</string>
     <string name="airplane_mode_turning_off" msgid="3393168549611505996">"Drahtlosverbindungen werden aktiviert..."</string>
     <string name="radio_controls_title" msgid="5868688473587168882">"Drahtlos &amp; Netzwerke"</string>
@@ -338,6 +339,13 @@
     <!-- no translation found for nfc_toggle_error (2233172102497535522) -->
     <!-- no translation found for nfc_toggle_error (8998642457947607263) -->
     <skip />
+
+    <!-- Hostname Settings -->
+    <!-- Button when saving a device hostname -->
+    <string name="hostname_save">Speichern</string>
+    <!-- Button when cancelling hostname change -->
+    <string name="hostname_cancel">Abbrechen</string>
+
     <string name="wifi_quick_toggle_title" msgid="874495178395350104">"WLAN"</string>
     <string name="wifi_quick_toggle_summary" msgid="1047950931623694366">"WLAN aktivieren"</string>
     <string name="wifi_settings" msgid="4746946030627213196">"WLAN-Einstellungen"</string>
@@ -503,11 +511,15 @@
     <string name="device_info_settings" msgid="475872867864762157">"Telefonstatus"</string>
     <string name="system_update_settings_list_item_title" msgid="3342887311059985961">"Systemaktualisierungen"</string>
     <string name="system_update_settings_list_item_summary" msgid="3853057315907710747"></string>
+    <string name="cpu_info">CPU-Information</string>
+    <string name="mem_info">Speicher (verfüg./insg.)</string>
     <string name="firmware_version" msgid="4801135784886859972">"Android-Version"</string>
     <string name="model_number" msgid="3765737700545384794">"Modellnummer"</string>
     <string name="baseband_version" msgid="1848990160763524801">"Baseband-Version"</string>
     <string name="kernel_version" msgid="9192574954196167602">"Kernel-Version"</string>
     <string name="build_number" msgid="3075795840572241758">"Build-Nummer"</string>
+    <string name="mod_version">Mod-Version</string>
+    <string name="mod_version_default">Unbekannt</string>
     <string name="device_info_not_available" msgid="8062521887156825182">"Nicht verfügbar"</string>
     <string name="device_status_activity_title" msgid="1411201799384697904">"Status"</string>
     <string name="device_status" msgid="607405385799807324">"Status"</string>
@@ -873,10 +885,14 @@
     <string name="development_settings_summary" msgid="2151320488701538355">"Optionen zur Anwendungsentwicklung festlegen"</string>
     <string name="enable_adb" msgid="7982306934419797485">"USB-Debugging"</string>
     <string name="enable_adb_summary" msgid="4881186971746056635">"Debugmodus bei Anschluss über USB"</string>
+    <string name="adb_notify">USB-Debugging Benachrichtigung</string>
+    <string name="adb_notify_summary">Zeige Benachrichtigung, wenn USB-Debugging verbunden ist</string>
     <string name="keep_screen_on" msgid="1146389631208760344">"Aktiv lassen"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"Display wird beim Laden nie in den Ruhezustand versetzt"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"Falsche Standorte"</string>
     <string name="allow_mock_location_summary" msgid="317615105156345626">"Falsche Standorte zulassen"</string>
+    <string name="kill_app_longpress_back">App beenden</string>
+    <string name="kill_app_longpress_back_summary">Gedrückthalten der Zurück-Taste beendet die Anwendung im Vordergrund.</string>
     <string name="adb_warning_title" msgid="6234463310896563253">"USB-Debugging zulassen?"</string>
     <string name="adb_warning_message" msgid="5352555112049663033">"USB-Debugging ist nur für Entwicklungszwecke vorgesehen. Damit können Sie Daten zwischen Ihrem Computer und Ihrem Gerät kopieren, Anwendungen auf Ihrem Gerät ohne Benachrichtigung installieren und Protokolldaten lesen."</string>
     <string name="gadget_picker_title" msgid="98374951396755811">"Gadget auswählen"</string>
@@ -1162,4 +1178,9 @@
     <string name="sound_category_calls_title" msgid="3688531959256239012">"Eingehende Anrufe"</string>
     <string name="sound_category_notification_title" msgid="3502115998790286943">"Benachrichtigungen"</string>
     <string name="sound_category_feedback_title" msgid="4399742321363475393">"Feedback"</string>
+
+    <!-- Widget Picker -->
+    <string name="widget_count">(%d Widgets)</string>
+
+    <string name="cm_settings_title">CyanogenMod</string>
 </resources>
