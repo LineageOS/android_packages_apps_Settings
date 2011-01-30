@@ -214,6 +214,7 @@
     <string name="settings_shortcut" msgid="3672145147925639262">"Ustawienia"</string>
     <string name="airplane_mode" msgid="8837269988154128601">"Tryb samolotowy"</string>
     <string name="airplane_mode_summary" msgid="3154817401368780988">"Wyłącz wszystkie połączenia bezprzewodowe"</string>
+    <string name="device_hostname">Nazwa hosta</string>
     <string name="airplane_mode_turning_on" msgid="8871739222526957255">"Wyłączanie połączeń bezprzewodowych..."</string>
     <string name="airplane_mode_turning_off" msgid="3393168549611505996">"Włączanie połączeń bezprzewodowych..."</string>
     <string name="radio_controls_title" msgid="5868688473587168882">"Sieci zwykłe i bezprzewodowe"</string>
@@ -503,11 +504,15 @@
     <string name="device_info_settings" msgid="475872867864762157">"Stan telefonu"</string>
     <string name="system_update_settings_list_item_title" msgid="3342887311059985961">"Aktualizacje systemowe"</string>
     <string name="system_update_settings_list_item_summary" msgid="3853057315907710747"></string>
+    <string name="cpu_info">Informacje o procesorze</string>
+    <string name="mem_info">Pamięć RAM (dost./całk.)</string>
     <string name="firmware_version" msgid="4801135784886859972">"Wersja systemu Android"</string>
     <string name="model_number" msgid="3765737700545384794">"Numer modelu"</string>
     <string name="baseband_version" msgid="1848990160763524801">"Wersja pasma podstawowego"</string>
     <string name="kernel_version" msgid="9192574954196167602">"Wersja jądra"</string>
     <string name="build_number" msgid="3075795840572241758">"Numer kompilacji"</string>
+    <string name="mod_version">Wersja modyfikacji</string>
+    <string name="mod_version_default">Nieznana</string>
     <string name="device_info_not_available" msgid="8062521887156825182">"Niedostępna"</string>
     <string name="device_status_activity_title" msgid="1411201799384697904">"Informacje o telefonie"</string>
     <string name="device_status" msgid="607405385799807324">"Informacje o telefonie"</string>
@@ -873,10 +878,14 @@
     <string name="development_settings_summary" msgid="2151320488701538355">"Ustaw opcje związane z programowaniem aplikacji"</string>
     <string name="enable_adb" msgid="7982306934419797485">"Debugowanie USB"</string>
     <string name="enable_adb_summary" msgid="4881186971746056635">"Tryb debugowania, gdy podłączone jest USB"</string>
+    <string name="adb_notify">Powiadomienie o debugowaniu</string>
+    <string name="adb_notify_summary">Wyświetl powiadomienie, gdy aktywny jest tryb debugowania</string>
     <string name="keep_screen_on" msgid="1146389631208760344">"Zostaw włączony"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"Ekran nie będzie gaszony podczas ładowania telefonu"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"Pozorowanie lokalizacji"</string>
     <string name="allow_mock_location_summary" msgid="317615105156345626">"Zezwalaj na pozorowanie lokalizacji"</string>
+    <string name="kill_app_longpress_back">Zatrzymaj aplikację przyciskiem wstecz</string>
+    <string name="kill_app_longpress_back_summary">Przytrzymanie przycisku wstecz spowoduje zabicie wyświetlanej aplikacji</string>
     <string name="adb_warning_title" msgid="6234463310896563253">"Czy zezwalać na debugowanie USB?"</string>
     <string name="adb_warning_message" msgid="5352555112049663033">"Debugowanie USB jest przeznaczone wyłącznie do celów programistycznych. Może posłużyć do kopiowania danych między komputerem a urządzeniem, instalowania aplikacji w urządzeniu bez powiadamiania, a także odczytywania danych dziennika."</string>
     <string name="gadget_picker_title" msgid="98374951396755811">"Wybierz gadżet"</string>
@@ -1226,8 +1235,8 @@
     <string name="useRoundCornersDescription">Użyj zaokrąglonych ikon</string>
     <string name="useTransparentDescription">Brak tła</string>
     <string name="useVerticalDescription">Orientacja pionowa</string>
-    <string name="autoEnableSyncWithWifiDescription">Włącz synchronizację kied WiFi jest włączone</string>
-    <string name="autoDisableSyncWithWifiDescription">Wyłącz synchronizację kied WiFi jest wyłączone</string>
+    <string name="autoEnableSyncWithWifiDescription">Włącz synchronizację kiedy WiFi jest włączone</string>
+    <string name="autoDisableSyncWithWifiDescription">Wyłącz synchronizację kiedy WiFi jest wyłączone</string>
     <string name="ringModeVibrateAsOnDescription">Pokaż dźwięk jako włączony przy samych wibracjach</string>
     <string name="monitorDataRoamingDescription">Status internetu czerwony podczas roamingu</string>
     <string name="autoEnableBluetoothWithPowerDescription">Bluetooth włączony, gdy zasilanie podłączone</string>
@@ -1247,7 +1256,7 @@
 
 
     <!-- Widget Picker -->
-    <string name="widget_count">(%d widgetów)</string>
+    <string name="widget_count">(%d widżetów)</string>
 
     <string name="cm_settings_title">Ustawienia CyanogenMod</string>
 </resources>
