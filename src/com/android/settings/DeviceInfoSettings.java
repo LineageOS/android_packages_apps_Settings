@@ -81,7 +81,8 @@ public class DeviceInfoSettings extends PreferenceActivity {
         setStringSummary("build_number", Build.DISPLAY);
         findPreference("kernel_version").setSummary(getFormattedKernelVersion());
         setValueSummary("mod_version", "ro.modversion");
-
+        findPreference("mod_version").setEnabled(true);
+        
         // Remove Safety information preference if PROPERTY_URL_SAFETYLEGAL is not set
         removePreferenceIfPropertyMissing(getPreferenceScreen(), "safetylegal",
                 PROPERTY_URL_SAFETYLEGAL);
@@ -113,13 +114,17 @@ public class DeviceInfoSettings extends PreferenceActivity {
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        if (preference.getKey().equals("firmware_version")) {
+        if (preference.getKey().equals("firmware_version")
+                || preference.getKey().equals("mod_version")) {
             System.arraycopy(mHits, 1, mHits, 0, mHits.length-1);
             mHits[mHits.length-1] = SystemClock.uptimeMillis();
             if (mHits[0] >= (SystemClock.uptimeMillis()-500)) {
                 Intent intent = new Intent(Intent.ACTION_MAIN);
                 intent.setClassName("android",
                         com.android.internal.app.PlatLogoActivity.class.getName());
+                if (preference.getKey().equals("mod_version")) {
+                    intent.putExtra("special", true);
+                }
                 try {
                     startActivity(intent);
                 } catch (Exception e) {
