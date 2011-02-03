@@ -154,4 +154,52 @@
     <item msgid="1276641209451816572">"Только в режиме без звука"</item>
     <item msgid="8418930333779132418">"Только не в режиме без звука"</item>
   </string-array>
+	<!-- Match with constants in BatteryHistory class -->
+     <string-array name="battery_history_type_spinner">
+        <item>Использование ЦП</item>
+        <item>Использование сети</item>
+        <item>Использование GPS</item>
+        <item>Использование сенсора</item>
+        <item>Partial wake usage</item>
+        <item>Другое</item>
+    </string-array>
+
+    <!-- Match with constants in BatteryStats class -->
+    <string-array name="battery_history_which_spinner">
+        <item>С момента последнего отключения</item>
+        <item>С момента загрузки</item>
+        <item>За все время</item>
+    </string-array>
+	
+    <string-array name="brightnessWidget" translatable="false">
+        <item>Авто/Тусклый/40%/100%</item>
+        <item>Авто/Тусклый/25%/75%/100%</item>
+        <item>Авто/25%/100%</item>
+        <item>Тусклый/100%</item>
+    </string-array>
+
+    <string-array name="networkModesWidget" translatable="false">
+        <item>2G/3G+2G</item>
+        <item>Только 2G/3G</item>
+        <item>2G/3G Только/3G+2G</item>
+    </string-array>
+    
+    <string-array name="screenTimeoutWidget" translatable="false">
+        <item>15сек/1мин/5мин</item>
+        <item>30сек/2мин/5мин</item>
+    </string-array>
+
+    <string-array name="ringModeWidget" translatable="false">
+        <item>Звук+Вибро/Вибро</item>
+        <item>Звук/Вибро</item>
+        <item>Звук/Беззвучный</item>
+        <item>Звук+Вибро/Вибро/Беззвучный</item>
+        <item>Звук/Вибро/Беззвучный</item>
+    </string-array>
+    
+    <string-array name="backgroundWidget">
+        <item>Серый</item>
+        <item>Прозрачный</item>
+    </string-array>	
+
 </resources>
