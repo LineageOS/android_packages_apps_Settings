@@ -214,6 +214,7 @@
     <string name="settings_shortcut" msgid="3672145147925639262">"设置"</string>
     <string name="airplane_mode" msgid="8837269988154128601">"飞行模式"</string>
     <string name="airplane_mode_summary" msgid="3154817401368780988">"停用所有无线连接"</string>
+    <string name="device_hostname">设备主机名</string>
     <string name="airplane_mode_turning_on" msgid="8871739222526957255">"正在停用无线连接..."</string>
     <string name="airplane_mode_turning_off" msgid="3393168549611505996">"正在启用无线连接..."</string>
     <string name="radio_controls_title" msgid="5868688473587168882">"无线和网络"</string>
@@ -335,9 +336,9 @@
     <string name="bluetooth_dock_settings_remember" msgid="5551459057010609115">"记住设置"</string>
     <string name="nfc_quick_toggle_title" msgid="6769159366307299004">"NFC"</string>
     <string name="nfc_quick_toggle_summary" msgid="1988408027741447231">"使用近距离通信读取和交换标签"</string>
-    <!-- no translation found for nfc_toggle_error (2233172102497535522) -->
-    <!-- no translation found for nfc_toggle_error (8998642457947607263) -->
-    <skip />
+    <string name="nfc_toggle_error" msgid="8998642457947607263">"发生一个错误。"</string>
+    <string name="hostname_save">保存</string>
+    <string name="hostname_cancel">取消</string>
     <string name="wifi_quick_toggle_title" msgid="874495178395350104">"Wi-Fi"</string>
     <string name="wifi_quick_toggle_summary" msgid="1047950931623694366">"打开 Wi-Fi"</string>
     <string name="wifi_settings" msgid="4746946030627213196">"Wi-Fi 设置"</string>
@@ -503,11 +504,15 @@
     <string name="device_info_settings" msgid="475872867864762157">"手机状态"</string>
     <string name="system_update_settings_list_item_title" msgid="3342887311059985961">"系统更新"</string>
     <string name="system_update_settings_list_item_summary" msgid="3853057315907710747"></string>
+    <string name="cpu_info">CPU 信息</string>
+    <string name="mem_info">内存信息 (可用/总共)</string>
     <string name="firmware_version" msgid="4801135784886859972">"Android 版本"</string>
     <string name="model_number" msgid="3765737700545384794">"型号"</string>
     <string name="baseband_version" msgid="1848990160763524801">"基带版本"</string>
     <string name="kernel_version" msgid="9192574954196167602">"内核版本"</string>
     <string name="build_number" msgid="3075795840572241758">"版本号"</string>
+    <string name="mod_version">修订版本</string>
+    <string name="mod_version_default">未知</string>
     <string name="device_info_not_available" msgid="8062521887156825182">"不可用"</string>
     <string name="device_status_activity_title" msgid="1411201799384697904">"状态消息"</string>
     <string name="device_status" msgid="607405385799807324">"状态消息"</string>
@@ -873,10 +878,14 @@
     <string name="development_settings_summary" msgid="2151320488701538355">"设置应用程序开发选项"</string>
     <string name="enable_adb" msgid="7982306934419797485">"USB 调试"</string>
     <string name="enable_adb_summary" msgid="4881186971746056635">"连接 USB 后启用调试模式"</string>
+    <string name="adb_notify">USB 调试通知</string>
+    <string name="adb_notify_summary">当 USB 调试连接时显示通知</string>
     <string name="keep_screen_on" msgid="1146389631208760344">"保持唤醒状态"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"充电时屏幕不会休眠"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"允许模拟地点"</string>
     <string name="allow_mock_location_summary" msgid="317615105156345626">"允许模拟地点"</string>
+    <string name="kill_app_longpress_back">长按结束程序</string>
+    <string name="kill_app_longpress_back_summary">长按返回键结束前台程序</string>
     <string name="adb_warning_title" msgid="6234463310896563253">"是否允许 USB 调试？"</string>
     <string name="adb_warning_message" msgid="5352555112049663033">"USB 调试仅用于开发工作。使用该功能可在计算机和移动设备之间复制数据、在移动设备上安装应用程序而不进行通知，以及读取日志数据。"</string>
     <string name="gadget_picker_title" msgid="98374951396755811">"选择小工具"</string>
@@ -1076,6 +1085,26 @@
     <string name="vpn_a_l2tp_secret" msgid="6612042930810981845">"L2TP 密钥"</string>
     <string name="vpn_pptp_encryption_title" msgid="2236795167467896499">"加密"</string>
     <string name="vpn_pptp_encryption" msgid="2602329949737259686">"PPTP 加密"</string>
+    <string name="vpn_openvpn_port">服务端口</string>
+    <string name="vpn_openvpn_protocol">使用协议</string>
+    <string name="vpn_openvpn_device">使用设备</string>
+    <string name="vpn_openvpn_userauth">用户认证</string>
+    <string name="vpn_openvpn_userauth_summary">如果需要设置额外的用户名/密码认证</string>
+    <string name="vpn_openvpn_advanced_titlebar">高级 Openvpn 设置</string>
+    <string name="vpn_openvpn_comp_lzo">LZO 压缩</string>
+    <string name="vpn_openvpn_comp_lzo_summary">强制打开 LZO 压缩</string>
+    <string name="vpn_openvpn_redirect_gateway_title">重定向网关</string>
+    <string name="vpn_openvpn_redirect_gateway_summary">强制所有流量通过 VPN 隧道</string>
+    <string name="vpn_openvpn_set_addr">远程设置地址</string>
+    <string name="vpn_openvpn_set_addr_summary">取消选中手动设置隧道地址</string>
+    <string name="vpn_openvpn_set_local_addr">本地 IP 地址</string>
+    <string name="vpn_openvpn_set_remote_addr">远程 IP 地址</string>
+    <string name="vpn_openvpn_set_cipher">密码算法</string>
+    <string name="vpn_openvpn_set_cipher_message">留空使用默认密码</string>
+    <string name="vpn_openvpn_set_keysize">密钥大小</string>
+    <string name="vpn_openvpn_set_keysize_message">留空使用默认密钥规格</string>
+    <string name="vpn_openvpn_set_extra">额外参数</string>
+    <string name="vpn_openvpn_set_extra_message">输入额外的命令行参数</string>
     <string name="vpn_ipsec_presharedkey_title" msgid="2184060087690539175">"设置 IPSec 预共享密钥"</string>
     <string name="vpn_ipsec_presharedkey" msgid="5434316521616673741">"IPSec 预共享密钥"</string>
     <string name="vpn_a_ipsec_presharedkey" msgid="1255301923217898418">"IPSec 预共享密钥"</string>
@@ -1161,4 +1190,93 @@
     <string name="sound_category_calls_title" msgid="3688531959256239012">"来电"</string>
     <string name="sound_category_notification_title" msgid="3502115998790286943">"通知"</string>
     <string name="sound_category_feedback_title" msgid="4399742321363475393">"反馈"</string>
+
+    <string name="launcher_settings_title">桌面设置</string>
+
+    <string name="possibleButtons">可能的按键</string>
+    <string name="toggleWifi">Wi-Fi</string>
+    <string name="toggleWifiAp">移动 Wi-Fi 热点</string>
+    <string name="toggleBluetooth">蓝牙</string>
+    <string name="toggleGPS">GPS</string>
+    <string name="toggleData">移动数据</string>
+    <string name="toggleSync">数据同步</string>
+    <string name="toggle2g3g">2G/3G</string>
+    <string name="toggleSound">铃声模式</string>
+    <string name="toggleBrightness">亮度</string>
+    <string name="toggleAutoRotate">旋转</string>
+    <string name="toggleScreenTimeout">屏幕超时</string>
+    <string name="toggleAirplane">飞行模式</string>
+    <string name="toggleFlashlight">手电筒</string>
+    <string name="toggleLockScreen">锁屏</string>
+
+    <string name="toggleWifiDescription">开启/禁用 Wifi</string>
+    <string name="toggleWifiApDescription">开启/禁用移动 Wi-Fi 热点</string>
+    <string name="toggleBluetoothDescription">开启/禁用蓝牙</string>
+    <string name="toggleGPSDescription">开启/禁用 GPS</string>
+    <string name="toggleDataDescription">开启/禁用移动数据</string>
+    <string name="toggleSyncDescription">开启/禁用数据同步</string>
+    <string name="toggle2g3gDescription">在 2G 和 3G 间切换</string>
+    <string name="toggleSoundDescription">在铃声和仅振动间切换</string>
+    <string name="toggleBrightnessDescription">在亮度级别间切换</string>
+    <string name="toggleAutoRotateDescription">开启/禁用重力感应</string>
+    <string name="toggleScreenTimeoutDescription">设置不同的屏幕超时</string>
+    <string name="toggleAirplaneDescription">开启/禁用飞行模式</string>
+    <string name="toggleFlashlightDescription">开启/禁用手电筒</string>
+    <string name="toggleLockScreenDescription">开启/禁用锁屏</string>
+
+
+    <string name="widgetSettings">小工具实例设置</string>
+    <string name="wifiSettings">Wifi 事件设置</string>
+    <string name="dataSettings">数据事件设置</string>
+    <string name="powerSettings">电源事件设置</string>
+
+    <string name="generalSettings">通用设置</string>
+
+    <string name="autoDisable3G">数据时禁用 3G</string>
+    <string name="autoEnable3G">数据时启用 3G</string>
+    <string name="autoDisable3GWithWifi">Wifi 时禁用 3G</string>
+    <string name="autoEnable3GWithWifi">Wifi 时启用 3G</string>
+    <string name="useRoundCorners">圆角</string>
+    <string name="useVertical">垂直布局</string>
+    <string name="useTransparent">透明小工具</string>
+    <string name="autoEnableSyncWithWifi">Wifi 时启用同步</string>
+    <string name="autoDisableSyncWithWifi">Wifi 时禁用同步</string>
+    <string name="ringModeVibrateAsOn">振动为开启</string>
+    <string name="monitorDataRoaming">监视数据漫游</string>
+    <string name="autoEnableBluetoothWithPower">外接电源时启用蓝牙</string>
+    <string name="autoDisableBluetoothWithPower">外接电源时禁用蓝牙</string>
+    <string name="autoEnableWifiWithPower">外接电源时启用 Wifi</string>
+    <string name="autoDisableWifiWithPower">外接电源时禁用 Wifi</string>
+
+    <string name="autoDisable3GDescription">移动数据禁用时使用 2G</string>
+    <string name="autoEnable3GDescription">移动数据启用时使用 3G</string>
+    <string name="autoDisable3GWithWifiDescription">Wifi 启用时使用 2G</string>
+    <string name="autoEnable3GWithWifiDescription">Wifi 禁用时使用 3G</string>
+    <string name="useRoundCornersDescription">使用圆角小工具图标</string>
+    <string name="useTransparentDescription">无小工具背景</string>
+    <string name="useVerticalDescription">垂直方向显示</string>
+    <string name="autoEnableSyncWithWifiDescription">WIFI 启用时打开数据同步</string>
+    <string name="autoDisableSyncWithWifiDescription">WIFI 禁用时关闭数据同步</string>
+    <string name="ringModeVibrateAsOnDescription">仅振动时铃声显示为开启</string>
+    <string name="monitorDataRoamingDescription">数据漫游启用时数据状态为红色</string>
+    <string name="autoEnableBluetoothWithPowerDescription">连接电源时打开蓝牙</string>
+    <string name="autoDisableBluetoothWithPowerDescription">断开电源时关闭蓝牙</string>
+    <string name="autoEnableWifiWithPowerDescription">连接电源时打开 Wifi</string>
+    <string name="autoDisableWifiWithPowerDescription">断开电源时关闭 Wifi</string>
+
+    <string name="networkModeSpinner">选择网络模式</string>
+    <string name="brightnessSpinner">选择亮度级别</string>
+    <string name="ringModeSpinner">选择铃声模式</string>
+    <string name="screenTimeoutSpinner">选择屏幕超时</string>
+    <string name="backgroundImageSpinner">选择背景</string>
+
+    <string name="notConfigured">未配置。请再添加一次</string>
+
+    <string name="ok">确定</string>
+
+
+    <!-- Widget Picker -->
+    <string name="widget_count">(%d 个小工具)</string>
+
+    <string name="cm_settings_title">CM 设置</string>
 </resources>
