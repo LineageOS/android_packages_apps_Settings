@@ -319,7 +319,8 @@ class WifiDialog extends AlertDialog implements View.OnClickListener,
             if (mAccessPoint != null && mAccessPoint.networkId != -1) {
                 WifiConfiguration config = mAccessPoint.getConfig();
                 setSelection(mEapMethod, config.eap.value());
-                setSelection(mPhase2, config.phase2.value());
+                setSelection(mPhase2, (config.phase2.value() == null) ? null :
+                        config.phase2.value().substring(5));
                 setCertificate(mEapCaCert, Credentials.CA_CERTIFICATE,
                         config.ca_cert.value());
                 setCertificate(mEapUserCert, Credentials.USER_PRIVATE_KEY,
