@@ -34,6 +34,8 @@ import com.android.settings.widget.buttons.SyncButton;
 import com.android.settings.widget.buttons.WidgetButton;
 import com.android.settings.widget.buttons.WifiApButton;
 import com.android.settings.widget.buttons.WifiButton;
+import com.android.settings.widget.buttons.WimaxButton;
+import com.android.wimax.WimaxConstants;
 
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
@@ -194,7 +196,6 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
         BluetoothButton.getInstance().updateState(context, globalPreferences, appWidgetIds);
         GPSButton.getInstance().updateState(context, globalPreferences, appWidgetIds);
         MobileDataButton.getInstance().updateState(context, globalPreferences, appWidgetIds);
-        ;
         NetworkModeButton.getInstance().updateState(context, globalPreferences, appWidgetIds);
         SyncButton.getInstance().updateState(context, globalPreferences, appWidgetIds);
         SoundButton.getInstance().updateState(context, globalPreferences, appWidgetIds);
@@ -204,6 +205,7 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
         LockScreenButton.getInstance().updateState(context, globalPreferences, appWidgetIds);
         FlashlightButton.getInstance().updateState(context, globalPreferences, appWidgetIds);
         BrightnessButton.getInstance().updateState(context, globalPreferences, appWidgetIds);
+        WimaxButton.getInstance().updateState(context, globalPreferences, appWidgetIds);
     }
 
     /**
@@ -276,6 +278,8 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
                     widgetPreferences, appWidgetId);
             AirplaneButton.getInstance().updateView(context, views, globalPreferences,
                     widgetPreferences, appWidgetId);
+            WimaxButton.getInstance().updateView(context, views, globalPreferences,
+                    widgetPreferences, appWidgetId);
 
             return views;
         } else {
@@ -311,6 +315,9 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
         } else if (NetworkModeButton.NETWORK_MODE_CHANGED.equals(intent.getAction())) {
             logD("Received Network mode state change");
             NetworkModeButton.getInstance().onReceive(context, intent);
+        } else if (WimaxConstants.WIMAX_ENABLED_CHANGED_ACTION.equals(intent.getAction())) {
+            logD("Received WiMAX change request");
+            WimaxButton.getInstance().onReceive(context, intent);
         } else if (Intent.ACTION_POWER_CONNECTED.equals(intent.getAction())
                 || Intent.ACTION_POWER_DISCONNECTED.equals(intent.getAction())) {
             logD("Received power mode state change");
@@ -360,6 +367,9 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
             } else if (buttonId == WidgetButton.BUTTON_AIRPLANE) {
                 logD("Received airplane change request");
                 AirplaneButton.getInstance().toggleState(context);
+            } else if (buttonId == WidgetButton.BUTTON_WIMAX) {
+                logD("Received WiMAX change request");
+                WimaxButton.getInstance().toggleState(context);
             }
         } else if (MobileDataButton.MOBILE_DATA_CHANGED.equals(intent.getAction())
                 || Intent.ACTION_USER_PRESENT.equals(intent.getAction())

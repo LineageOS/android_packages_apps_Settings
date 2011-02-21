@@ -43,6 +43,8 @@ public abstract class WidgetButton {
 
     public static final int BUTTON_WIFI_AP = 13;
 
+    public static final int BUTTON_WIMAX = 14;
+
     // This widget keeps track of two sets of states:
     // "3-state": STATE_DISABLED, STATE_ENABLED, STATE_INTERMEDIATE
     // "5-state": STATE_DISABLED, STATE_ENABLED, STATE_TURNING_ON,

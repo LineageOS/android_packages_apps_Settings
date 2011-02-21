@@ -2,6 +2,8 @@
 package com.android.settings.widget;
 
 import com.android.settings.R;
+import com.android.settings.wimax.WimaxSettingsHelper;
+import com.android.wimax.WimaxConstants;
 
 import android.app.Activity;
 import android.appwidget.AppWidgetManager;
@@ -59,6 +61,8 @@ public class WidgetSettings extends Activity {
     public static final String TOGGLE_WIFI = "toggleWifi";
 
     public static final String TOGGLE_WIFI_AP = "toggleWifiAp";
+
+    public static final String TOGGLE_WIMAX = "toggleWimax";
 
     public static final String TOGGLE_AIRPLANE = "toggleAirplane";
 
@@ -160,6 +164,7 @@ public class WidgetSettings extends Activity {
         findViewById(R.id.toggleLockScreen).setOnClickListener(listener);
         findViewById(R.id.toggleFlashlight).setOnClickListener(listener);
         findViewById(R.id.toggleWifiAp).setOnClickListener(listener);
+        findViewById(R.id.toggleWimax).setOnClickListener(listener);
         findViewById(R.id.useRoundCorners).setOnClickListener(listener);
         ((Spinner) findViewById(R.id.backgroundImageSpinner))
                 .setOnItemSelectedListener(new OnItemSelectedListener() {
@@ -298,6 +303,12 @@ public class WidgetSettings extends Activity {
             findViewById(R.id.toggleWifiApPreferenceDivider).setVisibility(View.GONE);
         }
 
+        // disable WiMAX preference if unsupported
+        if (!WimaxConstants.isWimaxSupported(this)) {
+            findViewById(R.id.toggleWimaxPreference).setVisibility(View.GONE);
+            findViewById(R.id.toggleWimaxPreferenceDivider).setVisibility(View.GONE);
+        }
+
         Spinner spinner = (Spinner) findViewById(R.id.brightnessSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.brightnessWidget, android.R.layout.simple_spinner_item);
@@ -391,7 +402,8 @@ public class WidgetSettings extends Activity {
                     selectedButtons.indexOf(findViewById(R.id.toggleFlashlight)) + 1);
             editor.putInt(TOGGLE_WIFI_AP,
                     selectedButtons.indexOf(findViewById(R.id.toggleWifiAp)) + 1);
-
+            editor.putInt(TOGGLE_WIMAX,
+                    selectedButtons.indexOf(findViewById(R.id.toggleWimax)) + 1);
             editor.putBoolean(USE_ROUND_CORNERS,
                     ((CheckBox) findViewById(R.id.useRoundCorners)).isChecked());
             editor.putInt(BACKGROUND_IMAGE,
@@ -585,6 +597,8 @@ public class WidgetSettings extends Activity {
                 return R.drawable.ic_appwidget_settings_airplane_on;
             case R.id.toggleBrightness:
                 return R.drawable.ic_appwidget_settings_brightness_on;
+            case R.id.toggleWimax:
+                return R.drawable.ic_appwidget_settings_wimax_on;
         }
         return 0;
     }
@@ -607,6 +621,7 @@ public class WidgetSettings extends Activity {
         editor.putInt(TOGGLE_LOCK_SCREEN, 0);
         editor.putInt(TOGGLE_FLASHLIGHT, 0);
         editor.putInt(TOGGLE_WIFI_AP, 0);
+        editor.putInt(TOGGLE_WIMAX, 0);
 
         editor.putBoolean(USE_ROUND_CORNERS, true);
         editor.putInt(BACKGROUND_IMAGE, 0);

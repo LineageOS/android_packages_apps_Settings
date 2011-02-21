@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.os.SystemProperties;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
+import android.util.Log;
 
 public class AdvancedSettings extends PreferenceActivity {
 
@@ -63,6 +64,7 @@ public class AdvancedSettings extends PreferenceActivity {
     private void refreshDeviceInfo() {
 
         int rssi = mHelper.getSignalStrength();
+        Log.d(TAG, "RSSI: " + rssi);
         int simpleLevel = mHelper.calculateSignalLevel(rssi, 4);
         String simpleLevelStr = "";
         switch (simpleLevel) {

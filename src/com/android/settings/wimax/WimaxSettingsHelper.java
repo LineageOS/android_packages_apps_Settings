@@ -28,9 +28,6 @@ public class WimaxSettingsHelper {
     
     public WimaxSettingsHelper(Context context) {
         mWimaxController = context.getSystemService(Context.WIMAX_SERVICE);
-        if (mWimaxController == null) {
-            Log.wtf(TAG, "Unable to get WiMAX system service!");
-        }
     }
 
     public boolean isWimaxSupported() {
