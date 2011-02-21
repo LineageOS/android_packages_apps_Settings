@@ -105,32 +105,4 @@ public class WimaxSettingsHelper {
         }
         return signalLevel;
     }
-
-    public Long getBsMacAddress() {
-        Long mac = null;
-        Object wimaxInfo = getWimaxInfo();
-        if (wimaxInfo != null) {
-            try {
-                Method getBsMacAddress = wimaxInfo.getClass().getMethod("getBsMacAddress");
-                mac = (Long) getBsMacAddress.invoke(wimaxInfo);
-            } catch (Exception e) {
-                Log.e(TAG, "Unable to get WiMAX MAC address!", e);
-            }
-        }
-        return mac;
-    }
-
-    public Integer getIpAddress() {
-        Integer ip = null;
-        Object wimaxInfo = getWimaxInfo();
-        if (wimaxInfo != null) {
-            try {
-                Method getIpAddress = wimaxInfo.getClass().getMethod("getIpAddress");
-                ip = (Integer) getIpAddress.invoke(wimaxInfo);
-            } catch (Exception e) {
-                Log.e(TAG, "Unable to get WiMAX IP address!", e);
-            }
-        }
-        return ip;
-    }
 }

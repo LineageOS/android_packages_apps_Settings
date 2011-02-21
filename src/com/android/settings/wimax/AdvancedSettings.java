@@ -19,17 +19,15 @@ package com.android.settings.wimax;
 import com.android.settings.R;
 
 import android.os.Bundle;
+import android.os.SystemProperties;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
-import android.text.TextUtils;
 
 public class AdvancedSettings extends PreferenceActivity {
 
     private static final String TAG = "WimaxAdvancedSettings";
 
     private static final String KEY_MAC_ADDRESS = "mac_address";
-
-    private static final String KEY_HW_VERSION = "hw_version";
 
     private static final String KEY_SW_VERSION = "sw_version";
 
@@ -88,8 +86,8 @@ public class AdvancedSettings extends PreferenceActivity {
                 break;
         }
         Preference wimaxMacAddressPref = findPreference(KEY_MAC_ADDRESS);
-        Long macAddress = mHelper.getBsMacAddress();
-        wimaxMacAddressPref.setSummary(macAddress == null || macAddress == 0 ? getString(R.string.status_unavailable) : macAddress.toString());
+        String macAddress = SystemProperties.get("persist.wimax.0.MAC", getString(R.string.status_unavailable));
+        wimaxMacAddressPref.setSummary(macAddress);
 
         Preference wimaxSignalStrengthSimplePref = findPreference(KEY_SIG_STR_SIMPLE);
         wimaxSignalStrengthSimplePref.setSummary(simpleLevelStr);
@@ -97,35 +95,20 @@ public class AdvancedSettings extends PreferenceActivity {
         Preference wimaxSignalStrengthRSSIPref = findPreference(KEY_SIG_STR_RSSI);
         wimaxSignalStrengthRSSIPref.setSummary((rssi != 150 && rssi != 0 ? rssi + "" : "Unknown"));
 
-        /*
-         * Preference wimaxHwVersionPref = findPreference(KEY_HW_VERSION);
-         * String hwVersion = wimaxInfo == null ? null :
-         * wimaxInfo.getHwVersion().getVersion();
-         * wimaxHwVersionPref.setSummary(!TextUtils.isEmpty(hwVersion) ?
-         * hwVersion : getString(R.string.status_unavailable));
-         */
-
-        /*
-         * Preference wimaxSwVersionPref = findPreference(KEY_SW_VERSION);
-         * String swVersion = wimaxInfo == null ? null :
-         * wimaxInfo.getSwVersion().getVersion();
-         * wimaxSwVersionPref.setSummary(!TextUtils.isEmpty(swVersion) ?
-         * swVersion : getString(R.string.status_unavailable));
-         */
+        Preference wimaxSwVersionPref = findPreference(KEY_SW_VERSION);
+        String swVersion = SystemProperties.get("persist.wimax.fw.version", getString(R.string.status_unavailable));
+        wimaxSwVersionPref.setSummary(swVersion);
     }
 
     private void refreshIPInfo() {
 
         Preference wimaxIpAddressPref = findPreference(KEY_IP_ADDRESS);
-        Integer ipAddress = mHelper.getIpAddress();
-        wimaxIpAddressPref
-                .setSummary(ipAddress == null || ipAddress == 0 ? getString(R.string.status_unavailable)
-                        : ipAddress.toString());
+        String ipAddress = SystemProperties.get("dhcp.wimax0.ipaddress", getString(R.string.status_unavailable));
+        wimaxIpAddressPref.setSummary(ipAddress);
 
         Preference wimaxGatewayPref = findPreference(KEY_GATEWAY);
-        String gateway = "";
-        wimaxGatewayPref.setSummary(!TextUtils.isEmpty(gateway) ? gateway
-                : getString(R.string.status_unavailable));
+        String gateway = SystemProperties.get("dhcp.wimax0.gateway", getString(R.string.status_unavailable));
+        wimaxGatewayPref.setSummary(gateway);
     }
 
 }
