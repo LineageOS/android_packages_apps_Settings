@@ -18,23 +18,23 @@ package com.android.settings.wimax;
 
 import com.android.settings.ProgressCategory;
 import com.android.settings.R;
-import com.android.settings.wimax.AdvancedSettings;
+import com.android.wimax.WimaxSettingsHelper;
 
-import android.content.Intent;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
-import android.preference.CheckBoxPreference;
 import android.util.Log;
 import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.widget.Toast;
 import android.widget.AdapterView.AdapterContextMenuInfo;
+import android.widget.Toast;
 
 import java.lang.reflect.Method;
 import java.util.WeakHashMap;

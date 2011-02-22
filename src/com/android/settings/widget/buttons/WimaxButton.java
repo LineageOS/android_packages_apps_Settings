@@ -5,7 +5,7 @@ import com.android.settings.R;
 import com.android.settings.widget.SettingsAppWidgetProvider;
 import com.android.settings.widget.StateTracker;
 import com.android.settings.widget.WidgetSettings;
-import com.android.settings.wimax.WimaxSettingsHelper;
+import com.android.wimax.WimaxSettingsHelper;
 import com.android.wimax.WimaxConstants;
 
 import android.content.Context;

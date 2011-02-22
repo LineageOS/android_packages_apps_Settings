@@ -2,7 +2,7 @@
 package com.android.settings.widget;
 
 import com.android.settings.R;
-import com.android.settings.wimax.WimaxSettingsHelper;
+import com.android.wimax.WimaxSettingsHelper;
 import com.android.wimax.WimaxConstants;
 
 import android.app.Activity;

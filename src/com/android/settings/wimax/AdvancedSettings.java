@@ -17,6 +17,7 @@
 package com.android.settings.wimax;
 
 import com.android.settings.R;
+import com.android.wimax.WimaxSettingsHelper;
 
 import android.os.Bundle;
 import android.os.SystemProperties;

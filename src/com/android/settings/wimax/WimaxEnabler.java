@@ -28,6 +28,7 @@ import static com.android.wimax.WimaxConstants.WIMAX_ENABLED_STATE_ENABLING;
 import static com.android.wimax.WimaxConstants.WIMAX_ENABLED_STATE_UNKNOWN;
 
 import com.android.settings.R;
+import com.android.wimax.WimaxSettingsHelper;
 
 import android.app.StatusBarManager;
 import android.content.BroadcastReceiver;
@@ -42,6 +43,7 @@ import android.preference.Preference;
 import android.text.TextUtils;
 import android.util.Config;
 import android.util.Log;
+
 
 public class WimaxEnabler implements Preference.OnPreferenceChangeListener {
 
