@@ -85,14 +85,17 @@ public class WimaxEnabler implements Preference.OnPreferenceChangeListener {
         mContext = context;
         mWimaxCheckBoxPref = wimaxCheckBoxPreference;
         mHelper = new WimaxSettingsHelper(context);
+        if (mHelper.isWimaxSupported()) {
+            mOriginalSummary = wimaxCheckBoxPreference.getSummary();
+            wimaxCheckBoxPreference.setPersistent(false);
 
-        mOriginalSummary = wimaxCheckBoxPreference.getSummary();
-        wimaxCheckBoxPreference.setPersistent(false);
-
-        mWimaxStatusFilter = new IntentFilter(WIMAX_ENABLED_CHANGED_ACTION);
-        mWimaxStatusFilter.addAction(NETWORK_STATE_CHANGED_ACTION);
-        // mWimaxStatusFilter.addAction(WimaxController.WXCM_STATE_CHANGED_ACTION);
-
+            mWimaxStatusFilter = new IntentFilter(WIMAX_ENABLED_CHANGED_ACTION);
+            mWimaxStatusFilter.addAction(NETWORK_STATE_CHANGED_ACTION);
+            // mWimaxStatusFilter.addAction(WimaxController.WXCM_STATE_CHANGED_ACTION);
+        } else {
+            mWimaxStatusFilter = null;
+            mOriginalSummary = null;
+        }
     }
 
     public void resume() {
