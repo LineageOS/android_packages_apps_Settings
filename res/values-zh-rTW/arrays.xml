@@ -44,6 +44,7 @@
     <item msgid="8881760709354815449">"30 秒"</item>
     <item msgid="7589406073232279088">"1 分鐘"</item>
     <item msgid="7001195990902244174">"2 分鐘"</item>
+    <item>5 分鐘</item>
     <item msgid="5721688686241190620">"10 分鐘"</item>
     <item msgid="7156442995039264948">"30 分鐘"</item>
   </string-array>
@@ -115,6 +116,24 @@
     <item msgid="1549288661423279207">"插入時絕不"</item>
     <item msgid="1986753720941888596">"永不"</item>
   </string-array>
+
+    <!-- Match with constants in BatteryHistory class -->
+    <string-array name="battery_history_type_spinner">
+        <item>CPU 耗電量</item>
+        <item>網路耗電量</item>
+        <item>GPS 耗電量</item>
+        <item>感應器耗電量</item>
+        <item>部分喚醒耗電量</item>
+        <item>其他耗電量</item>
+    </string-array>
+
+    <!-- Match with constants in BatteryStats class -->
+    <string-array name="battery_history_which_spinner">
+        <item>自上一次拔除電源</item>
+        <item>自上一次重新啟動的總耗電量</item>
+        <item>全部時間的總耗電量</item>
+    </string-array>
+
   <string-array name="usage_stats_display_order_types">
     <item msgid="9077371706468756228">"使用時間"</item>
     <item msgid="1908750532762193304">"啟動計數"</item>
@@ -154,4 +173,17 @@
     <item msgid="1276641209451816572">"僅適用於靜音模式"</item>
     <item msgid="8418930333779132418">"僅適用於非靜音模式"</item>
   </string-array>
+
+<!-- Profile mode options. -->
+    <string-array name="profile_entries">
+        <item>開啟</item>
+        <item>關閉</item>
+        <item>保持原有設定</item>
+    </string-array>
+
+    <string-array name="backgroundWidget">
+        <item>灰色</item>
+        <item>透明</item>
+    </string-array>
+
 </resources>
