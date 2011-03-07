@@ -62,7 +62,7 @@ public class ProfileConfig extends PreferenceActivity implements OnPreferenceCha
         }
 
         if (mProfile == null) {
-            mProfile = new Profile("<new profile>");
+            mProfile = new Profile(getString(R.string.new_profile_name));
             mProfileManager.addProfile(mProfile);
         }
 

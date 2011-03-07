@@ -347,7 +347,7 @@ class OpenvpnEditor extends VpnProfileEditor {
             });
 
             if (profile.getCipher() == null || profile.getCipher().equals(""))
-                mCipher.setSummary("default");
+                mCipher.setSummary(R.string.vpn_openvpn_set_cipher_default);
             else
                 mCipher.setSummary(profile.getCipher());
             mCipher.setText(profile.getCipher());
@@ -357,7 +357,7 @@ class OpenvpnEditor extends VpnProfileEditor {
                     name.trim();
                     profile.setCipher(name);
                     if (profile.getCipher().equals(""))
-                        mCipher.setSummary("default");
+                        mCipher.setSummary(R.string.vpn_openvpn_set_cipher_default);
                     else
                         mCipher.setSummary(profile.getCipher());
                     return true;
@@ -365,7 +365,7 @@ class OpenvpnEditor extends VpnProfileEditor {
             });
 
             if (profile.getKeySize() == null || profile.getKeySize().equals("0")) {
-                mKeySize.setSummary("default");
+                mKeySize.setSummary(R.string.vpn_openvpn_set_keysize_default);
                 mKeySize.setText("");
             } else {
                 mKeySize.setSummary(profile.getKeySize());
@@ -379,7 +379,7 @@ class OpenvpnEditor extends VpnProfileEditor {
                         name = "0";
                     profile.setKeySize(name);
                     if (profile.getKeySize().equals("0"))
-                        mKeySize.setSummary("default");
+                        mKeySize.setSummary(R.string.vpn_openvpn_set_keysize_default);
                     else
                         mKeySize.setSummary(profile.getKeySize());
                     return true;
