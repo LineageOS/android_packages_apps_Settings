@@ -53,6 +53,7 @@
     <string name="medium_font" msgid="2068475425515133701">"בינוני"</string>
     <string name="large_font" msgid="599055175160971446">"גדול"</string>
     <string name="font_size_save" msgid="3450855718056759095">"אישור"</string>
+	<string name="font_size_preview_text">תצוגה מקדימה של גודל גופן.</string>
     <string name="sdcard_setting" product="nosdcard" msgid="8281011784066476192">"אמצעי אחסון מסוג USB"</string>
     <string name="sdcard_setting" product="default" msgid="5922637503871474866">"כרטיס SD"</string>
     <string name="battery_info_status_label" msgid="8109155295509700309">"מצב סוללה:"</string>
@@ -117,15 +118,22 @@
     <string name="bluetooth_ask_discovery" msgid="669870705606180872">"יישום בטלפון מבקש הרשאה להפוך את הטלפון לגלוי להתקני Bluetooth אחרים למשך <xliff:g id="TIMEOUT">%1$d</xliff:g> שניות. האם ברצונך לעשות זאת?"</string>
     <string name="bluetooth_ask_enablement_and_discovery" msgid="7220210326619399542">"יישום בטלפון מבקש הרשאה להפעיל Bluetooth ולהפוך את הטלפון לגלוי להתקנים אחרים למשך <xliff:g id="TIMEOUT">%1$d</xliff:g> שניות. האם ברצונך לבצע פעולות אלה?"</string>
     <string name="bluetooth_turning_on" msgid="3107102168379705771">"מפעיל Bluetooth…"</string>
+    <string name="bluetooth_scan_text">כפתור ריק\u2026</string>
+    <string name="bluetooth_settings_text">כפתור ריק\u2026</string>
+    <string name="bluetooth_enable_text">כפתור ריק</string>
+    <string name="bluetooth_device_info_connectButton_text">הפעל את Bluetooth</string>
+    <string name="bluetooth_device_info_deviceInfo_text">&lt;string name="bluetooth_device_info_deviceInfo_text"/&gt;</string>
     <string name="date_and_time" msgid="4114084177056654663">"הגדרות תאריך ושעה"</string>
     <string name="date_time_12_hour_sample" msgid="3259617262618020574">"13:00"</string>
     <string name="date_time_24_hour_sample" msgid="8916857570746212357">"13:00"</string>
     <string name="date_time_changeTime_text" msgid="7037437020000867740">"שנה שעה"</string>
     <string name="date_time_changeDate_text" msgid="5259762626498028057">"תאריך"</string>
     <string name="choose_timezone" msgid="7762866468013985022">"בחר אזור זמן"</string>
+    <string name="default_date_format">dd/MM/yyyy</string>
     <string name="normal_date_format" msgid="1982904221918374153">"רגיל (<xliff:g id="DATE">%s</xliff:g>)"</string>
     <string name="display_preview_label" msgid="1127597250917274792">"תצוגה מקדימה:"</string>
     <string name="display_font_size_label" msgid="8941851418397475389">"גודל הגופן:"</string>
+    <string name="intent_sender_data_label">נתונים:</string>
     <!-- no translation found for intent_sender_data_label (6332324780477289261) -->
     <skip />
     <string name="intent_sender_sendbroadcast_text" msgid="1415735148895872715">"שלח <xliff:g id="BROADCAST">broadcast</xliff:g>"</string>
@@ -201,8 +209,10 @@
     <string name="language_picker_title" msgid="4034157617842965844">"מקום"</string>
     <string name="select_your_language" msgid="1146235168951906084">"בחר את השפה"</string>
     <string name="activity_picker_label" msgid="4910700713930693329">"בחר פעילות"</string>
+	<string name="debug_intent_sender_label">שליחה של איתור באגים</string>
     <string name="device_info_label" msgid="6551553813651711205">"פרטים על ההתקן"</string>
     <string name="battery_info_label" msgid="4132685016148679403">"מידע על הסוללה"</string>
+	<string name="battery_history_label">היסטוריית סוללה</string>
     <string name="display_label" msgid="7403874003169865762">"תצוגה"</string>
     <string name="phone_info_label" msgid="2127552523124277664">"פרטי טלפון"</string>
     <string name="sd_card_settings_label" product="nosdcard" msgid="8101475181301178428">"אמצעי אחסון מסוג USB"</string>
@@ -214,6 +224,7 @@
     <string name="settings_shortcut" msgid="3672145147925639262">"הגדרות"</string>
     <string name="airplane_mode" msgid="8837269988154128601">"מצב טיסה"</string>
     <string name="airplane_mode_summary" msgid="3154817401368780988">"השבת את כל החיבורים האלחוטיים"</string>
+    <string name="device_hostname">המכשיר המארח</string>
     <string name="airplane_mode_turning_on" msgid="8871739222526957255">"משבית חיבורים אלחוטיים..."</string>
     <string name="airplane_mode_turning_off" msgid="3393168549611505996">"מאפשר חיבורים אלחוטיים..."</string>
     <string name="radio_controls_title" msgid="5868688473587168882">"אלחוטי ורשתות"</string>
@@ -303,6 +314,10 @@
     <string name="bluetooth_pairing_device_down_error_message" msgid="6688215193824686741">"אין אפשרות ליצור קשר עם <xliff:g id="DEVICE_NAME">%1$s</xliff:g>."</string>
     <string name="bluetooth_pairing_rejected_error_message" msgid="1648157108520832454">"ההתאמה נדחתה על ידי <xliff:g id="DEVICE_NAME">%1$s</xliff:g>."</string>
     <string name="bluetooth_connecting_error_message" msgid="1779660510084746802">"אירעה בעיה בהתחברות ל-<xliff:g id="DEVICE_NAME">%1$s</xliff:g>."</string>
+    <string name="bluetooth_device_info_alias">כינוי להתקן</string>
+    <string name="bluetooth_device_info_no_alias">הקלד כינוי כאן\u2026</string>
+    <string name="bluetooth_device_info_delete">הסר התקן זה</string>
+    <string name="bluetooth_device_info_sdp">רשימת שירותים נתמכים</string>
     <string name="bluetooth_preference_scan_title" msgid="2277464653118896016">"סרוק אחר התקנים"</string>
     <string name="bluetooth_device_context_connect" msgid="3997659895003244941">"התחבר"</string>
     <string name="bluetooth_device_context_disconnect" msgid="8220072022970148683">"התנתק"</string>
@@ -314,6 +329,7 @@
     <string name="bluetooth_profile_a2dp" msgid="3259633293424539529">"מדיה"</string>
     <string name="bluetooth_profile_headset" msgid="1874975688666658946">"טלפון"</string>
     <string name="bluetooth_profile_opp" msgid="3799470046565284440">"העבר"</string>
+    <string name="bluetooth_profile_hid">אמצעי גישה אנושי</string>
     <string name="bluetooth_summary_connected_to_a2dp" msgid="510833839847758664">"מחובר אל אודיו של מדיה"</string>
     <string name="bluetooth_summary_connected_to_headset" msgid="4876496372728623918">"מחובר אל אודיו של טלפון"</string>
     <string name="bluetooth_summary_connected_to_a2dp_headset" msgid="3045032710457800891">"מחובר לאודיו של טלפון ומדיה"</string>
@@ -328,6 +344,8 @@
     <string name="bluetooth_a2dp_profile_summary_use_for" msgid="4630849022250168427">"השתמש עבור אודיו של מדיה"</string>
     <string name="bluetooth_headset_profile_summary_use_for" msgid="8705753622443862627">"השתמש עבור אודיו של הטלפון"</string>
     <string name="bluetooth_opp_profile_summary_use_for" msgid="1255674547144769756">"השתמש להעברת קבצים"</string>
+	<string name="bluetooth_hid_profile_summary_connected">התחבר לאמצעי גישה אנושי</string>
+    <string name="bluetooth_hid_profile_summary_use_for">השתמש באמצעי גישה אנושי</string>
     <string name="bluetooth_dock_settings" msgid="3218335822716052885">"הגדרות עגינה"</string>
     <string name="bluetooth_dock_settings_title" msgid="5543069893044375188">"שימוש בעגינה לאודיו"</string>
     <string name="bluetooth_dock_settings_headset" msgid="1001821426078644650">"כדיבורית"</string>
@@ -336,6 +354,8 @@
     <string name="nfc_quick_toggle_title" msgid="6769159366307299004">"NFC"</string>
     <string name="nfc_quick_toggle_summary" msgid="1988408027741447231">"השתמש ב-Near Field Communication כדי לקרוא ולהחליף תגיות"</string>
     <string name="nfc_toggle_error" msgid="2233172102497535522">"אירעה שגיאה."</string>
+	<string name="hostname_save">שמור</string>
+    <string name="hostname_cancel">ביטול</string>
     <string name="wifi_quick_toggle_title" msgid="874495178395350104">"Wi-Fi"</string>
     <string name="wifi_quick_toggle_summary" msgid="1047950931623694366">"הפעל Wi-Fi"</string>
     <string name="wifi_settings" msgid="4746946030627213196">"הגדרות Wi-Fi"</string>
@@ -408,14 +428,87 @@
     <string name="wifi_tether_configure_ap_text" msgid="3474995108398156258">"הגדר נקודה חמה של Wi-Fi"</string>
     <string name="wifi_tether_configure_subtext" msgid="1927454307836232128">"נקודה חמה ניידת של Wi-Fi של <xliff:g id="NETWORK_SSID">%1$s</xliff:g><xliff:g id="NETWORK_SECURITY">%2$s</xliff:g>"</string>
     <string name="wifi_tether_configure_ssid_default" msgid="8467525402622138547">"AndroidHotspot"</string>
+	<string name="testing_wifi_info">מידע Wifi</string>
+  <string name="disableNetwork">בטל רשת</string>
+  <string name="enableNetwork">אפשר רשת</string>
+  <string name="disconnect">התנתק</string>
+  <string name="getConfiguredNetworks">הצג רשתות מוגדרות</string>
+  <string name="getConnectionInfo">הצג מידע על החיבור</string>
+  <string name="wifi_api_test">WIFI API</string>
+  <string name="wifi_status_test">סטטוס רשת אלחוטית</string>
+  <string name="wifi_update">רענן מצב</string>
+  <string name="wifi_state_label">מצב Wi-Fi:</string>
+  <string name="network_state_label">מצב רשת:</string>
+  <string name="supplicant_state_label">מבקש מצב:</string>
+  <string name="rssi_label">RSSI:</string>
+  <string name="bssid_label">BSSID:</string>
+  <string name="ssid_label">SSID:</string>
+  <string name="hidden_ssid_label">מוסתר SSID :</string>
+  <string name="ipaddr_label">כתובת IP:</string>
+  <string name="macaddr_label">כתובת MAC:</string>
+  <string name="networkid_label">מזהה רשת:</string>
+  <string name="link_speed_label">מהירות חיבור:</string>
+  <string name="scan_list_label">תוצאות סריקה:</string>
+  <string name="wifi_state_disabling">מבטל</string>
+  <string name="wifi_state_disabled">מבוטל</string>
+  <string name="wifi_state_enabling">מפעיל</string>
+  <string name="wifi_state_enabled">מופעל</string>
+  <string name="wifi_state_unknown">לא ידוע</string>
+  <string name="wifi_config_info">הגדרת Wi-Fi</string>
+  <string name="config_list_label">רשתות מוגדרות</string>
+  <string name="wimax_quick_toggle_title">WiMAX</string>
+  <string name="wimax_quick_toggle_summary">הפעל את ה-WiMAX</string>
+  <string name="wimax_starting">מפעיל\u2026</string>
+  <string name="wimax_stopping">מכבה\u2026</string>
+  <string name="wimax_error">שגיאה</string>
+  <string name="error_wimax_starting">לא ניתן להפעיל את ה-WiMAX</string>
+  <string name="error_wimax_stopping">לא ניתן לעצור את ה-WiMAX</string>
+  <string name="wimax_settings_title">הגדרות ה-WiMAX</string>
+  <string name="wimax_settings_summary">ניהול ה-WiMAX</string>
+  <string name="wimax_settings_category">הגדרות ה-WiMAX</string>
+  <string name="wimax">WiMAX</string>
+  <string name="scan_wimax">סורק</string>
+  <string name="wimax_menu_advanced">מתקדם</string>
+  <string name="wimax_networks">רשתות WiMAX</string>
+  <string name="wimax_scan_networks">סרוק רשתות WiMAX</string>
+  <string name="error_wimax_scanning">אין אפשרות לסרוק אחר רשתות</string>
+  <string name="wimax_auto_connect">התחברות אוטומטית</string>
+  <string name="wimax_auto_connect_summary">התחבר אוטומטית לרשת שהתחברת לאחרונה, אם היא זמינה</string>
+  <string name="wimax_context_menu_connect">התחבר לרשת</string>
+  <string name="wimax_context_menu_disconnect">התנתק מהרשת</string>
+  <string name="error_wimax_connecting">לא ניתן להתחבר לרשת</string>
+  <string name="wimax_signal_3">מצויין</string>
+  <string name="wimax_signal_2">טוב</string>
+  <string name="wimax_signal_1">סביר</string>
+  <string name="wimax_signal_0">חלש</string>
+  <string name="wimax_advanced_titlebar">מתקדם</string>
+  <string name="wimax_advanced_mac_address_title">כתובות MAC</string>
+  <string name="wimax_advanced_hw_version_title">גירסה חומרה</string>
+  <string name="wimax_advanced_sw_version_title">גירסת קושחה</string>
+  <string name="wimax_advanced_signal_strength_rssi_title">עוצמת האות (RSSI)</string>
+  <string name="wimax_advanced_signal_strength_simple_title">עוצמת האות (Simple)</string>
+  <string name="wimax_ip_settings_titlebar">הגדרות IP</string>
+  <string name="wimax_ip_address">כתובת ה-IP</string>
+  <string name="wimax_gateway">שער</string>
+  <string name="wimax_status_scanning">סורק\u2026</string>
+  <string name="wimax_status_connecting">מתחבר\u2026</string>
+  <string name="wimax_status_connecting_to">מתחבר אל &lt;xliff:g id="network_name"&gt;%1$s&lt;/xliff:g&gt;\u2026</string>
+  <string name="wimax_status_connected">מחובר</string>
+  <string name="wimax_status_connected_to">מחובר אל &lt;xliff:g id="network_name"&gt;%1$s&lt;/xliff:g&gt;</string>
+  <string name="wimax_status_disconnecting">מתנתק\u2026</string>
+  <string name="wimax_status_disconnecting_from">התנתקות מ- &lt;xliff:g id="network_name"&gt;%1$s&lt;/xliff:g&gt; \u2026</string>
+  <string name="wimax_status_disconnected">מנותק</string>
     <string name="sound_settings_title" msgid="8735891486683305886">"קול"</string>
+	<string name="profile_settings_title">פרופילים</string>
     <string name="display_settings_title" msgid="1708697328627382561">"תצוגה"</string>
     <string name="sound_settings" msgid="5007659014828162881">"הגדרות קול"</string>
     <string name="silent_mode_title" msgid="3181479108593217704">"מצב שקט"</string>
     <string name="silent_mode_summary" msgid="3309650676072917899">"השתק את כל הצלילים פרט למדיה והתראות"</string>
     <string name="silent_mode_incl_alarm_summary" msgid="2088830834182228458">"כל הצלילים מושתקים פרט למדיה"</string>
     <string name="ringtone_title" msgid="5379026328015343686">"צלצול הטלפון"</string>
-    <string name="ringtone_summary" msgid="2630023412632683493"></string>
+    <string name="ringtone_summary">&lt;string name="ringtone_summary" msgid="2630023412632683493"/&gt;</string>
+    <string name="soundtone_title">צליל התראה</string>
+    <string name="soundtone_summary">""</string>
     <string name="all_volume_title" msgid="8741571721868253103">"עוצמת קול"</string>
     <string name="ring_volume_title" msgid="7938706566797464165">"עוצמת הקול של הצלצול"</string>
     <string name="ring_volume_summary" msgid="7055497624193116879"></string>
@@ -427,6 +520,12 @@
     <string name="notification_sound_summary" msgid="2953599929394109819"></string>
     <string name="notification_pulse_title" msgid="1247988024534030629">"תאורת התראה של אות"</string>
     <string name="notification_pulse_summary" msgid="6899220780534617152">"תאורת כדור עקיבה מהבהבת ברציפות להתראות חדשות"</string>
+	<string name="notification_blink_title">הבהוב נורת התראה</string>
+  <string name="notification_blink_summary">הבהוב חוזר של התראה בצבע ירוק</string>
+  <string name="notification_always_on_title">אפשר תמיד הבהוב נורת התראה</string>
+  <string name="notification_always_on_summary">אפשר נורת התראה כאשר המסך פועל</string>
+  <string name="notification_charging_title">אור הטענה</string>
+  <string name="notification_charging_summary">אפשר אור בצבע כתום בעת טעינה</string>
     <string name="incoming_call_volume_title" msgid="8073714801365904099">"צלצול"</string>
     <string name="notification_volume_title" msgid="2012640760341080408">"התראה"</string>
     <string name="checkbox_notification_same_as_incoming_call" msgid="1073644356290338921">"השתמש בעוצמת הקול של שיחה להתראות"</string>
@@ -501,11 +600,15 @@
     <string name="device_info_settings" msgid="475872867864762157">"מצב הטלפון"</string>
     <string name="system_update_settings_list_item_title" msgid="3342887311059985961">"עדכוני מערכת"</string>
     <string name="system_update_settings_list_item_summary" msgid="3853057315907710747"></string>
+	<string name="cpu_info">פרטי המעבד</string>
+  <string name="mem_info">פרטי הזיכרון (פנוי/סך הכל)</string>
     <string name="firmware_version" msgid="4801135784886859972">"גרסת Android"</string>
     <string name="model_number" msgid="3765737700545384794">"מספר דגם"</string>
     <string name="baseband_version" msgid="1848990160763524801">"גרסת פס בסיס"</string>
     <string name="kernel_version" msgid="9192574954196167602">"גרסת ליבה"</string>
     <string name="build_number" msgid="3075795840572241758">"מספר Build"</string>
+	<string name="mod_version">גרסת מוד</string>
+  <string name="mod_version_default">לא ידוע</string>
     <string name="device_info_not_available" msgid="8062521887156825182">" לא זמין"</string>
     <string name="device_status_activity_title" msgid="1411201799384697904">"מצב"</string>
     <string name="device_status" msgid="607405385799807324">"מצב"</string>
@@ -850,6 +953,8 @@
     <string name="testing" msgid="6584352735303604146">"בדיקה"</string>
     <string name="testing_phone_info" msgid="8656693364332840056">"מידע על הטלפון"</string>
     <string name="testing_battery_info" msgid="3497865525976497848">"פרטי סוללה"</string>
+    <string name="testing_battery_history">היסטורית סוללה</string>
+    <string name="testing_sim_toolkit">ערכת הכלים של ה-SIM</string>
     <string name="quick_launch_title" msgid="7904609846945905306">"הפעלה מהירה"</string>
     <string name="quick_launch_summary" msgid="3453825712466417452">"הגדר מקשי קיצור כדי להפעיל יישומים"</string>
     <string name="quick_launch_assign_application" msgid="4521368464929956350">"הקצה ליישום"</string>
@@ -871,19 +976,49 @@
     <string name="development_settings_summary" msgid="2151320488701538355">"הגדרת אפשרויות לפיתוח יישום"</string>
     <string name="enable_adb" msgid="7982306934419797485">"ניקוי באגים של USB"</string>
     <string name="enable_adb_summary" msgid="4881186971746056635">"מצב תיקון באגים כאשר USB מחובר"</string>
+	<string name="adb_notify">התראת איתור באגים ב- USB</string>
+  <string name="adb_notify_summary">הצג איתור באגים כאשר USB מחובר</string>
     <string name="keep_screen_on" msgid="1146389631208760344">"השאר פועל"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"המסך לעולם לא יהיה במצב שינה במהלך טעינה"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"אפשר מיקומים מדומים"</string>
+	 <string name="kill_app_longpress_back">הפסק ישום באמצעות לחיצה ארוכה</string>
+  <string name="kill_app_longpress_back_summary">לחיצה ארוכה על מקש ה"חזור" יפסיק את פעולת האפליקציות הרצות ברקע.</string>
     <string name="allow_mock_location_summary" msgid="317615105156345626">"אפשר מיקומים מדומים"</string>
     <string name="adb_warning_title" msgid="6234463310896563253">"לאפשר ניקוי באגים של USB?"</string>
     <string name="adb_warning_message" msgid="5352555112049663033">"ניקוי באגים ב-USB מיועד למטרות פיתוח בלבד. ניתן להשתמש בו כדי להעתיק נתונים בין המחשב והמכשיר, כדי להתקין יישומים במכשיר ללא התראה וכדי לקרוא נתוני יומן."</string>
     <string name="gadget_picker_title" msgid="98374951396755811">"בחר גאדג\'ט"</string>
     <string name="widget_picker_title" msgid="9130684134213467557">"בחר widget"</string>
+	 <string name="battery_history_details_for">פרטים עבור UID &lt;xliff:g id="number" example="1234"&gt;%d&lt;/xliff:g&gt;</string>
+  <string name="battery_history_uid">UID &lt;xliff:g id="user_id"&gt;%1$d&lt;/xliff:g&gt;</string>
+  <string name="battery_history_network_usage">פרטי שימוש ברשת עבור &lt;xliff:g id="app_name"&gt;%1$s&lt;/xliff:g&gt;:</string>
+  <string name="battery_history_bytes_received">בייתים שהתקבלו: &lt;xliff:g id="bytes"&gt;%1$d&lt;/xliff:g&gt;</string>
+  <string name="battery_history_bytes_sent">בייתים שנשלחו: &lt;xliff:g id="bytes"&gt;%1$d&lt;/xliff:g&gt;</string>
+  <string name="battery_history_bytes_total">סך הכל בייתים: &lt;xliff:g id="bytes"&gt;%1$d&lt;/xliff:g&gt;</string>
+  <string name="battery_history_cpu_usage">פרטי שימוש במעבד עבור &lt;xliff:g id="app_name"&gt;%1$s&lt;/xliff:g&gt;:</string>
+  <string name="battery_history_user_time">זמן משתמש:</string>
+  <string name="battery_history_system_time">זמן מערכת: </string>
+  <string name="battery_history_total_time">זמן כולל: </string>
+  <string name="battery_history_starts">מתחיל &lt;xliff:g id="starts"&gt;%1$d&lt;/xliff:g&gt;</string>
     <string name="battery_history_days" msgid="7110262897769622564">"<xliff:g id="DAYS">%1$d</xliff:g>ימים <xliff:g id="HOURS">%2$d</xliff:g> שעות <xliff:g id="MINUTES">%3$d</xliff:g> דקות <xliff:g id="SECONDS">%4$d</xliff:g> שניות"</string>
     <string name="battery_history_hours" msgid="7525170329826274999">"<xliff:g id="HOURS">%1$d</xliff:g> שעות <xliff:g id="MINUTES">%2$d</xliff:g> דקות <xliff:g id="SECONDS">%3$d</xliff:g> שניות"</string>
     <string name="battery_history_minutes" msgid="1467775596084148610">"<xliff:g id="MINUTES">%1$d</xliff:g> דקות <xliff:g id="SECONDS">%2$d</xliff:g> שניות"</string>
     <string name="battery_history_seconds" msgid="4283492130945761685">"<xliff:g id="SECONDS">%1$d</xliff:g> שניות"</string>
-    <string name="usage_stats_label" msgid="5890846333487083609">"נתוני שימוש"</string>
+   <string name="battery_history_packages_sharing_this_uid">חבילות אשר חולקות UID:</string>
+  <string name="battery_history_no_data">מידע על שימוש הסוללה לא זמין</string>
+  <string name="battery_history_sensor">:חיישן</string>
+  <string name="battery_history_wakelock">נעילה חלקית:</string>
+  <string name="battery_history_used_by_packages">חיישן בשימוש על ידי חבילות:</string>
+  <string name="battery_history_sensor_usage">בשימוש &lt;xliff:g id="count"&gt;%1$d&lt;/xliff:g&gt; פעמים על ידי &lt;xliff:g id="package"&gt;%2$s&lt;/xliff:g&gt;</string>
+  <string name="battery_history_sensor_usage_multi">בשימוש &lt;xliff:g id="count"&gt;%1$d&lt;/xliff:g&gt; times by one of:</string>
+  <string name="battery_history_awake_label">פועל</string>
+  <string name="battery_history_screen_on_label">מסך פועל</string>
+  <string name="battery_history_phone_on_label">מכשיר פועל</string>
+  <string name="battery_history_awake">משך הזמן ללא שינה:</string>
+  <string name="battery_history_screen_on">משך הזמן שהמסך פועל:</string>
+  <string name="battery_history_phone_on">משך הזמן שהמכשיר פועל:</string>
+  <string name="battery_history_screen_on_battery">אודות הסוללה:</string>
+  <string name="battery_history_screen_on_plugged">מחובר לחשמל:</string>
+   <string name="usage_stats_label" msgid="5890846333487083609">"נתוני שימוש"</string>
     <string name="testing_usage_stats" msgid="7823048598893937339">"נתונים סטטיסטיים של שימוש"</string>
     <string name="display_order_text" msgid="8592776965827565271">"מיין לפי:"</string>
     <string name="app_name_label" msgid="2000949925256858308">"יישום"</string>
@@ -1074,6 +1209,26 @@
     <string name="vpn_a_l2tp_secret" msgid="6612042930810981845">"סוד של L2TP"</string>
     <string name="vpn_pptp_encryption_title" msgid="2236795167467896499">"הצפנה"</string>
     <string name="vpn_pptp_encryption" msgid="2602329949737259686">"הצפנת PPTP"</string>
+	<string name="vpn_openvpn_port">יציאת שרת</string>
+  <string name="vpn_openvpn_protocol">פרוטוקול בשימוש</string>
+  <string name="vpn_openvpn_device">התקן בשימוש</string>
+  <string name="vpn_openvpn_userauth">אימות משתמש</string>
+  <string name="vpn_openvpn_userauth_summary">הגדר אם שם המשתמש נוסף / אימות סיסמה צריכים להשתמש</string>
+  <string name="vpn_openvpn_advanced_titlebar">הגדרות מתקדמות OpenVPN</string>
+  <string name="vpn_openvpn_comp_lzo">דחיסת LZO</string>
+  <string name="vpn_openvpn_comp_lzo_summary">הגדר אם שם המשתמש נוסף / אימות סיסמה צריכים להשתמש</string>
+  <string name="vpn_openvpn_redirect_gateway_title">ניתוב מחדש של שער</string>
+  <string name="vpn_openvpn_redirect_gateway_summary">הפסק את כל התעבורה to berouted thru the VPN tunnel</string>
+  <string name="vpn_openvpn_set_addr">מגדיר כתובות מרחוק</string>
+  <string name="vpn_openvpn_set_addr_summary">בטל את הסימון כדי להגדיר באופן ידני את כתובות tunnel</string>
+  <string name="vpn_openvpn_set_local_addr">כתובת IP מקומית</string>
+  <string name="vpn_openvpn_set_remote_addr">כתובת IP מרוחקת</string>
+  <string name="vpn_openvpn_set_cipher">אלגוריתם הצפנה</string>
+  <string name="vpn_openvpn_set_cipher_message">השאר ריק כדי להשתמש בצופן ברירת מחדל</string>
+  <string name="vpn_openvpn_set_keysize">גודל מפתח הצפנה</string>
+  <string name="vpn_openvpn_set_keysize_message">השאר ריק כדי להשתמש בצופן-בברירת המחדל הספציפי </string>
+  <string name="vpn_openvpn_set_extra">Extra arguments</string>
+  <string name="vpn_openvpn_set_extra_message">הזן הארגומנטים של שורת פקודה נוספת</string>
     <string name="vpn_ipsec_presharedkey_title" msgid="2184060087690539175">"הגדר מפתח משותף מראש של IPSec"</string>
     <string name="vpn_ipsec_presharedkey" msgid="5434316521616673741">"מפתח משותף מראש של IPSec"</string>
     <string name="vpn_a_ipsec_presharedkey" msgid="1255301923217898418">"מפתח משותף מראש של IPSec"</string>
@@ -1134,6 +1289,37 @@
     <!-- outdated translation 7428547491734194431 -->     <string name="encrypted_fs_alert_dialog_title" msgid="583462447886934755">"אזהרה של מערכות קבצים מוצפנים"</string>
     <string name="emergency_tone_title" msgid="1055954530111587114">"צליל חירום"</string>
     <string name="emergency_tone_summary" msgid="722259232924572153">"הגדר אופן פעולה בעת ביצוע שיחת חירום"</string>
+	<string name="profile_title">קביעת תצורה של פרופילים</string>
+  <string name="profile_appgroup_list_title">קביעת תצורה של קבוצות יישומים</string>
+  <string name="sound_mode">מצב התראות</string>
+  <string name="ringer_mode">מצב צלצול</string>
+  <string name="lights_mode">מצב תאורה</string>
+  <string name="vibrate_mode">מצב רטט</string>
+  <string name="choose_soundtone">בחר צליל התראה</string>
+  <string name="choose_ringtone">בחר צלצול</string>
+  <string name="profile_settings">הגדרות פרופיל</string>
+  <string name="profile_name">שם פרופיל</string>
+  <string name="profile_summary">הקש כדי לקבוע תצורת הפרופיל</string>
+  <string name="profile_appgroup_title">קבוצת יישומים: %s</string>
+  <string name="profile_appgroups_title">קבוצות יישומים</string>
+  <string name="profile_applist_title">יישומים - לחץ כדי להסיר מהקבוצה</string>
+  <string name="profile_appgroup_name_prompt">הזן שם עבור קבוצת יישום</string>
+  <string name="profile_delete">מחיקת פרופיל</string>
+  <string name="profile_delete_confirm">האם אתה בטוח שברצונך למחוק פרופיל זה</string>
+  <string name="profile_app_delete_confirm">האם אתה בטוח שברצונך להסיר יישום זה</string>
+  <string name="profile_choose_app">בחר יישום</string>
+  <string name="profile_settings_header">פרופיל הגדרות: %s</string>
+  <string name="profile_group_header">פרופיל: %1$s קטגוריה: %2$s</string>
+  <string name="menu_appgroups">ניהול קבוצות יישום</string>
+  <string name="menu_new_profile">פרופיל חדש</string>
+  <string name="menu_new_profile_summary">הוספה וקביעת תצורה של פרופיל חדש</string>
+  <string name="profile_menu_delete">מחק</string>
+  <string name="profile_new_appgroup">קבוצת יישומים חדשה</string>
+  <string name="profile_delete_appgroup">מחיקת קבוצת יישומים זאת</string>
+  <string name="profile_add_app">הוספת יישום</string>
+  <string name="profile_manage">ניהול פרופילים</string>
+  <string name="profile_appgroups_manage">ניהול קבוצות יישומים</string>
+  <string name="profile_applist_manage">ניהול רשימת יישומים</string>
     <string name="privacy_settings" msgid="9206631214140954954">"פרטיות"</string>
     <string name="privacy_settings_title" msgid="1987089301293213705">"הגדרות פרטיות"</string>
     <string name="backup_section_title" msgid="8856083167469467588">"גיבוי ושחזור"</string>
@@ -1159,4 +1345,80 @@
     <string name="sound_category_calls_title" msgid="3688531959256239012">"שיחות נכנסות"</string>
     <string name="sound_category_notification_title" msgid="3502115998790286943">"התראות"</string>
     <string name="sound_category_feedback_title" msgid="4399742321363475393">"משוב"</string>
+ <string name="launcher_settings_title">ADWLauncher</string>
+  <string name="possibleButtons">הלחצנים האפשריים</string>
+  <string name="toggleWifi">Wi-Fi</string>
+  <string name="toggleWifiAp">נקודות גישה אלחוטית</string>
+  <string name="toggleBluetooth">Bluetooth</string>
+  <string name="toggleGPS">GPS</string>
+  <string name="toggleData">נתוני רשת סלולרית</string>
+  <string name="toggleSync">סינכרון נתונים</string>
+  <string name="toggle2g3g">2G/3G</string>
+  <string name="toggleSound">מצב צלצול</string>
+  <string name="toggleBrightness">בהירות</string>
+  <string name="toggleAutoRotate">כיוון תצוגה</string>
+  <string name="toggleScreenTimeout">זמן קצוב של המסך</string>
+  <string name="toggleAirplane">טיסה</string>
+  <string name="toggleFlashlight">פנס</string>
+  <string name="toggleLockScreen">נעילת מסך</string>
+  <string name="toggleWimax">WiMAX</string>
+  <string name="toggleWifiDescription">הפעל/בטל Wifi</string>
+  <string name="toggleWifiApDescription">הפעל/בטל נקודה גישה של Wi-Fi</string>
+  <string name="toggleBluetoothDescription">הפעל/בטל Bluetooth</string>
+  <string name="toggleGPSDescription">הפעל/בטל GPS</string>
+  <string name="toggleDataDescription">הפעל/בטל צריכת נתונים</string>
+  <string name="toggleSyncDescription">הפעל/בטל סינכרון נתונים</string>
+  <string name="toggle2g3gDescription">לעבור בין 2G ו 3G</string>
+  <string name="toggleSoundDescription">מעבר בין צלצול, ורטט בלבד</string>
+  <string name="toggleBrightnessDescription">מעבר בין רמות בהירות</string>
+  <string name="toggleAutoRotateDescription">הפעל/בטל כיוון חיישן</string>
+  <string name="toggleScreenTimeoutDescription">להגדיר פסקי זמן מסך שונות</string>
+  <string name="toggleAirplaneDescription">הפעל/בטל מצב טיסה</string>
+  <string name="toggleFlashlightDescription">הפעל/בטל מצב פנס</string>
+  <string name="toggleLockScreenDescription">הפעל/בטל נעילת מסך</string>
+  <string name="toggleWimaxDescription">הפעל/בטל WiMAX</string>
+  <string name="widgetSettings">הגדרות הופעת Widget </string>
+  <string name="wifiSettings">הגדרות אירועי Wifi</string>
+  <string name="dataSettings">הגדרות אירועי נתונים</string>
+  <string name="powerSettings">הגדרות צריכת חשמל של אירועים</string>
+  <string name="generalSettings">הגדרות כלליות</string>
+  <string name="autoDisable3G">נתונים משבית 3G</string>
+  <string name="autoEnable3G">הנתונים מאפשר 3G</string>
+  <string name="autoDisable3GWithWifi">Wifi מבטלת 3G</string>
+  <string name="autoEnable3GWithWifi">Wifi מאפשר 3G</string>
+  <string name="useRoundCorners">עיגול פינות</string>
+  <string name="useVertical">פריסה אנכית</string>
+  <string name="useTransparent">Widget שקוף </string>
+  <string name="autoEnableSyncWithWifi">Wifi אפשר סינכרון דרך</string>
+  <string name="autoDisableSyncWithWifi">Wifi ביטול סינכרון</string>
+  <string name="ringModeVibrateAsOn">הרטט פועל</string>
+  <string name="monitorDataRoaming">מעקב נדידת נתונים</string>
+  <string name="autoEnableBluetoothWithPower">Ext. PWR מאפשר Bluetooth</string>
+  <string name="autoDisableBluetoothWithPower">Ext. PWR מבטל Bluetooth</string>
+  <string name="autoEnableWifiWithPower">Ext. PWR מאפשר Wifi</string>
+  <string name="autoDisableWifiWithPower">Ext. PWR מבטל Wifi</string>
+  <string name="autoDisable3GDescription">2G כאשר הנתונים הניידיים אינם זמינים</string>
+  <string name="autoEnable3GDescription">3g כאשר נתונים ניידים זמינה</string>
+  <string name="autoDisable3GWithWifiDescription">2G כאשר Wifi זמין</string>
+  <string name="autoEnable3GWithWifiDescription">3G כאשר Wifi מושבת</string>
+  <string name="useRoundCornersDescription">widget השתמש בסיבוב סמלים</string>
+  <string name="useTransparentDescription">אין widget ברקע</string>
+  <string name="useVerticalDescription">הצג עם אוריינטציה אנכית</string>
+  <string name="autoEnableSyncWithWifiDescription">אפשר סינכרון כאשר WIFI זמין</string>
+  <string name="autoDisableSyncWithWifiDescription">בטל סינכרון כאשר WIFI אינו זמין</string>
+  <string name="ringModeVibrateAsOnDescription">הצגת צליל כפעיל כאשר רוטט בלבד</string>
+  <string name="monitorDataRoamingDescription">Data status red if data roaming is enabled</string>
+  <string name="autoEnableBluetoothWithPowerDescription">Bluetooth enabled when Power connected</string>
+  <string name="autoDisableBluetoothWithPowerDescription">Bluetooth התנתק בעת ניתוק חשמל</string>
+  <string name="autoEnableWifiWithPowerDescription">WiFi מופעל כאשר מחובר לחשמל</string>
+  <string name="autoDisableWifiWithPowerDescription">Wifi זמין כאשר החשמל מנותק</string>
+  <string name="networkModeSpinner">בחר מצבי רשת</string>
+  <string name="brightnessSpinner">בחר רמות בהירות</string>
+  <string name="ringModeSpinner">בחר מצבי צלצול</string>
+  <string name="screenTimeoutSpinner">בחר זמן לכיבוי מסך</string>
+  <string name="backgroundImageSpinner">בחר רקע</string>
+  <string name="notConfigured">לא הוגדר. נא הגדר שוב</string>
+  <string name="ok">אישור</string>
+  <string name="widget_count">(%d widgets)</string>
+  <string name="cm_settings_title">הגדרות CyanogenMod</string>
 </resources>
