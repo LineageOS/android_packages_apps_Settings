@@ -1183,6 +1183,7 @@
     <string name="toggleAirplane">Режим самолёта</string>
     <string name="toggleFlashlight">Фонарь</string>
     <string name="toggleLockScreen">Блокировка экрана</string>
+    <string name="toggleWimax">WiMAX</string>	
     <string name="toggleWifiDescription">Включение/Отключение Wi-Fi</string>
     <string name="toggleWifiApDescription">Включение/Отключение портативной Wi-Fi точки доступа</string>
     <string name="toggleBluetoothDescription">Включение/Отключение Bluetooth</string>
@@ -1197,7 +1198,8 @@
     <string name="toggleAirplaneDescription">Включение/Отключение режима самолёта</string>
     <string name="toggleFlashlightDescription">Включение/Отключение фонарика</string>
     <string name="toggleLockScreenDescription">Включение/Отключение блокировки экрана</string>
-    <string name="widgetSettings">Widget Instance Settings</string>
+    <string name="toggleWimaxDescription">Включение/Отключение WiMAX</string>
+    <string name="widgetSettings">Образец настройки виджета</string>
     <string name="wifiSettings">Настройки Wi-Fi</string>
     <string name="dataSettings">Настройки передачи данных</string>
     <string name="powerSettings">Настройки зарядки</string>
@@ -1250,7 +1252,75 @@
     <!-- Setting checkbox title whether to allow killing foreground app by longpress on BACK. -->
     <string name="kill_app_longpress_back">Закрытие приложений</string>
     <!-- Setting checkbox summary whether to allow killing foreground app by longpress on BACK. -->
-    <string name="kill_app_longpress_back_summary">Долго нажатие Назад закроет все запущенные приложения</string>
+    <string name="kill_app_longpress_back_summary">Долгое нажатие кнопки Назад закроет все запущенные приложения</string>
     <string name="device_hostname">Имя хоста устройства</string>
+
+    <!-- Main Settings screen setting option name to go into the profile settings screen -->
+    <string name="profile_settings_title">Профили</string>	
+
+    <!-- Profile Settings profile config screen title -->
+    <string name="profile_title">Настройка профилей</string>
+    <!-- Profile Settings apgroup config screen title -->
+    <string name="profile_appgroup_list_title">Настройка групп приложений</string>
+    <!-- Profile Settings sound mode label -->
+    <string name="sound_mode">Режим уведомления</string>
+    <!-- Profile Settings ringer mode label -->
+    <string name="ringer_mode">Режим звонка</string>
+    <!-- Profile Settings lights mode label -->
+    <string name="lights_mode">Облегченный режим</string>
+    <!-- Profile Settings vibrate mode label -->
+    <string name="vibrate_mode">Режим вибрации</string>
+    <!-- Profile notification tone -->
+    <string name="choose_soundtone">Звук уведомления</string>
+    <!-- Profile ringtone -->
+    <string name="choose_ringtone">Мелодия телефона</string>
+    <!-- Profile settings screen, section header for settings related to notification profiles -->
+    <string name="profile_settings">Настройки профиля</string>
+    <!-- Name of the profile, setting caption -->
+    <string name="profile_name">Имя профиля</string>
+    <!-- Profile summary - hint that touching configures profile -->
+    <string name="profile_summary">Нажмите для настройки профиля</string>
+    <!-- Title for application group setting screen -->
+    <string name="profile_appgroup_title">Группа приложения: %s</string>
+    <!-- Title for application group list screen -->
+    <string name="profile_appgroups_title">Группы приложений</string>
+    <!-- Title for application group list section, hint at delete action -->
+    <string name="profile_applist_title">Приложения - нажмите для удаления из группы</string>
+    <!-- Prompt for name when adding a new app group -->
+    <string name="profile_appgroup_name_prompt">Введите имя для группы приложений</string>
+    <!-- Delete profile setting item -->
+    <string name="profile_delete">Удалить профиль</string>
+    <!-- Delete profile confimation message -->
+    <string name="profile_delete_confirm">Вы действительно хотите удалить этот профиль?</string>
+    <!-- Delete application from group confirm message -->
+    <string name="profile_app_delete_confirm">Вы действительно хотите удалить это приложение?</string>
+    <!-- Add application dialog box title -->
+    <string name="profile_choose_app">Выберите приложение</string>
+    <!-- Title for profile settings screen -->
+    <string name="profile_settings_header">Настройки профиля: %s</string>
+    <!-- Profile category settings heading -->
+    <string name="profile_group_header">Профиль: %1$s категория: %2$s</string>
+    <!-- Menu item for managing app groups -->
+    <string name="menu_appgroups">Управление группами приложений</string>
+    <!-- Menu item for adding a new profile -->
+    <string name="menu_new_profile">Новый профиль</string>
+    <!-- Menu item for adding a new profile - summary -->
+    <string name="menu_new_profile_summary">Добавить и настроить новый профиль</string>
+    <!-- Delete an item context menu item -->
+    <string name="profile_menu_delete">Удалить</string>
+    <!-- Message when trying to delete the active profile -->
+    <string name="profile_cannot_delete">Вы не можете удалить активный профиль</string>
+    <!-- Menu item for adding a new app group -->
+    <string name="profile_new_appgroup">Новая группа приложений</string>
+    <!-- Menu item for deleting an app group -->
+    <string name="profile_delete_appgroup">Удалить эту группу приложений</string>
+    <!-- Menu item for adding an app -->
+    <string name="profile_add_app">Добавить приложение</string>
+    <!-- Menu item for managing profiles -->
+    <string name="profile_manage">Управление профилями</string>
+    <!-- Menu item for managing app groups -->
+    <string name="profile_appgroups_manage">Управление группами приложений</string>
+    <!-- Menu item for managing app list -->
+    <string name="profile_applist_manage">Управление списком приложений</string>
 	
 </resources>
