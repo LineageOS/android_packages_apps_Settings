@@ -126,8 +126,7 @@
     <string name="normal_date_format" msgid="1982904221918374153">"Normal (<xliff:g id="DATE">%s</xliff:g>)"</string>
     <string name="display_preview_label" msgid="1127597250917274792">"Förhandsgranska:"</string>
     <string name="display_font_size_label" msgid="8941851418397475389">"Teckenstorlek:"</string>
-    <!-- no translation found for intent_sender_data_label (6332324780477289261) -->
-    <skip />
+    <string name="intent_sender_data_label"><xliff:g id="data">Data:</xliff:g></string>
     <string name="intent_sender_sendbroadcast_text" msgid="1415735148895872715">"Skicka <xliff:g id="BROADCAST">broadcast</xliff:g>"</string>
     <string name="intent_sender_action_label" msgid="616458370005452389">"<xliff:g id="ACTION">Action</xliff:g>:"</string>
     <string name="intent_sender_startactivity_text" msgid="5080516029580421895">"Starta <xliff:g id="ACTIVITY">activity</xliff:g>"</string>
@@ -203,6 +202,7 @@
     <string name="activity_picker_label" msgid="4910700713930693329">"Välj aktivitet"</string>
     <string name="device_info_label" msgid="6551553813651711205">"Enhetsinfo"</string>
     <string name="battery_info_label" msgid="4132685016148679403">"Batteriinformation"</string>
+    <string name="battery_history_label">Batterihistorik</string>
     <string name="display_label" msgid="7403874003169865762">"Skärm"</string>
     <string name="phone_info_label" msgid="2127552523124277664">"Telefoninformation"</string>
     <string name="sd_card_settings_label" product="nosdcard" msgid="8101475181301178428">"USB-lagring"</string>
@@ -214,6 +214,7 @@
     <string name="settings_shortcut" msgid="3672145147925639262">"Inställningar"</string>
     <string name="airplane_mode" msgid="8837269988154128601">"Flygplansläge"</string>
     <string name="airplane_mode_summary" msgid="3154817401368780988">"Inaktivera alla trådlösa anslutningar"</string>
+    <string name="device_hostname">Enhetens värdnamn</string>
     <string name="airplane_mode_turning_on" msgid="8871739222526957255">"Inaktiverar trådlösa anslutningar…"</string>
     <string name="airplane_mode_turning_off" msgid="3393168549611505996">"Aktivera trådlösa anslutningar..."</string>
     <string name="radio_controls_title" msgid="5868688473587168882">"Trådlöst och nätverk"</string>
@@ -314,9 +315,11 @@
     <string name="bluetooth_profile_a2dp" msgid="3259633293424539529">"Media"</string>
     <string name="bluetooth_profile_headset" msgid="1874975688666658946">"Telefon"</string>
     <string name="bluetooth_profile_opp" msgid="3799470046565284440">"Överför"</string>
+    <string name="bluetooth_profile_hid">HID</string>
     <string name="bluetooth_summary_connected_to_a2dp" msgid="510833839847758664">"Ansluten till medialjud"</string>
     <string name="bluetooth_summary_connected_to_headset" msgid="4876496372728623918">"Ansluten till telefonens ljud"</string>
     <string name="bluetooth_summary_connected_to_a2dp_headset" msgid="3045032710457800891">"Ansluten till telefon- och medialjud"</string>
+    <string name="bluetooth_summary_connected_to_hid">Ansluten till HID-enhet</string>
     <string name="bluetooth_device_advanced_title" msgid="528816860793581131">"<xliff:g id="DEVICE_NAME">%1$s</xliff:g> alternativ"</string>
     <string name="bluetooth_device_advanced_online_mode_title" msgid="3689050071425683114">"Anslut"</string>
     <string name="bluetooth_device_advanced_online_mode_summary" msgid="1204424107263248336">"Anslut till Bluetooth-enhet"</string>
@@ -328,6 +331,8 @@
     <string name="bluetooth_a2dp_profile_summary_use_for" msgid="4630849022250168427">"Använd för medialjud"</string>
     <string name="bluetooth_headset_profile_summary_use_for" msgid="8705753622443862627">"Använd för telefonens ljud"</string>
     <string name="bluetooth_opp_profile_summary_use_for" msgid="1255674547144769756">"Använd för filöverföring"</string>
+    <string name="bluetooth_hid_profile_summary_connected">Ansluten till HID-enhet</string>
+    <string name="bluetooth_hid_profile_summary_use_for">Använd till HID-enhet</string>
     <string name="bluetooth_dock_settings" msgid="3218335822716052885">"Dockningsinställningar"</string>
     <string name="bluetooth_dock_settings_title" msgid="5543069893044375188">"Använd dockningsstation för ljud"</string>
     <string name="bluetooth_dock_settings_headset" msgid="1001821426078644650">"Som högtalartelefon"</string>
@@ -336,6 +341,8 @@
     <string name="nfc_quick_toggle_title" msgid="6769159366307299004">"NFC"</string>
     <string name="nfc_quick_toggle_summary" msgid="1988408027741447231">"Använd närfältskommunikation för att läsa och utbyta taggar"</string>
     <string name="nfc_toggle_error" msgid="2233172102497535522">"Ett fel inträffade."</string>
+    <string name="hostname_save">Spara</string>
+    <string name="hostname_cancel">Avbryt</string>
     <string name="wifi_quick_toggle_title" msgid="874495178395350104">"Wi-Fi"</string>
     <string name="wifi_quick_toggle_summary" msgid="1047950931623694366">"Aktivera Wi-Fi"</string>
     <string name="wifi_settings" msgid="4746946030627213196">"Wi-Fi-inställningar"</string>
@@ -408,7 +415,50 @@
     <string name="wifi_tether_configure_ap_text" msgid="3474995108398156258">"Konfigurera Wi-Fi-surfpunkt"</string>
     <string name="wifi_tether_configure_subtext" msgid="1927454307836232128">"<xliff:g id="NETWORK_SSID">%1$s</xliff:g> <xliff:g id="NETWORK_SECURITY">%2$s</xliff:g> mobil Wi-Fi-surfpunkt"</string>
     <string name="wifi_tether_configure_ssid_default" msgid="8467525402622138547">"AndroidHotspot"</string>
+    <string name="wimax_quick_toggle_title">WiMAX</string>
+    <string name="wimax_quick_toggle_summary">Slå på WiMAX</string>
+    <string name="wimax_starting">Slår på\u2026</string>
+    <string name="wimax_stopping">Stänger av\u2026</string>
+    <string name="wimax_error">Fel</string>
+    <string name="error_wimax_starting">Kunde inte starta WiMAX</string>
+    <string name="error_wimax_stopping">Kunde inte stänga av WiMAX</string>
+    <string name="wimax_settings_title">WiMAX-inställningar</string>
+    <string name="wimax_settings_summary">Hantera WiMAX</string>
+    <string name="wimax_settings_category">WiMAX-inställningar</string>
+    <string name="wimax">WiMAX</string>
+    <string name="scan_wimax">Sök av</string>
+    <string name="wimax_menu_advanced">Avancerat</string>
+    <string name="wimax_networks">WiMAX-nätverk</string>
+    <string name="wimax_scan_networks">Sök av WiMAX-nätverk</string>
+    <string name="error_wimax_scanning">Kunde inte söka av efter nätverk</string>
+    <string name="wimax_auto_connect">Anslut automatiskt</string>
+    <string name="wimax_auto_connect_summary">Anslut automatiskt till senate anslutna nätverk, om tillgängligt</string>
+    <string name="wimax_context_menu_connect">Anslut till nätverk</string>
+    <string name="wimax_context_menu_disconnect">Koppla från nätverk</string>
+    <string name="error_wimax_connecting">Kunde inte ansluta till nätverket</string>
+    <string name="wimax_signal_3">Utmärkt</string>
+    <string name="wimax_signal_2">Bra</string>
+    <string name="wimax_signal_1">Måttlig</string>
+    <string name="wimax_signal_0">Dålig</string>
+    <string name="wimax_advanced_titlebar">Avancerat</string>
+    <string name="wimax_advanced_mac_address_title">MAC-adress</string>
+    <string name="wimax_advanced_hw_version_title">Hårdvaruversion</string>
+    <string name="wimax_advanced_sw_version_title">Firmware-version</string>
+    <string name="wimax_advanced_signal_strength_rssi_title">Signalstyrka (RSSI)</string>
+    <string name="wimax_advanced_signal_strength_simple_title">Signalstyrka (Enkel)</string>
+    <string name="wimax_ip_settings_titlebar">IP-inställningar</string>
+    <string name="wimax_ip_address">IP-adress</string>
+    <string name="wimax_gateway">Gateway</string>
+    <string name="wimax_status_scanning">Söker av\u2026</string>
+    <string name="wimax_status_connecting">Ansluter\u2026</string>
+    <string name="wimax_status_connecting_to">Ansluter till <xliff:g id="network_name">%1$s</xliff:g>\u2026</string>
+    <string name="wimax_status_connected">Ansluten</string>
+    <string name="wimax_status_connected_to">Ansluten till <xliff:g id="network_name">%1$s</xliff:g></string>
+    <string name="wimax_status_disconnecting">Kopplar från\u2026</string>
+    <string name="wimax_status_disconnecting_from">Kopplar från <xliff:g id="network_name">%1$s</xliff:g>\u2026</string>
+    <string name="wimax_status_disconnected">Frånkopplad</string>
     <string name="sound_settings_title" msgid="8735891486683305886">"Ljud"</string>
+    <string name="profile_settings_title">Profiler</string>
     <string name="display_settings_title" msgid="1708697328627382561">"Skärm"</string>
     <string name="sound_settings" msgid="5007659014828162881">"Ljudinställningar"</string>
     <string name="silent_mode_title" msgid="3181479108593217704">"Tyst läge"</string>
@@ -416,6 +466,8 @@
     <string name="silent_mode_incl_alarm_summary" msgid="2088830834182228458">"Alla ljud utom media tystas"</string>
     <string name="ringtone_title" msgid="5379026328015343686">"Telefonens ringsignal"</string>
     <string name="ringtone_summary" msgid="2630023412632683493"></string>
+    <string name="soundtone_title">Aviseringssignal</string>
+    <string name="soundtone_summary"></string>
     <string name="all_volume_title" msgid="8741571721868253103">"Volym"</string>
     <string name="ring_volume_title" msgid="7938706566797464165">"Ringvolym"</string>
     <string name="ring_volume_summary" msgid="7055497624193116879"></string>
@@ -427,6 +479,12 @@
     <string name="notification_sound_summary" msgid="2953599929394109819"></string>
     <string name="notification_pulse_title" msgid="1247988024534030629">"Pulserande ljusavisering"</string>
     <string name="notification_pulse_summary" msgid="6899220780534617152">"Pulserande styrkuleljus för nya aviseringar"</string>
+    <string name="notification_blink_title">Blinkande ljusavisering</string>
+    <string name="notification_blink_summary">Upprepade blinkningar med gröna aviseringsljus</string>
+    <string name="notification_always_on_title">Aktivera alltid ljusavisering</string>
+    <string name="notification_always_on_summary">Aktivera ljusavisering när skärmen är på</string>
+    <string name="notification_charging_title">Laddningslampa</string>
+    <string name="notification_charging_summary">Aktivera det bärnstensfärgade ljuset vid laddning</string>
     <string name="incoming_call_volume_title" msgid="8073714801365904099">"Ringsignal"</string>
     <string name="notification_volume_title" msgid="2012640760341080408">"Meddelande"</string>
     <string name="checkbox_notification_same_as_incoming_call" msgid="1073644356290338921">"Använd volymen för inkommande samtal vid avisering"</string>
@@ -501,11 +559,15 @@
     <string name="device_info_settings" msgid="475872867864762157">"Telefonens status"</string>
     <string name="system_update_settings_list_item_title" msgid="3342887311059985961">"Systemuppdateringar"</string>
     <string name="system_update_settings_list_item_summary" msgid="3853057315907710747"></string>
+    <string name="cpu_info">CPU-info</string>
+    <string name="mem_info">Minnes-info (tillgängligt/totalt)</string>
     <string name="firmware_version" msgid="4801135784886859972">"Android-version"</string>
     <string name="model_number" msgid="3765737700545384794">"Modellnummer"</string>
     <string name="baseband_version" msgid="1848990160763524801">"Basbandsversion"</string>
     <string name="kernel_version" msgid="9192574954196167602">"Kernel-version"</string>
     <string name="build_number" msgid="3075795840572241758">"Version"</string>
+    <string name="mod_version">Mod-version</string>
+    <string name="mod_version_default">Okänd</string>
     <string name="device_info_not_available" msgid="8062521887156825182">"Inte tillgänglig"</string>
     <string name="device_status_activity_title" msgid="1411201799384697904">"Status"</string>
     <string name="device_status" msgid="607405385799807324">"Status"</string>
@@ -514,6 +576,8 @@
     <string name="storage_settings_title" msgid="8746016738388094064">"Lagringsinställningar"</string>
     <string name="storage_settings_summary" product="nosdcard" msgid="3543813623294870759">"Demontera USB-lagringsenheten och visa tillgängligt lagringsutrymme"</string>
     <string name="storage_settings_summary" product="default" msgid="9176693537325988610">"Montera bort SD-kort, visa tillgängligt lagringsutrymme"</string>
+    <string name="status_imei">IMEI</string>
+    <string name="status_imei_sv">IMEI SV</string>
     <string name="status_number" msgid="5123197324870153205">"Mitt telefonnummer"</string>
     <string name="status_min_number" msgid="3519504522179420597">"MIN"</string>
     <string name="status_prl_version" msgid="8499039751817386529">"PRL-version"</string>
@@ -796,13 +860,11 @@
     <string name="cached" msgid="1059590879740175019">"Cachade bakgrundsprocesser"</string>
     <string name="no_running_services" msgid="2059536495597645347">"Inget körs."</string>
     <string name="service_started_by_app" msgid="6575184738671598131">"Startades av ett program."</string>
-    <!-- no translation found for service_client_name (4037193625611815517) -->
-    <skip />
+    <string name="service_client_name"><xliff:g id="client_name">%1$s</xliff:g></string>
     <string name="service_background_processes" msgid="6844156253576174488">"<xliff:g id="MEMORY">%1$s</xliff:g> led."</string>
     <string name="service_foreground_processes" msgid="7583975676795574276">"<xliff:g id="MEMORY">%1$s</xliff:g> anv."</string>
     <string name="memory" msgid="6609961111091483458">"RAM"</string>
-    <!-- no translation found for service_process_name (4098932168654826656) -->
-    <skip />
+    <string name="service_process_name"><xliff:g id="process">%1$s</xliff:g></string>
     <string name="running_processes_item_description_s_s" msgid="5790575965282023145">"<xliff:g id="NUMPROCESS">%1$d</xliff:g> process och <xliff:g id="NUMSERVICES">%2$d</xliff:g> tjänst"</string>
     <string name="running_processes_item_description_s_p" msgid="8019860457123222953">"<xliff:g id="NUMPROCESS">%1$d</xliff:g> process och <xliff:g id="NUMSERVICES">%2$d</xliff:g> tjänster"</string>
     <string name="running_processes_item_description_p_s" msgid="744424668287252915">"<xliff:g id="NUMPROCESS">%1$d</xliff:g> processer och <xliff:g id="NUMSERVICES">%2$d</xliff:g> tjänst"</string>
@@ -850,6 +912,7 @@
     <string name="testing" msgid="6584352735303604146">"Testa"</string>
     <string name="testing_phone_info" msgid="8656693364332840056">"Telefoninformation"</string>
     <string name="testing_battery_info" msgid="3497865525976497848">"Batteriinformation"</string>
+    <string name="testing_battery_history">Batterihistorik</string>
     <string name="quick_launch_title" msgid="7904609846945905306">"Snabbstart"</string>
     <string name="quick_launch_summary" msgid="3453825712466417452">"Ställ in kortkommandon för att starta program"</string>
     <string name="quick_launch_assign_application" msgid="4521368464929956350">"Tilldela program"</string>
@@ -871,18 +934,48 @@
     <string name="development_settings_summary" msgid="2151320488701538355">"Ange alternativ för programutveckling"</string>
     <string name="enable_adb" msgid="7982306934419797485">"USB-felsökning"</string>
     <string name="enable_adb_summary" msgid="4881186971746056635">"Felsökningsläge när USB har anslutits"</string>
+    <string name="adb_notify">USB-felsökningsavisering</string>
+    <string name="adb_notify_summary">Avisera när USB-felsökning ansluts</string>
     <string name="keep_screen_on" msgid="1146389631208760344">"Håll aktiverad"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"Skärmen vilar aldrig när laddning pågår"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"Tillåt skenplatser"</string>
     <string name="allow_mock_location_summary" msgid="317615105156345626">"Tillåt skenplatser"</string>
+    <string name="kill_app_longpress_back">Stäng av app med långt tryck</string>
+    <string name="kill_app_longpress_back_summary">Långt tryck på Bakåt-knappen kommer avsluta aktiv applikation.</string>
     <string name="adb_warning_title" msgid="6234463310896563253">"Ska USB-felsökning tillåtas?"</string>
     <string name="adb_warning_message" msgid="5352555112049663033">"USB-felsökning ska endast användas i utvecklingssyfte. Felsökningen kan användas för att kopiera data mellan datorn och enheten, installera program på enheten utan avisering och läsa loggdata."</string>
     <string name="gadget_picker_title" msgid="98374951396755811">"Välj gadget"</string>
     <string name="widget_picker_title" msgid="9130684134213467557">"Välj widget"</string>
+    <string name="battery_history_details_for">Detaljer för UID <xliff:g id="number" example="1234">%d</xliff:g></string>
+    <string name="battery_history_uid">UID <xliff:g id="user_id">%1$d</xliff:g></string>
+    <string name="battery_history_network_usage">Nätverksanvändningsdetaljer för <xliff:g id="app_name">%1$s</xliff:g>:</string>
+    <string name="battery_history_bytes_received">Mottagna bytes: <xliff:g id="bytes">%1$d</xliff:g></string>
+    <string name="battery_history_bytes_sent">Skickades bytes: <xliff:g id="bytes">%1$d</xliff:g></string>
+    <string name="battery_history_bytes_total">Totalt antal bytes: <xliff:g id="bytes">%1$d</xliff:g></string>
+    <string name="battery_history_cpu_usage">CPU-användningsdetaljer för <xliff:g id="app_name">%1$s</xliff:g>:</string>
+    <string name="battery_history_user_time">Användar-tid: </string>
+    <string name="battery_history_system_time">System-tid: </string>
+    <string name="battery_history_total_time">Total tid: </string>
+    <string name="battery_history_starts">Börjar: <xliff:g id="starts">%1$d</xliff:g></string>
     <string name="battery_history_days" msgid="7110262897769622564">"<xliff:g id="DAYS">%1$d</xliff:g> d <xliff:g id="HOURS">%2$d</xliff:g> h <xliff:g id="MINUTES">%3$d</xliff:g> m <xliff:g id="SECONDS">%4$d</xliff:g> s"</string>
     <string name="battery_history_hours" msgid="7525170329826274999">"<xliff:g id="HOURS">%1$d</xliff:g> h <xliff:g id="MINUTES">%2$d</xliff:g> m <xliff:g id="SECONDS">%3$d</xliff:g> s"</string>
     <string name="battery_history_minutes" msgid="1467775596084148610">"<xliff:g id="MINUTES">%1$d</xliff:g> m <xliff:g id="SECONDS">%2$d</xliff:g> s"</string>
     <string name="battery_history_seconds" msgid="4283492130945761685">"<xliff:g id="SECONDS">%1$d</xliff:g>s"</string>
+    <string name="battery_history_packages_sharing_this_uid">Paket som delar detta UID:</string>
+    <string name="battery_history_no_data">Ingen data med batterianvändning tillgänglig</string>
+    <string name="battery_history_sensor">Sensor:</string>
+    <string name="battery_history_wakelock">Delvis väckningslås:</string>
+    <string name="battery_history_used_by_packages">Sensor använd av paket:</string>
+    <string name="battery_history_sensor_usage">Använd <xliff:g id="count">%1$d</xliff:g> gånger av <xliff:g id="package">%2$s</xliff:g></string>
+    <string name="battery_history_sensor_usage_multi">Använd <xliff:g id="count">%1$d</xliff:g> gånger av någon av:</string>
+    <string name="battery_history_awake_label">Kör</string>
+    <string name="battery_history_screen_on_label">Skärm på</string>
+    <string name="battery_history_phone_on_label">Telefon på</string>
+    <string name="battery_history_awake">Tid spenderad utan viloläge:</string>
+    <string name="battery_history_screen_on">Tid spenderad med skärmen på:</string>
+    <string name="battery_history_phone_on">Tid spenderad med telefon på:</string>
+    <string name="battery_history_screen_on_battery">På batteri:</string>
+    <string name="battery_history_screen_on_plugged">Inkopplad:</string>
     <string name="usage_stats_label" msgid="5890846333487083609">"Användningsstatistik"</string>
     <string name="testing_usage_stats" msgid="7823048598893937339">"Användningsstatistik"</string>
     <string name="display_order_text" msgid="8592776965827565271">"Sortera efter"</string>
@@ -914,8 +1007,7 @@
     <string name="battery_stats_wifi_running_label" msgid="3093545080361658269">"WiFi"</string>
     <string name="battery_stats_wake_lock_label" msgid="1908942681902324095">"Aktiv"</string>
     <string name="battery_stats_phone_signal_label" msgid="6822042940376636775">"Telefonsignal"</string>
-    <!-- no translation found for battery_stats_last_duration (1535831453827905957) -->
-    <skip />
+    <string name="battery_stats_last_duration">@string/menu_stats_last_unplugged</string>
     <string name="awake" msgid="387122265874485088">"Aktiv tid för enheten"</string>
     <string name="wifi_on_time" msgid="6310209835617490616">"WiFi i tid"</string>
     <string name="bluetooth_on_time" msgid="6157799524996162271">"WiFi i tid"</string>
@@ -1074,6 +1166,26 @@
     <string name="vpn_a_l2tp_secret" msgid="6612042930810981845">"en L2TP-hemlighet"</string>
     <string name="vpn_pptp_encryption_title" msgid="2236795167467896499">"kryptering"</string>
     <string name="vpn_pptp_encryption" msgid="2602329949737259686">"PPTP-kryptering"</string>
+    <string name="vpn_openvpn_port">Server port</string>
+    <string name="vpn_openvpn_protocol">Protokoll att använda</string>
+    <string name="vpn_openvpn_device">Enhet att använda</string>
+    <string name="vpn_openvpn_userauth">Användarautentisering</string>
+    <string name="vpn_openvpn_userauth_summary">Ställ in om ytterligare autentisering med användarnamn och lösenord behöver användas</string>
+    <string name="vpn_openvpn_advanced_titlebar">Avancerad Openvpn-inställningar</string>
+    <string name="vpn_openvpn_comp_lzo">LZO-komprimering</string>
+    <string name="vpn_openvpn_comp_lzo_summary">Tvinga på LZO-komprimering</string>
+    <string name="vpn_openvpn_redirect_gateway_title">Dirigera om gateway</string>
+    <string name="vpn_openvpn_redirect_gateway_summary">Tvinga alla trafik att bli omdirigerad genom VPN-tunneln</string>
+    <string name="vpn_openvpn_set_addr">Fjärrvärd ställer in adresser</string>
+    <string name="vpn_openvpn_set_addr_summary">Avmarkera för att ställa in tunnelns adresser manuellt</string>
+    <string name="vpn_openvpn_set_local_addr">Lokal IP-adress</string>
+    <string name="vpn_openvpn_set_remote_addr">Fjärrvärds IP-adress</string>
+    <string name="vpn_openvpn_set_cipher">Krypteringsalgoritm</string>
+    <string name="vpn_openvpn_set_cipher_message">Lämna tomt för att använda standardkryptering</string>
+    <string name="vpn_openvpn_set_keysize">Storlek på krypteringsnyckel</string>
+    <string name="vpn_openvpn_set_keysize_message">Lämna tom för att använda krypteringsspecifikt standardvärde</string>
+    <string name="vpn_openvpn_set_extra">Extra argument</string>
+    <string name="vpn_openvpn_set_extra_message">Skriv in ytterligare kommandoradsargument</string>
     <string name="vpn_ipsec_presharedkey_title" msgid="2184060087690539175">"Ange i förväg delad IPSec-nyckel"</string>
     <string name="vpn_ipsec_presharedkey" msgid="5434316521616673741">"I förväg delad IPSec-nyckel"</string>
     <string name="vpn_a_ipsec_presharedkey" msgid="1255301923217898418">"en i förväg delad IPsec-nyckel"</string>
@@ -1134,6 +1246,37 @@
     <string name="encrypted_fs_alert_dialog_title" msgid="583462447886934755">"Varning: växling av krypterat filsystem."</string>
     <string name="emergency_tone_title" msgid="1055954530111587114">"Nödsignal"</string>
     <string name="emergency_tone_summary" msgid="722259232924572153">"Ange beteende vid nödsamtal"</string>
+    <string name="profile_title">Konfigurera profiler</string>
+    <string name="profile_appgroup_list_title">Konfigurera applikationsgrupper</string>
+    <string name="sound_mode">Aviseringsläge</string>
+    <string name="ringer_mode">Ringningsläge</string>
+    <string name="lights_mode">Ljusläge</string>
+    <string name="vibrate_mode">Vibreringsläge</string>
+    <string name="choose_soundtone">Välj aviseringssignal</string>
+    <string name="choose_ringtone">Välj ringsignal</string>
+    <string name="profile_settings">Profilinställningar</string>
+    <string name="profile_name">Profilnamn</string>
+    <string name="profile_summary">Tryck för att konfigurera profil</string>
+    <string name="profile_appgroup_title">Applikationsgrupp: %s</string>
+    <string name="profile_appgroups_title">Applikationsgrupper</string>
+    <string name="profile_applist_title">Applikationer - klicka för att ta bort från grupp</string>
+    <string name="profile_appgroup_name_prompt">Skriv in namn för applikationsgrupp</string>
+    <string name="profile_delete">Ta bort profil</string>
+    <string name="profile_delete_confirm">Är du säker på att du vill ta bort denna profil</string>
+    <string name="profile_app_delete_confirm">Är du säker på att du vill ta bort denna applikation</string>
+    <string name="profile_choose_app">Välj applikation</string>
+    <string name="profile_settings_header">Profilinställningar: %s</string>
+    <string name="profile_group_header">Profil: %1$s kategori: %2$s</string>
+    <string name="menu_appgroups">Hantera applikationsgrupper</string>
+    <string name="menu_new_profile">Ny profil</string>
+    <string name="menu_new_profile_summary">Lägg till och konfigurera en ny profil</string>
+    <string name="profile_menu_delete">Ta bort</string>
+    <string name="profile_new_appgroup">Ny applikationsgrupp</string>
+    <string name="profile_delete_appgroup">Ta bort denna applikationsgrupp</string>
+    <string name="profile_add_app">Lägg till applikation</string>
+    <string name="profile_manage">Hantera profiler</string>
+    <string name="profile_appgroups_manage">Hantera applikationsgrupper</string>
+    <string name="profile_applist_manage">Hantera applikationslista</string>
     <string name="privacy_settings" msgid="9206631214140954954">"Sekretess"</string>
     <string name="privacy_settings_title" msgid="1987089301293213705">"Sekretessinställningar"</string>
     <string name="backup_section_title" msgid="8856083167469467588">"Säkerhetskopiera och återställ"</string>
@@ -1159,4 +1302,80 @@
     <string name="sound_category_calls_title" msgid="3688531959256239012">"Inkommande samtal"</string>
     <string name="sound_category_notification_title" msgid="3502115998790286943">"Aviseringar"</string>
     <string name="sound_category_feedback_title" msgid="4399742321363475393">"Signaler"</string>
+    <string name="launcher_settings_title">ADWLauncher</string>
+    <string name="possibleButtons">Möjliga knappar</string>
+    <string name="toggleWifi">Wi-Fi</string>
+    <string name="toggleWifiAp">Portabel Wi-Fi hotspot</string>
+    <string name="toggleBluetooth">Bluetooth</string>
+    <string name="toggleGPS">GPS</string>
+    <string name="toggleData">Mobil Data</string>
+    <string name="toggleSync">Data Synk</string>
+    <string name="toggle2g3g">2G/3G</string>
+    <string name="toggleSound">Ringningsläge</string>
+    <string name="toggleBrightness">Ljusstyrka</string>
+    <string name="toggleAutoRotate">Orientering</string>
+    <string name="toggleScreenTimeout">Tidsgräns för skärm</string>
+    <string name="toggleAirplane">Flygplan</string>
+    <string name="toggleFlashlight">Ficklampa</string>
+    <string name="toggleLockScreen">Låsskärm</string>
+    <string name="toggleWimax">WiMAX</string>
+    <string name="toggleWifiDescription">Aktivera/inaktivera Wifi</string>
+    <string name="toggleWifiApDescription">Aktivera/inaktivera den portabla Wi-Fi hotspoten</string>
+    <string name="toggleBluetoothDescription">Aktivera/inaktivera Bluetooth</string>
+    <string name="toggleGPSDescription">Aktivera/inaktivera GPS</string>
+    <string name="toggleDataDescription">Aktivera/inaktivera mobil data</string>
+    <string name="toggleSyncDescription">Aktivera/inaktivera data synk</string>
+    <string name="toggle2g3gDescription">Växla mellan 2G och 3G</string>
+    <string name="toggleSoundDescription">Växla mellan ringning och endast vibration</string>
+    <string name="toggleBrightnessDescription">Växla mellan nivåer på ljusstyrka</string>
+    <string name="toggleAutoRotateDescription">Aktivera/inaktivera orienteringssensorn</string>
+    <string name="toggleScreenTimeoutDescription">Ställ in olika tidsgränser för skärmen</string>
+    <string name="toggleAirplaneDescription">Aktivera/inaktivera flygplansläge</string>
+    <string name="toggleFlashlightDescription">Aktivera/inaktivera ficklampsläge</string>
+    <string name="toggleLockScreenDescription">Aktivera/inaktivera låsskärm</string>
+    <string name="toggleWimaxDescription">Aktivera/inaktivera WiMAX</string>
+    <string name="widgetSettings">Inställningar för widget-instans</string>
+    <string name="wifiSettings">Inställningar för Wifi-händelser</string>
+    <string name="dataSettings">Inställningar för datahändelser</string>
+    <string name="powerSettings">Inställningar för strömhändelser</string>
+    <string name="generalSettings">Generella inställningar</string>
+    <string name="autoDisable3G">Data inaktiverar 3G</string>
+    <string name="autoEnable3G">Data aktiverar 3G</string>
+    <string name="autoDisable3GWithWifi">Wifi inaktiverar 3G</string>
+    <string name="autoEnable3GWithWifi">Wifi aktiverar 3G</string>
+    <string name="useRoundCorners">Runda hörn</string>
+    <string name="useVertical">Vertikal layout</string>
+    <string name="useTransparent">Transparent widget</string>
+    <string name="autoEnableSyncWithWifi">Wifi aktiverar Synk</string>
+    <string name="autoDisableSyncWithWifi">Wifi inaktiverar Synk</string>
+    <string name="ringModeVibrateAsOn">Vibrera som på</string>
+    <string name="monitorDataRoaming">Övervaka Data-roaming</string>
+    <string name="autoEnableBluetoothWithPower">Ext. ström aktiverar Bluetooth</string>
+    <string name="autoDisableBluetoothWithPower">Ext. ström inaktiverar Bluetooth</string>
+    <string name="autoEnableWifiWithPower">Ext. ström aktiverar Wifi</string>
+    <string name="autoDisableWifiWithPower">Ext. ström inaktiverar Wifi</string>
+    <string name="autoDisable3GDescription">2G när mobil data är inaktiverad</string>
+    <string name="autoEnable3GDescription">3G när mobil data är aktiverad</string>
+    <string name="autoDisable3GWithWifiDescription">2G när Wifi är aktiverad</string>
+    <string name="autoEnable3GWithWifiDescription">3G när Wifi är inaktiverad</string>
+    <string name="useRoundCornersDescription">Använd runda widget-ikoner</string>
+    <string name="useTransparentDescription">Ingen widget-bakgrund</string>
+    <string name="useVerticalDescription">Visa med vertikal orientering</string>
+    <string name="autoEnableSyncWithWifiDescription">Aktivera synk när Wifi är aktiverat</string>
+    <string name="autoDisableSyncWithWifiDescription">Inaktivera synk när Wifi är inaktiverat</string>
+    <string name="ringModeVibrateAsOnDescription">Visa ljud som på när endast vibration är på</string>
+    <string name="monitorDataRoamingDescription">Data status red if data roaming is enabled</string>
+    <string name="autoEnableBluetoothWithPowerDescription">Bluetooth aktiveras när ström ansluts</string>
+    <string name="autoDisableBluetoothWithPowerDescription">Bluetooth inaktiveras när ström kopplas från</string>
+    <string name="autoEnableWifiWithPowerDescription">Wifi aktiveras när ström ansluts</string>
+    <string name="autoDisableWifiWithPowerDescription">Wifi inaktiveras när ström kopplas från</string>
+    <string name="networkModeSpinner">Välj nätverkslägen</string>
+    <string name="brightnessSpinner">Välj nivåer för ljusstyrka</string>
+    <string name="ringModeSpinner">Välj ringningslägen</string>
+    <string name="screenTimeoutSpinner">Välj tidsgräns för skärm</string>
+    <string name="backgroundImageSpinner">Välj bakgrund</string>
+    <string name="notConfigured">Inte konfigurerad. Lägg till igen</string>
+    <string name="ok">Ok</string>
+    <string name="widget_count">(%d widgetar)</string>
+    <string name="cm_settings_title">CyanogenMod-inställningar</string>
 </resources>
