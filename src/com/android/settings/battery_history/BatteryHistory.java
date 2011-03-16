@@ -718,25 +718,28 @@ public class BatteryHistory extends Activity implements OnClickListener, OnItemS
         
         time = mStats.getWifiOnTime(batteryRealtime, mWhich) / 1000;
         if (time > 0) {
-            mMiscUsage.add(new MiscUsage("Wifi On ("
-                    + formatRatio(time, whichRealtime) + ")",
-                    "Time spent with Wifi on:",
+            mMiscUsage.add(new MiscUsage(getString(
+                    R.string.battery_history_wifi_on_label)
+                    + " (" + formatRatio(time, whichRealtime) + ")",
+                    R.string.battery_history_wifi_on,
                     time, whichRealtime)); 
         }
         
         time = mStats.getGlobalWifiRunningTime(batteryRealtime, mWhich) / 1000;
         if (time > 0) {
-            mMiscUsage.add(new MiscUsage("Wifi Running ("
-                    + formatRatio(time, whichRealtime) + ")",
-                    "Time spent with Wifi running:",
+            mMiscUsage.add(new MiscUsage(getString(
+                    R.string.battery_history_wifi_running_label)
+                    + " (" + formatRatio(time, whichRealtime) + ")",
+                    R.string.battery_history_wifi_running,
                     time, whichRealtime)); 
         }
         
         time = mStats.getBluetoothOnTime(batteryRealtime, mWhich) / 1000;
         if (time > 0) {
-            mMiscUsage.add(new MiscUsage("Bluetooth On ("
-                    + formatRatio(time, whichRealtime) + ")",
-                    "Time spent with Bluetooth on:",
+            mMiscUsage.add(new MiscUsage(getString(
+                    R.string.battery_history_bluetooth_on_label)
+                    + " (" + formatRatio(time, whichRealtime) + ")",
+                    R.string.battery_history_bluetooth_on,
                     time, whichRealtime)); 
         }
         
