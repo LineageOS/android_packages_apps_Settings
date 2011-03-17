@@ -449,7 +449,7 @@
     <!-- The title of the activity to see battery info. -->
     <string name="battery_info_label" msgid="4132685016148679403">"電池資訊"</string>
     <!-- The title of the activity to see battery history. -->
-    <string name="battery_history_label">電池消耗歷史</string>
+    <string name="battery_history_label">電池使用狀況</string>
     <!-- The title of the activity to adjust display settings -->
     <string name="display_label" msgid="7403874003169865762">"顯示"</string>
     <!-- The title of the activity to see phone info -->
@@ -2095,7 +2095,7 @@
     <!-- In the Testing screen. The item title of the activity that shows a bunch of battery-related information.  -->
     <string name="testing_battery_info" msgid="3497865525976497848">"電池資訊"</string>
     <!-- In the Testing screen. The item title of the activity that shows a bunch of historical battery-related information. -->
-    <string name="testing_battery_history">電池消耗歷史</string>
+    <string name="testing_battery_history">電池使用狀況</string>
     <!-- Do not translate. In the Testing screen. The item title of the activity that shows a bunch of SIM-related operations.  -->
     <!-- skipping untranslatable /resources:0/string:name=testing_sim_toolkit -->
 
@@ -2189,13 +2189,13 @@
     <string name="battery_history_bytes_sent">已傳送位元組：<xliff:g id="bytes">%1$d</xliff:g></string>
 
     <!-- Used to show the number of bytes sent and received by an app over the network in BatteryHistory -->
-    <string name="battery_history_bytes_total">總共使用位元組：<xliff:g id="bytes">%1$d</xliff:g></string>
+    <string name="battery_history_bytes_total">共使用位元組：<xliff:g id="bytes">%1$d</xliff:g></string>
 
     <!-- Used as a title for the cpu usage details screen in BatteryHistory -->
     <string name="battery_history_cpu_usage"><xliff:g id="app_name">%1$s</xliff:g> 之 CPU 使用狀況詳細資訊：</string>
 
     <!-- Used to show the time spent in user code for a given app in BatteryHistory -->
-    <string name="battery_history_user_time">使用者使用時間：</string>
+    <string name="battery_history_user_time">用戶使用時間：</string>
 
     <!-- Used to show the time spent in system code for a given app in BatteryHistory -->
     <string name="battery_history_system_time">系統使用時間：</string>
@@ -2204,7 +2204,7 @@
     <string name="battery_history_total_time">總使用時間：</string>
 
     <!-- Used to show the number of times an app has been started in BatteryHistory -->
-    <string name="battery_history_starts">啟動次數：<xliff:g id="starts">%1$d</xliff:g></string>
+    <string name="battery_history_starts">啟動計數：<xliff:g id="starts">%1$d</xliff:g></string>
 
     <!-- Used to show an amount of time in the form "d days, h hours, m minutes, s seconds" in BatteryHistory -->
     <string name="battery_history_days" msgid="7110262897769622564">"<xliff:g id="DAYS">%1$d</xliff:g> 天 <xliff:g id="HOURS">%2$d</xliff:g> 小時 <xliff:g id="MINUTES">%3$d</xliff:g> 分 <xliff:g id="SECONDS">%4$d</xliff:g> 秒"</string>
@@ -2222,7 +2222,7 @@
     <string name="battery_history_packages_sharing_this_uid">共用此 UID 之應用程式：</string>
 
     <!-- Used when no battery data available in BatteryHistory -->
-    <string name="battery_history_no_data">沒有可供查閱的耗電量資訊</string>
+    <string name="battery_history_no_data">沒有可供查閱的使用狀況</string>
 
     <!-- Used for Sensor detail screen in BatteryHistory -->
     <string name="battery_history_sensor">感應器：</string>
@@ -2240,22 +2240,22 @@
     <string name="battery_history_sensor_usage_multi">由以下其中一個使用了 <xliff:g id="count">%1$d</xliff:g> 次：</string>
 
     <!-- Used for label of awake bar in BatteryHistory -->
-    <string name="battery_history_awake_label">正在運行</string>
+    <string name="battery_history_awake_label">系統運行</string>
 
     <!-- Used for label of screen on bar in BatteryHistory -->
     <string name="battery_history_screen_on_label">螢幕開啟</string>
 
     <!-- Used for label of phone on bar in BatteryHistory -->
-    <string name="battery_history_phone_on_label">手機開啟</string>
+    <string name="battery_history_phone_on_label">電話開啟</string>
 
     <!-- Used for awake time message in BatteryHistory -->
-    <string name="battery_history_awake">非睡眠狀態時間：</string>
+    <string name="battery_history_awake">清醒時間：</string>
 
     <!-- Used for Screen on time message in BatteryHistory -->
     <string name="battery_history_screen_on">螢幕開啟時間：</string>
 
     <!-- Used for Phone on time message in BatteryHistory -->
-    <string name="battery_history_phone_on">手機開啟時間：</string>
+    <string name="battery_history_phone_on">電話開啟時間：</string>
 
     <!-- Used for Screen on time message in BatteryHistory -->
     <string name="battery_history_screen_on_battery">使用電池：</string>
@@ -2825,7 +2825,7 @@
     <!-- Title for application group list screen -->
     <string name="profile_appgroups_title">應用程式群組</string>
     <!-- Title for application group list section, hint at delete action -->
-    <string name="profile_applist_title">應用程式－點擊以移除自群組</string>
+    <string name="profile_applist_title">應用程式－輕觸以移除自群組</string>
     <!-- Prompt for name when adding a new app group -->
     <string name="profile_appgroup_name_prompt">輸入應用程式群組名稱</string>
     <!-- Delete profile setting item -->
@@ -2848,6 +2848,8 @@
     <string name="menu_new_profile_summary">新增並設置一個新的設定檔</string>
     <!-- Delete an item context menu item -->
     <string name="profile_menu_delete">刪除</string>
+    <!-- Message when trying to delete the active profile -->
+    <string name="profile_cannot_delete">無法刪除正在使用的設定檔。</string>
     <!-- Menu item for adding a new app group -->
     <string name="profile_new_appgroup">新增應用程式群組</string>
     <!-- Menu item for deleting an app group -->
