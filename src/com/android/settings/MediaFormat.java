@@ -55,7 +55,10 @@ public class MediaFormat extends Activity {
                 if (Utils.isMonkeyRunning()) {
                     return;
                 }
+                Intent i = getIntent();
+                String path = i.getStringExtra("path");
                 Intent intent = new Intent(ExternalStorageFormatter.FORMAT_ONLY);
+                intent.putExtra("path", path);
                 intent.setComponent(ExternalStorageFormatter.COMPONENT_NAME);
                 startService(intent);
                 finish();
