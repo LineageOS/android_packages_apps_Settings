@@ -25,12 +25,43 @@
                 android:summary="@string/wimax_quick_toggle_summary"
                 android:persistent="false" />
 
+        <Preference
+                android:key="wimax_scan"
+                android:dependency="wimax_enabled"
+                android:title="@string/scan_for_wimax"
+                android:persistent="false" />
+
+	<!-- Imported from the WiMAX advanced settings -->
     </PreferenceCategory>
 
-    <!-- <com.android.settings.ProgressCategory
-            android:key="wimax_networks"
-            android:dependency="wimax_enabled"
-            android:title="@string/wimax_networks"
-            android:persistent="false" /> -->
+    <PreferenceCategory
+            android:title="@string/wimax_advanced_titlebar"/>
+
+        <Preference android:key="mac_address"
+                style="?android:attr/preferenceInformationStyle"
+                android:title="@string/wimax_advanced_mac_address_title"/>
+
+        <Preference android:key="signal_strength_simple"
+                style="?android:attr/preferenceInformationStyle"
+                android:title="@string/wimax_advanced_signal_strength_simple_title"/>
+
+        <Preference android:key="signal_strength_rssi"
+                style="?android:attr/preferenceInformationStyle"
+                android:title="@string/wimax_advanced_signal_strength_rssi_title"/>
+
+        <Preference android:key="sw_version"
+                style="?android:attr/preferenceInformationStyle"
+                android:title="@string/wimax_advanced_sw_version_title"/>
+
+    <PreferenceCategory
+            android:title="@string/wimax_ip_settings_titlebar"/>
+
+        <Preference android:key="ip_address"
+                style="?android:attr/preferenceInformationStyle"
+                android:title="@string/wimax_ip_address"/>
+
+        <Preference android:key="gateway"
+                style="?android:attr/preferenceInformationStyle"
+                android:title="@string/wimax_gateway"/>
 
 </PreferenceScreen>
