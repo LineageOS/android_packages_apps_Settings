@@ -37,24 +37,13 @@
     <PreferenceCategory
             android:title="@string/wimax_advanced_titlebar"/>
 
-        <Preference android:key="mac_address"
-                style="?android:attr/preferenceInformationStyle"
-                android:title="@string/wimax_advanced_mac_address_title"/>
-
         <Preference android:key="signal_strength_simple"
                 style="?android:attr/preferenceInformationStyle"
                 android:title="@string/wimax_advanced_signal_strength_simple_title"/>
 
-        <Preference android:key="signal_strength_rssi"
+        <!-- <Preference android:key="signal_strength_db"
                 style="?android:attr/preferenceInformationStyle"
-                android:title="@string/wimax_advanced_signal_strength_rssi_title"/>
-
-        <Preference android:key="sw_version"
-                style="?android:attr/preferenceInformationStyle"
-                android:title="@string/wimax_advanced_sw_version_title"/>
-
-    <PreferenceCategory
-            android:title="@string/wimax_ip_settings_titlebar"/>
+                android:title="@string/wimax_advanced_signal_strength_db_title"/> -->
 
         <Preference android:key="ip_address"
                 style="?android:attr/preferenceInformationStyle"
@@ -63,5 +52,13 @@
         <Preference android:key="gateway"
                 style="?android:attr/preferenceInformationStyle"
                 android:title="@string/wimax_gateway"/>
+
+        <Preference android:key="mac_address"
+                style="?android:attr/preferenceInformationStyle"
+                android:title="@string/wimax_advanced_mac_address_title"/>
+
+        <Preference android:key="sw_version"
+                style="?android:attr/preferenceInformationStyle"
+                android:title="@string/wimax_advanced_sw_version_title"/>
 
 </PreferenceScreen>

@@ -19,7 +19,10 @@ package com.android.settings.wimax;
 import java.lang.reflect.Method;
 import java.util.WeakHashMap;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.SystemProperties;
 import android.preference.CheckBoxPreference;
@@ -37,6 +40,7 @@ import android.widget.Toast;
 
 import com.android.settings.ProgressCategory;
 import com.android.settings.R;
+import com.android.wimax.WimaxConstants;
 import com.android.wimax.WimaxSettingsHelper;
 
 /**
@@ -52,9 +56,6 @@ public class WimaxSettings extends PreferenceActivity { // implements WimaxLayer
 
     private static final int CONTEXT_MENU_ID_CONNECT = Menu.FIRST;
     private static final int CONTEXT_MENU_ID_DISCONNECT = Menu.FIRST + 1;
-
-    private static final int MENU_ID_SCAN = Menu.FIRST;
-    private static final int MENU_ID_ADVANCED = Menu.FIRST + 1;
 
     private static final String KEY_WIMAX_ENABLED = "wimax_enabled";
     private static final String KEY_WIMAX_NETWORKS = "wimax_networks";
@@ -76,8 +77,8 @@ public class WimaxSettings extends PreferenceActivity { // implements WimaxLayer
     private static final String KEY_SW_VERSION = "sw_version";
     private static final String KEY_IP_ADDRESS = "ip_address";
     private static final String KEY_GATEWAY = "gateway";
-    private static final String KEY_SIG_STR_RSSI = "signal_strength_rssi";
     private static final String KEY_SIG_STR_SIMPLE = "signal_strength_simple";
+    //private static final String KEY_SIG_STR_DB = "signal_strength_db";
     //private WimaxSettingsHelper mHelper;
 
     //private WimaxLayer mWimaxLayer;
@@ -95,6 +96,11 @@ public class WimaxSettings extends PreferenceActivity { // implements WimaxLayer
         super.onCreate(savedInstanceState);
         mHelper = new WimaxSettingsHelper(this);
         onCreatePreferences();
+
+        IntentFilter filter = new IntentFilter(WimaxConstants.RSSI_CHANGED_ACTION);
+        this.registerReceiver(mIntentReceiver, filter);
+        //IntentFilter filter2 = new IntentFilter(WimaxConstants.NETWORK_STATE_CHANGED_ACTION);
+        //this.registerReceiver(mIntentReceiver, filter2);
 
         refreshAll();
         //mWimaxLayer.onCreate();
@@ -118,21 +124,28 @@ public class WimaxSettings extends PreferenceActivity { // implements WimaxLayer
 
     @Override
     protected void onResume() {
-        super.onResume();
+        IntentFilter filter = new IntentFilter(WimaxConstants.RSSI_CHANGED_ACTION);
+        this.registerReceiver(mIntentReceiver, filter);
+        //IntentFilter filter2 = new IntentFilter(WimaxConstants.NETWORK_STATE_CHANGED_ACTION);
+        //this.registerReceiver(mIntentReceiver, filter2);
+
         refreshAll();
         //mWimaxLayer.onResume();
         mWimaxEnabler.resume();
+        super.onResume();
     }
 
     @Override
     protected void onPause() {
-        super.onPause();
+        this.unregisterReceiver(mIntentReceiver);
         //mWimaxLayer.onPause();
         mWimaxEnabler.pause();
+        super.onPause();
     }
 
     @Override
     protected void onDestroy() {
+        //this.unregisterReceiver(mIntentReceiver);
         super.onDestroy();
     }
 
@@ -200,7 +213,7 @@ public class WimaxSettings extends PreferenceActivity { // implements WimaxLayer
             return String.valueOf(pref.getTitle());
     }
 
-    private int getSignalStrength(int rssi) {
+    /**private int getSignalStrength(int rssi) {
         int level = mHelper.calculateSignalLevel(rssi, 4);
         switch(level) {
             case 0: return R.string.wimax_signal_0;
@@ -209,7 +222,7 @@ public class WimaxSettings extends PreferenceActivity { // implements WimaxLayer
             case 3: return R.string.wimax_signal_3;
             default: return R.string.status_unavailable;
         }
-    }
+    }*/
 
     //============================
     // Preference callbacks
@@ -217,7 +230,6 @@ public class WimaxSettings extends PreferenceActivity { // implements WimaxLayer
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-
         if (KEY_WIMAX_SCAN.equals(preference.getKey())) {
             //WiMAX scanning code as provided for the Scan button under the OptionsMenu
             try {
@@ -228,11 +240,8 @@ public class WimaxSettings extends PreferenceActivity { // implements WimaxLayer
             } catch (Exception e) {
                 Log.e(TAG, "Unable to perform WiMAX rescan!", e);
             }
-
         }
-
         super.onPreferenceTreeClick(preferenceScreen, preference);
-
         return false;
     }
 
@@ -293,39 +302,15 @@ public class WimaxSettings extends PreferenceActivity { // implements WimaxLayer
     }
 
     private void refreshDeviceInfo() {
-        int rssi = mHelper.getSignalStrength();
-        Log.d(TAG, "RSSI: " + rssi);
-        int simpleLevel = mHelper.calculateSignalLevel(rssi, 4);
-        String simpleLevelStr = "";
-        switch (simpleLevel) {
-            case 0:
-                simpleLevelStr = getString(R.string.wimax_signal_0);
-                break;
-            case 1:
-                simpleLevelStr = getString(R.string.wimax_signal_0);
-                break;
-            case 2:
-                simpleLevelStr = getString(R.string.wimax_signal_1);
-                break;
-            case 3:
-                simpleLevelStr = getString(R.string.wimax_signal_2);
-                break;
-            case 4:
-                simpleLevelStr = getString(R.string.wimax_signal_3);
-                break;
-            default:
-                simpleLevelStr = "Unavailable";
-                break;
-        }
+        //Preference wimaxSignalStrengthRSSIPref = findPreference(KEY_SIG_STR_SIMPLE);
+        //wimaxSignalStrengthRSSIPref.setSummary(getString(R.string.status_unavailable));
+
+        //Preference wimaxSignalStrengthDBPref = findPreference(KEY_SIG_STR_DB);
+        //wimaxSignalStrengthDBPref.setSummary("Level: " + getString(R.string.status_unavailable));
+
         Preference wimaxMacAddressPref = findPreference(KEY_MAC_ADDRESS);
         String macAddress = SystemProperties.get("persist.wimax.0.MAC", getString(R.string.status_unavailable));
         wimaxMacAddressPref.setSummary(macAddress);
-
-        Preference wimaxSignalStrengthSimplePref = findPreference(KEY_SIG_STR_SIMPLE);
-        wimaxSignalStrengthSimplePref.setSummary(simpleLevelStr);
-
-        Preference wimaxSignalStrengthRSSIPref = findPreference(KEY_SIG_STR_RSSI);
-        wimaxSignalStrengthRSSIPref.setSummary((rssi != 150 && rssi != 0 ? rssi + "" : "Unknown"));
 
         Preference wimaxSwVersionPref = findPreference(KEY_SW_VERSION);
         String swVersion = SystemProperties.get("persist.wimax.fw.version", getString(R.string.status_unavailable));
@@ -333,7 +318,6 @@ public class WimaxSettings extends PreferenceActivity { // implements WimaxLayer
     }
 
     private void refreshIPInfo() {
-
         Preference wimaxIpAddressPref = findPreference(KEY_IP_ADDRESS);
         String ipAddress = SystemProperties.get("dhcp.wimax0.ipaddress", getString(R.string.status_unavailable));
         wimaxIpAddressPref.setSummary(ipAddress);
@@ -341,5 +325,38 @@ public class WimaxSettings extends PreferenceActivity { // implements WimaxLayer
         Preference wimaxGatewayPref = findPreference(KEY_GATEWAY);
         String gateway = SystemProperties.get("dhcp.wimax0.gateway", getString(R.string.status_unavailable));
         wimaxGatewayPref.setSummary(gateway);
+    }
+
+    private BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (action.equals(WimaxConstants.NETWORK_STATE_CHANGED_ACTION) ||
+                    action.equals(WimaxConstants.RSSI_CHANGED_ACTION)) {
+                updateWimax(intent);
+            }
+        }
+    };
+
+    private final void updateWimax(Intent intent) {
+        final String action = intent.getAction();
+        if (action.equals(WimaxConstants.RSSI_CHANGED_ACTION)) {
+            int rssi = intent.getIntExtra(WimaxConstants.EXTRA_NEW_RSSI_LEVEL, -200);
+            Preference wimaxSignalStrengthRSSIPref = findPreference(KEY_SIG_STR_SIMPLE);
+            if (rssi == 0) {
+                wimaxSignalStrengthRSSIPref.setSummary("Level: " + getString(R.string.wimax_signal_0));
+            } else if (rssi == 1) {
+                wimaxSignalStrengthRSSIPref.setSummary("Level: " + getString(R.string.wimax_signal_1));
+            } else if (rssi == 2) {
+                wimaxSignalStrengthRSSIPref.setSummary("Level: " + getString(R.string.wimax_signal_2));
+            } else if (rssi == 3) {
+                wimaxSignalStrengthRSSIPref.setSummary("Level: " + getString(R.string.wimax_signal_3));
+            } else {
+                wimaxSignalStrengthRSSIPref.setSummary("Level: " + getString(R.string.status_unavailable));
+            }
+        }
+        if (action.equals(WimaxConstants.NETWORK_STATE_CHANGED_ACTION)) {
+            //final NetworkInfo networkInfo = (NetworkInfo) intent.getParcelableExtra(WimaxConstants.EXTRA_NETWORK_INFO);
+        }
     }
 }
