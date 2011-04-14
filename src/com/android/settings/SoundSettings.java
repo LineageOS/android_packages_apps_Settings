@@ -57,6 +57,7 @@ public class SoundSettings extends PreferenceActivity implements
     private static final String KEY_NOTIFICATION_ALWAYS_ON = "notification_always_on";
     private static final String KEY_NOTIFICATION_CHARGING = "notification_charging";
     private static final String KEY_LOCK_SOUNDS = "lock_sounds";
+    private static final String KEY_POWER_SOUNDS = "power_sounds";
 
     private static final String VALUE_VIBRATE_NEVER = "never";
     private static final String VALUE_VIBRATE_ALWAYS = "always";
@@ -81,6 +82,7 @@ public class SoundSettings extends PreferenceActivity implements
     private CheckBoxPreference mNotificationAlwaysOn;
     private CheckBoxPreference mNotificationCharging;
     private CheckBoxPreference mLockSounds;
+    private CheckBoxPreference mPowerSounds;
 
     private AudioManager mAudioManager;
 
@@ -131,6 +133,10 @@ public class SoundSettings extends PreferenceActivity implements
         mLockSounds.setPersistent(false);
         mLockSounds.setChecked(Settings.System.getInt(resolver,
                 Settings.System.LOCKSCREEN_SOUNDS_ENABLED, 1) != 0);
+        mPowerSounds = (CheckBoxPreference) findPreference(KEY_POWER_SOUNDS);
+        mPowerSounds.setPersistent(false);
+        mPowerSounds.setChecked(Settings.System.getInt(resolver,
+                Settings.System.POWER_SOUNDS_ENABLED, 1) != 0);
 
         if (TelephonyManager.PHONE_TYPE_CDMA == activePhoneType) {
             ListPreference emergencyTonePreference =
@@ -342,6 +348,10 @@ public class SoundSettings extends PreferenceActivity implements
         } else if (preference == mLockSounds) {
             Settings.System.putInt(getContentResolver(), Settings.System.LOCKSCREEN_SOUNDS_ENABLED,
                     mLockSounds.isChecked() ? 1 : 0);
+
+        } else if (preference == mPowerSounds) {
+            Settings.System.putInt(getContentResolver(), Settings.System.POWER_SOUNDS_ENABLED,
+                    mPowerSounds.isChecked() ? 1 : 0);
 
         } else if (preference == mNotificationPulse) {
             boolean value = mNotificationPulse.isChecked();
