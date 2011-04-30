@@ -190,10 +190,10 @@
     <string name="sdcard_settings_mass_storage_status" product="default" msgid="4786433969313661655">"Minnekortet blir brukt som en masselagringsenhet"</string>
     <string name="sdcard_settings_unmounted_status" product="nosdcard" msgid="7503300818792750913">"USB-lagring kan nå fjernes"</string>
     <string name="sdcard_settings_unmounted_status" product="default" msgid="3812022095683863087">"Det er trygt å fjerne minnekortet"</string>
-    <string name="sdcard_settings_bad_removal_status" product="nosdcard" msgid="7761390725880773697">"USB-lagr. fjernet under bruk!"</string>
+    <string name="sdcard_settings_bad_removal_status" product="nosdcard" msgid="7761390725880773697">"USB-enh. fjernet under bruk!"</string>
     <string name="sdcard_settings_bad_removal_status" product="default" msgid="5145797653495907970">"Minnekortet ble fjernet mens det fortsatt var i bruk!"</string>
     <string name="sdcard_settings_used_bytes_label" msgid="8820289486001170836">"Brukt antall byte:"</string>
-    <string name="sdcard_settings_scanning_status" product="nosdcard" msgid="7503429447676219564">"Skanner USB-lagr. for medier"</string>
+    <string name="sdcard_settings_scanning_status" product="nosdcard" msgid="7503429447676219564">"Skanner USB-enh. for medieinnh."</string>
     <string name="sdcard_settings_scanning_status" product="default" msgid="2763464949274455656">"Leter etter media på minnekortet…"</string>
     <string name="sdcard_settings_read_only_status" product="nosdcard" msgid="3771783090621312312">"USB-lagr. har kun lesetilg."</string>
     <string name="sdcard_settings_read_only_status" product="default" msgid="5706115860484118911">"Minnekortet ble montert skrivebeskyttet"</string>
@@ -585,6 +585,7 @@
     <string name="apn_auth_type_chap" msgid="3369626283789068360">"CHAP"</string>
     <string name="apn_auth_type_pap_chap" msgid="9102343063036134541">"CHAP"</string>
     <string name="apn_type" msgid="469613123902220544">"APN-type"</string>
+    <string name="apn_protocol" msgid="3272222921649348640">"APN-protokoll"</string>
     <string name="menu_delete" msgid="6981294422841124659">"Slett APN"</string>
     <string name="menu_new" msgid="3014205883303921729">"Nytt APN"</string>
     <string name="menu_save" msgid="8109345640668285399">"Lagre"</string>
@@ -716,7 +717,7 @@
     <string name="applications_settings_summary" msgid="2714215108369119717">"Installerte applikasjoner, hurtigtaster"</string>
     <string name="applications_settings_header" msgid="6018266337275422250">"Innstillinger for applikasjoner"</string>
     <string name="install_applications" msgid="4872012136210802181">"Ukjente kilder"</string>
-    <string name="install_unknown_applications" msgid="6612824788917283662">"Tillat installasjon av programmer som ikke finnes på Android-markedet"</string>
+    <string name="install_unknown_applications" msgid="6612824788917283662">"Tillat installasjon av applikasjoner som ikke kommer fra Android-markedet"</string>
     <string name="install_all_warning" msgid="1923717607319933741">"Telefonen og dine personlige data er mer sårbare mot angrep fra applikasjoner som kommer fra ukjente kilder. Du godtar at du selv er ansvarlig for enhver skade på telefonen eller tap av data som måtte oppstå fra bruk av slike applikasjoner."</string>
     <string name="application_info_label" msgid="1150486628158409543">"Applikasjonsinformasjon"</string>
     <string name="storage_label" msgid="8700867073480107253">"Lagring"</string>
@@ -752,7 +753,7 @@
     <string name="filter_apps_onsdcard" product="nosdcard" msgid="4843063154701023349">"USB-lagring"</string>
     <string name="filter_apps_onsdcard" product="default" msgid="1477351142334784771">"Minnekort"</string>
     <string name="disabled" msgid="9206776641295849915">"Deaktivert"</string>
-    <string name="no_applications" msgid="5190227407135243904">"Ingen programmer."</string>
+    <string name="no_applications" msgid="5190227407135243904">"Ingen applikasjoner."</string>
     <string name="internal_storage" msgid="1584700623164275282">"Intern lagring"</string>
     <string name="sd_card_storage" product="nosdcard" msgid="2673203150465132465">"USB-lagring"</string>
     <string name="sd_card_storage" product="default" msgid="7623513618171928235">"SD-kortlagring"</string>
@@ -788,9 +789,9 @@
     <string name="move_app_failed_dlg_title" msgid="4337731903265156405">"Flytt program"</string>
     <string name="move_app_failed_dlg_text" msgid="8824246817947643697">"Fikk ikke flyttet programmet. <xliff:g id="REASON">%1$s</xliff:g>"</string>
     <string name="app_install_location_title" msgid="2068975150026852168">"Foretrukket installeringssted"</string>
-    <string name="app_install_location_summary" msgid="879753854530300436">"Endre foretrukket plassering for installasjon av nye programmer."</string>
+    <string name="app_install_location_summary" msgid="879753854530300436">"Endre foretrukket plassering for installasjon av nye applikasjoner."</string>
     <string name="storageuse_settings_title" msgid="5657014373502630403">"Bruk av lagringsplass"</string>
-    <string name="storageuse_settings_summary" msgid="2556057379120846792">"Vis lagringsplass for programmer"</string>
+    <string name="storageuse_settings_summary" msgid="2556057379120846792">"Vis lagringsplass brukt av applikasjoner"</string>
     <string name="runningservices_settings_title" msgid="8097287939865165213">"Kjørende tjenester"</string>
     <string name="runningservices_settings_summary" msgid="854608995821032748">"Vis og kontroller tjenester som kjører for øyeblikket"</string>
     <string name="service_restarting" msgid="2242747937372354306">"Starter på nytt"</string>
@@ -962,7 +963,7 @@
     <string name="battery_sugg_bluetooth_headset" msgid="8214816222115517479">"Prøv å koble til en annen Bluetooth-enhet"</string>
     <string name="battery_desc_apps" msgid="6665712811746233450">"Batteri brukt av program"</string>
     <string name="battery_sugg_apps_info" msgid="6065882899391322442">"Stopp eller avinstaller applikasjonen"</string>
-    <string name="battery_sugg_apps_gps" msgid="4545056413090932541">"Kontroller GPS manuelt, for å forhindre at programmer bruker funksjonen"</string>
+    <string name="battery_sugg_apps_gps" msgid="4545056413090932541">"Kontroller GPS manuelt, for å forhindre at applikasjoner bruker funksjonen"</string>
     <string name="battery_sugg_apps_settings" msgid="8021302847272481168">"Applikasjonen har muligens innstillinger som kan redusere batteribruken"</string>
     <string name="menu_stats_unplugged" msgid="8296577130840261624">"<xliff:g id="UNPLUGGED">%1$s</xliff:g> siden strømmen ble frakoblet"</string>
     <string name="menu_stats_last_unplugged" msgid="5922246077592434526">"Siste gang uten strøm i <xliff:g id="UNPLUGGED">%1$s</xliff:g>"</string>
@@ -1223,4 +1224,7 @@
     <string name="sound_category_calls_title" msgid="3688531959256239012">"Innkommende anrop"</string>
     <string name="sound_category_notification_title" msgid="3502115998790286943">"Varsler"</string>
     <string name="sound_category_feedback_title" msgid="4399742321363475393">"Tilbakemelding"</string>
+    <string name="wimax_settings" msgid="1574837328738396794">"4G-innstillinger"</string>
+    <string name="wimax_settings_summary" msgid="3207355006084135453">"Konfigurer og administrer 4G-nettverk og -modem"</string>
+    <string name="status_wimax_mac_address" msgid="8390791848661413416">"4G MAC-adresse"</string>
 </resources>
