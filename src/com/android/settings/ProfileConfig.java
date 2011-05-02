@@ -21,8 +21,10 @@ import android.app.Dialog;
 import android.app.Profile;
 import android.app.ProfileGroup;
 import android.app.ProfileManager;
+import android.app.StreamSettings;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
 import android.preference.Preference;
@@ -30,6 +32,7 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
+import android.widget.SeekBar;
 import android.widget.Toast;
 
 public class ProfileConfig extends PreferenceActivity implements OnPreferenceChangeListener {
@@ -44,11 +47,23 @@ public class ProfileConfig extends PreferenceActivity implements OnPreferenceCha
 
     private EditTextPreference mNamePreference;
 
-    PreferenceScreen mDeletePreference;
+    private PreferenceScreen mDeletePreference;
+
+    private StreamItem[] mStreams;
+
 
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+
+        mStreams = new StreamItem[] {
+                new StreamItem(AudioManager.STREAM_ALARM, getString(R.string.alarm_volume_title)),
+                new StreamItem(AudioManager.STREAM_MUSIC, getString(R.string.media_volume_title)),
+                new StreamItem(AudioManager.STREAM_RING,
+                        getString(R.string.incoming_call_volume_title)),
+                new StreamItem(AudioManager.STREAM_NOTIFICATION,
+                        getString(R.string.notification_volume_title))
+        };
 
         addPreferencesFromResource(R.xml.profile_config);
         getListView().setItemsCanFocus(true);
@@ -81,7 +96,7 @@ public class ProfileConfig extends PreferenceActivity implements OnPreferenceCha
     protected void onPause() {
         super.onPause();
         // Save profile here
-        if(mProfile != null){
+        if (mProfile != null) {
             mProfileManager.addProfile(mProfile);
         }
     }
@@ -95,6 +110,27 @@ public class ProfileConfig extends PreferenceActivity implements OnPreferenceCha
         mNamePreference.setText(mProfile.getName());
         mNamePreference.setSummary(mProfile.getName());
         mNamePreference.setOnPreferenceChangeListener(this);
+
+        PreferenceGroup streamList = (PreferenceGroup) findPreference("profile_volumeoverrides");
+        streamList.removeAll();
+
+        for (StreamItem stream : mStreams) {
+            StreamSettings settings = mProfile.getSettingsForStream(stream.mStreamId);
+            if (settings == null) {
+                settings = new StreamSettings(stream.mStreamId);
+                mProfile.setStreamSettings(settings);
+            }
+            stream.mSettings = settings;
+            StreamVolumePreference pref = new StreamVolumePreference(this);
+            pref.setKey("stream_" + stream.mStreamId);
+            pref.setTitle(stream.mLabel);
+            pref.setSummary(getString(R.string.profile_volumeoverrides_summary));
+            pref.setPersistent(false);
+            pref.setStreamItem(stream);
+
+            stream.mCheckbox = pref;
+            streamList.addPreference(pref);
+        }
 
         PreferenceGroup groupList = (PreferenceGroup) findPreference("profile_appgroups");
         groupList.removeAll();
@@ -117,13 +153,20 @@ public class ProfileConfig extends PreferenceActivity implements OnPreferenceCha
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        // Check name isn't alread in use.
-        String value = (String) newValue;
-        if (mProfileManager.getProfile(value) != null) {
-            // Rollback the change.
-            return false;
+        // Check name isn't already in use.
+        if (preference instanceof StreamVolumePreference) {
+            for (StreamItem stream : mStreams) {
+                if (preference == stream.mCheckbox) {
+                    stream.mSettings.setOverride((Boolean) newValue);
+                }
+            }
         }
         if (preference == mNamePreference) {
+            String value = (String) newValue;
+            if (mProfileManager.getProfile(value) != null) {
+                // Rollback the change.
+                return false;
+            }
             boolean active = mProfile.getName()
                     .equals(mProfileManager.getActiveProfile().getName());
             mProfileManager.removeProfile(mProfile);
@@ -136,6 +179,8 @@ public class ProfileConfig extends PreferenceActivity implements OnPreferenceCha
         }
         return true;
     }
+
+    private StreamItem mPreferenceItem = null;
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
@@ -150,20 +195,23 @@ public class ProfileConfig extends PreferenceActivity implements OnPreferenceCha
                 intent.putExtra("Profile", mProfile);
                 startActivity(intent);
             }
+            return true;
         }
+
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
     private void deleteProfile() {
         if (mProfile.getName().equals(mProfileManager.getActiveProfile().getName())) {
-            Toast toast = Toast.makeText(this, getString(R.string.profile_cannot_delete), Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(this, getString(R.string.profile_cannot_delete),
+                    Toast.LENGTH_SHORT);
             toast.show();
         } else {
             showDialog(DELETE_CONFIRM);
         }
     }
 
-    private void doDelete(){
+    private void doDelete() {
         mProfileManager.removeProfile(mProfile);
         mProfile = null;
         finish();
@@ -197,5 +245,19 @@ public class ProfileConfig extends PreferenceActivity implements OnPreferenceCha
         return dialog;
     }
 
+    static class StreamItem {
+        int mStreamId;
+
+        String mLabel;
+
+        StreamSettings mSettings;
+
+        StreamVolumePreference mCheckbox;
+
+        public StreamItem(int streamId, String label) {
+            mStreamId = streamId;
+            mLabel = label;
+        }
+    }
 
 }
