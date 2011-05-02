@@ -2,8 +2,6 @@
 package com.android.settings.widget;
 
 import com.android.settings.R;
-import com.android.wimax.WimaxSettingsHelper;
-import com.android.wimax.WimaxConstants;
 
 import android.app.Activity;
 import android.appwidget.AppWidgetManager;
@@ -13,6 +11,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
+import android.net.wimax.WimaxHelper;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -304,7 +303,7 @@ public class WidgetSettings extends Activity {
         }
 
         // disable WiMAX preference if unsupported
-        if (!WimaxConstants.isWimaxSupported(this)) {
+        if (!WimaxHelper.isWimaxSupported(this)) {
             findViewById(R.id.toggleWimaxPreference).setVisibility(View.GONE);
             findViewById(R.id.toggleWimaxPreferenceDivider).setVisibility(View.GONE);
         }

@@ -390,7 +390,7 @@ public class Status extends PreferenceActivity {
         } else {
             Preference wimaxMacAddressPref = findPreference(KEY_WIMAX_MAC_ADDRESS);
             String macAddress = SystemProperties.get("net.wimax.mac.address",
-                    getString(R.string.status_unavailable));
+                    SystemProperties.get("persist.wimax.0.MAC", getString(R.string.status_unavailable)));
             wimaxMacAddressPref.setSummary(macAddress);
         }
     }

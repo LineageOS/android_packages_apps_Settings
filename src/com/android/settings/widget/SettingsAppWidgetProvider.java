@@ -35,7 +35,6 @@ import com.android.settings.widget.buttons.WidgetButton;
 import com.android.settings.widget.buttons.WifiApButton;
 import com.android.settings.widget.buttons.WifiButton;
 import com.android.settings.widget.buttons.WimaxButton;
-import com.android.wimax.WimaxConstants;
 
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
@@ -48,6 +47,7 @@ import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
+import android.net.wimax.WimaxManagerConstants;
 import android.util.Log;
 import android.widget.RemoteViews;
 
@@ -315,7 +315,7 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
         } else if (NetworkModeButton.NETWORK_MODE_CHANGED.equals(intent.getAction())) {
             logD("Received Network mode state change");
             NetworkModeButton.getInstance().onReceive(context, intent);
-        } else if (WimaxConstants.WIMAX_ENABLED_CHANGED_ACTION.equals(intent.getAction())) {
+        } else if (WimaxManagerConstants.WIMAX_ENABLED_CHANGED_ACTION.equals(intent.getAction())) {
             logD("Received WiMAX change request");
             WimaxButton.getInstance().onReceive(context, intent);
         } else if (Intent.ACTION_POWER_CONNECTED.equals(intent.getAction())

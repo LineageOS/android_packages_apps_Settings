@@ -43,8 +43,6 @@
     <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
     <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.MOVE_PACKAGE" />
-    <uses-permission android:name="android.permission.ACCESS_WIMAX_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIMAX_STATE" />
     <uses-permission android:name="com.android.phone.CHANGE_NETWORK_MODE" />
     <uses-permission android:name="android.permission.MANAGE_USB" />
 
@@ -167,26 +165,6 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.VOICE_LAUNCH" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".wimax.WimaxSettings" android:label="@string/wimax_settings_title"
-                android:theme="@android:style/Theme.NoTitleBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.settings.WIMAX_SETTINGS" />
-                <action android:name="android.net.wimax.PICK_WIMAX_NETWORK" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.VOICE_LAUNCH" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".wimax.AdvancedSettings" android:label="@string/wimax_advanced_titlebar"
-                android:theme="@android:style/Theme.NoTitleBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.settings.WIMAX_SETTINGS" />
                 <category android:name="android.intent.category.VOICE_LAUNCH" />
             </intent-filter>
         </activity>

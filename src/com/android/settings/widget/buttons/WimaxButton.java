@@ -5,12 +5,12 @@ import com.android.settings.R;
 import com.android.settings.widget.SettingsAppWidgetProvider;
 import com.android.settings.widget.StateTracker;
 import com.android.settings.widget.WidgetSettings;
-import com.android.wimax.WimaxSettingsHelper;
-import com.android.wimax.WimaxConstants;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.wimax.WimaxHelper;
+import android.net.wimax.WimaxManagerConstants;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -27,17 +27,15 @@ public class WimaxButton extends WidgetButton {
 
         @Override
         public int getActualState(Context context) {
-            final WimaxSettingsHelper helper = new WimaxSettingsHelper(context);
-            if (helper.isWimaxSupported()) {
-                return wimaxStateToFiveState(helper.getWimaxState());
+            if (WimaxHelper.isWimaxSupported(context)) {
+                return wimaxStateToFiveState(WimaxHelper.getWimaxState(context));
             }
             return SettingsAppWidgetProvider.STATE_UNKNOWN;
         }
 
         @Override
-        protected void requestStateChange(Context context, final boolean desiredState) {
-            final WimaxSettingsHelper helper = new WimaxSettingsHelper(context);
-            if (!helper.isWimaxSupported()) {
+        protected void requestStateChange(final Context context, final boolean desiredState) {
+            if (!WimaxHelper.isWimaxSupported(context)) {
                 Log.e(SettingsAppWidgetProvider.TAG, "WiMAX is not supported");
                 return;
             }
@@ -49,7 +47,7 @@ public class WimaxButton extends WidgetButton {
             new AsyncTask<Void, Void, Void>() {
                 @Override
                 protected Void doInBackground(Void... args) {
-                    helper.setWimaxEnabled(desiredState);
+                    WimaxHelper.setWimaxEnabled(context, desiredState);
                     return null;
                 }
             }.execute();
@@ -57,10 +55,10 @@ public class WimaxButton extends WidgetButton {
 
         @Override
         public void onActualStateChange(Context context, Intent intent) {
-            if (!WimaxConstants.WIMAX_ENABLED_CHANGED_ACTION.equals(intent.getAction())) {
+            if (!WimaxManagerConstants.WIMAX_ENABLED_CHANGED_ACTION.equals(intent.getAction())) {
                 return;
             }
-            int wimaxState = intent.getIntExtra(WimaxConstants.CURRENT_WIMAX_ENABLED_STATE, WimaxConstants.WIMAX_ENABLED_STATE_UNKNOWN);
+            int wimaxState = intent.getIntExtra(WimaxManagerConstants.CURRENT_WIMAX_ENABLED_STATE, WimaxManagerConstants.WIMAX_ENABLED_STATE_UNKNOWN);
             int widgetState = wimaxStateToFiveState(wimaxState);
             setCurrentState(context, widgetState);
         }
@@ -71,13 +69,13 @@ public class WimaxButton extends WidgetButton {
          */
         private static int wimaxStateToFiveState(int wimaxState) {
             switch (wimaxState) {
-                case WimaxConstants.WIMAX_ENABLED_STATE_DISABLED:
+                case WimaxManagerConstants.WIMAX_ENABLED_STATE_DISABLED:
                     return SettingsAppWidgetProvider.STATE_DISABLED;
-                case WimaxConstants.WIMAX_ENABLED_STATE_ENABLED:
+                case WimaxManagerConstants.WIMAX_ENABLED_STATE_ENABLED:
                     return SettingsAppWidgetProvider.STATE_ENABLED;
-                case WimaxConstants.WIMAX_ENABLED_STATE_ENABLING:
+                case WimaxManagerConstants.WIMAX_ENABLED_STATE_ENABLING:
                     return SettingsAppWidgetProvider.STATE_TURNING_ON;
-                case WimaxConstants.WIMAX_ENABLED_STATE_DISABLING:
+                case WimaxManagerConstants.WIMAX_ENABLED_STATE_DISABLING:
                     return SettingsAppWidgetProvider.STATE_TURNING_OFF;
                 default:
                     return SettingsAppWidgetProvider.STATE_UNKNOWN;

@@ -1201,7 +1201,6 @@
     <string name="toggleAirplane">"機内モードトグル"</string>
     <string name="toggleFlashlight">"フラッシュライトトグル"</string>
     <string name="toggleLockScreen">"ロックスクリーントグル"</string>
-    <string name="toggleWimax">WiMAX</string>
 
     <string name="toggleWifiDescription">"Wi-Fi有効/無効"</string>
     <string name="toggleWifiApDescription">"ポータブルアクセスポイント有効/無効"</string>
@@ -1217,7 +1216,6 @@
     <string name="toggleAirplaneDescription">"機内モードの切替"</string>
     <string name="toggleFlashlightDescription">"フラッシュライトモードの切替"</string>
     <string name="toggleLockScreenDescription">"ロックスクリーンの有効/無効"</string>
-    <string name="toggleWimaxDescription">WiMAXの有効/無効</string>
 
     <string name="widgetSettings">"ウィジェット設定"</string>
     <string name="wifiSettings">"Wi-Fiイベント"</string>
@@ -1302,97 +1300,6 @@
     <string name="bluetooth_profile_hid">HID</string>
     <string name="bluetooth_summary_connected_to_hid">HIDデバイスに接続</string>
 
-    <!-- Wimax settings -->
-    <!-- Used in the 1st-level settings screen to turn on Wimax -->
-    <string name="wimax_quick_toggle_title">WiMAX</string>
-    <!-- Used in the 1st-level settings screen as the turn-on summary -->
-    <string name="wimax_quick_toggle_summary">WiMAXを有効にする</string>
-    <!--Wireless controls setting screen, Wimax check box summary text when turning Wimax on -->
-    <string name="wimax_starting">開始中\u2026</string>
-    <!--Wireless controls setting screen, Wimax check box summary text when turning Wimax off -->
-    <string name="wimax_stopping">停止中\u2026</string>
-    <!-- Generic error message -->
-    <string name="wimax_error">エラー</string>
-    <!-- Error message when Wimax can't start -->
-    <string name="error_wimax_starting">WiMAXを開始できません</string>
-    <!-- Error message when Wimax can't stop -->
-    <string name="error_wimax_stopping">WiMAXを停止できません</string>
-
-    <!-- Used in the 1st-level settings screen to go to the 2nd-level settings screen -->
-    <string name="wimax_settings_title">WiMA設定X</string>
-
-    <!-- Title of the Wimax settings screen -->
-    <string name="wimax_settings_category">WiMAX設定</string>
-    <!-- Used in the 2nd-level settings screen to turn on Wimax -->
-    <string name="wimax">WiMAX</string>
-    <!--Wimax settings screen menu option -->
-    <string name="scan_wimax">スキャン</string>
-    <string name="scan_for_wimax">WiMAXのスキャン</string>
-    <!--Wimax settings screen menu option -->
-    <string name="wimax_menu_advanced">アドバンスド</string>
-    <!-- Header for the list of wimax networks-->
-    <string name="wimax_networks">WiMAXネットワーク</string>
-    <!-- Action message to scan for wimax network -->
-    <string name="wimax_scan_networks">WiMAXネットワークをスキャンする</string>
-    <!-- Error message when Wimax can't scan for networks -->
-    <string name="error_wimax_scanning">ネットワークのスキャンはできません</string>
-
-    <!-- Checkbox title for option to auto connect to last connected wimax network -->
-    <string name="wimax_auto_connect">自動接続</string>
-    <!-- Checkbox summary for option to auto connect to last connected wimax network -->
-    <string name="wimax_auto_connect_summary">利用可能であれば、最後に接続したネットワークに自動的に接続する</string>
-    <!--Wimax settings screen, network context menu item -->
-    <string name="wimax_context_menu_connect">ネットワークに接続</string>
-    <!--Wimax settings screen, network context menu item -->
-    <string name="wimax_context_menu_disconnect">ネットワークから切断</string>
-    <!-- Error message when Wimax can't connect -->
-    <string name="error_wimax_connecting">ネットワークに接続できません</string>
-
-    <!-- Verbose wimax signal strength.  This is the best out of 4 levels. -->
-    <string name="wimax_signal_3">最高</string>
-    <!-- Verbose wimax signal strength.  This is the 2nd best out of 4 levels. -->
-    <string name="wimax_signal_2">良好</string>
-    <!-- Verbose wimax signal strength.  This is the 3rd best out of 4 levels. -->
-    <string name="wimax_signal_1">普通</string>
-    <!-- Verbose wimax signal strength.  This is the worst out of 4 levels. -->
-    <string name="wimax_signal_0">微弱</string>
-
-    <!-- Wimax settings screen, advanced, settings section.  This is a header shown above advanced wimax settings. -->
-    <string name="wimax_advanced_titlebar">アドバンスド</string>
-    <!-- Wimax settings screen, advanced, title of the item to show the Wimax device's MAC address. -->
-    <string name="wimax_advanced_mac_address_title">MACアドレス</string>
-    <!-- Wimax settings screen, advanced, title of the item to show the Wimax device's Hardware Version. -->
-    <string name="wimax_advanced_hw_version_title">ハードウェアバージョン</string>
-    <!-- Wimax settings screen, advanced, title of the item to show the Wimax device's Firmware Version. -->
-    <string name="wimax_advanced_sw_version_title">ファームウェアバージョン</string>
-    <!-- Wimax settings screen, advanced, title of the item to show the Wimax connection's rssi. -->
-    <string name="wimax_advanced_signal_strength_rssi_title">電波強度(RSSI)</string>
-    <!-- Wimax settings screen, advanced, title of the item to show the Wimax connection's simple signal strength. -->
-    <string name="wimax_advanced_signal_strength_simple_title">電波強度(Simple)</string>
-    <!-- Title of the screen to adjust IP settings -->
-    <string name="wimax_ip_settings_titlebar">IP設定</string>
-    <!-- Label for the IP address -->
-    <string name="wimax_ip_address">IPアドレス</string>
-    <!-- Label for the gateway of the network -->
-    <string name="wimax_gateway">ゲートウェイ</string>
-
-    <!-- Status message of Wimax when it is scanning -->
-    <string name="wimax_status_scanning">スキャン中\u2026</string>
-    <!-- Status message of Wimax when it is connecting (but the network is not known right now) -->
-    <string name="wimax_status_connecting">接続中\u2026</string>
-    <!-- Status message of wimax when it is connecting to a particular network -->
-    <string name="wimax_status_connecting_to"><xliff:g id="network_name">%1$s</xliff:g>に接続中\u2026</string>
-    <!--Wimax settings screen, summary text for network when connected -->
-    <string name="wimax_status_connected">接続</string>
-    <!-- Status message of wimax when it is connected to a network -->
-    <string name="wimax_status_connected_to"><xliff:g id="network_name">%1$s</xliff:g>に接続</string>
-    <!-- Status message of wimax when it is disconnecting (but the network is not known right now) -->
-    <string name="wimax_status_disconnecting">切断中\u2026</string>
-    <!-- Status message of wimax when it is disconnecting from a network -->
-    <string name="wimax_status_disconnecting_from"><xliff:g id="network_name">%1$s</xliff:g>から切断中\u2026</string>
-    <!-- Status message of wimax when it is disconnected -->
-    <string name="wimax_status_disconnected">切断</string>
-
     <!-- Profile settings -->
     <string name="profile_settings_title">プロファイル</string>
     <string name="soundtone_title">通知音</string>
@@ -1429,7 +1336,4 @@
     <string name="profile_applist_manage">アプリリストの管理</string>
     <string name="new_profile_name">&lt;新規プロファイル&gt;</string>
     <string name="profile_cannot_delete">アクティブなプロファイルを削除することはできません</string>
-    <string name="wimax_settings" msgid="1574837328738396794">"4G設定"</string>
-    <string name="wimax_settings_summary" msgid="3207355006084135453">"4Gネットワークとモデムの設定と管理"</string>
-    <string name="status_wimax_mac_address" msgid="8390791848661413416">"4G MACアドレス"</string>
 </resources>
