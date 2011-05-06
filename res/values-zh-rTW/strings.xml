@@ -956,6 +956,7 @@
     <!-- Default access point SSID used for tethering -->
     <string name="wifi_tether_configure_ssid_default" msgid="8467525402622138547">"Android 無線基地台"</string>
 
+
     <!-- Do not translate. Used for diagnostic screens, precise translation is not necessary
          Wi-Fi Testing on the diagnostic screen-->
     <!-- skipping untranslatable /resources:0/string:name=testing_wifi_info -->
@@ -1196,8 +1197,9 @@
     <string name="brightness" msgid="2354961343555249270">"亮度"</string>
     <!-- Sound & display settings screen, setting option summary to change brightness -->
     <string name="brightness_summary" msgid="838917350127550703">"調整螢幕亮度"</string>
-    <!-- Sound & display settings screen, setting option summary to change screen timeout -->
+    <!-- Sound & display settings screen, setting option name to change screen timeout -->
     <string name="screen_timeout" msgid="4882669461447531301">"螢幕自動關閉"</string>
+    <!-- Sound & display settings screen, setting option summary to change screen timeout -->
     <string name="screen_timeout_summary" msgid="2905757633140605334">"調整螢幕自動關閉前的延遲時間"</string>
     <!-- Sound & display settings screen, setting option name to change whether the screen adjusts automatically based on lighting conditions -->
     <string name="automatic_brightness" msgid="5014143533884135461">"自動調整亮度"</string>
@@ -1439,6 +1441,7 @@
     <string name="apn_auth_type_pap_chap" msgid="9102343063036134541">"PAP 或 CHAP"</string>
     <!-- Edit access point labels: The type of APN -->
     <string name="apn_type" msgid="469613123902220544">"APN 類型"</string>
+    <!-- Edit access point labels: The protocol of the APN, e.g., "IPv4", "IPv6", or "IPv4/IPv6". -->
     <string name="apn_protocol" msgid="3272222921649348640">"APN 通訊協定"</string>
     <!-- Edit access point screen menu option to delete this APN -->
     <string name="menu_delete" msgid="6981294422841124659">"刪除 APN"</string>
@@ -1470,8 +1473,11 @@
     <string name="master_clear_title" msgid="5907939616087039756">"重設為原廠設定"</string>
     <!-- SD card & phone storage settings screen, setting option summary text under Internal phone storage heading -->
     <string name="master_clear_summary" msgid="4986154238001088492">"清除手機上所有資料"</string>
+    <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
     <string name="master_clear_desc" product="nosdcard" msgid="2163013814299528247">"這會清除您手機"<b>"內部儲存空間"</b>"中的所有資料，包括："\n\n<li>"您的 Google 帳戶"</li>\n<li>"系統和應用程式資料及設定"</li>\n<li>"已下載的應用程式"</li>\n\n"如要清除手機上的所有資料，則需清除 "<b>"USB 儲存裝置"</b>"。"\n\n</string>
+    <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset -->
     <string name="master_clear_desc" product="default" msgid="1741944496458365969">"這會清除您手機"<b>"內部儲存空間"</b>"中的所有資料，包括："\n\n<li>"您的 Google 帳戶"</li>\n<li>"系統和應用程式資料及設定"</li>\n<li>"已下載的應用程式"</li>\n\n"如要一併清除音樂、相片及其他資料，則需清除 "<b>"SD 卡"</b>"。"\n\n</string>
+    <!-- SD card & phone storage settings screen, label for check box to erase USB storage [CHAR LIMIT=30] -->
     <string name="erase_external_storage" product="nosdcard" msgid="969364037450286809">"清除 USB 儲存裝置"</string>
     <!-- SD card & phone storage settings screen, label for check box to erase SD card [CHAR LIMIT=30] -->
     <string name="erase_external_storage" product="default" msgid="1397239046334307625">"清除 SD 卡"</string>
@@ -1723,7 +1729,6 @@
     <string name="applications_settings_summary" msgid="2714215108369119717">"管理應用程式，設定快速啟動鍵"</string>
     <!-- Applications settings screen heading. The header for the Application settings screen. -->
     <string name="applications_settings_header" msgid="6018266337275422250">"應用程式設定"</string>
-
     <!-- Applications settings screen, setting check box title. If checked, the system allows installation of applications that are downloaded from random places, such as web sites.  -->
     <string name="install_applications" msgid="4872012136210802181">"不明的來源"</string>
     <!-- Applications settings screen, setting check box summary.  This is the summary for "Unknown sources" checkbox  -->
@@ -2350,6 +2355,7 @@
     <string name="battery_desc_display" msgid="5432795282958076557">"顯示與背光啟動時的耗電量"</string>
     <!-- Suggestion for reducing display power -->
     <string name="battery_sugg_display" msgid="3370202402045141760">"降低螢幕亮度和/或螢幕自動關閉時間"</string>
+
     <!-- Description for Wi-Fi connectivity -->
     <string name="battery_desc_wifi" msgid="1702486494565080431">"Wi-Fi 耗電量"</string>
     <!-- Suggestion for Wi-Fi connectivity power drain -->
@@ -2749,6 +2755,10 @@
     <string name="profile_appgroup_title">應用程式群組：%s</string>
     <!-- Title for application group list screen -->
     <string name="profile_appgroups_title">應用程式群組</string>
+    <!-- Title for application group list screen -->
+    <string name="profile_volumeoverrides_title">替換音量</string>
+    <!-- Title for application group list screen -->
+    <string name="profile_volumeoverrides_summary">輕觸以設定音量</string>
     <!-- Title for application group list section, hint at delete action -->
     <string name="profile_applist_title">應用程式－輕觸以移除自群組</string>
     <!-- Prompt for name when adding a new app group -->
@@ -2839,6 +2849,7 @@
     <string name="sound_category_sound_title" msgid="1488759370067953996">"一般"</string>
     <string name="sound_category_calls_title" msgid="3688531959256239012">"來電"</string>
     <string name="sound_category_notification_title" msgid="3502115998790286943">"通知"</string>
+    <string name="sound_category_feedback_title">回饋</string>
 
     <string name="launcher_settings_title">ADW 主介面</string>
 
@@ -2930,8 +2941,12 @@
 
     <string name="cm_settings_title">CyanogenMod 設定</string>
 
-    <string name="sound_category_feedback_title" msgid="4399742321363475393">"意見"</string>
     <string name="wimax_settings" msgid="1574837328738396794">"4G 設定"</string>
     <string name="wimax_settings_summary" msgid="3207355006084135453">"設定與管理 4G 網路及數據機"</string>
     <string name="status_wimax_mac_address" msgid="8390791848661413416">"4G MAC 位址"</string>
+
+    <!-- A menu item in "About phone" that allows the user to update the phone with settings
+    from their cell phone carrier. The use of the string is similar to the string
+    "system_update_settings_list_item_title" in this project. [CHAR LIMIT=25] -->
+    <string name="additional_system_update_settings_list_item_title">額外的系統更新</string>
 </resources>
