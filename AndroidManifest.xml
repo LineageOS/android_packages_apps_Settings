@@ -89,18 +89,6 @@
 
         <!-- Top-level settings -->
 
-        <activity android:name=".wimax.WimaxSettings" android:label="@string/wimax_settings"
-                android:clearTaskOnLaunch="true"
-                >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.settings.WIMAX_SETTINGS" />
-                <action android:name="android.net.wimax.PICK_WIMAX_NETWORK" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.VOICE_LAUNCH" />
-            </intent-filter>
-        </activity>
-
         <activity android:name=".wifi.WifiSettings"
                 android:label="@string/wifi_settings"
                 android:configChanges="orientation|keyboardHidden"
