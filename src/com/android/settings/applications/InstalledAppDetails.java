@@ -477,8 +477,8 @@ public class InstalledAppDetails extends Activity
 
     private boolean isRevokeEnabled() {
         return Settings.Secure.getInt(getContentResolver(),
-                Settings.Secure.ENABLE_PERMISSIONS_MANAGMENT,
-                getResources().getBoolean(com.android.internal.R.bool.config_enablePermissionsManagment) ? 1 : 0) == 1;
+                Settings.Secure.ENABLE_PERMISSIONS_MANAGEMENT,
+                getResources().getBoolean(com.android.internal.R.bool.config_enablePermissionsManagement) ? 1 : 0) == 1;
     }
     
     private void setIntentAndFinish(boolean finish, boolean appChanged) {
