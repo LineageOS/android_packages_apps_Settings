@@ -88,6 +88,8 @@
     <string name="battery_info_health_over_voltage" msgid="2420269351664490121">"过电压"</string>
     <string name="battery_info_health_unspecified_failure" msgid="6347021103185471590">"未知错误"</string>
     <string name="bluetooth" msgid="5549625000628014477">"蓝牙"</string>
+    <string name="bluetooth_discoverable_duration_title">检测时间</string>
+    <string name="bluetooth_discoverable_duration_summary">设置设备多长时间内可以被检测到</string>
     <string name="bluetooth_visibility" msgid="2930835434091839916">"可检测性"</string>
     <string name="bluetooth_is_discoverable" msgid="1205694503775884903">"<xliff:g id="DISCOVERABLE_TIME_PERIOD">%1$s</xliff:g> 秒内可检测到..."</string>
     <string name="bluetooth_not_discoverable" msgid="128269993123955177">"可以检测到设备"</string>
@@ -202,6 +204,7 @@
     <string name="activity_picker_label" msgid="4910700713930693329">"选择活动"</string>
     <string name="device_info_label" msgid="6551553813651711205">"设备信息"</string>
     <string name="battery_info_label" msgid="4132685016148679403">"电池信息"</string>
+    <string name="battery_history_label">电池使用状况</string>
     <string name="display_label" msgid="7403874003169865762">"显示"</string>
     <string name="phone_info_label" msgid="2127552523124277664">"手机信息"</string>
     <string name="sd_card_settings_label" product="nosdcard" msgid="8101475181301178428">"USB 存储设备"</string>
@@ -314,7 +317,9 @@
     <string name="bluetooth_profile_a2dp" msgid="3259633293424539529">"媒体"</string>
     <string name="bluetooth_profile_headset" msgid="1874975688666658946">"电话"</string>
     <string name="bluetooth_profile_opp" msgid="3799470046565284440">"传输"</string>
+    <string name="bluetooth_profile_hid">操控</string>
     <string name="bluetooth_summary_connected_to_a2dp" msgid="510833839847758664">"已连接到媒体音频"</string>
+    <string name="bluetooth_summary_connected_to_hid">连接至 HID 操控设备</string>
     <string name="bluetooth_summary_connected_to_headset" msgid="4876496372728623918">"已连接到手机音频"</string>
     <string name="bluetooth_summary_connected_to_a2dp_headset" msgid="3045032710457800891">"已连接到手机和媒体音频"</string>
     <string name="bluetooth_device_advanced_title" msgid="528816860793581131">"<xliff:g id="DEVICE_NAME">%1$s</xliff:g>选项"</string>
@@ -328,6 +333,8 @@
     <string name="bluetooth_a2dp_profile_summary_use_for" msgid="4630849022250168427">"用于媒体音频"</string>
     <string name="bluetooth_headset_profile_summary_use_for" msgid="8705753622443862627">"用于手机音频"</string>
     <string name="bluetooth_opp_profile_summary_use_for" msgid="1255674547144769756">"用于文件传输"</string>
+    <string name="bluetooth_hid_profile_summary_connected">连接到 HID 控制设备</string>
+    <string name="bluetooth_hid_profile_summary_use_for">允许 HID 设备控制/输入</string>
     <string name="bluetooth_dock_settings" msgid="3218335822716052885">"底座设置"</string>
     <string name="bluetooth_dock_settings_title" msgid="5543069893044375188">"底座用于音频"</string>
     <string name="bluetooth_dock_settings_headset" msgid="1001821426078644650">"将底座用作免提电话"</string>
@@ -419,6 +426,8 @@
     <string name="silent_mode_incl_alarm_summary" msgid="2088830834182228458">"对所有非多媒体声音进行静音处理"</string>
     <string name="ringtone_title" msgid="5379026328015343686">"手机铃声"</string>
     <string name="ringtone_summary" msgid="2630023412632683493"></string>
+    <string name="soundtone_title">通知铃声</string>
+    <string name="soundtone_summary"></string>
     <string name="all_volume_title" msgid="8741571721868253103">"音量"</string>
     <string name="ring_volume_title" msgid="7938706566797464165">"铃声音量"</string>
     <string name="ring_volume_summary" msgid="7055497624193116879"></string>
@@ -430,6 +439,12 @@
     <string name="notification_sound_summary" msgid="2953599929394109819"></string>
     <string name="notification_pulse_title" msgid="1247988024534030629">"闪动通知指示灯"</string>
     <string name="notification_pulse_summary" msgid="6899220780534617152">"在收到新通知时，跟踪球指示灯会不断闪动"</string>
+    <string name="notification_blink_title">通知灯闪烁</string>
+    <string name="notification_blink_summary">有新通知时通知灯重复闪烁绿色</string>
+    <string name="notification_always_on_title">始终启用通知灯</string>
+    <string name="notification_always_on_summary">当屏幕开启时启用通知灯</string>
+    <string name="notification_charging_title">充电通知灯</string>
+    <string name="notification_charging_summary">当正在充电时启用红色通知灯</string>
     <string name="incoming_call_volume_title" msgid="8073714801365904099">"铃声"</string>
     <string name="notification_volume_title" msgid="2012640760341080408">"通知"</string>
     <string name="checkbox_notification_same_as_incoming_call" msgid="1073644356290338921">"将来电音量用作通知音量"</string>
@@ -447,6 +462,8 @@
     <string name="lock_sounds_enable_title" msgid="1575990840389107141">"屏幕锁定提示音"</string>
     <string name="lock_sounds_enable_summary_on" msgid="145741024028391473">"锁定和解锁屏幕时播放声音"</string>
     <string name="lock_sounds_enable_summary_off" msgid="8481243116223542804">"锁定和解锁屏幕时播放声音"</string>
+    <string name="power_sounds_enable_title">低电量音效</string>
+    <string name="power_sounds_enable_summary">当电池掂量不足时播放声音</string>
     <string name="haptic_feedback_enable_title" msgid="6311736559245411290">"触感"</string>
     <string name="haptic_feedback_enable_summary_on" msgid="1875779656524793053">"按软键以及进行某些 UI 交互时振动"</string>
     <string name="haptic_feedback_enable_summary_off" msgid="7287885436963105314">"按软键以及进行某些 UI 交互时振动"</string>
@@ -537,6 +554,7 @@
     <string name="status_up_time" msgid="7294859476816760399">"开机时间"</string>
     <string name="status_awake_time" msgid="2393949909051183652">"唤醒时间"</string>
     <string name="internal_memory" msgid="9129595691484260784">"内部存储空间"</string>
+    <string name="additional_memory">额外的存储空间</string>
     <string name="sd_memory" product="nosdcard" msgid="2510246194083052841">"USB 存储设备"</string>
     <string name="sd_memory" product="default" msgid="151871913888051515">"SD 卡"</string>
     <string name="memory_available" msgid="418542433817289474">"可用空间"</string>
@@ -804,13 +822,11 @@
     <string name="cached" msgid="1059590879740175019">"缓存的后台进程"</string>
     <string name="no_running_services" msgid="2059536495597645347">"当前未运行任何服务。"</string>
     <string name="service_started_by_app" msgid="6575184738671598131">"已由应用程序启动。"</string>
-    <!-- no translation found for service_client_name (4037193625611815517) -->
-    <skip />
+    <string name="service_client_name"><xliff:g id="client_name">%1$s</xliff:g></string>
     <string name="service_background_processes" msgid="6844156253576174488">"可用空间：<xliff:g id="MEMORY">%1$s</xliff:g>"</string>
     <string name="service_foreground_processes" msgid="7583975676795574276">"已用空间：<xliff:g id="MEMORY">%1$s</xliff:g>"</string>
     <string name="memory" msgid="6609961111091483458">"RAM"</string>
-    <!-- no translation found for service_process_name (4098932168654826656) -->
-    <skip />
+    <string name="service_process_name"><xliff:g id="process">%1$s</xliff:g></string>
     <string name="running_processes_item_description_s_s" msgid="5790575965282023145">"<xliff:g id="NUMPROCESS">%1$d</xliff:g> 个进程和 <xliff:g id="NUMSERVICES">%2$d</xliff:g> 个服务"</string>
     <string name="running_processes_item_description_s_p" msgid="8019860457123222953">"<xliff:g id="NUMPROCESS">%1$d</xliff:g> 个进程和 <xliff:g id="NUMSERVICES">%2$d</xliff:g> 个服务"</string>
     <string name="running_processes_item_description_p_s" msgid="744424668287252915">"<xliff:g id="NUMPROCESS">%1$d</xliff:g> 个进程和 <xliff:g id="NUMSERVICES">%2$d</xliff:g> 个服务"</string>
@@ -858,6 +874,7 @@
     <string name="testing" msgid="6584352735303604146">"测试"</string>
     <string name="testing_phone_info" msgid="8656693364332840056">"手机信息"</string>
     <string name="testing_battery_info" msgid="3497865525976497848">"电池信息"</string>
+    <string name="testing_battery_history">电池使用状况</string>
     <string name="quick_launch_title" msgid="7904609846945905306">"快速启动"</string>
     <string name="quick_launch_summary" msgid="3453825712466417452">"设置启动应用程序的键盘快捷键"</string>
     <string name="quick_launch_assign_application" msgid="4521368464929956350">"分配应用程序"</string>
@@ -891,10 +908,42 @@
     <string name="adb_warning_message" msgid="5352555112049663033">"USB 调试仅用于开发工作。使用该功能可在计算机和移动设备之间复制数据、在移动设备上安装应用程序而不进行通知，以及读取日志数据。"</string>
     <string name="gadget_picker_title" msgid="98374951396755811">"选择小工具"</string>
     <string name="widget_picker_title" msgid="9130684134213467557">"选择窗口小部件"</string>
+    <string name="battery_history_details_for">UID <xliff:g id="number" example="1234">%d</xliff:g> 详细信息</string>
+    <string name="battery_history_uid">UID <xliff:g id="user_id">%1$d</xliff:g></string>
+    <string name="battery_history_network_usage"><xliff:g id="app_name">%1$s</xliff:g> 的网络使用详细信息：</string>
+    <string name="battery_history_bytes_received">已收到字节数：<xliff:g id="bytes">%1$d</xliff:g></string>
+    <string name="battery_history_bytes_sent">已发送字节数：<xliff:g id="bytes">%1$d</xliff:g></string>
+    <string name="battery_history_bytes_total">总收发字节数：<xliff:g id="bytes">%1$d</xliff:g></string>
+    <string name="battery_history_cpu_usage"><xliff:g id="app_name">%1$s</xliff:g> 的CPU使用详细信息：</string>
+    <string name="battery_history_user_time">用户时间：</string>
+    <string name="battery_history_system_time">系统时间：</string>
+    <string name="battery_history_total_time">总时间：</string>
+    <string name="battery_history_starts">启动计数：<xliff:g id="starts">%1$d</xliff:g></string>
     <string name="battery_history_days" msgid="7110262897769622564">"<xliff:g id="DAYS">%1$d</xliff:g> 天 <xliff:g id="HOURS">%2$d</xliff:g> 小时 <xliff:g id="MINUTES">%3$d</xliff:g> 分 <xliff:g id="SECONDS">%4$d</xliff:g> 秒"</string>
     <string name="battery_history_hours" msgid="7525170329826274999">"<xliff:g id="HOURS">%1$d</xliff:g> 小时 <xliff:g id="MINUTES">%2$d</xliff:g> 分 <xliff:g id="SECONDS">%3$d</xliff:g> 秒"</string>
     <string name="battery_history_minutes" msgid="1467775596084148610">"<xliff:g id="MINUTES">%1$d</xliff:g> 分 <xliff:g id="SECONDS">%2$d</xliff:g> 秒"</string>
     <string name="battery_history_seconds" msgid="4283492130945761685">"<xliff:g id="SECONDS">%1$d</xliff:g> 秒"</string>
+    <string name="battery_history_packages_sharing_this_uid">共用此 UID 的应用程序：</string>
+    <string name="battery_history_no_data">沒有可供查阅的使用信息</string>
+    <string name="battery_history_sensor">感应器：</string>
+    <string name="battery_history_wakelock">部分唤醒：</string>
+    <string name="battery_history_used_by_packages">使用此感应器的应用程序：</string>
+    <string name="battery_history_sensor_usage">由 <xliff:g id="package">%2$s</xliff:g> 使用了 <xliff:g id="count">%1$d</xliff:g> 次</string>
+    <string name="battery_history_sensor_usage_multi">由以下其中一个使用了 <xliff:g id="count">%1$d</xliff:g> 次：</string>
+    <string name="battery_history_awake_label">系统运行</string>
+    <string name="battery_history_screen_on_label">屏幕开启</string>
+    <string name="battery_history_phone_on_label">电话开启</string>
+    <string name="battery_history_wifi_on_label">Wi-Fi 开启</string>
+    <string name="battery_history_wifi_running_label">Wi-Fi 开启</string>
+    <string name="battery_history_bluetooth_on_label">蓝牙开启</string>
+    <string name="battery_history_awake">唤醒时间：</string>
+    <string name="battery_history_screen_on">屏幕开启时间：</string>
+    <string name="battery_history_phone_on">电话开启时间：</string>
+    <string name="battery_history_wifi_on">Wi-Fi 开启时间：</string>
+    <string name="battery_history_wifi_running">Wi-Fi 运行时间：</string>
+    <string name="battery_history_bluetooth_on">蓝牙开启时间：</string>
+    <string name="battery_history_screen_on_battery">使用电池：</string>
+    <string name="battery_history_screen_on_plugged">插上电源：</string>
     <string name="usage_stats_label" msgid="5890846333487083609">"使用情况统计数据"</string>
     <string name="testing_usage_stats" msgid="7823048598893937339">"使用情况统计数据"</string>
     <string name="display_order_text" msgid="8592776965827565271">"排序方式："</string>
@@ -926,8 +975,7 @@
     <string name="battery_stats_wifi_running_label" msgid="3093545080361658269">"Wi-Fi"</string>
     <string name="battery_stats_wake_lock_label" msgid="1908942681902324095">"唤醒"</string>
     <string name="battery_stats_phone_signal_label" msgid="6822042940376636775">"手机信号强度"</string>
-    <!-- no translation found for battery_stats_last_duration (1535831453827905957) -->
-    <skip />
+    <string name="battery_stats_last_duration">@string/menu_stats_last_unplugged</string>
     <string name="awake" msgid="387122265874485088">"设备唤醒时间"</string>
     <string name="wifi_on_time" msgid="6310209835617490616">"Wi-Fi 开启时间"</string>
     <string name="bluetooth_on_time" msgid="6157799524996162271">"Wi-Fi 开启时间"</string>
@@ -1102,7 +1150,9 @@
     <string name="vpn_openvpn_set_remote_addr">远程 IP 地址</string>
     <string name="vpn_openvpn_set_cipher">密码算法</string>
     <string name="vpn_openvpn_set_cipher_message">留空使用默认密码</string>
+    <string name="vpn_openvpn_set_cipher_default">目前使用的默认加密方式</string>
     <string name="vpn_openvpn_set_keysize">密钥大小</string>
+    <string name="vpn_openvpn_set_keysize_default">目前使用的默认的加密方式</string>
     <string name="vpn_openvpn_set_keysize_message">留空使用默认密钥规格</string>
     <string name="vpn_openvpn_set_extra">额外参数</string>
     <string name="vpn_openvpn_set_extra_message">输入额外的命令行参数</string>
@@ -1176,9 +1226,12 @@
     <string name="choose_ringtone">选择铃声</string>
     <string name="profile_settings">情景模式设置</string>
     <string name="profile_name">情景模式名</string>
+    <string name="new_profile_name">&lt;新情景模式&gt;</string>
     <string name="profile_summary">触摸以设置情景模式</string>
     <string name="profile_appgroup_title">应用程序组：%s</string>
     <string name="profile_appgroups_title">应用程序组</string>
+    <string name="profile_volumeoverrides_title">替换音量</string>
+    <string name="profile_volumeoverrides_summary">轻触以设置音量</string>
     <string name="profile_applist_title">应用程序 - 单击从组中移除</string>
     <string name="profile_appgroup_name_prompt">输入应用程序组的名称</string>
     <string name="profile_delete">删除情景模式</string>
@@ -1315,4 +1368,5 @@
     <string name="wimax_settings" msgid="1574837328738396794">"4G 设置"</string>
     <string name="wimax_settings_summary" msgid="3207355006084135453">"设置和管理 4G 网络与调制解调器"</string>
     <string name="status_wimax_mac_address" msgid="8390791848661413416">"4G MAC 地址"</string>
+    <string name="additional_system_update_settings_list_item_title">额外的系统更新</string>
 </resources>
