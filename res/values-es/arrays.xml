@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 
+<!--
 /*
 **
 ** Copyright 2007 The Android Open Source Project
@@ -115,6 +115,19 @@
     <item msgid="1549288661423279207">"Nunca si se está cargando la batería"</item>
     <item msgid="1986753720941888596">"Nunca"</item>
   </string-array>
+    <string-array name="battery_history_type_spinner">
+        <item>Uso de CPU</item>
+        <item>Uso de Red</item>
+        <item>Uso de GPS</item>
+        <item>Uso del sensor</item>
+        <item>Uso parcial de despertar</item>
+        <item>Otros usos</item>
+    </string-array>
+    <string-array name="battery_history_which_spinner">
+        <item>Desde la última vez desenchufado</item>
+        <item>Total desde inicio</item>
+        <item>Total en todo el tiempo</item>
+    </string-array>
   <string-array name="usage_stats_display_order_types">
     <item msgid="9077371706468756228">"Tiempo de uso"</item>
     <item msgid="1908750532762193304">"Número de inicios"</item>
@@ -143,9 +156,11 @@
     <item msgid="535934025797984365">"CHAP"</item>
     <item msgid="8383098660619805783">"PAP o CHAP"</item>
   </string-array>
-    <!-- no translation found for apn_protocol_entries:0 (4852355456199302715) -->
-    <!-- no translation found for apn_protocol_entries:1 (4394161344888484571) -->
-    <!-- no translation found for apn_protocol_entries:2 (8084938354605535381) -->
+    <string-array name="apn_protocol_entries">
+        <item>IPv4</item>
+        <item>IPv6</item>
+        <item>IPv4/IPv6</item>
+    </string-array>
   <string-array name="app_install_location_entries">
     <item msgid="8151497958991952759">"Almacenamiento de dispositivo interno"</item>
     <item msgid="3738430123799803530">"Tarjeta SD extraíble"</item>
@@ -157,4 +172,23 @@
     <item msgid="1276641209451816572">"Solo en modo silencio"</item>
     <item msgid="8418930333779132418">"Si no está en modo silencio"</item>
   </string-array>
+
+      <string-array name="profile_entries">
+        <item>Encendido</item>
+        <item>Apagado</item>
+        <item>No anular</item>
+    </string-array>
+
+    <string-array name="backgroundWidget">
+        <item>Gris</item>
+        <item>Transparente</item>
+    </string-array>
+
+    <string-array name="bluetooth_discoverable_duration_entries">
+        <item>60 segundos</item>
+        <item>120 segundos</item>
+        <item>300 segundos</item>
+        <item>600 segundos</item>
+        <item>Infinito</item>
+    </string-array>
 </resources>
