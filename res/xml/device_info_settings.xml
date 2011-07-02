@@ -68,6 +68,13 @@
                 <intent android:action="android.settings.LICENSE" />
             </PreferenceScreen>
 
+            <!-- CyanogenMod License information -->
+            <PreferenceScreen
+                    android:key="cmlicense"
+                    android:title="@string/settings_cmlicense_activity_title">
+                <intent android:action="android.settings.CMLICENSE" />
+            </PreferenceScreen>
+
             <!-- Terms and conditions -->
             <PreferenceScreen
                     android:key="terms"
