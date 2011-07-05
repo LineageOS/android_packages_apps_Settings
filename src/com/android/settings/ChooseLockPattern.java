@@ -27,6 +27,7 @@ import static com.android.internal.widget.LockPatternView.DisplayMode;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
@@ -487,6 +488,13 @@ public class ChooseLockPattern extends Activity implements View.OnClickListener{
         if (lockVirgin) {
             utils.setVisiblePatternEnabled(true);
             utils.setTactileFeedbackEnabled(false);
+
+            // It's the first time we choose a lock pattern, so set the "disable
+            // lockscreen on security option" to the default value here. All other security
+            // types will be set correctly on first use.
+            // This is needed as otherwise the option will be enabled on first use.
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.LOCKSCREEN_DISABLE_ON_SECURITY, 0);
         }
 
         setResult(RESULT_FINISHED);
