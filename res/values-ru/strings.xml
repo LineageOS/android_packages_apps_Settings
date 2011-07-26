@@ -94,7 +94,10 @@
     <string name="bluetooth_discoverable_duration_summary">Как долго устройство остаётся видимым</string>
     <string name="bluetooth_visibility" msgid="2930835434091839916">"Видимость"</string>
     <string name="bluetooth_is_discoverable" msgid="1205694503775884903">"Видимый в течение <xliff:g id="DISCOVERABLE_TIME_PERIOD">%1$s</xliff:g> секунд..."</string>
+    <string name="bluetooth_is_discoverable_always" msgid="8573385118329733931">"Видимый"</string>
     <string name="bluetooth_not_discoverable" msgid="128269993123955177">"Сделать устройство видимым"</string>
+    <string name="bluetooth_visibility_timeout" msgid="6634508002347847278">"Тайм-аут видимости"</string>
+    <string name="bluetooth_visibility_timeout_summary" msgid="6483353842671501585">"Укажите, в течение какого времени устройство будет видимым"</string>
     <string name="bluetooth_lock_voice_dialing" msgid="3139322992062086225">"Заблокировать голосовой набор"</string>
     <string name="bluetooth_lock_voice_dialing_summary" msgid="4741338867496787042">"Предотвратить использование телефона Bluetooth, когда экран заблокирован"</string>
     <string name="bluetooth_devices" msgid="1886018064039454227">"Устройства Bluetooth"</string>
@@ -119,14 +122,16 @@
     <string name="bluetooth_permission_request" msgid="1523129741266262748">"Запрос разрешения на включение Bluetooth"</string>
     <string name="bluetooth_ask_enablement" msgid="2342558978033892004">"Приложение на вашем телефоне запрашивает разрешение на включение Bluetooth. Разрешить?"</string>
     <string name="bluetooth_ask_discovery" msgid="669870705606180872">"Приложение на вашем телефоне запрашивает разрешение на включение видимого режима Bluetooth на <xliff:g id="TIMEOUT">%1$d</xliff:g> с. Разрешить?"</string>
+    <string name="bluetooth_ask_lasting_discovery" msgid="3413855805411554871">"Приложение на телефоне запрашивает разрешение на включение режима постоянной видимости для других устройств с поддержкой Bluetooth. Разрешить?"</string>
     <string name="bluetooth_ask_enablement_and_discovery" msgid="7220210326619399542">"Приложение на вашем телефоне запрашивает разрешение на включение Bluetooth и видимого режима на <xliff:g id="TIMEOUT">%1$d</xliff:g> с. Разрешить?"</string>
+    <string name="bluetooth_ask_enablement_and_lasting_discovery" msgid="7471195931669103553">"Приложение на телефоне запрашивает разрешение на включение режима постоянной видимости для других устройств с поддержкой Bluetooth. Разрешить?"</string>
     <string name="bluetooth_turning_on" msgid="3107102168379705771">"Включается Bluetooth..."</string>
     <string name="date_and_time" msgid="4114084177056654663">"Настройки даты и времени"</string>
     <string name="date_time_12_hour_sample" msgid="3259617262618020574">"1:00 pm"</string>
     <string name="date_time_24_hour_sample" msgid="8916857570746212357">"13:00"</string>
     <string name="date_time_changeTime_text" msgid="7037437020000867740">"Изменить время"</string>
     <string name="date_time_changeDate_text" msgid="5259762626498028057">"Дата"</string>
-    <string name="choose_timezone" msgid="7762866468013985022">"Выбрать часовой пояс"</string>
+    <string name="choose_timezone" msgid="7762866468013985022">"Выбор часового пояса"</string>
     <string name="normal_date_format" msgid="1982904221918374153">"Обычный (<xliff:g id="DATE">%s</xliff:g>)"</string>
     <string name="display_preview_label" msgid="1127597250917274792">"Предварительный просмотр:"</string>
     <string name="display_font_size_label" msgid="8941851418397475389">"Размер шрифта:"</string>
@@ -234,14 +239,14 @@
     <string name="sum_carrier_select" msgid="6648929373316748020">"Выберите оператора связи"</string>
     <string name="date_and_time_settings_title" msgid="3350640463596716780">"Дата и время"</string>
     <string name="date_and_time_settings_summary" msgid="2435705040205950381">"Установка даты, времени, часового пояса и форматов"</string>
-    <string name="date_time_auto" msgid="3086083265745944725">"Автоматически"</string>
+    <string name="date_time_auto" msgid="3086083265745944725"></string>
     <string name="date_time_auto_summaryOn" msgid="9034585614665299846">"Использовать данные, предоставленные сетью"</string>
     <string name="date_time_auto_summaryOff" msgid="3900356736797266448">"Использовать данные, предоставленные сетью"</string>
     <string name="date_time_24hour" msgid="1193032284921000063">"24-часовой формат"</string>
-    <string name="date_time_set_time" msgid="5716856602742530696">"Настроить время"</string>
-    <string name="date_time_set_timezone" msgid="5045627174274377814">"Выбрать часовой пояс"</string>
-    <string name="date_time_set_date" msgid="7021491668550232105">"Настроить дату"</string>
-    <string name="date_time_date_format" msgid="436706100255870967">"Выбрать формат даты"</string>
+    <string name="date_time_set_time" msgid="5716856602742530696">"Время"</string>
+    <string name="date_time_set_timezone" msgid="5045627174274377814">"Часовой пояс"</string>
+    <string name="date_time_set_date" msgid="7021491668550232105">"Дата"</string>
+    <string name="date_time_date_format" msgid="436706100255870967">"Формат даты"</string>
     <string name="zone_list_menu_sort_alphabetically" msgid="5683377702671088588">"Упорядочить по алфавиту"</string>
     <string name="zone_list_menu_sort_by_timezone" msgid="2720190443744884114">"Упорядочить по часовому поясу"</string>
     <string name="security_settings_title" msgid="5168491784222013179">"Местоположение и защита"</string>
@@ -485,7 +490,7 @@
     <string name="brightness_summary" msgid="838917350127550703">"Настроить яркость экрана"</string>
     <string name="screen_timeout" msgid="4882669461447531301">"Автоотключение экрана"</string>
     <string name="screen_timeout_summary" msgid="2905757633140605334">"Интервал времени до автоматического отключения экрана"</string>
-    <string name="automatic_brightness" msgid="5014143533884135461">"Яркость автоматически"</string>
+    <string name="automatic_brightness" msgid="5014143533884135461">"Автонастройка"</string>
     <string name="sim_lock_settings" msgid="3392331196873564292">"Настройки блокировки SIM-карты"</string>
     <string name="sim_lock_settings_category" msgid="5136244267576697004">"Настроить блокировку"</string>
     <string name="sim_lock_settings_title" msgid="9018585580955414596">"Блокировка SIM-карты"</string>
@@ -1340,4 +1345,5 @@
     <string name="wimax_settings" msgid="1574837328738396794">"Настройки 4G"</string>
     <string name="wimax_settings_summary" msgid="3207355006084135453">"Подключение и настройка сети и модема 4G"</string>
     <string name="status_wimax_mac_address" msgid="8390791848661413416">"МАС-адрес для 4G"</string>
+    <string name="additional_system_update_settings_list_item_title" msgid="214987609894661992">"Дополнительные обновления системы"</string>
 </resources>

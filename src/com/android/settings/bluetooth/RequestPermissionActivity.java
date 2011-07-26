@@ -43,7 +43,7 @@ public class RequestPermissionActivity extends Activity implements
 
     private static final String TAG = "RequestPermissionActivity";
 
-    private static final int MAX_DISCOVERABLE_TIMEOUT = 300;
+    private static final int MAX_DISCOVERABLE_TIMEOUT = 3600; // 1 hr
 
     // Non-error return code: BT is starting or has started successfully. Used
     // by this Activity and RequestPermissionHelperActivity
@@ -157,7 +157,14 @@ public class RequestPermissionActivity extends Activity implements
             builder.setCancelable(false);
         } else {
             // Ask the user whether to turn on discovery mode or not
-            builder.setMessage(getString(R.string.bluetooth_ask_enablement_and_discovery, mTimeout));
+            // For lasting discoverable mode there is a different message
+            if (mTimeout == BluetoothDiscoverableEnabler.DISCOVERABLE_TIMEOUT_NEVER) {
+                builder.setMessage(
+                        getString(R.string.bluetooth_ask_lasting_discovery));
+            } else {
+                builder.setMessage(
+                        getString(R.string.bluetooth_ask_discovery, mTimeout));
+            }
             builder.setPositiveButton(getString(R.string.yes), this);
             builder.setNegativeButton(getString(R.string.no), this);
         }
@@ -241,11 +248,9 @@ public class RequestPermissionActivity extends Activity implements
             mTimeout = intent.getIntExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION,
                     BluetoothDiscoverableEnabler.DEFAULT_DISCOVERABLE_TIMEOUT);
 
-            Log.e(TAG, "Timeout = " + mTimeout);
+            Log.d(TAG, "Setting Bluetooth Discoverable Timeout = " + mTimeout);
 
-            if (mTimeout > MAX_DISCOVERABLE_TIMEOUT) {
-                mTimeout = MAX_DISCOVERABLE_TIMEOUT;
-            } else if (mTimeout <= 0) {
+            if (mTimeout < 0 || mTimeout > MAX_DISCOVERABLE_TIMEOUT) {
                 mTimeout = BluetoothDiscoverableEnabler.DEFAULT_DISCOVERABLE_TIMEOUT;
             }
         } else {
