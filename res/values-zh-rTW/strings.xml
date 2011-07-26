@@ -181,22 +181,24 @@
 
     <!-- Used as setting title (for checkbox) on second screen after selecting Bluetooth settings -->
     <string name="bluetooth" msgid="5549625000628014477">"藍牙"</string>
-    <!-- Bluetooth settings screen, list label how long the device remains in discoverable mode -->
-    <string name="bluetooth_discoverable_duration_title">偵測時限</string>
-    <!-- Bluetooth settings screen, Discoverable duration list summary -->
-    <string name="bluetooth_discoverable_duration_summary">設定裝置可被偵測多久</string>
     <!-- Bluetooth settings screen, check box label when the Bluetooth device can be seen by others -->
     <string name="bluetooth_visibility" msgid="2930835434091839916">"可偵測性"</string>
     <!-- Bluetooth settings screen, summary after selecting Discoverable check box -->
     <string name="bluetooth_is_discoverable" msgid="1205694503775884903">"可供偵測 <xliff:g id="DISCOVERABLE_TIME_PERIOD">%1$s</xliff:g> 秒..."</string>
+    <!-- Bluetooth settings screen, Discoverable checkbox summary text when Discoverable duration is set to "forever" -->
     <string name="bluetooth_is_discoverable_always" msgid="8573385118329733931">"可供偵測"</string>
+    <!-- Bluetooth settings screen, Discoverable checkbox summary text -->
     <string name="bluetooth_not_discoverable" msgid="128269993123955177">"設定裝置為可偵測"</string>
+    <!-- Bluetooth settings screen, option name to pick discoverability timeout duration (a list dialog comes up) -->
     <string name="bluetooth_visibility_timeout" msgid="6634508002347847278">"可供偵測逾時時間"</string>
+    <!-- Bluetooth settings screen, Discoverable timout list dialog summary text -->
     <string name="bluetooth_visibility_timeout_summary" msgid="6483353842671501585">"設定裝置可供偵測的開放時間"</string>
+    <!-- Bluetooth settings screen, check box label whether or not to allow
+        bluetooth voice dialing when lock screen is up-->
     <string name="bluetooth_lock_voice_dialing" msgid="3139322992062086225">"鎖定語音撥號"</string>
     <!-- Bluetooth settings screen, lock voice dialing checkbox summary text -->
     <string name="bluetooth_lock_voice_dialing_summary" msgid="4741338867496787042">"螢幕鎖定時不要使用藍芽撥號"</string>
-
+    <!-- Bluetooth settings screen, heading above the list of nearby bluetooth devices -->
     <string name="bluetooth_devices" msgid="1886018064039454227">"藍牙裝置"</string>
     <!-- Bluetooth settings screen, title for the current bluetooth name setting -->
     <string name="bluetooth_device_name" msgid="8415828355207423800">"裝置名稱"</string>
@@ -244,9 +246,17 @@
 
     <!-- Strings for asking to the user whether to allow an app to enable discovery mode -->
     <string name="bluetooth_ask_discovery" msgid="669870705606180872">"手機上的某個應用程式要求開啟藍牙裝置，這表示您的藍牙連線將開放 <xliff:g id="TIMEOUT">%1$d</xliff:g> 秒，讓其他裝置可在時間內搜尋到您的手機。您想要允許要求嗎？"</string>
+
+    <!-- Strings for asking to the user whether to allow an app to enable lasting discovery mode  -->
     <string name="bluetooth_ask_lasting_discovery" msgid="3413855805411554871">"手機上的某個應用程式要求將手機設成「永遠」開放其他藍牙裝置搜尋。您想要允許這項要求嗎？"</string>
+
+    <!-- Strings for asking to the user whether to allow an app to enable bluetooth and discovery mode -->
     <string name="bluetooth_ask_enablement_and_discovery" msgid="7220210326619399542">"手機上的某個應用程式要求開啟藍牙裝置，這表示您的藍牙連線將開放 <xliff:g id="TIMEOUT">%1$d</xliff:g> 秒，讓其他裝置可在時間內搜尋到您的手機。您想要允許要求嗎？"</string>
+
+    <!-- Strings for asking to the user whether to allow an app to enable bluetooth and discovery mode -->
     <string name="bluetooth_ask_enablement_and_lasting_discovery" msgid="7471195931669103553">"手機上的某個應用程式要求開啟藍牙功能，讓其他藍牙裝置可以搜尋到您的手機。您想要允許這項要求嗎？"</string>
+
+    <!-- Strings for msg to display to user while bluetooth is turning on -->
     <string name="bluetooth_turning_on" msgid="3107102168379705771">"正在開啟藍牙..."</string>
 
     <!-- Do not translate. Used for diagnostic screens, precise translation is not necessary -->
@@ -260,6 +270,15 @@
     <!-- skipping untranslatable /resources:0/string:name=bluetooth_device_info_connectButton_text -->
     <!-- Do not translate. Used for diagnostic screens, precise translation is not necessary -->
     <!-- skipping untranslatable /resources:0/string:name=bluetooth_device_info_deviceInfo_text -->
+
+    <!-- Activity label of BluetoothPermissionActivity [CHAR LIMIT=none]-->
+    <string name="bluetooth_connection_permission_request">藍牙連接請求</string>
+
+    <!-- Notification message when a remote Bluetooth device wants to connect to a Bluetooth profile [CHAR LIMIT=none]-->
+    <string name="bluetooth_connection_notif_message">輕觸以連接到“<xliff:g id="device_name">%1$s</xliff:g>”</string>
+
+    <!-- Bluetooth connection permission Alert Activity text [CHAR LIMIT=none]-->
+    <string name="bluetooth_connection_dialog_text">您想要連接到“<xliff:g id="device_name">%1$s</xliff:g>”嗎？</string>
 
     <!-- Date & time settings screen title -->
     <string name="date_and_time" msgid="4114084177056654663">"日期與時間設定"</string>
@@ -1303,6 +1322,8 @@
     <string name="status_number" msgid="5123197324870153205">"我的電話號碼"</string>
     <!-- About phone, status item title.  The phone MIN number of the current device.-->
     <string name="status_min_number" msgid="3519504522179420597">"MIN"</string>
+    <!-- About phone, status item title.  The phone MSID number of the current device.-->
+    <string name="status_msid_number">MSID</string>
     <!-- About phone, status item title.  The phone PRL Version of the current device.-->
     <string name="status_prl_version" msgid="8499039751817386529">"PRL 版本"</string>
     <!-- About phone, status item title.  The phone MEID number of the current device.-->
@@ -1538,19 +1559,31 @@
     <string name="call_settings_title" msgid="5188713413939232801">"通話設定"</string>
     <!-- Main settings screen, Call settings summary for item to go into call settings -->
     <string name="call_settings_summary" msgid="7291195704801002886">"設定語音信箱、來電轉接、來電待接及本機號碼顯示"</string>
+
+    <!-- Tethering controls, item title to go into the tethering settings -->
     <string name="tether_settings_title_usb" msgid="4315031513434087777">"網路共用"</string>
     <string name="tether_settings_title_wifi" msgid="3277144155960302049">"可攜式無線基地台"</string>
     <string name="tether_settings_title_both" msgid="2734066355556891504">"網路共用與可攜式無線基地台"</string>
+    <!-- Tethering controls, the item summary for the user to go into the tethering settings -->
     <string name="tether_settings_summary_usb" msgid="3562431455625637370">"透過 USB 分享手機的行動網路共用"</string>
     <string name="tether_settings_summary_wifi" msgid="4690912027002467246">"分享您的手機行動連線，讓手機成為可攜式 Wi-Fi 無線基地台"</string>
     <string name="tether_settings_summary_both" msgid="7460063951190682635">"透過 USB 或可攜式 Wi-Fi 無線基地台方式，分享手機的行動網路共用"</string>
+
+    <!-- USB Tethering options -->
     <string name="usb_title" msgid="7483344855356312510">"USB"</string>
     <string name="usb_tethering_button_text" msgid="585829947108007917">"USB 網路共用"</string>
+    <!-- USB available subtext - shown when USB is connected but not currently being tethered -->
     <string name="usb_tethering_available_subtext" msgid="156779271296152605">"已連接 USB，選取即可進行網路共用"</string>
+    <!-- USB tethered subtext - shown when USB is connected and being tethered -->
     <string name="usb_tethering_active_subtext" msgid="8916210851136467042">"網路已共用"</string>
+    <!-- USB storage subtext - shown when tethering is disabled because USB storage is active -->
     <string name="usb_tethering_storage_active_subtext" msgid="6608933594288072573">"使用 USB 儲存裝置時無法進行網路共用"</string>
+    <!-- USB unavailable subtext - shown when USB is not connected -->
     <string name="usb_tethering_unavailable_subtext" msgid="1044622421184007254">"USB 尚未連線"</string>
+    <!-- USB errored subtext - shown when USB is broken for some reason -->
     <string name="usb_tethering_errored_subtext" msgid="1377574819427841992">"USB 網路共用發生錯誤"</string>
+
+    <!-- Thethering help button - calls up a web view with general tethering info -->
     <string name="tethering_help_button_text" msgid="656117495547173630">"說明"</string>
 
     <!-- Wireless controls, item title to go into the network settings -->
