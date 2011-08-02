@@ -880,8 +880,15 @@
     <string name="builtin_keyboard_settings_summary" msgid="7990296351888096836">"端末内蔵物理キーボードの設定"</string>
     <string name="development_settings_title" msgid="6719732334835420989">"開発"</string>
     <string name="development_settings_summary" msgid="2151320488701538355">"アプリケーション開発オプション"</string>
-    <string name="enable_adb" msgid="7982306934419797485">"USBデバッグ"</string>
-    <string name="enable_adb_summary" msgid="4881186971746056635">"USB接続時はデバッグモードにする"</string>
+    <string name="enable_adb" msgid="7982306934419797485">"Androidデバッグ"</string>
+    <string name="enable_adb_summary" msgid="4881186971746056635">"Androidデバッグモードを許可する (ADB)"</string>
+    <string name="adb_over_network">"ネットワークADB"</string>
+    <!-- Setting checkbox summary for Whether to enable network debugging support -->
+    <string name="adb_over_network_summary">"USB以外のネットワークデバッグを利用 (Wi-Fiなど) この設定は再起動毎にリセットされます。"</string>
+    <!-- Warning for Adb over Network -->
+    <string name="adb_over_network_warning">"警告: ネットワークADBを有効にすると、電話機はGSM網を含めたあらゆるネットワークにさらされることになります！\n\nこの機能は信頼できるネットワークに接続中の場合のみ使用してください。\n\n有効にしてもよろしいですか？"</string>
+    <string name="adb_notify">"デバッグを通知する"</string>
+    <string name="adb_notify_summary">"デバッグが接続されたら通知を表示する"</string>
     <string name="keep_screen_on" msgid="1146389631208760344">"スリープモードにしない"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"充電中に画面をスリープにしない"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"擬似ロケーションを許可"</string>
@@ -1174,11 +1181,8 @@
     <string name="mod_version">"Modバージョン"</string>
     <string name="mod_version_default">"不明"</string>
     <string name="cm_settings_title">CyanogenMod設定</string>
-    <string name="adb_notify">"USBデバッグを通知する"</string>
     <string name="cpu_info">CPU情報</string>
     <string name="mem_info">メモリ情報(空き/トータル)</string>
-
-    <string name="adb_notify_summary">"USBデバッグが接続されたら通知を表示する"</string>
     <string name="kill_app_longpress_back">"長押しでアプリを終了"</string>
     <string name="kill_app_longpress_back_summary">"戻るボタンを長押しすることでフォアグラウンドアプリケーションを終了させる"</string>
     <string name="launcher_settings_title">ADWLauncher</string>

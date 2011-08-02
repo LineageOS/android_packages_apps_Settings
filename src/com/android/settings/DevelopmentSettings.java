@@ -36,16 +36,20 @@ public class DevelopmentSettings extends PreferenceActivity
         implements DialogInterface.OnClickListener, DialogInterface.OnDismissListener {
 
     private static final String ENABLE_ADB = "enable_adb";
+    private static final String ADB_TCPIP  = "adb_over_network";
     private static final String ADB_NOTIFY = "adb_notify";
     private static final String KEEP_SCREEN_ON = "keep_screen_on";
     private static final String ALLOW_MOCK_LOCATION = "allow_mock_location";
     private static final String KILL_APP_LONGPRESS_BACK = "kill_app_longpress_back";
 
     private CheckBoxPreference mEnableAdb;
+    private CheckBoxPreference mAdbOverNetwork;
     private CheckBoxPreference mAdbNotify;
     private CheckBoxPreference mKeepScreenOn;
     private CheckBoxPreference mAllowMockLocation;
     private CheckBoxPreference mKillAppLongpressBack;
+
+    private String mCurrentDialog;
 
     // To track whether Yes was clicked in the adb warning dialog
     private boolean mOkClicked;
@@ -59,6 +63,7 @@ public class DevelopmentSettings extends PreferenceActivity
         addPreferencesFromResource(R.xml.development_prefs);
 
         mEnableAdb = (CheckBoxPreference) findPreference(ENABLE_ADB);
+        mAdbOverNetwork = (CheckBoxPreference) findPreference(ADB_TCPIP);
         mAdbNotify = (CheckBoxPreference) findPreference(ADB_NOTIFY);
         mKeepScreenOn = (CheckBoxPreference) findPreference(KEEP_SCREEN_ON);
         mAllowMockLocation = (CheckBoxPreference) findPreference(ALLOW_MOCK_LOCATION);
@@ -71,10 +76,11 @@ public class DevelopmentSettings extends PreferenceActivity
 
         mEnableAdb.setChecked(Settings.Secure.getInt(getContentResolver(),
                 Settings.Secure.ADB_ENABLED, 0) != 0);
-        
+        mAdbOverNetwork.setChecked(Settings.Secure.getInt(getContentResolver(),
+                Settings.Secure.ADB_PORT, 0) > 0);
         mAdbNotify.setChecked(Settings.Secure.getInt(getContentResolver(),
                 Settings.Secure.ADB_NOTIFY, 1) != 0);
-                
+
         mKeepScreenOn.setChecked(Settings.System.getInt(getContentResolver(),
                 Settings.System.STAY_ON_WHILE_PLUGGED_IN, 0) != 0);
         mAllowMockLocation.setChecked(Settings.Secure.getInt(getContentResolver(),
@@ -101,16 +107,33 @@ public class DevelopmentSettings extends PreferenceActivity
                         .setPositiveButton(android.R.string.yes, this)
                         .setNegativeButton(android.R.string.no, this)
                         .show();
+                mCurrentDialog = ENABLE_ADB;
                 mOkDialog.setOnDismissListener(this);
             } else {
                 Settings.Secure.putInt(getContentResolver(), Settings.Secure.ADB_ENABLED, 0);
+            }
+        } else if (preference == mAdbOverNetwork) {
+            if (mAdbOverNetwork.isChecked()) {
+                mOkClicked = false;
+                if (mOkDialog != null) dismissDialog();
+                mOkDialog = new AlertDialog.Builder(this).setMessage(
+                        getResources().getString(R.string.adb_over_network_warning))
+                        .setTitle(R.string.adb_over_network)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton(android.R.string.yes, this)
+                        .setNegativeButton(android.R.string.no, this)
+                        .show();
+                mCurrentDialog = ADB_TCPIP;
+                mOkDialog.setOnDismissListener(this);
+            } else {
+                Settings.Secure.putInt(getContentResolver(), Settings.Secure.ADB_PORT, -1);
             }
         } else if (preference == mAdbNotify) {
             Settings.Secure.putInt(getContentResolver(), Settings.Secure.ADB_NOTIFY,
                     mAdbNotify.isChecked() ? 1 : 0);
         } else if (preference == mKeepScreenOn) {
-            Settings.System.putInt(getContentResolver(), Settings.System.STAY_ON_WHILE_PLUGGED_IN, 
-                    mKeepScreenOn.isChecked() ? 
+            Settings.System.putInt(getContentResolver(), Settings.System.STAY_ON_WHILE_PLUGGED_IN,
+                    mKeepScreenOn.isChecked() ?
                     (BatteryManager.BATTERY_PLUGGED_AC | BatteryManager.BATTERY_PLUGGED_USB) : 0);
         } else if (preference == mAllowMockLocation) {
             Settings.Secure.putInt(getContentResolver(), Settings.Secure.ALLOW_MOCK_LOCATION,
@@ -132,17 +155,29 @@ public class DevelopmentSettings extends PreferenceActivity
     public void onClick(DialogInterface dialog, int which) {
         if (which == DialogInterface.BUTTON_POSITIVE) {
             mOkClicked = true;
-            Settings.Secure.putInt(getContentResolver(), Settings.Secure.ADB_ENABLED, 1);
+            if (mCurrentDialog.equals(ENABLE_ADB)) {
+                Settings.Secure.putInt(getContentResolver(), Settings.Secure.ADB_ENABLED, 1);
+            } else {
+                Settings.Secure.putInt(getContentResolver(), Settings.Secure.ADB_PORT, 5555);
+            }
         } else {
             // Reset the toggle
-            mEnableAdb.setChecked(false);
+            if (mCurrentDialog.equals(ENABLE_ADB)) {
+                mEnableAdb.setChecked(false);
+            } else {
+                mAdbOverNetwork.setChecked(false);
+            }
         }
     }
 
     public void onDismiss(DialogInterface dialog) {
         // Assuming that onClick gets called first
         if (!mOkClicked) {
-            mEnableAdb.setChecked(false);
+            if (mCurrentDialog.equals(ENABLE_ADB)) {
+                mEnableAdb.setChecked(false);
+            } else {
+                mAdbOverNetwork.setChecked(false);
+            }
         }
     }
 
