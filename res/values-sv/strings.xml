@@ -122,6 +122,9 @@
     <string name="bluetooth_ask_enablement_and_discovery" msgid="7220210326619399542">"En app i telefonen begär tillåtelse att aktivera Bluetooth och göra telefonen synlig för andra enheter i <xliff:g id="TIMEOUT">%1$d</xliff:g> sekunder. Vill du tillåta det?"</string>
     <string name="bluetooth_ask_enablement_and_lasting_discovery" msgid="7471195931669103553">"En app begär tillåtelse att aktivera Bluetooth och göra telefonen synlig för andra enheter. Vill du tillåta det?"</string>
     <string name="bluetooth_turning_on" msgid="3107102168379705771">"Aktiverar Bluetooth …"</string>
+    <string name="bluetooth_connection_permission_request">"Bluetooth anslutningsförfrågan"</string>
+    <string name="bluetooth_connection_notif_message">"Tryck för att ansluta till \u0022<xliff:g id="device_name">%1$s</xliff:g>\u0022"</string>
+    <string name="bluetooth_connection_dialog_text">"Vill du ansluta till \u0022<xliff:g id="device_name">%1$s</xliff:g>\u0022?"</string>
     <string name="date_and_time" msgid="4114084177056654663">"Inställningar för datum och tid"</string>
     <string name="date_time_12_hour_sample" msgid="3259617262618020574">"Kl. 13:00"</string>
     <string name="date_time_24_hour_sample" msgid="8916857570746212357">"13:00"</string>
@@ -321,6 +324,7 @@
     <string name="bluetooth_profile_headset" msgid="1874975688666658946">"Telefon"</string>
     <string name="bluetooth_profile_opp" msgid="3799470046565284440">"Överför"</string>
     <string name="bluetooth_profile_hid">HID</string>
+    <string name="bluetooth_profile_network">Nätverk</string>
     <string name="bluetooth_summary_connected_to_a2dp" msgid="510833839847758664">"Ansluten till medialjud"</string>
     <string name="bluetooth_summary_connected_to_headset" msgid="4876496372728623918">"Ansluten till telefonens ljud"</string>
     <string name="bluetooth_summary_connected_to_a2dp_headset" msgid="3045032710457800891">"Ansluten till telefon- och medialjud"</string>
@@ -465,6 +469,8 @@
     <string name="lock_sounds_enable_title" msgid="1575990840389107141">"Skärmlåsljud"</string>
     <string name="lock_sounds_enable_summary_on" msgid="145741024028391473">"Spela upp ljud vid låsning och upplåsning av skärmen"</string>
     <string name="lock_sounds_enable_summary_off" msgid="8481243116223542804">"Spela upp ljud vid låsning och upplåsning av skärmen"</string>
+    <string name="power_sounds_enable_title">Ljud vid låg batterinivå</string>
+    <string name="power_sounds_enable_summary">Spela upp ett ljud med varningen för låg batterinivå</string>
     <string name="haptic_feedback_enable_title" msgid="6311736559245411290">"Haptisk återkoppling"</string>
     <string name="haptic_feedback_enable_summary_on" msgid="1875779656524793053">"Vibrera när funktionsknappar trycks ned och vid vissa gränssnittshändelser"</string>
     <string name="haptic_feedback_enable_summary_off" msgid="7287885436963105314">"Vibrera när funktionsknappar trycks ned och vid vissa gränssnittshändelser"</string>
@@ -557,6 +563,7 @@
     <string name="status_up_time" msgid="7294859476816760399">"Tid sedan systemstart"</string>
     <string name="status_awake_time" msgid="2393949909051183652">"Aktiveringstid"</string>
     <string name="internal_memory" msgid="9129595691484260784">"Intern lagring"</string>
+    <string name="additional_memory">Ytterligare lagring</string>
     <string name="sd_memory" product="nosdcard" msgid="2510246194083052841">"USB-lagring"</string>
     <string name="sd_memory" product="default" msgid="151871913888051515">"SD-kort"</string>
     <string name="memory_available" msgid="418542433817289474">"Tillgängligt utrymme"</string>
@@ -692,6 +699,7 @@
     <string name="settings_license_activity_title" msgid="7553683406244228650">"Öppen källkodslicens"</string>
     <string name="settings_license_activity_unavailable" msgid="4210539215951487627">"Ett problem inträffade när licenserna lästes in."</string>
     <string name="settings_license_activity_loading" msgid="3337535809093591740">"Läser in…"</string>
+    <string name="settings_cmlicense_activity_title">CyanogenMod-licenser</string>
     <string name="settings_safetylegal_title" msgid="1289483965535937431">"Säkerhetsinformation"</string>
     <string name="settings_safetylegal_activity_title" msgid="6901214628496951727">"Säkerhetsinformation"</string>
     <string name="settings_safetylegal_activity_unreachable" msgid="3198912875259612887">"Din telefon är inte ansluten till en datatjänst. Besök %s på en dator som är ansluten till Internet om du vill visa informationen nu."</string>
@@ -936,9 +944,15 @@
     <string name="battery_history_awake_label">Kör</string>
     <string name="battery_history_screen_on_label">Skärm på</string>
     <string name="battery_history_phone_on_label">Telefon på</string>
+    <string name="battery_history_wifi_on_label">Wifi På</string>
+    <string name="battery_history_wifi_running_label">Wifi Igång</string>
+    <string name="battery_history_bluetooth_on_label">Bluetooth På</string>
     <string name="battery_history_awake">Tid spenderad utan viloläge:</string>
     <string name="battery_history_screen_on">Tid spenderad med skärmen på:</string>
     <string name="battery_history_phone_on">Tid spenderad med telefon på:</string>
+    <string name="battery_history_wifi_on">Tid spenderad med Wifi på:</string>
+    <string name="battery_history_wifi_running">Tid spenderad med Wifi igång:</string>
+    <string name="battery_history_bluetooth_on">Tid spenderad med Bluetooth på:</string>
     <string name="battery_history_screen_on_battery">På batteri:</string>
     <string name="battery_history_screen_on_plugged">Inkopplad:</string>
     <string name="usage_stats_label" msgid="5890846333487083609">"Användningsstatistik"</string>
@@ -1225,6 +1239,8 @@
     <string name="profile_summary">Tryck för att konfigurera profil</string>
     <string name="profile_appgroup_title">Applikationsgrupp: %s</string>
     <string name="profile_appgroups_title">Applikationsgrupper</string>
+    <string name="profile_volumeoverrides_title">Åsidosättanden av volym</string>
+    <string name="profile_volumeoverrides_summary">Tryck för att ställa in volym.</string>
     <string name="profile_applist_title">Applikationer - klicka för att ta bort från grupp</string>
     <string name="profile_appgroup_name_prompt">Skriv in namn för applikationsgrupp</string>
     <string name="profile_delete">Ta bort profil</string>
