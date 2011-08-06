@@ -16,6 +16,8 @@
 
 package com.android.settings;
 
+import java.util.UUID;
+
 import android.app.Profile;
 import android.app.ProfileManager;
 import android.os.Bundle;
@@ -66,13 +68,13 @@ public class ProfileList extends PreferenceActivity implements
         PreferenceGroup profileList = (PreferenceGroup) findPreference("profile_title");
         profileList.removeAll();
 
-        mSelectedKey = mProfileManager.getActiveProfile().getName();
+        mSelectedKey = mProfileManager.getActiveProfile().getUuid().toString();
 
         for(Profile profile : mProfileManager.getProfiles()){
 
             ProfilePreference pref = new ProfilePreference(this);
 
-            pref.setKey(profile.getName());
+            pref.setKey(profile.getUuid().toString());
             pref.setTitle(profile.getName());
             pref.setSummary(R.string.profile_summary);
             pref.setPersistent(false);
@@ -80,7 +82,7 @@ public class ProfileList extends PreferenceActivity implements
             pref.setProfile(profile);
 
             pref.setSelectable(true);
-            if ((mSelectedKey != null) && mSelectedKey.equals(profile.getName())) {
+            if ((mSelectedKey != null) && mSelectedKey.equals(pref.getKey())) {
                 pref.setChecked();
             }
             profileList.addPreference(pref);
@@ -99,8 +101,13 @@ public class ProfileList extends PreferenceActivity implements
     }
 
     private void setSelectedProfile(String key) {
-        mSelectedKey = key;
-        mProfileManager.setActiveProfile(key);
+        try {
+            UUID selectedUuid = UUID.fromString(key);
+            mProfileManager.setActiveProfile(selectedUuid);
+            mSelectedKey = key;
+        } catch (IllegalArgumentException ex) {
+            ex.printStackTrace();
+        }
     }
 
 }

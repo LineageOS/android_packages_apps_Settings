@@ -26,6 +26,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -48,6 +49,9 @@ public class ProfileConfig extends PreferenceActivity implements OnPreferenceCha
     private EditTextPreference mNamePreference;
 
     private PreferenceScreen mDeletePreference;
+
+    //Below line intended for use with upcoming Status Bar Indicator functionality
+    //private CheckBoxPreference mStatusBarPreference;
 
     private StreamItem[] mStreams;
 
@@ -87,7 +91,7 @@ public class ProfileConfig extends PreferenceActivity implements OnPreferenceCha
     protected void onResume() {
         super.onResume();
 
-        mProfile = mProfileManager.getProfile(mProfile.getName());
+        mProfile = mProfileManager.getProfile(mProfile.getUuid());
 
         fillList();
     }
@@ -110,6 +114,11 @@ public class ProfileConfig extends PreferenceActivity implements OnPreferenceCha
         mNamePreference.setText(mProfile.getName());
         mNamePreference.setSummary(mProfile.getName());
         mNamePreference.setOnPreferenceChangeListener(this);
+
+        //Below lines intended for use with upcoming Status Bar Indicator functionality
+        //mStatusBarPreference = (CheckBoxPreference) findPreference("profile_statusbar");
+        //mStatusBarPreference.setChecked(mProfile.getStatusBarIndicator());
+        //mStatusBarPreference.setOnPreferenceChangeListener(this);
 
         PreferenceGroup streamList = (PreferenceGroup) findPreference("profile_volumeoverrides");
         streamList.removeAll();
@@ -153,7 +162,6 @@ public class ProfileConfig extends PreferenceActivity implements OnPreferenceCha
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        // Check name isn't already in use.
         if (preference instanceof StreamVolumePreference) {
             for (StreamItem stream : mStreams) {
                 if (preference == stream.mCheckbox) {
@@ -161,22 +169,36 @@ public class ProfileConfig extends PreferenceActivity implements OnPreferenceCha
                 }
             }
         }
+        // Check name isn't already in use.
         if (preference == mNamePreference) {
             String value = (String) newValue;
-            if (mProfileManager.getProfile(value) != null) {
+            if (mProfileManager.profileExists(value)) {
                 // Rollback the change.
                 return false;
             }
-            boolean active = mProfile.getName()
-                    .equals(mProfileManager.getActiveProfile().getName());
+            boolean active = mProfile.getUuid()
+                    .equals(mProfileManager.getActiveProfile().getUuid());
             mProfileManager.removeProfile(mProfile);
             mProfile.setName(value);
             preference.setSummary(value);
             mProfileManager.addProfile(mProfile);
             if (active) {
-                mProfileManager.setActiveProfile(mProfile.getName());
+                mProfileManager.setActiveProfile(mProfile.getUuid());
             }
         }
+        //Below lines intended for use with upcoming Status Bar Indicator functionality
+        /*
+        if (preference == mStatusBarPreference) {
+            boolean active = mProfile.getUuid()
+                    .equals(mProfileManager.getActiveProfile().getUuid());
+            mProfileManager.removeProfile(mProfile);
+            mProfile.setStatusBarIndicator((Boolean) newValue);
+            mProfileManager.addProfile(mProfile);
+            if (active) {
+                mProfileManager.setActiveProfile(mProfile.getUuid());
+            }
+        }
+        */
         return true;
     }
 
@@ -202,7 +224,7 @@ public class ProfileConfig extends PreferenceActivity implements OnPreferenceCha
     }
 
     private void deleteProfile() {
-        if (mProfile.getName().equals(mProfileManager.getActiveProfile().getName())) {
+        if (mProfile.getUuid().equals(mProfileManager.getActiveProfile().getUuid())) {
             Toast toast = Toast.makeText(this, getString(R.string.profile_cannot_delete),
                     Toast.LENGTH_SHORT);
             toast.show();
