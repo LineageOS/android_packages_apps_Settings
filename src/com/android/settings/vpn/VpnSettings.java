@@ -622,11 +622,11 @@ public class VpnSettings extends PreferenceActivity implements
                         !TextUtils.isEmpty(l2tpProfile.getSecretString())) {
                     return true;
                 }
+                return false;
 
             case OPENVPN:
                 return true;
 
-               // pass through
             default:
                 return false;
         }
