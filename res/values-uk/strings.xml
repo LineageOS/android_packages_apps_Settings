@@ -92,7 +92,7 @@
     <string name="bluetooth_is_discoverable" msgid="1205694503775884903">"Видимий протягом <xliff:g id="DISCOVERABLE_TIME_PERIOD">%1$s</xliff:g> сек..."</string>
     <string name="bluetooth_is_discoverable_always" msgid="8573385118329733931">"Видимий"</string>
     <string name="bluetooth_not_discoverable" msgid="128269993123955177">"Зробити пристрій видимим"</string>
-    <string name="bluetooth_visibility_timeout" msgid="6634508002347847278">"Час видимості пристрою вийшов"</string>
+    <string name="bluetooth_visibility_timeout">Час видимості пристрою</string>
     <string name="bluetooth_visibility_timeout_summary" msgid="6483353842671501585">"Налаштуйте час видимості пристрою"</string>
     <string name="bluetooth_lock_voice_dialing" msgid="3139322992062086225">"Заблок. голос. набір"</string>
     <string name="bluetooth_lock_voice_dialing_summary">Запобігти виклику засобами Bluetooth коли екран заблоковано</string>
@@ -122,6 +122,9 @@
     <string name="bluetooth_ask_enablement_and_discovery" msgid="7220210326619399542">"Програма у вашому телефоні просить дозволу на ввімкнення Bluetooth та надання телефону видимості іншими пристроями протягом <xliff:g id="TIMEOUT">%1$d</xliff:g> сек. Зробити це?"</string>
     <string name="bluetooth_ask_enablement_and_lasting_discovery" msgid="7471195931669103553">"Програма у вашому телефоні просить дозволу на ввімкнення Bluetooth і надання телефону видимості іншими пристроями. Зробити це?"</string>
     <string name="bluetooth_turning_on" msgid="3107102168379705771">"Увімкнення Bluetooth…"</string>
+    <string name="bluetooth_connection_permission_request">Запит на з\u2019єднання Bluetooth</string>
+    <string name="bluetooth_connection_notif_message">Натисніть щоб з\u2019єднатися з \u0022<xliff:g id="device_name">%1$s</xliff:g>\u0022</string>
+    <string name="bluetooth_connection_dialog_text">Бажаєте з\u2019єднатися з \u0022<xliff:g id="device_name">%1$s</xliff:g>\u0022?</string>
     <string name="date_and_time" msgid="4114084177056654663">"Налаштування дати та часу"</string>
     <string name="date_time_12_hour_sample" msgid="3259617262618020574">"13:00"</string>
     <string name="date_time_24_hour_sample" msgid="8916857570746212357">"13:00"</string>
@@ -320,6 +323,7 @@
     <string name="bluetooth_profile_a2dp" msgid="3259633293424539529">"Медіа"</string>
     <string name="bluetooth_profile_headset" msgid="1874975688666658946">"Телефон"</string>
     <string name="bluetooth_profile_opp" msgid="3799470046565284440">"Передав-ня"</string>
+    <string name="bluetooth_profile_network">Мережа</string>
     <string name="bluetooth_summary_connected_to_a2dp" msgid="510833839847758664">"Підключено до аудіоджерела"</string>
     <string name="bluetooth_summary_connected_to_headset" msgid="4876496372728623918">"Підключено до звуку телеф."</string>
     <string name="bluetooth_summary_connected_to_a2dp_headset" msgid="3045032710457800891">"Підключено до тел. і аудіоджерела"</string>
@@ -463,6 +467,8 @@
     <string name="lock_sounds_enable_title" msgid="1575990840389107141">"Звуки блокув. екрана"</string>
     <string name="lock_sounds_enable_summary_on" msgid="145741024028391473">"Відтвор. звуки під час блокув. і розблокув. екрана"</string>
     <string name="lock_sounds_enable_summary_off" msgid="8481243116223542804">"Відтвор. звуки під час блокув. і розблокув. екрана"</string>
+    <string name="power_sounds_enable_title">Звук низьк. зар. батареї</string>
+    <string name="power_sounds_enable_summary">Супровід повідомлення про низький заряд батареї звуковим сигналом</string>
     <string name="haptic_feedback_enable_title" msgid="6311736559245411290">"Тактильна реакція"</string>
     <string name="haptic_feedback_enable_summary_on" msgid="1875779656524793053">"Вібр. при натисн. екр. клавіш і певних діях за доп. інтерф. кор."</string>
     <string name="haptic_feedback_enable_summary_off" msgid="7287885436963105314">"Вібр. при натисн. екр. клавіш і певних діях за доп. інтерф. кор."</string>
@@ -553,6 +559,7 @@
     <string name="status_up_time" msgid="7294859476816760399">"Час гот."</string>
     <string name="status_awake_time" msgid="2393949909051183652">"Час активн."</string>
     <string name="internal_memory" msgid="9129595691484260784">"Внутрішня пам\'ять"</string>
+    <string name="additional_memory">Додатковий носій</string>
     <string name="sd_memory" product="nosdcard" msgid="2510246194083052841">"Носій USB"</string>
     <string name="sd_memory" product="default" msgid="151871913888051515">"Карта SD"</string>
     <string name="memory_available" msgid="418542433817289474">"Вільне місце"</string>
@@ -688,6 +695,7 @@
     <string name="settings_license_activity_title" msgid="7553683406244228650">"Ліцензії з відкр. кодом"</string>
     <string name="settings_license_activity_unavailable" msgid="4210539215951487627">"Під час завантаж. ліцензій виникла пробл."</string>
     <string name="settings_license_activity_loading" msgid="3337535809093591740">"Завант-ня…"</string>
+    <string name="settings_cmlicense_activity_title">Ліцензії CyanogenMod</string>
     <string name="settings_safetylegal_title" msgid="1289483965535937431">"Інф-я про безпеку"</string>
     <string name="settings_safetylegal_activity_title" msgid="6901214628496951727">"Інф-я про безпеку"</string>
     <string name="settings_safetylegal_activity_unreachable" msgid="3198912875259612887">"Ваш тел. не підключ. до служби даних. Щоб переглянути цю інф-ю зараз, перейдіть до %s з будь-якого комп\'ютера, підключ. до Інтернету."</string>
@@ -1145,8 +1153,10 @@
     <string name="vpn_openvpn_set_remote_addr">Віддалена IP-адреса</string>
     <string name="vpn_openvpn_set_cipher">Алгоритм шифрування</string>
     <string name="vpn_openvpn_set_cipher_message">Залиште порожнім для використання типового алгоритму шифрування</string>
+    <string name="vpn_openvpn_set_cipher_default">типовий</string>
     <string name="vpn_openvpn_set_keysize">Розмір ключа шифрування</string>
     <string name="vpn_openvpn_set_keysize_message">Залиште порожнім для використання типових параметрів алгоритму шифрування</string>
+    <string name="vpn_openvpn_set_keysize_default">типовий</string>
     <string name="vpn_openvpn_set_extra">Додаткові аргументи</string>
     <string name="vpn_openvpn_set_extra_message">Введіть додаткові аргументи командного рядка</string>
     <string name="vpn_ipsec_presharedkey_title" msgid="2184060087690539175">"Устан. спільн. ключ IPSec"</string>
@@ -1221,6 +1231,7 @@
     <string name="profile_name">Назва профілю</string>
     <string name="new_profile_name">&lt;новий профіль&gt;</string>
     <string name="profile_summary">Натисніть, щоб налаштувати профіль</string>
+    <string name="profile_statusbar">Індикатор рядка стану</string>
     <string name="profile_appgroup_title">Група програм: %s</string>
     <string name="profile_appgroups_title">Групи програм</string>
     <string name="profile_volumeoverrides_title">Заміщення рівня гучності</string>
@@ -1254,11 +1265,11 @@
     <string name="auto_restore_summary" msgid="83177150536734378">"У разі повторн. встановл. прогр. відновл. налашт. чи ін. дані з рез. копій"</string>
     <string name="backup_erase_dialog_title" msgid="3438255037256586237">"Рез. коп."</string>
     <string name="backup_erase_dialog_message" msgid="7766283133557587608">"Дійсно припинити створення резервних копій ваших паролів Wi-Fi, закладок, інших налаштувань та даних програм і видалити всі копії на серверах Google?"</string>
-    <string name="device_admin_settings_title" msgid="1335557832906433309">"Налашт-ня адміністрації пристрою"</string>
+    <string name="device_admin_settings_title">Адміністрування пристрою</string>
     <string name="active_device_admin_msg" msgid="6930903262612422111">"Адміністратор пристрою"</string>
     <string name="remove_device_admin" msgid="3596845261596451437">"Деактивувати"</string>
     <string name="select_device_admin_msg" msgid="2645509057946368094">"Адміністратори пристрою"</string>
-    <string name="no_device_admins" msgid="702695100241728775">"Немає доступн. адміністраторів мережі"</string>
+    <string name="no_device_admins">Немає доступн. адміністраторів пристрою</string>
     <string name="add_device_admin_msg" msgid="6246742476064507965">"Актив-ти адміністратора пристрою?"</string>
     <string name="add_device_admin" msgid="7133327675884827091">"Активувати"</string>
     <string name="device_admin_add_title" msgid="7705551449705676363">"Адміністратор пристрою"</string>
