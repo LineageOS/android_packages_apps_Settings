@@ -42,4 +42,12 @@
                 android:targetClass="com.android.settings.ProfileConfig" />
     </PreferenceScreen>
 
+    <PreferenceCategory android:key="profile_reset"
+            android:title="@string/profile_reset_title">
+        <Preference
+                android:key="profile_reset_all"
+                android:persistent="false"
+                android:title="@string/profile_reset_all_title"
+                android:summary="@string/profile_reset_all_summary" />
+    </PreferenceCategory>
 </PreferenceScreen>
