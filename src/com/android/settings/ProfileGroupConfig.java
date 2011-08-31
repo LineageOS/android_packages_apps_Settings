@@ -27,6 +27,8 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
 
+import java.util.UUID;
+
 public class ProfileGroupConfig extends PreferenceActivity implements OnPreferenceChangeListener {
 
     private static final CharSequence KEY_SOUNDMODE = "sound_mode";
@@ -65,10 +67,15 @@ public class ProfileGroupConfig extends PreferenceActivity implements OnPreferen
 
         addPreferencesFromResource(R.xml.profile_settings);
 
+        mProfileManager = (ProfileManager) getSystemService(PROFILE_SERVICE);
         mProfile = (Profile) getIntent().getParcelableExtra("Profile");
-        mProfileGroup = mProfile.getProfileGroup(getIntent().getStringExtra("ProfileGroup"));
 
-        setTitle(getString(R.string.profile_group_header,  mProfile.getName(), mProfileGroup.getName()));
+        UUID uuid = UUID.fromString(getIntent().getStringExtra("ProfileGroup"));
+        String name = mProfileManager.getNotificationGroup(uuid).getName();
+
+        mProfileGroup = mProfile.getProfileGroup(uuid);
+
+        setTitle(getString(R.string.profile_group_header,  mProfile.getName(), name));
 
         mRingerMode = (ListPreference) findPreference(KEY_RINGERMODE);
         mSoundMode = (ListPreference) findPreference(KEY_SOUNDMODE);
@@ -88,8 +95,6 @@ public class ProfileGroupConfig extends PreferenceActivity implements OnPreferen
         mRingTone.setOnPreferenceChangeListener(this);
 
         updateState();
-
-        mProfileManager = (ProfileManager) getSystemService(PROFILE_SERVICE);
     }
 
     private void updateState() {
@@ -137,7 +142,7 @@ public class ProfileGroupConfig extends PreferenceActivity implements OnPreferen
             mProfileGroup.setSoundOverride(uri);
         }
 
-        mProfileManager.addProfile(mProfile);
+        mProfileManager.updateProfile(mProfile);
 
         updateState();
         return true;
