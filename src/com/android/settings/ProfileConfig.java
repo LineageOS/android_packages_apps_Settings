@@ -17,6 +17,7 @@
 package com.android.settings;
 
 import android.app.AlertDialog;
+import android.app.ConnectionSettings;
 import android.app.Dialog;
 import android.app.Profile;
 import android.app.ProfileGroup;
@@ -26,14 +27,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
-import android.widget.SeekBar;
 import android.widget.Toast;
 
 import java.util.UUID;
@@ -57,6 +56,7 @@ public class ProfileConfig extends PreferenceActivity implements OnPreferenceCha
 
     private StreamItem[] mStreams;
 
+    private ConnectionItem[] mConnections;
 
     @Override
     protected void onCreate(Bundle icicle) {
@@ -69,6 +69,14 @@ public class ProfileConfig extends PreferenceActivity implements OnPreferenceCha
                         getString(R.string.incoming_call_volume_title)),
                 new StreamItem(AudioManager.STREAM_NOTIFICATION,
                         getString(R.string.notification_volume_title))
+        };
+
+        mConnections = new ConnectionItem[] {
+                new ConnectionItem(ConnectionSettings.PROFILE_CONNECTION_BLUETOOTH, getString(R.string.toggleBluetooth)),
+                new ConnectionItem(ConnectionSettings.PROFILE_CONNECTION_GPS, getString(R.string.toggleGPS)),
+                new ConnectionItem(ConnectionSettings.PROFILE_CONNECTION_WIFI, getString(R.string.toggleWifi)),
+                new ConnectionItem(ConnectionSettings.PROFILE_CONNECTION_WIFIAP, getString(R.string.toggleWifiAp))
+                //new ConnectionItem(ConnectivityManager.TYPE_WIMAX, getString(R.string.toggleWimax))
         };
 
         addPreferencesFromResource(R.xml.profile_config);
@@ -122,6 +130,9 @@ public class ProfileConfig extends PreferenceActivity implements OnPreferenceCha
         //mStatusBarPreference.setChecked(mProfile.getStatusBarIndicator());
         //mStatusBarPreference.setOnPreferenceChangeListener(this);
 
+        PreferenceGroup connectionList = (PreferenceGroup) findPreference("profile_connectionoverrides");
+        connectionList.removeAll();
+
         PreferenceGroup streamList = (PreferenceGroup) findPreference("profile_volumeoverrides");
         streamList.removeAll();
 
@@ -141,6 +152,24 @@ public class ProfileConfig extends PreferenceActivity implements OnPreferenceCha
 
             stream.mCheckbox = pref;
             streamList.addPreference(pref);
+        }
+
+        for (ConnectionItem connection : mConnections) {
+            ConnectionSettings settings = mProfile.getSettingsForConnection(connection.mConnectionId);
+            if (settings == null) {
+                settings = new ConnectionSettings(connection.mConnectionId);
+                mProfile.setConnectionSettings(settings);
+            }
+            connection.mSettings = settings;
+            ProfileConnectionPreference pref = new ProfileConnectionPreference(this);
+            pref.setKey("connection_" + connection.mConnectionId);
+            pref.setTitle(connection.mLabel);
+            pref.setSummary(getString(R.string.profile_connectionoverrides_summary));
+            pref.setPersistent(false);
+            pref.setConnectionItem(connection);
+
+            connection.mCheckbox = pref;
+            connectionList.addPreference(pref);
         }
 
         PreferenceGroup groupList = (PreferenceGroup) findPreference("profile_appgroups");
@@ -168,6 +197,12 @@ public class ProfileConfig extends PreferenceActivity implements OnPreferenceCha
                     stream.mSettings.setOverride((Boolean) newValue);
                 }
             }
+        } else if (preference instanceof ProfileConnectionPreference) {
+            for (ConnectionItem connection : mConnections) {
+                if (preference == connection.mCheckbox) {
+                    connection.mSettings.setOverride((Boolean) newValue);
+                }
+            }
         }
         // Check name isn't already in use.
         if (preference == mNamePreference) {
@@ -188,8 +223,6 @@ public class ProfileConfig extends PreferenceActivity implements OnPreferenceCha
         */
         return true;
     }
-
-    private StreamItem mPreferenceItem = null;
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
@@ -263,6 +296,21 @@ public class ProfileConfig extends PreferenceActivity implements OnPreferenceCha
 
         public StreamItem(int streamId, String label) {
             mStreamId = streamId;
+            mLabel = label;
+        }
+    }
+
+    static class ConnectionItem {
+        int mConnectionId;
+
+        String mLabel;
+
+        ConnectionSettings mSettings;
+
+        ProfileConnectionPreference mCheckbox;
+
+        public ConnectionItem(int connectionId, String label) {
+            mConnectionId = connectionId;
             mLabel = label;
         }
     }
