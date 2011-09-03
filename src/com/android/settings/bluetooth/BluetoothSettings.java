@@ -37,6 +37,7 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.ContextMenu;
 import android.view.MenuItem;
@@ -60,6 +61,7 @@ public class BluetoothSettings extends PreferenceActivity
     private static final String KEY_BT_DISCOVERABLE = "bt_discoverable";
     private static final String KEY_BT_DEVICE_LIST = "bt_device_list";
     private static final String KEY_BT_DISCOVERABLE_TIMEOUT = "bt_discoverable_timeout";
+    private static final String KEY_BT_FAST_CONNECT = "bt_fast_connect";
     private static final String KEY_BT_NAME = "bt_name";
     private static final String KEY_BT_SCAN = "bt_scan";
 
@@ -78,6 +80,8 @@ public class BluetoothSettings extends PreferenceActivity
 
     private BluetoothEnabler mEnabler;
     private BluetoothDiscoverableEnabler mDiscoverableEnabler;
+
+    private CheckBoxPreference mFastConnectPreference;
 
     private BluetoothNamePreference mNamePreference;
 
@@ -150,6 +154,8 @@ public class BluetoothSettings extends PreferenceActivity
                     (CheckBoxPreference) findPreference(KEY_BT_DISCOVERABLE),
                     (ListPreference) findPreference(KEY_BT_DISCOVERABLE_TIMEOUT));
 
+            mFastConnectPreference = (CheckBoxPreference) findPreference(KEY_BT_FAST_CONNECT);
+
             mNamePreference = (BluetoothNamePreference) findPreference(KEY_BT_NAME);
 
             mDeviceList = (ProgressCategory) findPreference(KEY_BT_DEVICE_LIST);
@@ -174,6 +180,7 @@ public class BluetoothSettings extends PreferenceActivity
             mEnabler.resume();
             mDiscoverableEnabler.resume();
             mNamePreference.resume();
+            mFastConnectPreference.setChecked(Settings.System.getInt(getContentResolver(), Settings.System.BLUETOOTH_FAST_CONNECT, 0) == 1);
         }
 
         mLocalManager.registerCallback(this);
@@ -225,6 +232,11 @@ public class BluetoothSettings extends PreferenceActivity
 
         if (KEY_BT_SCAN.equals(preference.getKey())) {
             mLocalManager.startScanning(true);
+            return true;
+        }
+
+        if (preference == mFastConnectPreference) {
+            Settings.System.putInt(getContentResolver(), Settings.System.BLUETOOTH_FAST_CONNECT, mFastConnectPreference.isChecked() ? 1 : 0);
             return true;
         }
 

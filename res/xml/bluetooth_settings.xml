@@ -48,6 +48,13 @@
         android:entries="@array/bluetooth_visibility_timeout_entries"
         android:entryValues="@array/bluetooth_visibility_timeout_values" />
 
+    <CheckBoxPreference
+        android:key="bt_fast_connect"
+        android:title="@string/bluetooth_fast_connect"
+        android:dependency="bt_checkbox"
+        android:summaryOn="@string/bluetooth_fast_connect_on"
+        android:summaryOff="@string/bluetooth_fast_connect_off" />
+
     <Preference
         android:key="bt_scan"
         android:dependency="bt_checkbox"
