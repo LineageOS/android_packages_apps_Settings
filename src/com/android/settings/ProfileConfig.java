@@ -36,6 +36,8 @@ import android.preference.PreferenceScreen;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
+import java.util.UUID;
+
 public class ProfileConfig extends PreferenceActivity implements OnPreferenceChangeListener {
 
     static final String TAG = "ProfileConfig";
@@ -101,7 +103,7 @@ public class ProfileConfig extends PreferenceActivity implements OnPreferenceCha
         super.onPause();
         // Save profile here
         if (mProfile != null) {
-            mProfileManager.addProfile(mProfile);
+            mProfileManager.updateProfile(mProfile);
         }
     }
 
@@ -145,19 +147,17 @@ public class ProfileConfig extends PreferenceActivity implements OnPreferenceCha
         groupList.removeAll();
 
         for (ProfileGroup profileGroup : mProfile.getProfileGroups()) {
-
             PreferenceScreen pref = new PreferenceScreen(this, null);
+            UUID uuid = profileGroup.getUuid();
 
-            pref.setKey(profileGroup.getName());
-            pref.setTitle(profileGroup.getName());
+            pref.setKey(uuid.toString());
+            pref.setTitle(mProfileManager.getNotificationGroup(uuid).getName());
             // pref.setSummary(R.string.profile_summary);
             pref.setPersistent(false);
             // pref.setSelectable(true);
 
             groupList.addPreference(pref);
-
         }
-
     }
 
     @Override
@@ -176,27 +176,14 @@ public class ProfileConfig extends PreferenceActivity implements OnPreferenceCha
                 // Rollback the change.
                 return false;
             }
-            boolean active = mProfile.getUuid()
-                    .equals(mProfileManager.getActiveProfile().getUuid());
-            mProfileManager.removeProfile(mProfile);
             mProfile.setName(value);
             preference.setSummary(value);
-            mProfileManager.addProfile(mProfile);
-            if (active) {
-                mProfileManager.setActiveProfile(mProfile.getUuid());
-            }
         }
         //Below lines intended for use with upcoming Status Bar Indicator functionality
         /*
         if (preference == mStatusBarPreference) {
-            boolean active = mProfile.getUuid()
-                    .equals(mProfileManager.getActiveProfile().getUuid());
-            mProfileManager.removeProfile(mProfile);
             mProfile.setStatusBarIndicator((Boolean) newValue);
-            mProfileManager.addProfile(mProfile);
-            if (active) {
-                mProfileManager.setActiveProfile(mProfile.getUuid());
-            }
+            mProfileManager.updateProfile(mProfile);
         }
         */
         return true;
@@ -210,10 +197,8 @@ public class ProfileConfig extends PreferenceActivity implements OnPreferenceCha
             if (preference == mDeletePreference) {
                 deleteProfile();
             } else {
-                ProfileGroup profGroup = mProfile.getProfileGroup(preference.getTitle().toString());
-
                 Intent intent = new Intent(this, ProfileGroupConfig.class);
-                intent.putExtra("ProfileGroup", profGroup.getName());
+                intent.putExtra("ProfileGroup", preference.getKey());
                 intent.putExtra("Profile", mProfile);
                 startActivity(intent);
             }

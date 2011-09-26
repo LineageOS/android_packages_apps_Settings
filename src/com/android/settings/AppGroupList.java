@@ -29,6 +29,8 @@ import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.widget.EditText;
 
+import java.util.UUID;
+
 public class AppGroupList extends PreferenceActivity {
 
     private static final String TAG = "AppGroupSettings";
@@ -72,7 +74,7 @@ public class AppGroupList extends PreferenceActivity {
 
             PreferenceScreen pref = new PreferenceScreen(this, null);
 
-            pref.setKey(group.getName());
+            pref.setKey(group.getUuid().toString());
             pref.setTitle(group.getName());
             pref.setPersistent(false);
 
@@ -122,8 +124,8 @@ public class AppGroupList extends PreferenceActivity {
             if (mAddPreference == preference) {
                 addNewAppGroup();
             } else {
-                NotificationGroup group = mProfileManager.getNotificationGroup(preference
-                        .getTitle().toString());
+                NotificationGroup group = mProfileManager.getNotificationGroup(
+                        UUID.fromString(preference.getKey()));
 
                 editGroup(group);
             }
