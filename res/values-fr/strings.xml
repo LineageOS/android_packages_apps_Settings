@@ -1407,4 +1407,75 @@
     <!-- Summary for connection overrides via profiles -->
     <string name="profile_connectionoverrides_summary">Activer/désactiver</string>
 
+    <!-- Summary for PreferenceScreen to launch picker for security method when there is none -->
+    <string name="lockfinger_unlock_set_unlock_launch_picker_summary">Verrouiller l\'écran avec un modèle, un doigt, un code PIN ou un mot de passe</string>
+
+    <!-- Summary for PreferenceScreen to change security method: None/Pattern/Finger/PIN/Password -->
+    <string name="lockfinger_unlock_set_unlock_launch_picker_change_summary">Modifier ou désactiver la sécurité par modèle, doigt, code PIN ou mot de passe</string>
+
+    <!--  Title and summary for preference that guides the user through creating an unlock finger -->
+    <string name="lockfinger_unlock_set_unlock_finger_title">Doigt</string>
+    <string name="lockfinger_unlock_set_unlock_finger_summary">Faites glisser votre doigt pour déverrouiller l\'écran</string>
+
+    <!-- Title for unlock finger settings screen -->
+    <string name="lockfinger_finger_settings_title">Empreinte digitale de déverrouillage de l\'écran</string>
+
+    <!-- Title for preference that sets or changes unlock finger -->
+    <string name="lockfinger_set_finger_unlock_title">Définir le déverrouillage par empreinte digitale</string>
+    <string name="lockfinger_change_finger_unlock_title">Changer le déverrouillage par empreinte digitale</string>
+
+    <!-- Title and summary for preference that toggles the finger unlock -->
+    <string name="lockfinger_toggle_unlock_finger_title">Demander l\'empreinte digitale</string>
+    <string name="lockfinger_toggle_unlock_finger_summary">Vous devez utiliser l\'empreinte digitale pour déverrouiller l\'écran</string>
+
+    <!-- Title for preference that start True Suite Administration -->
+    <string name="lockfinger_dbadmin_title">Administration de True Suite</string>
+
+    <!-- Summary shown under unlock_disable_lock_title when finger is in use and can be removed -->
+    <string name="lockfinger_unlock_disable_lock_finger_summary">Supprimer le doigt de déverrouillage</string>
+
+    <!-- Title shown on security settings to allow the user to change their lockscreen finger -->
+    <string name="unlock_change_lock_finger_title">Modifier le doigt de déverrouillage</string>
+
+    <!-- Toast shown if setting finger was successful -->
+    <string name="lockpassword_finger_set_toast">Le doigt a été défini</string>
+
+    <!-- Security & location settings screen, setting option name for finger -->
+    <string name="lockpattern_change_lock_finger_label">Modifier le doigt de déverrouillage</string>
+
+    <!-- Unlock finger settings screen, Toast shown if there is a semaphore failure. -->
+    <string name="lockfinger_semaphore_failure_toast">Échec du sémaphore</string>
+
+    <!-- Unlock finger settings screen, Toast shown a successful enrollment. -->
+    <string name="lockfinger_enrollment_succeeded_toast">L\'inscription a réussi.</string>
+
+    <!-- Unlock finger settings screen, Toast shown the TSM library is not available. -->
+    <string name="lockfinger_tsm_library_not_available_toast">Le chargement de la bibliothèque TSM a échoué... Impossible de continuer !</string>
+
+    <!-- Unlock finger settings screen, Toast shown when the user canneled the enrollment. -->
+    <string name="lockfinger_enrollment_canceled_toast">L\'inscription a échoué.</string>
+
+    <!-- Unlock finger settings screen, Toast shown when the enrollment runs timeout. -->
+    <string name="lockfinger_enrollment_timeout_toast">L\'inscription est retardée.</string>
+
+    <!-- Unlock finger settings screen, Toast shown an unknow error happened. -->
+    <string name="lockfinger_enrollment_unknown_error_toast">Erreur inconnue.\nUn échec de la connexion est probable.</string>
+
+    <!-- Unlock finger settings screen, Toast shown other errors returned by the enrollment. -->
+    <string name="lockfinger_enrollment_failure_default_toast">Echec de l\'inscription. échec = %d.</string>
+
+    <!-- Unlock finger settings screen, Toast shown when the database has been full. -->
+    <string name="lockfinger_enrollment_database_full">Echec de l\'inscription. La base de données est pleine.</string>
+
+    <!-- Unlock finger settings screen, change unlock finger screen instruction on top of screen after UI timeout -->
+    <string name="lockfinger_dbadmin_failure_default_toast">Échec de l\'opération d\'administration de la base de données: %d.</string>
+
+    <!-- Unlock finger settings screen, change unlock finger screen instruction on top of screen after UI timeout -->
+    <string name="lockfinger_ui_timeout_header">Délai d\'attente de l\'interface utilisateur !</string>
+
+    <!-- Unlock finger settings screen, change unlock finger screen instruction on top of screen after too many bad swipes -->
+    <string name="lockfinger_too_many_bad_swipes_header">Trop d\'erreurs de glissement de doigt !</string>
+
+    <!-- Unlock finger settings screen, change unlock finger screen countdown hint on bottom of screen when the screen is locked out -->
+    <string name="lockfinger_lockout_countdown_footer">Réessayez dans %d secondes.</string>
 </resources>

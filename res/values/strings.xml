@@ -3059,4 +3059,80 @@ found in the list of installed applications.</string>
     from their cell phone carrier. The use of the string is similar to the string
     "system_update_settings_list_item_title" in this project. [CHAR LIMIT=25] -->
     <string name="additional_system_update_settings_list_item_title">Additional system updates</string>
+
+    <!-- Title and Summary for PreferenceScreen to launch Enrollment -->
+    <string name ="finger_enrollment">Finger Enrollment</string>
+    <string name ="start_finger_enrollment_summary">Registers fingers for use with lock screen and other applications</string>
+
+    <!-- Summary for PreferenceScreen to launch picker for security method when there is none -->
+    <string name="lockfinger_unlock_set_unlock_launch_picker_summary">Lock screen with a pattern, finger, PIN, or password</string>
+
+    <!-- Summary for PreferenceScreen to change security method: None/Pattern/Finger/PIN/Password -->
+    <string name="lockfinger_unlock_set_unlock_launch_picker_change_summary">Change or disable pattern, finger, PIN, or password security</string>
+
+    <!--  Title and summary for preference that guides the user through creating an unlock finger -->
+    <string name="lockfinger_unlock_set_unlock_finger_title">Finger</string>
+    <string name="lockfinger_unlock_set_unlock_finger_summary">Swipe finger to unlock screen</string>
+
+    <!-- Title for unlock finger settings screen -->
+    <string name="lockfinger_finger_settings_title">Screen unlock fingerprint</string>
+
+    <!-- Title for preference that sets or changes unlock finger -->
+    <string name="lockfinger_set_finger_unlock_title">Set fingerprint unlock</string>
+    <string name="lockfinger_change_finger_unlock_title">Change fingerprint unlock</string>
+
+    <!-- Title and summary for preference that toggles the finger unlock -->
+    <string name="lockfinger_toggle_unlock_finger_title">Require fingerprint</string>
+    <string name="lockfinger_toggle_unlock_finger_summary">Must use fingerprint to unlock screen</string>
+
+    <!-- Title for preference that start True Suite Administration -->
+    <string name="lockfinger_dbadmin_title">True Suite Administration</string>
+
+    <!-- Summary shown under unlock_disable_lock_title when finger is in use and can be removed -->
+    <string name="lockfinger_unlock_disable_lock_finger_summary">Remove unlock finger</string>
+
+    <!-- Title shown on security settings to allow the user to change their lockscreen finger -->
+    <string name="unlock_change_lock_finger_title">Change unlock finger</string>
+
+    <!-- Toast shown if setting finger was successful -->
+    <string name="lockpassword_finger_set_toast">Finger has been set</string>
+
+    <!-- Security & location settings screen, setting option name for finger -->
+    <string name="lockpattern_change_lock_finger_label">Change unlock finger</string>
+
+    <!-- Unlock finger settings screen, Toast shown if there is a semaphore failure. -->
+    <string name="lockfinger_semaphore_failure_toast">Semaphore failure</string>
+
+    <!-- Unlock finger settings screen, Toast shown a successful enrollment. -->
+    <string name="lockfinger_enrollment_succeeded_toast">Enrollment Succeeded.</string>
+
+    <!-- Unlock finger settings screen, Toast shown the TSM library is not available. -->
+    <string name="lockfinger_tsm_library_not_available_toast">TSM Library failed to load... cannot proceed!</string>
+
+    <!-- Unlock finger settings screen, Toast shown when the user canneled the enrollment. -->
+    <string name="lockfinger_enrollment_canceled_toast">Enrollment Canceled.</string>
+
+    <!-- Unlock finger settings screen, Toast shown when the enrollment runs timeout. -->
+    <string name="lockfinger_enrollment_timeout_toast">Enrollment Timed Out.</string>
+
+    <!-- Unlock finger settings screen, Toast shown an unknow error happened. -->
+    <string name="lockfinger_enrollment_unknown_error_toast">Unknown error.\nFailure to connect is likely.</string>
+
+    <!-- Unlock finger settings screen, Toast shown other errors returned by the enrollment. -->
+    <string name="lockfinger_enrollment_failure_default_toast">Enroll Not Successful. failure = %d.</string>
+
+    <!-- Unlock finger settings screen, Toast shown when the database has been full. -->
+    <string name="lockfinger_enrollment_database_full">Enroll Not Successful. Database is full.</string>
+
+    <!-- Unlock finger settings screen, change unlock finger screen instruction on top of screen after UI timeout -->
+    <string name="lockfinger_dbadmin_failure_default_toast">Database Administration operation failure: %d.</string>
+
+    <!-- Unlock finger settings screen, change unlock finger screen instruction on top of screen after UI timeout -->
+    <string name="lockfinger_ui_timeout_header">UI timeout!</string>
+
+    <!-- Unlock finger settings screen, change unlock finger screen instruction on top of screen after too many bad swipes -->
+    <string name="lockfinger_too_many_bad_swipes_header">Too many bad swipes!</string>
+
+    <!-- Unlock finger settings screen, change unlock finger screen countdown hint on bottom of screen when the screen is locked out -->
+    <string name="lockfinger_lockout_countdown_footer">Try again in %d seconds.</string>
 </resources>
