@@ -19,7 +19,6 @@ package com.android.settings;
 import android.app.AlertDialog;
 import android.app.ConnectionSettings;
 import android.app.Dialog;
-import android.app.NotificationGroup;
 import android.app.Profile;
 import android.app.ProfileGroup;
 import android.app.ProfileManager;
@@ -181,14 +180,12 @@ public class ProfileConfig extends PreferenceActivity implements OnPreferenceCha
             UUID uuid = profileGroup.getUuid();
 
             pref.setKey(uuid.toString());
-            NotificationGroup notifGroup = mProfileManager.getNotificationGroup(uuid);
-            if (notifGroup!=null) {
-                pref.setTitle(notifGroup.getName());
-                // pref.setSummary(R.string.profile_summary);
-                pref.setPersistent(false);
-                // pref.setSelectable(true);
-                groupList.addPreference(pref);
-            }
+            pref.setTitle(mProfileManager.getNotificationGroup(uuid).getName());
+            // pref.setSummary(R.string.profile_summary);
+            pref.setPersistent(false);
+            // pref.setSelectable(true);
+
+            groupList.addPreference(pref);
         }
     }
 
