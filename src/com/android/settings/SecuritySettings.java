@@ -72,6 +72,7 @@ public class SecuritySettings extends PreferenceActivity implements OnPreference
 
     private static final String KEY_LOCK_ENABLED = "lockenabled";
     private static final String KEY_VISIBLE_PATTERN = "visiblepattern";
+    private static final String KEY_SHOW_ERROR_PATH = "show_error_path";
     private static final String KEY_TACTILE_FEEDBACK_ENABLED = "unlock_tactile_feedback";
     private static final String KEY_START_DATABASE_ADMINISTRATION = "start_database_administration";
 
@@ -80,6 +81,7 @@ public class SecuritySettings extends PreferenceActivity implements OnPreference
     private static final String PROPERTY_EFS_TRANSITION = "persist.security.efs.trans";
 
     private CheckBoxPreference mVisiblePattern;
+    private CheckBoxPreference mShowErrorPath;
     private CheckBoxPreference mTactileFeedback;
     private Preference mStartDatabaseAdministration;
 
@@ -235,6 +237,9 @@ public class SecuritySettings extends PreferenceActivity implements OnPreference
         // visible pattern
         mVisiblePattern = (CheckBoxPreference) pm.findPreference(KEY_VISIBLE_PATTERN);
 
+        // show error path of pattern
+        mShowErrorPath = (CheckBoxPreference) pm.findPreference(KEY_SHOW_ERROR_PATH);
+
         // tactile feedback. Should be common to all unlock preference screens.
         mTactileFeedback = (CheckBoxPreference) pm.findPreference(KEY_TACTILE_FEEDBACK_ENABLED);
 
@@ -301,7 +306,12 @@ public class SecuritySettings extends PreferenceActivity implements OnPreference
 
         final LockPatternUtils lockPatternUtils = mChooseLockSettingsHelper.utils();
         if (mVisiblePattern != null) {
-            mVisiblePattern.setChecked(lockPatternUtils.isVisiblePatternEnabled());
+            boolean visible = lockPatternUtils.isVisiblePatternEnabled();
+            mVisiblePattern.setChecked(visible);
+            if (mShowErrorPath != null) {
+                mShowErrorPath.setChecked(visible || lockPatternUtils.isShowErrorPath());
+                mShowErrorPath.setEnabled(!visible);
+            }
         }
         if (mTactileFeedback != null) {
             mTactileFeedback.setChecked(lockPatternUtils.isTactileFeedbackEnabled());
@@ -325,7 +335,15 @@ public class SecuritySettings extends PreferenceActivity implements OnPreference
         } else if (KEY_LOCK_ENABLED.equals(key)) {
             lockPatternUtils.setLockPatternEnabled(isToggled(preference));
         } else if (KEY_VISIBLE_PATTERN.equals(key)) {
-            lockPatternUtils.setVisiblePatternEnabled(isToggled(preference));
+            boolean visible = isToggled(preference);
+            lockPatternUtils.setVisiblePatternEnabled(visible);
+            if (visible) {
+                lockPatternUtils.setShowErrorPath(true);
+            }
+            mShowErrorPath.setChecked(lockPatternUtils.isShowErrorPath());
+            mShowErrorPath.setEnabled(!visible);
+        } else if (KEY_SHOW_ERROR_PATH.equals(key)) {
+            lockPatternUtils.setShowErrorPath(isToggled(preference));
         } else if (KEY_TACTILE_FEEDBACK_ENABLED.equals(key)) {
             lockPatternUtils.setTactileFeedbackEnabled(isToggled(preference));
         } else if (KEY_START_DATABASE_ADMINISTRATION.equals(key)) {
