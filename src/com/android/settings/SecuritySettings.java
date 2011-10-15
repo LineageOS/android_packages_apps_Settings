@@ -17,12 +17,15 @@
 package com.android.settings;
 
 
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.admin.DevicePolicyManager;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.content.ContentQueryMap;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -33,11 +36,13 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.SystemProperties;
 import android.preference.CheckBoxPreference;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
+import android.preference.Preference.OnPreferenceChangeListener;
 import android.provider.Settings;
 import android.security.Credentials;
 import android.security.KeyStore;
@@ -51,7 +56,7 @@ import com.android.internal.widget.LockPatternUtils;
 /**
  * Gesture lock pattern settings.
  */
-public class SecuritySettings extends PreferenceActivity {
+public class SecuritySettings extends PreferenceActivity implements OnPreferenceChangeListener {
 	
 	public static final String GPS_STATUS_CHANGED="com.android.settings.GPS_STATUS_CHANGED";
 	
@@ -118,6 +123,31 @@ public class SecuritySettings extends PreferenceActivity {
 
         updateToggles();
 
+        //add BT gps devices
+        ListPreference btpref = (ListPreference) findPreference("location_gps_source");
+        ArrayList<CharSequence> entries = new ArrayList<CharSequence>();
+        for (String e : getResources().getStringArray(R.array.location_entries_gps_source) ) {
+            entries.add(e);
+        }
+        ArrayList<CharSequence> values = new ArrayList<CharSequence>();
+        for (String v: getResources().getStringArray(R.array.location_values_gps_source)) {
+            values.add(v);
+        }
+        // add known bonded BT devices
+        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        if ((mBluetoothAdapter != null) && (mBluetoothAdapter.isEnabled())) {
+            for (BluetoothDevice d : mBluetoothAdapter.getBondedDevices()) {
+                String dname = d.getName() + " - " + d.getAddress();
+                entries.add(dname);
+                values.add(d.getAddress());
+            }
+        }
+        btpref.setEntries(entries.toArray(new CharSequence[entries.size()]));
+        btpref.setEntryValues(values.toArray(new CharSequence[values.size()]));
+        btpref.setDefaultValue("0");
+        btpref.setOnPreferenceChangeListener(this);
+
+        
         // listen for Location Manager settings changes
         Cursor settingsCursor = getContentResolver().query(Settings.Secure.CONTENT_URI, null,
                 "(" + Settings.System.NAME + "=?)",
@@ -127,6 +157,36 @@ public class SecuritySettings extends PreferenceActivity {
         mContentQueryMap.addObserver(new SettingsObserver());
     }
 
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        String oldPref = Settings.System.getString(getContentResolver(),
+                Settings.Secure.EXTERNAL_GPS_BT_DEVICE);
+        String newPref = newValue == null ? "0" : (String) newValue;
+        // "0" represents the internal GPS.
+        Settings.System.putString(getContentResolver(), Settings.Secure.EXTERNAL_GPS_BT_DEVICE,
+                newPref);
+        if (!oldPref.equals(newPref) && ("0".equals(oldPref) || "0".equals(newPref)) ) {
+            LocationManager locationManager = 
+                (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+            locationManager.setGPSSource(newPref);
+
+            // Show dialog to inform user that source has been switched
+            AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+            alertDialog.setTitle(R.string.location_gps_source_notification_title);
+            alertDialog.setMessage(getResources().getString(R.string.location_gps_source_notification));
+            alertDialog.setButton(DialogInterface.BUTTON_POSITIVE,
+                    getResources().getString(com.android.internal.R.string.ok),
+                    new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    return;
+                }
+            });
+            alertDialog.show();
+        }
+        return true;
+    }
+
+    
     private PreferenceScreen createPreferenceHierarchy() {
         PreferenceScreen root = this.getPreferenceScreen();
         if (root != null) {
