@@ -18,12 +18,15 @@ package com.android.settings;
 
 import java.util.UUID;
 
+import android.app.AlertDialog;
 import android.app.Profile;
 import android.app.ProfileManager;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
+import android.preference.PreferenceScreen;
 import android.util.Log;
 
 public class ProfileList extends PreferenceActivity implements
@@ -36,6 +39,7 @@ public class ProfileList extends PreferenceActivity implements
 
     public static final String PREFERRED_APN_URI = "content://telephony/carriers/preferapn";
 
+    private Preference mResetAllPref;
 
     private String mSelectedKey;
 
@@ -47,6 +51,8 @@ public class ProfileList extends PreferenceActivity implements
 
         addPreferencesFromResource(R.xml.profile_list);
         getListView().setItemsCanFocus(true);
+
+        mResetAllPref = findPreference("profile_reset_all");
 
         mProfileManager = (ProfileManager) this.getSystemService(PROFILE_SERVICE);
 
@@ -88,6 +94,27 @@ public class ProfileList extends PreferenceActivity implements
             profileList.addPreference(pref);
         }
 
+    }
+
+    public boolean onPreferenceTreeClick(PreferenceScreen screen, Preference preference) {
+        if (preference == mResetAllPref) {
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setTitle(R.string.profile_reset_all_title);
+            alert.setMessage(R.string.profile_reset_all_message);
+            alert.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    mProfileManager.resetAll();
+                    fillList();
+                }
+            });
+            alert.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    dialog.cancel();
+                }
+            });
+            alert.create().show();
+        }
+        return false;
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
