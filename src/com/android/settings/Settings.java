@@ -33,6 +33,7 @@ public class Settings extends PreferenceActivity {
     private static final String KEY_CALL_SETTINGS = "call_settings";
     private static final String KEY_SYNC_SETTINGS = "sync_settings";
     private static final String KEY_DOCK_SETTINGS = "dock_settings";
+    private static final String KEY_DEVICE_SETTINGS = "device_settings";
     
     private static final String KEY_LAUNCHER = "launcher_settings";
 
@@ -49,6 +50,7 @@ public class Settings extends PreferenceActivity {
         PreferenceGroup parent = (PreferenceGroup) findPreference(KEY_PARENT);
         Utils.updatePreferenceToSpecificActivityOrRemove(this, parent, KEY_SYNC_SETTINGS, 0);
         Utils.updatePreferenceToSpecificActivityOrRemove(this, parent, KEY_LAUNCHER, 0);
+        Utils.updatePreferenceToSpecificActivityOrRemove(this, parent, KEY_DEVICE_SETTINGS, 0);
         mLauncherSettings = parent.findPreference(KEY_LAUNCHER);
 
         Preference dockSettings = parent.findPreference(KEY_DOCK_SETTINGS);
