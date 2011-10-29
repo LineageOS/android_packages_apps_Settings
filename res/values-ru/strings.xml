@@ -1224,7 +1224,7 @@
     <string name="autoDisable3G">Пер. данных отключает 3G</string>
     <string name="autoEnable3G">Пер. данных включает 3G</string>
     <string name="autoDisable3GWithWifi">Wi-Fi отключает 3G</string>
-    <string name="autoEnable3GWithWifi">Wi-Fi отключает 3G</string>
+    <string name="autoEnable3GWithWifi">Wi-Fi включает 3G</string>
     <string name="useRoundCorners">Закруглять углы</string>
     <string name="useVertical">Вертикальный вид</string>
     <string name="useTransparent">Прозрачный виджет</string>
@@ -1261,8 +1261,9 @@
     <string name="widget_count">виджетов: %d</string>
 
     <string name="cm_settings_title">Настройки CyanogenMod</string>
-	
-    <!-- Setting checkbox title for displaying USB debugging notification -->	
+    <string name="device_settings_title">Настройки устройства</string>
+
+    <!-- Setting checkbox title for displaying USB debugging notification -->
     <string name="adb_notify">Уведомление отладки по USB</string>
     <!-- Setting checkbox summary for displaying USB debugging notification -->
     <string name="adb_notify_summary">Показывать уведомление отладки по USB при подключении</string>
@@ -1358,7 +1359,30 @@
     <string name="profile_reset_all_summary">Удалить и восстановить все профили и группы приложений по умолчанию</string>
     <!-- Dialog confirming reset all - message -->
     <string name="profile_reset_all_message">Вы желаете удалить все профили и группы приложений, а также восстановить их по умолчанию?</string>
-	
+
+    <string name="vpn_openvpn_port">Порт сервера</string>
+    <string name="vpn_openvpn_protocol">Протокол</string>
+    <string name="vpn_openvpn_device">Устройство</string>
+    <string name="vpn_openvpn_userauth">Аутентификация пользователя</string>
+    <string name="vpn_openvpn_userauth_summary">Установите, если необходимо использовать имя пользователя/пароль для аутентификации</string>
+    <string name="vpn_openvpn_advanced_titlebar">Расширенные настройки OpenVPN</string>
+    <string name="vpn_openvpn_comp_lzo">LZO сжатие</string>
+    <string name="vpn_openvpn_comp_lzo_summary">Принудительное LZO сжатие</string>
+    <string name="vpn_openvpn_redirect_gateway_title">Шлюз перенаправления</string>
+    <string name="vpn_openvpn_redirect_gateway_summary">Весь трафик будет проходить через VPN туннель</string>
+    <string name="vpn_openvpn_set_addr">Удалённые наборы адресов</string>
+    <string name="vpn_openvpn_set_addr_summary">Снимите галочку для ручной установки туннеля адресации</string>
+    <string name="vpn_openvpn_set_local_addr">Локальный IP-адрес</string>
+    <string name="vpn_openvpn_set_remote_addr">Удалённый IP-адрес</string>
+    <string name="vpn_openvpn_set_cipher">Алгоритм шифрования</string>
+    <string name="vpn_openvpn_set_cipher_message">Оставьте пустым, чтобы использовать шифрование по умолчанию</string>
+    <string name="vpn_openvpn_set_cipher_default">По умолчанию</string>
+    <string name="vpn_openvpn_set_keysize">Размер ключа шифрования</string>
+    <string name="vpn_openvpn_set_keysize_message">Оставьте пустым, чтобы использовать специальное шифрование по умолчанию</string>
+    <string name="vpn_openvpn_set_keysize_default">По умолчанию</string>
+    <string name="vpn_openvpn_set_extra">Дополнительные параметры</string>
+    <string name="vpn_openvpn_set_extra_message">Введите дополнительные параметры командной строки</string>
+
     <string name="wimax_settings" msgid="1574837328738396794">"Настройки 4G"</string>
     <string name="wimax_settings_summary" msgid="3207355006084135453">"Подключение и настройка сети и модема 4G"</string>
     <string name="status_wimax_mac_address" msgid="8390791848661413416">"МАС-адрес для 4G"</string>
