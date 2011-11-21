@@ -160,7 +160,6 @@ public class WirelessSettings extends SettingsPreferenceFragment {
         } else {
             mWifiP2pEnabler = new WifiP2pEnabler(activity, wifiP2p);
         }
-        getPreferenceScreen().removePreference(findPreference(KEY_WIFI_P2P_SETTINGS));
 
         // Enable Proxy selector settings if allowed.
         Preference mGlobalProxy = findPreference(KEY_PROXY_SETTINGS);

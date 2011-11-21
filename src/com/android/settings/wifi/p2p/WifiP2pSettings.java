@@ -63,7 +63,6 @@ public class WifiP2pSettings extends SettingsPreferenceFragment
     private static final int MENU_ID_SEARCH = Menu.FIRST;
     private static final int MENU_ID_CREATE_GROUP = Menu.FIRST + 1;
     private static final int MENU_ID_REMOVE_GROUP = Menu.FIRST + 2;
-    private static final int MENU_ID_ADVANCED = Menu.FIRST +3;
 
 
     private final IntentFilter mIntentFilter = new IntentFilter();
@@ -94,6 +93,7 @@ public class WifiP2pSettings extends SettingsPreferenceFragment
                 if (mWifiP2pManager != null) {
                     mWifiP2pManager.requestPeers(mChannel, WifiP2pSettings.this);
                 }
+                updateDevicePref();
             } else if (WifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION.equals(action)) {
                 if (mWifiP2pManager == null) return;
                 NetworkInfo networkInfo = (NetworkInfo) intent.getParcelableExtra(
@@ -206,8 +206,6 @@ public class WifiP2pSettings extends SettingsPreferenceFragment
             .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
         menu.add(Menu.NONE, MENU_ID_REMOVE_GROUP, 0, R.string.wifi_p2p_menu_remove_group)
             .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
-        menu.add(Menu.NONE, MENU_ID_ADVANCED, 0, R.string.wifi_p2p_menu_advanced)
-            .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
@@ -249,9 +247,6 @@ public class WifiP2pSettings extends SettingsPreferenceFragment
                             }
                         });
                 }
-                return true;
-            case MENU_ID_ADVANCED:
-                //TODO: add advanced settings for p2p
                 return true;
         }
         return super.onOptionsItemSelected(item);
