@@ -190,6 +190,7 @@ public class RadioInfo extends Activity {
                     break;
 
                 case EVENT_QUERY_PREFERRED_TYPE_DONE:
+                    preferredNetworkType.setOnItemSelectedListener(null);
                     ar= (AsyncResult) msg.obj;
                     if (ar.exception == null) {
                         int type = ((int[])ar.result)[0];
@@ -197,6 +198,7 @@ public class RadioInfo extends Activity {
                     } else {
                         preferredNetworkType.setSelection(8, true);
                     }
+                    preferredNetworkType.setOnItemSelectedListener(mPreferredNetworkHandler);
                     break;
                 case EVENT_SET_PREFERRED_TYPE_DONE:
                     ar= (AsyncResult) msg.obj;
