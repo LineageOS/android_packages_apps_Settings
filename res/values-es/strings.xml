@@ -746,6 +746,7 @@
     <string name="settings_license_activity_title" msgid="7553683406244228650">"Licencias de código abierto"</string>
     <string name="settings_license_activity_unavailable" msgid="4210539215951487627">"Se ha producido un problema al intentar cargar las licencias."</string>
     <string name="settings_license_activity_loading" msgid="3337535809093591740">"Cargando\u2026"</string>
+    <string name="settings_cmlicense_activity_title">Licencias CyanogenMod</string>
     <string name="settings_safetylegal_title" msgid="1289483965535937431">"Información de seguridad"</string>
     <string name="settings_safetylegal_activity_title" msgid="6901214628496951727">"Información de seguridad"</string>
     <string name="settings_safetylegal_activity_unreachable" msgid="3198912875259612887">"El teléfono no está conectado a un servicio de datos. Para ver esta información, accede a %s desde cualquier equipo conectado a Internet."</string>
@@ -1309,22 +1310,26 @@
     <string name="ringer_mode">Modo de llamada</string>
     <string name="lights_mode">Modo de luces</string>
     <string name="vibrate_mode">Modo de vibración</string>
-    <string name="choose_soundtone">Elija tono de notificación</string>
-    <string name="choose_ringtone">Elija tono de llamada</string>
+    <string name="choose_soundtone">Elije tono de notificación</string>
+    <string name="choose_ringtone">Elije tono de llamada</string>
     <string name="profile_settings">Ajustes de perfil</string>
     <string name="profile_name">Nombre de perfil</string>
     <string name="new_profile_name">&lt;Nuevo perfil&gt;</string>
-    <string name="profile_summary">Toque para configurar el perfil</string>
+    <string name="profile_summary">Toca para configurar el perfil</string>
     <string name="profile_appgroup_title">Grupo de la aplicación: %s</string>
     <string name="profile_appgroups_title">Grupos de aplicaciones</string>
-    <string name="profile_volumeoverrides_title">Anular volumen</string>
-    <string name="profile_volumeoverrides_summary">Toque para seleccionar volumen.</string>
+    <!-- Title for connection overrides via profiles -->
+    <string name="profile_connectionoverrides_title">Forzar conexiones</string>
+    <!-- Summary for connection overrides via profiles -->
+    <string name="profile_connectionoverrides_summary">Toca para habilitar/deshabilitar</string>
+    <string name="profile_volumeoverrides_title">Forzar volumen</string>
+    <string name="profile_volumeoverrides_summary">Toca para seleccionar volumen</string>
     <string name="profile_applist_title">Aplicaciones - click para eliminar del grupo</string>
-    <string name="profile_appgroup_name_prompt">Poga un nombre para el grupo de aplicaciones</string>
+    <string name="profile_appgroup_name_prompt">Pon un nombre para el grupo de aplicaciones</string>
     <string name="profile_delete">Borrar perfil</string>
-    <string name="profile_delete_confirm">¿Está seguro de que quiere borrar este perfil?</string>
-    <string name="profile_app_delete_confirm">¿Está seguro de que quiere borrar esta aplicación?</string>
-    <string name="profile_choose_app">Elija aplicación</string>
+    <string name="profile_delete_confirm">¿Estás seguro de que quiere borrar este perfil?</string>
+    <string name="profile_app_delete_confirm">¿Estás seguro de que quiere borrar esta aplicación?</string>
+    <string name="profile_choose_app">Elije aplicación</string>
     <string name="profile_settings_header">Configurar perfil: %s</string>
     <string name="profile_group_header">Perfil: %1$s categoria: %2$s</string>
     <string name="menu_appgroups">Administrar grupos de aplicaciones</string>
@@ -1338,6 +1343,14 @@
     <string name="profile_manage">Gestionar perfiles</string>
     <string name="profile_appgroups_manage">Gestionar grupos de aplicaciones</string>
     <string name="profile_applist_manage">Gestionar lista de aplicaciones</string>
+    <!-- Menu item for reset -->
+    <string name="profile_reset_title">Restablecer</string>
+    <!-- Menu item for reset all -->
+    <string name="profile_reset_all_title">Restablecer todo</string>
+    <!-- Menu item for reset all - summary -->
+    <string name="profile_reset_all_summary">Borrar y restablecer a predeterminados, todos los perfiles y grupos</string>
+    <!-- Dialog confirming reset all - message -->
+    <string name="profile_reset_all_message">¿Deseas realmente borrar todos los perfiles y grupos, y restablecer a valores predeterminados?</string>
 
     <!-- Privacy Settings screen -->
     <string name="privacy_settings" msgid="9206631214140954954">"Privacidad"</string>
