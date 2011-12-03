@@ -1372,8 +1372,8 @@
   <string name="profile_statusbar">Ukazatel stavové lišty</string>
   <string name="profile_appgroup_title">Skupina aplikací: %s</string>
   <string name="profile_appgroups_title">Skupiny aplikací</string>
-  <string name="profile_connectionoverrides_title">Potlačit spojení</string>
-  <string name="profile_connectionoverrides_summary">Dotykem nastavíte povolení nebo zakázání</string>
+  <string name="profile_connectionoverrides_title">Jiné připojení</string>
+  <string name="profile_connectionoverrides_summary">Povolit nebo zakázat změnu připojení</string>
   <string name="profile_volumeoverrides_title">Jiná hlasitost</string>
   <string name="profile_volumeoverrides_summary">Pro nastavení hlasitosti.</string>
   <string name="profile_applist_title">Aplikace - kliknutím odstraníte ze skupiny</string>
@@ -1395,6 +1395,10 @@
   <string name="profile_manage">Spravovat profily</string>
   <string name="profile_appgroups_manage">Spravovat skupiny aplikací</string>
   <string name="profile_applist_manage">Spravovat seznam aplikací</string>
+  <string name="profile_reset_title">Obnovit</string>
+  <string name="profile_reset_all_title">Obnovit vše</string>
+  <string name="profile_reset_all_summary">Smazat a obnovit všechny profily a skupiny aplikací do výchozího nastavení</string>
+  <string name="profile_reset_all_message">Opravdu chcete smazat všechny profily a skupiny aplikací a obnovit je do výchozího nastavení?</string>
 
   <string name="privacy_settings" msgid="9206631214140954954">"Ochrana osobních údajů"</string>
   <string name="privacy_settings_title" msgid="1987089301293213705">"Nastavení ochrany osobních údajů"</string>
@@ -1454,56 +1458,57 @@
   <string name="toggleLockScreenDescription">Zapnout/vypnout uzamčení obrazovky</string>
   <string name="toggleWimaxDescription">Zapnout/vypnout WiMAX</string>
 
-    <string name="widgetSettings">Nastavení widgetu</string>
-    <string name="wifiSettings">Nastavení událostí WiFi</string>
-    <string name="dataSettings">Nastavení událostí přenosu dat</string>
-    <string name="powerSettings">Nastavení událostí napájení</string>
+  <string name="widgetSettings">Nastavení widgetu</string>
+  <string name="wifiSettings">Nastavení událostí WiFi</string>
+  <string name="dataSettings">Nastavení událostí přenosu dat</string>
+  <string name="powerSettings">Nastavení událostí napájení</string>
 
-    <string name="generalSettings">Obecné nastavení</string>
+  <string name="generalSettings">Obecné nastavení</string>
 
-    <string name="autoDisable3G">Data zakážou 3G</string>
-    <string name="autoEnable3G">Data povolí 3G</string>
-    <string name="autoDisable3GWithWifi">WiFi zakáže 3G</string>
-    <string name="autoEnable3GWithWifi">WiFi povolí 3G</string>
-    <string name="useRoundCorners">Zakulacené rohy</string>
-    <string name="useVertical">Vertikální rozvržení</string>
-    <string name="useTransparent">Průhledný widget</string>
-    <string name="autoEnableSyncWithWifi">WiFi povolí synchronizaci</string>
-    <string name="autoDisableSyncWithWifi">WiFi zakáže synchronizaci</string>
-    <string name="ringModeVibrateAsOn">Indikace vibrace zapnuta</string>
-    <string name="monitorDataRoaming">Sledovat data při roamingu</string>
-    <string name="autoEnableBluetoothWithPower">Ext. napájení povolí Bluetooth</string>
-    <string name="autoDisableBluetoothWithPower">Ext. napájení zakáže Bluetooth</string>
-    <string name="autoEnableWifiWithPower">Ext. napájení povolí WiFi</string>
-    <string name="autoDisableWifiWithPower">Ext. napájení zakáže WiFi</string>
+  <string name="autoDisable3G">Data zakážou 3G</string>
+  <string name="autoEnable3G">Data povolí 3G</string>
+  <string name="autoDisable3GWithWifi">WiFi zakáže 3G</string>
+  <string name="autoEnable3GWithWifi">WiFi povolí 3G</string>
+  <string name="useRoundCorners">Zakulacené rohy</string>
+  <string name="useVertical">Vertikální rozvržení</string>
+  <string name="useTransparent">Průhledný widget</string>
+  <string name="autoEnableSyncWithWifi">WiFi povolí synchronizaci</string>
+  <string name="autoDisableSyncWithWifi">WiFi zakáže synchronizaci</string>
+  <string name="ringModeVibrateAsOn">Indikace vibrace zapnuta</string>
+  <string name="monitorDataRoaming">Sledovat data při roamingu</string>
+  <string name="autoEnableBluetoothWithPower">Ext. napájení povolí Bluetooth</string>
+  <string name="autoDisableBluetoothWithPower">Ext. napájení zakáže Bluetooth</string>
+  <string name="autoEnableWifiWithPower">Ext. napájení povolí WiFi</string>
+  <string name="autoDisableWifiWithPower">Ext. napájení zakáže WiFi</string>
 
-    <string name="autoDisable3GDescription">2G při zakázaných mobilních datech</string>
-    <string name="autoEnable3GDescription">3G při povolených mobilních datech</string>
-    <string name="autoDisable3GWithWifiDescription">2G při povoleném WiFi</string>
-    <string name="autoEnable3GWithWifiDescription">3G při zakázaném WiFi</string>
-    <string name="useRoundCornersDescription">Použít ikony se zakulacenými rohy</string>
-    <string name="useTransparentDescription">Žádné pozadí widgetu</string>
-    <string name="useVerticalDescription">Zobrazení ve vertikální orientaci</string>
-    <string name="autoEnableSyncWithWifiDescription">Povolit synchronizaci při povoleném WiFi</string>
-    <string name="autoDisableSyncWithWifiDescription">Zakázat synchronizaci při zakázaném WiFi</string>
-    <string name="ringModeVibrateAsOnDescription">Zobrazit indikaci zvuku při nastaveném režimu pouze vibrace</string>
-    <string name="monitorDataRoamingDescription">Stav dat červeně při datovém roamingu</string>
-    <string name="autoEnableBluetoothWithPowerDescription">Při připojení nabíječky se zapne Bluetooth</string>
-    <string name="autoDisableBluetoothWithPowerDescription">Při odpojení nabíječky se vypne Bluetooth</string>
-    <string name="autoEnableWifiWithPowerDescription">Při připojení nabíječky se zapne WiFi</string>
-    <string name="autoDisableWifiWithPowerDescription">Při odpojení nabíječky se vypne WiFi</string>
+  <string name="autoDisable3GDescription">2G při zakázaných mobilních datech</string>
+  <string name="autoEnable3GDescription">3G při povolených mobilních datech</string>
+  <string name="autoDisable3GWithWifiDescription">2G při povoleném WiFi</string>
+  <string name="autoEnable3GWithWifiDescription">3G při zakázaném WiFi</string>
+  <string name="useRoundCornersDescription">Použít ikony se zakulacenými rohy</string>
+  <string name="useTransparentDescription">Žádné pozadí widgetu</string>
+  <string name="useVerticalDescription">Zobrazení ve vertikální orientaci</string>
+  <string name="autoEnableSyncWithWifiDescription">Povolit synchronizaci při povoleném WiFi</string>
+  <string name="autoDisableSyncWithWifiDescription">Zakázat synchronizaci při zakázaném WiFi</string>
+  <string name="ringModeVibrateAsOnDescription">Zobrazit indikaci zvuku při nastaveném režimu pouze vibrace</string>
+  <string name="monitorDataRoamingDescription">Stav dat červeně při datovém roamingu</string>
+  <string name="autoEnableBluetoothWithPowerDescription">Při připojení nabíječky se zapne Bluetooth</string>
+  <string name="autoDisableBluetoothWithPowerDescription">Při odpojení nabíječky se vypne Bluetooth</string>
+  <string name="autoEnableWifiWithPowerDescription">Při připojení nabíječky se zapne WiFi</string>
+  <string name="autoDisableWifiWithPowerDescription">Při odpojení nabíječky se vypne WiFi</string>
 
-    <string name="networkModeSpinner">Zvolte režimy sítě</string>
-    <string name="brightnessSpinner">Zvolte úrovně podsvícení</string>
-    <string name="ringModeSpinner">Zvolte režimy vyzvánění</string>
-    <string name="screenTimeoutSpinner">Zvolte časovou prodlevu obrazovky</string>
-    <string name="backgroundImageSpinner">Zvolte pozadí</string>
+  <string name="networkModeSpinner">Zvolte režimy sítě</string>
+  <string name="brightnessSpinner">Zvolte úrovně podsvícení</string>
+  <string name="ringModeSpinner">Zvolte režimy vyzvánění</string>
+  <string name="screenTimeoutSpinner">Zvolte časovou prodlevu obrazovky</string>
+  <string name="backgroundImageSpinner">Zvolte pozadí</string>
 
-    <string name="notConfigured">Není nastaveno. Prosím přidejte znovu</string>
-    <string name="ok">Ok</string>
+  <string name="notConfigured">Není nastaveno. Prosím přidejte znovu</string>
+  <string name="ok">Ok</string>
 
-    <string name="widget_count">(%d widgety)</string>
-    <string name="cm_settings_title">Nastavení CyanogenMod</string>
+  <string name="widget_count">(%d widgety)</string>
+  <string name="cm_settings_title">Nastavení CyanogenMod</string>
+  <string name="device_settings_title">Nastavení zařízení</string>
 
   <string name="wimax_settings" msgid="1574837328738396794">"Nastavení sítě 4G"</string>
   <string name="wimax_settings_summary" msgid="3207355006084135453">"Nastavení a správa sítě 4G a modemu"</string>
