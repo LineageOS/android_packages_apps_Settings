@@ -123,7 +123,7 @@
     <string name="bluetooth_connected" msgid="6038755206916626419">"Connecté"</string>
     <string name="bluetooth_connected_no_headset" msgid="2866994875046035609">"Connecté (sans audio pour appels tél.)"</string>
     <string name="bluetooth_connected_no_a2dp" msgid="4576188601581440337">"Connecté (sans audio contenu mutimédia)"</string>
-    <string name="bluetooth_connected_no_headset_no_a2dp" msgid="9195757766755553810">"Connecté (sans audio tel./multimédia)"</string>
+    <string name="bluetooth_connected_no_headset_no_a2dp" msgid="9195757766755553810">"Connecté (sans audio tél./multimédia)"</string>
     <string name="bluetooth_disconnected" msgid="6557104142667339895">"Déconnecté"</string>
     <string name="bluetooth_disconnecting" msgid="8913264760027764974">"Déconnexion…"</string>
     <string name="bluetooth_connecting" msgid="8555009514614320497">"Connexion…"</string>
@@ -175,7 +175,7 @@
     <string name="proxy_clear_text" msgid="5555400754952012657">"Effacer"</string>
     <string name="proxy_port_label" msgid="5655276502233453400">"Port du proxy"</string>
     <string name="proxy_exclusionlist_label" msgid="7700491504623418701">"Ignorer le proxy pour"</string>
-    <string name="proxy_exclusionlist_hint" msgid="6084099226687226948">"example.com,mycomp.test.com,localhost"</string>
+    <string name="proxy_exclusionlist_hint" msgid="6084099226687226948">"exemple.com,mycomp.test.com,localhost"</string>
     <string name="proxy_defaultView_text" msgid="6387985519141433291">"Rétablir les paramètres par défaut"</string>
     <string name="proxy_action_text" msgid="2957063145357903951">"OK"</string>
     <string name="proxy_hostname_label" msgid="8490171412999373362">"Nom d\'hôte du proxy"</string>
@@ -297,8 +297,8 @@
     <string name="owner_info_settings_edit_text_hint" msgid="4608681417960923911">"Saisir texte à afficher sur écran de verrouillage"</string>
     <string name="location_settings_title" msgid="8935806698251432196">"Services de localisation"</string>
     <string name="security_settings_title" msgid="7945465324818485460">"Sécurité"</string>
-    <string name="security_settings_summary" msgid="967393342537986570">"Définir les paramètres de l\'option Ma position et de verrouillage"</string>
-    <string name="cdma_security_settings_summary" msgid="6068799952798901542">"Définir les paramètres de la fonction Ma position, de déverrouillage de l\'écran et de verrouillage du stockage des identifiants"</string>
+    <string name="security_settings_summary">"Définir les paramètres de localisation et de verrouillage de l\'appareil"</string>
+    <string name="cdma_security_settings_summary">"Définir les paramètres de localisation, de verrouillage de l\'écran et du stockage des identifiants"</string>
     <string name="security_passwords_title" msgid="2930627259125138363">"Mots de passe"</string>
     <string name="crypt_keeper_settings_title" msgid="4219233835490520414">"Chiffrement"</string>
     <string name="crypt_keeper_encrypt_title" product="tablet" msgid="1060273569887301457">"Chiffrer la tablette"</string>
@@ -325,9 +325,9 @@
     <string name="crypt_keeper_failed_title" msgid="7133499413023075961">"Échec du chiffrement"</string>
     <string name="crypt_keeper_failed_summary" product="tablet" msgid="6891198717505120682">"Impossible de terminer le chiffrement, car celui-ci a été interrompu. En conséquence, les données de votre tablette ne sont plus accessibles. "\n\n"Pour continuer d\'utiliser votre tablette, vous devez rétablir sa configuration d\'usine. Une fois cette opération terminée, vous pourrez restaurer toutes les données que vous aviez sauvegardées sur votre compte Google lors de la nouvelle configuration de votre tablette."</string>
     <string name="crypt_keeper_failed_summary" product="default" msgid="1341912405353765293">"Impossible de terminer le chiffrement, car celui-ci a été interrompu. En conséquence, les données de votre téléphone ne sont plus accessibles. "\n\n"Pour continuer d\'utiliser votre téléphone, vous devez rétablir sa configuration d\'usine. Une fois cette opération terminée, vous pourrez restaurer toutes les données que vous aviez sauvegardées sur votre compte Google lors de la nouvelle configuration de votre téléphone."</string>
-    <string name="lock_settings_picker_title" msgid="3332098786253116023">"Verrouillage de l\'écran"</string>
+    <string name="lock_settings_picker_title">Type de verrouillage</string>
     <string name="backup_lock_settings_picker_title" msgid="8530380598637963916">"Verrouillage secondaire"</string>
-    <string name="unlock_set_unlock_launch_picker_title" msgid="2084576942666016993">"Verrouillage de l\'écran"</string>
+    <string name="unlock_set_unlock_launch_picker_title">Type de verrouillage</string>
     <string name="unlock_set_unlock_launch_picker_change_title" msgid="5045866882028324941">"Modifier écran verr."</string>
     <string name="unlock_set_unlock_launch_picker_change_summary" msgid="2790960639554590668">"Modifier ou désactiver la sécurité : schéma, code PIN ou mot de passe"</string>
     <string name="unlock_set_unlock_launch_picker_enable_summary" msgid="4791110798817242301">"Choisir une méthode pour verrouiller l\'écran"</string>
@@ -663,21 +663,21 @@
     <string name="backlight_summary">Ajuster les niveaux et le filtrage</string>
     <string name="light_filter_title">Filtrage du capteur de luminosité</string>
     <string name="light_filter_enabled_title">Activé</string>
-    <string name="light_filter_enabled_summary">Apply moving average filter to sensor data to reduce flicker</string>
+    <string name="light_filter_enabled_summary">Appliquer un filtre de lissage aux mesures du capteur de lumière</string>
     <string name="light_filter_window_title">Période moyenne</string>
-    <string name="light_filter_window_summary">Filtered value is the average sensor value during this period</string>
+    <string name="light_filter_window_summary">La valeur filtrée est la valeur moyenne du capteur de lumière durant une certaine période</string>
     <string name="light_filter_reset_title">Seuil de remise à zéro</string>
-    <string name="light_filter_reset_summary">Samples deviating this much from current average resets the filter</string>
+    <string name="light_filter_reset_summary">Les mesures qui dépassent le seuil désactivent le filtre pour une meilleure réaction en extérieur</string>
     <string name="light_filter_interval_title">Intervalle de capture</string>
-    <string name="light_filter_interval_summary">Low value can improve accuracy but uses some more CPU</string>
+    <string name="light_filter_interval_summary">Une valeur plus basse améliore la réaction mais utilise plus le CPU</string>
     <string name="light_levels_title">Niveaux de luminosité</string>
     <string name="light_levels_enabled_title">Niveaux personnalisés</string>
     <string name="light_levels_dim_title">Niveau réduit</string>
-    <string name="light_levels_dim_summary">Brightness used to dim the screen</string>
-    <string name="light_levels_editor_title">Modifier autres niveaux\u2026</string>
+    <string name="light_levels_dim_summary">Niveau utilisé pour le rétro-éclairage réduit</string>
+    <string name="light_levels_editor_title">Définir les autres niveaux\u2026</string>
     <string name="light_decrease_enabled_title">Réduire l\'éclairage</string>
-    <string name="light_decrease_enabled_summary">Enable to allow lights to decrease. Use hysteresis to reduce flicker</string>
-    <string name="light_decrease_hysteresis_title">Réduire l\'hystérésis</string>
+    <string name="light_decrease_enabled_summary">Cocher pour permettre de réduire le rétro-éclairage. Utiliser l\'hystérésis pour limiter les variations</string>
+    <string name="light_decrease_hysteresis_title">Hystérésis</string>
     <string name="light_decrease_hysteresis_summary">Sensor levels overlap this much downwards</string>
 
     <!-- Light sensor levels #CM -->
@@ -721,22 +721,22 @@
     <!-- Combined Bar #CM -->
     <string name="combined_bar_title">Barre combinée</string>
     <string name="combined_bar_auto_hide_title">Cacher automatiquement</string>
-    <string name="combined_bar_auto_hide_summary">Allow Combined Bar to hide when showing a fullscreen app</string>
+    <string name="combined_bar_auto_hide_summary">Permet de cacher la barre combinée (boutons virtuels) pour les applications plein écran</string>
 
     <!-- Power Widget #CM -->
     <string name="power_widget_title">Gestion de l\'alimentation</string>
     <string name="title_expanded_widget">Afficher le widget</string>
-    <string name="summary_expanded_widget">Show the power widget in the notification drawer</string>
+    <string name="summary_expanded_widget">Afficher le contrôle rapide de l\'alimentation dans la barre de notification</string>
     <string name="title_expanded_hide_onchange">Cacher après changement</string>
-    <string name="summary_expanded_hide_onchange">Hide the notification drawer after toggling a widget button</string>
+    <string name="summary_expanded_hide_onchange">Masquer la barre de notification lorsqu\'un bouton du widget est cliqué</string>
     <string name="title_expanded_hide_indicator">Cacher les indicateurs</string>
-    <string name="summary_expanded_hide_indicator">Hide the power widget indicators</string>
+    <string name="summary_expanded_hide_indicator">Masquer les indicateurs du widget</string>
     <string name="title_expanded_hide_scrollbar">Cacher barre de défilement</string>
-    <string name="summary_expanded_hide_scrollbar">Hide the scrollbar when more than the maximum number of widget buttons are present</string>
+    <string name="summary_expanded_hide_scrollbar">Masquer la barre de défilement s\'il y a trop de boutons dans le widget</string>
     <string name="title_widget_picker">Boutons du widget</string>
-    <string name="summary_widget_picker">Select which buttons to display in the power widget</string>
+    <string name="summary_widget_picker">Choisir les boutons à afficher</string>
     <string name="title_widget_order">Ordre des boutons</string>
-    <string name="summary_widget_order">Select the order of the buttons in the power widget</string>
+    <string name="summary_widget_order">Modifier l\'ordre des boutons présents sur le widget</string>
     <string name="title_buttons">Boutons</string>
     <string name="title_toggle_wifi">Wifi</string>
     <string name="title_toggle_bluetooth">Bluetooth</string>
@@ -747,8 +747,8 @@
     <string name="title_toggle_wifiap">Wifi AP</string>
     <string name="title_toggle_screentimeout">Timeout écran</string>
     <string name="title_toggle_mobiledata">Données mobile</string>
-    <string name="title_toggle_lockscreen">Vérouillage</string>
-    <string name="title_toggle_networkmode">2G/3G</string>
+    <string name="title_toggle_lockscreen">Verrouillage</string>
+    <string name="title_toggle_networkmode">Réseau mobile</string>
     <string name="title_toggle_autorotate">Orientation</string>
     <string name="title_toggle_airplane">Mode avion</string>
     <string name="title_toggle_flashlight">Torche</string>
@@ -759,15 +759,15 @@
     <string name="title_toggle_wimax">WiMAX</string>
     <string name="title_button_modes">Modes des boutons</string>
     <string name="pref_brightness_mode_title">Modes de luminosité</string>
-    <string name="pref_brightness_mode_summary">Choose how the brightness button changes modes</string>
-    <string name="cm_brightness_mode_auto">Auto</string>
+    <string name="pref_brightness_mode_summary">Sélection des modes de fonctionnement du bouton Luminosité</string>
+    <string name="cm_brightness_mode_auto">Auto.</string>
     <string name="cm_brightness_mode_dim">Réduit</string>
-    <string name="pref_network_mode_title">Network modes</string>
-    <string name="pref_network_mode_summary">Choose how the NetworkMode button changes modes</string>
-    <string name="pref_screentimeout_mode_title">Screentimeout modes</string>
-    <string name="pref_screentimeout_mode_summary">Choose how the Screentimeout button changes modes</string>
-    <string name="pref_ring_mode_title">Mode sonnerie</string>
-    <string name="pref_ring_mode_summary">Sélectionnez les modes de sonneries du bouton audio</string>
+    <string name="pref_network_mode_title">Réseau mobile</string>
+    <string name="pref_network_mode_summary">Sélection des types de réseaux pour le bouton 2G/3G</string>
+    <string name="pref_screentimeout_mode_title">Timeout de l\'écran</string>
+    <string name="pref_screentimeout_mode_summary">Sélection des modes du bouton Timeout de l\'écran</string>
+    <string name="pref_ring_mode_title">Sonnerie</string>
+    <string name="pref_ring_mode_summary">Sélection des modes de sonnerie disponibles</string>
     <string name="cm_sound_mode_silent">Silencieux</string>
     <string name="cm_sound_mode_vibrate">Vibreur</string>
     <string name="cm_sound_mode_sound">Son</string>
@@ -777,7 +777,7 @@
 
     <!-- Power Widget, Haptic feedback #CM -->
     <string name="expanded_haptic_feedback_title">Retour haptique</string>
-    <string name="expanded_haptic_feedback_summary">Enable/Disable haptic feedback.</string>
+    <string name="expanded_haptic_feedback_summary">Active ou non le retour haptique (vibration)</string>
 
     <!-- Status bar #CM -->
     <string name="status_bar_title">Barre d\'état</string>
@@ -786,11 +786,11 @@
     <string name="status_bar_show_clock_title">Afficher l\'heure</string>
     <string name="status_bar_show_clock_summary">Afficher l\'heure dans la barre d\'état</string>
     <string name="status_bar_am_pm_title">Indicateur AM/PM</string>
-    <string name="status_bar_am_pm_summary">Display style of AM/PM next to clock</string>
+    <string name="status_bar_am_pm_summary">Affiche l\'indicateur AM/PM à côté de l\'heure</string>
     <string name="status_bar_battery_title">Batterie</string>
-    <string name="status_bar_battery_summary">Display style of battery status</string>
+    <string name="status_bar_battery_summary">Style de l\'indicateur de niveau de charge</string>
     <string name="status_bar_toggle_brightness">Rétroéclairage</string>
-    <string name="status_bar_toggle_brightness_summary">Allows adjusting of brightness by sliding across statusbar</string>
+    <string name="status_bar_toggle_brightness_summary">Ajustement de la luminosité en glissant dans la barre</string>
     <string name="status_bar_toggle_info">Le rétroéclairage automatique est activé</string>
     <string name="status_bar_cm_signal_text_title">Signal GSM alternatif</string>
     <string name="status_bar_cm_signal_text_summary">Afficher les dBm au lieu de l\'icône de signal</string>
@@ -804,6 +804,76 @@
 
     <!-- Profiles settings #CM -->
     <string name="profiles_settings_title">Profils</string>
+
+    <!-- Screen security - Screen security #CM -->
+    <string name="screen_security_category">Verrouillage de l\'écran</string>
+    <string name="screen_security_title">Ecran de verrouillage</string>
+    <string name="screen_security_summary">Options de l\'écran de verrouillage : style, délais et options diverses</string>
+    <string name="additional_options_title">Options supplémentaires</string>
+    <string name="unlock_menu_unlock_title">Déverrouiller par Menu</string>
+    <string name="unlock_menu_unlock_summary">Déverrouillage de l\'écran en appuyant sur le bouton Menu</string>
+    <string name="unlock_quick_unlock_control_title">Déverrouillage rapide</string>
+    <string name="unlock_quick_unlock_control_summary">Evite d\'appuyer sur OK lors de la saisie du code PIN ou du mot de passe.\nAttention : effacer compte comme un essai raté !</string>
+
+    <!-- Delays and timeouts -->
+    <string name="delay_and_timeout_title">Délai de verrouillage</string>
+    <!-- Slide lock delay -->
+    <string name="slide_lock_delay_title">Modifier les délais</string>
+    <string name="slide_lock_timeout_delay_title">Timeout écran</string>
+    <string name="slide_lock_timeout_delay_summary">Délai avant d\'activer l\'écran de sécurité lorsque l\'écran s\'éteint automatiquement</string>
+    <string name="slide_lock_screenoff_delay_title">Extinction manuelle</string>
+    <string name="slide_lock_screenoff_delay_summary">Délai utilisé lorsque l\'on éteint manuellement l\'écran</string>
+
+    <!-- Dev settings, apps #CM -->
+    <string name="adb_over_network">ADB sur TCP/IP</string>
+    <string name="adb_over_network_summary">"Activer le débogage sur toutes les interfaces (réseaux USB, Wi-Fi et Bluetooth)"</string>
+    <string name="adb_over_network_warning">"ATTENTION: Lorsque cette fonction est activée, votre téléphone est ouvert aux intrusions sur toutes les interfaces, y compris via le réseau mobile !\n\nIl est fortement conseillé de désactiver le réseau mobile avant d\'activer cette fonction.\n\nContinuer ?"</string>
+    <string name="kill_app_longpress_back">Tuer avec bouton Retour</string>
+    <string name="kill_app_longpress_back_summary">Permet de forcer la fermeture de l\'application en cours en appuyant longuement sur le bouton Retour</string>
+
+    <!-- Performance Settings #CM -->
+    <string name="performance_settings_warning_title">ATTENTION !</string>
+    <string name="performance_settings_warning">Les options présentes ici altèrent les performances du système, en bien ou en mal.\nElles ont des comportements différents selon les appareils et sont disponibles pour expérimentation.\nNous vous demandons de ne pas soumettre de rapport de bug à propos de celles-ci.</string>
+    <string name="pref_disable_bootanimation_title">Pas d\'animation de boot</string>
+    <string name="pref_disable_bootanimation_summary">Ne pas afficher l\'animation pour démarrer plus rapidement</string>
+    <string name="pref_use_dithering_title">Activer le tramage</string>
+    <string name="pref_use_dithering_summary">Le tramage (dithering) améliore la qualité des images sur certains écrans au détriment des performances (nécessite un redémarrage)</string>
+    <string name="pref_use_16bpp_alpha_title">Transparence 16 bits</string>
+    <string name="pref_use_16bpp_alpha_summary">Utiliser le mode 16 bits améliore la vitesse de défilement et des animations, mais peut affecter l\'affichage des éléments transparents (nécessite un redémarrage)</string>
+    <!-- Memory Management -->
+    <string name="memory_management_title">Gestion de la mémoire</string>
+    <string name="memory_management_summary">Options de gestion de la mémoire pour optimiser les performances</string>
+    <!-- zRam -->
+    <string name="pref_zram_title">Utiliser zRam</string>
+    <string name="pref_zram_summary">Compresser la mémoire pour augmenter virtuellement sa capacité (nécessite un redémarrage)</string>
+    <!-- VM Heap Size -->
+    <string name="pref_heapsize_title">Taille de pile VM</string>
+    <string name="pref_heapsize_summary">Maximum amount of memory per VM heap (nécessite un redémarrage)</string>
+    <!-- KSM -->
+    <string name="pref_ksm_title">Utiliser KSM</string>
+    <string name="pref_ksm_summary">Cette fonction du noyau réduit l\'utilisation de la mémoire physique et améliore les performances (Kernel Same-page Merging)</string>
+    <!-- Purgeable Assets -->
+    <string name="pref_purgeable_assets_title">Purge des bitmaps</string>
+    <string name="pref_purgeable_assets_summary">Le système peut libérer plus de RAM si la mémoire des bitmaps peut être réclamée (nécessite un redémarrage)</string>
+    <!-- Performance Settings : Processor Settings -->
+    <string name="processor_title">Paramètres CPU</string>
+    <string name="processor_summary">Stratégie et fréquence</string>
+    <string name="cpu_cur_freq_title">Fréquence actuelle</string>
+    <string name="cpu_governors_title">Stratégie</string>
+    <string name="cpu_governors_summary">%S</string>
+    <string name="cpu_min_freq_title">Fréquence minimale</string>
+    <string name="cpu_min_freq_summary">%s</string>
+    <string name="cpu_max_freq_title">Fréquence maximale</string>
+    <string name="cpu_max_freq_summary">%s</string>
+    <string name="cpu_set_on_boot">Appliquer au démarrage</string>
+    <string name="cpu_set_on_boot_summary">Modifie les fréquences du CPU au démarrage du système</string>
+
+    <!-- About phone -->
+    <string name="mod_version">Version CyanogenMod</string>
+    <string name="mod_version_default">Inconnue</string>
+    <string name="build_date">Date du système</string>
+
+<!-- End of CyanogenMod specific settings -->
 
     <string name="sim_lock_settings" msgid="3392331196873564292">"Paramètres verrouillage SIM"</string>
     <string name="sim_lock_settings_category" msgid="5136244267576697004">"Configurer verrouillage carte SIM"</string>
@@ -1280,9 +1350,6 @@
     <string name="development_settings_summary" msgid="1815795401632854041">"Définir les options pour le développement de l\'application"</string>
     <string name="enable_adb">Débogage Android</string>
     <string name="enable_adb_summary">Activer le débogage lorsqu\'un câble USB est connecté ou lorsque que le mode TCP/IP est sélectionné</string>
-    <string name="adb_over_network">ADB sur TCP/IP</string>
-    <string name="adb_over_network_summary">"Activer le débogage sur toutes les interfaces réseau (Wifi, Usb net)"</string>
-    <string name="adb_over_network_warning">"ATTENTION: Lorsque cette fonction est activée, votre téléphone est ouvert aux intrusions sur toutes les interfaces réseau, y compris via le réseau GSM (data) !\n\nIl est fortement conseillé de désactiver le réseau mobile avant d\'activer cette fonction.\n\nContinuer ?"</string>
     <string name="verifier_device_identifier" msgid="5079997701152411060">"ID appareil de développement"</string>
     <string name="verifier_device_identifier_not_available" msgid="1272065992066977324">"Informations sur l\'appareil non disponibles."</string>
     <string name="keep_screen_on" msgid="1146389631208760344">"Rester activé"</string>
@@ -1492,8 +1559,8 @@
     <string name="backup_configure_account_default_summary" msgid="2436933224764745553">"Aucun compte ne stocke actuellement des données sauvegardées."</string>
     <string name="auto_restore_title" msgid="5397528966329126506">"Restaurer automatiquement"</string>
     <string name="auto_restore_summary" msgid="4235615056371993807">"Lors de la réinstallation d\'une application, restaurer les paramètres et les données sauvegardées"</string>
-    <string name="local_backup_password_title" msgid="3860471654439418822">"M. de passe sauv. ordinateur"</string>
-    <string name="local_backup_password_summary_none" msgid="4780151366296088113">"Les sauvegardes complètes sur ordinateur ne sont actuellement pas protégées."</string>
+    <string name="local_backup_password_title">"Protection sauvegardes"</string>
+    <string name="local_backup_password_summary_none">"Les sauvegardes complètes sur ordinateur ne sont actuellement pas protégées par un mot de passe."</string>
     <string name="local_backup_password_summary_change" msgid="3615162467655442441">"Sélectionnez cette option pour modifier ou supprimer le mot de passe utilisé pour les sauvegardes complètes sur ordinateur."</string>
     <string name="backup_erase_dialog_title" msgid="1027640829482174106"></string>
     <string name="backup_erase_dialog_message" msgid="7218566008912418809">"Arrêter de sauvegarder vos mots de passe Wi-Fi, vos favoris, ainsi que d\'autres paramètres et données d\'applications, et en effacer toutes les copies des serveurs Google ?"</string>
@@ -1595,25 +1662,25 @@
     <string name="hdcp_checking_dialog_title" msgid="5141305530923283">"Config. vérification HDCP"</string>
     <string name="debug_ui_category" msgid="9023948280291055349">"Interface utilisateur"</string>
     <string name="strict_mode" msgid="1938795874357830695">"Mode Strict activé"</string>
-    <string name="strict_mode_summary" msgid="142834318897332338">"Faire clignoter écran en cas de longues opérations"</string>
-    <string name="pointer_location" msgid="6084434787496938001">"Emplacement du curseur"</string>
-    <string name="pointer_location_summary" msgid="840819275172753713">"Superposition écran indiquant données actuelles"</string>
-    <string name="show_touches" msgid="1356420386500834339">"Afficher élément sélectionné"</string>
-    <string name="show_touches_summary" msgid="6684407913145150041">"Afficher repère visuel pour éléments sélectionnés"</string>
+    <string name="strict_mode_summary">"Faire clignoter l\'écran sur les opérations longues"</string>
+    <string name="pointer_location">"Emplacement du pointeur"</string>
+    <string name="pointer_location_summary">"Superposition écran indiquant la position X/Y du pointeur"</string>
+    <string name="show_touches">Points de contact</string>
+    <string name="show_touches_summary">"Afficher des repères visuels aux emplacements touchés"</string>
     <string name="show_screen_updates" msgid="8282711794220426931">"Afficher mises à jour écran"</string>
-    <string name="show_screen_updates_summary" msgid="1716122382094924596">"Faire clignoter les mises à jour sur l\'écran"</string>
-    <string name="show_cpu_usage" msgid="2389212910758076024">"Afficher mém. CPU utilisée"</string>
-    <string name="show_cpu_usage_summary" msgid="2113341923988958266">"Superposition écran indiquant mémoire CPU utilisée"</string>
+    <string name="show_screen_updates_summary" msgid="1716122382094924596">"Faire clignoter les éléments mis à jour sur l\'écran"</string>
+    <string name="show_cpu_usage" msgid="2389212910758076024">"Utilisation CPU"</string>
+    <string name="show_cpu_usage_summary" msgid="2113341923988958266">"Superposition écran indiquant l\'utilisation de la mémoire et du CPU"</string>
     <string name="force_hw_ui" msgid="6426383462520888732">"Forcer le rendu GPU"</string>
-    <string name="force_hw_ui_summary" msgid="8642000962902609976">"Utiliser accélération matérielle 2D dans applis"</string>
+    <string name="force_hw_ui_summary">"Utiliser l\'accélération matérielle 2D dans toutes les applications"</string>
     <string name="window_animation_scale_title" msgid="6162587588166114700">"Échelle animation fenêtres"</string>
     <string name="transition_animation_scale_title" msgid="387527540523595875">"Échelle anim. transitions"</string>
     <string name="debug_applications_category" msgid="4206913653849771549">"Applications"</string>
     <string name="immediately_destroy_activities" msgid="8366775083630234121">"Ne pas conserver activités"</string>
     <string name="immediately_destroy_activities_summary" msgid="3592221124808773368">"Supprimer immédiatement les activités abandonnées"</string>
-    <string name="app_process_limit_title" msgid="4280600650253107163">"Limite processus arr.-plan"</string>
-    <string name="show_all_anrs" msgid="28462979638729082">"Afficher tous les messages \"L\'application ne répond pas\""</string>
-    <string name="show_all_anrs_summary" msgid="641908614413544127">"Afficher \"L\'application ne répond plus\" pour applis en arrière-plan"</string>
+    <string name="app_process_limit_title">"Limite processus arr.plan"</string>
+    <string name="show_all_anrs">Tous les messages ANR</string>
+    <string name="show_all_anrs_summary">"Afficher aussi \"L\'application ne répond plus\" pour les applications en arrière-plan"</string>
     <string name="data_usage_summary_title" msgid="3804110657238092929">"Consommation des données"</string>
     <string name="data_usage_cycle" msgid="5652529796195787949">"Cycle de consommation"</string>
     <string name="data_usage_menu_roaming" msgid="8042359966835203296">"Autoriser itinérance"</string>
