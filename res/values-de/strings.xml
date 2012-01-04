@@ -323,6 +323,7 @@
     <string name="bluetooth_profile_a2dp" msgid="3259633293424539529">"Medien"</string>
     <string name="bluetooth_profile_headset" msgid="1874975688666658946">"Telefon"</string>
     <string name="bluetooth_profile_opp" msgid="3799470046565284440">"Übertragung"</string>
+    <string name="bluetooth_profile_network">Netzwerk</string>
     <string name="bluetooth_summary_connected_to_a2dp" msgid="510833839847758664">"Verbunden mit  Audiosystem von Medien"</string>
     <string name="bluetooth_summary_connected_to_headset" msgid="4876496372728623918">"Verbunden mit Audiosystem des Telefons"</string>
     <string name="bluetooth_summary_connected_to_a2dp_headset" msgid="3045032710457800891">"Verbunden mit Audiosystem von Telefon und Medien"</string>
@@ -690,6 +691,10 @@
     <string name="assisted_gps" msgid="4649317129586736885">"Unterstütztes GPS verwenden"</string>
     <string name="assisted_gps_enabled" msgid="8751899609589792803">"Server zur Unterstützung von GPS verwenden (zur Verringerung der Netzwerkauslastung nicht auswählen)"</string>
     <string name="assisted_gps_disabled" msgid="6982698333968010748">"Server zur Unterstützung von GPS verwenden (zur Verbesserung der GPS-Leistung deaktivieren)"</string>
+    <string name="location_gps_source_title">GPS-Quelle</string>
+    <string name="location_gps_source_summary">Zur Positionsbestimmung verwendetes Gerät auswählen</string>
+    <string name="location_gps_source_notification_title">Hinweis</string>
+    <string name="location_gps_source_notification">Nach dem Wechsel der GPS-Quelle wurde GPS deaktiviert und muss vor erneuter Benutzung reaktiviert werden.</string>
     <string name="about_settings" msgid="1743378368185371685">"Über das Telefon"</string>
     <string name="about_settings_summary" msgid="3302263393543848667">"Rechtliche Hinweise, Telefonstatus und Softwareversion anzeigen"</string>
     <string name="legal_information" msgid="5769301644270604095">"Rechtliche Hinweise"</string>
@@ -702,6 +707,7 @@
     <string name="settings_license_activity_title" msgid="7553683406244228650">"Open Source-Lizenzen"</string>
     <string name="settings_license_activity_unavailable" msgid="4210539215951487627">"Beim Laden der Lizenzen ist ein Problem aufgetreten."</string>
     <string name="settings_license_activity_loading" msgid="3337535809093591740">"Wird geladen..."</string>
+    <string name="settings_cmlicense_activity_title">CyanogenMod-Lizenzen</string>
     <string name="settings_safetylegal_title" msgid="1289483965535937431">"Sicherheitsinformationen"</string>
     <string name="settings_safetylegal_activity_title" msgid="6901214628496951727">"Sicherheitsinformationen"</string>
     <string name="settings_safetylegal_activity_unreachable" msgid="3198912875259612887">"Ihr Telefon ist mit keinem Datendienst verbunden. Um diese Informationen jetzt anzuzeigen, rufen Sie %s von einem beliebigen, mit dem Internet verbundenen Computer auf."</string>
@@ -960,7 +966,7 @@
     <skip />
     <string name="awake" msgid="387122265874485088">"Aktivzeit des Geräts"</string>
     <string name="wifi_on_time" msgid="6310209835617490616">"WLAN-Aktivzeit"</string>
-    <string name="bluetooth_on_time" msgid="6157799524996162271">"WLAN-Aktivzeit"</string>
+    <string name="bluetooth_on_time" msgid="6157799524996162271">"Bluetooth-Aktivzeit"</string>
     <string name="usage_name_percent" msgid="7976919382448235858">"<xliff:g id="NAME">%1$s</xliff:g> - <xliff:g id="NUMBER">%2$s</xliff:g> <xliff:g id="PERCENT">%%</xliff:g>"</string>
     <string name="details_title" msgid="7564809986329021063">"Akkuverbrauch - Details"</string>
     <string name="details_subtitle" msgid="32593908269911734">"Details"</string>
@@ -1212,11 +1218,14 @@
     <string name="profile_settings">Profileinstellungen</string>
     <string name="profile_name">Profilname</string>
     <string name="new_profile_name">&lt;Neues Profil&gt;</string>
-    <string name="profile_summary">Berühren zum Profil ändern</string>
+    <string name="profile_summary">Berühren zum Ändern des Profils</string>
+    <string name="profile_statusbar">Statusleisten-Anzeige</string>
     <string name="profile_appgroup_title">Anwendungsgruppe: %s</string>
     <string name="profile_appgroups_title">Anwendungsgruppen</string>
+    <string name="profile_connectionoverrides_title">Verbindungen festlegen</string>
+    <string name="profile_connectionoverrides_summary">Berühren, um Einstellung zu ändern</string>
     <string name="profile_volumeoverrides_title">Lautstärke festlegen</string>
-    <string name="profile_volumeoverrides_summary">Berühren um Lautstärke zu ändern</string>
+    <string name="profile_volumeoverrides_summary">Berühren, um Lautstärke zu ändern</string>
     <string name="profile_applist_title">Anwendungen - Klicken zum Entfernen von Gruppe</string>
     <string name="profile_appgroup_name_prompt">Name für Gruppe eingeben</string>
     <string name="profile_delete">Profil löschen</string>
@@ -1236,6 +1245,10 @@
     <string name="profile_manage">Profile verwalten</string>
     <string name="profile_appgroups_manage">Anwendungsgruppen verwalten</string>
     <string name="profile_applist_manage">Anwendungslisten verwalten</string>
+    <string name="profile_reset_title">Zurücksetzen</string>
+    <string name="profile_reset_all_title">Alle zurücksetzen</string>
+    <string name="profile_reset_all_summary">Alle Profile und Anwendungsgruppen auf Standardeinstellungen zurücksetzen</string>
+    <string name="profile_reset_all_message">Möchten Sie wirklich alle Profile und Anwendungsgruppen löschen und auf die Standardeinstellungen zurücksetzen?</string>
 
     <string name="privacy_settings" msgid="9206631214140954954">"Datenschutz"</string>
     <string name="privacy_settings_title" msgid="1987089301293213705">"Datenschutzeinstellungen"</string>
@@ -1293,6 +1306,7 @@
     <string name="toggleAirplaneDescription">Flugmodus ein/ausschalten</string>
     <string name="toggleFlashlightDescription">Taschenlampenmodus ein/ausschalten</string>
     <string name="toggleLockScreenDescription">Bildschirmsperre ein/ausschalten</string>
+    <string name="toggleWimaxDescription">WiMAX ein/ausschalten</string>
 
     <string name="widgetSettings">Widget-Einstellungen</string>
     <string name="wifiSettings">WLAN-Einstellungen</string>
