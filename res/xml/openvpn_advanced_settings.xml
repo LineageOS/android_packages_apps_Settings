@@ -94,30 +94,6 @@
        android:inputType="number"
        />
 
-    <CheckBoxPreference
-       android:key="set_use_tls_auth"
-       android:title="@string/vpn_openvpn_set_use_tls_auth"
-       android:summary="@string/vpn_openvpn_set_use_tls_auth_summary"
-       />
-
-    <EditTextPreference
-       android:key="set_tls_auth_key"
-       android:title="@string/vpn_openvpn_set_tls_auth_key"
-       android:dialogTitle="@string/vpn_openvpn_set_tls_auth_key"
-       android:singleLine="true"
-       android:inputType="text"
-       android:dependency="set_use_tls_auth"
-       />
-
-    <ListPreference
-       android:key="set_tls_auth_key_direction"
-       android:title="@string/vpn_openvpn_set_tls_auth_key_direction"
-       android:dialogTitle="@string/vpn_openvpn_set_tls_auth_key_direction"
-       android:entries="@array/vpn_openvpn_set_tls_auth_key_direction_entries"
-       android:entryValues="@array/vpn_openvpn_set_tls_auth_key_direction_entries_values"
-       android:dependency="set_use_tls_auth"
-       />
-
     <EditTextPreference
        android:key="set_extra"
        android:title="@string/vpn_openvpn_set_extra"

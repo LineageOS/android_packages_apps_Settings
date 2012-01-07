@@ -167,9 +167,6 @@ class OpenvpnEditor extends VpnProfileEditor {
         p.setCipher(newP.getCipher());
         p.setKeySize(newP.getKeySize());
         p.setExtra(newP.getExtra());
-        p.setUseTlsAuth(newP.getUseTlsAuth());
-        p.setTlsAuthKey(newP.getTlsAuthKey());
-        p.setTlsAuthKeyDirection(newP.getTlsAuthKeyDirection());
     }
 
     private ListPreference createList(Context c, int titleResId, String selection, String[] keys,
@@ -206,12 +203,6 @@ class OpenvpnEditor extends VpnProfileEditor {
 
         private static final String KEY_KEYSIZE = "set_keysize";
 
-        private static final String KEY_USE_TLS_AUTH = "set_use_tls_auth";
-
-        private static final String KEY_TLS_KEY = "set_tls_auth_key";
-
-        private static final String KEY_TLS_AUTH_KEY_DIRECTION = "set_tls_auth_key_direction";
-
         private static final String KEY_EXTRA = "set_extra";
 
         private EditTextPreference mPort;
@@ -220,15 +211,11 @@ class OpenvpnEditor extends VpnProfileEditor {
 
         private ListPreference mDevice;
 
-        private ListPreference mTlsAuthKeyDirection;
-
         private CheckBoxPreference mCompLzo;
 
         private CheckBoxPreference mRedirectGateway;
 
         private CheckBoxPreference mSetAddr;
-
-        private CheckBoxPreference mUseTlsAuth;
 
         private EditTextPreference mLocalAddr;
 
@@ -239,8 +226,6 @@ class OpenvpnEditor extends VpnProfileEditor {
         private EditTextPreference mKeySize;
 
         private EditTextPreference mExtra;
-
-        private EditTextPreference mTlsAuthKey;
 
         private OpenvpnProfile profile;
 
@@ -263,9 +248,6 @@ class OpenvpnEditor extends VpnProfileEditor {
             mCipher = (EditTextPreference) findPreference(KEY_CIPHER);
             mKeySize = (EditTextPreference) findPreference(KEY_KEYSIZE);
             mExtra = (EditTextPreference) findPreference(KEY_EXTRA);
-            mUseTlsAuth = (CheckBoxPreference) findPreference(KEY_USE_TLS_AUTH);
-            mTlsAuthKey = (EditTextPreference) findPreference(KEY_TLS_KEY);
-            mTlsAuthKeyDirection = (ListPreference) findPreference(KEY_TLS_AUTH_KEY_DIRECTION);
 
             mPort.setSummary(profile.getPort());
             mPort.setText(profile.getPort());
@@ -400,43 +382,6 @@ class OpenvpnEditor extends VpnProfileEditor {
                         mKeySize.setSummary(R.string.vpn_openvpn_set_keysize_default);
                     else
                         mKeySize.setSummary(profile.getKeySize());
-                    return true;
-                }
-            });
-
-            mUseTlsAuth.setChecked(profile.getUseTlsAuth());
-            mUseTlsAuth.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                public boolean onPreferenceChange(Preference pref, Object newValue) {
-                    Boolean b = (Boolean) newValue;
-                    profile.setUseTlsAuth(b);
-
-                    return true;
-                }
-            });
-
-            mTlsAuthKey.setSummary(profile.getTlsAuthKey());
-            mTlsAuthKey.setText(profile.getTlsAuthKey());
-            mTlsAuthKey.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                public boolean onPreferenceChange(Preference pref, Object newValue) {
-                    String name = (String) newValue;
-                    name.trim();
-                    profile.setTlsAuthKey(name);
-                    mTlsAuthKey.setSummary(profile.getTlsAuthKey());
-
-                    return true;
-                }
-            });
-
-            mTlsAuthKeyDirection.setValue(profile.getTlsAuthKeyDirection());
-            mTlsAuthKeyDirection.setSummary(mTlsAuthKeyDirection.getEntry());
-            mTlsAuthKeyDirection.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                public boolean onPreferenceChange(Preference pref, Object newValue) {
-                    String name = (String) newValue;
-                    name.trim();
-                    profile.setTlsAuthKeyDirection(name);
-                    mTlsAuthKeyDirection.setValue(profile.getTlsAuthKeyDirection());
-                    mTlsAuthKeyDirection.setSummary(mTlsAuthKeyDirection.getEntry());
-
                     return true;
                 }
             });
