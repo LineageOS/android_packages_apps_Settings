@@ -94,7 +94,7 @@
     <string name="bluetooth_is_discoverable" msgid="1205694503775884903">"Visible durante <xliff:g id="DISCOVERABLE_TIME_PERIOD">%1$s</xliff:g> segundos\u2026"</string>
     <string name="bluetooth_is_discoverable_always" msgid="8573385118329733931">"Visible"</string>
     <string name="bluetooth_not_discoverable" msgid="128269993123955177">"Hacer visible el dispositivo"</string>
-    <string name="bluetooth_visibility_timeout" msgid="6634508002347847278">"Tiempo de espera de visibilidad del dispositivo"</string>
+    <string name="bluetooth_visibility_timeout" msgid="6634508002347847278">"Tiempo de visibilidad"</string>
     <string name="bluetooth_visibility_timeout_summary" msgid="6483353842671501585">"Definir cuánto tiempo estará visible el dispositivo"</string>
     <string name="bluetooth_lock_voice_dialing" msgid="3139322992062086225">"Bloquear marcación por voz"</string>
     <string name="bluetooth_lock_voice_dialing_summary" msgid="4741338867496787042">"Evitar el uso del marcador a través de Bluetooth cuando la pantalla esté bloqueada"</string>
@@ -831,16 +831,16 @@
     <string name="unknown" msgid="1592123443519355854">"Desconocido"</string>
     <string name="sort_order_alpha" msgid="1410278099123670628">"Ordenar por nombre"</string>
     <string name="sort_order_size" msgid="7024513286636502362">"Ordenar por tamaño"</string>
-    <string name="show_running_services" msgid="5736278767975544570">"Mostrar serv en ejecución"</string>
-    <string name="show_background_processes" msgid="2009840211972293429">"Mostr proc almac en caché"</string>
+    <string name="show_running_services" msgid="5736278767975544570">"Procesos en ejecución"</string>
+    <string name="show_background_processes" msgid="2009840211972293429">"Procesos en segundo plano"</string>
     <string name="manage_space_text" msgid="8852711522447794676">"Administrar espacio"</string>
     <string name="filter" msgid="2018011724373033887">"Filtrar"</string>
     <string name="filter_dlg_title" msgid="6507663329723966854">"Seleccionar opciones de filtrado"</string>
     <string name="filter_apps_all" msgid="5142129378749391876">"Todas"</string>
     <string name="filter_apps_third_party" msgid="7786348047690140979">"Descargadas"</string>
-    <string name="filter_apps_running" msgid="7767071454371350486">"En ejecución"</string>
-    <string name="filter_apps_onsdcard" product="nosdcard" msgid="4843063154701023349">"Almacenamiento USB"</string>
-    <string name="filter_apps_onsdcard" product="default" msgid="1477351142334784771">"En tarjeta SD"</string>
+    <string name="filter_apps_running" msgid="7767071454371350486">"Activas"</string>
+    <string name="filter_apps_onsdcard" product="nosdcard" msgid="4843063154701023349">"Almacenam. USB"</string>
+    <string name="filter_apps_onsdcard" product="default" msgid="1477351142334784771">"Tarjeta SD"</string>
     <string name="disabled" msgid="9206776641295849915">"Inhabilitada"</string>
     <string name="no_applications" msgid="5190227407135243904">"Sin aplicaciones"</string>
     <string name="internal_storage" msgid="1584700623164275282">"Almacenamiento interno"</string>
@@ -886,7 +886,7 @@
     <string name="runningservices_settings_title" msgid="8097287939865165213">"Servicios en ejecución"</string>
     <string name="runningservices_settings_summary" msgid="854608995821032748">"Ver y controlar los servicios en ejecución"</string>
     <string name="service_restarting" msgid="2242747937372354306">"Reiniciando"</string>
-    <string name="cached" msgid="1059590879740175019">"Proceso en segundo plano almacenado en caché"</string>
+    <string name="cached" msgid="1059590879740175019">"Proceso almacenado en caché"</string>
     <string name="no_running_services" msgid="2059536495597645347">"No hay nada en ejecución."</string>
     <string name="service_started_by_app" msgid="6575184738671598131">"Iniciado por la aplicación."</string>
     <string name="service_client_name"><xliff:g id="client_name">%1$s</xliff:g></string>
@@ -1068,17 +1068,17 @@
     <string name="power_cell" msgid="6596471490976003056">"Dispositivo inactivo"</string>
     <string name="power_phone" msgid="5392641106474567277">"Llamadas de voz"</string>
     <string name="power_idle" msgid="9055659695602194990">"Teléfono inactivo"</string>
-    <string name="usage_type_cpu" msgid="715162150698338714">"Total de CPU"</string>
-    <string name="usage_type_cpu_foreground" msgid="6500579611933211831">"Primer plano de la CPU"</string>
-    <string name="usage_type_wake_lock" msgid="5125438890233677880">"Mantener activo"</string>
-    <string name="usage_type_gps" msgid="7989688715128160790">"GPS"</string>
-    <string name="usage_type_wifi_running" msgid="8234997940652067049">"WiFi en funcionamiento"</string>
+    <string name="usage_type_cpu" msgid="715162150698338714">"Tiempo de CPU"</string>
+    <string name="usage_type_cpu_foreground" msgid="6500579611933211831">"En primer plano"</string>
+    <string name="usage_type_wake_lock" msgid="5125438890233677880">"Tiempo activo"</string>
+    <string name="usage_type_gps" msgid="7989688715128160790">"Tiempo de GPS"</string>
+    <string name="usage_type_wifi_running" msgid="8234997940652067049">"Tiempo activo"</string>
     <string name="usage_type_phone" msgid="9108247984998041853">"Teléfono"</string>
     <string name="usage_type_data_send" msgid="2857401966985425427">"Datos enviados"</string>
     <string name="usage_type_data_recv" msgid="7251090882025234185">"Datos recibidos"</string>
     <string name="usage_type_audio" msgid="6957269406840886290">"Audio"</string>
     <string name="usage_type_video" msgid="4295357792078579944">"Vídeo"</string>
-    <string name="usage_type_on_time" msgid="3351200096173733159">"Tiempo de activación"</string>
+    <string name="usage_type_on_time" msgid="3351200096173733159">"Tiempo activo"</string>
     <string name="usage_type_no_coverage" msgid="3797004252954385053">"Tiempo sin señal"</string>
     <string name="battery_action_stop" msgid="649958863744041872">"Forzar detención"</string>
     <string name="battery_action_app_details" msgid="3275013531871113681">"Información de la aplicación"</string>
