@@ -315,7 +315,8 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
         } else if (NetworkModeButton.NETWORK_MODE_CHANGED.equals(intent.getAction())) {
             logD("Received Network mode state change");
             NetworkModeButton.getInstance().onReceive(context, intent);
-        } else if (WimaxManagerConstants.WIMAX_ENABLED_CHANGED_ACTION.equals(intent.getAction())) {
+        } else if (WimaxManagerConstants.WIMAX_ENABLED_STATUS_CHANGED.equals(intent.getAction())
+                || WimaxManagerConstants.WIMAX_ENABLED_CHANGED_ACTION.equals(intent.getAction())) {
             logD("Received WiMAX change request");
             WimaxButton.getInstance().onReceive(context, intent);
         } else if (Intent.ACTION_POWER_CONNECTED.equals(intent.getAction())

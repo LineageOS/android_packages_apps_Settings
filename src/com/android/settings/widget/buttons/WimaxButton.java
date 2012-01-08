@@ -55,10 +55,18 @@ public class WimaxButton extends WidgetButton {
 
         @Override
         public void onActualStateChange(Context context, Intent intent) {
-            if (!WimaxManagerConstants.WIMAX_ENABLED_CHANGED_ACTION.equals(intent.getAction())) {
+            String action = intent.getAction();
+            int wimaxState;
+
+            if (action.equals(WimaxManagerConstants.WIMAX_ENABLED_STATUS_CHANGED)) {
+                wimaxState = intent.getIntExtra(WimaxManagerConstants.EXTRA_WIMAX_STATUS,
+                                                WimaxManagerConstants.WIMAX_STATUS_UNKNOWN);
+            } else if (action.equals(WimaxManagerConstants.WIMAX_ENABLED_CHANGED_ACTION)) {
+                wimaxState = intent.getIntExtra(WimaxManagerConstants.CURRENT_WIMAX_ENABLED_STATE,
+                                                WimaxManagerConstants.WIMAX_ENABLED_STATE_UNKNOWN);
+            } else {
                 return;
             }
-            int wimaxState = intent.getIntExtra(WimaxManagerConstants.CURRENT_WIMAX_ENABLED_STATE, WimaxManagerConstants.WIMAX_ENABLED_STATE_UNKNOWN);
             int widgetState = wimaxStateToFiveState(wimaxState);
             setCurrentState(context, widgetState);
         }
@@ -66,6 +74,7 @@ public class WimaxButton extends WidgetButton {
         /**
          * Converts WimaxController's state values into our
          * WiMAX-common state values.
+         * Also compatible with WimaxManager status values.
          */
         private static int wimaxStateToFiveState(int wimaxState) {
             switch (wimaxState) {
