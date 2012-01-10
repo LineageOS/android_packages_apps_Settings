@@ -33,7 +33,7 @@ public class FlashlightButton extends WidgetButton {
     }
 
     public void toggleState(Context context) {
-        PackageManager pm = mContext.getPackageManager();
+        PackageManager pm = context.getPackageManager();
         List<ResolveInfo> l = pm.queryBroadcastReceivers(new Intent(
                 "net.cactii.flash2.TOGGLE_FLASHLIGHT"), 0);
         if (!l.isEmpty()) {
