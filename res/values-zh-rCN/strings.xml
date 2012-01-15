@@ -20,6 +20,7 @@
     <string name="no" msgid="6731231425810196216">"无"</string>
     <string name="device_info_default" msgid="7847265875578739287">"未知"</string>
     <string name="header_category_wireless_networks" msgid="4944823405420438623">"无线和网络"</string>
+    <string name="header_category_cyanogenmod">CM设置</string>
     <string name="header_category_device" msgid="5781174212691167553">"设备"</string>
     <string name="header_category_personal" msgid="6225932173498802187">"个人"</string>
     <string name="header_category_system" msgid="2073558547468647128">"系统"</string>
@@ -224,6 +225,8 @@
     <string name="band_mode_set" msgid="5730560180249458484">"设置"</string>
     <string name="band_mode_failed" msgid="1495968863884716379">"失败"</string>
     <string name="band_mode_succeeded" msgid="2701016190055887575">"成功"</string>
+    <string name="launcher_settings_title">桌面设置</string>
+    <string name="device_settings_title">设备选项</string>
     <string name="sdcard_changes_instructions" msgid="1364712901180556244">"重新连接 USB 线后更改生效"</string>
     <string name="sdcard_settings_screen_mass_storage_text" msgid="3741220147296482474">"启用 USB 大容量存储设备"</string>
     <string name="sdcard_settings_total_bytes_label" msgid="9184160745785062144">"总字节数："</string>
@@ -689,6 +692,10 @@
     <string name="baseband_version" msgid="1848990160763524801">"基带版本"</string>
     <string name="kernel_version" msgid="9192574954196167602">"内核版本"</string>
     <string name="build_number" msgid="3075795840572241758">"版本号"</string>
+    <string name="mod_version">CyanogenMod 版本</string>
+    <string name="mod_version_default">未知</string>
+    <string name="build_date">编译日期</string>
+    <!-- skip 'build_date_default‘translation -->
     <string name="device_info_not_available" msgid="8062521887156825182">"不可用"</string>
     <string name="device_status_activity_title" msgid="1411201799384697904">"状态消息"</string>
     <string name="device_status" msgid="607405385799807324">"状态消息"</string>
@@ -1132,6 +1139,9 @@
     <string name="development_settings_summary" msgid="1815795401632854041">"设置应用程序开发选项"</string>
     <string name="enable_adb" msgid="7982306934419797485">"USB 调试"</string>
     <string name="enable_adb_summary" msgid="4881186971746056635">"连接 USB 后启用调试模式"</string>
+    <string name="adb_over_network">网络调试</string>
+    <string name="adb_over_network_summary">通过网络接口(Wi-Fi, Usb 网络)启用TCP/IP调试.该设置重启后失效</string>
+    <string name="adb_over_network_warning">警告: 当网络调试启用后, 你的手机在所有已连接的网络中开放, 包括GSM数据网络!\n\n仅在你所连接的可信网络中使用该特性.\n\n你确实要启用该功能吗？</string>
     <string name="verifier_device_identifier" msgid="5079997701152411060">"开发设备 ID"</string>
     <string name="verifier_device_identifier_not_available" msgid="1272065992066977324">"无法读取设备信息"</string>
     <string name="keep_screen_on" msgid="1146389631208760344">"保持唤醒状态"</string>
@@ -1463,6 +1473,8 @@
     <string name="app_process_limit_title" msgid="4280600650253107163">"后台进程限制"</string>
     <string name="show_all_anrs" msgid="28462979638729082">"显示所有“应用程序无响应”(ANR)"</string>
     <string name="show_all_anrs_summary" msgid="641908614413544127">"为后台应用程序显示“应用程序无响应”对话框"</string>
+    <string name="kill_app_longpress_back">返回键强制关闭应用程序</string>
+    <string name="kill_app_longpress_back_summary">长按返回键杀死前台应用程序</string>
     <string name="data_usage_summary_title" msgid="3804110657238092929">"流量使用情况"</string>
     <string name="data_usage_cycle" msgid="5652529796195787949">"流量使用周期"</string>
     <string name="data_usage_menu_roaming" msgid="8042359966835203296">"数据漫游"</string>
