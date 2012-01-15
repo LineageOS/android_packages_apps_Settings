@@ -772,4 +772,23 @@
         <!-- Always allow app to send to premium SMS short code. -->
         <item>Always allow</item>
     </string-array>
+
+    <!-- **** CYANOGENMOD EDITS START **** -->
+
+    <!-- Arrays for root access capability -->
+    <string-array name="root_access_entries">
+        <item>@string/root_access_none</item>
+        <item>@string/root_access_apps</item>
+        <item>@string/root_access_adb</item>
+        <item>@string/root_access_all</item>
+    </string-array>
+
+    <string-array name="root_access_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <!-- **** CYANOGENMOD EDITS END **** -->
 </resources>
