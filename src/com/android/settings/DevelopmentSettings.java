@@ -161,6 +161,9 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
 
     private static final String OPENGL_TRACES_KEY = "enable_opengl_traces";
 
+    private static final String ROOT_ACCESS_KEY = "root_access";
+    private static final String ROOT_ACCESS_PROPERTY = "persist.sys.root_access";
+
     private static final String IMMEDIATELY_DESTROY_ACTIVITIES_KEY
             = "immediately_destroy_activities";
     private static final String APP_PROCESS_LIMIT_KEY = "app_process_limit";
@@ -253,6 +256,9 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
 
     private SwitchPreference mShowAllANRs;
 
+    private ListPreference mRootAccess;
+    private Object mSelectedRootValue;
+
     private final ArrayList<Preference> mAllPrefs = new ArrayList<Preference>();
 
     private final ArrayList<SwitchPreference> mResetSwitchPrefs
@@ -266,6 +272,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
 
     private Dialog mAdbKeysDialog;
     private boolean mUnavailable;
+    private Dialog mRootDialog;
 
     @Override
     protected int getMetricsCategory() {
@@ -407,6 +414,12 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
             mAllPrefs.add(hdcpChecking);
             removePreferenceForProduction(hdcpChecking);
         }
+
+        mRootAccess = (ListPreference) findPreference(ROOT_ACCESS_KEY);
+        mRootAccess.setOnPreferenceChangeListener(this);
+        if (!removeRootOptionsIfRequired()) {
+            mAllPrefs.add(mRootAccess);
+        }
     }
 
     private ListPreference addListPreference(String prefKey) {
@@ -431,6 +444,18 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         mAllPrefs.add(pref);
         mResetSwitchPrefs.add(pref);
         return pref;
+    }
+
+    private boolean removeRootOptionsIfRequired() {
+        // user builds don't get root, and eng always gets root
+        if (!(Build.IS_DEBUGGABLE || "eng".equals(Build.TYPE))) {
+            if (mRootAccess != null) {
+                getPreferenceScreen().removePreference(mRootAccess);
+                return true;
+            }
+        }
+
+        return false;
     }
 
     @Override
@@ -601,6 +626,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         updateMobileDataAlwaysOnOptions();
         updateSimulateColorSpace();
         updateUSBAudioOptions();
+        updateRootAccessOptions();
     }
 
     private void resetDangerousOptions() {
@@ -614,6 +640,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         }
         resetDebuggerOptions();
         writeLogdSizeOption(null);
+        resetRootAccessOptions();
         writeAnimationScaleOption(0, mWindowAnimationScale, null);
         writeAnimationScaleOption(1, mTransitionAnimationScale, null);
         writeAnimationScaleOption(2, mAnimatorDurationScale, null);
@@ -627,6 +654,40 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         updateAllOptions();
         mDontPokeProperties = false;
         pokeSystemProperties();
+    }
+
+    private void updateRootAccessOptions() {
+        String value = SystemProperties.get(ROOT_ACCESS_PROPERTY, "1");
+        mRootAccess.setValue(value);
+        mRootAccess.setSummary(getResources()
+                .getStringArray(R.array.root_access_entries)[Integer.valueOf(value)]);
+    }
+
+    private void writeRootAccessOptions(Object newValue) {
+        String oldValue = SystemProperties.get(ROOT_ACCESS_PROPERTY, "1");
+        SystemProperties.set(ROOT_ACCESS_PROPERTY, newValue.toString());
+        if (Integer.valueOf(newValue.toString()) < 2 && !oldValue.equals(newValue)
+                && "1".equals(SystemProperties.get("service.adb.root", "0"))) {
+            SystemProperties.set("service.adb.root", "0");
+            Settings.Secure.putInt(getActivity().getContentResolver(),
+                    Settings.Secure.ADB_ENABLED, 0);
+            Settings.Secure.putInt(getActivity().getContentResolver(),
+                    Settings.Secure.ADB_ENABLED, 1);
+        }
+        updateRootAccessOptions();
+    }
+
+    private void resetRootAccessOptions() {
+        String oldValue = SystemProperties.get(ROOT_ACCESS_PROPERTY, "1");
+        SystemProperties.set(ROOT_ACCESS_PROPERTY, "1");
+        if (!oldValue.equals("1") && "1".equals(SystemProperties.get("service.adb.root", "0"))) {
+            SystemProperties.set("service.adb.root", "0");
+            Settings.Secure.putInt(getActivity().getContentResolver(),
+                    Settings.Secure.ADB_ENABLED, 0);
+            Settings.Secure.putInt(getActivity().getContentResolver(),
+                    Settings.Secure.ADB_ENABLED, 1);
+        }
+        updateRootAccessOptions();
     }
 
     private void updateHdcpValues() {
@@ -1743,6 +1804,25 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         } else if (preference == mSimulateColorSpace) {
             writeSimulateColorSpace(newValue);
             return true;
+        } else if (preference == mRootAccess) {
+            if ("0".equals(SystemProperties.get(ROOT_ACCESS_PROPERTY, "1"))
+                    && !"0".equals(newValue)) {
+                mSelectedRootValue = newValue;
+                mDialogClicked = false;
+                if (mRootDialog != null) {
+                    dismissDialogs();
+                }
+                mRootDialog = new AlertDialog.Builder(getActivity())
+                        .setMessage(getResources().getString(R.string.root_access_warning_message))
+                        .setTitle(R.string.root_access_warning_title)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton(android.R.string.yes, this)
+                        .setNegativeButton(android.R.string.no, this).show();
+                mRootDialog.setOnDismissListener(this);
+            } else {
+                writeRootAccessOptions(newValue);
+            }
+            return true;
         }
         return false;
     }
@@ -1759,6 +1839,10 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         if (mEnableDialog != null) {
             mEnableDialog.dismiss();
             mEnableDialog = null;
+        }
+        if (mRootDialog != null) {
+            mRootDialog.dismiss();
+            mRootDialog = null;
         }
     }
 
@@ -1795,6 +1879,13 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
             } else {
                 // Reset the toggle
                 mSwitchBar.setChecked(false);
+            }
+        } else if (dialog == mRootDialog) {
+            if (which == DialogInterface.BUTTON_POSITIVE) {
+                writeRootAccessOptions(mSelectedRootValue);
+            } else {
+                // Reset the option
+                writeRootAccessOptions("0");
             }
         }
     }
