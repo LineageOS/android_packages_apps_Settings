@@ -33,13 +33,14 @@
         android:layout_height="@android:dimen/app_icon_size"
         android:layout_marginRight="11dip"
         android:layout_gravity="center_vertical"
-        android:scaleType="fitCenter"/>
+        android:scaleType="fitCenter" />
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="0px"
         android:layout_weight="1"
         android:layout_height="wrap_content" >
+
         <TextView android:id="@+id/app_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,11 +49,13 @@
             android:singleLine="true"
             android:ellipsize="marquee"
             android:layout_marginBottom="2dip" />
+
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:baselineAlignedChildIndex="0" >
+
             <TextView android:id="@+id/app_size"
                 android:layout_marginTop="-4dip"
                 android:layout_gravity="center_vertical|left"
@@ -60,6 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
+
             <TextView android:id="@+id/app_disabled"
                 android:layout_marginTop="-4dip"
                 android:layout_gravity="center_vertical|right"
@@ -69,7 +73,9 @@
                 android:visibility="gone"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/disabled" />
+
         </LinearLayout>
+
     </LinearLayout>
     
     <CheckBox android:id="@+id/app_on_sdcard"
@@ -80,4 +86,5 @@
         android:visibility="gone"
         android:clickable="false"
         android:focusable="false" />
+
 </LinearLayout>

@@ -13,6 +13,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:paddingLeft="6dip"
@@ -36,15 +37,14 @@
                 android:layout_marginTop="20dip"
                 android:gravity="top"
                 android:text="@string/android_beam_explained"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-            />
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
             <ImageView android:id="@+id/android_beam_image"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-            />
+                android:layout_height="wrap_content" />
+
         </LinearLayout>
 
     </ScrollView>
 
 </LinearLayout>
-

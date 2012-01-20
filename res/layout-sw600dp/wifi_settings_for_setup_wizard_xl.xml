@@ -23,18 +23,20 @@
     android:paddingTop="60dip"
     android:paddingLeft="@dimen/screen_margin_sides"
     android:paddingRight="@dimen/screen_margin_sides"
-    android:paddingBottom="0dip" >
+    android:paddingBottom="0dip">
 
     <FrameLayout
         android:id="@+id/top_padding_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true">
+
         <!-- Set to gone when software keyboard appears -->
         <View
-             android:id="@+id/top_padding"
-             android:layout_width="match_parent"
-             android:layout_height="94dip" />
+            android:id="@+id/top_padding"
+            android:layout_width="match_parent"
+            android:layout_height="94dip" />
+
     </FrameLayout>
 
     <TextView
@@ -57,11 +59,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/wifi_setup_title">
+
         <ProgressBar
             android:id="@+id/scanning_progress_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="?android:attr/progressBarStyleHorizontal" />
+
         <View
             android:id="@+id/top_divider_no_progress"
             android:layout_width="match_parent"
@@ -70,6 +74,7 @@
             android:layout_marginBottom="0dip"
             android:background="@color/divider_color"
             android:visibility="gone" />
+
     </FrameLayout>
 
     <!-- Dummy view to have the left edge of following Views.
@@ -102,12 +107,15 @@
             android:id="@+id/wifi_settings_fragment_layout"
             android:layout_width="716dip"
             android:layout_height="377dip">
+
             <fragment
                 class="com.android.settings.wifi.WifiSettings"
                 android:id="@+id/wifi_setup_fragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
         </FrameLayout>
+
         <FrameLayout
             android:id="@+id/wifi_config_ui"
             android:layout_width="wrap_content"
@@ -117,12 +125,14 @@
             android:layout_marginTop="10dip"
             android:layout_alignParentLeft="true"
             android:visibility="gone" />
+
         <LinearLayout
             android:id="@+id/connecting_status_layout"
             android:layout_width="716dip"
             android:layout_height="360dip"
             android:layout_marginTop="10dip"
             android:visibility="gone">
+
             <TextView
                 android:id="@+id/connecting_status"
                 android:layout_width="match_parent"
@@ -130,6 +140,7 @@
                 android:lineSpacingExtra="10dip"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textSize="20sp" />
+
         </LinearLayout>
 
     </RelativeLayout>
@@ -160,11 +171,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/content">
+
         <View
-             android:id="@+id/bottom_padding"
-             android:layout_width="match_parent"
-             android:layout_height="7dip"
-             android:visibility="gone" />
+            android:id="@+id/bottom_padding"
+            android:layout_width="match_parent"
+            android:layout_height="7dip"
+            android:visibility="gone" />
+
     </FrameLayout>
 
     <!-- Divider -->
@@ -208,31 +221,37 @@
 
                 <!-- This misleading name is for keeping consistency between non-XL
                      layouts -->
-                <Button android:id="@+id/wifi_setup_cancel"
-                        style="@style/setup_wizard_button"
-                        android:text="@string/wifi_setup_back"
-                        android:visibility="gone" />
+                <Button
+                    android:id="@+id/wifi_setup_cancel"
+                    style="@style/setup_wizard_button"
+                    android:text="@string/wifi_setup_back"
+                    android:visibility="gone" />
 
-                <Button android:id="@+id/wifi_setup_connect"
-                        style="@style/setup_wizard_button"
-                        android:layout_marginLeft="16dip"
-                        android:text="@string/wifi_setup_connect"
-                        android:enabled="false"
-                        android:visibility="gone" />
+                <Button
+                    android:id="@+id/wifi_setup_connect"
+                    style="@style/setup_wizard_button"
+                    android:layout_marginLeft="16dip"
+                    android:text="@string/wifi_setup_connect"
+                    android:enabled="false"
+                    android:visibility="gone" />
 
-                <Button android:id="@+id/wifi_setup_skip_or_next"
-                        style="@style/setup_wizard_button"
-                        android:layout_marginLeft="16dip"
-                        android:text="@string/wifi_setup_skip" />
+                <Button
+                    android:id="@+id/wifi_setup_skip_or_next"
+                    style="@style/setup_wizard_button"
+                    android:layout_marginLeft="16dip"
+                    android:text="@string/wifi_setup_skip" />
+
             </LinearLayout>
 
         </RelativeLayout>
 
-        <Button android:id="@+id/wifi_setup_refresh_list"
-                style="@style/setup_wizard_button"
-                android:layout_alignParentRight="true"
-                android:text="@string/wifi_setup_refresh_list"
-                android:enabled="false" />
+        <Button
+            android:id="@+id/wifi_setup_refresh_list"
+            style="@style/setup_wizard_button"
+            android:layout_alignParentRight="true"
+            android:text="@string/wifi_setup_refresh_list"
+            android:enabled="false" />
 
     </LinearLayout>
+
 </RelativeLayout>

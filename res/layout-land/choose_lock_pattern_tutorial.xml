@@ -30,9 +30,10 @@
 
         <!-- left side: lock pattern. Given the square aspect, this will be the smaller of the
              two dimensions (height) -->
-        <com.android.internal.widget.LockPatternView android:id="@+id/lockPattern"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"/>
+        <com.android.internal.widget.LockPatternView
+            android:id="@+id/lockPattern"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
         <!-- right side: instructions and buttons -->
         <!-- header message -->
@@ -54,16 +55,14 @@
                     android:gravity="center_horizontal"
                     android:text="@string/lock_title"
                     android:paddingBottom="10dip"
-                    style="?android:attr/textAppearanceLarge"
-                />
+                    style="?android:attr/textAppearanceLarge" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textSize="18sp"
-                    android:text="@string/lock_intro_message"
-                />
+                    android:text="@string/lock_intro_message" />
 
             </LinearLayout>
 
@@ -77,16 +76,17 @@
         android:orientation="horizontal">
 
         <!-- left / top button: skip, or re-try -->
-        <Button android:id="@+id/skip_button"
+        <Button
+            android:id="@+id/skip_button"
             style="@style/SecurityPreferenceButton"
-            android:text="@string/lockpattern_tutorial_cancel_label"/>
+            android:text="@string/lockpattern_tutorial_cancel_label" />
 
         <!-- right / bottom button: confirm or ok -->
-        <Button android:id="@+id/next_button"
+        <Button
+            android:id="@+id/next_button"
             style="@style/SecurityPreferenceButton"
-            android:text="@string/lockpattern_tutorial_continue_label"/>
+            android:text="@string/lockpattern_tutorial_continue_label" />
 
     </LinearLayout>
 
 </com.android.internal.widget.LinearLayoutWithDefaultTouchRecepient>
-

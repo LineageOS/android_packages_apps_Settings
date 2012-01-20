@@ -29,32 +29,35 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="96dip">
 
-        <TextView android:id="@+id/headerText"
+        <TextView
+            android:id="@+id/headerText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
     </ScrollView>
 
     <!-- footer message -->
-    <TextView android:id="@+id/footerText"
+    <TextView
+        android:id="@+id/footerText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dip"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <!-- bottom: lock pattern -->
-    <com.android.internal.widget.LockPatternView android:id="@+id/lockPattern"
-         android:layout_width="354dip"
-         android:layout_height="354dip"
-         android:layout_marginTop="80dip"
-         aspect="square"/>
+    <com.android.internal.widget.LockPatternView
+        android:id="@+id/lockPattern"
+        android:layout_width="354dip"
+        android:layout_height="354dip"
+        android:layout_marginTop="80dip"
+        aspect="square" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight="1"/>
+        android:layout_weight="1" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -66,14 +69,16 @@
             android:orientation="horizontal">
 
             <!-- left / top button: skip, or re-try -->
-            <Button android:id="@+id/footerLeftButton"
+            <Button
+                android:id="@+id/footerLeftButton"
                 style="@style/SecurityPreferenceButton"
-                android:text="@string/lockpattern_restart_button_text"/>
+                android:text="@string/lockpattern_restart_button_text" />
 
             <!-- right / bottom button: confirm or ok -->
-            <Button android:id="@+id/footerRightButton"
+            <Button
+                android:id="@+id/footerRightButton"
                 style="@style/SecurityPreferenceButton"
-                android:text="@string/lockpattern_confirm_button_text"/>
+                android:text="@string/lockpattern_confirm_button_text" />
 
         </LinearLayout>
 

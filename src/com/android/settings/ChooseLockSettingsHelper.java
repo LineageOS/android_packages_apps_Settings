@@ -52,7 +52,7 @@ public final class ChooseLockSettingsHelper {
      * @return true if one exists and we launched an activity to confirm it
      * @see #onActivityResult(int, int, android.content.Intent)
      */
-    boolean launchConfirmationActivity(int request, CharSequence message, CharSequence details) {
+    public boolean launchConfirmationActivity(int request, CharSequence message, CharSequence details) {
         boolean launched = false;
         switch (mLockPatternUtils.getKeyguardStoredPasswordQuality()) {
             case DevicePolicyManager.PASSWORD_QUALITY_SOMETHING:

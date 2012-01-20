@@ -25,6 +25,7 @@
         android:id="@+id/network_switches_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:id="@+id/network_switches"
             android:layout_width="match_parent"
@@ -32,6 +33,7 @@
             android:orientation="vertical"
             android:showDividers="middle|end"
             android:divider="?android:attr/listDivider" />
+
     </FrameLayout>
 
     <include layout="@layout/data_usage_cycles" />

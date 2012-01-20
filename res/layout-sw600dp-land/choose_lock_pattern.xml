@@ -29,10 +29,11 @@
         android:gravity="center_horizontal|center_vertical"
         android:orientation="horizontal">
 
-        <com.android.internal.widget.LockPatternView android:id="@+id/lockPattern"
-             android:layout_width="354dip"
-             android:layout_height="354dip"
-             aspect="square"/>
+        <com.android.internal.widget.LockPatternView
+            android:id="@+id/lockPattern"
+            android:layout_width="354dip"
+            android:layout_height="354dip"
+            aspect="square" />
 
      </RelativeLayout>
 
@@ -44,7 +45,8 @@
         android:gravity="center_horizontal">
 
         <!-- footer message -->
-        <TextView android:id="@+id/footerText"
+        <TextView
+            android:id="@+id/footerText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/headerText"
@@ -52,24 +54,27 @@
             android:layout_toRightOf="@id/lockPattern"
             android:layout_marginLeft="100dip"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
         <!-- confirm / restart buttons -->
-        <LinearLayout android:id="@+id/buttonContainer"
+        <LinearLayout
+            android:id="@+id/buttonContainer"
             style="@style/SecurityPreferenceButtonContainer"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:orientation="horizontal">
 
             <!-- left / top button: skip, or re-try -->
-            <Button android:id="@+id/footerLeftButton"
+            <Button
+                android:id="@+id/footerLeftButton"
                 style="@style/SecurityPreferenceButton"
-                android:text="@string/lockpattern_restart_button_text"/>
+                android:text="@string/lockpattern_restart_button_text" />
 
             <!-- right / bottom button: confirm or ok -->
-            <Button android:id="@+id/footerRightButton"
+            <Button
+                android:id="@+id/footerRightButton"
                 style="@style/SecurityPreferenceButton"
-                android:text="@string/lockpattern_confirm_button_text"/>
+                android:text="@string/lockpattern_confirm_button_text" />
 
         </LinearLayout>
 
@@ -83,15 +88,14 @@
             android:layout_above="@id/buttonContainer"
             android:gravity="center_vertical|center_horizontal">
 
-            <TextView android:id="@+id/headerText"
+            <TextView
+                android:id="@+id/headerText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"/>
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
         </ScrollView>
-
 
     </RelativeLayout>
 
 </com.android.internal.widget.LinearLayoutWithDefaultTouchRecepient>
-

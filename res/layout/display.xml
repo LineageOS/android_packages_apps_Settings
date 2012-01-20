@@ -18,7 +18,10 @@
 */
 -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" style="@style/info_layout">        
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+	style="@style/info_layout">
+
     <LinearLayout style="@style/entry_layout"
         android:orientation="vertical">
 
@@ -30,6 +33,7 @@
         <Spinner android:id="@+id/fontSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
         </Spinner>
 
         <TextView
@@ -44,6 +48,7 @@
         <Button android:id="@+id/save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
     </LinearLayout>
 
 </LinearLayout>

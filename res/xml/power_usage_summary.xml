@@ -15,11 +15,12 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-        android:title="@string/battery_since_unplugged"
-        android:key="app_list">
+    android:title="@string/battery_since_unplugged"
+    android:key="app_list">
+	
     <Preference
         style="?android:attr/preferenceInformationStyle"
         android:key="battery_status"
-        android:persistent="false"
-    />
+        android:persistent="false" />
+
 </PreferenceScreen>

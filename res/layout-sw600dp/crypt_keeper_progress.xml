@@ -23,8 +23,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:padding="64dip"
-    >
+        android:padding="64dip">
+
         <ImageView
             android:id="@+id/encroid"
             android:layout_width="wrap_content"
@@ -32,8 +32,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:paddingRight="65dip"
-            android:src="@drawable/encroid_waiting"
-        />
+            android:src="@drawable/encroid_waiting" />
 
         <TextView
             android:id="@+id/title"
@@ -47,22 +46,21 @@
             android:textSize="30dip"
             android:textColor="@color/title_color"
             android:text="@string/crypt_keeper_setup_title"
-            android:gravity="bottom"
-        />
+            android:gravity="bottom" />
 
         <!-- Divider -->
         <RelativeLayout
             android:id="@+id/top_divider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/title"
-        >
+            android:layout_below="@+id/title">
+
             <ProgressBar
                 android:id="@+id/progress_bar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="?android:attr/progressBarStyleHorizontal"
-            />
+                style="?android:attr/progressBarStyleHorizontal" />
+
         </RelativeLayout>
 
         <TextView
@@ -73,8 +71,7 @@
             android:paddingTop="21dip"
             android:layout_marginLeft="16dip"
             android:layout_marginRight="16dip"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-        />
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <!-- Divider -->
         <RelativeLayout
@@ -82,13 +79,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/factory_reset"
-            android:visibility="gone"
-        >
+            android:visibility="gone">
+
             <ProgressBar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="?android:attr/progressBarStyleHorizontal"
-            />
+                style="?android:attr/progressBarStyleHorizontal" />
+
         </RelativeLayout>
 
         <Button
@@ -100,8 +97,8 @@
             android:layout_marginBottom="80dip"
             android:layout_marginRight="16dip"
             android:text="@string/master_clear_button_text"
-            android:visibility="gone"
-        />
+            android:visibility="gone" />
 
     </RelativeLayout>
+
 </FrameLayout>

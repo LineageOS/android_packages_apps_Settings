@@ -13,8 +13,9 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
+
 <com.android.internal.widget.LinearLayoutWithDefaultTouchRecepient
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/topLayout"
     android:orientation="vertical"
     android:layout_width="wrap_content"
@@ -32,7 +33,7 @@
             android:layout_height="0dip"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
 
         <View
              android:background="@*android:drawable/code_lock_top"
@@ -54,7 +55,7 @@
             android:layout_height="0dip"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="14sp"/>
+            android:textSize="14sp" />
 
     </LinearLayout>
 
@@ -65,12 +66,12 @@
         <!-- left : cancel, or re-try -->
         <Button android:id="@+id/footerLeftButton"
             style="@style/SecurityPreferenceButton"
-            android:text="@string/lockpattern_tutorial_cancel_label"/>
+            android:text="@string/lockpattern_tutorial_cancel_label" />
 
         <!-- right : confirm or ok -->
         <Button android:id="@+id/footerRightButton"
             style="@style/SecurityPreferenceButton"
-            android:text="@string/lockpattern_tutorial_continue_label"/>
+            android:text="@string/lockpattern_tutorial_continue_label" />
 
     </LinearLayout>
 
