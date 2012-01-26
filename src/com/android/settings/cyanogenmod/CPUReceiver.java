@@ -38,7 +38,7 @@ public class CPUReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context ctx, Intent intent) {
         if (SystemProperties.getBoolean(CPU_SETTINGS_PROP, false) == false
-                && intent.getAction().equals(Intent.ACTION_MEDIA_MOUNTED)) {
+                && intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
             SystemProperties.set(CPU_SETTINGS_PROP, "true");
             configureCPU(ctx);
         } else {
