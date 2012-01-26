@@ -14,37 +14,42 @@
      limitations under the License.
 -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/layout_root"
-        android:layout_height="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_root"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:paddingTop="96dip"
+    android:paddingLeft="40dip"
+    android:paddingRight="40dip"
+    android:paddingBottom="96dip"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/timezone_dropdown_anchor"
+        android:layout_height="0px"
         android:layout_width="match_parent"
-        android:paddingTop="96dip"
-        android:paddingLeft="40dip"
-        android:paddingRight="40dip"
-        android:paddingBottom="96dip"
+        android:layout_marginLeft="40dip"
+        android:layout_marginRight="40dip" />
+
+    <LinearLayout
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
         android:orientation="vertical">
 
-    <FrameLayout android:id="@+id/timezone_dropdown_anchor"
-            android:layout_height="0px"
+        <fragment
+            android:id="@+id/date_time_settings_fragment"
+            class="com.android.settings.DateTimeSettings"
             android:layout_width="match_parent"
-            android:layout_marginLeft="40dip"
-            android:layout_marginRight="40dip"/>
-
-    <LinearLayout android:layout_height="0px"
-                  android:layout_weight="1"
-                  android:layout_width="match_parent"
-                  android:orientation="vertical">
-
-        <fragment android:id="@+id/date_time_settings_fragment"
-                  class="com.android.settings.DateTimeSettings"
-                  android:layout_width="match_parent"
-                  android:layout_height="match_parent" />
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 
-    <RelativeLayout android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:layout_width="match_parent">
+    <RelativeLayout
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:layout_width="match_parent">
 
         <View
             android:id="@+id/bottom_divider"
@@ -53,15 +58,16 @@
             android:layout_marginTop="0dip"
             android:layout_marginBottom="16dip"
             android:background="@color/divider_color"
-            android:layout_above="@+id/next_button"/>
+            android:layout_above="@+id/next_button" />
 
-        <Button android:id="@+id/next_button"
+        <Button
+            android:id="@+id/next_button"
             android:layout_width="wrap_content"
             android:minWidth="208dip"
             android:layout_height="48dip"
             android:layout_marginTop="10dip"
             android:layout_alignParentRight="true"
-            android:text="@string/next_label"/>
+            android:text="@string/next_label" />
 
     </RelativeLayout>
 

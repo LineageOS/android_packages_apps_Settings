@@ -29,10 +29,11 @@
         android:gravity="center_horizontal|center_vertical"
         android:orientation="horizontal">
 
-        <com.android.internal.widget.LockPatternView android:id="@+id/lockPattern"
-             android:layout_width="354dip"
-             android:layout_height="354dip"
-             aspect="square"/>
+        <com.android.internal.widget.LockPatternView
+            android:id="@+id/lockPattern"
+            android:layout_width="354dip"
+            android:layout_height="354dip"
+            aspect="square" />
 
      </RelativeLayout>
 
@@ -44,21 +45,24 @@
         android:gravity="center_horizontal">
 
         <!-- navigation buttons -->
-        <LinearLayout android:id="@+id/buttonContainer"
+        <LinearLayout
+            android:id="@+id/buttonContainer"
             style="@style/SecurityPreferenceButtonContainer"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:orientation="horizontal">
 
             <!-- left / top button: skip, or re-try -->
-            <Button android:id="@+id/skip_button"
+            <Button
+                android:id="@+id/skip_button"
                 style="@style/SecurityPreferenceButton"
-                android:text="@string/lockpattern_tutorial_cancel_label"/>
+                android:text="@string/lockpattern_tutorial_cancel_label" />
 
             <!-- right / bottom button: confirm or ok -->
-            <Button android:id="@+id/next_button"
+            <Button
+                android:id="@+id/next_button"
                 style="@style/SecurityPreferenceButton"
-                android:text="@string/lockpattern_tutorial_continue_label"/>
+                android:text="@string/lockpattern_tutorial_continue_label" />
 
         </LinearLayout>
 
@@ -72,15 +76,15 @@
             android:gravity="center_vertical|center_horizontal"
             android:layout_above="@id/buttonContainer">
 
-            <TextView android:id="@+id/headerText"
+            <TextView
+                android:id="@+id/headerText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/lock_intro_message"
-                android:textAppearance="?android:attr/textAppearanceLarge"/>
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
         </ScrollView>
 
     </RelativeLayout>>
 
 </com.android.internal.widget.LinearLayoutWithDefaultTouchRecepient>
-

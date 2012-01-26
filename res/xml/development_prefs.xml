@@ -14,10 +14,11 @@
      limitations under the License.
 -->
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-        android:title="@string/development_settings_title">
-        
-    <CheckBoxPreference 
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/development_settings_title">
+
+    <CheckBoxPreference
         android:key="enable_adb" 
         android:title="@string/enable_adb" 
         android:summary="@string/enable_adb_summary"/>
@@ -35,12 +36,12 @@
         android:summary="@string/verifier_device_identifier_not_available"
         android:persistent="false" />
 
-    <CheckBoxPreference 
+    <CheckBoxPreference
         android:key="keep_screen_on" 
         android:title="@string/keep_screen_on" 
         android:summary="@string/keep_screen_on_summary"/>
 
-    <CheckBoxPreference 
+    <CheckBoxPreference
         android:key="allow_mock_location" 
         android:title="@string/allow_mock_location" 
         android:summary="@string/allow_mock_location_summary"/>
@@ -63,8 +64,9 @@
                 android:targetClass="com.android.settings.SetFullBackupPassword" />
     </PreferenceScreen>
 
-    <PreferenceCategory android:key="debug_ui_category"
-            android:title="@string/debug_ui_category">
+    <PreferenceCategory
+        android:key="debug_ui_category"
+        android:title="@string/debug_ui_category">
 
         <CheckBoxPreference
             android:key="strict_mode"
@@ -112,8 +114,9 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:key="debug_applications_category"
-            android:title="@string/debug_applications_category">
+    <PreferenceCategory
+        android:key="debug_applications_category"
+        android:title="@string/debug_applications_category">
 
         <CheckBoxPreference
             android:key="immediately_destroy_activities"

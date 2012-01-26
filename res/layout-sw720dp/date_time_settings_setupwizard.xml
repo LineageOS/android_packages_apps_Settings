@@ -54,6 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/top_divider">
+
         <!-- timezone -->
         <Button
             android:id="@+id/time_zone_button"
@@ -90,7 +91,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="1px"
                 android:background="@color/divider_color" />
+
         </LinearLayout>
+
     </RelativeLayout>
 
     <LinearLayout
@@ -105,6 +108,7 @@
             android:layout_width="312dip"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/date_picker_title"
                 android:layout_width="match_parent"
@@ -115,11 +119,13 @@
                 android:clickable="false"
                 android:longClickable="false"
                 android:gravity="center" />
+
             <DatePicker
                 android:id="@+id/date_picker"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/date_picker_title" />
+
         </LinearLayout>
 
         <!-- divider -->
@@ -133,6 +139,7 @@
             android:layout_width="312dip"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/time_picker_title"
                 android:layout_width="match_parent"
@@ -147,7 +154,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/time_picker_title" />
+
         </LinearLayout>
+
     </LinearLayout>
 
     <View
@@ -165,4 +174,5 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:text="@string/next_label" />
+
 </RelativeLayout>
