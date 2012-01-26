@@ -92,8 +92,11 @@
     <string name="bluetooth_is_discoverable" msgid="1205694503775884903">"Видимый в течение <xliff:g id="DISCOVERABLE_TIME_PERIOD">%1$s</xliff:g> секунд..."</string>
     <string name="bluetooth_is_discoverable_always" msgid="8573385118329733931">"Видимый"</string>
     <string name="bluetooth_not_discoverable" msgid="128269993123955177">"Сделать устройство видимым"</string>
+    <string name="bluetooth_fast_connect_on">Быстрое Bluetooth соединение</string>
+    <string name="bluetooth_fast_connect_off">Нормальное Bluetooth соединение</string>
     <string name="bluetooth_visibility_timeout" msgid="6634508002347847278">"Тайм-аут видимости"</string>
     <string name="bluetooth_visibility_timeout_summary" msgid="6483353842671501585">"Укажите, в течение какого времени устройство будет видимым"</string>
+    <string name="bluetooth_fast_connect">Быстрое соединение</string>
     <string name="bluetooth_lock_voice_dialing" msgid="3139322992062086225">"Заблокировать голосовой набор"</string>
     <string name="bluetooth_lock_voice_dialing_summary" msgid="4741338867496787042">"Предотвратить использование телефона Bluetooth, когда экран заблокирован"</string>
     <string name="bluetooth_devices" msgid="1886018064039454227">"Устройства Bluetooth"</string>
@@ -892,8 +895,11 @@
     <string name="builtin_keyboard_settings_summary" msgid="7990296351888096836">"Настройки встроенной клавиатуры"</string>
     <string name="development_settings_title" msgid="6719732334835420989">"Разработка"</string>
     <string name="development_settings_summary" msgid="2151320488701538355">"Настройка параметров для разработки приложений"</string>
-    <string name="enable_adb" msgid="7982306934419797485">"Отладка по USB"</string>
-    <string name="enable_adb_summary" msgid="4881186971746056635">"Включить режим отладки при подключении к компьютеру по USB"</string>
+    <string name="enable_adb" msgid="7982306934419797485">"Отладка Android"</string>
+    <string name="enable_adb_summary" msgid="4881186971746056635">"Включить режим отладки (ADB)"</string>
+    <string name="adb_over_network">ADB по сети</string>
+    <string name="adb_over_network_summary">Использовать отладку по сети (нпр. Wi-Fi) вместо USB. Эта установка сбрасывается при перезагрузке</string>
+    <string name="adb_over_network_warning">Внимание: когда включен ADB по сети, телефон открыт для доступа из всех подключенных сетей, включая передачу данных GSM!\n\nИспользуйте эту функцию только тогда, когда вы подключены к доверенным сетям.\n\nВы действительно хотите включить эту функцию?</string>
     <string name="keep_screen_on" msgid="1146389631208760344">"Оставить включенным"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"Во время зарядки экран будет всегда включен"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"Фиктивные местоположения"</string>
@@ -1269,9 +1275,9 @@
     <string name="device_settings_title">Настройки устройства</string>
 
     <!-- Setting checkbox title for displaying USB debugging notification -->
-    <string name="adb_notify">Уведомление отладки по USB</string>
+    <string name="adb_notify">Уведомление отладки</string>
     <!-- Setting checkbox summary for displaying USB debugging notification -->
-    <string name="adb_notify_summary">Показывать уведомление отладки по USB при подключении</string>
+    <string name="adb_notify_summary">Показывать уведомление отладки при подключении</string>
     <!-- Setting checkbox title whether to allow killing foreground app by longpress on BACK. -->
     <string name="kill_app_longpress_back">Закрытие приложений</string>
     <!-- Setting checkbox summary whether to allow killing foreground app by longpress on BACK. -->
