@@ -28,9 +28,18 @@ import android.preference.PreferenceScreen;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 
 public class MemoryManagement extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
+
+    public static final String KSM_RUN_FILE = "/sys/kernel/mm/ksm/run";
+
+    public static final String KSM_PREF = "pref_ksm";
+
+    public static final String KSM_PREF_DISABLED = "0";
+
+    public static final String KSM_PREF_ENABLED = "1";
 
     private static final String ZRAM_PREF = "pref_zram_size";
 
@@ -56,6 +65,8 @@ public class MemoryManagement extends SettingsPreferenceFragment implements
 
     private CheckBoxPreference mPurgeableAssetsPref;
 
+    private CheckBoxPreference mKSMPref;
+
     private ListPreference mHeapsizePref;
 
     private int swapAvailable = -1;
@@ -71,8 +82,8 @@ public class MemoryManagement extends SettingsPreferenceFragment implements
             PreferenceScreen prefSet = getPreferenceScreen();
 
             mzRAM = (ListPreference) prefSet.findPreference(ZRAM_PREF);
-            mPurgeableAssetsPref = (CheckBoxPreference) prefSet
-                    .findPreference(PURGEABLE_ASSETS_PREF);
+            mPurgeableAssetsPref = (CheckBoxPreference) prefSet.findPreference(PURGEABLE_ASSETS_PREF);
+            mKSMPref = (CheckBoxPreference) prefSet.findPreference(KSM_PREF);
             mHeapsizePref = (ListPreference) prefSet.findPreference(HEAPSIZE_PREF);
 
             if (isSwapAvailable()) {
@@ -82,6 +93,12 @@ public class MemoryManagement extends SettingsPreferenceFragment implements
                 mzRAM.setOnPreferenceChangeListener(this);
             } else {
                 prefSet.removePreference(mzRAM);
+            }
+
+            if (Utils.fileExists(KSM_RUN_FILE)) {
+                mKSMPref.setChecked(KSM_PREF_ENABLED.equals(Utils.fileReadOneLine(KSM_RUN_FILE)));
+            } else {
+                prefSet.removePreference(mKSMPref);
             }
 
             String purgeableAssets = SystemProperties.get(PURGEABLE_ASSETS_PERSIST_PROP,
@@ -101,6 +118,11 @@ public class MemoryManagement extends SettingsPreferenceFragment implements
         if (preference == mPurgeableAssetsPref) {
             SystemProperties.set(PURGEABLE_ASSETS_PERSIST_PROP,
                     mPurgeableAssetsPref.isChecked() ? "1" : "0");
+            return true;
+        }
+
+        if (preference == mKSMPref) {
+            Utils.fileWriteOneLine(KSM_RUN_FILE, mKSMPref.isChecked() ? "1" : "0");
             return true;
         }
 

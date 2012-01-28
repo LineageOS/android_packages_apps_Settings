@@ -16,8 +16,6 @@
 
 package com.android.settings.cyanogenmod;
 
-import com.android.settings.cyanogenmod.Processor;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -26,14 +24,17 @@ import android.os.SystemProperties;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import com.android.settings.Utils;
+
 import java.util.Arrays;
 import java.util.List;
 
-public class CPUReceiver extends BroadcastReceiver {
+public class BootReceiver extends BroadcastReceiver {
 
-    private static final String TAG = "CPUSettings";
+    private static final String TAG = "BootReceiver";
 
     private static final String CPU_SETTINGS_PROP = "sys.cpufreq.restored";
+    private static final String KSM_SETTINGS_PROP = "sys.ksm.restored";
 
     @Override
     public void onReceive(Context ctx, Intent intent) {
@@ -43,6 +44,16 @@ public class CPUReceiver extends BroadcastReceiver {
             configureCPU(ctx);
         } else {
             SystemProperties.set(CPU_SETTINGS_PROP, "false");
+        }
+
+        if (Utils.fileExists(MemoryManagement.KSM_RUN_FILE)) {
+            if (SystemProperties.getBoolean(KSM_SETTINGS_PROP, false) == false
+                    && intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
+                SystemProperties.set(KSM_SETTINGS_PROP, "true");
+                configureKSM(ctx);
+            } else {
+                SystemProperties.set(KSM_SETTINGS_PROP, "false");
+            }
         }
     }
 
@@ -57,15 +68,15 @@ public class CPUReceiver extends BroadcastReceiver {
         String governor = prefs.getString(Processor.GOV_PREF, null);
         String minFrequency = prefs.getString(Processor.FREQ_MIN_PREF, null);
         String maxFrequency = prefs.getString(Processor.FREQ_MAX_PREF, null);
-        String availableFrequenciesLine = Processor.readOneLine(Processor.FREQ_LIST_FILE);
-        String availableGovernorsLine = Processor.readOneLine(Processor.GOV_LIST_FILE);
+        String availableFrequenciesLine = Utils.fileReadOneLine(Processor.FREQ_LIST_FILE);
+        String availableGovernorsLine = Utils.fileReadOneLine(Processor.GOV_LIST_FILE);
         boolean noSettings = ((availableGovernorsLine == null) || (governor == null)) &&
                              ((availableFrequenciesLine == null) || ((minFrequency == null) && (maxFrequency == null)));
         List<String> frequencies = null;
         List<String> governors = null;
 
         if (noSettings) {
-            Log.d(TAG, "No settings saved. Nothing to restore.");
+            Log.d(TAG, "No CPU settings saved. Nothing to restore.");
         } else {
             if (availableGovernorsLine != null){
                 governors = Arrays.asList(availableGovernorsLine.split(" "));
@@ -74,15 +85,24 @@ public class CPUReceiver extends BroadcastReceiver {
                 frequencies = Arrays.asList(availableFrequenciesLine.split(" "));
             }
             if (governor != null && governors != null && governors.contains(governor)) {
-                Processor.writeOneLine(Processor.GOV_FILE, governor);
+                Utils.fileWriteOneLine(Processor.GOV_FILE, governor);
             }
             if (maxFrequency != null && frequencies != null && frequencies.contains(maxFrequency)) {
-                Processor.writeOneLine(Processor.FREQ_MAX_FILE, maxFrequency);
+                Utils.fileWriteOneLine(Processor.FREQ_MAX_FILE, maxFrequency);
             }
             if (minFrequency != null && frequencies != null && frequencies.contains(minFrequency)) {
-                Processor.writeOneLine(Processor.FREQ_MIN_FILE, minFrequency);
+                Utils.fileWriteOneLine(Processor.FREQ_MIN_FILE, minFrequency);
             }
             Log.d(TAG, "CPU settings restored.");
         }
+    }
+
+    private void configureKSM(Context ctx) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
+
+        boolean ksm = prefs.getBoolean(MemoryManagement.KSM_PREF, false);
+
+        Utils.fileWriteOneLine(MemoryManagement.KSM_RUN_FILE, ksm ? "1" : "0");
+        Log.d(TAG, "KSM settings restored.");
     }
 }

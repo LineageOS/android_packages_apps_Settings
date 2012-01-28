@@ -1396,7 +1396,7 @@
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/appwidget_info" />
         </receiver>
 
-        <receiver android:name=".cyanogenmod.CPUReceiver" android:enabled="true">
+        <receiver android:name=".cyanogenmod.BootReceiver" android:enabled="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>

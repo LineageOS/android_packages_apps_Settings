@@ -31,6 +31,7 @@ import android.util.Log;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 
 //
 // CPU Related Settings
@@ -73,7 +74,7 @@ public class Processor extends SettingsPreferenceFragment implements
             try {
                 while (!mInterrupt) {
                     sleep(500);
-                    final String curFreq = readOneLine(FREQ_CUR_FILE);
+                    final String curFreq = Utils.fileReadOneLine(FREQ_CUR_FILE);
                     mCurCPUHandler.sendMessage(mCurCPUHandler.obtainMessage(0, curFreq));
                 }
             } catch (InterruptedException e) {
@@ -97,9 +98,9 @@ public class Processor extends SettingsPreferenceFragment implements
         mMinFrequencyFormat = getString(R.string.cpu_min_freq_summary);
         mMaxFrequencyFormat = getString(R.string.cpu_max_freq_summary);
 
-        String[] availableGovernors = readOneLine(GOV_LIST_FILE).split(" ");
+        String[] availableGovernors = Utils.fileReadOneLine(GOV_LIST_FILE).split(" ");
         String[] availableFrequencies = new String[0];
-        String availableFrequenciesLine = readOneLine(FREQ_LIST_FILE);
+        String availableFrequenciesLine = Utils.fileReadOneLine(FREQ_LIST_FILE);
         if (availableFrequenciesLine != null)
             availableFrequencies = availableFrequenciesLine.split(" ");
         String[] frequencies;
@@ -115,7 +116,7 @@ public class Processor extends SettingsPreferenceFragment implements
         PreferenceScreen prefScreen = getPreferenceScreen();
 
         // Governer
-        temp = readOneLine(GOV_FILE);
+        temp = Utils.fileReadOneLine(GOV_FILE);
 
         mGovernorPref = (ListPreference) prefScreen.findPreference(GOV_PREF);
         mGovernorPref.setEntryValues(availableGovernors);
@@ -130,13 +131,13 @@ public class Processor extends SettingsPreferenceFragment implements
         }
 
         // Cur frequency
-        temp = readOneLine(FREQ_CUR_FILE);
+        temp = Utils.fileReadOneLine(FREQ_CUR_FILE);
 
         mCurFrequencyPref = (Preference) prefScreen.findPreference(FREQ_CUR_PREF);
         mCurFrequencyPref.setSummary(toMHz(temp));
 
         // Min frequency
-        temp = readOneLine(FREQ_MIN_FILE);
+        temp = Utils.fileReadOneLine(FREQ_MIN_FILE);
 
         mMinFrequencyPref = (ListPreference) prefScreen.findPreference(FREQ_MIN_PREF);
         mMinFrequencyPref.setEntryValues(availableFrequencies);
@@ -150,7 +151,7 @@ public class Processor extends SettingsPreferenceFragment implements
         }
 
         // Max frequency
-        temp = readOneLine(FREQ_MAX_FILE);
+        temp = Utils.fileReadOneLine(FREQ_MAX_FILE);
 
         mMaxFrequencyPref = (ListPreference) prefScreen.findPreference(FREQ_MAX_PREF);
         mMaxFrequencyPref.setEntryValues(availableFrequencies);
@@ -178,15 +179,15 @@ public class Processor extends SettingsPreferenceFragment implements
 
         super.onResume();
 
-        temp = readOneLine(FREQ_MAX_FILE);
+        temp = Utils.fileReadOneLine(FREQ_MAX_FILE);
         mMaxFrequencyPref.setValue(temp);
         mMaxFrequencyPref.setSummary(String.format(mMaxFrequencyFormat, toMHz(temp)));
 
-        temp = readOneLine(FREQ_MIN_FILE);
+        temp = Utils.fileReadOneLine(FREQ_MIN_FILE);
         mMinFrequencyPref.setValue(temp);
         mMinFrequencyPref.setSummary(String.format(mMinFrequencyFormat, toMHz(temp)));
 
-        temp = readOneLine(GOV_FILE);
+        temp = Utils.fileReadOneLine(GOV_FILE);
         mGovernorPref.setSummary(String.format(mGovernorFormat, temp));
     }
 
@@ -212,7 +213,7 @@ public class Processor extends SettingsPreferenceFragment implements
                 fname = FREQ_MAX_FILE;
             }
 
-            if (writeOneLine(fname, (String) newValue)) {
+            if (Utils.fileWriteOneLine(fname, (String) newValue)) {
                 if (preference == mGovernorPref) {
                     mGovernorPref.setSummary(String.format(mGovernorFormat, (String) newValue));
                 } else if (preference == mMinFrequencyPref) {
@@ -228,39 +229,6 @@ public class Processor extends SettingsPreferenceFragment implements
             }
         }
         return false;
-    }
-
-    public static String readOneLine(String fname) {
-        BufferedReader br;
-        String line = null;
-
-        try {
-            br = new BufferedReader(new FileReader(fname), 512);
-            try {
-                line = br.readLine();
-            } finally {
-                br.close();
-            }
-        } catch (Exception e) {
-            Log.e(TAG, "IO Exception when reading /sys/ file", e);
-        }
-        return line;
-    }
-
-    public static boolean writeOneLine(String fname, String value) {
-        try {
-            FileWriter fw = new FileWriter(fname);
-            try {
-                fw.write(value);
-            } finally {
-                fw.close();
-            }
-        } catch (IOException e) {
-            String Error = "Error writing to " + fname + ". Exception: ";
-            Log.e(TAG, Error, e);
-            return false;
-        }
-        return true;
     }
 
     private String toMHz(String mhzString) {
