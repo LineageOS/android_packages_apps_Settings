@@ -92,8 +92,14 @@
     <string name="bluetooth_is_discoverable" msgid="1205694503775884903">"Identifiable pendant <xliff:g id="DISCOVERABLE_TIME_PERIOD">%1$s</xliff:g> secondes..."</string>
     <string name="bluetooth_is_discoverable_always" msgid="8573385118329733931">"Identifiable"</string>
     <string name="bluetooth_not_discoverable" msgid="128269993123955177">"Permettre l\'identification de l\'appareil"</string>
+    <!-- Bluetooth settings screen, toggle fast connections (on) -->
+    <string name="bluetooth_fast_connect_on">Connexions Bluetooth rapides</string>
+    <!-- Bluetooth settings screen, toggle fast connections (off) -->
+    <string name="bluetooth_fast_connect_off">Connexions Bluetooth normales</string>
     <string name="bluetooth_visibility_timeout">"Durée de l\'annonce"</string>
     <string name="bluetooth_visibility_timeout_summary">"Spécifie la durée pendant laquelle l\'appareil est identifiable"</string>
+    <!-- Bluetooth settings screen, toggle fast connections -->
+    <string name="bluetooth_fast_connect">Connexions rapides</string>
     <string name="bluetooth_lock_voice_dialing" msgid="3139322992062086225">"Bloquer les appels par reconnaissance vocale"</string>
     <string name="bluetooth_lock_voice_dialing_summary" msgid="4741338867496787042">"Désactiver les appels via le Bluetooth lorsque l\'écran est verrouillé"</string>
     <string name="bluetooth_devices" msgid="1886018064039454227">"Appareils Bluetooth"</string>
@@ -687,6 +693,13 @@
     <string name="assisted_gps" msgid="4649317129586736885">"Utiliser le GPS assisté"</string>
     <string name="assisted_gps_enabled" msgid="8751899609589792803">"Utiliser le serveur pour assister le GPS (désactiver pour réduire l\'utilisation du réseau)"</string>
     <string name="assisted_gps_disabled" msgid="6982698333968010748">"Utiliser le serveur pour assister le GPS (désactiver pour améliorer les performances du GPS)"</string>
+
+<!-- GPS Source selection -->
+    <string name="location_gps_source_title">Source GPS</string>
+    <string name="location_gps_source_summary">Utilise un récepteur GPS bluetooth externe à la place du récepteur interne pour la localisation.</string>
+    <string name="location_gps_source_notification_title">Alerte</string>
+    <string name="location_gps_source_notification">La source GPS a été changée! Le GPS sera désactivé. Veuillez le réactiver avant utilisation!</string>
+
     <string name="about_settings" msgid="1743378368185371685">"À propos du téléphone"</string>
     <string name="about_settings_summary" msgid="3302263393543848667">"Informations légales, état du téléphone et version du logiciel"</string>
     <string name="legal_information" msgid="5769301644270604095">"Informations légales"</string>
@@ -1261,6 +1274,15 @@
     <string name="profile_add_app">Ajouter une application</string>
     <string name="profile_manage">Gérer les profils</string>
     <string name="profile_appgroups_manage">Gérer les groupes d\'applications</string>
+    <!-- Menu item for reset -->
+    <string name="profile_reset_title">Réinitialisation</string>
+    <!-- Menu item for reset all -->
+    <string name="profile_reset_all_title">Tout réinitialiser</string>
+    <!-- Menu item for reset all - summary -->
+    <string name="profile_reset_all_summary">Efface et restaure tous les profils et groupes d\'applications par défaut</string>
+    <!-- Dialog confirming reset all - message -->
+    <string name="profile_reset_all_message">Effacer tous les profils et groupes d\'applications, et restaurer les valeurs par défaut?</string>
+
     <string name="profile_applist_manage">Gérer la liste des applications</string>
     <string name="privacy_settings" msgid="9206631214140954954">"Confidentialité"</string>
     <string name="privacy_settings_title" msgid="1987089301293213705">"Paramètres de confidentialité"</string>
