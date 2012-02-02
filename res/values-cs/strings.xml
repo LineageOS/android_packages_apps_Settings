@@ -108,8 +108,11 @@
   <string name="bluetooth_is_discoverable" msgid="1205694503775884903">"Zařízení je viditelné v intervalu <xliff:g id="DISCOVERABLE_TIME_PERIOD">%1$s</xliff:g>s."</string>
   <string name="bluetooth_is_discoverable_always" msgid="8573385118329733931">"Viditelné"</string>
   <string name="bluetooth_not_discoverable" msgid="128269993123955177">"Přepne zařízení do viditelného režimu"</string>
+  <string name="bluetooth_fast_connect_on">Rychlé spojení Bluetooth</string>
+  <string name="bluetooth_fast_connect_off">Normální spojení Bluetooth</string>
   <string name="bluetooth_visibility_timeout" msgid="6634508002347847278">"Časový limit viditelného režimu"</string>
   <string name="bluetooth_visibility_timeout_summary" msgid="6483353842671501585">"Nastavit dobu, po kterou bude zařízení ve viditelném režimu"</string>
+  <string name="bluetooth_fast_connect">Rychlé spojení</string>
   <string name="bluetooth_lock_voice_dialing" msgid="3139322992062086225">"Uzamknout hlasové vytáčení"</string>
   <string name="bluetooth_lock_voice_dialing_summary" msgid="4741338867496787042">"Zabránit použití vytáčení Bluetooth při uzamčené obrazovce"</string>
 
@@ -732,7 +735,7 @@
   <string name="media_format_gesture_explanation" product="nosdcard" msgid="1379736318750958338">"Smazání úložiště USB je třeba potvrdit pomocí bezpečnostního gesta."</string>
   <string name="media_format_gesture_explanation" product="default" msgid="1681213416497647321">"Smazání karty SD je třeba potvrdit pomocí bezpečnostního gesta."</string>
 
-  <string name="call_settings_title" msgid="5188713413939232801">"Nastavení hovorů"</string>
+  <string name="call_settings_title" msgid="5188713413939232801">"Hovory"</string>
   <string name="call_settings_summary" msgid="7291195704801002886">"Nastavení hlasové schránky, přesměrování a čekání hovorů a ID volajícího"</string>
 
   <string name="tether_settings_title_usb" msgid="4315031513434087777">"Tethering"</string>
@@ -743,9 +746,9 @@
   <string name="tether_settings_summary_both" msgid="7460063951190682635">"Sdílet mobilní datové připojení telefonu prostřednictvím portu USB nebo jako přenosný hotspot WiFi"</string>
 
   <string name="usb_title" msgid="7483344855356312510">"USB"</string>
-  <string name="usb_tethering_button_text" msgid="585829947108007917">"Sdílené datové připojení prostřednictvím portu USB"</string>
+  <string name="usb_tethering_button_text" msgid="585829947108007917">"Sdílené připojení po USB"</string>
   <string name="usb_tethering_available_subtext" msgid="156779271296152605">"Připojení USB je k dispozici. Chcete-li vytvořit sdílené datové připojení, vyberte je."</string>
-  <string name="usb_tethering_active_subtext" msgid="8916210851136467042">"Sdíleno"</string>
+  <string name="usb_tethering_active_subtext" msgid="8916210851136467042">"Aktivní"</string>
   <string name="usb_tethering_storage_active_subtext" msgid="6608933594288072573">"Nelze sdílet datové připojení, pokud se používá úložiště USB"</string>
   <string name="usb_tethering_unavailable_subtext" msgid="1044622421184007254">"Připojení USB není k dispozici"</string>
   <string name="usb_tethering_errored_subtext" msgid="1377574819427841992">"Chyba sdílení datového připojení prostřednictvím USB"</string>
@@ -763,6 +766,10 @@
   <string name="assisted_gps" msgid="4649317129586736885">"Použít systém A-GPS"</string>
   <string name="assisted_gps_enabled" msgid="8751899609589792803">"Vylepšit funkčnost GPS pomocí serveru (deaktivací této funkce snížíte využití sítě)"</string>
   <string name="assisted_gps_disabled" msgid="6982698333968010748">"Vylepšit funkčnost GPS pomocí serveru (zrušením této funkce zvýšíte výkon GPS)"</string>
+  <string name="location_gps_source_title">Zdroj GPS</string>
+  <string name="location_gps_source_summary">Použít externí Bluetooth GPS místo interního.</string>
+  <string name="location_gps_source_notification_title">Upozornění</string>
+  <string name="location_gps_source_notification">Zdroj GPS byl změněn! GPS bude zakázáno. Před dalším použitím jej povolte!</string>
 
   <string name="about_settings" msgid="1743378368185371685">"Info o telefonu"</string>
   <string name="about_settings_summary" msgid="3302263393543848667">"Zobrazuje právní informace, stav telefonu a verzi softwaru"</string>
@@ -1009,6 +1016,9 @@
   <string name="development_settings_summary" msgid="2151320488701538355">"Umožňuje nastavit možnosti pro vývoj aplikací"</string>
   <string name="enable_adb" msgid="7982306934419797485">"Ladění USB"</string>
   <string name="enable_adb_summary" msgid="4881186971746056635">"Povolit režim ladění s připojeným zařízením USB"</string>
+  <string name="adb_over_network">ADB přes síť</string>
+  <string name="adb_over_network_summary">Použít ladění přes síťové připojení (např. WiFi) místo USB. Toto nastavení bude obnoveno po restartu.</string>
+  <string name="adb_over_network_warning">OPOZORNĚNÍ: Pokud je povoleno ADB přes síťové připojení, zařízení je otevřené pro pokusy o průniky na všech připojených sítích, včetně GSM datové sítě!\n\nPoužijte tuto vlastnost pouze pokud jste připojeni k důvěryhodné síti.\n\nOpravdu chcete povolit tuto funkci?</string>
   <string name="adb_notify">Upozornění na ladění USB</string>
   <string name="adb_notify_summary">Zobrazit upozornění při připojení ladění USB</string>
   <string name="keep_screen_on" msgid="1146389631208760344">"Nevypínat obrazovku"</string>
@@ -1279,6 +1289,10 @@
   <string name="vpn_openvpn_advanced_titlebar">Rozšíření nastavení OpenVPN</string>
   <string name="vpn_openvpn_comp_lzo">Komprese LZO</string>
   <string name="vpn_openvpn_comp_lzo_summary">Vnutit kompresi metodou LZO</string>
+  <string name="vpn_openvpn_set_use_tls_auth">TLS-Auth</string>
+  <string name="vpn_openvpn_set_use_tls_auth_summary">Použít klíč TLS-Auth</string>
+  <string name="vpn_openvpn_set_tls_auth_key">Umístění souboru klíče TA</string>
+  <string name="vpn_openvpn_set_tls_auth_key_direction">Směr klíče TLS-Auth</string>
   <string name="vpn_openvpn_redirect_gateway_title">Brána přesměrování</string>
   <string name="vpn_openvpn_redirect_gateway_summary">Vnutit veškerý síťový provoz přes tunel VPN</string>
   <string name="vpn_openvpn_set_addr">Sady vzdálených adres</string>
@@ -1507,7 +1521,7 @@
   <string name="ok">Ok</string>
 
   <string name="widget_count">(%d widgety)</string>
-  <string name="cm_settings_title">Nastavení CyanogenMod</string>
+  <string name="cm_settings_title">CyanogenMod</string>
   <string name="device_settings_title">Nastavení zařízení</string>
 
   <string name="wimax_settings" msgid="1574837328738396794">"Nastavení sítě 4G"</string>
