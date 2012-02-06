@@ -92,8 +92,11 @@
     <string name="bluetooth_is_discoverable" msgid="1205694503775884903">"<xliff:g id="DISCOVERABLE_TIME_PERIOD">%1$s</xliff:g> saniye için keşfedilebilir…"</string>
     <string name="bluetooth_is_discoverable_always" msgid="8573385118329733931">"Keşfedilebilir"</string>
     <string name="bluetooth_not_discoverable" msgid="128269993123955177">"Cihazı keşfedilebilir yap"</string>
+    <string name="bluetooth_fast_connect_on">Hızlı Bluetooth bağlantıları</string>
+    <string name="bluetooth_fast_connect_off">Normal Bluetooth bağlantıları</string>
     <string name="bluetooth_visibility_timeout" msgid="6634508002347847278">"Keşfedilebilirlik için zaman aşımı"</string>
     <string name="bluetooth_visibility_timeout_summary" msgid="6483353842671501585">"Cihazın ne süreyle keşfedilebilir olacağını ayarla"</string>
+    <string name="bluetooth_fast_connect">Hızlı bağlantılar</string>
     <string name="bluetooth_lock_voice_dialing" msgid="3139322992062086225">"Sesli aramayı kilitle"</string>
     <string name="bluetooth_lock_voice_dialing_summary" msgid="4741338867496787042">"Ekran kilitliyken blutooth çeviricinin kullanımını engelle"</string>
     <string name="bluetooth_devices" msgid="1886018064039454227">"Bluetooth cihazlar"</string>
@@ -211,6 +214,7 @@
     <string name="activity_picker_label" msgid="4910700713930693329">"Etkinlik seç"</string>
     <string name="device_info_label" msgid="6551553813651711205">"Cihaz bilgileri"</string>
     <string name="battery_info_label" msgid="4132685016148679403">"Pil bilgileri"</string>
+    <string name="battery_history_label">Pil geçmişi</string>
     <string name="display_label" msgid="7403874003169865762">"Ekran"</string>
     <string name="phone_info_label" msgid="2127552523124277664">"Telefon bilgileri"</string>
     <string name="sd_card_settings_label" product="nosdcard" msgid="8101475181301178428">"USB depolama birimi"</string>
@@ -222,6 +226,7 @@
     <string name="settings_shortcut" msgid="3672145147925639262">"Ayarlar"</string>
     <string name="airplane_mode" msgid="8837269988154128601">"Uçak modu"</string>
     <string name="airplane_mode_summary" msgid="3154817401368780988">"Tüm kablosuz bağlantıları devre dışı bırak"</string>
+    <string name="device_hostname">Cihaz adı</string>
     <string name="airplane_mode_turning_on" msgid="8871739222526957255">"Kablosuz bağlantılar devre dışı bırakılıyor…"</string>
     <string name="airplane_mode_turning_off" msgid="3393168549611505996">"Kablosuz bağlantılar etkinleştiriliyor…"</string>
     <string name="radio_controls_title" msgid="5868688473587168882">"Kablosuz özelliği ve ağlar"</string>
@@ -322,9 +327,12 @@
     <string name="bluetooth_profile_a2dp" msgid="3259633293424539529">"Medya"</string>
     <string name="bluetooth_profile_headset" msgid="1874975688666658946">"Telefon"</string>
     <string name="bluetooth_profile_opp" msgid="3799470046565284440">"Aktar"</string>
+    <string name="bluetooth_profile_hid">Arabirim aygıtı</string>
+    <string name="bluetooth_profile_network">Ağ</string>
     <string name="bluetooth_summary_connected_to_a2dp" msgid="510833839847758664">"Medya sesine bağlanıldı"</string>
     <string name="bluetooth_summary_connected_to_headset" msgid="4876496372728623918">"Telefon sesine bağlandı"</string>
     <string name="bluetooth_summary_connected_to_a2dp_headset" msgid="3045032710457800891">"Telefon ve medya sesine bağlandı"</string>
+    <string name="bluetooth_summary_connected_to_hid">Arabirim aygıtına bağlandı</string>
     <string name="bluetooth_device_advanced_title" msgid="528816860793581131">"<xliff:g id="DEVICE_NAME">%1$s</xliff:g> seçenek"</string>
     <string name="bluetooth_device_advanced_online_mode_title" msgid="3689050071425683114">"Bağlan"</string>
     <string name="bluetooth_device_advanced_online_mode_summary" msgid="1204424107263248336">"Bluetooth cihazına bağlan"</string>
@@ -336,6 +344,8 @@
     <string name="bluetooth_a2dp_profile_summary_use_for" msgid="4630849022250168427">"Medya sesi için kullan"</string>
     <string name="bluetooth_headset_profile_summary_use_for" msgid="8705753622443862627">"Telefon sesi için kullan"</string>
     <string name="bluetooth_opp_profile_summary_use_for" msgid="1255674547144769756">"Dosya aktarımı için kullan"</string>
+    <string name="bluetooth_hid_profile_summary_connected">Arabirim aygıtına bağlandı</string>
+    <string name="bluetooth_hid_profile_summary_use_for">Arabirim aygıtı için kullan</string>
     <string name="bluetooth_dock_settings" msgid="3218335822716052885">"Yuva Ayarları"</string>
     <string name="bluetooth_dock_settings_title" msgid="5543069893044375188">"Ses öğesi için yuvayı kullan"</string>
     <string name="bluetooth_dock_settings_headset" msgid="1001821426078644650">"Telefon hoparlörü olarak"</string>
@@ -344,6 +354,8 @@
     <string name="nfc_quick_toggle_title" msgid="6769159366307299004">"NFC"</string>
     <string name="nfc_quick_toggle_summary" msgid="1988408027741447231">"Etkt okumk ve değş yap içn Yakın Alan İletşm\'ni kullnn"</string>
     <string name="nfc_toggle_error" msgid="2233172102497535522">"Bir hata oluştu."</string>
+    <string name="hostname_save">Kaydet</string>
+    <string name="hostname_cancel">İptal</string>
     <string name="wifi_quick_toggle_title" msgid="874495178395350104">"Kablosuz"</string>
     <string name="wifi_quick_toggle_summary" msgid="1047950931623694366">"Kablosuzu aç"</string>
     <string name="wifi_settings" msgid="4746946030627213196">"Kablosuz ayarları"</string>
@@ -417,6 +429,7 @@
     <string name="wifi_tether_configure_subtext" msgid="1927454307836232128">"<xliff:g id="NETWORK_SSID">%1$s</xliff:g> <xliff:g id="NETWORK_SECURITY">%2$s</xliff:g> taşınabilir kablosuz ortak erişim noktası"</string>
     <string name="wifi_tether_configure_ssid_default" msgid="8467525402622138547">"Android Ortak Erişim Noktası"</string>
     <string name="sound_settings_title" msgid="8735891486683305886">"Ses"</string>
+    <string name="profile_settings_title">Telefon profilleri</string>
     <string name="display_settings_title" msgid="1708697328627382561">"Ekran"</string>
     <string name="sound_settings" msgid="5007659014828162881">"Ses ayarları"</string>
     <string name="silent_mode_title" msgid="3181479108593217704">"Sessiz mod"</string>
@@ -424,6 +437,8 @@
     <string name="silent_mode_incl_alarm_summary" msgid="2088830834182228458">"Medya dışında tüm sesler susturulur"</string>
     <string name="ringtone_title" msgid="5379026328015343686">"Telefon zil sesi"</string>
     <string name="ringtone_summary" msgid="2630023412632683493"></string>
+    <string name="soundtone_title">Bildirim sesi</string>
+    <string name="soundtone_summary">""</string>
     <string name="all_volume_title" msgid="8741571721868253103">"Ses"</string>
     <string name="ring_volume_title" msgid="7938706566797464165">"Zil sesi düzeyi"</string>
     <string name="ring_volume_summary" msgid="7055497624193116879"></string>
@@ -434,7 +449,13 @@
     <string name="notification_sound_title" msgid="6316316069880531693">"Bildirim zil sesi"</string>
     <string name="notification_sound_summary" msgid="2953599929394109819"></string>
     <string name="notification_pulse_title" msgid="1247988024534030629">"Bildirim ışığını yakıp söndür"</string>
-    <string name="notification_pulse_summary" msgid="6899220780534617152">"Yeni bildirimler için iztopu ışığını arka arkaya yakıp söndürün"</string>
+    <string name="notification_pulse_summary">Yeni bildirimler için bildirim ışığını arka arkaya yakıp söndür</string>
+    <string name="notification_blink_title">Yanıp sönen bildirim ışığı</string>
+    <string name="notification_blink_summary">Yeşil bildirimleri sürekli yakıp söndür</string>
+    <string name="notification_always_on_title">Bildirim ışığını sürekli etkinleştir</string>
+    <string name="notification_always_on_summary">Bildirim ışığını ekran açıkken etkinleştir</string>
+    <string name="notification_charging_title">Şarz olma ışığı</string>
+    <string name="notification_charging_summary">Şarz olurken sarı ışığı etkinleştir</string>
     <string name="incoming_call_volume_title" msgid="8073714801365904099">"Zil sesi"</string>
     <string name="notification_volume_title" msgid="2012640760341080408">"Bildirim"</string>
     <string name="checkbox_notification_same_as_incoming_call" msgid="1073644356290338921">"Bildirimlerde gelen çağrı ses düzeyini kullan"</string>
@@ -452,6 +473,8 @@
     <string name="lock_sounds_enable_title" msgid="1575990840389107141">"Ekran kilidi sesleri"</string>
     <string name="lock_sounds_enable_summary_on" msgid="145741024028391473">"Ekranı kilitlerken ve ekran kilidini açarken ses çal"</string>
     <string name="lock_sounds_enable_summary_off" msgid="8481243116223542804">"Ekranı kilitlerken ve ekran kilidini açarken ses çal"</string>
+    <string name="power_sounds_enable_title">Düşük pil sesi</string>
+    <string name="power_sounds_enable_summary">Düşük pil seviyesi için uyarı sesi çıkar</string>
     <string name="haptic_feedback_enable_title" msgid="6311736559245411290">"Dokunsal geribildirim"</string>
     <string name="haptic_feedback_enable_summary_on" msgid="1875779656524793053">"Yumuşak tuşlara basarken ve belirli UI etkileşimleri sırasında titret"</string>
     <string name="haptic_feedback_enable_summary_off" msgid="7287885436963105314">"Yumuşak tuşlara basarken ve belirli UI etkileşimleri sırasında titret"</string>
@@ -509,11 +532,15 @@
     <string name="device_info_settings" msgid="475872867864762157">"Telefon durumu"</string>
     <string name="system_update_settings_list_item_title" msgid="3342887311059985961">"Sistem güncellemeleri"</string>
     <string name="system_update_settings_list_item_summary" msgid="3853057315907710747"></string>
+    <string name="cpu_info">İşlemci bilgisi</string>
+    <string name="mem_info">Bellek bilgisi (boş/toplam)</string>
     <string name="firmware_version" msgid="4801135784886859972">"Android sürümü"</string>
     <string name="model_number" msgid="3765737700545384794">"Model numarası"</string>
     <string name="baseband_version" msgid="1848990160763524801">"Ana bant sürümü"</string>
     <string name="kernel_version" msgid="9192574954196167602">"Çekirdek sürümü"</string>
     <string name="build_number" msgid="3075795840572241758">"Derleme numarası"</string>
+    <string name="mod_version">Mod sürümü</string>
+    <string name="mod_version_default">Bilinmiyor</string>
     <string name="device_info_not_available" msgid="8062521887156825182">"Uygun değil"</string>
     <string name="device_status_activity_title" msgid="1411201799384697904">"Durum"</string>
     <string name="device_status" msgid="607405385799807324">"Durum"</string>
@@ -539,6 +566,7 @@
     <string name="status_up_time" msgid="7294859476816760399">"Açık kalma süresi"</string>
     <string name="status_awake_time" msgid="2393949909051183652">"Uyanık geçen süre"</string>
     <string name="internal_memory" msgid="9129595691484260784">"Dahili dep birm"</string>
+    <string name="additional_memory">Ek bellek</string>
     <string name="sd_memory" product="nosdcard" msgid="2510246194083052841">"USB depolama birimi"</string>
     <string name="sd_memory" product="default" msgid="151871913888051515">"SD kart"</string>
     <string name="memory_available" msgid="418542433817289474">"Kullanılabilir alan"</string>
@@ -662,6 +690,10 @@
     <string name="assisted_gps" msgid="4649317129586736885">"Desteklenen GPS kullan"</string>
     <string name="assisted_gps_enabled" msgid="8751899609589792803">"GPS\'ye destek olmak için sunucu kullan (ağ kullanımını azaltmak için onay işaretini kaldırın)"</string>
     <string name="assisted_gps_disabled" msgid="6982698333968010748">"GPS\'ye yardımcı olmak için sunucu kullan (GPS performansını iyileştirmek için onay işaretini kaldırın)"</string>
+    <string name="location_gps_source_title">GPS Kaynağı</string>
+    <string name="location_gps_source_summary">Dahili yer sağlayıcı yerine harici bluetooth gps faresini kullan.</string>
+    <string name="location_gps_source_notification_title">Uyarı</string>
+    <string name="location_gps_source_notification">GPS kaynağı değişti! GPS kapatılacak. Lütfen kullanmadan önce yeniden etkinleştirin!</string>
     <string name="about_settings" msgid="1743378368185371685">"Telefon hakkında"</string>
     <string name="about_settings_summary" msgid="3302263393543848667">"Yasal bilgileri, telefon durumunu, yazılım sürümünü görüntüle"</string>
     <string name="legal_information" msgid="5769301644270604095">"Yasal bilgiler"</string>
@@ -674,6 +706,7 @@
     <string name="settings_license_activity_title" msgid="7553683406244228650">"Açık kaynak lisansları"</string>
     <string name="settings_license_activity_unavailable" msgid="4210539215951487627">"Lisanslar yüklenirken bir sorun oluştu."</string>
     <string name="settings_license_activity_loading" msgid="3337535809093591740">"Yükleniyor…"</string>
+    <string name="settings_cmlicense_activity_title">CyanogenMod lisansları</string>
     <string name="settings_safetylegal_title" msgid="1289483965535937431">"Güvenlik bilgileri"</string>
     <string name="settings_safetylegal_activity_title" msgid="6901214628496951727">"Güvenlik bilgileri"</string>
     <string name="settings_safetylegal_activity_unreachable" msgid="3198912875259612887">"Telefonunuz bir veri hizmetine bağlı değil. Bu bilgiyi şimdi görüntülemek için İnternet\'e bağlı herhangi bir bilgisayardan %s adresine gidin."</string>
@@ -759,7 +792,7 @@
     <string name="filter_apps_third_party" msgid="7786348047690140979">"İndirilen"</string>
     <string name="filter_apps_running" msgid="7767071454371350486">"Çalışıyor"</string>
     <string name="filter_apps_onsdcard" product="nosdcard" msgid="4843063154701023349">"USB depolama birimi"</string>
-    <string name="filter_apps_onsdcard" product="default" msgid="1477351142334784771">"SD kartta"</string>
+    <string name="filter_apps_onsdcard" product="default" msgid="1477351142334784771">"SD kart"</string>
     <string name="disabled" msgid="9206776641295849915">"Devre dışı"</string>
     <string name="no_applications" msgid="5190227407135243904">"Uygulama yok."</string>
     <string name="internal_storage" msgid="1584700623164275282">"Dahili dep brm"</string>
@@ -860,6 +893,7 @@
     <string name="testing" msgid="6584352735303604146">"Test ediliyor"</string>
     <string name="testing_phone_info" msgid="8656693364332840056">"Telefon bilgileri"</string>
     <string name="testing_battery_info" msgid="3497865525976497848">"Pil bilgileri"</string>
+    <string name="testing_battery_history">Pil geçmişi</string>
     <string name="quick_launch_title" msgid="7904609846945905306">"Hızlı başlat"</string>
     <string name="quick_launch_summary" msgid="3453825712466417452">"Uygulama başlatma klavye kısayollarını ayarla"</string>
     <string name="quick_launch_assign_application" msgid="4521368464929956350">"Uygulama ata"</string>
@@ -879,20 +913,59 @@
     <string name="builtin_keyboard_settings_summary" msgid="7990296351888096836">"Yerleşik, fiziksel klavye ayarları"</string>
     <string name="development_settings_title" msgid="6719732334835420989">"Geliştirme"</string>
     <string name="development_settings_summary" msgid="2151320488701538355">"Uygulama geliştirme için seçenekleri ayarla"</string>
-    <string name="enable_adb" msgid="7982306934419797485">"USB hata ayıklaması"</string>
-    <string name="enable_adb_summary" msgid="4881186971746056635">"USB bağlandığında hata ayıklama modu"</string>
+    <string name="enable_adb">Android hata ayıklama</string>
+    <string name="enable_adb_summary">Android hata ayıklamaya izin ver (ADB)</string>
+    <string name="adb_over_network">Ağ üzerinden ADB</string>
+    <string name="adb_over_network_summary">USB yerine ağ üzerinden (Wi-Fi gibi) hata ayıklamayı kullan. Bu ayar, cihaz yeniden başladığında sıfırlanır.</string>
+    <string name="adb_over_network_warning">UYARI: Ağ üzerinden ADB etkinleştirildiğinde, telefonunuz GSM veri ağı dahil tüm bağlı ağlar üzerinden saldırılara açık hale gelir!\n\nBu özelliği sadece güvenilir ağlarda etkinleştirin.\n\nGerçekten bu özelliği etkinleştirmek istiyor musunuz?</string>
+    <string name="adb_notify">Hata ayıklama bildirimi</string>
+    <string name="adb_notify_summary">Hata ayıklama devreye girdiğinde bildirim göster</string>
     <string name="keep_screen_on" msgid="1146389631208760344">"Uyanık kal"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"Şarj edilirken ekran hiçbir zaman uykuya geçmez"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"Sahte konumlara izin ver"</string>
     <string name="allow_mock_location_summary" msgid="317615105156345626">"Sahte konumlara izin ver"</string>
+    <string name="kill_app_longpress_back">Basılı tutulduğunda uygulamayı durdur</string>
+    <string name="kill_app_longpress_back_summary">GERİ tuşuna uzunca basıldığında aktif uygulama kapatılır.</string>
     <string name="adb_warning_title" msgid="6234463310896563253">"USB hata ayıklamasına izin verilsin mi?"</string>
     <string name="adb_warning_message" msgid="5352555112049663033">"USB hata ayıklaması yalnızca geliştirme amaçlıdır. Verileri bilgisayarınızla cihazınız arasında kopyalamak, bildirim göndermeksizin uygulamaları cihazınıza yüklemek ve günlük verilerini okumak için kullanılabilir."</string>
     <string name="gadget_picker_title" msgid="98374951396755811">"Gadget seç"</string>
     <string name="widget_picker_title" msgid="9130684134213467557">"Widget seç"</string>
+    <string name="battery_history_details_for">UID için ayrıntılar <xliff:g id="number" example="1234">%d</xliff:g></string>
+    <string name="battery_history_uid">UID <xliff:g id="user_id">%1$d</xliff:g></string>
+    <string name="battery_history_network_usage"><xliff:g id="app_name">%1$s</xliff:g> için ağ kullanım ayrıntıları:</string>
+    <string name="battery_history_bytes_received">Alınan byte: <xliff:g id="bytes">%1$d</xliff:g></string>
+    <string name="battery_history_bytes_sent">Gönderilen byte: <xliff:g id="bytes">%1$d</xliff:g></string>
+    <string name="battery_history_bytes_total">Toplam byte: <xliff:g id="bytes">%1$d</xliff:g></string>
+    <string name="battery_history_cpu_usage"><xliff:g id="app_name">%1$s</xliff:g> için CPU kullanım ayrıntıları:</string>
+    <string name="battery_history_user_time">Kullanıcı zamanı: </string>
+    <string name="battery_history_system_time">Sistem zamanı: </string>
+    <string name="battery_history_total_time">Toplam zaman: </string>
+    <string name="battery_history_starts">Başlamalar: <xliff:g id="starts">%1$d</xliff:g></string>
     <string name="battery_history_days" msgid="7110262897769622564">"<xliff:g id="DAYS">%1$d</xliff:g>g <xliff:g id="HOURS">%2$d</xliff:g>s <xliff:g id="MINUTES">%3$d</xliff:g>d <xliff:g id="SECONDS">%4$d</xliff:g>s"</string>
     <string name="battery_history_hours" msgid="7525170329826274999">"<xliff:g id="HOURS">%1$d</xliff:g>s <xliff:g id="MINUTES">%2$d</xliff:g>d <xliff:g id="SECONDS">%3$d</xliff:g>s"</string>
     <string name="battery_history_minutes" msgid="1467775596084148610">"<xliff:g id="MINUTES">%1$d</xliff:g>d <xliff:g id="SECONDS">%2$d</xliff:g>s"</string>
     <string name="battery_history_seconds" msgid="4283492130945761685">"<xliff:g id="SECONDS">%1$d</xliff:g>s"</string>
+    <string name="battery_history_packages_sharing_this_uid">Bu UID\'i paylaşan paketler:</string>
+    <string name="battery_history_no_data">Pil kullanım verisi yok</string>
+    <string name="battery_history_sensor">Algılayıcı:</string>
+    <string name="battery_history_wakelock">Partial Wakelock:</string>
+    <string name="battery_history_used_by_packages">Paketler tarafından kullanıcılan algılayıcı:</string>
+    <string name="battery_history_sensor_usage">Kullanım sayısı <xliff:g id="count">%1$d</xliff:g>, Kullanan: <xliff:g id="package">%2$s</xliff:g></string>
+    <string name="battery_history_sensor_usage_multi">Bunlar tarafından <xliff:g id="count">%1$d</xliff:g> kez kullanıldı:</string>
+    <string name="battery_history_awake_label">Çalışıyor</string>
+    <string name="battery_history_screen_on_label">Ekran açık</string>
+    <string name="battery_history_phone_on_label">Telefon açık</string>
+    <string name="battery_history_wifi_on_label">WiFi açık</string>
+    <string name="battery_history_wifi_running_label">Wifi Çalışıyor</string>
+    <string name="battery_history_bluetooth_on_label">Bluetooth Açık</string>
+    <string name="battery_history_awake">Uykusuz harcanan zaman:</string>
+    <string name="battery_history_screen_on">Ekran açıkken harcanan zaman:</string>
+    <string name="battery_history_phone_on">Telefon açıkken harcanan zaman:</string>
+    <string name="battery_history_wifi_on">WiFi açıkken harcanan zaman:</string>
+    <string name="battery_history_wifi_running">WiFi çalışırken harcanan zaman:</string>
+    <string name="battery_history_bluetooth_on">Bluetooth açıkken harcanan zaman:</string>
+    <string name="battery_history_screen_on_battery">Pilde:</string>
+    <string name="battery_history_screen_on_plugged">Takılı:</string>
     <string name="usage_stats_label" msgid="5890846333487083609">"Kullanım istatistikleri"</string>
     <string name="testing_usage_stats" msgid="7823048598893937339">"Kullanım istatistikleri"</string>
     <string name="display_order_text" msgid="8592776965827565271">"Sıralama ölçütü:"</string>
@@ -1065,8 +1138,8 @@
     <string name="vpn_edit_title_add" msgid="2121313217989682890">"<xliff:g id="NAME">%s</xliff:g> VPN\'si ekle"</string>
     <string name="vpn_edit_title_edit" msgid="2457278794066617935">"<xliff:g id="NAME">%s</xliff:g> ayrıntıları"</string>
     <string name="vpns" msgid="3148141862835492816">"VPN\'ler"</string>
-    <string name="vpn_connecting" msgid="8039521381692090116">"Bağlanıyor..."</string>
-    <string name="vpn_disconnecting" msgid="7748050200708257066">"Bağlantı kesiliyor..."</string>
+    <string name="vpn_connecting" msgid="8039521381692090116">Bağlanıyor\u2026</string>
+    <string name="vpn_disconnecting" msgid="7748050200708257066">Bağlantı kesiliyor\u2026</string>
     <string name="vpn_connected" msgid="7641723116362845781">"Bağlandı"</string>
     <string name="vpn_connect_hint" msgid="7442898962925875181">"Ağa bağlan"</string>
     <string name="vpn_name" msgid="1550918148476193076">"VPN adı"</string>
@@ -1084,6 +1157,33 @@
     <string name="vpn_a_l2tp_secret" msgid="6612042930810981845">"bir L2TP gizli bilgisi"</string>
     <string name="vpn_pptp_encryption_title" msgid="2236795167467896499">"şifreleme"</string>
     <string name="vpn_pptp_encryption" msgid="2602329949737259686">"PPTP şifreleme"</string>
+    <string name="vpn_openvpn_port">Sunucu bağlantı noktası</string>
+    <string name="vpn_openvpn_protocol">Kullanılan protokol</string>
+    <string name="vpn_openvpn_device">Kullanılan cihaz</string>
+    <string name="vpn_openvpn_userauth">Kullanıcı doğrulaması</string>
+    <string name="vpn_openvpn_userauth_summary">Ek kullanıcı adı/şifre gerekliyse ayarlayın</string>
+    <string name="vpn_openvpn_advanced_titlebar">Gelişmiş OpenVPN Ayarları</string>
+    <string name="vpn_openvpn_comp_lzo">LZO sıkıştırması</string>
+    <string name="vpn_openvpn_comp_lzo_summary">LZO sıkıştırmasını zorla etkinleştir</string>
+    <string name="vpn_openvpn_set_use_tls_auth">TLS-Auth</string>
+    <string name="vpn_openvpn_set_use_tls_auth_summary">Bir tls-auth anahtarı kullan</string>
+    <string name="vpn_openvpn_set_tls_auth_key">TA anahtar dosyası yeri</string>
+    <string name="vpn_openvpn_set_tls_auth_key_summary"></string>
+    <string name="vpn_openvpn_set_tls_auth_key_direction">Tls-Auth anahtarı yönü</string>
+    <string name="vpn_openvpn_redirect_gateway_title">Ağ geçidine yönlen</string>
+    <string name="vpn_openvpn_redirect_gateway_summary">Tüm trafiği VPN tüneline yönlendir</string>
+    <string name="vpn_openvpn_set_addr">Adresi otomatik ata</string>
+    <string name="vpn_openvpn_set_addr_summary">Adresleri elle ayarlamak için seçimi kaldırın</string>
+    <string name="vpn_openvpn_set_local_addr">Yerel IP Adresi</string>
+    <string name="vpn_openvpn_set_remote_addr">Uzak IP Adresi</string>
+    <string name="vpn_openvpn_set_cipher">Şifreleme algoritması</string>
+    <string name="vpn_openvpn_set_cipher_message">Varsayılan şifrelemeyi kullanmak için boş bırakın</string>
+    <string name="vpn_openvpn_set_cipher_default">varsayılan</string>
+    <string name="vpn_openvpn_set_keysize">Şifreleme anahtarı boyutu</string>
+    <string name="vpn_openvpn_set_keysize_message">Şifreye özel varsayılanı kullanmak için boş bırakın</string>
+    <string name="vpn_openvpn_set_keysize_default">varsayılan</string>
+    <string name="vpn_openvpn_set_extra">Ek argümanlar</string>
+    <string name="vpn_openvpn_set_extra_message">Ek komut satırı argümanlarını girin</string>
     <string name="vpn_ipsec_presharedkey_title" msgid="2184060087690539175">"IPSec önceden paylaşılan anahtarı ayarla"</string>
     <string name="vpn_ipsec_presharedkey" msgid="5434316521616673741">"IPSec önceden paylaşılan anahtar"</string>
     <string name="vpn_a_ipsec_presharedkey" msgid="1255301923217898418">"bir IPSec önceden paylaşılan anahtar"</string>
@@ -1144,6 +1244,49 @@
     <string name="encrypted_fs_alert_dialog_title" msgid="583462447886934755">"Şifrelenmiş Dosya Sistemi Uyarısı."</string>
     <string name="emergency_tone_title" msgid="1055954530111587114">"Acil sesi"</string>
     <string name="emergency_tone_summary" msgid="722259232924572153">"Acil çağrı yapıldığında nasıl işlev göreceğini ayarlayın"</string>
+    <!-- Profile Settings screen --><skip/>
+    <string name="profile_title">Profilleri yapılandır</string>
+    <string name="profile_appgroup_list_title">Uygulama gruplarını yapılandır</string>
+    <string name="sound_mode">Bildirim modu</string>
+    <string name="ringer_mode">Zil sesi</string>
+    <string name="lights_mode">Işık</string>
+    <string name="vibrate_mode">Titreşim</string>
+    <string name="choose_soundtone">Bildirim sesi seçin</string>
+    <string name="choose_ringtone">Zil sesi seçin</string>
+    <string name="profile_settings">Profil ayarları</string>
+    <string name="profile_name">Profil adı</string>
+    <string name="new_profile_name">&lt;yeni profil&gt;</string>
+    <string name="profile_summary">Profili yapılandırmak için dokunun</string>
+    <string name="profile_statusbar">Durum Çubuğu Göstergesi</string>
+    <string name="profile_appgroup_title">Uygulama grubu: %s</string>
+    <string name="profile_appgroups_title">Uygulama grupları</string>
+    <string name="profile_connectionoverrides_title">Bağlantı geçersiz kılar</string>
+    <string name="profile_connectionoverrides_summary">Etkinleştirmek için dokunun</string>
+    <string name="profile_volumeoverrides_title">Ses geçersiz kılar</string>
+    <string name="profile_volumeoverrides_summary">Sesi ayarlamak için dokunun</string>
+    <string name="profile_applist_title">Uygulamalar - gruptan silmek için tıklayın</string>
+    <string name="profile_appgroup_name_prompt">Uygulama grubu için isim girin</string>
+    <string name="profile_delete">Profili sil</string>
+    <string name="profile_delete_confirm">Bu profili silmek istediğinizden emin misiniz?</string>
+    <string name="profile_app_delete_confirm">Bu uygulamayı silmek istediğinizden emin misiniz?</string>
+    <string name="profile_choose_app">Uygulama seç</string>
+    <string name="profile_settings_header">Profil ayarları: %s</string>
+    <string name="profile_group_header">Profil: %1$s kategori: %2$s</string>
+    <string name="menu_appgroups">Uygulama gruplarını yönet</string>
+    <string name="menu_new_profile">Yeni profil</string>
+    <string name="menu_new_profile_summary">Ekle ve yeni bir profil yapılandır</string>
+    <string name="profile_menu_delete">Sil</string>
+    <string name="profile_cannot_delete">Etkin profili silemezsiniz</string>
+    <string name="profile_new_appgroup">Yeni uygulama grubu</string>
+    <string name="profile_delete_appgroup">Bu uygulama grubunu sil</string>
+    <string name="profile_add_app">Uygulama ekle</string>
+    <string name="profile_manage">Profilleri yönet</string>
+    <string name="profile_appgroups_manage">Uygulama profillerini yönet</string>
+    <string name="profile_applist_manage">Uygulama listesini yönet</string>
+    <string name="profile_reset_title">Sıfırla</string>
+    <string name="profile_reset_all_title">Tümünü sıfırla</string>
+    <string name="profile_reset_all_summary">Tüm profilleri ve uygulama gruplarını varsayılanlara geri yükle ve sil</string>
+    <string name="profile_reset_all_message">Tüm profilleri ve uygulama gruplarını silip, varsayılan ayarlara geri yüklemek istiyor musunuz?</string>
     <string name="privacy_settings" msgid="9206631214140954954">"Gizlilik"</string>
     <string name="privacy_settings_title" msgid="1987089301293213705">"Gizlilik ayarları"</string>
     <string name="backup_section_title" msgid="8856083167469467588">"Yedekleme ve geri yükleme"</string>
@@ -1169,6 +1312,83 @@
     <string name="sound_category_calls_title" msgid="3688531959256239012">"Gelen çağrılar"</string>
     <string name="sound_category_notification_title" msgid="3502115998790286943">"Bildirimler"</string>
     <string name="sound_category_feedback_title" msgid="4399742321363475393">"Geri bildirim"</string>
+    <string name="launcher_settings_title">ADWLauncher</string>
+    <string name="possibleButtons">Düğmeler</string>
+    <string name="toggleWifi">Wi-Fi</string>
+    <string name="toggleWifiAp">Wi-Fi paylaşımı</string>
+    <string name="toggleBluetooth">Bluetooth</string>
+    <string name="toggleGPS">GPS</string>
+    <string name="toggleData">Mobil Veri</string>
+    <string name="toggleSync">Veri Senkronizasyonu</string>
+    <string name="toggle2g3g">2G/3G</string>
+    <string name="toggleSound">Sessiz</string>
+    <string name="toggleBrightness">Parlaklık</string>
+    <string name="toggleAutoRotate">Ekran Yönü</string>
+    <string name="toggleScreenTimeout">Ekran kapatma</string>
+    <string name="toggleAirplane">Uçak Modu</string>
+    <string name="toggleFlashlight">El Feneri</string>
+    <string name="toggleLockScreen">Kilit Ekranı</string>
+    <string name="toggleWimax">WiMAX</string>
+    <string name="toggleWifiDescription">Wi-Fi etkinleştir/kapat</string>
+    <string name="toggleWifiApDescription">Wi-Fi paylaşımını etkinleştir/kapat</string>
+    <string name="toggleBluetoothDescription">Bluetooth etkinleştir/kapat</string>
+    <string name="toggleGPSDescription">GPS etkinleştir/kapat</string>
+    <string name="toggleDataDescription">Mobil veriyi etkinleştir/kapat</string>
+    <string name="toggleSyncDescription">Veri senkronizasyonunu etkinleştir/kapat</string>
+    <string name="toggle2g3gDescription">2G/3G arasında geçiş yap</string>
+    <string name="toggleSoundDescription">Zil sesi/titreşim arasında geçiş yap</string>
+    <string name="toggleBrightnessDescription">Parlaklık seviyelerini değiştir</string>
+    <string name="toggleAutoRotateDescription">Ekran yönü algılayıcısını etkinleştir/kapat</string>
+    <string name="toggleScreenTimeoutDescription">Farklı ekran kapanma süreleri ayarla</string>
+    <string name="toggleAirplaneDescription">Uçak modunu etkinleştir/kapat</string>
+    <string name="toggleFlashlightDescription">El feneri modunu etkinleştir/kapat</string>
+    <string name="toggleLockScreenDescription">Kilit ekranını etkinleştir/kapat</string>
+    <string name="toggleWimaxDescription">WiMAX etkinleştir/kapat</string>
+    <string name="widgetSettings">Widget Ayarları</string>
+    <string name="wifiSettings">Wi-Fi Ayarları</string>
+    <string name="dataSettings">Mobil Veri Ayarları</string>
+    <string name="powerSettings">Güç Ayarları</string>
+    <string name="generalSettings">Genel Ayarlar</string>
+    <string name="autoDisable3G">Mobil veri 3G\'yi kapatır</string>
+    <string name="autoEnable3G">Mobil veri 3G\'yi açar</string>
+    <string name="autoDisable3GWithWifi">Wi-Fi 3G\'yi kapatır</string>
+    <string name="autoEnable3GWithWifi">Wi-Fi 3G\'yi açar</string>
+    <string name="useRoundCorners">Köşeleri yuvarlat</string>
+    <string name="useVertical">Dikey Yön</string>
+    <string name="useTransparent">Saydam Widget</string>
+    <string name="autoEnableSyncWithWifi">Wi-Fi senkronizasyonunu açar</string>
+    <string name="autoDisableSyncWithWifi">Wi-Fi senkronizasyonunu kapatır</string>
+    <string name="ringModeVibrateAsOn">AÇIKKEN titret</string>
+    <string name="monitorDataRoaming">Veri Dolaşımını İzle</string>
+    <string name="autoEnableBluetoothWithPower">Ekstra güç Bluetooth açar</string>
+    <string name="autoDisableBluetoothWithPower">Ekstra güç Bluetooth kapatır</string>
+    <string name="autoEnableWifiWithPower">Ekstra güç Wi-Fi açar</string>
+    <string name="autoDisableWifiWithPower">Ekstra güç Wi-Fi kapatır</string>
+    <string name="autoDisable3GDescription">Mobil veri kapatıldığında 2G</string>
+    <string name="autoEnable3GDescription">Mobil veri etkinleştirildiğinde 3G</string>
+    <string name="autoDisable3GWithWifiDescription">Wi-Fi etkinleştirildiğinde 2G</string>
+    <string name="autoEnable3GWithWifiDescription">Wi-Fi kapatıldığında 3G</string>
+    <string name="useRoundCornersDescription">Yuvarlak köşeli widget simgeleri kullan</string>
+    <string name="useTransparentDescription">Widget arkaplanı yok</string>
+    <string name="useVerticalDescription">Dikey yönde göster</string>
+    <string name="autoEnableSyncWithWifiDescription">Wi-Fi etkinleştirildiğinde senkronizasyonunu etkinleştir</string>
+    <string name="autoDisableSyncWithWifiDescription">Wi-Fi kapatıldığında senkronizasyonunu kapat</string>
+    <string name="ringModeVibrateAsOnDescription">Sadece titreşimdeyken sesi göster</string>
+    <string name="monitorDataRoamingDescription">Uluslararası dolaşımdayken mobil veri etkinse kırmızı göster</string>
+    <string name="autoEnableBluetoothWithPowerDescription">Güç bağlandığında Bluetooth etkinleştir</string>
+    <string name="autoDisableBluetoothWithPowerDescription">Güç kesildiğinde Bluetooth kapat</string>
+    <string name="autoEnableWifiWithPowerDescription">Güç bağlandığında Wi-Fi etkinleştir</string>
+    <string name="autoDisableWifiWithPowerDescription">Güç kesildiğinde Wi-Fi kapat</string>
+    <string name="networkModeSpinner">Şebeke türlerini seç</string>
+    <string name="brightnessSpinner">Parlaklık seviyelerini seç</string>
+    <string name="ringModeSpinner">Zil sesi modlarını seç</string>
+    <string name="screenTimeoutSpinner">Ekran kapanma süresini seç</string>
+    <string name="backgroundImageSpinner">Arkaplan seç</string>
+    <string name="notConfigured">Yapılandırılmamış. Lütfen tekrar ekleyin</string>
+    <string name="ok">Tamam</string>
+    <string name="widget_count">(%d widget)</string>
+    <string name="cm_settings_title">CyanogenMod ayarları</string>
+    <string name="device_settings_title">Cihaz ayarları</string>
     <string name="wimax_settings" msgid="1574837328738396794">"4G ayarları"</string>
     <string name="wimax_settings_summary" msgid="3207355006084135453">"4G ağı ve modemi kurma ve yönetme"</string>
     <string name="status_wimax_mac_address" msgid="8390791848661413416">"4G MAC adresi"</string>
