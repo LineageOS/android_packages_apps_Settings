@@ -225,8 +225,6 @@
     <string name="band_mode_set" msgid="5730560180249458484">"设置"</string>
     <string name="band_mode_failed" msgid="1495968863884716379">"失败"</string>
     <string name="band_mode_succeeded" msgid="2701016190055887575">"成功"</string>
-    <string name="launcher_settings_title">桌面设置</string>
-    <string name="device_settings_title">设备选项</string>
     <string name="sdcard_changes_instructions" msgid="1364712901180556244">"重新连接 USB 线后更改生效"</string>
     <string name="sdcard_settings_screen_mass_storage_text" msgid="3741220147296482474">"启用 USB 大容量存储设备"</string>
     <string name="sdcard_settings_total_bytes_label" msgid="9184160745785062144">"总字节数："</string>
@@ -660,6 +658,201 @@
     <string name="automatic_brightness" msgid="5014143533884135461">"自动调整亮度"</string>
     <string name="title_font_size" msgid="4405544325522105222">"字体大小"</string>
     <string name="dialog_title_font_size" msgid="2231507851258955038">"字体大小"</string>
+
+    <!-- Backlight #CM -->
+    <string name="backlight_title">自动亮度调节</string>
+    <string name="backlight_summary">调整亮度水平和传感器运算</string>
+    <string name="light_filter_title">光线传感器运算</string>
+    <string name="light_filter_enabled_title">启用</string>
+    <string name="light_filter_enabled_summary">对光线传感器取得的数据做移动平均运算，以减少频繁调节亮度引起的屏幕闪烁。</string>
+    <string name="light_filter_window_title">移动平均取值长度</string>
+    <string name="light_filter_window_summary">对该时间段内的光线传感器数据取平均值。</string>
+    <string name="light_filter_reset_title">重置阈值</string>
+    <string name="light_filter_reset_summary">如果光线传感器数据样本相对于当前平均值的变化量超过该阈值，则重置移动平均值的运算，以便光线剧烈变化的情况下可迅速反应。</string>
+    <string name="light_filter_interval_title">传感器采样间隔</string>
+    <string name="light_filter_interval_summary">间隔越短准确度越高，但也会消耗更多的 CPU 。</string>
+    <string name="light_levels_title">亮度水平</string>
+    <string name="light_levels_enabled_title">使用自定义设置</string>
+    <string name="light_levels_dim_title">屏幕变暗值</string>
+    <string name="light_levels_dim_summary">当使屏幕变暗时所使用的亮度水平值</string>
+    <string name="light_levels_editor_title">编辑其他值...</string>
+    <string name="light_decrease_enabled_title">允许降低亮度</string>
+    <string name="light_decrease_enabled_summary">开启该选项允许降低亮度，使用迟滞选项减少频繁调节亮度引起的屏幕闪烁。</string>
+    <string name="light_decrease_hysteresis_title">降低亮度迟滞</string>
+    <string name="light_decrease_hysteresis_summary">传感器数据降低一定水平后再降低屏幕亮度。</string>
+
+    <!-- Light sensor levels #CM -->
+    <string name="ll_title">光线传感器取值</string>
+    <string name="ll_header_upper">上限</string>
+    <string name="ll_header_lower">下限</string>
+    <string name="ll_header_lcd">屏幕</string>
+    <string name="ll_header_btn">按钮</string>
+    <string name="ll_header_kb">键盘</string>
+    <string name="ll_lux">传感器 (运算后 / 原始):</string>
+    <string name="ll_lcd">屏幕：</string>
+    <string name="ll_btn">按钮：</string>
+    <string name="ll_kb">键盘：</string>
+    <string name="ll_disabled">关闭</string>
+    <string name="ll_default">读取默认值</string>
+    <string name="ll_save">保存并应用</string>
+    <string name="ll_reload">恢复当前值</string>
+    <string name="ll_bad_levels">取值必须逐渐增大</string>
+    <string name="ll_num_levels">设置亮度级别数量</string>
+
+    <!-- Advanced, Device specific (DeviceParts) settings #CM -->
+    <string name="advanced_settings_title">高级</string>
+    <!-- INTERFACE Settings #CM -->
+    <!-- Settings main menu category heading. Interface (Launcher, Themes, System). [CHAR LIMIT=40] -->
+    <string name="header_category_interface">接口</string>
+    <!-- Launcher settings #CM -->
+    <string name="launcher_settings_title">启动器</string>
+    <!-- Themes settings #CM -->
+    <string name="themes_settings_title">主题</string>
+    <!-- System Interface settings #CM -->
+    <string name="system_settings_title">系统</string>
+    <string name="system_interface_title">系统接口</string>
+    <!-- Notification Drawer #CM -->
+    <string name="notification_drawer_title">通知栏</string>
+    <!-- Combined Bar #CM -->
+    <string name="combined_bar_title">组合条</string>
+    <string name="combined_bar_auto_hide_title">自动隐藏</string>
+    <string name="combined_bar_auto_hide_summary">显示全屏应用时允许组合条隐藏</string>
+    <!-- Power Widget #CM -->
+    <string name="power_widget_title">电源小部件</string>
+    <string name="title_expanded_widget">显示电源小部件</string>
+    <string name="summary_expanded_widget">在通知栏显示电源小部件</string>
+    <string name="title_expanded_hide_onchange">改变时隐藏</string>
+    <string name="summary_expanded_hide_onchange">触发小部件按钮时隐藏通知栏</string>
+    <string name="title_expanded_hide_indicator">隐藏指示器</string>
+    <string name="summary_expanded_hide_indicator">隐藏电源小部件指示器</string>
+    <string name="title_expanded_hide_scrollbar">隐藏滚动条</string>
+    <string name="summary_expanded_hide_scrollbar">即使选择的小部件数量超过上限也不显示滚动条</string>
+    <string name="title_widget_picker">控制按钮</string>
+    <string name="summary_widget_picker">选取您需要的控件按钮</string>
+    <string name="title_widget_order">控件按钮顺序</string>
+    <string name="summary_widget_order">排列您的控件按钮</string>
+    <string name="title_buttons">按钮</string>
+    <string name="title_toggle_wifi">切换 Wifi</string>
+    <string name="title_toggle_bluetooth">切换蓝牙</string>
+    <string name="title_toggle_gps">切换 GPS</string>
+    <string name="title_toggle_sound">切换声音</string>
+    <string name="title_toggle_brightness">切换亮度</string>
+    <string name="title_toggle_sync">切换同步</string>
+    <string name="title_toggle_wifiap">切换 Wifi 热点</string>
+    <string name="title_toggle_screentimeout">切换屏幕超时</string>
+    <string name="title_toggle_mobiledata">切换移动数据</string>
+    <string name="title_toggle_lockscreen">切换锁屏</string>
+    <string name="title_toggle_networkmode">切换 2G/3G</string>
+    <string name="title_toggle_autorotate">切换屏幕旋转</string>
+    <string name="title_toggle_airplane">切换飞行模式</string>
+    <string name="title_toggle_flashlight">切换 LED 手电筒</string>
+    <string name="title_toggle_sleep">睡眠模式</string>
+    <string name="title_toggle_media_play_pause">媒体: 切换播放/暂停</string>
+    <string name="title_toggle_media_previous">媒体: 跳到前一首</string>
+    <string name="title_toggle_media_next">媒体: 跳到下一首</string>
+    <string name="title_toggle_wimax">切换 WiMAX</string>
+    <string name="title_button_modes">按钮切换模式</string>
+    <string name="pref_brightness_mode_title">亮度切换模式</string>
+    <string name="pref_brightness_mode_summary">选择亮度按钮的切换方式</string>
+    <string name="cm_brightness_mode_auto">自动</string>
+    <string name="cm_brightness_mode_dim">最暗</string>
+    <string name="pref_network_mode_title">网络切换模式</string>
+    <string name="pref_network_mode_summary">选择网络按钮的切换方式</string>
+    <string name="pref_screentimeout_mode_title">屏幕超时切换模式</string>
+    <string name="pref_screentimeout_mode_summary">选择屏幕超时按钮的切换方式</string>
+    <string name="pref_ring_mode_title">声音切换模式</string>
+    <string name="pref_ring_mode_summary">选择声音按钮的切换方式</string>
+    <string name="cm_sound_mode_silent">静音</string>
+    <string name="cm_sound_mode_vibrate">震动</string>
+    <string name="cm_sound_mode_sound">铃声</string>
+    <string name="cm_sound_mode_soundVibrate">铃声＋震动</string>
+    <string name="pref_flash_mode_title">手电筒切换模式</string>
+    <string name="pref_flash_mode_summary">选择高亮度/死亡射线</string>
+    <!-- Power Widget, Haptic feedback #CM -->
+    <string name="expanded_haptic_feedback_title">触动反馈</string>
+    <string name="expanded_haptic_feedback_summary">启用／停用触动反馈</string>
+    <!-- Status bar #CM -->
+    <string name="status_bar_title">状态栏</string>
+    <string name="status_bar_clock_title">时钟</string>
+    <string name="status_bar_general_title">常规</string>
+    <string name="status_bar_show_clock_title">显示时钟</string>
+    <string name="status_bar_show_clock_summary">在状态栏显示时钟</string>
+    <string name="status_bar_am_pm_title">上午/下午样式</string>
+    <string name="status_bar_am_pm_summary">时钟旁边的上午/下午样式</string>
+    <string name="status_bar_battery_title">电池状态样式</string>
+    <string name="status_bar_battery_summary">显示电池状态的样式</string>
+    <string name="status_bar_toggle_brightness">亮度控制</string>
+    <string name="status_bar_toggle_brightness_summary">允许滑动状态栏以调整亮度</string>
+    <string name="status_bar_toggle_info">亮度自动调整已启用</string>
+    <string name="status_bar_cm_signal_text_title">替代的信号显示</string>
+    <string name="status_bar_cm_signal_text_summary">显示信号的dBm数值而不是条状图示</string>
+    <string name="status_bar_cm_signal_text_show_bars">信号条状图示</string>
+    <string name="status_bar_cm_signal_text_show_text">信号文字</string>
+    <string name="status_bar_cm_signal_text_show_text_dbm">信号文字、dBm</string>
+    <!-- Lock screen #CM -->
+    <string name="lock_screen_title">锁屏界面</string>
+    <!-- Lock Screen -->
+    <!-- Profiles settings #CM -->
+    <string name="profiles_settings_title">个人资料</string>
+    <!-- Screen security - Screen security  #CM -->
+    <string name="screen_security_category">屏幕安全性</string>
+    <string name="screen_security_title">锁定屏幕</string>
+    <string name="screen_security_summary">查看或者改变锁屏安全性，延迟以及超时设置</string>
+    <string name="additional_options_title">其他选项</string>
+    <string name="unlock_menu_unlock_title">菜单键解锁</string>
+    <string name="unlock_menu_unlock_summary">按下菜单键可解锁设备</string>
+    <string name="unlock_quick_unlock_control_title">快速解锁</string>
+    <string name="unlock_quick_unlock_control_summary">输入数字 PIN 或密码后无需按确定按钮即可解锁，按删除键重新输入。</string>
+   <!-- Delays and timeouts -->
+    <string name="delay_and_timeout_title">锁屏延迟</string>
+    <!-- Slide lock delay -->
+    <string name="slide_lock_delay_title">延迟屏幕锁定</string>
+    <string name="slide_lock_timeout_delay_title">屏幕超时延迟</string>
+    <string name="slide_lock_timeout_delay_summary">屏幕超时后延迟多久才启用安全性锁定屏幕</string>
+    <string name="slide_lock_screenoff_delay_title">屏幕关闭延迟</string>
+    <string name="slide_lock_screenoff_delay_summary">屏幕关闭后延迟多久才启用安全性锁定屏幕</string>
+    <!-- Performance settings #CM -->
+    <string name="performance_settings_title">性能</string>
+<!-- Performance Settings : Warning dialog #CM -->
+    <string name="performance_settings_warning_title">警告：前面有怪兽！</string>
+    <string name="performance_settings_warning">这里的选项会改变系统的性能，这可能意味着会变得更差。它们只作实验用途，如果您更改过这里的设置，请不要向我们提交bug报告。</string>
+    <!-- Performance Settings : Processor Settings -->
+    <!-- Performance Settings : Processor settings title -->
+    <string name="processor_title">处理器</string>
+    <!-- Performance Settings : Processor settings summary. -->
+    <string name="processor_summary">修改CPU调节器以及时钟速度</string>
+   <!-- Performance Settings : Processor settings sub items -->
+    <string name="cpu_cur_freq_title">当前CPU频率</string>
+    <string name="cpu_governors_title">CPU调节器</string>
+    <!--<string name="cpu_governors_summary">%S</string>-->
+    <string name="cpu_min_freq_title">最小CPU频率</string>
+    <!--<string name="cpu_min_freq_summary">%s</string>-->
+    <string name="cpu_max_freq_title">最大CPU频率</string>
+    <!--<string name="cpu_max_freq_summary">%s</string>-->
+    <string name="cpu_set_on_boot">启动时设置</string>
+    <string name="cpu_set_on_boot_summary">在启动时恢复CPU设置</string>
+    <!-- Performance Settings : Disable bootanimation -->
+    <string name="pref_disable_bootanimation_title">禁用开机动画</string>
+    <string name="pref_disable_bootanimation_summary">禁用开机动画以便快速开机</string>
+    <!-- Memory Management -->
+    <string name="memory_management_title">内存管理</string>
+    <string name="memory_management_summary">自定义内存使用来改变系统性能</string>
+    <!-- zRam -->
+    <!--<string name="pref_zram_title">zRam</string>-->
+    <string name="pref_zram_summary">压缩内存来增加虚拟容量(需要重启)</string>
+    <!-- VM Heap Size -->
+    <string name="pref_heapsize_title">虚拟机内存大小</string>
+    <string name="pref_heapsize_summary">设置每个虚拟机进程的可用内存最大值(需要重启)</string>
+    <!-- Purgeable Assets -->
+    <string name="pref_purgeable_assets_title">允许清理图片</string>
+    <string name="pref_purgeable_assets_summary">当系统需要时可以清理未使用的图片来提供更多内存(需要重启)</string>
+    <!-- Performance Settings : Dithering -->
+    <string name="pref_use_dithering_title">启用贴图插值抖动</string>
+    <string name="pref_use_dithering_summary">启用贴图插值抖动可以提高图像质量，但会影响性能(需要重启)</string>
+   <!-- Performance Settings : 16bpp Alpha -->
+    <string name="pref_use_16bpp_alpha_title">使用16位透明度</string>
+    <string name="pref_use_16bpp_alpha_summary">更好的图形性能，但会降低质量以及影响视觉效果(需要重启)</string>
+
     <string name="sim_lock_settings" msgid="3392331196873564292">"SIM 卡锁定设置"</string>
     <string name="sim_lock_settings_category" msgid="5136244267576697004">"设置 SIM 卡锁定"</string>
     <string name="sim_lock_settings_title" msgid="9018585580955414596">"SIM 卡锁定"</string>
@@ -886,6 +1079,11 @@
     <string name="assisted_gps_disabled" msgid="6982698333968010748">"使用服务器来辅助 GPS（取消选中可提高 GPS 性能）"</string>
     <string name="use_location_title" msgid="5206937465504979977">"位置和 Google 搜索"</string>
     <string name="use_location_summary" msgid="3978805802386162520">"允许 Google 使用您的位置信息改善搜索结果和其他服务"</string>
+    <!-- GPS Source selection -->
+    <string name="location_gps_source_title">GPS 源</string>
+    <string name="location_gps_source_summary">使用内部蓝牙GPS鼠标代替外部源定位</string>
+    <string name="location_gps_source_notification_title">警告</string>
+    <string name="location_gps_source_notification">GPS源已被切换! GPS 将停用。请在使用前重新开启!</string>
     <string name="about_settings" product="tablet" msgid="593457295516533765">"关于平板电脑"</string>
     <string name="about_settings" product="default" msgid="1743378368185371685">"关于手机"</string>
     <string name="about_settings_summary" msgid="3371517697156165959">"查看法律信息、状态和软件版本"</string>
