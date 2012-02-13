@@ -29,29 +29,17 @@ public class ProfilesSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "ProfilesSettings";
 
-    private final Configuration mCurConfig = new Configuration();
-    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ContentResolver resolver = getActivity().getContentResolver();
 
-        addPreferencesFromResource(R.xml.profiles_settings);
-    }
+        if (getPreferenceManager() != null) {
 
-    @Override
-    public void onResume() {
-        super.onResume();
+            addPreferencesFromResource(R.xml.profiles_settings);
 
-        updateState();
-    }
+            PreferenceScreen prefSet = getPreferenceScreen();
 
-    @Override
-    public void onPause() {
-        super.onPause();
-    }
-
-    private void updateState() {
+        }
     }
 
     @Override
@@ -59,9 +47,8 @@ public class ProfilesSettings extends SettingsPreferenceFragment implements
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
-    public boolean onPreferenceChange(Preference preference, Object objValue) {
-        final String key = preference.getKey();
-
-        return true;
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        return false;
     }
+
 }
