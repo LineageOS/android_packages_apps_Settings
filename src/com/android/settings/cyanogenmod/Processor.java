@@ -40,7 +40,9 @@ public class Processor extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
     public static final String FREQ_CUR_PREF = "pref_cpu_freq_cur";
-    public static final String FREQ_CUR_FILE = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq";
+    public static final String SCALE_CUR_FILE = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq";
+    public static final String FREQINFO_CUR_FILE = "/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_cur_freq";
+    private static String FREQ_CUR_FILE = SCALE_CUR_FILE;
     public static final String GOV_PREF = "pref_cpu_gov";
     public static final String GOV_LIST_FILE = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors";
     public static final String GOV_FILE = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor";
@@ -128,6 +130,10 @@ public class Processor extends SettingsPreferenceFragment implements
         // Some systems might not use governors
         if (temp == null) {
             prefScreen.removePreference(mGovernorPref);
+        }
+
+        if (!Utils.fileExists(FREQ_CUR_FILE)) {
+            FREQ_CUR_FILE = FREQINFO_CUR_FILE;
         }
 
         // Cur frequency
