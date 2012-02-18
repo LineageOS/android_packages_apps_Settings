@@ -547,34 +547,6 @@
                 android:resource="@id/display_settings" />
         </activity-alias>
 
-        <activity android:name="Settings$InputSettingsActivity"
-                android:label="@string/input_settings"
-                android:clearTaskOnLaunch="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="com.android.settings.INPUT_SETTINGS" />
-                <action android:name="android.settings.INPUT_SETTINGS" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.VOICE_LAUNCH" />
-                <category android:name="com.android.settings.SHORTCUT" />
-            </intent-filter>
-            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.InputSettings" />
-            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
-                android:resource="@id/input_settings" />
-        </activity>
-        <!-- Keep compatibility with old shortcuts. -->
-        <activity-alias android:name="InputSettings"
-                android:label="@string/input_settings"
-                android:clearTaskOnLaunch="true"
-                android:exported="true"
-                android:targetActivity="Settings$InputSettingsActivity">
-            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.InputSettings" />
-            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
-                android:resource="@id/input_settings" />
-        </activity-alias>
-
         <activity android:name="Settings$DockSettingsActivity"
                 android:label="@string/dock_settings_title"
                 android:enabled="@bool/has_dock_settings"

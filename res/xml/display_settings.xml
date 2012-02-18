@@ -46,4 +46,14 @@
             android:title="@string/notification_pulse_title"
             android:persistent="false" />
 
+        <PreferenceCategory
+            android:key="category_wakeup_options"
+            android:title="@string/display_category_wakeup_options_title"/>
+
+        <CheckBoxPreference
+            android:key="pref_volume_wake"
+            android:title="@string/pref_volume_wake_title"
+            android:summary="@string/pref_volume_wake_summary"
+            android:defaultValue="false" />
+
 </PreferenceScreen>
