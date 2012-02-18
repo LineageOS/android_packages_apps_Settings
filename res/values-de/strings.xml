@@ -1581,4 +1581,253 @@
     <string name="backup_pw_cancel_button_text" msgid="8845630125391744615">"Abbrechen"</string>
     <string name="percentage" msgid="5866131581207788624">"<xliff:g id="NUMBER">%d</xliff:g>%%"</string>
     <string name="additional_system_update_settings_list_item_title" msgid="214987609894661992">"Zusätzliche Systemupdates"</string>
+
+<!-- CyanogenMod additional translations -->
+
+    <!-- Temporary - stubed preference - to be removed once all preferences have been merged #CM -->
+    <string name="stubbed">Vorläufiger Platzhalter</string>
+    <string name="stubbed_summary">\u2026 solange Funktionalität noch nicht implementiert ist</string>
+
+    <!-- Backlight #CM -->
+    <string name="backlight_title">Automatische Helligkeit</string>
+    <string name="backlight_summary">Stufen und Filterung</string>
+    <string name="light_filter_title">Helligkeitssensor-Filter</string>
+    <string name="light_filter_enabled_title">Einschalten</string>
+    <string name="light_filter_enabled_summary">Mittelwert mehrerer Sensorwerte zur Helligkeitssteuerung heranziehen (vermeidet Flackern)</string>
+    <string name="light_filter_window_title">Länge des Zeitfensters</string>
+    <string name="light_filter_window_summary">Setzt den Zeitraum, über den der Mittelwert berechnet wird</string>
+    <string name="light_filter_reset_title">Grenzwert</string>
+    <string name="light_filter_reset_summary">Differenz des Sensorwerts vom Mittelwert, ab dem die Berechnung zurückgesetzt wird</string>
+    <string name="light_filter_interval_title">Abtastrate</string>
+    <string name="light_filter_interval_summary">Intervall zur Ermittlung des Sensorwerts. Kleinerer Wert erhöht die Genauigkeit, aber auch den Stromverbrauch</string>
+    <string name="light_levels_title">Helligkeitsstufen</string>
+    <string name="light_levels_enabled_title">Stufen anpassen</string>
+    <string name="light_levels_dim_title">Dunkler Bildschirm</string>
+    <string name="light_levels_dim_summary">Helligkeitsstufe für dunklen Bildschirm</string>
+    <string name="light_levels_editor_title">Stufen bearbeiten</string>
+    <string name="light_decrease_enabled_title">Abdunkeln erlauben</string>
+    <string name="light_decrease_enabled_summary">Erlauben, dass die Helligkeit abnehmen darf</string>
+    <string name="light_decrease_hysteresis_title">Abdunkelhysterese</string>
+    <string name="light_decrease_hysteresis_summary">Sensorwert muss für Bildschirmabdunklung unter gewählten Anteil sinken (höherer Wert entspricht schnellerer Reaktion)</string>
+
+    <!-- Light sensor levels #CM -->
+    <string name="ll_title">Lichtsensor-Stufen</string>
+    <string name="ll_header_upper">Obere</string>
+    <string name="ll_header_lower">Untere</string>
+    <string name="ll_header_lcd">Bildschirm</string>
+    <string name="ll_header_btn">Tasten</string>
+    <string name="ll_header_kb">Tastatur</string>
+    <string name="ll_lux">Sensor (gefiltert / direkt):</string>
+    <string name="ll_lcd">Bildschirm:</string>
+    <string name="ll_btn">Tasten:</string>
+    <string name="ll_kb">Tastatur:</string>
+    <string name="ll_disabled">ausgeschaltet</string>
+    <string name="ll_default">Standardwerte laden</string>
+    <string name="ll_save">Sichern &amp; anwenden</string>
+    <string name="ll_reload">Aktuelle Werte neu laden</string>
+    <string name="ll_bad_levels">Stufen nicht aufsteigend</string>
+    <string name="ll_num_levels">Anzahl der Stufen setzen</string>
+
+    <!-- Advanced, Device specific (DeviceParts) settings #CM -->
+    <string name="advanced_settings_title">Erweitert</string>
+
+<!-- INTERFACE Settings #CM -->
+    <!-- Settings main menu category heading. Interface (Launcher, Themes, System). [CHAR LIMIT=40] -->
+    <string name="header_category_interface">Oberfläche</string>
+
+    <!-- Launcher settings #CM -->
+    <string name="launcher_settings_title">Launcher</string>
+
+    <!-- Themes settings #CM -->
+    <string name="themes_settings_title">Designs</string>
+
+    <!-- System Interface settings #CM -->
+    <string name="system_settings_title">System</string>
+    <string name="system_interface_title">System interface</string>
+
+    <!-- Notification Drawer #CM -->
+    <string name="notification_drawer_title">Benachrichtigungsanzeige</string>
+
+    <!-- Power Widget #CM -->
+    <string name="power_widget_title">Energie-Widget</string>
+    <string name="title_expanded_widget">Benachr.-Energiesteuerung</string>
+    <string name="summary_expanded_widget">Schaltflächen für Energiesteuerung in aufgeklappter Benachrichtigungsanzeige</string>
+    <string name="title_expanded_hide_onchange">Nach Änd. verbergen</string>
+    <string name="summary_expanded_hide_onchange">Die Benachrichtigungsanzeige sofort wieder verbergen, nachdem eine Änderung an der Energiesteuerung vorgenommen wurde</string>
+    <string name="title_expanded_hide_indicator">Status verstecken</string>
+    <string name="summary_expanded_hide_indicator">Verstecke die Statusanzeige unter den Schaltflächen</string>
+    <string name="title_expanded_hide_scrollbar">Scrollbar verstecken</string>
+    <string name="summary_expanded_hide_scrollbar">Die Scrollbar verstecken, wenn mehr Schaltflächen vorhanden sind als maximal möglich</string>
+    <string name="title_widget_picker">Schaltflächen</string>
+    <string name="summary_widget_picker">Schaltflächen auswählen, die angezeigt werden sollen</string>
+    <string name="title_widget_order">Reihenfolge</string>
+    <string name="summary_widget_order">Die Schaltflächen anordnen bzw. umsortieren</string>
+    <string name="title_buttons">Schaltflächen</string>
+    <string name="title_toggle_wifi">WLAN</string>
+    <string name="title_toggle_bluetooth">Bluetooth</string>
+    <string name="title_toggle_gps">GPS</string>
+    <string name="title_toggle_sound">Klingelmodus</string>
+    <string name="title_toggle_brightness">Helligkeit</string>
+    <string name="title_toggle_sync">Synchronisierung</string>
+    <string name="title_toggle_wifiap">WLAN-Hotspot</string>
+    <string name="title_toggle_screentimeout">Bildschirm-Timeout</string>
+    <string name="title_toggle_mobiledata">Mobilfunk-Daten</string>
+    <string name="title_toggle_lockscreen">Bildschirmsperre</string>
+    <string name="title_toggle_networkmode">2G/3G</string>
+    <string name="title_toggle_autorotate">Autom. Ausrichtung</string>
+    <string name="title_toggle_airplane">Flugmodus</string>
+    <string name="title_toggle_flashlight">Taschenlampe</string>
+    <string name="title_toggle_sleep">In Standby wechseln</string>
+    <string name="title_toggle_media_play_pause">Medien: Play/Pause</string>
+    <string name="title_toggle_media_previous">Medien: Vorheriger Titel</string>
+    <string name="title_toggle_media_next">Medien: Nächster Titel</string>
+    <string name="title_toggle_wimax">WiMAX</string>
+    <string name="title_button_modes">Schaltflächenfunktionen</string>
+    <string name="pref_brightness_mode_title">Helligkeitsstufen</string>
+    <string name="pref_brightness_mode_summary">Helligkeitsstufen, zwischen denen umgeschaltet wird</string>
+    <string name="cm_brightness_mode_auto">Auto</string>
+    <string name="cm_brightness_mode_dim">Dunkel</string>
+    <string name="pref_network_mode_title">Netzwerkmodi</string>
+    <string name="pref_network_mode_summary">Netzwerkmodi, zwischen denen umgeschaltet wird</string>
+    <string name="pref_screentimeout_mode_title">Bildschirm-Timeout</string>
+    <string name="pref_screentimeout_mode_summary">Auswählbare Timeouts für automatische Bildschirmabschaltung</string>
+    <string name="pref_ring_mode_title">Klingelmodi</string>
+    <string name="pref_ring_mode_summary">Klingelmodi, zwischen denen umgeschaltet wird</string>
+    <string name="cm_sound_mode_silent">Lautlos</string>
+    <string name="cm_sound_mode_vibrate">Vibration</string>
+    <string name="cm_sound_mode_sound">Ton</string>
+    <string name="cm_sound_mode_soundVibrate">Ton+Vibration</string>
+    <string name="pref_flash_mode_title">Taschenlampe</string>
+    <string name="pref_flash_mode_summary">Helligkeit der Taschenlampe</string>
+
+    <!-- Power Widget, Haptic feedback #CM -->
+    <string name="expanded_haptic_feedback_title">Haptisches Feedback</string>
+    <string name="expanded_haptic_feedback_summary">Haptisches Feedback ein/ausschalten</string>
+
+    <!-- Status bar #CM -->
+    <string name="status_bar_title">Statusleiste</string>
+    <string name="status_bar_clock_title">Uhrzeit</string>
+    <string name="status_bar_general_title">Allgemein</string>
+    <string name="status_bar_show_clock_title">Zeige Uhr</string>
+    <string name="status_bar_show_clock_summary">Die Uhrzeit wird nicht angezeigt, wenn deaktiviert</string>
+    <string name="status_bar_am_pm_title">Tageszeitanzeige</string>
+    <string name="status_bar_am_pm_summary">Anzeigestil von vorm./nachm. neben der Uhrzeit</string>
+    <string name="status_bar_battery_title">Batteriestatus</string>
+    <string name="status_bar_battery_summary">Anzeigestil des Batteriestatus</string>
+    <string name="status_bar_toggle_brightness">Helligkeitsregler</string>
+    <string name="status_bar_toggle_brightness_summary">Änderung der Helligkeit durch Wischen über die Statusleiste</string>
+    <string name="status_bar_toggle_info">Automatische Helligkeit ist aktiviert</string>
+    <string name="status_bar_cm_signal_text_title">Signalstärke in dBm</string>
+    <string name="status_bar_cm_signal_text_summary">Anzeige der Mobilfunk-Signalstärke in dBm statt der Balkenanzeige</string>
+    <string name="status_bar_cm_signal_text_show_bars">Nur Balken</string>
+    <string name="status_bar_cm_signal_text_show_text">Signalstärke (nur Wert)</string>
+    <string name="status_bar_cm_signal_text_show_text_dbm">Signalstärke inkl. „dBm“</string>
+
+    <!-- Lock screen #CM -->
+    <string name="lock_screen_title">Bildschirmsperre</string>
+
+    <!-- Profiles settings #CM -->
+    <string name="profiles_settings_title">Profile</string>
+
+    <!-- Screen security - Screen security  #CM -->
+    <string name="screen_security_category">Bildschirm-Sicherheit</string>
+    <string name="screen_security_title">Sicherheitssperre</string>
+    <string name="screen_security_summary">Einstellungen zur Sicherheitssperre, Timeouts und Abschaltverzögerungen anzeigen und ändern.</string>
+    <string name="additional_options_title">Weitere Optionen</string>
+    <string name="unlock_menu_unlock_title">Mit Menü entsperren</string>
+    <string name="unlock_menu_unlock_summary">Entsperren des Gerätes durch Drücken der Menütaste</string>
+    <string name="unlock_quick_unlock_control_title">Schnelles Entsperren</string>
+    <string name="unlock_quick_unlock_control_summary">PIN oder Passwort ohne Bestätigung eingeben. Löschen gilt als Fehlversuch.</string>
+
+    <!-- Performance settings #CM -->
+    <string name="performance_settings_title">Leistung</string>
+
+    <!-- Performance Settings : Warning dialog #CM -->
+    <string name="performance_settings_warning_title">VORSICHT!</string>
+    <string name="performance_settings_warning">Diese Optionen beeinflussen die Leistung des Systems, möglicherweise zum Schlechten. Die Optionen sind zum Experimentieren gedacht - bitte keine Fehler melden, wenn die Standardeinstellungen geändert wurden.</string>
+
+    <!-- Performance Settings : Processor Settings -->
+    <!-- Performance Settings : Processor settings title -->
+    <string name="processor_title">Prozessor</string>
+    <!-- Performance Settings : Processor settings summary. -->
+    <string name="processor_summary">CPU-Regelung und Taktfrequenzen</string>
+
+    <!-- Performance Settings : Processor settings sub items -->
+    <string name="cpu_cur_freq_title">Aktuelle CPU-Frequenz</string>
+    <string name="cpu_governors_title">CPU-Regler</string>
+    <string name="cpu_governors_summary">%S</string>
+    <string name="cpu_min_freq_title">Minimale CPU-Frequenz</string>
+    <string name="cpu_min_freq_summary">%s</string>
+    <string name="cpu_max_freq_title">Maximale CPU-Frequenz</string>
+    <string name="cpu_max_freq_summary">%s</string>
+    <string name="cpu_set_on_boot">Beim Booten einstellen</string>
+    <string name="cpu_set_on_boot_summary">Prozessoreinstellungen beim Bootvorgang wiederherstellen</string>
+
+    <!-- Performance Settings : Disable bootanimation -->
+    <string name="pref_disable_bootanimation_title">Boot-Animation deaktivieren</string>
+    <string name="pref_disable_bootanimation_summary">Boot-Animation zur Beschleunigung des Systemstarts deaktivieren</string>
+
+    <!-- Memory Management -->
+    <string name="memory_management_title">Speicherverwaltung</string>
+    <string name="memory_management_summary">Speichernutzung anpassen, um Systemleitung zu modifizieren</string>
+    <!-- zRam -->
+    <string name="pref_zram_title">zRam</string>
+    <string name="pref_zram_summary">Speicherinhalte für mehr virtuellen Speicher mit zRAM komprimieren (Neustart erforderlich)</string>
+    <!-- VM Heap Size -->
+    <string name="pref_heapsize_title">Größe VM-Heap</string>
+    <string name="pref_heapsize_summary">Maximale Speichernutzung pro VM-Heap (Neustart erforderlich)</string>
+    <!-- Purgeable Assets -->
+    <string name="pref_purgeable_assets_title">Freigabe von Ressourcen</string>
+    <string name="pref_purgeable_assets_summary">Erlaubt dem System, Speicherbereiche von nicht mehr benutzen Bildern freizugeben, um mehr RAM bereitzustellen (Neustart erforderlich)</string>
+    <!-- Performance Settings : Dithering -->
+    <string name="pref_use_dithering_title">Dithering</string>
+    <string name="pref_use_dithering_summary">Dithering von Oberflächen verbessert die Bildqualität auf Kosten der Geräteleistung (Neustart erforderlich)</string>
+    <!-- Performance Settings : 16bpp Alpha -->
+    <string name="pref_use_16bpp_alpha_title">16-bit-Transparenz</string>
+    <string name="pref_use_16bpp_alpha_summary">Verwenden der 16-bit-Transparenz kann die Performance beim Scrollen verbessern, aber Grafikfehler verursachen (Neustart erforderlich)</string>
+
+    <!-- System Updates #CM -->
+    <!-- About device screen, list item title. Takes the user to the screen for seeing and installing system updates. -->
+    <string name="system_update_settings_list_item_title">System-Updates</string>
+    <!-- About device screen, list item summary. Takes the user to the screen for seeing and installing system updates. -->
+    <string name="system_update_settings_list_item_summary">""</string>
+
+    <!-- Donate #CM -->
+    <!-- About device screen, list item title. Takes the user to the screen about how to donate to the CyanogenMod Project. -->
+    <string name="donate_settings_title">Spenden</string>
+    <!-- About device screen, list item summary. Takes the user to the screen about how to donate to the CyanogenMod Project. -->
+    <string name="donate_settings_summary">""</string>
+
+    <!-- Anonymous Statistics #CM -->
+    <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
+    <string name="anonymous_statistics_title">Anonyme Statistiken</string>
+    <!-- About device screen, list item summary. Takes the user to the screen about opting in or out of anonymous statistics. -->
+    <string name="anonymous_statistics_summary">Helfen Sie mit, CyanogenMod durch anonyme Gerätestatistiken zu verbessern</string>
+    <string name="anonymous_statistics_warning_title">ACHTUNG</string>
+    <string name="anonymous_statistics_warning">Die freiwillige Übermittlung von Nutzungsdaten erlaubt den Entwicklern von CyanogenMod, eindeutige Installationen auf Endgeräten zu verfolgen. Die übermittelten Informationen enthalten einen eindeutigen Identifikator, der deine Privatsphäre nicht beeinträchtigt, den Gerätetyp sowie Versionsinformationen. Die Daten werden bei jedem Bootvorgang übermittelt.\n\nFür ein Beispiel an gesendeten Daten bitte unten auf Vorschau klicken.</string>
+    <string name="enable_reporting_title">Berichte einschalten</string>
+    <string name="preview_data_title">Vorschau</string>
+    <string name="view_stats_title">Statistiken ansehen</string>
+    <string name="anonymous_learn_more">Mehr erfahren</string>
+    <!-- Anonymous Statistics - Notification -->
+    <string name="anonymous_notification_desc">Anonyme Statistiken ein- oder ausschalten</string>
+    <!-- Anonymous Statistics - Preview -->
+    <string name="preview_id_title">Eindeutige ID</string>
+    <string name="preview_device_title">Gerät</string>
+    <string name="preview_version_title">Version</string>
+    <string name="preview_country_title">Land</string>
+    <string name="preview_carrier_title">Anbieter</string>
+
+    <!--  Additional development settings #CM -->
+    <!-- Setting checkbox title for Whether debugging should run over TCP/IP. -->
+    <string name="adb_over_network">ADB über Netzwerk</string>
+    <string name="adb_over_network_summary">TCP/IP Debugging über Netzwerkschnittstellen (WLAN, USB Netzwerke, \u2026) aktivieren. Diese Einstellung wird beim Neustart zurückgesetzt.</string>
+    <!-- Warning for Adb over Network -->
+    <string name="adb_over_network_warning">WARNUNG: Wenn ADB über Netzwerk eingeschaltet wird, ist dein Gerät anfällig für das Eindringen Fremder aus allen verbundenen Netzwerken - auch aus einem GSM-Datennetzwerk!\n\nNur nutzen, wenn du mit einem vertrauenswürdigen Netzwerk verbunden bist.\n\nMöchtest du diese Funktion wirklich einschalten?</string>
+    <!-- Kill app long-press back  -->
+    <string name="kill_app_longpress_back">App beenden</string>
+    <string name="kill_app_longpress_back_summary">Gedrückt halten der Zurück-Taste beendet die Anwendung im Vordergrund.</string>
+
+    <!-- About device screen, version of modification of Android. #CM -->
+    <string name="mod_version">Mod-Version</string>
 </resources>
