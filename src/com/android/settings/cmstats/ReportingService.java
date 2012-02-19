@@ -17,7 +17,6 @@
 package com.android.settings.cmstats;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.http.NameValuePair;

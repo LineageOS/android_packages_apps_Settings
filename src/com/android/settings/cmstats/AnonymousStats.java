@@ -18,6 +18,8 @@ package com.android.settings.cmstats;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -33,8 +35,6 @@ import com.android.settings.SettingsPreferenceFragment;
 public class AnonymousStats extends SettingsPreferenceFragment
         implements DialogInterface.OnClickListener, DialogInterface.OnDismissListener,
         Preference.OnPreferenceChangeListener {
-
-    private static final String ENABLE_REPORTING = "pref_enable_reporting";
 
     private static final String VIEW_STATS = "pref_view_stats";
 
@@ -54,8 +54,6 @@ public class AnonymousStats extends SettingsPreferenceFragment
 
     private boolean mOkClicked;
 
-    private String mCurrentDialog;
-
     private SharedPreferences mPrefs;
 
     @Override
@@ -65,10 +63,15 @@ public class AnonymousStats extends SettingsPreferenceFragment
             addPreferencesFromResource(R.xml.anonymous_stats);
             PreferenceScreen prefSet = getPreferenceScreen();
             mPrefs = getActivity().getSharedPreferences("CMStats", 0);
-            mEnableReporting = (CheckBoxPreference) prefSet.findPreference(ENABLE_REPORTING);
-            mEnableReporting.setChecked(mPrefs.getBoolean(ANONYMOUS_OPT_IN, false));
-            mPrefs.edit().putBoolean(ANONYMOUS_FIRST_BOOT, false).apply();
+            mEnableReporting = (CheckBoxPreference) prefSet.findPreference(ANONYMOUS_OPT_IN);
             mViewStats = (Preference) prefSet.findPreference(VIEW_STATS);
+            boolean firstBoot = mPrefs.getBoolean(ANONYMOUS_FIRST_BOOT, true);
+            if (mEnableReporting.isChecked() && firstBoot) {
+                mPrefs.edit().putBoolean(ANONYMOUS_FIRST_BOOT, false).apply();
+                ReportingServiceManager.launchService(getActivity());
+            }
+            NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            nm.cancel(1);
         }
     }
 
@@ -90,7 +93,6 @@ public class AnonymousStats extends SettingsPreferenceFragment
                         .setNeutralButton(getString(R.string.anonymous_learn_more), this)
                         .setNegativeButton(android.R.string.no, this)
                         .show();
-                mCurrentDialog = ENABLE_REPORTING;
                 mOkDialog.setOnDismissListener(this);
             } else {
                 // Disable reporting
@@ -107,6 +109,7 @@ public class AnonymousStats extends SettingsPreferenceFragment
         return true;
     }
 
+    @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         return false;
     }
@@ -114,8 +117,7 @@ public class AnonymousStats extends SettingsPreferenceFragment
     @Override
     public void onDismiss(DialogInterface dialog) {
         if (!mOkClicked) {
-            if (mCurrentDialog.equals(ENABLE_REPORTING))
-                mEnableReporting.setChecked(false);
+            mEnableReporting.setChecked(false);
         }
     }
 
@@ -123,18 +125,10 @@ public class AnonymousStats extends SettingsPreferenceFragment
     public void onClick(DialogInterface dialog, int which) {
         if (which == DialogInterface.BUTTON_POSITIVE) {
             mOkClicked = true;
-            if (mCurrentDialog.equals(ENABLE_REPORTING)) {
-                // Enable reporting
-                mPrefs.edit().putBoolean(ANONYMOUS_OPT_IN, true).apply();
-                // This is no longer the first boot
-                mPrefs.edit().putBoolean(ANONYMOUS_FIRST_BOOT, false).apply();
-                ReportingServiceManager.launchService(getActivity());
-            }
+            mPrefs.edit().putBoolean(ANONYMOUS_OPT_IN, true).apply();
+            ReportingServiceManager.launchService(getActivity());
         } else if (which == DialogInterface.BUTTON_NEGATIVE){
-            // Reset the toggle
-            if (mCurrentDialog.equals(ENABLE_REPORTING)) {
-                mEnableReporting.setChecked(false);
-            }
+            mEnableReporting.setChecked(false);
         } else {
             Uri uri = Uri.parse("http://www.cyanogenmod.com/blog/cmstats-what-it-is-and-why-you-should-opt-in");
             startActivity(new Intent(Intent.ACTION_VIEW, uri));
