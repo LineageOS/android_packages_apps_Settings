@@ -132,38 +132,31 @@ public class PowerWidget extends SettingsPreferenceFragment implements
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         boolean value;
 
-        if (preference == mPowerPicker) {
-            startFragment(null, mPowerPicker.getFragment(), -1, null);
-        }
-
-        if (preference == mPowerOrder) {
-            startFragment(null, mPowerOrder.getFragment(), -1, null);
-        }
-
         if (preference == mPowerWidget) {
             value = mPowerWidget.isChecked();
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.EXPANDED_VIEW_WIDGET,
                     value ? 1 : 0);
-        }
-        if (preference == mPowerWidgetHideOnChange) {
+        } else if (preference == mPowerWidgetHideOnChange) {
             value = mPowerWidgetHideOnChange.isChecked();
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.EXPANDED_HIDE_ONCHANGE,
                     value ? 1 : 0);
-        }
-        if (preference == mPowerWidgetHideScrollBar) {
+        } else if (preference == mPowerWidgetHideScrollBar) {
             value = mPowerWidgetHideScrollBar.isChecked();
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.EXPANDED_HIDE_SCROLLBAR,
                     value ? 1 : 0);
-        }
-        if (preference == mPowerWidgetIndicatorHide) {
+        } else if (preference == mPowerWidgetIndicatorHide) {
             value = mPowerWidgetIndicatorHide.isChecked();
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.EXPANDED_HIDE_INDICATOR,
                     value ? 1 : 0);
+        } else {
+            // If we didn't handle it, let preferences handle it.
+            return super.onPreferenceTreeClick(preferenceScreen, preference);
         }
+
         return true;
     }
 
