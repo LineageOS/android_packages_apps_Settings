@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings;
+package com.android.settings.cyanogenmod;
 
 import android.app.ActivityManagerNative;
 import android.content.res.Configuration;
@@ -25,6 +25,10 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.util.Log;
+
+import com.android.settings.R;
+import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 
 public class SystemSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {

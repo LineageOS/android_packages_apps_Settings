@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings;
+package com.android.settings.cyanogenmod;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -24,16 +24,15 @@ import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 
+import com.android.settings.R;
+import com.android.settings.SettingsPreferenceFragment;
+
 /**
  * Performance Settings
  */
 public class PerformanceSettings extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
     private static final String TAG = "PerformanceSettings";
-
-    private static final String PROCESSOR = "processor";
-
-    private static final String MEMORY_MANAGEMENT = "memory_management";
 
     private static final String USE_DITHERING_PREF = "pref_use_dithering";
 
@@ -49,10 +48,6 @@ public class PerformanceSettings extends SettingsPreferenceFragment
 
     private CheckBoxPreference mUse16bppAlphaPref;
 
-    private PreferenceScreen mProcessor;
-
-    private PreferenceScreen mMemoryManagement;
-
     private AlertDialog alertDialog;
 
     @Override
@@ -65,8 +60,6 @@ public class PerformanceSettings extends SettingsPreferenceFragment
 
             PreferenceScreen prefSet = getPreferenceScreen();
 
-            mProcessor = (PreferenceScreen) prefSet.findPreference(PROCESSOR);
-            mMemoryManagement = (PreferenceScreen) prefSet.findPreference(MEMORY_MANAGEMENT);
             mUseDitheringPref = (CheckBoxPreference) prefSet.findPreference(USE_DITHERING_PREF);
             mUse16bppAlphaPref = (CheckBoxPreference) prefSet.findPreference(USE_16BPP_ALPHA_PREF);
 

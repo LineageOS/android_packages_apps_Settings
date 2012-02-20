@@ -1374,8 +1374,12 @@
             android:theme="@style/CryptKeeperBlankTheme"
         />
 
-	<!-- Light Levels activity -->	
-	<activity android:name=".cyanogenmod.LightLevelsActivity" />
+        <!-- CyanogenMod activities -->
+        <activity android:name=".cyanogenmod.LightLevelsActivity" />
+        <activity android:name=".cyanogenmod.ThemesSettings" />
+        <activity android:name=".cyanogenmod.SystemSettings" />
+        <activity android:name=".cyanogenmod.ProfilesSettings" />
+        <activity android:name=".cyanogenmod.PerformanceSettings" />
 
         <!-- Pseudo-activity used to provide an intent-filter entry point to encryption settings -->
         <activity android:name="Settings$CryptKeeperSettingsActivity"
