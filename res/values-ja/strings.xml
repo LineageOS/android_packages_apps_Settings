@@ -614,8 +614,13 @@
     <string name="audio_record_proc_title" msgid="4271091199976457534">"ノイズキャンセル"</string>
     <string name="volume_media_description" msgid="7949355934788807863">"音楽、動画、ゲーム、その他のメディア"</string>
     <string name="volume_ring_description" msgid="5936851631698298989">"着信音と通知音"</string>
+    <!-- Volume description for ringtone volume -->
+    <string name="volume_ring_only_description">"着信音"</string>
     <string name="volume_notification_description" msgid="5810902320215328321">"通知"</string>
     <string name="volume_alarm_description" msgid="8322615148532654841">"アラーム"</string>
+    <string name="link_volume_ringtones">"着信音と同じ音量にする"</string>
+    <string name="link_volume_ringtones_toast">"通知音の音量を着信音と同じ音量にリセットする"</string>
+    <string name="link_volume_mutes">"ミュート状態をリンクさせる"</string>
     <string name="dock_settings" msgid="1820107306693002541">"ホルダー"</string>
     <string name="dock_settings_title" msgid="9161438664257429372">"ホルダーの設定"</string>
     <string name="dock_audio_settings_title" msgid="3324750259959570305">"音声"</string>
@@ -1581,4 +1586,283 @@
     <string name="backup_pw_cancel_button_text" msgid="8845630125391744615">"キャンセル"</string>
     <string name="percentage" msgid="5866131581207788624">"<xliff:g id="NUMBER">%d</xliff:g>%%"</string>
     <string name="additional_system_update_settings_list_item_title" msgid="214987609894661992">"その他のシステムアップデート"</string>
+
+    <!-- CM String entries bellow -->
+    <!-- Backlight #CM -->
+    <string name="backlight_title">自動バックライト</string>
+    <string name="backlight_summary">フィルタやレベルの調整</string>
+    <string name="light_filter_title">明るさセンサのフィルタ</string>
+    <string name="light_filter_enabled_title">有効</string>
+    <string name="light_filter_enabled_summary">移動平均フィルタを適用し、フリッカを減少させる。</string>
+    <string name="light_filter_window_title">分析窓長</string>
+    <string name="light_filter_window_summary">フィルタ値はこの期間でのセンサー平均値になります。</string>
+    <string name="light_filter_reset_title">リセットする閾値</string>
+    <string name="light_filter_reset_summary">サンプルが現在の平均からこの値だけ逸脱した場合フィルタをリセットします</string>
+    <string name="light_filter_interval_title">サンプリング間隔</string>
+    <string name="light_filter_interval_summary">低い値は精度が良くなりますが、よりCPUを使用します。</string>
+    <string name="light_levels_title">ライトレベル</string>
+    <string name="light_levels_enabled_title">カスタム</string>
+    <string name="light_levels_dim_title">スクリーンの暗さレベル</string>
+    <string name="light_levels_dim_summary">スクリーンを暗くした時の明るさ</string>
+    <string name="light_levels_editor_title">他のレベルを編集...</string>
+    <string name="light_decrease_enabled_title">ライトの減少を許可</string>
+    <string name="light_decrease_enabled_summary">ライトが減少するのを許可します。ヒステリシスを使用してフリッカを減少させてください。</string>
+    <string name="light_decrease_hysteresis_title">ヒステリシスを減少させる</string>
+    <string name="light_decrease_hysteresis_summary">センサーレベルはこれより下にオーバーラップします。</string>
+
+    <!-- Light sensor levels #CM -->
+    <string name="ll_title">ライトセンサーレベル</string>
+    <string name="ll_header_upper">上方</string>
+    <string name="ll_header_lower">下方</string>
+    <string name="ll_header_lcd">スクリーン</string>
+    <string name="ll_header_btn">ボタン</string>
+    <string name="ll_header_kb">キーボード</string>
+    <string name="ll_lux">センサー(フィルタ/生):</string>
+    <string name="ll_lcd">スクリーン:</string>
+    <string name="ll_btn">ボタン:</string>
+    <string name="ll_kb">キーボード:</string>
+    <string name="ll_disabled">無効にする</string>
+    <string name="ll_default">デフォルトに戻す</string>
+    <string name="ll_save">適用して保存</string>
+    <string name="ll_reload">現在の設定を再読込み</string>
+    <string name="ll_bad_levels">レベルは増加しなくてはなりません</string>
+    <string name="ll_num_levels">レベル数をセット</string>
+
+    <!-- Advanced, Device specific (DeviceParts) settings #CM -->
+    <string name="advanced_settings_title">アドバンスド</string>
+    
+<!-- INTERFACE Settings #CM -->
+    <!-- Settings main menu category heading. Interface (Launcher, Themes, System). [CHAR LIMIT=40] -->
+    <string name="header_category_interface">インタフェース</string>
+    
+    <!-- Launcher settings #CM -->
+    <string name="launcher_settings_title">ランチャー</string>
+
+    <!-- Themes settings #CM -->
+    <string name="themes_settings_title">テーマ</string>
+
+    <!-- System Interface settings #CM -->
+    <string name="system_settings_title">システム</string>
+    <string name="system_interface_title">システムインタフェース</string>
+    
+    <!-- Notification Drawer #CM -->
+    <string name="notification_drawer_title">通知領域</string>
+
+    <!-- Combined Bar #CM -->
+    <string name="combined_bar_title">コンバインドバー</string>
+    <string name="combined_bar_auto_hide_title">自動的に隠す</string>
+    <string name="combined_bar_auto_hide_summary">フルスクリーンアプリを表示中にコンバインドバーを隠せるようにする</string>
+
+    <!-- Power Widget #CM -->
+    <string name="power_widget_title">電源管理ウィジェット</string>
+    <string name="title_expanded_widget">電源管理ウィジェットを表示</string>
+    <string name="summary_expanded_widget">通知領域に電源管理ウィジェットを表示する</string>
+    <string name="title_expanded_hide_onchange">変更したら隠す</string>
+    <string name="summary_expanded_hide_onchange">トグルウィジェットボタンを押したら伸ばした通知領域を隠す</string>
+    <string name="title_expanded_hide_indicator">インジケータを隠す</string>
+    <string name="summary_expanded_hide_indicator">通知ウィジェットインジケータを隠す</string>
+    <string name="title_expanded_hide_scrollbar">スクロールバーを隠す</string>
+    <string name="summary_expanded_hide_scrollbar">配置できる最大数より多くボタンを配置したときにスクロールバーを表示しない</string>
+    <string name="title_widget_picker">ウィジェットボタン</string>
+    <string name="summary_widget_picker">ウィジェットボタンを選択</string>
+    <string name="title_widget_order">ウィジェットボタンの並び</string>
+    <string name="summary_widget_order">ウィジェットボタンを並び替える</string>
+    <string name="title_buttons">ボタン</string>
+    <string name="title_toggle_wifi">Wi-Fiトグル</string>
+    <string name="title_toggle_bluetooth">Bluetoothトグル</string>
+    <string name="title_toggle_gps">GPSトグル</string>
+    <string name="title_toggle_sound">サウンドトグル</string>
+    <string name="title_toggle_brightness">明るさトグル</string>
+    <string name="title_toggle_sync">同期トグル</string>
+    <string name="title_toggle_wifiap">Wi-Fi APトグル</string>
+    <string name="title_toggle_screentimeout">スクリーンタイムアウトトグル</string>
+    <string name="title_toggle_mobiledata">モバイルデータトグル</string>
+    <string name="title_toggle_lockscreen">ロックスクリーントグル</string>
+    <string name="title_toggle_networkmode">2G/3Gトグル</string>
+    <string name="title_toggle_autorotate">回転トグル</string>
+    <string name="title_toggle_airplane">機内モードトグル</string>
+    <string name="title_toggle_flashlight">LEDフラッシュトグル</string>
+    <string name="title_toggle_sleep">スリープ</string>
+    <string name="title_toggle_media_play_pause">メディア: 再生/停止トグル</string>
+    <string name="title_toggle_media_previous">メディア: 前に戻る</string>
+    <string name="title_toggle_media_next">メディア: 次に進む</string>
+    <string name="title_toggle_wimax">WiMAXトグル</string>
+    <string name="title_toggle_lte">LTEトグル</string>
+    <string name="title_button_modes">ボタンモード</string>
+    <string name="pref_brightness_mode_title">明るさ</string>
+    <string name="pref_brightness_mode_summary">明るさトグルで変更するモードの選択</string>
+    <string name="cm_brightness_mode_auto">自動</string>
+    <string name="cm_brightness_mode_dim">暗い</string>
+    <string name="pref_network_mode_title">ネットワーク</string>
+    <string name="pref_network_mode_summary">ネットワークのトグルで変更するモードの選択</string>
+    <string name="pref_screentimeout_mode_title">スクリーンタイムアウト</string>
+    <string name="pref_screentimeout_mode_summary">スクリーンタイムアウトトグルで変更するモードの選択</string>
+    <string name="pref_ring_mode_title">サウンド</string>
+    <string name="pref_ring_mode_summary">サウンドトグルで変更するモードの選択</string>
+    <string name="cm_sound_mode_silent">サイレント</string>
+    <string name="cm_sound_mode_vibrate">振動</string>
+    <string name="cm_sound_mode_sound">サウンド</string>
+    <string name="cm_sound_mode_soundVibrate">サウンドと振動</string>
+    <string name="pref_flash_mode_title">フラッシュ</string>
+    <string name="pref_flash_mode_summary">HighかDeath Rayを選択</string>
+
+    <!-- Power Widget, Haptic feedback #CM -->
+    <string name="expanded_haptic_feedback_title">振動フィードバック</string>
+    <string name="expanded_haptic_feedback_summary">振動フィードバックを有効/無効にする</string>
+
+    <!-- Status bar #CM -->
+    <string name="status_bar_title">ステータスバー</string>
+    <string name="status_bar_general_title">一般</string>
+    <string name="status_bar_show_clock_title">時計を表示</string>
+    <string name="status_bar_show_clock_summary">ステータスバーに時計を表示する</string>
+    <string name="status_bar_am_pm_title">AM/PMスタイル</string>
+    <string name="status_bar_am_pm_summary">AM/PMの表示スタイル</string>
+    <string name="status_bar_clock_title">時計</string>
+    <string name="status_bar_battery_title">バッテリー状態のスタイル</string>
+    <string name="status_bar_battery_summary">バッテリー状態の表示スタイル</string>
+    <string name="status_bar_toggle_brightness">明るさのコントロール</string>
+    <string name="status_bar_toggle_brightness_summary">ステータスバーをスライディングすることで明るさの調整ができるようにする。</string>
+    <string name="status_bar_toggle_info">自動明るさ調整は有効</string>
+    <string name="status_bar_cm_signal_text_title">代替の電波強度表示</string>
+    <string name="status_bar_cm_signal_text_summary">シグナルバーの代わりにdBm値を表示</string>
+    <string name="status_bar_cm_signal_text_show_bars">シグナルバー</string>
+    <string name="status_bar_cm_signal_text_show_text">シグナルテキスト</string>
+    <string name="status_bar_cm_signal_text_show_text_dbm">dBm付きのシグナルテキスト</string>
+
+    <!-- Lock screen #CM -->
+    <string name="lock_screen_title">ロックスクリーン</string>
+    <!-- Lock Screen -->
+    
+    <!-- Profiles settings #CM -->
+    <string name="profiles_settings_title">プロファイル</string>
+
+    <!-- Screen security - Screen security  #CM -->
+    <string name="screen_security_category">画面のセキュリティ</string>
+    <string name="screen_security_title">画面のロック</string>
+    <string name="screen_security_summary">ロック画面のセキュリティを表示、変更する(遅延やタイムアウトの調整)</string>
+    <string name="additional_options_title">追加オプション</string>
+    <string name="unlock_menu_unlock_title">メニューアンロック</string>
+    <string name="unlock_menu_unlock_summary">メニューボタンを押して端末をロックから解除する</string>
+    <string name="unlock_quick_unlock_control_title">クイックアンロック</string>
+    <string name="unlock_quick_unlock_control_summary">PINやパワードを入力後、OKを押す必要を省く。不正入力時のカウントは無効になる。</string>
+
+    <!-- Delays and timeouts -->
+    <string name="delay_and_timeout_title">ロックの遅延</string>
+    <!-- Slide lock delay -->
+    <string name="slide_lock_delay_title">スライドロックの遅延</string>
+    <string name="slide_lock_timeout_delay_title">画面タイムアウト時の遅延</string>
+    <string name="slide_lock_timeout_delay_summary">画面がタイムアウトしてからロックするまでの時間</string>
+    <string name="slide_lock_screenoff_delay_title">画面オフ時の遅延</string>
+    <string name="slide_lock_screenoff_delay_summary">画面をオフにしてからロックするまでの時間</string>
+
+    <!-- Performance settings #CM -->
+    <string name="performance_settings_title">パフォーマンス</string>
+
+    <!-- Performance Settings : Warning dialog #CM -->
+    <string name="performance_settings_warning_title">注意してください</string>
+    <string name="performance_settings_warning">これらの設定は実験中のものを含み、変更により不安定、クラッシュ、データの損失、あるいはハードウェアの故障を引き起こす可能性があります。\n\n私たちはこれらの設定を変更した後にバグリポートをしないことをあなたに望みます。</string>
+
+    <!-- Performance Settings : Processor Settings -->
+    <!-- Performance Settings : Processor settings title -->
+    <string name="processor_title">プロセッサ</string>
+    <!-- Performance Settings : Processor settings summary. -->
+    <string name="processor_summary">調整タイプとクロックの設定</string>
+
+    <!-- Performance Settings : Processor settings sub items -->
+    <string name="cpu_cur_freq_title">現在のCPUクロック</string>
+    <string name="cpu_governors_title">CPU調整</string>
+    <string name="cpu_governors_title">調整リスト</string>
+    <string name="cpu_min_freq_title">最小CPUクロック</string>
+    <string name="cpu_max_freq_title">最大CPUクロック</string>
+    <string name="cpu_set_on_boot">起動時に適用</string>
+    <string name="cpu_set_on_boot_summary">起動時にCPU設定を適用する</string>
+
+    <!-- Memory Management -->
+    <string name="memory_management_title">メモリマネジメント</string>
+    <string name="memory_management_summary">システムパフォーマンスを変更するためにメモリの利用をカスタマイズする</string>
+    <!-- zRam -->
+    <string name="pref_zram_title">zRam</string>
+    <string name="pref_zram_summary">メモリを圧縮して仮想領域を増やす(要再起動)</string>
+    <!-- VM Heap Size -->
+    <string name="pref_heapsize_title">VMヒープサイズ</string>
+    <string name="pref_heapsize_summary">VMヒープごとの最大メモリ量(要再起動)</string>
+    <!-- KSM -->
+    <string name="pref_ksm_title">Kernel samepage merging</string>
+    <string name="pref_ksm_summary">KSMは必要とする物理メモリを減らし、パフォーマンスを向上させます</string>
+    <!-- Purgeable Assets -->
+    <string name="pref_purgeable_assets_title">アセットの排除を許可</string>
+    <string name="pref_purgeable_assets_summary">メモリ内に解放可能なビットマップアセットがあれば、システムは必要に応じてRAMを確保できます(要再起動)</string>
+
+    <!-- Performance Settings : Dithering -->
+    <string name="pref_use_dithering_title">サーフェスディザリング</string>
+    <string name="pref_use_dithering_summary">ディザリングは画像品質が向上するが相応のパフォーマンスが必要(要再起動)</string>
+
+    <!-- Performance Settings : 16bpp Alpha -->
+    <string name="pref_use_16bpp_alpha_title">16ビット透過</string>
+    <string name="pref_use_16bpp_alpha_summary">16ビット透過を使用することで、スクロールのパフォーマンスが向上します。しかし低品質で稀に不自然に見えます。(
+要再起動)</string>
+
+    <!-- Donate #CM -->
+    <!-- About device screen, list item title. Takes the user to the screen about how to donate to the CyanogenMod Project. -->
+    <string name="donate_settings_title">寄付</string>
+    <!-- About device screen, list item summary. Takes the user to the screen about how to donate to the CyanogenMod Project. -->
+    <string name="donate_settings_summary">""</string>
+
+    <!-- Anonymous Statistics #CM -->
+    <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
+    <string name="anonymous_statistics_title">CyanogenMod 利用統計</string>
+    <string name="anonymous_statistics_summary">CyanogenMod をより良くするための匿名利用統計報告をオプトインする</string>
+    <string name="anonymous_statistics_warning_title">利用統計について</string>
+    <string name="anonymous_statistics_warning">匿名利用状況の送信を許諾することによって、
+                CyanogenModの開発者がデバイス単位のユニークインストール数を
+                追跡することができます。
+                送信される情報にはユニークIDが含まれますが、これはあなたの
+                個人情報、端末のタイプ及びバージョン情報とは結びつきません。
+                データ送信は端末の起動時に毎回行われ、送信されるデータの例は
+                プレビューをクリックすることにより確認できます。</string>
+    <string name="enable_reporting_title">リポートを有効にする</string>
+    <string name="preview_data_title">データのプレビュー</string>
+    <string name="preview_data_summary">%s</string>
+    <string name="view_stats_title">ステータスを見る</string>
+    <string name="anonymous_learn_more">詳細</string>
+
+    <!-- Anonymous Statistics - Notification -->
+    <string name="anonymous_notification_desc">CyanogenMod 利用統計を有効/無効にする</string>
+
+    <!-- Anonymous Statistics - Preview -->
+    <string name="preview_id_title">ユニークID</string>
+    <string name="preview_device_title">デバイス</string>
+    <string name="preview_version_title">バージョン</string>
+    <string name="preview_country_title">国</string>
+    <string name="preview_carrier_title">キャリア</string>
+
+    <!-- About device screen, version of modification of Android. -->
+    <string name="mod_version">CyanogenMod バージョン</string>
+    <string name="mod_version_default">不明</string>
+
+    <!-- About device screen, build date of ROM. -->
+    <string name="build_date">ビルド日時</string>
+
+    <!-- GPS Source selection -->
+    <string name="location_gps_source_title">GPSソース</string>
+    <string name="location_gps_source_summary">ロケーションプロバイダは内蔵の代わりに外部のBluetooth GPSモジュールを使用する</string>
+    <string name="location_gps_source_notification_title">警告</string>
+    <string name="location_gps_source_notification">GPSソースが切り替わりました! GPSは無効になります。使用するときはまた有効にしてください!</string>
+
+    <!-- Setting checkbox title for Whether debugging should run over TCP/IP. -->
+    <string name="adb_over_network">ADBオーバーネット</string>
+    <string name="adb_over_network_summary">ネットワークインタフェース(Wi-FiやUSB)越しのTCP/IPデバッグを有効にする。この設定は再起動でリセットされます。</string>
+    <!-- Warning for Adb over Network -->
+    <string name="adb_over_network_warning">警告: ADBオーバーネットを有効にするとあなたの端末は、GSMを含むすべての接続可能なネットワークからの侵入を許します!\n\n信頼できるネットワークに接続している場合にのみ有効にしてください。\n\n本当にこの機能を有効にしますか？</string>
+
+    <!-- UI debug setting: kill app long-press back [CHAR LIMIT=25] -->
+    <string name="kill_app_longpress_back">戻るボタンでアプリ終了</string>
+    <!-- UI debug settting: kill app long-press back [CHAR LIMIT=50] -->
+    <string name="kill_app_longpress_back_summary">戻るボタンを長押ししてフォアグラウンドアプリを終了する</string>
+
+    <!-- Wakeup options -->
+    <string name="display_category_wakeup_options_title">復帰オプション</string>
+    <string name="pref_volume_wake_title">ボリュームキーで復帰する</string>
+    <string name="pref_volume_wake_summary">ボリュームアップ/ダウンキーで端末を復帰する。電源ボタンを押しにくい端末用</string>
+
 </resources>
