@@ -21,12 +21,15 @@ import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
+import android.util.Log;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 
 public class StatusBar extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
@@ -40,6 +43,10 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 
     private static final String STATUS_BAR_CM_SIGNAL = "status_bar_cm_signal";
 
+    private static final String COMBINED_BAR_AUTO_HIDE = "combined_bar_auto_hide";
+
+    private static final String STATUS_BAR_CATEGORY_GENERAL = "status_bar_general";
+
     private ListPreference mStatusBarAmPm;
 
     private ListPreference mStatusBarBattery;
@@ -49,6 +56,10 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private CheckBoxPreference mStatusBarClock;
 
     private CheckBoxPreference mStatusBarBrightnessControl;
+
+    private CheckBoxPreference mCombinedBarAutoHide;
+
+    private PreferenceCategory mPrefCategoryGeneral;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,17 +74,16 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mStatusBarAmPm = (ListPreference) prefSet.findPreference(STATUS_BAR_AM_PM);
         mStatusBarBattery = (ListPreference) prefSet.findPreference(STATUS_BAR_BATTERY);
         mStatusBarCmSignal = (ListPreference) prefSet.findPreference(STATUS_BAR_CM_SIGNAL);
+        mCombinedBarAutoHide = (CheckBoxPreference) prefSet.findPreference(COMBINED_BAR_AUTO_HIDE);
 
-
-        mStatusBarClock.setChecked((Settings.System.getInt(getActivity().getApplicationContext()
-                .getContentResolver(),
-        		Settings.System.STATUS_BAR_CLOCK, 1) == 1));
+        mStatusBarClock.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.STATUS_BAR_CLOCK, 1) == 1));
         mStatusBarBrightnessControl.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
-        		Settings.System.STATUS_BAR_BRIGHTNESS_TOGGLE, 0) == 1));
+                Settings.System.STATUS_BAR_BRIGHTNESS_TOGGLE, 0) == 1));
 
         try {
             if (Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(), 
-            		Settings.System.SCREEN_BRIGHTNESS_MODE) == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC) {
+                    Settings.System.SCREEN_BRIGHTNESS_MODE) == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC) {
                 mStatusBarBrightnessControl.setEnabled(false);
                 mStatusBarBrightnessControl.setSummary(R.string.status_bar_toggle_info);
             }
@@ -81,12 +91,12 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         }
 
         int statusBarAmPm = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
-        		Settings.System.STATUS_BAR_AM_PM, 2);
+                Settings.System.STATUS_BAR_AM_PM, 2);
         mStatusBarAmPm.setValue(String.valueOf(statusBarAmPm));
         mStatusBarAmPm.setOnPreferenceChangeListener(this);
 
         int statusBarBattery = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
-        		Settings.System.STATUS_BAR_BATTERY, 0);
+                Settings.System.STATUS_BAR_BATTERY, 0);
         mStatusBarBattery.setValue(String.valueOf(statusBarBattery));
         mStatusBarBattery.setOnPreferenceChangeListener(this);
 
@@ -94,6 +104,18 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         		Settings.System.STATUS_BAR_CM_SIGNAL_TEXT, 0);
         mStatusBarCmSignal.setValue(String.valueOf(signalStyle));
         mStatusBarCmSignal.setOnPreferenceChangeListener(this);
+
+        mCombinedBarAutoHide.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.COMBINED_BAR_AUTO_HIDE, 0) == 1));
+
+        mPrefCategoryGeneral = (PreferenceCategory) findPreference(STATUS_BAR_CATEGORY_GENERAL);
+
+        if (Utils.isScreenLarge()) {
+            mPrefCategoryGeneral.removePreference(mStatusBarBrightnessControl);
+            mPrefCategoryGeneral.removePreference(mStatusBarCmSignal);
+        } else {
+            mPrefCategoryGeneral.removePreference(mCombinedBarAutoHide);
+        }
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -123,6 +145,10 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         } else if (preference == mStatusBarBrightnessControl) {
             value = mStatusBarBrightnessControl.isChecked();
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(), Settings.System.STATUS_BAR_BRIGHTNESS_TOGGLE, value ? 1 : 0);
+            return true;
+        } else if (preference == mCombinedBarAutoHide) {
+            value = mCombinedBarAutoHide.isChecked();
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(), Settings.System.COMBINED_BAR_AUTO_HIDE, value ? 1 : 0);
             return true;
         }
         return false;

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright (C) 2012 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,15 +14,6 @@
      limitations under the License.
 -->
 
-<PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/combined_bar_title">
-
-    <!-- Status bar tweaks -->
-    <CheckBoxPreference
-	android:key="combined_bar_auto_hide"
-	android:title="@string/combined_bar_auto_hide_title"
-	android:summary="@string/combined_bar_auto_hide_summary"
-	android:defaultValue="true" />
-
-</PreferenceScreen>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="combined_status_bar_title">@string/combined_bar_title</string>
+</resources>
