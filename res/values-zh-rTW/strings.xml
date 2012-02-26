@@ -2993,4 +2993,76 @@
     from their cell phone carrier. The use of the string is similar to the string
     "system_update_settings_list_item_title" in this project. [CHAR LIMIT=25] -->
     <string name="additional_system_update_settings_list_item_title" msgid="214987609894661992">"其他系統更新"</string>
+
+    <!-- Summary for PreferenceScreen to launch picker for security method when there is none -->
+    <string name="lockfinger_unlock_set_unlock_launch_picker_summary">使用圖樣、指紋、PIN 或密碼來鎖定螢幕</string>
+
+    <!-- Summary for PreferenceScreen to change security method: None/Pattern/Finger/PIN/Password -->
+    <string name="lockfinger_unlock_set_unlock_launch_picker_change_summary">變更或停用圖樣、指紋、PIN 或密碼安全性</string>
+
+    <!--  Title and summary for preference that guides the user through creating an unlock finger -->
+    <string name="lockfinger_unlock_set_unlock_finger_title">手指</string>
+    <string name="lockfinger_unlock_set_unlock_finger_summary">劃一下手指來解除鎖定螢幕</string>
+
+    <!-- Title for unlock finger settings screen -->
+    <string name="lockfinger_finger_settings_title">螢幕解除鎖定指紋</string>
+
+    <!-- Title for preference that sets or changes unlock finger -->
+    <string name="lockfinger_set_finger_unlock_title">設定指紋解除鎖定</string>
+    <string name="lockfinger_change_finger_unlock_title">變更指紋解除鎖定</string>
+
+    <!-- Title and summary for preference that toggles the finger unlock -->
+    <string name="lockfinger_toggle_unlock_finger_title">需要指紋</string>
+    <string name="lockfinger_toggle_unlock_finger_summary">必須使用指紋來解除鎖定螢幕</string>
+
+    <!-- Title for preference that start True Suite Administration -->
+    <string name="lockfinger_dbadmin_title">TrueSuite 管理</string>
+
+    <!-- Summary shown under unlock_disable_lock_title when finger is in use and can be removed -->
+    <string name="lockfinger_unlock_disable_lock_finger_summary">移除解除鎖定手指</string>
+
+    <!-- Title shown on security settings to allow the user to change their lockscreen finger -->
+    <string name="unlock_change_lock_finger_title">變更解除鎖定手指</string>
+
+    <!-- Toast shown if setting finger was successful -->
+    <string name="lockpassword_finger_set_toast">已設定手指</string>
+
+    <!-- Security & location settings screen, setting option name for finger -->
+    <string name="lockpattern_change_lock_finger_label">變更解除鎖定手指</string>
+
+    <!-- Unlock finger settings screen, Toast shown if there is a semaphore failure. -->
+    <string name="lockfinger_semaphore_failure_toast">信號失敗</string>
+
+    <!-- Unlock finger settings screen, Toast shown a successful enrollment. -->
+    <string name="lockfinger_enrollment_succeeded_toast">註冊成功。</string>
+
+    <!-- Unlock finger settings screen, Toast shown the TSM library is not available. -->
+    <string name="lockfinger_tsm_library_not_available_toast">TSM 程式庫無法載入... 無法繼續!</string>
+
+    <!-- Unlock finger settings screen, Toast shown when the user canneled the enrollment. -->
+    <string name="lockfinger_enrollment_canceled_toast">已取消註冊。</string>
+
+    <!-- Unlock finger settings screen, Toast shown when the enrollment runs timeout. -->
+    <string name="lockfinger_enrollment_timeout_toast">註冊已逾時。</string>
+
+    <!-- Unlock finger settings screen, Toast shown an unknow error happened. -->
+    <string name="lockfinger_enrollment_unknown_error_toast">未知的錯誤。\n可能無法連線。</string>
+
+    <!-- Unlock finger settings screen, Toast shown other errors returned by the enrollment. -->
+    <string name="lockfinger_enrollment_failure_default_toast">註冊未成功。失敗 = %d.</string>
+
+    <!-- Unlock finger settings screen, Toast shown when the database has been full. -->
+    <string name="lockfinger_enrollment_database_full">註冊未成功。 資料庫已滿。</string>
+
+    <!-- Unlock finger settings screen, change unlock finger screen instruction on top of screen after UI timeout -->
+    <string name="lockfinger_dbadmin_failure_default_toast">資料庫管理作業失敗: %d.</string>
+
+    <!-- Unlock finger settings screen, change unlock finger screen instruction on top of screen after UI timeout -->
+    <string name="lockfinger_ui_timeout_header">UI 逾時!</string>
+
+    <!-- Unlock finger settings screen, change unlock finger screen instruction on top of screen after too many bad swipes -->
+    <string name="lockfinger_too_many_bad_swipes_header">劃錯太多次!</string>
+
+    <!-- Unlock finger settings screen, change unlock finger screen countdown hint on bottom of screen when the screen is locked out -->
+    <string name="lockfinger_lockout_countdown_footer">請在 %d 秒內再試一次。</string>
 </resources>

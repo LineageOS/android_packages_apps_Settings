@@ -1375,4 +1375,76 @@
 
 
     <string name="additional_system_update_settings_list_item_title" msgid="214987609894661992">"その他のシステムアップデート"</string>
+
+    <!-- Summary for PreferenceScreen to launch picker for security method when there is none -->
+    <string name="lockfinger_unlock_set_unlock_launch_picker_summary">パターン、指、PIN、またはパスワードで画面をロックする</string>
+
+    <!-- Summary for PreferenceScreen to change security method: None/Pattern/Finger/PIN/Password -->
+    <string name="lockfinger_unlock_set_unlock_launch_picker_change_summary">パターン、指、PIN、またはパスワードによるセキュリティを変更または無効にする</string>
+
+    <!--  Title and summary for preference that guides the user through creating an unlock finger -->
+    <string name="lockfinger_unlock_set_unlock_finger_title">指</string>
+    <string name="lockfinger_unlock_set_unlock_finger_summary">画面のロックを解除するには指を滑らせてください</string>
+
+    <!-- Title for unlock finger settings screen -->
+    <string name="lockfinger_finger_settings_title">画面のロック解除用の指紋</string>
+
+    <!-- Title for preference that sets or changes unlock finger -->
+    <string name="lockfinger_set_finger_unlock_title">指紋によるロック解除の設定</string>
+    <string name="lockfinger_change_finger_unlock_title">指紋によるロック解除の変更</string>
+
+    <!-- Title and summary for preference that toggles the finger unlock -->
+    <string name="lockfinger_toggle_unlock_finger_title">常に指紋を使用</string>
+    <string name="lockfinger_toggle_unlock_finger_summary">画面のロック解除に常に指紋を使用する</string>
+
+    <!-- Title for preference that start True Suite Administration -->
+    <string name="lockfinger_dbadmin_title">TrueSuite の管理</string>
+
+    <!-- Summary shown under unlock_disable_lock_title when finger is in use and can be removed -->
+    <string name="lockfinger_unlock_disable_lock_finger_summary">ロック解除用の指紋の削除</string>
+
+    <!-- Title shown on security settings to allow the user to change their lockscreen finger -->
+    <string name="unlock_change_lock_finger_title">ロック解除用の指紋の変更</string>
+
+    <!-- Toast shown if setting finger was successful -->
+    <string name="lockpassword_finger_set_toast">指が設定されています</string>
+
+    <!-- Security & location settings screen, setting option name for finger -->
+    <string name="lockpattern_change_lock_finger_label">ロック解除用の指紋の変更</string>
+
+    <!-- Unlock finger settings screen, Toast shown if there is a semaphore failure. -->
+    <string name="lockfinger_semaphore_failure_toast">セマフォエラー</string>
+
+    <!-- Unlock finger settings screen, Toast shown a successful enrollment. -->
+    <string name="lockfinger_enrollment_succeeded_toast">登録に成功しました。</string>
+
+    <!-- Unlock finger settings screen, Toast shown the TSM library is not available. -->
+    <string name="lockfinger_tsm_library_not_available_toast">TSM ライブラリをロードできませんでした... 続行できません!</string>
+
+    <!-- Unlock finger settings screen, Toast shown when the user canneled the enrollment. -->
+    <string name="lockfinger_enrollment_canceled_toast">登録がキャンセルされました。</string>
+
+    <!-- Unlock finger settings screen, Toast shown when the enrollment runs timeout. -->
+    <string name="lockfinger_enrollment_timeout_toast">登録がタイムアウトしました。</string>
+
+    <!-- Unlock finger settings screen, Toast shown an unknow error happened. -->
+    <string name="lockfinger_enrollment_unknown_error_toast">不明なエラーが発生しました。\n接続できなかった可能性があります。</string>
+
+    <!-- Unlock finger settings screen, Toast shown other errors returned by the enrollment. -->
+    <string name="lockfinger_enrollment_failure_default_toast">登録できませんでした。エラー = %d.</string>
+
+    <!-- Unlock finger settings screen, Toast shown when the database has been full. -->
+    <string name="lockfinger_enrollment_database_full">登録できませんでした。 データベースがいっぱいです。</string>
+
+    <!-- Unlock finger settings screen, change unlock finger screen instruction on top of screen after UI timeout -->
+    <string name="lockfinger_dbadmin_failure_default_toast">データベース管理操作エラー: %d.</string>
+
+    <!-- Unlock finger settings screen, change unlock finger screen instruction on top of screen after UI timeout -->
+    <string name="lockfinger_ui_timeout_header">UI がタイムアウトしました!</string>
+
+    <!-- Unlock finger settings screen, change unlock finger screen instruction on top of screen after too many bad swipes -->
+    <string name="lockfinger_too_many_bad_swipes_header">読み取りの失敗が多すぎます!</string>
+
+    <!-- Unlock finger settings screen, change unlock finger screen countdown hint on bottom of screen when the screen is locked out -->
+    <string name="lockfinger_lockout_countdown_footer">%d 秒後に再試行してください。</string>
 </resources>
