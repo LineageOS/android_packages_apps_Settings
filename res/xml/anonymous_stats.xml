@@ -20,7 +20,8 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <CheckBoxPreference
-        android:key="pref_enable_reporting"
+        android:key="pref_anonymous_opt_in"
+        android:defaultValue="true"
         android:title="@string/enable_reporting_title" />
 
     <PreferenceScreen
