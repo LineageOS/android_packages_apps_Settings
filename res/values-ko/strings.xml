@@ -1579,4 +1579,264 @@
     <string name="backup_pw_cancel_button_text" msgid="8845630125391744615">"취소"</string>
     <string name="percentage" msgid="5866131581207788624">"<xliff:g id="NUMBER">%d</xliff:g>%%"</string>
     <string name="additional_system_update_settings_list_item_title" msgid="214987609894661992">"추가 시스템 업데이트"</string>
+
+    <!-- Wakeup options -->
+    <string name="display_category_wakeup_options_title">켜기 옵션</string>
+    <string name="pref_volume_wake_title">볼륨 버튼으로 켜기</string>
+    <string name="pref_volume_wake_summary">볼륨 조절 버튼을 눌러 장치를 켤 수 있습니다. 전원 버튼을 누르기 힘든 장비를 위해 만들어졌습니다.</string>
+
+     <!-- Display settings screen, battery light repeat pulsing title -->
+    <string name="battery_pulse_title">배터리 부족 불빛 깜빡이기</string>
+
+    <!-- Backlight #CM -->
+    <string name="backlight_title">자동 백라이트</string>
+    <string name="backlight_summary">백라이트에 관련된 설정 변경</string>
+    <string name="light_filter_title">조도 센서 필터</string>
+    <string name="light_filter_enabled_title">켜짐</string>
+    <string name="light_filter_enabled_summary">센서 데이터에 평균 필터를 사용하여 깜빡임을 줄입니다.</string>
+    <string name="light_filter_window_title">구간 크기</string>
+    <string name="light_filter_window_summary">이 구간 동안의 원본 데이터를 평균내어 센서 값으로 사용합니다.</string>
+    <string name="light_filter_reset_title">초기화 한계</string>
+    <string name="light_filter_reset_summary">이 값을 넘기는 데이터는 필터를 초기화시킵니다.</string>
+    <string name="light_filter_interval_title">측정 주기</string>
+    <string name="light_filter_interval_summary">더 낮은 값은 정확도를 높이지만 CPU를 더 많이 사용합니다.</string>
+    <string name="light_levels_title">백라이트 밝기 단계</string>
+    <string name="light_levels_enabled_title">사용자 지정 사용</string>
+    <string name="light_levels_dim_title">어두울 때의 밝기</string>
+    <string name="light_levels_dim_summary">화면을 어둡게 할 때의 밝기를 지정합니다</string>
+    <string name="light_levels_editor_title">다른 단계 편집\u2026</string>
+    <string name="light_decrease_enabled_title">밝기 감소 허용</string>
+    <string name="light_decrease_enabled_summary">밝기 감소를 허용합니다. 히스테리시스를 사용하여 깜빡임을 줄일 수 있습니다.</string>
+    <string name="light_decrease_hysteresis_title">감소 히스테리시스</string>
+    <string name="light_decrease_hysteresis_summary">이 값을 넘는 센서 값이 들어와야 밝기가 감소됩니다.</string>
+
+    <!-- Light sensor levels #CM -->
+    <string name="ll_title">조도 센서 단계</string>
+    <string name="ll_header_upper">위로</string>
+    <string name="ll_header_lower">아래로</string>
+    <string name="ll_header_lcd">화면</string>
+    <string name="ll_header_btn">버튼</string>
+    <string name="ll_header_kb">키보드</string>
+    <string name="ll_lux">센서값 (필터 / 원본):</string>
+    <string name="ll_lcd">화면:</string>
+    <string name="ll_btn">버튼:</string>
+    <string name="ll_kb">키보드:</string>
+    <string name="ll_disabled">비활성화됨</string>
+    <string name="ll_default">기본값 불러오기</string>
+    <string name="ll_save">저장 후 적용</string>
+    <string name="ll_reload">현재 값 다시 불러오기</string>
+    <string name="ll_bad_levels">반드시 이전 값보다 커야됩니다.</string>
+    <string name="ll_num_levels">단계 수 지정</string>
+
+    <!-- Advanced, Device specific (DeviceParts) settings #CM -->
+    <string name="advanced_settings_title">고급 설정</string>
+    
+<!-- INTERFACE Settings #CM -->
+    <!-- Settings main menu category heading. Interface (Launcher, Themes, System). [CHAR LIMIT=40] -->
+    <string name="header_category_interface">화면</string>
+    
+    <!-- Launcher settings #CM -->
+    <string name="launcher_settings_title">런처</string>
+
+    <!-- Themes settings #CM -->
+    <string name="themes_settings_title">테마</string>
+
+    <!-- System Interface settings #CM -->
+    <string name="system_settings_title">시스템</string>
+    <string name="system_interface_title">시스템 화면 설정</string>
+    
+    <!-- Notification Drawer #CM -->
+    <string name="notification_drawer_title">알림 표시줄</string>
+
+    <!-- Combined Bar #CM -->
+    <string name="combined_bar_title">바 합치기</string>
+    <string name="combined_bar_auto_hide_title">자동 숨기기</string>
+    <string name="combined_bar_auto_hide_summary">전체 화면 앱을 실행할 때 합쳐진 바를 자동으로 숨깁니다.</string>
+
+    <!-- Power Widget #CM -->
+    <string name="power_widget_title">위젯</string>
+    <string name="title_expanded_widget">위젯 보이기</string>
+    <string name="summary_expanded_widget">알림 바에 위젯을 보여줍니다</string>
+    <string name="title_expanded_hide_onchange">변경 시 숨기기</string>
+    <string name="summary_expanded_hide_onchange">위젯 버튼을 누르면 알림 바를 숨깁니다.</string>
+    <string name="title_expanded_hide_indicator">지시기 숨기기</string>
+    <string name="summary_expanded_hide_indicator">위젯 지시기를 숨깁니다</string>
+    <string name="title_expanded_hide_scrollbar">스크롤바 숨기기</string>
+    <string name="summary_expanded_hide_scrollbar">위젯 버튼이 최대 갯수보다 많을 때 스크롤 바를 숨깁니다.</string>
+    <string name="title_widget_picker">위젯 버튼</string>
+    <string name="summary_widget_picker">위젯에 보여줄 버튼을 선택합니다.</string>
+    <string name="title_widget_order">위젯 버튼 순서</string>
+    <string name="summary_widget_order">위젯에 나올 버튼의 순서를 결정합니다.</string>
+    <string name="title_buttons">버튼</string>
+    <string name="title_toggle_wifi">와이파이</string>
+    <string name="title_toggle_bluetooth">블루투스</string>
+    <string name="title_toggle_gps">GPS</string>
+    <string name="title_toggle_sound">소리</string>
+    <string name="title_toggle_brightness">밝기</string>
+    <string name="title_toggle_sync">동기화</string>
+    <string name="title_toggle_wifiap">테더링</string>
+    <string name="title_toggle_screentimeout">화면 자동 끄기</string>
+    <string name="title_toggle_mobiledata">모바일 데이터</string>
+    <string name="title_toggle_lockscreen">잠금 화면</string>
+    <string name="title_toggle_networkmode">2G/3G</string>
+    <string name="title_toggle_autorotate">방향 전환</string>
+    <string name="title_toggle_airplane">에어플레인 모드</string>
+    <string name="title_toggle_flashlight">플래시</string>
+    <string name="title_toggle_sleep">잠자기</string>
+    <string name="title_toggle_media_play_pause">미디어: 재생/일시정지</string>
+    <string name="title_toggle_media_previous">미디어: 이전으로</string>
+    <string name="title_toggle_media_next">미디어: 다음으로</string>
+    <string name="title_toggle_lte">LTE</string>
+    <string name="title_toggle_wimax">WiMAX</string>
+    <string name="title_button_modes">버튼 모드</string>
+    <string name="pref_brightness_mode_title">밝기 버튼 설정</string>
+    <string name="pref_brightness_mode_summary">밝기 버튼이 어떤 것을 고를 지 설정합니다.</string>
+    <string name="cm_brightness_mode_auto">자동</string>
+    <string name="cm_brightness_mode_dim">어둡게</string>
+    <string name="pref_network_mode_title">네트워크 버튼 설정</string>
+    <string name="pref_network_mode_summary">네트워크 버튼이 어떤 것을 고를 지 설정합니다.</string>
+    <string name="pref_screentimeout_mode_title">화면 자동 끄기 버튼 설정</string>
+    <string name="pref_screentimeout_mode_summary">화면 자동 끄기 버튼이 어떻게 변경할지 선택합니다</string>
+    <string name="pref_ring_mode_title">소리 버튼 설정</string>
+    <string name="pref_ring_mode_summary">소리 버튼이 어떤 것을 고를 지 설정합니다.</string>
+    <string name="cm_sound_mode_silent">조용히</string>
+    <string name="cm_sound_mode_vibrate">진동</string>
+    <string name="cm_sound_mode_sound">소리</string>
+    <string name="cm_sound_mode_soundVibrate">소리+진동</string>
+    <string name="pref_flash_mode_title">플래시</string>
+    <string name="pref_flash_mode_summary">고휘도 선택</string>
+
+    <!-- Power Widget, Haptic feedback #CM -->
+    <string name="expanded_haptic_feedback_title">햅틱 반응</string>
+    <string name="expanded_haptic_feedback_summary">햅틱 반응 켜기/끄기</string>
+
+    <!-- Status bar #CM -->
+    <string name="status_bar_title">상태 표시줄</string>
+    <string name="status_bar_clock_title">시계</string>
+    <string name="status_bar_general_title">일반</string>
+    <string name="status_bar_show_clock_title">시계 보이기</string>
+    <string name="status_bar_show_clock_summary">상태 표시줄에 시계 보이기</string>
+    <string name="status_bar_am_pm_title">AM/PM 모양</string>
+    <string name="status_bar_am_pm_summary">AM/PM을 어떻게 보일 지 설정합니다</string>
+    <string name="status_bar_battery_title">배터리 상태 모양</string>
+    <string name="status_bar_battery_summary">배터리 상태를 어떻게 보일 지 설정합니다</string>
+    <string name="status_bar_toggle_brightness">밝기 조절</string>
+    <string name="status_bar_toggle_brightness_summary">상태 표시줄을 슬라이드하여 밝기 조정 하는것을 허용합니다.</string>
+    <string name="status_bar_toggle_info">자동 밝기 조절이 켜져있습니다</string>
+    <string name="status_bar_cm_signal_text_title">대체 신호 표시</string>
+    <string name="status_bar_cm_signal_text_summary">신호 막대 대신에 dBm 각을 표시합니다.</string>
+    <string name="status_bar_cm_signal_text_show_bars">신호 막대</string>
+    <string name="status_bar_cm_signal_text_show_text">신호 글자</string>
+    <string name="status_bar_cm_signal_text_show_text_dbm">신호 글자와 dBm</string>
+
+    <!-- Lock screen #CM -->
+    <string name="lock_screen_title">잠금 화면</string>
+    <!-- Lock Screen -->
+
+    <!-- Profiles settings #CM -->
+    <string name="profiles_settings_title">프로필</string>
+
+    <!-- Performance settings #CM -->
+    <string name="performance_settings_title">성능</string>
+
+    <!-- Performance Settings : Warning dialog #CM -->
+    <string name="performance_settings_warning_title">경고</string>
+    <string name="performance_settings_warning">이 설정은 실험을 위해 포함되었으며 이곳에 있는 설정을 변경하면 불안정, 오류, 데이터 손실, 하드웨어 오류 등이 발생할 수 있습니다.\n\n이곳의 설정을 바꾼 뒤에 발생하는 버그는 제보하지 말아 주시기 바랍니다.</string>
+
+    <!-- Performance Settings : Processor Settings -->
+    <!-- Performance Settings : Processor settings title -->
+    <string name="processor_title">프로세스</string>
+    <!-- Performance Settings : Processor settings summary. -->
+    <string name="processor_summary">CPU 정책과 클럭 속도 변경</string>
+
+    <!-- Performance Settings : Processor settings sub items -->
+    <string name="cpu_cur_freq_title">CPU 클럭 변경</string>
+    <string name="cpu_governors_title">CPU 정책</string>
+    <string name="cpu_governors_summary">%S</string>
+    <string name="cpu_min_freq_title">최소 CPU 클럭</string>
+    <string name="cpu_min_freq_summary">%s</string>
+    <string name="cpu_max_freq_title">최대 CPU 클럭</string>
+    <string name="cpu_max_freq_summary">%s</string>
+    <string name="cpu_set_on_boot">켜질 때 설정</string>
+    <string name="cpu_set_on_boot_summary">프로세서 설정을 켜질 때 적용합니다</string>
+
+    <!-- Memory Management -->
+    <string name="memory_management_title">메모리 관리</string>
+    <string name="memory_management_summary">메모리 사용을 사용자 정의화하여 시스템 성능을 조절합니다</string>
+    <!-- zRam -->
+    <string name="pref_zram_title">zRam</string>
+    <string name="pref_zram_summary">메모리를 압축하여 메모리 사용을 늘릴 수 있습니다 (다시 시작 필요)</string>
+    <!-- VM Heap Size -->
+    <string name="pref_heapsize_title">VM 힙 크기</string>
+    <string name="pref_heapsize_summary">VM 힙 별 할당할 메모리의 양 (다시 시작 필요)</string>
+    <!-- KSM -->
+    <string name="pref_ksm_title">Kernel samepage merging</string>
+    <string name="pref_ksm_summary">KSM은 물리 메모리 필요량을 줄이고 성능을 향상시킵니다</string>
+    <!-- Purgeable Assets -->
+    <string name="pref_purgeable_assets_title">자원 제거 허용</string>
+    <string name="pref_purgeable_assets_summary">비트맵 메모리 자원을 제거하여 필요시 더 많은 메모리를 확보할 수 있습니다 (다시 시작 필요) </string>
+
+    <!-- Performance Settings : Dithering -->
+    <string name="pref_use_dithering_title">화면 디더링</string>
+    <string name="pref_use_dithering_summary">디더링은 일부 디스플레이에서 성능이 낮아지는 대신 그림의 품질이 좋아집니다. (다시 시작 필요)</string>
+
+    <!-- Performance Settings : 16bpp Alpha -->
+    <string name="pref_use_16bpp_alpha_title">16비트 투명</string>
+    <string name="pref_use_16bpp_alpha_summary">그래픽 성능이 좋아지지만 화질이 안좋아지고 시각적인 방해물이 보일 수 있습니다 (다시 시작 필요)</string>
+
+    <!-- Screen security - Screen security  #CM -->
+    <string name="screen_security_category">화면 보안</string>
+    <string name="screen_security_title">잠금 화면</string>
+    <string name="screen_security_summary">잠금 화면 보안 관련 설정을 보거나 바꿀 수 있습니다</string>
+    <string name="additional_options_title">추가 옵션</string>
+    <string name="unlock_menu_unlock_title">메뉴 버튼 잠금 해제</string>
+    <string name="unlock_menu_unlock_summary">메뉴 버튼을 눌러 장치의 잠금을 해제합니다</string>
+    <string name="unlock_quick_unlock_control_title">빠른 잠금 해제</string>
+    <string name="unlock_quick_unlock_control_summary">PIN이나 비밀번호를 입력할 때 확인 버튼을 누를 필요가 없습니다. 지울 때는 잘못된 입력으로 집계됩니다.</string>
+
+    <!-- Delays and timeouts -->
+    <string name="delay_and_timeout_title">잠금 지연</string>
+    <!-- Slide lock delay -->
+    <string name="slide_lock_delay_title">화면 잠금 지연</string>
+    <string name="slide_lock_timeout_delay_title">화면 자동 꺼짐 지연</string>
+    <string name="slide_lock_timeout_delay_summary">화면이 자동으로 꺼진 뒤에 얼마나 시간이 지나야 잠길 지 설정합니다.</string>
+    <string name="slide_lock_screenoff_delay_title">화면 꺼짐 지연</string>
+    <string name="slide_lock_screenoff_delay_summary">화면을 끈 뒤에 얼마나 시간이 지나야 잠길 지 설정합니다.</string>
+
+<!-- Donate #CM -->
+    <!-- About device screen, list item title. Takes the user to the screen about how to donate to the CyanogenMod Project. -->
+    <string name="donate_settings_title">기부</string>
+    <!-- About device screen, list item summary. Takes the user to the screen about how to donate to the CyanogenMod Project. -->
+    <string name="donate_settings_summary">""</string>
+
+    <!-- Anonymous Statistics #CM -->
+    <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
+    <string name="anonymous_statistics_title">CyanogenMod 통계</string>
+    <string name="anonymous_statistics_summary">익명 통계에 참가하여 CyanogenMod를 더 잘 만들 수 있도록 도와줄 수 있습니다.</string>
+    <string name="anonymous_statistics_warning_title">안내</string>
+    <string name="anonymous_statistics_warning">CyanogenMod 익명 통계에 참가하여 비개인 데이터가 CyanogenMod의 개발자들에게 전송되어 장치별 설치를 추적할 수 있습니다. 이 데이터는 고유한 식별자를 포함하지만 개인 사생활 정보를 가지고 있지는 않습니다. 이 정보는 장치를 켤 때마다 전송됩니다.\n\n전송되는 데이터의 예제를 보려면 아래의 미리보기 버튼을 선택십시오.</string>
+    <string name="enable_reporting_title">전송 사용</string>
+    <string name="preview_data_title">미리보기</string>
+    <string name="preview_data_summary">%s</string>
+    <string name="view_stats_title">통계 보기</string>
+    <string name="anonymous_learn_more">자세히 보기</string>
+
+    <!-- Anonymous Statistics - Notification -->
+    <string name="anonymous_notification_desc">CyanogenMod 통계를 활성화하거나 비활성화하십시오</string>
+
+    <!-- Anonymous Statistics - Preview -->
+    <string name="preview_id_title">고유 ID</string>
+    <string name="preview_device_title">장치</string>
+    <string name="preview_version_title">버전</string>
+    <string name="preview_country_title">국가</string>
+    <string name="preview_carrier_title">통신사</string>
+
+    <!-- About device screen, version of modification of Android. -->
+    <string name="mod_version">CyanogenMod 버전</string>
+    <string name="mod_version_default">알 수 없음</string>
+
+    <!-- Temporary - stubed preference - to be removed once all preferences have been merged -->
+    <string name="stubbed">임시 환경 설정</string>
+    <string name="stubbed_summary">기능이 완전히 구현될 때 까지 임시로 둔 메뉴입니다</string>
+
 </resources>
