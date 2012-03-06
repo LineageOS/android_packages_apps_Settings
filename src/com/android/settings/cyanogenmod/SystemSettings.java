@@ -29,6 +29,7 @@ import android.view.IWindowManager;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -39,6 +40,7 @@ public class SystemSettings extends SettingsPreferenceFragment {
     private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
     private static final String KEY_BATTERY_LIGHT = "battery_light";
     private static final String KEY_HARDWARE_KEYS = "hardware_keys";
+    private static final String KEY_NAVIGATION_BAR = "navigation_bar";
     private static final String KEY_LOCK_CLOCK = "lock_clock";
 
     private PreferenceScreen mNotificationPulse;
@@ -75,14 +77,27 @@ public class SystemSettings extends SettingsPreferenceFragment {
         }
 
         // Only show the hardware keys config on a device that does not have a navbar
+        // Only show the navigation bar config on phones that has a navigation bar
+        boolean removeKeys = false;
+        boolean removeNavbar = false;
         IWindowManager windowManager = IWindowManager.Stub.asInterface(
                 ServiceManager.getService(Context.WINDOW_SERVICE));
         try {
             if (windowManager.hasNavigationBar()) {
-                getPreferenceScreen().removePreference(findPreference(KEY_HARDWARE_KEYS));
+                removeKeys = true;
+            } else {
+                removeNavbar = true;
             }
         } catch (RemoteException e) {
             // Do nothing
+        }
+
+        // Act on the above
+        if (removeKeys) {
+            getPreferenceScreen().removePreference(findPreference(KEY_HARDWARE_KEYS));
+        }
+        if (removeNavbar) {
+            getPreferenceScreen().removePreference(findPreference(KEY_NAVIGATION_BAR));
         }
     }
 
