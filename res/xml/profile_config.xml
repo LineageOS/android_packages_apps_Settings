@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2012 The CyanogenMod Project
+<!-- Copyright (C) 2008 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -19,15 +19,20 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <PreferenceCategory
-        android:title="@string/profile_appgroups_title">
-        <PreferenceScreen
-            android:key="app_groups"
-            android:title="@string/profile_appgroups_manage"
-            android:fragment="com.android.settings.profiles.AppGroupList" />
+        android:key="profile_general_section"
+        android:title="@string/profile_name_title">
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:key="profiles_list"
-        android:title="@string/profile_profiles_manage" />
+        android:key="profile_connectionoverrides"
+        android:title="@string/profile_connectionoverrides_title" />
+
+    <PreferenceCategory
+        android:key="profile_volumeoverrides"
+        android:title="@string/profile_volumeoverrides_title" />
+
+    <PreferenceCategory
+        android:key="profile_appgroups"
+        android:title="@string/profile_appgroups_title" />
 
 </PreferenceScreen>
