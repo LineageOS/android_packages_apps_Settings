@@ -612,8 +612,12 @@
     <string name="audio_record_proc_title" msgid="4271091199976457534">"Подавление шума"</string>
     <string name="volume_media_description" msgid="7949355934788807863">"Музыка, видео, игры и другие медиафайлы"</string>
     <string name="volume_ring_description" msgid="5936851631698298989">"Рингтон и уведомления"</string>
+    <string name="volume_ring_only_description">Рингтон</string>
     <string name="volume_notification_description" msgid="5810902320215328321">"Оповещения"</string>
     <string name="volume_alarm_description" msgid="8322615148532654841">"Будильник"</string>
+    <string name="link_volume_ringtones">Связать громк.</string>
+    <string name="link_volume_ringtones_toast">Убедитесь в том, что вы повторно установили громкость уведомлений в соответствии с вашим рингтоном.</string>
+    <string name="link_volume_mutes">Связать беззвуч. режим</string>
     <string name="dock_settings" msgid="1820107306693002541">"Док-станция"</string>
     <string name="dock_settings_title" msgid="9161438664257429372">"Настройки док-станции"</string>
     <string name="dock_audio_settings_title" msgid="3324750259959570305">"Аудио"</string>
@@ -765,6 +769,14 @@
     <string name="usb_ptp_title" msgid="3852760810622389620">"Камера (PTP)"</string>
     <string name="usb_ptp_summary" msgid="7673397474756664929">"Позволяет передавать фотографии с помощью программного обеспечения камеры, а также передавать любые файлы на компьютеры, которые не поддерживают MTP"</string>
     <string name="usb_label_installer_cd" msgid="4331173824920630215">"Установить инструменты передачи файлов"</string>
+
+    <!-- Storage setting. Menu option for generic storage settings [CHAR LIMIT=30]-->
+    <string name="storage_menu_storage">Настройка памяти</string>
+    <!-- Storage setting. Title for generic storage settings [CHAR LIMIT=30]-->
+    <string name="storage_title_storage">Настройка памяти</string>
+    <!-- Storage setting. Storage layout setup [CHAR LIMIT=30]-->
+    <string name="storage_layout">Настройка расположения</string>
+
     <string name="battery_status_title" msgid="9159414319574976203">"Состояние батареи"</string>
     <string name="battery_level_title" msgid="2965679202786873272">"Уровень заряда батареи"</string>
     <string name="apn_settings" msgid="3743170484827528406">"Точки доступа (APN)"</string>
@@ -1642,7 +1654,7 @@
     <string name="themes_settings_title">Темы</string>
 
     <!-- System Interface settings #CM -->
-    <string name="system_settings_title">Системы</string>
+    <string name="system_settings_title">Система</string>
     <string name="system_interface_title">Системный интерфейс</string>
 
     <!-- Notification Drawer #CM -->
@@ -1735,6 +1747,88 @@
 
     <!-- Profiles settings #CM -->
     <string name="profiles_settings_title">Профили</string>
+    <string name="profiles_general_title">Основные</string>
+    <string name="profiles_add">Добавить</string>
+    <string name="profile_menu_delete">Удалить</string>
+    <string name="profile_settings_title">Профиль</string>
+
+    <!-- Add Profile -->
+    <string name="add_profile_dialog_title">Создать новый профиль</string>
+    <string name="profile_name_title">Имя профиля</string>
+    <string name="profile_profile_name_prompt">Введите имя для нового профиля</string>
+    <string name="menu_new_profile">Новый профиль</string>
+    <string name="menu_new_profile_summary">Добавить и настроить новый профиль</string>
+    <string name="new_profile_name">&lt;новый профиль&gt;</string>
+
+    <!-- Rename Profile Dialog  -->
+    <string name="rename_profile_dialog_title">Переименовать профиль</string>
+    <string name="duplicate_profile_name">Повторяющиеся имя профиля!</string>
+
+    <!-- Reset Profiles -->
+    <string name="profile_reset_title">Сбросить</string>
+    <string name="profile_reset_message">Вы действительно хотите удалить все профили, группы приложений и восстановить их по умолчанию?</string>
+
+    <!-- Delete confimation messages -->
+    <string name="profile_delete_confirm">Вы действительно хотите удалить этот профиль?</string>
+    <string name="profile_app_delete_confirm">Вы уверены, что хотите удалить это приложение?</string>
+    <string name="profile_cannot_delete">Вы не можете удалить активный профиль</string>
+
+    <!-- Profile Config screen PreferenceGroup titles -->
+    <string name="profile_connectionoverrides_title">Сетевые подключения</string>
+    <string name="profile_volumeoverrides_title">Переопределение громкости</string>
+    <string name="connection_state_disabled">Выключено</string>
+    <string name="connection_state_enabled">Включено</string>
+    <string name="volume_override_summary">Установить</string>
+
+    <!-- Menu item for managing profiles -->
+    <string name="profile_profiles_manage">Профили</string>
+    <string name="profile_profile_manage">Управление профилями</string>
+    <string name="profile_applist_manage">Список приложений</string>
+    <string name="profile_appgroups_manage">Управление группами приложений</string>
+    <string name="profile_appgroup_manage">Профиль</string>
+
+    <!-- Profile settings screen, section header for settings related to notification profiles -->
+    <string name="profile_settings">Настройки профиля</string>
+    <string name="profile_name">Имя</string>
+
+    <!-- Profile Settings sound modes labels -->
+    <string name="sound_mode">Режим уведомления</string>
+    <string name="ringer_mode">Режим звонка</string>
+    <string name="lights_mode">Облегчённый режим</string>
+    <string name="vibrate_mode">Режим вибрации</string>
+    <string name="choose_soundtone">Звук уведомления</string>
+    <string name="choose_ringtone">Мелодия телефона</string>
+
+    <!-- Sound settings screen, setting option name to pick ringtone (a list dialog comes up)-->
+    <string name="soundtone_title">Звук уведомления</string>
+    <string name="soundtone_summary">""</string>
+
+    <!-- Title for application group setting screen -->
+    <string name="profile_appgroup_title">Группа приложения: %s</string>
+    <string name="profile_appgroups_title">Группы приложений</string>
+    <string name="profile_applist_title">Приложения</string>
+    <string name="profile_new_appgroup">Новая группа приложений</string>
+    <string name="profile_delete_appgroup">Удалить эту группу приложений</string>
+    <string name="profile_appgroup_name_prompt">Введите имя для новой группы приложений</string>
+    <string name="profile_add_app">Добавить приложение</string>
+    <string name="profile_delete_app">Удалить приложение</string>
+
+    <!-- Add application dialog box title -->
+    <string name="profile_choose_app">Выбрать приложение</string>
+    <string name="profile_settings_header">Настройки профиля</string>
+
+    <!-- Connection override toggles (not all are used at this time ) -->
+    <string name="possibleButtons">Доступные кнопки</string>
+    <string name="toggleWifiAp">Точка доступа Wi-Fi</string>
+    <string name="toggleData">Передача данных</string>
+    <string name="toggleSync">Синхронизация</string>
+    <string name="toggleSound">Режим звонка</string>
+    <string name="toggleBrightness">Подсветка</string>
+    <string name="toggleAutoRotate">Поворот экрана</string>
+    <string name="toggleScreenTimeout">Задержка выкл. экрана</string>
+    <string name="toggleAirplane">Режим самолёта</string>
+    <string name="toggleFlashlight">Фонарь</string>
+    <string name="toggleLockScreen">Блокировка</string>
 
     <!-- Profiles - Quiet hours -->
     <string name="quiet_hours_title">Тихие часы</string>
@@ -1851,6 +1945,17 @@
     <string name="preview_version_title">Версия</string>
     <string name="preview_country_title">Страна</string>
     <string name="preview_carrier_title">Оператор</string>
+
+    <!-- Display : Rotation #CM -->
+    <string name="display_rotation_title">Поворот экрана</string>
+    <string name="display_rotation_enabled">Включено.</string>
+    <string name="display_rotation_disabled">Выключено.</string>
+    <string name="display_rotation_unit">градусы</string>
+    <string name="display_rotation_category_title">Режимы вращения</string>
+    <string name="display_rotation_0_title">0 градусов</string>
+    <string name="display_rotation_90_title">90 градусов</string>
+    <string name="display_rotation_180_title">180 градусов</string>
+    <string name="display_rotation_270_title">270 градусов</string>
 
     <!-- About device screen, version of modification of Android. -->
     <string name="mod_version">Версия CyanogenMod</string>
