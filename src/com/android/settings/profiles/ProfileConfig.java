@@ -16,6 +16,7 @@
 
 package com.android.settings.profiles;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 import android.app.AlertDialog;
@@ -27,6 +28,7 @@ import android.app.StreamSettings;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.media.AudioManager;
+import android.net.wimax.WimaxHelper;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -61,7 +63,7 @@ public class ProfileConfig extends SettingsPreferenceFragment
 
     private StreamItem[] mStreams;
 
-    private ConnectionItem[] mConnections;
+    private ArrayList<ConnectionItem> mConnections;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -74,13 +76,14 @@ public class ProfileConfig extends SettingsPreferenceFragment
                 new StreamItem(AudioManager.STREAM_NOTIFICATION, getString(R.string.notification_volume_title))
         };
 
-        mConnections = new ConnectionItem[] {
-                new ConnectionItem(ConnectionSettings.PROFILE_CONNECTION_BLUETOOTH, getString(R.string.toggleBluetooth)),
-                new ConnectionItem(ConnectionSettings.PROFILE_CONNECTION_GPS, getString(R.string.toggleGPS)),
-                new ConnectionItem(ConnectionSettings.PROFILE_CONNECTION_WIFI, getString(R.string.toggleWifi)),
-                new ConnectionItem(ConnectionSettings.PROFILE_CONNECTION_WIFIAP, getString(R.string.toggleWifiAp))
-                //new ConnectionItem(ConnectivityManager.TYPE_WIMAX, getString(R.string.toggleWimax))
-        };
+        mConnections = new ArrayList<ConnectionItem>();
+        mConnections.add(new ConnectionItem(ConnectionSettings.PROFILE_CONNECTION_BLUETOOTH, getString(R.string.toggleBluetooth)));
+        mConnections.add(new ConnectionItem(ConnectionSettings.PROFILE_CONNECTION_GPS, getString(R.string.toggleGPS)));
+        mConnections.add(new ConnectionItem(ConnectionSettings.PROFILE_CONNECTION_WIFI, getString(R.string.toggleWifi)));
+        mConnections.add(new ConnectionItem(ConnectionSettings.PROFILE_CONNECTION_WIFIAP, getString(R.string.toggleWifiAp)));
+        if (WimaxHelper.isWimaxSupported(getActivity())) {
+            mConnections.add(new ConnectionItem(ConnectionSettings.PROFILE_CONNECTION_WIMAX, getString(R.string.toggleWimax)));
+        }
 
         addPreferencesFromResource(R.xml.profile_config);
 
