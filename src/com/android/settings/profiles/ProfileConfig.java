@@ -30,6 +30,7 @@ import android.content.DialogInterface;
 import android.media.AudioManager;
 import android.net.wimax.WimaxHelper;
 import android.os.Bundle;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
@@ -57,6 +58,8 @@ public class ProfileConfig extends SettingsPreferenceFragment
     private Profile mProfile;
 
     private NamePreference mNamePreference;
+
+    private ListPreference mScreenLockModePreference;
 
     // constant value that can be used to check return code from sub activity.
     private static final int PROFILE_GROUP_DETAILS = 1;
@@ -150,6 +153,24 @@ public class ProfileConfig extends SettingsPreferenceFragment
             generalPrefs.addPreference(mNamePreference);
         }
 
+        // Populate system settings
+        PreferenceGroup systemPrefs = (PreferenceGroup) prefSet.findPreference("profile_system_settings");
+        if (systemPrefs != null) {
+            systemPrefs.removeAll();
+
+            // Lockscreen mode preference
+            mScreenLockModePreference = new ListPreference(getActivity());
+            mScreenLockModePreference.setTitle(R.string.profile_lockmode_title);
+            mScreenLockModePreference.setEntries(R.array.profile_lockmode_entries);
+            mScreenLockModePreference.setEntryValues(R.array.profile_lockmode_values);
+            mScreenLockModePreference.setPersistent(false);
+            mScreenLockModePreference.setSummary(getResources().getStringArray(
+                    R.array.profile_lockmode_summaries)[mProfile.getScreenLockMode()]);
+            mScreenLockModePreference.setValue(String.valueOf(mProfile.getScreenLockMode()));
+            mScreenLockModePreference.setOnPreferenceChangeListener(this);
+            systemPrefs.addPreference(mScreenLockModePreference);
+        }
+
         // Populate the audio streams list
         final AudioManager am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         PreferenceGroup streamList = (PreferenceGroup) prefSet.findPreference("profile_volumeoverrides");
@@ -236,6 +257,10 @@ public class ProfileConfig extends SettingsPreferenceFragment
                 mNamePreference.setName(mProfile.getName());
                 Toast.makeText(getActivity(), R.string.duplicate_profile_name, Toast.LENGTH_LONG).show();
             }
+        } else if (preference == mScreenLockModePreference) {
+            mProfile.setScreenLockMode(Integer.valueOf((String) newValue));
+            mScreenLockModePreference.setSummary(getResources().getStringArray(
+                    R.array.profile_lockmode_summaries)[mProfile.getScreenLockMode()]);
         }
         return true;
     }
