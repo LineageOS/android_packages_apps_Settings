@@ -1588,27 +1588,29 @@
     <string name="additional_system_update_settings_list_item_title" msgid="214987609894661992">"その他のシステムアップデート"</string>
 
     <!-- CM String entries bellow -->
+    <string name="battery_pulse_title">バッテリ低残量で点滅</string>
+
     <!-- Backlight #CM -->
     <string name="backlight_title">自動バックライト</string>
     <string name="backlight_summary">フィルタやレベルの調整</string>
     <string name="light_filter_title">明るさセンサのフィルタ</string>
     <string name="light_filter_enabled_title">有効</string>
-    <string name="light_filter_enabled_summary">移動平均フィルタを適用し、フリッカを減少させる。</string>
+    <string name="light_filter_enabled_summary">移動平均フィルタを適用し、フリッカを減少させる</string>
     <string name="light_filter_window_title">分析窓長</string>
-    <string name="light_filter_window_summary">フィルタ値はこの期間でのセンサー平均値になります。</string>
+    <string name="light_filter_window_summary">フィルタ値はこの期間でのセンサー平均値になります</string>
     <string name="light_filter_reset_title">リセットする閾値</string>
     <string name="light_filter_reset_summary">サンプルが現在の平均からこの値だけ逸脱した場合フィルタをリセットします</string>
     <string name="light_filter_interval_title">サンプリング間隔</string>
-    <string name="light_filter_interval_summary">低い値は精度が良くなりますが、よりCPUを使用します。</string>
+    <string name="light_filter_interval_summary">低い値は精度が良くなりますが、よりCPUを使用します</string>
     <string name="light_levels_title">ライトレベル</string>
     <string name="light_levels_enabled_title">カスタム</string>
     <string name="light_levels_dim_title">スクリーンの暗さレベル</string>
     <string name="light_levels_dim_summary">スクリーンを暗くした時の明るさ</string>
     <string name="light_levels_editor_title">他のレベルを編集...</string>
     <string name="light_decrease_enabled_title">ライトの減少を許可</string>
-    <string name="light_decrease_enabled_summary">ライトが減少するのを許可します。ヒステリシスを使用してフリッカを減少させてください。</string>
+    <string name="light_decrease_enabled_summary">ライトが減少するのを許可します。ヒステリシスを使用してフリッカを減少させてください</string>
     <string name="light_decrease_hysteresis_title">ヒステリシスを減少させる</string>
-    <string name="light_decrease_hysteresis_summary">センサーレベルはこれより下にオーバーラップします。</string>
+    <string name="light_decrease_hysteresis_summary">センサーレベルはこれより下にオーバーラップします</string>
 
     <!-- Light sensor levels #CM -->
     <string name="ll_title">ライトセンサーレベル</string>
@@ -1721,12 +1723,13 @@
     <string name="status_bar_battery_title">バッテリー状態のスタイル</string>
     <string name="status_bar_battery_summary">バッテリー状態の表示スタイル</string>
     <string name="status_bar_toggle_brightness">明るさのコントロール</string>
-    <string name="status_bar_toggle_brightness_summary">ステータスバーをスライディングすることで明るさの調整ができるようにする。</string>
+    <string name="status_bar_toggle_brightness_summary">ステータスバーをスライディングすることで明るさの調整ができるようにする</string>
     <string name="status_bar_toggle_info">自動明るさ調整は有効</string>
     <string name="status_bar_signal_text_title">代替の電波強度表示</string>
     <string name="status_bar_signal_text_summary">シグナルバーの代わりにdBm値を表示</string>
     <string name="status_bar_signal_text_show_bars">シグナルバー</string>
     <string name="status_bar_signal_text_show_text">シグナルテキスト</string>
+    <string name="status_bar_signal_text_hidden">非表示</string>
 
     <!-- Lock screen #CM -->
     <string name="lock_screen_title">ロックスクリーン</string>
@@ -1734,6 +1737,93 @@
     
     <!-- Profiles settings #CM -->
     <string name="profiles_settings_title">プロファイル</string>
+    <string name="profiles_general_title">一般</string>
+    <string name="profiles_add">追加</string>
+    <string name="profile_menu_delete">削除</string>
+    <string name="profile_settings_title">プロファイル</string>
+
+    <!-- Add Profile -->
+    <string name="add_profile_dialog_title">新規プロファイル作成</string>
+    <string name="profile_name_title">プロファイルの名前</string>
+    <string name="profile_profile_name_prompt">新しいプロファイルの名前を入力してください</string>
+    <string name="menu_new_profile">新規プロファイル</string>
+    <string name="menu_new_profile_summary">新しいプロファイルを追加して編集する</string>
+    <string name="new_profile_name">&lt;新規プロファイル&gt;</string>
+
+    <!-- Rename Profile Dialog  -->
+    <string name="rename_profile_dialog_title">プロファイル名を変更</string>
+    <string name="duplicate_profile_name">プロファイル名が重複しています!</string>
+
+    <!-- Reset Profiles -->
+    <string name="profile_reset_title">リセット</string>
+    <string name="profile_reset_message">全てのプロファイルとアプリグループを削除してそれらを初期設定に戻しますか?</string>
+
+    <!-- Delete confimation messages -->
+    <string name="profile_delete_confirm">このプロファイルを削除してもよろしいですか?</string>
+    <string name="profile_app_delete_confirm">このアプリを削除してもよろしいですか?</string>
+    <string name="profile_cannot_delete">アクティブなプロファイルを削除することはできません</string>
+
+    <!-- Profile Config screen PreferenceGroup titles -->
+    <string name="profile_connectionoverrides_title">接続のオーバーライド</string>
+    <string name="profile_volumeoverrides_title">音量のオーバーライド</string>
+    <string name="connection_state_disabled">無効</string>
+    <string name="connection_state_enabled">有効</string>
+    <string name="volume_override_summary">設定は </string>
+
+    <!-- Menu item for managing profiles -->
+    <string name="profile_profiles_manage">プロファイル</string>
+    <string name="profile_profile_manage">プロファイルの管理</string>
+    <string name="profile_applist_manage">アプリケーションリスト</string>
+    <string name="profile_appgroups_manage">アプリグループの管理</string>
+    <string name="profile_appgroup_manage">プロファイル</string>
+
+    <!-- Profile settings screen, section header for settings related to notification profiles -->
+    <string name="profile_settings">プロファイル設定</string>
+    <string name="profile_name">名前</string>
+
+    <!-- Profile Settings sound modes labels -->
+    <string name="sound_mode">通知モード</string>
+    <string name="ringer_mode">着信音モード</string>
+    <string name="lights_mode">ライトモード</string>
+    <string name="vibrate_mode">振動モード</string>
+    <string name="choose_soundtone">通知音を選択</string>
+    <string name="choose_ringtone">着信音を選択</string>
+
+    <!-- Sound settings screen, setting option name to pick ringtone (a list dialog comes up)-->
+    <string name="soundtone_title">通知音</string>
+    <string name="soundtone_summary">""</string>
+
+    <!-- Title for application group setting screen -->
+    <string name="profile_appgroup_title">アプリグループ: %s</string>
+    <string name="profile_appgroups_title">アプリグループ</string>
+    <string name="profile_applist_title">アプリケーション</string>
+    <string name="profile_new_appgroup">新規アプリグループ</string>
+    <string name="profile_delete_appgroup">このグループを削除する</string>
+    <string name="profile_appgroup_name_prompt">アプリグループの名前を入力してください</string>
+    <string name="profile_add_app">アプリを追加</string>
+    <string name="profile_delete_app">アプリを削除</string>
+
+    <!-- Add application dialog box title -->
+    <string name="profile_choose_app">アプリ選択</string>
+    <string name="profile_settings_header">プロファイル設定</string>
+
+    <!-- Connection override toggles (not all are used at this time ) -->
+    <string name="possibleButtons">可能なボタン</string>
+    <string name="toggleWifi">Wi-Fi</string>
+    <string name="toggleWifiAp">ポータブルアクセスポイント</string>
+    <string name="toggleBluetooth">Bluetooth</string>
+    <string name="toggleGPS">GPS</string>
+    <string name="toggleData">データ通信</string>
+    <string name="toggleSync">データ同期</string>
+    <string name="toggle2g3g">2G/3G</string>
+    <string name="toggleSound">着信モード</string>
+    <string name="toggleBrightness">明るさ</string>
+    <string name="toggleAutoRotate">回転</string>
+    <string name="toggleScreenTimeout">スクリーンタイムアウト</string>
+    <string name="toggleAirplane">機内モード</string>
+    <string name="toggleFlashlight">フラッシュライト</string>
+    <string name="toggleLockScreen">画面のロック</string>
+    <string name="toggleWimax">WiMAX</string>
 
     <!-- Screen security - Screen security  #CM -->
     <string name="screen_security_category">画面のセキュリティ</string>
@@ -1743,7 +1833,7 @@
     <string name="unlock_menu_unlock_title">メニューアンロック</string>
     <string name="unlock_menu_unlock_summary">メニューボタンを押して端末をロックから解除する</string>
     <string name="unlock_quick_unlock_control_title">クイックアンロック</string>
-    <string name="unlock_quick_unlock_control_summary">PINやパワードを入力後、OKを押す必要を省く。不正入力時のカウントは無効になる。</string>
+    <string name="unlock_quick_unlock_control_summary">PINやパワードを入力後、OKを押す必要を省く(不正入力時のカウントは無効になる)</string>
 
     <!-- Delays and timeouts -->
     <string name="delay_and_timeout_title">ロックの遅延</string>
@@ -1759,7 +1849,7 @@
 
     <!-- Performance Settings : Warning dialog #CM -->
     <string name="performance_settings_warning_title">注意してください</string>
-    <string name="performance_settings_warning">これらの設定は実験中のものを含み、変更により不安定、クラッシュ、データの損失、あるいはハードウェアの故障を引き起こす可能性があります。\n\n私たちはこれらの設定を変更した後にバグリポートをしないことをあなたに望みます。</string>
+    <string name="performance_settings_warning">これらの設定は実験中のものを含み、変更により不安定、クラッシュ、データの損失、あるいはハードウェアの故障を引き起こす可能性があります。\n\nこれらの設定を変更した後にバグリポートをしないでください。</string>
 
     <!-- Performance Settings : Processor Settings -->
     <!-- Performance Settings : Processor settings title -->
@@ -1797,7 +1887,7 @@
 
     <!-- Performance Settings : 16bpp Alpha -->
     <string name="pref_use_16bpp_alpha_title">16ビット透過</string>
-    <string name="pref_use_16bpp_alpha_summary">16ビット透過を使用することで、スクロールのパフォーマンスが向上します。しかし低品質で稀に不自然に見えます。(
+    <string name="pref_use_16bpp_alpha_summary">16ビット透過を使用することでスクロールのパフォーマンスが向上しますが、低品質で稀に不自然に見えます(
 要再起動)</string>
 
     <!-- Donate #CM -->
@@ -1845,13 +1935,13 @@
     <string name="location_gps_source_title">GPSソース</string>
     <string name="location_gps_source_summary">ロケーションプロバイダは内蔵の代わりに外部のBluetooth GPSモジュールを使用する</string>
     <string name="location_gps_source_notification_title">警告</string>
-    <string name="location_gps_source_notification">GPSソースが切り替わりました! GPSは無効になります。使用するときはまた有効にしてください!</string>
+    <string name="location_gps_source_notification">GPSソースが切り替わりました！GPSは無効になります。使用するときはまた有効にしてください！</string>
 
     <!-- Setting checkbox title for Whether debugging should run over TCP/IP. -->
-    <string name="adb_over_network">ADBオーバーネット</string>
-    <string name="adb_over_network_summary">ネットワークインタフェース(Wi-FiやUSB)越しのTCP/IPデバッグを有効にする。この設定は再起動でリセットされます。</string>
+    <string name="adb_over_network">ADBオーバーネットワーク</string>
+    <string name="adb_over_network_summary">ネットワークインタフェース(Wi-FiやUSB)越しのTCP/IPデバッグを有効にする(この設定は再起動でリセットされます)</string>
     <!-- Warning for Adb over Network -->
-    <string name="adb_over_network_warning">警告: ADBオーバーネットを有効にするとあなたの端末は、GSMを含むすべての接続可能なネットワークからの侵入を許します!\n\n信頼できるネットワークに接続している場合にのみ有効にしてください。\n\n本当にこの機能を有効にしますか？</string>
+    <string name="adb_over_network_warning">警告: ADBオーバーネットワークを有効にするとあなたの端末は、GSMを含むすべての接続可能なネットワークからの侵入を許します！\n\n信頼できるネットワークに接続している場合にのみ有効にしてください。\n\n本当にこの機能を有効にしますか？</string>
 
     <!-- UI debug setting: kill app long-press back [CHAR LIMIT=25] -->
     <string name="kill_app_longpress_back">戻るボタンでアプリ終了</string>
@@ -1861,6 +1951,55 @@
     <!-- Wakeup options -->
     <string name="display_category_wakeup_options_title">復帰オプション</string>
     <string name="pref_volume_wake_title">ボリュームキーで復帰する</string>
-    <string name="pref_volume_wake_summary">ボリュームアップ/ダウンキーで端末を復帰する。電源ボタンを押しにくい端末用</string>
+    <string name="pref_volume_wake_summary">ボリュームアップ/ダウンキーで端末を復帰する(電源ボタンを押しにくい端末用)</string>
+
+    <!-- Quiet hours -->
+    <string name="quiet_hours_title">サイレントタイム</string>
+    <string name="quiet_hours_summary">デバイスがサイレントモードになる時間の参照や変更</string>
+    <string name="quiet_hours_note_title">ノート</string>
+    <string name="quiet_hours_note_summary">着信はサイレントタイム中でも通常の挙動になります</string>
+    <string name="quiet_hours_enabled">サイレントタイムを有効にする</string>
+    <string name="quiet_hours_enabled_on">サイレントタイムが機能します</string>
+    <string name="quiet_hours_enabled_off">通知は平常通り行われます</string>
+    <string name="quiet_hours_start">開始時刻</string>
+    <string name="quiet_hours_start_summary">サイレントタイムが始まる時刻</string>
+    <string name="quiet_hours_end">終了時刻</string>
+    <string name="quiet_hours_end_summary">サイレントタイムが終了する時刻</string>
+    <string name="quiet_hours_mute">通知音をミュート</string>
+    <string name="quiet_hours_mute_on">通知音は再生されません</string>
+    <string name="quiet_hours_mute_off">通知音は再生されます</string>
+    <string name="quiet_hours_still">振動を無効</string>
+    <string name="quiet_hours_still_on">端末は振動しません</string>
+    <string name="quiet_hours_still_off">端末は平常通り振動します</string>
+    <string name="quiet_hours_dim">LEDを暗くする</string>
+    <string name="quiet_hours_dim_on">可能であればLEDを暗くします</string>
+    <string name="quiet_hours_dim_off">LEDは最大照度で点灯します</string>
+    <string name="quiet_hours_haptic">振動フィードバックを無効にする</string>
+    <string name="quiet_hours_haptic_on">振動フィードバックは無効</string>
+    <string name="quiet_hours_haptic_off">振動フィードバックは有効</string>
+
+    <!-- Display : Rotation #CM -->
+    <string name="display_rotation_title">自動回転</string>
+    <string name="display_rotation_enabled">有効</string>
+    <string name="display_rotation_disabled">無効</string>
+    <string name="display_rotation_unit">度</string>
+    <string name="display_rotation_category_title">回転モード</string>
+    <string name="display_rotation_0_title">0度</string>
+    <string name="display_rotation_90_title">90度</string>
+    <string name="display_rotation_180_title">180度</string>
+    <string name="display_rotation_270_title">270度</string>
+
+    <!-- Storage setting. Menu option for generic storage settings [CHAR LIMIT=30]-->
+    <string name="storage_menu_storage">ストレージ設定</string>
+    <!-- Storage setting. Title for generic storage settings [CHAR LIMIT=30]-->
+    <string name="storage_title_storage">ストレージ設定</string>
+    <!-- Storage setting. Storage layout setup [CHAR LIMIT=30]-->
+    <string name="storage_layout">レイアウト設定</string>
+
+    <!-- Storage layout Settings : Switch storage mountpoints -->
+    <string name="storage_switch_title">内蔵ストレージを使用する</string>
+    <string name="storage_switch_summary_on">アプリやメディア用に内蔵の拡張ストレージを使用する</string>
+    <string name="storage_switch_summary_off">アプリやメディア用にSDカードを使用する</string>
+    <string name="storage_switch_unavailable">この端末は内蔵の拡張ストレージがありません</string>
 
 </resources>
