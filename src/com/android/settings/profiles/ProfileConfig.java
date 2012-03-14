@@ -231,7 +231,7 @@ public class ProfileConfig extends SettingsPreferenceFragment
                 mProfile.setName(name);
             } else {
                 mNamePreference.setName(mProfile.getName());
-                Toast.makeText(getActivity(), R.string.duplicate_profile_name, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), R.string.duplicate_profile_name, Toast.LENGTH_LONG).show();
             }
         }
         return true;
