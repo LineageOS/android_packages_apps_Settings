@@ -16,26 +16,17 @@
 
 package com.android.settings.profiles;
 
-import com.android.settings.R;
-import com.android.settings.SettingsPreferenceFragment;
-
-import android.app.AlertDialog;
-import android.app.Fragment;
 import android.content.ActivityNotFoundException;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.PreferenceActivity;
-import android.provider.Settings;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.android.settings.R;
+import com.android.settings.SettingsPreferenceFragment;
 
 public class ProfilesPreference extends CheckBoxPreference {
     private static final String TAG = ProfilesPreference.class.getSimpleName();
