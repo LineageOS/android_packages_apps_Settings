@@ -18,30 +18,22 @@ package com.android.settings.profiles;
 
 import java.util.UUID;
 
-import android.app.AlertDialog;
 import android.app.NotificationGroup;
 import android.app.ProfileManager;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.EditText;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 
 public class AppGroupList extends SettingsPreferenceFragment {
 
     private static final String TAG = "AppGroupSettings";
 
     public static final String PROFILE_SERVICE = "profile";
-
-    private static final int MENU_ADD = Menu.FIRST;
 
     private ProfileManager mProfileManager;
 
@@ -56,64 +48,20 @@ public class AppGroupList extends SettingsPreferenceFragment {
             addPreferencesFromResource(R.xml.appgroup_list);
             mProfileManager = (ProfileManager) getActivity().getSystemService(PROFILE_SERVICE);
         }
-
-        setHasOptionsMenu(true);
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        MenuItem addAppGroup = menu.add(0, MENU_ADD, 0, R.string.profiles_add)
-                .setIcon(R.drawable.ic_menu_add)
-                .setAlphabeticShortcut('a');
-        addAppGroup.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM |
-                MenuItem.SHOW_AS_ACTION_WITH_TEXT);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case MENU_ADD:
-                addAppGroup();
-                return true;
-            default:
-                return false;
-        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        fillList();
-    }
+        refreshList();
 
-    private void addAppGroup() {
-        Context context = getActivity();
-        if (context != null) {
-            AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-            final EditText entry = new EditText(context);
-            entry.setPadding(10, 10, 10, 10);
-            dialog.setMessage(R.string.profile_appgroup_name_prompt);
-            dialog.setView(entry);
-            dialog.setPositiveButton(android.R.string.ok,
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            NotificationGroup newGroup = new NotificationGroup(entry.getText().toString());
-                            mProfileManager.addNotificationGroup(newGroup);
-                            fillList();
-                        }
-                    });
-            dialog.setNegativeButton(android.R.string.cancel,
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                        }
-                    });
-            dialog.create().show();
+        // On tablet devices remove the padding
+        if (Utils.isScreenLarge()) {
+            getListView().setPadding(0, 0, 0, 0);
         }
-    }
+}
 
-    private void fillList() {
+    public void refreshList() {
         PreferenceScreen appgroupList = getPreferenceScreen();
         appgroupList.removeAll();
 
