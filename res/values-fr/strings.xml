@@ -748,8 +748,8 @@
     <string name="title_toggle_gps">GPS</string>
     <string name="title_toggle_sound">Son</string>
     <string name="title_toggle_brightness">Luminosité</string>
-    <string name="title_toggle_sync">Sync</string>
-    <string name="title_toggle_wifiap">Wifi AP</string>
+    <string name="title_toggle_sync">Sync. données</string>
+    <string name="title_toggle_wifiap">Partage Wifi</string>
     <string name="title_toggle_screentimeout">Timeout écran</string>
     <string name="title_toggle_mobiledata">Données mobile</string>
     <string name="title_toggle_lockscreen">Verrouillage</string>
@@ -807,7 +807,107 @@
 
     <!-- Profiles settings #CM -->
     <string name="profiles_settings_title">Profils</string>
+    <string name="profiles_general_title">Général</string>
+    <string name="profiles_add">Ajouter</string>
+    <string name="profile_menu_delete">Supprimer</string>
+    <string name="profile_settings_title">Profil</string>
 
+    <!-- Add Profile -->
+    <string name="add_profile_dialog_title">Créer nouveau profil</string>
+    <string name="profile_name_title">Nom du profil</string>
+    <string name="profile_profile_name_prompt">Entrer le nom du profil</string>
+    <string name="menu_new_profile">Nouveau profil</string>
+    <string name="menu_new_profile_summary">Ajouter et configurer un nouveau profil</string>
+    <string name="new_profile_name">&lt;nouveau profil&gt;</string>
+
+    <!-- Rename Profile Dialog  -->
+    <string name="rename_profile_dialog_title">Renommer profil</string>
+    <string name="duplicate_profile_name">Ce profil existe déjà !</string>
+
+    <!-- Reset Profiles -->
+    <string name="profile_reset_title">Reset</string>
+    <string name="profile_reset_message">Etes-vous certain de vouloir supprimer tous les profils et groupes d\'applications ?</string>
+
+    <!-- Delete confimation messages -->
+    <string name="profile_delete_confirm">Supprimer ce profil ?</string>
+    <string name="profile_app_delete_confirm">Supprimer cette application ?</string>
+    <string name="profile_cannot_delete">Vous ne pouvez pas supprimer le profil actif</string>
+
+    <!-- Profile Config screen PreferenceGroup titles -->
+    <string name="profile_connectionoverrides_title">Connexions</string>
+    <string name="profile_volumeoverrides_title">Volume perso.</string>
+    <string name="connection_state_disabled">Inactif</string>
+    <string name="connection_state_enabled">Actif</string>
+    <string name="volume_override_summary">Actuel</string>
+
+    <!-- Menu item for managing profiles -->
+    <string name="profile_profiles_manage">Profils</string>
+    <string name="profile_profile_manage">Gérer le profil</string>
+    <string name="profile_applist_manage">Liste des applications</string>
+    <string name="profile_appgroups_manage">Gérer groupes d\'applications</string>
+    <string name="profile_appgroup_manage">Profil</string>
+
+    <!-- Profile settings screen, section header for settings related to notification profiles -->
+    <string name="profile_settings">Paramètres du Profil</string>
+    <string name="profile_name">Nom</string>
+
+    <!-- Profile Settings sound modes labels -->
+    <string name="sound_mode">Mode de notification</string>
+    <string name="ringer_mode">Sonnerie</string>
+    <string name="lights_mode">Leds</string>
+    <string name="vibrate_mode">Vibreur</string>
+    <string name="choose_soundtone">Son de notification</string>
+    <string name="choose_ringtone">Choix de la sonnerie</string>
+
+    <!-- Sound settings screen, setting option name to pick ringtone (a list dialog comes up)-->
+    <string name="soundtone_title">Son de notification</string>
+    <string name="soundtone_summary">""</string>
+
+    <!-- Title for application group setting screen -->
+    <string name="profile_appgroup_title">Groupe d\'applications: %s</string>
+    <string name="profile_appgroups_title">Groupes d\'applications</string>
+    <string name="profile_applist_title">Applications</string>
+    <string name="profile_new_appgroup">Nouveau groupe d\'applications</string>
+    <string name="profile_delete_appgroup">Supprimer ce groupe d\'applications</string>
+    <string name="profile_appgroup_name_prompt">Saisir le nom du nouveau groupe</string>
+    <string name="profile_add_app">Ajouter application</string>
+    <string name="profile_delete_app">Retirer application</string>
+
+    <!-- Add application dialog box title -->
+    <string name="profile_choose_app">Choisir une application</string>
+    <string name="profile_settings_header">Paramètres des Profils</string>
+
+    <!-- Profiles - system settings -->
+    <string name="profile_system_settings_title">Paramètres système</string>
+    <string name="profile_lockmode_title">Mode de verrouillage</string>
+    <string name="profile_lockmode_default">Par défaut</string>
+    <string name="profile_lockmode_insecure">Non sécurisé</string>
+    <string name="profile_lockmode_disabled">Désactivé</string>
+    <string name="profile_lockmode_default_summary">Conserver les paramètres système</string>
+    <string name="profile_lockmode_insecure_summary">Ecran de verrouillage non sécurisé</string>
+    <string name="profile_lockmode_disabled_summary">Ecran de verrouillage désactivé</string>
+
+    <string name="profile_disable_screen_lock_summary">Désactive l\'écran de verrouillage lorsque ce profil est actif</string>
+
+    <!-- Connection override toggles (not all are used at this time ) -->
+    <string name="possibleButtons">Boutons disponibles</string>
+    <string name="toggleWifi">Wi-Fi</string>
+    <string name="toggleWifiAp">Partage Wi-Fi</string>
+    <string name="toggleBluetooth">Bluetooth</string>
+    <string name="toggleGPS">GPS</string>
+    <string name="toggleData">Données mobiles</string>
+    <string name="toggleSync">Sync. données</string>
+    <string name="toggle2g3g">2G/3G</string>
+    <string name="toggleSound">Sonnerie</string>
+    <string name="toggleBrightness">Luminosité</string>
+    <string name="toggleAutoRotate">Orientation</string>
+    <string name="toggleScreenTimeout">Timeout écran</string>
+    <string name="toggleAirplane">Mode avion</string>
+    <string name="toggleFlashlight">Torche</string>
+    <string name="toggleLockScreen">Ecran verrouillage</string>
+    <string name="toggleWimax">WiMAX</string>
+
+    <!-- Security Settings --><skip />
     <!-- Screen security - Screen security #CM -->
     <string name="screen_security_category">Verrouillage de l\'écran</string>
     <string name="screen_security_title">Ecran de verrouillage</string>
@@ -831,10 +931,20 @@
     <string name="adb_over_network">ADB sur TCP/IP</string>
     <string name="adb_over_network_summary">"Activer le débogage sur toutes les interfaces (réseaux USB, Wi-Fi et Bluetooth)"</string>
     <string name="adb_over_network_warning">"ATTENTION: Lorsque cette fonction est activée, votre téléphone est ouvert aux intrusions sur toutes les interfaces, y compris via le réseau mobile !\n\nIl est fortement conseillé de désactiver le réseau mobile avant d\'activer cette fonction.\n\nContinuer ?"</string>
+    <!-- Setting checkbox title for root access -->
+    <string name="root_access">Accès root</string>
+    <string name="root_access_warning_title">Autoriser l\'accès root ?</string>
+    <string name="root_access_warning_message">Autoriser l\'accès root aux applications peut être très dangereux et corrompre la sécurité et la stabilité de votre appareil !</string>
+    <string name="root_access_none">Désactivé</string>
+    <string name="root_access_apps">Appli. uniquement</string>
+    <string name="root_access_adb">ADB uniquement</string>
+    <string name="root_access_all">Applications et ADB</string>
+
     <string name="kill_app_longpress_back">Tuer avec bouton Retour</string>
     <string name="kill_app_longpress_back_summary">Permet de forcer la fermeture de l\'application en cours en appuyant longuement sur le bouton Retour</string>
 
     <!-- Performance Settings #CM -->
+    <string name="performance_settings_title">Performances</string>
     <string name="performance_settings_warning_title">ATTENTION !</string>
     <string name="performance_settings_warning">Les options présentes ici altèrent les performances du système, en bien ou en mal.\nElles ont des comportements différents selon les appareils et sont disponibles pour expérimentation.\nNous vous demandons de ne pas soumettre de rapport de bug à propos de celles-ci.</string>
     <string name="pref_use_dithering_title">Activer le tramage</string>
