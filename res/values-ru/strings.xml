@@ -609,6 +609,8 @@
     <string name="sound_effects_enable_title" msgid="1171590821131077296">"Звук нажатия на экран"</string>
     <string name="lock_sounds_enable_title" msgid="450098505659399520">"Звук блокировки экрана"</string>
     <string name="haptic_feedback_enable_title" msgid="2438293710530828760">"Включить виброотклик"</string>
+    <string name="volbtn_music_controls_title">Управление музыкой кнопками громкости</string>
+    <string name="volbtn_music_controls_summary">Когда экран выключен, долгое нажатие кнопок громкости переключает музыкальные треки</string>
     <string name="audio_record_proc_title" msgid="4271091199976457534">"Подавление шума"</string>
     <string name="volume_media_description" msgid="7949355934788807863">"Музыка, видео, игры и другие медиафайлы"</string>
     <string name="volume_ring_description" msgid="5936851631698298989">"Рингтон и уведомления"</string>
@@ -1158,6 +1160,16 @@
     <string name="allow_mock_location_summary" msgid="317615105156345626">"Разрешить использование фиктивных местоположений"</string>
     <string name="adb_warning_title" msgid="6234463310896563253">"Разрешить отладку USB?"</string>
     <string name="adb_warning_message" msgid="7316799925425402244">"Отладка по USB – это режим, который позволяет использовать ваше устройство как внешний накопитель: перемещать файлы (с компьютера и на компьютер), напрямую устанавливать приложения, а также просматривать системные журналы."</string>
+
+    <!-- Setting checkbox title for root access -->
+    <string name="root_access">Root доступ</string>
+    <string name="root_access_warning_title">Разрешить root доступ?</string>
+    <string name="root_access_warning_message">Позволять приложениям получать root доступ может быть очень опасным и ставит под угрозу безопасность вашей системы!</string>
+    <string name="root_access_none">Выключен</string>
+    <string name="root_access_apps">Только приложения</string>
+    <string name="root_access_adb">Только ADB</string>
+    <string name="root_access_all">Приложения и ADB</string>
+
     <string name="gadget_picker_title" msgid="98374951396755811">"Выбор гаджета"</string>
     <string name="widget_picker_title" msgid="9130684134213467557">"Выбор виджета"</string>
     <string name="battery_history_days" msgid="7110262897769622564">"<xliff:g id="DAYS">%1$d</xliff:g> дн. <xliff:g id="HOURS">%2$d</xliff:g> ч. <xliff:g id="MINUTES">%3$d</xliff:g> мин. <xliff:g id="SECONDS">%4$d</xliff:g> с."</string>
@@ -1817,6 +1829,17 @@
     <string name="profile_choose_app">Выбрать приложение</string>
     <string name="profile_settings_header">Настройки профиля</string>
 
+    <!-- Profiles - system settings -->
+    <string name="profile_system_settings_title">Настройки системы</string>
+    <string name="profile_lockmode_title">Режим блок. экрана</string>
+    <string name="profile_lockmode_default">По умолчанию</string>
+    <string name="profile_lockmode_insecure">Ненадёжный</string>
+    <string name="profile_lockmode_disabled">Выключен</string>
+    <string name="profile_lockmode_default_summary">Использовать умолчания системы</string>
+    <string name="profile_lockmode_insecure_summary">Использовать ненадёжную блокировку экрана</string>
+    <string name="profile_lockmode_disabled_summary">Блокировка экрана выключена</string>
+    <string name="profile_disable_screen_lock_summary">Отключать блокировку экрана когда этот профиль активен</string>
+
     <!-- Connection override toggles (not all are used at this time ) -->
     <string name="possibleButtons">Доступные кнопки</string>
     <string name="toggleWifiAp">Точка доступа Wi-Fi</string>
@@ -1963,8 +1986,9 @@
     <!-- About device screen, build date of ROM. -->
     <string name="build_date">Дата сборки</string>
 
-    <!-- Wakeup options -->
-    <string name="display_category_wakeup_options_title">Варианты пробуждения</string>
+    <!-- Input Settings -->
+    <string name="input_settings">Кнопки</string>
+    <string name="input_settings_title">Кнопки</string>
     <string name="pref_volume_wake_title">Пробуждение громкостью</string>
     <string name="pref_volume_wake_summary">Нажатие кнопок громче/тише пробуждает устройство. Предназначено для устройств с труднонажимаемой кнопкой питания</string>
 
