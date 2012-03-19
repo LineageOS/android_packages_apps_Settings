@@ -1461,7 +1461,7 @@
     <string name="data_usage_summary_title" msgid="3804110657238092929">"Uso de dados"</string>
     <string name="data_usage_cycle" msgid="5652529796195787949">"Ciclo do uso de dados"</string>
     <string name="data_usage_menu_roaming" msgid="8042359966835203296">"Roaming de dados"</string>
-    <string name="data_usage_menu_restrict_background" msgid="1989394568592253331">"Restringir dados de segundo plano"</string>
+    <string name="data_usage_menu_restrict_background" msgid="1989394568592253331">"Bloquear dados de 2º plano"</string>
     <string name="data_usage_menu_split_4g" msgid="5322857680792601899">"Separar uso dos dados 4G"</string>
     <string name="data_usage_menu_show_wifi" msgid="8266875319417201085">"Mostrar uso do Wi-Fi"</string>
     <string name="data_usage_menu_show_ethernet" msgid="5181361208532314097">"Mostrar o uso da Ethernet"</string>
@@ -1470,8 +1470,8 @@
     <string name="data_usage_empty" msgid="8621855507876539282">"Nenhum aplicativo usou dados durante o período."</string>
     <string name="data_usage_label_foreground" msgid="4938034231928628164">"Primeiro plano"</string>
     <string name="data_usage_label_background" msgid="3225844085975764519">"Plano de fundo"</string>
-    <string name="data_usage_disclaimer" product="tablet" msgid="2591250607795265503">"Calcul. pelo tablet. O cálculo da operadora sobre uso de dados pode ser diferente."</string>
-    <string name="data_usage_disclaimer" product="default" msgid="4735170480663491977">"Calculado pelo telefone. O cálculo da operadora pode ser diferente."</string>
+    <string name="data_usage_disclaimer" product="tablet" msgid="2591250607795265503">"Calculado pelo tablet. O cálculo da operadora sobre uso de dados pode diferir."</string>
+    <string name="data_usage_disclaimer" product="default" msgid="4735170480663491977">"Calculado pelo telefone. O cálculo da operadora sobre uso de dados pode diferir."</string>
     <string name="data_usage_disable_mobile" msgid="5211007048880167438">"Desativar dados móveis?"</string>
     <string name="data_usage_disable_mobile_limit" msgid="4644364396844393848">"Definir limite de dados móveis"</string>
     <string name="data_usage_disable_4g_limit" msgid="6233554774946681175">"Definir limite de dados 4G"</string>
@@ -1489,14 +1489,14 @@
     <string name="data_usage_enable_4g" msgid="3635854097335036738">"Dados 4G"</string>
     <string name="data_usage_app_settings" msgid="8430240158135453271">"Ver configurações do aplicativo"</string>
     <string name="data_usage_app_restrict_background" msgid="9149728936265100841">"Restringir dados de 2º plano"</string>
-    <string name="data_usage_app_restrict_background_summary" msgid="6236080762898226645">"Desat. dados de seg. plano na rede móvel. Usar Wi-Fi se disp."</string>
+    <string name="data_usage_app_restrict_background_summary" msgid="6236080762898226645">"Desativar dados de 2º plano na rede móvel. Usar Wi-Fi se disponível."</string>
     <string name="data_usage_app_restrict_background_summary_disabled" msgid="7401927377070755054">"Definir um limite de dados para restringir dados em 2o plano"</string>
     <string name="data_usage_app_restrict_dialog_title" msgid="1613108390242737923">"Restringir dados de segundo plano?"</string>
     <string name="data_usage_app_restrict_dialog" msgid="5651588785118290771">"Este recurso pode fazer com que um aplicativo que depende de dados de segundo plano pare de funcionar quando o Wi-Fi não estiver disponível."\n\n"Mais controles adequados de uso de dados podem ser encontrados nas configurações disponíveis no aplicativo."</string>
     <string name="data_usage_restrict_denied_dialog" msgid="7086969103661420799">"Restringir dados de segundo plano só é possível quando você define um limite de dados móveis."</string>
     <string name="data_usage_cycle_editor_title" msgid="1373797281540188533">"Data de redefinição do ciclo de uso"</string>
     <string name="data_usage_cycle_editor_subtitle" msgid="5512903797979928416">"Data de cada mês:"</string>
-    <string name="data_usage_cycle_editor_positive" msgid="8821760330497941117">"Definidas"</string>
+    <string name="data_usage_cycle_editor_positive" msgid="8821760330497941117">"Definir"</string>
     <string name="data_usage_warning_editor_title" msgid="3704136912240060339">"Definir aviso de uso de dados"</string>
     <string name="data_usage_limit_editor_title" msgid="9153595142385030015">"Definir limite do uso de dados"</string>
     <string name="data_usage_limit_dialog_title" msgid="3023111643632996097">"Limitando uso de dados"</string>
@@ -1752,7 +1752,7 @@
     <!-- Wakeup options -->
     <string name="display_category_wakeup_options_title">Opções de despertar</string>
     <string name="pref_volume_wake_title">Despertar com volume</string>
-    <string name="pref_volume_wake_summary">Os botões de volume despertarão o dispositivo. Indicado para dispositivos com botão de liga/desliga dificil de apertar</string>
+    <string name="pref_volume_wake_summary">Os botões de volume despertarão o dispositivo.</string>
 
     <!-- Performance settings #CM -->
     <string name="performance_settings_title">Desempenho</string>
@@ -1842,6 +1842,10 @@
 
     <!-- About device screen, model of device. -->
     <string name="model_number" msgid="3765737700545384794">"Número do modelo"</string>
+    <!-- About device screen, Cpu info. -->
+    <string name="cpu_info">CPU</string>
+    <!-- About phone screen, Free memory info -->
+    <string name="mem_info">Memória</string>
     <!-- About device screen, version of Android. -->
     <string name="firmware_version" msgid="4801135784886859972">"Versão do Android"</string>
     <!-- About device screen, verison of radio. -->
@@ -1901,14 +1905,14 @@
     <string name="display_rotation_270_title">270 graus</string>
 
     <string name="adb_over_network">ADB sobre rede</string>
-    <string name="adb_over_network_summary">Habilita depuração por interfaces rede TCP/IP (Wi-Fi, redes USB). Esta configuração é perdida ao reiniciar</string>
+    <string name="adb_over_network_summary">Habilita depuração por interfaces de rede TCP/IP (Wi-Fi, redes USB). Esta configuração é perdida ao reiniciar</string>
     <!-- Warning for Adb over Network -->
     <string name="adb_over_network_warning">ATENÇÃO: Quando ADB sobre rede é habilitada, seu dispositivo é aberto a invasões em todas as redes conectadas, incluindo rede de dados GSM !\n\nSomente use este recurso quando estiver conectado a redes confiáveis.\n\nVocê realmente quer habilitar ?</string>
 
     <!-- UI debug setting: kill app long-press back [CHAR LIMIT=25] -->
     <string name="kill_app_longpress_back">Matar app com botão voltar</string>
     <!-- UI debug settting: kill app long-press back [CHAR LIMIT=50] -->
-    <string name="kill_app_longpress_back_summary">Matar o aplicativo mantendo pressinado o botão voltar</string>
+    <string name="kill_app_longpress_back_summary">Matar o aplicativo mantendo pressionado o botão voltar</string>
 
     <!-- Profiles settings #CM -->
     <string name="profiles_settings_title">Perfis</string>
@@ -2009,4 +2013,17 @@
     <string name="toggleFlashlight">Lanterna LED</string>
     <string name="toggleLockScreen">Bloqueio de tela</string>
     <string name="toggleWimax">WiMAX</string>
+
+    <!-- Setting checkbox title for root access -->
+    <string name="root_access">Acesso root</string>
+    <string name="root_access_warning_title">Permitir acesso root ?</string>
+    <string name="root_access_warning_message">Permitir que aplicações requisitem acesso root é muito perigoso e pode comprometer a segurança do seu sistema!</string>
+    <string name="root_access_none">Desabilitado</string>
+    <string name="root_access_apps">Somente aplicativos</string>
+    <string name="root_access_adb">Somente ADB</string>
+    <string name="root_access_all">Aplicativos e ADB</string>
+
+    <!-- Setting for volume rocker music controls -->
+    <string name="volbtn_music_controls_title">Botão volume controla música</string>
+    <string name="volbtn_music_controls_summary">Quando a tela estiver desligada, manter pressionado botão de volume buscará musicas</string>
 </resources>
