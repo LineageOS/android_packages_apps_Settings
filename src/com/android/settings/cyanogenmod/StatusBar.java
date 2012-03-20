@@ -79,7 +79,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mStatusBarClock.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
                 Settings.System.STATUS_BAR_CLOCK, 1) == 1));
         mStatusBarBrightnessControl.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
-                Settings.System.STATUS_BAR_BRIGHTNESS_TOGGLE, 0) == 1));
+                Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, 0) == 1));
 
         try {
             if (Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(), 
@@ -101,7 +101,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mStatusBarBattery.setOnPreferenceChangeListener(this);
 
         int signalStyle = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
-        		Settings.System.STATUS_BAR_SIGNAL_TEXT, 0);
+                Settings.System.STATUS_BAR_SIGNAL_TEXT, 0);
         mStatusBarCmSignal.setValue(String.valueOf(signalStyle));
         mStatusBarCmSignal.setOnPreferenceChangeListener(this);
 
@@ -121,15 +121,18 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == mStatusBarAmPm) {
             int statusBarAmPm = Integer.valueOf((String) newValue);
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(), Settings.System.STATUS_BAR_AM_PM, statusBarAmPm);
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.STATUS_BAR_AM_PM, statusBarAmPm);
             return true;
         } else if (preference == mStatusBarBattery) {
             int statusBarBattery = Integer.valueOf((String) newValue);
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(), Settings.System.STATUS_BAR_BATTERY, statusBarBattery);
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.STATUS_BAR_BATTERY, statusBarBattery);
             return true;
         } else if (preference == mStatusBarCmSignal) {
             int signalStyle = Integer.valueOf((String) newValue);
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(), Settings.System.STATUS_BAR_SIGNAL_TEXT, signalStyle);
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.STATUS_BAR_SIGNAL_TEXT, signalStyle);
             return true;
         }
         return false;
@@ -140,15 +143,18 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 
         if (preference == mStatusBarClock) {
             value = mStatusBarClock.isChecked();
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(), Settings.System.STATUS_BAR_CLOCK, value ? 1 : 0);
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.STATUS_BAR_CLOCK, value ? 1 : 0);
             return true;
         } else if (preference == mStatusBarBrightnessControl) {
             value = mStatusBarBrightnessControl.isChecked();
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(), Settings.System.STATUS_BAR_BRIGHTNESS_TOGGLE, value ? 1 : 0);
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, value ? 1 : 0);
             return true;
         } else if (preference == mCombinedBarAutoHide) {
             value = mCombinedBarAutoHide.isChecked();
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(), Settings.System.COMBINED_BAR_AUTO_HIDE, value ? 1 : 0);
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.COMBINED_BAR_AUTO_HIDE, value ? 1 : 0);
             return true;
         }
         return false;
