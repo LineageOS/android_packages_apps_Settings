@@ -119,7 +119,7 @@ public class ProfilesSettings extends Fragment {
         mOptionsMenu = menu;
 
         menu.add(0, MENU_RESET, 0, R.string.profile_reset_title)
-                .setIcon(R.drawable.ic_menu_refresh_holo_dark)
+                .setIcon(R.drawable.ic_settings_backup) // use the backup icon
                 .setAlphabeticShortcut('r')
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM |
                 MenuItem.SHOW_AS_ACTION_WITH_TEXT);
