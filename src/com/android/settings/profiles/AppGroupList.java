@@ -91,6 +91,6 @@ public class AppGroupList extends SettingsPreferenceFragment {
 
         PreferenceActivity pa = (PreferenceActivity) getActivity();
         pa.startPreferencePanel(AppGroupConfig.class.getName(), args,
-                0, group.getName().toString(), this, APP_GROUP_CONFIG);
+                R.string.profile_appgroup_manage, null, this, APP_GROUP_CONFIG);
     }
 }

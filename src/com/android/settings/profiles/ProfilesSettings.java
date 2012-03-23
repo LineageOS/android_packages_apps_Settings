@@ -28,7 +28,6 @@ import android.app.ProfileManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.preference.PreferenceActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -37,6 +36,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TabHost;
+import android.widget.Toast;
 
 import com.android.settings.R;
 import com.android.settings.Utils;
@@ -60,8 +60,6 @@ public class ProfilesSettings extends Fragment {
     private static final int PROFILE_DETAILS = 1;
 
     private static Menu mOptionsMenu;
-
-    private Profile mProfile;
 
     private ProfileManager mProfileManager;
 
@@ -203,15 +201,37 @@ public class ProfilesSettings extends Fragment {
     }
 
     private void addProfile() {
-        mProfile = new Profile(getString(R.string.new_profile_name));
-        mProfileManager.addProfile(mProfile);
+        Context context = getActivity();
+        if (context != null) {
+            final EditText entry = new EditText(context);
+            entry.setSingleLine();
 
-        // Start the profile details preference screen
-        Bundle args = new Bundle();
-        args.putParcelable("Profile", mProfile);
-        PreferenceActivity pa = (PreferenceActivity) getActivity();
-        pa.startPreferencePanel(ProfileConfig.class.getName(), args,
-                R.string.profile_profile_manage, null, this, PROFILE_DETAILS);
+            AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+            dialog.setTitle(R.string.menu_new_profile);
+            dialog.setMessage(R.string.profile_profile_name_prompt);
+            dialog.setView(entry, 34, 16, 34, 16);
+            dialog.setPositiveButton(android.R.string.ok,
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            String name = entry.getText().toString();
+                            if (!mProfileManager.profileExists(name)) {
+                                Profile profile = new Profile(name);
+                                mProfileManager.addProfile(profile);
+                                mTabManager.refreshTab(TAB_PROFILES);
+                            } else {
+                                Toast.makeText(getActivity(), R.string.duplicate_profile_name, Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+            dialog.setNegativeButton(android.R.string.cancel,
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+            dialog.create().show();
+        }
     }
 
     private void resetAll() {
@@ -236,18 +256,25 @@ public class ProfilesSettings extends Fragment {
     private void addAppGroup() {
         Context context = getActivity();
         if (context != null) {
-            AlertDialog.Builder dialog = new AlertDialog.Builder(context);
             final EditText entry = new EditText(context);
-            entry.setPadding(10, 10, 10, 10);
+            entry.setSingleLine();
+
+            AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+            dialog.setTitle(R.string.profile_new_appgroup);
             dialog.setMessage(R.string.profile_appgroup_name_prompt);
-            dialog.setView(entry);
+            dialog.setView(entry, 34, 16, 34, 16);
             dialog.setPositiveButton(android.R.string.ok,
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            NotificationGroup newGroup = new NotificationGroup(entry.getText().toString());
-                            mProfileManager.addNotificationGroup(newGroup);
-                            mTabManager.refreshTab(TAB_APPGROUPS);
+                            String name = entry.getText().toString();
+                            if (!mProfileManager.notificationGroupExists(name)) {
+                                NotificationGroup newGroup = new NotificationGroup(entry.getText().toString());
+                                mProfileManager.addNotificationGroup(newGroup);
+                                mTabManager.refreshTab(TAB_APPGROUPS);
+                            } else {
+                                Toast.makeText(getActivity(), R.string.duplicate_appgroup_name, Toast.LENGTH_LONG).show();
+                            }
                         }
                     });
             dialog.setNegativeButton(android.R.string.cancel,

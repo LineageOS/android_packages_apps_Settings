@@ -52,11 +52,13 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
-public class AppGroupConfig extends SettingsPreferenceFragment {
+public class AppGroupConfig extends SettingsPreferenceFragment
+    implements Preference.OnPreferenceChangeListener {
 
     private static String TAG = "AppGroupConfig";
 
@@ -72,13 +74,13 @@ public class AppGroupConfig extends SettingsPreferenceFragment {
 
     private PackageManager mPackageManager;
 
-    private PackageAdaptor mPackageAdaptor;
-
     private List<PackageInfo> mInstalledPackages;
 
     private NotificationGroup mNotificationGroup;
 
     private ProfileManager mProfileManager;
+
+    private NamePreference mNamePreference;
 
     private static final int MENU_DELETE = Menu.FIRST;
 
@@ -138,29 +140,36 @@ public class AppGroupConfig extends SettingsPreferenceFragment {
     Preference mDeletePreference;
 
     private void updatePackages() {
-        PreferenceGroup profileList = (PreferenceGroup) findPreference("profile_applist_title");
-        profileList.removeAll();
+        PreferenceScreen prefSet = getPreferenceScreen();
 
-        for (String pkg : mNotificationGroup.getPackages()) {
-            Preference pref = new Preference(getActivity());
-            
-            try {
-                Log.d(TAG, "updatePackages: Loading app item preferences");
-                PackageInfo group = mPackageManager.getPackageInfo(pkg, 0);
-                pref.setKey(group.packageName);
-                Log.d(TAG, "updatePackages: Key = " + group.packageName.toString());
+        // Add the General section
+        PreferenceGroup generalPrefs = (PreferenceGroup) prefSet.findPreference("general_section");
+        if (generalPrefs != null) {
+            generalPrefs.removeAll();
 
-                pref.setTitle(group.applicationInfo.loadLabel(mPackageManager));
-                Log.d(TAG, "updatePackages: App name = " + group.applicationInfo.loadLabel(mPackageManager).toString());
+            // Name preference
+            mNamePreference = new NamePreference(getActivity(), mNotificationGroup.getName());
+            mNamePreference.setOnPreferenceChangeListener(this);
+            generalPrefs.addPreference(mNamePreference);
+        }
 
-                Drawable icon = group.applicationInfo.loadIcon(mPackageManager);
-                pref.setIcon(icon);
-                pref.setSelectable(true);
-                pref.setPersistent(false);
-                profileList.addPreference(pref);
-
-            } catch (NameNotFoundException e) {
-                e.printStackTrace();
+        PreferenceGroup applicationsList = (PreferenceGroup) prefSet.findPreference("applications_list");
+        if (applicationsList != null) {
+            applicationsList.removeAll();
+            for (String pkg : mNotificationGroup.getPackages()) {
+                Preference pref = new Preference(getActivity());
+                try {
+                    PackageInfo group = mPackageManager.getPackageInfo(pkg, 0);
+                    pref.setKey(group.packageName);
+                    pref.setTitle(group.applicationInfo.loadLabel(mPackageManager));
+                    Drawable icon = group.applicationInfo.loadIcon(mPackageManager);
+                    pref.setIcon(icon);
+                    pref.setSelectable(true);
+                    pref.setPersistent(false);
+                    applicationsList.addPreference(pref);
+                } catch (NameNotFoundException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
@@ -198,6 +207,22 @@ public class AppGroupConfig extends SettingsPreferenceFragment {
     }
 
     @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mNamePreference) {
+            String name = mNamePreference.getName().toString();
+            if (!name.equals(mNotificationGroup.getName())) {
+                if (!mProfileManager.notificationGroupExists(name)) {
+                    mNotificationGroup.setName(name);
+                } else {
+                    mNamePreference.setName(mNotificationGroup.getName());
+                    Toast.makeText(getActivity(), R.string.duplicate_appgroup_name, Toast.LENGTH_LONG).show();
+                }
+            }
+        }
+        return true;
+    }
+
+    @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         if (preference instanceof Preference) {
             String deleteItem = preference.getKey();
@@ -231,7 +256,7 @@ public class AppGroupConfig extends SettingsPreferenceFragment {
                 PackageAdaptor adapter = new PackageAdaptor(mInstalledPackages);
                 list.setAdapter(adapter);
                 adapter.update();
-                builder.setMessage(R.string.profile_choose_app);
+                builder.setTitle(R.string.profile_choose_app);
                 builder.setView(list);
                 dialog = builder.create();
                 list.setOnItemClickListener(new OnItemClickListener() {

@@ -20,7 +20,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.preference.Preference;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -92,30 +91,33 @@ public class NamePreference extends Preference implements
     public void onClick(android.view.View v) {
         if (v != null) {
             Context context = getContext();
-            AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-            LayoutInflater factory = LayoutInflater.from(context);
-            final View dialogView = factory.inflate(R.layout.rename_profile_dialog, null);
-            final EditText pname = (EditText) dialogView.findViewById(R.id.profile_name);
-            pname.setText(mName.toString());
-            dialog.setTitle(R.string.rename_profile_dialog_title);
-            dialog.setView(dialogView);
-            dialog.setPositiveButton(android.R.string.ok,
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            String value = pname.getText().toString();
-                            mName = value.toString();
-                            mNameView.setText(value.toString());
-                            callChangeListener(this);
-                        }
-                    });
-            dialog.setNegativeButton(android.R.string.cancel,
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                        }
-                    });
-            dialog.create().show();
+            if (context != null) {
+                final EditText entry = new EditText(context);
+                entry.setSingleLine();
+                entry.setText(mName.toString());
+
+                AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+                dialog.setTitle(R.string.rename_dialog_title);
+                dialog.setMessage(R.string.rename_dialog_message);
+                dialog.setView(entry, 34, 16, 34, 16);
+                dialog.setPositiveButton(android.R.string.ok,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String value = entry.getText().toString();
+                                mName = value.toString();
+                                mNameView.setText(value.toString());
+                                callChangeListener(this);
+                            }
+                        });
+                dialog.setNegativeButton(android.R.string.cancel,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        });
+                dialog.create().show();
+            }
         }
     }
 

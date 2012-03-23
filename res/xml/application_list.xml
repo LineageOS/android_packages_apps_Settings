@@ -18,7 +18,12 @@
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <PreferenceCategory
-        android:key="profile_applist_title"
+        android:key="general_section"
+        android:title="@string/profile_appgroup_name_title">
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="applications_list"
         android:title="@string/profile_applist_title" >
     </PreferenceCategory>
 
