@@ -16,22 +16,12 @@
 
 package com.android.settings.cyanogenmod;
 
-import java.util.Calendar;
-import java.util.Date;
-
-import android.app.Dialog;
-import android.app.TimePickerDialog;
 import android.content.ContentResolver;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
-import android.text.format.DateFormat;
-import android.util.Log;
-import android.widget.TimePicker;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -41,15 +31,7 @@ public class QuietHours extends SettingsPreferenceFragment implements
 
     private static final String TAG = "QuietHours";
 
-    private static final int DIALOG_QUIET_HOURS_START = 1;
-
-    private static final int DIALOG_QUIET_HOURS_END = 2;
-
     private static final String KEY_QUIET_HOURS_ENABLED = "quiet_hours_enabled";
-
-    private static final String KEY_QUIET_HOURS_START = "quiet_hours_start";
-
-    private static final String KEY_QUIET_HOURS_END = "quiet_hours_end";
 
     private static final String KEY_QUIET_HOURS_MUTE = "quiet_hours_mute";
 
@@ -61,11 +43,9 @@ public class QuietHours extends SettingsPreferenceFragment implements
 
     private static final String KEY_QUIET_HOURS_NOTE = "quiet_hours_note";
 
+    private static final String KEY_QUIET_HOURS_TIMERANGE = "quiet_hours_timerange";
+
     private CheckBoxPreference mQuietHoursEnabled;
-
-    private Preference mQuietHoursStart;
-
-    private Preference mQuietHoursEnd;
 
     private Preference mQuietHoursNote;
 
@@ -77,21 +57,7 @@ public class QuietHours extends SettingsPreferenceFragment implements
 
     private CheckBoxPreference mQuietHoursHaptic;
 
-    private String returnTime(String t) {
-        if (t == null || t.equals("")) {
-            return "";
-        }
-        int hr = Integer.parseInt(t.trim());
-        int mn = hr;
-
-        hr = hr / 60;
-        mn = mn % 60;
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.HOUR_OF_DAY, hr);
-        cal.set(Calendar.MINUTE, mn);
-        Date date = cal.getTime();
-        return DateFormat.getTimeFormat(getActivity().getApplicationContext()).format(date);
-    }
+    private TimeRangePreference mQuietHoursTimeRange;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -107,8 +73,7 @@ public class QuietHours extends SettingsPreferenceFragment implements
             // Load the preferences
             mQuietHoursNote = prefSet.findPreference(KEY_QUIET_HOURS_NOTE);
             mQuietHoursEnabled = (CheckBoxPreference) prefSet.findPreference(KEY_QUIET_HOURS_ENABLED);
-            mQuietHoursStart = prefSet.findPreference(KEY_QUIET_HOURS_START);
-            mQuietHoursEnd = prefSet.findPreference(KEY_QUIET_HOURS_END);
+            mQuietHoursTimeRange = (TimeRangePreference) prefSet.findPreference(KEY_QUIET_HOURS_TIMERANGE);
             mQuietHoursMute = (CheckBoxPreference) prefSet.findPreference(KEY_QUIET_HOURS_MUTE);
             mQuietHoursStill = (CheckBoxPreference) prefSet.findPreference(KEY_QUIET_HOURS_STILL);
             mQuietHoursHaptic = (CheckBoxPreference) prefSet.findPreference(KEY_QUIET_HOURS_HAPTIC);
@@ -121,10 +86,9 @@ public class QuietHours extends SettingsPreferenceFragment implements
 
             // Set the preference state and listeners where applicable
             mQuietHoursEnabled.setChecked(Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_ENABLED, 0) == 1);
-            mQuietHoursStart.setSummary(returnTime(Settings.System.getString(resolver, Settings.System.QUIET_HOURS_START)));
-            mQuietHoursStart.setOnPreferenceChangeListener(this);
-            mQuietHoursEnd.setSummary(returnTime(Settings.System.getString(resolver, Settings.System.QUIET_HOURS_END)));
-            mQuietHoursEnd.setOnPreferenceChangeListener(this);
+            mQuietHoursTimeRange.setTimeRange(Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_START, 0),
+                    Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_END, 0));
+            mQuietHoursTimeRange.setOnPreferenceChangeListener(this);
             mQuietHoursMute.setChecked(Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_MUTE, 0) == 1);
             mQuietHoursStill.setChecked(Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_STILL, 0) == 1);
             mQuietHoursHaptic.setChecked(Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_HAPTIC, 0) == 1);
@@ -158,16 +122,6 @@ public class QuietHours extends SettingsPreferenceFragment implements
             Settings.System.putInt(resolver, Settings.System.QUIET_HOURS_DIM,
                     mQuietHoursDim.isChecked() ? 1 : 0);
             return true;
-        } else if (preference == mQuietHoursStart) {
-            showDialog(DIALOG_QUIET_HOURS_START);
-            mQuietHoursStart.setSummary(returnTime(Settings.System.getString(resolver,
-                    Settings.System.QUIET_HOURS_START)));
-            return true;
-        } else if (preference == mQuietHoursEnd) {
-            showDialog(DIALOG_QUIET_HOURS_END);
-            mQuietHoursEnd.setSummary(returnTime(Settings.System.getString(resolver,
-                    Settings.System.QUIET_HOURS_END)));
-            return true;
         } else if (preference == mQuietHoursHaptic) {
             Settings.System.putInt(resolver, Settings.System.QUIET_HOURS_HAPTIC,
                     mQuietHoursHaptic.isChecked() ? 1 : 0);
@@ -177,73 +131,14 @@ public class QuietHours extends SettingsPreferenceFragment implements
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        String key = preference.getKey();
         ContentResolver resolver = getActivity().getApplicationContext().getContentResolver();
-
-        if (key.equals(KEY_QUIET_HOURS_START)) {
+        if (preference == mQuietHoursTimeRange) {
             Settings.System.putInt(resolver, Settings.System.QUIET_HOURS_START,
-                    getBoolean(newValue) ? 1 : 0);
-            mQuietHoursStart.setSummary(returnTime(Settings.System.getString(resolver,
-                    Settings.System.QUIET_HOURS_START)));
-            return true;
-        } else if (key.equals(KEY_QUIET_HOURS_END)) {
+                    mQuietHoursTimeRange.getStartTime());
             Settings.System.putInt(resolver, Settings.System.QUIET_HOURS_END,
-                    getBoolean(newValue) ? 1 : 0);
-            mQuietHoursEnd.setSummary(returnTime(Settings.System.getString(resolver,
-                    Settings.System.QUIET_HOURS_END)));
+                    mQuietHoursTimeRange.getEndTime());
             return true;
         }
         return false;
-    }
-
-    @Override
-    public Dialog onCreateDialog(int id) {
-        switch (id) {
-            case DIALOG_QUIET_HOURS_START:
-                return createTimePicker(Settings.System.QUIET_HOURS_START);
-            case DIALOG_QUIET_HOURS_END:
-                return createTimePicker(Settings.System.QUIET_HOURS_END);
-        }
-        return super.onCreateDialog(id);
-    }
-
-    private TimePickerDialog createTimePicker(final String key) {
-        ContentResolver resolver = getActivity().getApplicationContext().getContentResolver();
-        int value = Settings.System.getInt(resolver, key, -1);
-        int hour;
-        int minutes;
-
-        if (value < 0) {
-            Calendar calendar = Calendar.getInstance();
-            hour = calendar.get(Calendar.HOUR_OF_DAY);
-            minutes = calendar.get(Calendar.MINUTE);
-        } else {
-            hour = value / 60;
-            minutes = value % 60;
-        }
-
-        TimePickerDialog dlg = new TimePickerDialog(getActivity(),
-        new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker v, int hours, int minutes) {
-                ContentResolver resolver = getActivity().getApplicationContext().getContentResolver();
-                // Set the appropriate time setting
-                Settings.System.putInt(resolver, key, hours * 60 + minutes);
-                // Set the summary to reflect the set time
-                if (key.equals(KEY_QUIET_HOURS_START)) {
-                    mQuietHoursStart.setSummary(returnTime(Settings.System.getString(
-                            resolver, Settings.System.QUIET_HOURS_START)));
-                } else {
-                    mQuietHoursEnd.setSummary(returnTime(Settings.System.getString(
-                            resolver, Settings.System.QUIET_HOURS_END)));
-                }
-            };
-        }, hour, minutes, DateFormat.is24HourFormat(getActivity()));
-
-        return dlg;
-    }
-
-    private boolean getBoolean(Object o) {
-        return Boolean.valueOf(o.toString());
     }
 }
