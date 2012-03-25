@@ -1725,9 +1725,6 @@
     <!-- Lock screen #CM -->
     <string name="lock_screen_title">Bildschirmsperre</string>
 
-    <!-- Profiles settings #CM -->
-    <string name="profiles_settings_title">Profile</string>
-
     <!-- Screen security - Screen security  #CM -->
     <string name="screen_security_category">Bildschirm-Sicherheit</string>
     <string name="screen_security_title">Sicherheitssperre</string>
@@ -1736,7 +1733,7 @@
     <string name="unlock_menu_unlock_title">Mit Menü entsperren</string>
     <string name="unlock_menu_unlock_summary">Entsperren des Gerätes durch Drücken der Menütaste</string>
     <string name="unlock_quick_unlock_control_title">Schnelles Entsperren</string>
-    <string name="unlock_quick_unlock_control_summary">PIN oder Passwort ohne Bestätigung eingeben. Löschen gilt als Fehlversuch.</string>
+    <string name="unlock_quick_unlock_control_summary">Entsperrt, sobald PIN oder Passwort korrekt eingegeben wurden.</string>
 
     <!-- Performance settings #CM -->
     <string name="performance_settings_title">Leistung</string>
@@ -1820,5 +1817,179 @@
     <string name="kill_app_longpress_back_summary">Gedrückt halten der Zurück-Taste beendet die Anwendung im Vordergrund.</string>
 
     <!-- About device screen, version of modification of Android. #CM -->
-    <string name="mod_version">Mod-Version</string>
+    <string name="mod_version">CyanogenMod-Version</string>
+    <string name="cpu_info">Prozessor</string>
+    <string name="mem_info">Hauptspeicher</string>
+    <string name="build_date">Build-Datum</string>
+
+    <!-- Profiles settings #CM -->
+    <string name="profiles_settings_title">Profile</string>
+    <string name="profiles_general_title">Allgemein</string>
+    <string name="profiles_add">Hinzufügen</string>
+    <string name="profile_menu_delete">Löschen</string>
+    <string name="profile_settings_title">Profil</string>
+
+    <!-- Add Profile -->
+    <string name="add_profile_dialog_title">Neues Profil anlegen</string>
+    <string name="profile_name_title">Name</string>
+    <string name="profile_profile_name_prompt">Name des neuen Profils</string>
+    <string name="menu_new_profile">Neues Profil</string>
+    <string name="menu_new_profile_summary">Neues Profil hinzufügen und ändern</string>
+    <string name="new_profile_name">&lt;Neues Profil&gt;</string>
+
+    <!-- Rename Dialog  -->
+    <string name="rename_dialog_title">Umbenennen</string>
+    <string name="rename_dialog_message">Neuen Namen eingeben</string>
+    <string name="duplicate_profile_name">Doppelter Profilname!</string>
+    <string name="duplicate_appgroup_name">Doppelter App-Gruppen-Name!</string>
+
+    <!-- Reset Profiles -->
+    <string name="profile_reset_title">Zurücksetzen</string>
+    <string name="profile_reset_message">Alle benutzerdefinierten Profile und App-Gruppen löschen, Standardeinstellungen wiederherstellen?</string>
+
+    <!-- Delete confimation messages -->
+    <string name="profile_delete_confirm">Dieses Profil wirklich löschen?</string>
+    <string name="profile_app_delete_confirm">Diese App wirklich aus der App-Gruppe entfernen?</string>
+    <string name="profile_cannot_delete">Das aktive Profil kann nicht gelöscht werden</string>
+
+    <!-- Profile Config screen PreferenceGroup titles -->
+    <string name="profile_connectionoverrides_title">Verbindungen festlegen</string>
+    <string name="profile_volumeoverrides_title">Lautstärke festlegen</string>
+    <string name="connection_state_disabled">Deaktivieren</string>
+    <string name="connection_state_enabled">Aktivieren</string>
+    <string name="volume_override_summary">Gesetzt auf</string>
+
+    <!-- Menu item for managing profiles -->
+    <string name="profile_profiles_manage">Profile</string>
+    <string name="profile_profile_manage">Profil bearbeiten</string>
+    <string name="profile_applist_manage">App-Liste</string>
+    <string name="profile_appgroups_manage">App-Gruppen</string>
+    <string name="profile_appgroup_manage">App-Gruppe bearbeiten</string>
+
+    <!-- Profile settings screen, section header for settings related to notification profiles -->
+    <string name="profile_settings">Profileinstellungen</string>
+    <string name="profile_name">Profilname</string>
+
+    <!-- Profile Settings sound modes labels -->
+    <string name="sound_mode">Benachrichtigungston</string>
+    <string name="ringer_mode">Klingelton</string>
+    <string name="lights_mode">Benachrichtigungslicht</string>
+    <string name="vibrate_mode">Vibration</string>
+    <string name="choose_soundtone">Benachrichtigungston wählen</string>
+    <string name="choose_ringtone">Klingelton wählen</string>
+
+    <!-- Sound settings screen, setting option name to pick ringtone (a list dialog comes up)-->
+    <string name="soundtone_title">Benachrichtigungston wählen</string>
+    <string name="soundtone_summary">""</string>
+
+    <!-- Title for application group setting screen -->
+    <string name="profile_appgroups_title">App-Gruppen</string>
+    <string name="profile_applist_title">Apps</string>
+    <string name="profile_new_appgroup">Neue App-Gruppe</string>
+    <string name="profile_delete_appgroup">App-Gruppe wirklich komplett löschen?</string>
+    <string name="profile_appgroup_name_prompt">Name der neuen App-Gruppe</string>
+    <string name="profile_appgroup_name_title">Name</string>
+    <string name="profile_add_app">App hinzufügen</string>
+    <string name="profile_delete_app">App entfernen</string>
+
+    <!-- Add application dialog box title -->
+    <string name="profile_choose_app">App auswählen</string>
+    <string name="profile_settings_header">Profileinstellungen</string> <!-- UNUSED -->
+
+    <!-- Profiles - system settings -->
+    <string name="profile_system_settings_title">Systemeinstellungen</string>
+    <string name="profile_lockmode_title">Bildschirmsperre</string>
+    <string name="profile_lockmode_default">Nicht modifizieren</string>
+    <string name="profile_lockmode_insecure">Unsicher sperren</string>
+    <string name="profile_lockmode_disabled">Nicht sperren</string>
+    <string name="profile_lockmode_default_summary">Nicht modifizieren</string>
+    <string name="profile_lockmode_insecure_summary">Unsichere Sperre</string>
+    <string name="profile_lockmode_disabled_summary">Nicht sperren</string>
+
+    <string name="profile_disable_screen_lock_summary">Bildschirmsperre deaktivieren, solange dieses Profil aktiv ist</string> <!-- UNUSED -->
+
+    <!-- Connection override toggles (not all are used at this time ) -->
+    <string name="possibleButtons">Mögliche Tasten</string> <!-- UNUSED -->
+    <string name="toggleWifi">WLAN</string>
+    <string name="toggleWifiAp">WLAN-Hotspot</string>
+    <string name="toggleBluetooth">Bluetooth</string>
+    <string name="toggleGPS">GPS</string>
+    <string name="toggleData">Mobilfunk-Daten</string>
+    <string name="toggleSync">Synchronisierung</string>
+    <string name="toggle2g3g">2G/3G</string>
+    <string name="toggleSound">Klingelmodus</string>
+    <string name="toggleBrightness">Helligkeit</string>
+    <string name="toggleAutoRotate">Bildschirmausrichtung</string>
+    <string name="toggleScreenTimeout">Bildschirm-Timeout</string>
+    <string name="toggleAirplane">Flugmodus</string>
+    <string name="toggleFlashlight">Taschenlampe</string>
+    <string name="toggleLockScreen">Bildschirmsperre</string>
+    <string name="toggleWimax">WiMAX</string>
+
+    <!-- Display : Rotation #CM -->
+    <string name="display_rotation_title">Bildschirmausrichtung</string>
+    <string name="display_rotation_enabled">Aktiviert:</string>
+    <string name="display_rotation_disabled">Deaktiviert</string>
+    <string name="display_rotation_unit">Grad</string>
+    <string name="display_rotation_category_title">Bildschirmausrichtung bei Drehung um</string>
+    <string name="display_rotation_0_title">0 Grad</string>
+    <string name="display_rotation_90_title">90 Grad</string>
+    <string name="display_rotation_180_title">180 Grad</string>
+    <string name="display_rotation_270_title">270 Grad</string>
+
+    <!-- Quiet hours #CM -->
+    <string name="quiet_hours_title">Ruhige Stunden</string>
+    <string name="quiet_hours_summary">Benachrichtigungen in einem vorgegebenen Zeitraum modifizieren</string>
+    <string name="quiet_hours_note_title">Hinweis</string>
+    <string name="quiet_hours_note_summary">Ankommende Anrufe werden während der ruhigen Stunden normal signalisiert</string>
+    <string name="quiet_hours_enabled">Ruhige Stunden aktiv</string>
+    <string name="quiet_hours_enabled_on">Ruhige Stunden sind aktiviert</string>
+    <string name="quiet_hours_enabled_off">Benachrichtigungen werden normal signalisiert</string>
+    <string name="quiet_hours_start">Beginn der ruhigen Stunden</string>
+    <string name="quiet_hours_start_summary">Uhrzeit, zu der die ruhigen Stunden beginnen</string>
+    <string name="quiet_hours_end">Ende der ruhigen Stunden</string>
+    <string name="quiet_hours_end_summary">Uhrzeit, zu der die ruhigen Stunden enden</string>
+    <string name="quiet_hours_mute">Benachrichtigungston</string>
+    <string name="quiet_hours_mute_on">Deaktivieren</string>
+    <string name="quiet_hours_mute_off">Nicht modifizieren</string>
+    <string name="quiet_hours_still">Vibration</string>
+    <string name="quiet_hours_still_on">Deaktivieren</string>
+    <string name="quiet_hours_still_off">Nicht modifizieren</string>
+    <string name="quiet_hours_dim">Benachrichtigungslicht</string>
+    <string name="quiet_hours_dim_on">Deaktivieren</string>
+    <string name="quiet_hours_dim_off">Nicht modifizieren</string>
+    <string name="quiet_hours_haptic">Haptisches Feedback</string>
+    <string name="quiet_hours_haptic_on">Deaktivieren</string>
+    <string name="quiet_hours_haptic_off">Nicht modifizieren</string>
+    <string name="quiet_hours_active_from">Aktiv von</string>
+    <string name="quiet_hours_active_to">bis</string>
+
+    <!-- time range preference -->
+    <string name="start_time_title">Beginn</string>
+    <string name="end_time_title">Ende</string>
+
+    <!-- Wakeup options -->
+    <string name="display_category_wakeup_options_title">Aufwecken</string>
+    <string name="pref_volume_wake_title">Aufwecken mit Lautstärketaste</string>
+    <string name="pref_volume_wake_summary">Lautstärketasten wecken das Gerät und aktivieren den Bildschirm</string>
+
+    <!-- Setting for volume rocker music controls -->
+    <string name="volbtn_music_controls_title">Lautstärketasten und Musik</string>
+    <string name="volbtn_music_controls_summary">Bei abgeschaltetem Bildschirm durch langen Druck auf Lautstärketasten zum nächsten / vorherigen Titel springen</string>
+
+    <!-- GPS Source selection -->
+    <string name="location_gps_source_title">GPS-Quelle</string>
+    <string name="location_gps_source_summary">Zur Positionsbestimmung verwendetes Gerät auswählen</string>
+    <string name="location_gps_source_notification_title">Hinweis</string>
+    <string name="location_gps_source_notification">Nach dem Wechsel der GPS-Quelle wurde GPS deaktiviert und muss vor erneuter Benutzung reaktiviert werden.</string>
+
+    <!-- Setting checkbox title for root access -->
+    <string name="root_access">Root-Zugriff</string>
+    <string name="root_access_warning_title">Root-Zugriff erlauben?</string>
+    <string name="root_access_warning_message">Apps Root-Zugriff zu erlauben, ist sehr gefährlich und kann die Sicherheit des Systems gefährden!</string>
+    <string name="root_access_none">Verweigern</string>
+    <string name="root_access_apps">Nur Apps</string>
+    <string name="root_access_adb">Nur ADB</string>
+    <string name="root_access_all">Apps und ADB</string>
+
 </resources>
