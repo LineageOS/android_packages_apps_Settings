@@ -22,6 +22,96 @@
     <string name="header_category_wireless_networks" msgid="4944823405420438623">"无线和网络"</string>
     <string name="header_category_device" msgid="5781174212691167553">"设备"</string>
     <string name="header_category_personal" msgid="6225932173498802187">"个人"</string>
+    <!-- Profiles settings #CM -->
+    <string name="profiles_settings_title">个人资料</string>
+    <string name="profiles_general_title">一般</string>
+    <string name="profiles_add">添加</string>
+    <string name="profile_menu_delete">删除</string>
+    <string name="profile_settings_title">资料</string>
+    <!-- Add Profile -->
+    <string name="add_profile_dialog_title">创建新的个人资料</string>
+    <string name="profile_name_title">名称</string>
+    <string name="profile_profile_name_prompt">为新的个人资料输入一个名称</string>
+    <string name="menu_new_profile">新的个人资料</string>
+    <string name="menu_new_profile_summary">添加、配置一个新的个人资料</string>
+    <string name="new_profile_name">&lt;新的个人资料&gt;</string>
+   <!-- Rename Dialog  -->
+    <string name="rename_dialog_title">重命名</string>
+    <string name="rename_dialog_message">输入一个新名称</string>
+    <string name="duplicate_profile_name">复制资料名称!</string>
+    <string name="duplicate_appgroup_name">复制应用组名称!</string>
+    <!-- Reset Profiles -->
+    <string name="profile_reset_title">重置</string>
+    <string name="profile_reset_message">你确定想删除所有用户已创建的资料以及应用组并且恢复为默认吗？</string>
+    <!-- Delete confimation messages -->
+    <string name="profile_delete_confirm">你确定想删除该资料?</string>
+    <string name="profile_app_delete_confirm">你确定想移除该应用?</string>
+    <string name="profile_cannot_delete">你不能删除该激活的资料</string>
+    <!-- Profile Config screen PreferenceGroup titles -->
+    <string name="profile_connectionoverrides_title">连接覆盖</string>
+    <string name="profile_volumeoverrides_title">音量覆盖</string>
+    <string name="connection_state_disabled">禁用</string>
+    <string name="connection_state_enabled">开启</string>
+    <string name="volume_override_summary">设置为</string>
+    <!-- Menu item for managing profiles -->
+    <string name="profile_profiles_manage">资料</string>
+    <string name="profile_profile_manage">管理资料</string>
+    <string name="profile_applist_manage">应用列表</string>
+    <string name="profile_appgroups_manage">应用组</string>
+    <string name="profile_appgroup_manage">管理应用组</string>
+    <!-- Profile settings screen, section header for settings related to notification profiles -->
+    <string name="profile_settings">资料设置</string>
+    <string name="profile_name">名称</string>
+    <!-- Profile Settings sound modes labels -->
+    <string name="sound_mode">提醒模式</string>
+    <string name="ringer_mode">铃声模式</string>
+    <string name="lights_mode">亮度模式</string>
+    <string name="vibrate_mode">震动模式</string>
+    <string name="choose_soundtone">选择提醒音</string>
+    <string name="choose_ringtone">选择铃声</string>
+    <!-- Sound settings screen, setting option name to pick ringtone (a list dialog comes up)-->
+    <string name="soundtone_title">提醒音</string>
+    <string name="soundtone_summary">""</string>
+    <!-- Title for application group setting screen -->
+    <string name="profile_appgroups_title">应用组</string>
+    <string name="profile_applist_title">应用</string>
+    <string name="profile_new_appgroup">新的应用组</string>
+    <string name="profile_delete_appgroup">删除该应用组</string>
+    <string name="profile_appgroup_name_prompt">为新的应用组输入一个名称</string>
+    <string name="profile_appgroup_name_title">名称</string>
+    <string name="profile_add_app">添加应用</string>
+    <string name="profile_delete_app">移除应用</string>
+    <!-- Add application dialog box title -->
+    <string name="profile_choose_app">选择应用</string>
+    <string name="profile_settings_header">资料设置</string>
+    <!-- Profiles - system settings -->
+    <string name="profile_system_settings_title">系统设置</string>
+    <string name="profile_lockmode_title">锁屏模式</string>
+    <string name="profile_lockmode_default">默认</string>
+    <string name="profile_lockmode_insecure">不安全</string>
+    <string name="profile_lockmode_disabled">禁用</string>
+    <string name="profile_lockmode_default_summary">使用系统默认</string>
+    <string name="profile_lockmode_insecure_summary">使用不安全锁屏</string>
+    <string name="profile_lockmode_disabled_summary">锁屏被禁用</string>
+    <string name="profile_disable_screen_lock_summary">资料激活时禁用锁屏安全</string>
+    <!-- Connection override toggles (not all are used at this time ) -->
+    <string name="possibleButtons">可能的按钮</string>
+    <string name="toggleWifi">Wi-Fi</string>
+    <string name="toggleWifiAp">便携式Wi-Fi热点</string>
+    <string name="toggleBluetooth">蓝牙</string>
+    <string name="toggleGPS">GPS</string>
+    <string name="toggleData">移动数据</string>
+    <string name="toggleSync">数据同步</string>
+    <string name="toggle2g3g">2G/3G</string>
+    <string name="toggleSound">铃声模式</string>
+    <string name="toggleBrightness">明亮</string>
+    <string name="toggleAutoRotate">适应</string>
+    <string name="toggleScreenTimeout">屏幕超时</string>
+    <string name="toggleAirplane">飞行</string>
+    <string name="toggleFlashlight">手电筒</string>
+    <string name="toggleLockScreen">锁屏</string>
+    <string name="toggleWimax">WiMAX</string>
+
     <string name="header_category_system" msgid="2073558547468647128">"系统"</string>
     <string name="turn_on_radio" msgid="8706561489788373676">"打开无线通信"</string>
     <string name="turn_off_radio" msgid="1820294552893884115">"关闭无线通信"</string>
@@ -609,6 +699,9 @@
     <string name="sound_effects_enable_title" msgid="1171590821131077296">"触摸提示音"</string>
     <string name="lock_sounds_enable_title" msgid="450098505659399520">"锁屏提示音"</string>
     <string name="haptic_feedback_enable_title" msgid="2438293710530828760">"触摸时振动"</string>
+    <!-- Setting for volume rocker music controls -->
+    <string name="volbtn_music_controls_title">音量键音乐控制</string>
+    <string name="volbtn_music_controls_summary">当屏幕关闭时，长按音量键将搜索音乐曲目</string>
     <string name="audio_record_proc_title" msgid="4271091199976457534">"降噪"</string>
     <string name="volume_media_description" msgid="7949355934788807863">"音乐、视频、游戏和其他媒体"</string>
     <string name="volume_ring_description" msgid="5936851631698298989">"铃声和通知"</string>
@@ -633,6 +726,36 @@
     <string name="sync_settings" msgid="9186125469300013491">"帐户与同步"</string>
     <string name="search_settings" msgid="1910951467596035063">"搜索"</string>
     <string name="search_settings_summary" msgid="9205656546570654169">"管理搜索设置和历史记录"</string>
+    <!-- Quiet hours #CM -->
+    <string name="quiet_hours_title">安静时段</string>
+    <string name="quiet_hours_summary">配置设备应该安静的时段</string>
+    <string name="quiet_hours_note_title">注意</string>
+    <string name="quiet_hours_note_summary">在安静时段来电将像往常一样</string>
+    <string name="quiet_hours_enabled">开启安静时段</string>
+    <string name="quiet_hours_enabled_on">安静时段将被强制</string>
+    <string name="quiet_hours_enabled_off">通知提醒将像往常一样运行</string>
+    <string name="quiet_hours_start">开始安静时段</string>
+    <string name="quiet_hours_start_summary">什么时间开始强制安静时段</string>
+    <string name="quiet_hours_end">结束安静时段</string>
+    <string name="quiet_hours_end_summary">什么时间结束强制安静时段</string>
+    <string name="quiet_hours_mute">静音提醒</string>
+    <string name="quiet_hours_mute_on">无声音</string>
+    <string name="quiet_hours_mute_off">声音像往常一样</string>
+    <string name="quiet_hours_still">禁用震动</string>
+    <string name="quiet_hours_still_on">设备将不会震动</string>
+    <string name="quiet_hours_still_off">设备将像往常一样震动</string>
+    <string name="quiet_hours_dim">禁用提醒背光灯点亮</string>
+    <string name="quiet_hours_dim_on">提醒背光灯点亮将被禁用</string>
+    <string name="quiet_hours_dim_off">提醒背光灯将像往常一样被点亮</string>
+    <string name="quiet_hours_haptic">禁用触控反馈</string>
+    <string name="quiet_hours_haptic_on">触控反馈将被禁用</string>
+    <string name="quiet_hours_haptic_off">触控反馈将像往常一样</string>
+    <string name="quiet_hours_active_from">激活从</string>
+    <string name="quiet_hours_active_to">到</string>
+
+    <!-- time range preference -->
+    <string name="start_time_title">开始</string>
+    <string name="end_time_title">结束</string>
     <string name="display_settings" msgid="7965901687241669598">"显示"</string>
     <string name="accelerometer_title" msgid="7854608399547349157">"自动旋转屏幕"</string>
     <string name="accelerometer_summary_on" product="tablet" msgid="429982132339828942">"旋转平板电脑时自动改变浏览模式"</string>
@@ -790,8 +913,6 @@
     <!-- Lock screen #CM -->
     <string name="lock_screen_title">锁屏界面</string>
     <!-- Lock Screen -->
-    <!-- Profiles settings #CM -->
-    <string name="profiles_settings_title">个人资料</string>
     <!-- Screen security - Screen security  #CM -->
     <string name="screen_security_category">屏幕安全性</string>
     <string name="screen_security_title">锁定屏幕</string>
@@ -899,6 +1020,20 @@
     <string name="preview_version_title">版本</string>
     <string name="preview_country_title">国家</string>
     <string name="preview_carrier_title">运营商</string>
+    <!-- Display : Rotation #CM -->
+    <string name="display_rotation_title">旋转</string>
+    <string name="display_rotation_enabled">开启.</string>
+    <string name="display_rotation_disabled">禁用.</string>
+    <string name="display_rotation_unit">度</string>
+    <string name="display_rotation_category_title">旋转模式</string>
+    <string name="display_rotation_0_title">0 度</string>
+    <string name="display_rotation_90_title">90 度</string>
+    <string name="display_rotation_180_title">180 度</string>
+    <string name="display_rotation_270_title">270 度</string>
+    <!-- About device screen, Cpu info. -->
+    <string name="cpu_info">处理器</string>
+    <!-- About phone screen, Free memory info -->
+    <string name="mem_info">内存</string>
     <string name="firmware_version" msgid="4801135784886859972">"Android 版本"</string>
     <string name="model_number" msgid="3765737700545384794">"型号"</string>
     <string name="baseband_version" msgid="1848990160763524801">"基带版本"</string>
