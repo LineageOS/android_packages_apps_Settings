@@ -83,41 +83,6 @@ public class SecuritySettings extends SettingsPreferenceFragment
             break;
         }
 
-        // lock after preference
-        mLockAfter = (ListPreference) root.findPreference(KEY_LOCK_AFTER_TIMEOUT);
-        if (mLockAfter != null) {
-            setupLockAfterPreference();
-            updateLockAfterPreferenceSummary();
-        }
-
-        // visible pattern
-        mVisiblePattern = (CheckBoxPreference) root.findPreference(KEY_VISIBLE_PATTERN);
-
-        // lock instantly on power key press
-        mPowerButtonInstantlyLocks = (CheckBoxPreference) root.findPreference(
-                KEY_POWER_INSTANTLY_LOCKS);
-
-        // don't display visible pattern if biometric and backup is not pattern
-        if (resid == R.xml.security_settings_biometric_weak &&
-                mLockPatternUtils.getKeyguardStoredPasswordQuality() !=
-                DevicePolicyManager.PASSWORD_QUALITY_SOMETHING) {
-            PreferenceGroup securityCategory = (PreferenceGroup)
-                    root.findPreference(KEY_SECURITY_CATEGORY);
-            if (securityCategory != null && mVisiblePattern != null) {
-                securityCategory.removePreference(root.findPreference(KEY_VISIBLE_PATTERN));
-            }
-        }
-
-        // tactile feedback. Should be common to all unlock preference screens.
-        mTactileFeedback = (CheckBoxPreference) root.findPreference(KEY_TACTILE_FEEDBACK_ENABLED);
-        if (!((Vibrator) getSystemService(Context.VIBRATOR_SERVICE)).hasVibrator()) {
-            PreferenceGroup securityCategory = (PreferenceGroup)
-                    root.findPreference(KEY_SECURITY_CATEGORY);
-            if (securityCategory != null && mTactileFeedback != null) {
-                securityCategory.removePreference(mTactileFeedback);
-            }
-        }
-
         // Append the rest of the settings
         addPreferencesFromResource(R.xml.security_settings_misc);
 
@@ -194,17 +159,6 @@ public class SecuritySettings extends SettingsPreferenceFragment
         // depend on others...
         createPreferenceHierarchy();
 
-        final LockPatternUtils lockPatternUtils = mChooseLockSettingsHelper.utils();
-        if (mVisiblePattern != null) {
-            mVisiblePattern.setChecked(lockPatternUtils.isVisiblePatternEnabled());
-        }
-        if (mTactileFeedback != null) {
-            mTactileFeedback.setChecked(lockPatternUtils.isTactileFeedbackEnabled());
-        }
-        if (mPowerButtonInstantlyLocks != null) {
-            mPowerButtonInstantlyLocks.setChecked(lockPatternUtils.getPowerButtonInstantlyLocks());
-        }
-
         mShowPassword.setChecked(Settings.System.getInt(getContentResolver(),
                 Settings.System.TEXT_SHOW_PASSWORD, 1) != 0);
 
@@ -216,26 +170,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         final String key = preference.getKey();
 
-        final LockPatternUtils lockPatternUtils = mChooseLockSettingsHelper.utils();
-        if (KEY_UNLOCK_SET_OR_CHANGE.equals(key)) {
-            startFragment(this, "com.android.settings.ChooseLockGeneric$ChooseLockGenericFragment",
-                    SET_OR_CHANGE_LOCK_METHOD_REQUEST, null);
-        } else if (KEY_BIOMETRIC_WEAK_IMPROVE_MATCHING.equals(key)) {
-            ChooseLockSettingsHelper helper =
-                    new ChooseLockSettingsHelper(this.getActivity(), this);
-            if (!helper.launchConfirmationActivity(
-                    CONFIRM_EXISTING_FOR_BIOMETRIC_IMPROVE_REQUEST, null, null)) {
-                startBiometricWeakImprove(); // no password set, so no need to confirm
-            }
-        } else if (KEY_LOCK_ENABLED.equals(key)) {
-            lockPatternUtils.setLockPatternEnabled(isToggled(preference));
-        } else if (KEY_VISIBLE_PATTERN.equals(key)) {
-            lockPatternUtils.setVisiblePatternEnabled(isToggled(preference));
-        } else if (KEY_TACTILE_FEEDBACK_ENABLED.equals(key)) {
-            lockPatternUtils.setTactileFeedbackEnabled(isToggled(preference));
-        } else if (KEY_POWER_INSTANTLY_LOCKS.equals(key)) {
-            lockPatternUtils.setPowerButtonInstantlyLocks(isToggled(preference));
-        } else if (preference == mShowPassword) {
+        if (preference == mShowPassword) {
             Settings.System.putInt(getContentResolver(), Settings.System.TEXT_SHOW_PASSWORD,
                     mShowPassword.isChecked() ? 1 : 0);
         } else if (preference == mToggleAppInstallation) {
