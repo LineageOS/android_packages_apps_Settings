@@ -26,10 +26,22 @@
         android:summary="@string/dock_settings_summary" />
 
     <CheckBoxPreference
+        android:key="dock_usb_audio"
+        android:title="@string/dock_usb_audio_enable_title"
+        android:summaryOn="@string/dock_usb_audio_enable_summary_on"
+        android:summaryOff="@string/dock_usb_audio_enable_summary_off"
+        android:defaultValue="false" />
+
+    <CheckBoxPreference
         android:key="dock_sounds"
         android:title="@string/dock_sounds_enable_title"
         android:summaryOn="@string/dock_sounds_enable_summary_on"
         android:summaryOff="@string/dock_sounds_enable_summary_off"
         android:defaultValue="false" />
+
+    <PreferenceScreen
+        android:key="dock_force_undock"
+        android:title="@string/dock_force_undock_title"
+        android:summary="@string/dock_force_undock_summary_no_dock" />
 
 </PreferenceScreen>
