@@ -212,6 +212,7 @@
     <string name="activity_picker_label" msgid="4910700713930693329">"Activiteit selecteren"</string>
     <string name="device_info_label" msgid="6551553813651711205">"Apparaatinfo"</string>
     <string name="battery_info_label" msgid="4132685016148679403">"Accu-info"</string>
+    <string name="battery_history_label">"Accugebruik"</string>
     <string name="display_label" msgid="7403874003169865762">"Weergave"</string>
     <string name="phone_info_label" msgid="2127552523124277664">"Telefooninfo"</string>
     <string name="sd_card_settings_label" product="nosdcard" msgid="8101475181301178428">"USB-opslag"</string>
@@ -324,6 +325,7 @@
     <string name="bluetooth_profile_a2dp" msgid="3259633293424539529">"Media"</string>
     <string name="bluetooth_profile_headset" msgid="1874975688666658946">"Telefoon"</string>
     <string name="bluetooth_profile_opp" msgid="3799470046565284440">"Overdracht"</string>
+    <string name="bluetooth_profile_network">Netwerk</string>
     <string name="bluetooth_summary_connected_to_a2dp" msgid="510833839847758664">"Verbonden met audio van medium"</string>
     <string name="bluetooth_summary_connected_to_headset" msgid="4876496372728623918">"Verbonden met audio van telefoon"</string>
     <string name="bluetooth_summary_connected_to_a2dp_headset" msgid="3045032710457800891">"Verbonden met audio van telefoon en medium"</string>
@@ -464,6 +466,8 @@
     <string name="lock_sounds_enable_title" msgid="1575990840389107141">"Geluid vergrendeling"</string>
     <string name="lock_sounds_enable_summary_on" msgid="145741024028391473">"Geluid afspelen wanneer het scherm wordt vergrendeld en ontgrendeld"</string>
     <string name="lock_sounds_enable_summary_off" msgid="8481243116223542804">"Geen geluid afspelen wanneer het scherm wordt vergrendeld en ontgrendeld"</string>
+    <string name="power_sounds_enable_title">"Lage batterij-toon"</string>
+    <string name="power_sounds_enable_summary">"Geluid afspelen als de batterij bijna leeg is"</string>
     <string name="haptic_feedback_enable_title" msgid="6311736559245411290">"Haptische feedback"</string>
     <string name="haptic_feedback_enable_summary_on" msgid="1875779656524793053">"Trillen bij indrukken van functietoetsen en bij bepaalde UI-interactie"</string>
     <string name="haptic_feedback_enable_summary_off" msgid="7287885436963105314">"Niet trillen bij indrukken van functietoetsen en bij bepaalde UI-interactie"</string>
@@ -679,6 +683,10 @@
     <string name="assisted_gps" msgid="4649317129586736885">"Ondersteunde GPS gebruiken"</string>
     <string name="assisted_gps_enabled" msgid="8751899609589792803">"Server gebruiken ter ondersteuning van GPS (uitschakelen om het netwerkgebruik te beperken)"</string>
     <string name="assisted_gps_disabled" msgid="6982698333968010748">"Server niet gebruiken ter ondersteuning van GPS (inschakelen om GPS-prestaties te verbeteren)"</string>
+    <string name="location_gps_source_title">GPS-apparaat</string>
+    <string name="location_gps_source_summary">Gebruik extern bluetooth-GPS-apparaat i.p.v. intern apparaat</string>
+    <string name="location_gps_source_notification_title">Let op</string>
+    <string name="location_gps_source_notification">GPS-bron is gewijzigd en wordt daarom uitgeschakeld. Schakel deze weer in om GPS verder te gebruiken.</string>
     <string name="about_settings" msgid="1743378368185371685">"Over de telefoon"</string>
     <string name="about_settings_summary" msgid="3302263393543848667">"Juridische info, telefoonstatus, softwareversie tonen"</string>
     <string name="legal_information" msgid="5769301644270604095">"Juridische informatie"</string>
@@ -691,6 +699,7 @@
     <string name="settings_license_activity_title" msgid="7553683406244228650">"Open-sourcelicenties"</string>
     <string name="settings_license_activity_unavailable" msgid="4210539215951487627">"Er is een probleem bij het laden van de licenties."</string>
     <string name="settings_license_activity_loading" msgid="3337535809093591740">"Laden\u2026"</string>
+    <string name="settings_cmlicense_activity_title">CyanogenMod-licentie</string>
     <string name="settings_safetylegal_title" msgid="1289483965535937431">"Veiligheidsinformatie"</string>
     <string name="settings_safetylegal_activity_title" msgid="6901214628496951727">"Veiligheidsinformatie"</string>
     <string name="settings_safetylegal_activity_unreachable" msgid="3198912875259612887">"Uw telefoon heeft geen verbinding met een gegevensservice. Als u deze informatie nu wilt bekijken, gaat u op een computer met internetverbinding naar %s."</string>
@@ -871,6 +880,7 @@
     <string name="testing" msgid="6584352735303604146">"Testen"</string>
     <string name="testing_phone_info" msgid="8656693364332840056">"Telefooninformatie"</string>
     <string name="testing_battery_info" msgid="3497865525976497848">"Accu-informatie"</string>
+    <string name="testing_battery_history">Accugebruik</string>
     <string name="quick_launch_title" msgid="7904609846945905306">"Snelstarten"</string>
     <string name="quick_launch_summary" msgid="3453825712466417452">"Sneltoetsen instellen voor starten applicaties"</string>
     <string name="quick_launch_assign_application" msgid="4521368464929956350">"Applicatie toewijzen"</string>
@@ -892,6 +902,9 @@
     <string name="development_settings_summary" msgid="2151320488701538355">"Opties instellen voor applicatie-ontwikkeling"</string>
     <string name="enable_adb" msgid="7982306934419797485">"USB-foutopsporing"</string>
     <string name="enable_adb_summary" msgid="4881186971746056635">"Foutopsporingsmodus bij USB-verbinding"</string>
+    <string name="adb_over_network">ADB over netwerk</string>
+    <string name="adb_over_network_summary">Gebruik foutopsporing over netwerk (Wi-Fi) i.p.v. USB. Deze instelling wordt teruggezet na herstarten.</string>
+    <string name="adb_over_network_warning">Let op: wanneer ADB over netwerk is ingeschakeld, is uw telefoon open voor indringers van elk verbonden netwerk, inclusief het GSM-netwerk.\n\nGebruik deze functie enkel als u zich op een veilig netwerk bevindt.\n\nWeet u zeker dat u deze functie wilt inschakelen?</string>
     <string name="adb_notify">Notificatie</string>
     <string name="adb_notify_summary">Toon notificatie wanneer USB-foutopsporingsmodus actief is</string>
     <string name="keep_screen_on" msgid="1146389631208760344">"Actief houden"</string>
@@ -1192,8 +1205,11 @@
     <string name="profile_name">Profielnaam</string>
     <string name="new_profile_name">&lt;Nieuw profiel&gt;</string>
     <string name="profile_summary">Raak aan om profiel te wijzigen</string>
+    <string name="profile_statusbar">Statusbalkindicator</string>
     <string name="profile_appgroup_title">Applicatiegroep: %s</string>
     <string name="profile_appgroups_title">Applicatiegroepen</string>
+    <string name="profile_connectionoverrides_title">Verbindingen overschrijven</string>
+    <string name="profile_connectionoverrides_summary">Raak aan om in/uit te schakelen</string>
     <string name="profile_volumeoverrides_title">Volume-instellingen</string>
     <string name="profile_volumeoverrides_summary">Raak aan om volume in te stellen.</string>
     <string name="profile_applist_title">Applicaties - Klik om uit groep te verwijderen</string>
@@ -1215,6 +1231,10 @@
     <string name="profile_manage">Profielen beheren</string>
     <string name="profile_appgroups_manage">Applicatiegroepen beheren</string>
     <string name="profile_applist_manage">Applicatielijst beheren</string>
+    <string name="profile_reset_title">Herstellen</string>
+    <string name="profile_reset_all_title">Herstel alles</string>
+    <string name="profile_reset_all_summary">Verwijder alle profielen en applicatiegroepen en herstel ze naar de standaardinstellingen</string>
+    <string name="profile_reset_all_message">Wilt u alle profielen en applicatiegroepen verwijderen en ze terugzetten naar de standaardinstellingen?</string>
     <string name="privacy_settings" msgid="9206631214140954954">"Privacy"</string>
     <string name="privacy_settings_title" msgid="1987089301293213705">"Privacy-instellingen"</string>
     <string name="backup_section_title" msgid="8856083167469467588">"'Backup &amp; herstel"</string>
@@ -1315,8 +1335,35 @@
     <string name="ok">OK</string>
     <string name="widget_count">(%d widgets)</string>
     <string name="cm_settings_title">CyanogenMod</string>
+    <string name="device_settings_title">Apparaatinstellingen</string>
     <string name="wimax_settings" msgid="1574837328738396794">"4G-instellingen"</string>
     <string name="wimax_settings_summary" msgid="3207355006084135453">"4G-netwerk en -modem instellen en beheren"</string>
     <string name="status_wimax_mac_address" msgid="8390791848661413416">"MAC-adres 4G"</string>
     <string name="additional_system_update_settings_list_item_title" msgid="214987609894661992">"Aanvullende systeemupdates"</string>
+    <string name ="finger_enrollment">Vingerregistratie</string>
+    <string name ="start_finger_enrollment_summary">Registreert vingerafdruk voor ontgrendelen en gebruik bij andere applicaties</string>
+    <string name="lockfinger_unlock_set_unlock_launch_picker_summary">Scherm vergrendelen met een patroon, vinger, PIN of wachtwoord</string>
+    <string name="lockfinger_unlock_set_unlock_launch_picker_change_summary">Beveiliging via patroon, vinger, PIN of wachtwoord wijzigen of uitschakelen</string>
+    <string name="lockfinger_unlock_set_unlock_finger_title">Vinger</string>
+    <string name="lockfinger_unlock_set_unlock_finger_summary">Gebruik vinger om te ontgrendelen</string>
+    <string name="lockfinger_finger_settings_title">Schermontgrendeling met vinger</string>
+    <string name="lockfinger_set_finger_unlock_title">Stel vingerafdruk in</string>
+    <string name="lockfinger_change_finger_unlock_title">Wijzig vingerafdruk</string>
+    <string name="lockfinger_toggle_unlock_finger_title">Vingerafdruk vereist</string>
+    <string name="lockfinger_toggle_unlock_finger_summary">Moet vingerafdruk gebruiken om het scherm te ontgrendelen</string>
+    <string name="lockfinger_unlock_disable_lock_finger_summary">Verwijder vingerafdruk</string>
+    <string name="unlock_change_lock_finger_title">Wijzig vingerafdruk</string>
+    <string name="lockpassword_finger_set_toast">Vingerafdruk is ingesteld</string>
+    <string name="lockpattern_change_lock_finger_label">Wijzig vingerafdruk</string>
+    <string name="lockfinger_enrollment_succeeded_toast">Registratie geslaagd.</string>
+    <string name="lockfinger_tsm_library_not_available_toast">Kan niet verdergaan omdat de TSM-bibliotheek niet kan worden geladen</string>
+    <string name="lockfinger_enrollment_canceled_toast">Registratie geannuleerd.</string>
+    <string name="lockfinger_enrollment_timeout_toast">Time-out bij registratie</string>
+    <string name="lockfinger_enrollment_unknown_error_toast">Onbekende fout.\nWaarschijnlijk verbindingsfout.</string>
+    <string name="lockfinger_enrollment_failure_default_toast">Registratie niet gelukt. Fout: %d.</string>
+    <string name="lockfinger_enrollment_database_full">Registratie niet gelukt. Databank is vol.</string>
+    <string name="lockfinger_dbadmin_failure_default_toast">Databasebeheer-actie gefaald: %d.</string>
+    <string name="lockfinger_ui_timeout_header">UI-time-out</string>
+    <string name="lockfinger_too_many_bad_swipes_header">Te veel ongeldige pogingen</string>
+    <string name="lockfinger_lockout_countdown_footer">Probeer het nog eens over %d seconden.</string>
 </resources>
