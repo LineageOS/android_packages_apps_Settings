@@ -1766,14 +1766,17 @@
 
     <!-- Add Profile -->
     <string name="add_profile_dialog_title">Создать новый профиль</string>
-    <string name="profile_name_title">Имя профиля</string>
+    <string name="profile_name_title">Имя</string>
     <string name="profile_profile_name_prompt">Введите имя для нового профиля</string>
     <string name="menu_new_profile">Новый профиль</string>
     <string name="menu_new_profile_summary">Добавить и настроить новый профиль</string>
     <string name="new_profile_name">&lt;новый профиль&gt;</string>
 
-    <!-- Rename Profile Dialog  -->
-    <string name="duplicate_profile_name">Повторяющиеся имя профиля!</string>
+    <!-- Rename Dialog  -->
+    <string name="rename_dialog_title">Переименовать</string>
+    <string name="rename_dialog_message">Введите новое имя</string>
+    <string name="duplicate_profile_name">Повторяющееся имя профиля!</string>
+    <string name="duplicate_appgroup_name">Повторяющееся имя группы приложений!</string>
 
     <!-- Reset Profiles -->
     <string name="profile_reset_title">Сбросить</string>
@@ -1795,8 +1798,8 @@
     <string name="profile_profiles_manage">Профили</string>
     <string name="profile_profile_manage">Управление профилями</string>
     <string name="profile_applist_manage">Список приложений</string>
-    <string name="profile_appgroups_manage">Управление группами приложений</string>
-    <string name="profile_appgroup_manage">Профиль</string>
+    <string name="profile_appgroups_manage">Группы приложений</string>
+    <string name="profile_appgroup_manage">Группы приложений</string>
 
     <!-- Profile settings screen, section header for settings related to notification profiles -->
     <string name="profile_settings">Настройки профиля</string>
@@ -1820,6 +1823,7 @@
     <string name="profile_new_appgroup">Новая группа приложений</string>
     <string name="profile_delete_appgroup">Удалить эту группу приложений</string>
     <string name="profile_appgroup_name_prompt">Введите имя для новой группы приложений</string>
+    <string name="profile_appgroup_name_title">Имя</string>
     <string name="profile_add_app">Добавить приложение</string>
     <string name="profile_delete_app">Удалить приложение</string>
 
@@ -1853,7 +1857,7 @@
 
     <!-- Profiles - Quiet hours -->
     <string name="quiet_hours_title">Тихие часы</string>
-    <string name="quiet_hours_summary">Просмотр или изменение часов, когда устройство должно быть тихим</string>
+    <string name="quiet_hours_summary">Настройка часов, когда устройство должно быть тихим</string>
     <string name="quiet_hours_note_title">Примечание</string>
     <string name="quiet_hours_note_summary">Входящие звонки будут вести себя как обычно во время тихих часов</string>
     <string name="quiet_hours_enabled">Включить тихие часы</string>
@@ -1875,6 +1879,11 @@
     <string name="quiet_hours_haptic">Отключить отклик на нажатие</string>
     <string name="quiet_hours_haptic_on">Отклик на нажатие выключен</string>
     <string name="quiet_hours_haptic_off">Отклик на нажатие включен</string>
+    <string name="quiet_hours_active_from">Активно с</string>
+    <string name="quiet_hours_active_to">по</string>
+    <!-- time range preference -->
+    <string name="start_time_title">Начало</string>
+    <string name="end_time_title">Конец</string>
 
     <!-- Performance settings #CM -->
     <string name="performance_settings_title">Производительность</string>
@@ -1971,7 +1980,7 @@
     <string name="display_rotation_title">Поворот экрана</string>
     <string name="display_rotation_enabled">Включено.</string>
     <string name="display_rotation_disabled">Выключено.</string>
-    <string name="display_rotation_unit">градусы</string>
+    <string name="display_rotation_unit">градусов</string>
     <string name="display_rotation_category_title">Режимы вращения</string>
     <string name="display_rotation_0_title">0 градусов</string>
     <string name="display_rotation_90_title">90 градусов</string>
@@ -1989,6 +1998,7 @@
     <string name="mem_info">Память</string>
 
     <!-- Input Settings -->
+    <string name="display_category_wakeup_options_title">Настройки пробуждения</string>
     <string name="pref_volume_wake_title">Пробуждение громкостью</string>
     <string name="pref_volume_wake_summary">Нажатие кнопок громче/тише пробуждает устройство. Предназначено для устройств с труднонажимаемой кнопкой питания</string>
 
