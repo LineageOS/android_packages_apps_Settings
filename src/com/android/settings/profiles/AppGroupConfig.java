@@ -86,6 +86,8 @@ public class AppGroupConfig extends SettingsPreferenceFragment
 
     private static final int MENU_ADD = Menu.FIRST + 1;
 
+    PackageAdaptor mAppAdapter;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,11 +97,11 @@ public class AppGroupConfig extends SettingsPreferenceFragment
 
         final Bundle args = getArguments();
         if (args != null) {
-            Log.d(TAG, "AppGroupConfig has valid arguments passed");
-
             mNotificationGroup = (NotificationGroup) args.getParcelable("NotificationGroup");
             mPackageManager = getPackageManager();
             mInstalledPackages = mPackageManager.getInstalledPackages(0);
+            mAppAdapter = new PackageAdaptor(mInstalledPackages);
+            mAppAdapter.update();
 
             updatePackages();
 
@@ -253,9 +255,7 @@ public class AppGroupConfig extends SettingsPreferenceFragment
         switch (id) {
             case DIALOG_APPS:
                 final ListView list = new ListView(getActivity());
-                PackageAdaptor adapter = new PackageAdaptor(mInstalledPackages);
-                list.setAdapter(adapter);
-                adapter.update();
+                list.setAdapter(mAppAdapter);
                 builder.setTitle(R.string.profile_choose_app);
                 builder.setView(list);
                 dialog = builder.create();
@@ -422,9 +422,6 @@ public class AppGroupConfig extends SettingsPreferenceFragment
             if (holder.icon != null) {
                 Drawable loadIcon = applicationInfo.icon;
                 holder.icon.setImageDrawable(loadIcon);
-                holder.icon.setAdjustViewBounds(true);
-                holder.icon.setMaxHeight(72);
-                holder.icon.setMaxWidth(72);
             }
             return convertView;
         }

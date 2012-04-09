@@ -38,7 +38,6 @@ public class ApplicationItemPreference extends Preference {
 
     public ApplicationItemPreference(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        Log.d(TAG, "ApplicationItemPreference: entered");
         setLayoutResource(R.layout.preference_icon);
         TypedArray a = context.obtainStyledAttributes(attrs,
                 R.styleable.IconPreferenceScreen, defStyle, 0);
@@ -52,12 +51,16 @@ public class ApplicationItemPreference extends Preference {
     @Override
     public void onBindView(View view) {
         super.onBindView(view);
-        Log.d(TAG, "onBindView: entered");
+
+        float valueDips = 36.0f;
+        final float scale = getContext().getResources().getDisplayMetrics().density;
+        int valuePixels = (int) (valueDips * scale + 0.5f);
+
         ImageView imageView = (ImageView) view.findViewById(R.id.icon);
         if (imageView != null && mIcon != null) {
             imageView.setAdjustViewBounds(true);
-            imageView.setMaxHeight(64);
-            imageView.setMaxWidth(64);
+            imageView.setMaxHeight(valuePixels);
+            imageView.setMaxWidth(valuePixels);
             imageView.setImageDrawable(mIcon);
         }
     }
