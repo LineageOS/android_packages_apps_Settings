@@ -37,6 +37,7 @@ import android.os.storage.StorageVolume;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -99,6 +100,11 @@ public class Memory extends SettingsPreferenceFragment {
 
         StorageVolume[] storageVolumes = mStorageManager.getVolumeList();
         // mass storage is enabled if primary volume supports it
+        if (Settings.Secure.getInt(getContentResolver(), Settings.Secure.USB_MASS_STORAGE_ENABLED, 0) > 0 ) {
+            mMassStorageEnabled = (storageVolumes.length > 0
+                                   && storageVolumes[0].allowMassStorage());
+        }
+
         mMassStorageEnabled = (storageVolumes.length > 0
                 && storageVolumes[0].allowMassStorage());
         int length = storageVolumes.length;
@@ -170,11 +176,9 @@ public class Memory extends SettingsPreferenceFragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        if (!mMassStorageEnabled) {
-            menu.add(Menu.NONE, MENU_ID_USB, 0, R.string.storage_menu_usb)
-                //.setIcon(com.android.internal.R.drawable.stat_sys_data_usb)
-                .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
-        }
+        menu.add(Menu.NONE, MENU_ID_USB, 0, R.string.storage_menu_usb)
+            //.setIcon(com.android.internal.R.drawable.stat_sys_data_usb)
+            .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
         if (mHasSwitchableStorage) {
             menu.add(Menu.NONE, MENU_ID_STORAGE, 0, R.string.storage_menu_storage)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
