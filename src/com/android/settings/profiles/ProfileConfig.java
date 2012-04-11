@@ -27,8 +27,10 @@ import android.app.ProfileManager;
 import android.app.StreamSettings;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.net.wimax.WimaxHelper;
+import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -53,7 +55,9 @@ public class ProfileConfig extends SettingsPreferenceFragment
 
     private ProfileManager mProfileManager;
 
-    private static final int MENU_DELETE = Menu.FIRST;
+    private static final int MENU_NFC_WRITE = Menu.FIRST;
+
+    private static final int MENU_DELETE = Menu.FIRST + 1;
 
     private Profile mProfile;
 
@@ -108,6 +112,12 @@ public class ProfileConfig extends SettingsPreferenceFragment
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        if (NfcAdapter.getDefaultAdapter(getActivity()) != null) {
+            MenuItem nfc = menu.add(0, MENU_NFC_WRITE, 0, R.string.profile_write_nfc_tag)
+                .setIcon(R.drawable.ic_menu_nfc_writer_dark);
+            nfc.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM |
+                    MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+        }
         MenuItem delete = menu.add(0, MENU_DELETE, 1, R.string.profile_menu_delete)
                 .setIcon(R.drawable.ic_menu_trash_holo_dark);
         delete.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM |
@@ -119,6 +129,9 @@ public class ProfileConfig extends SettingsPreferenceFragment
         switch (item.getItemId()) {
             case MENU_DELETE:
                 deleteProfile();
+                return true;
+            case MENU_NFC_WRITE:
+                startNFCProfileWriter();
                 return true;
             default:
                 return false;
@@ -139,6 +152,14 @@ public class ProfileConfig extends SettingsPreferenceFragment
         if (mProfile != null) {
             mProfileManager.updateProfile(mProfile);
         }
+    }
+
+    private void startNFCProfileWriter() {
+        PreferenceActivity pa = (PreferenceActivity) getActivity();
+        Intent i = new Intent(this.getActivity(), NFCProfileWriter.class);
+        i.putExtra(NFCProfileWriter.EXTRA_PROFILE_UUID, mProfile.getUuid().toString());
+        i.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        pa.startActivity(i);
     }
 
     private void fillList() {
