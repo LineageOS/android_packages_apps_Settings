@@ -190,15 +190,18 @@ public class RadioInfo extends Activity {
                     break;
 
                 case EVENT_QUERY_PREFERRED_TYPE_DONE:
-                    preferredNetworkType.setOnItemSelectedListener(null);
                     ar= (AsyncResult) msg.obj;
                     if (ar.exception == null) {
                         int type = ((int[])ar.result)[0];
+                        if (type >= mPreferredNetworkLabels.length) {
+                            Log.e(TAG, "[RadioInfo] EVENT_QUERY_PREFERRED_TYPE_DONE: unknown " +
+                                    "type=" + type);
+                            type = mPreferredNetworkLabels.length - 1;
+                        }
                         preferredNetworkType.setSelection(type, true);
                     } else {
-                        preferredNetworkType.setSelection(12, true);
+                        preferredNetworkType.setSelection(mPreferredNetworkLabels.length - 1, true);
                     }
-                    preferredNetworkType.setOnItemSelectedListener(mPreferredNetworkHandler);
                     break;
                 case EVENT_SET_PREFERRED_TYPE_DONE:
                     ar= (AsyncResult) msg.obj;
@@ -1011,7 +1014,7 @@ public class RadioInfo extends Activity {
             mPreferredNetworkHandler = new AdapterView.OnItemSelectedListener() {
         public void onItemSelected(AdapterView parent, View v, int pos, long id) {
             Message msg = mHandler.obtainMessage(EVENT_SET_PREFERRED_TYPE_DONE);
-            if (pos>=0 && pos<=11) { //IS THIS NEEDED to extend to the entire range of values
+            if (pos>=0 && pos<=(mPreferredNetworkLabels.length - 2)) {
                 phone.setPreferredNetworkType(pos, msg);
             }
         }
