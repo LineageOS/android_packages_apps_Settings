@@ -82,7 +82,7 @@
   <string-array name="wifi_status">
     <item msgid="1922181315419294640"></item>
     <item msgid="8934131797783724664">"Keresés..."</item>
-    <item msgid="8513729475867537913">"Kapcsolódás…"</item>
+    <item msgid="8513729475867537913">"Kapcsolódás..."</item>
     <item msgid="515055375277271756">"Hitelesítés..."</item>
     <item msgid="1943354004029184381">"IP-cím lekérése..."</item>
     <item msgid="4221763391123233270">"Csatlakozva"</item>
@@ -208,8 +208,17 @@
   </string-array>
   <string-array name="app_install_location_entries">
     <item msgid="8151497958991952759">"Belső tárhely"</item>
-    <item msgid="3738430123799803530">"Eltávolítható SD-kártya"</item>
+    <item msgid="3738430123799803530">"Külső SD kártya"</item>
     <item msgid="4498124044785815005">"Döntse el a rendszer"</item>
+  </string-array>
+
+  <!-- New 20120411 -->
+  <!-- Volume Overlay options. -->
+  <string-array name="volume_overlay_entries">
+    <item>Egyszerű</item>
+    <item>Kiterjeszthető</item>
+    <item>Kiterjesztett</item>
+    <item>Nincs</item>
   </string-array>
   <string-array name="silent_mode_entries">
     <item msgid="783505504936446770">"Ki"</item>
@@ -273,4 +282,104 @@
     <item msgid="4042143101664725090">"Időtúllépés"</item>
     <item msgid="7664124146786465092">"Sikertelen"</item>
   </string-array>
+
+  <!-- New 20120411 -->
+  <!-- **** CYANOGENMOD EDITS START **** -->
+  <!-- Arrays required by Automatic Backlight. -->
+  <string-array name="entries_light_filter_window">
+    <item>2 másodperc</item>
+    <item>5 másodperc</item>
+    <item>10 másodperc</item>
+    <item>20 másodperc</item>
+    <item>30 másodperc</item>
+    <item>60 másodperc</item>
+    </string-array>
+  <string-array name="entries_light_filter_reset">
+    <item>Letiltva</item>
+    <item>400 lux</item>
+    <item>500 lux</item>
+    <item>600 lux</item>
+    <item>700 lux</item>
+    <item>800 lux</item>
+    <item>900 lux</item>
+    <item>1000 lux</item>
+    <item>1500 lux</item>
+    <item>2000 lux</item>
+     <item>2500 lux</item>
+  </string-array>
+  <string-array name="entries_light_filter_interval">
+    <item>0.5 másodperc</item>
+    <item>1 másodperc</item>
+    <item>2 másodperc</item>
+    <item>5 másodperc</item>
+    <item>10 másodperc</item>
+  </string-array>
+  <string-array name="entries_network_widget">
+    <item>2G/3G+2G</item>
+    <item>2G/3G</item>
+    <item>2G/3G/3G+2G</item>
+  </string-array>
+  <string-array name="entries_screentimeout_widget">
+    <item>15m/1p/5p</item>
+    <item>30m/2p/5p</item>
+  </string-array>
+  <string-array name="entries_flash_widget">
+    <item>Normál</item>
+    <item>Magas / Halálsugár</item>
+  </string-array>
+  <string-array name="haptic_feedback_entries">
+    <item>Alapértelmezett</item>
+    <item>Be</item>
+    <item>Ki</item>
+  </string-array>
+  <string-array name="entries_heapsize">
+    <item>12p</item>
+    <item>16p</item>
+    <item>24p</item>
+    <item>32p</item>
+    <item>48p</item>
+    </string-array>
+  <string-array name="pref_zram_size_entries">
+    <item>Letiltva</item>
+    <item>10%</item>
+    <item>18% (alapértelmezett)</item>
+    <item>26%</item>
+  </string-array>
+  <string-array name="entries_status_bar_am_pm">
+    <item>Normál</item>
+    <item>Kicsi</item>
+    <item>Nincs (alapértelmezett)</item>
+  </string-array>
+  <string-array name="entries_status_bar_battery">
+    <item>Ikon (alapértelmezett)</item>
+    <item>Százalék</item>
+    <item>Rejtett</item>
+  </string-array>
+  <string-array name="lockscreen_delay_entries">
+    <item>Immediately</item>
+    <item>1m</item>
+    <item>5m</item>
+    <item>10m</item>
+    <item>15m</item>
+    <item>30m</item>
+    <item>1p</item>
+    <item>5p</item>
+    <item>10p</item>
+    <item>30p</item>
+  </string-array>
+  <!-- Profile mode options. -->
+  <string-array name="profile_entries">
+    <item>Be</item>
+    <item>Ki</item>
+    <item>Ne változtasd</item>
+  </string-array>
+  <!-- Profile mode options. -->
+  <string-array name="profile_connection_entries">
+    <item>Letiltva</item>
+    <item>Engedélyezve</item>
+  </string-array>
+  <string-array name="location_entries_gps_source">
+    <item>Használ a beépített GPS-t</item>
+  </string-array>
+  <!-- **** CYANOGENMOD EDITS END **** -->
 </resources>
