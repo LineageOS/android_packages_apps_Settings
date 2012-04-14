@@ -37,6 +37,20 @@
         android:persistent="false" />
 
     <PreferenceScreen
+        android:key="tethering_advanced"
+        android:title="@string/tethering_advanced_text"
+        android:persistent="false" >
+
+        <ListPreference
+            android:key="tethering_lease_time"
+            android:title="@string/tethering_lease_time_text"
+            android:persistent="false"
+            android:entries="@array/tethering_lease_time_entries"
+            android:entryValues="@array/tethering_lease_time_values" />
+
+    </PreferenceScreen>
+
+    <PreferenceScreen
         android:key="tethering_help"
         android:title="@string/tethering_help_button_text" >
     </PreferenceScreen>

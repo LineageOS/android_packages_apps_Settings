@@ -38,8 +38,10 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.CheckBoxPreference;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -113,6 +115,9 @@ public class TetherSettings extends SettingsPreferenceFragment
     private String[] mProvisionApp;
     private static final int PROVISION_REQUEST = 0;
 
+    private static final String KEY_LEASE_TIME = "tethering_lease_time";
+    private ListPreference mLeaseTimePreference;
+
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -167,6 +172,14 @@ public class TetherSettings extends SettingsPreferenceFragment
 
         mProvisionApp = getResources().getStringArray(
                 com.android.internal.R.array.config_mobile_hotspot_provision_app);
+
+        mLeaseTimePreference = (ListPreference) findPreference(KEY_LEASE_TIME);
+        mLeaseTimePreference.setValue(String.valueOf(Settings.Secure.getInt(
+            getContentResolver(),
+            Settings.Secure.TETHER_LEASE_TIME,
+            Settings.Secure.TETHER_LEASE_TIME_DEFAULT)));
+        mLeaseTimePreference.setSummary(mLeaseTimePreference.getEntry());
+        mLeaseTimePreference.setOnPreferenceChangeListener(this);
 
         mView = new WebView(activity);
     }
@@ -465,14 +478,26 @@ public class TetherSettings extends SettingsPreferenceFragment
     }
 
     public boolean onPreferenceChange(Preference preference, Object value) {
-        boolean enable = (Boolean) value;
+        if (preference == mEnableWifiAp) {
+            boolean enable = (Boolean) value;
 
-        if (enable) {
-            startProvisioningIfNecessary(WIFI_TETHERING);
-        } else {
-            mWifiApEnabler.setSoftapEnabled(false);
+            if (enable) {
+                startProvisioningIfNecessary(WIFI_TETHERING);
+            } else {
+                mWifiApEnabler.setSoftapEnabled(false);
+            }
+            return false;
+        } else if (preference == mLeaseTimePreference) {
+            final String lease = value.toString();
+            Settings.Secure.putString(getContentResolver(),
+                Settings.Secure.TETHER_LEASE_TIME, lease);
+            int index = mLeaseTimePreference.findIndexOfValue(lease);
+            if (index >= 0)
+                mLeaseTimePreference.setSummary((mLeaseTimePreference.getEntries())[index]);
+            return true;
         }
-        return false;
+
+        return true;
     }
 
     boolean isProvisioningNeeded() {
