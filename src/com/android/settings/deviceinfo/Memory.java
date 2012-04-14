@@ -105,8 +105,6 @@ public class Memory extends SettingsPreferenceFragment {
                                    && storageVolumes[0].allowMassStorage());
         }
 
-        mMassStorageEnabled = (storageVolumes.length > 0
-                && storageVolumes[0].allowMassStorage());
         int length = storageVolumes.length;
         mStorageVolumePreferenceCategories = new StorageVolumePreferenceCategory[length];
         for (int i = 0; i < length; i++) {
@@ -120,7 +118,7 @@ public class Memory extends SettingsPreferenceFragment {
 
         // only show options menu if we are not using the legacy USB mass storage support
         // or if we need the mountpoints switcher
-        setHasOptionsMenu(!mMassStorageEnabled || mHasSwitchableStorage);
+        setHasOptionsMenu(true);
     }
 
     @Override
