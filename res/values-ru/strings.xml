@@ -587,6 +587,7 @@
     <string name="wifi_tether_configure_ssid_default" msgid="8467525402622138547">"Хот-спот Android"</string>
     <string name="display_settings_title" msgid="1708697328627382561">"Экран"</string>
     <string name="sound_settings" msgid="5534671337768745343">"Звук"</string>
+    <string name="volume_overlay_title">Панель громкости</string>
     <string name="silent_mode_title" msgid="3181479108593217704">"Режим без звука"</string>
     <string name="ringtone_title" msgid="5379026328015343686">"Рингтон"</string>
     <string name="ringtone_summary" msgid="2630023412632683493"></string>
@@ -604,10 +605,10 @@
     <string name="media_volume_title" msgid="3576565767317118106">"Мультимедиа"</string>
     <string name="media_volume_summary" msgid="5363248930648849974">"Настроить громкость музыки и видео"</string>
     <string name="alarm_volume_title" msgid="2285597478377758706">"Будильник"</string>
-    <string name="dock_settings_summary" msgid="455802113668982481">"Настройки звука для подключенной док-станции"</string>
     <string name="dtmf_tone_enable_title" msgid="8533399267725365088">"Звук клавиш"</string>
     <string name="sound_effects_enable_title" msgid="1171590821131077296">"Звук нажатия на экран"</string>
     <string name="lock_sounds_enable_title" msgid="450098505659399520">"Звук блокировки экрана"</string>
+    <string name="haptic_feedback_enable_title">Виброотклик</string>
     <string name="volbtn_music_controls_title">Управление музыкой кнопками громкости</string>
     <string name="volbtn_music_controls_summary">Когда экран выключен, долгое нажатие кнопок громкости переключает музыкальные треки</string>
     <string name="audio_record_proc_title" msgid="4271091199976457534">"Подавление шума"</string>
@@ -621,20 +622,29 @@
     <string name="link_volume_mutes">Связать беззвуч. режим</string>
     <string name="dock_settings" msgid="1820107306693002541">"Док-станция"</string>
     <string name="dock_settings_title" msgid="9161438664257429372">"Настройки док-станции"</string>
-    <string name="dock_audio_settings_title" msgid="3324750259959570305">"Аудио"</string>
-    <string name="dock_audio_summary_desk" msgid="6487784412371139335">"Настройки подключенной настольной док-станции"</string>
-    <string name="dock_audio_summary_car" msgid="6740897586006248450">"Настройки док-станции автомобиля"</string>
+    <string name="dock_audio_settings_title" msgid="3324750259959570305">Bluetooth-аудио док-станция</string>
+    <string name="dock_settings_summary">Настройки Bluetooth-аудио для подключенной док-станции</string>
+    <string name="dock_audio_summary_desk" msgid="6487784412371139335">"Настройки Bluetooth-аудио подключенной настольной док-станции"</string>
+    <string name="dock_audio_summary_car" msgid="6740897586006248450">"Настройки Bluetooth-аудио док-станции автомобиля"</string>
     <string name="dock_audio_summary_none" product="tablet" msgid="8215337394914283607">"Планшетный ПК не подключен к док-станции"</string>
     <string name="dock_audio_summary_none" product="default" msgid="289909253741048784">"Телефон не подключен к док-станции"</string>
-    <string name="dock_audio_summary_unknown" msgid="4465059868974255693">"Настройки подключенной док-станции"</string>
+    <string name="dock_audio_summary_unknown" msgid="4465059868974255693">"Настройки Bluetooth-аудио подключенной док-станции"</string>
     <string name="dock_not_found_title" msgid="3290961741828952424">"Док-станция не найдена."</string>
     <string name="dock_not_found_text" product="tablet" msgid="9015625921245904495">"Чтобы настроить док-станцию, установите в нее планшетный ПК."</string>
     <string name="dock_not_found_text" product="default" msgid="3882255773040651831">"Чтобы настроить док-станцию, установите в нее телефон."</string>
+    <string name="dock_usb_audio_enable_title">USB-аудио док-станция</string>
+    <string name="dock_usb_audio_enable_summary_on">Использовать пассивный аудио вывод на док-станции</string>
+    <string name="dock_usb_audio_enable_summary_off">Не использовать пассивный аудио вывод на док-станции</string>
     <string name="dock_sounds_enable_title" msgid="885839627097024110">"Звук при установке в док-станцию"</string>
     <string name="dock_sounds_enable_summary_on" product="tablet" msgid="838102386448981339">"Воспроизводить звук при установке или извлечении планшетного ПК из док-станции"</string>
     <string name="dock_sounds_enable_summary_on" product="default" msgid="8491180514199743771">"Воспроизводить звук при установке или извлечении телефона"</string>
     <string name="dock_sounds_enable_summary_off" product="tablet" msgid="5077843049805652363">"Не воспроизводить звук при установке или извлечении планшетного ПК из док-станции"</string>
     <string name="dock_sounds_enable_summary_off" product="default" msgid="3151046599205265919">"Не воспроизводить звук при установке или извлечении телефона"</string>
+    <string name="dock_force_undock_title">Принудительное отключение</string>
+    <string name="dock_force_undock_summary_no_dock" product="tablet">Планшетный ПК не подключен к док-станции</string>
+    <string name="dock_force_undock_summary_no_dock" product="default">Телефон не подключен к док-станции</string>
+    <string name="dock_force_undock_summary" product="tablet">Отключить планшетный ПК от док-станции</string>
+    <string name="dock_force_undock_summary" product="default">Отключить телефон от док-станции</string>
     <string name="sync_settings" msgid="9186125469300013491">"Аккаунты"</string>
     <string name="search_settings" msgid="1910951467596035063">"Поиск"</string>
     <string name="search_settings_summary" msgid="9205656546570654169">"Настроить параметры и управлять историей поиска"</string>
