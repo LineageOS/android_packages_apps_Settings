@@ -1011,7 +1011,7 @@ public class RadioInfo extends Activity {
             mPreferredNetworkHandler = new AdapterView.OnItemSelectedListener() {
         public void onItemSelected(AdapterView parent, View v, int pos, long id) {
             Message msg = mHandler.obtainMessage(EVENT_SET_PREFERRED_TYPE_DONE);
-            if (pos>=0 && pos<=7) { //IS THIS NEEDED to extend to the entire range of values
+            if (pos>=0 && pos<=11) { //IS THIS NEEDED to extend to the entire range of values
                 phone.setPreferredNetworkType(pos, msg);
             }
         }
