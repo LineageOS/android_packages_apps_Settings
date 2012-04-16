@@ -751,15 +751,15 @@
     <string name="dlg_confirm_unmount_text" product="default" msgid="6998379994779187692">"Ha leválasztja az SD-kártyát, egyes használatban lévő alkalmazások leállnak, és lehet, hogy addig nem lesznek elérhetők, amíg nem csatlakoztatja újra a kártyát."</string>
     <string name="dlg_error_unmount_title" product="nosdcard" msgid="4642742385125426529"></string>
     <string name="dlg_error_unmount_title" product="default" msgid="4642742385125426529"></string>
-    <string name="dlg_error_unmount_text" product="nosdcard" msgid="4346280469528260684">"Nem lehet leválasztani az USB-tárat. Próbálkozzon újra később."</string>
-    <string name="dlg_error_unmount_text" product="default" msgid="3073562815631781894">"Nem lehetett leválasztani az SD-kártyát. Próbálkozzon újra később."</string>
-    <string name="unmount_inform_text" product="nosdcard" msgid="7120241136790744265">"Az USB-tár leválasztásra kerül."</string>
-    <string name="unmount_inform_text" product="default" msgid="1904212716075458402">"Az SD-kártya leválasztásra kerül."</string>
+    <string name="dlg_error_unmount_text" product="nosdcard" msgid="4346280469528260684">"Nem lehet leválasztani az USB tárat. Próbálkozzon újra később."</string>
+    <string name="dlg_error_unmount_text" product="default" msgid="3073562815631781894">"Nem lehetett leválasztani az SD kártyát. Próbálkozzon újra később."</string>
+    <string name="unmount_inform_text" product="nosdcard" msgid="7120241136790744265">"Az USB tár leválasztásra kerül."</string>
+    <string name="unmount_inform_text" product="default" msgid="1904212716075458402">"Az SD kártya leválasztásra kerül."</string>
     <string name="sd_ejecting_title" msgid="8824572198034365468">"Leválasztás"</string>
     <string name="sd_ejecting_summary" msgid="2028753069184908491">"Leválasztás folyamatban"</string>
-    <string name="storage_menu_usb" msgid="5708207885333243384">"Számítógépes USB-kapcsolat"</string>
-    <string name="storage_title_usb" msgid="679612779321689418">"Számítógépes USB-kapcsolat"</string>
-    <string name="usb_connection_category" msgid="7805945595165422882">"Kapcsolódás a következőként:"</string>
+    <string name="storage_menu_usb" msgid="5708207885333243384">"USB kapcsolat"</string>
+    <string name="storage_title_usb" msgid="679612779321689418">"USB kapcsolat"</string>
+    <string name="usb_connection_category" msgid="7805945595165422882">"USB kapcsolat módja"</string>
     <string name="usb_mtp_title" msgid="3399663424394065964">"Médiaeszköz (MTP)"</string>
     <string name="usb_mtp_summary" msgid="4617321473211391236">"Lehetővé teszi a médiafájlok átvitelét Windows alatt, vagy az Android fájlátvitel használatát Macen (tekintse meg a www.android.com/filetransfer webhelyet)"</string>
     <string name="usb_ptp_title" msgid="3852760810622389620">"Kamera (PTP)"</string>
@@ -1583,6 +1583,27 @@
     <!-- no translation found for percentage (5866131581207788624) -->
     <skip />
     <string name="additional_system_update_settings_list_item_title" msgid="214987609894661992">"További rendszerfrissítések"</string>
+
+    <!-- New 20120416 -->
+    <!-- Storage setting. Title for Mass Storage checkbox [CHAR LIMIT=30]-->
+    <string name="usb_mass_storage_title">USB háttértár</string>
+    <!-- Storage setting. Summary for UMS checkbox [CHAR LIMIT=NONE]-->
+    <string name="usb_mass_storage_summary">USB háttértár (mass storage) engedélyezése</string>
+    <!-- Storage setting. Label for installer CD [CHAR LIMIT=30]-->
+    <string name="usb_label_installer_cd">"File-transfer tools telepítése"</string>
+
+    <!-- Storage setting. Menu option for generic storage settings [CHAR LIMIT=30]-->
+    <string name="storage_menu_storage">Háttértár konfiguráció</string>
+    <!-- Storage setting. Title for generic storage settings [CHAR LIMIT=30]-->
+    <string name="storage_title_storage">Háttértár konfiguráció</string>
+    <!-- Storage setting. Storage layout setup [CHAR LIMIT=30]-->
+    <string name="storage_layout">Szerkezet konfiguráció</string>
+
+    <!-- Storage layout Settings : Switch storage mountpoints -->
+    <string name="storage_switch_title">Belső tárhely használata</string>
+    <string name="storage_switch_summary_on">Belső tárhely használata alkalmazások és média számára</string>
+    <string name="storage_switch_summary_off">SD kártya használata alkalmazások és média számára</string>
+    <string name="storage_switch_unavailable">Az eszköz nem támogat SD kártyákat</string>
 
     <!-- New 20120414 -->
     <!-- Dock settings screen, Enable Dock USB Audio check box label -->
