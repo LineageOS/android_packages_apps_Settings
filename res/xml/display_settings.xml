@@ -24,10 +24,10 @@
             android:dialogTitle="@string/brightness" />
 
         <PreferenceScreen
-                android:key="backlight_widget"
-                android:fragment="com.android.settings.cyanogenmod.Backlight"
-                android:title="@string/backlight_title"
-                android:summary="@string/backlight_summary" />
+            android:key="backlight_widget"
+            android:fragment="com.android.settings.cyanogenmod.Backlight"
+            android:title="@string/backlight_title"
+            android:summary="@string/backlight_summary" />
 
         <PreferenceScreen
             android:key="display_rotation"
@@ -42,10 +42,10 @@
             android:entries="@array/screen_timeout_entries"
             android:entryValues="@array/screen_timeout_values" />
 
-        <CheckBoxPreference
+        <PreferenceScreen
             android:key="notification_pulse"
             android:title="@string/notification_pulse_title"
-            android:persistent="false" />
+            android:fragment="com.android.settings.notificationlight.NotificationLightSettings" />
 
         <CheckBoxPreference
             android:key="battery_pulse"
