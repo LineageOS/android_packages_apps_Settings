@@ -2065,7 +2065,7 @@ public class DataUsageSummary extends Fragment {
                 Context.TELEPHONY_SERVICE);
 
         final boolean hasWimax = conn.isNetworkSupported(TYPE_WIMAX);
-        final boolean hasLte = telephony.getLteOnCdmaMode() == Phone.LTE_ON_CDMA_TRUE;
+        final boolean hasLte = telephony.getLteOnCdmaMode() == Phone.LTE_ON_CDMA_TRUE || telephony.getLteOnGsmMode() != 0;
         return hasWimax || hasLte;
     }
 
