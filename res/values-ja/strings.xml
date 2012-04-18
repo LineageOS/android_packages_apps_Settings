@@ -1590,6 +1590,15 @@
 
     <!-- CM String entries bellow -->
     <string name="battery_pulse_title">バッテリ低残量で点滅</string>
+    <string name="volume_overlay_title">音量パネル</string>
+    <string name="dock_usb_audio_enable_title">ドックのUSBオーディオを使用</string>
+    <string name="dock_usb_audio_enable_summary_on">ドックに搭載のパッシブオーディオ出力を使用する</string>
+    <string name="dock_usb_audio_enable_summary_off">ドックに搭載のパッシブオーディオ出力を使用しない</string>
+    <string name="dock_force_undock_title">ドックを強制的に外す</string>
+    <string name="dock_force_undock_summary_no_dock" product="tablet">タブレットはドックに接続していません</string>
+    <string name="dock_force_undock_summary_no_dock" product="default">端末はドックに接続していません</string>
+    <string name="dock_force_undock_summary" product="tablet">タブレットをドックから外す</string>
+    <string name="dock_force_undock_summary" product="default">端末をドックから外す</string>
 
     <!-- Backlight #CM -->
     <string name="backlight_title">自動バックライト</string>
@@ -1630,6 +1639,39 @@
     <string name="ll_reload">現在の設定を再読込み</string>
     <string name="ll_bad_levels">レベルは増加しなくてはなりません</string>
     <string name="ll_num_levels">レベル数をセット</string>
+
+    <!-- Display settings screen, notification light settings -->
+    <string name="notification_light_general_title">一般</string>
+    <string name="notification_light_applist_title">アプリケーション</string>
+    <string name="notification_light_default_value">デフォルト</string>
+    <string name="notification_light_use_custom">カスタム設定を使用</string>
+    <string name="notification_light_enabled">有効</string>
+    <string name="notification_light_disabled">無効</string>
+
+    <!-- Notification light dialogs -->
+    <string name="edit_light_settings">ライトの設定を編集</string>
+    <string name="pulse_speed_title">点滅の長さと速度</string>
+    <string name="picker_arrow">→</string>
+    <string name="default_time">ノーマル</string>
+    <string name="custom_time">カスタム</string>
+    <string name="dialog_test">テスト</string>
+    <string name="dialog_delete_title">削除</string>
+    <string name="dialog_delete_message">選択したアイテムを削除しますか?</string>
+    <string name="dialog_test_message">スクリーンをオフにして選択された通知の挙動を確認、またはこのダイアログを閉じてテストを終了してください。</string>
+    <string name="dialog_test_button">閉じる</string>
+
+    <!-- Values for the notification light pulse spinners -->
+    <string name="pulse_length_always_on">常にオン</string>
+    <string name="pulse_length_very_short">とても短い</string>
+    <string name="pulse_length_short">短い</string>
+    <string name="pulse_length_normal">ノーマル</string>
+    <string name="pulse_length_long">長い</string>
+    <string name="pulse_length_very_long">とても長い</string>
+    <string name="pulse_speed_very_fast">とても速い</string>
+    <string name="pulse_speed_fast">速い</string>
+    <string name="pulse_speed_normal">ノーマル</string>
+    <string name="pulse_speed_slow">遅い</string>
+    <string name="pulse_speed_very_slow">とても遅い</string>
 
     <!-- Advanced, Device specific (DeviceParts) settings #CM -->
     <string name="advanced_settings_title">アドバンスド</string>
@@ -1751,8 +1793,11 @@
     <string name="menu_new_profile_summary">新しいプロファイルを追加して編集する</string>
     <string name="new_profile_name">&lt;新規プロファイル&gt;</string>
 
-    <!-- Rename Profile Dialog  -->
+    <!-- Rename Dialog  -->
+    <string name="rename_dialog_title">リネーム</string>
+    <string name="rename_dialog_message">新しい名前を入力</string>
     <string name="duplicate_profile_name">プロファイル名が重複しています!</string>
+    <string name="duplicate_appgroup_name">アプリグループ名が重複しています!</string>
 
     <!-- Reset Profiles -->
     <string name="profile_reset_title">リセット</string>
@@ -1984,6 +2029,12 @@
     <string name="quiet_hours_haptic">振動フィードバックを無効にする</string>
     <string name="quiet_hours_haptic_on">振動フィードバックは無効</string>
     <string name="quiet_hours_haptic_off">振動フィードバックは有効</string>
+    <string name="quiet_hours_active_from">有効時間</string>
+    <string name="quiet_hours_active_to">から</string>
+
+    <!-- time range preference -->
+    <string name="start_time_title">開始</string>
+    <string name="end_time_title">終了</string>
 
     <!-- Display : Rotation #CM -->
     <string name="display_rotation_title">自動回転</string>
@@ -2022,4 +2073,10 @@
     <string name="root_access_adb">ADBのみ</string>
     <string name="root_access_all">アプリとADB</string>
 
+    <string name="profile_write_nfc_tag">NFCタグに書き込む</string>
+    <string name="profile_write_touch_tag">書き込むタグにタッチ</string>
+    <string name="profile_write_success">タグに書き込み成功</string>
+    <string name="profile_write_failed">タグに書き込み失敗!</string>
+    <string name="profile_selected">選択中プロファイル: %1$s</string>
+    <string name="profile_nfc_text">NFCタグにプロファイルを書き込むと、タグにタッチすることでプロファイルを選択できます。タグに2回タッチすれば、以前選択していたプロファイルを選択できます。</string>
 </resources>
