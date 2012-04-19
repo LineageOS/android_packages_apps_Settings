@@ -47,14 +47,6 @@ public class MemoryManagement extends SettingsPreferenceFragment implements
 
     private static final String ZRAM_DEFAULT = SystemProperties.get("ro.zram.default"); // was compcache
 
-    private static final String HEAPSIZE_PREF = "pref_heapsize";
-
-    private static final String HEAPSIZE_PROP = "dalvik.vm.heapsize";
-
-    private static final String HEAPSIZE_PERSIST_PROP = "persist.sys.vm.heapsize";
-
-    private static final String HEAPSIZE_DEFAULT = "16m";
-
     private static final String PURGEABLE_ASSETS_PREF = "pref_purgeable_assets";
 
     private static final String PURGEABLE_ASSETS_PERSIST_PROP = "persist.sys.purgeable_assets";
@@ -66,8 +58,6 @@ public class MemoryManagement extends SettingsPreferenceFragment implements
     private CheckBoxPreference mPurgeableAssetsPref;
 
     private CheckBoxPreference mKSMPref;
-
-    private ListPreference mHeapsizePref;
 
     private int swapAvailable = -1;
 
@@ -84,7 +74,6 @@ public class MemoryManagement extends SettingsPreferenceFragment implements
             mzRAM = (ListPreference) prefSet.findPreference(ZRAM_PREF);
             mPurgeableAssetsPref = (CheckBoxPreference) prefSet.findPreference(PURGEABLE_ASSETS_PREF);
             mKSMPref = (CheckBoxPreference) prefSet.findPreference(KSM_PREF);
-            mHeapsizePref = (ListPreference) prefSet.findPreference(HEAPSIZE_PREF);
 
             if (isSwapAvailable()) {
                 if (SystemProperties.get(ZRAM_PERSIST_PROP) == "1")
@@ -104,10 +93,6 @@ public class MemoryManagement extends SettingsPreferenceFragment implements
             String purgeableAssets = SystemProperties.get(PURGEABLE_ASSETS_PERSIST_PROP,
                     PURGEABLE_ASSETS_DEFAULT);
             mPurgeableAssetsPref.setChecked("1".equals(purgeableAssets));
-
-            mHeapsizePref.setValue(SystemProperties.get(HEAPSIZE_PERSIST_PROP,
-                    SystemProperties.get(HEAPSIZE_PROP, HEAPSIZE_DEFAULT)));
-            mHeapsizePref.setOnPreferenceChangeListener(this);
 
         }
     }
@@ -130,13 +115,6 @@ public class MemoryManagement extends SettingsPreferenceFragment implements
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mHeapsizePref) {
-            if (newValue != null) {
-                SystemProperties.set(HEAPSIZE_PERSIST_PROP, (String) newValue);
-                return true;
-            }
-        }
-
         if (preference == mzRAM) {
             if (newValue != null) {
                 SystemProperties.set(ZRAM_PERSIST_PROP, (String) newValue);
