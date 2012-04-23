@@ -17,6 +17,7 @@
 package com.android.settings.widget;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.net.NetworkPolicy;
 import android.net.NetworkStatsHistory;
@@ -49,6 +50,11 @@ public class ChartDataUsageView extends ChartView {
 
     private static final boolean LIMIT_SWEEPS_TO_VALID_DATA = false;
 
+    private static final String PREF_FILE = "data_usage";
+    private static final String PREF_LINEAR_CHART = "linear_chart";
+
+    private SharedPreferences mPrefs;
+
     private ChartGridView mGrid;
     private ChartNetworkSeriesView mSeries;
     private ChartNetworkSeriesView mDetailSeries;
@@ -61,6 +67,8 @@ public class ChartDataUsageView extends ChartView {
     private ChartSweepView mSweepLimit;
 
     private Handler mHandler;
+
+    private static boolean mLinearChart = false;
 
     /** Current maximum value of {@link #mVert}. */
     private long mVertMax;
@@ -87,6 +95,7 @@ public class ChartDataUsageView extends ChartView {
         super(context, attrs, defStyle);
         init(new TimeAxis(), new InvertedChartAxis(new DataAxis()));
 
+        mPrefs = context.getSharedPreferences(PREF_FILE, Context.MODE_PRIVATE);
         mHandler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
@@ -156,6 +165,10 @@ public class ChartDataUsageView extends ChartView {
         mListener = listener;
     }
 
+    public void resetVertMax() {
+        mVertMax = 0;
+    }
+
     public void bindNetworkStats(NetworkStatsHistory stats) {
         mSeries.bindNetworkStats(stats);
         mHistory = stats;
@@ -178,6 +191,8 @@ public class ChartDataUsageView extends ChartView {
     }
 
     public void bindNetworkPolicy(NetworkPolicy policy) {
+        mLinearChart = mPrefs.getBoolean(PREF_LINEAR_CHART, false);
+
         if (policy == null) {
             mSweepLimit.setVisibility(View.INVISIBLE);
             mSweepLimit.setValue(-1);
@@ -234,7 +249,7 @@ public class ChartDataUsageView extends ChartView {
         final long maxSweep = Math.max(mSweepWarning.getValue(), mSweepLimit.getValue());
         final long maxSeries = Math.max(mSeries.getMaxVisible(), mDetailSeries.getMaxVisible());
         final long maxVisible = Math.max(maxSeries, maxSweep) * 12 / 10;
-        final long maxDefault = Math.max(maxVisible, 2 * GB_IN_BYTES);
+        final long maxDefault = Math.max(maxVisible, 100 * MB_IN_BYTES);
         newMax = Math.max(maxDefault, newMax);
 
         // only invalidate when vertMax actually changed
@@ -555,19 +570,27 @@ public class ChartDataUsageView extends ChartView {
 
         /** {@inheritDoc} */
         public float convertToPoint(long value) {
-            // derived polynomial fit to make lower values more visible
-            final double normalized = ((double) value - mMin) / (mMax - mMin);
-            final double fraction = Math.pow(
-                    10, 0.36884343106175121463 * Math.log10(normalized) + -0.04328199452018252624);
-            return (float) (fraction * mSize);
+            if (mLinearChart) {
+                return (mSize * (value - mMin)) / (mMax - mMin);
+            } else {
+                // derived polynomial fit to make lower values more visible
+                final double normalized = ((double) value - mMin) / (mMax - mMin);
+                final double fraction = Math.pow(
+                        10, 0.36884343106175121463 * Math.log10(normalized) + -0.04328199452018252624);
+                return (float) (fraction * mSize);
+            }
         }
 
         /** {@inheritDoc} */
         public long convertToValue(float point) {
-            final double normalized = point / mSize;
-            final double fraction = 1.3102228476089056629
-                    * Math.pow(normalized, 2.7111774693164631640);
-            return (long) (mMin + (fraction * (mMax - mMin)));
+            if (mLinearChart) {
+                return (long) (mMin + ((point * (mMax - mMin)) / mSize));
+            } else {
+                final double normalized = point / mSize;
+                final double fraction = 1.3102228476089056629
+                        * Math.pow(normalized, 2.7111774693164631640);
+                return (long) (mMin + (fraction * (mMax - mMin)));
+            }
         }
 
         private static final Object sSpanSize = new Object();
@@ -610,12 +633,16 @@ public class ChartDataUsageView extends ChartView {
         public float[] getTickPoints() {
             final long range = mMax - mMin;
             final long tickJump;
-            if (range < 6 * GB_IN_BYTES) {
-                tickJump = 256 * MB_IN_BYTES;
-            } else if (range < 12 * GB_IN_BYTES) {
-                tickJump = 512 * MB_IN_BYTES;
-            } else {
+            if (range < 800 * MB_IN_BYTES) {
+                tickJump = 50 * MB_IN_BYTES;
+            } else if (range < 2 * GB_IN_BYTES) {
+                tickJump = 100 * MB_IN_BYTES;
+            } else if (range < 6 * GB_IN_BYTES) {
+                tickJump = 500 * MB_IN_BYTES;
+            } else if (range < 11 * GB_IN_BYTES) {
                 tickJump = 1 * GB_IN_BYTES;
+            } else {
+                tickJump = 2 * GB_IN_BYTES;
             }
 
             final int tickCount = (int) (range / tickJump);

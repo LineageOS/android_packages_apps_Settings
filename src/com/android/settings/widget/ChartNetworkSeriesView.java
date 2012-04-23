@@ -295,6 +295,10 @@ public class ChartNetworkSeriesView extends View {
         invalidate();
     }
 
+    public void resetMaxEstimate() {
+        mMaxEstimate = 0;
+    }
+
     public long getMaxEstimate() {
         return mMaxEstimate;
     }
