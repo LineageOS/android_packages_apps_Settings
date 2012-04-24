@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:prvandroid="http://schemas.android.com/apk/prv/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="0.5"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#3691b4"
+            android:layout_margin="8dip"
+            android:padding="4dip"
+            android:gravity="center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/lockscreen_target_info" />
+    </LinearLayout>
+    <com.android.internal.widget.multiwaveview.MultiWaveView
+        android:id="@+id/lock_target"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
+        prvandroid:targetDrawables="@*android:array/lockscreen_targets_with_camera"
+        prvandroid:targetDescriptions="@*android:array/lockscreen_target_descriptions_with_camera"
+        prvandroid:directionDescriptions="@*android:array/lockscreen_direction_descriptions"
+        prvandroid:handleDrawable="@*android:drawable/ic_lockscreen_handle"
+        prvandroid:waveDrawable="@*android:drawable/ic_lockscreen_outerring"
+        prvandroid:outerRadius="@*android:dimen/multiwaveview_target_placement_radius"
+        prvandroid:snapMargin="@*android:dimen/multiwaveview_snap_margin"
+        prvandroid:hitRadius="@*android:dimen/multiwaveview_hit_radius"
+        prvandroid:rightChevronDrawable="@*android:drawable/ic_lockscreen_chevron_right"
+        prvandroid:horizontalOffset="70dip"
+        prvandroid:verticalOffset="0dip"
+        prvandroid:feedbackCount="3"
+        prvandroid:vibrationDuration="20" />
+</LinearLayout>
