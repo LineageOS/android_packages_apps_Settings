@@ -597,7 +597,6 @@
     <string name="vibrate_in_silent_title" msgid="3897968069156767036">"Виброзвонок без звука"</string>
     <string name="vibrate_on_ring_title" msgid="40343855247989536">"Вибросигнал и рингтон"</string>
     <string name="notification_sound_title" msgid="312032901303146002">"Уведомление по умолчанию"</string>
-    <string name="notification_pulse_title" msgid="1247988024534030629">"Индикатор событий"</string>
     <string name="incoming_call_volume_title" msgid="8073714801365904099">"Мелодия"</string>
     <string name="notification_volume_title" msgid="2012640760341080408">"Уведомление"</string>
     <string name="checkbox_notification_same_as_incoming_call" msgid="1073644356290338921">"Использовать этот уровень громкости также для уведомлений"</string>
@@ -1324,6 +1323,8 @@
     <string name="tts_default_lang_summary" msgid="5219362163902707785">"Выбор языка для чтения текста"</string>
     <string name="tts_play_example_title" msgid="7094780383253097230">"Прослушать пример"</string>
     <string name="tts_play_example_summary" msgid="8029071615047894486">"Воспроизвести краткую демонстрацию синтезированной речи"</string>
+    <string name="tts_play_example_not_found_title">Внимание</string>
+    <string name="tts_play_example_not_found_msg">Пример текстовой строки не был найден для указанного языка</string>
     <string name="tts_install_data_title" msgid="4264378440508149986">"Установка голосовых данных"</string>
     <string name="tts_install_data_summary" msgid="5742135732511822589">"Установить голосовые данные, необходимые для синтеза речи"</string>
     <string name="tts_data_installed_summary" msgid="9162111552859972809">"Данные, необходимые для синтеза речи, уже загружены"</string>
@@ -1666,6 +1667,38 @@
     <string name="ll_bad_levels">Уровни должны быть увеличены</string>
     <string name="ll_num_levels">Установить число уровней</string>
 
+    <string name="notification_pulse_title">Индикатор событий</string>
+    <string name="notification_light_general_title">Основные</string>
+    <string name="notification_light_applist_title">Приложения</string>
+    <string name="notification_light_default_value">Умолчание</string>
+    <string name="notification_light_use_custom">Собственные значения</string>
+    <string name="notification_light_enabled">Включено</string>
+    <string name="notification_light_disabled">Выключено</string>
+
+    <!-- Notification light dialogs -->
+    <string name="edit_light_settings">Изменить настройки индикатора</string>
+    <string name="pulse_speed_title">Длительность и скорость мигания</string>
+    <string name="picker_arrow">→</string>
+    <string name="default_time">Обычный</string>
+    <string name="custom_time">Пользовательский</string>
+    <string name="dialog_test">Тест</string>
+    <string name="dialog_delete_title">Удалить</string>
+    <string name="dialog_delete_message">Удалить выбранные элементы?</string>
+    <string name="dialog_test_message">Выключите экран, чтобы увидеть выбранные настройки индикатора в действии или закройте этот диалог для остановки теста</string>
+    <string name="dialog_test_button">Отклонить</string>
+
+    <!-- Values for the notification light pulse spinners -->
+    <string name="pulse_length_always_on">Всегда вкл.</string>
+    <string name="pulse_length_very_short">Очень коротко</string>
+    <string name="pulse_length_short">Коротко</string>
+    <string name="pulse_length_normal">Нормально</string>
+    <string name="pulse_length_long">Долго</string>
+    <string name="pulse_length_very_long">Очень долго</string>
+    <string name="pulse_speed_very_fast">Очень быстро</string>
+    <string name="pulse_speed_fast">Быстро</string>
+    <string name="pulse_speed_normal">Нормально</string>
+    <string name="pulse_speed_slow">Медленно</string>
+    <string name="pulse_speed_very_slow">Очень медленно</string>
     <!-- Advanced, Device specific (DeviceParts) settings #CM -->
     <string name="advanced_settings_title">Расширенные настройки</string>
 
@@ -2012,6 +2045,13 @@
     <string name="display_category_wakeup_options_title">Настройки пробуждения</string>
     <string name="pref_volume_wake_title">Пробуждение громкостью</string>
     <string name="pref_volume_wake_summary">Нажатие кнопок громче/тише пробуждает устройство. Предназначено для устройств с труднонажимаемой кнопкой питания</string>
+
+    <string name="profile_write_nfc_tag">Записать тег NFC</string>
+    <string name="profile_write_touch_tag">Нажмите для записи тега</string>
+    <string name="profile_write_success">Тег успешно записан</string>
+    <string name="profile_write_failed">Записать тег не удалось!</string>
+    <string name="profile_selected">Выбран профиль: %1$s</string>
+    <string name="profile_nfc_text">Запись NFC тега для профиля позволит прикосновением к тегу выбрать нужный профиль. При повторном нажатии будет выбран ранее используемый профиль.</string>
 
     <!-- UI debug setting: kill app long-press back [CHAR LIMIT=25] -->
     <string name="kill_app_longpress_back">Закрытие приложений</string>
