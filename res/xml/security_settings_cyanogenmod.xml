@@ -18,34 +18,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
-        android:key="delay_and_timeout"
-        android:title="@string/delay_and_timeout_title">
-
-        <CheckBoxPreference
-            android:key="slide_lock_delay_toggle"
-            android:title="@string/slide_lock_delay_title" />
-
-        <ListPreference
-            android:key="slide_lock_timeout_delay"
-            android:dialogTitle="@string/slide_lock_timeout_delay_title"
-            android:title="@string/slide_lock_timeout_delay_title"
-            android:summary="@string/slide_lock_timeout_delay_summary"
-            android:entries="@array/lockscreen_delay_entries"
-            android:entryValues="@array/lockscreen_delay_values"
-            android:dependency="slide_lock_delay_toggle" />
-
-        <ListPreference
-            android:key="slide_lock_screenoff_delay"
-            android:dialogTitle="@string/slide_lock_screenoff_delay_title"
-            android:title="@string/slide_lock_screenoff_delay_title"
-            android:summary="@string/slide_lock_screenoff_delay_summary"
-            android:entries="@array/lockscreen_delay_entries"
-            android:entryValues="@array/lockscreen_delay_values"
-            android:dependency="slide_lock_delay_toggle" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
         android:key="additional_options"
         android:title="@string/additional_options_title">
 
