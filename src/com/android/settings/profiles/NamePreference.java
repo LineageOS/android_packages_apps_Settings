@@ -38,7 +38,6 @@ public class NamePreference extends Preference implements
     /**
      * @param context
      * @param title
-     * @param summary
      */
     public NamePreference(Context context, String name) {
         super(context);
@@ -96,11 +95,11 @@ public class NamePreference extends Preference implements
                 entry.setSingleLine();
                 entry.setText(mName.toString());
 
-                AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-                dialog.setTitle(R.string.rename_dialog_title);
-                dialog.setMessage(R.string.rename_dialog_message);
-                dialog.setView(entry, 34, 16, 34, 16);
-                dialog.setPositiveButton(android.R.string.ok,
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle(R.string.rename_dialog_title);
+                builder.setMessage(R.string.rename_dialog_message);
+                builder.setView(entry, 34, 16, 34, 16);
+                builder.setPositiveButton(android.R.string.ok,
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -110,13 +109,11 @@ public class NamePreference extends Preference implements
                                 callChangeListener(this);
                             }
                         });
-                dialog.setNegativeButton(android.R.string.cancel,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                            }
-                        });
-                dialog.create().show();
+                builder.setNegativeButton(android.R.string.cancel, null);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                ((TextView)dialog.findViewById(android.R.id.message)).setTextAppearance(context,
+                        android.R.style.TextAppearance_DeviceDefault_Small);
             }
         }
     }

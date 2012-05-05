@@ -36,6 +36,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TabHost;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.settings.R;
@@ -56,8 +57,6 @@ public class ProfilesSettings extends Fragment {
     private static final int MENU_ADD_PROFILE = Menu.FIRST + 1;
 
     private static final int MENU_ADD_APPGROUP = Menu.FIRST + 2;
-
-    private static final int PROFILE_DETAILS = 1;
 
     private static Menu mOptionsMenu;
 
@@ -206,11 +205,11 @@ public class ProfilesSettings extends Fragment {
             final EditText entry = new EditText(context);
             entry.setSingleLine();
 
-            AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-            dialog.setTitle(R.string.menu_new_profile);
-            dialog.setMessage(R.string.profile_profile_name_prompt);
-            dialog.setView(entry, 34, 16, 34, 16);
-            dialog.setPositiveButton(android.R.string.ok,
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setTitle(R.string.menu_new_profile);
+            builder.setMessage(R.string.profile_profile_name_prompt);
+            builder.setView(entry, 34, 16, 34, 16);
+            builder.setPositiveButton(android.R.string.ok,
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -224,13 +223,11 @@ public class ProfilesSettings extends Fragment {
                             }
                         }
                     });
-            dialog.setNegativeButton(android.R.string.cancel,
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                        }
-                    });
-            dialog.create().show();
+            builder.setNegativeButton(android.R.string.cancel, null);
+            AlertDialog dialog = builder.create();
+            dialog.show();
+            ((TextView)dialog.findViewById(android.R.id.message)).setTextAppearance(getActivity(),
+                    android.R.style.TextAppearance_DeviceDefault_Small);
         }
     }
 
@@ -245,11 +242,7 @@ public class ProfilesSettings extends Fragment {
                 mTabManager.refreshTab(mTabHost.getCurrentTabTag());
             }
         });
-        alert.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                dialog.cancel();
-            }
-        });
+        alert.setNegativeButton(R.string.cancel, null);
         alert.create().show();
     }
 
@@ -259,11 +252,11 @@ public class ProfilesSettings extends Fragment {
             final EditText entry = new EditText(context);
             entry.setSingleLine();
 
-            AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-            dialog.setTitle(R.string.profile_new_appgroup);
-            dialog.setMessage(R.string.profile_appgroup_name_prompt);
-            dialog.setView(entry, 34, 16, 34, 16);
-            dialog.setPositiveButton(android.R.string.ok,
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setTitle(R.string.profile_new_appgroup);
+            builder.setMessage(R.string.profile_appgroup_name_prompt);
+            builder.setView(entry, 34, 16, 34, 16);
+            builder.setPositiveButton(android.R.string.ok,
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -277,13 +270,11 @@ public class ProfilesSettings extends Fragment {
                             }
                         }
                     });
-            dialog.setNegativeButton(android.R.string.cancel,
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                        }
-                    });
-            dialog.create().show();
+            builder.setNegativeButton(android.R.string.cancel, null);
+            AlertDialog dialog = builder.create();
+            dialog.show();
+            ((TextView)dialog.findViewById(android.R.id.message)).setTextAppearance(getActivity(),
+                    android.R.style.TextAppearance_DeviceDefault_Small);
         }
     }
 
