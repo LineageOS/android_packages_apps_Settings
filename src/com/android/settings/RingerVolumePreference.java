@@ -195,7 +195,7 @@ public class RingerVolumePreference extends VolumePreference {
                 .findViewById(R.id.ringer_description_text);
 
         if (Utils.isVoiceCapable(getContext())) {
-            if ((getCurrentMutableStreams(getContext()) & AudioSystem.STREAM_NOTIFICATION) != 0) {
+            if ((getCurrentMutableStreams(getContext()) & (1 << AudioSystem.STREAM_NOTIFICATION)) != 0) {
                 linkMuteStates.setChecked(true);
             } else {
                 linkMuteStates.setChecked(false);
