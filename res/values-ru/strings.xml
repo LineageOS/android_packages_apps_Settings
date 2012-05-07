@@ -545,6 +545,8 @@
     <string name="wifi_wps_available_second_item" msgid="6121307881706347616">" (доступна защищенная сеть)"</string>
     <string name="wifi_secured_first_item" msgid="4072076186051083451">"Защита <xliff:g id="WIFI_SECURITY_SHORT">%1$s</xliff:g>"</string>
     <string name="wifi_secured_second_item" msgid="1326000076939056265">", защита <xliff:g id="WIFI_SECURITY_SHORT">%1$s</xliff:g>"</string>
+    <string name="wifi_adhoc_first_item">Ad-hoc сеть</string>
+    <string name="wifi_adhoc_second_item">\u0020(ad-hoc сеть)</string>
     <string name="wifi_security_none" msgid="7985461072596594400">"Нет"</string>
     <string name="wifi_connect" msgid="1076622875777072845">"Подключить"</string>
     <string name="wifi_forget" msgid="8168174695608386644">"Не подключаться"</string>
@@ -1800,9 +1802,18 @@
     <string name="status_bar_signal_text_show_text">Текст</string>
     <string name="status_bar_signal_text_hidden">Скрытый</string>
 
-    <!-- Lock screen #CM -->
     <string name="lock_screen_title">Экран блокировки</string>
-    <!-- Lock Screen -->
+    <!-- Lock Screen Shortcuts -->
+    <string name="lockscreen_target_info">Потяните ползунок к цели, чтобы назначить ярлык</string>
+    <string name="lockscreen_target_title">Ярлыки экрана блокировки</string>
+    <string name="lockscreen_target_summary">Установка или настройка ярлыков экрана блокировки</string>
+    <string name="lockscreen_target_reset">Ярлыки экрана блокировки сброшены по умолчанию</string>
+    <string name="lockscreen_target_save">Ярлыки экрана блокировки сохранены</string>
+    <string name="lockscreen_target_reset_title">Сброс</string>
+    <string name="lockscreen_target_reset_message">Удалить все созданные ярлыки экрана блокировки и восстановить значения по умолчанию?</string>
+    <string name="lockscreen_target_empty">Пусто</string>
+    <string name="lockscreen_target_edit_title">Изменить ярлык</string>
+    <string name="lockscreen_target_edit_msg">Выберите или измените нужные приложения или действие и иконку</string>
 
     <!-- Profiles settings #CM -->
     <string name="profiles_settings_title">Профили</string>
@@ -1983,12 +1994,21 @@
     <string name="unlock_quick_unlock_control_title">Быстрая разблокировка</string>
     <string name="unlock_quick_unlock_control_summary">Не требуется нажимать ОК после ввода пароля или PIN. Стирание засчитывается как неудачная попытка</string>
 
-    <!-- Delays and timeouts -->
-    <string name="delay_and_timeout_title">Задержка при блокировке</string>
     <!-- Slide lock delay -->
+    <string name="delay_and_timeout_title">Задержка при блокировке</string>
     <string name="slide_lock_delay_title">Задержка блокировки экрана</string>
-    <string name="slide_lock_timeout_delay_title">Задержка при автовыключении экрана</string>
-    <string name="slide_lock_screenoff_delay_title">Задержка при выключении экрана</string>
+    <string name="slide_lock_timeout_delay_title">Задержка после тайм-аута</string>
+    <string name="slide_lock_screenoff_delay_title">Задержка после выключения экрана</string>
+    <string name="slide_lock_delay_none">Нет</string>
+    <string name="slide_lock_delay_1s">1 секунда</string>
+    <string name="slide_lock_delay_5s">5 секунд</string>
+    <string name="slide_lock_delay_10s">10 секунд</string>
+    <string name="slide_lock_delay_15s">15 секунд</string>
+    <string name="slide_lock_delay_30s">30 секунд</string>
+    <string name="slide_lock_delay_1m">1 минута</string>
+    <string name="slide_lock_delay_5m">5 минут</string>
+    <string name="slide_lock_delay_10m">10 минут</string>
+    <string name="slide_lock_delay_30m">30 минут</string>
 
     <!-- Donate #CM -->
     <!-- About device screen, list item title. Takes the user to the screen about how to donate to the CyanogenMod Project. -->
@@ -2063,4 +2083,34 @@
     <string name="location_gps_source_notification">Источник GPS был переключен! GPS будет выключен! Пожалуйста, включите перед использованием!</string>
 
     <string name="additional_system_update_settings_list_item_title" msgid="214987609894661992">"Дополнительные обновления системы"</string>
+
+    <!-- String for ShortcutPickHelper -->
+    <string name="picker_activities">Действия</string>
+    <string name="select_custom_app_title">Выбрать собственное приложение</string>
+    <string name="select_custom_activity_title">Выбрать собственное действие</string>
+    <string name="icon_picker_choose_icon_title">Выбрать иконку</string>
+    <string name="icon_picker_alarm">Часы</string>
+    <string name="icon_picker_browser">Браузер</string>
+    <string name="icon_picker_calendar">Календарь</string>
+    <string name="icon_picker_camera">Камера</string>
+    <string name="icon_picker_email">Email</string>
+    <string name="icon_picker_facebook">Facebook</string>
+    <string name="icon_picker_gallery">Галерея</string>
+    <string name="icon_picker_googleplus">Google Plus</string>
+    <string name="icon_picker_googletalk">Google Talk</string>
+    <string name="icon_picker_maps">Карты</string>
+    <string name="icon_picker_movie">Видео</string>
+    <string name="icon_picker_music">Музыка</string>
+    <string name="icon_picker_nav_normal">Навигация</string>
+    <string name="icon_picker_phone">Телефон</string>
+    <string name="icon_picker_podcast">Подкаст</string>
+    <string name="icon_picker_rss">Rss</string>
+    <string name="icon_picker_sms">Сообщения</string>
+    <string name="icon_picker_twitter">Twitter</string>
+
+    <!-- String for IconPicker -->
+    <string name="icon_picker_title">Выберите источник иконок</string>
+    <string name="icon_picker_system_icons_title">Системные иконки</string>
+    <string name="icon_picker_gallery_title">Галерея</string>
+    <string name="icon_picker_pack_title">Набор иконок</string>
 </resources>
