@@ -698,10 +698,26 @@
     <string name="ll_bad_levels">Les niveaux doivent être croissants</string>
     <string name="ll_num_levels">Nombre de niveaux</string>
 
-    <!-- Display Settings, Wakeup options -->
+    <!-- Display Settings -->
+    <string name="display_rotation_category_title">Angles de rotation</string>
+    <string name="display_rotation_enabled">Actif.</string>
+    <string name="display_rotation_disabled">Désactivé.</string>
+    <string name="display_rotation_unit">degrés</string>
+    <string name="display_rotation_0_title">Normal</string>
+    <string name="display_rotation_90_title">90 degrés</string>
+    <string name="display_rotation_180_title">180 degrés</string>
+    <string name="display_rotation_270_title">270 degrés</string>
     <string name="display_category_wakeup_options_title">Sortie de veille</string>
     <string name="pref_volume_wake_title">Eveil par boutons Volume</string>
     <string name="pref_volume_wake_summary">Permet de rallumer l\'appareil à l\'aide des boutons de volume.</string>
+
+    <!-- Display settings screen, notification light settings -->
+    <string name="notification_light_general_title">Général</string>
+    <string name="notification_light_applist_title">Applications</string>
+    <string name="notification_light_default_value">Défaut</string>
+    <string name="notification_light_use_custom">Couleurs spécifiques</string>
+    <string name="notification_light_enabled">Actif</string>
+    <string name="notification_light_disabled">Désactivé</string>
 
     <!-- Advanced, Device specific (DeviceParts) settings #CM -->
     <string name="advanced_settings_title">Options spécifiques</string>
@@ -780,10 +796,6 @@
     <string name="pref_flash_mode_title">Torche</string>
     <string name="pref_flash_mode_summary">Puissance de la diode</string>
 
-    <!-- Power Widget, Haptic feedback #CM -->
-    <string name="expanded_haptic_feedback_title">Retour haptique</string>
-    <string name="expanded_haptic_feedback_summary">Active ou non le retour haptique (vibration)</string>
-
     <!-- Status bar #CM -->
     <string name="status_bar_title">Barre d\'état</string>
     <string name="status_bar_clock_title">Horloge</string>
@@ -802,8 +814,54 @@
     <string name="status_bar_signal_text_show_bars">Icône</string>
     <string name="status_bar_signal_text_show_text">Texte</string>
 
+    <!-- Power Widget, Haptic feedback #CM -->
+    <string name="expanded_haptic_feedback_title">Retour haptique</string>
+    <string name="expanded_haptic_feedback_summary">Active ou non le retour haptique (vibration)</string>
+
     <!-- Lock screen #CM -->
     <string name="lock_screen_title">Ecran de verrouillage</string>
+
+    <!-- Lock Screen Shortcuts -->
+    <string name="lockscreen_target_info">Glisser pour assigner les raccourcis</string>
+    <string name="lockscreen_target_title">Raccourcis</string>
+    <string name="lockscreen_target_summary">Modifier ou configurer les raccourcis de l\'écran de verrouillage</string>
+    <string name="lockscreen_target_reset">Les raccourcis ont été réinitialisés</string>
+    <string name="lockscreen_target_save">Raccourcis enregistrés</string>
+    <string name="lockscreen_target_reset_title">Reset</string>
+    <string name="lockscreen_target_reset_message">Réinitialiser tous les raccourcis et revenir à la configuration d\'origine ?</string>
+    <string name="lockscreen_target_empty">Vide</string>
+    <string name="lockscreen_target_edit_title">Modifier le raccourci</string>
+    <string name="lockscreen_target_edit_msg">Sélectionner l\'application, l\'activité et l\'icône du raccourci</string>
+
+    <!-- String for ShortcutPickHelper -->
+    <string name="picker_activities">Activités</string>
+    <string name="select_custom_app_title">Sélectionner l\'application</string>
+    <string name="select_custom_activity_title">Sélectionner l\'activité</string>
+    <string name="icon_picker_choose_icon_title">Sélectionner une icône</string>
+    <string name="icon_picker_alarm">Alarme</string>
+    <string name="icon_picker_browser">Navigateur</string>
+    <string name="icon_picker_calendar">Agenda</string>
+    <string name="icon_picker_camera">Appareil photo</string>
+    <string name="icon_picker_email">Email</string>
+    <string name="icon_picker_facebook">Facebook</string>
+    <string name="icon_picker_gallery">Galerie</string>
+    <string name="icon_picker_googleplus">Google Plus</string>
+    <string name="icon_picker_googletalk">Google Talk</string>
+    <string name="icon_picker_maps">Google Maps</string>
+    <string name="icon_picker_movie">Vidéos</string>
+    <string name="icon_picker_music">Musique</string>
+    <string name="icon_picker_nav_normal">Navigation</string>
+    <string name="icon_picker_phone">Téléphone</string>
+    <string name="icon_picker_podcast">Podcast</string>
+    <string name="icon_picker_rss">Rss</string>
+    <string name="icon_picker_sms">Messages</string>
+    <string name="icon_picker_twitter">Twitter</string>
+
+    <!-- String for IconPicker -->
+    <string name="icon_picker_title">Source de l\'icône</string>
+    <string name="icon_picker_system_icons_title">Icônes système</string>
+    <string name="icon_picker_gallery_title">Galerie</string>
+    <string name="icon_picker_pack_title">Jeux d\'icônes</string>
 
     <!-- Profiles settings #CM -->
     <string name="profiles_settings_title">Profils</string>
@@ -821,6 +879,9 @@
     <string name="new_profile_name">&lt;nouveau profil&gt;</string>
 
     <!-- Rename Profile Dialog  -->
+    <string name="rename_dialog_title">Renommer</string>
+    <string name="rename_dialog_message">Saisir un nouveau nom</string>
+    <string name="duplicate_appgroup_name">Ce groupe existe déjà !</string>
     <string name="duplicate_profile_name">Ce profil existe déjà !</string>
 
     <!-- Reset Profiles -->
@@ -923,6 +984,12 @@
     <string name="slide_lock_timeout_delay_title">Timeout écran</string>
     <string name="slide_lock_screenoff_delay_title">Extinction manuelle</string>
 
+    <!-- Location Services -->
+    <string name="location_gps_source_title">Source GPS</string>
+    <string name="location_gps_source_summary">Définir l\'origine des informations GPS, si vous préférez utiliser un dispositif externe Bluetooth au lieu de celui de l\'appareil</string>
+    <string name="location_gps_source_notification_title">Attention</string>
+    <string name="location_gps_source_notification">La source GPS a été modifiée, le GPS va être temporairement désactivé. Veuillez le réactiver avant utilisation!</string>
+
     <!-- Dev settings, apps #CM -->
     <string name="adb_over_network">ADB sur TCP/IP</string>
     <string name="adb_over_network_summary">"Activer le débogage sur toutes les interfaces (réseaux USB, Wi-Fi et Bluetooth)"</string>
@@ -976,6 +1043,37 @@
     <string name="mod_version">Version CyanogenMod</string>
     <string name="mod_version_default">Inconnue</string>
     <string name="build_date">Date du système</string>
+
+    <!-- Donate #CM -->
+    <!-- About device screen, list item title. Takes the user to the screen about how to donate to the CyanogenMod Project. -->
+    <string name="donate_settings_title">Donation</string>
+    <!-- About device screen, list item summary. Takes the user to the screen about how to donate to the CyanogenMod Project. -->
+    <string name="donate_settings_summary">""</string>
+
+    <!-- Anonymous Statistics #CM -->
+    <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
+    <string name="anonymous_statistics_title">Statistiques CyanogenMod</string>
+    <string name="anonymous_statistics_summary">Aidez CyanogenMod en participant à l\'envoi de données anonymes pour comptabiliser les installations par type d\'appareil</string>
+    <string name="anonymous_statistics_warning_title">A propos</string>
+    <string name="anonymous_statistics_warning">Autoriser les statistiques CyanogenMod permet l\'envoi de données anonymes aux développeurs
+    du système CyanogenMod pour comptabiliser le nombre d\'installations par type d\'appareil. Les informations envoyées contiennent un identifiant unique de appareil
+    afin de limiter les doublons et en aucune manière ne compromet la sécurité de vos données. Ce jeu d\'informations est envoyé à chaque redémarrage pour ne conserver que les installations actives.
+    \n\nVous pouvez visualiser ces données en sélectionnant \"Prévisualiser les données\".</string>
+    <string name="enable_reporting_title">Activer le reporting</string>
+    <string name="preview_data_title">Prévisualiser les données</string>
+    <string name="preview_data_summary">%s</string>
+    <string name="view_stats_title">Afficher les statistiques</string>
+    <string name="anonymous_learn_more">En savoir plus</string>
+
+    <!-- Anonymous Statistics - Notification -->
+    <string name="anonymous_notification_desc">Activer ou non les statistiques CyanogenMod</string>
+
+    <!-- Anonymous Statistics - Preview -->
+    <string name="preview_id_title">Identifiant unique</string>
+    <string name="preview_device_title">Appareil</string>
+    <string name="preview_version_title">Version</string>
+    <string name="preview_country_title">Pays</string>
+    <string name="preview_carrier_title">Opérateur</string>
 
 <!-- End of CyanogenMod specific settings -->
 
