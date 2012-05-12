@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!-- 
 /*
 **
@@ -17,9 +17,7 @@
 ** limitations under the License.
 */
  -->
-
-<resources xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string-array name="timezone_filters">
     <item msgid="5296756001147094692">"אמריקה"</item>
     <item msgid="3005562397632768392">"אירופה"</item>
@@ -272,5 +270,148 @@
     <item msgid="4039737283841672166">"מחובר"</item>
     <item msgid="4042143101664725090">"זמן קצוב לתפוגה"</item>
     <item msgid="7664124146786465092">"נכשל"</item>
+  </string-array>
+  <string-array name="volume_overlay_entries">
+    <item>יחיד</item>
+    <item>מתרחב</item>
+    <item>מורחב</item>
+    <item>ללא</item>
+  </string-array>
+  <string-array name="entries_light_filter_window">
+    <item>"2 ש"</item>
+    <item>"5 ש"</item>
+    <item>"10 ש"</item>
+    <item>"20 ש"</item>
+    <item>"30 ש"</item>
+    <item>"60 ש"</item>
+  </string-array>
+  <string-array name="entries_light_filter_reset">
+    <item>מבוטל</item>
+    <item>400 lux</item>
+    <item>500 lux</item>
+    <item>600 lux</item>
+    <item>700 lux</item>
+    <item>800 lux</item>
+    <item>900 lux</item>
+    <item>1000 lux</item>
+    <item>1500 lux</item>
+    <item>2000 lux</item>
+    <item>2500 lux</item>
+  </string-array>
+  <string-array name="entries_light_filter_interval">
+    <item>0.5 ש</item>
+    <item>1 ש</item>
+    <item>2 ש</item>
+    <item>5 ש</item>
+    <item>10 ש</item>
+  </string-array>
+  <string-array name="entries_light_levels_dim">
+    <item>1</item>
+    <item>2</item>
+    <item>3</item>
+    <item>4</item>
+    <item>5</item>
+    <item>6</item>
+    <item>8</item>
+    <item>10</item>
+    <item>12</item>
+    <item>14</item>
+    <item>16</item>
+    <item>18</item>
+    <item>"20 (ברירת מחדל)"</item>
+    <item>22</item>
+    <item>24</item>
+    <item>26</item>
+  </string-array>
+  <string-array name="entries_light_decrease_hysteresis">
+    <item>0 %</item>
+    <item>10 %</item>
+    <item>20 %</item>
+    <item>30 %</item>
+    <item>40 %</item>
+    <item>50 %</item>
+    <item>60 %</item>
+    <item>70 %</item>
+    <item>80 %</item>
+    <item>90 %</item>
+  </string-array>
+  <string-array name="entries_network_widget">
+    <item>2G/3G+2G</item>
+    <item>"2G/3G בלבד"</item>
+    <item>"2G/3G בלבד/3G+2G"</item>
+  </string-array>
+  <string-array name="entries_screentimeout_widget">
+    <item>"15ש/1ד/5ד"</item>
+    <item>"30ש/2ד/5ד"</item>
+  </string-array>
+  <string-array name="entries_flash_widget">
+    <item>נורמלי</item>
+    <item>"חזק / קרן מוות"</item>
+  </string-array>
+  <string-array name="haptic_feedback_entries">
+    <item>הגדרות גלובליות</item>
+    <item>On</item>
+    <item>Off</item>
+  </string-array>
+  <string-array name="pref_zram_size_entries">
+    <item>מבוטל</item>
+    <item>10%</item>
+    <item>"18% (ברירת מחדל)"</item>
+    <item>26%</item>
+  </string-array>
+  <string-array name="entries_status_bar_am_pm">
+    <item>נורמלי</item>
+    <item>קטן</item>
+    <item>"ללא (ברירת מחדל)"</item>
+  </string-array>
+  <string-array name="entries_status_bar_battery">
+    <item>"סמל (ברירת מחדל)"</item>
+    <item>אחוזים</item>
+    <item>נסתר</item>
+  </string-array>
+  <string-array name="lockscreen_delay_entries">
+    <item>@string/slide_lock_delay_none</item>
+    <item>@string/slide_lock_delay_1s</item>
+    <item>@string/slide_lock_delay_5s</item>
+    <item>@string/slide_lock_delay_10s</item>
+    <item>@string/slide_lock_delay_15s</item>
+    <item>@string/slide_lock_delay_30s</item>
+    <item>@string/slide_lock_delay_1m</item>
+    <item>@string/slide_lock_delay_5m</item>
+    <item>@string/slide_lock_delay_10m</item>
+    <item>@string/slide_lock_delay_30m</item>
+  </string-array>
+  <string-array name="profile_entries">
+    <item>פעיל</item>
+    <item>כבוי</item>
+    <item>ללא שינוי</item>
+  </string-array>
+  <string-array name="profile_connection_entries">
+    <item>מכובה</item>
+    <item>פעיל</item>
+  </string-array>
+  <string-array name="location_entries_gps_source">
+    <item>"השתמש ב-GPS פנימי"</item>
+  </string-array>
+  <string-array name="root_access_entries">
+    <item>@string/root_access_none</item>
+    <item>@string/root_access_apps</item>
+    <item>@string/root_access_adb</item>
+    <item>@string/root_access_all</item>
+  </string-array>
+  <string-array name="notification_pulse_length_entries">
+    <item>@string/pulse_length_always_on</item>
+    <item>@string/pulse_length_very_short</item>
+    <item>@string/pulse_length_short</item>
+    <item>@string/pulse_length_normal</item>
+    <item>@string/pulse_length_long</item>
+    <item>@string/pulse_length_very_long</item>
+  </string-array>
+  <string-array name="notification_pulse_speed_entries">
+    <item>@string/pulse_speed_very_fast</item>
+    <item>@string/pulse_speed_fast</item>
+    <item>@string/pulse_speed_normal</item>
+    <item>@string/pulse_speed_slow</item>
+    <item>@string/pulse_speed_very_slow</item>
   </string-array>
 </resources>
