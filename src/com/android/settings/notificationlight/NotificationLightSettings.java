@@ -47,6 +47,7 @@ import android.preference.Preference;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -74,11 +75,19 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
     private static final String NOTIFICATION_LIGHT_PULSE_CUSTOM_ENABLE = "notification_light_pulse_custom_enable";
     private static final String NOTIFICATION_LIGHT_PULSE_CUSTOM_VALUES = "notification_light_pulse_custom_values";
     private static final String NOTIFICATION_LIGHT_PULSE = "notification_light_pulse";
+    private static final String NOTIFICATION_LIGHT_PULSE_CALL_COLOR = "notification_light_pulse_call_color";
+    private static final String NOTIFICATION_LIGHT_PULSE_CALL_LED_ON = "notification_light_pulse_call_led_on";
+    private static final String NOTIFICATION_LIGHT_PULSE_CALL_LED_OFF = "notification_light_pulse_call_led_off";
+    private static final String NOTIFICATION_LIGHT_PULSE_VMAIL_COLOR = "notification_light_pulse_vmail_color";
+    private static final String NOTIFICATION_LIGHT_PULSE_VMAIL_LED_ON = "notification_light_pulse_vmail_led_on";
+    private static final String NOTIFICATION_LIGHT_PULSE_VMAIL_LED_OFF = "notification_light_pulse_vmail_led_off";
     private static final String PULSE_PREF = "pulse_enabled";
     private static final String DEFAULT_PREF = "default";
     private static final String CUSTOM_PREF = "custom_enabled";
+    private static final String MISSED_CALL_PREF = "missed_call";
+    private static final String VOICEMAIL_PREF = "voicemail";
     public static final int DEFAULT_COLOR = 0xFFFFFF; //White
-    public static final int DEFAULT_TIME = 1000;
+    public static final int DEFAULT_TIME = 1000; // 1 second
     public static final int ACTION_TEST = 0;
     public static final int ACTION_DELETE = 1;
     private static final int MENU_ADD = 0;
@@ -87,7 +96,10 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
     private PackageManager mPackageManager;
     private boolean mCustomEnabled;
     private boolean mLightEnabled;
+    private boolean mVoiceCapable;
     private ApplicationLightPreference mDefaultPref;
+    private ApplicationLightPreference mCallPref;
+    private ApplicationLightPreference mVoicemailPref;
     private CheckBoxPreference mCustomEnabledPref;
     private Menu mMenu;
     AppAdapter mAppAdapter;
@@ -109,6 +121,10 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
 
         mApplications = new HashMap<String, Application>();
 
+        // Determine if the device has voice capabilities
+        mVoiceCapable = (((TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE)).getPhoneType()
+                != TelephonyManager.PHONE_TYPE_NONE);
+
         setHasOptionsMenu(true);
     }
 
@@ -127,6 +143,14 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
         int timeOff = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_OFF, DEFAULT_TIME);
         mLightEnabled = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE, 0) == 1;
         mCustomEnabled = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_CUSTOM_ENABLE, 0) == 1;
+
+        // Get Missed call and Voicemail values
+        int callColor = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_CALL_COLOR, DEFAULT_COLOR);
+        int callTimeOn = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_CALL_LED_ON, DEFAULT_TIME);
+        int callTimeOff = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_CALL_LED_OFF, DEFAULT_TIME);
+        int vmailColor = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_VMAIL_COLOR, DEFAULT_COLOR);
+        int vmailTimeOn = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_VMAIL_LED_ON, DEFAULT_TIME);
+        int vmailTimeOff = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_VMAIL_LED_OFF, DEFAULT_TIME);
 
         PreferenceScreen prefSet = getPreferenceScreen();
         PreferenceGroup generalPrefs = (PreferenceGroup) prefSet.findPreference("general_section");
@@ -149,6 +173,27 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
             mCustomEnabledPref.setEnabled(mLightEnabled);
             mCustomEnabledPref.setOnPreferenceChangeListener(this);
         }
+
+        PreferenceGroup phonePrefs = (PreferenceGroup) prefSet.findPreference("phone_list");
+        if (phonePrefs != null) {
+
+            // Missed call and Voicemail preferences
+            // Should only show on devices with a voice capabilities
+            if (!mVoiceCapable) {
+                prefSet.removePreference(phonePrefs);
+            } else {
+                mCallPref = (ApplicationLightPreference) prefSet.findPreference(MISSED_CALL_PREF);
+                mCallPref.setAllValues(callColor, callTimeOn, callTimeOff);
+                mCallPref.setEnabled(mCustomEnabled);
+                mCallPref.setOnPreferenceChangeListener(this);
+
+                mVoicemailPref = (ApplicationLightPreference) prefSet.findPreference(VOICEMAIL_PREF);
+                mVoicemailPref.setAllValues(vmailColor, vmailTimeOn, vmailTimeOff);
+                mVoicemailPref.setEnabled(mCustomEnabled);
+                mVoicemailPref.setOnPreferenceChangeListener(this);
+            }
+        }
+
     }
 
     private void refreshCustomApplications() {
@@ -197,11 +242,21 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
     }
 
     private void setCustomEnabled() {
+
+        Boolean enabled = mCustomEnabled && mLightEnabled;
+
+        // Phone related preferences
+        if (mVoiceCapable) {
+            mCallPref.setEnabled(enabled);
+            mVoicemailPref.setEnabled(enabled);
+        }
+
+        // Custom applications
         PreferenceScreen prefSet = getPreferenceScreen();
         PreferenceGroup appList = (PreferenceGroup) prefSet.findPreference("applications_list");
         if (appList != null) {
-            appList.setEnabled(mCustomEnabled && mLightEnabled);
-            setHasOptionsMenu(mCustomEnabled && mLightEnabled);
+            appList.setEnabled(enabled);
+            setHasOptionsMenu(enabled);
         }
     }
 
@@ -265,8 +320,7 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
     /**
      * Updates the default or application specific notification settings.
      *
-     * @param application Package name of application specific settings to
-     *            update, if "null" update the default settings.
+     * @param application Package name of application specific settings to update
      * @param color
      * @param timeon
      * @param timeoff
@@ -278,6 +332,18 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
             Settings.System.putInt(resolver, NOTIFICATION_LIGHT_PULSE_DEFAULT_COLOR, color);
             Settings.System.putInt(resolver, NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_ON, timeon);
             Settings.System.putInt(resolver, NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_OFF, timeoff);
+            refreshDefault();
+            return;
+        } else if (application.equals(MISSED_CALL_PREF)) {
+            Settings.System.putInt(resolver, NOTIFICATION_LIGHT_PULSE_CALL_COLOR, color);
+            Settings.System.putInt(resolver, NOTIFICATION_LIGHT_PULSE_CALL_LED_ON, timeon);
+            Settings.System.putInt(resolver, NOTIFICATION_LIGHT_PULSE_CALL_LED_OFF, timeoff);
+            refreshDefault();
+            return;
+        } else if (application.equals(VOICEMAIL_PREF)) {
+            Settings.System.putInt(resolver, NOTIFICATION_LIGHT_PULSE_VMAIL_COLOR, color);
+            Settings.System.putInt(resolver, NOTIFICATION_LIGHT_PULSE_VMAIL_LED_ON, timeon);
+            Settings.System.putInt(resolver, NOTIFICATION_LIGHT_PULSE_VMAIL_LED_OFF, timeoff);
             refreshDefault();
             return;
         }
