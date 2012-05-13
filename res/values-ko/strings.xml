@@ -1724,17 +1724,14 @@
     <string name="status_bar_toggle_brightness">밝기 조절</string>
     <string name="status_bar_toggle_brightness_summary">상태 표시줄을 슬라이드하여 밝기 조정 하는것을 허용합니다.</string>
     <string name="status_bar_toggle_info">자동 밝기 조절이 켜져있습니다</string>
-    <string name="status_bar_signal_text_title">대체 신호 표시</string>
-    <string name="status_bar_signal_text_summary">신호 막대 대신에 dBm 각을 표시합니다.</string>
+    <string name="status_bar_signal_text_title">신호 세기 표시</string>
+    <string name="status_bar_signal_text_summary">신호 막대 대신에 dBm 값을 표시합니다.</string>
     <string name="status_bar_signal_text_show_bars">신호 막대</string>
     <string name="status_bar_signal_text_show_text">신호 글자</string>
 
     <!-- Lock screen #CM -->
     <string name="lock_screen_title">잠금 화면</string>
     <!-- Lock Screen -->
-
-    <!-- Profiles settings #CM -->
-    <string name="profiles_settings_title">프로필</string>
 
     <!-- Performance settings #CM -->
     <string name="performance_settings_title">성능</string>
@@ -1767,19 +1764,19 @@
     <string name="pref_zram_title">zRam</string>
     <string name="pref_zram_summary">메모리를 압축하여 메모리 사용을 늘릴 수 있습니다 (다시 시작 필요)</string>
     <!-- KSM -->
-    <string name="pref_ksm_title">Kernel samepage merging</string>
+    <string name="pref_ksm_title">Kernel Samepage Merging(KSM)</string>
     <string name="pref_ksm_summary">KSM은 물리 메모리 필요량을 줄이고 성능을 향상시킵니다</string>
     <!-- Purgeable Assets -->
     <string name="pref_purgeable_assets_title">자원 제거 허용</string>
-    <string name="pref_purgeable_assets_summary">비트맵 메모리 자원을 제거하여 필요시 더 많은 메모리를 확보할 수 있습니다 (다시 시작 필요) </string>
+    <string name="pref_purgeable_assets_summary">비트맵 메모리 자원을 제거하여 필요시 더 많은 메모리를 확보할 수 있습니다. (다시 시작 필요) </string>
 
     <!-- Performance Settings : Dithering -->
     <string name="pref_use_dithering_title">화면 디더링</string>
     <string name="pref_use_dithering_summary">디더링은 일부 디스플레이에서 성능이 낮아지는 대신 그림의 품질이 좋아집니다. (다시 시작 필요)</string>
 
     <!-- Performance Settings : 16bpp Alpha -->
-    <string name="pref_use_16bpp_alpha_title">16비트 투명</string>
-    <string name="pref_use_16bpp_alpha_summary">그래픽 성능이 좋아지지만 화질이 안좋아지고 시각적인 방해물이 보일 수 있습니다 (다시 시작 필요)</string>
+    <string name="pref_use_16bpp_alpha_title">16비트 투명도</string>
+    <string name="pref_use_16bpp_alpha_summary">성능이 좋아지지만 화질이 안 좋아지고 그림이 깨져보일 수 있습니다. (다시 시작 필요)</string>
 
     <!-- Screen security - Screen security  #CM -->
     <string name="screen_security_category">화면 보안</string>
@@ -1796,7 +1793,9 @@
     <!-- Slide lock delay -->
     <string name="slide_lock_delay_title">화면 잠금 지연</string>
     <string name="slide_lock_timeout_delay_title">화면 자동 꺼짐 지연</string>
+    <string name="slide_lock_timeout_delay_summary">화면이 자동으로 꺼진 뒤에 얼마나 시간이 지나야 잠길 지 설정합니다.</string>
     <string name="slide_lock_screenoff_delay_title">화면 꺼짐 지연</string>
+    <string name="slide_lock_screenoff_delay_summary">화면을 끈 뒤에 얼마나 시간이 지나야 잠길 지 설정합니다.</string>
 
 <!-- Donate #CM -->
     <!-- About device screen, list item title. Takes the user to the screen about how to donate to the CyanogenMod Project. -->
@@ -1833,5 +1832,84 @@
     <!-- Temporary - stubed preference - to be removed once all preferences have been merged -->
     <string name="stubbed">임시 환경 설정</string>
     <string name="stubbed_summary">기능이 완전히 구현될 때 까지 임시로 둔 메뉴입니다</string>
+
+    <string name="build_date">빌드 날짜</string>
+    <string name="build_date_default">2012-01-01-0000</string>
+
+    <string name="mem_info">총 메모리</string>
+
+    <string name="adb_over_network">네트워크로 ADB 이용</string>
+    <string name="adb_over_network_summary">Wi-Fi나 USB 네트워크와 같은 TCP/IP 네트워크를 통하여 디버깅을 활성화할 수 있습니다. 이 설정은 다시 시작 시 초기화됩니다.</string>
+
+    <!-- UI debug setting: kill app long-press back [CHAR LIMIT=25] -->
+    <string name="kill_app_longpress_back">뒤로 가기 버튼으로 앱 강제 종료</string>
+    <!-- UI debug settting: kill app long-press back [CHAR LIMIT=50] -->
+    <string name="kill_app_longpress_back_summary">뒤로 가기 버튼을 길게 눌러 활성화된 앱을 강제로 종료시킵니다.</string>
+
+    <string name="location_gps_source_title">GPS 장치</string>
+    <string name="location_gps_source_summary">외부 블루투스 GPS 안테나 혹은 내장 GPS 안테나 중 하나를 선택하여 위치 정보 제공자로 사용합니다.</string>
+    <string name="location_gps_source_notification_title">경고</string>
+    <string name="location_gps_source_notification">GPS 장치 설정이 변경되었습니다! GPS가 비활성화되었습니다. 사용 전에 다시 활성화시켜주세요.</string>
+
+    <!-- Profiles settings #CM -->
+    <string name="profiles_settings_title">프로필</string>
+    <string name="profiles_general_title">일반</string>
+    <string name="profiles_add">추가</string>
+    <string name="profile_menu_delete">삭제</string>
+    <string name="profile_settings_title">프로필</string>
+
+    <!-- Add Profile -->
+    <string name="add_profile_dialog_title">새 프로필 생성</string>
+    <string name="profile_name_title">이름</string>
+    <string name="profile_profile_name_prompt">새 프로필에 대한 이름을 입력하세요.</string>
+
+    <!-- Sound settings screen, setting option volume overlay title -->
+    <string name="volume_overlay_title">볼륨 창</string>
+
+    <!-- Quiet hours #CM -->
+    <string name="quiet_hours_title">취침 모드</string>
+    <string name="quiet_hours_summary">장치를 무음모드로 설정할 시간을 설정합니다.</string>
+    <string name="quiet_hours_note_title">안내</string>
+    <string name="quiet_hours_note_summary">취침 모드 동안 걸려오는 전화는 평상시와 동일하게 동작합니다.</string>
+    <string name="quiet_hours_enabled">취침 모드 활성화</string>
+    <string name="quiet_hours_enabled_on">취침 모드가 활성화됩니다.</string>
+    <string name="quiet_hours_enabled_off">알림이 평상시처럼 작동합니다.</string>
+    <string name="quiet_hours_start">취침 모드 시작</string>
+    <string name="quiet_hours_start_summary">취침 모드를 시작할 시간을 설정합니다.</string>
+    <string name="quiet_hours_end">취침 모드 종료</string>
+    <string name="quiet_hours_end_summary">취침 모드를 종료할 시간을 설정합니다.</string>
+    <string name="quiet_hours_mute">알림 소리 끄기</string>
+    <string name="quiet_hours_mute_on">알림 소리가 음소거됩니다.</string>
+    <string name="quiet_hours_mute_off">알림 소리가 평상시 설정대로 작동합니다.</string>
+    <string name="quiet_hours_still">진동 끄기</string>
+    <string name="quiet_hours_still_on">진동을 사용하지 않습니다.</string>
+    <string name="quiet_hours_still_off">진동을 사용합니다.</string>
+    <string name="quiet_hours_dim">알림등 비활성화</string>
+    <string name="quiet_hours_dim_on">알림등을 사용하지 않습니다.</string>
+    <string name="quiet_hours_dim_off">알림등을 사용합니다.</string>
+    <string name="quiet_hours_haptic">햅틱 반응 비활성화</string>
+    <string name="quiet_hours_haptic_on">햅틱 반응이 비활성화됩니다.</string>
+    <string name="quiet_hours_haptic_off">햅틱 반응이 평상시처럼 작동합니다.</string>
+    <string name="quiet_hours_active_from">활성화 시작</string>
+    <string name="quiet_hours_active_to">끝</string>
+
+    <!-- time range preference -->
+    <string name="start_time_title">시작</string>
+    <string name="end_time_title">끝</string>
+
+    <!-- Setting for volume rocker music controls -->
+    <string name="volbtn_music_controls_title">볼륨 키로 음악 조정</string>
+    <string name="volbtn_music_controls_summary">화면이 꺼져있을 때 볼륨 키로 음악 재생을 조절합니다.</string>
+
+    <!-- Display : Rotation #CM -->
+    <string name="display_rotation_title">회전</string>
+    <string name="display_rotation_enabled">활성화.</string>
+    <string name="display_rotation_disabled">비활성화.</string>
+    <string name="display_rotation_unit">도</string>
+    <string name="display_rotation_category_title">회전 방향</string>
+    <string name="display_rotation_0_title">0도</string>
+    <string name="display_rotation_90_title">90도</string>
+    <string name="display_rotation_180_title">180도</string>
+    <string name="display_rotation_270_title">270도</string>
 
 </resources>
