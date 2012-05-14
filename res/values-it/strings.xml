@@ -16,6 +16,32 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="picker_activities">Activities</string>
+    <string name="select_custom_app_title">Scegli applicazione</string>
+    <string name="select_custom_activity_title">Scegli activity</string>
+    <string name="icon_picker_choose_icon_title">Scegli icona</string>
+    <string name="icon_picker_alarm">Allarme</string>
+    <string name="icon_picker_browser">Browser</string>
+    <string name="icon_picker_calendar">Calendario</string>
+    <string name="icon_picker_camera">Fotocamera</string>
+    <string name="icon_picker_email">Email</string>
+    <string name="icon_picker_facebook">Facebook</string>
+    <string name="icon_picker_gallery">Galleria</string>
+    <string name="icon_picker_googleplus">Google+</string>
+    <string name="icon_picker_googletalk">Google Talk</string>
+    <string name="icon_picker_maps">Mappe</string>
+    <string name="icon_picker_movie">Video</string>
+    <string name="icon_picker_music">Musica</string>
+    <string name="icon_picker_nav_normal">Navigazione</string>
+    <string name="icon_picker_phone">Telefono</string>
+    <string name="icon_picker_podcast">Podcast</string>
+    <string name="icon_picker_rss">Rss</string>
+    <string name="icon_picker_sms">Messaggistica</string>
+    <string name="icon_picker_twitter">Twitter</string>
+    <string name="icon_picker_title">Scegli fonte icona</string>
+    <string name="icon_picker_system_icons_title">Icone di sistema</string>
+    <string name="icon_picker_gallery_title">Galleria</string>
+    <string name="icon_picker_pack_title">Pacchetto icone</string>
     <string name="yes" msgid="4676390750360727396">"Sì"</string>
     <string name="no" msgid="6731231425810196216">"No"</string>
     <string name="device_info_default" msgid="7847265875578739287">"Sconosciuto"</string>
@@ -80,6 +106,8 @@
     <string name="wifi_wps_available_second_item" msgid="6121307881706347616">" (rete protetta disponibile)"</string>
     <string name="wifi_secured_first_item" msgid="4072076186051083451">"Protetta con <xliff:g id="WIFI_SECURITY_SHORT">%1$s</xliff:g>"</string>
     <string name="wifi_secured_second_item" msgid="1326000076939056265">", protetta con <xliff:g id="WIFI_SECURITY_SHORT">%1$s</xliff:g>"</string>
+    <string name="wifi_adhoc_first_item">Rete Ad-hoc</string>
+    <string name="wifi_adhoc_second_item">\u0020(rete ad-hoc)</string>
     <string name="wifi_security_none" msgid="7985461072596594400">"Nessuna"</string>
     <string name="wifi_connect" msgid="1076622875777072845">"Connetti"</string>
     <string name="wifi_forget" msgid="8168174695608386644">"Elimina"</string>
@@ -226,7 +254,7 @@
     <string name="sound_effects_enable_title" msgid="1171590821131077296">"Suoni alla pressione"</string>
     <string name="lock_sounds_enable_title" msgid="450098505659399520">"Suono di blocco schermo"</string>
     <string name="haptic_feedback_enable_title" msgid="2438293710530828760">"Vibra alla pressione"</string>
-    <string name="volbtn_music_controls_title">"Controllo musica con tasti volume"</string>
+    <string name="volbtn_music_controls_title">"Cambia traccia con tasti"</string>
     <string name="volbtn_music_controls_summary">"Quando lo schermo è spento la pressione prolungata dei tasti volume cambia traccia"</string>
     <string name="audio_record_proc_title" msgid="4271091199976457534">"Eliminazione rumori"</string>
     <string name="volume_media_description" msgid="7949355934788807863">"Musica, video, giochi e altri contenuti multimediali"</string>
@@ -234,9 +262,9 @@
     <string name="volume_ring_only_description">Suonerie</string>
     <string name="volume_notification_description" msgid="5810902320215328321">"Notifiche"</string>
     <string name="volume_alarm_description" msgid="8322615148532654841">"Allarmi"</string>
-    <string name="link_volume_ringtones">Collega volumi</string>
+    <string name="link_volume_ringtones">Collega volume suoneria e notifiche</string>
     <string name="link_volume_ringtones_toast">Assicurarsi di modificare il volume per sincronizzare il volume di notifica e di suoneria.</string>
-    <string name="link_volume_mutes">Collega stati muti</string>
+    <string name="link_volume_mutes">Collega silenz. suoneria e notifiche</string>
     <string name="quiet_hours_title">"Periodo di quiete"</string>
     <string name="quiet_hours_summary">"Configura gli orari in cui il terminale dovrebbe essere silenzioso"</string>
     <string name="quiet_hours_note_title">"Nota"</string>
@@ -284,8 +312,8 @@
     <string name="screensaver_test" msgid="3048249263811694128">"Prova!"</string>
     <string name="screensaver_activate_on_dock_title" msgid="3753003388633168862">"Attiva anche quando inserito nel dock"</string>
     <string name="automatic_brightness" msgid="5014143533884135461">"Luminosità automatica"</string>
-    <string name="title_font_size" msgid="4405544325522105222">"Dimensioni carattere"</string>
-    <string name="dialog_title_font_size" msgid="2231507851258955038">"Dimensioni carattere"</string>
+    <string name="title_font_size" msgid="4405544325522105222">"Dimensione dei caratteri"</string>
+    <string name="dialog_title_font_size" msgid="2231507851258955038">"Dimensione caratteri"</string>
     <string name="battery_pulse_title">"Lampeggia con batteria scarica"</string>
     <string name="backlight_title">"Luminosità automatica"</string>
     <string name="backlight_summary">"Configura livelli e filtri"</string>
@@ -304,7 +332,7 @@
     <string name="light_levels_dim_summary">"Luminosità usata per oscurare lo schermo"</string>
     <string name="light_levels_editor_title">"Modifica altri livelli\u2026</string>
     <string name="light_decrease_enabled_title">"Permetti di abbassare la luminosità"</string>
-    <string name="light_decrease_enabled_summary">"Attivare per permettere di abbassare la luminosità. Usare l'isteresi per ridurre i cambiamenti di luminosità</string>
+    <string name="light_decrease_enabled_summary">"Attivare per permettere di abbassare la luminosità. Usare l\'isteresi per ridurre i cambiamenti di luminosità</string>
     <string name="light_decrease_hysteresis_title">"Diminuisci isteresi"</string>
     <string name="light_decrease_hysteresis_summary">"I livelli del sensore si sovrappangono di questo valore verso il basso"</string>
     <string name="ll_title">"Livelli del sensore di luce"</string>
@@ -326,10 +354,13 @@
     <string name="notification_pulse_title" msgid="1247988024534030629">"Luce di notifica pulsante"</string>
     <string name="notification_light_general_title">"Generale"</string>
     <string name="notification_light_applist_title">"Applicazioni"</string>
-    <string name="notification_light_default_value">"Predefinito"</string>
+    <string name="notification_light_phonelist_title">"Telefono"</string>
     <string name="notification_light_use_custom">"Usa valori personalizzati"</string>
     <string name="notification_light_enabled">"Attiva"</string>
     <string name="notification_light_disabled">"Disattiva"</string>
+    <string name="notification_light_default_value">Predefinito</string>
+    <string name="notification_light_missed_call_title">Chiamata persa</string>
+    <string name="notification_light_voicemail_title">Messaggio vocale</string>
     <string name="edit_light_settings">"Modifica impostazioni luce"</string>
     <string name="pulse_speed_title">"Durata e velocità del lampeggio"</string>
     <string name="picker_arrow">→</string>
@@ -368,7 +399,7 @@
     <string name="summary_expanded_hide_onchange">"Nascondi il menù delle notifiche dopo aver premuto un tasto nel power widget"</string>
     <string name="title_expanded_hide_indicator">"Nascondi indicatori"</string>
     <string name="summary_expanded_hide_indicator">"Nascondi indicatori del power widget"</string>
-    <string name="title_expanded_hide_scrollbar">"Nascondi barra di scorrimento"</string>
+    <string name="title_expanded_hide_scrollbar">"Nascondi barra scorrimento"</string>
     <string name="summary_expanded_hide_scrollbar">"Nascondi la barra di scorrimento quando ci sono più interruttori di quelli visualizzabili"</string>
     <string name="title_widget_picker">"Interruttori visualizzati"</string>
     <string name="summary_widget_picker">"Seleziona quali interruttori mostrare nel power widget"</string>
@@ -411,7 +442,7 @@
     <string name="cm_sound_mode_sound">"Suoneria"</string>
     <string name="cm_sound_mode_soundVibrate">"Suoneria+Vibrazione"</string>
     <string name="pref_flash_mode_title">"Modalità torcia LED"</string>
-    <string name="pref_flash_mode_summary">"Scegli l'intensità della torcia LED"</string>
+    <string name="pref_flash_mode_summary">"Scegli l\'intensità della torcia LED"</string>
     <string name="expanded_haptic_feedback_title">"Vibrazione al tocco"</string>
     <string name="expanded_haptic_feedback_summary">"Attiva/Disattiva la vibrazione al tocco"</string>
     <string name="status_bar_title">"Barra di stato"</string>
@@ -431,7 +462,17 @@
     <string name="status_bar_signal_text_show_bars">"Icona (Predefinito)"</string>
     <string name="status_bar_signal_text_show_text">"Testo"</string>
     <string name="status_bar_signal_text_hidden">"Nascosto"</string>
-    <string name="lock_screen_title">"Schermata sblocco"</string>
+    <string name="lock_screen_title">"Schermata di sblocco"</string>
+    <string name="lockscreen_target_info">Trascina il cursore e imposta le scorciatoie</string>
+    <string name="lockscreen_target_title">Scorciatoie di sblocco</string>
+    <string name="lockscreen_target_summary">Aggiungi o personalizza scorciatoie di sblocco schermo</string>
+    <string name="lockscreen_target_reset">Scorciatoie di sblocco ripristinate</string>
+    <string name="lockscreen_target_save">Scorciatoie di sblocco salvate</string>
+    <string name="lockscreen_target_reset_title">Ripristino</string>
+    <string name="lockscreen_target_reset_message">Eliminare tutte le funzioni rapide e ripristinare quelle di default?</string>
+    <string name="lockscreen_target_empty">Vuoto</string>
+    <string name="lockscreen_target_edit_title">Modifica scorciatoia</string>
+    <string name="lockscreen_target_edit_msg">Seleziona o modifica l\'applicazione desiderata o l\'activity e l\'icona</string>
     <string name="wallpaper_settings_title" msgid="5449180116365824625">"Sfondo"</string>
     <string name="wallpaper_settings_fragment_title" msgid="519078346877860129">"Scegli sfondo da"</string>
     <string name="header_category_personal" msgid="6225932173498802187">"PERSONALE"</string>
@@ -747,7 +788,7 @@
     <string name="pref_zram_summary">"Comprime la memoria RAM per aumentarne virtualmente la capacità (Richiede il riavvio)"</string>
     <string name="pref_ksm_title">"Fusione pagine Kernel"</string>
     <string name="pref_ksm_summary">"KSM permette di ridurre la richiesta di memoria RAM e di migliorare le prestazioni"</string>
-    <string name="pref_purgeable_assets_title">"Permetti la pulizia di risorse"</string>
+    <string name="pref_purgeable_assets_title">"Pulizia di risorse"</string>
     <string name="pref_purgeable_assets_summary">"Ripulire la memoria dedicata alle immagini consente di liberare più RAM quando richiesto (Richiede il riavvio)"</string>
     <string name="pref_use_dithering_title">"Surface dithering"</string>
     <string name="pref_use_dithering_summary">"Il Dithering migliora la qualità d\'immagine a scapito delle prestazioni (Richiede il riavvio)"</string>
@@ -783,9 +824,9 @@
     <string name="anonymous_statistics_title">"Statistiche CyanogenMod"</string>
     <string name="anonymous_statistics_summary">"Aiuta a migliorare la Cyanogenmod acconsentendo ad inviare statistiche anonime"</string>
     <string name="anonymous_statistics_warning_title">"Informazioni"</string>
-    <string name="anonymous_statistics_warning">"Consentire di inviare statistiche anonime permetterà l'invio di dati non personali agli sviluppatori di Cyanogenmod per contare il numero di installazioni uniche sui diversi terminali. Le informazioni inviate includono un identificativo univoco che non compromette la tua privacy o i tuoi dati personali. I dati sono inviati ad ogni avvio.\n\nPer un esempio dei dati inviati premere su Anteprima dati."</string>
+    <string name="anonymous_statistics_warning">"Consentire di inviare statistiche anonime permetterà l\'invio di dati non personali agli sviluppatori di Cyanogenmod per contare il numero di installazioni uniche sui diversi terminali. Le informazioni inviate includono un identificativo univoco che non compromette la tua privacy o i tuoi dati personali. I dati sono inviati ad ogni avvio.\n\nPer un esempio dei dati inviati premere su Anteprima dati."</string>
     <string name="enable_reporting_title">"Attiva invio"</string>
-    <string name="preview_data_title">"Anteprima Dati"</string>
+    <string name="preview_data_title">"Anteprima dati"</string>
     <string name="preview_data_summary">%s</string>
     <string name="view_stats_title">"Guarda statistiche"</string>
     <string name="anonymous_learn_more">"Maggiori informazioni"</string>
@@ -1017,7 +1058,7 @@
     <string name="band_mode_failed" msgid="1495968863884716379">"Non riuscita"</string>
     <string name="band_mode_succeeded" msgid="2701016190055887575">"Riuscita"</string>
     <string name="stubbed">Stub di implementazione</string>
-    <string name="stubbed_summary">Segnaposto temporaneo fino a quando la funzionalità varrà completata</string>
+    <string name="stubbed_summary">Segnaposto temporaneo fino a quando la funzionalità verrà completata</string>
     <string name="sdcard_changes_instructions" msgid="1364712901180556244">"Le modifiche saranno effettive alla riconnessione del cavo USB"</string>
     <string name="sdcard_settings_screen_mass_storage_text" msgid="3741220147296482474">"Attiva archivio di massa USB"</string>
     <string name="sdcard_settings_total_bytes_label" msgid="9184160745785062144">"Byte totali:"</string>
@@ -1514,7 +1555,7 @@
     <string name="adb_warning_title" msgid="6234463310896563253">"Consentire debug USB?"</string>
     <string name="adb_warning_message" msgid="7316799925425402244">"Il debug USB è solo a scopo di sviluppo. Utilizzalo per copiare dati tra il computer e il dispositivo, per installare applicazioni sul tuo dispositivo senza notifica e per leggere i dati dei log."</string>
     <string name="root_access">"Accesso come root"</string>
-    <string name="root_access_warning_title">"Permetti l'accesso come root?"</string>
+    <string name="root_access_warning_title">"Permetti l\'accesso come root?"</string>
     <string name="root_access_warning_message">"Permettere alle applicazioni di richiedere i permessi di root è estremamente pericoloso e potrebbe compromettere la sicurezza del sistema!"</string>
     <string name="root_access_none">"Disattivo"</string>
     <string name="root_access_apps">"Solo applicazioni"</string>
@@ -1827,7 +1868,7 @@
     <string name="app_process_limit_title" msgid="4280600650253107163">"Limite processi background"</string>
     <string name="show_all_anrs" msgid="28462979638729082">"Mostra tutti errori ANR"</string>
     <string name="show_all_anrs_summary" msgid="641908614413544127">"Mostra finestra ANR per applicazioni in background"</string>
-    <string name="kill_app_longpress_back">"Termina applicazione con il tasto indietro"</string>
+    <string name="kill_app_longpress_back">"Termina appl. con tasto"</string>
     <string name="kill_app_longpress_back_summary">"Termina l\'applicazione in primo piano tenendo premuto a lungo il tasto indietro"</string>
     <string name="data_usage_summary_title" msgid="3804110657238092929">"Utilizzo dati"</string>
     <string name="data_usage_cycle" msgid="5652529796195787949">"Ciclo utilizzo dati"</string>
@@ -1836,6 +1877,7 @@
     <string name="data_usage_menu_split_4g" msgid="5322857680792601899">"Separa utilizzo 4G"</string>
     <string name="data_usage_menu_show_wifi" msgid="8266875319417201085">"Mostra utilizzo Wi-Fi"</string>
     <string name="data_usage_menu_show_ethernet" msgid="5181361208532314097">"Mostra utilizzo Ethernet"</string>
+    <string name="data_usage_menu_linear_chart">Grafico lineare</string>
     <string name="data_usage_change_cycle" msgid="7776556448920114866">"Cambia ciclo..."</string>
     <string name="data_usage_pick_cycle_day" msgid="4470796861757050966">"Giorno del mese in cui reimpostare ciclo di utilizzo dei dati:"</string>
     <string name="data_usage_empty" msgid="8621855507876539282">"Dati non usati da applicazioni in questo periodo."</string>
