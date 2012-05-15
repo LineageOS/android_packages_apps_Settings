@@ -85,14 +85,25 @@ public class NFCProfile extends Activity {
         UUID profileUuid = NFCProfileUtils.toUUID(payload);
         Profile currentProfile = mProfileManager.getActiveProfile();
 
-        if (currentProfile == null || !currentProfile.getUuid().equals(profileUuid)) {
-            saveCurrentProfile();
-            switchTo(profileUuid);
-        } else if (currentProfile.getUuid().equals(profileUuid)) {
-            Profile lastProfile = getPreviouslySelectedProfile();
-            if (lastProfile != null) {
-                switchTo(lastProfile.getUuid());
-                clearPreviouslySelectedProfile();
+        Profile targetProfile = mProfileManager.getProfile(profileUuid);
+
+        if (targetProfile == null) {
+            // show profile selection for unknown tag
+            Intent i = new Intent(this, NFCProfileSelect.class);
+            i.putExtra(NFCProfileSelect.EXTRA_PROFILE_UUID, profileUuid.toString());
+            i.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            this.startActivity(i);
+        } else {
+            // switch to profile
+            if (currentProfile == null || !currentProfile.getUuid().equals(profileUuid)) {
+                saveCurrentProfile();
+                switchTo(profileUuid);
+            } else {
+                Profile lastProfile = getPreviouslySelectedProfile();
+                if (lastProfile != null) {
+                    switchTo(lastProfile.getUuid());
+                    clearPreviouslySelectedProfile();
+                }
             }
         }
     }
