@@ -20,24 +20,14 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <PreferenceScreen
-        android:key="navigation_bar"
-        android:fragment="com.android.settings.cyanogenmod.NavBar"
-        android:title="@string/navigation_bar_title" />
-
-    <PreferenceScreen
-        android:key="notification_drawer"
-        android:fragment="com.android.settings.cyanogenmod.PowerWidget"
-        android:title="@string/notification_drawer_title" />
-
-    <PreferenceScreen
         android:key="status_bar"
         android:fragment="com.android.settings.cyanogenmod.StatusBar"
         android:title="@string/combined_status_bar_title" />
 
     <PreferenceScreen
-        android:key="lock_screen"
-        android:fragment="com.android.settings.cyanogenmod.LockscreenInterface"
-        android:title="@string/lock_screen_title" />
+        android:key="notification_drawer"
+        android:fragment="com.android.settings.cyanogenmod.PowerWidget"
+        android:title="@string/notification_drawer_title" />
 
     <PreferenceScreen
         android:key="wallpaper"
@@ -51,5 +41,10 @@
         android:entries="@array/entries_font_size"
         android:entryValues="@array/entryvalues_font_size"
         android:dialogTitle="@string/dialog_title_font_size" />
+
+    <PreferenceScreen
+        android:key="navigation_bar"
+        android:fragment="com.android.settings.cyanogenmod.NavBar"
+        android:title="@string/navigation_bar_title" />
 
 </PreferenceScreen>

@@ -17,10 +17,10 @@
 package com.android.settings.cyanogenmod;
 
 import android.content.ContentResolver;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
+import android.provider.Settings;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -29,14 +29,17 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "LockscreenInterface";
 
-    private final Configuration mCurConfig = new Configuration();
+    public static final String KEY_WEATHER_PREF = "lockscreen_weather";
+    private Preference mWeatherPref;
+    ContentResolver mResolver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ContentResolver resolver = getActivity().getContentResolver();
+        mResolver = getActivity().getContentResolver();
 
         addPreferencesFromResource(R.xml.lockscreen_interface_settings);
+        mWeatherPref = (Preference) findPreference(KEY_WEATHER_PREF);
     }
 
     @Override
@@ -52,6 +55,16 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     }
 
     private void updateState() {
+        // Set the weather description text
+        if (mWeatherPref != null) {
+            boolean weatherEnabled = Settings.System.getInt(mResolver,
+                    Settings.System.LOCKSCREEN_WEATHER, 0) == 1;
+            if (weatherEnabled) {
+                mWeatherPref.setSummary(R.string.lockscreen_weather_enabled);
+            } else {
+                mWeatherPref.setSummary(R.string.lockscreen_weather_summary);
+            }
+        }
     }
 
     @Override
