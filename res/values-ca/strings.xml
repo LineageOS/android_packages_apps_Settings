@@ -1170,8 +1170,212 @@
     <string name="sound_category_notification_title" msgid="3502115998790286943">"Notificacions"</string>
     <string name="sound_category_feedback_title" msgid="4399742321363475393">"Comentaris"</string>
     <string name="device_settings_title">Paràm. del dispositiu</string>
-    <string name="wimax_settings" msgid="1574837328738396794">"configuració 4G"</string>
-    <string name="wimax_settings_summary" msgid="3207355006084135453">"Configura i gestiona la xarxa i el mòdem 4G"</string>
-    <string name="status_wimax_mac_address" msgid="8390791848661413416">"adreça MAC 4G"</string>
+	
+	<!-- Device admin settings screen --><skip/>
+    <!-- Device admin settings activity title -->
+    <string name="device_admin_settings_title">Preferències d\'administració de dispositius</string>
+    <!-- Label for screen showing the active device policy -->
+    <string name="active_device_admin_msg">Administrador de dispositius</string>
+    <!-- Label for button to remove the active device admin -->
+    <string name="remove_device_admin">Desactiva</string>
+    <!-- Label for screen showing to select device policy -->
+    <string name="select_device_admin_msg">Administradors de dispositius</string>
+    <!-- Message when there are no available device admins to display -->
+    <string name="no_device_admins">No hi ha cap administrador de dispositius disponible</string>
+
+    <!-- Label for screen showing to add device policy -->
+    <string name="add_device_admin_msg">Vol activar l\'administrador de dispositius?</string>
+    <!-- Label for button to set the active device admin -->
+    <string name="add_device_admin">Activa</string>
+    <!-- Device admin add activity title -->
+    <string name="device_admin_add_title">Administrador de dispositius</string>
+    <!-- Device admin warning message about policies an admin can use -->
+    <string name="device_admin_warning">Activant aquest administrador permetrà
+        a l\'aplicació <xliff:g id="app_name">%1$s</xliff:g> realitzar
+        les operacions següents:</string>
+    <!-- Device admin warning message about policies an admin can use -->
+    <string name="device_admin_status">Aquest administrador és actiu i permet
+        a l\'aplicació <xliff:g id="app_name">%1$s</xliff:g> realitzar les
+        operacions següents:</string>
+	
+	<!-- Name to assign to a Network Access Point that was saved without a name -->
+    <string name="untitled_apn">Sense títol</string>
+
+    <string name="sound_category_sound_title">General</string>
+    <string name="sound_category_calls_title">Trucades entrants</string>
+    <string name="sound_category_notification_title">Notificacions</string>
+    <string name="sound_category_feedback_title">Resposta del telèfon</string>
+
+    <string name="launcher_settings_title">ADWLauncher</string>
+	
+	<string name="possibleButtons">Botons possibles</string>
+    <string name="toggleWifi">Wi-Fi</string>
+    <string name="toggleWifiAp">Punt Wi-Fi portàtil</string>
+    <string name="toggleBluetooth">Bluetooth</string>
+    <string name="toggleGPS">GPS</string>
+    <string name="toggleData">Dades mòbils</string>
+    <string name="toggleSync">Sincr. dades</string>
+    <string name="toggle2g3g">2G/3G</string>
+    <string name="toggleSound">Mode trucada</string>
+    <string name="toggleBrightness">Brillantor</string>
+    <string name="toggleAutoRotate">Orientació</string>
+    <string name="toggleScreenTimeout">Temps apagat pantalla</string>
+    <string name="toggleAirplane">Mode avió</string>
+    <string name="toggleFlashlight">Llanterna/string>
+    <string name="toggleLockScreen">Bloqueig pantalla</string>
+    <string name="toggleWimax">WiMAX</string>
+	
+	<string name="toggleWifiDescription">Activa/desactiva Wi-Fi</string>
+    <string name="toggleWifiApDescription">Activa/desactiva punt Wi-Fi portàtil</string>
+    <string name="toggleBluetoothDescription">Activa/desactiva Bluetooth</string>
+    <string name="toggleGPSDescription">Activa/desactiva GPS</string>
+    <string name="toggleDataDescription">Activa/desactiva dades mòbils</string>
+    <string name="toggleSyncDescription">Activa/desactiva sicr. dades</string>
+    <string name="toggle2g3gDescription">Commuta entre 2G i 3G</string>
+    <string name="toggleSoundDescription">Commuta entre to i només vibració</string>
+    <string name="toggleBrightnessDescription">Commuta entre els nivells de brillantor</string>
+    <string name="toggleAutoRotateDescription">Activa/desactiva sensor d\'orientació</string>
+    <string name="toggleScreenTimeoutDescription">Estableix diferents temps d\'apagada de pantalla</string>
+    <string name="toggleAirplaneDescription">Activa/desactiva mode avió</string>
+    <string name="toggleFlashlightDescription">Activa/desactiva llanterna</string>
+    <string name="toggleLockScreenDescription">Activa/desactiva bloqueig de pantalla</string>
+    <string name="toggleWimaxDescription">Activa/desactiva WiMAX</string>
+	
+	<string name="widgetSettings">Preferències del Widget</string>
+    <string name="wifiSettings">Preferències d\'events Wi-Fi</string>
+    <string name="dataSettings">Preferències d\'events de dades</string>
+    <string name="powerSettings">Preferències d\'events d\'apagat</string>
+
+    <string name="generalSettings">Preferències generals</string>
+	
+	<string name="autoDisable3G">Les dades desactiven 3G</string>
+    <string name="autoEnable3G">Les dades activen 3G</string>
+    <string name="autoDisable3GWithWifi">Wi-Fi desactiva 3G</string>
+    <string name="autoEnable3GWithWifi">Wi-Fi activa 3G</string>
+    <string name="useRoundCorners">Cantonades arrodonides</string>
+    <string name="useVertical">Format vertical</string>
+    <string name="useTransparent">Widget transparent</string>
+    <string name="autoEnableSyncWithWifi">Wi-Fi activa Sincr.</string>
+    <string name="autoDisableSyncWithWifi">Wi-Fi desactiva Sincr.</string>
+    <string name="ringModeVibrateAsOn">Vibració activada</string>
+    <string name="monitorDataRoaming">Monitoritza itinerància de dades</string>
+    <string name="autoEnableBluetoothWithPower">Carregador ext. activa Bluetooth</string>
+    <string name="autoDisableBluetoothWithPower">Carregador ext. desactiva Bluetooth</string>
+    <string name="autoEnableWifiWithPower">Carregador ext. activa Wi-Fi</string>
+    <string name="autoDisableWifiWithPower">Carregador ext. desactiva Wi-Fi</string>
+	
+	<string name="autoDisable3GDescription">2G quan les dades mòbils estan desactivades</string>
+    <string name="autoEnable3GDescription">3G quan les dades mòbils estan activades</string>
+    <string name="autoDisable3GWithWifiDescription">2G quan Wi-Fi està activat</string>
+    <string name="autoEnable3GWithWifiDescription">3G quan Wi-Fi està desactivat</string>
+    <string name="useRoundCornersDescription">Utilitza icones de widget arrodonides</string>
+    <string name="useTransparentDescription">Sense fons al widget</string>
+    <string name="useVerticalDescription">Mostra amb orientació vertical</string>
+    <string name="autoEnableSyncWithWifiDescription">Activa sincr. quan Wi-Fi està activada</string>
+    <string name="autoDisableSyncWithWifiDescription">Desactiva sincr. quan Wi-Fi està deshabilitada</string>
+    <string name="ringModeVibrateAsOnDescription">Mostra So encara que només estigui en mode vibració</string>
+    <string name="monitorDataRoamingDescription">Estat de dades en vermell si la itinerància és activa</string>
+    <string name="autoEnableBluetoothWithPowerDescription">Bluetooth activat quan es connecta el carregador</string>
+    <string name="autoDisableBluetoothWithPowerDescription">Bluetooth desactivat quan es desconnecta el carregador</string>
+    <string name="autoEnableWifiWithPowerDescription">Wi-Fi activat quan es connecta el carregador</string>
+    <string name="autoDisableWifiWithPowerDescription">Wi-Fi desactivat quan es desconnecta el carregador</string>
+	
+	<string name="networkModeSpinner">Esculli modes de xarxa</string>
+    <string name="brightnessSpinner">Esculli nivells de brillantor</string>
+    <string name="ringModeSpinner">Esculli modes de to de trucada</string>
+    <string name="screenTimeoutSpinner">Esculli temps d\'apagat de pantalla</string>
+    <string name="backgroundImageSpinner">Esculli fons de pantalla</string>
+
+    <string name="notConfigured">Sense configurar. Si us plau torni a afegir</string>
+
+    <string name="ok">D\'acord</string>
+	
+	<!-- Widget Picker -->
+    <string name="widget_count">(%d widgets)</string>
+
+    <string name="cm_settings_title">Preferències de CyanogenMod</string>
+    <string name="device_settings_title">Preferències de dispositiu</string>
+	
+    <string name="wimax_settings" msgid="1574837328738396794">Configuració 4G</string>
+    <string name="wimax_settings_summary" msgid="3207355006084135453">Configura i gestiona la xarxa i el mòdem 4G"</string>
+    <string name="status_wimax_mac_address" msgid="8390791848661413416">Adreça MAC 4G</string>
+	
+	<!-- A menu item in "About phone" that allows the user to update the phone with settings
+    from their cell phone carrier. The use of the string is similar to the string
+    "system_update_settings_list_item_title" in this project. [CHAR LIMIT=25] -->
     <string name="additional_system_update_settings_list_item_title" msgid="214987609894661992">"Actualitzacions addicionals del sistema"</string>
+	<!-- Title and Summary for PreferenceScreen to launch Enrollment -->
+    <string name ="finger_enrollment">Registre de dits</string>
+    <string name ="start_finger_enrollment_summary">Registra dits per utilitzar amb la pantalla de bloqueig i altres aplicacions</string>
+
+    <!-- Summary for PreferenceScreen to launch picker for security method when there is none -->
+    <string name="lockfinger_unlock_set_unlock_launch_picker_summary">Bloqueja la pantalla amb un patró, dit, PIN, o contrasenya</string>
+
+    <!-- Summary for PreferenceScreen to change security method: None/Pattern/Finger/PIN/Password -->
+    <string name="lockfinger_unlock_set_unlock_launch_picker_change_summary">Canvia o desactiva el patró, dit, PIN, o contrasenya de seguretat</string>
+
+    <!--  Title and summary for preference that guides the user through creating an unlock finger -->
+    <string name="lockfinger_unlock_set_unlock_finger_title">Dit</string>
+    <string name="lockfinger_unlock_set_unlock_finger_summary">Desplaci el dit per desbloquejar la pantalla</string>
+
+    <!-- Title for unlock finger settings screen -->
+    <string name="lockfinger_finger_settings_title">Emprempta dactilar per desbloquejar la pantalla</string>
+
+    <!-- Title for preference that sets or changes unlock finger -->
+    <string name="lockfinger_set_finger_unlock_title">Defineix l\'emprempta dactilar per desbloquejar</string>
+    <string name="lockfinger_change_finger_unlock_title">Canvia el desbloqueig per emprempta dactilar</string>
+
+    <!-- Title and summary for preference that toggles the finger unlock -->
+    <string name="lockfinger_toggle_unlock_finger_title">Demanar emprempta dactilar</string>
+    <string name="lockfinger_toggle_unlock_finger_summary">Ha d\'utilitzar una emprempta dactilar per desbloquejar la pantalla</string>
+
+    <!-- Title for preference that start True Suite Administration -->
+    <string name="lockfinger_dbadmin_title">Administració de TrueSuite</string>
+
+    <!-- Summary shown under unlock_disable_lock_title when finger is in use and can be removed -->
+    <string name="lockfinger_unlock_disable_lock_finger_summary">Elimina el dit de desbloqueig</string>
+
+    <!-- Title shown on security settings to allow the user to change their lockscreen finger -->
+    <string name="unlock_change_lock_finger_title">Canvia el dit de desbloqueig</string>
+
+    <!-- Toast shown if setting finger was successful -->
+    <string name="lockpassword_finger_set_toast">S\'ha definit el dit</string>
+
+    <!-- Security & location settings screen, setting option name for finger -->
+    <string name="lockpattern_change_lock_finger_label">Canvia el dit de desbloqueig</string>
+
+    <!-- Unlock finger settings screen, Toast shown if there is a semaphore failure. -->
+    <string name="lockfinger_semaphore_failure_toast">Error del semàfor</string>
+
+    <!-- Unlock finger settings screen, Toast shown a successful enrollment. -->
+    <string name="lockfinger_enrollment_succeeded_toast">Inscripció correcta.</string>
+
+    <!-- Unlock finger settings screen, Toast shown the TSM library is not available. -->
+    <string name="lockfinger_tsm_library_not_available_toast">La biblioteca TSM no s\'ha pogut carregar... no es pot continuar!</string>
+
+    <!-- Unlock finger settings screen, Toast shown when the user canneled the enrollment. -->
+    <string name="lockfinger_enrollment_canceled_toast">Inscripció cancel·lada.</string>
+
+    <!-- Unlock finger settings screen, Toast shown when the enrollment runs timeout. -->
+    <string name="lockfinger_enrollment_timeout_toast">La inscripció ha superat el temps d\'espera.</string>
+
+    <!-- Unlock finger settings screen, Toast shown an unknow error happened. -->
+    <string name="lockfinger_enrollment_unknown_error_toast">Error desconegut.\nProbablement es tracta d\'un error de connexió.</string>
+
+    <!-- Unlock finger settings screen, Toast shown other errors returned by the enrollment. -->
+    <string name="lockfinger_enrollment_failure_default_toast">Inscripció incorrecta. Error = %d.</string>
+
+    <!-- Unlock finger settings screen, Toast shown when the database has been full. -->
+    <string name="lockfinger_enrollment_database_full">Inscripció incorrecta. La base de dades és plena.</string>
+
+    <!-- Unlock finger settings screen, change unlock finger screen instruction on top of screen after UI timeout -->
+    <string name="lockfinger_dbadmin_failure_default_toast">Error d\'operació d\'administració de la base de dades: %d.</string>
+
+    <!-- Unlock finger settings screen, change unlock finger screen instruction on top of screen after UI timeout -->
+    <string name="lockfinger_ui_timeout_header">Temps d\'espera de la UI superat!</string>
+
+    <!-- Unlock finger settings screen, change unlock finger screen instruction on top of screen after too many bad swipes -->
+    <string name="lockfinger_too_many_bad_swipes_header">Massa lliscades errònies!</string>
+	<!-- Unlock finger settings screen, change unlock finger screen countdown hint on bottom of screen when the screen is locked out -->
+    <string name="lockfinger_lockout_countdown_footer">Torna-ho a intentar en %d segons.</string>
 </resources>
