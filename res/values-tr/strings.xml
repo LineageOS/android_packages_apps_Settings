@@ -547,6 +547,8 @@
     <string name="wifi_wps_available_second_item" msgid="6121307881706347616">" (korumalı ağ kullanılabilir)"</string>
     <string name="wifi_secured_first_item" msgid="4072076186051083451">"Güvenliği <xliff:g id="WIFI_SECURITY_SHORT">%1$s</xliff:g> ile sağlanıyor"</string>
     <string name="wifi_secured_second_item" msgid="1326000076939056265">", güvenliği <xliff:g id="WIFI_SECURITY_SHORT">%1$s</xliff:g> ile sağlanıyor"</string>
+    <string name="wifi_adhoc_first_item">Ad-hoc ağı</string>
+    <string name="wifi_adhoc_second_item">\u0020(ad-hoc ağı)</string>
     <string name="wifi_security_none" msgid="7985461072596594400">"Yok"</string>
     <string name="wifi_connect" msgid="1076622875777072845">"Bağlan"</string>
     <string name="wifi_forget" msgid="8168174695608386644">"Unut"</string>
@@ -581,14 +583,15 @@
     <string name="wifi_p2p_menu_remove_group" msgid="4844634506540667517">"Grubu kaldır"</string>
     <string name="wifi_p2p_menu_advanced" msgid="2578792521809265949">"Gelişmiş"</string>
     <string name="wifi_p2p_available_devices" msgid="5943352520059654483">"Kullanılabilir cihazlar"</string>
-    <string name="wifi_tether_checkbox_text" msgid="6961605862058056788">"Taşınabilir kablosuz ortak erişim noktası"</string>
-    <string name="wifi_tether_enabled_subtext" msgid="8948641212931906143">"Taşınabilir ortak erişim noktası <xliff:g id="NETWORK_SSID">%1$s</xliff:g> etkin"</string>
-    <string name="wifi_tether_failed_subtext" msgid="2654888578056042315">"Taşınabilir kablosuz ortak erişim noktası hatası"</string>
-    <string name="wifi_tether_configure_ap_text" msgid="3474995108398156258">"Kablosuz ortak erişim noktası yapılandır"</string>
+    <string name="wifi_tether_checkbox_text">"Wi-Fi erişim noktası"</string>
+    <string name="wifi_tether_enabled_subtext">"Wi-Fi erişim noktası <xliff:g id="NETWORK_SSID">%1$s</xliff:g> etkin"</string>
+    <string name="wifi_tether_failed_subtext">"Wi-Fi erişim noktası hatası"</string>
+    <string name="wifi_tether_configure_ap_text">"Wi-Fi erişim noktası ayarları"</string>
     <string name="wifi_tether_configure_subtext" msgid="1927454307836232128">"<xliff:g id="NETWORK_SSID">%1$s</xliff:g> <xliff:g id="NETWORK_SECURITY">%2$s</xliff:g> taşınabilir kablosuz ortak erişim noktası"</string>
     <string name="wifi_tether_configure_ssid_default" msgid="8467525402622138547">"Android Ortak Erişim Noktası"</string>
     <string name="display_settings_title" msgid="1708697328627382561">"Ekran"</string>
     <string name="sound_settings" msgid="5534671337768745343">"Ses"</string>
+    <string name="volume_overlay_title">Ses paneli</string>
     <string name="silent_mode_title" msgid="3181479108593217704">"Sessiz mod"</string>
     <string name="ringtone_title" msgid="5379026328015343686">"Telefon zil sesi"</string>
     <string name="ringtone_summary" msgid="2630023412632683493"></string>
@@ -598,7 +601,6 @@
     <string name="vibrate_in_silent_title" msgid="3897968069156767036">"Sessizken titret"</string>
     <string name="vibrate_on_ring_title" msgid="40343855247989536">"Titreşim ve zil sesi"</string>
     <string name="notification_sound_title" msgid="312032901303146002">"Varsayılan bildirim"</string>
-    <string name="notification_pulse_title" msgid="1247988024534030629">"Bildirim ışığını yakıp söndür"</string>
     <string name="incoming_call_volume_title" msgid="8073714801365904099">"Zil sesi"</string>
     <string name="notification_volume_title" msgid="2012640760341080408">"Bildirim"</string>
     <string name="checkbox_notification_same_as_incoming_call" msgid="1073644356290338921">"Bildirimlerde gelen çağrı ses düzeyini kullan"</string>
@@ -611,6 +613,42 @@
     <string name="sound_effects_enable_title" msgid="1171590821131077296">"Dokunma sesleri"</string>
     <string name="lock_sounds_enable_title" msgid="450098505659399520">"Ekran kilidi sesi"</string>
     <string name="haptic_feedback_enable_title" msgid="2438293710530828760">"Dokunulduğunda titreşim"</string>
+    <!-- START: Notification light, #CM -->
+    <!-- Display settings screen, notification light settings -->
+    <string name="notification_pulse_title">Bildirim ışığı</string>
+    <string name="notification_light_general_title">Genel</string>
+    <string name="notification_light_applist_title">Uygulamalar</string>
+    <string name="notification_light_phonelist_title">Telefon</string>
+    <string name="notification_light_use_custom">Özelleştirilmiş değerleri kullan</string>
+    <string name="notification_light_enabled">Etkin</string>
+    <string name="notification_light_disabled">Pasif</string>
+    <string name="notification_light_default_value">Varsayılan</string>
+    <string name="notification_light_missed_call_title">Cevapsız çağrılar</string>
+    <string name="notification_light_voicemail_title">Sesli mesaj</string>
+    <!-- Notification light dialogs -->
+    <string name="edit_light_settings">Işık ayarlarını düzenle</string>
+    <string name="pulse_speed_title">Yanıp sönme aralığı ve hızı</string>
+    <string name="picker_arrow">→</string>
+    <string name="default_time">Normal</string>
+    <string name="custom_time">Özel</string>
+    <string name="dialog_test">Dene</string>
+    <string name="dialog_delete_title">Sil</string>
+    <string name="dialog_delete_message">Seçili öge silinsin mi?</string>
+    <string name="dialog_test_message">Seçili bildirimin nasıl çalıştığını görmek için ekranı kapatın veya denemeyi durdurmak için vazgeçin</string>
+    <string name="dialog_test_button">Vazgeç</string>
+    <!-- Values for the notification light pulse spinners -->
+    <string name="pulse_length_always_on">Her zaman açık</string>
+    <string name="pulse_length_very_short">Çok kısa</string>
+    <string name="pulse_length_short">Kısa</string>
+    <string name="pulse_length_normal">Normal</string>
+    <string name="pulse_length_long">Uzun</string>
+    <string name="pulse_length_very_long">Çok uzun</string>
+    <string name="pulse_speed_very_fast">Çok hızlı</string>
+    <string name="pulse_speed_fast">Hızlı</string>
+    <string name="pulse_speed_normal">Normal</string>
+    <string name="pulse_speed_slow">Yavaş</string>
+    <string name="pulse_speed_very_slow">Çok yavaş</string>
+    <!-- END: Notification light, #CM -->
     <!-- START: Setting for volume rocker music controls, #CM -->
     <string name="volbtn_music_controls_title">Ses tuşuyla müzik kontrolü</string>
     <string name="volbtn_music_controls_summary">Ekran kapalıyken ses tuşuna uzun basmak şarkıyı değiştirir</string>
@@ -622,7 +660,7 @@
     <string name="volume_alarm_description" msgid="8322615148532654841">"Alarmlar"</string>
     <string name="dock_settings" msgid="1820107306693002541">"Yuva"</string>
     <string name="dock_settings_title" msgid="9161438664257429372">"Yuva ayarları"</string>
-    <string name="dock_audio_settings_title" msgid="3324750259959570305">"Ses"</string>
+    <string name="dock_audio_settings_title" msgid="3324750259959570305">"Araç Kiti Ses"</string>
     <string name="dock_audio_summary_desk" msgid="6487784412371139335">"Takılı masaüstü yuvası için ayarlar"</string>
     <string name="dock_audio_summary_car" msgid="6740897586006248450">"Takılı araç yuvası için ayarlar"</string>
     <string name="dock_audio_summary_none" product="tablet" msgid="8215337394914283607">"Tablet yuvaya takılı değil"</string>
@@ -771,6 +809,8 @@
     <string name="usb_mtp_summary" msgid="4617321473211391236">"Windows\'da ya da Mac üzerinde Android Dosya Aktarımı (www.android.com/filetransfer sayfasına bakın) ile medya dosyalarını aktarma olanağı sağlar"</string>
     <string name="usb_ptp_title" msgid="3852760810622389620">"Kamera (PTP)"</string>
     <string name="usb_ptp_summary" msgid="7673397474756664929">"Kamera yazılımını kullanarak fotoğrafları ve MTP\'yi desteklemeyen bilgisayarlardaki her türlü dosyayı aktarmanıza olanak sağlar."</string>
+    <string name="usb_mass_storage_title">Depolama Birimi</string>
+     <string name="usb_mass_storage_summary">USB depolama birimini etkinleştir</string>
     <string name="usb_label_installer_cd" msgid="4331173824920630215">"Dosya aktarma araçlarını yükle"</string>
     <string name="battery_status_title" msgid="9159414319574976203">"Pil durumu"</string>
     <string name="battery_level_title" msgid="2965679202786873272">"Pil düzeyi"</string>
@@ -852,11 +892,11 @@
     <string name="call_settings_summary" msgid="7291195704801002886">"Sesli mesaj, çağrı yönlendirme ve bekletme, arayan kimliğini ayarla"</string>
     <string name="tether_settings_title_usb" msgid="6688416425801386511">"USB internet paylaşımı"</string>
     <string name="tether_settings_title_wifi" msgid="3277144155960302049">"Taşınabilir ortak erişim noktası"</string>
-    <string name="tether_settings_title_bluetooth" msgid="355855408317564420">"Bluetooth internet paylşm"</string>
+    <string name="tether_settings_title_bluetooth" msgid="355855408317564420">"Bluetooth erişim noktası"</string>
     <string name="tether_settings_title_usb_bluetooth" msgid="5355828977109785001">"İnternet paylşm oluşturma"</string>
-    <string name="tether_settings_title_all" msgid="8356136101061143841">"Tethering ve taşnblr hotspot"</string>
+    <string name="tether_settings_title_all">İnternet paylaşımı</string>
     <string name="usb_title" msgid="7483344855356312510">"USB"</string>
-    <string name="usb_tethering_button_text" msgid="585829947108007917">"USB bağlantısı"</string>
+    <string name="usb_tethering_button_text">"USB erişim noktası"</string>
     <string name="usb_tethering_available_subtext" msgid="156779271296152605">"USB bağlandı, bağlantıyı kontrol edin"</string>
     <string name="usb_tethering_active_subtext" msgid="8916210851136467042">"Bağlandı"</string>
     <string name="usb_tethering_storage_active_subtext" msgid="5210094834194907094">"USB depolama birimi kullanılırken tethering yapılamaz"</string>
@@ -1490,6 +1530,7 @@
     <string name="data_usage_menu_split_4g" msgid="5322857680792601899">"Ayrı 4G kullanımı"</string>
     <string name="data_usage_menu_show_wifi" msgid="8266875319417201085">"Kablosuz kullanımını göster"</string>
     <string name="data_usage_menu_show_ethernet" msgid="5181361208532314097">"Ethernet kullanımını göster"</string>
+    <string name="data_usage_menu_linear_chart">Doğrusal grafik</string>
     <string name="data_usage_change_cycle" msgid="7776556448920114866">"Dönemi değiştir..."</string>
     <string name="data_usage_pick_cycle_day" msgid="4470796861757050966">"Ayın, veri kullanım döneminin sıfırlandığı günü:"</string>
     <string name="data_usage_empty" msgid="8621855507876539282">"Bu dönem içinde hiçbir uygulama veri kullanmadı."</string>
@@ -1603,9 +1644,9 @@
     <string name="battery_pulse_title">Düşük pil ışığını yakıp söndür</string>
 
     <!-- START: Link volumes #CM -->
-    <string name="link_volume_ringtones">Ses seviyesini ilişkilendir</string>
+    <string name="link_volume_ringtones">Zil+bildirim sesini yükselt</string>
     <string name="link_volume_ringtones_toast">Şimdiki zil sesi seviyesinin bildirim ses seviyesiyle eşleşmesi için ses seviyesini değiştirdiğinizden emin olun.</string>
-    <string name="link_volume_mutes">Sessiz durumları ilişkilendir</string>
+    <string name="link_volume_mutes">Zil+bildirim sesini kıs</string>
     <!-- END: Link volumes #CM -->
 
     <!-- START: Quiet hours #CM -->
@@ -1632,6 +1673,11 @@
     <string name="quiet_hours_haptic">Dokunsal geribildirimi kapat</string>
     <string name="quiet_hours_haptic_on">Dokunsal geribildirim etkin değil</string>
     <string name="quiet_hours_haptic_off">Dokunsal geribildirim etkin</string>
+    <string name="quiet_hours_active_from">Etkin</string>
+    <string name="quiet_hours_active_to"> - </string>
+    <string name="start_time_title">Başlangıç</string>
+    <string name="end_time_title">Bitiş</string>
+
     <!-- END: Quiet hours #CM -->
 
     <!-- START: Backlight #CM -->
@@ -1693,6 +1739,7 @@
     <string name="combined_bar_auto_hide_summary">Tam ekran çalışan bir uygulamanın birleştirilmiş çubuğu gizlemesine izin ver</string>
     <!-- Power Widget #CM -->
     <string name="power_widget_title">Gelişmiş durum çubuğu</string>
+    <string name="title_expanded_widget">Gelişmiş durum çubuğunu göster</string>
     <string name="summary_expanded_widget">Bildirim ekranındaki gelişmiş durum çubuğunu göster</string>
     <string name="title_expanded_hide_onchange">Değiştikten sonra gizle</string>
     <string name="summary_expanded_hide_onchange">Düğme durumu değiştirildikten sonra bildirim ekranını gizler</string>
@@ -1776,20 +1823,23 @@
     <string name="profile_settings_title">Profil</string>
     <!-- Add Profile -->
     <string name="add_profile_dialog_title">Yeni profil oluştur</string>
-    <string name="profile_name_title">Profil adı</string>
+    <string name="profile_name_title">Adı</string>
     <string name="profile_profile_name_prompt">Yeni profil için isim girin</string>
     <string name="menu_new_profile">Yeni profil</string>
     <string name="menu_new_profile_summary">Ekle ve yeni bir profil yapılandır</string>
     <string name="new_profile_name">&lt;yeni profil&gt;</string>
     <!-- Rename Profile Dialog  -->
+    <string name="rename_dialog_title">Yeniden adlandır</string>
+    <string name="rename_dialog_message">Yeni isim girin</string>
     <string name="duplicate_profile_name">Aynı isimde profil var!</string>
+    <string name="duplicate_appgroup_name">Aynı isimde grup var!</string>
     <!-- Reset Profiles -->
     <string name="profile_reset_title">Sıfırla</string>
-    <string name="profile_reset_message">Tüm profilleri ve uygulama gruplarını silip, varsayılan ayarlara geri yüklemek istiyor musunuz?</string>
+    <string name="profile_reset_message">Oluşturduğunuz tüm profilleri ve uygulama gruplarını silip, varsayılan ayarlara geri yüklemek istiyor musunuz?</string>
     <!-- Delete confimation messages -->
-    <string name="profile_delete_confirm">Bu profili silmek istediğinizden emin misiniz?</string>
-    <string name="profile_app_delete_confirm">Bu uygulamayı silmek istediğinizden emin misiniz?</string>
-    <string name="profile_cannot_delete">Etkin profili silemezsiniz</string>
+    <string name="profile_delete_confirm">Bu profil silinsin mi?</string>
+    <string name="profile_app_delete_confirm">Bu uygulama silinsin mi?</string>
+    <string name="profile_cannot_delete">Etkin profil silinemez</string>
     <!-- Profile Config screen PreferenceGroup titles -->
     <string name="profile_connectionoverrides_title">Bağlantıları yeniden düzenle</string>
     <string name="profile_volumeoverrides_title">Sesleri yeniden düzenle</string>
@@ -1800,8 +1850,8 @@
     <string name="profile_profiles_manage">Profiller</string>
     <string name="profile_profile_manage">Profili yönet</string>
     <string name="profile_applist_manage">Uygulama listesi</string>
-    <string name="profile_appgroups_manage">Uygulama gruplarını yönet</string>
-    <string name="profile_appgroup_manage">Profil</string>
+    <string name="profile_appgroups_manage">Uygulama grupları</string>
+    <string name="profile_appgroup_manage">Uygulama grubunu yönet</string>
     <!-- Profile settings screen, section header for settings related to notification profiles -->
     <string name="profile_settings">Profil ayarları</string>
     <string name="profile_name">Ad</string>
@@ -1819,8 +1869,9 @@
     <string name="profile_appgroups_title">Uygulama grupları</string>
     <string name="profile_applist_title">Uygulamalar</string>
     <string name="profile_new_appgroup">Yeni uygulama grubu</string>
-    <string name="profile_delete_appgroup">Bu uygulama grubunu sil</string>
+    <string name="profile_delete_appgroup">Bu uygulama grubu silinsin mi?</string>
     <string name="profile_appgroup_name_prompt">Yeni uygulama grubu için isim girin</string>
+    <string name="profile_appgroup_name_title">İsim</string>
     <string name="profile_add_app">Uygulama ekle</string>
     <string name="profile_delete_app">Uygulama sil</string>
     <!-- Add application dialog box title -->
@@ -1834,7 +1885,7 @@
     <string name="profile_lockmode_disabled">Etkin değil</string>
     <string name="profile_lockmode_default_summary">Sistem varsayılanını kullan</string>
     <string name="profile_lockmode_insecure_summary">Güvensiz kilit ekranını kullan</string>
-    <string name="profile_lockmode_disabled_summary">Ekran kilidini devre dışı bırak</string>
+    <string name="profile_lockmode_disabled_summary">Ekran kilidi devre dışı</string>
     <string name="profile_disable_screen_lock_summary">Bu profil etkinken kilit ekranı güvenliğini devre dışı bırak</string>
     <!-- Connection override toggles (not all are used at this time ) -->
     <string name="possibleButtons">Düğmeler</string>
@@ -1863,13 +1914,22 @@
     <string name="unlock_menu_unlock_title">Menü ile kilit aç</string>
     <string name="unlock_menu_unlock_summary">Menü tuşuna basmak cihazın kilidini açar</string>
     <string name="unlock_quick_unlock_control_title">Hızlı kilit aç</string>
-    <string name="unlock_quick_unlock_control_summary">PIN veya şifre girdikten sonra TAMAM\'a basmaya gerek yok. Silmek yanlış giriş olarak sayılır</string>
-    <!-- Delays and timeouts -->
-    <string name="delay_and_timeout_title">Süre ve zaman aşımı</string>
+    <string name="unlock_quick_unlock_control_summary">Doğru PIN veya şifre girildiğinde otomatik olarak kilidi aç</string>
     <!-- Slide lock delay -->
-    <string name="slide_lock_delay_title">Gecikme</string>
-    <string name="slide_lock_timeout_delay_title">Ekran kapanma süresi</string>
-    <string name="slide_lock_screenoff_delay_title">Ekran kapatma süresi</string>
+    <string name="delay_and_timeout_title">Kilit gecikmesi</string>
+    <string name="slide_lock_delay_title">Ekran kilidi gecikmesi</string>
+    <string name="slide_lock_timeout_delay_title">Zaman aşımından sonraki gecikme</string>
+    <string name="slide_lock_screenoff_delay_title">Kapandıktan sonraki gecikme</string>
+    <string name="slide_lock_delay_none">Hiçbiri</string>
+    <string name="slide_lock_delay_1s">1 saniye</string>
+    <string name="slide_lock_delay_5s">5 saniye</string>
+    <string name="slide_lock_delay_10s">10 saniye</string>
+    <string name="slide_lock_delay_15s">15 saniye</string>
+    <string name="slide_lock_delay_30s">30 saniye</string>
+    <string name="slide_lock_delay_1m">1 dakika</string>
+    <string name="slide_lock_delay_5m">5 dakika</string>
+    <string name="slide_lock_delay_10m">10 dakika</string>
+    <string name="slide_lock_delay_30m">30 dakika</string>
     <!-- END: Screen security - Screen security  #CM -->
 
     <!-- START: Performance settings #CM -->
@@ -1969,5 +2029,59 @@
     <string name="display_category_wakeup_options_title">Uyanma seçenekleri</string>
     <string name="pref_volume_wake_title">Ses tuşları ile uyan</string>
     <string name="pref_volume_wake_summary">Ses yükseltme/azaltma tuşları cihazı uyandırır</string>
+
+    <!-- NFC : #CM -->
+    <string name="profile_write_nfc_tag">NFC etikete yaz</string>
+    <string name="profile_write_touch_tag">Etikete yazmak için dokunun</string>
+    <string name="profile_write_success">Etiket başarıyla yazıldı</string>
+    <string name="profile_write_failed">Etiket yazma hatası!</string>
+    <string name="profile_selected">Seçilen profil: %1$s</string>
+    <string name="profile_nfc_text">Bir NFC etiketine yazdığınızda profili seçmek için dokunmanız yeterlidir. İkinci kez dokunma, önceki profili seçer.</string>
+
+    <!-- TTS : #CM -->
+    <string name="tts_play_example_not_found_title">Uyarı</string>
+    <string name="tts_play_example_not_found_msg">Örnek metin seçili dilde bulunamadı</string>
+
+    <!-- String for ShortcutPickHelper -->
+    <string name="picker_activities">Etkinlikler</string>
+    <string name="select_custom_app_title">Özel uygulama seç</string>
+    <string name="select_custom_activity_title">Özel etkinlik seç</string>
+    <string name="icon_picker_choose_icon_title">Simge seç</string>
+    <string name="icon_picker_alarm">Alarm</string>
+    <string name="icon_picker_browser">Tarayıcı</string>
+    <string name="icon_picker_calendar">Takvim</string>
+    <string name="icon_picker_camera">Kamera</string>
+    <string name="icon_picker_email">E-posta</string>
+    <string name="icon_picker_facebook">Facebook</string>
+    <string name="icon_picker_gallery">Galeri</string>
+    <string name="icon_picker_googleplus">Google Plus</string>
+    <string name="icon_picker_googletalk">Google Talk</string>
+    <string name="icon_picker_maps">Haritalar</string>
+    <string name="icon_picker_movie">Film</string>
+    <string name="icon_picker_music">Müzik</string>
+    <string name="icon_picker_nav_normal">Navigasyon</string>
+    <string name="icon_picker_phone">Telefon</string>
+    <string name="icon_picker_podcast">Yayın</string>
+    <string name="icon_picker_rss">Rss</string>
+    <string name="icon_picker_sms">Mesajlaşma</string>
+    <string name="icon_picker_twitter">Twitter</string>
+
+    <!-- String for IconPicker -->
+    <string name="icon_picker_title">Simge kaynağı seç</string>
+    <string name="icon_picker_system_icons_title">Sistem simgeleri</string>
+    <string name="icon_picker_gallery_title">Galeri</string>
+    <string name="icon_picker_pack_title">Simge paketi</string>
+
+    <!-- Lock Screen Shortcuts -->
+    <string name="lockscreen_target_info">Kısayol atamak için çemberi hedefe sürükleyin</string>
+    <string name="lockscreen_target_title">Kilit ekranı kısayolları</string>
+    <string name="lockscreen_target_summary">Ekran kısayollarını düzenle</string>
+    <string name="lockscreen_target_reset">Ekran kısayollarını sıfırla</string>
+    <string name="lockscreen_target_save">Ekran kısayolları kaydedildi</string>
+    <string name="lockscreen_target_reset_title">Sıfırla</string>
+    <string name="lockscreen_target_reset_message">Oluşturduğunuz tüm kısayollar silinip varsayılan kısayollara dönülsün mü?</string>
+    <string name="lockscreen_target_empty">Boş</string>
+    <string name="lockscreen_target_edit_title">Kısayol düzenle</string>
+    <string name="lockscreen_target_edit_msg">İstediğiniz uygulama veya etkinliği değiştirmek için isme ve simgeye tek tek dokunun</string>
 
 </resources>
