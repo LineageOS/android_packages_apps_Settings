@@ -201,6 +201,9 @@ public class DockSettings extends SettingsPreferenceFragment {
         } else if (preference == mDockUseUSBAudio) {
             Settings.System.putInt(getContentResolver(), Settings.System.DOCK_USB_AUDIO_ENABLED,
                     mDockUseUSBAudio.isChecked() ? 1 : 0);
+            Intent i = new Intent();
+            i.setAction("DOCK_AUDIO_SETTING_CHANGED");
+            ActivityManagerNative.broadcastStickyIntent(i, null);
         } else if (preference == mForceUndock) {
             // based on last dock Intent mDockIntent
             int dockState = mDockIntent != null
