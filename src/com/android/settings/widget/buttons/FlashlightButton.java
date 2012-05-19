@@ -19,11 +19,8 @@ public class FlashlightButton extends WidgetButton {
 
     static FlashlightButton ownButton = null;
 
-    Context mContext;
-
     public void updateState(Context context, SharedPreferences globalPreferences, int[] appWidgetIds) {
-        mContext = context;
-        if (getFlashlightEnabled()) {
+        if (getFlashlightEnabled(context)) {
             currentIcon = R.drawable.ic_appwidget_settings_flashlight_on;
             currentState = SettingsAppWidgetProvider.STATE_ENABLED;
         } else {
@@ -37,7 +34,7 @@ public class FlashlightButton extends WidgetButton {
         List<ResolveInfo> l = pm.queryBroadcastReceivers(new Intent(
                 "net.cactii.flash2.TOGGLE_FLASHLIGHT"), 0);
         if (!l.isEmpty()) {
-            mContext.sendBroadcast(new Intent("net.cactii.flash2.TOGGLE_FLASHLIGHT"));
+            context.sendBroadcast(new Intent("net.cactii.flash2.TOGGLE_FLASHLIGHT"));
         } else {
             Intent intent = new Intent(context, FlashlightActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
@@ -52,9 +49,9 @@ public class FlashlightButton extends WidgetButton {
         return ownButton;
     }
 
-    public boolean getFlashlightEnabled() {
+    public boolean getFlashlightEnabled(Context context) {
         return Settings.System
-                .getInt(mContext.getContentResolver(), Settings.System.TORCH_STATE, 0) == 1;
+                .getInt(context.getContentResolver(), Settings.System.TORCH_STATE, 0) == 1;
     }
 
     @Override
