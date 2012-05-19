@@ -610,6 +610,8 @@
     <string name="alarm_volume_title" msgid="2285597478377758706">"Будильник"</string>
     <string name="dtmf_tone_enable_title" msgid="8533399267725365088">"Звук клавиш"</string>
     <string name="sound_effects_enable_title" msgid="1171590821131077296">"Звук нажатия на экран"</string>
+    <string name="vibrator_type_ringer">Вызовы</string>
+    <string name="vibrator_type_notification">Уведомления</string>
     <string name="lock_sounds_enable_title" msgid="450098505659399520">"Звук блокировки экрана"</string>
     <string name="haptic_feedback_enable_title">Виброотклик</string>
     <string name="volbtn_music_controls_title">Управление музыкой кнопками громкости</string>
@@ -1732,6 +1734,16 @@
     <string name="combined_bar_auto_hide_title">Скрывать автоматически</string>
     <string name="combined_bar_auto_hide_summary">Скрывать объединённую панель при показе полноэкранного приложения</string>
 
+    <!-- Navigation Bar #CM -->
+    <string name="navigation_bar_title">Строка навигации</string>
+
+    <string name="navigation_bar_help_text">1 - Для редактирования, нажмите значок замка\n\n2 - Нажмите любую кнопку, чтобы задать или изменить функциональность\n\n3 - Долгим нажатием на любой кнопке можно изменить её порядок\n\n4 - Для сохранения нажмите на значок замка\n\n5 - Для сброса настроек, нажмите кнопку сброса\n\n</string>
+    <string name="navigation_bar_tips">&#8226; Одно действие может быть назначено только на одну кнопку\n\n&#8226; Кнопка Домой не может быть изменена\n\n&#8226; Боковые кнопки не могут быть изменены</string>
+    <string name="navigation_bar_tips_title">Быстрые подсказки</string>
+    <string name="navigation_bar_reset_message">Удалить текущие настройки и восстановить значения по умолчанию?</string>
+    <string name="navigation_bar_save_message">Настройки строки навигации сохранены</string>
+    <string name="navigation_bar_reset_toast">Настройки строки навигации сброшены по умолчанию</string>
+
     <!-- Power Widget #CM -->
     <string name="power_widget_title">Кнопки в панели уведомлений</string>
     <string name="title_expanded_widget">Кнопки в панели уведомлений</string>
@@ -1854,9 +1866,13 @@
     <!-- Profile Config screen PreferenceGroup titles -->
     <string name="profile_connectionoverrides_title">Сетевые подключения</string>
     <string name="profile_volumeoverrides_title">Переопределение громкости</string>
+    <string name="profile_vibratoroverrides_title">Переопределение вибро</string>
     <string name="connection_state_disabled">Выключено</string>
     <string name="connection_state_enabled">Включено</string>
     <string name="volume_override_summary">Установить</string>
+    <string name="vibrator_state_disabled">Выключено</string>
+    <string name="vibrator_state_enabled">Включено</string>
+    <string name="vibrator_state_silent">Только при беззвуч. режиме</string>
 
     <!-- Menu item for managing profiles -->
     <string name="profile_profiles_manage">Профили</string>
@@ -1905,6 +1921,13 @@
     <string name="profile_lockmode_insecure_summary">Использовать ненадёжную блокировку экрана</string>
     <string name="profile_lockmode_disabled_summary">Блокировка экрана выключена</string>
     <string name="profile_disable_screen_lock_summary">Отключать блокировку экрана когда этот профиль активен</string>
+    <string name="profile_airplanemode_title">Режим полёта</string>
+    <string name="profile_airplanemode_default">По умолчанию</string>
+    <string name="profile_airplanemode_enabled">Включен</string>
+    <string name="profile_airplanemode_disabled">Выключен</string>
+    <string name="profile_airplanemode_default_summary">Использовать умолчания системы</string>
+    <string name="profile_airplanemode_enabled_summary">Режим полёта включен</string>
+    <string name="profile_airplanemode_disabled_summary">Режим полёта выключен</string>
 
     <!-- Connection override toggles (not all are used at this time ) -->
     <string name="possibleButtons">Доступные кнопки</string>
