@@ -51,6 +51,12 @@
             android:fragment="com.android.settings.cyanogenmod.QuietHours"
             android:title="@string/quiet_hours_title" />
 
+    <CheckBoxPreference
+            android:key="safe_headset_restore"
+            android:title="@string/safe_headset_restore_title"
+            android:summary="@string/safe_headset_restore_summary"
+            android:defaultValue="true" />
+
     <PreferenceCategory
             android:key="category_calls_and_notification"
             android:title="@string/sound_category_calls_and_notification_title"/>
