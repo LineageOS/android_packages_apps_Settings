@@ -59,6 +59,8 @@ public class ScreenSecurity extends SettingsPreferenceFragment implements
 
     private static final String KEY_LOCK_AFTER_TIMEOUT = "lock_after_timeout";
 
+    private static final String KEY_POWER_INSTANTLY_LOCKS = "power_button_instantly_locks";
+
     private static final int SET_OR_CHANGE_LOCK_METHOD_REQUEST = 123;
 
     private static final int CONFIRM_EXISTING_FOR_BIOMETRIC_IMPROVE_REQUEST = 124;
@@ -82,6 +84,8 @@ public class ScreenSecurity extends SettingsPreferenceFragment implements
     private ListPreference mSlideLockTimeoutDelay;
 
     private ListPreference mSlideLockScreenOffDelay;
+
+    private CheckBoxPreference mPowerButtonInstantlyLocks;
 
     DevicePolicyManager mDPM;
 
@@ -187,6 +191,10 @@ public class ScreenSecurity extends SettingsPreferenceFragment implements
 
         // visible pattern
         mVisiblePattern = (CheckBoxPreference) root.findPreference(KEY_VISIBLE_PATTERN);
+
+        // lock instantly on power key press
+        mPowerButtonInstantlyLocks = (CheckBoxPreference) root.findPreference(
+                KEY_POWER_INSTANTLY_LOCKS);
 
         // don't display visible pattern if biometric and backup is not pattern
         if (resid == R.xml.security_settings_biometric_weak &&
@@ -360,6 +368,9 @@ public class ScreenSecurity extends SettingsPreferenceFragment implements
         if (mTactileFeedback != null) {
             mTactileFeedback.setChecked(lockPatternUtils.isTactileFeedbackEnabled());
         }
+        if (mPowerButtonInstantlyLocks != null) {
+            mPowerButtonInstantlyLocks.setChecked(lockPatternUtils.getPowerButtonInstantlyLocks());
+        }
     }
 
     @Override
@@ -387,6 +398,8 @@ public class ScreenSecurity extends SettingsPreferenceFragment implements
             lockPatternUtils.setTactileFeedbackEnabled(isToggled(preference));
         } else if (KEY_LOCK_BEFORE_UNLOCK.equals(key)) {
             lockPatternUtils.setLockBeforeUnlock(isToggled(preference));
+        } else if (KEY_POWER_INSTANTLY_LOCKS.equals(key)) {
+            lockPatternUtils.setPowerButtonInstantlyLocks(isToggled(preference));
         } else if (preference == mSlideLockDelayToggle) {
             value = mSlideLockDelayToggle.isChecked();
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
