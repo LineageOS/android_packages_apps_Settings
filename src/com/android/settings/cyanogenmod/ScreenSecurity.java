@@ -73,6 +73,8 @@ public class ScreenSecurity extends SettingsPreferenceFragment implements
 
     private static final String LOCKSCREEN_QUICK_UNLOCK_CONTROL = "quick_unlock_control";
 
+    private static final String KEY_LOCK_BEFORE_UNLOCK = "lock_before_unlock";
+
     private LockPatternUtils mLockPatternUtils;
 
     private CheckBoxPreference mSlideLockDelayToggle;
@@ -383,6 +385,8 @@ public class ScreenSecurity extends SettingsPreferenceFragment implements
             lockPatternUtils.setVisiblePatternEnabled(isToggled(preference));
         } else if (KEY_TACTILE_FEEDBACK_ENABLED.equals(key)) {
             lockPatternUtils.setTactileFeedbackEnabled(isToggled(preference));
+        } else if (KEY_LOCK_BEFORE_UNLOCK.equals(key)) {
+            lockPatternUtils.setLockBeforeUnlock(isToggled(preference));
         } else if (preference == mSlideLockDelayToggle) {
             value = mSlideLockDelayToggle.isChecked();
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
