@@ -16,6 +16,32 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="picker_activities">Actividades</string>
+    <string name="select_custom_app_title">Seleccionar aplicación personalizada</string>
+    <string name="select_custom_activity_title">Seleccionar actividad personalizada</string>
+    <string name="icon_picker_choose_icon_title">Seleccionar icono</string>
+    <string name="icon_picker_alarm">Alarma</string>
+    <string name="icon_picker_browser">Navegador</string>
+    <string name="icon_picker_calendar">Calendario</string>
+    <string name="icon_picker_camera">Cámara</string>
+    <string name="icon_picker_email">Email</string>
+    <string name="icon_picker_facebook">Facebook</string>
+    <string name="icon_picker_gallery">Galería</string>
+    <string name="icon_picker_googleplus">Google+</string>
+    <string name="icon_picker_googletalk">Google Talk</string>
+    <string name="icon_picker_maps">Mapas</string>
+    <string name="icon_picker_movie">Películas</string>
+    <string name="icon_picker_music">Música</string>
+    <string name="icon_picker_nav_normal">Navegación</string>
+    <string name="icon_picker_phone">Teléfono</string>
+    <string name="icon_picker_podcast">Podcast</string>
+    <string name="icon_picker_rss">Rss</string>
+    <string name="icon_picker_sms">Mensajes</string>
+    <string name="icon_picker_twitter">Twitter</string>
+    <string name="icon_picker_title">Seleccionar fuente de iconos</string>
+    <string name="icon_picker_system_icons_title">Iconos del sistema</string>
+    <string name="icon_picker_gallery_title">Galería</string>
+    <string name="icon_picker_pack_title">Paquete de iconos</string>
     <string name="yes" msgid="4676390750360727396">"Sí"</string>
     <string name="no" msgid="6731231425810196216">"No"</string>
     <string name="device_info_default" msgid="7847265875578739287">"Desconocido"</string>
@@ -598,6 +624,15 @@
     <string name="vibrate_on_ring_title" msgid="40343855247989536">"Vibrar y sonar"</string>
     <string name="notification_sound_title" msgid="312032901303146002">"Notificación predeterminada"</string>
     <string name="notification_pulse_title" msgid="1247988024534030629">"Luz de notificación"</string>
+    <string name="notification_light_general_title">General</string>
+    <string name="notification_light_applist_title">Aplicaciones</string>
+    <string name="notification_light_phonelist_title">Teléfono</string>
+    <string name="notification_light_use_custom">Usar valores personalizados</string>
+    <string name="notification_light_enabled">Activado</string>
+    <string name="notification_light_disabled">Desactivado</string>
+    <string name="notification_light_default_value">Por defecto</string>
+    <string name="notification_light_missed_call_title">Llamada perdida</string>
+    <string name="notification_light_voicemail_title">Buzón de voz</string>
     <string name="incoming_call_volume_title" msgid="8073714801365904099">"Tono"</string>
     <string name="notification_volume_title" msgid="2012640760341080408">"Notificación"</string>
     <string name="checkbox_notification_same_as_incoming_call" msgid="1073644356290338921">"Utilizar volumen de llamada entrante para notificaciones"</string>
@@ -952,6 +987,7 @@
     <string name="advanced_settings" msgid="1777249286757067969">"Ajustes avanzados"</string>
     <string name="advanced_settings_summary" msgid="4016682978071086747">"Habilitar más opciones de configuración"</string>
     <string name="application_info_label" msgid="5736524913065714880">"Información de la aplicación"</string>
+
     <string name="storage_label" msgid="8700867073480107253">"Almacenamiento"</string>
     <string name="auto_launch_label" msgid="3012617472833815382">"Abrir de forma predeterminada"</string>
     <string name="screen_compatibility_label" msgid="663250687205465394">"Compatibilidad de la pantalla"</string>
@@ -1697,6 +1733,85 @@
 
     <!-- Lock screen #CM -->
     <string name="lock_screen_title">"Bloqueo de pantalla"</string>
+
+    <!-- Lock Screen Shortcuts -->
+    <string name="lockscreen_target_info">Arrastre el control deslizante para ajustar los accesos directos</string>
+    <string name="lockscreen_target_title">Accesos directos</string>
+    <string name="lockscreen_target_summary">Añadir o configurar accesos directos</string>
+    <string name="lockscreen_target_reset">Valores por defecto restaurados</string>
+    <string name="lockscreen_target_save">Accesos directos guardados</string>
+    <string name="lockscreen_target_reset_title">Restaurar valores por defecto</string>
+    <string name="lockscreen_target_reset_message">¿Eliminar todos los accesos directos y restaurar valores por defecto?</string>
+    <string name="lockscreen_target_empty">Vacio</string>
+    <string name="lockscreen_target_edit_title">Editar acceso directo</string>
+    <string name="lockscreen_target_edit_msg">Seleccionar o cambiar la aplicación (o actividad) y su icono</string>
+
+     <!-- Lock Screen Weather -->
+    <string name="lockscreen_weather_title">Clima</string>
+    <string name="lockscreen_weather_summary">Mostrar información del clima en la pantalla de bloqueo</string>
+    <string name="lockscreen_weather_enabled">Activado</string>
+    <string name="weather_enable">Mostrar clima</string>
+    <string name="weather_use_custom_location">Usar ubicación personalizada</string>
+    <string name="weather_geolocated">Geolocalización por red</string>
+    <string name="weather_custom_location_dialog_title">Ingresar ubicación</string>
+    <string name="weather_custom_location_dialog_message">Advertencia: Usar una ubicación invalida detendra las actualizaciones.</string>
+    <string name="weather_custom_location_hint">Ciudad, Estado/País</string>
+    <string name="weather_custom_location_title">Ubicación</string>
+    <string name="weather_show_location_title">Mostrar ubicación</string>
+    <string name="weather_show_timestamp_title">Mostrar fecha y hora</string>
+    <string name="weather_refresh_interval">Intervalo de actualización</string>
+    <string name="weather_update">Actualizar</string>
+    <string name="weather_use_metric">Usar sistema métrico</string>
+    <string name="weather_refreshing">Actualizando clima</string>
+    <string name="weather_retrieve_location_dialog_title">¡No se puede encontrar la ubicación!</string>
+    <string name="weather_retrieve_location_dialog_message">Geolocalización por red desactivada.\n\nConfigure una ubicación personalizada o active la geolocalización por red</string>
+    <string name="weather_retrieve_location_dialog_enable_button">Activar</string>
+    <string name="weather_invert_lowhigh">Invertir temperaturas</string>
+
+    <!-- Lock screen Weather - Update frequency -->
+    <string name="weather_refresh_manual">Manual</string>
+    <string name="weather_refresh_30min">30 minutos</string>
+    <string name="weather_refresh_60min">60 minutos</string>
+    <string name="weather_refresh_2hrs">2 horas</string>
+    <string name="weather_refresh_4hrs">4 horas</string>
+    <string name="weather_refresh_6hrs">6 horas</string>
+    <string name="weather_refresh_8hrs">8 horas</string>
+
+    <!-- Lock screen Calendar -->
+    <string name="lockscreen_calendar_title">Calendario</string>
+    <string name="lockscreen_calendar_summary">Mostrar el siguiente evento del calendario en la pantalla de bloqueo</string>
+    <string name="lockscreen_calendar_enabled">Activado</string>
+    <string name="calendar_title">Mostrar el siguiente evento</string>
+    <string name="calendars_title">Calendario de eventos</string>
+    <string name="calendars_summary">Buscar eventos en los calendarios</string>
+    <string name="calendar_reminders_only_title">Solo recordatorios</string>
+    <string name="calendar_reminders_only_summary">Mostrar solo eventos con recordatorios</string>
+    <string name="calendar_lookahead_title">Eventos futuros</string>
+    <string name="calendar_show_location_title">Lugar del evento</string>
+    <string name="calendar_show_description_title">Descripción del evento</string>
+
+    <!-- Lock screen calendar - lookahead -->
+    <string name="calendar_lookahead_3hrs">3 horas</string>
+    <string name="calendar_lookahead_6hrs">6 horas</string>
+    <string name="calendar_lookahead_12hrs">12 horas</string>
+    <string name="calendar_lookahead_1day">1 dia</string>
+    <string name="calendar_lookahead_3days">3 dias</string>
+    <string name="calendar_lookahead_1wk">1 semana</string>
+
+    <!-- Lock screen calendar - event metadata -->
+    <string name="calendar_metadata_none">No mostrar</string>
+    <string name="calendar_metadata_first_line">Mostrar primera linea</string>
+    <string name="calendar_metadata_all">Mostrar todo</string>
+
+    <!-- Navigation Bar #CM -->
+    <string name="navigation_bar_title">Barra de navegación</string>
+
+    <string name="navigation_bar_help_text">1 - Para empezar a editar, toca el candado\n\n2 - Toca cualquier botón para asignar una acción\n\n3 - Mantén presionado un boton para reorganizar\n\n4 - Para guardar, toca el candado nuevamente\n\n5 - Para restaurar la configuración por defecto, toca el icono de resetear\n\n</string>
+    <string name="navigation_bar_tips">&#8226; Solo se puede asignar una acción a un boton a la vez\n\n&#8226; El botón de inicio no puede ser reasignado\n\n&#8226; Los botones de los lados, no pueden ser reorganizados</string>
+    <string name="navigation_bar_tips_title">Consejos rápidos</string>
+    <string name="navigation_bar_reset_message">¿Borrar configuración actual y restaurar valores por defecto?</string>
+    <string name="navigation_bar_save_message">Barra de navegación guardada</string>
+    <string name="navigation_bar_reset_toast">Barra de navegación restaurada</string>
 
     <!-- Sound settings #CM -->
     <!-- Volumes #CM -->
