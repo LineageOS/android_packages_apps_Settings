@@ -966,6 +966,7 @@
     <string name="lockpattern_settings_help_how_to_record" msgid="2614673439060830433">"Как начертить графический ключ разблокировки"</string>
     <string name="lockpattern_too_many_failed_confirmation_attempts_header" msgid="819903817323783498">"Слишком много неудачных попыток!"</string>
     <string name="lockpattern_too_many_failed_confirmation_attempts_footer" msgid="6759029360597122873">"Повторите попытку через <xliff:g id="NUMBER">%d</xliff:g> с."</string>
+    <string name="lockpattern_settings_enable_lock_before_unlock">Показывать виджеты до разблокировки</string>
     <string name="skip_button_label" msgid="8680422740354436943">"Отмена"</string>
     <string name="next_button_label" msgid="8890792540116568321">"Далее"</string>
     <string name="lock_title" product="tablet" msgid="2909697418179419990">"Безопасность планшетного ПК"</string>
@@ -1737,7 +1738,7 @@
     <!-- Navigation Bar #CM -->
     <string name="navigation_bar_title">Строка навигации</string>
 
-    <string name="navigation_bar_help_text">1 - Для редактирования, нажмите значок замка\n\n2 - Нажмите любую кнопку, чтобы задать или изменить функциональность\n\n3 - Долгим нажатием на любой кнопке можно изменить её порядок\n\n4 - Для сохранения нажмите на значок замка\n\n5 - Для сброса настроек, нажмите кнопку сброса\n\n</string>
+    <string name="navigation_bar_help_text">1 - Для редактирования, нажмите значок замка\n2 - Нажмите любую кнопку, чтобы задать или изменить функциональность\n3 - Долгим нажатием на любой кнопке можно изменить её порядок\n4 - Для сохранения нажмите на значок замка\n5 - Для сброса настроек, нажмите кнопку сброса\n</string>
     <string name="navigation_bar_tips">&#8226; Одно действие может быть назначено только на одну кнопку\n\n&#8226; Кнопка Домой не может быть изменена\n\n&#8226; Боковые кнопки не могут быть изменены</string>
     <string name="navigation_bar_tips_title">Быстрые подсказки</string>
     <string name="navigation_bar_reset_message">Удалить текущие настройки и восстановить значения по умолчанию?</string>
@@ -1832,6 +1833,38 @@
     <string name="lockscreen_target_empty">Пусто</string>
     <string name="lockscreen_target_edit_title">Изменить ярлык</string>
     <string name="lockscreen_target_edit_msg">Выберите или измените нужные приложения или действие и иконку</string>
+
+    <!-- Lock Screen Weather -->
+    <string name="lockscreen_weather_title">Погода</string>
+    <string name="lockscreen_weather_summary">Показывать информацию о погоде на экране блокировки</string>
+    <string name="lockscreen_weather_enabled">Включено</string>
+    <string name="weather_enable">Погода отображается</string>
+    <string name="weather_source">Yahoo! Weather</string>
+    <string name="weather_use_custom_location">Не определять автоматически</string>
+    <string name="weather_geolocated">Местоположение по сети</string>
+    <string name="weather_custom_location_dialog_title">Введите местоположение</string>
+    <string name="weather_custom_location_dialog_message">Внимание: название города вводится на английском языке. Ошибочно введённое местоположение не будет отображаться.</string>
+    <string name="weather_custom_location_hint">Город, штат/страна</string>
+    <string name="weather_custom_location_title">Местоположение</string>
+    <string name="weather_show_location_title">Показать местоположение</string>
+    <string name="weather_show_timestamp_title">Показать метку времени</string>
+    <string name="weather_refresh_interval">Частота обновления</string>
+    <string name="weather_update">Обновить</string>
+    <string name="weather_use_metric">Метрическая система</string>
+    <string name="weather_refreshing">Обновление информации о погоде</string>
+    <string name="weather_retrieve_location_dialog_title">Не удаётся получить местоположение!</string>
+    <string name="weather_retrieve_location_dialog_message">Определение местоположения по сети выключено.\n\nВключите определение местоположения по сети или введите местоположение вручную.</string>
+    <string name="weather_retrieve_location_dialog_enable_button">Включить</string>
+    <string name="weather_invert_lowhigh">Изменить порядок высокой/низкой температуры</string>
+
+    <!-- Lock screen Weather - Update frequency -->
+    <string name="weather_refresh_manual">Вручную</string>
+    <string name="weather_refresh_30min">30 минут</string>
+    <string name="weather_refresh_60min">60 минут</string>
+    <string name="weather_refresh_2hrs">2 часа</string>
+    <string name="weather_refresh_4hrs">4 часа</string>
+    <string name="weather_refresh_6hrs">6 часов</string>
+    <string name="weather_refresh_8hrs">8 часов</string>
 
     <!-- Profiles settings #CM -->
     <string name="profiles_settings_title">Профили</string>
@@ -1971,6 +2004,10 @@
     <!-- time range preference -->
     <string name="start_time_title">Начало</string>
     <string name="end_time_title">Конец</string>
+
+    <!-- Safe headset volume restore checkbox -->
+    <string name="safe_headset_restore_title">Безопасная громкость наушников</string>
+    <string name="safe_headset_restore_summary">Уменьшать громкость до 55% при первом подключении наушников</string>
 
     <!-- Performance settings #CM -->
     <string name="performance_settings_title">Производительность</string>
