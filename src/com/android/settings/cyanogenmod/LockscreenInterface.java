@@ -30,7 +30,9 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private static final String TAG = "LockscreenInterface";
 
     public static final String KEY_WEATHER_PREF = "lockscreen_weather";
+    public static final String KEY_CALENDAR_PREF = "lockscreen_calendar";
     private Preference mWeatherPref;
+    private Preference mCalendarPref;
     ContentResolver mResolver;
 
     @Override
@@ -40,12 +42,12 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
 
         addPreferencesFromResource(R.xml.lockscreen_interface_settings);
         mWeatherPref = (Preference) findPreference(KEY_WEATHER_PREF);
+        mCalendarPref = (Preference) findPreference(KEY_CALENDAR_PREF);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-
         updateState();
     }
 
@@ -63,6 +65,17 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
                 mWeatherPref.setSummary(R.string.lockscreen_weather_enabled);
             } else {
                 mWeatherPref.setSummary(R.string.lockscreen_weather_summary);
+            }
+        }
+
+        // Set the calendar description text
+        if (mCalendarPref != null) {
+            boolean weatherEnabled = Settings.System.getInt(mResolver,
+                    Settings.System.LOCKSCREEN_CALENDAR, 0) == 1;
+            if (weatherEnabled) {
+                mCalendarPref.setSummary(R.string.lockscreen_calendar_enabled);
+            } else {
+                mCalendarPref.setSummary(R.string.lockscreen_calendar_summary);
             }
         }
     }
