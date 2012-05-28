@@ -195,6 +195,7 @@ public class ScreenSecurity extends SettingsPreferenceFragment implements
         // lock instantly on power key press
         mPowerButtonInstantlyLocks = (CheckBoxPreference) root.findPreference(
                 KEY_POWER_INSTANTLY_LOCKS);
+        checkPowerInstantLockDependency();
 
         // don't display visible pattern if biometric and backup is not pattern
         if (resid == R.xml.security_settings_biometric_weak &&
@@ -319,6 +320,18 @@ public class ScreenSecurity extends SettingsPreferenceFragment implements
             }
         }
         mLockAfter.setSummary(getString(R.string.lock_after_timeout_summary, entries[best]));
+    }
+
+    private void checkPowerInstantLockDependency() {
+        if (mPowerButtonInstantlyLocks != null) {
+            long timeout = Settings.Secure.getLong(getContentResolver(),
+                    Settings.Secure.LOCK_SCREEN_LOCK_AFTER_TIMEOUT, 5000);
+            if (timeout == 0) {
+                mPowerButtonInstantlyLocks.setEnabled(false);
+            } else {
+                mPowerButtonInstantlyLocks.setEnabled(true);
+            }
+        }
     }
 
     private void disableUnusableTimeouts(long maxTimeout) {
@@ -448,6 +461,7 @@ public class ScreenSecurity extends SettingsPreferenceFragment implements
                 Log.e("SecuritySettings", "could not persist lockAfter timeout setting", e);
             }
             updateLockAfterPreferenceSummary();
+            checkPowerInstantLockDependency();
         } else if (preference == mSlideLockTimeoutDelay) {
             int slideTimeoutDelay = Integer.valueOf((String) value);
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
