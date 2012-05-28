@@ -1589,6 +1589,41 @@
     <string name="additional_system_update_settings_list_item_title" msgid="214987609894661992">"その他のシステムアップデート"</string>
 
     <!-- CM String entries bellow -->
+    <!-- String for ShortcutPickHelper -->
+    <string name="picker_activities">アクティビティ</string>
+    <string name="select_custom_app_title">カスタムアプリケーションを選択</string>
+    <string name="select_custom_activity_title">カスタムアクティビティを選択</string>
+    <string name="icon_picker_choose_icon_title">アイコンを選択</string>
+    <string name="icon_picker_alarm">アラーム</string>
+    <string name="icon_picker_browser">ブラウザ</string>
+    <string name="icon_picker_calendar">カレンダー</string>
+    <string name="icon_picker_camera">カメラ</string>
+    <string name="icon_picker_email">Eメール</string>
+    <string name="icon_picker_facebook">Facebook</string>
+    <string name="icon_picker_gallery">ギャラリー</string>
+    <string name="icon_picker_googleplus">Googleプラス</string>
+    <string name="icon_picker_googletalk">Googleトーク</string>
+    <string name="icon_picker_maps">地図</string>
+    <string name="icon_picker_movie">動画</string>
+    <string name="icon_picker_music">音楽</string>
+    <string name="icon_picker_nav_normal">ナビ</string>
+    <string name="icon_picker_phone">電話</string>
+    <string name="icon_picker_podcast">Podcast</string>
+    <string name="icon_picker_rss">Rss</string>
+    <string name="icon_picker_sms">メッセージ</string>
+    <string name="icon_picker_twitter">Twitter</string>
+
+    <!-- String for IconPicker -->
+    <string name="icon_picker_title">アイコンソースを選択</string>
+    <string name="icon_picker_system_icons_title">システムアイコン</string>
+    <string name="icon_picker_gallery_title">ギャラリー</string>
+    <string name="icon_picker_pack_title">アイコンパック</string>
+
+    <string name="wifi_adhoc_first_item">アドホックネットワーク</string>
+    <string name="wifi_adhoc_second_item">\u0020(アドホックネットワーク)</string>
+    <string name="vibrator_type_ringer">着信</string>
+    <string name="vibrator_type_notification">通知</string>
+
     <string name="battery_pulse_title">バッテリ低残量で点滅</string>
     <string name="volume_overlay_title">音量パネル</string>
     <string name="dock_usb_audio_enable_title">ドックのUSBオーディオを使用</string>
@@ -1599,6 +1634,10 @@
     <string name="dock_force_undock_summary_no_dock" product="default">端末はドックに接続していません</string>
     <string name="dock_force_undock_summary" product="tablet">タブレットをドックから外す</string>
     <string name="dock_force_undock_summary" product="default">端末をドックから外す</string>
+
+    <string name="usb_mass_storage_title">マスストレージ</string>
+    <string name="usb_mass_storage_summary">USBマスストレージを有効にする</string>
+    <string name="data_usage_menu_linear_chart">リニアチャート</string>
 
     <!-- Backlight #CM -->
     <string name="backlight_title">自動バックライト</string>
@@ -1642,6 +1681,9 @@
 
     <!-- Display settings screen, notification light settings -->
     <string name="notification_light_general_title">一般</string>
+    <string name="notification_light_phonelist_title">電話</string>
+    <string name="notification_light_missed_call_title">不在着信</string>
+    <string name="notification_light_voicemail_title">ボイスメール</string>
     <string name="notification_light_applist_title">アプリケーション</string>
     <string name="notification_light_default_value">デフォルト</string>
     <string name="notification_light_use_custom">カスタム設定を使用</string>
@@ -1697,6 +1739,16 @@
     <string name="combined_bar_title">コンバインドバー</string>
     <string name="combined_bar_auto_hide_title">自動的に隠す</string>
     <string name="combined_bar_auto_hide_summary">フルスクリーンアプリを表示中にコンバインドバーを隠せるようにする</string>
+
+    <!-- Navigation Bar #CM -->
+    <string name="navigation_bar_title">ナビゲーションバー</string>
+
+    <string name="navigation_bar_help_text">1 - 編集するにはロックアイコンをタップします\n\n2 - 機能の割り当てや変更をするボタンをタップします\n\n3 - 並びを変更するには長押しします\n\n4 - 保存するために再びロックアイコンをタップします\n\n5 - システムのデフォルトに戻すにはリセットボタンをタップします\n\n</string>
+    <string name="navigation_bar_tips">&#8226; アクションは一度に一つのボタンにしか割り当てられません\n\n&#8226; ホームボタンは変更できません\n\n&#8226; サイドボタンは並び替えできません</string>
+    <string name="navigation_bar_tips_title">クィックチップス</string>
+    <string name="navigation_bar_reset_message">現在の設定を破棄し、デフォルトに戻しますか?</string>
+    <string name="navigation_bar_save_message">ナビゲーションバーの設定を保存しました</string>
+    <string name="navigation_bar_reset_toast">ナビゲーションバーをデフォルトに戻しました</string>
 
     <!-- Power Widget #CM -->
     <string name="power_widget_title">電源管理ウィジェット</string>
@@ -1775,8 +1827,19 @@
     <string name="status_bar_signal_text_hidden">非表示</string>
 
     <!-- Lock screen #CM -->
-    <string name="lock_screen_title">ロックスクリーン</string>
-    <!-- Lock Screen -->
+    <string name="lock_screen_title">ロック画面</string>
+
+    <!-- Lock Screen Shortcuts -->
+    <string name="lockscreen_target_info">ショートカットを割り当てたいターゲットにスライダーをドラッグ</string>
+    <string name="lockscreen_target_title">ロック画面のショートカット</string>
+    <string name="lockscreen_target_summary">ロック画面にショートカットを追加したり編集する</string>
+    <string name="lockscreen_target_reset">ロック画面のショートカットをデフォルトに戻す</string>
+    <string name="lockscreen_target_save">ロック画面のショートカットを保存しました</string>
+    <string name="lockscreen_target_reset_title">リセット</string>
+    <string name="lockscreen_target_reset_message">全てのロック画面ショートカットを削除してデフォルトに戻しますか?</string>
+    <string name="lockscreen_target_empty">なし</string>
+    <string name="lockscreen_target_edit_title">ショートカットの編集</string>
+    <string name="lockscreen_target_edit_msg">希望するアプリケーションやアクティビティとアイコンを選択して変更します</string>
     
     <!-- Profiles settings #CM -->
     <string name="profiles_settings_title">プロファイル</string>
@@ -1811,9 +1874,13 @@
     <!-- Profile Config screen PreferenceGroup titles -->
     <string name="profile_connectionoverrides_title">接続のオーバーライド</string>
     <string name="profile_volumeoverrides_title">音量のオーバーライド</string>
+    <string name="profile_vibratoroverrides_title">振動のオーバーライド</string>
     <string name="connection_state_disabled">無効</string>
     <string name="connection_state_enabled">有効</string>
     <string name="volume_override_summary">設定は </string>
+    <string name="vibrator_state_disabled">無効</string>
+    <string name="vibrator_state_enabled">有効</string>
+    <string name="vibrator_state_silent">マナーモード時のみ</string>
 
     <!-- Menu item for managing profiles -->
     <string name="profile_profiles_manage">プロファイル</string>
@@ -1844,6 +1911,7 @@
     <string name="profile_new_appgroup">新規アプリグループ</string>
     <string name="profile_delete_appgroup">このグループを削除する</string>
     <string name="profile_appgroup_name_prompt">アプリグループの名前を入力してください</string>
+    <string name="profile_appgroup_name_title">名前</string>
     <string name="profile_add_app">アプリを追加</string>
     <string name="profile_delete_app">アプリを削除</string>
 
@@ -1860,6 +1928,14 @@
     <string name="profile_lockmode_default_summary">システムデフォルトの設定</string>
     <string name="profile_lockmode_insecure_summary">セキュリティなしのロック</string>
     <string name="profile_lockmode_disabled_summary">ロック画面は無効</string>
+    <string name="profile_airplanemode_title">機内モード</string>
+    <string name="profile_airplanemode_default">デフォルト</string>
+    <string name="profile_airplanemode_enabled">有効</string>
+    <string name="profile_airplanemode_disabled">無効</string>
+    <string name="profile_airplanemode_default_summary">システム設定を使用</string>
+    <string name="profile_airplanemode_enabled_summary">機内モードは有効</string>
+    <string name="profile_airplanemode_disabled_summary">機内モードは無効</string>
+
     <string name="profile_disable_screen_lock_summary">このプロファイルを使用している間はロック画面のセキュリティを無効にする</string>
 
     <!-- Connection override toggles (not all are used at this time ) -->
@@ -1892,10 +1968,21 @@
 
     <!-- Delays and timeouts -->
     <string name="delay_and_timeout_title">ロックの遅延</string>
+
     <!-- Slide lock delay -->
     <string name="slide_lock_delay_title">スライドロックの遅延</string>
     <string name="slide_lock_timeout_delay_title">画面タイムアウト時の遅延</string>
     <string name="slide_lock_screenoff_delay_title">画面オフ時の遅延</string>
+    <string name="slide_lock_delay_none">なし</string>
+    <string name="slide_lock_delay_1s">1秒</string>
+    <string name="slide_lock_delay_5s">5秒</string>
+    <string name="slide_lock_delay_10s">10秒</string>
+    <string name="slide_lock_delay_15s">15秒</string>
+    <string name="slide_lock_delay_30s">30秒</string>
+    <string name="slide_lock_delay_1m">1分</string>
+    <string name="slide_lock_delay_5m">5分</string>
+    <string name="slide_lock_delay_10m">10分</string>
+    <string name="slide_lock_delay_30m">30分</string>
 
     <!-- Performance settings #CM -->
     <string name="performance_settings_title">パフォーマンス</string>
@@ -2077,4 +2164,9 @@
     <string name="profile_write_failed">タグに書き込み失敗!</string>
     <string name="profile_selected">選択中プロファイル: %1$s</string>
     <string name="profile_nfc_text">NFCタグにプロファイルを書き込むと、タグにタッチすることでプロファイルを選択できます。タグに2回タッチすれば、以前選択していたプロファイルを選択できます。</string>
+
+    <!-- about page -->
+    <string name="cpu_info">プロセッサ</string>
+    <string name="mem_info">メモリ</string>
+
 </resources>
