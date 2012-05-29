@@ -48,4 +48,10 @@
         android:dependency="enable_weather"
         android:title="@string/weather_show_timestamp_title" />
 
+    <CheckBoxPreference
+        android:key="invert_lowhigh"
+        android:persistent="false"
+        android:dependency="enable_weather"
+        android:title="@string/weather_invert_lowhigh" />
+
 </PreferenceScreen>

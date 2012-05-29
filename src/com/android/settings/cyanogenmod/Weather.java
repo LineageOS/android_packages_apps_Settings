@@ -32,12 +32,14 @@ public class Weather extends SettingsPreferenceFragment implements
     public static final String KEY_SHOW_TIMESTAMP = "show_timestamp";
     public static final String KEY_ENABLE_WEATHER = "enable_weather";
     public static final String KEY_REFRESH_INTERVAL = "refresh_interval";
+    public static final String KEY_INVERT_LOWHIGH = "invert_lowhigh";
 
     private CheckBoxPreference mEnableWeather;
     private CheckBoxPreference mUseCustomLoc;
     private CheckBoxPreference mShowLocation;
     private CheckBoxPreference mShowTimestamp;
     private CheckBoxPreference mUseMetric;
+    private CheckBoxPreference mInvertLowHigh;
     private ListPreference mWeatherSyncInterval;
     private EditTextPreference mCustomWeatherLoc;
     private Context mContext;
@@ -76,6 +78,10 @@ public class Weather extends SettingsPreferenceFragment implements
         mUseMetric = (CheckBoxPreference) findPreference(KEY_USE_METRIC);
         mUseMetric.setChecked(Settings.System.getInt(mResolver,
                 Settings.System.WEATHER_USE_METRIC, 1) == 1);
+
+        mInvertLowHigh = (CheckBoxPreference) findPreference(KEY_INVERT_LOWHIGH);
+        mInvertLowHigh.setChecked(Settings.System.getInt(mResolver,
+                Settings.System.WEATHER_INVERT_LOWHIGH, 0) == 1);
 
         mWeatherSyncInterval = (ListPreference) findPreference(KEY_REFRESH_INTERVAL);
         int weatherInterval = Settings.System.getInt(mResolver,
@@ -129,6 +135,10 @@ public class Weather extends SettingsPreferenceFragment implements
             return true;
         } else if (preference == mShowTimestamp) {
             Settings.System.putInt(mResolver, Settings.System.WEATHER_SHOW_TIMESTAMP,
+                    ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
+            return true;
+        } else if (preference == mInvertLowHigh) {
+            Settings.System.putInt(mResolver, Settings.System.WEATHER_INVERT_LOWHIGH,
                     ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
             return true;
         }
