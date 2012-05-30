@@ -39,6 +39,7 @@ public class SystemSettings extends SettingsPreferenceFragment implements
 
     private static final String KEY_FONT_SIZE = "font_size";
     private static final String KEY_NOTIFICATION_DRAWER = "notification_drawer";
+    private static final String KEY_NOTIFICATION_DRAWER_TABLET = "notification_drawer_tablet";
     private static final String KEY_NAVIGATION_BAR = "navigation_bar";
 
     private ListPreference mFontSizePref;
@@ -55,6 +56,8 @@ public class SystemSettings extends SettingsPreferenceFragment implements
         mFontSizePref.setOnPreferenceChangeListener(this);
         if (Utils.isScreenLarge()) {
             getPreferenceScreen().removePreference(findPreference(KEY_NOTIFICATION_DRAWER));
+        } else {
+            getPreferenceScreen().removePreference(findPreference(KEY_NOTIFICATION_DRAWER_TABLET));
         }
         IWindowManager windowManager = IWindowManager.Stub.asInterface(ServiceManager.getService(Context.WINDOW_SERVICE));
         try {

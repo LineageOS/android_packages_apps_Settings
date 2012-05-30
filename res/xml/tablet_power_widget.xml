@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <CheckBoxPreference
+            android:key="pref_airplane_toggle"
+            android:title="@string/title_toggle_airplane"
+            android:defaultValue="true"/>
+
+        <CheckBoxPreference
+            android:key="pref_rotate_toggle"
+            android:title="@string/title_toggle_autorotate"
+            android:defaultValue="true"/>
+
+        <CheckBoxPreference
+            android:key="pref_bluetooth_toggle"
+            android:title="@string/title_toggle_bluetooth"
+            android:defaultValue="true"/>
+
+        <CheckBoxPreference
+            android:key="pref_gps_toggle"
+            android:title="@string/title_toggle_gps"
+            android:defaultValue="false"/>
+
+        <CheckBoxPreference
+            android:key="pref_wifi_toggle"
+            android:title="@string/title_toggle_wifi"
+            android:defaultValue="true"/>
+
+        <CheckBoxPreference
+            android:key="pref_flashlight_toggle"
+            android:title="@string/title_toggle_flashlight"
+            android:defaultValue="false"/>
+
+        <CheckBoxPreference
+            android:key="pref_mobile_data_toggle"
+            android:title="@string/title_toggle_mobiledata"
+            android:defaultValue="false"/>
+
+        <CheckBoxPreference
+            android:key="pref_network_mode_toggle"
+            android:title="@string/title_toggle_networkmode"
+            android:defaultValue="false"/>
+
+        <CheckBoxPreference
+            android:key="pref_sound_toggle"
+            android:title="@string/title_toggle_sound"
+            android:defaultValue="false"/>
+
+        <PreferenceScreen
+            android:key="widget_order"
+            android:title="@string/title_widget_order"
+            android:summary="@string/summary_widget_order"
+            android:fragment="com.android.settings.cyanogenmod.TabletPowerWidget$PowerWidgetOrder" />
+
+</PreferenceScreen>
