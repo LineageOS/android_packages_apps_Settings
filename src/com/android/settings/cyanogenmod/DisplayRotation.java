@@ -63,6 +63,9 @@ public class DisplayRotation extends SettingsPreferenceFragment implements OnPre
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        boolean hasRotationLock = this.getResources().getBoolean(com.android
+                .internal.R.bool.config_hasRotationLockSwitch);
+
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.display_rotation);
@@ -71,6 +74,10 @@ public class DisplayRotation extends SettingsPreferenceFragment implements OnPre
 
         mAccelerometer = (CheckBoxPreference) findPreference(KEY_ACCELEROMETER);
         mAccelerometer.setPersistent(false);
+
+        if (hasRotationLock) {
+                mAccelerometer.setEnabled(false);
+        }
         mRotation0Pref = (CheckBoxPreference) prefSet.findPreference(ROTATION_0_PREF);
         mRotation90Pref = (CheckBoxPreference) prefSet.findPreference(ROTATION_90_PREF);
         mRotation180Pref = (CheckBoxPreference) prefSet.findPreference(ROTATION_180_PREF);
