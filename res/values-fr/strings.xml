@@ -644,7 +644,7 @@
     <string name="screen_timeout" msgid="4351334843529712571">"Veille"</string>
     <string name="screen_timeout_summary" msgid="327761329263064327">"Après <xliff:g id="TIMEOUT_DESCRIPTION">%1$s</xliff:g> d\'inactivité"</string>
     <string name="wallpaper_settings_title" msgid="5449180116365824625">"Fond d\'écran"</string>
-    <string name="wallpaper_settings_fragment_title" msgid="519078346877860129">"Sélectionner fond d\'écran dans"</string>
+    <string name="wallpaper_settings_fragment_title">"Choisir un fond d\'écran dans"</string>
     <string name="screensaver_settings_title" msgid="3848608373818910549">"Économiseur d\'écran"</string>
     <string name="screensaver_settings_summary_on" msgid="433728808047613634">"Activer à la mise en veille, si l\'appareil est branché"</string>
     <string name="screensaver_settings_summary_off" msgid="7019248565878953105">"Désactivé"</string>
@@ -657,6 +657,43 @@
     <string name="automatic_brightness" msgid="5014143533884135461">"Ajuster automatiquement la luminosité"</string>
     <string name="title_font_size" msgid="4405544325522105222">"Taille de la police"</string>
     <string name="dialog_title_font_size" msgid="2231507851258955038">"Taille de police"</string>
+
+    <!-- Sound settings screen #CM -->
+    <string name="volume_overlay_title">Contrôle du volume</string>
+    <string name="volbtn_music_controls_title">Playlist par boutons volume</string>
+    <string name="volbtn_music_controls_summary">Lorsque l\'écran est éteint, un appui long permet de changer le titre en cours</string>
+    <string name="link_volume_ringtones">Lier le volume des alertes à la sonnerie</string>
+    <string name="link_volume_ringtones_toast">Vérifiez le volume de la sonnerie pour l\'appliquer à celui des alertes.</string>
+    <string name="link_volume_mutes">Silence commun pour alertes et sonnerie</string>
+
+    <!-- Quiet hours #CM -->
+    <string name="quiet_hours_title">Heures silencieuses</string>
+    <string name="quiet_hours_summary">Configure les heures où le téléphone doit être silencieux</string>
+    <string name="quiet_hours_note_title">Note</string>
+    <string name="quiet_hours_note_summary">Les appels entrants se comportent normalement pendant les heures silencieuses</string>
+    <string name="quiet_hours_enabled">Heures silencieuses</string>
+    <string name="quiet_hours_enabled_on">Heures silencieuses activées</string>
+    <string name="quiet_hours_enabled_off">Fonctionnement normal</string>
+    <string name="quiet_hours_start">Début des heures silencieuses</string>
+    <string name="quiet_hours_end">Fin des heures silencieuses</string>
+    <string name="quiet_hours_mute">Désactiver notifications</string>
+    <string name="quiet_hours_mute_on">Silencieux</string>
+    <string name="quiet_hours_mute_off">Fonctionnement normal</string>
+    <string name="quiet_hours_still">Désactiver les vibrations</string>
+    <string name="quiet_hours_still_on">Vibreur désactivé</string>
+    <string name="quiet_hours_still_off">Vibreur actif</string>
+    <string name="quiet_hours_dim">Désactiver les leds</string>
+    <string name="quiet_hours_dim_on">Leds de notification désactivées</string>
+    <string name="quiet_hours_dim_off">Leds de notification actives</string>
+    <string name="quiet_hours_haptic">Désactiver son des touches</string>
+    <string name="quiet_hours_haptic_on">Le son des boutons est désactivé</string>
+    <string name="quiet_hours_haptic_off">Le son des bouttons est actif</string>
+    <string name="quiet_hours_active_from">Actif de</string>
+    <string name="quiet_hours_active_to">jusqu\'à</string>
+
+    <!-- time range preference -->
+    <string name="start_time_title">Début</string>
+    <string name="end_time_title">Fin</string>
 
     <!-- Backlight #CM -->
     <string name="backlight_title">Rétroéclairage automatique</string>
@@ -820,6 +857,37 @@
 
     <!-- Lock screen #CM -->
     <string name="lock_screen_title">Ecran de verrouillage</string>
+
+    <!-- Lock Screen Weather -->
+    <string name="lockscreen_weather_title">Météo</string>
+    <string name="lockscreen_weather_summary">Affiche les informations météo sur l\'écran de verrouillage</string>
+    <string name="lockscreen_weather_enabled">Activée</string>
+    <string name="weather_enable">Afficher la météo</string>
+    <string name="weather_source">Météo Yahoo!</string>
+    <string name="weather_use_custom_location">Lieu personnalisé</string>
+    <string name="weather_geolocated">Géolocalisation par le réseau</string>
+    <string name="weather_custom_location_dialog_title">Modifier le lieu</string>
+    <string name="weather_custom_location_dialog_message">Attention: Un lieu non reconnu arrête les mises à jour.</string>
+    <string name="weather_custom_location_hint">Ville, Pays</string>
+    <string name="weather_custom_location_title">Lieu</string>
+    <string name="weather_show_location_title">Afficher le lieu</string>
+    <string name="weather_show_timestamp_title">Afficher l\'heure</string>
+    <string name="weather_refresh_interval">Intervalle de mise à jour</string>
+    <string name="weather_update">Mettre à jour</string>
+    <string name="weather_use_metric">Système métrique</string>
+    <string name="weather_refreshing">Mise à jour de la météo</string>
+    <string name="weather_retrieve_location_dialog_title">Impossible de déterminer le lieu!</string>
+    <string name="weather_retrieve_location_dialog_message">La localisation par le réseau est désactivée.\n\nVeuillez sélectionner manuellement le lieu</string>
+    <string name="weather_retrieve_location_dialog_enable_button">Activer</string>
+
+    <!-- Lock screen Weather - Update frequency -->
+    <string name="weather_refresh_manual">Manuellement</string>
+    <string name="weather_refresh_30min">30 minutes</string>
+    <string name="weather_refresh_60min">60 minutes</string>
+    <string name="weather_refresh_2hrs">2 heures</string>
+    <string name="weather_refresh_4hrs">4 heures</string>
+    <string name="weather_refresh_6hrs">6 heures</string>
+    <string name="weather_refresh_8hrs">8 heures</string>
 
     <!-- Lock Screen Shortcuts -->
     <string name="lockscreen_target_info">Glisser pour assigner les raccourcis</string>
@@ -1042,7 +1110,8 @@
     <!-- About phone -->
     <string name="mod_version">Version CyanogenMod</string>
     <string name="mod_version_default">Inconnue</string>
-    <string name="build_date">Date du système</string>
+    <string name="build_date">Date de compilation</string>
+    <string name="mem_info">Mémoire</string>
 
     <!-- Donate #CM -->
     <!-- About device screen, list item title. Takes the user to the screen about how to donate to the CyanogenMod Project. -->
@@ -1891,6 +1960,7 @@
     <string name="data_usage_menu_split_4g" msgid="5322857680792601899">"Utilisation 4G séparée"</string>
     <string name="data_usage_menu_show_wifi" msgid="8266875319417201085">"Afficher conso en Wi-Fi"</string>
     <string name="data_usage_menu_show_ethernet" msgid="5181361208532314097">"Afficher l\'utilisation Ethernet"</string>
+    <string name="data_usage_menu_linear_chart">Graphique linéaire</string>
     <string name="data_usage_change_cycle" msgid="7776556448920114866">"Changer le cycle..."</string>
     <string name="data_usage_pick_cycle_day" msgid="4470796861757050966">"Jour du mois de réinitialisation du cycle utilisation données :"</string>
     <string name="data_usage_empty" msgid="8621855507876539282">"Aucune donnée utilisée par les applications pendant cette période."</string>
