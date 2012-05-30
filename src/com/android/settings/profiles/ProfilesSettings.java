@@ -234,7 +234,7 @@ public class ProfilesSettings extends Fragment {
     private void resetAll() {
         AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
         alert.setTitle(R.string.profile_reset_title);
-        alert.setIcon(android.R.drawable.ic_dialog_alert);
+        alert.setIconAttribute(android.R.attr.alertDialogIcon);
         alert.setMessage(R.string.profile_reset_message);
         alert.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {

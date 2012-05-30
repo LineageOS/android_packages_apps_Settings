@@ -365,7 +365,7 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
         if ((v != null) && ((tView = (TextView) v.findViewById(android.R.id.summary)) != null)) {
             builder.setTitle(R.string.dialog_delete_title);
             builder.setMessage(R.string.dialog_delete_message);
-            builder.setIcon(android.R.drawable.ic_dialog_alert);
+            builder.setIconAttribute(android.R.attr.alertDialogIcon);
             builder.setPositiveButton(android.R.string.ok,
                     new DialogInterface.OnClickListener() {
                         @Override

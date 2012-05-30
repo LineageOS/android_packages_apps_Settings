@@ -272,7 +272,7 @@ public class AppGroupConfig extends SettingsPreferenceFragment
             case DELETE_CONFIRM:
                 builder.setMessage(R.string.profile_app_delete_confirm);
                 builder.setTitle(R.string.profile_menu_delete);
-                builder.setIcon(android.R.drawable.ic_dialog_alert);
+                builder.setIconAttribute(android.R.attr.alertDialogIcon);
                 builder.setPositiveButton(android.R.string.yes,
                         new DialogInterface.OnClickListener() {
                             @Override
@@ -291,7 +291,7 @@ public class AppGroupConfig extends SettingsPreferenceFragment
             case DELETE_GROUP_CONFIRM:
                 builder.setMessage(R.string.profile_delete_appgroup);
                 builder.setTitle(R.string.profile_menu_delete);
-                builder.setIcon(android.R.drawable.ic_dialog_alert);
+                builder.setIconAttribute(android.R.attr.alertDialogIcon);
                 builder.setPositiveButton(android.R.string.yes,
                         new DialogInterface.OnClickListener() {
                             @Override
