@@ -55,6 +55,7 @@
     <uses-permission android:name="android.permission.MANAGE_USB" />
     <uses-permission android:name="android.permission.SET_POINTER_SPEED" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
 
     <application android:label="@string/settings_label"
             android:icon="@mipmap/ic_launcher_settings"
@@ -1393,6 +1394,8 @@
         <activity android:name=".cyanogenmod.LockscreenInterface" />
 
         <activity android:name=".cyanogenmod.Weather" />
+
+        <activity android:name=".cyanogenmod.Calendar" />
 
         <activity android:name=".profiles.NFCProfile"
                 android:theme="@android:style/Theme.NoDisplay">
