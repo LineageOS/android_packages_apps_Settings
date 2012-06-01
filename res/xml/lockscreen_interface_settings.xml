@@ -23,6 +23,14 @@
          android:title="@string/screen_security_category"
          android:summary="@string/screen_security_summary" />
 
+     <ListPreference
+        android:key="lockscreen_background"
+        android:persistent="false"
+        android:dialogTitle="@string/lockscreen_custom_background_title"
+        android:title="@string/lockscreen_custom_background_title"
+        android:entries="@array/lockscreen_background_entries"
+        android:entryValues="@array/lockscreen_background_values"/>
+
      <PreferenceScreen
          android:fragment="com.android.settings.OwnerInfoSettings"
          android:key="owner_info_settings"
