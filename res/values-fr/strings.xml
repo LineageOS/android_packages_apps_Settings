@@ -744,6 +744,8 @@
     <string name="display_rotation_90_title">90 degrés</string>
     <string name="display_rotation_180_title">180 degrés</string>
     <string name="display_rotation_270_title">270 degrés</string>
+    <string name="display_category_animation_options_title">Animation</string>
+    <string name="display_electron_beam_animation_off_title">A l\'extinction de l\'écran</string>
     <string name="display_category_wakeup_options_title">Sortie de veille</string>
     <string name="pref_volume_wake_title">Eveil par boutons Volume</string>
     <string name="pref_volume_wake_summary">Permet de rallumer l\'appareil à l\'aide des boutons de volume.</string>
@@ -780,6 +782,15 @@
     <string name="combined_bar_title">Barre combinée</string>
     <string name="combined_bar_auto_hide_title">Cacher automatiquement</string>
     <string name="combined_bar_auto_hide_summary">Permet de cacher la barre combinée (boutons virtuels) pour les applications plein écran</string>
+
+    <!-- Navigation Bar #CM -->
+    <string name="navigation_bar_title">Barre de navigation</string>
+    <string name="navigation_bar_help_text">1 - Pour commencer l\'édition, appuyer sur le cadenas\n\n2 - Appuyer sur un bouton pour assigner ou changer une fonctionnalité\n\n3 - Pression longue pour modifier l\'ordre\n\n4 - Pour enregistrer, appuyer à nouveau sur le cadenas\n\n5 - Pour remettre à zéro, appuyer sur le bouton reset\n\n</string>
+    <string name="navigation_bar_tips">&#8226; Les actions ne peuvent être assignées qu\'une seule fois\n\n&#8226; Le bouton d\'accueil ne peut être réassigné\n\n&#8226; Les boutons sur le bord ne peuvent être déplacés</string>
+    <string name="navigation_bar_tips_title">Astuces rapides</string>
+    <string name="navigation_bar_reset_message">Supprimer les paramètres actuels et remettre à zéro ?</string>
+    <string name="navigation_bar_save_message">Paramètres de la barre de navigation enregistrés</string>
+    <string name="navigation_bar_reset_toast">Barre de navigation remise à zéro</string>
 
     <!-- Power Widget #CM -->
     <string name="power_widget_title">Gestion de l\'alimentation</string>
@@ -888,6 +899,41 @@
     <string name="weather_refresh_4hrs">4 heures</string>
     <string name="weather_refresh_6hrs">6 heures</string>
     <string name="weather_refresh_8hrs">8 heures</string>
+
+    <!-- Lock screen Calendar -->
+    <string name="lockscreen_calendar_title">Agenda</string>
+    <string name="lockscreen_calendar_summary">Affiche le prochain événement de l\'agenda sur l\'écran de verrouillage</string>
+    <string name="lockscreen_calendar_enabled">Activé</string>
+    <string name="calendar_title">Afficher le prochain événement</string>
+    <string name="calendars_title">Synchronisation agenda</string>
+    <string name="calendars_summary">Utiliser les événements de ces agendas</string>
+    <string name="calendar_reminders_only_title">Rappels seulement</string>
+    <string name="calendar_reminders_only_summary">N\'afficher que les événements avec rappel</string>
+    <string name="calendar_lookahead_title">Plage de recherche</string>
+    <string name="calendar_show_location_title">Lieu de l\'événement</string>
+    <string name="calendar_show_description_title">Description de l\'événement</string>
+
+    <!-- Lock screen calendar - lookahead -->
+    <string name="calendar_lookahead_3hrs">3 heures</string>
+    <string name="calendar_lookahead_6hrs">6 heures</string>
+    <string name="calendar_lookahead_12hrs">12 heures</string>
+    <string name="calendar_lookahead_1day">1 jour</string>
+    <string name="calendar_lookahead_3days">3 jours</string>
+    <string name="calendar_lookahead_1wk">1 semaine</string>
+
+    <!-- Lock screen calendar - event metadata -->
+    <string name="calendar_metadata_none">Ne pas afficher</string>
+    <string name="calendar_metadata_first_line">Afficher la première ligne</string>
+    <string name="calendar_metadata_all">Afficher tout</string>
+
+    <!-- Lock screen background -->
+    <string name="lockscreen_custom_background_title">Fond d\'écran</string>
+    <string name="lockscreen_custom_background_dialog_title">Choisir une couleur</string>
+    <string name="lockscreen_background_result_successful">Fond d\'écran modifié</string>
+    <string name="lockscreen_background_result_not_successful">Fond d\'écran non modifié</string>
+    <string name="lockscreen_background_color_fill">Couleur</string>
+    <string name="lockscreen_background_custom_image">Image ou photo.</string>
+    <string name="lockscreen_background_default_wallpaper">Fond d\'écran par défaut</string>
 
     <!-- Lock Screen Shortcuts -->
     <string name="lockscreen_target_info">Glisser pour assigner les raccourcis</string>
@@ -1143,6 +1189,21 @@
     <string name="preview_version_title">Version</string>
     <string name="preview_country_title">Pays</string>
     <string name="preview_carrier_title">Opérateur</string>
+
+    <!-- Dock settings screen # -->
+    <string name="dock_usb_audio_enable_title">Audio sur station d\'accueil</string>
+    <!-- Enable Dock USB Audio, setting option summary text when check box is selected -->
+    <string name="dock_usb_audio_enable_summary_on">Utiliser la sortie audio de la station d\'accueil</string>
+    <!-- Disable Dock USB Audio, setting option summary text when check box is clear -->
+    <string name="dock_usb_audio_enable_summary_off">Ne pas utiliser la sortie audio de la station d\'accueil</string>
+    <string name="dock_force_undock_title">Déconnecter l\'appareil</string>
+    <string name="dock_force_undock_summary_no_dock" product="tablet">La tablette n\'est pas insérée dans la station d\'accueil</string>
+    <string name="dock_force_undock_summary_no_dock" product="default">Le téléphone n\'est pas inséré dans la station d\'accueil</string>
+    <string name="dock_force_undock_summary" product="tablet">Déconnecter la tablette</string>
+    <string name="dock_force_undock_summary" product="default">Déconnecter le téléphone</string>
+
+    <string name="safe_headset_restore_title">Sécurité volume écouteurs</string>
+    <string name="safe_headset_restore_summary">Prévient d\'un volume trop élevé au branchement des écouteurs</string>
 
 <!-- End of CyanogenMod specific settings -->
 
