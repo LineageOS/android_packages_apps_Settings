@@ -81,6 +81,13 @@
             android:title="@string/vibrate_on_ring_title"
             android:defaultValue="false" />
 
+    <com.android.settings.IncreasingRingPreference
+            android:key="increasing_ring"
+            android:title="@string/increasing_ring_title"
+            android:dialogTitle="@string/increasing_ring_title"
+            android:persistent="false"
+            android:streamType="ring" />
+
     <PreferenceCategory
             android:title="@string/sound_category_feedback_title"/>
 
