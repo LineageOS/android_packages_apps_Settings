@@ -38,7 +38,9 @@ public class RingerVolumePreference extends VolumePreference implements
         CheckBox.OnCheckedChangeListener {
     private static final String TAG = "RingerVolumePreference";
 
+    private boolean mOrigNotificationsUseRingVolume;
     private CheckBox mNotificationsUseRingVolumeCheckbox;
+
     private SeekBarVolumizer [] mSeekBarVolumizer;
     private static final int[] SEEKBAR_ID = new int[] {
         R.id.notification_volume_seekbar,
@@ -79,9 +81,10 @@ public class RingerVolumePreference extends VolumePreference implements
         mNotificationsUseRingVolumeCheckbox =
                 (CheckBox) view.findViewById(R.id.same_notification_volume);
         mNotificationsUseRingVolumeCheckbox.setOnCheckedChangeListener(this);
-        mNotificationsUseRingVolumeCheckbox.setChecked(Settings.System.getInt(
+        mOrigNotificationsUseRingVolume = Settings.System.getInt(
                 getContext().getContentResolver(),
-                Settings.System.NOTIFICATIONS_USE_RING_VOLUME, 1) == 1);
+                Settings.System.NOTIFICATIONS_USE_RING_VOLUME, 1) == 1;
+        mNotificationsUseRingVolumeCheckbox.setChecked(mOrigNotificationsUseRingVolume);
         setNotificationVolumeVisibility(!mNotificationsUseRingVolumeCheckbox.isChecked());
     }
 
@@ -93,6 +96,11 @@ public class RingerVolumePreference extends VolumePreference implements
             for (SeekBarVolumizer vol : mSeekBarVolumizer) {
                 if (vol != null) vol.revertVolume();
             }
+
+            boolean checked = mNotificationsUseRingVolumeCheckbox.isChecked();
+            if (mOrigNotificationsUseRingVolume != checked) {
+                updateNotificationsUseRingVolumeSetting(mOrigNotificationsUseRingVolume);
+            }
         }        
         cleanup();
     }
@@ -102,21 +110,10 @@ public class RingerVolumePreference extends VolumePreference implements
         super.onActivityStop();
         cleanup();
     }
-    
+
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         setNotificationVolumeVisibility(!isChecked);
-        
-        Settings.System.putInt(getContext().getContentResolver(),
-                Settings.System.NOTIFICATIONS_USE_RING_VOLUME, isChecked ? 1 : 0);
-        
-        if (isChecked) {
-            // The user wants the notification to be same as ring, so do a
-            // one-time sync right now
-            AudioManager audioManager = (AudioManager) getContext()
-                    .getSystemService(Context.AUDIO_SERVICE);
-            audioManager.setStreamVolume(AudioManager.STREAM_NOTIFICATION,
-                    audioManager.getStreamVolume(AudioManager.STREAM_RING), 0);
-        }
+        updateNotificationsUseRingVolumeSetting(isChecked);
     }
 
     @Override
@@ -124,6 +121,19 @@ public class RingerVolumePreference extends VolumePreference implements
         super.onSampleStarting(volumizer);
         for (SeekBarVolumizer vol : mSeekBarVolumizer) {
             if (vol != null && vol != volumizer) vol.stopSample();
+        }
+    }
+
+    private void updateNotificationsUseRingVolumeSetting(boolean active) {
+        Settings.System.putInt(getContext().getContentResolver(),
+                Settings.System.NOTIFICATIONS_USE_RING_VOLUME, active ? 1 : 0);
+        if (active) {
+            // The user wants the notification to be same as ring, so do a
+            // one-time sync right now
+            AudioManager audioManager = (AudioManager)
+                    getContext().getSystemService(Context.AUDIO_SERVICE);
+            audioManager.setStreamVolume(AudioManager.STREAM_NOTIFICATION,
+                    audioManager.getStreamVolume(AudioManager.STREAM_RING), 0);
         }
     }
 
@@ -165,6 +175,14 @@ public class RingerVolumePreference extends VolumePreference implements
                 vol.onSaveInstanceState(volumeStore[i]);
             }
         }
+
+        if (mNotificationsUseRingVolumeCheckbox != null) {
+            myState.mUseRingVolumeForNotifications =
+                    mNotificationsUseRingVolumeCheckbox.isChecked();
+            myState.mOrigUseRingVolumeForNotifications =
+                    mOrigNotificationsUseRingVolume;
+        }
+
         return myState;
     }
 
@@ -185,10 +203,17 @@ public class RingerVolumePreference extends VolumePreference implements
                 vol.onRestoreInstanceState(volumeStore[i]);
             }
         }
+
+        if (mNotificationsUseRingVolumeCheckbox != null) {
+            mNotificationsUseRingVolumeCheckbox.setChecked(myState.mUseRingVolumeForNotifications);
+            mOrigNotificationsUseRingVolume = myState.mOrigUseRingVolumeForNotifications;
+        }
     }
 
     private static class SavedState extends BaseSavedState {
         VolumeStore [] mVolumeStore;
+        boolean mUseRingVolumeForNotifications;
+        boolean mOrigUseRingVolumeForNotifications;
 
         public SavedState(Parcel source) {
             super(source);
@@ -198,6 +223,8 @@ public class RingerVolumePreference extends VolumePreference implements
                 mVolumeStore[i].volume = source.readInt();
                 mVolumeStore[i].originalVolume = source.readInt();
             }
+            mUseRingVolumeForNotifications = source.readInt() != 0;
+            mOrigUseRingVolumeForNotifications = source.readInt() != 0;
         }
 
         @Override
@@ -207,6 +234,8 @@ public class RingerVolumePreference extends VolumePreference implements
                 dest.writeInt(mVolumeStore[i].volume);
                 dest.writeInt(mVolumeStore[i].originalVolume);
             }
+            dest.writeInt(mUseRingVolumeForNotifications ? 1 : 0);
+            dest.writeInt(mOrigUseRingVolumeForNotifications ? 1 : 0);
         }
 
         VolumeStore[] getVolumeStore(int count) {
