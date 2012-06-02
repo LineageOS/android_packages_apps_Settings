@@ -283,6 +283,8 @@
     <string name="quiet_hours_active_to">"alle"</string>
     <string name="start_time_title">"Inizio"</string>
     <string name="end_time_title">"Fine"</string>
+    <string name="safe_headset_restore_title">Volume di sicurezza cuffie</string>
+    <string name="safe_headset_restore_summary">Evita livelli di volume troppo alti appena si collegano le cuffie</string>
     <string name="display_settings" msgid="7965901687241669598">"Display"</string>
     <string name="accelerometer_title" msgid="7854608399547349157">"Rotazione automatica"</string>
     <string name="accelerometer_summary_on" product="tablet" msgid="429982132339828942">"Cambia automaticamente l\'orientamento quando il tablet viene ruotato"</string>
@@ -450,6 +452,7 @@
     <string name="status_bar_show_clock_summary">"Mostra l\'orologio nella barra di stato"</string>
     <string name="status_bar_am_pm_title">"Indicatore AM/PM"</string>
     <string name="status_bar_am_pm_summary">"Stile di visualizzazione dell\'indicatore AM/PM al fianco dell\'orologio"</string>
+    <string name="status_bar_am_pm_info">Formato 24 ore abilitato</string>
     <string name="status_bar_battery_title">"Stile indicatore batteria"</string>
     <string name="status_bar_battery_summary">"Stile di visualizzazione dell\'indicatore della batteria"</string>
     <string name="status_bar_toggle_brightness">"Controllo luminosità"</string>
@@ -463,14 +466,62 @@
     <string name="lock_screen_title">"Schermata di sblocco"</string>
     <string name="lockscreen_target_info">Trascina il cursore e imposta le scorciatoie</string>
     <string name="lockscreen_target_title">Scorciatoie di sblocco</string>
-    <string name="lockscreen_target_summary">Aggiungi o personalizza scorciatoie di sblocco schermo</string>
+    <string name="lockscreen_target_summary">Visualizza o modifica scorciatoie di sblocco schermo</string>
     <string name="lockscreen_target_reset">Scorciatoie di sblocco ripristinate</string>
     <string name="lockscreen_target_save">Scorciatoie di sblocco salvate</string>
     <string name="lockscreen_target_reset_title">Ripristino</string>
     <string name="lockscreen_target_reset_message">Eliminare tutte le funzioni rapide e ripristinare quelle di default?</string>
     <string name="lockscreen_target_empty">Vuoto</string>
-    <string name="lockscreen_target_edit_title">Modifica scorciatoia</string>
-    <string name="lockscreen_target_edit_msg">Seleziona o modifica l\'applicazione desiderata o l\'activity e l\'icona</string>
+    <string name="lockscreen_target_edit_title">Modifica scorciatoia e icona</string>
+    <string name="lockscreen_target_edit_msg">Seleziona o modifica l\'applicazione desiderata o l\'activity e l\'icona associata</string>
+    <string name="lockscreen_weather_title">Meteo</string>
+    <string name="lockscreen_weather_summary">Visualizza informazioni meteo nella schermata di blocco</string>
+    <string name="lockscreen_weather_enabled">Abilitato</string>
+    <string name="weather_enable">Visualizza meteo</string>
+    <string name="weather_source">Yahoo! Weather</string>
+    <string name="weather_use_custom_location">Usa posizione personalizzata</string>
+    <string name="weather_geolocated">Geolocalizzazione usando la rete cellulare</string>
+    <string name="weather_custom_location_dialog_title">Inserisci posizione</string>
+    <string name="weather_custom_location_dialog_message">Attenzione: inserire posizione non valida fermerà gli aggiornamenti.</string>
+    <string name="weather_custom_location_hint">Città, Stato</string>
+    <string name="weather_custom_location_title">Posizione</string>
+    <string name="weather_show_location_title">Visualizza posizione</string>
+    <string name="weather_show_timestamp_title">Visualizza timestamp</string>
+    <string name="weather_refresh_interval">Intervallo di aggiornamento</string>
+    <string name="weather_update">Aggiorna</string>
+    <string name="weather_use_metric">Usa sistema metrico</string>
+    <string name="weather_refreshing">Aggiornamento meteo</string>
+    <string name="weather_retrieve_location_dialog_title">Impossibile recuperare posizione!</string>
+    <string name="weather_retrieve_location_dialog_message">Geolocalizzazione su rete disabilitata.\n\nImposta una posizione personalizzata o abilita la localizzazione su rete</string>
+    <string name="weather_retrieve_location_dialog_enable_button">Abilita</string>
+    <string name="weather_invert_lowhigh">Inverti temperature Min/Max</string>
+    <string name="weather_refresh_manual">Manuale</string>
+    <string name="weather_refresh_30min">30 minuti</string>
+    <string name="weather_refresh_60min">60 minuti</string>
+    <string name="weather_refresh_2hrs">2 ore</string>
+    <string name="weather_refresh_4hrs">4 ore</string>
+    <string name="weather_refresh_6hrs">6 ore</string>
+    <string name="weather_refresh_8hrs">8 ore</string>
+    <string name="lockscreen_calendar_title">Calendario</string>
+    <string name="lockscreen_calendar_summary">Visualizza il prossimo evento del calendario nella schermata di blocco</string>
+    <string name="lockscreen_calendar_enabled">Abilitato</string>
+    <string name="calendar_title">Visualizza prossimo evento</string>
+    <string name="calendars_title">Eventi calendari</string>
+    <string name="calendars_summary">Trova eventi da questi calendari</string>
+    <string name="calendar_reminders_only_title">Solo promemoria</string>
+    <string name="calendar_reminders_only_summary">Visualizza solo eventi con promemoria</string>
+    <string name="calendar_lookahead_title">Prossimi eventi</string>
+    <string name="calendar_show_location_title">Posizione evento</string>
+    <string name="calendar_show_description_title">Descrizione evento</string>
+    <string name="calendar_lookahead_3hrs">3 ore</string>
+    <string name="calendar_lookahead_6hrs">6 ore</string>
+    <string name="calendar_lookahead_12hrs">12 ore</string>
+    <string name="calendar_lookahead_1day">1 giorno</string>
+    <string name="calendar_lookahead_3days">3 giorni</string>
+    <string name="calendar_lookahead_1wk">1 settimana</string>
+    <string name="calendar_metadata_none">Non visualizzare</string>
+    <string name="calendar_metadata_first_line">Visualizza prima riga</string>
+    <string name="calendar_metadata_all">Visualizza tutti</string>
     <string name="wallpaper_settings_title" msgid="5449180116365824625">"Sfondo"</string>
     <string name="wallpaper_settings_fragment_title" msgid="519078346877860129">"Scegli sfondo da"</string>
     <string name="header_category_personal" msgid="6225932173498802187">"PERSONALE"</string>
@@ -628,7 +679,7 @@
     <string name="unlock_backup_info_summary" msgid="108524727803788172">"Quando Sblocco col sorriso non funziona, come vuoi sbloccare il dispositivo?"</string>
     <string name="unlock_set_unlock_off_title" msgid="7117155352183088342">"Nessuno"</string>
     <string name="unlock_set_unlock_off_summary" msgid="94361581669110415"></string>
-    <string name="unlock_set_unlock_none_title" msgid="2871898266296656162">"Fai scorrere"</string>
+    <string name="unlock_set_unlock_none_title" msgid="2871898266296656162">"Scorrimento"</string>
     <string name="unlock_set_unlock_none_summary" msgid="8914673583104628191">"Nessuna protezione"</string>
     <string name="unlock_set_unlock_biometric_weak_title" msgid="2227215291604628670">"Sblocco col sorriso"</string>
     <string name="unlock_set_unlock_biometric_weak_summary" msgid="180083326982058964">"Protezione bassa, sperimentale"</string>
@@ -784,13 +835,12 @@
     <string name="processor_summary">"Seleziona il governor e la velocità della CPU"</string>
     <string name="cpu_cur_freq_title">"Frequenza CPU attuale"</string>
     <string name="cpu_governors_title">"Governor CPU"</string>
-    <string name="cpu_governors_summary">%S</string>
     <string name="cpu_min_freq_title">"Frequenza minima CPU"</string>
-    <string name="cpu_min_freq_summary">%s</string>
     <string name="cpu_max_freq_title">"Frequenza massima CPU"</string>
-    <string name="cpu_max_freq_summary">%s</string>
     <string name="cpu_set_on_boot">"Imposta all\'avvio"</string>
     <string name="cpu_set_on_boot_summary">"Reimposta i parametri selezionati ad ogni riavvio"</string>
+    <string name="pref_disable_bootanimation_title">Disabilita bootanimation</string>
+    <string name="pref_disable_bootanimation_summary">Non visualizza la bootanimation per un avvio più rapido</string>
     <string name="memory_management_title">"Gestione memoria"</string>
     <string name="memory_management_summary">"Personalizza l\'uso della memoria per modificare le prestazioni del sistema"</string>
     <string name="pref_zram_title">"zRam"</string>
@@ -804,9 +854,10 @@
     <string name="pref_use_16bpp_alpha_title">"Trasparenze a 16bit"</string>
     <string name="pref_use_16bpp_alpha_summary">"Aumenta le prestazioni ma abbassa la qualità della grafica e potrebbe causare artefatti visivi (Richiede il riavvio)</string>
     <string name="device_status_activity_title" msgid="1411201799384697904">"Stato"</string>
-    <string name="device_status" msgid="607405385799807324">"Stato"</string>
     <string name="device_status_summary" product="tablet" msgid="3292717754497039686">"Stato delle batteria, della rete e altre informazioni"</string>
     <string name="device_status_summary" product="default" msgid="2599162787451519618">"Numero di telefono, segnale ecc."</string>
+    <string name="device_status" msgid="607405385799807324">"Stato"</string>
+    <string name="status_imei">IMEI</string>
     <string name="status_number" product="tablet" msgid="1138837891091222272">"Numero di telefono"</string>
     <string name="status_number" product="default" msgid="5123197324870153205">"Il mio numero di telefono"</string>
     <string name="status_min_number" msgid="3519504522179420597">"MIN"</string>
@@ -836,7 +887,6 @@
     <string name="anonymous_statistics_warning">"Consentire di inviare statistiche anonime permetterà l\'invio di dati non personali agli sviluppatori di Cyanogenmod per contare il numero di installazioni uniche sui diversi terminali. Le informazioni inviate includono un identificativo univoco che non compromette la tua privacy o i tuoi dati personali. I dati sono inviati ad ogni avvio.\n\nPer un esempio dei dati inviati premere su Anteprima dati."</string>
     <string name="enable_reporting_title">"Attiva invio"</string>
     <string name="preview_data_title">"Anteprima dati"</string>
-    <string name="preview_data_summary">%s</string>
     <string name="view_stats_title">"Guarda statistiche"</string>
     <string name="anonymous_learn_more">"Maggiori informazioni"</string>
     <string name="anonymous_notification_desc">"Attiva o disattiva le statistiche CyanogenMod"</string>
@@ -1042,8 +1092,9 @@
     <string name="wifi_p2p_menu_search" msgid="7189970585393813135">"Cerca"</string>
     <string name="wifi_p2p_menu_create_group" msgid="7595229161883902082">"Crea gruppo"</string>
     <string name="wifi_p2p_menu_remove_group" msgid="4844634506540667517">"Rimuovi gruppo"</string>
-    <string name="wifi_p2p_menu_advanced" msgid="2578792521809265949">"Avanzate"</string>
     <string name="wifi_p2p_available_devices" msgid="5943352520059654483">"Dispositivi disponibili"</string>
+    <string name="wifi_p2p_on_summary">Abilita Wi-Fi Direct</string>
+    <string name="wifi_p2p_settings">Opzioni Wi-Fi Direct</string>
     <string name="radio_info_gprs_service_label" msgid="2331818110375395364">"Servizio GPRS:"</string>
     <string name="radio_info_roaming_label" msgid="6141505430275138647">"Roaming:"</string>
     <string name="radio_info_imei_label" msgid="1220524224732944192">"IMEI:"</string>
@@ -1100,7 +1151,6 @@
     <string name="next_label" msgid="4693520878012668114">"Avanti"</string>
     <string name="language_picker_title" msgid="5349877711342869319">"Lingua"</string>
     <string name="activity_picker_label" msgid="6295660302548177109">"Scegli attività"</string>
-    <string name="debug_intent_sender_label">Debug intent sender</string>
     <string name="device_info_label" msgid="6551553813651711205">"Info dispositivo"</string>
     <string name="battery_info_label" msgid="4132685016148679403">"Info batteria"</string>
     <string name="display_label" msgid="8074070940506840792">"Schermo"</string>
@@ -1367,6 +1417,7 @@
     <string name="lockpattern_settings_help_how_to_record" msgid="2614673439060830433">"Procedura per l\'impostazione di una sequenza di sblocco"</string>
     <string name="lockpattern_too_many_failed_confirmation_attempts_header" msgid="819903817323783498">"Troppi tentativi errati."</string>
     <string name="lockpattern_too_many_failed_confirmation_attempts_footer" msgid="6759029360597122873">"Riprova fra <xliff:g id="NUMBER">%d</xliff:g> secondi."</string>
+    <string name="lockpattern_settings_enable_lock_before_unlock">Vedi widget senza sbloccare</string>
     <string name="skip_button_label" msgid="8680422740354436943">"Annulla"</string>
     <string name="next_button_label" msgid="8890792540116568321">"Avanti"</string>
     <string name="lock_title" product="tablet" msgid="2909697418179419990">"Protezione del tablet"</string>
@@ -1642,7 +1693,6 @@
     <string name="awake" msgid="387122265874485088">"Tempo di attività dispositivo"</string>
     <string name="wifi_on_time" msgid="6310209835617490616">"Tempo accensione Wi-Fi"</string>
     <string name="bluetooth_on_time" msgid="6157799524996162271">"Tempo accensione Wi-Fi"</string>
-    <string name="usage_name_percent" msgid="7976919382448235858">"<xliff:g id="NAME">%1$s</xliff:g> -  <xliff:g id="NUMBER">%2$s</xliff:g><xliff:g id="PERCENT">%%</xliff:g>"</string>
     <string name="history_details_title" msgid="3608240585315506067">"Dettagli cronologia"</string>
     <string name="details_title" msgid="3792801565213935385">"Dettagli di utilizzo"</string>
     <string name="details_subtitle" msgid="32593908269911734">"Dettagli di utilizzo"</string>
@@ -2005,7 +2055,6 @@
     <string name="confirm_new_backup_pw_prompt" msgid="3238728882512787864">"Digita nuovamente  la nuova password di backup completo qui"</string>
     <string name="backup_pw_set_button_text" msgid="2387480910044648795">"Imposta password di backup"</string>
     <string name="backup_pw_cancel_button_text" msgid="8845630125391744615">"Annulla"</string>
-    <string name="percentage" msgid="5866131581207788624">"<xliff:g id="NUMBER">%d</xliff:g>%%"</string>
     <string name="additional_system_update_settings_list_item_title" msgid="214987609894661992">"Aggiornamenti di sistema aggiuntivi"</string>
     <string name="display_category_wakeup_options_title">"Opzioni attivazione"</string>
     <string name="pref_volume_wake_title">"Tasti volume"</string>
@@ -2016,5 +2065,4 @@
     <string name="profile_write_failed">"Scrittura etichetta fallita!"</string>
     <string name="profile_selected">"Profilo selezionato: %1$s"</string>
     <string name="profile_nfc_text">"Scrivere un profilo per un\'etichetta NFC permette di toccare l\'etichetta per selezionare quel profilo. Toccandola una seconda volta verrà selezionato il profilo precedente."</string>
-
 </resources>
