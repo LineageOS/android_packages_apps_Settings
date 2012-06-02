@@ -938,6 +938,9 @@
     <string name="lockpattern_settings_help_how_to_record" msgid="2614673439060830433">"Zeichnen eines Entsperrungsmusters"</string>
     <string name="lockpattern_too_many_failed_confirmation_attempts_header" msgid="819903817323783498">"Zu viele fehlgeschlagene Versuche!"</string>
     <string name="lockpattern_too_many_failed_confirmation_attempts_footer" msgid="6759029360597122873">"In <xliff:g id="NUMBER">%d</xliff:g> Sekunden erneut versuchen."</string>
+    <!-- Security & location settings screen, setting check box title. This controls whether the dev
+ice shows the slider widgets before the unlock option [CHAR LIMIT=28]-->
+    <string name="lockpattern_settings_enable_lock_before_unlock">Zeige Widgets vor Entsperren</string>
     <string name="skip_button_label" msgid="8680422740354436943">"Abbrechen"</string>
     <string name="next_button_label" msgid="8890792540116568321">"Weiter"</string>
     <string name="lock_title" product="tablet" msgid="2909697418179419990">"Sichern Ihres Tablets"</string>
@@ -1777,6 +1780,64 @@
     <string name="lockscreen_target_empty">Nicht zugewiesen</string>
     <string name="lockscreen_target_edit_title">Zuordnung bearbeiten</string>
     <string name="lockscreen_target_edit_msg">Anwendung oder Symbol zum Ändern berühren</string>
+
+    <!-- Lock Screen Weather -->
+    <string name="lockscreen_weather_title">Wetter</string>
+    <string name="lockscreen_weather_summary">Wetterinformationen auf dem Sperrbildschirm anzeigen</string>
+    <string name="lockscreen_weather_enabled">Aktiviert</string>
+    <string name="weather_enable">Wetter anzeigen</string>
+    <string name="weather_source">Yahoo! Wetter</string>
+    <string name="weather_use_custom_location">Benutzerdefinierter Standort</string>
+    <string name="weather_geolocated">Über Standortdienste bestimmt</string>
+    <string name="weather_custom_location_dialog_title">Standort eingeben</string>
+    <string name="weather_custom_location_dialog_message">Achtung: Eingabe eines ungültigen Standorts stoppt die Aktualisierung.</string>
+    <string name="weather_custom_location_hint">Stadt, Staat/Land</string>
+    <string name="weather_custom_location_title">Standort</string>
+    <string name="weather_show_location_title">Standort anzeigen</string>
+    <string name="weather_show_timestamp_title">Aktualisierungszeit anzeigen</string>
+    <string name="weather_refresh_interval">Aktualisierungsintervall</string>
+    <string name="weather_update">Aktualisieren</string>
+    <string name="weather_use_metric">Metrische Einheiten verwenden</string>
+    <string name="weather_refreshing">Wetterinformationen aktualisieren</string>
+    <string name="weather_retrieve_location_dialog_title">Standort kann nicht bestimmt werden!</string>
+    <string name="weather_retrieve_location_dialog_message">Standortdienste sind deaktiviert.\n\nAktivieren oder benutzerdefinierten Standort festlegen.</string>
+    <string name="weather_retrieve_location_dialog_enable_button">Aktivieren</string>
+    <string name="weather_invert_lowhigh">Anzeigereihenfolge Min/Max-Temperatur tauschen</string>
+
+    <!-- Lock screen Weather - Update frequency -->
+    <string name="weather_refresh_manual">Manuell</string>
+    <string name="weather_refresh_30min">30 Minuten</string>
+    <string name="weather_refresh_60min">60 Minuten</string>
+    <string name="weather_refresh_2hrs">2 Stunden</string>
+    <string name="weather_refresh_4hrs">4 Stunden</string>
+    <string name="weather_refresh_6hrs">6 Stunden</string>
+    <string name="weather_refresh_8hrs">8 Stunden</string>
+
+    <!-- Lock screen Calendar -->
+    <string name="lockscreen_calendar_title">Kalender</string>
+    <string name="lockscreen_calendar_summary">Nächsten Termin auf dem Sperrbildschirm anzeigen</string>
+    <string name="lockscreen_calendar_enabled">Aktiviert</string>
+    <string name="calendar_title">Nächsten Termin anzeigen</string>
+    <string name="calendars_title">Kalender</string>
+    <string name="calendars_summary">Termine aus diesen Kalendern berücksichtigen</string>
+    <string name="calendar_reminders_only_title">Nur Erinnerungen</string>
+    <string name="calendar_reminders_only_summary">Nur Termine mit Erinnerungen berücksichtigen</string>
+    <string name="calendar_lookahead_title">Zeitraum</string>
+    <string name="calendar_show_location_title">Ort anzeigen</string>
+    <string name="calendar_show_description_title">Beschreibung anzeigen</string>
+
+    <!-- Lock screen calendar - lookahead -->
+    <string name="calendar_lookahead_3hrs">3 Stunden</string>
+    <string name="calendar_lookahead_6hrs">6 Stunden</string>
+    <string name="calendar_lookahead_12hrs">12 Stunden</string>
+    <string name="calendar_lookahead_1day">1 Tag</string>
+    <string name="calendar_lookahead_3days">3 Tage</string>
+    <string name="calendar_lookahead_1wk">1 Woche</string>
+
+    <!-- Lock screen calendar - event metadata -->
+    <string name="calendar_metadata_none">Nicht anzeigen</string>
+    <string name="calendar_metadata_first_line">Nur die erste Zeile anzeigen</string>
+    <string name="calendar_metadata_all">Alles anzeigen</string>
 
     <!-- Screen security - Screen security  #CM -->
     <string name="screen_security_category">Bildschirm-Sicherheit</string>
