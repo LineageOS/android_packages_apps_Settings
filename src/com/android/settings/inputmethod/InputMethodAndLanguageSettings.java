@@ -56,6 +56,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
     private static final String KEY_INPUT_METHOD_SELECTOR = "input_method_selector";
     private static final String KEY_USER_DICTIONARY_SETTINGS = "key_user_dictionary_settings";
     private static final String KEY_IME_SWITCHER = "status_bar_ime_switcher";
+    private static final String KEY_STYLUS_ICON_ENABLED = "stylus_icon_enabled";
     // false: on ICS or later
     private static final boolean SHOW_INPUT_METHOD_SWITCHER_SETTINGS = false;
 
@@ -67,6 +68,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         "auto_replace", "auto_caps", "auto_punctuate",
     };
 
+    private CheckBoxPreference mStylusIconEnabled;
     private CheckBoxPreference mStatusBarImeSwitcher;
     private int mDefaultInputMethodSelectorVisibility = 0;
     private ListPreference mShowInputMethodSelectorPref;
@@ -123,6 +125,8 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         createImePreferenceHierarchy((PreferenceGroup)findPreference("keyboard_settings_category"));
 
         mStatusBarImeSwitcher = (CheckBoxPreference) findPreference(KEY_IME_SWITCHER);
+
+        mStylusIconEnabled = (CheckBoxPreference) findPreference(KEY_STYLUS_ICON_ENABLED);
 
         final Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.setClass(getActivity(), SpellCheckersSettingsActivity.class);
@@ -195,6 +199,9 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         mStatusBarImeSwitcher.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.STATUS_BAR_IME_SWITCHER, 1) != 0);
 
+        mStylusIconEnabled.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.STYLUS_ICON_ENABLED, 0) == 1);
+
         // Hard keyboard
         if (mHaveHardKeyboard) {
             for (int i = 0; i < sHardKeyboardKeys.length; ++i) {
@@ -231,6 +238,9 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
             Settings.System.putInt(getActivity().getContentResolver(),
                 Settings.System.STATUS_BAR_IME_SWITCHER, mStatusBarImeSwitcher.isChecked() ? 1 : 0);
             return true;
+        } else if (preference == mStylusIconEnabled) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.STYLUS_ICON_ENABLED, mStylusIconEnabled.isChecked() ? 1 : 0);
         } else if (preference instanceof PreferenceScreen) {
             if (preference.getFragment() != null) {
                 // Fragment will be handled correctly by the super class.
