@@ -93,7 +93,13 @@
                 android:title="@string/pointer_speed"
                 android:dialogTitle="@string/pointer_speed" />
 
-            <!-- Gesture pad settings -->
+        <CheckBoxPreference android:key="stylus_icon_enabled"
+                android:title="@string/stylus_icon_enabled_title"
+                android:summary="@string/stylus_icon_enabled_summary"
+                android:defaultValue="false"
+                android:persistent="false" />
+
+        <!-- Gesture pad settings -->
         <Preference
             android:key="gesture_pad_settings">
             <intent
