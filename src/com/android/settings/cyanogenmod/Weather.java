@@ -3,12 +3,15 @@ package com.android.settings.cyanogenmod;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
@@ -17,7 +20,13 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
+import android.view.View;
+import android.widget.Toast;
 
+import com.android.internal.util.weather.HttpRetriever;
+import com.android.internal.util.weather.WeatherInfo;
+import com.android.internal.util.weather.WeatherXmlParser;
+import com.android.internal.util.weather.YahooPlaceFinder;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
@@ -33,6 +42,7 @@ public class Weather extends SettingsPreferenceFragment implements
     public static final String KEY_ENABLE_WEATHER = "enable_weather";
     public static final String KEY_REFRESH_INTERVAL = "refresh_interval";
     public static final String KEY_INVERT_LOWHIGH = "invert_lowhigh";
+    private static final int WEATHER_CHECK = 0;
 
     private CheckBoxPreference mEnableWeather;
     private CheckBoxPreference mUseCustomLoc;
@@ -44,6 +54,7 @@ public class Weather extends SettingsPreferenceFragment implements
     private EditTextPreference mCustomWeatherLoc;
     private Context mContext;
     private ContentResolver mResolver;
+    private ProgressDialog mProgressDialog;
 
     private static final int LOC_WARNING = 101;
 
@@ -64,7 +75,6 @@ public class Weather extends SettingsPreferenceFragment implements
                 Settings.System.WEATHER_USE_CUSTOM_LOCATION, 0) == 1);
         mCustomWeatherLoc = (EditTextPreference) findPreference(KEY_CUSTOM_LOCATION);
         updateLocationSummary();
-        mCustomWeatherLoc.setOnPreferenceChangeListener(this);
         mCustomWeatherLoc.setOnPreferenceClickListener(this);
 
         mShowLocation = (CheckBoxPreference) findPreference(KEY_SHOW_LOCATION);
@@ -154,14 +164,30 @@ public class Weather extends SettingsPreferenceFragment implements
             mWeatherSyncInterval.setValue((String) newValue);
             mWeatherSyncInterval.setSummary(mapUpdateValue(newVal));
             preference.setSummary(mapUpdateValue(newVal));
-        } else if (preference == mCustomWeatherLoc) {
-            String newVal = (String) newValue;
-            Settings.System.putString(mResolver, Settings.System.WEATHER_CUSTOM_LOCATION, newVal);
-            preference.setSummary(newVal);
         }
-
         return false;
     }
+
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+            case WEATHER_CHECK:
+                if (msg.obj == null) {
+                    Toast.makeText(mContext, mContext.getString(R.string.weather_retrieve_location_dialog_title),
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    String cLoc = mCustomWeatherLoc.getEditText().getText().toString();
+                    mCustomWeatherLoc.setText(cLoc);
+                    Settings.System.putString(mResolver, Settings.System.WEATHER_CUSTOM_LOCATION, cLoc);
+                    mCustomWeatherLoc.setSummary(cLoc);
+                    mCustomWeatherLoc.getDialog().dismiss();
+                }
+                mProgressDialog.dismiss();
+                break;
+            }
+        }
+    };
 
     @Override
     public boolean onPreferenceClick(Preference preference) {
@@ -171,9 +197,35 @@ public class Weather extends SettingsPreferenceFragment implements
                     Settings.System.WEATHER_CUSTOM_LOCATION);
             if (location != null) {
                 mCustomWeatherLoc.getEditText().setText(location);
+                mCustomWeatherLoc.getEditText().setSelection(location.length());
             } else {
                 mCustomWeatherLoc.getEditText().setText("");
             }
+            mCustomWeatherLoc.getDialog().findViewById(android.R.id.button1)
+            .setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mProgressDialog = new ProgressDialog(mContext);
+                    mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                    mProgressDialog.setMessage(mContext.getString(R.string.weather_progress_title));
+                    mProgressDialog.show();
+                    new Thread(new Runnable(){
+                        @Override
+                        public void run() {
+                            String woeid = null;
+                            try {
+                                woeid = YahooPlaceFinder.GeoCode(mContext,
+                                        mCustomWeatherLoc.getEditText().getText().toString());
+                            } catch (Exception e) {
+                            }
+                            Message msg = Message.obtain();
+                            msg.what = WEATHER_CHECK;
+                            msg.obj = woeid;
+                            mHandler.sendMessage(msg);
+                        }
+                    }).start();
+                }
+            });
             return true;
         }
 
