@@ -14,8 +14,122 @@
      limitations under the License.
  -->
 
-<resources xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- String for ShortcutPickHelper -->
+    <string name="picker_activities">"Aktiviteter"</string>
+    <string name="select_custom_app_title">"Välj anpassat program"</string>
+    <string name="select_custom_activity_title">"Välj anpassad aktivitet"</string>
+    <string name="icon_picker_choose_icon_title">"Välj ikon"</string>
+    <string name="icon_picker_alarm">"Alarm"</string>
+    <string name="icon_picker_browser">"Webbläsare"</string>
+    <string name="icon_picker_calendar">"Kalender"</string>
+    <string name="icon_picker_camera">"Kamera"</string>
+    <string name="icon_picker_email">"Email"</string>
+    <string name="icon_picker_facebook">"Facebook"</string>
+    <string name="icon_picker_gallery">"Galleri"</string>
+    <string name="icon_picker_googleplus">"Google Plus"</string>
+    <string name="icon_picker_googletalk">"Google Talk"</string>
+    <string name="icon_picker_maps">"Maps"</string>
+    <string name="icon_picker_movie">"Film"</string>
+    <string name="icon_picker_music">"Musik"</string>
+    <string name="icon_picker_nav_normal">"Navigation"</string>
+    <string name="icon_picker_phone">"Telefon"</string>
+    <string name="icon_picker_podcast">"Podcast"</string>
+    <string name="icon_picker_rss">"Rss"</string>
+    <string name="icon_picker_sms">"Meddelanden"</string>
+    <string name="icon_picker_twitter">"Twitter"</string>
+
+    <!-- String for IconPicker -->
+    <string name="icon_picker_title">"Välj ikonkälla"</string>
+    <string name="icon_picker_system_icons_title">"Systemikoner"</string>
+    <string name="icon_picker_gallery_title">"Galleri"</string>
+    <string name="icon_picker_pack_title">"Ikonpaket"</string>
+
+<!-- INTERFACE Settings #CM -->
+    <!-- Settings main menu category heading. Interface (Launcher, Themes, System). [CHAR LIMIT=40] -->
+    <string name="header_category_interface">GRÄNSSNITT</string>
+
+    <!-- Launcher settings #CM -->
+    <string name="launcher_settings_title">Programstartare</string>
+
+    <!-- Themes settings #CM -->
+    <string name="themes_settings_title">Teman</string>
+
+    <!-- System Interface settings #CM -->
+    <string name="system_settings_title">System</string>
+    <string name="system_interface_title">Systemgränssnitt</string>
+
+    <!-- Notification Drawer #CM -->
+    <string name="notification_drawer_title">Notifikationsfält</string>
+
+    <!-- Combined Bar #CM -->
+    <string name="combined_bar_title">Kombinerat fält</string>
+    <string name="combined_bar_auto_hide_title">Göm automatiskt</string>
+    <string name="combined_bar_auto_hide_summary">Låt kombinerat fält döljas när du visar ett fullskärmsprogram</string>
+
+    <!-- Navigation Bar #CM -->
+    <string name="navigation_bar_title">Navigationsfält</string>
+
+    <string name="navigation_bar_help_text">1 - Börja redigera genom att trycka på låsikonen\n\n2 - Tryck på valfri knapp för att tilldela eller ändra funktionalitet\n\n3 - Långtryck på valfri knapp för att ändra ordning\n\n4 - Spara genom att trycka på låsikonen igen\n\n5 - Återställ till systemstandard genom att trycka på återställningsknappen\n\n</string>
+    <string name="navigation_bar_tips">&#8226; Åtgärder kan bara tilldelas en knapp i taget\n\n&#8226; Hemknappen kan inte ändras\n\n&#8226; Sidoknapparna kan inte ordnas om</string>
+    <string name="navigation_bar_tips_title">Snabbtips</string>
+    <string name="navigation_bar_reset_message">Ta bort aktuella inställningar och återställa till standard?</string>
+    <string name="navigation_bar_save_message">Navigationsfältets inställningar sparade</string>
+    <string name="navigation_bar_reset_toast">Navigationsfältet återställt till standard</string>
+
+    <!-- Power Widget #CM -->
+    <string name="power_widget_title">Strömwidget</string>
+    <string name="title_expanded_widget">Visa strömwidget</string>
+    <string name="summary_expanded_widget">Visa strömwidget i notifikationsfältet</string>
+    <string name="title_expanded_hide_onchange">Göm vid förändring</string>
+    <string name="summary_expanded_hide_onchange">Göm notifikationsfältet efter tryck på en widgetknapp</string>
+    <string name="title_expanded_hide_indicator">Göm indikator</string>
+    <string name="summary_expanded_hide_indicator">Göm indikatorer för strömwidget</string>
+    <string name="title_expanded_hide_scrollbar">Göm rullningslist</string>
+    <string name="summary_expanded_hide_scrollbar">Göm rullningslisten när mer än det maximala antalet widgetknappar visas</string>
+    <string name="title_widget_picker">Widgetknappar</string>
+    <string name="summary_widget_picker">Välj vilka knappar som ska visas i strömwidget</string>
+    <string name="title_widget_order">Widgetknappordning</string>
+    <string name="summary_widget_order">Välj sorteringsordningen på knapparna i strömwidget</string>
+    <string name="title_buttons">Knappar</string>
+    <string name="title_toggle_wifi">Växla Wi-Fi</string>
+    <string name="title_toggle_bluetooth">Växla Bluetooth</string>
+    <string name="title_toggle_gps">Växla GPS</string>
+    <string name="title_toggle_sound">Växla Ljud</string>
+    <string name="title_toggle_brightness">Växla Ljusstyrka</string>
+    <string name="title_toggle_sync">Växla Synk</string>
+    <string name="title_toggle_wifiap">Växla Wi-Fi AP</string>
+    <string name="title_toggle_screentimeout">Växla Skärmtimeout</string>
+    <string name="title_toggle_mobiledata">Växla Mobildata</string>
+    <string name="title_toggle_lockscreen">Växla Låsskärm</string>
+    <string name="title_toggle_networkmode">Växla 2G/3G</string>
+    <string name="title_toggle_autorotate">Växla Orientering</string>
+    <string name="title_toggle_airplane">Växla Flygplansläge</string>
+    <string name="title_toggle_flashlight">Växla LED-lampa</string>
+    <string name="title_toggle_sleep">Strömsparläge</string>
+    <string name="title_toggle_media_play_pause">Media: Växla Spela/Pausa</string>
+    <string name="title_toggle_media_previous">Media: Föregående</string>
+    <string name="title_toggle_media_next">Media: Nästa</string>
+    <string name="title_toggle_lte">Växla LTE</string>
+    <string name="title_toggle_wimax">Växla WiMAX</string>
+    <string name="title_button_modes">Knapplägen</string>
+    <string name="pref_brightness_mode_title">Ljusstyrkelägen</string>
+    <string name="pref_brightness_mode_summary">Välj hur ljusstyrkeknappen ändrar lägen</string>
+    <string name="cm_brightness_mode_auto">Auto</string>
+    <string name="cm_brightness_mode_dim">Dim</string>
+    <string name="pref_network_mode_title">Nätverkslägen</string>
+    <string name="pref_network_mode_summary">Välj hur Nätverkslägeknappen ändrar lägen</string>
+    <string name="pref_screentimeout_mode_title">Skärmtimeoutlägen</string>
+    <string name="pref_screentimeout_mode_summary">Välj hur Skärmtimeoutknappen ändrar lägen</string>
+    <string name="pref_ring_mode_title">Ljudlägen</string>
+    <string name="pref_ring_mode_summary">Välj hur Ljudlägeknappen ändrar lägen</string>
+    <string name="cm_sound_mode_silent">Tyst</string>
+    <string name="cm_sound_mode_vibrate">Vibrera</string>
+    <string name="cm_sound_mode_sound">Ljud</string>
+    <string name="cm_sound_mode_soundVibrate">Ljud+Vibration</string>
+    <string name="pref_flash_mode_title">Lamplägen</string>
+    <string name="pref_flash_mode_summary">Välj Hög / Dödsstråle</string>
+
     <string name="yes" msgid="4676390750360727396">"Ja"</string>
     <string name="no" msgid="6731231425810196216">"Nej"</string>
     <string name="device_info_default" msgid="7847265875578739287">"Okänd"</string>
