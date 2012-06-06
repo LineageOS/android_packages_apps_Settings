@@ -294,7 +294,7 @@
     <string name="lock_after_timeout_summary" msgid="6128431871360905631">"Po <xliff:g id="TIMEOUT_STRING">%1$s</xliff:g> uśpienia"</string>
     <string name="show_owner_info_on_lockscreen_label" msgid="5074906168357568434">"Pokaż tę informację na ekranie blokady"</string>
     <string name="owner_info_settings_title" msgid="2723190010708381889">"Informacje o właścicielu"</string>
-    <string name="owner_info_settings_summary" msgid="3800834657847339570"></string>
+    <string name="owner_info_settings_summary" msgid="3800834657847339570">"Pokaż informacje o właścicielu na ekranie blokady"</string>
     <string name="owner_info_settings_edit_text_hint" msgid="4608681417960923911">"Wpisz tekst do wyświetlenia na ekranie blokady."</string>
     <string name="location_settings_title" msgid="8935806698251432196">"Usługi lokalizacyjne"</string>
     <string name="security_settings_title" msgid="7945465324818485460">"Zabezpieczenia"</string>
@@ -1654,6 +1654,15 @@
     <string name="combined_bar_auto_hide_title">Automatyczne ukrywanie</string>
     <string name="combined_bar_auto_hide_summary">Ukryj pasek nawigacji w aplikacjach pełnoekranowych</string>
 
+    <!-- Navigation Bar #CM -->
+    <string name="navigation_bar_title">Pasek nawigacji</string>
+    <string name="navigation_bar_help_text">1 - By rozpocząć edycję, naciśnij ikonę blokady\n\n2 - Dotknij przycisku by dopisać lub zmienić jego funkcjonalność\n\n3 - Przytrzymaj przycisk by zmienić jego położenie\n\n4 - By zapisać zmiany, dotknij ikony blokady ponownie\n\n5 - By przywrócić ustawienia domyślne, naciśnij przycisk reset\n\n</string>
+    <string name="navigation_bar_tips">&#8226; Akcje mogą być skojarzone tylko z jednym przyciskiem na raz\n\n&#8226; Przycisk home nie może mieć zmienionego przypisania\n\n&#8226; Skrajne przyciski nie mogą być przemieszczane</string>
+    <string name="navigation_bar_tips_title">Podpowiedzi</string>
+    <string name="navigation_bar_reset_message">Usunąć aktualne ustawienia i przywrócić domyślne?</string>
+    <string name="navigation_bar_save_message">Ustawienia paska nawigacji zostały zapisane</string>
+    <string name="navigation_bar_reset_toast">Pasek nawigacji zresetowany do ustawień domyślnych</string>
+
     <!-- Power Widget #CM -->
     <string name="power_widget_title">Widżet zasilania</string>
     <string name="title_expanded_widget">Pokaż widżet</string>
@@ -1720,6 +1729,7 @@
     <string name="status_bar_show_clock_summary">Pokaż zegar na pasku stanu</string>
     <string name="status_bar_am_pm_title">Wyświetlanie AM/PM</string>
     <string name="status_bar_am_pm_summary">Zmień styl wyświetlania AM/PM obok zegara</string>
+    <string name="status_bar_am_pm_info">24-godzinny zegar jest aktywny</string>
     <string name="status_bar_battery_title">Wyświetlanie stanu baterii</string>
     <string name="status_bar_battery_summary">Zmień styl wyświetlania stanu baterii</string>
     <string name="status_bar_toggle_brightness">Ustawianie jasności</string>
@@ -1734,6 +1744,75 @@
     <!-- Lock screen #CM -->
     <string name="lock_screen_title">Ekran blokady</string>
 
+    <!-- Lock Screen Shortcuts -->
+    <string name="lockscreen_target_info">Przeciągnij slider do wybranego celu by skojarzyć go ze skrótem</string>
+    <string name="lockscreen_target_title">Skróty na ekranie blokady</string>
+    <string name="lockscreen_target_summary">Dodaj lub skonfiguruj niestandardowe skróty na ekranie blokady</string>
+    <string name="lockscreen_target_reset">Reset skrótów na ekranie blokady do ustawień domyślnych</string>
+    <string name="lockscreen_target_save">Skróty na ekranie blokady zapisane</string>
+    <string name="lockscreen_target_reset_title">Reset</string>
+    <string name="lockscreen_target_reset_message">Usunąć wszystkie skróty użytkownika na ekranie blokady i przywrócić domyślne?</string>
+    <string name="lockscreen_target_empty">Pusty</string>
+    <string name="lockscreen_target_edit_title">Edytuj skrót</string>
+    <string name="lockscreen_target_edit_msg">Wybierz lub zmień aplikację, aktywność oraz ikonę</string>
+
+    <!-- Lock Screen Weather -->
+    <string name="lockscreen_weather_title">Pogoda</string>
+    <string name="lockscreen_weather_summary">Pokaż informacje o pogodzie na ekranie blokady</string>
+    <string name="lockscreen_weather_enabled">Włączone</string>
+    <string name="weather_enable">Pokaż pogodę</string>
+    <string name="weather_use_custom_location">Użyj niestandardowej lokalizacji</string>
+    <string name="weather_geolocated">Geolokacja przez sieć</string>
+    <string name="weather_custom_location_dialog_title">Podaj lokalizację</string>
+    <string name="weather_custom_location_dialog_message">Uwaga: Podanie błędnej lokalizacji spowoduje zatrzymanie aktualizacji.</string>
+    <string name="weather_custom_location_hint">Miasto, Stan/Państwo</string>
+    <string name="weather_custom_location_title">Lokalizacja</string>
+    <string name="weather_show_location_title">Pokaż lokalizację</string>
+    <string name="weather_show_timestamp_title">Pokaż datę</string>
+    <string name="weather_refresh_interval">Częstotliwość aktualizacji</string>
+    <string name="weather_update">Aktualizacja</string>
+    <string name="weather_use_metric">Używaj jednostek metrycznych</string>
+    <string name="weather_refreshing">Aktualizacja pogody</string>
+    <string name="weather_retrieve_location_dialog_title">Nie można odnaleźć lokalizacji!</string>
+    <string name="weather_retrieve_location_dialog_message">Geolokacja przez sieć jest wyłączona.\n\nWprowadź niestandardową lokalizację albo włącz lokalizację przez sieć</string>
+    <string name="weather_retrieve_location_dialog_enable_button">Włącz</string>
+    <string name="weather_invert_lowhigh">Odwróć niską/wysoką temperaturę</string>
+
+    <!-- Lock screen Weather - Update frequency -->
+    <string name="weather_refresh_manual">Ręcznie</string>
+    <string name="weather_refresh_30min">30 minut</string>
+    <string name="weather_refresh_60min">60 minut</string>
+    <string name="weather_refresh_2hrs">2 godziny</string>
+    <string name="weather_refresh_4hrs">4 godziny</string>
+    <string name="weather_refresh_6hrs">6 godzin</string>
+    <string name="weather_refresh_8hrs">8 godzin</string>
+
+    <!-- Lock screen Calendar -->
+    <string name="lockscreen_calendar_title">Kalendarz</string>
+    <string name="lockscreen_calendar_summary">Pokaż najbliższe wydarzenie na ekranie blokady</string>
+    <string name="lockscreen_calendar_enabled">Włączone</string>
+    <string name="calendar_title">Pokaż najbliższe wydarzenie</string>
+    <string name="calendars_title">Wybierz kalendarze</string>
+    <string name="calendars_summary">Wyświetlane będą wydarzenia z wybranych kalendarzy</string>
+    <string name="calendar_reminders_only_title">Tylko przypomnienia</string>
+    <string name="calendar_reminders_only_summary">Pokaż tylko wydarzenia z przypomnieniem</string>
+    <string name="calendar_lookahead_title">Zakres czasu</string>
+    <string name="calendar_show_location_title">Lokalizacja wydarzenia</string>
+    <string name="calendar_show_description_title">Opis wydarzenia</string>
+
+    <!-- Lock screen calendar - lookahead -->
+    <string name="calendar_lookahead_3hrs">3 godziny</string>
+    <string name="calendar_lookahead_6hrs">6 godzin</string>
+    <string name="calendar_lookahead_12hrs">12 godzin</string>
+    <string name="calendar_lookahead_1day">1 dzień</string>
+    <string name="calendar_lookahead_3days">3 dni</string>
+    <string name="calendar_lookahead_1wk">1 tydzień</string>
+
+    <!-- Lock screen calendar - event metadata -->
+    <string name="calendar_metadata_none">Nie pokazuj</string>
+    <string name="calendar_metadata_first_line">Pokaż pierwszą linię</string>
+    <string name="calendar_metadata_all">Pokaż wszystko</string>
+
     <!-- Screen security - Screen security  #CM -->
     <string name="screen_security_category">Zabezpieczenia ekranu</string>
     <string name="screen_security_title">Ekran blokady</string>
@@ -1743,13 +1822,23 @@
     <string name="unlock_menu_unlock_summary">Naciśnięcie przycisku menu odblokowuje urządzenie</string>
     <string name="unlock_quick_unlock_control_title">Szybkie odblokowanie</string>
     <string name="unlock_quick_unlock_control_summary">Odblokuj automatycznie, gdy zostanie wprowadzony właściwy PIN lub hasło</string>
+    <string name="lockpattern_settings_enable_lock_before_unlock">Pokaż widżety przed odblokowaniem</string>
 
-    <!-- Delays and timeouts -->
-    <string name="delay_and_timeout_title">Opóźnienie blokady</string>
     <!-- Slide lock delay -->
+    <string name="delay_and_timeout_title">Opóźnienie blokady</string>
     <string name="slide_lock_delay_title">Opóźnij blokadę ekranu</string>
     <string name="slide_lock_timeout_delay_title">Opóźnienie uśpienia</string>
     <string name="slide_lock_screenoff_delay_title">Opóźnienie wyłączenia</string>
+    <string name="slide_lock_delay_none">Brak</string>
+    <string name="slide_lock_delay_1s">1 sekunda</string>
+    <string name="slide_lock_delay_5s">5 sekund</string>
+    <string name="slide_lock_delay_10s">10 sekund</string>
+    <string name="slide_lock_delay_15s">15 sekund</string>
+    <string name="slide_lock_delay_30s">30 sekund</string>
+    <string name="slide_lock_delay_1m">1 minuta</string>
+    <string name="slide_lock_delay_5m">5 minut</string>
+    <string name="slide_lock_delay_10m">10 minut</string>
+    <string name="slide_lock_delay_30m">30 minut</string>
 
     <!-- Performance settings #CM -->
     <string name="performance_settings_title">Wydajność</string>
@@ -1843,7 +1932,6 @@
     <string name="cpu_info">Procesor</string>
     <string name="mem_info">Pamięć RAM</string>
     <string name="build_date">Data kompilacji</string>
-    <string name="build_date_default">2012-01-01-0000</string>
 
     <!-- Profiles settings #CM -->
     <string name="profiles_settings_title">Profile</string>
@@ -1878,9 +1966,15 @@
     <!-- Profile Config screen PreferenceGroup titles -->
     <string name="profile_connectionoverrides_title">Ustawienia połączeń</string>
     <string name="profile_volumeoverrides_title">Ustawienia głośności</string>
+    <string name="profile_vibratoroverrides_title">Ustawienia wibracji</string>
     <string name="connection_state_disabled">Wyłącz</string>
     <string name="connection_state_enabled">Włącz</string>
     <string name="volume_override_summary">Ustaw</string>
+    <string name="vibrator_state_disabled">Wyłącz</string>
+    <string name="vibrator_state_enabled">Włącz</string>
+    <string name="vibrator_state_silent">Tylko gdy wyciszony</string>
+    <string name="vibrator_type_ringer">Połączenia</string>
+    <string name="vibrator_type_notification">Powiadomienia</string>
 
     <!-- Menu item for managing profiles -->
     <string name="profile_profiles_manage">Profile</string>
@@ -1928,7 +2022,13 @@
     <string name="profile_lockmode_default_summary">Użyj domyślnego ustawienia systemowego</string>
     <string name="profile_lockmode_insecure_summary">Użyj niezabezpieczonego ekranu blokady</string>
     <string name="profile_lockmode_disabled_summary">Ekran blokady jest wyłączony</string>
-
+    <string name="profile_airplanemode_title">Tryb samolotowy</string>
+    <string name="profile_airplanemode_default">Domyślne</string>
+    <string name="profile_airplanemode_enabled">Włączony</string>
+    <string name="profile_airplanemode_disabled">Wyłączony</string>
+    <string name="profile_airplanemode_default_summary">Użyj domyślnej wartości</string>
+    <string name="profile_airplanemode_enabled_summary">Tryb samolotowy jest włączony</string>
+    <string name="profile_airplanemode_disabled_summary">Tryb samolotowy jest wyłączony</string>
     <string name="profile_disable_screen_lock_summary">Wyłącz ekran blokady, gdy ten profil jest aktywny</string>
 
     <!-- Connection override toggles (not all are used at this time ) -->
@@ -2053,6 +2153,9 @@
     <string name="notification_light_use_custom">Użyj własnych ustawień</string>
     <string name="notification_light_enabled">Włączone</string>
     <string name="notification_light_disabled">Wyłączone</string>
+    <string name="notification_light_missed_call_title">Nieodebrane połączenie</string>
+    <string name="notification_light_voicemail_title">Poczta głosowa</string>
+    <string name="notification_light_phonelist_title">Telefon</string>
 
     <!-- Notification light dialogs -->
     <string name="edit_light_settings">Edytuj ustawienia diody powiadomień</string>
@@ -2086,6 +2189,57 @@
     <string name="profile_write_failed">Nie udało się zapisać tagu!</string>
     <string name="profile_selected">Wybrany profil: %1$s</string>
     <string name="profile_nfc_text">Zapisanie profilu do tagu NFC umożliwia Ci jego aktywację poprzez dotknięcie tagu. Dotknięcie go po raz drugi spowoduje aktywację poprzedniego profilu.</string>
+
+    <!-- Title for checkbox menu option to enable linear chart. [CHAR LIMIT=32] -->
+    <string name="data_usage_menu_linear_chart">Wykres liniowy</string>
+    <string name="wifi_adhoc_first_item">Sieć Ad-hoc</string>
+    <string name="wifi_adhoc_second_item">\u0020(sieć ad-hoc)</string>
+    <string name="wifi_p2p_on_summary">Włącz Wifi direct</string>
+    <string name="wifi_p2p_settings">Ustawienia Wifi direct</string>
+
+    <!-- String for ShortcutPickHelper -->
+    <string name="picker_activities">Aktywności</string>
+    <string name="select_custom_app_title">Wybierz niestandardową aplikację</string>
+    <string name="select_custom_activity_title">Wybierz niestandardową aktywność</string>
+    <string name="icon_picker_choose_icon_title">Wybierz ikonę</string>
+    <string name="icon_picker_alarm">Budzik</string>
+    <string name="icon_picker_browser">Przeglądarka</string>
+    <string name="icon_picker_calendar">Kalendarz</string>
+    <string name="icon_picker_camera">Aparat</string>
+    <string name="icon_picker_gallery">Galeria</string>
+    <string name="icon_picker_maps">Mapy</string>
+    <string name="icon_picker_movie">Filmy</string>
+    <string name="icon_picker_music">Muzyka</string>
+    <string name="icon_picker_nav_normal">Nawigacja</string>
+    <string name="icon_picker_phone">Telefon</string>
+    <string name="icon_picker_rss">Czytnik RSS</string>
+    <string name="icon_picker_sms">SMS/MMS</string>
+
+    <!-- String for IconPicker -->
+    <string name="icon_picker_title">Wybierz źródło ikony</string>
+    <string name="icon_picker_system_icons_title">Ikony systemowe</string>
+    <string name="icon_picker_gallery_title">Galeria</string>
+    <string name="icon_picker_pack_title">Paczka ikon</string>
+
+    <!-- Safe headset volume restore checkbox -->
+    <string name="safe_headset_restore_title">Bezpieczna głośność</string>
+    <string name="safe_headset_restore_summary">Zapobiega wysokiej głośności, gdy zestaw słuchawkowy zostaje po raz pierwszy podłączony</string>
+
+    <!-- Whether to display IME switcher notifcation -->
+    <string name="ime_switcher_notify">Powiadomienie wyboru</string>
+    <string name="ime_switcher_notify_summary">Pokaż powiadomienie o wyborze metody wprowadzania</string>
+
+    <!-- Electron Beam -->
+    <string name="display_category_animation_options_title">Animacja</string>
+    <string name="display_electron_beam_animation_on_title">Animacja włączania ekranu</string>
+    <string name="display_electron_beam_animation_off_title">Animacja wyłączania ekranu</string>
+
+    <!-- Stylus Icon -->
+    <string name="stylus_icon_enabled_title">Pokaż użycie stylusa</string>
+    <string name="stylus_icon_enabled_summary">Pokaż ikonę wskaźnika w trakcie korzystania ze stylusa</string>
+
+    <!-- Hostname setting -->
+    <string name="device_hostname">Nazwa hosta urządzenia</string>
 
     <!-- **** CYANOGENMOD EDITS END **** -->
 </resources>
