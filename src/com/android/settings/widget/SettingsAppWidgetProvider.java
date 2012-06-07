@@ -372,8 +372,10 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
                 logD("Received WiMAX change request");
                 WimaxButton.getInstance().toggleState(context);
             }
-        } else if (MobileDataButton.MOBILE_DATA_CHANGED.equals(intent.getAction())
-                || Intent.ACTION_USER_PRESENT.equals(intent.getAction())
+        } else if (MobileDataButton.MOBILE_DATA_CHANGED.equals(intent.getAction())) {
+            logD("Received mobile data mode state change");
+            MobileDataButton.getInstance().onReceive(context, intent);
+        } else if (Intent.ACTION_USER_PRESENT.equals(intent.getAction())
                 || SecuritySettings.GPS_STATUS_CHANGED.equals(intent.getAction())) {
         } else {
             logD("Ignoring Action: " + intent.getAction());
