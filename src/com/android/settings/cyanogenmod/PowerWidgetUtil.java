@@ -20,7 +20,7 @@ import com.android.internal.telephony.Phone;
 import com.android.settings.R;
 
 import android.content.Context;
-/* import android.net.wimax.WimaxHelper; */
+import android.net.wimax.WimaxHelper;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 
@@ -134,10 +134,10 @@ public class PowerWidgetUtil {
         if (buttons == null) {
             buttons = BUTTONS_DEFAULT;
             // Add the WiMAX button if it's supported
-            /*
-             * if (WimaxHelper.isWimaxSupported(context)) { buttons +=
-             * BUTTON_DELIMITER + BUTTON_WIMAX; }
-             */
+            if (WimaxHelper.isWimaxSupported(context)) {
+                buttons += BUTTON_DELIMITER + BUTTON_WIMAX;
+            }
+
             // And the flashlight too if available
             if (context.getResources().getBoolean(R.bool.has_led_flash)) {
                 buttons += BUTTON_DELIMITER + BUTTON_FLASHLIGHT;
