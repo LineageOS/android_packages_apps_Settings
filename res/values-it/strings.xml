@@ -433,7 +433,7 @@
     <string name="cm_brightness_mode_dim">"Oscuro"</string>
     <string name="pref_network_mode_title">"Modalità di rete"</string>
     <string name="pref_network_mode_summary">"Scegli come l\'interruttore della modalità di rete modifica il tipo di rete"</string>
-    <string name="pref_screentimeout_mode_title">"Modalità di sospensione schermo"</string>
+    <string name="pref_screentimeout_mode_title">"Modalità sospensione schermo"</string>
     <string name="pref_screentimeout_mode_summary">"Scegli come l\'interruttore di sospensione schermo modifica i tempi di sospensione"</string>
     <string name="pref_ring_mode_title">"Modalità suoneria"</string>
     <string name="pref_ring_mode_summary">"Scegli come l\'interruttore della suoneria modifica i suoni"</string>
@@ -443,6 +443,7 @@
     <string name="cm_sound_mode_soundVibrate">"Suoneria+Vibrazione"</string>
     <string name="pref_flash_mode_title">"Modalità torcia LED"</string>
     <string name="pref_flash_mode_summary">"Scegli l\'intensità della torcia LED"</string>
+    <string name="toggles_not_enough_space">Lo spazio è limitato a sei interruttori</string>
     <string name="expanded_haptic_feedback_title">"Vibrazione al tocco"</string>
     <string name="expanded_haptic_feedback_summary">"Attiva/Disattiva la vibrazione al tocco"</string>
     <string name="status_bar_title">"Barra di stato"</string>
@@ -482,19 +483,17 @@
     <string name="weather_use_custom_location">Usa posizione personalizzata</string>
     <string name="weather_geolocated">Geolocalizzazione usando la rete cellulare</string>
     <string name="weather_custom_location_dialog_title">Inserisci posizione</string>
-    <string name="weather_custom_location_dialog_message">Attenzione: inserire posizione non valida fermerà gli aggiornamenti.</string>
     <string name="weather_custom_location_hint">Città, Stato</string>
     <string name="weather_custom_location_title">Posizione</string>
     <string name="weather_show_location_title">Visualizza posizione</string>
     <string name="weather_show_timestamp_title">Visualizza timestamp</string>
     <string name="weather_refresh_interval">Intervallo di aggiornamento</string>
-    <string name="weather_update">Aggiorna</string>
     <string name="weather_use_metric">Usa sistema metrico</string>
-    <string name="weather_refreshing">Aggiornamento meteo</string>
     <string name="weather_retrieve_location_dialog_title">Impossibile recuperare posizione!</string>
     <string name="weather_retrieve_location_dialog_message">Geolocalizzazione su rete disabilitata.\n\nImposta una posizione personalizzata o abilita la localizzazione su rete</string>
     <string name="weather_retrieve_location_dialog_enable_button">Abilita</string>
     <string name="weather_invert_lowhigh">Inverti temperature Min/Max</string>
+    <string name="weather_progress_title">Verifica posizione</string>
     <string name="weather_refresh_manual">Manuale</string>
     <string name="weather_refresh_30min">30 minuti</string>
     <string name="weather_refresh_60min">60 minuti</string>
@@ -505,10 +504,10 @@
     <string name="lockscreen_calendar_title">Calendario</string>
     <string name="lockscreen_calendar_summary">Visualizza il prossimo evento del calendario nella schermata di blocco</string>
     <string name="lockscreen_calendar_enabled">Abilitato</string>
-    <string name="calendar_title">Visualizza prossimo evento</string>
-    <string name="calendars_title">Eventi calendari</string>
-    <string name="calendars_summary">Trova eventi da questi calendari</string>
-    <string name="calendar_reminders_only_title">Solo promemoria</string>
+    <string name="calendar_title">Mostra prossimo evento</string>
+    <string name="calendars_title">Calendari da visualizzare</string>
+    <string name="calendars_summary">Mostra gli eventi dei calendari selezionati</string>
+    <string name="calendar_reminders_only_title">Solo con promemoria</string>
     <string name="calendar_reminders_only_summary">Visualizza solo eventi con promemoria</string>
     <string name="calendar_lookahead_title">Prossimi eventi</string>
     <string name="calendar_show_location_title">Posizione evento</string>
@@ -522,6 +521,13 @@
     <string name="calendar_metadata_none">Non visualizzare</string>
     <string name="calendar_metadata_first_line">Visualizza prima riga</string>
     <string name="calendar_metadata_all">Visualizza tutti</string>
+    <string name="lockscreen_custom_background_title">Sfondo</string>
+    <string name="lockscreen_custom_background_dialog_title">Scegli colore</string>
+    <string name="lockscreen_background_result_successful">Sfondo cambiato</string>
+    <string name="lockscreen_background_result_not_successful">Sfondo non cambiato</string>
+    <string name="lockscreen_background_color_fill">Colore di riempimento</string>
+    <string name="lockscreen_background_custom_image">Immagine personalizzata</string>
+    <string name="lockscreen_background_default_wallpaper">Sfondo predefinito</string>
     <string name="wallpaper_settings_title" msgid="5449180116365824625">"Sfondo"</string>
     <string name="wallpaper_settings_fragment_title" msgid="519078346877860129">"Scegli sfondo da"</string>
     <string name="header_category_personal" msgid="6225932173498802187">"PERSONALE"</string>
@@ -615,8 +621,8 @@
     <string name="lock_after_timeout" msgid="4590337686681194648">"Blocca automaticamente"</string>
     <string name="lock_after_timeout_summary" msgid="6128431871360905631">"<xliff:g id="TIMEOUT_STRING">%1$s</xliff:g> dopo sospensione"</string>
     <string name="show_owner_info_on_lockscreen_label" msgid="5074906168357568434">"Mostra info proprietario nella schermata di sblocco"</string>
-    <string name="owner_info_settings_title" msgid="2723190010708381889">"Info proprietario"</string>
-    <string name="owner_info_settings_summary" msgid="3800834657847339570"></string>
+    <string name="owner_info_settings_title" msgid="2723190010708381889">"Informazioni proprietario"</string>
+    <string name="owner_info_settings_summary">Info proprietario nello sblocco schermo</string>
     <string name="owner_info_settings_edit_text_hint" msgid="4608681417960923911">"Digita testo da visualizzare nella schermata di sblocco"</string>
     <string name="location_settings_title" msgid="8935806698251432196">"Servizi di localizzazione"</string>
     <string name="security_settings_title" msgid="7945465324818485460">"Sicurezza"</string>
@@ -1347,6 +1353,15 @@
     <string name="bluetooth_tethering_overflow_error" msgid="6285122039489881969">"Tethering impossibile con più di <xliff:g id="MAXCONNECTION">%1$d</xliff:g> dispositivi."</string>
     <string name="bluetooth_untether_blank" msgid="2871192409329334813">"Sarà annullato il tethering per <xliff:g id="DEVICE_NAME">%1$s</xliff:g>."</string>
     <string name="tethering_help_button_text" msgid="656117495547173630">"Guida"</string>
+    <string name="tethering_advanced_text">Avanzate</string>
+    <string name="tethering_lease_time_text">Tempo di lease DHCP</string>
+    <string name="dhcp_lease_30mn">30 minuti</string>
+    <string name="dhcp_lease_1h">1 ora (predefinito)</string>
+    <string name="dhcp_lease_2h">2 ore</string>
+    <string name="dhcp_lease_4h">4 ore</string>
+    <string name="dhcp_lease_6h">6 ore</string>
+    <string name="dhcp_lease_12h">12 ore</string>
+    <string name="dhcp_lease_24h">24 ore</string>
     <string name="network_settings_title" msgid="7967552516440151852">"Reti mobili"</string>
     <string name="location_title" msgid="1029961368397484576">"La mia posizione"</string>
     <string name="location_network_based" msgid="5569673665032992664">"Servizio localizzazione Google"</string>
@@ -1567,6 +1582,8 @@
     <string name="spellchecker_security_warning" msgid="9060897418527708922">"Questa funzione di controllo ortografico potrebbe riuscire a raccogliere tutto il testo digitato, compresi i dati personali come password e numeri di carte di credito. Deriva dall\'applicazione <xliff:g id="SPELLCHECKER_APPLICATION_NAME">%1$s</xliff:g>. Utilizzare questa funzione di controllo ortografico?"</string>
     <string name="pointer_settings_category" msgid="8183819795164034286">"Mouse/trackpad"</string>
     <string name="pointer_speed" msgid="1221342330217861616">"Velocità del puntatore"</string>
+    <string name="ime_switcher_notify">Notifica metodo inserimento</string>
+    <string name="ime_switcher_notify_summary">Visualizza la notifica del selettore metodo di immissione</string>
     <string name="user_dict_settings_titlebar" msgid="765659257455000490">"Dizionario utente"</string>
     <string name="user_dict_single_settings_title" msgid="524997218433540614">"Dizionario personale"</string>
     <string name="user_dict_multiple_settings_title" msgid="3735224433307996276">"Dizionari personali"</string>
@@ -2056,6 +2073,9 @@
     <string name="backup_pw_set_button_text" msgid="2387480910044648795">"Imposta password di backup"</string>
     <string name="backup_pw_cancel_button_text" msgid="8845630125391744615">"Annulla"</string>
     <string name="additional_system_update_settings_list_item_title" msgid="214987609894661992">"Aggiornamenti di sistema aggiuntivi"</string>
+    <string name="display_category_animation_options_title">Animazione</string>
+    <string name="display_electron_beam_animation_on_title">Animazione accensione schermo</string>
+    <string name="display_electron_beam_animation_off_title">Animazione spegnimento schermo</string>
     <string name="display_category_wakeup_options_title">"Opzioni attivazione"</string>
     <string name="pref_volume_wake_title">"Tasti volume"</string>
     <string name="pref_volume_wake_summary">"Premere i tasti del volume farà attivare il terminale"</string>
@@ -2065,4 +2085,9 @@
     <string name="profile_write_failed">"Scrittura etichetta fallita!"</string>
     <string name="profile_selected">"Profilo selezionato: %1$s"</string>
     <string name="profile_nfc_text">"Scrivere un profilo per un\'etichetta NFC permette di toccare l\'etichetta per selezionare quel profilo. Toccandola una seconda volta verrà selezionato il profilo precedente."</string>
+    <string name="stylus_icon_enabled_title">Visualizza puntatore</string>
+    <string name="stylus_icon_enabled_summary">Visualizza il puntatore quando disegni col pennino</string>
+    <string name="device_hostname">Hostname dispositivo</string>
+    <string name="status_bar_notif_count_title">Contatore notifiche</string>
+    <string name="status_bar_notif_count_summary">Visualizza il numero di notifiche in sospeso nella barra di stato</string>
 </resources>
