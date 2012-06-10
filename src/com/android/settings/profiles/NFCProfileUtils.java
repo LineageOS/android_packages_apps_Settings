@@ -84,7 +84,7 @@ public class NFCProfileUtils {
         }
     }
 
-    /* Convert a UUID to a 16-byte array */
+    /* Convert a 16-byte array to a UUID */
     static UUID toUUID(byte[] byteArray) {
 
         long msb = 0;
@@ -100,7 +100,7 @@ public class NFCProfileUtils {
         return result;
     }
 
-    /* Convert a 16-byte array to a UUID */
+    /* Convert a UUID to a 16-byte array */
     static byte[] asByteArray(UUID uuid) {
         long msb = uuid.getMostSignificantBits();
         long lsb = uuid.getLeastSignificantBits();
