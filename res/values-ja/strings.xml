@@ -1589,6 +1589,9 @@
     <string name="additional_system_update_settings_list_item_title" msgid="214987609894661992">"その他のシステムアップデート"</string>
 
     <!-- CM String entries bellow -->
+    <string name="safe_headset_restore_title">安全なヘッドフォン音量</string>
+    <string name="safe_headset_restore_summary">最初にヘッドフォンを接続した時に大音量になるのを防ぐ</string>
+
     <!-- String for ShortcutPickHelper -->
     <string name="picker_activities">アクティビティ</string>
     <string name="select_custom_app_title">カスタムアプリケーションを選択</string>
@@ -1814,6 +1817,7 @@
     <string name="status_bar_show_clock_summary">ステータスバーに時計を表示する</string>
     <string name="status_bar_am_pm_title">AM/PMスタイル</string>
     <string name="status_bar_am_pm_summary">AM/PMの表示スタイル</string>
+    <string name="status_bar_am_pm_info">24時間スタイルが有効</string>
     <string name="status_bar_clock_title">時計</string>
     <string name="status_bar_battery_title">バッテリー状態のスタイル</string>
     <string name="status_bar_battery_summary">バッテリー状態の表示スタイル</string>
@@ -1840,7 +1844,65 @@
     <string name="lockscreen_target_empty">なし</string>
     <string name="lockscreen_target_edit_title">ショートカットの編集</string>
     <string name="lockscreen_target_edit_msg">希望するアプリケーションやアクティビティとアイコンを選択して変更します</string>
-    
+
+    <!-- Lock Screen Weather -->
+    <string name="lockscreen_weather_title">天気</string>
+    <string name="lockscreen_weather_summary">ロック画面に天気情報を表示する</string>
+    <string name="lockscreen_weather_enabled">有効</string>
+    <string name="weather_enable">天気を表示</string>
+    <string name="weather_source">Yahoo! Weather</string>
+    <string name="weather_use_custom_location">カスタムの場所</string>
+    <string name="weather_geolocated">ネットーワークを使った位置情報</string>
+    <string name="weather_custom_location_dialog_title">場所を入力</string>
+    <string name="weather_custom_location_dialog_message">注意: 不正な場所を入力すると更新されません</string>
+    <string name="weather_custom_location_hint">市 県/国</string>
+    <string name="weather_custom_location_title">場所</string>
+    <string name="weather_show_location_title">場所を表示</string>
+    <string name="weather_show_timestamp_title">更新時刻を表示</string>
+    <string name="weather_refresh_interval">更新間隔</string>
+    <string name="weather_update">更新</string>
+    <string name="weather_use_metric">メトリック表示を使用</string>
+    <string name="weather_refreshing">天気情報を更新中</string>
+    <string name="weather_retrieve_location_dialog_title">場所を取得できません!</string>
+    <string name="weather_retrieve_location_dialog_message">ネットワークを使った現在地の取得は利用できません.\n\nネットワークロケーションを有効にするか、カスタムの場所を設定してください.</string>
+    <string name="weather_retrieve_location_dialog_enable_button">有効</string>
+    <string name="weather_invert_lowhigh">最低/最高気温を逆にする</string>
+
+    <!-- Lock screen Weather - Update frequency -->
+    <string name="weather_refresh_manual">手動</string>
+    <string name="weather_refresh_30min">30分</string>
+    <string name="weather_refresh_60min">60分</string>
+    <string name="weather_refresh_2hrs">2時間</string>
+    <string name="weather_refresh_4hrs">4時間</string>
+    <string name="weather_refresh_6hrs">6時間</string>
+    <string name="weather_refresh_8hrs">8時間</string>
+
+    <!-- Lock screen Calendar -->
+    <string name="lockscreen_calendar_title">カレンダー</string>
+    <string name="lockscreen_calendar_summary">ロック画面に次の予定を表示する</string>
+    <string name="lockscreen_calendar_enabled">有効</string>
+    <string name="calendar_title">次の予定を表示する</string>
+    <string name="calendars_title">表示するカレンダー</string>
+    <string name="calendars_summary">これらのカレンダーから予定を探す</string>
+    <string name="calendar_reminders_only_title">リマインダーのみ</string>
+    <string name="calendar_reminders_only_summary">リマインダーのイベントのみ表示する</string>
+    <string name="calendar_lookahead_title">予定の探索期間</string>
+    <string name="calendar_show_location_title">予定の場所</string>
+    <string name="calendar_show_description_title">予定の詳細</string>
+
+    <!-- Lock screen calendar - lookahead -->
+    <string name="calendar_lookahead_3hrs">3時間</string>
+    <string name="calendar_lookahead_6hrs">6時間</string>
+    <string name="calendar_lookahead_12hrs">12時間</string>
+    <string name="calendar_lookahead_1day">1日</string>
+    <string name="calendar_lookahead_3days">3日</string>
+    <string name="calendar_lookahead_1wk">1週間</string>
+
+    <!-- Lock screen calendar - event metadata -->
+    <string name="calendar_metadata_none">表示しない</string>
+    <string name="calendar_metadata_first_line">最初の1行を表示</string>
+    <string name="calendar_metadata_all">すべて表示</string>
+
     <!-- Profiles settings #CM -->
     <string name="profiles_settings_title">プロファイル</string>
     <string name="profiles_general_title">一般</string>
@@ -1955,6 +2017,14 @@
     <string name="toggleFlashlight">フラッシュライト</string>
     <string name="toggleLockScreen">画面のロック</string>
     <string name="toggleWimax">WiMAX</string>
+
+    <!-- misc #CM -->
+    <string name="owner_info_settings_enabled">有効</string>
+    <string name="lockpattern_settings_enable_lock_before_unlock">解除する前にウィジェットを表示</string>
+    <string name="ime_switcher_notify">入力方法セレクタの通知</string>
+    <string name="ime_switcher_notify_summary">入力方法セレクタを通知バーに表示する</string>
+    <string name="tts_play_example_not_found_title">警告</string>
+    <string name="tts_play_example_not_found_msg">要求された言語用のテキストサンプルは見つかりませんでした</string>
 
     <!-- Screen security - Screen security  #CM -->
     <string name="screen_security_category">画面のセキュリティ</string>
@@ -2169,4 +2239,15 @@
     <string name="cpu_info">プロセッサ</string>
     <string name="mem_info">メモリ</string>
 
+    <!-- Electron Beam -->
+    <string name="display_category_animation_options_title">アニメーション</string>
+    <string name="display_electron_beam_animation_on_title">スクリーンオンアニメーション</string>
+    <string name="display_electron_beam_animation_off_title">スクリーンオフアニメーション</string>
+
+    <!-- Stylus Icon -->
+    <string name="stylus_icon_enabled_title">スタイラスポインタを表示</string>
+    <string name="stylus_icon_enabled_summary">スタイラスで描いたり操作しているときにポインタのアイコンを表示する</string>
+
+    <!-- Hostname setting -->
+    <string name="device_hostname">デバイスのホスト名</string>
 </resources>
