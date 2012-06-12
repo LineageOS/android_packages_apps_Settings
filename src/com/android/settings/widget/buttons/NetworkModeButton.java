@@ -90,12 +90,23 @@ public class NetworkModeButton extends WidgetButton {
         preferenceName = WidgetSettings.TOGGLE_2G3G;
     }
 
+    private void updateStates(Context context) {
+        SharedPreferences globalPreferences = context.getSharedPreferences(
+                WidgetSettings.WIDGET_PREF_MAIN, Context.MODE_PRIVATE);
+
+        currentMode = globalPreferences.getInt(WidgetSettings.NETWORK_MODE_SPINNER,
+                DEFAULT_SETTTING);
+        networkMode = get2G3G(context);
+        currentState = networkModeToState(context);
+    }
+
     @Override
     public void toggleState(Context context) {
         toggleState(context, false);
     }
 
     public void toggleState(Context context, int newState) {
+        updateStates(context);
         if (currentState != SettingsAppWidgetProvider.STATE_INTERMEDIATE
                 && currentState != newState) {
             toggleState(context, true);
@@ -108,6 +119,7 @@ public class NetworkModeButton extends WidgetButton {
 
     public void toggleState(Context context, boolean switchModes) {
         SettingsAppWidgetProvider.logD("NetworkMode: toggleState");
+        updateStates(context);
         Intent intent = new Intent(MODIFY_NETWORK_MODE);
         switch (networkMode) {
             case Phone.NT_MODE_WCDMA_PREF:
@@ -146,12 +158,7 @@ public class NetworkModeButton extends WidgetButton {
 
     @Override
     public void updateState(Context context, SharedPreferences globalPreferences, int[] appWidgetIds) {
-
-        currentMode = globalPreferences.getInt(WidgetSettings.NETWORK_MODE_SPINNER,
-                DEFAULT_SETTTING);
-        networkMode = get2G3G(context);
-        currentState = networkModeToState(context);
-
+        updateStates(context);
         switch (currentState) {
             case SettingsAppWidgetProvider.STATE_DISABLED:
                 currentIcon = R.drawable.ic_appwidget_settings_2g3g_off;
@@ -201,7 +208,8 @@ public class NetworkModeButton extends WidgetButton {
     }
 
     public boolean isDisabled(Context context) {
-        return networkModeToState(context) == SettingsAppWidgetProvider.STATE_DISABLED;
+        updateStates(context);
+        return currentState == SettingsAppWidgetProvider.STATE_DISABLED;
     }
 
 }

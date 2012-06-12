@@ -18,7 +18,7 @@ public class MobileDataButton extends WidgetButton {
     static MobileDataButton ownButton = null;
 
     static boolean stateChangeRequest = false;
-    static boolean intendedState = false;
+    static Boolean intendedState = null;
 
     public static boolean getDataRomingEnabled(Context context) {
         return Settings.Secure
@@ -73,7 +73,7 @@ public class MobileDataButton extends WidgetButton {
     public void updateState(Context context, SharedPreferences globalPreferences, int[] appWidgetIds) {
         boolean state = getDataState(context);
 
-        if (stateChangeRequest || state != intendedState) {
+        if (stateChangeRequest || (intendedState != null && state != intendedState)) {
             currentIcon = R.drawable.ic_appwidget_settings_data_on;
             if (globalPreferences.getBoolean(WidgetSettings.MONITOR_DATA_ROAMING, true)
                     && getDataRomingEnabled(context)) {
@@ -115,7 +115,7 @@ public class MobileDataButton extends WidgetButton {
     }
 
     public void onReceive(Context context, Intent intent) {
-        intendedState = intent.getBooleanExtra("enabled", false);
+        intendedState = null;
     }
 
     public void networkModeChanged(Context context, int networkMode) {
