@@ -610,7 +610,7 @@
     <string name="lock_sounds_enable_title" msgid="450098505659399520">"Son au verrouillage écran"</string>
     <string name="haptic_feedback_enable_title" msgid="2438293710530828760">"Vibrer au toucher"</string>
     <string name="audio_record_proc_title" msgid="4271091199976457534">"Suppression du bruit"</string>
-    <string name="volume_media_description" msgid="7949355934788807863">"Musique, vidéo, jeux et autres fichiers multimédias"</string>
+    <string name="volume_media_description" msgid="7949355934788807863">"Musique, vidéo, jeux et multimédia"</string>
     <string name="volume_ring_description" msgid="5936851631698298989">"Sonnerie et notifications"</string>
     <string name="volume_notification_description" msgid="5810902320215328321">"Notifications"</string>
     <string name="volume_alarm_description" msgid="8322615148532654841">"Alarmes"</string>
@@ -657,6 +657,17 @@
     <string name="automatic_brightness" msgid="5014143533884135461">"Ajuster automatiquement la luminosité"</string>
     <string name="title_font_size" msgid="4405544325522105222">"Taille de la police"</string>
     <string name="dialog_title_font_size" msgid="2231507851258955038">"Taille de police"</string>
+
+    <!-- Advanced tethering settings -->
+    <string name="tethering_advanced_text">Paramètres avancés</string>
+    <string name="tethering_lease_time_text">Expiration DHCP</string>
+    <string name="dhcp_lease_30mn">30 minutes</string>
+    <string name="dhcp_lease_1h">1 heure (défaut)</string>
+    <string name="dhcp_lease_2h">2 heures</string>
+    <string name="dhcp_lease_4h">4 heures</string>
+    <string name="dhcp_lease_6h">6 heures</string>
+    <string name="dhcp_lease_12h">12 heures</string>
+    <string name="dhcp_lease_24h">24 heures</string>
 
     <!-- Sound settings screen #CM -->
     <string name="volume_overlay_title">Contrôle du volume</string>
@@ -843,6 +854,7 @@
     <string name="cm_sound_mode_soundVibrate">Son+Vibreur</string>
     <string name="pref_flash_mode_title">Torche</string>
     <string name="pref_flash_mode_summary">Puissance de la diode</string>
+    <string name="toggles_not_enough_space">L\'espace est limité à 6 éléments</string>
 
     <!-- Status bar #CM -->
     <string name="status_bar_title">Barre d\'état</string>
@@ -878,18 +890,16 @@
     <string name="weather_use_custom_location">Lieu personnalisé</string>
     <string name="weather_geolocated">Géolocalisation par le réseau</string>
     <string name="weather_custom_location_dialog_title">Modifier le lieu</string>
-    <string name="weather_custom_location_dialog_message">Attention: Un lieu non reconnu arrête les mises à jour.</string>
     <string name="weather_custom_location_hint">Ville, Pays</string>
     <string name="weather_custom_location_title">Lieu</string>
     <string name="weather_show_location_title">Afficher le lieu</string>
     <string name="weather_show_timestamp_title">Afficher l\'heure</string>
     <string name="weather_refresh_interval">Intervalle de mise à jour</string>
-    <string name="weather_update">Mettre à jour</string>
     <string name="weather_use_metric">Système métrique</string>
-    <string name="weather_refreshing">Mise à jour de la météo</string>
     <string name="weather_retrieve_location_dialog_title">Impossible de déterminer le lieu!</string>
     <string name="weather_retrieve_location_dialog_message">La localisation par le réseau est désactivée.\n\nVeuillez sélectionner manuellement le lieu</string>
     <string name="weather_retrieve_location_dialog_enable_button">Activer</string>
+    <string name="weather_progress_title">Vérification du lieu</string>
 
     <!-- Lock screen Weather - Update frequency -->
     <string name="weather_refresh_manual">Manuellement</string>
