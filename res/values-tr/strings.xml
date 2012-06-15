@@ -293,9 +293,9 @@
     <string name="biometric_weak_improve_matching_title" msgid="8754080894393195194">"Yüz eşlemeyi iyileştir"</string>
     <string name="lock_after_timeout" msgid="4590337686681194648">"Otomatik olarak kilitle"</string>
     <string name="lock_after_timeout_summary" msgid="6128431871360905631">"Uykudan <xliff:g id="TIMEOUT_STRING">%1$s</xliff:g> sonra"</string>
-    <string name="show_owner_info_on_lockscreen_label" msgid="5074906168357568434">"Kilitli ekranda sahip bilgilerini göster"</string>
+    <string name="show_owner_info_on_lockscreen_label">Sahip bilgilerini göster</string>
     <string name="owner_info_settings_title" msgid="2723190010708381889">"Sahip bilgileri"</string>
-    <string name="owner_info_settings_summary" msgid="3800834657847339570"></string>
+    <string name="owner_info_settings_summary">Kilit ekranında sahip bilgilerini göster</string>
     <string name="owner_info_settings_edit_text_hint" msgid="4608681417960923911">"Kilit ekranında görüntülenecek metni yazın"</string>
     <string name="location_settings_title" msgid="8935806698251432196">"Konum hizmetleri"</string>
     <string name="security_settings_title" msgid="7945465324818485460">"Güvenlik"</string>
@@ -574,6 +574,7 @@
     <string name="wifi_network_prefix_length" msgid="3028785234245085998">"Ağ önek uzunluğu"</string>
     <string name="wifi_p2p_settings_title" msgid="5933614000444751775">"Kablosuz doğrudan bağlantı"</string>
     <string name="wifi_p2p_settings_summary" msgid="6653169526746701975">"Eşler arası bağlantı kurulumu"</string>
+    <string name="wifi_p2p_settings">Kablosuz doğrudan bağlantı ayarları</string>
     <string name="wifi_p2p_device_info" msgid="3191876744469364173">"Cihaz bilgileri"</string>
     <string name="wifi_p2p_wps_setup" msgid="1780420204385670531">"Kablosuz korumalı kurulumu"</string>
     <string name="wifi_p2p_wps_pin" msgid="6025317359151049787">"PIN\'i yazın"</string>
@@ -611,6 +612,8 @@
     <string name="dock_settings_summary" msgid="455802113668982481">"Takılı yuva için ses ayarları"</string>
     <string name="dtmf_tone_enable_title" msgid="8533399267725365088">"Tuş Takımı dokunmatik tonları"</string>
     <string name="sound_effects_enable_title" msgid="1171590821131077296">"Dokunma sesleri"</string>
+    <string name="vibrator_type_ringer">Çağrılar</string>
+    <string name="vibrator_type_notification">Bildirimler</string>
     <string name="lock_sounds_enable_title" msgid="450098505659399520">"Ekran kilidi sesi"</string>
     <string name="haptic_feedback_enable_title" msgid="2438293710530828760">"Dokunulduğunda titreşim"</string>
     <!-- START: Notification light, #CM -->
@@ -902,7 +905,7 @@
     <string name="usb_tethering_storage_active_subtext" msgid="5210094834194907094">"USB depolama birimi kullanılırken tethering yapılamaz"</string>
     <string name="usb_tethering_unavailable_subtext" msgid="1044622421184007254">"USB bağlı değil"</string>
     <string name="usb_tethering_errored_subtext" msgid="1377574819427841992">"USB bağlantısı hatası"</string>
-    <string name="bluetooth_tether_checkbox_text" msgid="2379175828878753652">"Bluetooth internet paylşm"</string>
+    <string name="bluetooth_tether_checkbox_text">"Bluetooth erişim noktası"</string>
     <string name="bluetooth_tethering_available_subtext" product="tablet" msgid="8811610320942954709">"Bu tabletin İnternet bağlantısı paylaşılıyor"</string>
     <string name="bluetooth_tethering_available_subtext" product="default" msgid="4229220575771946723">"Bu telefonun İnternet bağlantısı paylaşılıyor"</string>
     <string name="bluetooth_tethering_device_connected_subtext" product="tablet" msgid="2730938191906597896">"Bu tabletin İnternet bağlantısını 1 cihaz paylaşıyor"</string>
@@ -915,6 +918,15 @@
     <string name="bluetooth_tethering_overflow_error" msgid="6285122039489881969">"En çok <xliff:g id="MAXCONNECTION">%1$d</xliff:g> cihaz için tethering yapılabilir."</string>
     <string name="bluetooth_untether_blank" msgid="2871192409329334813">"<xliff:g id="DEVICE_NAME">%1$s</xliff:g> internet paylaşımı kesilecek."</string>
     <string name="tethering_help_button_text" msgid="656117495547173630">"Yardım"</string>
+    <string name="tethering_advanced_text">Gelişmiş</string>
+    <string name="tethering_lease_time_text">DHCP kiralama zamanı</string>
+    <string name="dhcp_lease_30mn">30 dakika</string>
+    <string name="dhcp_lease_1h">1 saat (varsayılan)</string>
+    <string name="dhcp_lease_2h">2 saat</string>
+    <string name="dhcp_lease_4h">4 saat</string>
+    <string name="dhcp_lease_6h">6 saat</string>
+    <string name="dhcp_lease_12h">12 saat</string>
+    <string name="dhcp_lease_24h">24 saat</string>
     <string name="network_settings_title" msgid="7967552516440151852">"Mobil ağlar"</string>
     <string name="location_title" msgid="1029961368397484576">"Konumum"</string>
     <string name="location_network_based" msgid="5569673665032992664">"Google\'ın konum hizmeti"</string>
@@ -981,6 +993,7 @@
     <string name="lockpattern_settings_help_how_to_record" msgid="2614673439060830433">"Kilit açma deseni çizme yöntemi"</string>
     <string name="lockpattern_too_many_failed_confirmation_attempts_header" msgid="819903817323783498">"Çok fazla sayıda yanlış deneme yapıldı!"</string>
     <string name="lockpattern_too_many_failed_confirmation_attempts_footer" msgid="6759029360597122873">"<xliff:g id="NUMBER">%d</xliff:g> saniye içinde yeniden deneyin."</string>
+    <string name="lockpattern_settings_enable_lock_before_unlock">Kilit açmadan önce araçları göster</string>
     <string name="skip_button_label" msgid="8680422740354436943">"İptal"</string>
     <string name="next_button_label" msgid="8890792540116568321">"İleri"</string>
     <string name="lock_title" product="tablet" msgid="2909697418179419990">"Tabletinizin güvenliğini sağlama"</string>
@@ -1134,6 +1147,8 @@
     <string name="spellchecker_security_warning" msgid="9060897418527708922">"Bu yazım denetleyici, şifreler ve kredi kartı numaraları gibi kişisel veriler de dahil olmak üzere yazdığınız tüm metni toplayabilir. Yazım denetleyici, <xliff:g id="SPELLCHECKER_APPLICATION_NAME">%1$s</xliff:g> uygulamasından gelmektedir. Bu yazım denetleyiciyi kullanmak istiyor musunuz?"</string>
     <string name="pointer_settings_category" msgid="8183819795164034286">"Fare/dokunmatik alan"</string>
     <string name="pointer_speed" msgid="1221342330217861616">"İşaretçi hızı"</string>
+    <string name="ime_switcher_notify">Seçici bildirimi</string>
+    <string name="ime_switcher_notify_summary">Giriş yöntemi seçici bildirimini göster</string>
     <string name="user_dict_settings_titlebar" msgid="765659257455000490">"Kullanıcı sözlüğü"</string>
     <string name="user_dict_single_settings_title" msgid="524997218433540614">"Kişisel sözlük"</string>
     <string name="user_dict_multiple_settings_title" msgid="3735224433307996276">"Kişisel sözlükler"</string>
@@ -1677,7 +1692,9 @@
     <string name="quiet_hours_active_to"> - </string>
     <string name="start_time_title">Başlangıç</string>
     <string name="end_time_title">Bitiş</string>
-
+    <!-- Safe headset volume restore checkbox -->
+    <string name="safe_headset_restore_title">Yüksek kulaklık sesi</string>
+    <string name="safe_headset_restore_summary">Kulaklık ilk kez takıldığında yüksek ses seviyelerini engelle</string>
     <!-- END: Quiet hours #CM -->
 
     <!-- START: Backlight #CM -->
@@ -1737,6 +1754,14 @@
     <string name="combined_bar_title">Birleştirilmiş çubuk</string>
     <string name="combined_bar_auto_hide_title">Otomatik gizle</string>
     <string name="combined_bar_auto_hide_summary">Tam ekran çalışan bir uygulamanın birleştirilmiş çubuğu gizlemesine izin ver</string>
+    <!-- Navigation Bar #CM -->
+    <string name="navigation_bar_title">Gezinme çubuğu</string>
+    <string name="navigation_bar_help_text">1 - Düzenlemeye başlamak için kilit simgesine dokunun\n\n2 - İşlevselliği ayarlamak için bir düğmeye dokunun\n\n3 - Sırayı değiştirmek için düğmeye uzunca basın\n\n4 - Kaydetmek için simgeye tekrar dokunun\n\n5 - Sistem varsayılanlarını geri yüklemek için sıfırla düğmesine dokunun\n\n</string>
+    <string name="navigation_bar_tips">&#8226; Bir seferde sadece bir kez eylem ayarlanabilir\n\n&#8226; Ev düğmesi tekrar atanamaz\n\n&#8226; Yan düğmelerin yeri değiştirilemez</string>
+    <string name="navigation_bar_tips_title">Hızlı ipuçları</string>
+    <string name="navigation_bar_reset_message">Şimdiki ayarlar silinip, varsayılanlara dönülsün mü?</string>
+    <string name="navigation_bar_save_message">Gezinme çubuğu ayarları kaydedildi</string>
+    <string name="navigation_bar_reset_toast">Gezinme çubuğu varsayılanlara ayarlandı</string>
     <!-- Power Widget #CM -->
     <string name="power_widget_title">Gelişmiş durum çubuğu</string>
     <string name="title_expanded_widget">Gelişmiş durum çubuğunu göster</string>
@@ -1789,6 +1814,7 @@
     <string name="cm_sound_mode_soundVibrate">Ses+Titreşim</string>
     <string name="pref_flash_mode_title">El feneri modu</string>
     <string name="pref_flash_mode_summary">Parlaklık oranını seçin</string>
+    <string name="toggles_not_enough_space">6 düğme ile sınırlı</string>
     <!-- Power Widget, Haptic feedback #CM -->
     <string name="expanded_haptic_feedback_title">Dokunsal geribildirim</string>
     <string name="expanded_haptic_feedback_summary">Dokunsal geribildirimi etkinleştir</string>
@@ -1801,6 +1827,7 @@
     <string name="status_bar_show_clock_summary">Durum çubuğunda saati göster</string>
     <string name="status_bar_am_pm_title">AM/PM gösterimi</string>
     <string name="status_bar_am_pm_summary">Saatin yanında AM/PM göster</string>
+    <string name="status_bar_am_pm_info">24 saatlik gösterim etkin</string>
     <string name="status_bar_battery_title">Pil göstergesi</string>
     <string name="status_bar_battery_summary">Pil göstergesinin görünüm şekli</string>
     <string name="status_bar_toggle_brightness">Parlaklık kontrolü</string>
@@ -1843,9 +1870,13 @@
     <!-- Profile Config screen PreferenceGroup titles -->
     <string name="profile_connectionoverrides_title">Bağlantıları yeniden düzenle</string>
     <string name="profile_volumeoverrides_title">Sesleri yeniden düzenle</string>
+    <string name="profile_vibratoroverrides_title">Titreşimleri yeniden düzenle</string>
     <string name="connection_state_disabled">Pasif</string>
     <string name="connection_state_enabled">Etkin</string>
     <string name="volume_override_summary">Yeniden düzenle</string>
+    <string name="vibrator_state_disabled">Pasif</string>
+    <string name="vibrator_state_enabled">Etkin</string>
+    <string name="vibrator_state_silent">Sadece sessizdeyken</string>
     <!-- Menu item for managing profiles -->
     <string name="profile_profiles_manage">Profiller</string>
     <string name="profile_profile_manage">Profili yönet</string>
@@ -1886,6 +1917,13 @@
     <string name="profile_lockmode_default_summary">Sistem varsayılanını kullan</string>
     <string name="profile_lockmode_insecure_summary">Güvensiz kilit ekranını kullan</string>
     <string name="profile_lockmode_disabled_summary">Ekran kilidi devre dışı</string>
+    <string name="profile_airplanemode_title">Uçak modu</string>
+    <string name="profile_airplanemode_default">Varsayılan</string>
+    <string name="profile_airplanemode_enabled">Etkin</string>
+    <string name="profile_airplanemode_disabled">Pasif</string>
+    <string name="profile_airplanemode_default_summary">Sistem varsayılanı</string>
+    <string name="profile_airplanemode_enabled_summary">Uçak modu açık</string>
+    <string name="profile_airplanemode_disabled_summary">Uçak modu kapalı</string>
     <string name="profile_disable_screen_lock_summary">Bu profil etkinken kilit ekranı güvenliğini devre dışı bırak</string>
     <!-- Connection override toggles (not all are used at this time ) -->
     <string name="possibleButtons">Düğmeler</string>
@@ -2030,6 +2068,11 @@
     <string name="pref_volume_wake_title">Ses tuşları ile uyan</string>
     <string name="pref_volume_wake_summary">Ses yükseltme/azaltma tuşları cihazı uyandırır</string>
 
+    <!-- Electron Beam : #CM -->
+    <string name="display_category_animation_options_title">Animasyon</string>
+    <string name="display_electron_beam_animation_on_title">Ekran açılış animasyonu</string>
+    <string name="display_electron_beam_animation_off_title">Ekran kapanış animasyonu</string>
+
     <!-- NFC : #CM -->
     <string name="profile_write_nfc_tag">NFC etikete yaz</string>
     <string name="profile_write_touch_tag">Etikete yazmak için dokunun</string>
@@ -2037,6 +2080,17 @@
     <string name="profile_write_failed">Etiket yazma hatası!</string>
     <string name="profile_selected">Seçilen profil: %1$s</string>
     <string name="profile_nfc_text">Bir NFC etiketine yazdığınızda profili seçmek için dokunmanız yeterlidir. İkinci kez dokunma, önceki profili seçer.</string>
+
+    <!-- Stylus Icon : #CM -->
+    <string name="stylus_icon_enabled_title">Kalem kullanırken simge göster</string>
+    <string name="stylus_icon_enabled_summary">Kalem ile çizim yaparken veya üzerinde gezinirken işaretçi simgesini göster</string>
+
+    <!-- Hostname setting -->
+    <string name="device_hostname">Cihaz adı</string>
+
+    <!-- Status bar notification count -->
+    <string name="status_bar_notif_count_title">Bildirim sayısını göster</string>
+    <string name="status_bar_notif_count_summary">Durum çubuğunda bekleyen bildirim sayısını göster</string>
 
     <!-- TTS : #CM -->
     <string name="tts_play_example_not_found_title">Uyarı</string>
@@ -2074,14 +2128,79 @@
 
     <!-- Lock Screen Shortcuts -->
     <string name="lockscreen_target_info">Kısayol atamak için çemberi hedefe sürükleyin</string>
-    <string name="lockscreen_target_title">Kilit ekranı kısayolları</string>
+    <string name="lockscreen_target_title">Kaydırma kısayolları</string>
     <string name="lockscreen_target_summary">Ekran kısayollarını düzenle</string>
     <string name="lockscreen_target_reset">Ekran kısayollarını sıfırla</string>
     <string name="lockscreen_target_save">Ekran kısayolları kaydedildi</string>
     <string name="lockscreen_target_reset_title">Sıfırla</string>
     <string name="lockscreen_target_reset_message">Oluşturduğunuz tüm kısayollar silinip varsayılan kısayollara dönülsün mü?</string>
     <string name="lockscreen_target_empty">Boş</string>
-    <string name="lockscreen_target_edit_title">Kısayol düzenle</string>
+    <string name="lockscreen_target_edit_title">Kısayolları ve simgeleri düzenle</string>
     <string name="lockscreen_target_edit_msg">İstediğiniz uygulama veya etkinliği değiştirmek için isme ve simgeye tek tek dokunun</string>
+
+    <!-- Lock Screen Weather -->
+    <string name="lockscreen_weather_title">Hava durumu</string>
+    <string name="lockscreen_weather_summary">Kilit ekranında hava durumunu göster</string>
+    <string name="lockscreen_weather_enabled">Etkin</string>
+    <string name="weather_enable">Hava durumunu göster</string>
+    <string name="weather_source">Yahoo! Hava Durumu</string>
+    <string name="weather_use_custom_location">Yer belirle</string>
+    <string name="weather_geolocated">Yeri ağdan otomatik bul</string>
+    <string name="weather_custom_location_dialog_title">Yeri girin</string>
+    <string name="weather_custom_location_hint">Şehir, Ülke</string>
+    <string name="weather_custom_location_title">Yer</string>
+    <string name="weather_show_location_title">Yeri göster</string>
+    <string name="weather_show_timestamp_title">Zamanı göster</string>
+    <string name="weather_refresh_interval">Güncelleme sıklığı</string>
+    <string name="weather_use_metric">Metrik sistemi kullan</string>
+    <string name="weather_retrieve_location_dialog_title">Yer bulunamadı!</string>
+    <string name="weather_retrieve_location_dialog_message">Ağdan konum bulma etkin değil.\n\nYeri kendiniz belirlemek için İptal, otomatik bulunması için Etkinleştir düğmesine dokunun</string>
+    <string name="weather_retrieve_location_dialog_enable_button">Etkinleştir</string>
+    <string name="weather_invert_lowhigh">Düşük/Yüksek değerlerin yerini değiştir</string>
+    <string name="weather_progress_title">Yer doğrulanıyor</string>
+
+    <!-- Lock screen Weather - Update frequency -->
+    <string name="weather_refresh_manual">Elle</string>
+    <string name="weather_refresh_30min">30 dakika</string>
+    <string name="weather_refresh_60min">60 dakika</string>
+    <string name="weather_refresh_2hrs">2 saat</string>
+    <string name="weather_refresh_4hrs">4 saat</string>
+    <string name="weather_refresh_6hrs">6 saat</string>
+    <string name="weather_refresh_8hrs">8 saat</string>
+
+    <!-- Lock screen Calendar -->
+    <string name="lockscreen_calendar_title">Takvim</string>
+    <string name="lockscreen_calendar_summary">Kilit ekranında yaklaşan takvim olaylarını göster</string>
+    <string name="lockscreen_calendar_enabled">Etkin</string>
+    <string name="calendar_title">Sonraki olayı göster</string>
+    <string name="calendars_title">Özel takvimler</string>
+    <string name="calendars_summary">Bu takvimlerden olayları getir</string>
+    <string name="calendar_reminders_only_title">Sadece hatırlatmalar</string>
+    <string name="calendar_reminders_only_summary">Sadece hatırlatma olaylarını göster</string>
+    <string name="calendar_lookahead_title">İleriye dönük olaylar</string>
+    <string name="calendar_show_location_title">Olay yeri</string>
+    <string name="calendar_show_description_title">Olay açıklaması</string>
+
+    <!-- Lock screen calendar - lookahead -->
+    <string name="calendar_lookahead_3hrs">Son 3 saat</string>
+    <string name="calendar_lookahead_6hrs">Son 6 saat</string>
+    <string name="calendar_lookahead_12hrs">Son 12 saat</string>
+    <string name="calendar_lookahead_1day">Son 1 gün</string>
+    <string name="calendar_lookahead_3days">Son 3 gün</string>
+    <string name="calendar_lookahead_1wk">Son 1 hafta</string>
+
+    <!-- Lock screen calendar - event metadata -->
+    <string name="calendar_metadata_none">Gösterme</string>
+    <string name="calendar_metadata_first_line">İlk satırı göster</string>
+    <string name="calendar_metadata_all">Tümünü göster</string>
+
+    <!-- Lock screen background -->
+    <string name="lockscreen_custom_background_title">Arka plan</string>
+    <string name="lockscreen_custom_background_dialog_title">Renk seç</string>
+    <string name="lockscreen_background_result_successful">Arka plan değiştirildi</string>
+    <string name="lockscreen_background_result_not_successful">Arka plan değiştirilmedi</string>
+    <string name="lockscreen_background_color_fill">Doldurma rengi</string>
+    <string name="lockscreen_background_custom_image">Özel resim</string>
+    <string name="lockscreen_background_default_wallpaper">Varsayılan duvar kağıdı</string>
 
 </resources>
