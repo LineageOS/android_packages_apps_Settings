@@ -35,11 +35,13 @@ import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.provider.MediaStore;
 import android.provider.Settings;
+import android.view.Display;
 import android.view.Window;
 import android.widget.Toast;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 import com.android.settings.notificationlight.ColorPickerView;
 
 public class LockscreenInterface extends SettingsPreferenceFragment implements
@@ -57,6 +59,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
 
     private File wallpaperImage;
     private File wallpaperTemporary;
+    private boolean mIsScreenLarge;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,6 +72,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         mCalendarPref = (Preference) findPreference(KEY_CALENDAR_PREF);
         mCustomBackground = (ListPreference) findPreference(KEY_BACKGROUND_PREF);
         mCustomBackground.setOnPreferenceChangeListener(this);
+        mIsScreenLarge = Utils.isScreenLarge();
         wallpaperImage = new File(mActivity.getFilesDir()+"/lockwallpaper");
         wallpaperTemporary = new File(mActivity.getCacheDir()+"/lockwallpaper.tmp");
         updateCustomBackgroundSummary();
@@ -190,18 +194,36 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
                 intent.putExtra("scale", true);
                 intent.putExtra("scaleUpIfNeeded", false);
                 intent.putExtra("outputFormat", Bitmap.CompressFormat.PNG.toString());
-                int width = mActivity.getWindowManager().getDefaultDisplay().getWidth();
-                int height = mActivity.getWindowManager().getDefaultDisplay().getHeight();
+                Display display = mActivity.getWindowManager().getDefaultDisplay();
+                int width = display.getWidth();
+                int height = display.getHeight();
                 Rect rect = new Rect();
                 Window window = mActivity.getWindow();
                 window.getDecorView().getWindowVisibleDisplayFrame(rect);
                 int statusBarHeight = rect.top;
                 int contentViewTop = window.findViewById(Window.ID_ANDROID_CONTENT).getTop();
                 int titleBarHeight = contentViewTop - statusBarHeight;
-                boolean isPortrait = getResources().getConfiguration().orientation ==
-                    Configuration.ORIENTATION_PORTRAIT;
-                intent.putExtra("aspectX", isPortrait ? width : height - titleBarHeight);
-                intent.putExtra("aspectY", isPortrait ? height - titleBarHeight : width);
+                // Lock screen for tablets visible section are different in landscape/portrait,
+                // image need to be cropped correctly, like wallpaper setup for scrolling in background in home screen
+                // other wise it does not scale correctly
+                if (mIsScreenLarge) {
+                    width = mActivity.getWallpaperDesiredMinimumWidth();
+                    height = mActivity.getWallpaperDesiredMinimumHeight();
+                    float spotlightX = (float) display.getWidth() / width;
+                    float spotlightY = (float) display.getHeight() / height;
+                    intent.putExtra("aspectX", width);
+                    intent.putExtra("aspectY", height);
+                    intent.putExtra("outputX", width);
+                    intent.putExtra("outputY", height);
+                    intent.putExtra("spotlightX", spotlightX);
+                    intent.putExtra("spotlightY", spotlightY);
+
+                } else {
+                    boolean isPortrait = getResources().getConfiguration().orientation ==
+                        Configuration.ORIENTATION_PORTRAIT;
+                    intent.putExtra("aspectX", isPortrait ? width : height - titleBarHeight);
+                    intent.putExtra("aspectY", isPortrait ? height - titleBarHeight : width);
+                }
                 try {
                     wallpaperTemporary.createNewFile();
                     wallpaperTemporary.setWritable(true, false);
