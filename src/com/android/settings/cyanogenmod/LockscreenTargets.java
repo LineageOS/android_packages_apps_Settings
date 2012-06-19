@@ -345,7 +345,7 @@ public class LockscreenTargets extends Fragment implements ShortcutPickHelper.On
         targetLayout.deleteCharAt(targetLayout.length() - 1);
         Settings.System.putString(mActivity.getContentResolver(), Settings.System.LOCKSCREEN_TARGETS, targetLayout.toString());
         for (File pic : mActivity.getFilesDir().listFiles()) {
-            if (pic.getName().startsWith("lockscreen_") && !existingImages.contains(pic.getName())) {
+            if (pic.getName().startsWith("lockscreen_") && !existingImages.contains(pic.toString())) {
                 pic.delete();
             }
         }
