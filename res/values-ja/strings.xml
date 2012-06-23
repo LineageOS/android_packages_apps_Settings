@@ -1592,6 +1592,17 @@
     <string name="safe_headset_restore_title">安全なヘッドフォン音量</string>
     <string name="safe_headset_restore_summary">最初にヘッドフォンを接続した時に大音量になるのを防ぐ</string>
 
+    <!-- Advanced tethering settings -->
+    <string name="tethering_advanced_text">詳細設定</string>
+    <string name="tethering_lease_time_text">DHCPリース時間</string>
+    <string name="dhcp_lease_30mn">30分</string>
+    <string name="dhcp_lease_1h">1時間(デフォルト)</string>
+    <string name="dhcp_lease_2h">2時間</string>
+    <string name="dhcp_lease_4h">4時間</string>
+    <string name="dhcp_lease_6h">6時間</string>
+    <string name="dhcp_lease_12h">12時間</string>
+    <string name="dhcp_lease_24h">24時間</string>
+
     <!-- String for ShortcutPickHelper -->
     <string name="picker_activities">アクティビティ</string>
     <string name="select_custom_app_title">カスタムアプリケーションを選択</string>
@@ -1806,6 +1817,8 @@
     <string name="pref_flash_mode_title">フラッシュ</string>
     <string name="pref_flash_mode_summary">HighかDeath Rayを選択</string>
 
+    <string name="toggles_not_enough_space">6つのトグルしか配置できません</string>
+
     <!-- Power Widget, Haptic feedback #CM -->
     <string name="expanded_haptic_feedback_title">振動フィードバック</string>
     <string name="expanded_haptic_feedback_summary">振動フィードバックを有効/無効にする</string>
@@ -1849,24 +1862,22 @@
     <string name="lockscreen_weather_title">天気</string>
     <string name="lockscreen_weather_summary">ロック画面に天気情報を表示する</string>
     <string name="lockscreen_weather_enabled">有効</string>
-    <string name="weather_enable">天気を表示</string>
+    <string name="weather_enable">天気を表示する</string>
     <string name="weather_source">Yahoo! Weather</string>
     <string name="weather_use_custom_location">カスタムの場所</string>
     <string name="weather_geolocated">ネットーワークを使った位置情報</string>
     <string name="weather_custom_location_dialog_title">場所を入力</string>
-    <string name="weather_custom_location_dialog_message">注意: 不正な場所を入力すると更新されません</string>
     <string name="weather_custom_location_hint">市 県/国</string>
     <string name="weather_custom_location_title">場所</string>
     <string name="weather_show_location_title">場所を表示</string>
     <string name="weather_show_timestamp_title">更新時刻を表示</string>
     <string name="weather_refresh_interval">更新間隔</string>
-    <string name="weather_update">更新</string>
     <string name="weather_use_metric">メトリック表示を使用</string>
-    <string name="weather_refreshing">天気情報を更新中</string>
     <string name="weather_retrieve_location_dialog_title">場所を取得できません!</string>
     <string name="weather_retrieve_location_dialog_message">ネットワークを使った現在地の取得は利用できません.\n\nネットワークロケーションを有効にするか、カスタムの場所を設定してください.</string>
     <string name="weather_retrieve_location_dialog_enable_button">有効</string>
     <string name="weather_invert_lowhigh">最低/最高気温を逆にする</string>
+    <string name="weather_progress_title">場所を確認中</string>
 
     <!-- Lock screen Weather - Update frequency -->
     <string name="weather_refresh_manual">手動</string>
@@ -1902,6 +1913,15 @@
     <string name="calendar_metadata_none">表示しない</string>
     <string name="calendar_metadata_first_line">最初の1行を表示</string>
     <string name="calendar_metadata_all">すべて表示</string>
+
+    <!-- Lock screen background -->
+    <string name="lockscreen_custom_background_title">壁紙</string>
+    <string name="lockscreen_custom_background_dialog_title">色を選択</string>
+    <string name="lockscreen_background_result_successful">壁紙を変更しました</string>
+    <string name="lockscreen_background_result_not_successful">壁紙は変更されませんでした</string>
+    <string name="lockscreen_background_color_fill">単色の背景</string>
+    <string name="lockscreen_background_custom_image">カスタム画像</string>
+    <string name="lockscreen_background_default_wallpaper">デフォルトの壁紙</string>
 
     <!-- Profiles settings #CM -->
     <string name="profiles_settings_title">プロファイル</string>
@@ -2019,7 +2039,6 @@
     <string name="toggleWimax">WiMAX</string>
 
     <!-- misc #CM -->
-    <string name="owner_info_settings_enabled">有効</string>
     <string name="lockpattern_settings_enable_lock_before_unlock">解除する前にウィジェットを表示</string>
     <string name="ime_switcher_notify">入力方法セレクタの通知</string>
     <string name="ime_switcher_notify_summary">入力方法セレクタを通知バーに表示する</string>
@@ -2250,4 +2269,8 @@
 
     <!-- Hostname setting -->
     <string name="device_hostname">デバイスのホスト名</string>
+
+    <!-- Status bar notification count -->
+    <string name="status_bar_notif_count_title">通知の数を表示する</string>
+    <string name="status_bar_notif_count_summary">ステータスバーに溜まっている通知の数を表示する</string>
 </resources>
