@@ -1555,7 +1555,7 @@
     <string name="show_all_anrs_summary" msgid="641908614413544127">"\'App reageert niet\' tonen voor apps op achtergr."</string>
     <string name="kill_app_longpress_back">Geforceerd afsluiten met terug-knop</string>
     <string name="kill_app_longpress_back_summary">Forceer de app op de voorgrond om af te sluiten door de terug-knop lang in te drukken</string>
-    <string name="data_usage_summary_title" msgid="3804110657238092929">"Datagebruik"</string>
+    <string name="data_usage_summary_title" msgid="3804110657238092929">"Gegevensgebruik"</string>
     <string name="data_usage_cycle" msgid="5652529796195787949">"Gegevensgebruikcyclus"</string>
     <string name="data_usage_menu_roaming" msgid="8042359966835203296">"Gegevensroaming"</string>
     <string name="data_usage_menu_restrict_background" msgid="1989394568592253331">"Achtergrondgegevens beperken"</string>
@@ -1721,7 +1721,7 @@
     <string name="title_toggle_sync">Schakel synchronisatie in/uit</string>
     <string name="title_toggle_wifiap">Schakel Wi-Fi-AP in/uit</string>
     <string name="title_toggle_screentimeout">Schakel time-out scherm in/uit</string>
-    <string name="title_toggle_mobiledata">Schakel mobiele data in/uit</string>
+    <string name="title_toggle_mobiledata">Schakel mobiele gegevens in/uit</string>
     <string name="title_toggle_lockscreen">Schakel vergrendelscherm in/uit</string>
     <string name="title_toggle_networkmode">Schakel tussen 2G &amp; 3G</string>
     <string name="title_toggle_autorotate">Schakel automatisch roteren in/uit</string>
@@ -1913,7 +1913,7 @@
     <!-- Menu item for managing profiles -->
     <string name="profile_profiles_manage">Profielen</string>
     <string name="profile_profile_manage">Beheer profiel</string>
-    <string name="profile_applist_manage">Applijst</string>
+    <string name="profile_applist_manage">App-lijst</string>
     <string name="profile_appgroups_manage">Beheer appgroepen</string>
     <string name="profile_appgroup_manage">Beheer appgroep</string>
     <!-- Profile Settings sound mode label -->
@@ -1945,8 +1945,8 @@
     <string name="profile_settings_header">Profielinstellingen</string>
     <string name="possibleButtons">Mogelijke knoppen</string>
     <string name="toggleWifiAp">Draagbaar Wi-Fi-hotspot</string>
-    <string name="toggleData">Mobiele data</string>
-    <string name="toggleSync">Datasynchronisatie</string>
+    <string name="toggleData">Mobiele gegevens</string>
+    <string name="toggleSync">Gegevenssynchronisatie</string>
     <string name="toggleSound">Belmodus</string>
     <string name="toggleBrightness">Helderheid</string>
     <string name="toggleAutoRotate">Orientatie</string>
@@ -1975,7 +1975,7 @@
     <!-- Performance settings -->
     <string name="performance_settings_title">Prestaties</string>
     <string name="performance_settings_warning_title">Waarschuwing</string>
-    <string name="performance_settings_warning">Deze instellingen zijn experimenteel en kunnen leiden tot instabiliteit, crashes, dataverlies of hardwareschade.\n\nMeld geen fouten aan de ontwikkelaars als deze instellingen veranderd zijn.</string>
+    <string name="performance_settings_warning">Deze instellingen zijn experimenteel en kunnen leiden tot instabiliteit, crashes, gegevensverlies of hardwareschade.\n\nMeld geen fouten aan de ontwikkelaars als deze instellingen veranderd zijn.</string>
     <string name="processor_summary">Verander CPU-governor en kloksnelheid</string>
     <string name="cpu_cur_freq_title">Huidige CPU-frequentie</string>
     <string name="cpu_governors_title">CPU-governor</string>
@@ -2062,30 +2062,30 @@
 
     <!-- Backlight settings -->
     <string name="backlight_title">Automatische achtergrondverlichting</string>
-    <string name="backlight_summary">Wijzig niveaus en filtering</string>
+    <string name="backlight_summary">Niveaus &amp; filtering wijzigen</string>
     <string name="light_filter_title">Lichtsensorfilter</string>
     <string name="light_filter_enabled_title">Ingeschakeld</string>
-    <string name="light_filter_enabled_summary">Pas voortschrijdend gemiddelde filter toe op de sensorgegevens om flikkeren te verminderen</string>
-    <string name="light_filter_window_title">Vensterlengte</string>
+    <string name="light_filter_enabled_summary">Voortschrijdend gemiddeld filter toepassen op sensorgegevens om flikkeren te verminderen</string>
+    <string name="light_filter_window_title">Periode</string>
     <string name="light_filter_window_summary">Gefilterde waarde is de gemiddelde sensorwaarde tijdens deze periode</string>
-    <string name="light_filter_reset_title">Drempelwaarde herstellen</string>
-    <string name="light_filter_reset_summary">Voorbeelden die te veel van het gemiddelde afwijken herstellen de filter</string>
-    <string name="light_filter_interval_title">Voorbeeldinterval</string>
-    <string name="light_filter_interval_summary">Lage waarden zijn preciezer maar belast de CPU meer</string>
+    <string name="light_filter_reset_title">Drempelwaarde voor herstel</string>
+    <string name="light_filter_reset_summary">Afwijking in meetwaarde waarbij filter hersteld wordt</string>
+    <string name="light_filter_interval_title">Meetinterval</string>
+    <string name="light_filter_interval_summary">Lage waarden zijn preciezer, maar belasten de CPU meer</string>
     <string name="light_levels_title">Lichtniveaus</string>
-    <string name="light_levels_enabled_title">Gebruik eigen</string>
-    <string name="light_levels_dim_title">Schermdim-niveaus</string>
-    <string name="light_levels_dim_summary">Helderheid gebreikt om het scherm te dimmen</string>
+    <string name="light_levels_enabled_title">Eigen waarden gebruiken</string>
+    <string name="light_levels_dim_title">Schermdimniveaus</string>
+    <string name="light_levels_dim_summary">Helderheid gebruikt om scherm te dimmen</string>
     <string name="light_levels_editor_title">Andere niveaus bewerken\u2026</string>
-    <string name="light_decrease_enabled_title">Sta lichtvermindering toe</string>
-    <string name="light_decrease_enabled_summary">Schakel in om lichten te verminderen. Gebruik hysterese om flikkeren te verminderen</string>
-    <string name="light_decrease_hysteresis_title">Verminder hysterese</string>
-    <string name="light_decrease_hysteresis_summary">Sensorniveaus overlappen dit erg naar beneden</string>
+    <string name="light_decrease_enabled_title">Lichtvermindering toestaan</string>
+    <string name="light_decrease_enabled_summary">Vermindert verlichting. Gebruik hysterese om flikkeren te verminderen</string>
+    <string name="light_decrease_hysteresis_title">Hysterese</string>
+    <string name="light_decrease_hysteresis_summary">Percentage onder sensorniveaus zonder lichtvermindering</string>
 
     <!-- Settings - Volume (additions) -->
     <string name="volume_ring_only_description">Beltonen</string>
     <string name="link_volume_ringtones">Link volumes</string>
-    <string name="link_volume_ringtones_toast">Zorg ervoor dat u uw volume wijzigt zodat de notificatievolume wordt hersteld en overeenkomt met de beltoonvolume.</string>
+    <string name="link_volume_ringtones_toast">Let op: wijzig uw volume zodat het notificatievolume wordt hersteld en overeenkomt met het beltoonvolume.</string>
     <string name="link_volume_mutes">Link stille modi</string>
 
     <!-- Light sensor levels settings -->
@@ -2112,7 +2112,7 @@
     <!-- Wakeup options -->
     <string name="display_category_wakeup_options_title">Ontwaakinstellingen</string>
     <string name="pref_volume_wake_title">Ontwaken met volumeknop</string>
-    <string name="pref_volume_wake_summary">Als een volumeknop wordt ingedrukt ontwaakt het apparaat</string>
+    <string name="pref_volume_wake_summary">Apparaat ontwaken als een volumeknop wordt ingedrukt</string>
 
     <string name="profile_write_nfc_tag">Schrijf naar NFC-tag</string>
     <string name="profile_write_touch_tag">Raak tag aan om te schrijven</string>
@@ -2123,7 +2123,7 @@
 
     <!-- Display Settings : Render effect -->
     <string name="pref_render_effect_title">Rendereffect</string>
-    <string name="pref_render_effect_summary">Kies welke kleuren er door het scherm worden gebruikt</string>
+    <string name="pref_render_effect_summary">Door het scherm te gebruiken kleuren kiezen</string>
 
     <string name="pref_render_effect_none">Geen rendereffect</string>
     <string name="pref_render_effect_night">Nachtmodus (3700K)</string>
