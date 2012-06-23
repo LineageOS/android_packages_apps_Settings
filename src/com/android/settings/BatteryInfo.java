@@ -24,14 +24,11 @@ import android.content.IntentFilter;
 import android.os.BatteryManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.IPowerManager;
 import android.os.Message;
-import android.os.ServiceManager;
 import android.os.SystemClock;
 import android.text.format.DateUtils;
 import android.widget.TextView;
 
-import com.android.internal.app.IBatteryStats;
 
 public class BatteryInfo extends Activity {
     private TextView mStatus;
@@ -43,8 +40,6 @@ public class BatteryInfo extends Activity {
     private TextView mTemperature;
     private TextView mTechnology;
     private TextView mUptime;
-    private IBatteryStats mBatteryStats;
-    private IPowerManager mScreenStats;
     
     private static final int EVENT_TICK = 1;
     
@@ -55,7 +50,6 @@ public class BatteryInfo extends Activity {
                 case EVENT_TICK:
                     updateBatteryStats();
                     sendEmptyMessageDelayed(EVENT_TICK, 1000);
-                    
                     break;
             }
         }
@@ -158,9 +152,7 @@ public class BatteryInfo extends Activity {
         mTemperature = (TextView)findViewById(R.id.temperature);
         mUptime = (TextView) findViewById(R.id.uptime);
         
-        // Get awake time plugged in and on battery
-        mBatteryStats = IBatteryStats.Stub.asInterface(ServiceManager.getService("batteryinfo"));
-        mScreenStats = IPowerManager.Stub.asInterface(ServiceManager.getService(POWER_SERVICE));
+        // Get awake time
         mHandler.sendEmptyMessageDelayed(EVENT_TICK, 1000);
         
         registerReceiver(mIntentReceiver, mIntentFilter);
