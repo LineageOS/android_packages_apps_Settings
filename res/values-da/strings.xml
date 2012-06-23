@@ -1580,4 +1580,427 @@
     <string name="backup_pw_cancel_button_text" msgid="8845630125391744615">"Annuller"</string>
     <string name="percentage" msgid="5866131581207788624">"<xliff:g id="NUMBER">%d</xliff:g> %%"</string>
     <string name="additional_system_update_settings_list_item_title" msgid="214987609894661992">"Yderligere systemopdateringer"</string>
+	
+    <!-- Danish CM9 translation by Jacob Madsen, u2jacob@gmail.com -->
+    <!-- Quiet hours #CM -->
+    <string name="quiet_hours_title">Stille timer</string>
+    <string name="quiet_hours_summary">Konfigurér de timer, enheden skal være stille</string>
+    <string name="quiet_hours_note_title">Note</string>
+    <string name="quiet_hours_note_summary">Indgående opkald vil opført sig som vanligt under stille timer</string>
+    <string name="quiet_hours_enabled">Slå stille timer til</string>
+    <string name="quiet_hours_enabled_on">Stille timer håndhæves</string>
+    <string name="quiet_hours_enabled_off">Meddelelser vil fungere som normalt</string>
+    <string name="quiet_hours_start">Start på stille timer</string>
+    <string name="quiet_hours_start_summary">Fra hvornår skal stille timer håndhæves</string>
+    <string name="quiet_hours_end">Slut på stille timer</string>
+    <string name="quiet_hours_end_summary">Til hvornår skal stille timer håndhæves</string>
+    <string name="quiet_hours_mute">Gør notifikationer lydløse</string>
+    <string name="quiet_hours_mute_on">Ingen lyde vil blive afspillet</string>
+    <string name="quiet_hours_mute_off">Lyde vil blive afspillet som normalt</string>
+    <string name="quiet_hours_still">Slå vibrationer fra</string>
+    <string name="quiet_hours_still_on">Enheden vil ikke vibrere</string>
+    <string name="quiet_hours_still_off">Enheden vil vibrere normalt</string>
+    <string name="quiet_hours_dim">Slå meddelelseslys fra</string>
+    <string name="quiet_hours_dim_on">Meddelelseslys vil blive slået fra</string>
+    <string name="quiet_hours_dim_off">Meddelelseslys vil fungere som normalt</string>
+    <string name="quiet_hours_haptic">Slå haptisk feedback fra</string>
+    <string name="quiet_hours_haptic_on">Haptisk feedback vil blive slået fra</string>
+    <string name="quiet_hours_haptic_off">Haptisk feedback vil fungere som normalt</string>
+    <string name="quiet_hours_active_from">Aktiv fra</string>
+    <string name="quiet_hours_active_to">til</string>
+
+    <!-- time range preference -->
+    <string name="start_time_title">Start</string>
+    <string name="end_time_title">Slut</string>
+
+    <!-- Safe headset volume restore checkbox -->
+    <string name="safe_headset_restore_title">Sikker lydstyrke på headset</string>
+    <string name="safe_headset_restore_summary">Forhindr høj lydstyrke, når headset sluttes til første gang</string>
+
+    <!-- Backlight #CM -->
+    <string name="backlight_title">Automatisk baggrundslys</string>
+    <string name="backlight_summary">Justér niveauer og filtrering</string>
+    <string name="light_filter_title">Filter til lyssensor </string>
+    <string name="light_filter_enabled_title">Slået til</string>
+    <string name="light_filter_enabled_summary">Anvend glidende gennemsnitsfilter til sensordata for at reducere flimmer</string>
+    <string name="light_filter_window_title">Vindueslængde</string>
+    <string name="light_filter_window_summary">Filtreret værdi er sensorens gennemsnitsværdi i denne periode</string>
+    <string name="light_filter_reset_title">Nulstil tærskel</string>
+    <string name="light_filter_reset_summary">Prøver, der afviger så meget fra det nuværende gennemsnit, nulstiller filteret</string>
+    <string name="light_filter_interval_title">Prøveinterval</string>
+    <string name="light_filter_interval_summary">Lav værdi kan forbedre nøjagtigheden, men bruger noget mere CPU</string>
+    <string name="light_levels_title">Lysniveauer</string>
+    <string name="light_levels_enabled_title">Anvend brugerdefineret</string>
+    <string name="light_levels_dim_title">Skærmdæmpningsniveau</string>
+    <string name="light_levels_dim_summary">Lysstyrke, der bruges til at dæmpe skærmen</string>
+    <string name="light_levels_editor_title">Redigér andre niveauer\u2026</string>
+    <string name="light_decrease_enabled_title">Tillad lysdæmpning</string>
+    <string name="light_decrease_enabled_summary">Aktiver for at tillade lys at dæmpe. Brug hysterese for at reducere flimmer</string>
+    <string name="light_decrease_hysteresis_title">Sæt hysterese ned</string>
+    <string name="light_decrease_hysteresis_summary">Sensorniveauer overlapper så meget nedad</string>
+
+	    <!-- Light sensor levels #CM -->
+    <string name="ll_title">Niveauer for lyssensor</string>
+    <string name="ll_header_upper">Øvre</string>
+    <string name="ll_header_lower">Nedre</string>
+    <string name="ll_header_lcd">Skærm</string>
+    <string name="ll_header_btn">Knapper</string>
+    <string name="ll_header_kb">Tastatur</string>
+    <string name="ll_lux">Sensor (filtreret / rå):</string>
+    <string name="ll_lcd">Skærm:</string>
+    <string name="ll_btn">Knapper:</string>
+    <string name="ll_kb">Tastatur:</string>
+    <string name="ll_disabled">slået fra</string>
+    <string name="ll_default">Hent standarder</string>
+    <string name="ll_save">Gem &amp; aktivér</string>
+    <string name="ll_reload">Genindlæs nuværende</string>
+    <string name="ll_bad_levels">Niveauer skal være stigende</string>
+    <string name="ll_num_levels">Sæt antallet af niveauer</string>
+
+    <!-- Advanced, Device specific (DeviceParts) settings #CM -->
+    <string name="advanced_settings_title">Avanceret</string>
+
+<!-- INTERFACE Settings #CM -->
+    <!-- Settings main menu category heading. Interface (Launcher, Themes, System). [CHAR LIMIT=40] -->
+    <string name="header_category_interface">BRUGERFLADE</string>
+
+    <!-- Launcher settings #CM -->
+    <string name="launcher_settings_title">Launcher</string>
+
+    <!-- Themes settings #CM -->
+    <string name="themes_settings_title">Temaer</string>
+
+    <!-- System Interface settings #CM -->
+    <string name="system_settings_title">System</string>
+    <string name="system_interface_title">Systembrugerflade</string>
+    
+    <!-- Notification Drawer #CM -->
+    <string name="notification_drawer_title">Meddelelsesskuffe</string>
+
+    <!-- Combined Bar #CM -->
+    <string name="combined_bar_title">Kombineret linje</string>
+    <string name="combined_bar_auto_hide_title">Skjul automatisk</string>
+    <string name="combined_bar_auto_hide_summary">Tillad kombineret linje at skjules ved fuldskærms-apps</string>
+
+    <!-- Navigation Bar #CM -->
+    <string name="navigation_bar_title">Navigationslinje</string>
+
+    <string name="navigation_bar_help_text">1 - Tryk på låseikonet for at starte redigering\n\n2 - Tryk en vilkårlig knap for at tildele eller ændre funktionalitet\n\n3 - Tryk længe på en knap for at omarrangere rækkefølgen\n\n4 - Tryk på ikonet igen for at gemme\n\n5 - Tryk på Nulstil-knappen for at gendanne systemstandard\n\n</string>
+    <string name="navigation_bar_tips">&#8226; Handlinger kan kun tildeles én knap ad gangen\n\n&#8226; Hjem-knappen kan ikke gen-tildeles\n\n&#8226; Sideknapper kan ikke omarrangeres</string>
+    <string name="navigation_bar_tips_title">Hurtige tips</string>
+    <string name="navigation_bar_reset_message">Slet nuværende indstillinger og gendan til standard?</string>
+    <string name="navigation_bar_save_message">Indstillinger for navigationslinje gemt</string>
+    <string name="navigation_bar_reset_toast">Navigationslinje nulstillet til standard</string>
+
+    <!-- Power Widget #CM -->
+    <string name="power_widget_title">Strøm-widget</string>
+    <string name="title_expanded_widget">Vis strøm-widget</string>
+    <string name="summary_expanded_widget">Vis strøm-widget i meddelelsesskuffe</string>
+    <string name="title_expanded_hide_onchange">Skjul ved ændring</string>
+    <string name="summary_expanded_hide_onchange">Skjul meddelelsesskuffen efter at have skiftet en widget-knap</string>
+    <string name="title_expanded_hide_indicator">Skjul indikator</string>
+    <string name="summary_expanded_hide_indicator">Skjul strøm-widget-indikatorerne</string>
+    <string name="title_expanded_hide_scrollbar">Skjul scrollbar</string>
+    <string name="summary_expanded_hide_scrollbar">Skjul scrollbaren, når mere end det maksimale antal widget-knapper vises</string>
+    <string name="title_widget_picker">Widget-knapper</string>
+    <string name="summary_widget_picker">Vælg hvilke knapper, som skal vises i strøm-widgeten</string>
+    <string name="title_widget_order">Rækkefølge på widget-knapper</string>
+    <string name="summary_widget_order">Vælg rækkefølgen af knapper i strøm-widgeten</string>
+    <string name="title_buttons">Knapper</string>
+    <string name="title_toggle_wifi">Skift Wi-Fi</string>
+    <string name="title_toggle_bluetooth">Skift Bluetooth</string>
+    <string name="title_toggle_gps">Skift GPS</string>
+    <string name="title_toggle_sound">Skift lyd</string>
+    <string name="title_toggle_brightness">Skift lysstyrke</string>
+    <string name="title_toggle_sync">Skift Sync</string>
+    <string name="title_toggle_wifiap">Skift Wi-Fi AP</string>
+    <string name="title_toggle_screentimeout">Skift skærmtimeout</string>
+    <string name="title_toggle_mobiledata">Skift mobildata</string>
+    <string name="title_toggle_lockscreen">Skift låseskærm</string>
+    <string name="title_toggle_networkmode">Skift 2G/3G</string>
+    <string name="title_toggle_autorotate">Skift orientering</string>
+    <string name="title_toggle_airplane">Skift flytilstand</string>
+    <string name="title_toggle_flashlight">Skift LED-lommelygte</string>
+    <string name="title_toggle_sleep">Sov</string>
+    <string name="title_toggle_media_play_pause">Medier: Skift Spil/Pause</string>
+    <string name="title_toggle_media_previous">Medier: Gå til forrige</string>
+    <string name="title_toggle_media_next">Medier: Gå til næste</string>
+    <string name="title_toggle_lte">Skift LTE</string>
+    <string name="title_toggle_wimax">Skift WiMAX</string>
+    <string name="title_button_modes">Knaptilstande</string>
+    <string name="pref_brightness_mode_title">Lysstyrke-tilstande</string>
+    <string name="pref_brightness_mode_summary">Vælg hvordan lysstyrkeknappen skifter tilstande</string>
+    <string name="cm_brightness_mode_auto">Automatisk</string>
+    <string name="cm_brightness_mode_dim">Dæmp</string>
+    <string name="pref_network_mode_title">Netværkstilstande</string>
+    <string name="pref_network_mode_summary">Vælg hvordan netværkstilstandsknappen skifter tilstande</string>
+    <string name="pref_screentimeout_mode_title">Tilstande for skærmtimeout</string>
+    <string name="pref_screentimeout_mode_summary">Vælg hvordan skærmtimeoutsknappen skifter tilstande</string>
+    <string name="pref_ring_mode_title">Lydtilstande</string>
+    <string name="pref_ring_mode_summary">Vælg hvordan lydtilstandsknappen skifter tilstande</string>
+    <string name="cm_sound_mode_silent">Lydløs</string>
+    <string name="cm_sound_mode_vibrate">Vibrér</string>
+    <string name="cm_sound_mode_sound">Lyd</string>
+    <string name="cm_sound_mode_soundVibrate">Lyd+Vibrér</string>
+    <string name="pref_flash_mode_title">Flash mode</string>
+    <string name="pref_flash_mode_summary">Vælg High / Death Ray</string>
+
+    <string name="toggles_not_enough_space">Pladsen er begrænset til seks knapper</string>
+
+    <!-- Power Widget, Haptic feedback #CM -->
+    <string name="expanded_haptic_feedback_title">Haptisk feedback</string>
+    <string name="expanded_haptic_feedback_summary">Slå haptisk feedback til og fra</string>
+
+    <!-- Status bar #CM -->
+    <string name="combined_status_bar_title">@string/status_bar_title</string>
+    <string name="status_bar_title">Statuslinje</string>
+    <string name="status_bar_clock_title">Ur</string>
+    <string name="status_bar_general_title">Generelt</string>
+    <string name="status_bar_show_clock_title">Vis ur</string>
+    <string name="status_bar_show_clock_summary">Vis uret i statuslinjen</string>
+    <string name="status_bar_am_pm_title">AM/PM-stil</string>
+    <string name="status_bar_am_pm_summary">AM/PM-visningsstil ved siden af ur</string>
+    <string name="status_bar_am_pm_info">24-timers ur er slået til</string>
+    <string name="status_bar_battery_title">Batteristatus-stil</string>
+    <string name="status_bar_battery_summary">Visningsstil til batteristatus</string>
+    <string name="status_bar_toggle_brightness">Lysstyrke-kontrol</string>
+    <string name="status_bar_toggle_brightness_summary">Tillader justering af lysstyrke ved at køre over statuslinje</string>
+    <string name="status_bar_toggle_info">Automatisk lysstyrke er slået til</string>
+    <string name="status_bar_signal_text_title">Signalstatus-stil</string>
+    <string name="status_bar_signal_text_summary">Visningsstil af signalstatus</string>
+    <string name="status_bar_signal_text_show_bars">Ikon (standard)</string>
+    <string name="status_bar_signal_text_show_text">Tekst</string>
+    <string name="status_bar_signal_text_hidden">Skjult</string>
+
+    <string name="lock_screen_title">Låseskærm</string>
+
+    <!-- Profiles settings #CM -->
+    <string name="profiles_settings_title">Profiler</string>
+    <string name="profiles_general_title">Generelt</string>
+    <string name="profiles_add">Tilføj</string>
+    <string name="profile_menu_delete">Slet</string>
+    <string name="profile_settings_title">Profil</string>
+
+    <!-- Add Profile -->
+    <string name="add_profile_dialog_title">Opret en ny profil</string>
+    <string name="profile_name_title">Navn</string>
+    <string name="profile_profile_name_prompt">Angiv et navn til den nye profil</string>
+    <string name="menu_new_profile">Ny profil</string>
+    <string name="menu_new_profile_summary">Tilføj og konfigurér en ny profil</string>
+    <string name="new_profile_name">&lt;ny profil&gt;</string>
+	
+    <!-- Rename Dialog  -->
+    <string name="rename_dialog_title">Omdøb</string>
+    <string name="rename_dialog_message">Angiv et nyt navn</string>
+    <string name="duplicate_profile_name">Profilnavn findes allerede!</string>
+    <string name="duplicate_appgroup_name">Applikationsgruppenavn findes allerede!</string>
+
+    <!-- Reset Profiles -->
+    <string name="profile_reset_title">Nulstil</string>
+    <string name="profile_reset_message">Slet alle brugeroprettede profiler og applikationsgrupper og gendan dem til standard?</string>
+
+    <!-- Delete confimation messages -->
+    <string name="profile_delete_confirm">Slet denne profil?</string>
+    <string name="profile_app_delete_confirm">Fjern denne applikation?</string>
+    <string name="profile_cannot_delete">En aktiv profil kan ikke slettes</string>
+
+    <!-- Profile Config screen PreferenceGroup titles -->
+    <string name="profile_connectionoverrides_title">Tilslutning tilsidesætter</string>
+    <string name="profile_volumeoverrides_title">Lydstyrke tilsidesætter</string>
+    <string name="profile_vibratoroverrides_title">Vibrator tilsidesætter</string>
+    <string name="connection_state_disabled">Slå fra</string>
+    <string name="connection_state_enabled">Slå til</string>
+    <string name="volume_override_summary">Sæt til</string>
+    <string name="vibrator_state_disabled">slå fra</string>
+    <string name="vibrator_state_enabled">Slå til</string>
+    <string name="vibrator_state_silent">Kun når lydløs</string>
+
+    <!-- Menu item for managing profiles -->
+    <string name="profile_profiles_manage">Profiler</string>
+    <string name="profile_profile_manage">Administrér profil</string>
+    <string name="profile_applist_manage">Applikationsliste</string>
+    <string name="profile_appgroups_manage">Applikationsgrupper</string>
+    <string name="profile_appgroup_manage">Administrér applikationsgrupper</string>
+
+    <!-- Profile settings screen, section header for settings related to notification profiles -->
+    <string name="profile_settings">Profilindinstillinger</string>
+    <string name="profile_name">Navn</string>
+
+    <!-- Profile Settings sound modes labels -->
+    <string name="sound_mode">Notifikationstilstand</string>
+    <string name="ringer_mode">Ringetilstand</string>
+    <string name="lights_mode">Lystilstand</string>
+    <string name="vibrate_mode">Vibrationstilstand</string>
+    <string name="choose_soundtone">Vælg meddelelsestone</string>
+    <string name="choose_ringtone">Vælg ringetone</string>
+
+    <!-- Sound settings screen, setting option name to pick ringtone (a list dialog comes up)-->
+    <string name="soundtone_title">Meddelelsestone</string>
+    <string name="soundtone_summary">""</string>
+
+    <!-- Title for application group setting screen -->
+    <string name="profile_appgroups_title">Applikationsgrupper</string>
+    <string name="profile_applist_title">Applikationer</string>
+    <string name="profile_new_appgroup">Ny applikationsgruppe</string>
+    <string name="profile_delete_appgroup">Slet denne applikationsgruppe?</string>
+    <string name="profile_appgroup_name_prompt">Angiv et navn til den nye applikationsgruppe</string>
+    <string name="profile_appgroup_name_title">Navn</string>
+    <string name="profile_add_app">Tilføj applikation</string>
+    <string name="profile_delete_app">Fjern applikation</string>
+
+    <!-- Add application dialog box title -->
+    <string name="profile_choose_app">Vælg applikation</string>
+    <string name="profile_settings_header">Profilindstillinger</string>
+
+    <!-- Profiles - system settings -->
+    <string name="profile_system_settings_title">Systemindstillinger</string>
+    <string name="profile_lockmode_title">Låseskærmstilstand</string>
+    <string name="profile_lockmode_default">Standard</string>
+    <string name="profile_lockmode_insecure">Usikker</string>
+    <string name="profile_lockmode_disabled">Slået fra</string>
+    <string name="profile_lockmode_default_summary">Anvend systemstandard</string>
+    <string name="profile_lockmode_insecure_summary">Anvend usikker låseskærm</string>
+    <string name="profile_lockmode_disabled_summary">Låseskærm er slået fra</string>
+    <string name="profile_airplanemode_title">Flytilstand</string>
+    <string name="profile_airplanemode_default">Standard</string>
+    <string name="profile_airplanemode_enabled">Slået til</string>
+    <string name="profile_airplanemode_disabled">Slået fra</string>
+    <string name="profile_airplanemode_default_summary">Anvend systemstandard</string>
+    <string name="profile_airplanemode_enabled_summary">Flytilstand er slået til</string>
+    <string name="profile_airplanemode_disabled_summary">Flytilstand er slået fra</string>
+
+    <string name="profile_disable_screen_lock_summary">Slå låseskærmssikkerhed fra, når denne profil er aktiv</string>
+
+    <!-- Connection override toggles (not all are used at this time ) -->
+    <string name="possibleButtons">Mulige knapper</string>
+    <string name="toggleWifi">Wi-Fi</string>
+    <string name="toggleWifiAp">Portabelt Wi-Fi-hotspot</string>
+    <string name="toggleBluetooth">Bluetooth</string>
+    <string name="toggleGPS">GPS</string>
+    <string name="toggleData">Mobildata</string>
+    <string name="toggleSync">Datasynkronisering</string>
+    <string name="toggle2g3g">2G/3G</string>
+    <string name="toggleSound">Ringetilstand</string>
+    <string name="toggleBrightness">Lysstyrke</string>
+    <string name="toggleAutoRotate">Orientering</string>
+    <string name="toggleScreenTimeout">Skærmtimeout</string>
+    <string name="toggleAirplane">Fly</string>
+    <string name="toggleFlashlight">Lommelygte</string>
+    <string name="toggleLockScreen">Låseskærm</string>
+    <string name="toggleWimax">WiMAX</string>
+
+    <!-- Screen security - Screen security  #CM -->
+    <string name="screen_security_category">Skærmsikkerhed</string>
+    <string name="screen_security_title">Låseskærm</string>
+    <string name="screen_security_summary">Vis eller skift låseskærmssikkerheds-, forsinkelses- og timeout-indstillinger</string>
+    <string name="additional_options_title">Yderligere muligheder</string>
+    <string name="unlock_menu_unlock_title">Menu-oplåsning</string>
+    <string name="unlock_menu_unlock_summary">At trykke menu-knappen låser enheden op</string>
+    <string name="unlock_quick_unlock_control_title">Hurtig oplåsning</string>
+    <string name="unlock_quick_unlock_control_summary">Lås automatisk op, når det rette PIN/kodeord er angivet</string>
+
+    <!-- Slide lock delay -->
+    <string name="delay_and_timeout_title">Låseforsinkelse</string>
+    <string name="slide_lock_delay_title">Forsink skærmlås</string>
+    <string name="slide_lock_timeout_delay_title">Forsinkelse efter timeout</string>
+    <string name="slide_lock_screenoff_delay_title">Forsinkelse efter slukning</string>
+    <string name="slide_lock_delay_none">Ingen</string>
+    <string name="slide_lock_delay_1s">1 sekund</string>
+    <string name="slide_lock_delay_5s">5 sekunder</string>
+    <string name="slide_lock_delay_10s">10 sekunder</string>
+    <string name="slide_lock_delay_15s">15 sekunder</string>
+    <string name="slide_lock_delay_30s">30 sekunder</string>
+    <string name="slide_lock_delay_1m">1 minut</string>
+    <string name="slide_lock_delay_5m">5 minutter</string>
+    <string name="slide_lock_delay_10m">10 minutter</string>
+    <string name="slide_lock_delay_30m">30 minutter</string>
+
+    <!-- Performance settings #CM -->
+    <string name="performance_settings_title">Ydeevne</string>
+
+    <!-- Performance Settings : Warning dialog #CM -->
+    <string name="performance_settings_warning_title">Fortsæt med forsigtighed</string>
+    <string name="performance_settings_warning">Disse indstillinger er medtaget for eksperimentering, og enhver ændring kan potentielt forårsage ustabilitet, nedbrud, datatab eller hardwarefejl.\n\nVi anmoder dig om ikke at logge fejlrapporter, hvis nogen af disse indstillinger er ændret fra standarderne.</string>
+
+    <!-- Performance Settings : Processor Settings -->
+    <!-- Performance Settings : Processor settings title -->
+    <string name="processor_title">Processor</string>
+    <!-- Performance Settings : Processor settings summary. -->
+    <string name="processor_summary">Skift CPU-governor og clockhastighed</string>
+
+    <!-- Performance Settings : Processor settings sub items -->
+    <string name="cpu_cur_freq_title">Nuværende CPU-frekvens</string>
+    <string name="cpu_governors_title">CPU-governor</string>
+    <string name="cpu_governors_summary">%S</string>
+    <string name="cpu_min_freq_title">Minimum CPU-frekvens</string>
+    <string name="cpu_min_freq_summary">%s</string>
+    <string name="cpu_max_freq_title">Maximum CPU-frekvens</string>
+    <string name="cpu_max_freq_summary">%s</string>
+    <string name="cpu_set_on_boot">Sæt ved opstart</string>
+    <string name="cpu_set_on_boot_summary">Gendan processorindstillingerne ved opstart</string>
+
+    <!-- Memory Management -->
+    <string name="memory_management_title">Hukommelsesstyring</string>
+    <string name="memory_management_summary">Indstil brugen af hukommelse for at påvirke systemets ydeevne</string>
+    <!-- zRam -->
+    <string name="pref_zram_title">zRam</string>
+    <string name="pref_zram_summary">Komprimér hukommelse for forøget virtuel kapacitet (kræver genstart)</string>
+    <!-- KSM -->
+    <string name="pref_ksm_title">Kernel samepage merging</string>
+    <string name="pref_ksm_summary">KSM reducerer fysiske hukommelseskrav og forbedrer ydeevnen</string>
+    <!-- Purgeable Assets -->
+    <string name="pref_purgeable_assets_title">Tillad frigivning af aktiver</string>
+    <string name="pref_purgeable_assets_summary">Frigivning af bitmap-hukommelses-aktiver tillader frigivning af mere RAM når påkrævet (kræver genstart)</string>
+
+    <!-- Performance Settings : Dithering -->
+    <string name="pref_use_dithering_title">Overfladestøj</string>
+    <string name="pref_use_dithering_summary">Støj forbedrer billedkvaliteten på visse skærme på bekostning af ydeevne (kræver genstart)</string>
+
+    <!-- Performance Settings : 16bpp Alpha -->
+    <string name="pref_use_16bpp_alpha_title">16bit transparens</string>
+    <string name="pref_use_16bpp_alpha_summary">Bedre grafisk ydeevne, men ringere kvalitet og kan forårsage visuelle artefakter (kræver genstart)</string>
+
+    <!-- Donate #CM -->
+    <!-- About device screen, list item title. Takes the user to the screen about how to donate to the CyanogenMod Project. -->
+    <string name="donate_settings_title">Donér</string>
+    <!-- About device screen, list item summary. Takes the user to the screen about how to donate to the CyanogenMod Project. -->
+    <string name="donate_settings_summary">""</string>
+
+    <!-- Anonymous Statistics #CM -->
+    <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
+    <string name="anonymous_statistics_title">CyanogenMod-statistik</string>
+    <string name="anonymous_statistics_summary">Hjælp med at gøre CyanogenMod bedre ved at tilmelde dig statistisk indrapportering</string>
+    <string name="anonymous_statistics_warning_title">Om</string>
+    <string name="anonymous_statistics_warning">Tilmelding til CyanogenMod-statistik vil tillade ikke-personlige data at blive sendt til 
+	    udviklerne af CyanogenMod for at spore unikke installationer på tværs af enheder. De indsendte oplysninger omfatter en unik identifikator, 
+		som ikke kompromitterer dit privatliv eller personlige data. Dataene indsendes under hver opstart.\n\nFor et eksempel på de data, der er indsendt, skal du trykke på Forhåndsvisning af data.</string>
+    <string name="enable_reporting_title">Slå indrapportering til</string>
+    <string name="preview_data_title">Forhåndsvisning af data</string>
+    <string name="preview_data_summary">%s</string>
+    <string name="view_stats_title">Vis statistikker</string>
+    <string name="anonymous_learn_more">Lær mere</string>
+
+    <!-- Anonymous Statistics - Notification -->
+    <string name="anonymous_notification_desc">Slå CyanogenMod-statistik til eller fra</string>
+
+    <!-- Anonymous Statistics - Preview -->
+    <string name="preview_id_title">Unikt ID</string>
+    <string name="preview_device_title">Enhed</string>
+    <string name="preview_version_title">Version</string>
+    <string name="preview_country_title">Land</string>
+    <string name="preview_carrier_title">Teleudbyder</string>
+
+    <!-- Display : Rotation #CM -->
+    <string name="display_rotation_title">Rotering</string>
+    <string name="display_rotation_enabled">Slået til.</string>
+    <string name="display_rotation_disabled">Slået fra.</string>
+    <string name="display_rotation_unit">grader</string>
+    <string name="display_rotation_category_title">Roteringstilstande</string>
+    <string name="display_rotation_0_title">0 grader</string>
+    <string name="display_rotation_90_title">90 grader</string>
+    <string name="display_rotation_180_title">180 grader</string>
+    <string name="display_rotation_270_title">270 grader</string>
+
+
 </resources>
+
