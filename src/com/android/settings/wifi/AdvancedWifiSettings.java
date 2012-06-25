@@ -44,8 +44,11 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
     private static final String KEY_NOTIFY_OPEN_NETWORKS = "notify_open_networks";
     private static final String KEY_SLEEP_POLICY = "sleep_policy";
     private static final String KEY_POOR_NETWORK_DETECTION = "wifi_poor_network_detection";
+    private static final String KEY_WIFI_IDLE_MN = "wifi_idle_mn";
 
     private WifiManager mWifiManager;
+
+    private static final long DEFAULT_IDLE_MS = 15 * 60 * 1000; /* 15 minutes */
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -101,6 +104,16 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
             }
         }
 
+        ListPreference sleepTimeoutPref = (ListPreference) findPreference(KEY_WIFI_IDLE_MN);
+        if (sleepTimeoutPref != null) {
+            sleepTimeoutPref.setOnPreferenceChangeListener(this);
+            long value = Secure.getLong(getContentResolver(),
+                    Secure.WIFI_IDLE_MS, DEFAULT_IDLE_MS);
+            String stringValue = String.valueOf(value / (1000 * 60));
+            sleepTimeoutPref.setValue(stringValue);
+            updateSleepTimeoutSummary(sleepTimeoutPref, stringValue);
+        }
+
         ListPreference sleepPolicyPref = (ListPreference) findPreference(KEY_SLEEP_POLICY);
         if (sleepPolicyPref != null) {
             if (Utils.isWifiOnly(getActivity())) {
@@ -126,6 +139,11 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
                 if (value.equals(values[i])) {
                     if (i < summaries.length) {
                         sleepPolicyPref.setSummary(summaries[i]);
+                        Preference sleepTimeoutPref = findPreference(KEY_WIFI_IDLE_MN);
+                        if (sleepTimeoutPref != null) {
+                            sleepTimeoutPref.setEnabled(!value.equals(String.valueOf(
+                                    Settings.System.WIFI_SLEEP_POLICY_NEVER)));
+                        }
                         return;
                     }
                 }
@@ -134,6 +152,23 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
 
         sleepPolicyPref.setSummary("");
         Log.e(TAG, "Invalid sleep policy value: " + value);
+    }
+
+    private void updateSleepTimeoutSummary(Preference sleepTimeoutPref, String value) {
+        if (value != null) {
+            String[] values = getResources().getStringArray(R.array.wifi_idle_mn_values);
+            final int summaryArrayId = R.array.wifi_idle_mn_entries;
+            String[] summaries = getResources().getStringArray(summaryArrayId);
+            for (int i = 0; i < values.length; i++) {
+                 if (value.equals(values[i]) && i < summaries.length) {
+                     sleepTimeoutPref.setSummary(summaries[i]);
+                     return;
+                 }
+            }
+        }
+
+        sleepTimeoutPref.setSummary("");
+        Log.e(TAG, "Invalid wifi idle timeout value: " + value);
     }
 
     @Override
@@ -174,6 +209,19 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
                 Settings.System.putInt(getContentResolver(), Settings.System.WIFI_SLEEP_POLICY,
                         Integer.parseInt(stringValue));
                 updateSleepPolicySummary(preference, stringValue);
+            } catch (NumberFormatException e) {
+                Toast.makeText(getActivity(), R.string.wifi_setting_sleep_policy_error,
+                        Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
+        if (KEY_WIFI_IDLE_MN.equals(key)) {
+            try {
+                String stringValue = (String) newValue;
+                Settings.Secure.putLong(getContentResolver(), Settings.Secure.WIFI_IDLE_MS,
+                        Integer.parseInt(stringValue) * 60 * 1000);
+                updateSleepTimeoutSummary(preference, stringValue);
             } catch (NumberFormatException e) {
                 Toast.makeText(getActivity(), R.string.wifi_setting_sleep_policy_error,
                         Toast.LENGTH_SHORT).show();

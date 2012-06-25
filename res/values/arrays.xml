@@ -1293,6 +1293,22 @@
         <item>2</item>
     </string-array>
 
+    <!-- WiFi sleep idle timeout (turn off after this period) -->
+    <string-array name="wifi_idle_mn_entries" translatable="false">
+        <item>@string/wifi_idle_5mn</item>
+        <item>@string/wifi_idle_15mn</item>
+        <item>@string/wifi_idle_30mn</item>
+        <item>@string/wifi_idle_1h</item>
+        <item>@string/wifi_idle_3h</item>
+    </string-array>
+    <string-array name="wifi_idle_mn_values" translatable="false">
+        <item>5</item>
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+    </string-array>
+
     <!-- DHCP lease times for tethering settings -->
     <string-array name="tethering_lease_time_entries" translatable="false">
         <item>@string/dhcp_lease_30mn</item>
