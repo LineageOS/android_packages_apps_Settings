@@ -1034,7 +1034,7 @@
     <string name="applications_settings_summary" msgid="6683465446264515367">"Apps beheren, sneltoetsen voor snelstarten instellen"</string>
     <string name="applications_settings_header" msgid="1014813055054356646">"App-instellingen"</string>
     <string name="install_applications" msgid="4872012136210802181">"Onbekende bronnen"</string>
-    <string name="install_unknown_applications" msgid="8149117044297868948">"Installatie van andere apps dan Market-apps toestaan"</string>
+    <string name="install_unknown_applications" msgid="8149117044297868948">"Installatie van andere apps dan Play Store-apps toestaan"</string>
     <string name="install_all_warning" product="tablet" msgid="3263360446508268880">"Uw tablet en persoonlijke gegevens zijn gevoeliger voor aanvallen door apps van onbekende bronnen. U gaat ermee akkoord dat alleen u verantwoordelijk bent voor enige schade aan uw tablet of verlies van gegevens die voortkomen uit het gebruik van deze apps."</string>
     <string name="install_all_warning" product="default" msgid="8113734576826384682">"Uw telefoon en persoonlijke gegevens zijn gevoeliger voor aanvallen door apps van onbekende bronnen. U gaat ermee akkoord dat alleen u verantwoordelijk bent voor enige schade aan uw telefoon of verlies van gegevens die voortkomen uit het gebruik van deze apps."</string>
     <string name="advanced_settings" msgid="1777249286757067969">"Geavanceerde instellingen"</string>
@@ -1269,7 +1269,7 @@
     <string name="accessibility_service_disable_warning_summary" msgid="625013894287895398">"Als u \'OK\' aanraakt, wordt <xliff:g id="SERVICE">%1$s</xliff:g> beëindigd."</string>
     <string name="accessibility_no_services_installed" msgid="7200948194639038807">"Geen services geïnstalleerd"</string>
     <string name="accessibility_service_no_apps_title" msgid="5124097563864109821">"Heeft u een schermlezer nodig?"</string>
-    <string name="accessibility_service_no_apps_message" msgid="7751662416377046539">"TalkBack levert gesproken feedback om blinde en slechtziende gebruikers te helpen navigeren. Wilt u deze app gratis installeren via Android Market?"</string>
+    <string name="accessibility_service_no_apps_message" msgid="7751662416377046539">"TalkBack levert gesproken feedback om blinde en slechtziende gebruikers te helpen navigeren. Wilt u deze app gratis installeren via de Play Store?"</string>
     <string name="accessibility_script_injection_security_warning_title" msgid="4158946557435736650">"Webscripts installeren?"</string>
     <string name="accessibility_script_injection_security_warning_summary" msgid="7706858873495386310">"Wilt u dat apps scripts installeren van Google waardoor de webinhoud van de apps toegankelijker wordt?"</string>
     <string name="accessibility_touch_exploration_warning" msgid="2442154805472989569">"Deze functie past de manier aan waarop uw apparaat reageert op aanraking. Inschakelen?"</string>
@@ -1685,7 +1685,7 @@
     <!-- Interface settings - System -->
     <string name="system_interface_title">Systeemuiterlijk</string>
     <!-- Notification Drawer -->
-    <string name="notification_drawer_title">Notificatiedrawer</string>
+    <string name="notification_drawer_title">Notificatiepaneel</string>
     <!-- Combined Bar -->
     <string name="combined_bar_title">Gecombineerde balk</string>
     <string name="combined_bar_auto_hide_title">Automatisch verbergen</string>
@@ -1701,9 +1701,9 @@
     <!-- Power Widget -->
     <string name="power_widget_title">Energiewidget</string>
     <string name="title_expanded_widget">Toon energiewidget</string>
-    <string name="summary_expanded_widget">Toon energiewidget in de notificatiedrawer</string>
+    <string name="summary_expanded_widget">Toon energiewidget in het notificatiepaneel</string>
     <string name="title_expanded_hide_onchange">Verberg bij veranderingen</string>
-    <string name="summary_expanded_hide_onchange">Verberg de notificatiedrawer als een widgetknop aangeraakt is</string>
+    <string name="summary_expanded_hide_onchange">Verberg het notificatiepaneel als een widgetknop is aangeraakt</string>
     <string name="title_expanded_hide_indicator">Verberg indicator</string>
     <string name="summary_expanded_hide_indicator">Verberg indicatoren van energiewidget</string>
     <string name="title_expanded_hide_scrollbar">Verberg schuifbalk</string>
@@ -2151,4 +2151,37 @@
     <!-- Preference Stub -->
     <string name="stubbed">Voorkeursopvulling</string>
     <string name="stubbed_summary">Tijdelijk opgevuld totdat functionaliteit is toegevoegd</string>
+
+    <string name="toggles_not_enough_space">Max. 6 schakelaars</string>
+    <string name="weather_progress_title">Locatie controleren</string>
+    <string name="lockscreen_custom_background_title">Achtergrond</string>
+    <string name="lockscreen_custom_background_dialog_title">Kleur kiezen</string>
+    <string name="lockscreen_background_result_successful">Achtergrond gewijzigd</string>
+    <string name="lockscreen_background_result_not_successful">Achtergrond niet gewijzigd</string>
+    <string name="lockscreen_background_color_fill">Vullen met een kleur</string>
+    <string name="lockscreen_background_custom_image">Aangepaste afbeelding</string>
+    <string name="lockscreen_background_default_wallpaper">Standaardachtergrond</string>
+    <string name="font_size_preview_text">Bas wil zelf gympjes kopen van de extra cheque.</string>
+    <string name="intent_sender_data_label"><xliff:g id="data">Gegevens:</xliff:g></string>
+    <string name="intent_sender_action_label"><xliff:g id="action">Actie</xliff:g>:</string>
+    <string name="tethering_advanced_text">Geavanceerd</string>
+    <string name="tethering_lease_time_text">DHCP-leasetijd</string>
+    <string name="dhcp_lease_30mn">30 minuten</string>
+    <string name="dhcp_lease_1h">1 uur (standaard)</string>
+    <string name="dhcp_lease_2h">2 uur</string>
+    <string name="dhcp_lease_4h">4 uur</string>
+    <string name="dhcp_lease_6h">6 uur</string>
+    <string name="dhcp_lease_12h">12 uur</string>
+    <string name="dhcp_lease_24h">1 dag</string>
+    <string name="lockpattern_settings_enable_lock_before_unlock">Widgets tonen voor ontgrendeling</string>
+    <string name="ime_switcher_notify">Invoermethodemelding</string>
+    <string name="ime_switcher_notify_summary">Melding tonen voor wijzigen invoermethode</string>
+    <string name="testing_sim_toolkit">Simtoolkit</string>
+    <string name="display_category_animation_options_title">Animatie</string>
+    <string name="display_electron_beam_animation_on_title">Animatie bij scherm aan</string>
+    <string name="display_electron_beam_animation_off_title">Animatie bij scherm uit</string>
+    <string name="stylus_icon_enabled_summary">Cursor tonen indien met een stylus wordt getekend</string>
+    <string name="device_hostname">Hostnaam apparaat</string>
+    <string name="status_bar_notif_count_title">Meldingsaantal tonen</string>
+    <string name="status_bar_notif_count_summary">Aantal aanwezige meldingen tonen op de statusbalk</string>
 </resources>
