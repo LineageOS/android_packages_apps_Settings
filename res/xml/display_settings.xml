@@ -47,10 +47,10 @@
             android:title="@string/notification_pulse_title"
             android:fragment="com.android.settings.notificationlight.NotificationLightSettings" />
 
-        <CheckBoxPreference
-            android:key="battery_pulse"
-            android:title="@string/battery_pulse_title"
-            android:persistent="false" />
+        <PreferenceScreen
+            android:key="battery_light"
+            android:title="@string/battery_light_title"
+            android:fragment="com.android.settings.notificationlight.BatteryLightSettings" />
 
         <PreferenceCategory
             android:key="category_animation_options"
