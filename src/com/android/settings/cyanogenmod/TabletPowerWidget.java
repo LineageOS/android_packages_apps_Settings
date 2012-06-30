@@ -54,7 +54,7 @@ public class TabletPowerWidget extends SettingsPreferenceFragment
 
     private static final String TAG = "TabletPowerWidget";
 
-    private CheckBoxPreference[] mToggles = new CheckBoxPreference[9];
+    private CheckBoxPreference[] mToggles = new CheckBoxPreference[TabletPowerWidgetUtil.KEY_TOGGLES.length];
 
     private static Context mContext;
     private static boolean mValue;
@@ -90,12 +90,7 @@ public class TabletPowerWidget extends SettingsPreferenceFragment
                 Settings.System.putString(mContext.getContentResolver(), Settings.System.WIDGET_BUTTONS_TABLET, mPowerWidgets);
         else{
                 mPowerWidgets = mPowerWidgets.substring(0, mPowerWidgets.lastIndexOf("\\|"));
-                if(mPowerWidgets.split("\\|").length <= 6)
-                        Settings.System.putString(mContext.getContentResolver(), Settings.System.WIDGET_BUTTONS_TABLET, mPowerWidgets);
-                else{
-                        Toast.makeText(getActivity(), R.string.toggles_not_enough_space, Toast.LENGTH_SHORT).show();
-                        refreshToggles();
-                }
+                Settings.System.putString(mContext.getContentResolver(), Settings.System.WIDGET_BUTTONS_TABLET, mPowerWidgets);
        }
     }
 
