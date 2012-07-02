@@ -49,20 +49,48 @@ public class LightSettingsDialog extends AlertDialog implements
 
     private OnColorChangedListener mListener;
 
+    /**
+     * @param context
+     * @param initialColor
+     * @param initialSpeedOn
+     * @param initialSpeedOff
+     */
     protected LightSettingsDialog(Context context, int initialColor, int initialSpeedOn,
             int initialSpeedOff) {
         super(context);
 
-        init(initialColor, initialSpeedOn, initialSpeedOff);
+        init(initialColor, initialSpeedOn, initialSpeedOff, true);
     }
 
-    private void init(int color, int speedOn, int speedOff) {
+    /**
+     * @param context
+     * @param initialColor
+     * @param initialSpeedOn
+     * @param initialSpeedOff
+     * @param onOffChangeable
+     */
+    protected LightSettingsDialog(Context context, int initialColor, int initialSpeedOn,
+            int initialSpeedOff, boolean onOffChangeable) {
+        super(context);
+
+        init(initialColor, initialSpeedOn, initialSpeedOff, onOffChangeable);
+    }
+
+    private void init(int color, int speedOn, int speedOff, boolean onOffChangeable) {
         // To fight color banding.
         getWindow().setFormat(PixelFormat.RGBA_8888);
-        setUp(color, speedOn, speedOff);
+        setUp(color, speedOn, speedOff, onOffChangeable);
     }
 
-    private void setUp(int color, int speedOn, int speedOff) {
+    /**
+     * This function sets up the dialog with the proper values.  If the speedOff parameters
+     * has a -1 value disable both spinners
+     *
+     * @param color - the color to set
+     * @param speedOn - the flash time in ms
+     * @param speedOff - the flash length in ms
+     */
+    private void setUp(int color, int speedOn, int speedOff, boolean onOffChangeable) {
         mInflater = (LayoutInflater) getContext()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = mInflater.inflate(R.layout.dialog_light_settings, null);
@@ -94,7 +122,9 @@ public class LightSettingsDialog extends AlertDialog implements
                 speedOff);
         mPulseSpeedOff.setAdapter(pulseSpeedAdapter);
         mPulseSpeedOff.setSelection(pulseSpeedAdapter.getTimePosition(speedOff));
-        mPulseSpeedOff.setEnabled(speedOn != 0);
+
+        mPulseSpeedOn.setEnabled(onOffChangeable);
+        mPulseSpeedOff.setEnabled((speedOn != 0) && onOffChangeable);
 
         setView(layout);
         setTitle(R.string.edit_light_settings);

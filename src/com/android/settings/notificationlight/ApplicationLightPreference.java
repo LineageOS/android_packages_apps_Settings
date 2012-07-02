@@ -54,6 +54,8 @@ public class ApplicationLightPreference extends Preference implements
     private int mColorValue;
     private int mOnValue;
     private int mOffValue;
+    private boolean mOnOffChangeable;
+
     private OnLongClickListener mParent;
     private Resources mResources;
     private ScreenReceiver mReceiver = null;
@@ -68,6 +70,7 @@ public class ApplicationLightPreference extends Preference implements
         mColorValue = DEFAULT_COLOR;
         mOnValue = DEFAULT_TIME;
         mOffValue = DEFAULT_TIME;
+        mOnOffChangeable = true;
         mParent = null;
         init();
     }
@@ -84,6 +87,23 @@ public class ApplicationLightPreference extends Preference implements
         mOnValue = onValue;
         mOffValue = offValue;
         mParent = null;
+        mOnOffChangeable = true;
+        init();
+    }
+
+    /**
+     * @param context
+     * @param onLongClickListener
+     * @param color
+     * @param onValue
+     * @param offValue
+     */
+    public ApplicationLightPreference(Context context, int color, int onValue, int offValue, boolean onOffChangeable) {
+        super(context);
+        mColorValue = color;
+        mOnValue = onValue;
+        mOffValue = offValue;
+        mOnOffChangeable = onOffChangeable;
         init();
     }
 
@@ -100,6 +120,7 @@ public class ApplicationLightPreference extends Preference implements
         mOnValue = onValue;
         mOffValue = offValue;
         mParent = parent;
+        mOnOffChangeable = true;
         init();
     }
 
@@ -167,7 +188,9 @@ public class ApplicationLightPreference extends Preference implements
     }
 
     private void editPreferenceValues() {
-        final LightSettingsDialog d = new LightSettingsDialog(getContext(), 0xFF000000 + mColorValue, mOnValue, mOffValue);
+        final LightSettingsDialog d = new LightSettingsDialog(getContext(), 0xFF000000 + mColorValue,
+                mOnValue, mOffValue,
+                mOnOffChangeable);
         final int width = (int) mResources.getDimension(R.dimen.dialog_light_settings_width);
         d.setAlphaSliderVisible(false);
         Resources resources = getContext().getResources();
@@ -268,6 +291,15 @@ public class ApplicationLightPreference extends Preference implements
         mColorValue = color;
         mOnValue = onValue;
         mOffValue = offValue;
+        mOnOffChangeable = true;
+        updatePreferenceViews();
+    }
+
+    public void setAllValues(int color, int onValue, int offValue, boolean onOffChangeable) {
+        mColorValue = color;
+        mOnValue = onValue;
+        mOffValue = offValue;
+        mOnOffChangeable = onOffChangeable;
         updatePreferenceViews();
     }
 
@@ -275,6 +307,10 @@ public class ApplicationLightPreference extends Preference implements
         mOnValue = onValue;
         mOffValue = offValue;
         updatePreferenceViews();
+    }
+
+    public void setOnOffChangeable(boolean value) {
+        mOnOffChangeable = value;
     }
 
     /**
