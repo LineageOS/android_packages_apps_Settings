@@ -101,83 +101,88 @@ public class Processor extends SettingsPreferenceFragment implements
         mMinFrequencyFormat = getString(R.string.cpu_min_freq_summary);
         mMaxFrequencyFormat = getString(R.string.cpu_max_freq_summary);
 
-        String[] availableGovernors = Utils.fileReadOneLine(GOV_LIST_FILE).split(" ");
         String[] availableFrequencies = new String[0];
-        String availableFrequenciesLine = Utils.fileReadOneLine(FREQ_LIST_FILE);
-        if (availableFrequenciesLine != null)
-            availableFrequencies = availableFrequenciesLine.split(" ");
+        String[] availableGovernors = new String[0];
         String[] frequencies;
+        String availableGovernorsLine;
+        String availableFrequenciesLine;
         String temp;
-
-        frequencies = new String[availableFrequencies.length];
-        for (int i = 0; i < frequencies.length; i++) {
-            frequencies[i] = toMHz(availableFrequencies[i]);
-        }
 
         addPreferencesFromResource(R.xml.processor_settings);
 
         PreferenceScreen prefScreen = getPreferenceScreen();
 
-        // Governer
-        temp = Utils.fileReadOneLine(GOV_FILE);
-
         mGovernorPref = (ListPreference) prefScreen.findPreference(GOV_PREF);
-        mGovernorPref.setEntryValues(availableGovernors);
-        mGovernorPref.setEntries(availableGovernors);
-        mGovernorPref.setValue(temp);
-        mGovernorPref.setSummary(String.format(mGovernorFormat, temp));
-        mGovernorPref.setOnPreferenceChangeListener(this);
+        mCurFrequencyPref = (Preference) prefScreen.findPreference(FREQ_CUR_PREF);
+        mMinFrequencyPref = (ListPreference) prefScreen.findPreference(FREQ_MIN_PREF);
+        mMaxFrequencyPref = (ListPreference) prefScreen.findPreference(FREQ_MAX_PREF);
 
-        // Some systems might not use governors
-        if (temp == null) {
+        /* Governor
+        Some systems might not use governors */
+        if (Utils.fileExists(GOV_LIST_FILE) == false || Utils.fileExists(GOV_FILE) == false || (temp = Utils.fileReadOneLine(GOV_FILE)) == null || (availableGovernorsLine = Utils.fileReadOneLine(GOV_LIST_FILE)) == null) {
             prefScreen.removePreference(mGovernorPref);
+
+        } else {
+            availableGovernors = availableGovernorsLine.split(" ");
+
+            mGovernorPref.setEntryValues(availableGovernors);
+            mGovernorPref.setEntries(availableGovernors);
+            mGovernorPref.setValue(temp);
+            mGovernorPref.setSummary(String.format(mGovernorFormat, temp));
+            mGovernorPref.setOnPreferenceChangeListener(this);
         }
 
+        // Disable the min/max list if we dont have a list file
+        if (Utils.fileExists(FREQ_LIST_FILE) == false || (availableFrequenciesLine = Utils.fileReadOneLine(FREQ_LIST_FILE)) == null) {
+            mMinFrequencyPref.setEnabled(false);
+            mMaxFrequencyPref.setEnabled(false);
+
+        } else {
+            availableFrequencies = availableFrequenciesLine.split(" ");
+
+            frequencies = new String[availableFrequencies.length];
+            for (int i = 0; i < frequencies.length; i++) {
+                frequencies[i] = toMHz(availableFrequencies[i]);
+            }
+
+            // Min frequency
+            if (Utils.fileExists(FREQ_MIN_FILE) == false || (temp = Utils.fileReadOneLine(FREQ_MIN_FILE)) == null) {
+                mMinFrequencyPref.setEnabled(false);
+
+            } else {
+                mMinFrequencyPref.setEntryValues(availableFrequencies);
+                mMinFrequencyPref.setEntries(frequencies);
+                mMinFrequencyPref.setValue(temp);
+                mMinFrequencyPref.setSummary(String.format(mMinFrequencyFormat, toMHz(temp)));
+                mMinFrequencyPref.setOnPreferenceChangeListener(this);
+            }
+
+            // Max frequency
+            if (Utils.fileExists(FREQ_MAX_FILE) == false || (temp = Utils.fileReadOneLine(FREQ_MAX_FILE)) == null) {
+                mMaxFrequencyPref.setEnabled(false);
+
+            } else {
+                mMaxFrequencyPref.setEntryValues(availableFrequencies);
+                mMaxFrequencyPref.setEntries(frequencies);
+                mMaxFrequencyPref.setValue(temp);
+                mMaxFrequencyPref.setSummary(String.format(mMaxFrequencyFormat, toMHz(temp)));
+                mMaxFrequencyPref.setOnPreferenceChangeListener(this);
+            }
+        }
+
+        // Cur frequency
         if (!Utils.fileExists(FREQ_CUR_FILE)) {
             FREQ_CUR_FILE = FREQINFO_CUR_FILE;
         }
 
-        // Cur frequency
-        temp = Utils.fileReadOneLine(FREQ_CUR_FILE);
+        if (Utils.fileExists(FREQ_CUR_FILE) == false || (temp = Utils.fileReadOneLine(FREQ_CUR_FILE)) == null) {
+            mCurFrequencyPref.setEnabled(false);
 
-        mCurFrequencyPref = (Preference) prefScreen.findPreference(FREQ_CUR_PREF);
-        mCurFrequencyPref.setSummary(toMHz(temp));
+        } else {
+            mCurFrequencyPref.setSummary(toMHz(temp));
 
-        // Min frequency
-        temp = Utils.fileReadOneLine(FREQ_MIN_FILE);
-
-        mMinFrequencyPref = (ListPreference) prefScreen.findPreference(FREQ_MIN_PREF);
-        mMinFrequencyPref.setEntryValues(availableFrequencies);
-        mMinFrequencyPref.setEntries(frequencies);
-        mMinFrequencyPref.setValue(temp);
-        mMinFrequencyPref.setSummary(String.format(mMinFrequencyFormat, toMHz(temp)));
-        mMinFrequencyPref.setOnPreferenceChangeListener(this);
-
-        if (temp == null) {
-            prefScreen.removePreference(mMinFrequencyPref);
+            mCurCPUThread.start();
         }
-
-        // Max frequency
-        temp = Utils.fileReadOneLine(FREQ_MAX_FILE);
-
-        mMaxFrequencyPref = (ListPreference) prefScreen.findPreference(FREQ_MAX_PREF);
-        mMaxFrequencyPref.setEntryValues(availableFrequencies);
-        mMaxFrequencyPref.setEntries(frequencies);
-        mMaxFrequencyPref.setValue(temp);
-        mMaxFrequencyPref.setSummary(String.format(mMaxFrequencyFormat, toMHz(temp)));
-        mMaxFrequencyPref.setOnPreferenceChangeListener(this);
-
-        if (temp == null) {
-            prefScreen.removePreference(mMaxFrequencyPref);
-        }
-
-        // Disable the min/max list if we dont have a list file
-        if (availableFrequenciesLine == null) {
-            mMinFrequencyPref.setEnabled(false);
-            mMaxFrequencyPref.setEnabled(false);
-        }
-
-        mCurCPUThread.start();
     }
 
     @Override
@@ -186,16 +191,19 @@ public class Processor extends SettingsPreferenceFragment implements
 
         super.onResume();
 
-        temp = Utils.fileReadOneLine(FREQ_MAX_FILE);
-        mMaxFrequencyPref.setValue(temp);
-        mMaxFrequencyPref.setSummary(String.format(mMaxFrequencyFormat, toMHz(temp)));
+        if (Utils.fileExists(FREQ_MIN_FILE) != false && (temp = Utils.fileReadOneLine(FREQ_MIN_FILE)) != null) {
+            mMinFrequencyPref.setValue(temp);
+            mMinFrequencyPref.setSummary(String.format(mMinFrequencyFormat, toMHz(temp)));
+        }
 
-        temp = Utils.fileReadOneLine(FREQ_MIN_FILE);
-        mMinFrequencyPref.setValue(temp);
-        mMinFrequencyPref.setSummary(String.format(mMinFrequencyFormat, toMHz(temp)));
+        if (Utils.fileExists(FREQ_MAX_FILE) != false && (temp = Utils.fileReadOneLine(FREQ_MAX_FILE)) != null) {
+            mMaxFrequencyPref.setValue(temp);
+            mMaxFrequencyPref.setSummary(String.format(mMaxFrequencyFormat, toMHz(temp)));
+        }
 
-        temp = Utils.fileReadOneLine(GOV_FILE);
-        mGovernorPref.setSummary(String.format(mGovernorFormat, temp));
+        if (Utils.fileExists(GOV_FILE) != false && (temp = Utils.fileReadOneLine(GOV_FILE)) != null) {
+            mGovernorPref.setSummary(String.format(mGovernorFormat, temp));
+        }
     }
 
     @Override
