@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--  Copyright (C) 2007 The Android Open Source Project
       Copyright (C) 2012 The CyanogenMod Project
 
@@ -14,7 +14,6 @@
      See the License for the specific language governing permissions and
      limitations under the License.
  -->
-
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="yes" msgid="4676390750360727396">"Ja"</string>
@@ -243,8 +242,6 @@
     <string name="date_and_time_settings_title" msgid="3350640463596716780">"Datum &amp; tijd"</string>
     <string name="date_and_time_settings_summary" msgid="2435705040205950381">"Datum, tijd, tijdzone en notaties instellen"</string>
     <string name="date_time_auto" msgid="3086083265745944725">"Automatisch"</string>
-    <string name="date_time_auto_summaryOn" msgid="9034585614665299846">"Gebruik door netwerk aangegeven waarden"</string>
-    <string name="date_time_auto_summaryOff" msgid="3900356736797266448">"Gebruik door netwerk aangegeven waarden"</string>
     <string name="date_time_24hour" msgid="1193032284921000063">"24-uurs klok gebruiken"</string>
     <string name="date_time_set_time" msgid="5716856602742530696">"Tijd instellen"</string>
     <string name="date_time_set_timezone" msgid="5045627174274377814">"Tijdzone selecteren"</string>
@@ -490,7 +487,7 @@
     <string name="sync_settings_summary" msgid="2962179505214965667">"Accounts toevoegen of verwijderen en accountinstellingen wijzigen"</string>
     <string name="search_settings" msgid="1910951467596035063">"Zoeken"</string>
     <string name="search_settings_summary" msgid="9205656546570654169">"Instellingen voor zoeken en zoekgeschiedenis beheren"</string>
-    <string name="display_settings" msgid="3912042046350078328">"Instellingen tonen"</string>
+    <string name="display_settings" msgid="3912042046350078328">"Weergave"</string>
     <string name="animations_title" msgid="1062189037402346023">"Animatie"</string>
     <string name="animations_summary_on" msgid="8843613112130484436">"Animatie tonen bij het openen en sluiten van vensters"</string>
     <string name="animations_summary_off" msgid="2777026828025551983">"Geen animatie tonen bij het openen en sluiten van vensters"</string>
@@ -502,39 +499,34 @@
     <string name="screen_timeout" msgid="4882669461447531301">"Time-out scherm"</string>
     <string name="screen_timeout_summary" msgid="2905757633140605334">"De vertraging voor het automatisch uitschakelen van het scherm aanpassen"</string>
     <string name="automatic_brightness" msgid="5014143533884135461">"Automatische helderheid"</string>
-    <string name="sim_lock_settings" msgid="3392331196873564292">"Instellingen SIM-kaartvergrendeling"</string>
-    <string name="sim_lock_settings_category" msgid="5136244267576697004">"SIM-vergrendeling instellen"</string>
-    <string name="sim_lock_settings_title" msgid="9018585580955414596">"SIM-kaartvergrendeling"</string>
-    <string name="sim_pin_toggle" msgid="1742123478029451888">"SIM-kaart vergrendelen"</string>
-    <string name="sim_lock_on" msgid="2503536505568814324">"PIN-code vereist voor gebruik van telefoon"</string>
-    <string name="sim_lock_off" msgid="258981978215428916">"Geen PIN-code vereist voor gebruik van telefoon"</string>
-    <string name="sim_pin_change" msgid="6311414184279932368">"PIN-code SIM wijzigen"</string>
-    <string name="sim_enter_pin" msgid="6608715137008508432">"PIN-code SIM"</string>
-    <string name="sim_enable_sim_lock" msgid="4517742794997166918">"SIM-kaart vergrendelen"</string>
-    <string name="sim_disable_sim_lock" msgid="7664729528754784824">"SIM-kaart ontgrendelen"</string>
-    <string name="sim_enter_old" msgid="6074196344494634348">"Oude PIN-code SIM"</string>
-    <string name="sim_enter_new" msgid="8742727032729243562">"Nieuwe PIN-code SIM"</string>
-    <string name="sim_reenter_new" msgid="3178510434642201544">"Nieuwe PIN-code nogmaals invoeren"</string>
-    <string name="sim_change_pin" msgid="7328607264898359112">"PIN-code SIM"</string>
-    <string name="sim_bad_pin" msgid="2746201276896134075">"Onjuiste PIN-code!"</string>
-    <string name="sim_pins_dont_match" msgid="4664611595579163214">"PIN-codes komen niet overeen!"</string>
-    <string name="sim_change_failed" msgid="4823538458798362222">"Kan PIN-code niet wijzigen."\n"PIN-code mogelijk onjuist."</string>
-    <string name="sim_change_succeeded" msgid="8556135413096489627">"PIN-code SIM gewijzigd"</string>
-    <string name="sim_lock_failed" msgid="6676748290838006404">"Kan status van SIM-kaartblokkering niet wijzigen."\n"PIN-code mogelijk onjuist."</string>
+    <string name="sim_lock_settings" msgid="3392331196873564292">"Instellingen simkaartvergrendeling"</string>
+    <string name="sim_lock_settings_category" msgid="5136244267576697004">"Simvergrendeling instellen"</string>
+    <string name="sim_lock_settings_title" msgid="9018585580955414596">"Simkaartvergrendeling"</string>
+    <string name="sim_pin_toggle" msgid="1742123478029451888">"Simkaart vergrendelen"</string>
+    <string name="sim_lock_on" msgid="2503536505568814324">"Pincode vereist voor gebruik van telefoon"</string>
+    <string name="sim_lock_off" msgid="258981978215428916">"Geen pinccode vereist voor gebruik van telefoon"</string>
+    <string name="sim_pin_change" msgid="6311414184279932368">"Pincode SIM wijzigen"</string>
+    <string name="sim_enter_pin" msgid="6608715137008508432">"Pincode SIM"</string>
+    <string name="sim_enable_sim_lock" msgid="4517742794997166918">"Simkaart vergrendelen"</string>
+    <string name="sim_disable_sim_lock" msgid="7664729528754784824">"Simkaart ontgrendelen"</string>
+    <string name="sim_enter_old" msgid="6074196344494634348">"Oude pincode SIM"</string>
+    <string name="sim_enter_new" msgid="8742727032729243562">"Nieuwe pincode SIM"</string>
+    <string name="sim_reenter_new" msgid="3178510434642201544">"Nieuwe pincode nogmaals invoeren"</string>
+    <string name="sim_change_pin" msgid="7328607264898359112">"Pincode SIM"</string>
+    <string name="sim_bad_pin" msgid="2746201276896134075">"Onjuiste pincode!"</string>
+    <string name="sim_pins_dont_match" msgid="4664611595579163214">"Pincodes komen niet overeen!"</string>
+    <string name="sim_change_failed" msgid="4823538458798362222">"Kan pincode niet wijzigen."\n"Pincode mogelijk onjuist."</string>
+    <string name="sim_change_succeeded" msgid="8556135413096489627">"Pincode SIM gewijzigd"</string>
+    <string name="sim_lock_failed" msgid="6676748290838006404">"Kan status van simkaartblokkering niet wijzigen."\n"Pincode mogelijk onjuist."</string>
     <string name="sim_enter_ok" msgid="6475946836899218919">"OK"</string>
     <string name="sim_enter_cancel" msgid="6240422158517208036">"Annuleren"</string>
     <string name="device_info_settings" msgid="475872867864762157">"Telefoonstatus"</string>
     <string name="system_update_settings_list_item_title" msgid="3342887311059985961">"Systeemupdates"</string>
-    <string name="cpu_info">CPU-informatie</string>
-    <string name="mem_info">Geheugeninfo (Besch./tot.)</string>
     <string name="firmware_version" msgid="4801135784886859972">"Android-versie"</string>
     <string name="model_number" msgid="3765737700545384794">"Modelnummer"</string>
     <string name="baseband_version" msgid="1848990160763524801">"Smalbandversie"</string>
     <string name="kernel_version" msgid="9192574954196167602">"Kernelversie"</string>
-    <string name="build_number" msgid="3075795840572241758">"Buildnummer"</string>
-    <string name="mod_version">Modversie</string>
-    <string name="mod_version_default">Onbekend</string>
-    <string name="build_date">Builddatum</string>
+    <string name="build_number" msgid="3075795840572241758">"Build-nummer"</string>
     <string name="device_info_not_available" msgid="8062521887156825182">"Niet beschikbaar"</string>
     <string name="device_status_activity_title" msgid="1411201799384697904">"Status"</string>
     <string name="device_status" msgid="607405385799807324">"Status"</string>
@@ -628,7 +620,6 @@
     <string name="restore_default_apn" msgid="2724583218635739913">"Standaard-APN-instellingen herstellen"</string>
     <string name="menu_restore" msgid="8260067415075573273">"Standaardinstellingen herstellen"</string>
     <string name="restore_default_apn_completed" msgid="3990449939234957281">"Herstellen van standaard-APN-instellingen voltooid"</string>
-    <string name="master_clear_title" msgid="5907939616087039756">"Fabrieksinstellingen terug"</string>
     <string name="master_clear_summary" msgid="4986154238001088492">"Alle gegevens op de telefoon wissen"</string>
     <string name="master_clear_desc" product="nosdcard" msgid="2163013814299528247">"Hiermee worden alle gegevens in de "<b>"interne opslag"</b>" van uw telefoon gewist, waaronder:"\n\n<li>"Uw Google-account"</li>\n<li>"Gegevens en instellingen van het systeem en de applicaties"</li>\n<li>"Gedownloade applicaties"</li>\n\n"Als u alle gegevens op deze telefoon wilt wissen, moet de "<b>"USB-opslag"</b>" worden gewist."\n\n</string>
     <string name="master_clear_desc" product="default" msgid="1741944496458365969">"Hiermee worden alle gegevens in de "<b>"interne opslag"</b>" van uw telefoon gewist, waaronder:"\n\n<li>"Uw Google-account"</li>\n<li>"Gegevens en instellingen van het systeem en de applicaties"</li>\n<li>"Gedownloade applicaties"</li>\n\n"Als u ook muziek, foto\'s en andere gegevens wilt wissen, moet de "<b>"SD-kaart"</b>" worden gewist."\n\n</string>
@@ -684,10 +675,6 @@
     <string name="assisted_gps" msgid="4649317129586736885">"Ondersteunde GPS gebruiken"</string>
     <string name="assisted_gps_enabled" msgid="8751899609589792803">"Server gebruiken ter ondersteuning van GPS (uitschakelen om het netwerkgebruik te beperken)"</string>
     <string name="assisted_gps_disabled" msgid="6982698333968010748">"Server niet gebruiken ter ondersteuning van GPS (inschakelen om GPS-prestaties te verbeteren)"</string>
-    <string name="location_gps_source_title">GPS-apparaat</string>
-    <string name="location_gps_source_summary">Gebruik extern bluetooth-GPS-apparaat i.p.v. intern apparaat</string>
-    <string name="location_gps_source_notification_title">Let op</string>
-    <string name="location_gps_source_notification">GPS-bron is gewijzigd en wordt daarom uitgeschakeld. Schakel deze weer in om GPS verder te gebruiken.</string>
     <string name="about_settings" msgid="1743378368185371685">"Over de telefoon"</string>
     <string name="about_settings_summary" msgid="3302263393543848667">"Juridische info, telefoonstatus, softwareversie tonen"</string>
     <string name="legal_information" msgid="5769301644270604095">"Juridische informatie"</string>
@@ -752,7 +739,7 @@
     <string name="applications_settings_summary" msgid="2714215108369119717">"Applicaties beheren, sneltoetsen voor snelstarten instellen"</string>
     <string name="applications_settings_header" msgid="6018266337275422250">"Applicatie-instellingen"</string>
     <string name="install_applications" msgid="4872012136210802181">"Onbekende bronnen"</string>
-    <string name="install_unknown_applications" msgid="6612824788917283662">"Installatie van andere applicaties dan Market-applicaties toestaan"</string>
+    <string name="install_unknown_applications" msgid="6612824788917283662">"Installatie van andere applicaties dan Play Store-applicaties toestaan"</string>
     <string name="install_all_warning" msgid="1923717607319933741">"Uw telefoon en persoonlijke gegevens zijn gevoeliger voor aanvallen door applicaties van onbekende bronnen. U gaat ermee akkoord dat u alleen verantwoordelijk bent voor enige schade aan uw telefoon of verlies van gegevens die voortkomen uit het gebruik van deze applicaties."</string>
     <string name="application_info_label" msgid="1150486628158409543">"Applicatie-info"</string>
     <string name="storage_label" msgid="8700867073480107253">"Opslagruimte"</string>
@@ -826,7 +813,7 @@
     <string name="app_install_location_title" msgid="2068975150026852168">"Voorkeursinstallatielocatie"</string>
     <string name="app_install_location_summary" msgid="879753854530300436">"De voorkeursinstallatielocatie voor nieuwe applicaties wijzigen."</string>
     <string name="storageuse_settings_title" msgid="5657014373502630403">"Opslaggebruik"</string>
-    <string name="storageuse_settings_summary" msgid="2556057379120846792">"Gebruikte opslagruimte voor applicaties tonen"</string>
+    <string name="storageuse_settings_summary" msgid="2556057379120846792">"Gebruikte opslagruimte door applicaties tonen"</string>
     <string name="runningservices_settings_title" msgid="8097287939865165213">"Actieve services"</string>
     <string name="runningservices_settings_summary" msgid="854608995821032748">"Services die momenteel actief zijn, tonen en beheren"</string>
     <string name="service_restarting" msgid="2242747937372354306">"Herstarten"</string>
@@ -900,7 +887,6 @@
     <string name="builtin_keyboard_settings_title" msgid="5274990495405941804">"Geïntegreerd toetsenbord"</string>
     <string name="builtin_keyboard_settings_summary" msgid="7990296351888096836">"Geïntegreerde, fysieke toetsenbordinstellingen"</string>
     <string name="development_settings_title" msgid="6719732334835420989">"Ontwikkeling"</string>
-    <string name="development_settings_summary" msgid="2151320488701538355">"Opties instellen voor applicatie-ontwikkeling"</string>
     <string name="enable_adb" msgid="7982306934419797485">"USB-foutopsporing"</string>
     <string name="enable_adb_summary" msgid="4881186971746056635">"Foutopsporingsmodus bij USB-verbinding"</string>
     <string name="adb_over_network">ADB over netwerk</string>
@@ -937,7 +923,7 @@
     <string name="accessibility_service_security_warning" msgid="4066258132331302670">"Deze toegankelijkheidsservice verzamelt mogelijk alle tekst die u typt, inclusief persoonlijke gegevens en creditcardnummers, maar geen wachtwoorden. De service kan ook uw interacties met de gebruikersinterface vastleggen. De service is afkomstig uit de applicatie <xliff:g id="ACCESSIBILITY_SERVICE_NAME">%1$s</xliff:g>. Deze toegankelijkheidsservice inschakelen?"</string>
     <string name="accessibility_service_disable_warning" msgid="8930591383312775132">"Toegankelijkheid uitschakelen?"</string>
     <string name="accessibility_service_no_apps_title" msgid="898893674114288531">"Geen applicaties voor toegankelijkheid gevonden"</string>
-    <string name="accessibility_service_no_apps_message" msgid="2450056749545404807">"Er zijn geen applicaties voor toegankelijkheid geïnstalleerd."\n\n"U kunt een schermlezer voor uw apparaat downloaden van Android Market."\n\n"Klik op \'OK\' om de schermlezer te installeren."</string>
+    <string name="accessibility_service_no_apps_message" msgid="2450056749545404807">"Er zijn geen applicaties voor toegankelijkheid geïnstalleerd."\n\n"U kunt een schermlezer voor uw apparaat downloaden van de Play Store."\n\n"Druk op \'OK\' om de schermlezer te installeren."</string>
     <string name="accessibility_power_button_category" msgid="8545885236482339928">"Aan/uit-knop"</string>
     <string name="accessibility_power_button_ends_call" msgid="7698764194501089533">"Knop beëindigt oproep"</string>
     <string name="accessibility_power_button_ends_call_summary" msgid="8878097632186291462">"Als u tijdens een oproep op de aan/uit-knop drukt, wordt de oproep beëindigd in plaats van dat het scherm wordt uitgeschakeld"</string>
@@ -1174,7 +1160,7 @@
     <string name="emergency_tone_summary" msgid="722259232924572153">"Gedrag bij noodoproepen instellen"</string>
     <string name="privacy_settings" msgid="9206631214140954954">"Privacy"</string>
     <string name="privacy_settings_title" msgid="1987089301293213705">"Privacy-instellingen"</string>
-    <string name="backup_section_title" msgid="8856083167469467588">"'Backup &amp; herstel"</string>
+    <string name="backup_section_title" msgid="8856083167469467588">"Back-up &amp; herstel"</string>
     <string name="personal_data_section_title" msgid="7815209034443782061">"Persoonlijke gegevens"</string>
     <string name="backup_data_title" msgid="1239105919852668016">"Back-up maken van gegevens"</string>
     <string name="backup_data_summary" msgid="6515285107793232815">"Een back-up van applicatiegegevens, Wi-Fi-wachtwoorden en andere instellingen maken op de Google-servers"</string>
@@ -1199,6 +1185,19 @@
     <string name="sound_category_feedback_title" msgid="4399742321363475393">"Feedback"</string>
 
     <!-- CYANOGENMOD EDITS -->
+    <string name="development_settings_summary">Opties voor applicatie-ontwikkeling</string>
+    <string name="master_clear_title">Instellingen herstellen</string>
+    <string name="date_time_auto_summaryOn">Gegevens van netwerk gebruiken</string>
+    <string name="date_time_auto_summaryOff">Gegevens handmatig instellen</string>
+    <string name="cpu_info">Processor</string>
+    <string name="mem_info">Geheugen (besch./tot.)</string>
+    <string name="mod_version">Mod-versie</string>
+    <string name="mod_version_default">Onbekend</string>
+    <string name="build_date">Build-datum</string>
+    <string name="location_gps_source_title">GPS-apparaat</string>
+    <string name="location_gps_source_summary">Te gebruiken GPS-apparaat (intern/extern)</string>
+    <string name="location_gps_source_notification_title">Let op</string>
+    <string name="location_gps_source_notification">GPS-bron is gewijzigd en wordt daarom uitgeschakeld. Schakel deze weer in om GPS verder te gebruiken.</string>
     <string name="vpn_openvpn_port">Serverpoort</string>
     <string name="vpn_openvpn_protocol">Te gebruiken protocol</string>
     <string name="vpn_openvpn_device">Te gebruiken apparaat</string>
@@ -1232,7 +1231,7 @@
     <string name="profile_settings">Profielinstellingen</string>
     <string name="profile_name">Profielnaam</string>
     <string name="new_profile_name">&lt;Nieuw profiel&gt;</string>
-    <string name="profile_summary">Tik om profiel te wijzigen</string>
+    <string name="profile_summary">Tik om te wijzigen</string>
     <string name="profile_statusbar">Statusbalkindicator</string>
     <string name="profile_appgroup_title">Applicatiegroep: %s</string>
     <string name="profile_appgroups_title">Applicatiegroepen</string>
