@@ -273,7 +273,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private void updateBatteryPulseDescription() {
         if (Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.BATTERY_LIGHT_ENABLED, 0) == 1) {
+                Settings.System.BATTERY_LIGHT_ENABLED, 1) == 1) {
             mBatteryPulse.setSummary(getString(R.string.notification_light_enabled));
         } else {
             mBatteryPulse.setSummary(getString(R.string.notification_light_disabled));
