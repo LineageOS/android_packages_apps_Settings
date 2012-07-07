@@ -17,12 +17,16 @@
 package com.android.settings.notificationlight;
 
 import android.content.ContentResolver;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -44,11 +48,28 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
     private ApplicationLightPreference mLowColorPref;
     private ApplicationLightPreference mMediumColorPref;
     private ApplicationLightPreference mFullColorPref;
+    private static final int MENU_RESET = Menu.FIRST;
+    private Menu mOptionsMenu;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.battery_light_settings);
+
+        // Retrieve general settings
+        ContentResolver resolver = getContentResolver();
+        mLightEnabled = Settings.System.getInt(resolver,
+                Settings.System.BATTERY_LIGHT_ENABLED, 1) == 1;
+        mLightPulse = Settings.System.getInt(resolver,
+                Settings.System.BATTERY_LIGHT_PULSE, 1) == 1;
+
+        // Does the Device support changing battery LED colors?
+        mMultiColorLed = getResources().getBoolean(com.android.internal.R.bool.config_multiColorBatteryLed);
+
+        if(mMultiColorLed) {
+            // Only used when the colors are changeable
+            setHasOptionsMenu(true);
+        }
     }
 
     @Override
@@ -59,16 +80,12 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
 
     private void refreshDefault() {
         ContentResolver resolver = getContentResolver();
-        mLightEnabled = Settings.System.getInt(resolver,
-                Settings.System.BATTERY_LIGHT_ENABLED, 1) == 1;
-        mLightPulse = Settings.System.getInt(resolver,
-                Settings.System.BATTERY_LIGHT_PULSE, 1) == 1;
         int lowColor = Settings.System.getInt(resolver,
                 Settings.System.BATTERY_LIGHT_LOW_COLOR,
                 getResources().getInteger(com.android.internal.R.integer.config_notificationsBatteryLowARGB));
         int mediumColor = Settings.System.getInt(resolver,
                 Settings.System.BATTERY_LIGHT_MEDIUM_COLOR,
-        getResources().getInteger(com.android.internal.R.integer.config_notificationsBatteryMediumARGB));
+                getResources().getInteger(com.android.internal.R.integer.config_notificationsBatteryMediumARGB));
         int fullColor = Settings.System.getInt(resolver,
                 Settings.System.BATTERY_LIGHT_FULL_COLOR,
                 getResources().getInteger(com.android.internal.R.integer.config_notificationsBatteryFullARGB));
@@ -88,9 +105,6 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
             mPulsePref.setEnabled(mLightEnabled);
             mPulsePref.setOnPreferenceChangeListener(this);
         }
-
-        // Does the Device support changing battery LED colors?
-        mMultiColorLed = getResources().getBoolean(com.android.internal.R.bool.config_multiColorBatteryLed);
 
         PreferenceGroup colorPrefs = (PreferenceGroup) prefSet.findPreference("colors_list");
         if (colorPrefs != null) {
@@ -138,6 +152,41 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
             refreshDefault();
             return;
         }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        mOptionsMenu = menu;
+
+        mOptionsMenu.add(0, MENU_RESET, 0, R.string.profile_reset_title)
+                .setIcon(R.drawable.ic_settings_backup) // use the backup icon
+                .setAlphabeticShortcut('r')
+                .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case MENU_RESET:
+                resetColors();
+                return true;
+        }
+        return false;
+    }
+
+
+    protected void resetColors() {
+        ContentResolver resolver = getContentResolver();
+        Resources res = getResources();
+
+        // Reset to the framework default colors
+        Settings.System.putInt(resolver, Settings.System.BATTERY_LIGHT_LOW_COLOR,
+                res.getInteger(com.android.internal.R.integer.config_notificationsBatteryLowARGB));
+        Settings.System.putInt(resolver, Settings.System.BATTERY_LIGHT_MEDIUM_COLOR,
+                res.getInteger(com.android.internal.R.integer.config_notificationsBatteryMediumARGB));
+        Settings.System.putInt(resolver, Settings.System.BATTERY_LIGHT_FULL_COLOR,
+                res.getInteger(com.android.internal.R.integer.config_notificationsBatteryFullARGB));
+        refreshDefault();
     }
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
