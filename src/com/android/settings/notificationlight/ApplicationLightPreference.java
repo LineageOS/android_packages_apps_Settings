@@ -213,7 +213,16 @@ public class ApplicationLightPreference extends Preference implements
         d.findViewById(android.R.id.button3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showTestDialog(d.getColor() - 0xFF000000, d.getPulseSpeedOn(), d.getPulseSpeedOff());
+                int onTime = d.getPulseSpeedOn();
+                int offTime = d.getPulseSpeedOff();
+
+                if (onTime == 0) {
+                    // 'Always on' is selected, display the test with a long timeout as
+                    // an onTime of 0 does not turn the light on at all
+                    showTestDialog(d.getColor() - 0xFF000000, 180000, 1);
+                } else {
+                    showTestDialog(d.getColor() - 0xFF000000, onTime, offTime);
+                }
             }
         });
 
