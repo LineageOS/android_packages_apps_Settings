@@ -194,7 +194,9 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
                 "\\w+\\s+" + /* ignore: version */
                 "([^\\s]+)\\s+" + /* group 1: 2.6.22-omap1 */
                 "\\(([^\\s@]+(?:@[^\\s.]+)?)[^)]*\\)\\s+" + /* group 2: (xxxxxx@xxxxx.constant) */
-                "\\((?:[^(]*\\([^)]*\\))?[^)]*\\)\\s+" + /* ignore: (gcc ..) */
+                // "(gcc" followed by anything up to two consecutive ")"
+                // separated by only white space (which seems to be the norm)
+                "(?:\\(gcc.*\\)\\s+\\))?\\s+" + /* ignore: (gcc ..) */
                 "([^\\s]+)\\s+" + /* group 3: #26 */
                 "(?:PREEMPT\\s+)?" + /* ignore: PREEMPT (optional) */
                 "(.+)"; /* group 4: date */
