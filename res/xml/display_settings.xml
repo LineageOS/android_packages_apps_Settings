@@ -19,43 +19,73 @@
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
         <com.android.settings.BrightnessPreference
-                android:key="brightness"
-                android:title="@string/brightness"
-                android:dialogTitle="@string/brightness" />
+            android:key="brightness"
+            android:title="@string/brightness"
+            android:dialogTitle="@string/brightness" />
+
+<!-- Hide until code is ported from CM9
+        <PreferenceScreen
+            android:key="backlight_widget"
+            android:fragment="com.android.settings.cyanogenmod.Backlight"
+            android:title="@string/backlight_title"
+            android:summary="@string/backlight_summary" />
+-->
 
         <PreferenceScreen
-                android:key="wallpaper"
-                android:title="@string/wallpaper_settings_title"
-                android:fragment="com.android.settings.WallpaperTypeSettings" />
+            android:key="display_rotation"
+            android:fragment="com.android.settings.cyanogenmod.DisplayRotation"
+            android:title="@string/display_rotation_title" />
 
         <CheckBoxPreference
             android:key="accelerometer"
             android:title="@string/accelerometer_title"/>
 
         <ListPreference
-                android:key="screen_timeout"
-                android:title="@string/screen_timeout"
-                android:summary="@string/screen_timeout_summary"
-                android:persistent="false"
-                android:entries="@array/screen_timeout_entries"
-                android:entryValues="@array/screen_timeout_values" />
+            android:key="screen_timeout"
+            android:title="@string/screen_timeout"
+            android:summary="@string/screen_timeout_summary"
+            android:persistent="false"
+            android:entries="@array/screen_timeout_entries"
+            android:entryValues="@array/screen_timeout_values" />
 
         <PreferenceScreen
                 android:key="screensaver"
                 android:title="@string/screensaver_settings_title"
                 android:fragment="com.android.settings.DreamSettings" />
 
-        <ListPreference
-                android:key="font_size"
-                android:title="@string/title_font_size"
-                android:summary="@string/summary_font_size"
-                android:entries="@array/entries_font_size"
-                android:entryValues="@array/entryvalues_font_size"
-                android:dialogTitle="@string/dialog_title_font_size" />
 
-        <CheckBoxPreference
+        <PreferenceScreen
             android:key="notification_pulse"
             android:title="@string/notification_pulse_title"
-            android:persistent="false" />
+            android:fragment="com.android.settings.notificationlight.NotificationLightSettings" />
+
+        <PreferenceScreen
+            android:key="battery_light"
+            android:title="@string/battery_light_title"
+            android:fragment="com.android.settings.notificationlight.BatteryLightSettings" />
+
+        <PreferenceCategory
+            android:key="category_animation_options"
+            android:title="@string/display_category_animation_options_title"/>
+
+        <CheckBoxPreference
+            android:key="electron_beam_animation_on"
+            android:title="@string/display_electron_beam_animation_on_title"
+            android:defaultValue="false" />
+
+        <CheckBoxPreference
+            android:key="electron_beam_animation_off"
+            android:title="@string/display_electron_beam_animation_off_title"
+            android:defaultValue="true" />
+
+        <PreferenceCategory
+            android:key="category_wakeup_options"
+            android:title="@string/display_category_wakeup_options_title"/>
+
+        <CheckBoxPreference
+            android:key="pref_volume_wake"
+            android:title="@string/pref_volume_wake_title"
+            android:summary="@string/pref_volume_wake_summary"
+            android:defaultValue="false" />
 
 </PreferenceScreen>

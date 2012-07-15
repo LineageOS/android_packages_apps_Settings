@@ -731,6 +731,452 @@
 
     <!-- **** CYANOGENMOD EDITS START **** -->
 
+    <!-- Volume Overlay options. -->
+    <string-array name="volume_overlay_entries">
+        <item>Single</item>
+        <item>Expandable</item>
+        <item>Expanded</item>
+        <item>None</item>
+    </string-array>
+
+    <!-- Values for Volume Overlay. Do not translate. -->
+    <string-array name="volume_overlay_values" translatable="false">
+        <item>single</item>
+        <item>expandable</item>
+        <item>expanded</item>
+        <item>none</item>
+    </string-array>
+
+    <!-- Silent mode options. -->
+    <string-array name="silent_mode_entries">
+        <item>Off</item>
+        <item>Vibrate</item>
+        <item>Mute</item>
+    </string-array>
+
+    <!-- Values for Silent mode. Do not translate. -->
+    <string-array name="silent_mode_values" translatable="false">
+        <item>off</item>
+        <item>vibrate</item>
+        <item>mute</item>
+    </string-array>
+
+    <!-- Arrays required by Automatic Backlight. -->
+    <string-array name="entries_light_filter_window">
+        <item>2 s</item>
+        <item>5 s</item>
+        <item>10 s</item>
+        <item>20 s</item>
+        <item>30 s</item>
+        <item>60 s</item>
+    </string-array>
+
+    <string-array name="values_light_filter_window" translatable="false">
+        <item>2000</item>
+        <item>5000</item>
+        <item>10000</item>
+        <item>20000</item>
+        <item>30000</item>
+        <item>60000</item>
+    </string-array>
+
+    <string-array name="entries_light_filter_reset">
+        <item>Disabled</item>
+        <item>400 lux</item>
+        <item>500 lux</item>
+        <item>600 lux</item>
+        <item>700 lux</item>
+        <item>800 lux</item>
+        <item>900 lux</item>
+        <item>1000 lux</item>
+        <item>1500 lux</item>
+        <item>2000 lux</item>
+        <item>2500 lux</item>
+    </string-array>
+
+    <string-array name="values_light_filter_reset" translatable="false">
+        <item>-1</item>
+        <item>400</item>
+        <item>500</item>
+        <item>600</item>
+        <item>700</item>
+        <item>800</item>
+        <item>900</item>
+        <item>1000</item>
+        <item>1500</item>
+        <item>2000</item>
+        <item>2500</item>
+    </string-array>
+
+    <string-array name="entries_light_filter_interval">
+        <item>0.5 s</item>
+        <item>1 s</item>
+        <item>2 s</item>
+        <item>5 s</item>
+        <item>10 s</item>
+    </string-array>
+
+    <string-array name="values_light_filter_interval" translatable="false">
+        <item>500</item>
+        <item>1000</item>
+        <item>2000</item>
+        <item>5000</item>
+        <item>10000</item>
+    </string-array>
+
+    <string-array name="entries_light_levels_dim">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>8</item>
+        <item>10</item>
+        <item>12</item>
+        <item>14</item>
+        <item>16</item>
+        <item>18</item>
+        <item>20 (default)</item>
+        <item>22</item>
+        <item>24</item>
+        <item>26</item>
+    </string-array>
+
+    <string-array name="values_light_levels_dim" translatable="false">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>8</item>
+        <item>10</item>
+        <item>12</item>
+        <item>14</item>
+        <item>16</item>
+        <item>18</item>
+        <item>20</item>
+        <item>22</item>
+        <item>24</item>
+        <item>26</item>
+    </string-array>
+
+    <string-array name="entries_light_decrease_hysteresis">
+        <item>0 %</item>
+        <item>10 %</item>
+        <item>20 %</item>
+        <item>30 %</item>
+        <item>40 %</item>
+        <item>50 %</item>
+        <item>60 %</item>
+        <item>70 %</item>
+        <item>80 %</item>
+        <item>90 %</item>
+    </string-array>
+
+    <string-array name="values_light_decrease_hysteresis" translatable="false">
+        <item>0</item>
+        <item>10</item>
+        <item>20</item>
+        <item>30</item>
+        <item>40</item>
+        <item>50</item>
+        <item>60</item>
+        <item>70</item>
+        <item>80</item>
+        <item>90</item>
+    </string-array>
+    
+    <!-- Arrays required by Notification Widgets. -->
+    <string-array name="entries_brightness_widget" formatted="false" translatable="false">
+        <item>@string/cm_brightness_mode_auto</item>
+        <item>@string/cm_brightness_mode_dim</item>
+        <item>25%</item>
+        <item>50%</item>
+        <item>75%</item>
+        <item>100%</item>
+    </string-array>
+
+   <string-array name="values_brightness_widget" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <string-array name="entries_network_widget">
+        <item>2G/3G+2G</item>  
+        <item>2G/3G Only</item>   
+        <item>2G/3G Only/3G+2G</item>
+    </string-array>
+
+    <string-array name="values_network_widget" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="entries_screentimeout_widget">
+        <item>15s/1m/5m</item>
+        <item>30s/2m/5m</item>
+    </string-array>
+
+    <string-array name="values_screentimeout_widget" translatable="false">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
+    <string-array name="entries_ring_widget" translatable="false">
+        <item>@string/cm_sound_mode_silent</item>
+        <item>@string/cm_sound_mode_vibrate</item>
+        <item>@string/cm_sound_mode_sound</item>
+        <item>@string/cm_sound_mode_soundVibrate</item>
+    </string-array>
+
+    <string-array name="values_ring_widget" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="entries_flash_widget">
+        <item>Normal</item>
+        <item>High</item>
+    </string-array>
+
+    <string-array name="values_flash_widget" translatable="false">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+  
+    <string-array name="haptic_feedback_entries">
+        <item>Use global setting</item>
+        <item>On</item>
+        <item>Off</item>
+    </string-array>
+
+    <string-array name="haptic_feedback_values" translatable="false">
+        <item>2</item>
+        <item>1</item>
+        <item>0</item>
+    </string-array>
+
+    <string-array name="pref_zram_size_entries">
+        <item>Disabled</item>
+        <item>10%</item>
+        <item>18% (default)</item>
+        <item>26%</item>
+    </string-array>
+
+    <string-array name="pref_zram_size_values" translatable="false">
+        <item>0</item>
+        <item>10</item>
+        <item>18</item>
+        <item>26</item>
+    </string-array>
+
+    <string-array name="entries_status_bar_am_pm">
+        <item>Normal</item>
+        <item>Small</item>
+        <item>None (default)</item>
+    </string-array>
+
+    <string-array name="values_status_bar_am_pm" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="entries_status_bar_battery">
+        <item>Icon (default)</item>
+        <item>Percentage</item>
+        <item>Hidden</item>
+    </string-array>
+
+    <string-array name="values_status_bar_battery" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+     <string-array name="entries_status_bar_signal" translatable="false">
+        <item>@string/status_bar_signal_text_show_bars</item>
+        <item>@string/status_bar_signal_text_show_text</item>
+        <item>@string/status_bar_signal_text_hidden</item>
+     </string-array>
+
+     <string-array name="values_status_bar_signal" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="lockscreen_delay_entries">
+        <item>@string/slide_lock_delay_none</item>
+        <item>@string/slide_lock_delay_1s</item>
+        <item>@string/slide_lock_delay_5s</item>
+        <item>@string/slide_lock_delay_10s</item>
+        <item>@string/slide_lock_delay_15s</item>
+        <item>@string/slide_lock_delay_30s</item>
+        <item>@string/slide_lock_delay_1m</item>
+        <item>@string/slide_lock_delay_5m</item>
+        <item>@string/slide_lock_delay_10m</item>
+        <item>@string/slide_lock_delay_30m</item>
+    </string-array>
+
+    <string-array name="lockscreen_delay_values" translatable="false">
+        <item>0</item>
+        <item>1000</item>
+        <item>5000</item>
+        <item>10000</item>
+        <item>15000</item>
+        <item>30000</item>
+        <item>60000</item>
+        <item>300000</item>
+        <item>600000</item>
+        <item>1800000</item>
+    </string-array>
+
+    <string-array name="lockscreen_icon_picker_labels" translatable="false">
+        <item>@string/icon_picker_alarm</item>
+        <item>@string/icon_picker_browser</item>
+        <item>@string/icon_picker_calendar</item>
+        <item>@string/icon_picker_camera</item>
+        <item>@string/icon_picker_chrome</item>
+        <item>@string/icon_picker_email</item>
+        <item>@string/icon_picker_facebook</item>
+        <item>@string/icon_picker_gallery</item>
+        <item>@string/icon_picker_googleplus</item>
+        <item>@string/icon_picker_googletalk</item>
+        <item>@string/icon_picker_maps</item>
+        <item>@string/icon_picker_sms</item>
+        <item>@string/icon_picker_movie</item>
+        <item>@string/icon_picker_music</item>
+        <item>@string/icon_picker_nav_normal</item>
+        <item>@string/icon_picker_phone</item>
+        <item>@string/icon_picker_podcast</item>
+        <item>@string/icon_picker_rss</item>
+        <item>@string/icon_picker_search</item>
+        <item>@string/icon_picker_twitter</item>
+    </string-array>
+
+    <string-array name="lockscreen_icon_picker_icons" translatable="false">
+        <item>@*android:drawable/ic_lockscreen_alarm_normal</item>
+        <item>@*android:drawable/ic_lockscreen_browser_normal</item>
+        <item>@*android:drawable/ic_lockscreen_calendar_normal</item>
+        <item>@*android:drawable/ic_lockscreen_camera_normal</item>
+        <item>@*android:drawable/ic_lockscreen_chrome_normal</item>
+        <item>@*android:drawable/ic_lockscreen_email_normal</item>
+        <item>@*android:drawable/ic_lockscreen_facebook_normal</item>
+        <item>@*android:drawable/ic_lockscreen_gallery_normal</item>
+        <item>@*android:drawable/ic_lockscreen_gplus_normal</item>
+        <item>@*android:drawable/ic_lockscreen_gtalk_normal</item>
+        <item>@*android:drawable/ic_lockscreen_maps_normal</item>
+        <item>@*android:drawable/ic_lockscreen_sms_normal</item>
+        <item>@*android:drawable/ic_lockscreen_movie_normal</item>
+        <item>@*android:drawable/ic_lockscreen_music_normal</item>
+        <item>@*android:drawable/ic_lockscreen_nav_normal</item>
+        <item>@*android:drawable/ic_lockscreen_phone_normal</item>
+        <item>@*android:drawable/ic_lockscreen_podcast_normal</item>
+        <item>@*android:drawable/ic_lockscreen_rss_normal</item>
+        <item>@*android:drawable/ic_lockscreen_google_normal</item>
+        <item>@*android:drawable/ic_lockscreen_twitter_normal</item>
+    </string-array>
+
+    <!-- Profile mode options. -->
+    <string-array name="profile_entries">
+        <item>On</item>
+        <item>Off</item>
+        <item>No override</item>
+    </string-array>
+
+    <!-- Values for vibrate_entries matching constants in SoundSettings. Do not translate. -->
+    <string-array name="profile_values" translatable="false">
+        <item>OVERRIDE</item>
+        <item>SUPPRESS</item>
+        <item>DEFAULT</item>
+    </string-array>
+
+    <!-- Profile mode options. -->
+    <string-array name="profile_connection_entries">
+        <item>Disable</item>
+        <item>Enable</item>
+    </string-array>
+
+    <!-- Values for profile connections. Do not translate. -->
+    <string-array name="profile_connection_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
+    <!-- Profile mode options. -->
+    <string-array name="profile_vibrator_entries" translatable="false">
+        <item>@string/vibrator_state_disabled</item>
+        <item>@string/vibrator_state_silent</item>
+        <item>@string/vibrator_state_enabled</item>
+    </string-array>
+
+    <!-- Values for profile vibrator. Do not translate. -->
+    <string-array name="profile_vibrator_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <!-- Profile lock mode options. Do not translate. -->
+    <string-array name="profile_lockmode_entries" translatable="false">
+        <item>@string/profile_lockmode_default</item>
+        <item>@string/profile_lockmode_insecure</item>
+        <item>@string/profile_lockmode_disabled</item>
+    </string-array>
+
+    <!-- Profile lock mode summaries. Do not translate. -->
+    <string-array name="profile_lockmode_summaries" translatable="false">
+        <item>@string/profile_lockmode_default_summary</item>
+        <item>@string/profile_lockmode_insecure_summary</item>
+        <item>@string/profile_lockmode_disabled_summary</item>
+    </string-array>
+
+    <!-- Values for profile lock mode. Do not translate. -->
+    <string-array name="profile_lockmode_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <!-- Profile airplane mode options. Do not translate. -->
+    <string-array name="profile_airplanemode_entries" translatable="false">
+        <item>@string/profile_airplanemode_default</item>
+        <item>@string/profile_airplanemode_enabled</item>
+        <item>@string/profile_airplanemode_disabled</item>
+    </string-array>
+
+    <!-- Profile airplane mode summaries. Do not translate. -->
+    <string-array name="profile_airplanemode_summaries" translatable="false">
+        <item>@string/profile_airplanemode_default_summary</item>
+        <item>@string/profile_airplanemode_enabled_summary</item>
+        <item>@string/profile_airplanemode_disabled_summary</item>
+    </string-array>
+
+    <!-- Values for profile airplane mode. Do not translate. -->
+    <string-array name="profile_airplanemode_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="location_entries_gps_source">
+        <item>Use Internal GPS</item>
+    </string-array>
+
+    <string-array name="location_values_gps_source" translatable="false">
+        <item>0</item>
+    </string-array>
+
     <!-- Arrays for root access capability -->
     <string-array name="root_access_entries">
         <item>@string/root_access_none</item>
@@ -745,6 +1191,146 @@
         <item>2</item>
         <item>3</item>
     </string-array>
+
+    <!-- Values for the notification light pulse spinners -->
+    <string-array name="notification_pulse_length_entries">
+        <item>@string/pulse_length_always_on</item>
+        <item>@string/pulse_length_very_short</item>
+        <item>@string/pulse_length_short</item>
+        <item>@string/pulse_length_normal</item>
+        <item>@string/pulse_length_long</item>
+        <item>@string/pulse_length_very_long</item>
+    </string-array>
+
+    <string-array name="notification_pulse_length_values" translatable="false">
+        <item>0</item>
+        <item>250</item>
+        <item>500</item>
+        <item>1000</item>
+        <item>2500</item>
+        <item>5000</item>
+    </string-array>
+
+    <string-array name="notification_pulse_speed_entries">
+        <item>@string/pulse_speed_very_fast</item>
+        <item>@string/pulse_speed_fast</item>
+        <item>@string/pulse_speed_normal</item>
+        <item>@string/pulse_speed_slow</item>
+        <item>@string/pulse_speed_very_slow</item>
+    </string-array>
+
+    <string-array name="notification_pulse_speed_values" translatable="false">
+        <item>250</item>
+        <item>500</item>
+        <item>1000</item>
+        <item>2500</item>
+        <item>5000</item>
+    </string-array>
+
+    <string-array name="weather_interval_entries">
+        <item>@string/weather_refresh_manual</item>
+        <item>@string/weather_refresh_30min</item>
+        <item>@string/weather_refresh_60min</item>
+        <item>@string/weather_refresh_2hrs</item>
+        <item>@string/weather_refresh_4hrs</item>
+        <item>@string/weather_refresh_6hrs</item>
+        <item>@string/weather_refresh_8hrs</item>
+    </string-array>
+
+    <string-array name="weather_interval_values" translatable="false">
+        <item>0</item>
+        <item>30</item>
+        <item>60</item>
+        <item>120</item>
+        <item>240</item>
+        <item>360</item>
+        <item>480</item>
+    </string-array>
+
+    <string-array name="calendar_lookahead_entries">
+        <item>@string/calendar_lookahead_3hrs</item>
+        <item>@string/calendar_lookahead_6hrs</item>
+        <item>@string/calendar_lookahead_12hrs</item>
+        <item>@string/calendar_lookahead_1day</item>
+        <item>@string/calendar_lookahead_3days</item>
+        <item>@string/calendar_lookahead_1wk</item>
+    </string-array>
+
+    <string-array name="calendar_lookahead_values" translatable="false">
+        <item>10800000</item>
+        <item>21600000</item>
+        <item>43200000</item>
+        <item>86400000</item>
+        <item>259200000</item>
+        <item>604800000</item>
+    </string-array>
+
+    <string-array name="calendar_show_event_metadata_entries">
+        <item>@string/calendar_metadata_none</item>
+        <item>@string/calendar_metadata_first_line</item>
+        <item>@string/calendar_metadata_all</item>
+    </string-array>
+
+    <string-array name="calendar_show_event_metadata_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="lockscreen_background_entries" translatable="false">
+        <item>@string/lockscreen_background_color_fill</item>
+        <item>@string/lockscreen_background_custom_image</item>
+        <item>@string/lockscreen_background_default_wallpaper</item>
+    </string-array>
+
+    <string-array name="lockscreen_background_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <!-- DHCP lease times for tethering settings -->
+    <string-array name="tethering_lease_time_entries">
+        <item>@string/dhcp_lease_30mn</item>
+        <!-- keep this in sync with DEFAULT_LEASE_TIME in system/netd/TetherController.h -->
+        <item>@string/dhcp_lease_1h</item>
+        <item>@string/dhcp_lease_2h</item>
+        <item>@string/dhcp_lease_4h</item>
+        <item>@string/dhcp_lease_6h</item>
+        <item>@string/dhcp_lease_12h</item>
+        <item>@string/dhcp_lease_24h</item>
+    </string-array>
+
+    <!-- Do not translate. -->
+    <string-array name="tethering_lease_time_values" translatable="false">
+        <item>1800</item>
+        <item>-1</item>
+        <item>7200</item>
+        <item>14400</item>
+        <item>21600</item>
+        <item>43200</item>
+        <item>86400</item>
+    </string-array>
+
+    <string-array name="increasing_ring_interval_entries" translatable="false">
+        <item>@string/increasing_ring_interval_eachring</item>
+        <item>@string/increasing_ring_interval_half_second</item>
+        <item>@string/increasing_ring_interval_1second</item>
+        <item>@string/increasing_ring_interval_2seconds</item>
+        <item>@string/increasing_ring_interval_3seconds</item>
+        <item>@string/increasing_ring_interval_5seconds</item>
+        <item>@string/increasing_ring_interval_10seconds</item>
+    </string-array>
+
+    <integer-array name="increasing_ring_interval_values">
+        <item>0</item>
+        <item>500</item>
+        <item>1000</item>
+        <item>2000</item>
+        <item>3000</item>
+        <item>5000</item>
+        <item>10000</item>
+    </integer-array>
 
     <!-- **** CYANOGENMOD EDITS END **** -->
 </resources>

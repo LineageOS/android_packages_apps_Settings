@@ -14,7 +14,8 @@
      limitations under the License.
 -->
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
         android:key="security_category"
@@ -24,7 +25,7 @@
             android:key="unlock_set_or_change"
             android:title="@string/unlock_set_unlock_launch_picker_title"
             android:summary="@string/unlock_set_unlock_mode_biometric_weak"
-            android:persistent="false"/>
+            android:persistent="false" />
 
         <PreferenceScreen
             android:key="biometric_weak_improve_matching"
@@ -55,11 +56,9 @@
             android:key="unlock_tactile_feedback"
             android:title="@string/lockpattern_settings_enable_tactile_feedback_title"/>
 
-        <PreferenceScreen
-            android:fragment="com.android.settings.OwnerInfoSettings"
-            android:key="owner_info_settings"
-            android:title="@string/owner_info_settings_title"
-            android:summary="@string/owner_info_settings_summary"/>
+        <CheckBoxPreference
+            android:key="lock_before_unlock"
+            android:title="@string/lockpattern_settings_enable_lock_before_unlock"/>
 
     </PreferenceCategory>
 
