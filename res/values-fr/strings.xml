@@ -1028,7 +1028,7 @@
     <string name="profile_profiles_manage">Profils</string>
     <string name="profile_profile_manage">Gérer le profil</string>
     <string name="profile_applist_manage">Liste des applications</string>
-    <string name="profile_appgroups_manage">Gérer groupes d\'applications</string>
+    <string name="profile_appgroups_manage">Gérer les groupes</string>
     <string name="profile_appgroup_manage">Profil</string>
 
     <!-- Profile settings screen, section header for settings related to notification profiles -->
@@ -1042,6 +1042,24 @@
     <string name="vibrate_mode">Vibreur</string>
     <string name="choose_soundtone">Son de notification</string>
     <string name="choose_ringtone">Choix de la sonnerie</string>
+
+    <!-- Status bar notification count -->
+    <string name="status_bar_notif_count_title">Compteur de notifications</string>
+    <string name="status_bar_notif_count_summary">Afficher le nombre de notifications en attente dans la barre d\'état</string>
+    <string name="increasing_ring_title">Sonnerie progressive</string>
+    <string name="checkbox_increasing_ring">Activer</string>
+
+    <!-- Sound settings screen, the title of the volume bar to adjust the minimum increasing ring volume -->
+    <string name="increasing_ring_min_volume_title">Volume de départ</string>
+    <string name="increasing_ring_volume_notice">Note:\nComme le volume défini est plus grand que celui de la sonnerie, il sera réduit à son niveau.</string>
+    <string name="increasing_ring_interval_title">Intervale de progression</string>
+    <string name="increasing_ring_interval_eachring">A chaque sonnerie</string>
+    <string name="increasing_ring_interval_half_second">0.5 secondes</string>
+    <string name="increasing_ring_interval_1second">1 seconde</string>
+    <string name="increasing_ring_interval_2seconds">2 secondes</string>
+    <string name="increasing_ring_interval_3seconds">3 secondes</string>
+    <string name="increasing_ring_interval_5seconds">5 secondes</string>
+    <string name="increasing_ring_interval_10seconds">10 secondes</string>
 
     <!-- Sound settings screen, setting option name to pick ringtone (a list dialog comes up)-->
     <string name="soundtone_title">Son de notification</string>
@@ -1118,7 +1136,6 @@
     <string name="adb_over_network">ADB sur TCP/IP</string>
     <string name="adb_over_network_summary">"Activer le débogage sur toutes les interfaces (réseaux USB, Wi-Fi et Bluetooth)"</string>
     <string name="adb_over_network_warning">"ATTENTION: Lorsque cette fonction est activée, votre téléphone est ouvert aux intrusions sur toutes les interfaces, y compris via le réseau mobile !\n\nIl est fortement conseillé de désactiver le réseau mobile avant d\'activer cette fonction.\n\nContinuer ?"</string>
-    <!-- Setting checkbox title for root access -->
     <string name="root_access">Accès root</string>
     <string name="root_access_warning_title">Autoriser l\'accès root ?</string>
     <string name="root_access_warning_message">Autoriser l\'accès root aux applications peut être très dangereux et corrompre la sécurité et la stabilité de votre appareil !</string>
@@ -1126,7 +1143,7 @@
     <string name="root_access_apps">Appli. uniquement</string>
     <string name="root_access_adb">ADB uniquement</string>
     <string name="root_access_all">Applications et ADB</string>
-
+    <string name="device_hostname">Nom d\'hôte de l\'appareil</string>
     <string name="kill_app_longpress_back">Tuer avec bouton Retour</string>
     <string name="kill_app_longpress_back_summary">Permet de forcer la fermeture de l\'application en cours en appuyant longuement sur le bouton Retour</string>
 
