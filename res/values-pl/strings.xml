@@ -1585,10 +1585,6 @@
     <string name="additional_system_update_settings_list_item_title" msgid="214987609894661992">"Dodatkowe aktualizacje systemu"</string>
 
     <!-- **** CYANOGENMOD EDITS START **** -->
-    <!-- Temporary - stubed preference - to be removed once all preferences have been merged #CM -->
-    <string name="stubbed">Zalążek ustawień</string>
-    <string name="stubbed_summary">Ekran zastępczy do czasu implementacji pełnej funkcjonalności CM9</string>
-
     <!-- Backlight #CM -->
     <string name="backlight_title">Jasność automatyczna</string>
     <string name="backlight_summary">Dostosuj poziomy i filtrowanie</string>
@@ -1764,19 +1760,17 @@
     <string name="weather_use_custom_location">Użyj niestandardowej lokalizacji</string>
     <string name="weather_geolocated">Geolokacja przez sieć</string>
     <string name="weather_custom_location_dialog_title">Podaj lokalizację</string>
-    <string name="weather_custom_location_dialog_message">Uwaga: Podanie błędnej lokalizacji spowoduje zatrzymanie aktualizacji.</string>
     <string name="weather_custom_location_hint">Miasto, Stan/Państwo</string>
     <string name="weather_custom_location_title">Lokalizacja</string>
     <string name="weather_show_location_title">Pokaż lokalizację</string>
     <string name="weather_show_timestamp_title">Pokaż datę</string>
     <string name="weather_refresh_interval">Częstotliwość aktualizacji</string>
-    <string name="weather_update">Aktualizacja</string>
     <string name="weather_use_metric">Używaj jednostek metrycznych</string>
-    <string name="weather_refreshing">Aktualizacja pogody</string>
     <string name="weather_retrieve_location_dialog_title">Nie można odnaleźć lokalizacji!</string>
     <string name="weather_retrieve_location_dialog_message">Geolokacja przez sieć jest wyłączona.\n\nWprowadź niestandardową lokalizację albo włącz lokalizację przez sieć</string>
     <string name="weather_retrieve_location_dialog_enable_button">Włącz</string>
     <string name="weather_invert_lowhigh">Odwróć niską/wysoką temperaturę</string>
+    <string name="weather_progress_title">Weryfikacja lokalizacji</string>
 
     <!-- Lock screen Weather - Update frequency -->
     <string name="weather_refresh_manual">Ręcznie</string>
@@ -1813,7 +1807,16 @@
     <string name="calendar_metadata_first_line">Pokaż pierwszą linię</string>
     <string name="calendar_metadata_all">Pokaż wszystko</string>
 
-    <!-- Screen security - Screen security  #CM -->
+    <!-- Lock screen background -->
+    <string name="lockscreen_custom_background_title">Tło</string>
+    <string name="lockscreen_custom_background_dialog_title">Wybierz kolor</string>
+    <string name="lockscreen_background_result_successful">Tło zmienione</string>
+    <string name="lockscreen_background_result_not_successful">Tło nie zmienione</string>
+    <string name="lockscreen_background_color_fill">Wypełnienie kolorem</string>
+    <string name="lockscreen_background_custom_image">Niestandardowy obraz</string>
+    <string name="lockscreen_background_default_wallpaper">Domyślna tapeta</string>
+
+    <!-- Screen security #CM -->
     <string name="screen_security_category">Zabezpieczenia ekranu</string>
     <string name="screen_security_title">Ekran blokady</string>
     <string name="screen_security_summary">Zmień ustawienia bezpieczeństwa i opóźnienia ekranu blokady</string>
@@ -1867,12 +1870,15 @@
     <!-- Memory Management -->
     <string name="memory_management_title">Zarządzanie pamięcią</string>
     <string name="memory_management_summary">Zmień ustawienia zarządzania pamięcią, by poprawić wydajność systemu</string>
+
     <!-- zRam -->
     <string name="pref_zram_title">zRam</string>
     <string name="pref_zram_summary">Kompresuj pamięć, by zwiększyć jej pojemność (wymaga restartu)</string>
+
     <!-- KSM -->
     <string name="pref_ksm_title">Kernel samepage merging</string>
     <string name="pref_ksm_summary">Deduplikuje strony pamięci, by zmniejszyć jej zużycie i zwiększyć wydajność</string>
+
     <!-- Purgeable Assets -->
     <string name="pref_purgeable_assets_title">Oczyszczanie zasobów</string>
     <string name="pref_purgeable_assets_summary">Zwalnia pamięć usuwając zbędne bitmapy (wymaga restartu)</string>
@@ -1922,6 +1928,7 @@
     <string name="adb_over_network_summary">Połączenie ADB przez wszystkie interfejsy sieciowe. Wyłączane podczas restartu urządzenia</string>
     <!-- Warning for Adb over Network -->
     <string name="adb_over_network_warning">UWAGA: Kiedy debugowanie przez sieć jest włączone, twój telefon jest otwarty na ataki przez wszystkie sieci, z którymi jesteś połączony, włączając w to także sieć komórkową!\n\nUżywaj tylko w zaufanych sieciach.\n\nNapewno chcesz włączyć tę funkcję?</string>
+
     <!-- Kill app long-press back  -->
     <string name="kill_app_longpress_back">Przycisk wstecz</string>
     <string name="kill_app_longpress_back_summary">Zabij aplikację przytrzymując przycisk wstecz</string>
@@ -2107,6 +2114,17 @@
     <string name="volbtn_music_controls_title">Zmiana utworu</string>
     <string name="volbtn_music_controls_summary">Gdy ekran jest wyłączony, przytrzymaj przycisk głośności, by zmienić utwór</string>
 
+    <!-- Advanced tethering settings -->
+    <string name="tethering_advanced_text">Zaawansowane</string>
+    <string name="tethering_lease_time_text">Czas dzierżawy DHCP</string>
+    <string name="dhcp_lease_30mn">30 minut</string>
+    <string name="dhcp_lease_1h">1 godzina (domyślne)</string>
+    <string name="dhcp_lease_2h">2 godziny</string>
+    <string name="dhcp_lease_4h">4 godziny</string>
+    <string name="dhcp_lease_6h">6 godzin</string>
+    <string name="dhcp_lease_12h">12 godzin</string>
+    <string name="dhcp_lease_24h">24 godziny</string>
+
     <!-- GPS Source selection -->
     <string name="location_gps_source_title">Źródło GPS</string>
     <string name="location_gps_source_summary">Wybierz źródło sygnału: zewnętrzny GPS Bluetooth lub wewnętrzny moduł GPS urządzenia</string>
@@ -2143,8 +2161,13 @@
     <string name="storage_switch_summary_off">Aplikacje i media używają karty SD</string>
     <string name="storage_switch_unavailable">Urządzenie nie posiada rozszerzonej pamięci wewnętrznej</string>
 
-    <!-- Display settings screen, battery light repeat pulsing title -->
-    <string name="battery_pulse_title">Powiadom diodą o niskim poziomie baterii</string>
+    <!-- Battery light settings #CM -->
+    <string name="battery_light_title">Wskaźnik baterii</string>
+    <string name="battery_low_pulse_title">Pulsuj przy niskim stanie baterii</string>
+    <string name="battery_light_list_title">Kolory</string>
+    <string name="battery_light_low_color_title">Niski stan baterii</string>
+    <string name="battery_light_medium_color_title">Ładowanie</string>
+    <string name="battery_light_full_color_title">W pełni naładowany</string>
 
     <!-- Display settings screen, notification light settings -->
     <string name="notification_light_general_title">Ogólne</string>
@@ -2189,6 +2212,9 @@
     <string name="profile_write_failed">Nie udało się zapisać tagu!</string>
     <string name="profile_selected">Wybrany profil: %1$s</string>
     <string name="profile_nfc_text">Zapisanie profilu do tagu NFC umożliwia Ci jego aktywację poprzez dotknięcie tagu. Dotknięcie go po raz drugi spowoduje aktywację poprzedniego profilu.</string>
+    <string name="profile_unknown_nfc_tag">Nieznany profil</string>
+    <string name="profile_add_nfc_text">Ten tag NFC odnosi się do nieznanego profilu. Połączenie tego tagu z już istniejącym profilem pozwoli na wybranie go w przyszłości.</string>
+    <string name="profile_select">Wybierz profil</string>
 
     <!-- Title for checkbox menu option to enable linear chart. [CHAR LIMIT=32] -->
     <string name="data_usage_menu_linear_chart">Wykres liniowy</string>
@@ -2240,6 +2266,25 @@
 
     <!-- Hostname setting -->
     <string name="device_hostname">Nazwa hosta urządzenia</string>
+
+    <!-- Status bar notification count -->
+    <string name="status_bar_notif_count_title">Pokaż ilość powiadomień</string>
+    <string name="status_bar_notif_count_summary">Pokaż ilość oczekujących powiadomień na pasku stanu</string>
+
+    <string name="increasing_ring_title">Narastający dzwonek</string>
+    <!-- Sound settings screen, the caption of the checkbox for making incoming calls increase in volume -->
+    <string name="checkbox_increasing_ring">Włącz</string>
+    <!-- Sound settings screen, the title of the volume bar to adjust the minimum increasing ring volume -->
+    <string name="increasing_ring_min_volume_title">Głośność początkowa</string>
+    <string name="increasing_ring_volume_notice">Podpowiedź:\nJeśli głośność początkowa jest wyższa od głośności dzwonka, to użyta zostanie głośność dzwonka.</string>
+    <string name="increasing_ring_interval_title">Odstęp między narastaniem</string>
+    <string name="increasing_ring_interval_eachring">Przy każdym odtworzeniu dzwonka</string>
+    <string name="increasing_ring_interval_half_second">0.5 sekundy</string>
+    <string name="increasing_ring_interval_1second">1 sekunda</string>
+    <string name="increasing_ring_interval_2seconds">2 sekundy</string>
+    <string name="increasing_ring_interval_3seconds">3 sekundy</string>
+    <string name="increasing_ring_interval_5seconds">5 sekund</string>
+    <string name="increasing_ring_interval_10seconds">10 sekund</string>
 
     <!-- **** CYANOGENMOD EDITS END **** -->
 </resources>
