@@ -632,6 +632,30 @@
     <string name="notification_light_default_value">Por defecto</string>
     <string name="notification_light_missed_call_title">Llamada perdida</string>
     <string name="notification_light_voicemail_title">Buzón de voz</string>
+    <string name="edit_light_settings">Notificaciones luminosas</string>
+    <string name="pulse_speed_title">Duración y velocidad</string>
+    <string name="picker_arrow">→</string>
+    <string name="default_time">Normal</string>
+    <string name="custom_time">Personalizado</string>
+    <string name="dialog_test">Probar</string>
+    <string name="dialog_delete_title">Eliminar</string>
+    <string name="dialog_delete_message">¿Eliminar el elemento seleccionado?</string>
+    <string name="dialog_test_message">Apagar la pantalla para comprobar la notificación o descartar el diálogo actual para terminar la prueba</string>
+    <string name="dialog_test_button">Descartar</string>
+
+    <!-- Values for the notification light pulse spinners -->
+    <string name="pulse_length_always_on">Siempre encendida</string>
+    <string name="pulse_length_very_short">Muy corta</string>
+    <string name="pulse_length_short">Corta</string>
+    <string name="pulse_length_normal">Normal</string>
+    <string name="pulse_length_long">Larga</string>
+    <string name="pulse_length_very_long">Muy larga</string>
+    <string name="pulse_speed_very_fast">Muy rápida</string>
+    <string name="pulse_speed_fast">Rápida</string>
+    <string name="pulse_speed_normal">Normal</string>
+    <string name="pulse_speed_slow">Lenta</string>
+    <string name="pulse_speed_very_slow">Muy lenta</string>
+
     <string name="incoming_call_volume_title" msgid="8073714801365904099">"Tono"</string>
     <string name="notification_volume_title" msgid="2012640760341080408">"Notificación"</string>
     <string name="checkbox_notification_same_as_incoming_call" msgid="1073644356290338921">"Utilizar volumen de llamada entrante para notificaciones"</string>
@@ -902,6 +926,15 @@
     <string name="bluetooth_tethering_overflow_error" msgid="6285122039489881969">"No se puede anclar a más de <xliff:g id="MAXCONNECTION">%1$d</xliff:g> dispositivos."</string>
     <string name="bluetooth_untether_blank" msgid="2871192409329334813">"Se desactivará el anclaje a red de <xliff:g id="DEVICE_NAME">%1$s</xliff:g>."</string>
     <string name="tethering_help_button_text" msgid="656117495547173630">"Ayuda"</string>
+    <string name="tethering_advanced_text">Avanzado</string>
+    <string name="tethering_lease_time_text">Expiración de DHCP</string>
+    <string name="dhcp_lease_30mn">30 minutos</string>
+    <string name="dhcp_lease_1h">1 hora (predeterminado)</string>
+    <string name="dhcp_lease_2h">2 horas</string>
+    <string name="dhcp_lease_4h">4 horas</string>
+    <string name="dhcp_lease_6h">6 horas</string>
+    <string name="dhcp_lease_12h">12 horas</string>
+    <string name="dhcp_lease_24h">24 horas</string>
     <string name="network_settings_title" msgid="7967552516440151852">"Redes móviles"</string>
     <string name="location_title" msgid="1029961368397484576">"Mi ubicación"</string>
     <string name="location_network_based" msgid="5569673665032992664">"Ubicación de Google"</string>
@@ -1122,6 +1155,8 @@
     <string name="spellchecker_security_warning" msgid="9060897418527708922">"Este corrector ortográfico puede registrar todo lo que escribas, incluidos datos personales, como las contraseñas y los números de las tarjetas de crédito. Procede de la aplicación <xliff:g id="SPELLCHECKER_APPLICATION_NAME">%1$s</xliff:g>. ¿Quieres usar este corrector ortográfico?"</string>
     <string name="pointer_settings_category" msgid="8183819795164034286">"Ratón/trackpad"</string>
     <string name="pointer_speed" msgid="1221342330217861616">"Velocidad del puntero"</string>
+    <string name="ime_switcher_notify">Selector en notificaciones</string>
+    <string name="ime_switcher_notify_summary">Muestra el selector de método de entrada de texto en la barra de notificaciones</string>
     <string name="user_dict_settings_titlebar" msgid="765659257455000490">"Diccionario del usuario"</string>
     <string name="user_dict_single_settings_title" msgid="524997218433540614">"Diccionario personal"</string>
     <string name="user_dict_multiple_settings_title" msgid="3735224433307996276">"Diccionarios personales"</string>
@@ -1711,6 +1746,7 @@
     <string name="status_bar_show_clock_summary">"Mostrar el reloj en la barra de estado"</string>
     <string name="status_bar_am_pm_title">"Estilo AM/PM"</string>
     <string name="status_bar_am_pm_summary">"Estilo AM/PM a mostrar junto a la hora del reloj en la barra de estado"</string>
+    <string name="status_bar_am_pm_info">Activado el modo 24-horas</string>
     <string name="status_bar_battery_title">"Estilo batería"</string>
     <string name="status_bar_battery_summary">"Estilo del estado de batería a mostrar en la barra de estado"</string>
     <string name="status_bar_signal_text_title">"Estilo de la señal de estado"</string>
@@ -1855,6 +1891,14 @@
 
     <!-- Volume description for ringtone volume #CM -->
     <string name="volume_ring_only_description">Tonos del teléfono</string>
+
+    <!-- Battery light settings #CM -->
+    <string name="battery_light_title">Indicador de batería</string>
+    <string name="battery_low_pulse_title">Parpadear con batería baja</string>
+    <string name="battery_light_list_title">Colores</string>
+    <string name="battery_light_low_color_title">Batería baja</string>
+    <string name="battery_light_medium_color_title">Cargando</string>
+    <string name="battery_light_full_color_title">Cargada</string>
 
     <!-- Backlight #CM -->
     <string name="backlight_title">"Brillo automático"</string>
@@ -2007,6 +2051,13 @@
     <string name="profile_lockmode_default_summary">"Utilizar valores por defecto"</string>
     <string name="profile_lockmode_insecure_summary">"Utilizar bloqueo de pantalla no seguro"</string>
     <string name="profile_lockmode_disabled_summary">"Bloqueo de pantalla desactivado"</string>
+    <string name="profile_airplanemode_title">Modo Avión</string>
+    <string name="profile_airplanemode_default">Predeterminado</string>
+    <string name="profile_airplanemode_enabled">Activado</string>
+    <string name="profile_airplanemode_disabled">Desactivado</string>
+    <string name="profile_airplanemode_default_summary">Usar ajustes por defecto</string>
+    <string name="profile_airplanemode_enabled_summary">Modo Avión está activado</string>
+    <string name="profile_airplanemode_disabled_summary">Modo Avión está desactivado</string>
     <string name="profile_disable_screen_lock_summary">"Desactivar seguridad de bloqueo de pantalla miestras este perfil este activo"</string>
 
     <!-- Connection override toggles (not all are used at this time ) -->
@@ -2148,4 +2199,22 @@
     <string name="stylus_icon_enabled_summary">Mostrar el cursor cuando se arrastra o dibuja con Stylus</string>
     <!-- Hostname setting -->
     <string name="device_hostname">Nombre del dispositivo</string>
+    <!-- Status bar notification count -->
+    <string name="status_bar_notif_count_title">Mostrar contador notificaciones</string>
+    <string name="status_bar_notif_count_summary">Mostrar el número de notificaciones pendientes en la barra de estado</string>
+
+    <string name="increasing_ring_title">Volumen ascendente</string>
+    <!-- Sound settings screen, the caption of the checkbox for making incoming calls increas in volume -->
+    <string name="checkbox_increasing_ring">Activar volumen ascendente</string>
+    <!-- Sound settings screen, the title of the volume bar to adjust the minimum increasing ring volume -->
+    <string name="increasing_ring_min_volume_title">Volumen inicial</string>
+    <string name="increasing_ring_volume_notice">Nota:\nSi el volumen inicial se establece más alto que el volumen de llamada, prevalecerá el volumen de llamada.</string>
+    <string name="increasing_ring_interval_title">Incrementar cada\u2026</string>
+    <string name="increasing_ring_interval_eachring">Tono de llamada</string>
+    <string name="increasing_ring_interval_half_second">Medio segundo</string>
+    <string name="increasing_ring_interval_1second">Segundo</string>
+    <string name="increasing_ring_interval_2seconds">2 segundos</string>
+    <string name="increasing_ring_interval_3seconds">3 segundos</string>
+    <string name="increasing_ring_interval_5seconds">5 segundos</string>
+    <string name="increasing_ring_interval_10seconds">10 segundos</string>
 </resources>
