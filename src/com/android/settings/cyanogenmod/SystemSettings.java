@@ -71,8 +71,9 @@ public class SystemSettings extends SettingsPreferenceFragment implements
 
         IWindowManager windowManager = IWindowManager.Stub.asInterface(ServiceManager.getService(Context.WINDOW_SERVICE));
         try {
-            if (!windowManager.hasNavigationBar()) {
-                getPreferenceScreen().removePreference(findPreference(KEY_NAVIGATION_BAR));
+            Preference naviBar = findPreference(KEY_NAVIGATION_BAR);
+            if (!windowManager.hasNavigationBar() && naviBar != null) {
+                getPreferenceScreen().removePreference(naviBar);
             }
         } catch (RemoteException e) {
         }
