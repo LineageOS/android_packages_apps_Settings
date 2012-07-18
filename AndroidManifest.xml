@@ -1510,6 +1510,27 @@
                 android:value="com.android.settings.cmstats.AnonymousStats" />
         </activity>
 
+        <activity android:name=".cyanogenmod.CIDLogoActivity"
+                android:theme="@android:style/Theme.Wallpaper.NoTitleBar.Fullscreen"
+                android:process=":ui">
+        </activity>
+        <activity
+            android:name=".cyanogenmod.CIDCircus"
+            android:exported="true"
+            android:label="CIDCircus"
+            android:icon="@drawable/empty_icon"
+            android:theme="@android:style/Theme.Wallpaper.NoTitleBar.Fullscreen"
+            android:hardwareAccelerated="true"
+            android:launchMode="singleInstance"
+            android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name=".cyanogenmod.CIDLOGO" />
+<!--            <category android:name="android.intent.category.LAUNCHER" />-->
+            </intent-filter>
+        </activity>
+
         <!-- CyanogenMod activities End -->
 
         <!-- Pseudo-activity used to provide an intent-filter entry point to encryption settings -->
