@@ -17,6 +17,8 @@
 
 package com.android.settings.cyanogenmod;
 
+import java.util.ArrayList;
+
 import android.app.ListFragment;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -24,10 +26,7 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.ListPreferenceMultiSelect;
 import android.preference.Preference;
-import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.util.Log;
@@ -38,16 +37,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.android.settings.Utils;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.cyanogenmod.TouchInterceptor;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class TabletPowerWidget extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {

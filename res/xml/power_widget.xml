@@ -24,7 +24,7 @@
     <PreferenceCategory
         android:title="@string/title_button_modes">
 
-        <ListPreferenceMultiSelect
+        <MultiSelectListPreference
             android:key="pref_brightness_mode"
             android:dialogTitle="@string/pref_brightness_mode_title"
             android:title="@string/pref_brightness_mode_title"
@@ -47,7 +47,7 @@
             android:entries="@array/entries_screentimeout_widget"
             android:entryValues="@array/values_screentimeout_widget" />
 
-        <ListPreferenceMultiSelect
+        <MultiSelectListPreference
             android:key="pref_ring_mode"
             android:dialogTitle="@string/pref_ring_mode_title"
             android:title="@string/pref_ring_mode_title"

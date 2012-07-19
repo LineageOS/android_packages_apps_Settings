@@ -45,9 +45,9 @@ public class SystemSettings extends SettingsPreferenceFragment implements
     private ListPreference mFontSizePref;
     private PreferenceScreen mPhoneDrawer;
     private PreferenceScreen mTabletDrawer;
-    
+
     private final Configuration mCurConfig = new Configuration();
-    
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
