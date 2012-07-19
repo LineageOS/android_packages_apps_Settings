@@ -188,7 +188,9 @@ public class ProfilesSettings extends Fragment {
         mTabHost.setup();
         mTabHost.clearAllTabs();
 
-        mTabManager = new TabManager(getActivity(), mTabHost, android.R.id.tabcontent);
+        if (mTabManager == null) {
+            mTabManager = new TabManager(getActivity(), mTabHost, android.R.id.tabcontent);
+        }
         mTabManager.addTab(mTabHost.newTabSpec(TAB_PROFILES).setIndicator(getString(R.string.profile_profiles_manage)),
                 ProfilesList.class, null);
         mTabManager.addTab(mTabHost.newTabSpec(TAB_APPGROUPS).setIndicator(getString(R.string.profile_appgroups_manage)),
