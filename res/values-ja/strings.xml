@@ -1590,6 +1590,8 @@
     <!-- CM String entries bellow -->
     <string name="safe_headset_restore_title">安全なヘッドフォン音量</string>
     <string name="safe_headset_restore_summary">最初にヘッドフォンを接続した時に大音量になるのを防ぐ</string>
+    <string name="wifi_p2p_on_summary">Wi-Fiダイレクトを有効にする</string>
+    <string name="wifi_p2p_settings">Wi-Fiダイレクトの設定</string>
 
     <!-- Advanced tethering settings -->
     <string name="tethering_advanced_text">詳細設定</string>
@@ -1650,6 +1652,14 @@
     <string name="usb_mass_storage_title">マスストレージ</string>
     <string name="usb_mass_storage_summary">USBマスストレージを有効にする</string>
     <string name="data_usage_menu_linear_chart">リニアチャート</string>
+
+    <!-- Battery light settings #CM -->
+    <string name="battery_light_title">バッテリーライト</string>
+    <string name="battery_low_pulse_title">残量が少なくなったら点滅</string>
+    <string name="battery_light_list_title">色</string>
+    <string name="battery_light_low_color_title">少量時</string>
+    <string name="battery_light_medium_color_title">充電中</string>
+    <string name="battery_light_full_color_title">フル時</string>
 
     <!-- Backlight #CM -->
     <string name="backlight_title">自動バックライト</string>
@@ -2241,6 +2251,9 @@
     <string name="profile_write_failed">タグに書き込み失敗!</string>
     <string name="profile_selected">選択中プロファイル: %1$s</string>
     <string name="profile_nfc_text">NFCタグにプロファイルを書き込むと、タグにタッチすることでプロファイルを選択できます。タグに2回タッチすれば、以前選択していたプロファイルを選択できます。</string>
+    <string name="profile_unknown_nfc_tag">不明なプロファイル</string>
+    <string name="profile_add_nfc_text">このNFCタグは不明なプロファイルを指定しています。このNFCタグに既にあるプロファイルを割り当てることで次回よりプロファイルを選択できるようになります。</string>
+    <string name="profile_select">プロファイルを選択</string>
 
     <!-- about page -->
     <string name="cpu_info">プロセッサ</string>
@@ -2261,4 +2274,20 @@
     <!-- Status bar notification count -->
     <string name="status_bar_notif_count_title">通知の数を表示する</string>
     <string name="status_bar_notif_count_summary">ステータスバーに溜まっている通知の数を表示する</string>
+
+    <string name="increasing_ring_title">着信音の増加</string>
+    <!-- Sound settings screen, the caption of the checkbox for making incoming calls increase in volume -->
+    <string name="checkbox_increasing_ring">有効</string>
+    <!-- Sound settings screen, the title of the volume bar to adjust the minimum increasing ring volume -->
+    <string name="increasing_ring_min_volume_title">開始時の音量</string>
+    <string name="increasing_ring_volume_notice">注意:\n開始時の音量を着信音量より高くした場合、着信音量の値で再生されます。</string>
+    <string name="increasing_ring_interval_title">増加間隔</string>
+    <string name="increasing_ring_interval_eachring">着信音のパターンごと</string>
+    <string name="increasing_ring_interval_half_second">0.5 秒</string>
+    <string name="increasing_ring_interval_1second">1 秒</string>
+    <string name="increasing_ring_interval_2seconds">2 秒</string>
+    <string name="increasing_ring_interval_3seconds">3 秒</string>
+    <string name="increasing_ring_interval_5seconds">5 秒</string>
+    <string name="increasing_ring_interval_10seconds">10 秒</string>
+
 </resources>
