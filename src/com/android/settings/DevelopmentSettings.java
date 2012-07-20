@@ -886,7 +886,7 @@ public class DevelopmentSettings extends PreferenceFragment
                         .setNegativeButton(android.R.string.no, this)
                         .show();
                 mCurrentDialog = ENABLE_ADB;
-                mOkDialog.setOnDismissListener(this);
+                mAdbDialog.setOnDismissListener(this);
             } else {
                 Settings.Secure.putInt(getActivity().getContentResolver(),
                         Settings.Secure.ADB_ENABLED, 0);
