@@ -29,17 +29,6 @@
     </PreferenceScreen>
 
     <CheckBoxPreference
-        android:key="enable_adb"
-        android:title="@string/enable_adb"
-        android:summary="@string/enable_adb_summary"/>
-
-    <CheckBoxPreference
-        android:key="adb_over_network"
-        android:title="@string/adb_over_network"
-        android:summary="@string/adb_over_network_summary"
-        android:dependency="enable_adb"/>
-
-    <CheckBoxPreference
         android:key="keep_screen_on"
         android:title="@string/keep_screen_on"
         android:summary="@string/keep_screen_on_summary"/>
@@ -70,6 +59,12 @@
             android:key="enable_adb"
             android:title="@string/enable_adb"
             android:summary="@string/enable_adb_summary"/>
+
+        <CheckBoxPreference
+            android:key="adb_over_network"
+            android:title="@string/adb_over_network"
+            android:summary="@string/adb_over_network_summary"
+            android:dependency="enable_adb"/>
 
         <com.android.settings.HostnamePreference
             android:key="device_hostname"
