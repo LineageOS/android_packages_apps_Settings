@@ -61,7 +61,7 @@ public class ProfilesList extends SettingsPreferenceFragment implements
         refreshList();
 
         // On tablet devices remove the padding
-        if (Utils.isScreenLarge()) {
+        if (Utils.isTablet(getActivity())) {
             getListView().setPadding(0, 0, 0, 0);
         }
     }

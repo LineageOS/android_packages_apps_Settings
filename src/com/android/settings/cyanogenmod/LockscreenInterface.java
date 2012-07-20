@@ -72,7 +72,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         mCalendarPref = (Preference) findPreference(KEY_CALENDAR_PREF);
         mCustomBackground = (ListPreference) findPreference(KEY_BACKGROUND_PREF);
         mCustomBackground.setOnPreferenceChangeListener(this);
-        mIsScreenLarge = Utils.isScreenLarge();
+        mIsScreenLarge = Utils.isTablet(getActivity());
         wallpaperImage = new File(mActivity.getFilesDir()+"/lockwallpaper");
         wallpaperTemporary = new File(mActivity.getCacheDir()+"/lockwallpaper.tmp");
         updateCustomBackgroundSummary();
