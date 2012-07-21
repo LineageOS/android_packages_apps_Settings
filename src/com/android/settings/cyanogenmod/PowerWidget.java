@@ -51,31 +51,19 @@ public class PowerWidget extends SettingsPreferenceFragment implements
     private static final String TAG = "PowerWidget";
 
     private static final String UI_EXP_WIDGET = "expanded_widget";
-
     private static final String UI_EXP_WIDGET_HIDE_ONCHANGE = "expanded_hide_onchange";
-
     private static final String UI_EXP_WIDGET_HIDE_INDICATOR = "expanded_hide_indicator";
-
     private static final String UI_EXP_WIDGET_HIDE_SCROLLBAR = "expanded_hide_scrollbar";
-
     private static final String UI_EXP_WIDGET_HAPTIC_FEEDBACK = "expanded_haptic_feedback";
-
     private static final String UI_EXP_WIDGET_PICKER = "widget_picker";
-
     private static final String UI_EXP_WIDGET_ORDER = "widget_order";
 
     private CheckBoxPreference mPowerWidget;
-
     private CheckBoxPreference mPowerWidgetHideOnChange;
-
     private CheckBoxPreference mPowerWidgetIndicatorHide;
-
     private CheckBoxPreference mPowerWidgetHideScrollBar;
-
     private ListPreference mPowerWidgetHapticFeedback;
-
     private PreferenceScreen mPowerPicker;
-
     private PreferenceScreen mPowerOrder;
 
     @Override
@@ -94,9 +82,11 @@ public class PowerWidget extends SettingsPreferenceFragment implements
                     .findPreference(UI_EXP_WIDGET_HIDE_SCROLLBAR);
             mPowerWidgetIndicatorHide = (CheckBoxPreference) prefSet
                     .findPreference(UI_EXP_WIDGET_HIDE_INDICATOR);
+
             mPowerWidgetHapticFeedback = (ListPreference) prefSet
                     .findPreference(UI_EXP_WIDGET_HAPTIC_FEEDBACK);
             mPowerWidgetHapticFeedback.setOnPreferenceChangeListener(this);
+            mPowerWidgetHapticFeedback.setSummary(mPowerWidgetHapticFeedback.getEntry());
 
             mPowerPicker = (PreferenceScreen) prefSet.findPreference(UI_EXP_WIDGET_PICKER);
             mPowerOrder = (PreferenceScreen) prefSet.findPreference(UI_EXP_WIDGET_ORDER);
@@ -122,8 +112,10 @@ public class PowerWidget extends SettingsPreferenceFragment implements
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == mPowerWidgetHapticFeedback) {
             int intValue = Integer.parseInt((String) newValue);
+            int index = mPowerWidgetHapticFeedback.findIndexOfValue((String) newValue);
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.EXPANDED_HAPTIC_FEEDBACK, intValue);
+            mPowerWidgetHapticFeedback.setSummary(mPowerWidgetHapticFeedback.getEntries()[index]);
             return true;
         }
         return false;
@@ -181,7 +173,7 @@ public class PowerWidget extends SettingsPreferenceFragment implements
 
         ListPreferenceMultiSelect mBrightnessMode;
         ListPreference mNetworkMode;
-        ListPreference mScreentimeoutMode;
+        ListPreference mScreenTimeoutMode;
         ListPreferenceMultiSelect mRingMode;
         ListPreference mFlashMode;
 
@@ -209,8 +201,8 @@ public class PowerWidget extends SettingsPreferenceFragment implements
             mBrightnessMode.setOnPreferenceChangeListener(this);
             mNetworkMode = (ListPreference) prefSet.findPreference(EXP_NETWORK_MODE);
             mNetworkMode.setOnPreferenceChangeListener(this);
-            mScreentimeoutMode = (ListPreference) prefSet.findPreference(EXP_SCREENTIMEOUT_MODE);
-            mScreentimeoutMode.setOnPreferenceChangeListener(this);
+            mScreenTimeoutMode = (ListPreference) prefSet.findPreference(EXP_SCREENTIMEOUT_MODE);
+            mScreenTimeoutMode.setOnPreferenceChangeListener(this);
             mRingMode = (ListPreferenceMultiSelect) prefSet.findPreference(EXP_RING_MODE);
             mRingMode.setValue(Settings.System.getString(getActivity().getApplicationContext()
                     .getContentResolver(), Settings.System.EXPANDED_RING_MODE));
@@ -218,6 +210,16 @@ public class PowerWidget extends SettingsPreferenceFragment implements
             mFlashMode = (ListPreference) prefSet.findPreference(EXP_FLASH_MODE);
             mFlashMode.setOnPreferenceChangeListener(this);
 
+            // TODO: set the default values of the items
+
+            // Update the summary text
+            mNetworkMode.setSummary(mNetworkMode.getEntry());
+            mScreenTimeoutMode.setSummary(mScreenTimeoutMode.getEntry());
+            mFlashMode.setSummary(mFlashMode.getEntry());
+            updateBrightnessModeSummary(mBrightnessMode.getValue());
+            updateRingModeSummary(mRingMode.getValue());
+
+            // Add the available buttons to the list
             PreferenceCategory prefButtons = (PreferenceCategory) prefSet
                     .findPreference(BUTTONS_CATEGORY);
 
@@ -263,7 +265,8 @@ public class PowerWidget extends SettingsPreferenceFragment implements
 
                 // specific checks for availability on some platforms
                 if (PowerWidgetUtil.BUTTON_FLASHLIGHT.equals(button.getId()) &&
-                        !getResources().getBoolean(R.bool.has_led_flash)) { // disable flashlight if it's not supported
+                        !getResources().getBoolean(R.bool.has_led_flash)) {
+                    // disable flashlight if it's not supported
                     cb.setEnabled(false);
                     mFlashMode.setEnabled(false);
                 } else if (PowerWidgetUtil.BUTTON_NETWORKMODE.equals(button.getId())) {
@@ -335,25 +338,80 @@ public class PowerWidget extends SettingsPreferenceFragment implements
                 Settings.System.putString(getActivity().getApplicationContext()
                         .getContentResolver(), Settings.System.EXPANDED_BRIGHTNESS_MODE,
                         (String) newValue);
+                updateBrightnessModeSummary((String) newValue);
             } else if (preference == mNetworkMode) {
                 int value = Integer.valueOf((String) newValue);
+                int index = mNetworkMode.findIndexOfValue((String) newValue);
                 Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                         Settings.System.EXPANDED_NETWORK_MODE, value);
-            } else if (preference == mScreentimeoutMode) {
+                mNetworkMode.setSummary(mNetworkMode.getEntries()[index]);
+            } else if (preference == mScreenTimeoutMode) {
                 int value = Integer.valueOf((String) newValue);
+                int index = mScreenTimeoutMode.findIndexOfValue((String) newValue);
                 Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                         Settings.System.EXPANDED_SCREENTIMEOUT_MODE, value);
+                mScreenTimeoutMode.setSummary(mScreenTimeoutMode.getEntries()[index]);
             } else if (preference == mRingMode) {
                 Settings.System.putString(getActivity().getApplicationContext()
                         .getContentResolver(), Settings.System.EXPANDED_RING_MODE,
                         (String) newValue);
+                updateRingModeSummary((String) newValue);
             } else if (preference == mFlashMode) {
                 int value = Integer.valueOf((String) newValue);
+                int index = mFlashMode.findIndexOfValue((String) newValue);
                 Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                         Settings.System.EXPANDED_FLASH_MODE, value);
+                mFlashMode.setSummary(mFlashMode.getEntries()[index]);
             }
             return true;
         }
+
+        private void updateBrightnessModeSummary(String val) {
+            // Update summary message with current values
+            final String[] values = ListPreferenceMultiSelect.parseStoredValue(val);
+            if (values != null) {
+                final int length = values.length;
+                final CharSequence[] entries = mBrightnessMode.getEntries();
+                StringBuilder summary = new StringBuilder();
+                for (int i = 0; i < (length); i++) {
+                    CharSequence entry = entries[Integer.parseInt(values[i])];
+                    if ((length - i) > 2) {
+                        summary.append(entry).append(", ");
+                    } else if ((length - i) == 2) {
+                        summary.append(entry).append(" & ");
+                    } else if ((length - i) == 1) {
+                        summary.append(entry);
+                    }
+                }
+                mBrightnessMode.setSummary(summary);
+            } else {
+                mBrightnessMode.setSummary(R.string.pref_brightness_mode_summary);
+            }
+        }
+
+        private void updateRingModeSummary(String val) {
+            // Update summary message with current values
+            final String[] values = ListPreferenceMultiSelect.parseStoredValue(val);
+            if (values != null) {
+                final int length = values.length;
+                final CharSequence[] entries = mRingMode.getEntries();
+                StringBuilder summary = new StringBuilder();
+                for (int i = 0; i < (length); i++) {
+                    CharSequence entry = entries[Integer.parseInt(values[i])];
+                    if ((length - i) > 2) {
+                        summary.append(entry).append(", ");
+                    } else if ((length - i) == 2) {
+                        summary.append(entry).append(" & ");
+                    } else if ((length - i) == 1) {
+                        summary.append(entry);
+                    }
+                }
+                mRingMode.setSummary(summary);
+            } else {
+                mRingMode.setSummary(R.string.pref_ring_mode_summary);
+            }
+        }
+
     }
 
     public static class PowerWidgetOrder extends ListFragment
