@@ -29,6 +29,7 @@ import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.provider.Settings;
 import android.widget.Toast;
 
 import com.android.settings.R;
@@ -46,6 +47,8 @@ public class NFCProfile extends Activity {
     private static final String PREFS_PREVIOUS_PROFILE = "previous-profile";
 
     static final String PROFILE_MIME_TYPE = "cm/profile";
+
+    private static final String SYSTEM_PROFILES_ENABLED = "system_profiles_enabled";
 
     private ProfileManager mProfileManager;
 
@@ -83,26 +86,31 @@ public class NFCProfile extends Activity {
 
     private void handleProfileMimeType(byte[] payload) {
         UUID profileUuid = NFCProfileUtils.toUUID(payload);
-        Profile currentProfile = mProfileManager.getActiveProfile();
 
-        Profile targetProfile = mProfileManager.getProfile(profileUuid);
+        boolean enabled = Settings.System.getInt(getContentResolver(), SYSTEM_PROFILES_ENABLED, 1) == 1;
 
-        if (targetProfile == null) {
-            // show profile selection for unknown tag
-            Intent i = new Intent(this, NFCProfileSelect.class);
-            i.putExtra(NFCProfileSelect.EXTRA_PROFILE_UUID, profileUuid.toString());
-            i.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            this.startActivity(i);
-        } else {
-            // switch to profile
-            if (currentProfile == null || !currentProfile.getUuid().equals(profileUuid)) {
-                saveCurrentProfile();
-                switchTo(profileUuid);
+        if (enabled) {
+            // Only do NFC profile changing if System Profile support is enabled
+            Profile currentProfile = mProfileManager.getActiveProfile();
+            Profile targetProfile = mProfileManager.getProfile(profileUuid);
+
+            if (targetProfile == null) {
+                // show profile selection for unknown tag
+                Intent i = new Intent(this, NFCProfileSelect.class);
+                i.putExtra(NFCProfileSelect.EXTRA_PROFILE_UUID, profileUuid.toString());
+                i.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                this.startActivity(i);
             } else {
-                Profile lastProfile = getPreviouslySelectedProfile();
-                if (lastProfile != null) {
-                    switchTo(lastProfile.getUuid());
-                    clearPreviouslySelectedProfile();
+                // switch to profile
+                if (currentProfile == null || !currentProfile.getUuid().equals(profileUuid)) {
+                    saveCurrentProfile();
+                    switchTo(profileUuid);
+                } else {
+                    Profile lastProfile = getPreviouslySelectedProfile();
+                    if (lastProfile != null) {
+                        switchTo(lastProfile.getUuid());
+                        clearPreviouslySelectedProfile();
+                    }
                 }
             }
         }
@@ -139,8 +147,10 @@ public class NFCProfile extends Activity {
 
     private void saveCurrentProfile() {
         Profile currentProfile = mProfileManager.getActiveProfile();
-        SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, 0).edit();
-        editor.putString(PREFS_PREVIOUS_PROFILE, currentProfile.getUuid().toString());
-        editor.commit();
+        if (currentProfile != null) {
+            SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, 0).edit();
+            editor.putString(PREFS_PREVIOUS_PROFILE, currentProfile.getUuid().toString());
+            editor.commit();
+        }
     }
 }

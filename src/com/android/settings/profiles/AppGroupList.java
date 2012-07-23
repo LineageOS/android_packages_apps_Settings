@@ -24,6 +24,7 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
+import android.provider.Settings;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -32,8 +33,8 @@ import com.android.settings.Utils;
 public class AppGroupList extends SettingsPreferenceFragment {
 
     private static final String TAG = "AppGroupSettings";
-
     public static final String PROFILE_SERVICE = "profile";
+    private static final String SYSTEM_PROFILES_ENABLED = "system_profiles_enabled";
 
     private ProfileManager mProfileManager;
 
@@ -62,16 +63,30 @@ public class AppGroupList extends SettingsPreferenceFragment {
 }
 
     public void refreshList() {
+        // Only enable the preferences if system profiles are enabled
+        boolean enabled = Settings.System.getInt(getActivity().getContentResolver(),
+                SYSTEM_PROFILES_ENABLED, 1) == 1;
+
         PreferenceScreen appgroupList = getPreferenceScreen();
         appgroupList.removeAll();
 
-        // Add the existing app groups
-        for (NotificationGroup group : mProfileManager.getNotificationGroups()) {
-            PreferenceScreen pref = new PreferenceScreen(getActivity(), null);
-            pref.setKey(group.getUuid().toString());
-            pref.setTitle(group.getName());
-            pref.setPersistent(false);
-            appgroupList.addPreference(pref);
+        if (enabled) {
+            // Add the existing app groups
+            for (NotificationGroup group : mProfileManager.getNotificationGroups()) {
+                PreferenceScreen pref = new PreferenceScreen(getActivity(), null);
+                pref.setKey(group.getUuid().toString());
+                pref.setTitle(group.getName());
+                pref.setPersistent(false);
+                pref.setEnabled(enabled);
+                appgroupList.addPreference(pref);
+            }
+        } else {
+            // Not enabled, display a message preference
+            Preference npref = new Preference(getActivity());
+            npref.setLayoutResource(R.layout.preference_empty_list);
+            npref.setTitle(R.string.profile_empty_list_profiles_off);
+            npref.setEnabled(false);
+            appgroupList.addPreference(npref);
         }
     }
 

@@ -94,7 +94,22 @@ public class ProfilesPreference extends CheckBoxPreference {
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-        updatePreferenceViews();
+        if (enabled) {
+            updatePreferenceViews();
+        } else {
+            disablePreferenceViews();
+        }
+    }
+
+    private void disablePreferenceViews() {
+        if (mProfilesSettingsButton != null) {
+            mProfilesSettingsButton.setEnabled(false);
+            mProfilesSettingsButton.setAlpha(DISABLED_ALPHA);
+        }
+        if (mProfilesPref != null) {
+            mProfilesPref.setEnabled(false);
+            mProfilesPref.setBackgroundColor(0);
+        }
     }
 
     private void updatePreferenceViews() {
@@ -103,11 +118,6 @@ public class ProfilesPreference extends CheckBoxPreference {
             mProfilesSettingsButton.setEnabled(true);
             mProfilesSettingsButton.setClickable(true);
             mProfilesSettingsButton.setFocusable(true);
-        } else {
-            mProfilesSettingsButton.setEnabled(false);
-            mProfilesSettingsButton.setClickable(false);
-            mProfilesSettingsButton.setFocusable(false);
-            mProfilesSettingsButton.setAlpha(DISABLED_ALPHA);
         }
         if (mTitleText != null) {
             mTitleText.setEnabled(true);

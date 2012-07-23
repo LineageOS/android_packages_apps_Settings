@@ -16,8 +16,7 @@
 
 package com.android.settings.profiles;
 
-import java.util.HashMap;
-
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -28,6 +27,9 @@ import android.app.ProfileManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.preference.PreferenceActivity;
+import android.provider.Settings;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -35,40 +37,44 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.settings.R;
+import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
-public class ProfilesSettings extends Fragment {
+import java.util.HashMap;
+
+public class ProfilesSettings extends SettingsPreferenceFragment {
 
     private static final String TAG = "ProfilesSettings";
-
     private static final String TAB_PROFILES = "profiles";
-
     private static final String TAB_APPGROUPS = "appgroups";
-
     private static final String PROFILE_SERVICE = "profile";
+    private static final String SYSTEM_PROFILES_ENABLED = "system_profiles_enabled";
 
     private static final int MENU_RESET = Menu.FIRST;
-
     private static final int MENU_ADD_PROFILE = Menu.FIRST + 1;
-
     private static final int MENU_ADD_APPGROUP = Menu.FIRST + 2;
 
     private static Menu mOptionsMenu;
 
     private ProfileManager mProfileManager;
+    private ProfileEnabler mProfileEnabler;
 
+    private Switch mActionBarSwitch;
     private static TabHost mTabHost;
-    
+
     ViewGroup mContainer;
 
     TabManager mTabManager;
 
     static Bundle mSavedState;
+
+    private static Activity mActivity;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -78,6 +84,7 @@ public class ProfilesSettings extends Fragment {
         mTabHost = (TabHost) inflater.inflate(R.layout.profile_tabs, container, false);
         if (mTabHost != null) {
             mProfileManager = (ProfileManager) getActivity().getSystemService(PROFILE_SERVICE); 
+            mActivity = getActivity();
 
             setupTabs();
 
@@ -93,8 +100,42 @@ public class ProfilesSettings extends Fragment {
     }
 
     @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        // We don't call super.onActivityCreated() here, since it assumes we already set up
+        // Preference (probably in onCreate()), while WifiSettings exceptionally set it up in
+        // this method.
+        // On/off switch
+        Activity activity = getActivity();
+        //Switch
+        mActionBarSwitch = new Switch(activity);
+
+        if (activity instanceof PreferenceActivity) {
+            PreferenceActivity preferenceActivity = (PreferenceActivity) activity;
+            if (preferenceActivity.onIsHidingHeaders() || !preferenceActivity.onIsMultiPane()) {
+                final int padding = activity.getResources().getDimensionPixelSize(
+                        R.dimen.action_bar_switch_padding);
+                mActionBarSwitch.setPadding(0, 0, padding, 0);
+                activity.getActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM,
+                        ActionBar.DISPLAY_SHOW_CUSTOM);
+                activity.getActionBar().setCustomView(mActionBarSwitch, new ActionBar.LayoutParams(
+                        ActionBar.LayoutParams.WRAP_CONTENT,
+                        ActionBar.LayoutParams.WRAP_CONTENT,
+                        Gravity.CENTER_VERTICAL | Gravity.RIGHT));
+            }
+        }
+
+        mProfileEnabler = new ProfileEnabler(activity, this, mActionBarSwitch);
+
+        // After confirming PreferenceScreen is available, we call super.
+        super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
+        if (mProfileEnabler != null) {
+            mProfileEnabler.resume();
+        }
 
         // If running on a phone, remove padding around tabs
         if (!Utils.isTablet(getActivity())) {
@@ -106,6 +147,10 @@ public class ProfilesSettings extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
+        if (mProfileEnabler != null) {
+            mProfileEnabler.pause();
+        }
+
         // store the current tab so we can get back to it later
         if (mSavedState == null) {
             mSavedState = new Bundle();
@@ -173,18 +218,29 @@ public class ProfilesSettings extends Fragment {
             return;
         }
 
+        boolean enabled = Settings.System.getInt(mActivity.getContentResolver(),
+                SYSTEM_PROFILES_ENABLED, 1) == 1;
+
         String tabId = mTabHost.getCurrentTabTag();
-        if (TAB_PROFILES.equals(tabId)) {
+        if (TAB_PROFILES.equals(tabId) && enabled) {
             mOptionsMenu.findItem(MENU_ADD_PROFILE).setVisible(true);
             mOptionsMenu.findItem(MENU_ADD_APPGROUP).setVisible(false);
+            mOptionsMenu.findItem(MENU_RESET).setVisible(true);
 
-        } else if (TAB_APPGROUPS.equals(tabId)) {
+        } else if (TAB_APPGROUPS.equals(tabId) && enabled) {
             mOptionsMenu.findItem(MENU_ADD_PROFILE).setVisible(false);
             mOptionsMenu.findItem(MENU_ADD_APPGROUP).setVisible(true);
+            mOptionsMenu.findItem(MENU_RESET).setVisible(true);
+
+        } else {
+            // System Profiles are disabled, hide options menu items
+            mOptionsMenu.findItem(MENU_ADD_PROFILE).setVisible(false);
+            mOptionsMenu.findItem(MENU_ADD_APPGROUP).setVisible(false);
+            mOptionsMenu.findItem(MENU_RESET).setVisible(false);
         }
     }
 
-    private void setupTabs() {
+    public void setupTabs() {
         mTabHost.setup();
         mTabHost.clearAllTabs();
 
@@ -198,6 +254,15 @@ public class ProfilesSettings extends Fragment {
 
         // Set the profiles tab as the default
         mTabHost.setCurrentTabByTag(TAB_PROFILES);
+
+        updateOptionsMenu();
+    }
+
+    public void refreshActiveTab() {
+        if (mTabManager != null) {
+            mTabManager.refreshTab(mTabHost.getCurrentTabTag());
+        }
+
         updateOptionsMenu();
     }
 
