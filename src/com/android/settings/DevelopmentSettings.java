@@ -401,7 +401,7 @@ public class DevelopmentSettings extends PreferenceFragment
         int mPort = Settings.Secure.getInt(getActivity().getContentResolver(),
                 Settings.Secure.ADB_PORT, 0);
         boolean mEnabled = mPort > 0;
-        mAdbOverNetwork.setChecked(mEnabled);
+        updateCheckBox(mAdbOverNetwork, mEnabled);
         if (mEnabled) {
             IWifiManager mWifiManager = IWifiManager.Stub.asInterface(
                     ServiceManager.getService(Context.WIFI_SERVICE));
@@ -1025,6 +1025,10 @@ public class DevelopmentSettings extends PreferenceFragment
         if (mAdbDialog != null) {
             mAdbDialog.dismiss();
             mAdbDialog = null;
+        }
+        if (mOkDialog != null) {
+            mOkDialog.dismiss();
+            mOkDialog = null;
         }
         if (mEnableDialog != null) {
             mEnableDialog.dismiss();
