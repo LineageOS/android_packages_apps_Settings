@@ -47,6 +47,11 @@
         android:entryValues="@array/entryvalues_font_size"
         android:dialogTitle="@string/dialog_title_font_size" />
 
+    <CheckBoxPreference
+        android:key="power_menu_screenshot"
+        android:title="@string/power_menu_screenshot_title"
+        android:defaultValue="false" />
+
 <!-- Hide until code is ported from CM9
     <PreferenceScreen
         android:key="navigation_bar"

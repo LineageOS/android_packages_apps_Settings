@@ -23,9 +23,11 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.ServiceManager;
+import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.IWindowManager;
 
@@ -41,10 +43,12 @@ public class SystemSettings extends SettingsPreferenceFragment implements
     private static final String KEY_NOTIFICATION_DRAWER = "notification_drawer";
     private static final String KEY_NOTIFICATION_DRAWER_TABLET = "notification_drawer_tablet";
     private static final String KEY_NAVIGATION_BAR = "navigation_bar";
+    private static final String KEY_SCREENSHOT = "power_menu_screenshot";
 
     private ListPreference mFontSizePref;
     private PreferenceScreen mPhoneDrawer;
     private PreferenceScreen mTabletDrawer;
+    private CheckBoxPreference mScreenshotPref;
 
     private final Configuration mCurConfig = new Configuration();
 
@@ -58,6 +62,9 @@ public class SystemSettings extends SettingsPreferenceFragment implements
         mFontSizePref.setOnPreferenceChangeListener(this);
         mPhoneDrawer = (PreferenceScreen) findPreference(KEY_NOTIFICATION_DRAWER);
         mTabletDrawer = (PreferenceScreen) findPreference(KEY_NOTIFICATION_DRAWER_TABLET);
+        mScreenshotPref = (CheckBoxPreference) findPreference(KEY_SCREENSHOT);
+        mScreenshotPref.setChecked((Settings.System.getInt(getContentResolver(),
+                Settings.System.POWER_MENU_SCREENSHOT_ENABLED, 0) == 1));
 
         if (Utils.isTablet(getActivity())) {
             if (mPhoneDrawer != null) {
@@ -91,7 +98,7 @@ public class SystemSettings extends SettingsPreferenceFragment implements
         }
         return indices.length-1;
     }
-    
+
     public void readFontSizePreference(ListPreference pref) {
         try {
             mCurConfig.updateFrom(ActivityManagerNative.getDefault().getConfiguration());
@@ -109,7 +116,7 @@ public class SystemSettings extends SettingsPreferenceFragment implements
         pref.setSummary(String.format(res.getString(R.string.summary_font_size),
                 fontSizeNames[index]));
     }
-    
+
     @Override
     public void onResume() {
         super.onResume();
@@ -137,7 +144,18 @@ public class SystemSettings extends SettingsPreferenceFragment implements
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        return super.onPreferenceTreeClick(preferenceScreen, preference);
+        boolean value;
+
+        if (preference == mScreenshotPref) {
+            value = mScreenshotPref.isChecked();
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.POWER_MENU_SCREENSHOT_ENABLED,
+                    value ? 1 : 0);
+        } else {
+            return super.onPreferenceTreeClick(preferenceScreen, preference);
+        }
+
+        return true;
     }
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
