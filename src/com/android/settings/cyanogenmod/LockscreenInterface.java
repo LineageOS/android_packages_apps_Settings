@@ -51,9 +51,11 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     public static final String KEY_WEATHER_PREF = "lockscreen_weather";
     public static final String KEY_CALENDAR_PREF = "lockscreen_calendar";
     public static final String KEY_BACKGROUND_PREF = "lockscreen_background";
+    private static final String KEY_ALWAYS_BATTERY_PREF = "lockscreen_battery_status";
     private ListPreference mCustomBackground;
     private Preference mWeatherPref;
     private Preference mCalendarPref;
+    private ListPreference mBatteryStatus;
     private Activity mActivity;
     ContentResolver mResolver;
 
@@ -70,11 +72,17 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         addPreferencesFromResource(R.xml.lockscreen_interface_settings);
         mWeatherPref = (Preference) findPreference(KEY_WEATHER_PREF);
         mCalendarPref = (Preference) findPreference(KEY_CALENDAR_PREF);
+
         mCustomBackground = (ListPreference) findPreference(KEY_BACKGROUND_PREF);
         mCustomBackground.setOnPreferenceChangeListener(this);
-        mIsScreenLarge = Utils.isTablet(getActivity());
         wallpaperImage = new File(mActivity.getFilesDir()+"/lockwallpaper");
         wallpaperTemporary = new File(mActivity.getCacheDir()+"/lockwallpaper.tmp");
+
+        mBatteryStatus = (ListPreference) findPreference(KEY_ALWAYS_BATTERY_PREF);
+        mBatteryStatus.setOnPreferenceChangeListener(this);
+
+        mIsScreenLarge = Utils.isTablet(getActivity());
+
         updateCustomBackgroundSummary();
     }
 
@@ -107,6 +115,8 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     }
 
     private void updateState() {
+        int resId;
+
         // Set the weather description text
         if (mWeatherPref != null) {
             boolean weatherEnabled = Settings.System.getInt(mResolver,
@@ -127,6 +137,18 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             } else {
                 mCalendarPref.setSummary(R.string.lockscreen_calendar_summary);
             }
+        }
+
+        // Set the battery status description text
+        if (mBatteryStatus != null) {
+            boolean batteryStatusAlwaysOn = Settings.System.getInt(mResolver,
+                    Settings.System.LOCKSCREEN_ALWAYS_SHOW_BATTERY, 0) == 1;
+            if (batteryStatusAlwaysOn) {
+                mBatteryStatus.setValueIndex(1);
+            } else {
+                mBatteryStatus.setValueIndex(0);
+            }
+            mBatteryStatus.setSummary(mBatteryStatus.getEntry());
         }
     }
 
@@ -241,6 +263,13 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
                 updateCustomBackgroundSummary();
                 break;
             }
+            return true;
+        } else if (preference == mBatteryStatus) {
+            int value = Integer.valueOf((String) objValue);
+            int index = mBatteryStatus.findIndexOfValue((String) objValue);
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.LOCKSCREEN_ALWAYS_SHOW_BATTERY, value);
+            mBatteryStatus.setSummary(mBatteryStatus.getEntries()[index]);
             return true;
         }
         return false;
