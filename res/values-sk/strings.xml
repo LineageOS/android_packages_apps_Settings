@@ -222,6 +222,7 @@
     <string name="settings_shortcut" msgid="3672145147925639262">"Nastavenia"</string>
     <string name="airplane_mode" msgid="8837269988154128601">"Režim V lietadle"</string>
     <string name="airplane_mode_summary" msgid="3154817401368780988">"Vypne všetky bezdrôtové pripojenia"</string>
+    <string name="device_hostname">Názov zariadenia</string>
     <string name="airplane_mode_turning_on" msgid="8871739222526957255">"Prebieha zakazovanie bezdrôtových pripojení..."</string>
     <string name="airplane_mode_turning_off" msgid="3393168549611505996">"Povoľovanie bezdrôtových pripojení..."</string>
     <string name="radio_controls_title" msgid="5868688473587168882">"Bezdrôtové pripojenie a siete"</string>
@@ -322,9 +323,11 @@
     <string name="bluetooth_profile_a2dp" msgid="3259633293424539529">"Médiá"</string>
     <string name="bluetooth_profile_headset" msgid="1874975688666658946">"Telefón"</string>
     <string name="bluetooth_profile_opp" msgid="3799470046565284440">"Prenos"</string>
+    <string name="bluetooth_profile_network">Sieť</string>
     <string name="bluetooth_summary_connected_to_a2dp" msgid="510833839847758664">"Pripojené ku zvukovému médiu"</string>
     <string name="bluetooth_summary_connected_to_headset" msgid="4876496372728623918">"Pripojené k náhlavnej súprave"</string>
     <string name="bluetooth_summary_connected_to_a2dp_headset" msgid="3045032710457800891">"Pripojené k náhlavnej súprave a zvukovému médiu"</string>
+    <string name="bluetooth_summary_connected_to_hid">Pripojené k HID zariadeniu</string>
     <string name="bluetooth_device_advanced_title" msgid="528816860793581131">"Možnosti zariadenia <xliff:g id="DEVICE_NAME">%1$s</xliff:g>"</string>
     <string name="bluetooth_device_advanced_online_mode_title" msgid="3689050071425683114">"Pripojiť"</string>
     <string name="bluetooth_device_advanced_online_mode_summary" msgid="1204424107263248336">"Umožňuje pripojenie zariadenia s rozhraním Bluetooth"</string>
@@ -336,6 +339,8 @@
     <string name="bluetooth_a2dp_profile_summary_use_for" msgid="4630849022250168427">"Umožňuje pripojenie zvukového média"</string>
     <string name="bluetooth_headset_profile_summary_use_for" msgid="8705753622443862627">"Použiť pre zvuk telefónu"</string>
     <string name="bluetooth_opp_profile_summary_use_for" msgid="1255674547144769756">"Použiť na prenos súborov"</string>
+    <string name="bluetooth_hid_profile_summary_connected">Pripojené k HID zariadeniu</string>
+    <string name="bluetooth_hid_profile_summary_use_for">Použiť s HID zariadením</string>
     <string name="bluetooth_dock_settings" msgid="3218335822716052885">"Nastavenia doku"</string>
     <string name="bluetooth_dock_settings_title" msgid="5543069893044375188">"Použiť zvuk doku"</string>
     <string name="bluetooth_dock_settings_headset" msgid="1001821426078644650">"Ako reproduktor telefónu"</string>
@@ -344,6 +349,8 @@
     <string name="nfc_quick_toggle_title" msgid="6769159366307299004">"NFC"</string>
     <string name="nfc_quick_toggle_summary" msgid="1988408027741447231">"Použiť technológiu NFC na čítanie a výmenu značiek"</string>
     <string name="nfc_toggle_error" msgid="2233172102497535522">"Vyskytla sa chyba."</string>
+    <string name="hostname_save">Uložiť</string>
+    <string name="hostname_cancel">Zrušiť</string>
     <string name="wifi_quick_toggle_title" msgid="874495178395350104">"Wi-Fi"</string>
     <string name="wifi_quick_toggle_summary" msgid="1047950931623694366">"Zapnúť Wi-Fi"</string>
     <string name="wifi_settings" msgid="4746946030627213196">"Nastavenia Wi-Fi"</string>
@@ -417,6 +424,7 @@
     <string name="wifi_tether_configure_subtext" msgid="1927454307836232128">"Prenosný prístupový bod Wi-Fi <xliff:g id="NETWORK_SSID">%1$s</xliff:g> <xliff:g id="NETWORK_SECURITY">%2$s</xliff:g>"</string>
     <string name="wifi_tether_configure_ssid_default" msgid="8467525402622138547">"AndroidHotspot"</string>
     <string name="sound_settings_title" msgid="8735891486683305886">"Zvuk"</string>
+    <string name="profile_settings_title">Profily</string>
     <string name="display_settings_title" msgid="1708697328627382561">"Zobraziť"</string>
     <string name="sound_settings" msgid="5007659014828162881">"Nastavenia zvuku"</string>
     <string name="silent_mode_title" msgid="3181479108593217704">"Tichý režim"</string>
@@ -424,6 +432,7 @@
     <string name="silent_mode_incl_alarm_summary" msgid="2088830834182228458">"Sú stíšené všetky zvuky okrem médií"</string>
     <string name="ringtone_title" msgid="5379026328015343686">"Vyzváňací tón telefónu"</string>
     <string name="ringtone_summary" msgid="2630023412632683493"></string>
+    <string name="soundtone_title">Tón upozornení</string>
     <string name="all_volume_title" msgid="8741571721868253103">"Hlasitosť"</string>
     <string name="ring_volume_title" msgid="7938706566797464165">"Hlasitosť vyzváňania"</string>
     <string name="ring_volume_summary" msgid="7055497624193116879"></string>
@@ -433,8 +442,14 @@
     <string name="vibrate_summary" msgid="7378130397830790458">"Vibračná spätná väzba pre hovory a upozornenia"</string>
     <string name="notification_sound_title" msgid="6316316069880531693">"Vyzváňací tón upozornenia"</string>
     <string name="notification_sound_summary" msgid="2953599929394109819"></string>
-    <string name="notification_pulse_title" msgid="1247988024534030629">"Blikať kontrolkou upozornenia"</string>
-    <string name="notification_pulse_summary" msgid="6899220780534617152">"Pri nových oznámeniach opakovane zablikať osvetlením zariadenia trackball"</string>
+    <string name="notification_pulse_title" msgid="1247988024534030629">"Pulzovať kontrolkou upozornenia"</string>
+    <string name="notification_pulse_summary" msgid="6899220780534617152">"Pri nových upozorneniach opakovane pulzovať kontrolkou upozornenia"</string>
+    <string name="notification_blink_title">Blikať kontrolkou upozornenia</string>
+    <string name="notification_blink_summary">Povolí opakované blikanie zelených upozornení</string>
+    <string name="notification_always_on_title">Vždy povoliť notifikačnú kontrolku</string>
+    <string name="notification_always_on_summary">Povolí notifikačnú kontrolku pri zapnutej obrazovke</string>
+    <string name="notification_charging_title">Kontrolka nabíjania</string>
+    <string name="notification_charging_summary">Povolí svietenie kontrolky počas nabíjania</string>
     <string name="incoming_call_volume_title" msgid="8073714801365904099">"Vyzváňací tón"</string>
     <string name="notification_volume_title" msgid="2012640760341080408">"Upozornenie"</string>
     <string name="checkbox_notification_same_as_incoming_call" msgid="1073644356290338921">"Použije hlasitosť prichádzajúcich hovorov aj pre upozornenia"</string>
@@ -452,6 +467,8 @@
     <string name="lock_sounds_enable_title" msgid="1575990840389107141">"Zvuky uzamknutia obrazovky"</string>
     <string name="lock_sounds_enable_summary_on" msgid="145741024028391473">"Prehrať zvuk pri zamknutí a odomknutí obrazovky"</string>
     <string name="lock_sounds_enable_summary_off" msgid="8481243116223542804">"Prehrať zvuk pri zamknutí a odomknutí obrazovky"</string>
+    <string name="power_sounds_enable_title">Zvuk vybitia batérie</string>
+    <string name="power_sounds_enable_summary">Prehrá zvuk počas upozornenia vybitia batérie</string>
     <string name="haptic_feedback_enable_title" msgid="6311736559245411290">"Hmatová odozva"</string>
     <string name="haptic_feedback_enable_summary_on" msgid="1875779656524793053">"Vibrovať pri stlačení softvérových klávesov a pri niektorých udalostiach používateľského rozhrania"</string>
     <string name="haptic_feedback_enable_summary_off" msgid="7287885436963105314">"Vibrovať pri stlačení softvérových klávesov a pri niektorých udalostiach používateľského rozhrania"</string>
@@ -509,11 +526,16 @@
     <string name="device_info_settings" msgid="475872867864762157">"Stav telefónu"</string>
     <string name="system_update_settings_list_item_title" msgid="3342887311059985961">"Aktualizácie systému"</string>
     <string name="system_update_settings_list_item_summary" msgid="3853057315907710747"></string>
+    <string name="cpu_info">CPU</string>
+    <string name="mem_info">Pamäť (k dispo/celkovo)</string>
     <string name="firmware_version" msgid="4801135784886859972">"Verzia systému Android"</string>
     <string name="model_number" msgid="3765737700545384794">"Číslo modelu"</string>
     <string name="baseband_version" msgid="1848990160763524801">"Verzia základného pásma"</string>
     <string name="kernel_version" msgid="9192574954196167602">"Verzia jadra"</string>
     <string name="build_number" msgid="3075795840572241758">"Číslo zostavy"</string>
+    <string name="mod_version">Mod verzia</string>
+    <string name="mod_version_default">Neznáma</string>
+    <string name="build_date">Dátum zostavenia</string>
     <string name="device_info_not_available" msgid="8062521887156825182">"Nie je k dispozícii"</string>
     <string name="device_status_activity_title" msgid="1411201799384697904">"Stav"</string>
     <string name="device_status" msgid="607405385799807324">"Stav"</string>
@@ -539,6 +561,7 @@
     <string name="status_up_time" msgid="7294859476816760399">"Doba prevádzky"</string>
     <string name="status_awake_time" msgid="2393949909051183652">"Doba prevádzky"</string>
     <string name="internal_memory" msgid="9129595691484260784">"Interný ukl. priestor"</string>
+    <string name="additional_memory">Dodatočný ukl. priestor</string>
     <string name="sd_memory" product="nosdcard" msgid="2510246194083052841">"Ukladací priestor USB"</string>
     <string name="sd_memory" product="default" msgid="151871913888051515">"Karta SD"</string>
     <string name="memory_available" msgid="418542433817289474">"Pamäť k dispozícii"</string>
@@ -662,6 +685,10 @@
     <string name="assisted_gps" msgid="4649317129586736885">"Použiť systém A-GPS"</string>
     <string name="assisted_gps_enabled" msgid="8751899609589792803">"Vylepšiť funkčnosť GPS pomocou servera (vypnutím tejto funkcie znížite využitie siete)"</string>
     <string name="assisted_gps_disabled" msgid="6982698333968010748">"Vylepšiť funkčnosť GPS pomocou servera (zrušením tejto funkcie zvýšite výkon GPS)"</string>
+    <string name="location_gps_source_title">GPS Zdroj</string>
+    <string name="location_gps_source_summary">Použitie externého bluetooth GPS namiesto zabudovaného.</string>
+    <string name="location_gps_source_notification_title">Pozor</string>
+    <string name="location_gps_source_notification">GPS zdroj bol prepnutý! GPS bude vypnuté! Zapnite pred použitím!</string>
     <string name="about_settings" msgid="1743378368185371685">"Informácie o telefóne"</string>
     <string name="about_settings_summary" msgid="3302263393543848667">"Zobrazuje právne informácie, stav telefónu a verziu softvéru"</string>
     <string name="legal_information" msgid="5769301644270604095">"Právne informácie"</string>
@@ -674,6 +701,7 @@
     <string name="settings_license_activity_title" msgid="7553683406244228650">"Licencie otvoreného zdroja"</string>
     <string name="settings_license_activity_unavailable" msgid="4210539215951487627">"Pri načítavaní licencií sa vyskytla chyba."</string>
     <string name="settings_license_activity_loading" msgid="3337535809093591740">"Prebieha načítavanie…"</string>
+    <string name="settings_cmlicense_activity_title">CyanogenMod licencie</string>
     <string name="settings_safetylegal_title" msgid="1289483965535937431">"Bezpečnostné informácie"</string>
     <string name="settings_safetylegal_activity_title" msgid="6901214628496951727">"Bezpečnostné informácie"</string>
     <string name="settings_safetylegal_activity_unreachable" msgid="3198912875259612887">"Telefón nie je pripojený k dátovej službe. Ak chcete tieto informácie zobraziť teraz, prejdite v ľubovoľnom počítači pripojenom do siete Internet na adresu %s."</string>
@@ -707,6 +735,7 @@
     <string name="lockpattern_settings_enable_title" msgid="6920616873671115281">"Vyžadovať vzor"</string>
     <string name="lockpattern_settings_enable_summary" msgid="1165707416664252167">"Obrazovku musíte odomknúť nakreslením bezpečnostného vzoru."</string>
     <string name="lockpattern_settings_enable_visible_pattern_title" msgid="104851667540971729">"Použiť viditeľný vzor"</string>
+    <string name="lockpattern_settings_enable_error_path_title">Zobraziť chybu vzoru</string>
     <string name="lockpattern_settings_enable_tactile_feedback_title" msgid="972174133075372341">"Vibračná spätná väzba"</string>
     <string name="lockpattern_settings_choose_lock_pattern" msgid="1652352830005653447">"Nastaviť bezpečnostný vzor"</string>
     <string name="lockpattern_settings_change_lock_pattern" msgid="1123908306116495545">"Zmena bezpečnostného vzoru"</string>
@@ -881,18 +910,55 @@
     <string name="development_settings_summary" msgid="2151320488701538355">"Možnosti nastavenia vývoja aplikácií"</string>
     <string name="enable_adb" msgid="7982306934419797485">"Ladenie USB"</string>
     <string name="enable_adb_summary" msgid="4881186971746056635">"Povoliť režim ladenia s pripojeným zariadením USB"</string>
+    <string name="adb_over_network">ADB cez sieť</string>
+    <string name="adb_over_network_summary">Použiť ladenie cez sieť (napr. WiFi) namiesto USB. Nastavenie sa deaktivuje po reštarte.</string>
+    <string name="adb_notify">Upozorenie ladenia</string>
+    <string name="adb_notify_summary">Zobrazí upozornenie ak je aktívne ladenie</string>
     <string name="keep_screen_on" msgid="1146389631208760344">"Nezamykať obrazovku"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"Obrazovka sa pri nabíjaní neprepne do režimu spánku"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"Povoliť simulované polohy"</string>
     <string name="allow_mock_location_summary" msgid="317615105156345626">"Povoliť simulované polohy"</string>
+    <string name="kill_app_longpress_back">Zabiť podržaním Späť</string>
+    <string name="kill_app_longpress_back_summary">Dlhé podržanie tlačidla Späť zabije aplikáciu, ktorá je v popredí.</string>
     <string name="adb_warning_title" msgid="6234463310896563253">"Povoliť ladenie USB?"</string>
     <string name="adb_warning_message" msgid="5352555112049663033">"Ladenie USB je určené iba na účely vývoja. Možno ho použiť na kopírovanie údajov medzi počítačom a zariadením, inštaláciu aplikácií do zariadenia bez upozornenia a čítanie údajov denníka."</string>
     <string name="gadget_picker_title" msgid="98374951396755811">"Vyberte modul gadget"</string>
     <string name="widget_picker_title" msgid="9130684134213467557">"Vyberte miniaplikáciu"</string>
+    <string name="battery_history_details_for">Detaily pre UID <xliff:g id="number" example="1234">%d</xliff:g></string>
+    <string name="battery_history_network_usage">Detaily využitia siete pre <xliff:g id="app_name">%1$s</xliff:g>:</string>
+    <string name="battery_history_bytes_received">Bajty prijaté: <xliff:g id="bytes">%1$d</xliff:g></string>
+    <string name="battery_history_bytes_sent">Bajty odoslané: <xliff:g id="bytes">%1$d</xliff:g></string>
+    <string name="battery_history_bytes_total">Bajtov celkovo: <xliff:g id="bytes">%1$d</xliff:g></string>
+    <string name="battery_history_cpu_usage">Detail využitia CPU pre <xliff:g id="app_name">%1$s</xliff:g>:</string>
+    <string name="battery_history_user_time">Čas používateľa: </string>
+    <string name="battery_history_system_time">Čas systému: </string>
+    <string name="battery_history_total_time">Celkový čas: </string>
+    <string name="battery_history_starts">Štarty: <xliff:g id="starts">%1$d</xliff:g></string>
     <string name="battery_history_days" msgid="7110262897769622564">"<xliff:g id="DAYS">%1$d</xliff:g> dní <xliff:g id="HOURS">%2$d</xliff:g> h <xliff:g id="MINUTES">%3$d</xliff:g> min <xliff:g id="SECONDS">%4$d</xliff:g> s"</string>
     <string name="battery_history_hours" msgid="7525170329826274999">"<xliff:g id="HOURS">%1$d</xliff:g> h <xliff:g id="MINUTES">%2$d</xliff:g> min <xliff:g id="SECONDS">%3$d</xliff:g> s"</string>
     <string name="battery_history_minutes" msgid="1467775596084148610">"<xliff:g id="MINUTES">%1$d</xliff:g> min <xliff:g id="SECONDS">%2$d</xliff:g> s"</string>
     <string name="battery_history_seconds" msgid="4283492130945761685">"<xliff:g id="SECONDS">%1$d</xliff:g> s"</string>
+    <string name="battery_history_packages_sharing_this_uid">Balíky zdieľajúce toto UID:</string>
+    <string name="battery_history_no_data">Údaje využitia batérie nie sú k dispozícii</string>
+    <string name="battery_history_sensor">Senzor:</string>
+    <string name="battery_history_wakelock">Čiastočný Wakelock:</string>
+    <string name="battery_history_used_by_packages">Využitie senzorov balíkmi:</string>
+    <string name="battery_history_sensor_usage">Použité <xliff:g id="count">%1$d</xliff:g> krát balíkom <xliff:g id="package">%2$s</xliff:g></string>
+    <string name="battery_history_sensor_usage_multi">Použité <xliff:g id="count">%1$d</xliff:g> krát jedným z:</string>
+    <string name="battery_history_awake_label">Doba behu</string>
+    <string name="battery_history_screen_on_label">Obrazovka zapnutá</string>
+    <string name="battery_history_phone_on_label">Telefón zapnutý</string>
+    <string name="battery_history_wifi_on_label">Wifi zapnuté</string>
+    <string name="battery_history_wifi_running_label">Doba behu WiFi</string>
+    <string name="battery_history_bluetooth_on_label">Bluetooth zapnutý</string>
+    <string name="battery_history_awake">Doba prebudenia:</string>
+    <string name="battery_history_screen_on">Doba so zapnutou obrazovkou:</string>
+    <string name="battery_history_phone_on">Doba so zapnutým telefónom:</string>
+    <string name="battery_history_wifi_on">Doba so zapnutou WiFi:</string>
+    <string name="battery_history_wifi_running">Doba s aktívnou Wifi:</string>
+    <string name="battery_history_bluetooth_on">Doba so zapnutým Bluetooth:</string>
+    <string name="battery_history_screen_on_battery">Na batérii:</string>
+    <string name="battery_history_screen_on_plugged">Na nabíjačke:</string>
     <string name="usage_stats_label" msgid="5890846333487083609">"Štatistiky používania"</string>
     <string name="testing_usage_stats" msgid="7823048598893937339">"Štatistiky používania"</string>
     <string name="display_order_text" msgid="8592776965827565271">"Zoradiť podľa:"</string>
@@ -1084,6 +1150,30 @@
     <string name="vpn_a_l2tp_secret" msgid="6612042930810981845">"tajný kľúč L2TP"</string>
     <string name="vpn_pptp_encryption_title" msgid="2236795167467896499">"šifrovanie"</string>
     <string name="vpn_pptp_encryption" msgid="2602329949737259686">"Šifrovanie PPTP"</string>
+    <string name="vpn_openvpn_port">Server port</string>
+    <string name="vpn_openvpn_protocol">Použiť protokol</string>
+    <string name="vpn_openvpn_device">Použiť zariadenie</string>
+    <string name="vpn_openvpn_userauth">Autentifikácia</string>
+    <string name="vpn_openvpn_userauth_summary">Nastavte ak je vyžadovaná dodatočná autentifikácia prihlasovacím menom a heslom</string>
+    <string name="vpn_openvpn_advanced_titlebar">Rozšírené Openvpn nastavenia</string>
+    <string name="vpn_openvpn_comp_lzo">LZO kompresia</string>
+    <string name="vpn_openvpn_comp_lzo_summary">Vynútené zapnutie LZO kompresie</string>
+    <string name="vpn_openvpn_set_use_tls_auth">TLS-Auth</string>
+    <string name="vpn_openvpn_set_use_tls_auth_summary">Použiť tls-auth kľúč</string>
+    <string name="vpn_openvpn_set_tls_auth_key">Umiestnenie TA kľúča</string>
+    <string name="vpn_openvpn_set_tls_auth_key_direction">Smer Tls-Auth kľúča</string>
+    <string name="vpn_openvpn_redirect_gateway_title">Premerovanie brány</string>
+    <string name="vpn_openvpn_redirect_gateway_summary">Presmeruje všeku komunikáciu cez VPN tunel</string>
+    <string name="vpn_openvpn_set_addr">Vzdialený server prideľuje adresy</string>
+    <string name="vpn_openvpn_set_addr_summary">Odškrtnite pre manuálne definovanie adries tunela</string>
+    <string name="vpn_openvpn_set_local_addr">Lokálna IP adresa</string>
+    <string name="vpn_openvpn_set_remote_addr">Vzdialená IP adresa</string>
+    <string name="vpn_openvpn_set_cipher">Algoritmus šifry</string>
+    <string name="vpn_openvpn_set_cipher_message">Ponechajte prázdne pre predvolenú šifru</string>
+    <string name="vpn_openvpn_set_keysize">Dĺžka kľúča šifry</string>
+    <string name="vpn_openvpn_set_keysize_message">Ponechajte prázdne pre predvolenú dĺžku</string>
+    <string name="vpn_openvpn_set_extra">Extra parametre</string>
+    <string name="vpn_openvpn_set_extra_message">Zadajte dodatočné parametre príkazového riadku</string>
     <string name="vpn_ipsec_presharedkey_title" msgid="2184060087690539175">"Nastaviť predzdieľaný kľúč IPSec"</string>
     <string name="vpn_ipsec_presharedkey" msgid="5434316521616673741">"Predzdieľaný kľúč IPSec"</string>
     <string name="vpn_a_ipsec_presharedkey" msgid="1255301923217898418">"predzdieľaný kľúč IPSec"</string>
@@ -1144,6 +1234,48 @@
     <string name="encrypted_fs_alert_dialog_title" msgid="583462447886934755">"Upozornenie systémov EFS (Encrypted File System)."</string>
     <string name="emergency_tone_title" msgid="1055954530111587114">"Tiesňové vyzváňanie"</string>
     <string name="emergency_tone_summary" msgid="722259232924572153">"Nastaviť správanie pri tiesňovom volaní"</string>
+    <string name="profile_title">Nastavenia profilov</string>
+    <string name="profile_appgroup_list_title">Skupiny aplikácií</string>
+    <string name="sound_mode">Režim upozornení</string>
+    <string name="ringer_mode">Režim zvonenia</string>
+    <string name="lights_mode">Režim svetiel</string>
+    <string name="vibrate_mode">Režim vibrovania</string>
+    <string name="choose_soundtone">Vyberte tón upozornení</string>
+    <string name="choose_ringtone">Vyberte tón zvonenia</string>
+    <string name="profile_settings">Nastavenia profilov</string>
+    <string name="profile_name">Názov profilu</string>
+    <string name="new_profile_name">&lt;nový profil&gt;</string>
+    <string name="profile_summary">Dotknite sa pre konfiguráciu profilu</string>
+    <string name="profile_statusbar">Indikátor stavového riadku</string>
+    <string name="profile_appgroup_title">Skupina aplikácií: %s</string>
+    <string name="profile_appgroups_title">Skupiny aplikácií</string>
+    <string name="profile_connectionoverrides_title">Prestavenie spojení</string>
+    <string name="profile_connectionoverrides_summary">Dotknite sa pre vypnutie/zapnutie</string>
+    <string name="profile_volumeoverrides_title">Prestavenie hlasitosti</string>
+    <string name="profile_volumeoverrides_summary">Dotknite sa pre nastavenie hlasitostí.</string>
+    <string name="profile_applist_title">Aplikácie - kliknutím odstránite zo skupiny</string>
+    <string name="profile_appgroup_name_prompt">Zadajte meno skupiny aplikácií</string>
+    <string name="profile_delete">Vymazať profil</string>
+    <string name="profile_delete_confirm">Skutočne vymazať profil</string>
+    <string name="profile_app_delete_confirm">Skutočne odstrániť aplikáciu zo zoznamu</string>
+    <string name="profile_choose_app">Zvoľte aplikáciu</string>
+    <string name="profile_settings_header">Nastavenia profilu: %s</string>
+    <string name="profile_group_header">Profil: %1$s kategória: %2$s</string>
+    <string name="menu_appgroups">Spravovať skupiny aplikácií</string>
+    <string name="menu_new_profile">Nový profil</string>
+    <string name="menu_new_profile_summary">Pridanie a konfigurácia nového profilu</string>
+    <string name="profile_menu_delete">Vymazať</string>
+    <string name="profile_cannot_delete">Nie je možné vymazať aktívny profil.</string>
+    <string name="profile_new_appgroup">Nová skupina aplikácií</string>
+    <string name="profile_delete_appgroup">Vymazať skupinu aplikácií</string>
+    <string name="profile_add_app">Pridať aplikáciu</string>
+    <string name="profile_manage">Spravovať profily</string>
+    <string name="profile_appgroups_manage">Spravovať skupiny aplikácií</string>
+    <string name="profile_applist_manage">Spravovať zoznam aplikácií</string>
+    <string name="profile_reset_title">Reset</string>
+    <string name="profile_reset_all_title">Reset všetkých</string>
+    <string name="profile_reset_all_summary">Vymazať a obnoviť všetky predvolené profily a skupiny aplikácií</string>
+    <string name="profile_reset_all_message">Skutočne vymazať a obnoviť všetky predvolené profily a skupiny aplikácií?</string>
     <string name="privacy_settings" msgid="9206631214140954954">"Ochrana osobných údajov"</string>
     <string name="privacy_settings_title" msgid="1987089301293213705">"Nastavenie ochrany osobných údajov"</string>
     <string name="backup_section_title" msgid="8856083167469467588">"Zálohovanie a obnovenie"</string>
@@ -1169,6 +1301,82 @@
     <string name="sound_category_calls_title" msgid="3688531959256239012">"Prichádzajúce hovory"</string>
     <string name="sound_category_notification_title" msgid="3502115998790286943">"Upozornenia"</string>
     <string name="sound_category_feedback_title" msgid="4399742321363475393">"Spätná väzba"</string>
+    <string name="possibleButtons">Zoznam tlačidiel</string>
+    <string name="toggleWifi">Wi-Fi</string>
+    <string name="toggleWifiAp">Wi-Fi hotspot</string>
+    <string name="toggleBluetooth">Bluetooth</string>
+    <string name="toggleGPS">GPS</string>
+    <string name="toggleData">Mobilné Dáta</string>
+    <string name="toggleSync">Synchronizácia</string>
+    <string name="toggle2g3g">2G/3G</string>
+    <string name="toggleSound">Zvuky</string>
+    <string name="toggleBrightness">Jas</string>
+    <string name="toggleAutoRotate">Orientácia</string>
+    <string name="toggleScreenTimeout">Časovač obrazovky</string>
+    <string name="toggleAirplane">Lietadlo</string>
+    <string name="toggleFlashlight">Baterka</string>
+    <string name="toggleLockScreen">Uzamknutie</string>
+    <string name="toggleWimax">WiMAX</string>
+    <string name="toggleWifiDescription">Zapnúť/vypnúť Wi-Fi</string>
+    <string name="toggleWifiApDescription">Zapnúť/vypnúť Wi-Fi hotspot</string>
+    <string name="toggleBluetoothDescription">Zapnúť/vypnúť Bluetooth</string>
+    <string name="toggleGPSDescription">Zapnúť/vypnúť GPS</string>
+    <string name="toggleDataDescription">Zapnúť/vypnúť mobilné dáta</string>
+    <string name="toggleSyncDescription">Zapnúť/vypnúť synchronizáciu</string>
+    <string name="toggle2g3gDescription">Prepnúť medzi 2G a 3G</string>
+    <string name="toggleSoundDescription">Prepnúť medzi zvonením a vibrovaním</string>
+    <string name="toggleBrightnessDescription">Prepnúť úrovne jasu</string>
+    <string name="toggleAutoRotateDescription">Zapnúť/vypnúť senzor orientácie</string>
+    <string name="toggleScreenTimeoutDescription">Nastaviť rôzne časovače obrazovky</string>
+    <string name="toggleAirplaneDescription">Zapnúť/vypnúť režim v Lietadle</string>
+    <string name="toggleFlashlightDescription">Zapnúť/vypnúť baterku</string>
+    <string name="toggleLockScreenDescription">Zapnúť/vypnúť obrazovku uzamknutia</string>
+    <string name="toggleWimaxDescription">Zapnúť/vypnúť WiMAX</string>
+    <string name="widgetSettings">Nastavenie inštancie tlačidla</string>
+    <string name="wifiSettings">Nastavenie udalostí WiFi</string>
+    <string name="dataSettings">Nastavenie udalostí dát</string>
+    <string name="powerSettings">Nastavenie udalostí napájania</string>
+    <string name="generalSettings">Všeobecné nastavenia</string>
+    <string name="autoDisable3G">Dáta vypnú 3G</string>
+    <string name="autoEnable3G">Dáta zapnú 3G</string>
+    <string name="autoDisable3GWithWifi">WiFi vypne 3G</string>
+    <string name="autoEnable3GWithWifi">WiFi zapne 3G</string>
+    <string name="useRoundCorners">Zaoblené rohy</string>
+    <string name="useVertical">Vertikálne uloženie</string>
+    <string name="useTransparent">Transparentné pozadie</string>
+    <string name="autoEnableSyncWithWifi">WiFi zapne synchronizáciu</string>
+    <string name="autoDisableSyncWithWifi">WiFi vypne synchronizáciu</string>
+    <string name="ringModeVibrateAsOn">Zapnúť vibrovanie</string>
+    <string name="monitorDataRoaming">Monitorovanie roaming dát</string>
+    <string name="autoEnableBluetoothWithPower">Nabíjanie zapne Bluetooth</string>
+    <string name="autoDisableBluetoothWithPower">Nabíjanie vypne Bluetooth</string>
+    <string name="autoEnableWifiWithPower">Nabíjanie zapne WiFi</string>
+    <string name="autoDisableWifiWithPower">Nabíjanie vypne WiFi</string>
+    <string name="autoDisable3GDescription">Zapne 2G pri zapnutí mobilných dát</string>
+    <string name="autoEnable3GDescription">Zapne 3G pri vypnutí mobilných dát</string>
+    <string name="autoDisable3GWithWifiDescription">Zapne 2G pri zapnutí WiFi</string>
+    <string name="autoEnable3GWithWifiDescription">Zapne 3G pri vypnutí WiFi</string>
+    <string name="useRoundCornersDescription">Zobrazí oblé ikony tlačidiel</string>
+    <string name="useTransparentDescription">Bez pozadia</string>
+    <string name="useVerticalDescription">Zobrazenie počas vertikálnej orientácie</string>
+    <string name="autoEnableSyncWithWifiDescription">Zapne synchronizáciu pri zapnutí WiFi</string>
+    <string name="autoDisableSyncWithWifiDescription">Vypne synchronizáciu pri vypnutí WiFi</string>
+    <string name="ringModeVibrateAsOnDescription">Indikuje zapnutý zvuk v režime vibrovania</string>
+    <string name="monitorDataRoamingDescription">Zobrazí stav dát červenou ak je povolený dátový roaming</string>
+    <string name="autoEnableBluetoothWithPowerDescription">Zapne Bluetooth pri zapojení nabíjania</string>
+    <string name="autoDisableBluetoothWithPowerDescription">Vypne Bluetooth po odpojení nabíjania</string>
+    <string name="autoEnableWifiWithPowerDescription">Zapne WiFi pri zapojení nabíjania</string>
+    <string name="autoDisableWifiWithPowerDescription">Vypne WiFi po odpojení nabíjania</string>
+    <string name="networkModeSpinner">Vyberte režimy siete</string>
+    <string name="brightnessSpinner">Vyberte režimy úrovne jasu</string>
+    <string name="ringModeSpinner">Vyberte režimy zvuku</string>
+    <string name="screenTimeoutSpinner">Vyberte časovanie vypnutia obrazovky</string>
+    <string name="backgroundImageSpinner">Vyberte pozadie</string>
+    <string name="notConfigured">Nenakonfigurované. Skúste pridať znova.</string>
+    <string name="ok">Ok</string>
+    <string name="widget_count">(%d widgetov)</string>
+    <string name="cm_settings_title">CyanogenMod nastavenia</string>
+    <string name="device_settings_title">Nastavenie zariadenia</string>
     <string name="wimax_settings" msgid="1574837328738396794">"Nastavenia 4G"</string>
     <string name="wimax_settings_summary" msgid="3207355006084135453">"Nastaviť a spravovať sieť 4G a modem"</string>
     <string name="status_wimax_mac_address" msgid="8390791848661413416">"Adresa 4G MAC"</string>
