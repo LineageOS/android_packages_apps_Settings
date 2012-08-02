@@ -170,7 +170,7 @@
         <item>Very fast</item>
     </string-array>
     <!-- Do not translate. -->
-    <string-array name="tts_rate_values">
+    <string-array name="tts_rate_values" translatable="false">
         <item>60</item>
         <item>80</item>
         <item>100</item>
@@ -187,7 +187,7 @@
         <item>Very high</item>
     </string-array>
     <!-- Do not translate. -->
-    <string-array name="tts_pitch_values">
+    <string-array name="tts_pitch_values" translatable="false">
         <item>50</item>
         <item>80</item>
         <item>100</item>
@@ -274,7 +274,7 @@
 
     <!-- Match this with the constants in AccessPoint. --> <skip />
     <!-- Wi-Fi security choices used when manually added a Wi-Fi network -->
-    <string-array name="wifi_security">
+    <string-array name="wifi_security" translatable="false">
         <!-- The Wi-Fi network does not have any security. -->
         <item>@string/wifi_security_none</item>
         <!-- Do not translate. -->
@@ -287,7 +287,7 @@
 
     <!-- Match this with the constants in AccessPoint. --> <skip />
     <!-- Wi-Fi security types for New User Dialog. EAP is not configurable. -->
-    <string-array name="wifi_security_no_eap">
+    <string-array name="wifi_security_no_eap" translatable="false">
         <!-- The Wi-Fi network does not have any security. -->
         <item>@string/wifi_security_none</item>
         <!-- Do not translate. -->
@@ -308,7 +308,7 @@
 
     <!-- Match this with the constants in WifiDialog. --> <skip />
     <!-- Wi-Fi settings.  The type of EAP method a Wi-Fi network has. -->
-    <string-array name="wifi_eap_method">
+    <string-array name="wifi_eap_method" translatable="false">
         <!-- Do not translate. -->
         <item>PEAP</item>
         <!-- Do not translate. -->
@@ -383,7 +383,7 @@
 
     <!-- Match with wifi_sleep_policy_entries and the values of the settings in Settings class. --> <skip />
     <!-- Do not translate. -->
-    <string-array name="wifi_sleep_policy_values">
+    <string-array name="wifi_sleep_policy_values" translatable="false">
         <!-- Do not translate. -->
         <item>2</item>
         <!-- Do not translate. -->
@@ -404,7 +404,7 @@
 
     <!-- Match with wifi_frequency_band_entries and the values of the settings in WifiManager. -->
     <!-- Do not translate. -->
-    <string-array name="wifi_frequency_band_values">
+    <string-array name="wifi_frequency_band_values" translatable="false">
         <!-- Do not translate. -->
         <item>0</item>
         <!-- Do not translate. -->
@@ -464,7 +464,7 @@
     </string-array>
 
     <!-- Do not translate. -->
-    <string-array name="emergency_tone_values">
+    <string-array name="emergency_tone_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
@@ -491,7 +491,7 @@
         <item>PAP or CHAP</item>
     </string-array>
 
-    <string-array translatable="false" name="apn_auth_values">
+    <string-array name="apn_auth_values" translatable="false">
         <!-- Do not translate. -->
         <item>0</item>
         <!-- Do not translate. -->
@@ -509,7 +509,7 @@
         <item>IPv4/IPv6</item>
     </string-array>
 
-    <string-array translatable="false" name="apn_protocol_values">
+    <string-array name="apn_protocol_values" translatable="false">
         <!-- Do not translate. -->
         <item>IP</item>
         <!-- Do not translate. -->
@@ -525,7 +525,7 @@
         <item>Unspecified</item>
     </string-array>
 
-    <string-array translatable="false" name="bearer_values">
+    <string-array name="bearer_values" translatable="false">
         <!-- Do not translate. -->
         <item>14</item>
         <!-- Do not translate. -->
@@ -1015,7 +1015,7 @@
         <item>2</item>
     </string-array>
 
-    <string-array name="lockscreen_delay_entries">
+    <string-array name="lockscreen_delay_entries" translatable="false">
         <item>@string/slide_lock_delay_none</item>
         <item>@string/slide_lock_delay_1s</item>
         <item>@string/slide_lock_delay_5s</item>
@@ -1182,14 +1182,14 @@
     </string-array>
 
     <!-- Arrays for root access capability -->
-    <string-array name="root_access_entries">
+    <string-array name="root_access_entries" translatable="false">
         <item>@string/root_access_none</item>
         <item>@string/root_access_apps</item>
         <item>@string/root_access_adb</item>
         <item>@string/root_access_all</item>
     </string-array>
 
-    <string-array name="root_access_values">
+    <string-array name="root_access_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
@@ -1197,7 +1197,7 @@
     </string-array>
 
     <!-- Values for the notification light pulse spinners -->
-    <string-array name="notification_pulse_length_entries">
+    <string-array name="notification_pulse_length_entries" translatable="false">
         <item>@string/pulse_length_always_on</item>
         <item>@string/pulse_length_very_short</item>
         <item>@string/pulse_length_short</item>
@@ -1215,7 +1215,7 @@
         <item>5000</item>
     </string-array>
 
-    <string-array name="notification_pulse_speed_entries">
+    <string-array name="notification_pulse_speed_entries" translatable="false">
         <item>@string/pulse_speed_very_fast</item>
         <item>@string/pulse_speed_fast</item>
         <item>@string/pulse_speed_normal</item>
@@ -1231,7 +1231,7 @@
         <item>5000</item>
     </string-array>
 
-    <string-array name="weather_interval_entries">
+    <string-array name="weather_interval_entries" translatable="false">
         <item>@string/weather_refresh_manual</item>
         <item>@string/weather_refresh_30min</item>
         <item>@string/weather_refresh_60min</item>
@@ -1251,7 +1251,7 @@
         <item>480</item>
     </string-array>
 
-    <string-array name="calendar_lookahead_entries">
+    <string-array name="calendar_lookahead_entries" translatable="false">
         <item>@string/calendar_lookahead_3hrs</item>
         <item>@string/calendar_lookahead_6hrs</item>
         <item>@string/calendar_lookahead_12hrs</item>
@@ -1269,7 +1269,7 @@
         <item>604800000</item>
     </string-array>
 
-    <string-array name="calendar_show_event_metadata_entries">
+    <string-array name="calendar_show_event_metadata_entries" translatable="false">
         <item>@string/calendar_metadata_none</item>
         <item>@string/calendar_metadata_first_line</item>
         <item>@string/calendar_metadata_all</item>
@@ -1294,7 +1294,7 @@
     </string-array>
 
     <!-- DHCP lease times for tethering settings -->
-    <string-array name="tethering_lease_time_entries">
+    <string-array name="tethering_lease_time_entries" translatable="false">
         <item>@string/dhcp_lease_30mn</item>
         <!-- keep this in sync with DEFAULT_LEASE_TIME in system/netd/TetherController.h -->
         <item>@string/dhcp_lease_1h</item>
@@ -1326,7 +1326,7 @@
         <item>@string/increasing_ring_interval_10seconds</item>
     </string-array>
 
-    <integer-array name="increasing_ring_interval_values">
+    <integer-array name="increasing_ring_interval_values" translatable="false">
         <item>0</item>
         <item>500</item>
         <item>1000</item>
