@@ -81,7 +81,8 @@
             android:selectAllOnFocus="true"
             android:imeOptions="actionDone"
             android:inputType="textNoSuggestions"
-            android:persistent="false" />
+            android:persistent="false"
+            android:dependency="enable_adb" />
 
         <CheckBoxPreference
             android:key="allow_mock_location"
