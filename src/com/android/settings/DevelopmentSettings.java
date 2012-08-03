@@ -244,7 +244,7 @@ public class DevelopmentSettings extends PreferenceFragment
         mAllPrefs.add(mShowAllANRs);
         mResetCbPrefs.add(mShowAllANRs);
 
-        mKillAppLongpressBack = (CheckBoxPreference) findPreference(KILL_APP_LONGPRESS_BACK);
+        mKillAppLongpressBack = findAndInitCheckboxPref(KILL_APP_LONGPRESS_BACK);
 
         Preference hdcpChecking = findPreference(HDCP_CHECKING_KEY);
         if (hdcpChecking != null) {
@@ -254,7 +254,9 @@ public class DevelopmentSettings extends PreferenceFragment
 
         mRootAccess = (ListPreference) findPreference(ROOT_ACCESS_KEY);
         mRootAccess.setOnPreferenceChangeListener(this);
-        removeRootOptionsIfRequired();
+        if (!removeRootOptionsIfRequired()) {
+            mAllPrefs.add(mRootAccess);
+        }
     }
 
     private CheckBoxPreference findAndInitCheckboxPref(String key) {
@@ -267,13 +269,16 @@ public class DevelopmentSettings extends PreferenceFragment
         return pref;
     }
 
-    private void removeRootOptionsIfRequired() {
+    private boolean removeRootOptionsIfRequired() {
         // user builds don't get root, and eng always gets root
         if (!Build.IS_DEBUGGABLE || "eng".equals(Build.TYPE)) {
             if (mRootAccess != null) {
                 getPreferenceScreen().removePreference(mRootAccess);
+                return true;
             }
         }
+
+        return false;
     }
 
     @Override
@@ -437,6 +442,7 @@ public class DevelopmentSettings extends PreferenceFragment
             }
         }
         resetDebuggerOptions();
+        resetRootAccessOptions();
         writeAnimationScaleOption(0, mWindowAnimationScale, null);
         writeAnimationScaleOption(1, mTransitionAnimationScale, null);
         writeAnimationScaleOption(2, mAnimatorDurationScale, null);
@@ -460,6 +466,19 @@ public class DevelopmentSettings extends PreferenceFragment
         SystemProperties.set(ROOT_ACCESS_PROPERTY, newValue.toString());
         if (Integer.valueOf(newValue.toString()) < 2 && !oldValue.equals(newValue)
                 && "1".equals(SystemProperties.get("service.adb.root", "0"))) {
+            SystemProperties.set("service.adb.root", "0");
+            Settings.Secure.putInt(getActivity().getContentResolver(),
+                    Settings.Secure.ADB_ENABLED, 0);
+            Settings.Secure.putInt(getActivity().getContentResolver(),
+                    Settings.Secure.ADB_ENABLED, 1);
+        }
+        updateRootAccessOptions();
+    }
+
+    private void resetRootAccessOptions() {
+        String oldValue = SystemProperties.get(ROOT_ACCESS_PROPERTY, "1");
+        SystemProperties.set(ROOT_ACCESS_PROPERTY, "1");
+        if (!oldValue.equals("1") && "1".equals(SystemProperties.get("service.adb.root", "0"))) {
             SystemProperties.set("service.adb.root", "0");
             Settings.Secure.putInt(getActivity().getContentResolver(),
                     Settings.Secure.ADB_ENABLED, 0);
