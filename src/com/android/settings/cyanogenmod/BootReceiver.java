@@ -27,6 +27,7 @@ import android.util.Log;
 import com.android.settings.DisplaySettings;
 import com.android.settings.R;
 import com.android.settings.Utils;
+import com.android.settings.ButtonSettings;
 import com.android.settings.location.LocationSettings;
 
 import java.util.Arrays;
@@ -40,5 +41,6 @@ public class BootReceiver extends BroadcastReceiver {
     public void onReceive(Context ctx, Intent intent) {
         /* Restore the hardware tunable values */
         DisplaySettings.restore(ctx);
+        ButtonSettings.restoreKeyDisabler(ctx);
     }
 }
