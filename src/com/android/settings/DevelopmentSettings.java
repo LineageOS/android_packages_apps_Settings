@@ -116,6 +116,8 @@ public class DevelopmentSettings extends PreferenceFragment
 
     private static final String TAG_CONFIRM_ENFORCE = "confirm_enforce";
 
+    private static final String DEVELOPMENT_TOOLS = "development_tools";
+
     private static final int RESULT_DEBUG_APP = 1000;
 
     private IWindowManager mWindowManager;
@@ -153,6 +155,8 @@ public class DevelopmentSettings extends PreferenceFragment
     private ListPreference mTransitionAnimationScale;
     private ListPreference mAnimatorDurationScale;
     private MultiCheckPreference mEnableTracesPref;
+
+    private PreferenceScreen mDevelopmentTools;
 
     private CheckBoxPreference mImmediatelyDestroyActivities;
     private ListPreference mAppProcessLimit;
@@ -199,6 +203,9 @@ public class DevelopmentSettings extends PreferenceFragment
         mAllowMockLocation = findAndInitCheckboxPref(ALLOW_MOCK_LOCATION);
         mPassword = (PreferenceScreen) findPreference(LOCAL_BACKUP_PASSWORD);
         mAllPrefs.add(mPassword);
+
+        mDevelopmentTools = (PreferenceScreen) findPreference(DEVELOPMENT_TOOLS);
+        mAllPrefs.add(mDevelopmentTools);
 
         mDebugAppPref = findPreference(DEBUG_APP_KEY);
         mAllPrefs.add(mDebugAppPref);
