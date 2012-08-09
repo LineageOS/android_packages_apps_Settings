@@ -906,6 +906,10 @@
     <string name="assisted_gps_disabled" msgid="6982698333968010748">"Использовать сервер для A-GPS (снимите флажок для улучшения работы GPS)"</string>
     <string name="use_location_title" msgid="5206937465504979977">"Учитывать при поиске"</string>
     <string name="use_location_summary" msgid="3978805802386162520">"Разрешить Google использовать данные о местоположении для улучшения поиска и работы других служб"</string>
+    <string name="location_gps_source_title">Источники GPS</string>
+    <string name="location_gps_source_summary">Использовать внешние bluetooth GPS адаптеры для определения местоположения</string>
+    <string name="location_gps_source_notification_title">Внимание!</string>
+    <string name="location_gps_source_notification">Источник GPS был изменён и выключен.</string>
     <string name="about_settings" product="tablet" msgid="593457295516533765">"О планшетном ПК"</string>
     <string name="about_settings" product="default" msgid="1743378368185371685">"О телефоне"</string>
     <string name="about_settings_summary" msgid="3371517697156165959">"Просмотр юридической информации, состояния планшетного ПК и версии ПО"</string>
@@ -1359,6 +1363,8 @@
     <string name="tts_default_lang_summary" msgid="5219362163902707785">"Выбор языка для чтения текста"</string>
     <string name="tts_play_example_title" msgid="7094780383253097230">"Прослушать пример"</string>
     <string name="tts_play_example_summary" msgid="8029071615047894486">"Воспроизвести краткую демонстрацию синтезированной речи"</string>
+    <string name="tts_play_example_not_found_title">Внимание</string>
+    <string name="tts_play_example_not_found_msg">Пример текстовой строки не был найден для указанного языка</string>
     <string name="tts_install_data_title" msgid="4264378440508149986">"Установка голосовых данных"</string>
     <string name="tts_install_data_summary" msgid="5742135732511822589">"Установить голосовые данные, необходимые для синтеза речи"</string>
     <string name="tts_data_installed_summary" msgid="9162111552859972809">"Данные, необходимые для синтеза речи, уже загружены"</string>
@@ -1712,6 +1718,15 @@
     <string name="cell_broadcast_settings_summary" msgid="3301339398950905913">"Выберите типы экстренных оповещений на экране."</string>
 
     <!-- **** CYANOGENMOD EDITS START -->
+
+    <!-- Wifi sleep timeout -->
+    <string name="wifi_idle_mn_title">Тайм-аут ожидания Wi-Fi</string>
+    <string name="wifi_idle_5mn">5 минут</string>
+    <string name="wifi_idle_15mn">15 минут (по умолчанию)</string>
+    <string name="wifi_idle_30mn">30 минут</string>
+    <string name="wifi_idle_1h">1 час</string>
+    <string name="wifi_idle_3h">3 часа</string>
+
     <!-- Profiles - Quiet hours -->
     <string name="quiet_hours_title">Тихие часы</string>
     <string name="quiet_hours_summary">Настройка часов, когда устройство должно быть тихим</string>
@@ -1865,6 +1880,28 @@
     <string name="navigation_bar_save_message">Настройки строки навигации сохранены</string>
     <string name="navigation_bar_reset_toast">Настройки строки навигации сброшены по умолчанию</string>
 
+    <!-- Hardware keys -->
+    <string name="hardware_keys_title">Аппаратные кнопки</string>
+    <string name="hardware_keys_bindings_title">Действия кнопок</string>
+    <string name="hardware_keys_enable_custom_title">Вкл. пользовательские действия</string>
+    <string name="hardware_keys_home_long_press_title">Кнопка \"Домой\" (долгое нажатие)</string>
+    <string name="hardware_keys_menu_press_title">Кнопка \"Меню\"</string>
+    <string name="hardware_keys_menu_long_press_title">Кнопка \"Меню\" (долгое нажатие)</string>
+    <string name="hardware_keys_assist_press_title">Кнопка \"Поиск\"</string>
+    <string name="hardware_keys_assist_long_press_title">Кнопка \"Поиск\" (долгое нажатие)</string>
+    <string name="hardware_keys_app_switch_press_title">Переключение приложений</string>
+    <string name="hardware_keys_app_switch_long_press_title">Переключение приложений (долгое нажатие)</string>
+    <string name="hardware_keys_show_overflow_title">Показывать кнопку меню</string>
+    <string name="hardware_keys_show_overflow_summary">Показывать кнопку меню (вертикальное троеточие) в приложениях</string>
+    <string name="hardware_keys_show_overflow_toast_enable">Кнопка меню может не отображаться до перезапуска приложений</string>
+    <string name="hardware_keys_show_overflow_toast_disable">Кнопка меню может отображаться до перезапуска приложений</string>
+    <string name="hardware_keys_action_nothing">Нет действия</string>
+    <string name="hardware_keys_action_menu">Открыть/закрыть меню</string>
+    <string name="hardware_keys_action_app_switch">Запущенные приложения</string>
+    <string name="hardware_keys_action_search">Поисковый помощник</string>
+    <string name="hardware_keys_action_voice_search">Голосовой поиск</string>
+    <string name="hardware_keys_action_in_app_search">Поиск в приложении</string>
+
     <!-- Power Widget #CM -->
     <string name="power_widget_title">Кнопки в панели уведомлений</string>
     <string name="title_expanded_widget">Кнопки в панели уведомлений</string>
@@ -2005,6 +2042,15 @@
     <string name="lockscreen_background_color_fill">Цвет заливки</string>
     <string name="lockscreen_background_custom_image">Пользоват. изображение</string>
     <string name="lockscreen_background_default_wallpaper">Обои по умолчанию</string>
+
+    <!-- Lock screen vibrate settings -->
+    <string name="lockscreen_vibrate_enabled_title">Вибрация</string>
+    <string name="lockscreen_vibrate_enabled_head">Вибрировать при разблокировке</string>
+
+    <!-- Lock screen misc. settings -->
+    <string name="lockscreen_battery_status_title">Состояние батареи</string>
+    <string name="lockscreen_battery_status_charging">Показывать во время зарядки</string>
+    <string name="lockscreen_battery_status_alwayson">Показывать всегда</string>
 
     <!-- Profiles settings -->
     <string name="profiles_settings_title">Профили</string>
@@ -2202,6 +2248,7 @@
     <string name="display_rotation_enabled">Включено.</string>
     <string name="display_rotation_disabled">Выключено.</string>
     <string name="display_rotation_unit">градусов</string>
+    <string name="display_lockscreen_rotation_title">Включая экран блокировки</string>
     <string name="display_rotation_category_title">Режимы вращения</string>
     <string name="display_rotation_0_title">0 градусов</string>
     <string name="display_rotation_90_title">90 градусов</string>
@@ -2362,5 +2409,19 @@
     <string name="changelog_error">Ошибка загрузки списка изменений...</string>
     <string name="changelog_unknown">Неизвестно</string>
     <string name="changelog_version">Версия</string>
+
+    <!-- Stylus Icon -->
+    <string name="stylus_icon_enabled_title">Значок стилуса</string>
+    <string name="stylus_icon_enabled_summary">Показывать значок указателя при рисовании или управлении стилусом</string>
+
+    <!-- Power menu screenshot -->
+    <string name="power_menu_title">Меню \"Параметры устройства\"</string>
+    <string name="power_menu_reboot_title">Перезагрузка</string>
+    <string name="power_menu_screenshot_title">Скриншот</string>
+    <string name="power_menu_profiles_title">Выбор профиля</string>
+
+    <!-- Launches Dev Tools -->
+    <string name="development_tools_title">Запуск утилиты разработчика</string>
+
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>
