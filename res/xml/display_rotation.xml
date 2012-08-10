@@ -25,6 +25,11 @@
         android:key="display_rotation_category"
         android:title="@string/display_rotation_category_title" />
     <CheckBoxPreference
+        android:key="lockscreen_rotation"
+        android:title="@string/display_lockscreen_rotation_title"
+        android:layout="?android:attr/preferenceLayoutChild"
+        android:dependency="accelerometer" />
+    <CheckBoxPreference
         android:key="display_rotation_0"
         android:title="@string/display_rotation_0_title"
         android:layout="?android:attr/preferenceLayoutChild"
