@@ -40,6 +40,7 @@ public class NavBar extends Fragment {
     private boolean mEditMode;
     private ViewGroup mContainer;
     private Activity mActivity;
+    private MenuItem mEditMenu;
     private final static Intent mIntent = new Intent("android.intent.action.NAVBAR_EDIT");
     private static final int MENU_RESET = Menu.FIRST;
     private static final int MENU_EDIT = Menu.FIRST + 1;
@@ -64,6 +65,7 @@ public class NavBar extends Fragment {
         mIntent.putExtra("edit", on);
         mIntent.putExtra("save", save);
         mActivity.sendBroadcast(mIntent);
+        mEditMenu.setTitle(on ? R.string.navigation_bar_menu_editable :  R.string.navigation_bar_menu_locked);
     }
 
     @Override
@@ -82,8 +84,8 @@ public class NavBar extends Fragment {
         .setAlphabeticShortcut('r')
         .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM |
                 MenuItem.SHOW_AS_ACTION_WITH_TEXT);
-        menu.add(0, MENU_EDIT, 0, R.string.wifi_save)
-        .setIcon(R.drawable.stat_navbar_edit_off)
+        mEditMenu = menu.add(0, MENU_EDIT, 0, R.string.navigation_bar_menu_locked);
+        mEditMenu.setIcon(R.drawable.stat_navbar_edit_off)
         .setAlphabeticShortcut('s')
         .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM |
                 MenuItem.SHOW_AS_ACTION_WITH_TEXT);
