@@ -54,7 +54,6 @@ public class ProfilesSettings extends SettingsPreferenceFragment {
     private static final String TAB_PROFILES = "profiles";
     private static final String TAB_APPGROUPS = "appgroups";
     private static final String PROFILE_SERVICE = "profile";
-    private static final String SYSTEM_PROFILES_ENABLED = "system_profiles_enabled";
 
     private static final int MENU_RESET = Menu.FIRST;
     private static final int MENU_ADD_PROFILE = Menu.FIRST + 1;
@@ -219,7 +218,7 @@ public class ProfilesSettings extends SettingsPreferenceFragment {
         }
 
         boolean enabled = Settings.System.getInt(mActivity.getContentResolver(),
-                SYSTEM_PROFILES_ENABLED, 1) == 1;
+                Settings.System.SYSTEM_PROFILES_ENABLED, 1) == 1;
 
         String tabId = mTabHost.getCurrentTabTag();
         if (TAB_PROFILES.equals(tabId) && enabled) {

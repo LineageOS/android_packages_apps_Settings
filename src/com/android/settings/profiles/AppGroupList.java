@@ -34,7 +34,6 @@ public class AppGroupList extends SettingsPreferenceFragment {
 
     private static final String TAG = "AppGroupSettings";
     public static final String PROFILE_SERVICE = "profile";
-    private static final String SYSTEM_PROFILES_ENABLED = "system_profiles_enabled";
 
     private ProfileManager mProfileManager;
 
@@ -65,7 +64,7 @@ public class AppGroupList extends SettingsPreferenceFragment {
     public void refreshList() {
         // Only enable the preferences if system profiles are enabled
         boolean enabled = Settings.System.getInt(getActivity().getContentResolver(),
-                SYSTEM_PROFILES_ENABLED, 1) == 1;
+                Settings.System.SYSTEM_PROFILES_ENABLED, 1) == 1;
 
         PreferenceScreen appgroupList = getPreferenceScreen();
         appgroupList.removeAll();
