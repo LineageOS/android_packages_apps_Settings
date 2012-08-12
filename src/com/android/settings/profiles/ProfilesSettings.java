@@ -81,8 +81,8 @@ public class ProfilesSettings extends SettingsPreferenceFragment {
             Bundle savedInstanceState) {
 
         mContainer = container;
-        mTabHost = (TabHost) inflater.inflate(R.layout.profile_tabs, container, false);
-        if (mTabHost != null) {
+        if (mTabHost == null) {
+            mTabHost = (TabHost) inflater.inflate(R.layout.profile_tabs, container, false);
             mProfileManager = (ProfileManager) getActivity().getSystemService(PROFILE_SERVICE); 
             mActivity = getActivity();
 
