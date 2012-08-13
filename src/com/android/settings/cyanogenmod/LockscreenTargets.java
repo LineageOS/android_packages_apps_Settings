@@ -302,7 +302,7 @@ public class LockscreenTargets extends Fragment implements ShortcutPickHelper.On
     private void resetAll() {
         new AlertDialog.Builder(mActivity)
         .setTitle(R.string.lockscreen_target_reset_title)
-        .setIcon(android.R.drawable.ic_dialog_alert)
+        .setIconAttribute(android.R.attr.alertDialogIcon)
         .setMessage(R.string.lockscreen_target_reset_message)
         .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
