@@ -32,6 +32,14 @@
             android:entryValues="@array/wifi_sleep_policy_values"
             />
 
+    <ListPreference
+            android:key="wifi_idle_mn"
+            android:title="@string/wifi_idle_mn_title"
+            android:persistent="false"
+            android:entries="@array/wifi_idle_mn_entries"
+            android:entryValues="@array/wifi_idle_mn_values"
+            />
+
     <!-- android:dependency="enable_wifi" -->
     <CheckBoxPreference
             android:key="wifi_poor_network_detection"
