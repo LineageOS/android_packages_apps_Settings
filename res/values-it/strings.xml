@@ -905,6 +905,10 @@
     <string name="assisted_gps_disabled" msgid="6982698333968010748">"Utilizza il server per assistere il GPS (deseleziona per migliorare le prestazioni GPS)"</string>
     <string name="use_location_title" msgid="5206937465504979977">"Posizione e ricerca Google"</string>
     <string name="use_location_summary" msgid="3978805802386162520">"Consenti a Google di usare la tua posizione per migliorare i risultati di ricerca e altri servizi"</string>
+    <string name="location_gps_source_title">"Fonte GPS"</string>
+    <string name="location_gps_source_summary">"Scegli se usare un\'antenna GPS Bluetooth esterna o l\'antenna GPS integrata"</string>
+    <string name="location_gps_source_notification_title">"Attenzione"</string>
+    <string name="location_gps_source_notification">"La fonte per la posizione GPS è stata modificata! Il GPS è stato disattivato, riattivarlo prima dell\'uso"</string>
     <string name="about_settings" product="tablet" msgid="593457295516533765">"Informazioni sul tablet"</string>
     <string name="about_settings" product="default" msgid="1743378368185371685">"Info sul telefono"</string>
     <string name="about_settings_summary" msgid="3371517697156165959">"Visualizza informazioni legali, stato, versione del software"</string>
@@ -1349,6 +1353,8 @@
     <string name="tts_default_lang_summary" msgid="5219362163902707785">"Imposta la voce specifica della lingua per il testo parlato"</string>
     <string name="tts_play_example_title" msgid="7094780383253097230">"Ascolta un esempio"</string>
     <string name="tts_play_example_summary" msgid="8029071615047894486">"Riproduci una breve dimostrazione della sintesi vocale"</string>
+    <string name="tts_play_example_not_found_title">Attenzione</string>
+    <string name="tts_play_example_not_found_msg">"Non è stato trovato un testo d\'esempio per il linguaggio selezionato"</string>
     <string name="tts_install_data_title" msgid="4264378440508149986">"Installa dati vocali"</string>
     <string name="tts_install_data_summary" msgid="5742135732511822589">"Installa i dati vocali richiesti per la sintesi vocale"</string>
     <string name="tts_data_installed_summary" msgid="9162111552859972809">"Voci richieste per la sintesi vocale già installate"</string>
@@ -1695,6 +1701,12 @@
     <string name="help_label" msgid="1107174367904110532">"Guida"</string>
     <string name="cell_broadcast_settings" msgid="8415582011920085222">"Cell broadcast"</string>
     <string name="cell_broadcast_settings_summary" msgid="3301339398950905913">"Seleziona i tipi di avvisi di emergenza da visualizzare."</string>
+    <string name="wifi_idle_mn_title">Timeout inattività Wi-Fi</string>
+    <string name="wifi_idle_5mn">5 minuti</string>
+    <string name="wifi_idle_15mn">15 minuti (predefinito)</string>
+    <string name="wifi_idle_30mn">30 minuti</string>
+    <string name="wifi_idle_1h">1 ora</string>
+    <string name="wifi_idle_3h">3 ore</string>
     <string name="quiet_hours_title">"Periodo di quiete"</string>
     <string name="quiet_hours_summary">"Configura gli orari in cui il terminale dovrebbe essere silenzioso"</string>
     <string name="quiet_hours_note_title">"Nota"</string>
@@ -1803,7 +1815,7 @@
     <string name="themes_settings_title">"Temi"</string>
     <string name="system_settings_title">"Sistema"</string>
     <string name="system_interface_title">"Interfaccia sistema"</string>
-    <string name="notification_drawer_title">"Menù notifiche"</string>
+    <string name="notification_drawer_title">"Menu notifiche"</string>
     <string name="combined_bar_title">"Barra combinata"</string>
     <string name="combined_bar_auto_hide_title">"Nascondi automaticamente"</string>
     <string name="combined_bar_auto_hide_summary">"Permetti di nascondere la barra combinata con applicazioni a pieno schermo"</string>
@@ -1813,14 +1825,34 @@
     <string name="navigation_bar_tips_title">Consigli rapidi</string>
     <string name="navigation_bar_reset_message">Elimina impostazioni correnti e ripristinare quelle di default?</string>
     <string name="navigation_bar_save_message">Impostazioni della barra di navigazione salvate</string>
-    <string name="navigation_bar_reset_toast">Barra di navigazione resettata</string>
+    <string name="navigation_bar_reset_toast">Barra di navigazione ripristinata</string>
+    <string name="hardware_keys_title">Tasti fisici</string>
+    <string name="hardware_keys_bindings_title">Azioni tasto</string>
+    <string name="hardware_keys_enable_custom_title">Azioni personalizzate</string>
+    <string name="hardware_keys_home_long_press_title">Tasto home (tieni premuto)</string>
+    <string name="hardware_keys_menu_press_title">Tasto menu</string>
+    <string name="hardware_keys_menu_long_press_title">Tasto menu (tieni premuto)</string>
+    <string name="hardware_keys_assist_press_title">Tasto cerca</string>
+    <string name="hardware_keys_assist_long_press_title">Tasto cerca (tieni premuto)</string>
+    <string name="hardware_keys_app_switch_press_title">Tasto cambio app</string>
+    <string name="hardware_keys_app_switch_long_press_title">Tasto cambio app (tieni premuto)</string>
+    <string name="hardware_keys_show_overflow_title">Visualizza azione di overflow</string>
+    <string name="hardware_keys_show_overflow_summary">Visualizza il pulsante con tre punti con funzione menu nelle applicazioni</string>
+    <string name="hardware_keys_show_overflow_toast_enable">Il pulsante con funzione menu potrebbe non essere visibile finché le applicazioni non saranno riavviate</string>
+    <string name="hardware_keys_show_overflow_toast_disable">Il pulsante con funzione menu potrebbe non essere nascosto finché le applicazioni non saranno riavviate</string>
+    <string name="hardware_keys_action_nothing">Nessuna azione</string>
+    <string name="hardware_keys_action_menu">Apri/Chiudi menu</string>
+    <string name="hardware_keys_action_app_switch">Applicazioni recenti switcher</string>
+    <string name="hardware_keys_action_search">Assistente ricerca</string>
+    <string name="hardware_keys_action_voice_search">Ricerca vocale</string>
+    <string name="hardware_keys_action_in_app_search">Ricerca in applicazioni</string>
     <string name="power_widget_title">"Power widget"</string>
-    <string name="title_expanded_widget">"Mostra il power widget"</string>
+    <string name="title_expanded_widget">"Power widget"</string>
     <string name="power_widget_behavior">"Comportamento widget"</string>
     <string name="title_expanded_hide_onchange">"Nascondi dopo modifica"</string>
     <string name="title_expanded_hide_scrollbar">"Nascondi barra scorrimento"</string>
     <string name="title_widget_picker">"Pulsanti visualizzati"</string>
-    <string name="summary_widget_picker">"Visualizza o modifica i pulsanti visualizzat"</string>
+    <string name="summary_widget_picker">"Visualizza o modifica i pulsanti visualizzati"</string>
     <string name="title_widget_order">"Ordine dei pulsanti"</string>
     <string name="summary_widget_order">"Visualizza o modifica l\'ordine dei pulsanti"</string>
     <string name="title_buttons">"Pulsanti"</string>
@@ -1870,7 +1902,7 @@
     <string name="status_bar_toggle_brightness_summary">"Modifica la luminosità strisciando sulla barra di stato"</string>
     <string name="status_bar_toggle_info">"Luminosità automatica attiva"</string>
     <string name="status_bar_signal_text_title">"Stile indicatore del segnale"</string>
-    <string name="status_bar_signal_text_show_bars">"Icona (Predefinito)"</string>
+    <string name="status_bar_signal_text_show_bars">"Icona (predefinito)"</string>
     <string name="status_bar_signal_text_show_text">"Testo"</string>
     <string name="status_bar_signal_text_hidden">"Nascosto"</string>
     <string name="lock_screen_title">"Schermata di sblocco"</string>
@@ -1888,7 +1920,7 @@
     <string name="lockscreen_weather_summary">Visualizza informazioni meteo nella schermata di blocco</string>
     <string name="lockscreen_weather_enabled">Abilitato</string>
     <string name="weather_enable">Visualizza meteo</string>
-    <string name="weather_source">Meteo Yahoo!</string>
+    <string name="weather_source">Yahoo! Meteo</string>
     <string name="weather_use_custom_location">Posizione personalizzata</string>
     <string name="weather_geolocated">Geolocalizzazione usando la rete cellulare</string>
     <string name="weather_custom_location_dialog_title">Inserisci posizione</string>
@@ -1937,7 +1969,9 @@
     <string name="lockscreen_background_color_fill">Colore di riempimento</string>
     <string name="lockscreen_background_custom_image">Immagine personalizzata</string>
     <string name="lockscreen_background_default_wallpaper">Sfondo predefinito</string>
-    <string name="lockscreen_battery_status_title">Mostra stato batteria</string>
+    <string name="lockscreen_vibrate_enabled_title">Vibrazione</string>
+    <string name="lockscreen_vibrate_enabled_head">Vibra allo sblocco</string>
+    <string name="lockscreen_battery_status_title">Stato batteria</string>
     <string name="lockscreen_battery_status_charging">Solo in carica</string>
     <string name="lockscreen_battery_status_alwayson">Sempre</string>
     <string name="profiles_settings_title">"Profili"</string>
@@ -2072,7 +2106,7 @@
     <string name="pref_purgeable_assets_summary">"Ripulire la memoria dedicata alle immagini consente di liberare più RAM quando richiesto (Richiede il riavvio)"</string>
     <string name="pref_use_dithering_title">"Migliora aspetto"</string>
     <string name="dithering_no_dither">Disabilita dithering</string>
-    <string name="dithering_color_banding">Correggi bande colorate (Predefinito)</string>
+    <string name="dithering_color_banding">Correggi bande colorate (predefinito)</string>
     <string name="dithering_blur_effect">Correggi bande colorate e effetto sfocatura</string>
     <string name="pref_use_16bpp_alpha_title">"Trasparenze a 16bit"</string>
     <string name="pref_use_16bpp_alpha_summary">"Aumenta le prestazioni ma abbassa la qualità della grafica e potrebbe causare artefatti visivi (Richiede il riavvio)</string>
@@ -2098,6 +2132,7 @@
     <string name="display_rotation_enabled">"Attiva"</string>
     <string name="display_rotation_disabled">"Disattiva"</string>
     <string name="display_rotation_unit">"gradi"</string>
+    <string name="display_lockscreen_rotation_title">Includi schermata di sblocco</string>
     <string name="display_rotation_category_title">"Modalità rotazione schermo"</string>
     <string name="display_rotation_0_title">"0 gradi"</string>
     <string name="display_rotation_90_title">"90 gradi"</string>
@@ -2129,7 +2164,7 @@
     <string name="icon_picker_search">Ricerca</string>
     <string name="icon_picker_sms">Messaggistica</string>
     <string name="icon_picker_twitter">Twitter</string>
-    <string name="icon_picker_title">Scegli fonte icona</string>
+    <string name="icon_picker_title">Scegli icone</string>
     <string name="icon_picker_system_icons_title">Icone di sistema</string>
     <string name="icon_picker_gallery_title">Galleria</string>
     <string name="icon_picker_pack_title">Pacchetto icone</string>
@@ -2186,7 +2221,7 @@
     <string name="ok">Conferma</string>
     <string name="verifier_device_identifier">"Sviluppo ID dispositivo"</string>
     <string name="verifier_device_identifier_not_available">"Informazioni sul dispositivo non disponibili"</string>
-    <string name="kill_app_longpress_back">"Termina appl. con tasto"</string>
+    <string name="kill_app_longpress_back">"Termina app con tasto"</string>
     <string name="kill_app_longpress_back_summary">"Termina l\'applicazione in primo piano tenendo premuto il tasto indietro"</string>
     <string name="device_hostname">Hostname dispositivo</string>
     <string name="mod_version">Versione CyanogenMod</string>
@@ -2203,4 +2238,11 @@
     <string name="changelog_error">Impossibile caricare il changelog</string>
     <string name="changelog_unknown">Sconosciuto</string>
     <string name="changelog_version">Versione</string>
+    <string name="stylus_icon_enabled_title">Visualizza puntatore</string>
+    <string name="stylus_icon_enabled_summary">Visualizza il puntatore quando disegni col pennino</string>
+    <string name="power_menu_title">Menu tasto accensione</string>
+    <string name="power_menu_reboot_title">Menu riavvio</string>
+	<string name="power_menu_screenshot_title">Cattura schermata</string>
+	<string name="power_menu_profiles_title">Selettore profilo</string>
+    <string name="development_tools_title">Esegui Tools</string>
 </resources>
