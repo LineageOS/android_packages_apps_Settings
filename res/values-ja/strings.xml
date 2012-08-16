@@ -1703,6 +1703,16 @@
     <string name="cell_broadcast_settings_summary" msgid="3301339398950905913">"表示する緊急警報の種類を選択してください。"</string>
 
     <!-- CM String entries bellow -->
+    <!-- Wifi sleep timeout -->
+    <string name="wifi_idle_mn_title">Wi-Fiアイドルタイムアウト</string>
+    <string name="wifi_idle_5mn">5分</string>
+    <string name="wifi_idle_15mn">15分 (デフォルト)</string>
+    <string name="wifi_idle_30mn">30分</string>
+    <string name="wifi_idle_1h">1時間</string>
+    <string name="wifi_idle_3h">3時間</string>
+
+    <string name="battery_info_status_full">フル</string>
+
     <string name="adb_notify">USBデバッグの通知</string>
     <string name="adb_notify_summary">USBデバッグが接続されたときに通知する</string>
     <string name="safe_headset_restore_title">安全なヘッドフォン音量</string>
@@ -1944,11 +1954,11 @@
     <string name="pref_ring_mode_title">サウンド</string>
     <string name="pref_ring_mode_summary">サウンドトグルで変更するモードの選択</string>
     <string name="cm_sound_mode_silent">サイレント</string>
-    <string name="cm_sound_mode_vibrate">振動</string>
+    <string name="cm_sound_mode_vibrate">バイブレーション</string>
     <string name="cm_sound_mode_sound">サウンド</string>
-    <string name="cm_sound_mode_soundVibrate">サウンドと振動</string>
+    <string name="cm_sound_mode_soundVibrate">サウンドとバイブレーション</string>
     <string name="pref_flash_mode_title">フラッシュ</string>
-    <string name="expanded_haptic_feedback_title">振動フィードバック</string>
+    <string name="expanded_haptic_feedback_title">バイブフィードバック</string>
 
     <!-- Status bar #CM -->
     <string name="status_bar_title">ステータスバー</string>
@@ -2046,6 +2056,10 @@
     <string name="lockscreen_background_custom_image">カスタム画像</string>
     <string name="lockscreen_background_default_wallpaper">デフォルトの壁紙</string>
 
+    <!-- Lock screen vibrate settings -->
+    <string name="lockscreen_vibrate_enabled_title">バイブレーション</string>
+    <string name="lockscreen_vibrate_enabled_head">ロック解除時にバイブさせる</string>
+
     <!-- Lock screen misc. settings #CM -->
     <string name="lockscreen_battery_status_title">バッテリーステータス</string>
     <string name="lockscreen_battery_status_charging">充電中のみ</string>
@@ -2085,7 +2099,7 @@
     <!-- Profile Config screen PreferenceGroup titles -->
     <string name="profile_connectionoverrides_title">接続のオーバーライド</string>
     <string name="profile_volumeoverrides_title">音量のオーバーライド</string>
-    <string name="profile_vibratoroverrides_title">振動のオーバーライド</string>
+    <string name="profile_vibratoroverrides_title">バイブのオーバーライド</string>
     <string name="connection_state_disabled">無効</string>
     <string name="connection_state_enabled">有効</string>
     <string name="volume_override_summary">設定は </string>
@@ -2108,7 +2122,7 @@
     <string name="sound_mode">通知モード</string>
     <string name="ringer_mode">着信音モード</string>
     <string name="lights_mode">ライトモード</string>
-    <string name="vibrate_mode">振動モード</string>
+    <string name="vibrate_mode">バイブモード</string>
     <string name="choose_soundtone">通知音を選択</string>
     <string name="choose_ringtone">着信音を選択</string>
 
@@ -2286,6 +2300,13 @@
     <!-- About device screen, build date of ROM. -->
     <string name="build_date">ビルド日時</string>
 
+    <!-- GPS Source selection -->
+    <string name="location_gps_source_title">GPSソース</string>
+    <string name="location_gps_source_summary">ロケーションプロバイダは内蔵の代わりに外部のBluetooth GPSモジュールを使用する</string>
+    <string name="location_gps_source_notification_title">警告</string>
+    <string name="location_gps_source_notification">GPSソースが切り替わりました！GPSは無効になります。使用するときはまた有効にして
+ください！</string>
+
     <!-- Setting checkbox title for Whether debugging should run over TCP/IP. -->
     <string name="adb_over_network">ADBオーバーネットワーク</string>
     <string name="adb_over_network_summary">ネットワークインタフェース(Wi-FiやUSB)越しのTCP/IPデバッグを有効にする(この設定は再起動でリセットされます)</string>
@@ -2317,15 +2338,15 @@
     <string name="quiet_hours_mute">通知音をミュート</string>
     <string name="quiet_hours_mute_on">通知音は再生されません</string>
     <string name="quiet_hours_mute_off">通知音は再生されます</string>
-    <string name="quiet_hours_still">振動を無効</string>
-    <string name="quiet_hours_still_on">端末は振動しません</string>
-    <string name="quiet_hours_still_off">端末は平常通り振動します</string>
+    <string name="quiet_hours_still">バイブレーションを無効</string>
+    <string name="quiet_hours_still_on">端末はバイブしません</string>
+    <string name="quiet_hours_still_off">端末は平常通りバイブします</string>
     <string name="quiet_hours_dim">LEDを暗くする</string>
     <string name="quiet_hours_dim_on">可能であればLEDを暗くします</string>
     <string name="quiet_hours_dim_off">LEDは最大照度で点灯します</string>
-    <string name="quiet_hours_haptic">振動フィードバックを無効にする</string>
-    <string name="quiet_hours_haptic_on">振動フィードバックは無効</string>
-    <string name="quiet_hours_haptic_off">振動フィードバックは有効</string>
+    <string name="quiet_hours_haptic">バイブフィードバックを無効にする</string>
+    <string name="quiet_hours_haptic_on">バイブフィードバックは無効</string>
+    <string name="quiet_hours_haptic_off">バイブフィードバックは有効</string>
     <string name="quiet_hours_active_from">有効時間</string>
     <string name="quiet_hours_active_to">から</string>
 
@@ -2338,6 +2359,7 @@
     <string name="display_rotation_enabled">有効</string>
     <string name="display_rotation_disabled">無効</string>
     <string name="display_rotation_unit">度</string>
+    <string name="display_lockscreen_rotation_title">ロック画面の回転</string>
     <string name="display_rotation_category_title">回転モード</string>
     <string name="display_rotation_0_title">0度</string>
     <string name="display_rotation_90_title">90度</string>
@@ -2411,7 +2433,10 @@
     <string name="changelog_version">バージョン</string>
 
     <!-- Power menu screenshot -->
-    <string name="power_menu_screenshot_title">電源メニューのスクリーンショット</string>
+    <string name="power_menu_title">電源ボタンメニュー</string>
+    <string name="power_menu_reboot_title">再起動メニュー</string>
+    <string name="power_menu_screenshot_title">スクリーンショット</string>
+    <string name="power_menu_profiles_title">プロファイルスイッチャー</string>
 
     <!-- Launches Dev Tools -->
     <string name="development_tools_title">開発ツールの起動</string>
