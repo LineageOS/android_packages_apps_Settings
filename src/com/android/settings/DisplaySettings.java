@@ -57,12 +57,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_SCREEN_SAVER = "screensaver";
     private static final String KEY_BATTERY_LIGHT = "battery_light";
     private static final String KEY_DISPLAY_ROTATION = "display_rotation";
+    private static final String KEY_LOCKSCREEN_ROTATION = "lockscreen_rotation";
     private static final String KEY_ELECTRON_BEAM_ANIMATION_ON = "electron_beam_animation_on";
     private static final String KEY_ELECTRON_BEAM_ANIMATION_OFF = "electron_beam_animation_off";
     private static final String KEY_ELECTRON_BEAM_CATEGORY_ANIMATION = "category_animation_options";
     private static final String KEY_WAKEUP_CATEGORY = "category_wakeup_options";
     private static final String KEY_VOLUME_WAKE = "pref_volume_wake";
 
+    private static final String LOCKSCREEN_ROTATION_MODE = "Lock screen";
     private static final String ROTATION_ANGLE_0 = "0";
     private static final String ROTATION_ANGLE_90 = "90";
     private static final String ROTATION_ANGLE_180 = "180";
@@ -70,6 +72,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String ROTATION_ANGLE_DELIM = ", ";
     private static final String ROTATION_ANGLE_DELIM_FINAL = " & ";
 
+    private CheckBoxPreference mLockScreenRotation;
     private CheckBoxPreference mVolumeWake;
     private CheckBoxPreference mElectronBeamAnimationOn;
     private CheckBoxPreference mElectronBeamAnimationOff;
@@ -125,6 +128,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
         
         mDisplayRotationPreference = (PreferenceScreen) findPreference(KEY_DISPLAY_ROTATION);
+        mLockScreenRotation = (CheckBoxPreference) findPreference(KEY_LOCKSCREEN_ROTATION);
         mScreenTimeoutPreference = (ListPreference) findPreference(KEY_SCREEN_TIMEOUT);
         final long currentTimeout = Settings.System.getLong(resolver, SCREEN_OFF_TIMEOUT,
                 FALLBACK_SCREEN_TIMEOUT_VALUE);
@@ -205,9 +209,20 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         StringBuilder summary = new StringBuilder();
         Boolean rotationEnabled = Settings.System.getInt(getContentResolver(),
                 Settings.System.ACCELEROMETER_ROTATION, 0) != 0;
+        Boolean lockScreenRotationEnabled = Settings.System.getInt(getContentResolver(),
+                Settings.System.LOCKSCREEN_ROTATION, 0) != 0;
         int mode = Settings.System.getInt(getContentResolver(),
                 Settings.System.ACCELEROMETER_ROTATION_ANGLES,
                 DisplayRotation.ROTATION_0_MODE|DisplayRotation.ROTATION_90_MODE|DisplayRotation.ROTATION_270_MODE);
+
+        if (mLockScreenRotation != null) {
+            if (!getResources().getBoolean(com.android.internal.R.bool.config_enableLockScreenRotation)) {
+                getPreferenceScreen().removePreference(mLockScreenRotation);
+            } else {
+                mLockScreenRotation.setChecked(Settings.System.getInt(getContentResolver(),
+                        Settings.System.LOCKSCREEN_ROTATION, 0) != 1);
+            }
+        }
 
         if (!rotationEnabled) {
             summary.append(getString(R.string.display_rotation_disabled));
@@ -215,6 +230,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             ArrayList<String> rotationList = new ArrayList<String>();
             String delim = "";
             summary.append(getString(R.string.display_rotation_enabled) + " ");
+            if (lockScreenRotationEnabled) {
+                rotationList.add(LOCKSCREEN_ROTATION_MODE);
+            }
             if ((mode & DisplayRotation.ROTATION_0_MODE) != 0) {
                 rotationList.add(ROTATION_ANGLE_0);
             }
@@ -386,6 +404,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         } else if (preference == mVolumeWake) {
             Settings.System.putInt(getContentResolver(), Settings.System.VOLUME_WAKE_SCREEN,
                     mVolumeWake.isChecked() ? 1 : 0);
+            return true;
+        } else if (preference == mLockScreenRotation) {
+            Settings.System.putInt(getContentResolver(), Settings.System.LOCKSCREEN_ROTATION,
+                    mLockScreenRotation.isChecked() ? 1 : 0);
+            updateDisplayRotationPreferenceDescription();
             return true;
         }
 
