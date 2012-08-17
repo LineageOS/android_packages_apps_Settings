@@ -22,6 +22,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.app.admin.DevicePolicyManager;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -60,12 +61,14 @@ public class ScreenSecurity extends SettingsPreferenceFragment implements
     private static final String MENU_UNLOCK_PREF = "menu_unlock";
     private static final String LOCKSCREEN_QUICK_UNLOCK_CONTROL = "quick_unlock_control";
     private static final String KEY_LOCK_BEFORE_UNLOCK = "lock_before_unlock";
+    public static final String KEY_VIBRATE_PREF = "lockscreen_vibrate";
 
     private LockPatternUtils mLockPatternUtils;
     private CheckBoxPreference mSlideLockDelayToggle;
     private ListPreference mSlideLockTimeoutDelay;
     private ListPreference mSlideLockScreenOffDelay;
     private CheckBoxPreference mPowerButtonInstantlyLocks;
+    private CheckBoxPreference mVibratePref;
 
     DevicePolicyManager mDPM;
 
@@ -88,6 +91,8 @@ public class ScreenSecurity extends SettingsPreferenceFragment implements
 
     private PreferenceScreen createPreferenceHierarchy() {
         PreferenceScreen root = getPreferenceScreen();
+
+        ContentResolver resolver = getActivity().getApplicationContext().getContentResolver();
 
         if (root != null) {
             root.removeAll();
@@ -138,14 +143,12 @@ public class ScreenSecurity extends SettingsPreferenceFragment implements
 
             mSlideLockDelayToggle = (CheckBoxPreference) root
                     .findPreference(SLIDE_LOCK_DELAY_TOGGLE);
-            mSlideLockDelayToggle.setChecked(Settings.System.getInt(getActivity()
-                    .getApplicationContext().getContentResolver(),
+            mSlideLockDelayToggle.setChecked(Settings.System.getInt(resolver,
                     Settings.System.SCREEN_LOCK_SLIDE_DELAY_TOGGLE, 0) == 1);
 
             mSlideLockTimeoutDelay = (ListPreference) root
                     .findPreference(SLIDE_LOCK_TIMEOUT_DELAY);
-            int slideTimeoutDelay = Settings.System.getInt(getActivity().getApplicationContext()
-                    .getContentResolver(),
+            int slideTimeoutDelay = Settings.System.getInt(resolver,
                     Settings.System.SCREEN_LOCK_SLIDE_TIMEOUT_DELAY, 5000);
             mSlideLockTimeoutDelay.setValue(String.valueOf(slideTimeoutDelay));
             updateSlideAfterTimeoutSummary();
@@ -153,8 +156,7 @@ public class ScreenSecurity extends SettingsPreferenceFragment implements
 
             mSlideLockScreenOffDelay = (ListPreference) root
                     .findPreference(SLIDE_LOCK_SCREENOFF_DELAY);
-            int slideScreenOffDelay = Settings.System.getInt(getActivity().getApplicationContext()
-                    .getContentResolver(),
+            int slideScreenOffDelay = Settings.System.getInt(resolver,
                     Settings.System.SCREEN_LOCK_SLIDE_SCREENOFF_DELAY, 0);
             mSlideLockScreenOffDelay.setValue(String.valueOf(slideScreenOffDelay));
             updateSlideAfterScreenOffSummary();
@@ -196,20 +198,24 @@ public class ScreenSecurity extends SettingsPreferenceFragment implements
         // Quick Unlock Screen Control
         mQuickUnlockScreen = (CheckBoxPreference) root
                 .findPreference(LOCKSCREEN_QUICK_UNLOCK_CONTROL);
-        mQuickUnlockScreen.setChecked(Settings.System.getInt(getActivity()
-                .getApplicationContext().getContentResolver(),
+        mQuickUnlockScreen.setChecked(Settings.System.getInt(resolver,
                 Settings.System.LOCKSCREEN_QUICK_UNLOCK_CONTROL, 0) == 1);
 
         // Menu Unlock
         mMenuUnlock = (CheckBoxPreference) root.findPreference(MENU_UNLOCK_PREF);
-        mMenuUnlock.setChecked(Settings.System.getInt(getActivity().getApplicationContext()
-                .getContentResolver(),
+        mMenuUnlock.setChecked(Settings.System.getInt(resolver,
                 Settings.System.MENU_UNLOCK_SCREEN, 0) == 1);
+
+        // Vibrate on unlock
+        mVibratePref = (CheckBoxPreference) findPreference(KEY_VIBRATE_PREF);
+        mVibratePref.setChecked(Settings.System.getInt(resolver,
+                Settings.System.LOCKSCREEN_VIBRATE_ENABLED, 1) == 1);
 
         // disable lock options if lock screen set to NONE
         if (!mLockPatternUtils.isSecure() && mLockPatternUtils.isLockScreenDisabled()) {
                 mQuickUnlockScreen.setEnabled(false);
                 mMenuUnlock.setEnabled(false);
+                mVibratePref.setEnabled(false);
         }
 
         //Disable the MenuUnlock setting if no menu button is available
@@ -397,6 +403,10 @@ public class ScreenSecurity extends SettingsPreferenceFragment implements
             value = mMenuUnlock.isChecked();
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.MENU_UNLOCK_SCREEN, value ? 1 : 0);
+        }  else if (preference == mVibratePref) {
+            value = mVibratePref.isChecked();
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.LOCKSCREEN_VIBRATE_ENABLED, value ? 1 : 0);
         } else {
             // If we didn't handle it, let preferences handle it.
             return super.onPreferenceTreeClick(preferenceScreen, preference);
