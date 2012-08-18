@@ -17,6 +17,14 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/themes_settings_title" >
 
+     <PreferenceScreen
+         android:key="screen_security"
+         android:fragment="com.android.settings.SecuritySettings"
+         android:title="@string/screen_security_category"
+         android:summary="@string/screen_security_summary">
+         <extra android:name="cm_security" android:value="true" />
+     </PreferenceScreen>
+
      <Preference
         android:fragment="com.android.settings.cyanogenmod.LockscreenTargets"
         android:key="lockscreen_targets"
