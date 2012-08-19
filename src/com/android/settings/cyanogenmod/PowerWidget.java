@@ -30,6 +30,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.net.wimax.WimaxHelper;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
@@ -231,11 +232,10 @@ public class PowerWidget extends SettingsPreferenceFragment implements
                     .getCurrentButtons(getActivity().getApplicationContext()));
 
             // Don't show WiMAX option if not supported
-            /*
-             * boolean isWimaxEnabled = WimaxHelper.isWimaxSupported(this); if
-             * (!isWimaxEnabled) {
-             * PowerWidgetUtil.BUTTONS.remove(PowerWidgetUtil.BUTTON_WIMAX); }
-             */
+            boolean isWimaxEnabled = WimaxHelper.isWimaxSupported(getActivity());
+            if (!isWimaxEnabled) {
+                PowerWidgetUtil.BUTTONS.remove(PowerWidgetUtil.BUTTON_WIMAX);
+            }
 
             // fill that checkbox map!
             for (PowerWidgetUtil.ButtonInfo button : PowerWidgetUtil.BUTTONS.values()) {
@@ -290,10 +290,6 @@ public class PowerWidget extends SettingsPreferenceFragment implements
                             break;
                     }
                 }
-                /*
-                 * else if (PowerWidgetUtil.BUTTON_WIMAX.equals(button.getId()))
-                 * { if (!isWimaxEnabled) { cb.setEnabled(false); } }
-                 */
 
                 // add to the category
                 prefButtons.addPreference(cb);
