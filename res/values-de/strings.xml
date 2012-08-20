@@ -1846,6 +1846,28 @@
     <string name="navigation_bar_save_message">Die Einstellungen der Navigationsleiste wurden gespeichert</string>
     <string name="navigation_bar_reset_toast">Die Vorgaben der Navigationsleiste wurden wiederhergestellt</string>
 
+    <!-- Hardware keys -->
+    <string name="hardware_keys_title">Hardware-Tasten</string>
+    <string name="hardware_keys_bindings_title">Tastenaktionen</string>
+    <string name="hardware_keys_enable_custom_title">Benutzerdefinierte Aktionen aktivieren</string>
+    <string name="hardware_keys_home_long_press_title">Home (gedrückt halten)</string>
+    <string name="hardware_keys_menu_press_title">Menü</string>
+    <string name="hardware_keys_menu_long_press_title">Menü (gedrückt halten)</string>
+    <string name="hardware_keys_assist_press_title">Suche</string>
+    <string name="hardware_keys_assist_long_press_title">Suche (gedrückt halten)</string>
+    <string name="hardware_keys_app_switch_press_title">Letze Apps</string>
+    <string name="hardware_keys_app_switch_long_press_title">Letze Apps (gedrückt halten)</string>
+    <string name="hardware_keys_show_overflow_title">Zeige In-App Menü-Taste</string>
+    <string name="hardware_keys_show_overflow_summary">Die virtuelle Menü-Taste dauerhaft innerhalb von Apps anzeigen</string>
+    <string name="hardware_keys_show_overflow_toast_enable">Die virtuelle Menü-Taste wird vermutlich erst nach einem Neustart der App sichtbar.</string>
+    <string name="hardware_keys_show_overflow_toast_disable">Die virtuelle Menü-Taste wird vermutlich erst nach einem Neustart der App unsichtbar.</string>
+    <string name="hardware_keys_action_nothing">Keine Aktion</string>
+    <string name="hardware_keys_action_menu">Öffne/Schließe Menü</string>
+    <string name="hardware_keys_action_app_switch">Letzte Apps</string>
+    <string name="hardware_keys_action_search">Suchassistent</string>
+    <string name="hardware_keys_action_voice_search">Sprachsuche</string>
+    <string name="hardware_keys_action_in_app_search">In-App Suche</string>
+
     <!-- Power Widget -->
     <string name="power_widget_title">Energie-Widget</string>
     <string name="title_expanded_widget">Benachr.-Energiesteuerung</string>
@@ -1985,12 +2007,22 @@
     <string name="lockscreen_background_custom_image">Benutzerdefiniertes Bild</string>
     <string name="lockscreen_background_default_wallpaper">Standardbild</string>
 
+    <!-- Lock screen vibrate settings -->
+    <string name="lockscreen_vibrate_enabled_title">Vibrieren</string>
+    <string name="lockscreen_vibrate_enabled_head">Beim Entsperren vibrieren</string>
+
+    <!-- Lock screen battery status settings -->
+    <string name="lockscreen_battery_status_title">Batteriestatus anzeigen</string>
+    <string name="lockscreen_battery_status_charging">Nur beim Laden</string>
+    <string name="lockscreen_battery_status_alwayson">Immer</string>
+
     <!-- Profiles settings -->
     <string name="profiles_settings_title">Profile</string>
     <string name="profiles_general_title">Allgemein</string>
     <string name="profiles_add">Hinzufügen</string>
     <string name="profile_menu_delete">Löschen</string>
     <string name="profile_settings_title">Profil</string>
+    <string name="profile_empty_list_profiles_off">Profile einschalten, um sie konfigurieren und nutzen zu können.</string>
 
     <!-- Add Profile -->
     <string name="add_profile_dialog_title">Neues Profil anlegen</string>
@@ -2108,7 +2140,7 @@
     <string name="screen_security_summary">Einstellungen zur Sicherheitssperre, Timeouts und Abschaltverzögerungen anzeigen und ändern.</string>
     <string name="additional_options_title">Weitere Optionen</string>
     <string name="unlock_menu_unlock_title">Mit Menü entsperren</string>
-    <string name="unlock_menu_unlock_summary">Entsperren des Gerätes durch Drücken der Menütaste</string>
+    <string name="unlock_menu_unlock_summary">Entsperren des Geräts durch Drücken der Menütaste</string>
     <string name="unlock_quick_unlock_control_title">Schnelles Entsperren</string>
     <string name="unlock_quick_unlock_control_summary">Entsperrt, sobald PIN oder Passwort korrekt eingegeben wurden.</string>
 
@@ -2151,7 +2183,6 @@
     <string name="cpu_max_freq_summary">%s</string>
     <string name="cpu_set_on_boot">Beim Booten einstellen</string>
     <string name="cpu_set_on_boot_summary">Prozessoreinstellungen beim Bootvorgang wiederherstellen</string>
-
 
     <!-- Memory Management -->
     <string name="memory_management_title">Speicherverwaltung</string>
@@ -2214,6 +2245,7 @@ ing system updates. -->
     <string name="display_rotation_enabled">Aktiviert:</string>
     <string name="display_rotation_disabled">Deaktiviert</string>
     <string name="display_rotation_unit">Grad</string>
+    <string name="display_lockscreen_rotation_title">Für Sperrbildschirm übernehmen</string>
     <string name="display_rotation_category_title">Bildschirmausrichtung bei Drehung um</string>
     <string name="display_rotation_0_title">0 Grad</string>
     <string name="display_rotation_90_title">90 Grad</string>
@@ -2229,7 +2261,7 @@ ing system updates. -->
     <string name="icon_picker_browser">Browser</string>
     <string name="icon_picker_calendar">Kalender</string>
     <string name="icon_picker_camera">Kamera</string>
-   <string name="icon_picker_chrome">Chrome</string>
+    <string name="icon_picker_chrome">Chrome</string>
     <string name="icon_picker_email">Email</string>
     <string name="icon_picker_facebook">Facebook</string>
     <string name="icon_picker_gallery">Galerie</string>
@@ -2334,6 +2366,28 @@ ice shows the slider widgets before the unlock option [CHAR LIMIT=28]-->
     <!-- Kill app long-press back  -->
     <string name="kill_app_longpress_back">App beenden</string>
     <string name="kill_app_longpress_back_summary">Gedrückt halten der Zurück-Taste beendet die Anwendung im Vordergrund.</string>
+
+    <!-- Launches Dev Tools -->
+    <string name="development_tools_title">Dev-Werkzeuge starten</string>
+
+    <!-- Power menu screenshot -->
+    <string name="power_menu_title">Ausschalten</string>
+    <string name="power_menu_reboot_title">Reboot-Menü</string>
+    <string name="power_menu_screenshot_title">Bildschirmfoto</string>
+    <string name="power_menu_profiles_title">Profilwechsel</string>
+
+    <!-- Setting checkbox title for root access -->
+    <string name="root_access">Root-Zugriff</string>
+    <string name="root_access_warning_title">Root-Zugriff erlauben?</string>
+    <string name="root_access_warning_message">Apps den Root-Zugriff zu ermöglichen kann gefährlich sein und die Sicherheit deines Geräts beeinträchtigen!</string>
+    <string name="root_access_none">Ausgeschaltet</string>
+    <string name="root_access_apps">Nur Apps</string>
+    <string name="root_access_adb">Nur ADB</string>
+    <string name="root_access_all">Apps und ADB</string>
+
+    <!-- USB-Debugging info -->
+    <string name="adb_notify">USB-Debugging Info</string>
+    <string name="adb_notify_summary">Eine Benachrichtigung zeigen, wenn USB-Debugging verbunden ist.</string>
 
     <!-- Hostname setting -->
     <string name="device_hostname">Hostname des Geräts</string>
