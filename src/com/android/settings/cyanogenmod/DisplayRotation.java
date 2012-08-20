@@ -16,21 +16,16 @@
 
 package com.android.settings.cyanogenmod;
 
-import android.content.Context;
 import android.database.ContentObserver;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.RemoteException;
-import android.os.ServiceManager;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
-import android.util.Log;
-import android.view.IWindowManager;
-import android.view.Surface;
 
+import com.android.internal.view.RotationPolicy;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
@@ -118,9 +113,7 @@ public class DisplayRotation extends SettingsPreferenceFragment implements OnPre
     }
 
     private void updateAccelerometerRotationCheckbox() {
-        mAccelerometer.setChecked(Settings.System.getInt(
-                getContentResolver(),
-                Settings.System.ACCELEROMETER_ROTATION, 0) != 0);
+        mAccelerometer.setChecked(!RotationPolicy.isRotationLocked(getActivity()));
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -131,17 +124,7 @@ public class DisplayRotation extends SettingsPreferenceFragment implements OnPre
         boolean value;
 
         if (preference == mAccelerometer) {
-            try {
-                IWindowManager wm = IWindowManager.Stub.asInterface(
-                        ServiceManager.getService(Context.WINDOW_SERVICE));
-                if (mAccelerometer.isChecked()) {
-                    wm.thawRotation();
-                } else {
-                    wm.freezeRotation(Surface.ROTATION_0);
-                }
-            } catch (RemoteException exc) {
-                Log.w(TAG, "Unable to save auto-rotate setting");
-            }
+            RotationPolicy.setRotationLockForAccessibility(getActivity(), !mAccelerometer.isChecked());
         } else if (preference == mRotation0Pref ||
                 preference == mRotation90Pref ||
                 preference == mRotation180Pref ||
