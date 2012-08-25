@@ -34,6 +34,7 @@ public class BootReceiver extends BroadcastReceiver {
     private static final String TAG = "BootReceiver";
 
     private static final String CPU_SETTINGS_PROP = "sys.cpufreq.restored";
+    private static final String IOSCHED_SETTINGS_PROP = "sys.iosched.restored";
     private static final String KSM_SETTINGS_PROP = "sys.ksm.restored";
 
     @Override
@@ -44,6 +45,14 @@ public class BootReceiver extends BroadcastReceiver {
             configureCPU(ctx);
         } else {
             SystemProperties.set(CPU_SETTINGS_PROP, "false");
+        }
+
+        if (SystemProperties.getBoolean(IOSCHED_SETTINGS_PROP, false) == false
+                && intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
+            SystemProperties.set(IOSCHED_SETTINGS_PROP, "true");
+            configureIOSched(ctx);
+        } else {
+            SystemProperties.set(IOSCHED_SETTINGS_PROP, "false");
         }
 
         if (Utils.fileExists(MemoryManagement.KSM_RUN_FILE)) {
@@ -94,6 +103,32 @@ public class BootReceiver extends BroadcastReceiver {
                 Utils.fileWriteOneLine(Processor.FREQ_MIN_FILE, minFrequency);
             }
             Log.d(TAG, "CPU settings restored.");
+        }
+    }
+
+    private void configureIOSched(Context ctx) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
+
+        if (prefs.getBoolean(IOScheduler.SOB_PREF, false) == false) {
+            Log.i(TAG, "Restore disabled by user preference.");
+            return;
+        }
+
+        String ioscheduler = prefs.getString(IOScheduler.IOSCHED_PREF, null);
+        String availableIOSchedulersLine = Utils.fileReadOneLine(IOScheduler.IOSCHED_LIST_FILE);
+        boolean noSettings = ((availableIOSchedulersLine == null) || (ioscheduler == null));
+        List<String> ioschedulers = null;
+
+        if (noSettings) {
+            Log.d(TAG, "No I/O scheduler settings saved. Nothing to restore.");
+        } else {
+            if (availableIOSchedulersLine != null){
+                ioschedulers = Arrays.asList(availableIOSchedulersLine.replace("[", "").replace("]", "").split(" "));
+            }
+            if (ioscheduler != null && ioschedulers != null && ioschedulers.contains(ioscheduler)) {
+                Utils.fileWriteOneLine(IOScheduler.IOSCHED_LIST_FILE, ioscheduler);
+            }
+            Log.d(TAG, "I/O scheduler settings restored.");
         }
     }
 
