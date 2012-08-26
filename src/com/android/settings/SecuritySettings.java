@@ -126,7 +126,11 @@ public class SecuritySettings extends SettingsPreferenceFragment
         addPreferencesFromResource(R.xml.security_settings);
         root = getPreferenceScreen();
 
-        boolean isStockSecurity = getArguments().getBoolean("stock_security");
+        boolean isCmSecurity = false;
+        Bundle args = getArguments();
+        if (args != null) {
+            isCmSecurity = args.getBoolean("cm_security");
+        }
         ContentResolver resolver = getActivity().getApplicationContext().getContentResolver();
 
         // Add options for lock/unlock screen
@@ -162,7 +166,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
         DevicePolicyManager dpm =
                 (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
 
-        if (UserId.myUserId() == 0 && isStockSecurity) {
+        if (UserId.myUserId() == 0 && !isCmSecurity) {
             switch (dpm.getStorageEncryptionStatus()) {
             case DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE:
                 // The device is currently encrypted.
@@ -180,7 +184,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
         if (mLockAfter != null) {
             setupLockAfterPreference();
             updateLockAfterPreferenceSummary();
-        } else if (!mLockPatternUtils.isLockScreenDisabled() && !isStockSecurity) {
+        } else if (!mLockPatternUtils.isLockScreenDisabled() && isCmSecurity) {
             addPreferencesFromResource(R.xml.security_settings_slide_delay_cyanogenmod);
 
             mSlideLockDelayToggle = (CheckBoxPreference) root
@@ -205,7 +209,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
             mSlideLockScreenOffDelay.setOnPreferenceChangeListener(this);
         }
 
-        if (!isStockSecurity) {
+        if (isCmSecurity) {
             // visible pattern
             mVisiblePattern = (CheckBoxPreference) root.findPreference(KEY_VISIBLE_PATTERN);
 
@@ -293,7 +297,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
         }
         // Rest are for primary user...
 
-        if (isStockSecurity) {
+        if (!isCmSecurity) {
             // Append the rest of the settings
             addPreferencesFromResource(R.xml.security_settings_misc);
 
