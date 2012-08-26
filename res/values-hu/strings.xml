@@ -714,6 +714,7 @@
     <string name="system_update_settings_list_item_summary" msgid="3853057315907710747"></string>
     <string name="firmware_version" msgid="4801135784886859972">"Android verziója"</string>
     <string name="model_number" msgid="3765737700545384794">"Modellszám"</string>
+    <string name="fcc_equipment_id">Eszköz azonosító</string>
     <string name="baseband_version" msgid="1848990160763524801">"Alapsáv verziója"</string>
     <string name="kernel_version" msgid="9192574954196167602">"Kernel verziója"</string>
     <string name="build_number" msgid="3075795840572241758">"Build-szám"</string>
@@ -909,6 +910,11 @@
     <string name="assisted_gps_disabled" msgid="6982698333968010748">"Szerver használata a GPS mellett (a GPS teljesítményének növeléséhez ne jelölje be)"</string>
     <string name="use_location_title" msgid="5206937465504979977">"Hely és Google-keresés"</string>
     <string name="use_location_summary" msgid="3978805802386162520">"Engedélyezze, hogy a Google felhasználja helyadatait a jobb keresési eredményekhez és egyebekhez."</string>
+    <!-- GPS Source selection -->
+    <string name="location_gps_source_title">GPS forrása</string>
+    <string name="location_gps_source_summary">Válassza ki, hogy a külső (ha csatlakoztatva van), vagy a belső GPS eszközt szeretné használni</string>
+    <string name="location_gps_source_notification_title">Figyelem</string>
+    <string name="location_gps_source_notification">A GPS forrása meg lett változtatva! A GPS kikapcsolásra kerül. Használat előtt kapcsolja be újra!</string>
     <string name="about_settings" product="tablet" msgid="593457295516533765">"A táblagépről"</string>
     <string name="about_settings" product="default" msgid="1743378368185371685">"A telefonról"</string>
     <string name="about_settings_summary" msgid="3371517697156165959">"Jogi információk, állapot, szoftververzió megtekintése"</string>
@@ -956,6 +962,8 @@
     <string name="lockpattern_settings_enable_title" msgid="6920616873671115281">"Minta kérése"</string>
     <string name="lockpattern_settings_enable_summary" msgid="1165707416664252167">"Mintát kell rajzolni a képernyőzár feloldásához"</string>
     <string name="lockpattern_settings_enable_visible_pattern_title" msgid="2615606088906120711">"Minta láthatóvá tétele"</string>
+    <string name="lockpattern_settings_enable_error_path_title">Hibás minta megjelenítése</string>
+    <string name="lockpattern_settings_enable_dots_title">Feloldási pontok megjelenítése</string>
     <string name="lockpattern_settings_enable_tactile_feedback_title" msgid="8898518337442601027">"Érintéskor rezegjen"</string>
     <string name="lockpattern_settings_enable_power_button_instantly_locks" msgid="5735444062633666327">"Bekapcsoló gomb azonnal zár"</string>
     <string name="lockpattern_settings_choose_lock_pattern" msgid="1652352830005653447">"Feloldási minta beállítása"</string>
@@ -1362,6 +1370,8 @@
     <string name="tts_default_lang_summary" msgid="5219362163902707785">"Beállítja a beszélt szöveg nyelvspecifikus hangját"</string>
     <string name="tts_play_example_title" msgid="7094780383253097230">"Példa meghallgatása"</string>
     <string name="tts_play_example_summary" msgid="8029071615047894486">"Rövid demonstráció megtekintése a beszédszintézisről"</string>
+    <string name="tts_play_example_not_found_title">Figyelem</string>
+    <string name="tts_play_example_not_found_msg">A minta szöveg nem található a kért nyelven</string>
     <string name="tts_install_data_title" msgid="4264378440508149986">"Hangadatok telepítése"</string>
     <string name="tts_install_data_summary" msgid="5742135732511822589">"A beszédszintetizáláshoz szükséges hangadatok telepítése"</string>
     <string name="tts_data_installed_summary" msgid="9162111552859972809">"A beszédszintézishez szükséges hangok már megfelelően telepítve vannak"</string>
@@ -1715,6 +1725,14 @@
 
     <!-- CYANOGENMOD EDITS START -->
 
+    <!-- Wifi sleep timeout -->
+    <string name="wifi_idle_mn_title">Wi-Fi tétlenségi idő</string>
+    <string name="wifi_idle_5mn">5 perc</string>
+    <string name="wifi_idle_15mn">15 perc (alapbeállítás)</string>
+    <string name="wifi_idle_30mn">30 perc</string>
+    <string name="wifi_idle_1h">1 óra</string>
+    <string name="wifi_idle_3h">3 óra</string>
+
     <!-- Quiet hours -->
     <string name="quiet_hours_title">Csendes órák</string>
     <string name="quiet_hours_summary">Csendes órák beállításai</string>
@@ -2036,11 +2054,14 @@
     <string name="lockscreen_background_custom_image">Háttérkép kiválasztása</string>
     <string name="lockscreen_background_default_wallpaper">Alapértelmezett háttérkép</string>
 
+    <!-- Lock screen vibrate settings -->
+    <string name="lockscreen_vibrate_enabled_title">Rezgés</string>
+    <string name="lockscreen_vibrate_enabled_head">Rezgés feloldáskor</string>
+
     <!-- Lock screen misc. settings -->
     <string name="lockscreen_battery_status_title">Akkumulátor állapot</string>
     <string name="lockscreen_battery_status_charging">Csak töltéskor</string>
     <string name="lockscreen_battery_status_alwayson">Mindig</string>
-
 
     <!-- Profiles settings  -->
     <string name="profiles_settings_title">Profilok</string>
@@ -2275,6 +2296,7 @@
     <string name="display_rotation_enabled">Engedélyezve</string>
     <string name="display_rotation_disabled">Letiltva</string>
     <string name="display_rotation_unit">fok</string>
+    <string name="display_lockscreen_rotation_title">Képernyőzár elforgatása</string>
     <string name="display_rotation_category_title">Forgatás módok</string>
     <string name="display_rotation_0_title">0 fok</string>
     <string name="display_rotation_90_title">90 fok</string>
@@ -2428,7 +2450,13 @@
     <string name="stylus_icon_enabled_summary">Mutató mutatása rajzoláskor stylus használata esetén</string>
 
     <!-- Power menu screenshot -->
-    <string name="power_menu_screenshot_title">Képernyőmentés a kikapcs. menüben</string>
+    <string name="power_menu_title">Kikapcsoló menü</string>
+    <string name="power_menu_reboot_title">Újraindítás</string>
+    <string name="power_menu_screenshot_title">Képernyőmentés</string>
+    <string name="power_menu_profiles_title">Profil választó</string>
+
+    <!-- Launches Dev Tools -->
+    <string name="development_tools_title">Fejlesztői eszközök</string>
 
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 
