@@ -21,7 +21,9 @@
          android:key="screen_security"
          android:fragment="com.android.settings.SecuritySettings"
          android:title="@string/screen_security_category"
-         android:summary="@string/screen_security_summary" />
+         android:summary="@string/screen_security_summary">
+         <extra android:name="cm_security" android:value="true" />
+     </PreferenceScreen>
 
      <ListPreference
         android:key="lockscreen_background"
