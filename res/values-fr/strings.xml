@@ -804,6 +804,7 @@
 
     <!-- Power Widget #CM -->
     <string name="power_widget_title">Gestion de l\'alimentation</string>
+    <string name="power_widget_behavior">Comportement du widget</string>
     <string name="title_expanded_widget">Afficher le widget</string>
     <string name="title_expanded_hide_onchange">Cacher après changement</string>
     <string name="title_expanded_hide_indicator">Cacher les indicateurs</string>
@@ -813,16 +814,17 @@
     <string name="title_widget_order">Ordre des boutons</string>
     <string name="summary_widget_order">Modifier l\'ordre des boutons présents sur le widget</string>
     <string name="title_buttons">Boutons</string>
-    <string name="title_toggle_wifi">Wifi</string>
+    <string name="title_toggle_wifi">Wi-Fi</string>
     <string name="title_toggle_bluetooth">Bluetooth</string>
     <string name="title_toggle_gps">GPS</string>
     <string name="title_toggle_sound">Son</string>
     <string name="title_toggle_brightness">Luminosité</string>
     <string name="title_toggle_sync">Sync. données</string>
-    <string name="title_toggle_wifiap">Partage Wifi</string>
+    <string name="title_toggle_wifiap">Partage Wi-Fi</string>
     <string name="title_toggle_screentimeout">Timeout écran</string>
     <string name="title_toggle_mobiledata">Données mobile</string>
     <string name="title_toggle_lockscreen">Verrouillage</string>
+    <string name="title_toggle_lte">LTE</string>
     <string name="title_toggle_networkmode">Réseau mobile</string>
     <string name="title_toggle_autorotate">Orientation</string>
     <string name="title_toggle_airplane">Mode avion</string>
@@ -844,7 +846,7 @@
     <string name="cm_sound_mode_silent">Silencieux</string>
     <string name="cm_sound_mode_vibrate">Vibreur</string>
     <string name="cm_sound_mode_sound">Son</string>
-    <string name="cm_sound_mode_soundVibrate">Son+Vibreur</string>
+    <string name="cm_sound_mode_soundVibrate">Son et Vibreur</string>
     <string name="pref_flash_mode_title">Torche</string>
 
     <!-- Status bar #CM -->
@@ -854,6 +856,7 @@
     <string name="status_bar_show_clock_title">Afficher l\'heure</string>
     <string name="status_bar_show_clock_summary">Afficher l\'heure dans la barre d\'état</string>
     <string name="status_bar_am_pm_title">Indicateur AM/PM</string>
+    <string name="status_bar_am_pm_info">Horloge 24 heures activée</string>
     <string name="status_bar_am_pm_summary">Affiche l\'indicateur AM/PM à côté de l\'heure</string>
     <string name="status_bar_battery_title">Batterie</string>
     <string name="status_bar_battery_summary">Style de l\'indicateur de niveau de charge</string>
@@ -983,26 +986,18 @@
     <string name="profiles_add">Ajouter</string>
     <string name="profile_menu_delete">Supprimer</string>
     <string name="profile_settings_title">Profil</string>
-
-    <!-- Add Profile -->
     <string name="add_profile_dialog_title">Créer nouveau profil</string>
     <string name="profile_name_title">Nom du profil</string>
     <string name="profile_profile_name_prompt">Entrer le nom du profil</string>
     <string name="menu_new_profile">Nouveau profil</string>
     <string name="menu_new_profile_summary">Ajouter et configurer un nouveau profil</string>
     <string name="new_profile_name">&lt;nouveau profil&gt;</string>
-
-    <!-- Rename Profile Dialog  -->
     <string name="rename_dialog_title">Renommer</string>
     <string name="rename_dialog_message">Saisir un nouveau nom</string>
     <string name="duplicate_appgroup_name">Ce groupe existe déjà !</string>
     <string name="duplicate_profile_name">Ce profil existe déjà !</string>
-
-    <!-- Reset Profiles -->
     <string name="profile_reset_title">Reset</string>
     <string name="profile_reset_message">Etes-vous certain de vouloir supprimer tous les profils et groupes d\'applications ?</string>
-
-    <!-- Delete confimation messages -->
     <string name="profile_delete_confirm">Supprimer ce profil ?</string>
     <string name="profile_app_delete_confirm">Supprimer cette application ?</string>
     <string name="profile_cannot_delete">Vous ne pouvez pas supprimer le profil actif</string>
@@ -1010,6 +1005,10 @@
     <!-- Profile Config screen PreferenceGroup titles -->
     <string name="profile_connectionoverrides_title">Connexions</string>
     <string name="profile_volumeoverrides_title">Volume perso.</string>
+    <string name="profile_vibratoroverrides_title">Vibreur</string>
+    <string name="vibrator_state_disabled">Désactivé</string>
+    <string name="vibrator_state_enabled">Actif</string>
+    <string name="vibrator_state_silent">Uniquement si silencieux</string>
     <string name="connection_state_disabled">Inactif</string>
     <string name="connection_state_enabled">Actif</string>
     <string name="volume_override_summary">Actuel</string>
@@ -1078,7 +1077,25 @@
     <string name="profile_lockmode_insecure_summary">Ecran de verrouillage non sécurisé</string>
     <string name="profile_lockmode_disabled_summary">Ecran de verrouillage désactivé</string>
 
+    <string name="profile_airplanemode_title">Mode avion</string>
+    <string name="profile_airplanemode_default">Défaut</string>
+    <string name="profile_airplanemode_enabled">Actif</string>
+    <string name="profile_airplanemode_disabled">Désactivé</string>
+    <string name="profile_airplanemode_default_summary">Paramètres génériques</string>
+    <string name="profile_airplanemode_enabled_summary">Mode avion actif</string>
+    <string name="profile_airplanemode_disabled_summary">Mode avion désactivé</string>
     <string name="profile_disable_screen_lock_summary">Désactive l\'écran de verrouillage lorsque ce profil est actif</string>
+
+    <!-- NFC... need help to translate that -->
+    <string name="profile_write_nfc_tag">Write to NFC tag</string>
+    <string name="profile_write_touch_tag">Toucher le tag pour écrire</string>
+    <string name="profile_write_success">Tag écrit avec succès</string>
+    <string name="profile_write_failed">Impossible d\'écrire le Tag !</string>
+    <string name="profile_selected">Profil sélectionné: %1$s</string>
+    <string name="profile_nfc_text">Writing a profile to a NFC tag allows for tapping the tag to select the profile. Tapping a second time will select the previously selected profile.</string>
+    <string name="profile_unknown_nfc_tag">Profil inconnu</string>
+    <string name="profile_add_nfc_text">Ce tag NFC ne se réfère à aucun profil. Liez ce tag à un profil existant permettra de sélectionner ce profil à l\'avenir.</string>
+    <string name="profile_select">Choix du profil</string>
 
     <!-- Connection override toggles (not all are used at this time ) -->
     <string name="possibleButtons">Boutons disponibles</string>
@@ -1108,6 +1125,7 @@
     <string name="unlock_menu_unlock_summary">Déverrouillage de l\'écran en appuyant sur le bouton Menu</string>
     <string name="unlock_quick_unlock_control_title">Déverrouillage rapide</string>
     <string name="unlock_quick_unlock_control_summary">Evite d\'appuyer sur OK lors de la saisie du code PIN ou du mot de passe.\nAttention : effacer compte comme un essai raté !</string>
+    <string name="lockpattern_settings_enable_lock_before_unlock">Afficher les widgets avant le déverrouillage</string>
 
     <!-- Delays and timeouts -->
     <string name="delay_and_timeout_title">Délai de verrouillage</string>
@@ -1115,6 +1133,7 @@
     <string name="slide_lock_delay_title">Modifier les délais</string>
     <string name="slide_lock_timeout_delay_title">Timeout écran</string>
     <string name="slide_lock_screenoff_delay_title">Extinction manuelle</string>
+    <string name="slide_lock_delay_none">Immédiatement</string>
 
     <!-- Location Services -->
     <string name="location_gps_source_title">Source GPS</string>
