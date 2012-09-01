@@ -713,7 +713,7 @@
     <string name="model_number" msgid="3765737700545384794">"Modelnummer"</string>
     <string name="baseband_version" msgid="1848990160763524801">"Basebandversion"</string>
     <string name="kernel_version" msgid="9192574954196167602">"Kernesystem"</string>
-    <string name="build_number" msgid="3075795840572241758">"Versionnummer"</string>
+    <string name="build_number" msgid="3075795840572241758">"Versionsnummer"</string>
     <string name="device_info_not_available" msgid="8062521887156825182">"Ikke tilgængelig"</string>
     <string name="device_status_activity_title" msgid="1411201799384697904">"Status"</string>
     <string name="device_status" msgid="607405385799807324">"Status"</string>
@@ -1697,7 +1697,15 @@
     <string name="cell_broadcast_settings" msgid="8415582011920085222">"Mobilmeddelelser"</string>
     <string name="cell_broadcast_settings_summary" msgid="3301339398950905913">"Vælg de typer af nødalarmer, der skal vises."</string>
 
-    <!-- CYANOGENMOD EDITS START -->
+    <!-- **** CYANOGENMOD ADDITIONS START **** -->
+
+    <!-- Wifi sleep timeout -->
+    <string name="wifi_idle_mn_title">Wi-Fi timeout efter inaktivitet</string>
+    <string name="wifi_idle_5mn">5 minutter</string>
+    <string name="wifi_idle_15mn">15 minutter (standard)</string>
+    <string name="wifi_idle_30mn">30 minutter</string>
+    <string name="wifi_idle_1h">1 time</string>
+    <string name="wifi_idle_3h">3 timer</string>
 
     <!-- Quiet hours -->
     <string name="quiet_hours_title">Stille timer</string>
@@ -1853,6 +1861,28 @@
     <string name="navigation_bar_save_message">Indstillinger for navigationsbjælken er gemt</string>
     <string name="navigation_bar_reset_toast">Indstillinger for navigationsbjælken er gendannet</string>
 
+    <!-- Hardware keys -->
+    <string name="hardware_keys_title">Hardwareknapper</string>
+    <string name="hardware_keys_bindings_title">Knap-handlinger</string>
+    <string name="hardware_keys_enable_custom_title">Aktiver brugerdefinerede handlinger</string>
+    <string name="hardware_keys_home_long_press_title">Start (langt tryk)</string>
+    <string name="hardware_keys_menu_press_title">Menu</string>
+    <string name="hardware_keys_menu_long_press_title">Menu (langt tryk)</string>
+    <string name="hardware_keys_assist_press_title">Søg</string>
+    <string name="hardware_keys_assist_long_press_title">Søg (langt tryk)</string>
+    <string name="hardware_keys_app_switch_press_title">App-skifter</string>
+    <string name="hardware_keys_app_switch_long_press_title">App-skifter (langt tryk)</string>
+    <string name="hardware_keys_show_overflow_title">Vis handlingsknap</string>
+    <string name="hardware_keys_show_overflow_summary">Få vist en 3-punkts handlingsknap i apps</string>
+    <string name="hardware_keys_show_overflow_toast_enable">Handlingsknappen er muligvis ikke synlig indtil apps genstartes</string>
+    <string name="hardware_keys_show_overflow_toast_disable">Handlingsknappen er muligvis ikke skjult indtil apps genstartes</string>
+    <string name="hardware_keys_action_nothing">Ingen handling</string>
+    <string name="hardware_keys_action_menu">Åbn/luk menu</string>
+    <string name="hardware_keys_action_app_switch">Seneste apps</string>
+    <string name="hardware_keys_action_search">Søgeassistent</string>
+    <string name="hardware_keys_action_voice_search">Stemmesøgning</string>
+    <string name="hardware_keys_action_in_app_search">Søgning i app</string>
+
     <!-- Power Widget  -->
     <string name="power_widget_title">Strøm widget</string>
     <string name="title_expanded_widget">Strøm widget</string>
@@ -1917,8 +1947,14 @@
     <string name="status_bar_signal_text_show_text">Tekst</string>
     <string name="status_bar_signal_text_hidden">Skjult</string>
 
-    <!-- Lock Screen Shortcuts -->
+    <!-- Security & location settings screen - Setting check box title   -->
+    <string name="lockpattern_settings_enable_error_path_title">Vis mønster fejl</string>
+    <string name="lockpattern_settings_enable_dots_title">Vis mønster punkter</string>
+
+    <!-- Lock Screen -->
     <string name="lock_screen_title">Skærmlås</string>
+
+    <!-- Lock Screen Shortcuts -->
     <string name="lockscreen_target_info">Træk glideren hen til målet for at tildele en genvej</string>
     <string name="lockscreen_target_title">Genveje</string>
     <string name="lockscreen_target_summary">Se eller ændre egne genveje for skærmlåsen</string>
@@ -1995,12 +2031,22 @@
     <string name="lockscreen_background_custom_image">Eget billede</string>
     <string name="lockscreen_background_default_wallpaper">Standard baggrund</string>
 
+    <!-- Lock screen vibrate settings -->
+    <string name="lockscreen_vibrate_enabled_title">Vibrer</string>
+    <string name="lockscreen_vibrate_enabled_head">Vibrer ved oplåsning</string>
+
+    <!-- Lock screen misc. settings -->
+    <string name="lockscreen_battery_status_title">Batteristatus</string>
+    <string name="lockscreen_battery_status_charging">Kun under opladning</string>
+    <string name="lockscreen_battery_status_alwayson">Altid til</string>
+
     <!-- Profiles settings  -->
     <string name="profiles_settings_title">Profiler</string>
     <string name="profiles_general_title">Generelt</string>
     <string name="profiles_add">Tilføj</string>
     <string name="profile_menu_delete">Slet</string>
     <string name="profile_settings_title">Profil</string>
+    <string name="profile_empty_list_profiles_off">For at konfigurere og bruge System profiler, skal du slå Profiler til.</string>
 
     <!-- Add Profile -->
     <string name="add_profile_dialog_title">Opret ny profil</string>
@@ -2011,7 +2057,7 @@
     <string name="new_profile_name">&lt;ny profil&gt;</string>
 
     <!-- Rename Dialog  -->
-    <string name="rename_dialog_title">Ombøb</string>
+    <string name="rename_dialog_title">Omdøb</string>
     <string name="rename_dialog_message">Angiv et nyt navn</string>
     <string name="duplicate_profile_name">Dupliker profil navn!</string>
     <string name="duplicate_appgroup_name">Dupliker app-gruppenavn!</string>
@@ -2162,6 +2208,17 @@
     <string name="cpu_set_on_boot">Indstil ved opstart</string>
     <string name="cpu_set_on_boot_summary">Gendan CPU-indstillinger ved opstart</string>
 
+    <!-- Performance Settings : I/O scheduler settings title -->
+    <string name="io_scheds_title">I/O-planlægger</string>
+    <!-- Performance Settings : I/O scheduler settings summary. -->
+    <string name="io_scheds_summary">Ændre I/O-planlægger</string>
+
+    <!-- Performance Settings : I/O scheduler settings sub items -->
+    <string name="io_sched_title">I/O-planlægger</string>
+    <string name="io_sched_summary">%S</string>
+    <string name="io_sched_set_on_boot">Indstil ved opstart</string>
+    <string name="io_sched_set_on_boot_summary">Gendan indstillinger for I/O-planlægger ved opstart</string>
+
     <!-- Memory Management -->
     <string name="memory_management_title">Hukommelsesstyring</string>
     <string name="memory_management_summary">Tilpas brugen af ​​hukommelse for at ændre systemets ydeevne</string>
@@ -2176,7 +2233,10 @@
     <string name="pref_purgeable_assets_summary">Rensning af bitmap hukommelsesaktiver gør det muligt at frigøre mere RAM når det er nødvendigt (kræver genstart)</string>
 
     <!-- Performance Settings : Dithering -->
-    <string name="pref_use_dithering_title">Overflade dithering</string>
+    <string name="pref_use_dithering_title">Overflade forbedring</string>
+    <string name="dithering_no_dither">Deaktiver flydende gradienter</string>
+    <string name="dithering_color_banding">Løs farveproblemer (standard)</string>
+    <string name="dithering_blur_effect">Løs farveproblemer og sløring</string>
 
     <!-- Performance Settings : 16bpp Alpha -->
     <string name="pref_use_16bpp_alpha_title">16bit gennemsigtighed</string>
@@ -2221,6 +2281,7 @@
     <string name="display_rotation_enabled">Aktiveret</string>
     <string name="display_rotation_disabled">Deaktiveret</string>
     <string name="display_rotation_unit">grader</string>
+    <string name="display_lockscreen_rotation_title">Inkluder skærmlås</string>
     <string name="display_rotation_category_title">Rotationstilstande</string>
     <string name="display_rotation_0_title">0 grader</string>
     <string name="display_rotation_90_title">90 grader</string>
@@ -2238,8 +2299,10 @@
     <string name="icon_picker_camera">Kamera</string>
     <string name="icon_picker_chrome">Chrome</string>
     <string name="icon_picker_email">Email</string>
+    <string name="icon_picker_email2">Email Holo</string>
     <string name="icon_picker_facebook">Facebook</string>
     <string name="icon_picker_gallery">Galleri</string>
+    <string name="icon_picker_google_small">Google (lille)</string>
     <string name="icon_picker_googleplus">Google Plus</string>
     <string name="icon_picker_googletalk">Google Talk</string>
     <string name="icon_picker_maps">Kort</string>
@@ -2301,16 +2364,30 @@
     <string name="profile_select">Vælg profil</string>
 
     <string name="link_volume_ringtones">Forbind ringe- og meddelelseslydstyrke</string>
+    <string name="link_volume_ringtones_toast">Sørg for at ændre din lydstyrke for at genindstille lydstyrken for meddelelser til at passe med lydstyrken for ringetonen.</string>
     <string name="link_volume_mutes">Forbind lydløs ringe- og meddelelseslydstyrke</string>
 
+    <!-- Warning for Adb over Network -->
     <string name="adb_over_network">ADB via netværk</string>
     <string name="adb_over_network_summary">Aktiver TCP/IP fejlfinding på netværksenheder (Wi-Fi, USB-netværk). Denne indstilling nulstilles ved genstart</string>
-
-    <!-- Warning for Adb over Network -->
     <string name="adb_over_network_warning">ADVARSEL: Når ADB via netværk er aktiveret, er din telefon åben for indtrængen på alle de tilsluttede netværk, herunder GSM-data-netværk!\n\nBrug kun denne funktion, når du er tilsluttet til betroede netværk.\n\nØnsker du virkelig at aktivere denne funktion?</string>
+
+    <!-- Setting checkbox summary for displaying USB debugging notification -->
+    <string name="adb_notify">Meddelelse for USB-fejlretning</string>
+    <string name="adb_notify_summary">Vis en meddelelse, når USB-fejlretning er tilsluttet</string>
 
     <!-- Security & location settings screen, setting check box title. This controls whether the device shows the slider widgets before the unlock option [CHAR LIMIT=28]-->
     <string name="lockpattern_settings_enable_lock_before_unlock">Vis widgets før oplåsning</string>
+
+    <!-- GPS Source selection -->
+    <string name="location_gps_source_title">GPS kilde</string>
+    <string name="location_gps_source_summary">Du kan vælge at bruge en ekstern Bluetooth GPS-antenne eller den interne GPS-antenne som lokations udbyder</string>
+    <string name="location_gps_source_notification_title">Advarsel</string>
+    <string name="location_gps_source_notification">GPS kilden er skiftet! GPS vil blive deaktiveret. Genaktiver venligst før brug!</string>
+
+    <!-- Text-To-Speech (TTS) settings -->
+    <string name="tts_play_example_not_found_title">Advarsel</string>
+    <string name="tts_play_example_not_found_msg">En tekststrengsprøve blev ikke fundet for det ønskede sprog</string>
 
     <!-- Electron Beam -->
     <string name="display_category_animation_options_title">Animation</string>
@@ -2355,11 +2432,42 @@
     <string name="cpu_info">CPU</string>
     <!-- About phone screen, Free memory info -->
     <string name="mem_info">Hukommelse</string>
-    <!-- About phone screen, status item label -->
+    <!-- About phone screen, fcc equipment id label-->
+    <string name="fcc_equipment_id">Udstyrs-ID</string>
 
     <!-- Whether to display IME switcher notifcation -->
-    <string name="ime_switcher_notify">Vælgenotifikation</string>
+    <string name="ime_switcher_notify">IME-vælgenotifikation</string>
     <string name="ime_switcher_notify_summary">Vis vælgenotifikation for inputmetode</string>
+
+    <!-- Change Log strings -->
+    <string name="changelog_title">Vis ændringslog</string>
+    <string name="changelog_dialog">Ændringslog</string>
+    <string name="changelog_loading">Indlæser ændringslog...</string>
+    <string name="changelog_error">Kunne ikke indlæse ændringsloggen</string>
+    <string name="changelog_unknown">Ukendt</string>
+    <string name="changelog_version">Version</string>
+
+    <!-- Stylus Icon -->
+    <string name="stylus_icon_enabled_title">Vis ikon ved brug af pen</string>
+    <string name="stylus_icon_enabled_summary">Vis markøren når pennen benyttes</string>
+
+    <!-- Power menu screenshot -->
+    <string name="power_menu_title">Tænd/sluk menu</string>
+    <string name="power_menu_reboot_title">Genstartsmenu</string>
+    <string name="power_menu_screenshot_title">Skærmbillede</string>
+    <string name="power_menu_profiles_title">Profil-skifter</string>
+
+    <!-- Launches Dev Tools -->
+    <string name="development_tools_title">Startværktøjer</string>
+
+    <!-- Setting checkbox title for root access -->
+    <string name="root_access">Root adgang</string>
+    <string name="root_access_warning_title">Tillad root adgang?</string>
+    <string name="root_access_warning_message">At tillade applikationer at anmode om root-adgang er meget farligt og kan kompromittere dit systems sikkerhed!</string>
+    <string name="root_access_none">Deaktiveret</string>
+    <string name="root_access_apps">Kun apps</string>
+    <string name="root_access_adb">Kun ADB</string>
+    <string name="root_access_all">Apps og ADB</string>
 
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>
