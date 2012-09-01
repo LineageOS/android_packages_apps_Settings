@@ -907,6 +907,12 @@
     <string name="assisted_gps_disabled" msgid="6982698333968010748">"Server zur Unterstützung von GPS verwenden (zur Verbesserung der GPS-Leistung deaktivieren)"</string>
     <string name="use_location_title" msgid="5206937465504979977">"Standort &amp; Google-Suche"</string>
     <string name="use_location_summary" msgid="3978805802386162520">"Google darf Suchergebnisse und andere Dienste an meinen Standort anpassen"</string>
+    <!-- GPS Source selection -->
+    <string name="location_gps_source_title">GPS-Quelle</string>
+    <string name="location_gps_source_summary">Gerät für Positionsbestimmung auswählen</string>
+    <string name="location_gps_source_notification_title">Hinweis</string>
+    <string name="location_gps_source_notification">Nach dem Wechsel der GPS-Quelle wurde GPS deaktiviert und muss vor erneuter Benutzung reaktiviert werden.</string>
+
     <string name="about_settings" product="tablet" msgid="593457295516533765">"Über das Tablet"</string>
     <string name="about_settings" product="default" msgid="1743378368185371685">"Über das Telefon"</string>
     <string name="about_settings_summary" msgid="3371517697156165959">"Rechtliche Hinweise, Status und Softwareversion anzeigen"</string>
@@ -954,6 +960,10 @@
     <string name="lockpattern_settings_enable_title" msgid="6920616873671115281">"Muster erforderlich"</string>
     <string name="lockpattern_settings_enable_summary" msgid="1165707416664252167">"Zum Entsperren muss ein Muster gezeichnet werden"</string>
     <string name="lockpattern_settings_enable_visible_pattern_title" msgid="2615606088906120711">"Muster sichtbar machen"</string>
+    <!-- Security & location settings screen, setting check box title. This setting controls whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly.  If checked, this line is drawn.  If unchecked, there is nothing drawn so the user does not reveal his pattern while he unlocks the phone.-->
+    <string name="lockpattern_settings_enable_error_path_title">Fehlerhaftes Entsperrungsmuster anzeigen</string>
+    <!-- Security & location settings screen, setting check box title. This setting controls whether the dots will be drawn when using the lockscreen pattern.-->
+    <string name="lockpattern_settings_enable_dots_title">Punktraster anzeigen</string>
     <string name="lockpattern_settings_enable_tactile_feedback_title" msgid="8898518337442601027">"Bei Berührung vibrieren"</string>
     <string name="lockpattern_settings_enable_power_button_instantly_locks" msgid="5735444062633666327">"Ein/Aus sperrt Gerät"</string>
     <string name="lockpattern_settings_choose_lock_pattern" msgid="1652352830005653447">"Entsperrungsmuster"</string>
@@ -2184,6 +2194,17 @@
     <string name="cpu_set_on_boot">Beim Booten einstellen</string>
     <string name="cpu_set_on_boot_summary">Prozessoreinstellungen beim Bootvorgang wiederherstellen</string>
 
+    <!-- Performance Settings : I/O scheduler settings title -->
+    <string name="io_scheds_title">I/O-Scheduler</string>
+    <!-- Performance Settings : I/O scheduler settings summary. -->
+    <string name="io_scheds_summary">I/O-Scheduler wechseln</string>
+
+    <!-- Performance Settings : I/O scheduler settings sub items -->
+    <string name="io_sched_title">I/O-Scheduler</string>
+    <string name="io_sched_summary">%S</string>
+    <string name="io_sched_set_on_boot">Beim Booten einstellen</string>
+    <string name="io_sched_set_on_boot_summary">I/O-Scheduler beim Bootvorgang wiederherstellen</string>
+
     <!-- Memory Management -->
     <string name="memory_management_title">Speicherverwaltung</string>
     <string name="memory_management_summary">Speichernutzung anpassen, um Systemleitung zu modifizieren</string>
@@ -2198,11 +2219,14 @@
     <string name="pref_purgeable_assets_summary">Erlaubt dem System, Speicherbereiche von nicht mehr benutzten Bildern freizugeben, um mehr RAM bereitzustellen (Neustart erforderlich)</string>
 
     <!-- Performance Settings : Dithering -->
-    <string name="pref_use_dithering_title">Dithering</string>
+    <string name="pref_use_dithering_title">Grafik-Verbesserung</string>
+    <string name="dithering_no_dither">Dithering deaktivieren</string>
+    <string name="dithering_color_banding">Streifige Farbverläufe beheben (Standard)</string>
+    <string name="dithering_blur_effect">Streifige Farbverläufe und Unschärfe beheben</string>
 
     <!-- Performance Settings : 16bpp Alpha -->
-    <string name="pref_use_16bpp_alpha_title">16-bit-Transparenz</string>
-    <string name="pref_use_16bpp_alpha_summary">Verwenden der 16-bit-Transparenz kann die Performance beim Scrollen verbessern, aber Grafikfehler verursachen (Neustart erforderlich)</string>
+    <string name="pref_use_16bpp_alpha_title">16-Bit-Transparenz</string>
+    <string name="pref_use_16bpp_alpha_summary">Verwenden der 16-Bit-Transparenz kann die Performance beim Scrollen verbessern, aber Grafikfehler verursachen (Neustart erforderlich)</string>
 
     <!-- System Updates  -->
     <!-- About device screen, list item title. Takes the user to the screen for seeing and installing system updates. -->
@@ -2362,19 +2386,6 @@ ice shows the slider widgets before the unlock option [CHAR LIMIT=28]-->
     <!-- Development settings: a string to show when the "App ID" development identifier for this device cannot be read from internal settings. [CHAR LIMIT=60] -->
     <string name="verifier_device_identifier_not_available">"Geräteinformationen nicht verfügbar"</string>
 
-    <!-- Kill app long-press back  -->
-    <string name="kill_app_longpress_back">App beenden</string>
-    <string name="kill_app_longpress_back_summary">Gedrückt halten der Zurück-Taste beendet die Anwendung im Vordergrund.</string>
-
-    <!-- Launches Dev Tools -->
-    <string name="development_tools_title">Dev-Werkzeuge starten</string>
-
-    <!-- Power menu screenshot -->
-    <string name="power_menu_title">Ausschalten</string>
-    <string name="power_menu_reboot_title">Reboot-Menü</string>
-    <string name="power_menu_screenshot_title">Bildschirmfoto</string>
-    <string name="power_menu_profiles_title">Profilwechsel</string>
-
     <!-- Setting checkbox title for root access -->
     <string name="root_access">Root-Zugriff</string>
     <string name="root_access_warning_title">Root-Zugriff erlauben?</string>
@@ -2387,6 +2398,10 @@ ice shows the slider widgets before the unlock option [CHAR LIMIT=28]-->
     <!-- USB-Debugging info -->
     <string name="adb_notify">USB-Debugging Info</string>
     <string name="adb_notify_summary">Eine Benachrichtigung zeigen, wenn USB-Debugging verbunden ist.</string>
+
+    <!-- Kill app long-press back  -->
+    <string name="kill_app_longpress_back">App beenden</string>
+    <string name="kill_app_longpress_back_summary">Gedrückt halten der Zurück-Taste beendet die Anwendung im Vordergrund.</string>
 
     <!-- Hostname setting -->
     <string name="device_hostname">Hostname des Geräts</string>
@@ -2406,6 +2421,31 @@ ice shows the slider widgets before the unlock option [CHAR LIMIT=28]-->
     <!-- Whether to display IME switcher notifcation -->
     <string name="ime_switcher_notify">Auswahl-Benachrichtigung</string>
     <string name="ime_switcher_notify_summary">Benachrichtigung zur Auswahl der Eingabemethode in der Statusleiste anzeigen</string>
+
+    <!-- Change Log strings -->
+    <string name="changelog_title">Changelog anzeigen</string>
+    <string name="changelog_dialog">Changelog</string>
+    <string name="changelog_loading">Changelog wird geladen...</string>
+    <string name="changelog_error">Changelog kann nicht geladen werden</string>
+    <string name="changelog_unknown">Unbekannt</string>
+    <string name="changelog_version">Version</string>
+
+    <!-- Stylus Icon -->
+    <string name="stylus_icon_enabled_title">Stift-Symbol</string>
+    <string name="stylus_icon_enabled_summary">Zeiger einblenden, wenn ein Stift verwendet wird</string>
+
+    <!-- Power menu screenshot -->
+    <string name="power_menu_title">Ausschalten</string>
+    <string name="power_menu_reboot_title">Reboot-Menü</string>
+    <string name="power_menu_screenshot_title">Bildschirmfoto</string>
+    <string name="power_menu_profiles_title">Profilwechsel</string>
+
+    <!-- Launches Dev Tools -->
+    <string name="development_tools_title">Entwickler-Werkzeuge</string>
+
+    <!-- USB Mass Storage -->
+    <string name="usb_mass_storage_title">Massenspeicher</string>
+    <string name="usb_mass_storage_summary">USB-Massenspeicher aktivieren</string>
 
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>
