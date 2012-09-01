@@ -957,6 +957,8 @@
     <string name="lockpattern_settings_enable_title" msgid="6920616873671115281">"Запрашивать ключ"</string>
     <string name="lockpattern_settings_enable_summary" msgid="1165707416664252167">"Использовать графический ключ для защиты телефона"</string>
     <string name="lockpattern_settings_enable_visible_pattern_title" msgid="2615606088906120711">"Показывать ключ"</string>
+    <string name="lockpattern_settings_enable_error_path_title">Показывать ошибки</string>
+    <string name="lockpattern_settings_enable_dots_title">Показывать точки</string>
     <string name="lockpattern_settings_enable_tactile_feedback_title" msgid="8898518337442601027">"Виброотклик"</string>
     <string name="lockpattern_settings_enable_power_button_instantly_locks" msgid="5735444062633666327">"Блокировка кнопкой питания"</string>
     <string name="lockpattern_settings_choose_lock_pattern" msgid="1652352830005653447">"Установить ключ"</string>
@@ -2212,6 +2214,17 @@
     <string name="cpu_set_on_boot">Выставлять при загрузке</string>
     <string name="cpu_set_on_boot_summary">Применить текущие настройки ЦП при загрузке</string>
 
+
+    <!-- Performance Settings : I/O scheduler settings title -->
+    <string name="io_scheds_title">Планировщик I/O</string>
+    <!-- Performance Settings : I/O scheduler settings summary. -->
+    <string name="io_scheds_summary">Изменить режим планировщика I/O (ввода/вывода)</string>
+
+    <!-- Performance Settings : I/O scheduler settings sub items -->
+    <string name="io_sched_title">Планировщик I/O</string>
+    <string name="io_sched_set_on_boot">Выставлять при загрузке</string>
+    <string name="io_sched_set_on_boot_summary">Применить текущие настройки планировщика I/O при загрузке</string>
+
     <!-- Memory Management -->
     <string name="memory_management_title">Управление памятью</string>
     <string name="memory_management_summary">Настройка использования памяти для изменения производительности системы</string>
@@ -2226,6 +2239,9 @@
 
     <!-- Performance Settings : Dithering -->
     <string name="pref_use_dithering_title">Поверхностное сглаживание</string>
+    <string name="dithering_no_dither">Сглаживание выключено</string>
+    <string name="dithering_color_banding">Удаление цветных полос (по умолчанию)</string>
+    <string name="dithering_blur_effect">Удаление цветных полос и размытого эффекта</string>
 
     <!-- Performance Settings : 16bpp Alpha -->
     <string name="pref_use_16bpp_alpha_title">16-битная прозрачность</string>
@@ -2273,7 +2289,9 @@
     <string name="icon_picker_phone">Телефон</string>
     <string name="icon_picker_alarm">Часы</string>
     <string name="icon_picker_email">Email</string>
+    <string name="icon_picker_email2">Email (Holo)</string>
     <string name="icon_picker_facebook">Facebook</string>
+    <string name="icon_picker_google_small">Google (малый)</string>
     <string name="icon_picker_googleplus">Google +</string>
     <string name="icon_picker_googletalk">Google Talk</string>
     <string name="icon_picker_rss">Rss</string>
@@ -2325,8 +2343,8 @@
     <string name="profile_add_nfc_text">Этот NFC тег присвоен неизвестному профилю. Назначение этого NFC тега к существующему профилю позволит использовать его в будущем.</string>
     <string name="profile_select">Выберите профиль</string>
 
-    <string name="link_volume_ringtones">Связать громк.</string>
-    <string name="link_volume_mutes">Связать беззвуч. режим</string>
+    <string name="link_volume_ringtones">Связать громкость</string>
+    <string name="link_volume_mutes">Беззвучный режим влияет на уведомления</string>
 
     <string name="adb_over_network">ADB по сети</string>
     <string name="adb_over_network_summary">Включить отладку TCP/IP через сетевые интерфейсы (Wi-Fi, USB сети). Эта установка сбрасывается при перезагрузке</string>
@@ -2421,6 +2439,10 @@
 
     <!-- Launches Dev Tools -->
     <string name="development_tools_title">Запуск утилиты разработчика</string>
+
+    <!-- USB Mass Storage -->
+    <string name="usb_mass_storage_title">USB-накопитель</string>
+    <string name="usb_mass_storage_summary">Включить режим USB-накопителя (UMS)</string>
 
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>
