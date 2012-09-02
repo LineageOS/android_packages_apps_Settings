@@ -712,6 +712,7 @@
     <string name="system_update_settings_list_item_summary" msgid="3853057315907710747"></string>
     <string name="firmware_version" msgid="4801135784886859972">"Versión de Android"</string>
     <string name="model_number" msgid="3765737700545384794">"Número de modelo"</string>
+    <string name="fcc_equipment_id">Identificador</string>
     <string name="baseband_version" msgid="1848990160763524801">"Versión de banda base"</string>
     <string name="kernel_version" msgid="9192574954196167602">"Versión del kernel"</string>
     <string name="build_number" msgid="3075795840572241758">"Número de compilación"</string>
@@ -907,6 +908,10 @@
     <string name="assisted_gps_disabled" msgid="6982698333968010748">"Utilizar el servidor para asistir al GPS (desactivar para mejorar el rendimiento del GPS)"</string>
     <string name="use_location_title" msgid="5206937465504979977">"Ubicación en búsquedas"</string>
     <string name="use_location_summary" msgid="3978805802386162520">"Permitir que Google use tu ubicación para mejorar los resultados de búsqueda y otros servicios"</string>
+    <string name="location_gps_source_title">"Origen GPS"</string>
+    <string name="location_gps_source_summary">"Escoger entre una antena Bluetooth GPS externa o la antena interna GPS, como proveedor de localización"</string>
+    <string name="location_gps_source_notification_title">"Aviso"</string>
+    <string name="location_gps_source_notification">"¡El origen GPS ha cambiado! El GPS será desactivado. Habilítelo antes de usarlo"</string>
     <string name="about_settings" product="tablet" msgid="593457295516533765">"Información del tablet"</string>
     <string name="about_settings" product="default" msgid="1743378368185371685">"Información del teléfono"</string>
     <string name="about_settings_summary" msgid="3371517697156165959">"Ver información legal, estado, versión del software"</string>
@@ -954,6 +959,8 @@
     <string name="lockpattern_settings_enable_title" msgid="6920616873671115281">"Patrón obligatorio"</string>
     <string name="lockpattern_settings_enable_summary" msgid="1165707416664252167">"Debes crear un patrón para desbloquear la pantalla."</string>
     <string name="lockpattern_settings_enable_visible_pattern_title" msgid="2615606088906120711">"Mostrar el patrón"</string>
+    <string name="lockpattern_settings_enable_error_path_title">Mostrar el patrón erróneo</string>
+    <string name="lockpattern_settings_enable_dots_title">Mostrar puntos del patrón</string>
     <string name="lockpattern_settings_enable_tactile_feedback_title" msgid="8898518337442601027">"Vibrar al pulsar"</string>
     <string name="lockpattern_settings_enable_power_button_instantly_locks" msgid="5735444062633666327">"Bloquear al encender"</string>
     <string name="lockpattern_settings_choose_lock_pattern" msgid="1652352830005653447">"Patrón de desbloqueo"</string>
@@ -1158,6 +1165,7 @@
     <string name="testing_phone_info" product="tablet" msgid="193561832258534798">"Información del tablet"</string>
     <string name="testing_phone_info" product="default" msgid="8656693364332840056">"Información sobre el teléfono"</string>
     <string name="testing_battery_info" msgid="3497865525976497848">"Información sobre la batería"</string>
+    <string name="testing_sim_toolkit">Herramientas SIM</string>
     <string name="quick_launch_title" msgid="7904609846945905306">"Inicio rápido"</string>
     <string name="quick_launch_summary" msgid="8101133819188001190">"Establecer accesos rápidos del teclado para iniciar aplicaciones"</string>
     <string name="quick_launch_assign_application" msgid="6240064079456617501">"Asignar aplicación"</string>
@@ -1344,6 +1352,8 @@
     <string name="tts_default_lang_summary" msgid="5219362163902707785">"Establecer la voz del idioma específico para el texto hablado"</string>
     <string name="tts_play_example_title" msgid="7094780383253097230">"Escuchar un ejemplo"</string>
     <string name="tts_play_example_summary" msgid="8029071615047894486">"Reproducir una breve demostración de síntesis de voz"</string>
+    <string name="tts_play_example_not_found_title">Advertencia</string>
+    <string name="tts_play_example_not_found_msg">El texto de ejemplo no pudo ser encontrado para el idioma solicitado</string>
     <string name="tts_install_data_title" msgid="4264378440508149986">"Instalar archivos de voz"</string>
     <string name="tts_install_data_summary" msgid="5742135732511822589">"Instalar los archivos de datos de voz necesarios para la síntesis de voz"</string>
     <string name="tts_data_installed_summary" msgid="9162111552859972809">"Las voces necesarias para la síntesis de voz ya están instaladas correctamente."</string>
@@ -1945,6 +1955,7 @@
     <string name="lockscreen_calendar_title">Calendario</string>
     <string name="lockscreen_calendar_summary">Mostrar el siguiente evento del calendario en la pantalla de bloqueo</string>
     <string name="lockscreen_calendar_enabled">Activado</string>
+    <string name="calendar_title">Mostrar próximo evento</string>
     <string name="calendars_title">Calendario de eventos</string>
     <string name="calendars_summary">Buscar eventos en los calendarios</string>
     <string name="calendar_reminders_only_title">Solo recordatorios</string>
@@ -2244,6 +2255,10 @@
     <string name="development_tools_title">Iniciar Herramientas</string>
     <string name="usb_mass_storage_title">Almacenamiento masivo</string>
     <string name="usb_mass_storage_summary">Habilitar almacenamiento masivo USB</string>
+    <string name="volume_key_cursor_control_title">Control del cursor</string>
+    <string name="volume_key_cursor_control_off">Deshabilitado</string>
+    <string name="volume_key_cursor_control_on">Los botones subir y bajar volumen moverán el cursor a izquierda y derecha respectivamente</string>
+    <string name="volume_key_cursor_control_on_reverse">Los botones subir y bajar volumen moverán el cursor a derecha e izquierda respectivamente</string>
 
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>
