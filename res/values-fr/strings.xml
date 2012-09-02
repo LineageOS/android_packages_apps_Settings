@@ -17,36 +17,17 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-<!-- Start of CyanogenMod specific settings -->
+    <!-- CYANOGENMOD EDITS START -->
 
     <!-- Wifi sleep timeout -->
-    <string name="wifi_idle_mn_title">Extinction du Wi-Fi</string>
+    <string name="wifi_idle_mn_title">Délai d\'inactivité du Wi-Fi</string>
     <string name="wifi_idle_5mn">5 minutes</string>
     <string name="wifi_idle_15mn">15 minutes (défaut)</string>
     <string name="wifi_idle_30mn">30 minutes</string>
     <string name="wifi_idle_1h">1 heure</string>
     <string name="wifi_idle_3h">3 heures</string>
 
-    <!-- Advanced tethering settings -->
-    <string name="tethering_advanced_text">Paramètres avancés</string>
-    <string name="tethering_lease_time_text">Expiration DHCP</string>
-    <string name="dhcp_lease_30mn">30 minutes</string>
-    <string name="dhcp_lease_1h">1 heure (défaut)</string>
-    <string name="dhcp_lease_2h">2 heures</string>
-    <string name="dhcp_lease_4h">4 heures</string>
-    <string name="dhcp_lease_6h">6 heures</string>
-    <string name="dhcp_lease_12h">12 heures</string>
-    <string name="dhcp_lease_24h">24 heures</string>
-
-    <!-- Sound settings screen #CM -->
-    <string name="volume_overlay_title">Contrôle du volume</string>
-    <string name="volbtn_music_controls_title">Playlist par boutons volume</string>
-    <string name="volbtn_music_controls_summary">Lorsque l\'écran est éteint, un appui long permet de changer le titre en cours</string>
-    <string name="volume_ring_only_description">Sonnerie du téléphone</string>
-    <string name="link_volume_ringtones">Lier le volume des alertes à la sonnerie</string>
-    <string name="link_volume_mutes">Silence commun pour alertes et sonnerie</string>
-
-    <!-- Quiet hours #CM -->
+    <!-- Quiet hours -->
     <string name="quiet_hours_title">Heures silencieuses</string>
     <string name="quiet_hours_summary">Configure les heures où le téléphone doit être silencieux</string>
     <string name="quiet_hours_note_title">Note</string>
@@ -75,7 +56,20 @@
     <string name="start_time_title">Début</string>
     <string name="end_time_title">Fin</string>
 
-    <!-- Backlight #CM -->
+    <!-- Safe headset volume restore checkbox -->
+    <string name="safe_headset_restore_title">Sécurité auditive</string>
+    <string name="safe_headset_restore_summary">Prévient d\'un volume trop élevé au branchement des 
+écouteurs</string>
+
+    <!-- Battery light settings  -->
+    <string name="battery_light_title">LED Batterie</string>
+    <string name="battery_low_pulse_title">Clignoter si la batterie est faible</string>
+    <string name="battery_light_list_title">Couleurs</string>
+    <string name="battery_light_low_color_title">Batterie faible</string>
+    <string name="battery_light_medium_color_title">Batterie en charge</string>
+    <string name="battery_light_full_color_title">Chargée</string>
+
+    <!-- Backlight -->
     <string name="backlight_title">Rétroéclairage automatique</string>
     <string name="backlight_summary">Ajuster les niveaux et le filtrage</string>
     <string name="light_filter_title">Filtrage du capteur de luminosité</string>
@@ -97,11 +91,11 @@
     <string name="light_decrease_hysteresis_title">Hystérésis</string>
     <string name="light_decrease_hysteresis_summary">Sensor levels overlap this much downwards</string>
 
-    <!-- Light sensor levels #CM -->
+    <!-- Light sensor levels  -->
     <string name="ll_title">Niveaux de luminosité</string>
     <string name="ll_header_upper">Max</string>
     <string name="ll_header_lower">Min</string>
-    <string name="ll_header_lcd">Ecran</string>
+    <string name="ll_header_lcd">Écran</string>
     <string name="ll_header_btn">Boutons</string>
     <string name="ll_header_kb">Clavier</string>
     <string name="ll_lux">Capteur filtré / brut :</string>
@@ -115,132 +109,174 @@
     <string name="ll_bad_levels">Les niveaux doivent être croissants</string>
     <string name="ll_num_levels">Nombre de niveaux</string>
 
-    <!-- Display Settings -->
-    <string name="display_rotation_category_title">Angles de rotation</string>
-    <string name="display_rotation_enabled">Actif.</string>
-    <string name="display_rotation_disabled">Désactivé.</string>
-    <string name="display_rotation_unit">degrés</string>
-    <string name="display_rotation_0_title">Normal</string>
-    <string name="display_rotation_90_title">90 degrés</string>
-    <string name="display_rotation_180_title">180 degrés</string>
-    <string name="display_rotation_270_title">270 degrés</string>
-    <string name="display_category_animation_options_title">Animation</string>
-    <string name="display_electron_beam_animation_off_title">A l\'extinction de l\'écran</string>
-    <string name="display_category_wakeup_options_title">Sortie de veille</string>
-    <string name="pref_volume_wake_title">Eveil par boutons Volume</string>
-    <string name="pref_volume_wake_summary">Permet de rallumer l\'appareil à l\'aide des boutons de volume.</string>
-
     <!-- Display settings screen, notification light settings -->
     <string name="notification_light_general_title">Général</string>
     <string name="notification_light_applist_title">Applications</string>
-    <string name="notification_light_default_value">Défaut</string>
+    <string name="notification_light_phonelist_title">Téléphone</string>
     <string name="notification_light_use_custom">Couleurs spécifiques</string>
-    <string name="notification_light_enabled">Actif</string>
+    <string name="notification_light_enabled">Activé</string>
     <string name="notification_light_disabled">Désactivé</string>
+    <string name="notification_light_default_value">Défaut</string>
+    <string name="notification_light_missed_call_title">Appel manqué</string>
+    <string name="notification_light_voicemail_title">Messagerie vocale</string>
 
-    <!-- Advanced, Device specific (DeviceParts) settings #CM -->
-    <string name="advanced_settings_title">Options spécifiques</string>
+    <!-- Notification light dialogs -->
+    <string name="edit_light_settings">Paramètres de la LED</string>
+    <string name="pulse_speed_title">Durée d\'impulsion et vitesse</string>
+    <string name="default_time">Normale</string>
+    <string name="custom_time">Personnalisée</string>
+    <string name="dialog_test">Tester</string>
+    <string name="dialog_delete_title">Supprimer</string>
+    <string name="dialog_delete_message">Voulez-vous supprimer les notifications de l\'application sélectionnée?</string>
+    <string name="dialog_test_message">Éteignez l\'écran pour afficher l\'action de notification ou annuler ceci pour arrêter le test</string>
+    <string name="dialog_test_button">Annuler</string>
 
-<!-- INTERFACE Settings #CM -->
+    <!-- Values for the notification light pulse spinners -->
+    <string name="pulse_length_always_on">Toujours allumé</string>
+    <string name="pulse_length_very_short">Très courte</string>
+    <string name="pulse_length_short">Courte</string>
+    <string name="pulse_length_normal">Normale</string>
+    <string name="pulse_length_long">Longue</string>
+    <string name="pulse_length_very_long">Très longue</string>
+    <string name="pulse_speed_very_fast">Très rapide</string>
+    <string name="pulse_speed_fast">Rapide</string>
+    <string name="pulse_speed_normal">Normale</string>
+    <string name="pulse_speed_slow">Lente</string>
+    <string name="pulse_speed_very_slow">Très lente</string>
+
+    <!-- Advanced, Device specific (DeviceParts) settings  -->
+    <string name="advanced_settings_title">Avancé</string>
+
+    <!-- INTERFACE Settings  -->
     <!-- Settings main menu category heading. Interface (Launcher, Themes, System). [CHAR LIMIT=40] -->
     <string name="header_category_interface">INTERFACE</string>
 
-    <!-- Launcher settings #CM -->
+    <!-- Launcher settings  -->
     <string name="launcher_settings_title">Trebuchet</string>
 
-    <!-- Themes settings #CM -->
+    <!-- Themes settings  -->
     <string name="themes_settings_title">Thèmes</string>
 
-    <!-- System Interface settings #CM -->
+    <!-- System Interface settings  -->
     <string name="system_settings_title">Système</string>
     <string name="system_interface_title">Interface système</string>
 
-    <!-- Notification Drawer #CM -->
+    <!-- Notification Drawer  -->
     <string name="notification_drawer_title">Barre de notification</string>
 
-    <!-- Combined Bar #CM -->
+    <!-- Combined Bar  -->
     <string name="combined_bar_title">Barre combinée</string>
     <string name="combined_bar_auto_hide_title">Cacher automatiquement</string>
     <string name="combined_bar_auto_hide_summary">Permet de cacher la barre combinée (boutons virtuels) pour les applications plein écran</string>
 
-    <!-- Navigation Bar #CM -->
-    <string name="navigation_bar_title">Barre de navigation</string>
-    <string name="navigation_bar_help_text">1 - Pour commencer l\'édition, appuyer sur le cadenas\n\n2 - Appuyer sur un bouton pour assigner ou changer une fonctionnalité\n\n3 - Pression longue pour modifier l\'ordre\n\n4 - Pour enregistrer, appuyer à nouveau sur le cadenas\n\n5 - Pour remettre à zéro, appuyer sur le bouton reset\n\n</string>
-    <string name="navigation_bar_tips">&#8226; Les actions ne peuvent être assignées qu\'une seule fois\n\n&#8226; Le bouton d\'accueil ne peut être réassigné\n\n&#8226; Les boutons sur le bord ne peuvent être déplacés</string>
-    <string name="navigation_bar_tips_title">Astuces rapides</string>
-    <string name="navigation_bar_reset_message">Supprimer les paramètres actuels et remettre à zéro ?</string>
-    <string name="navigation_bar_save_message">Paramètres de la barre de navigation enregistrés</string>
-    <string name="navigation_bar_reset_toast">Barre de navigation remise à zéro</string>
+    <!-- Navigation Bar  -->
+	<string name="navigation_bar_title">Barre de navigation</string>
 
-    <!-- Power Widget #CM -->
-    <string name="power_widget_title">Gestion de l\'alimentation</string>
-    <string name="title_expanded_widget">Afficher le widget</string>
+	<string name="navigation_bar_help_text">1 - Pour commencer l\'édition, appuyer sur le cadenas\n\n2 - Appuyez sur n\'importe quels boutons pour assigner ou changer une fonctionnalité\n\n3 - Pression longue pour déplacer l\'ordre\n\n4 - Pour enregistrer, appuyer encore sur le cadenas\n\n5 - Pour remettre à zéro, appuyer sur le bouton reset\n\n</string>
+	<string name="navigation_bar_tips">&#8226; Les actions peuvent être assignée qu\'une seule fois\n\n&#8226; Le bouton d\'accueil ne peut être réassigné\n\n&#8226; Les boutons sur le bord ne peuvent être déplacé</string>
+	<string name="navigation_bar_tips_title">Astuces rapides</string>
+	<string name="navigation_bar_reset_message">Supprimer les paramètres actuels et remettre à zéro?</string>
+	<string name="navigation_bar_save_message">Paramètres de la barre de navigation enregistré</string>
+	<string name="navigation_bar_reset_toast">Barre de navigation remise à zéro</string>
 
-    <string name="power_widget_behavior">Comportement</string>
-    <string name="title_expanded_hide_onchange">Cacher après changement</string>
+    <!-- Hardware keys -->
+    <string name="hardware_keys_title">Touches physiques</string>
+    <string name="hardware_keys_bindings_title">Actions de la touche</string>
+    <string name="hardware_keys_enable_custom_title">Activer les actions personnalisées</string>
+    <string name="hardware_keys_home_long_press_title">Touche home (appui long)</string>
+    <string name="hardware_keys_menu_press_title">Touche menu</string>
+    <string name="hardware_keys_menu_long_press_title">Touche menu (appui long)</string>
+    <string name="hardware_keys_assist_press_title">Touche recherche</string>
+    <string name="hardware_keys_assist_long_press_title">Touche recherche (appui long)</string>
+    <string name="hardware_keys_app_switch_press_title">Touche application récente</string>
+    <string name="hardware_keys_app_switch_long_press_title">Touche application récente (appui long)</string>
+    <string name="hardware_keys_show_overflow_title">Afficher le menu de l\'application</string>
+    <string name="hardware_keys_show_overflow_summary">Afficher le bouton menu (3 points) de l\'application dans celle-ci</string>
+    <string name="hardware_keys_show_overflow_toast_enable">Le menu de l\'application pourrait être visible qu\'après le redémarrage des applications</string>
+    <string name="hardware_keys_show_overflow_toast_disable">Le menu de l\'application pourrait être caché qu\'après le redémarrage des applications</string>
+    <string name="hardware_keys_action_nothing">Aucunes actions</string>
+    <string name="hardware_keys_action_menu">Ouvrir/fermer le menu</string>
+    <string name="hardware_keys_action_app_switch">Applications récentes</string>
+    <string name="hardware_keys_action_search">Assistant de recherche</string>
+    <string name="hardware_keys_action_voice_search">Recherche vocale</string>
+    <string name="hardware_keys_action_in_app_search">Recherche dans l\'application</string>
+
+    <!-- Power Widget  -->
+    <string name="power_widget_title">Widget d\'alimentation</string>
+    <string name="title_expanded_widget">Widget d\'alimentation</string>
+    <string name="power_widget_behavior">Comportement du widget</string>
+    <string name="title_expanded_hide_onchange">Fermer après changement</string>
     <string name="title_expanded_hide_scrollbar">Cacher barre de défilement</string>
     <string name="title_widget_picker">Boutons du widget</string>
-    <string name="summary_widget_picker">Choisir les boutons à afficher</string>
-    <string name="title_widget_order">Ordre des boutons</string>
-    <string name="summary_widget_order">Modifier l\'ordre des boutons présents sur le widget</string>
+    <string name="summary_widget_picker">Afficher ou modifier les boutons</string>
+    <string name="title_widget_order">Ordre des boutons du widget</string>
+    <string name="summary_widget_order">Afficher ou modifier l\'ordre des boutons présents sur le widget</string>
     <string name="title_buttons">Boutons</string>
-    <string name="title_toggle_wifi">Wifi</string>
+    <string name="title_toggle_wifi">Wi-Fi</string>
     <string name="title_toggle_bluetooth">Bluetooth</string>
     <string name="title_toggle_gps">GPS</string>
     <string name="title_toggle_sound">Son</string>
     <string name="title_toggle_brightness">Luminosité</string>
     <string name="title_toggle_sync">Sync. données</string>
-    <string name="title_toggle_wifiap">Partage Wifi</string>
-    <string name="title_toggle_screentimeout">Timeout écran</string>
+    <string name="title_toggle_wifiap">Partage Wi-Fi</string>
+    <string name="title_toggle_screentimeout">Veille écran</string>
     <string name="title_toggle_mobiledata">Données mobile</string>
     <string name="title_toggle_lockscreen">Verrouillage</string>
-    <string name="title_toggle_networkmode">Réseau mobile</string>
+    <string name="title_toggle_networkmode">Basculer 2G/3G</string>
     <string name="title_toggle_autorotate">Orientation</string>
-    <string name="title_toggle_airplane">Mode avion</string>
+    <string name="title_toggle_airplane">Mode Avion</string>
     <string name="title_toggle_flashlight">Torche</string>
     <string name="title_toggle_sleep">Mise en veille</string>
     <string name="title_toggle_media_play_pause">Média: Lecture/Pause</string>
     <string name="title_toggle_media_previous">Média: Précédent</string>
     <string name="title_toggle_media_next">Média: Suivant</string>
-    <string name="title_toggle_wimax">WiMAX</string>
+    <string name="title_toggle_lte">LTE</string>
+    <string name="title_toggle_wimax">WiMax</string>
     <string name="title_button_modes">Modes des boutons</string>
     <string name="pref_brightness_mode_title">Modes de luminosité</string>
     <string name="pref_brightness_mode_summary">Sélection des modes de fonctionnement du bouton Luminosité</string>
     <string name="cm_brightness_mode_auto">Auto.</string>
     <string name="cm_brightness_mode_dim">Réduit</string>
-    <string name="pref_network_mode_title">Réseau mobile</string>
-    <string name="pref_screentimeout_mode_title">Timeout de l\'écran</string>
+    <string name="pref_network_mode_title">Modes réseau</string>
+    <string name="pref_screentimeout_mode_title">Mode mise en veille de l\'écran</string>
     <string name="pref_ring_mode_title">Sonnerie</string>
     <string name="pref_ring_mode_summary">Sélection des modes de sonnerie disponibles</string>
     <string name="cm_sound_mode_silent">Silencieux</string>
     <string name="cm_sound_mode_vibrate">Vibreur</string>
     <string name="cm_sound_mode_sound">Son</string>
-    <string name="cm_sound_mode_soundVibrate">Son+Vibreur</string>
-    <string name="pref_flash_mode_title">Puissance de la torche</string>
+    <string name="cm_sound_mode_soundVibrate">Son + Vibreur</string>
+    <string name="pref_flash_mode_title">Mode torche</string>
+    <string name="expanded_haptic_feedback_title">Vibrer au toucher</string>
 
-    <!-- Status bar #CM -->
+    <!-- Status bar  -->
     <string name="status_bar_title">Barre d\'état</string>
     <string name="status_bar_clock_title">Horloge</string>
     <string name="status_bar_general_title">Général</string>
     <string name="status_bar_show_clock_title">Afficher l\'heure</string>
     <string name="status_bar_am_pm_title">Indicateur AM/PM</string>
-    <string name="status_bar_battery_title">Style batterie</string>
+    <string name="status_bar_am_pm_info">Horloge 24 heures activée</string>
+    <string name="status_bar_battery_title">Affichage du niveau de batterie</string>
     <string name="status_bar_toggle_brightness">Rétroéclairage</string>
     <string name="status_bar_toggle_brightness_summary">Ajustement de la luminosité en glissant dans la barre</string>
     <string name="status_bar_toggle_info">Le rétroéclairage automatique est activé</string>
-    <string name="status_bar_signal_text_title">Signal GSM alternatif</string>
-    <string name="status_bar_signal_text_show_bars">Icône</string>
+    <string name="status_bar_signal_text_title">Affichage du signal réseau</string>
+    <string name="status_bar_signal_text_show_bars">Icône (défaut)</string>
     <string name="status_bar_signal_text_show_text">Texte</string>
+    <string name="status_bar_signal_text_hidden">Caché</string>
 
-    <!-- Power Widget, Haptic feedback #CM -->
-    <string name="expanded_haptic_feedback_title">Retour haptique</string>
+    <string name="lock_screen_title">Écran de verrouillage</string>
 
-    <!-- Lock screen #CM -->
-    <string name="lock_screen_title">Ecran de verrouillage</string>
-    <string name="lockscreen_battery_status_title">Etat de la batterie</string>
-    <string name="lockscreen_battery_status_charging">Only when charging</string>
-    <string name="lockscreen_battery_status_alwayson">Always on</string>
-
+    <!-- Lock Screen Shortcuts -->
+    <string name="lockscreen_target_info">Glisser pour assigner les raccourcis</string>
+    <string name="lockscreen_target_title">Raccourcis</string>
+    <string name="lockscreen_target_summary">Modifier ou configurer les raccourcis de l\'écran de verrouillage</string>
+    <string name="lockscreen_target_reset">Les raccourcis ont été réinitialisés</string>
+    <string name="lockscreen_target_save">Raccourcis enregistrés</string>
+    <string name="lockscreen_target_reset_title">Reset</string>
+    <string name="lockscreen_target_reset_message">Réinitialiser tous les raccourcis et revenir à la configuration d\'origine ?</string>
+    <string name="lockscreen_target_empty">Vide</string>
+    <string name="lockscreen_target_edit_title">Modifier le raccourci</string>
+    <string name="lockscreen_target_edit_msg">Sélectionner l\'application, l\'activité et l\'icône du raccourci</string>
 
     <!-- Lock Screen Weather -->
     <string name="lockscreen_weather_title">Météo</string>
@@ -260,8 +296,8 @@
     <string name="weather_retrieve_location_dialog_title">Impossible de déterminer le lieu!</string>
     <string name="weather_retrieve_location_dialog_message">La localisation par le réseau est désactivée.\n\nVeuillez sélectionner manuellement le lieu</string>
     <string name="weather_retrieve_location_dialog_enable_button">Activer</string>
+    <string name="weather_invert_lowhigh">Inverser tempétatures min/max</string>
     <string name="weather_progress_title">Vérification du lieu</string>
-    <string name="weather_invert_lowhigh">Inverser min/max de la T°c</string>
 
     <!-- Lock screen Weather - Update frequency -->
     <string name="weather_refresh_manual">Manuellement</string>
@@ -307,83 +343,65 @@
     <string name="lockscreen_background_custom_image">Image ou photo.</string>
     <string name="lockscreen_background_default_wallpaper">Fond d\'écran par défaut</string>
 
-    <!-- Lock Screen Shortcuts -->
-    <string name="lockscreen_target_info">Glisser pour assigner les raccourcis</string>
-    <string name="lockscreen_target_title">Raccourcis</string>
-    <string name="lockscreen_target_summary">Modifier ou configurer les raccourcis de l\'écran de verrouillage</string>
-    <string name="lockscreen_target_reset">Les raccourcis ont été réinitialisés</string>
-    <string name="lockscreen_target_save">Raccourcis enregistrés</string>
-    <string name="lockscreen_target_reset_title">Reset</string>
-    <string name="lockscreen_target_reset_message">Réinitialiser tous les raccourcis et revenir à la configuration d\'origine ?</string>
-    <string name="lockscreen_target_empty">Vide</string>
-    <string name="lockscreen_target_edit_title">Modifier le raccourci</string>
-    <string name="lockscreen_target_edit_msg">Sélectionner l\'application, l\'activité et l\'icône du raccourci</string>
+    <!-- Lock screen vibrate settings -->
+    <string name="lockscreen_vibrate_enabled_title">Vibreur</string>
+    <string name="lockscreen_vibrate_enabled_head">Vibration lors du déverrouillage</string>
 
-    <!-- String for ShortcutPickHelper -->
-    <string name="picker_activities">Activités</string>
-    <string name="select_custom_app_title">Sélectionner l\'application</string>
-    <string name="select_custom_activity_title">Sélectionner l\'activité</string>
-    <string name="icon_picker_choose_icon_title">Sélectionner une icône</string>
-    <string name="icon_picker_alarm">Alarme</string>
-    <string name="icon_picker_browser">Navigateur</string>
-    <string name="icon_picker_calendar">Agenda</string>
-    <string name="icon_picker_camera">Appareil photo</string>
-    <string name="icon_picker_email">Email</string>
-    <string name="icon_picker_facebook">Facebook</string>
-    <string name="icon_picker_gallery">Galerie</string>
-    <string name="icon_picker_googleplus">Google Plus</string>
-    <string name="icon_picker_googletalk">Google Talk</string>
-    <string name="icon_picker_maps">Google Maps</string>
-    <string name="icon_picker_movie">Vidéos</string>
-    <string name="icon_picker_music">Musique</string>
-    <string name="icon_picker_nav_normal">Navigation</string>
-    <string name="icon_picker_phone">Téléphone</string>
-    <string name="icon_picker_podcast">Podcast</string>
-    <string name="icon_picker_rss">Rss</string>
-    <string name="icon_picker_sms">Messages</string>
-    <string name="icon_picker_twitter">Twitter</string>
+    <!-- Lock screen misc. settings -->
+    <string name="lockscreen_battery_status_title">État de la batterie</string>
+    <string name="lockscreen_battery_status_charging">Lors du chargement</string>
+    <string name="lockscreen_battery_status_alwayson">Toujours afficher</string>
 
-    <!-- String for IconPicker -->
-    <string name="icon_picker_title">Source de l\'icône</string>
-    <string name="icon_picker_system_icons_title">Icônes système</string>
-    <string name="icon_picker_gallery_title">Galerie</string>
-    <string name="icon_picker_pack_title">Jeux d\'icônes</string>
-
-    <!-- Profiles settings #CM -->
+    <!-- Profiles settings  -->
     <string name="profiles_settings_title">Profils</string>
     <string name="profiles_general_title">Général</string>
     <string name="profiles_add">Ajouter</string>
     <string name="profile_menu_delete">Supprimer</string>
     <string name="profile_settings_title">Profil</string>
+    <string name="profile_empty_list_profiles_off">Pour personnaliser et utiliser le système de profils, activer le.</string>
+
+    <!-- Add Profile -->
     <string name="add_profile_dialog_title">Créer nouveau profil</string>
     <string name="profile_name_title">Nom du profil</string>
     <string name="profile_profile_name_prompt">Entrer le nom du profil</string>
     <string name="menu_new_profile">Nouveau profil</string>
     <string name="menu_new_profile_summary">Ajouter et configurer un nouveau profil</string>
     <string name="new_profile_name">&lt;nouveau profil&gt;</string>
+
+    <!-- Rename Dialog  -->
     <string name="rename_dialog_title">Renommer</string>
     <string name="rename_dialog_message">Saisir un nouveau nom</string>
     <string name="duplicate_appgroup_name">Ce groupe existe déjà !</string>
     <string name="duplicate_profile_name">Ce profil existe déjà !</string>
+
+    <!-- Reset Profiles -->
     <string name="profile_reset_title">Reset</string>
-    <string name="profile_reset_message">Etes-vous certain de vouloir supprimer tous les profils et groupes d\'applications ?</string>
+    <string name="profile_reset_message">Êtes-vous certain de vouloir supprimer tous les profils et groupes d\'applications ?</string>
+
+    <!-- Delete confimation messages -->
     <string name="profile_delete_confirm">Supprimer ce profil ?</string>
     <string name="profile_app_delete_confirm">Supprimer cette application ?</string>
     <string name="profile_cannot_delete">Vous ne pouvez pas supprimer le profil actif</string>
+
+    <!-- Profile Config screen PreferenceGroup titles -->
     <string name="profile_connectionoverrides_title">Connexions</string>
     <string name="profile_volumeoverrides_title">Volume perso.</string>
-    <string name="profile_vibratoroverrides_title">Vibreur</string>
-    <string name="vibrator_state_disabled">Désactivé</string>
-    <string name="vibrator_state_enabled">Actif</string>
-    <string name="vibrator_state_silent">Uniquement si silencieux</string>
+    <string name="profile_vibratoroverrides_title">Vibrations</string>
     <string name="connection_state_disabled">Inactif</string>
     <string name="connection_state_enabled">Actif</string>
     <string name="volume_override_summary">Actuel</string>
+    <string name="vibrator_state_disabled">Jamais</string>
+    <string name="vibrator_state_enabled">Toujours</string>
+    <string name="vibrator_state_silent">En mode silencieux</string>
+
+    <!-- Menu item for managing profiles -->
     <string name="profile_profiles_manage">Profils</string>
     <string name="profile_profile_manage">Gérer le profil</string>
     <string name="profile_applist_manage">Liste des applications</string>
     <string name="profile_appgroups_manage">Gérer les groupes</string>
     <string name="profile_appgroup_manage">Profil</string>
+
+    <!-- Profile settings screen, section header for settings related to notification profiles -->
     <string name="profile_settings">Paramètres du Profil</string>
     <string name="profile_name">Nom</string>
 
@@ -395,27 +413,8 @@
     <string name="choose_soundtone">Son de notification</string>
     <string name="choose_ringtone">Choix de la sonnerie</string>
 
-    <!-- Status bar notification count -->
-    <string name="status_bar_notif_count_title">Compteur de notifications</string>
-    <string name="status_bar_notif_count_summary">Afficher le nombre de notifications en attente dans la barre d\'état</string>
-    <string name="increasing_ring_title">Sonnerie progressive</string>
-    <string name="checkbox_increasing_ring">Activer</string>
-
-    <!-- Sound settings screen, the title of the volume bar to adjust the minimum increasing ring volume -->
-    <string name="increasing_ring_min_volume_title">Volume de départ</string>
-    <string name="increasing_ring_volume_notice">Note:\nComme le volume défini est plus grand que celui de la sonnerie, il sera réduit à son niveau.</string>
-    <string name="increasing_ring_interval_title">Intervale de progression</string>
-    <string name="increasing_ring_interval_eachring">A chaque sonnerie</string>
-    <string name="increasing_ring_interval_half_second">0.5 secondes</string>
-    <string name="increasing_ring_interval_1second">1 seconde</string>
-    <string name="increasing_ring_interval_2seconds">2 secondes</string>
-    <string name="increasing_ring_interval_3seconds">3 secondes</string>
-    <string name="increasing_ring_interval_5seconds">5 secondes</string>
-    <string name="increasing_ring_interval_10seconds">10 secondes</string>
-
     <!-- Sound settings screen, setting option name to pick ringtone (a list dialog comes up)-->
-    <string name="soundtone_title">Son de notification</string>
-    <string name="soundtone_summary">""</string>
+    <string name="soundtone_title">Sonnerie</string>
 
     <!-- Title for application group setting screen -->
     <string name="profile_appgroups_title">Groupes d\'applications</string>
@@ -423,6 +422,7 @@
     <string name="profile_new_appgroup">Nouveau groupe d\'applications</string>
     <string name="profile_delete_appgroup">Supprimer ce groupe d\'applications</string>
     <string name="profile_appgroup_name_prompt">Saisir le nom du nouveau groupe</string>
+    <string name="profile_appgroup_name_title">Nom</string>
     <string name="profile_add_app">Ajouter application</string>
     <string name="profile_delete_app">Retirer application</string>
 
@@ -437,85 +437,88 @@
     <string name="profile_lockmode_insecure">Non sécurisé</string>
     <string name="profile_lockmode_disabled">Désactivé</string>
     <string name="profile_lockmode_default_summary">Conserver les paramètres système</string>
-    <string name="profile_lockmode_insecure_summary">Ecran de verrouillage non sécurisé</string>
-    <string name="profile_lockmode_disabled_summary">Ecran de verrouillage désactivé</string>
-    <string name="profile_airplanemode_title">Mode avion</string>
+    <string name="profile_lockmode_insecure_summary">Écran de verrouillage non sécurisé</string>
+    <string name="profile_lockmode_disabled_summary">Écran de verrouillage désactivé</string>
+    <string name="profile_airplanemode_title">Mode Avion</string>
     <string name="profile_airplanemode_default">Défaut</string>
-    <string name="profile_airplanemode_enabled">Actif</string>
-    <string name="profile_airplanemode_disabled">Désactivé</string>
-    <string name="profile_airplanemode_default_summary">Paramètres génériques</string>
-    <string name="profile_airplanemode_enabled_summary">Mode avion actif</string>
-    <string name="profile_airplanemode_disabled_summary">Mode avion désactivé</string>
+    <string name="profile_airplanemode_enabled">Activé</string>
+    <string name="profile_airplanemode_disabled">Desactivé</string>
+    <string name="profile_airplanemode_default_summary">Conserver les paramètres système</string>
+    <string name="profile_airplanemode_enabled_summary">Le mode avion est activé</string>
+    <string name="profile_airplanemode_disabled_summary">Le mode avion est desactivé</string>
     <string name="profile_disable_screen_lock_summary">Désactive l\'écran de verrouillage lorsque ce profil est actif</string>
 
+    <string name="vibrator_type_ringer">Appels</string>
+    <string name="vibrator_type_notification">Notifications</string>
+
     <!-- Connection override toggles (not all are used at this time ) -->
-    <string name="possibleButtons">Boutons disponibles</string>
+    <string name="possibleButtons">Boutons possibles</string>
     <string name="toggleWifi">Wi-Fi</string>
     <string name="toggleWifiAp">Partage Wi-Fi</string>
     <string name="toggleBluetooth">Bluetooth</string>
     <string name="toggleGPS">GPS</string>
-    <string name="toggleData">Données mobiles</string>
+    <string name="toggleData">Données mobile</string>
     <string name="toggleSync">Sync. données</string>
     <string name="toggle2g3g">2G/3G</string>
-    <string name="toggleSound">Sonnerie</string>
+    <string name="toggleSound">Son</string>
     <string name="toggleBrightness">Luminosité</string>
     <string name="toggleAutoRotate">Orientation</string>
-    <string name="toggleScreenTimeout">Timeout écran</string>
-    <string name="toggleAirplane">Mode avion</string>
+    <string name="toggleScreenTimeout">Veille écran</string>
+    <string name="toggleAirplane">Mode Avion</string>
     <string name="toggleFlashlight">Torche</string>
-    <string name="toggleLockScreen">Ecran verrouillage</string>
-    <string name="toggleWimax">WiMAX</string>
+    <string name="toggleLockScreen">Verouillage</string>
+    <string name="toggleWimax">WiMax</string>
 
-    <!-- Security Settings --><skip />
-    <!-- Screen security - Screen security #CM -->
+    <!-- Screen security - Screen security   -->
     <string name="screen_security_category">Verrouillage de l\'écran</string>
-    <string name="screen_security_title">Ecran de verrouillage</string>
+    <string name="screen_security_title">Écran de verrouillage</string>
     <string name="screen_security_summary">Options de l\'écran de verrouillage : style, délais et options diverses</string>
     <string name="additional_options_title">Options supplémentaires</string>
     <string name="unlock_menu_unlock_title">Déverrouiller par Menu</string>
     <string name="unlock_menu_unlock_summary">Déverrouillage de l\'écran en appuyant sur le bouton Menu</string>
     <string name="unlock_quick_unlock_control_title">Déverrouillage rapide</string>
-    <string name="unlock_quick_unlock_control_summary">Evite d\'appuyer sur OK lors de la saisie du code PIN ou du mot de passe.\nAttention : effacer compte comme un essai raté !</string>
+    <string name="unlock_quick_unlock_control_summary">Évite d\'appuyer sur OK lors de la saisie du code PIN ou du mot de passe.\nAttention : effacer compte comme un essai raté !</string>
 
-    <!-- Delays and timeouts -->
-    <string name="delay_and_timeout_title">Délai de verrouillage</string>
     <!-- Slide lock delay -->
+    <string name="delay_and_timeout_title">Délai de verrouillage</string>
     <string name="slide_lock_delay_title">Modifier les délais</string>
     <string name="slide_lock_timeout_delay_title">Timeout écran</string>
     <string name="slide_lock_screenoff_delay_title">Extinction manuelle</string>
+    <string name="slide_lock_delay_none">Immédiatement</string>
+    <string name="slide_lock_delay_1s">1 seconde</string>
+    <string name="slide_lock_delay_5s">5 secondes</string>
+    <string name="slide_lock_delay_10s">10 secondes</string>
+    <string name="slide_lock_delay_15s">15 secondes</string>
+    <string name="slide_lock_delay_30s">30 secondes</string>
+    <string name="slide_lock_delay_1m">1 minute</string>
+    <string name="slide_lock_delay_5m">5 minutes</string>
+    <string name="slide_lock_delay_10m">10 minutes</string>
+    <string name="slide_lock_delay_30m">30 minutes</string>
 
-    <!-- Location Services -->
-<!--
-    <string name="location_gps_source_title">Source GPS</string>
-    <string name="location_gps_source_summary">Définir l\'origine des informations GPS, si vous préférez utiliser un dispositif externe Bluetooth au lieu de celui de l\'appareil</string>
-    <string name="location_gps_source_notification_title">Attention</string>
-    <string name="location_gps_source_notification">La source GPS a été modifiée, le GPS va être temporairement désactivé. Veuillez le réactiver avant utilisation!</string>
--->
-
-    <!-- Dev settings, apps #CM -->
-    <string name="adb_over_network">ADB sur TCP/IP</string>
-    <string name="adb_over_network_summary">"Activer le débogage sur toutes les interfaces (réseaux USB, Wi-Fi et Bluetooth)"</string>
-    <string name="adb_over_network_warning">"ATTENTION: Lorsque cette fonction est activée, votre téléphone est ouvert aux intrusions sur toutes les interfaces, y compris via le réseau mobile !\n\nIl est fortement conseillé de désactiver le réseau mobile avant d\'activer cette fonction.\n\nContinuer ?"</string>
-    <string name="adb_notify">Notification débogage</string>
-    <string name="adb_notify_summary">Afficher une notification lorsque le débogage est actif</string>
-    <string name="root_access">Accès root</string>
-    <string name="root_access_warning_title">Autoriser l\'accès root ?</string>
-    <string name="root_access_warning_message">Autoriser l\'accès root aux applications peut être très dangereux et corrompre la sécurité et la stabilité de votre appareil !</string>
-    <string name="root_access_none">Désactivé</string>
-    <string name="root_access_apps">Appli. uniquement</string>
-    <string name="root_access_adb">ADB uniquement</string>
-    <string name="root_access_all">Applications et ADB</string>
-    <string name="device_hostname">Nom d\'hôte de l\'appareil</string>
-    <string name="kill_app_longpress_back">Tuer avec bouton Retour</string>
-    <string name="kill_app_longpress_back_summary">Permet de forcer la fermeture de l\'application en cours en appuyant longuement sur le bouton Retour</string>
-
-    <!-- Performance Settings #CM -->
+    <!-- Performance settings  -->
     <string name="performance_settings_title">Performances</string>
+
+    <!-- Performance Settings : Warning dialog  -->
     <string name="performance_settings_warning_title">ATTENTION !</string>
     <string name="performance_settings_warning">Les options présentes ici altèrent les performances du système, en bien ou en mal.\nElles ont des comportements différents selon les appareils et sont disponibles pour expérimentation.\nNous vous demandons de ne pas soumettre de rapport de bug à propos de celles-ci.</string>
-    <string name="pref_use_dithering_title">Activer le tramage</string>
-    <string name="pref_use_16bpp_alpha_title">Transparence 16 bits</string>
-    <string name="pref_use_16bpp_alpha_summary">Utiliser le mode 16 bits améliore la vitesse de défilement et des animations, mais peut affecter l\'affichage des éléments transparents (nécessite un redémarrage)</string>
+
+    <!-- Performance Settings : Processor Settings -->
+    <!-- Performance Settings : Processor settings title -->
+    <string name="processor_title">Paramètres CPU</string>
+    <!-- Performance Settings : Processor settings summary. -->
+    <string name="processor_summary">Stratégie et fréquences</string>
+
+    <!-- Performance Settings : Processor settings sub items -->
+    <string name="cpu_cur_freq_title">Fréquence actuelle</string>
+    <string name="cpu_governors_title">Stratégie</string>
+    <string name="cpu_governors_summary">%S</string>
+    <string name="cpu_min_freq_title">Fréquence minimale</string>
+    <string name="cpu_min_freq_summary">%s</string>
+    <string name="cpu_max_freq_title">Fréquence maximale</string>
+    <string name="cpu_max_freq_summary">%s</string>
+    <string name="cpu_set_on_boot">Appliquer au démarrage</string>
+    <string name="cpu_set_on_boot_summary">Modifie les fréquences du CPU au démarrage du système</string>
+
     <!-- Memory Management -->
     <string name="memory_management_title">Gestion de la mémoire</string>
     <string name="memory_management_summary">Options de gestion de la mémoire pour optimiser les performances</string>
@@ -528,43 +531,33 @@
     <!-- Purgeable Assets -->
     <string name="pref_purgeable_assets_title">Purge des bitmaps</string>
     <string name="pref_purgeable_assets_summary">Le système peut libérer plus de RAM si la mémoire des bitmaps peut être réclamée (nécessite un redémarrage)</string>
-    <!-- Performance Settings : Processor Settings -->
-    <string name="processor_title">Paramètres CPU</string>
-    <string name="processor_summary">Stratégie et fréquence</string>
-    <string name="cpu_cur_freq_title">Fréquence actuelle</string>
-    <string name="cpu_governors_title">Stratégie</string>
-    <string name="cpu_governors_summary">%S</string>
-    <string name="cpu_min_freq_title">Fréquence minimale</string>
-    <string name="cpu_min_freq_summary">%s</string>
-    <string name="cpu_max_freq_title">Fréquence maximale</string>
-    <string name="cpu_max_freq_summary">%s</string>
-    <string name="cpu_set_on_boot">Appliquer au démarrage</string>
-    <string name="cpu_set_on_boot_summary">Modifie les fréquences du CPU au démarrage du système</string>
 
-    <!-- About phone -->
-    <string name="mod_version">Version CyanogenMod</string>
-    <string name="mod_version_default">Inconnue</string>
-    <string name="build_date">Date de compilation</string>
-    <string name="mem_info">Mémoire</string>
+    <!-- Performance Settings : Dithering -->
+    <string name="pref_use_dithering_title">Activer le tramage</string>
+    <string name="dithering_no_dither">Désactiver le tramage</string>
+    <string name="dithering_color_banding">Régler les bandes de couleurs (défaut)</string>
+    <string name="dithering_blur_effect">Régler les bandes de couleurs et l\'effet de flou</string>
 
-    <!-- Donate #CM -->
+    <!-- Performance Settings : 16bpp Alpha -->
+    <string name="pref_use_16bpp_alpha_title">Transparence 16 bits</string>
+    <string name="pref_use_16bpp_alpha_summary">Utiliser le mode 16 bits améliore la vitesse de défilement et des animations, mais peut affecter l\'affichage des éléments transparents (nécessite un redémarrage)</string>
+
+    <!-- System Updates  -->
+    <!-- Donate  -->
     <!-- About device screen, list item title. Takes the user to the screen about how to donate to the CyanogenMod Project. -->
     <string name="donate_settings_title">Donation</string>
-    <!-- About device screen, list item summary. Takes the user to the screen about how to donate to the CyanogenMod Project. -->
-    <string name="donate_settings_summary">""</string>
 
-    <!-- Anonymous Statistics #CM -->
+    <!-- Anonymous Statistics  -->
     <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
     <string name="anonymous_statistics_title">Statistiques CyanogenMod</string>
     <string name="anonymous_statistics_summary">Aidez CyanogenMod en participant à l\'envoi de données anonymes pour comptabiliser les installations par type d\'appareil</string>
-    <string name="anonymous_statistics_warning_title">A propos</string>
+    <string name="anonymous_statistics_warning_title">À propos</string>
     <string name="anonymous_statistics_warning">Autoriser les statistiques CyanogenMod permet l\'envoi de données anonymes aux développeurs
     du système CyanogenMod pour comptabiliser le nombre d\'installations par type d\'appareil. Les informations envoyées contiennent un identifiant unique de appareil
     afin de limiter les doublons et en aucune manière ne compromet la sécurité de vos données. Ce jeu d\'informations est envoyé à chaque redémarrage pour ne conserver que les installations actives.
     \n\nVous pouvez visualiser ces données en sélectionnant \"Prévisualiser les données\".</string>
-    <string name="enable_reporting_title">Activer le reporting</string>
+    <string name="enable_reporting_title">Activer l\'envoi anonymes</string>
     <string name="preview_data_title">Prévisualiser les données</string>
-    <string name="preview_data_summary">%s</string>
     <string name="view_stats_title">Afficher les statistiques</string>
     <string name="anonymous_learn_more">En savoir plus</string>
 
@@ -578,21 +571,161 @@
     <string name="preview_country_title">Pays</string>
     <string name="preview_carrier_title">Opérateur</string>
 
-    <!-- Dock settings screen # -->
-<!--
-    <string name="dock_usb_audio_enable_title">Audio sur station d\'accueil</string>
-    <string name="dock_usb_audio_enable_summary_on">Utiliser la sortie audio de la station d\'accueil</string>
-    <string name="dock_usb_audio_enable_summary_off">Ne pas utiliser la sortie audio de la station d\'accueil</string>
-    <string name="dock_force_undock_title">Déconnecter l\'appareil</string>
-    <string name="dock_force_undock_summary_no_dock" product="tablet">La tablette n\'est pas insérée dans la station d\'accueil</string>
-    <string name="dock_force_undock_summary_no_dock" product="default">Le téléphone n\'est pas inséré dans la station d\'accueil</string>
-    <string name="dock_force_undock_summary" product="tablet">Déconnecter la tablette</string>
-    <string name="dock_force_undock_summary" product="default">Déconnecter le téléphone</string>
--->
-    <string name="safe_headset_restore_title">Sécurité volume écouteurs</string>
-    <string name="safe_headset_restore_summary">Prévient d\'un volume trop élevé au branchement des écouteurs</string>
+    <!-- Display : Rotation  -->
+    <string name="display_rotation_title">Rotation</string>
+    <string name="display_rotation_enabled">Activé.</string>
+    <string name="display_rotation_disabled">Désactivé.</string>
+    <string name="display_rotation_unit">degrés</string>
+    <string name="display_lockscreen_rotation_title">Inclure l\'écran de verrouillage</string>
+    <string name="display_rotation_category_title">Angles de rotation</string>
+    <string name="display_rotation_0_title">0 degré</string>
+    <string name="display_rotation_90_title">90 degrés</string>
+    <string name="display_rotation_180_title">180 degrés</string>
+    <string name="display_rotation_270_title">270 degrés</string>
 
-<!-- End of CyanogenMod settings -->
+    <!-- Lock screen shortcuts -->
+    <string name="picker_activities">Activités</string>
+    <string name="select_custom_app_title">Sélectionner l\'application</string>
+    <string name="select_custom_activity_title">Sélectionner l\'activité</string>
+    <string name="icon_picker_choose_icon_title">Sélectionner une icône</string>
+    <string name="icon_picker_alarm">Alarme</string>
+    <string name="icon_picker_browser">Navigateur</string>
+    <string name="icon_picker_calendar">Agenda</string>
+    <string name="icon_picker_camera">Appareil photo</string>
+    <string name="icon_picker_chrome">Chrome</string>
+    <string name="icon_picker_email">Email</string>
+    <string name="icon_picker_email2">Email Holo</string>
+    <string name="icon_picker_facebook">Facebook</string>
+    <string name="icon_picker_gallery">Galerie</string>
+    <string name="icon_picker_google_small">Google (petit)</string>
+    <string name="icon_picker_googleplus">Google Plus</string>
+    <string name="icon_picker_googletalk">Google Talk</string>
+    <string name="icon_picker_maps">Google Maps</string>
+    <string name="icon_picker_movie">Vidéos</string>
+    <string name="icon_picker_music">Musique</string>
+    <string name="icon_picker_nav_normal">Navigation</string>
+    <string name="icon_picker_phone">Téléphone</string>
+    <string name="icon_picker_podcast">Podcast</string>
+    <string name="icon_picker_rss">Rss</string>
+    <string name="icon_picker_search">Recherche</string>
+    <string name="icon_picker_sms">Messages</string>
+    <string name="icon_picker_twitter">Twitter</string>
+
+    <!-- String for IconPicker -->
+    <string name="icon_picker_title">Source de l\'icône</string>
+    <string name="icon_picker_system_icons_title">Icônes système</string>
+    <string name="icon_picker_gallery_title">Galerie</string>
+    <string name="icon_picker_pack_title">Jeux d\'icônes</string>
+
+    <!-- Advanced tethering settings -->
+    <string name="tethering_advanced_text">Paramètres avancés</string>
+    <string name="tethering_lease_time_text">Expiration DHCP</string>
+    <string name="dhcp_lease_30mn">30 minutes</string>
+    <string name="dhcp_lease_1h">1 heure (défaut)</string>
+    <string name="dhcp_lease_2h">2 heures</string>
+    <string name="dhcp_lease_4h">4 heures</string>
+    <string name="dhcp_lease_6h">6 heures</string>
+    <string name="dhcp_lease_12h">12 heures</string>
+    <string name="dhcp_lease_24h">24 heures</string>
+
+    <!-- Status bar notification count -->
+    <string name="status_bar_notif_count_title">Compteur de notifications</string>
+    <string name="status_bar_notif_count_summary">Afficher le nombre de notifications en attente dans la barre d\'état</string>
+
+    <string name="increasing_ring_title">Sonnerie progressive</string>
+    <!-- Sound settings screen, the caption of the checkbox for making incoming calls increase in volume -->
+    <string name="checkbox_increasing_ring">Activer</string>
+    <!-- Sound settings screen, the title of the volume bar to adjust the minimum increasing ring volume -->
+    <string name="increasing_ring_min_volume_title">Volume de départ</string>
+    <string name="increasing_ring_volume_notice">Note:\nComme le volume défini est plus grand que celui de la sonnerie, il sera réduit à son niveau.</string>
+    <string name="increasing_ring_interval_title">Intervale de progression</string>
+    <string name="increasing_ring_interval_eachring">À chaque sonnerie</string>
+    <string name="increasing_ring_interval_half_second">0.5 secondes</string>
+    <string name="increasing_ring_interval_1second">1 seconde</string>
+    <string name="increasing_ring_interval_2seconds">2 secondes</string>
+    <string name="increasing_ring_interval_3seconds">3 secondes</string>
+    <string name="increasing_ring_interval_5seconds">5 secondes</string>
+    <string name="increasing_ring_interval_10seconds">10 secondes</string>
+
+    <string name="profile_write_nfc_tag">Écrire sur les tags NFC</string>
+    <string name="profile_write_touch_tag">Toucher le tag pour écrire</string>
+    <string name="profile_write_success">Tag écrit avec succès</string>
+    <string name="profile_write_failed">L\'écriture à échoué!</string>
+    <string name="profile_selected">Profil sélectionné: %1$s</string>
+    <string name="profile_nfc_text">Écrire un profil sur un tag NFC permet d\'en sélectionner un avec celui-ci. Lors du deuxième contact le profil précédent est sélectionné.</string>
+    <string name="profile_unknown_nfc_tag">Profil inconnu</string>
+    <string name="profile_add_nfc_text">Ce tag NFC se refère à aucun profil. Relier ce tag NFC à un profil existant permettra de sélectionner le profil à l\'avenir.</string>
+    <string name="profile_select">Sélectionner un profil</string>
+
+    <string name="link_volume_ringtones">Lier le volume des alertes à la sonnerie</string>
+    <string name="link_volume_mutes">Silence commun pour alertes et sonnerie</string>
+
+    <string name="adb_over_network">ADB sur TCP/IP</string>
+    <string name="adb_over_network_summary">"Activer le débogage sur toutes les interfaces (réseaux USB, Wi-Fi et Bluetooth)"</string>
+    <!-- Warning for Adb over Network -->
+    <string name="adb_over_network_warning">"ATTENTION: Lorsque cette fonction est activée, votre appareil est ouvert aux intrusions sur toutes les interfaces, y compris via le réseau mobile !\n\nIl est fortement conseillé de désactiver le réseau mobile avant d\'activer cette fonction.\n\nContinuer ?"</string>
+
+    <!-- Security & location settings screen, setting check box title. This controls whether the device shows the slider widgets before the unlock option [CHAR LIMIT=28]-->
+    <string name="lockpattern_settings_enable_lock_before_unlock">Afficher les widgets avant le déverrouillage</string>
+
+    <!-- Electron Beam -->
+    <string name="display_category_animation_options_title">Animation</string>
+    <string name="display_electron_beam_animation_on_title">Lorsque l\'écran s\'allume</string>
+    <string name="display_electron_beam_animation_off_title">À l\'extinction de l\'écran</string>
+
+    <!-- Sound settings screen -->
+    <string name="volume_overlay_title">Contrôle du volume</string>
+    <string name="volbtn_music_controls_title">Playlist par boutons volume</string>
+    <string name="volbtn_music_controls_summary">Lorsque l\'écran est éteint, un appui long permet de changer le titre en cours</string>
+    <string name="volume_ring_only_description">Sonneries</string>
+
+    <!-- Wakeup options -->
+    <string name="display_category_wakeup_options_title">Sortie de veille</string>
+    <string name="pref_volume_wake_title">Éveil par boutons Volume</string>
+    <string name="pref_volume_wake_summary">Permet de rallumer l\'appareil à l\'aide des boutons de volume.</string>
+
+    <!-- Kill app long-press back -->
+    <string name="kill_app_longpress_back">Tuer avec bouton Retour</string>
+    <string name="kill_app_longpress_back_summary">Permet de forcer la fermeture de l\'application en cours en appuyant longuement sur le bouton Retour</string>
+
+    <!-- Hostname setting -->
+    <string name="device_hostname">Nom d\'hôte de l\'appareil</string>
+
+    <!-- About phone screen,  setting option name-->
+    <string name="mod_version">Version CyanogenMod</string>
+    <string name="mod_version_default">Inconnue</string>
+    <!-- About phone screen, build date of ROM -->
+    <string name="build_date">Date de compilation</string>
+    <!-- About phone screen, Free memory info -->
+    <string name="mem_info">Mémoire</string>
+    <!-- About phone screen, status item label -->
+
+    <!-- Whether to display IME switcher notifcation -->
+    <string name="ime_switcher_notify">Icône méthode de saisie</string>
+    <string name="ime_switcher_notify_summary">Afficher l\'icône de la méthode de saisie dans la barre de notification</string>
+
+    <!-- Change Log strings -->
+    <string name="changelog_title">Voir changelog</string>
+    <string name="changelog_dialog">Changelog</string>
+    <string name="changelog_loading">Chargement du changelog...</string>
+    <string name="changelog_error">Impossible de charger le changelog</string>
+    <string name="changelog_unknown">Inconnu</string>
+    <string name="changelog_version">Version</string>
+
+    <!-- Stylus Icon -->
+    <string name="stylus_icon_enabled_title">Pointeur stylet</string>
+    <string name="stylus_icon_enabled_summary">Afficher l\'icône du pointeur lors de l\'utilisation d\'un stylet</string>
+
+    <!-- Power menu screenshot -->
+    <string name="power_menu_title">Menu marche/arrêt</string>
+    <string name="power_menu_reboot_title">Redémarrer</string>
+    <string name="power_menu_screenshot_title">Capture d\'écran</string>
+    <string name="power_menu_profiles_title">Profils</string>
+
+    <!-- Launches Dev Tools -->
+    <string name="development_tools_title">Outils dév.</string>
+
+    <!-- **** CYANOGENMOD ADDITIONS END **** -->
 
     <string name="yes" msgid="4676390750360727396">"Oui"</string>
     <string name="no" msgid="6731231425810196216">"Non"</string>
