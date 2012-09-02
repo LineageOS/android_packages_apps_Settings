@@ -294,7 +294,7 @@
     <string name="biometric_weak_liveliness_title" msgid="2661613702124561096">"真人判断"</string>
     <string name="biometric_weak_liveliness_summary" msgid="4199587000948042325">"解锁时需要眨眼"</string>
     <string name="lock_after_timeout" msgid="4590337686681194648">"自动锁定"</string>
-    <string name="lock_after_timeout_summary" msgid="6128431871360905631">"休眠 <xliff:g id="TIMEOUT_STRING">%1$s</xliff:g>后"</string>
+    <string name="lock_after_timeout_summary" msgid="6128431871360905631">"<xliff:g id="TIMEOUT_STRING">%1$s</xliff:g>后休眠"</string>
     <string name="show_owner_info_on_lockscreen_label" msgid="5074906168357568434">"在锁定屏幕上显示机主信息"</string>
     <string name="owner_info_settings_title" msgid="2723190010708381889">"机主信息"</string>
     <string name="owner_info_settings_summary" msgid="3800834657847339570"></string>
@@ -957,6 +957,12 @@
     <string name="lockpattern_settings_enable_title" msgid="6920616873671115281">"需要解锁图案"</string>
     <string name="lockpattern_settings_enable_summary" msgid="1165707416664252167">"必须绘制图案才能解锁屏幕"</string>
     <string name="lockpattern_settings_enable_visible_pattern_title" msgid="2615606088906120711">"使图案可见"</string>
+
+    <!-- Security & location settings screen, setting check box title. This setting controls whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly.  If checked, this line is drawn.  If unchecked, there is nothing drawn so the user does not reveal his pattern while he unlocks the phone.-->
+    <string name="lockpattern_settings_enable_error_path_title">显示图案错误</string>
+    <!-- Security & location settings screen, setting check box title. This setting controls whether the dots will be drawn when using the lockscreen pattern.-->
+    <string name="lockpattern_settings_enable_dots_title">显示图案点</string>
+
     <string name="lockpattern_settings_enable_tactile_feedback_title" msgid="8898518337442601027">"触摸时振动"</string>
     <string name="lockpattern_settings_enable_power_button_instantly_locks" msgid="5735444062633666327">"电源按钮即时锁定"</string>
     <string name="lockpattern_settings_choose_lock_pattern" msgid="1652352830005653447">"设置解锁图案"</string>
@@ -2215,18 +2221,28 @@
     <!-- Performance Settings : Processor settings title -->
     <string name="processor_title">处理器</string>
     <!-- Performance Settings : Processor settings summary. -->
-    <string name="processor_summary">修改CPU调节器以及时钟速度</string>
+    <string name="processor_summary">更改 CPU 调节器以及时钟速度</string>
 
     <!-- Performance Settings : Processor settings sub items -->
-    <string name="cpu_cur_freq_title">当前CPU频率</string>
-    <string name="cpu_governors_title">CPU调节器</string>
-    <string name="cpu_min_freq_title">最低CPU频率</string>
+    <string name="cpu_cur_freq_title">当前 CPU 频率</string>
+    <string name="cpu_governors_title">CPU 调节器</string>
+    <string name="cpu_min_freq_title">最低 CPU 频率</string>
     <string name="cpu_min_freq_summary">%s</string>
-    <string name="cpu_max_freq_title">最高CPU频率</string>
+    <string name="cpu_max_freq_title">最高 CPU 频率</string>
     <string name="cpu_max_freq_summary">%s</string>
     <string name="cpu_set_on_boot">启动时设置</string>
-    <string name="cpu_set_on_boot_summary">在启动时恢复当前的CPU设置</string>
+    <string name="cpu_set_on_boot_summary">在启动时恢复当前的 CPU 设置</string>
 
+    <!-- Performance Settings : I/O scheduler settings title -->
+    <string name="io_scheds_title">I/O 调度器</string>
+    <!-- Performance Settings : I/O scheduler settings summary. -->
+    <string name="io_scheds_summary">更改 I/O 调度器</string>
+
+    <!-- Performance Settings : I/O scheduler settings sub items -->
+    <string name="io_sched_title">I/O 调度器</string>
+    <string name="io_sched_summary">%S</string>
+    <string name="io_sched_set_on_boot">启动时设置</string>
+    <string name="io_sched_set_on_boot_summary">在启动时恢复当前的 I/O 调度器设置</string>
     <!-- Memory Management -->
     <string name="memory_management_title">内存管理</string>
     <string name="memory_management_summary">自定义内存使用以改变系统性能</string>
@@ -2447,6 +2463,16 @@
 
     <!-- Launches Dev Tools -->
     <string name="development_tools_title">启动开发工具</string>
+
+    <!-- USB Mass Storage -->
+    <string name="usb_mass_storage_title">USB 大容量存储</string>
+    <string name="usb_mass_storage_summary">使用 USB 大容量存储</string>
+
+    <!--- Volume key cursor control -->
+    <string name="volume_key_cursor_control_title">音量键光标控制</string>
+    <string name="volume_key_cursor_control_off">禁用</string>
+    <string name="volume_key_cursor_control_on">音量上/下将会使光标左/右移动</string>
+    <string name="volume_key_cursor_control_on_reverse">音量上/下将会使光标右/左移动</string>
 
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>
