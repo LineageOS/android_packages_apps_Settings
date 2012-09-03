@@ -46,6 +46,8 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
+import java.util.ArrayList;
+
 public class Memory extends SettingsPreferenceFragment {
     private static final String TAG = "MemorySettings";
 
@@ -90,7 +92,16 @@ public class Memory extends SettingsPreferenceFragment {
             mInternalStorageVolumePreferenceCategory.init();
         }
 
-        StorageVolume[] storageVolumes = mStorageManager.getVolumeList();
+        StorageVolume[] storageVolumesListRaw = mStorageManager.getVolumeList();
+        ArrayList<StorageVolume> storageVolumesList = new ArrayList<StorageVolume>();
+        for (int i = 0; i < storageVolumesListRaw.length; i++) {
+            StorageVolume storageVolume = storageVolumesListRaw[i];
+            if (!mStorageManager.getVolumeState(storageVolume.getPath()).equals(Environment.MEDIA_REMOVED)) {
+                storageVolumesList.add(storageVolume);
+            }
+        }
+        StorageVolume[] storageVolumes = storageVolumesList.toArray(new StorageVolume[storageVolumesList.size()]);
+
         int length = storageVolumes.length;
         mStorageVolumePreferenceCategories = new StorageVolumePreferenceCategory[length];
         for (int i = 0; i < length; i++) {
