@@ -149,6 +149,7 @@ public class PowerWidget extends SettingsPreferenceFragment implements
         private static final String TAG = "PowerWidgetActivity";
 
         private static final String BUTTONS_CATEGORY = "pref_buttons";
+        private static final String BUTTON_MODES_CATEGORY = "pref_buttons_modes";
         private static final String SELECT_BUTTON_KEY_PREFIX = "pref_button_";
 
         private static final String EXP_BRIGHTNESS_MODE = "pref_brightness_mode";
@@ -176,6 +177,7 @@ public class PowerWidget extends SettingsPreferenceFragment implements
             addPreferencesFromResource(R.xml.power_widget);
 
             PreferenceScreen prefSet = getPreferenceScreen();
+            PackageManager pm = getPackageManager();
 
             if (getActivity().getApplicationContext() == null) {
                 return;
@@ -220,6 +222,10 @@ public class PowerWidget extends SettingsPreferenceFragment implements
             PreferenceCategory prefButtons = (PreferenceCategory) prefSet
                     .findPreference(BUTTONS_CATEGORY);
 
+            // Add the available mode buttons, incase they need to be removed later
+            PreferenceCategory prefButtonsModes = (PreferenceCategory) prefSet
+                    .findPreference(BUTTON_MODES_CATEGORY);
+
             // empty our preference category and set it to order as added
             prefButtons.removeAll();
             prefButtons.setOrderingAsAdded(false);
@@ -235,6 +241,14 @@ public class PowerWidget extends SettingsPreferenceFragment implements
             boolean isWimaxEnabled = WimaxHelper.isWimaxSupported(getActivity());
             if (!isWimaxEnabled) {
                 PowerWidgetUtil.BUTTONS.remove(PowerWidgetUtil.BUTTON_WIMAX);
+            }
+
+            // Don't show mobile data options if not supported
+            boolean isMobileData = pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
+            if (!isMobileData) {
+                PowerWidgetUtil.BUTTONS.remove(PowerWidgetUtil.BUTTON_MOBILEDATA);
+                PowerWidgetUtil.BUTTONS.remove(PowerWidgetUtil.BUTTON_NETWORKMODE);
+                prefButtonsModes.removePreference(mNetworkMode);
             }
 
             // fill that checkbox map!
