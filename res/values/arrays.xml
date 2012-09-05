@@ -249,7 +249,7 @@
 
     <!-- Match this with the constants in WifiDialog. --> <skip />
     <!-- Wi-Fi settings.  The type of EAP method a Wi-Fi network has. -->
-    <string-array name="wifi_eap_method">
+    <string-array name="wifi_eap_method" translatable="false">
         <!-- Do not translate. -->
         <item>PEAP</item>
         <!-- Do not translate. -->
@@ -390,12 +390,12 @@
     <!-- Locales in this list are displayed with the corresponding
          name from special_locale_names instead of using the name
          from Locale.getDisplayName(). -->
-    <string-array translatable="false" name="special_locale_codes">
+    <string-array name="special_locale_codes" translatable="false">
         <item>zh_CN</item>
         <item>zh_TW</item>
     </string-array>
 
-    <string-array translatable="false" name="special_locale_names">
+    <string-array name="special_locale_names" translatable="false">
         <item>中文 (简体)</item>
         <item>中文 (繁體)</item>
     </string-array>
@@ -408,7 +408,7 @@
         <item>PAP or CHAP</item>
     </string-array>
 
-    <string-array translatable="false" name="apn_auth_values">
+    <string-array name="apn_auth_values" translatable="false">
         <!-- Do not translate. -->
         <item>0</item>
         <!-- Do not translate. -->
@@ -426,7 +426,7 @@
         <item>IPv4/IPv6</item>
     </string-array>
 
-    <string-array translatable="false" name="apn_protocol_values">
+    <string-array name="apn_protocol_values" translatable="false">
         <!-- Do not translate. -->
         <item>IP</item>
         <!-- Do not translate. -->
@@ -540,7 +540,7 @@
         <item>@string/increasing_ring_interval_10seconds</item>
     </string-array>
 
-    <integer-array name="increasing_ring_interval_values">
+    <integer-array name="increasing_ring_interval_values" translatable="false">
         <item>0</item>
         <item>500</item>
         <item>1000</item>
