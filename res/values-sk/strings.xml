@@ -92,8 +92,11 @@
     <string name="bluetooth_is_discoverable" msgid="1205694503775884903">"Zariadenie je viditeľné v intervale <xliff:g id="DISCOVERABLE_TIME_PERIOD">%1$s</xliff:g> s"</string>
     <string name="bluetooth_is_discoverable_always" msgid="8573385118329733931">"Viditeľné"</string>
     <string name="bluetooth_not_discoverable" msgid="128269993123955177">"Prepne zariadenie do viditeľného režimu"</string>
+    <string name="bluetooth_fast_connect_on">Rýchle pripojenie Bluetooth</string>
+    <string name="bluetooth_fast_connect_off">Normálne pripojenie Bluetooth</string>
     <string name="bluetooth_visibility_timeout" msgid="6634508002347847278">"Časový limit viditeľného režimu vypršal"</string>
     <string name="bluetooth_visibility_timeout_summary" msgid="6483353842671501585">"Nastavte dobu, počas ktorej bude zariadenie vo viditeľnom režime"</string>
+    <string name="bluetooth_fast_connect">Rýchle pripojenie</string>
     <string name="bluetooth_lock_voice_dialing" msgid="3139322992062086225">"Uzamknúť hlasové vytáčanie"</string>
     <string name="bluetooth_lock_voice_dialing_summary" msgid="4741338867496787042">"Zabrániť použitiu vytáčania Bluetooth pri uzamknutej obrazovke"</string>
     <string name="bluetooth_devices" msgid="1886018064039454227">"Zariadenia Bluetooth"</string>
@@ -211,6 +214,7 @@
     <string name="activity_picker_label" msgid="4910700713930693329">"Vybrať činnosť"</string>
     <string name="device_info_label" msgid="6551553813651711205">"Informácie o zariadení"</string>
     <string name="battery_info_label" msgid="4132685016148679403">"Informácie o batérii"</string>
+    <string name="battery_history_label">História batérie</string>
     <string name="display_label" msgid="7403874003169865762">"Zobraziť"</string>
     <string name="phone_info_label" msgid="2127552523124277664">"Informácie o telefóne"</string>
     <string name="sd_card_settings_label" product="nosdcard" msgid="8101475181301178428">"Ukladací priestor USB"</string>
@@ -889,6 +893,7 @@
     <string name="testing" msgid="6584352735303604146">"Testovanie"</string>
     <string name="testing_phone_info" msgid="8656693364332840056">"Informácie o telefóne"</string>
     <string name="testing_battery_info" msgid="3497865525976497848">"Informácie o batérii"</string>
+    <string name="testing_battery_history">História batérie</string>
     <string name="quick_launch_title" msgid="7904609846945905306">"Rýchle spustenie"</string>
     <string name="quick_launch_summary" msgid="3453825712466417452">"Umožňuje nastaviť klávesové skratky na spúšťanie aplikácií"</string>
     <string name="quick_launch_assign_application" msgid="4521368464929956350">"Priradiť aplikáciu"</string>
@@ -912,6 +917,7 @@
     <string name="enable_adb_summary" msgid="4881186971746056635">"Povoliť režim ladenia s pripojeným zariadením USB"</string>
     <string name="adb_over_network">ADB cez sieť</string>
     <string name="adb_over_network_summary">Použiť ladenie cez sieť (napr. WiFi) namiesto USB. Nastavenie sa deaktivuje po reštarte.</string>
+    <string name="adb_over_network_warning">UPOZORNENIE: Ak je povolené ADB cez sieťové pripojenie, zariadenie je otvorené pre pokusy o prieniky na všetkých pripojených sieťach, vrátane GSM dátovej siete!\n\nPoužite túto funkciu iba ak ste pripojený k dôveryhodnej sieti.\n\nUrčite chcete povoliť túto funkciu?</string>
     <string name="adb_notify">Upozorenie ladenia</string>
     <string name="adb_notify_summary">Zobrazí upozornenie ak je aktívne ladenie</string>
     <string name="keep_screen_on" msgid="1146389631208760344">"Nezamykať obrazovku"</string>
@@ -1170,8 +1176,10 @@
     <string name="vpn_openvpn_set_remote_addr">Vzdialená IP adresa</string>
     <string name="vpn_openvpn_set_cipher">Algoritmus šifry</string>
     <string name="vpn_openvpn_set_cipher_message">Ponechajte prázdne pre predvolenú šifru</string>
+    <string name="vpn_openvpn_set_cipher_default">predvolená</string>
     <string name="vpn_openvpn_set_keysize">Dĺžka kľúča šifry</string>
     <string name="vpn_openvpn_set_keysize_message">Ponechajte prázdne pre predvolenú dĺžku</string>
+    <string name="vpn_openvpn_set_keysize_default">predvolená</string>
     <string name="vpn_openvpn_set_extra">Extra parametre</string>
     <string name="vpn_openvpn_set_extra_message">Zadajte dodatočné parametre príkazového riadku</string>
     <string name="vpn_ipsec_presharedkey_title" msgid="2184060087690539175">"Nastaviť predzdieľaný kľúč IPSec"</string>
@@ -1381,4 +1389,45 @@
     <string name="wimax_settings_summary" msgid="3207355006084135453">"Nastaviť a spravovať sieť 4G a modem"</string>
     <string name="status_wimax_mac_address" msgid="8390791848661413416">"Adresa 4G MAC"</string>
     <string name="additional_system_update_settings_list_item_title" msgid="214987609894661992">"Ďalšie aktualizácie systému"</string>
+    <string name="finger_enrollment">Vzor odtlačku prsta</string>
+    <string name="start_finger_enrollment_summary">Zadajte vzor vášho odtlačku prsta pre použitie na odomykanie obrazovky a iných aplikácii</string>
+    <string name="lockfinger_unlock_set_unlock_launch_picker_summary">Uzamknutie obrazovky pomocou vzoru, odtlačku prsta, PIN kódu alebo hesla</string>
+    <string name="lockfinger_unlock_set_unlock_launch_picker_change_summary">Zmeniť alebo zakázať bezpečnostný vzor, odtlačok prsta,PIN kód alebo heslo</string>
+    <string name="lockfinger_unlock_set_unlock_finger_title">Odtlačok prsta</string>
+    <string name="lockfinger_unlock_set_unlock_finger_summary">Odomknutie obrazovky pomocou odtlačku prsta</string>
+    <string name="lockfinger_finger_settings_title">Odomknúť obrazovku odtlačkom prsta</string>
+    <string name="lockfinger_set_finger_unlock_title">Nastaviť odomknutie odtlačkom prsta</string>
+    <string name="lockfinger_change_finger_unlock_title">Zmeniť odomknutie odtlačkom prsta</string>
+    <string name="lockfinger_toggle_unlock_finger_title">Vyžadovať odtlačok prsta</string>
+    <string name="lockfinger_toggle_unlock_finger_summary">Musíte použiť odtlačok prsta pre odomknutie obrazovky</string>
+    <string name="lockfinger_dbadmin_title">Správa True Suite</string>
+    <string name="lockfinger_unlock_disable_lock_finger_summary">Odstrániť odomknutie odtlačkom prsta</string>
+    <string name="unlock_change_lock_finger_title">Zmeniť odomknutie odtlačkom prsta</string>
+    <string name="lockpassword_finger_set_toast">Odtlačok prsta bol nastavený</string>
+    <string name="lockpattern_change_lock_finger_label">Zmeniť vzor odtlačku prsta</string>
+    <string name="lockfinger_semaphore_failure_toast">Zadanie vzoru zlyhalo</string>
+    <string name="lockfinger_enrollment_succeeded_toast">Zadanie vzoru úspešné.</string>
+    <string name="lockfinger_tsm_library_not_available_toast">TSM knižnicu sa nepodarilo načítať\u2026 Nemožno pokračovať!</string>
+    <string name="lockfinger_enrollment_canceled_toast">Zadanie vzoru zrušené.</string>
+    <string name="lockfinger_enrollment_timeout_toast">Vypršal čas na zadanie vzoru.</string>
+    <string name="lockfinger_enrollment_unknown_error_toast">Neznáma chyba.\nPravdepodobne zlyhalo pripojenie.</string>
+    <string name="lockfinger_enrollment_failure_default_toast">Zadanie vzoru neúspešné. Chyba = %d.</string>
+    <string name="lockfinger_enrollment_database_full">Zadanie vzoru neúspešné. Databáza je plná.</string>
+    <string name="lockfinger_dbadmin_failure_default_toast">Chyba pri operácii so správou databázy: %d</string>
+    <string name="lockfinger_ui_timeout_header">Časový limit vypršal!</string>
+    <string name="lockfinger_too_many_bad_swipes_header">Príliš veľa neplatných pokusov!</string>
+    <string name="lockfinger_lockout_countdown_footer">Skúste to znova o %d sekúnd.</string>
+
+    <string name="increasing_ring_title">Zvyšovanie hlasitosi zvonenia</string>
+    <string name="checkbox_increasing_ring">Povoliť postupné zvyšovanie hlasitosti zvonenia</string>
+    <string name="increasing_ring_min_volume_title">Počiatočná hlasitosť zvonenia</string>
+    <string name="increasing_ring_volume_notice">Poznámka:\nAk je počiatočná hlasitosť nastavená na vyššiu úroveň ako hlasitosť zvonenia bude ako hlasitosť použitá hlasitosť zvonenia.</string>
+    <string name="increasing_ring_interval_title">Interval zvyšovania</string>
+    <string name="increasing_ring_interval_eachring">Pre každé zvonenie</string>
+    <string name="increasing_ring_interval_half_second">0,5 sekundy</string>
+    <string name="increasing_ring_interval_1second">1 sekunda</string>
+    <string name="increasing_ring_interval_2seconds">2 sekundy</string>
+    <string name="increasing_ring_interval_3seconds">3 sekundy</string>
+    <string name="increasing_ring_interval_5seconds">5 sekúnd</string>
+    <string name="increasing_ring_interval_10seconds">10 sekúnd</string>
 </resources>
