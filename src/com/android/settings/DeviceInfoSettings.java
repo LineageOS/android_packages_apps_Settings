@@ -241,14 +241,15 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
                 "\\w+\\s+" + /* ignore: Linux */
                 "\\w+\\s+" + /* ignore: version */
                 "([^\\s]+)\\s+" + /* group 1: 2.6.22-omap1 */
-                "\\(([^\\s@]+(?:@[^\\s.]+)?)[^)]*\\)\\s+" + /* group 2: (xxxxxx@xxxxx.constant) */
+                "\\(([^\\s@]+@[^\\s@]+)\\)+\\s+" + /* group 2: (xxxxxx@xxxxx.constant) */
                 // "(gcc" followed by anything up to two consecutive ")"
                 // separated by only white space (which seems to be the norm)
-                "(?:\\(gcc.*\\)\\s+\\))?\\s+" + /* ignore: (gcc ..) */
+                "\\(gcc.*\\)\\s+" +
                 "([^\\s]+)\\s+" + /* group 3: #26 */
                 "(?:SMP\\s+)?" + /* ignore: SMP (optional) */
                 "(?:PREEMPT\\s+)?" + /* ignore: PREEMPT (optional) */
                 "(.+)"; /* group 4: date */
+
 
             Pattern p = Pattern.compile(PROC_VERSION_REGEX);
             Matcher m = p.matcher(procVersionStr);
