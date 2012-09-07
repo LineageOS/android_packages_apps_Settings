@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--  Copyright (C) 2007 The Android Open Source Project
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2007 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -12,10 +12,8 @@
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
      See the License for the specific language governing permissions and
      limitations under the License.
- -->
-
-<resources xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="yes" msgid="4676390750360727396">"Tak"</string>
     <string name="no" msgid="6731231425810196216">"Nie"</string>
     <string name="create" msgid="3578857613172647409">"Utwórz"</string>
@@ -64,6 +62,7 @@
     <string name="medium_font" msgid="2068475425515133701">"Średni"</string>
     <string name="large_font" msgid="599055175160971446">"Duży"</string>
     <string name="font_size_save" msgid="3450855718056759095">"OK"</string>
+
     <string name="sdcard_setting" product="nosdcard" msgid="8281011784066476192">"Nośnik USB"</string>
     <string name="sdcard_setting" product="default" msgid="5922637503871474866">"Karta SD"</string>
     <string name="battery_info_status_label" msgid="8109155295509700309">"Stan baterii:"</string>
@@ -166,8 +165,7 @@
     <string name="normal_date_format" msgid="7636406984925498359">"Regionalny (<xliff:g id="DATE">%s</xliff:g>)"</string>
     <string name="display_preview_label" msgid="1127597250917274792">"Podgląd:"</string>
     <string name="display_font_size_label" msgid="8941851418397475389">"Rozmiar czcionki:"</string>
-    <!-- no translation found for intent_sender_data_label (6332324780477289261) -->
-    <skip />
+    <string name="intent_sender_data_label"><xliff:g id="data">Data:</xliff:g></string>
     <string name="intent_sender_sendbroadcast_text" msgid="1415735148895872715">"Wyślij <xliff:g id="BROADCAST">broadcast</xliff:g>"</string>
     <string name="intent_sender_action_label" msgid="616458370005452389">"<xliff:g id="ACTION">Action</xliff:g>:"</string>
     <string name="intent_sender_startactivity_text" msgid="5080516029580421895">"Rozpocznij <xliff:g id="ACTIVITY">activity</xliff:g>"</string>
@@ -176,6 +174,7 @@
     <string name="proxy_settings_title" msgid="5912878565897294401">"Ustawienia proxy"</string>
     <string name="proxy_clear_text" msgid="5555400754952012657">"Wyczyść"</string>
     <string name="proxy_port_label" msgid="5655276502233453400">"Numer portu serwera proxy"</string>
+
     <string name="proxy_exclusionlist_label" msgid="7700491504623418701">"Pomiń proxy dla"</string>
     <string name="proxy_exclusionlist_hint" msgid="6084099226687226948">"example.com,mojkomputer.test.com,localhost"</string>
     <string name="proxy_defaultView_text" msgid="6387985519141433291">"Przywróć domyślne"</string>
@@ -247,6 +246,7 @@
     <string name="next_label" msgid="4693520878012668114">"Dalej"</string>
     <string name="language_picker_title" msgid="5349877711342869319">"Język"</string>
     <string name="activity_picker_label" msgid="6295660302548177109">"Wybierz działanie"</string>
+
     <string name="device_info_label" msgid="6551553813651711205">"Informacje o urządzeniu"</string>
     <string name="battery_info_label" msgid="4132685016148679403">"Informacje o baterii"</string>
     <string name="display_label" msgid="8074070940506840792">"Ekran"</string>
@@ -356,6 +356,10 @@
     <string name="unlock_set_unlock_mode_pattern" msgid="7837270780919299289">"Wzór"</string>
     <string name="unlock_set_unlock_mode_pin" msgid="3541326261341386690">"Kod PIN"</string>
     <string name="unlock_set_unlock_mode_password" msgid="1203938057264146610">"Hasło"</string>
+    <string name="lock_pattern_size_3">3x3</string>
+    <string name="lock_pattern_size_4">4x4</string>
+    <string name="lock_pattern_size_5">5x5</string>
+    <string name="lock_pattern_size_6">6x6</string>
     <string name="unlock_disable_lock_title" msgid="1427036227416979120">"Wyłącz blokadę ekranu"</string>
     <string name="unlock_disable_lock_pattern_summary" msgid="6801602880568869201">"Usuń wzór odblokowania"</string>
     <string name="unlock_disable_lock_pin_summary" msgid="8856842745366993387">"Usuń kod PIN odblokowania"</string>
@@ -545,6 +549,7 @@
     <string name="wifi_status" msgid="4824568012414605414">"Stan"</string>
     <string name="wifi_speed" msgid="3526198708812322037">"Szybkość łącza"</string>
     <string name="wifi_ip_address" msgid="1440054061044402918">"Adres IP"</string>
+
     <string name="wifi_eap_method" msgid="8529436133640730382">"Metoda EAP"</string>
     <string name="please_select_phase2" msgid="5231074529772044898">"Uwierzytelnianie w drugiej fazie"</string>
     <string name="wifi_eap_ca_cert" msgid="3521574865488892851">"Certyfikat urzędu certyfikacji"</string>
@@ -566,6 +571,18 @@
     <string name="wifi_secured_first_item" msgid="4072076186051083451">"Zabezpieczona za pomocą protokołu <xliff:g id="WIFI_SECURITY_SHORT">%1$s</xliff:g>"</string>
     <string name="wifi_secured_second_item" msgid="1326000076939056265">", zabezpieczona za pomocą protokołu <xliff:g id="WIFI_SECURITY_SHORT">%1$s</xliff:g>"</string>
     <string name="wifi_security_none" msgid="7985461072596594400">"Brak"</string>
+
+
+
+
+
+
+
+
+
+
+
+
     <string name="wifi_connect" msgid="1076622875777072845">"Połącz"</string>
     <string name="wifi_failed_connect_message" msgid="8491902558970292871">"Nie można nawiązać połączenia z siecią"</string>
     <string name="wifi_forget" msgid="8168174695608386644">"Zapomnij"</string>
@@ -587,9 +604,13 @@
     <string name="wifi_ip_settings_invalid_dns" msgid="8744583948328391047">"Wpisz prawidłowy adres DNS."</string>
     <string name="wifi_ip_settings_invalid_network_prefix_length" msgid="40470058023181052">"Wpisz długość przedrostka sieci z zakresu 0-32."</string>
     <string name="wifi_dns1" msgid="7344118050720080045">"DNS 1"</string>
+
     <string name="wifi_dns2" msgid="1368601006824882659">"DNS 2"</string>
+
     <string name="wifi_gateway" msgid="163914742461092086">"Brama"</string>
+
     <string name="wifi_network_prefix_length" msgid="3028785234245085998">"Długość przedrostka sieci"</string>
+
     <string name="wifi_p2p_settings_title" msgid="400503541488064638">"Wi-Fi Direct"</string>
     <string name="wifi_p2p_device_info" msgid="3191876744469364173">"Informacje o urządzeniu"</string>
     <string name="wifi_p2p_persist_network" msgid="1646424791818168590">"Zapamiętaj to połączenie"</string>
@@ -610,6 +631,35 @@
     <string name="wifi_tether_configure_ap_text" msgid="61237027772641155">"Skonfiguruj hotspot Wi-Fi"</string>
     <string name="wifi_tether_configure_subtext" msgid="1927454307836232128">"Przenośny punkt Wi-Fi <xliff:g id="NETWORK_SSID">%1$s</xliff:g> <xliff:g id="NETWORK_SECURITY">%2$s</xliff:g>"</string>
     <string name="wifi_tether_configure_ssid_default" msgid="8467525402622138547">"Punkt dostępu Android"</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <string name="display_settings_title" msgid="1708697328627382561">"Wyświetlacz"</string>
     <string name="sound_settings" msgid="5534671337768745343">"Dźwięk"</string>
     <string name="ringtone_title" msgid="5379026328015343686">"Dzwonek telefonu"</string>
@@ -619,7 +669,6 @@
     <string name="ring_volume_title" msgid="7938706566797464165">"Głośność dzwonka"</string>
     <string name="vibrate_in_silent_title" msgid="3897968069156767036">"Wibracje po wyciszeniu"</string>
     <string name="notification_sound_title" msgid="312032901303146002">"Powiadomienie domyślne"</string>
-    <string name="notification_pulse_title" msgid="1247988024534030629">"Pulsująca dioda"</string>
     <string name="incoming_call_volume_title" msgid="8073714801365904099">"Dzwonek"</string>
     <string name="notification_volume_title" msgid="2012640760341080408">"Powiadomienie"</string>
     <string name="checkbox_notification_same_as_incoming_call" msgid="1073644356290338921">"Użyj głośności połączeń przychodzących dla powiadomień"</string>
@@ -684,6 +733,7 @@
     <string name="screensaver_activate_on_dock_title" msgid="3753003388633168862">"Także, gdy zadokowany."</string>
     <string name="automatic_brightness" msgid="5014143533884135461">"Automatyczna"</string>
     <string name="title_font_size" msgid="4405544325522105222">"Rozmiar czcionki"</string>
+
     <string name="dialog_title_font_size" msgid="2231507851258955038">"Rozmiar czcionki"</string>
     <string name="sim_lock_settings" msgid="3392331196873564292">"Ustawienia blokady karty SIM"</string>
     <string name="sim_lock_settings_category" msgid="5136244267576697004">"Ustaw blokadę SIM"</string>
@@ -710,10 +760,9 @@
     <string name="sim_enter_cancel" msgid="6240422158517208036">"Anuluj"</string>
     <string name="device_info_settings" product="tablet" msgid="1119755927536987178">"Stan tabletu"</string>
     <string name="device_info_settings" product="default" msgid="475872867864762157">"Stan telefonu"</string>
-    <string name="system_update_settings_list_item_title" msgid="3342887311059985961">"Aktualizacje systemowe"</string>
-    <string name="system_update_settings_list_item_summary" msgid="3853057315907710747"></string>
     <string name="firmware_version" msgid="4801135784886859972">"Wersja systemu Android"</string>
     <string name="model_number" msgid="3765737700545384794">"Numer modelu"</string>
+
     <string name="baseband_version" msgid="1848990160763524801">"Wersja pasma podstawowego"</string>
     <string name="kernel_version" msgid="9192574954196167602">"Wersja jądra"</string>
     <string name="build_number" msgid="3075795840572241758">"Numer kompilacji"</string>
@@ -726,6 +775,8 @@
     <string name="storage_settings_title" msgid="8746016738388094064">"Ustawienia pamięci"</string>
     <string name="storage_settings_summary" product="nosdcard" msgid="3543813623294870759">"Odłącz nośnik USB i wyświetl ilość dostępnej pamięci"</string>
     <string name="storage_settings_summary" product="default" msgid="9176693537325988610">"Odłącz kartę SD, pokaż ilość dostępnej pamięci w telefonie"</string>
+
+
     <string name="status_number" product="tablet" msgid="1138837891091222272">"MDN"</string>
     <string name="status_number" product="default" msgid="5123197324870153205">"Mój numer telefonu"</string>
     <string name="status_min_number" msgid="3519504522179420597">"Numer MIN"</string>
@@ -909,6 +960,10 @@
     <string name="assisted_gps_disabled" msgid="6982698333968010748">"Użyj serwera do wspomagania systemu GPS (usuń zaznaczenie, aby zwiększyć wydajność systemu GPS)"</string>
     <string name="use_location_title" msgid="5206937465504979977">"Lokalizacja w sieci"</string>
     <string name="use_location_summary" msgid="3978805802386162520">"Zezwalaj Google na użycie danych o mojej lokalizacji, aby poprawić wyszukiwanie i inne usługi"</string>
+    <string name="location_gps_source_title">Źródło GPS</string>
+    <string name="location_gps_source_summary">Wybierz źródło sygnału: zewnętrzny GPS Bluetooth lub wewnętrzny moduł GPS urządzenia</string>
+    <string name="location_gps_source_notification_title">Informacja</string>
+    <string name="location_gps_source_notification">Źródło sygnału GPS zostało zmienione. By dokonać zmian, GPS zostanie wyłączony</string>
     <string name="about_settings" product="tablet" msgid="593457295516533765">"Informacje o tablecie"</string>
     <string name="about_settings" product="default" msgid="1743378368185371685">"Informacje o telefonie"</string>
     <string name="about_settings_summary" msgid="3371517697156165959">"Wyświetl informacje prawne, stan, wersję oprogramowania"</string>
@@ -941,6 +996,8 @@
     <string name="lockpattern_change_lock_pin_label" msgid="266707138486731661">"Zmień kod PIN odblokowania"</string>
     <string name="lockpattern_need_to_unlock" msgid="757935356911054465">"Potwierdź zapisany wzór"</string>
     <string name="lockpattern_need_to_unlock_wrong" msgid="4694973540770105678">"Spróbuj ponownie:"</string>
+
+
     <string name="lockpattern_recording_intro_header" msgid="308287052221942814">"Narysuj wzór odblokowania"</string>
     <string name="lockpattern_recording_intro_footer" msgid="1118579101409152113">"Naciśnij Menu, aby uzyskać pomoc."</string>
     <string name="lockpattern_recording_inprogress" msgid="4622772178078818425">"Puść palec, gdy gotowe."</string>
@@ -956,6 +1013,8 @@
     <string name="lockpattern_settings_enable_title" msgid="6920616873671115281">"Wymagaj wzoru"</string>
     <string name="lockpattern_settings_enable_summary" msgid="1165707416664252167">"Trzeba narysować wzór, aby odblokować ekran"</string>
     <string name="lockpattern_settings_enable_visible_pattern_title" msgid="2615606088906120711">"Wzór jest widoczny"</string>
+    <string name="lockpattern_settings_enable_error_path_title">Pokaż ślad błędu</string>
+    <string name="lockpattern_settings_enable_dots_title">Pokaż punkty wzoru</string>
     <string name="lockpattern_settings_enable_tactile_feedback_title" msgid="8898518337442601027">"Wibracje przy dotknięciu"</string>
     <string name="lockpattern_settings_enable_power_button_instantly_locks" msgid="5735444062633666327">"Blokada przyciskiem zasilania"</string>
     <string name="lockpattern_settings_choose_lock_pattern" msgid="1652352830005653447">"Ustaw wzór odblokowania"</string>
@@ -1084,13 +1143,11 @@
     <string name="cached" msgid="1059590879740175019">"Proces w tle z pamięci podręcznej"</string>
     <string name="no_running_services" msgid="2059536495597645347">"Brak uruchomionych usług."</string>
     <string name="service_started_by_app" msgid="818675099014723551">"Uruchomiona przez aplikację"</string>
-    <!-- no translation found for service_client_name (4037193625611815517) -->
-    <skip />
+    <string name="service_client_name"><xliff:g id="client_name">%1$s</xliff:g></string>
     <string name="service_background_processes" msgid="6844156253576174488">"<xliff:g id="MEMORY">%1$s</xliff:g> wolne"</string>
     <string name="service_foreground_processes" msgid="7583975676795574276">"<xliff:g id="MEMORY">%1$s</xliff:g> w użyciu"</string>
     <string name="memory" msgid="6609961111091483458">"Pamięć RAM"</string>
-    <!-- no translation found for service_process_name (4098932168654826656) -->
-    <skip />
+    <string name="service_process_name"><xliff:g id="process">%1$s</xliff:g></string>
     <string name="running_processes_item_description_s_s" msgid="5790575965282023145">"<xliff:g id="NUMPROCESS">%1$d</xliff:g> proces, <xliff:g id="NUMSERVICES">%2$d</xliff:g> usługa"</string>
     <string name="running_processes_item_description_s_p" msgid="8019860457123222953">"<xliff:g id="NUMPROCESS">%1$d</xliff:g> proces, <xliff:g id="NUMSERVICES">%2$d</xliff:g> usługi"</string>
     <string name="running_processes_item_description_p_s" msgid="744424668287252915">"<xliff:g id="NUMPROCESS">%1$d</xliff:g> procesy, <xliff:g id="NUMSERVICES">%2$d</xliff:g> usługa"</string>
@@ -1164,6 +1221,7 @@
     <string name="testing_phone_info" product="tablet" msgid="193561832258534798">"Informacje o tablecie"</string>
     <string name="testing_phone_info" product="default" msgid="8656693364332840056">"Informacje o telefonie"</string>
     <string name="testing_battery_info" msgid="3497865525976497848">"Informacje o baterii"</string>
+
     <string name="quick_launch_title" msgid="7904609846945905306">"Szybkie uruchamianie"</string>
     <string name="quick_launch_summary" msgid="8101133819188001190">"Ustaw skróty klawiaturowe, aby uruchamiać aplikacje."</string>
     <string name="quick_launch_assign_application" msgid="6240064079456617501">"Przypisz aplikację"</string>
@@ -1196,6 +1254,8 @@
     <string name="development_settings_summary" msgid="1815795401632854041">"Ustaw opcje związane z programowaniem aplikacji."</string>
     <string name="enable_adb" msgid="7982306934419797485">"Debugowanie USB"</string>
     <string name="enable_adb_summary" msgid="4881186971746056635">"Tryb debugowania, gdy podłączone jest USB"</string>
+    <string name="adb_notify">Powiadomienie o debugowaniu USB</string>
+    <string name="adb_notify_summary">Wyświetl powiadomienie gdy debugowanie USB jest aktywne</string>
     <string name="keep_screen_on" msgid="1146389631208760344">"Zostaw włączony"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"Ekran nie będzie gaszony podczas ładowania telefonu"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"Pozorowanie lokalizacji"</string>
@@ -1212,6 +1272,13 @@
     <string name="enforce_read_external_summary" product="default" msgid="2750027486786530064">"Aplikacje muszą prosić o pozwolenie na odczyt karty SD"</string>
     <string name="enforce_read_external_confirm_title" product="default" msgid="273220585729800783">"Włączyć ochronę karty SD?"</string>
     <string name="enforce_read_external_confirm_message" product="default" msgid="3858482712337574407">"Gdy karta SD jest chroniona, aplikacje muszą prosić o pozwolenie na odczyt danych z tego nośnika zewnętrznego."\n\n"Niektóre aplikacje mogą przestać działać i wymagać aktualizacji przez programistę."</string>
+    <string name="root_access">Dostęp do uprawnień roota</string>
+    <string name="root_access_warning_title">Zezwolić na dostęp?</string>
+    <string name="root_access_warning_message">UWAGA: Zezwolenie aplikacjom na dostęp do konta roota naraża bezpieczeństwo systemu!</string>
+    <string name="root_access_none">Wyłączony</string>
+    <string name="root_access_apps">Tylko aplikacje</string>
+    <string name="root_access_adb">Tylko ADB</string>
+    <string name="root_access_all">Aplikacje i ADB</string>
     <string name="gadget_picker_title" msgid="98374951396755811">"Wybierz gadżet"</string>
     <string name="widget_picker_title" msgid="9130684134213467557">"Wybierz widżet"</string>
     <string name="allow_bind_app_widget_activity_allow_bind_title" msgid="2538303018392590627">"Utworzyć widżet i zezwolić na dostęp?"</string>
@@ -1268,8 +1335,7 @@
     <string name="battery_stats_wifi_running_label" msgid="3093545080361658269">"Wi-Fi"</string>
     <string name="battery_stats_wake_lock_label" msgid="1908942681902324095">"Aktywność"</string>
     <string name="battery_stats_phone_signal_label" msgid="4137799310329041341">"Sygnał sieci komórkowej"</string>
-    <!-- no translation found for battery_stats_last_duration (1535831453827905957) -->
-    <skip />
+    <string name="battery_stats_last_duration">@string/menu_stats_last_unplugged</string>
     <string name="awake" msgid="387122265874485088">"Czas aktywności urządzenia"</string>
     <string name="wifi_on_time" msgid="6310209835617490616">"Wi-Fi na czas"</string>
     <string name="bluetooth_on_time" msgid="6157799524996162271">"Wi-Fi na czas"</string>
@@ -1350,6 +1416,8 @@
     <string name="tts_default_lang_summary" msgid="5219362163902707785">"Ustawia zależny od języka głos dla czytanych tekstów"</string>
     <string name="tts_play_example_title" msgid="7094780383253097230">"Posłuchaj przykładu"</string>
     <string name="tts_play_example_summary" msgid="8029071615047894486">"Odtwórz krótką prezentację syntezy mowy"</string>
+    <string name="tts_play_example_not_found_title">Uwaga</string>
+    <string name="tts_play_example_not_found_msg">Próbka tekstu w żądanym języku nie została znaleziona</string>
     <string name="tts_install_data_title" msgid="4264378440508149986">"Zainstaluj dane głosowe"</string>
     <string name="tts_install_data_summary" msgid="5742135732511822589">"Zainstaluj dane głosowe wymagane dla syntezy mowy"</string>
     <string name="tts_data_installed_summary" msgid="9162111552859972809">"Dane głosowe wymagane dla syntezy mowy zostały już poprawnie zainstalowane"</string>
@@ -1464,6 +1532,7 @@
     <string name="wifi_setup_eap_not_supported" msgid="595556546597351489">"Ustawień połączenia Wi-Fi z zabezpieczeniami EAP nie można określić podczas konfiguracji. Możesz to zrobić później na ekranie Ustawienia &gt; Sieci bezprzewodowe."</string>
     <string name="wifi_setup_description_connecting" msgid="2793554932006756795">"Łączenie może potrwać kilka minut…"</string>
     <string name="wifi_setup_description_connected" msgid="5235991893829582459">"Dotknij opcji "<b>"Dalej"</b>", aby kontynuować konfigurację."\n\n"Wybierz "<b>"Wróć"</b>", aby połączyć się z inną siecią Wi-Fi."</string>
+
     <string name="accessibility_sync_enabled" msgid="558480439730263116">"Synchronizacja włączona"</string>
     <string name="accessibility_sync_disabled" msgid="1741194106479011384">"Synchronizacja wyłączona"</string>
     <string name="accessibility_sync_error" msgid="8703299118794272041">"Błąd synchronizacji"</string>
@@ -1486,8 +1555,7 @@
     <string name="settings_backup_summary" msgid="7916877705938054035">"Utwórz kopię zapasową moich ustawień"</string>
     <string name="sync_menu_sync_now" msgid="6154608350395805683">"Synchronizuj teraz"</string>
     <string name="sync_menu_sync_cancel" msgid="8292379009626966949">"Anuluj synchronizację"</string>
-    <string name="sync_one_time_sync" msgid="6766593624598183090">"Dotknij, aby zsynchronizować<xliff:g id="LAST_SYNC_TIME">
-%1$s</xliff:g>"</string>
+    <string name="sync_one_time_sync" msgid="6766593624598183090">"Dotknij, aby zsynchronizować<xliff:g id="LAST_SYNC_TIME"> %1$s</xliff:g>"</string>
     <string name="sync_gmail" msgid="714886122098006477">"Gmail"</string>
     <string name="sync_calendar" msgid="9056527206714733735">"Kalendarz"</string>
     <string name="sync_contacts" msgid="9174914394377828043">"Kontakty"</string>
@@ -1505,8 +1573,7 @@
     <string name="remove_account_failed" product="tablet" msgid="3086620478225952725">"To konto jest wymagane przez niektóre aplikacje. Możesz je usunąć wyłącznie przez przywrócenie ustawień fabrycznych tabletu (co spowoduje usunięcie wszystkich Twoich danych osobistych) w sekcji Ustawienia &gt; Kopia i kasowanie danych."</string>
     <string name="remove_account_failed" product="default" msgid="6217238709175617517">"To konto jest wymagane przez niektóre aplikacje. Możesz je usunąć wyłącznie przez przywrócenie ustawień fabrycznych telefonu (co spowoduje usunięcie wszystkich Twoich danych osobistych) w sekcji Ustawienia &gt; Kopia i kasowanie danych."</string>
     <string name="provider_label" msgid="7724593781904508866">"Subskrypcje w trybie push"</string>
-    <!-- no translation found for sync_item_title (4782834606909853006) -->
-    <skip />
+    <string name="sync_item_title"><xliff:g id="authority" example="Calendar">%s</xliff:g></string>
     <string name="cant_sync_dialog_title" msgid="8923508322291625282">"Nie można zsynchronizować ręcznie"</string>
     <string name="cant_sync_dialog_message" msgid="1938380442159016449">"Synchronizacja tego elementu jest obecnie wyłączona. Aby zmienić ustawienie, tymczasowo włącz obsługę danych w tle i automatyczną synchronizację."</string>
     <string name="wimax_settings" msgid="1574837328738396794">"Ustawienia 4G"</string>
@@ -1699,4 +1766,606 @@
     <string name="help_label" msgid="1107174367904110532">"Pomoc"</string>
     <string name="cell_broadcast_settings" msgid="8415582011920085222">"Transmisje komórkowe"</string>
     <string name="cell_broadcast_settings_summary" msgid="3301339398950905913">"Wybierz typy alertów o zagrożeniu, które chcesz wyświetlić."</string>
+    <string name="wifi_idle_mn_title">Czas bezczynności Wi-Fi</string>
+    <string name="wifi_idle_5mn">5 minut</string>
+    <string name="wifi_idle_15mn">15 minut(domyślnie)</string>
+    <string name="wifi_idle_30mn">30 minut</string>
+    <string name="wifi_idle_1h">1 godzina</string>
+    <string name="wifi_idle_3h">3 godziny</string>
+    <string name="quiet_hours_title">Ciche godziny</string>
+    <string name="quiet_hours_summary">Wybierz godziny, podczas których wyłączone są powiadomienia</string>
+    <string name="quiet_hours_note_title">Uwaga</string>
+    <string name="quiet_hours_note_summary">Poniższe ustawienia nie mają wpływu na głośność przychodzących połączeń</string>
+    <string name="quiet_hours_enabled">Włącz ciche godziny</string>
+    <string name="quiet_hours_enabled_on">Ciche godziny będą przestrzegane</string>
+    <string name="quiet_hours_enabled_off">Powiadomienia będą funkcjonować normalnie</string>
+    <string name="quiet_hours_start">Rozpoczęcie cichych godzin</string>
+    <string name="quiet_hours_start_summary">Kiedy rozpocząć wymuszenie cichych godzin</string>
+    <string name="quiet_hours_end">Zakończenie cichych godzin</string>
+    <string name="quiet_hours_end_summary">Kiedy zakończyć wymuszenie cichych godzin</string>
+    <string name="quiet_hours_mute">Wycisz powiadomienia</string>
+    <string name="quiet_hours_mute_on">Dźwięki powiadomień wyłączone</string>
+    <string name="quiet_hours_mute_off">Dźwięki powiadomień włączone</string>
+    <string name="quiet_hours_still">Wyłącz wibracje</string>
+    <string name="quiet_hours_still_on">Wibracje wyłączone</string>
+    <string name="quiet_hours_still_off">Wibracje włączone</string>
+    <string name="quiet_hours_dim">Wyłącz diodę powiadomień</string>
+    <string name="quiet_hours_dim_on">Dioda powiadomień włączona</string>
+    <string name="quiet_hours_dim_off">Dioda powiadomień wyłączona</string>
+    <string name="quiet_hours_haptic">Wyłącz wibracje dotyku</string>
+    <string name="quiet_hours_haptic_on">Wibracje dotyku wyłączone</string>
+    <string name="quiet_hours_haptic_off">Wibracje dotyku włączone</string>
+    <string name="quiet_hours_active_from">Aktywne od</string>
+    <string name="quiet_hours_active_to">do</string>
+    <string name="start_time_title">Początek</string>
+    <string name="end_time_title">Koniec</string>
+    <string name="safe_headset_restore_title">Bezpieczna głośność</string>
+    <string name="safe_headset_restore_summary">Zapobiega wysokiej głośności, gdy zestaw słuchawkowy zostaje po raz pierwszy podłączony</string>
+    <string name="battery_light_title">Wskaźnik baterii</string>
+    <string name="battery_low_pulse_title">Pulsuj przy niskim stanie baterii</string>
+    <string name="battery_light_list_title">Kolory</string>
+    <string name="battery_light_low_color_title">Niski stan baterii</string>
+    <string name="battery_light_medium_color_title">Ładowanie</string>
+    <string name="battery_light_full_color_title">W pełni naładowany</string>
+    <string name="backlight_title">Jasność automatyczna</string>
+    <string name="backlight_summary">Dostosuj poziomy i filtrowanie</string>
+    <string name="light_filter_title">Filtr czujnika oświetlenia</string>
+    <string name="light_filter_enabled_title">Włącz</string>
+    <string name="light_filter_enabled_summary">Uśrednij zebrane dane, by zredukować migotanie</string>
+    <string name="light_filter_window_title">Czas zbierania danych</string>
+    <string name="light_filter_window_summary">Ustaw czas, przez który będą zbierane dane, które zostaną uśrednione.</string>
+    <string name="light_filter_reset_title">Próg resetu</string>
+    <string name="light_filter_reset_summary">Ustaw odchylenie, po którym filtr zostanie zresetowany</string>
+    <string name="light_filter_interval_title">Interwał próbkowania</string>
+    <string name="light_filter_interval_summary">Niska wartość zwiększy dokładność, ale obciąży CPU</string>
+    <string name="light_levels_title">Poziomy jasności</string>
+    <string name="light_levels_enabled_title">Użyj własnych</string>
+    <string name="light_levels_dim_title">Jasność minimalna</string>
+    <string name="light_levels_dim_summary">Ustaw minimalny poziom jasności</string>
+    <string name="light_levels_editor_title">Edytuj inne poziomy\u2026</string>
+    <string name="light_decrease_enabled_title">Obniżenie jasności</string>
+    <string name="light_decrease_enabled_summary">Pozwól na obniżenie jasności. Dostosuj opoźnienie reakcji by zredukować migotanie</string>
+    <string name="light_decrease_hysteresis_title">Opóźnienie reakcji</string>
+    <string name="light_decrease_hysteresis_summary">Ustaw nachodzenie na siebie poziomów czujnika</string>
+    <string name="ll_title">Poziomy czujnika oświetlenia</string>
+    <string name="ll_header_upper">Wyższy</string>
+    <string name="ll_header_lower">Niższy</string>
+    <string name="ll_header_lcd">Ekran</string>
+    <string name="ll_header_btn">Przyciski</string>
+    <string name="ll_header_kb">Klawiatura</string>
+    <string name="ll_lux">Czujnik (filtrowany / czysty):</string>
+    <string name="ll_lcd">Ekran:</string>
+    <string name="ll_btn">Przyciski:</string>
+    <string name="ll_kb">Klawiatura:</string>
+    <string name="ll_disabled">wyłączony</string>
+    <string name="ll_default">Przywróć domyślne</string>
+    <string name="ll_save">Zastosuj</string>
+    <string name="ll_reload">Przeładuj</string>
+    <string name="ll_bad_levels">Poziomy muszą się zwiększać</string>
+    <string name="ll_num_levels">Ilość poziomów</string>
+    <string name="notification_pulse_title" msgid="1247988024534030629">"Pulsująca dioda"</string>
+    <string name="notification_light_general_title">Ogólne</string>
+    <string name="notification_light_applist_title">Aplikacje</string>
+    <string name="notification_light_phonelist_title">Telefon</string>
+    <string name="notification_light_use_custom">Użyj własnych ustawień</string>
+    <string name="notification_light_enabled">Włączone</string>
+    <string name="notification_light_disabled">Wyłączone</string>
+    <string name="notification_light_default_value">Domyślne</string>
+    <string name="notification_light_missed_call_title">Nieodebrane połączenie</string>
+    <string name="notification_light_voicemail_title">Poczta głosowa</string>
+    <string name="edit_light_settings">Edytuj ustawienia diody powiadomień</string>
+    <string name="pulse_speed_title">Długość i prędkość pulsowania</string>
+    <string name="picker_arrow">→</string>
+    <string name="default_time">Domyślny</string>
+    <string name="custom_time">Niestandardowy</string>
+    <string name="dialog_test">Test</string>
+    <string name="dialog_delete_title">Usuń</string>
+    <string name="dialog_delete_message">Usunąć zaznaczoną pozycję?</string>
+    <string name="dialog_test_message">Wyłącz ekran by przetestować powyższe ustawienia lub odrzuć ten komunikat by zatrzymać test</string>
+    <string name="dialog_test_button">Odrzuć</string>
+    <string name="pulse_length_always_on">Zawsze włączone</string>
+    <string name="pulse_length_very_short">Bardzo krótka</string>
+    <string name="pulse_length_short">Krótka</string>
+    <string name="pulse_length_normal">Normalna</string>
+    <string name="pulse_length_long">Długa</string>
+    <string name="pulse_length_very_long">Bardzo długa</string>
+    <string name="pulse_speed_very_fast">Bardzo szybka</string>
+    <string name="pulse_speed_fast">Szybka</string>
+    <string name="pulse_speed_normal">Normalna</string>
+    <string name="pulse_speed_slow">Wolna</string>
+    <string name="pulse_speed_very_slow">Bardzo wolna</string>
+    <string name="advanced_settings_title">Zaawansowane</string>
+    <string name="header_category_interface">INTERFEJS</string>
+    <string name="launcher_settings_title">Launcher</string>
+    <string name="themes_settings_title">Motywy</string>
+    <string name="system_settings_title">System</string>
+    <string name="system_interface_title">Interfejs systemu</string>
+    <string name="notification_drawer_title">Obszar powiadomień</string>
+    <string name="combined_bar_title">Pasek nawigacji</string>
+    <string name="combined_bar_auto_hide_title">Automatyczne ukrywanie</string>
+    <string name="combined_bar_auto_hide_summary">Ukryj pasek nawigacji w aplikacjach pełnoekranowych</string>
+    <string name="navigation_bar_title">Pasek nawigacji</string>
+    <string name="navigation_bar_help_text">1 - By rozpocząć edycję, naciśnij ikonę blokady\n\n2 - Dotknij przycisku by dopisać lub zmienić jego funkcjonalność\n\n3 - Przytrzymaj przycisk by zmienić jego położenie\n\n4 - By zapisać zmiany, dotknij ikony blokady ponownie\n\n5 - By przywrócić ustawienia domyślne, naciśnij przycisk reset\n\n</string>
+    <string name="navigation_bar_tips">&#8226; Akcje mogą być skojarzone tylko z jednym przyciskiem na raz\n\n&#8226; Przycisk home nie może mieć zmienionego przypisania\n\n&#8226; Skrajne przyciski nie mogą być przemieszczane</string>
+    <string name="navigation_bar_tips_title">Podpowiedzi</string>
+    <string name="navigation_bar_reset_message">Usunąć aktualne ustawienia i przywrócić domyślne?</string>
+    <string name="navigation_bar_save_message">Ustawienia paska nawigacji zostały zapisane</string>
+    <string name="navigation_bar_reset_toast">Pasek nawigacji zresetowany do ustawień domyślnych</string>
+    <string name="hardware_keys_title">Przyciski fizyczne</string>
+    <string name="hardware_keys_bindings_title">Akcje przycisków</string>
+    <string name="hardware_keys_enable_custom_title">Włącz własne akcje</string>
+    <string name="hardware_keys_home_long_press_title">Przycisk „Home” (przytrzymać)</string>
+    <string name="hardware_keys_menu_press_title">Przycisk „Menu”</string>
+    <string name="hardware_keys_menu_long_press_title">Przycisk „Menu” (przytrzymać)</string>
+    <string name="hardware_keys_assist_press_title">Przycisk „szukaj”</string>
+    <string name="hardware_keys_assist_long_press_title">Przycisk „Szukaj” (przytrzymać)</string>
+    <string name="hardware_keys_app_switch_press_title">Przycisk przełączania aplikacji</string>
+    <string name="hardware_keys_app_switch_long_press_title">Przycisk przełączania aplikacji(przytrzymać)</string>
+    <string name="hardware_keys_show_overflow_title">Pokaż nadmiar akcji</string>
+    <string name="hardware_keys_show_overflow_summary">Wyświetl 3-kropkowy przycisk nadmiarowego menu</string>
+    <string name="hardware_keys_show_overflow_toast_enable">Nadmiar akcji może nie być widoczny dopóki aplikacje nie zostaną zrestartowane</string>
+    <string name="hardware_keys_show_overflow_toast_disable">Nadmiar akcji może nie zniknąć dopóki aplikacje nie zostaną zrestartowane</string>
+    <string name="hardware_keys_action_nothing">Brak akcji</string>
+    <string name="hardware_keys_action_menu">Otwórz/zamknij menu</string>
+    <string name="hardware_keys_action_app_switch">Przełącznik ostatnich aplikacji</string>
+    <string name="hardware_keys_action_search">Asystent wyszukiwania</string>
+    <string name="hardware_keys_action_voice_search">Wyszukiwanie głosowe</string>
+    <string name="hardware_keys_action_in_app_search">Własna wyszukiwarka aplikacji</string>
+    <string name="power_widget_title">Widżet zasilania</string>
+    <string name="title_expanded_widget">Pokaż widżet</string>
+    <string name="power_widget_behavior">Zachowanie widżetu</string>
+    <string name="title_expanded_hide_onchange">Ukryj po zmianie</string>
+    <string name="title_expanded_hide_scrollbar">Ukryj pasek przewijania</string>
+    <string name="title_widget_picker">Przyciski widżetu</string>
+    <string name="summary_widget_picker">Wybierz przyciski do wyświetlania w widżecie zasilania</string>
+    <string name="title_widget_order">Kolejność przycisków</string>
+    <string name="summary_widget_order">Wybierz kolejność wyświetlania przycisków widżetu zasilania</string>
+    <string name="title_buttons">Przyciski</string>
+    <string name="title_toggle_wifi">Włącz Wi-Fi</string>
+    <string name="title_toggle_bluetooth">Włącz Bluetooth</string>
+    <string name="title_toggle_gps">Włącz GPS</string>
+    <string name="title_toggle_sound">Zmień profil dźwięku</string>
+    <string name="title_toggle_brightness">Zmień poziom jasności</string>
+    <string name="title_toggle_sync">Włącz synchronizaję</string>
+    <string name="title_toggle_wifiap">Włącz hotspot Wi-Fi</string>
+    <string name="title_toggle_screentimeout">Wyłączanie ekranu</string>
+    <string name="title_toggle_mobiledata">Włącz dane mobilne</string>
+    <string name="title_toggle_lockscreen">Włącz ekran blokady</string>
+    <string name="title_toggle_networkmode">Przełącz 2G/3G</string>
+    <string name="title_toggle_autorotate">Włącz obrót ekranu</string>
+    <string name="title_toggle_airplane">Tryb samolotowy</string>
+    <string name="title_toggle_flashlight">Włącz latarkę</string>
+    <string name="title_toggle_sleep">Uśpij urządzenie</string>
+    <string name="title_toggle_media_play_pause">Media: Odtwórz/Pauza</string>
+    <string name="title_toggle_media_previous">Media: Poprzedni utwór</string>
+    <string name="title_toggle_media_next">Media: Następny utwór</string>
+    <string name="title_toggle_lte">Włącz LTE</string>
+    <string name="title_toggle_wimax">Włącz WiMAX</string>
+    <string name="title_button_modes">Tryby przycisków</string>
+    <string name="pref_brightness_mode_title">Poziomy jasności</string>
+    <string name="pref_brightness_mode_summary">Wybierz poziomy jasności do przełączania</string>
+    <string name="cm_brightness_mode_auto">Automatyczny</string>
+    <string name="cm_brightness_mode_dim">Przygaś</string>
+    <string name="pref_network_mode_title">Tryby sieci</string>
+    <string name="pref_screentimeout_mode_title">Wyłączanie ekranu</string>
+    <string name="pref_ring_mode_title">Profile dźwięku</string>
+    <string name="pref_ring_mode_summary">Wybierz profile dźwięku do przełączania</string>
+    <string name="cm_sound_mode_silent">Cichy</string>
+    <string name="cm_sound_mode_vibrate">Wibracje</string>
+    <string name="cm_sound_mode_sound">Dźwięk</string>
+    <string name="cm_sound_mode_soundVibrate">Dźwięk i wibracje</string>
+    <string name="pref_flash_mode_title">Siła latarki</string>
+    <string name="expanded_haptic_feedback_title">Wibracje dotyku</string>
+    <string name="combined_status_bar_title">@string/status_bar_title</string>
+    <string name="status_bar_title">Pasek stanu</string>
+    <string name="status_bar_clock_title">Zegar</string>
+    <string name="status_bar_general_title">Ogólne</string>
+    <string name="status_bar_show_clock_title">Pokaż zegar</string>
+    <string name="status_bar_am_pm_title">Wyświetlanie AM/PM</string>
+    <string name="status_bar_am_pm_info">24-godzinny zegar jest aktywny</string>
+    <string name="status_bar_battery_title">Wyświetlanie stanu baterii</string>
+    <string name="status_bar_toggle_brightness">Ustawianie jasności</string>
+    <string name="status_bar_toggle_brightness_summary">Zmień jasność ekranu przesuwając palcem po pasku stanu</string>
+    <string name="status_bar_toggle_info">Automatyczna jasność jest włączona</string>
+    <string name="status_bar_signal_text_title">Wyświetlanie siły sygnału</string>
+    <string name="status_bar_signal_text_show_bars">Kreski (domyślne)</string>
+    <string name="status_bar_signal_text_show_text">Tekst</string>
+    <string name="status_bar_signal_text_hidden">Ukryte</string>
+    <string name="lock_screen_title">Ekran blokady</string>
+    <string name="lockscreen_target_info">Przeciągnij slider do wybranego celu by skojarzyć go ze skrótem</string>
+    <string name="lockscreen_target_title">Skróty na ekranie blokady</string>
+    <string name="lockscreen_target_summary">Dodaj lub skonfiguruj niestandardowe skróty na ekranie blokady</string>
+    <string name="lockscreen_target_reset">Reset skrótów na ekranie blokady do ustawień domyślnych</string>
+    <string name="lockscreen_target_save">Skróty na ekranie blokady zapisane</string>
+    <string name="lockscreen_target_reset_title">Reset</string>
+    <string name="lockscreen_target_reset_message">Usunąć wszystkie skróty użytkownika na ekranie blokady i przywrócić domyślne?</string>
+    <string name="lockscreen_target_empty">Pusty</string>
+    <string name="lockscreen_target_edit_title">Edytuj skrót</string>
+    <string name="lockscreen_target_edit_msg">Wybierz lub zmień aplikację, aktywność oraz ikonę</string>
+    <string name="lockscreen_weather_title">Pogoda</string>
+    <string name="lockscreen_weather_summary">Pokaż informacje o pogodzie na ekranie blokady</string>
+    <string name="lockscreen_weather_enabled">Włączone</string>
+    <string name="weather_enable">Pokaż pogodę</string>
+    <string name="weather_source">Yahoo! Weather</string>
+    <string name="weather_use_custom_location">Użyj niestandardowej lokalizacji</string>
+    <string name="weather_geolocated">Geolokacja przez sieć</string>
+    <string name="weather_custom_location_dialog_title">Podaj lokalizację</string>
+    <string name="weather_custom_location_hint">Miasto, Stan/Państwo</string>
+    <string name="weather_custom_location_title">Lokalizacja</string>
+    <string name="weather_show_location_title">Pokaż lokalizację</string>
+    <string name="weather_show_timestamp_title">Pokaż datę</string>
+    <string name="weather_refresh_interval">Częstotliwość aktualizacji</string>
+    <string name="weather_use_metric">Używaj jednostek metrycznych</string>
+    <string name="weather_retrieve_location_dialog_title">Nie można odnaleźć lokalizacji!</string>
+    <string name="weather_retrieve_location_dialog_message">Geolokacja przez sieć jest wyłączona.\n\nWprowadź niestandardową lokalizację albo włącz lokalizację przez sieć</string>
+    <string name="weather_retrieve_location_dialog_enable_button">Włącz</string>
+    <string name="weather_invert_lowhigh">Odwróć niską/wysoką temperaturę</string>
+    <string name="weather_progress_title">Weryfikacja lokalizacji</string>
+    <string name="weather_refresh_manual">Ręcznie</string>
+    <string name="weather_refresh_30min">30 minut</string>
+    <string name="weather_refresh_60min">60 minut</string>
+    <string name="weather_refresh_2hrs">2 godziny</string>
+    <string name="weather_refresh_4hrs">4 godziny</string>
+    <string name="weather_refresh_6hrs">6 godzin</string>
+    <string name="weather_refresh_8hrs">8 godzin</string>
+    <string name="lockscreen_calendar_title">Kalendarz</string>
+    <string name="lockscreen_calendar_summary">Pokaż najbliższe wydarzenie na ekranie blokady</string>
+    <string name="lockscreen_calendar_enabled">Włączone</string>
+    <string name="calendar_title">Pokaż najbliższe wydarzenie</string>
+    <string name="calendars_title">Wybierz kalendarze</string>
+    <string name="calendars_summary">Wyświetlane będą wydarzenia z wybranych kalendarzy</string>
+    <string name="calendar_reminders_only_title">Tylko przypomnienia</string>
+    <string name="calendar_reminders_only_summary">Pokaż tylko wydarzenia z przypomnieniem</string>
+    <string name="calendar_lookahead_title">Zakres czasu</string>
+    <string name="calendar_show_location_title">Lokalizacja wydarzenia</string>
+    <string name="calendar_show_description_title">Opis wydarzenia</string>
+    <string name="calendar_lookahead_3hrs">3 godziny</string>
+    <string name="calendar_lookahead_6hrs">6 godzin</string>
+    <string name="calendar_lookahead_12hrs">12 godzin</string>
+    <string name="calendar_lookahead_1day">1 dzień</string>
+    <string name="calendar_lookahead_3days">3 dni</string>
+    <string name="calendar_lookahead_1wk">1 tydzień</string>
+    <string name="calendar_metadata_none">Nie pokazuj</string>
+    <string name="calendar_metadata_first_line">Pokaż pierwszą linię</string>
+    <string name="calendar_metadata_all">Pokaż wszystko</string>
+    <string name="lockscreen_custom_background_title">Tło</string>
+    <string name="lockscreen_custom_background_dialog_title">Wybierz kolor</string>
+    <string name="lockscreen_background_result_successful">Tło zmienione</string>
+    <string name="lockscreen_background_result_not_successful">Tło nie zmienione</string>
+    <string name="lockscreen_background_color_fill">Wypełnienie kolorem</string>
+    <string name="lockscreen_background_custom_image">Niestandardowy obraz</string>
+    <string name="lockscreen_background_default_wallpaper">Domyślna tapeta</string>
+    <string name="lockscreen_vibrate_enabled_title">Wibracje</string>
+    <string name="lockscreen_vibrate_enabled_head">Wibruj podczas odblokowywania</string>
+    <string name="lockscreen_battery_status_title">Stan baterii</string>
+    <string name="lockscreen_battery_status_charging">Tylko podczas ładowania</string>
+    <string name="lockscreen_battery_status_alwayson">Zawsze widoczny</string>
+    <string name="profiles_settings_title">Profile</string>
+    <string name="profiles_general_title">Ogólne</string>
+    <string name="profiles_add">Dodaj</string>
+    <string name="profile_menu_delete">Usuń</string>
+    <string name="profile_settings_title">Profil</string>
+    <string name="profile_empty_list_profiles_off">Włącz Profile by skonfigurować i używać profili systemochych.</string>
+    <string name="add_profile_dialog_title">Utwórz nowy profil</string>
+    <string name="profile_name_title">Nazwa</string>
+    <string name="profile_profile_name_prompt">Wprowadź nazwę profilu</string>
+    <string name="menu_new_profile">Nowy profil</string>
+    <string name="menu_new_profile_summary">Dodaj i skonfiguruj nowy profil</string>
+    <string name="new_profile_name">&lt;nowy profil&gt;</string>
+    <string name="rename_dialog_title">Zmień nazwę</string>
+    <string name="rename_dialog_message">Wprowadź nową nazwę</string>
+    <string name="duplicate_profile_name">Wybrana nazwa jest już zajęta!</string>
+    <string name="duplicate_appgroup_name">Wybrana nazwa jest już zajęta!</string>
+    <string name="profile_reset_title">Wyczyść ustawienia</string>
+    <string name="profile_reset_message">Czy chcesz usunąć wszystkie profile i grupy aplikacji utworzone przez użytkownika i przywrócić ustawienia domyślne?</string>
+    <string name="profile_delete_confirm">Czy napewno chcesz usunąć ten profil?</string>
+    <string name="profile_app_delete_confirm">Czy napewno chcesz usunąć tę aplikację?</string>
+    <string name="profile_cannot_delete">Nie możesz usunąć aktywnego profilu</string>
+    <string name="profile_connectionoverrides_title">Ustawienia połączeń</string>
+    <string name="profile_volumeoverrides_title">Ustawienia głośności</string>
+    <string name="profile_vibratoroverrides_title">Ustawienia wibracji</string>
+    <string name="connection_state_disabled">Wyłącz</string>
+    <string name="connection_state_enabled">Włącz</string>
+    <string name="volume_override_summary">Ustaw</string>
+    <string name="vibrator_state_disabled">Wyłącz</string>
+    <string name="vibrator_state_enabled">Włącz</string>
+    <string name="vibrator_state_silent">Tylko gdy wyciszony</string>
+    <string name="profile_profiles_manage">Profile</string>
+    <string name="profile_profile_manage">Zarządzaj profilem</string>
+    <string name="profile_applist_manage">Lista aplikacji</string>
+    <string name="profile_appgroups_manage">Grupy aplikacji</string>
+    <string name="profile_appgroup_manage">Zarządzaj grupą aplikacji</string>
+    <string name="profile_settings">Ustawienia profilu</string>
+    <string name="profile_name">Nazwa</string>
+    <string name="sound_mode">Powiadomienia</string>
+    <string name="ringer_mode">Dzwonki</string>
+    <string name="lights_mode">Diody</string>
+    <string name="vibrate_mode">Wibracje</string>
+    <string name="choose_soundtone">Wybierz dźwięk powiadomienia</string>
+    <string name="choose_ringtone">Wybierz dzwonek telefonu</string>
+    <string name="soundtone_title">Dźwięk powiadomienia</string>
+    <string name="soundtone_summary">""</string>
+    <string name="profile_appgroups_title">Grupy aplikacji</string>
+    <string name="profile_applist_title">Aplikacje</string>
+    <string name="profile_new_appgroup">Nowa grupa aplikacji</string>
+    <string name="profile_delete_appgroup">Usuń tę grupę aplikacji</string>
+    <string name="profile_appgroup_name_prompt">Wprowadź nazwę grupy aplikacji</string>
+    <string name="profile_appgroup_name_title">Nazwa</string>
+    <string name="profile_add_app">Dodaj aplikację</string>
+    <string name="profile_delete_app">Usuń aplikację</string>
+    <string name="profile_choose_app">Wybierz aplikację</string>
+    <string name="profile_settings_header">Ustawienia profilu</string>
+    <string name="profile_system_settings_title">Ustawienia systemowe</string>
+    <string name="profile_lockmode_title">Tryb ekranu blokady</string>
+    <string name="profile_lockmode_default">Domyślny</string>
+    <string name="profile_lockmode_insecure">Niezabezpieczony</string>
+    <string name="profile_lockmode_disabled">Wyłączony</string>
+    <string name="profile_lockmode_default_summary">Użyj domyślnego ustawienia systemowego</string>
+    <string name="profile_lockmode_insecure_summary">Użyj niezabezpieczonego ekranu blokady</string>
+    <string name="profile_lockmode_disabled_summary">Ekran blokady jest wyłączony</string>
+    <string name="profile_airplanemode_title">Tryb samolotowy</string>
+    <string name="profile_airplanemode_default">Domyślne</string>
+    <string name="profile_airplanemode_enabled">Włączony</string>
+    <string name="profile_airplanemode_disabled">Wyłączony</string>
+    <string name="profile_airplanemode_default_summary">Użyj domyślnej wartości</string>
+    <string name="profile_airplanemode_enabled_summary">Tryb samolotowy jest włączony</string>
+    <string name="profile_airplanemode_disabled_summary">Tryb samolotowy jest wyłączony</string>
+    <string name="profile_disable_screen_lock_summary">Wyłącz ekran blokady, gdy ten profil jest aktywny</string>
+    <string name="vibrator_type_ringer">Połączenia</string>
+    <string name="vibrator_type_notification">Powiadomienia</string>
+    <string name="possibleButtons">Dostępne przyciski</string>
+    <string name="toggleWifi">Wi-Fi</string>
+    <string name="toggleWifiAp">Przenośny hotspot Wi-Fi</string>
+    <string name="toggleBluetooth">Bluetooth</string>
+    <string name="toggleGPS">GPS</string>
+    <string name="toggleData">Dane mobilne</string>
+    <string name="toggleSync">Synchronizacja</string>
+    <string name="toggle2g3g">2G/3G</string>
+    <string name="toggleSound">Profil dźwięku</string>
+    <string name="toggleBrightness">Jasność</string>
+    <string name="toggleAutoRotate">Obrót ekranu</string>
+    <string name="toggleScreenTimeout">Wyłączenie ekranu</string>
+    <string name="toggleAirplane">Tryb samolotowy</string>
+    <string name="toggleFlashlight">Latarka</string>
+    <string name="toggleLockScreen">Ekran blokady</string>
+    <string name="toggleWimax">WiMAX</string>
+    <string name="screen_security_category">Zabezpieczenia ekranu</string>
+    <string name="screen_security_title">Ekran blokady</string>
+    <string name="screen_security_summary">Zmień ustawienia bezpieczeństwa i opóźnienia ekranu blokady</string>
+    <string name="additional_options_title">Dodatkowe ustawienia</string>
+    <string name="unlock_menu_unlock_title">Przycisk menu</string>
+    <string name="unlock_menu_unlock_summary">Naciśnięcie przycisku menu odblokowuje urządzenie</string>
+    <string name="unlock_quick_unlock_control_title">Szybkie odblokowanie</string>
+    <string name="unlock_quick_unlock_control_summary">Odblokuj automatycznie, gdy zostanie wprowadzony właściwy PIN lub hasło</string>
+    <string name="delay_and_timeout_title">Opóźnienie blokady</string>
+    <string name="slide_lock_delay_title">Opóźnij blokadę ekranu</string>
+    <string name="slide_lock_timeout_delay_title">Opóźnienie uśpienia</string>
+    <string name="slide_lock_screenoff_delay_title">Opóźnienie wyłączenia</string>
+    <string name="slide_lock_delay_none">Brak</string>
+    <string name="slide_lock_delay_1s">1 sekunda</string>
+    <string name="slide_lock_delay_5s">5 sekund</string>
+    <string name="slide_lock_delay_10s">10 sekund</string>
+    <string name="slide_lock_delay_15s">15 sekund</string>
+    <string name="slide_lock_delay_30s">30 sekund</string>
+    <string name="slide_lock_delay_1m">1 minuta</string>
+    <string name="slide_lock_delay_5m">5 minut</string>
+    <string name="slide_lock_delay_10m">10 minut</string>
+    <string name="slide_lock_delay_30m">30 minut</string>
+
+    <string name="performance_settings_title">Wydajność</string>
+
+    <string name="performance_settings_warning_title">UWAGA!</string>
+    <string name="performance_settings_warning">Znajdują się tu ustawienia eksperymentalne. Ich zmiana może spowodować niestabilność, awarie, utratę danych i uszkodzenie sprzętu.\n\nNie zgłaszaj błędów, jeśli te ustawienia zostały przez Ciebie zmienione.</string>
+
+    <string name="processor_title">Procesor</string>
+    <string name="processor_summary">Zmień zarządcę procesora i częstotliwość taktowania</string>
+
+    <string name="cpu_cur_freq_title">Bieżąca częstotliwość</string>
+    <string name="cpu_governors_title">Zarządca procesora</string>
+    <string name="cpu_governors_summary">%S</string>
+    <string name="cpu_min_freq_title">Minimalna częstotliwość taktowania</string>
+    <string name="cpu_min_freq_summary">%s</string>
+    <string name="cpu_max_freq_title">Maksymalna częstotliwość taktowania</string>
+    <string name="cpu_max_freq_summary">%s</string>
+    <string name="cpu_set_on_boot">Ustaw na starcie</string>
+    <string name="cpu_set_on_boot_summary">Przywróć ustawienia przy starcie systemu</string>
+
+    <string name="io_scheds_title">Planista We/Wy</string>
+    <string name="io_scheds_summary">Zmień planistę We/Wy</string>
+
+    <string name="io_sched_title">Planista We/Wy</string>
+    <string name="io_sched_summary">%S</string>
+    <string name="io_sched_set_on_boot">Ustaw na starcie</string>
+    <string name="io_sched_set_on_boot_summary">Przywróć ustawienia planisty We/Wy przy starcie systemu</string>
+
+    <string name="memory_management_title">Zarządzanie pamięcią</string>
+    <string name="memory_management_summary">Zmień ustawienia zarządzania pamięcią, by poprawić wydajność systemu</string>
+    <string name="pref_zram_title">zRam</string>
+    <string name="pref_zram_summary">Kompresuj pamięć, by zwiększyć jej pojemność (wymaga restartu)</string>
+    <string name="pref_ksm_title">Kernel samepage merging</string>
+    <string name="pref_ksm_summary">Deduplikuje strony pamięci, by zmniejszyć jej zużycie i zwiększyć wydajność</string>
+    <string name="pref_purgeable_assets_title">Oczyszczanie zasobów</string>
+    <string name="pref_purgeable_assets_summary">Zwalnia pamięć usuwając zbędne bitmapy (wymaga restartu)</string>
+
+    <string name="pref_use_dithering_title">Dithering</string>
+    <string name="dithering_no_dither">Wyłącz dithering</string>
+    <string name="dithering_color_banding">Popraw banding kolorów</string>
+    <string name="dithering_blur_effect">Popraw banding kolorów i efekt rozmycia</string>
+
+    <string name="pref_use_16bpp_alpha_title">Przezroczystość 16-bitowa</string>
+    <string name="pref_use_16bpp_alpha_summary">Poprawia wydajność kosztem jakości obrazów. Może powodować artefakty (wymaga restartu)</string>
+
+    <string name="system_update_settings_list_item_title" msgid="3342887311059985961">"Aktualizacje systemowe"</string>
+    <string name="system_update_settings_list_item_summary" msgid="3853057315907710747"></string>
+
+    <string name="donate_settings_title">Wspomóż</string>
+    <string name="donate_settings_summary">""</string>
+
+    <string name="anonymous_statistics_title">Statystyki CyanogenMod</string>
+    <string name="anonymous_statistics_summary">Pomóż sprawić, by CyanogenMod stał się lepszy, wysyłając anonimowe statystyki</string>
+    <string name="anonymous_statistics_warning_title">O statystykach</string>
+    <string name="anonymous_statistics_warning">Zezwolenie na anonimowe satystyki pozwala śledzić twórcom CyanogenMod ilość jego instalacji.
+        Przesyłane informacje zawierają unikatowy identyfikator urządzenia,
+        co nie narusza twojej prywatności ani danych. Informacje są przesyłane podczas każdego uruchamiania systemu.\n\nMożesz sprawdzić, jakie informacje są przysałne, używając opcji Podgląd danych.</string>
+    <string name="enable_reporting_title">Włącz raportowanie</string>
+    <string name="preview_data_title">Podgląd danych</string>
+    <string name="preview_data_summary">%s</string>
+    <string name="view_stats_title">Zobacz statystyki</string>
+    <string name="anonymous_learn_more">Dowiedz się więcej</string>
+
+    <string name="anonymous_notification_desc">Włącz/Wyłącz statystyki CyanogenMod</string>
+
+    <string name="preview_id_title">ID urządzenia</string>
+    <string name="preview_device_title">Urządzenie</string>
+    <string name="preview_version_title">Wersja oprogramowania</string>
+    <string name="preview_country_title">Kraj</string>
+    <string name="preview_carrier_title">Operator</string>
+
+    <string name="display_rotation_title">Obrót ekranu</string>
+    <string name="display_rotation_enabled">Włączony</string>
+    <string name="display_rotation_disabled">Wyłączony</string>
+    <string name="display_rotation_unit">stopni</string>
+    <string name="display_lockscreen_rotation_title">Włącz obracanie ekranu blokady</string>
+    <string name="display_rotation_category_title">Stopnie obrotu</string>
+    <string name="display_rotation_0_title">0 stopni</string>
+    <string name="display_rotation_90_title">90 stopni</string>
+    <string name="display_rotation_180_title">180 stopni</string>
+    <string name="display_rotation_270_title">270 stopni</string>
+
+    <string name="picker_activities">Aktywności</string>
+    <string name="select_custom_app_title">Wybierz niestandardową aplikację</string>
+    <string name="select_custom_activity_title">Wybierz niestandardową aktywność</string>
+    <string name="icon_picker_choose_icon_title">Wybierz ikonę</string>
+    <string name="icon_picker_alarm">Budzik</string>
+    <string name="icon_picker_browser">Przeglądarka</string>
+    <string name="icon_picker_calendar">Kalendarz</string>
+    <string name="icon_picker_camera">Aparat</string>
+    <string name="icon_picker_chrome">Chrome</string>
+    <string name="icon_picker_email">E-mail</string>
+    <string name="icon_picker_email2">E-mail Holo</string>
+    <string name="icon_picker_facebook">Facebook</string>
+    <string name="icon_picker_gallery">Galeria</string>
+    <string name="icon_picker_google_small">Google (mały)</string>
+    <string name="icon_picker_googleplus">Google Plus</string>
+    <string name="icon_picker_googletalk">Google Talk</string>
+    <string name="icon_picker_maps">Mapy</string>
+    <string name="icon_picker_movie">Filmy</string>
+    <string name="icon_picker_music">Muzyka</string>
+    <string name="icon_picker_nav_normal">Nawigacja</string>
+    <string name="icon_picker_phone">Telefon</string>
+    <string name="icon_picker_podcast">Podcast</string>
+    <string name="icon_picker_rss">Czytnik RSS</string>
+    <string name="icon_picker_search">Wyszukiwarka</string>
+    <string name="icon_picker_sms">SMS/MMS</string>
+    <string name="icon_picker_twitter">Twitter</string>
+
+    <string name="icon_picker_title">Wybierz źródło ikony</string>
+    <string name="icon_picker_system_icons_title">Ikony systemowe</string>
+    <string name="icon_picker_gallery_title">Galeria</string>
+    <string name="icon_picker_pack_title">Paczka ikon</string>
+
+    <string name="tethering_advanced_text">Zaawansowane</string>
+    <string name="tethering_lease_time_text">Czas dzierżawy DHCP</string>
+    <string name="dhcp_lease_30mn">30 minut</string>
+    <string name="dhcp_lease_1h">1 godzina (domyślne)</string>
+    <string name="dhcp_lease_2h">2 godziny</string>
+    <string name="dhcp_lease_4h">4 godziny</string>
+    <string name="dhcp_lease_6h">6 godzin</string>
+    <string name="dhcp_lease_12h">12 godzin</string>
+    <string name="dhcp_lease_24h">24 godziny</string>
+
+    <string name="status_bar_notif_count_title">Pokaż ilość powiadomień</string>
+    <string name="status_bar_notif_count_summary">Pokaż ilość oczekujących powiadomień na pasku stanu</string>
+
+    <string name="increasing_ring_title">Narastający dzwonek</string>
+    <string name="checkbox_increasing_ring">Włącz</string>
+    <string name="increasing_ring_min_volume_title">Głośność początkowa</string>
+    <string name="increasing_ring_volume_notice">Podpowiedź:\nJeśli głośność początkowa jest wyższa od głośności dzwonka, to użyta zostanie głośność dzwonka.</string>
+    <string name="increasing_ring_interval_title">Odstęp między narastaniem</string>
+    <string name="increasing_ring_interval_eachring">Przy każdym odtworzeniu dzwonka</string>
+    <string name="increasing_ring_interval_half_second">0.5 sekundy</string>
+    <string name="increasing_ring_interval_1second">1 sekunda</string>
+    <string name="increasing_ring_interval_2seconds">2 sekundy</string>
+    <string name="increasing_ring_interval_3seconds">3 sekundy</string>
+    <string name="increasing_ring_interval_5seconds">5 sekund</string>
+    <string name="increasing_ring_interval_10seconds">10 sekund</string>
+
+    <string name="profile_write_nfc_tag">Przypisz do tagu NFC</string>
+    <string name="profile_write_touch_tag">Dotknij tagu by przypisać</string>
+    <string name="profile_write_success">Tag zapisany pomyślnie</string>
+    <string name="profile_write_failed">Błąd zapisu tagu!</string>
+    <string name="profile_selected">Wybrany profil: %1$s</string>
+    <string name="profile_nfc_text">Przypisanie profilu do tagu NFC pozwala na wybieranie tego profilu dotknięciem tagu. Powtórne dotknięcie włącza poprzednio wybrany profil.</string>
+    <string name="profile_unknown_nfc_tag">Profil nieznany</string>
+    <string name="profile_add_nfc_text">Ten tag NFC odnosi się do nieznanego profilu. Przypisanie tego tagu NFC do istniejącego profilu pozwoli wybierać ów profil w przyszłości.</string>
+    <string name="profile_select">Wybierz profil</string>
+
+    <string name="link_volume_ringtones">Połącz głośność</string>
+    <string name="link_volume_mutes">Połącz wyciszenie</string>
+
+    <string name="adb_over_network">Debugowanie przez sieć</string>
+    <string name="adb_over_network_summary">Połączenie ADB przez wszystkie interfejsy sieciowe. Wyłączane podczas restartu urządzenia</string>
+    <string name="adb_over_network_warning">UWAGA: Kiedy debugowanie przez sieć jest włączone, twój telefon jest otwarty na ataki przez wszystkie sieci, z którymi jesteś połączony, włączając w to także sieć komórkową!\n\nUżywaj tylko w zaufanych sieciach.\n\nNapewno chcesz włączyć tę funkcję?</string>
+
+    <string name="lockpattern_settings_enable_lock_before_unlock">Pokaż widżety przed odblokowaniem</string>
+
+    <string name="display_category_animation_options_title">Animacja</string>
+    <string name="display_electron_beam_animation_on_title">Animacja włączania ekranu</string>
+    <string name="display_electron_beam_animation_off_title">Animacja wyłączania ekranu</string>
+
+    <string name="volume_overlay_title">Panel głośności</string>
+    <string name="silent_mode_title" msgid="3181479108593217704">"Tryb cichy"</string>
+    <string name="volbtn_music_controls_title">Zmiana utworu</string>
+    <string name="volbtn_music_controls_summary">Gdy ekran jest wyłączony, przytrzymaj przycisk głośności, by zmienić utwór</string>
+    <string name="volume_ring_only_description">Dzwonek</string>
+
+    <string name="display_category_wakeup_options_title">Ustawienia wybudzania</string>
+    <string name="pref_volume_wake_title">Wybudź przyciskiem głośności</string>
+    <string name="pref_volume_wake_summary">Naciśnięcie przycisku głośności spowoduje wybudzenie urządzenia</string>
+
+    <string name="ok">OK</string>
+
+    <string name="verifier_device_identifier" msgid="5079997701152411060">"ID urządzenia programisty"</string>
+    <string name="verifier_device_identifier_not_available" msgid="1272065992066977324">"Informacje o urządzeniu są niedostępne."</string>
+
+    <string name="kill_app_longpress_back">Przycisk wstecz</string>
+    <string name="kill_app_longpress_back_summary">Zabij aplikację przytrzymując przycisk wstecz</string>
+
+    <string name="device_hostname">Nazwa hosta urządzenia</string>
+
+    <string name="mod_version">Wersja CyanogenMod</string>
+    <string name="mod_version_default">Nieznana</string>
+    <string name="build_date">Data kompilacji</string>
+    <string name="build_date_default">2012-01-01-0000</string>
+    <string name="cpu_info">Procesor</string>
+    <string name="mem_info">Pamięć RAM</string>
+
+    <string name="ime_switcher_notify">Powiadomienie wyboru</string>
+    <string name="ime_switcher_notify_summary">Pokaż powiadomienie o wyborze metody wprowadzania</string>
+
+    <string name="changelog_title">Pokaż dziennik zmian</string>
+    <string name="changelog_dialog">Dziennik zmian</string>
+    <string name="changelog_loading">Wczytywanie dziennika...</string>
+    <string name="changelog_error">Nie można wczytać dziennika zmian</string>
+    <string name="changelog_unknown">Nieznany</string>
+    <string name="changelog_version">Wersja</string>
+
+    <string name="stylus_icon_enabled_title">Pokaż użycie rysika</string>
+    <string name="stylus_icon_enabled_summary">Pokaż ikonę wskaźnika w trakcie korzystania z rysika</string>
+
+    <string name="power_menu_title">Menu przycisku „Power”</string>
+    <string name="power_menu_reboot_title">Menu restartu</string>
+    <string name="power_menu_screenshot_title">Zrzut ekranu</string>
+    <string name="power_menu_profiles_title">Przełącznik profilów</string>
+
+    <string name="development_tools_title">Uruchom narzędzia</string>
+
+    <string name="usb_mass_storage_title">Pamięć masowa</string>
+    <string name="usb_mass_storage_summary">Włącz pamięć masową poprzez USB</string>
+
+    <string name="volume_key_cursor_control_title">Sterowanie kursorem za pomocą przycisków głośności</string>
+    <string name="volume_key_cursor_control_off">Wyłączone</string>
+    <string name="volume_key_cursor_control_on">Głośniej/Ciszej przesuwa kursor w lewo/prawo</string>
+    <string name="volume_key_cursor_control_on_reverse">Głośniej/Ciszej przesuwa kursor w prawo/lewo</string>
+
 </resources>
