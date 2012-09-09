@@ -96,8 +96,11 @@
 
         <CheckBoxPreference
             android:key="allow_mock_location"
-            android:title="@string/allow_mock_location"
-            android:summary="@string/allow_mock_location_summary"/>
+            android:title="@string/allow_mock_location"/>
+
+        <CheckBoxPreference
+            android:key="allow_mock_sms"
+            android:title="@string/allow_mock_sms"/>
 
         <PreferenceScreen android:key="debug_app"
                 android:title="@string/debug_app" />
