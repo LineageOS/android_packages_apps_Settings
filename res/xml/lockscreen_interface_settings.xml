@@ -34,6 +34,14 @@
         android:entryValues="@array/lockscreen_background_values"/>
 
      <ListPreference
+        android:key="lockscreen_clock_align"
+        android:persistent="false"
+        android:dialogTitle="@string/lockscreen_clock_align_title"
+        android:title="@string/lockscreen_clock_align_title"
+        android:entries="@array/lockscreen_clock_align_entries"
+        android:entryValues="@array/lockscreen_clock_align_values"/>
+
+     <ListPreference
         android:key="lockscreen_battery_status"
         android:persistent="false"
         android:dialogTitle="@string/lockscreen_battery_status_title"
