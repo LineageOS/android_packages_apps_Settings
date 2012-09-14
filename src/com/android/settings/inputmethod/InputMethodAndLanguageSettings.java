@@ -277,6 +277,11 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
             }
         }
 
+        if (mStatusBarImeSwitcher != null) {
+            mStatusBarImeSwitcher.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+                    Settings.System.STATUS_BAR_IME_SWITCHER, 1) != 0);
+        }
+
         if (mStylusIconEnabled != null) {
             mStylusIconEnabled.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
                     Settings.System.STYLUS_ICON_ENABLED, 0) == 1);
