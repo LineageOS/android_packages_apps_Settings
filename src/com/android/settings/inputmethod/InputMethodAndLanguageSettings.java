@@ -194,10 +194,12 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         }
 
         mVolumeKeyCursorControl = (ListPreference) findPreference(VOLUME_KEY_CURSOR_CONTROL);
-        mVolumeKeyCursorControl.setOnPreferenceChangeListener(this);
-        mVolumeKeyCursorControl.setValue(Integer.toString(Settings.System.getInt(getActivity()
-                .getContentResolver(), Settings.System.VOLUME_KEY_CURSOR_CONTROL, 0)));
-        mVolumeKeyCursorControl.setSummary(mVolumeKeyCursorControl.getEntry());
+        if(mVolumeKeyCursorControl != null) {
+            mVolumeKeyCursorControl.setOnPreferenceChangeListener(this);
+            mVolumeKeyCursorControl.setValue(Integer.toString(Settings.System.getInt(getActivity()
+                    .getContentResolver(), Settings.System.VOLUME_KEY_CURSOR_CONTROL, 0)));
+            mVolumeKeyCursorControl.setSummary(mVolumeKeyCursorControl.getEntry());
+        }
 
         mHandler = new Handler();
         mSettingsObserver = new SettingsObserver(mHandler, getActivity());
