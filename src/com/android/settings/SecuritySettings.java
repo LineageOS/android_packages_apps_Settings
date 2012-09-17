@@ -238,13 +238,27 @@ public class SecuritySettings extends SettingsPreferenceFragment
                     Settings.System.LOCKSCREEN_VIBRATE_ENABLED, 1) == 1);
 
             // disable lock options if lock screen set to NONE
-            if (!mLockPatternUtils.isSecure() && mLockPatternUtils.isLockScreenDisabled()) {
+            // or if using pattern as a primary lock screen or
+            // as a backup to biometric
+            if ((!mLockPatternUtils.isSecure() && mLockPatternUtils.isLockScreenDisabled())
+                    || (mLockPatternUtils.isLockPatternEnabled())) {
                 mQuickUnlockScreen.setEnabled(false);
                 mMenuUnlock.setEnabled(false);
                 mVibratePref.setEnabled(false);
+            // disable menu unlock and vibrate on unlock options if
+            // using PIN/password as primary lock screen or as
+            // backup to biometric
+            } else if (mLockPatternUtils.isLockPasswordEnabled()) {
+                mQuickUnlockScreen.setEnabled(true);
+                mMenuUnlock.setEnabled(false);
+                mVibratePref.setEnabled(false);
+            // Disable the quick unlock if its not using PIN/password
+            // as a primary lock screen or as a backup to biometric
+            } else {
+                mQuickUnlockScreen.setEnabled(false);
             }
 
-            //Disable the MenuUnlock setting if no menu button is available
+            // Disable the MenuUnlock setting if no menu button is available
             if (getActivity().getApplicationContext().getResources()
                     .getBoolean(com.android.internal.R.bool.config_showNavigationBar)) {
                 mMenuUnlock.setEnabled(false);
