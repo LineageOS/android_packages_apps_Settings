@@ -1710,6 +1710,19 @@
     <string name="wifi_idle_30mn">30分</string>
     <string name="wifi_idle_1h">1時間</string>
     <string name="wifi_idle_3h">3時間</string>
+    <!-- Wi-Fi settings screen, advanced, title of the item to show the Wi-Fi device's MAC address. -->
+    <string name="wifi_setting_countrycode_title">Wi-Fi地域コード</string>
+    <!-- Wi-Fi settings screen, setting summary for setting the wifi frequency band [CHAR LIMIT=50]-->
+    <string name="wifi_setting_countrycode_summary">Wi-Fiの地域コードを指定する</string>
+    <!-- Wi-Fi settings screen, error message when the frequency band could not be set [CHAR LIMIT=50]. -->
+    <string name="wifi_setting_countrycode_error">地域コードの設定に問題がありました</string>
+
+    <string name="lockpattern_settings_enable_error_path_title">パターンエラーを表示</string>
+    <string name="lockpattern_settings_enable_dots_title">パターンドットを表示</string>
+
+    <string name="accessibility_home_button_answers_call_title">ホームボタンで着信に応答</string>
+    <string name="tts_play_example_not_found_title">警告</string>
+    <string name="tts_play_example_not_found_msg">要求された言語ではサンプルのテキストは見つかりませんでした。</string>
 
     <string name="battery_info_status_full">フル</string>
 
@@ -1889,6 +1902,8 @@
     <string name="navigation_bar_reset_message">現在の設定を破棄し、デフォルトに戻しますか?</string>
     <string name="navigation_bar_save_message">ナビゲーションバーの設定を保存しました</string>
     <string name="navigation_bar_reset_toast">ナビゲーションバーをデフォルトに戻しました</string>
+    <string name="navigation_bar_menu_editable">編集可能</string>
+    <string name="navigation_bar_menu_locked">ロック中</string>
 
     <!-- Hardware keys #CM -->
     <string name="hardware_keys_title">ハードウェアキー</string>
@@ -2064,6 +2079,11 @@
     <string name="lockscreen_battery_status_charging">充電中のみ</string>
     <string name="lockscreen_battery_status_alwayson">常に表示</string>
 
+    <string name="lockscreen_clock_align_title">時計の位置</string>
+    <string name="lockscreen_clock_align_left">左</string>
+    <string name="lockscreen_clock_align_center">中央</string>
+    <string name="lockscreen_clock_align_right">右</string>
+
     <!-- Profiles settings #CM -->
     <string name="profiles_settings_title">プロファイル</string>
     <string name="profiles_general_title">一般</string>
@@ -2233,6 +2253,17 @@
     <string name="cpu_max_freq_title">最大CPUクロック</string>
     <string name="cpu_set_on_boot">起動時に適用</string>
     <string name="cpu_set_on_boot_summary">起動時にCPU設定を適用する</string>
+
+    <!-- Performance Settings : I/O scheduler settings title -->
+    <string name="io_scheds_title">I/O スケジューラ</string>
+    <!-- Performance Settings : I/O scheduler settings summary. -->
+    <string name="io_scheds_summary">I/O スケジューラを変更する</string>
+
+    <!-- Performance Settings : I/O scheduler settings sub items -->
+    <string name="io_sched_title">I/O スケジューラ</string>
+    <string name="io_sched_summary">%S</string>
+    <string name="io_sched_set_on_boot">起動時に設定</string>
+    <string name="io_sched_set_on_boot_summary">I/O スケジューラの変更を起動時に適用する</string>
 
     <!-- Memory Management -->
     <string name="memory_management_title">メモリマネジメント</string>
@@ -2439,5 +2470,19 @@
 
     <!-- Launches Dev Tools -->
     <string name="development_tools_title">開発ツールの起動</string>
+    <string name="allow_mock_sms">擬似SMSを許可</string>
 
+    <!-- USB Mass Storage -->
+    <string name="usb_mass_storage_title">マスストレージ</string>
+    <string name="usb_mass_storage_summary">USBマスストレージを有効にする</string>
+
+    <!--- Volume key cursor control -->
+    <string name="volume_key_cursor_control_title">音量キーカーソル制御</string>
+    <string name="volume_key_cursor_control_off">無効</string>
+    <string name="volume_key_cursor_control_on">音量アップ/ダウンでカーソルを左/右に移動する</string>
+    <string name="volume_key_cursor_control_on_reverse">音量アップ/ダウンでカーソルを右/左に移動する</string>
+
+    <!-- CM Updater -->
+    <string name="cmupdate_settings_title">CyanogenModアップデート</string>
+    <string name="cmupdate_settings_summary">利用できるアップデートのチェック、表示及びインストール</string>
 </resources>
