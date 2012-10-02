@@ -79,7 +79,7 @@
     <string name="battery_info_uptime" msgid="5548545143573527992">"Vrijeme proteklo od pokretanja:"</string>
     <string name="battery_info_awake_battery" msgid="2557725975486185849">"Vrijeme buđenja na bateriji:"</string>
     <string name="battery_info_awake_plugged" msgid="176716874713478188">"Vrijeme buđenja kod punjenja:"</string>
-    <string name="battery_info_screen_on" msgid="376277447175613889">"Zaslonsko vrijeme uključenosti:"</string>
+    <string name="battery_info_screen_on" msgid="376277447175613889">"Zaslon uključen:"</string>
     <string name="battery_info_status_unknown" msgid="196130600938058547">"Nepoznato"</string>
     <string name="battery_info_status_charging" msgid="1705179948350365604">"Punjenje"</string>
     <string name="battery_info_status_charging_ac" msgid="5874340256342956252">"(AC)"</string>
@@ -1301,7 +1301,7 @@
     <string name="usage_type_data_recv" msgid="7251090882025234185">"Primljeni podaci"</string>
     <string name="usage_type_audio" msgid="6957269406840886290">"Audio"</string>
     <string name="usage_type_video" msgid="4295357792078579944">"Videozapis"</string>
-    <string name="usage_type_on_time" msgid="3351200096173733159">"Vrijeme uključenosti"</string>
+    <string name="usage_type_on_time" msgid="3351200096173733159">"Uključen"</string>
     <string name="usage_type_no_coverage" msgid="3797004252954385053">"Vrijeme bez signala"</string>
     <string name="battery_action_stop" msgid="649958863744041872">"Prisilno zaustavi"</string>
     <string name="battery_action_app_details" msgid="7861051816778419018">"Informacije o aplikaciji"</string>
@@ -1706,4 +1706,769 @@
     <string name="help_label" msgid="1107174367904110532">"Pomoć"</string>
     <string name="cell_broadcast_settings" msgid="8415582011920085222">"Poruke mobilne mreže"</string>
     <string name="cell_broadcast_settings_summary" msgid="3301339398950905913">"Odaberite vrste hitnih obavijesti za prikaz."</string>
+<!-- CYANOGENMOD EDITS START -->
+
+    <!-- Wifi sleep timeout -->
+    <string name="wifi_idle_mn_title">Zadrži Wi-Fi aktivnim</string>
+    <string name="wifi_idle_5mn">5 minuta</string>
+    <string name="wifi_idle_15mn">15 minuta (zadano)</string>
+    <string name="wifi_idle_30mn">30 minuta</string>
+    <string name="wifi_idle_1h">1 sat</string>
+    <string name="wifi_idle_3h">3 sata</string>
+
+    <!-- Quiet hours #CM -->
+    <string name="quiet_hours_title">Tihi sati</string>
+    <string name="quiet_hours_summary">Postavite sate u kojima vam uređaj ne bi trebao smetati</string>
+    <string name="quiet_hours_note_title">Napomena</string>
+    <string name="quiet_hours_note_summary">Dolazni pozivi će se ponašati kao inače tijekom tihih sati</string>
+    <string name="quiet_hours_enabled">Uključi tihe sate</string>
+    <string name="quiet_hours_enabled_on">Tihi sati su uključeni</string>
+    <string name="quiet_hours_enabled_off">Tihi sati su isključeni</string>
+    <string name="quiet_hours_start">Tihi sati počinju</string>
+    <string name="quiet_hours_start_summary">Kad počinju tihi sati</string>
+    <string name="quiet_hours_end">Kraj tihih sati</string>
+    <string name="quiet_hours_end_summary">Kad će prestati tihi sati</string>
+    <string name="quiet_hours_mute">Isključi notifikacije</string>
+    <string name="quiet_hours_mute_on">Tonovi neće raditi</string>
+    <string name="quiet_hours_mute_off">Tonovi će normalno raditi</string>
+    <string name="quiet_hours_still">Isključi vibracije</string>
+    <string name="quiet_hours_still_on">Uređaj neće vibrirati</string>
+    <string name="quiet_hours_still_off">Uređaj će normalno vibrirati</string>
+    <string name="quiet_hours_dim">Isključi svijetlo obavijesti</string>
+    <string name="quiet_hours_dim_on">Svijetlo obavijesti će biti isključeno</string>
+    <string name="quiet_hours_dim_off">Svijetlo obavijesti normalno će raditi</string>
+    <string name="quiet_hours_haptic">Isključi vibraciju na dodir</string>
+    <string name="quiet_hours_haptic_on">Vibracija na dodir biti će isključena</string>
+    <string name="quiet_hours_haptic_off">Vibracija na dodir normalno će raditi</string>
+    <string name="quiet_hours_active_from">Rade od</string>
+    <string name="quiet_hours_active_to">do</string>
+
+    <!-- time range preference -->
+    <string name="start_time_title">Početak</string>
+    <string name="end_time_title">Kraj</string>
+
+    <!-- Safe headset volume restore checkbox -->
+    <string name="safe_headset_restore_title">Sigurna glasnoća</string>
+    <string name="safe_headset_restore_summary">Spriječi glasne zvukove kad se slušalice prvi put spoje</string>
+
+    <!-- Battery light settings  -->
+    <string name="battery_light_title">Svijetlo baterije</string>
+    <string name="battery_low_pulse_title">Pulsiraj ako je baterija pri kraju</string>
+    <string name="battery_light_list_title">Boje</string>
+    <string name="battery_light_low_color_title">Baterija pri kraju</string>
+    <string name="battery_light_medium_color_title">Punjenje</string>
+    <string name="battery_light_full_color_title">Napunjena do kraja</string>
+
+    <!-- Backlight  -->
+    <string name="backlight_title">Automatska svjetlina</string>
+    <string name="backlight_summary">Postavite razine i intenzitet</string>
+    <string name="light_filter_title">Filter senzora svjetline</string>
+    <string name="light_filter_enabled_title">Uključeno</string>
+    <string name="light_filter_enabled_summary">Uključi slanje prosječne vrijednosti filtera podatcima senzora kako bi se smanjilo treperenje</string>
+    <string name="light_filter_window_title">Duljina perioda</string>
+    <string name="light_filter_window_summary">Filtrirana vrijednost je prosjek podataka senzora u ovom periodu</string>
+    <string name="light_filter_reset_title">Granica odstupanja</string>
+    <string name="light_filter_reset_summary">Vrijednosti koje ovoliko odstupaju od trenutnog prosijeka poništavaju filter</string>
+    <string name="light_filter_interval_title">Interval vrijednosti</string>
+    <string name="light_filter_interval_summary">Manji broj može povećati preciznosti ako koristi malo više CPU-a</string>
+    <string name="light_levels_title">Razine svijetla</string>
+    <string name="light_levels_enabled_title">Odaberite vlastite</string>
+    <string name="light_levels_dim_title">Razina zamračenja ekrana</string>
+    <string name="light_levels_dim_summary">Svjetlina korištena da se zamrači ekran</string>
+    <string name="light_levels_editor_title">Uredi ostale razine\u2026</string>
+    <string name="light_decrease_enabled_title">Dopusti smanjivanje svjetla</string>
+    <string name="light_decrease_enabled_summary">Dopusti smanjivanje svjetla koje koristi histerezu kako bi se smanjilo treperenje</string>
+    <string name="light_decrease_hysteresis_title">Smanji histerezu</string>
+    <string name="light_decrease_hysteresis_summary">Razine senzora za toliko se preklapaju prema dolje</string>
+
+    <!-- Light sensor levels  -->
+    <string name="ll_title">Razine senzora svjetline</string>
+    <string name="ll_header_upper">Gornji</string>
+    <string name="ll_header_lower">Donji</string>
+    <string name="ll_header_lcd">Zaslon</string>
+    <string name="ll_header_btn">Tipke</string>
+    <string name="ll_header_kb">Tipkovnica</string>
+    <string name="ll_lux">Senzor (filtrirano / raw):</string>
+    <string name="ll_lcd">Zaslon:</string>
+    <string name="ll_btn">Tipke:</string>
+    <string name="ll_kb">Tipkovnica:</string>
+    <string name="ll_disabled">isključeno</string>
+    <string name="ll_default">Učitaj zadano</string>
+    <string name="ll_save">Spremi &amp; primjeni</string>
+    <string name="ll_reload">Učitaj sadašnje</string>
+    <string name="ll_bad_levels">Razine se moraju povećavati</string>
+    <string name="ll_num_levels">Odaberi broj razina</string>
+
+    <!-- Display settings screen, notification light settings -->
+    <string name="notification_pulse_title">Svjetlo obavijesti</string>
+    <string name="notification_light_general_title">Opće</string>
+    <string name="notification_light_applist_title">Aplikacije</string>
+    <string name="notification_light_phonelist_title">Telefon</string>
+    <string name="notification_light_use_custom">Postavi svoje vrijednosti</string>
+    <string name="notification_light_enabled">Uključeno</string>
+    <string name="notification_light_disabled">Isključeno</string>
+    <string name="notification_light_default_value">Zadano</string>
+    <string name="notification_light_missed_call_title">Propušteni poziv</string>
+    <string name="notification_light_voicemail_title">Govorna pošta</string>
+
+    <!-- Notification light dialogs -->
+    <string name="edit_light_settings">Uredi postavke svjetla</string>
+    <string name="pulse_speed_title">Brzina i duljina pulsa</string>
+    <string name="picker_arrow">→</string>
+    <string name="default_time">Normalno</string>
+    <string name="custom_time">Vlastito</string>
+    <string name="dialog_test">Test</string>
+    <string name="dialog_delete_title">Izbriši</string>
+    <string name="dialog_delete_message">Izbriši odabranu stavku?</string>
+    <string name="dialog_test_message">Isključite zaslon kako bi vidjeli odabrana svjetla u akciji ili pritisnite odustani kako bi prekinuli testiranje</string>
+    <string name="dialog_test_button">Odustani</string>
+
+    <!-- Values for the notification light pulse spinners -->
+    <string name="pulse_length_always_on">Uvijek uključeno</string>
+    <string name="pulse_length_very_short">Vrlo kratko</string>
+    <string name="pulse_length_short">Kratko</string>
+    <string name="pulse_length_normal">Normalno</string>
+    <string name="pulse_length_long">Dugo</string>
+    <string name="pulse_length_very_long">Jako dugo</string>
+    <string name="pulse_speed_very_fast">Vrlo brzo</string>
+    <string name="pulse_speed_fast">Brzo</string>
+    <string name="pulse_speed_normal">Normalno</string>
+    <string name="pulse_speed_slow">Sporo</string>
+    <string name="pulse_speed_very_slow">Vrlo sporo</string>
+
+    <!-- Advanced, Device specific (DeviceParts) settings  -->
+    <string name="advanced_settings_title">Napredno</string>
+
+    <!-- INTERFACE Settings  -->
+    <!-- Settings main menu category heading. Interface (Launcher, Themes, System). [CHAR LIMIT=40] -->
+    <string name="header_category_interface">SUČELJE</string>
+
+    <!-- Launcher settings  -->
+    <string name="launcher_settings_title">Launcher</string>
+
+    <!-- Themes settings  -->
+    <string name="themes_settings_title">Teme</string>
+
+    <!-- System Interface settings  -->
+    <string name="system_settings_title">Sistem</string>
+    <string name="system_interface_title">Sistemsko sučelje</string>
+
+    <!-- Notification Drawer  -->
+    <string name="notification_drawer_title">Notifikacijski izbornik</string>
+
+    <!-- Combined Bar  -->
+        <string name="combined_bar_title">Zajednička traka</string>
+    <string name="combined_bar_auto_hide_title">Sakrij automatski</string>
+    <string name="combined_bar_auto_hide_summary">Dopusti skrivanje zajedničke trake kad je upaljena aplikacija preko cijelog zaslona</string>
+
+    <!-- Navigation Bar  -->
+    <string name="navigation_bar_title">Navigacijska traka</string>
+
+<string name="navigation_bar_help_text">1 - Za početak uređivanje pritisnite ikonu brave\n\n2 - Pritisnite bilo koju tipku da joj dodjelite ili promjenite funkciju\n\n3 - Dugo držite bilo koju tipku da promjenite redosljed\n\n4 - Za spremanje, pritisnite opet ikonu brave\n\n5 - Da bi vratili na zadano, pritisnite tipku reset\n\n</string>
+    <string name="navigation_bar_tips">&#8226; Aktivnosti mogu biti pridjeljenje samo jednoj tipki u isto vrijeme\n\n&#8226; Home tipka ne može biti prenamjenjena\n\n&#8226; Tipke sa strane ne mogu biti preraspoređene</string>
+    <string name="navigation_bar_tips_title">Kratki savjeti</string>
+    <string name="navigation_bar_reset_message">Izbriši trenute postavke i vrati na zadano?</string>
+    <string name="navigation_bar_save_message">Postavke Navigacijske trake spremljene<string>
+    <string name="navigation_bar_reset_toast">Navigacijska traka vraćena na zadano</string>
+    <string name="navigation_bar_menu_editable">Moguće uređivati</string>
+    <string name="navigation_bar_menu_locked">Zaključano</string>
+
+    <!-- Hardware keys -->
+    <string name="hardware_keys_title">Hardverske tipke</string>
+    <string name="hardware_keys_bindings_title">Radnje tipki</string>
+    <string name="hardware_keys_enable_custom_title">Omogući vlastite radnje</string>
+    <string name="hardware_keys_home_long_press_title">Home tipka (dugi pritisak)</string>
+    <string name="hardware_keys_menu_press_title">Menu tipka</string>
+    <string name="hardware_keys_menu_long_press_title">Menu tipka (dugi pritisak)</string>
+    <string name="hardware_keys_assist_press_title">Search tipka</string>
+    <string name="hardware_keys_assist_long_press_title">Search tipka (dugi pritisak)</string>
+    <string name="hardware_keys_app_switch_press_title">App switch tipka</string>
+    <string name="hardware_keys_app_switch_long_press_title">App switch tipka (dugi pritisak)</string>
+    <string name="hardware_keys_show_overflow_title">Prikaži 3-točkice</string>
+    <string name="hardware_keys_show_overflow_summary">Prikaži 3-točkice kao menu tipku unutar aplikacija</string>
+    <string name="hardware_keys_show_overflow_toast_enable">3-točkice neće biti vidljive dok se aplikacije ne restartiraju</string>
+    <string name="hardware_keys_show_overflow_toast_disable">3-točkice neće biti vidljive dok se aplikacije ne restartiraju</string>
+    <string name="hardware_keys_action_nothing">Bez radnje</string>
+    <string name="hardware_keys_action_menu">Otvori/zatvori menu</string>
+    <string name="hardware_keys_action_app_switch">Nedavne aplikacije</string>
+    <string name="hardware_keys_action_search">Pretraga</string>
+    <string name="hardware_keys_action_voice_search">Glasovna pretraga</string>
+    <string name="hardware_keys_action_in_app_search">Pretraga unutar aplik</string>
+
+    <!-- Power Widget  -->
+    <string name="power_widget_title">Widget s prečacima</string>
+    <string name="title_expanded_widget">Prikaži widget s prečacima</string>
+    <string name="power_widget_behavior">Ponašsanje widgeta</string>
+    <string name="title_expanded_hide_onchange">Sakrij na promjenu</string>
+    <string name="title_expanded_hide_scrollbar">Sakrij scrollbar</string>
+    <string name="title_widget_picker">Prečaci u widgetu</string>
+    <string name="summary_widget_picker">Odaberite koji će se prečaci prikazivati u widgetu</string>
+    <string name="title_widget_order">Redosljed prečaca</string>
+    <string name="summary_widget_order">Promjenite redosljed prečaca u widgetu</string>
+    <string name="title_buttons">Prečaci</string>
+    <string name="title_toggle_wifi">Wi-Fi</string>
+    <string name="title_toggle_bluetooth">Bluetooth</string>
+    <string name="title_toggle_gps">GPS</string>
+    <string name="title_toggle_sound">Zvuk</string>
+    <string name="title_toggle_brightness">Svjetlina</string>
+    <string name="title_toggle_sync">Sync</string>
+    <string name="title_toggle_wifiap">Wi-Fi AP</string>
+    <string name="title_toggle_screentimeout">Mirovanje zaslona</string>
+    <string name="title_toggle_mobiledata">Podatkovni paket</string>
+    <string name="title_toggle_lockscreen">Zaključan zaslon</string>
+    <string name="title_toggle_networkmode">2G/3G</string>
+    <string name="title_toggle_autorotate">Rotacija zaslona</string>
+    <string name="title_toggle_airplane">Zrakoplovni način</string>
+    <string name="title_toggle_flashlight">LED svjetiljka</string>
+    <string name="title_toggle_sleep">Mod neaktivnosti</string>
+    <string name="title_toggle_media_play_pause">Glazba: Sviraj/Pauza</string>
+    <string name="title_toggle_media_previous">Glazba: Preskoči na prethodnu</string>
+    <string name="title_toggle_media_next">Glazba: Preskoči na idući</string>
+    <string name="title_toggle_lte">LTE</string>
+    <string name="title_toggle_wimax">WiMAX</string>
+    <string name="title_button_modes">Stanja prečaca</string>
+    <string name="pref_brightness_mode_title">Modovi svjetline</string>
+    <string name="pref_brightness_mode_summary">Odaberite kako prečac za svjetlinu radi</string>
+    <string name="cm_brightness_mode_auto">Automatski</string>
+    <string name="cm_brightness_mode_dim">Potamni</string>
+    <string name="pref_network_mode_title">Mreža</string>
+    <string name="pref_screentimeout_mode_title">Mirovanje zaslona</string>
+    <string name="pref_ring_mode_title">Sound modes</string>
+    <string name="pref_screentimeout_mode_summary">Odaberite kako prečac za mjenjanje trajanja mirovanja zaslona radi</string>
+    <string name="cm_sound_mode_silent">Bešumno</string>
+    <string name="cm_sound_mode_vibrate">Vibracija</string>
+    <string name="cm_sound_mode_sound">Zvuk</string>
+    <string name="cm_sound_mode_soundVibrate">Zvuk+Vibracija</string>
+    <string name="pref_flash_mode_title">LED</string>
+    <string name="expanded_haptic_feedback_title">Povratna vibracija</string>
+
+    <!-- Status bar  -->
+    <string name="combined_status_bar_title">@string/status_bar_title</string>
+    <string name="status_bar_title">Statusna traka</string>
+    <string name="status_bar_clock_title">Sat</string>
+    <string name="status_bar_general_title">Opće</string>
+    <string name="status_bar_show_clock_title">Prikaži sat</string>
+    <string name="status_bar_am_pm_title">AM/PM</string>
+    <string name="status_bar_am_pm_info">24-satni sat je uključen</string>
+    <string name="status_bar_battery_title">Izgled Baterije</string>
+    <string name="status_bar_toggle_brightness">Upravljanje svjetlinom</string>
+    <string name="status_bar_toggle_brightness_summary">Dopusti podešavanje svjetline povlačenjem prsta po statusnoj traci</string>
+    <string name="status_bar_toggle_info">Automatsko osvjetljenje je uključeno</string>
+    <string name="status_bar_signal_text_title">Signal status style</string>
+    <string name="status_bar_signal_text_show_bars">Ikona (zadano)</string>
+    <string name="status_bar_signal_text_show_text">Tekst</string>
+    <string name="status_bar_signal_text_hidden">Skriveno</string>
+
+    <string name="lock_screen_title">Zaključan zaslon</string>
+
+    <!-- Lock Screen Shortcuts -->
+    <string name="lockscreen_target_info">Povucite klizač kako na mjesta kako bi im pridjelili prečace</string>
+    <string name="lockscreen_target_title">Prečaci</string>
+    <string name="lockscreen_target_summary">Pogledaj ili uredi vlastite prečace na zaključanom zaslonu</string>
+    <string name="lockscreen_target_reset">Prečaci zaključanog zaslona vraćeni na zadane</string>
+    <string name="lockscreen_target_save">Prečaci zaključanog zaslona su spremljeni</string>
+    <string name="lockscreen_target_reset_title">Poništi</string>
+    <string name="lockscreen_target_reset_message">Izbriši sve promjene na prečacima i vrati na zadano?</string>
+    <string name="lockscreen_target_empty">Prazno</string>
+    <string name="lockscreen_target_edit_title">Uredi prečac i ikonu</string>
+    <string name="lockscreen_target_edit_msg">Odaberite ili promjenite željenu aplikaciju ili aktivnost te povezanu ikonu</string>
+
+    <!-- Lock Screen Weather -->
+    <string name="lockscreen_weather_title">Vrijeme</string>
+    <string name="lockscreen_weather_summary">Prikaži informacije o vremenu na zaključanom zaslonu</string>
+    <string name="lockscreen_weather_enabled">Uključeno</string>
+    <string name="weather_enable">Prikaži vrijeme</string>
+    <string name="weather_source">Yahoo! vrijeme</string>
+    <string name="weather_use_custom_location">Ručno unesi lokaciju</string>
+    <string name="weather_geolocated">Geolociran putem mreže</string>
+    <string name="weather_custom_location_dialog_title">Unesi lokaciju</string>
+    <string name="weather_custom_location_hint">Grad, Država</string>
+    <string name="weather_custom_location_title">Lokacija</string>
+    <string name="weather_show_location_title">Prikaži lokaciju</string>
+    <string name="weather_show_timestamp_title">Prikaži sat</string>
+    <string name="weather_refresh_interval">Interval ažuriranja</string>
+    <string name="weather_use_metric">Koristi metre</string>
+    <string name="weather_retrieve_location_dialog_title">Nije moguće dohvatiti za lokaciju!</string>
+    <string name="weather_retrieve_location_dialog_message">Geolokacija preko mreže je isključena.\n\nRučno unesite svoju lokaciju ili uključite lokaciju preko mreže</string>
+    <string name="weather_retrieve_location_dialog_enable_button">Uključeno</string>
+    <string name="weather_invert_lowhigh">Invertiraj niske/visoke temperature</string>
+    <string name="weather_progress_title">Potvrđivam lokaciju</string>
+
+    <!-- Lock screen Weather - Update frequency -->
+    <string name="weather_refresh_manual">Ručno</string>
+    <string name="weather_refresh_30min">30 minuta</string>
+    <string name="weather_refresh_60min">60 minuta</string>
+    <string name="weather_refresh_2hrs">2 sata</string>
+    <string name="weather_refresh_4hrs">4 sata</string>
+    <string name="weather_refresh_6hrs">6 sati</string>
+    <string name="weather_refresh_8hrs">8 sati</string>
+
+    <!-- Lock screen Calendar -->
+    <string name="lockscreen_calendar_title">Kalendar</string>
+    <string name="lockscreen_calendar_summary">Prikaži idući događaj iz kalendara na zaključanom zaslonu</string>
+    <string name="lockscreen_calendar_enabled">Uključeno</string>
+    <string name="calendar_title">Prikaži idući događaj</string>
+    <string name="calendars_title">Kalendari događaja</string>
+    <string name="calendars_summary">Prikaži događaje iz ovih kalendara</string>
+    <string name="calendar_reminders_only_title">Samo podsjetnici</string>
+    <string name="calendar_reminders_only_summary">Prikaži samo događaje koji imaju podsjetnike</string>
+    <string name="calendar_lookahead_title">Period događaja</string>
+    <string name="calendar_show_location_title">Lokacija događaja</string>
+    <string name="calendar_show_description_title">Opis događaja</string>
+
+    <!-- Lock screen calendar lookahead -->
+    <string name="calendar_lookahead_3hrs">3 sata</string>
+    <string name="calendar_lookahead_6hrs">6 sati</string>
+    <string name="calendar_lookahead_12hrs">12 sati</string>
+    <string name="calendar_lookahead_1day">1 dan</string>
+    <string name="calendar_lookahead_3days">3 dana</string>
+    <string name="calendar_lookahead_1wk">1 tjedan</string>
+
+    <!-- Lock screen calendar - event metadata -->
+    <string name="calendar_metadata_none">Ne prikazuj</string>
+    <string name="calendar_metadata_first_line">Prikaži samo prvu crtu</string>
+    <string name="calendar_metadata_all">Prikaži sve</string>
+
+    <!-- Lock screen background -->
+    <string name="lockscreen_custom_background_title">Pozadina</string>
+    <string name="lockscreen_custom_background_dialog_title">Odaberite boju</string>
+    <string name="lockscreen_background_result_successful">Promijenjena pozadina</string>
+    <string name="lockscreen_background_result_not_successful">Pozadina nije promijenjena</string>
+    <string name="lockscreen_background_color_fill">Ispuni bojom</string>
+    <string name="lockscreen_background_custom_image">Vlastita slika</string>
+    <string name="lockscreen_background_default_wallpaper">Zadana pozadina</string>
+
+    <!-- Lock screen vibrate settings -->
+    <string name="lockscreen_vibrate_enabled_title">Vibriraj</string>
+    <string name="lockscreen_vibrate_enabled_head">Vibriraj pri otključavanju</string>
+
+    <!-- Lock screen misc. settings -->
+    <string name="lockscreen_battery_status_title">Razina baterije</string>
+    <string name="lockscreen_battery_status_charging">Samo kad se puni</string>
+    <string name="lockscreen_battery_status_alwayson">Uvijek uključeno</string>
+
+    <string name="lockscreen_clock_align_title">Poravnanje sata</string>
+    <string name="lockscreen_clock_align_left">Lijevo</string>
+    <string name="lockscreen_clock_align_center">Centar</string>
+    <string name="lockscreen_clock_align_right">Desno</string>
+
+    <!-- Profiles settings  -->
+    <string name="profiles_settings_title">Profili</string>
+    <string name="profiles_general_title">Opće</string>
+    <string name="profiles_add">Dodaj</string>
+    <string name="profile_menu_delete">Izbriši</string>
+    <string name="profile_settings_title">Profil</string>
+    <string name="profile_empty_list_profiles_off">Uključite profile kako bi ih koristili i namještali.</string>
+
+    <!-- Add Profile -->
+    <string name="add_profile_dialog_title">Napravi novi profil</string>
+    <string name="profile_name_title">Ime</string>
+    <string name="profile_profile_name_prompt">Unesite ime novog profila</string>
+    <string name="menu_new_profile">Novi profil</string>
+    <string name="menu_new_profile_summary">Dodajte i uredite novi profil</string>
+    <string name="new_profile_name">&lt;new profile&gt;</string>
+
+    <!-- Rename Dialog  -->
+    <string name="rename_dialog_title">Preimenuj</string>
+    <string name="rename_dialog_message">Unesite ime novog profila</string>
+    <string name="duplicate_profile_name">Već postoji profil s tim imenom!</string>
+    <string name="duplicate_appgroup_name">Već postoji aplikacijska grupa s tim imenom!</string>
+
+    <!-- Reset Profiles -->
+    <string name="profile_reset_title">Poništi</string>
+    <string name="profile_reset_message">Izbrišite sve korisnikove grupe aplikacija, profile i poništiti sve na zadano?</string>
+
+    <!-- Delete confimation messages -->
+    <string name="profile_delete_confirm">Izbriši ovaj profil?</string>
+    <string name="profile_app_delete_confirm">Izbriši ovu aplikaciju?</string>
+    <string name="profile_cannot_delete">Trenutno aktivni profil ne može biti izbrisan</string>
+
+    <!-- Profile Config screen PreferenceGroup titles -->
+    <string name="profile_connectionoverrides_title">Povezivanja</string>
+    <string name="profile_volumeoverrides_title">Zvukovi</string>
+    <string name="profile_vibratoroverrides_title">Vibracije</string>
+    <string name="connection_state_disabled">Isključeno</string>
+    <string name="connection_state_enabled">Uključeno</string>
+    <string name="volume_override_summary">Postavljeno na</string>
+    <string name="vibrator_state_disabled">Isključeno</string>
+    <string name="vibrator_state_enabled">Uključeno</string>
+    <string name="vibrator_state_silent">Samo u bešumnom</string>
+
+    <!-- Menu item for managing profiles -->
+    <string name="profile_profiles_manage">Profili</string>
+    <string name="profile_profile_manage">Uredi profile</string>
+    <string name="profile_applist_manage">Lista aplikacija</string>
+    <string name="profile_appgroups_manage">Grupa aplikacija</string>
+    <string name="profile_appgroup_manage">Uredi aplikacijsku grupu</string>
+
+    <!-- Profile settings screen, section header for settings related to notification profiles -->
+    <string name="profile_settings">Postavke profila</string>
+    <string name="profile_name">Ime</string>
+
+    <!-- Profile Settings sound modes labels -->
+    <string name="sound_mode">Obavijesti</string>
+    <string name="ringer_mode">Zvono</string>
+    <string name="lights_mode">Svijetla</string>
+    <string name="vibrate_mode">Vibracija</string>
+    <string name="choose_soundtone">Odaberije melodiju obavijesti</string>
+    <string name="choose_ringtone">Odaberite melodiju</string>
+
+    <!-- Sound settings screen, setting option name to pick ringtone (a list dialog comes up)-->
+    <string name="soundtone_title">Melodija obavijesti</string>
+    <string name="soundtone_summary">""</string>
+
+    <!-- Title for application group setting screen -->
+    <string name="profile_appgroups_title">Grupa aplikacija</string>
+    <string name="profile_applist_title">Aplikacije</string>
+    <string name="profile_new_appgroup">Nova grupa aplikacija</string>
+    <string name="profile_delete_appgroup">Izbriši ovu grupu aplikacija?</string>
+    <string name="profile_appgroup_name_prompt">Unesite ime za novu aplikacijsku grupu</string>
+    <string name="profile_appgroup_name_title">Ime</string>
+    <string name="profile_add_app">Dodaj aplikaciju</string>
+    <string name="profile_delete_app">Izbriši aplikaciju</string>
+
+    <!-- Add application dialog box title -->
+    <string name="profile_choose_app">Odaberite aplikaciju</string>
+    <string name="profile_settings_header">Postavke profila</string>
+
+    <!-- Profiles - system settings -->
+    <string name="profile_system_settings_title">Sistemske postavke</string>
+    <string name="profile_lockmode_title">Zaključani zaslon</string>
+    <string name="profile_lockmode_default">Zadano</string>
+    <string name="profile_lockmode_insecure">Nesigurni</string>
+    <string name="profile_lockmode_disabled">Isključeni</string>
+    <string name="profile_lockmode_default_summary">Koristi sistemski zadano</string>
+    <string name="profile_lockmode_insecure_summary">Koristi nesigurni zaključani zaslon</string>
+    <string name="profile_lockmode_disabled_summary">Zaključani zaslon je isključen</string>
+    <string name="profile_airplanemode_title">Zrakoplovni mod</string>
+    <string name="profile_airplanemode_default">Zadano</string>
+    <string name="profile_airplanemode_enabled">Uključeno</string>
+    <string name="profile_airplanemode_disabled">Isključeno</string>
+    <string name="profile_airplanemode_default_summary">Koristi sistemski zadano</string>
+    <string name="profile_airplanemode_enabled_summary">Zrakoplovni mod je uključen</string>
+    <string name="profile_airplanemode_disabled_summary">Zrakoplovni mod je isključen</string>
+    <string name="profile_disable_screen_lock_summary">Isključi sigurnost zaključanog ekrana dok je ovaj profil aktivan</string>
+
+    <string name="vibrator_type_ringer">Pozivi</string>
+    <string name="vibrator_type_notification">Obavijesti</string>
+
+    <!-- Connection override toggles (not all are used at this time ) -->
+    <string name="possibleButtons">Moguće Tipke</string>
+    <string name="toggleWifi">Wi-Fi</string>
+    <string name="toggleWifiAp">Portabilni Wi-Fi hotspot</string>
+    <string name="toggleBluetooth">Bluetooth</string>
+    <string name="toggleGPS">GPS</string>
+    <string name="toggleData">Podatkovni paket</string>
+    <string name="toggleSync">Sync Prometa</string>
+    <string name="toggle2g3g">2G/3G</string>
+    <string name="toggleSound">Zvonjava</string>
+    <string name="toggleBrightness">Svjetlina</string>
+    <string name="toggleAutoRotate">Orijentacija</string>
+    <string name="toggleScreenTimeout">Mirovanje zaslona</string>
+    <string name="toggleAirplane">Zrakoplov</string>
+    <string name="toggleFlashlight">LED svjetiljka</string>
+    <string name="toggleLockScreen">Zaključani zaslon</string>
+    <string name="toggleWimax">WiMax</string>
+
+    <!-- Screen security - Screen security   -->
+    <string name="screen_security_category">Sigurnost Ekrana</string>
+    <string name="screen_security_title">Zaključani zaslon</string>
+    <string name="screen_security_summary">Promjenite postavke sigurnosti ekrana zaključavanja, odgodu i mirovanje ekrana</string>
+    <string name="additional_options_title">Dodatne postavke</string>
+    <string name="unlock_menu_unlock_title">Menu otključavanje</string>
+    <string name="unlock_menu_unlock_summary">Pritiskanje menu tipke otključava uređaj</string>
+    <string name="unlock_quick_unlock_control_title">Brzo otključavanje</string>
+    <string name="unlock_quick_unlock_control_summary">Automatski otključaj kad se unese ispravni PIN/lozinka</string>
+
+    <!-- Slide lock delay -->
+    <string name="delay_and_timeout_title">Odgoda zaključavanja</string>
+    <string name="slide_lock_delay_title">Odgodi zaključavanje ekrana</string>
+    <string name="slide_lock_timeout_delay_title">Odgoda nakon isteka</string>
+    <string name="slide_lock_screenoff_delay_title">Odgodi nakon isključenog ekrana</string>
+    <string name="slide_lock_delay_none">Ništa</string>
+    <string name="slide_lock_delay_1s">1 sekunda</string>
+    <string name="slide_lock_delay_5s">5 sekundi</string>
+    <string name="slide_lock_delay_10s">10 sekundi</string>
+    <string name="slide_lock_delay_15s">15 sekundi</string>
+    <string name="slide_lock_delay_30s">30 sekundi</string>
+    <string name="slide_lock_delay_1m">1 minuta</string>
+    <string name="slide_lock_delay_5m">5 minuta</string>
+    <string name="slide_lock_delay_10m">10 minuta</string>
+    <string name="slide_lock_delay_30m">30 minuta</string>
+
+    <!-- Performance settings  -->
+    <string name="performance_settings_title">Performanse</string>
+
+    <!-- Performance Settings : Warning dialog  -->
+    <string name="performance_settings_warning_title">Oprezno nastavite</string>
+    <string name="performance_settings_warning">Ove postavke su stavljene za testiranje pa bi svaka njihova promjena mogla stvoriti nestabilnosti, rušenja, gubitak podataka i kvarove. \n\Zahtijevamo da ne podnosite izvještaje bugova ako je ijedna od ovih postavki promijenjena.</string>
+
+    <!-- Performance Settings : Processor Settings -->
+    <!-- Performance Settings : Processor settings title -->
+    <string name="processor_title">Procesor</string>
+    <!-- Performance Settings : Processor settings summary. -->
+    <string name="processor_summary">Promjenite CPU governor i clock brzinu</string>
+
+    <!-- Performance Settings : Processor settings sub items -->
+    <string name="cpu_cur_freq_title">Trenutna CPU frekvencija</string>
+    <string name="cpu_governors_title">CPU governor</string>
+    <string name="cpu_governors_summary">%S</string>
+    <string name="cpu_min_freq_title">Minimalna CPU frekvencija</string>
+    <string name="cpu_min_freq_summary">%s</string>
+    <string name="cpu_max_freq_title">Maksimalna CPU frekvencija</string>
+    <string name="cpu_max_freq_summary">%s</string>
+    <string name="cpu_set_on_boot">Obnovi na paljenju</string>
+    <string name="cpu_set_on_boot_summary">Prilikom paljenja uređaja obnovi postavke procesora</string>
+
+    <!-- Performance Settings : I/O scheduler settings title -->
+    <string name="io_scheds_title">I/O scheduler</string>
+    <!-- Performance Settings : I/O scheduler settings summary. -->
+    <string name="io_scheds_summary">Promjeni I/O scheduler</string>
+
+    <!-- Performance Settings : I/O scheduler settings sub items -->
+    <string name="io_sched_title">I/O scheduler</string>
+    <string name="io_sched_summary">%S</string>
+    <string name="io_sched_set_on_boot">Obnovi na paljenju</string>
+    <string name="io_sched_set_on_boot_summary">Prilikom paljenja uređaja obnovi postavke I/O schedulera</string>
+
+    <!-- Memory Management -->
+    <string name="memory_management_title">Upravljanje memorijom</string>
+    <string name="memory_management_summary">Uredite korištenje memorije kako bi promjenili performanse sistema</string>
+    <!-- zRam -->
+    <string name="pref_zram_title">zRam</string>
+    <string name="pref_zram_summary">Kompresiraj memoriju kako bi se povećao virtualni kapacitet (zahtjeva ponovno pokretanje)</string>
+    <!-- KSM -->
+    <string name="pref_ksm_title">Kernel samepage merging</string>
+    <string name="pref_ksm_summary">KSM smanjuje fizičke memorijske zahtjeve i unapređuje performanse</string>
+    <!-- Purgeable Assets -->
+    <string name="pref_purgeable_assets_title">Dozvoli čišćenje asseta</string>
+    <string name="pref_purgeable_assets_summary">Čišćenje bitmap memorije dopušta oslobađanje više RAMa kad je potrebno (zahtjeva ponovno pokretanje)</string>
+
+    <!-- Performance Settings : Dithering -->
+    <string name="pref_use_dithering_title">Površna unaprjeđenje</string>
+    <string name="dithering_no_dither">Isključi dithering</string>
+    <string name="dithering_color_banding">Popravi color banding (zadani)</string>
+    <string name="dithering_blur_effect">Popravi color banding i blur efekt</string>
+
+    <!-- Performance Settings : 16bpp Alpha -->
+    <string name="pref_use_16bpp_alpha_title">16bit transparency</string>
+    <string name="pref_use_16bpp_alpha_summary">Donosi bolje grafičke performanse, ali smanjuje kvalitetu prikaza i može stvoriti vizualne artifakte (zahtjeva ponovno pokretanje)</string>
+
+    <!-- System Updates  -->
+    <!-- About device screen, list item title. Takes the user to the screen for seeing and installing system updates. -->
+    <string name="system_update_settings_list_item_title">Ažuriranje sustava</string>
+    <!-- About device screen, list item summary. Takes the user to the screen for seeing and installing system updates. -->
+    <string name="system_update_settings_list_item_summary">""</string>
+
+    <!-- Donate  -->
+    <!-- About device screen, list item title. Takes the user to the screen about how to donate to the CyanogenMod Project. -->
+    <string name="donate_settings_title">Doniraj</string>
+    <!-- About device screen, list item summary. Takes the user to the screen about how to donate to the CyanogenMod Project. -->
+    <string name="donate_settings_summary">""</string>
+
+    <!-- Anonymous Statistics  -->
+    <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
+    <string name="anonymous_statistics_title">CyanogenMod Statistike</string>
+    <string name="anonymous_statistics_summary">Unaprijedite CyanogenMod sudjelovanjem u anonimnim prijavama vaših informacija</string>
+    <string name="anonymous_statistics_warning_title">O</string>
+    <string name="anonymous_statistics_warning">Sudjelovanjem u CyanogenMod Statistikama omogućiti ćete da vaši ne-osobni podatci budu poslani CyanogenMod developerima kako bi pratili jedinstvene instalacije na raznim uređajima. Poslane informacije sadržavaju jedinstveni identifikator koji ne kompromitira vašu privatnost ni osobne podatke. Podatci se šalju pri svakom pokretanju uređaja.\n\nKao primjer podataka koji se šalju pritisnite na Pregledaj Podatke.</string>
+    <string name="enable_reporting_title">Uključi slanje</string>
+    <string name="preview_data_title">Pregledaj Podatke</string>
+    <string name="preview_data_summary">%s</string>
+    <string name="view_stats_title">Pogledaj statistike</string>
+    <string name="anonymous_learn_more">Više</string>
+
+    <!-- Anonymous Statistics - Notification -->
+    <string name="anonymous_notification_desc">Uključi ili Isključi CyanogenMod Statistike</string>
+
+    <!-- Anonymous Statistics - Preview -->
+    <string name="preview_id_title">Jedinstveni ID</string>
+    <string name="preview_device_title">Uređaj</string>
+    <string name="preview_version_title">Verzija</string>
+    <string name="preview_country_title">Država</string>
+    <string name="preview_carrier_title">Operater</string>
+
+    <!-- Display : Rotation  -->
+    <string name="display_rotation_title">Rotacija</string>
+    <string name="display_rotation_enabled">Uključena.</string>
+    <string name="display_rotation_disabled">Isključena.</string>
+    <string name="display_rotation_unit">stupnjeva</string>
+    <string name="display_lockscreen_rotation_title">S ekranom zaključavanja</string>
+    <string name="display_rotation_category_title">Tipovi Rotacije</string>
+    <string name="display_rotation_0_title">0 stupnjeva</string>
+    <string name="display_rotation_90_title">90 stupnjeva</string>
+    <string name="display_rotation_180_title">180 stupnjeva</string>
+    <string name="display_rotation_270_title">270 stupnjeva</string>
+
+    <!-- Lock screen shortcuts -->
+    <string name="picker_activities">Aktivnosti</string>
+    <string name="select_custom_app_title">Odaberite vlastitu aplikaciju</string>
+    <string name="select_custom_activity_title">Odaberite vlastitu aplikaciju aktivnost</string>
+    <string name="icon_picker_choose_icon_title">Odaberite ikonu</string>
+    <string name="icon_picker_alarm">Alarm</string>
+    <string name="icon_picker_browser">Preglednik</string>
+    <string name="icon_picker_calendar">Kalendar</string>
+    <string name="icon_picker_camera">Fotoaparat</string>
+    <string name="icon_picker_chrome">Chrome</string>
+    <string name="icon_picker_email">Email</string>
+    <string name="icon_picker_email2">Email Holo</string>
+    <string name="icon_picker_facebook">Facebook</string>
+    <string name="icon_picker_gallery">Galerija</string>
+    <string name="icon_picker_google_small">Google (maleni)</string>
+    <string name="icon_picker_googleplus">Google Plus</string>
+    <string name="icon_picker_googletalk">Google Talk</string>
+    <string name="icon_picker_maps">Karte</string>
+    <string name="icon_picker_movie">Film</string>
+    <string name="icon_picker_music">Glazba</string>
+    <string name="icon_picker_nav_normal">Navigacija</string>
+    <string name="icon_picker_phone">Telefon</string>
+    <string name="icon_picker_podcast">Podcast</string>
+    <string name="icon_picker_rss">Rss</string>
+    <string name="icon_picker_search">Pretraga</string>
+    <string name="icon_picker_sms">Slanje poruka</string>
+    <string name="icon_picker_twitter">Twitter</string>
+
+    <!-- String for IconPicker -->
+    <string name="icon_picker_title">Odaberite izvor ikone</string>
+    <string name="icon_picker_system_icons_title">Sistemske ikone</string>
+    <string name="icon_picker_gallery_title">Galerija</string>
+    <string name="icon_picker_pack_title">Pak ikona</string>
+
+    <!-- Advanced tethering settings -->
+    <string name="tethering_advanced_text">Napredno</string>
+    <string name="tethering_lease_time_text">DHCP lease vrijeme</string>
+    <string name="dhcp_lease_30mn">30 minuta</string>
+    <string name="dhcp_lease_1h">1 sat (zadano)</string>
+    <string name="dhcp_lease_2h">2 sata</string>
+    <string name="dhcp_lease_4h">4 sata</string>
+    <string name="dhcp_lease_6h">6 sati</string>
+    <string name="dhcp_lease_12h">12 sati</string>
+    <string name="dhcp_lease_24h">24 sata</string>
+
+    <!-- Status bar notification count -->
+    <string name="status_bar_notif_count_title">Prikaži broj obavijesti</string>
+    <string name="status_bar_notif_count_summary">Prikaži broj obavijesti u tijeku</string>
+
+    <string name="increasing_ring_title">Uzlazna zvonjava</string>
+    <!-- Sound settings screen, the caption of the checkbox for making incoming calls increase in volume -->
+    <string name="checkbox_increasing_ring">Uključi</string>
+    <!-- Sound settings screen, the title of the volume bar to adjust the minimum increasing ring volume -->
+    <string name="increasing_ring_min_volume_title">Glasnoća početka zvonjave</string>
+    <string name="increasing_ring_volume_notice">Napomena:\nAko je početna zvonjava veća od tona zvonjave, melodija zvonjave biti će svirana koristeći glasnoću zvonjave.</string>
+    <string name="increasing_ring_interval_title">Interval pojačavanja</string>
+    <string name="increasing_ring_interval_eachring">Na svaku zvonjavu</string>
+    <string name="increasing_ring_interval_half_second">0.5 sekundi</string>
+
+    <string name="increasing_ring_interval_1second">1 sekunda</string>
+    <string name="increasing_ring_interval_2seconds">2 sekunde</string>
+    <string name="increasing_ring_interval_3seconds">3 sekunde</string>
+    <string name="increasing_ring_interval_5seconds">5 sekundi</string>
+    <string name="increasing_ring_interval_10seconds">10 sekundi</string>
+
+    <string name="profile_write_nfc_tag">Piši na NFC oznaku</string>
+    <string name="profile_write_touch_tag">Dodirni oznaku za pisanje</string>
+    <string name="profile_write_success">Uspješno zapisana oznaka</string>
+    <string name="profile_write_failed">Neuspjelo zapisivanje oznake!</string>
+    <string name="profile_selected">Odabrani profil: %1$s</string>
+    <string name="profile_nfc_text">Zapisivanje profila na NFC oznaku omogućava da ta oznaka aktivira odabrani profil. Drugi pritisak na oznaku vraća prethodno odabrani profil.</string>
+    <string name="profile_unknown_nfc_tag">Nepoznati profil</string>
+    <string name="profile_add_nfc_text">Ova NFC oznaka odnosi se na nepoznati profil. Dodavanje ove NFC oznake na postojeći profil dopustiti će odabir za odabrani profil u budućnosti.</string>
+    <string name="profile_select">Odabir profila</string>
+
+    <string name="link_volume_ringtones">Poveži ton zvona + ton obavijesti</string>
+	<string name="link_volume_mutes">Poveži isključenje tona zvona + obavijesti</string>
+
+    <string name="adb_over_network">ADB preko mreže</string>
+    <string name="adb_over_network_summary">Dopusti TCP/IP debugiranje preko mreža (Wi-Fi, USB mreža). Ova postavka se poništava pri ponovnom pokretanju</string>
+    <!-- Warning for Adb over Network -->
+    <string name="adb_over_network_warning">UPOZORENJE: Kad je ADB preko mreže uključeno, vaš telefon je otvoren za uljeze sa svih spojenih mreža, uključujući GSM podatkovni promet !\n\nKoristite ovu opciju samo kad ste spojeni na pouzdane mreže.\n\nŽelite li uključiti ovu opciju?</string>
+
+    <!-- Security & location settings screen, setting check box title. This controls whether the device shows the slider widgets before the unlock option [CHAR LIMIT=28]-->
+    <string name="lockpattern_settings_enable_lock_before_unlock">Prikaži widgete prije otključavanja</string>
+
+    <!-- Electron Beam -->
+    <string name="display_category_animation_options_title">Animacija</string>
+    <string name="display_electron_beam_animation_on_title">Animacija paljenja ekrana</string>
+    <string name="display_electron_beam_animation_off_title">Animacija gašenja ekrana</string>
+
+    <!-- Sound settings screen -->
+    <string name="volume_overlay_title">Ploča za Glasnoću</string>
+    <string name="silent_mode_title">Nečujni mod</string>
+    <string name="volbtn_music_controls_title">Upravljaj tipkama za glasnoću</string>
+    <string name="volbtn_music_controls_summary">Kad je ekran ugašen, dugi pritisak na tipke za glasnoću će premotavati pjesme</string>
+    <string name="volume_ring_only_description">Melodija zvona</string>
+
+    <!-- Wakeup options -->
+    <string name="display_category_wakeup_options_title">Postavke buđenja</string>
+    <string name="pref_volume_wake_title">Buđenje tipkama za glasnoću</string>
+    <string name="pref_volume_wake_summary">Pritisak na tipke za glasnoću će probuditi uređaj</string>
+
+    <string name="ok">OK</string>
+
+    <!-- Development settings: title for the field that shows the "App ID" development identifier
+         for this device. [CHAR LIMIT=40] -->
+    <string name="verifier_device_identifier">ID razvojnog uređaja</string>
+    <!-- Development settings: a string to show when the "App ID" development identifier for this
+         device cannot be read from internal settings. [CHAR LIMIT=60] -->
+    <string name="verifier_device_identifier_not_available">Informacije o uređaju nisu dostupne</string>
+
+    <!-- Kill app long-press back -->
+    <string name="kill_app_longpress_back">Zatvori aplikaciju back tipkom</string>
+    <string name="kill_app_longpress_back_summary">Zatvori aplikaciju dugim pritiskom na back tipku</string>
+
+    <!-- Hostname setting -->
+    <string name="device_hostname">Hostname uređaja</string>
+
+    <!-- About phone screen,  setting option name-->
+    <string name="mod_version">CyanogenMod verzija</string>
+    <string name="mod_version_default">Nepoznati</string>
+    <!-- About phone screen, build date of ROM -->
+    <string name="build_date">Build datum</string>
+    <string name="build_date_default">2012-01-01-0000</string>
+    <!-- About device screen, Cpu info. -->
+    <string name="cpu_info">CPU</string>
+    <!-- About phone screen, Free memory info -->
+    <string name="mem_info">Memorija</string>
+    <!-- About phone screen, status item label -->
+
+    <!-- Whether to display IME switcher notifcation -->
+    <string name="ime_switcher_notify">Odabir u obavijestima</string>
+    <string name="ime_switcher_notify_summary">Prikaži odabit metode unosa u obavijestima</string>
+
+    <!-- Change Log strings -->
+    <string name="changelog_title">Pogledaj changelog</string>
+    <string name="changelog_dialog">Changelog</string>
+    <string name="changelog_loading">Učitavam changelog...</string>
+    <string name="changelog_error">Neuspjelo učitavanje changeloga</string>
+    <string name="changelog_unknown">Nepoznata</string>
+    <string name="changelog_version">Verzija</string>
+
+    <!-- Stylus Icon -->
+    <string name="stylus_icon_enabled_title">Prikaži ikonu pri korištenju stylus</string>
+    <string name="stylus_icon_enabled_summary">Prikaži ikonu pokazivača kad se koristi stylus za crtanje ili kad lebdi iznad ekrana</string>
+
+    <!-- Power menu screenshot -->
+    <string name="power_menu_title">Power menu</string>
+    <string name="power_menu_reboot_title">Reboot menu</string>
+    <string name="power_menu_screenshot_title">Screenshot</string>
+    <string name="power_menu_profiles_title">Odabir profila</string>
+
+    <!-- Launches Dev Tools -->
+    <string name="development_tools_title">Pokreni alate</string>
+
+    <!-- USB Mass Storage -->
+    <string name="usb_mass_storage_title">Mass storage</string>
+    <string name="usb_mass_storage_summary">Uključi USB mass storage</string>
+
+    <!--- Volume key cursor control -->
+    <string name="volume_key_cursor_control_title">Upravljanje pokazivača tipkama za glasnoću</string>
+    <string name="volume_key_cursor_control_off">Isključeno</string>
+    <string name="volume_key_cursor_control_on">Glasnoća gore/dole pomiče pokazivač lijevo/desno</string>
+    <string name="volume_key_cursor_control_on_reverse">Glasnoća gore/dole pomiče pokazivač desno/lijevo</string>
+
+    <!-- CM Updater -->
+    <string name="cmupdate_settings_title">CyanogenMod ažuriranja</string>
+    <string name="cmupdate_settings_summary">Potraži, pogledaj ili instaliraj dostupna ažuriranja</string>
+
+    <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>
