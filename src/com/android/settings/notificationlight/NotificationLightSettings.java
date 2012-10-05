@@ -39,6 +39,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -86,12 +87,13 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
     private static final String CUSTOM_PREF = "custom_enabled";
     private static final String MISSED_CALL_PREF = "missed_call";
     private static final String VOICEMAIL_PREF = "voicemail";
-    public static final int DEFAULT_COLOR = 0xFFFFFF; //White
-    public static final int DEFAULT_TIME = 1000; // 1 second
     public static final int ACTION_TEST = 0;
     public static final int ACTION_DELETE = 1;
     private static final int MENU_ADD = 0;
     private static final int DIALOG_APPS = 0;
+    private int mDefaultColor;
+    private int mDefaultLedOn;
+    private int mDefaultLedOff;
     private List<ResolveInfo> mInstalledApps;
     private PackageManager mPackageManager;
     private boolean mCustomEnabled;
@@ -110,6 +112,14 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.notification_light_settings);
+
+        Resources resources = getResources();
+        mDefaultColor = resources.getColor(
+                com.android.internal.R.color.config_defaultNotificationColor);
+        mDefaultLedOn = resources.getInteger(
+                com.android.internal.R.integer.config_defaultNotificationLedOn);
+        mDefaultLedOff = resources.getInteger(
+                com.android.internal.R.integer.config_defaultNotificationLedOff);
 
         // Get launch-able applications
         mPackageManager = getPackageManager();
@@ -138,19 +148,19 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
 
     private void refreshDefault() {
         ContentResolver resolver = getContentResolver();
-        int color = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_DEFAULT_COLOR, DEFAULT_COLOR);
-        int timeOn = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_ON, DEFAULT_TIME);
-        int timeOff = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_OFF, DEFAULT_TIME);
+        int color = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_DEFAULT_COLOR, mDefaultColor);
+        int timeOn = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_ON, mDefaultLedOn);
+        int timeOff = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_OFF, mDefaultLedOff);
         mLightEnabled = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE, 0) == 1;
         mCustomEnabled = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_CUSTOM_ENABLE, 0) == 1;
 
         // Get Missed call and Voicemail values
-        int callColor = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_CALL_COLOR, DEFAULT_COLOR);
-        int callTimeOn = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_CALL_LED_ON, DEFAULT_TIME);
-        int callTimeOff = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_CALL_LED_OFF, DEFAULT_TIME);
-        int vmailColor = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_VMAIL_COLOR, DEFAULT_COLOR);
-        int vmailTimeOn = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_VMAIL_LED_ON, DEFAULT_TIME);
-        int vmailTimeOff = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_VMAIL_LED_OFF, DEFAULT_TIME);
+        int callColor = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_CALL_COLOR, mDefaultColor);
+        int callTimeOn = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_CALL_LED_ON, mDefaultLedOn);
+        int callTimeOff = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_CALL_LED_OFF, mDefaultLedOff);
+        int vmailColor = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_VMAIL_COLOR, mDefaultColor);
+        int vmailTimeOn = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_VMAIL_LED_ON, mDefaultLedOn);
+        int vmailTimeOff = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_VMAIL_LED_OFF, mDefaultLedOff);
 
         PreferenceScreen prefSet = getPreferenceScreen();
         PreferenceGroup generalPrefs = (PreferenceGroup) prefSet.findPreference("general_section");
@@ -263,7 +273,7 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
     private void addCustomApplication(String packageName) {
         Application app = mApplications.get(packageName);
         if (app == null) {
-            app = new Application(packageName, DEFAULT_COLOR, DEFAULT_TIME, DEFAULT_TIME);
+            app = new Application(packageName, mDefaultColor, mDefaultLedOn, mDefaultLedOff);
             mApplications.put(packageName, app);
             saveApplicationList(false);
             refreshCustomApplications();
