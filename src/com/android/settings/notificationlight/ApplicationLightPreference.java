@@ -171,7 +171,7 @@ public class ApplicationLightPreference extends Preference implements
             mOnValueView.setText(mapLengthValue(mOnValue));
         }
         if (mOffValueView != null) {
-            if (mOnValue == 0) {
+            if (mOnValue == 1) {
                 mOffValueView.setVisibility(View.GONE);
             } else {
                 mOffValueView.setVisibility(View.VISIBLE);
@@ -216,13 +216,7 @@ public class ApplicationLightPreference extends Preference implements
                 int onTime = d.getPulseSpeedOn();
                 int offTime = d.getPulseSpeedOff();
 
-                if (onTime == 0) {
-                    // 'Always on' is selected, display the test with a long timeout as
-                    // an onTime of 0 does not turn the light on at all
-                    showTestDialog(d.getColor() - 0xFF000000, 180000, 1);
-                } else {
-                    showTestDialog(d.getColor() - 0xFF000000, onTime, offTime);
-                }
+                showTestDialog(d.getColor() - 0xFF000000, onTime, offTime);
             }
         });
 
@@ -345,7 +339,9 @@ public class ApplicationLightPreference extends Preference implements
                 Notification.Builder builder = new Notification.Builder(context);
                 builder.setAutoCancel(true);
                 builder.setLights(color, timeon, timeoff);
-                nm.notify(1, builder.getNotification());
+                Notification n = builder.getNotification();
+                n.flags |= Notification.FLAG_SHOW_LIGHTS;
+                nm.notify(1, n);
             } else if(intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
                 nm.cancel(1);
                 context.getApplicationContext().unregisterReceiver(mReceiver);

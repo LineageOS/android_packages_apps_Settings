@@ -124,7 +124,7 @@ public class LightSettingsDialog extends AlertDialog implements
         mPulseSpeedOff.setSelection(pulseSpeedAdapter.getTimePosition(speedOff));
 
         mPulseSpeedOn.setEnabled(onOffChangeable);
-        mPulseSpeedOff.setEnabled((speedOn != 0) && onOffChangeable);
+        mPulseSpeedOff.setEnabled((speedOn != 1) && onOffChangeable);
 
         setView(layout);
         setTitle(R.string.edit_light_settings);
@@ -134,7 +134,7 @@ public class LightSettingsDialog extends AlertDialog implements
 
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            mPulseSpeedOff.setEnabled(getPulseSpeedOn() != 0);
+            mPulseSpeedOff.setEnabled(getPulseSpeedOn() != 1);
         }
 
         @Override
@@ -164,7 +164,8 @@ public class LightSettingsDialog extends AlertDialog implements
     }
 
     public int getPulseSpeedOff() {
-        return ((Pair<String, Integer>) mPulseSpeedOff.getSelectedItem()).second;
+        // return 0 if 'Always on' is selected
+        return getPulseSpeedOn() == 1 ? 0 : ((Pair<String, Integer>) mPulseSpeedOff.getSelectedItem()).second;
     }
 
     class PulseSpeedAdapter extends BaseAdapter implements SpinnerAdapter {
