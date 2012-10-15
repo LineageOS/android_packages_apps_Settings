@@ -137,11 +137,6 @@ public class PowerWidgetUtil {
             if (WimaxHelper.isWimaxSupported(context)) {
                 buttons += BUTTON_DELIMITER + BUTTON_WIMAX;
             }
-
-            // And the flashlight too if available
-            if (context.getResources().getBoolean(R.bool.has_led_flash)) {
-                buttons += BUTTON_DELIMITER + BUTTON_FLASHLIGHT;
-            }
         }
         return buttons;
     }
