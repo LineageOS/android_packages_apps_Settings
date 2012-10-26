@@ -120,7 +120,7 @@ public class DateTimeSettings extends SettingsPreferenceFragment
         }
 
         // Prevents duplicated values on date format selector.
-        mDummyDate.set(mDummyDate.get(Calendar.YEAR), mDummyDate.DECEMBER, 31);
+        mDummyDate.set(mDummyDate.get(Calendar.YEAR), mDummyDate.DECEMBER, 31, 13, 0, 0);
 
         for (int i = 0; i < formattedDates.length; i++) {
             String formatted =
