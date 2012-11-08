@@ -63,7 +63,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
     private static final String KEY_IME_SWITCHER = "status_bar_ime_switcher";
     private static final String KEY_STYLUS_ICON_ENABLED = "stylus_icon_enabled";
     private static final String VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
-    private static final String KEY_STYLUS_GESTURES = "stylus_gestures";
+    private static final String KEY_POINTER_SETTINGS = "pointer_settings_category";
 
     // false: on ICS or later
     private static final boolean SHOW_INPUT_METHOD_SWITCHER_SETTINGS = false;
@@ -205,10 +205,13 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
 
         mHandler = new Handler();
         mSettingsObserver = new SettingsObserver(mHandler, getActivity());
-        // remove stylus preference for non stylus devices
+
+        // remove the pointer settings preference category for non stylus devices
         if (!hasStylus()) {
-            getPreferenceScreen().removePreference(
-                    findPreference(KEY_STYLUS_GESTURES));
+            PreferenceCategory pc = (PreferenceCategory) findPreference(KEY_POINTER_SETTINGS);
+            if (pc != null) {
+                getPreferenceScreen().removePreference(pc);
+            }
         }
 
     }
