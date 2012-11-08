@@ -913,6 +913,10 @@
     <string name="assisted_gps_disabled" msgid="6982698333968010748">"Utilizaţi serverul pentru a asista funcţia GPS (debifaţi pentru a îmbunătăţi performanţa GPS)"</string>
     <string name="use_location_title" msgid="5206937465504979977">"Locaţie şi căutare Google"</string>
     <string name="use_location_summary" msgid="3978805802386162520">"Permiteţi Google să utilizeze locaţia dvs. pt. îmbunăt. rezultatelor căutării şi serviciilor"</string>
+    <string name="location_gps_source_title">"Sursă GPS"</string>
+    <string name="location_gps_source_summary">"Alegeţi să utilizaţi un GPS Bluetooth extern sau pe cel intern pentru servicii de localizare"</string>
+    <string name="location_gps_source_notification_title">"Alarmă"</string>
+    <string name="location_gps_source_notification">"Sursa GPS a fost schimbată! GPS-ul va fi dezactivat. Reactivaţi înainte de utilizare!"</string>
     <string name="location_access_title" msgid="7064108942964081243">"Acces la locaţia dvs."</string>
     <string name="location_access_summary" msgid="69031404093194341">"Acordaţi aplicaţiilor care v-au solicitat, permisiunea să utilizeze informaţiile dvs. de localizare"</string>
     <string name="location_sources_heading" msgid="1278732419851088319">"Surse de locaţii"</string>
@@ -1204,6 +1208,8 @@
     <string name="development_settings_summary" msgid="1815795401632854041">"Setaţi opţiuni pentru dezvoltarea aplicaţiei"</string>
     <string name="enable_adb" msgid="7982306934419797485">"Depanare USB"</string>
     <string name="enable_adb_summary" msgid="4881186971746056635">"Mod de depanare când este conectat USB"</string>
+    <string name="adb_notify">"Notificare Depanare USB"</string>
+    <string name="adb_notify_summary">"Afișează o notificare atunci când depanarea USB este conectată"</string>
     <string name="keep_screen_on" msgid="1146389631208760344">"Activ permanent"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"Ecranul nu va fi inactiv pe durata încărcării"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"Permiteţi locaţiile fictive"</string>
@@ -1220,6 +1226,13 @@
     <string name="enforce_read_external_summary" product="default" msgid="2750027486786530064">"Aplicaţiile trebuie să ceară permisiunea de a citi cardul SD"</string>
     <string name="enforce_read_external_confirm_title" product="default" msgid="273220585729800783">"Protejaţi cardul SD?"</string>
     <string name="enforce_read_external_confirm_message" product="default" msgid="3858482712337574407">"Când cardul SD este protejat, aplicaţiile trebuie să solicite permisiunea de a citi datele de pe stocarea externă."\n\n"Este posibil ca unele aplicaţii să nu funcţioneze înainte de a fi actualizate de către dezvoltatorii lor."</string>
+    <string name="root_access">"Acces Root"</string>
+    <string name="root_access_warning_title">"Permiteţi accesul Root?"</string>
+    <string name="root_access_none">"Dezactivat"</string>
+    <string name="root_access_warning_message">"Acordarea accesului Root aplicaţiilor este foarte periculoasă şi ar putea compromite securitatea sistemului Dvs.!"</string>
+    <string name="root_access_apps">"Numai pentru aplicaţii"</string>
+    <string name="root_access_adb">"Numai pentru ADB"</string>
+    <string name="root_access_all">"Aplicaţii şi ADB"</string>
     <string name="gadget_picker_title" msgid="98374951396755811">"Alegeţi obiectul gadget"</string>
     <string name="widget_picker_title" msgid="9130684134213467557">"Alegeţi obiectul widget"</string>
     <string name="allow_bind_app_widget_activity_allow_bind_title" msgid="2538303018392590627">"Creaţi widgetul şi permiteţi accesul?"</string>
@@ -1988,6 +2001,17 @@
     <string name="lockscreen_clock_align_left">"La stânga"</string>
     <string name="lockscreen_clock_align_center">"În centru"</string>
     <string name="lockscreen_clock_align_right">"La dreapta"</string>
+    <string name="lockscreen_buttons_title">"Acţiuni Butoane"</string>
+    <string name="lockscreen_buttons_summary">"Vizualizaţi sau modificaţi acţiunile butoanelor în ecranul de blocare"</string>
+    <string name="lockscreen_long_press_back_title">"Apăsarea lungă a buton. Înapoi"</string>
+    <string name="lockscreen_long_press_home_title">"Apăsarea lungă a buton. Home"</string>
+    <string name="lockscreen_long_press_menu_title">"Apăsarea lungă a buton. Meniu"</string>
+    <string name="lockscreen_buttons_no_action">"Nici o acţiune"</string>
+    <string name="lockscreen_buttons_flashlight">"Bliţ"</string>
+    <string name="lockscreen_buttons_next">"Melodia următoare"</string>
+    <string name="lockscreen_buttons_previous">"Melodia precedentă"</string>
+    <string name="lockscreen_buttons_playpause">"Redare/pauză muzică"</string>
+    <string name="lockscreen_buttons_toggle_sound">"Comutare sunet"</string>
     <string name="profiles_settings_title">"Profiluri"</string>
     <string name="profiles_general_title">"General"</string>
     <string name="profiles_add">"Adăugaţi"</string>
@@ -2199,7 +2223,7 @@
     <string name="status_bar_notif_count_summary">"Afişaţi numărul de notificări în aşteptare"</string>
     <string name="increasing_ring_title">"Ton de apel ascendent"</string>
     <string name="checkbox_increasing_ring">"Activat"</string>
-    <string name="increasing_ring_min_volume_title">"Volumul soneriei de pornire"</string>
+    <string name="increasing_ring_min_volume_title">"Volumul de pornire al soneriei"</string>
     <string name="increasing_ring_volume_notice">"Notă:\nFiindcă volumul soneriei de pornire este setat mai mare decât volumul soneriei, tonul de apel se va reda folosind volumul soneriei."</string>
     <string name="increasing_ring_interval_title">"Intervalul de creştere"</string>
     <string name="increasing_ring_interval_eachring">"La fiecare sonerie"</string>
@@ -2230,7 +2254,7 @@
     <string name="volume_overlay_title">"Stil panou volumul"</string>
     <string name="silent_mode_title">"Mod silenţios"</string>
     <string name="volbtn_music_controls_title">"Control muzică cu butoanele de volum"</string>
-    <string name="volbtn_music_controls_summary">"Atunci când ecranul este deconectat, apăsarea lungă a butoanelor de volum va căuta piese muzicale"</string>
+    <string name="volbtn_music_controls_summary">"Atunci când ecranul este deconectat, apăsarea lungă a butoanelor de volum va schimba piesele muzicale"</string>
     <string name="volume_ring_only_description">"Ton de apel"</string>
     <string name="display_category_wakeup_options_title">"Opţiuni trezire"</string>
     <string name="pref_volume_wake_title">"Trezire cu butoanele de volum"</string>
@@ -2259,6 +2283,8 @@
     <string name="power_menu_screenshot_title">"Screenshot"</string>
     <string name="power_menu_expanded_desktop">"Desktop extins"</string>
     <string name="power_menu_profiles_title">"Schimbare profil"</string>
+    <string name="power_menu_airplane_title">"Mod avion"</string>
+    <string name="power_menu_silent_title">"Panou sunet"</string>
     <string name="development_tools_title">"Lansare instrumente"</string>
     <string name="usb_mass_storage_title">"Stocare în masă"</string>
     <string name="usb_mass_storage_summary">"Activare stocare în masă USB"</string>
