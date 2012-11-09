@@ -58,8 +58,7 @@
 
     <!-- Safe headset volume restore checkbox -->
     <string name="safe_headset_restore_title">Sécurité auditive</string>
-    <string name="safe_headset_restore_summary">Prévient d\'un volume trop élevé au branchement des 
-écouteurs</string>
+    <string name="safe_headset_restore_summary">Prévient d\'un volume trop élevé au branchement des écouteurs</string>
 
     <!-- Battery light settings  -->
     <string name="battery_light_title">LED Batterie</string>
@@ -89,7 +88,7 @@
     <string name="light_decrease_enabled_title">Réduire l\'éclairage</string>
     <string name="light_decrease_enabled_summary">Cocher pour permettre de réduire le rétro-éclairage. Utiliser l\'hystérésis pour limiter les variations</string>
     <string name="light_decrease_hysteresis_title">Hystérésis</string>
-    <string name="light_decrease_hysteresis_summary">Sensor levels overlap this much downwards</string>
+    <string name="light_decrease_hysteresis_summary">Diminution des niveaux de saturation du capteur</string>
 
     <!-- Light sensor levels  -->
     <string name="ll_title">Niveaux de luminosité</string>
@@ -178,6 +177,8 @@
     <string name="navigation_bar_reset_message">Supprimer les paramètres actuels et remettre à zéro ?</string>
     <string name="navigation_bar_save_message">Paramètres de la barre de navigation enregistrés</string>
     <string name="navigation_bar_reset_toast">Barre de navigation remise à zéro</string>
+    <string name="navigation_bar_menu_editable">Editable</string>
+    <string name="navigation_bar_menu_locked">Verrouillé</string>
 
     <!-- Hardware keys -->
     <string name="hardware_keys_title">Boutons physiques</string>
@@ -227,9 +228,9 @@
     <string name="title_toggle_airplane">Mode Avion</string>
     <string name="title_toggle_flashlight">Torche</string>
     <string name="title_toggle_sleep">Mise en veille</string>
-    <string name="title_toggle_media_play_pause">Média: Lecture/Pause</string>
-    <string name="title_toggle_media_previous">Média: Précédent</string>
-    <string name="title_toggle_media_next">Média: Suivant</string>
+    <string name="title_toggle_media_play_pause">Média : Lecture/Pause</string>
+    <string name="title_toggle_media_previous">Média : Précédent</string>
+    <string name="title_toggle_media_next">Média : Suivant</string>
     <string name="title_toggle_lte">LTE</string>
     <string name="title_toggle_wimax">WiMax</string>
     <string name="title_button_modes">Modes des boutons</string>
@@ -275,7 +276,7 @@
     <string name="lockscreen_target_summary">Configurer les raccourcis de l\'écran de verrouillage</string>
     <string name="lockscreen_target_reset">Les raccourcis ont été réinitialisés</string>
     <string name="lockscreen_target_save">Raccourcis enregistrés</string>
-    <string name="lockscreen_target_reset_title">Reset</string>
+    <string name="lockscreen_target_reset_title">Réinitialiser</string>
     <string name="lockscreen_target_reset_message">Réinitialiser tous les raccourcis et revenir à la configuration d\'origine ?</string>
     <string name="lockscreen_target_empty">Vide</string>
     <string name="lockscreen_target_edit_title">Modifier le raccourci</string>
@@ -296,7 +297,7 @@
     <string name="weather_show_timestamp_title">Afficher l\'heure</string>
     <string name="weather_refresh_interval">Intervalle de mise à jour</string>
     <string name="weather_use_metric">Système métrique</string>
-    <string name="weather_retrieve_location_dialog_title">Impossible de déterminer le lieu!</string>
+    <string name="weather_retrieve_location_dialog_title">Impossible de déterminer le lieu !</string>
     <string name="weather_retrieve_location_dialog_message">La localisation par le réseau est désactivée.\n\nVeuillez sélectionner manuellement le lieu</string>
     <string name="weather_retrieve_location_dialog_enable_button">Activer</string>
     <string name="weather_invert_lowhigh">Inverser min/max température</string>
@@ -354,6 +355,23 @@
     <string name="lockscreen_battery_status_title">État de la batterie</string>
     <string name="lockscreen_battery_status_charging">Lors du chargement</string>
     <string name="lockscreen_battery_status_alwayson">Toujours afficher</string>
+    <string name="lockscreen_clock_align_title">Alignement de l\'horloge</string>
+    <string name="lockscreen_clock_align_left">Gauche</string>
+    <string name="lockscreen_clock_align_center">Centrée</string>
+    <string name="lockscreen_clock_align_right">Droite</string>
+    <string name="lockscreen_buttons_title">Bouton d\'actions</string>
+    <string name="lockscreen_buttons_summary">Voir ou modifier les actions du bouton de verrouillage</string>
+    <string name="lockscreen_long_press_back_title">Appui long sur le bouton Retour</string>
+    <string name="lockscreen_long_press_home_title">Appui long sur le bouton Home</string>
+    <string name="lockscreen_long_press_menu_title">Appui long sur le bouton Menu</string>
+    <string name="lockscreen_buttons_no_action">Aucune action</string>
+    <string name="lockscreen_buttons_flashlight">Lampe de poche</string>
+    <string name="lockscreen_buttons_next">Chanson suivante</string>
+    <string name="lockscreen_buttons_previous">Chanson précédente</string>
+    <string name="lockscreen_buttons_playpause">Lecture/Pause</string>
+    <string name="lockscreen_buttons_toggle_sound">Basculer le son/vibreur</string>
+    <string name="lockscreen_buttons_turn_off_torch">Relâcher le bouton pour éteindre la lampe de poche</string>
+    <string name="lockscreen_buttons_turn_off_torch_summary">La lampe de poche s\'éteindra lorsque vous relâcherez le bouton</string>
 
     <!-- Profiles settings  -->
     <string name="profiles_settings_title">Profils</string>
@@ -378,7 +396,7 @@
     <string name="duplicate_profile_name">Ce profil existe déjà !</string>
 
     <!-- Reset Profiles -->
-    <string name="profile_reset_title">Reset</string>
+    <string name="profile_reset_title">Réinitialiser</string>
     <string name="profile_reset_message">Êtes-vous certain de vouloir supprimer tous les profils et groupes d\'applications ?</string>
 
     <!-- Delete confimation messages -->
@@ -476,7 +494,7 @@
     <string name="location_gps_source_title">Source GPS</string>
     <string name="location_gps_source_summary">Définir l\'origine des informations GPS, si vous préférez utiliser un dispositif externe Bluetooth au lieu de celui de l\'appareil</string>
     <string name="location_gps_source_notification_title">Attention</string>
-    <string name="location_gps_source_notification">La source GPS a été modifiée, le GPS va être temporairement désactivé. Veuillez le réactiver avant utilisation!</string>
+    <string name="location_gps_source_notification">La source GPS a été modifiée, le GPS va être temporairement désactivé. Veuillez le réactiver avant utilisation !</string>
 
     <!-- Screen security - Screen security   -->
     <string name="screen_security_category">Verrouillage de l\'écran</string>
@@ -485,13 +503,15 @@
     <string name="additional_options_title">Options supplémentaires</string>
     <string name="unlock_menu_unlock_title">Déverrouiller par Menu</string>
     <string name="unlock_menu_unlock_summary">Déverrouillage de l\'écran en appuyant sur le bouton Menu</string>
+    <string name="unlock_home_unlock_title">Déverrouillage par bouton Home</string>
+    <string name="unlock_home_unlock_summary">Déverrouillage de l\'écran en appuyant sur le bouton Home</string>
     <string name="unlock_quick_unlock_control_title">Déverrouillage rapide</string>
     <string name="unlock_quick_unlock_control_summary">Évite d\'appuyer sur OK lors de la saisie du code PIN ou du mot de passe.\nAttention : effacer compte comme un essai raté !</string>
 
     <!-- Slide lock delay -->
     <string name="delay_and_timeout_title">Délai de verrouillage</string>
     <string name="slide_lock_delay_title">Modifier les délais</string>
-    <string name="slide_lock_timeout_delay_title">Timeout écran</string>
+    <string name="slide_lock_timeout_delay_title">Extinction de l\'écran</string>
     <string name="slide_lock_screenoff_delay_title">Extinction manuelle</string>
     <string name="slide_lock_delay_none">Immédiatement</string>
     <string name="slide_lock_delay_1s">1 seconde</string>
@@ -646,7 +666,7 @@
     <string name="checkbox_increasing_ring">Activer</string>
     <!-- Sound settings screen, the title of the volume bar to adjust the minimum increasing ring volume -->
     <string name="increasing_ring_min_volume_title">Volume de départ</string>
-    <string name="increasing_ring_volume_notice">Note:\nComme le volume défini est plus grand que celui de la sonnerie, il sera réduit à son niveau.</string>
+    <string name="increasing_ring_volume_notice">Note :\nComme le volume défini est plus grand que celui de la sonnerie, il sera réduit à son niveau.</string>
     <string name="increasing_ring_interval_title">Intervale de progression</string>
     <string name="increasing_ring_interval_eachring">À chaque sonnerie</string>
     <string name="increasing_ring_interval_half_second">0.5 secondes</string>
@@ -659,8 +679,8 @@
     <string name="profile_write_nfc_tag">Écrire sur les tags NFC</string>
     <string name="profile_write_touch_tag">Toucher le tag pour écrire</string>
     <string name="profile_write_success">Tag écrit avec succès</string>
-    <string name="profile_write_failed">L\'écriture à échoué!</string>
-    <string name="profile_selected">Profil sélectionné: %1$s</string>
+    <string name="profile_write_failed">L\'écriture à échoué !</string>
+    <string name="profile_selected">Profil sélectionné : %1$s</string>
     <string name="profile_nfc_text">Écrire un profil sur un tag NFC permet d\'en sélectionner un avec celui-ci. Lors du deuxième contact le profil précédent est sélectionné.</string>
     <string name="profile_unknown_nfc_tag">Profil inconnu</string>
     <string name="profile_add_nfc_text">Ce tag NFC se refère à aucun profil. Relier ce tag NFC à un profil existant permettra de sélectionner le profil à l\'avenir.</string>
@@ -672,7 +692,7 @@
     <string name="adb_over_network">ADB sur TCP/IP</string>
     <string name="adb_over_network_summary">"Activer le débogage sur toutes les interfaces (réseaux USB, Wi-Fi et Bluetooth)"</string>
     <!-- Warning for Adb over Network -->
-    <string name="adb_over_network_warning">"ATTENTION: Lorsque cette fonction est activée, votre appareil est ouvert aux intrusions sur toutes les interfaces, y compris via le réseau mobile !\n\nIl est fortement conseillé de désactiver le réseau mobile avant d\'activer cette fonction.\n\nContinuer ?"</string>
+    <string name="adb_over_network_warning">"ATTENTION : Lorsque cette fonction est activée, votre appareil est ouvert aux intrusions sur toutes les interfaces, y compris via le réseau mobile !\n\nIl est fortement conseillé de désactiver le réseau mobile avant d\'activer cette fonction.\n\nContinuer ?"</string>
     <string name="adb_notify">Notification débogage</string>
     <string name="adb_notify_summary">Afficher une notification lorsque le débogage est actif</string>
     <string name="root_access">Accès root</string>
@@ -741,10 +761,20 @@
     <string name="power_menu_expanded_desktop">Bureau étendu</string>
     <string name="power_menu_profiles_title">Profils</string>
     <string name="power_menu_airplane_title">Mode avion</string>
-    <string name="power_menu_silent_title">Panneau acoustique</string>
+    <string name="power_menu_silent_title">Son et vibreur</string>
 
     <!-- Launches Dev Tools -->
     <string name="development_tools_title">Outils dév.</string>
+
+    <!-- USB Mass Storage -->
+    <string name="usb_mass_storage_title">Stockage de masse</string>
+    <string name="usb_mass_storage_summary">Activer le stockage de masse USB</string>
+
+    <!-- Volume key cursor control -->
+    <string name="volume_key_cursor_control_title">Contrôle du curseur par les touches du volume</string>
+    <string name="volume_key_cursor_control_off">Désactivé</string>
+    <string name="volume_key_cursor_control_on">La touche haut déplace le curseur vers la gauche et bas vers la droite</string>
+    <string name="volume_key_cursor_control_on_reverse">La touche haut déplace le curseur vers la droite et bas vers la gauche</string>
 
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 
@@ -901,9 +931,9 @@
     <!-- no translation found for intent_sender_data_label (6332324780477289261) -->
     <skip />
     <string name="intent_sender_sendbroadcast_text" msgid="1415735148895872715">"Envoyer <xliff:g id="BROADCAST">broadcast</xliff:g>"</string>
-    <string name="intent_sender_action_label" msgid="616458370005452389">"<xliff:g id="ACTION">Action</xliff:g>:"</string>
+    <string name="intent_sender_action_label" msgid="616458370005452389">"<xliff:g id="ACTION">Action</xliff:g> :"</string>
     <string name="intent_sender_startactivity_text" msgid="5080516029580421895">"Démarrer <xliff:g id="ACTIVITY">activity</xliff:g>"</string>
-    <string name="intent_sender_resource_label" msgid="6963659726895482829">"<xliff:g id="RESOURCE">Resource</xliff:g>:"</string>
+    <string name="intent_sender_resource_label" msgid="6963659726895482829">"<xliff:g id="RESOURCE">Resource</xliff:g> :"</string>
     <string name="intent_sender_account_label" msgid="465210404475603404">"Compte :"</string>
     <string name="proxy_settings_title" msgid="5912878565897294401">"Paramètres proxy"</string>
     <string name="proxy_clear_text" msgid="5555400754952012657">"Effacer"</string>
@@ -1391,6 +1421,11 @@
     <string name="dock_sounds_enable_summary_on" product="default" msgid="8491180514199743771">"Émettre un son lorsque le téléphone est inséré dans la station d\'accueil ou retiré de celle-ci"</string>
     <string name="dock_sounds_enable_summary_off" product="tablet" msgid="5077843049805652363">"N\'émettre aucun son lorsque la tablette est insérée dans la station d\'accueil ou retirée de celle-ci"</string>
     <string name="dock_sounds_enable_summary_off" product="default" msgid="3151046599205265919">"N\'émettre aucun son lorsque le téléphone est inséré dans la station d\'accueil ou retiré de celle-ci"</string>
+    <string name="dock_force_undock_title">Forcer la déconnexion du dock</string>
+    <string name="dock_force_undock_summary_no_dock" product="tablet">La tablette est déconnectée du dock</string>
+    <string name="dock_force_undock_summary_no_dock" product="default">Le téléphone est déconnecté du dock</string>
+    <string name="dock_force_undock_summary" product="tablet">Déconnecter la tablette</string>
+    <string name="dock_force_undock_summary" product="default">Déconnecter le téléphone</string>
     <string name="account_settings" msgid="6403589284618783461">"Comptes"</string>
     <string name="search_settings" msgid="1910951467596035063">"Recherche"</string>
     <string name="search_settings_summary" msgid="9205656546570654169">"Configurer les paramètres et l\'historique de recherche"</string>
@@ -1968,6 +2003,8 @@
     <string name="accessibility_services_title" msgid="2592221829284342237">"Services"</string>
     <string name="accessibility_system_title" msgid="7187919089874130484">"Système"</string>
     <string name="accessibility_toggle_large_text_title" msgid="6618674985313017711">"Grands caractères"</string>
+    <!-- Title for the accessibility preference to home button to answers a call. [CHAR LIMIT=35] -->
+    <string name="accessibility_home_button_answers_call_title">Le bouton Home décroche les appels</string>
     <string name="accessibility_power_button_ends_call_title" msgid="5468375366375940894">"Marche/arrêt pour raccrocher"</string>
     <string name="accessibility_speak_password_title" msgid="3344423945644925355">"Énoncer mots de passe"</string>
     <string name="accessibility_long_press_timeout_title" msgid="2373216941395035306">"Délai de pression"</string>
@@ -1986,7 +2023,7 @@
     <string name="accessibility_service_disable_warning_summary" msgid="625013894287895398">"Si vous appuyez sur \"OK\", <xliff:g id="SERVICE">%1$s</xliff:g> sera arrêté."</string>
     <string name="accessibility_no_services_installed" msgid="7200948194639038807">"Aucun service installé"</string>
     <string name="accessibility_service_no_apps_title" msgid="5124097563864109821">"Vous avez besoin d\'un lecteur d\'écran ?"</string>
-    <string name="accessibility_service_no_apps_message" msgid="7751662416377046539">"TalkBack fournit des commentaires audio aux personnes malvoyantes. Voulez-vous l\'installer gratuitement depuis l\'Android Market ?"</string>
+    <string name="accessibility_service_no_apps_message" msgid="7751662416377046539">"TalkBack fournit des commentaires audio aux personnes malvoyantes. Voulez-vous l\'installer gratuitement depuis Google Play ?"</string>
     <string name="accessibility_script_injection_security_warning_summary" msgid="7706858873495386310">"Voulez-vous que les applications installent des scripts de Google pour rendre leur contenu Web plus accessible ?"</string>
     <string name="accessibility_service_default_description" msgid="1072730037861494125">"Aucune description fournie"</string>
     <string name="settings_button" msgid="3006713718908152930">"Paramètres"</string>
@@ -2441,4 +2478,39 @@
     <!-- CM Updater -->
     <string name="cmupdate_settings_title">Mises à jour CyanogenMod</string>
     <string name="cmupdate_settings_summary">Vérifier, afficher ou installer les mises à jour disponibles</string>
+
+    <!--- Sms security limit -->
+    <string name="app_security_title">Sécurité des applications</string>
+    <string name="sms_security_check_limit_title">Limiter l\'émission de SMS</string>
+    <string name="sms_security_check_limit_summary">Afficher un message d\'alerte pour prevenir qu\'une application envoie des messages SMS trop fréquemment. Limite actuelle : %d messages en 15 minutes</string>
+    <string name="sms_security_check_limit_default">30 (Défaut)</string>
+
+    <!-- Stylus Gestures -->
+    <string name="gestures_settings_title">Mouvements du stylet</string>
+    <string name="category_spen_title">Mouvements du stylet</string>
+    <string name="enable_subcat_title">Stylet</string>
+    <string name="enable_spen_title_head">Activer les mouvements au stylet</string>
+    <string name="enable_spen_summary_head">Permet de lancer des actions personnalisées avec les mouvements du stylet. Attention : L\'interaction avec les applications n\'aura pas lieu si le bouton du stylet est actif.</string>
+    <string name="gestures_subcat_title">Mouvements</string>
+    <string name="gestures_left_spen_title_head">Balayer vers la gauche</string>
+    <string name="gestures_left_spen_summary_head">Exécuter une action personnalisée lors d\'un glissé du stylet vers la gauche</string>
+    <string name="gestures_right_spen_title_head">Balayer vers la droite</string>
+    <string name="gestures_right_spen_summary_head">Exécuter une action personnalisée lors d\'un glissé du stylet vers la droite</string>
+    <string name="gestures_up_spen_title_head">Balayer vers le haut</string>
+    <string name="gestures_up_spen_summary_head">Exécuter une action personnalisée lors d\'un glissé du stylet vers le haut</string>
+    <string name="gestures_down_spen_title_head">Balayer vers le bas</string>
+    <string name="gestures_down_spen_summary_head">Exécuter une action personnalisée lors d\'un glissé du stylet vers le bas</string>
+    <string name="gestures_long_spen_title_head">Appui long</string>
+    <string name="gestures_long_spen_summary_head">Exécuter une action personnalisée lors d\'un appui long</string>
+    <string name="gestures_double_spen_title_head">Double appui</string>
+    <string name="gestures_double_spen_summary_head">Exécuter une action personnalisée lors d\'un double appui</string>
+
+    <!-- Gestures Options -->
+    <string name="gestures_action_empty">Aucune action</string>
+    <string name="gestures_action_home">Bouton Home</string>
+    <string name="gestures_action_back">Bouton Retour</string>
+    <string name="gestures_action_menu">Bouton Menu</string>
+    <string name="gestures_action_search">Rechercher</string>
+    <string name="gestures_action_recent">Applications récentes</string>
+
 </resources>
