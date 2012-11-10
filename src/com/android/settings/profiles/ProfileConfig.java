@@ -210,8 +210,7 @@ public class ProfileConfig extends SettingsPreferenceFragment
             mAirplaneModePreference.setEntryValues(R.array.profile_airplanemode_values);
             mAirplaneModePreference.setPersistent(false);
             mAirplaneModePreference.setSummary(getResources().getStringArray(
-R.array.profile_airplanemode_summaries)[mProfile
-                            .getAirplaneMode()]);
+                    R.array.profile_airplanemode_summaries)[mProfile.getAirplaneMode()]);
             mAirplaneModePreference.setValue(String.valueOf(mProfile.getAirplaneMode()));
             mAirplaneModePreference.setOnPreferenceChangeListener(this);
             systemPrefs.addPreference(mAirplaneModePreference);
