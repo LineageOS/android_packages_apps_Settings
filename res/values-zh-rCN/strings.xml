@@ -294,7 +294,7 @@
     <string name="biometric_weak_liveliness_title" msgid="2661613702124561096">"真人判断"</string>
     <string name="biometric_weak_liveliness_summary" msgid="4199587000948042325">"解锁时需要眨眼"</string>
     <string name="lock_after_timeout" msgid="4590337686681194648">"自动锁定"</string>
-    <string name="lock_after_timeout_summary" msgid="6128431871360905631">"<xliff:g id="TIMEOUT_STRING">%1$s</xliff:g>后休眠"</string>
+    <string name="lock_after_timeout_summary" msgid="6128431871360905631">"休眠 <xliff:g id="TIMEOUT_STRING">%1$s</xliff:g>后"</string>
     <string name="show_owner_info_on_lockscreen_label" msgid="5074906168357568434">"在锁定屏幕上显示机主信息"</string>
     <string name="owner_info_settings_title" msgid="2723190010708381889">"机主信息"</string>
     <string name="owner_info_settings_summary" msgid="3800834657847339570"></string>
@@ -2227,7 +2227,7 @@
     <!-- Screen security - Screen security   -->
     <string name="screen_security_category">屏幕安全性</string>
     <string name="screen_security_title">锁定屏幕</string>
-    <string name="screen_security_summary">查看或者改变锁屏安全性, 延迟以及超时设置</string>
+    <string name="screen_security_summary">查看或改变锁屏安全性, 延迟以及超时设置</string>
     <string name="additional_options_title">其他选项</string>
     <string name="unlock_menu_unlock_title">菜单键解锁</string>
     <string name="unlock_menu_unlock_summary">按下菜单键即可解锁设备</string>
@@ -2530,5 +2530,34 @@
     <string name="sms_security_check_limit_title">短信限制</string>
     <string name="sms_security_check_limit_summary">当某个程序频繁性的发送短信时显示一个警告窗口. 目前限制: 15 分钟内发送 %d 条信息</string>
     <string name="sms_security_check_limit_default">30 (默认)</string>
+
+    <!-- Stylus Gestures -->
+    <string name="gestures_settings_title">触控笔手势</string>
+    <string name="category_spen_title">触控笔手势</string>
+    <string name="enable_subcat_title">触控笔</string>
+    <string name="enable_spen_title_head">启用触控笔手势</string>
+    <string name="enable_spen_summary_head">在触控笔按钮按住时允许通过手势而做出自定义操作. 警告: 应用程序可能无法接受在触控笔按钮按住时的用户输入.</string>
+    <string name="gestures_subcat_title">手势</string>
+    <string name="gestures_left_spen_title_head">向左滑动</string>
+    <string name="gestures_left_spen_summary_head">允许在向左滑动时进行自定义的操作</string>
+    <string name="gestures_right_spen_title_head">向右滑动</string>
+    <string name="gestures_right_spen_summary_head">允许在向右滑动时进行自定义的操作</string>
+    <string name="gestures_up_spen_title_head">向上滑动</string>
+    <string name="gestures_up_spen_summary_head">允许在向上滑动时进行自定义的操作</string>
+    <string name="gestures_down_spen_title_head">向下滑动</string>
+    <string name="gestures_down_spen_summary_head">允许在向下滑动时进行自定义的操作</string>
+    <string name="gestures_long_spen_title_head">长按</string>
+    <string name="gestures_long_spen_summary_head">允许在长按时进行自定义的操作</string>
+    <string name="gestures_double_spen_title_head">双击</string>
+    <string name="gestures_double_spen_summary_head">允许在双击时进行自定义的操作</string>
+
+    <!-- Gestures Options -->
+    <string name="gestures_action_empty">无作用</string>
+    <string name="gestures_action_home">转到主屏幕</string>
+    <string name="gestures_action_back">模拟后退键</string>
+    <string name="gestures_action_menu">模拟菜单键</string>
+    <string name="gestures_action_search">启动搜索</string>
+    <string name="gestures_action_recent">最近使用程序</string>
+
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>
