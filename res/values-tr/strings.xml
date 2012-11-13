@@ -627,7 +627,6 @@
     <string name="media_volume_title" msgid="3576565767317118106">"Medya"</string>
     <string name="media_volume_summary" msgid="5363248930648849974">"Müziğin ve videoların ses düzeyini ayarla"</string>
     <string name="alarm_volume_title" msgid="2285597478377758706">"Alarm"</string>
-    <string name="dock_settings_summary" msgid="455802113668982481">"Takılı yuva için ses ayarları"</string>
     <string name="dtmf_tone_enable_title" msgid="8533399267725365088">"Tuşlara basınca ses çıksın"</string>
     <string name="sound_effects_enable_title" msgid="1171590821131077296">"Dokunma sesleri"</string>
     <string name="lock_sounds_enable_title" msgid="450098505659399520">"Ekran kilidi sesi"</string>
@@ -644,12 +643,13 @@
     <string name="vibrate_when_ringing_title" msgid="3885857358303178029">"Çalarken titret"</string>
     <string name="dock_settings" msgid="1820107306693002541">"Yuva"</string>
     <string name="dock_settings_title" msgid="9161438664257429372">"Yuva ayarları"</string>
-    <string name="dock_audio_settings_title" msgid="3324750259959570305">"Ses"</string>
-    <string name="dock_audio_summary_desk" msgid="6487784412371139335">"Takılı masaüstü yuvası için ayarlar"</string>
-    <string name="dock_audio_summary_car" msgid="6740897586006248450">"Takılı araç yuvası için ayarlar"</string>
+    <string name="dock_settings_summary">"Takılı yuva için bluetooth ses ayarları"</string>
+    <string name="dock_audio_settings_title">"Bluetooth ses"</string>
+    <string name="dock_audio_summary_desk">"Takılı masaüstü yuvası için bluetooth ses ayarları"</string>
+    <string name="dock_audio_summary_car">"Takılı araç yuvası için bluetooth ses ayarları"</string>
     <string name="dock_audio_summary_none" product="tablet" msgid="8215337394914283607">"Tablet yuvaya takılı değil"</string>
     <string name="dock_audio_summary_none" product="default" msgid="289909253741048784">"Telefon yuvaya takılı değil"</string>
-    <string name="dock_audio_summary_unknown" msgid="4465059868974255693">"Takılı yuva için ayarlar"</string>
+    <string name="dock_audio_summary_unknown">"Takılı yuva için bluetooth ses ayarları"</string>
     <string name="dock_not_found_title" msgid="3290961741828952424">"Yuva bulunamadı"</string>
     <string name="dock_not_found_text" product="tablet" msgid="8405432495282299143">"Yuva sesini ayarlamadan önce tableti yuvaya takmanız gerekir."</string>
     <string name="dock_not_found_text" product="default" msgid="1460497923342627801">"Yuva sesini ayarlamadan önce telefonu yuvaya takmanız gerekir."</string>
@@ -658,6 +658,12 @@
     <string name="dock_sounds_enable_summary_on" product="default" msgid="8491180514199743771">"Telefon yuvaya yerleştirilirken veya yuvadan çıkarılırken ses çal"</string>
     <string name="dock_sounds_enable_summary_off" product="tablet" msgid="5077843049805652363">"Tablet yuvaya yerleştirilirken veya yuvadan çıkarılırken ses çalma"</string>
     <string name="dock_sounds_enable_summary_off" product="default" msgid="3151046599205265919">"Telefon yuvaya yerleştirilirken veya yuvadan çıkarılırken ses çalma"</string>
+    <string name="dock_force_undock_title">Yuvadan çıkar</string>
+    <string name="dock_force_undock_summary_no_dock" product="tablet">Tablet yuvaya takılı değil</string>
+    <string name="dock_force_undock_summary_no_dock" product="default">Telefon yuvaya takılı değil</string>
+    <string name="dock_force_undock_summary" product="tablet">Tableti yuvadan çıkar</string>
+    <string name="dock_force_undock_summary" product="default">Telefonu yuvadan çıkar</string>
+
     <string name="account_settings" msgid="6403589284618783461">"Hesaplar"</string>
     <string name="search_settings" msgid="1910951467596035063">"Ara"</string>
     <string name="search_settings_summary" msgid="9205656546570654169">"Arama ayarlarını ve geçmişi yönet"</string>
@@ -1957,6 +1963,8 @@
     <string name="status_bar_style_hidden">Gizli</string>
     <string name="status_bar_signal_text_show_text">Yazı</string>
     <string name="status_bar_battery_status_percentage">Yüzde</string>
+    <string name="status_bar_battery_status_circle">Çember</string>
+    <string name="status_bar_battery_status_circle_percentage">Yüzdeli çember</string>
     <string name="lock_screen_title">Kilit ekranı</string>
     <!-- Lock Screen Shortcuts -->
     <string name="lockscreen_target_info">Kısayol atamak için çemberi hedefe sürükleyin</string>
@@ -2039,6 +2047,19 @@
     <string name="lockscreen_clock_align_left">Sol</string>
     <string name="lockscreen_clock_align_center">Orta</string>
     <string name="lockscreen_clock_align_right">Sağ</string>
+
+    <string name="lockscreen_buttons_title">Tuş işlemleri</string>
+    <string name="lockscreen_buttons_summary">Kilit ekranı tuş işlemlerini değiştir</string>
+    <string name="lockscreen_long_press_back_title">Geri tuşuna uzun basma</string>
+    <string name="lockscreen_long_press_home_title">Ev tuşuna uzun basma</string>
+    <string name="lockscreen_long_press_menu_title">Menü tuşuna uzun basma</string>
+    <string name="lockscreen_buttons_no_action">İşlem yok</string>
+    <string name="lockscreen_buttons_flashlight">Fener ışığı</string>
+    <string name="lockscreen_buttons_next">Sonraki şarkı</string>
+    <string name="lockscreen_buttons_previous">Önceki şarkı</string>
+    <string name="lockscreen_buttons_playpause">Müzik çal/beklet</string>
+    <string name="lockscreen_buttons_toggle_sound">Sesi değiştir</string>
+
     <!-- START: Profiles settings #CM -->
     <string name="profiles_settings_title">Telefon profilleri</string>
     <string name="profiles_general_title">Genel</string>
@@ -2144,12 +2165,14 @@
     <string name="toggleWimax">WiMAX</string>
     <!-- END: Profiles settings #CM -->
     <!-- START: Screen security - Screen security  #CM -->
-    <string name="screen_security_category">Ekran Güvenliği</string>
+    <string name="screen_security_category">Ekran güvenliği</string>
     <string name="screen_security_title">Kilit ekranı</string>
     <string name="screen_security_summary">Ekran güvenliğini ve gecikme sürelerini ayarlayın</string>
     <string name="additional_options_title">Ek seçenekler</string>
     <string name="unlock_menu_unlock_title">Menü ile kilit aç</string>
     <string name="unlock_menu_unlock_summary">Menü tuşuna basmak cihazın kilidini açar</string>
+    <string name="unlock_home_unlock_title">Ev tuşuyla kilit aç</string>
+    <string name="unlock_home_unlock_summary">Ev tuşuna basmak cihazın kilidini açar</string>
     <string name="unlock_quick_unlock_control_title">Hızlı kilit aç</string>
     <string name="unlock_quick_unlock_control_summary">Doğru PIN veya şifre girildiğinde otomatik olarak kilidi aç</string>
     <!-- Slide lock delay -->
@@ -2211,8 +2234,8 @@
     <string name="donate_settings_title">Bağış Yap</string>
     <string name="donate_settings_summary">""</string>
     <!-- Anonymous Statistics #CM -->
-    <string name="anonymous_statistics_title">CyanogenMod İstatistikleri</string>
-    <string name="anonymous_statistics_summary">Anonim istatistik raporlamaya katılarak CM\'nin daha iyi olmasına katkıda bulunun</string>
+    <string name="anonymous_statistics_title">CyanogenMod istatistikleri</string>
+    <string name="anonymous_statistics_summary">CyanogenMod\'un kullanım istatistiklerini toplamasına izin ver</string>
     <string name="anonymous_statistics_warning_title">Hakkında</string>
     <string name="anonymous_statistics_warning">İsteğe bağlı anonim verilerin etkinleştirilmesi,
     hangi cihazın hangi sürümü kullandığı gibi bilgileri
@@ -2221,13 +2244,13 @@
     ortaya çıkaran bilgiler iletilmez.
     Veri, cihaz her açıldığında gönderilir. Gönderilen verilerin
     örneğine aşağıdaki Verileri Önizle düğmesine tıklayarak bakabilirsiniz.</string>
-    <string name="enable_reporting_title">Raporlamayı Etkinleştir</string>
-    <string name="preview_data_title">Verileri Önizle</string>
+    <string name="enable_reporting_title">Raporlamayı etkinleştir</string>
+    <string name="preview_data_title">Verileri önizle</string>
     <string name="preview_data_summary">%s</string>
-    <string name="view_stats_title">İstatistiklere Bak</string>
-    <string name="anonymous_learn_more">Daha Fazlası</string>
-    <string name="anonymous_notification_desc">CyanogenMod İstatistiklerini aç veya kapat</string>
-    <string name="preview_id_title">Benzersiz Kimlik</string>
+    <string name="view_stats_title">İstatistiklere bak</string>
+    <string name="anonymous_learn_more">Daha fazlası</string>
+    <string name="anonymous_notification_desc">CyanogenMod istatistiklerini aç veya kapat</string>
+    <string name="preview_id_title">Benzersiz kimlik</string>
     <string name="preview_device_title">Cihaz</string>
     <string name="preview_version_title">Sürüm</string>
     <string name="preview_country_title">Ülke</string>
@@ -2366,7 +2389,10 @@
     <string name="power_menu_title">Güç menüsü</string>
     <string name="power_menu_reboot_title">Yeniden başlat</string>
     <string name="power_menu_screenshot_title">Ekran görüntüsü</string>
+    <string name="power_menu_expanded_desktop">Genişletilmiş masaüstü</string>
     <string name="power_menu_profiles_title">Profil değiştirici</string>
+    <string name="power_menu_airplane_title">Uçak modu</string>
+    <string name="power_menu_silent_title">Ses paneli</string>
     <!-- Launches Dev Tools -->
     <string name="development_tools_title">Geliştirici araçları</string>
     <!-- USB Mass Storage -->
@@ -2380,5 +2406,36 @@
     <!-- CM Updater -->
     <string name="cmupdate_settings_title">CyanogenMod güncellemeleri</string>
     <string name="cmupdate_settings_summary">Güncellemeleri kontrol et ve kur</string>
+    <!--- Sms security limit -->
+    <string name="app_security_title">Uygulama güvenliği</string>
+    <string name="sms_security_check_limit_title">SMS mesaj sınırı</string>
+    <string name="sms_security_check_limit_summary">Uygulamaların çok fazla SMS göndermesi durumunda uyarı penceresi göster. Şimdiki sınır: 15 dakikada %d mesaj</string>
+    <string name="sms_security_check_limit_default">30 (Varsayılan)</string>
+    <!-- Stylus Gestures -->
+    <string name="gestures_settings_title">Kalem hareketleri</string>
+    <string name="category_spen_title">Kalem hareketleri</string>
+    <string name="enable_subcat_title">Kalem</string>
+    <string name="enable_spen_title_head">Kalem hareketlerini etkinleştir</string>
+    <string name="enable_spen_summary_head">Kalemi hareket ettirerek özel işlemler başlat. Uyarı: Kalem düğmesine basılı tutulması durumunda uygulamalar girdileri algılamaz.</string>
+    <string name="gestures_subcat_title">Hareketler</string>
+    <string name="gestures_left_spen_title_head">Sola kaydır</string>
+    <string name="gestures_left_spen_summary_head">Sola kaydırarak özel işlem başlat</string>
+    <string name="gestures_right_spen_title_head">Sağa kaydır</string>
+    <string name="gestures_right_spen_summary_head">Sağa kaydırarak özel işlem başlat</string>
+    <string name="gestures_up_spen_title_head">Yukarı kaydır</string>
+    <string name="gestures_up_spen_summary_head">Yukarı kaydırarak özel işlem başlat</string>
+    <string name="gestures_down_spen_title_head">Aşağı kaydır</string>
+    <string name="gestures_down_spen_summary_head">Aşağı kaydırarak özel işlem başlat</string>
+    <string name="gestures_long_spen_title_head">Uzun bas</string>
+    <string name="gestures_long_spen_summary_head">Uzun basarak özel işlem başlat</string>
+    <string name="gestures_double_spen_title_head">Çift dokun</string>
+    <string name="gestures_double_spen_summary_head">Çift dokunarak özel işlem başlat</string>
+    <!-- Gestures Options -->
+    <string name="gestures_action_empty">İşlem yok</string>
+    <string name="gestures_action_home">Ana sayfaya git</string>
+    <string name="gestures_action_back">Geri tuşunu taklit et</string>
+    <string name="gestures_action_menu">Menü tuşunu taklit et</string>
+    <string name="gestures_action_search">Aramayı başlat</string>
+    <string name="gestures_action_recent">Son uygulamalar</string>
     <!-- ***************** CYANOGENMOD EDITS END *************************-->
 </resources>
