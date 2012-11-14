@@ -100,7 +100,7 @@ public class AnonymousStats extends SettingsPreferenceFragment
             }
         } else if (preference == mViewStats) {
             // Display the stats page
-            Uri uri = Uri.parse("http://stats.cyanogenmod.com");
+            Uri uri = Uri.parse("http://stats.cyanogenmod.org");
             startActivity(new Intent(Intent.ACTION_VIEW, uri));
         } else {
             // If we didn't handle it, let preferences handle it.
@@ -130,7 +130,7 @@ public class AnonymousStats extends SettingsPreferenceFragment
         } else if (which == DialogInterface.BUTTON_NEGATIVE){
             mEnableReporting.setChecked(false);
         } else {
-            Uri uri = Uri.parse("http://www.cyanogenmod.com/blog/cmstats-what-it-is-and-why-you-should-opt-in");
+            Uri uri = Uri.parse("http://www.cyanogenmod.org/blog/cmstats-what-it-is-and-why-you-should-opt-in");
             startActivity(new Intent(Intent.ACTION_VIEW, uri));
         }
     }
