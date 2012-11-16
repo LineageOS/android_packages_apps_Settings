@@ -1706,6 +1706,13 @@
     <string name="cell_broadcast_settings_summary" msgid="3301339398950905913">"表示する緊急警報の種類を選択してください。"</string>
 
     <!-- CM String entries bellow -->
+    <!-- force undock -->
+    <string name="dock_force_undock_title">強制的にドック解除</string>
+    <string name="dock_force_undock_summary_no_dock" product="tablet">タブレットはドックされてません</string>
+    <string name="dock_force_undock_summary_no_dock" product="default">携帯電話はドックされてません</string>
+    <string name="dock_force_undock_summary" product="tablet">タブレットをドック解除</string>
+    <string name="dock_force_undock_summary" product="default">携帯電話をドック解除</string>
+
     <!-- Wifi sleep timeout -->
     <string name="wifi_idle_mn_title">Wi-Fiアイドルタイムアウト</string>
     <string name="wifi_idle_5mn">5分</string>
@@ -1992,7 +1999,9 @@
     <string name="status_bar_style_icon">アイコン</string>
     <string name="status_bar_style_hidden">非表示</string>
     <string name="status_bar_signal_text_show_text">シグナルテキスト</string>
-    <string name="status_bar_battery_status_percentage">パーセンテージ</string>
+    <string name="status_bar_battery_status_percentage">数値</string>
+    <string name="status_bar_battery_status_circle">サークル</string>
+    <string name="status_bar_battery_status_circle_percentage">サークルに数値</string>
 
     <!-- Lock screen #CM -->
     <string name="lock_screen_title">ロック画面</string>
@@ -2087,6 +2096,18 @@
     <string name="lockscreen_clock_align_left">左</string>
     <string name="lockscreen_clock_align_center">中央</string>
     <string name="lockscreen_clock_align_right">右</string>
+
+    <string name="lockscreen_buttons_title">ボタンアクション</string>
+    <string name="lockscreen_buttons_summary">ロック画面のボタンアクションを確認及び編集</string>
+    <string name="lockscreen_long_press_back_title">戻るボタンの長押し</string>
+    <string name="lockscreen_long_press_home_title">ホームボタンの長押し</string>
+    <string name="lockscreen_long_press_menu_title">メニューボタンの長押し</string>
+    <string name="lockscreen_buttons_no_action">なし</string>
+    <string name="lockscreen_buttons_flashlight">フラッシュライト</string>
+    <string name="lockscreen_buttons_next">次の曲</string>
+    <string name="lockscreen_buttons_previous">前の曲</string>
+    <string name="lockscreen_buttons_playpause">音楽の再生/停止</string>
+    <string name="lockscreen_buttons_toggle_sound">サウンドのトグル</string>
 
     <!-- Profiles settings #CM -->
     <string name="profiles_settings_title">プロファイル</string>
@@ -2216,6 +2237,8 @@
     <string name="additional_options_title">追加オプション</string>
     <string name="unlock_menu_unlock_title">メニューアンロック</string>
     <string name="unlock_menu_unlock_summary">メニューボタンを押して端末をロックから解除する</string>
+    <string name="unlock_home_unlock_title">ホームアンロック</string>
+    <string name="unlock_home_unlock_summary">ホームボタンを押して端末をロックから解除する</string>
     <string name="unlock_quick_unlock_control_title">クイックアンロック</string>
     <string name="unlock_quick_unlock_control_summary">PINやパワードを入力後、OKを押す必要を省く(不正入力時のカウントは無効になる)</string>
 
@@ -2470,7 +2493,10 @@
     <string name="power_menu_title">電源ボタンメニュー</string>
     <string name="power_menu_reboot_title">再起動メニュー</string>
     <string name="power_menu_screenshot_title">スクリーンショット</string>
+    <string name="power_menu_expanded_desktop">拡張デスクトップ</string>
     <string name="power_menu_profiles_title">プロファイルスイッチャー</string>
+    <string name="power_menu_airplane_title">機内モード</string>
+    <string name="power_menu_silent_title">サウンドパネル</string>
 
     <!-- Launches Dev Tools -->
     <string name="development_tools_title">開発ツールの起動</string>
@@ -2489,4 +2515,40 @@
     <!-- CM Updater -->
     <string name="cmupdate_settings_title">CyanogenModアップデート</string>
     <string name="cmupdate_settings_summary">利用できるアップデートのチェック、表示及びインストール</string>
+
+    <!--- Sms security limit -->
+    <string name="app_security_title">アプリのセキュリティ</string>
+    <string name="sms_security_check_limit_title">SMSメッセージ制限</string>
+    <string name="sms_security_check_limit_summary">頻繁にSMSメッセージを送信するアプリに対して警告ダイアログを表示させる。現在の制限: %d通/5分</string>
+    <string name="sms_security_check_limit_default">30 (デフォルト)</string>
+
+    <!-- Stylus Gestures -->
+    <string name="gestures_settings_title">スタイラスジェスチャー</string>
+    <string name="category_spen_title">スタイラスジェスチャー</string>
+    <string name="enable_subcat_title">スタイラス</string>
+    <string name="enable_spen_title_head">スタイラスジェスチャーを使う</string>
+    <string name="enable_spen_summary_head">カスタムアクションを実行するためにスタイラスボタンでジェスチャを許可する。注意: スタイラスボタンをホールドしている間はアプリケーションは入力を受け取ることができません。</string>
+    <string name="gestures_subcat_title">ジェスチャー</string>
+    <string name="gestures_left_spen_title_head">左にスワイプ</string>
+    <string name="gestures_left_spen_summary_head">左にスワイプでアクションを実行</string>
+    <string name="gestures_right_spen_title_head">右にスワイプ</string>
+    <string name="gestures_right_spen_summary_head">右にスワイプでアクションを実行</string>
+    <string name="gestures_up_spen_title_head">上にスワイプ</string>
+    <string name="gestures_up_spen_summary_head">上にスワイプでアクションを実行</string>
+    <string name="gestures_down_spen_title_head">下にスワイプ</string>
+    <string name="gestures_down_spen_summary_head">下にスワイプでアクションを実行</string>
+    <string name="gestures_long_spen_title_head">長押し</string>
+    <string name="gestures_long_spen_summary_head">長押しでアクションを実行</string>
+    <string name="gestures_double_spen_title_head">ダブルタップ</string>
+    <string name="gestures_double_spen_summary_head">ダブルタップでアクションを実行</string>
+
+    <!-- Gestures Options -->
+    <string name="gestures_action_empty">なにもしない</string>
+    <string name="gestures_action_home">ホームへ移動</string>
+    <string name="gestures_action_back">戻るボタンをエミュレート</string>
+    <string name="gestures_action_menu">メニューボタンをエミュレート</string>
+    <string name="gestures_action_search">検索を起動</string>
+    <string name="gestures_action_recent">最近使ったアプリ</string>
+
+    <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>
