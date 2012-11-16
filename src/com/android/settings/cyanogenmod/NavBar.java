@@ -65,7 +65,8 @@ public class NavBar extends Fragment {
         mIntent.putExtra("edit", on);
         mIntent.putExtra("save", save);
         mActivity.sendBroadcast(mIntent);
-        mEditMenu.setTitle(on ? R.string.navigation_bar_menu_editable :  R.string.navigation_bar_menu_locked);
+        mEditMenu.setTitle(on ? R.string.navigation_bar_menu_editable :  R.string.navigation_bar_menu_locked)
+        .setIcon(on ? R.drawable.stat_navbar_edit_on : R.drawable.stat_navbar_edit_off);
     }
 
     @Override
@@ -118,10 +119,7 @@ public class NavBar extends Fragment {
             mEditMode = !mEditMode;
             toggleEditMode(mEditMode, true);
             if (!mEditMode) {
-                item.setIcon(R.drawable.stat_navbar_edit_off);
                 Toast.makeText(mActivity, R.string.navigation_bar_save_message, Toast.LENGTH_LONG).show();
-            } else {
-                item.setIcon(R.drawable.stat_navbar_edit_on);
             }
             return true;
         default:
