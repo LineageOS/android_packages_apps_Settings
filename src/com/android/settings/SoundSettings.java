@@ -48,6 +48,7 @@ import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.format.DateFormat;
 import android.util.Log;
+import android.view.VolumePanel;
 
 import java.util.Date;
 import java.util.Calendar;
@@ -62,8 +63,11 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     /** If there is no setting in the provider, use this. */
     private static final int FALLBACK_EMERGENCY_TONE_VALUE = 0;
 
+    private static final String KEY_VOLUME_OVERLAY = "volume_overlay";
+    private static final String KEY_SILENT_MODE = "silent_mode";
     private static final String KEY_VIBRATE = "vibrate_when_ringing";
     private static final String KEY_RING_VOLUME = "ring_volume";
+    private static final String KEY_INCREASING_RING = "increasing_ring";
     private static final String KEY_MUSICFX = "musicfx";
     private static final String KEY_DTMF_TONE = "dtmf_tone";
     private static final String KEY_SOUND_EFFECTS = "sound_effects";
@@ -80,16 +84,21 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String KEY_DOCK_AUDIO_MEDIA_ENABLED = "dock_audio_media_enabled";
     private static final String KEY_QUIET_HOURS = "quiet_hours";
 
+    private static final String SILENT_MODE_OFF = "off";
+    private static final String SILENT_MODE_VIBRATE = "vibrate";
+    private static final String SILENT_MODE_MUTE = "mute";
 
     private static final String[] NEED_VOICE_CAPABILITY = {
             KEY_RINGTONE, KEY_DTMF_TONE, KEY_CATEGORY_CALLS,
-            KEY_EMERGENCY_TONE
+            KEY_EMERGENCY_TONE, KEY_INCREASING_RING
     };
 
     private static final int MSG_UPDATE_RINGTONE_SUMMARY = 1;
     private static final int MSG_UPDATE_NOTIFICATION_SUMMARY = 2;
 
     private CheckBoxPreference mVibrateWhenRinging;
+    private ListPreference mVolumeOverlay;
+    private ListPreference mSilentMode;
     private CheckBoxPreference mDtmfTone;
     private CheckBoxPreference mSoundEffects;
     private CheckBoxPreference mHapticFeedback;
@@ -126,6 +135,8 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals(Intent.ACTION_DOCK_EVENT)) {
                 handleDockChange(intent);
+            } else if (intent.getAction().equals(AudioManager.RINGER_MODE_CHANGED_ACTION)) {
+                updateState(false);
             }
         }
     };
@@ -147,8 +158,20 @@ public class SoundSettings extends SettingsPreferenceFragment implements
             getPreferenceScreen().removePreference(findPreference(KEY_EMERGENCY_TONE));
         }
 
+        mVolumeOverlay = (ListPreference) findPreference(KEY_VOLUME_OVERLAY);
+        mVolumeOverlay.setOnPreferenceChangeListener(this);
+        int volumeOverlay = Settings.System.getInt(getContentResolver(),
+                Settings.System.MODE_VOLUME_OVERLAY,
+                VolumePanel.VOLUME_OVERLAY_EXPANDABLE);
+        mVolumeOverlay.setValue(Integer.toString(volumeOverlay));
+        mVolumeOverlay.setSummary(mVolumeOverlay.getEntry());
+
+        mSilentMode = (ListPreference) findPreference(KEY_SILENT_MODE);
         if (!getResources().getBoolean(R.bool.has_silent_mode)) {
+            getPreferenceScreen().removePreference(mSilentMode);
             findPreference(KEY_RING_VOLUME).setDependency(null);
+        } else {
+            mSilentMode.setOnPreferenceChangeListener(this);
         }
 
         mQuietHours = (PreferenceScreen) findPreference(KEY_QUIET_HOURS);
@@ -252,6 +275,10 @@ public class SoundSettings extends SettingsPreferenceFragment implements
 
         IntentFilter filter = new IntentFilter(Intent.ACTION_DOCK_EVENT);
         getActivity().registerReceiver(mReceiver, filter);
+
+        filter = new IntentFilter(AudioManager.RINGER_MODE_CHANGED_ACTION);
+        getActivity().registerReceiver(mReceiver, filter);
+
     }
 
     @Override
@@ -261,10 +288,35 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         getActivity().unregisterReceiver(mReceiver);
     }
 
+    private void setPhoneSilentSettingValue(String value) {
+        int ringerMode = AudioManager.RINGER_MODE_NORMAL;
+        if (value.equals(SILENT_MODE_MUTE)) {
+            ringerMode = AudioManager.RINGER_MODE_SILENT;
+        } else if (value.equals(SILENT_MODE_VIBRATE)) {
+            ringerMode = AudioManager.RINGER_MODE_VIBRATE;
+        }
+        mAudioManager.setRingerMode(ringerMode);
+    }
+
+    private String getPhoneSilentModeSettingValue() {
+        switch (mAudioManager.getRingerMode()) {
+        case AudioManager.RINGER_MODE_NORMAL:
+            return SILENT_MODE_OFF;
+        case AudioManager.RINGER_MODE_VIBRATE:
+            return SILENT_MODE_VIBRATE;
+        case AudioManager.RINGER_MODE_SILENT:
+            return SILENT_MODE_MUTE;
+        }
+        // Shouldn't happen
+        return SILENT_MODE_OFF;
+    }
+
     // updateState in fact updates the UI to reflect the system state
     private void updateState(boolean force) {
         if (getActivity() == null) return;
         ContentResolver resolver = getContentResolver();
+
+        mSilentMode.setValue(getPhoneSilentModeSettingValue());
 
         if (Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_ENABLED, 0) == 1) {
             mQuietHours.setSummary(getString(R.string.quiet_hours_active_from) + " " +
@@ -274,6 +326,8 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         } else {
             mQuietHours.setSummary(getString(R.string.quiet_hours_summary));
         }
+
+        mSilentMode.setSummary(mSilentMode.getEntry());
     }
 
     private void updateRingtoneName(int type, Preference preference, int msg) {
@@ -384,6 +438,14 @@ public class SoundSettings extends SettingsPreferenceFragment implements
             } catch (NumberFormatException e) {
                 Log.e(TAG, "could not persist emergency tone setting", e);
             }
+        } else if (preference == mSilentMode) {
+            setPhoneSilentSettingValue(objValue.toString());
+        } else if (preference == mVolumeOverlay) {
+            final int value = Integer.valueOf((String) objValue);
+            final int index = mVolumeOverlay.findIndexOfValue((String) objValue);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.MODE_VOLUME_OVERLAY, value);
+            mVolumeOverlay.setSummary(mVolumeOverlay.getEntries()[index]);
         }
 
         return true;
