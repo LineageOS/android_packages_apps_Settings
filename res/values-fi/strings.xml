@@ -297,7 +297,7 @@
     <string name="owner_info_settings_title" msgid="2723190010708381889">"Omistajan tiedot"</string>
     <string name="owner_info_settings_summary" msgid="3800834657847339570"></string>
     <string name="owner_info_settings_edit_text_hint" msgid="4608681417960923911">"Kirjoita tekstiä näytettäväksi lukitusruudulla."</string>
-    <string name="location_settings_title" msgid="4483843407328665068">"Sijainnin käyttöoikeus"</string>
+    <string name="location_settings_title">Sijaintiasetukset</string>
     <string name="security_settings_title" msgid="7945465324818485460">"Suojaus"</string>
     <string name="security_settings_summary" msgid="967393342537986570">"Aseta Oma sijainti, näytön lukituksen poisto, SIM-kortin lukitus, käyttöoikeustietojen tallennustilan lukitus"</string>
     <string name="cdma_security_settings_summary" msgid="6068799952798901542">"Aseta Oma sijainti, näytön lukituksen poisto, käyttöoikeustietojen tallennustilan lukitus"</string>
@@ -314,8 +314,8 @@
     <string name="crypt_keeper_button_text" product="default" msgid="2008346408473255519">"Salaa puhelin"</string>
     <string name="crypt_keeper_low_charge_text" msgid="2029407131227814893">"Lataa akku ja yritä uudelleen."</string>
     <string name="crypt_keeper_unplugged_text" msgid="4785376766063053901">"Yhdistä laturi ja yritä uudelleen."</string>
-    <string name="crypt_keeper_dialog_need_password_title" msgid="4058971800557767">"Ei ruudunlukitus-PIN-koodia tai -salasanaa"</string>
-    <string name="crypt_keeper_dialog_need_password_message" msgid="4071395977297369642">"Sinun täytyy asettaa lukitusruudun PIN-koodi tai salasana ennen kuin voit aloittaa salauksen."</string>
+    <string name="crypt_keeper_dialog_need_password_title" msgid="4058971800557767">"Ei näytönlukitus-PIN-koodia tai -salasanaa"</string>
+    <string name="crypt_keeper_dialog_need_password_message" msgid="4071395977297369642">"Sinun täytyy asettaa lukitusnäytön PIN-koodi tai salasana ennen kuin voit aloittaa salauksen."</string>
     <string name="crypt_keeper_confirm_title" msgid="5100339496381875522">"Salataanko?"</string>
     <string name="crypt_keeper_final_desc" product="tablet" msgid="4453629424172409792">"Salausta ei voi peruuttaa, ja jos keskeytät sen, menetät tietoja. Salaus kestää vähintään tunnin, ja sen aikana tablet-laite käynnistyy uudelleen useita kertoja."</string>
     <string name="crypt_keeper_final_desc" product="default" msgid="5682944380460921880">"Salausta ei voi peruuttaa, ja jos keskeytät sen, menetät tietoja. Salaus kestää vähintään tunnin, ja sen aikana puhelin käynnistyy uudelleen useita kertoja."</string>
@@ -328,12 +328,12 @@
     <string name="crypt_keeper_failed_summary" product="tablet" msgid="4478225241476039013">"Salaus keskeytyi, eikä sitä voi suorittaa loppuun. Tästä johtuen tablet-laitteesi tietoja ei voi enää käyttää. "\n\n"Voit jatkaa tablet-laitteesi käyttöä, kun palautat tehdasasetukset. Kun olet määrittänyt tablet-laitteesi asetukset tehdasasetusten palautuksen jälkeen, voit palauttaa tiedot, jotka olet varmuuskopioinut Google-tiliisi."</string>
     <string name="crypt_keeper_failed_summary" product="default" msgid="3083477162766772532">"Salaus keskeytyi, eikä sitä voi suorittaa loppuun. Tästä johtuen puhelimesi tietoja ei voi enää käyttää. "\n\n"Voit jatkaa puhelimesi käyttöä, kun palautat tehdasasetukset. Kun olet määrittänyt puhelimesi asetukset tehdasasetusten palautuksen jälkeen, voit palauttaa tiedot, jotka olet varmuuskopioinut Google-tiliisi."</string>
     <string name="crypt_keeper_switch_input_method" msgid="4168332125223483198">"Vaihda syöttötapaa"</string>
-    <string name="lock_settings_picker_title" msgid="1095755849152582712">"Valitse ruudunlukitus"</string>
+    <string name="lock_settings_picker_title" msgid="1095755849152582712">"Valitse näytön lukitus"</string>
     <string name="backup_lock_settings_picker_title" msgid="8530380598637963916">"Valitse varalukko"</string>
-    <string name="unlock_set_unlock_launch_picker_title" msgid="2084576942666016993">"Ruudun lukitus"</string>
-    <string name="unlock_set_unlock_launch_picker_change_title" msgid="5045866882028324941">"Vaihda ruudunlukitusta"</string>
+    <string name="unlock_set_unlock_launch_picker_title" msgid="2084576942666016993">"Näytön lukitus"</string>
+    <string name="unlock_set_unlock_launch_picker_change_title" msgid="5045866882028324941">"Vaihda näytön lukitusta"</string>
     <string name="unlock_set_unlock_launch_picker_change_summary" msgid="2790960639554590668">"Vaihda tai poista käytöstä kuvio-, PIN-koodi- tai salasanasuojaus"</string>
-    <string name="unlock_set_unlock_launch_picker_enable_summary" msgid="4791110798817242301">"Valitse ruudunlukitustapa"</string>
+    <string name="unlock_set_unlock_launch_picker_enable_summary" msgid="4791110798817242301">"Valitse näytön lukitustapa"</string>
     <string name="unlock_backup_info_summary" msgid="108524727803788172">"Kun Face Unlock ei näe kasvojasi, miten haluat poistaa lukituksen?"</string>
     <string name="unlock_set_unlock_off_title" msgid="7117155352183088342">"Ei mitään"</string>
     <string name="unlock_set_unlock_off_summary" msgid="94361581669110415"></string>
@@ -575,6 +575,9 @@
     <string name="wifi_setting_frequency_band_title" msgid="7493768705046080060">"Wi-Fi-taajuusalue"</string>
     <string name="wifi_setting_frequency_band_summary" msgid="3250740757118009784">"Määritä toiminnan taajuusalue"</string>
     <string name="wifi_setting_frequency_band_error" msgid="837281974489794378">"Ongelma taajuusalueen asettamisessa."</string>
+    <string name="wifi_setting_countrycode_title">Wi-Fin aluekoodi</string>
+    <string name="wifi_setting_countrycode_summary">Aseta aluekoodi Wi-Fille</string>
+    <string name="wifi_setting_countrycode_error">Ongelma aluekoodia vaihtaessa.</string>
     <string name="wifi_advanced_mac_address_title" msgid="6571335466330978393">"MAC-osoite"</string>
     <string name="wifi_advanced_ip_address_title" msgid="6215297094363164846">"IP-osoite"</string>
     <string name="wifi_advanced_settings_label" msgid="3654366894867838338">"IP-asetukset"</string>
@@ -608,7 +611,7 @@
     <string name="wifi_tether_configure_ap_text" msgid="61237027772641155">"Luo Wi-Fi-hotspot"</string>
     <string name="wifi_tether_configure_subtext" msgid="1927454307836232128">"<xliff:g id="NETWORK_SSID">%1$s</xliff:g><xliff:g id="NETWORK_SECURITY">%2$s</xliff:g> kannettava wifi-yhteyspiste"</string>
     <string name="wifi_tether_configure_ssid_default" msgid="8467525402622138547">"AndroidHotspot"</string>
-    <string name="display_settings_title" msgid="1708697328627382561">"Näyttö"</string>
+    <string name="display_settings_title">"Näyttö"</string>
     <string name="sound_settings" msgid="5534671337768745343">"Ääni"</string>
     <string name="ringtone_title" msgid="5379026328015343686">"Puhelimen soittoääni"</string>
     <string name="ringtone_summary" msgid="2630023412632683493"></string>
@@ -627,7 +630,7 @@
     <string name="dock_settings_summary" msgid="455802113668982481">"Liitetyn telakan ääniasetukset"</string>
     <string name="dtmf_tone_enable_title" msgid="8533399267725365088">"Valintanäppäimien näppäinäänet"</string>
     <string name="sound_effects_enable_title" msgid="1171590821131077296">"Kosketusäänet"</string>
-    <string name="lock_sounds_enable_title" msgid="450098505659399520">"Ruudun lukitus -ääni"</string>
+    <string name="lock_sounds_enable_title" msgid="450098505659399520">"Näytön lukitus -ääni"</string>
     <string name="haptic_feedback_enable_title" msgid="2438293710530828760">"Käytä värinää kosketettaessa"</string>
     <string name="audio_record_proc_title" msgid="4271091199976457534">"Taustahälyn vaimennus"</string>
     <string name="volume_media_description" msgid="7949355934788807863">"Musiikki, videot, pelit ja muu media"</string>
@@ -658,7 +661,7 @@
     <string name="account_settings" msgid="6403589284618783461">"Tilit"</string>
     <string name="search_settings" msgid="1910951467596035063">"Haku"</string>
     <string name="search_settings_summary" msgid="9205656546570654169">"Hallinnoi hakuasetuksia ja historiaa"</string>
-    <string name="display_settings" msgid="7965901687241669598">"Ruutu"</string>
+    <string name="display_settings">"Näyttö"</string>
     <string name="accelerometer_title" msgid="7854608399547349157">"Kierrä näyttöä automaattisesti"</string>
     <string name="accelerometer_summary_on" product="tablet" msgid="429982132339828942">"Vaihda suuntaa automaattisesti, kun tablet-laitetta kierretään"</string>
     <string name="accelerometer_summary_on" product="default" msgid="1133737282813048021">"Vaihda suuntaa automaattisesti, kun puhelinta käännetään"</string>
@@ -894,9 +897,9 @@
     <string name="tethering_help_button_text" msgid="656117495547173630">"Ohje"</string>
     <string name="network_settings_title" msgid="7967552516440151852">"Matkapuhelinverkot"</string>
     <string name="location_title" msgid="1029961368397484576">"Oma sijainti"</string>
-    <string name="location_network_based" msgid="7472814266821714527">"Wifi- ja mobiiliverkkosijainti"</string>
+    <string name="location_network_based" msgid="7472814266821714527">"Wi-Fi- ja mobiiliverkkosijainti"</string>
     <string name="location_neighborhood_level" msgid="5626515380188353712">"Anna sovellusten arvioida sijaintisi Googlen sijaintipalvelulla. Anonyymejä sijaintitietoja kerätään ja lähetetään Googlelle."</string>
-    <string name="location_neighborhood_level_wifi" msgid="7457348712272184793">"Sijainti määritetty wifi-yhteyden perusteella"</string>
+    <string name="location_neighborhood_level_wifi" msgid="7457348712272184793">"Sijainti määritetty Wi-Fi-yhteyden perusteella"</string>
     <string name="location_gps" msgid="8392461023569708478">"GPS-satelliitit"</string>
     <string name="location_street_level" product="tablet" msgid="1669562198260860802">"Anna sovellusten määrittää sijaintisi tablet-laitteen GPS:n avulla"</string>
     <string name="location_street_level" product="default" msgid="4617445745492014203">"Anna sovellusten määrittää sijaintisi puhelimen GPS:n avulla"</string>
@@ -935,7 +938,7 @@
     <string name="lockpassword_password_set_toast" msgid="4875050283108629383">"Salasana on asetettu"</string>
     <string name="lockpassword_pin_set_toast" msgid="6011826444725291475">"PIN-koodi asetettu"</string>
     <string name="lockpassword_pattern_set_toast" msgid="6867259621331406236">"Kuvio on asetettu"</string>
-    <string name="lock_settings_title" msgid="335025124489630932">"Ruudun suojaus"</string>
+    <string name="lock_settings_title" msgid="335025124489630932">"Näytön suojaus"</string>
     <string name="lockpattern_change_lock_pattern_label" msgid="5679630792003440352">"Vaihda lukituksenpoistokuvio"</string>
     <string name="lockpattern_change_lock_pin_label" msgid="266707138486731661">"Muuta lukituksen poistoon tarvittava PIN-koodi"</string>
     <string name="lockpattern_need_to_unlock" msgid="757935356911054465">"Vahvista tallennettu kuvio"</string>
@@ -966,7 +969,7 @@
     <string name="next_button_label" msgid="8890792540116568321">"Seuraava"</string>
     <string name="lock_title" product="tablet" msgid="2909697418179419990">"Tablet-laitteen suojaaminen"</string>
     <string name="lock_title" product="default" msgid="4059246467204273930">"Puhelimen suojaaminen"</string>
-    <string name="lock_intro_message" product="tablet" msgid="8616353869251700776">"Suojaa tablet-laitetta luvattomalta käytöltä luomalla henkilökohtainen ruudun lukituksenpoistokuvio. Yhdistä seuraavassa ruudussa olevat pisteet sormellasi haluamassasi järjestyksessä. Yhdistä vähintään neljä pistettä. "\n\n"Oletko valmis? Kosketa Seuraava."</string>
+    <string name="lock_intro_message" product="tablet" msgid="8616353869251700776">"Suojaa tablet-laitetta luvattomalta käytöltä luomalla henkilökohtainen näytön lukituksenpoistokuvio. Yhdistä seuraavassa ruudussa olevat pisteet sormellasi haluamassasi järjestyksessä. Yhdistä vähintään neljä pistettä. "\n\n"Oletko valmis? Kosketa Seuraava."</string>
     <string name="lock_intro_message" product="default" msgid="8393155371327584659">"Suojaa puhelintasi luvattomalta käytöltä luomalla henkilökohtainen näytön lukituksenpoistokuvio. Yhdistä seuraavassa ruudussa olevat pisteet (vähintään neljä) sormellasi haluamassasi järjestyksessä."\n\n"Oletko valmis? Kosketa Seuraava."</string>
     <string name="manageapplications_settings_title" msgid="7041951105633616745">"Hallinnoi sovelluksia"</string>
     <string name="manageapplications_settings_summary" msgid="1794401500935451259">"Hallinnoi ja poista asennettuja sovelluksia"</string>
@@ -983,7 +986,7 @@
     <string name="storage_label" msgid="8700867073480107253">"Tallennustila"</string>
     <string name="auto_launch_label" msgid="3012617472833815382">"Käynnistä oletuksena"</string>
     <string name="auto_launch_label_generic" msgid="3230569852551968694">"Oletukset"</string>
-    <string name="screen_compatibility_label" msgid="663250687205465394">"Ruudun yhteensopivuus"</string>
+    <string name="screen_compatibility_label" msgid="663250687205465394">"Näytön yhteensopivuus"</string>
     <string name="permissions_label" msgid="2605296874922726203">"Käyttöluvat"</string>
     <string name="cache_header_label" msgid="1877197634162461830">"Välimuisti"</string>
     <string name="clear_cache_btn_text" msgid="5756314834291116325">"Tyhjennä välimuisti"</string>
@@ -1294,7 +1297,7 @@
     <string name="battery_action_stop" msgid="649958863744041872">"Pakota lopetus"</string>
     <string name="battery_action_app_details" msgid="7861051816778419018">"Sovelluksen tiedot"</string>
     <string name="battery_action_app_settings" msgid="4570481408106287454">"Sovellusasetukset"</string>
-    <string name="battery_action_display" msgid="7338551244519110831">"Ruudun asetukset"</string>
+    <string name="battery_action_display" msgid="7338551244519110831">"Näytön asetukset"</string>
     <string name="battery_action_wifi" msgid="2272741639606146903">"Wi-Fi-asetukset"</string>
     <string name="battery_action_bluetooth" msgid="8374789049507723142">"Bluetooth-asetukset"</string>
     <string name="battery_desc_voice" msgid="8980322055722959211">"Äänipuhelujen käyttämä akku"</string>
@@ -1392,7 +1395,7 @@
     <string name="credentials_erased" msgid="2907836028586342969">"Käyttöoikeustietojen tallennustila on tyhjennetty."</string>
     <string name="credentials_not_erased" msgid="93461830775441220">"Käyttöoik.tiet. ei poistettu."</string>
     <string name="credentials_enabled" msgid="7588607413349978930">"Käyttöoikeustietojen tallentaminen on käytössä."</string>
-    <string name="credentials_configure_lock_screen_hint" msgid="6757119179588664966">"Ruudunlukituksen PIN-koodi tai salasana on asetettava ennen kuin käyttöoikeustietojen tallennustilaa voi käyttää."</string>
+    <string name="credentials_configure_lock_screen_hint" msgid="6757119179588664966">"Näytön lukituksen PIN-koodi tai salasana on asetettava ennen kuin käyttöoikeustietojen tallennustilaa voi käyttää."</string>
     <string name="emergency_tone_title" msgid="1055954530111587114">"Hätäpuhelun ääni"</string>
     <string name="emergency_tone_summary" msgid="722259232924572153">"Aseta toiminta hätäpuhelun tapauksessa"</string>
     <string name="privacy_settings" msgid="5446972770562918934">"Varmuuskopioi ja palauta"</string>
@@ -1525,7 +1528,7 @@
     <string name="strict_mode" msgid="1938795874357830695">"Tiukka tila käytössä"</string>
     <string name="strict_mode_summary" msgid="142834318897332338">"Vilkuta näyttöä sovellusten tehdessä pitkiä toimia"</string>
     <string name="pointer_location" msgid="6084434787496938001">"Osoittimen sijainti"</string>
-    <string name="pointer_location_summary" msgid="840819275172753713">"Ruudun peittokuva näyttää nykyiset kosketustiedot"</string>
+    <string name="pointer_location_summary" msgid="840819275172753713">"Näytön peittokuva näyttää nykyiset kosketustiedot"</string>
     <string name="show_touches" msgid="1356420386500834339">"Näytä kosketukset"</string>
     <string name="show_touches_summary" msgid="6684407913145150041">"Näytä kosketukset visuaalisesti"</string>
     <string name="show_screen_updates" msgid="5470814345876056420">"Näytä pintapäivitykset"</string>
@@ -1533,7 +1536,7 @@
     <string name="show_hw_screen_updates" msgid="5036904558145941590">"Näytä GPU:n näytön päiv."</string>
     <string name="show_hw_screen_updates_summary" msgid="1115593565980196197">"Väläytä ikkunoiden sisältö GPU:lla piirrettäessä"</string>
     <string name="disable_overlays" msgid="2074488440505934665">"Poista HW-peittok. käyt."</string>
-    <string name="disable_overlays_summary" msgid="3578941133710758592">"Käytä GPU:ta ruudun koostamiseen"</string>
+    <string name="disable_overlays_summary" msgid="3578941133710758592">"Käytä GPU:ta näytön koostamiseen"</string>
     <string name="enable_traces_title" msgid="7448835465859512430">"Ota jäljitys käyttöön"</string>
     <string name="enable_traces_dialog_title" msgid="5026490474669452929">"Valitse käytettävät jälj."</string>
     <string name="enable_traces_summary_none" msgid="1867562808503494163">"Jäljityksiä ei käytössä"</string>
@@ -1689,6 +1692,13 @@
     <string name="help_label" msgid="1107174367904110532">"Ohje"</string>
     <string name="cell_broadcast_settings" msgid="8415582011920085222">"Cell Broadcast -lähetykset"</string>
     <string name="cell_broadcast_settings_summary" msgid="3301339398950905913">"Valitse näytettävät hätäilmoitukset."</string>
+    <string name="dock_force_undock_title">Pakota irroittaminen</string>
+    <string name="dock_force_undock_summary_no_dock" product="tablet">Tablettia ei telakoitu</string>
+    <string name="dock_force_undock_summary_no_dock" product="default">Puhelinta ei telakoitu</string>
+    <string name="dock_force_undock_summary" product="tablet">Irroita tablet</string>
+    <string name="dock_force_undock_summary" product="default">Irroita puhelin</string>
+    <string name="allow_mock_sms">Salli SMS-viestien imitointi</string>
+    <string name="accessibility_home_button_answers_call_title">Koti-näppäin vastaa puheluun</string>
     <!-- CYANOGENMOD EDITS START -->
     <string name="wifi_idle_mn_title">Wi-Fin aikakatkaisu valmiustilassa</string>
     <string name="wifi_idle_5mn">5 minuuttia</string>
@@ -1815,6 +1825,8 @@
     <string name="navigation_bar_reset_message">Poista nykyiset asetukset ja palauta oletukset?</string>
     <string name="navigation_bar_save_message">Navigointipalkki-asetukset tallennettu</string>
     <string name="navigation_bar_reset_toast">Navigointipalkki-asetukset nollattu</string>
+    <string name="navigation_bar_menu_editable">Muokattava</string>
+    <string name="navigation_bar_menu_locked">Lukittu</string>
     <string name="hardware_keys_title">Fyysiset näppäimet</string>
     <string name="hardware_keys_bindings_title">Näppäimen tehtävä</string>
     <string name="hardware_keys_enable_custom_title">Ota tehtävien valinta käyttöön</string>
@@ -1892,10 +1904,13 @@
     <string name="status_bar_toggle_brightness_summary">Säädä kirkkautta liu\'ttamalla pitkin tilapalkkia</string>
     <string name="status_bar_toggle_info">Automaattinen kirkkaus on käytössä</string>
     <string name="status_bar_signal_text_title">Signaalinäytön ulkoasu</string>
-    <string name="status_bar_style_icon">Kuvake</string>
+    <string name="status_bar_style_icon">Ikoni</string>
     <string name="status_bar_style_hidden">Piilotettu</string>
     <string name="status_bar_signal_text_show_text">Teksti</string>
     <string name="status_bar_battery_status_percentage">Prosentti</string>
+    <string name="status_bar_battery_status_circle">Ympyrä</string>
+    <string name="status_bar_battery_status_circle_percentage">Ympyrä ja prosentti</string>
+
     <string name="lock_screen_title">Lukitusnäyttö</string>
     <string name="lockscreen_target_info">Liu\'uta valitsin kohdalle valitaksesi pikakuvakkeen</string>
     <string name="lockscreen_target_title">Lukitusnäytön pikakuvakkeet</string>
@@ -2060,6 +2075,8 @@
     <string name="additional_options_title">Lisäasetukset</string>
     <string name="unlock_menu_unlock_title">Menu-näppäimen lukituksen avaaminen</string>
     <string name="unlock_menu_unlock_summary">Painamalla Menu-näppäintä lukitus aukeaa</string>
+    <string name="unlock_home_unlock_title">Kotinäppäimen lukituksen avaaminen</string>
+    <string name="unlock_home_unlock_summary">Painamalla Koti-näppäintä lukitus aukeaa</string>
     <string name="unlock_quick_unlock_control_title">Nopea lukituksen avaaminen</string>
     <string name="unlock_quick_unlock_control_summary">Avaa automaattisesti kun oikea PIN/salasana on syötetty</string>
     <string name="delay_and_timeout_title">Lukituksen viive</string>
@@ -2207,9 +2224,12 @@
     <string name="stylus_icon_enabled_title">Näytä osoitin kynää käyttäessä</string>
     <string name="stylus_icon_enabled_summary">Näyttää osoittimen kun stylus-kynää pidetään näytön yllä tai käytetään</string>
     <string name="power_menu_title">Käynnistysvalikko</string>
-    <string name="power_menu_reboot_title">Uudelleenkäynnistysvalikko</string>
+    <string name="power_menu_reboot_title">Uudelleenkäynnistys</string>
     <string name="power_menu_screenshot_title">Kuvakaappaus</string>
     <string name="power_menu_profiles_title">Profiilit</string>
+    <string name="power_menu_expanded_desktop">Laajennettu työpöytä</string>
+    <string name="power_menu_airplane_title">Lentokonetila</string>
+    <string name="power_menu_silent_title">Äänipaneeli</string>
     <string name="development_tools_title">Avaa kehitystyökalut</string>
     <string name="usb_mass_storage_title">Massamuisti</string>
     <string name="usb_mass_storage_summary">Ota USB-massamuistitila käyttöön</string>
@@ -2230,5 +2250,50 @@
     <string name="location_gps_source_summary">Käytä joko sisäistä GPS-antennia tai ulkoista Bluetooth GPS-antennia signaalin lähteenä</string>
     <string name="location_gps_source_notification_title">Hälytys</string>
     <string name="location_gps_source_notification">GPS-lähde on vaihdettu! GPS poistetaan käytöstä! Ota GPS uudestaan käyttöön!</string>
+    <string name="lockscreen_clock_align_title">Kellon sijainti</string>
+    <string name="lockscreen_clock_align_left">Vasemmalla</string>
+    <string name="lockscreen_clock_align_center">Keskellä</string>
+    <string name="lockscreen_clock_align_right">Oikealla</string>
+    <string name="lockscreen_buttons_title">Fyysisten näppäinten tehtävät</string>
+    <string name="lockscreen_buttons_summary">Katso tai muuta fyysistem näppäinten tehtäviä lukitusnäytössä</string>
+    <string name="lockscreen_long_press_back_title">Takaisin-näppäin</string>
+    <string name="lockscreen_long_press_home_title">Koti-näppäin</string>
+    <string name="lockscreen_long_press_menu_title">Menu-näppäin</string>
+    <string name="lockscreen_buttons_no_action">Ei mitään</string>
+    <string name="lockscreen_buttons_flashlight">Taskulamppu</string>
+    <string name="lockscreen_buttons_next">Seuraava kappale</string>
+    <string name="lockscreen_buttons_previous">Edellinen kappale</string>
+    <string name="lockscreen_buttons_playpause">Play/Pause</string>
+    <string name="lockscreen_buttons_toggle_sound">Äänet</string>
+    <string name="cmupdate_settings_title">CyanogenMod-päivitykset</string>
+    <string name="cmupdate_settings_summary">Tarkista, katso tai asenna saatavilla olevat päivitykset</string>
+    <string name="app_security_title">Sovellusten turvallisuus</string>
+    <string name="sms_security_check_limit_title">Tekstiviestirajoitus</string>
+    <string name="sms_security_check_limit_summary">Näyttää ilmoitusvalikon estääkseen sovelluksia lähettämästä tekstiviestejä liian nopeasti. Nykyinen raja: %d viestiä 15 minuutissa</string>
+    <string name="sms_security_check_limit_default">30 (Oletus)</string>
+    <string name="gestures_settings_title">Stylus-eleet</string>
+    <string name="category_spen_title">Stylus-kynän eleet</string>
+    <string name="enable_subcat_title">Stylus-kynä</string>
+    <string name="enable_spen_title_head">Ota kynän eleet käyttöön</string>
+    <string name="enable_spen_summary_head">Sallii stylus-kynän eleet avataksesi sovelluksia. Varoitus: Sovellukset ei voi vastaan erottaa kosketuksia painaessa stylus-kynän näppäintä.</string>
+    <string name="gestures_subcat_title">Eleet</string>
+    <string name="gestures_left_spen_title_head">Liu\'utus vasemmalle</string>
+    <string name="gestures_left_spen_summary_head">Sallii tehtävän aloituksen liu\'ttaessa  vasemmalle</string>
+    <string name="gestures_right_spen_title_head">Liu\'utus oikealle</string>
+    <string name="gestures_right_spen_summary_head">Sallii tehtävän aloituksen liu\'ttaessa oikealle</string>
+    <string name="gestures_up_spen_title_head">Liu\'utus ylös</string>
+    <string name="gestures_up_spen_summary_head">Sallii tehtävän aloituksen liu\'ttaessa ylös</string>
+    <string name="gestures_down_spen_title_head">Liu\'utus alas</string>
+    <string name="gestures_down_spen_summary_head">Sallii tehtävän aloituksen liu\'ttaessa alas</string>
+    <string name="gestures_long_spen_title_head">Pitkä kosketus</string>
+    <string name="gestures_long_spen_summary_head">Sallii tehtävän aloituksen pitkällä kosketuksella</string>
+    <string name="gestures_double_spen_title_head">Tuplakosketus</string>
+    <string name="gestures_double_spen_summary_head">Sallii tehtävän aloituksen tuplakosketuksella</string>
+    <string name="gestures_action_empty">Ei tehtävää</string>
+    <string name="gestures_action_home">Mene kotinäytölle</string>
+    <string name="gestures_action_back">Matki takaisin-näppäintä</string>
+    <string name="gestures_action_menu">Matki Menu-näppäintä</string>
+    <string name="gestures_action_search">Aloita haku</string>
+    <string name="gestures_action_recent">Viimeisimmät sovellukset</string>
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>
