@@ -20,6 +20,11 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <PreferenceScreen
+        android:key="status_bar"
+        android:fragment="com.android.settings.cyanogenmod.StatusBar"
+        android:title="@string/status_bar_title" />
+
+    <PreferenceScreen
         android:key="notification_drawer"
         android:fragment="com.android.settings.cyanogenmod.PowerWidget"
         android:title="@string/notification_drawer_title" />
