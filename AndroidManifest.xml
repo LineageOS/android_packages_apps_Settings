@@ -1523,6 +1523,12 @@
 
         <activity android:name=".cyanogenmod.PowerWidget" />
 
+        <activity android:name=".cyanogenmod.ChangeLog" android:label="@string/changelog_title">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+
         <!-- CyanogenMod activities End -->
 
         <receiver android:name=".widget.SettingsAppWidgetProvider"
