@@ -38,9 +38,11 @@ import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.PowerManager;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.preference.Preference;
@@ -1233,6 +1235,7 @@ public class SettingsActivity extends Activity
                 android.os.Build.TYPE.equals("eng"));
 
         final UserManager um = (UserManager) getSystemService(Context.USER_SERVICE);
+        final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
 
         final int size = target.size();
         for (int i = 0; i < size; i++) {
@@ -1316,6 +1319,10 @@ public class SettingsActivity extends Activity
                     boolean hasDeviceKeys = getResources().getInteger(
                             com.android.internal.R.integer.config_deviceHardwareKeys) != 0;
                     if (!hasDeviceKeys) {
+                        removeTile = true;
+                    }
+                } else if (id == R.id.performance_settings) {
+                    if (!(pm.hasPowerProfiles() || (showDev && !Build.TYPE.equals("user")))) {
                         removeTile = true;
                     }
                 }
