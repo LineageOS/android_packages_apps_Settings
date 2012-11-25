@@ -19,6 +19,9 @@ package com.android.settings;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -27,6 +30,7 @@ import android.os.SystemClock;
 import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.os.UserManager;
+import android.preference.PreferenceScreen;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.support.v7.preference.Preference;
@@ -47,6 +51,8 @@ import com.android.settingslib.RestrictedLockUtils;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 
@@ -76,6 +82,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_MOD_VERSION = "mod_version";
     private static final String KEY_MOD_BUILD_DATE = "build_date";
     private static final String KEY_MOD_API_LEVEL = "mod_api_level";
+    private static final String KEY_CM_UPDATES = "cm_updates";
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
 
@@ -146,6 +153,13 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         // Remove selinux information if property is not present
         removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_SELINUX_STATUS,
                 PROPERTY_SELINUX_STATUS);
+
+        // Only the owner should see the Updater settings, if it exists
+        if (UserHandle.myUserId() == UserHandle.USER_OWNER) {
+            removePreferenceIfPackageNotInstalled(findPreference(KEY_CM_UPDATES));
+        } else {
+            getPreferenceScreen().removePreference(findPreference(KEY_CM_UPDATES));
+        }
 
         // Remove Safety information preference if PROPERTY_URL_SAFETYLEGAL is not set
         removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_SAFETY_LEGAL,
@@ -496,4 +510,27 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
             }
         };
 
+    private boolean removePreferenceIfPackageNotInstalled(Preference preference) {
+        String intentUri = preference.getIntent().toUri(1);
+        Pattern pattern = Pattern.compile("component=([^/]+)/");
+        Matcher matcher = pattern.matcher(intentUri);
+
+        String packageName=matcher.find()?matcher.group(1):null;
+        if(packageName != null) {
+            try {
+                PackageInfo pi = getPackageManager().getPackageInfo(packageName,
+                        PackageManager.GET_ACTIVITIES);
+                if (!pi.applicationInfo.enabled) {
+                    Log.e(LOG_TAG,"package "+packageName+" is disabled, hiding preference.");
+                    getPreferenceScreen().removePreference(preference);
+                    return true;
+                }
+            } catch (NameNotFoundException e) {
+                Log.e(LOG_TAG,"package "+packageName+" not installed, hiding preference.");
+                getPreferenceScreen().removePreference(preference);
+                return true;
+            }
+        }
+        return false;
+    }
 }
