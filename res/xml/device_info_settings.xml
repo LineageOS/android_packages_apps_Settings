@@ -51,6 +51,14 @@
             android:fragment="com.android.settings.cmstats.AnonymousStats" >
         </PreferenceScreen>
 
+        <!-- Change Log -->
+        <PreferenceScreen android:key="changelog"
+                android:title="@string/changelog_title">
+            <intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="com.android.settings"
+                    android:targetClass="com.android.settings.cyanogenmod.ChangeLog" />
+        </PreferenceScreen>
+
         <!-- Legal Information -->
         <PreferenceScreen
                 android:key="container"
@@ -100,25 +108,25 @@
         -->
 
         <!-- Device hardware model -->
-        <Preference android:key="device_model" 
+        <Preference android:key="device_model"
                 style="?android:preferenceInformationStyle"
                 android:title="@string/model_number"
                 android:summary="@string/device_info_default"/>
-                
+
         <!-- Device firmware version -->
-        <Preference android:key="firmware_version" 
+        <Preference android:key="firmware_version"
                 style="?android:preferenceInformationStyle"
                 android:title="@string/firmware_version"
                 android:summary="@string/device_info_default"/>
-                
+
         <!-- Device Baseband version -->
-        <Preference android:key="baseband_version" 
+        <Preference android:key="baseband_version"
                 style="?android:preferenceInformationStyle"
                 android:title="@string/baseband_version"
                 android:summary="@string/device_info_default"/>
-        
+
         <!-- Device Kernel version -->
-        <Preference android:key="kernel_version" 
+        <Preference android:key="kernel_version"
                 style="?android:preferenceInformationStyle"
                 android:title="@string/kernel_version"
                 android:summary="@string/device_info_default"/>
