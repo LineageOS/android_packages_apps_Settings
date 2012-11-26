@@ -101,10 +101,12 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         addPreferencesFromResource(R.xml.display_settings);
 
         mDisplayRotationPreference = (PreferenceScreen) findPreference(KEY_DISPLAY_ROTATION);
-        if (RotationPolicy.isRotationLockToggleSupported(getActivity())) {
+        if (mDisplayRotationPreference != null
+                && RotationPolicy.isRotationLockToggleSupported(getActivity())) {
             // If rotation lock is supported, then we do not provide this option in
             // Display settings.  However, is still available in Accessibility settings.
             getPreferenceScreen().removePreference(mDisplayRotationPreference);
+            mDisplayRotationPreference = null;
         }
 
         mScreenSaverPreference = findPreference(KEY_SCREEN_SAVER);
@@ -113,8 +115,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                         com.android.internal.R.bool.config_dreamsSupported) == false) {
             getPreferenceScreen().removePreference(mScreenSaverPreference);
         }
-        
-        mDisplayRotationPreference = (PreferenceScreen) findPreference(KEY_DISPLAY_ROTATION);
 
         mScreenTimeoutPreference = (ListPreference) findPreference(KEY_SCREEN_TIMEOUT);
         final long currentTimeout = Settings.System.getLong(resolver, SCREEN_OFF_TIMEOUT,
@@ -144,7 +144,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             }
         }
 
-
         mDisplayManager = (DisplayManager)getActivity().getSystemService(
                 Context.DISPLAY_SERVICE);
         mWifiDisplayStatus = mDisplayManager.getWifiDisplayStatus();
@@ -157,7 +156,12 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     }
 
     private void updateDisplayRotationPreferenceDescription() {
-        PreferenceScreen preference = mDisplayRotationPreference;
+        if (mDisplayRotationPreference == null) {
+            // The preference was removed, do nothing
+            return;
+        }
+
+        // We have a preference, lets update the summary
         StringBuilder summary = new StringBuilder();
         Boolean rotationEnabled = Settings.System.getInt(getContentResolver(),
                 Settings.System.ACCELEROMETER_ROTATION, 0) != 0;
@@ -193,7 +197,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             }
             summary.append(" " + getString(R.string.display_rotation_unit));
         }
-        preference.setSummary(summary);
+        mDisplayRotationPreference.setSummary(summary);
     }
 
     private void updateTimeoutPreferenceDescription(long currentTimeout) {
