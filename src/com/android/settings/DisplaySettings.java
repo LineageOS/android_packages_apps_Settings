@@ -30,8 +30,10 @@ import android.hardware.display.DisplayManager;
 import android.hardware.display.WifiDisplayStatus;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.util.Log;
@@ -54,6 +56,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_WIFI_DISPLAY = "wifi_display";
     private static final String KEY_BATTERY_LIGHT = "battery_light";
     private static final String KEY_DISPLAY_ROTATION = "display_rotation";
+    private static final String KEY_WAKEUP_CATEGORY = "category_wakeup_options";
+    private static final String KEY_VOLUME_WAKE = "pref_volume_wake";
 
     // Strings used for building the summary
     private static final String ROTATION_ANGLE_0 = "0";
@@ -65,6 +69,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private DisplayManager mDisplayManager;
 
+    private CheckBoxPreference mVolumeWake;
     private PreferenceScreen mNotificationPulse;
     private PreferenceScreen mBatteryPulse;
     private PreferenceScreen mDisplayRotationPreference;
@@ -153,6 +158,18 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             getPreferenceScreen().removePreference(mWifiDisplayPreference);
             mWifiDisplayPreference = null;
         }
+
+        mVolumeWake = (CheckBoxPreference) findPreference(KEY_VOLUME_WAKE);
+        if (mVolumeWake != null) {
+            if (!getResources().getBoolean(R.bool.config_show_volumeRockerWake)) {
+                getPreferenceScreen().removePreference(mVolumeWake);
+                getPreferenceScreen().removePreference((PreferenceCategory) findPreference(KEY_WAKEUP_CATEGORY));
+            } else {
+                mVolumeWake.setChecked(Settings.System.getInt(resolver,
+                        Settings.System.VOLUME_WAKE_SCREEN, 0) == 1);
+            }
+        }
+
     }
 
     private void updateDisplayRotationPreferenceDescription() {
@@ -363,6 +380,12 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        if (preference == mVolumeWake) {
+            Settings.System.putInt(getContentResolver(), Settings.System.VOLUME_WAKE_SCREEN,
+                    mVolumeWake.isChecked() ? 1 : 0);
+            return true;
+        }
+
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
