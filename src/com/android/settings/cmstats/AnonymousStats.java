@@ -77,7 +77,7 @@ public class AnonymousStats extends SettingsPreferenceFragment implements
                 mOkDialog = new AlertDialog.Builder(getActivity())
                         .setMessage(R.string.anonymous_statistics_warning)
                         .setTitle(R.string.anonymous_statistics_warning_title)
-                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setIconAttribute(android.R.attr.alertDialogIcon)
                         .setPositiveButton(android.R.string.yes, this)
                         .setNeutralButton(R.string.anonymous_learn_more, this)
                         .setNegativeButton(android.R.string.no, this)
