@@ -75,7 +75,7 @@
                             android:prompt="@string/wifi_eap_method"
                             android:entries="@array/wifi_eap_method" />
                 </LinearLayout>
-                
+
                 <LinearLayout android:id="@+id/l_phase2"
                         android:visibility="gone"
                         style="@style/wifi_item" >
@@ -163,6 +163,15 @@
                     android:textSize="14sp"
                     android:text="@string/wifi_show_password" />
             </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/wifi_auto_connect_toggle"
+                    style="@style/wifi_item"
+                    android:visibility="gone">
+            <CheckBox android:id="@+id/wifi_auto_connect_togglebox"
+                    style="@style/wifi_item_content"
+                    android:textSize="14sp"
+                    android:text="@string/wifi_auto_connect" />
         </LinearLayout>
 
         <LinearLayout android:id="@+id/wifi_advanced_toggle"
