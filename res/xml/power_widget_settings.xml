@@ -21,6 +21,12 @@
     <PreferenceCategory
        android:title="@string/power_widget_title">
 
+        <Preference
+            style="?android:preferenceInformationStyle"
+            android:title="@string/power_widget_note_title"
+            android:summary="@string/power_widget_note_summary"
+            android:selectable="false" />
+
         <CheckBoxPreference
             android:key="expanded_widget"
             android:title="@string/title_expanded_widget"
