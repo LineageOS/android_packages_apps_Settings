@@ -25,6 +25,10 @@ import com.android.settings.SettingsPreferenceFragment;
 public class LockscreenInterface extends SettingsPreferenceFragment {
     private static final String TAG = "LockscreenInterface";
 
+    private static final String KEY_LOCKSCREEN_BUTTONS = "lockscreen_buttons";
+
+    private PreferenceScreen mLockscreenButtons;
+
     public boolean hasButtons() {
         return !getResources().getBoolean(com.android.internal.R.bool.config_showNavigationBar);
     }
@@ -34,6 +38,11 @@ public class LockscreenInterface extends SettingsPreferenceFragment {
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.lockscreen_interface_settings);
+
+        mLockscreenButtons = (PreferenceScreen) findPreference(KEY_LOCKSCREEN_BUTTONS);
+        if (!hasButtons()) {
+            getPreferenceScreen().removePreference(mLockscreenButtons);
+        }
     }
 
     @Override
