@@ -54,6 +54,7 @@ import android.widget.TextView;
 import com.android.internal.telephony.Phone;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 
 public class QuickSettings extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
@@ -75,11 +76,14 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
     private static final String DYNAMIC_IME = "dynamic_ime";
     private static final String DYNAMIC_WIFI = "dynamic_wifi";
 
+    private static final String QUICK_PULLDOWN = "quick_pulldown";
+
     MultiSelectListPreference mRingMode;
     CheckBoxPreference mDynamicAlarm;
     CheckBoxPreference mDynamicBugReport;
     CheckBoxPreference mDynamicWifi;
     CheckBoxPreference mDynamicIme;
+    CheckBoxPreference mQuickPulldown;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -98,6 +102,13 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
         mDynamicIme.setChecked(Settings.System.getInt(resolver, Settings.System.QS_DYNAMIC_IME, 1) == 1);
         mDynamicWifi = (CheckBoxPreference) prefSet.findPreference(DYNAMIC_WIFI);
         mDynamicWifi.setChecked(Settings.System.getInt(resolver, Settings.System.QS_DYNAMIC_WIFI, 1) == 1);
+
+        // Add the Quick Pulldown preference and disable for tablets
+        mQuickPulldown = (CheckBoxPreference) prefSet.findPreference(QUICK_PULLDOWN);
+        mQuickPulldown.setChecked(Settings.System.getInt(resolver, Settings.System.QS_QUICK_PULLDOWN, 0) == 1);
+        if (Utils.isTablet(getActivity())) {
+            mQuickPulldown.setEnabled(false);
+        }
 
         // Add the ring mode
         mRingMode = (MultiSelectListPreference) prefSet.findPreference(EXP_RING_MODE);
@@ -143,6 +154,10 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
         } else if (preference == mDynamicWifi) {
             Settings.System.putInt(resolver, Settings.System.QS_DYNAMIC_WIFI,
                     mDynamicWifi.isChecked() ? 1 : 0);
+            return true;
+        } else if (preference == mQuickPulldown) {
+            Settings.System.putInt(resolver, Settings.System.QS_QUICK_PULLDOWN,
+                    mQuickPulldown.isChecked() ? 1 : 0);
             return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);

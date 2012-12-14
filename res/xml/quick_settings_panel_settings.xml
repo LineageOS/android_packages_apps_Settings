@@ -19,8 +19,20 @@
     android:title="@string/quick_settings_title">
 
     <PreferenceCategory
+        android:key="pref_general_settings"
+        android:title="@string/title_general" >
+
+        <CheckBoxPreference
+            android:key="quick_pulldown"
+            android:title="@string/title_quick_pulldown"
+            android:summary="@string/summary_quick_pulldown"
+            android:persistent="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="static_tiles"
-        android:title="@string/title_static_tiles">
+        android:title="@string/title_static_tiles" >
 
         <PreferenceScreen
            android:key="tile_picker"
@@ -41,7 +53,7 @@
 
     <PreferenceCategory
         android:key="pref_dynamic_tiles"
-        android:title="@string/title_dynamic_tiles" />
+        android:title="@string/title_dynamic_tiles" >
 
         <Preference
             style="?android:preferenceInformationStyle"
@@ -68,5 +80,7 @@
             android:key="dynamic_wifi"
             android:title="@string/title_dynamic_wifi"
             android:persistent="false" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>
