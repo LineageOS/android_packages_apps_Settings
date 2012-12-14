@@ -16,38 +16,33 @@
 
 package com.android.settings.cyanogenmod;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Random;
-import java.util.zip.Inflater;
-
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.TextView;
+
 import com.android.settings.R;
 import com.android.settings.Utils;
 import com.android.settings.cyanogenmod.QuickSettingsUtil.TileInfo;
+
+import java.util.ArrayList;
 public class QuickSettingsTiles extends Fragment {
+
+    private static final int MENU_RESET = Menu.FIRST;
 
     DraggableGridView mDragView;
     private ViewGroup mContainer;
@@ -151,6 +146,8 @@ public class QuickSettingsTiles extends Fragment {
                 builder.create().show();
             }
         });
+
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -159,6 +156,41 @@ public class QuickSettingsTiles extends Fragment {
         if (Utils.isPhone(getActivity())) {
             mContainer.setPadding(20, 0, 0, 0);
         }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+
+        menu.add(0, MENU_RESET, 0, R.string.profile_reset_title)
+                .setIcon(R.drawable.ic_settings_backup) // use the backup icon
+                .setAlphabeticShortcut('r')
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM |
+                MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case MENU_RESET:
+                resetTiles();
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    private void resetTiles() {
+        AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+        alert.setTitle(R.string.tiles_reset_title);
+        alert.setMessage(R.string.tiles_reset_message);
+        alert.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                QuickSettingsUtil.resetTiles(getActivity());
+                genTiles();
+            }
+        });
+        alert.setNegativeButton(R.string.cancel, null);
+        alert.create().show();
     }
 
     @SuppressWarnings("rawtypes")
