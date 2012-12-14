@@ -16,66 +16,37 @@
 
 package com.android.settings.cyanogenmod;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-
-import android.app.ListFragment;
 import android.content.ContentResolver;
-import android.content.Context;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.net.wimax.WimaxHelper;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
 import android.preference.MultiSelectListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
-import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.text.TextUtils;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
 
-import com.android.internal.telephony.Phone;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Set;
+
 public class QuickSettings extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
-
     private static final String TAG = "QuickSettings";
+
     private static final String SEPARATOR = "OV=I=XseparatorX=I=VO";
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.quick_settings_panel_settings);
-    }
-
-    private static final String TILE_MODES_CATEGORY = "pref_tile_modes";
-    private static final String SELECT_TILE_KEY_PREFIX = "pref_tile_";
     private static final String EXP_RING_MODE = "pref_ring_mode";
-
     private static final String DYNAMIC_ALARM = "dynamic_alarm";
     private static final String DYNAMIC_BUGREPORT = "dynamic_bugreport";
     private static final String DYNAMIC_IME = "dynamic_ime";
     private static final String DYNAMIC_WIFI = "dynamic_wifi";
-
     private static final String QUICK_PULLDOWN = "quick_pulldown";
 
     MultiSelectListPreference mRingMode;
@@ -84,6 +55,12 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
     CheckBoxPreference mDynamicWifi;
     CheckBoxPreference mDynamicIme;
     CheckBoxPreference mQuickPulldown;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        addPreferencesFromResource(R.xml.quick_settings_panel_settings);
+    }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -121,14 +98,6 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
             updateSummary(storedRingMode, mRingMode, R.string.pref_ring_mode_summary);
         }
         mRingMode.setOnPreferenceChangeListener(this);
-
-        // Add the available mode tiles, incase they need to be removed later
-        PreferenceCategory prefTileModes = (PreferenceCategory) prefSet
-                .findPreference(TILE_MODES_CATEGORY);
-
-        // get our list of Tiles
-        ArrayList<String> buttonList = QuickSettingsUtil.getTileListFromString(QuickSettingsUtil
-                .getCurrentTiles(getActivity().getApplicationContext()));
 
         // Don't show mobile data options if not supported
         boolean isMobileData = pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
@@ -218,5 +187,4 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
             return val.toString().split(SEPARATOR);
         }
     }
-
 }
