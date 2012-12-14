@@ -72,7 +72,9 @@ public class QuickSettingsTiles extends Fragment {
         ArrayList<String> tiles = QuickSettingsUtil.getTileListFromString(QuickSettingsUtil.getCurrentTiles(getActivity()));
         for (String tileindex : tiles) {
             QuickSettingsUtil.TileInfo tile = QuickSettingsUtil.TILES.get(tileindex);
-            addTile(tile.getTitleResId(), tile.getIcon(), 0, false);
+            if (tile != null) {
+                addTile(tile.getTitleResId(), tile.getIcon(), 0, false);
+            }
         }
         addTile(R.string.profiles_add, null, R.drawable.ic_menu_add, false);
     }
