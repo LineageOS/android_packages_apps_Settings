@@ -61,8 +61,6 @@ public class DraggableGridView extends ViewGroup implements
     public DraggableGridView(Context context, AttributeSet attrs) {
         super(context, attrs);
         setListeners();
-        handler.removeCallbacks(updateTask);
-        handler.postAtTime(updateTask, SystemClock.uptimeMillis() + 500);
         setChildrenDrawingOrderEnabled(true);
         DisplayMetrics metrics = new DisplayMetrics();
         ((Activity) context).getWindowManager().getDefaultDisplay().getMetrics(metrics);
@@ -96,7 +94,9 @@ public class DraggableGridView extends ViewGroup implements
             }
             clampScroll();
             onLayout(true, getLeft(), getTop(), getRight(), getBottom());
-            handler.postDelayed(this, 25);
+            if (lastDelta != 0) {
+                handler.postDelayed(this, 25);
+            }
         }
     };
 
@@ -330,7 +330,7 @@ public class DraggableGridView extends ViewGroup implements
             } else {
                 scroll += delta;
                 clampScroll();
-                if (Math.abs(delta) > 2)
+                if (Math.abs(delta) > 4)
                     enabled = false;
                 onLayout(true, getLeft(), getTop(), getRight(), getBottom());
             }
@@ -359,6 +359,8 @@ public class DraggableGridView extends ViewGroup implements
                 }
                 lastTarget = -1;
                 dragged = -1;
+            } else {
+                handler.post(updateTask);
             }
             touching = false;
             isDelete = false;
@@ -472,26 +474,22 @@ public class DraggableGridView extends ViewGroup implements
     }
 
     protected void clampScroll() {
-        int stretch = 3, overreach = getHeight() / 2;
         int max = getMaxScroll();
         max = Math.max(max, 0);
-
-        if (scroll < -overreach) {
-            scroll = -overreach;
-            lastDelta = 0;
-        } else if (scroll > max + overreach) {
-            scroll = max + overreach;
-            lastDelta = 0;
-        } else if (scroll < 0) {
-            if (scroll >= -stretch)
+        if (scroll < 0) {
+            if (!touching) {
+                scroll -= scroll;
+            } else {
                 scroll = 0;
-            else if (!touching)
-                scroll -= scroll / stretch;
+                lastDelta = 0;
+            }
         } else if (scroll > max) {
-            if (scroll <= max + stretch)
+            if (!touching) {
+                scroll += (max - scroll);
+            } else {
                 scroll = max;
-            else if (!touching)
-                scroll += (max - scroll) / stretch;
+                lastDelta = 0;
+            }
         }
     }
 
