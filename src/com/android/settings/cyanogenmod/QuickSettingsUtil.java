@@ -87,6 +87,9 @@ public class QuickSettingsUtil {
         TILES.put(TILE_BRIGHTNESS, new QuickSettingsUtil.TileInfo(
                 TILE_BRIGHTNESS, R.string.title_tile_brightness,
                 "com.android.systemui:drawable/stat_brightness_on"));
+        TILES.put(TILE_FLASHLIGHT, new QuickSettingsUtil.TileInfo(
+                TILE_FLASHLIGHT, R.string.title_tile_flashlight,
+                "com.android.systemui:drawable/stat_flashlight_on"));
         TILES.put(TILE_SLEEP, new QuickSettingsUtil.TileInfo(
                 TILE_SLEEP, R.string.title_tile_sleep,
                 "com.android.systemui:drawable/stat_sleep"));
@@ -115,9 +118,6 @@ public class QuickSettingsUtil {
                 "com.android.systemui:drawable/ic_qs_default_user"));
 
 // These toggles are not available yet.  Comment out for now
-//        TILES.put(TILE_FLASHLIGHT, new QuickSettingsUtil.TileInfo(
-//                TILE_FLASHLIGHT, R.string.title_tile_flashlight,
-//                "com.android.systemui:drawable/stat_flashlight_on"));
 //        TILES.put(TILE_NETWORKMODE, new QuickSettingsUtil.TileInfo(
 //                TILE_NETWORKMODE, R.string.title_tile_networkmode,
 //                "com.android.systemui:drawable/stat_2g3g_on"));
