@@ -16,6 +16,7 @@
 
 package com.android.settings.cyanogenmod;
 
+import android.bluetooth.BluetoothAdapter;
 import android.content.ContentResolver;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -103,6 +104,12 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
         boolean isMobileData = pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
         if (!isMobileData) {
             QuickSettingsUtil.TILES.remove(QuickSettingsUtil.TILE_MOBILEDATA);
+            QuickSettingsUtil.TILES.remove(QuickSettingsUtil.TILE_WIFIAP);
+        }
+
+        // Don't show the bluetooth options if not supported
+        if (BluetoothAdapter.getDefaultAdapter() == null) {
+            QuickSettingsUtil.TILES.remove(QuickSettingsUtil.TILE_BLUETOOTH);
         }
     }
 

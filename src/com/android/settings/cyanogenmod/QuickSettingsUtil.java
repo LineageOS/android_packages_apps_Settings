@@ -114,6 +114,9 @@ public class QuickSettingsUtil {
         TILES.put(TILE_WIFI, new QuickSettingsUtil.TileInfo(
                 TILE_WIFI, R.string.title_tile_wifi,
                 "com.android.systemui:drawable/ic_qs_wifi_4"));
+        TILES.put(TILE_WIFIAP, new QuickSettingsUtil.TileInfo(
+                TILE_WIFIAP, R.string.title_tile_wifiap,
+                "com.android.systemui:drawable/ic_qs_wifi_ap_neutral"));
         TILES.put(TILE_USER, new QuickSettingsUtil.TileInfo(
                 TILE_USER, R.string.title_tile_user,
                 "com.android.systemui:drawable/ic_qs_default_user"));
@@ -128,9 +131,6 @@ public class QuickSettingsUtil {
 //        TILES.put(TILE_SYNC, new QuickSettingsUtil.TileInfo(
 //                TILE_SYNC, R.string.title_tile_sync,
 //                "com.android.systemui:drawable/stat_sync_on"));
-//        TILES.put(TILE_WIFIAP, new QuickSettingsUtil.TileInfo(
-//                TILE_WIFIAP, R.string.title_tile_wifiap,
-//                "com.android.systemui:drawable/stat_wifi_ap_on"));
 //        TILES.put(TILE_MEDIA_PREVIOUS, new QuickSettingsUtil.TileInfo(
 //                TILE_MEDIA_PREVIOUS, R.string.title_tile_media_previous,
 //                "com.android.systemui:drawable/stat_media_previous"));
