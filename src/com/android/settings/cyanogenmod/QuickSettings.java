@@ -50,7 +50,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
     private static final String DYNAMIC_IME = "dynamic_ime";
     private static final String DYNAMIC_WIFI = "dynamic_wifi";
     private static final String QUICK_PULLDOWN = "quick_pulldown";
-    private static final String GENERAL_SETTINGS = "pref_general_settings";
+    private static final String COLLAPSE_PANEL = "collapse_panel";
 
     MultiSelectListPreference mRingMode;
     CheckBoxPreference mDynamicAlarm;
@@ -58,7 +58,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
     CheckBoxPreference mDynamicWifi;
     CheckBoxPreference mDynamicIme;
     CheckBoxPreference mQuickPulldown;
-    PreferenceCategory mGeneralSettings;
+    CheckBoxPreference mCollapsePanel;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,16 +74,15 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
         PackageManager pm = getPackageManager();
         ContentResolver resolver = getActivity().getApplicationContext().getContentResolver();
 
-        // Get the General settings category
-        mGeneralSettings = (PreferenceCategory) prefSet.findPreference(GENERAL_SETTINGS);
-        if (Utils.isTablet(getActivity())) {
-            // Nothing for tablets in the general settings section, remove it
-            prefSet.removePreference(mGeneralSettings);
+        mQuickPulldown = (CheckBoxPreference) prefSet.findPreference(QUICK_PULLDOWN);
+        if (!Utils.isPhone(getActivity())) {
+            prefSet.removePreference(mQuickPulldown);
         } else {
-            // Add the Quick Pulldown preference
-            mQuickPulldown = (CheckBoxPreference) prefSet.findPreference(QUICK_PULLDOWN);
             mQuickPulldown.setChecked(Settings.System.getInt(resolver, Settings.System.QS_QUICK_PULLDOWN, 0) == 1);
         }
+
+        mCollapsePanel = (CheckBoxPreference) prefSet.findPreference(COLLAPSE_PANEL);
+        mCollapsePanel.setChecked(Settings.System.getInt(resolver, Settings.System.QS_COLLAPSE_PANEL, 0) == 1);
 
         // Add the sound mode
         mRingMode = (MultiSelectListPreference) prefSet.findPreference(EXP_RING_MODE);
@@ -141,6 +140,10 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
         } else if (preference == mQuickPulldown) {
             Settings.System.putInt(resolver, Settings.System.QS_QUICK_PULLDOWN,
                     mQuickPulldown.isChecked() ? 1 : 0);
+            return true;
+        } else if (preference == mCollapsePanel) {
+            Settings.System.putInt(resolver, Settings.System.QS_COLLAPSE_PANEL,
+                    mCollapsePanel.isChecked() ? 1 : 0);
             return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
