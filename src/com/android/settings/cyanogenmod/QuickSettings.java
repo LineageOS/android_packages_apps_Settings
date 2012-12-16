@@ -24,6 +24,7 @@ import android.preference.CheckBoxPreference;
 import android.preference.MultiSelectListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.text.TextUtils;
@@ -49,6 +50,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
     private static final String DYNAMIC_IME = "dynamic_ime";
     private static final String DYNAMIC_WIFI = "dynamic_wifi";
     private static final String QUICK_PULLDOWN = "quick_pulldown";
+    private static final String GENERAL_SETTINGS = "pref_general_settings";
 
     MultiSelectListPreference mRingMode;
     CheckBoxPreference mDynamicAlarm;
@@ -56,6 +58,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
     CheckBoxPreference mDynamicWifi;
     CheckBoxPreference mDynamicIme;
     CheckBoxPreference mQuickPulldown;
+    PreferenceCategory mGeneralSettings;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -71,24 +74,18 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
         PackageManager pm = getPackageManager();
         ContentResolver resolver = getActivity().getApplicationContext().getContentResolver();
 
-        // Add the dynamic tiles checkboxes
-        mDynamicAlarm = (CheckBoxPreference) prefSet.findPreference(DYNAMIC_ALARM);
-        mDynamicAlarm.setChecked(Settings.System.getInt(resolver, Settings.System.QS_DYNAMIC_ALARM, 1) == 1);
-        mDynamicBugReport = (CheckBoxPreference) prefSet.findPreference(DYNAMIC_BUGREPORT);
-        mDynamicBugReport.setChecked(Settings.System.getInt(resolver, Settings.System.QS_DYNAMIC_BUGREPORT, 1) == 1);
-        mDynamicIme = (CheckBoxPreference) prefSet.findPreference(DYNAMIC_IME);
-        mDynamicIme.setChecked(Settings.System.getInt(resolver, Settings.System.QS_DYNAMIC_IME, 1) == 1);
-        mDynamicWifi = (CheckBoxPreference) prefSet.findPreference(DYNAMIC_WIFI);
-        mDynamicWifi.setChecked(Settings.System.getInt(resolver, Settings.System.QS_DYNAMIC_WIFI, 1) == 1);
-
-        // Add the Quick Pulldown preference and disable for tablets
-        mQuickPulldown = (CheckBoxPreference) prefSet.findPreference(QUICK_PULLDOWN);
-        mQuickPulldown.setChecked(Settings.System.getInt(resolver, Settings.System.QS_QUICK_PULLDOWN, 0) == 1);
+        // Get the General settings category
+        mGeneralSettings = (PreferenceCategory) prefSet.findPreference(GENERAL_SETTINGS);
         if (Utils.isTablet(getActivity())) {
-            mQuickPulldown.setEnabled(false);
+            // Nothing for tablets in the general settings section, remove it
+            prefSet.removePreference(mGeneralSettings);
+        } else {
+            // Add the Quick Pulldown preference
+            mQuickPulldown = (CheckBoxPreference) prefSet.findPreference(QUICK_PULLDOWN);
+            mQuickPulldown.setChecked(Settings.System.getInt(resolver, Settings.System.QS_QUICK_PULLDOWN, 0) == 1);
         }
 
-        // Add the ring mode
+        // Add the sound mode
         mRingMode = (MultiSelectListPreference) prefSet.findPreference(EXP_RING_MODE);
         String storedRingMode = Settings.System.getString(getActivity()
                 .getApplicationContext().getContentResolver(),
@@ -99,6 +96,16 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
             updateSummary(storedRingMode, mRingMode, R.string.pref_ring_mode_summary);
         }
         mRingMode.setOnPreferenceChangeListener(this);
+
+        // Add the dynamic tiles checkboxes
+        mDynamicAlarm = (CheckBoxPreference) prefSet.findPreference(DYNAMIC_ALARM);
+        mDynamicAlarm.setChecked(Settings.System.getInt(resolver, Settings.System.QS_DYNAMIC_ALARM, 1) == 1);
+        mDynamicBugReport = (CheckBoxPreference) prefSet.findPreference(DYNAMIC_BUGREPORT);
+        mDynamicBugReport.setChecked(Settings.System.getInt(resolver, Settings.System.QS_DYNAMIC_BUGREPORT, 1) == 1);
+        mDynamicIme = (CheckBoxPreference) prefSet.findPreference(DYNAMIC_IME);
+        mDynamicIme.setChecked(Settings.System.getInt(resolver, Settings.System.QS_DYNAMIC_IME, 1) == 1);
+        mDynamicWifi = (CheckBoxPreference) prefSet.findPreference(DYNAMIC_WIFI);
+        mDynamicWifi.setChecked(Settings.System.getInt(resolver, Settings.System.QS_DYNAMIC_WIFI, 1) == 1);
 
         // Don't show mobile data options if not supported
         boolean isMobileData = pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
