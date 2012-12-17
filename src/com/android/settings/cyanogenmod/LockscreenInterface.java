@@ -24,7 +24,8 @@ import android.provider.Settings;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
-public class LockscreenInterface extends SettingsPreferenceFragment implements Preference.OnPreferenceChangeListener {
+public class LockscreenInterface extends SettingsPreferenceFragment implements
+        Preference.OnPreferenceChangeListener {
     private static final String TAG = "LockscreenInterface";
 
     private static final String KEY_ALWAYS_BATTERY_PREF = "lockscreen_battery_status";
@@ -43,30 +44,19 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements P
 
         addPreferencesFromResource(R.xml.lockscreen_interface_settings);
 
+        // Battery status
         mBatteryStatus = (ListPreference) findPreference(KEY_ALWAYS_BATTERY_PREF);
-        mBatteryStatus.setOnPreferenceChangeListener(this);
-
-        mLockscreenButtons = (PreferenceScreen) findPreference(KEY_LOCKSCREEN_BUTTONS);
-        if (!hasButtons()) {
-            getPreferenceScreen().removePreference(mLockscreenButtons);
-        }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-
-        // Set the battery status description text
         if (mBatteryStatus != null) {
             int batteryStatus = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.LOCKSCREEN_ALWAYS_SHOW_BATTERY, 0);
             mBatteryStatus.setValueIndex(batteryStatus);
             mBatteryStatus.setSummary(mBatteryStatus.getEntries()[batteryStatus]);
+            mBatteryStatus.setOnPreferenceChangeListener(this);
+        }
+
+        mLockscreenButtons = (PreferenceScreen) findPreference(KEY_LOCKSCREEN_BUTTONS);
+        if (!hasButtons()) {
+            getPreferenceScreen().removePreference(mLockscreenButtons);
         }
     }
 
