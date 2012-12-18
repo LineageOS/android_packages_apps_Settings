@@ -141,7 +141,7 @@ public class AppWidgetLoader<Item extends AppWidgetLoader.LabelledItem> {
      * installed {@link AppWidgetProviderInfo} and those provided through
      * {@link AppWidgetManager#EXTRA_CUSTOM_INFO}, sorting them alphabetically.
      */
-    protected List<Item> getItems(Intent intent) {
+    protected List<Item> getItems(Intent intent, boolean showall) {
         boolean sortCustomAppWidgets =
                 intent.getBooleanExtra(AppWidgetManager.EXTRA_CUSTOM_SORT, true);
 
@@ -151,7 +151,7 @@ public class AppWidgetLoader<Item extends AppWidgetLoader.LabelledItem> {
         int categoryFilter = intent.getIntExtra(AppWidgetManager.EXTRA_CATEGORY_FILTER,
                 AppWidgetProviderInfo.WIDGET_CATEGORY_HOME_SCREEN);
 
-        putInstalledAppWidgets(items, categoryFilter);
+        putInstalledAppWidgets(items, categoryFilter, showall);
 
         // Sort all items together by label
         if (sortCustomAppWidgets) {
@@ -175,8 +175,8 @@ public class AppWidgetLoader<Item extends AppWidgetLoader.LabelledItem> {
     /**
      * Create list entries for installed {@link AppWidgetProviderInfo} widgets.
      */
-    void putInstalledAppWidgets(List<Item> items, int categoryFilter) {
+    void putInstalledAppWidgets(List<Item> items, int categoryFilter, boolean showall) {
         List<AppWidgetProviderInfo> installed = mAppWidgetManager.getInstalledProviders();
-        putAppWidgetItems(installed, null, items, categoryFilter, false);
+        putAppWidgetItems(installed, null, items, categoryFilter, showall);
     }
 }

@@ -88,7 +88,7 @@ public class AppWidgetPickActivity extends ActivityPicker
      */
     @Override
     protected List<PickAdapter.Item> getItems() {
-        mItems = mAppWidgetLoader.getItems(getIntent());
+        mItems = mAppWidgetLoader.getItems(getIntent(), false);
         return mItems;
     }
 

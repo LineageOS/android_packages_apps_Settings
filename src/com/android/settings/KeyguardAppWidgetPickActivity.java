@@ -47,6 +47,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -115,12 +116,22 @@ public class KeyguardAppWidgetPickActivity extends Activity
         }
         mAppWidgetManager = AppWidgetManager.getInstance(this);
         mAppWidgetLoader = new AppWidgetLoader<Item>(this, mAppWidgetManager, this);
-        mItems = mAppWidgetLoader.getItems(getIntent());
+        mItems = mAppWidgetLoader.getItems(getIntent(), false);
         mAppWidgetAdapter = new AppWidgetAdapter(this, mItems);
         mGridView.setAdapter(mAppWidgetAdapter);
         mGridView.setOnItemClickListener(this);
 
         mLockPatternUtils = new LockPatternUtils(this); // TEMP-- we want to delete this
+        final Button showAll = (Button) findViewById(R.id.widget_showall);
+        showAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mItems = mAppWidgetLoader.getItems(getIntent(), true);
+                mAppWidgetAdapter = new AppWidgetAdapter(getBaseContext(), mItems);
+                mGridView.setAdapter(mAppWidgetAdapter);
+                showAll.setEnabled(false);
+            }
+        });
     }
 
     /**
