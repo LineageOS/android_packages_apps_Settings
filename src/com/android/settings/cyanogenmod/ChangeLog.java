@@ -16,45 +16,41 @@
 
 package com.android.settings.cyanogenmod;
 
+import android.app.Fragment;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ScrollView;
+import android.widget.TextView;
+
 import com.android.settings.R;
 
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Config;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.Toast;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import com.android.internal.app.AlertActivity;
-import com.android.internal.app.AlertController;
-
-public class ChangeLog extends AlertActivity {
-
+public class ChangeLog extends Fragment {
     private static final String CHANGELOG_PATH = "/system/etc/CHANGELOG-CM.txt";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                Bundle savedInstanceState) {
         InputStreamReader inputReader = null;
-        StringBuilder data = null;
+        String text = null;
+
         try {
-            data = new StringBuilder(2048);
+            StringBuilder data = new StringBuilder();
             char tmp[] = new char[2048];
             int numRead;
+
             inputReader = new FileReader(CHANGELOG_PATH);
             while ((numRead = inputReader.read(tmp)) >= 0) {
                 data.append(tmp, 0, numRead);
             }
+            text = data.toString();
         } catch (IOException e) {
-            showErrorAndFinish();
-            return;
+            text = getString(R.string.changelog_error);
         } finally {
             try {
                 if (inputReader != null) {
@@ -64,34 +60,12 @@ public class ChangeLog extends AlertActivity {
             }
         }
 
-        if (TextUtils.isEmpty(data)) {
-            showErrorAndFinish();
-            return;
-        }
+        final TextView textView = new TextView(getActivity());
+        textView.setText(text);
 
-        WebView webView = new WebView(this);
+        final ScrollView scrollView = new ScrollView(getActivity());
+        scrollView.addView(textView);
 
-        // Begin the loading.  This will be done in a separate thread in WebView.
-        webView.loadDataWithBaseURL(null, data.toString(), "text/plain", "utf-8", null);
-        webView.setWebViewClient(new WebViewClient() {
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                // Change from 'Loading...' to the real title
-                mAlert.setTitle(getString(R.string.changelog_dialog));
-            }
-        });
-
-        final AlertController.AlertParams p = mAlertParams;
-        p.mTitle = getString(R.string.changelog_loading);
-        p.mView = webView;
-        p.mForceInverseBackground = true;
-        setupAlert();
+        return scrollView;
     }
-
-    private void showErrorAndFinish() {
-        Toast.makeText(this, R.string.changelog_error, Toast.LENGTH_LONG)
-                .show();
-        finish();
-    }
-
 }
