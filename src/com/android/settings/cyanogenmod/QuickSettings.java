@@ -117,6 +117,11 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
         if (BluetoothAdapter.getDefaultAdapter() == null) {
             QuickSettingsUtil.TILES.remove(QuickSettingsUtil.TILE_BLUETOOTH);
         }
+
+        // Dont show the profiles tile if profiles are disabled
+        if (Settings.System.getInt(resolver, Settings.System.SYSTEM_PROFILES_ENABLED, 1) != 1) {
+            QuickSettingsUtil.TILES.remove(QuickSettingsUtil.TILE_PROFILE);
+        }
     }
 
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
