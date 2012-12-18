@@ -1507,6 +1507,8 @@
 
         <activity android:name=".cyanogenmod.LockscreenTargets" />
 
+        <activity android:name=".cyanogenmod.ChangeLog" />
+
         <activity android:name=".cyanogenmod.LockscreenInterface" />
 
         <activity android:name=".cyanogenmod.LockscreenButtons" />
@@ -1536,12 +1538,6 @@
                 android:clearTaskOnLaunch="true">
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.cmstats.AnonymousStats" />
-        </activity>
-
-        <activity android:name=".cyanogenmod.ChangeLog" android:label="@string/changelog_title">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-            </intent-filter>
         </activity>
 
         <!-- CyanogenMod activities End -->
