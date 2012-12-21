@@ -99,7 +99,7 @@ public class QuickSettingsUtil {
                 "com.android.systemui:drawable/ic_qs_gps_neutral"));
         TILES.put(TILE_LOCKSCREEN, new QuickSettingsUtil.TileInfo(
                 TILE_LOCKSCREEN, R.string.title_tile_lockscreen,
-                "com.android.systemui:drawable/ic_qs_lock_screen_on"));
+                "com.android.systemui:drawable/ic_qs_lock_screen_off"));
         TILES.put(TILE_MOBILEDATA, new QuickSettingsUtil.TileInfo(
                 TILE_MOBILEDATA, R.string.title_tile_mobiledata,
                 "com.android.systemui:drawable/ic_qs_signal_4"));
