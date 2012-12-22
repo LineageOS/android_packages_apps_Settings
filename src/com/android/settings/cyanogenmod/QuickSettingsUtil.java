@@ -58,6 +58,7 @@ public class QuickSettingsUtil {
     public static final String TILE_LTE = "toggleLte";
     public static final String TILE_WIMAX = "toggleWimax";
     public static final String TILE_PROFILE = "toggleProfile";
+    public static final String TILE_NFC = "toggleNfc";
 
     private static final String TILE_DELIMITER = "|";
     private static final String TILES_DEFAULT = TILE_USER
@@ -105,6 +106,9 @@ public class QuickSettingsUtil {
         TILES.put(TILE_NETWORKMODE, new QuickSettingsUtil.TileInfo(
                 TILE_NETWORKMODE, R.string.title_tile_networkmode,
                 "com.android.systemui:drawable/ic_qs_2g3g_on"));
+        TILES.put(TILE_NFC, new QuickSettingsUtil.TileInfo(
+                TILE_NFC, R.string.title_tile_nfc,
+                "com.android.systemui:drawable/ic_qs_nfc_off"));
         TILES.put(TILE_PROFILE, new QuickSettingsUtil.TileInfo(
                 TILE_PROFILE, R.string.title_tile_profile,
                 "com.android.systemui:drawable/ic_qs_profiles"));
