@@ -124,6 +124,9 @@ public class QuickSettingsUtil {
         TILES.put(TILE_SYNC, new QuickSettingsUtil.TileInfo(
                 TILE_SYNC, R.string.title_tile_sync,
                 "com.android.systemui:drawable/ic_qs_sync_off"));
+        TILES.put(TILE_SCREENTIMEOUT, new QuickSettingsUtil.TileInfo(
+                TILE_SCREENTIMEOUT, R.string.title_tile_screen_timeout,
+                "com.android.systemui:drawable/ic_qs_screen_timeout_off"));
         TILES.put(TILE_TORCH, new QuickSettingsUtil.TileInfo(
                 TILE_TORCH, R.string.title_tile_torch,
                 "com.android.systemui:drawable/ic_qs_torch_off"));
@@ -138,9 +141,6 @@ public class QuickSettingsUtil {
                 "com.android.systemui:drawable/ic_qs_default_user"));
 
 // These toggles are not available yet.  Comment out for now
-//        TILES.put(TILE_SCREENTIMEOUT, new QuickSettingsUtil.TileInfo(
-//                TILE_SCREENTIMEOUT, R.string.title_tile_screentimeout,
-//                "com.android.systemui:drawable/stat_screen_timeout_on"));
 //        if(PhoneConstants.LTE_ON_CDMA_TRUE == TelephonyManager.getDefault().getLteOnCdmaMode() ||
 //           TelephonyManager.getDefault().getLteOnGsmMode() != 0) {
 //            TILES.put(TILE_LTE, new QuickSettingsUtil.TileInfo(
