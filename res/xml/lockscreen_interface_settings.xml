@@ -34,6 +34,12 @@
         android:entryValues="@array/lockscreen_battery_status_values"
         android:defaultValue="0" />
 
+     <CheckBoxPreference
+        android:key="lockscreen_maximize_widgets"
+        android:persistent="false"
+        android:title="@string/lockscreen_maximize_widgets_title"
+        android:summary="@string/lockscreen_maximize_widgets_summary" />
+
      <Preference
         android:fragment="com.android.settings.cyanogenmod.LockscreenTargets"
         android:key="lockscreen_targets"
