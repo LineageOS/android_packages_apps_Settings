@@ -83,6 +83,13 @@
                 android:icon="@drawable/ring_notif_increasing"
                 android:dependency="increasing_ring"/>
 
+        <!-- Headset -->
+        <com.android.settings.cyanogenmod.CMSystemSettingSwitchPreference
+                android:key="headset_connect_player"
+                android:title="@string/headset_connect_player_title"
+                android:summary="@string/headset_connect_player_summary"
+                android:defaultValue="false" />
+
         <!-- Other sounds -->
         <Preference
                 android:key="other_sounds"
