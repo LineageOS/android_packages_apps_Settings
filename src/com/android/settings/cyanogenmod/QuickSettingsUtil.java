@@ -23,6 +23,7 @@ import android.content.Context;
 import android.net.wimax.WimaxHelper;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -61,14 +62,19 @@ public class QuickSettingsUtil {
     public static final String TILE_NFC = "toggleNfc";
 
     private static final String TILE_DELIMITER = "|";
-    private static final String TILES_DEFAULT = TILE_USER
-            + TILE_DELIMITER + TILE_BRIGHTNESS
-            + TILE_DELIMITER + TILE_SETTINGS
-            + TILE_DELIMITER + TILE_WIFI
-            + TILE_DELIMITER + TILE_MOBILEDATA
-            + TILE_DELIMITER + TILE_BATTERY
-            + TILE_DELIMITER + TILE_AIRPLANE
-            + TILE_DELIMITER + TILE_BLUETOOTH;
+    protected static ArrayList<String> TILES_DEFAULT = new ArrayList<String>();
+
+    static {
+        TILES_DEFAULT.add(TILE_USER);
+        TILES_DEFAULT.add(TILE_BRIGHTNESS);
+        TILES_DEFAULT.add(TILE_SETTINGS);
+        TILES_DEFAULT.add(TILE_WIFI);
+        TILES_DEFAULT.add(TILE_MOBILEDATA);
+        TILES_DEFAULT.add(TILE_BATTERY);
+        TILES_DEFAULT.add(TILE_AIRPLANE);
+        TILES_DEFAULT.add(TILE_BLUETOOTH);
+    }
+
     /**
      * END OF DATA MATCHING BLOCK
      */
@@ -156,7 +162,7 @@ public class QuickSettingsUtil {
         String tiles = Settings.System.getString(context.getContentResolver(),
                 Settings.System.QUICK_SETTINGS_TILES);
         if (tiles == null) {
-            tiles = TILES_DEFAULT;
+            tiles = TextUtils.join(TILE_DELIMITER, TILES_DEFAULT);
         }
         return tiles;
     }
@@ -167,8 +173,9 @@ public class QuickSettingsUtil {
     }
 
     public static void resetTiles(Context context) {
+        String defaultTiles = TextUtils.join(TILE_DELIMITER, TILES_DEFAULT);
         Settings.System.putString(context.getContentResolver(),
-                Settings.System.QUICK_SETTINGS_TILES, TILES_DEFAULT);
+                Settings.System.QUICK_SETTINGS_TILES, defaultTiles);
     }
 
     public static String mergeInNewTileString(String oldString, String newString) {

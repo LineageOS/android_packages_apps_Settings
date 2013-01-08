@@ -143,6 +143,9 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
             QuickSettingsUtil.TILES.remove(QuickSettingsUtil.TILE_NETWORKMODE);
             if(mNetworkMode != null)
                 mStaticTiles.removePreference(mNetworkMode);
+            QuickSettingsUtil.TILES_DEFAULT.remove(QuickSettingsUtil.TILE_WIFIAP);
+            QuickSettingsUtil.TILES_DEFAULT.remove(QuickSettingsUtil.TILE_MOBILEDATA);
+            QuickSettingsUtil.TILES_DEFAULT.remove(QuickSettingsUtil.TILE_NETWORKMODE);
         } else {
             // We have telephony support however, some phones run on networks not supported
             // by the networkmode tile so remove both it and the associated options list
@@ -171,6 +174,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
         // Don't show the bluetooth options if not supported
         if (BluetoothAdapter.getDefaultAdapter() == null) {
             QuickSettingsUtil.TILES.remove(QuickSettingsUtil.TILE_BLUETOOTH);
+            QuickSettingsUtil.TILES_DEFAULT.remove(QuickSettingsUtil.TILE_BLUETOOTH);
         }
 
         // Dont show the profiles tile if profiles are disabled
