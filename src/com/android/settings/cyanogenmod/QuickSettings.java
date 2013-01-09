@@ -18,8 +18,10 @@ package com.android.settings.cyanogenmod;
 
 import android.bluetooth.BluetoothAdapter;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.net.ConnectivityManager;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
@@ -55,6 +57,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
     private static final String DYNAMIC_ALARM = "dynamic_alarm";
     private static final String DYNAMIC_BUGREPORT = "dynamic_bugreport";
     private static final String DYNAMIC_IME = "dynamic_ime";
+    private static final String DYNAMIC_USBTETHER = "dynamic_usbtether";
     private static final String DYNAMIC_WIFI = "dynamic_wifi";
     private static final String QUICK_PULLDOWN = "quick_pulldown";
     private static final String COLLAPSE_PANEL = "collapse_panel";
@@ -68,6 +71,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
     CheckBoxPreference mDynamicBugReport;
     CheckBoxPreference mDynamicWifi;
     CheckBoxPreference mDynamicIme;
+    CheckBoxPreference mDynamicUsbTether;
     CheckBoxPreference mCollapsePanel;
     ListPreference mQuickPulldown;
     PreferenceCategory mGeneralSettings;
@@ -132,6 +136,8 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
         mDynamicBugReport.setChecked(Settings.System.getInt(resolver, Settings.System.QS_DYNAMIC_BUGREPORT, 1) == 1);
         mDynamicIme = (CheckBoxPreference) prefSet.findPreference(DYNAMIC_IME);
         mDynamicIme.setChecked(Settings.System.getInt(resolver, Settings.System.QS_DYNAMIC_IME, 1) == 1);
+        mDynamicUsbTether = (CheckBoxPreference) prefSet.findPreference(DYNAMIC_USBTETHER);
+        mDynamicUsbTether.setChecked(Settings.System.getInt(resolver, Settings.System.QS_DYNAMIC_USBTETHER, 1) == 1);
         mDynamicWifi = (CheckBoxPreference) prefSet.findPreference(DYNAMIC_WIFI);
         mDynamicWifi.setChecked(Settings.System.getInt(resolver, Settings.System.QS_DYNAMIC_WIFI, 1) == 1);
 
@@ -202,6 +208,10 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
         } else if (preference == mDynamicIme) {
             Settings.System.putInt(resolver, Settings.System.QS_DYNAMIC_IME,
                     mDynamicIme.isChecked() ? 1 : 0);
+            return true;
+        } else if (preference == mDynamicUsbTether) {
+            Settings.System.putInt(resolver, Settings.System.QS_DYNAMIC_USBTETHER,
+                    mDynamicUsbTether.isChecked() ? 1 : 0);
             return true;
         } else if (preference == mDynamicWifi) {
             Settings.System.putInt(resolver, Settings.System.QS_DYNAMIC_WIFI,
@@ -305,5 +315,10 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
         } else {
             return val.toString().split(SEPARATOR);
         }
+    }
+
+    private boolean deviceSupportsUsbTether() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        return (cm.getTetherableUsbRegexs().length != 0);
     }
 }
