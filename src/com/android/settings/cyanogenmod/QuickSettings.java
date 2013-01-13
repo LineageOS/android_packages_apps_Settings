@@ -294,11 +294,9 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
             StringBuilder summary = new StringBuilder();
             for (int i = 0; i < (length); i++) {
                 CharSequence entry = entries[Integer.parseInt(values[i])];
-                if ((length - i) > 2) {
-                    summary.append(entry).append(", ");
-                } else if ((length - i) == 2) {
-                    summary.append(entry).append(" & ");
-                } else if ((length - i) == 1) {
+                if ((length - i) > 1) {
+                    summary.append(entry).append(" | ");
+                } else {
                     summary.append(entry);
                 }
             }
