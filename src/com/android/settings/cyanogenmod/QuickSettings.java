@@ -336,7 +336,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
     }
 
     private boolean deviceSupportsWifiDisplay() {
-        DisplayManager dm = (DisplayManager)getActivity().getSystemService(Context.DISPLAY_SERVICE);
+        DisplayManager dm = (DisplayManager) getSystemService(Context.DISPLAY_SERVICE);
         return (dm.getWifiDisplayStatus().getFeatureState() != WifiDisplayStatus.FEATURE_STATE_UNAVAILABLE);
     }
 }
