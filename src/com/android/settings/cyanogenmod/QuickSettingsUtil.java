@@ -16,69 +16,41 @@
 
 package com.android.settings.cyanogenmod;
 
-import com.android.internal.telephony.PhoneConstants;
-import com.android.settings.R;
+import static com.android.internal.util.cm.QSConstants.TILES_DEFAULT;
+import static com.android.internal.util.cm.QSConstants.TILE_AIRPLANE;
+import static com.android.internal.util.cm.QSConstants.TILE_AUTOROTATE;
+import static com.android.internal.util.cm.QSConstants.TILE_BATTERY;
+import static com.android.internal.util.cm.QSConstants.TILE_BLUETOOTH;
+import static com.android.internal.util.cm.QSConstants.TILE_BRIGHTNESS;
+import static com.android.internal.util.cm.QSConstants.TILE_DELIMITER;
+import static com.android.internal.util.cm.QSConstants.TILE_GPS;
+import static com.android.internal.util.cm.QSConstants.TILE_LOCKSCREEN;
+import static com.android.internal.util.cm.QSConstants.TILE_MOBILEDATA;
+import static com.android.internal.util.cm.QSConstants.TILE_NETWORKMODE;
+import static com.android.internal.util.cm.QSConstants.TILE_NFC;
+import static com.android.internal.util.cm.QSConstants.TILE_PROFILE;
+import static com.android.internal.util.cm.QSConstants.TILE_QUIETHOURS;
+import static com.android.internal.util.cm.QSConstants.TILE_RINGER;
+import static com.android.internal.util.cm.QSConstants.TILE_SCREENTIMEOUT;
+import static com.android.internal.util.cm.QSConstants.TILE_SETTINGS;
+import static com.android.internal.util.cm.QSConstants.TILE_SLEEP;
+import static com.android.internal.util.cm.QSConstants.TILE_SYNC;
+import static com.android.internal.util.cm.QSConstants.TILE_TORCH;
+import static com.android.internal.util.cm.QSConstants.TILE_USER;
+import static com.android.internal.util.cm.QSConstants.TILE_WIFI;
+import static com.android.internal.util.cm.QSConstants.TILE_WIFIAP;
 
 import android.content.Context;
-import android.net.wimax.WimaxHelper;
 import android.provider.Settings;
-import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+
+import com.android.settings.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 
-/**
- * THIS CLASS'S DATA MUST BE KEPT UP-TO-DATE WITH THE DATA IN
- * com.android.systemui.statusbar.phone.QuickSettingsController
- * IN THE SystemUI PACKAGE.
- */
 public class QuickSettingsUtil {
-    /**
-     * START OF DATA MATCHING BLOCK
-     */
-    public static final String TILE_USER = "toggleUser";
-    public static final String TILE_BATTERY = "toggleBattery";
-    public static final String TILE_SETTINGS = "toggleSettings";
-    public static final String TILE_WIFI = "toggleWifi";
-    public static final String TILE_GPS = "toggleGPS";
-    public static final String TILE_BLUETOOTH = "toggleBluetooth";
-    public static final String TILE_BRIGHTNESS = "toggleBrightness";
-    public static final String TILE_SOUND = "toggleSound";
-    public static final String TILE_SYNC = "toggleSync";
-    public static final String TILE_WIFIAP = "toggleWifiAp";
-    public static final String TILE_SCREENTIMEOUT = "toggleScreenTimeout";
-    public static final String TILE_MOBILEDATA = "toggleMobileData";
-    public static final String TILE_LOCKSCREEN = "toggleLockScreen";
-    public static final String TILE_NETWORKMODE = "toggleNetworkMode";
-    public static final String TILE_AUTOROTATE = "toggleAutoRotate";
-    public static final String TILE_AIRPLANE = "toggleAirplane";
-    public static final String TILE_TORCH = "toggleFlashlight";  // Keep old string for compatibility
-    public static final String TILE_SLEEP = "toggleSleepMode";
-    public static final String TILE_LTE = "toggleLte";
-    public static final String TILE_WIMAX = "toggleWimax";
-    public static final String TILE_PROFILE = "toggleProfile";
-    public static final String TILE_NFC = "toggleNfc";
-    public static final String TILE_QUIETHOURS = "toggleQuietHours";
-
-    private static final String TILE_DELIMITER = "|";
-    protected static ArrayList<String> TILES_DEFAULT = new ArrayList<String>();
-
-    static {
-        TILES_DEFAULT.add(TILE_USER);
-        TILES_DEFAULT.add(TILE_BRIGHTNESS);
-        TILES_DEFAULT.add(TILE_SETTINGS);
-        TILES_DEFAULT.add(TILE_WIFI);
-        TILES_DEFAULT.add(TILE_MOBILEDATA);
-        TILES_DEFAULT.add(TILE_BATTERY);
-        TILES_DEFAULT.add(TILE_AIRPLANE);
-        TILES_DEFAULT.add(TILE_BLUETOOTH);
-    }
-
-    /**
-     * END OF DATA MATCHING BLOCK
-     */
 
     // Keep sorted according to titleResId's string value
     public static final LinkedHashMap<String, TileInfo> TILES = new LinkedHashMap<String, TileInfo>();
@@ -128,8 +100,8 @@ public class QuickSettingsUtil {
         TILES.put(TILE_SLEEP, new QuickSettingsUtil.TileInfo(
                 TILE_SLEEP, R.string.title_tile_sleep,
                 "com.android.systemui:drawable/ic_qs_sleep"));
-        TILES.put(TILE_SOUND, new QuickSettingsUtil.TileInfo(
-                TILE_SOUND, R.string.title_tile_sound,
+        TILES.put(TILE_RINGER, new QuickSettingsUtil.TileInfo(
+                TILE_RINGER, R.string.title_tile_sound,
                 "com.android.systemui:drawable/ic_qs_ring_on"));
         TILES.put(TILE_SYNC, new QuickSettingsUtil.TileInfo(
                 TILE_SYNC, R.string.title_tile_sync,
