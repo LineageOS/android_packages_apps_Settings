@@ -2085,11 +2085,11 @@
     <string name="dialog_title_font_size">Font size</string>
 
     <!-- SIM lock settings title  [CHAR LIMIT=40] -->
-    <string name="sim_lock_settings">SIM card lock settings</string>
+    <string name="sim_lock_settings">SIM/RUIM card lock settings</string>
     <!-- Security & location settings screen, setting option name  [CHAR LIMIT=40] -->
-    <string name="sim_lock_settings_category">Set up SIM card lock</string>
+    <string name="sim_lock_settings_category">Set up SIM/RUIM card lock</string>
     <!-- Security & location settings screen, section heading for settings related to sim card locking  [CHAR LIMIT=40] -->
-    <string name="sim_lock_settings_title">SIM card lock</string>
+    <string name="sim_lock_settings_title">SIM/RUIM card lock</string>
     <!-- SIM card lock settings screen, setting check box label  [CHAR LIMIT=40] -->
     <string name="sim_pin_toggle">Lock SIM card</string>
     <!-- SIM card lock settings screen, setting option summary text when SIM lock check box is selected  [CHAR LIMIT=40] -->
@@ -2120,9 +2120,15 @@
     <string name="sim_bad_pin">Incorrect PIN</string>
     <!-- SIM card lock settings screen, SIM PIN dialog message when PINs don't match  [CHAR LIMIT=40] -->
     <string name="sim_pins_dont_match">PINs don\'t match</string>
+    <!-- SIM card lock settings screen, SIM PIN dialog message when SIM card is absent-->
+    <string name="sim_absent">No SIM/RUIM</string>
     <!-- SIM card lock settings screen, toast after not entering correct SIM PIN  [CHAR LIMIT=40] -->
     <string name="sim_change_failed">Can\'t change PIN.\nPossibly incorrect PIN.</string>
     <!-- SIM card lock settings screen, SIM PIN dialog message when the entered PIN is correct [CHAR LIMIT=40] -->
+    <string name="sim_change_failed">Can\'t change PIN.\nPossibly incorrect PIN.</string>
+    <string name="sim_pin_disable_failed">Can\'t disable PIN.</string>
+    <string name="sim_pin_enable_failed">Can\'t enable PIN.</string>
+    <!-- SIM card lock settings screen, SIM PIN dialog message when the entered PIN is correct-->
     <string name="sim_change_succeeded">SIM PIN changed successfully</string>
     <!-- SIM card lock settings screen, toast after not entering correct SIM PIN [CHAR LIMIT=40] -->
     <string name="sim_lock_failed">Can\'t change SIM card lock state.\nPossibly incorrect PIN.</string>
@@ -2134,6 +2140,16 @@
     <string name="sim_multi_sims_title">Multiple SIMs found</string>
     <!-- Multiple SIMs found summary.  [CHAR LIMIT=100] -->
     <string name="sim_multi_sims_summary">Choose the SIM you prefer for cellular data.</string>
+    <!-- SIM password can't be changed as SIM LOCK is not enabled: -->
+    <string name="sim_pin_change_failed_enable_sim_lock">Unable to Change SIM/RUIM PIN.\n Enable SIM/RUIM Lock.</string>
+    <!-- SIM lock can't be changed - not supported -->
+    <string name="sim_enable_disable_lock_not_supported">Unable to Change SIM/RUIM Lock.\n SIM/RUIM doesn\'t support it.</string>
+    <!-- SIM card lock settings screen, toast displayed on wrong PIN1: -->
+    <string name="sim_pin_attempts">\nAttempts Remaining :</string>
+    <!-- SIM card lock settings screen, toast displayed on PIN1 enable: -->
+    <string name="sim_pin_enabled">PIN1 Enabled!</string>
+    <!-- SIM card lock settings screen, toast displayed on PIN1 disable: -->
+    <string name="sim_pin_disabled">PIN1 Disabled!</string>
 
     <!-- Instructions telling the user that they entered the wrong SIM PIN for the last time.
          Displayed in a dialog box.  [CHAR LIMIT=100] -->
