@@ -52,7 +52,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "DisplaySettings";
 
-    /** If there is no setting in the provider, use this. */
+    // If there is no setting in the provider, use this
     private static final int FALLBACK_SCREEN_TIMEOUT_VALUE = 30000;
 
     private static final String KEY_SCREEN_TIMEOUT = "screen_timeout";
@@ -68,8 +68,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String ROTATION_ANGLE_90 = "90";
     private static final String ROTATION_ANGLE_180 = "180";
     private static final String ROTATION_ANGLE_270 = "270";
-    private static final String ROTATION_ANGLE_DELIM = ", ";
-    private static final String ROTATION_ANGLE_DELIM_FINAL = " & ";
 
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
@@ -174,7 +172,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         } else {
             ArrayList<String> rotationList = new ArrayList<String>();
             String delim = "";
-            summary.append(getString(R.string.display_rotation_enabled) + " ");
             if ((mode & DisplayRotation.ROTATION_0_MODE) != 0) {
                 rotationList.add(ROTATION_ANGLE_0);
             }
@@ -187,12 +184,12 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             if ((mode & DisplayRotation.ROTATION_270_MODE) != 0) {
                 rotationList.add(ROTATION_ANGLE_270);
             }
-            for(int i=0;i<rotationList.size();i++) {
+            for (int i = 0; i < rotationList.size(); i++) {
                 summary.append(delim).append(rotationList.get(i));
-                if (rotationList.size() >= 2 && (rotationList.size() - 2) == i) {
-                    delim = " " + ROTATION_ANGLE_DELIM_FINAL + " ";
+                if ((rotationList.size() - i) > 2) {
+                    delim = ", ";
                 } else {
-                    delim = ROTATION_ANGLE_DELIM + " ";
+                    delim = " & ";
                 }
             }
             summary.append(" " + getString(R.string.display_rotation_unit));
@@ -265,14 +262,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     int floatToIndex(float val) {
         String[] indices = getResources().getStringArray(R.array.entryvalues_font_size);
         float lastVal = Float.parseFloat(indices[0]);
-        for (int i=1; i<indices.length; i++) {
+        for (int i = 1; i < indices.length; i++) {
             float thisVal = Float.parseFloat(indices[i]);
             if (val < (lastVal + (thisVal-lastVal)*.5f)) {
-                return i-1;
+                return i - 1;
             }
             lastVal = thisVal;
         }
-        return indices.length-1;
+        return indices.length - 1;
     }
     
     public void readFontSizePreference(ListPreference pref) {
