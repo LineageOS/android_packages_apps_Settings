@@ -124,7 +124,9 @@ public class Settings extends PreferenceActivity
             R.id.about_settings,
             R.id.accessibility_settings,
             R.id.interface_section,
-            R.id.launcher_settings
+            R.id.launcher_settings,
+            R.id.lock_screen_settings,
+            R.id.system_settings
     };
 
     private SharedPreferences mDevelopmentPreferences;
