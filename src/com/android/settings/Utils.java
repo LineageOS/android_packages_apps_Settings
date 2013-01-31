@@ -681,4 +681,9 @@ public class Utils {
     public static boolean isTablet(Context con) {
         return getScreenType(con) == DEVICE_TABLET;
     }
+
+    /* returns whether the device has volume rocker or not. */
+    public static boolean hasVolumeRocker(Context con) {
+        return con.getResources().getBoolean(R.bool.has_volume_rocker);
+    }
 }

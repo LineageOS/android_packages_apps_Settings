@@ -45,6 +45,7 @@ import android.util.Log;
 
 import com.android.internal.view.RotationPolicy;
 import com.android.settings.cyanogenmod.DisplayRotation;
+import com.android.settings.Utils;
 
 import java.util.ArrayList;
 
@@ -142,7 +143,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
         mVolumeWake = (CheckBoxPreference) findPreference(KEY_VOLUME_WAKE);
         if (mVolumeWake != null) {
-            if (!getResources().getBoolean(R.bool.config_show_volumeRockerWake)) {
+            if (!getResources().getBoolean(R.bool.config_show_volumeRockerWake)
+                    && !Utils.hasVolumeRocker(getActivity())) {
                 getPreferenceScreen().removePreference(mVolumeWake);
                 getPreferenceScreen().removePreference((PreferenceCategory) findPreference(KEY_WAKEUP_CATEGORY));
             } else {

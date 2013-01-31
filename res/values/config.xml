@@ -35,10 +35,12 @@
 
     <!-- Volume Rocker Wake Support. Some devices do not support (PMU) this.
          Setting to false will disable Volume Rocker Wake support -->
-    <bool name="config_show_volumeRockerWake">true</bool>
+    <bool name="config_show_volumeRockerWake">false</bool>
 
     <!-- Show Expanded Desktop preference -->
     <bool name="config_show_expandedDesktop">false</bool>
 
+    <!-- Volume rocker support. Some devices does not have volume rocker. -->
+    <bool name="has_volume_rocker">true</bool>
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>
