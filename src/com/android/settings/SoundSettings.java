@@ -24,6 +24,7 @@ import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
@@ -55,7 +56,7 @@ import java.util.Calendar;
 import java.util.List;
 
 public class SoundSettings extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener {
+        Preference.OnPreferenceChangeListener, DialogInterface.OnDismissListener, DialogInterface.OnClickListener {
     private static final String TAG = "SoundSettings";
 
     private static final int DIALOG_NOT_DOCKED = 1;
@@ -124,6 +125,10 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mDockSounds;
     private Intent mDockIntent;
     private CheckBoxPreference mDockAudioMediaEnabled;
+
+    // To track whether a confirmation dialog was clicked.
+    private boolean mDialogClicked;
+    private Dialog mWaiverDialog;
 
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
@@ -463,8 +468,22 @@ public class SoundSettings extends SettingsPreferenceFragment implements
                     mHeadsetConnectPlayer.isChecked() ? 1 : 0);
 
         } else if (preference == mSafeHeadsetVolume) {
-            Settings.System.putInt(getContentResolver(), Settings.System.SAFE_HEADSET_VOLUME,
-                    mSafeHeadsetVolume.isChecked() ? 1 : 0);
+                if (!mSafeHeadsetVolume.isChecked()) {
+                    // User is trying to disable the feature, display the waiver
+                    mDialogClicked = false;
+                    if (mWaiverDialog != null) {
+                        dismissDialog();
+                    }
+                    mWaiverDialog = new AlertDialog.Builder(getActivity())
+                            .setMessage(R.string.cyanogenmod_waiver_body)
+                            .setTitle(R.string.cyanogenmod_waiver_title)
+                            .setPositiveButton(R.string.ok, this)
+                            .setNegativeButton(R.string.cancel, this)
+                            .show();
+                    mWaiverDialog.setOnDismissListener(this);
+                } else {
+                    Settings.System.putInt(getContentResolver(), Settings.System.SAFE_HEADSET_VOLUME, 1);
+                }
 
         } else {
             // If we didn't handle it, let preferences handle it.
@@ -601,5 +620,37 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         ab.setPositiveButton(android.R.string.ok, null);
         return ab.create();
     }
-}
 
+    private void dismissDialog() {
+        if (mWaiverDialog != null) {
+            mWaiverDialog.dismiss();
+            mWaiverDialog = null;
+        }
+    }
+
+    public void onClick(DialogInterface dialog, int which) {
+        if (dialog == mWaiverDialog) {
+            if (which == DialogInterface.BUTTON_POSITIVE) {
+                mDialogClicked = true;
+                Settings.System.putInt(getContentResolver(), Settings.System.SAFE_HEADSET_VOLUME, 0);
+            }
+        }
+    }
+
+    public void onDismiss(DialogInterface dialog) {
+        // Assuming that onClick gets called first
+        if (dialog == mWaiverDialog) {
+            if (!mDialogClicked) {
+                mSafeHeadsetVolume.setChecked(true);
+            }
+            mWaiverDialog = null;
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        dismissDialog();
+        super.onDestroy();
+    }
+
+}
