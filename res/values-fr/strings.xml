@@ -1834,7 +1834,7 @@
     <string name="cell_broadcast_settings" msgid="8415582011920085222">"Diffusions cellulaires"</string>
     <string name="cell_broadcast_settings_summary" msgid="3301339398950905913">"Sélectionnez les types d\'alertes d\'urgence à afficher."</string>
 
-    <!-- ****  CYANOGENMOD ADDITIONS START  **** -->
+    <!-- ****  CYANOGENMOD ADDITIONS  **** -->
 
     <!-- time range preference -->
     <string name="start_time_title">Début</string>
@@ -2019,7 +2019,7 @@
     <string name="choose_ringtone">Choix de la sonnerie</string>
 
     <!-- Sound settings screen, setting option name to pick ringtone (a list dialog comes up)-->
-    <string name="soundtone_title">Notification tone</string>
+    <string name="soundtone_title">Son de notification</string>
     <string name="soundtone_summary">""</string>
 
     <!-- Title for application group setting screen -->
@@ -2080,6 +2080,8 @@
     <string name="unlock_home_unlock_summary">Déverrouillage de l\'écran en appuyant sur le bouton Home</string>
     <string name="unlock_quick_unlock_control_title">Déverrouillage rapide</string>
     <string name="unlock_quick_unlock_control_summary">Évite d\'appuyer sur OK lors de la saisie du code PIN ou du mot de passe.\nAttention : effacer compte comme un essai raté\u00A0!</string>
+    <string name="lockpattern_settings_enable_error_path_title">Afficher l\'erreur de schéma</string>
+    <string name="lockpattern_settings_enable_dots_title">Afficher les points</string>
 
     <!-- Setting checkbox title for root access -->
     <string name="root_access">Accès root</string>
@@ -2088,7 +2090,7 @@
     <string name="root_access_none">Désactivé</string>
     <string name="root_access_apps">Application uniquement</string>
     <string name="root_access_adb">ADB uniquement</string>
-    <string name="root_access_all">Applications et ADB</string>
+    <string name="root_access_all">Application et ADB</string>
 
     <!-- Slide lock delay -->
     <string name="delay_and_timeout_title">Délai de verrouillage</string>
@@ -2111,7 +2113,7 @@
 
     <!-- Performance Settings : Warning dialog  -->
     <string name="performance_settings_warning_title">ATTENTION\u00A0!</string>
-    <string name="performance_settings_warning">Les options présentes ici altèrent les performances du système, en bien ou en mal.\nElles ont des comportements différents selon les appareils et sont disponibles pour expérimentation.\nNous vous demandons de ne pas soumettre de rapport de bug à propos de celles-ci.</string>
+    <string name="performance_settings_warning">Les options présentes ici altèrent les performances du système, en bien ou en mal.\nElles ont des comportements différents selon les appareils et ne sont disponibles que pour expérimentation.\nNous vous demandons de ne pas soumettre de rapport de bug à propos de celles-ci.</string>
 
     <!-- Performance Settings : Processor Settings -->
     <!-- Performance Settings : Processor settings title -->
@@ -2167,7 +2169,7 @@
     <!-- Display : Rotation  -->
     <string name="display_rotation_title">Rotation</string>
     <string name="display_rotation_disabled">Désactivé</string>
-    <string name="display_rotation_unit">degrés</string>
+    <string name="display_rotation_unit">degré(s)</string>
     <string name="display_rotation_category_title">Angles de rotation</string>
     <string name="display_rotation_0_title">0 degré</string>
     <string name="display_rotation_90_title">90 degrés</string>
@@ -2216,7 +2218,7 @@
     <string name="increasing_ring_volume_notice">Note :\nComme le volume défini est plus grand que celui de la sonnerie, il sera réduit à son niveau.</string>
     <string name="increasing_ring_interval_title">Intervale de progression</string>
     <string name="increasing_ring_interval_eachring">À chaque sonnerie</string>
-    <string name="increasing_ring_interval_half_second">0.5 secondes</string>
+    <string name="increasing_ring_interval_half_second">0.5 seconde</string>
     <string name="increasing_ring_interval_1second">1 seconde</string>
     <string name="increasing_ring_interval_2seconds">2 secondes</string>
     <string name="increasing_ring_interval_3seconds">3 secondes</string>
@@ -2228,9 +2230,9 @@
     <string name="profile_write_success">Tag écrit avec succès</string>
     <string name="profile_write_failed">L\'écriture a échoué\u00A0!</string>
     <string name="profile_selected">Profil sélectionné : %1$s</string>
-    <string name="profile_nfc_text">Écrire un profil sur un tag NFC permet d\'en sélectionner un avec celui-ci. Lors du deuxième contact le profil précédent est sélectionné.</string>
+    <string name="profile_nfc_text">Écrire un profil sur un tag NFC permet de le relier avec celui-ci. Lors du deuxième contact ce profil sera sélectionné.</string>
     <string name="profile_unknown_nfc_tag">Profil inconnu</string>
-    <string name="profile_add_nfc_text">Ce tag NFC se refère à aucun profil. Relier ce tag NFC à un profil existant permettra de sélectionner le profil à l\'avenir.</string>
+    <string name="profile_add_nfc_text">Ce tag NFC ne se réfère à aucun profil. Le relier à un profil existant permettra à l\'avenir de le sélectionner.</string>
     <string name="profile_select">Sélectionner un profil</string>
 
     <string name="link_volume_ringtones">Lier le volume des alertes à la sonnerie</string>
@@ -2282,9 +2284,10 @@
 
     <!-- Sound settings screen -->
     <string name="volume_overlay_title">Contrôle du volume</string>
-    <string name="volbtn_music_controls_title">Playlist par boutons volume</string>
-    <string name="volbtn_music_controls_summary">Lorsque l\'écran est éteint, un appui long permet de changer le titre en cours</string>
-    <string name="headset_connect_player_title">Lancer le lecteur de musique au branchement du casque</string>
+    <string name="volume_adjust_sounds_enable_title">Son au réglage du volume</string>
+    <string name="volume_adjust_sounds_enable_summary">Émettre un son lors du réglage du volume avec les touches</string>
+    <string name="volbtn_music_controls_title">Contrôle de la musique</string>
+    <string name="volbtn_music_controls_summary">Lorsque l\'écran est éteint, un appui long sur les boutons de volume permet de changer le titre en cours de lecture</string>
     <string name="volume_ring_only_description">Sonneries</string>
     <string name="ring_mode_title">Sonnerie</string>
     <string name="ring_mode_normal">Normal</string>
@@ -2302,10 +2305,10 @@
     <string name="hardware_keys_assist_long_press_title">Recherche (appui long)</string>
     <string name="hardware_keys_app_switch_press_title">Bouton \"Applications récentes\"</string>
     <string name="hardware_keys_app_switch_long_press_title">\"Applications récentes\" (appui long)</string>
-    <string name="hardware_keys_show_overflow_title">Afficher le menu de l\'application</string>
+    <string name="hardware_keys_show_overflow_title">Afficher le bouton de Menu</string>
     <string name="hardware_keys_show_overflow_summary">Afficher le bouton Menu (3 points) dans les applications</string>
-    <string name="hardware_keys_show_overflow_toast_enable">Le menu de l\'application ne pourrait être visible qu\'après le redémarrage des applications</string>
-    <string name="hardware_keys_show_overflow_toast_disable">Le menu de l\'application ne pourrait être caché qu\'après le redémarrage des applications</string>
+    <string name="hardware_keys_show_overflow_toast_enable">Le bouton de Menu ne pourra être visible qu\'après le redémarrage des applications</string>
+    <string name="hardware_keys_show_overflow_toast_disable">Le bouton de Menu ne pourra être caché qu\'après le redémarrage des applications</string>
     <string name="hardware_keys_action_nothing">Aucune action</string>
     <string name="hardware_keys_action_menu">Ouvrir/fermer le menu</string>
     <string name="hardware_keys_action_app_switch">Applications récentes</string>
@@ -2313,15 +2316,15 @@
     <string name="hardware_keys_action_voice_search">Recherche vocale</string>
     <string name="hardware_keys_action_in_app_search">Recherche dans l\'application</string>
 
-    <!-- Navigation Bar #CM -->
-    <string name="navigation_bar_title">Barre de navigation</string>
-    <string name="navigation_bar_help_text">1 - Pour commencer l\'édition, appuyer sur le cadenas\n\n2 - Appuyer sur un des boutons pour assigner ou changer une fonctionnalité\n\n3 - Pression longue pour modifier l\'ordre\n\n4 - Pour enregistrer, appuyer à nouveau sur le cadenas\n\n5 - Pour remettre à zéro, appuyer sur le bouton \"Réinitialiser\"\n\n</string>
-    <string name="navigation_bar_tips">&#8226; Les actions peuvent être assignées qu\'une seule fois\n\n&#8226; Le bouton d\'accueil ne peut être réassigné\n\n&#8226; Les boutons sur le bord ne peuvent être déplacés</string>
-    <string name="navigation_bar_tips_title">Astuces rapides</string>
+    <!-- Navigation Bar -->
+    <string name="navigation_bar_title">Boutons et disposition</string>
+    <string name="navigation_bar_help_text">1 - Pour commencer l\'édition, appuyer sur le cadenas\n\n2 - Appuyer sur un des boutons pour assigner ou changer une fonctionnalité\n\n3 - Exercer une pression longue pour modifier l\'ordre\n\n4 - Pour enregistrer, appuyer à nouveau sur le cadenas\n\n5 - Pour remettre à zéro, appuyer sur le bouton \"Réinitialiser\"\n\n</string>
+    <string name="navigation_bar_tips">&#8226; Les actions ne peuvent être assignées qu\'une seule fois\n\n&#8226; Le bouton d\'accueil ne peut être réassigné\n\n&#8226; Les boutons sur le bord ne peuvent être déplacés</string>
+    <string name="navigation_bar_tips_title">Conseils pratiques</string>
     <string name="navigation_bar_reset_message">Supprimer les paramètres actuels et remettre à zéro\u00A0?</string>
     <string name="navigation_bar_save_message">Paramètres de la barre de navigation enregistrés</string>
     <string name="navigation_bar_reset_toast">Barre de navigation remise à zéro</string>
-    <string name="navigation_bar_menu_editable">Editable</string>
+    <string name="navigation_bar_menu_editable">Modifiable</string>
     <string name="navigation_bar_menu_locked">Verrouillée</string>
 
     <!-- Power Widget  -->
@@ -2378,7 +2381,7 @@
 
     <!-- Change Log strings -->
     <string name="changelog_title">Voir le rapport de version</string>
-    <string name="changelog_loading">Chargement du rapport de version…</string>
+    <string name="changelog_loading">Chargement du rapport de version\u2026</string>
     <string name="changelog_error">Impossible de charger le rapport de version</string>
     <string name="changelog_unknown">Inconnu</string>
     <string name="changelog_version">Version</string>
@@ -2388,6 +2391,9 @@
     <string name="power_menu_reboot_title">Redémarrer</string>
     <string name="power_menu_screenshot_title">Capture d\'écran</string>
     <string name="power_menu_expanded_desktop">Bureau étendu</string>
+    <string name="expanded_desktop_disabled">Désactivé</string>
+    <string name="expanded_desktop_status_bar">Barre de notification visible</string>
+    <string name="expanded_desktop_no_status_bar">Barre de notification masquée</string>
     <string name="power_menu_profiles_title">Profils</string>
     <string name="power_menu_airplane_title">Mode avion</string>
     <string name="power_menu_user_title">Utilisateur</string>
@@ -2492,6 +2498,8 @@
     <string name="title_tile_nfc">NFC</string>
     <string name="title_tile_screen_timeout">Veille écran</string>
     <string name="title_tile_usb_tether">Modem USB</string>
+    <string name="title_tile_quiet_hours">Heures silencieuses</string>
+    <string name="title_tile_volume">Volume</string>
 
     <string name="title_dynamic_tiles">Raccourcis dynamiques</string>
     <string name="dynamic_tiles_note_title">Note</string>
@@ -2569,5 +2577,59 @@
     <string name="lockscreen_background_custom_image">Image personnalisée</string>
     <string name="lockscreen_background_default_wallpaper">Fond d\'écran par défaut</string>
 
-    <!-- ****  CYANOGENMOD ADDITIONS END  **** -->
+    <!-- Launch music player when headset is connected -->
+    <string name="headset_connect_player_title">Lancer lecteur de musique</string>
+    <string name="headset_connect_player_summary">Lancer le lecteur de musique par défaut au branchement du casque</string>
+
+    <!-- Safe headset volume restore checkbox -->
+    <string name="safe_headset_volume_title">Volume sécurisé du casque</string>
+    <string name="safe_headset_volume_summary">Mettre en garde l\'utilisateur contre les volumes sonores élevés lors de la première utilisation du casque</string>
+
+    <!-- Waiver -->
+    <string name="cyanogenmod_waiver_title">Renonciation</string>
+    <string name="cyanogenmod_waiver_body">Le changement de ce paramètre peut être interdit par les lois de votre gouvernement ou état.\n\nEn sélectionnant \'OK\' ci-dessous, vous reconnaissez avoir pris connaissance de cet avertissement, et vous dégagez CyanogenMod et ses contributeurs de toutes responsabilités et de toutes obligations juridiques.</string>
+
+    <!-- Automatic brightness customization -->
+    <string name="light_sensor_current_value">Valeur actuelle du capteur de lumière\u00A0: <xliff:g id="light_level">%d</xliff:g> lux</string>
+    <string name="auto_brightness_dialog_title">Niveaux d\'éclairage automatique</string>
+    <string name="auto_brightness_level_format"><xliff:g id="start_level">%1$s</xliff:g> -\n<xliff:g id="end_level">%2$s</xliff:g> lux</string>
+    <string name="auto_brightness_brightness_format"><xliff:g id="percent">%s</xliff:g>%%</string>
+    <string name="auto_brightness_adjust_button">Ajuster</string>
+    <string name="auto_brightness_reset_button">Réinitialiser</string>
+    <string name="auto_brightness_lux_dialog_title">Plage de luminosité ambiante</string>
+    <string name="auto_brightness_split_dialog_title">Division du niveau de luminosité</string>
+    <string name="auto_brightness_start_lux">Plage de début (lux)</string>
+    <string name="auto_brightness_end_lux">Plage de fin (lux)</string>
+    <string name="auto_brightness_reset_dialog_title">Réinitialiser les niveaux\u00A0?</string>
+    <string name="auto_brightness_reset_confirmation">Tous les niveaux de luminosité seront réinitialisés à leurs réglages par défaut.</string>
+    <string name="auto_brightness_split_lux_format">Position de coupure (entre <xliff:g id="min">%1$d</xliff:g> et <xliff:g id="max">%2$d</xliff:g> lux)</string>
+    <string name="auto_brightness_level_options">Options de niveau de lumière</string>
+    <string name="auto_brightness_menu_edit_lux">Plage de luminosité ambiante</string>
+    <string name="auto_brightness_menu_split">Diviser</string>
+    <string name="auto_brightness_menu_remove">Supprimer</string>
+
+    <!-- Advanced reboot options -->
+    <string name="advanced_reboot_title">Redémarrage avancé</string>
+    <string name="advanced_reboot_summary">Inclure les options de redémarrage en mode recovery et bootloader dans le menu marche/arrêt lorsque l\'appareil est déverrouillé</string>
+
+    <!-- Navigation bar buttons and shortcuts category title -->
+    <string name="navigation_bar_category">Barre de navigation</string>
+
+    <!-- Navigation ring shortcuts -->
+    <string name="navigation_ring_title">Raccourcis de lancement rapide</string>
+    <string name="navring_target_reset_message">Supprimer les paramètres actuels et restaurer les paramètres par défaut\u00A0?</string>
+    <string name="navring_target_reset">Paramètres de la barre de navigation réinitialisés</string>
+    <string name="navring_target_save">Paramètres de la barre de navigation enregistrés</string>
+    <string name="navring_action_open_ime_switcher">Changement utilisateur</string>
+    <string name="navring_action_kill_app">Fermer les applications</string>
+    <string name="navring_action_none">Aucun</string>
+    <string name="navring_action_take_screenshot">Effectuer une capture d\'écran</string>
+    <string name="navring_action_ring_vibrate">Sonnerie/Vibreur</string>
+    <string name="navring_action_ring_silent">Sonnerie/Silencieux</string>
+    <string name="navring_action_ring_vibrate_silent">Sonnerie/Vibreur/Silencieux</string>
+    <string name="navring_action_screen_off">Éteindre l\'écran</string>
+    <string name="navring_action_torch">Torche</string>
+    <string name="navring_action_google_now">Google Now</string>
+    <string name="navring_choose_action_title">Choisir une action</string>
+
 </resources>
