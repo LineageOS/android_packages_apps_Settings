@@ -24,6 +24,7 @@ import android.os.SystemProperties;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import com.android.settings.R;
 import com.android.settings.Utils;
 
 import java.util.Arrays;
@@ -66,6 +67,14 @@ public class BootReceiver extends BroadcastReceiver {
         }
     }
 
+    private void initFreqCapFiles(Context ctx)
+    {
+        if (Processor.freqCapFilesInitialized) return;
+        Processor.FREQ_MAX_FILE = ctx.getResources().getString(R.string.max_cpu_freq_file);
+        Processor.FREQ_MIN_FILE = ctx.getResources().getString(R.string.min_cpu_freq_file);
+        Processor.freqCapFilesInitialized = true;
+    }
+
     private void configureCPU(Context ctx) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
 
@@ -87,6 +96,7 @@ public class BootReceiver extends BroadcastReceiver {
         if (noSettings) {
             Log.d(TAG, "No CPU settings saved. Nothing to restore.");
         } else {
+            initFreqCapFiles(ctx);
             if (availableGovernorsLine != null){
                 governors = Arrays.asList(availableGovernorsLine.split(" "));
             }
