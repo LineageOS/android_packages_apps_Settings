@@ -16,6 +16,7 @@
 
 package com.android.settings.cyanogenmod;
 
+import android.content.Context;
 import android.database.ContentObserver;
 import android.os.Bundle;
 import android.os.Handler;
@@ -28,6 +29,7 @@ import android.provider.Settings;
 import com.android.internal.view.RotationPolicy;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 
 public class DisplayRotation extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
     private static final String TAG = "DisplayRotation";
@@ -37,12 +39,14 @@ public class DisplayRotation extends SettingsPreferenceFragment implements OnPre
     private static final String ROTATION_90_PREF = "display_rotation_90";
     private static final String ROTATION_180_PREF = "display_rotation_180";
     private static final String ROTATION_270_PREF = "display_rotation_270";
+    private static final String KEY_SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
 
     private CheckBoxPreference mAccelerometer;
     private CheckBoxPreference mRotation0Pref;
     private CheckBoxPreference mRotation90Pref;
     private CheckBoxPreference mRotation180Pref;
     private CheckBoxPreference mRotation270Pref;
+    private CheckBoxPreference mSwapVolumeButtons;
 
     public static final int ROTATION_0_MODE = 1;
     public static final int ROTATION_90_MODE = 2;
@@ -86,6 +90,17 @@ public class DisplayRotation extends SettingsPreferenceFragment implements OnPre
         mRotation90Pref.setChecked((mode & ROTATION_90_MODE) != 0);
         mRotation180Pref.setChecked((mode & ROTATION_180_MODE) != 0);
         mRotation270Pref.setChecked((mode & ROTATION_270_MODE) != 0);
+
+        mSwapVolumeButtons = (CheckBoxPreference) prefSet.findPreference(KEY_SWAP_VOLUME_BUTTONS);
+        if (mSwapVolumeButtons != null) {
+            if (!Utils.hasVolumeRocker(getActivity())) {
+                prefSet.removePreference(mSwapVolumeButtons);
+            } else {
+                int swapVolumeKeys = Settings.System.getInt(getContentResolver(),
+                        Settings.System.SWAP_VOLUME_KEYS_ON_ROTATION, 0);
+                mSwapVolumeButtons.setChecked(swapVolumeKeys > 0);
+            }
+        }
     }
 
     @Override
@@ -140,6 +155,13 @@ public class DisplayRotation extends SettingsPreferenceFragment implements OnPre
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.ACCELEROMETER_ROTATION_ANGLES, mode);
             return true;
+        } else if (preference == mSwapVolumeButtons) {
+            Context context = getActivity().getApplicationContext();
+            Settings.System.putInt(context.getContentResolver(),
+                    Settings.System.SWAP_VOLUME_KEYS_ON_ROTATION,
+                    mSwapVolumeButtons.isChecked()
+                    ? (Utils.isTablet(context) ? 2 : 1)
+                    : 0);
         }
 
         return super.onPreferenceTreeClick(preferenceScreen, preference);

@@ -21,6 +21,13 @@
     <CheckBoxPreference
         android:key="accelerometer"
         android:title="@string/accelerometer_title" />
+
+    <CheckBoxPreference
+        android:key="swap_volume_buttons"
+        android:title="@string/swap_volume_buttons_title"
+        android:summary="@string/swap_volume_buttons_summary"
+        android:dependency="accelerometer" />
+
     <PreferenceCategory
         android:key="display_rotation_category"
         android:title="@string/display_rotation_category_title" />
