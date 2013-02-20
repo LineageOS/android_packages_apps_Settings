@@ -2261,7 +2261,6 @@
     <string name="volume_overlay_title">Панель громкости</string>
     <string name="volbtn_music_controls_title">Управление музыкой кнопками громкости</string>
     <string name="volbtn_music_controls_summary">Когда экран выключен, долгое нажатие кнопок громкости переключает музыкальные треки</string>
-    <string name="headset_connect_player_title">Запускать проигрыватель при подключении</string>
     <string name="volume_ring_only_description">Рингтон</string>
     <string name="ring_mode_title">Режим звонка</string>
     <string name="ring_mode_normal">Обычный</string>
@@ -2537,16 +2536,24 @@
     <string name="lockscreen_background_custom_image">Пользоват. изображение</string>
     <string name="lockscreen_background_default_wallpaper">Обои по умолчанию</string>
 
+    <!-- Launch music player when headset is connected -->
+    <string name="headset_connect_player_title">Запуск проигрывателя</string>
+    <string name="headset_connect_player_summary">Запускать проигрыватель при подключении наушников</string>
+
     <!-- Safe headset volume restore checkbox -->
-    <string name="safe_headset_volume_title">Безопасная громкость наушников</string>
+    <string name="safe_headset_volume_title">Ограничение громкости</string>
     <string name="safe_headset_volume_summary">Понижать громкость при первом подключении наушников</string>
+
+    <!-- Volume adjust sound preference -->
+    <string name="volume_adjust_sounds_enable_title">Звук при регулировке громкости</string>
+    <string name="volume_adjust_sounds_enable_summary">Воспроизводить звук при изменении громкости кнопками \"+\" или \"-\"</string>
 
     <!-- Waiver -->
     <string name="cyanogenmod_waiver_title">Отказ от ответственности</string>
     <string name="cyanogenmod_waiver_body">Изменение этих настроек может противоречить законам Вашего государства.\n\nНажимая \"OK\" Вы соглашаетесь с этим предупреждением и освобождаете CyanogenMod и всех его разработчиков от любых юридических обязательств.</string>
 
     <!-- Automatic brightness customization -->
-    <string name="light_sensor_current_value">Текущее значение датчика: <xliff:g id="light_level">%d</xliff:g> лк</string>
+    <string name="light_sensor_current_value">Текущее показание датчика: <xliff:g id="light_level">%d</xliff:g> лк</string>
     <string name="auto_brightness_dialog_title">Уровни автоматической подсветки</string>
     <string name="auto_brightness_level_format"><xliff:g id="start_level">%1$s</xliff:g> -\n<xliff:g id="end_level">%2$s</xliff:g> лк</string>
     <string name="auto_brightness_adjust_button">Регулировка</string>
@@ -2562,6 +2569,10 @@
     <string name="auto_brightness_menu_edit_lux">Диапазон яркости</string>
     <string name="auto_brightness_menu_split">Разделить</string>
     <string name="auto_brightness_menu_remove">Удалить</string>
+
+    <!-- Advanced reboot options -->
+    <string name="advanced_reboot_title">Расширенная перезагрузка</string>
+    <string name="advanced_reboot_summary">Включить варианты перезагрузки (recovery или bootloader) в меню \"Параметры устройства\"</string>
 
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 
