@@ -686,6 +686,8 @@
     <string name="sound_effects_enable_title" msgid="1171590821131077296">"Suoni alla pressione"</string>
     <string name="lock_sounds_enable_title" msgid="450098505659399520">"Suono di blocco schermo"</string>
     <string name="haptic_feedback_enable_title" msgid="2438293710530828760">"Vibra alla pressione"</string>
+    <string name="volume_adjust_sounds_enable_title">Suono regolazione volume</string>
+    <string name="volume_adjust_sounds_enable_summary">Riproduci un suono durante la regolazione del volume con i tasti volume</string>
     <string name="audio_record_proc_title" msgid="4271091199976457534">"Eliminazione rumori"</string>
     <string name="volume_media_description" msgid="7949355934788807863">"Musica, video, giochi e altri contenuti multimediali"</string>
     <string name="volume_ring_description" msgid="5936851631698298989">"Suoneria e notifiche"</string>
@@ -2153,7 +2155,6 @@
     <string name="volume_overlay_title">"Stile pannello volume"</string>
     <string name="volbtn_music_controls_title">"Cambia traccia con tasti"</string>
     <string name="volbtn_music_controls_summary">"Quando lo schermo è spento la pressione prolungata dei tasti volume cambia traccia"</string>
-    <string name="headset_connect_player_title">Lancia il lettore musicale quando connetti</string>
     <string name="volume_ring_only_description">Suonerie</string>
     <string name="ring_mode_title">Modalità suoneria</string>
     <string name="ring_mode_normal">Normale</string>
@@ -2245,6 +2246,9 @@
     <string name="power_menu_reboot_title">Menu riavvio</string>
     <string name="power_menu_screenshot_title">Cattura schermata</string>
     <string name="power_menu_expanded_desktop">Desktop espanso</string>
+    <string name="expanded_desktop_disabled">Disabilitato</string>
+    <string name="expanded_desktop_status_bar">Barra di stato visibile</string>
+    <string name="expanded_desktop_no_status_bar">Barra di stato nascosta</string>
     <string name="power_menu_profiles_title">Selettore profilo</string>
     <string name="power_menu_airplane_title">Modalità aereo</string>
     <string name="power_menu_user_title">Cambia utente</string>
@@ -2324,6 +2328,7 @@
     <string name="title_tile_networkmode">2G/3G</string>
     <string name="title_tile_nfc">NFC</string>
     <string name="title_tile_usb_tether">Tether USB</string>
+    <string name="title_tile_quiet_hours">Periodo quiete</string>
     <string name="title_dynamic_tiles">Tile dinamici</string>
     <string name="dynamic_tiles_note_title">Nota</string>
     <string name="dynamic_tiles_note_summary">I tile dinamici non sono sempre visualizzabili e vengono visualizzati solamente se un evento di sistema li attiva</string>
@@ -2367,4 +2372,29 @@
     <string name="lockscreen_background_color_fill">Colore uniforme</string>
     <string name="lockscreen_background_custom_image">Immagine personalizzata</string>
     <string name="lockscreen_background_default_wallpaper">Sfondo di default</string>
+    <string name="headset_connect_player_title">Lancia lettore musicale</string>
+    <string name="headset_connect_player_summary">Lancia il lettore musicale di default quando viene connessa una cuffia</string>
+    <string name="safe_headset_volume_title">Volume sicurezza cuffie</string>
+    <string name="safe_headset_volume_summary">Evita un volume troppo elevato quando la cuffia viene inserita per la prima volta</string>
+    <string name="cyanogenmod_waiver_title">Manleva</string>
+    <string name="cyanogenmod_waiver_body">Cambiare questa impostazione può essere contro le leggi del tuo stato/governo.\n\nPremendo \'OK\' più sotto, accetti quanto riportato in questo avviso, e dichiari di esonerare e sollevare CyanogenMod e i suoi collaboratori da ogni responsabilità civile e penale.</string>
+    <string name="light_sensor_current_value">Valore attuale sensore luminosità: <xliff:g id="light_level">%d</xliff:g> lux</string>
+    <string name="auto_brightness_dialog_title">Livelli automatici di luminosità</string>
+    <string name="auto_brightness_level_format"><xliff:g id="start_level">%1$s</xliff:g> -\n<xliff:g id="end_level">%2$s</xliff:g> lux</string>
+    <string name="auto_brightness_brightness_format"><xliff:g id="percent">%s</xliff:g>%%</string>
+    <string name="auto_brightness_adjust_button">Regola</string>
+    <string name="auto_brightness_reset_button">Ripristina</string>
+    <string name="auto_brightness_lux_dialog_title">Luminosità ambiente</string>
+    <string name="auto_brightness_split_dialog_title">Soglia di luminosità</string>
+    <string name="auto_brightness_start_lux">Inizio intervallo (lux)</string>
+    <string name="auto_brightness_end_lux">Fine intervallo (lux)</string>
+    <string name="auto_brightness_reset_dialog_title">Ripristina livelli?</string>
+    <string name="auto_brightness_reset_confirmation">Tutti i livelli di luminosità saranno ripristinati ai rispettivi valori di default.</string>
+    <string name="auto_brightness_split_lux_format">Soglia (tra <xliff:g id="min">%1$d</xliff:g> e <xliff:g id="max">%2$d</xliff:g> lux)</string>
+    <string name="auto_brightness_level_options">Impostazioni livelli luminosità</string>
+    <string name="auto_brightness_menu_edit_lux">Luminosità ambiente</string>
+    <string name="auto_brightness_menu_split">Soglia</string>
+    <string name="auto_brightness_menu_remove">Rimuovi</string>
+    <string name="advanced_reboot_title">Riavvio avanzato</string>
+    <string name="advanced_reboot_summary">Quando attivato include, nel menù apposito, opzioni per il riavvio in modalità recovery o bootloader</string>
 </resources>
