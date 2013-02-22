@@ -142,16 +142,22 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
         mDynamicIme = (CheckBoxPreference) prefSet.findPreference(DYNAMIC_IME);
         mDynamicIme.setChecked(Settings.System.getInt(resolver, Settings.System.QS_DYNAMIC_IME, 1) == 1);
         mDynamicUsbTether = (CheckBoxPreference) prefSet.findPreference(DYNAMIC_USBTETHER);
-        mDynamicUsbTether.setChecked(Settings.System.getInt(resolver, Settings.System.QS_DYNAMIC_USBTETHER, 1) == 1);
-        mDynamicWifi = (CheckBoxPreference) prefSet.findPreference(DYNAMIC_WIFI);
-        mDynamicWifi.setChecked(Settings.System.getInt(resolver, Settings.System.QS_DYNAMIC_WIFI, 1) == 1);
-
-        if (!deviceSupportsUsbTether()) {
-            mDynamicTiles.removePreference(mDynamicUsbTether);
+        if (mDynamicUsbTether != null) {
+            if (deviceSupportsUsbTether()) {
+                mDynamicUsbTether.setChecked(Settings.System.getInt(resolver, Settings.System.QS_DYNAMIC_USBTETHER, 1) == 1);
+            } else {
+                mDynamicTiles.removePreference(mDynamicUsbTether);
+                mDynamicUsbTether = null;
+            }
         }
-
-        if (!deviceSupportsWifiDisplay()) {
-            mDynamicTiles.removePreference(mDynamicWifi);
+        mDynamicWifi = (CheckBoxPreference) prefSet.findPreference(DYNAMIC_WIFI);
+        if (mDynamicWifi != null) {
+            if (deviceSupportsWifiDisplay()) {
+                mDynamicWifi.setChecked(Settings.System.getInt(resolver, Settings.System.QS_DYNAMIC_WIFI, 1) == 1);
+            } else {
+                mDynamicTiles.removePreference(mDynamicWifi);
+                mDynamicWifi = null;
+            }
         }
 
         // Don't show mobile data options if not supported
@@ -222,11 +228,11 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
             Settings.System.putInt(resolver, Settings.System.QS_DYNAMIC_IME,
                     mDynamicIme.isChecked() ? 1 : 0);
             return true;
-        } else if (preference == mDynamicUsbTether) {
+        } else if (mDynamicUsbTether != null && preference == mDynamicUsbTether) {
             Settings.System.putInt(resolver, Settings.System.QS_DYNAMIC_USBTETHER,
                     mDynamicUsbTether.isChecked() ? 1 : 0);
             return true;
-        } else if (preference == mDynamicWifi) {
+        } else if (mDynamicWifi != null && preference == mDynamicWifi) {
             Settings.System.putInt(resolver, Settings.System.QS_DYNAMIC_WIFI,
                     mDynamicWifi.isChecked() ? 1 : 0);
             return true;
