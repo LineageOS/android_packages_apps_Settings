@@ -2093,7 +2093,7 @@
 
     <!-- Performance settings - Warning dialog -->
     <string name="performance_settings_warning_title">VORSICHT</string>
-    <string name="performance_settings_warning">Diese Optionen beeinflussen die Leistung des Systems. Die Optionen sind zum Experimentieren gedacht - bitte keine Fehler melden, wenn die Standardeinstellungen geändert wurden.</string>
+    <string name="performance_settings_warning">Diese experimentellen Einstellungen beeinflussen die Leistung und Stabilität des Systems.\n\nBitte keine Fehler melden, wenn die Standardeinstellungen geändert wurden.</string>
 
     <!-- Performance settings - Processor settings title -->
     <string name="processor_title">Prozessor</string>
@@ -2133,15 +2133,15 @@
     <string name="pref_zram_summary">Speicherinhalte für mehr virtuellen Speicher mit zRAM komprimieren (Neustart erforderlich)</string>
 
     <!-- KSM -->
-    <string name="pref_ksm_title">Kernel Samepage Merging</string>
-    <string name="pref_ksm_summary">KSM verringert den Speicherbedarf, benötigt aber Rechenleistung</string>
+    <string name="pref_ksm_title">KSM</string>
+    <string name="pref_ksm_summary">Kernel-SamePage-Merging (KSM) verringert den Speicherbedarf, benötigt aber mehr Rechenleistung</string>
 
     <!-- Purgeable assets -->
     <string name="pref_purgeable_assets_title">Freigabe von Ressourcen</string>
     <string name="pref_purgeable_assets_summary">Erlaubt dem System, Speicherbereiche von nicht mehr benutzten Bildern freizugeben, um mehr RAM bereitzustellen (Neustart erforderlich)</string>
 
     <!-- Performance settings - Dithering -->
-    <string name="pref_use_dithering_title">Grafik-Verbesserung</string>
+    <string name="pref_use_dithering_title">Grafikverbesserung</string>
     <string name="dithering_no_dither">Dithering deaktivieren</string>
     <string name="dithering_color_banding">Streifige Farbverläufe beheben (Standard)</string>
     <string name="dithering_blur_effect">Streifige Farbverläufe und Unschärfe beheben</string>
@@ -2383,7 +2383,7 @@
     <string name="advanced_settings_title">Erweitert</string>
 
     <!-- IME switcher notifcation -->
-    <string name="ime_switcher_notify">Auswahl-Benachrichtigung</string>
+    <string name="ime_switcher_notify">Auswahlbenachrichtigung</string>
     <string name="ime_switcher_notify_summary">Benachrichtigung zur Auswahl der Eingabemethode in der Statusleiste anzeigen</string>
 
     <!-- Status bar -->
@@ -2508,7 +2508,7 @@
     <string name="tiles_reset_message">Auf Standard zurücksetzen?</string>
 
     <!-- Volume key cursor control -->
-    <string name="volume_key_cursor_control_title">Bewegung des Cursors mithilfe der Lautstärkewippe</string>
+    <string name="volume_key_cursor_control_title">Cursorsteuerung mit Lautstärkewippe</string>
     <string name="volume_key_cursor_control_off">Deaktiviert</string>
     <string name="volume_key_cursor_control_on">Lautstärkewippe oben/unten bewegt den Cursor nach links/rechts</string>
     <string name="volume_key_cursor_control_on_reverse">Lautstärkewippe oben/unten bewegt den Cursor nach rechts/links</string>
@@ -2601,6 +2601,14 @@
     <string name="auto_brightness_menu_edit_lux">Bearbeiten</string>
     <string name="auto_brightness_menu_split">Aufteilen</string>
     <string name="auto_brightness_menu_remove">Entfernen</string>
+
+    <!-- Advanced reboot options -->
+    <string name="advanced_reboot_title">Erweitertes Neustartmenü</string>
+    <string name="advanced_reboot_summary">Bei entsperrtem Bildschirm dem Neustartmenü Optionen für Neustart in Recovery und Bootloader hinzufügen</string>
+
+    <!-- Volume adjust sounds -->
+    <string name="volume_adjust_sounds_enable_title">Änderungston</string>
+    <string name="volume_adjust_sounds_enable_summary">Beim Anpassen der Lautstärke mit der Lautstärkewippe einen Ton abspielen</string>
 
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>
