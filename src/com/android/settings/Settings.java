@@ -672,7 +672,7 @@ public class Settings extends PreferenceActivity
             // Switches inflated from their layouts. Must be done before adapter is set in super
             mWifiEnabler = new WifiEnabler(context, new Switch(context));
             mBluetoothEnabler = new BluetoothEnabler(context, new Switch(context));
-            mProfileEnabler = new ProfileEnabler(context, null, new Switch(context));
+            mProfileEnabler = new ProfileEnabler(context, new Switch(context));
         }
 
         @Override
