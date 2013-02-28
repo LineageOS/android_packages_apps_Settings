@@ -661,6 +661,13 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                 .getStringArray(R.array.root_access_entries)[Integer.valueOf(value)]);
     }
 
+    /* package */ static boolean isRootForAppsEnabled() {
+        int value = SystemProperties.getInt(ROOT_ACCESS_PROPERTY, 1);
+        boolean daemonState =
+                SystemProperties.get("init.svc.su_daemon", "absent").equals("running");
+        return daemonState && (value == 1 || value == 3);
+    }
+
     private void writeRootAccessOptions(Object newValue) {
         String oldValue = SystemProperties.get(ROOT_ACCESS_PROPERTY, "1");
         SystemProperties.set(ROOT_ACCESS_PROPERTY, newValue.toString());
