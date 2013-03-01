@@ -25,6 +25,7 @@ import static com.android.internal.util.cm.QSConstants.TILE_BRIGHTNESS;
 import static com.android.internal.util.cm.QSConstants.TILE_DELIMITER;
 import static com.android.internal.util.cm.QSConstants.TILE_GPS;
 import static com.android.internal.util.cm.QSConstants.TILE_LOCKSCREEN;
+import static com.android.internal.util.cm.QSConstants.TILE_LTE;
 import static com.android.internal.util.cm.QSConstants.TILE_MOBILEDATA;
 import static com.android.internal.util.cm.QSConstants.TILE_NETWORKMODE;
 import static com.android.internal.util.cm.QSConstants.TILE_NFC;
@@ -79,6 +80,9 @@ public class QuickSettingsUtil {
         TILES.put(TILE_LOCKSCREEN, new QuickSettingsUtil.TileInfo(
                 TILE_LOCKSCREEN, R.string.title_tile_lockscreen,
                 "com.android.systemui:drawable/ic_qs_lock_screen_off"));
+        TILES.put(TILE_LTE, new QuickSettingsUtil.TileInfo(
+                TILE_LTE, R.string.title_tile_lte,
+                "com.android.systemui:drawable/ic_qs_lte_off"));
         TILES.put(TILE_MOBILEDATA, new QuickSettingsUtil.TileInfo(
                 TILE_MOBILEDATA, R.string.title_tile_mobiledata,
                 "com.android.systemui:drawable/ic_qs_signal_4"));
@@ -121,17 +125,6 @@ public class QuickSettingsUtil {
         TILES.put(TILE_USER, new QuickSettingsUtil.TileInfo(
                 TILE_USER, R.string.title_tile_user,
                 "com.android.systemui:drawable/ic_qs_default_user"));
-
-// These toggles are not available yet.  Comment out for now
-//        if(PhoneConstants.LTE_ON_CDMA_TRUE == TelephonyManager.getDefault().getLteOnCdmaMode() ||
-//           TelephonyManager.getDefault().getLteOnGsmMode() != 0) {
-//            TILES.put(TILE_LTE, new QuickSettingsUtil.TileInfo(
-//                    TILE_LTE, R.string.title_tile_lte,
-//                    "com.android.systemui:drawable/stat_lte_on"));
-//        }
-//        TILES.put(TILE_WIMAX, new QuickSettingsUtil.TileInfo(
-//                TILE_WIMAX, R.string.title_tile_wimax,
-//                "com.android.systemui:drawable/stat_wimax_on"));
     }
 
     public static String getCurrentTiles(Context context) {
