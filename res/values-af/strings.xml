@@ -1869,6 +1869,13 @@
     <string name="start_time_title">Begin</string>
     <string name="end_time_title">Eindig</string>
 
+    <string name="wifi_setting_priority_title">Wi-Fi prioriteit</string>
+    <string name="wifi_setting_priority_summary">Bepaal die prioriteit van Wi-Fi netwerke</string>
+
+    <!-- convert sound to vibration toggle -->
+    <string name="notification_convert_sound_to_vibration_title">Vibreer op kennisgewing</string>
+    <string name="notification_convert_sound_to_vibration_summary">In vibrasie-modus sal alle kennisgewings, ongeag van individuele program instellings, vibreer</string>
+
     <!-- Hostname setting -->
     <string name="device_hostname">Toestel gasheernaam</string>
 
@@ -2163,8 +2170,8 @@
     <string name="icon_picker_calendar">Kalender</string>
     <string name="icon_picker_camera">Kamera</string>
     <string name="icon_picker_chrome">Chrome</string>
-    <string name="icon_picker_email">Epos</string>
-    <string name="icon_picker_email2">Epos (Holo)</string>
+    <string name="icon_picker_email">E-pos</string>
+    <string name="icon_picker_email2">E-pos (Holo)</string>
     <string name="icon_picker_facebook">Facebook</string>
     <string name="icon_picker_gallery">Gallery</string>
     <string name="icon_picker_google_small">Google (klein)</string>
@@ -2291,14 +2298,18 @@
     <string name="hardware_keys_action_voice_search">Stemsoektog</string>
     <string name="hardware_keys_action_in_app_search">In-program soek</string>
 
+     <!-- Swap volume buttons when the screen is rotated -->
+    <string name="swap_volume_buttons_title">Ruil volume knoppies om</string>
+    <string name="swap_volume_buttons_summary">Ruil volume knoppies om wanneer die skerm geroteer word</string>
+
     <!-- Navigation Bar #CM -->
-    <string name="navigation_bar_title">Navigasie balk</string>
+    <string name="navigation_bar_title">Navigasiebalk</string>
     <string name="navigation_bar_help_text">1 - Om te begin redigeer, raak die slot ikoon \n\n2 - Raak \'n knoppie om funksionaliteit toe te wys of te verander \n\n3 - lang-druk \'n knoppie om die volgorde te herrangskik \n\n4 - Om te stoor, raak die slot ikoon weer \n\n5 - Om na standaard terug te stel, raak die herstel-knoppie\n\n</string>
     <string name="navigation_bar_tips">&#8226; Aksies: Slegs een knoppie op \'n slag\n\n&#8226; Die Tuis-knoppie kan nie hertoegeken word nie\n\n&#8226; Kant knoppies kan nie geherrangskik word nie</string>
     <string name="navigation_bar_tips_title">Wenke</string>
     <string name="navigation_bar_reset_message">Stel die huidige instellings terug na standaard?</string>
-    <string name="navigation_bar_save_message">Navigasie balk gestoor</string>
-    <string name="navigation_bar_reset_toast">Navigasie balk teruggestel na standaard</string>
+    <string name="navigation_bar_save_message">Navigasiebalk gestoor</string>
+    <string name="navigation_bar_reset_toast">Navigasiebalk teruggestel na standaard</string>
     <string name="navigation_bar_menu_editable">Redigeerbaar</string>
     <string name="navigation_bar_menu_locked">Gesluit</string>
 
@@ -2561,6 +2572,55 @@
     <!-- Advanced reboot options -->
     <string name="advanced_reboot_title">Gevorderde herlaai</string>
     <string name="advanced_reboot_summary">Wanneer toestel ontsluit is, maak die \'recovery\' en \'bootloader\' herlaai opsies in die kragkieslys beskikbaar</string>
+
+    <!-- Sound settings screen, setting check box label -->
+    <string name="volume_adjust_sounds_enable_title">Volume verandering</string>
+    <!-- Sound settings screen, setting check box summary -->
+    <string name="volume_adjust_sounds_enable_summary">Speel \'n klank tydens volume verandering</string>
+
+    <string name="root_access">\'Root\' toegang</string>
+    <string name="root_access_warning_title">Laat \'root\' toegang toe</string>
+    <string name="root_access_warning_message">Die toelaat van programme om \'root\' toegang aan te vra kan die sekuriteit van jou stelsel in gevaar stel!</string>
+    <string name="root_access_none">Gedeaktiveer</string>
+    <string name="root_access_apps">Slegs programme</string>
+    <string name="root_access_adb">Slegs ADB</string>
+    <string name="root_access_all">Programme en ADB</string>
+
+    <!-- Navigation bar buttons and shortcuts category title -->
+    <string name="navigation_bar_category">Navigasiebalk</string>
+
+    <!-- Navigation ring shortcuts -->
+    <string name="navigation_ring_title">Kits-loodskortpaaie</string>
+    <string name="navring_target_reset_message">Verwyder alle gebruiker kits-loodskortpaaie en herstel na standaard?</string>
+    <string name="navring_target_reset">Navigasiebalk kits-loodskortpaaie is herstel na standaard.</string>
+    <string name="navring_target_save">Navigasiebalk kits-loodskortpaaie gestoor</string>
+    <string name="navring_action_open_ime_switcher">Maak IME wisselaar oop</string>
+    <string name="navring_action_kill_app">Dwing stop</string>
+    <string name="navring_action_none">Geen</string>
+    <string name="navring_action_take_screenshot">Neem skermfoto</string>
+    <string name="navring_action_ring_vibrate">Lui/Vibrasie</string>
+    <string name="navring_action_ring_silent">Lui/Stil</string>
+    <string name="navring_action_ring_vibrate_silent">Lui/Vibrasie/Stil</string>
+    <string name="navring_action_screen_off">Skerm af</string>
+    <string name="navring_action_torch">Flits</string>
+    <string name="navring_action_google_now">Google Now</string>
+    <string name="navring_choose_action_title">Kies aksie</string>
+
+    <!-- Quick/Pie Control #CM -->
+    <string name="pie_control_title">\'Pie\' kontroles</string>
+    <string name="pie_control_enabled">Geaktiveer wanneer Uitgebreide lessenaar aktief is</string>
+    <string name="pie_control_disabled">Gedeaktiveer</string>
+    <string name="pie_control_size">Sleutel grote</string>
+    <string name="pie_control_trigger_positions">Aktiverings posisies</string>
+    <string name="pie_control_trigger_left">Linker skerm grens</string>
+    <string name="pie_control_trigger_bottom">Onderste skerm grens</string>
+    <string name="pie_control_trigger_right">Regter skerm grens</string>
+    <string name="pie_control_trigger_top">Boonste skerm grens</string>
+    <string name="pie_control_trigger_top_summary">Slegs navigasie sal vertoon word by boonste grens</string>
+
+    <string name="wifi_mode">Mode</string>
+    <string name="wifi_mode_ibss">Ad-Hoc (IBSS) Netwerk</string>
+    <string name="wifi_mode_ibss_short">Ad-Hoc</string>
 
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>
