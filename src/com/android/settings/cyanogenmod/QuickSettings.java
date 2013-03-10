@@ -23,6 +23,7 @@ import static com.android.internal.util.cm.QSConstants.TILE_NFC;
 import static com.android.internal.util.cm.QSConstants.TILE_PROFILE;
 import static com.android.internal.util.cm.QSConstants.TILE_WIFIAP;
 import static com.android.internal.util.cm.QSConstants.TILE_LTE;
+import static com.android.internal.util.cm.QSConstants.TILE_TORCH;
 import static com.android.internal.util.cm.QSUtils.deviceSupportsBluetooth;
 import static com.android.internal.util.cm.QSUtils.deviceSupportsImeSwitcher;
 import static com.android.internal.util.cm.QSUtils.deviceSupportsLte;
@@ -228,6 +229,11 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
         // Dont show the LTE tile if not supported
         if (!deviceSupportsLte(getActivity())) {
             QuickSettingsUtil.TILES.remove(TILE_LTE);
+        }
+
+        // Dont show the torch tile if not supported
+        if (!getResources().getBoolean(R.bool.has_led_flash)) {
+            QuickSettingsUtil.TILES.remove(TILE_TORCH);
         }
 
     }
