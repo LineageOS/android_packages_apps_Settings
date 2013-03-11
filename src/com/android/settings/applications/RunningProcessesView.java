@@ -49,30 +49,30 @@ import java.util.Iterator;
 public class RunningProcessesView extends FrameLayout
         implements AdapterView.OnItemClickListener, RecyclerListener,
         RunningState.OnRefreshUiListener {
-    
+
     // Memory pages are 4K.
     static final long PAGE_SIZE = 4*1024;
-    
+
     long SECONDARY_SERVER_MEM;
-    
+
     final HashMap<View, ActiveItem> mActiveItems = new HashMap<View, ActiveItem>();
-    
+
     ActivityManager mAm;
-    
+
     RunningState mState;
-    
+
     Runnable mDataAvail;
 
     StringBuilder mBuilder = new StringBuilder(128);
-    
+
     RunningState.BaseItem mCurSelected;
-    
+
     ListView mListView;
     ServiceListAdapter mAdapter;
     LinearColorBar mColorBar;
     TextView mBackgroundProcessText;
     TextView mForegroundProcessText;
-    
+
     int mLastNumBackgroundProcesses = -1;
     int mLastNumForegroundProcesses = -1;
     int mLastNumServiceProcesses = -1;
@@ -80,11 +80,11 @@ public class RunningProcessesView extends FrameLayout
     long mLastForegroundProcessMemory = -1;
     long mLastServiceProcessMemory = -1;
     long mLastAvailMemory = -1;
-    
+
     Dialog mCurDialog;
-    
+
     byte[] mBuffer = new byte[1024];
-    
+
     public static class ActiveItem {
         View mRootView;
         RunningState.BaseItem mItem;
@@ -92,22 +92,22 @@ public class RunningProcessesView extends FrameLayout
         ViewHolder mHolder;
         long mFirstRunTime;
         boolean mSetBackground;
-        
+
         void updateTime(Context context, StringBuilder builder) {
             TextView uptimeView = null;
-            
+
             if (mItem instanceof RunningState.ServiceItem) {
                 // If we are displaying a service, then the service
                 // uptime goes at the top.
                 uptimeView = mHolder.size;
-                
+
             } else {
                 String size = mItem.mSizeStr != null ? mItem.mSizeStr : "";
                 if (!size.equals(mItem.mCurSizeStr)) {
                     mItem.mCurSizeStr = size;
                     mHolder.size.setText(size);
                 }
-                
+
                 if (mItem.mBackground) {
                     // This is a background process; no uptime.
                     if (!mSetBackground) {
@@ -120,7 +120,7 @@ public class RunningProcessesView extends FrameLayout
                     uptimeView = mHolder.uptime;
                 }
             }
-            
+
             if (uptimeView != null) {
                 mSetBackground = false;
                 if (mFirstRunTime >= 0) {
@@ -143,7 +143,7 @@ public class RunningProcessesView extends FrameLayout
             }
         }
     }
-    
+
     public static class ViewHolder {
         public View rootView;
         public ImageView icon;
@@ -151,7 +151,7 @@ public class RunningProcessesView extends FrameLayout
         public TextView description;
         public TextView size;
         public TextView uptime;
-        
+
         public ViewHolder(View v) {
             rootView = v;
             icon = (ImageView)v.findViewById(R.id.icon);
@@ -161,7 +161,7 @@ public class RunningProcessesView extends FrameLayout
             uptime = (TextView)v.findViewById(R.id.uptime);
             v.setTag(this);
         }
-        
+
         public ActiveItem bind(RunningState state, RunningState.BaseItem item,
                 StringBuilder builder) {
             synchronized (state.mLock) {
@@ -194,19 +194,19 @@ public class RunningProcessesView extends FrameLayout
             }
         }
     }
-    
+
     static class TimeTicker extends TextView {
         public TimeTicker(Context context, AttributeSet attrs) {
             super(context, attrs);
         }
     }
-    
+
     class ServiceListAdapter extends BaseAdapter {
         final RunningState mState;
         final LayoutInflater mInflater;
         boolean mShowBackground;
         ArrayList<RunningState.MergedItem> mItems;
-        
+
         ServiceListAdapter(RunningState state) {
             mState = state;
             mInflater = (LayoutInflater)getContext().getSystemService(
@@ -239,11 +239,11 @@ public class RunningProcessesView extends FrameLayout
                 mItems = new ArrayList<RunningState.MergedItem>();
             }
         }
-        
+
         public boolean hasStableIds() {
             return true;
         }
-        
+
         public int getCount() {
             return mItems.size();
         }
@@ -279,13 +279,13 @@ public class RunningProcessesView extends FrameLayout
             bindView(v, position);
             return v;
         }
-        
+
         public View newView(ViewGroup parent) {
             View v = mInflater.inflate(R.layout.running_processes_item, parent, false);
             new ViewHolder(v);
             return v;
         }
-        
+
         public void bindView(View view, int position) {
             synchronized (mState.mLock) {
                 if (position >= mItems.size()) {
@@ -301,7 +301,7 @@ public class RunningProcessesView extends FrameLayout
             }
         }
     }
-    
+
     private boolean matchText(byte[] buffer, int index, String text) {
         int N = text.length();
         if ((index+N) >= buffer.length) {
@@ -314,7 +314,7 @@ public class RunningProcessesView extends FrameLayout
         }
         return true;
     }
-    
+
     private long extractMemValue(byte[] buffer, int index) {
         while (index < buffer.length && buffer[index] != '\n') {
             if (buffer[index] >= '0' && buffer[index] <= '9') {
@@ -331,7 +331,7 @@ public class RunningProcessesView extends FrameLayout
         }
         return 0;
     }
-    
+
     private long readAvailMem() {
         try {
             long memFree = 0;
@@ -359,14 +359,38 @@ public class RunningProcessesView extends FrameLayout
         return 0;
     }
 
-    
+    private long readTotalMem() {
+        try {
+            long memTotal = 0;
+            FileInputStream is = new FileInputStream("/proc/meminfo");
+            int len = is.read(mBuffer);
+            is.close();
+            final int BUFLEN = mBuffer.length;
+            for (int i=0; i<len && (memTotal == 0); i++) {
+                if (matchText(mBuffer, i, "MemTotal")) {
+                    i += 8;
+                    memTotal = extractMemValue(mBuffer, i);
+                }
+                while (i < BUFLEN && mBuffer[i] != '\n') {
+                    i++;
+                }
+            }
+            return memTotal;
+        } catch (java.io.FileNotFoundException e) {
+        } catch (java.io.IOException e) {
+        }
+        return 0;
+    }
+
+
+
     void refreshUi(boolean dataChanged) {
         if (dataChanged) {
             ServiceListAdapter adapter = (ServiceListAdapter)(mListView.getAdapter());
             adapter.refreshItems();
             adapter.notifyDataSetChanged();
         }
-        
+
         if (mDataAvail != null) {
             mDataAvail.run();
             mDataAvail = null;
@@ -378,7 +402,7 @@ public class RunningProcessesView extends FrameLayout
         if (availMem < 0) {
             availMem = 0;
         }
-        
+
         synchronized (mState.mLock) {
             if (mLastNumBackgroundProcesses != mState.mNumBackgroundProcesses
                     || mLastBackgroundProcessMemory != mState.mBackgroundProcessMemory
@@ -386,10 +410,14 @@ public class RunningProcessesView extends FrameLayout
                 mLastNumBackgroundProcesses = mState.mNumBackgroundProcesses;
                 mLastBackgroundProcessMemory = mState.mBackgroundProcessMemory;
                 mLastAvailMemory = availMem;
-                String sizeStr = Formatter.formatShortFileSize(getContext(),
-                        mLastAvailMemory + mLastBackgroundProcessMemory);
+                long freeMem = mLastAvailMemory + mLastBackgroundProcessMemory;
+                String sizeStr = Formatter.formatShortFileSize(getContext(), freeMem);
                 mBackgroundProcessText.setText(getResources().getString(
                         R.string.service_background_processes, sizeStr));
+                sizeStr = Formatter.formatShortFileSize(getContext(),
+                        readTotalMem() - freeMem);
+                mForegroundProcessText.setText(getResources().getString(
+                        R.string.service_foreground_processes, sizeStr));
             }
             if (mLastNumForegroundProcesses != mState.mNumForegroundProcesses
                     || mLastForegroundProcessMemory != mState.mForegroundProcessMemory
@@ -399,20 +427,23 @@ public class RunningProcessesView extends FrameLayout
                 mLastForegroundProcessMemory = mState.mForegroundProcessMemory;
                 mLastNumServiceProcesses = mState.mNumServiceProcesses;
                 mLastServiceProcessMemory = mState.mServiceProcessMemory;
+                /*
                 String sizeStr = Formatter.formatShortFileSize(getContext(),
                         mLastForegroundProcessMemory + mLastServiceProcessMemory);
                 mForegroundProcessText.setText(getResources().getString(
                         R.string.service_foreground_processes, sizeStr));
+                */
             }
-            
-            float totalMem = availMem + mLastBackgroundProcessMemory
-                    + mLastForegroundProcessMemory + mLastServiceProcessMemory;
-            mColorBar.setRatios(mLastForegroundProcessMemory/totalMem,
+
+            float totalMem = readTotalMem();
+            float totalShownMem = availMem + mLastBackgroundProcessMemory
+                    + mLastServiceProcessMemory;
+            mColorBar.setRatios((totalMem-totalShownMem)/totalMem,
                     mLastServiceProcessMemory/totalMem,
                     mLastBackgroundProcessMemory/totalMem);
         }
     }
-    
+
     public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
         ListView l = (ListView)parent;
         RunningState.MergedItem mi = (RunningState.MergedItem)l.getAdapter().getItem(position);
@@ -432,7 +463,7 @@ public class RunningProcessesView extends FrameLayout
     public RunningProcessesView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
-    
+
     public void doCreate(Bundle savedInstanceState, Object nonConfigurationInstace) {
         mAm = (ActivityManager)getContext().getSystemService(Context.ACTIVITY_SERVICE);
         mState = RunningState.getInstance(getContext());
@@ -463,12 +494,12 @@ public class RunningProcessesView extends FrameLayout
                 mAdapter.setShowBackground(false);
             }
         });
-        
+
         // Magic!  Implementation detail!  Don't count on this!
         SECONDARY_SERVER_MEM =
             Integer.valueOf(SystemProperties.get("ro.SECONDARY_SERVER_MEM"))*PAGE_SIZE;
     }
-    
+
     public void doPause() {
         mState.pause();
         mDataAvail = null;
