@@ -1839,6 +1839,11 @@
 
     <!-- ** CYANOGENMOD ADDITIONS ** -->
 
+    <!-- Sound settings screen, setting check box label -->
+    <string name="volume_adjust_sounds_enable_title">音量調整サウンド</string>
+    <!-- Sound settings screen, setting check box summary -->
+    <string name="volume_adjust_sounds_enable_summary">音量ボタンで調整時にサウンドを再生する</string>
+
     <!-- Activity label of BluetoothMasPermissionActivity, also used as Strings in the permission dialog [CHAR LIMIT=none] -->
     <string name="bluetooth_mas_request">"メッセージアクセスリクエスト"</string>
 
@@ -1861,6 +1866,10 @@
 
     <!-- Category title for headset specific Settings. [CHAR LIMIT=40] -->
     <string name="headset_category_title">ヘッドセット</string>
+
+    <string name="lockpattern_settings_enable_error_path_title">パターンエラーを表示</string>
+    <!-- Security & location settings screen, setting check box title. This setting controls whether the dots will be drawn when using the lockscreen pattern.-->
+    <string name="lockpattern_settings_enable_dots_title">パターンドットを表示</string>
 
     <!-- Wi-Fi settings screen, advanced, title of the item to show the Wi-Fi device's MAC address. -->
     <string name="wifi_setting_countrycode_title">Wi-Fi地域コード</string>
@@ -1910,7 +1919,7 @@
     <string name="vibrator_type_ringer">着信</string>
     <string name="vibrator_type_notification">通知</string>
     <string name="volume_overlay_title">音量パネル</string>
-    <string name="headset_connect_player_title">接続時に音楽アプリを起動</string>
+
     <string name="volume_ring_only_description">着信音</string>
     <string name="ring_mode_title">着信音モード</string>
     <string name="ring_mode_normal">ノーマル</string>
@@ -2003,8 +2012,8 @@
     <string name="hardware_keys_action_voice_search">音声検索</string>
     <string name="hardware_keys_action_in_app_search">アプリ内検索</string>
 
-    <!-- Navigation Bar #CM -->
-    <string name="navigation_bar_title">ナビゲーションバー</string>
+    <!-- Navigation Bar -->
+    <string name="navigation_bar_title">ボタンとレイアウト</string>
     <string name="navigation_bar_help_text">1 - 編集するにはロックアイコンをタップします\n\n2 - 機能の割り当てや変更をするボタンをタップします\n\n3 - 並びを変更するには長押しします\n\n4 - 保存するために再びロックアイコンをタップします\n\n5 - システムのデフォルトに戻すにはリセットボタンをタップします\n\n</string>
     <string name="navigation_bar_tips">&#8226; アクションは一度に一つのボタンにしか割り当てられません\n\n&#8226; ホームボタンは変更できません\n\n&#8226; サイドボタンは並び替えできません</string>
     <string name="navigation_bar_tips_title">クィックチップス</string>
@@ -2393,6 +2402,10 @@
     <string name="start_time_title">開始</string>
     <string name="end_time_title">終了</string>
 
+    <!-- convert sound to vibration toggle -->
+    <string name="notification_convert_sound_to_vibration_title">通知バイブレーション</string>
+    <string name="notification_convert_sound_to_vibration_summary">バイブモード時、個々のアプリ設定を無視して全ての通知でバイブレーションする。</string>
+
     <!-- Display : Rotation #CM -->
     <string name="display_rotation_title">自動回転</string>
     <string name="display_rotation_disabled">無効</string>
@@ -2464,6 +2477,9 @@
     <string name="power_menu_reboot_title">再起動メニュー</string>
     <string name="power_menu_screenshot_title">スクリーンショット</string>
     <string name="power_menu_expanded_desktop">拡張デスクトップ</string>
+    <string name="expanded_desktop_disabled">無効</string>
+    <string name="expanded_desktop_status_bar">ステータスバーを表示</string>
+    <string name="expanded_desktop_no_status_bar">ステータスバーを隠す</string>
     <string name="power_menu_profiles_title">プロファイル切り替え</string>
     <string name="power_menu_airplane_title">機内モード</string>
     <string name="power_menu_user_title">ユーザー切り替え</string>
@@ -2523,6 +2539,7 @@
     <string name="title_tile_nfc">NFC</string>
     <string name="title_tile_screen_timeout">画面のタイムアウト</string>
     <string name="title_tile_usb_tether">USBテザリング</string>
+    <string name="title_tile_quiet_hours">サイレントタイム</string>
 
     <string name="title_dynamic_tiles">ダイナミックタイル</string>
     <string name="dynamic_tiles_note_title">ノート</string>
@@ -2571,6 +2588,61 @@
     <string name="lockscreen_background_color_fill">単色で染める</string>
     <string name="lockscreen_background_custom_image">カスタムイメージ</string>
     <string name="lockscreen_background_default_wallpaper">デフォルトの壁紙</string>
+
+    <!-- Launch music player when headset is connected -->
+    <string name="headset_connect_player_title">接続時に音楽アプリを起動</string>
+    <string name="headset_connect_player_summary">ヘッドセットを接続した時に標準の音楽アプリを起動する</string>
+
+    <!-- Safe headset volume restore checkbox -->
+    <string name="safe_headset_volume_title">安全なヘッドセット音量</string>
+    <string name="safe_headset_volume_summary">ヘッドセットを接続したときに大音量になるのを防ぐ</string>
+
+    <!-- Waiver -->
+    <string name="cyanogenmod_waiver_title">権利放棄</string>
+    <string name="cyanogenmod_waiver_body">この設定の変更は条例や法律に反しているかもしれません。\n\n\ここで\'OK\'を選択した場合、あなたはこの警告及び権利の放棄、CyanogenModとその貢献者に対する全ての法的責任からの免責に同意したことになります。</string>
+
+    <!-- Automatic brightness customization -->
+    <string name="light_sensor_current_value">現在の明るさセンサー値: <xliff:g id="light_level">%d</xliff:g> ルクス</string>
+    <string name="auto_brightness_dialog_title">自動明るさレベル</string>
+    <string name="auto_brightness_level_format"><xliff:g id="start_level">%1$s</xliff:g> -\n<xliff:g id="end_level">%2$s</xliff:g> ルクス</string>
+    <string name="auto_brightness_brightness_format"><xliff:g id="percent">%s</xliff:g>%%</string>
+    <string name="auto_brightness_adjust_button">調整</string>
+    <string name="auto_brightness_reset_button">リセット</string>
+    <string name="auto_brightness_lux_dialog_title">周囲の明るさの範囲</string>
+    <string name="auto_brightness_split_dialog_title">明るさのレベルを分割</string>
+    <string name="auto_brightness_start_lux">範囲の開始(ルクス)</string>
+    <string name="auto_brightness_end_lux">範囲の終了(ルクス)</string>
+    <string name="auto_brightness_reset_dialog_title">レベルをリセット?</string>
+    <string name="auto_brightness_reset_confirmation">全ての明るさレベルは初期値にリセットされます。</string>
+    <string name="auto_brightness_split_lux_format">分割位置 (<xliff:g id="min">%1$d</xliff:g> から <xliff:g id="max">%2$d</xliff:g> ルクスの間)</string>
+    <string name="auto_brightness_level_options">明るさレベルのオプション</string>
+    <string name="auto_brightness_menu_edit_lux">周囲の明るさの範囲</string>
+    <string name="auto_brightness_menu_split">分離</string>
+    <string name="auto_brightness_menu_remove">削除</string>
+
+    <!-- Advanced reboot options -->
+    <string name="advanced_reboot_title">高度な再起動</string>
+    <string name="advanced_reboot_summary">アンロック時の電源メニューにリカバリモードやブートローダへの再起動オプションを追加します。</string>
+
+    <!-- Navigation bar buttons and shortcuts category title -->
+    <string name="navigation_bar_category">ナビゲーションバー</string>
+
+    <!-- Navigation ring shortcuts -->
+    <string name="navigation_ring_title">クイック起動ショートカット</string>
+    <string name="navring_target_reset_message">作成したナビゲーションバーのショートカットを全て削除してデフォルトに戻しますか?</string>
+    <string name="navring_target_reset">ナビゲーションバーショートカットをリセットしました</string>
+    <string name="navring_target_save">ナビゲーションバーショートカットを保存しました</string>
+    <string name="navring_action_open_ime_switcher">入力方法の切り替え</string>
+    <string name="navring_action_kill_app">アプリの強制終了</string>
+    <string name="navring_action_none">なし</string>
+    <string name="navring_action_take_screenshot">スクリーンショットを撮る</string>
+    <string name="navring_action_ring_vibrate">着信音/バイブレーション</string>
+    <string name="navring_action_ring_silent">着信音/サイレント</string>
+    <string name="navring_action_ring_vibrate_silent">着信音/バイブ/サイレント</string>
+    <string name="navring_action_screen_off">スクリーンオフ</string>
+    <string name="navring_action_torch">トーチ</string>
+    <string name="navring_action_google_now">Google Now</string>
+    <string name="navring_choose_action_title">アクションを選択</string>
 
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>
