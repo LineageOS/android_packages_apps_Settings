@@ -62,9 +62,6 @@ public class QuickSettingsUtil {
         TILES.put(TILE_AIRPLANE, new QuickSettingsUtil.TileInfo(
                 TILE_AIRPLANE, R.string.title_tile_airplane,
                 "com.android.systemui:drawable/ic_qs_airplane_off"));
-        TILES.put(TILE_AUTOROTATE, new QuickSettingsUtil.TileInfo(
-                TILE_AUTOROTATE, R.string.title_tile_autorotate,
-                "com.android.systemui:drawable/ic_qs_auto_rotate"));
         TILES.put(TILE_BATTERY, new QuickSettingsUtil.TileInfo(
                 TILE_BATTERY, R.string.title_tile_battery,
                 "com.android.systemui:drawable/ic_qs_battery_neutral"));
@@ -95,6 +92,9 @@ public class QuickSettingsUtil {
         TILES.put(TILE_NFC, new QuickSettingsUtil.TileInfo(
                 TILE_NFC, R.string.title_tile_nfc,
                 "com.android.systemui:drawable/ic_qs_nfc_off"));
+        TILES.put(TILE_AUTOROTATE, new QuickSettingsUtil.TileInfo(
+                TILE_AUTOROTATE, R.string.title_tile_autorotate,
+                "com.android.systemui:drawable/ic_qs_auto_rotate"));
         TILES.put(TILE_PROFILE, new QuickSettingsUtil.TileInfo(
                 TILE_PROFILE, R.string.title_tile_profile,
                 "com.android.systemui:drawable/ic_qs_profiles"));
