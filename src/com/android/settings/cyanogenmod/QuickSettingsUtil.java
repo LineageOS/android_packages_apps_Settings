@@ -23,6 +23,7 @@ import static com.android.internal.util.cm.QSConstants.TILE_BATTERY;
 import static com.android.internal.util.cm.QSConstants.TILE_BLUETOOTH;
 import static com.android.internal.util.cm.QSConstants.TILE_BRIGHTNESS;
 import static com.android.internal.util.cm.QSConstants.TILE_DELIMITER;
+import static com.android.internal.util.cm.QSConstants.TILE_EXPANDEDDESKTOP;
 import static com.android.internal.util.cm.QSConstants.TILE_GPS;
 import static com.android.internal.util.cm.QSConstants.TILE_LOCKSCREEN;
 import static com.android.internal.util.cm.QSConstants.TILE_LTE;
@@ -71,9 +72,9 @@ public class QuickSettingsUtil {
         TILES.put(TILE_BRIGHTNESS, new QuickSettingsUtil.TileInfo(
                 TILE_BRIGHTNESS, R.string.title_tile_brightness,
                 "com.android.systemui:drawable/ic_qs_brightness_auto_off"));
-        TILES.put(TILE_SLEEP, new QuickSettingsUtil.TileInfo(
-                TILE_SLEEP, R.string.title_tile_sleep,
-                "com.android.systemui:drawable/ic_qs_sleep"));
+        TILES.put(TILE_EXPANDEDDESKTOP, new QuickSettingsUtil.TileInfo(
+                TILE_EXPANDEDDESKTOP, R.string.title_tile_expanded_desktop,
+                "com.android.systemui:drawable/ic_qs_expanded_desktop_off"));
         TILES.put(TILE_GPS, new QuickSettingsUtil.TileInfo(
                 TILE_GPS, R.string.title_tile_gps,
                 "com.android.systemui:drawable/ic_qs_gps_neutral"));

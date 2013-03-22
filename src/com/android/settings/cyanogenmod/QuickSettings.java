@@ -24,6 +24,7 @@ import static com.android.internal.util.cm.QSConstants.TILE_PROFILE;
 import static com.android.internal.util.cm.QSConstants.TILE_WIFIAP;
 import static com.android.internal.util.cm.QSConstants.TILE_LTE;
 import static com.android.internal.util.cm.QSConstants.TILE_TORCH;
+import static com.android.internal.util.cm.QSConstants.TILE_EXPANDEDDESKTOP;
 import static com.android.internal.util.cm.QSUtils.deviceSupportsBluetooth;
 import static com.android.internal.util.cm.QSUtils.deviceSupportsDockBattery;
 import static com.android.internal.util.cm.QSUtils.deviceSupportsImeSwitcher;
@@ -32,6 +33,7 @@ import static com.android.internal.util.cm.QSUtils.deviceSupportsNfc;
 import static com.android.internal.util.cm.QSUtils.deviceSupportsUsbTether;
 import static com.android.internal.util.cm.QSUtils.deviceSupportsWifiDisplay;
 import static com.android.internal.util.cm.QSUtils.systemProfilesEnabled;
+import static com.android.internal.util.cm.QSUtils.expandedDesktopEnabled;
 
 import android.content.ContentResolver;
 import android.content.pm.PackageManager;
@@ -228,26 +230,30 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
             QuickSettingsUtil.TILES.remove(TILE_BLUETOOTH);
         }
 
-        // Dont show the profiles tile if profiles are disabled
+        // Don't show the profiles tile if profiles are disabled
         if (!systemProfilesEnabled(resolver)) {
             QuickSettingsUtil.TILES.remove(TILE_PROFILE);
         }
 
-        // Dont show the NFC tile if not supported
+        // Don't show the NFC tile if not supported
         if (!deviceSupportsNfc(getActivity())) {
             QuickSettingsUtil.TILES.remove(TILE_NFC);
         }
 
-        // Dont show the LTE tile if not supported
+        // Don't show the LTE tile if not supported
         if (!deviceSupportsLte(getActivity())) {
             QuickSettingsUtil.TILES.remove(TILE_LTE);
         }
 
-        // Dont show the torch tile if not supported
+        // Don't show the Torch tile if not supported
         if (!getResources().getBoolean(R.bool.has_led_flash)) {
             QuickSettingsUtil.TILES.remove(TILE_TORCH);
         }
 
+        // Don't show the Expanded desktop tile if expanded desktop is disabled
+        if (!expandedDesktopEnabled(resolver)) {
+            QuickSettingsUtil.TILES.remove(TILE_EXPANDEDDESKTOP);
+        }
     }
 
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
