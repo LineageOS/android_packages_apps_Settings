@@ -159,6 +159,9 @@ public class PowerMenu extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(),
                     Settings.System.POWER_MENU_EXPANDED_DESKTOP_ENABLED, 0);
             mExpandedDesktopPref.setSummary(res.getString(R.string.expanded_desktop_disabled));
+            // Disable expanded desktop if enabled
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.EXPANDED_DESKTOP_STATE, 0);
         } else if (value == 1) {
             Settings.System.putInt(getContentResolver(),
                     Settings.System.POWER_MENU_EXPANDED_DESKTOP_ENABLED, 1);
