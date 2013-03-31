@@ -31,6 +31,11 @@ import org.apache.http.message.BasicNameValuePair;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.analytics.tracking.android.GoogleAnalytics;
+import com.google.analytics.tracking.android.Tracker;
+
+import com.android.settings.R;
+
 public class ReportingService extends Service {
     protected static final String TAG = "CMStats";
 
@@ -71,6 +76,13 @@ public class ReportingService extends Service {
         Log.d(TAG, "SERVICE: Carrier=" + deviceCarrier);
         Log.d(TAG, "SERVICE: Carrier ID=" + deviceCarrierId);
 
+        // report to google analytics
+        GoogleAnalytics ga = GoogleAnalytics.getInstance(this);
+        Tracker tracker = ga.getTracker(getString(R.string.ga_trackingId));
+        tracker.sendEvent(deviceName, deviceVersion, deviceCountry, null);
+        tracker.close();
+
+        // report to the cmstats service
         HttpClient httpclient = new DefaultHttpClient();
         HttpPost httppost = new HttpPost("http://stats.cyanogenmod.com/submit");
         try {
