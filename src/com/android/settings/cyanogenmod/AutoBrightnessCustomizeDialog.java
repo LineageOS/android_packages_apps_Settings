@@ -504,10 +504,10 @@ public class AutoBrightnessCustomizeDialog extends AlertDialog
 
                             if (progress < minValue) {
                                 seekBar.setProgress(minValue);
-                                return;
+                                progress = minValue;
                             } else if (progress > maxValue) {
                                 seekBar.setProgress(maxValue);
-                                return;
+                                progress = maxValue;
                             }
 
                             getItem(pos).backlight = Math.round(progressToBrightness(progress));
