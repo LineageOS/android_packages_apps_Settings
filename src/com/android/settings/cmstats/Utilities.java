@@ -22,26 +22,12 @@ import java.security.MessageDigest;
 
 import android.content.Context;
 import android.os.SystemProperties;
+import android.provider.Settings;
 import android.telephony.TelephonyManager;
 
 public class Utilities {
     public static String getUniqueID(Context ctx) {
-        TelephonyManager tm = (TelephonyManager) ctx
-                .getSystemService(Context.TELEPHONY_SERVICE);
-
-        String device_id = digest(tm.getDeviceId());
-        if (device_id == null) {
-            String wifiInterface = SystemProperties.get("wifi.interface");
-            try {
-                String wifiMac = new String(NetworkInterface.getByName(
-                        wifiInterface).getHardwareAddress());
-                device_id = digest(wifiMac);
-            } catch (Exception e) {
-                device_id = null;
-            }
-        }
-
-        return device_id;
+        return digest(ctx.getPackageName() + Settings.Secure.getString(ctx.getContentResolver(), Settings.Secure.ANDROID_ID));
     }
 
     public static String getCarrier(Context ctx) {
