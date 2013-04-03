@@ -41,6 +41,7 @@ public class NavBar extends Fragment {
     private ViewGroup mContainer;
     private Activity mActivity;
     private MenuItem mEditMenu;
+    private boolean mWasInExpandedState;
     private final static Intent mIntent = new Intent("android.intent.action.NAVBAR_EDIT");
     private static final int MENU_RESET = Menu.FIRST;
     private static final int MENU_EDIT = Menu.FIRST + 1;
@@ -74,6 +75,9 @@ public class NavBar extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        mWasInExpandedState = Settings.System.getInt(mActivity.getContentResolver(),
+                Settings.System.EXPANDED_DESKTOP_STATE, 0) == 1;
+        setExpandedDesktopState(false);
         // If running on a phone, remove padding around container
         if (Utils.isPhone(mActivity)) {
             mContainer.setPadding(0, 0, 0, 0);
@@ -129,21 +133,34 @@ public class NavBar extends Fragment {
         }
     }
 
+    private void setExpandedDesktopState(boolean on) {
+        if (mWasInExpandedState) {
+            Settings.System.putInt(mActivity.getContentResolver(),
+                    Settings.System.EXPANDED_DESKTOP_STATE, on ? 1 : 0);
+            if (on) {
+                mWasInExpandedState = false;
+            }
+        }
+    }
+
     @Override
     public void onPause() {
         toggleEditMode(false, false);
+        setExpandedDesktopState(true);
         super.onPause();
     }
 
     @Override
     public void onStop() {
         toggleEditMode(false, false);
+        setExpandedDesktopState(true);
         super.onStop();
     }
 
     @Override
     public void onDestroy() {
         toggleEditMode(false, false);
+        setExpandedDesktopState(true);
         super.onDestroy();
     }
 }
