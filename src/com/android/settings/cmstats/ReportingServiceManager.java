@@ -43,8 +43,13 @@ public class ReportingServiceManager extends BroadcastReceiver {
 
     protected static void setAlarm (Context ctx) {
         SharedPreferences prefs = ctx.getSharedPreferences("CMStats", 0);
-        prefs.edit().putBoolean(ReportingService.ANONYMOUS_ALARM_SET, false).apply();
-        long lastSynced = prefs.getLong(ReportingService.ANONYMOUS_LAST_CHECKED, 0);
+        prefs.edit().putBoolean(AnonymousStats.ANONYMOUS_ALARM_SET, false).apply();
+        boolean optedIn = prefs.getBoolean(AnonymousStats.ANONYMOUS_OPT_IN, true);
+        boolean firstBoot = prefs.getBoolean(AnonymousStats.ANONYMOUS_FIRST_BOOT, true);
+        if (!optedIn || firstBoot) {
+            return;
+        }
+        long lastSynced = prefs.getLong(AnonymousStats.ANONYMOUS_LAST_CHECKED, 0);
         if (lastSynced == 0) {
             return;
         }
@@ -54,7 +59,7 @@ public class ReportingServiceManager extends BroadcastReceiver {
         AlarmManager alarmManager = (AlarmManager) ctx.getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + timeLeft, PendingIntent.getBroadcast(ctx, 0, sIntent, 0));
         Log.d(ReportingService.TAG, "Next sync attempt in : " + timeLeft / dMill + " days");
-        prefs.edit().putBoolean(ReportingService.ANONYMOUS_ALARM_SET, true).apply();
+        prefs.edit().putBoolean(AnonymousStats.ANONYMOUS_ALARM_SET, true).apply();
     }
 
     public static void launchService (Context ctx) {
@@ -62,8 +67,10 @@ public class ReportingServiceManager extends BroadcastReceiver {
         NetworkInfo networkInfo = cm.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
             SharedPreferences prefs = ctx.getSharedPreferences("CMStats", 0);
-            long lastSynced = prefs.getLong(ReportingService.ANONYMOUS_LAST_CHECKED, 0);
-            boolean alarmSet = prefs.getBoolean(ReportingService.ANONYMOUS_ALARM_SET, false);
+            long lastSynced = prefs.getLong(AnonymousStats.ANONYMOUS_LAST_CHECKED, 0);
+            boolean firstBoot = prefs.getBoolean(AnonymousStats.ANONYMOUS_FIRST_BOOT, true);
+            boolean optedIn = prefs.getBoolean(AnonymousStats.ANONYMOUS_OPT_IN, true);
+            boolean alarmSet = prefs.getBoolean(AnonymousStats.ANONYMOUS_ALARM_SET, false);
             if (alarmSet) {
                 return;
             }
@@ -73,11 +80,12 @@ public class ReportingServiceManager extends BroadcastReceiver {
             } else if (System.currentTimeMillis() - lastSynced >= tFrame) {
                 shouldSync = true;
             }
-            if (shouldSync) {
+            if ((shouldSync && optedIn) || firstBoot) {
                 Intent sIntent = new Intent();
                 sIntent.setComponent(new ComponentName(ctx.getPackageName(), ReportingService.class.getName()));
+                sIntent.putExtra("firstBoot", firstBoot);
                 ctx.startService(sIntent);
-            } else {
+            } else if (optedIn) {
                 setAlarm(ctx);
             }
         }
