@@ -55,6 +55,7 @@ public class BluetoothPermissionActivity extends AlertActivity implements
     private BluetoothDevice mDevice;
     private String mReturnPackage = null;
     private String mReturnClass = null;
+    private int mRequestType;
 
     private CheckBox mRememberChoice;
     private boolean mRememberChoiceValue = false;
@@ -91,17 +92,17 @@ public class BluetoothPermissionActivity extends AlertActivity implements
         mDevice = i.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
         mReturnPackage = i.getStringExtra(BluetoothDevice.EXTRA_PACKAGE_NAME);
         mReturnClass = i.getStringExtra(BluetoothDevice.EXTRA_CLASS_NAME);
-        int requestType = i.getIntExtra(BluetoothDevice.EXTRA_ACCESS_REQUEST_TYPE,
+        mRequestType = i.getIntExtra(BluetoothDevice.EXTRA_ACCESS_REQUEST_TYPE,
                                      BluetoothDevice.REQUEST_TYPE_PHONEBOOK_ACCESS);
 
-        if (requestType == BluetoothDevice.REQUEST_TYPE_PROFILE_CONNECTION) {
+        if (mRequestType == BluetoothDevice.REQUEST_TYPE_PROFILE_CONNECTION) {
             showConnectionDialog();
-        } else if (requestType == BluetoothDevice.REQUEST_TYPE_PHONEBOOK_ACCESS) {
+        } else if (mRequestType == BluetoothDevice.REQUEST_TYPE_PHONEBOOK_ACCESS) {
             showPhonebookDialog();
-        } else if (requestType == BluetoothDevice.REQUEST_TYPE_MESSAGE_ACCESS) {
+        } else if (mRequestType == BluetoothDevice.REQUEST_TYPE_MESSAGE_ACCESS) {
             showMasDialog();
         } else {
-            Log.e(TAG, "Error: bad request type: " + requestType);
+            Log.e(TAG, "Error: bad request type: " + mRequestType);
             finish();
             return;
         }
@@ -222,9 +223,7 @@ public class BluetoothPermissionActivity extends AlertActivity implements
     private void onPositive() {
         if (DEBUG) Log.d(TAG, "onPositive mRememberChoiceValue: " + mRememberChoiceValue);
 
-        if (mRememberChoiceValue) {
-            savePhonebookPermissionChoice(CachedBluetoothDevice.PHONEBOOK_ACCESS_ALLOWED);
-        }
+        saveChoiceIfNeeded(CachedBluetoothDevice.PERMISSION_ACCESS_ALLOWED);
         sendIntentToReceiver(BluetoothDevice.ACTION_CONNECTION_ACCESS_REPLY, true,
                              BluetoothDevice.EXTRA_ALWAYS_ALLOWED, mRememberChoiceValue);
         finish();
@@ -233,13 +232,23 @@ public class BluetoothPermissionActivity extends AlertActivity implements
     private void onNegative() {
         if (DEBUG) Log.d(TAG, "onNegative mRememberChoiceValue: " + mRememberChoiceValue);
 
-        if (mRememberChoiceValue) {
-            savePhonebookPermissionChoice(CachedBluetoothDevice.PHONEBOOK_ACCESS_REJECTED);
-        }
+        saveChoiceIfNeeded(CachedBluetoothDevice.PERMISSION_ACCESS_REJECTED);
         sendIntentToReceiver(BluetoothDevice.ACTION_CONNECTION_ACCESS_REPLY, false,
                              null, false // dummy value, no effect since last param is null
                              );
         finish();
+    }
+
+    private void saveChoiceIfNeeded(int permission) {
+        if (!mRememberChoiceValue) {
+            return;
+        }
+
+        if (mRequestType == BluetoothDevice.REQUEST_TYPE_PHONEBOOK_ACCESS) {
+            getCachedBluetoothDevice().setPhonebookPermissionChoice(permission);
+        } else if (mRequestType == BluetoothDevice.REQUEST_TYPE_MESSAGE_ACCESS) {
+            getCachedBluetoothDevice().setMessagePermissionChoice(permission);
+        }
     }
 
     private void sendIntentToReceiver(final String intentName, final boolean allowed,
@@ -288,18 +297,16 @@ public class BluetoothPermissionActivity extends AlertActivity implements
         return true;
     }
 
-    private void savePhonebookPermissionChoice(int permissionChoice) {
+    private CachedBluetoothDevice getCachedBluetoothDevice() {
         LocalBluetoothManager bluetoothManager = LocalBluetoothManager.getInstance(this);
         CachedBluetoothDeviceManager cachedDeviceManager =
             bluetoothManager.getCachedDeviceManager();
         CachedBluetoothDevice cachedDevice = cachedDeviceManager.findDevice(mDevice);
-        if (cachedDevice != null ) {
-            cachedDevice.setPhonebookPermissionChoice(permissionChoice);
-        } else {
+        if (cachedDevice == null) {
             cachedDevice = cachedDeviceManager.addDevice(bluetoothManager.getBluetoothAdapter(),
                                                          bluetoothManager.getProfileManager(),
                                                          mDevice);
-            cachedDevice.setPhonebookPermissionChoice(permissionChoice);
         }
+        return cachedDevice;
     }
 }
