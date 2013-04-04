@@ -27,6 +27,7 @@ import android.app.ProfileGroup;
 import android.app.ProfileManager;
 import android.app.RingModeSettings;
 import android.app.StreamSettings;
+import android.app.admin.DevicePolicyManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -234,6 +235,13 @@ public class ProfileConfig extends SettingsPreferenceFragment
                     R.array.profile_lockmode_summaries)[mProfile.getScreenLockMode()]);
             mScreenLockModePreference.setValue(String.valueOf(mProfile.getScreenLockMode()));
             mScreenLockModePreference.setOnPreferenceChangeListener(this);
+
+            DevicePolicyManager dpm = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
+            if (dpm.requireSecureKeyguard()) {
+                mScreenLockModePreference.setEnabled(false);
+                mScreenLockModePreference.setSummary(R.string.unlock_set_unlock_disabled_summary);
+            }
+
             systemPrefs.addPreference(mScreenLockModePreference);
         }
 
