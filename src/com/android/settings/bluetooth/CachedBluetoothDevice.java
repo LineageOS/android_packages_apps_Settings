@@ -65,18 +65,20 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
     private boolean mVisible;
 
     private int mPhonebookPermissionChoice;
+    private int mMessagePermissionChoice;
 
     private final Collection<Callback> mCallbacks = new ArrayList<Callback>();
 
-    // Following constants indicate the user's choices of Phone book access settings
+    // Following constants indicate the user's choices of Phone book or MAS access settings
     // User hasn't made any choice or settings app has wiped out the memory
-    final static int PHONEBOOK_ACCESS_UNKNOWN = 0;
+    final static int PERMISSION_ACCESS_UNKNOWN = 0;
     // User has accepted the connection and let Settings app remember the decision
-    final static int PHONEBOOK_ACCESS_ALLOWED = 1;
+    final static int PERMISSION_ACCESS_ALLOWED = 1;
     // User has rejected the connection and let Settings app remember the decision
-    final static int PHONEBOOK_ACCESS_REJECTED = 2;
+    final static int PERMISSION_ACCESS_REJECTED = 2;
 
     private final static String PHONEBOOK_PREFS_NAME = "bluetooth_phonebook_permission";
+    private final static String MESSAGE_PREFS_NAME = "bluetooth_message_permissions";
 
     /**
      * When we connect to multiple profiles, we only want to display a single
@@ -348,8 +350,8 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
         fetchName();
         fetchBtClass();
         updateProfiles();
-        fetchPhonebookPermissionChoice();
-
+        mPhonebookPermissionChoice = fetchPermissionChoice(PHONEBOOK_PREFS_NAME);
+        mMessagePermissionChoice = fetchPermissionChoice(MESSAGE_PREFS_NAME);
         mVisible = false;
         dispatchAttributesChanged();
     }
@@ -513,7 +515,8 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
         if (bondState == BluetoothDevice.BOND_NONE) {
             mProfiles.clear();
             mConnectAfterPairing = false;  // cancel auto-connect
-            setPhonebookPermissionChoice(PHONEBOOK_ACCESS_UNKNOWN);
+            setPhonebookPermissionChoice(PERMISSION_ACCESS_UNKNOWN);
+            setMessagePermissionChoice(PERMISSION_ACCESS_UNKNOWN);
         }
 
         refresh();
@@ -629,23 +632,35 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
         return mPhonebookPermissionChoice;
     }
 
+    int getMessagePermissionChoice() {
+        return mMessagePermissionChoice;
+    }
+
     void setPhonebookPermissionChoice(int permissionChoice) {
+        savePermissionChoice(PHONEBOOK_PREFS_NAME, permissionChoice);
+        mPhonebookPermissionChoice = permissionChoice;
+    }
+
+    void setMessagePermissionChoice(int permissionChoice) {
+        savePermissionChoice(MESSAGE_PREFS_NAME, permissionChoice);
+        mMessagePermissionChoice = permissionChoice;
+    }
+
+    private void savePermissionChoice(String prefsName, int permissionChoice) {
         SharedPreferences.Editor editor =
-            mContext.getSharedPreferences(PHONEBOOK_PREFS_NAME, Context.MODE_PRIVATE).edit();
-        if (permissionChoice == PHONEBOOK_ACCESS_UNKNOWN) {
+            mContext.getSharedPreferences(prefsName, Context.MODE_PRIVATE).edit();
+        if (permissionChoice == PERMISSION_ACCESS_UNKNOWN) {
             editor.remove(mDevice.getAddress());
         } else {
             editor.putInt(mDevice.getAddress(), permissionChoice);
         }
         editor.commit();
-        mPhonebookPermissionChoice = permissionChoice;
     }
 
-    private void fetchPhonebookPermissionChoice() {
-        SharedPreferences preference = mContext.getSharedPreferences(PHONEBOOK_PREFS_NAME,
+    private int fetchPermissionChoice(String prefsName) {
+        SharedPreferences preference = mContext.getSharedPreferences(prefsName,
                                                                      Context.MODE_PRIVATE);
-        mPhonebookPermissionChoice = preference.getInt(mDevice.getAddress(),
-                                                       PHONEBOOK_ACCESS_UNKNOWN);
+        return preference.getInt(mDevice.getAddress(), PERMISSION_ACCESS_UNKNOWN);
     }
 
 }
