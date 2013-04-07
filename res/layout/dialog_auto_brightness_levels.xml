@@ -18,25 +18,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/light_sensor_value"
+    <LinearLayout
+        android:id="@+id/top_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:padding="8dip" />
+        android:orientation="vertical"
+        android:divider="?android:attr/dividerHorizontal"
+        android:showDividers="end"
+        android:dividerPadding="0dip">
 
-    <TextView
-        android:id="@+id/current_brightness"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/light_sensor_value"
-        android:padding="8dip" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layoutDirection="locale">
+
+            <TextView
+                android:id="@+id/light_sensor_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:padding="8dip" />
+
+            <ImageButton
+                android:id="@+id/more"
+                android:layout_width="@dimen/auto_brightness_dialog_more_button_size"
+                android:layout_height="@dimen/auto_brightness_dialog_more_button_size"
+                android:src="@*android:drawable/ic_menu_moreoverflow_holo_dark"
+                android:background="?android:attr/actionBarItemBackground"
+                android:contentDescription="@string/wifi_menu_more_options" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <ListView
         android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/light_sensor_value"
+        android:layout_below="@id/top_container"
         android:layout_alignParentBottom="true" />
 
 </RelativeLayout>

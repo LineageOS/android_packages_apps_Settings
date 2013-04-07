@@ -24,10 +24,10 @@
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/auto_brightness_start_lux" />
+            android:paddingTop="8dip"
+            android:text="@string/auto_brightness_lux" />
 
-    <EditText android:id="@+id/start_lux"
-            android:enabled="false"
+    <EditText android:id="@+id/lux"
             android:singleLine="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -38,13 +38,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="8dip"
-            android:text="@string/auto_brightness_end_lux" />
+            android:text="@string/auto_brightness_backlight" />
 
-    <EditText android:id="@+id/end_lux"
-            android:singleLine="true"
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="2dip"
-            android:numeric="integer" />
+            android:paddingTop="2dip">
+
+        <SeekBar android:id="@+id/backlight"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        <EditText android:id="@+id/backlight_input"
+                android:singleLine="true"
+                android:layout_width="80dip"
+                android:layout_height="wrap_content"
+                android:numeric="decimal" />
+
+    </LinearLayout>
 
 </LinearLayout>
