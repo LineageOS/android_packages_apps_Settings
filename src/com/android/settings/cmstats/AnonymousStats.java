@@ -28,6 +28,7 @@ import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
+import android.provider.Settings;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -94,9 +95,13 @@ public class AnonymousStats extends SettingsPreferenceFragment
                         .setNegativeButton(android.R.string.no, this)
                         .show();
                 mOkDialog.setOnDismissListener(this);
+                Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.CMSTATS_ANONYMOUS_OPT_IN, 1);
             } else {
                 // Disable reporting
                 mPrefs.edit().putBoolean(ANONYMOUS_OPT_IN, false).apply();
+                Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.CMSTATS_ANONYMOUS_OPT_IN, 0);
             }
         } else if (preference == mViewStats) {
             // Display the stats page
