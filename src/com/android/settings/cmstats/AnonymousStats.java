@@ -40,8 +40,6 @@ public class AnonymousStats extends SettingsPreferenceFragment
 
     protected static final String ANONYMOUS_OPT_IN = "pref_anonymous_opt_in";
 
-    protected static final String ANONYMOUS_FIRST_BOOT = "pref_anonymous_first_boot";
-
     protected static final String ANONYMOUS_LAST_CHECKED = "pref_anonymous_checked_in";
 
     protected static final String ANONYMOUS_ALARM_SET = "pref_anonymous_alarm_set";
@@ -65,13 +63,6 @@ public class AnonymousStats extends SettingsPreferenceFragment
             mPrefs = getActivity().getSharedPreferences("CMStats", 0);
             mEnableReporting = (CheckBoxPreference) prefSet.findPreference(ANONYMOUS_OPT_IN);
             mViewStats = (Preference) prefSet.findPreference(VIEW_STATS);
-            boolean firstBoot = mPrefs.getBoolean(ANONYMOUS_FIRST_BOOT, true);
-            if (mEnableReporting.isChecked() && firstBoot) {
-                mPrefs.edit().putBoolean(ANONYMOUS_FIRST_BOOT, false).apply();
-                ReportingServiceManager.launchService(getActivity());
-            }
-            NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-            nm.cancel(1);
         }
     }
 

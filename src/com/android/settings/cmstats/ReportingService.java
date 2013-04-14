@@ -54,19 +54,14 @@ public class ReportingService extends Service {
 
     @Override
     public int onStartCommand (Intent intent, int flags, int startId) {
-        if (intent.getBooleanExtra("firstBoot", false)) {
-            promptUser();
-            Log.d(TAG, "Prompting user for opt-in.");
-        } else {
-            Log.d(TAG, "User has opted in -- reporting.");
-            Thread thread = new Thread() {
-                @Override
-                public void run() {
-                    report();
-                }
-            };
-            thread.start();
-        }
+        Log.d(TAG, "User has opted in -- reporting.");
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                report();
+            }
+        };
+        thread.start();
         return Service.START_REDELIVER_INTENT;
     }
 
@@ -124,21 +119,5 @@ public class ReportingService extends Service {
         }
         ReportingServiceManager.setAlarm(this);
         stopSelf();
-    }
-
-    private void promptUser() {
-        NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        Intent nI = new Intent();
-        nI.setComponent(new ComponentName(getPackageName(),Settings.AnonymousStatsActivity.class.getName()));
-        PendingIntent pI = PendingIntent.getActivity(this, 0, nI, 0);
-        Notification.Builder builder = new Notification.Builder(this)
-        .setSmallIcon(R.drawable.ic_cm_stats_notif)
-        .setAutoCancel(true)
-        .setTicker(getString(R.string.anonymous_statistics_title))
-        .setContentIntent(pI)
-        .setWhen(0)
-        .setContentTitle(getString(R.string.anonymous_statistics_title))
-        .setContentText(getString(R.string.anonymous_notification_desc));
-        nm.notify(1, builder.getNotification());
     }
 }
