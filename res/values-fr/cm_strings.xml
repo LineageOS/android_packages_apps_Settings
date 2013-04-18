@@ -589,8 +589,12 @@
     <string name="auto_brightness_level_format"><xliff:g id="level">%1$d</xliff:g> lux</string>
     <string name="auto_brightness_last_level_format"><xliff:g id="level">%1$d</xliff:g> -\n\u221e lux</string>
     <string name="auto_brightness_adjust_button">Ajuster</string>
+    <string name="auto_brightness_close_button">Quitter</string>
     <string name="auto_brightness_reset_button">Réinitialiser</string>
     <string name="auto_brightness_split_dialog_title">Division du niveau de luminosité</string>
+    <string name="auto_brightness_level_dialog_title">Définir le niveau de lumière</string>
+    <string name="auto_brightness_lux">Luminosité ambiante (lux)</string>
+    <string name="auto_brightness_backlight">Luminosité de l\'écran (%)</string>
     <string name="auto_brightness_reset_dialog_title">Réinitialiser les niveaux\u00A0?</string>
     <string name="auto_brightness_reset_confirmation">Tous les niveaux de luminosité seront réinitialisés à leurs réglages par défaut.</string>
     <string name="auto_brightness_split_lux_format">Position de coupure (entre <xliff:g id="min">%1$d</xliff:g> et <xliff:g id="max">%2$d</xliff:g> lux)</string>
@@ -598,6 +602,19 @@
     <string name="auto_brightness_menu_edit_lux">Plage de luminosité ambiante</string>
     <string name="auto_brightness_menu_split">Diviser</string>
     <string name="auto_brightness_menu_remove">Supprimer</string>
+    <string name="auto_brightness_preview">Prévisualiser</string>
+    <string name="auto_brightness_preview_dialog_title">Aperçu de la courbe de luminosité</string>
+    <string name="auto_brightness_help_dialog_title">Aide</string>
+    <string name="auto_brightness_help_text"><b>Comment est calculée la luminosité\u00A0?</b>
+\n\n
+La courbe de luminosité est calculée en effectuant l\'<i>interpolation d\'une courbe cubique</i> sur un certain nombre de <i>points de contrôle</i>. C\'est un calcul précis dans lequel la luminosité de l\'écran ne reste pas constante pour une plage déterminée de luminosité ambiante. De cette manière, les légers changements de luminosité ambiante ne provoquent pas de grands sauts de luminosité de l\'écran, néanmoins il est plus difficile de prédire les conséquences exactes de l\'évolution des points de contrôle.\n
+Pour vous aider, un aperçu de la courbe calculée peut être examiné. Noter que l\'aperçu montre une courbe avec une échelle <i>logarithmique</i>, de sorte que tous les points de contrôle peuvent être affichés distinctement. Lorsque vous utilisez une échelle linéaire, il n\'est pas possible de distinguer la tendance des points de contrôle les plus importants dans la fourchette basse de luminosité ambiante.
+\n\n
+<b>Comment éditer la courbe de luminosité\u00A0?</b>
+\n\n
+Chaque ligne de la liste correspond à un <i>point de contrôle</i> de la courbe de luminosité. Pour modifier le niveau de luminosité d\'un point, vous pouvez utiliser le curseur présent sur chaque ligne. Lorsque vous toucherez le curseur, la luminosité de l\'écran sera modifiée en conséquence pour prévisualiser le niveau de lumière.\n
+Des options supplémentaires sont disponibles en appuyant longtemps sur une ligne. En sélectionnant \'Ajuster\', vous pouvez modifier le niveau du point de contrôle de luminosité ambiante ou saisir manuellement la luminosité de l\'écran désirée. En sélectionnant \'Diviser\' vous pouvez séparer une ligne en deux afin d\'insérer des points de contrôle supplémentaires. Enfin, \'Supprimer\' efface la ligne sélectionnée.
+    </string>
     <string name="advanced_reboot_title">Redémarrage avancé</string>
     <string name="advanced_reboot_summary">Inclure les options de redémarrage en mode recovery et bootloader dans le menu marche/arrêt lorsque l\'appareil est déverrouillé</string>
     <string name="navigation_bar_category">Barre de navigation</string>
