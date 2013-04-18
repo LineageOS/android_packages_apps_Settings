@@ -659,22 +659,52 @@
     <string name="auto_brightness_last_level_format"><xliff:g id="level">%1$d</xliff:g> -\n\u221e luksów</string>
     <string name="auto_brightness_brightness_format"><xliff:g id="percent">%s</xliff:g>%%</string>
     <string name="auto_brightness_adjust_button">Dostosuj</string>
+    <string name="auto_brightness_close_button">Zamknij</string>
     <string name="auto_brightness_reset_button">Przywróć domyślne</string>
     <string name="auto_brightness_split_dialog_title">Dzielenie poziomów jasności</string>
+    <string name="auto_brightness_level_dialog_title">Dostosowywanie poziomu oświetlenia</string>
+    <string name="auto_brightness_lux">Jasność otoczenia (lux)</string>
+    <string name="auto_brightness_backlight">Jasność ekranu (%)</string>
     <string name="auto_brightness_reset_dialog_title">Przywrócić domyślne poziomy?</string>
     <string name="auto_brightness_reset_confirmation">Wszystkie poziomy jasności zostaną przywrócone do wartości domyślnych.</string>
     <string name="auto_brightness_split_lux_format">Pozycja dzielenia (pomiędzy <xliff:g id="min">%1$d</xliff:g> i <xliff:g id="max">%2$d</xliff:g> luksów)</string>
     <string name="auto_brightness_level_options">Opcje poziomu światła</string>
-    <string name="auto_brightness_menu_edit_lux">Zakres jasności otoczenia</string>
+    <string name="auto_brightness_menu_edit_lux">Dostosuj</string>
     <string name="auto_brightness_menu_split">Podziel</string>
     <string name="auto_brightness_menu_remove">Usuń</string>
+    <string name="auto_brightness_preview">Podgląd</string>
+    <string name="auto_brightness_preview_dialog_title">Podgląd wykresu jasności</string>
+    <string name="auto_brightness_help_dialog_title">Pomoc</string>
+    <string name="auto_brightness_help_text"><b>Jak obliczana jest jasność?</b>
+\n\n
+Wykres jasności jest obliczany poprzez wykonanie <i>interpolacji sześciennej krzywej składanej</i>
+na określonej liczbie <i>punktów kontrolnych</i>. Nie jest to typ obliczenia gdzie
+jasność ekranu będzie utrzymywała się na stałym poziomie dla pewnego zakresu jasności otoczenia. W ten sposób
+małe zmiany jasności otoczenia nie skutkują dużą zmianą podświetlenia ekranu. Niemniej
+trudno przewidzieć dokładne konsekwencje wynikające ze zmiany punktów kontrolnych.\n
+Pomocne w tym celu może być skorzystanie z podglądu wykresu jasności. Warto przy tym zauważyć,
+że podgląd pokazuje krzywą w skali <i>logarytmicznej</i>, aby wszystkie punkty kontrolne mogły być wyświetlane
+czytelnie. Użycie skali liniowej, mogłoby utrudnić odczytanie
+ważnych punktów kontrolnych w dolnych zakresach jasności otoczenia.
+\n\n
+<b>Jak edytować wykres jasności?</b>
+\n\n
+Każdy pasek na liście automatycznych poziomów jasności odpowiada <i>punktowi kontrolnemu</i> na
+krzywej. Aby edytować poziom jasności dla danego punktu, należy użyć suwaków
+obecnych na każdym pasku. Jasność ekranu będzie się zmieniała na bieżąco w trakcie przesuwania
+suwaków, aby zilustrować poziom podświetlenia.\n
+Dodatkowe opcje są dostępne po dłuższym naciśnięciu paska. Wybierając \'Dostosuj\', można
+zarówno edytować poziom jasności otoczenia dla danego punktu kontrolnego, jak i ręcznie określić
+pożądaną jasność ekranu. Wybranie \'Podziel\' pozwala przekształcić jeden pasek w
+dwa nowe, odpowiadające kolejnym punktom kontrolnym. \'Usuń\' kasuje wybrany pasek.
+    </string>
 
     <string name="advanced_reboot_title">Zaawansowany restart</string>
-    <string name="advanced_reboot_summary">Umożliwia zrestartowanie urządzenia do recovery lub bootloadera</string>
+    <string name="advanced_reboot_summary">Umożliwia ponowne uruchomienie urządzenia w trybie recovery lub bootloadera</string>
 
     <string name="root_access">Dostęp do roota</string>
     <string name="root_access_warning_title">Przyznać dostęp do roota?</string>
-    <string name="root_access_warning_message">Umożliwienie aplikacjom żądania praw roota może być niebezpieczne i zagrozić bezpieczeństwu systemu!</string>
+    <string name="root_access_warning_message">Przyznanie aplikacjom praw roota może być niebezpieczne i zagrozić bezpieczeństwu systemu!</string>
     <string name="root_access_none">Wyłączony</string>
     <string name="root_access_apps">Tylko aplikacje</string>
     <string name="root_access_adb">Tylko ADB</string>
