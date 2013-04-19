@@ -213,6 +213,7 @@ public class DateTimeSettings extends SettingsPreferenceFragment
             Settings.System.putString(getContentResolver(),
                     Settings.System.DATE_FORMAT, format);
             updateTimeAndDateDisplay(getActivity());
+            dateUpdated();
         } else if (key.equals(KEY_AUTO_TIME)) {
             boolean autoEnabled = preferences.getBoolean(key, true);
             Settings.Global.putInt(getContentResolver(), Settings.Global.AUTO_TIME,
@@ -310,6 +311,11 @@ public class DateTimeSettings extends SettingsPreferenceFragment
 
     private void timeUpdated() {
         Intent timeChanged = new Intent(Intent.ACTION_TIME_CHANGED);
+        getActivity().sendBroadcast(timeChanged);
+    }
+
+    private void dateUpdated() {
+        Intent timeChanged = new Intent(Intent.ACTION_DATE_CHANGED);
         getActivity().sendBroadcast(timeChanged);
     }
 
