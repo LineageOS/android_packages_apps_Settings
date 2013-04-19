@@ -577,7 +577,7 @@
     <string name="auto_brightness_last_level_format"><xliff:g id="level">%1$d</xliff:g> -\n\u221e lux</string>
     <string name="auto_brightness_brightness_format"><xliff:g id="percent">%s</xliff:g>%%</string>
     <string name="auto_brightness_adjust_button">Ajustar</string>
-    <string name="auto_brightness_reset_button">Restaurar</string>
+    <string name="auto_brightness_reset_button">Redefinir</string>
     <string name="auto_brightness_split_dialog_title">Dividir nível de brilho</string>
     <string name="auto_brightness_reset_dialog_title">Restaurar níveis?</string>
     <string name="auto_brightness_reset_confirmation">Todos os níveis de brilho irão ser restaurados para suas valores padrões.</string>
@@ -660,4 +660,34 @@
     <string name="power_notifications_vibrate_title">Vibrar</string>
     <string name="power_notifications_ringtone_title">Som de notificação</string>
     <string name="power_notifications_ringtone_silent">Silencioso</string>
+    <string name="auto_brightness_close_button">Fechar</string>
+    <string name="auto_brightness_level_dialog_title">Configurações do nível de luz</string>
+    <string name="auto_brightness_lux">Luminosidade do ambiente (lux)</string>
+    <string name="auto_brightness_backlight">Luminosidade da tela (%)</string>
+    <string name="auto_brightness_preview">Visualização prévia</string>
+    <string name="auto_brightness_preview_dialog_title">Visualização prévia da curva de brilho</string>
+    <string name="auto_brightness_help_dialog_title">Ajuda</string>
+    <string name="auto_brightness_help_text"><b>Como o brilho é calculado?</b>
+\n\n
+A curva do brilho é calculada através da realização de uma <i>interpolação de spline cúbica</i>
+em um determinado número de <i>pontos de controle</i>. Não é um cálculo estilo \'bucket\' quando
+o brilho da tela ficará constante por um intervalo específico de luminosidade ambiente. Deste modo,
+pequenas mudanças na luminosidade do ambiente não causará mudanças grandes na luminosidade da tela;
+porém, pode ser um pouco difícil prever as consequências exatas de trocar os pontos de controle.\n
+Para ajudar nisto, uma prévia da curva calculada pode ser examinada. Por favor, note que a prévia
+mostra em escala <i>logarítimica</i> na curva para que todos os pontos de controle possam ser exibidos
+distintamente. Quando usando uma escala linear, não poderia ser possível distinguir o tendencial dos
+pontos de controles mais importantes na faixa inferior da luminosidade ambiente.
+\n\n
+<b>Como editar a curva de luminosidade?</b>
+\n\n
+Cada linha na lista de luminosidade corresponde a um <i>ponto de controle</i> da curva de luminosidade.
+Para editar o nível de luminosidade do ponto, você pode usar a barra deslizante presente em cada linha.
+A luminosidade da tela será alterada em conformidade ao tocar a barra deslizante para ter uma prévia do
+nível de luz.\n
+Opções adicionais estão disponíveis ao tocar e segurar uma linha. Ao selecionar \'Ajustar\', você pode
+tanto editar o nível de luminosidade ambiante quanto inserir manualmente a luminosidade da tela
+desejada. Selecionando \'Dividir\' permite você a duplicar uma linha  para que possa inserir pontos de
+controle adicionais. \'Remover\' apaga a linha selecionada.
+    </string>
 </resources>
