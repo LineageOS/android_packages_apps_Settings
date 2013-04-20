@@ -43,7 +43,6 @@ public class ReportingServiceManager extends BroadcastReceiver {
 
     protected static void setAlarm (Context ctx) {
         SharedPreferences prefs = ctx.getSharedPreferences("CMStats", 0);
-        prefs.edit().putBoolean(AnonymousStats.ANONYMOUS_ALARM_SET, false).apply();
         boolean optedIn = prefs.getBoolean(AnonymousStats.ANONYMOUS_OPT_IN, true);
         if (!optedIn) {
             return;
@@ -54,40 +53,40 @@ public class ReportingServiceManager extends BroadcastReceiver {
             // this will allow the user tFrame time to opt out before it will start
             // sending up anonymous stats.
             lastSynced = System.currentTimeMillis();
+            prefs.edit().putLong(AnonymousStats.ANONYMOUS_LAST_CHECKED, lastSynced).apply();
+            Log.d(ReportingService.TAG, "Set alarm for first sync.");
         }
         long timeLeft = (lastSynced + tFrame) - System.currentTimeMillis();
         Intent sIntent = new Intent(ConnectivityManager.CONNECTIVITY_ACTION);
         sIntent.setComponent(new ComponentName(ctx.getPackageName(), ReportingServiceManager.class.getName()));
         AlarmManager alarmManager = (AlarmManager) ctx.getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + timeLeft, PendingIntent.getBroadcast(ctx, 0, sIntent, 0));
-        Log.d(ReportingService.TAG, "Next sync attempt in : " + timeLeft / dMill + " days");
-        prefs.edit().putBoolean(AnonymousStats.ANONYMOUS_ALARM_SET, true).apply();
+        Log.d(ReportingService.TAG, "Next sync attempt in : " + timeLeft * 24 / dMill + " hours");
     }
 
     public static void launchService (Context ctx) {
         ConnectivityManager cm = (ConnectivityManager) ctx.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = cm.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected()) {
-            SharedPreferences prefs = ctx.getSharedPreferences("CMStats", 0);
-            long lastSynced = prefs.getLong(AnonymousStats.ANONYMOUS_LAST_CHECKED, 0);
-            boolean optedIn = prefs.getBoolean(AnonymousStats.ANONYMOUS_OPT_IN, true);
-            boolean alarmSet = prefs.getBoolean(AnonymousStats.ANONYMOUS_ALARM_SET, false);
-            if (alarmSet) {
-                return;
-            }
-            boolean shouldSync = false;
-            if (lastSynced == 0) {
-                shouldSync = true;
-            } else if (System.currentTimeMillis() - lastSynced >= tFrame) {
-                shouldSync = true;
-            }
-            if (shouldSync && optedIn) {
-                Intent sIntent = new Intent();
-                sIntent.setComponent(new ComponentName(ctx.getPackageName(), ReportingService.class.getName()));
-                ctx.startService(sIntent);
-            } else if (optedIn) {
-                setAlarm(ctx);
-            }
+        if (networkInfo == null || !networkInfo.isConnected()) {
+            return;
         }
+        SharedPreferences prefs = ctx.getSharedPreferences("CMStats", 0);
+        boolean optedIn = prefs.getBoolean(AnonymousStats.ANONYMOUS_OPT_IN, true);
+        if (!optedIn) {
+            return;
+        }
+        long lastSynced = prefs.getLong(AnonymousStats.ANONYMOUS_LAST_CHECKED, 0);
+        if (lastSynced == 0) {
+            setAlarm(ctx);
+            return;
+        }
+        long timeLeft = System.currentTimeMillis() - lastSynced;
+        if (timeLeft < tFrame) {
+            Log.d(ReportingService.TAG, "Waiting for next sync : " + timeLeft * 24 / dMill + " hours");
+            return;
+        }
+        Intent sIntent = new Intent();
+        sIntent.setComponent(new ComponentName(ctx.getPackageName(), ReportingService.class.getName()));
+        ctx.startService(sIntent);
     }
 }
