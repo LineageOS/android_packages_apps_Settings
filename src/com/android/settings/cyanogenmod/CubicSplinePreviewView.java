@@ -51,6 +51,7 @@ public class CubicSplinePreviewView extends SurfaceView {
     private final Paint mPointPaint;
     private final int mBgColor;
     private final float mMarkerRadius;
+    private final int mMargin;
 
     public CubicSplinePreviewView(Context context) {
         this(context, null);
@@ -74,6 +75,7 @@ public class CubicSplinePreviewView extends SurfaceView {
         float textSize = a.getDimensionPixelSize(R.styleable.CubicSplinePreviewView_textSize, 0);
         float strokeWidth = a.getDimensionPixelSize(R.styleable.CubicSplinePreviewView_strokeWidth, 0);
         mMarkerRadius = a.getDimensionPixelSize(R.styleable.CubicSplinePreviewView_markerSize, 1);
+        mMargin = a.getDimensionPixelSize(R.styleable.CubicSplinePreviewView_margin, 0);
 
         a.recycle();
 
@@ -104,14 +106,6 @@ public class CubicSplinePreviewView extends SurfaceView {
         setWillNotDraw(false);
     }
 
-    @Override
-    protected void onAttachedToWindow() {
-        super.onAttachedToWindow();
-
-        setLayerType(View.LAYER_TYPE_HARDWARE, null);
-        buildLayer();
-    }
-
     /**
      * Sets the spline control points.
      *
@@ -125,8 +119,10 @@ public class CubicSplinePreviewView extends SurfaceView {
     public void setSpline(float[] xPoints, float[] yPoints) {
         mXPoints = xPoints;
         mYPoints = yPoints;
-        for (int i = 0; i < xPoints.length; i++) {
-            Log.d(TAG, "Spline data[" + i + "]: x = " + xPoints[i] + " y = " + yPoints[i]);
+        if (DEBUG) {
+            for (int i = 0; i < xPoints.length; i++) {
+                Log.d(TAG, "Spline data[" + i + "]: x = " + xPoints[i] + " y = " + yPoints[i]);
+            }
         }
         mSpline = Spline.createMonotoneCubicSpline(xPoints, yPoints);
         postInvalidate();
@@ -143,24 +139,27 @@ public class CubicSplinePreviewView extends SurfaceView {
 
         Path curve = new Path();
 
-        int width = getWidth();
-        int height = getHeight();
+        int width = getWidth() - 2 * mMargin;
+        int height = getHeight() - 2 * mMargin;
         double dist = (double) width / (POINTS - 1);
 
         for (int i = 0; i < POINTS; i++) {
             double xPixel = dist * i;
             float x = (float) reverseProjectX(xPixel / width);
             float y = mSpline.interpolate(x);
-            float yPixel = (float) (projectY(y) * height);
+            float yPixel = (float) ((1.0 - projectY(y)) * height);
+
+            xPixel += mMargin;
+            yPixel += mMargin;
 
             if (DEBUG) {
                 Log.d(TAG, "point[" + i + "]: X = (" + x + "," + xPixel + "), Y = (" + y + "," + yPixel + ")");
             }
 
             if (i == 0) {
-                curve.moveTo((float) xPixel, (float) height - yPixel);
+                curve.moveTo((float) xPixel, yPixel);
             } else {
-                curve.lineTo((float) xPixel, (float) height - yPixel);
+                curve.lineTo((float) xPixel, yPixel);
             }
         }
 
@@ -173,8 +172,8 @@ public class CubicSplinePreviewView extends SurfaceView {
         float maxY = getMaxY();
 
         for (float xPos = minX; xPos <= maxX; ) {
-            float x = (float) (projectX(xPos) * width);
-            canvas.drawLine(x, 0, x, height - 1, mGridLinePaint);
+            float x = (float) (projectX(xPos) * width + mMargin);
+            canvas.drawLine(x, mMargin, x, mMargin + height, mGridLinePaint);
             if (xPos < 10) {
                 xPos += 1;
             } else if (xPos < 100) {
@@ -189,21 +188,26 @@ public class CubicSplinePreviewView extends SurfaceView {
         }
 
         /* draw horizontal lines */
+        canvas.drawLine(mMargin, mMargin + height, mMargin + width, mMargin + height, mGridLinePaint);
         float yDist = (maxY - minY) / 10;
         for (int i = 1; i <= 10; i++) {
-            float y = (float) ((1.0 - projectY(yDist * i + minY)) * height);
-            canvas.drawLine(0, y, width - 1, y, mGridLinePaint);
-            canvas.drawText(String.format("%.0f%%", yDist * i * 100), 1,
+            float y = (float) ((1.0 - projectY(yDist * i + minY)) * height + mMargin);
+            canvas.drawLine(mMargin, y, mMargin + width, y, mGridLinePaint);
+            canvas.drawText(String.format("%.0f%%", yDist * i * 100), mMargin + 1,
                     y + mYTextPaint.getTextSize(), mYTextPaint);
         }
 
         for (int i = 0; i < mXPoints.length; i ++) {
+            /* take special care of the first control point that's likely 0 */
             float x = (i == 0) ? getMinX() : mXPoints[i];
-            float xPixel = (float) (projectX(x) * width);
-            float yPixel = (float) ((1.0 - projectY(mYPoints[i])) * height);
+            float y = (x != mXPoints[i]) ? mSpline.interpolate(x) : mYPoints[i];
+            float xPixel = (float) (projectX(x) * width + mMargin);
+            float yPixel = (float) ((1.0 - projectY(y)) * height + mMargin);
+
             if (DEBUG) {
-                Log.d(TAG, "Print control point " + mXPoints[i] + " at (" + xPixel + "," + (height - 2) + ")");
+                Log.d(TAG, "Print control point " + x + " at (" + xPixel + "," + (height - 2) + ")");
             }
+
             if (i == 0) {
                 mXTextPaint.setTextAlign(Align.LEFT);
             } else if (i == (mXPoints.length - 1)) {
@@ -212,7 +216,7 @@ public class CubicSplinePreviewView extends SurfaceView {
                 mXTextPaint.setTextAlign(Align.CENTER);
             }
             canvas.drawCircle(xPixel, yPixel, mMarkerRadius, mPointPaint);
-            canvas.drawText(String.format("%.0f", mXPoints[i]), xPixel, height - 2, mXTextPaint);
+            canvas.drawText(String.format("%.0f", mXPoints[i]), xPixel, mMargin + height - 2, mXTextPaint);
         }
     }
 
