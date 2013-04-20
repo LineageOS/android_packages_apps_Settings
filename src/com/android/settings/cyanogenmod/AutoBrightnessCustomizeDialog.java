@@ -56,7 +56,7 @@ import java.util.Locale;
 import com.android.settings.R;
 
 public class AutoBrightnessCustomizeDialog extends AlertDialog
-        implements DialogInterface.OnClickListener {
+        implements DialogInterface.OnClickListener, DialogInterface.OnDismissListener {
     private static final String TAG = "AutoBrightnessCustomizeDialog";
 
     private TextView mSensorLevel;
@@ -77,6 +77,11 @@ public class AutoBrightnessCustomizeDialog extends AlertDialog
     private SettingRowAdapter mAdapter;
     private int mMinLevel;
     private boolean mIsDefault;
+
+    private AlertDialog mHelpDialog, mPreviewDialog;
+    private AlertDialog mSetupDialog, mSplitDialog;
+    private int mDialogPosition;
+    private boolean mWasRestored;
 
     private SensorEventListener mLightSensorListener = new SensorEventListener() {
         @Override
@@ -149,7 +154,9 @@ public class AutoBrightnessCustomizeDialog extends AlertDialog
 
     @Override
     protected void onStart() {
-        updateSettings(false);
+        if (!mWasRestored) {
+            updateSettings(false);
+        }
 
         super.onStart();
 
@@ -169,6 +176,18 @@ public class AutoBrightnessCustomizeDialog extends AlertDialog
     protected void onStop() {
         super.onStop();
         mSensorManager.unregisterListener(mLightSensorListener, mLightSensor);
+        if (mHelpDialog != null) {
+            mHelpDialog.dismiss();
+        }
+        if (mPreviewDialog != null) {
+            mPreviewDialog.dismiss();
+        }
+        if (mSetupDialog != null) {
+            mSetupDialog.dismiss();
+        }
+        if (mSplitDialog != null) {
+            mSplitDialog.dismiss();
+        }
     }
 
     @Override
@@ -193,10 +212,10 @@ public class AutoBrightnessCustomizeDialog extends AlertDialog
 
         switch (item.getItemId() - Menu.FIRST) {
             case 0:
-                showSetup(position);
+                showSetup(position, null);
                 return true;
             case 1:
-                showSplitDialog(position);
+                showSplitDialog(position, null);
                 break;
             case 2:
                 mAdapter.removeRow(position);
@@ -213,6 +232,85 @@ public class AutoBrightnessCustomizeDialog extends AlertDialog
         } else if (which == DialogInterface.BUTTON_NEGATIVE) {
             cancel();
         }
+    }
+
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        if (dialog == mHelpDialog) {
+            mHelpDialog = null;
+        } else if (dialog == mPreviewDialog) {
+            mPreviewDialog = null;
+        } else if (dialog == mSetupDialog) {
+            mSetupDialog = null;
+        } else if (dialog == mSplitDialog) {
+            mSplitDialog = null;
+        }
+    }
+
+    private static final String DEFAULT_TAG = "AutoBrightnessCustomize:isDefault";
+    private static final String LUX_TAG = "AutoBrightnessCustomize:luxValues";
+    private static final String BACKLIGHT_TAG = "AutoBrightnessCustomize:backlightValues";
+    private static final String HELP_TAG = "AutoBrightnessCustomize:helpShowing";
+    private static final String PREVIEW_TAG = "AutoBrightnessCustomize:previewShowing";
+    private static final String SETUP_TAG = "AutoBrightnessCustomize:setupState";
+    private static final String SPLIT_TAG = "AutoBrightnessCustomize:splitState";
+    private static final String POSITION_TAG = "AutoBrightnessCustomize:dialogPosition";
+
+    @Override
+    public Bundle onSaveInstanceState() {
+        Bundle state = super.onSaveInstanceState();
+
+        state.putBoolean(DEFAULT_TAG, mIsDefault);
+        state.putIntArray(LUX_TAG, mAdapter.getLuxValues());
+        state.putIntArray(BACKLIGHT_TAG, mAdapter.getBacklightValues());
+        state.putInt(POSITION_TAG, mDialogPosition);
+        state.putBoolean(HELP_TAG, mHelpDialog != null && mHelpDialog.isShowing());
+        state.putBoolean(PREVIEW_TAG, mPreviewDialog != null && mPreviewDialog.isShowing());
+
+        Bundle setupState = null;
+        if (mSetupDialog != null && mSetupDialog.isShowing()) {
+            setupState = mSetupDialog.onSaveInstanceState();
+        }
+        state.putBundle(SETUP_TAG, setupState);
+
+        Bundle splitState = null;
+        if (mSplitDialog != null && mSplitDialog.isShowing()) {
+            splitState = mSplitDialog.onSaveInstanceState();
+        }
+        state.putBundle(SPLIT_TAG, splitState);
+
+        return state;
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle state) {
+        super.onRestoreInstanceState(state);
+
+        mIsDefault = state.getBoolean(DEFAULT_TAG);
+        mDialogPosition = state.getInt(POSITION_TAG);
+
+        int[] lux = state.getIntArray(LUX_TAG);
+        int[] backlight = state.getIntArray(BACKLIGHT_TAG);
+        mAdapter.initFromSettings(lux, backlight);
+
+        Bundle setupState = state.getBundle(SETUP_TAG);
+        if (setupState != null) {
+            showSetup(mDialogPosition, setupState);
+        }
+
+        Bundle splitState = state.getBundle(SPLIT_TAG);
+        if (splitState != null) {
+            showSplitDialog(mDialogPosition, splitState);
+        }
+
+        if (state.getBoolean(HELP_TAG)) {
+            showHelp();
+        }
+        if (state.getBoolean(PREVIEW_TAG)) {
+            showPreview();
+        }
+
+        mWasRestored = true;
     }
 
     private void updateSettings(boolean forceDefault) {
@@ -241,19 +339,27 @@ public class AutoBrightnessCustomizeDialog extends AlertDialog
     }
 
     private void showHelp() {
+        if (mHelpDialog != null && mHelpDialog.isShowing()) {
+            return;
+        }
+
         final View v = getLayoutInflater().inflate(R.layout.auto_brightness_help, null);
 
-        final AlertDialog d = new AlertDialog.Builder(getContext())
+        mHelpDialog = new AlertDialog.Builder(getContext())
             .setTitle(R.string.auto_brightness_help_dialog_title)
             .setCancelable(true)
             .setView(v)
             .setNegativeButton(R.string.auto_brightness_close_button, null)
             .create();
-
-        d.show();
+        mHelpDialog.setOnDismissListener(this);
+        mHelpDialog.show();
     }
 
     private void showPreview() {
+        if (mPreviewDialog != null && mPreviewDialog.isShowing()) {
+            return;
+        }
+
         final int n = mAdapter.getCount();
         float[] x = new float[n];
         float[] y = new float[n];
@@ -270,151 +376,42 @@ public class AutoBrightnessCustomizeDialog extends AlertDialog
                 (CubicSplinePreviewView) v.findViewById(R.id.brightness_preview);
         preview.setSpline(x, y);
 
-        final AlertDialog d = new AlertDialog.Builder(getContext())
+        mPreviewDialog = new AlertDialog.Builder(getContext())
             .setTitle(R.string.auto_brightness_preview_dialog_title)
             .setCancelable(true)
             .setView(v)
             .setNegativeButton(R.string.auto_brightness_close_button, null)
             .create();
-
-        d.show();
+        mPreviewDialog.setOnDismissListener(this);
+        mPreviewDialog.show();
     }
 
-    private void showSetup(final int position) {
-        final SettingRow row = mAdapter.getItem(position);
-        final View v = getLayoutInflater().inflate(R.layout.auto_brightness_level_setup, null);
-        final EditText lux = (EditText) v.findViewById(R.id.lux);
-        final SeekBar backlightBar = (SeekBar) v.findViewById(R.id.backlight);
-        final EditText backlightInput = (EditText) v.findViewById(R.id.backlight_input);
-        final DecimalFormat backlightInputFormat = new DecimalFormat("0.0",
-                DecimalFormatSymbols.getInstance(Locale.US));
+    private void showSetup(int position, Bundle state) {
+        if (mSetupDialog != null && mSetupDialog.isShowing()) {
+            return;
+        }
 
-        final AlertDialog d = new AlertDialog.Builder(getContext())
-            .setTitle(R.string.auto_brightness_level_dialog_title)
-            .setCancelable(true)
-            .setView(v)
-            .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface d, int which) {
-                    try {
-                        int newLux = Integer.valueOf(lux.getText().toString());
-                        mAdapter.setLuxForRow(position, newLux);
-                    } catch (NumberFormatException e) {
-                        //ignored
-                    }
-                }
-            })
-            .setNegativeButton(R.string.cancel, null)
-            .create();
-
-        backlightBar.setMax(brightnessToProgress(PowerManager.BRIGHTNESS_ON));
-
-        lux.setText(String.valueOf(row.lux));
-        backlightBar.setProgress(brightnessToProgress(row.backlight));
-        backlightInput.setText(backlightInputFormat.format(brightnessToPercent(row.backlight)));
-
-        backlightBar.setOnSeekBarChangeListener(new BrightnessSeekBarChangeListener() {
-            @Override
-            protected int getPosition(SeekBar seekBar) {
-                return position;
-            }
-
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                super.onProgressChanged(seekBar, progress, fromUser);
-
-                float brightness = progressToBrightness(seekBar.getProgress());
-                backlightInput.setText(backlightInputFormat.format(brightnessToPercent(brightness)));
-            }
-        });
-
-        backlightInput.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-            @Override
-            public void afterTextChanged(Editable s) {
-                boolean ok = false;
-                try {
-                    float minValue = position == 0
-                            ? mMinLevel
-                            : mAdapter.getItem(position - 1).backlight;
-                    float maxValue = mAdapter.isLastItem(position)
-                            ? PowerManager.BRIGHTNESS_ON
-                            : mAdapter.getItem(position + 1).backlight;
-                    float newBrightness = percentToBrightness(Float.valueOf(s.toString()));
-
-                    if (newBrightness >= minValue && newBrightness <= maxValue) {
-                        ok = true;
-                        backlightBar.setProgress(brightnessToProgress(newBrightness));
-                    }
-                } catch (NumberFormatException e) {
-                    //ignored, ok is false anyway
-                }
-
-                Button okButton = d.getButton(DialogInterface.BUTTON_POSITIVE);
-                if (okButton != null) {
-                    okButton.setEnabled(ok);
-                }
-            }
-        });
-
-        d.show();
+        mDialogPosition = position;
+        mSetupDialog = new RowSetupDialog(getContext(), position);
+        mSetupDialog.setOnDismissListener(this);
+        if (state != null) {
+            mSetupDialog.onRestoreInstanceState(state);
+        }
+        mSetupDialog.show();
     }
 
-    private void showSplitDialog(final int position) {
-        final SettingRow row = mAdapter.getItem(position);
-        final View v = getLayoutInflater().inflate(R.layout.auto_brightness_split_dialog, null);
-        final TextView label = (TextView) v.findViewById(R.id.split_label);
-        final EditText value = (EditText) v.findViewById(R.id.split_position);
+    private void showSplitDialog(final int position, Bundle state) {
+        if (mSplitDialog != null && mSplitDialog.isShowing()) {
+            return;
+        }
 
-        final AlertDialog d = new AlertDialog.Builder(getContext())
-            .setTitle(R.string.auto_brightness_split_dialog_title)
-            .setCancelable(true)
-            .setView(v)
-            .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface d, int which) {
-                    int splitLux = Integer.valueOf(value.getText().toString());
-                    mAdapter.splitRow(position, splitLux);
-                }
-            })
-            .setNegativeButton(R.string.cancel, null)
-            .create();
-
-        final int minLux = row.lux + 1;
-        final int maxLux = mAdapter.isLastItem(position) ? 0 : mAdapter.getItem(position + 1).lux - 1;
-
-        label.setText(getContext().getString(R.string.auto_brightness_split_lux_format,
-                minLux, maxLux));
-        value.setText(String.valueOf(minLux));
-        value.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-            @Override
-            public void afterTextChanged(Editable s) {
-                boolean ok = false;
-                try {
-                    int newLux = Integer.valueOf(s.toString());
-                    ok = newLux >= minLux && newLux <= maxLux;
-                } catch (NumberFormatException e) {
-                    //ignored, ok is false anyway
-                }
-                Button okButton = d.getButton(DialogInterface.BUTTON_POSITIVE);
-                if (okButton != null) {
-                    okButton.setEnabled(ok);
-                }
-            }
-        });
-
-        d.show();
+        mDialogPosition = position;
+        mSplitDialog = new RowSplitDialog(getContext(), position);
+        mSplitDialog.setOnDismissListener(this);
+        if (state != null) {
+            mSplitDialog.onRestoreInstanceState(state);
+        }
+        mSplitDialog.show();
     }
 
     private void showResetConfirmation() {
@@ -483,6 +480,226 @@ public class AutoBrightnessCustomizeDialog extends AlertDialog
             value = builder.toString();
         }
         Settings.System.putString(getContext().getContentResolver(), setting, value);
+    }
+
+    private class RowSetupDialog extends AlertDialog implements DialogInterface.OnClickListener {
+        private static final String LUX_TAG = "AutoBrightnessCustomize:Edit:lux";
+        private static final String BACKLIGHT_TAG = "AutoBrightnessCustomize:Edit:backlight";
+
+        private EditText mLuxInput;
+        private SeekBar mBacklightBar;
+        private EditText mBacklightInput;
+
+        private int mPosition;
+        private DecimalFormat mBacklightInputFormat = new DecimalFormat("0.0",
+                DecimalFormatSymbols.getInstance(Locale.US));
+
+        public RowSetupDialog(Context context, int position) {
+            super(context);
+            mPosition = position;
+        }
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            final View v = getLayoutInflater().inflate(R.layout.auto_brightness_level_setup, null);
+            final Context context = getContext();
+
+            mLuxInput = (EditText) v.findViewById(R.id.lux);
+            mBacklightBar = (SeekBar) v.findViewById(R.id.backlight);
+            mBacklightInput = (EditText) v.findViewById(R.id.backlight_input);
+
+            setTitle(R.string.auto_brightness_level_dialog_title);
+            setCancelable(true);
+            setView(v);
+
+            mBacklightBar.setMax(brightnessToProgress(PowerManager.BRIGHTNESS_ON));
+            initListeners();
+            initFromPosition();
+
+            setButton(DialogInterface.BUTTON_POSITIVE, context.getString(R.string.ok), this);
+            setButton(DialogInterface.BUTTON_NEGATIVE, context.getString(R.string.cancel), this);
+
+            super.onCreate(savedInstanceState);
+        }
+
+        @Override
+        public Bundle onSaveInstanceState() {
+            Bundle state = super.onSaveInstanceState();
+            state.putCharSequence(LUX_TAG, mLuxInput.getText());
+            state.putInt(BACKLIGHT_TAG, mBacklightBar.getProgress());
+            return state;
+        }
+
+        @Override
+        public void onRestoreInstanceState(Bundle state) {
+            super.onRestoreInstanceState(state);
+            mLuxInput.setText(state.getCharSequence(LUX_TAG));
+            mBacklightBar.setProgress(state.getInt(BACKLIGHT_TAG));
+        }
+
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            if (which == DialogInterface.BUTTON_POSITIVE) {
+                try {
+                    int newLux = Integer.valueOf(mLuxInput.getText().toString());
+                    mAdapter.setLuxForRow(mPosition, newLux);
+                } catch (NumberFormatException e) {
+                    //ignored
+                }
+            }
+        }
+
+        private void initFromPosition() {
+            final SettingRow row = mAdapter.getItem(mPosition);
+
+            mLuxInput.setText(String.valueOf(row.lux));
+            mBacklightBar.setProgress(brightnessToProgress(row.backlight));
+            mBacklightInput.setText(mBacklightInputFormat.format(brightnessToPercent(row.backlight)));
+        }
+
+        private void initListeners() {
+            mBacklightBar.setOnSeekBarChangeListener(new BrightnessSeekBarChangeListener() {
+                @Override
+                protected int getPosition(SeekBar seekBar) {
+                    return mPosition;
+                }
+
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    super.onProgressChanged(seekBar, progress, fromUser);
+
+                    float brightness = progressToBrightness(seekBar.getProgress());
+                    mBacklightInput.setText(mBacklightInputFormat.format(brightnessToPercent(brightness)));
+                }
+            });
+
+            mBacklightInput.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                }
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                }
+                @Override
+                public void afterTextChanged(Editable s) {
+                    boolean ok = false;
+                    try {
+                        float minValue = mPosition == 0
+                                ? mMinLevel
+                                : mAdapter.getItem(mPosition - 1).backlight;
+                        float maxValue = mAdapter.isLastItem(mPosition)
+                                ? PowerManager.BRIGHTNESS_ON
+                                : mAdapter.getItem(mPosition + 1).backlight;
+                        float newBrightness = percentToBrightness(Float.valueOf(s.toString()));
+
+                        if (newBrightness >= minValue && newBrightness <= maxValue) {
+                            ok = true;
+                            mBacklightBar.setProgress(brightnessToProgress(newBrightness));
+                        }
+                    } catch (NumberFormatException e) {
+                        //ignored, ok is false anyway
+                    }
+
+                    Button okButton = mSetupDialog.getButton(DialogInterface.BUTTON_POSITIVE);
+                    if (okButton != null) {
+                        okButton.setEnabled(ok);
+                    }
+                }
+            });
+        }
+    }
+
+    private class RowSplitDialog extends AlertDialog implements DialogInterface.OnClickListener {
+        private static final String SPLIT_LUX_TAG = "AutoBrightnessCustomize:Split:splitLux";
+
+        private TextView mLabel;
+        private EditText mValue;
+
+        private int mPosition;
+        private int mMinLux, mMaxLux;
+
+        public RowSplitDialog(Context context, int position) {
+            super(context);
+            mPosition = position;
+        }
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            final View v = getLayoutInflater().inflate(R.layout.auto_brightness_split_dialog, null);
+            final Context context = getContext();
+
+            mLabel = (TextView) v.findViewById(R.id.split_label);
+            mValue = (EditText) v.findViewById(R.id.split_position);
+
+            setTitle(R.string.auto_brightness_split_dialog_title);
+            setCancelable(true);
+            setView(v);
+
+            initValues();
+            initListener();
+
+            setButton(DialogInterface.BUTTON_POSITIVE, context.getString(R.string.ok), this);
+            setButton(DialogInterface.BUTTON_NEGATIVE, context.getString(R.string.cancel), this);
+
+            super.onCreate(savedInstanceState);
+        }
+
+        @Override
+        public Bundle onSaveInstanceState() {
+            Bundle state = super.onSaveInstanceState();
+            state.putCharSequence(SPLIT_LUX_TAG, mValue.getText());
+            return state;
+        }
+
+        @Override
+        public void onRestoreInstanceState(Bundle state) {
+            super.onRestoreInstanceState(state);
+            mValue.setText(state.getCharSequence(SPLIT_LUX_TAG));
+        }
+
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            if (which == DialogInterface.BUTTON_POSITIVE) {
+                int splitLux = Integer.valueOf(mValue.getText().toString());
+                mAdapter.splitRow(mPosition, splitLux);
+            }
+        }
+
+        private void initValues() {
+            final SettingRow row = mAdapter.getItem(mPosition);
+
+            mMinLux = row.lux + 1;
+            mMaxLux = mAdapter.isLastItem(mPosition) ? 0 : mAdapter.getItem(mPosition + 1).lux - 1;
+
+            mLabel.setText(getContext().getString(R.string.auto_brightness_split_lux_format,
+                    mMinLux, mMaxLux));
+            mValue.setText(String.valueOf(mMinLux));
+        }
+
+        private void initListener() {
+            mValue.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                }
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                }
+                @Override
+                public void afterTextChanged(Editable s) {
+                    boolean ok = false;
+                    try {
+                        int newLux = Integer.valueOf(s.toString());
+                        ok = newLux >= mMinLux && newLux <= mMaxLux;
+                    } catch (NumberFormatException e) {
+                        //ignored, ok is false anyway
+                    }
+                    Button okButton = getButton(DialogInterface.BUTTON_POSITIVE);
+                    if (okButton != null) {
+                        okButton.setEnabled(ok);
+                    }
+                }
+            });
+        }
     }
 
     private class SettingRowAdapter extends ArrayAdapter<SettingRow> {
