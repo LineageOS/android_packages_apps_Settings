@@ -584,15 +584,44 @@
     <string name="auto_brightness_level_format"><xliff:g id="level">%1$d</xliff:g> lux</string>
     <string name="auto_brightness_last_level_format"><xliff:g id="level">%1$d</xliff:g> -\n\u221e lux</string>
     <string name="auto_brightness_adjust_button">Regola</string>
+    <string name="auto_brightness_close_button">Chiudi</string>
     <string name="auto_brightness_reset_button">Ripristina</string>
-    <string name="auto_brightness_split_dialog_title">Soglia di luminosità</string>
+    <string name="auto_brightness_split_dialog_title">Dividi livelli luminosità</string>
+    <string name="auto_brightness_level_dialog_title">Impostazioni luminosità</string>
+    <string name="auto_brightness_lux">Luminosità ambientale (lux)</string>
+    <string name="auto_brightness_backlight">Luminosità schermo (%)</string>
     <string name="auto_brightness_reset_dialog_title">Ripristina livelli?</string>
-    <string name="auto_brightness_reset_confirmation">Tutti i livelli di luminosità saranno ripristinati ai rispettivi valori di default.</string>
-    <string name="auto_brightness_split_lux_format">Soglia (tra <xliff:g id="min">%1$d</xliff:g> e <xliff:g id="max">%2$d</xliff:g> lux)</string>
+    <string name="auto_brightness_reset_confirmation">Tutti i livelli di luminosità saranno riportati ai rispettivi valori predefiniti.</string>
+    <string name="auto_brightness_split_lux_format">Dividi posizione (tra <xliff:g id="min">%1$d</xliff:g> e <xliff:g id="max">%2$d</xliff:g> lux)</string>
     <string name="auto_brightness_level_options">Impostazioni livelli luminosità</string>
     <string name="auto_brightness_menu_edit_lux">Luminosità ambiente</string>
-    <string name="auto_brightness_menu_split">Soglia</string>
+    <string name="auto_brightness_menu_split">Dividi</string>
     <string name="auto_brightness_menu_remove">Rimuovi</string>
+    <string name="auto_brightness_preview">Anteprima</string>
+    <string name="auto_brightness_preview_dialog_title">Anteprima curva luminosità</string>
+    <string name="auto_brightness_help_dialog_title">Guida</string>
+    <string name="auto_brightness_help_text"><b>Come viene calcolata la luminosità?</b>
+\n\n
+La curva di luminosità viene calcolata eseguendo una <i>interpolazione spline di terzo grado</i>
+su un dato numero di <i>punti di controllo</i>. Non è un algoritmo che fa rimanere costante
+la luminosità dello schermo in determinati intervalli di luminosità ambientale. In questo modo,
+piccole variazioni di luce ambientale non causano grandi variazioni di luminosità dello schermo;
+tuttavia, può essere arduo predire le esatte conseguenze di una modifica nei punti di controllo.\n
+Per rimediare a questo, si può esaminare un\'anteprima della curva calcolata. Si noti che
+l\'anteprima mostra la curva in scala <i>logaritmica</i>, in modo che i punti di controllo
+possano essere visualizzati distintamente. Se si usasse una scala lineare, non sarebbe
+possibile distinguere i punti di controllo - tendenzialmente più importanti - nella gamma
+più bassa di luminosità ambientale.\n\n
+<b>Come modificare la curva di luminosità?</b>\n\n
+Ogni riga nella lista corrisponde ad un <i>punto di controllo</i> della curva di luminosità.
+Per modificare il livello di luminosità del punto, puoi usare il controllo a scorrimento
+presente in ciascuna riga. La luminosità dello schermo sarà variata in accordo con il valore
+del controllo a scorrimento per fornire un\'anteprima del livello di luminosità.\n
+Altre opzioni sono disponibili premendo a lungo una riga. Selezionando \'Regola\', puoi modificare
+il livello di luce ambientale del punto di controllo, ed anche inserire manualmente il valore
+desiderato di luminosità dello schermo. Selezionando \'Dividi\' puoi dividere una riga, per
+inserire punti di controllo aggiuntivi. \'Rimuovi\' cancella la riga selezionata.
+    </string>
     <string name="advanced_reboot_title">Riavvio avanzato</string>
     <string name="advanced_reboot_summary">Quando attivato include, nel menu apposito, opzioni per il riavvio in modalità recovery o bootloader</string>
     <string name="navigation_bar_category">Barra di navigazione</string>
@@ -616,9 +645,6 @@
     <string name="wifi_mode">Modalità</string>
     <string name="wifi_mode_ibss">Rete Ad-Hoc (IBSS)</string>
     <string name="wifi_mode_ibss_short">Ad-Hoc</string>
-    <string name="wifi_ibss_freq_title">Canale / Frequenza</string>
-    <string name="wifi_channel">Canale</string>
-    <string name="wifi_mhz">MHz</string>
     <string name="pie_control_title">Controlli a disco</string>
     <string name="pie_control_enabled">\"Pie controls\": attivati quando il Desktop esteso è attivo</string>
     <string name="pie_control_disabled">\"Pie controls\": disattivati</string>
@@ -654,4 +680,12 @@
     <string name="gestures_action_search">Ricerca</string>
     <string name="gestures_action_recent">Applicazioni recenti</string>
     <string name="stylus_app_not_installed">%s non è installata</string>
+    <string name="wifi_ibss_freq_title">Canale / Frequenza</string>
+    <string name="wifi_channel">Canale</string>
+    <string name="wifi_mhz">MHz</string>
+    <string name="power_notifications_category_title">Notifica cavo alimentazione</string>
+    <string name="power_notifications_enable_title">Abilita</string>
+    <string name="power_notifications_vibrate_title">Vibra</string>
+    <string name="power_notifications_ringtone_title">Suono di notifica</string>
+    <string name="power_notifications_ringtone_silent">Silenzioso</string>
 </resources>
