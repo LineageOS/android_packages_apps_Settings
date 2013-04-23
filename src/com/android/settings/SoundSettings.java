@@ -691,6 +691,8 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private void launchNotificationSoundPicker(int code, String currentPowerRingtonePath) {
         final Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
 
+        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE,
+                getString(R.string.power_notifications_ringtone_title));
         intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE,
                 RingtoneManager.TYPE_NOTIFICATION);
         intent.putExtra(RingtoneManager.EXTRA_RINGTONE_DEFAULT_URI,
