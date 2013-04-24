@@ -25,6 +25,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
+import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Pair;
@@ -48,6 +49,7 @@ public class LightSettingsDialog extends AlertDialog implements
         ColorPickerView.OnColorChangedListener, TextWatcher, OnFocusChangeListener {
 
     private final static String HEX_CODE_BASE = "#FF";
+    private final static String STATE_KEY_COLOR = "LightSettingsDialog:color";
 
     private ColorPickerView mColorPicker;
 
@@ -147,6 +149,19 @@ public class LightSettingsDialog extends AlertDialog implements
         public void onNothingSelected(AdapterView<?> parent) {
         }
     };
+
+    @Override
+    public Bundle onSaveInstanceState() {
+        Bundle state = super.onSaveInstanceState();
+        state.putInt(STATE_KEY_COLOR, getColor());
+        return state;
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle state) {
+        super.onRestoreInstanceState(state);
+        mColorPicker.setColor(state.getInt(STATE_KEY_COLOR), true);
+    }
 
     @Override
     public void onColorChanged(int color) {
