@@ -32,7 +32,6 @@ import android.os.Bundle;
 import android.preference.DialogPreference;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -55,7 +54,6 @@ public class ApplicationLightPreference extends DialogPreference {
     private int mOffValue;
     private boolean mOnOffChangeable;
 
-    private OnLongClickListener mParent;
     private Resources mResources;
     private ScreenReceiver mReceiver = null;
     private AlertDialog mTestDialog;
@@ -70,7 +68,6 @@ public class ApplicationLightPreference extends DialogPreference {
         mOnValue = DEFAULT_TIME;
         mOffValue = DEFAULT_TIME;
         mOnOffChangeable = true;
-        mParent = null;
         init();
     }
 
@@ -85,7 +82,6 @@ public class ApplicationLightPreference extends DialogPreference {
         mColorValue = color;
         mOnValue = onValue;
         mOffValue = offValue;
-        mParent = null;
         mOnOffChangeable = true;
         init();
     }
@@ -106,37 +102,9 @@ public class ApplicationLightPreference extends DialogPreference {
         init();
     }
 
-    /**
-     * @param context
-     * @param onLongClickListener
-     * @param color
-     * @param onValue
-     * @param offValue
-     */
-    public ApplicationLightPreference(Context context, OnLongClickListener parent, int color, int onValue, int offValue) {
-        super(context, null);
-        mColorValue = color;
-        mOnValue = onValue;
-        mOffValue = offValue;
-        mParent = parent;
-        mOnOffChangeable = true;
-        init();
-    }
-
     private void init() {
         setLayoutResource(R.layout.preference_application_light);
         mResources = getContext().getResources();
-    }
-
-    @Override
-    public View getView(View convertView, ViewGroup parent) {
-        View view = super.getView(convertView, parent);
-
-        if (mParent != null) {
-            view.setOnLongClickListener(mParent);
-        }
-
-        return view;
     }
 
     @Override
