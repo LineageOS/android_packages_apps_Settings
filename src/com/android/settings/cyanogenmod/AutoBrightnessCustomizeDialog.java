@@ -196,7 +196,7 @@ public class AutoBrightnessCustomizeDialog extends AlertDialog
 
         menu.setHeaderTitle(R.string.auto_brightness_level_options);
 
-        menu.add(Menu.NONE, Menu.FIRST, 0, R.string.auto_brightness_menu_edit_lux)
+        menu.add(Menu.NONE, Menu.FIRST, 0, R.string.auto_brightness_menu_edit)
                 .setEnabled(!mAdapter.isLastItem(info.position));
         menu.add(Menu.NONE, Menu.FIRST + 1, 1, R.string.auto_brightness_menu_split)
                 .setEnabled(mAdapter.canSplitRow(info.position));
