@@ -794,6 +794,10 @@ public class ColorPickerView extends View {
 
     }
 
+    public boolean isAlphaSliderVisible() {
+        return mShowAlphaPanel;
+    }
+
     public void setSliderTrackerColor(int color) {
         mSliderTrackerColor = color;
         mHueTrackerPaint.setColor(mSliderTrackerColor);

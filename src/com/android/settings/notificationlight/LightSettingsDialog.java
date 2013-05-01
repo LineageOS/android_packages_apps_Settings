@@ -17,9 +17,6 @@
 
 package com.android.settings.notificationlight;
 
-import java.util.ArrayList;
-import java.util.IllegalFormatException;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -28,6 +25,8 @@ import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.InputFilter;
+import android.text.InputFilter.LengthFilter;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,10 +44,13 @@ import android.widget.TextView;
 import com.android.settings.R;
 import com.android.settings.notificationlight.ColorPickerView.OnColorChangedListener;
 
+import java.util.ArrayList;
+import java.util.IllegalFormatException;
+import java.util.Locale;
+
 public class LightSettingsDialog extends AlertDialog implements
         ColorPickerView.OnColorChangedListener, TextWatcher, OnFocusChangeListener {
 
-    private final static String HEX_CODE_BASE = "#FF";
     private final static String STATE_KEY_COLOR = "LightSettingsDialog:color";
 
     private ColorPickerView mColorPicker;
@@ -165,14 +167,20 @@ public class LightSettingsDialog extends AlertDialog implements
 
     @Override
     public void onColorChanged(int color) {
+        final boolean hasAlpha = mColorPicker.isAlphaSliderVisible();
+        final String format = hasAlpha ? "%08x" : "%06x";
+        final int mask = hasAlpha ? 0xFFFFFFFF : 0x00FFFFFF;
+
         mNewColor.setColor(color);
-        mHexColorInput.setText(Integer.toHexString(color));
+        mHexColorInput.setText(String.format(Locale.US, format, color & mask));
+
         if (mListener != null) {
             mListener.onColorChanged(color);
         }
     }
 
     public void setAlphaSliderVisible(boolean visible) {
+        mHexColorInput.setFilters(new InputFilter[] { new InputFilter.LengthFilter(visible ? 8 : 6) } );
         mColorPicker.setAlphaSliderVisible(visible);
     }
 
@@ -285,7 +293,10 @@ public class LightSettingsDialog extends AlertDialog implements
         String hexColor = mHexColorInput.getText().toString();
         if (!hexColor.isEmpty()) {
             try {
-                int color = Color.parseColor(HEX_CODE_BASE + hexColor);
+                int color = Color.parseColor('#' + hexColor);
+                if (!mColorPicker.isAlphaSliderVisible()) {
+                    color |= 0xFF000000; // set opaque
+                }
                 mColorPicker.setColor(color);
                 mNewColor.setColor(color);
                 if (mListener != null) {
