@@ -14,6 +14,17 @@
      limitations under the License.
  -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="bluetooth_mas_request">Boodskap toegangsversoek</string>
+    <string name="bluetooth_mas_acceptance_dialog_text">%1$s wil graag toegang tot jou boodskappe verkry. Gee toegang tot %2$s?</string>
+    <string name="bluetooth_mas_remember_choice">Moenie weer vra nie</string>
+    <string name="lock_pattern_size_3">3x3</string>
+    <string name="lock_pattern_size_4">4x4</string>
+    <string name="lock_pattern_size_5">5x5</string>
+    <string name="lock_pattern_size_6">6x6</string>
+    <string name="lockpattern_settings_enable_error_path_title">Wys patroon fout</string>
+    <string name="lockpattern_settings_enable_dots_title">Wys patroon kolle</string>
+    <string name="accessibility_home_button_answers_call_prerefence_title">Tuis-knoppie beantwoord oproep</string>
+    <string name="headset_category_title">Oorfone</string>
     <string name="ok">OK</string>
     <string name="quiet_hours_title">Stille-ure</string>
     <string name="quiet_hours_summary">Konfigureer die ure wat die toestel moet stil wees</string>
@@ -57,6 +68,7 @@
     <string name="anonymous_statistics_summary">Help CyanogenMod verbeter deur anonieme statistiek verslagdoening te keis</string>
     <string name="anonymous_statistics_warning_title">Inligting</string>
     <string name="anonymous_statistics_warning">"Deur CyanogenMod statistieke toe te laat sal nie-persoonlike data ingestuur word na die ontwikkelaars van CyanogenMod installasies. Die inligting sluit in \'n unieke identifikasienommer in wat nie privaatheid of persoonlike data in gevaar stel nie. Die data word ingestuur tydens elke \'boot\'.\n\nVir \'n voorbeeld van die data wat ingestuur word, raak "<b>"Voorskou"</b>"</string>
+    <string name="enable_reporting_title">Aktiveer verslaggewing</string>
     <string name="preview_data_title">Voorskou</string>
     <string name="preview_data_summary">%s</string>
     <string name="view_stats_title">Kyk na statistieke</string>
@@ -423,6 +435,9 @@
     <string name="power_menu_reboot_title">Herlaai kielys</string>
     <string name="power_menu_screenshot_title">Skermfoto</string>
     <string name="power_menu_expanded_desktop">Uitgebreide lessenaar</string>
+    <string name="expanded_desktop_disabled">Gedeaktiveer</string>
+    <string name="expanded_desktop_status_bar">Statusbalk sigbaar</string>
+    <string name="expanded_desktop_no_status_bar">Versteek statusbalk</string>
     <string name="power_menu_profiles_title">Profiel wisselaar</string>
     <string name="power_menu_airplane_title">Vliegtuigmodus</string>
     <string name="power_menu_user_title">Gebruiker wisselaar</string>
@@ -457,6 +472,8 @@
     <string name="adb_notify">USB-ontfouting kennisgewing</string>
     <string name="adb_notify_summary">Vertoon \'n kennisgewing wanneer USB-ontfouting gekoppel is</string>
     <string name="development_tools_title">Gereedskap</string>
+    <string name="usb_mass_storage_title">Massa stoorplek</string>
+    <string name="usb_mass_storage_summary">Aktiveer USB massa stoorplek</string>
     <string name="adb_over_network">ADB oor netwerk</string>
     <string name="adb_over_network_summary">Aktiveer TCP/IP-ontfouting oor die netwerk koppelvlakke (Wi-Fi, USB netwerke). Hierdie instelling word teruggestel tydens herlaai</string>
     <string name="adb_over_network_warning">WAARSKUWING: Wanneer ADB oor netwerk aangeskakel is, is die toestel kwesbaar vir indringers op alle verbonde netwerke, insluitend die GSM data netwerk\n\nGebruik Slegs hierdie funksie wanneer vertroude netwerke verbind is\n\nWil jy dit aanskakel?</string>
@@ -500,11 +517,16 @@
     <string name="title_tile_nfc">NFC</string>
     <string name="title_tile_screen_timeout">Skerm afsnytyd</string>
     <string name="title_tile_usb_tether">USB internetverbinding</string>
+    <string name="title_tile_quiet_hours">Stille-ure</string>
+    <string name="title_tile_volume">Volume</string>
+    <string name="title_tile_expanded_desktop">Uitgebreide lessenaar</string>
+
     <string name="title_dynamic_tiles">Dinamiese teëls</string>
     <string name="dynamic_tiles_note_title">Nota</string>
     <string name="dynamic_tiles_note_summary">Dinamiese teëls is nie altyd sigbaar nie en sal slegs vertoon indien deur \'n stelsel gebeurtenis sigbaar gemaak is</string>
     <string name="title_dynamic_alarm">Wekker</string>
     <string name="title_dynamic_bugreport">Foutverslag</string>
+    <string name="title_dynamic_dock_battery">Dok battery</string>
     <string name="title_dynamic_ime">Verander insetmetode</string>
     <string name="title_dynamic_usbtether">USB internetverbinding</string>
     <string name="title_dynamic_wifi">Wi-Fi skerm</string>
@@ -549,18 +571,6 @@
     <string name="safe_headset_volume_summary">Voorkom te harde volume wanneer oorfone aanvanklik gekoppel word</string>
     <string name="cyanogenmod_waiver_title">Kwytskelding</string>
     <string name="cyanogenmod_waiver_body">"Wysiging van hierdie instelling kan teen jou staat of regerings wette wees.\n\nRaak "<b>"OK"</b>" om hierdie waarskuwing en kwytskelding te aanvaar en CyanogenMod en sy bydraers te vrywaar van alle wetlike verpligtinge."</string>
-    <string name="light_sensor_current_value">Huidige ligsensor waarde: <xliff:g id="light_level">%d</xliff:g> lux</string>
-    <string name="auto_brightness_dialog_title">Outomatiese helderheid</string>
-    <string name="auto_brightness_level_format"><xliff:g id="start_level">%1$s</xliff:g> -\n<xliff:g id="end_level">%2$s</xliff:g> lux</string>
-    <string name="auto_brightness_adjust_button">Verstel</string>
-    <string name="auto_brightness_reset_button">Stel terug</string>
-    <string name="auto_brightness_split_dialog_title">Verdeel helderheidsvlak</string>
-    <string name="auto_brightness_reset_dialog_title">Stel terug?</string>
-    <string name="auto_brightness_reset_confirmation">Alle helderheidsvlakke sal teruggestel word na die oorspronklike waardes.</string>
-    <string name="auto_brightness_split_lux_format">Verdeel posisie (tussen <xliff:g id="min">%1$d</xliff:g> en <xliff:g id="max">%2$d</xliff:g> lux)</string>
-    <string name="auto_brightness_level_options">Ligvlak opsies</string>
-    <string name="auto_brightness_menu_split">Verdeel</string>
-    <string name="auto_brightness_menu_remove">Verwyder</string>
     <string name="advanced_reboot_title">Gevorderde herlaai</string>
     <string name="advanced_reboot_summary">Wanneer toestel ontsluit is, maak die \'recovery\' en \'bootloader\' herlaai opsies in die kragkieslys beskikbaar</string>
     <string name="volume_adjust_sounds_enable_title">Volume verandering</string>
@@ -601,4 +611,79 @@
     <string name="wifi_mode">Mode</string>
     <string name="wifi_mode_ibss">Ad-Hoc (IBSS) Netwerk</string>
     <string name="wifi_mode_ibss_short">Ad-Hoc</string>
+    <string name="light_sensor_current_value">Huidige ligsensor waarde: <xliff:g id="light_level">%d</xliff:g> lux</string>
+    <string name="auto_brightness_dialog_title">Outomatiese helderheidsvlakke</string>
+    <string name="auto_brightness_level_format"><xliff:g id="level">%1$d</xliff:g> lux</string>
+    <string name="auto_brightness_last_level_format"><xliff:g id="level">%1$d</xliff:g> -\n\u221e lux</string>
+    <string name="auto_brightness_adjust_button">Pas aan</string>
+    <string name="auto_brightness_close_button">Sluit</string>
+    <string name="auto_brightness_reset_button">Herstel</string>
+    <string name="auto_brightness_split_dialog_title">Verdeel helderheidsvlak</string>
+    <string name="auto_brightness_level_dialog_title">Stel ligvlak op</string>
+    <string name="auto_brightness_lux">Omgewings helderheid (lux)</string>
+    <string name="auto_brightness_backlight">Skerm helderheid (%)</string>
+    <string name="auto_brightness_reset_dialog_title">Herstel vlakke?</string>
+    <string name="auto_brightness_reset_confirmation">Alle helderheidsvlakke sal herstel word na die standaard instellings.</string>
+    <string name="auto_brightness_split_lux_format">Verdeel posisie (tussen <xliff:g id="min">%1$d</xliff:g> en <xliff:g id="max">%2$d</xliff:g> lux)</string>
+    <string name="auto_brightness_level_options">Ligvlak opsies</string>
+    <string name="auto_brightness_menu_edit">Wysig</string>
+    <string name="auto_brightness_menu_split">Verdeel</string>
+    <string name="auto_brightness_menu_remove">Verwyder</string>
+    <string name="auto_brightness_preview">Voorskou</string>
+    <string name="auto_brightness_preview_dialog_title">Helderheidskurwe voorbeeld</string>
+    <string name="auto_brightness_help_dialog_title">Help</string>
+    <string name="auto_brightness_help_text"><b>Hoe word helderheid bereken?</b>
+\n\n
+Die helderheidskurwe word bereken deur die uitvoering van \'n <i>kubieke latfunksie interpolasie</i>
+op \'n gegewe aantal <i>beheerpunte</i>. Dit is nie \'n \'emmer-tipe\' berekening waar helderheid van
+die skerm konstant bly vir \'n spesifieke reeks van die omgewings helderheid nie. Met die manier,
+sal klein veranderinge in die omgewings helderheid nie \'n groot sprong in die helderheid van die
+skerm veroorsaak nie, maar dit kan moeilik wees om die presiese gevolge van die verandering van beheerpunte te voorspel.\n
+Om hiermee te help, kan \'n voorskou van die berekende kurwe beskou word. Neem asseblief kennis
+dat die voorbeeld die kurwe in \'n <i>logaritmiese</i> skaal toon, sodat alle beheerpunte sigbaar is.
+Met die gebruik van \'n lineêre skaal, is dit moeilik om die belangrike beheerpunte in die laer reeks
+van die omgewings helderheid te onderskei.
+\n\n
+<b>Hoe om die helderheidskurwe te wysig?</b>
+\n\n
+Elke item in die lys stem ooreen met een <i>beheerpunt</i> van die helderheidskurwe.
+Die skuif-knoppie kan gebruik word om die helderheidsvlak van die punt te verander. Die
+helderheid van die skerm sal dienooreenkomstig verander om \'n
+voorskou van die ligvlak te gee. Addisionele opsies is beskikbaar deur \'n lang-druk op \'n
+item. Deur die kies van \'Wysig\', word beide die omgewings helderheidsvlak van die beheerpunt en
+die verlangde helderheid van die skerm gestoor. Kies \'Verdeel\' om \n item te verdeel in twee kontrolepunte. \'Verwyder\' verwyder die geselekteerde
+item.
+    </string>
+    <string name="gestures_settings_title">Stilus-gebare</string>
+    <string name="category_spen_title">Stilus-gebare</string>
+    <string name="enable_subcat_title">Stilus</string>
+    <string name="enable_spen_title_head">Aktiveer stilus-gebare</string>
+    <string name="enable_spen_summary_head">Begin persoonlike aksies met stilus-knoppie gebare. Waarskuwing: programme sal nie in staat wees om insette te aanvaar deur die inhou van die pen knoppie nie</string>
+    <string name="gestures_subcat_title">Gebare</string>
+    <string name="gestures_left_spen_title_head">Vee links</string>
+    <string name="gestures_left_spen_summary_head">Begin persoonlike aksie wanneer links gevee word</string>
+    <string name="gestures_right_spen_title_head">Vee regs</string>
+    <string name="gestures_right_spen_summary_head">Begin persoonlike aksie wanneer regs gevee word</string>
+    <string name="gestures_up_spen_title_head">Vee op</string>
+    <string name="gestures_up_spen_summary_head">Begin persoonlike aksie wanneer op gevee word</string>
+    <string name="gestures_down_spen_title_head">Vee af</string>
+    <string name="gestures_down_spen_summary_head">Begin persoonlike aksie wanneer af gevee word</string>
+    <string name="gestures_long_spen_title_head">Lang-druk</string>
+    <string name="gestures_long_spen_summary_head">Begin persoonlike aksie met lang-druk</string>
+    <string name="gestures_double_spen_title_head">Dubbele aanraak</string>
+    <string name="gestures_double_spen_summary_head">Begin persoonlike aksie met dubbele aanraak</string>
+    <string name="gestures_action_empty">Geen aksie</string>
+    <string name="gestures_action_home">Tuis-knoppie aksie</string>
+    <string name="gestures_action_back">Terug-knoppie aksie</string>
+    <string name="gestures_action_menu">Kieslys-knoppie aksie</string>
+    <string name="gestures_action_search">Soek-knoppie aksie</string>
+    <string name="gestures_action_recent">Onlangse programme</string>
+    <string name="stylus_app_not_installed">%s is nie geïnstalleer nie</string>
+    <string name="wifi_ibss_freq_title">Kanaal/Frekwensie</string>
+    <string name="wifi_channel">Kanaal</string>
+    <string name="power_notifications_category_title">Krag-klank</string>
+    <string name="power_notifications_enable_title">Aktiveer</string>
+    <string name="power_notifications_vibrate_title">Vibreer</string>
+    <string name="power_notifications_ringtone_title">Kennisgewing-luitoon</string>
+    <string name="power_notifications_ringtone_silent">Gedemp</string>
 </resources>
