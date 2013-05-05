@@ -381,6 +381,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         mAllPrefs.add(mMockLocationAppPref);
 
         mVerifyAppsOverUsb = findAndInitSwitchPref(VERIFY_APPS_OVER_USB_KEY);
+        mAllPrefs.add(mVerifyAppsOverUsb);
         if (!showVerifierSetting()) {
             if (debugDebuggingCategory != null) {
                 debugDebuggingCategory.removePreference(mVerifyAppsOverUsb);
@@ -767,6 +768,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         writeLogdSizeOption(null);
         resetRootAccessOptions();
         resetDevelopmentShortcutOptions();
+        resetVerifyAppsOverUsbOptions();
         writeAnimationScaleOption(0, mWindowAnimationScale, null);
         writeAnimationScaleOption(1, mTransitionAnimationScale, null);
         writeAnimationScaleOption(2, mAnimatorDurationScale, null);
@@ -996,6 +998,11 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         } else {
             mMockLocationAppPref.setSummary(getString(R.string.mock_location_app_not_set));
         }
+    }
+
+    private void resetVerifyAppsOverUsbOptions() {
+        Settings.Global.putInt(getActivity().getContentResolver(),
+                Settings.Global.PACKAGE_VERIFIER_INCLUDE_ADB, 1);
     }
 
     private void updateVerifyAppsOverUsbOptions() {
