@@ -299,6 +299,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
 
         mEnableAdb = findAndInitSwitchPref(ENABLE_ADB);
         mAdbNotify = findAndInitCheckboxPref(ADB_NOTIFY);
+        mAllPrefs.add(mAdbNotify);
         mClearAdbKeys = findPreference(CLEAR_ADB_KEYS);
         if (!SystemProperties.getBoolean("ro.adb.secure", false)) {
             if (debugDebuggingCategory != null) {
@@ -341,6 +342,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         mAllPrefs.add(mDebugAppPref);
         mWaitForDebugger = findAndInitSwitchPref(WAIT_FOR_DEBUGGER_KEY);
         mVerifyAppsOverUsb = findAndInitSwitchPref(VERIFY_APPS_OVER_USB_KEY);
+        mAllPrefs.add(mVerifyAppsOverUsb);
         if (!showVerifierSetting()) {
             if (debugDebuggingCategory != null) {
                 debugDebuggingCategory.removePreference(mVerifyAppsOverUsb);
@@ -635,6 +637,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         resetDebuggerOptions();
         writeLogdSizeOption(null);
         resetRootAccessOptions();
+        resetAdbNotifyOptions();
+        resetVerifyAppsOverUsbOptions();
         writeAnimationScaleOption(0, mWindowAnimationScale, null);
         writeAnimationScaleOption(1, mTransitionAnimationScale, null);
         writeAnimationScaleOption(2, mAnimatorDurationScale, null);
@@ -682,6 +686,11 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                     Settings.Secure.ADB_ENABLED, 1);
         }
         updateRootAccessOptions();
+    }
+
+    private void resetAdbNotifyOptions() {
+        Settings.Secure.putInt(getActivity().getContentResolver(),
+                Settings.Secure.ADB_NOTIFY, 1);
     }
 
     private void updateHdcpValues() {
@@ -772,6 +781,11 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
             mDebugAppPref.setSummary(getResources().getString(R.string.debug_app_not_set));
             mWaitForDebugger.setEnabled(false);
         }
+    }
+
+    private void resetVerifyAppsOverUsbOptions() {
+        Settings.Global.putInt(getActivity().getContentResolver(),
+              Settings.Global.PACKAGE_VERIFIER_INCLUDE_ADB, 1);
     }
 
     private void updateVerifyAppsOverUsbOptions() {
