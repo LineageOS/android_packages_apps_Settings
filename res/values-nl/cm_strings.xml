@@ -246,6 +246,7 @@
     <string name="icon_picker_calendar">Agenda</string>
     <string name="icon_picker_camera">Camera</string>
     <string name="icon_picker_chrome">Chrome</string>
+    <string name="icon_picker_contacts">Contacten</string>
     <string name="icon_picker_email">E-mail</string>
     <string name="icon_picker_email2">E-mail (Holo)</string>
     <string name="icon_picker_facebook">Facebook</string>
@@ -291,6 +292,7 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="profile_select">Profiel kiezen</string>
     <string name="link_volume_ringtones">Volumes linken</string>
     <string name="link_volume_mutes">Stille standen linken</string>
+    <string name="volume_keys_control_ring_stream">Volumeknoppen passen beltoonvolume aan</string>
     <string name="notification_light_general_title">Algemeen</string>
     <string name="notification_light_applist_title">Apps</string>
     <string name="notification_light_phonelist_title">Telefoon</string>
@@ -518,7 +520,7 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="pref_wifi_disable_hdcp_summary">Gebruiken indien verbonden, maar zonder uitvoer</string>
     <string name="app_security_title">App-beveiliging</string>
     <string name="sms_security_check_limit_title">Limiet sms-berichten</string>
-    <string name="sms_security_check_limit_summary">Apps kunnen %d berichten versturen in 30 minuten zonder bevestiging</string>
+    <string name="sms_security_check_limit_summary">Apps kunnen %d berichten verzenden in 30 minuten zonder bevestiging</string>
     <string name="sms_security_check_limit_default">30 (standaard)</string>
     <string name="title_toggle_screentimeout">Schermtime-out</string>
     <string name="lock_clock_title">Klokwidget</string>
@@ -568,11 +570,12 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="auto_brightness_last_level_format"><xliff:g id="level">%1$d</xliff:g> -\n\u221e lux</string>
     <string name="auto_brightness_adjust_button">Aanpassen</string>
     <string name="auto_brightness_reset_button">Herstellen</string>
-    <string name="auto_brightness_split_dialog_title">Helderheidsniveau opsplitsen</string>
-    <string name="auto_brightness_reset_dialog_title">Niveaus herstellen?</string>
-    <string name="auto_brightness_reset_confirmation">Alle helderheidsniveaus worden hersteld naar standaard</string>
+    <string name="auto_brightness_split_dialog_title">Helderheidsstand opsplitsen</string>
+    <string name="auto_brightness_reset_dialog_title">Standen herstellen?</string>
+    <string name="auto_brightness_reset_confirmation">Alle helderheidsstanden worden hersteld naar standaard</string>
     <string name="auto_brightness_split_lux_format">Plaats van opsplitsing (tussen <xliff:g id="min">%1$d</xliff:g> en <xliff:g id="max">%2$d</xliff:g> lux)</string>
     <string name="auto_brightness_level_options">Lichtniveau</string>
+    <string name="auto_brightness_menu_edit">Aanpassen</string>
     <string name="auto_brightness_menu_split">Opsplitsen</string>
     <string name="auto_brightness_menu_remove">Verwijderen</string>
     <string name="volume_adjust_sounds_enable_title">Aanpassingsgeluid volume</string>
@@ -610,4 +613,71 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="pie_control_trigger_right">Rechterrand scherm</string>
     <string name="pie_control_trigger_top">Onderrand scherm</string>
     <string name="pie_control_trigger_top_summary">Alleen navigatie wordt bovenaan getoond</string>
+    <string name="anonymous_statistics_title">Statistieken</string>
+    <string name="anonymous_statistics_summary">Help CyanogenMod te verbeteren door anonieme statistieken te verzenden</string>
+    <string name="anonymous_statistics_warning_title">Over</string>
+    <string name="anonymous_statistics_warning">Door statistieken verzenden toe te staan worden tijdens het opstarten anonieme gegevens naar de ontwikkelaars van CyanogenMod verzonden om unieke installaties te kunnen volgen. In de gegevens zit een uniek id-nummer verwerkt, dat uw privacy niet schendt.\n\nOm een voorbeeld te zien, tikt u op \'Voorbeeld van gegevens\'.</string>
+    <string name="enable_reporting_title">Statistieken verzenden</string>
+    <string name="preview_data_title">Voorbeeld van gegevens</string>
+    <string name="view_stats_title">Statistieken tonen</string>
+    <string name="anonymous_learn_more">Lees meer</string>
+    <string name="anonymous_notification_desc">Statistieken in-/uitschakelen</string>
+    <string name="preview_id_title">Uniek id</string>
+    <string name="preview_device_title">Apparaat</string>
+    <string name="preview_version_title">Versie</string>
+    <string name="preview_country_title">Land</string>
+    <string name="preview_carrier_title">Provider</string>
+    <string name="title_tile_expanded_desktop">Uitgebreid bureaublad</string>
+    <string name="title_dynamic_dock_battery">Dock-accu</string>
+    <string name="gestures_settings_title">Stylusgebaren</string>
+    <string name="category_spen_title">Stylusgebaren</string>
+    <string name="enable_subcat_title">Stylus</string>
+    <string name="enable_spen_title_head">Stylusgebaren inschakelen</string>
+    <string name="enable_spen_summary_head">Aangepaste acties uitvoeren door gebaren te maken met de stylusknop ingedrukt. Let op: apps ontvangen geen invoer wanneer de stylusknop ingedrukt wordt gehouden.</string>
+    <string name="gestures_subcat_title">Gebaren</string>
+    <string name="gestures_left_spen_title_head">Sleep naar links</string>
+    <string name="gestures_left_spen_summary_head">Aangepaste actie bij naar links slepen</string>
+    <string name="gestures_right_spen_title_head">Sleep naar rechts</string>
+    <string name="gestures_right_spen_summary_head">Aangepaste actie bij naar rechts slepen</string>
+    <string name="gestures_up_spen_title_head">Sleep omhoog</string>
+    <string name="gestures_up_spen_summary_head">Aangepaste actie bij omhoog slepen</string>
+    <string name="gestures_down_spen_title_head">Sleep omlaag</string>
+    <string name="gestures_down_spen_summary_head">Aangepaste actie bij omlaag slepen</string>
+    <string name="gestures_long_spen_title_head">Lang aanraken</string>
+    <string name="gestures_long_spen_summary_head">Aangepaste actie bij lang aanraken</string>
+    <string name="gestures_double_spen_title_head">Dubbeltik</string>
+    <string name="gestures_double_spen_summary_head">Aangepaste actie bij tweemaal tikken</string>
+    <string name="gestures_action_empty">Geen actie</string>
+    <string name="gestures_action_home">Thuisknop nabootsen</string>
+    <string name="gestures_action_back">Terugknop nabootsen</string>
+    <string name="gestures_action_menu">Menuknop nabootsen</string>
+    <string name="gestures_action_search">Zoekknop nabootsen</string>
+    <string name="gestures_action_recent">Recente apps</string>
+    <string name="stylus_app_not_installed">%s is niet geïnstalleerd</string>
+    <string name="wifi_mode">Modus</string>
+    <string name="wifi_mode_ibss">Ad-hoc-netwerk (IBSS)</string>
+    <string name="wifi_mode_ibss_short">Ad hoc</string>
+    <string name="auto_brightness_close_button">Sluiten</string>
+    <string name="auto_brightness_level_dialog_title">Lichtniveau-instelling</string>
+    <string name="auto_brightness_lux">Omgevingslichtsterkte (lux)</string>
+    <string name="auto_brightness_backlight">Schermhelderheid (%)</string>
+    <string name="auto_brightness_preview">Voorbeeld</string>
+    <string name="auto_brightness_preview_dialog_title">Voorbeeld helderheidscurve</string>
+    <string name="auto_brightness_help_dialog_title">Help</string>
+    <string name="auto_brightness_help_text"><b>Hoe wordt de helderheid berekend?</b>
+\n\n
+De helderheidscurve wordt berekend door <i>kubische spline-interpolatie</i> toe te passen op een bepaald aantal <i>controlepunten</i>. Het is geen \'bucket-type\'-berekening, waarbij de schermhelderheid gelijk blijft voor een specifiek bereik van omgevingslichtsterkte. Op deze manier hebben kleine veranderingen in omgevingslichtsterkte geen grote invloed op de schermhelderheid. Het is echter lastig om de precieze gevolgen van het veranderen van controlepunten te voorspellen.\nOm daarbij te helpen is het mogelijk om een voorbeeld van de helderheidscurve te bekijken. Houd er rekening mee dat het voorbeeld wordt weergegeven met een <i>logaritmische</i> schaal, zodat alle controlepunten apart kunnen worden weergegeven. Als een lineaire schaal gebruikt zou worden, zou het niet mogelijk zijn om de belangrijkere controlepunten te kunnen onderscheiden in het onderste bereik van de omgevingslichtsterkte.
+\n\n
+<b>Hoe kan de helderheidscurve worden bewerkt?</b>
+\n\n
+Elke regel in de lijst van helderheidsstanden komt overeen met één <i>controlepunt</i> op de helderheidscurve. Tijdens het verplaatsen van de schuifbalk wordt de schermhelderheid automatisch aangepast om een voorbeeld te geven van het lichtniveau.\nExtra opties zijn beschikbaar door een regel lang aan te raken. Door \'Aanpassen\' te kiezen kan zowel de omgevingslichtsterkte als de gewenste schermhelderheid aangepast worden. Met \'Opsplitsen\' kan een regel gedupliceerd worden om een extra controlepunt in te voegen en \'Verwijderen\' verwijdert de geselecteerde regel.
+    </string>
+    <string name="wifi_ibss_freq_title">Kanaal/frequentie</string>
+    <string name="wifi_channel">Kanaal</string>
+    <string name="wifi_mhz">MHz</string>
+    <string name="power_notifications_category_title">Opladergeluid</string>
+    <string name="power_notifications_enable_title">Inschakelen</string>
+    <string name="power_notifications_vibrate_title">Trillen</string>
+    <string name="power_notifications_ringtone_title">Meldingsgeluid</string>
+    <string name="power_notifications_ringtone_silent">Stil</string>
 </resources>
