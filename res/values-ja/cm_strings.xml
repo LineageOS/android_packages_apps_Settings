@@ -21,9 +21,6 @@
     <string name="bluetooth_mas_remember_choice">次回以降表示しない</string>
     <string name="wifi_setting_priority_title">Wi-Fi優先度</string>
     <string name="wifi_setting_priority_summary">Wi-Fiネットワークの優先度を設定する</string>
-    <string name="battery_info_status_full">フル</string>
-    <string name="gadget_brightness_state_full">フル</string>
-    <string name="gadget_brightness_state_half">ハーフ</string>
     <string name="headset_category_title">ヘッドセット</string>
     <string name="lockpattern_settings_enable_error_path_title">パターンエラーを表示</string>
     <string name="lockpattern_settings_enable_dots_title">パターンドットを表示</string>
@@ -37,6 +34,7 @@
     <string name="adb_notify_summary">USBデバッグが接続されたときに通知する</string>
     <string name="link_volume_ringtones">"着信音と同じ音量にする"</string>
     <string name="link_volume_mutes">"ミュート状態をリンクさせる"</string>
+    <string name="volume_keys_control_ring_stream">ボリュームキーで着信音量を制御する</string>
     <string name="icon_picker_search">検索</string>
     <string name="icon_picker_google_small">Google (小)</string>
     <string name="accessibility_home_button_answers_call_prerefence_title">ホームボタンで着信に応答</string>
@@ -48,7 +46,9 @@
     <string name="icon_picker_browser">ブラウザ</string>
     <string name="icon_picker_calendar">カレンダー</string>
     <string name="icon_picker_camera">カメラ</string>
+    <string name="icon_picker_contacts">連絡先</string>
     <string name="icon_picker_email">Eメール</string>
+    <string name="icon_picker_email2">Eメール Holo</string>
     <string name="icon_picker_facebook">Facebook</string>
     <string name="icon_picker_gallery">ギャラリー</string>
     <string name="icon_picker_googleplus">Googleプラス</string>
@@ -619,4 +619,64 @@
     <string name="pie_control_trigger_right">スクリーン境界の右側</string>
     <string name="pie_control_trigger_top">スクリーン境界の上側</string>
     <string name="pie_control_trigger_top_summary">上側ではナビゲーションのみ表示されます</string>
+    <string name="notification_pulse_title">通知ライト</string>
+    <string name="title_tile_expanded_desktop">デスクトップ拡張</string>
+    <string name="title_dynamic_dock_battery">ドックバッテリー</string>
+    <string name="auto_brightness_close_button">閉じる</string>
+    <string name="auto_brightness_level_dialog_title">明るさレベル設定</string>
+    <string name="auto_brightness_lux">周囲の明るさ (ルクス)</string>
+    <string name="auto_brightness_backlight">画面の明るさ (%)</string>
+    <string name="auto_brightness_menu_edit">編集</string>
+    <string name="auto_brightness_preview">プレビュー</string>
+    <string name="auto_brightness_preview_dialog_title">輝度曲線のプレビュー</string>
+    <string name="auto_brightness_help_dialog_title">ヘルプ</string>
+    <string name="auto_brightness_help_text"><b>明るさはどうやって算出される?</b>
+\n\n
+輝度曲線は与えられた<i>制御点</i>の数において<i>キュービックスプライン補間</i>を行うことにより算出されます。
+これは、周囲の明るさの具体的な範囲で画面の明るさが一定にとどまるような\'バケツ型\'計算ではありません。
+これにより、周囲の明るさが少し変化しただけで、画面の明るさが大きく変化するようなことはありません。しかしながら、
+制御点の変更による正確な結果を予測するのはすこし困難です。\n
+そこで、計算された曲線のプレビューを見ることができます。プレビューは、すべての制御点を明確化するために、<i>対数</i>スケールの曲線を示していることに注意してください。 リニアスケールを使用する場合、周囲の明るさの低い範囲において、より重要な制御点の区別ができないでしょう。
+\n\n
+<b>輝度曲線を編集するには?</b>
+\n\n
+輝度リストの各行は輝度曲線の<i>制御点</i>に相当します。点の輝度レベルを編集するには、各行にあるスライダーを使用することができます。
+スライダーをタッチしている間、それに応じて明るさをプレビューしながら画面の明るさが変更されます。\n
+ラインを長押しすることで、追加オプションを利用できます。
+[編集] を選択すると、手動で入力した希望する画面の輝度と同様に、制御点の周囲の明るさレベルを編集することができます。
+[分割] を選択すると1行を2行に複製し、制御点を追加することができます。 [削除] は選択した行を削除します。
+    </string>
+    <string name="gestures_settings_title">スタイラスジェスチャー</string>
+    <string name="category_spen_title">スタイラスジェスチャー</string>
+    <string name="enable_subcat_title">スタイラス</string>
+    <string name="enable_spen_title_head">スタイラスジェスチャーを有効にする</string>
+    <string name="enable_spen_summary_head">スタイラスボタンのスワイプジェスチャーでカスタムアクションを起動します。注意: アプリはスタイラスボタンを押しているときの入力は受け取れません。</string>
+    <string name="gestures_subcat_title">ジェスチャー</string>
+    <string name="gestures_left_spen_title_head">左スワイプ</string>
+    <string name="gestures_left_spen_summary_head">左スワイプでカスタムアクションを起動</string>
+    <string name="gestures_right_spen_title_head">右スワイプ</string>
+    <string name="gestures_right_spen_summary_head">右スワイプでカスタムアクションを起動</string>
+    <string name="gestures_up_spen_title_head">上スワイプ</string>
+    <string name="gestures_up_spen_summary_head">上スワイプでカスタムアクションを起動</string>
+    <string name="gestures_down_spen_title_head">下スワイプ</string>
+    <string name="gestures_down_spen_summary_head">下スワイプでカスタムアクションを起動</string>
+    <string name="gestures_long_spen_title_head">長押し</string>
+    <string name="gestures_long_spen_summary_head">長押しでカスタムアクションを起動</string>
+    <string name="gestures_double_spen_title_head">ダブルタップ</string>
+    <string name="gestures_double_spen_summary_head">ダブルタップでカスタムアクションを起動</string>
+    <string name="gestures_action_empty">なにもしない</string>
+    <string name="gestures_action_home">ホームキーをエミュレート</string>
+    <string name="gestures_action_back">戻るキーをエミュレート</string>
+    <string name="gestures_action_menu">メニューキーをエミュレート</string>
+    <string name="gestures_action_search">検索を呼び出す</string>
+    <string name="gestures_action_recent">最近使ったアプリ</string>
+    <string name="stylus_app_not_installed">%s はインストールされていません</string>
+    <string name="wifi_ibss_freq_title">チャンネル / 周波数</string>
+    <string name="wifi_channel">チャンネル</string>
+    <string name="wifi_mhz">MHz</string>
+    <string name="power_notifications_category_title">電源メニューのサウンド</string>
+    <string name="power_notifications_enable_title">有効</string>
+    <string name="power_notifications_vibrate_title">バイブレーション</string>
+    <string name="power_notifications_ringtone_title">通知音</string>
+    <string name="power_notifications_ringtone_silent">サイレント</string>
 </resources>
