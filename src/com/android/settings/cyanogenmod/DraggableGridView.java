@@ -27,7 +27,8 @@ import android.graphics.PorterDuff.Mode;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
+import android.view.View.MeasureSpec;
+import android.view.View.OnClickListener;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
@@ -46,8 +47,7 @@ import com.android.settings.cyanogenmod.QuickSettingsTiles.OnRearrangeListener;
 public class DraggableGridView extends ViewGroup implements
         View.OnTouchListener, View.OnClickListener, View.OnLongClickListener {
 
-    public static float childRatio = .95f;
-    protected int colCount, childSize, padding, dpi, scroll = 0;
+    protected int colCount, childWidth, childHeight, cellGap, scroll = 0;
     protected float lastDelta = 0;
     protected Handler handler = new Handler();
     protected int dragged = -1, lastX = -1, lastY = -1, lastTarget = -1;
@@ -58,19 +58,40 @@ public class DraggableGridView extends ViewGroup implements
     protected OnClickListener secondaryOnClickListener;
     private OnItemClickListener onItemClickListener;
 
+    public DraggableGridView(Context context) {
+        super(context);
+        init(context);
+    }
+
     public DraggableGridView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setListeners();
-        setChildrenDrawingOrderEnabled(true);
-        DisplayMetrics metrics = new DisplayMetrics();
-        ((Activity) context).getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        dpi = metrics.densityDpi;
+        init(context);
     }
 
     protected void setListeners() {
         setOnTouchListener(this);
         super.setOnClickListener(this);
         setOnLongClickListener(this);
+    }
+
+    private void init(Context context) {
+        setListeners();
+        setChildrenDrawingOrderEnabled(true);
+        setClipChildren(false);
+        setClipToPadding(false);
+        colCount = 3;
+    }
+
+    public void setColumnCount(int count) {
+        colCount = count;
+    }
+
+    public void setCellHeight(int height) {
+        childHeight = height;
+    }
+
+    public void setCellGap(int gap) {
+        cellGap = gap;
     }
 
     @Override
@@ -81,9 +102,9 @@ public class DraggableGridView extends ViewGroup implements
     protected Runnable updateTask = new Runnable() {
         public void run() {
             if (dragged != -1) {
-                if (lastY < padding * 3 && scroll > 0)
+                if (lastY < cellGap * 3 && scroll > 0)
                     scroll -= 20;
-                else if (lastY > getBottom() - getTop() - (padding * 3)
+                else if (lastY > getBottom() - getTop() - (cellGap * 3)
                         && scroll < getMaxScroll())
                     scroll += 20;
             } else if (lastDelta != 0 && !touching) {
@@ -120,22 +141,12 @@ public class DraggableGridView extends ViewGroup implements
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        // compute width of view, in dp
-        float w = (r - l) / (dpi / 160f);
-
-        // determine number of columns, at least 2
-        colCount = 3;
-
-        // determine childSize and padding, in px
-        childSize = (r - l) / colCount;
-        childSize = Math.round(childSize * childRatio);
-        padding = ((r - l) - (childSize * colCount)) / (colCount + 1);
-
-        for (int i = 0; i < getChildCount(); i++) {
-            if (i != dragged) {
+        int N = getChildCount();
+        for (int i = 0; i < N; i++) {
+            View v = (View) getChildAt(i);
+            if (v.getVisibility() != GONE) {
                 Point xy = getCoorFromIndex(i);
-                getChildAt(i).layout(xy.x, xy.y, xy.x + childSize,
-                        xy.y + childSize);
+                v.layout(xy.x, xy.y, xy.x + v.getMeasuredWidth(), xy.y + v.getMeasuredHeight());
             }
         }
     }
@@ -144,46 +155,22 @@ public class DraggableGridView extends ViewGroup implements
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         // Calculate the cell width dynamically
         int width = MeasureSpec.getSize(widthMeasureSpec);
-        int height = MeasureSpec.getSize(heightMeasureSpec);
-        int availableWidth = (int) (width - getPaddingLeft()
-                - getPaddingRight() - (3 - 1) * 0);
-        float cellWidth = (float) Math.ceil(((float) availableWidth) / 3);
+        int availableWidth = (int) (width - getPaddingLeft() - getPaddingRight() -
+                (colCount - 1) * cellGap);
+        childWidth = (int) Math.ceil(((float) availableWidth) / colCount);
 
         // Update each of the children's widths accordingly to the cell width
         int N = getChildCount();
-        int cellHeight = 0;
-        int cursor = 0;
-        for (int i = 0; i < N; ++i) {
-            // Update the child's width
+        for (int i = 0; i < N; i++) {
             View v = (View) getChildAt(i);
+            ViewGroup.LayoutParams lp = (ViewGroup.LayoutParams) v.getLayoutParams();
+            lp.width = childWidth;
+            lp.height = childHeight;
             if (v.getVisibility() != View.GONE) {
-                ViewGroup.LayoutParams lp = (ViewGroup.LayoutParams) v
-                        .getLayoutParams();
-                int colSpan = 1;
-                lp.width = (int) ((colSpan * cellWidth) + (colSpan - 1) * 0);
-
-                // Measure the child
-                int newWidthSpec = MeasureSpec.makeMeasureSpec(lp.width,
-                        MeasureSpec.EXACTLY);
-                int newHeightSpec = MeasureSpec.makeMeasureSpec(lp.height,
-                        MeasureSpec.EXACTLY);
-                v.measure(newWidthSpec, newHeightSpec);
-
-                // Save the cell height
-                if (cellHeight <= 0) {
-                    cellHeight = height;
-                }
-                cursor += colSpan;
+                measureChild(v,MeasureSpec.makeMeasureSpec(lp.width, MeasureSpec.EXACTLY),
+                        MeasureSpec.makeMeasureSpec(lp.height, MeasureSpec.AT_MOST));
             }
         }
-
-        // Set the measured dimensions. We always fill the tray width, but wrap
-        // to the height of
-        // all the tiles.
-        int numRows = (int) Math.ceil((float) cursor / 3);
-        int newHeight = (int) ((numRows * cellHeight) + ((numRows - 1) * 0))
-                + getPaddingTop() + getPaddingBottom();
-        // setMeasuredDimension(width, newHeight);
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
@@ -199,7 +186,7 @@ public class DraggableGridView extends ViewGroup implements
     }
 
     public int getIndexFromCoor(int x, int y) {
-        int col = getColOrRowFromCoor(x), row = getColOrRowFromCoor(y + scroll);
+        int col = getColumnFromCoor(x), row = getRowFromCoor(y + scroll);
         if (col == -1 || row == -1) // touch is between columns or rows
             return -1;
         int index = row * colCount + col;
@@ -208,22 +195,32 @@ public class DraggableGridView extends ViewGroup implements
         return index;
     }
 
-    protected int getColOrRowFromCoor(int coor) {
-        coor -= padding;
+    protected int getColumnFromCoor(int coor) {
+        coor -= cellGap;
         for (int i = 0; coor > 0; i++) {
-            if (coor < childSize)
+            if (coor < childWidth)
                 return i;
-            coor -= (childSize + padding);
+            coor -= (childWidth + cellGap);
+        }
+        return -1;
+    }
+
+    protected int getRowFromCoor(int coor) {
+        coor -= cellGap;
+        for (int i = 0; coor > 0; i++) {
+            if (coor < childHeight)
+                return i;
+            coor -= (childHeight + cellGap);
         }
         return -1;
     }
 
     protected int getTargetFromCoor(int x, int y) {
-        if (getColOrRowFromCoor(y + scroll) == -1) // touch is between rows
+        if (getRowFromCoor(y + scroll) == -1) // touch is between rows
             return -1;
 
-        int leftPos = getIndexFromCoor(x - (childSize / 4), y);
-        int rightPos = getIndexFromCoor(x + (childSize / 4), y);
+        int leftPos = getIndexFromCoor(x - (childWidth / 4), y);
+        int rightPos = getIndexFromCoor(x + (childWidth / 4), y);
         if (leftPos == -1 && rightPos == -1) // touch is in the middle of
                                              // nowhere
             return -1;
@@ -244,8 +241,8 @@ public class DraggableGridView extends ViewGroup implements
     protected Point getCoorFromIndex(int index) {
         int col = index % colCount;
         int row = index / colCount;
-        return new Point(padding / 2 + (childSize + padding / 2) * col, padding
-                / 2 + (childSize + padding / 2) * row - scroll);
+        return new Point(cellGap / 2 + (childWidth + cellGap / 2) * col, cellGap
+                / 2 + (childHeight + cellGap / 2) * row - scroll);
     }
 
     public int getIndexOf(View child) {
@@ -306,9 +303,9 @@ public class DraggableGridView extends ViewGroup implements
             if (dragged != -1) {
                 // change draw location of dragged visual
                 int x = (int) event.getX(), y = (int) event.getY();
-                int l = x - (3 * childSize / 4), t = y - (3 * childSize / 4);
-                getChildAt(dragged).layout(l, t, l + (childSize * 3 / 2),
-                        t + (childSize * 3 / 2));
+                int l = x - (3 * childWidth / 4), t = y - (3 * childHeight / 4);
+                getChildAt(dragged).layout(l, t, l + (childWidth * 3 / 2),
+                        t + (childHeight * 3 / 2));
 
                 // check for new target hover
                 int target = getTargetFromCoor(x, y);
@@ -346,7 +343,7 @@ public class DraggableGridView extends ViewGroup implements
                     reorderChildren(true);
                 else {
                     Point xy = getCoorFromIndex(dragged);
-                    v.layout(xy.x, xy.y, xy.x + childSize, xy.y + childSize);
+                    v.layout(xy.x, xy.y, xy.x + childWidth, xy.y + childHeight);
                 }
                 v.clearAnimation();
                 if (v instanceof ImageView)
@@ -374,13 +371,13 @@ public class DraggableGridView extends ViewGroup implements
     // EVENT HELPERS
     protected void animateDragged() {
         View v = getChildAt(dragged);
-        int x = getCoorFromIndex(dragged).x + childSize / 2, y = getCoorFromIndex(dragged).y
-                + childSize / 2;
-        int l = x - (3 * childSize / 4), t = y - (3 * childSize / 4);
-        v.layout(l, t, l + (childSize * 3 / 2), t + (childSize * 3 / 2));
+        int x = getCoorFromIndex(dragged).x + childWidth / 2, y = getCoorFromIndex(dragged).y
+                + childWidth / 2;
+        int l = x - (3 * childWidth / 4), t = y - (3 * childHeight / 4);
+        v.layout(l, t, l + (childWidth * 3 / 2), t + (childHeight * 3 / 2));
         AnimationSet animSet = new AnimationSet(true);
         ScaleAnimation scale = new ScaleAnimation(.667f, 1, .667f, 1,
-                childSize * 3 / 4, childSize * 3 / 4);
+                childWidth * 3 / 4, childHeight * 3 / 4);
         scale.setDuration(animT);
         AlphaAnimation alpha = new AlphaAnimation(1, .5f);
         alpha.setDuration(animT);
@@ -495,7 +492,7 @@ public class DraggableGridView extends ViewGroup implements
 
     protected int getMaxScroll() {
         int rowCount = (int) Math.ceil((double) getChildCount() / colCount), max = rowCount
-                * childSize + (rowCount + 1) * padding - getHeight();
+                * childHeight + (rowCount + 1) * cellGap - getHeight();
         return max;
     }
 
