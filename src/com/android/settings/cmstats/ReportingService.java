@@ -101,7 +101,7 @@ public class ReportingService extends Service {
 
         // report to the cmstats service
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost("http://stats.cyanogenmod.com/submit");
+        HttpPost httppost = new HttpPost("http://stats.cyanogenmod.org/submit");
         try {
             List<NameValuePair> kv = new ArrayList<NameValuePair>(5);
             kv.add(new BasicNameValuePair("device_hash", deviceId));
