@@ -47,41 +47,43 @@ public class NavBar extends Fragment {
     private static final int MENU_EDIT = Menu.FIRST + 1;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.nav_bar, container, false);
-        setHasOptionsMenu(true);
-        mContainer = container;
-        mActivity = getActivity();
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        mActivity = activity;
         mActivity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        return view;
-    }
-
-    /**
-     * Toggles navbar edit mode
-     * @param on True to enter edit mode / false to exit
-     * @param save True to save changes / false to discard them
-     */
-    private void toggleEditMode(boolean on, boolean save) {
-        mIntent.putExtra("edit", on);
-        mIntent.putExtra("save", save);
-        mActivity.sendBroadcast(mIntent);
-        if (mEditMenu != null) {
-            mEditMenu.setTitle(on ? R.string.navigation_bar_menu_editable :  R.string.navigation_bar_menu_locked)
-            .setIcon(on ? R.drawable.stat_navbar_edit_on : R.drawable.stat_navbar_edit_off);
-        }
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        mWasInExpandedState = Settings.System.getInt(mActivity.getContentResolver(),
-                Settings.System.EXPANDED_DESKTOP_STATE, 0) == 1;
-        setExpandedDesktopState(false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+            Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.nav_bar, container, false);
+
+        mContainer = container;
+        setHasOptionsMenu(true);
+
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        view.setSystemUiVisibility(View.SYSTEM_UI_FLAG_SHOW_NAVIGATION_IN_EXPANDED_DESKTOP);
+
         // If running on a phone, remove padding around container
         if (Utils.isPhone(mActivity)) {
             mContainer.setPadding(0, 0, 0, 0);
         }
+    }
+
+    @Override
+    public void onDetach() {
+        mActivity = null;
+        super.onDetach();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        toggleEditMode(false, false);
     }
 
     @Override
@@ -133,34 +135,18 @@ public class NavBar extends Fragment {
         }
     }
 
-    private void setExpandedDesktopState(boolean on) {
-        if (mWasInExpandedState) {
-            Settings.System.putInt(mActivity.getContentResolver(),
-                    Settings.System.EXPANDED_DESKTOP_STATE, on ? 1 : 0);
-            if (on) {
-                mWasInExpandedState = false;
-            }
+    /**
+     * Toggles navbar edit mode
+     * @param on True to enter edit mode / false to exit
+     * @param save True to save changes / false to discard them
+     */
+    private void toggleEditMode(boolean on, boolean save) {
+        mIntent.putExtra("edit", on);
+        mIntent.putExtra("save", save);
+        mActivity.sendBroadcast(mIntent);
+        if (mEditMenu != null) {
+            mEditMenu.setTitle(on ? R.string.navigation_bar_menu_editable :  R.string.navigation_bar_menu_locked)
+            .setIcon(on ? R.drawable.stat_navbar_edit_on : R.drawable.stat_navbar_edit_off);
         }
-    }
-
-    @Override
-    public void onPause() {
-        toggleEditMode(false, false);
-        setExpandedDesktopState(true);
-        super.onPause();
-    }
-
-    @Override
-    public void onStop() {
-        toggleEditMode(false, false);
-        setExpandedDesktopState(true);
-        super.onStop();
-    }
-
-    @Override
-    public void onDestroy() {
-        toggleEditMode(false, false);
-        setExpandedDesktopState(true);
-        super.onDestroy();
     }
 }
