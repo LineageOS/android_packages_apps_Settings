@@ -14,6 +14,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="intent_sender_data_label"><xliff:g id="data">Datos:</xliff:g></string>
     <string name="bluetooth_mas_request">Solicitud de acceso a mensajes</string>
     <string name="bluetooth_mas_acceptance_dialog_text">%1$s intenta acceder a los mensajes. ¿Permitir acceso a %2$s?</string>
     <string name="bluetooth_mas_remember_choice">No volver a preguntar</string>
@@ -26,24 +27,24 @@
     <string name="lockpattern_settings_enable_dots_title">Mostrar puntos de patrón</string>
     <string name="root_access">Acceso administrativo</string>
     <string name="root_access_warning_title">¿Permitir acceso administrativo?</string>
-    <string name="root_access_warning_message">¡Permitir a las aplicaciones solicitar acceso administrativo es muy peligroso y puede comprometer la seguridad de su dispositivo!</string>
+    <string name="root_access_warning_message">¡Permitir a las aplicaciones solicitar acceso administrativo es muy peligroso y puede comprometer la seguridad del dispositivo!</string>
     <string name="root_access_none">Desactivar</string>
     <string name="root_access_apps">Sólo aplicaciones</string>
     <string name="root_access_adb">Sólo ADB</string>
     <string name="root_access_all">Aplicaciones y ADB</string>
     <string name="accessibility_home_button_answers_call_prerefence_title">Botón Inicio descuelga</string>
     <string name="ok">Aceptar</string>
-    <string name="quiet_hours_title">Modo \u00ABtranquilidad\u00BB</string>
-    <string name="quiet_hours_summary">Configurar las horas en las que el dispositivo debe de estar en modo \u00ABtranquilidad\u00BB</string>
+    <string name="quiet_hours_title">Modo descanso</string>
+    <string name="quiet_hours_summary">Silenciar o desactivar sonidos y notificaciones durante un período de tiempo especificado</string>
     <string name="quiet_hours_note_title">Nota</string>
     <string name="quiet_hours_note_summary">Las llamadas entrantes se comportarán de manera normal durante este modo</string>
-    <string name="quiet_hours_enabled">Modo \u00ABtranquilidad\u00BB</string>
-    <string name="quiet_hours_enabled_on">Se forzará el modo \u00ABtranquilidad\u00BB durante las horas:</string>
+    <string name="quiet_hours_enabled">Modo descanso</string>
+    <string name="quiet_hours_enabled_on">Se forzará el modo descanso durante las horas:</string>
     <string name="quiet_hours_enabled_off">Las notificaciones se comportarán de manera normal</string>
-    <string name="quiet_hours_start">Inicio de modo \u00ABtranquilidad\u00BB</string>
-    <string name="quiet_hours_start_summary">Cuando forzar el inicio de modo \u00ABtranquilidad\u00BB</string>
-    <string name="quiet_hours_end">Fin de modo \u00ABtranquilidad\u00BB</string>
-    <string name="quiet_hours_end_summary">Cuando forzar la finalización del modo \u00ABtranquilidad\u00BB</string>
+    <string name="quiet_hours_start">Inicio del modo</string>
+    <string name="quiet_hours_start_summary">Cuándo forzar el inicio de modo descanso</string>
+    <string name="quiet_hours_end">Fin del modo</string>
+    <string name="quiet_hours_end_summary">Cuándo forzar la finalización del modo descanso</string>
     <string name="quiet_hours_mute">Notificaciones</string>
     <string name="quiet_hours_mute_on">No se reproducirán sonidos de notificaciones</string>
     <string name="quiet_hours_mute_off">Los sonidos de notificaciones se reproducirán de manera normal</string>
@@ -69,9 +70,9 @@
     <string name="cpu_info">CPU</string>
     <string name="mem_info">Memoria</string>
     <string name="anonymous_statistics_title">Estadísticas CyanogenMod</string>
-    <string name="anonymous_statistics_summary">Ayude a mejorar CyanogenMod mediante el envío anónimo de estadísticas</string>
+    <string name="anonymous_statistics_summary">Ayuda a mejorar CyanogenMod mediante el envío anónimo de estadísticas</string>
     <string name="anonymous_statistics_warning_title">Aviso</string>
-    <string name="anonymous_statistics_warning">Permitiendo la recopilación y envío de estadísticas de CyanogenMod, autoriza el envío de información de carácter no personal a los desarrolladores de CyanogenMod para realizar un seguimiento de las instalaciones que realice en los dispositivos. La información enviada incluye un identificador único que no compromete su privacidad o su información personal. Esta información es enviada durante el arranque.\n\nPara ver un ejemplo de la información enviada, pulse en \u00ABPrevisualizar datos\u00BB</string>
+    <string name="anonymous_statistics_warning">Permitiendo la recopilación y envío de estadísticas de CyanogenMod, autorizas el envío de información de carácter no personal a los desarrolladores de CyanogenMod para hacer un seguimiento de las instalaciones que realices en los dispositivos. La información enviada incluye un identificador único que no compromete tu privacidad ni tu información personal. Esta información es enviada durante el arranque.\n\nPara ver un ejemplo de la información enviada, pulsa en \u00ABPrevisualizar datos\u00BB</string>
     <string name="enable_reporting_title">Activar envío estadísticas</string>
     <string name="preview_data_title">Previsualizar datos</string>
     <string name="view_stats_title">Ver estadísticas</string>
@@ -89,7 +90,7 @@
     <string name="system_interface_title">Interfaz</string>
     <string name="notification_drawer_title">Área de notificación</string>
     <string name="lock_screen_title">Bloqueo de pantalla</string>
-    <string name="lockscreen_target_info">Arrastre el control deslizante para ajustar los accesos directos</string>
+    <string name="lockscreen_target_info">Arrastra el control deslizante para ajustar los accesos directos</string>
     <string name="lockscreen_target_title">Accesos directos</string>
     <string name="lockscreen_target_summary">Añadir o configurar accesos directos</string>
     <string name="lockscreen_target_reset">Valores por defecto restaurados</string>
@@ -211,8 +212,8 @@
     <string name="slide_lock_delay_10m">10 minutos</string>
     <string name="slide_lock_delay_30m">30 minutos</string>
     <string name="performance_settings_title">Rendimiento</string>
-    <string name="performance_settings_warning_title">Proceder con precaución</string>
-    <string name="performance_settings_warning">Estas configuraciones han sido incluidas a modo de experimentación y cualquier cambiado realizado sobre ellas puedan causar inestabilidad, cierres de aplicaciones, pérdida de datos o fallos de hardware.\n\nNo comunicar informes de errores si cualquiera de estas configuraciones ha sido cambiada de su valor por defecto.</string>
+    <string name="performance_settings_warning_title">Procede con precaución</string>
+    <string name="performance_settings_warning">Estos ajustes han sido incluidos a modo de experimentación y cualquier cambio realizado sobre ellos puede causar inestabilidad, cierre de aplicaciones, pérdida de datos o fallos de hardware.\n\nNo comuniques informes de errores si has cambiado alguno de los valores definidos por defecto.</string>
     <string name="processor_title">Procesador</string>
     <string name="processor_summary">Cambiar el patrón de CPU y la velocidad del reloj</string>
     <string name="cpu_cur_freq_title">Frecuencia actual de la CPU</string>
@@ -341,7 +342,7 @@
     <string name="battery_light_full_color_title">Cargada</string>
     <string name="volume_overlay_title">Panel de volumen</string>
     <string name="volbtn_music_controls_title">Controles de volumen</string>
-    <string name="volbtn_music_controls_summary">Cuando la pantalla este apagada, una pulsación prolongada de los controles de volumen avanzará/retrocederá sobre las pistas de música activas</string>
+    <string name="volbtn_music_controls_summary">Cuando la pantalla esté apagada, una pulsación prolongada de los controles de volumen avanzará/retrocederá sobre las pistas de música activas</string>
     <string name="volume_ring_only_description">Tonos del teléfono</string>
     <string name="ring_mode_title">Modo de sonido</string>
     <string name="ring_mode_normal">Normal</string>
@@ -359,8 +360,8 @@
     <string name="hardware_keys_app_switch_long_press_title">Tecla Cambio Aplicación (pulsación larga)</string>
     <string name="hardware_keys_show_overflow_title">Mostrar menú emergente</string>
     <string name="hardware_keys_show_overflow_summary">Mostrar el icono del menú emergente dentro de las aplicaciones</string>
-    <string name="hardware_keys_show_overflow_toast_enable">El botón de menú emergente puede no mostrarse hasta que la aplicación sea reiniciada</string>
-    <string name="hardware_keys_show_overflow_toast_disable">El botón de menú emergente puede no ocultarse hasta que la aplicación sea reiniciada</string>
+    <string name="hardware_keys_show_overflow_toast_enable">El botón de menú emergente puede que no se muestre hasta que la aplicación sea reiniciada</string>
+    <string name="hardware_keys_show_overflow_toast_disable">El botón de menú emergente puede que no se oculte hasta que la aplicación sea reiniciada</string>
     <string name="hardware_keys_action_nothing">Sin acción</string>
     <string name="hardware_keys_action_menu">Abrir/Cerrar menú</string>
     <string name="hardware_keys_action_app_switch">Cambio entre aplicaciones recientes</string>
@@ -385,9 +386,9 @@
     <string name="title_expanded_hide_indicator">Ocultar indicadores</string>
     <string name="title_expanded_hide_scrollbar">Ocultar barra de desplazamiento</string>
     <string name="title_widget_picker">Controles</string>
-    <string name="summary_widget_picker">Seleccionar que controles de energía se mostrarán en la barra de controles de energía</string>
+    <string name="summary_widget_picker">Seleccionar qué controles de energía se mostrarán en la barra de controles de energía</string>
     <string name="title_widget_order">Orden de controles</string>
-    <string name="summary_widget_order">Seleccionar el orden de los controles mostradores en la barra de controles de energía</string>
+    <string name="summary_widget_order">Seleccionar el orden de los controles mostrados en la barra de controles de energía</string>
     <string name="title_buttons">Controles</string>
     <string name="title_toggle_airplane">Modo avión</string>
     <string name="title_toggle_autorotate">Orientación</string>
@@ -411,7 +412,7 @@
     <string name="title_toggle_wimax">WiMAX</string>
     <string name="title_button_modes">Modos</string>
     <string name="pref_brightness_mode_title">Brillo</string>
-    <string name="pref_brightness_mode_summary">Escoja los niveles de luminosidad de la pantalla disponibles en la barra de controles de energía</string>
+    <string name="pref_brightness_mode_summary">Escoger los niveles de luminosidad de la pantalla disponibles en la barra de controles de energía</string>
     <string name="cm_brightness_mode_auto">Automático</string>
     <string name="cm_brightness_mode_dim">Atenuar</string>
     <string name="pref_network_mode_title">Conectividad móvil</string>
@@ -476,7 +477,7 @@
     <string name="usb_mass_storage_summary">Habilitar el almacenamiento masivo USB</string>
     <string name="adb_over_network">ADB sobre TCP/IP</string>
     <string name="adb_over_network_summary">Activar la depuración TCP/IP sobre las interfaces de red (Wi-Fi, redes USB). Esta configuración se restablece al reiniciar el dispositivo</string>
-    <string name="adb_over_network_warning">AVISO: ¡Cuando ADB sobre TCP/IP esté activo, su teléfono estará abierto a intrusiones en todas las redes conectadas, incluida la red de datos GSM!\n\nUse sólo esta característica cuando esté conectado a redes de confianza.\n\n¿Desea realmente activar esta función?</string>
+    <string name="adb_over_network_warning">AVISO: ¡Cuando ADB sobre TCP/IP esté activo, el dispositivo estará abierto a intrusiones en todas las redes conectadas, incluida la red de datos GSM!\n\nUsa sólo esta característica cuando estés conectado a redes de confianza.\n\n¿Deseas realmente activar esta función?</string>
     <string name="lockscreen_buttons_title">Acciones de botones</string>
     <string name="lockscreen_buttons_summary">Ver o cambiar las acciones de los botones en bloqueo de pantalla</string>
     <string name="lockscreen_long_press_back_title">Pulsación larga para botón Atrás</string>
@@ -551,7 +552,7 @@
     <string name="wifi_setting_priority_title">Prioridad Wi-Fi</string>
     <string name="wifi_setting_priority_summary">Especificar la prioridad de las redes Wi-Fi</string>
     <string name="pref_wifi_disable_hdcp_title">Omitir negociación HDCP</string>
-    <string name="pref_wifi_disable_hdcp_summary">Intente esta opción si puede conectar a la red pero no se consigue salida al exterior</string>
+    <string name="pref_wifi_disable_hdcp_summary">Intenta esta opción si puedes conectarte a la red pero no consigues salida a Internet</string>
     <string name="app_security_title">Seguridad en aplicaciones</string>
     <string name="sms_security_check_limit_title">Límite de mensajes SMS</string>
     <string name="sms_security_check_limit_summary">Las aplicaciones pueden enviar hasta %d mensajes SMS en 30 minutos antes de requerir confirmación</string>
@@ -575,7 +576,7 @@
     <string name="safe_headset_volume_title">Volumen seguro</string>
     <string name="safe_headset_volume_summary">Prevenir un volumen alto en los auriculares cuando sean conectados por primera vez</string>
     <string name="cyanogenmod_waiver_title">Renuncia</string>
-    <string name="cyanogenmod_waiver_body">Cambiar este ajuste puede ir en contra de la leyes de su estado o país.\n\nPulsando \u00ABAceptar\u00BB, usted reconoce esta advertencia y exime de cualquier responsabilidad legal a CyanogenMod y sus colaboradores, renunciando así a cualquier reclamación por daños y perjuicios.</string>
+    <string name="cyanogenmod_waiver_body">Cambiar este ajuste puede ir en contra de la leyes de tu estado o país.\n\nPulsando \u00ABAceptar\u00BB, reconoces esta advertencia y eximes de cualquier responsabilidad legal a CyanogenMod y sus colaboradores, renunciando así a cualquier reclamación por daños y perjuicios.</string>
     <string name="light_sensor_current_value">Valor actual del sensor: <xliff:g id="light_level">%d</xliff:g> lux</string>
     <string name="auto_brightness_dialog_title">Niveles automáticos de brillo</string>
     <string name="auto_brightness_level_format"><xliff:g id="level">%1$d</xliff:g> lux</string>
@@ -605,7 +606,7 @@ el brillo de pantalla permanece constante para un rango de luminosidad ambiental
 Con este sistema, pequeños cambios en la luminosidad ambiental no producirán un gran salto en el
 brillo de la pantalla, pero será complicado poder predecir las consecuencias de cambiar
 algún punto de control.\n
-Para ayudar en esto, se podrá mostrar una previsualización de la curva resultante. Tenga en cuenta
+Para ayudar en esto, se podrá mostrar una previsualización de la curva resultante. Ten en cuenta
 que la previsualización mostrará la curva en escala <i>logarítmica</i> por lo que no todos los
 puntos pueden mostrarse iguales. Si utilizásemos una escala lineal, sería difícil distinguir
 las tendencias de los puntos de control situados en el rango de mínima luminosidad ambiental.
@@ -613,13 +614,13 @@ las tendencias de los puntos de control situados en el rango de mínima luminosi
 <b>¿Cómo editar la curva de brillo?</b>
 \n\n
 Cada línea en lista de valores se corresponde con un <i>punto de control</i> de la curva de brillo.
-Para editar el nivel de brillo de ese punto, puede usar el control deslizante presente en cada
+Para editar el nivel de brillo de ese punto, puedes usar el control deslizante presente en cada
 línea. El brillo de la pantalla cambiará en función del control deslizante para mostrar una
 vista previa del nivel de luminosidad.\n
 Tocando de forma prolongada cada línea se mostrarán opciones adicionales. Seleccionando
-\u00ABEditar\u00BB, podrá editar el nivel de luminosidad ambiental del punto de control así
+\u00ABEditar\u00BB, podrás editar el nivel de luminosidad ambiental del punto de control así
 como introducir manualmente el brillo de pantalla deseado. Seleccionando \u00ABDividir\u00BB,
-podrá crear una nueva línea con el fin de insertar puntos de control adicionales.
+podrás crear una nueva línea con el fin de insertar puntos de control adicionales.
 \u00ABEliminar\u00BB borrará la línea seleccionada.
     </string>
     <string name="advanced_reboot_title">Reinicio modo avanzado</string>
