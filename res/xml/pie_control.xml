@@ -21,7 +21,16 @@
     <CheckBoxPreference
         android:key="pie_control_checkbox"
         android:title="@string/pie_control_title"
+        android:persistent="false"
         android:defaultValue="false" />
+
+    <ListPreference
+        android:key="pie_control_sensitivity"
+        android:title="@string/pie_control_sensitivity_title"
+        android:dialogTitle="@string/pie_control_sensitivity_title"
+        android:entries="@array/pie_control_sensitivity_entries"
+        android:entryValues="@array/pie_control_sensitivity_values"
+        android:persistent="false"/>
 
     <com.android.settings.cyanogenmod.PieSizePreference
         android:key="pie_control_size"
@@ -34,22 +43,26 @@
         <CheckBoxPreference
             android:key="pie_control_trigger_left"
             android:title="@string/pie_control_trigger_left"
+            android:persistent="false"
             android:defaultValue="false" />
 
         <CheckBoxPreference
             android:key="pie_control_trigger_bottom"
             android:title="@string/pie_control_trigger_bottom"
+            android:persistent="false"
             android:defaultValue="false" />
 
         <CheckBoxPreference
             android:key="pie_control_trigger_right"
             android:title="@string/pie_control_trigger_right"
+            android:persistent="false"
             android:defaultValue="false" />
 
         <CheckBoxPreference
             android:key="pie_control_trigger_top"
             android:title="@string/pie_control_trigger_top"
             android:summary="@string/pie_control_trigger_top_summary"
+            android:persistent="false"
             android:defaultValue="false" />
    </PreferenceCategory>
 </PreferenceScreen>
