@@ -70,10 +70,17 @@
             android:title="@string/display_category_wakeup_options_title" >
 
             <CheckBoxPreference
+                android:key="pref_home_wake"
+                android:title="@string/pref_home_wake_title"
+                android:summary="@string/pref_home_wake_summary"
+                android:defaultValue="true" />
+
+            <CheckBoxPreference
                 android:key="pref_volume_wake"
                 android:title="@string/pref_volume_wake_title"
                 android:summary="@string/pref_volume_wake_summary"
                 android:defaultValue="false" />
+
         </PreferenceCategory>
 
 </PreferenceScreen>
