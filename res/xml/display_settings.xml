@@ -59,14 +59,21 @@
                 android:title="@string/wifi_display_settings_title"
                 android:fragment="com.android.settings.wfd.WifiDisplaySettings" />
 
+        <CheckBoxPreference
+            android:key="screen_off_animation"
+            android:title="@string/screen_off_animation_title"
+            android:summary="@string/screen_off_animation_summary"
+            android:defaultValue="true" />
+
         <PreferenceCategory
             android:key="category_wakeup_options"
-            android:title="@string/display_category_wakeup_options_title"/>
+            android:title="@string/display_category_wakeup_options_title" >
 
-        <CheckBoxPreference
-            android:key="pref_volume_wake"
-            android:title="@string/pref_volume_wake_title"
-            android:summary="@string/pref_volume_wake_summary"
-            android:defaultValue="false" />
+            <CheckBoxPreference
+                android:key="pref_volume_wake"
+                android:title="@string/pref_volume_wake_title"
+                android:summary="@string/pref_volume_wake_summary"
+                android:defaultValue="false" />
+        </PreferenceCategory>
 
 </PreferenceScreen>
