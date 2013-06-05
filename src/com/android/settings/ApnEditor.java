@@ -22,6 +22,7 @@ import android.app.Dialog;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.CursorLoader;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -548,8 +549,17 @@ public class ApnEditor extends SettingsPreferenceFragment
     }
 
     private void deleteApn() {
-        getContentResolver().delete(mUri, null, null);
-        finish();
+        new AlertDialog.Builder(getActivity())
+        .setMessage(R.string.confirm_delete_apn)
+        .setCancelable(true)
+        .setPositiveButton(R.string.delete,new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog,int id) {
+                getContentResolver().delete(mUri, null, null);
+                finish();
+            }
+        })
+        .setNegativeButton(R.string.cancel, null)
+        .show();
     }
 
     private String starify(String value) {
