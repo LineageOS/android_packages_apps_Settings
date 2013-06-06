@@ -111,6 +111,9 @@
     <string name="profile_delete_confirm">Dieses Profil wirklich löschen?</string>
     <string name="profile_app_delete_confirm">Diese App wirklich aus der App-Gruppe entfernen?</string>
     <string name="profile_cannot_delete">Das aktive Profil kann nicht gelöscht werden</string>
+    <string name="profile_networkmode_2g">2G</string>
+    <string name="profile_networkmode_3g">3G</string>
+    <string name="profile_networkmode_2g3g">2G/3G</string>
     <string name="profile_connectionoverrides_title">Verbindungen festlegen</string>
     <string name="profile_volumeoverrides_title">Lautstärke festlegen</string>
     <string name="profile_vibratoroverrides_title">Vibration festlegen</string>
@@ -127,6 +130,9 @@
     <string name="profile_appgroup_manage">App-Gruppe bearbeiten</string>
     <string name="profile_settings">Profileinstellungen</string>
     <string name="profile_name">Profilname</string>
+    <string name="profile_trigger_connect">Beim Verbinden</string>
+    <string name="profile_trigger_disconnect">Beim Trennen</string>
+    <string name="profile_trigger_notrigger">Nicht auslösen</string>
     <string name="sound_mode">Benachrichtigungston</string>
     <string name="ringer_mode">Klingelton</string>
     <string name="lights_mode">Benachrichtigungslicht</string>
@@ -278,6 +284,11 @@
     <string name="increasing_ring_interval_3seconds">3 Sekunden</string>
     <string name="increasing_ring_interval_5seconds">5 Sekunden</string>
     <string name="increasing_ring_interval_10seconds">10 Sekunden</string>
+    <string name="profile_triggers">Auslöser</string>
+    <string name="profile_trigger_configure">Auslöser konfigurieren</string>
+    <string name="profile_trigger_filter_all">Alle Auslöser</string>
+    <string name="profile_trigger_filter_wifi">WLAN-Netze</string>
+    <string name="profile_trigger_filter_bluetooth">Bluetooth-Geräte</string>
     <string name="profile_write_nfc_tag">NFC-Tag beschreiben</string>
     <string name="profile_write_touch_tag">Zum Beschreiben Gerät mit NFC-Tag berühren</string>
     <string name="profile_write_success">Tag wurde erfolgreich beschrieben</string>
@@ -445,9 +456,11 @@
     <string name="status_bar_battery_status_circle_percentage">Kreis &amp; Prozent</string>
     <string name="status_bar_notif_count_title">Benachrichtigungszähler</string>
     <string name="status_bar_notif_count_summary">Anzahl der ungelesenen Benachrichtigungen in der Statusleiste anzeigen</string>
-    <string name="display_category_wakeup_options_title">Aufwecken</string>
+    <string name="display_category_wakeup_options_title">Aufweckoptionen</string>
+    <string name="pref_home_wake_title">Home-Taste</string>
+    <string name="pref_home_wake_summary">Gerät durch Drücken der Home-Taste aufwecken</string>
     <string name="pref_volume_wake_title">Lautstärketaste</string>
-    <string name="pref_volume_wake_summary">Lautstärketasten wecken das Gerät und aktivieren den Bildschirm</string>
+    <string name="pref_volume_wake_summary">Gerät durch Drücken der Lautstärketasten aufwecken</string>
     <string name="root_access">Root-Zugriff</string>
     <string name="root_access_warning_title">Root-Zugriff erlauben?</string>
     <string name="root_access_warning_message">Apps den Root-Zugriff zu ermöglichen kann gefährlich sein und die Sicherheit des Gerätes beeinträchtigen!</string>
@@ -504,6 +517,7 @@
     <string name="title_tile_quiet_hours">Ruhige Stunden</string>
     <string name="title_tile_volume">Lautstärke</string>
     <string name="title_tile_expanded_desktop">Erweiterter Desktop</string>
+    <string name="title_tile_camera">Kamera</string>
     <string name="title_dynamic_tiles">Dynamische Kacheln</string>
     <string name="dynamic_tiles_note_title">Hinweis</string>
     <string name="dynamic_tiles_note_summary">Dynamische Kacheln werden nur angezeigt, wenn das entsprechende Systemereignis eintritt</string>
@@ -667,8 +681,8 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <string name="gestures_settings_title">Stiftgesten</string>
     <string name="category_spen_title">Stiftgesten</string>
     <string name="enable_subcat_title">Stift</string>
-    <string name="enable_spen_title_head">Stiftgesten aktivieren</string>
-    <string name="enable_spen_summary_head">Aktionen durch Stiftgesten mit gedrücktem Knopf auslösen\nHinweis: Apps reagieren nicht auf Stifteingaben mit gedrücktem Knopf</string>
+    <string name="enable_spen_title_head">Gesten aktivieren</string>
+    <string name="enable_spen_summary_head">Aktionen durch Wischgesten mit gedrücktem Knopf am Stift auslösen</string>
     <string name="gestures_subcat_title">Gesten</string>
     <string name="gestures_left_spen_title_head">Nach links wischen</string>
     <string name="gestures_left_spen_summary_head">Aktion bei Wischen nach links</string>
@@ -683,19 +697,28 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <string name="gestures_double_spen_title_head">Doppelt tippen</string>
     <string name="gestures_double_spen_summary_head">Aktion bei doppeltem Tippen</string>
     <string name="gestures_action_empty">Keine Aktion</string>
-    <string name="gestures_action_home">Home-Taste auslösen</string>
-    <string name="gestures_action_back">Zurück-Taste auslösen</string>
-    <string name="gestures_action_menu">Menü-Taste auslösen</string>
+    <string name="gestures_action_home">Home</string>
+    <string name="gestures_action_back">Zurück</string>
+    <string name="gestures_action_menu">Menü</string>
     <string name="gestures_action_search">Suche</string>
     <string name="gestures_action_recent">Zuletzt geöffnete Apps</string>
     <string name="stylus_app_not_installed">%s ist nicht installiert</string>
     <string name="wifi_ibss_freq_title">Kanal / Frequenz</string>
     <string name="wifi_channel">Kanal</string>
     <string name="wifi_mhz">MHz</string>
-    <string name="power_notifications_category_title">Töne bei Ladegeräte-Anschluss</string>
+    <string name="power_notifications_category_title">Ladegeräte-Töne</string>
     <string name="power_notifications_enable_title">Aktivieren</string>
+    <string name="power_notifications_enable_summary">Beim Anschließen oder Trennen des Ladegerätes einen Ton abspielen</string>
     <string name="power_notifications_vibrate_title">Vibrieren</string>
     <string name="power_notifications_ringtone_title">Benachrichtigungston</string>
     <string name="power_notifications_ringtone_silent">Kein Ton</string>
     <string name="intent_sender_data_label"><xliff:g id="data">Daten:</xliff:g></string>
+    <string name="screen_off_animation_title">Ausschaltanimation</string>
+    <string name="screen_off_animation_summary">Beim Ausschalten des Bildschirms eine Animation anzeigen</string>
+    <string name="confirm_delete_apn">Der Zugangspunkt wird gelöscht.</string>
+    <string name="privacy_guard_switch_label">Datenschutz aktivieren</string>
+    <string name="privacy_guard_dlg_title">Datenschutz aktivieren?</string>
+    <string name="privacy_guard_dlg_text">Bei aktiviertem Datenschutz hat die App keinen Zugriff auf persönliche Daten wie Kontakte, Nachrichten oder das Anrufprotokoll.</string>
+    <string name="privacy_guard_default_title">Datenschutz</string>
+    <string name="privacy_guard_default_summary">Für neu installierte Apps standardmäßig den Datenschutz aktivieren</string>
 </resources>
