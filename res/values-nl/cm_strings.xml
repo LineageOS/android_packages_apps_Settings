@@ -124,6 +124,9 @@
     <string name="profile_appgroup_manage">App-groep beheren</string>
     <string name="profile_settings">Profielinstellingen</string>
     <string name="profile_name">Naam</string>
+    <string name="profile_trigger_connect">Bij verbinden</string>
+    <string name="profile_trigger_disconnect">Bij verbinding verbreken</string>
+    <string name="profile_trigger_notrigger">Geen trigger</string>
     <string name="sound_mode">Meldingsstand</string>
     <string name="ringer_mode">Beltoonstand</string>
     <string name="lights_mode">Meldingsled</string>
@@ -276,6 +279,12 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="increasing_ring_interval_3seconds">3 seconden</string>
     <string name="increasing_ring_interval_5seconds">5 seconden</string>
     <string name="increasing_ring_interval_10seconds">10 seconden</string>
+    <string name="profile_trigger_configure">Triggers instellen</string>
+    <string name="profile_trigger_wifi">Wi-Fi-triggers</string>
+    <string name="profile_triggers">Triggers</string>
+    <string name="profile_trigger_filter_all">Alle triggers</string>
+    <string name="profile_trigger_filter_wifi">Wi-Fi-triggers</string>
+    <string name="profile_trigger_filter_bluetooth">Bluetooth-triggers</string>
     <string name="profile_write_nfc_tag">Schrijven naar NFC-tag</string>
     <string name="profile_write_touch_tag">Raak tag aan om te schrijven</string>
     <string name="profile_write_success">Tag succesvol geschreven</string>
@@ -439,7 +448,9 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="status_bar_notif_count_title">Aantal meldingen tonen</string>
     <string name="status_bar_notif_count_summary">Aantal nieuwe meldingen tonen</string>
     <string name="display_category_wakeup_options_title">Ontwaakinstellingen</string>
-    <string name="pref_volume_wake_title">Ontwaken met volumeknoppen</string>
+    <string name="pref_home_wake_title">Thuisknop</string>
+    <string name="pref_home_wake_summary">Apparaat laten ontwaken als de thuisknop wordt ingedrukt</string>
+    <string name="pref_volume_wake_title">Volumeknoppen</string>
     <string name="pref_volume_wake_summary">Apparaat laten ontwaken als een volumeknop wordt ingedrukt</string>
     <string name="adb_notify">USB-foutopsporingsmodus melden</string>
     <string name="adb_notify_summary">Melding tonen indien USB-foutopsporingmodus is ingeschakeld</string>
@@ -632,8 +643,8 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="gestures_settings_title">Stylusgebaren</string>
     <string name="category_spen_title">Stylusgebaren</string>
     <string name="enable_subcat_title">Stylus</string>
-    <string name="enable_spen_title_head">Stylusgebaren inschakelen</string>
-    <string name="enable_spen_summary_head">Aangepaste acties uitvoeren door gebaren te maken met de stylusknop ingedrukt. Let op: apps ontvangen geen invoer wanneer de stylusknop ingedrukt wordt gehouden.</string>
+    <string name="enable_spen_title_head">Gebaren inschakelen</string>
+    <string name="enable_spen_summary_head">Gebaren gebruiken met de stylusknop ingedrukt</string>
     <string name="gestures_subcat_title">Gebaren</string>
     <string name="gestures_left_spen_title_head">Sleep naar links</string>
     <string name="gestures_left_spen_summary_head">Aangepaste actie bij naar links slepen</string>
@@ -648,9 +659,9 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="gestures_double_spen_title_head">Dubbeltik</string>
     <string name="gestures_double_spen_summary_head">Aangepaste actie bij tweemaal tikken</string>
     <string name="gestures_action_empty">Geen actie</string>
-    <string name="gestures_action_home">Thuisknop nabootsen</string>
-    <string name="gestures_action_back">Terugknop nabootsen</string>
-    <string name="gestures_action_menu">Menuknop nabootsen</string>
+    <string name="gestures_action_home">Thuis</string>
+    <string name="gestures_action_back">Terug</string>
+    <string name="gestures_action_menu">Menu</string>
     <string name="gestures_action_search">Zoekknop nabootsen</string>
     <string name="gestures_action_recent">Recente apps</string>
     <string name="stylus_app_not_installed">%s is niet geïnstalleerd</string>
@@ -683,7 +694,11 @@ Elke regel in de lijst van helderheidsstanden komt overeen met één <i>controle
     <string name="wifi_mhz">MHz</string>
     <string name="power_notifications_category_title">Opladergeluid</string>
     <string name="power_notifications_enable_title">Inschakelen</string>
+    <string name="power_notifications_enable_summary">Geluid afspelen bij het aansluiten of loskoppelen van de lader</string>
     <string name="power_notifications_vibrate_title">Trillen</string>
     <string name="power_notifications_ringtone_title">Meldingsgeluid</string>
     <string name="power_notifications_ringtone_silent">Stil</string>
+    <string name="screen_off_animation_title">Scherm-uit-animatie</string>
+    <string name="screen_off_animation_summary">De \'electron beam\'-animatie laten zien indien het scherm wordt uitgeschakeld</string>
+    <string name="confirm_delete_apn">APN wordt verwijderd.</string>
 </resources>
