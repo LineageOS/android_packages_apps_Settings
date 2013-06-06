@@ -18,6 +18,7 @@
     <string name="bluetooth_mas_request">Nachrichtenanfrage</string>
     <string name="bluetooth_mas_acceptance_dialog_text">%1$s möchte auf Ihre Nachrichten zugreifen. Möchten Sie %2$s den Zugriff erlauben?</string>
     <string name="bluetooth_mas_remember_choice">Nicht mehr fragen</string>
+    <string name="bluetooth_confirm_passkey_msg">Stellen Sie sicher, dass bei der Verbindung mit &lt;br>&lt;b><xliff:g id="device_name">%1$s</xliff:g>&lt;/b>&lt;br>&lt;br> dieses Kennwort angezeigt wird: &lt;br>&lt;b><xliff:g id="passkey">%2$s</xliff:g>&lt;/b></string>
     <string name="quiet_hours_title">Ruhige Stunden</string>
     <string name="quiet_hours_summary">Benachrichtigungen in einem vorgegebenen Zeitraum ändern</string>
     <string name="quiet_hours_note_title">Hinweis</string>
@@ -171,6 +172,7 @@
     <string name="toggleFlashlight">Taschenlampe</string>
     <string name="toggleLockScreen">Bildschirmsperre</string>
     <string name="toggleWimax">WiMAX</string>
+    <string name="toggleNfc">NFC</string>
     <string name="screen_security_category">Bildschirmsicherheit</string>
     <string name="screen_security_title">Sicherheitssperre</string>
     <string name="screen_security_summary">Einstellungen zur Sicherheitssperre, Timeouts und Abschaltverzögerungen anzeigen und ändern</string>
@@ -331,6 +333,7 @@
     <string name="ring_mode_mute">Lautlos</string>
     <string name="link_volume_ringtones">Gleiche Lautstärke für Klingelton und Benachrichtigungen</string>
     <string name="link_volume_mutes">Klingelton und Benachrichtigungen gemeinsam stummschalten</string>
+    <string name="volume_keys_control_ring_stream">Lautstärketasten steuern Benachrichtigungslautstärke</string>
     <string name="volume_keys_control_ring_stream">Lautstärketasten steuern Klingeltonlautstärke</string>
     <string name="hardware_keys_title">Hardware-Tasten</string>
     <string name="hardware_keys_bindings_title">Tastenaktionen</string>
@@ -615,6 +618,12 @@ Bildschirmhelligkeitswert manuell eingegeben werden. Die Auswahl von \"Helligkei
 erlaubt die Duplizierung einer Zeile in eine zweite Zeile, um zusätzliche Stützstellen hinzuzufügen.
 Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverlauf entfernt werden.
     </string>
+    <string name="auto_brightness_sensitivity_title">Regelungsträgheit</string>
+    <string name="auto_brightness_sensitivity_verylow">Sehr träge</string>
+    <string name="auto_brightness_sensitivity_low">Träge</string>
+    <string name="auto_brightness_sensitivity_medium">Normal</string>
+    <string name="auto_brightness_sensitivity_high">Flink</string>
+    <string name="auto_brightness_sensitivity_veryhigh">Sehr flink</string>
     <string name="advanced_reboot_title">Erweitertes Neustartmenü</string>
     <string name="advanced_reboot_summary">Bei entsperrtem Bildschirm dem Neustartmenü Optionen für Neustart in Recovery und Bootloader hinzufügen</string>
     <string name="volume_adjust_sounds_enable_title">Änderungston</string>
@@ -641,6 +650,11 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <string name="pie_control_enabled">Ist bei erweitertem Desktop aktiviert</string>
     <string name="pie_control_disabled">Deaktiviert</string>
     <string name="pie_control_size">Größe der Navigationstasten</string>
+    <string name="pie_control_sensitivity_title">Empfindlichkeit</string>
+    <string name="pie_control_sensitivity_low">Niedrig</string>
+    <string name="pie_control_sensitivity_medium">Normal</string>
+    <string name="pie_control_sensitivity_high">Hoch</string>
+    <string name="pie_control_sensitivity_very_high">Sehr hoch</string>
     <string name="pie_control_trigger_positions">Ansteuerungsposition</string>
     <string name="pie_control_trigger_left">Linker Bildschirmrand</string>
     <string name="pie_control_trigger_bottom">Unterer Bildschirmrand</string>
@@ -683,4 +697,5 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <string name="power_notifications_vibrate_title">Vibrieren</string>
     <string name="power_notifications_ringtone_title">Benachrichtigungston</string>
     <string name="power_notifications_ringtone_silent">Kein Ton</string>
+    <string name="intent_sender_data_label"><xliff:g id="data">Daten:</xliff:g></string>
 </resources>
