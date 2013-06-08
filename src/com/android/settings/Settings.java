@@ -42,6 +42,7 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.text.TextUtils;
+import android.telephony.MSimTelephonyManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -518,6 +519,9 @@ public class Settings extends PreferenceActivity
                 if (hasLed) {
                     header.titleRes = R.string.display_lights_settings_title;
                 }
+            } else if (id == R.id.multi_sim_settings) {
+                if (!MSimTelephonyManager.getDefault().isMultiSimEnabled())
+                    target.remove(header);
             }
 
             if (i < target.size() && target.get(i) == header

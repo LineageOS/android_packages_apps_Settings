@@ -1957,7 +1957,11 @@
     <!-- About tablet screen, summary of the item that takes you to tablet status screen -->
     <string name="device_status_summary" product="tablet">Status of the battery, network, and other information</string>
     <!-- About phone screen, summary of the item to go into the phone status screen -->
-    <string name="device_status_summary" product="default">Phone number, signal, etc.</string>
+    <string name="device_status_summary" product="default">Battery status, battery level, etc.</string>
+    <!-- About phone screen, summary of the item to go into the phone status screen -->
+    <string name="device_additional_status_summary">Phone number, signal, IMEI, etc.</string>
+    <!-- In About phone->Status screen, title of the item to go into the subscription status screen -->
+    <string name="device_additional_status">Additional status info</string>
     <!-- Main settings screen item's title to go into the storage settings screen [CHAR LIMIT=25] -->
     <string name="storage_settings" >Storage</string>
     <!-- Storage settings screen title -->
@@ -4347,6 +4351,55 @@
 
     <!-- Representation of a numerical percentage. [CHAR LIMIT=8] -->
     <string name="percentage"><xliff:g id="number" example="30">%d</xliff:g>%%</string>
+    <!-- Multi Sim Settings screen, Select Sub label -->
+    <string name="sel_sub_title">Configure subscriptions </string>
+    <!-- Multi Sim Settings screen, Select Sub Summary label -->
+    <string name="sel_sub_summary">Select the subscription SUB1, SUB2, etc..</string>
+    <!-- Select Subscription screen title -->
+    <string name="select_subscription">Select subscription</string>
+
+    <!-- Subscription settings title -->
+    <string name="subs_settings">Subscription status</string>
+
+    <!-- Main settings screen, Multi Sim settings title for item to go into the Multi settings -->
+    <string name="multi_sim_settings_title">Multi-sim settings</string>
+    <!-- Main settings screen, Multi Sim settings summary for item to go into Multi settings -->
+    <string name="multi_sim_settings_summary">Set up multi-sim Settings for voice, data and SMS</string>
+
+    <!-- Multi Sim Settings screen, Voice box label -->
+    <string name="voice_title">Voice/USSD/MMI</string>
+    <!-- Multi Sim Settings screen, Voice Summary label -->
+    <string name="voice_summary">Select subscription for voice call</string>
+
+    <!-- Multi Sim Settings screen, Data box label -->
+    <string name="data_title">Data call</string>
+    <!-- Multi Sim Settings screen, Voice Summary label -->
+    <string name="data_summary">Select subscription for data call</string>
+
+    <!-- Multi Sim Settings screen, SMS box label -->
+    <string name="sms_title">SMS</string>
+    <!-- Multi Sim Settings screen, Voice Summary label -->
+    <string name="sms_summary">Select the subscription for sending SMS</string>
+
+    <!-- Multi Sim Settings screen, Set DDS progress dialog message -->
+    <string name="set_data_subscription_progress">Setting data subscription..</string>
+    <!-- Multi Sim Settings screen, Set DDS success message -->
+    <string name="set_dds_success">Data subscription set</string>
+    <!-- Multi Sim Settings screen, Set DDS failure message -->
+    <string name="set_dds_failed">Unable to set data subscription. Remove any existing data connection and try again.</string>
+    <!-- Multi Sim Settings screen, Set DDS error message -->
+    <string name="set_dds_error">Unable to set data subscription</string>
+    <!-- Multi Sim Settings screen, Set SMS error message -->
+    <string name="set_sms_error">Unable to set SMS subscription, subscription not active</string>
+    <!-- Multi Sim Settings screen, Set VOICE error message -->
+    <string name="set_voice_error">Unable to set voice subscription, subscription not active</string>
+    <!-- Multi Sim Settings screen, Set PRIORITY SUB error message -->
+    <string name="set_priority_sub_error">Unable to set priority subscription, subscription not active</string>
+
+
+    <!--Prompt, used only for voice-->
+    <string name="prompt">Prompt</string>
+    <string name="prompt_user">Prompt user</string>
 
     <!-- A menu item in "About phone" that allows the user to update the phone with settings
     from their cell phone carrier. The use of the string is similar to the string
