@@ -30,6 +30,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.content.pm.UserInfo;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.res.Resources.NotFoundException;
 import android.database.Cursor;
@@ -696,23 +697,23 @@ public class Utils {
     public static void lockCurrentOrientation(Activity act) {
         int currentRotation = act.getWindowManager().getDefaultDisplay().getRotation();
         int frozenRotation = 0;
-        boolean isTablet = isTablet(act);
+        int orientation = act.getResources().getConfiguration().orientation;
         switch(currentRotation) {
             case Surface.ROTATION_0:
-                frozenRotation = isTablet ? ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE :
-                    ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
+                frozenRotation = orientation == Configuration.ORIENTATION_LANDSCAPE
+                    ? ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE : ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
                 break;
             case Surface.ROTATION_90:
-                frozenRotation = isTablet ? ActivityInfo.SCREEN_ORIENTATION_PORTRAIT :
-                    ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
+                frozenRotation = orientation == Configuration.ORIENTATION_PORTRAIT
+                    ? ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT : ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
                 break;
             case Surface.ROTATION_180:
-                frozenRotation = isTablet ? ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE :
-                    ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT;
+                frozenRotation = orientation == Configuration.ORIENTATION_LANDSCAPE
+                    ? ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE : ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT;
                 break;
             case Surface.ROTATION_270:
-                frozenRotation = isTablet ? ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT :
-                    ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE;
+                frozenRotation = orientation == Configuration.ORIENTATION_PORTRAIT
+                    ? ActivityInfo.SCREEN_ORIENTATION_PORTRAIT : ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE;
                 break;
         }
         act.setRequestedOrientation(frozenRotation);
