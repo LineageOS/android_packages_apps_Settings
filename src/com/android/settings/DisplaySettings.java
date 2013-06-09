@@ -148,12 +148,13 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
         // Start the wake-up category handling
         boolean removeWakeupCategory = true;
-
+        PreferenceCategory wakeupCategory = (PreferenceCategory)
+                    findPreference(KEY_WAKEUP_CATEGORY);
         // Home button wake
         mHomeWake = (CheckBoxPreference) findPreference(KEY_HOME_WAKE);
         if (mHomeWake != null) {
             if (!getResources().getBoolean(R.bool.config_show_homeWake)) {
-                getPreferenceScreen().removePreference(mHomeWake);
+                wakeupCategory.removePreference(mHomeWake);
             } else {
                 mHomeWake.setChecked(Settings.System.getInt(resolver,
                         Settings.System.HOME_WAKE_SCREEN, 1) == 1);
@@ -166,7 +167,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         if (mVolumeWake != null) {
             if (!getResources().getBoolean(R.bool.config_show_volumeRockerWake)
                     || !Utils.hasVolumeRocker(getActivity())) {
-                getPreferenceScreen().removePreference(mVolumeWake);
+                wakeupCategory.removePreference(mVolumeWake);
             } else {
                 mVolumeWake.setChecked(Settings.System.getInt(resolver,
                         Settings.System.VOLUME_WAKE_SCREEN, 0) == 1);
@@ -176,12 +177,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
         // Remove the wake-up category if neither of the two items above are enabled
         if (removeWakeupCategory) {
-            getPreferenceScreen().removePreference(
-                    (PreferenceCategory) findPreference(KEY_WAKEUP_CATEGORY));
+            getPreferenceScreen().removePreference(wakeupCategory);
         }
 
         mScreenOffAnimation = (CheckBoxPreference) findPreference(KEY_SCREEN_OFF_ANIMATION);
-        if(getResources().getBoolean(com.android.internal.R.bool.config_screenOffAnimation)) {
+        if (getResources().getBoolean(com.android.internal.R.bool.config_screenOffAnimation)) {
             mScreenOffAnimation.setChecked(Settings.System.getInt(resolver,
                     Settings.System.SCREEN_OFF_ANIMATION, 1) == 1);
         } else {
