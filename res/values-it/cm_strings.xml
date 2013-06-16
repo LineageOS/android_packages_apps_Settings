@@ -36,7 +36,7 @@
     <string name="headset_category_title">Auricolari</string>
     <string name="ok">OK</string>
     <string name="quiet_hours_title">Periodo di quiete</string>
-    <string name="quiet_hours_summary">Configura gli orari in cui il terminale dovrebbe essere silenzioso</string>
+    <string name="quiet_hours_summary">Configura gli orari in cui il dispositivo dovrebbe essere silenzioso</string>
     <string name="quiet_hours_note_title">Nota</string>
     <string name="quiet_hours_note_summary">Le chiamate in entrata avranno lo stesso comportamento durante il periodo di quiete</string>
     <string name="quiet_hours_enabled">Attiva il periodo di quiete</string>
@@ -50,8 +50,8 @@
     <string name="quiet_hours_mute_on">La suoneria delle notifiche è disattivata</string>
     <string name="quiet_hours_mute_off">La suoneria delle notifiche funziona come di norma</string>
     <string name="quiet_hours_still">Disattiva vibrazioni</string>
-    <string name="quiet_hours_still_on">Il terminale non vibra</string>
-    <string name="quiet_hours_still_off">Il terminale vibra come di norma</string>
+    <string name="quiet_hours_still_on">Il dispositivo non vibra</string>
+    <string name="quiet_hours_still_off">Il dispositivo vibra come di norma</string>
     <string name="quiet_hours_dim">Disattiva LED di notifica</string>
     <string name="quiet_hours_dim_on">I LED di notifica sono disattivati</string>
     <string name="quiet_hours_dim_off">I LED di notifica funzionano come di norma</string>
@@ -73,7 +73,7 @@
     <string name="anonymous_statistics_title">Statistiche CyanogenMod</string>
     <string name="anonymous_statistics_summary">Aiuta a migliorare la Cyanogenmod acconsentendo ad inviare statistiche anonime</string>
     <string name="anonymous_statistics_warning_title">Informazioni</string>
-    <string name="anonymous_statistics_warning">Consentire di inviare statistiche anonime permetterà l\'invio di dati non personali agli sviluppatori di Cyanogenmod per contare il numero di installazioni uniche sui diversi terminali. Le informazioni inviate includono un identificativo univoco che non compromette la tua privacy o i tuoi dati personali. I dati sono inviati ad ogni avvio.\n\nPer un esempio dei dati inviati premere su Anteprima dati.</string>
+    <string name="anonymous_statistics_warning">Consentire di inviare statistiche anonime permetterà l\'invio di dati non personali agli sviluppatori di Cyanogenmod per contare il numero di installazioni uniche sui diversi dispositivi. Le informazioni inviate includono un identificativo univoco che non compromette la tua privacy o i tuoi dati personali. I dati sono inviati ad ogni avvio.\n\nPer un esempio dei dati inviati premere su Anteprima dati.</string>
     <string name="enable_reporting_title">Attiva invio</string>
     <string name="preview_data_title">Anteprima dati</string>
     <string name="view_stats_title">Guarda statistiche</string>
@@ -143,6 +143,9 @@
     <string name="profile_appgroup_manage">Gestisci gruppo applicazioni</string>
     <string name="profile_settings">Impostazioni profilo</string>
     <string name="profile_name">Nome</string>
+    <string name="profile_trigger_connect">Alla connessione</string>
+    <string name="profile_trigger_disconnect">Alla disconnessione</string>
+    <string name="profile_trigger_notrigger">Nessun innesco</string>
     <string name="sound_mode">Modalità notifica</string>
     <string name="ringer_mode">Modalità suoneria</string>
     <string name="lights_mode">Modalità luci di notifica</string>
@@ -244,7 +247,7 @@
     <string name="pref_use_16bpp_alpha_title">Trasparenze a 16bit</string>
     <string name="pref_use_16bpp_alpha_summary">Aumenta le prestazioni ma abbassa la qualità della grafica e potrebbe causare artefatti visivi (Richiede il riavvio)</string>
     <string name="display_rotation_title">Rotazione schermo</string>
-    <string name="display_rotation_disabled">Disattiva</string>
+    <string name="display_rotation_disabled">Disattivata</string>
     <string name="display_rotation_unit">gradi</string>
     <string name="display_rotation_category_title">Modalità rotazione schermo</string>
     <string name="display_rotation_0_title">0 gradi</string>
@@ -294,6 +297,9 @@
     <string name="increasing_ring_interval_3seconds">3 secondi</string>
     <string name="increasing_ring_interval_5seconds">5 secondi</string>
     <string name="increasing_ring_interval_10seconds">10 secondi</string>
+    <string name="profile_trigger_title_wifi">Inneschi Wi-Fi per <xliff:g id="profile">%s</xliff:g></string>
+    <string name="profile_trigger_configure">Configura innesco</string>
+    <string name="profile_trigger_wifi">Inneschi Wi-Fi</string>
     <string name="profile_write_nfc_tag">Scrivi sull\'etichetta NFC</string>
     <string name="profile_write_touch_tag">Tocca l\'etichetta per scrivere</string>
     <string name="profile_write_success">Etichetta scritta con successo</string>
@@ -310,8 +316,8 @@
     <string name="notification_light_applist_title">Applicazioni</string>
     <string name="notification_light_phonelist_title">Telefono</string>
     <string name="notification_light_use_custom">Usa valori personalizzati</string>
-    <string name="notification_light_enabled">Attiva</string>
-    <string name="notification_light_disabled">Disattiva</string>
+    <string name="notification_light_enabled">Attivata</string>
+    <string name="notification_light_disabled">Disattivata</string>
     <string name="notification_light_default_value">Predefinito</string>
     <string name="notification_light_missed_call_title">Chiamata persa</string>
     <string name="notification_light_voicemail_title">Messaggio vocale</string>
@@ -353,7 +359,7 @@
     <string name="hardware_keys_title">Tasti fisici</string>
     <string name="hardware_keys_bindings_title">Azioni tasto</string>
     <string name="hardware_keys_enable_custom_title">Azioni personalizzate</string>
-    <string name="hardware_keys_home_long_press_title">Tasto home (tieni premuto)</string>
+    <string name="hardware_keys_home_long_press_title">Tasto Home (tieni premuto)</string>
     <string name="hardware_keys_menu_press_title">Tasto menu</string>
     <string name="hardware_keys_menu_long_press_title">Tasto menu (tieni premuto)</string>
     <string name="hardware_keys_assist_press_title">Tasto cerca</string>
@@ -470,16 +476,18 @@
     <string name="status_bar_notif_count_title">Contatore notifiche</string>
     <string name="status_bar_notif_count_summary">Visualizza il numero di notifiche in sospeso</string>
     <string name="display_category_wakeup_options_title">Opzioni attivazione</string>
+    <string name="pref_home_wake_title">Tasto Home</string>
+    <string name="pref_home_wake_summary">Premere il tasto Home farà attivare il dispositivo</string>
     <string name="pref_volume_wake_title">Tasti volume</string>
-    <string name="pref_volume_wake_summary">Premere i tasti del volume farà attivare il terminale</string>
+    <string name="pref_volume_wake_summary">Premere i tasti del volume farà attivare il dispositivo</string>
     <string name="adb_notify">Notifica debug USB</string>
     <string name="adb_notify_summary">Visualizza una notifica quando il debug USB è collegato</string>
     <string name="development_tools_title">Esegui dev. tools</string>
     <string name="usb_mass_storage_title">Memoria di massa</string>
     <string name="usb_mass_storage_summary">Abilita la memoria di massa USB</string>
     <string name="adb_over_network">ADB attraverso la rete</string>
-    <string name="adb_over_network_summary">Attiva il debugging TCP/IP attraverso interfaccie di rete (Wi-Fi, Reti USB). Questa impostazione è resettata al riavvio</string>
-    <string name="adb_over_network_warning">ATTENZIONE: Quando è attivo l\'ADB attraverso interfaccie di rete il terminale è vulnerabile ad intrusioni da parte di tutte le reti connesse, inclusa quella GSM!\n\nUsare questa funzione esclusivamente se si è connessi a reti affidabili.\n\nSei sicuro di voler attivare questa funzione?</string>
+    <string name="adb_over_network_summary">Attiva il debugging TCP/IP attraverso interfacce di rete (Wi-Fi, Reti USB). Questa impostazione è resettata al riavvio</string>
+    <string name="adb_over_network_warning">ATTENZIONE: Quando è attivo l\'ADB attraverso interfacce di rete il dispositivo è vulnerabile ad intrusioni da parte di tutte le reti connesse, inclusa quella GSM!\n\nUsare questa funzione esclusivamente se si è connessi a reti affidabili.\n\nSei sicuro di voler attivare questa funzione?</string>
     <string name="lockscreen_buttons_title">Azioni dei pulsanti</string>
     <string name="lockscreen_buttons_summary">Visualizza o modifica le azioni dei pulsanti della schermata di blocco</string>
     <string name="lockscreen_long_press_back_title">Tieni premuto Indietro</string>
@@ -695,4 +703,5 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' cancella la riga selezionata
     <string name="power_notifications_ringtone_silent">Silenzioso</string>
     <string name="screen_off_animation_title">Animazione spegnimento schermo</string>
     <string name="screen_off_animation_summary">Visualizza l\'animazione fascio di elettroni quando lo schermo sta per spegnersi</string>
+    <string name="confirm_delete_apn">L\'APN sarà cancellato.</string>
 </resources>
