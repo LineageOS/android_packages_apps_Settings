@@ -115,6 +115,11 @@ public class SystemSettings extends SettingsPreferenceFragment  implements
             prefScreen.removePreference(findPreference(KEY_HARDWARE_KEYS));
             prefScreen.removePreference(findPreference(KEY_NAVIGATION_BAR));
             prefScreen.removePreference(findPreference(KEY_NAVIGATION_RING));
+            // move pie controls from the navigation bar category to the root preference
+            mPieControl = (PreferenceScreen) findPreference(KEY_PIE_CONTROL);
+            if (mPieControl != null) {
+                prefScreen.addPreference(mPieControl);
+            }
             prefScreen.removePreference(findPreference(KEY_NAVIGATION_BAR_CATEGORY));
             prefScreen.removePreference(findPreference(KEY_STATUS_BAR));
             prefScreen.removePreference(findPreference(KEY_QUICK_SETTINGS));
