@@ -374,9 +374,11 @@
     <string name="increasing_ring_interval_5seconds">5 секунд</string>
     <string name="increasing_ring_interval_10seconds">10 секунд</string>
 
-    <string name="profile_trigger_title_wifi">Для профиля <xliff:g id="profile">%s</xliff:g></string>
     <string name="profile_trigger_configure">Настроить переключение</string>
-    <string name="profile_trigger_wifi">Переключение по Wi-Fi</string>
+    <string name="profile_triggers">Переключение</string>
+    <string name="profile_trigger_filter_all">Все способы</string>
+    <string name="profile_trigger_filter_wifi">Переключение по Wi-Fi</string>
+    <string name="profile_trigger_filter_bluetooth">Переключение по Bluetooth</string>
 
     <string name="profile_write_nfc_tag">Записать тег NFC</string>
     <string name="profile_write_touch_tag">Нажмите для записи тега</string>
@@ -874,21 +876,29 @@
 
     <string name="headset_category_title">Наушники</string>
 
-    <!-- Category title for power sound notification specific Settings.
+    <!-- Category title for Charging sounds (Power state change) specific Settings.
          [CHAR LIMIT=40] -->
-    <string name="power_notifications_category_title">Уведомление при зарядке</string>
+    <string name="power_notifications_category_title">Зарядное устройство</string>
 
-    <!-- Sound settings, power notifications enable/disable, setting check box label -->
-    <string name="power_notifications_enable_title">Включить</string>
-    <!-- Sound settings, power notifications vibrate enable/disable, setting check box label -->
+    <!-- Sound settings, Charging sounds enable/disable, setting check box label -->
+    <string name="power_notifications_enable_title">Звук при зарядке</string>
+    <string name="power_notifications_enable_summary">Воспроизводить звук при подключении или отключении зарядного устройства</string>
+    <!-- Sound settings, Charging sounds vibrate enable/disable, setting check box label -->
     <string name="power_notifications_vibrate_title">Вибрация</string>
-    <!-- Sound settings, power notifications ringtone selection, preference label -->
+    <!-- Sound settings, Charging sounds ringtone selection, preference label -->
     <string name="power_notifications_ringtone_title">Звуковое уведомление</string>
-    <!-- Sound settings, power notifications label for ringtone == none -->
+    <!-- Sound settings, charging sounds label for ringtone == none -->
     <string name="power_notifications_ringtone_silent">Без звука</string>
 
     <!-- Display Screen-on and off Electron beam animations -->
     <string name="screen_off_animation_title">Анимация выкл. экрана</string>
     <string name="screen_off_animation_summary">Показывать анимацию выключения экрана</string>
+
+    <!-- Privacy Guard -->
+    <string name="privacy_guard_switch_label">Включить режим инкогнито</string>
+    <string name="privacy_guard_dlg_title">Включить режим инкогнито?</string>
+    <string name="privacy_guard_dlg_text">Когда включен режим инкогнито, приложение не имеет доступа к персональным данным, таким как контакты, сообщения или журнал вызовов.</string>
+    <string name="privacy_guard_default_title">Режим инкогнито</string>
+    <string name="privacy_guard_default_summary">Включить режим инкогнито по умолчанию для устанавливаемых приложений</string>
 
 </resources>
