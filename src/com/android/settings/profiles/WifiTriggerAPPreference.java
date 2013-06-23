@@ -16,46 +16,33 @@
 
 package com.android.settings.profiles;
 
-import android.app.Profile;
 import android.content.Context;
 import android.net.wifi.WifiConfiguration;
-import android.os.Bundle;
-import android.preference.Preference;
 
-import com.android.settings.R;
+public class WifiTriggerAPPreference extends AbstractTriggerPreference {
 
-public class WifiTriggerAPPreference extends Preference {
-
-    private String mSsid;
-    private int mTriggerType = Profile.TriggerState.DISABLED;
+    private String mSSID;
     private WifiConfiguration mConfig;
 
     WifiTriggerAPPreference(Context context, WifiConfiguration config) {
         super(context);
-        setWidgetLayoutResource(R.layout.preference_widget_wifi_signal);
         loadConfig(config);
-        setTitle(mSsid);
+        setTitle(mSSID);
     }
 
-    public void setTriggerType(int trigger) {
-        mTriggerType = trigger;
-    }
-
-    public int getTriggerType() {
-        return mTriggerType;
+    WifiTriggerAPPreference(Context context, String ssid) {
+        super(context);
+        mSSID = ssid;
+        setTitle(mSSID);
     }
 
      private void loadConfig(WifiConfiguration config) {
-        mSsid = (config.SSID == null ? "" : removeDoubleQuotes(config.SSID));
+        mSSID = (config.SSID == null ? "" : removeDoubleQuotes(config.SSID));
         mConfig = config;
     }
 
-    public WifiConfiguration getConfig() {
-        return mConfig;
-    }
-
     public String getSSID() {
-        return mSsid;
+        return mSSID;
     }
 
     public static String removeDoubleQuotes(String string) {
