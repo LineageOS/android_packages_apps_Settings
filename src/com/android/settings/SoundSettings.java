@@ -90,6 +90,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String KEY_VOLBTN_MUSIC_CTRL = "volbtn_music_controls";
     private static final String KEY_HEADSET_CONNECT_PLAYER = "headset_connect_player";
     private static final String KEY_CONVERT_SOUND_TO_VIBRATE = "notification_convert_sound_to_vibration";
+    private static final String KEY_VIBRATE_DURING_CALLS = "notification_vibrate_during_calls";
     private static final String KEY_SAFE_HEADSET_VOLUME = "safe_headset_volume";
     private static final String KEY_VOLUME_ADJUST_SOUNDS = "volume_adjust_sounds";
     private static final String KEY_POWER_NOTIFICATIONS = "power_notifications";
@@ -126,6 +127,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mVolBtnMusicCtrl;
     private CheckBoxPreference mHeadsetConnectPlayer;
     private CheckBoxPreference mConvertSoundToVibration;
+    private CheckBoxPreference mVibrateDuringCalls;
     private Preference mRingtonePreference;
     private Preference mNotificationPreference;
     private PreferenceScreen mQuietHours;
@@ -273,6 +275,10 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         mConvertSoundToVibration.setChecked(Settings.System.getInt(resolver,
                 Settings.System.NOTIFICATION_CONVERT_SOUND_TO_VIBRATION, 1) != 0);
 
+        mVibrateDuringCalls = (CheckBoxPreference) findPreference(KEY_VIBRATE_DURING_CALLS);
+        mVibrateDuringCalls.setChecked(Settings.System.getInt(resolver,
+                Settings.System.NOTIFICATION_VIBRATE_DURING_ALERTS_DISABLED, 0) != 0);
+
         mRingtonePreference = findPreference(KEY_RINGTONE);
         mNotificationPreference = findPreference(KEY_NOTIFICATION_SOUND);
 
@@ -281,6 +287,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
             removePreference(KEY_VIBRATE);
             removePreference(KEY_HAPTIC_FEEDBACK);
             removePreference(KEY_CONVERT_SOUND_TO_VIBRATE);
+            removePreference(KEY_VIBRATE_DURING_CALLS);
         }
 
         if (TelephonyManager.PHONE_TYPE_CDMA == activePhoneType) {
@@ -490,6 +497,11 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         } else if (preference == mConvertSoundToVibration) {
             Settings.System.putInt(getContentResolver(), Settings.System.NOTIFICATION_CONVERT_SOUND_TO_VIBRATION,
                     mConvertSoundToVibration.isChecked() ? 1 : 0);
+
+        } else if (preference == mVibrateDuringCalls) {
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.NOTIFICATION_VIBRATE_DURING_ALERTS_DISABLED,
+                    mVibrateDuringCalls.isChecked() ? 1 : 0);
 
         } else if (preference == mMusicFx) {
             // let the framework fire off the intent

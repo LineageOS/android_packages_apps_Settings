@@ -128,6 +128,13 @@
             android:summary="@string/notification_convert_sound_to_vibration_summary"
             android:defaultValue="true" />
 
+    <CheckBoxPreference
+            android:key="notification_vibrate_during_calls"
+            android:title="@string/notification_vibrate_during_calls_title"
+            android:summary="@string/notification_vibrate_during_calls_summary"
+            android:persistent="false"
+            android:defaultValue="false" />
+
     <!-- Dock -->
     <PreferenceCategory
         android:key="dock_category"
