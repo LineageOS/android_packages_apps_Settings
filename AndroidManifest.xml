@@ -96,6 +96,12 @@
             android:hardwareAccelerated="true"
             android:supportsRtl="true">
 
+        <receiver android:name=".cyanogenmod.LockscreenInterface$DeviceAdminLockscreenReceiver"
+            android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data android:name="android.app.device_admin"
+                android:resource="@xml/device_admin_lockscreen" />
+        </receiver>
+
         <!-- Only system/su can open this activity -->
         <!-- This activity will then call the MultitaskSuRequestActivity to create a new task stack -->
         <activity

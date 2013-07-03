@@ -29,6 +29,7 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.text.TextUtils;
 import android.util.Log;
@@ -313,6 +314,10 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
     }
 
     public boolean removePreferenceIfPackageNotInstalled(Preference preference) {
+        return removePreferenceIfPackageNotInstalled(preference, getPreferenceScreen());
+    }
+
+    public boolean removePreferenceIfPackageNotInstalled(Preference preference, PreferenceGroup parent) {
         String intentUri = ((PreferenceScreen) preference).getIntent().toUri(1);
         Pattern pattern = Pattern.compile("component=([^/]+)/");
         Matcher matcher = pattern.matcher(intentUri);
@@ -323,7 +328,7 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
                 getPackageManager().getPackageInfo(packageName, 0);
             } catch (NameNotFoundException e) {
                 Log.e(TAG, "package " + packageName + " not installed, hiding preference.");
-                getPreferenceScreen().removePreference(preference);
+                parent.removePreference(preference);
                 return true;
             }
         }
