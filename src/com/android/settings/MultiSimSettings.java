@@ -185,8 +185,14 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
     }
 
     protected void updateMultiSimEntriesForSms() {
-        mSms.setEntries(entries);
-        mSms.setEntryValues(entryValues);
+        int count = subManager.getActiveSubscriptionsCount();
+        if (count >= SUBSCRIPTION_DUAL_STANDBY) {
+            mSms.setEntries(entriesPrompt);
+            mSms.setEntryValues(entryValuesPrompt);
+        } else  {
+            mSms.setEntries(entries);
+            mSms.setEntryValues(entryValues);
+        }
     }
 
     protected void updateMultiSimEntriesForVoice() {
@@ -250,10 +256,23 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
 
     private void updateSmsSummary() {
         int smsSub = MSimPhoneFactory.getSMSSubscription();
+        boolean promptEnabled  = MSimPhoneFactory.isSMSPromptEnabled();
+        int count = subManager.getActiveSubscriptionsCount();
 
-        Log.d(TAG, "updateSmsSummary: Sms Subscripiton : = " + smsSub);
-        mSms.setValue(Integer.toString(smsSub));
-        mSms.setSummary(summaries[smsSub]);
+        Log.d(TAG, "updateSmsSummary: SmsSub =  " + smsSub
+                + " promptEnabled = " + promptEnabled
+                + " number of active SUBs = " + count);
+
+        if (promptEnabled && count >= SUBSCRIPTION_DUAL_STANDBY) {
+            Log.d(TAG, "prompt is enabled: setting value to : " + mNumPhones);
+            mSms.setValue(Integer.toString(mNumPhones));
+            mSms.setSummary(summariesPrompt[mNumPhones]);
+        } else {
+            String sub = Integer.toString(smsSub);
+            Log.d(TAG, "setting value to : " + sub);
+            mSms.setValue(sub);
+            mSms.setSummary(summaries[smsSub]);
+        }
     }
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
@@ -296,9 +315,15 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
 
         if (KEY_SMS.equals(key)) {
             int smsSub = Integer.parseInt((String) objValue);
-            Log.d(TAG, "setSMSSubscription " + smsSub);
-            if (subManager.getCurrentSubscription(smsSub).subStatus
-                    == SubscriptionStatus.SUB_ACTIVATED) {
+            if (smsSub == mNumPhones) { //mNumPhones is the maximum index of the UI options.
+                                         //This will be the Prompt option.
+                MSimPhoneFactory.setSMSPromptEnabled(true);
+                mSms.setSummary(summariesPrompt[smsSub]);
+                Log.d(TAG, "prompt is enabled " + smsSub);
+            } else if (subManager.getCurrentSubscription(smsSub).subStatus
+                   == SubscriptionStatus.SUB_ACTIVATED) {
+                Log.d(TAG, "setSMSSubscription " + smsSub);
+                MSimPhoneFactory.setSMSPromptEnabled(false);
                 MSimPhoneFactory.setSMSSubscription(smsSub);
                 mSms.setSummary(summaries[smsSub]);
             } else {
@@ -354,6 +379,7 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
                 case EVENT_SUBSCRIPTION_ACTIVATED:
                 case EVENT_SUBSCRIPTION_DEACTIVATED:
                     updateMultiSimEntriesForVoice();
+                    updateMultiSimEntriesForSms();
                     break;
                 case EVENT_SET_VOICE_SUBSCRIPTION:
                     updateVoiceSummary();
