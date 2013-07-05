@@ -18,12 +18,22 @@
     <string name="default_date_format"><xliff:g id="default_date_format">dd/MM/yyyy</xliff:g></string>
     <string name="intent_sender_data_label"><xliff:g id="data">Gegevens:</xliff:g></string>
     <string name="debug_intent_sender_label">Foutopsporing toepassen op intent-verzender</string>
+    <string name="testing_sim_toolkit">SIM-toolkit</string>
+    <string name="bluetooth_mas_request">Verzoek tot berichtentoegang</string>
+    <string name="bluetooth_mas_acceptance_dialog_text">%1$s wil toegang tot uw berichten. Toegang toestaan aan %2$s?</string>
+    <string name="bluetooth_mas_remember_choice">Niet meer vragen</string>
+    <string name="wifi_mode">Modus</string>
+    <string name="wifi_mode_ibss">Ad-hoc-netwerk (IBSS)</string>
+    <string name="wifi_mode_ibss_short">Ad hoc</string>
     <string name="wifi_setting_countrycode_title">Wi-Fi-regiocode</string>
     <string name="wifi_setting_countrycode_summary">Regiocode opgeven voor Wi-Fi</string>
     <string name="wifi_setting_countrycode_error">Kan regiocode niet instellen</string>
-    <string name="status_imei">IMEI</string>
-    <string name="status_imei_sv">IMEISV</string>
-    <string name="testing_sim_toolkit">SIM-toolkit</string>
+    <string name="wifi_setting_priority_title">Wi-Fi-prioriteit</string>
+    <string name="wifi_setting_priority_summary">Prioriteit instellen van Wi-Fi-netwerken</string>
+    <string name="volume_adjust_sounds_enable_title">Aanpassingsgeluid volume</string>
+    <string name="volume_adjust_sounds_enable_summary">Geluid afspelen bij aanpassen van volume met volumeknoppen</string>
+    <string name="lockpattern_settings_enable_error_path_title">Patroonfout tonen</string>
+    <string name="lockpattern_settings_enable_dots_title">Patroonpunten tonen</string>
     <string name="root_access">Root-toegang</string>
     <string name="root_access_warning_title">Root-toegang toestaan?</string>
     <string name="root_access_warning_message">Root-toegang toestaan kan zeer gevaarlijk zijn en kan uw systeem onveilig maken</string>
@@ -31,6 +41,8 @@
     <string name="root_access_apps">Alleen apps</string>
     <string name="root_access_adb">Alleen ADB</string>
     <string name="root_access_all">Apps en ADB</string>
+    <string name="accessibility_home_button_answers_call_prerefence_title">Oproep aannemen met thuisknop</string>
+    <string name="headset_category_title">Headset</string>
     <string name="ok">OK</string>
     <string name="quiet_hours_title">Stille uren</string>
     <string name="quiet_hours_summary">Uren instellen waarin apparaat stil moet zijn</string>
@@ -59,12 +71,30 @@
     <string name="quiet_hours_active_to">tot</string>
     <string name="start_time_title">Begin</string>
     <string name="end_time_title">Einde</string>
+    <string name="notification_vibrate_during_calls_title">Trillen tijdens bellen</string>
+    <string name="notification_vibrate_during_calls_summary">Zacht trillen bij inkomende meldingen tijdens het bellen</string>
+    <string name="notification_convert_sound_to_vibration_title">Trillen bij melding</string>
+    <string name="notification_convert_sound_to_vibration_summary">Trillen bij melding in trilstand, ongeacht de app-instelling</string>
     <string name="device_hostname">Hostnaam apparaat</string>
     <string name="mod_version">CyanogenMod-versie</string>
     <string name="mod_version_default">Onbekend</string>
     <string name="build_date">Build-datum</string>
     <string name="cpu_info">CPU</string>
     <string name="mem_info">Geheugen</string>
+    <string name="anonymous_statistics_title">Statistieken</string>
+    <string name="anonymous_statistics_summary">Help CyanogenMod te verbeteren door anonieme statistieken te verzenden</string>
+    <string name="anonymous_statistics_warning_title">Over</string>
+    <string name="anonymous_statistics_warning">Door statistieken verzenden toe te staan worden tijdens het opstarten anonieme gegevens naar de ontwikkelaars van CyanogenMod verzonden om unieke installaties te kunnen volgen. In de gegevens zit een uniek id-nummer verwerkt, dat uw privacy niet schendt.\n\nOm een voorbeeld te zien, tikt u op \'Voorbeeld van gegevens\'.</string>
+    <string name="enable_reporting_title">Statistieken verzenden</string>
+    <string name="preview_data_title">Voorbeeld van gegevens</string>
+    <string name="view_stats_title">Statistieken tonen</string>
+    <string name="anonymous_learn_more">Lees meer</string>
+    <string name="anonymous_notification_desc">Statistieken in-/uitschakelen</string>
+    <string name="preview_id_title">Uniek id</string>
+    <string name="preview_device_title">Apparaat</string>
+    <string name="preview_version_title">Versie</string>
+    <string name="preview_country_title">Land</string>
+    <string name="preview_carrier_title">Provider</string>
     <string name="header_category_interface">UITERLIJK</string>
     <string name="launcher_settings_title">Launcher</string>
     <string name="themes_settings_title">Thema\'s</string>
@@ -338,8 +368,6 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="volume_overlay_title">Volumepaneel</string>
     <string name="volbtn_music_controls_title">Muziek beheren met volumeknoppen</string>
     <string name="volbtn_music_controls_summary">Als het scherm uit is springen de volumeknoppen, indien lang ingedrukt, naar het vorige/volgende nummer</string>
-    <string name="headset_connect_player_title">Muziek-app openen</string>
-    <string name="headset_connect_player_summary">Standaardmuziek-app openen indien headset wordt aangesloten</string>
     <string name="volume_ring_only_description">Beltonen</string>
     <string name="ring_mode_title">Belmodus</string>
     <string name="ring_mode_normal">Normaal</string>
@@ -365,6 +393,17 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="hardware_keys_action_search">Zoek-app</string>
     <string name="hardware_keys_action_voice_search">Spraakgestuurd zoeken</string>
     <string name="hardware_keys_action_in_app_search">Zoeken in apps</string>
+    <string name="swap_volume_buttons_title">Volumeknoppen omdraaien</string>
+    <string name="swap_volume_buttons_summary">Volumeknoppen omdraaien indien het scherm gedraaid is</string>
+    <string name="navigation_bar_title">Navigatiebalk</string>
+    <string name="navigation_bar_help_text">1 - Kies het vergrendelingspictogram om te beginnen\n\n2 - Kies een knop om een functie aan toe te wijzen of te wijzigen\n\n3 - Raak een knop lang aan om de positie te wijzigen\n\n4 - Tik nogmaals op het vergrendelingspictogram om op te slaan\n\n5 - Tik op \'Herstellen\' om de standaardinstellingen te herstellen\n\n</string>
+    <string name="navigation_bar_tips">&#8226; Acties kunnen slechts aan één knop worden toegewezen\n\n&#8226; De thuisknop kan niet opnieuw worden toegewezen\n\n&#8226; Randknoppen kunnen niet worden herschikt</string>
+    <string name="navigation_bar_tips_title">Snelle tips</string>
+    <string name="navigation_bar_reset_message">Huidige instellingen verwijderen en standaardinstellingen herstellen?</string>
+    <string name="navigation_bar_save_message">Navigatiebalkinstellingen opgeslagen</string>
+    <string name="navigation_bar_reset_toast">Navigatiebalk hersteld naar standaardinstellingen</string>
+    <string name="navigation_bar_menu_editable">Bewerkbaar</string>
+    <string name="navigation_bar_menu_locked">Vergrendeld</string>
     <string name="power_widget_title">Energiewidget</string>
     <string name="title_expanded_widget">Energiewidget</string>
     <string name="power_widget_behavior">Widgetgedrag</string>
@@ -383,6 +422,7 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="title_toggle_brightness">Helderheid</string>
     <string name="title_toggle_sync">Synchronisatie</string>
     <string name="title_toggle_wifiap">Draagbare Wi-Fi-hotspot</string>
+    <string name="title_toggle_screentimeout">Schermtime-out</string>
     <string name="title_toggle_mobiledata">Mobiele gegevens</string>
     <string name="title_toggle_lockscreen">Schermvergrendeling</string>
     <string name="title_toggle_networkmode">Netwerkmodus</string>
@@ -420,6 +460,9 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="power_menu_title">Aan/uit-knop</string>
     <string name="power_menu_reboot_title">Herstarten</string>
     <string name="power_menu_screenshot_title">Schermafdruk</string>
+    <string name="expanded_desktop_disabled">Uitgeschakeld</string>
+    <string name="expanded_desktop_status_bar">Statusbalk zichtbaar</string>
+    <string name="expanded_desktop_no_status_bar">Statusbalk verborgen</string>
     <string name="power_menu_expanded_desktop">Uitgebreid bureaublad</string>
     <string name="power_menu_profiles_title">Profielen</string>
     <string name="power_menu_airplane_title">Vliegmodus</string>
@@ -457,6 +500,8 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="adb_notify">USB-foutopsporingsmodus melden</string>
     <string name="adb_notify_summary">Melding tonen indien USB-foutopsporingmodus is ingeschakeld</string>
     <string name="development_tools_title">Tools openen</string>
+    <string name="usb_mass_storage_title">Massaopslag</string>
+    <string name="usb_mass_storage_summary">USB-massaopslag inschakelen</string>
     <string name="adb_over_network">ADB over netwek</string>
     <string name="adb_over_network_summary">TCP/IP-foutopsporing inschakelen over netwerkinterfaces (Wi-Fi, USB-netwerken etc.). Wordt hersteld bij opstarten</string>
     <string name="adb_over_network_warning">Let op: als ADB over netwerk is ingeschakeld, kan op uw apparaat worden ingebroken via alle aangesloten netwerken, inclusief via uw GSM-gegevensnetwerk!\n\nGebruik deze functie alleen indien u verbonden bent met vertrouwde netwerken.\n\nWeet u zeker dat u deze functie wilt inschakelen?</string>
@@ -501,11 +546,15 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="title_tile_nfc">NFC</string>
     <string name="title_tile_screen_timeout">Schermtime-out</string>
     <string name="title_tile_usb_tether">USB-tethering</string>
+    <string name="title_tile_quiet_hours">Stille uren</string>
+    <string name="title_tile_volume">Volume</string>
+    <string name="title_tile_expanded_desktop">Uitgebreid bureaublad</string>
     <string name="title_dynamic_tiles">Dynamische tegels</string>
     <string name="dynamic_tiles_note_title">Let op</string>
     <string name="dynamic_tiles_note_summary">Dynamische tegels zijn alleen zichtbaar indien opgeroepen door een systeemgebeurtenis</string>
     <string name="title_dynamic_alarm">Alarmklok</string>
     <string name="title_dynamic_bugreport">Foutrapport</string>
+    <string name="title_dynamic_dock_battery">Dock-accu</string>
     <string name="title_dynamic_ime">IME-keuze</string>
     <string name="title_dynamic_usbtether">USB-tethering</string>
     <string name="title_dynamic_wifi">Draadloze display</string>
@@ -531,33 +580,19 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="sms_security_check_limit_title">Limiet sms-berichten</string>
     <string name="sms_security_check_limit_summary">Apps kunnen %d berichten verzenden in 30 minuten zonder bevestiging</string>
     <string name="sms_security_check_limit_default">30 (standaard)</string>
-    <string name="title_toggle_screentimeout">Schermtime-out</string>
     <string name="lock_clock_title">Klokwidget</string>
     <string name="lock_clock_summary">Weergave beheren van \'cLock\'</string>
     <string name="stylus_icon_enabled_title">Pictogram bij stylusgebruik</string>
     <string name="stylus_icon_enabled_summary">Cursor tonen als een stylus wordt gebruikt</string>
-    <string name="navigation_bar_title">Navigatiebalk</string>
-    <string name="navigation_bar_help_text">1 - Kies het vergrendelingspictogram om te beginnen\n\n2 - Kies een knop om een functie aan toe te wijzen of te wijzigen\n\n3 - Raak een knop lang aan om de positie te wijzigen\n\n4 - Tik nogmaals op het vergrendelingspictogram om op te slaan\n\n5 - Tik op \'Herstellen\' om de standaardinstellingen te herstellen\n\n</string>
-    <string name="navigation_bar_tips">&#8226; Acties kunnen slechts aan één knop worden toegewezen\n\n&#8226; De thuisknop kan niet opnieuw worden toegewezen\n\n&#8226; Randknoppen kunnen niet worden herschikt</string>
-    <string name="navigation_bar_tips_title">Snelle tips</string>
-    <string name="navigation_bar_reset_message">Huidige instellingen verwijderen en standaardinstellingen herstellen?</string>
-    <string name="navigation_bar_save_message">Navigatiebalkinstellingen opgeslagen</string>
-    <string name="navigation_bar_reset_toast">Navigatiebalk hersteld naar standaardinstellingen</string>
-    <string name="navigation_bar_menu_editable">Bewerkbaar</string>
-    <string name="navigation_bar_menu_locked">Vergrendeld</string>
-    <string name="accessibility_home_button_answers_call_prerefence_title">Oproep aannemen met thuisknop</string>
-    <string name="headset_category_title">Headset</string>
+    <string name="lockscreen_widgets_category_title">Widgets</string>
     <string name="lockscreen_maximize_widgets_title">Widgets maximaliseren</string>
     <string name="lockscreen_maximize_widgets_summary">Widgets gemaximaliseerd en ontgrendeling geminimaliseerd tonen indien het scherm wordt ingeschakeld</string>
-    <string name="bluetooth_mas_request">Verzoek tot berichtentoegang</string>
-    <string name="bluetooth_mas_acceptance_dialog_text">%1$s wil toegang tot uw berichten. Toegang toestaan aan %2$s?</string>
-    <string name="bluetooth_mas_remember_choice">Niet meer vragen</string>
-    <string name="wifi_setting_priority_title">Wi-Fi-prioriteit</string>
-    <string name="wifi_setting_priority_summary">Prioriteit instellen van Wi-Fi-netwerken</string>
-    <string name="notification_convert_sound_to_vibration_title">Trillen bij melding</string>
-    <string name="notification_convert_sound_to_vibration_summary">Apparaat laten trillen bij melding in trilstand, ongeacht de app-instelling</string>
-    <string name="usb_mass_storage_title">Massaopslag</string>
-    <string name="usb_mass_storage_summary">USB-massaopslag inschakelen</string>
+    <string name="lockscreen_enable_widgets_title">Widgetschermen</string>
+    <string name="lockscreen_enable_widgets_summary">Meerdere widgetschermen kiezen en toevoegen</string>
+    <string name="lockscreen_enable_camera_title">Camera</string>
+    <string name="lockscreen_enable_camera_summary">Camerawidget aan de rechterkant van het vergrendelscherm laten zien</string>
+    <string name="lockscreen_music_controls_title">Muziekknoppen</string>
+    <string name="lockscreen_music_controls_summary">Muziekknoppen laten zien tijdens muziek afspelen</string>
     <string name="lockscreen_custom_background_title">Achtergrond</string>
     <string name="lockscreen_custom_background_dialog_title">Kies een kleur</string>
     <string name="lockscreen_background_result_successful">Achtergrond succesvol gewijzigd</string>
@@ -565,21 +600,23 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="lockscreen_background_color_fill">Vullen met een kleur</string>
     <string name="lockscreen_background_custom_image">Aangepaste afbeelding</string>
     <string name="lockscreen_background_default_wallpaper">Standaardachtergrond</string>
-    <string name="title_tile_quiet_hours">Stille uren</string>
+    <string name="headset_connect_player_title">Muziek-app openen</string>
+    <string name="headset_connect_player_summary">Standaardmuziek-app openen indien headset wordt aangesloten</string>
     <string name="safe_headset_volume_title">Veilig headsetvolume</string>
     <string name="safe_headset_volume_summary">Hoog volume voorkomen als de headset voor het eerst wordt aangesloten</string>
     <string name="cyanogenmod_waiver_title">Afstandsverklaring</string>
     <string name="cyanogenmod_waiver_body">Het wijzigen van deze instelling kan in overtreding zijn met de regelgeving in uw staat/land.\n\nDoor te tikken op \'OK\' erkent u deze waarschuwing en doet u afstand van en vrijwaart u CyanogenMod en/of haar bijdragers van alle wettelijke verplichtingen</string>
-    <string name="expanded_desktop_disabled">Uitgeschakeld</string>
-    <string name="expanded_desktop_status_bar">Statusbalk zichtbaar</string>
-    <string name="expanded_desktop_no_status_bar">Statusbalk verborgen</string>
     <string name="light_sensor_current_value">Huidige lichtsensorwaarde: <xliff:g id="light_level">%d</xliff:g> lux</string>
     <string name="auto_brightness_dialog_title">Autom. helderheidsstanden</string>
     <string name="auto_brightness_level_format"><xliff:g id="level">%1$d</xliff:g> lux</string>
     <string name="auto_brightness_last_level_format"><xliff:g id="level">%1$d</xliff:g> -\n\u221e lux</string>
     <string name="auto_brightness_adjust_button">Aanpassen</string>
+    <string name="auto_brightness_close_button">Sluiten</string>
     <string name="auto_brightness_reset_button">Herstellen</string>
     <string name="auto_brightness_split_dialog_title">Helderheidsstand opsplitsen</string>
+    <string name="auto_brightness_level_dialog_title">Lichtniveau-instelling</string>
+    <string name="auto_brightness_lux">Omgevingslichtsterkte (lux)</string>
+    <string name="auto_brightness_backlight">Schermhelderheid (%)</string>
     <string name="auto_brightness_reset_dialog_title">Standen herstellen?</string>
     <string name="auto_brightness_reset_confirmation">Alle helderheidsstanden worden hersteld naar standaard</string>
     <string name="auto_brightness_split_lux_format">Plaats van opsplitsing (tussen <xliff:g id="min">%1$d</xliff:g> en <xliff:g id="max">%2$d</xliff:g> lux)</string>
@@ -587,15 +624,25 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="auto_brightness_menu_edit">Aanpassen</string>
     <string name="auto_brightness_menu_split">Opsplitsen</string>
     <string name="auto_brightness_menu_remove">Verwijderen</string>
-    <string name="volume_adjust_sounds_enable_title">Aanpassingsgeluid volume</string>
-    <string name="volume_adjust_sounds_enable_summary">Geluid afspelen bij aanpassen van volume met volumeknoppen</string>
+    <string name="auto_brightness_preview">Voorbeeld</string>
+    <string name="auto_brightness_preview_dialog_title">Voorbeeld helderheidscurve</string>
+    <string name="auto_brightness_help_dialog_title">Help</string>
+    <string name="auto_brightness_help_text"><b>Hoe wordt de helderheid berekend?</b>
+\n\n
+De helderheidscurve wordt berekend door <i>kubische spline-interpolatie</i> toe te passen op een bepaald aantal <i>controlepunten</i>. Het is geen \'bucket-type\'-berekening, waarbij de schermhelderheid gelijk blijft voor een specifiek bereik van omgevingslichtsterkte. Op deze manier hebben kleine veranderingen in omgevingslichtsterkte geen grote invloed op de schermhelderheid. Het is echter lastig om de precieze gevolgen van het veranderen van controlepunten te voorspellen.\nOm daarbij te helpen is het mogelijk om een voorbeeld van de helderheidscurve te bekijken. Houd er rekening mee dat het voorbeeld wordt weergegeven met een <i>logaritmische</i> schaal, zodat alle controlepunten apart kunnen worden weergegeven. Als een lineaire schaal gebruikt zou worden, zou het niet mogelijk zijn om de belangrijkere controlepunten te kunnen onderscheiden in het onderste bereik van de omgevingslichtsterkte.
+\n\n
+<b>Hoe kan de helderheidscurve worden bewerkt?</b>
+\n\n
+Elke regel in de lijst van helderheidsstanden komt overeen met één <i>controlepunt</i> op de helderheidscurve. Tijdens het verplaatsen van de schuifbalk wordt de schermhelderheid automatisch aangepast om een voorbeeld te geven van het lichtniveau.\nExtra opties zijn beschikbaar door een regel lang aan te raken. Door \'Aanpassen\' te kiezen kan zowel de omgevingslichtsterkte als de gewenste schermhelderheid aangepast worden. Met \'Opsplitsen\' kan een regel gedupliceerd worden om een extra controlepunt in te voegen en \'Verwijderen\' verwijdert de geselecteerde regel.
+    </string>
+    <string name="auto_brightness_sensitivity_title">Aanpassingsgevoeligheid</string>
+    <string name="auto_brightness_sensitivity_verylow">Zeer laag</string>
+    <string name="auto_brightness_sensitivity_low">Laag</string>
+    <string name="auto_brightness_sensitivity_medium">Gemiddeld</string>
+    <string name="auto_brightness_sensitivity_high">Hoog</string>
+    <string name="auto_brightness_sensitivity_veryhigh">Zeer hoog</string>
     <string name="advanced_reboot_title">Geavanceerd herstarten</string>
     <string name="advanced_reboot_summary">Indien ontgrendeld, opties tonen in het aan/uit-knopmenu voor herstarten naar recovery of bootloader</string>
-    <string name="lockpattern_settings_enable_error_path_title">Patroonfout tonen</string>
-    <string name="lockpattern_settings_enable_dots_title">Patroonpunten tonen</string>
-    <string name="swap_volume_buttons_title">Volumeknoppen omdraaien</string>
-    <string name="swap_volume_buttons_summary">Volumeknoppen omdraaien indien het scherm gedraaid is</string>
-    <string name="title_tile_volume">Volume</string>
     <string name="navigation_bar_category">Navigatiebalk</string>
     <string name="navigation_ring_title">Snelkoppelingen</string>
     <string name="navring_target_reset_message">Alle snelkoppelingen herstellen naar standaard?</string>
@@ -627,22 +674,6 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="pie_control_trigger_right">Rechterrand scherm</string>
     <string name="pie_control_trigger_top">Onderrand scherm</string>
     <string name="pie_control_trigger_top_summary">Alleen navigatie wordt bovenaan getoond</string>
-    <string name="anonymous_statistics_title">Statistieken</string>
-    <string name="anonymous_statistics_summary">Help CyanogenMod te verbeteren door anonieme statistieken te verzenden</string>
-    <string name="anonymous_statistics_warning_title">Over</string>
-    <string name="anonymous_statistics_warning">Door statistieken verzenden toe te staan worden tijdens het opstarten anonieme gegevens naar de ontwikkelaars van CyanogenMod verzonden om unieke installaties te kunnen volgen. In de gegevens zit een uniek id-nummer verwerkt, dat uw privacy niet schendt.\n\nOm een voorbeeld te zien, tikt u op \'Voorbeeld van gegevens\'.</string>
-    <string name="enable_reporting_title">Statistieken verzenden</string>
-    <string name="preview_data_title">Voorbeeld van gegevens</string>
-    <string name="view_stats_title">Statistieken tonen</string>
-    <string name="anonymous_learn_more">Lees meer</string>
-    <string name="anonymous_notification_desc">Statistieken in-/uitschakelen</string>
-    <string name="preview_id_title">Uniek id</string>
-    <string name="preview_device_title">Apparaat</string>
-    <string name="preview_version_title">Versie</string>
-    <string name="preview_country_title">Land</string>
-    <string name="preview_carrier_title">Provider</string>
-    <string name="title_tile_expanded_desktop">Uitgebreid bureaublad</string>
-    <string name="title_dynamic_dock_battery">Dock-accu</string>
     <string name="gestures_settings_title">Stylusgebaren</string>
     <string name="category_spen_title">Stylusgebaren</string>
     <string name="enable_subcat_title">Stylus</string>
@@ -668,30 +699,6 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="gestures_action_search">Zoekknop nabootsen</string>
     <string name="gestures_action_recent">Recente apps</string>
     <string name="stylus_app_not_installed">%s is niet geïnstalleerd</string>
-    <string name="wifi_mode">Modus</string>
-    <string name="wifi_mode_ibss">Ad-hoc-netwerk (IBSS)</string>
-    <string name="wifi_mode_ibss_short">Ad hoc</string>
-    <string name="auto_brightness_close_button">Sluiten</string>
-    <string name="auto_brightness_level_dialog_title">Lichtniveau-instelling</string>
-    <string name="auto_brightness_lux">Omgevingslichtsterkte (lux)</string>
-    <string name="auto_brightness_backlight">Schermhelderheid (%)</string>
-    <string name="auto_brightness_preview">Voorbeeld</string>
-    <string name="auto_brightness_preview_dialog_title">Voorbeeld helderheidscurve</string>
-    <string name="auto_brightness_help_dialog_title">Help</string>
-    <string name="auto_brightness_help_text"><b>Hoe wordt de helderheid berekend?</b>
-\n\n
-De helderheidscurve wordt berekend door <i>kubische spline-interpolatie</i> toe te passen op een bepaald aantal <i>controlepunten</i>. Het is geen \'bucket-type\'-berekening, waarbij de schermhelderheid gelijk blijft voor een specifiek bereik van omgevingslichtsterkte. Op deze manier hebben kleine veranderingen in omgevingslichtsterkte geen grote invloed op de schermhelderheid. Het is echter lastig om de precieze gevolgen van het veranderen van controlepunten te voorspellen.\nOm daarbij te helpen is het mogelijk om een voorbeeld van de helderheidscurve te bekijken. Houd er rekening mee dat het voorbeeld wordt weergegeven met een <i>logaritmische</i> schaal, zodat alle controlepunten apart kunnen worden weergegeven. Als een lineaire schaal gebruikt zou worden, zou het niet mogelijk zijn om de belangrijkere controlepunten te kunnen onderscheiden in het onderste bereik van de omgevingslichtsterkte.
-\n\n
-<b>Hoe kan de helderheidscurve worden bewerkt?</b>
-\n\n
-Elke regel in de lijst van helderheidsstanden komt overeen met één <i>controlepunt</i> op de helderheidscurve. Tijdens het verplaatsen van de schuifbalk wordt de schermhelderheid automatisch aangepast om een voorbeeld te geven van het lichtniveau.\nExtra opties zijn beschikbaar door een regel lang aan te raken. Door \'Aanpassen\' te kiezen kan zowel de omgevingslichtsterkte als de gewenste schermhelderheid aangepast worden. Met \'Opsplitsen\' kan een regel gedupliceerd worden om een extra controlepunt in te voegen en \'Verwijderen\' verwijdert de geselecteerde regel.
-    </string>
-    <string name="auto_brightness_sensitivity_title">Aanpassingsgevoeligheid</string>
-    <string name="auto_brightness_sensitivity_verylow">Zeer laag</string>
-    <string name="auto_brightness_sensitivity_low">Laag</string>
-    <string name="auto_brightness_sensitivity_medium">Gemiddeld</string>
-    <string name="auto_brightness_sensitivity_high">Hoog</string>
-    <string name="auto_brightness_sensitivity_veryhigh">Zeer hoog</string>
     <string name="wifi_ibss_freq_title">Kanaal/frequentie</string>
     <string name="wifi_channel">Kanaal</string>
     <string name="wifi_mhz">MHz</string>
@@ -707,6 +714,16 @@ Elke regel in de lijst van helderheidsstanden komt overeen met één <i>controle
     <string name="privacy_guard_switch_label">Privacybescherming</string>
     <string name="privacy_guard_dlg_title">Privacybescherming inschakelen?</string>
     <string name="privacy_guard_dlg_text">Als Privacybescherming is ingeschakeld, zal de app geen toegang hebben tot persoonsgegevens zoals contacten, berichten of gespreksstatistieken.</string>
-    <string name="privacy_guard_default_title">Privacybescherming</string>
+    <string name="privacy_guard_dlg_system_app_text">Als Privacybescherming is ingeschakeld voor een ingebouwde app, zal de app geen toegang hebben tot persoonsgegevens of persoonsgegevens kunnen verstrekken. Dit kan ervoor zorgen dat andere apps niet meer goed werken.</string>
+    <string name="privacy_guard_default_title">Standaard ingeschakeld</string>
     <string name="privacy_guard_default_summary">Privacybescherming standaard inschakelen voor nieuw geïnstalleerde apps</string>
+    <string name="privacy_guard_manager_title">Privacybescherming</string>
+    <string name="privacy_guard_manager_summary">Beheren welke apps toegang hebben tot persoonsgegevens</string>
+    <string name="privacy_guard_no_user_apps">Geen apps geïnstalleerd</string>
+    <string name="privacy_guard_filter_does_not_match">Geen apps geïnstalleerd met relevante machtigingen</string>
+    <string name="privacy_guard_help_title">Help</string>
+    <string name="privacy_guard_reset_title">Opnieuw instellen</string>
+    <string name="privacy_guard_help_text">Op dit scherm kunt u kiezen voor welke apps Privacybescherming ingeschakeld moet zijn door op ze te tikken. Geselecteerde apps zullen geen toegang hebben tot persoonsgegevens zoals contacten, berichten of gespreksstatistieken. Door een app lang aan te raken opent het info-scherm voor die app.\n\nStandaard worden ingebouwde apps niet getoond. Als u deze apps of alleen apps die met hun machtigingen toegang tot persoonsgegevens vragen wilt zien, selecteer u de desbetreffende opties in het menu.</string>
+    <string name="privacy_guard_manager_show_system_apps">Ingebouwde apps tonen</string>
+    <string name="privacy_guard_manager_filter_permissions">Machtigingenfilter</string>
 </resources>
