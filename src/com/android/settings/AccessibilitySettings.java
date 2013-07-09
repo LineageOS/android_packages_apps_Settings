@@ -1026,7 +1026,8 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
             onInstallActionBarToggleSwitch();
             onProcessArguments(getArguments());
             getListView().setDivider(null);
-            getListView().setEnabled(false);
+            getListView().setCacheColorHint(0);
+            getListView().setSelector(android.R.color.transparent);
         }
 
         @Override
