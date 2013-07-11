@@ -64,6 +64,8 @@
     <string name="end_time_title">Fine</string>
     <string name="notification_convert_sound_to_vibration_title">Vibra alle notifiche</string>
     <string name="notification_convert_sound_to_vibration_summary">In modalità vibrazione, tutte le notifiche faranno vibrare il dispositivo indipendentemente dalla impostazioni delle applicazioni</string>
+    <string name="notification_vibrate_during_calls_title">Vibra durante la chiamata</string>
+    <string name="notification_vibrate_during_calls_summary">Le notifiche produrranno una leggera vibrazione durante le chiamate</string>
     <string name="device_hostname">Hostname dispositivo</string>
     <string name="mod_version">Versione CyanogenMod</string>
     <string name="mod_version_default">Sconoscito</string>
@@ -249,6 +251,7 @@
     <string name="display_rotation_title">Rotazione schermo</string>
     <string name="display_rotation_disabled">Disattivata</string>
     <string name="display_rotation_unit">gradi</string>
+    <string name="display_lockscreen_rotation_title">Rotazione schermata sblocco</string>
     <string name="display_rotation_category_title">Modalità rotazione schermo</string>
     <string name="display_rotation_0_title">0 gradi</string>
     <string name="display_rotation_90_title">90 gradi</string>
@@ -487,6 +490,8 @@
     <string name="development_tools_title">Esegui dev. tools</string>
     <string name="usb_mass_storage_title">Memoria di massa</string>
     <string name="usb_mass_storage_summary">Abilita la memoria di massa USB</string>
+    <string name="storage_rescan_media">Riesegui la scansione dei media sulla memoria di massa</string>
+    <string name="storage_rescan_media_complete">Scansione completata</string>
     <string name="adb_over_network">ADB attraverso la rete</string>
     <string name="adb_over_network_summary">Attiva il debugging TCP/IP attraverso interfacce di rete (Wi-Fi, Reti USB). Questa impostazione è resettata al riavvio</string>
     <string name="adb_over_network_warning">ATTENZIONE: Quando è attivo l\'ADB attraverso interfacce di rete il dispositivo è vulnerabile ad intrusioni da parte di tutte le reti connesse, inclusa quella GSM!\n\nUsare questa funzione esclusivamente se si è connessi a reti affidabili.\n\nSei sicuro di voler attivare questa funzione?</string>
@@ -511,6 +516,7 @@
     <string name="title_tile_battery">Statistiche batteria</string>
     <string name="title_tile_bluetooth">Bluetooth</string>
     <string name="title_tile_brightness">Luminosità</string>
+    <string name="title_tile_camera">Fotocamera</string>
     <string name="title_tile_sleep">Blocca telefono</string>
     <string name="title_tile_gps">GPS</string>
     <string name="title_tile_torch">Torcia LED</string>
@@ -566,10 +572,17 @@
     <string name="sms_security_check_limit_default">30 (predefinito)</string>
     <string name="lock_clock_title">Widget orologio</string>
     <string name="lock_clock_summary">Visualizza o modifica le opzioni di visualizzazione di \'cLock\' per la schermata Home o di sblocco</string>
+    <string name="lockscreen_widgets_category_title">Widget</string>
     <string name="stylus_icon_enabled_title">Icona uso dello stilo</string>
     <string name="stylus_icon_enabled_summary">Mostra l\'icona del puntatore durante il movimento o il disegno con lo stilo</string>
     <string name="lockscreen_maximize_widgets_title">Massimizza widget</string>
     <string name="lockscreen_maximize_widgets_summary">Mostra i widget massimizzati e lo sblocco minimizzato quando lo schermo viene acceso</string>
+    <string name="lockscreen_enable_widgets_title">Gestore widget</string>
+    <string name="lockscreen_enable_widgets_summary">Consenti di aggiungere e selezionare diverse pagine di widget</string>
+    <string name="lockscreen_enable_camera_title">Widget fotocamera</string>
+    <string name="lockscreen_enable_camera_summary">Mostra il widget fotocamera alla destra della schermata di sblocco</string>
+    <string name="lockscreen_music_controls_title">Controlli musicali</string>
+    <string name="lockscreen_music_controls_summary">Mostra i controlli musicali mentre il player è attivo</string>
     <string name="lockscreen_custom_background_title">Sfondo</string>
     <string name="lockscreen_custom_background_dialog_title">Colore dello sfondo</string>
     <string name="lockscreen_background_result_successful">Sfondo modificato con successo</string>
@@ -710,6 +723,16 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' cancella la riga selezionata
     <string name="privacy_guard_switch_label">Attiva Privacy Guard</string>
     <string name="privacy_guard_dlg_title">Attivare Privacy Guard?</string>
     <string name="privacy_guard_dlg_text">Quando Privacy Guard è attivato, l\'applicazione non è in grado di accedere a dati personali come contatti, lista chiamate, messaggi.</string>
+    <string name="privacy_guard_dlg_system_app_text">Quando Privacy Guard è attivato per un\'applicazione di sistema, essa non sarà in grado di accedere o di fornire dati personali. Ciò può causare problemi in altre applicazioni.</string>
     <string name="privacy_guard_default_title">Privacy Guard</string>
     <string name="privacy_guard_default_summary">Attiva Privacy Guard in modo automatico per le nuove applicazioni</string>
+    <string name="privacy_guard_manager_title">Privacy Guard</string>
+    <string name="privacy_guard_manager_summary">Gestisci quali applicazioni hanno accesso ai tuoi dati personali</string>
+    <string name="privacy_guard_no_user_apps">Nessuna applicazione installata</string>
+    <string name="privacy_guard_filter_does_not_match">Nessuna applicazione con permessi di rilievo è installata</string>
+    <string name="privacy_guard_help_title">Guida</string>
+    <string name="privacy_guard_reset_title">Ripristina</string>
+    <string name="privacy_guard_help_text">In questa schermata puoi decidere per quali applicazioni sarà attivo Privacy Guard semplicemente selezionandole. Le applicazioni selezionate non saranno in grado di accedere ai tuoi dati personali, quali contatti, messaggi o elenco chiamate. Una pressione prolungata apre la schermata di dettaglio per l\'applicazione selezionata.\n\nLe applicazioni integrate non sono visualizzate, in modo predefinito. Se vuoi renderle visibili, o visualizzare solo le applicazioni che in base ai loro permessi richiedono un accesso ai tuoi dati personali, attiva le rispettive opzioni nel menu.</string>
+    <string name="privacy_guard_manager_show_system_apps">Mostra applicazioni integrate</string>
+    <string name="privacy_guard_manager_filter_permissions">Filtro sui permessi</string>
 </resources>
