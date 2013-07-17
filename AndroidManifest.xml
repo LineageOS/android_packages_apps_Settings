@@ -640,8 +640,10 @@
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="com.android.settings.MULTI_SIM_SETTINGS" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.VOICE_LAUNCH" />
-                <category android:name="codeaurora.intent.filter.settings.multisim.SHORTCUT" />
+                <!-- This Activity is not used, so it should not be found by 'Voice Dialer'. -->
+                <!-- <category android:name="android.intent.category.VOICE_LAUNCH" /> -->
+                <!-- not display this shortcut on the widget shortcut -->
+                <!--- <category android:name="codeaurora.intent.filter.settings.multisim.SHORTCUT" /> -->
             </intent-filter>
         </activity>
 

@@ -46,6 +46,7 @@ import android.preference.PreferenceScreen;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
+import android.telephony.MSimTelephonyManager;
 import android.util.Log;
 
 import java.util.List;
@@ -69,6 +70,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String KEY_SOUND_SETTINGS = "sound_settings";
     private static final String KEY_LOCK_SOUNDS = "lock_sounds";
     private static final String KEY_RINGTONE = "ringtone";
+    private static final String KEY_MULTISIM_RINGTONE = "multisim_ringtone";
     private static final String KEY_NOTIFICATION_SOUND = "notification_sound";
     private static final String KEY_CATEGORY_CALLS = "category_calls_and_notification";
     private static final String KEY_DOCK_CATEGORY = "dock_category";
@@ -91,6 +93,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private Preference mMusicFx;
     private CheckBoxPreference mLockSounds;
     private Preference mRingtonePreference;
+    private Preference mMultiSimRingtonePreference;
     private Preference mNotificationPreference;
 
     private Runnable mRingtoneLookupRunnable;
@@ -173,6 +176,16 @@ public class SoundSettings extends SettingsPreferenceFragment implements
                 Settings.System.LOCKSCREEN_SOUNDS_ENABLED, 1) != 0);
 
         mRingtonePreference = findPreference(KEY_RINGTONE);
+        mMultiSimRingtonePreference = findPreference(KEY_MULTISIM_RINGTONE);
+        if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
+            //if it support multi sim, remove ringtone setting, show multi sim ringtone setting
+            getPreferenceScreen().removePreference(mRingtonePreference);
+            mRingtonePreference = null;
+        } else {
+            //if it is not multi sim, remove multi sim ringtone setting, and show ringtone setting
+            getPreferenceScreen().removePreference(mMultiSimRingtonePreference);
+            mMultiSimRingtonePreference = null;
+        }
         mNotificationPreference = findPreference(KEY_NOTIFICATION_SOUND);
 
         Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -336,6 +349,14 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         } else if (preference == mDockAudioMediaEnabled) {
             Settings.Global.putInt(getContentResolver(), Settings.Global.DOCK_AUDIO_MEDIA_ENABLED,
                     mDockAudioMediaEnabled.isChecked() ? 1 : 0);
+        } else if (mMultiSimRingtonePreference != null &&
+                preference == mMultiSimRingtonePreference) {
+            Intent intent = mMultiSimRingtonePreference.getIntent();
+            intent.putExtra(SelectSubscription.PACKAGE,
+                    "com.android.multisimsettings");
+            intent.putExtra(SelectSubscription.TARGET_CLASS,
+                    "com.android.multisimsettings.MultiSimSoundSettings");
+            startActivity(intent);
         }
         return true;
     }
