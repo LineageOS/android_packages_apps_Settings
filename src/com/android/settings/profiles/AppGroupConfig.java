@@ -74,8 +74,6 @@ public class AppGroupConfig extends SettingsPreferenceFragment
 
     private PackageManager mPackageManager;
 
-    private List<PackageInfo> mInstalledPackages;
-
     private NotificationGroup mNotificationGroup;
 
     private ProfileManager mProfileManager;
@@ -99,8 +97,7 @@ public class AppGroupConfig extends SettingsPreferenceFragment
         if (args != null) {
             mNotificationGroup = (NotificationGroup) args.getParcelable("NotificationGroup");
             mPackageManager = getPackageManager();
-            mInstalledPackages = mPackageManager.getInstalledPackages(0);
-            mAppAdapter = new PackageAdaptor(mInstalledPackages);
+            mAppAdapter = new PackageAdaptor(mPackageManager.getInstalledPackages(0));
             mAppAdapter.update();
 
             updatePackages();
@@ -323,15 +320,21 @@ public class AppGroupConfig extends SettingsPreferenceFragment
     }
 
     class PackageItem implements Comparable<PackageItem> {
-        CharSequence title;
-
+        String title;
         String packageName;
-
         Drawable icon;
+        boolean enabled;
 
         @Override
         public int compareTo(PackageItem another) {
-            return this.title.toString().compareTo(another.title.toString());
+            if (enabled != another.enabled) {
+                return enabled ? -1 : 1;
+            }
+            int titleResult = title.compareToIgnoreCase(another.title);
+            if (titleResult != 0) {
+                return titleResult;
+            }
+            return packageName.compareTo(another.packageName);
         }
     }
 
@@ -352,11 +355,11 @@ public class AppGroupConfig extends SettingsPreferenceFragment
                         for (PackageInfo info : mInstalledPackageInfo) {
                             final PackageItem item = new PackageItem();
                             ApplicationInfo applicationInfo = info.applicationInfo;
-                            item.title = applicationInfo.loadLabel(mPackageManager);
+                            item.title = applicationInfo.loadLabel(mPackageManager).toString();
                             item.icon = applicationInfo.loadIcon(mPackageManager);
                             item.packageName = applicationInfo.packageName;
+                            item.enabled = applicationInfo.enabled;
                             handler.post(new Runnable() {
-
                                 @Override
                                 public void run() {
                                     int index = Collections.binarySearch(mInstalledPackages, item);
