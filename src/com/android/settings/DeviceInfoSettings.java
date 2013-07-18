@@ -102,6 +102,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
             String status = getResources().getString(R.string.selinux_status_permissive);
             setStringSummary(KEY_SELINUX_STATUS, status);
         }
+        findPreference(KEY_SELINUX_STATUS).setEnabled(true);
 
         // Remove selinux information if property is not present
         removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_SELINUX_STATUS,
@@ -251,6 +252,22 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
                 } catch (Exception e) {
                     Log.e(LOG_TAG, "Unable to start activity " + intent.toString());
                 }
+            }
+        } else if (preference.getKey().equals(KEY_SELINUX_STATUS)) {
+            System.arraycopy(mHits, 1, mHits, 0, mHits.length-1);
+            mHits[mHits.length-1] = SystemClock.uptimeMillis();
+            if (mHits[0] >= (SystemClock.uptimeMillis()-500)) {
+                    SELinux.setSELinuxEnforce(!SELinux.isSELinuxEnforced());
+                    if (!SELinux.isSELinuxEnabled()) {
+                            String status = getResources().getString(R.string.selinux_status_disabled);
+                            setStringSummary(KEY_SELINUX_STATUS, status);
+                    } else if (!SELinux.isSELinuxEnforced()) {
+                            String status = getResources().getString(R.string.selinux_status_permissive);
+                            setStringSummary(KEY_SELINUX_STATUS, status);
+                    } else if (SELinux.isSELinuxEnforced()) {
+                            String status = getResources().getString(R.string.selinux_status_enforcing);
+                            setStringSummary(KEY_SELINUX_STATUS, status);
+                    }
             }
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
