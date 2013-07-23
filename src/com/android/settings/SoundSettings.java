@@ -54,6 +54,8 @@ import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.VolumePanel;
 
+import com.android.settings.cyanogenmod.VibratorIntensity;
+
 import java.util.Date;
 import java.util.Calendar;
 import java.util.List;
@@ -96,6 +98,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String KEY_POWER_NOTIFICATIONS = "power_notifications";
     private static final String KEY_POWER_NOTIFICATIONS_VIBRATE = "power_notifications_vibrate";
     private static final String KEY_POWER_NOTIFICATIONS_RINGTONE = "power_notifications_ringtone";
+    private static final String KEY_VIBRATOR_INTENSITY = "vibrator_intensity";
 
     private static final String RING_MODE_NORMAL = "normal";
     private static final String RING_MODE_VIBRATE = "vibrate";
@@ -349,6 +352,11 @@ public class SoundSettings extends SettingsPreferenceFragment implements
                 Settings.Global.POWER_NOTIFICATIONS_VIBRATE, 0) != 0);
         if (vibrator == null || !vibrator.hasVibrator()) {
             removePreference(KEY_POWER_NOTIFICATIONS_VIBRATE);
+            removePreference(KEY_VIBRATOR_INTENSITY);
+        }
+
+        if (!VibratorIntensity.isSupported()) {
+            removePreference(KEY_VIBRATOR_INTENSITY);
         }
 
         mPowerSoundsRingtone = findPreference(KEY_POWER_NOTIFICATIONS_RINGTONE);
