@@ -206,38 +206,38 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
                 }
             }
         } else if (preference.getKey().equals(KEY_BUILD_NUMBER)) {
-            // Only allow the owner of the device to turn on dev and performance options
-            if (UserHandle.myUserId() == UserHandle.USER_OWNER) {
-                if (mDevHitCountdown > 0) {
-                    mDevHitCountdown--;
-                    if (mDevHitCountdown == 0) {
-                        getActivity().getSharedPreferences(DevelopmentSettings.PREF_FILE,
-                                Context.MODE_PRIVATE).edit().putBoolean(
-                                        DevelopmentSettings.PREF_SHOW, true).apply();
-                        if (mDevHitToast != null) {
-                            mDevHitToast.cancel();
-                        }
-                        mDevHitToast = Toast.makeText(getActivity(), R.string.show_dev_on,
-                                Toast.LENGTH_LONG);
-                        mDevHitToast.show();
-                    } else if (mDevHitCountdown > 0
-                            && mDevHitCountdown < (TAPS_TO_BE_A_DEVELOPER-2)) {
-                        if (mDevHitToast != null) {
-                            mDevHitToast.cancel();
-                        }
-                        mDevHitToast = Toast.makeText(getActivity(), getResources().getQuantityString(
-                                R.plurals.show_dev_countdown, mDevHitCountdown, mDevHitCountdown),
-                                Toast.LENGTH_SHORT);
-                        mDevHitToast.show();
-                    }
-                } else if (mDevHitCountdown < 0) {
+            // Don't enable developer options for secondary users.
+            if (UserHandle.myUserId() != UserHandle.USER_OWNER) return true;
+
+            if (mDevHitCountdown > 0) {
+                mDevHitCountdown--;
+                if (mDevHitCountdown == 0) {
+                    getActivity().getSharedPreferences(DevelopmentSettings.PREF_FILE,
+                            Context.MODE_PRIVATE).edit().putBoolean(
+                                    DevelopmentSettings.PREF_SHOW, true).apply();
                     if (mDevHitToast != null) {
                         mDevHitToast.cancel();
                     }
-                    mDevHitToast = Toast.makeText(getActivity(), R.string.show_dev_already,
+                    mDevHitToast = Toast.makeText(getActivity(), R.string.show_dev_on,
                             Toast.LENGTH_LONG);
                     mDevHitToast.show();
+                } else if (mDevHitCountdown > 0
+                        && mDevHitCountdown < (TAPS_TO_BE_A_DEVELOPER-2)) {
+                    if (mDevHitToast != null) {
+                        mDevHitToast.cancel();
+                    }
+                    mDevHitToast = Toast.makeText(getActivity(), getResources().getQuantityString(
+                            R.plurals.show_dev_countdown, mDevHitCountdown, mDevHitCountdown),
+                            Toast.LENGTH_SHORT);
+                    mDevHitToast.show();
                 }
+            } else if (mDevHitCountdown < 0) {
+                if (mDevHitToast != null) {
+                    mDevHitToast.cancel();
+                }
+                mDevHitToast = Toast.makeText(getActivity(), R.string.show_dev_already,
+                        Toast.LENGTH_LONG);
+                mDevHitToast.show();
             }
         } else if (preference.getKey().equals(KEY_MOD_VERSION)) {
             System.arraycopy(mHits, 1, mHits, 0, mHits.length-1);

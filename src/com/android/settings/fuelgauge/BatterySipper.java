@@ -32,7 +32,8 @@ import java.util.HashMap;
 
 class BatterySipper implements Comparable<BatterySipper> {
     final Context mContext;
-    final HashMap<String,UidToDetail> mUidCache = new HashMap<String,UidToDetail>();
+    /* Cache cleared when PowerUsageSummary is destroyed */
+    static final HashMap<String,UidToDetail> sUidCache = new HashMap<String,UidToDetail>();
     final ArrayList<BatterySipper> mRequestQueue;
     final Handler mHandler;
     String name;
@@ -93,14 +94,14 @@ class BatterySipper implements Comparable<BatterySipper> {
 
     public int compareTo(BatterySipper other) {
         // Return the flipped value because we want the items in descending order
-        return (int) (other.getSortValue() - getSortValue());
+        return Double.compare(other.getSortValue(), getSortValue());
     }
 
     void getQuickNameIconForUid(Uid uidObj) {
         final int uid = uidObj.getUid();
         final String uidString = Integer.toString(uid);
-        if (mUidCache.containsKey(uidString)) {
-            UidToDetail utd = mUidCache.get(uidString);
+        if (sUidCache.containsKey(uidString)) {
+            UidToDetail utd = sUidCache.get(uidString);
             defaultPackageName = utd.packageName;
             name = utd.name;
             icon = utd.icon;
@@ -193,7 +194,7 @@ class BatterySipper implements Comparable<BatterySipper> {
         utd.name = name;
         utd.icon = icon;
         utd.packageName = defaultPackageName;
-        mUidCache.put(uidString, utd);
+        sUidCache.put(uidString, utd);
         mHandler.sendMessage(mHandler.obtainMessage(PowerUsageSummary.MSG_UPDATE_NAME_ICON, this));
     }
 }

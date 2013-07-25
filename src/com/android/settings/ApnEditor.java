@@ -21,6 +21,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ContentUris;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.CursorLoader;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -61,6 +62,7 @@ public class ApnEditor extends SettingsPreferenceFragment
     private final static String KEY_BEARER = "bearer";
     protected static final String EDIT_ACTION = "edit_action";
     protected static final String EDIT_DATA = "edit_data";
+    private final static String KEY_MVNO_TYPE = "mvno_type";
 
     private static final int MENU_DELETE = Menu.FIRST;
     private static final int MENU_SAVE = Menu.FIRST + 1;
@@ -86,6 +88,8 @@ public class ApnEditor extends SettingsPreferenceFragment
     private ListPreference mRoamingProtocol;
     private CheckBoxPreference mCarrierEnabled;
     private ListPreference mBearer;
+    private ListPreference mMvnoType;
+    private EditTextPreference mMvnoMatchData;
 
     private String mCurMnc;
     private String mCurMcc;
@@ -95,6 +99,7 @@ public class ApnEditor extends SettingsPreferenceFragment
     private boolean mNewApn;
     private boolean mFirstTime;
     private Resources mRes;
+    private TelephonyManager mTelephonyManager;
 
     /**
      * Standard projection for the interesting columns of a normal note.
@@ -119,7 +124,9 @@ public class ApnEditor extends SettingsPreferenceFragment
             Telephony.Carriers.PROTOCOL, // 16
             Telephony.Carriers.CARRIER_ENABLED, // 17
             Telephony.Carriers.BEARER, // 18
-            Telephony.Carriers.ROAMING_PROTOCOL // 19
+            Telephony.Carriers.ROAMING_PROTOCOL, // 19
+            Telephony.Carriers.MVNO_TYPE,   // 20
+            Telephony.Carriers.MVNO_MATCH_DATA  // 21
     };
 
     private static final int ID_INDEX = 0;
@@ -141,6 +148,8 @@ public class ApnEditor extends SettingsPreferenceFragment
     private static final int CARRIER_ENABLED_INDEX = 17;
     private static final int BEARER_INDEX = 18;
     private static final int ROAMING_PROTOCOL_INDEX = 19;
+    private static final int MVNO_TYPE_INDEX = 20;
+    private static final int MVNO_MATCH_DATA_INDEX = 21;
 
 
     @Override
@@ -177,6 +186,10 @@ public class ApnEditor extends SettingsPreferenceFragment
 
         mBearer = (ListPreference) findPreference(KEY_BEARER);
         mBearer.setOnPreferenceChangeListener(this);
+
+        mMvnoType = (ListPreference) findPreference(KEY_MVNO_TYPE);
+        mMvnoType.setOnPreferenceChangeListener(this);
+        mMvnoMatchData = (EditTextPreference) findPreference("mvno_match_data");
 
         mRes = getResources();
 
@@ -223,6 +236,8 @@ public class ApnEditor extends SettingsPreferenceFragment
         CursorLoader qCursor = new CursorLoader(getActivity(), mUri, sProjection, null, null, null);
         mCursor = qCursor.loadInBackground();
         mCursor.moveToFirst();
+
+        mTelephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
 
         fillUi();
         setHasOptionsMenu(true);
@@ -286,6 +301,9 @@ public class ApnEditor extends SettingsPreferenceFragment
             mRoamingProtocol.setValue(mCursor.getString(ROAMING_PROTOCOL_INDEX));
             mCarrierEnabled.setChecked(mCursor.getInt(CARRIER_ENABLED_INDEX)==1);
             mBearer.setValue(mCursor.getString(BEARER_INDEX));
+            mMvnoType.setValue(mCursor.getString(MVNO_TYPE_INDEX));
+            mMvnoMatchData.setEnabled(false);
+            mMvnoMatchData.setText(mCursor.getString(MVNO_MATCH_DATA_INDEX));
         }
 
         mName.setSummary(checkNull(mName.getText()));
@@ -319,6 +337,9 @@ public class ApnEditor extends SettingsPreferenceFragment
                 checkNull(protocolDescription(mRoamingProtocol.getValue(), mRoamingProtocol)));
         mBearer.setSummary(
                 checkNull(bearerDescription(mBearer.getValue())));
+        mMvnoType.setSummary(
+                checkNull(mvnoDescription(mMvnoType.getValue())));
+        mMvnoMatchData.setSummary(checkNull(mMvnoMatchData.getText()));
     }
 
     /**
@@ -348,6 +369,39 @@ public class ApnEditor extends SettingsPreferenceFragment
             String[] values = mRes.getStringArray(R.array.bearer_entries);
             try {
                 return values[mBearerIndex];
+            } catch (ArrayIndexOutOfBoundsException e) {
+                return null;
+            }
+        }
+    }
+
+    private String mvnoDescription(String newValue) {
+        int mvnoIndex = mMvnoType.findIndexOfValue(newValue);
+        String oldValue = mMvnoType.getValue();
+
+        if (mvnoIndex == -1) {
+            return null;
+        } else {
+            String[] values = mRes.getStringArray(R.array.mvno_type_entries);
+            if (values[mvnoIndex].equals("None")) {
+                mMvnoMatchData.setEnabled(false);
+            } else {
+                mMvnoMatchData.setEnabled(true);
+            }
+            if (newValue != null && newValue.equals(oldValue) == false) {
+                if (values[mvnoIndex].equals("SPN")) {
+                    mMvnoMatchData.setText(mTelephonyManager.getSimOperatorName());
+                } else if (values[mvnoIndex].equals("IMSI")) {
+                    String numeric =
+                            SystemProperties.get(TelephonyProperties.PROPERTY_ICC_OPERATOR_NUMERIC);
+                    mMvnoMatchData.setText(numeric + "x");
+                } else if (values[mvnoIndex].equals("GID")) {
+                    mMvnoMatchData.setText(mTelephonyManager.getGroupIdLevel1());
+                }
+            }
+
+            try {
+                return values[mvnoIndex];
             } catch (ArrayIndexOutOfBoundsException e) {
                 return null;
             }
@@ -387,6 +441,13 @@ public class ApnEditor extends SettingsPreferenceFragment
             }
             mBearer.setValue((String) newValue);
             mBearer.setSummary(bearer);
+        } else if (KEY_MVNO_TYPE.equals(key)) {
+            String mvno = mvnoDescription((String) newValue);
+            if (mvno == null) {
+                return false;
+            }
+            mMvnoType.setValue((String) newValue);
+            mMvnoType.setSummary(mvno);
         }
 
         return true;
@@ -505,6 +566,9 @@ public class ApnEditor extends SettingsPreferenceFragment
         if (bearerVal != null) {
             values.put(Telephony.Carriers.BEARER, Integer.parseInt(bearerVal));
         }
+
+        values.put(Telephony.Carriers.MVNO_TYPE, checkNotSet(mMvnoType.getValue()));
+        values.put(Telephony.Carriers.MVNO_MATCH_DATA, checkNotSet(mMvnoMatchData.getText()));
 
         getContentResolver().update(mUri, values, null, null);
 

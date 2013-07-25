@@ -92,6 +92,11 @@ public class Utils {
     public static final int UPDATE_PREFERENCE_FLAG_SET_TITLE_TO_MATCHING_ACTIVITY = 1;
 
     /**
+     * The opacity level of a disabled icon.
+     */
+    public static final float DISABLED_ALPHA = 0.4f;
+
+    /**
      * Name of the meta-data item that should be set in the AndroidManifest.xml
      * to specify the icon that should be displayed for the preference.
      */
@@ -464,7 +469,7 @@ public class Utils {
                     com.android.internal.R.dimen.preference_fragment_padding_bottom);
 
             final int effectivePaddingSide = ignoreSidePadding ? 0 : paddingSide;
-            list.setPadding(effectivePaddingSide, 0, effectivePaddingSide, paddingBottom);
+            list.setPaddingRelative(effectivePaddingSide, 0, effectivePaddingSide, paddingBottom);
         }
     }
 

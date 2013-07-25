@@ -33,6 +33,7 @@ import android.os.Environment;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.os.ServiceManager;
+import android.os.UserManager;
 import android.os.storage.IMountService;
 import android.os.storage.StorageEventListener;
 import android.os.storage.StorageManager;
@@ -49,7 +50,7 @@ import android.widget.Toast;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
-import com.google.common.collect.Lists;
+import com.google.android.collect.Lists;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -174,7 +175,8 @@ public class Memory extends SettingsPreferenceFragment {
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         final MenuItem usb = menu.findItem(R.id.storage_usb);
-        usb.setVisible(true);
+        UserManager um = (UserManager)getActivity().getSystemService(Context.USER_SERVICE);
+        usb.setVisible(!um.hasUserRestriction(UserManager.DISALLOW_USB_FILE_TRANSFER));
     }
 
     @Override

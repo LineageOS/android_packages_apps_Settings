@@ -26,7 +26,6 @@ import com.android.settings.tts.TtsEnginePreference.RadioButtonGroupState;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.ContentResolver;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.ListPreference;
@@ -36,14 +35,17 @@ import android.preference.PreferenceCategory;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.speech.tts.TextToSpeech;
+import android.speech.tts.UtteranceProgressListener;
 import android.speech.tts.TextToSpeech.EngineInfo;
 import android.speech.tts.TtsEngines;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Checkable;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 public class TextToSpeechSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener,
@@ -137,7 +139,26 @@ public class TextToSpeechSettings extends SettingsPreferenceFragment implements
         mTts = new TextToSpeech(getActivity().getApplicationContext(), mInitListener);
         mEnginesHelper = new TtsEngines(getActivity().getApplicationContext());
 
+        setTtsUtteranceProgressListener();
         initSettings();
+    }
+
+    private void setTtsUtteranceProgressListener() {
+        if (mTts == null) {
+            return;
+        }
+        mTts.setOnUtteranceProgressListener(new UtteranceProgressListener() {
+            @Override
+            public void onStart(String utteranceId) {}
+
+            @Override
+            public void onDone(String utteranceId) {}
+
+            @Override
+            public void onError(String utteranceId) {
+                Log.e(TAG, "Error while trying to synthesize sample text");
+            }
+        });
     }
 
     @Override
@@ -193,7 +214,13 @@ public class TextToSpeechSettings extends SettingsPreferenceFragment implements
 
         if (TextUtils.isEmpty(currentEngine)) currentEngine = mTts.getDefaultEngine();
 
-        Locale currentLocale = mTts.getLanguage();
+
+        Locale defaultLocale = mTts.getDefaultLanguage();
+        if (defaultLocale == null) {
+            Log.e(TAG, "Failed to get default language from engine " + currentEngine);
+            return;
+        }
+        mTts.setLanguage(defaultLocale);
 
         // TODO: This is currently a hidden private API. The intent extras
         // and the intent action should be made public if we intend to make this
@@ -201,11 +228,9 @@ public class TextToSpeechSettings extends SettingsPreferenceFragment implements
         // doesn't work.
         Intent intent = new Intent(TextToSpeech.Engine.ACTION_GET_SAMPLE_TEXT);
 
-        if (currentLocale != null) {
-            intent.putExtra("language", currentLocale.getLanguage());
-            intent.putExtra("country", currentLocale.getCountry());
-            intent.putExtra("variant", currentLocale.getVariant());
-        }
+        intent.putExtra("language", defaultLocale.getLanguage());
+        intent.putExtra("country", defaultLocale.getCountry());
+        intent.putExtra("variant", defaultLocale.getVariant());
         intent.setPackage(currentEngine);
 
         try {
@@ -258,6 +283,12 @@ public class TextToSpeechSettings extends SettingsPreferenceFragment implements
         return null;
     }
 
+    private boolean isNetworkRequiredForSynthesis() {
+        Set<String> features = mTts.getFeatures(mTts.getLanguage());
+        return features.contains(TextToSpeech.Engine.KEY_FEATURE_NETWORK_SYNTHESIS) &&
+                !features.contains(TextToSpeech.Engine.KEY_FEATURE_EMBEDDED_SYNTHESIS);
+    }
+
     private void onSampleTextReceived(int resultCode, Intent data) {
         String sample = getDefaultSampleString();
 
@@ -273,7 +304,18 @@ public class TextToSpeechSettings extends SettingsPreferenceFragment implements
         if (sample != null && mTts != null) {
             // The engine is guaranteed to have been initialized here
             // because this preference is not enabled otherwise.
-            mTts.speak(sample, TextToSpeech.QUEUE_FLUSH, null);
+
+            final boolean networkRequired = isNetworkRequiredForSynthesis();
+            if (!networkRequired || networkRequired &&
+                    (mTts.isLanguageAvailable(mTts.getLanguage()) >= TextToSpeech.LANG_AVAILABLE)) {
+                HashMap<String, String> params = new HashMap<String, String>();
+                params.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "Sample");
+
+                mTts.speak(sample, TextToSpeech.QUEUE_FLUSH, params);
+            } else {
+                Log.w(TAG, "Network required for sample synthesis for requested language");
+                displayNetworkAlert();
+            }
         } else {
             // TODO: Display an error here to the user.
             Log.e(TAG, "Did not have a sample string for the requested language");
@@ -319,22 +361,13 @@ public class TextToSpeechSettings extends SettingsPreferenceFragment implements
         mDefaultRatePref.setEnabled(enable);
     }
 
-    private void displayDataAlert(final String key) {
-        Log.i(TAG, "Displaying data alert for :" + key);
+    private void displayNetworkAlert() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(android.R.string.dialog_alert_title);
         builder.setIconAttribute(android.R.attr.alertDialogIcon);
-        builder.setMessage(getActivity().getString(
-                R.string.tts_engine_security_warning, mEnginesHelper.getEngineInfo(key).label));
-        builder.setCancelable(true);
-        builder.setPositiveButton(android.R.string.ok,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                       updateDefaultEngine(key);
-                    }
-                });
-        builder.setNegativeButton(android.R.string.cancel, null);
+        builder.setMessage(getActivity().getString(R.string.tts_engine_network_required));
+        builder.setCancelable(false);
+        builder.setPositiveButton(android.R.string.ok, null);
 
         AlertDialog dialog = builder.create();
         dialog.show();
@@ -369,6 +402,7 @@ public class TextToSpeechSettings extends SettingsPreferenceFragment implements
         // the app binds successfully to the engine.
         if (DBG) Log.d(TAG, "Updating engine : Attempting to connect to engine: " + engine);
         mTts = new TextToSpeech(getActivity().getApplicationContext(), mUpdateListener, engine);
+        setTtsUtteranceProgressListener();
     }
 
     /*
@@ -390,6 +424,7 @@ public class TextToSpeechSettings extends SettingsPreferenceFragment implements
                 // null if the previous bind to this engine failed.
                 mTts = new TextToSpeech(getActivity().getApplicationContext(), mInitListener,
                         mPreviousEngine);
+                setTtsUtteranceProgressListener();
             }
             mPreviousEngine = null;
         }
@@ -443,11 +478,6 @@ public class TextToSpeechSettings extends SettingsPreferenceFragment implements
         updateWidgetState(true);
     }
 
-    private boolean shouldDisplayDataAlert(String engine) {
-        final EngineInfo info = mEnginesHelper.getEngineInfo(engine);
-        return !info.system;
-    }
-
     @Override
     public Checkable getCurrentChecked() {
         return mCurrentChecked;
@@ -466,11 +496,7 @@ public class TextToSpeechSettings extends SettingsPreferenceFragment implements
     @Override
     public void setCurrentKey(String key) {
         mCurrentEngine = key;
-        if (shouldDisplayDataAlert(mCurrentEngine)) {
-            displayDataAlert(mCurrentEngine);
-        } else {
-            updateDefaultEngine(mCurrentEngine);
-        }
+        updateDefaultEngine(mCurrentEngine);
     }
 
 }

@@ -77,7 +77,6 @@ import android.net.NetworkStats;
 import android.net.NetworkStatsHistory;
 import android.net.NetworkTemplate;
 import android.net.TrafficStats;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.INetworkManagementService;
@@ -329,13 +328,14 @@ public class DataUsageSummary extends Fragment {
         mHeader = (ViewGroup) inflater.inflate(R.layout.data_usage_header, mListView, false);
         mHeader.setClickable(true);
 
+        mListView.addHeaderView(new View(context), null, true);
         mListView.addHeaderView(mHeader, null, true);
         mListView.setItemsCanFocus(true);
 
         if (mInsetSide > 0) {
             // inset selector and divider drawables
             insetListViewDrawables(mListView, mInsetSide);
-            mHeader.setPadding(mInsetSide, 0, mInsetSide, 0);
+            mHeader.setPaddingRelative(mInsetSide, 0, mInsetSide, 0);
         }
 
         {
@@ -454,9 +454,9 @@ public class DataUsageSummary extends Fragment {
         mMenuDataRoaming.setChecked(getDataRoaming());
 
         mMenuRestrictBackground = menu.findItem(R.id.data_usage_menu_restrict_background);
-        mMenuRestrictBackground.setVisible(hasReadyMobileRadio(context) && !appDetailMode);
+        mMenuRestrictBackground.setVisible(
+                hasReadyMobileRadio(context) && isOwner && !appDetailMode);
         mMenuRestrictBackground.setChecked(mPolicyManager.getRestrictBackground());
-        mMenuRestrictBackground.setVisible(isOwner);
 
         mMenuAutoSync = menu.findItem(R.id.data_usage_menu_auto_sync);
         mMenuAutoSync.setChecked(ContentResolver.getMasterSyncAutomatically());
@@ -1564,7 +1564,7 @@ public class DataUsageSummary extends Fragment {
                         R.layout.data_usage_item, parent, false);
 
                 if (mInsetSide > 0) {
-                    convertView.setPadding(mInsetSide, 0, mInsetSide, 0);
+                    convertView.setPaddingRelative(mInsetSide, 0, mInsetSide, 0);
                 }
             }
 
@@ -1745,6 +1745,9 @@ public class DataUsageSummary extends Fragment {
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            // clear focus to finish pending text edits
+                            cycleDayPicker.clearFocus();
+
                             final int cycleDay = cycleDayPicker.getValue();
                             final String cycleTimezone = new Time().timezone;
                             editor.setPolicyCycleDay(template, cycleDay, cycleTimezone);

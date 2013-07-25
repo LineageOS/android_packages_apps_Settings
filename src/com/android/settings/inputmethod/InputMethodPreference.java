@@ -18,6 +18,7 @@ package com.android.settings.inputmethod;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -27,6 +28,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
+import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.provider.Settings;
 import android.text.TextUtils;
@@ -41,19 +43,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.Collator;
 import java.util.Comparator;
 import java.util.List;
 
-public class InputMethodPreference extends CheckBoxPreference
-        implements Comparator<InputMethodPreference> {
+public class InputMethodPreference extends CheckBoxPreference {
     private static final String TAG = InputMethodPreference.class.getSimpleName();
-    private static final float DISABLED_ALPHA = 0.4f;
     private final SettingsPreferenceFragment mFragment;
     private final InputMethodInfo mImi;
     private final InputMethodManager mImm;
     private final Intent mSettingsIntent;
     private final boolean mAlwaysChecked;
     private final boolean mIsSystemIme;
+    private final Collator mCollator;
 
     private AlertDialog mDialog = null;
     private ImageView mInputMethodSettingsButton;
@@ -95,6 +97,7 @@ public class InputMethodPreference extends CheckBoxPreference
         if (mAlwaysChecked) {
             setEnabled(false);
         }
+        mCollator = Collator.getInstance(fragment.getResources().getConfiguration().locale);
     }
 
     @Override
@@ -172,7 +175,7 @@ public class InputMethodPreference extends CheckBoxPreference
             mInputMethodSettingsButton.setClickable(checked);
             mInputMethodSettingsButton.setFocusable(checked);
             if (!checked) {
-                mInputMethodSettingsButton.setAlpha(DISABLED_ALPHA);
+                mInputMethodSettingsButton.setAlpha(Utils.DISABLED_ALPHA);
             }
         }
         if (mTitleText != null) {
@@ -276,13 +279,26 @@ public class InputMethodPreference extends CheckBoxPreference
     }
 
     @Override
-    public int compare(InputMethodPreference arg0, InputMethodPreference arg1) {
-        if (arg0.isEnabled() == arg0.isEnabled()) {
-            return arg0.mImi.getId().compareTo(arg1.mImi.getId());
-        } else {
-            // Prefer system IMEs
-            return arg0.isEnabled() ? 1 : -1;
+    public int compareTo(Preference p) {
+        if (!(p instanceof InputMethodPreference)) {
+            return super.compareTo(p);
         }
+        final InputMethodPreference imp = (InputMethodPreference) p;
+        final boolean priority0 = mIsSystemIme && mAlwaysChecked;
+        final boolean priority1 = imp.mIsSystemIme && imp.mAlwaysChecked;
+        if (priority0 == priority1) {
+            final CharSequence t0 = getTitle();
+            final CharSequence t1 = imp.getTitle();
+            if (TextUtils.isEmpty(t0)) {
+                return 1;
+            }
+            if (TextUtils.isEmpty(t1)) {
+                return -1;
+            }
+            return mCollator.compare(t0.toString(), t1.toString());
+        }
+        // Prefer always checked system IMEs
+        return priority0 ? -1 : 1;
     }
 
     private void saveImeSettings() {

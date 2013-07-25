@@ -76,7 +76,7 @@
         <!-- Do not translate. -->
         <item>1800000</item>
     </string-array>
-    
+
     <!-- Display settings.  The delay in inactivity before the dream is shown. These are shown in a list dialog. -->
     <string-array name="dream_timeout_entries">
         <item>Never</item>
@@ -108,8 +108,8 @@
         <!-- Do not translate. -->
         <item>1800000</item>
     </string-array>
-    
-    <!-- Security settings.  The delay after screen is turned off until device locks. 
+
+    <!-- Security settings.  The delay after screen is turned off until device locks.
          These are shown in a list dialog. -->
     <string-array name="lock_after_timeout_entries">
         <item>Immediately</item>
@@ -144,7 +144,7 @@
         <!-- Do not translate. -->
         <item>1800000</item>
     </string-array>
-    
+
     <string-array name="entries_font_size">
         <item msgid="6490061470416867723">Small</item>
         <item msgid="3579015730662088893">Normal</item>
@@ -158,7 +158,7 @@
         <item>1.15</item>
         <item>1.30</item>
     </string-array>
-    
+
     <!-- TTS settings -->
 
     <!-- Default speech rate choices -->
@@ -167,7 +167,11 @@
         <item>Slow</item>
         <item>Normal</item>
         <item>Fast</item>
+        <item>Faster</item>
         <item>Very fast</item>
+        <item>Rapid</item>
+        <item>Very rapid</item>
+        <item>Fastest</item>
     </string-array>
     <!-- Do not translate. -->
     <string-array name="tts_rate_values">
@@ -176,6 +180,10 @@
         <item>100</item>
         <item>150</item>
         <item>200</item>
+        <item>250</item>
+        <item>300</item>
+        <item>350</item>
+        <item>400</item>
     </string-array>
 
     <!-- Default pitch choices -->
@@ -298,12 +306,10 @@
 
    <!-- Wi-Fi AP settings.  The type of security a Wi-Fi AP supports. -->
    <!-- Note that adding/removing/moving the items will need wifi settings code change. -->
-    <string-array name="wifi_ap_security" translatable="false">
-        <item>Open</item>
-        <!-- Do not translate. -->
-        <item>WPA PSK</item>
-        <!-- Do not translate. -->
-        <item>WPA2 PSK</item>
+    <string-array name="wifi_ap_security">
+        <item>@string/wifi_security_none</item>
+        <item>@string/wifi_security_wpa</item>
+        <item>@string/wifi_security_wpa2</item>
     </string-array>
 
     <!-- Match this with the constants in WifiDialog. --> <skip />
@@ -429,7 +435,14 @@
         <item>PWD</item>
     </string-array>
 
-    <!-- Phase 2 options -->
+    <!-- Phase 2 options for PEAP -->
+    <string-array name="wifi_peap_phase2_entries">
+        <item>None</item>
+        <item>MSCHAPV2</item>
+        <item>GTC</item>
+    </string-array>
+
+    <!-- Phase 2 options for rest of EAP methods -->
     <string-array name="wifi_phase2_entries">
         <item>None</item>
         <item>PAP</item>
@@ -534,6 +547,29 @@
         <item>0</item>
     </string-array>
 
+    <!-- MVNO Info used in APN editor -->
+    <string-array name="mvno_type_entries">
+        <!-- Do not translate. -->
+        <item>None</item>
+        <!-- Do not translate. -->
+        <item>SPN</item>
+        <!-- Do not translate. -->
+        <item>IMSI</item>
+        <!-- Do not translate. -->
+        <item>GID</item>
+    </string-array>
+
+    <string-array translatable="false" name="mvno_type_values">
+        <!-- Do not translate. -->
+        <item></item>
+        <!-- Do not translate. -->
+        <item>spn</item>
+        <!-- Do not translate. -->
+        <item>imsi</item>
+        <!-- Do not translate. -->
+        <item>gid</item>
+    </string-array>
+
     <!-- Apps on SD instalaltion location options in ApplicationSettings -->
     <string-array name="app_install_location_entries">
         <item>Internal device storage</item>
@@ -548,11 +584,89 @@
         <item>auto</item>
     </string-array>
 
+    <!-- Names of categories of app ops tabs -->
+    <string-array name="app_ops_categories">
+        <item>Location</item>
+        <item>Personal</item>
+        <item>Messaging</item>
+        <item>Device</item>
+    </string-array>
+
+    <!-- User display names for app ops codes -->
+    <string-array name="app_ops_summaries">
+        <item>coarse location</item>
+        <item>fine location</item>
+        <item>GPS</item>
+        <item>vibrate</item>
+        <item>read contacts</item>
+        <item>modify contacts</item>
+        <item>read call log</item>
+        <item>modify call log</item>
+        <item>read calendar</item>
+        <item>modify calendar</item>
+        <item>wi-fi scan</item>
+        <item>notification</item>
+        <item>cell scan</item>
+        <item>call phone</item>
+        <item>read SMS</item>
+        <item>write SMS</item>
+        <item>receive SMS</item>
+        <item>receive emergency SMS</item>
+        <item>receive MMS</item>
+        <item>receive WAP push</item>
+        <item>send SMS</item>
+        <item>read ICC SMS</item>
+        <item>write ICC SMS</item>
+        <item>modify settings</item>
+        <item>draw on top</item>
+        <item>access notifications</item>
+        <item>camera</item>
+        <item>record audio</item>
+        <item>play audio</item>
+        <item>read clipboard</item>
+        <item>modify clipboard</item>
+    </string-array>
+
+    <!-- User display names for app ops codes -->
+    <string-array name="app_ops_labels">
+        <item>Location</item>
+        <item>Location</item>
+        <item>Location</item>
+        <item>Vibrate</item>
+        <item>Read contacts</item>
+        <item>Modify contacts</item>
+        <item>Read call log</item>
+        <item>Modify call log</item>
+        <item>Read calendar</item>
+        <item>Modify calendar</item>
+        <item>Location</item>
+        <item>Post notification</item>
+        <item>Location</item>
+        <item>Call phone</item>
+        <item>Receive SMS/MMS</item>
+        <item>Send SMS/MMS</item>
+        <item>Receive SMS/MMS</item>
+        <item>Receive SMS/MMS</item>
+        <item>Receive SMS/MMS</item>
+        <item>Receive SMS/MMS</item>
+        <item>Send SMS/MMS</item>
+        <item>Receive SMS/MMS</item>
+        <item>Send SMS/MMS</item>
+        <item>Modify settings</item>
+        <item>Draw on top</item>
+        <item>Access notifications</item>
+        <item>Camera</item>
+        <item>Record audio</item>
+        <item>Play audio</item>
+        <item>Read clipboard</item>
+        <item>Modify clipboard</item>
+    </string-array>
+
     <!-- Titles for the list of long press timeout options. -->
     <string-array name="long_press_timeout_selector_titles">
         <!-- A title for the option for short long-press timeout [CHAR LIMIT=25] -->
         <item>Short</item>
-        <!-- A title for the option for medium long-press timeout [CHAR LIMIT=25] -->        
+        <!-- A title for the option for medium long-press timeout [CHAR LIMIT=25] -->
         <item>Medium</item>
         <!-- A title for the option for long long-press timeout [CHAR LIMIT=25] -->
         <item>Long</item>
@@ -684,6 +798,36 @@
         <item>1</item>
         <item>systrace</item>
         <item>error</item>
+    </string-array>
+
+    <!-- Titles for non-rectangular clipping preference. [CHAR LIMIT=35] -->
+    <string-array name="show_non_rect_clip_entries">
+        <item>Off</item>
+        <item>Draw non-rectangular clip region in blue</item>
+        <item>Highlight tested drawing commands in green</item>
+    </string-array>
+
+    <!-- Values for non-rectangular clipping preference. -->
+    <string-array name="show_non_rect_clip_values" translatable="false" >
+        <item>hide</item>
+        <item>region</item>
+        <item>highlight</item>
+    </string-array>
+
+    <!-- Titles for frame time tracking preference. [CHAR LIMIT=35] -->
+    <string-array name="track_frame_time_entries">
+        <item>Off</item>
+        <item>On screen as bars</item>
+        <item>On screen as lines</item>
+        <item>In adb shell dumpsys gfxinfo</item>
+    </string-array>
+
+    <!-- Values for frame time tracking preference. -->
+    <string-array name="track_frame_time_values" translatable="false" >
+        <item>false</item>
+        <item>visual_bars</item>
+        <item>visual_lines</item>
+        <item>true</item>
     </string-array>
 
     <!-- Titles for app process limit preference. [CHAR LIMIT=35] -->

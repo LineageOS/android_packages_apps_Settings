@@ -32,6 +32,8 @@ import android.content.pm.ResolveInfo;
 import android.content.pm.ServiceInfo;
 import android.content.res.Configuration;
 import android.database.ContentObserver;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -50,12 +52,14 @@ import android.text.TextUtils.SimpleStringSplitter;
 import android.view.Gravity;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityManager;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -110,8 +114,6 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
             "toggle_speak_password_preference";
     private static final String SELECT_LONG_PRESS_TIMEOUT_PREFERENCE =
             "select_long_press_timeout_preference";
-    private static final String TOGGLE_SCRIPT_INJECTION_PREFERENCE =
-            "toggle_script_injection_preference";
     private static final String ENABLE_ACCESSIBILITY_GESTURE_PREFERENCE_SCREEN =
             "enable_global_gesture_preference_screen";
     private static final String DISPLAY_MAGNIFICATION_PREFERENCE_SCREEN =
@@ -122,13 +124,9 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
     private static final String EXTRA_CHECKED = "checked";
     private static final String EXTRA_TITLE = "title";
     private static final String EXTRA_SUMMARY = "summary";
-    private static final String EXTRA_ENABLE_WARNING_TITLE = "enable_warning_title";
-    private static final String EXTRA_ENABLE_WARNING_MESSAGE = "enable_warning_message";
-    private static final String EXTRA_DISABLE_WARNING_TITLE = "disable_warning_title";
-    private static final String EXTRA_DISABLE_WARNING_MESSAGE = "disable_warning_message";
     private static final String EXTRA_SETTINGS_TITLE = "settings_title";
+    private static final String EXTRA_COMPONENT_NAME = "component_name";
     private static final String EXTRA_SETTINGS_COMPONENT_NAME = "settings_component_name";
-    private static final String EXTRA_SERVICE_COMPONENT_NAME = "service_component_name";
 
     // Dialog IDs.
     private static final int DIALOG_ID_NO_ACCESSIBILITY_SERVICES = 1;
@@ -182,7 +180,6 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mToggleLockScreenRotationPreference;
     private CheckBoxPreference mToggleSpeakPasswordPreference;
     private ListPreference mSelectLongPressTimeoutPreference;
-    private AccessibilityEnableScriptInjectionPreference mToggleScriptInjectionPreference;
     private Preference mNoServicesMessagePreference;
     private PreferenceScreen mDisplayMagnificationPreferenceScreen;
     private PreferenceScreen mGlobalGesturePreferenceScreen;
@@ -366,10 +363,6 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
             }
         }
 
-        // Script injection.
-        mToggleScriptInjectionPreference = (AccessibilityEnableScriptInjectionPreference)
-                findPreference(TOGGLE_SCRIPT_INJECTION_PREFERENCE);
-
         // Display magnification.
         mDisplayMagnificationPreferenceScreen = (PreferenceScreen) findPreference(
                 DISPLAY_MAGNIFICATION_PREFERENCE_SCREEN);
@@ -438,20 +431,6 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
             }
             extras.putString(EXTRA_SUMMARY, description);
 
-            CharSequence applicationLabel = info.getResolveInfo().loadLabel(getPackageManager());
-
-            extras.putString(EXTRA_ENABLE_WARNING_TITLE, getString(
-                    R.string.accessibility_service_security_warning_title, applicationLabel));
-            extras.putString(EXTRA_ENABLE_WARNING_MESSAGE, getString(
-                    R.string.accessibility_service_security_warning_summary, applicationLabel));
-
-            extras.putString(EXTRA_DISABLE_WARNING_TITLE, getString(
-                    R.string.accessibility_service_disable_warning_title,
-                    applicationLabel));
-            extras.putString(EXTRA_DISABLE_WARNING_MESSAGE, getString(
-                    R.string.accessibility_service_disable_warning_summary,
-                    applicationLabel));
-
             String settingsClassName = info.getSettingsActivityName();
             if (!TextUtils.isEmpty(settingsClassName)) {
                 extras.putString(EXTRA_SETTINGS_TITLE,
@@ -461,7 +440,7 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
                                 settingsClassName).flattenToString());
             }
 
-            extras.putString(EXTRA_SERVICE_COMPONENT_NAME, componentName.flattenToString());
+            extras.putParcelable(EXTRA_COMPONENT_NAME, componentName);
 
             mServicesCategory.addPreference(preference);
         }
@@ -472,11 +451,6 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
                     @Override
                     protected void onBindView(View view) {
                         super.onBindView(view);
-
-                        LinearLayout containerView =
-                                (LinearLayout) view.findViewById(R.id.message_container);
-                        containerView.setGravity(Gravity.CENTER);
-
                         TextView summaryView = (TextView) view.findViewById(R.id.summary);
                         String title = getString(R.string.accessibility_no_services_installed);
                         summaryView.setText(title);
@@ -536,11 +510,6 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
         String value = String.valueOf(longPressTimeout);
         mSelectLongPressTimeoutPreference.setValue(value);
         mSelectLongPressTimeoutPreference.setSummary(mLongPressTimeoutValuetoTitleMap.get(value));
-
-        // Script injection.
-        final boolean scriptInjectionAllowed = (Settings.Secure.getInt(getContentResolver(),
-                Settings.Secure.ACCESSIBILITY_SCRIPT_INJECTION, 0) == 1);
-        mToggleScriptInjectionPreference.setInjectionAllowed(scriptInjectionAllowed);
 
         // Screen magnification.
         final boolean magnificationEnabled = Settings.Secure.getInt(getContentResolver(),
@@ -634,11 +603,16 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
     }
 
     private void loadInstalledServices() {
+        Set<ComponentName> installedServices = sInstalledServices;
+        installedServices.clear();
+
         List<AccessibilityServiceInfo> installedServiceInfos =
                 AccessibilityManager.getInstance(getActivity())
                         .getInstalledAccessibilityServiceList();
-        Set<ComponentName> installedServices = sInstalledServices;
-        installedServices.clear();
+        if (installedServiceInfos == null) {
+            return;
+        }
+
         final int installedServiceInfoCount = installedServiceInfos.size();
         for (int i = 0; i < installedServiceInfoCount; i++) {
             ResolveInfo resolveInfo = installedServiceInfos.get(i).getResolveInfo();
@@ -738,17 +712,12 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
             public void onChange(boolean selfChange, Uri uri) {
                 String settingValue = Settings.Secure.getString(getContentResolver(),
                         Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
-                final boolean enabled = settingValue.contains(mComponentName);
+                final boolean enabled = settingValue.contains(mComponentName.flattenToString());
                 mToggleSwitch.setCheckedInternal(enabled);
             }
         };
 
-        private CharSequence mEnableWarningTitle;
-        private CharSequence mEnableWarningMessage;
-        private CharSequence mDisableWarningTitle;
-        private CharSequence mDisableWarningMessage;
-
-        private String mComponentName;
+        private ComponentName mComponentName;
 
         private int mShownDialogId;
 
@@ -771,25 +740,22 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
 
             // Determine enabled services and accessibility state.
             ComponentName toggledService = ComponentName.unflattenFromString(preferenceKey);
-            final boolean accessibilityEnabled;
+            boolean accessibilityEnabled = false;
             if (enabled) {
+                enabledServices.add(toggledService);
                 // Enabling at least one service enables accessibility.
                 accessibilityEnabled = true;
-                enabledServices.add(toggledService);
             } else {
+                enabledServices.remove(toggledService);
                 // Check how many enabled and installed services are present.
-                int enabledAndInstalledServiceCount = 0;
                 Set<ComponentName> installedServices = sInstalledServices;
                 for (ComponentName enabledService : enabledServices) {
                     if (installedServices.contains(enabledService)) {
-                        enabledAndInstalledServiceCount++;
+                        // Disabling the last service disables accessibility.
+                        accessibilityEnabled = true;
+                        break;
                     }
                 }
-                // Disabling the last service disables accessibility.
-                accessibilityEnabled = enabledAndInstalledServiceCount > 1
-                        || (enabledAndInstalledServiceCount == 1
-                        && !installedServices.contains(toggledService));
-                enabledServices.remove(toggledService);
             }
 
             // Update the enabled services setting.
@@ -815,32 +781,126 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
                     Settings.Secure.ACCESSIBILITY_ENABLED, accessibilityEnabled ? 1 : 0);
         }
 
+        // IMPORTANT: Refresh the info since there are dynamically changing capabilities. For
+        // example, before JellyBean MR2 the user was granting the explore by touch one.
+        private AccessibilityServiceInfo getAccessibilityServiceInfo() {
+            List<AccessibilityServiceInfo> serviceInfos = AccessibilityManager.getInstance(
+                    getActivity()).getInstalledAccessibilityServiceList();
+            final int serviceInfoCount = serviceInfos.size();
+            for (int i = 0; i < serviceInfoCount; i++) {
+                AccessibilityServiceInfo serviceInfo = serviceInfos.get(i);
+                ResolveInfo resolveInfo = serviceInfo.getResolveInfo();
+                if (mComponentName.getPackageName().equals(resolveInfo.serviceInfo.packageName)
+                        && mComponentName.getClassName().equals(resolveInfo.serviceInfo.name)) {
+                    return serviceInfo;
+                }
+            }
+            return null;
+        }
+
         @Override
         public Dialog onCreateDialog(int dialogId) {
-            CharSequence title = null;
-            CharSequence message = null;
             switch (dialogId) {
-                case DIALOG_ID_ENABLE_WARNING:
+                case DIALOG_ID_ENABLE_WARNING: {
                     mShownDialogId = DIALOG_ID_ENABLE_WARNING;
-                    title = mEnableWarningTitle;
-                    message = mEnableWarningMessage;
-                    break;
-                case DIALOG_ID_DISABLE_WARNING:
+                    AccessibilityServiceInfo info = getAccessibilityServiceInfo();
+                    if (info == null) {
+                        return null;
+                    }
+                    return new AlertDialog.Builder(getActivity())
+                        .setTitle(getString(R.string.enable_service_title,
+                                info.getResolveInfo().loadLabel(getPackageManager())))
+                        .setIconAttribute(android.R.attr.alertDialogIcon)
+                        .setView(createEnableDialogContentView(info))
+                        .setCancelable(true)
+                        .setPositiveButton(android.R.string.ok, this)
+                        .setNegativeButton(android.R.string.cancel, this)
+                        .create();
+                }
+                case DIALOG_ID_DISABLE_WARNING: {
                     mShownDialogId = DIALOG_ID_DISABLE_WARNING;
-                    title = mDisableWarningTitle;
-                    message = mDisableWarningMessage;
-                    break;
-                default:
+                    AccessibilityServiceInfo info = getAccessibilityServiceInfo();
+                    if (info == null) {
+                        return null;
+                    }
+                    return new AlertDialog.Builder(getActivity())
+                        .setTitle(getString(R.string.disable_service_title,
+                                info.getResolveInfo().loadLabel(getPackageManager())))
+                        .setIconAttribute(android.R.attr.alertDialogIcon)
+                        .setMessage(getString(R.string.disable_service_message,
+                                info.getResolveInfo().loadLabel(getPackageManager())))
+                        .setCancelable(true)
+                        .setPositiveButton(android.R.string.ok, this)
+                        .setNegativeButton(android.R.string.cancel, this)
+                        .create();
+                }
+                default: {
                     throw new IllegalArgumentException();
+                }
             }
-            return new AlertDialog.Builder(getActivity())
-                    .setTitle(title)
-                    .setIconAttribute(android.R.attr.alertDialogIcon)
-                    .setMessage(message)
-                    .setCancelable(true)
-                    .setPositiveButton(android.R.string.ok, this)
-                    .setNegativeButton(android.R.string.cancel, this)
-                    .create();
+        }
+
+        private View createEnableDialogContentView(AccessibilityServiceInfo info) {
+            LayoutInflater inflater = (LayoutInflater) getSystemService(
+                    Context.LAYOUT_INFLATER_SERVICE);
+
+            View content = inflater.inflate(R.layout.enable_accessibility_service_dialog_content,
+                    null);
+
+            TextView capabilitiesHeaderView = (TextView) content.findViewById(
+                    R.id.capabilities_header);
+            capabilitiesHeaderView.setText(getString(R.string.capabilities_list_title,
+                    info.getResolveInfo().loadLabel(getPackageManager())));
+
+            LinearLayout capabilitiesView = (LinearLayout) content.findViewById(R.id.capabilities);
+
+            // This capability is implicit for all services.
+            View capabilityView = inflater.inflate(
+                    com.android.internal.R.layout.app_permission_item_old, null);
+
+            ImageView imageView = (ImageView) capabilityView.findViewById(
+                    com.android.internal.R.id.perm_icon);
+            imageView.setImageDrawable(getResources().getDrawable(
+                    com.android.internal.R.drawable.ic_text_dot));
+
+            TextView labelView = (TextView) capabilityView.findViewById(
+                    com.android.internal.R.id.permission_group);
+            labelView.setText(getString(R.string.capability_title_receiveAccessibilityEvents));
+
+            TextView descriptionView = (TextView) capabilityView.findViewById(
+                    com.android.internal.R.id.permission_list);
+            descriptionView.setText(getString(R.string.capability_desc_receiveAccessibilityEvents));
+
+            List<AccessibilityServiceInfo.CapabilityInfo> capabilities =
+                    info.getCapabilityInfos();
+
+            capabilitiesView.addView(capabilityView);
+
+            // Service specific capabilities.
+            final int capabilityCount = capabilities.size();
+            for (int i = 0; i < capabilityCount; i++) {
+                AccessibilityServiceInfo.CapabilityInfo capability = capabilities.get(i);
+
+                capabilityView = inflater.inflate(
+                        com.android.internal.R.layout.app_permission_item_old, null);
+
+                imageView = (ImageView) capabilityView.findViewById(
+                        com.android.internal.R.id.perm_icon);
+                imageView.setImageDrawable(getResources().getDrawable(
+                        com.android.internal.R.drawable.ic_text_dot));
+
+                labelView = (TextView) capabilityView.findViewById(
+                        com.android.internal.R.id.permission_group);
+                labelView.setText(getString(capability.titleResId));
+
+                descriptionView = (TextView) capabilityView.findViewById(
+                        com.android.internal.R.id.permission_list);
+                descriptionView.setText(getString(capability.descResId));
+
+                capabilitiesView.addView(capabilityView);
+            }
+
+            return content;
         }
 
         @Override
@@ -871,23 +931,15 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
                 @Override
                 public boolean onBeforeCheckedChanged(ToggleSwitch toggleSwitch, boolean checked) {
                     if (checked) {
-                        if (!TextUtils.isEmpty(mEnableWarningMessage)) {
-                            toggleSwitch.setCheckedInternal(false);
-                            getArguments().putBoolean(EXTRA_CHECKED, false);
-                            showDialog(DIALOG_ID_ENABLE_WARNING);
-                            return true;
-                        }
-                        onPreferenceToggled(mPreferenceKey, true);
+                        toggleSwitch.setCheckedInternal(false);
+                        getArguments().putBoolean(EXTRA_CHECKED, false);
+                        showDialog(DIALOG_ID_ENABLE_WARNING);
                     } else {
-                        if (!TextUtils.isEmpty(mDisableWarningMessage)) {
-                            toggleSwitch.setCheckedInternal(true);
-                            getArguments().putBoolean(EXTRA_CHECKED, true);
-                            showDialog(DIALOG_ID_DISABLE_WARNING);
-                            return true;
-                        }
-                        onPreferenceToggled(mPreferenceKey, false);
+                        toggleSwitch.setCheckedInternal(true);
+                        getArguments().putBoolean(EXTRA_CHECKED, true);
+                        showDialog(DIALOG_ID_DISABLE_WARNING);
                     }
-                    return false;
+                    return true;
                 }
             });
         }
@@ -907,20 +959,8 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
                     setHasOptionsMenu(true);
                 }
             }
-            // Enable warning title.
-            mEnableWarningTitle = arguments.getCharSequence(
-                    AccessibilitySettings.EXTRA_ENABLE_WARNING_TITLE);
-            // Enable warning message.
-            mEnableWarningMessage = arguments.getCharSequence(
-                    AccessibilitySettings.EXTRA_ENABLE_WARNING_MESSAGE);
-            // Disable warning title.
-            mDisableWarningTitle = arguments.getString(
-                    AccessibilitySettings.EXTRA_DISABLE_WARNING_TITLE);
-            // Disable warning message.
-            mDisableWarningMessage = arguments.getString(
-                    AccessibilitySettings.EXTRA_DISABLE_WARNING_MESSAGE);
-            // Component name.
-            mComponentName = arguments.getString(EXTRA_SERVICE_COMPONENT_NAME);
+
+            mComponentName = arguments.getParcelable(EXTRA_COMPONENT_NAME);
         }
     }
 
@@ -1025,9 +1065,10 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
             super.onViewCreated(view, savedInstanceState);
             onInstallActionBarToggleSwitch();
             onProcessArguments(getArguments());
-            getListView().setDivider(null);
+            // Set a transparent drawable to prevent use of the default one.
             getListView().setCacheColorHint(0);
-            getListView().setSelector(android.R.color.transparent);
+            getListView().setSelector(new ColorDrawable(Color.TRANSPARENT));
+            getListView().setDivider(null);
         }
 
         @Override

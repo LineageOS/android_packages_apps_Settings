@@ -166,8 +166,8 @@ public class MiscFilesHandler extends ListActivity {
                 mPath = path;
                 Intent service = new Intent().setComponent(
                         StorageMeasurement.DEFAULT_CONTAINER_COMPONENT);
-                bindService(service, mDefContainerConn, Context.BIND_AUTO_CREATE,
-                        UserHandle.USER_OWNER);
+                bindServiceAsUser(service, mDefContainerConn, Context.BIND_AUTO_CREATE,
+                        new UserHandle(UserHandle.USER_OWNER));
             }
         }
 

@@ -22,6 +22,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.UserInfo;
 import android.graphics.drawable.Drawable;
+import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.BatteryStats;
@@ -129,6 +130,8 @@ public class PowerUsageSummary extends PreferenceFragment implements Runnable {
                 String batterySummary = context.getResources().getString(
                         R.string.power_usage_level_and_status, batteryLevel, batteryStatus);
                 mBatteryStatusPref.setTitle(batterySummary);
+                mStats = null;
+                refreshStats();
             }
         }
     };
@@ -175,6 +178,8 @@ public class PowerUsageSummary extends PreferenceFragment implements Runnable {
         super.onDestroy();
         if (getActivity().isChangingConfigurations()) {
             sStatsXfer = mStats;
+        } else {
+            BatterySipper.sUidCache.clear();
         }
     }
 
@@ -557,20 +562,23 @@ public class PowerUsageSummary extends PreferenceFragment implements Runnable {
             for (Map.Entry<Integer, ? extends BatteryStats.Uid.Sensor> sensorEntry
                     : sensorStats.entrySet()) {
                 Uid.Sensor sensor = sensorEntry.getValue();
-                int sensorType = sensor.getHandle();
+                int sensorHandle = sensor.getHandle();
                 BatteryStats.Timer timer = sensor.getSensorTime();
                 long sensorTime = timer.getTotalTimeLocked(uSecTime, which) / 1000;
                 double multiplier = 0;
-                switch (sensorType) {
+                switch (sensorHandle) {
                     case Uid.Sensor.GPS:
                         multiplier = mPowerProfile.getAveragePower(PowerProfile.POWER_GPS_ON);
                         gpsTime = sensorTime;
                         break;
                     default:
-                        android.hardware.Sensor sensorData =
-                                sensorManager.getDefaultSensor(sensorType);
-                        if (sensorData != null) {
-                            multiplier = sensorData.getPower();
+                        List<Sensor> sensorList = sensorManager.getSensorList(
+                                android.hardware.Sensor.TYPE_ALL);
+                        for (android.hardware.Sensor s : sensorList) {
+                            if (s.getHandle() == sensorHandle) {
+                                multiplier = s.getPower();
+                                break;
+                            }
                         }
                 }
                 p = (multiplier * sensorTime) / 1000;
@@ -598,7 +606,7 @@ public class PowerUsageSummary extends PreferenceFragment implements Runnable {
                 app.tcpBytesSent = tcpBytesSent;
                 if (u.getUid() == Process.WIFI_UID) {
                     mWifiSippers.add(app);
-                } else if (u.getUid() == Process.BLUETOOTH_GID) {
+                } else if (u.getUid() == Process.BLUETOOTH_UID) {
                     mBluetoothSippers.add(app);
                 } else if (userId != UserHandle.myUserId()
                         && UserHandle.getAppId(u.getUid()) >= Process.FIRST_APPLICATION_UID) {
@@ -619,7 +627,7 @@ public class PowerUsageSummary extends PreferenceFragment implements Runnable {
             if (power != 0) {
                 if (u.getUid() == Process.WIFI_UID) {
                     mWifiPower += power;
-                } else if (u.getUid() == Process.BLUETOOTH_GID) {
+                } else if (u.getUid() == Process.BLUETOOTH_UID) {
                     mBluetoothPower += power;
                 } else if (isOtherUser) {
                     Double userPower = mUserPower.get(userId);

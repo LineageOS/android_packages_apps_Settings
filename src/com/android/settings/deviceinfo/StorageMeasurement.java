@@ -42,7 +42,7 @@ import android.util.SparseLongArray;
 
 import com.android.internal.app.IMediaContainerService;
 import com.google.android.collect.Maps;
-import com.google.common.collect.Sets;
+import com.google.android.collect.Sets;
 
 import java.io.File;
 import java.lang.ref.WeakReference;
@@ -339,8 +339,8 @@ public class StorageMeasurement {
                             sendMessage(obtainMessage(MSG_CONNECTED, mDefaultContainer));
                         } else {
                             Intent service = new Intent().setComponent(DEFAULT_CONTAINER_COMPONENT);
-                            context.bindService(service, mDefContainerConn, Context.BIND_AUTO_CREATE,
-                                    UserHandle.USER_OWNER);
+                            context.bindServiceAsUser(service, mDefContainerConn, Context.BIND_AUTO_CREATE,
+                                    UserHandle.OWNER);
                         }
                     }
                     break;

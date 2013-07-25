@@ -98,23 +98,18 @@ public final class WifiDisplaySettings extends SettingsPreferenceFragment {
 
         Activity activity = getActivity();
         mActionBarSwitch = new Switch(activity);
-        if (activity instanceof PreferenceActivity) {
-            PreferenceActivity preferenceActivity = (PreferenceActivity) activity;
-            if (preferenceActivity.onIsHidingHeaders() || !preferenceActivity.onIsMultiPane()) {
-                final int padding = activity.getResources().getDimensionPixelSize(
-                        R.dimen.action_bar_switch_padding);
-                mActionBarSwitch.setPaddingRelative(0, 0, padding, 0);
-                activity.getActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM,
-                        ActionBar.DISPLAY_SHOW_CUSTOM);
-                activity.getActionBar().setCustomView(mActionBarSwitch,
-                        new ActionBar.LayoutParams(
-                                ActionBar.LayoutParams.WRAP_CONTENT,
-                                ActionBar.LayoutParams.WRAP_CONTENT,
-                                Gravity.CENTER_VERTICAL | Gravity.END));
-            }
-        }
-
         mActionBarSwitch.setOnCheckedChangeListener(mSwitchOnCheckedChangedListener);
+
+        final int padding = activity.getResources().getDimensionPixelSize(
+                R.dimen.action_bar_switch_padding);
+        mActionBarSwitch.setPaddingRelative(0, 0, padding, 0);
+        activity.getActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM,
+                ActionBar.DISPLAY_SHOW_CUSTOM);
+        activity.getActionBar().setCustomView(mActionBarSwitch,
+                new ActionBar.LayoutParams(
+                        ActionBar.LayoutParams.WRAP_CONTENT,
+                        ActionBar.LayoutParams.WRAP_CONTENT,
+                        Gravity.CENTER_VERTICAL | Gravity.END));
 
         mEmptyView = (TextView) getView().findViewById(android.R.id.empty);
         getListView().setEmptyView(mEmptyView);
@@ -124,6 +119,12 @@ public final class WifiDisplaySettings extends SettingsPreferenceFragment {
         if (mWifiDisplayStatus.getFeatureState() == WifiDisplayStatus.FEATURE_STATE_UNAVAILABLE) {
             activity.finish();
         }
+    }
+
+    @Override
+    public void onDestroyView() {
+        getActivity().getActionBar().setCustomView(null);
+        super.onDestroyView();
     }
 
     @Override
