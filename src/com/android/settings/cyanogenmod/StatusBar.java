@@ -84,8 +84,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 
         mStatusBarBrightnessControl.setChecked(Settings.System.getInt(resolver,
                 Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, 0) == 1);
-        mStatusBarBrightnessControl.setChecked(Settings.System.getInt(resolver,
-                Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, 0) == 1);
         mStatusBarBrightnessControl.setOnPreferenceChangeListener(this);
 
         try {
