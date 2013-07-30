@@ -394,6 +394,14 @@ public class BatteryHistoryChart extends View {
         mTextDescent = (int)mTextPaint.descent();
     }
 
+
+    void paintPath( int w, int h, boolean status, Path tmpPath, int tmpOffset, Paint tmpPaint ){
+         if (status) {
+            tmpPath.lineTo(w, h-tmpOffset +
+                    tmpPaint.getStrokeWidth() / 2);
+        }
+    }
+
     void finishPaths(int w, int h, int levelh, int startX, int y, Path curLevelPath,
             int lastX, boolean lastCharging, boolean lastScreenOn, boolean lastGpsOn,
             boolean lastWifiRunning, boolean lastWakeLock, Path lastPath) {
@@ -408,27 +416,22 @@ public class BatteryHistoryChart extends View {
             curLevelPath.lineTo(startX, mLevelTop+levelh);
             curLevelPath.close();
         }
-        
-        if (lastCharging) {
-            mChargingPath.lineTo(w, h-mChargingOffset);
-        }
-        if (lastScreenOn) {
-            mScreenOnPath.lineTo(w, h-mScreenOnOffset);
-        }
-        if (lastGpsOn) {
-            mGpsOnPath.lineTo(w, h-mGpsOnOffset);
-        }
-        if (lastWifiRunning) {
-            mWifiRunningPath.lineTo(w, h-mWifiRunningOffset);
-        }
-        if (lastWakeLock) {
-            mWakeLockPath.lineTo(w, h-mWakeLockOffset);
-        }
+   
+        paintPath(w, h,lastCharging, mChargingPath, mChargingOffset, mChargingPaint);
+        paintPath(w, h,lastScreenOn, mScreenOnPath, mScreenOnOffset, mScreenOnPaint);
+        paintPath(w, h,lastGpsOn, mGpsOnPath, mGpsOnOffset, mGpsOnPaint);
+        paintPath(w, h,lastWifiRunning, mWifiRunningPath, mWifiRunningOffset, mWifiRunningPaint);
+        paintPath(w, h,lastWakeLock, mWakeLockPath, mWakeLockOffset, mWakeLockPaint);
+
         if (mHavePhoneSignal) {
             mPhoneSignalChart.finish(w);
         }
     }
-    
+
+    float adjustHight( int h, int tmpOffset, Paint tmpPaint ){
+         return h-tmpOffset + tmpPaint.getStrokeWidth() / 2;
+    }
+
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
@@ -563,9 +566,11 @@ public class BatteryHistoryChart extends View {
                         (rec.states&HistoryItem.STATE_BATTERY_PLUGGED_FLAG) != 0;
                     if (charging != lastCharging) {
                         if (charging) {
-                            mChargingPath.moveTo(x, h-mChargingOffset);
+                            mChargingPath.moveTo(x, adjustHight(h,
+                                    mChargingOffset, mChargingPaint));
                         } else {
-                            mChargingPath.lineTo(x, h-mChargingOffset);
+                            mChargingPath.lineTo(x, adjustHight(h,
+                                    mChargingOffset, mChargingPaint));
                         }
                         lastCharging = charging;
                     }
@@ -574,9 +579,11 @@ public class BatteryHistoryChart extends View {
                         (rec.states&HistoryItem.STATE_SCREEN_ON_FLAG) != 0;
                     if (screenOn != lastScreenOn) {
                         if (screenOn) {
-                            mScreenOnPath.moveTo(x, h-mScreenOnOffset);
+                            mScreenOnPath.moveTo(x, adjustHight(h,
+                                    mChargingOffset, mChargingPaint));
                         } else {
-                            mScreenOnPath.lineTo(x, h-mScreenOnOffset);
+                            mScreenOnPath.lineTo(x, adjustHight(h,
+                                    mChargingOffset, mChargingPaint));
                         }
                         lastScreenOn = screenOn;
                     }
@@ -585,9 +592,11 @@ public class BatteryHistoryChart extends View {
                         (rec.states&HistoryItem.STATE_GPS_ON_FLAG) != 0;
                     if (gpsOn != lastGpsOn) {
                         if (gpsOn) {
-                            mGpsOnPath.moveTo(x, h-mGpsOnOffset);
+                            mGpsOnPath.moveTo(x, adjustHight(h,
+                                    mGpsOnOffset, mGpsOnPaint));
                         } else {
-                            mGpsOnPath.lineTo(x, h-mGpsOnOffset);
+                            mGpsOnPath.lineTo(x, adjustHight(h,
+                                    mGpsOnOffset, mGpsOnPaint));
                         }
                         lastGpsOn = gpsOn;
                     }
@@ -596,9 +605,11 @@ public class BatteryHistoryChart extends View {
                         (rec.states&HistoryItem.STATE_WIFI_RUNNING_FLAG) != 0;
                     if (wifiRunning != lastWifiRunning) {
                         if (wifiRunning) {
-                            mWifiRunningPath.moveTo(x, h-mWifiRunningOffset);
+                            mWifiRunningPath.moveTo(x, adjustHight(h,
+                                    mWifiRunningOffset, mWifiRunningPaint));
                         } else {
-                            mWifiRunningPath.lineTo(x, h-mWifiRunningOffset);
+                            mWifiRunningPath.lineTo(x, adjustHight(h,
+                                    mWifiRunningOffset, mWifiRunningPaint));
                         }
                         lastWifiRunning = wifiRunning;
                     }
@@ -607,9 +618,11 @@ public class BatteryHistoryChart extends View {
                         (rec.states&HistoryItem.STATE_WAKE_LOCK_FLAG) != 0;
                     if (wakeLock != lastWakeLock) {
                         if (wakeLock) {
-                            mWakeLockPath.moveTo(x, h-mWakeLockOffset);
+                            mWakeLockPath.moveTo(x, adjustHight(h,
+                                    mWakeLockOffset, mWakeLockPaint));
                         } else {
-                            mWakeLockPath.lineTo(x, h-mWakeLockOffset);
+                            mWakeLockPath.lineTo(x, adjustHight(h,
+                                    mWakeLockOffset, mWakeLockPaint));
                         }
                         lastWakeLock = wakeLock;
                     }
@@ -685,7 +698,7 @@ public class BatteryHistoryChart extends View {
             canvas.drawPath(mBatCriticalPath, mBatteryCriticalPaint);
         }
         if (mHavePhoneSignal) {
-            int top = height-mPhoneSignalOffset - (mLineWidth/2);
+            int top = height - mPhoneSignalOffset;
             mPhoneSignalChart.draw(canvas, top, mLineWidth);
         }
         if (!mScreenOnPath.isEmpty()) {
