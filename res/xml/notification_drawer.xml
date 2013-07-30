@@ -17,6 +17,19 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Notification drawer behaviour -->
+    <PreferenceCategory
+        android:title="@string/notification_drawer_behaviour_title">
+
+        <ListPreference
+            android:key="notification_drawer_collapse_on_dismiss"
+            android:title="@string/notification_drawer_collapse_on_dismiss_title"
+            android:dialogTitle="@string/notification_drawer_collapse_on_dismiss_title"
+            android:entries="@array/notification_drawer_collapse_on_dismiss_entries"
+            android:entryValues="@array/notification_drawer_collapse_on_dismiss_values" />
+
+    </PreferenceCategory>
+
     <!-- Notification drawer Power Widget -->
     <PreferenceCategory
        android:title="@string/power_widget_title">
@@ -31,7 +44,7 @@
             android:title="@string/title_widget_picker"
             android:summary="@string/summary_widget_picker"
             android:dependency="expanded_widget"
-            android:fragment="com.android.settings.cyanogenmod.PowerWidget$PowerWidgetChooser">
+            android:fragment="com.android.settings.cyanogenmod.NotificationDrawer$PowerWidgetChooser">
         </PreferenceScreen>
 
         <PreferenceScreen
@@ -39,13 +52,8 @@
             android:title="@string/title_widget_order"
             android:summary="@string/summary_widget_order"
             android:dependency="expanded_widget"
-            android:fragment="com.android.settings.cyanogenmod.PowerWidget$PowerWidgetOrder">
+            android:fragment="com.android.settings.cyanogenmod.NotificationDrawer$PowerWidgetOrder">
         </PreferenceScreen>
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-       android:title="@string/power_widget_behavior">
 
         <CheckBoxPreference
             android:key="expanded_hide_onchange"
