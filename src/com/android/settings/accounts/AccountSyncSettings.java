@@ -256,8 +256,20 @@ public class AccountSyncSettings extends AccountPreferenceBase {
     public void onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
         boolean syncActive = ContentResolver.getCurrentSync() != null;
-        menu.findItem(MENU_SYNC_NOW_ID).setVisible(!syncActive);
-        menu.findItem(MENU_SYNC_CANCEL_ID).setVisible(syncActive);
+        boolean isSyncing = checkIsSyncingState(syncActive);
+
+        menu.findItem(MENU_SYNC_NOW_ID).setVisible(!isSyncing);
+        menu.findItem(MENU_SYNC_CANCEL_ID).setVisible(isSyncing);
+        menu.findItem(MENU_SYNC_NOW_ID).setEnabled(!syncActive);
+    }
+
+    private boolean checkIsSyncingState(boolean isSyncActive) {
+        if (isSyncActive && mAccount != null) {
+            if (ContentResolver.getCurrentSync().account.equals(mAccount)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
