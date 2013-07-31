@@ -1620,6 +1620,10 @@
                 android:resource="@id/system_settings" />
         </activity>
 
+        <activity android:name=".cyanogenmod.AutoBrightnessSetup"
+                android:excludeFromRecents="true"
+                android:theme="@*android:style/Theme.Holo.Dialog.Alert" />
+
         <activity android:name=".cyanogenmod.PerformanceSettings" />
 
         <activity android:name="Settings$QuietHoursSettingsActivity"
