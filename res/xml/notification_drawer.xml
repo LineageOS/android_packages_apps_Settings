@@ -18,17 +18,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Notification drawer behaviour -->
-    <PreferenceCategory
-        android:title="@string/notification_drawer_behaviour_title">
-
-        <ListPreference
-            android:key="notification_drawer_collapse_on_dismiss"
-            android:title="@string/notification_drawer_collapse_on_dismiss_title"
-            android:dialogTitle="@string/notification_drawer_collapse_on_dismiss_title"
-            android:entries="@array/notification_drawer_collapse_on_dismiss_entries"
-            android:entryValues="@array/notification_drawer_collapse_on_dismiss_values" />
-
-    </PreferenceCategory>
+    <ListPreference
+        android:key="notification_drawer_collapse_on_dismiss"
+        android:title="@string/notification_drawer_collapse_on_dismiss_title"
+        android:dialogTitle="@string/notification_drawer_collapse_on_dismiss_title"
+        android:entries="@array/notification_drawer_collapse_on_dismiss_entries"
+        android:entryValues="@array/notification_drawer_collapse_on_dismiss_values" />
 
     <!-- Notification drawer Power Widget -->
     <PreferenceCategory
