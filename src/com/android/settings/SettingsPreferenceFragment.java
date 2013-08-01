@@ -23,6 +23,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
@@ -334,15 +335,26 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
         Matcher matcher = pattern.matcher(intentUri);
 
         String packageName = matcher.find() ? matcher.group(1) : null;
+        boolean available = true;
+
         if (packageName != null) {
             try {
-                getPackageManager().getPackageInfo(packageName, 0);
+                PackageInfo pi = getPackageManager().getPackageInfo(packageName, 0);
+                if (!pi.applicationInfo.enabled) {
+                    Log.e(TAG, "package " + packageName + " disabled, hiding preference.");
+                    available = false;
+                }
             } catch (NameNotFoundException e) {
                 Log.e(TAG, "package " + packageName + " not installed, hiding preference.");
-                parent.removePreference(preference);
-                return true;
+                available = false;
             }
         }
+
+        if (!available) {
+            parent.removePreference(preference);
+            return true;
+        }
+
         return false;
     }
 }
