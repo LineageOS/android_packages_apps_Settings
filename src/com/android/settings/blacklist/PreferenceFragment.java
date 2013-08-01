@@ -73,11 +73,13 @@ public class PreferenceFragment extends SettingsPreferenceFragment implements
         updateSelectListFromPolicy(mBlacklistPrivate,
                 Settings.System.PHONE_BLACKLIST_PRIVATE_NUMBER_MODE);
         updateSelectListSummary(mBlacklistPrivate, mBlacklistPrivate.getValues(),
-                R.string.blacklist_private_numbers_summary);
+                R.string.blacklist_private_numbers_summary,
+                R.string.blacklist_private_numbers_summary_disabled);
         updateSelectListFromPolicy(mBlacklistUnknown,
                 Settings.System.PHONE_BLACKLIST_UNKNOWN_NUMBER_MODE);
         updateSelectListSummary(mBlacklistUnknown, mBlacklistUnknown.getValues(),
-                R.string.blacklist_unknown_numbers_summary);
+                R.string.blacklist_unknown_numbers_summary,
+                R.string.blacklist_unknown_numbers_summary_disabled);
     }
 
     @Override
@@ -95,13 +97,15 @@ public class PreferenceFragment extends SettingsPreferenceFragment implements
             updatePolicyFromSelectList(newValues,
                     Settings.System.PHONE_BLACKLIST_UNKNOWN_NUMBER_MODE);
             updateSelectListSummary(mBlacklistUnknown, newValues,
-                    R.string.blacklist_unknown_numbers_summary);
+                    R.string.blacklist_unknown_numbers_summary,
+                    R.string.blacklist_unknown_numbers_summary_disabled);
         } else if (preference == mBlacklistPrivate) {
             Set<String> newValues = (Set<String>) objValue;
             updatePolicyFromSelectList(newValues,
                     Settings.System.PHONE_BLACKLIST_PRIVATE_NUMBER_MODE);
             updateSelectListSummary(mBlacklistPrivate, newValues,
-                    R.string.blacklist_private_numbers_summary);
+                    R.string.blacklist_private_numbers_summary,
+                    R.string.blacklist_private_numbers_summary_disabled);
         }
 
         return true;
@@ -136,13 +140,16 @@ public class PreferenceFragment extends SettingsPreferenceFragment implements
     }
 
     private void updateSelectListSummary(MultiSelectListPreference pref,
-            Set<String> values, int summaryResId) {
+            Set<String> values, int summaryResId, int disabledSummaryResId) {
         int mode = getPolicyFromSelectList(values);
         int typeResId;
 
         if (mode == 0) {
-            typeResId = R.string.blacklist_summary_type_nothing;
-        } else if (mode == BlacklistUtils.BLOCK_CALLS) {
+            pref.setSummary(getString(disabledSummaryResId));
+            return;
+        }
+
+        if (mode == BlacklistUtils.BLOCK_CALLS) {
             typeResId = R.string.blacklist_summary_type_calls_only;
         } else if (mode == BlacklistUtils.BLOCK_MESSAGES) {
             typeResId = R.string.blacklist_summary_type_messages_only;
