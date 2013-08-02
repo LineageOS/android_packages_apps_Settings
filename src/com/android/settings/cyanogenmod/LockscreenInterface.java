@@ -29,6 +29,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
@@ -146,6 +147,11 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         int disabledFeatures = mDPM.getKeyguardDisabledFeatures(null);
         mEnableWidgets.setChecked((disabledFeatures & DevicePolicyManager.KEYGUARD_DISABLE_WIDGETS_ALL) == 0);
         mEnableCamera.setChecked((disabledFeatures & DevicePolicyManager.KEYGUARD_DISABLE_SECURE_CAMERA) == 0);
+
+        // Remove the camera widget preference if the device doesn't have one
+        if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
+            widgetsCategory.removePreference(mEnableCamera);
+        }
 
         mWallpaperImage = new File(getActivity().getFilesDir() + "/lockwallpaper");
         mWallpaperTemporary = new File(getActivity().getCacheDir() + "/lockwallpaper.tmp");
