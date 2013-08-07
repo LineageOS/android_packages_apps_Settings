@@ -348,6 +348,7 @@ public class LockscreenTargets extends Fragment implements ShortcutPickHelper.On
     private void saveAll() {
         StringBuilder targetLayout = new StringBuilder();
         ArrayList<String> existingImages = new ArrayList<String>();
+        int numberOfFilledTargets = 0;
         final int maxTargets = mIsScreenLarge ? GlowPadView.MAX_TABLET_TARGETS : GlowPadView.MAX_PHONE_TARGETS;
         for (int i = mTargetOffset + 1; i <= mTargetOffset + maxTargets; i++) {
             String uri = mTargetStore.get(i).uri;
@@ -365,14 +366,19 @@ public class LockscreenTargets extends Fragment implements ShortcutPickHelper.On
                         in.removeExtra(GlowPadView.ICON_PACKAGE);
                     }
                     uri = in.toUri(0);
+                    numberOfFilledTargets++;
                 } catch (URISyntaxException e) {
                 }
             }
             targetLayout.append(uri);
             targetLayout.append("|");
         }
-        targetLayout.deleteCharAt(targetLayout.length() - 1);
-        Settings.System.putString(mActivity.getContentResolver(), Settings.System.LOCKSCREEN_TARGETS, targetLayout.toString());
+        if (numberOfFilledTargets == 0) {
+            Settings.System.putString(mActivity.getContentResolver(), Settings.System.LOCKSCREEN_TARGETS, null);
+        } else {
+            targetLayout.deleteCharAt(targetLayout.length() - 1);
+            Settings.System.putString(mActivity.getContentResolver(), Settings.System.LOCKSCREEN_TARGETS, targetLayout.toString());
+        }
         for (File pic : mActivity.getFilesDir().listFiles()) {
             if (pic.getName().startsWith("lockscreen_") && !existingImages.contains(pic.toString())) {
                 pic.delete();
