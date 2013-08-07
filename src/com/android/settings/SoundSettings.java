@@ -309,7 +309,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         Intent i = new Intent(AudioEffect.ACTION_DISPLAY_AUDIO_EFFECT_CONTROL_PANEL);
         mMusicFx.setIntent(i);
         PackageManager p = getPackageManager();
-        List<ResolveInfo> ris = p.queryIntentActivities(i, PackageManager.GET_DISABLED_COMPONENTS);
+        List<ResolveInfo> ris = p.queryIntentActivities(i, 0);
         if (ris.size() == 0) {
             mSoundSettings.removePreference(mMusicFx);
         } else if (ris.size() == 1) {
