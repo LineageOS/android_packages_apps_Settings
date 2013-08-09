@@ -355,10 +355,12 @@ public class LockscreenTargets extends Fragment implements ShortcutPickHelper.On
             String type = mTargetStore.get(i).iconType;
             String source = mTargetStore.get(i).iconSource;
             existingImages.add(source);
-            if (!uri.equals(GlowPadView.EMPTY_TARGET) && type != null) {
+            if (!uri.equals(GlowPadView.EMPTY_TARGET)) {
                 try {
                     Intent in = Intent.parseUri(uri, 0);
-                    in.putExtra(type, source);
+                    if (type != null) {
+                        in.putExtra(type, source);
+                    }
                     String pkgName = mTargetStore.get(i).pkgName;
                     if (pkgName != null) {
                         in.putExtra(GlowPadView.ICON_PACKAGE, mTargetStore.get(i).pkgName);
