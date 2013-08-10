@@ -62,10 +62,10 @@
     <header android:id="@+id/interface_section"
         android:title="@string/header_category_interface" />
 
-    <!-- Launcher -->
+    <!-- Homescreen -->
     <header
-        android:id="@+id/launcher_settings"
-        android:title="@string/launcher_settings_title"
+        android:id="@+id/homescreen_settings"
+        android:title="@string/homescreen_settings_title"
         android:icon="@drawable/ic_settings_cmlauncher" />
 
     <!-- Lock screen -->
@@ -86,11 +86,11 @@
             android:targetClass="com.tmobile.themechooser.ThemeChooser" />
     </header>
 
-    <!-- System -->
+    <!-- System UI -->
     <header
         android:id="@+id/system_settings"
         android:icon="@drawable/ic_settings_system"
-        android:fragment="com.android.settings.cyanogenmod.SystemSettings"
+        android:fragment="com.android.settings.cyanogenmod.SystemUiSettings"
         android:title="@string/system_settings_title" />
 
     <!-- DEVICE -->
@@ -110,6 +110,12 @@
         android:icon="@drawable/ic_settings_display"
         android:fragment="com.android.settings.DisplaySettings"
         android:title="@string/display_settings" />
+
+    <!-- Buttons -->
+    <header
+        android:icon="@drawable/ic_settings_buttons"
+        android:fragment="com.android.settings.cyanogenmod.ButtonSettings"
+        android:title="@string/button_settings" />
 
     <!-- Storage -->
     <header
@@ -146,16 +152,13 @@
         <intent android:action="com.android.settings.MANUFACTURER_APPLICATION_SETTING" />
     </header>
 
-    <!-- DeviceParts Device Specific settings -->
+    <!-- Other device controls -->
     <header
-        android:id="@+id/advanced_settings"
-        android:title="@string/advanced_settings_title"
-        android:icon="@drawable/ic_settings_advanced">
-        <intent
-            android:action="com.cyanogenmod.action.LAUNCH_DEVICE_SETTINGS"
-            android:targetPackage="com.cyanogenmod.settings.device"
-            android:targetClass="com.cyanogenmod.settings.device.DeviceSettings" />
-    </header>
+        android:id="@+id/more_device_settings"
+        android:title="@string/more_device_controls_title"
+        android:breadCrumbTitle="@string/more_device_settings_title"
+        android:fragment="com.android.settings.cyanogenmod.MoreDeviceSettings"
+        android:icon="@drawable/empty_icon" />
 
     <!-- PERSONAL -->
     <header android:id="@+id/personal_section"

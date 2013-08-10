@@ -30,6 +30,7 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.INetworkManagementService;
@@ -129,7 +130,7 @@ public class Settings extends PreferenceActivity
             R.id.about_settings,
             R.id.accessibility_settings,
             R.id.interface_section,
-            R.id.launcher_settings,
+            R.id.homescreen_settings,
             R.id.lock_screen_settings,
             R.id.system_settings
     };
@@ -442,23 +443,26 @@ public class Settings extends PreferenceActivity
             Header header = target.get(i);
             // Ids are integers, so downcasting
             int id = (int) header.id;
-            if (id == R.id.operator_settings || id == R.id.manufacturer_settings ||
-                    id == R.id.advanced_settings) {
+            if (id == R.id.operator_settings || id == R.id.manufacturer_settings) {
                 Utils.updateHeaderToSpecificActivityFromMetaDataOrRemove(this, target, header);
-            } else if (id == R.id.launcher_settings) {
+            } else if (id == R.id.homescreen_settings) {
                 Intent launcherIntent = new Intent(Intent.ACTION_MAIN);
                 launcherIntent.addCategory(Intent.CATEGORY_HOME);
                 launcherIntent.addCategory(Intent.CATEGORY_DEFAULT);
 
-                Intent launcherPreferencesIntent = new Intent(Intent.ACTION_MAIN);
-                launcherPreferencesIntent.addCategory("com.cyanogenmod.category.LAUNCHER_PREFERENCES");
+                Intent launcherPrefsIntent = new Intent(Intent.ACTION_MAIN);
+                launcherPrefsIntent.addCategory("com.cyanogenmod.category.LAUNCHER_PREFERENCES");
 
-                ActivityInfo defaultLauncher = getPackageManager().resolveActivity(launcherIntent, PackageManager.MATCH_DEFAULT_ONLY).activityInfo;
-                launcherPreferencesIntent.setPackage(defaultLauncher.packageName);
-                ResolveInfo launcherPreferences = getPackageManager().resolveActivity(launcherPreferencesIntent, 0);
-                if (launcherPreferences != null) {
-                    header.intent = new Intent().setClassName(launcherPreferences.activityInfo.packageName,
-                            launcherPreferences.activityInfo.name);
+                final PackageManager pm = getPackageManager();
+                ActivityInfo defaultLauncher = pm.resolveActivity(launcherIntent,
+                        PackageManager.MATCH_DEFAULT_ONLY).activityInfo;
+
+                launcherPrefsIntent.setPackage(defaultLauncher.packageName);
+                ResolveInfo launcherPrefs = pm.resolveActivity(launcherPrefsIntent, 0);
+                if (launcherPrefs != null) {
+                    header.intent = new Intent().setClassName(
+                            launcherPrefs.activityInfo.packageName,
+                            launcherPrefs.activityInfo.name);
                 } else {
                     target.remove(header);
                 }
@@ -504,6 +508,14 @@ public class Settings extends PreferenceActivity
             } else if (id == R.id.account_add) {
                 if (um.hasUserRestriction(UserManager.DISALLOW_MODIFY_ACCOUNTS)) {
                     target.remove(i);
+                }
+            } else if (id == R.id.display_settings) {
+                final Resources res = getResources();
+                boolean hasLed =
+                        res.getBoolean(com.android.internal.R.bool.config_intrusiveNotificationLed)
+                        || res.getBoolean(com.android.internal.R.bool.config_intrusiveBatteryLed);
+                if (hasLed) {
+                    header.titleRes = R.string.display_lights_settings_title;
                 }
             }
 

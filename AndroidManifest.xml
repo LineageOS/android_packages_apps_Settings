@@ -1607,7 +1607,7 @@
         />
 
         <!-- CyanogenMod activities Start -->
-        <activity android:name=".cyanogenmod.SystemSettings" />
+        <activity android:name=".cyanogenmod.SystemUiSettings"/>
         <activity android:name="Settings$SystemSettingsActivity"
                 android:label="@string/system_settings_title"
                 android:taskAffinity=""
@@ -1617,7 +1617,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.cyanogenmod.SystemSettings" />
+                android:value="com.android.settings.cyanogenmod.SystemUiSettings" />
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
                 android:resource="@id/system_settings" />
         </activity>
@@ -1688,6 +1688,10 @@
 
         <activity android:name=".cyanogenmod.LockscreenTargets" />
 
+        <activity android:name=".cyanogenmod.NavigationSettings" />
+
+        <activity android:name=".cyanogenmod.ButtonSettings" />
+
         <activity android:name=".cyanogenmod.ChangeLog" />
 
         <activity android:name=".cyanogenmod.LockscreenInterface" />
@@ -1697,6 +1701,8 @@
         <activity android:name=".cyanogenmod.PowerMenu" />
 
         <activity android:name=".cyanogenmod.QuickSettings" />
+
+        <activity android:name=".cyanogenmod.MoreDeviceSettings" />
 
         <!-- "Blacklist settings" UI, used only on voice-capable phone devices. -->
         <activity android:name="Settings$BlacklistSettingsActivity"

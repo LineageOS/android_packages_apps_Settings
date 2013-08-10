@@ -58,13 +58,6 @@
                 android:title="@string/wifi_display_settings_title"
                 android:fragment="com.android.settings.wfd.WifiDisplaySettings" />
 
-        <com.android.settings.cyanogenmod.DisplayColor
-                android:key="color_calibration"
-                android:title="@string/color_calibration_title"
-                android:dialogTitle="@string/color_calibration_title"
-                android:summary="@string/color_calibration_summary"
-                android:persistent="false" />
-
         <CheckBoxPreference
             android:key="screen_off_animation"
             android:title="@string/screen_off_animation_title"
@@ -78,20 +71,18 @@
             android:defaultValue="false" />
 
         <PreferenceCategory
-            android:key="category_wakeup_options"
-            android:title="@string/display_category_wakeup_options_title" >
+            android:key="lights_prefs"
+            android:title="@string/lights_category_title">
 
-            <CheckBoxPreference
-                android:key="pref_home_wake"
-                android:title="@string/pref_home_wake_title"
-                android:summary="@string/pref_home_wake_summary"
-                android:defaultValue="true" />
+            <PreferenceScreen
+                android:key="notification_pulse"
+                android:title="@string/notification_pulse_title"
+                android:fragment="com.android.settings.notificationlight.NotificationLightSettings" />
 
-            <CheckBoxPreference
-                android:key="pref_volume_wake"
-                android:title="@string/pref_volume_wake_title"
-                android:summary="@string/pref_volume_wake_summary"
-                android:defaultValue="false" />
+            <PreferenceScreen
+                android:key="battery_light"
+                android:title="@string/battery_light_title"
+                android:fragment="com.android.settings.notificationlight.BatteryLightSettings" />
 
         </PreferenceCategory>
 

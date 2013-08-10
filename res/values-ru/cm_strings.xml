@@ -18,27 +18,12 @@
     <!-- Quiet hours -->
     <string name="quiet_hours_title">Тихие часы</string>
     <string name="quiet_hours_summary">Настройка часов, когда устройство должно быть тихим</string>
-    <string name="quiet_hours_note_title">Примечание</string>
-    <string name="quiet_hours_note_summary">Входящие звонки будут вести себя как обычно во время тихих часов</string>
+    <string name="quiet_hours_note_summary">Примечание: Входящие звонки будут вести себя как обычно во время тихих часов</string>
     <string name="quiet_hours_enabled">Включить тихие часы</string>
-    <string name="quiet_hours_enabled_on">Тихие часы активированы</string>
-    <string name="quiet_hours_enabled_off">Уведомления будут вести себя как обычно</string>
-    <string name="quiet_hours_start">Начало тихих часов</string>
-    <string name="quiet_hours_start_summary">Когда начинаются тихие часы</string>
-    <string name="quiet_hours_end">Конец тихих часов</string>
-    <string name="quiet_hours_end_summary">Когда заканчиваются тихие часы</string>
     <string name="quiet_hours_mute">Отключить звук уведомлений</string>
-    <string name="quiet_hours_mute_on">Звуки уведомлений не проигрываются</string>
-    <string name="quiet_hours_mute_off">Звуки проигрываются нормально</string>
     <string name="quiet_hours_still">Отключить вибрацию</string>
-    <string name="quiet_hours_still_on">Устройство не будет вибрировать</string>
-    <string name="quiet_hours_still_off">Устройство вибрирует нормально</string>
     <string name="quiet_hours_dim">Отключить световое уведомление</string>
-    <string name="quiet_hours_dim_on">Световое уведомление отключено</string>
-    <string name="quiet_hours_dim_off">Световое уведомление функционирует нормально</string>
     <string name="quiet_hours_haptic">Отключить отклик на нажатие</string>
-    <string name="quiet_hours_haptic_on">Отклик на нажатие выключен</string>
-    <string name="quiet_hours_haptic_off">Отклик на нажатие включён</string>
     <string name="quiet_hours_active_from">Активно с</string>
     <string name="quiet_hours_active_to">по</string>
 
@@ -93,16 +78,13 @@
 
     <!-- INTERFACE Settings -->
     <!-- Settings main menu category heading. Interface (Launcher, Themes, System). [CHAR LIMIT=40] -->
-    <string name="header_category_interface">ИНТЕРФЕЙС</string>
 
     <!-- Launcher settings #CM -->
-    <string name="launcher_settings_title">Главный экран</string>
 
     <!-- Themes settings #CM -->
     <string name="themes_settings_title">Темы</string>
 
     <!-- System Interface settings #CM -->
-    <string name="system_settings_title">Система</string>
     <string name="system_interface_title">Системный интерфейс</string>
 
     <!-- Notification Drawer #CM -->
@@ -136,7 +118,6 @@
 
     <!-- Profiles settings -->
     <string name="profiles_settings_title">Профили</string>
-    <string name="profiles_general_title">Основные</string>
     <string name="profiles_add">Добавить</string>
     <string name="profile_menu_delete">Удалить</string>
     <string name="profile_settings_title">Профиль</string>
@@ -147,7 +128,6 @@
     <string name="profile_name_title">Имя</string>
     <string name="profile_profile_name_prompt">Введите имя для нового профиля</string>
     <string name="menu_new_profile">Новый профиль</string>
-    <string name="menu_new_profile_summary">Добавить и настроить новый профиль</string>
     <string name="new_profile_name">&lt;новый профиль&gt;</string>
 
     <!-- Rename Dialog  -->
@@ -168,24 +148,18 @@
     <!-- Profile Config screen PreferenceGroup titles -->
     <string name="profile_connectionoverrides_title">Сетевые подключения</string>
     <string name="profile_volumeoverrides_title">Переопределение громкости</string>
-    <string name="profile_vibratoroverrides_title">Переопределение вибро</string>
     <string name="connection_state_disabled">Выключено</string>
     <string name="connection_state_enabled">Включено</string>
     <string name="volume_override_summary">Установить</string>
-    <string name="vibrator_state_disabled">Выключено</string>
-    <string name="vibrator_state_enabled">Включено</string>
-    <string name="vibrator_state_silent">Только при беззвуч. режиме</string>
 
     <!-- Menu item for managing profiles -->
     <string name="profile_profiles_manage">Профили</string>
     <string name="profile_profile_manage">Управление профилями</string>
-    <string name="profile_applist_manage">Список приложений</string>
     <string name="profile_appgroups_manage">Группы приложений</string>
     <string name="profile_appgroup_manage">Группы приложений</string>
 
     <!-- Profile settings screen, section header for settings related to notification profiles -->
     <string name="profile_settings">Настройки профиля</string>
-    <string name="profile_name">Имя</string>
     <string name="profile_trigger_connect">При подключении</string>
     <string name="profile_trigger_disconnect">При отключении</string>
     <string name="profile_trigger_notrigger">Не определено</string>
@@ -208,12 +182,9 @@
     <string name="profile_delete_appgroup">Удалить эту группу приложений</string>
     <string name="profile_appgroup_name_prompt">Введите имя для новой группы приложений</string>
     <string name="profile_appgroup_name_title">Имя</string>
-    <string name="profile_add_app">Добавить приложение</string>
-    <string name="profile_delete_app">Удалить приложение</string>
 
     <!-- Add application dialog box title -->
     <string name="profile_choose_app">Выбрать приложение</string>
-    <string name="profile_settings_header">Настройки профиля</string>
 
     <!-- Profiles - system settings -->
     <string name="profile_system_settings_title">Настройки системы</string>
@@ -225,23 +196,12 @@
     <string name="profile_lockmode_insecure_summary">Использовать ненадёжную блокировку экрана</string>
     <string name="profile_lockmode_disabled_summary">Блокировка экрана выключена</string>
     <string name="profile_airplanemode_title">Режим полёта</string>
-    <string name="profile_disable_screen_lock_summary">Отключать блокировку экрана когда этот профиль активен</string>
 
-    <string name="vibrator_type_ringer">Вызовы</string>
-    <string name="vibrator_type_notification">Уведомления</string>
 
     <!-- Connection override toggles (not all are used at this time ) -->
-    <string name="possibleButtons">Доступные кнопки</string>
     <string name="toggleWifiAp">Точка доступа Wi-Fi</string>
     <string name="toggleData">Передача данных</string>
     <string name="toggleSync">Синхронизация</string>
-    <string name="toggleSound">Режим звонка</string>
-    <string name="toggleBrightness">Подсветка</string>
-    <string name="toggleAutoRotate">Поворот экрана</string>
-    <string name="toggleScreenTimeout">Задержка выкл. экрана</string>
-    <string name="toggleAirplane">Режим полёта</string>
-    <string name="toggleFlashlight">Фонарик</string>
-    <string name="toggleLockScreen">Блокировка</string>
 
     <!-- Screen security - Screen security -->
     <string name="screen_security_category">Безопасность экрана</string>
@@ -414,7 +374,6 @@
     <!-- Notification light dialogs -->
     <string name="edit_light_settings">Изменить настройки индикатора</string>
     <string name="pulse_speed_title">Длительность и скорость мигания</string>
-    <string name="picker_arrow">\u2192</string>
     <string name="default_time">Нормально</string>
     <string name="custom_time">Пользовательский</string>
     <string name="dialog_test">Тест</string>
@@ -455,16 +414,7 @@
     <string name="ring_mode_mute">Беззвучный</string>
 
     <!-- Hardware keys -->
-    <string name="hardware_keys_title">Аппаратные кнопки</string>
-    <string name="hardware_keys_bindings_title">Действия кнопок</string>
     <string name="hardware_keys_enable_custom_title">Вкл. пользовательские действия</string>
-    <string name="hardware_keys_home_long_press_title">Кнопка \"Домой\" (долгое нажатие)</string>
-    <string name="hardware_keys_menu_press_title">Кнопка \"Меню\"</string>
-    <string name="hardware_keys_menu_long_press_title">Кнопка \"Меню\" (долгое нажатие)</string>
-    <string name="hardware_keys_assist_press_title">Кнопка \"Поиск\"</string>
-    <string name="hardware_keys_assist_long_press_title">Кнопка \"Поиск\" (долгое нажатие)</string>
-    <string name="hardware_keys_app_switch_press_title">Переключение приложений</string>
-    <string name="hardware_keys_app_switch_long_press_title">Переключение приложений (долгое нажатие)</string>
     <string name="hardware_keys_show_overflow_title">Показывать кнопку меню</string>
     <string name="hardware_keys_show_overflow_summary">Показывать кнопку меню (вертикальное троеточие) в приложениях</string>
     <string name="hardware_keys_show_overflow_toast_enable">Кнопка меню может не отображаться до перезапуска приложений</string>
@@ -495,7 +445,6 @@
     <string name="power_widget_title">Кнопки в панели уведомлений</string>
     <string name="title_expanded_widget">Кнопки в панели уведомлений</string>
     <string name="title_expanded_hide_onchange">Скрывать при изменении</string>
-    <string name="title_expanded_hide_indicator">Скрывать индикаторы</string>
     <string name="title_expanded_hide_scrollbar">Скрывать полосу прокрутки</string>
     <string name="title_widget_picker">Кнопки виджета</string>
     <string name="summary_widget_picker">Выберите кнопки, которые будут отображаться на этом виджете</string>
@@ -579,7 +528,6 @@
     <string name="status_bar_general_title">Основные</string>
     <string name="status_bar_show_clock_title">Показывать часы</string>
     <string name="status_bar_am_pm_title">Стиль AM/PM</string>
-    <string name="status_bar_am_pm_info">Включён 24-часовой формат</string>
     <string name="status_bar_battery_title">Стиль батареи</string>
     <string name="status_bar_toggle_brightness">Управление яркостью</string>
     <string name="status_bar_toggle_brightness_summary">Изменять яркость, проводя по строке состояния</string>
@@ -595,13 +543,6 @@
     <!-- Status bar notification count -->
     <string name="status_bar_notif_count_title">Счётчик уведомлений</string>
     <string name="status_bar_notif_count_summary">Показывать количество новых уведомлений в строке состояния</string>
-
-    <!-- Wakeup options -->
-    <string name="display_category_wakeup_options_title">Настройки пробуждения</string>
-    <string name="pref_home_wake_title">Кнопка \"Домой\"</string>
-    <string name="pref_home_wake_summary">Нажатие кнопки \"Домой\" пробуждает устройство</string>
-    <string name="pref_volume_wake_title">Пробуждение громкостью</string>
-    <string name="pref_volume_wake_summary">Нажатие на кнопки громкости пробуждает устройство. Предназначено для устройств с труднонажимаемой кнопкой питания</string>
 
     <!-- Setting checkbox summary for displaying USB debugging notification -->
     <string name="adb_notify">Уведомление об отладке по USB</string>
@@ -659,7 +600,6 @@
     <string name="title_tile_wifiap">Точка доступа Wi-Fi</string>
     <string name="title_tile_user">Пользователи</string>
     <string name="title_tile_networkmode">Режим сети</string>
-    <string name="title_tile_usb_tether">USB-модем</string>
     <string name="title_tile_quiet_hours">Тихие часы</string>
     <string name="title_tile_volume">Громкость</string>
     <string name="title_tile_expanded_desktop">Расширенный экран</string>
@@ -746,10 +686,6 @@
     <string name="headset_connect_player_title">Запуск проигрывателя</string>
     <string name="headset_connect_player_summary">Запускать проигрыватель при подключении наушников</string>
 
-    <!-- Safe headset volume restore checkbox -->
-    <string name="safe_headset_volume_title">Ограничение громкости</string>
-    <string name="safe_headset_volume_summary">Понижать громкость при первом подключении наушников</string>
-
     <!-- Volume adjust sound preference -->
     <string name="volume_adjust_sounds_enable_title">Звук при регулировке громкости</string>
     <string name="volume_adjust_sounds_enable_summary">Воспроизводить звук при изменении громкости кнопками \"+\" или \"-\"</string>
@@ -803,7 +739,6 @@
     <string name="advanced_reboot_summary">Включить варианты перезагрузки (recovery или bootloader) в меню \"Параметры устройства\"</string>
 
     <!-- Navigation bar buttons and shortcuts category title -->
-    <string name="navigation_bar_category">Строка навигации</string>
 
     <!-- Navigation ring shortcuts -->
     <string name="navigation_ring_title">Ярлыки быстрого запуска</string>
@@ -854,17 +789,11 @@
     <string name="enable_spen_summary_head">Позволяет жестами пера выполнять пользовательские действия. Для выполнения действия нажмите кнопку на пере и проведите по экрану в нужном направлении</string>
     <string name="gestures_subcat_title">Жесты</string>
     <string name="gestures_left_spen_title_head">Провести влево</string>
-    <string name="gestures_left_spen_summary_head">Выполнить действие жестом влево</string>
     <string name="gestures_right_spen_title_head">Провести вправо</string>
-    <string name="gestures_right_spen_summary_head">Выполнить действие жестом вправо</string>
     <string name="gestures_up_spen_title_head">Провести вверх</string>
-    <string name="gestures_up_spen_summary_head">Выполнить действие жестом вверх</string>
     <string name="gestures_down_spen_title_head">Провести вниз</string>
-    <string name="gestures_down_spen_summary_head">Выполнить действие жестом вниз</string>
     <string name="gestures_long_spen_title_head">Долгое нажатие</string>
-    <string name="gestures_long_spen_summary_head">Выполнить действие долгим нажатием на экран</string>
     <string name="gestures_double_spen_title_head">Двойное нажатие</string>
-    <string name="gestures_double_spen_summary_head">Выполнить действие двойным нажатием на экран</string>
 
     <!-- Gestures Options -->
     <string name="gestures_action_empty">Нет действия</string>
