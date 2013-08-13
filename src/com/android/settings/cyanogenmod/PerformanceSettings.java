@@ -24,6 +24,7 @@ import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.ListPreference;
 import android.preference.PreferenceScreen;
+import android.provider.Settings;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -37,6 +38,8 @@ public class PerformanceSettings extends SettingsPreferenceFragment
 
     private static final String USE_DITHERING_PREF = "pref_use_dithering";
 
+    private static final String FASTBOOT_ENABLED_PREF = "pref_fastboot_enable";
+
     private static final String USE_DITHERING_PERSIST_PROP = "persist.sys.use_dithering";
 
     private static final String USE_DITHERING_DEFAULT = "1";
@@ -48,6 +51,8 @@ public class PerformanceSettings extends SettingsPreferenceFragment
     private ListPreference mUseDitheringPref;
 
     private CheckBoxPreference mUse16bppAlphaPref;
+
+    private CheckBoxPreference mFastbootEnabledPref;
 
     private AlertDialog alertDialog;
 
@@ -70,6 +75,11 @@ public class PerformanceSettings extends SettingsPreferenceFragment
             mUse16bppAlphaPref = (CheckBoxPreference) prefSet.findPreference(USE_16BPP_ALPHA_PREF);
             String use16bppAlpha = SystemProperties.get(USE_16BPP_ALPHA_PROP, "0");
             mUse16bppAlphaPref.setChecked("1".equals(use16bppAlpha));
+
+            mFastbootEnabledPref = (CheckBoxPreference) prefSet.findPreference(FASTBOOT_ENABLED_PREF);
+            mFastbootEnabledPref.setChecked(Settings.System.getInt(
+                        getActivity().getApplicationContext().getContentResolver(),
+                        Settings.System.ENABLE_FAST_POWERON, 1) == 1);
 
             /* Display the warning dialog */
             alertDialog = new AlertDialog.Builder(getActivity()).create();
@@ -96,6 +106,10 @@ public class PerformanceSettings extends SettingsPreferenceFragment
         if (preference == mUse16bppAlphaPref) {
             SystemProperties.set(USE_16BPP_ALPHA_PROP,
                     mUse16bppAlphaPref.isChecked() ? "1" : "0");
+        } else if (preference == mFastbootEnabledPref) {
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.ENABLE_FAST_POWERON,
+                    mFastbootEnabledPref.isChecked() ? 1 : 0);
         } else {
             // If we didn't handle it, let preferences handle it.
             return super.onPreferenceTreeClick(preferenceScreen, preference);
