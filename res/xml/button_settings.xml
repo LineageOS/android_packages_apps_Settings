@@ -47,6 +47,15 @@
             android:persistent="false"
             android:dependency="hardware_keys_enable_custom" />
 
+        <ListPreference
+            android:key="hardware_keys_home_double_tap"
+            android:dialogTitle="@string/hardware_keys_double_tap_title"
+            android:title="@string/hardware_keys_double_tap_title"
+            android:entries="@array/hardware_keys_action_entries"
+            android:entryValues="@array/hardware_keys_action_values"
+            android:persistent="false"
+            android:dependency="hardware_keys_enable_custom" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
