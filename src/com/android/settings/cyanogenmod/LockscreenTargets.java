@@ -22,12 +22,7 @@ import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Intent.ShortcutIconResource;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.InsetDrawable;
 import android.graphics.drawable.LayerDrawable;
@@ -65,7 +60,6 @@ public class LockscreenTargets extends Fragment implements
     private Resources mResources;
     private ShortcutPickHelper mPicker;
     private IconPicker mIconPicker;
-    private PackageManager mPm;
 
     private GlowPadView mWaveView;
     private ViewGroup mContainer;
@@ -76,7 +70,6 @@ public class LockscreenTargets extends Fragment implements
     private ArrayList<TargetInfo> mTargetStore = new ArrayList<TargetInfo>();
     private int mTargetOffset;
     private int mMaxTargets;
-    private int mTargetInset;
 
     private File mTemporaryImage;
     private int mTargetIndex = 0;
@@ -115,11 +108,9 @@ public class LockscreenTargets extends Fragment implements
 
         mActivity = getActivity();
         mResources = getResources();
-        mPm = mActivity.getPackageManager();
 
         mTargetOffset = LockscreenTargetUtils.getTargetOffset(mActivity);
         mMaxTargets = LockscreenTargetUtils.getMaxTargets(mActivity);
-        mTargetInset = mResources.getDimensionPixelSize(com.android.internal.R.dimen.lockscreen_target_inset);
 
         mIconPicker = new IconPicker(mActivity, this);
         mPicker = new ShortcutPickHelper(mActivity, this);
@@ -215,15 +206,14 @@ public class LockscreenTargets extends Fragment implements
             boolean frontBlank = false;
             String iconType = null;
             String iconSource = null;
-            int inset = mTargetInset;
 
             if (!uri.equals(GlowPadView.EMPTY_TARGET)) {
                 try {
                     Intent intent = Intent.parseUri(uri, 0);
                     if (intent.hasExtra(GlowPadView.ICON_FILE)) {
+                        iconType = GlowPadView.ICON_FILE;
                         front = LockscreenTargetUtils.getDrawableFromFile(mActivity,
                                 intent.getStringExtra(GlowPadView.ICON_FILE));
-                        inset += 5;
                     } else if (intent.hasExtra(GlowPadView.ICON_RESOURCE)) {
                         String source = intent.getStringExtra(GlowPadView.ICON_RESOURCE);
                         String packageName = intent.getStringExtra(GlowPadView.ICON_PACKAGE);
@@ -233,18 +223,12 @@ public class LockscreenTargets extends Fragment implements
                                     packageName, source, false);
                             back = LockscreenTargetUtils.getDrawableFromResources(mActivity,
                                     packageName, source, true);
-                            inset = 0;
+                            iconType = GlowPadView.ICON_RESOURCE;
                             frontBlank = true;
                         }
                     }
                     if (front == null) {
-                        ActivityInfo activityInfo = intent.resolveActivityInfo(mPm,
-                                PackageManager.GET_ACTIVITIES);
-                        if (activityInfo != null) {
-                            front = activityInfo.loadIcon(mPm);
-                        } else {
-                            front = mResources.getDrawable(android.R.drawable.sym_def_app_icon);
-                        }
+                        front = LockscreenTargetUtils.getDrawableFromIntent(mActivity, intent);
                     }
                 } catch (URISyntaxException e) {
                     Log.w(TAG, "Invalid lockscreen target " + uri);
@@ -255,6 +239,7 @@ public class LockscreenTargets extends Fragment implements
                 front = mResources.getDrawable(R.drawable.ic_empty);
             }
 
+            int inset = LockscreenTargetUtils.getInsetForIconType(mActivity, iconType);
             StateListDrawable drawable = LockscreenTargetUtils.getLayeredDrawable(
                     mActivity, back, front, inset, frontBlank);
             mTargetStore.add(new TargetInfo(uri, drawable, iconType, iconSource, front));
@@ -387,27 +372,15 @@ public class LockscreenTargets extends Fragment implements
     public void shortcutPicked(String uri, String friendlyName, boolean isApplication) {
         try {
             Intent intent = Intent.parseUri(uri, 0);
-            ActivityInfo activityInfo = intent.resolveActivityInfo(mPm,
-                    PackageManager.GET_ACTIVITIES);
-            Drawable icon = activityInfo != null
-                    ? activityInfo.loadIcon(mPm)
-                    : mResources.getDrawable(android.R.drawable.sym_def_app_icon);
+            Drawable icon = LockscreenTargetUtils.getDrawableFromIntent(mActivity, intent);
 
             mDialogLabel.setText(friendlyName);
             mDialogLabel.setTag(uri);
-            mDialogIcon.setImageDrawable(resizeForDialog(icon));
+            mDialogIcon.setImageDrawable(icon);
             mDialogIcon.setTag(null);
         } catch (URISyntaxException e) {
             Log.wtf(TAG, "Invalid uri " + uri + " on pick");
         }
-    }
-
-    private Drawable resizeForDialog(Drawable image) {
-        int size = (int) mResources.getDimension(android.R.dimen.app_icon_size);
-        Bitmap d = ((BitmapDrawable) image).getBitmap();
-
-        return new BitmapDrawable(mResources,
-                Bitmap.createScaledBitmap(d, size, size, false));
     }
 
     @Override
@@ -457,11 +430,10 @@ public class LockscreenTargets extends Fragment implements
                         String type = info != null ? info.iconType : null;
                         String source = info != null ? info.iconSource : null;
                         String packageName = info != null ? info.packageName : null;
-                        int targetInset = GlowPadView.ICON_RESOURCE.equals(type)
-                                ? 0 : mTargetInset;
+                        int inset = LockscreenTargetUtils.getInsetForIconType(mActivity, type);
 
                         InsetDrawable drawable = new InsetDrawable(mDialogIcon.getDrawable(),
-                                targetInset, targetInset, targetInset, targetInset);
+                                inset, inset, inset, inset);
                         setTarget(mTargetIndex, mDialogLabel.getTag().toString(),
                                 drawable, type, source, packageName);
                     }
@@ -540,8 +512,8 @@ public class LockscreenTargets extends Fragment implements
 
                 icon.iconType = GlowPadView.ICON_FILE;
                 icon.iconSource = imageFile.getAbsolutePath();
-                iconDrawable = new BitmapDrawable(mResources,
-                        BitmapFactory.decodeFile(icon.iconSource));
+                iconDrawable = LockscreenTargetUtils.getDrawableFromFile(
+                        mActivity, icon.iconSource);
             } else {
                 if (mTemporaryImage.exists()) {
                     mTemporaryImage.delete();
