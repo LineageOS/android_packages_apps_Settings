@@ -52,8 +52,6 @@ public class ToggleImageView extends ImageView implements Checkable {
                 com.android.internal.R.styleable.CompoundButton_checked, false);
         setChecked(checked);
         a.recycle();
-
-        android.util.Log.d("foo", "created " + this + " clickable " + isClickable());
     }
 
     @Override

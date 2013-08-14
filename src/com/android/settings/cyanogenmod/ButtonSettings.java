@@ -100,7 +100,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         final boolean hasAssistKey = (deviceKeys & KEY_MASK_ASSIST) != 0;
         final boolean hasAppSwitchKey = (deviceKeys & KEY_MASK_APP_SWITCH) != 0;
 
-	android.util.Log.d("foo", "device keys " + Integer.toHexString(deviceKeys));
         boolean hasAnyBindableKey = false;
         final PreferenceCategory homeCategory =
                 (PreferenceCategory) prefScreen.findPreference(CATEGORY_HOME);
