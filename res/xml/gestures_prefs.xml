@@ -18,50 +18,52 @@
     <PreferenceCategory android:title="@string/enable_subcat_title" >
 
         <!-- Enable -->
-        <CheckBoxPreference
-            android:key="enable_spen"
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="enable_stylus_gestures"
             android:summary="@string/enable_spen_summary_head"
             android:title="@string/enable_spen_title_head" />
+
     </PreferenceCategory>
+
     <!-- Gesture Actions -->
     <PreferenceCategory android:title="@string/gestures_subcat_title" >
         <ListPreference
-            android:dependency="enable_spen"
+            android:dependency="enable_stylus_gestures"
             android:entries="@array/gestures_entries"
             android:entryValues="@array/gestures_values"
             android:key="gestures_left"
             android:persistent="false"
             android:title="@string/gestures_left_spen_title_head" />
         <ListPreference
-            android:dependency="enable_spen"
+            android:dependency="enable_stylus_gestures"
             android:entries="@array/gestures_entries"
             android:entryValues="@array/gestures_values"
             android:key="gestures_right"
             android:persistent="false"
             android:title="@string/gestures_right_spen_title_head" />
         <ListPreference
-            android:dependency="enable_spen"
+            android:dependency="enable_stylus_gestures"
             android:entries="@array/gestures_entries"
             android:entryValues="@array/gestures_values"
             android:key="gestures_up"
             android:persistent="false"
             android:title="@string/gestures_up_spen_title_head" />
         <ListPreference
-            android:dependency="enable_spen"
+            android:dependency="enable_stylus_gestures"
             android:entries="@array/gestures_entries"
             android:entryValues="@array/gestures_values"
             android:key="gestures_down"
             android:persistent="false"
             android:title="@string/gestures_down_spen_title_head" />
         <ListPreference
-            android:dependency="enable_spen"
+            android:dependency="enable_stylus_gestures"
             android:entries="@array/gestures_entries"
             android:entryValues="@array/gestures_values"
             android:key="gestures_long"
             android:persistent="false"
             android:title="@string/gestures_long_spen_title_head" />
         <ListPreference
-            android:dependency="enable_spen"
+            android:dependency="enable_stylus_gestures"
             android:entries="@array/gestures_entries"
             android:entryValues="@array/gestures_values"
             android:key="gestures_double"

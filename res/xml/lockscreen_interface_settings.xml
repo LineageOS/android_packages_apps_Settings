@@ -75,9 +75,8 @@
                 android:targetPackage="com.cyanogenmod.lockclock" />
         </PreferenceScreen>
 
-        <CheckBoxPreference
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
             android:key="lockscreen_maximize_widgets"
-            android:persistent="false"
             android:summary="@string/lockscreen_maximize_widgets_summary"
             android:title="@string/lockscreen_maximize_widgets_title" />
 
@@ -93,9 +92,8 @@
             android:title="@string/lockscreen_enable_camera_title"
             android:summary="@string/lockscreen_enable_camera_summary" />
 
-        <CheckBoxPreference
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
             android:key="lockscreen_music_controls"
-            android:persistent="false"
             android:title="@string/lockscreen_music_controls_title"
             android:summary="@string/lockscreen_music_controls_summary" />
 

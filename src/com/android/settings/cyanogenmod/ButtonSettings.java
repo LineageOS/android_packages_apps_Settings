@@ -35,7 +35,6 @@ import com.android.settings.Utils;
 
 public class ButtonSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
-    private static final String KEY_ENABLE_CUSTOM_BINDING = "hardware_keys_enable_custom";
     private static final String KEY_HOME_LONG_PRESS = "hardware_keys_home_long_press";
     private static final String KEY_HOME_DOUBLE_TAP = "hardware_keys_home_double_tap";
     private static final String KEY_MENU_PRESS = "hardware_keys_menu_press";
@@ -44,10 +43,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private static final String KEY_ASSIST_LONG_PRESS = "hardware_keys_assist_long_press";
     private static final String KEY_APP_SWITCH_PRESS = "hardware_keys_app_switch_press";
     private static final String KEY_APP_SWITCH_LONG_PRESS = "hardware_keys_app_switch_long_press";
-    private static final String KEY_HOME_WAKE = "pref_home_wake";
-    private static final String KEY_VOLUME_WAKE = "pref_volume_wake";
-    private static final String KEY_SHOW_OVERFLOW = "hardware_keys_show_overflow";
-    private static final String KEY_VOLBTN_MUSIC_CTRL = "volbtn_music_controls";
     private static final String KEY_BUTTON_BACKLIGHT = "button_backlight";
     private static final String KEY_KEYBOARD_BACKLIGHT = "keyboard_backlight";
 
@@ -70,16 +65,14 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
     // Masks for checking presence of hardware keys.
     // Must match values in frameworks/base/core/res/res/values/config.xml
-    private static final int KEY_MASK_HOME = 0x01;
-    private static final int KEY_MASK_BACK = 0x02;
-    private static final int KEY_MASK_MENU = 0x04;
-    private static final int KEY_MASK_ASSIST = 0x08;
-    private static final int KEY_MASK_APP_SWITCH = 0x10;
+    public static final int KEY_MASK_HOME = 0x01;
+    public static final int KEY_MASK_BACK = 0x02;
+    public static final int KEY_MASK_MENU = 0x04;
+    public static final int KEY_MASK_ASSIST = 0x08;
+    public static final int KEY_MASK_APP_SWITCH = 0x10;
 
-    private CheckBoxPreference mEnableCustomBindings;
     private ListPreference mHomeLongPressAction;
     private ListPreference mHomeDoubleTapAction;
-    private CheckBoxPreference mHomeWake;
     private ListPreference mMenuPressAction;
     private ListPreference mMenuLongPressAction;
     private ListPreference mAssistPressAction;
@@ -87,8 +80,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private ListPreference mAppSwitchPressAction;
     private ListPreference mAppSwitchLongPressAction;
     private CheckBoxPreference mShowActionOverflow;
-    private CheckBoxPreference mVolumeWake;
-    private CheckBoxPreference mVolBtnMusicCtrl;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -122,13 +113,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                 (PreferenceCategory) prefScreen.findPreference(CATEGORY_BACKLIGHT);
 
         if (hasHomeKey) {
-            mHomeWake = (CheckBoxPreference) findPreference(KEY_HOME_WAKE);
-
             if (!res.getBoolean(R.bool.config_show_homeWake)) {
-                homeCategory.removePreference(mHomeWake);
-            } else {
-                mHomeWake.setChecked(Settings.System.getInt(resolver,
-                        Settings.System.HOME_WAKE_SCREEN, 1) == 1);
+                homeCategory.removePreference(findPreference(Settings.System.HOME_WAKE_SCREEN));
             }
 
             int defaultLongPressAction = res.getInteger(
@@ -170,11 +156,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                         hasAssistKey ? ACTION_NOTHING : ACTION_SEARCH);
             mMenuLongPressAction = initActionList(KEY_MENU_LONG_PRESS, longPressAction);
 
-            mShowActionOverflow =
-                    (CheckBoxPreference) prefScreen.findPreference(KEY_SHOW_OVERFLOW);
-
-            mShowActionOverflow.setChecked(Settings.System.getInt(resolver,
-                    Settings.System.UI_FORCE_OVERFLOW_BUTTON, 0) == 1);
+            mShowActionOverflow = (CheckBoxPreference)
+                    prefScreen.findPreference(Settings.System.UI_FORCE_OVERFLOW_BUTTON);
 
             hasAnyBindableKey = true;
         } else {
@@ -209,28 +192,13 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             prefScreen.removePreference(appSwitchCategory);
         }
 
-        mEnableCustomBindings =
-                (CheckBoxPreference) prefScreen.findPreference(KEY_ENABLE_CUSTOM_BINDING);
-
-        if (hasAnyBindableKey) {
-            mEnableCustomBindings.setChecked(Settings.System.getInt(resolver,
-                    Settings.System.HARDWARE_KEY_REBINDING, 0) == 1);
-        } else {
-            prefScreen.removePreference(mEnableCustomBindings);
+        if (!hasAnyBindableKey) {
+            prefScreen.removePreference(findPreference(Settings.System.HARDWARE_KEY_REBINDING));
         }
 
         if (Utils.hasVolumeRocker(getActivity())) {
-            mVolumeWake = (CheckBoxPreference) findPreference(KEY_VOLUME_WAKE);
-            mVolBtnMusicCtrl = (CheckBoxPreference) findPreference(KEY_VOLBTN_MUSIC_CTRL);
-
-            mVolBtnMusicCtrl.setChecked(Settings.System.getInt(resolver,
-                    Settings.System.VOLBTN_MUSIC_CONTROLS, 1) != 0);
-
             if (!res.getBoolean(R.bool.config_show_volumeRockerWake)) {
-                volumeCategory.removePreference(mVolumeWake);
-            } else {
-                mVolumeWake.setChecked(Settings.System.getInt(resolver,
-                        Settings.System.VOLUME_WAKE_SCREEN, 0) == 1);
+                volumeCategory.removePreference(findPreference(Settings.System.VOLUME_WAKE_SCREEN));
             }
         } else {
             prefScreen.removePreference(volumeCategory);
@@ -263,10 +231,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
         pref.setSummary(pref.getEntries()[index]);
         Settings.System.putInt(getContentResolver(), setting, Integer.valueOf(value));
-    }
-
-    private void handleCheckboxClick(CheckBoxPreference pref, String setting) {
-        Settings.System.putInt(getContentResolver(), setting, pref.isChecked() ? 1 : 0);
     }
 
     @Override
@@ -310,21 +274,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        if (preference == mHomeWake) {
-            handleCheckboxClick(mHomeWake, Settings.System.HOME_WAKE_SCREEN);
-            return true;
-        } else if (preference == mVolumeWake) {
-            handleCheckboxClick(mVolumeWake, Settings.System.VOLUME_WAKE_SCREEN);
-            return true;
-        } else if (preference == mVolBtnMusicCtrl) {
-            handleCheckboxClick(mVolBtnMusicCtrl, Settings.System.VOLBTN_MUSIC_CONTROLS);
-            return true;
-        } else if (preference == mEnableCustomBindings) {
-            handleCheckboxClick(mEnableCustomBindings, Settings.System.HARDWARE_KEY_REBINDING);
-            return true;
-        } else if (preference == mShowActionOverflow) {
-            handleCheckboxClick(mShowActionOverflow, Settings.System.UI_FORCE_OVERFLOW_BUTTON);
-
+        if (preference == mShowActionOverflow) {
             int toastResId = mShowActionOverflow.isChecked()
                     ? R.string.hardware_keys_show_overflow_toast_enable
                     : R.string.hardware_keys_show_overflow_toast_disable;

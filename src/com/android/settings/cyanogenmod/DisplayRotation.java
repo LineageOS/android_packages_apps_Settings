@@ -35,7 +35,6 @@ public class DisplayRotation extends SettingsPreferenceFragment implements OnPre
     private static final String TAG = "DisplayRotation";
 
     private static final String KEY_ACCELEROMETER = "accelerometer";
-    private static final String LOCKSCREEN_ROTATION = "lockscreen_rotation";
     private static final String ROTATION_0_PREF = "display_rotation_0";
     private static final String ROTATION_90_PREF = "display_rotation_90";
     private static final String ROTATION_180_PREF = "display_rotation_180";
@@ -43,7 +42,6 @@ public class DisplayRotation extends SettingsPreferenceFragment implements OnPre
     private static final String KEY_SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
 
     private CheckBoxPreference mAccelerometer;
-    private CheckBoxPreference mLockScreenRotationPref;
     private CheckBoxPreference mRotation0Pref;
     private CheckBoxPreference mRotation90Pref;
     private CheckBoxPreference mRotation180Pref;
@@ -76,7 +74,6 @@ public class DisplayRotation extends SettingsPreferenceFragment implements OnPre
         mAccelerometer = (CheckBoxPreference) findPreference(KEY_ACCELEROMETER);
         mAccelerometer.setPersistent(false);
 
-        mLockScreenRotationPref = (CheckBoxPreference) prefSet.findPreference(LOCKSCREEN_ROTATION);
         mRotation0Pref = (CheckBoxPreference) prefSet.findPreference(ROTATION_0_PREF);
         mRotation90Pref = (CheckBoxPreference) prefSet.findPreference(ROTATION_90_PREF);
         mRotation180Pref = (CheckBoxPreference) prefSet.findPreference(ROTATION_180_PREF);
@@ -100,11 +97,6 @@ public class DisplayRotation extends SettingsPreferenceFragment implements OnPre
                         Settings.System.SWAP_VOLUME_KEYS_ON_ROTATION, 0);
                 mSwapVolumeButtons.setChecked(swapVolumeKeys > 0);
             }
-        }
-
-        if (mLockScreenRotationPref != null) {
-            mLockScreenRotationPref.setChecked(Settings.System.getInt(getContentResolver(),
-                    Settings.System.LOCKSCREEN_ROTATION, 0) != 0);
         }
 
         if (hasRotationLock) {
@@ -169,11 +161,6 @@ public class DisplayRotation extends SettingsPreferenceFragment implements OnPre
             }
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.ACCELEROMETER_ROTATION_ANGLES, mode);
-            return true;
-        } else if (preference == mLockScreenRotationPref) {
-            boolean value = mLockScreenRotationPref.isChecked();
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.LOCKSCREEN_ROTATION, value ? 1 : 0);
             return true;
         } else if (preference == mSwapVolumeButtons) {
             int value = mSwapVolumeButtons.isChecked() ? (Utils.isTablet(getActivity()) ? 2 : 1) : 0;

@@ -29,8 +29,8 @@
             android:entryValues="@array/quick_pulldown_values"
             android:persistent="false" />
 
-        <CheckBoxPreference
-            android:key="collapse_panel"
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="qs_collapse_panel"
             android:title="@string/title_collapse_panel"
             android:summary="@string/summary_collapse_panel" />
 
@@ -80,29 +80,35 @@
             android:summary="@string/dynamic_tiles_note_summary"
             android:selectable="false" />
 
-        <CheckBoxPreference
-            android:key="dynamic_alarm"
-            android:title="@string/title_dynamic_alarm" />
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="qs_dyanmic_alarm"
+            android:title="@string/title_dynamic_alarm"
+            android:defaultValue="true" />
 
-        <CheckBoxPreference
-            android:key="dynamic_bugreport"
-            android:title="@string/title_dynamic_bugreport" />
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="qs_dyanmic_bugreport"
+            android:title="@string/title_dynamic_bugreport"
+            android:defaultValue="true" />
 
-        <CheckBoxPreference
-            android:key="dynamic_dock_battery"
-            android:title="@string/title_dynamic_dock_battery" />
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="qs_dyanmic_dock_battery"
+            android:title="@string/title_dynamic_dock_battery"
+            android:defaultValue="true" />
 
-        <CheckBoxPreference
-            android:key="dynamic_ime"
-            android:title="@string/title_dynamic_ime" />
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="qs_dyanmic_ime"
+            android:title="@string/title_dynamic_ime"
+            android:defaultValue="true" />
 
-        <CheckBoxPreference
-            android:key="dynamic_usbtether"
-            android:title="@string/title_dynamic_usbtether" />
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="qs_dyanmic_usbtether"
+            android:title="@string/title_dynamic_usbtether"
+            android:defaultValue="true" />
 
-        <CheckBoxPreference
-            android:key="dynamic_wifi"
-            android:title="@string/title_dynamic_wifi" />
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="qs_dyanmic_wifi"
+            android:title="@string/title_dynamic_wifi"
+            android:defaultValue="true" />
 
     </PreferenceCategory>
 

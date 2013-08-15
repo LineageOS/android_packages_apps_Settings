@@ -61,15 +61,9 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
     private static final String TAG = "PowerWidget";
     private static final String SEPARATOR = "OV=I=XseparatorX=I=VO";
     private static final String UI_COLLAPSE_BEHAVIOUR = "notification_drawer_collapse_on_dismiss";
-    private static final String UI_EXP_WIDGET = "expanded_widget";
-    private static final String UI_EXP_WIDGET_HIDE_ONCHANGE = "expanded_hide_onchange";
-    private static final String UI_EXP_WIDGET_HIDE_SCROLLBAR = "expanded_hide_scrollbar";
     private static final String UI_EXP_WIDGET_HAPTIC_FEEDBACK = "expanded_haptic_feedback";
 
     private ListPreference mCollapseOnDismiss;
-    private CheckBoxPreference mPowerWidget;
-    private CheckBoxPreference mPowerWidgetHideOnChange;
-    private CheckBoxPreference mPowerWidgetHideScrollBar;
     private ListPreference mPowerWidgetHapticFeedback;
 
     @Override
@@ -90,26 +84,10 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
             mCollapseOnDismiss.setOnPreferenceChangeListener(this);
             updateCollapseBehaviourSummary(collapseBehaviour);
 
-            mPowerWidget = (CheckBoxPreference) prefSet.findPreference(UI_EXP_WIDGET);
-            mPowerWidget.setOnPreferenceChangeListener(this);
-            mPowerWidgetHideOnChange = (CheckBoxPreference) prefSet
-                    .findPreference(UI_EXP_WIDGET_HIDE_ONCHANGE);
-            mPowerWidgetHideOnChange.setOnPreferenceChangeListener(this);
-            mPowerWidgetHideScrollBar = (CheckBoxPreference) prefSet
-                    .findPreference(UI_EXP_WIDGET_HIDE_SCROLLBAR);
-            mPowerWidgetHideScrollBar.setOnPreferenceChangeListener(this);
-
             mPowerWidgetHapticFeedback = (ListPreference) prefSet
                     .findPreference(UI_EXP_WIDGET_HAPTIC_FEEDBACK);
             mPowerWidgetHapticFeedback.setOnPreferenceChangeListener(this);
             mPowerWidgetHapticFeedback.setSummary(mPowerWidgetHapticFeedback.getEntry());
-
-            mPowerWidget.setChecked(Settings.System.getInt(resolver,
-                    Settings.System.EXPANDED_VIEW_WIDGET, 0) == 1);
-            mPowerWidgetHideOnChange.setChecked(Settings.System.getInt(resolver,
-                    Settings.System.EXPANDED_HIDE_ONCHANGE, 0) == 1);
-            mPowerWidgetHideScrollBar.setChecked(Settings.System.getInt(resolver,
-                    Settings.System.EXPANDED_HIDE_SCROLLBAR, 0) == 1);
             mPowerWidgetHapticFeedback.setValue(Integer.toString(Settings.System.getInt(
                     resolver, Settings.System.EXPANDED_HAPTIC_FEEDBACK, 2)));
         }
@@ -130,21 +108,6 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
             Settings.System.putInt(resolver,
                     Settings.System.STATUS_BAR_COLLAPSE_ON_DISMISS, value);
             updateCollapseBehaviourSummary(value);
-            return true;
-        } else if (preference == mPowerWidget) {
-            boolean value = (Boolean) newValue;
-            Settings.System.putInt(resolver,
-                    Settings.System.EXPANDED_VIEW_WIDGET, value ? 1 : 0);
-            return true;
-        } else if (preference == mPowerWidgetHideOnChange) {
-            boolean value = (Boolean) newValue;
-            Settings.System.putInt(resolver,
-                    Settings.System.EXPANDED_HIDE_ONCHANGE, value ? 1 : 0);
-            return true;
-        } else if (preference == mPowerWidgetHideScrollBar) {
-            boolean value = (Boolean) newValue;
-            Settings.System.putInt(resolver,
-                    Settings.System.EXPANDED_HIDE_SCROLLBAR, value ? 1 : 0);
             return true;
         } else if (preference == mPowerWidgetHapticFeedback) {
             int intValue = Integer.parseInt((String) newValue);

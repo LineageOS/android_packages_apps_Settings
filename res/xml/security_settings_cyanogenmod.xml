@@ -21,26 +21,26 @@
         android:key="additional_options"
         android:title="@string/additional_options_title">
 
-        <CheckBoxPreference
-            android:key="menu_unlock"
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="menu_unlock_screen"
             android:title="@string/unlock_menu_unlock_title"
             android:summary="@string/unlock_menu_unlock_summary" />
 
-        <CheckBoxPreference
-            android:key="home_unlock"
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="home_unlock_screen"
             android:title="@string/unlock_home_unlock_title"
             android:summary="@string/unlock_home_unlock_summary" />
 
-        <CheckBoxPreference
-            android:key="quick_unlock_control"
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="lockscreen_quick_unlock_control"
             android:title="@string/unlock_quick_unlock_control_title"
             android:summary="@string/unlock_quick_unlock_control_summary" />
 
-        <CheckBoxPreference
-            android:key="lockscreen_vibrate"
-            android:persistent="false"
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="lockscreen.vibrate_enabled"
             android:title="@string/lockscreen_vibrate_enabled_title"
-            android:summary="@string/lockscreen_vibrate_enabled_head"/>
+            android:summary="@string/lockscreen_vibrate_enabled_head"
+            android:defaultValue="true" />
 
     </PreferenceCategory>
 

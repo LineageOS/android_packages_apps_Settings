@@ -19,38 +19,38 @@
     android:title="@string/power_menu_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <CheckBoxPreference
-        android:key="power_menu_reboot"
+    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+        android:key="power_menu_reboot_enabled"
         android:title="@string/power_menu_reboot_title"
         android:defaultValue="true" />
 
-    <CheckBoxPreference
-        android:key="power_menu_screenshot"
+    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+        android:key="power_menu_screenshot_enabled"
         android:title="@string/power_menu_screenshot_title"
         android:defaultValue="false" />
 
-    <CheckBoxPreference
-        android:key="power_menu_expanded_desktop"
+    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+        android:key="power_menu_expanded_desktop_enabled"
         android:title="@string/power_menu_expanded_desktop"
-        android:persistent="false" />
+        android:defaultValue="false" />
 
-    <CheckBoxPreference
-        android:key="power_menu_profiles"
+    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+        android:key="power_menu_profiles_enabled"
         android:title="@string/power_menu_profiles_title"
         android:defaultValue="true" />
 
-    <CheckBoxPreference
-        android:key="power_menu_airplane"
+    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+        android:key="power_menu_airplane_enabled"
         android:title="@string/power_menu_airplane_title"
         android:defaultValue="true" />
 
-    <CheckBoxPreference
-        android:key="power_menu_user"
+    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+        android:key="power_menu_user_enabled"
         android:title="@string/power_menu_user_title"
         android:defaultValue="false" />
 
-    <CheckBoxPreference
-        android:key="power_menu_sound"
+    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+        android:key="power_menu_silent_enabled"
         android:title="@string/power_menu_sound_title"
         android:defaultValue="true" />
 

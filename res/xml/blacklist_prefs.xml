@@ -15,15 +15,12 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:phone="http://schemas.android.com/apk/res/com.android.phone"
-    android:key="button_blacklist"
     android:title="@string/blacklist_title" >
 
-    <CheckBoxPreference
-        android:key="button_notify"
+    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+        android:key="phone_blacklist_notify_enabled"
         android:title="@string/blacklist_notify"
-        android:defaultValue="true"
-        android:persistent="false" />
+        android:defaultValue="true" />
 
     <MultiSelectListPreference
         android:key="button_blacklist_private_numbers"
@@ -41,10 +38,9 @@
         android:entryValues="@array/blacklist_policy_unknown_values"
         android:persistent="false" />
 
-    <CheckBoxPreference
-        android:key="button_blacklist_regex"
+    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+        android:key="phone_blacklist_regex_enabled"
         android:title="@string/blacklist_regex_title"
-        android:summary="@string/blacklist_regex_summary"
-        android:persistent="false" />
+        android:summary="@string/blacklist_regex_summary" />
 
 </PreferenceScreen>

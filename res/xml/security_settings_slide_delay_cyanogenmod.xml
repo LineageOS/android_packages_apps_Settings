@@ -21,8 +21,8 @@
         android:key="delay_and_timeout"
         android:title="@string/delay_and_timeout_title">
 
-        <CheckBoxPreference
-            android:key="slide_lock_delay_toggle"
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="screen_lock_slide_delay_toggle"
             android:title="@string/slide_lock_delay_title" />
 
         <ListPreference
@@ -31,7 +31,7 @@
             android:title="@string/slide_lock_timeout_delay_title"
             android:entries="@array/lockscreen_delay_entries"
             android:entryValues="@array/lockscreen_delay_values"
-            android:dependency="slide_lock_delay_toggle" />
+            android:dependency="screen_lock_slide_delay_toggle" />
 
         <ListPreference
             android:key="slide_lock_screenoff_delay"
@@ -39,7 +39,7 @@
             android:title="@string/slide_lock_screenoff_delay_title"
             android:entries="@array/lockscreen_delay_entries"
             android:entryValues="@array/lockscreen_delay_values"
-            android:dependency="slide_lock_delay_toggle" />
+            android:dependency="screen_lock_slide_delay_toggle" />
 
     </PreferenceCategory>
 

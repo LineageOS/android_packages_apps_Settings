@@ -34,13 +34,9 @@ import java.util.Set;
 public class PreferenceFragment extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
-    private static final String BUTTON_NOTIFY               = "button_notify";
-    private static final String BUTTON_USE_REGEX            = "button_blacklist_regex";
-    private static final String BUTTON_BLACKLIST_PRIVATE    = "button_blacklist_private_numbers";
-    private static final String BUTTON_BLACKLIST_UNKNOWN    = "button_blacklist_unknown_numbers";
+    private static final String BUTTON_BLACKLIST_PRIVATE = "button_blacklist_private_numbers";
+    private static final String BUTTON_BLACKLIST_UNKNOWN = "button_blacklist_unknown_numbers";
 
-    private CheckBoxPreference mNotify;
-    private CheckBoxPreference mUseRegex;
     private MultiSelectListPreference mBlacklistPrivate;
     private MultiSelectListPreference mBlacklistUnknown;
 
@@ -51,10 +47,6 @@ public class PreferenceFragment extends SettingsPreferenceFragment implements
         addPreferencesFromResource(R.xml.blacklist_prefs);
 
         PreferenceScreen prefSet = getPreferenceScreen();
-        mNotify = (CheckBoxPreference) prefSet.findPreference(BUTTON_NOTIFY);
-        mNotify.setOnPreferenceChangeListener(this);
-        mUseRegex = (CheckBoxPreference) prefSet.findPreference(BUTTON_USE_REGEX);
-        mUseRegex.setOnPreferenceChangeListener(this);
         mBlacklistPrivate =
                 (MultiSelectListPreference) prefSet.findPreference(BUTTON_BLACKLIST_PRIVATE);
         mBlacklistPrivate.setOnPreferenceChangeListener(this);
@@ -68,8 +60,6 @@ public class PreferenceFragment extends SettingsPreferenceFragment implements
         super.onResume();
 
         final Context context = getActivity();
-        mNotify.setChecked(BlacklistUtils.isBlacklistNotifyEnabled(context));
-        mUseRegex.setChecked(BlacklistUtils.isBlacklistRegexEnabled(context));
         updateSelectListFromPolicy(mBlacklistPrivate,
                 Settings.System.PHONE_BLACKLIST_PRIVATE_NUMBER_MODE);
         updateSelectListSummary(mBlacklistPrivate, mBlacklistPrivate.getValues(),
@@ -84,15 +74,7 @@ public class PreferenceFragment extends SettingsPreferenceFragment implements
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
-        if (preference == mNotify) {
-            boolean checked = (Boolean) objValue;
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.PHONE_BLACKLIST_NOTIFY_ENABLED, checked ? 1 : 0);
-        } else if (preference == mUseRegex) {
-            boolean checked = (Boolean) objValue;
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.PHONE_BLACKLIST_REGEX_ENABLED, checked ? 1 : 0);
-        } else if (preference == mBlacklistUnknown) {
+        if (preference == mBlacklistUnknown) {
             Set<String> newValues = (Set<String>) objValue;
             updatePolicyFromSelectList(newValues,
                     Settings.System.PHONE_BLACKLIST_UNKNOWN_NUMBER_MODE);

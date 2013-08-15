@@ -68,10 +68,9 @@
             android:persistent="false"
             android:ringtoneType="ringtone" />
 
-    <CheckBoxPreference
-         android:key="vibrate_when_ringing"
-         android:title="@string/vibrate_when_ringing_title"
-         android:persistent="false" />
+    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="vibrate_when_ringing"
+            android:title="@string/vibrate_when_ringing_title" />
 
     <com.android.settings.IncreasingRingPreference
             android:key="increasing_ring"
@@ -90,17 +89,16 @@
             android:persistent="false"
             android:ringtoneType="notification" />
 
-    <CheckBoxPreference
-            android:key="notification_convert_sound_to_vibration"
+    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="convert_sound_to_vibration"
             android:title="@string/notification_convert_sound_to_vibration_title"
             android:summary="@string/notification_convert_sound_to_vibration_summary"
             android:defaultValue="true" />
 
-    <CheckBoxPreference
-            android:key="notification_vibrate_during_calls"
+    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="vibrate_while_no_alerts"
             android:title="@string/notification_vibrate_during_calls_title"
             android:summary="@string/notification_vibrate_during_calls_summary"
-            android:persistent="false"
             android:defaultValue="false" />
 
     <PreferenceCategory
@@ -108,31 +106,31 @@
 
     <!-- Do not nest these, or removals in code will break -->
 
-    <CheckBoxPreference
+    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
             android:key="dtmf_tone"
             android:title="@string/dtmf_tone_enable_title"
             android:defaultValue="true" />
 
-    <CheckBoxPreference
-            android:key="sound_effects"
+    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="sound_effects_enabled"
             android:title="@string/sound_effects_enable_title"
             android:defaultValue="true" />
 
-    <CheckBoxPreference
-            android:key="lock_sounds"
+    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="lockscreen_sounds_enabled"
             android:title="@string/lock_sounds_enable_title"
             android:defaultValue="true" />
 
-    <CheckBoxPreference
-            android:key="haptic_feedback"
+    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="haptic_feedback_enabled"
             android:title="@string/haptic_feedback_enable_title"
             android:defaultValue="true" />
 
-    <CheckBoxPreference
-            android:key="volume_adjust_sounds"
+    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="volume_adjust_sounds_enabled"
             android:title="@string/volume_adjust_sounds_enable_title"
             android:summary="@string/volume_adjust_sounds_enable_summary"
-            android:persistent="false" />
+            android:defaultValue="true" />
 
     <ListPreference
             android:key="emergency_tone"

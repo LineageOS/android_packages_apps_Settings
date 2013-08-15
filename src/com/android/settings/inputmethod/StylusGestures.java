@@ -24,7 +24,6 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
@@ -40,7 +39,6 @@ public class StylusGestures extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
     public static final String TAG = "Stylus Gestures";
-    public static final String KEY_SPEN_ENABLE = "enable_spen";
     public static final String KEY_SPEN_LEFT = "gestures_left";
     public static final String KEY_SPEN_RIGHT = "gestures_right";
     public static final String KEY_SPEN_UP = "gestures_up";
@@ -50,7 +48,6 @@ public class StylusGestures extends SettingsPreferenceFragment implements
     public static final int KEY_NO_ACTION = 1000;
     public static final String TEXT_NO_ACTION = "No Action";
 
-    private CheckBoxPreference mEnableGestures;
     private ListPreference mSwipeLeft;
     private ListPreference mSwipeRight;
     private ListPreference mSwipeUp;
@@ -75,11 +72,6 @@ public class StylusGestures extends SettingsPreferenceFragment implements
         mActionNames = resources.getStringArray(R.array.gestures_entries);
         mActionValues = resources.getStringArray(R.array.gestures_values);
 
-        // Setup the preferences
-        mEnableGestures = (CheckBoxPreference) findPreference(KEY_SPEN_ENABLE);
-        mEnableGestures.setChecked(Settings.System.getInt(mResolver,
-                Settings.System.ENABLE_STYLUS_GESTURES, 0) == 1);
-
         // Setup the gestures
         mSwipeLeft   = setupGesturePref(KEY_SPEN_LEFT,   Settings.System.GESTURES_LEFT_SWIPE);
         mSwipeRight  = setupGesturePref(KEY_SPEN_RIGHT,  Settings.System.GESTURES_RIGHT_SWIPE);
@@ -95,18 +87,6 @@ public class StylusGestures extends SettingsPreferenceFragment implements
         addApplicationEntries(pref, setting);
         pref.setOnPreferenceChangeListener(this);
         return pref;
-    }
-
-    @Override
-    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
-            Preference preference) {
-        if (preference == mEnableGestures) {
-            Settings.System.putInt(mResolver,
-                    Settings.System.ENABLE_STYLUS_GESTURES,
-                    ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
-            return true;
-        }
-        return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
     @Override
