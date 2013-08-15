@@ -40,33 +40,31 @@ public class QuietHours extends SettingsPreferenceFragment implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (getPreferenceManager() != null) {
-            addPreferencesFromResource(R.xml.quiet_hours_settings);
+        addPreferencesFromResource(R.xml.quiet_hours_settings);
 
-            ContentResolver resolver = getContentResolver();
-            PreferenceScreen prefSet = getPreferenceScreen();
-            Resources res = getResources();
+        ContentResolver resolver = getContentResolver();
+        PreferenceScreen prefSet = getPreferenceScreen();
+        Resources res = getResources();
 
-            // Load the preferences
-            mQuietHoursTimeRange =
-                    (TimeRangePreference) prefSet.findPreference(KEY_QUIET_HOURS_TIMERANGE);
+        // Load the preferences
+        mQuietHoursTimeRange =
+            (TimeRangePreference) prefSet.findPreference(KEY_QUIET_HOURS_TIMERANGE);
 
-            // Remove the "Incoming calls behaviour" note
-            // if the device does not support phone calls
-            if (!res.getBoolean(com.android.internal.R.bool.config_voice_capable)) {
-                getPreferenceScreen().removePreference(findPreference(KEY_QUIET_HOURS_NOTE));
-            }
+        // Remove the "Incoming calls behaviour" note
+        // if the device does not support phone calls
+        if (!res.getBoolean(com.android.internal.R.bool.config_voice_capable)) {
+            getPreferenceScreen().removePreference(findPreference(KEY_QUIET_HOURS_NOTE));
+        }
 
-            // Set the preference state and listeners where applicable
-            mQuietHoursTimeRange.setTimeRange(
-                    Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_START, 0),
-                    Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_END, 0));
-            mQuietHoursTimeRange.setOnPreferenceChangeListener(this);
+        // Set the preference state and listeners where applicable
+        mQuietHoursTimeRange.setTimeRange(
+                Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_START, 0),
+                Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_END, 0));
+        mQuietHoursTimeRange.setOnPreferenceChangeListener(this);
 
-            // Remove the notification light setting if the device does not support it 
-            if (!res.getBoolean(com.android.internal.R.bool.config_intrusiveNotificationLed)) {
-                prefSet.removePreference(findPreference(Settings.System.QUIET_HOURS_DIM));
-            }
+        // Remove the notification light setting if the device does not support it
+        if (!res.getBoolean(com.android.internal.R.bool.config_intrusiveNotificationLed)) {
+            prefSet.removePreference(findPreference(Settings.System.QUIET_HOURS_DIM));
         }
     }
 

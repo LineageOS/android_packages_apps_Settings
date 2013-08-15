@@ -44,10 +44,8 @@ public class AppGroupList extends SettingsPreferenceFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (getPreferenceManager() != null) {
-            addPreferencesFromResource(R.xml.appgroup_list);
-            mProfileManager = (ProfileManager) getActivity().getSystemService(PROFILE_SERVICE);
-        }
+        addPreferencesFromResource(R.xml.appgroup_list);
+        mProfileManager = (ProfileManager) getActivity().getSystemService(PROFILE_SERVICE);
     }
 
     @Override
