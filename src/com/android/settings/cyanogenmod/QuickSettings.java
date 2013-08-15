@@ -154,19 +154,18 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        ContentResolver resolver = getActivity().getContentResolver();
+        ContentResolver resolver = getContentResolver();
         if (preference == mRingMode) {
             ArrayList<String> arrValue = new ArrayList<String>((Set<String>) newValue);
             Collections.sort(arrValue, new MultiSelectListPreferenceComparator(mRingMode));
-            Settings.System.putString(resolver, Settings.System.EXPANDED_RING_MODE,
-                    TextUtils.join(SEPARATOR, arrValue));
-            updateSummary(TextUtils.join(SEPARATOR, arrValue), mRingMode, R.string.pref_ring_mode_summary);
+            String value = TextUtils.join(SEPARATOR, arrValue);
+            Settings.System.putString(resolver, Settings.System.EXPANDED_RING_MODE, value);
+            updateSummary(value, mRingMode, R.string.pref_ring_mode_summary);
             return true;
         } else if (preference == mNetworkMode) {
             int value = Integer.valueOf((String) newValue);
             int index = mNetworkMode.findIndexOfValue((String) newValue);
-            Settings.System.putInt(resolver,
-                    Settings.System.EXPANDED_NETWORK_MODE, value);
+            Settings.System.putInt(resolver, Settings.System.EXPANDED_NETWORK_MODE, value);
             mNetworkMode.setSummary(mNetworkMode.getEntries()[index]);
             return true;
         } else if (preference == mQuickPulldown) {
@@ -178,8 +177,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
         } else if (preference == mScreenTimeoutMode) {
             int value = Integer.valueOf((String) newValue);
             int index = mScreenTimeoutMode.findIndexOfValue((String) newValue);
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.EXPANDED_SCREENTIMEOUT_MODE, value);
+            Settings.System.putInt(resolver, Settings.System.EXPANDED_SCREENTIMEOUT_MODE, value);
             mScreenTimeoutMode.setSummary(mScreenTimeoutMode.getEntries()[index]);
             return true;
         }

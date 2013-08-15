@@ -80,13 +80,13 @@ public class WifiPriority extends ListFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Context ctx = getActivity().getApplicationContext();
-        mWifiManager = (WifiManager)ctx.getSystemService(Context.WIFI_SERVICE);
+        Context context = getActivity();
+        mWifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
 
         // Set the touchable listview
         mNetworksListView = (TouchInterceptor)getListView();
         mNetworksListView.setDropListener(mDropListener);
-        mAdapter = new WifiPriorityAdapter(ctx, mWifiManager);
+        mAdapter = new WifiPriorityAdapter(context, mWifiManager);
         setListAdapter(mAdapter);
     }
 

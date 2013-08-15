@@ -191,7 +191,7 @@ public class ApplicationLightPreference extends DialogPreference {
         final Context context = getContext();
 
         if (mReceiver != null) {
-            context.getApplicationContext().unregisterReceiver(mReceiver);
+            context.unregisterReceiver(mReceiver);
         }
         if (mTestDialog != null) {
             mTestDialog.dismiss();
@@ -201,7 +201,7 @@ public class ApplicationLightPreference extends DialogPreference {
 
         IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_OFF);
         filter.addAction(Intent.ACTION_SCREEN_ON);
-        context.getApplicationContext().registerReceiver(mReceiver, filter);
+        context.registerReceiver(mReceiver, filter);
 
         mTestDialog = new AlertDialog.Builder(context)
                 .setTitle(R.string.dialog_test)
@@ -210,7 +210,7 @@ public class ApplicationLightPreference extends DialogPreference {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if (mReceiver != null) {
-                            context.getApplicationContext().unregisterReceiver(mReceiver);
+                            context.unregisterReceiver(mReceiver);
                             mReceiver = null;
                         }
                     }
@@ -305,7 +305,7 @@ public class ApplicationLightPreference extends DialogPreference {
                 nm.notify(1, n);
             } else if(intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
                 nm.cancel(1);
-                context.getApplicationContext().unregisterReceiver(mReceiver);
+                context.unregisterReceiver(mReceiver);
                 mReceiver = null;
                 mTestDialog.dismiss();
                 mTestDialog = null;

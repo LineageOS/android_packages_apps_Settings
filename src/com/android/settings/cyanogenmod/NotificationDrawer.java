@@ -159,15 +159,11 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
 
             PreferenceScreen prefSet = getPreferenceScreen();
             PackageManager pm = getPackageManager();
+            final ContentResolver resolver = getContentResolver();
 
-            if (getActivity().getApplicationContext() == null) {
-                return;
-            }
-
-            mBrightnessMode = (MultiSelectListPreference) prefSet
-                    .findPreference(EXP_BRIGHTNESS_MODE);
-            String storedBrightnessMode = Settings.System.getString(getActivity()
-                    .getApplicationContext().getContentResolver(),
+            mBrightnessMode = (MultiSelectListPreference)
+                    prefSet.findPreference(EXP_BRIGHTNESS_MODE);
+            String storedBrightnessMode = Settings.System.getString(resolver,
                     Settings.System.EXPANDED_BRIGHTNESS_MODE);
             if (storedBrightnessMode != null) {
                 String[] brightnessModeArray = TextUtils.split(storedBrightnessMode, SEPARATOR);
@@ -180,8 +176,7 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
             mScreenTimeoutMode = (ListPreference) prefSet.findPreference(EXP_SCREENTIMEOUT_MODE);
             mScreenTimeoutMode.setOnPreferenceChangeListener(this);
             mRingMode = (MultiSelectListPreference) prefSet.findPreference(EXP_RING_MODE);
-            String storedRingMode = Settings.System.getString(getActivity()
-                    .getApplicationContext().getContentResolver(),
+            String storedRingMode = Settings.System.getString(resolver,
                     Settings.System.EXPANDED_RING_MODE);
             if (storedRingMode != null) {
                 String[] ringModeArray = TextUtils.split(storedRingMode, SEPARATOR);
@@ -215,8 +210,8 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
             mCheckBoxPrefs.clear();
 
             // get our list of buttons
-            ArrayList<String> buttonList = PowerWidgetUtil.getButtonListFromString(PowerWidgetUtil
-                    .getCurrentButtons(getActivity().getApplicationContext()));
+            ArrayList<String> buttonList = PowerWidgetUtil.getButtonListFromString(
+                    PowerWidgetUtil.getCurrentButtons(getActivity()));
 
             // Don't show WiMAX option if not supported
             boolean isWimaxEnabled = WimaxHelper.isWimaxSupported(getActivity());
@@ -235,8 +230,7 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
             // fill that checkbox map!
             for (PowerWidgetUtil.ButtonInfo button : PowerWidgetUtil.BUTTONS.values()) {
                 // create a checkbox
-                CheckBoxPreference cb = new CheckBoxPreference(getActivity()
-                        .getApplicationContext());
+                CheckBoxPreference cb = new CheckBoxPreference(getActivity());
 
                 // set a dynamic key based on button id
                 cb.setKey(SELECT_BUTTON_KEY_PREFIX + button.getId());
@@ -263,17 +257,16 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
                 } else if (PowerWidgetUtil.BUTTON_NETWORKMODE.equals(button.getId())) {
                     // some phones run on networks not supported by this button,
                     // so disable it
-                    int network_state = -99;
+                    int networkState = -99;
 
                     try {
-                        network_state = Settings.Global.getInt(getActivity()
-                                .getApplicationContext().getContentResolver(),
+                        networkState = Settings.Global.getInt(getContentResolver(),
                                 Settings.Global.PREFERRED_NETWORK_MODE);
                     } catch (Settings.SettingNotFoundException e) {
                         Log.e(TAG, "Unable to retrieve PREFERRED_NETWORK_MODE", e);
                     }
 
-                    switch (network_state) {
+                    switch (networkState) {
                     // list of supported network modes
                         case Phone.NT_MODE_WCDMA_PREF:
                         case Phone.NT_MODE_WCDMA_ONLY:
@@ -309,11 +302,10 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
 
             if (buttonWasModified) {
                 // now we do some wizardry and reset the button list
-                PowerWidgetUtil.saveCurrentButtons(getActivity().getApplicationContext(),
+                PowerWidgetUtil.saveCurrentButtons(getActivity(),
                         PowerWidgetUtil.mergeInNewButtonString(
-                                PowerWidgetUtil.getCurrentButtons(getActivity()
-                                        .getApplicationContext()), PowerWidgetUtil
-                                        .getButtonStringFromList(buttonList)));
+                                PowerWidgetUtil.getCurrentButtons(getActivity()),
+                                PowerWidgetUtil.getButtonStringFromList(buttonList)));
                 return true;
             }
 
@@ -335,36 +327,34 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
         }
 
         public boolean onPreferenceChange(Preference preference, Object newValue) {
+            ContentResolver resolver = getContentResolver();
+
             if (preference == mBrightnessMode) {
                 ArrayList<String> arrValue = new ArrayList<String>((Set<String>) newValue);
                 Collections.sort(arrValue, new MultiSelectListPreferenceComparator(mBrightnessMode));
-                Settings.System.putString(getActivity().getApplicationContext().getContentResolver(),
-                        Settings.System.EXPANDED_BRIGHTNESS_MODE, TextUtils.join(SEPARATOR, arrValue));
-                updateSummary(TextUtils.join(SEPARATOR, arrValue),
-                        mBrightnessMode, R.string.pref_brightness_mode_summary);
+                String value = TextUtils.join(SEPARATOR, arrValue);
+                Settings.System.putString(resolver, Settings.System.EXPANDED_BRIGHTNESS_MODE, value);
+                updateSummary(value, mBrightnessMode, R.string.pref_brightness_mode_summary);
             } else if (preference == mNetworkMode) {
                 int value = Integer.valueOf((String) newValue);
                 int index = mNetworkMode.findIndexOfValue((String) newValue);
-                Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                        Settings.System.EXPANDED_NETWORK_MODE, value);
+                Settings.System.putInt(resolver, Settings.System.EXPANDED_NETWORK_MODE, value);
                 mNetworkMode.setSummary(mNetworkMode.getEntries()[index]);
             } else if (preference == mScreenTimeoutMode) {
                 int value = Integer.valueOf((String) newValue);
                 int index = mScreenTimeoutMode.findIndexOfValue((String) newValue);
-                Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                        Settings.System.EXPANDED_SCREENTIMEOUT_MODE, value);
+                Settings.System.putInt(resolver, Settings.System.EXPANDED_SCREENTIMEOUT_MODE, value);
                 mScreenTimeoutMode.setSummary(mScreenTimeoutMode.getEntries()[index]);
             } else if (preference == mRingMode) {
                 ArrayList<String> arrValue = new ArrayList<String>((Set<String>) newValue);
                 Collections.sort(arrValue, new MultiSelectListPreferenceComparator(mRingMode));
-                Settings.System.putString(getActivity().getApplicationContext().getContentResolver(),
-                        Settings.System.EXPANDED_RING_MODE, TextUtils.join(SEPARATOR, arrValue));
-                updateSummary(TextUtils.join(SEPARATOR, arrValue), mRingMode, R.string.pref_ring_mode_summary);
+                String value = TextUtils.join(SEPARATOR, arrValue);
+                Settings.System.putString(resolver, Settings.System.EXPANDED_RING_MODE, value);
+                updateSummary(value, mRingMode, R.string.pref_ring_mode_summary);
             } else if (preference == mFlashMode) {
                 int value = Integer.valueOf((String) newValue);
                 int index = mFlashMode.findIndexOfValue((String) newValue);
-                Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                        Settings.System.EXPANDED_FLASH_MODE, value);
+                Settings.System.putInt(resolver, Settings.System.EXPANDED_FLASH_MODE, value);
                 mFlashMode.setSummary(mFlashMode.getEntries()[index]);
             }
             return true;
@@ -410,7 +400,6 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
         private ListView mButtonList;
         private ButtonAdapter mButtonAdapter;
         View mContentView = null;
-        Context mContext;
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -425,11 +414,10 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
-            mContext = getActivity().getApplicationContext();
 
             mButtonList = getListView();
             ((TouchInterceptor) mButtonList).setDropListener(mDropListener);
-            mButtonAdapter = new ButtonAdapter(mContext);
+            mButtonAdapter = new ButtonAdapter(getActivity());
             setListAdapter(mButtonAdapter);
         }
 
@@ -450,9 +438,10 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
 
         private TouchInterceptor.DropListener mDropListener = new TouchInterceptor.DropListener() {
             public void drop(int from, int to) {
+                final Context context = getActivity();
                 // get the current button list
                 ArrayList<String> buttons = PowerWidgetUtil.getButtonListFromString(
-                        PowerWidgetUtil.getCurrentButtons(mContext));
+                        PowerWidgetUtil.getCurrentButtons(context));
 
                 // move the button
                 if (from < buttons.size()) {
@@ -462,7 +451,7 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
                         buttons.add(to, button);
 
                         // save our buttons
-                        PowerWidgetUtil.saveCurrentButtons(mContext,
+                        PowerWidgetUtil.saveCurrentButtons(context,
                                 PowerWidgetUtil.getButtonStringFromList(buttons));
 
                         // tell our adapter/listview to reload

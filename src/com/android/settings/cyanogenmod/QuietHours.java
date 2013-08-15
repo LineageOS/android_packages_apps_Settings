@@ -72,7 +72,7 @@ public class QuietHours extends SettingsPreferenceFragment implements
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        ContentResolver resolver = getActivity().getApplicationContext().getContentResolver();
+        ContentResolver resolver = getContentResolver();
         if (preference == mQuietHoursTimeRange) {
             Settings.System.putInt(resolver, Settings.System.QUIET_HOURS_START,
                     mQuietHoursTimeRange.getStartTime());

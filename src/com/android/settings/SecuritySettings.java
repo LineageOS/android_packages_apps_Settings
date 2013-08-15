@@ -158,7 +158,8 @@ public class SecuritySettings extends SettingsPreferenceFragment
         if (args != null) {
             isCmSecurity = args.getBoolean("cm_security");
         }
-        ContentResolver resolver = getActivity().getApplicationContext().getContentResolver();
+
+        final ContentResolver resolver = getContentResolver();
         final Resources res = getResources();
 
         // Add package manager to check if features are available
@@ -525,8 +526,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
 
     private void updateSlideAfterTimeoutSummary() {
         // Update summary message with current value
-        long currentTimeout = Settings.System.getInt(getActivity().getApplicationContext()
-                .getContentResolver(),
+        long currentTimeout = Settings.System.getInt(getContentResolver(),
                 Settings.System.SCREEN_LOCK_SLIDE_TIMEOUT_DELAY, 5000);
         final CharSequence[] entries = mSlideLockTimeoutDelay.getEntries();
         final CharSequence[] values = mSlideLockTimeoutDelay.getEntryValues();
@@ -547,8 +547,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
 
     private void updateSlideAfterScreenOffSummary() {
         // Update summary message with current value
-        long currentTimeout = Settings.System.getInt(getActivity().getApplicationContext()
-                .getContentResolver(),
+        long currentTimeout = Settings.System.getInt(getContentResolver(),
                 Settings.System.SCREEN_LOCK_SLIDE_SCREENOFF_DELAY, 0);
         final CharSequence[] entries = mSlideLockScreenOffDelay.getEntries();
         final CharSequence[] values = mSlideLockScreenOffDelay.getEntryValues();
@@ -785,13 +784,12 @@ public class SecuritySettings extends SettingsPreferenceFragment
             checkPowerInstantLockDependency();
         } else if (preference == mSlideLockTimeoutDelay) {
             int slideTimeoutDelay = Integer.valueOf((String) value);
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.SCREEN_LOCK_SLIDE_TIMEOUT_DELAY,
-                    slideTimeoutDelay);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.SCREEN_LOCK_SLIDE_TIMEOUT_DELAY, slideTimeoutDelay);
             updateSlideAfterTimeoutSummary();
         } else if (preference == mSlideLockScreenOffDelay) {
             int slideScreenOffDelay = Integer.valueOf((String) value);
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+            Settings.System.putInt(getContentResolver(),
                     Settings.System.SCREEN_LOCK_SLIDE_SCREENOFF_DELAY, slideScreenOffDelay);
             updateSlideAfterScreenOffSummary();
         } else if (preference == mSmsSecurityCheck) {

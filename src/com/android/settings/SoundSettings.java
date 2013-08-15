@@ -505,7 +505,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         cal.set(Calendar.HOUR_OF_DAY, hr);
         cal.set(Calendar.MINUTE, mn);
         Date date = cal.getTime();
-        return DateFormat.getTimeFormat(getActivity().getApplicationContext()).format(date);
+        return DateFormat.getTimeFormat(getActivity()).format(date);
     }
 
     @Override
