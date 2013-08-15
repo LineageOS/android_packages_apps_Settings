@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2012-2013 The CyanogenMod Project
+<!--
+     Copyright (C) 2012-2013 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -43,7 +44,7 @@
     <string name="quiet_hours_title">Modo descanso</string>
     <string name="quiet_hours_summary">Silenciar o desactivar sonidos y notificaciones durante un período de tiempo especificado</string>
     <string name="quiet_hours_note_summary">Nota: Las llamadas entrantes se comportarán de manera normal durante este modo</string>
-    <string name="quiet_hours_enabled">Modo descanso</string>
+    <string name="quiet_hours_enabled">Habilitar</string>
     <string name="quiet_hours_mute">Notificaciones</string>
     <string name="quiet_hours_still">Vibración</string>
     <string name="quiet_hours_dim">Notificaciones de luz</string>
@@ -76,8 +77,11 @@
     <string name="preview_version_title">Versión</string>
     <string name="preview_country_title">País</string>
     <string name="preview_carrier_title">Operadora móvil</string>
+    <string name="header_category_interface">Personalización</string>
+    <string name="homescreen_settings_title">Inicio</string>
     <string name="themes_settings_title">Temas</string>
-    <string name="system_interface_title">Interfaz</string>
+    <string name="system_settings_title">Interfaz</string>
+    <string name="system_interface_title">Interfaz del sistema</string>
     <string name="notification_drawer_title">Área de notificación</string>
     <string name="notification_drawer_collapse_on_dismiss_title">Cierre automático</string>
     <string name="collapse_on_dismiss_never">Deshabilitado</string>
@@ -248,7 +252,7 @@
     <string name="icon_picker_gallery">Galería</string>
     <string name="icon_picker_google_small">Google (pequeño)</string>
     <string name="icon_picker_googleplus">Google+</string>
-    <string name="icon_picker_googletalk">Hangouts</string>
+    <string name="icon_picker_googletalk">Conversaciones</string>
     <string name="icon_picker_maps">Mapas</string>
     <string name="icon_picker_movie">Películas</string>
     <string name="icon_picker_music">Música</string>
@@ -292,6 +296,9 @@
     <string name="link_volume_ringtones">Vincular volúmenes</string>
     <string name="link_volume_mutes">Vincular silencio</string>
     <string name="volume_keys_control_ring_stream">Controlar volumen de llamada</string>
+    <string name="display_lights_settings_title">Pantalla y leds</string>
+    <string name="lights_category_title">Leds</string>
+    <string name="notification_pulse_title">Led de notificación</string>
     <string name="notification_light_general_title">General</string>
     <string name="notification_light_applist_title">Aplicaciones</string>
     <string name="notification_light_phonelist_title">Teléfono</string>
@@ -328,14 +335,23 @@
     <string name="battery_light_medium_color_title">Cargando</string>
     <string name="battery_light_full_color_title">Cargada</string>
     <string name="volume_overlay_title">Panel de volumen</string>
-    <string name="volbtn_music_controls_title">Controles de volumen</string>
+    <string name="volbtn_music_controls_title">Control multimedia</string>
     <string name="volbtn_music_controls_summary">Cuando la pantalla esté apagada, una pulsación prolongada de los controles de volumen avanzará/retrocederá sobre las pistas de música activas</string>
     <string name="volume_ring_only_description">Tonos del teléfono</string>
     <string name="ring_mode_title">Modo de sonido</string>
     <string name="ring_mode_normal">Normal</string>
     <string name="ring_mode_vibrate">Vibración</string>
     <string name="ring_mode_mute">Silencio</string>
-    <string name="hardware_keys_enable_custom_title">Habilitar acciones personalizadas</string>
+    <string name="automation_effects_title">Automatización y efectos</string>
+    <string name="button_settings">Botones</string>
+    <string name="hardware_keys_enable_custom_title">Acciones personalizadas</string>
+    <string name="hardware_keys_home_key_title">Botón Inicio</string>
+    <string name="hardware_keys_menu_key_title">Botón Menú</string>
+    <string name="hardware_keys_assist_key_title">Botón Búsqueda</string>
+    <string name="hardware_keys_appswitch_key_title">Botón Recientes</string>
+    <string name="hardware_keys_volume_keys_title">Botones de volumen</string>
+    <string name="hardware_keys_short_press_title">Acción pulsación corta</string>
+    <string name="hardware_keys_long_press_title">Acción pulsación larga</string>
     <string name="hardware_keys_show_overflow_title">Mostrar menú emergente</string>
     <string name="hardware_keys_show_overflow_summary">Mostrar el icono del menú emergente dentro de las aplicaciones</string>
     <string name="hardware_keys_show_overflow_toast_enable">El botón de menú emergente puede que no se muestre hasta que la aplicación sea reiniciada</string>
@@ -346,8 +362,13 @@
     <string name="hardware_keys_action_search">Asistente de búsqueda</string>
     <string name="hardware_keys_action_voice_search">Búsqueda por voz</string>
     <string name="hardware_keys_action_in_app_search">Búsqueda dentro de la aplicación</string>
+    <string name="home_wake_title">Despertar</string>
+    <string name="home_wake_summary">Presionando el botón Inicio, el dispositivo saldrá del modo en espera</string>
+    <string name="volume_wake_title">Despertar</string>
+    <string name="volume_wake_summary">Presionando los botones de control de volumen, el dispositivo saldrá del modo en espera</string>
     <string name="swap_volume_buttons_title">Intercambiar botones</string>
     <string name="swap_volume_buttons_summary">Intercambiar los botones de control de volumen al rotar la pantalla</string>
+    <string name="navigation_bar_category">Barra de navegación</string>
     <string name="navigation_bar_title">Botones y disposición</string>
     <string name="navigation_bar_help_text">1 - Para empezar a editar, tocar el candado.\n\n2 - Tocar cualquier botón para asignar o cambiar una acción.\n\n3 - Mantener presionado un botón para reorganizar.\n\n4 - Para guardar, tocar el candado nuevamente.\n\n5 - Para restaurar la configuración por defecto, tocar el icono de restablecer.\n\n</string>
     <string name="navigation_bar_tips">\u2022 Sólo se puede asignar una acción a un botón a la vez.\n\n\u2022 El botón de inicio no puede ser reasignado.\n\n\u2022 Los botones laterales, no pueden ser reorganizados.</string>
@@ -491,7 +512,7 @@
     <string name="title_tile_networkmode">Modo de red</string>
     <string name="title_tile_nfc">NFC</string>
     <string name="title_tile_screen_timeout">Tiempo de espera</string>
-    <string name="title_tile_quiet_hours">Modo tranquilidad</string>
+    <string name="title_tile_quiet_hours">Modo descanso</string>
     <string name="title_tile_volume">Volumen</string>
     <string name="title_tile_expanded_desktop">Extender escritorio</string>
     <string name="title_dynamic_tiles">Controles dinámicos</string>
@@ -547,6 +568,7 @@
     <string name="lockscreen_background_default_wallpaper">Fondo por defecto</string>
     <string name="headset_connect_player_title">Iniciar reproductor</string>
     <string name="headset_connect_player_summary">Iniciar el reproductor de música por defecto al conectar los auriculares</string>
+    <string name="safe_headset_volume_title">Volumen seguro</string>
     <string name="cyanogenmod_waiver_title">Renuncia</string>
     <string name="cyanogenmod_waiver_body">Cambiar este ajuste puede ir en contra de la leyes de tu estado o país.\n\nPulsando \u00ABAceptar\u00BB, reconoces esta advertencia y eximes de cualquier responsabilidad legal a CyanogenMod y sus colaboradores, renunciando así a cualquier reclamación por daños y perjuicios.</string>
     <string name="auto_brightness_setup_title">Brillo automático</string>
@@ -666,6 +688,8 @@ podrás crear una nueva línea con el fin de insertar puntos de control adiciona
     <string name="power_notifications_ringtone_silent">Ninguno</string>
     <string name="screen_off_animation_title">Efecto al apagar</string>
     <string name="screen_off_animation_summary">Mostrar un efecto animado al apagar la pantalla</string>
+    <string name="wake_when_plugged_or_unplugged_title">Encender con cargador</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Encender la pantalla al conectar o desconectar el cargador</string>
     <string name="confirm_delete_apn">El APN será borrado.</string>
     <string name="privacy_guard_switch_label">Habilitar privacidad</string>
     <string name="privacy_guard_dlg_title">¿Habilitar privacidad?</string>
@@ -708,4 +732,15 @@ podrás crear una nueva línea con el fin de insertar puntos de control adiciona
     <string name="remove_blacklist_number_title">Quitar número</string>
     <string name="remove_blacklist_entry">¿Quitar esta entrada de la lista negra?</string>
     <string name="select_contact">Seleccionar contacto</string>
+    <string name="vibrator_intensity_title">Intensidad de vibración</string>
+    <string name="vibrator_warning">No son recomendables valores superiores a %1$d</string>
+    <string name="color_calibration_title">Calibración de color</string>
+    <string name="color_calibration_summary">Calibrar los colores de la pantalla</string>
+    <string name="color_red_title">Rojo</string>
+    <string name="color_green_title">Verde</string>
+    <string name="color_blue_title">Azul</string>
+    <string name="more_device_controls_title">Más\u2026</string>
+    <string name="more_device_settings_title">Otros ajustes del dispositivo</string>
+    <string name="sensors_motors_title">Sensores y vibración</string>
+    <string name="display_calibration_title">Calibración de pantalla</string>
 </resources>
