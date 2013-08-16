@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2012-2013 The CyanogenMod Project
+<!--
+     Copyright (C) 2012-2013 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -309,10 +310,10 @@
     <string name="volume_keys_control_ring_stream">Lautstärketasten steuern Benachrichtigungslautstärke</string>
     <string name="volume_keys_control_ring_stream">Lautstärketasten steuern Klingeltonlautstärke</string>
     <string name="hardware_keys_enable_custom_title">Benutzerdefinierte Aktionen aktivieren</string>
-    <string name="hardware_keys_show_overflow_title">Zeige In-App Menü-Taste</string>
-    <string name="hardware_keys_show_overflow_summary">Die virtuelle Menü-Taste dauerhaft innerhalb von Apps anzeigen</string>
-    <string name="hardware_keys_show_overflow_toast_enable">Die virtuelle Menü-Taste wird vermutlich erst nach einem Neustart der App sichtbar.</string>
-    <string name="hardware_keys_show_overflow_toast_disable">Die virtuelle Menü-Taste wird vermutlich erst nach einem Neustart der App unsichtbar.</string>
+    <string name="hardware_keys_show_overflow_title">Menü-Schaltfläche anzeigen</string>
+    <string name="hardware_keys_show_overflow_summary">Zusätzlich zur Menü-Taste in Apps eine Menü-Schaltfläche anzeigen</string>
+    <string name="hardware_keys_show_overflow_toast_enable">Die Menü-Schaltfläche wird vermutlich erst nach einem Neustart der App sichtbar.</string>
+    <string name="hardware_keys_show_overflow_toast_disable">Die Menü-Schaltfläche wird vermutlich erst nach einem Neustart der App unsichtbar.</string>
     <string name="hardware_keys_action_nothing">Keine Aktion</string>
     <string name="hardware_keys_action_menu">Öffne/Schließe Menü</string>
     <string name="hardware_keys_action_app_switch">Letzte Apps</string>
@@ -536,6 +537,9 @@
     <string name="lockscreen_background_default_wallpaper">Standardhintergrund</string>
     <string name="cyanogenmod_waiver_title">Verzichtserklärung</string>
     <string name="cyanogenmod_waiver_body">Das Deaktivieren dieser Funktion kann gegen geltendes Recht verstoßen.\n\nDurch Ihre Bestätigung erklären Sie, dass Sie CyanogenMod sowie alle daran Mitwirkenden von sämtlichen damit verbunden rechtlichen Verbindlichkeiten, u.A. Schadensersatzpflichten, befreien.</string>
+    <string name="auto_brightness_setup_title">Automatische Helligkeit</string>
+    <string name="auto_brightness_adjustment_title">Helligkeits-Einstellung</string>
+    <string name="auto_brightness_twilight_adjustment">An Dämmerung anpassen</string>
     <string name="light_sensor_current_value">Aktueller Sensorwert: <xliff:g id="light_level">%d</xliff:g> Lux</string>
     <string name="auto_brightness_dialog_title">Helligkeitsstufen</string>
     <string name="auto_brightness_level_format"><xliff:g id="level">%1$d</xliff:g> Lux</string>
@@ -658,6 +662,8 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <string name="intent_sender_data_label"><xliff:g id="data">Daten:</xliff:g></string>
     <string name="screen_off_animation_title">Ausschaltanimation</string>
     <string name="screen_off_animation_summary">Beim Ausschalten des Bildschirms eine Animation anzeigen</string>
+    <string name="wake_when_plugged_or_unplugged_title">Beim Einstecken aufwecken</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Beim Anschließen oder Trennen des Ladegerätes das Display anschalten</string>
     <string name="confirm_delete_apn">Der Zugangspunkt wird gelöscht.</string>
     <string name="privacy_guard_switch_label">Datenschutz aktivieren</string>
     <string name="privacy_guard_dlg_title">Datenschutz aktivieren?</string>
@@ -707,4 +713,35 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <string name="collapse_on_dismiss_never_summary">Nach Entfernen von Benachrichtigungen geöffnet lassen</string>
     <string name="collapse_on_dismiss_if_empty_summary">Nach dem Entfernen der letzten Benachrichtigung schließen</string>
     <string name="collapse_on_dismiss_if_no_clearable_summary">Nach dem Entfernen der letzten nicht dauerhaft angezeigten Benachrichtigung schließen</string>
+    <string name="vibrator_intensity_title">Vibrationsstärke</string>
+    <string name="vibrator_warning">Höhere Werte als %1$d werden nicht empfohlen</string>
+    <string name="color_calibration_title">Farbkalibrierung</string>
+    <string name="color_calibration_summary">Displayfarben einstellen</string>
+    <string name="color_red_title">Rot</string>
+    <string name="color_green_title">Grün</string>
+    <string name="color_blue_title">Blau</string>
+    <string name="header_category_interface">Personalisierung</string>
+    <string name="homescreen_settings_title">Startbildschirm</string>
+    <string name="system_settings_title">Oberfläche</string>
+    <string name="display_lights_settings_title">Display &amp; LED</string>
+    <string name="lights_category_title">LED</string>
+    <string name="automation_effects_title">Automatisierung &amp; Effekte</string>
+    <string name="button_settings">Tasten</string>
+    <string name="hardware_keys_home_key_title">Home-Taste</string>
+    <string name="hardware_keys_menu_key_title">Menü-Taste</string>
+    <string name="hardware_keys_assist_key_title">Suche-Taste</string>
+    <string name="hardware_keys_appswitch_key_title">Anwendungs-Umschalttaste</string>
+    <string name="hardware_keys_volume_keys_title">Lautstärketasten</string>
+    <string name="hardware_keys_short_press_title">Kurzes Drücken</string>
+    <string name="hardware_keys_long_press_title">Langes Drücken</string>
+    <string name="home_wake_title">Aufwecken mit Home-Taste</string>
+    <string name="home_wake_summary">Drücken der Home-Taste aktiviert den Bildschirm</string>
+    <string name="volume_wake_title">Aufwecken mit Lautstärketaste</string>
+    <string name="volume_wake_summary">Drücken einer Lautstärketaste aktiviert den Bildschirm</string>
+    <string name="navigation_bar_category">Navigationsleiste</string>
+    <string name="safe_headset_volume_title">Headset-Lautstärkebegrenzung</string>
+    <string name="more_device_controls_title">Mehr\u2026</string>
+    <string name="more_device_settings_title">Weitere Geräteoptionen</string>
+    <string name="display_calibration_title">Displaykalibrierung</string>
+    <string name="sensors_motors_title">Sensoren &amp; Vibration</string>
 </resources>
