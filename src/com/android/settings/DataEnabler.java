@@ -55,6 +55,8 @@ import com.android.settings.WirelessSettings;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import static com.android.internal.telephony.MSimConstants.MAX_PHONE_COUNT_TRI_SIM;
+
 public class DataEnabler {
     private static final String TAG = "DataEnabler";
     private final Context mContext;
@@ -118,6 +120,10 @@ public class DataEnabler {
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             if(mMobileDataEnabled != mSwitch.isChecked()){
                 mConnService.setMobileDataEnabled(isChecked);
+                for (int i = 0; i < MAX_PHONE_COUNT_TRI_SIM; i++) {
+                    Settings.Global.putInt(mContext.getContentResolver(),
+                            Settings.Global.MOBILE_DATA + i, isChecked ? 1 : 0);
+                }
             }
         }
     };
