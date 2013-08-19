@@ -37,6 +37,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     private static final String KEY_ENABLE_CUSTOM_BINDING = "hardware_keys_enable_custom";
     private static final String KEY_HOME_LONG_PRESS = "hardware_keys_home_long_press";
+    private static final String KEY_HOME_DOUBLE_TAP = "hardware_keys_home_double_tap";
     private static final String KEY_MENU_PRESS = "hardware_keys_menu_press";
     private static final String KEY_MENU_LONG_PRESS = "hardware_keys_menu_long_press";
     private static final String KEY_ASSIST_PRESS = "hardware_keys_assist_press";
@@ -77,6 +78,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
     private CheckBoxPreference mEnableCustomBindings;
     private ListPreference mHomeLongPressAction;
+    private ListPreference mHomeDoubleTapAction;
     private CheckBoxPreference mHomeWake;
     private ListPreference mMenuPressAction;
     private ListPreference mMenuLongPressAction;
@@ -129,10 +131,29 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                         Settings.System.HOME_WAKE_SCREEN, 1) == 1);
             }
 
+            int defaultLongPressAction = res.getInteger(
+                    com.android.internal.R.integer.config_longPressOnHomeBehavior);
+            if (defaultLongPressAction < ACTION_NOTHING ||
+                    defaultLongPressAction > ACTION_IN_APP_SEARCH) {
+                defaultLongPressAction = ACTION_NOTHING;
+            }
+
+            int defaultDoubleTapAction = res.getInteger(
+                    com.android.internal.R.integer.config_doubleTapOnHomeBehavior);
+            if (defaultDoubleTapAction < ACTION_NOTHING ||
+                    defaultDoubleTapAction > ACTION_IN_APP_SEARCH) {
+                defaultDoubleTapAction = ACTION_NOTHING;
+            }
+
             int longPressAction = Settings.System.getInt(resolver,
                     Settings.System.KEY_HOME_LONG_PRESS_ACTION,
-                    hasAppSwitchKey ? ACTION_NOTHING : ACTION_APP_SWITCH);
+                    defaultLongPressAction);
             mHomeLongPressAction = initActionList(KEY_HOME_LONG_PRESS, longPressAction);
+
+            int doubleTapAction = Settings.System.getInt(resolver,
+                    Settings.System.KEY_HOME_DOUBLE_TAP_ACTION,
+                    defaultDoubleTapAction);
+            mHomeDoubleTapAction = initActionList(KEY_HOME_DOUBLE_TAP, doubleTapAction);
 
             hasAnyBindableKey = true;
         } else {
@@ -253,6 +274,10 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         if (preference == mHomeLongPressAction) {
             handleActionListChange(mHomeLongPressAction, newValue,
                     Settings.System.KEY_HOME_LONG_PRESS_ACTION);
+            return true;
+        } else if (preference == mHomeDoubleTapAction) {
+            handleActionListChange(mHomeDoubleTapAction, newValue,
+                    Settings.System.KEY_HOME_DOUBLE_TAP_ACTION);
             return true;
         } else if (preference == mMenuPressAction) {
             handleActionListChange(mMenuPressAction, newValue,
