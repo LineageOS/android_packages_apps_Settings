@@ -146,4 +146,22 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:key="key_backlight"
+        android:title="@string/key_backlight_title" >
+
+            <com.android.settings.cyanogenmod.ButtonBacklightBrightness
+                android:key="button_backlight"
+                android:title="@string/button_backlight_title"
+                android:dialogTitle="@string/button_backlight_title"
+                android:persistent="false" />
+
+            <com.android.settings.cyanogenmod.KeyboardBacklightBrightness
+                android:key="keyboard_backlight"
+                android:title="@string/keyboard_backlight_title"
+                android:dialogTitle="@string/keyboard_backlight_title"
+                android:persistent="false" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
