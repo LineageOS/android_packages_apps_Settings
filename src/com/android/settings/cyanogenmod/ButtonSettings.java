@@ -238,11 +238,11 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
         if (ButtonBacklightBrightness.isSupported() || KeyboardBacklightBrightness.isSupported()) {
             if (!ButtonBacklightBrightness.isSupported()) {
-                removePreference(KEY_BUTTON_BACKLIGHT);
+                backlightCategory.removePreference(findPreference(KEY_BUTTON_BACKLIGHT));
             }
 
             if (!KeyboardBacklightBrightness.isSupported()) {
-                removePreference(KEY_KEYBOARD_BACKLIGHT);
+                backlightCategory.removePreference(findPreference(KEY_KEYBOARD_BACKLIGHT));
             }
         } else {
             prefScreen.removePreference(backlightCategory);
