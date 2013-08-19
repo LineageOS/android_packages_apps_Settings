@@ -51,4 +51,15 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:key="usb_charging_category"
+        android:title="@string/usb_charging_title" >
+
+        <CheckBoxPreference
+            android:key="usb_charging"
+            android:title="@string/usb_charging_title"
+            android:summary="@string/usb_charging_summary"/>
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

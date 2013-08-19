@@ -17,15 +17,23 @@
 package com.android.settings.cyanogenmod;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.preference.CheckBoxPreference;
+import android.preference.Preference;
 import android.preference.PreferenceGroup;
+import android.preference.PreferenceManager;
+import android.preference.PreferenceScreen;
+import android.util.Log;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.hardware.DisplayColor;
 import com.android.settings.hardware.DisplayGamma;
 import com.android.settings.hardware.VibratorIntensity;
+
+import org.cyanogenmod.hardware.UsbCharging;
 
 public class MoreDeviceSettings extends SettingsPreferenceFragment {
     private static final String TAG = "MoreDeviceSettings";
@@ -34,6 +42,10 @@ public class MoreDeviceSettings extends SettingsPreferenceFragment {
     private static final String KEY_DISPLAY_CALIBRATION_CATEGORY = "display_calibration_category";
     private static final String KEY_DISPLAY_COLOR = "color_calibration";
     private static final String KEY_DISPLAY_GAMMA = "gamma_tuning";
+    private static final String KEY_USB_CHARGING_CATEGORY = "usb_charging_category";
+    private static final String KEY_USB_CHARGING = "usb_charging";
+
+    private CheckBoxPreference mUsbCharging;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,11 +71,55 @@ public class MoreDeviceSettings extends SettingsPreferenceFragment {
                 calibrationCategory.removePreference(findPreference(KEY_DISPLAY_GAMMA));
             }
         }
+
+        final PreferenceGroup usbChargingCategory =
+                (PreferenceGroup) findPreference(KEY_USB_CHARGING_CATEGORY);
+        mUsbCharging = (CheckBoxPreference) findPreference(KEY_USB_CHARGING);
+
+        if (isUsbChargingSupported()) {
+            mUsbCharging.setChecked(UsbCharging.isEnabled());
+        } else {
+            getPreferenceScreen().removePreference(usbChargingCategory);
+        }
+    }
+
+    @Override
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        if (preference == mUsbCharging) {
+            return UsbCharging.setEnabled(mUsbCharging.isChecked());
+        }
+        return super.onPreferenceTreeClick(preferenceScreen, preference);
+    }
+
+    /**
+     * Restore the properties associated with this preference on boot
+     * @param context A valid context
+     */
+    public static void restore(Context context) {
+        if (isUsbChargingSupported()) {
+            final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+            final boolean enabled = prefs.getBoolean(KEY_USB_CHARGING, true);
+            if (!UsbCharging.setEnabled(enabled)) {
+                Log.e(TAG, "Failed to restore USB charging settings.");
+            } else {
+                Log.d(TAG, "USB charging settings restored.");
+            }
+        }
+    }
+
+    private static boolean isUsbChargingSupported() {
+        try {
+            return UsbCharging.isSupported();
+        } catch (NoClassDefFoundError e) {
+            // Hardware abstraction framework not installed
+            return false;
+        }
     }
 
     public static boolean hasItems() {
         return DisplayColor.isSupported() ||
                DisplayGamma.isSupported() ||
-               VibratorIntensity.isSupported();
+               VibratorIntensity.isSupported() ||
+               isUsbChargingSupported();
     }
 }
