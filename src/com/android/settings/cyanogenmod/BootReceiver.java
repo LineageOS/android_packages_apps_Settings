@@ -24,6 +24,7 @@ import android.os.SystemProperties;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import com.android.settings.DisplaySettings;
 import com.android.settings.Utils;
 import com.android.settings.hardware.DisplayColor;
 import com.android.settings.hardware.DisplayGamma;
@@ -72,6 +73,7 @@ public class BootReceiver extends BroadcastReceiver {
         DisplayColor.restore(ctx);
         DisplayGamma.restore(ctx);
         VibratorIntensity.restore(ctx);
+        DisplaySettings.restore(ctx);
     }
 
     private void configureCPU(Context ctx) {

@@ -26,6 +26,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.hardware.display.DisplayManager;
@@ -37,6 +38,7 @@ import android.os.UserHandle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.PreferenceManager;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
@@ -47,6 +49,9 @@ import android.util.Log;
 
 import com.android.internal.view.RotationPolicy;
 import com.android.settings.DreamSettings;
+import com.android.settings.Utils;
+
+import org.cyanogenmod.hardware.AdaptiveBacklight;
 
 import java.util.ArrayList;
 
@@ -62,6 +67,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_FONT_SIZE = "font_size";
     private static final String KEY_SCREEN_SAVER = "screensaver";
     private static final String KEY_WIFI_DISPLAY = "wifi_display";
+    private static final String KEY_ADAPTIVE_BACKLIGHT = "adaptive_backlight";
 
     private static final String CATEGORY_LIGHTS = "lights_prefs";
     private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
@@ -84,6 +90,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private WifiDisplayStatus mWifiDisplayStatus;
     private Preference mWifiDisplayPreference;
+
+    private CheckBoxPreference mAdaptiveBacklight;
 
     private final RotationPolicy.RotationPolicyListener mRotationPolicyListener =
             new RotationPolicy.RotationPolicyListener() {
@@ -138,6 +146,12 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 == WifiDisplayStatus.FEATURE_STATE_UNAVAILABLE) {
             getPreferenceScreen().removePreference(mWifiDisplayPreference);
             mWifiDisplayPreference = null;
+        }
+
+        mAdaptiveBacklight = (CheckBoxPreference) findPreference(KEY_ADAPTIVE_BACKLIGHT);
+        if (!AdaptiveBacklight.isSupported()) {
+            getPreferenceScreen().removePreference(mAdaptiveBacklight);
+            mAdaptiveBacklight = null;
         }
 
         boolean hasNotificationLed = res.getBoolean(
@@ -243,6 +257,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             getActivity().registerReceiver(mReceiver, new IntentFilter(
                     DisplayManager.ACTION_WIFI_DISPLAY_STATUS_CHANGED));
             mWifiDisplayStatus = mDisplayManager.getWifiDisplayStatus();
+        }
+
+        if (mAdaptiveBacklight != null) {
+            mAdaptiveBacklight.setChecked(AdaptiveBacklight.isEnabled());
         }
 
         updateState();
@@ -365,6 +383,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         if (preference == mAccelerometer) {
             RotationPolicy.setRotationLockForAccessibility(
                     getActivity(), !mAccelerometer.isChecked());
+        } else if (preference == mAdaptiveBacklight) {
+            return AdaptiveBacklight.setEnabled(mAdaptiveBacklight.isChecked());
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
@@ -410,5 +430,21 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             }
         }
         return false;
+    }
+
+    /**
+     * Restore the properties associated with this preference on boot
+     * @param ctx A valid context
+     */
+    public static void restore(Context ctx) {
+        if (AdaptiveBacklight.isSupported()) {
+            final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
+            final boolean enabled = prefs.getBoolean(KEY_ADAPTIVE_BACKLIGHT, true);
+            if (!AdaptiveBacklight.setEnabled(enabled)) {
+                Log.e(TAG, "Failed to restore adaptive backlight settings.");
+            } else {
+                Log.d(TAG, "Adaptive backlight settings restored.");
+            }
+        }
     }
 }

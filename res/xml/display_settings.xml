@@ -55,6 +55,12 @@
                 android:title="@string/wifi_display_settings_title"
                 android:fragment="com.android.settings.wfd.WifiDisplaySettings" />
 
+        <CheckBoxPreference
+                android:key="adaptive_backlight"
+                android:title="@string/adaptive_backlight_title"
+                android:summary="@string/adaptive_backlight_summary"
+                android:defaultValue="true" />
+
         <PreferenceCategory
             android:key="lights_prefs"
             android:title="@string/lights_category_title">
