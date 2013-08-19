@@ -59,6 +59,12 @@
                 android:fragment="com.android.settings.wfd.WifiDisplaySettings" />
 
         <CheckBoxPreference
+                android:key="adaptive_backlight"
+                android:title="@string/adaptive_backlight_title"
+                android:summary="@string/adaptive_backlight_summary"
+                android:defaultValue="true" />
+
+        <CheckBoxPreference
             android:key="screen_off_animation"
             android:title="@string/screen_off_animation_title"
             android:summary="@string/screen_off_animation_summary"
