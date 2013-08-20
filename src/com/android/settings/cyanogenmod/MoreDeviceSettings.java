@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.os.Vibrator;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
+import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 
@@ -34,6 +35,8 @@ public class MoreDeviceSettings extends SettingsPreferenceFragment {
     private static final String KEY_HEADSET_CONNECT_PLAYER = "headset_connect_player";
     private static final String KEY_SENORS_MOTORS_CATEGORY = "sensors_motors_category";
     private static final String KEY_DISPLAY_CALIBRATION_CATEGORY = "display_calibration_category";
+    private static final String KEY_DISPLAY_COLOR = "color_calibration";
+    private static final String KEY_DISPLAY_GAMMA = "gamma_tuning";
 
     private CheckBoxPreference mHeadsetConnectPlayer;
 
@@ -53,8 +56,18 @@ public class MoreDeviceSettings extends SettingsPreferenceFragment {
             removePreference(KEY_SENORS_MOTORS_CATEGORY);
         }
 
-        if (!DisplayColor.isSupported()) {
-            removePreference(KEY_DISPLAY_CALIBRATION_CATEGORY);
+        final PreferenceGroup calibrationCategory =
+                (PreferenceGroup) findPreference(KEY_DISPLAY_CALIBRATION_CATEGORY);
+
+        if (!DisplayColor.isSupported() && !DisplayGamma.isSupported()) {
+            getPreferenceScreen().removePreference(calibrationCategory);
+        } else {
+            if (!DisplayColor.isSupported()) {
+                calibrationCategory.removePreference(findPreference(KEY_DISPLAY_COLOR));
+            }
+            if (!DisplayGamma.isSupported()) {
+                calibrationCategory.removePreference(findPreference(KEY_DISPLAY_GAMMA));
+            }
         }
     }
 
