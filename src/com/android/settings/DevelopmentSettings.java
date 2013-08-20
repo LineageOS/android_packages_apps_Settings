@@ -101,6 +101,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private static final String CLEAR_ADB_KEYS = "clear_adb_keys";
     private static final String KEEP_SCREEN_ON = "keep_screen_on";
     private static final String ALLOW_MOCK_LOCATION = "allow_mock_location";
+    private static final String ALLOW_MOCK_SMS = "allow_mock_sms";
     private static final String HDCP_CHECKING_KEY = "hdcp_checking";
     private static final String HDCP_CHECKING_PROPERTY = "persist.sys.hdcp_checking";
     private static final String ENFORCE_READ_EXTERNAL = "enforce_read_external";
@@ -178,6 +179,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private CheckBoxPreference mKeepScreenOn;
     private CheckBoxPreference mEnforceReadExternal;
     private CheckBoxPreference mAllowMockLocation;
+    private CheckBoxPreference mAllowMockSMS;
     private PreferenceScreen mPassword;
 
     private String mDebugApp;
@@ -270,6 +272,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         mKeepScreenOn = findAndInitCheckboxPref(KEEP_SCREEN_ON);
         mEnforceReadExternal = findAndInitCheckboxPref(ENFORCE_READ_EXTERNAL);
         mAllowMockLocation = findAndInitCheckboxPref(ALLOW_MOCK_LOCATION);
+        mAllowMockSMS = findAndInitCheckboxPref(ALLOW_MOCK_SMS);
         mPassword = (PreferenceScreen) findPreference(LOCAL_BACKUP_PASSWORD);
         mAllPrefs.add(mPassword);
         mAdvancedReboot = findAndInitCheckboxPref(ADVANCED_REBOOT_KEY);
@@ -515,6 +518,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         updateAdbOverNetwork();
         updateCheckBox(mAllowMockLocation, Settings.Secure.getInt(cr,
                 Settings.Secure.ALLOW_MOCK_LOCATION, 0) != 0);
+        updateCheckBox(mAllowMockSMS, Settings.Secure.getInt(cr,
+                Settings.Secure.ALLOW_MOCK_SMS, 0) != 0);
         updateHdcpValues();
         updatePasswordSummary();
         updateDebuggerOptions();
@@ -1306,6 +1311,10 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
             Settings.Secure.putInt(getActivity().getContentResolver(),
                     Settings.Secure.ALLOW_MOCK_LOCATION,
                     mAllowMockLocation.isChecked() ? 1 : 0);
+        } else if (preference == mAllowMockSMS) {
+            Settings.Secure.putInt(getActivity().getContentResolver(),
+                    Settings.Secure.ALLOW_MOCK_SMS,
+                    mAllowMockSMS.isChecked() ? 1 : 0);
         } else if (preference == mDebugAppPref) {
             startActivityForResult(new Intent(getActivity(), AppPicker.class), RESULT_DEBUG_APP);
         } else if (preference == mWaitForDebugger) {
