@@ -340,8 +340,6 @@ public class MSimSubscriptionStatus extends PreferenceActivity {
     }
 
     void updateSignalStrength() {
-        int signalDbm = 0;
-
         if (mSignalStrength != null) {
             int state = mServiceState.getState();
             Resources r = getResources();
@@ -351,18 +349,12 @@ public class MSimSubscriptionStatus extends PreferenceActivity {
                 mSigStrength.setSummary("0");
             }
 
-            if (!mSignalStrength.isGsm()) {
-                signalDbm = mSignalStrength.getCdmaDbm();
-            } else {
-                int gsmSignalStrength = mSignalStrength.getGsmSignalStrength();
-                int asu = (gsmSignalStrength == 99 ? -1 : gsmSignalStrength);
-                if (asu != -1) {
-                    signalDbm = -113 + 2*asu;
-                }
-            }
+            int signalDbm = mSignalStrength.getDbm();
+
             if (-1 == signalDbm) signalDbm = 0;
 
-            int signalAsu = mSignalStrength.getGsmSignalStrength();
+            int signalAsu = mSignalStrength.getAsuLevel();
+
             if (-1 == signalAsu) signalAsu = 0;
 
             mSigStrength.setSummary(String.valueOf(signalDbm) + " "
