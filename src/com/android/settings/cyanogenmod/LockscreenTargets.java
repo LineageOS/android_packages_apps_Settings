@@ -341,7 +341,7 @@ public class LockscreenTargets extends Fragment implements
 
         inactiveLayer.setDrawableByLayerId(1, drawable);
 
-        if (GlowPadView.ICON_RESOURCE.equals(iconType)) {
+        if (GlowPadView.ICON_RESOURCE.equals(iconType) && iconSource != null) {
             InsetDrawable empty = new InsetDrawable(
                     mResources.getDrawable(android.R.color.transparent), 0, 0, 0, 0);
             activeLayer.setDrawableByLayerId(1, empty);
