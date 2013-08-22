@@ -24,10 +24,34 @@
         android:gravity="center_horizontal"
         android:paddingBottom="20dip">
 
+        <TextView android:id="@+id/timeout_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/backlight_timeout_title"
+            android:paddingTop="10dip"
+            android:paddingLeft="20dip"
+            android:paddingRight="20dip" />
+        <TextView android:id="@+id/timeout_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:paddingTop="10dip"
+            android:paddingLeft="20dip"
+            android:paddingRight="20dip" />
+        <SeekBar android:id="@+id/timeout_seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/timeout_text"
+            android:paddingTop="2dip"
+            android:paddingLeft="20dip"
+            android:paddingBottom="25dip"
+            android:paddingRight="20dip" />
+
         <RelativeLayout
             android:id="@+id/seekbar_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_below="@id/timeout_seekbar"
+            android:layout_height="wrap_content">
 
             <TextView android:id="@+id/text"
                 android:layout_width="wrap_content"
@@ -55,6 +79,7 @@
         <RelativeLayout
             android:id="@+id/checkbox_container"
             android:layout_width="match_parent"
+            android:layout_below="@id/timeout_seekbar"
             android:layout_height="wrap_content" >
 
             <CheckBox android:id="@+id/backlight_switch"
@@ -62,7 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:text="@string/button_backlight_title" />
+                android:text="@string/button_backlight_enabled" />
         </RelativeLayout>
 
     </RelativeLayout>
