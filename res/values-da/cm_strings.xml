@@ -53,6 +53,8 @@
     <string name="end_time_title">Slut</string>
     <string name="notification_convert_sound_to_vibration_title">Vibrér ved meddelelse</string>
     <string name="notification_convert_sound_to_vibration_summary">I vibreringstilstand vil alle meddelelser vibrere, uanset individuelle app-indstillinger.</string>
+    <string name="notification_vibrate_during_calls_title">Vibrér under opkald</string>
+    <string name="notification_vibrate_during_calls_summary">Indgående underretninger vil vibrere blidt under telefonopkald</string>
     <string name="device_hostname">Enhedens værtsnavn</string>
     <string name="mod_version">CyanogenMod-version</string>
     <string name="mod_version_default">Ukendt</string>
@@ -73,9 +75,19 @@
     <string name="preview_version_title">Version</string>
     <string name="preview_country_title">Land</string>
     <string name="preview_carrier_title">Operatør</string>
+    <string name="header_category_interface">Tilpasning</string>
+    <string name="homescreen_settings_title">Startskærm</string>
     <string name="themes_settings_title">Temaer</string>
+    <string name="system_settings_title">Brugerflade</string>
     <string name="system_interface_title">Systembrugerflade</string>
     <string name="notification_drawer_title">Meddelelsespanel</string>
+    <string name="notification_drawer_collapse_on_dismiss_title">Adfærd ved automatisk lukning</string>
+    <string name="collapse_on_dismiss_never">Deaktiveret</string>
+    <string name="collapse_on_dismiss_if_empty">Hvis der ikke er nogen tilbage</string>
+    <string name="collapse_on_dismiss_if_no_clearable">Hvis der ikke er nogen tilbage, som kan fjernes</string>
+    <string name="collapse_on_dismiss_never_summary">Lad meddelelsespanel være åben, når meddelelser fjernes</string>
+    <string name="collapse_on_dismiss_if_empty_summary">Luk meddelelsespanelet, når den sidste meddelelse fjernes</string>
+    <string name="collapse_on_dismiss_if_no_clearable_summary">Luk meddelelsespanel, når den sidste meddelelse, som kan fjernes, fjernes</string>
     <string name="lock_screen_title">Skærmlås</string>
     <string name="lockscreen_target_info">Træk skyderen hen til målet for at tildele en genvej</string>
     <string name="lockscreen_target_title">Genveje</string>
@@ -99,6 +111,9 @@
     <string name="profile_empty_list_profiles_off">For at konfigurere og bruge System-profiler, skal du slå Profiler til.</string>
     <string name="add_profile_dialog_title">Opret ny profil</string>
     <string name="profile_name_title">Navn</string>
+    <string name="profile_trigger_connect">Ved tilslutning</string>
+    <string name="profile_trigger_disconnect">Ved frakobling</string>
+    <string name="profile_trigger_notrigger">Ingen udløser</string>
     <string name="profile_profile_name_prompt">Angiv et navn for den nye profil</string>
     <string name="menu_new_profile">Ny profil</string>
     <string name="new_profile_name">&lt;ny profil&gt;</string>
@@ -111,6 +126,9 @@
     <string name="profile_delete_confirm">Slet denne profil?</string>
     <string name="profile_app_delete_confirm">Fjern denne app?</string>
     <string name="profile_cannot_delete">En aktiv profil kan ikke slettes</string>
+    <string name="profile_networkmode_2g">2G</string>
+    <string name="profile_networkmode_3g">3G</string>
+    <string name="profile_networkmode_2g3g">2G/3G</string>
     <string name="profile_connectionoverrides_title">Tilsidesættelser for forbindelse</string>
     <string name="profile_volumeoverrides_title">Tilsidesættelser for lydstyrke</string>
     <string name="connection_state_disabled">Deaktiver</string>
@@ -152,6 +170,7 @@
     <string name="toggleSync">Synkronisering</string>
     <string name="toggle2g3g">2G/3G</string>
     <string name="toggleWimax">WiMax</string>
+    <string name="toggleNfc">NFC</string>
     <string name="screen_security_category">Skærmsikkerhed</string>
     <string name="screen_security_title">Skærmlås</string>
     <string name="screen_security_summary">Se eller ændre indstillingerne for skærmlåsen, forsinkelse og timeout</string>
@@ -209,6 +228,7 @@
     <string name="display_rotation_title">Rotation</string>
     <string name="display_rotation_disabled">Deaktiveret</string>
     <string name="display_rotation_unit">grader</string>
+    <string name="display_lockscreen_rotation_title">Rotér skærmlås</string>
     <string name="display_rotation_category_title">Rotationstilstande</string>
     <string name="display_rotation_0_title">0 grader</string>
     <string name="display_rotation_90_title">90 grader</string>
@@ -257,6 +277,11 @@
     <string name="increasing_ring_interval_3seconds">3 sekunder</string>
     <string name="increasing_ring_interval_5seconds">5 sekunder</string>
     <string name="increasing_ring_interval_10seconds">10 sekunder</string>
+    <string name="profile_trigger_configure">Konfigurér udløser</string>
+    <string name="profile_triggers">Udløser</string>
+    <string name="profile_trigger_filter_all">Alle udløsere</string>
+    <string name="profile_trigger_filter_wifi">Wi-Fi-udløsere</string>
+    <string name="profile_trigger_filter_bluetooth">Bluetooth-udløsere</string>
     <string name="profile_write_nfc_tag">Skriv til NFC-tag</string>
     <string name="profile_write_touch_tag">Tryk på tag for at skrive</string>
     <string name="profile_write_success">Skrivning af tag lykkedes</string>
@@ -269,6 +294,8 @@
     <string name="link_volume_ringtones">Forbind ringe- og meddelelseslydstyrke</string>
     <string name="link_volume_mutes">Forbind lydløs ringe- og meddelelseslydstyrke</string>
     <string name="volume_keys_control_ring_stream">Lydstyrkeknapper styrer ringelydstyrke</string>
+    <string name="display_lights_settings_title">Skærm &amp; lys</string>
+    <string name="lights_category_title">Lys</string>
     <string name="notification_light_general_title">Generelt</string>
     <string name="notification_light_applist_title">Applikationer</string>
     <string name="notification_light_phonelist_title">Telefon</string>
@@ -278,6 +305,8 @@
     <string name="notification_light_default_value">Standard</string>
     <string name="notification_light_missed_call_title">Ubesvaret opkald</string>
     <string name="notification_light_voicemail_title">Telefonsvarer</string>
+    <string name="adaptive_backlight_title">Tilpassende baggrundslys</string>
+    <string name="adaptive_backlight_summary">Tilpas skærmens baggrundslysstyrke automatisk, hvilket hjælper med at forlænge batterilevetiden</string>
     <string name="edit_light_settings">Rediger LED-indstillinger</string>
     <string name="pulse_speed_title">Blinklængde og hastighed</string>
     <string name="default_time">Normal</string>
@@ -312,9 +341,19 @@
     <string name="ring_mode_normal">Normal</string>
     <string name="ring_mode_vibrate">Vibrér</string>
     <string name="ring_mode_mute">Lydløs</string>
+    <string name="automation_effects_title">Automatik &amp; effekter</string>
+    <string name="button_settings">Knapper</string>
     <string name="headset_connect_player_title">Start musik-app ved tilslutning</string>
     <string name="headset_connect_player_summary">Start standard-app til musik, når headset tilsluttes</string>
     <string name="hardware_keys_enable_custom_title">Aktivér brugerdefinerede handlinger</string>
+    <string name="hardware_keys_home_key_title">Knappen Start</string>
+    <string name="hardware_keys_menu_key_title">Knappen Menu</string>
+    <string name="hardware_keys_assist_key_title">Knappen Søg</string>
+    <string name="hardware_keys_appswitch_key_title">Knappen Senest anvendt</string>
+    <string name="hardware_keys_volume_keys_title">Lydstyrkeknapper</string>
+    <string name="hardware_keys_short_press_title">Handling ved kort tryk</string>
+    <string name="hardware_keys_long_press_title">Handling ved langt tryk</string>
+    <string name="hardware_keys_double_tap_title">Handling ved dobbelt tryk</string>
     <string name="hardware_keys_show_overflow_title">Vis handlingsknap</string>
     <string name="hardware_keys_show_overflow_summary">Få vist en 3-punkts handlingsknap i apps</string>
     <string name="hardware_keys_show_overflow_toast_enable">Handlingsknappen er muligvis ikke synlig indtil apps genstartes</string>
@@ -325,6 +364,10 @@
     <string name="hardware_keys_action_search">Søgeassistent</string>
     <string name="hardware_keys_action_voice_search">Stemmesøgning</string>
     <string name="hardware_keys_action_in_app_search">Søgning i app</string>
+    <string name="home_wake_title">Væk med startknap</string>
+    <string name="home_wake_summary">At trykke på startknappen vil vække enheden</string>
+    <string name="volume_wake_title">Væk med lydstyrkeknap</string>
+    <string name="volume_wake_summary">At trykke på en lydstyrkeknap vil vække enheden</string>
     <string name="swap_volume_buttons_title">Ombyt lydstyrkeknapper</string>
     <string name="swap_volume_buttons_summary">Ombyt lydstyrkeknapper, når skærmen roteres</string>
     <string name="navigation_bar_title">Navigationsbjælke</string>
@@ -426,6 +469,8 @@
     <string name="development_tools_title">Start Værktøjer</string>
     <string name="usb_mass_storage_title">USB-lager</string>
     <string name="usb_mass_storage_summary">Aktivér USB-lager</string>
+    <string name="storage_rescan_media">Scan lagerenheden igen for medier</string>
+    <string name="storage_rescan_media_complete">Scanning fuldført</string>
     <string name="adb_over_network">ADB via netværk</string>
     <string name="adb_over_network_summary">Aktivér TCP/IP fejlfinding på netværksenheder (Wi-Fi, USB-netværk). Denne indstilling nulstilles ved genstart</string>
     <string name="adb_over_network_warning">ADVARSEL: Når ADB via netværk er aktiveret, er din telefon åben for indtrængen på alle de tilsluttede netværk, herunder GSM-data-netværk!\n\nBrug kun denne funktion, når du er tilsluttet til betroede netværk.\n\nØnsker du virkelig at aktivere denne funktion?</string>
@@ -450,6 +495,7 @@
     <string name="title_tile_battery">Batteristatistik</string>
     <string name="title_tile_bluetooth">Bluetooth</string>
     <string name="title_tile_brightness">Lysstyrke</string>
+    <string name="title_tile_camera">Kamera</string>
     <string name="title_tile_sleep">Gå i dvale</string>
     <string name="title_tile_gps">GPS</string>
     <string name="title_tile_torch">Lommelygte</string>
@@ -503,12 +549,17 @@
     <string name="sms_security_check_limit_default">30 (standard)</string>
     <string name="lock_clock_title">Ur-widget</string>
     <string name="lock_clock_summary">Konfigurér, hvordan Start- og Skærmlås-widgets for \'cLock\' bliver vist</string>
-    <string name="stylus_icon_enabled_title">Show icon when using stylus</string>
-    <string name="stylus_icon_enabled_summary">Show the pointer icon when hovering or drawing with the stylus</string>
     <string name="stylus_icon_enabled_title">Vis ikon ved brug af pen</string>
     <string name="stylus_icon_enabled_summary">Vis markøren, når pennen benyttes</string>
+    <string name="lockscreen_widgets_category_title">Widgets</string>
     <string name="lockscreen_maximize_widgets_title">Maksimér widgets</string>
     <string name="lockscreen_maximize_widgets_summary">Vis widgets maksimeret og låsen minimeret, når skærmen er tændt</string>
+    <string name="lockscreen_enable_widgets_title">Widget-sider</string>
+    <string name="lockscreen_enable_widgets_summary">Tillad flere widget-sider at blive tilføjet og valgt</string>
+    <string name="lockscreen_enable_camera_title">Kamera-widget</string>
+    <string name="lockscreen_enable_camera_summary">Vis kamera-widgeten til højre på skærmlåsen</string>
+    <string name="lockscreen_music_controls_title">Knapper til musik</string>
+    <string name="lockscreen_music_controls_summary">Vis afspillerknapper, når der afspilles musik</string>
     <string name="lockscreen_custom_background_title">Baggrund</string>
     <string name="lockscreen_custom_background_dialog_title">Vælg farve</string>
     <string name="lockscreen_background_result_successful">Baggrund blev skiftet</string>
@@ -518,8 +569,12 @@
     <string name="lockscreen_background_default_wallpaper">Standardtapet</string>
     <string name="headset_connect_player_title">Start musik-app</string>
     <string name="headset_connect_player_summary">Start standard-app til musik, når headset tilsluttes</string>
+    <string name="safe_headset_volume_title">Sikker lydstyrke for håndfri</string>
     <string name="cyanogenmod_waiver_title">Ophævelse</string>
     <string name="cyanogenmod_waiver_body">At ændre denne indstilling kan være imod loven.\n\nVed at vælge \'OK\' herunder anerkender du denne advarsel og ophæver, sikrer og holder CyanogenMod og dens bidragydere skadesløse fra alle juridiske forpligtelser.</string>
+    <string name="auto_brightness_setup_title">Automatisk lysstyrke</string>
+    <string name="auto_brightness_adjustment_title">Tilpasning af lysstyrke</string>
+    <string name="auto_brightness_twilight_adjustment">Tilpas til solopgang og solnedgang</string>
     <string name="light_sensor_current_value">Aktuel værdi for lyssensor: <xliff:g id="light_level">%d</xliff:g> lux</string>
     <string name="auto_brightness_dialog_title">Automatisk lysstyrke-niveau</string>
     <string name="auto_brightness_level_format"><xliff:g id="level">%1$d</xliff:g> lux</string>
@@ -541,9 +596,38 @@
     <string name="auto_brightness_preview">Eksempel</string>
     <string name="auto_brightness_preview_dialog_title">Eksempel på lysstyrke-kurve</string>
     <string name="auto_brightness_help_dialog_title">Hjælp</string>
-    <string name="auto_brightness_help_text"><b>Hvordan beregnes lysstyrke?</b></string>
+    <string name="auto_brightness_help_text"><b>Hvordan beregnes lysstyrke?</b>
+\n\n
+Lysstyrkekurven er beregnet ved at udføre en <i>kubisk spline-interpolering</i>
+på et givet antal <i>kontrolpunkter</i>. Det er ikke en \'spand-typen\'-beregning, hvor
+skærmens lysstyrke vil forblive konstant for et bestemt interval af omgivende lysstyrke. På den måde
+vil små ændringer i omgivelsernes lysstyrke ikke forårsage et stort spring i skærmens lysstyrke, men
+det kan være lidt svært at forudsige de præcise konsekvenser af skiftende kontrolpunkter.\n
+Til at hjælpe med dette, kan et udsnit at den beregnede kurve undersøges. Bemærk, at
+udsnittet viser kurven i en <i>logarithmisk</i> skala, så alle kontrolpunkter kan vises
+separat. Når en lineær skala bruges, ville de ikke være muligt adskille de tendentielt
+mere vigtige kontrolpunkter i det nedre ende af den omgivende lysstyrke.
+\n\n
+<b>Hvordan redigeres lysstyrkekurven?</b>
+\n\n
+Hver linje i lysstyrkelisten svarer til et <i>kontrolpunkt</i> på
+lysstyrkekurven. For at redigere lysstyrkeniveauet for punktet kan du bruge skyderen,
+som er på hver linje. Skærmens lysstyrke vil blive ændret i overensstemmelse hermed, mens berøring
+af skyderen giver et eksempel på lysniveauet.\n
+Yderligere indstillinger er tilgængelige ved at trykke længe på en linje. Ved at vælge \'Redigér\', kan du
+både redigere omgivelsernes lysstyrke på kontrolpunktet, samt manuelt angive den
+ønskede skærmlysstyrke. At vælge \'Opdel\' tillader dig at dublere én linje til
+to for at indsætte yderligere kontrolpunkter. \'Fjern\' sletter den valgte linje.
+    </string>
+    <string name="auto_brightness_sensitivity_title">Justér følsomhed</string>
+    <string name="auto_brightness_sensitivity_verylow">Meget lav</string>
+    <string name="auto_brightness_sensitivity_low">Lav</string>
+    <string name="auto_brightness_sensitivity_medium">Normal</string>
+    <string name="auto_brightness_sensitivity_high">Høj</string>
+    <string name="auto_brightness_sensitivity_veryhigh">Meget høj</string>
     <string name="advanced_reboot_title">Avanceret genstart</string>
     <string name="advanced_reboot_summary">Ved frakobling vises muligheder i strømmenuen for genstart til recovery eller bootloader</string>
+    <string name="navigation_bar_category">Navigationslinje</string>
     <string name="navigation_ring_title">Genveje til hurtig start</string>
     <string name="navring_target_reset_message">Slet alle brugeroprettede genveje til navigationslinje og gendan til standard?</string>
     <string name="navring_target_reset">Genveje til navigationslinje nulstillet til standard</string>
@@ -562,6 +646,11 @@
     <string name="pie_control_title">Lagkagekontroller</string>
     <string name="pie_control_enabled">Slået til, når Udvidet skrivebord er aktivt</string>
     <string name="pie_control_disabled">Slået fra</string>
+    <string name="pie_control_sensitivity_title">Følsomhed</string>
+    <string name="pie_control_sensitivity_low">Lav</string>
+    <string name="pie_control_sensitivity_medium">Normal</string>
+    <string name="pie_control_sensitivity_high">Høj</string>
+    <string name="pie_control_sensitivity_very_high">Meget høj</string>
     <string name="pie_control_size">Størrelse på navigationstast</string>
     <string name="pie_control_trigger_positions">Udløserpositioner</string>
     <string name="pie_control_trigger_left">Venstre skærmkant</string>
@@ -593,9 +682,73 @@
     <string name="wifi_mhz">MHz</string>
     <string name="power_notifications_category_title">Strømlyde</string>
     <string name="power_notifications_enable_title">Slå til</string>
+    <string name="power_notifications_enable_summary">Afspil en lyd, når opladeren til- eller frakobles</string>
     <string name="power_notifications_vibrate_title">Vibrér</string>
     <string name="power_notifications_ringtone_title">Meddelelseslyd</string>
     <string name="power_notifications_ringtone_silent">Lydløs</string>
+    <string name="screen_off_animation_title">Animation ved sluk af skærm</string>
+    <string name="screen_off_animation_summary">Vis elektronstråle-animationen, når skærmen slukkes</string>
+    <string name="wake_when_plugged_or_unplugged_title">Væk ved strøm</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Tænd skærmen, når opladeren til- eller frakobles</string>
+    <string name="confirm_delete_apn">APN\'en vil blive slettet.</string>
+    <string name="privacy_guard_switch_label">Aktivér Privatlivsvagt</string>
+    <string name="privacy_guard_dlg_title">Aktivér Privatlivsvagt?</string>
+    <string name="privacy_guard_dlg_text">Når Privatlivsvagt er aktiveret, vil app\'en ikke tilgå personlige data såsom kontakter, beskeder eller opkaldslister.</string>
+    <string name="privacy_guard_dlg_system_app_text">Når Privatlivsvagt aktiveres for en indbygget app, vil app\'en ikke kunne tilgå personlige data. Dette kan medføre, at andre apps ikke virker korrekt.</string>
+    <string name="privacy_guard_default_title">Aktiveret som standard</string>
+    <string name="privacy_guard_default_summary">Aktiveret som standard for nyinstallerede apps</string>
+    <string name="privacy_guard_manager_title">Privatlivsvagt</string>
+    <string name="privacy_guard_manager_summary">Administrér, hvilke apps, der kan tilgå dine personlige data</string>
+    <string name="privacy_guard_no_user_apps">Ingen apps er installerede</string>
+    <string name="privacy_guard_filter_does_not_match">Ingen apps med relevante tilladelser er installerede</string>
+    <string name="privacy_guard_help_title">Hjælp</string>
+    <string name="privacy_guard_reset_title">Nulstil</string>
+    <string name="privacy_guard_help_text">På denne skærm kan du vælge, for hvilke apps, Privatlivsvagten skal være aktiv, ved blot at trykke på dem. Valgte apps vil ikke kunne tilgå dine personlige data, såsom kontakter, beskeder eller opkaldslister. At trykke længe på en app åbner app\'ens detaljeskærm.\n\nSom standard vises indbyggede apps ikke. Hvis du vil vise dem, eller filtrere apps, så kun dem, som ønsker adgang til personlige data via deres tilladelser, vises, vælg de respektive indstillinger i menuen.</string>
+    <string name="privacy_guard_manager_show_system_apps">Vis indbyggede apps</string>
+    <string name="privacy_guard_manager_filter_permissions">Tilladelsesfilter</string>
+    <string name="blacklist_title">Sortliste</string>
+    <string name="blacklist_edit_dialog_title">Redigér sortlistet nummer</string>
+    <string name="blacklist_prefs">Indstillinger</string>
+    <string name="blacklist_button_delete">Slet</string>
+    <string name="blacklist_empty_text">Du har ikke nogle sortlistede numre. Tilføj et nummer ved berøre knappen Tilføj (+).</string>
+    <string name="blacklist_disabled_empty_text">Aktivér sortlisten for at sortliste opkald og/eller beskeder fra bestemte numre.</string>
+    <string name="blacklist_summary_disabled">Deaktiveret</string>
+    <string name="blacklist_summary">Indgående opkald og beskeder fra telefonnumre i sortlisten vil blive blokeret</string>
+    <string name="blacklist_notify">Vis underretning</string>
+    <string name="blacklist_private_numbers_title">Private numre</string>
+    <string name="blacklist_private_numbers_summary_disabled">Blokér ikke opkald fra private numre</string>
+    <string name="blacklist_private_numbers_summary">Blokér indgående <xliff:g id="type">%s</xliff:g> fra private numre</string>
+    <string name="blacklist_unknown_numbers_title">Ukendte numre</string>
+    <string name="blacklist_unknown_numbers_summary_disabled">Blokér ikke opkald og beskeder fra numre, som ikke er i kontaktlisten</string>
+    <string name="blacklist_unknown_numbers_summary">Blokér indgående <xliff:g id="type">%s</xliff:g> fra numre, som ikke er i kontaktlisten</string>
+    <string name="blacklist_summary_type_calls_only">opkald</string>
+    <string name="blacklist_summary_type_messages_only">beskeder</string>
+    <string name="blacklist_summary_type_calls_and_messages">opkald og beskeder</string>
+    <string name="blacklist_regex_title">Brug wildcards</string>
+    <string name="blacklist_regex_summary">Brug . som et wildcard og * for gentagelse. Fx 123.* blokerer numre, der starter med 123, og .*123.* blokerer numre, som indeholder 123</string>
+    <string name="blacklist_policy_block_calls">Blokér indgående opkald</string>
+    <string name="blacklist_policy_block_messages">Blokér indgående beskeder</string>
+    <string name="add_blacklist_number">Tilføj nummer</string>
+    <string name="remove_blacklist_number_title">Fjern nummer</string>
+    <string name="remove_blacklist_entry">Vil du fjerne dette sortlistede nummer?</string>
+    <string name="select_contact">Vælg kontakt</string>
+    <string name="vibrator_intensity_title">Vibrator-intensitet</string>
+    <string name="vibrator_warning">Værdier højere end %1$d anbefales ikke</string>
+    <string name="color_calibration_title">Farvekalibrering</string>
+    <string name="color_calibration_summary">Kalibrér skærmfarver</string>
+    <string name="color_red_title">Rød</string>
+    <string name="color_green_title">Grøn</string>
+    <string name="color_blue_title">Blå</string>
+    <string name="key_backlight_title">Baggrundslys</string>
+    <string name="button_backlight_title">Lysstyrke for knappers baggrundslys</string>
+    <string name="keyboard_backlight_title">Lysstyrke for tastaturets baggrundslys</string>
+    <string name="category_gamma_title">Gamma</string>
+    <string name="gamma_tuning_title_head">Gamma-kalibrering</string>
+    <string name="gamma_tuning_summary_head">Finindstil gammaværdier</string>
+    <string name="more_device_controls_title">Mere\u2026</string>
+    <string name="more_device_settings_title">Andre enhedsindstillinger</string>
+    <string name="sensors_motors_title">Sensorer &amp; motorer</string>
+    <string name="display_calibration_title">Skærmkalibrering</string>
     <string name="intent_sender_data_label"><xliff:g id="data">Data:</xliff:g></string>
 </resources>
 
