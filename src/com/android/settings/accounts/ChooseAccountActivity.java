@@ -31,6 +31,7 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.util.Log;
+import android.view.MenuItem;
 import com.android.internal.util.CharSequences;
 import com.android.settings.R;
 import com.google.android.collect.Maps;
@@ -79,6 +80,8 @@ public class ChooseAccountActivity extends PreferenceActivity {
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+
         setContentView(R.layout.add_account_screen);
         addPreferencesFromResource(R.xml.add_account_settings);
         mAuthorities = getIntent().getStringArrayExtra(
@@ -93,6 +96,15 @@ public class ChooseAccountActivity extends PreferenceActivity {
         }
         mAddAccountGroup = getPreferenceScreen();
         updateAuthDescriptions();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return false;
     }
 
     /**
