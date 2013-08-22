@@ -15,9 +15,10 @@
 -->
 
 <PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/notification_drawer_title"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <!-- Notification drawer behaviour -->
     <ListPreference
         android:key="notification_drawer_collapse_on_dismiss"
         android:title="@string/notification_drawer_collapse_on_dismiss_title"
@@ -25,51 +26,30 @@
         android:entries="@array/notification_drawer_collapse_on_dismiss_entries"
         android:entryValues="@array/notification_drawer_collapse_on_dismiss_values" />
 
-    <!-- Notification drawer Power Widget -->
     <PreferenceCategory
-       android:title="@string/power_widget_title">
+        android:title="@string/category_quick_access" >
 
         <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
-            android:key="expanded_view_widget"
-            android:title="@string/title_expanded_widget"
+            android:key="qs_quick_access"
+            android:title="@string/title_quick_access"
             android:defaultValue="false" />
 
-        <PreferenceScreen
-            android:key="widget_picker"
-            android:title="@string/title_widget_picker"
-            android:summary="@string/summary_widget_picker"
-            android:dependency="expanded_view_widget"
-            android:fragment="com.android.settings.cyanogenmod.NotificationDrawer$PowerWidgetChooser">
-        </PreferenceScreen>
-
-        <PreferenceScreen
-            android:key="widget_order"
-            android:title="@string/title_widget_order"
-            android:summary="@string/summary_widget_order"
-            android:dependency="expanded_view_widget"
-            android:fragment="com.android.settings.cyanogenmod.NotificationDrawer$PowerWidgetOrder">
-        </PreferenceScreen>
-
         <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
-            android:key="expanded_hide_onchange"
-            android:title="@string/title_expanded_hide_onchange"
-            android:defaultValue="false"
-            android:dependency="expanded_view_widget" />
+            android:key="qs_quick_access_linked"
+            android:title="@string/title_quick_access_linked"
+            android:summary="@string/summary_quick_access_linked"
+            android:defaultValue="true"
+            android:dependency="qs_quick_access"
+            android:disableDependentsState="true" />
 
-        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
-            android:key="expanded_hide_scrollbar"
-            android:title="@string/title_expanded_hide_scrollbar"
-            android:defaultValue="false"
-            android:dependency="expanded_view_widget" />
-
-        <ListPreference
-            android:key="expanded_haptic_feedback"
-            android:dialogTitle="@string/expanded_haptic_feedback_title"
-            android:title="@string/expanded_haptic_feedback_title"
-            android:entries="@array/haptic_feedback_entries"
-            android:entryValues="@array/haptic_feedback_values"
-            android:dependency="expanded_view_widget" />
-
+        <PreferenceScreen
+            android:key="tile_picker"
+            android:title="@string/tile_picker_title"
+            android:summary="@string/tile_picker_summary"
+            android:dependency="qs_quick_access_linked"
+            android:fragment="com.android.settings.cyanogenmod.QuickSettingsTiles" >
+            <extra android:name="config_ribbon" android:value="true" />
+        </PreferenceScreen>
     </PreferenceCategory>
 
 </PreferenceScreen>
