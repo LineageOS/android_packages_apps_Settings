@@ -204,12 +204,14 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             prefScreen.removePreference(volumeCategory);
         }
 
-        if (ButtonBacklightBrightness.isSupported() || KeyboardBacklightBrightness.isSupported()) {
-            if (!ButtonBacklightBrightness.isSupported()) {
+        boolean hasButtonBacklight = ButtonBacklightBrightness.isSupported(getActivity());
+        boolean hasKeyboardBacklight = KeyboardBacklightBrightness.isSupported(getActivity());
+
+        if (hasButtonBacklight || hasKeyboardBacklight) {
+            if (!hasButtonBacklight) {
                 backlightCategory.removePreference(findPreference(KEY_BUTTON_BACKLIGHT));
             }
-
-            if (!KeyboardBacklightBrightness.isSupported()) {
+            if (!hasKeyboardBacklight) {
                 backlightCategory.removePreference(findPreference(KEY_KEYBOARD_BACKLIGHT));
             }
         } else {
