@@ -203,6 +203,11 @@ public class QuickSettingsUtil {
             removeTile(TILE_TORCH);
         }
 
+        // Don't show the Camera tile if the device has no cameras
+        if (!QSUtils.deviceSupportsCamera()) {
+            removeTile(TILE_CAMERA);
+        }
+
         sUnsupportedRemoved = true;
     }
 
