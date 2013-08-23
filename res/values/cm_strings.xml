@@ -961,12 +961,20 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="color_blue_title">Blue</string>
 
     <!-- Hardware tunables - Key backlight -->
-    <string name="key_backlight_title">Backlight</string>
-    <string name="button_backlight_title">Button backlight brightness</string>
-    <string name="keyboard_backlight_title">Keyboard backlight brightness</string>
-    <string name="button_backlight_enabled">Button backlight enabled</string>
-    <string name="keyboard_backlight_enabled">Keyboard backlight enabled</string>
+    <string name="button_backlight_title">Backlight</string>
+    <string name="button_backlight_enabled">Illuminate buttons</string>
+    <string name="keyboard_backlight_enabled">Illuminate keyboard</string>
+    <string name="button_backlight_seekbar_title">Button brightness</string>
+    <string name="keyboard_backlight_seekbar_title">Keyboard brightness</string>
     <string name="backlight_timeout_title">Illumination timeout</string>
+    <string name="backlight_timeout_unlimited">Don\'t turn off</string>
+    <plurals name="backlight_timeout_time">
+        <item quantity="one"><xliff:g id="seconds">%d</xliff:g> second</item>
+        <item quantity="other"><xliff:g id="seconds">%d</xliff:g> seconds</item>
+    </plurals>
+    <string name="backlight_summary_disabled">Disabled</string>
+    <string name="backlight_summary_enabled_with_timeout">Enabled for <xliff:g id="timeout">%s</xliff:g></string>
+    <string name="backlight_summary_enabled">Enabled</string>
 
     <!-- Hardware tunables - Gamma calibration -->
     <string name="category_gamma_title">Gamma</string>
