@@ -52,7 +52,7 @@ public class VibratorIntensity extends HWValueSliderPreference {
         }
         @Override
         public String getPreferenceName() {
-            return "vibrator_intensity";
+            return "vibration_intensity";
         }
     };
 
