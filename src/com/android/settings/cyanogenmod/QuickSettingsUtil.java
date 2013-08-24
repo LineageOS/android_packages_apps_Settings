@@ -169,13 +169,7 @@ public class QuickSettingsUtil {
         }
     }
 
-    private static boolean sUnsupportedRemoved = false;
-
     private static synchronized void removeUnsupportedTiles(Context context) {
-        if (sUnsupportedRemoved) {
-            return;
-        }
-
         // Don't show mobile data options if not supported
         if (!QSUtils.deviceSupportsMobileData(context)) {
             removeTile(TILE_MOBILEDATA);
@@ -207,8 +201,6 @@ public class QuickSettingsUtil {
         if (!QSUtils.deviceSupportsCamera()) {
             removeTile(TILE_CAMERA);
         }
-
-        sUnsupportedRemoved = true;
     }
 
     private static synchronized void refreshAvailableTiles(Context context) {
