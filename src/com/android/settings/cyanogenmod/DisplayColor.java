@@ -29,7 +29,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.util.Log;
 import android.widget.Button;
 
 import com.android.settings.R;
@@ -142,7 +141,6 @@ public class DisplayColor extends DialogPreference {
         final String value = prefs.getString("display_color_calibration", null);
 
         if (value != null) {
-            Log.d(TAG, "Restoring color values: " + value);
             DisplayColorCalibration.setColors(value);
         }
     }

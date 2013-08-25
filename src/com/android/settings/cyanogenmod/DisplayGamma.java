@@ -26,7 +26,6 @@ import android.preference.DialogPreference;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +53,7 @@ public class DisplayGamma extends DialogPreference {
     private String[][] mCurrentColors;
     private String[] mOriginalColors;
     private int mNumberOfControls;
+    private int mMin;
 
     public DisplayGamma(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -63,6 +63,7 @@ public class DisplayGamma extends DialogPreference {
         }
 
         mNumberOfControls = DisplayGammaCalibration.getNumberOfControls();
+        mMin = DisplayGammaCalibration.getMinValue();
 
         mSeekBars = new GammaSeekBar[mNumberOfControls][BAR_COLORS.length];
 
@@ -105,9 +106,8 @@ public class DisplayGamma extends DialogPreference {
                 ViewGroup item = (ViewGroup) inflater.inflate(
                         R.layout.display_gamma_calibration_item, container, false);
 
-                GammaSeekBar bar = new GammaSeekBar(index, color, item);
-                bar.setGamma(Integer.valueOf(mCurrentColors[index][color]));
-                mSeekBars[index][color] = bar;
+                mSeekBars[index][color] = new GammaSeekBar(index, color, item);
+                mSeekBars[index][color].setGamma(Integer.valueOf(mCurrentColors[index][color]));
                 // make sure to add the seekbar group to the container _after_
                 // creating GammaSeekBar, so that GammaSeekBar has a chance to
                 // get the correct subviews without getting confused by duplicate IDs
@@ -128,7 +128,6 @@ public class DisplayGamma extends DialogPreference {
             @Override
             public void onClick(View v) {
                 for (int index = 0; index < mSeekBars.length; index++) {
-                    final GammaSeekBar[] bars = mSeekBars[index];
                     final SharedPreferences prefs = getSharedPreferences();
                     final String defaultKey = "display_gamma_default_" + index;
                     // this key is guaranteed to be present, as we have
@@ -205,25 +204,24 @@ public class DisplayGamma extends DialogPreference {
                 label.setText(color + " " + (controlIndex + 1));
             }
 
-            int min = DisplayGammaCalibration.getMinValue();
-            mSeekBar.setMax(DisplayGammaCalibration.getMaxValue());
-            mSeekBar.setProgress(min);
-            mValue.setText(String.valueOf(min));
+            mSeekBar.setMax(DisplayGammaCalibration.getMaxValue() - mMin);
+            mSeekBar.setProgress(0);
+            mValue.setText(String.valueOf(mSeekBar.getProgress() + mMin));
 
             // this must be done last, we don't want to apply our initial value to the hardware
             mSeekBar.setOnSeekBarChangeListener(this);
         }
 
         public void setGamma(int gamma) {
-            mSeekBar.setProgress(gamma);
+            mSeekBar.setProgress(gamma - mMin);
         }
 
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-            mCurrentColors[mControlIndex][mColorIndex] = String.valueOf(progress);
+            mCurrentColors[mControlIndex][mColorIndex] = String.valueOf(progress + mMin);
             DisplayGammaCalibration.setGamma(mControlIndex,
                     TextUtils.join(" ", mCurrentColors[mControlIndex]));
-            mValue.setText(String.valueOf(progress));
+            mValue.setText(String.valueOf(progress + mMin));
         }
 
         @Override
