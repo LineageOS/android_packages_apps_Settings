@@ -293,6 +293,9 @@ public class LockscreenTargets extends Fragment implements
             if (!TextUtils.equals(uri, GlowPadView.EMPTY_TARGET)) {
                 try {
                     Intent intent = Intent.parseUri(info.uri, 0);
+                    // make sure to remove any outdated icon references
+                    intent.removeExtra(GlowPadView.ICON_RESOURCE);
+                    intent.removeExtra(GlowPadView.ICON_FILE);
                     if (info.iconType != null) {
                         intent.putExtra(info.iconType, info.iconSource);
                     }
