@@ -18,7 +18,6 @@ package com.android.settings.cyanogenmod;
 
 import android.content.Context;
 import android.preference.CheckBoxPreference;
-import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.util.AttributeSet;
 
@@ -61,6 +60,8 @@ public class SystemSettingCheckBoxPreference extends CheckBoxPreference {
 
     @Override
     protected boolean isPersisted() {
-        return true;
+        // Using getString instead of getInt so we can simply check for null
+        // instead of catching an exception. (All values are stored as strings.)
+        return Settings.System.getString(getContext().getContentResolver(), getKey()) != null;
     }
 }
