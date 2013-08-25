@@ -22,6 +22,7 @@ import android.os.Message;
 import android.os.SystemProperties;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
@@ -131,6 +132,8 @@ public class SettingsLicenseActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+
         String fileName = SystemProperties.get(PROPERTY_LICENSE_PATH, DEFAULT_LICENSE_PATH);
         if (TextUtils.isEmpty(fileName)) {
             Log.e(TAG, "The system property for the license file is empty.");
@@ -180,6 +183,15 @@ public class SettingsLicenseActivity extends Activity {
             mSpinnerDlg.dismiss();
         }
         super.onDestroy();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return false;
     }
 
     private void showPageOfText(String text) {
