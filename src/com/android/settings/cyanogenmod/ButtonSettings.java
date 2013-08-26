@@ -28,8 +28,6 @@ import android.provider.Settings;
 import android.widget.Toast;
 
 import com.android.settings.R;
-import com.android.settings.cyanogenmod.ButtonBacklightBrightness;
-import com.android.settings.cyanogenmod.KeyboardBacklightBrightness;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
@@ -44,7 +42,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private static final String KEY_APP_SWITCH_PRESS = "hardware_keys_app_switch_press";
     private static final String KEY_APP_SWITCH_LONG_PRESS = "hardware_keys_app_switch_long_press";
     private static final String KEY_BUTTON_BACKLIGHT = "button_backlight";
-    private static final String KEY_KEYBOARD_BACKLIGHT = "keyboard_backlight";
 
     private static final String CATEGORY_HOME = "home_key";
     private static final String CATEGORY_MENU = "menu_key";
@@ -109,8 +106,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                 (PreferenceCategory) prefScreen.findPreference(CATEGORY_APPSWITCH);
         final PreferenceCategory volumeCategory =
                 (PreferenceCategory) prefScreen.findPreference(CATEGORY_VOLUME);
-        final PreferenceCategory backlightCategory =
-                (PreferenceCategory) prefScreen.findPreference(CATEGORY_BACKLIGHT);
 
         if (hasHomeKey) {
             if (!res.getBoolean(R.bool.config_show_homeWake)) {
@@ -209,16 +204,10 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             prefScreen.removePreference(volumeCategory);
         }
 
-        if (ButtonBacklightBrightness.isSupported() || KeyboardBacklightBrightness.isSupported()) {
-            if (!ButtonBacklightBrightness.isSupported()) {
-                backlightCategory.removePreference(findPreference(KEY_BUTTON_BACKLIGHT));
-            }
-
-            if (!KeyboardBacklightBrightness.isSupported()) {
-                backlightCategory.removePreference(findPreference(KEY_KEYBOARD_BACKLIGHT));
-            }
-        } else {
-            prefScreen.removePreference(backlightCategory);
+        final ButtonBacklightBrightness backlight =
+                (ButtonBacklightBrightness) findPreference(KEY_BUTTON_BACKLIGHT);
+        if (!backlight.isButtonSupported() && !backlight.isKeyboardSupported()) {
+            prefScreen.removePreference(backlight);
         }
     }
 
