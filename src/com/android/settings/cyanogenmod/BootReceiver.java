@@ -71,8 +71,6 @@ public class BootReceiver extends BroadcastReceiver {
         DisplayColor.restore(ctx);
         DisplayGamma.restore(ctx);
         VibratorIntensity.restore(ctx);
-        ButtonBacklightBrightness.restore(ctx);
-        KeyboardBacklightBrightness.restore(ctx);
         DisplaySettings.restore(ctx);
     }
 
