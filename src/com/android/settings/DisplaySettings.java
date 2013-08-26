@@ -166,7 +166,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
 
         mAdaptiveBacklight = (CheckBoxPreference) findPreference(KEY_ADAPTIVE_BACKLIGHT);
-        if (!AdaptiveBacklight.isSupported()) {
+        if (!isAdaptiveBacklightSupported()) {
             getPreferenceScreen().removePreference(mAdaptiveBacklight);
             mAdaptiveBacklight = null;
         }
@@ -530,7 +530,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
      * @param ctx A valid context
      */
     public static void restore(Context ctx) {
-        if (AdaptiveBacklight.isSupported()) {
+        if (isAdaptiveBacklightSupported()) {
             final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
             final boolean enabled = prefs.getBoolean(KEY_ADAPTIVE_BACKLIGHT, true);
             if (!AdaptiveBacklight.setEnabled(enabled)) {
@@ -538,6 +538,15 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             } else {
                 Log.d(TAG, "Adaptive backlight settings restored.");
             }
+        }
+    }
+
+    private static boolean isAdaptiveBacklightSupported() {
+        try {
+            return AdaptiveBacklight.isSupported();
+        } catch (NoClassDefFoundError e) {
+            // Hardware abstraction framework not installed
+            return false;
         }
     }
 }
