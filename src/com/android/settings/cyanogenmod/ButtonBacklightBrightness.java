@@ -20,8 +20,6 @@ import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.preference.DialogPreference;
 import android.preference.PreferenceManager;
@@ -43,14 +41,16 @@ public class ButtonBacklightBrightness extends DialogPreference implements SeekB
                                                                 CheckBox.OnCheckedChangeListener {
     private static final String TAG = "ButtonBacklight";
 
+    private static final int DEFAULT_BUTTON_TIMEOUT = 5;
+
     private SeekBar mSeekBar;
     private CheckBox mCheckBox;
     private TextView mValue;
     private TextView mWarning;
-    private int mOriginalValue;
 
-    private Drawable mProgressDrawable;
-    private Drawable mProgressThumb;
+    private SeekBar mTimeoutBar;
+    private TextView mTimeoutValue;
+
     private static boolean mIsSupported;
     private static ContentResolver mResolver;
     private boolean mIsSingleValue;
@@ -85,8 +85,12 @@ public class ButtonBacklightBrightness extends DialogPreference implements SeekB
     @Override
     protected void onBindDialogView(View view) {
         super.onBindDialogView(view);
-        // Read the current value in case user wants to dismiss his changes
-        mOriginalValue = getBacklightValue();
+
+        mTimeoutBar = (SeekBar) view.findViewById(R.id.timeout_seekbar);
+        mTimeoutValue = (TextView) view.findViewById(R.id.timeout_value);
+        mTimeoutBar.setMax(30);
+        mTimeoutBar.setOnSeekBarChangeListener(this);
+        mTimeoutBar.setProgress(getBacklightTimeout());
 
         if (mIsSingleValue) {
             view.findViewById(R.id.seekbar_container).setVisibility(View.GONE);
@@ -98,17 +102,9 @@ public class ButtonBacklightBrightness extends DialogPreference implements SeekB
             mSeekBar = (SeekBar) view.findViewById(com.android.internal.R.id.seekbar);
             mValue = (TextView) view.findViewById(R.id.value);
 
-            Drawable progressDrawable = mSeekBar.getProgressDrawable();
-            if (progressDrawable instanceof LayerDrawable) {
-                LayerDrawable ld = (LayerDrawable) progressDrawable;
-                mProgressDrawable = ld.findDrawableByLayerId(android.R.id.progress);
-            }
-            mProgressThumb = mSeekBar.getThumb();
-
-
             mSeekBar.setMax(255);
             mSeekBar.setOnSeekBarChangeListener(this);
-            mSeekBar.setProgress(mOriginalValue);
+            mSeekBar.setProgress(getBacklightValue());
         }
     }
 
@@ -123,6 +119,7 @@ public class ButtonBacklightBrightness extends DialogPreference implements SeekB
         defaultsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mTimeoutBar.setProgress(DEFAULT_BUTTON_TIMEOUT);
                 if (mIsSingleValue) {
                     mCheckBox.setChecked(true);
                 } else {
@@ -137,9 +134,11 @@ public class ButtonBacklightBrightness extends DialogPreference implements SeekB
         super.onDialogClosed(positiveResult);
 
         if (positiveResult) {
+            putTimeoutValue(mTimeoutBar.getProgress());
             putBacklightValue(mIsSingleValue ?
                        (mCheckBox.isChecked() ? 255 : 0) : mSeekBar.getProgress());
         } else {
+            putTimeoutValue(DEFAULT_BUTTON_TIMEOUT);
             putBacklightValue(255);
         }
     }
@@ -160,11 +159,29 @@ public class ButtonBacklightBrightness extends DialogPreference implements SeekB
                          UserHandle.USER_CURRENT);
     }
 
+    public static int getBacklightTimeout() {
+        return Settings.System.getIntForUser(mResolver,
+                         Settings.System.BUTTON_BACKLIGHT_TIMEOUT, (DEFAULT_BUTTON_TIMEOUT * 1000),
+                         UserHandle.USER_CURRENT) / 1000;
+    }
+
+    public static void putTimeoutValue(int value) {
+        int timeout = value * 1000;
+        Settings.System.putIntForUser(mResolver,
+                         Settings.System.BUTTON_BACKLIGHT_TIMEOUT, timeout,
+                         UserHandle.USER_CURRENT);
+    }
+
     /* Behaviors when it's a seekbar */
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-        putBacklightValue(progress);
-        mValue.setText(String.format("%d%%", (int)((progress * 100) / 255)));
+        if (mTimeoutBar != null && seekBar == mTimeoutBar) {
+            putTimeoutValue(progress);
+            mTimeoutValue.setText(String.format("%d", progress));
+        } else {
+            putBacklightValue(progress);
+            mValue.setText(String.format("%d%%", (int)((progress * 100) / 255)));
+        }
     }
 
     @Override
