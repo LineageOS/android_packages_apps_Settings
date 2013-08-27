@@ -442,10 +442,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         // report the current size in the summary text
         final Resources res = getResources();
         String fontDesc = FontDialogPreference.getFontSizeDescription(res, mCurConfig.fontScale);
-        int scalePercent = (int) (100.0f * mCurConfig.fontScale);
-
-        pref.setSummary(String.format(res.getString(R.string.summary_font_size),
-                fontDesc, scalePercent));
+        pref.setSummary(getString(R.string.summary_font_size, fontDesc));
     }
 
     public void writeFontSizePreference(Object objValue) {

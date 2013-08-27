@@ -18,23 +18,37 @@
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="12dip"
-        android:paddingTop="12dip" >
+        android:padding="12dp">
 
-        <TextView android:id="@+id/value"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:textAppearance="?android:textAppearanceLarge" />
+        <!-- Static height enough to accommodate the text views in their biggest possible size,
+        without having the dialog resize itself at any point. -->
+        <LinearLayout android:id="@+id/container"
+                 android:orientation="vertical"
+                 android:layout_width="match_parent"
+                 android:layout_height="64dp"
+                 android:gravity="center_horizontal|center_vertical">
+
+                <TextView android:id="@+id/description"
+                        android:text="@string/font_size_sample"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:textAppearanceLarge" />
+
+                <TextView android:id="@+id/percentage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:textAppearanceSmall" />
+
+        </LinearLayout>
 
         <com.android.settings.IntervalSeekBar android:id="@+id/font_size"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/value"
+                android:padding="8dp"
+                android:layout_below="@+id/container"
                 settings:min="0.85"
                 settings:max="1.30"
                 settings:defaultValue="1.00"
-                settings:digits="2"
-                android:padding="20dip"
-                android:paddingTop="5dip" />
+                settings:digits="2" />
+
 </RelativeLayout>
