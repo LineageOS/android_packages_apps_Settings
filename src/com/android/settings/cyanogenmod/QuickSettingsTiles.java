@@ -58,7 +58,7 @@ public class QuickSettingsTiles extends Fragment {
     private LayoutInflater mInflater;
     private Resources mSystemUiResources;
     private TileAdapter mTileAdapter;
-    private boolean mConfigRibbon = false;
+    private static boolean mConfigRibbon;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -311,6 +311,13 @@ public class QuickSettingsTiles extends Fragment {
         }
 
         @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View v = super.getView(position, convertView, parent);
+            v.setEnabled(isEnabled(position));
+            return v;
+        }
+
+        @Override
         public int getCount() {
             return QuickSettingsUtil.TILES.size();
         }
@@ -322,6 +329,13 @@ public class QuickSettingsTiles extends Fragment {
 
         public String getTileId(int position) {
             return mTiles[position].tile.getId();
+        }
+
+        @Override
+        public boolean isEnabled(int position) {
+            String usedTiles = QuickSettingsUtil.getCurrentTiles(
+                    getContext(), mConfigRibbon);
+            return !(usedTiles.contains(mTiles[position].tile.getId()));
         }
     }
 
