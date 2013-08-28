@@ -58,7 +58,7 @@ public class QuickSettingsTiles extends Fragment {
     private LayoutInflater mInflater;
     private Resources mSystemUiResources;
     private TileAdapter mTileAdapter;
-    private static boolean mConfigRibbon;
+    private boolean mConfigRibbon;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -100,7 +100,7 @@ public class QuickSettingsTiles extends Fragment {
         if (columnCount != 0) {
             mDragView.setColumnCount(columnCount);
         }
-        mTileAdapter = new TileAdapter(getActivity());
+        mTileAdapter = new TileAdapter(getActivity(), mConfigRibbon);
         return mDragView;
     }
 
@@ -283,10 +283,12 @@ public class QuickSettingsTiles extends Fragment {
         }
 
         private Entry[] mTiles;
+        private boolean mIsRibbon;
 
-        public TileAdapter(Context context) {
+        public TileAdapter(Context context, boolean isRibbon) {
             super(context, android.R.layout.simple_list_item_1);
             mTiles = new Entry[getCount()];
+            mIsRibbon = isRibbon;
             loadItems(context.getResources());
             sortItems();
         }
@@ -334,7 +336,7 @@ public class QuickSettingsTiles extends Fragment {
         @Override
         public boolean isEnabled(int position) {
             String usedTiles = QuickSettingsUtil.getCurrentTiles(
-                    getContext(), mConfigRibbon);
+                    getContext(), mIsRibbon);
             return !(usedTiles.contains(mTiles[position].tile.getId()));
         }
     }
