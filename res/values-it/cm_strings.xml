@@ -421,6 +421,7 @@
     <string name="adb_notify">Notifica debug USB</string>
     <string name="adb_notify_summary">Visualizza una notifica quando il debug USB è collegato</string>
     <string name="development_tools_title">Esegui dev. tools</string>
+    <string name="allow_mock_sms">Consenti SMS finti</string>
     <string name="usb_mass_storage_title">Memoria di massa</string>
     <string name="usb_mass_storage_summary">Attiva la memoria di massa USB</string>
     <string name="storage_rescan_media">Riesegui la scansione dei media sulla memoria di massa</string>
@@ -439,7 +440,7 @@
     <string name="lockscreen_buttons_previous">Brano precedente</string>
     <string name="lockscreen_buttons_playpause">Riproduci/Pausa</string>
     <string name="lockscreen_buttons_toggle_sound">Suono On/Off</string>
-    <string name="quick_settings_panel_title">Pannello Impostazioni veloci</string>
+    <string name="quick_settings_panel_title">Pannello Impostazioni rapide</string>
     <string name="title_static_tiles">Tile statici</string>
     <string name="tile_picker_title">Tile e disposizione</string>
     <string name="tile_picker_summary">Guarda, scegli o cambia la disposizione dei tile mostrati</string>
@@ -479,8 +480,8 @@
     <string name="title_dynamic_usbtether">Tether USB</string>
     <string name="title_dynamic_wifi">Visualizza Wi-Fi</string>
     <string name="title_general">Generale</string>
-    <string name="title_quick_pulldown">Impostazioni veloci</string>
-    <string name="summary_quick_pulldown">Il bordo laterale %1$s della barra di stato mostra le Impostazioni veloci</string>
+    <string name="title_quick_pulldown">Impostazioni rapide</string>
+    <string name="summary_quick_pulldown">Il bordo laterale %1$s della barra di stato mostra le Impostazioni rapide</string>
     <string name="quick_pulldown_summary_left">sinistro</string>
     <string name="quick_pulldown_summary_right">destro</string>
     <string name="quick_pulldown_off">Disattivato</string>
@@ -695,10 +696,28 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' cancella la riga selezionata
     <string name="color_red_title">Rosso</string>
     <string name="color_green_title">Verde</string>
     <string name="color_blue_title">Blu</string>
+    <string name="button_backlight_title">Retroilluminazione</string>
+    <string name="button_backlight_enabled">Illumina pulsanti</string>
+    <string name="keyboard_backlight_enabled">Illumina tastiera</string>
+    <string name="button_backlight_seekbar_title">Luminosità pulsanti</string>
+    <string name="keyboard_backlight_seekbar_title">Luminosità tastiera</string>
+    <string name="backlight_timeout_title">Timeout illuminazione</string>
+    <string name="backlight_timeout_unlimited">Non spegnere</string>
+    <plurals name="backlight_timeout_time">
+        <item quantity="one"><xliff:g id="seconds">%d</xliff:g> secondo</item>
+        <item quantity="other"><xliff:g id="seconds">%d</xliff:g> secondi</item>
+    </plurals>
+    <string name="backlight_summary_disabled">Disattivata</string>
+    <string name="backlight_summary_enabled_with_timeout">Attiva per <xliff:g id="timeout">%s</xliff:g></string>
+    <string name="backlight_summary_enabled">Attivata</string>
     <string name="gamma_tuning_title_head">Calibrazione gamma</string>
     <string name="gamma_tuning_summary_head">Modifica valori gamma</string>
     <string name="more_device_controls_title">Altro\u2026</string>
     <string name="more_device_settings_title">Altre opzioni del dispositivo</string>
     <string name="sensors_motors_title">Sensori &amp; Motori</string>
     <string name="display_calibration_title">Calibrazione display</string>
+    <string name="category_quick_access">Barra accesso rapido</string>
+    <string name="title_quick_access">Mostra nel drawer</string>
+    <string name="title_quick_access_linked">Disposizione collegata</string>
+    <string name="summary_quick_access_linked">Utilizza gli stessi tile e lo stesso layout del pannello Impostazioni rapide</string>
 </resources>
