@@ -21,12 +21,13 @@ import android.widget.TextView;
 public class FontDialogPreference extends DialogPreference
     implements SeekBar.OnSeekBarChangeListener {
 
-    private TextView mValueText;
+    private TextView mDescriptionText;
+    private TextView mPercentageText;
     private IntervalSeekBar mSeekBar;
 
-    // These are used for adjusting the global font size
     private DisplayMetrics mDisplayMetrics;
-    private TypedValue mTextSizeTyped;
+    private int mLargeTextSp;
+    private int mSmallTextSp;
 
     public FontDialogPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -36,15 +37,8 @@ public class FontDialogPreference extends DialogPreference
 
         initDisplayMetrics();
 
-        mTextSizeTyped = new TypedValue();
-        TypedArray styledAttributes =
-            getContext().obtainStyledAttributes(android.R.styleable.TextView);
-        styledAttributes.getValue(android.R.styleable.TextView_textSize,
-                mTextSizeTyped);
-
         setDialogLayoutResource(R.layout.preference_dialog_fontsize);
-
-        styledAttributes.recycle();
+        setDialogTitle(null); // Hide the title bar
     }
 
     @Override
@@ -53,7 +47,12 @@ public class FontDialogPreference extends DialogPreference
                 (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.preference_dialog_fontsize, null);
 
-        mValueText = (TextView) view.findViewById(R.id.value);
+        mDescriptionText = (TextView) view.findViewById(R.id.description);
+        mPercentageText = (TextView) view.findViewById(R.id.percentage);
+
+        // Calculate original sp sizes for the text views
+        mLargeTextSp = Math.round(mDescriptionText.getTextSize() / mDisplayMetrics.scaledDensity);
+        mSmallTextSp = Math.round(mPercentageText.getTextSize() / mDisplayMetrics.scaledDensity);
 
         mSeekBar = (IntervalSeekBar) view.findViewById(R.id.font_size);
 
@@ -90,8 +89,6 @@ public class FontDialogPreference extends DialogPreference
                 // so using persistFloat raises a ClassCastException
                 persistString(Float.toString(mSeekBar.getProgressFloat()));
             }
-
-            updateFontScale();
         }
     }
 
@@ -102,17 +99,6 @@ public class FontDialogPreference extends DialogPreference
 
     public void click() {
         super.onClick();
-    }
-
-    /**
-     * Update the global default font size based on the value of the SeekBar
-     */
-    private void updateFontScale() {
-        mDisplayMetrics.scaledDensity = mDisplayMetrics.density *
-                mSeekBar.getProgressFloat();
-
-        float size = mTextSizeTyped.getDimension(mDisplayMetrics);
-        mValueText.setTextSize(TypedValue.COMPLEX_UNIT_PX, size);
     }
 
     /**
@@ -140,11 +126,18 @@ public class FontDialogPreference extends DialogPreference
      * Set the TextView indicating the font scaling
      */
     private void setPrompt(float fontScaling) {
-        Resources r = getContext().getResources();
-        String template = r.getString(R.string.summary_font_size);
-        String fontDesc = getFontSizeDescription(r, fontScaling);
-        int scaling = Math.round(fontScaling * 100);
-        mValueText.setText(String.format(template, fontDesc, scaling));
+        // Update the preview text
+        String percentage = Math.round(fontScaling * 100) + "%";
+        mPercentageText.setText(percentage);
+
+        // Update the preview sizes
+        mDisplayMetrics.scaledDensity = mDisplayMetrics.density * fontScaling;
+        float largeSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, mLargeTextSp,
+                mDisplayMetrics);
+        float smallSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, mSmallTextSp,
+                mDisplayMetrics);
+        mDescriptionText.setTextSize(TypedValue.COMPLEX_UNIT_PX, largeSize);
+        mPercentageText.setTextSize(TypedValue.COMPLEX_UNIT_PX, smallSize);
     }
 
     @Override
