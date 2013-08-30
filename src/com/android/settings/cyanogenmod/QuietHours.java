@@ -17,8 +17,10 @@
 package com.android.settings.cyanogenmod;
 
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
@@ -31,7 +33,6 @@ public class QuietHours extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener  {
 
     private static final String TAG = "QuietHours";
-    private static final String KEY_QUIET_HOURS_NOTE = "quiet_hours_note";
     private static final String KEY_QUIET_HOURS_TIMERANGE = "quiet_hours_timerange";
 
     private TimeRangePreference mQuietHoursTimeRange;
@@ -41,20 +42,12 @@ public class QuietHours extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.quiet_hours_settings);
-
-        ContentResolver resolver = getContentResolver();
-        PreferenceScreen prefSet = getPreferenceScreen();
         Resources res = getResources();
+        ContentResolver resolver = getContentResolver();
 
         // Load the preferences
         mQuietHoursTimeRange =
-            (TimeRangePreference) prefSet.findPreference(KEY_QUIET_HOURS_TIMERANGE);
-
-        // Remove the "Incoming calls behaviour" note
-        // if the device does not support phone calls
-        if (!res.getBoolean(com.android.internal.R.bool.config_voice_capable)) {
-            getPreferenceScreen().removePreference(findPreference(KEY_QUIET_HOURS_NOTE));
-        }
+                (TimeRangePreference) findPreference(KEY_QUIET_HOURS_TIMERANGE);
 
         // Set the preference state and listeners where applicable
         mQuietHoursTimeRange.setTimeRange(
@@ -64,7 +57,14 @@ public class QuietHours extends SettingsPreferenceFragment implements
 
         // Remove the notification light setting if the device does not support it
         if (!res.getBoolean(com.android.internal.R.bool.config_intrusiveNotificationLed)) {
-            prefSet.removePreference(findPreference(Settings.System.QUIET_HOURS_DIM));
+            removePreference(Settings.System.QUIET_HOURS_DIM);
+        }
+
+        // Remove the vibrator dependent settings if the device does not have a vibrator
+        Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        if (vibrator == null || !vibrator.hasVibrator()) {
+               removePreference(Settings.System.QUIET_HOURS_STILL);
+               removePreference(Settings.System.QUIET_HOURS_HAPTIC);
         }
     }
 
