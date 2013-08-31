@@ -114,6 +114,31 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
         mDefaultLedOff = resources.getInteger(
                 com.android.internal.R.integer.config_defaultNotificationLedOff);
 
+        mEnabledPref = (CheckBoxPreference)
+                findPreference(Settings.System.NOTIFICATION_LIGHT_PULSE);
+        mEnabledPref.setOnPreferenceChangeListener(this);
+        mCustomEnabledPref = (CheckBoxPreference)
+                findPreference(Settings.System.NOTIFICATION_LIGHT_PULSE_CUSTOM_ENABLE);
+        mCustomEnabledPref.setOnPreferenceChangeListener(this);
+
+        mDefaultPref = (ApplicationLightPreference) findPreference(DEFAULT_PREF);
+        mDefaultPref.setOnPreferenceChangeListener(this);
+
+        // Missed call and Voicemail preferences should only show on devices with a voice capabilities
+        TelephonyManager tm = (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
+        if (tm.getPhoneType() == TelephonyManager.PHONE_TYPE_NONE) {
+            removePreference("phone_list");
+        } else {
+            mCallPref = (ApplicationLightPreference) findPreference(MISSED_CALL_PREF);
+            mCallPref.setOnPreferenceChangeListener(this);
+
+            mVoicemailPref = (ApplicationLightPreference) findPreference(VOICEMAIL_PREF);
+            mVoicemailPref.setOnPreferenceChangeListener(this);
+        }
+
+        mApplicationPrefList = (PreferenceGroup) findPreference("applications_list");
+        mApplicationPrefList.setOrderingAsAdded(false);
+
         // Get launch-able applications
         mPackageManager = getPackageManager();
         mPackageAdapter = new PackageAdapter();
@@ -134,47 +159,39 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
 
     private void refreshDefault() {
         ContentResolver resolver = getContentResolver();
-        int color = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_DEFAULT_COLOR, mDefaultColor);
-        int timeOn = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_ON, mDefaultLedOn);
-        int timeOff = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_OFF, mDefaultLedOff);
+        int color = Settings.System.getInt(resolver,
+                NOTIFICATION_LIGHT_PULSE_DEFAULT_COLOR, mDefaultColor);
+        int timeOn = Settings.System.getInt(resolver,
+                NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_ON, mDefaultLedOn);
+        int timeOff = Settings.System.getInt(resolver,
+                NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_OFF, mDefaultLedOff);
+
+        mDefaultPref.setAllValues(color, timeOn, timeOff);
 
         // Get Missed call and Voicemail values
-        int callColor = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_CALL_COLOR, mDefaultColor);
-        int callTimeOn = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_CALL_LED_ON, mDefaultLedOn);
-        int callTimeOff = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_CALL_LED_OFF, mDefaultLedOff);
-        int vmailColor = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_VMAIL_COLOR, mDefaultColor);
-        int vmailTimeOn = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_VMAIL_LED_ON, mDefaultLedOn);
-        int vmailTimeOff = Settings.System.getInt(resolver, NOTIFICATION_LIGHT_PULSE_VMAIL_LED_OFF, mDefaultLedOff);
+        if (mCallPref != null) {
+            int callColor = Settings.System.getInt(resolver,
+                    NOTIFICATION_LIGHT_PULSE_CALL_COLOR, mDefaultColor);
+            int callTimeOn = Settings.System.getInt(resolver,
+                    NOTIFICATION_LIGHT_PULSE_CALL_LED_ON, mDefaultLedOn);
+            int callTimeOff = Settings.System.getInt(resolver,
+                    NOTIFICATION_LIGHT_PULSE_CALL_LED_OFF, mDefaultLedOff);
 
-        PreferenceScreen prefSet = getPreferenceScreen();
-
-        mEnabledPref = (CheckBoxPreference)
-                findPreference(Settings.System.NOTIFICATION_LIGHT_PULSE);
-        mEnabledPref.setOnPreferenceChangeListener(this);
-        mCustomEnabledPref = (CheckBoxPreference)
-                findPreference(Settings.System.NOTIFICATION_LIGHT_PULSE_CUSTOM_ENABLE);
-        mCustomEnabledPref.setOnPreferenceChangeListener(this);
-
-        // Default preference
-        mDefaultPref = (ApplicationLightPreference) prefSet.findPreference(DEFAULT_PREF);
-        mDefaultPref.setAllValues(color, timeOn, timeOff);
-        mDefaultPref.setOnPreferenceChangeListener(this);
-
-        // Missed call and Voicemail preferences should only show on devices with a voice capabilities
-        TelephonyManager tm = (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
-        if (tm.getPhoneType() == TelephonyManager.PHONE_TYPE_NONE) {
-            prefSet.removePreference(findPreference("phone_list"));
-        } else {
-            mCallPref = (ApplicationLightPreference) prefSet.findPreference(MISSED_CALL_PREF);
             mCallPref.setAllValues(callColor, callTimeOn, callTimeOff);
-            mCallPref.setOnPreferenceChangeListener(this);
-
-            mVoicemailPref = (ApplicationLightPreference) prefSet.findPreference(VOICEMAIL_PREF);
-            mVoicemailPref.setAllValues(vmailColor, vmailTimeOn, vmailTimeOff);
-            mVoicemailPref.setOnPreferenceChangeListener(this);
         }
 
-        mApplicationPrefList = (PreferenceGroup) prefSet.findPreference("applications_list");
+        if (mVoicemailPref != null) {
+            int vmailColor = Settings.System.getInt(resolver,
+                    NOTIFICATION_LIGHT_PULSE_VMAIL_COLOR, mDefaultColor);
+            int vmailTimeOn = Settings.System.getInt(resolver,
+                    NOTIFICATION_LIGHT_PULSE_VMAIL_LED_ON, mDefaultLedOn);
+            int vmailTimeOff = Settings.System.getInt(resolver,
+                    NOTIFICATION_LIGHT_PULSE_VMAIL_LED_OFF, mDefaultLedOff);
+
+            mVoicemailPref.setAllValues(vmailColor, vmailTimeOn, vmailTimeOff);
+        }
+
+        mApplicationPrefList = (PreferenceGroup) findPreference("applications_list");
         mApplicationPrefList.setOrderingAsAdded(false);
     }
 
