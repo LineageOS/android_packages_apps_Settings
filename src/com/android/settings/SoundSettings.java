@@ -432,7 +432,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
                     Bundle extras = ps.getExtras();
                     extras.putBoolean("checked",
                             Settings.Global.getInt(getContentResolver(),
-                                    Settings.Global.DOCK_AUDIO_MEDIA_ENABLED, 0) == 1);
+                                    Settings.Global.DOCK_AUDIO_MEDIA_ENABLED, 1) == 1);
                     super.onPreferenceTreeClick(ps, ps);
                 }
             }
@@ -561,14 +561,14 @@ public class SoundSettings extends SettingsPreferenceFragment implements
                         if (Settings.Global.getInt(resolver,
                                 Settings.Global.DOCK_AUDIO_MEDIA_ENABLED, -1) == -1) {
                             Settings.Global.putInt(resolver,
-                                    Settings.Global.DOCK_AUDIO_MEDIA_ENABLED, 0);
+                                    Settings.Global.DOCK_AUDIO_MEDIA_ENABLED, 1);
                         }
                         mDockAudioMediaEnabled =
                                 (CheckBoxPreference) findPreference(KEY_DOCK_AUDIO_MEDIA_ENABLED);
                         mDockAudioMediaEnabled.setPersistent(false);
                         mDockAudioMediaEnabled.setChecked(
                                 Settings.Global.getInt(resolver,
-                                        Settings.Global.DOCK_AUDIO_MEDIA_ENABLED, 0) != 0);
+                                        Settings.Global.DOCK_AUDIO_MEDIA_ENABLED, 1) != 0);
                     } else {
                         mDockAudioSettings.setEnabled(false);
                     }
