@@ -62,7 +62,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private static final int LOCKSCREEN_BACKGROUND_CUSTOM_IMAGE = 1;
     private static final int LOCKSCREEN_BACKGROUND_DEFAULT_WALLPAPER = 2;
 
-    private static final String KEY_ALWAYS_BATTERY = "lockscreen_battery_status";
+    private static final String KEY_BATTERY_STATUS = "lockscreen_battery_status";
     private static final String KEY_LOCKSCREEN_BUTTONS = "lockscreen_buttons";
     private static final String KEY_LOCK_CLOCK = "lock_clock";
     private static final String KEY_BACKGROUND = "lockscreen_background";
@@ -100,7 +100,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         mIsPrimary = UserHandle.myUserId() == UserHandle.USER_OWNER;
         if (mIsPrimary) {
             // Its the primary user, show all the settings
-            mBatteryStatus = (ListPreference) findPreference(KEY_ALWAYS_BATTERY);
+            mBatteryStatus = (ListPreference) findPreference(KEY_BATTERY_STATUS);
             if (mBatteryStatus != null) {
                 mBatteryStatus.setOnPreferenceChangeListener(this);
             }
@@ -119,7 +119,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             generalCategory.removePreference(findPreference(KEY_SCREEN_SECURITY));
             widgetsCategory.removePreference(
                     findPreference(Settings.System.LOCKSCREEN_MAXIMIZE_WIDGETS));
-            generalCategory.removePreference(findPreference(KEY_ALWAYS_BATTERY));
+            generalCategory.removePreference(findPreference(KEY_BATTERY_STATUS));
             generalCategory.removePreference(findPreference(KEY_LOCKSCREEN_BUTTONS));
         }
 
@@ -172,14 +172,12 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     public void onResume() {
         super.onResume();
 
-        if (mIsPrimary) {
+        if (mIsPrimary && mBatteryStatus != null) {
             ContentResolver cr = getActivity().getContentResolver();
-            if (mBatteryStatus != null) {
-                int batteryStatus = Settings.System.getInt(cr,
-                        Settings.System.LOCKSCREEN_ALWAYS_SHOW_BATTERY, 0);
-                mBatteryStatus.setValueIndex(batteryStatus);
-                mBatteryStatus.setSummary(mBatteryStatus.getEntries()[batteryStatus]);
-            }
+            int batteryStatus = Settings.System.getInt(cr,
+                    Settings.System.LOCKSCREEN_BATTERY_VISIBILITY, 0);
+            mBatteryStatus.setValueIndex(batteryStatus);
+            mBatteryStatus.setSummary(mBatteryStatus.getEntries()[batteryStatus]);
         }
     }
 
@@ -215,7 +213,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         if (preference == mBatteryStatus) {
             int value = Integer.valueOf((String) objValue);
             int index = mBatteryStatus.findIndexOfValue((String) objValue);
-            Settings.System.putInt(cr, Settings.System.LOCKSCREEN_ALWAYS_SHOW_BATTERY, value);
+            Settings.System.putInt(cr, Settings.System.LOCKSCREEN_BATTERY_VISIBILITY, value);
             mBatteryStatus.setSummary(mBatteryStatus.getEntries()[index]);
             return true;
         } else if (preference == mCustomBackground) {
