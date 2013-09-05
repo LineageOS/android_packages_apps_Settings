@@ -15,14 +15,15 @@
 -->
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/help"
-          android:title="@string/privacy_guard_help_title" />
     <item android:id="@+id/reset"
+          android:showAsAction="always"
+          android:icon="@drawable/ic_settings_backup"
           android:title="@string/privacy_guard_reset_title" />
-    <item android:id="@+id/filter_app_permissions"
-          android:title="@string/privacy_guard_manager_filter_permissions"
-          android:checkable="true" />
+    <item android:id="@+id/advanced"
+          android:title="@string/advanced_settings_title" />
     <item android:id="@+id/show_system_apps"
           android:title="@string/privacy_guard_manager_show_system_apps"
           android:checkable="true" />
+    <item android:id="@+id/help"
+          android:title="@string/privacy_guard_help_title" />
 </menu>

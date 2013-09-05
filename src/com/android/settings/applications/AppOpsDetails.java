@@ -19,6 +19,7 @@ package com.android.settings.applications;
 import android.app.Activity;
 import android.app.AppOpsManager;
 import android.app.Fragment;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -27,8 +28,10 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.PermissionGroupInfo;
 import android.content.pm.PermissionInfo;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,8 +62,19 @@ public class AppOpsDetails extends Fragment {
     private LinearLayout mOperationsSection;
 
     // Utility method to set application label and icon.
-    private void setAppLabelAndIcon(PackageInfo pkgInfo) {
+    private void setAppLabelAndIcon(final PackageInfo pkgInfo) {
         final View appSnippet = mRootView.findViewById(R.id.app_snippet);
+        appSnippet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    startActivity(new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                            Uri.fromParts("package", pkgInfo.packageName, null)));
+                } catch (ActivityNotFoundException e) {
+                    Log.e(TAG, "Couldn't open app details activity", e);
+                }
+            }
+        });
         appSnippet.setPaddingRelative(0, appSnippet.getPaddingTop(), 0, appSnippet.getPaddingBottom());
 
         ImageView icon = (ImageView) appSnippet.findViewById(R.id.app_icon);

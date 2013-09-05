@@ -18,11 +18,13 @@ package com.android.settings.cyanogenmod.privacyguard;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.AppOpsManager;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -32,7 +34,9 @@ import android.content.pm.Signature;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -47,6 +51,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.settings.R;
+import com.android.settings.Settings.AppOpsSummaryActivity;
+import com.android.settings.applications.AppOpsDetails;
+import com.android.settings.applications.AppOpsState;
+import com.android.settings.applications.AppOpsState.OpsTemplate;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -67,28 +75,7 @@ public class PrivacyGuardManager extends Fragment
     private Activity mActivity;
 
     private SharedPreferences mPreferences;
-
-    // array of critical permissions where privacy guard
-    // can hide the information
-    private static final String[] PERMISSION_FILTER = new String[] {
-        android.Manifest.permission.ACCESS_COARSE_LOCATION,
-        android.Manifest.permission.ACCESS_FINE_LOCATION,
-        android.Manifest.permission.ACCESS_LOCATION_EXTRA_COMMANDS,
-        android.Manifest.permission.READ_HISTORY_BOOKMARKS,
-        android.Manifest.permission.WRITE_HISTORY_BOOKMARKS,
-        android.Manifest.permission.READ_CALENDAR,
-        android.Manifest.permission.WRITE_CALENDAR,
-        android.Manifest.permission.READ_CONTACTS,
-        android.Manifest.permission.WRITE_CONTACTS,
-        android.Manifest.permission.READ_CALL_LOG,
-        android.Manifest.permission.WRITE_CALL_LOG,
-        "com.android.voicemail.permission.READ_WRITE_ALL_VOICEMAIL",
-        android.Manifest.permission.READ_SMS,
-        android.Manifest.permission.RECEIVE_SMS,
-        android.Manifest.permission.SEND_SMS,
-        android.Manifest.permission.WRITE_SMS,
-        android.Manifest.permission.BROADCAST_SMS
-    };
+    private AppOpsManager mAppOps;
 
     // holder for package data passed into the adapter
     public static final class AppInfo {
@@ -96,6 +83,7 @@ public class PrivacyGuardManager extends Fragment
         String packageName;
         boolean enabled;
         boolean privacyGuardEnabled;
+        int uid;
     }
 
     @Override
@@ -104,6 +92,7 @@ public class PrivacyGuardManager extends Fragment
 
         mActivity = getActivity();
         mPm = mActivity.getPackageManager();
+        mAppOps = (AppOpsManager)getActivity().getSystemService(Context.APP_OPS_SERVICE);
 
         return inflater.inflate(R.layout.privacy_guard_manager, container, false);
     }
@@ -145,19 +134,48 @@ public class PrivacyGuardManager extends Fragment
         // if app list is empty inform the user
         // else go ahead and construct the list
         if (mApps == null || mApps.isEmpty()) {
-            if (shouldFilterByPermission()) {
-                mNoUserAppsInstalled.setText(R.string.privacy_guard_filter_does_not_match);
-            } else {
-                mNoUserAppsInstalled.setText(R.string.privacy_guard_no_user_apps);
-            }
+            mNoUserAppsInstalled.setText(R.string.privacy_guard_no_user_apps);
             mNoUserAppsInstalled.setVisibility(View.VISIBLE);
             mAppsList.setVisibility(View.GONE);
         } else {
             mNoUserAppsInstalled.setVisibility(View.GONE);
             mAppsList.setVisibility(View.VISIBLE);
-            mAdapter = new PrivacyGuardAppListAdapter(mActivity, mApps);
+            mAdapter = createAdapter();
             mAppsList.setAdapter(mAdapter);
+            mAppsList.setFastScrollEnabled(true);
         }
+    }
+
+    private PrivacyGuardAppListAdapter createAdapter() {
+        String lastSectionIndex = null;
+        ArrayList<String> sections = new ArrayList<String>();
+        ArrayList<Integer> positions = new ArrayList<Integer>();
+        int count = mApps.size(), offset = 0;
+
+        for (int i = 0; i < count; i++) {
+            AppInfo app = mApps.get(i);
+            String sectionIndex;
+
+            if (!app.enabled) {
+                sectionIndex = "--"; //XXX
+            } else if (app.title.isEmpty()) {
+                sectionIndex = "";
+            } else {
+                sectionIndex = app.title.substring(0, 1).toUpperCase();
+            }
+            if (lastSectionIndex == null) {
+                lastSectionIndex = sectionIndex;
+            }
+
+            if (!TextUtils.equals(sectionIndex, lastSectionIndex)) {
+                sections.add(sectionIndex);
+                positions.add(offset);
+                lastSectionIndex = sectionIndex;
+            }
+            offset++;
+        }
+
+        return new PrivacyGuardAppListAdapter(mActivity, mApps, sections, positions);
     }
 
     private void resetPrivacyGuard() {
@@ -166,11 +184,9 @@ public class PrivacyGuardManager extends Fragment
         }
         // turn off privacy guard for all apps shown in the current list
         for (AppInfo app : mApps) {
-            if (app.privacyGuardEnabled) {
-                mPm.setPrivacyGuardSetting(app.packageName, false);
-                app.privacyGuardEnabled = false;
-            }
+            app.privacyGuardEnabled = false;
         }
+        mAppOps.resetAllModes();
         mAdapter.notifyDataSetChanged();
     }
 
@@ -180,7 +196,7 @@ public class PrivacyGuardManager extends Fragment
         final AppInfo app = (AppInfo) parent.getItemAtPosition(position);
 
         app.privacyGuardEnabled = !app.privacyGuardEnabled;
-        mPm.setPrivacyGuardSetting(app.packageName, app.privacyGuardEnabled);
+        mAppOps.setPrivacyGuardSettingForPackage(app.uid, app.packageName, app.privacyGuardEnabled);
 
         mAdapter.notifyDataSetChanged();
     }
@@ -190,13 +206,12 @@ public class PrivacyGuardManager extends Fragment
         // on long click open app details window
         final AppInfo app = (AppInfo) parent.getItemAtPosition(position);
 
-        try {
-            startActivity(new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                    Uri.parse("package:" + app.packageName)));
-        } catch (ActivityNotFoundException e) {
-            Log.e(TAG, "Couldn't open app details activity", e);
-        }
+        Bundle args = new Bundle();
+        args.putString(AppOpsDetails.ARG_PACKAGE_NAME, app.packageName);
 
+        PreferenceActivity pa = (PreferenceActivity)getActivity();
+        pa.startPreferencePanel(AppOpsDetails.class.getName(), args,
+                R.string.app_ops_settings, null, this, 2);
         return true;
     }
 
@@ -211,7 +226,6 @@ public class PrivacyGuardManager extends Fragment
         List<PackageInfo> packages = mPm.getInstalledPackages(
             PackageManager.GET_PERMISSIONS | PackageManager.GET_SIGNATURES);
         boolean showSystemApps = shouldShowSystemApps();
-        boolean filterByPermission = shouldFilterByPermission();
         Signature platformCert;
 
         try {
@@ -236,18 +250,13 @@ public class PrivacyGuardManager extends Fragment
                 continue;
             }
 
-            if (filterByPermission) {
-                final String[] requestedPermissions = info.requestedPermissions;
-                if (requestedPermissions == null || !filterAppPermissions(requestedPermissions)) {
-                    continue;
-                }
-            }
-
             AppInfo app = new AppInfo();
             app.title = appInfo.loadLabel(mPm).toString();
             app.packageName = info.packageName;
             app.enabled = appInfo.enabled;
-            app.privacyGuardEnabled = mPm.getPrivacyGuardSetting(app.packageName);
+            app.uid = info.applicationInfo.uid;
+            app.privacyGuardEnabled = mAppOps.getPrivacyGuardSettingForPackage(
+                    app.uid, app.packageName);
             apps.add(app);
         }
 
@@ -265,23 +274,8 @@ public class PrivacyGuardManager extends Fragment
         return apps;
     }
 
-    private boolean filterAppPermissions(final String[] requestedPermissions) {
-        for (String requested : requestedPermissions) {
-            for (String filtered : PERMISSION_FILTER) {
-               if (requested.equals(filtered)) {
-                    return true;
-               }
-            }
-        }
-        return false;
-    }
-
     private boolean shouldShowSystemApps() {
         return mPreferences.getBoolean("show_system_apps", false);
-    }
-
-    private boolean shouldFilterByPermission() {
-        return mPreferences.getBoolean("filter_by_permission", true);
     }
 
     private class HelpDialogFragment extends DialogFragment {
@@ -315,7 +309,6 @@ public class PrivacyGuardManager extends Fragment
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.privacy_guard_manager, menu);
         menu.findItem(R.id.show_system_apps).setChecked(shouldShowSystemApps());
-        menu.findItem(R.id.filter_app_permissions).setChecked(shouldFilterByPermission());
     }
 
     @Override
@@ -327,15 +320,18 @@ public class PrivacyGuardManager extends Fragment
             case R.id.reset:
                 resetPrivacyGuard();
                 return true;
-            case R.id.filter_app_permissions:
             case R.id.show_system_apps:
-                final String prefName = item.getItemId() == R.id.filter_app_permissions
-                        ? "filter_by_permission" : "show_system_apps";
+                final String prefName = "show_system_apps";
                 // set the menu checkbox and save it in
                 // shared preference and rebuild the list
                 item.setChecked(!item.isChecked());
                 mPreferences.edit().putBoolean(prefName, item.isChecked()).commit();
                 loadApps();
+                return true;
+            case R.id.advanced:
+                Intent i = new Intent(Intent.ACTION_MAIN);
+                i.setClass(mActivity, AppOpsSummaryActivity.class);
+                mActivity.startActivity(i);
                 return true;
              default:
                 return super.onContextItemSelected(item);

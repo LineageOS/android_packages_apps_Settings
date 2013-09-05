@@ -25,31 +25,42 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.SectionIndexer;
 import android.widget.TextView;
 
 import com.android.settings.R;
 import com.android.settings.cyanogenmod.privacyguard.PrivacyGuardManager.AppInfo;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class PrivacyGuardAppListAdapter extends BaseAdapter {
+public class PrivacyGuardAppListAdapter extends BaseAdapter implements SectionIndexer {
 
     private LayoutInflater mInflater;
     private PackageManager mPm;
 
     private List<AppInfo> mApps;
+    private String[] mSections;
+    private int[] mPositions;
     private ConcurrentHashMap<String, Drawable> mIcons;
     private Drawable mDefaultImg;
 
     private Context mContext;
 
     //constructor
-    public PrivacyGuardAppListAdapter(Context context, List<AppInfo> apps) {
+    public PrivacyGuardAppListAdapter(Context context, List<AppInfo> apps,
+            List<String> sections, List<Integer> positions) {
         mContext = context;
         mInflater = LayoutInflater.from(mContext);
         mPm = context.getPackageManager();
+
         mApps = apps;
+        mSections = sections.toArray(new String[sections.size()]);
+        mPositions = new int[positions.size()];
+        for (int i = 0; i < positions.size(); i++) {
+            mPositions[i] = positions.get(i);
+        }
 
         // set the default icon till the actual app icon is loaded in async task
         mDefaultImg = mContext.getResources().getDrawable(android.R.mipmap.sym_def_app_icon);
@@ -102,6 +113,39 @@ public class PrivacyGuardAppListAdapter extends BaseAdapter {
         appHolder.privacyGuardIcon.setImageResource(privacyGuardDrawableResId);
 
         return convertView;
+    }
+
+    @Override
+    public int getPositionForSection(int section) {
+        if (section < 0 || section >= mSections.length) {
+            return -1;
+        }
+
+        return mPositions[section];
+    }
+
+    @Override
+    public int getSectionForPosition(int position) {
+        if (position < 0 || position >= getCount()) {
+            return -1;
+        }
+
+        int index = Arrays.binarySearch(mPositions, position);
+
+        /*
+         * Consider this example: section positions are 0, 3, 5; the supplied
+         * position is 4. The section corresponding to position 4 starts at
+         * position 3, so the expected return value is 1. Binary search will not
+         * find 4 in the array and thus will return -insertPosition-1, i.e. -3.
+         * To get from that number to the expected value of 1 we need to negate
+         * and subtract 2.
+         */
+        return index >= 0 ? index : -index - 2;
+    }
+
+    @Override
+    public Object[] getSections() {
+        return mSections;
     }
 
     /**
