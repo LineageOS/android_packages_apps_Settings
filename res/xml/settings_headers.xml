@@ -108,6 +108,14 @@
             android:targetClass="com.android.settings.MultiSimSettings" />
     </header>
 
+    <!-- Global roaming settings - if RoamingSettings installed. -->
+    <header
+        android:id="@+id/global_roaming_settings"
+        android:icon="@drawable/ic_roaming_settings"
+        android:title="@string/label_global_roaming_settings">
+        <intent android:action="com.android.action.roamingsettings"/>
+    </header>
+
     <!-- Sound -->
     <header
         android:id="@+id/sound_settings"
