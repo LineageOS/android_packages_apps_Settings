@@ -27,9 +27,9 @@ import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.format.DateUtils;
-
 import android.util.Log;
 import android.util.SparseArray;
+
 import com.android.settings.R;
 
 import java.io.File;
@@ -56,8 +56,8 @@ public class AppOpsState {
         mContext = context;
         mAppOps = (AppOpsManager)context.getSystemService(Context.APP_OPS_SERVICE);
         mPm = context.getPackageManager();
-        mOpSummaries = context.getResources().getTextArray(R.array.app_ops_summaries);
-        mOpLabels = context.getResources().getTextArray(R.array.app_ops_labels);
+        mOpSummaries = context.getResources().getTextArray(R.array.app_ops_summaries_cm);
+        mOpLabels = context.getResources().getTextArray(R.array.app_ops_labels_cm);
     }
 
     public static class OpsTemplate implements Parcelable {
@@ -158,9 +158,15 @@ public class AppOpsState {
                     AppOpsManager.OP_SYSTEM_ALERT_WINDOW,
                     AppOpsManager.OP_CAMERA,
                     AppOpsManager.OP_RECORD_AUDIO,
-                    AppOpsManager.OP_PLAY_AUDIO },
+                    AppOpsManager.OP_PLAY_AUDIO,
+                    AppOpsManager.OP_WIFI_CHANGE,
+                    AppOpsManager.OP_BLUETOOTH_CHANGE,
+                    AppOpsManager.OP_DATA_CONNECT_CHANGE },
             new boolean[] { false,
                     false,
+                    true,
+                    true,
+                    true,
                     true,
                     true,
                     true,
