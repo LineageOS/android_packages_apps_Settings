@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2012-2013 The CyanogenMod Project
+<!--
+     Copyright (C) 2012-2013 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -25,11 +26,11 @@
     <string name="wifi_mode">Modus</string>
     <string name="wifi_mode_ibss">Ad-hoc-netwerk (IBSS)</string>
     <string name="wifi_mode_ibss_short">Ad hoc</string>
-    <string name="wifi_setting_countrycode_title">Wi-Fi-regiocode</string>
-    <string name="wifi_setting_countrycode_summary">Regiocode opgeven voor Wi-Fi</string>
+    <string name="wifi_setting_countrycode_title">Wifi-regiocode</string>
+    <string name="wifi_setting_countrycode_summary">Regiocode opgeven voor wifi</string>
     <string name="wifi_setting_countrycode_error">Kan regiocode niet instellen</string>
-    <string name="wifi_setting_priority_title">Wi-Fi-prioriteit</string>
-    <string name="wifi_setting_priority_summary">Prioriteit instellen van Wi-Fi-netwerken</string>
+    <string name="wifi_setting_priority_title">Wifi-prioriteit</string>
+    <string name="wifi_setting_priority_summary">Prioriteit instellen van wifi-netwerken</string>
     <string name="volume_adjust_sounds_enable_title">Aanpassingsgeluid volume</string>
     <string name="volume_adjust_sounds_enable_summary">Geluid afspelen bij aanpassen van volume met volumeknoppen</string>
     <string name="lockpattern_settings_enable_error_path_title">Patroonfout tonen</string>
@@ -46,8 +47,8 @@
     <string name="ok">OK</string>
     <string name="quiet_hours_title">Stille uren</string>
     <string name="quiet_hours_summary">Uren instellen waarin apparaat stil moet zijn</string>
-    <string name="quiet_hours_note_summary">Let op: Inkomende oproepen zijn niet onderhevig aan deze instellingen</string>
-    <string name="quiet_hours_enabled">Inschakelen</string>
+    <string name="quiet_hours_note_summary">Let op: inkomende oproepen zijn niet onderhevig aan deze instellingen en zullen normaal overgaan</string>
+    <string name="quiet_hours_enabled">Stille uren toepassen</string>
     <string name="quiet_hours_mute">Meldingsgeluid dempen</string>
     <string name="quiet_hours_still">Trillen uitschakelen</string>
     <string name="quiet_hours_dim">Meldingsled uitschakelen</string>
@@ -82,7 +83,14 @@
     <string name="preview_carrier_title">Provider</string>
     <string name="themes_settings_title">Thema\'s</string>
     <string name="system_interface_title">Systeemuiterlijk</string>
-    <string name="notification_drawer_title">Meldingspaneel</string>
+    <string name="notification_drawer_title">Meldingenpaneel</string>
+    <string name="notification_drawer_collapse_on_dismiss_title">Automatisch sluiten</string>
+    <string name="collapse_on_dismiss_never">Uitgeschakeld</string>
+    <string name="collapse_on_dismiss_if_empty">Bij geen meldingen</string>
+    <string name="collapse_on_dismiss_if_no_clearable">Bij geen verwijderbare meldingen</string>
+    <string name="collapse_on_dismiss_never_summary">Paneel open laten bij verwijderen van meldingen</string>
+    <string name="collapse_on_dismiss_if_empty_summary">Paneel sluiten bij verwijderen van laatste melding</string>
+    <string name="collapse_on_dismiss_if_no_clearable_summary">Paneel sluiten bij verwijderen van laatste verwijderbare melding</string>
     <string name="lock_screen_title">Schermvergrendeling</string>
     <string name="lockscreen_target_info">Sleep de schijf naar een plaats om een snelkoppeling toe te wijzen</string>
     <string name="lockscreen_target_title">Snelkoppelingen</string>
@@ -96,7 +104,7 @@
     <string name="lockscreen_target_edit_msg">Gewenste app/activiteit en bijbehorend pictogram wijzigen</string>
     <string name="lockscreen_vibrate_enabled_title">Trillen</string>
     <string name="lockscreen_vibrate_enabled_head">Trillen bij ontgrendelen</string>
-    <string name="lockscreen_battery_status_title">Batterijstatus</string>
+    <string name="lockscreen_battery_status_title">Accustatus</string>
     <string name="lockscreen_battery_status_charging">Alleen bij opladen</string>
     <string name="lockscreen_battery_status_alwayson">Altijd zichtbaar</string>
     <string name="profiles_settings_title">Profielen</string>
@@ -157,8 +165,8 @@
     <string name="profile_lockmode_insecure_summary">Onveilige schermvergrendeling gebruiken</string>
     <string name="profile_lockmode_disabled_summary">Schermvergrendeling uitgeschakeld</string>
     <string name="profile_airplanemode_title">Vliegmodus</string>
-    <string name="toggleWifi">Wi-Fi</string>
-    <string name="toggleWifiAp">Draagbare Wi-Fi hotspot</string>
+    <string name="toggleWifi">Wifi</string>
+    <string name="toggleWifiAp">Draagbare wifi-hotspot</string>
     <string name="toggleBluetooth">Bluetooth</string>
     <string name="toggleGPS">GPS</string>
     <string name="toggleData">Mobiele gegevens</string>
@@ -272,7 +280,7 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="profile_trigger_configure">Trigger instellen</string>
     <string name="profile_triggers">Triggers</string>
     <string name="profile_trigger_filter_all">Alle triggers</string>
-    <string name="profile_trigger_filter_wifi">Wi-Fi-triggers</string>
+    <string name="profile_trigger_filter_wifi">Wifi-triggers</string>
     <string name="profile_trigger_filter_bluetooth">Bluetooth-triggers</string>
     <string name="profile_write_nfc_tag">Schrijven naar NFC-tag</string>
     <string name="profile_write_touch_tag">Raak tag aan om te schrijven</string>
@@ -286,6 +294,8 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="link_volume_ringtones">Volumes linken</string>
     <string name="link_volume_mutes">Stille standen linken</string>
     <string name="volume_keys_control_ring_stream">Volumeknoppen passen beltoonvolume aan</string>
+    <string name="lights_category_title">Verlichting</string>
+    <string name="notification_pulse_title">Meldingsled</string>
     <string name="notification_light_general_title">Algemeen</string>
     <string name="notification_light_applist_title">Apps</string>
     <string name="notification_light_phonelist_title">Telefoon</string>
@@ -295,6 +305,8 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="notification_light_default_value">Standaard</string>
     <string name="notification_light_missed_call_title">Gemiste oproep</string>
     <string name="notification_light_voicemail_title">Voicemail</string>
+    <string name="adaptive_backlight_title">Aanpassende helderheid</string>
+    <string name="adaptive_backlight_summary">Schermhelderheid intelligent aanpassen voor langer accugebruik</string>
     <string name="edit_light_settings">Meldingsledinstellingen</string>
     <string name="pulse_speed_title">Duur en snelheid van knipperen</string>
     <string name="default_time">Normaal</string>
@@ -315,21 +327,21 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="pulse_speed_normal">Normaal</string>
     <string name="pulse_speed_slow">Langzaam</string>
     <string name="pulse_speed_very_slow">Zeer langzaam</string>
-    <string name="battery_light_title">Batterijlicht</string>
-    <string name="battery_low_pulse_title">LED laten knipperen bij lage batterijspanning</string>
+    <string name="battery_light_title">Acculed</string>
+    <string name="battery_low_pulse_title">Led laten knipperen bij lage accuspanning</string>
     <string name="battery_light_list_title">Kleuren</string>
-    <string name="battery_light_low_color_title">Batterijspanning laag</string>
+    <string name="battery_light_low_color_title">Accuspanning laag</string>
     <string name="battery_light_medium_color_title">Bezig met opladen</string>
     <string name="battery_light_full_color_title">Volledig opgeladen</string>
-    <string name="volume_overlay_title">Volumepaneel</string>
+    <string name="volume_overlay_title">Muziekbediening</string>
     <string name="volbtn_music_controls_title">Muziek beheren met volumeknoppen</string>
-    <string name="volbtn_music_controls_summary">Als het scherm uit is springen de volumeknoppen, indien lang ingedrukt, naar het vorige/volgende nummer</string>
+    <string name="volbtn_music_controls_summary">Muziek bedienen met de volumeknoppen als het scherm uit is</string>
     <string name="volume_ring_only_description">Beltonen</string>
     <string name="ring_mode_title">Belmodus</string>
     <string name="ring_mode_normal">Normaal</string>
     <string name="ring_mode_vibrate">Trillen</string>
     <string name="ring_mode_mute">Dempen</string>
-    <string name="hardware_keys_enable_custom_title">Aangepaste acties inschakelen</string>
+    <string name="hardware_keys_enable_custom_title">Aangepaste knoppen</string>
     <string name="hardware_keys_show_overflow_title">Actieknop</string>
     <string name="hardware_keys_show_overflow_summary">3-puntsmenuknop tonen in apps</string>
     <string name="hardware_keys_show_overflow_toast_enable">Herstart van apps mogelijk vereist om wijziging toe te passen</string>
@@ -387,7 +399,7 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="status_bar_general_title">Algemeen</string>
     <string name="status_bar_show_clock_title">Klok tonen</string>
     <string name="status_bar_am_pm_title">12-uursformaat</string>
-    <string name="status_bar_battery_title">Opmaak batterijstatus</string>
+    <string name="status_bar_battery_title">Opmaak accustatus</string>
     <string name="status_bar_toggle_brightness">Helderheid beheren</string>
     <string name="status_bar_toggle_brightness_summary">Helderheid wijzigen door over de statusbalk te slepen</string>
     <string name="status_bar_toggle_info">Automatische helderheid ingeschakeld</string>
@@ -403,12 +415,13 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="adb_notify">USB-foutopsporingsmodus melden</string>
     <string name="adb_notify_summary">Melding tonen indien USB-foutopsporingmodus is ingeschakeld</string>
     <string name="development_tools_title">Tools openen</string>
+    <string name="allow_mock_sms">Nep-sms toestaan</string>
     <string name="usb_mass_storage_title">Massaopslag</string>
     <string name="usb_mass_storage_summary">USB-massaopslag inschakelen</string>
     <string name="storage_rescan_media">Mediabestanden op het opslagvolume opnieuw scannen</string>
     <string name="storage_rescan_media_complete">Scannen voltooid</string>
     <string name="adb_over_network">ADB over netwerk</string>
-    <string name="adb_over_network_summary">TCP/IP-foutopsporing inschakelen over netwerkinterfaces (Wi-Fi, USB-netwerken etc.). Wordt hersteld bij opstarten</string>
+    <string name="adb_over_network_summary">TCP/IP-foutopsporing inschakelen over netwerkinterfaces (wifi, USB-netwerken etc.). Wordt hersteld bij opstarten</string>
     <string name="adb_over_network_warning">Let op: als ADB over netwerk is ingeschakeld, kan op uw apparaat worden ingebroken via alle aangesloten netwerken, inclusief via uw GSM-gegevensnetwerk!\n\nGebruik deze functie alleen indien u verbonden bent met vertrouwde netwerken.\n\nWeet u zeker dat u deze functie wilt inschakelen?</string>
     <string name="lockscreen_buttons_title">Knopacties</string>
     <string name="lockscreen_buttons_summary">Knopacties bij schermvergrendeling beheren</string>
@@ -427,7 +440,7 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="tile_picker_summary">Indeling van te tonen tegels beheren</string>
     <string name="tile_choose_title">Tegel kiezen</string>
     <string name="title_tile_airplane">Vliegmodus</string>
-    <string name="title_tile_battery">Batterijstatus</string>
+    <string name="title_tile_battery">Accustatus</string>
     <string name="title_tile_bluetooth">Bluetooth</string>
     <string name="title_tile_brightness">Helderheid</string>
     <string name="title_tile_camera">Camera</string>
@@ -442,8 +455,8 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="title_tile_settings">Instellingen</string>
     <string name="title_tile_sound">Geluid</string>
     <string name="title_tile_sync">Synchroniseren</string>
-    <string name="title_tile_wifiap">Draagbare Wi-Fi-hotspot</string>
-    <string name="title_tile_wifi">Wi-Fi</string>
+    <string name="title_tile_wifiap">Draagbare wifi-hotspot</string>
+    <string name="title_tile_wifi">Wifi</string>
     <string name="title_tile_user">Gebruiker wisselen</string>
     <string name="title_tile_networkmode">Netwerkmodus</string>
     <string name="title_tile_nfc">NFC</string>
@@ -507,6 +520,9 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="safe_headset_volume_title">Veilig headsetvolume</string>
     <string name="cyanogenmod_waiver_title">Afstandsverklaring</string>
     <string name="cyanogenmod_waiver_body">Het wijzigen van deze instelling kan in overtreding zijn met de regelgeving in uw staat/land.\n\nDoor te tikken op \'OK\' erkent u deze waarschuwing en doet u afstand van en vrijwaart u CyanogenMod en/of haar bijdragers van alle wettelijke verplichtingen</string>
+    <string name="auto_brightness_setup_title">Automatische helderheid</string>
+    <string name="auto_brightness_adjustment_title">Helderheid aanpassen</string>
+    <string name="auto_brightness_twilight_adjustment">Aanpassen aan zonsopgang en zonsondergang</string>
     <string name="light_sensor_current_value">Huidige lichtsensorwaarde: <xliff:g id="light_level">%d</xliff:g> lux</string>
     <string name="auto_brightness_dialog_title">Autom. helderheidsstanden</string>
     <string name="auto_brightness_level_format"><xliff:g id="level">%1$d</xliff:g> lux</string>
@@ -557,7 +573,7 @@ Elke regel in de lijst van helderheidsstanden komt overeen met één <i>controle
     <string name="navring_action_ring_vibrate_silent">Geluid/trillen/stil</string>
     <string name="navring_action_screen_off">Scherm uit</string>
     <string name="navring_action_torch">Zaklamp aan/uit</string>
-    <string name="navring_action_google_now">Google Nu</string>
+    <string name="navring_action_google_now">Google Now</string>
     <string name="navring_choose_action_title">Actie selecteren</string>
     <string name="pie_control_title">Zwevende knoppen</string>
     <string name="pie_control_enabled">\'Pie controls\' ingeschakeld als \'Uitgebreid bureaublad\' ingeschakeld is</string>
@@ -597,13 +613,15 @@ Elke regel in de lijst van helderheidsstanden komt overeen met één <i>controle
     <string name="wifi_channel">Kanaal</string>
     <string name="wifi_mhz">MHz</string>
     <string name="power_notifications_category_title">Opladergeluid</string>
-    <string name="power_notifications_enable_title">Inschakelen</string>
+    <string name="power_notifications_enable_title">Opladergeluid</string>
     <string name="power_notifications_enable_summary">Geluid afspelen bij het aansluiten of loskoppelen van de lader</string>
     <string name="power_notifications_vibrate_title">Trillen</string>
     <string name="power_notifications_ringtone_title">Meldingsgeluid</string>
     <string name="power_notifications_ringtone_silent">Stil</string>
     <string name="screen_off_animation_title">Scherm-uit-animatie</string>
     <string name="screen_off_animation_summary">De \'electron beam\'-animatie laten zien indien het scherm wordt uitgeschakeld</string>
+    <string name="wake_when_plugged_or_unplugged_title">Ontwaken door lader</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Scherm aan bij het aansluiten of loskoppelen van de lader</string>
     <string name="confirm_delete_apn">APN wordt verwijderd.</string>
     <string name="privacy_guard_switch_label">Privacybescherming</string>
     <string name="privacy_guard_dlg_title">Privacybescherming inschakelen?</string>
@@ -620,4 +638,77 @@ Elke regel in de lijst van helderheidsstanden komt overeen met één <i>controle
     <string name="privacy_guard_help_text">Op dit scherm kunt u kiezen voor welke apps Privacybescherming ingeschakeld moet zijn door op ze te tikken. Geselecteerde apps zullen geen toegang hebben tot persoonsgegevens zoals contacten, berichten of gespreksstatistieken. Door een app lang aan te raken opent het info-scherm voor die app.\n\nStandaard worden ingebouwde apps niet getoond. Als u deze apps of alleen apps die met hun machtigingen toegang tot persoonsgegevens vragen wilt zien, selecteert u de desbetreffende opties in het menu.</string>
     <string name="privacy_guard_manager_show_system_apps">Ingebouwde apps tonen</string>
     <string name="privacy_guard_manager_filter_permissions">Machtigingenfilter</string>
+    <string name="header_category_interface">Aanpassen</string>
+    <string name="homescreen_settings_title">Startscherm</string>
+    <string name="system_settings_title">Uiterlijk</string>
+    <string name="display_lights_settings_title">Scherm &amp; verlichting</string>
+    <string name="automation_effects_title">Automatisering &amp; effecten</string>
+    <string name="button_settings">Knoppen</string>
+    <string name="hardware_keys_home_key_title">Thuisknop</string>
+    <string name="hardware_keys_menu_key_title">Menuknop</string>
+    <string name="hardware_keys_assist_key_title">Zoekknop</string>
+    <string name="hardware_keys_appswitch_key_title">Recente apps-knop</string>
+    <string name="hardware_keys_volume_keys_title">Volumeknoppen</string>
+    <string name="hardware_keys_short_press_title">Actie kort indrukken</string>
+    <string name="hardware_keys_long_press_title">Actie lang indrukken</string>
+    <string name="hardware_keys_double_tap_title">Actie dubbeltikken</string>
+    <string name="home_wake_title">Ontwaken met thuisknop</string>
+    <string name="home_wake_summary">Apparaat ontwaken door op de thuisknop te drukken</string>
+    <string name="volume_wake_title">Ontwaken met volumeknoppen</string>
+    <string name="volume_wake_summary">Apparaat ontwaken door op de volumeknoppen te drukken</string>
+    <string name="navigation_bar_category">Navigatiebalk</string>
+    <string name="blacklist_title">Zwarte lijst</string>
+    <string name="blacklist_edit_dialog_title">Telefoonnummer aanpassen</string>
+    <string name="blacklist_prefs">Instellingen</string>
+    <string name="blacklist_button_delete">Verwijderen</string>
+    <string name="blacklist_empty_text">Geen telefoonnummers op de zwarte lijst. Voeg een nummer toe door op de \'Toevoegen\'-knop (+) te tikken.</string>
+    <string name="blacklist_disabled_empty_text">Schakel de zwarte lijst in om oproepen en/of berichten van bepaalde telefoonnummers te blokkeren.</string>
+    <string name="blacklist_summary_disabled">Uitgeschakeld</string>
+    <string name="blacklist_summary">Inkomende oproepen en berichten van telefoonnummers op de zwarte lijst worden geblokkeerd</string>
+    <string name="blacklist_notify">Melding weergeven</string>
+    <string name="blacklist_private_numbers_title">Afgeschermde nummers</string>
+    <string name="blacklist_private_numbers_summary_disabled">Oproepen van afgeschermde nummers niet blokkeren</string>
+    <string name="blacklist_private_numbers_summary">Inkomende <xliff:g id="type">%s</xliff:g> van afgeschermde nummers blokkeren</string>
+    <string name="blacklist_unknown_numbers_title">Onbekende nummers</string>
+    <string name="blacklist_unknown_numbers_summary_disabled">Oproepen of berichten van nummers die niet in de contactlijst staan niet blokkeren</string>
+    <string name="blacklist_unknown_numbers_summary">Inkomende <xliff:g id="type">%s</xliff:g> van nummers die niet in de contactlijst staan blokkeren</string>
+    <string name="blacklist_summary_type_calls_only">oproepen</string>
+    <string name="blacklist_summary_type_messages_only">berichten</string>
+    <string name="blacklist_summary_type_calls_and_messages">oproepen en berichten</string>
+    <string name="blacklist_regex_title">Jokertekens gebruiken</string>
+    <string name="blacklist_regex_summary">Gebruik . als jokerteken en * voor herhaling. Bijv.: 123.* blokkeert nummers die beginnen met 123 en .*123.* blokkeert nummers die 123 bevatten</string>
+    <string name="blacklist_policy_block_calls">Inkomende oproepen blokkeren</string>
+    <string name="blacklist_policy_block_messages">Inkomende berichten blokkeren</string>
+    <string name="add_blacklist_number">Telefoonnummer toevoegen</string>
+    <string name="remove_blacklist_number_title">Telefoonnummer verwijderen</string>
+    <string name="remove_blacklist_entry">Dit geblokkeerde telefoonnummer verwijderen?</string>
+    <string name="select_contact">Contact selecteren</string>
+    <string name="vibrator_intensity_title">Trilintensiteit</string>
+    <string name="vibrator_warning">Waarden hoger dan %1$d worden niet aangeraden</string>
+    <string name="color_calibration_title">Kleuren kalibreren</string>
+    <string name="color_calibration_summary">Schermkleur kalibreren</string>
+    <string name="color_red_title">Rood</string>
+    <string name="color_green_title">Groen</string>
+    <string name="color_blue_title">Blauw</string>
+    <string name="display_calibration_title">Schermkalibratie</string>
+    <string name="button_backlight_title">Verlichting</string>
+    <string name="button_backlight_enabled">Knoppen verlichten</string>
+    <string name="keyboard_backlight_enabled">Toetsenbord verlichten</string>
+    <string name="button_backlight_seekbar_title">Knoppenhelderheid</string>
+    <string name="keyboard_backlight_seekbar_title">Toetsenbordhelderheid</string>
+    <string name="backlight_timeout_title">Verlichtingstime-out</string>
+    <string name="backlight_timeout_unlimited">Niet uitschakelen</string>
+    <string name="backlight_summary_disabled">Uitgeschakeld</string>
+    <string name="backlight_summary_enabled_with_timeout">Ingeschakeld voor <xliff:g id="timeout">%s</xliff:g></string>
+    <string name="backlight_summary_enabled">Ingeschakeld</string>
+    <string name="gamma_tuning_title_head">Gammakalibratie</string>
+    <string name="gamma_tuning_summary_head">Gammawaarden aanpassen</string>
+    <string name="more_device_controls_title">Meer\u2026</string>
+    <string name="more_device_settings_title">Andere apparaatinstellingen</string>
+    <string name="sensors_motors_title">Sensoren &amp; motoren</string>
+    <string name="category_quick_access">Snelle knoppenstrook</string>
+    <string name="title_quick_access">Weergeven in paneel</string>
+    <string name="title_quick_access_linked">Gelijke indeling</string>
+    <string name="summary_quick_access_linked">Dezelfde tegels en indeling gebruiken als het Snelle instellingenpaneel</string>
+    <string name="font_size_sample">Test</string>
 </resources>
