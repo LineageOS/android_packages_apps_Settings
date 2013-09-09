@@ -22,6 +22,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.preference.DialogPreference;
 import android.provider.Settings;
 import android.util.AttributeSet;
@@ -165,6 +167,46 @@ public class ButtonBacklightBrightness extends DialogPreference implements
         updateSummary();
     }
 
+    @Override
+    protected Parcelable onSaveInstanceState() {
+        final Parcelable superState = super.onSaveInstanceState();
+        if (getDialog() == null || !getDialog().isShowing()) {
+            return superState;
+        }
+
+        // Save the dialog state
+        final SavedState myState = new SavedState(superState);
+        myState.timeout = mTimeoutBar.getProgress();
+        if (mButtonBrightness != null) {
+            myState.button = mButtonBrightness.getBrightness(false);
+        }
+        if (mKeyboardBrightness != null) {
+            myState.keyboard = mKeyboardBrightness.getBrightness(false);
+        }
+
+        return myState;
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Parcelable state) {
+        if (state == null || !state.getClass().equals(SavedState.class)) {
+            // Didn't save state for us in onSaveInstanceState
+            super.onRestoreInstanceState(state);
+            return;
+        }
+
+        SavedState myState = (SavedState) state;
+        super.onRestoreInstanceState(myState.getSuperState());
+
+        mTimeoutBar.setProgress(myState.timeout);
+        if (mButtonBrightness != null) {
+            mButtonBrightness.setBrightness(myState.button);
+        }
+        if (mKeyboardBrightness != null) {
+            mKeyboardBrightness.setBrightness(myState.keyboard);
+        }
+    }
+
     public boolean isButtonSupported() {
         final Resources res = getContext().getResources();
         boolean hasAnyKey = res.getInteger(
@@ -259,6 +301,43 @@ public class ButtonBacklightBrightness extends DialogPreference implements
         // Do nothing here
     }
 
+    private static class SavedState extends BaseSavedState {
+        int timeout;
+        int button;
+        int keyboard;
+
+        public SavedState(Parcelable superState) {
+            super(superState);
+        }
+
+        public SavedState(Parcel source) {
+            super(source);
+            timeout = source.readInt();
+            button = source.readInt();
+            keyboard = source.readInt();
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            super.writeToParcel(dest, flags);
+            dest.writeInt(timeout);
+            dest.writeInt(button);
+            dest.writeInt(keyboard);
+        }
+
+        public static final Parcelable.Creator<SavedState> CREATOR =
+                new Parcelable.Creator<SavedState>() {
+
+            public SavedState createFromParcel(Parcel in) {
+                return new SavedState(in);
+            }
+
+            public SavedState[] newArray(int size) {
+                return new SavedState[size];
+            }
+        };
+    }
+
     private class BrightnessControl implements
             SeekBar.OnSeekBarChangeListener, CheckBox.OnCheckedChangeListener {
         private String mSetting;
@@ -330,12 +409,16 @@ public class ButtonBacklightBrightness extends DialogPreference implements
             updateTimeoutEnabledState();
         }
 
-        public void reset() {
+        public void setBrightness(int value) {
             if (mIsSingleValue) {
-                mCheckBox.setChecked(true);
+                mCheckBox.setChecked(value != 0);
             } else {
-                mSeekBar.setProgress(255);
+                mSeekBar.setProgress(value);
             }
+        }
+
+        public void reset() {
+            setBrightness(255);
         }
 
         private void handleBrightnessUpdate(int brightness) {

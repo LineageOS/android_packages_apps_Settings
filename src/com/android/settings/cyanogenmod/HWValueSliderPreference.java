@@ -26,6 +26,8 @@ import android.graphics.LightingColorFilter;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.preference.DialogPreference;
 import android.preference.PreferenceManager;
 import android.util.AttributeSet;
@@ -141,9 +143,42 @@ public abstract class HWValueSliderPreference extends DialogPreference implement
                     PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
             editor.putInt(mHw.getPreferenceName(), mSeekBar.getProgress() + mMin);
             editor.commit();
-        } else {
+        } else if (mOriginalValue >= mMin) {
             mHw.setValue(mOriginalValue);
         }
+    }
+
+    @Override
+    protected Parcelable onSaveInstanceState() {
+        final Parcelable superState = super.onSaveInstanceState();
+        if (getDialog() == null || !getDialog().isShowing()) {
+            return superState;
+        }
+
+        // Save the dialog state
+        final SavedState myState = new SavedState(superState);
+        myState.value = mSeekBar.getProgress();
+        myState.originalValue = mOriginalValue;
+
+        // Restore the old state when the activity or dialog is being paused
+        mHw.setValue(mOriginalValue);
+        mOriginalValue = Integer.MIN_VALUE;
+
+        return myState;
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Parcelable state) {
+        if (state == null || !state.getClass().equals(SavedState.class)) {
+            // Didn't save state for us in onSaveInstanceState
+            super.onRestoreInstanceState(state);
+            return;
+        }
+
+        SavedState myState = (SavedState) state;
+        super.onRestoreInstanceState(myState.getSuperState());
+        mOriginalValue = myState.originalValue;
+        mSeekBar.setProgress(myState.value);
     }
 
     protected static void restore(Context context, HardwareInterface hw) {
@@ -191,5 +226,39 @@ public abstract class HWValueSliderPreference extends DialogPreference implement
         }
 
         return (int) percent;
+    }
+
+    private static class SavedState extends BaseSavedState {
+        int value;
+        int originalValue;
+
+        public SavedState(Parcelable superState) {
+            super(superState);
+        }
+
+        public SavedState(Parcel source) {
+            super(source);
+            value = source.readInt();
+            originalValue = source.readInt();
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            super.writeToParcel(dest, flags);
+            dest.writeInt(value);
+            dest.writeInt(originalValue);
+        }
+
+        public static final Parcelable.Creator<SavedState> CREATOR =
+                new Parcelable.Creator<SavedState>() {
+
+            public SavedState createFromParcel(Parcel in) {
+                return new SavedState(in);
+            }
+
+            public SavedState[] newArray(int size) {
+                return new SavedState[size];
+            }
+        };
     }
 }
