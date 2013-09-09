@@ -77,6 +77,13 @@ public class PrivacyGuardManager extends Fragment
     private SharedPreferences mPreferences;
     private AppOpsManager mAppOps;
 
+    private int mSavedFirstVisiblePosition = AdapterView.INVALID_POSITION;
+    private int mSavedFirstItemOffset;
+
+    // keys for extras and icicles
+    private final static String LAST_LIST_POS = "last_list_pos";
+    private final static String LAST_LIST_OFFSET = "last_list_offset";
+
     // holder for package data passed into the adapter
     public static final class AppInfo {
         String title;
@@ -123,9 +130,57 @@ public class PrivacyGuardManager extends Fragment
             showHelp();
         }
 
+        if (savedInstanceState != null) {
+            mSavedFirstVisiblePosition = savedInstanceState.getInt(LAST_LIST_POS,
+                    AdapterView.INVALID_POSITION);
+            mSavedFirstItemOffset = savedInstanceState.getInt(LAST_LIST_OFFSET, 0);
+        } else {
+            mSavedFirstVisiblePosition = AdapterView.INVALID_POSITION;
+            mSavedFirstItemOffset = 0;
+        }
+
         // load apps and construct the list
         loadApps();
+
         setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onViewStateRestored(Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putInt(LAST_LIST_POS, mSavedFirstVisiblePosition);
+        outState.putInt(LAST_LIST_OFFSET, mSavedFirstItemOffset);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        // Remember where the list is scrolled to so we can restore the scroll position
+        // when we come back to this activity and *after* we complete querying for the
+        // conversations.
+        mSavedFirstVisiblePosition = mAppsList.getFirstVisiblePosition();
+        View firstChild = mAppsList.getChildAt(0);
+        mSavedFirstItemOffset = (firstChild == null) ? 0 : firstChild.getTop();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        // rebuild the list; the user might have changed settings inbetween
+        loadApps();
+
+        if (mSavedFirstVisiblePosition != AdapterView.INVALID_POSITION) {
+            mAppsList.setSelectionFromTop(mSavedFirstVisiblePosition, mSavedFirstItemOffset);
+            mSavedFirstVisiblePosition = AdapterView.INVALID_POSITION;
+        }
     }
 
     private void loadApps() {
@@ -137,6 +192,7 @@ public class PrivacyGuardManager extends Fragment
             mNoUserAppsInstalled.setText(R.string.privacy_guard_no_user_apps);
             mNoUserAppsInstalled.setVisibility(View.VISIBLE);
             mAppsList.setVisibility(View.GONE);
+            mAppsList.setAdapter(null);
         } else {
             mNoUserAppsInstalled.setVisibility(View.GONE);
             mAppsList.setVisibility(View.VISIBLE);
@@ -336,12 +392,5 @@ public class PrivacyGuardManager extends Fragment
              default:
                 return super.onContextItemSelected(item);
         }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        // rebuild the list; the user might have changed settings inbetween
-        loadApps();
     }
 }
