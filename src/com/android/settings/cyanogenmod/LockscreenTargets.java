@@ -382,6 +382,10 @@ public class LockscreenTargets extends Fragment implements
 
     @Override
     public void shortcutPicked(String uri, String friendlyName, boolean isApplication) {
+        if (uri == null) {
+            return;
+        }
+
         try {
             Intent intent = Intent.parseUri(uri, 0);
             Drawable icon = LockscreenTargetUtils.getDrawableFromIntent(mActivity, intent);
