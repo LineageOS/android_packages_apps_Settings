@@ -22,6 +22,8 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.preference.DialogPreference;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
@@ -88,7 +90,8 @@ public class DisplayColor extends DialogPreference {
         for (int i = 0; i < SEEKBAR_ID.length; i++) {
             SeekBar seekBar = (SeekBar) view.findViewById(SEEKBAR_ID[i]);
             TextView value = (TextView) view.findViewById(SEEKBAR_VALUE_ID[i]);
-            mSeekBars[i] = new ColorSeekBar(seekBar, value, i, Integer.valueOf(mCurrentColors[i]));
+            mSeekBars[i] = new ColorSeekBar(seekBar, value, i);
+            mSeekBars[i].setValueFromString(mCurrentColors[i]);
         }
     }
 
@@ -118,9 +121,46 @@ public class DisplayColor extends DialogPreference {
             Editor editor = getEditor();
             editor.putString("display_color_calibration", DisplayColorCalibration.getCurColors());
             editor.commit();
-        } else {
+        } else if (mOriginalColors != null) {
             DisplayColorCalibration.setColors(mOriginalColors);
         }
+    }
+
+    @Override
+    protected Parcelable onSaveInstanceState() {
+        final Parcelable superState = super.onSaveInstanceState();
+        if (getDialog() == null || !getDialog().isShowing()) {
+            return superState;
+        }
+
+        // Save the dialog state
+        final SavedState myState = new SavedState(superState);
+        myState.currentColors = mCurrentColors;
+        myState.originalColors = mOriginalColors;
+
+        // Restore the old state when the activity or dialog is being paused
+        DisplayColorCalibration.setColors(mOriginalColors);
+        mOriginalColors = null;
+
+        return myState;
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Parcelable state) {
+        if (state == null || !state.getClass().equals(SavedState.class)) {
+            // Didn't save state for us in onSaveInstanceState
+            super.onRestoreInstanceState(state);
+            return;
+        }
+
+        SavedState myState = (SavedState) state;
+        super.onRestoreInstanceState(myState.getSuperState());
+        mOriginalColors = myState.originalColors;
+        mCurrentColors = myState.currentColors;
+        for (int i = 0; i < mSeekBars.length; i++) {
+            mSeekBars[i].setValueFromString(mCurrentColors[i]);
+        }
+        DisplayColorCalibration.setColors(TextUtils.join(" ", mCurrentColors));
     }
 
     public static boolean isSupported() {
@@ -145,27 +185,64 @@ public class DisplayColor extends DialogPreference {
         }
     }
 
+    private static class SavedState extends BaseSavedState {
+        String originalColors;
+        String[] currentColors;
+
+        public SavedState(Parcelable superState) {
+            super(superState);
+        }
+
+        public SavedState(Parcel source) {
+            super(source);
+            originalColors = source.readString();
+            currentColors = source.createStringArray();
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            super.writeToParcel(dest, flags);
+            dest.writeString(originalColors);
+            dest.writeStringArray(currentColors);
+        }
+
+        public static final Parcelable.Creator<SavedState> CREATOR =
+                new Parcelable.Creator<SavedState>() {
+
+            public SavedState createFromParcel(Parcel in) {
+                return new SavedState(in);
+            }
+
+            public SavedState[] newArray(int size) {
+                return new SavedState[size];
+            }
+        };
+    }
+
     private class ColorSeekBar implements SeekBar.OnSeekBarChangeListener {
         private int mIndex;
-        private int mOriginal;
         private SeekBar mSeekBar;
         private TextView mValue;
 
-        public ColorSeekBar(SeekBar seekBar, TextView value, int index, int original) {
+        public ColorSeekBar(SeekBar seekBar, TextView value, int index) {
             mSeekBar = seekBar;
             mValue = value;
             mIndex = index;
-            mOriginal = original;
 
             mSeekBar.setMax(DisplayColorCalibration.getMaxValue());
             mSeekBar.setOnSeekBarChangeListener(this);
-            mSeekBar.setProgress(mOriginal);
+        }
+
+        public void setValueFromString(String valueString) {
+            mSeekBar.setProgress(Integer.valueOf(valueString));
         }
 
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-            mCurrentColors[mIndex] = String.valueOf(progress);
-            DisplayColorCalibration.setColors(TextUtils.join(" ", mCurrentColors));
+            if (fromUser) {
+                mCurrentColors[mIndex] = String.valueOf(progress);
+                DisplayColorCalibration.setColors(TextUtils.join(" ", mCurrentColors));
+            }
 
             int min = DisplayColorCalibration.getMinValue();
             int max = DisplayColorCalibration.getMaxValue();

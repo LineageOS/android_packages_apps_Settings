@@ -22,6 +22,8 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.preference.DialogPreference;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
@@ -152,10 +154,54 @@ public class DisplayGamma extends DialogPreference {
                 editor.putString("display_gamma_" + i, DisplayGammaCalibration.getCurGamma(i));
             }
             editor.commit();
-        } else {
+        } else if (mOriginalColors != null) {
             for (int i = 0; i < mNumberOfControls; i++) {
                 DisplayGammaCalibration.setGamma(i, mOriginalColors[i]);
             }
+        }
+    }
+
+    @Override
+    protected Parcelable onSaveInstanceState() {
+        final Parcelable superState = super.onSaveInstanceState();
+        if (getDialog() == null || !getDialog().isShowing()) {
+            return superState;
+        }
+
+        // Save the dialog state
+        final SavedState myState = new SavedState(superState);
+        myState.controlCount = mNumberOfControls;
+        myState.currentColors = mCurrentColors;
+        myState.originalColors = mOriginalColors;
+
+        // Restore the old state when the activity or dialog is being paused
+        for (int i = 0; i < mNumberOfControls; i++) {
+            DisplayGammaCalibration.setGamma(i, mOriginalColors[i]);
+        }
+        mOriginalColors = null;
+
+        return myState;
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Parcelable state) {
+        if (state == null || !state.getClass().equals(SavedState.class)) {
+            // Didn't save state for us in onSaveInstanceState
+            super.onRestoreInstanceState(state);
+            return;
+        }
+
+        SavedState myState = (SavedState) state;
+        super.onRestoreInstanceState(myState.getSuperState());
+        mNumberOfControls = myState.controlCount;
+        mOriginalColors = myState.originalColors;
+        mCurrentColors = myState.currentColors;
+
+        for (int index = 0; index < mNumberOfControls; index++) {
+            for (int color = 0; color < BAR_COLORS.length; color++) {
+                mSeekBars[index][color].setGamma(Integer.valueOf(mCurrentColors[index][color]));
+            }
+            DisplayGammaCalibration.setGamma(index, TextUtils.join(" ", mCurrentColors[index]));
         }
     }
 
@@ -180,6 +226,48 @@ public class DisplayGamma extends DialogPreference {
                 DisplayGammaCalibration.setGamma(i, values);
             }
         }
+    }
+
+    private static class SavedState extends BaseSavedState {
+        int controlCount;
+        String[] originalColors;
+        String[][] currentColors;
+
+        public SavedState(Parcelable superState) {
+            super(superState);
+        }
+
+        public SavedState(Parcel source) {
+            super(source);
+            controlCount = source.readInt();
+            originalColors = source.createStringArray();
+            currentColors = new String[controlCount][];
+            for (int i = 0; i < controlCount; i++) {
+                currentColors[i] = source.createStringArray();
+            }
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            super.writeToParcel(dest, flags);
+            dest.writeInt(controlCount);
+            dest.writeStringArray(originalColors);
+            for (int i = 0; i < controlCount; i++) {
+                dest.writeStringArray(currentColors[i]);
+            }
+        }
+
+        public static final Parcelable.Creator<SavedState> CREATOR =
+                new Parcelable.Creator<SavedState>() {
+
+            public SavedState createFromParcel(Parcel in) {
+                return new SavedState(in);
+            }
+
+            public SavedState[] newArray(int size) {
+                return new SavedState[size];
+            }
+        };
     }
 
     private class GammaSeekBar implements SeekBar.OnSeekBarChangeListener {
@@ -218,9 +306,11 @@ public class DisplayGamma extends DialogPreference {
 
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-            mCurrentColors[mControlIndex][mColorIndex] = String.valueOf(progress + mMin);
-            DisplayGammaCalibration.setGamma(mControlIndex,
-                    TextUtils.join(" ", mCurrentColors[mControlIndex]));
+            if (fromUser) {
+                mCurrentColors[mControlIndex][mColorIndex] = String.valueOf(progress + mMin);
+                DisplayGammaCalibration.setGamma(mControlIndex,
+                        TextUtils.join(" ", mCurrentColors[mControlIndex]));
+            }
             mValue.setText(String.valueOf(progress + mMin));
         }
 
