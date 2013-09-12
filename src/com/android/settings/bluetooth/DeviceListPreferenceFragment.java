@@ -128,21 +128,21 @@ public abstract class DeviceListPreferenceFragment extends
         }
     }
 
-    void removeOutOfRangeDevices() {
+    void removeOorDevices() {
         Collection<CachedBluetoothDevice> cachedDevices =
-            mLocalManager.getCachedDeviceManager().getCachedDevicesCopy();
+                mLocalManager.getCachedDeviceManager().getCachedDevicesCopy();
         for (CachedBluetoothDevice cachedDevice : cachedDevices) {
-            if (cachedDevice.getBondState() == BluetoothDevice.BOND_NONE &&
-                    !cachedDevice.isVisible()) {
-                Log.d(TAG, "Device " + cachedDevice + " went out of range");
-                BluetoothDevicePreference preference = mDevicePreferenceMap.get(cachedDevice);
-                if (preference != null) {
-                    mDeviceListGroup.removePreference(preference);
-                }
-                mDevicePreferenceMap.remove(cachedDevice);
-                cachedDevice.setRemovable(true);
-            }
-        }
+             if (cachedDevice.getBondState() == BluetoothDevice.BOND_NONE &&
+                 !cachedDevice.isVisible()) {
+                 Log.d(TAG, "Device Removed " + cachedDevice);
+                 BluetoothDevicePreference preference = mDevicePreferenceMap.get(cachedDevice);
+                 if (preference != null) {
+                     mDeviceListGroup.removePreference(preference);
+                 }
+                 mDevicePreferenceMap.remove(cachedDevice);
+                 cachedDevice.setRemovable(true);
+             }
+         }
     }
 
     @Override
@@ -206,8 +206,8 @@ public abstract class DeviceListPreferenceFragment extends
     }
 
     public void onScanningStateChanged(boolean started) {
-        if (!started) {
-            removeOutOfRangeDevices();
+        if (started == false) {
+          removeOorDevices();
         }
         updateProgressUi(started);
     }

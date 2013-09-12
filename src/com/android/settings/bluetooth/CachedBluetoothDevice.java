@@ -63,8 +63,8 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
     private boolean mLocalNapRoleConnected;
 
     private boolean mVisible;
-    // Whether device is unpaired and out of range
-    private boolean mRemovable;
+
+    private boolean mDeviceRemove;
 
     private int mPhonebookPermissionChoice;
     private int mMessagePermissionChoice;
@@ -403,8 +403,9 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
     }
 
     boolean isRemovable () {
-        return mRemovable;
-    }
+        return mDeviceRemove;
+   }
+
 
     void setVisible(boolean visible) {
         if (mVisible != visible) {
@@ -414,8 +415,9 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
     }
 
     void setRemovable(boolean removable) {
-        mRemovable = removable;
+        mDeviceRemove = removable;
     }
+
 
     int getBondState() {
         return mDevice.getBondState();
