@@ -22,6 +22,7 @@ import android.bluetooth.BluetoothHeadset;
 import android.bluetooth.BluetoothInputDevice;
 import android.bluetooth.BluetoothPan;
 import android.bluetooth.BluetoothSap;
+import android.bluetooth.BluetoothDun;
 import android.bluetooth.BluetoothPbap;
 import android.bluetooth.BluetoothProfile;
 import android.bluetooth.BluetoothUuid;
@@ -85,6 +86,7 @@ final class LocalBluetoothProfileManager {
     private OppProfile mOppProfile;
     private final PanProfile mPanProfile;
     private SapServerProfile mSapProfile;
+    private DunServerProfile mDunProfile;
     private final PbapServerProfile mPbapProfile;
 
     /**
@@ -123,10 +125,16 @@ final class LocalBluetoothProfileManager {
                 BluetoothPan.ACTION_CONNECTION_STATE_CHANGED);
 
         // enable SAP only if the property is set
-        if(SystemProperties.getBoolean("ro.qualcomm.bluetooth.sap", false) == true) {
+        if (SystemProperties.getBoolean("ro.bluetooth.sap", false) == true) {
             mSapProfile = new SapServerProfile(context);
             addProfile(mSapProfile, SapServerProfile.NAME,
                     BluetoothSap.ACTION_CONNECTION_STATE_CHANGED);
+        }
+        // enable DUN only if the property is set
+        if (SystemProperties.getBoolean("ro.bluetooth.dun", false) == true) {
+            mDunProfile = new DunServerProfile(context);
+            addProfile(mDunProfile, DunServerProfile.NAME,
+                    BluetoothDun.ACTION_CONNECTION_STATE_CHANGED);
         }
 
 
