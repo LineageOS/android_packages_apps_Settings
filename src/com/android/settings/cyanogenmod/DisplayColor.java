@@ -106,9 +106,12 @@ public class DisplayColor extends DialogPreference {
         defaultsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for (ColorSeekBar csb : mSeekBars) {
-                    csb.mSeekBar.setProgress(DisplayColorCalibration.getMaxValue());
+                int defaultValue = DisplayColorCalibration.getMaxValue();
+                for (int i = 0; i < mSeekBars.length; i++) {
+                    mSeekBars[i].mSeekBar.setProgress(defaultValue);
+                    mCurrentColors[i] = String.valueOf(defaultValue);
                 }
+                DisplayColorCalibration.setColors(TextUtils.join(" ", mCurrentColors));
             }
         });
     }
