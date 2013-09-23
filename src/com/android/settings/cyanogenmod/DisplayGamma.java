@@ -21,6 +21,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -287,10 +288,17 @@ public class DisplayGamma extends DialogPreference {
             mValue = (TextView) container.findViewById(R.id.color_value);
             mSeekBar = (SeekBar) container.findViewById(R.id.color_seekbar);
 
+            // the semantics for the controls is set per-device via overlay here
+            final Resources res = container.getResources();
+            final String[] gammaDescriptors = res.getStringArray(R.array.gamma_descriptors);
+
             TextView label = (TextView) container.findViewById(R.id.color_text);
             CharSequence color = container.getContext().getString(BAR_COLORS[colorIndex]);
             if (mNumberOfControls == 1) {
                 label.setText(color);
+            } else if (controlIndex < gammaDescriptors.length) {
+                CharSequence descriptor = gammaDescriptors[controlIndex];
+                label.setText(color + " " + descriptor);
             } else {
                 label.setText(color + " " + (controlIndex + 1));
             }
