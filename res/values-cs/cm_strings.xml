@@ -132,6 +132,7 @@
     <string name="lockscreen_battery_status_title">Stav baterie</string>
     <string name="lockscreen_battery_status_charging">Jenom pří nabíjení</string>
     <string name="lockscreen_battery_status_alwayson">Vždy zapnuto</string>
+    <string name="lockscreen_battery_status_alwaysoff">Vždy vypnuto</string>
 
     <string name="profiles_settings_title">Profily</string>
     <string name="profiles_add">Přidat</string>
@@ -241,17 +242,22 @@
     <string name="performance_settings_title">Nastavení výkonu</string>
     <string name="performance_settings_warning_title">Postupujte s opatrností!</string>
     <string name="performance_settings_warning">Tato nastavení jsou určena pouze pro experimentování a jakékoliv změny v nich můžou vést k nestabilitě či pádům systému, ztrátě dat nebo selhání hardware.\nNeposílejte prosím hlášení o chybách, pokud jste je jakkoliv měnili.</string>
+    <string name="performance_set_on_boot">Nastavit při spuštění</string>
+    <string name="performance_set_on_boot_summary">Provést nastavení změn při startu systému</string>
 
     <string name="processor_title">Procesor</string>
-
     <string name="cpu_cur_freq_title">Aktuální frekvence CPU</string>
     <string name="cpu_governors_title">CPU regulátor</string>
     <string name="cpu_min_freq_title">Min frekvence CPU</string>
     <string name="cpu_max_freq_title">Max frekvence CPU</string>
 
     <string name="io_scheds_title">I/O plánovač</string>
-
     <string name="io_sched_title">I/O plánovač</string>
+
+    <string name="perf_profile_title">Profil</string>
+    <string name="perf_profile_pwrsv">Úsporný</string>
+    <string name="perf_profile_bal">Vyvážený</string>
+    <string name="perf_profile_perf">Výkonný</string>
 
     <string name="memory_management_title">Správa paměti</string>
     <string name="pref_zram_title">zRam</string>
@@ -385,7 +391,7 @@
     <string name="battery_light_full_color_title">Plně nabito</string>
 
     <string name="volume_overlay_title">Vzhled panelu hlasitosti</string>
-    <string name="volbtn_music_controls_title">Umožnit ovládání přehrávání hudby</string>
+    <string name="volbtn_music_controls_title">Ovládání přehrávání</string>
     <string name="volbtn_music_controls_summary">Při vypnuté obrazovce bude dlouhý stisk tlačítek hlasitosti sloužit k pohybu ve skladbách</string>
     <string name="volume_ring_only_description">Vyzvánění</string>
     <string name="ring_mode_title">Režim vyzvánění</string>
@@ -400,6 +406,7 @@
     <string name="hardware_keys_menu_key_title">Tlačítko Nabídka</string>
     <string name="hardware_keys_assist_key_title">Tlačítko Vyhledávání</string>
     <string name="hardware_keys_appswitch_key_title">Tlačítko Nedávné</string>
+    <string name="hardware_keys_camera_key_title">Tlačítko fotoaparátu</string>
     <string name="hardware_keys_volume_keys_title">Tlačítka hlasitosti</string>
     <string name="hardware_keys_short_press_title">Akce krátkého stisku</string>
     <string name="hardware_keys_long_press_title">Akce dlouhého stisku</string>
@@ -414,12 +421,13 @@
     <string name="hardware_keys_action_search">Vyhledávací asistent</string>
     <string name="hardware_keys_action_voice_search">Hlasové vyhledávání</string>
     <string name="hardware_keys_action_in_app_search">Hledat v aplikacích</string>
+    <string name="hardware_keys_action_launch_camera">Spustit fotoaparát</string>
     <string name="home_wake_title">Probuzení tlačítkem Domů</string>
     <string name="home_wake_summary">Stiskem tlačítka Domů bude zařízení probuzeno</string>
     <string name="volume_wake_title">Probuzení tlačítkem hlasitosti</string>
     <string name="volume_wake_summary">Stiskem tlačítka hlasitosti bude zařízení probuzeno</string>
 
-    <string name="swap_volume_buttons_title">Převrátit tlačítka hlasistosti</string>
+    <string name="swap_volume_buttons_title">Převrátit smysl tlačítek hlasistosti</string>
     <string name="swap_volume_buttons_summary">V případě otočení obrazovky bude převrácen i smysl tlačítek hlasitosti</string>
 
     <string name="navigation_bar_category">Navigační lišta</string>
@@ -509,6 +517,7 @@
     <string name="lockscreen_buttons_previous">Předchozí skladba</string>
     <string name="lockscreen_buttons_playpause">Přehrávat/pozastavit skladbu</string>
     <string name="lockscreen_buttons_toggle_sound">Přepnout zvukový režim</string>
+    <string name="lockscreen_buttons_sleep">Uspat zařízení</string>
 
     <string name="quick_settings_panel_title">Panel rychlého nastavení</string>
     <string name="title_static_tiles">Statické dlaždice</string>
@@ -541,6 +550,7 @@
     <string name="title_tile_quiet_hours">Tiché hodiny</string>
     <string name="title_tile_volume">Hlasitost</string>
     <string name="title_tile_expanded_desktop">Rozšířená plocha</string>
+    <string name="title_tile_network_adb">ADB po síti</string>
 
     <string name="title_dynamic_tiles">Dynamické dlaždice</string>
     <string name="dynamic_tiles_note_title">Poznámka</string>
@@ -762,7 +772,7 @@ jednotlivě měnit a tím zvětšit počet řídících bodů. \'Odstranit\' sma
     <string name="privacy_guard_filter_does_not_match">Není naisntalována žádná aplikace s příslušným oprávněním</string>
     <string name="privacy_guard_help_title">Nápověda</string>
     <string name="privacy_guard_reset_title">Obnovit</string>
-    <string name="privacy_guard_help_text">Na této obrazovce můžete vybrat, která aplikace má být sledována Ochranou soukromí. Zvolené aplikace nebudou mít umožněno přistupovat k soukromím údajům, jako jsou kontakty, zprávy nebo seznamy hovorů. Dlouhým stiskem na dané aplikaci se zobrazí její systémové informace.\n\nVe výchozím stavu se systémové aplikace nezobrazují. Pokud chcete zobrazit i systémové aplikace, nebo jen takové, které vyžadují oprávnění pro přístup k osobním údajům, vyberte danou volbu z nabídky.</string>
+    <string name="privacy_guard_help_text">Na této obrazovce můžete vybrat, která aplikace má být sledována Ochranou soukromí. Zvolené aplikace nebudou mít umožněno přistupovat k soukromím údajům, jako jsou kontakty, zprávy nebo seznamy hovorů. Dlouhým stiskem na dané aplikaci se zobrazí její systémové informace.\n\nVe výchozím stavu se systémové aplikace nezobrazují. Pokud chcete zobrazit i systémové aplikace, vyberte danou volbu z nabídky.</string>
     <string name="privacy_guard_manager_show_system_apps">Zobrazit systémové aplikace</string>
     <string name="privacy_guard_manager_filter_permissions">Filtr oprávnění</string>
 
@@ -821,6 +831,8 @@ jednotlivě měnit a tím zvětšit počet řídících bodů. \'Odstranit\' sma
 
     <string name="gamma_tuning_title_head">Gamma kalibrace</string>
     <string name="gamma_tuning_summary_head">Přizpůsobení hodnot gamma</string>
+    <string name="gamma_tuning_contrast">Kontrast</string>
+    <string name="gamma_tuning_brightness">Jas</string>
 
     <string name="more_device_controls_title">Více\u2026</string>
     <string name="more_device_settings_title">Další nastavení zařízení</string>
