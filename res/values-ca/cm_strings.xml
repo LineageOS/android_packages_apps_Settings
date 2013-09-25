@@ -76,6 +76,7 @@
     <string name="preview_country_title">País</string>
     <string name="preview_carrier_title">Portadora</string>
     <string name="header_category_interface">INTERFÍCIE</string>
+    <string name="homescreen_settings_title">Pantalla d\'inici</string>
     <string name="themes_settings_title">Temes</string>
     <string name="system_settings_title">Sistema</string>
     <string name="system_interface_title">Interfície del Sistema</string>
@@ -287,8 +288,10 @@
     <string name="profile_add_nfc_text">Aquesta etiqueta NFC fa referència a un perfil desconegut. Adjuntant aquesta etiqueta NFC a un perfil existent permetrà seleccionar el perfil en el futur.</string>
     <string name="profile_select">Selecciona perfil</string>
     <string name="link_volume_ringtones">Vincula el to de trucada &amp; els volums de les notificacions</string>
-    <string name="link_volume_mutes">El mode silencia afecta les notificacions</string>
+    <string name="link_volume_mutes">El mode silenci afecta les notificacions</string>
     <string name="volume_keys_control_ring_stream">Les tecles de volum controlen el volum del to de trucada</string>
+    <string name="display_lights_settings_title">Pantalla &amp; llums</string>
+    <string name="lights_category_title">Llums</string>
     <string name="notification_pulse_title">Llum de notificació</string>
     <string name="notification_light_general_title">General</string>
     <string name="notification_light_applist_title">Aplicacions</string>
@@ -299,6 +302,8 @@
     <string name="notification_light_default_value">Predeterminat</string>
     <string name="notification_light_missed_call_title">Trucada perduda</string>
     <string name="notification_light_voicemail_title">Contestador</string>
+    <string name="adaptive_backlight_title">Retroil·luminació adaptativa</string>
+    <string name="adaptive_backlight_summary">Varia la brillantor de la pantalla de manera intel·ligent i ajuda a maximitzar la duració de la bateria</string>
     <string name="edit_light_settings">Edita els ajustos de llum</string>
     <string name="pulse_speed_title">Durada i velocitat de la parpalleig</string>
     <string name="default_time">Normal</string>
@@ -333,7 +338,17 @@
     <string name="ring_mode_normal">Normal</string>
     <string name="ring_mode_vibrate">Vibració</string>
     <string name="ring_mode_mute">Silenci</string>
+    <string name="automation_effects_title">Automatització &amp; Efectes</string>
+    <string name="button_settings">Botons</string>
     <string name="hardware_keys_enable_custom_title">Activa les accions personalitzades</string>
+    <string name="hardware_keys_home_key_title">Botó d\'inici</string>
+    <string name="hardware_keys_menu_key_title">Botó menú</string>
+    <string name="hardware_keys_assist_key_title">Botó cerca</string>
+    <string name="hardware_keys_appswitch_key_title">Botó recents</string>
+    <string name="hardware_keys_volume_keys_title">Botons de volum</string>
+    <string name="hardware_keys_short_press_title">Acció amb pulsació curta</string>
+    <string name="hardware_keys_long_press_title">Acció amb pulsació llarga</string>
+    <string name="hardware_keys_double_tap_title">Acció amb doble pulsació</string>
     <string name="hardware_keys_show_overflow_title">Mostra acció de desbordament</string>
     <string name="hardware_keys_show_overflow_summary">Mostra el botó del menú de 3-punts de desbordament en les apps</string>
     <string name="hardware_keys_show_overflow_toast_enable">El botó de desbordament d\'acció podria no ser visible fins que les apps s\'hagin reiniciat</string>
@@ -344,6 +359,10 @@
     <string name="hardware_keys_action_search">Assistent de cerca</string>
     <string name="hardware_keys_action_voice_search">Cerca per veu</string>
     <string name="hardware_keys_action_in_app_search">Cerca dins l\'app</string>
+    <string name="home_wake_title">Desperta amb la tecla d\'inici</string>
+    <string name="home_wake_summary">Apretant la tecla d\'inici el dispositiu sortirà del repòs</string>
+    <string name="volume_wake_title">Desperta amb la tecla de volum</string>
+    <string name="volume_wake_summary">Apretant la tecla de volum el dispositiu sortirà del repòs</string>
     <string name="swap_volume_buttons_title">Intercanvia els botons de volum</string>
     <string name="swap_volume_buttons_summary">Intercanvia els botons de volum quan la pantalla estigui rotada</string>
     <string name="navigation_bar_title">Botons i disposició</string>
@@ -407,6 +426,7 @@
     <string name="adb_notify">Notificació de depuració USB</string>
     <string name="adb_notify_summary">Mostra una notificació quan la depuració USB estigui connectada</string>
     <string name="development_tools_title">Llança Eines</string>
+    <string name="allow_mock_sms">Permet els SMS simulats</string>
     <string name="usb_mass_storage_title">Emmagatzematge massiu</string>
     <string name="usb_mass_storage_summary">Activa l\'emmagatzematge massiu USB</string>
     <string name="storage_rescan_media">Cerca una altra vegada dispositius d\'emmagatzematge</string>
@@ -511,6 +531,9 @@
     <string name="safe_headset_volume_title">Volum dels auriculars segur</string>
     <string name="cyanogenmod_waiver_title">Renúncia</string>
     <string name="cyanogenmod_waiver_body">Canviar aquest ajust podria anar en contra del teu país o les lleis nacionals.\n\nSeleccionant \'OK\', declares conèixer aquesta alerta i renuncies, i alliberes a CyanogenMod i els seus contribuïdors de totes les responsabilitat legals.</string>
+    <string name="auto_brightness_setup_title">Brillantor automàtica</string>
+    <string name="auto_brightness_adjustment_title">Ajust de la brillantor</string>
+    <string name="auto_brightness_twilight_adjustment">Ajusta a l\'alba i a la posta de sol</string>
     <string name="light_sensor_current_value">Valor actual del sensor de llum: <xliff:g id="light_level">%d</xliff:g> lux</string>
     <string name="auto_brightness_dialog_title">Nivells de brillantor automàtics</string>
     <string name="auto_brightness_level_format"><xliff:g id="level">%1$d</xliff:g> lux</string>
@@ -620,6 +643,8 @@ Hi ha disponibles opcions adicionals apretant llargament sobre la línia. Selecc
     <string name="power_notifications_ringtone_silent">Silenci</string>
     <string name="screen_off_animation_title">Animació d\'apagat de la pantalla</string>
     <string name="screen_off_animation_summary">Mostra l\'animació del feix d\'electrons quan s\'apagui la pantalla</string>
+    <string name="wake_when_plugged_or_unplugged_title">Desperta en endollar</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Encén la pantalla quan es connecti o es desconnecti el carregador</string>
     <string name="confirm_delete_apn">L\'APN serà esborrada.</string>
     <string name="privacy_guard_switch_label">Activa el guarda de privacitat</string>
     <string name="privacy_guard_dlg_title">Vols activar el guarda de privacitat?</string>
@@ -636,4 +661,64 @@ Hi ha disponibles opcions adicionals apretant llargament sobre la línia. Selecc
     <string name="privacy_guard_help_text">En aquesta pantalla pots escollir per a quines apps el guarda de privacitat estarà actiu  simplement picant sobre elles. Les apps seleccionades no tindran accés a les teves dades personals, com ara els contactes, missatges o registres de trucades. Una pulsació llarga en una entrada obre la pantalla de detalls de l\'app per aquella app.\n\nPer defecte les apps incloses no es mostren. Si vols mostrar-les o filtrar apps per mostrar només les que demanin accés a dades personals segons els seus permisos, selecciona les opcions respectives al menú.</string>
     <string name="privacy_guard_manager_show_system_apps">Mostra les apps incloses</string>
     <string name="privacy_guard_manager_filter_permissions">Filtre de permisos</string>
+    <string name="blacklist_title">Llista negra</string>
+    <string name="blacklist_edit_dialog_title">Edita entrada de la llista negra</string>
+    <string name="blacklist_prefs">Ajustaments</string>
+    <string name="blacklist_button_delete">Esborra</string>
+    <string name="blacklist_empty_text">No tens cap número a la llista negra. Afegeix una entrada tocant el botó Afegeix (+).</string>
+    <string name="blacklist_disabled_empty_text">Per bloquejar trucades i/o missatges de certs números, activa la llista negra.</string>
+    <string name="blacklist_summary_disabled">Desactivat</string>
+    <string name="blacklist_summary">Les trucades entrants i missatges de números de telèfon a la llista negra seran bloquejats</string>
+    <string name="blacklist_notify">Mostra notificacions</string>
+    <string name="blacklist_private_numbers_title">Números privats</string>
+    <string name="blacklist_private_numbers_summary_disabled">No bloquegis les trucades de números privats</string>
+    <string name="blacklist_private_numbers_summary">Bloqueja les entrades <xliff:g id="type">%s</xliff:g> de números privats</string>
+    <string name="blacklist_unknown_numbers_title">Números desconeguts</string>
+    <string name="blacklist_unknown_numbers_summary_disabled">No bloquegis trucades o missatges de números que no siguin a la llista de contactes</string>
+    <string name="blacklist_unknown_numbers_summary">Bloqueja les entrades <xliff:g id="type">%s</xliff:g> de números que no siguin a la llista de contactes</string>
+    <string name="blacklist_summary_type_calls_only">trucades</string>
+    <string name="blacklist_summary_type_messages_only">missatges</string>
+    <string name="blacklist_summary_type_calls_and_messages">trucades i missatges</string>
+    <string name="blacklist_regex_title">Utilitza comodins</string>
+    <string name="blacklist_regex_summary">Utilitza . com a comodí i * per la repetició. Per ex. 123.* bloqueja els números que comencen per 123 i .*123.* bloqueja els números que contenen 123</string>
+    <string name="blacklist_policy_block_calls">Bloqueja les trucades entrants</string>
+    <string name="blacklist_policy_block_messages">Bloqueja els missatges entrants</string>
+    <string name="add_blacklist_number">Afegeix el número</string>
+    <string name="remove_blacklist_number_title">Treu el número</string>
+    <string name="remove_blacklist_entry">Vols treure aquesta entrada de la llista negra?</string>
+    <string name="select_contact">Selecciona contacte</string>
+    <string name="vibrator_intensity_title">Intensitat del vibrador</string>
+    <string name="vibrator_warning">No es recomanen valors més alts de %1$d</string>
+    <string name="color_calibration_title">Calibració de color</string>
+    <string name="color_calibration_summary">Calibra els colors de la pantalla</string>
+    <string name="color_red_title">Vermell</string>
+    <string name="color_green_title">Verd</string>
+    <string name="color_blue_title">Blau</string>
+    <string name="button_backlight_title">Retroil·luminació</string>
+    <string name="button_backlight_enabled">Il·lumina els botons</string>
+    <string name="keyboard_backlight_enabled">Il·lumina el teclat</string>
+    <string name="button_backlight_seekbar_title">Brillantor dels botons</string>
+    <string name="keyboard_backlight_seekbar_title">Brillantor del teclat</string>
+    <string name="backlight_timeout_title">Temps d\'espera de l\'Il·luminació</string>
+    <string name="backlight_timeout_unlimited">No apaguis</string>
+    <plurals name="backlight_timeout_time">
+        <item quantity="one"><xliff:g id="seconds">%d</xliff:g> segon</item>
+        <item quantity="other"><xliff:g id="seconds">%d</xliff:g> segons</item>
+    </plurals>
+    <string name="backlight_summary_disabled">Desactivada</string>
+    <string name="backlight_summary_enabled_with_timeout">Activada durant <xliff:g id="timeout">%s</xliff:g></string>
+    <string name="backlight_summary_enabled">Activada</string>
+    <string name="gamma_tuning_title_head">Calibració de gamma</string>
+    <string name="gamma_tuning_summary_head">Millora els valors gamma</string>
+    <string name="more_device_controls_title">Més\u2026</string>
+    <string name="more_device_settings_title">Opcions d\'altres dispositius</string>
+    <string name="sensors_motors_title">Sensors &amp; motors</string>
+    <string name="display_calibration_title">Calibració de pantalla</string>
+    <string name="category_quick_access">Accés ràpid a la cinta</string>
+    <string name="title_quick_access">Mostra a les notificacions</string>
+    <string name="title_quick_access_linked">Disposició vinculada</string>
+    <string name="summary_quick_access_linked">Utilitza les mateixes cel·les i disposicions que en el panell d\'ajustos ràpids</string>
+    <string name="font_size_sample">Mostra</string>
+    <string name="selinux_enable_title">Android amb seguretat millorada (SEAndroid)</string>
+    <string name="selinux_enable_warning">Estàs a punt d\'activar SEAndroid, un mecanisme avançat de seguretat en el teu dispositiu.\n\nAquesta opció existeix només per a propòsits de depuració, i és molt probable que el teu dispositiu no estigui completament preparat per això, cosa que podria causar que parts (o tot) del teu maquinari es pengin.\n\nEstàs segur que vols procedir?</string>
 </resources>
