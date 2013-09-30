@@ -42,6 +42,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private static final String KEY_APP_SWITCH_PRESS = "hardware_keys_app_switch_press";
     private static final String KEY_APP_SWITCH_LONG_PRESS = "hardware_keys_app_switch_long_press";
     private static final String KEY_BUTTON_BACKLIGHT = "button_backlight";
+    private static final String KEY_SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
 
     private static final String CATEGORY_HOME = "home_key";
     private static final String CATEGORY_MENU = "menu_key";
@@ -77,6 +78,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private ListPreference mAppSwitchPressAction;
     private ListPreference mAppSwitchLongPressAction;
     private CheckBoxPreference mShowActionOverflow;
+    private CheckBoxPreference mSwapVolumeButtons;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -197,6 +199,11 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         }
 
         if (Utils.hasVolumeRocker(getActivity())) {
+            int swapVolumeKeys = Settings.System.getInt(getContentResolver(),
+                    Settings.System.SWAP_VOLUME_KEYS_ON_ROTATION, 0);
+            mSwapVolumeButtons = (CheckBoxPreference)
+                    prefScreen.findPreference(KEY_SWAP_VOLUME_BUTTONS);
+            mSwapVolumeButtons.setChecked(swapVolumeKeys > 0);
             if (!res.getBoolean(R.bool.config_show_volumeRockerWake)) {
                 volumeCategory.removePreference(findPreference(Settings.System.VOLUME_WAKE_SCREEN));
             }
@@ -275,6 +282,11 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
             Toast.makeText(getActivity(), toastResId, Toast.LENGTH_LONG).show();
             return true;
+        } else if (preference == mSwapVolumeButtons) {
+            int value = mSwapVolumeButtons.isChecked()
+                    ? (Utils.isTablet(getActivity()) ? 2 : 1) : 0;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.SWAP_VOLUME_KEYS_ON_ROTATION, value);
         }
 
         return super.onPreferenceTreeClick(preferenceScreen, preference);
