@@ -51,5 +51,12 @@
     <string name="max_cpu_freq_file" translatable="false">/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq</string>
     <string name="min_cpu_freq_file" translatable="false">/sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq</string>
 
+    <!-- Whether the device support custom performance profiles. Leave empty when
+         the device do not support it. -->
+    <string name="config_perf_profile_prop" translatable="false"></string>
+    <!-- When config_perf_profile_prop = true, then this value MUST be one of the
+         values listed in cm_arrays for perf_profile_values -->
+    <string name="config_perf_profile_default_entry" translatable="false"></string>
+
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>
