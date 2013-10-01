@@ -130,11 +130,17 @@ public class AppOpsState {
 
     public static final OpsTemplate MESSAGING_TEMPLATE = new OpsTemplate(
             new int[] { AppOpsManager.OP_READ_SMS,
+                    AppOpsManager.OP_READ_MMS,
                     AppOpsManager.OP_WRITE_SMS,
+                    AppOpsManager.OP_WRITE_MMS,
                     AppOpsManager.OP_SEND_SMS,
+                    AppOpsManager.OP_SEND_MMS,
                     AppOpsManager.OP_READ_ICC_SMS,
                     AppOpsManager.OP_WRITE_ICC_SMS },
             new boolean[] { true,
+                    true,
+                    true,
+                    true,
                     true,
                     true,
                     true,
