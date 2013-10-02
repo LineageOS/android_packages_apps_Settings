@@ -297,7 +297,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                     Settings.System.KEY_CAMERA_ACTION);
             return true;
         } else if (preference == mCameraLongPressAction) {
-            handleActionListChange(mAppSwitchLongPressAction, newValue,
+            handleActionListChange(mCameraLongPressAction, newValue,
                     Settings.System.KEY_CAMERA_LONG_PRESS_ACTION);
             return true;
         }
