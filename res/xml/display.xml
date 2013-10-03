@@ -108,6 +108,12 @@
                 android:defaultValue="false"
                 settings:advanced="true"/>
 
+        <ListPreference
+                android:key="lcd_density"
+                android:title="@string/lcd_density"
+                android:persistent="false"
+                settings:advanced="true" />
+
         <!-- Cast screen -->
         <PreferenceScreen
                 android:key="wifi_display"
