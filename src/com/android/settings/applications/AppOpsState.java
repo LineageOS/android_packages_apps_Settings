@@ -16,6 +16,7 @@
 
 package com.android.settings.applications;
 
+import android.app.Activity;
 import android.app.AppOpsManager;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -23,6 +24,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -52,12 +54,15 @@ public class AppOpsState {
 
     List<AppOpEntry> mApps;
 
+    private SharedPreferences mPreferences;
+
     public AppOpsState(Context context) {
         mContext = context;
         mAppOps = (AppOpsManager)context.getSystemService(Context.APP_OPS_SERVICE);
         mPm = context.getPackageManager();
         mOpSummaries = context.getResources().getTextArray(R.array.app_ops_summaries_cm);
         mOpLabels = context.getResources().getTextArray(R.array.app_ops_labels_cm);
+        mPreferences = context.getSharedPreferences("appops_manager", Activity.MODE_PRIVATE);
     }
 
     public static class OpsTemplate implements Parcelable {
@@ -441,23 +446,44 @@ public class AppOpsState {
 
     private AppEntry getAppEntry(final Context context, final HashMap<String, AppEntry> appEntries,
             final String packageName, ApplicationInfo appInfo) {
+
+        if (appInfo == null) {
+            try {
+                appInfo = mPm.getApplicationInfo(packageName,
+                        PackageManager.GET_DISABLED_COMPONENTS
+                        | PackageManager.GET_UNINSTALLED_PACKAGES);
+            } catch (PackageManager.NameNotFoundException e) {
+                Log.w(TAG, "Unable to find info for package " + packageName);
+                return null;
+            }
+        }
+
+        // Hide user apps if needed
+        if (!shouldShowUserApps() &&
+                (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
+            return null;
+        }
+        // Hide system apps if needed
+        if (!shouldShowSystemApps() &&
+                (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
+            return null;
+        }
+
         AppEntry appEntry = appEntries.get(packageName);
         if (appEntry == null) {
-            if (appInfo == null) {
-                try {
-                    appInfo = mPm.getApplicationInfo(packageName,
-                            PackageManager.GET_DISABLED_COMPONENTS
-                            | PackageManager.GET_UNINSTALLED_PACKAGES);
-                } catch (PackageManager.NameNotFoundException e) {
-                    Log.w(TAG, "Unable to find info for package " + packageName);
-                    return null;
-                }
-            }
             appEntry = new AppEntry(this, appInfo);
             appEntry.loadLabel(context);
             appEntries.put(packageName, appEntry);
         }
         return appEntry;
+    }
+
+    private boolean shouldShowUserApps() {
+        return mPreferences.getBoolean("show_user_apps", true);
+    }
+
+    private boolean shouldShowSystemApps() {
+        return mPreferences.getBoolean("show_system_apps", true);
     }
 
     public List<AppOpEntry> buildState(OpsTemplate tpl, int uid, String packageName) {
