@@ -124,6 +124,12 @@
                 settings:keywords="@string/keywords_recents_show_searchbar"
                 android:defaultValue="true"
                 settings:advanced="true" />
+
+        <ListPreference
+                android:key="lcd_density"
+                android:title="@string/lcd_density"
+                android:persistent="false"
+                settings:advanced="true" />
     </PreferenceCategory>
 
     <PreferenceCategory
