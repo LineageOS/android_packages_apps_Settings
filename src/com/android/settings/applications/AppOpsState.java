@@ -340,30 +340,37 @@ public class AppOpsState {
         }
 
         private CharSequence getCombinedText(ArrayList<AppOpsManager.OpEntry> ops,
-                CharSequence[] items) {
-            if (ops.size() == 1) {
-                return items[ops.get(0).getOp()];
-            } else {
-                StringBuilder builder = new StringBuilder();
-                for (int i=0; i<ops.size(); i++) {
-                    if (i > 0) {
-                        builder.append(", ");
-                    }
-                    builder.append(items[ops.get(i).getOp()]);
+                CharSequence[] items, boolean withTerseCounts) {
+            StringBuilder builder = new StringBuilder();
+            for (int i=0; i<ops.size(); i++) {
+                if (i > 0) {
+                    builder.append(", ");
                 }
-                return builder.toString();
+                builder.append(items[ops.get(i).getOp()]);
+                if (withTerseCounts) {
+                    builder.append(" (" + ops.get(i).getAllowedCount()
+                            + "/" + ops.get(i).getIgnoredCount() + ")");
+                }
             }
+            return builder.toString();
+        }
+
+        public CharSequence getCountsText(Resources res) {
+            return res.getText(R.string.app_ops_allowed)
+                    + ": " + mOps.get(0).getAllowedCount()
+                    + " " + res.getText(R.string.app_ops_ignored)
+                    + ": " + mOps.get(0).getIgnoredCount();
         }
 
         public CharSequence getSummaryText(AppOpsState state) {
-            return getCombinedText(mOps, state.mOpSummaries);
+            return getCombinedText(mOps, state.mOpSummaries, true);
         }
 
         public CharSequence getSwitchText(AppOpsState state) {
             if (mSwitchOps.size() > 0) {
-                return getCombinedText(mSwitchOps, state.mOpLabels);
+                return getCombinedText(mSwitchOps, state.mOpLabels, false);
             } else {
-                return getCombinedText(mOps, state.mOpLabels);
+                return getCombinedText(mOps, state.mOpLabels, false);
             }
         }
 
@@ -580,7 +587,7 @@ public class AppOpsState {
 
                         }
                         AppOpsManager.OpEntry opEntry = new AppOpsManager.OpEntry(
-                                permOps.get(k), AppOpsManager.MODE_ALLOWED, 0, 0, 0);
+                                permOps.get(k), AppOpsManager.MODE_ALLOWED, 0, 0, 0, 0, 0);
                         dummyOps.add(opEntry);
                         addOp(entries, pkgOps, appEntry, opEntry, packageName == null,
                                 packageName == null ? 0 : opToOrder[opEntry.getOp()]);

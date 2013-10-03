@@ -183,6 +183,8 @@ public class AppOpsDetails extends Fragment {
                 }
                 ((TextView)view.findViewById(R.id.op_name)).setText(
                         entry.getSwitchText(mState));
+                ((TextView)view.findViewById(R.id.op_counts)).setText(
+                        entry.getCountsText(res));
                 ((TextView)view.findViewById(R.id.op_time)).setText(
                         entry.getTimeText(res, true));
                 Spinner sw = (Spinner)view.findViewById(R.id.spinnerWidget);
