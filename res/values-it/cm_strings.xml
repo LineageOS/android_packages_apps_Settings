@@ -27,7 +27,7 @@
     <string name="root_access">Accesso root</string>
     <string name="root_access_warning_title">Permetti l\'accesso come root?</string>
     <string name="root_access_warning_message">Permettere alle applicazioni di richiedere i permessi di root è estremamente pericoloso e potrebbe compromettere la sicurezza del sistema!</string>
-    <string name="root_access_none">Disattivo</string>
+    <string name="root_access_none">Disattivato</string>
     <string name="root_access_apps">Solo applicazioni</string>
     <string name="root_access_adb">Solo ADB</string>
     <string name="root_access_all">Applicazioni e ADB</string>
@@ -97,7 +97,8 @@
     <string name="lockscreen_vibrate_enabled_head">Vibra allo sblocco</string>
     <string name="lockscreen_battery_status_title">Stato batteria</string>
     <string name="lockscreen_battery_status_charging">Solo in carica</string>
-    <string name="lockscreen_battery_status_alwayson">Sempre</string>
+    <string name="lockscreen_battery_status_alwayson">Sempre visibile</string>
+    <string name="lockscreen_battery_status_alwaysoff">Non visibile</string>
     <string name="profiles_settings_title">Profili</string>
     <string name="profiles_add">Aggiungi</string>
     <string name="profile_menu_delete">Cancella</string>
@@ -192,6 +193,8 @@
     <string name="performance_settings_title">Prestazioni</string>
     <string name="performance_settings_warning_title">Procedere con cautela</string>
     <string name="performance_settings_warning">Queste impostazioni sono sperimentali e qualsiasi loro cambiamento potrebbe causare instabilità, crash, perdita di dati e danni all\'hardware.\n\nNon inviate segnalazioni di bug se una qualsiasi di queste impostazioni è stata modificata.</string>
+    <string name="performance_set_on_boot">Imposta all\'avvio</string>
+    <string name="performance_set_on_boot_summary">Ripristina le impostazioni all\'avvio</string>
     <string name="processor_title">Processore</string>
     <string name="cpu_cur_freq_title">Frequenza CPU attuale</string>
     <string name="cpu_governors_title">Governor CPU</string>
@@ -199,6 +202,10 @@
     <string name="cpu_max_freq_title">Frequenza massima CPU</string>
     <string name="io_scheds_title">Schedulatore I/O</string>
     <string name="io_sched_title">Schedulatore I/O</string>
+    <string name="perf_profile_title">Profilo</string>
+    <string name="perf_profile_pwrsv">Risparmio energetico</string>
+    <string name="perf_profile_bal">Bilanciato</string>
+    <string name="perf_profile_perf">Prestazioni</string>
     <string name="memory_management_title">Gestione memoria</string>
     <string name="pref_zram_title">zRam</string>
     <string name="pref_zram_summary">Comprime la memoria RAM per aumentarne virtualmente la capacità (Richiede il riavvio)</string>
@@ -283,8 +290,8 @@
     <string name="notification_light_applist_title">Applicazioni</string>
     <string name="notification_light_phonelist_title">Telefono</string>
     <string name="notification_light_use_custom">Usa valori personalizzati</string>
-    <string name="notification_light_enabled">Attivata</string>
-    <string name="notification_light_disabled">Disattivata</string>
+    <string name="notification_light_enabled">Attivato</string>
+    <string name="notification_light_disabled">Disattivato</string>
     <string name="notification_light_default_value">Predefinito</string>
     <string name="notification_light_missed_call_title">Chiamata persa</string>
     <string name="notification_light_voicemail_title">Messaggio vocale</string>
@@ -331,6 +338,7 @@
     <string name="hardware_keys_menu_key_title">Tasto Menu</string>
     <string name="hardware_keys_assist_key_title">Tasto Cerca</string>
     <string name="hardware_keys_appswitch_key_title">Tasto Recenti</string>
+    <string name="hardware_keys_camera_key_title">Tasto Fotocamera</string>
     <string name="hardware_keys_volume_keys_title">Tasti Volume</string>
     <string name="hardware_keys_short_press_title">Azione pressione breve</string>
     <string name="hardware_keys_long_press_title">Azione pressione prolungata</string>
@@ -345,11 +353,12 @@
     <string name="hardware_keys_action_search">Assistente ricerca</string>
     <string name="hardware_keys_action_voice_search">Ricerca vocale</string>
     <string name="hardware_keys_action_in_app_search">Ricerca in applicazioni</string>
+    <string name="hardware_keys_action_launch_camera">Avvia Fotocamera</string>
     <string name="home_wake_title">Risveglio tasto Home</string>
     <string name="home_wake_summary">Premere il tasto Home farà attivare il dispositivo</string>
     <string name="volume_wake_title">Risveglio tasti volume</string>
     <string name="volume_wake_summary">Premere i tasti del volume farà attivare il dispositivo</string>
-    <string name="swap_volume_buttons_title">Scambia tasti volume</string>
+    <string name="swap_volume_buttons_title">Riorienta tasti volume</string>
     <string name="swap_volume_buttons_summary">Scambia i tasti del volume quando lo schermo è ruotato</string>
     <string name="navigation_bar_category">Barra di navigazione</string>
     <string name="navigation_bar_title">Pulsanti e disposizione</string>
@@ -432,6 +441,7 @@
     <string name="lockscreen_buttons_previous">Brano precedente</string>
     <string name="lockscreen_buttons_playpause">Riproduci/Pausa</string>
     <string name="lockscreen_buttons_toggle_sound">Suono On/Off</string>
+    <string name="lockscreen_buttons_sleep">Sospendi dispositivo</string>
     <string name="quick_settings_panel_title">Pannello Impostazioni rapide</string>
     <string name="title_static_tiles">Tile statici</string>
     <string name="tile_picker_title">Tile e disposizione</string>
@@ -442,7 +452,7 @@
     <string name="title_tile_bluetooth">Bluetooth</string>
     <string name="title_tile_brightness">Luminosità</string>
     <string name="title_tile_camera">Fotocamera</string>
-    <string name="title_tile_sleep">Blocca telefono</string>
+    <string name="title_tile_sleep">Sospendi dispositivo</string>
     <string name="title_tile_gps">GPS</string>
     <string name="title_tile_torch">Torcia LED</string>
     <string name="title_tile_lockscreen">Blocco schermo</string>
@@ -652,7 +662,7 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' cancella la riga selezionata
     <string name="privacy_guard_filter_does_not_match">Nessuna applicazione con permessi di rilievo è installata</string>
     <string name="privacy_guard_help_title">Guida</string>
     <string name="privacy_guard_reset_title">Ripristina</string>
-    <string name="privacy_guard_help_text">In questa schermata puoi decidere per quali applicazioni sarà attivo Privacy Guard semplicemente selezionandole. Le applicazioni selezionate non saranno in grado di accedere ai tuoi dati personali, quali contatti, messaggi o elenco chiamate. Una pressione prolungata apre la schermata di dettaglio per l\'applicazione selezionata.\n\nLe applicazioni integrate non sono visualizzate, in modo predefinito. Se vuoi renderle visibili, o visualizzare solo le applicazioni che in base ai loro permessi richiedono un accesso ai tuoi dati personali, attiva le rispettive opzioni nel menu.</string>
+    <string name="privacy_guard_help_text">In questa schermata puoi decidere per quali applicazioni sarà attivo Privacy Guard semplicemente selezionandole. Le applicazioni selezionate non saranno in grado di accedere ai tuoi dati personali, quali contatti, messaggi o elenco chiamate. Una pressione prolungata apre la schermata di dettaglio per l\'applicazione selezionata.\n\nLe applicazioni integrate non sono visualizzate, in modo predefinito. Se vuoi renderle visibili, attiva le rispettive opzioni nel menu.</string>
     <string name="privacy_guard_manager_show_system_apps">Mostra applicazioni integrate</string>
     <string name="privacy_guard_manager_filter_permissions">Filtro sui permessi</string>
     <string name="blacklist_title">Blacklist</string>
@@ -704,6 +714,8 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' cancella la riga selezionata
     <string name="backlight_summary_enabled">Attivata</string>
     <string name="gamma_tuning_title_head">Calibrazione gamma</string>
     <string name="gamma_tuning_summary_head">Modifica valori gamma</string>
+    <string name="gamma_tuning_contrast">Contrasto</string>
+    <string name="gamma_tuning_brightness">Luminosità</string>
     <string name="more_device_controls_title">Altro\u2026</string>
     <string name="more_device_settings_title">Altre opzioni del dispositivo</string>
     <string name="sensors_motors_title">Sensori &amp; Motori</string>
