@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2013 The CyanogenMod Project
+<!--
+     Copyright (C) 2013 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -62,7 +63,7 @@
     <string name="cpu_info">CPU</string>
     <string name="mem_info">記憶體</string>
     <string name="anonymous_statistics_title">CyanogenMod 統計</string>
-    <string name="anonymous_statistics_summary">加入匿名統計報告以幫助改進 CyanogenMod</string>
+    <string name="anonymous_statistics_summary">加入匿名統計報告以協助改進 CyanogenMod</string>
     <string name="anonymous_statistics_warning_title">關於</string>
     <string name="anonymous_statistics_warning">加入 CyanogenMod 統計將允許非個人資料被提交到 CyanogenMod 的開發者，
         以追蹤每個裝置上的獨特安裝。提交的資訊包含一個唯一識別碼，此識別碼並不會泄露您的隱私或個人資料。
@@ -104,8 +105,8 @@
     <string name="lockscreen_vibrate_enabled_head">解鎖時震動</string>
     <string name="lockscreen_battery_status_title">電池狀態</string>
     <string name="lockscreen_battery_status_charging">只在充電時顯示</string>
-    <string name="lockscreen_battery_status_alwayson">總是顯示</string>
-    <string name="lockscreen_battery_status_alwaysoff">總是隱藏</string>
+    <string name="lockscreen_battery_status_alwayson">一律顯示</string>
+    <string name="lockscreen_battery_status_alwaysoff">永遠隱藏</string>
     <string name="profiles_settings_title">設定檔</string>
     <string name="profiles_add">新增</string>
     <string name="profile_menu_delete">刪除</string>
@@ -169,7 +170,7 @@
     <string name="toggleBluetooth">藍牙</string>
     <string name="toggleGPS">GPS</string>
     <string name="toggleData">行動數據</string>
-    <string name="toggleSync">資料同步</string>
+    <string name="toggleSync">資料同步處理</string>
     <string name="toggle2g3g">2G/3G</string>
     <string name="toggleWimax">WiMAX</string>
     <string name="toggleNfc">NFC</string>
@@ -200,6 +201,8 @@
     <string name="performance_settings_title">效能</string>
     <string name="performance_settings_warning_title">謹慎繼續</string>
     <string name="performance_settings_warning">這些設定是為實驗而收錄，任何對他們的變更有可能會造成不穩定、當機、資料遺失或硬體故障。\n\n若這裡的任何設定有被修改成非預設值，我們請您不要提交錯誤報告。</string>
+    <string name="performance_set_on_boot">啟動時設定</string>
+    <string name="performance_set_on_boot_summary">啟動時還原目前的設定</string>
     <string name="processor_title">處理器</string>
     <string name="cpu_cur_freq_title">目前 CPU 頻率</string>
     <string name="cpu_governors_title">CPU governor</string>
@@ -207,11 +210,15 @@
     <string name="cpu_max_freq_title">最高 CPU 頻率</string>
     <string name="io_scheds_title">I/O scheduler</string>
     <string name="io_sched_title">I/O scheduler</string>
+    <string name="perf_profile_title">設定檔</string>
+    <string name="perf_profile_pwrsv">省電</string>
+    <string name="perf_profile_bal">平衡</string>
+    <string name="perf_profile_perf">效能</string>
     <string name="memory_management_title">記憶體管理</string>
     <string name="pref_zram_title">zRam</string>
     <string name="pref_zram_summary">壓縮記憶體以增加虛擬容量 (需重新啟動)</string>
     <string name="pref_ksm_title">KSM</string>
-    <string name="pref_ksm_summary">KSM 可減少實體記憶體需求並改善效能</string>
+    <string name="pref_ksm_summary">KSM 可降低實體記憶體需求並增進效能</string>
     <string name="pref_purgeable_assets_title">允許清除資源</string>
     <string name="pref_purgeable_assets_summary">清除點陣圖記憶體資源允許需要時釋放更多 RAM (需重新啟動)</string>
     <string name="pref_use_16bpp_alpha_title">16 位元透明度</string>
@@ -298,7 +305,7 @@
     <string name="notification_light_missed_call_title">未接來電</string>
     <string name="notification_light_voicemail_title">語音信箱</string>
     <string name="adaptive_backlight_title">自動背光調整</string>
-    <string name="adaptive_backlight_summary">智慧地改變顯示器的背光亮度並幫助省電</string>
+    <string name="adaptive_backlight_summary">智慧地改變顯示器的背光亮度並協助省電</string>
     <string name="edit_light_settings">編輯指示燈設定</string>
     <string name="pulse_speed_title">呼吸燈長度與速度</string>
     <string name="default_time">正常</string>
@@ -308,7 +315,7 @@
     <string name="dialog_delete_message">移除選取的項目？</string>
     <string name="dialog_test_message">關閉螢幕以測試選取的指示燈設定，或關閉此對話框停止測試</string>
     <string name="dialog_test_button">關閉</string>
-    <string name="pulse_length_always_on">總是開啟</string>
+    <string name="pulse_length_always_on">一律開啟</string>
     <string name="pulse_length_very_short">非常短</string>
     <string name="pulse_length_short">短</string>
     <string name="pulse_length_normal">正常</string>
@@ -326,7 +333,7 @@
     <string name="battery_light_medium_color_title">充電中</string>
     <string name="battery_light_full_color_title">電力充足</string>
     <string name="volume_overlay_title">音量面板樣式</string>
-    <string name="volbtn_music_controls_title">允許音樂控制</string>
+    <string name="volbtn_music_controls_title">播放控制</string>
     <string name="volbtn_music_controls_summary">螢幕關閉時，長按音量鍵將可以改變音樂曲目</string>
     <string name="volume_ring_only_description">鈴聲</string>
     <string name="ring_mode_title">鈴響模式</string>
@@ -416,7 +423,7 @@
     <string name="adb_notify">USB 偵錯通知</string>
     <string name="adb_notify_summary">USB 偵錯模式開啟時顯示通知</string>
     <string name="development_tools_title">啟動開發工具</string>
-    <string name="allow_mock_sms">充許模擬簡訊</string>
+    <string name="allow_mock_sms">允許模擬簡訊</string>
     <string name="usb_mass_storage_title">大量儲存裝置</string>
     <string name="usb_mass_storage_summary">啟用 USB 大量儲存裝置</string>
     <string name="storage_rescan_media">為儲存裝置重新掃描媒體</string>
@@ -456,7 +463,7 @@
     <string name="title_tile_autorotate">螢幕旋轉</string>
     <string name="title_tile_settings">設定</string>
     <string name="title_tile_sound">音效</string>
-    <string name="title_tile_sync">同步</string>
+    <string name="title_tile_sync">同步處理</string>
     <string name="title_tile_wifiap">Wi-Fi 無線基地台</string>
     <string name="title_tile_wifi">Wi-Fi</string>
     <string name="title_tile_user">使用者切換器</string>
@@ -485,7 +492,7 @@
     <string name="quick_pulldown_left">左</string>
     <string name="quick_pulldown_right">右</string>
     <string name="title_collapse_panel">自動關閉面板</string>
-    <string name="summary_collapse_panel">做出操作後關閉快速設定面板</string>
+    <string name="summary_collapse_panel">做出動作後關閉快速設定面板</string>
     <string name="pref_network_mode_title">網路切換方式</string>
     <string name="pref_screentimeout_mode_title">螢幕自動關閉時間切換方式</string>
     <string name="pref_ring_mode_title">音效切換方式</string>
@@ -560,7 +567,7 @@
 亮度曲線是透過在給定的<i>控制點</i>上進行<i>三次仿樣插值</i>而計算出來的。
 這並不是一種在特定範圍的環境亮度內，螢幕亮度就會保持不變的計算方式。
 這樣，環境亮度的細微變化將不會導致螢幕亮度大幅變動。然而改變控制點後的準確結果是有點難預測的。\n
-因此您可檢視計算出來曲線的預覽，來幫助了解結果。請注意爲了能清楚地顯示所有控制點，
+因此您可檢視計算出來曲線的預覽，來協助了解結果。請注意爲了能清楚地顯示所有控制點，
 預覽是使用<i>對數</i>刻度繪製曲線的。若使用線性刻度，將無法明確地區分更重要的較低範圍環境亮度的控制點。
 \n\n
 <b>如何編輯亮度曲線？</b>
@@ -703,9 +710,11 @@
     <string name="backlight_summary_enabled">啟用</string>
     <string name="gamma_tuning_title_head">伽瑪校準</string>
     <string name="gamma_tuning_summary_head">調校伽瑪值</string>
+    <string name="gamma_tuning_control_set_header"><xliff:g id="index">%d</xliff:g>群組</string>
     <string name="gamma_tuning_contrast">對比度</string>
     <string name="gamma_tuning_brightness">亮度</string>
-    <string name="more_device_controls_title">更多選項\u2026</string>
+    <string name="gamma_tuning_saturation">飽合度</string>
+    <string name="more_device_controls_title">更多內容\u2026</string>
     <string name="more_device_settings_title">其它裝置選項</string>
     <string name="sensors_motors_title">感應器與馬達</string>
     <string name="display_calibration_title">顯示器效正</string>
@@ -715,5 +724,5 @@
     <string name="summary_quick_access_linked">跟快速設定面板使用相同的磚與配置</string>
     <string name="font_size_sample">範例</string>
     <string name="selinux_enable_title">安全增強式 Android</string>
-    <string name="selinux_enable_warning">您即將在裝置上啟用一套進階安全機制 - SEAndroid。\n\n此選項只作為偵錯用途，且極有可能您的裝置還未完全準備好啟用它，這有可能導致您硬體的部分 (或全部) 變磚或當機。\n\n您確定要繼續？</string>
+    <string name="selinux_enable_warning">您即將在裝置上啟用一套進階安全機制 - SEAndroid。\n\n此選項僅作為偵錯用途，且極有可能您的裝置還未完全準備好啟用它，這有可能導致您硬體的部分 (或全部) 變磚或當機。\n\n您確定要繼續？</string>
 </resources>
