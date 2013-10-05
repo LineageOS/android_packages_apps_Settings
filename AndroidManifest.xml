@@ -1873,5 +1873,12 @@
             </intent-filter>
         </receiver>
 
+        <!-- Lto Service -->
+        <service android:label="LtoService"
+            android:enabled="true"
+            android:exported="false"
+            android:name=".cyanogenmod.LtoService">
+        </service>
+
     </application>
 </manifest>

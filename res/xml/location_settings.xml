@@ -50,4 +50,10 @@
             android:summaryOff="@string/assisted_gps_disabled"/>
 -->
 
+        <com.android.settings.WrappingCheckBoxPreference
+            android:key="gps_download_data_wifi_only"
+            android:title="@string/gps_download_data_wifi_only"
+            android:dependency="location_toggle"
+            android:defaultValue="true" />
+
 </PreferenceScreen>
