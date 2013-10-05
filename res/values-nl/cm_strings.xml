@@ -106,6 +106,7 @@
     <string name="lockscreen_battery_status_title">Accustatus</string>
     <string name="lockscreen_battery_status_charging">Alleen bij opladen</string>
     <string name="lockscreen_battery_status_alwayson">Altijd zichtbaar</string>
+    <string name="lockscreen_battery_status_alwaysoff">Altijd verborgen</string>
     <string name="profiles_settings_title">Profielen</string>
     <string name="profiles_add">Toevoegen</string>
     <string name="profile_menu_delete">Verwijderen</string>
@@ -200,6 +201,8 @@
     <string name="performance_settings_title">Prestaties</string>
     <string name="performance_settings_warning_title">Ga voorzichtig te werk</string>
     <string name="performance_settings_warning">Deze instellingen zijn experimenteel en kunnen leiden tot instabiliteit, crashes, gegevensverlies of hardwareschade.\n\nMeld geen fouten aan de ontwikkelaars als deze instellingen veranderd zijn.</string>
+    <string name="performance_set_on_boot">Instellen tijdens opstarten</string>
+    <string name="performance_set_on_boot_summary">Instellingen herstellen tijdens opstarten</string>
     <string name="processor_title">Processor</string>
     <string name="cpu_cur_freq_title">Huidige kloksnelheid</string>
     <string name="cpu_governors_title">Governor</string>
@@ -207,6 +210,10 @@
     <string name="cpu_max_freq_title">Maximale kloksnelheid</string>
     <string name="io_scheds_title">In-/uitvoerscheduler</string>
     <string name="io_sched_title">In-/uitvoerscheduler</string>
+    <string name="perf_profile_title">Profiel</string>
+    <string name="perf_profile_pwrsv">Energiebesparing</string>
+    <string name="perf_profile_bal">Gebalanceerd</string>
+    <string name="perf_profile_perf">Prestaties</string>
     <string name="memory_management_title">Geheugenbeheer</string>
     <string name="pref_zram_title">zRam</string>
     <string name="pref_zram_summary">Geheugen comprimeren voor meer virtuele capaciteit (herstart vereist)</string>
@@ -325,8 +332,8 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="battery_light_low_color_title">Accuspanning laag</string>
     <string name="battery_light_medium_color_title">Bezig met opladen</string>
     <string name="battery_light_full_color_title">Volledig opgeladen</string>
-    <string name="volume_overlay_title">Muziekbediening</string>
-    <string name="volbtn_music_controls_title">Muziek beheren met volumeknoppen</string>
+    <string name="volume_overlay_title">Muziek bedienen</string>
+    <string name="volbtn_music_controls_title">Muziek beheren</string>
     <string name="volbtn_music_controls_summary">Muziek bedienen met de volumeknoppen als het scherm uit is</string>
     <string name="volume_ring_only_description">Beltonen</string>
     <string name="ring_mode_title">Belmodus</string>
@@ -344,7 +351,8 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="hardware_keys_action_search">Zoek-app</string>
     <string name="hardware_keys_action_voice_search">Spraakgestuurd zoeken</string>
     <string name="hardware_keys_action_in_app_search">Zoeken in apps</string>
-    <string name="swap_volume_buttons_title">Volumeknoppen omdraaien</string>
+    <string name="hardware_keys_action_launch_camera">Camera openen</string>
+    <string name="swap_volume_buttons_title">Oriëntatie</string>
     <string name="swap_volume_buttons_summary">Volumeknoppen omdraaien indien het scherm gedraaid is</string>
     <string name="navigation_bar_title">Navigatiebalk</string>
     <string name="navigation_bar_help_text">1 - Kies het vergrendelingspictogram om te beginnen\n\n2 - Kies een knop om een functie aan toe te wijzen of te wijzigen\n\n3 - Raak een knop lang aan om de positie te wijzigen\n\n4 - Tik nogmaals op het vergrendelingspictogram om op te slaan\n\n5 - Tik op \'Herstellen\' om de standaardinstellingen te herstellen\n\n</string>
@@ -426,6 +434,7 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="lockscreen_buttons_previous">Vorig nummer</string>
     <string name="lockscreen_buttons_playpause">Afspelen/pauzeren</string>
     <string name="lockscreen_buttons_toggle_sound">Geluid aan/uit</string>
+    <string name="lockscreen_buttons_sleep">Naar slaapstand</string>
     <string name="quick_settings_panel_title">Snelle instellingenpaneel</string>
     <string name="title_static_tiles">Statische tegels</string>
     <string name="tile_picker_title">Tegels en indeling</string>
@@ -456,6 +465,7 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="title_tile_quiet_hours">Stille uren</string>
     <string name="title_tile_volume">Volume</string>
     <string name="title_tile_expanded_desktop">Uitgebreid bureaublad</string>
+    <string name="title_tile_network_adb">ADB over netwerk</string>
     <string name="title_dynamic_tiles">Dynamische tegels</string>
     <string name="dynamic_tiles_note_title">Let op</string>
     <string name="dynamic_tiles_note_summary">Dynamische tegels zijn alleen zichtbaar indien opgeroepen door een systeemgebeurtenis</string>
@@ -467,14 +477,14 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="title_dynamic_wifi">Draadloze display</string>
     <string name="title_general">Algemeen</string>
     <string name="title_quick_pulldown">Snel openen</string>
-    <string name="summary_quick_pulldown">%1$s van statusbalk opent Snelle instellingenpaneel</string>
+    <string name="summary_quick_pulldown">%1$s van statusbalk opent paneel</string>
     <string name="quick_pulldown_summary_left">Linkerkant</string>
     <string name="quick_pulldown_summary_right">Rechterkant</string>
     <string name="quick_pulldown_off">Uit</string>
     <string name="quick_pulldown_left">Links</string>
     <string name="quick_pulldown_right">Rechts</string>
-    <string name="title_collapse_panel">Paneel automatisch sluiten</string>
-    <string name="summary_collapse_panel">Verbergen bij wijziging</string>
+    <string name="title_collapse_panel">Automatisch sluiten</string>
+    <string name="summary_collapse_panel">Paneel sluiten na gebruik van een tegel</string>
     <string name="tiles_reset_title">Herstellen</string>
     <string name="tiles_reset_message">Tegels herstellen naar standaardwaarden?</string>
     <string name="volume_key_cursor_control_title">Cursor met volumeknoppen</string>
@@ -626,7 +636,7 @@ Elke regel in de lijst van helderheidsstanden komt overeen met één <i>controle
     <string name="privacy_guard_filter_does_not_match">Geen apps geïnstalleerd met relevante machtigingen</string>
     <string name="privacy_guard_help_title">Help</string>
     <string name="privacy_guard_reset_title">Opnieuw instellen</string>
-    <string name="privacy_guard_help_text">Op dit scherm kunt u kiezen voor welke apps Privacybescherming ingeschakeld moet zijn door op ze te tikken. Geselecteerde apps zullen geen toegang hebben tot persoonsgegevens zoals contacten, berichten of gespreksstatistieken. Door een app lang aan te raken opent het info-scherm voor die app.\n\nStandaard worden ingebouwde apps niet getoond. Als u deze apps of alleen apps die met hun machtigingen toegang tot persoonsgegevens vragen wilt zien, selecteert u de desbetreffende opties in het menu.</string>
+    <string name="privacy_guard_help_text">Op dit scherm kunt u kiezen voor welke apps Privacybescherming ingeschakeld moet zijn door op ze te tikken. Geselecteerde apps zullen geen toegang hebben tot persoonsgegevens zoals contacten, berichten of gespreksstatistieken. Door een app lang aan te raken opent het info-scherm voor die app.\n\nStandaard worden ingebouwde apps niet getoond. Als u deze apps wilt zien, selecteert u de desbetreffende optie in het menu.</string>
     <string name="privacy_guard_manager_show_system_apps">Ingebouwde apps tonen</string>
     <string name="privacy_guard_manager_filter_permissions">Machtigingenfilter</string>
     <string name="header_category_interface">Aanpassen</string>
@@ -639,6 +649,7 @@ Elke regel in de lijst van helderheidsstanden komt overeen met één <i>controle
     <string name="hardware_keys_menu_key_title">Menuknop</string>
     <string name="hardware_keys_assist_key_title">Zoekknop</string>
     <string name="hardware_keys_appswitch_key_title">Recente apps-knop</string>
+    <string name="hardware_keys_camera_key_title">Cameraknop</string>
     <string name="hardware_keys_volume_keys_title">Volumeknoppen</string>
     <string name="hardware_keys_short_press_title">Actie kort indrukken</string>
     <string name="hardware_keys_long_press_title">Actie lang indrukken</string>
@@ -646,7 +657,7 @@ Elke regel in de lijst van helderheidsstanden komt overeen met één <i>controle
     <string name="home_wake_title">Ontwaken met thuisknop</string>
     <string name="home_wake_summary">Apparaat ontwaken door op de thuisknop te drukken</string>
     <string name="volume_wake_title">Ontwaken met volumeknoppen</string>
-    <string name="volume_wake_summary">Apparaat ontwaken door op de volumeknoppen te drukken</string>
+    <string name="volume_wake_summary">Apparaat ontwaken door op een volumeknop te drukken</string>
     <string name="navigation_bar_category">Navigatiebalk</string>
     <string name="blacklist_title">Zwarte lijst</string>
     <string name="blacklist_edit_dialog_title">Telefoonnummer aanpassen</string>
@@ -694,6 +705,10 @@ Elke regel in de lijst van helderheidsstanden komt overeen met één <i>controle
     <string name="backlight_summary_enabled">Ingeschakeld</string>
     <string name="gamma_tuning_title_head">Gammakalibratie</string>
     <string name="gamma_tuning_summary_head">Gammawaarden aanpassen</string>
+    <string name="gamma_tuning_control_set_header">Groep <xliff:g id="index">%d</xliff:g></string>
+    <string name="gamma_tuning_contrast">Contrast</string>
+    <string name="gamma_tuning_brightness">Helderheid</string>
+    <string name="gamma_tuning_saturation">Verzadiging</string>
     <string name="more_device_controls_title">Meer\u2026</string>
     <string name="more_device_settings_title">Andere apparaatinstellingen</string>
     <string name="sensors_motors_title">Sensoren &amp; motoren</string>
@@ -704,4 +719,10 @@ Elke regel in de lijst van helderheidsstanden komt overeen met één <i>controle
     <string name="font_size_sample">Test</string>
     <string name="selinux_enable_title">Extra-beveiligd Android</string>
     <string name="selinux_enable_warning">U staat op het punt om SEAndroid, een geavanceerd beveiligingsmechanisme, in te schakelen op uw apparaat.\n\nDeze optie bestaat alleen voor ontwikkelingsdoeleinden en het is waarschijnlijk dat uw apparaat dit niet volledig ondersteunt, waardoor uw hardware mogelijk (gedeeltelijk) niet meer werkt.\n\nWeet u zeker dat u door wilt gaan?</string>
+    <string name="wifi_disabled_association_rejected">Koppeling afgewezen </string>
+    <string name="bluetooth_enter_pin_msg_hs">Typ om te koppelen met <xliff:g id="bold">&lt;br>&lt;b></xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b>&lt;br>&lt;br></xliff:g> de vereiste pincode van het apparaat (16 cijfers of meer):</string>
+    <string name="bluetooth_profile_sap">SIM-toegang</string>
+    <string name="bluetooth_sap_profile_summary_connected">Verbonden met SIM-toegangsserver</string>
+    <string name="bluetooth_sap_profile_summary_use_for">Gebruiken voor SIM-toegang</string>
+    <string name="gps_download_data_wifi_only">GPS-ondersteunende gegevens alleen downloaden via wifi</string>
 </resources>
