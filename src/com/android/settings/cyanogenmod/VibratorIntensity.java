@@ -57,11 +57,7 @@ public class VibratorIntensity extends HWValueSliderPreference {
     };
 
     public VibratorIntensity(Context context, AttributeSet attrs) {
-        super(context, attrs, HW_INTERFACE);
-
-        if (!isSupported()) {
-            return;
-        }
+        super(context, attrs, isSupported() ? HW_INTERFACE : null);
 
         setDialogLayoutResource(R.layout.vibrator_intensity);
     }

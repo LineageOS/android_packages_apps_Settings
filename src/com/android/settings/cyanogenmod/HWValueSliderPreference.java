@@ -65,8 +65,11 @@ public abstract class HWValueSliderPreference extends DialogPreference implement
 
     public HWValueSliderPreference(Context context, AttributeSet attrs, HardwareInterface hw) {
         super(context, attrs);
-        mHw = hw;
-        mMin = hw.getMinValue();
+
+        if (hw != null) {
+            mHw = hw;
+            mMin = hw.getMinValue();
+        }
     }
 
     @Override
