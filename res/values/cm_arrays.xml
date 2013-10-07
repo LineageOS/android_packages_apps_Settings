@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2012-2013 The CyanogenMod Project
+<!--
+     Copyright (C) 2012-2013 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -13,7 +14,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources>
     <!-- Wi-Fi settings. Presented as a list dialog to the user to choose the Wi-Fi region code. -->
     <string-array name="wifi_countrycode_entries">
         <item>United States</item>
@@ -611,10 +612,11 @@
     </string-array>
 
     <!-- Gamma calibration descriptors, deliberately empty as string values populated via
-    per-device overlay. Required to build on non-hardware tunable devices -->
-    <string-array name="gamma_descriptors">
+         per-device overlay. Required to build on non-hardware tunable devices -->
+    <string-array name="gamma_descriptors" translatable="false">
     </string-array>
 
+    <!-- Performance profiles -->
     <string-array name="perf_profile_entries" translatable="false">
         <item>@string/perf_profile_pwrsv</item>
         <item>@string/perf_profile_bal</item>
@@ -627,4 +629,3 @@
         <item>2</item>
     </string-array>
 </resources>
-
