@@ -33,6 +33,7 @@ import static com.android.internal.util.cm.QSConstants.TILE_NETWORKADB;
 import static com.android.internal.util.cm.QSConstants.TILE_NETWORKMODE;
 import static com.android.internal.util.cm.QSConstants.TILE_NFC;
 import static com.android.internal.util.cm.QSConstants.TILE_PROFILE;
+import static com.android.internal.util.cm.QSConstants.TILE_PERFORMANCE_PROFILE;
 import static com.android.internal.util.cm.QSConstants.TILE_QUIETHOURS;
 import static com.android.internal.util.cm.QSConstants.TILE_RINGER;
 import static com.android.internal.util.cm.QSConstants.TILE_SCREENTIMEOUT;
@@ -116,6 +117,9 @@ public class QuickSettingsUtil {
         registerTile(new QuickSettingsUtil.TileInfo(
                 TILE_PROFILE, R.string.title_tile_profile,
                 "com.android.systemui:drawable/ic_qs_profiles"));
+        registerTile(new QuickSettingsUtil.TileInfo(
+                TILE_PERFORMANCE_PROFILE, R.string.title_tile_performance_profile,
+                "com.android.systemui:drawable/ic_qs_perf_profile"));
         registerTile(new QuickSettingsUtil.TileInfo(
                 TILE_QUIETHOURS, R.string.title_tile_quiet_hours,
                 "com.android.systemui:drawable/ic_qs_quiet_hours_off"));
@@ -204,6 +208,11 @@ public class QuickSettingsUtil {
         // Don't show the Camera tile if the device has no cameras
         if (!QSUtils.deviceSupportsCamera()) {
             removeTile(TILE_CAMERA);
+        }
+
+        // Don't show the performance profiles tile if is not available for the device
+        if (!QSUtils.deviceSupportsPerformanceProfiles(context)) {
+            removeTile(TILE_PERFORMANCE_PROFILE);
         }
     }
 

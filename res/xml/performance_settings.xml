@@ -29,10 +29,11 @@
         android:fragment="com.android.settings.cyanogenmod.IOScheduler"
         android:title="@string/io_scheds_title" />
 
-    <PreferenceScreen
-        android:key="performance_profile"
-        android:fragment="com.android.settings.cyanogenmod.PerformanceProfile"
-        android:title="@string/perf_profile_title" />
+    <ListPreference
+        android:key="pref_perf_profile"
+        android:dialogTitle="@string/perf_profile_title"
+        android:title="@string/perf_profile_title"
+        android:persistent="false" />
 
     <PreferenceScreen
         android:key="memory_management"
