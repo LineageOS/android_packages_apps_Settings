@@ -99,12 +99,13 @@
     <string name="lockscreen_target_reset_message">Supprimer tous les raccourcis et revenir à la configuration d\'origine\u00A0?</string>
     <string name="lockscreen_target_empty">Vide</string>
     <string name="lockscreen_target_edit_title">Modifier le raccourci</string>
-    <string name="lockscreen_target_edit_msg">Sélectionner l\'application ou l\'activité et l\'icône associé</string>
+    <string name="lockscreen_target_edit_msg">Sélectionner l\'application ou l\'activité et l\'icône associée</string>
     <string name="lockscreen_vibrate_enabled_title">Vibreur</string>
     <string name="lockscreen_vibrate_enabled_head">Vibration lors du déverrouillage</string>
     <string name="lockscreen_battery_status_title">État de la batterie</string>
     <string name="lockscreen_battery_status_charging">Lors du chargement</string>
     <string name="lockscreen_battery_status_alwayson">Toujours afficher</string>
+    <string name="lockscreen_battery_status_alwaysoff">Toujours masquer</string>
     <string name="profiles_settings_title">Profils</string>
     <string name="profiles_add">Ajouter</string>
     <string name="profile_menu_delete">Supprimer</string>
@@ -199,6 +200,8 @@
     <string name="performance_settings_title">Performances</string>
     <string name="performance_settings_warning_title">ATTENTION\u00A0!</string>
     <string name="performance_settings_warning">Les options présentes ici altèrent les performances du système, en bien ou en mal.\nElles ont des comportements différents selon les appareils et ne sont disponibles que pour expérimentation.\nNous vous demandons de ne pas soumettre de rapport de bug à propos de celles-ci.</string>
+    <string name="performance_set_on_boot">Définir au démarrage</string>
+    <string name="performance_set_on_boot_summary">Définir les paramètres à chaque démarrage</string>
     <string name="processor_title">Paramètres CPU</string>
     <string name="cpu_cur_freq_title">Fréquence actuelle</string>
     <string name="cpu_governors_title">Stratégie</string>
@@ -206,6 +209,10 @@
     <string name="cpu_max_freq_title">Fréquence maximale</string>
     <string name="io_scheds_title">Horloge E/S</string>
     <string name="io_sched_title">Horloge E/S</string>
+    <string name="perf_profile_title">Profil</string>
+    <string name="perf_profile_pwrsv">Autonomie</string>
+    <string name="perf_profile_bal">Équilibré</string>
+    <string name="perf_profile_perf">Performance</string>
     <string name="memory_management_title">Gestion de la mémoire</string>
     <string name="pref_zram_title">zRam</string>
     <string name="pref_zram_summary">Compresser la mémoire pour augmenter virtuellement sa capacité (nécessite un redémarrage)</string>
@@ -338,6 +345,7 @@
     <string name="hardware_keys_menu_key_title">Bouton Menu</string>
     <string name="hardware_keys_assist_key_title">Bouton Rechercher</string>
     <string name="hardware_keys_appswitch_key_title">Bouton Récents</string>
+    <string name="hardware_keys_camera_key_title">Bouton Appareil photo</string>
     <string name="hardware_keys_volume_keys_title">Boutons Volume</string>
     <string name="hardware_keys_short_press_title">Appui court</string>
     <string name="hardware_keys_long_press_title">Appui long</string>
@@ -352,6 +360,7 @@
     <string name="hardware_keys_action_search">Assistant de recherche</string>
     <string name="hardware_keys_action_voice_search">Recherche vocale</string>
     <string name="hardware_keys_action_in_app_search">Recherche dans l\'application</string>
+    <string name="hardware_keys_action_launch_camera">Lancer l\'appareil photo</string>
     <string name="home_wake_title">Réveil avec bouton Home</string>
     <string name="home_wake_summary">Un appui sur le bouton Home sortira votre appareil de la veille</string>
     <string name="volume_wake_title">Réveil avec boutons Volume</string>
@@ -439,6 +448,7 @@
     <string name="lockscreen_buttons_previous">Chanson précédente</string>
     <string name="lockscreen_buttons_playpause">Lecture/Pause</string>
     <string name="lockscreen_buttons_toggle_sound">Basculer le son/vibreur</string>
+    <string name="lockscreen_buttons_sleep">Mettre en veille</string>
     <string name="quick_settings_panel_title">Volet des paramètres</string>
     <string name="title_static_tiles">Raccourcis statiques</string>
     <string name="tile_picker_title">Raccourcis et disposition</string>
@@ -689,6 +699,10 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
     <string name="backlight_summary_enabled">Activé</string>
     <string name="gamma_tuning_title_head">Calibrage du gamma</string>
     <string name="gamma_tuning_summary_head">Personnaliser les valeurs du gamma</string>
+    <string name="gamma_tuning_control_set_header">Groupe <xliff:g id="index">%d</xliff:g></string>
+    <string name="gamma_tuning_contrast">Contraste</string>
+    <string name="gamma_tuning_brightness">Luminosité</string>
+    <string name="gamma_tuning_saturation">Saturation</string>
     <string name="more_device_controls_title">Plus\u2026</string>
     <string name="more_device_settings_title">Autres options de l\'appareil</string>
     <string name="sensors_motors_title">Capteurs &amp; vibreur</string>
@@ -700,4 +714,5 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
     <string name="font_size_sample">Exemple</string>
     <string name="selinux_enable_title">Sécurité renforcée d\'Android</string>
     <string name="selinux_enable_warning">Vous êtes sur le point d\'activer SEAndroid, un mécanisme de sécurité avancé, sur votre appareil.\n\nCette option existe uniquement à des fins de débogage, et il est très probable que votre appareil ne soit pas entièrement compatible, ce qui peut le bloquer ou le ralentir en partie ou dans sa totalité.\n\nVoulez-vous continuer ?</string>
+    <string name="gps_download_data_wifi_only">Télécharger les données d\'assistance GPS via Wi-Fi uniquement</string>
 </resources>
