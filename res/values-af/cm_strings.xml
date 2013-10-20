@@ -27,6 +27,7 @@
     <string name="quiet_hours_note_summary">Nota: Inkomende oproepe word nie deur stille-ure geaffekteer nie</string>
     <string name="quiet_hours_enabled">Aktiveer stille-ure</string>
     <string name="quiet_hours_mute">Demp kennisgewings</string>
+    <string name="quiet_hours_system">Deaktiveer stelsel klank</string>
     <string name="quiet_hours_still">Deaktiveer vibrasies</string>
     <string name="quiet_hours_dim">Deaktiveer kennisgewing liggie</string>
     <string name="quiet_hours_haptic">Deaktiveer haptiese terugvoer</string>
@@ -159,6 +160,8 @@
     <string name="unlock_menu_unlock_summary">Die druk van die Kieslys-knoppie sal die toestel ontsluit</string>
     <string name="unlock_home_unlock_title">Tuis ontsluit</string>
     <string name="unlock_home_unlock_summary">Druk van die Tuis-knoppie sal die toestel ontsluit</string>
+    <string name="unlock_camera_unlock_title">Kamera ontsluiting</string>
+    <string name="unlock_camera_unlock_summary">Druk van die kamera knoppie ontsluit die toestel</string>
     <string name="unlock_quick_unlock_control_title">Vinnige oopsluit</string>
     <string name="unlock_quick_unlock_control_summary">Ontsluit outomaties wanneer die korrekte PIN/wagwoord ingesleutel is</string>
     <string name="delay_and_timeout_title">Slotskerm sluit vertraging</string>
@@ -178,6 +181,8 @@
     <string name="performance_settings_title">Werkverrigting</string>
     <string name="performance_settings_warning_title">Pasop!</string>
     <string name="performance_settings_warning">Hierdie instellings is bedoel vir eksperimentering. Enige veranderinge het die potensiaal om onstabiliteit, stakings, verlies van data of hardeware mislukkings te veroorsaak. Ons versoek dat jy geen foutverslae sal verskaf as enige van hierdie instellings van normaal verander is nie.</string>
+    <string name="performance_set_on_boot">Stel tydens selflaai</string>
+    <string name="performance_set_on_boot_summary">Herstel die instellings tydens selflaai</string>
     <string name="processor_title">Verwerker</string>
     <string name="cpu_cur_freq_title">Huidige SVE-frekwensie</string>
     <string name="cpu_governors_title">SVE goewerneur</string>
@@ -185,6 +190,7 @@
     <string name="cpu_max_freq_title">Maksimum SVE-frekwensie</string>
     <string name="io_scheds_title">I/U skeduleerder</string>
     <string name="io_sched_title">I/O skeduleerder</string>
+    <string name="perf_profile_title">Profiel</string>
     <string name="memory_management_title">Geheue-bestuur</string>
     <string name="pref_zram_title">zRam</string>
     <string name="pref_zram_summary">Kompakteer geheue vir verhoogde virtuele kapasiteit (vereis herlaai)</string>
@@ -329,6 +335,12 @@
     <string name="hardware_keys_action_launch_camera">Begin kamera</string>
     <string name="home_wake_title">Tuis-knoppie aktiveer</string>
     <string name="home_wake_summary">Druk van die tuis-knoppie sal jou toestel aktiveer</string>
+    <string name="camera_wake_title">Kamera knoppie aktiveer</string>
+    <string name="camera_wake_summary">Druk van die kamera knoppie sal jou toestel aktiveer</string>
+    <string name="camera_sleep_on_release_title">Skerm loer</string>
+    <string name="camera_sleep_on_release_summary">\'n Half druk sal die skerm aanhou slegs terwyl die knoppie ingehou word</string>
+    <string name="camera_music_controls_title">Terugspeel beheer</string>
+    <string name="camera_music_controls_summary">Wanneer die skerm af is, sal \'n lang die druk van die kamera sleutel speel/pouseer die huidige musiek snit</string>
     <string name="volume_wake_title">Volume-knoppie aktiveer</string>
     <string name="volume_wake_summary">Druk van \'n volume-knoppie sal jou toestel aktiveer</string>
     <string name="swap_volume_buttons_title">Ruil volume knoppies om</string>
@@ -432,6 +444,7 @@
     <string name="title_tile_lte">LTE</string>
     <string name="title_tile_mobiledata">Mobiele data</string>
     <string name="title_tile_profile">Profiel</string>
+    <string name="title_tile_performance_profile">Werkverrigtings profiel</string>
     <string name="title_tile_autorotate">Oriëntasie</string>
     <string name="title_tile_settings">Instellings</string>
     <string name="title_tile_sound">Klank</string>
@@ -704,8 +717,10 @@ die verlangde helderheid van die skerm gestoor. Kies \'Verdeel\' om \'n item te 
     <string name="backlight_summary_enabled">Aktiveer</string>
     <string name="gamma_tuning_title_head">Gamma kalibrasie</string>
     <string name="gamma_tuning_summary_head">Verstel gamma waardes</string>
+    <string name="gamma_tuning_control_set_header">Groep <xliff:g id="index">%d</xliff:g></string>
     <string name="gamma_tuning_contrast">Kontras</string>
     <string name="gamma_tuning_brightness">Helderheid</string>
+    <string name="gamma_tuning_saturation">Versadigingspunt</string>
     <string name="more_device_controls_title">Meer\u2026</string>
     <string name="more_device_settings_title">Ander toestel opsies</string>
     <string name="sensors_motors_title">Sensors &amp; motors</string>
@@ -717,4 +732,50 @@ die verlangde helderheid van die skerm gestoor. Kies \'Verdeel\' om \'n item te 
     <string name="font_size_sample">Voorbeeld</string>
     <string name="selinux_enable_title">Sekuriteit verbeterde Android</string>
     <string name="selinux_enable_warning">Jy is op pad om SEAndroid, \'n gevorderde sekuriteit meganisme, te aktiveer op jou toestel.\n\nHierdie opsie bestaan ​​slegs vir ontfouting doeleindes. Dit is baie waarskynlik dat jou toestel nie ten volle gereed is nie en dat dele van (of alle) toestel hardeware verhoed om te funksioneer of hang.\n\nIs jy seker jy wil voortgaan?</string>
+    <string name="gps_download_data_wifi_only">Laai GPS aanvullende ​​data net oor Wi-Fi netwerke</string>
+    <string name="bluetooth_profile_dun">In-bel netwerk toegang</string>
+    <string name="bluetooth_dun_profile_summary_connected">Gekoppel aan inbel bediener</string>
+    <string name="bluetooth_dun_profile_summary_use_for">Gebruik vir die inbel-netwerktoegang</string>
+    <string name="sim_absent">Geen SIM/RUIM</string>
+    <string name="sim_pin_change_failed_enable_sim_lock">Aktiveer SIM/RUIM sluit voor verandering van PIN</string>
+    <string name="sim_enable_disable_lock_not_supported">Sluiting is nie ondersteun deur die SIM/RUIM</string>
+    <string name="sim_pin_attempts">\nOorblywende pogings :</string>
+    <string name="sim_pin_enabled">PIN geaktiveerd</string>
+    <string name="sim_pin_disabled">PIN gedeaktiveerd</string>
+    <string name="device_additional_status_summary">Telefoonnommer, sein, IMEI, ens.</string>
+    <string name="device_additional_status">Bykomende status inligting</string>
+    <string name="data_usage_tab_slot">SIM</string>
+    <string name="sel_sub_title">Konfigureer inskrywings</string>
+    <string name="sel_sub_summary">Kies die inskrywing INSKR1, INSKR2, ens..</string>
+    <string name="select_subscription">Kies inskrywing</string>
+    <string name="subs_settings">Inskrywing status</string>
+    <string name="multi_sim_settings_title">Multi-sim instellings</string>
+    <string name="multi_sim_settings_summary">Stel multi sim-instellings vir stem, data en SMS</string>
+    <string name="voice_title">Stem/USSD/MMI</string>
+    <string name="voice_summary">Kies inskrywing vir stem gebruik</string>
+    <string name="data_title">Data gebruik</string>
+    <string name="data_summary">Kies inskrywing vir data gebruik</string>
+    <string name="sms_title">SMS</string>
+    <string name="sms_summary">Kies die inskrywing vir die stuur van SMS</string>
+    <string name="set_data_subscription_progress">Opstel van data-inskrywing.</string>
+    <string name="set_dds_success">Data inskrywing gestel</string>
+    <string name="set_dds_failed">Kan nie data inskrywing stel nie. Verwyder enige bestaande data konneksie en probeer weer.</string>
+    <string name="set_dds_error">Kan nie data inskrywing stel nie</string>
+    <string name="set_sms_error">Kan nie SMS inskrywing stel nie, inskrywing nie aktief</string>
+    <string name="set_voice_error">Kan nie stem inskrywing stel nie, inskrywing nie aktief</string>
+    <string name="set_priority_sub_error">Kan nie prioriteit inskrywing stel nie, inskrywing nie aktief</string>
+    <string name="prompt">Por</string>
+    <string name="prompt_user">Por gebruiker</string>
+    <string name="tune_away_title">Tune Away</string>
+    <string name="tune_away_Default">Feaktiveer</string>
+    <string name="tune_away_enabled">TuneAway geaktiveer!</string>
+    <string name="tune_away_disabled">TuneAway gedeaktiveer!</string>
+    <string name="priority_sub_title">Prioriteit inskrywing</string>
+    <string name="priority_sub_summary">Kies prioriteit inskrywing</string>
+    <string name="label_global_roaming_settings">Globale swerwing instellings</string>
+    <string name="wifi_disabled_association_rejected">Assosiasie verwerp</string>
+    <string name="bluetooth_enter_pin_msg_hs">Om saam te bind met:<xliff:g id="bold">&lt;br>&lt;b></xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b>&lt;br>&lt;br></xliff:g>Voer die toestel se vereiste PIN in (16 syfers of meer):</string>
+    <string name="bluetooth_profile_sap">SIM toegang</string>
+    <string name="bluetooth_sap_profile_summary_connected">Gekoppel aan SIM toegangs bediener</string>
+    <string name="bluetooth_sap_profile_summary_use_for">"Slegs vir SIM Toegang"</string>
 </resources>
