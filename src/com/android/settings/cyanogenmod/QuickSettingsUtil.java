@@ -197,7 +197,7 @@ public class QuickSettingsUtil {
         }
 
         // Don't show the Torch tile if not supported
-        if (!context.getResources().getBoolean(R.bool.has_led_flash)) {
+        if (!QSUtils.deviceSupportsTorch(context)) {
             removeTile(TILE_TORCH);
         }
 

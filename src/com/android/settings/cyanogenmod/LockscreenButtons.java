@@ -28,6 +28,7 @@ import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.text.TextUtils;
 
+import com.android.internal.util.cm.QSUtils;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
@@ -54,10 +55,6 @@ public class LockscreenButtons extends SettingsPreferenceFragment
     private ListPreference mLongHomeAction;
     private ListPreference mLongMenuAction;
     private ListPreference[] mActions;
-
-    private boolean torchSupported() {
-        return getResources().getBoolean(R.bool.has_led_flash);
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -98,7 +95,7 @@ public class LockscreenButtons extends SettingsPreferenceFragment
             mLongBackAction, mLongHomeAction, mLongMenuAction
         };
         for (ListPreference pref : mActions) {
-            if (torchSupported()) {
+            if (QSUtils.deviceSupportsTorch(getActivity())) {
                 final CharSequence[] oldEntries = pref.getEntries();
                 final CharSequence[] oldValues = pref.getEntryValues();
                 ArrayList<CharSequence> newEntries = new ArrayList<CharSequence>();
