@@ -41,8 +41,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private static final String KEY_ASSIST_LONG_PRESS = "hardware_keys_assist_long_press";
     private static final String KEY_APP_SWITCH_PRESS = "hardware_keys_app_switch_press";
     private static final String KEY_APP_SWITCH_LONG_PRESS = "hardware_keys_app_switch_long_press";
-    private static final String KEY_CAMERA_PRESS = "hardware_keys_camera_press";
-    private static final String KEY_CAMERA_LONG_PRESS = "hardware_keys_camera_long_press";
     private static final String KEY_BUTTON_BACKLIGHT = "button_backlight";
     private static final String KEY_SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
 
@@ -82,8 +80,9 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private ListPreference mAssistLongPressAction;
     private ListPreference mAppSwitchPressAction;
     private ListPreference mAppSwitchLongPressAction;
-    private ListPreference mCameraPressAction;
-    private ListPreference mCameraLongPressAction;
+    private CheckBoxPreference mCameraWake;
+    private CheckBoxPreference mCameraSleepOnRelease;
+    private CheckBoxPreference mCameraMusicControls;
     private CheckBoxPreference mShowActionOverflow;
     private CheckBoxPreference mSwapVolumeButtons;
 
@@ -198,15 +197,19 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         }
 
         if (hasCameraKey) {
-            int pressAction = Settings.System.getInt(resolver,
-                    Settings.System.KEY_CAMERA_ACTION, ACTION_NOTHING);
-            mCameraPressAction = initActionList(KEY_CAMERA_PRESS, pressAction);
-
-            int longPressAction = Settings.System.getInt(resolver,
-                    Settings.System.KEY_CAMERA_LONG_PRESS_ACTION, ACTION_LAUNCH_CAMERA);
-            mCameraLongPressAction = initActionList(KEY_CAMERA_LONG_PRESS, longPressAction);
-
-            hasAnyBindableKey = true;
+            mCameraWake = (CheckBoxPreference)
+                prefScreen.findPreference(Settings.System.CAMERA_WAKE_SCREEN);
+            mCameraSleepOnRelease = (CheckBoxPreference)
+                prefScreen.findPreference(Settings.System.CAMERA_SLEEP_ON_RELEASE);
+            mCameraMusicControls = (CheckBoxPreference)
+                prefScreen.findPreference(Settings.System.CAMERA_MUSIC_CONTROLS);
+            boolean value = mCameraWake.isChecked();
+            mCameraMusicControls.setEnabled(!value);
+            mCameraSleepOnRelease.setEnabled(value);
+            if (getResources().getBoolean(
+                com.android.internal.R.bool.config_singleStageCameraKey)) {
+                cameraCategory.removePreference(mCameraSleepOnRelease);
+            }
         } else {
             prefScreen.removePreference(cameraCategory);
         }
@@ -292,14 +295,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             handleActionListChange(mAppSwitchLongPressAction, newValue,
                     Settings.System.KEY_APP_SWITCH_LONG_PRESS_ACTION);
             return true;
-        } else if (preference == mCameraPressAction) {
-            handleActionListChange(mCameraPressAction, newValue,
-                    Settings.System.KEY_CAMERA_ACTION);
-            return true;
-        } else if (preference == mCameraLongPressAction) {
-            handleActionListChange(mCameraLongPressAction, newValue,
-                    Settings.System.KEY_CAMERA_LONG_PRESS_ACTION);
-            return true;
         }
 
         return false;
@@ -319,6 +314,12 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                     ? (Utils.isTablet(getActivity()) ? 2 : 1) : 0;
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.SWAP_VOLUME_KEYS_ON_ROTATION, value);
+        } else if (preference == mCameraWake) {
+            // Disable camera music controls if camera wake is enabled
+            boolean isCameraWakeEnabled = mCameraWake.isChecked();
+            mCameraMusicControls.setEnabled(!isCameraWakeEnabled);
+            mCameraSleepOnRelease.setEnabled(isCameraWakeEnabled);
+            return true;
         }
 
         return super.onPreferenceTreeClick(preferenceScreen, preference);

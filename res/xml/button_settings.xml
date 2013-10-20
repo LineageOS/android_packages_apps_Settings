@@ -145,23 +145,23 @@
         android:key="camera_key"
         android:title="@string/hardware_keys_camera_key_title" >
 
-        <ListPreference
-            android:key="hardware_keys_camera_press"
-            android:dialogTitle="@string/hardware_keys_short_press_title"
-            android:title="@string/hardware_keys_short_press_title"
-            android:entries="@array/hardware_keys_action_entries"
-            android:entryValues="@array/hardware_keys_action_values"
-            android:persistent="false"
-            android:dependency="hardware_key_rebinding" />
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="camera_wake_screen"
+            android:title="@string/camera_wake_title"
+            android:summary="@string/camera_wake_summary"
+            android:defaultValue="false" />
 
-        <ListPreference
-            android:key="hardware_keys_camera_long_press"
-            android:dialogTitle="@string/hardware_keys_long_press_title"
-            android:title="@string/hardware_keys_long_press_title"
-            android:entries="@array/hardware_keys_action_entries"
-            android:entryValues="@array/hardware_keys_action_values"
-            android:persistent="false"
-            android:dependency="hardware_key_rebinding" />
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="camera_sleep_on_release"
+            android:title="@string/camera_sleep_on_release_title"
+            android:summary="@string/camera_sleep_on_release_summary"
+            android:defaultValue="false" />
+
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="camera_music_controls"
+            android:title="@string/camera_music_controls_title"
+            android:summary="@string/camera_music_controls_summary"
+            android:defaultValue="true" />
 
     </PreferenceCategory>
 
