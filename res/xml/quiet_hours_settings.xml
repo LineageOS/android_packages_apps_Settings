@@ -40,6 +40,11 @@
         android:dependency="quiet_hours_enabled" />
 
     <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+        android:key="quiet_hours_system"
+        android:title="@string/quiet_hours_system"
+        android:dependency="quiet_hours_enabled" />
+
+    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
         android:key="quiet_hours_still"
         android:title="@string/quiet_hours_still"
         android:dependency="quiet_hours_enabled" />
