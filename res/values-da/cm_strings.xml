@@ -17,6 +17,10 @@
     <string name="bluetooth_mas_request">"Anmodning om beskeder"</string>
     <string name="bluetooth_mas_acceptance_dialog_text">%1$s vil gerne have adgang til dine beskeder. Vil du give %2$s adgang?</string>
     <string name="bluetooth_mas_remember_choice">Spørg ikke igen</string>
+    <string name="bluetooth_enter_pin_msg_hs">For at parre med:<xliff:g id="bold">&lt;br>&lt;b></xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b>&lt;br>&lt;br></xliff:g>Skriv enhedens påkrævet PIN-kode (16 cifre eller mere):</string>
+    <string name="bluetooth_profile_sap">SIM-adgang</string>
+    <string name="bluetooth_sap_profile_summary_connected">Forbundet til SIM-adgangsserver</string>
+    <string name="bluetooth_sap_profile_summary_use_for">Bruges til SIM-adgang</string>
     <string name="wifi_mode">Tilstand</string>
     <string name="wifi_mode_ibss">Ad-Hoc (IBSS)-netværk</string>
     <string name="wifi_mode_ibss_short">Ad-Hoc</string>
@@ -25,6 +29,7 @@
     <string name="wifi_setting_countrycode_error">Der opstod et problem med indstillingen af regionskoden.</string>
     <string name="wifi_setting_priority_title">Wi-Fi-prioritet</string>
     <string name="wifi_setting_priority_summary">Angiv prioriteten af Wi-Fi-netværkene</string>
+    <string name="wifi_disabled_association_rejected">Tilknytning afvist </string>
     <string name="volume_adjust_sounds_enable_title">Lydstyrkejusteringslyd</string>
     <string name="volume_adjust_sounds_enable_summary">Afspil lyd, når lydstyrke ændres på lydstyrkeknap</string>
     <string name="lockpattern_settings_enable_error_path_title">Vis mønsterfejl</string>
@@ -103,6 +108,7 @@
     <string name="lockscreen_battery_status_title">Batteristatus</string>
     <string name="lockscreen_battery_status_charging">Kun under opladning</string>
     <string name="lockscreen_battery_status_alwayson">Altid til</string>
+    <string name="lockscreen_battery_status_alwaysoff">Altid fra</string>
     <string name="profiles_settings_title">Profiler</string>
     <string name="profiles_add">Tilføj</string>
     <string name="profile_menu_delete">Slet</string>
@@ -197,6 +203,8 @@
     <string name="performance_settings_title">Ydeevne</string>
     <string name="performance_settings_warning_title">Fortsæt med forsigtighed</string>
     <string name="performance_settings_warning">Disse indstillinger er inkluderet for at eksperimentere og eventuelle ændringer til dem har potentiale til at forårsage ustabilitet, nedbrud, tab af data eller hardware fejl.\n\nVi beder dig om ikke at indsende fejlrapporter, hvis nogen af ​​disse indstillinger er blevet ændret fra standardindstillingerne.</string>
+    <string name="performance_set_on_boot">Indstil ved opstart</string>
+    <string name="performance_set_on_boot_summary">Gendan indstillingerne ved opstart</string>
     <string name="processor_title">Processor</string>
     <string name="cpu_cur_freq_title">Aktuel CPU-frekvens</string>
     <string name="cpu_governors_title">CPU-guvernør</string>
@@ -204,6 +212,10 @@
     <string name="cpu_max_freq_title">Højeste CPU-frekvens</string>
     <string name="io_scheds_title">I/O-planlægger</string>
     <string name="io_sched_title">I/O-planlægger</string>
+    <string name="perf_profile_title">Profil</string>
+    <string name="perf_profile_pwrsv">Strømbesparelse</string>
+    <string name="perf_profile_bal">Balanceret</string>
+    <string name="perf_profile_perf">Høj ydelse</string>
     <string name="memory_management_title">Hukommelsesstyring</string>
     <string name="pref_zram_title">zRam</string>
     <string name="pref_zram_summary">Komprimér hukommelse for øget virtuel kapacitet (kræver genstart)</string>
@@ -338,6 +350,7 @@
     <string name="hardware_keys_menu_key_title">Knappen Menu</string>
     <string name="hardware_keys_assist_key_title">Knappen Søg</string>
     <string name="hardware_keys_appswitch_key_title">Knappen Senest anvendt</string>
+    <string name="hardware_keys_camera_key_title">Kamera-knap</string>
     <string name="hardware_keys_volume_keys_title">Lydstyrkeknapper</string>
     <string name="hardware_keys_short_press_title">Handling ved kort tryk</string>
     <string name="hardware_keys_long_press_title">Handling ved langt tryk</string>
@@ -352,6 +365,7 @@
     <string name="hardware_keys_action_search">Søgeassistent</string>
     <string name="hardware_keys_action_voice_search">Stemmesøgning</string>
     <string name="hardware_keys_action_in_app_search">Søgning i app</string>
+    <string name="hardware_keys_action_launch_camera">Start Kamera</string>
     <string name="home_wake_title">Væk med startknap</string>
     <string name="home_wake_summary">At trykke på startknappen vil vække enheden</string>
     <string name="volume_wake_title">Væk med lydstyrkeknap</string>
@@ -419,6 +433,7 @@
     <string name="adb_notify">Meddelelse for USB-fejlretning</string>
     <string name="adb_notify_summary">Vis en meddelelse, når USB-fejlretning er tilsluttet</string>
     <string name="development_tools_title">Start Værktøjer</string>
+    <string name="allow_mock_sms">Tillad simulerings-SMS</string>
     <string name="usb_mass_storage_title">USB-lager</string>
     <string name="usb_mass_storage_summary">Aktivér USB-lager</string>
     <string name="storage_rescan_media">Scan lagerenheden igen for medier</string>
@@ -437,6 +452,7 @@
     <string name="lockscreen_buttons_previous">Forrige sang</string>
     <string name="lockscreen_buttons_playpause">Afspil/Pause musik</string>
     <string name="lockscreen_buttons_toggle_sound">Ringetilstand</string>
+    <string name="lockscreen_buttons_sleep">Gå i dvale</string>
     <string name="quick_settings_panel_title">Hurtige indstillinger-panel</string>
     <string name="title_static_tiles">Statiske felter</string>
     <string name="tile_picker_title">Felter og layout</string>
@@ -467,6 +483,7 @@
     <string name="title_tile_quiet_hours">Stille timer</string>
     <string name="title_tile_volume">Lydstyrke</string>
     <string name="title_tile_expanded_desktop">Udvidet skrivebord</string>
+    <string name="title_tile_network_adb">ADB via netværk</string>
     <string name="title_dynamic_tiles">Dynamiske felter</string>
     <string name="dynamic_tiles_note_title">NB:</string>
     <string name="dynamic_tiles_note_summary">Dynamiske felter er ikke altid synlige, og vil kun vises, hvis de udløses af en systembegivenhed</string>
@@ -689,12 +706,37 @@ to for at indsætte yderligere kontrolpunkter. \'Fjern\' sletter den valgte linj
     <string name="color_red_title">Rød</string>
     <string name="color_green_title">Grøn</string>
     <string name="color_blue_title">Blå</string>
+    <string name="button_backlight_title">Baggrundslys</string>
+    <string name="button_backlight_enabled">Oplyse knapper</string>
+    <string name="keyboard_backlight_enabled">Oplyse tastatur</string>
+    <string name="button_backlight_seekbar_title">Knap-lysstyrke</string>
+    <string name="keyboard_backlight_seekbar_title">Tastatur-lysstyrke</string>
+    <string name="backlight_timeout_title">Oplysnings-timeout</string>
+    <string name="backlight_timeout_unlimited">Slå ikke fra</string>
+    <plurals name="backlight_timeout_time">
+        <item quantity="one"><xliff:g id="seconds">%d</xliff:g> sekund</item>
+        <item quantity="other"><xliff:g id="seconds">%d</xliff:g> sekunder</item>
+    </plurals>
+    <string name="backlight_summary_disabled">Deaktiveret</string>
+    <string name="backlight_summary_enabled_with_timeout">Aktiveret for <xliff:g id="timeout">%s</xliff:g></string>
+    <string name="backlight_summary_enabled">Aktiveret</string>
     <string name="gamma_tuning_title_head">Gamma-kalibrering</string>
     <string name="gamma_tuning_summary_head">Finindstil gammaværdier</string>
+    <string name="gamma_tuning_control_set_header">Gruppe <xliff:g id="index">%d</xliff:g></string>
+    <string name="gamma_tuning_contrast">Kontrast</string>
+    <string name="gamma_tuning_brightness">Lysstyrke</string>
+    <string name="gamma_tuning_saturation">Farvemætning</string>
     <string name="more_device_controls_title">Mere\u2026</string>
     <string name="more_device_settings_title">Andre enhedsindstillinger</string>
     <string name="sensors_motors_title">Sensorer &amp; motorer</string>
     <string name="display_calibration_title">Skærmkalibrering</string>
+    <string name="category_quick_access">Hurtig Adgangs-ribbon</string>
+    <string name="title_quick_access">Vis i meddelelsespanel</string>
+    <string name="title_quick_access_linked">Linket layout</string>
+    <string name="summary_quick_access_linked">Brug de samme fliser og layout som panelet Hurtig-Indstillinger</string>
+    <string name="font_size_sample">Eksempel</string>
+    <string name="selinux_enable_title">SE-Android</string>
+    <string name="selinux_enable_warning">Du er ved at aktivere Security Enhanced Android, en avanceret sikkerhedsmekanisme på din enhed.\n\nDenne mulighed eksisterer kun til fejlretning, og det er meget sandsynligt, at din enhed ikke er helt klar til det. Det kan få dele af (eller alt) din hardware til at blokere eller hænge.\n\nEr du sikker på, du vil fortsætte?</string>
+    <string name="gps_download_data_wifi_only">Download kun GPS-assisteret data over Wi-Fi-netværk</string>
     <string name="intent_sender_data_label"><xliff:g id="data">Data:</xliff:g></string>
 </resources>
-
