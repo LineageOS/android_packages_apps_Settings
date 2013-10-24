@@ -201,8 +201,7 @@ public class Utils {
     public static boolean updatePreferenceToSpecificActivityFromMetaDataOrRemove(Context context,
             PreferenceGroup parentPreferenceGroup, String preferenceKey) {
 
-        IconPreferenceScreen preference = (IconPreferenceScreen)parentPreferenceGroup
-                .findPreference(preferenceKey);
+        Preference preference = parentPreferenceGroup.findPreference(preferenceKey);
         if (preference == null) {
             return false;
         }
@@ -245,9 +244,12 @@ public class Utils {
                     }
 
                     // Set icon, title and summary for the preference
-                    preference.setIcon(icon);
                     preference.setTitle(title);
                     preference.setSummary(summary);
+                    if (preference instanceof IconPreferenceScreen) {
+                        IconPreferenceScreen iconPreference = (IconPreferenceScreen) preference;
+                        iconPreference.setIcon(icon);
+                    }
 
                     // Replace the intent with this specific activity
                     preference.setIntent(new Intent().setClassName(
