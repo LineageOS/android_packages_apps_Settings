@@ -110,7 +110,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
 
         if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
             findPreference(KEY_STATUS).getIntent().setClassName(
-                    "com.android.settings","com.android.settings.deviceinfo.MSimStatus");
+                    "com.android.settings","com.android.settings.deviceinfo.msim.MSimStatus");
         }
 
         // Remove selinux information if property is not present
