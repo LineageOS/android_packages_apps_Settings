@@ -25,6 +25,7 @@
     <string name="quiet_hours_note_summary">Hinweis: Ankommende Anrufe werden während der ruhigen Stunden normal signalisiert</string>
     <string name="quiet_hours_enabled">Ruhige Stunden aktiv</string>
     <string name="quiet_hours_mute">Benachrichtigungston</string>
+    <string name="quiet_hours_system">Systemtöne deaktivieren</string>
     <string name="quiet_hours_still">Vibration</string>
     <string name="quiet_hours_dim">Benachrichtigungslicht</string>
     <string name="quiet_hours_haptic">Haptisches Feedback</string>
@@ -150,6 +151,8 @@
     <string name="unlock_menu_unlock_summary">Entsperren durch Drücken der Menü-Taste</string>
     <string name="unlock_home_unlock_title">Mit Home entsperren</string>
     <string name="unlock_home_unlock_summary">Entsperren durch Drücken der Home-Taste</string>
+    <string name="unlock_camera_unlock_title">Mit Kamera entsperren</string>
+    <string name="unlock_camera_unlock_summary">Entsperren durch Drücken der Kamera-Taste</string>
     <string name="unlock_quick_unlock_control_title">Schnelles Entsperren</string>
     <string name="unlock_quick_unlock_control_summary">Entsperren durch korrekte PIN- oder Passworteingabe</string>
     <string name="delay_and_timeout_title">Sperrverzögerung</string>
@@ -409,6 +412,7 @@
     <string name="title_tile_lte">LTE</string>
     <string name="title_tile_mobiledata">Mobilfunkdaten</string>
     <string name="title_tile_profile">Profile</string>
+    <string name="title_tile_performance_profile">Leistungsprofile</string>
     <string name="title_tile_autorotate">Bildschirmausrichtung</string>
     <string name="title_tile_settings">Einstellungen</string>
     <string name="title_tile_sound">Klingelmodus</string>
@@ -712,6 +716,12 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <string name="hardware_keys_double_tap_title">Doppeltes Drücken</string>
     <string name="home_wake_title">Aufwecken mit Home-Taste</string>
     <string name="home_wake_summary">Drücken der Home-Taste aktiviert den Bildschirm</string>
+    <string name="camera_wake_title">Aufwecken mit Kamera-Taste</string>
+    <string name="camera_wake_summary">Drücken der Kamera-Taste aktiviert den Bildschirm</string>
+    <string name="camera_sleep_on_release_title">Kurzer Blick</string>
+    <string name="camera_sleep_on_release_summary">Der Bildschirm wird aktiviert, solange die Kamera-Taste halb durchgedrückt gehalten wird</string>
+    <string name="camera_music_controls_title">Musiksteuerung</string>
+    <string name="camera_music_controls_summary">Bei abgeschaltetem Bildschirm durch langen Druck der Kamera-Taste die Wiedergabe starten / pausieren</string>
     <string name="volume_wake_title">Aufwecken mit Lautstärketaste</string>
     <string name="volume_wake_summary">Drücken einer Lautstärketaste aktiviert den Bildschirm</string>
     <string name="navigation_bar_category">Navigationsleiste</string>
@@ -740,4 +750,46 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <string name="bluetooth_sap_profile_summary_use_for">Für SIM-Zugriff verwenden</string>
     <string name="wifi_disabled_association_rejected">Verbindung abgelehnt</string>
     <string name="gps_download_data_wifi_only">A-GPS-Daten nur über WLAN herunterladen</string>
+
+    <!-- CAF strings -->
+    <string name="bluetooth_profile_dun">Internet-Einwahlverbindung</string>
+    <string name="bluetooth_dun_profile_summary_connected">Verbunden mit Einwahldienst</string>
+    <string name="bluetooth_dun_profile_summary_use_for">Für Einwahlverbindungen verwenden</string>
+    <string name="sim_absent">Keine SIM-Karte vorhanden</string>
+    <string name="sim_pin_change_failed_enable_sim_lock">Zum Ändern der PIN zuerst PIN-Sperre aktivieren</string>
+    <string name="sim_enable_disable_lock_not_supported">SIM-Sperre wird von dieser Karte nicht unterstützt</string>
+    <string name="sim_pin_attempts">\nVerbleibende Versuche:</string>
+    <string name="sim_pin_enabled">PIN1 aktiviert</string>
+    <string name="sim_pin_disabled">PIN1 deaktiviert</string>
+    <string name="device_additional_status_summary">Telefonnummer, Signal, IMEI usw.</string>
+    <string name="device_additional_status">Weitere Statusinformationen</string>
+    <string name="data_usage_tab_slot">SIM</string>
+    <string name="sel_sub_title">SIMs auswählen</string>
+    <string name="sel_sub_summary">SIM-Karte auswählen: SIM1, SIM2, usw.</string>
+    <string name="select_subscription">SIM-Karte auswähle</string>
+    <string name="subs_settings">MultiSIM-Einstellungen</string>
+    <string name="multi_sim_settings_title">MultiSIM-Einstellungen</string>
+    <string name="multi_sim_settings_summary">MultiSIM-Verhalten für Telefonate, Daten und SMS konfigurieren</string>
+    <string name="voice_title">Telefonate/USSD/MMI</string>
+    <string name="voice_summary">SIM für Telefonate auswählen</string>
+    <string name="data_title">Mobilfunkdaten</string>
+    <string name="data_summary">SIM für mobiles Datennetz auswählen</string>
+    <string name="sms_title">SMS</string>
+    <string name="sms_summary">SIM für SMS-Versand auswählen</string>
+    <string name="set_data_subscription_progress">SIM für Datenverbindung wird ausgewählt\u2026</string>
+    <string name="set_dds_success">SIM für Datenverbindungen erfolgreich ausgewählt</string>
+    <string name="set_dds_failed">SIM für Datenverbindungen konnte nicht ausgewählt werden. Bitte deaktivieren Sie bestehende Datenverbindungen und versuchen Sie es erneut</string>
+    <string name="set_dds_error">SIM für Datenverbindungen konnte nicht ausgewählt werden</string>
+    <string name="set_sms_error">SIM für SMS-Versand konnte nicht ausgewählt werden</string>
+    <string name="set_voice_error">SIM für Telefonate konnte nicht ausgewählt werden</string>
+    <string name="set_priority_sub_error">Priorität der SIM konnte nicht gesetzt werden. Die SIM-Karte ist nicht aktiv</string>
+    <string name="prompt">Nachfragen</string>
+    <string name="prompt_user">Bei jedem Anruf nachfraggen</string>
+    <string name="tune_away_title">TuneAway</string>
+    <string name="tune_away_Default">Deaktivieren</string>
+    <string name="tune_away_enabled">TuneAway aktiviert</string>
+    <string name="tune_away_disabled">TuneAway deaktiviert</string>
+    <string name="priority_sub_title">Priorität</string>
+    <string name="priority_sub_summary">Priorität der SIM-Karte festlegen</string>
+    <string name="label_global_roaming_settings">Globale Roaming-Einstellungen</string>
 </resources>
