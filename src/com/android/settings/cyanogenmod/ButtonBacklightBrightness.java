@@ -71,8 +71,11 @@ public class ButtonBacklightBrightness extends DialogPreference implements
             boolean isSingleValue = !context.getResources().getBoolean(
                     com.android.internal.R.bool.config_deviceHasVariableButtonBrightness);
 
+            int defaultBrightness = context.getResources().getInteger(
+                    com.android.internal.R.integer.config_buttonBrightnessSettingDefault);
+
             mButtonBrightness = new BrightnessControl(
-                    Settings.System.BUTTON_BRIGHTNESS, isSingleValue);
+                    Settings.System.BUTTON_BRIGHTNESS, isSingleValue, defaultBrightness);
             mActiveControl = mButtonBrightness;
         }
 
@@ -342,13 +345,19 @@ public class ButtonBacklightBrightness extends DialogPreference implements
             SeekBar.OnSeekBarChangeListener, CheckBox.OnCheckedChangeListener {
         private String mSetting;
         private boolean mIsSingleValue;
+        private int mDefaultBrightness;
         private CheckBox mCheckBox;
         private SeekBar mSeekBar;
         private TextView mValue;
 
-        public BrightnessControl(String setting, boolean singleValue) {
+        public BrightnessControl(String setting, boolean singleValue, int defaultBrightness) {
             mSetting = setting;
             mIsSingleValue = singleValue;
+            mDefaultBrightness = defaultBrightness;
+        }
+
+        public BrightnessControl(String setting, boolean singleValue) {
+            this(setting, singleValue, 255);
         }
 
         public void init(ViewGroup container) {
@@ -374,11 +383,11 @@ public class ButtonBacklightBrightness extends DialogPreference implements
 
         public int getBrightness(boolean persisted) {
             if (mCheckBox != null && !persisted) {
-                return mCheckBox.isChecked() ? 255 : 0;
+                return mCheckBox.isChecked() ? mDefaultBrightness : 0;
             } else if (mSeekBar != null && !persisted) {
                 return mSeekBar.getProgress();
             }
-            return Settings.System.getInt(mResolver, mSetting, 255);
+            return Settings.System.getInt(mResolver, mSetting, mDefaultBrightness);
         }
 
         public void applyBrightness() {
@@ -418,7 +427,7 @@ public class ButtonBacklightBrightness extends DialogPreference implements
         }
 
         public void reset() {
-            setBrightness(255);
+            setBrightness(mDefaultBrightness);
         }
 
         private void handleBrightnessUpdate(int brightness) {
