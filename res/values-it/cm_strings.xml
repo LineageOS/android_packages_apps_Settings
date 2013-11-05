@@ -14,6 +14,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="intent_sender_data_label"><xliff:g id="data">Dati:</xliff:g></string>
     <string name="bluetooth_mas_request">Richiesta di accesso ai messaggi</string>
     <string name="bluetooth_mas_acceptance_dialog_text">%1$s vorrebbe accedere ai tuoi messaggi. Consentire l\'accesso a %2$s?</string>
     <string name="bluetooth_mas_remember_choice">Non chiedere più</string>
@@ -711,8 +712,10 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' cancella la riga selezionata
     <string name="backlight_summary_enabled">Attivata</string>
     <string name="gamma_tuning_title_head">Calibrazione gamma</string>
     <string name="gamma_tuning_summary_head">Modifica valori gamma</string>
+    <string name="gamma_tuning_control_set_header">Gruppo <xliff:g id="index">%d</xliff:g></string>
     <string name="gamma_tuning_contrast">Contrasto</string>
     <string name="gamma_tuning_brightness">Luminosità</string>
+    <string name="gamma_tuning_saturation">Saturazione</string>
     <string name="more_device_controls_title">Altro\u2026</string>
     <string name="more_device_settings_title">Altre opzioni del dispositivo</string>
     <string name="sensors_motors_title">Sensori &amp; Motori</string>
@@ -724,4 +727,50 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' cancella la riga selezionata
     <string name="font_size_sample">Esempio</string>
     <string name="selinux_enable_title">Sicurezza avanzata Android</string>
     <string name="selinux_enable_warning">Si sta per attivare SEAndroid, un meccanismo di sicurezza avanzata, sul dispositivo.\n\nQuesta opzione esiste solo per scopi di debug, probabilmente il dispositivo non è ancora completamente pronto per questo, può quindi causare blocchi.\n\nSi è sicuri di voler procedere?</string>
+    <string name="gps_download_data_wifi_only">Download dati GPS assistito solo su reti Wi-Fi</string>
+    <string name="bluetooth_enter_pin_msg_hs">Per eseguire l\'accoppiamento con:<xliff:g id="bold">&lt;br>&lt;b></xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b>&lt;br>&lt;br></xliff:g>, digita il PIN richiesto del dispositivo (16 o più cifre):</string>
+    <string name="bluetooth_profile_sap">Accesso SIM</string>
+    <string name="bluetooth_profile_dun">Accesso rete remota</string>
+    <string name="bluetooth_sap_profile_summary_connected">Collegato al server di accesso SIM</string>
+    <string name="bluetooth_dun_profile_summary_connected">Collegato al server DUN</string>
+    <string name="bluetooth_sap_profile_summary_use_for">Usa per accesso SIM</string>
+    <string name="bluetooth_dun_profile_summary_use_for">Usa per accesso rete remota</string>
+    <string name="wifi_disabled_association_rejected">Associazione rifiutata</string>
+    <string name="sim_absent">Nessuna SIM/RUIM</string>
+    <string name="sim_pin_change_failed_enable_sim_lock">Attiva blocco SIM/RUIM prima del cambio PIN</string>
+    <string name="sim_enable_disable_lock_not_supported">Il blocco non è supportato da questa SIM/RUIM</string>
+    <string name="sim_pin_attempts">\nTentativi rimanenti:</string>
+    <string name="sim_pin_enabled">PIN attivato</string>
+    <string name="sim_pin_disabled">PIN disattivato</string>
+    <string name="device_additional_status_summary">Numero di telefono, segnale, IMEI, etc..</string>
+    <string name="device_additional_status">Ulteriori informazioni di stato</string>
+    <string name="data_usage_tab_slot">SIM</string>
+    <string name="sel_sub_title">Configura sottoscrizioni</string>
+    <string name="sel_sub_summary">Seleziona la sottoscrizione SUB1, SUB2, etc\u2026</string>
+    <string name="select_subscription">Seleziona sottoscrizione</string>
+    <string name="subs_settings">Stato sottoscrizione</string>
+    <string name="multi_sim_settings_title">Impostazioni multi-sim</string>
+    <string name="multi_sim_settings_summary">Configura le impostazioni multi-sim per voce, dati e SMS</string>
+    <string name="voice_title">Voce/USSD/MMI</string>
+    <string name="voice_summary">Seleziona sottoscrizione per chiamata vocale</string>
+    <string name="data_title">Chiamata dati</string>
+    <string name="data_summary">Seleziona sottoscrizione per chiamata dati</string>
+    <string name="sms_title">SMS</string>
+    <string name="sms_summary">Seleziona sottoscrizione per l\'invio di SMS</string>
+    <string name="set_data_subscription_progress">Impostazione sottoscrizione dati.</string>
+    <string name="set_dds_success">Sottoscrizione dati impostata</string>
+    <string name="set_dds_failed">Impossibile impostare sottoscrizione dati. Rimuovere qualsiasi connessione dati esistente e riprovare.</string>
+    <string name="set_dds_error">Impossibile impostare sottoscrizione dati</string>
+    <string name="set_sms_error">Impossibile impostare sottoscrizione SMS, sottoscrizione non attiva</string>
+    <string name="set_voice_error">Impossibile impostare sottoscrizione voce, sottoscrizione non attiva</string>
+    <string name="set_priority_sub_error">Impossibile impostare priorità sottoscrizione, sottoscrizione non attiva</string>
+    <string name="prompt">Prompt</string>
+    <string name="prompt_user">Prompt utente</string>
+    <string name="tune_away_title">Tune Away</string>
+    <string name="tune_away_Default">Disattivato</string>
+    <string name="tune_away_enabled">TuneAway attivato!</string>
+    <string name="tune_away_disabled">TuneAway disattivato!</string>
+    <string name="priority_sub_title">Priorità sottoscrizione</string>
+    <string name="priority_sub_summary">Selezionare priorità sottoscrizione</string>
+    <string name="label_global_roaming_settings">Impostazioni roaming globale</string>
 </resources>
