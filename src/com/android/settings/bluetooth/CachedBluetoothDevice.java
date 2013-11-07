@@ -330,6 +330,7 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
                 final boolean successful = dev.removeBond();
                 if (successful) {
                     if (Utils.D) {
+                        mDevice.setAlias(null);
                         Log.d(TAG, "Command sent successfully:REMOVE_BOND " + describe(null));
                     }
                     setRemovable(true);
@@ -390,6 +391,17 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
             mName = name;
             if (mName == null || TextUtils.isEmpty(mName)) {
                 mName = mDevice.getAddress();
+            } else {
+                mName = name;
+            }
+            dispatchAttributesChanged();
+        }
+    }
+    void setAliasName(String name) {
+        if (!mName.equals(name)) {
+            if (!TextUtils.isEmpty(name)) {
+                mName = name;
+                mDevice.setAlias(name);
             }
             dispatchAttributesChanged();
         }
