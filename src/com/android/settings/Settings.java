@@ -86,6 +86,10 @@ import com.android.settings.nfc.PaymentSettings;
 import com.android.settings.print.PrintJobSettingsFragment;
 import com.android.settings.print.PrintServiceSettingsFragment;
 import com.android.settings.print.PrintSettingsFragment;
+import com.android.settings.profiles.AppGroupConfig;
+import com.android.settings.profiles.ProfileConfig;
+import com.android.settings.profiles.ProfileEnabler;
+import com.android.settings.profiles.ProfilesSettings;
 import com.android.settings.tts.TextToSpeechSettings;
 import com.android.settings.users.UserSettings;
 import com.android.settings.vpn2.VpnSettings;
@@ -519,6 +523,9 @@ public class Settings extends PreferenceActivity
                 WifiP2pSettings.class.getName().equals(fragmentName) ||
                 BluetoothSettings.class.getName().equals(fragmentName) ||
                 DreamSettings.class.getName().equals(fragmentName) ||
+                ProfilesSettings.class.getName().equals(fragmentName) ||
+                ProfileConfig.class.getName().equals(fragmentName) ||
+                AppGroupConfig.class.getName().equals(fragmentName) ||
                 LocationSettings.class.getName().equals(fragmentName) ||
                 ToggleAccessibilityServicePreferenceFragment.class.getName().equals(fragmentName) ||
                 PrintSettingsFragment.class.getName().equals(fragmentName) ||
@@ -817,6 +824,7 @@ public class Settings extends PreferenceActivity
         private final BluetoothEnabler mBluetoothEnabler;
         private final DataEnabler mDataEnabler;
         private final Lte4GEnabler m4GEnabler;
+        private final ProfileEnabler mProfileEnabler;
         private AuthenticatorHelper mAuthHelper;
         private DevicePolicyManager mDevicePolicyManager;
 
@@ -842,7 +850,8 @@ public class Settings extends PreferenceActivity
             if (header.fragment == null && header.intent == null && !nullHeader(header)) {
                 return HEADER_TYPE_CATEGORY;
             } else if (header.id == R.id.wifi_settings || header.id == R.id.bluetooth_settings
-                    || header.id == R.id.mobiledata_settings || header.id == R.id.lte_4g_settings) {
+                    || header.id == R.id.mobiledata_settings || header.id == R.id.lte_4g_settings
+                    || header.id == R.id.profiles_settings) {
                 return HEADER_TYPE_SWITCH;
             } else if (header.id == R.id.security_settings) {
                 return HEADER_TYPE_BUTTON;
@@ -888,6 +897,7 @@ public class Settings extends PreferenceActivity
             // Switches inflated from their layouts. Must be done before adapter is set in super
             mWifiEnabler = new WifiEnabler(context, new Switch(context));
             mBluetoothEnabler = new BluetoothEnabler(context, new Switch(context));
+            mProfileEnabler = new ProfileEnabler(context, new Switch(context));
             mDevicePolicyManager = dpm;
             mDataEnabler = new DataEnabler(context, new Switch(context));
             m4GEnabler = new Lte4GEnabler(context, new Switch(context));
@@ -982,6 +992,8 @@ public class Settings extends PreferenceActivity
                         }
                     } else if(header.id == R.id.lte_4g_settings){
                         m4GEnabler.setSwitch(holder.switch_);
+                    } else if (header.id == R.id.profiles_settings) {
+                        mProfileEnabler.setSwitch(holder.switch_);
                     }
                     updateCommonHeaderView(header, holder);
                     break;
@@ -1057,6 +1069,7 @@ public class Settings extends PreferenceActivity
             mBluetoothEnabler.resume();
             mDataEnabler.resume();
             m4GEnabler.resume();
+            mProfileEnabler.resume();
         }
 
         public void pause() {
@@ -1068,6 +1081,7 @@ public class Settings extends PreferenceActivity
 
         public void destroy() {
             m4GEnabler.destroy();
+            mProfileEnabler.pause();
         }
     }
 
@@ -1201,6 +1215,7 @@ public class Settings extends PreferenceActivity
     public static class TextToSpeechSettingsActivity extends Settings { /* empty */ }
     public static class AndroidBeamSettingsActivity extends Settings { /* empty */ }
     public static class WifiDisplaySettingsActivity extends Settings { /* empty */ }
+    public static class ProfilesSettingsActivity extends Settings { /* empty */ }
     public static class DreamSettingsActivity extends Settings { /* empty */ }
     public static class NotificationStationActivity extends Settings { /* empty */ }
     public static class UserSettingsActivity extends Settings { /* empty */ }
