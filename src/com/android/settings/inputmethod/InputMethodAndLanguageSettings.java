@@ -65,6 +65,9 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
     private static final String KEY_CURRENT_INPUT_METHOD = "current_input_method";
     private static final String KEY_INPUT_METHOD_SELECTOR = "input_method_selector";
     private static final String KEY_USER_DICTIONARY_SETTINGS = "key_user_dictionary_settings";
+    private static final String KEY_POINTER_SETTINGS_CATEGORY = "pointer_settings_category";
+    private static final String KEY_TRACKPAD_SETTINGS = "gesture_pad_settings";
+
     // false: on ICS or later
     private static final boolean SHOW_INPUT_METHOD_SWITCHER_SETTINGS = false;
 
@@ -169,6 +172,15 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         // Build hard keyboard and game controller preference categories.
         mIm = (InputManager)getActivity().getSystemService(Context.INPUT_SERVICE);
         updateInputDevices();
+
+        if (!getResources().getBoolean(com.android.internal.R.bool.config_stylusGestures)) {
+            PreferenceCategory pointerSettingsCategory = (PreferenceCategory)
+                findPreference(KEY_POINTER_SETTINGS_CATEGORY);
+            if (pointerSettingsCategory != null) {
+                Utils.updatePreferenceToSpecificActivityFromMetaDataOrRemove(getActivity(),
+                        pointerSettingsCategory, KEY_TRACKPAD_SETTINGS);
+            }
+        }
 
         // Spell Checker
         final Intent intent = new Intent(Intent.ACTION_MAIN);
