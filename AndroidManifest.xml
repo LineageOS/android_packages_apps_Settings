@@ -98,7 +98,8 @@
             android:requiredForAllUsers="true"
             android:supportsRtl="true">
 
-        <uses-library android:name="org.cyanogenmod.hardware" required="false" />
+        <uses-library android:name="org.cyanogenmod.hardware"
+            android:required="false" />
 
         <receiver android:name=".cyanogenmod.LockscreenInterface$DeviceAdminLockscreenReceiver"
             android:permission="android.permission.BIND_DEVICE_ADMIN">
