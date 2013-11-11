@@ -1,17 +1,29 @@
 /*
- * Copyright (C) 2011 The Android Open Source Project
+ * Copyright (c) 2013, The Linux Foundation. All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *        * Redistributions of source code must retain the above copyright
+ *            notice, this list of conditions and the following disclaimer.
+ *        * Redistributions in binary form must reproduce the above copyright
+ *            notice, this list of conditions and the following disclaimer in the
+ *            documentation and/or other materials provided with the distribution.
+ *        * Neither the name of The Linux Foundation nor
+ *            the names of its contributors may be used to endorse or promote
+ *            products derived from this software without specific prior written
+ *            permission.
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NON-INFRINGEMENT ARE DISCLAIMED.    IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
 package com.android.settings.bluetooth;
@@ -19,7 +31,7 @@ package com.android.settings.bluetooth;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothClass;
 import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothPan;
+import android.bluetooth.BluetoothSap;
 import android.bluetooth.BluetoothProfile;
 import android.content.Context;
 import android.util.Log;
@@ -30,31 +42,27 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * PanProfile handles Bluetooth PAN profile (NAP and PANU).
+ * SapServerProfile handles Bluetooth SAP server profile.
  */
-final class PanProfile implements LocalBluetoothProfile {
-    private static final String TAG = "PanProfile";
+final class SapServerProfile implements LocalBluetoothProfile {
+    private static final String TAG = "SapServerProfile";
     private static boolean V = true;
 
-    private BluetoothPan mService;
+    private BluetoothSap mService;
     private boolean mIsProfileReady;
 
-    // Tethering direction for each device
-    private final HashMap<BluetoothDevice, Integer> mDeviceRoleMap =
-            new HashMap<BluetoothDevice, Integer>();
-
-    static final String NAME = "PAN";
+    static final String NAME = "SAP Server";
 
     // Order of this profile in device profiles list
-    private static final int ORDINAL = 4;
+    private static final int ORDINAL = 10;
 
     // These callbacks run on the main thread.
-    private final class PanServiceListener
+    private final class SapServiceListener
             implements BluetoothProfile.ServiceListener {
 
         public void onServiceConnected(int profile, BluetoothProfile proxy) {
             if (V) Log.d(TAG,"Bluetooth service connected");
-            mService = (BluetoothPan) proxy;
+            mService = (BluetoothSap) proxy;
             mIsProfileReady=true;
         }
 
@@ -68,10 +76,10 @@ final class PanProfile implements LocalBluetoothProfile {
         return mIsProfileReady;
     }
 
-    PanProfile(Context context) {
+    SapServerProfile(Context context) {
         BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
-        adapter.getProfileProxy(context, new PanServiceListener(),
-                BluetoothProfile.PAN);
+        adapter.getProfileProxy(context, new SapServiceListener(),
+                BluetoothProfile.SAP);
     }
 
     public boolean isConnectable() {
@@ -83,14 +91,7 @@ final class PanProfile implements LocalBluetoothProfile {
     }
 
     public boolean connect(BluetoothDevice device) {
-        if (mService == null) return false;
-        List<BluetoothDevice> sinks = mService.getConnectedDevices();
-        if (sinks != null) {
-            for (BluetoothDevice sink : sinks) {
-                mService.disconnect(sink);
-            }
-        }
-        return mService.connect(device);
+        return false;
     }
 
     public boolean disconnect(BluetoothDevice device) {
@@ -114,7 +115,7 @@ final class PanProfile implements LocalBluetoothProfile {
     }
 
     public void setPreferred(BluetoothDevice device, boolean preferred) {
-        // ignore: isPreferred is always true for PAN
+        // ignore: isPreferred is always true for SAP
     }
 
     public String toString() {
@@ -126,26 +127,17 @@ final class PanProfile implements LocalBluetoothProfile {
     }
 
     public int getNameResource(BluetoothDevice device) {
-        if (isLocalRoleNap(device)) {
-            return R.string.bluetooth_profile_pan_nap;
-        } else {
-            return R.string.bluetooth_profile_pan;
-        }
+        return R.string.bluetooth_profile_sap;
     }
 
     public int getSummaryResourceForDevice(BluetoothDevice device) {
         int state = getConnectionStatus(device);
         switch (state) {
             case BluetoothProfile.STATE_DISCONNECTED:
-                return R.string.bluetooth_pan_profile_summary_use_for;
+                return R.string.bluetooth_sap_profile_summary_use_for;
 
             case BluetoothProfile.STATE_CONNECTED:
-                if (isLocalRoleNap(device)) {
-                    return R.string.bluetooth_pan_nap_profile_summary_connected;
-                } else {
-                    return R.string.bluetooth_pan_user_profile_summary_connected;
-                }
-
+                return R.string.bluetooth_sap_profile_summary_connected;
             default:
                 return Utils.getConnectionStateSummary(state);
         }
@@ -155,27 +147,14 @@ final class PanProfile implements LocalBluetoothProfile {
         return R.drawable.ic_bt_network_pan;
     }
 
-    // Tethering direction determines UI strings.
-    void setLocalRole(BluetoothDevice device, int role) {
-        mDeviceRoleMap.put(device, role);
-    }
-
-    boolean isLocalRoleNap(BluetoothDevice device) {
-        if (mDeviceRoleMap.containsKey(device)) {
-            return mDeviceRoleMap.get(device) == BluetoothPan.LOCAL_NAP_ROLE;
-        } else {
-            return false;
-        }
-    }
-
     protected void finalize() {
         if (V) Log.d(TAG, "finalize()");
         if (mService != null) {
             try {
-                BluetoothAdapter.getDefaultAdapter().closeProfileProxy(BluetoothProfile.PAN, mService);
+                BluetoothAdapter.getDefaultAdapter().closeProfileProxy(BluetoothProfile.SAP, mService);
                 mService = null;
             }catch (Throwable t) {
-                Log.w(TAG, "Error cleaning up PAN proxy", t);
+                Log.w(TAG, "Error cleaning up SAP proxy", t);
             }
         }
     }

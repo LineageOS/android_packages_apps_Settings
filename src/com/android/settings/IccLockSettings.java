@@ -29,11 +29,14 @@ import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
+import android.telephony.TelephonyManager;
 import android.widget.Toast;
 
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
+import com.android.internal.telephony.CommandException;
 import com.android.internal.telephony.TelephonyIntents;
+import com.codeaurora.telephony.msim.MSimPhoneFactory;
 
 /**
  * Implements the preference screen to enable/disable ICC lock and
@@ -101,10 +104,10 @@ public class IccLockSettings extends PreferenceActivity
             AsyncResult ar = (AsyncResult) msg.obj;
             switch (msg.what) {
                 case MSG_ENABLE_ICC_PIN_COMPLETE:
-                    iccLockChanged(ar.exception == null);
+                    iccLockChanged(ar);
                     break;
                 case MSG_CHANGE_ICC_PIN_COMPLETE:
-                    iccPinChanged(ar.exception == null);
+                    iccPinChanged(ar);
                     break;
                 case MSG_SIM_STATE_CHANGED:
                     updatePreferences();
@@ -179,7 +182,11 @@ public class IccLockSettings extends PreferenceActivity
         // Don't need any changes to be remembered
         getPreferenceScreen().setPersistent(false);
 
-        mPhone = PhoneFactory.getDefaultPhone();
+        Intent intent = getIntent();
+        int subscription = intent.getIntExtra(SelectSubscription.SUBSCRIPTION_KEY,
+                MSimPhoneFactory.getDefaultSubscription());
+        // Use the right phone based on the subscription selected.
+        mPhone = MSimPhoneFactory.getPhone(subscription);
         mRes = getResources();
         updatePreferences();
     }
@@ -351,23 +358,50 @@ public class IccLockSettings extends PreferenceActivity
         // Disable the setting till the response is received.
         mPinToggle.setEnabled(false);
     }
+    /**
+     * Handles exceptions encountered when performing operations like
+     * PIN enable/disable, PIN change, etc.
+     * Displays appropriate Toast message depending on the exception
+     */
+    private void handleException(Throwable exception, int requestType) {
+        if (exception instanceof CommandException) {
+            CommandException.Error err = ((CommandException)(exception)).getCommandError();
+            if (err == CommandException.Error.REQUEST_NOT_SUPPORTED) {
+                int id;
+                if (requestType == MSG_ENABLE_ICC_PIN_COMPLETE) {
+                    id = R.string.sim_enable_disable_lock_not_supported;
+                } else {
+                    id = R.string.sim_pin_change_failed_enable_sim_lock;
+                }
+                Toast.makeText(this, mRes.getString(id),Toast.LENGTH_SHORT).show();
+            } else {
+                displayRetryCounter(mRes.getString(R.string.sim_change_failed));
+            }
+        } else if (exception instanceof RuntimeException) {
+            Toast.makeText(this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
 
-    private void iccLockChanged(boolean success) {
-        if (success) {
+    private void iccLockChanged(AsyncResult ar) {
+        if (ar.exception == null) {
+            if (mToState) {
+                Toast.makeText(this, mRes.getString(R.string.sim_pin_enabled),
+                        Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, mRes.getString(R.string.sim_pin_disabled),
+                        Toast.LENGTH_SHORT).show();
+            }
             mPinToggle.setChecked(mToState);
         } else {
-            Toast.makeText(this, mRes.getString(R.string.sim_lock_failed), Toast.LENGTH_SHORT)
-                    .show();
+            handleException(ar.exception, MSG_ENABLE_ICC_PIN_COMPLETE);
         }
         mPinToggle.setEnabled(true);
         resetDialogState();
     }
 
-    private void iccPinChanged(boolean success) {
-        if (!success) {
-            Toast.makeText(this, mRes.getString(R.string.sim_change_failed),
-                    Toast.LENGTH_SHORT)
-                    .show();
+    private void iccPinChanged(AsyncResult ar) {
+        if (ar.exception != null) {
+            handleException(ar.exception, MSG_CHANGE_ICC_PIN_COMPLETE);
         } else {
             Toast.makeText(this, mRes.getString(R.string.sim_change_succeeded),
                     Toast.LENGTH_SHORT)
@@ -397,5 +431,16 @@ public class IccLockSettings extends PreferenceActivity
         mPin = "";
         setDialogValues();
         mDialogState = OFF_MODE;
+    }
+
+    private void displayRetryCounter(String s) {
+        int attempts = mPhone.getIccCard().getIccPin1RetryCount();
+        if (attempts >= 0) {
+            String displayMsg = s + mRes.getString(R.string.sim_pin_attempts) + attempts;
+            Toast.makeText(this, displayMsg, Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, mRes.getString(R.string.sim_lock_failed), Toast.LENGTH_SHORT)
+            .show();
+        }
     }
 }

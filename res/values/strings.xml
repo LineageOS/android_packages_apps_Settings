@@ -1059,6 +1059,9 @@
     <!-- Message when bluetooth dialog for pin entry is showing. [CHAR LIMIT=NONE] -->
     <string name="bluetooth_enter_pin_msg">To pair with:<xliff:g id="bold">&lt;br>&lt;b></xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b>&lt;br>&lt;br></xliff:g>Type the device\'s required PIN:</string>
 
+    <!-- Message when bluetooth dialog for pin entry is showing  when HIGH security enabled-->
+    <string name="bluetooth_enter_pin_msg_hs">\nType PIN to pair with \u0022<xliff:g id="device_name">%1$s</xliff:g>\u0022. [High Security Enabled: Needs 16 character key] </string>
+
     <!-- Message when bluetooth dialog for passkey entry is showing. [CHAR LIMIT=NONE] -->
     <string name="bluetooth_enter_passkey_msg">To pair with:<xliff:g id="bold">&lt;br>&lt;b></xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b>&lt;br>&lt;br></xliff:g>Type the device\'s required passkey:</string>
 
@@ -1152,6 +1155,10 @@
     <!-- Bluetooth settings.  The user-visible string that is used whenever referring to the map profile. -->
     <string name="bluetooth_profile_map">Message Access</string>
 
+    <!-- Bluetooth settings.  The user-visible string that is used whenever referring to the SAP profile. -->
+    <string name="bluetooth_profile_sap">SIM Access</string>
+    <!-- Bluetooth settings.  The user-visible string that is used whenever referring to the DUN profile. -->
+    <string name="bluetooth_profile_dun">Dial-up Network Access</string>
     <!-- Bluetooth settings.  Message for disconnecting from the A2DP profile. [CHAR LIMIT=80] -->
     <string name="bluetooth_disconnect_a2dp_profile"><xliff:g id="device_name">%1$s</xliff:g> will be disconnected from media audio.</string>
     <!-- Bluetooth settings.  Message for disconnecting from the headset profile. [CHAR LIMIT=80] -->
@@ -1185,6 +1192,10 @@
     <string name="bluetooth_opp_profile_summary_connected">Connected to file transfer server</string>
     <!-- Bluetooth settings.  Connection options screen.  The summary for the map checkbox preference when map is connected. -->
     <string name="bluetooth_map_profile_summary_connected">Connected to map</string>
+    <!-- Bluetooth settings.  Connection options screen.  The summary for the SAP checkbox preference when SAP is connected. -->
+    <string name="bluetooth_sap_profile_summary_connected">Connected to SIM Access Server</string>
+    <!-- Bluetooth settings.  Connection options screen.  The summary for the DUN checkbox preference when DUN is connected. -->
+    <string name="bluetooth_dun_profile_summary_connected">Connected to DUN Server</string>
     <!-- Bluetooth settings.  Connection options screen.  The summary for the OPP checkbox preference when OPP is not connected. -->
     <string name="bluetooth_opp_profile_summary_not_connected">Not connected to file transfer server</string>
     <!-- Bluetooth settings. Connection options screen. The summary for the HID checkbox preference when HID is connected. -->
@@ -1200,6 +1211,10 @@
     <string name="bluetooth_headset_profile_summary_use_for">Use for phone audio</string>
     <!-- Bluetooth settings.  Connection options screen.  The summary for the OPP checkbox preference that describes how checking it will set the OPP profile as preferred. -->
     <string name="bluetooth_opp_profile_summary_use_for">Use for file transfer</string>
+    <!-- Bluetooth settings.  Connection options screen.  The summary for the SAP checkbox preference that describes how checking it will set the SAP profile as preferred. -->
+    <string name="bluetooth_sap_profile_summary_use_for">Use for SIM Access</string>
+    <!-- Bluetooth settings.  Connection options screen.  The summary for the DUN checkbox preference that describes how checking it will set the DUN profile as preferred. -->
+    <string name="bluetooth_dun_profile_summary_use_for">Use for Dial-up Network Access</string>
     <!-- Bluetooth settings. Connection options screen. The summary
          for the HID checkbox preference that describes how checking it
          will set the HID profile as preferred. -->
@@ -1903,11 +1918,11 @@
     <string name="dialog_title_font_size">Font size</string>
 
     <!-- SIM lock settings title -->
-    <string name="sim_lock_settings">SIM card lock settings</string>
+    <string name="sim_lock_settings">SIM/RUIM card lock settings</string>
     <!-- Security & location settings screen, setting option name -->
-    <string name="sim_lock_settings_category">Set up SIM card lock</string>
+    <string name="sim_lock_settings_category">Set up SIM/RUIM card lock</string>
     <!-- Security & location settings screen, section heading for settings related to sim card locking -->
-    <string name="sim_lock_settings_title">SIM card lock</string>
+    <string name="sim_lock_settings_title">SIM/RUIM card lock</string>
     <!-- SIM card lock settings screen, setting check box label -->
     <string name="sim_pin_toggle">Lock SIM card</string>
     <!-- SIM card lock settings screen, setting option summary text when SIM lock check box is selected -->
@@ -1937,6 +1952,8 @@
     <string name="sim_bad_pin">Incorrect PIN</string>
     <!-- SIM card lock settings screen, SIM PIN dialog message when PINs don't match -->
     <string name="sim_pins_dont_match">PINs don\'t match</string>
+    <!-- SIM card lock settings screen, SIM PIN dialog message when SIM card is absent-->
+    <string name="sim_absent">No SIM/RUIM</string>
     <!-- SIM card lock settings screen, toast after not entering correct SIM PIN -->
     <string name="sim_change_failed">Can\'t change PIN.\nPossibly incorrect PIN.</string>
     <!-- SIM card lock settings screen, SIM PIN dialog message when the entered PIN is correct-->
@@ -1947,6 +1964,16 @@
     <string name="sim_enter_ok">OK</string>
     <!-- SIM card lock settings screen, SIM PIN dialog button labels: -->
     <string name="sim_enter_cancel">Cancel</string>
+    <!-- SIM password can't be changed as SIM LOCK is not enabled: -->
+    <string name="sim_pin_change_failed_enable_sim_lock">Unable to Change SIM/RUIM PIN.\n Enable SIM/RUIM Lock.</string>
+    <!-- SIM lock can't be changed - not supported -->
+    <string name="sim_enable_disable_lock_not_supported">Unable to Change SIM/RUIM Lock.\n SIM/RUIM doesn\'t support it.</string>
+    <!-- SIM card lock settings screen, toast displayed on wrong PIN1: -->
+    <string name="sim_pin_attempts">\nAttempts Remaining :</string>
+    <!-- SIM card lock settings screen, toast displayed on PIN1 enable: -->
+    <string name="sim_pin_enabled">PIN1 Enabled!</string>
+    <!-- SIM card lock settings screen, toast displayed on PIN1 disable: -->
+    <string name="sim_pin_disabled">PIN1 Disabled!</string>
 
     <!-- Advanced (used for diagnostics) device info activity title -->
     <string name="device_info_settings" product="tablet">Tablet status</string>
@@ -1982,7 +2009,11 @@
     <!-- About tablet screen, summary of the item that takes you to tablet status screen -->
     <string name="device_status_summary" product="tablet">Status of the battery, network, and other information</string>
     <!-- About phone screen, summary of the item to go into the phone status screen -->
-    <string name="device_status_summary" product="default">Phone number, signal, etc.</string>
+    <string name="device_status_summary" product="default">Battery Status, battery level, etc.</string>
+    <!-- About phone screen, summary of the item to go into the phone status screen -->
+    <string name="device_additional_status_summary">Phone number, Signal, IMEI, etc.</string>
+    <!-- In About phone->Status screen, title of the item to go into the subscription status screen -->
+    <string name="device_additional_status">Additional Status Info</string>
     <!-- Main settings screen item's title to go into the storage settings screen [CHAR LIMIT=25] -->
     <string name="storage_settings" >Storage</string>
     <!-- Storage settings screen title -->
@@ -4437,6 +4468,7 @@
     <string name="data_usage_tab_ethernet">Ethernet</string>
     <!-- Tab title for showing combined mobile data usage. [CHAR LIMIT=10] -->
     <string name="data_usage_tab_mobile">Mobile</string>
+    <string name="data_usage_tab_slot">SIM </string>
     <!-- Tab title for showing 4G data usage. [CHAR LIMIT=10] -->
     <string name="data_usage_tab_4g">4G</string>
     <!-- Tab title for showing 2G and 3G data usage. [CHAR LIMIT=10] -->
@@ -4651,6 +4683,53 @@
 
     <!-- Representation of a numerical percentage. [CHAR LIMIT=8] -->
     <string name="percentage"><xliff:g id="number" example="30">%d</xliff:g>%%</string>
+    <!-- Multi Sim Settings screen, Select Sub label -->
+    <string name="sel_sub_title">Configure Subscriptions </string>
+    <!-- Multi Sim Settings screen, Select Sub Summary label -->
+    <string name="sel_sub_summary">Select the Subscription SUB1, SUB2, etc..</string>
+    <!-- Select Subscription screen title -->
+    <string name="select_subscription">Select Subscription</string>
+
+    <!-- Subscription settings title -->
+    <string name="subs_settings">SUBS Status</string>
+
+    <!-- Main settings screen, Multi Sim settings title for item to go into the Multi settings -->
+    <string name="multi_sim_settings_title">Multi Sim Settings</string>
+    <!-- Main settings screen, Multi Sim settings summary for item to go into Multi settings -->
+    <string name="multi_sim_settings_summary">Set up Multi Sim Settings for Voice, Data and SMS</string>
+
+    <!-- Multi Sim Settings screen, Voice box label -->
+    <string name="voice_title">Voice/USSD/MMI</string>
+    <!-- Multi Sim Settings screen, Voice Summary label -->
+    <string name="voice_summary">Select Subscription for Voice Call</string>
+
+    <!-- Multi Sim Settings screen, Data box label -->
+    <string name="data_title">Data Call</string>
+    <!-- Multi Sim Settings screen, Voice Summary label -->
+    <string name="data_summary">Select Subscription for Data Call</string>
+
+    <!-- Multi Sim Settings screen, SMS box label -->
+    <string name="sms_title">SMS </string>
+    <!-- Multi Sim Settings screen, Voice Summary label -->
+    <string name="sms_summary">Select the Subscription for Sending SMS</string>
+
+    <!-- Multi Sim Settings screen, Set DDS progress dialog message -->
+    <string name="set_data_subscription_progress">Set data subscription in progress</string>
+    <!-- Multi Sim Settings screen, Set DDS success message -->
+    <string name="set_dds_success">Set data subscription success</string>
+    <!-- Multi Sim Settings screen, Set DDS failure message -->
+    <string name="set_dds_failed">Error in set data subscription.  Clean up any existing data connection and try again.</string>
+    <!-- Multi Sim Settings screen, Set DDS error message -->
+    <string name="set_dds_error">Error in set data subscription.</string>
+    <!-- Multi Sim Settings screen, Set SMS error message -->
+    <string name="set_sms_error">Error in set sms subscription. Subscription not active.</string>
+    <!-- Multi Sim Settings screen, Set VOICE error message -->
+    <string name="set_voice_error">Error in set voice subscription. Subscription not active.</string>
+
+
+    <!--Prompt, used only for voice-->
+    <string name="prompt">Prompt</string>
+    <string name="prompt_user">Prompt User</string>
 
     <!-- A menu item in "About phone" that allows the user to update the phone with settings
     from their cell phone carrier. The use of the string is similar to the string
