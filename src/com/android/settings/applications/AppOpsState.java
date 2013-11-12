@@ -16,6 +16,7 @@
 
 package com.android.settings.applications;
 
+import android.app.Activity;
 import android.app.AppOpsManager;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -23,13 +24,14 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.format.DateUtils;
-
 import android.util.Log;
 import android.util.SparseArray;
+
 import com.android.settings.R;
 
 import java.io.File;
@@ -52,12 +54,15 @@ public class AppOpsState {
 
     List<AppOpEntry> mApps;
 
+    private SharedPreferences mPreferences;
+
     public AppOpsState(Context context) {
         mContext = context;
         mAppOps = (AppOpsManager)context.getSystemService(Context.APP_OPS_SERVICE);
         mPm = context.getPackageManager();
-        mOpSummaries = context.getResources().getTextArray(R.array.app_ops_summaries);
-        mOpLabels = context.getResources().getTextArray(R.array.app_ops_labels);
+        mOpSummaries = context.getResources().getTextArray(R.array.app_ops_summaries_cm);
+        mOpLabels = context.getResources().getTextArray(R.array.app_ops_labels_cm);
+        mPreferences = context.getSharedPreferences("appops_manager", Activity.MODE_PRIVATE);
     }
 
     public static class OpsTemplate implements Parcelable {
@@ -158,9 +163,17 @@ public class AppOpsState {
                     AppOpsManager.OP_SYSTEM_ALERT_WINDOW,
                     AppOpsManager.OP_CAMERA,
                     AppOpsManager.OP_RECORD_AUDIO,
-                    AppOpsManager.OP_PLAY_AUDIO },
+                    AppOpsManager.OP_PLAY_AUDIO,
+                    AppOpsManager.OP_WIFI_CHANGE,
+                    AppOpsManager.OP_BLUETOOTH_CHANGE,
+                    AppOpsManager.OP_DATA_CONNECT_CHANGE,
+                    AppOpsManager.OP_ALARM_WAKEUP },
             new boolean[] { false,
                     false,
+                    true,
+                    true,
+                    true,
+                    true,
                     true,
                     true,
                     true,
@@ -327,30 +340,37 @@ public class AppOpsState {
         }
 
         private CharSequence getCombinedText(ArrayList<AppOpsManager.OpEntry> ops,
-                CharSequence[] items) {
-            if (ops.size() == 1) {
-                return items[ops.get(0).getOp()];
-            } else {
-                StringBuilder builder = new StringBuilder();
-                for (int i=0; i<ops.size(); i++) {
-                    if (i > 0) {
-                        builder.append(", ");
-                    }
-                    builder.append(items[ops.get(i).getOp()]);
+                CharSequence[] items, boolean withTerseCounts) {
+            StringBuilder builder = new StringBuilder();
+            for (int i=0; i<ops.size(); i++) {
+                if (i > 0) {
+                    builder.append(", ");
                 }
-                return builder.toString();
+                builder.append(items[ops.get(i).getOp()]);
+                if (withTerseCounts) {
+                    builder.append(" (" + ops.get(i).getAllowedCount()
+                            + "/" + ops.get(i).getIgnoredCount() + ")");
+                }
             }
+            return builder.toString();
+        }
+
+        public CharSequence getCountsText(Resources res) {
+            return res.getText(R.string.app_ops_allowed)
+                    + ": " + mOps.get(0).getAllowedCount()
+                    + " " + res.getText(R.string.app_ops_ignored)
+                    + ": " + mOps.get(0).getIgnoredCount();
         }
 
         public CharSequence getSummaryText(AppOpsState state) {
-            return getCombinedText(mOps, state.mOpSummaries);
+            return getCombinedText(mOps, state.mOpSummaries, true);
         }
 
         public CharSequence getSwitchText(AppOpsState state) {
             if (mSwitchOps.size() > 0) {
-                return getCombinedText(mSwitchOps, state.mOpLabels);
+                return getCombinedText(mSwitchOps, state.mOpLabels, false);
             } else {
-                return getCombinedText(mOps, state.mOpLabels);
+                return getCombinedText(mOps, state.mOpLabels, false);
             }
         }
 
@@ -435,23 +455,44 @@ public class AppOpsState {
 
     private AppEntry getAppEntry(final Context context, final HashMap<String, AppEntry> appEntries,
             final String packageName, ApplicationInfo appInfo) {
+
+        if (appInfo == null) {
+            try {
+                appInfo = mPm.getApplicationInfo(packageName,
+                        PackageManager.GET_DISABLED_COMPONENTS
+                        | PackageManager.GET_UNINSTALLED_PACKAGES);
+            } catch (PackageManager.NameNotFoundException e) {
+                Log.w(TAG, "Unable to find info for package " + packageName);
+                return null;
+            }
+        }
+
+        // Hide user apps if needed
+        if (!shouldShowUserApps() &&
+                (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
+            return null;
+        }
+        // Hide system apps if needed
+        if (!shouldShowSystemApps() &&
+                (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
+            return null;
+        }
+
         AppEntry appEntry = appEntries.get(packageName);
         if (appEntry == null) {
-            if (appInfo == null) {
-                try {
-                    appInfo = mPm.getApplicationInfo(packageName,
-                            PackageManager.GET_DISABLED_COMPONENTS
-                            | PackageManager.GET_UNINSTALLED_PACKAGES);
-                } catch (PackageManager.NameNotFoundException e) {
-                    Log.w(TAG, "Unable to find info for package " + packageName);
-                    return null;
-                }
-            }
             appEntry = new AppEntry(this, appInfo);
             appEntry.loadLabel(context);
             appEntries.put(packageName, appEntry);
         }
         return appEntry;
+    }
+
+    private boolean shouldShowUserApps() {
+        return mPreferences.getBoolean("show_user_apps", true);
+    }
+
+    private boolean shouldShowSystemApps() {
+        return mPreferences.getBoolean("show_system_apps", true);
     }
 
     public List<AppOpEntry> buildState(OpsTemplate tpl, int uid, String packageName) {
@@ -546,7 +587,7 @@ public class AppOpsState {
 
                         }
                         AppOpsManager.OpEntry opEntry = new AppOpsManager.OpEntry(
-                                permOps.get(k), AppOpsManager.MODE_ALLOWED, 0, 0, 0);
+                                permOps.get(k), AppOpsManager.MODE_ALLOWED, 0, 0, 0, 0, 0);
                         dummyOps.add(opEntry);
                         addOp(entries, pkgOps, appEntry, opEntry, packageName == null,
                                 packageName == null ? 0 : opToOrder[opEntry.getOp()]);
