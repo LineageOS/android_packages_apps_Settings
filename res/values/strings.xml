@@ -3143,9 +3143,9 @@
     <!-- Setting checkbox title for Whether to enable USB debugging support on the phone. -->
     <!-- Error message for users that aren't allowed to modify developer options [CHAR LIMIT=none] -->
     <string name="development_settings_not_available">Developer options are not available for this user</string>
-    <string name="enable_adb">USB debugging</string>
-    <!-- Setting checkbox summary for Whether to enable USB debugging support on the phone -->
-    <string name="enable_adb_summary">Debug mode when USB is connected</string>
+    <string name="enable_adb">Android debugging</string>
+    <!-- Setting checkbox summary for Whether to enable Android debugging support on the phone -->
+    <string name="enable_adb_summary">Allow Android debug mode, the adb interface on USB (or on network)</string>
     <!-- Setting title to revoke secure USB debugging authorizations -->
     <string name="clear_adb_keys">Revoke USB debugging authorizations</string>
     <!-- [CHAR LIMIT=NONE] Setting checkbox title for Whether to include bug report item in power menu. -->
@@ -5064,5 +5064,12 @@
 
     <!-- Launches Dev Tools -->
     <string name="development_tools_title">Launch Tools</string>
+
+
+    <!-- Android debugging over WiFi -->
+    <string name="adb_over_network">ADB over network</string>
+    <string name="adb_over_network_summary">Enable TCP/IP debugging over network interfaces (Wi-Fi, USB networks). This setting is reset on reboot</string>
+    <!-- Warning for Adb over Network -->
+    <string name="adb_over_network_warning">WARNING: When ADB over network is enabled, your phone is open for intrusions on all connected networks, including GSM data network!\n\nOnly use this feature when you are connected on trusted networks.\n\nDo you really want to enable this function?</string>
 
 </resources>
