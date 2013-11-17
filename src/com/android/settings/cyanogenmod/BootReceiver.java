@@ -25,6 +25,9 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.android.settings.Utils;
+import com.android.settings.hardware.DisplayColor;
+import com.android.settings.hardware.DisplayGamma;
+import com.android.settings.hardware.VibratorIntensity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -64,6 +67,11 @@ public class BootReceiver extends BroadcastReceiver {
                 SystemProperties.set(KSM_SETTINGS_PROP, "false");
             }
         }
+
+        /* Restore the hardware tunable values */
+        DisplayColor.restore(ctx);
+        DisplayGamma.restore(ctx);
+        VibratorIntensity.restore(ctx);
     }
 
     private void configureCPU(Context ctx) {
