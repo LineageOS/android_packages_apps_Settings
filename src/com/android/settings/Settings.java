@@ -520,6 +520,7 @@ public class Settings extends PreferenceActivity
                 ProfilesSettings.class.getName().equals(fragmentName) ||
                 ProfileConfig.class.getName().equals(fragmentName) ||
                 AppGroupConfig.class.getName().equals(fragmentName) ||
+                HomeSettings.class.getName().equals(fragmentName) ||
                 LocationSettings.class.getName().equals(fragmentName) ||
                 ToggleAccessibilityServicePreferenceFragment.class.getName().equals(fragmentName) ||
                 PrintSettingsFragment.class.getName().equals(fragmentName) ||
