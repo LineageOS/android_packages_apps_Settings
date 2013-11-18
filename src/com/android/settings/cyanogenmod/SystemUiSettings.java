@@ -51,7 +51,7 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.system_ui_settings);
-//        PreferenceScreen prefScreen = getPreferenceScreen();
+        PreferenceScreen prefScreen = getPreferenceScreen();
 //
 //        mPieControl = (PreferenceScreen) findPreference(KEY_PIE_CONTROL);
 //
@@ -66,8 +66,8 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
 //        int expandedDesktopValue = Settings.System.getInt(getContentResolver(),
 //                Settings.System.EXPANDED_DESKTOP_STYLE, 0);
 //
-//        try {
-//            boolean hasNavBar = WindowManagerGlobal.getWindowManagerService().hasNavigationBar();
+        try {
+            boolean hasNavBar = WindowManagerGlobal.getWindowManagerService().hasNavigationBar();
 //
 //            // Hide no-op "Status bar visible" mode on devices without navigation bar
 //            if (hasNavBar) {
@@ -81,14 +81,14 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
 //                prefScreen.removePreference(mExpandedDesktopPref);
 //            }
 //
-//            // Hide navigation bar category on devices without navigation bar
-//            if (!hasNavBar) {
-//                prefScreen.removePreference(findPreference(CATEGORY_NAVBAR));
+            // Hide navigation bar category on devices without navigation bar
+            if (!hasNavBar) {
+                prefScreen.removePreference(findPreference(CATEGORY_NAVBAR));
 //                mPieControl = null;
-//            }
-//        } catch (RemoteException e) {
-//            Log.e(TAG, "Error getting navigation bar status");
-//        }
+            }
+        } catch (RemoteException e) {
+            Log.e(TAG, "Error getting navigation bar status");
+        }
     }
 
     @Override
