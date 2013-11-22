@@ -32,6 +32,11 @@
         android:summary="@string/io_scheds_summary" />
 
     <PreferenceScreen
+        android:key="performance_profile"
+        android:fragment="com.android.settings.cyanogenmod.PerformanceProfile"
+        android:title="@string/perf_profile_title" />
+
+    <PreferenceScreen
         android:key="memory_management"
         android:fragment="com.android.settings.cyanogenmod.MemoryManagement"
         android:title="@string/memory_management_title"
