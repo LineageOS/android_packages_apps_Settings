@@ -32,6 +32,14 @@
             android:title="@string/blacklist_title"
             android:fragment="com.android.settings.blacklist.BlacklistSettings" />
 
+        <ListPreference
+            android:key="sms_security_check_limit"
+            android:dialogTitle="@string/sms_security_check_limit_title"
+            android:title="@string/sms_security_check_limit_title"
+            android:entries="@array/sms_security_check_limit_entries"
+            android:entryValues="@array/sms_security_check_limit_values"
+            android:defaultValue="30" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>
