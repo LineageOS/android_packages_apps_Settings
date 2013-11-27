@@ -432,11 +432,13 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="performance_settings_warning_title">Proceed with Caution</string>
     <string name="performance_settings_warning">These settings are included for experimentation and any changes made to them have the potential to cause instability, crashes, data loss or hardware failures.\n\nWe request you do not file bug reports if any of these settings have been changed from the defaults.</string>
 
+    <!-- Performance Settings : Set on boot option -->
+    <string name="performance_set_on_boot">Set on boot</string>
+    <string name="performance_set_on_boot_summary">Restore the settings on boot</string>
+
     <!-- Performance Settings : Processor Settings -->
     <!-- Performance Settings : Processor settings title -->
     <string name="processor_title">Processor</string>
-    <!-- Performance Settings : Processor settings summary -->
-    <string name="processor_summary">Change CPU governor and clock speed</string>
 
     <!-- Performance Settings : Processor settings sub items -->
     <string name="cpu_cur_freq_title">Current CPU frequency</string>
@@ -446,19 +448,13 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="cpu_min_freq_summary" translatable="false">%s</string>
     <string name="cpu_max_freq_title">Maximum CPU frequency</string>
     <string name="cpu_max_freq_summary" translatable="false">%s</string>
-    <string name="cpu_set_on_boot">Set on boot</string>
-    <string name="cpu_set_on_boot_summary">Restore the processor settings on boot</string>
 
     <!-- Performance Settings : I/O scheduler settings title -->
     <string name="io_scheds_title">I/O scheduler</string>
-    <!-- Performance Settings : I/O scheduler settings summary -->
-    <string name="io_scheds_summary">Change I/O scheduler</string>
 
     <!-- Performance Settings : I/O scheduler settings sub items -->
     <string name="io_sched_title">I/O scheduler</string>
     <string name="io_sched_summary" translatable="false">%S</string>
-    <string name="io_sched_set_on_boot">Set on boot</string>
-    <string name="io_sched_set_on_boot_summary">Restore the I/O scheduler settings on boot</string>
 
     <!-- Performance Settings : Performance profile settings -->
     <string name="perf_profile_title">Profile</string>
@@ -466,7 +462,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Memory Management -->
     <string name="memory_management_title">Memory management</string>
-    <string name="memory_management_summary">Customize the usage of memory to alter system performance</string>
     <!-- zRam -->
     <string name="pref_zram_title">zRam</string>
     <string name="pref_zram_summary">Compress memory for increased virtual capacity (requires reboot)</string>

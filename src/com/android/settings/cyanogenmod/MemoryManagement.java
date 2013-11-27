@@ -65,36 +65,33 @@ public class MemoryManagement extends SettingsPreferenceFragment implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (getPreferenceManager() != null) {
+        addPreferencesFromResource(R.xml.memory_management);
 
-            addPreferencesFromResource(R.xml.memory_management);
+        PreferenceScreen prefSet = getPreferenceScreen();
 
-            PreferenceScreen prefSet = getPreferenceScreen();
+        mzRAM = (ListPreference) prefSet.findPreference(ZRAM_PREF);
+        mPurgeableAssetsPref = (CheckBoxPreference) prefSet.findPreference(PURGEABLE_ASSETS_PREF);
+        mKSMPref = (CheckBoxPreference) prefSet.findPreference(KSM_PREF);
 
-            mzRAM = (ListPreference) prefSet.findPreference(ZRAM_PREF);
-            mPurgeableAssetsPref = (CheckBoxPreference) prefSet.findPreference(PURGEABLE_ASSETS_PREF);
-            mKSMPref = (CheckBoxPreference) prefSet.findPreference(KSM_PREF);
-
-            if (isSwapAvailable()) {
-                if (SystemProperties.get(ZRAM_PERSIST_PROP) == "1")
-                    SystemProperties.set(ZRAM_PERSIST_PROP, ZRAM_DEFAULT);
-                mzRAM.setValue(SystemProperties.get(ZRAM_PERSIST_PROP, ZRAM_DEFAULT));
-                mzRAM.setOnPreferenceChangeListener(this);
-            } else {
-                prefSet.removePreference(mzRAM);
+        if (isSwapAvailable()) {
+            if (SystemProperties.get(ZRAM_PERSIST_PROP) == "1") {
+                SystemProperties.set(ZRAM_PERSIST_PROP, ZRAM_DEFAULT);
             }
-
-            if (Utils.fileExists(KSM_RUN_FILE)) {
-                mKSMPref.setChecked(KSM_PREF_ENABLED.equals(Utils.fileReadOneLine(KSM_RUN_FILE)));
-            } else {
-                prefSet.removePreference(mKSMPref);
-            }
-
-            String purgeableAssets = SystemProperties.get(PURGEABLE_ASSETS_PERSIST_PROP,
-                    PURGEABLE_ASSETS_DEFAULT);
-            mPurgeableAssetsPref.setChecked("1".equals(purgeableAssets));
-
+            mzRAM.setValue(SystemProperties.get(ZRAM_PERSIST_PROP, ZRAM_DEFAULT));
+            mzRAM.setOnPreferenceChangeListener(this);
+        } else {
+            prefSet.removePreference(mzRAM);
         }
+
+        if (Utils.fileExists(KSM_RUN_FILE)) {
+            mKSMPref.setChecked(KSM_PREF_ENABLED.equals(Utils.fileReadOneLine(KSM_RUN_FILE)));
+        } else {
+            prefSet.removePreference(mKSMPref);
+        }
+
+        String purgeableAssets = SystemProperties.get(PURGEABLE_ASSETS_PERSIST_PROP,
+                PURGEABLE_ASSETS_DEFAULT);
+        mPurgeableAssetsPref.setChecked("1".equals(purgeableAssets));
     }
 
     @Override

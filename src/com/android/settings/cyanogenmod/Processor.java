@@ -43,9 +43,11 @@ public class Processor extends SettingsPreferenceFragment implements
     public static final String FREQ_MIN_PREF = "pref_cpu_freq_min";
     public static final String FREQ_MAX_PREF = "pref_cpu_freq_max";
     public static final String FREQ_LIST_FILE = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies";
-    public static final String FREQ_MAX_FILE = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq";
-    public static final String FREQ_MIN_FILE = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq";
+    public static String FREQ_MAX_FILE = null;
+    public static String FREQ_MIN_FILE = null;
     public static final String SOB_PREF = "pref_cpu_set_on_boot";
+
+    protected static boolean freqCapFilesInitialized = false;
 
     private static final String TAG = "CPUSettings";
 
@@ -87,9 +89,19 @@ public class Processor extends SettingsPreferenceFragment implements
         }
     };
 
+    private void initFreqCapFiles()
+    {
+        if (freqCapFilesInitialized) return;
+        FREQ_MAX_FILE = getString(R.string.max_cpu_freq_file);
+        FREQ_MIN_FILE = getString(R.string.min_cpu_freq_file);
+        freqCapFilesInitialized = true;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        initFreqCapFiles();
 
         mGovernorFormat = getString(R.string.cpu_governors_summary);
         mMinFrequencyFormat = getString(R.string.cpu_min_freq_summary);
@@ -185,6 +197,8 @@ public class Processor extends SettingsPreferenceFragment implements
 
         super.onResume();
 
+        initFreqCapFiles();
+
         if (Utils.fileExists(FREQ_MIN_FILE) && (temp = Utils.fileReadOneLine(FREQ_MIN_FILE)) != null) {
             mMinFrequencyPref.setValue(temp);
             mMinFrequencyPref.setSummary(String.format(mMinFrequencyFormat, toMHz(temp)));
@@ -211,6 +225,8 @@ public class Processor extends SettingsPreferenceFragment implements
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        initFreqCapFiles();
+
         String fname = "";
 
         if (newValue != null) {
