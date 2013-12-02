@@ -62,7 +62,7 @@ final class Utils {
         if (dialog == null) {
             dialog = new AlertDialog.Builder(context)
                     .setPositiveButton(android.R.string.ok, disconnectListener)
-                    .setNegativeButton(android.R.string.cancel, null)
+                    .setNegativeButton(android.R.string.cancel, disconnectListener)
                     .create();
         } else {
             if (dialog.isShowing()) {

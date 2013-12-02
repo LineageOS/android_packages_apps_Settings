@@ -62,6 +62,8 @@ public final class DeviceProfilesSettings extends SettingsPreferenceFragment
     private LocalBluetoothManager mManager;
     private LocalBluetoothProfileManager mProfileManager;
 
+    private static final int OK_BUTTON = -1;
+
     private PreferenceGroup mProfileContainer;
     private EditTextPreference mDeviceNamePref;
 
@@ -268,12 +270,15 @@ public final class DeviceProfilesSettings extends SettingsPreferenceFragment
         DialogInterface.OnClickListener disconnectListener =
                 new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-                device.disconnect(profile);
-                profile.setPreferred(device.getDevice(), false);
-                if (profile instanceof MapProfile) {
-                    device.setMessagePermissionChoice(BluetoothDevice.ACCESS_REJECTED);
-                    refreshProfilePreference(
+                // Disconnect only when user has selected OK
+                if (which == OK_BUTTON) {
+                    device.disconnect(profile);
+                    profile.setPreferred(device.getDevice(), false);
+                    if (profile instanceof MapProfile) {
+                        device.setMessagePermissionChoice(BluetoothDevice.ACCESS_REJECTED);
+                        refreshProfilePreference(
                             (CheckBoxPreference)findPreference(profile.toString()), profile);
+                    }
                 }
             }
         };
