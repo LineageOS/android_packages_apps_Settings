@@ -247,7 +247,7 @@ public class ApnEditor extends SettingsPreferenceFragment
 
         mTelephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
 
-        fillUi(intent.getStringExtra(ApnSettings.OPERATOR_NUMERIC_EXTRA));
+        fillUi();
         setHasOptionsMenu(true);
     }
 
@@ -265,7 +265,7 @@ public class ApnEditor extends SettingsPreferenceFragment
         super.onPause();
     }
 
-    private void fillUi(String defaultOperatorNumeric) {
+    private void fillUi() {
         if (mFirstTime) {
             mFirstTime = false;
             // Fill in all the values from the db in both text editor and summary
@@ -283,12 +283,14 @@ public class ApnEditor extends SettingsPreferenceFragment
             mMnc.setText(mCursor.getString(MNC_INDEX));
             mApnType.setText(mCursor.getString(TYPE_INDEX));
             if (mNewApn) {
+                String numeric =
+                    SystemProperties.get(TelephonyProperties.PROPERTY_ICC_OPERATOR_NUMERIC);
                 // MCC is first 3 chars and then in 2 - 3 chars of MNC
-                if (defaultOperatorNumeric != null && defaultOperatorNumeric.length() > 4) {
+                if (numeric != null && numeric.length() > 4) {
                     // Country code
-                    String mcc = defaultOperatorNumeric.substring(0, 3);
+                    String mcc = numeric.substring(0, 3);
                     // Network code
-                    String mnc = defaultOperatorNumeric.substring(3);
+                    String mnc = numeric.substring(3);
                     // Auto populate MNC and MCC for new entries, based on what SIM reports
                     mMcc.setText(mcc);
                     mMnc.setText(mnc);
