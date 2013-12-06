@@ -66,6 +66,8 @@ public class ApnEditor extends SettingsPreferenceFragment
     private final static String KEY_MVNO_TYPE = "mvno_type";
     protected static final String EDIT_ACTION = "edit_action";
     protected static final String EDIT_DATA = "edit_data";
+    //Add China Telecom's PLMN
+    private final static String CT_NUMERIC = "46003";
 
     private static final int MENU_DELETE = Menu.FIRST;
     private static final int MENU_SAVE = Menu.FIRST + 1;
@@ -144,6 +146,7 @@ public class ApnEditor extends SettingsPreferenceFragment
     private static final int MMSC_INDEX = 8;
     private static final int MCC_INDEX = 9;
     private static final int MNC_INDEX = 10;
+    private static final int NUMERIC_INDEX = 11;
     private static final int MMSPROXY_INDEX = 12;
     private static final int MMSPORT_INDEX = 13;
     private static final int AUTH_TYPE_INDEX = 14;
@@ -272,6 +275,7 @@ public class ApnEditor extends SettingsPreferenceFragment
     private void fillUi(String defaultOperatorNumeric) {
         if (mFirstTime) {
             mFirstTime = false;
+            String numeric =  mCursor.getString(NUMERIC_INDEX);
             // Fill in all the values from the db in both text editor and summary
             mName.setText(mCursor.getString(NAME_INDEX));
             mApn.setText(mCursor.getString(APN_INDEX));
@@ -299,6 +303,13 @@ public class ApnEditor extends SettingsPreferenceFragment
                     mCurMnc = mnc;
                     mCurMcc = mcc;
                 }
+                numeric =  defaultOperatorNumeric;
+            }
+            if (getResources().getBoolean(R.bool.config_mms_apn) &&
+                    CT_NUMERIC.equals(numeric)) {
+                mMmsProxy.setEnabled(false);
+                mMmsPort.setEnabled(false);
+                mMmsc.setEnabled(false);
             }
             int authVal = mCursor.getInt(AUTH_TYPE_INDEX);
             if (authVal != -1) {
