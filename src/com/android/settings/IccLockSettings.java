@@ -30,6 +30,7 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.android.internal.telephony.Phone;
@@ -49,6 +50,8 @@ import com.codeaurora.telephony.msim.MSimPhoneFactory;
  */
 public class IccLockSettings extends PreferenceActivity
         implements EditPinPreference.OnPinEnteredListener {
+    private static final String TAG = "IccLockSettings";
+    private static final boolean DBG = true;
 
     private static final int OFF_MODE = 0;
     // State when enabling/disabling ICC lock
@@ -104,10 +107,10 @@ public class IccLockSettings extends PreferenceActivity
             AsyncResult ar = (AsyncResult) msg.obj;
             switch (msg.what) {
                 case MSG_ENABLE_ICC_PIN_COMPLETE:
-                    iccLockChanged(ar);
+                    iccLockChanged(ar, msg.arg1);
                     break;
                 case MSG_CHANGE_ICC_PIN_COMPLETE:
-                    iccPinChanged(ar);
+                    iccPinChanged(ar, msg.arg1);
                     break;
                 case MSG_SIM_STATE_CHANGED:
                     updatePreferences();
@@ -390,7 +393,7 @@ public class IccLockSettings extends PreferenceActivity
         }
     }
 
-    private void iccLockChanged(AsyncResult ar) {
+    private void iccLockChanged(AsyncResult ar, int attemptsRemaining) {
         if (ar.exception == null) {
             if (mToState) {
                 Toast.makeText(this, mRes.getString(R.string.sim_pin_enabled),
@@ -407,7 +410,7 @@ public class IccLockSettings extends PreferenceActivity
         resetDialogState();
     }
 
-    private void iccPinChanged(AsyncResult ar) {
+    private void iccPinChanged(AsyncResult ar, int attemptsRemaining) {
         if (ar.exception != null) {
             handleException(ar.exception, MSG_CHANGE_ICC_PIN_COMPLETE);
         } else {
@@ -423,6 +426,23 @@ public class IccLockSettings extends PreferenceActivity
         Message callback = Message.obtain(mHandler, MSG_CHANGE_ICC_PIN_COMPLETE);
         mPhone.getIccCard().changeIccLockPassword(mOldPin,
                 mNewPin, callback);
+    }
+
+    private String getPinPasswordErrorMessage(int attemptsRemaining) {
+        String displayMessage;
+
+        if (attemptsRemaining == 0) {
+            displayMessage = mRes.getString(R.string.wrong_pin_code_pukked);
+        } else if (attemptsRemaining > 0) {
+            displayMessage = mRes
+                    .getQuantityString(R.plurals.wrong_pin_code, attemptsRemaining,
+                            attemptsRemaining);
+        } else {
+            displayMessage = mRes.getString(R.string.pin_failed);
+        }
+        if (DBG) Log.d(TAG, "getPinPasswordErrorMessage:"
+                + " attemptsRemaining=" + attemptsRemaining + " displayMessage=" + displayMessage);
+        return displayMessage;
     }
 
     private boolean reasonablePin(String pin) {
