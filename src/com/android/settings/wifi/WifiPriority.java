@@ -25,7 +25,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.settings.R;
@@ -162,7 +161,7 @@ public class WifiPriority extends ListFragment {
         public View getView(int position, View convertView, ViewGroup parent) {
             final View v;
             if (convertView == null) {
-                v = mInflater.inflate(R.layout.order_power_widget_button_list_item, null);
+                v = mInflater.inflate(R.layout.wifi_network_priority_list_item, null);
             } else {
                 v = convertView;
             }

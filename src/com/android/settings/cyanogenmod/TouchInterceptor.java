@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The Android Open Source Project
+ * Copyright (C) 2013 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -81,11 +81,11 @@ public class TouchInterceptor extends ListView {
                     mDragPoint = y - item.getTop();
                     mCoordOffset = ((int) ev.getRawY()) - y;
                     View dragger = item.findViewById(R.id.grabber);
-                    Rect r = mTempRect;
-                    dragger.getDrawingRect(r);
                     // The dragger icon itself is quite small, so pretend the
                     // touch area is bigger
-                    if (x < r.right * 2) {
+                    int x1 = item.getLeft() + dragger.getLeft() - (dragger.getWidth() / 2);
+                    int x2 = item.getLeft() + dragger.getRight() + (dragger.getWidth() / 2);
+                    if (x > x1 && x < x2) {
                         // Fix x position while dragging
                         int[] itemPos = new int[2];
                         item.getLocationOnScreen(itemPos);
@@ -188,7 +188,9 @@ public class TouchInterceptor extends ListView {
             params.height = mItemHeightNormal;
             v.setLayoutParams(params);
             v.setVisibility(View.VISIBLE);
-            v.setDrawingCacheEnabled(false); //Resets the drawing cache, the positions might have changed. We don't want the cache to be wrong.
+            // Reset the drawing cache, the positions might have changed.
+            // We don't want the cache to be wrong.
+            v.setDrawingCacheEnabled(false);
         }
     }
 
