@@ -137,6 +137,7 @@ public class Settings extends PreferenceActivity
     private int[] SETTINGS_FOR_RESTRICTED = {
             R.id.wireless_section,
             R.id.wifi_settings,
+            R.id.mobiledata_settings,
             R.id.bluetooth_settings,
             R.id.data_usage_settings,
             R.id.wireless_settings,
@@ -785,6 +786,7 @@ public class Settings extends PreferenceActivity
 
         private final WifiEnabler mWifiEnabler;
         private final BluetoothEnabler mBluetoothEnabler;
+        private final DataEnabler mDataEnabler;
         private AuthenticatorHelper mAuthHelper;
         private DevicePolicyManager mDevicePolicyManager;
 
@@ -802,7 +804,8 @@ public class Settings extends PreferenceActivity
         static int getHeaderType(Header header) {
             if (header.fragment == null && header.intent == null) {
                 return HEADER_TYPE_CATEGORY;
-            } else if (header.id == R.id.wifi_settings || header.id == R.id.bluetooth_settings) {
+            } else if (header.id == R.id.wifi_settings || header.id == R.id.bluetooth_settings
+                    || header.id == R.id.mobiledata_settings) {
                 return HEADER_TYPE_SWITCH;
             } else if (header.id == R.id.security_settings) {
                 return HEADER_TYPE_BUTTON;
@@ -849,6 +852,7 @@ public class Settings extends PreferenceActivity
             mWifiEnabler = new WifiEnabler(context, new Switch(context));
             mBluetoothEnabler = new BluetoothEnabler(context, new Switch(context));
             mDevicePolicyManager = dpm;
+            mDataEnabler = new DataEnabler(context, new Switch(context));
         }
 
         @Override
@@ -917,8 +921,18 @@ public class Settings extends PreferenceActivity
                     // Would need a different treatment if the main menu had more switches
                     if (header.id == R.id.wifi_settings) {
                         mWifiEnabler.setSwitch(holder.switch_);
-                    } else {
+                    } else if(header.id == R.id.bluetooth_settings){
                         mBluetoothEnabler.setSwitch(holder.switch_);
+                    } else if(header.id == R.id.mobiledata_settings){
+                        mDataEnabler.setSwitch(holder.switch_);
+                        if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
+                            header.intent.setClassName("com.android.phone",
+                                    "com.android.phone.SelectSubscription");
+                            header.intent.putExtra(SelectSubscription.PACKAGE,
+                                    "com.android.phone");
+                            header.intent.putExtra(SelectSubscription.TARGET_CLASS,
+                                    "com.android.phone.MSimMobileNetworkSubSettings");
+                        }
                     }
                     updateCommonHeaderView(header, holder);
                     break;
@@ -992,11 +1006,13 @@ public class Settings extends PreferenceActivity
         public void resume() {
             mWifiEnabler.resume();
             mBluetoothEnabler.resume();
+            mDataEnabler.resume();
         }
 
         public void pause() {
             mWifiEnabler.pause();
             mBluetoothEnabler.pause();
+            mDataEnabler.pause();
         }
     }
 
