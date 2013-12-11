@@ -25,7 +25,6 @@ import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
-import android.widget.Toast;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -77,7 +76,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private ListPreference mAssistLongPressAction;
     private ListPreference mAppSwitchPressAction;
     private ListPreference mAppSwitchLongPressAction;
-    private CheckBoxPreference mShowActionOverflow;
     private CheckBoxPreference mSwapVolumeButtons;
 
     @Override
@@ -155,8 +153,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
             hasAnyBindableKey = true;
         } else {
-            menuCategory.removePreference(findPreference(KEY_MENU_PRESS));
-            menuCategory.removePreference(findPreference(KEY_MENU_LONG_PRESS));
+            prefScreen.removePreference(menuCategory);
         }
 
         if (hasAssistKey) {
@@ -185,13 +182,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             hasAnyBindableKey = true;
         } else {
             prefScreen.removePreference(appSwitchCategory);
-        }
-
-        if (hasAnyBindableKey) {
-            mShowActionOverflow = (CheckBoxPreference)
-                prefScreen.findPreference(Settings.System.UI_FORCE_OVERFLOW_BUTTON);
-        } else {
-            prefScreen.removePreference(menuCategory);
         }
 
         if (!hasAnyBindableKey) {
@@ -275,14 +265,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        if (preference == mShowActionOverflow) {
-            int toastResId = mShowActionOverflow.isChecked()
-                    ? R.string.hardware_keys_show_overflow_toast_enable
-                    : R.string.hardware_keys_show_overflow_toast_disable;
-
-            Toast.makeText(getActivity(), toastResId, Toast.LENGTH_LONG).show();
-            return true;
-        } else if (preference == mSwapVolumeButtons) {
+        if (preference == mSwapVolumeButtons) {
             int value = mSwapVolumeButtons.isChecked()
                     ? (Utils.isTablet(getActivity()) ? 2 : 1) : 0;
             Settings.System.putInt(getActivity().getContentResolver(),
