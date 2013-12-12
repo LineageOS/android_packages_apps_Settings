@@ -49,7 +49,8 @@ import com.google.android.setupdesign.util.ThemeHelper;
 public class SetupChooseLockPattern extends ChooseLockPattern {
 
     public static Intent modifyIntentForSetup(Context context, Intent chooseLockPatternIntent) {
-        chooseLockPatternIntent.setClass(context, SetupChooseLockPattern.class);
+        chooseLockPatternIntent.setClass(context, ChooseLockPatternSize.class);
+        chooseLockPatternIntent.putExtra("className", SetupChooseLockPattern.class.getName());
         chooseLockPatternIntent.putExtra(ChooseLockSettingsHelper.EXTRA_KEY_USE_EXPRESSIVE_STYLE,
                 ThemeHelper.shouldApplyGlifExpressiveStyle(context));
         return chooseLockPatternIntent;
