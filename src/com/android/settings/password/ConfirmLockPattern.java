@@ -148,6 +148,8 @@ public class ConfirmLockPattern extends ConfirmDeviceCredentialBaseActivity {
                     mLockPatternUtils.isTactileFeedbackEnabled());
             mLockPatternView.setInStealthMode(!mLockPatternUtils.isVisiblePatternEnabled(
                     mEffectiveUserId));
+            mLockPatternView.setLockPatternSize(
+                    mLockPatternUtils.getLockPatternSize(mEffectiveUserId));
             mLockPatternView.setOnPatternListener(mConfirmExistingLockPatternListener);
             mLockPatternView.setOnTouchListener((v, event) -> {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -432,7 +434,8 @@ public class ConfirmLockPattern extends ConfirmDeviceCredentialBaseActivity {
 
                 mLockPatternView.setEnabled(false);
 
-                final LockscreenCredential credential = LockscreenCredential.createPattern(pattern);
+                final LockscreenCredential credential = LockscreenCredential.createPattern(pattern,
+                        mLockPatternUtils.getLockPatternSize(mEffectiveUserId));
                 // TODO(b/161956762): Sanitize this
                 Intent intent = new Intent();
                 if (mReturnGatekeeperPassword) {
