@@ -1059,7 +1059,8 @@ public class ChooseLockPassword extends SettingsActivity {
                     mUserId);
 
             mSaveAndFinishWorker.start(mLockPatternUtils,
-                    mChosenPassword, mCurrentCredential, mUserId);
+                    mChosenPassword, mCurrentCredential, mUserId,
+                    mLockPatternUtils.getLockPatternSize(mUserId));
         }
 
         @Override
