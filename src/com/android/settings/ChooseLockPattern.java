@@ -71,7 +71,7 @@ public class ChooseLockPattern extends SettingsActivity {
 
     public static Intent createIntent(Context context, final boolean isFallback,
             boolean requirePassword, boolean confirmCredentials) {
-        Intent intent = new Intent(context, ChooseLockPattern.class);
+        Intent intent = new Intent(context, ChooseLockPatternSize.class);
         intent.putExtra("key_lock_method", "pattern");
         intent.putExtra(ChooseLockGeneric.CONFIRM_CREDENTIALS, confirmCredentials);
         intent.putExtra(LockPatternUtils.LOCKSCREEN_BIOMETRIC_WEAK_FALLBACK, isFallback);
@@ -120,16 +120,12 @@ public class ChooseLockPattern extends SettingsActivity {
         private TextView mFooterRightButton;
         protected List<LockPatternView.Cell> mChosenPattern = null;
 
+        private byte mPatternSize = LockPatternUtils.PATTERN_SIZE_DEFAULT;
+
         /**
          * The patten used during the help screen to show how to draw a pattern.
          */
-        private final List<LockPatternView.Cell> mAnimatePattern =
-                Collections.unmodifiableList(Lists.newArrayList(
-                        LockPatternView.Cell.of(0, 0),
-                        LockPatternView.Cell.of(0, 1),
-                        LockPatternView.Cell.of(1, 1),
-                        LockPatternView.Cell.of(2, 1)
-                ));
+        private List<LockPatternView.Cell> mAnimatePattern;
 
         @Override
         public void onActivityResult(int requestCode, int resultCode,
@@ -328,6 +324,16 @@ public class ChooseLockPattern extends SettingsActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
 
+            mPatternSize = getActivity().getIntent().getByteExtra("pattern_size",
+                    LockPatternUtils.PATTERN_SIZE_DEFAULT);
+            LockPatternView.Cell.updateSize(mPatternSize);
+            mAnimatePattern = Collections.unmodifiableList(Lists.newArrayList(
+                    LockPatternView.Cell.of(0, 0, mPatternSize),
+                    LockPatternView.Cell.of(0, 1, mPatternSize),
+                    LockPatternView.Cell.of(1, 1, mPatternSize),
+                    LockPatternView.Cell.of(2, 1, mPatternSize)
+                    ));
+
             // setupViews()
             View view = inflater.inflate(R.layout.choose_lock_pattern, null);
             mHeaderText = (TextView) view.findViewById(R.id.headerText);
@@ -335,6 +341,8 @@ public class ChooseLockPattern extends SettingsActivity {
             mLockPatternView.setOnPatternListener(mChooseNewLockPatternListener);
             mLockPatternView.setTactileFeedbackEnabled(
                     mChooseLockSettingsHelper.utils().isTactileFeedbackEnabled());
+            mLockPatternView.setLockPatternSize(mPatternSize);
+            mLockPatternView.setLockPatternUtils(mChooseLockSettingsHelper.utils());
 
             mFooterText = (TextView) view.findViewById(R.id.footerText);
 
@@ -372,7 +380,8 @@ public class ChooseLockPattern extends SettingsActivity {
                 // restore from previous state
                 final String patternString = savedInstanceState.getString(KEY_PATTERN_CHOICE);
                 if (patternString != null) {
-                    mChosenPattern = LockPatternUtils.stringToPattern(patternString);
+                    LockPatternUtils utils = mChooseLockSettingsHelper.utils();
+                    mChosenPattern = utils.stringToPattern(patternString);
                 }
                 updateStage(Stage.values()[savedInstanceState.getInt(KEY_UI_STAGE)]);
             }
@@ -439,8 +448,9 @@ public class ChooseLockPattern extends SettingsActivity {
 
             outState.putInt(KEY_UI_STAGE, mUiStage.ordinal());
             if (mChosenPattern != null) {
+                LockPatternUtils utils = mChooseLockSettingsHelper.utils();
                 outState.putString(KEY_PATTERN_CHOICE,
-                        LockPatternUtils.patternToString(mChosenPattern));
+                        utils.patternToString(mChosenPattern));
             }
         }
 
@@ -543,6 +553,7 @@ public class ChooseLockPattern extends SettingsActivity {
             final boolean required = getActivity().getIntent().getBooleanExtra(
                     EncryptionInterstitial.EXTRA_REQUIRE_PASSWORD, true);
             utils.setCredentialRequiredToDecrypt(required);
+            utils.setLockPatternSize(mPatternSize);
             utils.saveLockPattern(mChosenPattern, isFallback);
             utils.setLockPatternEnabled(true);
 
