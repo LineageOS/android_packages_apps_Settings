@@ -114,6 +114,7 @@ public class ConfirmLockPattern extends ConfirmDeviceCredentialBaseActivity {
         private DisappearAnimationUtils mDisappearAnimationUtils;
 
         private boolean mIsManagedProfile;
+        private byte mPatternSize;
 
         // required constructor for fragments
         public ConfirmLockPatternFragment() {
@@ -139,6 +140,7 @@ public class ConfirmLockPattern extends ConfirmDeviceCredentialBaseActivity {
             mSudContent.setPadding(mSudContent.getPaddingLeft(), 0, mSudContent.getPaddingRight(),
                     0);
             mIsManagedProfile = UserManager.get(getActivity()).isManagedProfile(mEffectiveUserId);
+            mPatternSize = mLockPatternUtils.getLockPatternSize(mEffectiveUserId);
 
             // make it so unhandled touch events within the unlock screen go to the
             // lock pattern view.
@@ -153,6 +155,7 @@ public class ConfirmLockPattern extends ConfirmDeviceCredentialBaseActivity {
                 mDetailsText = intent.getCharSequenceExtra(
                         ConfirmDeviceCredentialBaseFragment.DETAILS_TEXT);
                 mCheckBoxLabel = intent.getCharSequenceExtra(KeyguardManager.EXTRA_CHECKBOX_LABEL);
+                mPatternSize = intent.getByteExtra("pattern_size", mPatternSize);
             }
             if (TextUtils.isEmpty(mHeaderText) && mIsManagedProfile) {
                 mHeaderText = mDevicePolicyManager.getOrganizationNameForUser(mUserId);
@@ -160,6 +163,7 @@ public class ConfirmLockPattern extends ConfirmDeviceCredentialBaseActivity {
 
             mLockPatternView.setInStealthMode(!mLockPatternUtils.isVisiblePatternEnabled(
                     mEffectiveUserId));
+            mLockPatternView.setLockPatternSize(mPatternSize);
             mLockPatternView.setOnPatternListener(mConfirmExistingLockPatternListener);
             mLockPatternView.setOnTouchListener((v, event) -> {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -495,14 +499,15 @@ public class ConfirmLockPattern extends ConfirmDeviceCredentialBaseActivity {
 
             }
 
-            public void onPatternDetected(List<LockPatternView.Cell> pattern) {
+            public void onPatternDetected(List<LockPatternView.Cell> pattern, byte patternSize) {
                 if (mPendingLockCheck != null || mDisappearing) {
                     return;
                 }
 
                 mLockPatternView.setEnabled(false);
 
-                final LockscreenCredential credential = LockscreenCredential.createPattern(pattern);
+                final LockscreenCredential credential = LockscreenCredential.createPattern(pattern,
+                        patternSize);
 
                 if (mRemoteValidation) {
                     validateGuess(credential);
@@ -641,7 +646,8 @@ public class ConfirmLockPattern extends ConfirmDeviceCredentialBaseActivity {
                                 mLockPatternUtils,
                                 mRemoteLockscreenValidationFragment.getLockscreenCredential(),
                                 /* currentCredential= */ null,
-                                mEffectiveUserId);
+                                mEffectiveUserId,
+                                mLockPatternUtils.getLockPatternSize(mEffectiveUserId));
                     } else {
                         mCredentialCheckResultTracker.setResult(/* matched= */ true, new Intent(),
                                 /* timeoutMs= */ 0, mEffectiveUserId);
