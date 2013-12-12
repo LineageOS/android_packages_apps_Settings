@@ -465,6 +465,9 @@ public final class ChooseLockSettingsHelper {
         intent.setClassName(SETTINGS_PACKAGE_NAME, activityClass.getName());
         intent.putExtra(SettingsBaseActivity.EXTRA_PAGE_TRANSITION_TYPE,
                 SettingsTransitionHelper.TransitionType.TRANSITION_SLIDE);
+        if (userId == LockPatternUtils.USER_FRP) {
+            intent.putExtra("className", ConfirmLockPattern.class.getName());
+        }
 
         Intent inIntent = mFragment != null ? mFragment.getActivity().getIntent() :
                 mActivity.getIntent();
@@ -545,7 +548,9 @@ public final class ChooseLockSettingsHelper {
                         ? ConfirmLockPassword.InternalActivity.class
                         : ConfirmLockPassword.class);
             case KeyguardManager.PATTERN:
-                return Optional.of(returnCredentials || forceVerifyPath
+                return Optional.of(userId == LockPatternUtils.USER_FRP
+                        ? ChooseLockPatternSize.class
+                        : returnCredentials || forceVerifyPath
                         ? ConfirmLockPattern.InternalActivity.class
                         : ConfirmLockPattern.class);
         }
