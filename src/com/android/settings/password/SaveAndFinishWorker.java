@@ -53,6 +53,7 @@ public class SaveAndFinishWorker extends Fragment {
     private LockscreenCredential mUnificationProfileCredential;
     private LockscreenCredential mChosenCredential;
     private LockscreenCredential mCurrentCredential;
+    private byte mPatternSize;
 
     private boolean mBlocking;
 
@@ -76,9 +77,10 @@ public class SaveAndFinishWorker extends Fragment {
 
     @VisibleForTesting
     void prepare(LockPatternUtils utils, LockscreenCredential chosenCredential,
-            LockscreenCredential currentCredential, int userId) {
+            LockscreenCredential currentCredential, int userId, byte patternSize) {
         mUtils = utils;
         mUserId = userId;
+        mPatternSize = patternSize;
         // This will be a no-op for non managed profiles.
         mWasSecureBefore = mUtils.isSecure(mUserId);
         mFinished = false;
@@ -90,8 +92,8 @@ public class SaveAndFinishWorker extends Fragment {
     }
 
     public void start(LockPatternUtils utils, LockscreenCredential chosenCredential,
-            LockscreenCredential currentCredential, int userId) {
-        prepare(utils, chosenCredential, currentCredential, userId);
+            LockscreenCredential currentCredential, int userId, byte patternSize) {
+        prepare(utils, chosenCredential, currentCredential, userId, patternSize);
         if (mBlocking) {
             finish(saveAndVerifyInBackground().second);
         } else {
@@ -107,6 +109,7 @@ public class SaveAndFinishWorker extends Fragment {
     @VisibleForTesting
     Pair<Boolean, Intent> saveAndVerifyInBackground() {
         final int userId = mUserId;
+        mUtils.setLockPatternSize(mPatternSize, userId);
         try {
             if (!mUtils.setLockCredential(mChosenCredential, mCurrentCredential, userId)) {
                 return Pair.create(false, null);
