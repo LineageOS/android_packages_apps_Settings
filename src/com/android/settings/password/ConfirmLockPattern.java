@@ -24,6 +24,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.SystemClock;
+import android.os.UserHandle;
 import android.os.UserManager;
 import android.os.storage.StorageManager;
 import android.text.TextUtils;
@@ -145,6 +146,8 @@ public class ConfirmLockPattern extends ConfirmDeviceCredentialBaseActivity {
                     mLockPatternUtils.isTactileFeedbackEnabled());
             mLockPatternView.setInStealthMode(!mLockPatternUtils.isVisiblePatternEnabled(
                     mEffectiveUserId));
+            mLockPatternView.setLockPatternSize(
+                    mLockPatternUtils.getLockPatternSize(mEffectiveUserId));
             mLockPatternView.setOnPatternListener(mConfirmExistingLockPatternListener);
             updateStage(Stage.NeedToUnlock);
 
@@ -424,7 +427,8 @@ public class ConfirmLockPattern extends ConfirmDeviceCredentialBaseActivity {
 
                 final boolean verifyChallenge = getActivity().getIntent().getBooleanExtra(
                         ChooseLockSettingsHelper.EXTRA_KEY_HAS_CHALLENGE, false);
-                final LockscreenCredential credential = LockscreenCredential.createPattern(pattern);
+                final LockscreenCredential credential = LockscreenCredential.createPattern(pattern,
+                        mLockPatternUtils.getLockPatternSize(mEffectiveUserId));
                 //TODO: how to sanitize this?
                 Intent intent = new Intent();
                 if (verifyChallenge) {
