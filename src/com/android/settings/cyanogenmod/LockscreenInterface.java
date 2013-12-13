@@ -39,6 +39,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment {
     private static final String TAG = "LockscreenInterface";
 
     private static final String KEY_ENABLE_WIDGETS = "keyguard_enable_widgets";
+    private static final String KEY_LOCK_CLOCK = "lock_clock";
     private static final String LOCKSCREEN_WIDGETS_CATEGORY = "lockscreen_widgets_category";
     private static final String LOCKSCREEN_QUICK_UNLOCK_CONTROL = "lockscreen_quick_unlock_control";
 
@@ -59,6 +60,11 @@ public class LockscreenInterface extends SettingsPreferenceFragment {
 
         addPreferencesFromResource(R.xml.lockscreen_interface_settings);
         PreferenceCategory widgetsCategory = (PreferenceCategory) findPreference(LOCKSCREEN_WIDGETS_CATEGORY);
+
+        // Only add if device has LockClock installed
+        if (!isPackageInstalled("com.cyanogenmod.lockclock")) {
+            widgetsCategory.removePreference(findPreference(KEY_LOCK_CLOCK));
+        }
 
         // Determine which user is logged in
         mIsPrimary = UserHandle.myUserId() == UserHandle.USER_OWNER;
