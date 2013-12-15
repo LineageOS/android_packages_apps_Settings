@@ -51,8 +51,6 @@ import java.util.List;
 public class HomeSettings extends SettingsPreferenceFragment {
     static final String TAG = "HomeSettings";
 
-    static final int REQUESTING_UNINSTALL = 10;
-
     public static final String HOME_PREFS = "home_prefs";
     public static final String HOME_PREFS_DO_SHOW = "do_show";
 
@@ -84,11 +82,11 @@ public class HomeSettings extends SettingsPreferenceFragment {
         }
     };
 
-    OnClickListener mDeleteClickListener = new OnClickListener() {
+    OnClickListener mPreferencesClickListener = new OnClickListener() {
         @Override
         public void onClick(View v) {
             int index = (Integer)v.getTag();
-            uninstallApp(mPrefs.get(index));
+            startActivity(mPrefs.get(index).prefsIntent);
         }
     };
 
@@ -103,58 +101,17 @@ public class HomeSettings extends SettingsPreferenceFragment {
                 mHomeComponentSet, newHome.activityName);
     }
 
-    void uninstallApp(HomeAppPreference pref) {
-        // Uninstallation is done by asking the OS to do it
-       Uri packageURI = Uri.parse("package:" + pref.uninstallTarget);
-       Intent uninstallIntent = new Intent(Intent.ACTION_UNINSTALL_PACKAGE, packageURI);
-       uninstallIntent.putExtra(Intent.EXTRA_UNINSTALL_ALL_USERS, false);
-       int requestCode = REQUESTING_UNINSTALL + (pref.isChecked ? 1 : 0);
-       startActivityForResult(uninstallIntent, requestCode);
-   }
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         // Rebuild the list now that we might have nuked something
         buildHomeActivitiesList();
-
-        // if the previous home app is now gone, fall back to the system one
-        if (requestCode > REQUESTING_UNINSTALL) {
-            // if mCurrentHome has gone null, it means we didn't find the previously-
-            // default home app when rebuilding the list, i.e. it was the one we
-            // just uninstalled.  When that happens we make the system-bundled
-            // home app the active default.
-            if (mCurrentHome == null) {
-                for (int i = 0; i < mPrefs.size(); i++) {
-                    HomeAppPreference pref = mPrefs.get(i);
-                    if (pref.isSystem) {
-                        makeCurrentHome(pref);
-                        break;
-                    }
-                }
-            }
-        }
-
-        // If we're down to just one possible home app, back out of this settings
-        // fragment and show a dialog explaining to the user that they won't see
-        // 'Home' settings now until such time as there are multiple available.
-        if (mPrefs.size() < 2) {
-            if (mShowNotice) {
-                mShowNotice = false;
-                Settings.requestHomeNotice();
-            }
-            finishFragment();
-        }
     }
 
     void buildHomeActivitiesList() {
         ArrayList<ResolveInfo> homeActivities = new ArrayList<ResolveInfo>();
         ComponentName currentDefaultHome  = mPm.getHomeActivities(homeActivities);
-
-        Intent prefsIntent = new Intent(Intent.ACTION_MAIN);
-        prefsIntent.addCategory("com.cyanogenmod.category.LAUNCHER_PREFERENCES");
-        List<ResolveInfo> prefsActivities = mPm.queryIntentActivities(prefsIntent, 0);
 
         Context context = getActivity();
         mCurrentHome = null;
@@ -169,12 +126,14 @@ public class HomeSettings extends SettingsPreferenceFragment {
             ComponentName activityName = new ComponentName(info.packageName, info.name);
             mHomeComponentSet[i] = activityName;
 
-            for (ResolveInfo prefInfo : prefsActivities) {
-                if (info.packageName.equals(prefInfo.activityInfo.packageName)) {
-                    resolvedPrefsIntent = new Intent(prefsIntent);
-                    resolvedPrefsIntent.setPackage(info.packageName);
-                    break;
-                }
+            Intent prefsIntent = new Intent(Intent.ACTION_MAIN);
+            prefsIntent.addCategory("com.cyanogenmod.category.LAUNCHER_PREFERENCES");
+            prefsIntent.setPackage(info.packageName);
+
+            if (prefsIntent.resolveActivity(mPm) != null) {
+                resolvedPrefsIntent = prefsIntent;
+                resolvedPrefsIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                        | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
             }
 
             try {
@@ -213,8 +172,6 @@ public class HomeSettings extends SettingsPreferenceFragment {
 
         Bundle args = getArguments();
         mShowNotice = (args != null) && args.getBoolean(HOME_SHOW_NOTICE, false);
-
-        setHasOptionsMenu(true);
     }
 
     @Override
@@ -251,9 +208,6 @@ public class HomeSettings extends SettingsPreferenceFragment {
         boolean isChecked;
         final Intent prefsIntent;
 
-        boolean isSystem;
-        String uninstallTarget;
-
         public HomeAppPreference(Context context, ComponentName activity,
                 int i, Drawable icon, CharSequence title,
                 HomeSettings parent, ActivityInfo info, Intent prefsIntent) {
@@ -271,35 +225,6 @@ public class HomeSettings extends SettingsPreferenceFragment {
             float[] matrix = colorMatrix.getArray();
             matrix[18] = 0.5f;
             grayscaleFilter = new ColorMatrixColorFilter(colorMatrix);
-
-            determineTargets(info);
-        }
-
-        // Check whether this activity is bundled on the system, with awareness
-        // of the META_HOME_ALTERNATE mechanism.
-        private void determineTargets(ActivityInfo info) {
-            final Bundle meta = info.metaData;
-            if (meta != null) {
-                final String altHomePackage = meta.getString(ActivityManager.META_HOME_ALTERNATE);
-                if (altHomePackage != null) {
-                    try {
-                        final int match = mPm.checkSignatures(info.packageName, altHomePackage);
-                        if (match >= PackageManager.SIGNATURE_MATCH) {
-                            PackageInfo altInfo = mPm.getPackageInfo(altHomePackage, 0);
-                            final int altFlags = altInfo.applicationInfo.flags;
-                            isSystem = (altFlags & ApplicationInfo.FLAG_SYSTEM) != 0;
-                            uninstallTarget = altInfo.packageName;
-                            return;
-                        }
-                    } catch (Exception e) {
-                        // e.g. named alternate package not found during lookup
-                        Log.w(TAG, "Unable to compare/resolve alternate", e);
-                    }
-                }
-            }
-            // No suitable metadata redirect, so use the package's own info
-            isSystem = (info.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0;
-            uninstallTarget = info.packageName;
         }
 
         @Override
@@ -311,12 +236,12 @@ public class HomeSettings extends SettingsPreferenceFragment {
 
             Integer indexObj = new Integer(index);
 
-            ImageView icon = (ImageView) view.findViewById(R.id.home_app_uninstall);
-            if (isSystem) {
+            ImageView icon = (ImageView) view.findViewById(R.id.home_app_preferences);
+            if (prefsIntent == null) {
                 icon.setEnabled(false);
                 icon.setColorFilter(grayscaleFilter);
             } else {
-                icon.setOnClickListener(mDeleteClickListener);
+                icon.setOnClickListener(mPreferencesClickListener);
                 icon.setTag(indexObj);
             }
 

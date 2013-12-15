@@ -615,10 +615,6 @@ public class Settings extends PreferenceActivity
             } else if (id == R.id.account_settings) {
                 int headerIndex = i + 1;
                 i = insertAccountsHeaders(target, headerIndex);
-            } else if (id == R.id.home_settings) {
-                if (!updateHomeSettingHeaders(header)) {
-                    target.remove(i);
-                }
             } else if (id == R.id.user_settings) {
                 if (!UserHandle.MU_ENABLED
                         || !UserManager.supportsMultipleUsers()
@@ -730,44 +726,6 @@ public class Settings extends PreferenceActivity
             mListeningToAccountUpdates = true;
         }
         return headerIndex;
-    }
-
-    private boolean updateHomeSettingHeaders(Header header) {
-        // Once we decide to show Home settings, keep showing it forever
-        SharedPreferences sp = getSharedPreferences(HomeSettings.HOME_PREFS, Context.MODE_PRIVATE);
-        if (sp.getBoolean(HomeSettings.HOME_PREFS_DO_SHOW, false)) {
-            return true;
-        }
-
-        try {
-            final ArrayList<ResolveInfo> homeApps = new ArrayList<ResolveInfo>();
-            getPackageManager().getHomeActivities(homeApps);
-            if (homeApps.size() < 2) {
-                // When there's only one available home app, omit this settings
-                // category entirely at the top level UI.  If the user just
-                // uninstalled the penultimate home app candidiate, we also
-                // now tell them about why they aren't seeing 'Home' in the list.
-                if (sShowNoHomeNotice) {
-                    sShowNoHomeNotice = false;
-                    NoHomeDialogFragment.show(this);
-                }
-                return false;
-            } else {
-                // Okay, we're allowing the Home settings category.  Tell it, when
-                // invoked via this front door, that we'll need to be told about the
-                // case when the user uninstalls all but one home app.
-                if (header.fragmentArguments == null) {
-                    header.fragmentArguments = new Bundle();
-                }
-                header.fragmentArguments.putBoolean(HomeSettings.HOME_SHOW_NOTICE, true);
-            }
-        } catch (Exception e) {
-            // Can't look up the home activity; bail on configuring the icon
-            Log.w(LOG_TAG, "Problem looking up home activity!", e);
-        }
-
-        sp.edit().putBoolean(HomeSettings.HOME_PREFS_DO_SHOW, true).apply();
-        return true;
     }
 
     private void getMetaData() {
