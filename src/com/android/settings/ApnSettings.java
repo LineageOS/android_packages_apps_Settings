@@ -199,6 +199,23 @@ public class ApnSettings extends SettingsPreferenceFragment implements
                 String key = cursor.getString(ID_INDEX);
                 String type = cursor.getString(TYPES_INDEX);
 
+                if (type.equals("supl") &&
+                        getResources().getBoolean(R.bool.config_show_supl_apn)) {
+                    boolean needHideSupl = false;
+                    for (String plmn : getResources().getStringArray(R.array.hide_supl_plmn_list)) {
+                        if (plmn.equals(MSimTelephonyManager.getDefault()
+                                   .getSimOperator(mSubscription))) {
+                            needHideSupl = true;
+                            break;
+                        }
+                    }
+
+                    if (needHideSupl) {
+                        cursor.moveToNext();
+                        continue;
+                    }
+                }
+
                 ApnPreference pref = new ApnPreference(getActivity());
 
                 pref.setKey(key);
