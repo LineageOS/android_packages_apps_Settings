@@ -8,7 +8,8 @@ LOCAL_MODULE_TAGS := optional
 
 LOCAL_SRC_FILES := \
         $(call all-java-files-under, src) \
-        src/com/android/settings/EventLogTags.logtags
+        src/com/android/settings/EventLogTags.logtags \
+        src/com/android/cabl/ICABLService.aidl
 
 LOCAL_PACKAGE_NAME := Settings
 LOCAL_CERTIFICATE := platform
