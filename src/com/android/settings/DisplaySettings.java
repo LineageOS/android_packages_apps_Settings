@@ -1,5 +1,9 @@
 /*
  * Copyright (C) 2010 The Android Open Source Project
+ * Copyright (c) 2013, The Linux Foundation. All Rights Reserved.
+ *
+ * Not a Contribution.
+ *
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,6 +60,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
+    private static final String KEY_BRIGHTNESS = "brightness";
+    private static final String KEY_CABL_BRIGHTNESS = "cabl_brightness";
+
+    private Preference mBrightnessSettingsPreference;
+
     private CheckBoxPreference mAccelerometer;
     private WarnedListPreference mFontSizePref;
     private CheckBoxPreference mNotificationPulse;
@@ -64,6 +73,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     
     private ListPreference mScreenTimeoutPreference;
     private Preference mScreenSaverPreference;
+
+    private CheckBoxPreference mCablBrightnessPreference;
+
+    CABLServiceWrapper mCABLServiceWrapper;
 
     private final RotationPolicy.RotationPolicyListener mRotationPolicyListener =
             new RotationPolicy.RotationPolicyListener() {
@@ -122,6 +135,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             } catch (SettingNotFoundException snfe) {
                 Log.e(TAG, Settings.System.NOTIFICATION_LIGHT_PULSE + " not found");
             }
+        }
+
+        mCablBrightnessPreference = (CheckBoxPreference) findPreference(KEY_CABL_BRIGHTNESS);
+        mCABLServiceWrapper = new CABLServiceWrapper(this.getActivity());
+        if (!mCABLServiceWrapper.isCABLAvailable()) {
+             getPreferenceScreen().removePreference(mCablBrightnessPreference);
+        } else {
+            mCABLServiceWrapper.initCABLService();
         }
     }
 
@@ -257,6 +278,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         updateAccelerometerRotationCheckbox();
         readFontSizePreference(mFontSizePref);
         updateScreenSaverSummary();
+        if (mCABLServiceWrapper.isCABLAvailable()) {
+            updateCablBrightnessCheckbox();
+        }
+
     }
 
     private void updateScreenSaverSummary() {
@@ -291,6 +316,13 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(), Settings.System.NOTIFICATION_LIGHT_PULSE,
                     value ? 1 : 0);
             return true;
+        } else if (preference == mCablBrightnessPreference) {
+            final boolean checked = mCablBrightnessPreference.isChecked();
+            if (checked) {
+                mCABLServiceWrapper.startCABL();
+            } else {
+                mCABLServiceWrapper.stopCABL();
+            }
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
@@ -331,4 +363,23 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
         return false;
     }
+
+    // add for UX_Brightness_settings
+    private void updateCablBrightnessCheckbox() {
+        boolean cablEnabled = (1 == android.provider.Settings.Global.getInt(getContentResolver(),
+                CABLServiceWrapper.CABL_ENABLED, 0));
+        //set default value for CABL check status
+        if(null != mCablBrightnessPreference){
+            mCablBrightnessPreference.setChecked(cablEnabled);
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        if(mCABLServiceWrapper.isCABLAvailable()){
+            mCABLServiceWrapper.onDestory();
+        }
+        super.onDestroy();
+    }
 }
+
