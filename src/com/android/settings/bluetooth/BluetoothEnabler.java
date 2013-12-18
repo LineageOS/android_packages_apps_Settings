@@ -28,6 +28,7 @@ import android.widget.Toast;
 
 import com.android.settings.R;
 import com.android.settings.WirelessSettings;
+import com.android.settings.wifi.WifiSettings;
 
 /**
  * BluetoothEnabler is a helper to manage the Bluetooth on/off checkbox
@@ -40,6 +41,7 @@ public final class BluetoothEnabler implements CompoundButton.OnCheckedChangeLis
     private boolean mValidListener;
     private final LocalBluetoothAdapter mLocalAdapter;
     private final IntentFilter mIntentFilter;
+
 
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
@@ -107,14 +109,20 @@ public final class BluetoothEnabler implements CompoundButton.OnCheckedChangeLis
 
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         // Show toast message if Bluetooth is not allowed in airplane mode
-        if (isChecked &&
-                !WirelessSettings.isRadioAllowed(mContext, Settings.Global.RADIO_BLUETOOTH)) {
-            Toast.makeText(mContext, R.string.wifi_in_airplane_mode, Toast.LENGTH_SHORT).show();
+        if (isChecked
+                && (WifiSettings.needPrompt(mContext) || !WirelessSettings.isRadioAllowed(
+                        mContext, Settings.Global.RADIO_BLUETOOTH))) {
+            Toast.makeText(mContext, R.string.wifi_in_airplane_mode,
+                    Toast.LENGTH_SHORT).show();
             // Reset switch to off
             buttonView.setChecked(false);
         }
 
+        // shouldn't setBluetoothEnabled(true) in airplane mode.
         if (mLocalAdapter != null) {
+            if (isChecked && WifiSettings.needPrompt(mContext)) {
+                return;
+            }
             mLocalAdapter.setBluetoothEnabled(isChecked);
         }
         mSwitch.setEnabled(false);
@@ -155,4 +163,5 @@ public final class BluetoothEnabler implements CompoundButton.OnCheckedChangeLis
             }
         }
     }
+
 }
