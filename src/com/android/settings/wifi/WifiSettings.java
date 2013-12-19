@@ -1126,4 +1126,17 @@ public class WifiSettings extends RestrictedSettingsFragment
         }
     }
 
+    public static boolean needPrompt(Context context) {
+        if (context == null) {
+            return false;
+        } else {
+            boolean airplane = (android.provider.Settings.System.getInt
+                    (context.getContentResolver(),
+                     android.provider.Settings.System.AIRPLANE_MODE_ON, 0) != 0);
+            boolean needPrompt =
+                    context.getResources().getBoolean(R.bool.config_airplane_invalid);
+            return airplane && needPrompt;
+        }
+    }
+
 }

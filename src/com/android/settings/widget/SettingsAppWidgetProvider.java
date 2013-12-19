@@ -39,10 +39,12 @@ import android.os.UserManager;
 import android.provider.Settings;
 import android.util.Log;
 import android.widget.RemoteViews;
+import android.widget.Toast;
 
 import com.android.settings.R;
 import com.android.settings.bluetooth.LocalBluetoothAdapter;
 import com.android.settings.bluetooth.LocalBluetoothManager;
+import com.android.settings.wifi.WifiSettings;
 
 /**
  * Provides control of power-related settings from a widget.
@@ -814,6 +816,11 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
             Uri data = intent.getData();
             int buttonId = Integer.parseInt(data.getSchemeSpecificPart());
             if (buttonId == BUTTON_WIFI) {
+                if (WifiSettings.needPrompt(context)) {
+                    Toast.makeText(context, R.string.wifi_in_airplane_mode,
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 sWifiState.toggleState(context);
             } else if (buttonId == BUTTON_BRIGHTNESS) {
                 toggleBrightness(context);
@@ -822,6 +829,11 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
             } else if (buttonId == BUTTON_LOCATION) {
                 sLocationState.toggleState(context);
             } else if (buttonId == BUTTON_BLUETOOTH) {
+                if (WifiSettings.needPrompt(context)) {
+                    Toast.makeText(context, R.string.wifi_in_airplane_mode,
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 sBluetoothState.toggleState(context);
             }
         } else {

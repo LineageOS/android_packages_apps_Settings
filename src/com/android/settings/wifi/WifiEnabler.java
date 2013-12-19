@@ -33,6 +33,7 @@ import android.widget.Toast;
 
 import com.android.settings.R;
 import com.android.settings.WirelessSettings;
+import com.android.settings.wifi.WifiSettings;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -51,6 +52,9 @@ public class WifiEnabler implements CompoundButton.OnCheckedChangeListener  {
             if (WifiManager.WIFI_STATE_CHANGED_ACTION.equals(action)) {
                 handleWifiStateChanged(intent.getIntExtra(
                         WifiManager.EXTRA_WIFI_STATE, WifiManager.WIFI_STATE_UNKNOWN));
+                if (WifiSettings.needPrompt(context)) {
+                    setSwitchChecked(false);
+                }
             } else if (WifiManager.SUPPLICANT_STATE_CHANGED_ACTION.equals(action)) {
                 if (!mConnected.get()) {
                     handleStateChanged(WifiInfo.getDetailedStateOf((SupplicantState)
@@ -80,6 +84,9 @@ public class WifiEnabler implements CompoundButton.OnCheckedChangeListener  {
         // Wi-Fi state is sticky, so just let the receiver update UI
         mContext.registerReceiver(mReceiver, mIntentFilter);
         mSwitch.setOnCheckedChangeListener(this);
+        if (WifiSettings.needPrompt(mContext)) {
+            setSwitchChecked(false);
+        }
     }
 
     public void pause() {
@@ -98,6 +105,9 @@ public class WifiEnabler implements CompoundButton.OnCheckedChangeListener  {
         boolean isDisabled = wifiState == WifiManager.WIFI_STATE_DISABLED;
         mSwitch.setChecked(isEnabled);
         mSwitch.setEnabled(isEnabled || isDisabled);
+        if (WifiSettings.needPrompt(mContext)) {
+            setSwitchChecked(false);
+        }
     }
 
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -105,9 +115,13 @@ public class WifiEnabler implements CompoundButton.OnCheckedChangeListener  {
         if (mStateMachineEvent) {
             return;
         }
+
         // Show toast message if Wi-Fi is not allowed in airplane mode
-        if (isChecked && !WirelessSettings.isRadioAllowed(mContext, Settings.Global.RADIO_WIFI)) {
-            Toast.makeText(mContext, R.string.wifi_in_airplane_mode, Toast.LENGTH_SHORT).show();
+        if (isChecked
+                && (WifiSettings.needPrompt(mContext) || !WirelessSettings.isRadioAllowed(
+                        mContext, Settings.Global.RADIO_WIFI))) {
+            Toast.makeText(mContext, R.string.wifi_in_airplane_mode,
+                    Toast.LENGTH_SHORT).show();
             // Reset switch to off. No infinite check/listenenr loop.
             buttonView.setChecked(false);
             return;
@@ -120,11 +134,19 @@ public class WifiEnabler implements CompoundButton.OnCheckedChangeListener  {
             mWifiManager.setWifiApEnabled(null, false);
         }
 
-        mSwitch.setEnabled(false);
-        if (!mWifiManager.setWifiEnabled(isChecked)) {
-            // Error
-            mSwitch.setEnabled(true);
-            Toast.makeText(mContext, R.string.wifi_error, Toast.LENGTH_SHORT).show();
+        // shouldn't setWifiEnabled(true) in airplane mode.
+        if (isChecked && WifiSettings.needPrompt(mContext)) {
+            return;
+        } else {
+            if (mWifiManager.setWifiEnabled(isChecked)) {
+                // Intent has been taken into account, disable until new state
+                // is active
+                mSwitch.setEnabled(false);
+            } else {
+                // Error
+                Toast.makeText(mContext, R.string.wifi_error,
+                        Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -174,4 +196,5 @@ public class WifiEnabler implements CompoundButton.OnCheckedChangeListener  {
         }
         */
     }
+
 }
