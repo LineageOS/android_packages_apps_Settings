@@ -18,6 +18,7 @@ package com.android.settings.wifi;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.DhcpInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.net.wifi.WifiWatchdogStateMachine;
@@ -29,6 +30,7 @@ import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.provider.Settings.Global;
 import android.security.Credentials;
+import android.text.format.Formatter;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
@@ -51,6 +53,8 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
     private static final String KEY_INSTALL_CREDENTIALS = "install_credentials";
     private static final String KEY_SUSPEND_OPTIMIZATIONS = "suspend_optimizations";
 
+    private static final String KEY_CURRENT_GATEWAY = "current_gateway";
+    private static final String KEY_CURRENT_NETMASK = "current_netmask";
     private WifiManager mWifiManager;
 
     @Override
@@ -237,6 +241,37 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
         String ipAddress = Utils.getWifiIpAddresses(getActivity());
         wifiIpAddressPref.setSummary(ipAddress == null ?
                 getActivity().getString(R.string.status_unavailable) : ipAddress);
+        Preference wifiGatewayPref = findPreference(KEY_CURRENT_GATEWAY);
+        String gateway = null;
+        Preference wifiNetmaskPref = findPreference(KEY_CURRENT_NETMASK);
+        String netmask = null;
+        if (getResources().getBoolean(R.bool.config_netinfo_invalid)) {
+            DhcpInfo dhcpInfo = mWifiManager.getDhcpInfo();
+            if (wifiInfo != null) {
+                if (dhcpInfo != null) {
+                    gateway = Formatter.formatIpAddress(dhcpInfo.gateway);
+                    netmask = Formatter.formatIpAddress(dhcpInfo.netmask);
+                }
+            }
+            if (wifiGatewayPref != null) {
+                wifiGatewayPref.setSummary(gateway == null ?
+                        getString(R.string.status_unavailable) : gateway);
+            }
+            if (wifiNetmaskPref != null) {
+                wifiNetmaskPref.setSummary(netmask == null ?
+                        getString(R.string.status_unavailable) : netmask);
+            }
+        } else {
+            PreferenceScreen screen = getPreferenceScreen();
+            if (screen != null) {
+                if (wifiGatewayPref != null) {
+                    screen.removePreference(wifiGatewayPref);
+                }
+                if (wifiNetmaskPref != null) {
+                    screen.removePreference(wifiNetmaskPref);
+                }
+            }
+        }
     }
 
 }
