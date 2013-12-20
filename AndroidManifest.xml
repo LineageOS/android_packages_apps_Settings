@@ -72,6 +72,7 @@
     <uses-permission android:name="android.permission.CHANGE_PRIVACY_GUARD_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_BLACKLIST" />
     <uses-permission android:name="android.permission.CHANGE_PHONE_BLACKLIST" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 
     <permission
         android:name="android.permission.REQUEST_SUPERUSER"
@@ -991,6 +992,17 @@
                 android:value="com.android.settings.location.LocationSettings" />
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
                 android:resource="@id/location_settings" />
+        </activity>
+
+        <activity android:name="AgpsSettings"
+                android:label="@string/location_agps_params_settings_title"
+                android:configChanges="orientation|keyboardHidden"
+                android:clearTaskOnLaunch="true"
+                >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
 
         <activity android:name="Settings$SecuritySettingsActivity"
