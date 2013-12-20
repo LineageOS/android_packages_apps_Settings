@@ -51,8 +51,11 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.text.BidiFormatter;
+import android.text.Editable;
 import android.text.format.Formatter;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -60,12 +63,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -171,6 +177,10 @@ public class ManageApplications extends Fragment implements
     public static final int SHOW_BACKGROUND_PROCESSES = MENU_OPTIONS_BASE + 7;
     public static final int RESET_APP_PREFERENCES = MENU_OPTIONS_BASE + 8;
     public static final int SHOW_PROTECTED_APPS = MENU_OPTIONS_BASE + 9;
+    // add for new feature for search applications
+    public static final int SHOW_SEARCH_APPLICATIONS = MENU_OPTIONS_BASE + 10;
+
+    private boolean mSearchappEnabled;
 
     // sort order
     private int mSortOrder = SORT_ORDER_ALPHA;
@@ -467,7 +477,9 @@ public class ManageApplications extends Fragment implements
     private ViewPager mViewPager;
 
     AlertDialog mResetDialog;
-
+    private LinearLayout mSearchView;
+    public EditText mTextView;
+    public TextView mSearchTitle;
     class MyPagerAdapter extends PagerAdapter
             implements ViewPager.OnPageChangeListener {
         int mCurPos = 0;
@@ -549,6 +561,12 @@ public class ManageApplications extends Fragment implements
         private int mWhichSize = SIZE_TOTAL;
         CharSequence mCurFilterPrefix;
 
+        public View mCurrentView = null;
+
+        public View getMyView() {
+            return mCurrentView;
+        }
+
         private Filter mFilter = new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
@@ -568,6 +586,14 @@ public class ManageApplications extends Fragment implements
                 mTab.updateStorageUsage();
             }
         };
+
+        public void setFilterPrefix(String prefix) {
+            Log.d(TAG,"setFilterPrefix:prefix="+prefix);
+            mCurFilterPrefix = prefix;
+            rebuild(true);
+            notifyDataSetChanged();
+            mTab.updateStorageUsage();
+        }
 
         public ApplicationsAdapter(ApplicationsState state, TabInfo tab, int filterMode) {
             mState = state;
@@ -810,6 +836,7 @@ public class ManageApplications extends Fragment implements
             }
             mActive.remove(convertView);
             mActive.add(convertView);
+            mCurrentView = convertView;
             return convertView;
         }
 
@@ -896,6 +923,9 @@ public class ManageApplications extends Fragment implements
         mTabs.add(tab);
 
         mNumTabs = mTabs.size();
+
+        mSearchappEnabled = getActivity().getResources().getBoolean(
+                          R.bool.config_searchapp_enabled);
     }
 
 
@@ -908,6 +938,26 @@ public class ManageApplications extends Fragment implements
                 container, false);
         mContentContainer = container;
         mRootView = rootView;
+
+        mSearchView = (LinearLayout) rootView.findViewById(R.id.search);
+        mTextView = (EditText) rootView.findViewById(R.id.search_prefix);
+        mSearchTitle = (TextView) rootView.findViewById(R.id.search_title);
+        mTextView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (null != mCurTab && (null != mCurTab.mApplications)) {
+                    mCurTab.mApplications.setFilterPrefix(mTextView.getText().toString().trim());
+                }
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
 
         mViewPager = (ViewPager) rootView.findViewById(R.id.pager);
         MyPagerAdapter adapter = new MyPagerAdapter();
@@ -1039,11 +1089,14 @@ public class ManageApplications extends Fragment implements
         mOptionsMenu = menu;
         // note: icons removed for now because the cause the new action
         // bar UI to be very confusing.
+        if (mSearchappEnabled) {
+            // add for new feature for search applications
+            menu.add(0, SHOW_SEARCH_APPLICATIONS, 1, R.string.show_search_function)
+                    .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+        }
         menu.add(0, SORT_ORDER_ALPHA, 1, R.string.sort_order_alpha)
-                //.setIcon(android.R.drawable.ic_menu_sort_alphabetically)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
         menu.add(0, SORT_ORDER_SIZE, 2, R.string.sort_order_size)
-                //.setIcon(android.R.drawable.ic_menu_sort_by_size)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
         menu.add(0, SHOW_RUNNING_SERVICES, 3, R.string.show_running_services)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
@@ -1057,7 +1110,7 @@ public class ManageApplications extends Fragment implements
         }
         updateOptionsMenu();
     }
-    
+
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         updateOptionsMenu();
@@ -1095,6 +1148,9 @@ public class ManageApplications extends Fragment implements
             if (!Utils.isRestrictedProfile(getActivity())) {
                 mOptionsMenu.findItem(SHOW_PROTECTED_APPS).setVisible(true);
             }
+            if (mSearchappEnabled) {
+                mOptionsMenu.findItem(SHOW_SEARCH_APPLICATIONS).setVisible(false);
+            }
             mShowBackground = showingBackground;
         } else {
             mOptionsMenu.findItem(SORT_ORDER_ALPHA).setVisible(mSortOrder != SORT_ORDER_ALPHA);
@@ -1104,6 +1160,9 @@ public class ManageApplications extends Fragment implements
             mOptionsMenu.findItem(RESET_APP_PREFERENCES).setVisible(true);
             if (!Utils.isRestrictedProfile(getActivity())) {
                 mOptionsMenu.findItem(SHOW_PROTECTED_APPS).setVisible(true);
+            }
+            if (mSearchappEnabled) {
+                mOptionsMenu.findItem(SHOW_SEARCH_APPLICATIONS).setVisible(true);
             }
         }
     }
@@ -1223,6 +1282,8 @@ public class ManageApplications extends Fragment implements
             //Launch Protected Apps Fragment
             Intent intent = new Intent(getActivity(), ProtectedAppsActivity.class);
             startActivity(intent);
+        } else if (menuId == SHOW_SEARCH_APPLICATIONS) {
+            showInputmethod();
         } else {
             // Handle the home button
             return false;
@@ -1264,6 +1325,10 @@ public class ManageApplications extends Fragment implements
         if (host != null) {
             host.invalidateOptionsMenu();
         }
+
+        if(mCurTab.mListType == LIST_TYPE_RUNNING) {
+            mSearchView.setVisibility(View.GONE);
+        }
     }
 
     private volatile IMediaContainerService mContainerService;
@@ -1282,4 +1347,14 @@ public class ManageApplications extends Fragment implements
             mContainerService = null;
         }
     };
+
+    // add for new feature for search applications
+    private void showInputmethod() {
+        if (mSearchView.getVisibility() != View.VISIBLE) {
+            if (mCurTab.mListType != LIST_TYPE_RUNNING) {
+                mSearchView.setVisibility(View.VISIBLE);
+                mTextView.requestFocus();
+            }
+        }
+    }
 }

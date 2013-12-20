@@ -23,7 +23,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
+    <LinearLayout android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+        <TextView android:id="@+id/search_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dip"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="@string/show_search_function"
+            android:baselineAlignBottom="true"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+        />
+        <EditText android:id="@+id/search_prefix"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textStyle="bold"
+            android:imeOptions="actionDone"
+            android:textSize="18sp"
+            android:layout_marginStart="5dip"
+            android:layout_marginEnd="20dip"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+        />
+    </LinearLayout>
     <android.support.v4.view.ViewPager
             android:id="@+id/pager"
             android:layout_width="match_parent"
