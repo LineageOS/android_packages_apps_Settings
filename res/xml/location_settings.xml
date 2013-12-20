@@ -33,5 +33,19 @@
         <PreferenceCategory
             android:key="location_services"
             android:title="@string/location_category_location_services" />
+        <CheckBoxPreference
+            android:key="assisted_gps"
+            android:title="@string/assisted_gps"
+            android:summaryOn="@string/assisted_gps_enabled"
+            android:summaryOff="@string/assisted_gps_disabled"/>
+
+        <PreferenceScreen
+            android:key="assisted_gps_params"
+            android:title="@string/location_agps_params_settings_title"
+            android:dependency="assisted_gps">
+            <intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="com.android.settings"
+                    android:targetClass="com.android.settings.AgpsSettings" />
+        </PreferenceScreen>
 
 </PreferenceScreen>
