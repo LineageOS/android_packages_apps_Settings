@@ -45,6 +45,7 @@ public class ApnPreference extends Preference implements
     private static CompoundButton mCurrentChecked = null;
     private boolean mProtectFromCheckedChange = false;
     private boolean mSelectable = true;
+    private boolean mApnReadOnly = false;
 
     @Override
     public View getView(View convertView, ViewGroup parent) {
@@ -107,5 +108,9 @@ public class ApnPreference extends Preference implements
 
     public boolean getSelectable() {
         return mSelectable;
+    }
+
+    public void setApnReadOnly(boolean apnReadOnly){
+        mApnReadOnly = apnReadOnly;
     }
 }

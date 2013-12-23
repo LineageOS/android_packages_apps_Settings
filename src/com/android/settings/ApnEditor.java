@@ -100,6 +100,7 @@ public class ApnEditor extends SettingsPreferenceFragment
     private String mCurMnc;
     private String mCurMcc;
     private int mSubscription = 0;
+    private boolean mDisableEditor = false;
 
     private Uri mUri;
     private Cursor mCursor;
@@ -206,6 +207,7 @@ public class ApnEditor extends SettingsPreferenceFragment
 
         final Intent intent = getActivity().getIntent();
         String action = intent.getAction();
+        mDisableEditor = intent.getBooleanExtra("DISABLE_EDITOR",false);
         Bundle fragArgs = getArguments();
         String operatorNumeric = intent.getStringExtra(ApnSettings.OPERATOR_NUMERIC_EXTRA);
 
@@ -219,6 +221,10 @@ public class ApnEditor extends SettingsPreferenceFragment
             mUri = intent.getData();
         }
 
+        if (mDisableEditor) {
+            getPreferenceScreen().setEnabled(false);
+            Log.d(TAG, "ApnEditor form is disabled.");
+        }
         // Read the subscription received from Phone settings.
         mSubscription = intent.getIntExtra(SelectSubscription.SUBSCRIPTION_KEY,
                 MSimTelephonyManager.getDefault().getDefaultSubscription());
@@ -499,6 +505,10 @@ public class ApnEditor extends SettingsPreferenceFragment
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
+        if (mDisableEditor) {
+            Log.d(TAG, "Form is disabled. Do not create the options menu.");
+            return;
+        }
         // If it's a new APN, then cancel will delete the new entry in onPause
         if (!mNewApn) {
             menu.add(0, MENU_DELETE, 0, R.string.menu_delete)
@@ -551,6 +561,12 @@ public class ApnEditor extends SettingsPreferenceFragment
         String mcc = checkNotSet(mMcc.getText());
         String mnc = checkNotSet(mMnc.getText());
         int dataSub = 0;
+
+        // If the form is not editable, do nothing and return.
+        if (mDisableEditor) {
+            Log.d(TAG, "Form is disabled. Nothing to save.");
+            return true;
+        }
 
         if (getErrorMsg() != null && !force) {
             showDialog(ERROR_DIALOG_ID);
