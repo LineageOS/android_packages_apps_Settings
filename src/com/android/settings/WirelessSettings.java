@@ -271,11 +271,12 @@ public class WirelessSettings extends RestrictedSettingsFragment
         final Activity activity = getActivity();
         mAirplaneModePreference = (CheckBoxPreference) findPreference(KEY_TOGGLE_AIRPLANE);
 
+        PreferenceScreen manageSub =
+                (PreferenceScreen) findPreference(KEY_MOBILE_NETWORK_SETTINGS);
+        manageSub.setEnabled(hasSimCard());
+
         if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
             // Mobile Networks menu will traverse to Select Subscription menu.
-            PreferenceScreen manageSub =
-                    (PreferenceScreen) findPreference(KEY_MOBILE_NETWORK_SETTINGS);
-
             if (manageSub != null) {
                 Intent intent = manageSub.getIntent();
                 intent.setClassName("com.android.phone",
@@ -422,6 +423,27 @@ public class WirelessSettings extends RestrictedSettingsFragment
         super.onStart();
 
         initSmsApplicationSetting();
+    }
+
+    private boolean hasSimCard() {
+        MSimTelephonyManager multiSimManager = MSimTelephonyManager.getDefault();
+        if (multiSimManager.isMultiSimEnabled()) {
+            int numPhones = multiSimManager.getPhoneCount();
+            for (int i = 0; i < numPhones; i++) {
+                // Because the status of slot1/2 will return
+                // SIM_STATE_UNKNOWN under airplane mode.
+                if (multiSimManager.getSimState(i) != TelephonyManager.SIM_STATE_ABSENT) {
+                    return true;
+                }
+            }
+        } else {
+            TelephonyManager singleSimManager = TelephonyManager.getDefault();
+            if (singleSimManager.getSimState() != TelephonyManager.SIM_STATE_ABSENT) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     @Override
