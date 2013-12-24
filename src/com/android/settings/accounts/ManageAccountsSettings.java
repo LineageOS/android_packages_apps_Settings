@@ -167,8 +167,28 @@ public class ManageAccountsSettings extends AccountPreferenceBase
     public void onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
         boolean syncActive = ContentResolver.getCurrentSync() != null;
-        menu.findItem(MENU_SYNC_NOW_ID).setVisible(!syncActive && mFirstAccount != null);
-        menu.findItem(MENU_SYNC_CANCEL_ID).setVisible(syncActive && mFirstAccount != null);
+        boolean isSyncing = checkIsSyncingState(syncActive);
+
+        menu.findItem(MENU_SYNC_NOW_ID).setVisible(!isSyncing && mFirstAccount != null);
+        menu.findItem(MENU_SYNC_CANCEL_ID).setVisible(isSyncing && mFirstAccount != null);
+        menu.findItem(MENU_SYNC_NOW_ID).setEnabled(!syncActive);
+    }
+
+    private boolean checkIsSyncingState(boolean isSyncActive) {
+        int count = getPreferenceScreen().getPreferenceCount();
+
+        if (isSyncActive) {
+            for (int i = 0; i < count; i++) {
+                Preference pref = getPreferenceScreen().getPreference(i);
+                if (pref instanceof AccountPreference) {
+                    Account account = ((AccountPreference) pref).getAccount();
+                    if (ContentResolver.getCurrentSync().account.equals(account)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 
     @Override
