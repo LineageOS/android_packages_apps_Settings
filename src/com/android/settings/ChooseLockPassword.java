@@ -300,16 +300,6 @@ public class ChooseLockPassword extends PreferenceActivity {
          * @return error message to show to user or null if password is OK
          */
         private String validatePassword(String password) {
-            if (password.length() < mPasswordMinLength) {
-                return getString(mIsAlphaMode ?
-                        R.string.lockpassword_password_too_short
-                        : R.string.lockpassword_pin_too_short, mPasswordMinLength);
-            }
-            if (password.length() > mPasswordMaxLength) {
-                return getString(mIsAlphaMode ?
-                        R.string.lockpassword_password_too_long
-                        : R.string.lockpassword_pin_too_long, mPasswordMaxLength + 1);
-            }
             int letters = 0;
             int numbers = 0;
             int lowercase = 0;
@@ -335,6 +325,16 @@ public class ChooseLockPassword extends PreferenceActivity {
                     symbols++;
                     nonletter++;
                 }
+            }
+            if (password.length() < mPasswordMinLength) {
+                return getString(mIsAlphaMode ?
+                        R.string.lockpassword_password_too_short
+                        : R.string.lockpassword_pin_too_short, mPasswordMinLength);
+            }
+            if (password.length() > mPasswordMaxLength) {
+                return getString(mIsAlphaMode ?
+                        R.string.lockpassword_password_too_long
+                        : R.string.lockpassword_pin_too_long, mPasswordMaxLength + 1);
             }
             if (DevicePolicyManager.PASSWORD_QUALITY_NUMERIC == mRequestedQuality
                     && (letters > 0 || symbols > 0)) {
@@ -458,21 +458,11 @@ public class ChooseLockPassword extends PreferenceActivity {
             String password = mPasswordEntry.getText().toString();
             final int length = password.length();
             if (mUiStage == Stage.Introduction && length > 0) {
-                if (length < mPasswordMinLength) {
-                    String msg = getString(mIsAlphaMode ? R.string.lockpassword_password_too_short
-                            : R.string.lockpassword_pin_too_short, mPasswordMinLength);
-                    mHeaderText.setText(msg);
-                    mNextButton.setEnabled(false);
-                } else {
-                    String error = validatePassword(password);
-                    if (error != null) {
-                        mHeaderText.setText(error);
-                        mNextButton.setEnabled(false);
-                    } else {
-                        mHeaderText.setText(R.string.lockpassword_press_continue);
-                        mNextButton.setEnabled(true);
-                    }
-                }
+                String error = validatePassword(password);
+                 mHeaderText.setText((error != null)?error:
+                         getString(R.string.lockpassword_press_continue));
+                 mNextButton.setEnabled((error != null) ? false:true);
+
             } else {
                 mHeaderText.setText(mIsAlphaMode ? mUiStage.alphaHint : mUiStage.numericHint);
                 mNextButton.setEnabled(length > 0);
