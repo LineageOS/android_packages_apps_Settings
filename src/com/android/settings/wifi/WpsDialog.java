@@ -246,6 +246,14 @@ public class WpsDialog extends AlertDialog {
                             R.string.wifi_wps_connected), wifiInfo.getSSID());
                     updateDialog(DialogState.CONNECTED, msg);
                 }
+            } else {
+                // Prompt user WPS failed when the wifi is disabled
+                final int wifiState = mWifiManager.getWifiState();
+                boolean isEnabled = (wifiState == WifiManager.WIFI_STATE_ENABLED);
+                if (!isEnabled) {
+                    String msg = mContext.getString(R.string.wifi_wps_failed_generic);
+                    updateDialog(DialogState.WPS_FAILED, msg);
+                }
             }
         }
     }
