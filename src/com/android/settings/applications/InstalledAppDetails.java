@@ -1188,6 +1188,11 @@ public class InstalledAppDetails extends Fragment
                         public void onClick(DialogInterface dialog, int which) {
                             // Disable the package's notifications
                             getOwner().setNotificationsEnabled(false);
+                            // Do not call onCheckedChanged() when setChecked(false),
+                            //so set the listener to null.
+                            getOwner().mNotificationSwitch.setOnCheckedChangeListener(null);
+                            getOwner().mNotificationSwitch.setChecked(false);
+                            getOwner().mNotificationSwitch.setOnCheckedChangeListener(getOwner());
                         }
                     })
                     .setNegativeButton(R.string.dlg_cancel,
@@ -1395,6 +1400,7 @@ public class InstalledAppDetails extends Fragment
                     ActivityManager.COMPAT_MODE_ENABLED : ActivityManager.COMPAT_MODE_DISABLED);
         } else if (buttonView == mNotificationSwitch) {
             if (!isChecked) {
+                mNotificationSwitch.setChecked(true);
                 showDialogInner(DLG_DISABLE_NOTIFICATIONS, 0);
             } else {
                 setNotificationsEnabled(true);
