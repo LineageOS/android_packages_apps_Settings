@@ -53,6 +53,7 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
     private static final String KEY_SUSPEND_OPTIMIZATIONS = "suspend_optimizations";
     private static final String KEY_WIFI_PRIORITY = "wifi_priority";
     private static final String KEY_AUTO_CONNECT_TYPE = "auto_connect_type";
+    private static final String KEY_GSM_WIFI_CONNECT_TYPE = "gsm_wifi_connect_type";
 
     private WifiManager mWifiManager;
 
@@ -172,6 +173,23 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
         } else {
             Log.d(TAG, "Fail to get auto connect pref");
         }
+
+        String data2wifiKey = getActivity().getString(R.string.data_to_wifi_connect_key);
+        String data2wifiValueAsk = getActivity().getString(R.string.data_to_wifi_connect_value_ask);
+        ListPreference cell2wifiPref = (ListPreference) findPreference(KEY_GSM_WIFI_CONNECT_TYPE);
+
+        if (cell2wifiPref != null) {
+            if (getResources().getBoolean(R.bool.cell_to_wifi)) {
+                int value = Settings.System.getInt(getContentResolver(), data2wifiKey,
+                        Integer.parseInt(data2wifiValueAsk));
+                cell2wifiPref.setValue(String.valueOf(value));
+                cell2wifiPref.setOnPreferenceChangeListener(this);
+            } else {
+                getPreferenceScreen().removePreference(cell2wifiPref);
+            }
+        } else {
+            Log.d(TAG, "Fail to get cellular2wifi pref");
+        }
     }
 
     private void updateSleepPolicySummary(Preference sleepPolicyPref, String value) {
@@ -274,6 +292,18 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
                             : getResources().getInteger(R.integer.wifi_autoconn_type_manual));
         }
 
+        if (KEY_GSM_WIFI_CONNECT_TYPE.equals(key)) {
+            Log.d(TAG, "Gsm to Wifi connect type is " + newValue);
+            try {
+                String data2wifiKey = getActivity().getString(R.string.data_to_wifi_connect_key);
+                Settings.System.putInt(getContentResolver(), data2wifiKey,
+                        Integer.parseInt(((String) newValue)));
+            } catch (NumberFormatException e) {
+                Toast.makeText(getActivity(), R.string.wifi_setting_connect_type_error,
+                        Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
         return true;
     }
 
