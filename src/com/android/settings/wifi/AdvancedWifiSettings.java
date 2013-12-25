@@ -52,6 +52,7 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
     private static final String KEY_INSTALL_CREDENTIALS = "install_credentials";
     private static final String KEY_SUSPEND_OPTIMIZATIONS = "suspend_optimizations";
     private static final String KEY_WIFI_PRIORITY = "wifi_priority";
+    private static final String KEY_AUTO_CONNECT_TYPE = "auto_connect_type";
 
     private WifiManager mWifiManager;
 
@@ -156,6 +157,21 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
 
         Preference wifiPriority = findPreference(KEY_WIFI_PRIORITY);
         wifiPriority.setEnabled(mWifiManager.isWifiEnabled());
+
+        CheckBoxPreference AutoPref = (CheckBoxPreference) findPreference(KEY_AUTO_CONNECT_TYPE);
+        if (AutoPref != null) {
+            if (getResources().getBoolean(R.bool.config_auto_connect_wifi_enabled)) {
+                AutoPref.setChecked(Settings.System.getInt(getContentResolver(),
+                        getResources().getString(R.string.wifi_autoconn_type),
+                        getResources().getInteger(R.integer.wifi_autoconn_type_auto)) ==
+                        getResources().getInteger(R.integer.wifi_autoconn_type_auto));
+                AutoPref.setOnPreferenceChangeListener(this);
+            } else {
+                getPreferenceScreen().removePreference(AutoPref);
+            }
+        } else {
+            Log.d(TAG, "Fail to get auto connect pref");
+        }
     }
 
     private void updateSleepPolicySummary(Preference sleepPolicyPref, String value) {
@@ -248,6 +264,14 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
                         Toast.LENGTH_SHORT).show();
                 return false;
             }
+        }
+
+        if (KEY_AUTO_CONNECT_TYPE.equals(key)) {
+            boolean checked = ((Boolean) newValue).booleanValue();
+            Settings.System.putInt(getContentResolver(),
+                    getResources().getString(R.string.wifi_autoconn_type),
+                    checked ? getResources().getInteger(R.integer.wifi_autoconn_type_auto)
+                            : getResources().getInteger(R.integer.wifi_autoconn_type_manual));
         }
 
         return true;

@@ -52,6 +52,11 @@
             android:entries="@array/wifi_frequency_band_entries"
             android:entryValues="@array/wifi_frequency_band_values"
             />
+     <CheckBoxPreference
+            android:key="auto_connect_type"
+            android:title="@string/wifi_auto_connect_type_title"
+            android:summary="@string/wifi_auto_connect_type_summary"
+            android:persistent="false"/>
 
     <ListPreference
             android:key="wifi_countrycode"

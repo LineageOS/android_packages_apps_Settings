@@ -102,6 +102,7 @@ public class WifiSettings extends RestrictedSettingsFragment
     private static final int MENU_ID_CONNECT = Menu.FIRST + 6;
     private static final int MENU_ID_FORGET = Menu.FIRST + 7;
     private static final int MENU_ID_MODIFY = Menu.FIRST + 8;
+    private static final int MENU_ID_DISCONNECT = Menu.FIRST + 9;
 
     private static final int WIFI_DIALOG_ID = 1;
     private static final int WPS_PBC_DIALOG_ID = 2;
@@ -130,6 +131,7 @@ public class WifiSettings extends RestrictedSettingsFragment
     private boolean mP2pSupported;
     private boolean mIbssSupported;
     List<WifiChannel> mSupportedChannels;
+    private boolean mAutoConnect = true;
 
     private WifiEnabler mWifiEnabler;
     // An access point being editted is stored here.
@@ -431,6 +433,13 @@ public class WifiSettings extends RestrictedSettingsFragment
             mWifiEnabler.resume();
         }
 
+        if (getResources().getBoolean(R.bool.config_auto_connect_wifi_enabled)) {
+            mAutoConnect = Settings.System.getInt(getActivity().getContentResolver(),
+                    getResources().getString(R.string.wifi_autoconn_type),
+                    getResources().getInteger(R.integer.wifi_autoconn_type_auto)) ==
+                    getResources().getInteger(R.integer.wifi_autoconn_type_auto);
+        }
+
         getActivity().registerReceiver(mReceiver, mFilter);
         updateAccessPoints();
     }
@@ -566,6 +575,12 @@ public class WifiSettings extends RestrictedSettingsFragment
                         && mSelectedAccessPoint.getState() == null) {
                     menu.add(Menu.NONE, MENU_ID_CONNECT, 0, R.string.wifi_menu_connect);
                 }
+                // current connected AP, add a disconnect option to it
+                if (getResources().getBoolean(R.bool.config_auto_connect_wifi_enabled)) {
+                    if (mSelectedAccessPoint.getState() != null) {
+                        menu.add(Menu.NONE, MENU_ID_DISCONNECT, 0, R.string.wifi_menu_disconnect);
+                    }
+                }
                 if (mSelectedAccessPoint.networkId != INVALID_NETWORK_ID) {
                     menu.add(Menu.NONE, MENU_ID_FORGET, 0, R.string.wifi_menu_forget);
                     menu.add(Menu.NONE, MENU_ID_MODIFY, 0, R.string.wifi_menu_modify);
@@ -600,6 +615,15 @@ public class WifiSettings extends RestrictedSettingsFragment
             }
             case MENU_ID_MODIFY: {
                 showDialog(mSelectedAccessPoint, true);
+                return true;
+            }
+            case MENU_ID_DISCONNECT: {
+                if (getResources().getBoolean(R.bool.config_auto_connect_wifi_enabled)) {
+                    mWifiManager.disconnect();
+                    if (mAutoConnect) {
+                        mWifiManager.reconnect();
+                    }
+                }
                 return true;
             }
         }
