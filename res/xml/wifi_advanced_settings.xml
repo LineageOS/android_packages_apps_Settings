@@ -37,6 +37,13 @@
             android:summary="@string/wifi_scan_always_available_summary"
             android:persistent="false" />
 
+    <ListPreference
+            android:key="gsm_wifi_connect_type"
+            android:title="@string/gsm_to_wifi_connect_type_title"
+            android:persistent="false"
+            android:entries="@array/cellcular2wifi_entries"
+            android:entryValues="@array/cellcular2wifi_values"
+            />
     <!-- android:dependency="enable_wifi" -->
     <CheckBoxPreference
             android:key="wifi_poor_network_detection"
