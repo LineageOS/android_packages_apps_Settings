@@ -647,7 +647,8 @@ public class WifiSettings extends RestrictedSettingsFragment
         switch (dialogId) {
             case WIFI_DIALOG_ID:
                 AccessPoint ap = mDlgAccessPoint; // For manual launch
-                if (ap == null) { // For re-launch from saved state
+                if ((ap == null) && (mSelectedAccessPoint != null)) {
+                    // For re-launch from saved state
                     if (mAccessPointSavedState != null) {
                         ap = new AccessPoint(getActivity(), mAccessPointSavedState);
                         // For repeated orientation changes
