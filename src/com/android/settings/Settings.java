@@ -608,6 +608,10 @@ public class Settings extends PreferenceActivity
             } else if (id == R.id.multi_sim_settings) {
                 if (!MSimTelephonyManager.getDefault().isMultiSimEnabled())
                     target.remove(header);
+            } else if (id == R.id.global_roaming_settings) {
+                if (!getResources().getBoolean(R.bool.config_global_phone_enabled)) {
+                    target.remove(header);
+                }
             }
 
             if (i < target.size() && target.get(i) == header
