@@ -69,6 +69,7 @@ public class ApnSettings extends PreferenceActivity implements
     private static final int NAME_INDEX = 1;
     private static final int APN_INDEX = 2;
     private static final int TYPES_INDEX = 3;
+    private static final int RO_INDEX = 4;
 
     private static final int MENU_NEW = Menu.FIRST;
     private static final int MENU_RESTORE = Menu.FIRST + 1;
@@ -190,7 +191,7 @@ public class ApnSettings extends PreferenceActivity implements
         }
 
         Cursor cursor = getContentResolver().query(Telephony.Carriers.CONTENT_URI, new String[] {
-                "_id", "name", "apn", "type"}, where, null,
+                "_id", "name", "apn", "type", "read_only"}, where, null,
                 Telephony.Carriers.DEFAULT_SORT_ORDER);
 
         if (cursor != null) {
@@ -206,6 +207,7 @@ public class ApnSettings extends PreferenceActivity implements
                 String apn = cursor.getString(APN_INDEX);
                 String key = cursor.getString(ID_INDEX);
                 String type = cursor.getString(TYPES_INDEX);
+                boolean readOnly = (cursor.getInt(RO_INDEX) == 1);
 
                 if (type.equals("supl") &&
                         getResources().getBoolean(R.bool.config_hidesupl_enable)) {
@@ -226,6 +228,7 @@ public class ApnSettings extends PreferenceActivity implements
 
                 ApnPreference pref = new ApnPreference(this);
 
+                pref.setApnReadOnly(readOnly);
                 pref.setKey(key);
                 pref.setTitle(name);
                 pref.setSummary(apn);
