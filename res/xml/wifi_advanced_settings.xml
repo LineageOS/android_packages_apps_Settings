@@ -37,6 +37,12 @@
             android:summary="@string/wifi_scan_always_available_summary"
             android:persistent="false" />
 
+    <CheckBoxPreference
+            android:key="wifi_gsm_connect_type"
+            android:title="@string/wifi_to_gsm_connect_type_title"
+            android:persistent="false"
+            />
+
     <ListPreference
             android:key="gsm_wifi_connect_type"
             android:title="@string/gsm_to_wifi_connect_type_title"
@@ -44,6 +50,13 @@
             android:entries="@array/cellcular2wifi_entries"
             android:entryValues="@array/cellcular2wifi_values"
             />
+
+    <CheckBoxPreference
+            android:key="auto_connect_type"
+            android:title="@string/wifi_auto_connect_type_title"
+            android:summary="@string/wifi_auto_connect_type_summary"
+            android:persistent="false"/>
+
     <!-- android:dependency="enable_wifi" -->
     <CheckBoxPreference
             android:key="wifi_poor_network_detection"
@@ -59,11 +72,6 @@
             android:entries="@array/wifi_frequency_band_entries"
             android:entryValues="@array/wifi_frequency_band_values"
             />
-     <CheckBoxPreference
-            android:key="auto_connect_type"
-            android:title="@string/wifi_auto_connect_type_title"
-            android:summary="@string/wifi_auto_connect_type_summary"
-            android:persistent="false"/>
 
     <ListPreference
             android:key="wifi_countrycode"
