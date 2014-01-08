@@ -31,6 +31,8 @@ import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.core.instrumentation.InstrumentedDialogFragment;
 
+import lineageos.hardware.LineageHardwareManager;
+
 public class HardwareInfoDialogFragment extends InstrumentedDialogFragment {
 
     public static final String TAG = "HardwareInfo";
@@ -85,6 +87,11 @@ public class HardwareInfoDialogFragment extends InstrumentedDialogFragment {
 
     @VisibleForTesting
     String getSerialNumber() {
-        return Build.getSerial();
+        LineageHardwareManager hardware = LineageHardwareManager.getInstance(getActivity());
+        if (hardware.isSupported(LineageHardwareManager.FEATURE_SERIAL_NUMBER)) {
+            return hardware.getSerialNumber();
+        } else {
+            return Build.getSerial();
+        }
     }
 }
