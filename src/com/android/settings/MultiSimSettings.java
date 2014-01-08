@@ -92,6 +92,7 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
     static final int EVENT_SET_VOICE_SUBSCRIPTION_DONE = 10;
 
     protected boolean mIsForeground = false;
+    private boolean mIsAirplaneModeOn = false;
     static final int SUBSCRIPTION_ID_INVALID = -1;
     static final int SUBSCRIPTION_DUAL_STANDBY = 2;
     private final int MAX_SUBSCRIPTIONS = SubscriptionManager.NUM_SUBSCRIPTIONS;
@@ -185,6 +186,7 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
         entriesPrompt[i] = getResources().getString(R.string.prompt);
         summariesPrompt[i] = getResources().getString(R.string.prompt_user);
         mReceiver = new AirplaneModeBroadcastReceiver();
+        mIsAirplaneModeOn = isAirplaneModeOn();
     }
 
     @Override
@@ -225,11 +227,14 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
              mConfigSub.setEnabled(false);
              mConfigSub.setSelectable(false);
              displayAlertDialog(getResources().getString(R.string.no_sim_info));
-             disableMsimMenu();
+             configureMSimMenu(false);
         } else if (mIccCardCount == 1) {
              //1 SIM card is present. Config sub must be accessible
-             disableMsimMenu();
+             mConfigSub.setEnabled(true);
+             mConfigSub.setSelectable(true);
+             configureMSimMenu(false);
         } else if ( (mIccCardCount > 1) && (mIccCardCount <= MAX_SUBSCRIPTIONS) )  {
+            configureMSimMenu(true);
             updateMultiSimEntriesForVoice();
             updateMultiSimEntriesForData();
             updateMultiSimEntriesForSms();
@@ -240,6 +245,11 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
             }
         } else {
             Log.d(TAG, "Invalid card count");
+        }
+
+        if (mIsAirplaneModeOn) {
+            mData.setEnabled(false);
+            mData.setSelectable(false);
         }
     }
 
@@ -252,6 +262,7 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
             String action = intent.getAction();
             if (action.equals(Intent.ACTION_AIRPLANE_MODE_CHANGED)) {
                 Log.d(TAG, "Intent ACTION_AIRPLANE_MODE_CHANGED received");
+                mIsAirplaneModeOn = intent.getBooleanExtra("state", false);
                 /**
                  * finish() is required when user enables/disables airplane mode
                  * via power key. In that case, since the dialog is displayed,
@@ -359,7 +370,9 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
 
         Log.d(TAG, "updateDataSummary: Data Subscription : = " + dataSub);
         mData.setValue(Integer.toString(dataSub));
-        mData.setSummary(summaries[dataSub]);
+        if (!mIsAirplaneModeOn) {
+            mData.setSummary(summaries[dataSub]);
+        }
     }
 
     private void updateSmsSummary() {
@@ -667,25 +680,25 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
     };
 
     /**
-     * This function will disable menu options when a single SIM / no SIM
+     * This function will disable/enable menu options when a single SIM / no SIM
      * is present. This will prevent the user from selecting options that
      * are not valid when multiple SIM cards are not inserted
      */
-    private void disableMsimMenu() {
-        Log.d(TAG, "disableMsimMenu");
-        mVoice.setEnabled(false);
-        mVoice.setSelectable(false);
-        mData.setEnabled(false);
-        mData.setSelectable(false);
+    private void configureMSimMenu(boolean enable) {
+        Log.d(TAG, "configureMSimMenu");
+        mVoice.setEnabled(enable);
+        mVoice.setSelectable(enable);
+        mData.setEnabled(enable);
+        mData.setSelectable(enable);
 
-        mSms.setEnabled(false);
-        mSms.setSelectable(false);
+        mSms.setEnabled(enable);
+        mSms.setSelectable(enable);
 
-        mPrioritySub.setEnabled(false);
-        mPrioritySub.setSelectable(false);
+        mPrioritySub.setEnabled(enable);
+        mPrioritySub.setSelectable(enable);
 
-        mTuneAway.setEnabled(false);
-        mTuneAway.setSelectable(false);
+        mTuneAway.setEnabled(enable);
+        mTuneAway.setSelectable(enable);
     }
 
     private void registerForAirplaneMode() {
@@ -694,5 +707,10 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
 
     private void unregisterForAirplaneMode() {
         unregisterReceiver(mReceiver);
+    }
+
+    private boolean isAirplaneModeOn() {
+        return Settings.Global.getInt(getApplicationContext().getContentResolver(),
+                Settings.Global.AIRPLANE_MODE_ON, 0) != 0;
     }
 }
