@@ -43,10 +43,12 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
     private static final String CATEGORY_NAVBAR = "navigation_bar";
     private static final String KEY_SCREEN_GESTURE_SETTINGS = "touch_screen_gesture_settings";
     private static final String KEY_NAVIGATION_BAR_LEFT = "navigation_bar_left";
+    private static final String KEY_NAVIGATION_HEIGHT = "nav_buttons_height";
 
     private ListPreference mExpandedDesktopPref;
     private CheckBoxPreference mExpandedDesktopNoNavbarPref;
     private CheckBoxPreference mNavigationBarLeftPref;
+    private ListPreference mNavButtonsHeight;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,6 +67,9 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
         // Navigation bar left
         mNavigationBarLeftPref = (CheckBoxPreference) findPreference(KEY_NAVIGATION_BAR_LEFT);
 
+        // Navigation bar height
+        mNavButtonsHeight = (ListPreference) findPreference(KEY_NAVIGATION_HEIGHT);
+
         Utils.updatePreferenceToSpecificActivityFromMetaDataOrRemove(getActivity(),
                 getPreferenceScreen(), KEY_SCREEN_GESTURE_SETTINGS);
 
@@ -79,6 +84,12 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
                 mExpandedDesktopPref.setValue(String.valueOf(expandedDesktopValue));
                 updateExpandedDesktop(expandedDesktopValue);
                 expandedCategory.removePreference(mExpandedDesktopNoNavbarPref);
+
+                mNavButtonsHeight.setOnPreferenceChangeListener(this);
+                int statusNavButtonsHeight = Settings.System.getInt(getContentResolver(),
+                        Settings.System.NAV_BUTTONS_HEIGHT, 48);
+                mNavButtonsHeight.setValue(String.valueOf(statusNavButtonsHeight));
+                mNavButtonsHeight.setSummary(mNavButtonsHeight.getEntry());
 
                 if (!Utils.isPhone(getActivity())) {
                     PreferenceCategory navCategory =
@@ -106,6 +117,13 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
         } else if (preference == mExpandedDesktopNoNavbarPref) {
             boolean value = (Boolean) objValue;
             updateExpandedDesktop(value ? 2 : 0);
+            return true;
+        } else if (preference == mNavButtonsHeight) {
+            int statusNavButtonsHeight = Integer.valueOf((String) objValue);
+            int index = mNavButtonsHeight.findIndexOfValue((String) objValue);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.NAV_BUTTONS_HEIGHT, statusNavButtonsHeight);
+            mNavButtonsHeight.setSummary(mNavButtonsHeight.getEntries()[index]);
             return true;
         }
 

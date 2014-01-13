@@ -81,6 +81,15 @@
             android:fragment="com.android.settings.cyanogenmod.NavRing"
             android:title="@string/navigation_ring_title" />
 
+        <ListPreference
+            android:key="nav_buttons_height"
+            android:dialogTitle="@string/navigation_bar_height"
+            android:title="@string/navigation_bar_height"
+            android:entries="@array/nav_buttons_height_entries"
+            android:entryValues="@array/nav_buttons_height_values"
+            android:defaultValue="48"
+            android:persistent="false" />
+
         <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
             android:key="navigation_bar_left"
             android:title="@string/navigation_bar_left_title"
