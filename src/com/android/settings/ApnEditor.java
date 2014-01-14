@@ -23,6 +23,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.content.res.Resources.NotFoundException;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -35,6 +36,7 @@ import android.preference.PreferenceActivity;
 import android.provider.Telephony;
 import android.telephony.MSimTelephonyManager;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -130,7 +132,8 @@ public class ApnEditor extends PreferenceActivity
             Telephony.Carriers.ROAMING_PROTOCOL, // 19
             Telephony.Carriers.MVNO_TYPE,   // 20
             Telephony.Carriers.MVNO_MATCH_DATA,  // 21
-            "ppp_number" // 22
+            "ppp_number", // 22
+            "localized_name" // 23
     };
 
     private static final int ID_INDEX = 0;
@@ -156,7 +159,7 @@ public class ApnEditor extends PreferenceActivity
     private static final int MVNO_TYPE_INDEX = 20;
     private static final int MVNO_MATCH_DATA_INDEX = 21;
     private static final int PPP_NUMBER_INDEX = 22;
-
+    private static final int LOCALIZED_NAME_INDEX = 23;
 
     @Override
     protected void onCreate(Bundle icicle) {
@@ -327,7 +330,11 @@ public class ApnEditor extends PreferenceActivity
                     getPreferenceScreen().removePreference(mPppNumber);
                 }
             }
+        }
 
+        String localizedName = ApnSettings.getLocalizedName(this, mCursor, LOCALIZED_NAME_INDEX);
+        if (!TextUtils.isEmpty(localizedName)) {
+            mName.setText(localizedName);
         }
 
         mName.setSummary(checkNull(mName.getText()));
