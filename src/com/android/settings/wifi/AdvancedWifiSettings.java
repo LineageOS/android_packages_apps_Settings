@@ -16,6 +16,7 @@
 
 package com.android.settings.wifi;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -55,6 +56,8 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
     private static final String KEY_SUSPEND_OPTIMIZATIONS = "suspend_optimizations";
     private static final String KEY_AUTO_CONNECT_TYPE = "auto_connect_type";
     private static final String KEY_SELECT_IN_SSIDS_TYPE = "select_in_ssids_type";
+    private static final String KEY_PRIORITY_TYPE = "wifi_priority_type";
+    private static final String KEY_PRIORITY_SETTINGS = "wifi_priority_settings";
 
     private static final String KEY_CURRENT_GATEWAY = "current_gateway";
     private static final String KEY_CURRENT_NETMASK = "current_netmask";
@@ -213,6 +216,23 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
         } else {
             Log.d(TAG, "Fail to get ssid pref");
         }
+
+        CheckBoxPreference priorityTypePref = (CheckBoxPreference) findPreference(KEY_PRIORITY_TYPE);
+        Preference prioritySettingPref = findPreference(KEY_PRIORITY_SETTINGS);
+        if (priorityTypePref != null && prioritySettingPref != null) {
+            if (getResources().getBoolean(R.bool.set_wifi_priority)) {
+                priorityTypePref.setOnPreferenceChangeListener(this);
+                priorityTypePref.setChecked(Settings.System.getInt(getContentResolver(),
+                        getResources().getString(R.string.wifi_priority_type),
+                        getResources().getInteger(R.integer.wifi_priority_type_default))
+                        == getResources().getInteger(R.integer.wifi_priority_type_manual));
+            } else {
+                getPreferenceScreen().removePreference(priorityTypePref);
+                getPreferenceScreen().removePreference(prioritySettingPref);
+            }
+        } else {
+            Log.d(TAG, "Fail to get priority pref...");
+        }
     }
 
     private void updateSleepPolicySummary(Preference sleepPolicyPref, String value) {
@@ -331,6 +351,14 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
             } catch (NumberFormatException e) {
                 return false;
             }
+        }
+
+        if (KEY_PRIORITY_TYPE.equals(key)) {
+            boolean checked = ((Boolean) newValue).booleanValue();
+            Settings.System.putInt(getContentResolver(),
+                    getResources().getString(R.string.wifi_priority_type),
+                    checked ? getResources().getInteger(R.integer.wifi_priority_type_manual)
+                            : getResources().getInteger(R.integer.wifi_priority_type_default));
         }
         return true;
     }
