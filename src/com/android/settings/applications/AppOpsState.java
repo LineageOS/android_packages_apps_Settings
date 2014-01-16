@@ -454,7 +454,7 @@ public class AppOpsState {
     }
 
     private AppEntry getAppEntry(final Context context, final HashMap<String, AppEntry> appEntries,
-            final String packageName, ApplicationInfo appInfo) {
+            final String packageName, ApplicationInfo appInfo, boolean applyFilters) {
 
         if (appInfo == null) {
             try {
@@ -467,15 +467,17 @@ public class AppOpsState {
             }
         }
 
-        // Hide user apps if needed
-        if (!shouldShowUserApps() &&
-                (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
-            return null;
-        }
-        // Hide system apps if needed
-        if (!shouldShowSystemApps() &&
-                (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
-            return null;
+        if (applyFilters) {
+            // Hide user apps if needed
+            if (!shouldShowUserApps() &&
+                    (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
+                return null;
+            }
+            // Hide system apps if needed
+            if (!shouldShowSystemApps() &&
+                    (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
+                return null;
+            }
         }
 
         AppEntry appEntry = appEntries.get(packageName);
@@ -515,6 +517,9 @@ public class AppOpsState {
             }
         }
 
+        // Whether to apply hide user / system app filters
+        final boolean applyFilters = (packageName == null);
+
         List<AppOpsManager.PackageOps> pkgs;
         if (packageName != null) {
             pkgs = mAppOps.getOpsForPackage(uid, packageName, tpl.ops);
@@ -525,7 +530,8 @@ public class AppOpsState {
         if (pkgs != null) {
             for (int i=0; i<pkgs.size(); i++) {
                 AppOpsManager.PackageOps pkgOps = pkgs.get(i);
-                AppEntry appEntry = getAppEntry(context, appEntries, pkgOps.getPackageName(), null);
+                AppEntry appEntry = getAppEntry(context, appEntries, pkgOps.getPackageName(), null,
+                        applyFilters);
                 if (appEntry == null) {
                     continue;
                 }
@@ -553,7 +559,7 @@ public class AppOpsState {
         for (int i=0; i<apps.size(); i++) {
             PackageInfo appInfo = apps.get(i);
             AppEntry appEntry = getAppEntry(context, appEntries, appInfo.packageName,
-                    appInfo.applicationInfo);
+                    appInfo.applicationInfo, applyFilters);
             if (appEntry == null) {
                 continue;
             }

@@ -190,17 +190,21 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
             }
         }
 
+        PreferenceCategory pointerSettingsCategory = (PreferenceCategory)
+                        findPreference(KEY_POINTER_SETTINGS_CATEGORY);
         mStylusGestures = (PreferenceScreen) findPreference(KEY_STYLUS_GESTURES);
         mStylusIconEnabled = (CheckBoxPreference) findPreference(KEY_STYLUS_ICON_ENABLED);
-        // remove stylus preference for non stylus devices
-        if (!getResources().getBoolean(com.android.internal.R.bool.config_stylusGestures)) {
-            PreferenceCategory pointerSettingsCategory = (PreferenceCategory)
-                    findPreference(KEY_POINTER_SETTINGS_CATEGORY);
-            if (pointerSettingsCategory != null) {
+
+        if (pointerSettingsCategory != null) {
+            // remove stylus preference for non stylus devices
+            if (!getResources().getBoolean(com.android.internal.R.bool.config_stylusGestures)) {
                 pointerSettingsCategory.removePreference(mStylusGestures);
                 pointerSettingsCategory.removePreference(mStylusIconEnabled);
-                Utils.updatePreferenceToSpecificActivityFromMetaDataOrRemove(getActivity(),
-                        pointerSettingsCategory, KEY_TRACKPAD_SETTINGS);
+            }
+            Utils.updatePreferenceToSpecificActivityFromMetaDataOrRemove(getActivity(),
+                            pointerSettingsCategory, KEY_TRACKPAD_SETTINGS);
+            if (pointerSettingsCategory.getPreferenceCount() == 0) {
+                getPreferenceScreen().removePreference(pointerSettingsCategory);
             }
         }
 
