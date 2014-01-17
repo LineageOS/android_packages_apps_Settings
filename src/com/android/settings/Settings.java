@@ -771,7 +771,26 @@ public class Settings extends PreferenceActivity
                     target.remove(i);
                 }
             } else if (id == R.id.superuser) {
-                if (!DevelopmentSettings.isRootForAppsEnabled()) {
+                boolean supersuexists = false;
+                try {
+                    supersuexists = (getPackageManager().getPackageInfo("eu.chainfire.supersu", 0).versionCode >= 185);
+                } catch (PackageManager.NameNotFoundException e) {
+                }
+                if (supersuexists) {
+                    target.remove(i);
+                } else if (!DevelopmentSettings.isRootForAppsEnabled()) {
+                    target.remove(i);
+                }
+            } else if (id == R.id.supersu_settings) {
+                // Embedding into Settings is supported from SuperSU v1.85 and up
+                boolean supported = false;
+                try {
+                    supported = (getPackageManager().getPackageInfo("eu.chainfire.supersu", 0).versionCode >= 185);
+                } catch (PackageManager.NameNotFoundException e) {
+                }
+                if (!supported) {
+                    target.remove(i);
+                } else if (!DevelopmentSettings.isRootForAppsEnabled()) {
                     target.remove(i);
                 }
             } else if (id == R.id.multi_sim_settings) {
