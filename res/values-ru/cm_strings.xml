@@ -51,6 +51,10 @@
     <string name="summary_quick_access_linked">Используются плитки и их размещение из панели быстрых настроек</string>
 
     <string name="lock_screen_title">Экран блокировки</string>
+    <string name="lockscreen_battery_status_title">Состояние батареи</string>
+    <string name="lockscreen_battery_status_charging">Показывать во время зарядки</string>
+    <string name="lockscreen_battery_status_alwayson">Показывать всегда</string>
+    <string name="lockscreen_battery_status_alwaysoff">Не показывать</string>
     <string name="lock_clock_title">Виджет часов</string>
     <string name="lock_clock_summary">Просмотр или изменение настроек отображения виджета «cLock» на главном экране или экране блокировки</string>
     <string name="lockscreen_custom_widgets_title">Виджеты приложений</string>
@@ -69,6 +73,18 @@
     <string name="lockscreen_target_empty">Пусто</string>
     <string name="lockscreen_target_edit_title">Изменение ярлыка</string>
     <string name="lockscreen_target_edit_msg">Выберите необходимое действие и значок</string>
+    <string name="lockscreen_buttons_title">Действия кнопок</string>
+    <string name="lockscreen_buttons_summary">Просмотр или изменение действий кнопок экрана блокировки</string>
+    <string name="lockscreen_long_press_back_title">Долгое нажатие кнопки «Назад»</string>
+    <string name="lockscreen_long_press_home_title">Долгое нажатие кнопки «Домой»</string>
+    <string name="lockscreen_long_press_menu_title">Долгое нажатие кнопки «Меню»</string>
+    <string name="lockscreen_buttons_no_action">Нет действия</string>
+    <string name="lockscreen_buttons_flashlight">Фонарик</string>
+    <string name="lockscreen_buttons_next">Следующий трек</string>
+    <string name="lockscreen_buttons_previous">Предыдущий трек</string>
+    <string name="lockscreen_buttons_playpause">Воспроизв./пауза</string>
+    <string name="lockscreen_buttons_toggle_sound">Перекл. режим звонка</string>
+    <string name="lockscreen_buttons_sleep">Выключить экран</string>
 
     <string name="status_bar_title">Строка состояния</string>
     <string name="status_bar_show_clock_title">Показывать часы</string>
@@ -80,6 +96,7 @@
     <string name="status_bar_style_icon_portrait">Вертикальный значок</string>
     <string name="status_bar_style_icon_landscape">Горизонтальный значок</string>
     <string name="status_bar_style_circle">Круг</string>
+    <string name="status_bar_style_text">Текст</string>
     <string name="status_bar_battery_show_percent_title">Показывать процент заряда</string>
     <string name="status_bar_notif_count_title">Счётчик уведомлений</string>
     <string name="status_bar_notif_count_summary">Показывать количество новых уведомлений в строке состояния</string>
@@ -519,6 +536,8 @@
     <string name="unlock_menu_unlock_summary">Нажатие кнопки «Меню» разблокирует устройство</string>
     <string name="unlock_home_unlock_title">Разблок. по кнопке «Домой»</string>
     <string name="unlock_home_unlock_summary">Нажатие кнопки «Домой» разблокирует устройство</string>
+    <string name="unlock_camera_unlock_title">Разблок. по кнопке камеры</string>
+    <string name="unlock_camera_unlock_summary">Нажатие кнопки камеры разблокирует устройство</string>
     <string name="unlock_quick_unlock_control_title">Быстрая разблокировка</string>
     <string name="unlock_quick_unlock_control_summary">Автоматическая разблокировка при вводе правильного пароля или PIN-кода</string>
     <string name="delay_and_timeout_title">Задержка при блокировке</string>
@@ -540,6 +559,8 @@
     <string name="sms_security_check_limit_summary">Показывать предупреждение при слишком частой отправке SMS-сообщений приложениями. Текущее значение: %d сообщений в 15 минут.</string>
     <string name="sms_security_check_limit_default">30 (по умолчанию)</string>
 
+    <string name="privacy_settings_cyanogenmod_title">Конфиденциальность</string>
+
     <string name="privacy_guard_switch_label">Включить защищённый режим</string>
     <string name="privacy_guard_dlg_title">Включить защищённый режим?</string>
     <string name="privacy_guard_dlg_text">Приложение, работающее в защищённом режиме, не имеет доступа к персональным данным, таким как контакты, сообщения или журнал вызовов.</string>
@@ -547,7 +568,7 @@
     <string name="privacy_guard_default_title">Защищённый режим по умолчанию</string>
     <string name="privacy_guard_default_summary">Включать защищённый режим для всех новых приложений</string>
     <string name="privacy_guard_manager_title">Защищённый режим</string>
-    <string name="privacy_guard_manager_summary">Контроль доступа приложений к персональным данным</string>
+    <string name="privacy_guard_manager_summary">Ограничение доступа приложений к персональным данным</string>
     <string name="privacy_guard_no_user_apps">Нет установленных приложений</string>
     <string name="privacy_guard_filter_does_not_match">Приложения с соответствующими разрешениями не установлены</string>
     <string name="privacy_guard_help_title">Справка</string>
@@ -588,6 +609,8 @@
     <string name="whisperpush_registration_summary">Зарегистрироваться в WhisperPush для шифрования SMS-сообщений.</string>
     <string name="whisperpush_identitykey_title">Просмотреть ключи идентификации</string>
 
+    <string name="ime_switcher_notify">Переключатель способа ввода</string>
+    <string name="ime_switcher_notify_summary">Показывать переключатель способа ввода в панели уведомлений</string>
     <string name="gestures_settings_title">Поддержка пера</string>
     <string name="category_spen_title">Жесты пера</string>
     <string name="enable_subcat_title">Перо</string>
@@ -609,6 +632,8 @@
     <string name="stylus_app_not_installed">Приложение «%s» не установлено</string>
     <string name="stylus_icon_enabled_title">Указатель пера</string>
     <string name="stylus_icon_enabled_summary">Показывать значок указателя при работе с пером</string>
+
+    <string name="accessibility_home_button_answers_call_prerefence_title">Отвечать на вызов кнопкой «Домой»</string>
 
     <string name="development_tools_title">Запуск утилиты разработчика</string>
     <string name="advanced_reboot_title">Варианты перезагрузки</string>
