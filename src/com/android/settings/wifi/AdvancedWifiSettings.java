@@ -54,6 +54,7 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
     private static final String KEY_INSTALL_CREDENTIALS = "install_credentials";
     private static final String KEY_SUSPEND_OPTIMIZATIONS = "suspend_optimizations";
     private static final String KEY_AUTO_CONNECT_TYPE = "auto_connect_type";
+    private static final String KEY_SELECT_IN_SSIDS_TYPE = "select_in_ssids_type";
 
     private static final String KEY_CURRENT_GATEWAY = "current_gateway";
     private static final String KEY_CURRENT_NETMASK = "current_netmask";
@@ -196,6 +197,22 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
         } else {
             Log.d(TAG, "Fail to get wifi2cell pref");
         }
+
+        String selectBySSIDKey = getActivity().getString(R.string.select_in_ssids_key);
+        String selectBySSIDValueAsk = getActivity().getString(R.string.select_in_ssids_value_ask);
+        ListPreference ssidPref = (ListPreference) findPreference(KEY_SELECT_IN_SSIDS_TYPE);
+        if (ssidPref != null) {
+            if (getResources().getBoolean(R.bool.config_wifi_connect_mode_among_ssid)) {
+                int value = Settings.System.getInt(getContentResolver(), selectBySSIDKey,
+                        Integer.parseInt(selectBySSIDValueAsk));
+                ssidPref.setValue(String.valueOf(value));
+                ssidPref.setOnPreferenceChangeListener(this);
+            } else {
+                getPreferenceScreen().removePreference(ssidPref);
+            }
+        } else {
+            Log.d(TAG, "Fail to get ssid pref");
+        }
     }
 
     private void updateSleepPolicySummary(Preference sleepPolicyPref, String value) {
@@ -303,6 +320,15 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
             } catch (NumberFormatException e) {
                 Toast.makeText(getActivity(), R.string.wifi_setting_connect_type_error,
                         Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if (KEY_SELECT_IN_SSIDS_TYPE.equals(key)) {
+            try {
+                String selectBySSIDKey = getActivity().getString(R.string.select_in_ssids_key);
+                Settings.System.putInt(getContentResolver(), selectBySSIDKey,
+                        Integer.parseInt(((String) newValue)));
+            } catch (NumberFormatException e) {
                 return false;
             }
         }
