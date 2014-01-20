@@ -51,6 +51,13 @@
             android:entryValues="@array/cellcular2wifi_values"
             />
 
+    <ListPreference
+            android:entries="@array/wifi_connect_type_entries"
+            android:entryValues="@array/wifi_connect_type_values"
+            android:key="select_in_ssids_type"
+            android:persistent="false"
+            android:title="@string/select_in_ssids_type_title" />
+
     <CheckBoxPreference
             android:key="auto_connect_type"
             android:title="@string/wifi_auto_connect_type_title"
