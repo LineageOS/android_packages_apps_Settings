@@ -50,6 +50,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.util.AttributeSet;
@@ -175,6 +176,10 @@ public class WifiSettings extends RestrictedSettingsFragment
     private boolean mSetupWizardMode;
 
     /* End of "used in Wifi Setup context" */
+
+    private PreferenceCategory mDefaultTrustAP;
+    private PreferenceCategory mConfigedAP;
+    private PreferenceCategory mUnKnownAP;
 
     public WifiSettings() {
         super(DISALLOW_CONFIG_WIFI);
@@ -380,8 +385,16 @@ public class WifiSettings extends RestrictedSettingsFragment
                 }
             }
         }
-
-        addPreferencesFromResource(R.xml.wifi_settings);
+        if (getResources().getBoolean(R.bool.set_wifi_priority)) {
+            addPreferencesFromResource(R.xml.wifi_sort_settings);
+            mDefaultTrustAP
+                    = (PreferenceCategory)findPreference("default_trust_access_points");
+            mConfigedAP = (PreferenceCategory)findPreference("configed_access_points");
+            mUnKnownAP = (PreferenceCategory)findPreference("unknown_access_points");
+        }
+        else {
+            addPreferencesFromResource(R.xml.wifi_settings);
+        }
 
         if (mSetupWizardMode) {
             getView().setSystemUiVisibility(
@@ -587,8 +600,16 @@ public class WifiSettings extends RestrictedSettingsFragment
                     }
                 }
                 if (mSelectedAccessPoint.networkId != INVALID_NETWORK_ID) {
-                    menu.add(Menu.NONE, MENU_ID_FORGET, 0, R.string.wifi_menu_forget);
-                    menu.add(Menu.NONE, MENU_ID_MODIFY, 0, R.string.wifi_menu_modify);
+                    if (getResources().getBoolean(R.bool.set_wifi_priority)) {
+                        if(!AccessPoint.isCarrierAp(mSelectedAccessPoint, getActivity())){
+                            menu.add(Menu.NONE, MENU_ID_FORGET, 0, R.string.wifi_menu_forget);
+                        }
+                        menu.add(Menu.NONE, MENU_ID_MODIFY, 0, R.string.wifi_menu_modify);
+                    }
+                    else {
+                        menu.add(Menu.NONE, MENU_ID_FORGET, 0, R.string.wifi_menu_forget);
+                        menu.add(Menu.NONE, MENU_ID_MODIFY, 0, R.string.wifi_menu_modify);
+                    }
                 }
             }
         }
@@ -750,17 +771,28 @@ public class WifiSettings extends RestrictedSettingsFragment
             case WifiManager.WIFI_STATE_ENABLED:
                 // AccessPoints are automatically sorted with TreeSet.
                 final Collection<AccessPoint> accessPoints = constructAccessPoints();
-                getPreferenceScreen().removeAll();
+                if (!getResources().getBoolean(R.bool.set_wifi_priority)) {
+                    getPreferenceScreen().removeAll();
+                }
                 if(accessPoints.size() == 0) {
                     addMessagePreference(R.string.wifi_empty_list_wifi_on);
                 }
-                for (AccessPoint accessPoint : accessPoints) {
-                    getPreferenceScreen().addPreference(accessPoint);
+                if (!getResources().getBoolean(R.bool.set_wifi_priority)) {
+                    for (AccessPoint accessPoint : accessPoints) {
+                        getPreferenceScreen().addPreference(accessPoint);
+                    }
+                }
+                if (accessPoints.isEmpty()){
+                    addMessagePreference(R.string.wifi_empty_list_wifi_on);
                 }
                 break;
 
             case WifiManager.WIFI_STATE_ENABLING:
-                getPreferenceScreen().removeAll();
+                if (getResources().getBoolean(R.bool.set_wifi_priority)) {
+                    emptyCategory();
+                } else {
+                    getPreferenceScreen().removeAll();
+                }
                 break;
 
             case WifiManager.WIFI_STATE_DISABLING:
@@ -794,8 +826,15 @@ public class WifiSettings extends RestrictedSettingsFragment
     }
 
     private void addMessagePreference(int messageId) {
-        if (mEmptyView != null) mEmptyView.setText(messageId);
-        getPreferenceScreen().removeAll();
+        if (mEmptyView != null)
+            mEmptyView.setText(messageId);
+        if (getResources().getBoolean(R.bool.set_wifi_priority)) {
+            getPreferenceScreen().removePreference(mDefaultTrustAP);
+            getPreferenceScreen().removePreference(mConfigedAP);
+            getPreferenceScreen().removePreference(mUnKnownAP);
+        } else {
+            getPreferenceScreen().removeAll();
+        }
     }
 
     /** Returns sorted list of access points */
@@ -805,13 +844,30 @@ public class WifiSettings extends RestrictedSettingsFragment
          * correct SSID.  Maps SSID -> List of AccessPoints with the given SSID.  */
         Multimap<String, AccessPoint> apMap = new Multimap<String, AccessPoint>();
 
+        if (getResources().getBoolean(R.bool.set_wifi_priority)) {
+            emptyCategory();
+        }
         final List<WifiConfiguration> configs = mWifiManager.getConfiguredNetworks();
         if (configs != null) {
             for (WifiConfiguration config : configs) {
-                AccessPoint accessPoint = new AccessPoint(getActivity(), config);
-                accessPoint.update(mLastInfo, mLastState);
-                accessPoints.add(accessPoint);
-                apMap.put(accessPoint.ssid, accessPoint);
+                if (config.SSID != null) {
+                    AccessPoint accessPoint = new AccessPoint(getActivity(), config);
+                    accessPoint.update(mLastInfo, mLastState);
+                    accessPoints.add(accessPoint);
+                    apMap.put(accessPoint.ssid, accessPoint);
+                    if (getResources().getBoolean(R.bool.set_wifi_priority)) {
+                        if(AccessPoint.isCarrierAp(accessPoint, getActivity())){
+                            mDefaultTrustAP.addPreference(accessPoint);
+                        } else {
+                            mConfigedAP.addPreference(accessPoint);
+                        }
+                    }
+                }
+            }
+            if (getResources().getBoolean(R.bool.set_wifi_priority)) {
+                if (mConfigedAP != null && mConfigedAP.getPreferenceCount() == 0) {
+                    getPreferenceScreen().removePreference(mConfigedAP);
+                }
             }
         }
 
@@ -833,6 +889,18 @@ public class WifiSettings extends RestrictedSettingsFragment
                     AccessPoint accessPoint = new AccessPoint(getActivity(), result);
                     accessPoints.add(accessPoint);
                     apMap.put(accessPoint.ssid, accessPoint);
+                    if (getResources().getBoolean(R.bool.set_wifi_priority)) {
+                        if(AccessPoint.isCarrierAp(accessPoint, getActivity())){
+                            mDefaultTrustAP.addPreference(accessPoint);
+                        } else {
+                            mUnKnownAP.addPreference(accessPoint);
+                        }
+                    }
+                }
+            }
+            if (getResources().getBoolean(R.bool.set_wifi_priority)) {
+                if(mUnKnownAP !=null && mUnKnownAP.getPreferenceCount() == 0){
+                    getPreferenceScreen().removePreference(mUnKnownAP);
                 }
             }
         }
@@ -925,12 +993,18 @@ public class WifiSettings extends RestrictedSettingsFragment
             mLastState = state;
         }
 
-        for (int i = getPreferenceScreen().getPreferenceCount() - 1; i >= 0; --i) {
-            // Maybe there's a WifiConfigPreference
-            Preference preference = getPreferenceScreen().getPreference(i);
-            if (preference instanceof AccessPoint) {
-                final AccessPoint accessPoint = (AccessPoint) preference;
-                accessPoint.update(mLastInfo, mLastState);
+        if (getResources().getBoolean(R.bool.set_wifi_priority)) {
+            updateAP(mDefaultTrustAP);
+            updateAP(mConfigedAP);
+            updateAP(mUnKnownAP);
+        } else {
+            for (int i = getPreferenceScreen().getPreferenceCount() - 1; i >= 0; --i) {
+                // Maybe there's a WifiConfigPreference
+                Preference preference = getPreferenceScreen().getPreference(i);
+                if (preference instanceof AccessPoint) {
+                    final AccessPoint accessPoint = (AccessPoint) preference;
+                    accessPoint.update(mLastInfo, mLastState);
+                }
             }
         }
     }
@@ -1072,8 +1146,11 @@ public class WifiSettings extends RestrictedSettingsFragment
         if (mWifiManager.isWifiEnabled()) {
             mScanner.resume();
         }
-
-        getPreferenceScreen().removeAll();
+        if (getResources().getBoolean(R.bool.set_wifi_priority)) {
+            emptyCategory();
+        } else {
+            getPreferenceScreen().removeAll();
+        }
     }
 
     /**
@@ -1095,7 +1172,12 @@ public class WifiSettings extends RestrictedSettingsFragment
     /* package */ int getAccessPointsCount() {
         final boolean wifiIsEnabled = mWifiManager.isWifiEnabled();
         if (wifiIsEnabled) {
-            return getPreferenceScreen().getPreferenceCount();
+            if (getResources().getBoolean(R.bool.set_wifi_priority)) {
+                return mDefaultTrustAP.getPreferenceCount() + mConfigedAP.getPreferenceCount()
+                        + mUnKnownAP.getPreferenceCount();
+            } else {
+                return getPreferenceScreen().getPreferenceCount();
+            }
         } else {
             return 0;
         }
@@ -1179,4 +1261,22 @@ public class WifiSettings extends RestrictedSettingsFragment
         }
     }
 
+    public void updateAP(PreferenceCategory screen){
+        for (int i = screen.getPreferenceCount() - 1; i >= 0; --i) {
+            Preference preference = screen.getPreference(i);
+            if (preference instanceof AccessPoint) {
+                final AccessPoint accessPoint = (AccessPoint) preference;
+                accessPoint.update(mLastInfo, mLastState);
+            }
+        }
+    }
+
+    public void emptyCategory(){
+        getPreferenceScreen().addPreference(mDefaultTrustAP);
+        getPreferenceScreen().addPreference(mConfigedAP);
+        getPreferenceScreen().addPreference(mUnKnownAP);
+        mDefaultTrustAP.removeAll();
+        mConfigedAP.removeAll();
+        mUnKnownAP.removeAll();
+    }
 }
