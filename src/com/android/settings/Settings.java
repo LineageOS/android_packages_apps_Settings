@@ -374,7 +374,8 @@ public class Settings extends PreferenceActivity
         ProfilesSettings.class.getName(),
         PerformanceSettings.class.getName(),
         PolicyNativeFragment.class.getName(),
-        com.android.settings.cyanogenmod.PrivacySettings.class.getName()
+        com.android.settings.cyanogenmod.PrivacySettings.class.getName(),
+        com.android.settings.quicksettings.QuickSettingsTiles.class.getName()
     };
 
     @Override
@@ -1191,4 +1192,5 @@ public class Settings extends PreferenceActivity
     public static class ApnEditorActivity extends Settings { /* empty */ }
     public static class BlacklistSettingsActivity extends Settings { /* empty */ }
     public static class SystemSettingsActivity extends Settings { /* empty */ }
+    public static class QuickSettingsConfigActivity extends Settings { /* empty */ }
 }
