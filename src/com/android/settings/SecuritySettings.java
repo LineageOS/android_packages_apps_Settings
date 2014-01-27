@@ -84,10 +84,14 @@ public class SecuritySettings extends RestrictedSettingsFragment
     private static final String KEY_CREDENTIALS_INSTALL = "credentials_install";
     private static final String KEY_TOGGLE_INSTALL_APPLICATIONS = "toggle_install_applications";
     private static final String KEY_TOGGLE_VERIFY_APPLICATIONS = "toggle_verify_applications";
+    private static final String KEY_TOGGLE_DM_AUTOBOOT = "toggle_dm_autoboot";
     private static final String KEY_POWER_INSTANTLY_LOCKS = "power_button_instantly_locks";
     private static final String KEY_CREDENTIALS_MANAGER = "credentials_management";
     private static final String KEY_NOTIFICATION_ACCESS = "manage_notification_access";
     private static final String PACKAGE_MIME_TYPE = "application/vnd.android.package-archive";
+    private static final String DM_AUTOBOOT_SETTING = "dm_selfregist_autoboot";
+    private static final int DM_AUTOBOOT_SETTING_ENABLE = 1;
+    private static final int DM_AUTOBOOT_SETTING_DISABLE = 0;
 
     private PackageManager mPM;
     private DevicePolicyManager mDPM;
@@ -109,6 +113,7 @@ public class SecuritySettings extends RestrictedSettingsFragment
     private CheckBoxPreference mToggleVerifyApps;
     private CheckBoxPreference mPowerButtonInstantlyLocks;
     private CheckBoxPreference mEnableKeyguardWidgets;
+    private CheckBoxPreference mDMAutoBoot;
 
     private Preference mNotificationAccess;
 
@@ -380,9 +385,24 @@ public class SecuritySettings extends RestrictedSettingsFragment
             }
         }
 
+        mDMAutoBoot = (CheckBoxPreference) findPreference(KEY_TOGGLE_DM_AUTOBOOT);
+        if (mDMAutoBoot != null) {
+            if (getResources().getBoolean(R.bool.dm_autoboot_setting_visible)) {
+                mDMAutoBoot.setEnabled(true);
+                mDMAutoBoot.setChecked(isDMAutoboot());
+            } else {
+                if (deviceAdminCategory != null) {
+                    deviceAdminCategory.removePreference(mDMAutoBoot);
+                } else {
+                    mDMAutoBoot.setEnabled(false);
+                }
+            }
+        }
+
         if (shouldBePinProtected(RESTRICTIONS_PIN_SET)) {
             protectByRestrictions(mToggleAppInstallation);
             protectByRestrictions(mToggleVerifyApps);
+            protectByRestrictions(mDMAutoBoot);
             protectByRestrictions(mResetCredentials);
             protectByRestrictions(root.findPreference(KEY_CREDENTIALS_INSTALL));
         }
@@ -429,6 +449,17 @@ public class SecuritySettings extends RestrictedSettingsFragment
     private boolean showVerifierSetting() {
         return Settings.Global.getInt(getContentResolver(),
                                       Settings.Global.PACKAGE_VERIFIER_SETTING_VISIBLE, 1) > 0;
+    }
+
+    private boolean isDMAutoboot() {
+        int enable = Settings.Global.getInt(getContentResolver(), DM_AUTOBOOT_SETTING,
+                DM_AUTOBOOT_SETTING_ENABLE);
+        return (enable == DM_AUTOBOOT_SETTING_ENABLE);
+    }
+
+    private void setDMAutoboot(boolean enable) {
+        Settings.Global.putInt(getContentResolver(), DM_AUTOBOOT_SETTING,
+                enable?DM_AUTOBOOT_SETTING_ENABLE:DM_AUTOBOOT_SETTING_DISABLE);
     }
 
     private void warnAppInstallation() {
@@ -619,6 +650,8 @@ public class SecuritySettings extends RestrictedSettingsFragment
         } else if (KEY_TOGGLE_VERIFY_APPLICATIONS.equals(key)) {
             Settings.Global.putInt(getContentResolver(), Settings.Global.PACKAGE_VERIFIER_ENABLE,
                     mToggleVerifyApps.isChecked() ? 1 : 0);
+        } else if (KEY_TOGGLE_DM_AUTOBOOT.equals(key)) {
+            setDMAutoboot(mDMAutoBoot.isChecked());
         } else {
             // If we didn't handle it, let preferences handle it.
             return super.onPreferenceTreeClick(preferenceScreen, preference);
