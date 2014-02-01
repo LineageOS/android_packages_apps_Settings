@@ -46,7 +46,6 @@ import android.security.KeyStore;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
-import com.android.internal.telephony.util.BlacklistUtils;
 import com.android.internal.widget.LockPatternUtils;
 import com.android.settings.R;
 import com.android.settings.cyanogenmod.ButtonSettings;
@@ -94,7 +93,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
 
     // CyanogenMod Additions
     private static final String KEY_APP_SECURITY_CATEGORY = "app_security";
-    private static final String KEY_BLACKLIST = "blacklist";
     private static final String KEY_SMS_SECURITY_CHECK_PREF = "sms_security_check_limit";
     private static final String SLIDE_LOCK_TIMEOUT_DELAY = "slide_lock_timeout_delay";
     private static final String SLIDE_LOCK_SCREENOFF_DELAY = "slide_lock_screenoff_delay";
@@ -129,7 +127,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
     private boolean mIsPrimary;
 
     // CyanogenMod Additions
-    private PreferenceScreen mBlacklist;
     private ListPreference mSmsSecurityCheck;
     private ListPreference mSlideLockTimeoutDelay;
     private ListPreference mSlideLockScreenOffDelay;
@@ -273,8 +270,8 @@ public class SecuritySettings extends RestrictedSettingsFragment
                     findPreference(Settings.System.MENU_UNLOCK_SCREEN);
             CheckBoxPreference homeUnlock = (CheckBoxPreference)
                     findPreference(Settings.System.HOME_UNLOCK_SCREEN);
-            CheckBoxPreference vibratePref = (CheckBoxPreference)
-                    findPreference(Settings.System.LOCKSCREEN_VIBRATE_ENABLED);
+            CheckBoxPreference cameraUnlock = (CheckBoxPreference)
+                    findPreference(Settings.System.CAMERA_UNLOCK_SCREEN);
 
             final int deviceKeys = res.getInteger(
                     com.android.internal.R.integer.config_deviceHardwareKeys);
@@ -284,14 +281,9 @@ public class SecuritySettings extends RestrictedSettingsFragment
             // hide all lock options if lock screen set to NONE
             if (mLockPatternUtils.isLockScreenDisabled()) {
                 root.removePreference(additionalPrefs);
-            // hide the quick unlock and vibrate if using Pattern
+            // hide the quick unlock if using Pattern
             } else if (mLockPatternUtils.isLockPatternEnabled()) {
-                additionalPrefs.removePreference(vibratePref);
                 additionalPrefs.removePreference(quickUnlockScreen);
-            // hide vibrate on unlock options if using PIN/password
-            // as primary lock screen or as backup to biometric
-            } else if (mLockPatternUtils.isLockPasswordEnabled()) {
-                additionalPrefs.removePreference(vibratePref);
             // hide the quick unlock if its not using PIN/password
             // as a primary lock screen or as a backup to biometric
             } else {
@@ -305,6 +297,10 @@ public class SecuritySettings extends RestrictedSettingsFragment
             // Hide the HomeUnlock setting if no home button is available
             if ((deviceKeys & ButtonSettings.KEY_MASK_HOME) == 0) {
                 additionalPrefs.removePreference(homeUnlock);
+            }
+            // Hide the CameraUnlock setting if no camera button is available
+            if ((deviceKeys & ButtonSettings.KEY_MASK_CAMERA) == 0) {
+                additionalPrefs.removePreference(cameraUnlock);
             }
         }
 
@@ -405,7 +401,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
 
             // App security settings
             addPreferencesFromResource(R.xml.security_settings_app_cyanogenmod);
-            mBlacklist = (PreferenceScreen) root.findPreference(KEY_BLACKLIST);
             mSmsSecurityCheck = (ListPreference) root.findPreference(KEY_SMS_SECURITY_CHECK_PREF);
             // Determine options based on device telephony support
             if (pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY)) {
@@ -417,15 +412,8 @@ public class SecuritySettings extends RestrictedSettingsFragment
                 // No telephony, remove dependent options
                 PreferenceGroup appCategory = (PreferenceGroup)
                         root.findPreference(KEY_APP_SECURITY_CATEGORY);
-                appCategory.removePreference(mBlacklist);
                 appCategory.removePreference(mSmsSecurityCheck);
-            }
-
-            // WhisperPush
-            // Only add if device has telephony support and has WhisperPush installed.
-            if (pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY)
-                    && isPackageInstalled("org.whispersystems.whisperpush")) {
-                addPreferencesFromResource(R.xml.security_settings_whisperpush);
+                root.removePreference(appCategory);
             }
         }
 
@@ -564,7 +552,9 @@ public class SecuritySettings extends RestrictedSettingsFragment
     }
 
     private void updateSmsSecuritySummary(int selection) {
-        String message = getString(R.string.sms_security_check_limit_summary, selection);
+        String message = selection > 0
+                ? getString(R.string.sms_security_check_limit_summary, selection)
+                : getString(R.string.sms_security_check_limit_summary_none);
         mSmsSecurityCheck.setSummary(message);
     }
 
@@ -676,8 +666,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
         if (mResetCredentials != null) {
             mResetCredentials.setEnabled(!mKeyStore.isEmpty());
         }
-
-        updateBlacklistSummary();
     }
 
     @Override
@@ -821,13 +809,4 @@ public class SecuritySettings extends RestrictedSettingsFragment
         startActivity(intent);
     }
 
-    private void updateBlacklistSummary() {
-        if (mBlacklist != null) {
-            if (BlacklistUtils.isBlacklistEnabled(getActivity())) {
-                mBlacklist.setSummary(R.string.blacklist_summary);
-            } else {
-                mBlacklist.setSummary(R.string.blacklist_summary_disabled);
-            }
-        }
-    }
 }

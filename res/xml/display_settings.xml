@@ -78,6 +78,23 @@
             android:summary="@string/wake_when_plugged_or_unplugged_summary"
             android:defaultValue="false" />
 
+        <CheckBoxPreference
+            android:key="double_tap_wake_gesture"
+            android:title="@string/double_tap_to_wake_title"
+            android:defaultValue="false" />
+
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="screen_off_animation"
+            android:title="@string/screen_animation_off_title"
+            android:defaultValue="true" />
+
+        <ListPreference
+            android:key="screen_animation_style"
+            android:title="@string/screen_animation_style_title"
+            android:entries="@array/screen_animation_style_entries"
+            android:entryValues="@array/screen_animation_style_values"
+            android:dependency="screen_off_animation" />
+
         <PreferenceCategory
             android:key="lights_prefs"
             android:title="@string/lights_category_title">

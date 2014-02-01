@@ -138,6 +138,8 @@ public class AppOpsDetails extends Fragment {
                 }
                 ((TextView)view.findViewById(R.id.op_name)).setText(
                         entry.getSwitchText(mState));
+                ((TextView)view.findViewById(R.id.op_counts)).setText(
+                        entry.getCountsText(res));
                 ((TextView)view.findViewById(R.id.op_time)).setText(
                         entry.getTimeText(res, true));
                 Switch sw = (Switch)view.findViewById(R.id.switchWidget);
@@ -184,7 +186,7 @@ public class AppOpsDetails extends Fragment {
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.app_ops_details, container, false);
-        Utils.prepareCustomPreferencesList(container, view, view, false);
+        Utils.prepareCustomPreferencesList(container, view, view, true);
 
         mRootView = view;
         mOperationsSection = (LinearLayout)view.findViewById(R.id.operations_section);
