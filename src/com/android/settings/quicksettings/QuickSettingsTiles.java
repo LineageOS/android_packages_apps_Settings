@@ -16,12 +16,10 @@
 
 package com.android.settings.quicksettings;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.content.res.Resources.NotFoundException;
@@ -52,9 +50,6 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class QuickSettingsTiles extends Fragment {
-
-    private static final String EXTRA_SHOW_ADD_TILE_DLG =
-            "com.android.settings.quicksettings.EXTRA_SHOW_ADD_TILE_DLG";
 
     private static final int MENU_RESET = Menu.FIRST;
 
@@ -108,13 +103,6 @@ public class QuickSettingsTiles extends Fragment {
             mDragView.setColumnCount(columnCount);
         }
         mTileAdapter = new TileAdapter(getActivity(), mConfigRibbon);
-
-        // Should we open the add tile dialog?
-        Intent intent = getActivity().getIntent();
-        if (intent != null && intent.getBooleanExtra(EXTRA_SHOW_ADD_TILE_DLG, false)) {
-            showAddTileDialog();
-        }
-
         return mDragView;
     }
 
@@ -218,7 +206,25 @@ public class QuickSettingsTiles extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
                 if (arg2 != mDragView.getChildCount() - 1) return;
-                showAddTileDialog();
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle(R.string.tile_choose_title)
+                .setAdapter(mTileAdapter, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, final int position) {
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ArrayList<String> curr = QuickSettingsUtil.getTileListFromString(
+                                        QuickSettingsUtil.getCurrentTiles(getActivity(), mConfigRibbon));
+                                curr.add(mTileAdapter.getTileId(position));
+                                QuickSettingsUtil.saveCurrentTiles(getActivity(),
+                                        QuickSettingsUtil.getTileStringFromList(curr), mConfigRibbon);
+                            }
+                        }).start();
+                        TileInfo info = QuickSettingsUtil.TILES.get(mTileAdapter.getTileId(position));
+                        addTile(info.getTitleResId(), info.getIcon(), 0, true);
+                    }
+                });
+                builder.create().show();
             }
         });
 
@@ -266,28 +272,6 @@ public class QuickSettingsTiles extends Fragment {
         });
         alert.setNegativeButton(R.string.cancel, null);
         alert.create().show();
-    }
-
-    private void showAddTileDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle(R.string.tile_choose_title)
-            .setAdapter(mTileAdapter, new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, final int position) {
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            ArrayList<String> curr = QuickSettingsUtil.getTileListFromString(
-                                    QuickSettingsUtil.getCurrentTiles(getActivity(), mConfigRibbon));
-                            curr.add(mTileAdapter.getTileId(position));
-                            QuickSettingsUtil.saveCurrentTiles(getActivity(),
-                                    QuickSettingsUtil.getTileStringFromList(curr), mConfigRibbon);
-                        }
-                    }).start();
-                    TileInfo info = QuickSettingsUtil.TILES.get(mTileAdapter.getTileId(position));
-                    addTile(info.getTitleResId(), info.getIcon(), 0, true);
-                }
-        });
-        builder.create().show();
     }
 
     private static class TileAdapter extends ArrayAdapter<String> {
