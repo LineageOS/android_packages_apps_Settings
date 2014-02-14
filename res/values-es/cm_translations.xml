@@ -19,6 +19,10 @@
     <item quantity="one"><xliff:g id="seconds">%d</xliff:g> segundo</item>
     <item quantity="other"><xliff:g id="seconds">%d</xliff:g> segundos</item>
   </plurals>
+  <plurals name="app_ops_count">
+    <item quantity="one">una vez</item>
+    <item quantity="other">%d veces</item>
+  </plurals>
   <string name="wifi_setting_countrycode_title">Código de región Wi-Fi</string>
   <string name="wifi_setting_countrycode_summary">Especificar el código de región para Wi-Fi</string>
   <string name="wifi_setting_countrycode_error">Ocurrió un error al establecer el código de región</string>
@@ -390,6 +394,8 @@
   <string name="pref_purgeable_assets_summary">Purgar recursos de imágenes en memoria permite liberar más memoria cuando se necesite (requiere reiniciar)</string>
   <string name="pref_use_16bpp_alpha_title">Transparencia 16bit</string>
   <string name="pref_use_16bpp_alpha_summary">Ofrece mejor rendimiento gráfico a costa de una menor calidad gráfica. Adicionalmente, puede causar defectos visuales (requiere reiniciar)</string>
+  <string name="pref_force_highend_gfx_title">Forzar mejoras visuales</string>
+  <string name="pref_force_highend_gfx_summary">Habilitar efectos visuales de alta calidad, como transparencias en la barra de estado y de navegación (requiere reiniciar)</string>
   <string name="kill_app_longpress_back">Botón Volver</string>
   <string name="kill_app_longpress_back_summary">Cerrar aplicaciones mediante la pulsación prolongada del botón Volver</string>
   <string name="changelog_title">Registro de cambios</string>
@@ -711,10 +717,6 @@
   <string name="app_ops_allowed_count">Permitida <xliff:g id="count" example="2 times">%s</xliff:g></string>
   <string name="app_ops_ignored_count">Denegada <xliff:g id="count" example="2 times">%s</xliff:g></string>
   <string name="app_ops_both_count">Permitida <xliff:g id="count">%1$s</xliff:g>, denegada <xliff:g id="count">%2$s</xliff:g></string>
-  <plurals name="app_ops_count">
-    <item quantity="one">una vez</item>
-    <item quantity="other">%d veces</item>
-  </plurals>
   <string name="app_ops_show_user_apps">Aplicaciones de usuario</string>
   <string name="app_ops_show_system_apps">Aplicaciones de sistema</string>
   <string name="app_ops_reset_counters">Restablecer contadores</string>
