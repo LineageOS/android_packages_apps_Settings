@@ -157,7 +157,7 @@
 
     <!-- Sound volumes panel -->
     <string name="volume_ring_only_description">Ringtone</string>
-    <string name="link_volume_ringtones">Link ringtone &amp; notifications volumes</string>
+    <string name="link_volume_ringtones">Link ringtone \u0026 notifications volumes</string>
     <string name="link_volume_mutes">Silent mode affects notifications</string>
     <string name="volume_keys_control_ring_stream">Volume keys control ringtone volume</string>
 
@@ -175,7 +175,7 @@
     <string name="volume_overlay_none">None</string>
 
     <!-- Automatation and effects category -->
-    <string name="automation_effects_title">Automation &amp; Effects</string>
+    <string name="automation_effects_title">Automation \u0026 Effects</string>
 
     <!-- Convert sound to vibration toggle -->
     <string name="notification_convert_sound_to_vibration_title">Vibrate on notification</string>
@@ -196,7 +196,7 @@
     <string name="icon_picker_pack_title">Icon pack</string>
 
     <!-- Lights settings screen, notification light settings -->
-    <string name="display_lights_settings_title">Display &amp; lights</string>
+    <string name="display_lights_settings_title">Display \u0026 lights</string>
     <string name="lights_category_title">Lights</string>
     <string name="notification_pulse_title">Notification light</string>
     <string name="notification_light_general_title">General</string>
@@ -369,7 +369,7 @@
     <string name="cm_sound_mode_silent">Silent</string>
     <string name="cm_sound_mode_vibrate">Vibrate</string>
     <string name="cm_sound_mode_sound">Sound</string>
-    <string name="cm_sound_mode_soundVibrate">Sound &amp; Vibrate</string>
+    <string name="cm_sound_mode_soundVibrate">Sound \u0026 Vibrate</string>
 
     <!-- Reset tiles -->
     <string name="tiles_reset_title">Reset</string>
@@ -401,30 +401,7 @@
     <string name="auto_brightness_preview">Preview</string>
     <string name="auto_brightness_preview_dialog_title">Brightness curve preview</string>
     <string name="auto_brightness_help_dialog_title">Help</string>
-    <string name="auto_brightness_help_text"><b>How is brightness calculated?</b>
-\n\n
-The brightness curve is calculated by performing a <i>cubic spline interpolation</i>
-on a given number of <i>control points</i>. It\'s not a \'bucket-type\' calculation where
-screen brightness will stay constant for a specific range of ambient brightness. That way,
-small changes in ambient brightness do not cause a large jump in screen brightness; however,
-it can be a little hard to predict the exact consequences of changing control points.\n
-To help with that, a preview of the calculated curve can be examined. Please note that the
-preview shows the curve in <i>logarithmic</i> scale, so that all control points can be shown
-distinctively. When using a linear scale, it wouldn\'t be possible to distinguish the tendentially
-more important control points in the lower range of ambient brightness.
-\n\n
-<b>How to edit the brightness curve?</b>
-\n\n
-Each line in the brightness list corresponds to one <i>control point</i> of the
-brightness curve. To edit the brightness level of the point, you can use the slider
-present in each line. The screen brightness will be changed accordingly while touching
-the slider to give a preview of the light level.\n
-Additional options are available by long-pressing a line. By selecting \'Edit\', you can
-both edit the ambient brightness level of the control point as well as manually input the
-desired screen brightness. Selecting \'Split\' allows you to to duplicate one line into
-two in order to insert additional control points. \'Remove\' deletes the selected line.
-    </string>
-
+    <string name="auto_brightness_help_text"><b>How is brightness calculated?</b>\n\nThe brightness curve is calculated by performing a <i>cubic spline interpolation</i> on a given number of <i>control points</i>. It\u2018s not a \u2018bucket-type\u2019 calculation where screen brightness will stay constant for a specific range of ambient brightness. That way, small changes in ambient brightness do not cause a large jump in screen brightness; however, it can be a little hard to predict the exact consequences of changing control points.\nTo help with that, a preview of the calculated curve can be examined. Please note that the preview shows the curve in <i>logarithmic</i> scale, so that all control points can be shown distinctively. When using a linear scale, it wouldn\u2018t be possible to distinguish the tendentially more important control points in the lower range of ambient brightness.\n\n<b>How to edit the brightness curve?</b>\n\n Each line in the brightness list corresponds to one <i>control point</i> of the brightness curve. To edit the brightness level of the point, you can use the slider present in each line. The screen brightness will be changed accordingly while touching the slider to give a preview of the light level.\nAdditional options are available by long-pressing a line. By selecting \u2018Edit\u2019, you can both edit the ambient brightness level of the control point as well as manually input the desired screen brightness. Selecting \u2018Split\u2019 allows you to to duplicate one line into two in order to insert additional control points. \u2018Remove\u2019 deletes the selected line.</string>
     <string name="auto_brightness_sensitivity_title">Adjustment sensitivity</string>
     <string name="auto_brightness_sensitivity_verylow">Very low</string>
     <string name="auto_brightness_sensitivity_low">Low</string>
@@ -500,9 +477,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="anonymous_statistics_title">CyanogenMod statistics</string>
     <string name="anonymous_statistics_summary">Help make CyanogenMod better by opting into anonymous statistics reporting</string>
     <string name="anonymous_statistics_warning_title">About</string>
-    <string name="anonymous_statistics_warning">Opting into CyanogenMod Statistics will allow non-personal data to be submitted to the
-        developers of CyanogenMod to track unique installations across devices. The information submitted includes an unique identifier,
-        which does not compromise your privacy or personal data. The data is submitted during each boot.\n\nFor an example of the data that is submitted, tap on Preview Data.</string>
+    <string name="anonymous_statistics_warning">Opting into CyanogenMod Statistics will allow non-personal data to be submitted to the developers of CyanogenMod to track unique installations across devices. The information submitted includes an unique identifier, which does not compromise your privacy or personal data. The data is submitted during each boot.\n\nFor an example of the data that is submitted, tap on Preview Data.</string>
     <string name="enable_reporting_title">Enable reporting</string>
     <string name="preview_data_title">Preview data</string>
     <string name="preview_data_summary" translatable="false">%s</string>
@@ -510,7 +485,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="anonymous_learn_more">Learn more</string>
 
     <!-- Anonymous Statistics - Notification -->
-    <string name="anonymous_notification_desc">Enable or Disable CyanogenMod Statistics</string>
+    <string name="anonymous_notification_desc">Enable or disable CyanogenMod Statistics</string>
 
     <!-- Anonymous Statistics - Preview -->
     <string name="preview_id_title">Unique ID</string>
@@ -530,7 +505,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="performance_settings_title">Performance</string>
 
     <!-- Performance Settings : Warning dialog -->
-    <string name="performance_settings_warning_title">Proceed with Caution</string>
+    <string name="performance_settings_warning_title">Proceed with caution</string>
     <string name="performance_settings_warning">These settings are included for experimentation and any changes made to them have the potential to cause instability, crashes, data loss or hardware failures.\n\nWe request you do not file bug reports if any of these settings have been changed from the defaults.</string>
 
     <!-- Performance Settings : Set on boot option -->
@@ -584,7 +559,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Change Log strings -->
     <string name="changelog_title">View changelog</string>
-    <string name="changelog_loading">Loading changelog...</string>
+    <string name="changelog_loading">Loading changelog\u2026</string>
     <string name="changelog_error">Unable to load changelog</string>
     <string name="changelog_unknown">Unknown</string>
     <string name="changelog_version">Version</string>
@@ -682,7 +657,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!--  Other device settings -->
     <string name="more_device_controls_title">More\u2026</string>
     <string name="more_device_settings_title">Other device options</string>
-    <string name="sensors_motors_title">Sensors &amp; motors</string>
+    <string name="sensors_motors_title">Sensors \u0026 motors</string>
     <string name="display_calibration_title">Display calibration</string>
 
     <!-- Setting checkbox summary for displaying USB debugging notification -->
