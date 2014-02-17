@@ -609,7 +609,7 @@ public class Settings extends PreferenceActivity
                 if (!MSimTelephonyManager.getDefault().isMultiSimEnabled())
                     target.remove(header);
             } else if (id == R.id.global_roaming_settings) {
-                if (!getResources().getBoolean(R.bool.config_global_phone_enabled)) {
+                if (!getResources().getBoolean(R.bool.config_roamingsettings_enabled)) {
                     target.remove(header);
                 }
             }
