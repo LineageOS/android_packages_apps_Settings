@@ -580,10 +580,10 @@ public class BatteryHistoryChart extends View {
                     if (screenOn != lastScreenOn) {
                         if (screenOn) {
                             mScreenOnPath.moveTo(x, adjustHight(h,
-                                    mChargingOffset, mChargingPaint));
+                                    mScreenOnOffset, mScreenOnPaint));
                         } else {
                             mScreenOnPath.lineTo(x, adjustHight(h,
-                                    mChargingOffset, mChargingPaint));
+                                    mScreenOnOffset, mScreenOnPaint));
                         }
                         lastScreenOn = screenOn;
                     }
