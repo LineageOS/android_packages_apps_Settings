@@ -69,7 +69,7 @@
     <string name="profile_name_title">Name</string>
     <string name="profile_profile_name_prompt">Enter a name for the new profile</string>
     <string name="menu_new_profile">New profile</string>
-    <string name="new_profile_name">\u003Cnew profile\u003E</string>
+    <string name="new_profile_name">&lt;new profile&gt;</string>
 
     <!-- Rename Dialog -->
     <string name="rename_dialog_title">Rename</string>
@@ -157,7 +157,7 @@
 
     <!-- Sound volumes panel -->
     <string name="volume_ring_only_description">Ringtone</string>
-    <string name="link_volume_ringtones">Link ringtone \u0026 notifications volumes</string>
+    <string name="link_volume_ringtones">Link ringtone &amp; notifications volumes</string>
     <string name="link_volume_mutes">Silent mode affects notifications</string>
     <string name="volume_keys_control_ring_stream">Volume keys control ringtone volume</string>
 
@@ -175,7 +175,7 @@
     <string name="volume_overlay_none">None</string>
 
     <!-- Automatation and effects category -->
-    <string name="automation_effects_title">Automation \u0026 Effects</string>
+    <string name="automation_effects_title">Automation &amp; Effects</string>
 
     <!-- Convert sound to vibration toggle -->
     <string name="notification_convert_sound_to_vibration_title">Vibrate on notification</string>
@@ -196,7 +196,7 @@
     <string name="icon_picker_pack_title">Icon pack</string>
 
     <!-- Lights settings screen, notification light settings -->
-    <string name="display_lights_settings_title">Display \u0026 lights</string>
+    <string name="display_lights_settings_title">Display &amp; lights</string>
     <string name="lights_category_title">Lights</string>
     <string name="notification_pulse_title">Notification light</string>
     <string name="notification_light_general_title">General</string>
@@ -369,7 +369,7 @@
     <string name="cm_sound_mode_silent">Silent</string>
     <string name="cm_sound_mode_vibrate">Vibrate</string>
     <string name="cm_sound_mode_sound">Sound</string>
-    <string name="cm_sound_mode_soundVibrate">Sound \u0026 Vibrate</string>
+    <string name="cm_sound_mode_soundVibrate">Sound &amp; Vibrate</string>
 
     <!-- Reset tiles -->
     <string name="tiles_reset_title">Reset</string>
@@ -401,7 +401,30 @@
     <string name="auto_brightness_preview">Preview</string>
     <string name="auto_brightness_preview_dialog_title">Brightness curve preview</string>
     <string name="auto_brightness_help_dialog_title">Help</string>
-    <string name="auto_brightness_help_text"><b>How is brightness calculated?</b>\n\nThe brightness curve is calculated by performing a <i>cubic spline interpolation</i> on a given number of <i>control points</i>. It\u0027s not a \u2018bucket-type\u2019 calculation where screen brightness will stay constant for a specific range of ambient brightness. That way, small changes in ambient brightness do not cause a large jump in screen brightness; however, it can be a little hard to predict the exact consequences of changing control points.\nTo help with that, a preview of the calculated curve can be examined. Please note that the preview shows the curve in <i>logarithmic</i> scale, so that all control points can be shown distinctively. When using a linear scale, it wouldn\u0027t be possible to distinguish the tendentially more important control points in the lower range of ambient brightness.\n\n<b>How to edit the brightness curve?</b>\n\nEach line in the brightness list corresponds to one <i>control point</i> of the brightness curve. To edit the brightness level of the point, you can use the slider present in each line. The screen brightness will be changed accordingly while touching the slider to give a preview of the light level.\nAdditional options are available by long-pressing a line. By selecting \u2018Edit\u2019, you can both edit the ambient brightness level of the control point as well as manually input the desired screen brightness. Selecting \u2018Split\u2019 allows you to to duplicate one line into two in order to insert additional control points. \u2018Remove\u2019 deletes the selected line.</string>
+    <string name="auto_brightness_help_text"><b>How is brightness calculated?</b>
+\n\n
+The brightness curve is calculated by performing a <i>cubic spline interpolation</i>
+on a given number of <i>control points</i>. It\'s not a \'bucket-type\' calculation where
+screen brightness will stay constant for a specific range of ambient brightness. That way,
+small changes in ambient brightness do not cause a large jump in screen brightness; however,
+it can be a little hard to predict the exact consequences of changing control points.\n
+To help with that, a preview of the calculated curve can be examined. Please note that the
+preview shows the curve in <i>logarithmic</i> scale, so that all control points can be shown
+distinctively. When using a linear scale, it wouldn\'t be possible to distinguish the tendentially
+more important control points in the lower range of ambient brightness.
+\n\n
+<b>How to edit the brightness curve?</b>
+\n\n
+Each line in the brightness list corresponds to one <i>control point</i> of the
+brightness curve. To edit the brightness level of the point, you can use the slider
+present in each line. The screen brightness will be changed accordingly while touching
+the slider to give a preview of the light level.\n
+Additional options are available by long-pressing a line. By selecting \'Edit\', you can
+both edit the ambient brightness level of the control point as well as manually input the
+desired screen brightness. Selecting \'Split\' allows you to to duplicate one line into
+two in order to insert additional control points. \'Remove\' deletes the selected line.
+    </string>
+
     <string name="auto_brightness_sensitivity_title">Adjustment sensitivity</string>
     <string name="auto_brightness_sensitivity_verylow">Very low</string>
     <string name="auto_brightness_sensitivity_low">Low</string>
@@ -477,7 +500,9 @@
     <string name="anonymous_statistics_title">CyanogenMod statistics</string>
     <string name="anonymous_statistics_summary">Help make CyanogenMod better by opting into anonymous statistics reporting</string>
     <string name="anonymous_statistics_warning_title">About</string>
-    <string name="anonymous_statistics_warning">Opting into CyanogenMod Statistics will allow non-personal data to be submitted to the developers of CyanogenMod to track unique installations across devices. The information submitted includes an unique identifier, which does not compromise your privacy or personal data. The data is submitted during each boot.\n\nFor an example of the data that is submitted, tap on Preview Data.</string>
+    <string name="anonymous_statistics_warning">Opting into CyanogenMod Statistics will allow non-personal data to be submitted to the
+        developers of CyanogenMod to track unique installations across devices. The information submitted includes an unique identifier,
+        which does not compromise your privacy or personal data. The data is submitted during each boot.\n\nFor an example of the data that is submitted, tap on Preview Data.</string>
     <string name="enable_reporting_title">Enable reporting</string>
     <string name="preview_data_title">Preview data</string>
     <string name="preview_data_summary" translatable="false">%s</string>
@@ -657,7 +682,7 @@
     <!--  Other device settings -->
     <string name="more_device_controls_title">More\u2026</string>
     <string name="more_device_settings_title">Other device options</string>
-    <string name="sensors_motors_title">Sensors \u0026 motors</string>
+    <string name="sensors_motors_title">Sensors &amp; motors</string>
     <string name="display_calibration_title">Display calibration</string>
 
     <!-- Setting checkbox summary for displaying USB debugging notification -->
@@ -923,7 +948,7 @@
 
     <!-- Message of dialog confirming that user wants to restart their device with a new runtime -->
     <string name="custom_runtime_warning_title">Warning</string>
-    <string name="custom_runtime_warning_message">ART is not supported by CyanogenMod. This setting is included for experimentation only and has the potential to cause instability, crashes, data loss or prevent the proper boot of your device. Visit \u003Ca href=\"http://source.android.com/devices/tech/dalvik/art.html\"\u003EIntroducing ART\u003C/a\u003E for more information.\u003Cbr/\u003E\u003Cbr/\u003EWe request you do not file bug reports if you have enabled ART as your runtime.\u003Cbr/\u003E\u003Cbr/\u003EAre you sure you want to reboot to change runtime from <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> to <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
+    <string name="custom_runtime_warning_message">ART is not supported by CyanogenMod. This setting is included for experimentation only and has the potential to cause instability, crashes, data loss or prevent the proper boot of your device. Visit &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; for more information.&lt;br/&gt;&lt;br/&gt;We request you do not file bug reports if you have enabled ART as your runtime.&lt;br/&gt;&lt;br/&gt;Are you sure you want to reboot to change runtime from <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> to <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
 
     <!-- GPS download data over wi-fi only -->
     <string name="gps_download_data_wifi_only">Download GPS assisted data only over Wi-Fi networks</string>
