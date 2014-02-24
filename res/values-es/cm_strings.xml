@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2012-2013 The CyanogenMod Project
+     Copyright (C) 2012-2014 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -140,6 +140,7 @@
     <string name="icon_picker_pack_title">Paquete de iconos</string>
     <string name="display_lights_settings_title">Pantalla y leds</string>
     <string name="lights_category_title">Leds</string>
+    <string name="notification_pulse_title">Indicador de notificación</string>
     <string name="notification_light_general_title">General</string>
     <string name="notification_light_applist_title">Aplicaciones</string>
     <string name="notification_light_phonelist_title">Teléfono</string>
@@ -300,7 +301,8 @@
     <string name="auto_brightness_preview">Previsualizar</string>
     <string name="auto_brightness_preview_dialog_title">Curva de brillo</string>
     <string name="auto_brightness_help_dialog_title">Ayuda</string>
-    <string name="auto_brightness_help_text"><b>¿Cómo se calcula el nivel de brillo?</b>
+    <string name="auto_brightness_help_text">
+<b>¿Cómo se calcula el nivel de brillo?</b>
 \n\n
 La curva de brillo es calculada mediante el uso de una <i>interpolación segmentaria cúbica</i>
 bajo un número dado de <i>puntos de control</i>. No se trata de un cálculo lineal, donde
@@ -409,6 +411,8 @@ podrás crear una nueva línea con el fin de insertar puntos de control adiciona
     <string name="pref_purgeable_assets_summary">Purgar recursos de imágenes en memoria permite liberar más memoria cuando se necesite (requiere reiniciar)</string>
     <string name="pref_use_16bpp_alpha_title">Transparencia 16bit</string>
     <string name="pref_use_16bpp_alpha_summary">Ofrece mejor rendimiento gráfico a costa de una menor calidad gráfica. Adicionalmente, puede causar defectos visuales (requiere reiniciar)</string>
+    <string name="pref_force_highend_gfx_title">Forzar mejoras visuales</string>
+    <string name="pref_force_highend_gfx_summary">Habilitar efectos visuales de alta calidad, como transparencias en la barra de estado y de navegación (requiere reiniciar)</string>
     <string name="kill_app_longpress_back">Botón Volver</string>
     <string name="kill_app_longpress_back_summary">Cerrar aplicaciones mediante la pulsación prolongada del botón Volver</string>
     <string name="changelog_title">Registro de cambios</string>
@@ -433,6 +437,7 @@ podrás crear una nueva línea con el fin de insertar puntos de control adiciona
     <string name="privacy_guard_filter_does_not_match">No hay aplicaciones instaladas con permisos relevantes</string>
     <string name="privacy_guard_help_title">Ayuda</string>
     <string name="privacy_guard_reset_title">Restablecer</string>
+    <string name="privacy_guard_reset_text">¿Restablecer permisos?</string>
     <string name="privacy_guard_help_text">En esta pantalla podrás elegir las aplicaciones para las que activar la privacidad, tan solo con tocar sobre ellas. Las aplicaciones seleccionadas no podrán acceder a los datos personales, tales como contactos, mensajes o registros de llamadas. Una pulsación larga mostrará los detalles de la aplicación.\n\nPor defecto, las aplicaciones del sistema no están visibles. Si deseas mostrarlas o filtrar aquellas que definen permisos de acceso a los datos personales, selecciona la opción correspondiente en el menú.</string>
     <string name="privacy_guard_manager_show_system_apps">Aplicaciones del sistema</string>
     <string name="privacy_guard_manager_filter_permissions">Filtrar permisos</string>
@@ -573,6 +578,8 @@ podrás crear una nueva línea con el fin de insertar puntos de control adiciona
     <string name="lockscreen_buttons_sleep">Bloquear</string>
     <string name="navigation_bar_category">Barra de navegación</string>
     <string name="navigation_bar_title">Botones y disposición</string>
+    <string name="navigation_bar_left_title">Modo para zurdos</string>
+    <string name="navigation_bar_left_summary">Situar la barra de navegación a la izquierda de la pantalla en el modo apaisado</string>
     <string name="navigation_bar_help_text">1 - Para empezar a editar, tocar el candado.\n\n2 - Tocar cualquier botón para asignar o cambiar una acción.\n\n3 - Mantener presionado un botón para reorganizar.\n\n4 - Para guardar, tocar el candado nuevamente.\n\n5 - Para restaurar la configuración por defecto, tocar el icono de restablecer.\n\n</string>
     <string name="navigation_bar_tips">\u2022 Solo se puede asignar una acción a un botón a la vez.\n\n\u2022 El botón de inicio no puede ser reasignado.\n\n\u2022 Los botones laterales, no pueden ser reorganizados.</string>
     <string name="navigation_bar_tips_title">Consejos rápidos</string>
@@ -682,7 +689,7 @@ podrás crear una nueva línea con el fin de insertar puntos de control adiciona
     <string name="whisperpush_registration_summary">Registrarse en WhisperPush para habilitar el cifrado de SMS.</string>
     <string name="whisperpush_identitykey_title">Revisar claves identificativas</string>
     <string name="custom_runtime_warning_title">Aviso</string>
-    <string name="custom_runtime_warning_message">ART no está soportado por CyanogenMod. Este ajuste ha sido incluido solamente para fines experimentales y puede causar inestabilidad, bloqueos, pérdida de datos e incluso impedir el correcto inicio del dispositivo. Para más información visita &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducción a ART&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;No aceptaremos archivos de informe de errores si has habilitado ART.&lt;br/&gt;&lt;br/&gt;¿Estás seguro de que quieres reiniciar para cambiar el tiempo de ejecución de <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> a <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
+    <string name="custom_runtime_warning_message">ART no está soportado por CyanogenMod. Este ajuste ha sido incluido solamente para fines experimentales y puede causar inestabilidad, bloqueos, pérdida de datos e incluso impedir el correcto inicio del dispositivo. Para más información visita &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;Te pedimos que no envíes archivos de informe de errores si has habilitado ART.&lt;br/&gt;&lt;br/&gt;¿Estás seguro de que quieres reiniciar para cambiar el tiempo de ejecución de <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> a <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
     <string name="gps_download_data_wifi_only">Descargar datos del GPS asistido solo en redes Wi-Fi</string>
     <string name="battery_info_status_charging_dock_ac">(BaseAC)</string>
     <string name="battery_info_status_charging_dock_usb">(BaseUSB)</string>
@@ -713,8 +720,30 @@ podrás crear una nueva línea con el fin de insertar puntos de control adiciona
     <string name="stylus_app_not_installed">%s no está instalada</string>
     <string name="ime_switcher_notify">Selector en notificaciones</string>
     <string name="ime_switcher_notify_summary">Muestra el selector de método de entrada de texto en la barra de notificaciones</string>
+    <string name="app_ops_summaries_wifi_change">cambiar el estado de Wi-Fi</string>
+    <string name="app_ops_labels_wifi_change">Controlar Wi-Fi</string>
+    <string name="app_ops_summaries_bluetooth_change">cambiar el estado de Bluetooth</string>
+    <string name="app_ops_labels_bluetooth_change">Controlar Bluetooth</string>
+    <string name="app_ops_summaries_data_change">cambiar la conexión de red</string>
+    <string name="app_ops_labels_data_change">Controlar conexión de red</string>
+    <string name="app_ops_summaries_alarm_wakeup">despertar el dispositivo</string>
+    <string name="app_ops_labels_alarm_wakeup">Despertar</string>
+    <string name="app_ops_summaries_auto_start">ejecutarse automáticamente</string>
+    <string name="app_ops_labels_auto_start">Inicio automático</string>
+    <string name="app_ops_categories_bootup">Ejecución</string>
+    <string name="app_ops_entry_summary"><xliff:g id="op">%1$s</xliff:g> (usada <xliff:g id="count">%2$s</xliff:g>)</string>
+    <string name="app_ops_allowed_count">Permitida <xliff:g id="count" example="2 times">%s</xliff:g></string>
+    <string name="app_ops_ignored_count">Denegada <xliff:g id="count" example="2 times">%s</xliff:g></string>
+    <string name="app_ops_both_count">Permitida <xliff:g id="count">%1$s</xliff:g>, denegada <xliff:g id="count">%2$s</xliff:g></string>
+    <string name="app_ops_show_user_apps">Aplicaciones de usuario</string>
+    <string name="app_ops_show_system_apps">Aplicaciones de sistema</string>
+    <string name="app_ops_reset_counters">Restablecer contadores</string>
+    <string name="app_ops_reset_confirm_title">Restablecer contadores</string>
+    <string name="app_ops_reset_confirm_mesg">¿Estás seguro de que quieres restablecer los contadores de operaciones de aplicaciones?</string>
+    <string name="edge_gesture_service_title">Bloquear eventos táctiles</string>
+    <string name="edge_gesture_service_summary">No enviar a las aplicaciones eventos táctiles de la barra de estado y navegación</string>
 
-    <!-- AOSP -->
+    <!-- AOSP/CAF -->
     <string name="intent_sender_data_label"><xliff:g id="data">Datos:</xliff:g></string>
     <string name="bluetooth_enter_pin_msg_hs">\nEscribe el PIN para vincular con \u00AB<xliff:g id="device_name">%1$s</xliff:g>\u00BB. (Seguridad alta habilitada: Es necesaria una clave de 16 caracteres)</string>
     <string name="bluetooth_profile_sap">Acceso a SIM</string>
