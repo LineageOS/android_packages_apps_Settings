@@ -37,6 +37,7 @@ import static com.android.internal.util.cm.QSConstants.TILE_PERFORMANCE_PROFILE;
 import static com.android.internal.util.cm.QSConstants.TILE_QUIETHOURS;
 import static com.android.internal.util.cm.QSConstants.TILE_RINGER;
 import static com.android.internal.util.cm.QSConstants.TILE_SCREENTIMEOUT;
+import static com.android.internal.util.cm.QSConstants.TILE_SOUNDRECORDER;
 import static com.android.internal.util.cm.QSConstants.TILE_SETTINGS;
 import static com.android.internal.util.cm.QSConstants.TILE_SLEEP;
 import static com.android.internal.util.cm.QSConstants.TILE_SYNC;
@@ -126,6 +127,9 @@ public class QuickSettingsUtil {
         registerTile(new QuickSettingsUtil.TileInfo(
                 TILE_SCREENTIMEOUT, R.string.title_tile_screen_timeout,
                 "com.android.systemui:drawable/ic_qs_screen_timeout_on"));
+        registerTile(new QuickSettingsUtil.TileInfo(
+                TILE_SOUNDRECORDER, R.string.title_tile_soundrecorder,
+                "com.android.systemui:drawable/ic_qs_soundrecorder_on"));
         registerTile(new QuickSettingsUtil.TileInfo(
                 TILE_SETTINGS, R.string.title_tile_settings,
                 "com.android.systemui:drawable/ic_qs_settings"));
