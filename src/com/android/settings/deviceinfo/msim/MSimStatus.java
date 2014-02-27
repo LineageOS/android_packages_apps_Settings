@@ -224,7 +224,7 @@ public class MSimStatus extends PreferenceActivity {
 
     private String getMultiSimName(int subscription) {
         return Settings.System.getString(getContentResolver(),
-                MULTI_SIM_NAME + subscription);
+                MULTI_SIM_NAME + (subscription + 1));
     }
 
     private Handler mHandler;
@@ -424,9 +424,6 @@ public class MSimStatus extends PreferenceActivity {
                     if ("br".equals(mTelephonyManager.getSimCountryIso(i))) {
                         mShowLatestAreaInfo[i] = true;
                     }
-                    if (!mShowLatestAreaInfo[i]) {
-                        removePreferenceFromScreen(KEY_LATEST_AREA_INFO);
-                    }
                 }
             }
             setMSimSummary(KEY_PRL_VERSION, mPrlVersionSummary);
@@ -445,6 +442,15 @@ public class MSimStatus extends PreferenceActivity {
                         MSimTelephonyManager.getDefault().getDefaultSubscription(), null);
             setSummaryText(KEY_BASEBAND_VERSION,basebandVersionSummery);
 
+            boolean needRemoveAreaInfo = true;
+            for (boolean showLatestAreaInfo : mShowLatestAreaInfo) {
+                if (showLatestAreaInfo) {
+                    needRemoveAreaInfo = false;
+                }
+            }
+            if(needRemoveAreaInfo){
+                removePreferenceFromScreen(KEY_LATEST_AREA_INFO);
+            }
         }
     }
 
