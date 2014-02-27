@@ -117,12 +117,18 @@ final class A2dpProfile implements LocalBluetoothProfile {
     }
 
     public boolean connect(BluetoothDevice device) {
+        boolean peer_has_sink, peer_has_src;
         if (mService == null) return false;
-        //Check if remote device supports AudioSink
-        if (!BluetoothUuid.isUuidPresent(device.getUuids(), BluetoothUuid.AudioSink)) {
-            Log.d(TAG,"Remote device doesn't support A2dpSink, Ignoring");
+        //Check if remote device supports AudioProfiles
+        peer_has_sink = (BluetoothUuid.isUuidPresent(device.getUuids(), BluetoothUuid.AudioSink));
+        peer_has_src = (BluetoothUuid.isUuidPresent(device.getUuids(), BluetoothUuid.AudioSource));
+        if ((peer_has_sink) || (peer_has_src)) {
+            Log.d(TAG,"Peer has Src: " + peer_has_src + " Peer has Sink: " + peer_has_sink);
+        } else {
+            Log.d(TAG,"Remote device support does not support Src/Sink, ignoring");
             return false;
         }
+
         List<BluetoothDevice> sinks = getConnectedDevices();
         if (sinks != null) {
             for (BluetoothDevice sink : sinks) {
