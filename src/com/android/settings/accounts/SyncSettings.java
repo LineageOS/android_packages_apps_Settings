@@ -34,6 +34,7 @@ import android.util.Log;
 import com.android.settings.AccountPreference;
 import com.android.settings.DialogCreatable;
 import com.android.settings.R;
+import com.android.settings.Settings;
 
 import java.util.ArrayList;
 
@@ -152,7 +153,7 @@ public class SyncSettings extends AccountPreferenceBase
                 }
             }
 
-            if (showAccount) {
+            if (showAccount && Settings.showAccount(getActivity(), account.type)) {
                 final Drawable icon = getDrawableForType(account.type);
                 final AccountPreference preference =
                         new AccountPreference(getActivity(), account, icon, auths, true);

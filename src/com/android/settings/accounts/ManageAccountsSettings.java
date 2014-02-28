@@ -45,6 +45,7 @@ import android.widget.TextView;
 
 import com.android.settings.AccountPreference;
 import com.android.settings.R;
+import com.android.settings.Settings;
 import com.android.settings.Utils;
 import com.android.settings.location.LocationSettings;
 
@@ -342,7 +343,7 @@ public class ManageAccountsSettings extends AccountPreferenceBase
                 }
             }
 
-            if (showAccount) {
+            if (showAccount && Settings.showAccount(getActivity(), account.type)) {
                 final Drawable icon = getDrawableForType(account.type);
                 final AccountPreference preference =
                         new AccountPreference(getActivity(), account, icon, auths, false);
