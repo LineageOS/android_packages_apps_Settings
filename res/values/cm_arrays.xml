@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2012-2013 The CyanogenMod Project
+     Copyright (C) 2012-2014 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -251,6 +251,20 @@
 
     <!-- Values for profile lock mode. Do not translate. -->
     <string-array name="profile_lockmode_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <!-- Profile expanded desktop mode options. Do not translate. -->
+    <string-array name="profile_expanded_desktop_entries" translatable="false">
+        <item>@string/profile_lockmode_default</item>
+        <item>@string/connection_state_enabled</item>
+        <item>@string/connection_state_disabled</item>
+    </string-array>
+
+    <!-- Values for profile expanded desktop mode. Do not translate. -->
+    <string-array name="profile_expanded_desktop_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
@@ -649,11 +663,11 @@
         <item>Read calendar</item>
         <item>Modify calendar</item>
         <item>Location</item>
-        <item>Post notification</item>
+        <item>Notification/Toast</item>
         <item>Location</item>
         <item>Call phone</item>
-        <item>Receive SMS/MMS</item>
-        <item>Send SMS/MMS</item>
+        <item>Read SMS DB</item>
+        <item>Write SMS DB</item>
         <item>Receive SMS/MMS</item>
         <item>Receive SMS/MMS</item>
         <item>Receive SMS/MMS</item>

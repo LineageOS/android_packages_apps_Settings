@@ -472,6 +472,9 @@ jednotlivě měnit a tím zvětšit počet řídících bodů. \'Odstranit\' sma
     <string name="pref_use_16bpp_alpha_title">16bit průhlednost</string>
     <string name="pref_use_16bpp_alpha_summary">Lepší výkon posouvání, ale může způsobit rozsypání obrazu (vyžaduje restart)</string>
 
+    <string name="pref_force_highend_gfx_title">Vynutit nejkvalitnější grafiku</string>
+    <string name="pref_force_highend_gfx_summary">Povolit nejkvalitnější vizuální efekty - například průhlednou stavovou/navigační lištu (vyžaduje pokročilý grafický čip a také restart)</string>
+
     <string name="kill_app_longpress_back">Vynucené ukončení aplikace</string>
     <string name="kill_app_longpress_back_summary">Dlouhým stiskem tlačítka zpět se provede ukončení aplikace na popředí.</string>
 
@@ -502,6 +505,7 @@ jednotlivě měnit a tím zvětšit počet řídících bodů. \'Odstranit\' sma
     <string name="privacy_guard_filter_does_not_match">Není naisntalována žádná aplikace s příslušným oprávněním</string>
     <string name="privacy_guard_help_title">Nápověda</string>
     <string name="privacy_guard_reset_title">Obnovit</string>
+    <string name="privacy_guard_reset_text">Obnovit oprávnění?</string>
     <string name="privacy_guard_help_text">Na této obrazovce můžete vybrat, která aplikace má být sledována Ochranou soukromí. Zvolené aplikace nebudou mít umožněno přistupovat k soukromím údajům, jako jsou kontakty, zprávy nebo seznamy hovorů. Dlouhým stiskem na dané aplikaci se zobrazí její systémové informace.\n\nVe výchozím stavu se systémové aplikace nezobrazují. Pokud chcete zobrazit i systémové aplikace, vyberte danou volbu z nabídky.</string>
     <string name="privacy_guard_manager_show_system_apps">Zobrazit systémové aplikace</string>
     <string name="privacy_guard_manager_filter_permissions">Filtr oprávnění</string>
@@ -656,6 +660,8 @@ jednotlivě měnit a tím zvětšit počet řídících bodů. \'Odstranit\' sma
 
     <string name="navigation_bar_category">Navigační lišta</string>
     <string name="navigation_bar_title">Tlačítka a rozmístění</string>
+    <string name="navigation_bar_left_title">Režim levé ruky</string>
+    <string name="navigation_bar_left_summary">Při natočení na šířku umístit navigační lištu na levé straně obrazovky</string>
     <string name="navigation_bar_help_text">1 - chcete-li začít upravovat, klepněte na ikonu zámku\n\n2 - stiskněte jakékoli tlačítko pro přiřazení nebo změnu funkce\n\n3 - dlouhým stisknutím libovolného tlačítka změníte jeho pořadí\n\n4 - chcete-li stav uložit, klepněte znovu na ikonu zámku\n\n5 - chcete-li obnovit výchozí nastavení, klepněte na ikonu resetu\n\n</string>
     <string name="navigation_bar_tips">\u2022  Pro každou akci může být přiděleno pouze jedno tlačítko\n\n\u2022 Tlačítko Domů nemůže být předefinováno\n\n\u2022 Boční tlačítka nemohou být změněna</string>
     <string name="navigation_bar_tips_title">Rychlé tipy</string>
@@ -819,4 +825,28 @@ jednotlivě měnit a tím zvětšit počet řídících bodů. \'Odstranit\' sma
 
     <string name="ime_switcher_notify">Výběr oznámení</string>
     <string name="ime_switcher_notify_summary">Zobrazit vstupní metody výběru oznámení</string>
+
+    <string name="app_ops_summaries_wifi_change">změna wifi</string>
+    <string name="app_ops_labels_wifi_change">Změna Wi-Fi</string>
+    <string name="app_ops_summaries_bluetooth_change">změna bluetooth</string>
+    <string name="app_ops_labels_bluetooth_change">Změna Bluetooth</string>
+    <string name="app_ops_summaries_data_change">změna typu dat. připojení</string>
+    <string name="app_ops_labels_data_change">Změna typu dat. připojení</string>
+    <string name="app_ops_summaries_alarm_wakeup">probudit</string>
+    <string name="app_ops_labels_alarm_wakeup">Probudit</string>
+    <string name="app_ops_summaries_auto_start">spustit při startu</string>
+    <string name="app_ops_labels_auto_start">Spustit při startu</string>
+
+    <string name="app_ops_categories_bootup">Při startu</string>
+
+    <string name="app_ops_entry_summary"><xliff:g id="op">%1$s</xliff:g> (použito <xliff:g id="count">%2$s</xliff:g>)</string>
+    <string name="app_ops_allowed_count">Povoleno <xliff:g id="count" example="2 times">%s</xliff:g></string>
+    <string name="app_ops_ignored_count">Zakázáno <xliff:g id="count" example="2 times">%s</xliff:g></string>
+    <string name="app_ops_both_count">Povoleno <xliff:g id="count">%1$s</xliff:g>, zakázáno <xliff:g id="count">%2$s</xliff:g></string>
+
+    <string name="app_ops_show_user_apps">Zobrazit uživatelské aplikace</string>
+    <string name="app_ops_show_system_apps">Zobrazit systémové aplikace</string>
+    <string name="app_ops_reset_counters">Vynulovat počítadla povoleno/zakázano</string>
+    <string name="app_ops_reset_confirm_title">Potvrdit nulování počítadel</string>
+    <string name="app_ops_reset_confirm_mesg">Opravdu chcete vynulovat AppOps počítadla?</string>
 </resources>
