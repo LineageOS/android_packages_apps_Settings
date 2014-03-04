@@ -24,6 +24,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.os.SystemProperties;
 import android.preference.DialogPreference;
 import android.provider.Settings;
 import android.util.AttributeSet;
@@ -71,8 +72,7 @@ public class ButtonBacklightBrightness extends DialogPreference implements
             boolean isSingleValue = !context.getResources().getBoolean(
                     com.android.internal.R.bool.config_deviceHasVariableButtonBrightness);
 
-            int defaultBrightness = context.getResources().getInteger(
-                    com.android.internal.R.integer.config_buttonBrightnessSettingDefault);
+            int defaultBrightness = getButtonBrighnessSettingDefault();
 
             mButtonBrightness = new BrightnessControl(
                     Settings.System.BUTTON_BRIGHTNESS, isSingleValue, defaultBrightness);
@@ -210,12 +210,26 @@ public class ButtonBacklightBrightness extends DialogPreference implements
         }
     }
 
+    private int getButtonBrighnessSettingDefault()
+    {
+        int buttonBrightnessDefault = getContext().getResources().getInteger(
+                com.android.internal.R.integer.config_buttonBrightnessSettingDefault);
+        int buttonBrightnessOverride = SystemProperties.getInt("ro.config.btnbrightness", -1);
+        if (buttonBrightnessOverride > 0) {
+            buttonBrightnessDefault = buttonBrightnessOverride;
+        }
+        return buttonBrightnessDefault;
+    }
+
     public boolean isButtonSupported() {
         final Resources res = getContext().getResources();
         boolean hasAnyKey = res.getInteger(
                 com.android.internal.R.integer.config_deviceHardwareKeys) != 0;
-        boolean hasBacklight = res.getInteger(
-                com.android.internal.R.integer.config_buttonBrightnessSettingDefault) > 0;
+        int deviceKeysOverride = SystemProperties.getInt("ro.config.devicehwkeys", -1);
+        if (deviceKeysOverride > 0) {
+            hasAnyKey = true;
+        }
+        boolean hasBacklight = getButtonBrighnessSettingDefault() > 0;
 
         return hasAnyKey && hasBacklight;
     }

@@ -19,6 +19,7 @@ package com.android.settings.cyanogenmod;
 import android.content.ContentResolver;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.SystemProperties;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -97,8 +98,14 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         final ContentResolver resolver = getActivity().getContentResolver();
         final PreferenceScreen prefScreen = getPreferenceScreen();
 
-        final int deviceKeys = getResources().getInteger(
+        int deviceKeys = getResources().getInteger(
                 com.android.internal.R.integer.config_deviceHardwareKeys);
+
+        // Check system properties for overrides
+        int deviceKeysOverride = SystemProperties.getInt("ro.config.devicehwkeys", -1);
+        if (deviceKeysOverride > 0) {
+            deviceKeys = deviceKeysOverride;
+        }
         final boolean hasHomeKey = (deviceKeys & KEY_MASK_HOME) != 0;
         final boolean hasMenuKey = (deviceKeys & KEY_MASK_MENU) != 0;
         final boolean hasAssistKey = (deviceKeys & KEY_MASK_ASSIST) != 0;
