@@ -38,12 +38,15 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.SystemProperties;
+import android.os.storage.StorageManager;
+import android.os.storage.StorageVolume;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.webkit.WebView;
@@ -73,6 +76,7 @@ public class TetherSettings extends SettingsPreferenceFragment
     private CheckBoxPreference mEnableWifiAp;
 
     private CheckBoxPreference mBluetoothTether;
+    private StorageManager mStorageManager = null;
 
     private BroadcastReceiver mTetherChangeReceiver;
 
@@ -128,6 +132,7 @@ public class TetherSettings extends SettingsPreferenceFragment
         mUsbTether = (CheckBoxPreference) findPreference(USB_TETHER_SETTINGS);
         mBluetoothTether = (CheckBoxPreference) findPreference(ENABLE_BLUETOOTH_TETHERING);
 
+        mStorageManager = (StorageManager)getSystemService(Context.STORAGE_SERVICE);
         ConnectivityManager cm =
                 (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
 
@@ -265,8 +270,25 @@ public class TetherSettings extends SettingsPreferenceFragment
         super.onStart();
 
         final Activity activity = getActivity();
+        if (mStorageManager != null) {
+            final StorageVolume[] volumes = mStorageManager.getVolumeList();
+            if (volumes == null) {
+                mMassStorageActive = false;
+            } else {
+                final ArrayList<StorageVolume> physicalVols =
+                        mStorageManager.getPhysicalExternalVolume(volumes);
+                if (physicalVols.size() == 0) {
+                    mMassStorageActive = false;
+                } else {
+                    mMassStorageActive =
+                            Environment.MEDIA_SHARED.equals(physicalVols.get(0).getState());
+                }
+            }
+        } else {
+            mMassStorageActive = false;
+            Log.w(TAG,"Could not get STORAGE_SERVICE service");
+        }
 
-        mMassStorageActive = Environment.MEDIA_SHARED.equals(Environment.getExternalStorageState());
         mTetherChangeReceiver = new TetherChangeReceiver();
         IntentFilter filter = new IntentFilter(ConnectivityManager.ACTION_TETHER_STATE_CHANGED);
         Intent intent = activity.registerReceiver(mTetherChangeReceiver, filter);
