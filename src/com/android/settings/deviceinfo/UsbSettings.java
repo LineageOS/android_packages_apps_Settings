@@ -49,7 +49,9 @@ public class UsbSettings extends SettingsPreferenceFragment {
     private static final String KEY_MTP = "usb_mtp";
     private static final String KEY_PTP = "usb_ptp";
     private static final String KEY_SDCARD = "usb_sdcard";
+    private static final String KEY_CHARGING = "usb_charging";
 
+    private static final String USB_FUNCTION_CHARGING = "charging";
     // We could not know what's the usb default mode config of each device, which
     // may be defined in some sh source file. So here use a hard code for reference,
     // you should modify this value according to device usb init config.
@@ -60,6 +62,7 @@ public class UsbSettings extends SettingsPreferenceFragment {
     private CheckBoxPreference mMtp;
     private CheckBoxPreference mPtp;
     private CheckBoxPreference mSDCard;
+    private CheckBoxPreference mCharging;
     private boolean mUsbAccessoryMode;
     private boolean operateInprogress = false;
 
@@ -115,6 +118,7 @@ public class UsbSettings extends SettingsPreferenceFragment {
         mMtp = (CheckBoxPreference)root.findPreference(KEY_MTP);
         mPtp = (CheckBoxPreference)root.findPreference(KEY_PTP);
         mSDCard = (CheckBoxPreference)root.findPreference(KEY_SDCARD);
+        mCharging = (CheckBoxPreference)root.findPreference(KEY_CHARGING);
         //not to show this mode if mass storage is not supported
         if (!isMassStorageEnabled()) {
             Log.d(TAG, "createPreferenceHierarchy mass_storage enabled");
@@ -192,18 +196,27 @@ public class UsbSettings extends SettingsPreferenceFragment {
             mMtp.setChecked(true);
             mPtp.setChecked(false);
             mSDCard.setChecked(false);
+            mCharging.setChecked(false);
         } else if (UsbManager.USB_FUNCTION_PTP.equals(function)) {
             mMtp.setChecked(false);
             mPtp.setChecked(true);
             mSDCard.setChecked(false);
+            mCharging.setChecked(false);
         } else if (UsbManager.USB_FUNCTION_MASS_STORAGE.equals(function)) {
             mMtp.setChecked(false);
             mPtp.setChecked(false);
             mSDCard.setChecked(true);
+            mCharging.setChecked(false);
+        } else if (USB_FUNCTION_CHARGING.equals(function)) {
+            mMtp.setChecked(false);
+            mPtp.setChecked(false);
+            mSDCard.setChecked(false);
+            mCharging.setChecked(true);
         } else {
             mMtp.setChecked(false);
             mPtp.setChecked(false);
             mSDCard.setChecked(false);
+            mCharging.setChecked(false);
         }
 
         UserManager um = (UserManager) getActivity().getSystemService(Context.USER_SERVICE);
@@ -245,6 +258,8 @@ public class UsbSettings extends SettingsPreferenceFragment {
             function = UsbManager.USB_FUNCTION_PTP;
         } else if (preference == mSDCard && mSDCard.isChecked()) {
             function = UsbManager.USB_FUNCTION_MASS_STORAGE;
+        } else if (preference == mCharging && mCharging.isChecked()) {
+            function = USB_FUNCTION_CHARGING;
         }
 
         operateInprogress = true;
