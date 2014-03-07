@@ -23,7 +23,7 @@ public class FileItemInfoLayout extends RelativeLayout implements Checkable {
     private CheckBox mCheckbox;
 
     private static final int sLengthExternalStorageDirPrefix = new UserEnvironment(
-            UserHandle.myUserId()).getExternalStorageDirectory().getAbsolutePath().length() + 1;
+            UserHandle.myUserId()).getMediaDir().getAbsolutePath().length() + 1;
 
     public FileItemInfoLayout(Context context) {
         this(context, null);
