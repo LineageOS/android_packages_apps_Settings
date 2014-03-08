@@ -99,7 +99,6 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
     private ListPreference mVoice;
     private ListPreference mData;
     private ListPreference mSms;
-    private PreferenceScreen mConfigSub;
     private CharSequence[] entries; // Used for entries like Subscription1, Subscription2 ...
     private CharSequence[] entryValues; // Used for entryValues like 0, 1 ,2 ...
     private CharSequence[] summaries; // Used for Summaries like Aubscription1, Subscription2....
@@ -140,8 +139,6 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
         mData.setOnPreferenceChangeListener(this);
         mSms = (ListPreference) findPreference(KEY_SMS);
         mSms.setOnPreferenceChangeListener(this);
-        mConfigSub = (PreferenceScreen) findPreference(KEY_CONFIG_SUB);
-        mConfigSub.getIntent().putExtra(CONFIG_SUB, true);
         mTuneAway = (CheckBoxPreference) findPreference(TUNE_AWAY);
         mTuneAway.setOnPreferenceChangeListener(this);
         mPrioritySub = (ListPreference) findPreference(PRIORITY_SUB);
@@ -222,8 +219,6 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
         Log.d(TAG, "mIccCardCount = " + mIccCardCount);
 
         if (mIccCardCount == 0) {
-             mConfigSub.setEnabled(false);
-             mConfigSub.setSelectable(false);
              displayAlertDialog(getResources().getString(R.string.no_sim_info));
              disableMsimMenu();
         } else if (mIccCardCount == 1) {
@@ -591,11 +586,6 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
                         displayAlertDialog(status);
                     }
 
-                    break;
-                case EVENT_SUBSCRIPTION_ACTIVATED:
-                case EVENT_SUBSCRIPTION_DEACTIVATED:
-                    updateMultiSimEntriesForVoice();
-                    updateMultiSimEntriesForSms();
                     break;
 
                 case EVENT_SET_VOICE_SUBSCRIPTION:
