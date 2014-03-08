@@ -886,7 +886,7 @@ public class WifiSettings extends RestrictedSettingsFragment
                     accessPoints.add(accessPoint);
                     apMap.put(accessPoint.ssid, accessPoint);
                     if (getResources().getBoolean(R.bool.set_wifi_priority)) {
-                        SetAPCategory(accessPoint);
+                        SetAPCategory(accessPoint, mConfigedAP);
                     }
                 }
             }
@@ -916,7 +916,7 @@ public class WifiSettings extends RestrictedSettingsFragment
                     accessPoints.add(accessPoint);
                     apMap.put(accessPoint.ssid, accessPoint);
                     if (getResources().getBoolean(R.bool.set_wifi_priority)) {
-                        SetAPCategory(accessPoint);
+                        SetAPCategory(accessPoint, mUnKnownAP);
                     }
                 }
             }
@@ -944,7 +944,7 @@ public class WifiSettings extends RestrictedSettingsFragment
         }
     }
 
-    private void SetAPCategory(AccessPoint accessPoint) {
+    private void SetAPCategory(AccessPoint accessPoint, PreferenceCategory screen) {
         if (AccessPoint.isCarrierAp(accessPoint, getActivity())) {
             if (accessPoint.getState() != null
                     && accessPoint.getState() == DetailedState.CONNECTING) {
@@ -956,10 +956,10 @@ public class WifiSettings extends RestrictedSettingsFragment
             } else if (isDefCredibleAP(accessPoint)) {
                 mDefaultTrustAP.addPreference(accessPoint);
             } else {
-                mUnKnownAP.addPreference(accessPoint);
+                screen.addPreference(accessPoint);
             }
         } else {
-            mUnKnownAP.addPreference(accessPoint);
+            screen.addPreference(accessPoint);
         }
     }
 
