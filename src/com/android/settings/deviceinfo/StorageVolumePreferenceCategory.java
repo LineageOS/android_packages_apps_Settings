@@ -213,6 +213,8 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
             addPreference(mFormatPreference);
         }
 
+        /* only add Storage low preference to INTERNAL STORAGE */
+        if(mVolume == null) {
         final IPackageManager pm = ActivityThread.getPackageManager();
         try {
             if (pm.isStorageLow()) {
@@ -226,6 +228,7 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
                 mStorageLow = null;
             }
         } catch (RemoteException e) {
+        }
         }
     }
 
