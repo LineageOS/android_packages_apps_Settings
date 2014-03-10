@@ -1869,6 +1869,8 @@
 
         <activity android:name=".ApnEditor" />
 
+        <activity android:name=".cyanogenmod.GlobalProxyPopup" />
+
         <activity android:name="Settings$AnonymousStatsActivity"
                 android:label="@string/anonymous_statistics_title"
                 android:configChanges="orientation|keyboardHidden|screenSize"
@@ -2144,6 +2146,32 @@
             android:exported="false"
             android:name=".cyanogenmod.LtoService">
         </service>
+
+        <!-- Global proxy -->
+        <receiver android:name=".cyanogenmod.GlobalProxyReceiver"
+                  android:enabled="true">
+            <intent-filter>
+                <action android:name="android.net.conn.INET_CONDITION_ACTION"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+                <action android:name="cyanogenmod.intent.action.RESET_PROXY"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_FULLY_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <service android:exported="false"
+            android:name=".cyanogenmod.ProxyCheckService"/>
+
+        <activity android:name=".cyanogenmod.GlobalProxyPopupActivity"
+                android:taskAffinity=""
+                android:permission="cyanogenmod.permission.GLOBAL_PROXY_MANAGEMENT"
+                android:exported="true"
+                android:excludeFromRecents="true">
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.cyanogenmod.GlobalProxyPopup" />
+        </activity>
 
     </application>
 </manifest>
