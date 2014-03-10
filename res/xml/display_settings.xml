@@ -83,6 +83,12 @@
             android:title="@string/double_tap_to_wake_title"
             android:defaultValue="false" />
 
+        <CheckBoxPreference
+            android:key="advanced_touch_input_setting"
+            android:title="@string/advanced_touch_input_title"
+            android:summary="@string/advanced_touch_input_summary"
+            android:defaultValue="false" />
+
         <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
             android:key="screen_off_animation"
             android:title="@string/screen_animation_off_title"
