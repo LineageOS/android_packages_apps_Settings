@@ -78,6 +78,8 @@ public class Memory extends SettingsPreferenceFragment {
     private IMountService mMountService;
     private StorageManager mStorageManager;
     private UsbManager mUsbManager;
+    private MenuItem usb;
+    private boolean mIsUsbConnected;
 
     private ArrayList<StorageVolumePreferenceCategory> mCategories = Lists.newArrayList();
 
@@ -175,10 +177,11 @@ public class Memory extends SettingsPreferenceFragment {
 
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
-        final MenuItem usb = menu.findItem(R.id.storage_usb);
+        usb = menu.findItem(R.id.storage_usb);
         UserManager um = (UserManager)getActivity().getSystemService(Context.USER_SERVICE);
         boolean usbItemVisible = !isMassStorageEnabled()
-                && !um.hasUserRestriction(UserManager.DISALLOW_USB_FILE_TRANSFER);
+                && !um.hasUserRestriction(UserManager.DISALLOW_USB_FILE_TRANSFER)
+                && mIsUsbConnected;
         usb.setVisible(usbItemVisible);
     }
 
@@ -256,11 +259,14 @@ public class Memory extends SettingsPreferenceFragment {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             if (action.equals(UsbManager.ACTION_USB_STATE)) {
-               boolean isUsbConnected = intent.getBooleanExtra(UsbManager.USB_CONNECTED, false);
+               mIsUsbConnected = intent.getBooleanExtra(UsbManager.USB_CONNECTED, false);
                String usbFunction = mUsbManager.getDefaultFunction();
                for (StorageVolumePreferenceCategory category : mCategories) {
-                   category.onUsbStateChanged(isUsbConnected, usbFunction);
+                   category.onUsbStateChanged(mIsUsbConnected, usbFunction);
                }
+                if (usb != null) {
+                    usb.setVisible(mIsUsbConnected);
+                }
             } else if (action.equals(Intent.ACTION_MEDIA_SCANNER_FINISHED)) {
                 for (StorageVolumePreferenceCategory category : mCategories) {
                     category.onMediaScannerFinished();
