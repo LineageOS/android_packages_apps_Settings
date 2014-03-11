@@ -1197,7 +1197,7 @@
             android:windowSoftInputMode="stateVisible|adjustResize"/>
 
         <!-- Runs in the phone process since it needs access to the Phone object -->
-        <activity android:name=".deviceinfo.MSimSubscriptionStatus"
+        <activity android:name=".deviceinfo.msim.MSimSubscriptionStatus"
                 android:label="@string/device_status_activity_title"
                 android:theme="@android:style/Theme.Holo.DialogWhenLarge"
                 android:process="com.android.phone">
@@ -1209,7 +1209,7 @@
         </activity>
 
         <!-- Runs in the phone process since it needs access to the Phone object -->
-        <activity android:name=".deviceinfo.MSimStatus"
+        <activity android:name=".deviceinfo.msim.MSimStatus"
                 android:label="@string/device_status_activity_title"
                 android:theme="@android:style/Theme.Holo.DialogWhenLarge"
                 android:process="com.android.phone">
