@@ -105,6 +105,8 @@ class AccessPoint extends Preference {
     int networkId = -1;
     boolean wpsAvailable = false;
     boolean showSummary = true;
+    boolean isIBSS = false;
+    int frequency;
 
     PskType pskType = PskType.UNKNOWN;
 
@@ -234,6 +236,8 @@ class AccessPoint extends Preference {
         bssid = config.BSSID;
         security = getSecurity(config);
         networkId = config.networkId;
+        isIBSS = config.isIBSS;
+        frequency = config.frequency;
         mConfig = config;
     }
 
@@ -242,6 +246,8 @@ class AccessPoint extends Preference {
         bssid = result.BSSID;
         security = getSecurity(result);
         wpsAvailable = security != SECURITY_EAP && result.capabilities.contains("WPS");
+        isIBSS = result.capabilities.contains("[IBSS]");
+        frequency = result.frequency;
         if (security == SECURITY_PSK)
             pskType = getPskType(result);
         mRssi = result.level;
@@ -658,6 +664,10 @@ class AccessPoint extends Preference {
             }
         }
 
+        if (isIBSS) {
+            summary.append(context.getString(R.string.wifi_mode_ibss_short)).append(" ");
+        }
+
         if (WifiSettings.mVerboseLogging > 0) {
             // Add RSSI/band information for this config, what was seen up to 6 seconds ago
             // verbose WiFi Logging is only turned on thru developers settings
@@ -700,6 +710,7 @@ class AccessPoint extends Preference {
         } else {
             setShowSummary(false);
         }
+        setSummary(summary.toString());
     }
 
     /**
