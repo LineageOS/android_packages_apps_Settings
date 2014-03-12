@@ -101,10 +101,9 @@ public class MSimStatus extends PreferenceActivity {
 
     private PhoneStateIntentReceiver mPhoneStateReceiver;
     private PhoneStateListener[] mPhoneStateListener;
-    private BroadcastReceiver[] mAreaInfoReceiver;
     private Resources mRes;
     private Preference mUptime;
-    private boolean mShowLatestAreaInfo[];
+    private boolean mShowLatestAreaInfo = false;
 
     private String mUnknown = null;
     private int mNumPhones = 0;
@@ -276,7 +275,6 @@ public class MSimStatus extends PreferenceActivity {
 
         mNumPhones = MSimTelephonyManager.getDefault().getPhoneCount();
         mPhoneStateListener = new PhoneStateListener[mNumPhones];
-        mAreaInfoReceiver = new BroadcastReceiver[mNumPhones];
         mEsnNumberSummary = new String[mNumPhones];
         mMeidNumberSummary = new String[mNumPhones];
         mMinNumberSummary = new String[mNumPhones];
@@ -291,7 +289,6 @@ public class MSimStatus extends PreferenceActivity {
         mSigStrengthSummary = new String[mNumPhones];
         mDataStateSummary = new String[mNumPhones];
         mLatestAreaInfoSummary = new String[mNumPhones];
-        mShowLatestAreaInfo = new boolean[mNumPhones];
 
         mSignalStrength = new SignalStrength[mNumPhones];
         mServiceState = new ServiceState[mNumPhones];
@@ -307,11 +304,18 @@ public class MSimStatus extends PreferenceActivity {
         for (int i = 0; i < mNumPhones; i++) {
             mSim[i] = getMultiSimName(i);
             mPhone[i] = MSimPhoneFactory.getPhone(i);
-            if ("CDMA".equals(mPhone[i].getPhoneName()))
+            if ("CDMA".equals(mPhone[i].getPhoneName())) {
                 indexOfCDMA = i;
-            mShowLatestAreaInfo[i] = false;
+            } else {
+                // only show area info when SIM country is Brazil
+                if ("br".equals(mTelephonyManager.getSimCountryIso(0))) {
+                    mShowLatestAreaInfo = true;
+                }
+            }
             mPhoneStateListener[i] = getPhoneStateListener(i);
-            mAreaInfoReceiver[i] = getBroadcastReceiver(i);
+        }
+        if (!mShowLatestAreaInfo) {
+            removePreferenceFromScreen(KEY_LATEST_AREA_INFO);
         }
 
         mBatteryLevel = findPreference(KEY_BATTERY_LEVEL);
@@ -420,10 +424,6 @@ public class MSimStatus extends PreferenceActivity {
                     mImeiSummary[i] = getSimSummary(i, mPhone[i].getDeviceId());
                     mImeiSVSummary[i] = getSimSummary(i, mPhone[i].getDeviceSvn());
 
-                    // only show area info when SIM country is Brazil
-                    if ("br".equals(mTelephonyManager.getSimCountryIso(i))) {
-                        mShowLatestAreaInfo[i] = true;
-                    }
                 }
             }
             setMSimSummary(KEY_PRL_VERSION, mPrlVersionSummary);
@@ -441,16 +441,6 @@ public class MSimStatus extends PreferenceActivity {
                 MSimTelephonyManager.getTelephonyProperty("gsm.version.baseband",
                         MSimTelephonyManager.getDefault().getDefaultSubscription(), null);
             setSummaryText(KEY_BASEBAND_VERSION,basebandVersionSummery);
-
-            boolean needRemoveAreaInfo = true;
-            for (boolean showLatestAreaInfo : mShowLatestAreaInfo) {
-                if (showLatestAreaInfo) {
-                    needRemoveAreaInfo = false;
-                }
-            }
-            if(needRemoveAreaInfo){
-                removePreferenceFromScreen(KEY_LATEST_AREA_INFO);
-            }
         }
     }
 
@@ -464,16 +454,14 @@ public class MSimStatus extends PreferenceActivity {
                         PhoneStateListener.LISTEN_SERVICE_STATE
                                 | PhoneStateListener.LISTEN_SIGNAL_STRENGTHS
                                 | PhoneStateListener.LISTEN_DATA_CONNECTION_STATE);
-                if (mShowLatestAreaInfo[i]) {
-                    registerReceiver(mAreaInfoReceiver[i], new IntentFilter(
-                            CB_AREA_INFO_RECEIVED_ACTION),
-                            CB_AREA_INFO_SENDER_PERMISSION, null);
-                    // Ask CellBroadcastReceiver to broadcast the latest area
-                    // info received
-                    Intent getLatestIntent = new Intent(GET_LATEST_CB_AREA_INFO_ACTION);
-                    sendBroadcastAsUser(getLatestIntent, UserHandle.ALL,
-                            CB_AREA_INFO_SENDER_PERMISSION);
-                }
+
+                // Ask CellBroadcastReceiver to broadcast the latest area
+                // info received
+                Intent getLatestIntent = new Intent(GET_LATEST_CB_AREA_INFO_ACTION);
+                getLatestIntent.putExtra(MSimConstants.SUBSCRIPTION_KEY, i);
+                sendBroadcastAsUser(getLatestIntent, UserHandle.ALL,
+                        CB_AREA_INFO_SENDER_PERMISSION);
+
                 updateSignalStrength(i);
                 updateServiceState(i);
                 updateDataState(i);
@@ -482,6 +470,8 @@ public class MSimStatus extends PreferenceActivity {
         }
         registerReceiver(mBatteryInfoReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
         mHandler.sendEmptyMessage(EVENT_UPDATE_STATS);
+        registerReceiver(mAreaInfoReceiver, new IntentFilter(CB_AREA_INFO_RECEIVED_ACTION),
+                CB_AREA_INFO_SENDER_PERMISSION, null);
     }
 
     @Override
@@ -491,35 +481,31 @@ public class MSimStatus extends PreferenceActivity {
         if (!Utils.isWifiOnly(getApplicationContext())) {
             for (int i=0; i < mNumPhones; i++) {
                 mTelephonyManager.listen(mPhoneStateListener[i], PhoneStateListener.LISTEN_NONE);
-                if (mShowLatestAreaInfo[i]) {
-                    unregisterReceiver(mAreaInfoReceiver[i]);
-                }
             }
         }
         unregisterReceiver(mBatteryInfoReceiver);
         mHandler.removeMessages(EVENT_UPDATE_STATS);
+        unregisterReceiver(mAreaInfoReceiver);
     }
 
-    private BroadcastReceiver getBroadcastReceiver(final int subscription) {
-        BroadcastReceiver areaInfoReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                String action = intent.getAction();
-                if (CB_AREA_INFO_RECEIVED_ACTION.equals(action)) {
-                    Bundle extras = intent.getExtras();
-                    if (extras == null) {
-                        return;
-                    }
-                    CellBroadcastMessage cbMessage = (CellBroadcastMessage) extras.get("message");
-                    if (cbMessage != null && cbMessage.getServiceCategory() == 50) {
-                        String latestAreaInfo = cbMessage.getMessageBody();
-                        updateAreaInfo(latestAreaInfo, subscription);
-                    }
+    private BroadcastReceiver mAreaInfoReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (CB_AREA_INFO_RECEIVED_ACTION.equals(action)) {
+                Bundle extras = intent.getExtras();
+                if (extras == null) {
+                    return;
+                }
+                CellBroadcastMessage cbMessage = (CellBroadcastMessage) extras.get("message");
+                if (cbMessage != null && cbMessage.getServiceCategory() == 50) {
+                    int subscriptionId = cbMessage.getSubId();
+                    String latestAreaInfo = cbMessage.getMessageBody();
+                    updateAreaInfo(latestAreaInfo, subscriptionId);
                 }
             }
-        };
-        return areaInfoReceiver;
-    }
+        }
+    };
 
     private PhoneStateListener getPhoneStateListener(final int subscription) {
         PhoneStateListener phoneStateListener = new PhoneStateListener(subscription) {
@@ -630,8 +616,9 @@ public class MSimStatus extends PreferenceActivity {
     }
 
     private void updateAreaInfo(String areaInfo, int subscription) {
+        if (DEBUG) Log.i(TAG, "updateAreaInfo areaInfo="+areaInfo+" sub="+subscription);
         if (areaInfo != null) {
-            mLatestAreaInfoSummary[subscription] = areaInfo;
+            mLatestAreaInfoSummary[subscription] = getSimSummary(subscription, areaInfo);
             setMSimSummary(KEY_LATEST_AREA_INFO, mLatestAreaInfoSummary);
         }
     }
