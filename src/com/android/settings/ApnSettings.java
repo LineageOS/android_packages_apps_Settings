@@ -450,8 +450,15 @@ public class ApnSettings extends PreferenceActivity implements
                 result.add(mccMncForEhrpd);
             }
         }
+        int activePhone = MSimTelephonyManager.from(this).getPhoneType(mSubscription);
+        String apnOperatorNumericProperty = TelephonyProperties.PROPERTY_APN_SIM_OPERATOR_NUMERIC;
+        if (activePhone == PhoneConstants.PHONE_TYPE_CDMA) {
+            apnOperatorNumericProperty = TelephonyProperties.PROPERTY_APN_RUIM_OPERATOR_NUMERIC;
+        }
         String mccMncFromSim = MSimTelephonyManager.getTelephonyProperty(
-                TelephonyProperties.PROPERTY_APN_SIM_OPERATOR_NUMERIC, mSubscription, null);
+                apnOperatorNumericProperty, mSubscription, null);
+        Log.d(TAG, "getOperatorNumeric: sub= " + mSubscription +
+                " activePhone= " + activePhone + " mcc-mnc= " + mccMncFromSim);
         if (mccMncFromSim != null && mccMncFromSim.length() > 0) {
             result.add(mccMncFromSim);
         }
