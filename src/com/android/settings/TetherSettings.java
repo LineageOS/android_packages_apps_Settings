@@ -418,6 +418,12 @@ public class TetherSettings extends SettingsPreferenceFragment
             mBluetoothTether.setSummary(R.string.bluetooth_turning_on);
         } else {
             BluetoothPan bluetoothPan = mBluetoothPan.get();
+            if (btState == BluetoothAdapter.STATE_ON && mBluetoothEnableForTether) {
+                if (bluetoothPan != null && !bluetoothPan.isTetheringOn()) {
+                    bluetoothPan.setBluetoothTethering(true);
+                    mBluetoothEnableForTether = false;
+                }
+            }
             if (btState == BluetoothAdapter.STATE_ON && bluetoothPan != null &&
                     bluetoothPan.isTetheringOn()) {
                 mBluetoothTether.setChecked(true);
