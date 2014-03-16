@@ -55,6 +55,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.Surface;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -83,6 +84,8 @@ public final class WifiDisplaySettings extends SettingsPreferenceFragment {
     private static final boolean DEBUG = false;
 
     private static final int MENU_ID_ENABLE_WIFI_DISPLAY = Menu.FIRST;
+    private static final int MENU_ID_ROTATE_90 = Menu.FIRST + 1;
+    private static final int MENU_ID_ROTATE_270 = Menu.FIRST + 2;
 
     private static final int CHANGE_SETTINGS = 1 << 0;
     private static final int CHANGE_ROUTES = 1 << 1;
@@ -102,6 +105,7 @@ public final class WifiDisplaySettings extends SettingsPreferenceFragment {
     private boolean mStarted;
     private int mPendingChanges;
 
+    private int mWifiDisplayRotation;
     private boolean mWifiDisplayOnSetting;
     private WifiDisplayStatus mWifiDisplayStatus;
 
@@ -167,6 +171,9 @@ public final class WifiDisplaySettings extends SettingsPreferenceFragment {
         getContentResolver().registerContentObserver(Settings.Global.getUriFor(
                 Settings.Global.WIFI_DISPLAY_WPS_CONFIG), false, mSettingsObserver);
 
+        getContentResolver().registerContentObserver(Settings.Global.getUriFor(
+                Settings.Global.WIFI_DISPLAY_ROTATION), false, mSettingsObserver);
+
         mRouter.addCallback(MediaRouter.ROUTE_TYPE_REMOTE_DISPLAY, mRouterCallback,
                 MediaRouter.CALLBACK_FLAG_PERFORM_ACTIVE_SCAN);
 
@@ -196,6 +203,16 @@ public final class WifiDisplaySettings extends SettingsPreferenceFragment {
                     R.string.wifi_display_enable_menu_item);
             item.setCheckable(true);
             item.setChecked(mWifiDisplayOnSetting);
+
+	        MenuItem itemRotate90 = menu.add(Menu.NONE, MENU_ID_ROTATE_90, 0,
+                    "Rotate 90");
+            itemRotate90.setCheckable(true);
+            itemRotate90.setChecked(mWifiDisplayRotation == Surface.ROTATION_90 ? true : false);
+
+  	        MenuItem itemRotate270 = menu.add(Menu.NONE, MENU_ID_ROTATE_270, 0,
+                    "Rotate 270");
+            itemRotate270.setCheckable(true);
+            itemRotate270.setChecked(mWifiDisplayRotation == Surface.ROTATION_270 ? true : false);
         }
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -209,6 +226,24 @@ public final class WifiDisplaySettings extends SettingsPreferenceFragment {
                 Settings.Global.putInt(getContentResolver(),
                         Settings.Global.WIFI_DISPLAY_ON, mWifiDisplayOnSetting ? 1 : 0);
                 return true;
+    	    case MENU_ID_ROTATE_90:
+		        item.setChecked(!item.isChecked());
+        		if (item.isChecked())
+		        	mWifiDisplayRotation = Surface.ROTATION_90;
+        		else
+		        	mWifiDisplayRotation = Surface.ROTATION_0;
+        		Settings.Global.putInt(getContentResolver(),
+                    Settings.Global.WIFI_DISPLAY_ROTATION, mWifiDisplayRotation);
+        		return true;
+	        case MENU_ID_ROTATE_270:
+        		item.setChecked(!item.isChecked());
+		        if (item.isChecked())
+                    mWifiDisplayRotation = Surface.ROTATION_270;
+        		else
+		        	mWifiDisplayRotation = Surface.ROTATION_0;
+		        Settings.Global.putInt(getContentResolver(),
+                    Settings.Global.WIFI_DISPLAY_ROTATION, mWifiDisplayRotation);
+		        return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -236,6 +271,8 @@ public final class WifiDisplaySettings extends SettingsPreferenceFragment {
         if ((changes & CHANGE_SETTINGS) != 0) {
             mWifiDisplayOnSetting = Settings.Global.getInt(getContentResolver(),
                     Settings.Global.WIFI_DISPLAY_ON, 0) != 0;
+	        mWifiDisplayRotation = Settings.Global.getInt(getContentResolver(),
+                    Settings.Global.WIFI_DISPLAY_ROTATION, 0);
             mWifiDisplayCertificationOn = Settings.Global.getInt(getContentResolver(),
                     Settings.Global.WIFI_DISPLAY_CERTIFICATION_ON, 0) != 0;
             mWpsConfig = Settings.Global.getInt(getContentResolver(),
