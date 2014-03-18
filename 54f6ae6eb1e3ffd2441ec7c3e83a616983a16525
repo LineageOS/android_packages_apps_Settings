@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bae84128_3c3195a3",
+        "filename": "src/com/android/settings/DeviceInfoSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-03-18T21:58:55Z",
+      "side": 1,
+      "message": "Might it be worthwhile to do this instead?\n\nfindPreference(KEY_STATUS).getIntent().setClassName(\n        getActivity().getPackageName(), MSimStatus.class.getName());",
+      "revId": "54f6ae6eb1e3ffd2441ec7c3e83a616983a16525",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
