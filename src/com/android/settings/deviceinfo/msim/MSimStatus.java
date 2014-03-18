@@ -625,7 +625,6 @@ public class MSimStatus extends PreferenceActivity {
 
     void updateSignalStrength(int subscription) {
         // not loaded in some versions of the code (e.g., zaku)
-        int signalDbm = 0;
 
         if (mSignalStrength[subscription] != null) {
             int state = mServiceState[subscription].getState();
@@ -635,19 +634,10 @@ public class MSimStatus extends PreferenceActivity {
                     (ServiceState.STATE_POWER_OFF == state)) {
                 mSigStrengthSummary[subscription] = getSimSummary(subscription, "0");
             } else {
-                if (!mSignalStrength[subscription].isGsm()) {
-                    signalDbm = mSignalStrength[subscription].getCdmaDbm();
-                } else {
-                    int gsmSignalStrength = mSignalStrength[subscription].getGsmSignalStrength();
-                    int asu = (gsmSignalStrength == GSM_SIGNAL_UNKNOWN ? -1 : gsmSignalStrength);
-                    if (asu != -1) {
-                        signalDbm = GSM_SIGNAL_NULL + 2 * asu;
-                    }
-                }
-                if (-1 == signalDbm)
-                    signalDbm = 0;
+                int signalDbm = mSignalStrength[subscription].getDbm();
+                if (-1 == signalDbm) signalDbm = 0;
 
-                int signalAsu = mSignalStrength[subscription].getGsmSignalStrength();
+                int signalAsu = mSignalStrength[subscription].getAsuLevel();
                 if (-1 == signalAsu)
                     signalAsu = 0;
 
