@@ -162,9 +162,9 @@ public class MSimStatus extends PreferenceActivity {
         PreferenceScreen selectSub = (PreferenceScreen) findPreference(BUTTON_SELECT_SUB_KEY);
         if (selectSub != null) {
             Intent intent = selectSub.getIntent();
-            intent.putExtra(SelectSubscription.PACKAGE, "com.android.settings");
+            intent.putExtra(SelectSubscription.PACKAGE, getPackageName());
             intent.putExtra(SelectSubscription.TARGET_CLASS,
-                    "com.android.settings.deviceinfo.MSimSubscriptionStatus");
+                    MSimSubscriptionStatus.class.getName());
         }
 
         mRes = getResources();
