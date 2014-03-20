@@ -57,7 +57,8 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textAlignment="viewStart" />
 
-    <Switch android:id="@+id/switchWidget"
+    <Spinner
+        android:id="@+id/spinnerWidget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
@@ -67,6 +68,6 @@
         android:layout_rowSpan="2"
         android:padding="8dip"
         android:focusable="false"
-        android:clickable="true" />
+        android:entries="@+array/app_ops_permissions" />
 
 </GridLayout>
