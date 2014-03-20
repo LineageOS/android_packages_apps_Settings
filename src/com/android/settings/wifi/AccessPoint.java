@@ -40,6 +40,7 @@ class AccessPoint extends Preference {
     private static final String KEY_CONFIG = "key_config";
     static final String CARRIER_SSID = "CMCC";
     static final String CARRIER_EDU_SSID = "CMCC-EDU";
+    static final String CARRIER_AUTO_SSID = "CMCC-AUTO";
 
     private static final int[] STATE_SECURED = {
         R.attr.state_encrypted
@@ -423,6 +424,11 @@ class AccessPoint extends Preference {
 
         if (CARRIER_SSID.equals(mAccessPoint.ssid) || CARRIER_EDU_SSID.equals(mAccessPoint.ssid)) {
             if (mAccessPoint.security == AccessPoint.SECURITY_NONE) {
+                return true;
+            }
+        }
+        if (CARRIER_AUTO_SSID.equals(mAccessPoint.ssid)) {
+            if (mAccessPoint.security == AccessPoint.SECURITY_EAP) {
                 return true;
             }
         }
