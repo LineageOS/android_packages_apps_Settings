@@ -588,9 +588,12 @@ Elke regel in de lijst van helderheidsstanden komt overeen met één <i>controle
     <string name="power_menu_reboot_title">Herstarten</string>
     <string name="power_menu_screenshot_title">Screenshot</string>
     <string name="power_menu_expanded_desktop">Uitgebreid bureaublad</string>
+    <string name="expanded_desktop_style">Stijl uitgebreid bureaublad</string>
     <string name="expanded_desktop_disabled">Uitgeschakeld</string>
     <string name="expanded_desktop_status_bar">Statusbalk zichtbaar</string>
     <string name="expanded_desktop_no_status_bar">Statusbalk verborgen</string>
+    <string name="expanded_desktop_system_bars_visibility">Uitschakelen op vergrendelingsscherm</string>
+    <string name="expanded_desktop_system_bars_visibility_summary">Status- en navigatiebalk weergeven op vergrendelingsscherm met uitgebreid bureaublad</string>
     <string name="power_menu_profiles_title">Profielen</string>
     <string name="power_menu_airplane_title">Vliegmodus</string>
     <string name="power_menu_user_title">Gebruiker wisselen</string>
@@ -667,9 +670,7 @@ Elke regel in de lijst van helderheidsstanden komt overeen met één <i>controle
     <string name="storage_rescan_media">Mediabestanden op het opslagvolume opnieuw scannen</string>
     <string name="storage_rescan_media_complete">Scannen voltooid</string>
     <string name="whisperpush_title">WhisperPush</string>
-    <string name="whisperpush_registration_title">Registreren</string>
-    <string name="whisperpush_registration_summary">Registreren voor WhisperPush om versleutelde sms-berichten in te schakelen</string>
-    <string name="whisperpush_identitykey_title">Identiteitssleutels bekijken</string>
+    <string name="whisperpush_summary">Instellingen beveiligde sms-berichten.</string>
     <string name="custom_runtime_warning_title">Let op</string>
     <string name="custom_runtime_warning_message">ART wordt niet ondersteund door CyanogenMod. Deze instelling is opgenomen voor testdoeleinden en kan leiden tot instabiliteit, crashes, gegevensverlies en/of opstartproblemen. Ga naar &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introductie van ART (Engels)&lt;/a&gt; voor meer informatie.&lt;br/&gt;&lt;br/&gt;Wij verzoeken u geen foutrapporten in te sturen, wanneer ART is ingeschakeld.&lt;br/&gt;&lt;br/&gt;Weet u zeker dat u wilt herstarten om apps niet meer te laten draaien op <xliff:g id="old" example="libdvm.so">%1$s</xliff:g>, maar op <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
     <string name="gps_download_data_wifi_only">GPS-ondersteunende gegevens alleen downloaden via wifi</string>
@@ -716,26 +717,6 @@ Elke regel in de lijst van helderheidsstanden komt overeen met één <i>controle
     <string name="edge_gesture_service_title">Aanraakgebaren blokkeren</string>
     <string name="edge_gesture_service_summary">Aanraakgebaren voor navigatie- en statusbalk niet naar apps sturen</string>
 
-    <!-- CAF strings-->
-    <string name="intent_sender_data_label"><xliff:g id="data">Gegevens:</xliff:g></string>
-    <string name="bluetooth_enter_pin_msg_hs">\nTyp pincode om te koppelen met \u0022<xliff:g id="device_name">%1$s</xliff:g>\u0022. [Hoge beveiliging: sleutel van 16 tekens vereist] </string>
-    <string name="bluetooth_profile_sap">SIM-toegang</string>
-    <string name="bluetooth_profile_dun">Inbelnetwerktoegang</string>
-    <string name="bluetooth_sap_profile_summary_connected">Verbonden met SIM-toegangsserver</string>
-    <string name="bluetooth_dun_profile_summary_connected">Verbonden met DUN-server</string>
-    <string name="bluetooth_sap_profile_summary_use_for">Gebruiken voor SIM-toegang</string>
-    <string name="bluetooth_dun_profile_summary_use_for">Gebruiken voor inbelnetwerktoegang</string>
-    <string name="wifi_disabled_association_rejected">Koppeling afgewezen</string>
-    <string name="app_ops_summaries_wifi_change">wifi aan/uit</string>
-    <string name="app_ops_labels_wifi_change">Wifi aan/uit</string>
-    <string name="app_ops_summaries_bluetooth_change">bluetooth aan/uit</string>
-    <string name="app_ops_labels_bluetooth_change">Bluetooth aan/uit</string>
-    <string name="app_ops_summaries_data_change">gegevens aan/uit</string>
-    <string name="app_ops_labels_data_change">Gegevens aan/uit</string>
-    <string name="app_ops_summaries_auto_start">auto-start</string>
-    <string name="app_ops_labels_auto_start">Auto-start</string>
-    <string name="app_ops_categories_bootup">Opstarten</string>
-
     <string name="app_ops_summaries_access_notifications">toegang tot meldingen</string>
     <string name="app_ops_summaries_alarm_volume">alarmvolume</string>
     <string name="app_ops_summaries_audio_focus">audiofocus</string>
@@ -779,6 +760,13 @@ Elke regel in de lijst van helderheidsstanden komt overeen met één <i>controle
     <string name="app_ops_summaries_wifi_scan">wifi-scan</string>
     <string name="app_ops_summaries_write_icc_sms">ICC sms schrijven</string>
     <string name="app_ops_summaries_write_sms">sms schrijven</string>
+    <string name="app_ops_summaries_wifi_change">wifi aan/uit</string>
+    <string name="app_ops_summaries_bluetooth_change">bluetooth aan/uit</string>
+    <string name="app_ops_summaries_data_change">gegevens aan/uit</string>
+    <string name="app_ops_summaries_send_mms">mms verzenden</string>
+    <string name="app_ops_summaries_read_mms">mms lezen</string>
+    <string name="app_ops_summaries_write_mms">mms schrijven</string>
+    <string name="app_ops_summaries_auto_start">auto-start</string>
 
     <string name="app_ops_labels_access_notifications">Toegang tot meldingen</string>
     <string name="app_ops_labels_alarm_volume">Alarmvolume</string>
@@ -789,6 +777,14 @@ Elke regel in de lijst van helderheidsstanden komt overeen met één <i>controle
     <string name="app_ops_labels_keep_awake">Ingeschakeld houden</string>
     <string name="app_ops_labels_location">Locatie</string>
     <string name="app_ops_labels_media_buttons">Mediaknoppen</string>
+    <string name="app_ops_labels_audio_focus">Audio-focus</string>
+    <string name="app_ops_labels_master_volume">Hoofdvolume</string>
+    <string name="app_ops_labels_voice_volume">Spraakvolume</string>
+    <string name="app_ops_labels_ring_volume">Beltoonvolume</string>
+    <string name="app_ops_labels_media_volume">Mediavolume</string>
+    <string name="app_ops_labels_alarm_volume">Alarmvolume</string>
+    <string name="app_ops_labels_notification_volume">Meldingsvolume</string>
+    <string name="app_ops_labels_bluetooth_volume">Bluetooth-volume</string>
     <string name="app_ops_labels_modify_calendar">Agenda aanpassen</string>
     <string name="app_ops_labels_modify_call_log">Gesprekkenlijst aanpassen</string>
     <string name="app_ops_labels_modify_clipboard">Klembord aanpassen</string>
@@ -808,10 +804,31 @@ Elke regel in de lijst van helderheidsstanden komt overeen met één <i>controle
     <string name="app_ops_labels_send_sms">Sms/mms verzenden</string>
     <string name="app_ops_labels_vibrate">Trillen</string>
     <string name="app_ops_labels_write_sms_db">Sms-DB schrijven</string>
+    <string name="app_ops_labels_wifi_change">Wifi aan/uit</string>
+    <string name="app_ops_labels_bluetooth_change">Bluetooth aan/uit</string>
+    <string name="app_ops_labels_data_change">Gegevens aan/uit</string>
+    <string name="app_ops_labels_send_mms">Mms verzenden</string>
+    <string name="app_ops_labels_read_mms">Mms lezen</string>
+    <string name="app_ops_labels_write_mms">Mms schrijven</string>
+    <string name="app_ops_labels_auto_start">Auto-start</string>
 
     <string name="app_ops_categories_device">Apparaat</string>
     <string name="app_ops_categories_location">Locatie</string>
     <string name="app_ops_categories_media">Media</string>
     <string name="app_ops_categories_messaging">Berichten</string>
     <string name="app_ops_categories_personal">Persoonlijk</string>
+    <string name="app_ops_categories_bootup">Opstarten</string>
+
+    <string name="data_usage_cycle_editor_subtitle_cm">Datum van elke cyclus:</string>
+    <string name="data_usage_lengths_spinner_subtitle">Cycluslengte:</string>
+
+    <string name="disable_navkeys_title">On-screen navigatiebalk inschakelen</string>
+    <string name="disable_navkeys_summary">On-screen navigatiebalk inschakelen en hardware-knoppen uitschakelen</string>
+
+    <string name="wifi_mode">Modus</string>
+    <string name="wifi_mode_ibss">Ad-hocnetwerk (IBSS)</string>
+    <string name="wifi_mode_ibss_short">Ad hoc</string>
+    <string name="wifi_ibss_freq_title">Kanaal/frequentie</string>
+    <string name="wifi_channel">Kanaal</string>
+    <string name="wifi_mhz">MHz</string>
 </resources>
