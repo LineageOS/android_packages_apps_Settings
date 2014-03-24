@@ -72,6 +72,7 @@ public class ApnPreference extends Preference implements
                 mProtectFromCheckedChange = true;
                 rb.setChecked(isChecked);
                 mProtectFromCheckedChange = false;
+                rb.setVisibility(View.VISIBLE);
             } else {
                 rb.setVisibility(View.GONE);
             }
