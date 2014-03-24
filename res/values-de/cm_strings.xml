@@ -605,9 +605,12 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <string name="power_menu_reboot_title">Neustart-Menü</string>
     <string name="power_menu_screenshot_title">Bildschirmfoto</string>
     <string name="power_menu_expanded_desktop">Erweiterter Desktop</string>
+    <string name="expanded_desktop_style">Modus</string>
     <string name="expanded_desktop_disabled">Deaktiviert</string>
     <string name="expanded_desktop_status_bar">Statusleiste anzeigen</string>
     <string name="expanded_desktop_no_status_bar">Statusleiste verbergen</string>
+    <string name="expanded_desktop_system_bars_visibility">Auf Sperrbildschirm deaktivieren</string>
+    <string name="expanded_desktop_system_bars_visibility_summary">Bei erweitertem Desktop die Status- und Navigationsleiste im Sperrbildschirm anzeigen</string>
     <string name="power_menu_profiles_title">Profilwechsel</string>
     <string name="power_menu_airplane_title">Flugmodus</string>
     <string name="power_menu_user_title">Benutzer</string>
@@ -688,9 +691,7 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <string name="storage_rescan_media">Speichermedium nach Mediendateien durchsuchen</string>
     <string name="storage_rescan_media_complete">Suche abgeschlossen</string>
     <string name="whisperpush_title">WhisperPush</string>
-    <string name="whisperpush_registration_title">Registrieren</string>
-    <string name="whisperpush_registration_summary">Registrieren, um mit WhisperPush verschlüsselte SMS zu versenden</string>
-    <string name="whisperpush_identitykey_title">Identitätsschlüssel überprüfen</string>
+    <string name="whisperpush_summary">Einstellungen für sichere SMS</string>
     <string name="custom_runtime_warning_title">Warnung</string>
     <string name="custom_runtime_warning_message">ART wird von CyanogenMod nicht unterstützt. Diese Einstellung ist experimentell und nur für Entwickler gedacht. Sie kann zu Instabilitäten, Abstürzen oder Datenverlust führen oder verhindern, dass Ihr Gerät startet. Besuchen Sie &lt;a href=\"http://source.android.com/devices/tech
 /dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; für mehr Informationen.&lt;br/&gt;&lt;br/&gt;Melden Sie keine Fehler, wenn Sie ART als Laufzeitumgebung aktiviert haben.&lt;br/&gt;&lt;br/&gt;Sind Sie sicher, dass Sie das Gerät neu starten wollen, um die Laufzeitumgebung von <xliff:g id="old" example="libdvm.so">%1$s</xliff:g>
@@ -725,41 +726,36 @@ auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
     <string name="stylus_app_not_installed">%s ist nicht installiert</string>
     <string name="ime_switcher_notify">Auswahlbenachrichtigung</string>
     <string name="ime_switcher_notify_summary">Benachrichtigung zur Auswahl der Eingabemethode in der Statusleiste anzeigen</string>
-  <string name="app_ops_summaries_wifi_change">WLAN ändern</string>
-  <string name="app_ops_labels_wifi_change">WLAN ändern</string>
-  <string name="app_ops_summaries_bluetooth_change">Bluetooth ändern</string>
-  <string name="app_ops_labels_bluetooth_change">Bluetooth ändern</string>
-  <string name="app_ops_summaries_data_change">mobile Daten ändern</string>
-  <string name="app_ops_labels_data_change">Mobile Daten ändern</string>
-  <string name="app_ops_summaries_alarm_wakeup">Ruhezustand ändern</string>
-  <string name="app_ops_labels_alarm_wakeup">Ruhezustand ändern</string>
-  <string name="app_ops_summaries_auto_start">automatisch starten</string>
-  <string name="app_ops_labels_auto_start">Autostart</string>
-  <string name="app_ops_categories_bootup">Systemstart</string>
-  <string name="app_ops_entry_summary"><xliff:g id="op">%1$s</xliff:g> (<xliff:g id="count">%2$s</xliff:g> verwendet)</string>
-  <string name="app_ops_allowed_count"><xliff:g id="count" example="2 times">%s</xliff:g> erlaubt</string>
-  <string name="app_ops_ignored_count"><xliff:g id="count" example="2 times">%s</xliff:g> verweigert</string>
-  <string name="app_ops_both_count"><xliff:g id="count">%1$s</xliff:g> erlaubt, <xliff:g id="count">%2$s</xliff:g> verweigert</string>
-  <string name="app_ops_show_user_apps">Installierte Apps anzeigen</string>
-  <string name="app_ops_show_system_apps">Integrierte Apps anzeigen</string>
-  <string name="app_ops_reset_counters">Erlaubt/Verweigert-Zähler zurücksetzen</string>
-  <string name="app_ops_reset_confirm_title">Zurücksetzen bestätigen</string>
-  <string name="app_ops_reset_confirm_mesg">Sollen die Zähler zurückgesetzt werden?</string>
-
-    <!-- Untranslated AOSP strings -->
-    <string name="intent_sender_data_label"><xliff:g id="data">Daten:</xliff:g></string>
-    <string name="wifi_disabled_association_rejected">Verbindung wurde abgelehnt</string>
-
-    <!-- CAF strings -->
-    <string name="bluetooth_enter_pin_msg_hs">Geben Sie zum Pairing mit &lt;br&gt;&lt;b&gt;<xliff:g id="device_name">%1$s</xliff:g>&lt;/b&gt;&lt;br&gt;&lt;br&gt; die erforderliche, aus mindestens 16 Stellen bestehende, PIN des Geräts ein:</string>
-    <string name="bluetooth_confirm_passkey_msg">Stellen Sie sicher, dass bei der Verbindung mit &lt;br>&lt;b><xliff:g id="device_name">%1$s</xliff:g>&lt;/b>&lt;br>&lt;br> dieses Kennwort angezeigt wird: &lt;br>&lt;b><xliff:g id="passkey">%2$s</xliff:g>&lt;/b></string>
-    <string name="bluetooth_profile_sap">SIM-Zugriff</string>
-    <string name="bluetooth_profile_dun">Internet-Einwahlverbindung</string>
-    <string name="bluetooth_sap_profile_summary_connected">Verbunden mit SIM-Zugriffsserver</string>
-    <string name="bluetooth_dun_profile_summary_connected">Verbunden mit Einwahldienst</string>
-    <string name="bluetooth_sap_profile_summary_use_for">Für SIM-Zugriff verwenden</string>
-    <string name="bluetooth_dun_profile_summary_use_for">Für Einwahlverbindungen verwenden</string>
-
+    <string name="app_ops_summaries_wifi_change">WLAN ändern</string>
+    <string name="app_ops_labels_wifi_change">WLAN ändern</string>
+    <string name="app_ops_summaries_bluetooth_change">Bluetooth ändern</string>
+    <string name="app_ops_labels_bluetooth_change">Bluetooth ändern</string>
+    <string name="app_ops_summaries_data_change">mobile Daten ändern</string>
+    <string name="app_ops_labels_data_change">Mobile Daten ändern</string>
+    <string name="app_ops_summaries_alarm_wakeup">Ruhezustand ändern</string>
+    <string name="app_ops_labels_alarm_wakeup">Ruhezustand ändern</string>
+    <string name="app_ops_summaries_auto_start">automatisch starten</string>
+    <string name="app_ops_labels_auto_start">Autostart</string>
+    <string name="app_ops_summaries_send_mms">MMS senden</string>
+    <string name="app_ops_labels_send_mms">MMS senden</string>
+    <string name="app_ops_summaries_read_mms">MMS lesen</string>
+    <string name="app_ops_labels_read_mms">MMS lesen</string>
+    <string name="app_ops_summaries_write_mms">MMS schreiben</string>
+    <string name="app_ops_labels_write_mms">MMS schreiben</string>
+    <string name="app_ops_categories_bootup">Systemstart</string>
+    <string name="app_ops_entry_summary"><xliff:g id="op">%1$s</xliff:g> (<xliff:g id="count">%2$s</xliff:g> verwendet)</string>
+    <string name="app_ops_allowed_count"><xliff:g id="count" example="2 times">%s</xliff:g> erlaubt</string>
+    <string name="app_ops_ignored_count"><xliff:g id="count" example="2 times">%s</xliff:g> verweigert</string>
+    <string name="app_ops_both_count"><xliff:g id="count">%1$s</xliff:g> erlaubt, <xliff:g id="count">%2$s</xliff:g> verweigert</string>
+    <string name="app_ops_show_user_apps">Installierte Apps anzeigen</string>
+    <string name="app_ops_show_system_apps">Integrierte Apps anzeigen</string>
+    <string name="app_ops_reset_counters">Erlaubt/Verweigert-Zähler zurücksetzen</string>
+    <string name="app_ops_reset_confirm_title">Zurücksetzen bestätigen</string>
+    <string name="app_ops_reset_confirm_mesg">Sollen die Zähler zurückgesetzt werden?</string>
+    <string name="edge_gesture_service_title">Berührungsgesten unterdrücken</string>
+    <string name="edge_gesture_service_summary">Berührungsgesten für die Status- und Navigationsleiste nicht an Apps senden</string>
+    <string name="data_usage_cycle_editor_subtitle_cm">Rücksetzdatum:</string>
+    <string name="data_usage_lengths_spinner_subtitle">Zykluslänge:</string>
     <string name="app_ops_summaries_access_notifications">Auf Benachrichtigungen zugreifen</string>
     <string name="app_ops_summaries_alarm_volume">Weckerlautstärke</string>
     <string name="app_ops_summaries_audio_focus">Audiofokus</string>
@@ -774,7 +770,7 @@ auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
     <string name="app_ops_summaries_keep_awake">aktiv lassen</string>
     <string name="app_ops_summaries_master_volume">Gesamtlautstärke</string>
     <string name="app_ops_summaries_media_buttons">Medienschaltflächen</string>
-    <string name="app_ops_summaries_media_volume">Medienlautstärke"</string>
+    <string name="app_ops_summaries_media_volume">Medienlautstärke</string>
     <string name="app_ops_summaries_modify_calendar">Kalender ändern</string>
     <string name="app_ops_summaries_modify_call_log">Anrufliste ändern</string>
     <string name="app_ops_summaries_modify_clipboard">Zwischenablage ändern</string>
@@ -803,7 +799,6 @@ auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
     <string name="app_ops_summaries_wifi_scan">WLAN-Scan</string>
     <string name="app_ops_summaries_write_icc_sms">ICC-SMS schreiben</string>
     <string name="app_ops_summaries_write_sms">SMS schreiben</string>
-
     <string name="app_ops_labels_access_notifications">Auf Benachrichtigungen zugreifen</string>
     <string name="app_ops_labels_alarm_volume">Weckerlautstärke</string>
     <string name="app_ops_labels_bluetooth_volume">Bluetooth-Lautstärke</string>
@@ -813,6 +808,11 @@ auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
     <string name="app_ops_labels_keep_awake">Aktiv lassen</string>
     <string name="app_ops_labels_location">Standort</string>
     <string name="app_ops_labels_media_buttons">Medienschaltflächen</string>
+    <string name="app_ops_labels_audio_focus">Audiofokus</string>
+    <string name="app_ops_labels_master_volume">Gesamtlautstärke</string>
+    <string name="app_ops_labels_voice_volume">Sprachlautstärke</string>
+    <string name="app_ops_labels_ring_volume">Klingeltonlautstärke</string>
+    <string name="app_ops_labels_media_volume">Medienlautstärke</string>
     <string name="app_ops_labels_modify_calendar">Kalender ändern</string>
     <string name="app_ops_labels_modify_call_log">Anrufliste ändern</string>
     <string name="app_ops_labels_modify_clipboard">Zwischenablage ändern</string>
@@ -825,17 +825,22 @@ auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
     <string name="app_ops_labels_read_call_log">Anrufliste lesen</string>
     <string name="app_ops_labels_read_clipboard">Zwischenablage lesen</string>
     <string name="app_ops_labels_read_contacts">Kontakte lesen</string>
-    <string name="app_ops_labels_read_sms_db">SMS/MMS lesen</string>
-    <string name="app_ops_labels_receive_mms">SMS/MMS empfangen</string>
-    <string name="app_ops_labels_receive_sms">SMS/MMS lesen</string>
+    <string name="app_ops_labels_read_sms_db">SMS-Datenbank lesen</string>
+    <string name="app_ops_labels_receive_mms">MMS empfangen</string>
+    <string name="app_ops_labels_receive_sms">SMS empfangen</string>
     <string name="app_ops_labels_record_audio">Audio aufnehmen</string>
-    <string name="app_ops_labels_send_sms">SMS/MMS schreiben</string>
+    <string name="app_ops_labels_send_sms">SMS senden</string>
     <string name="app_ops_labels_vibrate">Vibration</string>
-    <string name="app_ops_labels_write_sms_db">SMS/MMS schreiben</string>
-
+    <string name="app_ops_labels_write_sms_db">SMS-Datenbank schreiben</string>
     <string name="app_ops_categories_device">Gerät</string>
     <string name="app_ops_categories_location">Standort</string>
     <string name="app_ops_categories_media">Medien</string>
     <string name="app_ops_categories_messaging">SMS/MMS</string>
     <string name="app_ops_categories_personal">Persönlich</string>
+    <string name="disable_navkeys_title">Navigationsleiste aktivieren</string>
+    <string name="disable_navkeys_summary">Navigationstasten deaktivieren und stattdessen eine Navigationsleiste auf dem Bildschirm anzeigen</string>
+
+    <!-- Untranslated AOSP strings -->
+    <string name="intent_sender_data_label"><xliff:g id="data">Daten:</xliff:g></string>
+    <string name="wifi_disabled_association_rejected">Verbindung wurde abgelehnt</string>
 </resources>
