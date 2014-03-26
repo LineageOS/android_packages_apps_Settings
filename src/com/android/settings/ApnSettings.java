@@ -87,6 +87,8 @@ public class ApnSettings extends PreferenceActivity implements
 
     private static boolean mRestoreDefaultApnMode;
 
+    private static final String APN_TYPE_FILTER = "fota";
+
     private RestoreApnUiHandler mRestoreApnUiHandler;
     private RestoreApnProcessHandler mRestoreApnProcessHandler;
     private HandlerThread mRestoreDefaultApnThread;
@@ -226,6 +228,12 @@ public class ApnSettings extends PreferenceActivity implements
                         cursor.moveToNext();
                         continue;
                     }
+                }
+
+                //remove the filtered items, no need to show in UI
+                if(APN_TYPE_FILTER.equalsIgnoreCase(type)){
+                    cursor.moveToNext();
+                    continue;
                 }
 
                 String localizedName = getLocalizedName(this, cursor, LOCALIZED_NAME_INDEX);
