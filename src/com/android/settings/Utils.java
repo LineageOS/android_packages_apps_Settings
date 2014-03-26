@@ -75,12 +75,14 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.FileOutputStream;
+import java.io.FileFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.InetAddress;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Pattern;
 
 public class Utils {
 
@@ -755,5 +757,30 @@ public class Utils {
     /* returns whether the device has volume rocker or not. */
     public static boolean hasVolumeRocker(Context context) {
         return context.getResources().getBoolean(R.bool.has_volume_rocker);
+    }
+
+    /**
+     * Returns number of cpus
+     * @param path
+     */
+    public static int getNrCpus(String path)
+    {
+        class CpuFilter implements FileFilter {
+            @Override
+            public boolean accept(File fpath) {
+                if(Pattern.matches("cpu[0-9]+", fpath.getName())) {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        try {
+            File dir = new File(path);
+            File[] files = dir.listFiles(new CpuFilter());
+            return files.length;
+        } catch(Exception e) {
+            return 1;
+        }
     }
 }
