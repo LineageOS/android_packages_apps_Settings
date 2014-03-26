@@ -98,7 +98,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         }
 
         // Remove cLock settings item if not installed
-        if (!isPackageInstalled("com.cyanogenmod.lockclock")) {
+        if (!Utils.isPackageInstalled(getActivity(), "com.cyanogenmod.lockclock")) {
             widgetsCategory.removePreference(findPreference(KEY_LOCK_CLOCK));
         }
 
