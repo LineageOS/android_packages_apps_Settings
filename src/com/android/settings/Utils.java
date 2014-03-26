@@ -75,12 +75,14 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.FileOutputStream;
+import java.io.FileFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.InetAddress;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Pattern;
 
 public class Utils {
 
@@ -533,6 +535,14 @@ public class Utils {
 
     public static boolean fileExists(String filename) {
         return new File(filename).exists();
+    }
+
+    public static boolean fileIsReadable(String fname) {
+        return new File(fname).canRead();
+    }
+
+    public static boolean fileIsWritable(String fname) {
+        return new File(fname).canWrite();
     }
 
     public static String fileReadOneLine(String fname) {
