@@ -66,6 +66,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -1219,6 +1220,7 @@ public class WifiSettings extends RestrictedSettingsFragment
         mDlgAccessPoint = null;
         mDlgEdit = true;
         mDialog = new WifiDialog(getActivity(), this, null, true);
+        mDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         mDialog.show();
     }
 
