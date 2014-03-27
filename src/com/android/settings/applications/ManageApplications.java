@@ -704,13 +704,12 @@ public class ManageApplications extends Fragment implements
                 return origEntries;
             } else {
                 String prefixStr = ApplicationsState.normalize(prefix.toString());
-                final String spacePrefixStr = " " + prefixStr;
                 ArrayList<ApplicationsState.AppEntry> newEntries
                         = new ArrayList<ApplicationsState.AppEntry>();
                 for (int i=0; i<origEntries.size(); i++) {
                     ApplicationsState.AppEntry entry = origEntries.get(i);
                     String nlabel = entry.getNormalizedLabel();
-                    if (nlabel.startsWith(prefixStr) || nlabel.indexOf(spacePrefixStr) != -1) {
+                    if (nlabel.startsWith(prefixStr) || nlabel.indexOf(prefixStr) != -1) {
                         newEntries.add(entry);
                     }
                 }
