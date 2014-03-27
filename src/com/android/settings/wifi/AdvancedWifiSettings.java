@@ -379,7 +379,7 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
         String gateway = null;
         Preference wifiNetmaskPref = findPreference(KEY_CURRENT_NETMASK);
         String netmask = null;
-        if (getResources().getBoolean(R.bool.config_netinfo_invalid)) {
+        if (getResources().getBoolean(R.bool.config_netinfo)) {
             DhcpInfo dhcpInfo = mWifiManager.getDhcpInfo();
             if (wifiInfo != null) {
                 if (dhcpInfo != null) {
