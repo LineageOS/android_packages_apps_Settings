@@ -23,6 +23,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.RemoteException;
+import android.os.Handler;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -433,8 +434,16 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             mCameraSleepOnRelease.setEnabled(isCameraWakeEnabled);
             return true;
         } else if (preference == mDisableNavigationKeys) {
+            mDisableNavigationKeys.setEnabled(false);
             writeDisableNavkeysOption(getActivity(), mDisableNavigationKeys.isChecked());
             updateDisableNavkeysOption();
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mDisableNavigationKeys.setEnabled(true);
+                }
+            }, 1000);
         }
 
         return super.onPreferenceTreeClick(preferenceScreen, preference);
