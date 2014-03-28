@@ -29,12 +29,14 @@ import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.TelephonyIntents;
+import com.codeaurora.telephony.msim.MSimPhoneFactory;
 
 /**
  * Implements the preference screen to enable/disable ICC lock and
@@ -122,7 +124,15 @@ public class IccLockSettings extends PreferenceActivity
         public void onReceive(Context context, Intent intent) {
             final String action = intent.getAction();
             if (TelephonyIntents.ACTION_SIM_STATE_CHANGED.equals(action)) {
-                mHandler.sendMessage(mHandler.obtainMessage(MSG_SIM_STATE_CHANGED));
+                if (mPhone.getIccCard().getState().isPinLocked()) {
+                    //Code control lands up here only if user pressed cancel for PIN unlock.
+                    //So disable the pin toggle option as card is in LOCKED state.
+                    mPinToggle.setChecked(true);
+                    mPinToggle.setEnabled(false);
+                } else {
+                    mPinToggle.setEnabled(true);
+                    mHandler.sendMessage(mHandler.obtainMessage(MSG_SIM_STATE_CHANGED));
+                }
             }
         }
     };
@@ -182,7 +192,11 @@ public class IccLockSettings extends PreferenceActivity
         // Don't need any changes to be remembered
         getPreferenceScreen().setPersistent(false);
 
-        mPhone = PhoneFactory.getDefaultPhone();
+        Intent intent = getIntent();
+        int subscription = intent.getIntExtra(SelectSubscription.SUBSCRIPTION_KEY,
+                MSimPhoneFactory.getDefaultSubscription());
+        // Use the right phone based on the subscription selected.
+        mPhone = MSimPhoneFactory.getPhone(subscription);
         mRes = getResources();
         updatePreferences();
     }

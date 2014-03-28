@@ -85,10 +85,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             prefSet.removePreference(mStatusBarCmSignal);
         }
 
-        if (Utils.isTablet(getActivity())) {
-            prefSet.removePreference(statusBarBrightnessControl);
-        }
-
         enableStatusBarBatteryDependents(mStatusBarBattery.getValue());
     }
 
