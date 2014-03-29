@@ -14,25 +14,11 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="bluetooth_mas_request">"Anmodning om beskeder"</string>
-    <string name="bluetooth_mas_acceptance_dialog_text">%1$s vil gerne have adgang til dine beskeder. Vil du give %2$s adgang?</string>
-    <string name="bluetooth_mas_remember_choice">Spørg ikke igen</string>
-    <string name="bluetooth_enter_pin_msg_hs">For at parre med:<xliff:g id="bold">&lt;br>&lt;b></xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b>&lt;br>&lt;br></xliff:g>Skriv enhedens påkrævet PIN-kode (16 cifre eller mere):</string>
-    <string name="bluetooth_profile_sap">SIM-adgang</string>
-    <string name="bluetooth_sap_profile_summary_connected">Forbundet til SIM-adgangsserver</string>
-    <string name="bluetooth_sap_profile_summary_use_for">Bruges til SIM-adgang</string>
-    <string name="bluetooth_profile_dun">Dial-up-netværksadgang</string>
-    <string name="bluetooth_dun_profile_summary_connected">Forbundet til DUN-server</string>
-    <string name="bluetooth_dun_profile_summary_use_for">Anvend til dial-up-netværksadgang</string>
-    <string name="wifi_mode">Tilstand</string>
-    <string name="wifi_mode_ibss">Ad-Hoc (IBSS)-netværk</string>
-    <string name="wifi_mode_ibss_short">Ad-Hoc</string>
     <string name="wifi_setting_countrycode_title">Wi-Fi-regionskode</string>
     <string name="wifi_setting_countrycode_summary">Angiv regionskoden for Wi-Fi</string>
     <string name="wifi_setting_countrycode_error">Der opstod et problem med indstillingen af regionskoden.</string>
     <string name="wifi_setting_priority_title">Wi-Fi-prioritet</string>
     <string name="wifi_setting_priority_summary">Angiv prioriteten af Wi-Fi-netværkene</string>
-    <string name="wifi_disabled_association_rejected">Tilknytning afvist </string>
     <string name="volume_adjust_sounds_enable_title">Lydstyrkejusteringslyd</string>
     <string name="volume_adjust_sounds_enable_summary">Afspil lyd, når lydstyrke ændres på lydstyrkeknap</string>
     <string name="lockpattern_settings_enable_error_path_title">Vis mønsterfejl</string>
@@ -228,6 +214,8 @@
     <string name="pref_purgeable_assets_summary">Rensning af bitmap hukommelsesaktiver gør det muligt at frigøre mere RAM, når det er nødvendigt (kræver genstart)</string>
     <string name="pref_use_16bpp_alpha_title">16bit gennemsigtighed</string>
     <string name="pref_use_16bpp_alpha_summary">Bedre grafisk ydeevne, men lavere kvalitet og kan give visuelle artefakter (kræver genstart)</string>
+    <string name="pref_force_highend_gfx_title">Gennemtving højkvalitetsgrafik</string>
+    <string name="pref_force_highend_gfx_summary">Aktiverer nogle rigtig flotte visuelle effekter, såsom transparent status-/navigationslinje (kræver genstart)</string>
     <string name="display_rotation_title">Rotation</string>
     <string name="display_rotation_disabled">Deaktiveret</string>
     <string name="display_rotation_unit">grader</string>
@@ -409,9 +397,12 @@
     <string name="power_menu_reboot_title">Genstartsmenu</string>
     <string name="power_menu_screenshot_title">Skærmbillede</string>
     <string name="power_menu_expanded_desktop">Udvidet skrivebord</string>
+    <string name="expanded_desktop_style">Tema for udvidet skrivebord</string>
     <string name="expanded_desktop_disabled">Slået fra</string>
     <string name="expanded_desktop_status_bar">Statuslinje synlig</string>
     <string name="expanded_desktop_no_status_bar">Statuslinje skjult</string>
+    <string name="expanded_desktop_system_bars_visibility">Deaktivér på skærmlås</string>
+    <string name="expanded_desktop_system_bars_visibility_summary">Vis status- og navigationslinje på skærmlås med Udvidet skrivebord</string>
     <string name="power_menu_profiles_title">Profilskifter</string>
     <string name="power_menu_airplane_title">Flytilstand</string>
     <string name="power_menu_user_title">Brugerskifter</string>
@@ -449,6 +440,8 @@
     <string name="usb_mass_storage_summary">Aktivér USB-lager</string>
     <string name="storage_rescan_media">Scan lagerenheden igen for medier</string>
     <string name="storage_rescan_media_complete">Scanning fuldført</string>
+    <string name="whisperpush_title">WhisperPush</string>
+    <string name="whisperpush_summary">Administrér indstillinger for sikker SMS.</string>
     <string name="adb_over_network">ADB via netværk</string>
     <string name="adb_over_network_summary">Aktivér TCP/IP fejlfinding på netværksenheder (Wi-Fi, USB-netværk). Denne indstilling nulstilles ved genstart</string>
     <string name="adb_over_network_warning">ADVARSEL: Når ADB via netværk er aktiveret, er din telefon åben for indtrængen på alle de tilsluttede netværk, herunder GSM-data-netværk!\n\nBrug kun denne funktion, når du er tilsluttet til betroede netværk.\n\nØnsker du virkelig at aktivere denne funktion?</string>
@@ -696,9 +689,6 @@ to for at indsætte yderligere kontrolpunkter. \'Fjern\' sletter den valgte linj
     <string name="keyboard_backlight_seekbar_title">Tastatur-lysstyrke</string>
     <string name="backlight_timeout_title">Oplysnings-timeout</string>
     <string name="backlight_timeout_unlimited">Slå ikke fra</string>
-    <plurals name="backlight_timeout_time">
-        <item quantity="one"><xliff:g id="seconds">%d</xliff:g> sekund</item>
-    </plurals>
     <string name="backlight_summary_disabled">Deaktiveret</string>
     <string name="backlight_summary_enabled_with_timeout">Aktiveret for <xliff:g id="timeout">%s</xliff:g></string>
     <string name="backlight_summary_enabled">Aktiveret</string>
@@ -721,7 +711,6 @@ to for at indsætte yderligere kontrolpunkter. \'Fjern\' sletter den valgte linj
     <string name="battery_info_status_charging_dock_ac">(DockAC)</string>
     <string name="battery_info_status_charging_dock_usb">(DockUSB)</string>
     <string name="menu_stats_reset">Nulstil</string>
-    <string name="intent_sender_data_label"><xliff:g id="data">Data:</xliff:g></string>
     <string name="app_ops_summaries_wifi_change">ændring af wifi</string>
     <string name="app_ops_labels_wifi_change">Ændring af Wi-Fi</string>
     <string name="app_ops_summaries_bluetooth_change">ændring af bluetooth</string>
@@ -729,7 +718,13 @@ to for at indsætte yderligere kontrolpunkter. \'Fjern\' sletter den valgte linj
     <string name="app_ops_summaries_data_change">ændring af data</string>
     <string name="app_ops_labels_data_change">Ændring af Data</string>
     <string name="app_ops_summaries_alarm_wakeup">vågn op</string>
+    <string name="app_ops_summaries_send_mms">send MMS</string>
+    <string name="app_ops_summaries_read_mms">læs MMS</string>
+    <string name="app_ops_summaries_write_mms">skriv MMS</string>
     <string name="app_ops_labels_alarm_wakeup">Vågn op</string>
+    <string name="app_ops_labels_send_mms">Send MMS</string>
+    <string name="app_ops_labels_read_mms">Læs MMS</string>
+    <string name="app_ops_labels_write_mms">Skriv MMS</string>
     <string name="app_ops_summaries_auto_start">autostart</string>
     <string name="app_ops_labels_auto_start">Autostart</string>
     <string name="app_ops_categories_bootup">Opstart</string>
@@ -746,16 +741,11 @@ to for at indsætte yderligere kontrolpunkter. \'Fjern\' sletter den valgte linj
     <string name="app_ops_reset_counters">Nulstil tillad/nægte-tællere</string>
     <string name="app_ops_reset_confirm_title">Bekræft nulstilling af tællere</string>
     <string name="app_ops_reset_confirm_mesg">Er du sikker på at du vil nulstille AppOps tællerne ?</string>
-    <string name="whisperpush_title">WhisperPush</string>
-    <string name="whisperpush_registration_title">Registrér</string>
-    <string name="whisperpush_registration_summary">Registrér WhisperPush for at aktivere krypterede SMS-beskeder</string>
-    <string name="whisperpush_identitykey_title">Bekræft identitetsnøgler</string>
     <string name="custom_runtime_warning_title">Advarsel</string>
     <string name="custom_runtime_warning_message">ART understøttes ikke af CyanogenMod. Denne indstilling er kun medtaget til eksperimenter, og kan forårsage nedbrud, ustabilitet, datatab eller forhindre din enhed i at starte korrekt. Besøg &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; for mere information.&lt;br/&gt;&lt;br/&gt;Vi anmoder dig om ikke at indrapportere fejl, hvis du har aktiveret ART.&lt;br/&gt;&lt;br/&gt;Er du sikker på, at du vil skifte runtime fra <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> til <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
     <string name="cmlicense_title">Juridisk information for CyanogenMod</string>
     <string name="settings_cmlicense_activity_title">Juridisk information for CyanogenMod</string>
     <string name="settings_cmlicense_activity_unreachable">Du har ingen dataforbindelse. Gå til %s fra en computer tilsluttet Internettet for at vise denne information nu.</string>
-
     <string name="app_ops_summaries_access_notifications">adgang til notifikationer</string>
     <string name="app_ops_summaries_alarm_volume">lydstyrke for alarm</string>
     <string name="app_ops_summaries_audio_focus">lydfokus</string>
@@ -799,7 +789,6 @@ to for at indsætte yderligere kontrolpunkter. \'Fjern\' sletter den valgte linj
     <string name="app_ops_summaries_wifi_scan">scan wi-fi</string>
     <string name="app_ops_summaries_write_icc_sms">skriv ICC SMS</string>
     <string name="app_ops_summaries_write_sms">skriv SMS</string>
-
     <string name="app_ops_labels_access_notifications">Adgang til notifikationer</string>
     <string name="app_ops_labels_alarm_volume">Lydstyrke for alarmer</string>
     <string name="app_ops_labels_bluetooth_volume">Lydstyrke for Bluetooth</string>
@@ -809,6 +798,11 @@ to for at indsætte yderligere kontrolpunkter. \'Fjern\' sletter den valgte linj
     <string name="app_ops_labels_keep_awake">Hold vågen</string>
     <string name="app_ops_labels_location">Placering</string>
     <string name="app_ops_labels_media_buttons">Medieknapper</string>
+    <string name="app_ops_labels_audio_focus">Lydfokus</string>
+    <string name="app_ops_labels_master_volume">Systemlydstyrke</string>
+    <string name="app_ops_labels_voice_volume">Lydstyrke for stemmeopkald</string>
+    <string name="app_ops_labels_ring_volume">Lydstyrke for ringetone</string>
+    <string name="app_ops_labels_media_volume">Lydstyrke for medier</string>
     <string name="app_ops_labels_modify_calendar">Ændre kalender</string>
     <string name="app_ops_labels_modify_call_log">Ændre opkaldslog</string>
     <string name="app_ops_labels_modify_clipboard">Ændre udklipsholder</string>
@@ -828,10 +822,22 @@ to for at indsætte yderligere kontrolpunkter. \'Fjern\' sletter den valgte linj
     <string name="app_ops_labels_send_sms">Send SMS/MMS</string>
     <string name="app_ops_labels_vibrate">Vibrér</string>
     <string name="app_ops_labels_write_sms_db">Send SMS/MMS</string>
-
     <string name="app_ops_categories_device">Enhed</string>
     <string name="app_ops_categories_location">Placering</string>
     <string name="app_ops_categories_media">Medier</string>
     <string name="app_ops_categories_messaging">Beskeder</string>
     <string name="app_ops_categories_personal">Personlig</string>
+    <string name="edge_gesture_service_title">Blokér berøringsevents for bevægelser</string>
+    <string name="edge_gesture_service_summary">Send ikke berøringsevents for navigations- og statuslinjebevægelser til apps</string>
+    <string name="accessibility_sync_in_progress">Synkroniserer\u2026</string>
+    <string name="data_usage_cycle_editor_subtitle_cm">Dato for hver cyklus:</string>
+    <string name="data_usage_lengths_spinner_subtitle">Længde på cyklus:</string>
+    <string name="disable_navkeys_title">Aktivér navigationslinje</string>
+    <string name="disable_navkeys_summary">Aktivér navigationslinje på skærmen og deaktivér hardwareknapper</string>
+    <string name="wifi_mode">Tilstand</string>
+    <string name="wifi_mode_ibss">Ad-Hoc-netværk (IBSS)</string>
+    <string name="wifi_mode_ibss_short">Ad-Hoc</string>
+    <string name="wifi_ibss_freq_title">Kanal / Frekvens</string>
+    <string name="wifi_channel">Kanal</string>
+    <string name="wifi_mhz">MHz</string>
 </resources>
