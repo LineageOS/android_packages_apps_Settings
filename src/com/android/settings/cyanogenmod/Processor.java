@@ -27,6 +27,8 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
+import java.lang.Runtime;
+
 //
 // CPU Related Settings
 //
@@ -232,28 +234,42 @@ public class Processor extends SettingsPreferenceFragment implements
         if (newValue != null) {
             if (preference == mGovernorPref) {
                 fname = GOV_FILE;
-            } else if (preference == mMinFrequencyPref) {
-                fname = FREQ_MIN_FILE;
-            } else if (preference == mMaxFrequencyPref) {
-                fname = FREQ_MAX_FILE;
-            }
-
-            if (Utils.fileWriteOneLine(fname, (String) newValue)) {
-                if (preference == mGovernorPref) {
-                    mGovernorPref.setSummary(String.format(mGovernorFormat, (String) newValue));
-                } else if (preference == mMinFrequencyPref) {
-                    mMinFrequencyPref.setSummary(String.format(mMinFrequencyFormat,
-                            toMHz((String) newValue)));
-                } else if (preference == mMaxFrequencyPref) {
-                    mMaxFrequencyPref.setSummary(String.format(mMaxFrequencyFormat,
-                            toMHz((String) newValue)));
+                for(int i = 0; i < Runtime.getRuntime().availableProcessors(); i++) {
+                    if (i == 0) {
+                        if (Utils.fileWriteOneLine(fname, (String) newValue)) {
+                            mGovernorPref.setSummary(String.format(mGovernorFormat, (String) newValue));
+                        } else {
+                            return false;
+                        }
+                    } else {
+                        Utils.fileWriteOneLine(fname.replace('0', (char) ('0' + i)), (String) newValue);
+                    }
                 }
                 return true;
             } else {
-                return false;
+                if (preference == mMinFrequencyPref) {
+                    fname = FREQ_MIN_FILE;
+                } else if (preference == mMaxFrequencyPref) {
+                    fname = FREQ_MAX_FILE;
+                }
+
+                if (Utils.fileWriteOneLine(fname, (String) newValue)) {
+                    if (preference == mMinFrequencyPref) {
+                        mMinFrequencyPref.setSummary(String.format(mMinFrequencyFormat,
+                                toMHz((String) newValue)));
+                    } else if (preference == mMaxFrequencyPref) {
+                        mMaxFrequencyPref.setSummary(String.format(mMaxFrequencyFormat,
+                                toMHz((String) newValue)));
+                    }
+
+                    return true;
+                } else {
+                    return false;
+                }
             }
+        } else {
+            return false;
         }
-        return false;
     }
 
     private String toMHz(String mhzString) {
