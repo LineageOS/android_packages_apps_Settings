@@ -46,10 +46,12 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private static final String KEY_ENABLE_WIDGETS = "keyguard_enable_widgets";
     private static final String KEY_LOCK_CLOCK = "lock_clock";
     private static final String KEY_ENABLE_CAMERA = "keyguard_enable_camera";
+    private static final String KEY_ENABLE_MODLOCK = "keyguard_enable_modlock";
 
     private ListPreference mBatteryStatus;
     private CheckBoxPreference mEnableKeyguardWidgets;
     private CheckBoxPreference mEnableCameraWidget;
+    private CheckBoxPreference mEnableModLock;
 
     private ChooseLockSettingsHelper mChooseLockSettingsHelper;
     private LockPatternUtils mLockUtils;
@@ -73,6 +75,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         // Find preferences
         mEnableKeyguardWidgets = (CheckBoxPreference) findPreference(KEY_ENABLE_WIDGETS);
         mEnableCameraWidget = (CheckBoxPreference) findPreference(KEY_ENABLE_CAMERA);
+        mEnableModLock = (CheckBoxPreference) findPreference(KEY_ENABLE_MODLOCK);
 
         mBatteryStatus = (ListPreference) findPreference(KEY_BATTERY_STATUS);
         if (mBatteryStatus != null) {
@@ -123,6 +126,10 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             mEnableCameraWidget.setChecked(mLockUtils.getCameraEnabled());
         }
 
+        if (mEnableModLock != null) {
+            mEnableModLock.setChecked(mLockUtils.getModLockEnabled());
+        }
+
         // Update battery status
         if (mBatteryStatus != null) {
             ContentResolver cr = getActivity().getContentResolver();
@@ -142,6 +149,9 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             return true;
         } else if (KEY_ENABLE_CAMERA.equals(key)) {
             mLockUtils.setCameraEnabled(mEnableCameraWidget.isChecked());
+            return true;
+        } else if (KEY_ENABLE_MODLOCK.equals(key)) {
+            mLockUtils.setModLockEnabled(mEnableModLock.isChecked());
             return true;
         }
 
