@@ -48,6 +48,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.android.settings.MediaFormat;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
@@ -73,6 +74,7 @@ public class Memory extends SettingsPreferenceFragment {
     // one's preference is disabled
     private static Preference sLastClickedMountToggle;
     private static String sClickedMountPoint;
+    private StorageVolume mStorageVolume;
 
     // Access using getMountService()
     private IMountService mMountService;
@@ -240,6 +242,8 @@ public class Memory extends SettingsPreferenceFragment {
             if (volume != null && category.mountToggleClicked(preference)) {
                 sLastClickedMountToggle = preference;
                 sClickedMountPoint = volume.getPath();
+                mStorageVolume = volume;
+
                 String state = mStorageManager.getVolumeState(volume.getPath());
                 if (Environment.MEDIA_MOUNTED.equals(state) ||
                         Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
@@ -277,23 +281,49 @@ public class Memory extends SettingsPreferenceFragment {
 
     @Override
     public Dialog onCreateDialog(int id) {
+
         switch (id) {
-        case DLG_CONFIRM_UNMOUNT:
+            case DLG_CONFIRM_UNMOUNT:
+                int titleResId = R.string.dlg_confirm_unmount_title;
+                int messageResId = R.string.dlg_confirm_unmount_text;
+
+                // set the strings based on volume
+                if (MediaFormat.isUsbStorage(mStorageVolume, getActivity())) {
+                    titleResId = R.string.dlg_confirm_usb_unmount_title;
+                    messageResId = R.string.dlg_confirm_usb_unmount_text;
+
+                } else if (MediaFormat.isUiccStorage(mStorageVolume, getActivity())) {
+                    titleResId = R.string.dlg_confirm_uicc_unmount_title;
+                    messageResId = R.string.dlg_confirm_uicc_unmount_text;
+                }
+
                 return new AlertDialog.Builder(getActivity())
-                    .setTitle(R.string.dlg_confirm_unmount_title)
-                    .setPositiveButton(R.string.dlg_ok, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            doUnmount();
-                        }})
-                    .setNegativeButton(R.string.cancel, null)
-                    .setMessage(R.string.dlg_confirm_unmount_text)
-                    .create();
-        case DLG_ERROR_UNMOUNT:
+                        .setTitle(titleResId)
+                        .setPositiveButton(R.string.dlg_ok, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                doUnmount();
+                            }
+                        })
+                        .setNegativeButton(R.string.cancel, null)
+                        .setMessage(messageResId)
+                        .create();
+
+            case DLG_ERROR_UNMOUNT:
+                int errMessageResId = R.string.dlg_error_unmount_text;
+
+                // set the strings based on volume
+                if (MediaFormat.isUsbStorage(mStorageVolume, getActivity())) {
+                    errMessageResId = R.string.dlg_error_usb_unmount_text;
+
+                } else if (MediaFormat.isUiccStorage(mStorageVolume, getActivity())) {
+                    errMessageResId = R.string.dlg_error_uicc_unmount_text;
+                }
+
                 return new AlertDialog.Builder(getActivity())
-            .setTitle(R.string.dlg_error_unmount_title)
-            .setNeutralButton(R.string.dlg_ok, null)
-            .setMessage(R.string.dlg_error_unmount_text)
-            .create();
+                        .setTitle(R.string.dlg_error_unmount_title)
+                        .setNeutralButton(R.string.dlg_ok, null)
+                        .setMessage(errMessageResId)
+                        .create();
         }
         return null;
     }
