@@ -159,6 +159,9 @@ public class ChooseLockPassword extends PreferenceActivity {
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
+            // Tell the framework to try to keep this fragment around
+            // during a configuration change.
+            setRetainInstance(true);
             mLockPatternUtils = new LockPatternUtils(getActivity());
             Intent intent = getActivity().getIntent();
             if (!(getActivity() instanceof ChooseLockPassword)) {
