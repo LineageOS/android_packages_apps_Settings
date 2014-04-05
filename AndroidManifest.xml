@@ -652,7 +652,8 @@
                 android:clearTaskOnLaunch="true">
            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <action android:name="com.android.settings.MULTI_SIM_SETTINGS" />
+                <!-- This Activity is not used, so it should not be found by 'Sim Detector'. -->
+                <!-- <action android:name="com.android.settings.MULTI_SIM_SETTINGS" /> -->
                 <category android:name="android.intent.category.DEFAULT" />
                 <!-- This Activity is not used, so it should not be found by 'Voice Dialer'. -->
                 <!-- <category android:name="android.intent.category.VOICE_LAUNCH" /> -->
