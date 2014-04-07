@@ -46,10 +46,12 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private static final String KEY_ENABLE_WIDGETS = "keyguard_enable_widgets";
     private static final String KEY_LOCK_CLOCK = "lock_clock";
     private static final String KEY_ENABLE_CAMERA = "keyguard_enable_camera";
+    private static final String KEY_LOCKSCREEN_MODLOCK_ENABLED = "lockscreen_modlock_enabled";
 
     private ListPreference mBatteryStatus;
     private CheckBoxPreference mEnableKeyguardWidgets;
     private CheckBoxPreference mEnableCameraWidget;
+    private CheckBoxPreference mEnableModLock;
 
     private ChooseLockSettingsHelper mChooseLockSettingsHelper;
     private LockPatternUtils mLockUtils;
@@ -74,6 +76,11 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         mEnableKeyguardWidgets = (CheckBoxPreference) findPreference(KEY_ENABLE_WIDGETS);
         mEnableCameraWidget = (CheckBoxPreference) findPreference(KEY_ENABLE_CAMERA);
 
+        mEnableModLock = (CheckBoxPreference) findPreference(KEY_LOCKSCREEN_MODLOCK_ENABLED);
+        if (mEnableModLock != null) {
+            mEnableModLock.setOnPreferenceChangeListener(this);
+        }
+
         mBatteryStatus = (ListPreference) findPreference(KEY_BATTERY_STATUS);
         if (mBatteryStatus != null) {
             mBatteryStatus.setOnPreferenceChangeListener(this);
@@ -96,6 +103,17 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         } else if (mLockUtils.isSecure()) {
             checkDisabledByPolicy(mEnableCameraWidget,
                     DevicePolicyManager.KEYGUARD_DISABLE_SECURE_CAMERA);
+        }
+
+        boolean canEnableModLockscreen = false;
+        final Bundle keyguard_metadata = Utils.getApplicationMetadata(getActivity(), "com.android.keyguard");
+        if (null != keyguard_metadata) {
+            canEnableModLockscreen = keyguard_metadata.getBoolean("com.cyanogenmod.keyguard", false);
+        }
+
+        if (mEnableModLock != null && !canEnableModLockscreen) {
+            generalCategory.removePreference(mEnableModLock);
+            mEnableModLock = null;
         }
 
         // Remove cLock settings item if not installed
@@ -131,6 +149,14 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             mBatteryStatus.setValueIndex(batteryStatus);
             mBatteryStatus.setSummary(mBatteryStatus.getEntries()[batteryStatus]);
         }
+
+        // Update mod lockscreen status
+        if (mEnableModLock != null) {
+            ContentResolver cr = getActivity().getContentResolver();
+            int modLockEnabled = Settings.System.getInt(cr,
+                    Settings.System.LOCKSCREEN_MODLOCK_ENABLED, 1);
+            mEnableModLock.setChecked(1==modLockEnabled);
+        }
     }
 
     @Override
@@ -157,6 +183,10 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             int index = mBatteryStatus.findIndexOfValue((String) objValue);
             Settings.System.putInt(cr, Settings.System.LOCKSCREEN_BATTERY_VISIBILITY, value);
             mBatteryStatus.setSummary(mBatteryStatus.getEntries()[index]);
+            return true;
+        } else if (preference == mEnableModLock) {
+            Settings.System.putInt(cr, Settings.System.LOCKSCREEN_MODLOCK_ENABLED,
+                true==((Boolean)objValue)?1:0);
             return true;
         }
 
