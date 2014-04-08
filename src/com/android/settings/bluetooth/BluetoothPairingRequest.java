@@ -18,6 +18,7 @@ package com.android.settings.bluetooth;
 
 import com.android.settings.R;
 
+import android.app.KeyguardManager;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -66,8 +67,10 @@ public final class BluetoothPairingRequest extends BroadcastReceiver {
 
             PowerManager powerManager =
                     (PowerManager)context.getSystemService(Context.POWER_SERVICE);
+            KeyguardManager keyguardManager =
+                    (KeyguardManager)context.getSystemService(Context.KEYGUARD_SERVICE);
             String deviceAddress = device != null ? device.getAddress() : null;
-            if (powerManager.isScreenOn() &&
+            if (powerManager.isScreenOn() && !keyguardManager.inKeyguardRestrictedInputMode() &&
                     LocalBluetoothPreferences.shouldShowDialogInForeground(context, deviceAddress)) {
                 // Since the screen is on and the BT-related activity is in the foreground,
                 // just open the dialog
