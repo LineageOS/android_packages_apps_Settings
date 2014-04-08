@@ -33,6 +33,8 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.hardware.usb.IUsbManager;
 import android.os.AsyncTask;
 import android.os.BatteryManager;
@@ -65,10 +67,14 @@ import android.widget.TextView;
 
 import dalvik.system.VMRuntime;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+
 
 /*
  * Displays preferences for application developers.
@@ -131,6 +137,10 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private static final String DEBUG_DEBUGGING_CATEGORY_KEY = "debug_debugging_category";
     private static final String DEBUG_APPLICATIONS_CATEGORY_KEY = "debug_applications_category";
     private static final String WIFI_DISPLAY_CERTIFICATION_KEY = "wifi_display_certification";
+
+    private static final String FILENAME_META_VERSION = "/firmware/verinfo/ver_info.txt";
+    private static final String KEY_SOFTWARE_VERSION = "software_version";
+    private static final String KEY_META_VERSION = "meta_version";
 
     private static final String OPENGL_TRACES_KEY = "enable_opengl_traces";
 
@@ -234,6 +244,16 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         }
 
         addPreferencesFromResource(R.xml.development_prefs);
+        String meta = getMetaInfoFromSharedPref();
+        if(meta.equals("")){
+            try {
+                meta = readLine(FILENAME_META_VERSION);
+            }catch (IOException e) {
+                Log.e(TAG, "IO Exception when getting meta version", e);
+            }
+            saveMetaInfoToSharedPref(meta);
+        }
+        setStringSummary(KEY_SOFTWARE_VERSION, meta);
 
         final PreferenceGroup debugDebuggingCategory = (PreferenceGroup)
                 findPreference(DEBUG_DEBUGGING_CATEGORY_KEY);
@@ -1435,5 +1455,43 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         } catch (NameNotFoundException e) {
             return false;
         }
+    }
+
+    /**
+     * Reads a line from the specified file.
+     * @param filename the file to read from
+     * @return the first line, if any.
+     * @throws IOException if the file couldn't be read
+     */
+    private static String readLine(String filename) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(filename), 256);
+        try {
+            return reader.readLine();
+        } finally {
+            reader.close();
+        }
+    }
+
+    private void setStringSummary(String preference, String value) {
+        try {
+            findPreference(preference).setSummary(value);
+        } catch (RuntimeException e) {
+            findPreference(preference).setSummary(
+                getResources().getString(R.string.device_info_default));
+        }
+    }
+
+    private String getMetaInfoFromSharedPref() {
+        SharedPreferences sharedPref = getActivity().getSharedPreferences(PREF_FILE,
+                        Context.MODE_PRIVATE);
+        return sharedPref.getString(KEY_META_VERSION, "");
+    }
+
+    private void saveMetaInfoToSharedPref(String value) {
+        SharedPreferences sharedPref = getActivity().getSharedPreferences(PREF_FILE,
+                        Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(KEY_META_VERSION, value);
+        editor.commit();
     }
 }
