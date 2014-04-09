@@ -2,6 +2,193 @@
   "comments": [
     {
       "key": {
+        "uuid": "7af24918_f2bad06d",
+        "filename": "src/com/android/settings/cyanogenmod/LockscreenInterface.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 9444
+      },
+      "writtenOn": "2014-04-09T13:12:15Z",
+      "side": 1,
+      "message": "Unused imports.",
+      "revId": "ea5696caed1e4c1cf2b1c08b7717fa21ecc66b9c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7af24918_528904ca",
+        "filename": "src/com/android/settings/cyanogenmod/LockscreenInterface.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 9444
+      },
+      "writtenOn": "2014-04-09T13:12:15Z",
+      "side": 1,
+      "message": "Put this somewhere global to other packages (ex Settings)",
+      "revId": "ea5696caed1e4c1cf2b1c08b7717fa21ecc66b9c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7af24918_f2ec9091",
+        "filename": "src/com/android/settings/cyanogenmod/LockscreenInterface.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 9444
+      },
+      "writtenOn": "2014-04-09T13:12:15Z",
+      "side": 1,
+      "message": "Non-public, non-static field names start with m. But is this var even being used?",
+      "revId": "ea5696caed1e4c1cf2b1c08b7717fa21ecc66b9c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7af24918_5202a43f",
+        "filename": "src/com/android/settings/cyanogenmod/LockscreenInterface.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 9444
+      },
+      "writtenOn": "2014-04-09T13:12:15Z",
+      "side": 1,
+      "message": "Update lock background summary in resume. Something else (that we are working on) could change. it",
+      "revId": "ea5696caed1e4c1cf2b1c08b7717fa21ecc66b9c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7af24918_32ff1836",
+        "filename": "src/com/android/settings/cyanogenmod/LockscreenInterface.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 9444
+      },
+      "writtenOn": "2014-04-09T13:12:15Z",
+      "side": 1,
+      "message": "uneccessary since we are not performing anything here",
+      "revId": "ea5696caed1e4c1cf2b1c08b7717fa21ecc66b9c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7af24918_92fc2c40",
+        "filename": "src/com/android/settings/cyanogenmod/LockscreenInterface.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 9444
+      },
+      "writtenOn": "2014-04-09T13:12:15Z",
+      "side": 1,
+      "message": "findIndexOfValue((String) objValue); We know this object will be a string.",
+      "revId": "ea5696caed1e4c1cf2b1c08b7717fa21ecc66b9c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7af24918_92938cfa",
+        "filename": "src/com/android/settings/cyanogenmod/LockscreenInterface.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 9444
+      },
+      "writtenOn": "2014-04-09T13:12:15Z",
+      "side": 1,
+      "message": "do not return true here if handleBackgroundSelection fails",
+      "revId": "ea5696caed1e4c1cf2b1c08b7717fa21ecc66b9c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7af24918_72f9a04d",
+        "filename": "src/com/android/settings/cyanogenmod/LockscreenInterface.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 9444
+      },
+      "writtenOn": "2014-04-09T13:12:15Z",
+      "side": 1,
+      "message": "Refactor the AsyncTask as an inner class.\nIf uri returns null we do not need to execute AsyncTask (and Toast should be unsuccesful).",
+      "revId": "ea5696caed1e4c1cf2b1c08b7717fa21ecc66b9c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7af24918_d294f4e9",
+        "filename": "src/com/android/settings/cyanogenmod/LockscreenInterface.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 9444
+      },
+      "writtenOn": "2014-04-09T13:12:15Z",
+      "side": 1,
+      "message": "I think getActivity() could be null if the user leaves this interface quickly enough.",
+      "revId": "ea5696caed1e4c1cf2b1c08b7717fa21ecc66b9c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7af24918_b2c048e2",
+        "filename": "src/com/android/settings/cyanogenmod/LockscreenInterface.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 9444
+      },
+      "writtenOn": "2014-04-09T13:12:15Z",
+      "side": 1,
+      "message": "The code might not be a success at this point. Need to handle failure case.",
+      "revId": "ea5696caed1e4c1cf2b1c08b7717fa21ecc66b9c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7af24918_d2bb5474",
+        "filename": "src/com/android/settings/cyanogenmod/LockscreenInterface.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 9444
+      },
+      "writtenOn": "2014-04-09T13:12:15Z",
+      "side": 1,
+      "message": "else statement should be aligned with the first if statement",
+      "revId": "ea5696caed1e4c1cf2b1c08b7717fa21ecc66b9c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7af24918_52dbc4ed",
         "filename": "src/com/android/settings/cyanogenmod/LockscreenInterface.java",
         "patchSetId": 21
@@ -13,6 +200,40 @@
       "writtenOn": "2014-04-09T12:10:12Z",
       "side": 1,
       "message": "I believe your missing a bracket here }",
+      "revId": "ea5696caed1e4c1cf2b1c08b7717fa21ecc66b9c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7af24918_b2996822",
+        "filename": "src/com/android/settings/cyanogenmod/LockscreenInterface.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 9444
+      },
+      "writtenOn": "2014-04-09T13:12:15Z",
+      "side": 1,
+      "message": "How about a toast and log for these rare but obtainable exceptions? Closing bracket for 319 I think is missing.",
+      "revId": "ea5696caed1e4c1cf2b1c08b7717fa21ecc66b9c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7af24918_f2a3f04d",
+        "filename": "src/com/android/settings/cyanogenmod/LockscreenInterface.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 9444
+      },
+      "writtenOn": "2014-04-09T13:12:15Z",
+      "side": 1,
+      "message": "ACTION_LOCKSCREEN_KEYGUARD_WALLPAPER_CHANGED\n\nWe want a new action for this and for it to be clear it is not the launcher wallpaper being changed.",
       "revId": "ea5696caed1e4c1cf2b1c08b7717fa21ecc66b9c",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
