@@ -155,6 +155,24 @@
     },
     {
       "key": {
+        "uuid": "7af24918_0d091d2d",
+        "filename": "src/com/android/settings/cyanogenmod/LockscreenInterface.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-04-09T16:28:01Z",
+      "side": 1,
+      "message": "Right. Vest idea probably is to pass in the Activity as a WeakReference.",
+      "parentUuid": "7af24918_d294f4e9",
+      "revId": "ea5696caed1e4c1cf2b1c08b7717fa21ecc66b9c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7af24918_b2c048e2",
         "filename": "src/com/android/settings/cyanogenmod/LockscreenInterface.java",
         "patchSetId": 21
@@ -234,6 +252,24 @@
       "writtenOn": "2014-04-09T13:12:15Z",
       "side": 1,
       "message": "ACTION_LOCKSCREEN_KEYGUARD_WALLPAPER_CHANGED\n\nWe want a new action for this and for it to be clear it is not the launcher wallpaper being changed.",
+      "revId": "ea5696caed1e4c1cf2b1c08b7717fa21ecc66b9c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7af24918_ad03c90c",
+        "filename": "src/com/android/settings/cyanogenmod/LockscreenInterface.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-04-09T16:28:01Z",
+      "side": 1,
+      "message": "This doesn\u0027t really make sense. The keyguard _is_ the lockscreen, adding LOCKSCREEN_ in there would only duplicate it being mentioned.",
+      "parentUuid": "7af24918_f2a3f04d",
       "revId": "ea5696caed1e4c1cf2b1c08b7717fa21ecc66b9c",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
