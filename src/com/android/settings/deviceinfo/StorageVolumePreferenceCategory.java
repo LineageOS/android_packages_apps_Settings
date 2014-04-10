@@ -339,23 +339,32 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
                 mMountTogglePreference.setSummary(mResources.getString(summaryResId));
 
             } else {
-                mMountTogglePreference.setEnabled(false);
-
-                if (MediaFormat.isUsbStorage(mVolume, context)) {
-                    titleResId = R.string.usb_mount;
-                    summaryResId = R.string.usb_insert_summary;
-
-                } else if (MediaFormat.isUiccStorage(mVolume, context)) {
-                    titleResId = R.string.uicc_mount;
-                    summaryResId = R.string.uicc_insert_summary;
-
+                if (Environment.MEDIA_UNMOUNTING.equals(state)) {
+                    mMountTogglePreference.setEnabled(false);
+                    mMountTogglePreference.setTitle(
+                            mResources.getString(R.string.sd_ejecting_title));
+                    mMountTogglePreference.setSummary(
+                            mResources.getString(R.string.sd_ejecting_summary));
                 } else {
-                    titleResId = R.string.sd_mount;
-                    summaryResId = R.string.sd_insert_summary;
-                }
+                    mMountTogglePreference.setEnabled(false);
 
-                mMountTogglePreference.setTitle(mResources.getString(titleResId));
-                mMountTogglePreference.setSummary(mResources.getString(summaryResId));
+                    if (MediaFormat.isUsbStorage(mVolume, context)) {
+                        titleResId = R.string.usb_mount;
+                        summaryResId = R.string.usb_insert_summary;
+
+                    } else if (MediaFormat.isUiccStorage(mVolume, context)) {
+                        titleResId = R.string.uicc_mount;
+                        summaryResId = R.string.uicc_insert_summary;
+
+                    } else {
+                        titleResId = R.string.sd_mount;
+                        summaryResId = R.string.sd_insert_summary;
+                    }
+
+                    mMountTogglePreference.setTitle(mResources.getString(titleResId));
+                    mMountTogglePreference.setSummary(mResources.getString(summaryResId));
+
+                }
             }
 
             removePreference(mUsageBarPreference);
