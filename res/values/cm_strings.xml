@@ -26,6 +26,15 @@
     <!-- Wi-Fi settings screen, setting summary for setting the Wi-Fi priority-->
     <string name="wifi_setting_priority_summary">Specify the priority of the Wi-Fi networks</string>
 
+    <!--  Title for PreferenceScreen to change encryption password [CHAR LIMIT=22]  -->
+    <string name="change_crypt_password_title">Change password</string>
+
+    <!--  Summary for PreferenceScreen to change encryption password [CHAR LIMIT=45]  -->
+    <string name="change_crypt_password_summary">Change the password used for device encryption</string>
+
+    <!-- Header on first screen of choose encryption password [CHAR LIMIT=30] -->
+    <string name="encryptionpassword_choose_your_password_header">Set encryption password</string>
+
     <string name="lock_screen_title">Lock screen</string>
 
     <string name="increasing_ring_title">Ascending ringtone</string>
@@ -349,7 +358,7 @@
     <string name="title_dynamic_dock_battery">Dock battery</string>
     <string name="title_dynamic_ime">IME changer</string>
     <string name="title_dynamic_usbtether">USB Tether</string>
-    <string name="title_dynamic_wifi">Wi-Fi display</string>
+    <string name="title_dynamic_wifi">Cast screen</string>
 
     <string name="title_general">General</string>
     <string name="title_quick_pulldown">Quick pulldown</string>
@@ -598,6 +607,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Launches Dev Tools -->
     <string name="development_tools_title">Launch Tools</string>
+    <!-- Whether to allow mock SMS -->
+    <string name="allow_mock_sms">Allow mock SMS</string>
 
     <!-- Privacy Settings Header item -->
     <string name="privacy_settings_cyanogenmod_title">Privacy</string>
@@ -811,6 +822,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="lockscreen_buttons_playpause">Play/Pause music</string>
     <string name="lockscreen_buttons_toggle_sound">Toggle sound</string>
     <string name="lockscreen_buttons_sleep">Go to sleep</string>
+    <string name="lockscreen_enable_modlock_title">Custom lock screen</string>
 
     <!-- Navigation Bar -->
     <string name="navigation_bar_category">Navigation bar</string>
@@ -906,6 +918,15 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="backlight_summary_disabled">Disabled</string>
     <string name="backlight_summary_enabled_with_timeout">Enabled for <xliff:g id="timeout">%s</xliff:g></string>
     <string name="backlight_summary_enabled">Enabled</string>
+
+    <!-- Lockscreen background -->
+    <string name="lockscreen_background">Background</string>
+    <string name="lockscreen_background_style_title">Lock screen background</string>
+    <string name="background_default">Default background</string>
+    <string name="background_wallpaper">Custom wallpaper</string>
+    <string name="background_result_successful">Background changed</string>
+    <string name="background_result_not_successful">Background not changed</string>
+    <string name="setting_lockscreen_background">Applying background</string>
 
     <!-- Title for the accessibility preference to home button to answers a call. [CHAR LIMIT=35] -->
     <string name="accessibility_home_button_answers_call_prerefence_title">Home button answers call</string>
@@ -1130,6 +1151,10 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="disable_navkeys_title">Enable on-screen nav bar</string>
     <string name="disable_navkeys_summary">Enable on-screen navigation bar and disable hardware buttons</string>
 
+    <!-- Voice+ -->
+    <string name="voice_plus_title" translatable="false">Voice+</string>
+    <string name="voice_plus_summary">Enable all apps to send SMS messages through Google Voice</string>
+
     <!-- Content description of the sync in progress icon for accessibility. [CHAR LIMIT=NONE] -->
     <string name="accessibility_sync_in_progress">Sync in progress.</string>
 
@@ -1140,4 +1165,11 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="wifi_ibss_freq_title">Channel / Frequency</string>
     <string name="wifi_channel">Channel</string>
     <string name="wifi_mhz">MHz</string>
+
+    <!-- Voice Wakeup -->
+    <string name="voice_wakeup_settings_title">Voice wakeup</string>
+    <string name="voice_wakeup_retrain_title">Retrain your voice</string>
+    <string name="voice_wakeup_activity_title">Activity to launch</string>
+    <string name="voice_wakeup_default_activity">Google Now</string>
+
 </resources>

@@ -319,19 +319,4 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
             return false;
         }
     }
-
-    public boolean isPackageInstalled(String packageName) {
-        if (packageName != null) {
-            try {
-                PackageInfo pi = getPackageManager().getPackageInfo(packageName, 0);
-                if (!pi.applicationInfo.enabled) {
-                    return false;
-                }
-            } catch (NameNotFoundException e) {
-                return false;
-            }
-        }
-
-        return true;
-    }
 }

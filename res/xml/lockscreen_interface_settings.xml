@@ -51,6 +51,10 @@
             android:title="@string/lockscreen_buttons_title"
             android:summary="@string/lockscreen_buttons_summary" />
 
+        <CheckBoxPreference
+            android:key="lockscreen_modlock_enabled"
+            android:title="@string/lockscreen_enable_modlock_title" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -81,4 +85,20 @@
             android:title="@string/lockscreen_maximize_widgets_title" />
 
     </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="lockscreen_background_category"
+        android:title="@string/lockscreen_background">
+
+        <ListPreference
+            android:key="lockscreen_background_style"
+            android:persistent="false"
+            android:dialogTitle="@string/lockscreen_background_style_title"
+            android:summary="%s"
+            android:title="@string/lockscreen_background_style_title"
+            android:entries="@array/lockscreen_background_entries"
+            android:entryValues="@array/lockscreen_background_values" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
