@@ -142,6 +142,11 @@
                 android:summary="@string/wake_when_plugged_or_unplugged_summary"
                 android:defaultValue="false" />
 
+            <CheckBoxPreference
+                android:key="smart_cover_wake"
+                android:title="@string/smart_cover_wake_title"
+                android:summary="@string/smart_cover_wake_summary" />
+
             <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
                 android:key="screen_off_animation"
                 android:title="@string/screen_animation_off_title"
