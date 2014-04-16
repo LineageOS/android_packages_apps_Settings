@@ -26,7 +26,6 @@ import com.android.settings.HomeSettings;
 import com.android.settings.ScreenPinningSettings;
 import com.android.settings.PrivacySettings;
 import com.android.settings.SecuritySettings;
-import com.android.settings.WallpaperTypeSettings;
 import com.android.settings.WirelessSettings;
 import com.android.settings.accessibility.AccessibilitySettings;
 import com.android.settings.bluetooth.BluetoothSettings;
@@ -61,7 +60,6 @@ public final class Ranking {
     public static final int RANK_WIRELESS = 5;
     public static final int RANK_HOME = 6;
     public static final int RANK_DISPLAY = 7;
-    public static final int RANK_WALLPAPER = 8;
     public static final int RANK_NOTIFICATIONS = 9;
     public static final int RANK_MEMORY = 10;
     public static final int RANK_POWER_USAGE = 11;
@@ -109,9 +107,6 @@ public final class Ranking {
 
         // Display
         sRankMap.put(DisplaySettings.class.getName(), RANK_DISPLAY);
-
-        // Wallpapers
-        sRankMap.put(WallpaperTypeSettings.class.getName(), RANK_WALLPAPER);
 
         // Notifications
         sRankMap.put(NotificationSettings.class.getName(), RANK_NOTIFICATIONS);
