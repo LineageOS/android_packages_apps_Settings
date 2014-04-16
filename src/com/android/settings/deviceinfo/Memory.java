@@ -102,7 +102,16 @@ public class Memory extends SettingsPreferenceFragment {
 
         final StorageVolume[] storageVolumes = mStorageManager.getVolumeList();
         for (StorageVolume volume : storageVolumes) {
+            // add those storage volumes which are not emulated & allow UMS.
+            // sometimes a storage drive like Mega SIM could carry two volumes,
+            // with only one volume supported for UMS.
             if (!volume.isEmulated()) {
+                // check if the colume is for UICC
+                if (MediaFormat.isUiccStorage(volume, context) && !volume.allowMassStorage()) {
+                    // UICC volume that is not UMS enabled, shouldn't be shown on UI
+                    Log.w(TAG, "UICC volume not UMS enabled. Not showing up on UI");
+                    continue;
+                }
                 addCategory(StorageVolumePreferenceCategory.buildForPhysical(context, volume));
             }
         }
