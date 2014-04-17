@@ -157,7 +157,7 @@
   <string name="adaptive_backlight_title">Mukautuva taustavalo</string>
   <string name="adaptive_backlight_summary">Vaihtele näytön taustavalon kirkkautta älykkäästi ja säästä akkua</string>
   <string name="wake_when_plugged_or_unplugged_title">Herää laturista</string>
-  <string name="wake_when_plugged_or_unplugged_summary">Avaa näyttö kun liität tai irroitat laturin</string>
+  <string name="wake_when_plugged_or_unplugged_summary">Käynnistä näyttö kun liität tai irrotat virtalähteen</string>
   <string name="screen_animation_off_title">Näytön sulkemisanimaatio</string>
   <string name="screen_animation_style_title">Animaation tyyli</string>
   <string name="screen_animation_style_electronbeam">Electron Beam</string>
@@ -290,7 +290,7 @@
   <string name="auto_brightness_last_level_format"><xliff:g id="level">%1$d</xliff:g> -\n\u221e lux</string>
   <string name="auto_brightness_adjust_button">Säädä</string>
   <string name="auto_brightness_close_button">Sulje</string>
-  <string name="auto_brightness_reset_button">Nollaa</string>
+  <string name="auto_brightness_reset_button">Palauta oletukset</string>
   <string name="auto_brightness_split_dialog_title">Jaa kirkkauden taso</string>
   <string name="auto_brightness_level_dialog_title">Valon tason asettaminen</string>
   <string name="auto_brightness_lux">Ympäröivä kirkkaus (lux)</string>
@@ -379,6 +379,14 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="preview_carrier_title">Operaattori</string>
   <string name="header_category_interface">Personointi</string>
   <string name="themes_settings_title">Teemat</string>
+  <string name="themepacks_settings_title">Teemapaketit</string>
+  <string name="styles_settings_title">Tyylit</string>
+  <string name="icons_settings_title">Kuvakkeet</string>
+  <string name="fonts_settings_title">Fontit</string>
+  <string name="wallpaper_settings_title">Taustakuvat</string>
+  <string name="lockscreen_wallpaper_settings_title">Lukitusnäytön taustakuvat</string>
+  <string name="bootanim_settings_title">Käynnistysanimaatiot</string>
+  <string name="soundpack_settings_title">Äänipaketit</string>
   <string name="performance_settings_title">Suorituskyky</string>
   <string name="performance_settings_warning_title">Jatka varovaisesti</string>
   <string name="performance_settings_warning">Nämä asetukset ovat kokeellisia ja niiten muuttaminen voi mahdollisesti aiheuttaa epävakautta, kaatumisia, tiedon häviämistä tai laitteistovikoja.\n\nPyydämme, ettet lähetä virheraportteja jos näitä asetuksia on muutettu.</string>
@@ -412,6 +420,7 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="cmupdate_settings_summary">Tarkista, katso tai asenna saatavilla olevat päivitykset</string>
   <string name="advanced_settings_title">Lisäasetukset</string>
   <string name="development_tools_title">Käynnistä kehitystyökalut</string>
+  <string name="allow_mock_sms">Salli valetekstiviestit</string>
   <string name="privacy_settings_cyanogenmod_title">Yksityisyys</string>
   <string name="privacy_guard_switch_label">Ota yksityisyyden suojaus käyttöön</string>
   <string name="privacy_guard_dlg_title">Ota yksityisyyden suojaus käyttöön?</string>
@@ -424,7 +433,7 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="privacy_guard_no_user_apps">Sovelluksia ei ole asennettu</string>
   <string name="privacy_guard_filter_does_not_match">Sovelluksia joilla on merkityksellisiä oikeuksia ei ole asennettu</string>
   <string name="privacy_guard_help_title">Ohje</string>
-  <string name="privacy_guard_reset_title">Nollaa</string>
+  <string name="privacy_guard_reset_title">Palauta oletukset</string>
   <string name="privacy_guard_reset_text">Palauta käyttöoikeudet?</string>
   <string name="privacy_guard_help_text">Tässä näytössä voit valita missä sovelluksissa yksityisyyden suojauksen haluat olevan päällä. Valituilla sovelluksilla ei ole pääsyä henkilökohtaisiin tietoihisi, kuten yhteystietoihin, viesteihin tai puhelulokiin. Sovellusta pitkään painaessa sovelluksen tiedot näytetään.\n\nJärjestelmäsovellukset ovat oletuksena piilotettuna Jos haluat ne näkyviin, valitse asetus valikosta.</string>
   <string name="privacy_guard_manager_show_system_apps">Näytä järjestelmäsovellukset</string>
@@ -508,7 +517,7 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="lock_clock_summary">Mukauta lukitus- ja kotinäytön widgettiä</string>
   <string name="power_notifications_category_title">Latausäänet</string>
   <string name="power_notifications_enable_title">Ota käyttöön</string>
-  <string name="power_notifications_enable_summary">Toista merkkiääni kun liität tai irroitat laturin</string>
+  <string name="power_notifications_enable_summary">Anna äänimerkki, kun liität tai irrotat virtalähteen</string>
   <string name="power_notifications_vibrate_title">Värinä</string>
   <string name="power_notifications_ringtone_title">Ilmoitusääni</string>
   <string name="power_notifications_ringtone_silent">Äänetön</string>
@@ -520,7 +529,7 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="lockscreen_target_title">Lukitusnäytön pikakuvakkeet</string>
   <string name="lockscreen_target_summary">Katso tai muokkaa lukitusnäytön pikakuvakkeita</string>
   <string name="lockscreen_target_reset">Nollaa pikakuvakkeet oletuksiin</string>
-  <string name="lockscreen_target_reset_title">Nollaa</string>
+  <string name="lockscreen_target_reset_title">Palauta oletukset</string>
   <string name="lockscreen_target_reset_message">Poista kaikki käyttäjän luomat pikakuvakkeet ja palauta oletukset?</string>
   <string name="lockscreen_target_empty">Tyhjä</string>
   <string name="lockscreen_target_edit_title">Muokkaa pikakuvaketta tai kuvaketta</string>
@@ -564,6 +573,7 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="lockscreen_buttons_playpause">Toisto/Tauko</string>
   <string name="lockscreen_buttons_toggle_sound">Äänet</string>
   <string name="lockscreen_buttons_sleep">Lepotila</string>
+  <string name="lockscreen_enable_modlock_title">Mukautettu lukitusnäyttö</string>
   <string name="navigation_bar_category">Navigointipalkki</string>
   <string name="navigation_bar_title">Näppäimet ja sijainti</string>
   <string name="navigation_bar_left_title">Käytä vasemmalla kädellä</string>
@@ -649,6 +659,13 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="backlight_summary_disabled">Pois käytöstä</string>
   <string name="backlight_summary_enabled_with_timeout">Käytössä <xliff:g id="timeout">%s</xliff:g> ajan</string>
   <string name="backlight_summary_enabled">Käytössä</string>
+  <string name="lockscreen_background">Taustakuva</string>
+  <string name="lockscreen_background_style_title">Lukitusnäytön taustakuva</string>
+  <string name="background_default">Oletustaustakuva</string>
+  <string name="background_wallpaper">Mukautettu taustakuva</string>
+  <string name="background_result_successful">Taustakuva vaihdettu</string>
+  <string name="background_result_not_successful">Taustakuvaa ei vaihdettu</string>
+  <string name="setting_lockscreen_background">Asetetaan taustakuvaa</string>
   <string name="accessibility_home_button_answers_call_prerefence_title">Kotinäppäin vastaa puheluun</string>
   <string name="confirm_delete_apn">Yhteysosoite poistetaan.</string>
   <string name="status_bar_title">Tilapalkki</string>
@@ -682,7 +699,7 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="gps_download_data_wifi_only">Lataa GPS-avusteinen data vain Wi-Fi-verkkojen yli</string>
   <string name="battery_info_status_charging_dock_ac">(DockAC)</string>
   <string name="battery_info_status_charging_dock_usb">(DockUSB)</string>
-  <string name="menu_stats_reset">Nollaa</string>
+  <string name="menu_stats_reset">Palauta oletukset</string>
   <string name="cmlicense_title">CyanogenModin lakiasiat</string>
   <string name="settings_cmlicense_activity_title">CyanogenModin lakiasiat</string>
   <string name="settings_cmlicense_activity_unreachable">Sinulla ei ole verkkoyhteyttä. Tarkastellaksesi näitä tietoja, mene osoitteeseen %s millä tahansa tietokoneella jossa on Internet-yhteys.</string>
