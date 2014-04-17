@@ -1314,6 +1314,11 @@ public class ManageApplications extends Fragment implements
 
         if(mCurTab.mListType == LIST_TYPE_RUNNING) {
             mSearchView.setVisibility(View.GONE);
+            if (mTextView.hasFocus() == false) {
+                InputMethodManager imm = (InputMethodManager)
+                        host.getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(mTextView.getWindowToken(), 0);
+            }
         }
     }
 
