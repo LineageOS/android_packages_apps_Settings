@@ -42,6 +42,14 @@
             android:dependency="qs_quick_access"
             android:disableDependentsState="true" />
 
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="qs_quick_access_bottom"
+            android:title="@string/title_quick_access_bottom"
+            android:summary="@string/summary_quick_access_bottom"
+            android:defaultValue="false"
+            android:dependency="qs_quick_access"
+            android:disableDependentsState="true" />
+
         <PreferenceScreen
             android:key="tile_picker"
             android:title="@string/tile_picker_title"
