@@ -28,10 +28,9 @@
      IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
-
-    <PreferenceCategory android:key="multi_sim_settings">
 
         <ListPreference
             android:key="voice"
@@ -67,7 +66,5 @@
             android:key="priority_subscription"
             android:title="@string/priority_sub_title"
             android:persistent="false" />
-
-    </PreferenceCategory>
 
 </PreferenceScreen>

@@ -163,20 +163,19 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
         entriesPrompt = new CharSequence[MAX_SUBSCRIPTIONS + 1];
         entryValuesPrompt = new CharSequence[MAX_SUBSCRIPTIONS + 1];
         summariesPrompt = new CharSequence[MAX_SUBSCRIPTIONS + 1];
-        CharSequence[] subString = getResources().getTextArray(R.array.multi_sim_entries);
         int i = 0;
         for (i = 0; i < MAX_SUBSCRIPTIONS; i++) {
-            entries[i] = subString[i];
-            summaries[i] = subString[i];
-            summariesPrompt[i] = subString[i];
-            entriesPrompt[i] = subString[i];
+            String operatorName = MSimTelephonyManager.getDefault().getNetworkOperatorName(i);
+            entries[i] = operatorName;
+            summaries[i] = operatorName;
+            summariesPrompt[i] = operatorName;
+            entriesPrompt[i] = operatorName;
             entryValues[i] = Integer.toString(i);
             entryValuesPrompt[i] = Integer.toString(i);
         }
         entryValuesPrompt[i] = Integer.toString(i);
         entriesPrompt[i] = getResources().getString(R.string.prompt);
         summariesPrompt[i] = getResources().getString(R.string.prompt_user);
-
         mReceiver = new AirplaneModeBroadcastReceiver();
     }
 
