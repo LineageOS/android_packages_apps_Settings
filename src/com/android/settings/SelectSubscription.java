@@ -35,6 +35,7 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 import android.telephony.MSimTelephonyManager;
+import static android.telephony.TelephonyManager.SIM_STATE_ABSENT;
 import android.util.Log;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
@@ -46,7 +47,7 @@ public class SelectSubscription extends  TabActivity {
     public static final String PACKAGE = "PACKAGE";
     public static final String TARGET_CLASS = "TARGET_CLASS";
 
-    private String[] tabLabel = {"SUB 1", "SUB 2", "SUB 3"};
+    private String[] tabLabel = {"-1", "-2", "-3"};
 
     private TabSpec subscriptionPref;
 
@@ -76,7 +77,12 @@ public class SelectSubscription extends  TabActivity {
 
         for (int i = 0; i < numPhones; i++) {
             subscriptionPref = tabHost.newTabSpec(tabLabel[i]);
-            subscriptionPref.setIndicator(tabLabel[i]);
+            String mOperatorName = MSimTelephonyManager.getDefault().getNetworkOperatorName(i);
+            String operatorName = getString(R.string.sub_no_sim);
+            if (MSimTelephonyManager.getDefault().getSimState(i) != SIM_STATE_ABSENT) {
+                operatorName = mOperatorName;
+            }
+            subscriptionPref.setIndicator(operatorName + tabLabel[i]);
             intent = new Intent().setClassName(pkg, targetClass)
                     .setAction(intent.getAction()).putExtra(SUBSCRIPTION_KEY, i);
             subscriptionPref.setContent(intent);

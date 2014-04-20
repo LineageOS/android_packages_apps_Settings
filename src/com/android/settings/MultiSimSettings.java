@@ -51,6 +51,7 @@ import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.telephony.MSimTelephonyManager;
+import static android.telephony.TelephonyManager.SIM_STATE_ABSENT;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -154,9 +155,9 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
 
         // Create and Intialize the strings required for MultiSIM
         // Dynamic creation of entries instead of using static array vlues.
-        // entries are Subscription1, Subscription2, Subscription3 ....
+        // entries are operatorName-1, operatorName-2, operatorName-3 ....
         // EntryValues are 0, 1 ,2 ....
-        // Summaries are Subscription1, Subscription2, Subscription3 ....
+        // Summaries are -1, -2, -3 ....
         entries = new CharSequence[MAX_SUBSCRIPTIONS];
         entryValues = new CharSequence[MAX_SUBSCRIPTIONS];
         summaries = new CharSequence[MAX_SUBSCRIPTIONS];
@@ -166,17 +167,21 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
         CharSequence[] subString = getResources().getTextArray(R.array.multi_sim_entries);
         int i = 0;
         for (i = 0; i < MAX_SUBSCRIPTIONS; i++) {
-            entries[i] = subString[i];
-            summaries[i] = subString[i];
-            summariesPrompt[i] = subString[i];
-            entriesPrompt[i] = subString[i];
+            String mOperatorName = MSimTelephonyManager.getDefault().getNetworkOperatorName(i);
+            String operatorName = getString(R.string.sub_no_sim);
+            if (MSimTelephonyManager.getDefault().getSimState(i) != SIM_STATE_ABSENT) {
+                operatorName = mOperatorName;
+            }
+            entries[i] = operatorName + subString[i];
+            summaries[i] = operatorName + subString[i];
+            summariesPrompt[i] = operatorName + subString[i];
+            entriesPrompt[i] = operatorName + subString[i];
             entryValues[i] = Integer.toString(i);
             entryValuesPrompt[i] = Integer.toString(i);
         }
         entryValuesPrompt[i] = Integer.toString(i);
         entriesPrompt[i] = getResources().getString(R.string.prompt);
         summariesPrompt[i] = getResources().getString(R.string.prompt_user);
-
         mReceiver = new AirplaneModeBroadcastReceiver();
     }
 
