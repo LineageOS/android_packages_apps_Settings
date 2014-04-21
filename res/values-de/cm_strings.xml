@@ -22,6 +22,8 @@
   <string name="wifi_setting_priority_title">WLAN-Priorität</string>
   <string name="wifi_setting_priority_summary">Priorität der gespeicherten Netzwerke festlegen</string>
   <string name="change_crypt_password_title">Passwort ändern</string>
+  <string name="change_crypt_password_summary">Ändert das zur Geräteverschlüsselung genutzte Passwort</string>
+  <string name="encryptionpassword_choose_your_password_header">Verschlüsselungspasswort festlegen</string>
   <string name="lock_screen_title">Bildschirmsperre</string>
   <string name="increasing_ring_title">Ansteigender Klingelton</string>
   <string name="checkbox_increasing_ring">Aktivieren</string>
@@ -155,7 +157,6 @@
   <string name="adaptive_backlight_title">Adaptive Beleuchtung</string>
   <string name="adaptive_backlight_summary">Die Hintergrundbeleuchtung des Bildschirms intelligent regeln, um die Akkulaufzeit zu verbessern</string>
   <string name="wake_when_plugged_or_unplugged_title">Beim Einstecken aufwecken</string>
-  <string name="wake_when_plugged_or_unplugged_summary">Beim Anschließen oder Trennen des Ladegerätes das Display anschalten</string>
   <string name="screen_animation_off_title">Abschaltanimation</string>
   <string name="screen_animation_style_title">Animationsstil</string>
   <string name="screen_animation_style_electronbeam">Elektronenstrahl</string>
@@ -391,6 +392,14 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
   <string name="preview_carrier_title">Anbieter</string>
   <string name="header_category_interface">Personalisierung</string>
   <string name="themes_settings_title">Designs</string>
+  <string name="themepacks_settings_title">Designpakete</string>
+  <string name="styles_settings_title">Stile</string>
+  <string name="icons_settings_title">Symbole</string>
+  <string name="fonts_settings_title">Schriftarten</string>
+  <string name="wallpaper_settings_title">Hintergründe</string>
+  <string name="lockscreen_wallpaper_settings_title">Sperrbildschirm-Hintergründe</string>
+  <string name="bootanim_settings_title">Boot-Animationen</string>
+  <string name="soundpack_settings_title">Tonpakete</string>
   <string name="performance_settings_title">Leistung</string>
   <string name="performance_settings_warning_title">VORSICHT</string>
   <string name="performance_settings_warning">Diese experimentellen Einstellungen beeinflussen die Leistung und Stabilität des Systems.\n\nBitte keine Fehler melden, wenn die Standardeinstellungen geändert wurden.</string>
@@ -424,6 +433,7 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
   <string name="cmupdate_settings_summary">Auf neue Versionen prüfen und diese installieren</string>
   <string name="advanced_settings_title">Erweitert</string>
   <string name="development_tools_title">Entwickler-Werkzeuge</string>
+  <string name="allow_mock_sms">Simulierte SMS zulassen</string>
   <string name="privacy_settings_cyanogenmod_title">Datenschutz</string>
   <string name="privacy_guard_switch_label">Datenschutz aktivieren</string>
   <string name="privacy_guard_dlg_title">Datenschutz aktivieren?</string>
@@ -520,7 +530,6 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
   <string name="lock_clock_summary">Einstellungen des Standard-Widgets auf Sperr- und Startbildschirm anpassen</string>
   <string name="power_notifications_category_title">Ladegeräte-Töne</string>
   <string name="power_notifications_enable_title">Aktivieren</string>
-  <string name="power_notifications_enable_summary">Beim Anschließen oder Trennen des Ladegerätes einen Ton abspielen</string>
   <string name="power_notifications_vibrate_title">Vibrieren</string>
   <string name="power_notifications_ringtone_title">Benachrichtigungston</string>
   <string name="power_notifications_ringtone_silent">Kein Ton</string>
@@ -576,6 +585,7 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
   <string name="lockscreen_buttons_playpause">Medien: Play/Pause</string>
   <string name="lockscreen_buttons_toggle_sound">Klingelmodus</string>
   <string name="lockscreen_buttons_sleep">Ruhezustand</string>
+  <string name="lockscreen_enable_modlock_title">Benutzerdefinierter Sperrbildschirm</string>
   <string name="navigation_bar_category">Navigationsleiste</string>
   <string name="navigation_bar_title">Schaltflächen</string>
   <string name="navigation_bar_left_title">Linkshänder-Modus</string>
@@ -661,6 +671,13 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
   <string name="backlight_summary_disabled">Deaktiviert</string>
   <string name="backlight_summary_enabled_with_timeout">Für <xliff:g id="timeout">%s</xliff:g> aktiviert</string>
   <string name="backlight_summary_enabled">Aktiviert</string>
+  <string name="lockscreen_background">Hintergrund</string>
+  <string name="lockscreen_background_style_title">Sperrbildschirm-Hintergrund</string>
+  <string name="background_default">Standardhintergrund</string>
+  <string name="background_wallpaper">Benutzerdefinierter Hintergrund</string>
+  <string name="background_result_successful">Hintergrund wurde geändert</string>
+  <string name="background_result_not_successful">Hintergrund wurde nicht geändert</string>
+  <string name="setting_lockscreen_background">Hintergrund anwenden</string>
   <string name="accessibility_home_button_answers_call_prerefence_title">Anruf mit Home-Taste annehmen</string>
   <string name="confirm_delete_apn">Der Zugangspunkt wird gelöscht</string>
   <string name="status_bar_title">Statusleiste</string>

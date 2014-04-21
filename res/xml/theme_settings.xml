@@ -74,7 +74,10 @@
         android:id="@+id/lockscreen_wallpaper_settings"
         android:title="@string/lockscreen_wallpaper_settings_title"
         android:icon="@drawable/prd_ic_lockscreen_wallpapers">
-        <!-- TODO: This is not implemented yet -->
+        <intent android:action="android.intent.action.MAIN" >
+             <category android:name="cyanogenmod.intent.category.APP_THEMES" />
+             <extra android:name="component_filter" android:value="mods_lockscreen"/>
+        </intent>
     </Preference>
 
     <!-- Boot Animations -->

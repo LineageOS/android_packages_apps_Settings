@@ -157,7 +157,7 @@
   <string name="adaptive_backlight_title">Προσαρμοζόμενη φωτεινότητα</string>
   <string name="adaptive_backlight_summary">Έξυπνη μεταβολή της φωτεινότητας που συμβάλλει στη μεγιστοποίηση της ζωής της μπαταρίας</string>
   <string name="wake_when_plugged_or_unplugged_title">Αφύπνιση κατά τη σύνδεση</string>
-  <string name="wake_when_plugged_or_unplugged_summary">Ενεργοποίηση της οθόνης κατά την σύνδεση ή αποσύνδεση του φορτιστή</string>
+  <string name="wake_when_plugged_or_unplugged_summary">Ενεργοποίηση της οθόνης κατά την σύνδεση ή αποσύνδεση μιας πηγής ισχύος</string>
   <string name="screen_animation_off_title">Εφέ σβησίματος οθόνης</string>
   <string name="screen_animation_style_title">Στυλ εφέ</string>
   <string name="screen_animation_style_electronbeam">Δέσμη ηλεκτρονίων</string>
@@ -401,6 +401,14 @@
   <string name="preview_carrier_title">Πάροχος δικτύου</string>
   <string name="header_category_interface">Εξατομίκευση</string>
   <string name="themes_settings_title">Θέματα</string>
+  <string name="themepacks_settings_title">Πακέτα θέματος</string>
+  <string name="styles_settings_title">Στυλ</string>
+  <string name="icons_settings_title">Εικονίδια</string>
+  <string name="fonts_settings_title">Γραμματοσειρές</string>
+  <string name="wallpaper_settings_title">Ταπετσαρίες</string>
+  <string name="lockscreen_wallpaper_settings_title">Ταπετσαρίες οθόνης κλειδώματος</string>
+  <string name="bootanim_settings_title">Κινούμενες εικόνες εκκίνησης</string>
+  <string name="soundpack_settings_title">Πακέτα ήχου</string>
   <string name="performance_settings_title">Επιδόσεις</string>
   <string name="performance_settings_warning_title">Συνεχίστε με προσοχή</string>
   <string name="performance_settings_warning">Οι παρακάτω ρυθμίσεις περιλαμβάνονται για πειραματισμό και η οποιαδήποτε αλλαγή ενδεχομένως να προκαλέσει αστάθεια, κολλήματα, απώλεια δεδομένων ή και βλάβη στο hardware.\n\nΠαρακαλούμε μην πραγματοποιήσετε αναφορές σφαλμάτων αν έχετε τροποποιήσει κάποια από τις παρακάτω ρυθμίσεις.</string>
@@ -434,6 +442,7 @@
   <string name="cmupdate_settings_summary">Έλεγχος, εμφάνιση ή εγκατάσταση διαθέσιμων ενημερώσεων</string>
   <string name="advanced_settings_title">Για προχωρημένους</string>
   <string name="development_tools_title">Εκκίνηση εργαλείων</string>
+  <string name="allow_mock_sms">Να επιτρέπονται ψευδή SMS</string>
   <string name="privacy_settings_cyanogenmod_title">Απόρρητο</string>
   <string name="privacy_guard_switch_label">Ενεργοποίηση Προστασίας Απορρήτου</string>
   <string name="privacy_guard_dlg_title">Ενεργοποίηση της Προστασίας Απορρήτου;</string>
@@ -530,7 +539,7 @@
   <string name="lock_clock_summary">Προσαρμόστε το προεπιλεγμένο widget αρχικής οθόνης και οθόνης κλειδώματος</string>
   <string name="power_notifications_category_title">Ήχοι φόρτισης</string>
   <string name="power_notifications_enable_title">Ενεργοποίηση</string>
-  <string name="power_notifications_enable_summary">Αναπαραγωγή ήχου κατά τη σύνδεση ή την αποσύνδεση του φορτιστή</string>
+  <string name="power_notifications_enable_summary">Αναπαραγωγή ήχου κατά τη σύνδεση ή την αποσύνδεση μιας πηγής ισχύος</string>
   <string name="power_notifications_vibrate_title">Δόνηση</string>
   <string name="power_notifications_ringtone_title">Ήχος ειδοποίησης</string>
   <string name="power_notifications_ringtone_silent">Αθόρυβο</string>
@@ -586,6 +595,7 @@
   <string name="lockscreen_buttons_playpause">Αναπαραγ./Παύση μουσικής</string>
   <string name="lockscreen_buttons_toggle_sound">Ενεργ./Απενεργ. ήχου</string>
   <string name="lockscreen_buttons_sleep">Αναστολή λειτουργίας</string>
+  <string name="lockscreen_enable_modlock_title">Προσαρμοσμένη οθόνη κλειδώματος</string>
   <string name="navigation_bar_category">Γραμμή πλοήγησης</string>
   <string name="navigation_bar_title">Πλήκτρα και διάταξη</string>
   <string name="navigation_bar_left_title">Λειτουργία για αριστερόχειρες</string>
@@ -671,6 +681,13 @@
   <string name="backlight_summary_disabled">Ανενεργός</string>
   <string name="backlight_summary_enabled_with_timeout">Ενεργός για <xliff:g id="timeout">%s</xliff:g></string>
   <string name="backlight_summary_enabled">Ενεργός</string>
+  <string name="lockscreen_background">Φόντο</string>
+  <string name="lockscreen_background_style_title">Φόντο οθόνης κλειδώματος</string>
+  <string name="background_default">Προεπιλεγμένο φόντο</string>
+  <string name="background_wallpaper">Προσαρμοσμένη ταπετσαρία</string>
+  <string name="background_result_successful">Το φόντο άλλαξε</string>
+  <string name="background_result_not_successful">Το φόντο δεν άλλαξε</string>
+  <string name="setting_lockscreen_background">Εφαρμογή φόντου</string>
   <string name="accessibility_home_button_answers_call_prerefence_title">Το πλήκτρο αρχικής οθόνης απαντά την κλήση</string>
   <string name="confirm_delete_apn">Το σημείο πρόσβασης θα διαγραφεί.</string>
   <string name="status_bar_title">Γραμμή κατάστασης</string>

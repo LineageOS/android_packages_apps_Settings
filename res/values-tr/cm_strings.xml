@@ -157,7 +157,7 @@
   <string name="adaptive_backlight_title">Uyum sağlayan arka ışık</string>
   <string name="adaptive_backlight_summary">Arka ışık parlaklığını pil düzeyini en yükseğe çıkaracak şekilde akıllıca ayarla</string>
   <string name="wake_when_plugged_or_unplugged_title">Takıp çıkarmada uyan</string>
-  <string name="wake_when_plugged_or_unplugged_summary">Şarj aleti takıldığında ya da çıkarıldığında ekranı aç</string>
+  <string name="wake_when_plugged_or_unplugged_summary">Bir güç kaynağına bağlanırken ya da bağlantısını keserken ekranı aç</string>
   <string name="screen_animation_off_title">Ekran kapama animasyonu</string>
   <string name="screen_animation_style_title">Animasyon stili</string>
   <string name="screen_animation_style_electronbeam">Elektron huzmesi</string>
@@ -260,6 +260,7 @@
   <string name="title_dynamic_dock_battery">Dock pil</string>
   <string name="title_dynamic_ime">IME değiştirici</string>
   <string name="title_dynamic_usbtether">USB Tether</string>
+  <string name="title_dynamic_wifi">Ekranı yayınla</string>
   <string name="title_general">Genel</string>
   <string name="title_quick_pulldown">Hızlı aşağı çekme</string>
   <string name="summary_quick_pulldown">Durum çubuğunun %1$s tarafından aşağı çekmek hızlı ayarları açar</string>
@@ -370,6 +371,14 @@
   <string name="preview_carrier_title">Şebeke</string>
   <string name="header_category_interface">Kişiselleştirme</string>
   <string name="themes_settings_title">Temalar</string>
+  <string name="themepacks_settings_title">Tema Paketleri</string>
+  <string name="styles_settings_title">Stiller</string>
+  <string name="icons_settings_title">Simgeler</string>
+  <string name="fonts_settings_title">Yazı tipleri</string>
+  <string name="wallpaper_settings_title">Duvar kağıtları</string>
+  <string name="lockscreen_wallpaper_settings_title">Kilit ekranı duvar kağıtları</string>
+  <string name="bootanim_settings_title">Açılış Animasyonları</string>
+  <string name="soundpack_settings_title">Ses Paketleri</string>
   <string name="performance_settings_title">Performans</string>
   <string name="performance_settings_warning_title">Dikkatle hareket edin</string>
   <string name="performance_settings_warning">Bu ayarlar deneysel olarak eklenmiştir ve herhangi bir değişiklik kararsızlık, çökmeler, veri kaybı ya da donanımsal sorunlara yol açabilir.\n\nVarsayılandan değiştirilen ayarlarla ilgili hata raporu oluşturmamanızı rica ediyoruz.</string>
@@ -403,6 +412,7 @@
   <string name="cmupdate_settings_summary">Güncellemeleri denetleyin, görüntüleyin ve yükleyin</string>
   <string name="advanced_settings_title">Gelişmiş</string>
   <string name="development_tools_title">Araçları başlat</string>
+  <string name="allow_mock_sms">Sahte SMSlere izin ver</string>
   <string name="privacy_settings_cyanogenmod_title">Gizlilik</string>
   <string name="privacy_guard_switch_label">Gizlilik Korumasını Aktifleştir</string>
   <string name="privacy_guard_dlg_title">Gizlilik Korumasını Aktifleştir?</string>
@@ -417,6 +427,7 @@
   <string name="privacy_guard_help_title">Yardım</string>
   <string name="privacy_guard_reset_title">Sıfırla</string>
   <string name="privacy_guard_reset_text">İzinleri sıfırla?</string>
+  <string name="privacy_guard_help_text">Bu ekranda Gizlilik Korumasının aktif olacağı uygulamaları dokunarak seçebilirsiniz. Seçili uygulamalar kişiler, mesajlar veya arama kaydı gibi kişisel bilgilerinize ulaşamayacaklar. Öğelere uzun dokunarak o uygulamalar için uygulama detayları penceresini açabilirsiniz.\n\nÖnyüklü uygulamalar varsayılan olarak gösterilmez ancak ilgili  menü seçeneğiyle görüntülenebilirler.</string>
   <string name="privacy_guard_manager_show_system_apps">Dahili uygulamaları göster</string>
   <string name="privacy_guard_manager_filter_permissions">İzin filtresi</string>
   <string name="privacy_guard_advanced_settings_title">Gelişmiş</string>
@@ -498,7 +509,7 @@
   <string name="lock_clock_summary">Varsayılan kilit ve ana ekran widgetlerini ayarla</string>
   <string name="power_notifications_category_title">Güç sesleri</string>
   <string name="power_notifications_enable_title">Etkinleştir</string>
-  <string name="power_notifications_enable_summary">Şarj aleti takıldığında ya da çıkartıldığında ses çıkar</string>
+  <string name="power_notifications_enable_summary">Bir güç kaynağına bağlanırken ya da bağlantısını keserken bir ses çal</string>
   <string name="power_notifications_vibrate_title">Titreş</string>
   <string name="power_notifications_ringtone_title">Bildirim sesi</string>
   <string name="power_notifications_ringtone_silent">Sessiz</string>
@@ -554,6 +565,7 @@
   <string name="lockscreen_buttons_playpause">Müziği Çal/Duraklat</string>
   <string name="lockscreen_buttons_toggle_sound">Ses modunu değiştir</string>
   <string name="lockscreen_buttons_sleep">Uyku moduna geç</string>
+  <string name="lockscreen_enable_modlock_title">Özel kilit ekranı</string>
   <string name="navigation_bar_category">Dolaşım çubuğu</string>
   <string name="navigation_bar_title">Butonlar ve düzen</string>
   <string name="navigation_bar_left_title">Solak modu</string>
@@ -589,6 +601,7 @@
   <string name="expanded_desktop_status_bar">Durum çubuğu görünür</string>
   <string name="expanded_desktop_no_status_bar">Durum çubuğu gizli</string>
   <string name="expanded_desktop_system_bars_visibility">Kilit ekranında devre dışı bırak</string>
+  <string name="expanded_desktop_system_bars_visibility_summary">Genişletilmiş masaüstü modunda kilit ekranında durum ve gezinti çubuğunu göster</string>
   <string name="power_menu_profiles_title">Profil değiştirici</string>
   <string name="power_menu_airplane_title">Uçak modu</string>
   <string name="power_menu_user_title">Kullanıcı değiştirici</string>
@@ -638,6 +651,13 @@
   <string name="backlight_summary_disabled">Devre dışı</string>
   <string name="backlight_summary_enabled_with_timeout"><xliff:g id="timeout">%s</xliff:g> için aktif</string>
   <string name="backlight_summary_enabled">Etkin</string>
+  <string name="lockscreen_background">Arkaplan</string>
+  <string name="lockscreen_background_style_title">Kilit ekranı arkaplanı</string>
+  <string name="background_default">Varsayılan arkaplan</string>
+  <string name="background_wallpaper">Özel duvar kağıdı</string>
+  <string name="background_result_successful">Arkaplan değişti</string>
+  <string name="background_result_not_successful">Arkaplan değişmedi</string>
+  <string name="setting_lockscreen_background">Arkaplan uygulanıyor</string>
   <string name="accessibility_home_button_answers_call_prerefence_title">Ana ekran tuşu çağrıları cevaplar</string>
   <string name="confirm_delete_apn">APN erişim noktası silenecek.</string>
   <string name="status_bar_title">Durum çubuğu</string>
@@ -665,6 +685,7 @@
   <string name="storage_rescan_media">Depolama birimi için ortamları yeniden ara</string>
   <string name="storage_rescan_media_complete">Tarama tamamlandı</string>
   <string name="whisperpush_title">WhisperPush</string>
+  <string name="whisperpush_summary">Güvenli SMS ayarlarını yönet</string>
   <string name="custom_runtime_warning_title">Uyarı</string>
   <string name="custom_runtime_warning_message">ART CyanogenMod tarafından desteklenmemektedir. Bu seçenek deneysel olarak eklenmiştir ve kararsızlık, çökme, veri kaybı ya da cihazın başlamamasına sebep olabilir. Daha fazla bilgi için &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;ARTa Giriş&lt;/a&gt; sayfasını ziyaret edebilirsiniz..&lt;br/&gt;&lt;br/&gt;ART\'ı çalışma zamanı olarak seçtiğinizde hata raporu oluşturmamanızı istiyoruz.&lt;br/&gt;&lt;br/&gt;Çalışma zamanınızı <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> yerine <xliff:g id="new" example="libart.so">%2$s</xliff:g> olarak değiştirmek için yeniden başlatmak istediğinize emin misiniz?</string>
   <string name="gps_download_data_wifi_only">Yardımlı GPS verisini sadece Wi-Fi ağları üzerinden indir.</string>
@@ -744,6 +765,9 @@
   <string name="app_ops_summaries_bluetooth_change">bluetooth değişikliği</string>
   <string name="app_ops_summaries_data_change">veri değişimi</string>
   <string name="app_ops_summaries_alarm_wakeup">uyan</string>
+  <string name="app_ops_summaries_send_mms">MMS gönderme</string>
+  <string name="app_ops_summaries_read_mms">MMS okuma</string>
+  <string name="app_ops_summaries_write_mms">MMS yazma</string>
   <string name="app_ops_summaries_auto_start">otomatik başla</string>
   <string name="app_ops_labels_location">Alarm sesi</string>
   <string name="app_ops_labels_vibrate">Titreşim</string>
@@ -769,6 +793,7 @@
   <string name="app_ops_labels_read_clipboard">Panoyu oku</string>
   <string name="app_ops_labels_modify_clipboard">Panoyu düzenle</string>
   <string name="app_ops_labels_media_buttons">Ortam butonları</string>
+  <string name="app_ops_labels_audio_focus">Ses odağı</string>
   <string name="app_ops_labels_master_volume">Ana ses</string>
   <string name="app_ops_labels_voice_volume">Konuşma sesi</string>
   <string name="app_ops_labels_ring_volume">Zil sesi</string>
@@ -802,13 +827,20 @@
   <string name="app_ops_reset_confirm_mesg">AppOps sayaçlarını sıfırlamak istediğinizden emin misiniz?</string>
   <string name="edge_gesture_service_title">Dokunmatik hareketlerini engelle</string>
   <string name="edge_gesture_service_summary">Telefonda gezinme ve durum çubuğu için uygulamalara dokunmatik iletiler gönderme</string>
+  <string name="data_usage_cycle_editor_subtitle_cm">Her döngünün tarihi:</string>
+  <string name="data_usage_lengths_spinner_subtitle">Döngü uzunluğu:</string>
   <string name="disable_navkeys_title">Ekrandaki dolaşım çubuğunu etkinleştir</string>
   <string name="disable_navkeys_summary">Ekran üstü dolaşım çubuğunu etkinleştir ve donanımsal butonları devre dışı bırak</string>
+  <string name="voice_plus_summary">Tüm uygulamaların Google Voice ile SMS mesajı göndermesine izin ver</string>
+  <string name="accessibility_sync_in_progress">Eşitleme sürüyor.</string>
   <string name="wifi_mode">Mod</string>
+  <string name="wifi_mode_ibss">Ad-Hoc (IBSS) Ağı</string>
+  <string name="wifi_mode_ibss_short">Ad-Hoc</string>
   <string name="wifi_ibss_freq_title">Kanal / Frekans</string>
   <string name="wifi_channel">Kanal</string>
   <string name="wifi_mhz">Mhz</string>
   <string name="voice_wakeup_settings_title">Sesle uyanma</string>
+  <string name="voice_wakeup_retrain_title">Sesinizi ayarlayın</string>
   <string name="voice_wakeup_activity_title">Başlatılacak aktivite</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
 </resources>

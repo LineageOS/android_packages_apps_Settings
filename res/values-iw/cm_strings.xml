@@ -21,6 +21,9 @@
   <string name="wifi_setting_countrycode_error">אירעה שגיאה בהגדרת הקוד האזורי.</string>
   <string name="wifi_setting_priority_title">עדיפות Wi-Fi</string>
   <string name="wifi_setting_priority_summary">ציין עדיפות של רשתות Wi-Fi</string>
+  <string name="change_crypt_password_title">שנה סיסמה</string>
+  <string name="change_crypt_password_summary">שנה סיסמה שבשימוש להצפנת המכשיר</string>
+  <string name="encryptionpassword_choose_your_password_header">הגדר סיסמת הצפנה</string>
   <string name="lock_screen_title">מסך הנעילה</string>
   <string name="increasing_ring_title">עוצמת שמע של צליל עולה</string>
   <string name="checkbox_increasing_ring">הפעל</string>
@@ -154,7 +157,6 @@
   <string name="adaptive_backlight_title">תאורה אחורית מסתגלת</string>
   <string name="adaptive_backlight_summary">שנה בחוכמה תאורה אחורית של המסך ועזור בלהגדיל חיי סוללה</string>
   <string name="wake_when_plugged_or_unplugged_title">הער מסך בעת חיבור</string>
-  <string name="wake_when_plugged_or_unplugged_summary">הדלק את המסך כאשר המכשיר מחובר או מנותק מטעינה</string>
   <string name="screen_animation_off_title">אנימציה לכיבוי מסך</string>
   <string name="screen_animation_style_title">סגנון אנימציה</string>
   <string name="screen_animation_style_electronbeam">טלוויזיה ישנה</string>
@@ -256,6 +258,7 @@
   <string name="title_dynamic_bugreport">דיווח תקלה</string>
   <string name="title_dynamic_dock_battery">עיגון סוללה</string>
   <string name="title_dynamic_ime">מחליף IME</string>
+  <string name="title_dynamic_wifi">העבר מסך</string>
   <string name="title_general">כללי</string>
   <string name="title_quick_pulldown">הורדה מהירה</string>
   <string name="summary_quick_pulldown">משיכה מצד %1$s תגרום להורדת וילון הגדרות</string>
@@ -363,6 +366,14 @@
   <string name="preview_carrier_title">חברת סלולר</string>
   <string name="header_category_interface">התאמה אישית</string>
   <string name="themes_settings_title">ערכות עיצוב</string>
+  <string name="themepacks_settings_title">ערכות נושא</string>
+  <string name="styles_settings_title">סגנונות</string>
+  <string name="icons_settings_title">סמלים</string>
+  <string name="fonts_settings_title">גופנים</string>
+  <string name="wallpaper_settings_title">רקעים</string>
+  <string name="lockscreen_wallpaper_settings_title">רקעים למסך הנעילה</string>
+  <string name="bootanim_settings_title">אנימציות אתחול</string>
+  <string name="soundpack_settings_title">ערכות צליל</string>
   <string name="performance_settings_title">ביצועים</string>
   <string name="performance_settings_warning_title">המשך בזהירות</string>
   <string name="performance_settings_warning">הגדרות אלה כלולות עבור ניסוי, כל השינויים שבוצעו בהם בעלי פוטנציאל לגרום לחוסר יציבות, קריסות, אובדן נתונים או שגיאות חומרה.\n\n אנה אל תשלח דוחות שגיאה אם אחת מהגדרות האלה שונו מברירת מחדל.</string>
@@ -487,7 +498,6 @@
   <string name="lock_clock_summary">התאם אישית את ווידג\'טי מסך הבית והנעילה</string>
   <string name="power_notifications_category_title">צלילי טעינה</string>
   <string name="power_notifications_enable_title">הפעל</string>
-  <string name="power_notifications_enable_summary">השמע צליל בעת חיבור או ניתוק מטען</string>
   <string name="power_notifications_vibrate_title">רטט</string>
   <string name="power_notifications_ringtone_title">צליל הודעה</string>
   <string name="power_notifications_ringtone_silent">שקט</string>
@@ -626,6 +636,13 @@
   <string name="backlight_summary_disabled">מושבת</string>
   <string name="backlight_summary_enabled_with_timeout">זמין עבור <xliff:g id="timeout">%s</xliff:g></string>
   <string name="backlight_summary_enabled">מאופשר</string>
+  <string name="lockscreen_background">רקע</string>
+  <string name="lockscreen_background_style_title">רקע למסך הנעילה</string>
+  <string name="background_default">רקע ברירת המחדל</string>
+  <string name="background_wallpaper">רקע מותאם אישית</string>
+  <string name="background_result_successful">רקע השתנה</string>
+  <string name="background_result_not_successful">רקע לא השתנה</string>
+  <string name="setting_lockscreen_background">מחיל רקע</string>
   <string name="accessibility_home_button_answers_call_prerefence_title">כפתור הבית משיב לשיחה</string>
   <string name="confirm_delete_apn">APN יימחקו.</string>
   <string name="status_bar_title">שורת מצב</string>
@@ -796,6 +813,9 @@
   <string name="edge_gesture_service_title">חסום אירועי מחוות מגע</string>
   <string name="data_usage_cycle_editor_subtitle_cm">תאריך של כל מחזור:</string>
   <string name="data_usage_lengths_spinner_subtitle">אורך מחזור:</string>
+  <string name="disable_navkeys_title">אפשר לחצני ניווט על המסך</string>
+  <string name="disable_navkeys_summary">אפשר לחצני ניווט על המסך ובטל לחצנים פיזיים</string>
+  <string name="voice_plus_summary">אפשר לכל היישומים לשלוח SMS דרך Google Voice</string>
   <string name="accessibility_sync_in_progress">סנכרון בתהליך.</string>
   <string name="wifi_mode">מצב</string>
   <string name="wifi_mode_ibss">רשת Ad-Hoc (IBSS)</string>

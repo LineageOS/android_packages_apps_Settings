@@ -47,12 +47,12 @@
   <string name="profile_trigger_filter_all">Všetky prepínače</string>
   <string name="profile_trigger_filter_wifi">Prepínače Wi-Fi</string>
   <string name="profile_trigger_filter_bluetooth">Prepínače Bluetooth</string>
-  <string name="profile_write_nfc_tag">Zapísať do značky NFC</string>
+  <string name="profile_write_nfc_tag">Zapísať do NFC tagu</string>
   <string name="profile_write_touch_tag">Priložte tag na zápis</string>
   <string name="profile_write_success">Tag bol úspešne zapísaný</string>
   <string name="profile_write_failed">Zápis tagu zlyhal!</string>
   <string name="profile_selected">Vybraný profil: %1$s</string>
-  <string name="profile_nfc_text">Zápis profilu do značky NFC je možný vykonať kliknutím na značku a vybratím profilu. Druhým kliknutím sa vyberie skôr vybraný profil.</string>
+  <string name="profile_nfc_text">Zápis profilu do NFC tagu je možný vykonať priložením tagu a vybratím profilu. Druhým priložením sa vyberie predchádzajúci vybraný profil.</string>
   <string name="profile_unknown_nfc_tag">Neznámy profil</string>
   <string name="profile_add_nfc_text">Tento NFC tag odkazuje na neznámy profil. Pripojenie tohto NFC tagu k existujúcemu profilu umožní neskorší výber profilu.</string>
   <string name="profile_select">Vyberte profil</string>
@@ -157,7 +157,7 @@
   <string name="adaptive_backlight_title">Adaptívne podsvietenie</string>
   <string name="adaptive_backlight_summary">Inteligentne meniť jas podsvietenia displeja a tým maximalizovať životnosť batérie</string>
   <string name="wake_when_plugged_or_unplugged_title">Prebudiť po pripojení</string>
-  <string name="wake_when_plugged_or_unplugged_summary">Zapnúť obrazovku po pripojení alebo odpojení nabíjačky</string>
+  <string name="wake_when_plugged_or_unplugged_summary">Zapnúť obrazovku pri pripojení, alebo odpojení k zdroju nabíjania</string>
   <string name="screen_animation_off_title">Animácia vypnutia obrazovky</string>
   <string name="screen_animation_style_title">Štýl animácie</string>
   <string name="screen_animation_style_electronbeam">Elektrónový lúč</string>
@@ -264,8 +264,8 @@
   <string name="title_general">Všeobecné</string>
   <string name="title_quick_pulldown">Rýchle vysunutie</string>
   <string name="summary_quick_pulldown">%1$s strana stavového riadku vysunie rýchle nastavenia</string>
-  <string name="quick_pulldown_summary_left">Vľavo</string>
-  <string name="quick_pulldown_summary_right">Vpravo</string>
+  <string name="quick_pulldown_summary_left">Ľavá</string>
+  <string name="quick_pulldown_summary_right">Pravá</string>
   <string name="quick_pulldown_off">Vypnuté</string>
   <string name="quick_pulldown_left">Vľavo</string>
   <string name="quick_pulldown_right">Vpravo</string>
@@ -371,6 +371,14 @@
   <string name="preview_carrier_title">Operátor</string>
   <string name="header_category_interface">Personalizácia</string>
   <string name="themes_settings_title">Témy</string>
+  <string name="themepacks_settings_title">Balíčky tém</string>
+  <string name="styles_settings_title">Štýly</string>
+  <string name="icons_settings_title">Ikony</string>
+  <string name="fonts_settings_title">Písma</string>
+  <string name="wallpaper_settings_title">Tapety</string>
+  <string name="lockscreen_wallpaper_settings_title">Tapety uzamknutej obrazovky</string>
+  <string name="bootanim_settings_title">Animácia spúšťania</string>
+  <string name="soundpack_settings_title">Balíčky zvukov</string>
   <string name="performance_settings_title">Výkonný</string>
   <string name="performance_settings_warning_title">Výstraha pred pokračovaním</string>
   <string name="performance_settings_warning">Tieto nastavenia sú zahrnuté pre experimentovanie a akékoľvek vykonané zmeny môžu prípadne spôsobiť nestabilitu, pády, stratu údajov, alebo zlyhania hardvéru.\n\nŽiadame vás, aby ste nenahlasovali chyby, ak boli akékoľvek z týchto nastavení zmenené.</string>
@@ -404,6 +412,7 @@
   <string name="cmupdate_settings_summary">Skontrolovať, zobraziť alebo nainštalovať dostupné aktualizácie</string>
   <string name="advanced_settings_title">Pokročilé</string>
   <string name="development_tools_title">Nástroje spúšťania</string>
+  <string name="allow_mock_sms">Povoliť falošné SMS</string>
   <string name="privacy_settings_cyanogenmod_title">Súkromie</string>
   <string name="privacy_guard_switch_label">Povoliť Ochranu súkromia</string>
   <string name="privacy_guard_dlg_title">Povoliť Ochranu súkromia?</string>
@@ -500,7 +509,7 @@
   <string name="lock_clock_summary">Prispôsobiť predvolenú miniaplikáciu na domovskej a uzamykacej obrazovke</string>
   <string name="power_notifications_category_title">Zvuky nabíjania</string>
   <string name="power_notifications_enable_title">Povoliť</string>
-  <string name="power_notifications_enable_summary">Prehrať zvuk pri pripojení alebo odpojení nabíjačky</string>
+  <string name="power_notifications_enable_summary">Prehrať zvuk pri pripojení, alebo odpojení nabíjania</string>
   <string name="power_notifications_vibrate_title">Vibrovať</string>
   <string name="power_notifications_ringtone_title">Zvuk upozornenia</string>
   <string name="power_notifications_ringtone_silent">Tichý</string>
@@ -556,6 +565,7 @@
   <string name="lockscreen_buttons_playpause">Prehrať/pozastaviť hudbu</string>
   <string name="lockscreen_buttons_toggle_sound">Prepnúť zvuk</string>
   <string name="lockscreen_buttons_sleep">Prejsť do spánku</string>
+  <string name="lockscreen_enable_modlock_title">Vlastný zámok obrazovky</string>
   <string name="navigation_bar_category">Navigačný panel</string>
   <string name="navigation_bar_title">Tlačidlá a rozloženie</string>
   <string name="navigation_bar_left_title">Ľavoruký režim</string>
@@ -641,6 +651,13 @@
   <string name="backlight_summary_disabled">Zakázané</string>
   <string name="backlight_summary_enabled_with_timeout">Povolené na <xliff:g id="timeout">%s</xliff:g></string>
   <string name="backlight_summary_enabled">Povolené</string>
+  <string name="lockscreen_background">Pozadie</string>
+  <string name="lockscreen_background_style_title">Pozadie uzamknutej obrazovky</string>
+  <string name="background_default">Predvolené pozadie</string>
+  <string name="background_wallpaper">Vlastná tapeta</string>
+  <string name="background_result_successful">Pozadie zmenené</string>
+  <string name="background_result_not_successful">Pozadie nebolo zmenené</string>
+  <string name="setting_lockscreen_background">Použiť pozadie</string>
   <string name="accessibility_home_button_answers_call_prerefence_title">Odpovedať na hovor tlačidlom Domov</string>
   <string name="confirm_delete_apn">Táto položka zoznamu prístupových bodov bude vymazaná</string>
   <string name="status_bar_title">Stavový riadok</string>
