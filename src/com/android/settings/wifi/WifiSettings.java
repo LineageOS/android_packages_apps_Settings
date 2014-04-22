@@ -736,6 +736,8 @@ public class WifiSettings extends RestrictedSettingsFragment
                 // If it's still null, fine, it's for Add Network
                 mSelectedAccessPoint = ap;
                 mDialog = new WifiDialog(getActivity(), this, ap, mDlgEdit);
+                mDialog.getWindow().setSoftInputMode(
+                        WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
                 return mDialog;
             case WPS_PBC_DIALOG_ID:
                 return new WpsDialog(getActivity(), WpsInfo.PBC);
