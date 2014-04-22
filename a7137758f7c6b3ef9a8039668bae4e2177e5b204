@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7af24918_009554e3",
+        "filename": "res/values/arrays.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 1167,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-04-22T19:27:06Z",
+      "side": 1,
+      "message": "translatable\u003d\"false\"?\n\n(and kill the existing translations for it)",
+      "revId": "a7137758f7c6b3ef9a8039668bae4e2177e5b204",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7af24918_e0994821",
+        "filename": "src/com/android/settings/MultiSimSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-04-22T19:27:06Z",
+      "side": 1,
+      "message": "Thinking further from the comment in arrays.xml, this can be simplified:\n- nuke the multi_sim_entries array\n- replace it by a string: \u003cstring name\u003d\"multi_sim_entry_format\" translatable\u003d\"false\"\u003e\u003cxliff:g id\u003d\"operator\"\u003e%1$s\u003c/xliff:g\u003e-\u003cxliff:g id\u003d\"index\"\u003e%2$d\u003c/xliff:g\u003e\u003c/string\u003e\n- simplify code like this:\n\nMSimTelephonyManager tm \u003d MSimTelephonyManager.getDefault();\nfor (i \u003d 0; i \u003c MAX_SUBSCRIPTIONS; i++) {\n    String operatorName \u003d tm.getSimState(i) !\u003d SIM_STATE_ABSENT\n            ? tm.getNetworkOperatorName(i) : getString(R.string.sub_no_sim);\n    String label \u003d getString(R.string.multi_sim_entry_format, operatorName, i + 1);\n    entries[i] \u003d summaries[i] \u003d label;\n    entriesPrompt[i] \u003d summariesPrompt[i] \u003d label;\n[...]",
+      "revId": "a7137758f7c6b3ef9a8039668bae4e2177e5b204",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7af24918_20a4d055",
+        "filename": "src/com/android/settings/SelectSubscription.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-04-22T19:27:06Z",
+      "side": 1,
+      "message": "The m prefix should only be used for member variables.",
+      "revId": "a7137758f7c6b3ef9a8039668bae4e2177e5b204",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7af24918_409f5c03",
+        "filename": "src/com/android/settings/SelectSubscription.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-04-22T19:27:06Z",
+      "side": 1,
+      "message": "See comment in MultiSimSettings.java, same approach (and code) can be used here.",
+      "revId": "a7137758f7c6b3ef9a8039668bae4e2177e5b204",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
