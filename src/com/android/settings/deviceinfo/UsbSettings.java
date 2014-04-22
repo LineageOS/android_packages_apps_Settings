@@ -28,6 +28,7 @@ import android.os.SystemProperties;
 import android.os.storage.StorageEventListener;
 import android.os.storage.StorageManager;
 import android.os.storage.StorageVolume;
+import android.os.SystemProperties;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
@@ -55,8 +56,8 @@ public class UsbSettings extends SettingsPreferenceFragment {
     // We could not know what's the usb default mode config of each device, which
     // may be defined in some sh source file. So here use a hard code for reference,
     // you should modify this value according to device usb init config.
-    private static final String USB_FUNCTION_DEFAULT =
-            "diag,serial_smd,serial_tty,rmnet_bam,mass_storage";
+    private static final String USB_FUNCTION_DEFAULT = SystemProperties.get(
+            "ro.sys.usb.default.config", "diag,serial_smd,serial_tty,rmnet_bam,mass_storage");
 
     private UsbManager mUsbManager;
     private CheckBoxPreference mMtp;
