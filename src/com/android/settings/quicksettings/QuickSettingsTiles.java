@@ -17,7 +17,9 @@
 package com.android.settings.quicksettings;
 
 import android.app.AlertDialog;
+
 import android.app.Fragment;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
@@ -25,6 +27,8 @@ import android.content.res.Resources;
 import android.content.res.Resources.NotFoundException;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.UserHandle;
+import android.provider.Settings;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -98,7 +102,13 @@ public class QuickSettingsTiles extends Fragment {
         if (cellGap != 0) {
             mDragView.setCellGap(cellGap);
         }
+        ContentResolver resolver = getActivity().getContentResolver();
+        boolean mSmallIcons = Settings.System.getIntForUser(resolver,
+                Settings.System.QUICK_SETTINGS_SMALL_ICONS, 0, UserHandle.USER_CURRENT) == 1;
         int columnCount = getItemFromSystemUi("quick_settings_num_columns", "integer");
+        if (mSmallIcons) {
+            columnCount = getItemFromSystemUi("quick_settings_num_columns_small", "integer");
+        }
         if (columnCount != 0) {
             mDragView.setColumnCount(columnCount);
         }
