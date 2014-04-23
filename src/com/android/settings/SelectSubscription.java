@@ -34,6 +34,7 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
+import android.provider.Settings;
 import android.telephony.MSimTelephonyManager;
 import android.util.Log;
 import android.widget.TabHost;
@@ -45,6 +46,7 @@ public class SelectSubscription extends  TabActivity {
     public static final String SUBSCRIPTION_KEY = "subscription";
     public static final String PACKAGE = "PACKAGE";
     public static final String TARGET_CLASS = "TARGET_CLASS";
+    public static String MULTI_SIM_NAME = "perferred_name_sub";
 
     private String[] tabLabel = {"SUB 1", "SUB 2", "SUB 3"};
 
@@ -76,7 +78,7 @@ public class SelectSubscription extends  TabActivity {
 
         for (int i = 0; i < numPhones; i++) {
             subscriptionPref = tabHost.newTabSpec(tabLabel[i]);
-            subscriptionPref.setIndicator(tabLabel[i]);
+            subscriptionPref.setIndicator(getMultiSimName(i));
             intent = new Intent().setClassName(pkg, targetClass)
                     .setAction(intent.getAction()).putExtra(SUBSCRIPTION_KEY, i);
             subscriptionPref.setContent(intent);
@@ -91,5 +93,10 @@ public class SelectSubscription extends  TabActivity {
 
     private static void log(String msg) {
         Log.d(LOG_TAG, msg);
+    }
+
+    private String getMultiSimName(int subscription) {
+        return Settings.System.getString(getContentResolver(),
+                MULTI_SIM_NAME + (subscription + 1));
     }
 }
