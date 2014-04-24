@@ -18,9 +18,11 @@ package com.android.settings.wifi;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.ContentObserver;
+import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.SupplicantState;
 import android.net.wifi.WifiInfo;
@@ -38,6 +40,10 @@ import com.android.settings.wifi.WifiSettings;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class WifiEnabler implements CompoundButton.OnCheckedChangeListener  {
+    public static final String WIFI_IS_CONNECTED = "isConnected";
+    public static final int CONNECTED = 1;
+    public static final int DISCONNECTED = 0;
+
     private final Context mContext;
     private Switch mSwitch;
     private AtomicBoolean mConnected = new AtomicBoolean(false);
@@ -114,6 +120,22 @@ public class WifiEnabler implements CompoundButton.OnCheckedChangeListener  {
         //Do nothing if called as a result of a state machine event
         if (mStateMachineEvent) {
             return;
+        }
+
+        if (mContext.getResources().getBoolean(R.bool.wifi_to_cell)) {
+            ConnectivityManager mConnService = (ConnectivityManager) mContext.
+                    getSystemService(Context.CONNECTIVITY_SERVICE);
+            if (mConnService != null) {
+                NetworkInfo netInfo = (NetworkInfo) mConnService
+                        .getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+                if (netInfo != null && netInfo.isConnected()) {
+                    Settings.System.putInt(mContext.getContentResolver(), WIFI_IS_CONNECTED,
+                            CONNECTED);
+                } else {
+                    Settings.System.putInt(mContext.getContentResolver(), WIFI_IS_CONNECTED,
+                            DISCONNECTED);
+                }
+            }
         }
 
         // Show toast message if Wi-Fi is not allowed in airplane mode
