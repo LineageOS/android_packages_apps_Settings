@@ -121,7 +121,6 @@
   <string name="volume_ring_only_description">Zil sesi</string>
   <string name="link_volume_ringtones">Zilsesi ve bildirim ses düzeyini bağla</string>
   <string name="link_volume_mutes">Sessiz modu bildirimleri etkiler</string>
-  <string name="volume_keys_control_ring_stream">Ses tuşları zil sesi düzeyini kontrol eder</string>
   <string name="ring_mode_title">Zil modu</string>
   <string name="ring_mode_normal">Normal</string>
   <string name="ring_mode_vibrate">Titreş</string>
@@ -137,7 +136,6 @@
   <string name="notification_vibrate_during_calls_title">Görüşürken titret</string>
   <string name="notification_vibrate_during_calls_summary">Görüşme sırasında gelen bildirimler yavaşça titreyecektir</string>
   <string name="volume_adjust_sounds_enable_title">Ses arttırma tonu</string>
-  <string name="volume_adjust_sounds_enable_summary">Ses tuşlarıyla sesi arttırırken uyarı tonu kullan</string>
   <string name="icon_picker_title">Simge kaynağını seçin</string>
   <string name="icon_picker_system_icons_title">Sistem ikonları</string>
   <string name="icon_picker_gallery_title">Galeri</string>
@@ -155,7 +153,6 @@
   <string name="notification_light_missed_call_title">Kayıp çağrı</string>
   <string name="notification_light_voicemail_title">Voicemail</string>
   <string name="adaptive_backlight_title">Uyum sağlayan arka ışık</string>
-  <string name="adaptive_backlight_summary">Arka ışık parlaklığını pil düzeyini en yükseğe çıkaracak şekilde akıllıca ayarla</string>
   <string name="wake_when_plugged_or_unplugged_title">Takıp çıkarmada uyan</string>
   <string name="wake_when_plugged_or_unplugged_summary">Bir güç kaynağına bağlanırken ya da bağlantısını keserken ekranı aç</string>
   <string name="screen_animation_off_title">Ekran kapama animasyonu</string>
@@ -253,7 +250,6 @@
   <string name="title_tile_network_adb">Ağ üzerinden ADB</string>
   <string name="title_dynamic_tiles">Dinamik kareler</string>
   <string name="dynamic_tiles_note_title">Not</string>
-  <string name="dynamic_tiles_note_summary">Dinamik kareler her zaman gösterilmez. Sadece bir sistem olayı tarafından tetiklendirildiğinde gösterilirler.</string>
   <string name="title_dynamic_alarm">Alarm</string>
   <string name="title_dynamic_bugreport">Hata raporu</string>
   <string name="title_dynamic_dock_battery">Dock pil</string>
@@ -305,7 +301,6 @@
   <string name="auto_brightness_preview">Önizle</string>
   <string name="auto_brightness_preview_dialog_title">Parlaklık eğrisi önizlemesi</string>
   <string name="auto_brightness_help_dialog_title">Yardım</string>
-  <string name="auto_brightness_help_text"><b>Parlaklık nasıl hesaplanıyor?</b>\n\n\n\nParlaklık eğrisi <i>cubic spline interpolation</i> adı verilen bir yönetemin\nverilen <i>kontrol noktaları</i> üzerinde uygulanmasıyla bulunuyor. Bu \'bucket-type\' denilen ve\nufak değişikliklerde ekran parlaklığının sabit kaldığı bir hesaplama değildir. Bu şekilde,\nçevrenizdeki parlaklıktaki ufak değişiklikler ekran parlaklığında büyük atlamalara sebep olmaz;\nbuna rağmen kontrol noktalarını değiştirmelerin yol açağı tam sonuçları belirlemek biraz zor olabilir.\n\nBuna çözüm getirmek için, hesaplanan eğri önizlemesi incelenebilir. Lütfen unutmayın ki,\nönizleme eğriyi <i>logaritmik</i> ölçekte gösterir, bu yüzden her bir kontrol noktası tam olarak görüntülenemeyebilir.\nLinear ölçek kullanılırken, düşük çevre aydınlığındaki daha önemli kontrol noktalarını ayırt etmek mümkün olmayacaktır.\n\n\n\n<b>Parlaklık eğrisi nasıl düzenlenir?</b>\n\n\n\nParlaklık listesindeki her bir satır parlaklık eğrisinde bir <i>kontrol noktasına</i> denk gelir.\nNoktanın parlaklığını ayarlamak için her satırdaki kaydırma çubuğunu kullanabilirsiniz.\nEkran parlaklığı kaydırıcıyı kaydırırken önizleme olsun diye değişecektir.\n\nEk özelliklere bir satıra uzun basarak erişilebilir. \'Düzenle\' tuşuyla hem kontrol noktasının parlaklığını\nayarlayabilir hem de istediğiniz parlaklığı elle girebilirsiniz. \'Böl\'ü seçmek bir saturu daha fazla kontrol noktası\noluşturmak için ikiye böler. \'Sil\' satırı siler.\n    </string>
   <string name="auto_brightness_sensitivity_title">Ayarlama hassasiyeti</string>
   <string name="auto_brightness_sensitivity_verylow">Çok düşük</string>
   <string name="auto_brightness_sensitivity_low">Düşük</string>
@@ -370,19 +365,13 @@
   <string name="preview_carrier_title">Şebeke</string>
   <string name="header_category_interface">Kişiselleştirme</string>
   <string name="themes_settings_title">Temalar</string>
-  <string name="themepacks_settings_title">Tema Paketleri</string>
   <string name="styles_settings_title">Stiller</string>
   <string name="icons_settings_title">Simgeler</string>
   <string name="fonts_settings_title">Yazı tipleri</string>
   <string name="wallpaper_settings_title">Duvar kağıtları</string>
-  <string name="lockscreen_wallpaper_settings_title">Kilit ekranı duvar kağıtları</string>
-  <string name="bootanim_settings_title">Açılış Animasyonları</string>
-  <string name="soundpack_settings_title">Ses Paketleri</string>
   <string name="performance_settings_title">Performans</string>
   <string name="performance_settings_warning_title">Dikkatle hareket edin</string>
-  <string name="performance_settings_warning">Bu ayarlar deneysel olarak eklenmiştir ve herhangi bir değişiklik kararsızlık, çökmeler, veri kaybı ya da donanımsal sorunlara yol açabilir.\n\nVarsayılandan değiştirilen ayarlarla ilgili hata raporu oluşturmamanızı rica ediyoruz.</string>
   <string name="performance_set_on_boot">Başlangıçta ayarla</string>
-  <string name="performance_set_on_boot_summary">Başlangıçta ayarları geri yükle</string>
   <string name="processor_title">İşlemci</string>
   <string name="cpu_cur_freq_title">Şimdiki işlemci hızı</string>
   <string name="cpu_governors_title">İşlemci davranışı</string>
@@ -401,7 +390,6 @@
   <string name="pref_force_highend_gfx_title">Üst düzey grafiklere zorla</string>
   <string name="pref_force_highend_gfx_summary">Saydam durum/navigasyon çubuğu gibi gelişmiş görsel efektleri etkinleştirir (yeniden başlatma gerektirir)</string>
   <string name="kill_app_longpress_back">Uygulama öldürücü geri tuşu</string>
-  <string name="kill_app_longpress_back_summary">Geri tuşuna uzun basıldığındu öndeki uygulamayı öldür</string>
   <string name="changelog_title">Değişiklik kütüğü</string>
   <string name="changelog_loading">Değişiklik kütüğü yükleniyor\u2026</string>
   <string name="changelog_error">Değişiklik kaydı yüklenemedi</string>
@@ -426,7 +414,6 @@
   <string name="privacy_guard_help_title">Yardım</string>
   <string name="privacy_guard_reset_title">Sıfırla</string>
   <string name="privacy_guard_reset_text">İzinleri sıfırla?</string>
-  <string name="privacy_guard_help_text">Bu ekranda Gizlilik Korumasının aktif olacağı uygulamaları dokunarak seçebilirsiniz. Seçili uygulamalar kişiler, mesajlar veya arama kaydı gibi kişisel bilgilerinize ulaşamayacaklar. Öğelere uzun dokunarak o uygulamalar için uygulama detayları penceresini açabilirsiniz.\n\nÖnyüklü uygulamalar varsayılan olarak gösterilmez ancak ilgili  menü seçeneğiyle görüntülenebilirler.</string>
   <string name="privacy_guard_manager_show_system_apps">Dahili uygulamaları göster</string>
   <string name="privacy_guard_manager_filter_permissions">İzin filtresi</string>
   <string name="privacy_guard_advanced_settings_title">Gelişmiş</string>
@@ -437,7 +424,6 @@
   <string name="blacklist_empty_text">Henüz bir numarayı kara listeye eklemediniz. Yeni bir giriş eklemek için Ekle (+) butonuna dokunun.</string>
   <string name="blacklist_disabled_empty_text">İstediğiniz numaralardan arama ve/veya mesajları engellemek için kara listeyi aktifleştirebilirsiniz.</string>
   <string name="blacklist_summary_disabled">Devre dışı</string>
-  <string name="blacklist_summary">Kara listedeki numaralardan gelen mesajlar ve aramalar engellenecek.</string>
   <string name="blacklist_notify">Bildirim göster</string>
   <string name="blacklist_private_numbers_title">Özel numaralar</string>
   <string name="blacklist_private_numbers_summary_disabled">Özel numaralaradan gelen çağrıları engelleme</string>
@@ -558,7 +544,6 @@
   <string name="lockscreen_long_press_home_title">Ana ekran tuşuna uzun basma</string>
   <string name="lockscreen_long_press_menu_title">Menü tuşuna uzun basma</string>
   <string name="lockscreen_buttons_no_action">İşlev yok</string>
-  <string name="lockscreen_buttons_flashlight">Flaş Işığı</string>
   <string name="lockscreen_buttons_next">Sonraki şarkı</string>
   <string name="lockscreen_buttons_previous">Önceki şarkı</string>
   <string name="lockscreen_buttons_playpause">Müziği Çal/Duraklat</string>
@@ -599,8 +584,6 @@
   <string name="expanded_desktop_disabled">Devre dışı</string>
   <string name="expanded_desktop_status_bar">Durum çubuğu görünür</string>
   <string name="expanded_desktop_no_status_bar">Durum çubuğu gizli</string>
-  <string name="expanded_desktop_system_bars_visibility">Kilit ekranında devre dışı bırak</string>
-  <string name="expanded_desktop_system_bars_visibility_summary">Genişletilmiş masaüstü modunda kilit ekranında durum ve gezinti çubuğunu göster</string>
   <string name="power_menu_profiles_title">Profil değiştirici</string>
   <string name="power_menu_airplane_title">Uçak modu</string>
   <string name="power_menu_user_title">Kullanıcı değiştirici</string>
@@ -680,13 +663,11 @@
   <string name="development_shortcut_title">Geliştirme kısayolu</string>
   <string name="development_shortcut_summary">\'Verileri sil\' ve \'Kapatma zorla\' seçeneklerini bildirim çubuğunda ve en son uygulamalar listesinde etkin kıl</string>
   <string name="usb_mass_storage_title">Yığın depolama (UMS)</string>
-  <string name="usb_mass_storage_summary">SD kartınızı flash disk şeklinde bağlayarak bilgisayarınız arasınızda herhangi bir dosyayı paylaşmanızı olanaklı kılar.</string>
   <string name="storage_rescan_media">Depolama birimi için ortamları yeniden ara</string>
   <string name="storage_rescan_media_complete">Tarama tamamlandı</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Güvenli SMS ayarlarını yönet</string>
   <string name="custom_runtime_warning_title">Uyarı</string>
-  <string name="custom_runtime_warning_message">ART CyanogenMod tarafından desteklenmemektedir. Bu seçenek deneysel olarak eklenmiştir ve kararsızlık, çökme, veri kaybı ya da cihazın başlamamasına sebep olabilir. Daha fazla bilgi için &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;ARTa Giriş&lt;/a&gt; sayfasını ziyaret edebilirsiniz..&lt;br/&gt;&lt;br/&gt;ART\'ı çalışma zamanı olarak seçtiğinizde hata raporu oluşturmamanızı istiyoruz.&lt;br/&gt;&lt;br/&gt;Çalışma zamanınızı <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> yerine <xliff:g id="new" example="libart.so">%2$s</xliff:g> olarak değiştirmek için yeniden başlatmak istediğinize emin misiniz?</string>
   <string name="gps_download_data_wifi_only">Yardımlı GPS verisini sadece Wi-Fi ağları üzerinden indir.</string>
   <string name="battery_info_status_charging_dock_ac">(AC Dock)</string>
   <string name="battery_info_status_charging_dock_usb">(USB Dock)</string>

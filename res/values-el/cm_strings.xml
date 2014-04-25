@@ -155,10 +155,12 @@
   <string name="notification_light_missed_call_title">Αναπάντητη κλήση</string>
   <string name="notification_light_voicemail_title">Μήνυμα τηλεφωνητή</string>
   <string name="adaptive_backlight_title">Προσαρμοζόμενη φωτεινότητα</string>
-  <string name="adaptive_backlight_summary">Έξυπνη μεταβολή της φωτεινότητας που συμβάλλει στη μεγιστοποίηση της ζωής της μπαταρίας</string>
+  <string name="adaptive_backlight_summary">Δυναμική μεταβολή της φωτεινότητας για μεγιστοποίηση της διάρκειας της μπαταρίας διατηρώντας την χρηστικότητα</string>
   <string name="wake_when_plugged_or_unplugged_title">Αφύπνιση κατά τη σύνδεση</string>
   <string name="wake_when_plugged_or_unplugged_summary">Ενεργοποίηση της οθόνης κατά την σύνδεση ή αποσύνδεση μιας πηγής ισχύος</string>
   <string name="screen_animation_off_title">Εφέ σβησίματος οθόνης</string>
+  <string name="screen_animation_style_title">Εφέ απενεργοποίησης οθόνης</string>
+  <string name="screen_animation_style_disabled">Απενεργοποιημένο</string>
   <string name="screen_animation_style_electronbeam">Δέσμη ηλεκτρονίων</string>
   <string name="screen_animation_style_fade">Σταδιακό σβήσιμο</string>
   <string name="edit_light_settings">Επεξεργασία φωτεινού παλμού</string>
@@ -198,6 +200,7 @@
   <string name="unlock_camera_unlock_summary">Πατώντας το πλήκτρο φωτογρ. μηχανής η συσκευή ξεκλειδώνει</string>
   <string name="unlock_quick_unlock_control_title">Γρήγορο ξεκλείδωμα</string>
   <string name="unlock_quick_unlock_control_summary">Αυτόματο ξεκλείδωμα όταν δωθεί το σωστό PIN ή ο σωστός κωδικός</string>
+  <string name="unlock_buttons_disabled_by_security">Η οθόνη κλειδώματος είναι ασφαλής</string>
   <string name="delay_and_timeout_title">Καθυστέρηση κλειδώματος</string>
   <string name="slide_lock_delay_title">Καθυστέρηση κλειδώματος οθόνης</string>
   <string name="slide_lock_timeout_delay_title">Καθυστέρηση μετά τη λήξη χρον. ορίου</string>
@@ -224,6 +227,8 @@
   <string name="tile_picker_title">Πλακίδια και διάταξη</string>
   <string name="tile_picker_summary">Εμφάνιση, επιλογή ή αλλαγή της διάταξης των πλακιδίων που εμφανίζονται</string>
   <string name="tile_choose_title">Επιλέξτε ένα πλακίδιο</string>
+  <string name="title_qs_small_icons">Εμφάνιση μικρότερων πλακιδίων</string>
+  <string name="summary_qs_small_icons">Χρήση μικρότερων πλακιδίων για αύξηση του αριθμού των στηλών</string>
   <string name="title_tile_airplane">Λειτουργία πτήσης</string>
   <string name="title_tile_battery">Στατιστικά μπαταρίας</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
@@ -328,10 +333,9 @@
 επιπέδου φωτός.\n
 Πρόσθετες επιλογές είναι διαθέσιμες με παρατεταμένο πάτημα σε κάθε γραμμή. Με την επιλογή
 \'Επεξεργασία\', μπορείτε να επεξεργαστείτε το επίπεδο φωτεινότητας περιβάλλοντος του
-σημείου ελέγχου, καθώς και να κάνετε εισαγωγή με το χέρι την επιθυμητή φωτεινότητα της οθόνης.
+σημείου ελέγχου, καθώς και να κάνετε χειροκίνητη εισαγωγή της επιθυμητής φωτεινότητας της οθόνης.
 Η επιλογή \'Διαχωρισμός\' σας επιτρέπει να να διαχωρίσετε μια γραμμή σε δύο για να προσθέσετε
-επιπλέον σημεία ελέγχου. Η \'Αφαίρεση\' διαγράφει την επιλεγμένη γραμμή.
-    </string>
+επιπλέον σημεία ελέγχου. Η \'Αφαίρεση\' διαγράφει την επιλεγμένη γραμμή.</string>
   <string name="auto_brightness_sensitivity_title">Ευαισθησία εναλλαγής φωτεινότητας</string>
   <string name="auto_brightness_sensitivity_verylow">Πολύ χαμηλή</string>
   <string name="auto_brightness_sensitivity_low">Χαμηλή</string>
@@ -380,6 +384,7 @@
   <string name="build_date">Ημερομηνία έκδοσης</string>
   <string name="cpu_info">CPU</string>
   <string name="mem_info">Μνήμη</string>
+  <string name="phone_service_state">Φωνή: <xliff:g id="voice_state">%1$s</xliff:g>, δεδομένα: <xliff:g id="data_state">%2$s</xliff:g></string>
   <string name="anonymous_statistics_title">Στατιστικά CyanogenMod</string>
   <string name="anonymous_statistics_summary">Βοηθήστε το CyanogenMod να γίνει καλύτερο ενεργοποιώντας την αποστολή ανώνυμων στατιστικών στοιχείων</string>
   <string name="anonymous_statistics_warning_title">Σχετικά</string>
@@ -410,9 +415,9 @@
   <string name="soundpack_settings_title">Πακέτα ήχου</string>
   <string name="performance_settings_title">Επιδόσεις</string>
   <string name="performance_settings_warning_title">Συνεχίστε με προσοχή</string>
-  <string name="performance_settings_warning">Οι παρακάτω ρυθμίσεις περιλαμβάνονται για πειραματισμό και η οποιαδήποτε αλλαγή ενδεχομένως να προκαλέσει αστάθεια, κολλήματα, απώλεια δεδομένων ή και βλάβη στο hardware.\n\nΠαρακαλούμε μην πραγματοποιήσετε αναφορές σφαλμάτων αν έχετε τροποποιήσει κάποια από τις παρακάτω ρυθμίσεις.</string>
+  <string name="performance_settings_warning">Αυτές οι ρυθμίσεις είναι πειραματικές και οποιεσδήποτε εφαρμοσμένες αλλαγές έχουν τη δυνατότητα να προκαλέσουν αστάθεια, κολλήματα, απώλεια δεδομένων ή βλάβη στο hardware.\n\nΠαρακαλούμε να μην πραγματοποιήσετε αναφορές σφαλμάτων αν έχετε αλλάξει οποιαδήποτε ρύθμιση από τις προεπιλογές.</string>
   <string name="performance_set_on_boot">Εφαρμογή κατά την εκκίνηση</string>
-  <string name="performance_set_on_boot_summary">Επαναφορά των ρυθμίσεων κατά την εκκίνηση</string>
+  <string name="performance_set_on_boot_summary">Επαναφορά των εφαρμοσμένων ρυθμίσεων κατά την εκκίνηση</string>
   <string name="processor_title">Επεξεργαστής</string>
   <string name="cpu_cur_freq_title">Τρέχουσα συχνότητα CPU</string>
   <string name="cpu_governors_title">CPU governor</string>
@@ -431,7 +436,7 @@
   <string name="pref_force_highend_gfx_title">Εξαναγκασμός high-end γραφικών</string>
   <string name="pref_force_highend_gfx_summary">Ενεργοποιεί high-end οπτικά εφέ, όπως διαφανείς μπάρες κατάστασης/πλοήγησης (απαιτεί επανεκκίνηση)</string>
   <string name="kill_app_longpress_back">Τερμ. με πλήκτρο πίσω</string>
-  <string name="kill_app_longpress_back_summary">Το πλήκτρο πίσω τερματίζει την τρέχουσα εφαρμογή</string>
+  <string name="kill_app_longpress_back_summary">Τερματισμός της τρέχουσας εφαρμογής κατά την παρατεταμένη πίεση του πλήκτρου πίσω</string>
   <string name="changelog_title">Εμφάνιση αρχείου αλλαγών</string>
   <string name="changelog_loading">Φόρτωση αρχείου αλλαγών\u2026</string>
   <string name="changelog_error">Δεν είναι δυνατή η φόρτωση του αρχείου αλλαγών</string>
@@ -467,7 +472,7 @@
   <string name="blacklist_empty_text">Δεν έχετε κανένα αριθμό στη μαύρη λίστα. Προσθέστε μια καταχώρηση με το πλήκτρο +.</string>
   <string name="blacklist_disabled_empty_text">Για φραγή κλήσεων ή/και μηνυμάτων από συγκεκριμένες επαφές, ενεργοποιήστε τη μαύρη λίστα.</string>
   <string name="blacklist_summary_disabled">Απενεργοποιημένη</string>
-  <string name="blacklist_summary">Εισερχόμενες κλήσεις και μηνύματα από αριθμούς που είναι στη μαύρη λίστα θα απορρίπτονται</string>
+  <string name="blacklist_summary">Εισερχόμενες κλήσεις και μηνύματα από αριθμούς στη μαύρη λίστα θα απορρίπτονται</string>
   <string name="blacklist_notify">Εμφάνιση ειδοποίησης</string>
   <string name="blacklist_private_numbers_title">Απόρρητοι αριθμοί</string>
   <string name="blacklist_private_numbers_summary_disabled">Να μην γίνεται φραγή κλήσεων από απόρρητους αριθμούς</string>
@@ -710,13 +715,13 @@
   <string name="development_shortcut_title">Συντόμευση για προγραμματιστές</string>
   <string name="development_shortcut_summary">Ενεργοποίηση των επιλογών \'εκκαθάριση δεδομένων\' και \'αναγκαστική διακοπή\' στην περιοχή ειδοποιήσεων και στη λίστα πρόσφατων εφαρμογών</string>
   <string name="usb_mass_storage_title">Αποθ. χώρος USB (UMS)</string>
-  <string name="usb_mass_storage_summary">Σας επιτρέπει να μεταφέρετε οποιαδήποτε αρχεία μεταξύ του υπολογιστή σας και της κάρτας SD προσαρτώντας την ως συσκευή flash</string>
+  <string name="usb_mass_storage_summary">Σας επιτρέπει να μεταφέρετε αρχεία μεταξύ του υπολογιστή σας και της κάρτας SD προσαρτώντας την ως συσκευή flash</string>
   <string name="storage_rescan_media">Σάρωση για πολυμέσα στον αποθ. χώρο</string>
   <string name="storage_rescan_media_complete">Η σάρωση ολοκληρώθηκε</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Διαχείριση ρυθμίσεων ασφαλών SMS</string>
   <string name="custom_runtime_warning_title">Προσοχή</string>
-  <string name="custom_runtime_warning_message">Το ART δεν υποστηρίζεται από το CyanogenMod. Η ρύθμιση αυτή περιλαμβάνεται μόνο για πειραματισμό και μπορεί να προκαλέσει αστάθεια, κολλήματα, απώλεια δεδομένων ή να αποτρέψει τη σωστή εκκίνηση της συσκευής σας. Επισκευθείτε το &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; για περισσότερες πληροφορίες.&lt;br/&gt;&lt;br/&gt;Σας παρακαλούμε να μην υποβάλλετε αναφορές σφαλμάτων, αν έχετε ενεργοποιημένο το ART ως runtime.&lt;br/&gt;&lt;br/&gt;Είστε βέβαιοι ότι θέλετε να κάνετε επανεκκίνηση για να αλλάξει το runtime από <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> σε <xliff:g id="new" example="libart.so">%2$s</xliff:g>;</string>
+  <string name="custom_runtime_warning_message">Το ART δεν υποστηρίζεται επίσημα από το CyanogenMod δεδομένου ότι είναι μια πειραματική ρύθμιση και μπορεί να προκαλέσει αστάθεια, κολλήματα, απώλεια δεδομένων ή να αποτρέψει τη σωστή εκκίνηση της συσκευής σας. Επισκευθείτε το &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; για περισσότερες πληροφορίες.&lt;br/&gt;&lt;br/&gt;Σας παρακαλούμε να μην υποβάλλετε αναφορές σφαλμάτων, αν έχετε ενεργοποιημένο το ART ως runtime.&lt;br/&gt;&lt;br/&gt;Είστε βέβαιοι ότι θέλετε να κάνετε επανεκκίνηση για να αλλάξει το runtime από <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> σε <xliff:g id="new" example="libart.so">%2$s</xliff:g>;</string>
   <string name="gps_download_data_wifi_only">Λήψη δεδομένων υποβοηθούμενου GPS μόνο μέσω δικτύων Wi-Fi</string>
   <string name="battery_info_status_charging_dock_ac">(Βάση σύνδεσης AC)</string>
   <string name="battery_info_status_charging_dock_usb">(Βάση σύνδεσης USB)</string>
@@ -872,4 +877,5 @@
   <string name="voice_wakeup_retrain_title">Επανεκπαίδευση της φωνής σας</string>
   <string name="voice_wakeup_activity_title">Δραστηριότητα για έναρξη</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
+  <string name="sub_no_sim">Χωρίς SIM</string>
 </resources>

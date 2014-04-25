@@ -159,6 +159,8 @@
   <string name="wake_when_plugged_or_unplugged_title">Включение при зарядке</string>
   <string name="wake_when_plugged_or_unplugged_summary">Включать экран при подключении или отключении источника питания</string>
   <string name="screen_animation_off_title">Анимация выключения</string>
+  <string name="screen_animation_style_title">Стиль анимации выключения</string>
+  <string name="screen_animation_style_disabled">Анимация отключена</string>
   <string name="screen_animation_style_electronbeam">Пучок электронов</string>
   <string name="screen_animation_style_fade">Затухание</string>
   <string name="edit_light_settings">Изменение настроек индикатора</string>
@@ -198,6 +200,7 @@
   <string name="unlock_camera_unlock_summary">Нажатие кнопки камеры разблокирует устройство</string>
   <string name="unlock_quick_unlock_control_title">Быстрая разблокировка</string>
   <string name="unlock_quick_unlock_control_summary">Автоматическая разблокировка при вводе правильного пароля или PIN-кода</string>
+  <string name="unlock_buttons_disabled_by_security">Необходимо отключить защиту паролем</string>
   <string name="delay_and_timeout_title">Задержка при блокировке</string>
   <string name="slide_lock_delay_title">Задержка блокировки экрана</string>
   <string name="slide_lock_timeout_delay_title">Задержка после тайм-аута</string>
@@ -224,6 +227,8 @@
   <string name="tile_picker_title">Плитки и размещение</string>
   <string name="tile_picker_summary">Просмотр, выбор или изменение размещения отображаемых плиток</string>
   <string name="tile_choose_title">Выбор плитки</string>
+  <string name="title_qs_small_icons">Маленькие плитки</string>
+  <string name="summary_qs_small_icons">Использовать плитки меньшего размера для увеличения количества столбцов</string>
   <string name="title_tile_airplane">Режим полёта</string>
   <string name="title_tile_battery">Батарея</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
@@ -313,8 +318,7 @@
 <b>Как изменить кривую яркости?</b>
 \n\n
 Каждая строка списка соответствует одной <i>контрольной точке</i> кривой яркости. Чтобы изменить уровень яркости для этой точки, используйте специальный ползунок. Яркость экрана будет изменяться соответствующим образом для демонстрации.\n
-Дополнительные настройки доступны по длительному нажатию на строку списка. Выбрав «Изменить», вы можете изменить уровень освещённости, а также вручную ввести желаемое значение яркости экрана. Пункт «Разделить» делит одну строку на два значения для вставки дополнительных контрольных точек. Пункт «Удалить» удаляет выбранную строку.
-    </string>
+Дополнительные настройки доступны по длительному нажатию на строку списка. Выбрав «Изменить», вы можете изменить уровень освещённости, а также вручную ввести желаемое значение яркости экрана. Пункт «Разделить» делит одну строку на два значения для вставки дополнительных контрольных точек. Пункт «Удалить» удаляет выбранную строку.</string>
   <string name="auto_brightness_sensitivity_title">Чувствительность</string>
   <string name="auto_brightness_sensitivity_verylow">Очень низкая</string>
   <string name="auto_brightness_sensitivity_low">Низкая</string>
@@ -363,6 +367,7 @@
   <string name="build_date">Дата сборки</string>
   <string name="cpu_info">Процессор</string>
   <string name="mem_info">Память</string>
+  <string name="phone_service_state">Голосовая связь: <xliff:g id="voice_state">%1$s</xliff:g>\nПередача данных: <xliff:g id="data_state">%2$s</xliff:g></string>
   <string name="anonymous_statistics_title">Отправка статистики</string>
   <string name="anonymous_statistics_summary">Помогите сделать CM лучше, включив отправку анонимных отчётов</string>
   <string name="anonymous_statistics_warning_title">Информация об использовании</string>
@@ -389,7 +394,7 @@
   <string name="soundpack_settings_title">Наборы звуков</string>
   <string name="performance_settings_title">Производительность</string>
   <string name="performance_settings_warning_title">Соблюдайте осторожность</string>
-  <string name="performance_settings_warning">Эти настройки включены для экспериментов и любые внесённые изменения могут вызвать нестабильную работу, ошибки, потерю данных или аппаратные сбои.\n\nМы просим не слать баг-репорты, если вы что-то меняли в этих настройках.</string>
+  <string name="performance_settings_warning">Эти настройки являются экспериментальными. Любые внесённые изменения могут вызвать нестабильную работу, ошибки, потерю данных или аппаратные сбои.\n\nМы просим не присылать баг-репорты, если вы что-то меняли в этих настройках.</string>
   <string name="performance_set_on_boot">Выставлять при загрузке</string>
   <string name="performance_set_on_boot_summary">Применять текущие настройки при перезагрузке</string>
   <string name="processor_title">Процессор</string>
@@ -410,7 +415,7 @@
   <string name="pref_force_highend_gfx_title">Высококачественная графика</string>
   <string name="pref_force_highend_gfx_summary">Использовать эффекты, отключённые для устройств с низкой производительностью, например, прозрачность строки состояния и панели навигации (требуется перезагрузка)</string>
   <string name="kill_app_longpress_back">Закрытие приложения</string>
-  <string name="kill_app_longpress_back_summary">Долгое нажатие кнопки «Назад» закроет запущенное приложение</string>
+  <string name="kill_app_longpress_back_summary">Завершать работу текущего приложения удерживанием кнопки «Назад»</string>
   <string name="changelog_title">Список изменений</string>
   <string name="changelog_loading">Загрузка списка изменений\u2026</string>
   <string name="changelog_error">Ошибка загрузки списка изменений</string>
@@ -689,7 +694,7 @@
   <string name="development_shortcut_title">Дополнительные пункты меню</string>
   <string name="development_shortcut_summary">Показывать пункты «Стереть данные» и «Остановить» в уведомлениях и списке недавних приложений</string>
   <string name="usb_mass_storage_title">USB-накопитель</string>
-  <string name="usb_mass_storage_summary">Включить режим USB-накопителя (UMS)</string>
+  <string name="usb_mass_storage_summary">Позволяет передавать файлы путём использования SD-карты устройства в качестве съёмного диска</string>
   <string name="storage_rescan_media">Пересканировать память</string>
   <string name="storage_rescan_media_complete">Сканирование завершено</string>
   <string name="whisperpush_title">Технология WhisperPush</string>
@@ -851,4 +856,5 @@
   <string name="voice_wakeup_retrain_title">Перезаписать образец голоса</string>
   <string name="voice_wakeup_activity_title">Действие для запуска</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
+  <string name="sub_no_sim">Нет SIM-карты</string>
 </resources>

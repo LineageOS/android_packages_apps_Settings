@@ -112,9 +112,12 @@
   <string name="toggleWifi">Wi-Fi</string>
   <string name="toggleWifiAp">Hordozható Wi-Fi hotspot</string>
   <string name="toggleBluetooth">Bluetooth</string>
+  <string name="toggleGPS">GPS</string>
   <string name="toggleData">Mobilinternet</string>
   <string name="toggleSync">Szinkronizálás</string>
+  <string name="toggle2g3g">2G/3G</string>
   <string name="toggleWimax">WiMAX</string>
+  <string name="toggleNfc">NFC</string>
   <string name="volume_ring_only_description">Csengőhang</string>
   <string name="link_volume_ringtones">Csengő és értesítési hangok összekötése</string>
   <string name="link_volume_mutes">Csengő és értesítési hangok némításának összekötése</string>
@@ -154,7 +157,10 @@
   <string name="adaptive_backlight_title">Adaptív háttérvilágítás</string>
   <string name="adaptive_backlight_summary">Intelligens módon változtatja a háttérvilágítás fényerejét az akkumulátor élettartamának növelése érdekében</string>
   <string name="wake_when_plugged_or_unplugged_title">Felébredés töltő csatlakoztatásakor</string>
+  <string name="wake_when_plugged_or_unplugged_summary">A képernyő bekapcsolása a töltő csatlakoztatása/eltávolítása után</string>
   <string name="screen_animation_off_title">Képernyő-kikapcsolás animáció</string>
+  <string name="screen_animation_style_title">Képernyő-kikapcsolás animáció stílusa</string>
+  <string name="screen_animation_style_disabled">Letiltva</string>
   <string name="screen_animation_style_electronbeam">Elektronsugár</string>
   <string name="screen_animation_style_fade">Elhalványuló</string>
   <string name="edit_light_settings">Jelzés beállítások</string>
@@ -194,6 +200,7 @@
   <string name="unlock_camera_unlock_summary">Készülék feloldása a kamera gomb megnyomásával</string>
   <string name="unlock_quick_unlock_control_title">Gyors feloldás</string>
   <string name="unlock_quick_unlock_control_summary">Automatikus feloldás a helyes jelszó/PIN kód beütése után</string>
+  <string name="unlock_buttons_disabled_by_security">Védett a képernyőzár</string>
   <string name="delay_and_timeout_title">Képernyőzár késleltetés</string>
   <string name="slide_lock_delay_title">Képernyőzár késleltetése</string>
   <string name="slide_lock_timeout_delay_title">Késleltetés bekapcsolt kijelzőnél</string>
@@ -220,14 +227,18 @@
   <string name="tile_picker_title">Csempék és elrendezés</string>
   <string name="tile_picker_summary">Csempék megtekintése, kiválasztása vagy módosítása</string>
   <string name="tile_choose_title">Válasszon csempét</string>
+  <string name="title_qs_small_icons">Kisebb csempék</string>
+  <string name="summary_qs_small_icons">Kisebb csempék használata a megjeleníthető elemek számának növeléséhez</string>
   <string name="title_tile_airplane">Repülőgép üzemmód</string>
   <string name="title_tile_battery">Akkumulátor állapota</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Fényerő</string>
   <string name="title_tile_camera">Kamera</string>
   <string name="title_tile_sleep">Alvó mód</string>
+  <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Zseblámpa</string>
   <string name="title_tile_lockscreen">Képernyőzár</string>
+  <string name="title_tile_lte">LTE</string>
   <string name="title_tile_mobiledata">Mobilinternet</string>
   <string name="title_tile_profile">Profil</string>
   <string name="title_tile_performance_profile">Teljesítmény profil</string>
@@ -235,9 +246,11 @@
   <string name="title_tile_settings">Beállítások</string>
   <string name="title_tile_sound">Hang</string>
   <string name="title_tile_sync">Szinkronizálás</string>
+  <string name="title_tile_wifiap">Wi-Fi AP</string>
   <string name="title_tile_wifi">Wi-Fi</string>
   <string name="title_tile_user">Felhasználóváltás</string>
   <string name="title_tile_networkmode">2G/3G</string>
+  <string name="title_tile_nfc">NFC</string>
   <string name="title_tile_screen_timeout">Képernyő időkorlátja</string>
   <string name="title_tile_quiet_hours">Csendes órák</string>
   <string name="title_tile_volume">Hangerő</string>
@@ -245,7 +258,7 @@
   <string name="title_tile_network_adb">ADB hálózaton keresztül</string>
   <string name="title_dynamic_tiles">Dinamikus csempék</string>
   <string name="dynamic_tiles_note_title">Megjegyzés</string>
-  <string name="dynamic_tiles_note_summary">Dinamikus csempék csak akkor láthatóak, ha egy rendszeresemény azt kiváltja</string>
+  <string name="dynamic_tiles_note_summary">Dinamikus csempék csak akkor láthatóak, ha egy rendszeresemény azt kíváltja</string>
   <string name="title_dynamic_alarm">Ébresztés</string>
   <string name="title_dynamic_bugreport">Hibajelentés</string>
   <string name="title_dynamic_dock_battery">Dokkoló akkumulátora</string>
@@ -296,7 +309,26 @@
   <string name="auto_brightness_preview">Megtekintés</string>
   <string name="auto_brightness_preview_dialog_title">Fényerő görbe megtekintése</string>
   <string name="auto_brightness_help_dialog_title">Súgó</string>
-  <string name="auto_brightness_help_text"><b>Hogyan számolódik a fényerő?</b>\n\n\nA fényerő-görbe egy úgynevezett <i>köbös interpoláció</i>val számítódik, ahol adott néhány <i>vezérlőpont</i>.\nEz egy olyan számítás, ahol a képernyő fényereje állandó marad a környezeti fényerősség egy-egy tartományában.\nEzáltal a környezeti fény kis változása nem okoz nagy fényerőugrásokat a kijelzőn,\ncserébe kicsit nehezebb megjósolni, hogy mit okoz egy vezérlőpont megváltoztatása.\n\nHogy ezt segítsük, lehetővé tettük a számított görbe megtekintését. A görbe <i>logaritmikus</i> skálán ábrázolódik,\nhogy minden pontot meg lehessen különböztetni. Lineáris skálát alkalmazva előfordulhatna,\nhogy a kisebb környezeti fényerőkhöz tartozó pontokat nem lehetne megkülönböztetni.\n\n\n\n<b>Hogyan szerkesztheti a fényerő-görbét?</b>\n\n\n\nMinden sor a fényerőlistán megfelel a görbe egy <i>vezérlőpont</i>jának.\nA pont fényerejének szerkesztéséhez használja a sorokban található csúszkákat.\nA csúszkák állításakor a kijelző fényereje a beállított értéknek megfelelően fog változni,\nhogy látni lehessen a beállítás hatását.\n\nEgy sor hosszan tartó megérintésével további beállítások válnak elérhetővé.\nA \"Szerkesztés\" lehetőséget választva módosíthatja a vezérlőponthoz tartozó környezeti fényerőt,\nilletve kézzel beírhatja a kívánt kijelző-fényerőt. A \"Felosztás\" lehetővé teszi egy sor kettéválasztását új vezérlőpont beszúrásához.\nAz \"Eltávolítás\" törli a kiválasztott sort.</string>
+  <string name="auto_brightness_help_text"><b>Hogyan számolódik a fényerő?</b>
+\n\n
+A fényerő-görbe egy úgynevezett <i>köbös interpoláció</i>val számítódik, ahol adott néhány <i>vezérlőpont</i>.
+Ez egy olyan számítás, ahol a képernyő fényereje állandó marad a környezeti fényerősség egy-egy tartományában.
+Ezáltal a környezeti fény kis változása nem okoz nagy fényerőugrásokat a kijelzőn,
+cserébe kicsit nehezebb megjósolni, hogy mit okoz egy vezérlőpont megváltoztatása.\n
+Hogy ezt segítsük, lehetővé tettük a számított görbe megtekintését. A görbe <i>logaritmikus</i> skálán ábrázolódik,
+hogy minden pontot meg lehessen különböztetni. Lineáris skálát alkalmazva előfordulhatna,
+hogy a kisebb környezeti fényerőkhöz tartozó pontokat nem lehetne megkülönböztetni.
+\n\n
+<b>Hogyan szerkesztheti a fényerő-görbét?</b>
+\n\n
+Minden sor a fényerőlistán megfelel a görbe egy <i>vezérlőpont</i>jának.
+A pont fényerejének szerkesztéséhez használja a sorokban található csúszkákat.
+A csúszkák állításakor a kijelző fényereje a beállított értéknek megfelelően fog változni,
+hogy látni lehessen a beállítás hatását.\n
+Egy sor hosszan tartó megérintésével további beállítások válnak elérhetővé.
+A \"Szerkesztés\" lehetőséget választva módosíthatja a vezérlőponthoz tartozó környezeti fényerőt,
+illetve kézzel beírhatja a kívánt kijelző-fényerőt. A \"Felosztás\" lehetővé teszi egy sor kettéválasztását új vezérlőpont beszúrásához.
+Az \"Eltávolítás\" törli a kiválasztott sort.</string>
   <string name="auto_brightness_sensitivity_title">Beállítás érzékenysége</string>
   <string name="auto_brightness_sensitivity_verylow">Nagyon alacsony</string>
   <string name="auto_brightness_sensitivity_low">Alacsony</string>
@@ -322,6 +354,7 @@
   <string name="root_access_apps">Csak alkalmazások</string>
   <string name="root_access_adb">Csak ADB</string>
   <string name="root_access_all">Alkalmazások és ADB</string>
+  <string name="ok">OK</string>
   <string name="quiet_hours_title">Csendes órák</string>
   <string name="quiet_hours_summary">Csendes órák beállításai</string>
   <string name="quiet_hours_enabled">Csendes órák</string>
@@ -344,6 +377,7 @@
   <string name="build_date">Build dátuma</string>
   <string name="cpu_info">Processzor</string>
   <string name="mem_info">Memória</string>
+  <string name="phone_service_state">Hang: <xliff:g id="voice_state">%1$s</xliff:g>, adat: <xliff:g id="data_state">%2$s</xliff:g></string>
   <string name="anonymous_statistics_title">CyanogenMod Statisztika</string>
   <string name="anonymous_statistics_summary">Segítsen a CyanogenMod jobbá tételében, kapcsolja be a névtelen statisztikai adatok gyűjtését</string>
   <string name="anonymous_statistics_warning_title">Névjegy</string>
@@ -360,9 +394,17 @@
   <string name="preview_carrier_title">Szolgáltató</string>
   <string name="header_category_interface">Testreszabás</string>
   <string name="themes_settings_title">Témák</string>
+  <string name="themepacks_settings_title">Téma csomagok</string>
+  <string name="styles_settings_title">Stílusok</string>
+  <string name="icons_settings_title">Ikonok</string>
+  <string name="fonts_settings_title">Betűtípusok</string>
+  <string name="wallpaper_settings_title">Háttérképek</string>
+  <string name="lockscreen_wallpaper_settings_title">Képernyőzár háttérképek</string>
+  <string name="bootanim_settings_title">Boot animációk</string>
+  <string name="soundpack_settings_title">Hang csomagok</string>
   <string name="performance_settings_title">Teljesítmény</string>
   <string name="performance_settings_warning_title">Innentől óvatosan</string>
-  <string name="performance_settings_warning">Ezek a beállítások kísérleti jelleggel szerepelnek itt. Bármilyen változtatás a készülék instabilitásához, meghibásodásához, vagy adatvesztéshez vezethet.\n\nAz esetleges károkért nem vállalunk felelősséget.</string>
+  <string name="performance_settings_warning">Ezek a beállítások kísérleti jelleggel szerepelnek itt. Bármilyen változtatás a készülék instabilitásához, meghibásodásához, vagy adatvesztéshez vezethet.\n\nKérünk, hogy ne küldjön hibajelentést, amennyiben módosítása a rendszer alapértelmezett beállításait.</string>
   <string name="performance_set_on_boot">Bekapcsoláskor érvénybe lép</string>
   <string name="performance_set_on_boot_summary">Processzor beállítása indításkor</string>
   <string name="processor_title">Processzor</string>
@@ -380,6 +422,8 @@
   <string name="pref_purgeable_assets_summary">Szükség esetén engedélyezi több RAM felszabadítását (újraindítás szükséges)</string>
   <string name="pref_use_16bpp_alpha_title">16bit átlátszóság</string>
   <string name="pref_use_16bpp_alpha_summary">Jobb grafikus teljesítmény, de gyengébb minőség illetve megjelenítési rendellenességek léphetnek fel (újraindítás szükséges)</string>
+  <string name="pref_force_highend_gfx_title">Magas minőségű grafika kényszerítése</string>
+  <string name="pref_force_highend_gfx_summary">Magas minőségű grafikai effektek engedélyezése, mint az átlátszó állapot/navigációs sáv (újraindítás szükséges)</string>
   <string name="kill_app_longpress_back">Alkalmazás bezárás</string>
   <string name="kill_app_longpress_back_summary">Alkalmazás bezárása nyomva tartott vissza gombbal</string>
   <string name="changelog_title">Változások megtekintése</string>
@@ -391,6 +435,7 @@
   <string name="cmupdate_settings_summary">Elérhető frissítések keresése, megtekintése, vagy telepítése</string>
   <string name="advanced_settings_title">Haladó</string>
   <string name="development_tools_title">Fejlesztői eszközök</string>
+  <string name="allow_mock_sms">SMS utánzatok engedélyezése</string>
   <string name="privacy_settings_cyanogenmod_title">Adatvédelem</string>
   <string name="privacy_guard_switch_label">Adatvédelem engedélyezése</string>
   <string name="privacy_guard_dlg_title">Engedélyezi az adatvédelmi módot?</string>
@@ -487,6 +532,7 @@
   <string name="lock_clock_summary">Az alapértelmezett kezdőképernyő, illetve képernyőzár modul testreszabása</string>
   <string name="power_notifications_category_title">Töltés jelzése</string>
   <string name="power_notifications_enable_title">Engedélyezve</string>
+  <string name="power_notifications_enable_summary">Hangjelzés töltő csatlakoztatása, vagy leválasztása esetén</string>
   <string name="power_notifications_vibrate_title">Rezgés</string>
   <string name="power_notifications_ringtone_title">Értesítési hang</string>
   <string name="power_notifications_ringtone_silent">Néma</string>
@@ -513,6 +559,7 @@
   <string name="icon_picker_camera">Kamera</string>
   <string name="icon_picker_chrome">Chrome</string>
   <string name="icon_picker_contacts">Névjegyek</string>
+  <string name="icon_picker_email">E-mail</string>
   <string name="icon_picker_email2">E-mail Holo</string>
   <string name="icon_picker_facebook">Facebook</string>
   <string name="icon_picker_gallery">Galéria</string>
@@ -541,6 +588,7 @@
   <string name="lockscreen_buttons_playpause">Zene lejátszás/szünet</string>
   <string name="lockscreen_buttons_toggle_sound">Hang mód</string>
   <string name="lockscreen_buttons_sleep">Alvó mód</string>
+  <string name="lockscreen_enable_modlock_title">Egyéni képernyőzár</string>
   <string name="navigation_bar_category">Navigációs sáv</string>
   <string name="navigation_bar_title">Gombok és kinézet</string>
   <string name="navigation_bar_left_title">Bal kezes mód</string>
@@ -662,7 +710,7 @@
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Biztonságos SMS beállítások kezelése</string>
   <string name="custom_runtime_warning_title">Figyelmeztetés</string>
-  <string name="custom_runtime_warning_message">A CyanogenMod nem támogatja az ART futtatási környezetet. Ez a beállítás csak kísérleti jelleggel van jelen a rendszerben. Instabilitást, rendszerösszeomlást, adatvesztést okozhat, vagy akár elindíthatatlanná teheti az eszközt. Látogasson el az <a href="http://source.android.com/devices/tech/dalvik/art.html">Introducing ART</a> oldalra a további információkért. <br/><br/>Kérjük, ne küldjön hibabejelentést, amennyiben az ART futtatási környezet engedélyezve van. <br/><br/>Biztosan újra kívánja indítani az eszközt és a jelenlegi futtatót, <xliff:g id="old" example="libdvm.so">%1$s</xliff:g>-ról <xliff:g id="new" example="libart.so">%2$s</xliff:g>-ra cserélni?</string>
+  <string name="custom_runtime_warning_message">A CyanogenMod nem támogatja az ART futtatási környezetet. Ez a beállítás csak kísérleti jelleggel van jelen a rendszerben. Instabilitást, rendszerösszeomlást, adatvesztést okozhat, vagy akár elindíthatatlanná teheti az eszközt. Látogasson el az &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; oldalra a további információkért.&lt;br/&gt;&lt;br/&gt;Kérjük, ne küldjön hibabejelentést, amennyiben az ART futtatási környezet engedélyezve van.&lt;br/&gt;&lt;br/&gt;Biztosan újra kívánja indítani az eszközt és a jelenlegi futtatót, <xliff:g id="old" example="libdvm.so">%1$s</xliff:g>-ról <xliff:g id="new" example="libart.so">%2$s</xliff:g>-ra cserélni?</string>
   <string name="gps_download_data_wifi_only">GPS támogatási adatok letöltése csak Wi-Fi hálózat esetén</string>
   <string name="battery_info_status_charging_dock_ac">(DockAC)</string>
   <string name="battery_info_status_charging_dock_usb">(DockUSB)</string>
@@ -695,6 +743,7 @@
   <string name="ime_switcher_notify_summary">Beviteli mód választó megjelenítése az értesítési sávon</string>
   <string name="app_ops_summaries_coarse_location">pontatlan hely</string>
   <string name="app_ops_summaries_fine_location">pontos hely</string>
+  <string name="app_ops_summaries_gps">GPS</string>
   <string name="app_ops_summaries_vibrate">rezgés</string>
   <string name="app_ops_summaries_read_contacts">névjegyek olvasása</string>
   <string name="app_ops_summaries_modify_contacts">névjegyek módosítása</string>
@@ -716,8 +765,11 @@
   <string name="app_ops_summaries_read_icc_sms">ICC SMS olvasása</string>
   <string name="app_ops_summaries_write_icc_sms">ICC SMS írása</string>
   <string name="app_ops_summaries_modify_settings">beállítások módosítása</string>
+  <string name="app_ops_summaries_draw_on_top">előtérben maradni</string>
   <string name="app_ops_summaries_access_notifications">hozzáférés az értesítésekhez</string>
   <string name="app_ops_summaries_camera">kamera</string>
+  <string name="app_ops_summaries_record_audio">hangfelvétel</string>
+  <string name="app_ops_summaries_play_audio">Hang lejátszása</string>
   <string name="app_ops_summaries_read_clipboard">vágólap olvasása</string>
   <string name="app_ops_summaries_modify_clipboard">vágólap módosítása</string>
   <string name="app_ops_summaries_media_buttons">média gombok</string>
@@ -730,6 +782,8 @@
   <string name="app_ops_summaries_notification_volume">értesítési hangerő</string>
   <string name="app_ops_summaries_bluetooth_volume">bluetooth hangerő</string>
   <string name="app_ops_summaries_keep_awake">ébren tartás</string>
+  <string name="app_ops_summaries_monitor_location">helymeghatározás</string>
+  <string name="app_ops_summaries_monitor_high_power_location">helymeghatározás nagy pontossággal</string>
   <string name="app_ops_summaries_wifi_change">wifi változás</string>
   <string name="app_ops_summaries_bluetooth_change">bluetooth változás</string>
   <string name="app_ops_summaries_data_change">adat változás</string>
@@ -739,6 +793,7 @@
   <string name="app_ops_summaries_write_mms">MMS írás</string>
   <string name="app_ops_summaries_auto_start">automatikus indítás</string>
   <string name="app_ops_labels_location">Helymeghatározás</string>
+  <string name="app_ops_labels_vibrate">Rezgés</string>
   <string name="app_ops_labels_read_contacts">Névjegyek olvasása</string>
   <string name="app_ops_labels_modify_contacts">Névjegyek módosítása</string>
   <string name="app_ops_labels_read_call_log">Hívásnapló olvasása</string>
@@ -755,6 +810,7 @@
   <string name="app_ops_labels_modify_settings">Beállítások módosítása</string>
   <string name="app_ops_labels_draw_on_top">Előtérben maradni</string>
   <string name="app_ops_labels_access_notifications">Hozzáférés az értesítésekhez</string>
+  <string name="app_ops_labels_camera">Kamera</string>
   <string name="app_ops_labels_record_audio">Hangfelvétel</string>
   <string name="app_ops_labels_play_audio">Zene lejátszása</string>
   <string name="app_ops_labels_read_clipboard">Vágólap olvasása</string>
@@ -779,21 +835,36 @@
   <string name="app_ops_labels_auto_start">Automatikus indítás</string>
   <string name="app_ops_categories_location">Helymeghatározás</string>
   <string name="app_ops_categories_personal">Személyes</string>
+  <string name="app_ops_categories_messaging">Üzenetküldés</string>
   <string name="app_ops_categories_media">Média</string>
+  <string name="app_ops_categories_device">Eszköz</string>
   <string name="app_ops_categories_bootup">Indításkor</string>
   <string name="app_ops_entry_summary"><xliff:g id="op">%1$s</xliff:g> (<xliff:g id="count">%2$s</xliff:g> alkalommal használva)</string>
   <string name="app_ops_allowed_count">Engedélyezve <xliff:g id="count" example="2 times">%s</xliff:g> alkalommal</string>
   <string name="app_ops_ignored_count">Megtagadva <xliff:g id="count" example="2 times">%s</xliff:g> alkalommal</string>
   <string name="app_ops_both_count">Engedélyezve <xliff:g id="count">%1$s</xliff:g>, megtagadva <xliff:g id="count">%2$s</xliff:g> alkalommal</string>
   <string name="app_ops_show_user_apps">Felhasználói alkalmazások megjelenítése</string>
+  <string name="app_ops_show_system_apps">Rendszeralkalmazások megjelenítése</string>
   <string name="app_ops_reset_counters">Számlálók nullázása</string>
   <string name="app_ops_reset_confirm_title">Számlálók törlésének megerősítése</string>
   <string name="app_ops_reset_confirm_mesg">Biztosan vissza kívánja állítani a számlálókat alaphelyzetbe?</string>
+  <string name="edge_gesture_service_title">Kézmozdulatok letiltása</string>
+  <string name="edge_gesture_service_summary">Az alkalmazások nem veszik figyelembe a navigációs- és állapotsáv érintéseket</string>
+  <string name="data_usage_cycle_editor_subtitle_cm">Egyes ciklusok időpontja:</string>
+  <string name="data_usage_lengths_spinner_subtitle">Ciklus hossza:</string>
+  <string name="disable_navkeys_title">Navigációs sáv engedélyezése</string>
+  <string name="disable_navkeys_summary">Navigációs sáv engedélyezése és a hardveres gombok letiltása</string>
+  <string name="voice_plus_summary">Engedélyezi az alkalmazásoknak, hogy SMS-t küldjenek a Google Voice-on keresztül</string>
   <string name="accessibility_sync_in_progress">Szinkronizálás folyamatban.</string>
+  <string name="wifi_mode">Üzemmód</string>
   <string name="wifi_mode_ibss">Ad-Hoc (IBSS) Hálózat</string>
   <string name="wifi_mode_ibss_short">Ad-Hoc</string>
   <string name="wifi_ibss_freq_title">Csatorna / Frekvencia</string>
   <string name="wifi_channel">Csatorna</string>
   <string name="wifi_mhz">MHz</string>
+  <string name="voice_wakeup_settings_title">Felélesztés hanggal</string>
+  <string name="voice_wakeup_retrain_title">Kalibrálja hangját</string>
   <string name="voice_wakeup_activity_title">Tevékenység elindításához</string>
+  <string name="voice_wakeup_default_activity">Google Now</string>
+  <string name="sub_no_sim">Nincs SIM</string>
 </resources>

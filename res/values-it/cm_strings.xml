@@ -155,9 +155,12 @@
   <string name="notification_light_missed_call_title">Chiamata persa</string>
   <string name="notification_light_voicemail_title">Messaggio vocale</string>
   <string name="adaptive_backlight_title">Retroilluminazione adattiva</string>
-  <string name="adaptive_backlight_summary">Varia intelligentemente la luminosità della retroilluminazione del display e ottimizza la durata della batteria</string>
+  <string name="adaptive_backlight_summary">Regola la luminosità della retroilluminazione del display per massimizzare la durata della batteria mantenendo l\'usabilità</string>
   <string name="wake_when_plugged_or_unplugged_title">Risveglia al collegamento</string>
+  <string name="wake_when_plugged_or_unplugged_summary">Accendi lo schermo quando si collega o si scollega l\'alimentazione</string>
   <string name="screen_animation_off_title">Animazione spegnimento schermo</string>
+  <string name="screen_animation_style_title">Stile animazione spegnimento schermo</string>
+  <string name="screen_animation_style_disabled">Disattivato</string>
   <string name="screen_animation_style_electronbeam">Fascio di elettroni</string>
   <string name="screen_animation_style_fade">Dissolvenza</string>
   <string name="edit_light_settings">Modifica impostazioni luce</string>
@@ -197,6 +200,7 @@
   <string name="unlock_camera_unlock_summary">Il tasto Fotocamera sblocca il dispositivo</string>
   <string name="unlock_quick_unlock_control_title">Sblocco rapido</string>
   <string name="unlock_quick_unlock_control_summary">Sblocca automaticamente quando il PIN/la password viene inserito in modo corretto</string>
+  <string name="unlock_buttons_disabled_by_security">Schermata di sblocco sicura</string>
   <string name="delay_and_timeout_title">Ritardo blocco</string>
   <string name="slide_lock_delay_title">Ritardo schermata blocco</string>
   <string name="slide_lock_timeout_delay_title">Dopo timeout schermo</string>
@@ -223,6 +227,8 @@
   <string name="tile_picker_title">Tile e disposizione</string>
   <string name="tile_picker_summary">Guarda, scegli o cambia la disposizione dei tile mostrati</string>
   <string name="tile_choose_title">Scegli un tile</string>
+  <string name="title_qs_small_icons">Visualizza tile più piccoli</string>
+  <string name="summary_qs_small_icons">Utilizza tile più piccoli per aumentare il numero di colonne</string>
   <string name="title_tile_airplane">Modalità aeroplano</string>
   <string name="title_tile_battery">Statistiche batteria</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
@@ -252,7 +258,7 @@
   <string name="title_tile_network_adb">ADB attraverso la rete</string>
   <string name="title_dynamic_tiles">Tile dinamici</string>
   <string name="dynamic_tiles_note_title">Nota</string>
-  <string name="dynamic_tiles_note_summary">I tile dinamici vengono visualizzati solamente se un evento di sistema li attiva</string>
+  <string name="dynamic_tiles_note_summary">I tile dinamici non sono sempre visibili, appariranno solo se un evento di sistema li attiva</string>
   <string name="title_dynamic_alarm">Sveglia</string>
   <string name="title_dynamic_bugreport">Segnalazione bug</string>
   <string name="title_dynamic_dock_battery">Batteria dock</string>
@@ -323,8 +329,7 @@ del controllo a scorrimento per fornire un\'anteprima del livello di luminosità
 Altre opzioni sono disponibili premendo a lungo una riga. Selezionando \'Modifica\', puoi modificare
 il livello di luce ambientale del punto di controllo, ed anche inserire manualmente il valore
 desiderato di luminosità dello schermo. Selezionando \'Dividi\' puoi dividere una riga, per
-inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
-    </string>
+inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.</string>
   <string name="auto_brightness_sensitivity_title">Regolazione sensibilità</string>
   <string name="auto_brightness_sensitivity_verylow">Molto bassa</string>
   <string name="auto_brightness_sensitivity_low">Bassa</string>
@@ -373,6 +378,7 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="build_date">Data build</string>
   <string name="cpu_info">CPU</string>
   <string name="mem_info">Memoria</string>
+  <string name="phone_service_state">Voce: <xliff:g id="voice_state">%1$s</xliff:g>, dati: <xliff:g id="data_state">%2$s</xliff:g></string>
   <string name="anonymous_statistics_title">Statistiche CyanogenMod</string>
   <string name="anonymous_statistics_summary">Aiuta a migliorare Cyanogenmod acconsentendo ad inviare statistiche anonime</string>
   <string name="anonymous_statistics_warning_title">Informazioni</string>
@@ -389,11 +395,19 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="preview_carrier_title">Operatore</string>
   <string name="header_category_interface">Personalizzazione</string>
   <string name="themes_settings_title">Temi</string>
+  <string name="themepacks_settings_title">Pacchetti tema</string>
+  <string name="styles_settings_title">Stili</string>
+  <string name="icons_settings_title">Icone</string>
+  <string name="fonts_settings_title">Caratteri</string>
+  <string name="wallpaper_settings_title">Sfondi</string>
+  <string name="lockscreen_wallpaper_settings_title">Sfondi schermata sblocco</string>
+  <string name="bootanim_settings_title">Animazioni di avvio</string>
+  <string name="soundpack_settings_title">Pacchetti suoni</string>
   <string name="performance_settings_title">Prestazioni</string>
   <string name="performance_settings_warning_title">Procedere con cautela</string>
   <string name="performance_settings_warning">Queste impostazioni sono sperimentali e qualsiasi loro cambiamento potrebbe causare instabilità, crash, perdita di dati e danni all\'hardware.\n\nNon inviate segnalazioni di bug se una qualsiasi di queste impostazioni è stata modificata.</string>
   <string name="performance_set_on_boot">Imposta all\'avvio</string>
-  <string name="performance_set_on_boot_summary">Ripristina le impostazioni all\'avvio</string>
+  <string name="performance_set_on_boot_summary">Ripristina le impostazioni applicate all\'avvio</string>
   <string name="processor_title">Processore</string>
   <string name="cpu_cur_freq_title">Frequenza CPU attuale</string>
   <string name="cpu_governors_title">Governor CPU</string>
@@ -422,6 +436,7 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="cmupdate_settings_summary">Controlla, visualizza e installa gli aggiornamenti disponibili</string>
   <string name="advanced_settings_title">Avanzate</string>
   <string name="development_tools_title">Esegui dev. tools</string>
+  <string name="allow_mock_sms">Consenti SMS finti</string>
   <string name="privacy_settings_cyanogenmod_title">Privacy</string>
   <string name="privacy_guard_switch_label">Attiva Privacy Guard</string>
   <string name="privacy_guard_dlg_title">Attivare Privacy Guard?</string>
@@ -518,6 +533,7 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="lock_clock_summary">Personalizza i widget predefiniti della schermata Home e sblocco</string>
   <string name="power_notifications_category_title">Notifica cavo alimentazione</string>
   <string name="power_notifications_enable_title">Attiva</string>
+  <string name="power_notifications_enable_summary">Riproduci un suono quando si collega o si scollega l\'alimentazione</string>
   <string name="power_notifications_vibrate_title">Vibra</string>
   <string name="power_notifications_ringtone_title">Suono di notifica</string>
   <string name="power_notifications_ringtone_silent">Silenzioso</string>
@@ -573,6 +589,7 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="lockscreen_buttons_playpause">Riproduci/Pausa</string>
   <string name="lockscreen_buttons_toggle_sound">Suono On/Off</string>
   <string name="lockscreen_buttons_sleep">Sospendi dispositivo</string>
+  <string name="lockscreen_enable_modlock_title">Schermata sblocco personalizzata</string>
   <string name="navigation_bar_category">Barra di navigazione</string>
   <string name="navigation_bar_title">Pulsanti e disposizione</string>
   <string name="navigation_bar_left_title">Modalità mancino</string>
@@ -607,8 +624,8 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="expanded_desktop_disabled">Disattivato</string>
   <string name="expanded_desktop_status_bar">Barra di stato visibile</string>
   <string name="expanded_desktop_no_status_bar">Barra di stato nascosta</string>
-  <string name="expanded_desktop_system_bars_visibility">Disattiva in schermata sblocco</string>
-  <string name="expanded_desktop_system_bars_visibility_summary">Mostra la barra di stato e di navigazione nella schermata di sblocco durante la modalità desktop esteso</string>
+  <string name="expanded_desktop_system_bars_visibility">Disattiva su schermata sblocco</string>
+  <string name="expanded_desktop_system_bars_visibility_summary">Mostra la barra di stato e di navigazione sulla schermata di sblocco durante la modalità desktop esteso</string>
   <string name="power_menu_profiles_title">Selettore profilo</string>
   <string name="power_menu_airplane_title">Modalità aereo</string>
   <string name="power_menu_user_title">Cambia utente</string>
@@ -688,13 +705,13 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="development_shortcut_title">Scorciatoie sviluppatore</string>
   <string name="development_shortcut_summary">Attiva le opzioni \'Cancella dati\' e \'Arresto forzato\' nell\'area delle notifiche e nella lista delle app recenti</string>
   <string name="usb_mass_storage_title">Memoria di massa</string>
-  <string name="usb_mass_storage_summary">Consente il trasferimento di qualsiasi file tra computer e scheda SD montata come dispositivo flash</string>
+  <string name="usb_mass_storage_summary">Consente di trasferire file tra il computer e la scheda SD montandola come un dispositivo flash</string>
   <string name="storage_rescan_media">Riesegui la scansione dei media sulla memoria di massa</string>
   <string name="storage_rescan_media_complete">Scansione completata</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Gestisci le impostazioni SMS sicuri</string>
   <string name="custom_runtime_warning_title">Attenzione</string>
-  <string name="custom_runtime_warning_message">ART non è supportato da CyanogenMod. Questa impostazione è disponibile solo a scopo di sperimentazione e può causare instabilità, crash, perdita di dati o impedire al dispositivo di avviarsi correttamente. Visita &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; per maggiori informazioni.&lt;br/&gt;&lt;br/&gt;Ti chiediamo di non segnalarci eventuali errori se hai attivo ART come runtime.&lt;br/&gt;&lt;br/&gt;Sei sicuro di volere riavviare per cambiare runtime da <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> a <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
+  <string name="custom_runtime_warning_message">ART non è ufficialmente supportato da CyanogenMod. Questa impostazione è disponibile solo a scopo di sperimentazione e può causare instabilità, crash, perdita di dati o impedire al dispositivo di avviarsi correttamente. Visita &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; per maggiori informazioni (in lingua inglese).&lt;br/&gt;&lt;br/&gt;Ti chiediamo di non segnalarci eventuali errori se hai attivo ART come runtime.&lt;br/&gt;&lt;br/&gt;Sei sicuro di volere riavviare per cambiare runtime da <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> a <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
   <string name="gps_download_data_wifi_only">Download dati GPS assistito solo su reti Wi-Fi</string>
   <string name="battery_info_status_charging_dock_ac">(DockAC)</string>
   <string name="battery_info_status_charging_dock_usb">(DockUSB)</string>
@@ -849,4 +866,6 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="voice_wakeup_settings_title">Risveglio vocale</string>
   <string name="voice_wakeup_retrain_title">Calibra la tua voce</string>
   <string name="voice_wakeup_activity_title">Activity da avviare</string>
+  <string name="voice_wakeup_default_activity">Google Now</string>
+  <string name="sub_no_sim">Nessuna SIM</string>
 </resources>
