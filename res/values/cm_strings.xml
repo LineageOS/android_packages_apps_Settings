@@ -168,7 +168,7 @@
     <string name="volume_ring_only_description">Ringtone</string>
     <string name="link_volume_ringtones">Link ringtone &amp; notifications volumes</string>
     <string name="link_volume_mutes">Silent mode affects notifications</string>
-    <string name="volume_keys_control_ring_stream">Volume keys control ringtone volume</string>
+    <string name="volume_keys_control_ring_stream">Volume buttons control ringtone volume</string>
 
     <!-- Ring mode -->
     <string name="ring_mode_title">Ring mode</string>
@@ -196,7 +196,7 @@
 
     <!-- Volume adjustment sound -->
     <string name="volume_adjust_sounds_enable_title">Volume adjustment sound</string>
-    <string name="volume_adjust_sounds_enable_summary">Play sound when adjusting volume with volume rocker</string>
+    <string name="volume_adjust_sounds_enable_summary">Play sound when adjusting volume with volume buttons</string>
 
     <!-- String for IconPicker -->
     <string name="icon_picker_title">Choose icon source</string>
@@ -220,7 +220,7 @@
 
     <!-- Backlight brightness settings screen -->
     <string name="adaptive_backlight_title">Adaptive backlight</string>
-    <string name="adaptive_backlight_summary">Intelligently vary the backlight brightness of the display and help maximize battery life</string>
+    <string name="adaptive_backlight_summary">Dynamically adjust the brightness of the display\'s backlight to maximize battery life while maintaining usability</string>
 
     <!-- Turn on display when power connected; turn off display when power disconnected -->
     <string name="wake_when_plugged_or_unplugged_title">Wake on plug</string>
@@ -286,7 +286,7 @@
     <string name="unlock_camera_unlock_summary">Pressing the camera button unlocks the device</string>
     <string name="unlock_quick_unlock_control_title">Quick unlock</string>
     <string name="unlock_quick_unlock_control_summary">Unlock automatically when the correct PIN/password is entered</string>
-    <string name="unlock_buttons_disabled_by_security">Lockscreen is secure</string>
+    <string name="unlock_buttons_disabled_by_security">Lock screen is secure</string>
 
     <!-- Slide lock delay -->
     <string name="delay_and_timeout_title">Lock delay</string>
@@ -323,6 +323,8 @@
     <string name="tile_picker_title">Tiles and layout</string>
     <string name="tile_picker_summary">View, select or change the layout of the displayed tiles</string>
     <string name="tile_choose_title">Choose a tile</string>
+    <string name="title_qs_small_icons">Show smaller tiles</string>
+    <string name="summary_qs_small_icons">Use smaller tiles to increase the number of columns</string>
 
     <string name="title_tile_airplane">Airplane mode</string>
     <string name="title_tile_battery">Battery stats</string>
@@ -354,7 +356,7 @@
 
     <string name="title_dynamic_tiles">Dynamic tiles</string>
     <string name="dynamic_tiles_note_title">Note</string>
-    <string name="dynamic_tiles_note_summary">Dynamic tiles are not always visible and will only show up if triggered by a system event</string>
+    <string name="dynamic_tiles_note_summary">Dynamic tiles are not always visible and will only appear if triggered by a system event</string>
     <string name="title_dynamic_alarm">Alarm clock</string>
     <string name="title_dynamic_bugreport">Bug report</string>
     <string name="title_dynamic_dock_battery">Dock battery</string>
@@ -430,8 +432,8 @@ Each line in the brightness list corresponds to one <i>control point</i> of the
 brightness curve. To edit the brightness level of the point, you can use the slider
 present in each line. The screen brightness will be changed accordingly while touching
 the slider to give a preview of the light level.\n
-Additional options are available by long-pressing a line. By selecting \'Edit\', you can
-both edit the ambient brightness level of the control point as well as manually input the
+Additional options are available by long pressing a line. By selecting \'Edit\', you can
+adjust the ambient brightness level of the control point as well as manually input the
 desired screen brightness. Selecting \'Split\' allows you to to duplicate one line into
 two in order to insert additional control points. \'Remove\' deletes the selected line.
     </string>
@@ -540,25 +542,25 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="themes_settings_title">Themes</string>
 
     <!-- The following are entries under the themes menu -->
-    <string name="themepacks_settings_title">Theme Packs</string>
+    <string name="themepacks_settings_title">Theme packs</string>
     <string name="styles_settings_title">Styles</string>
     <string name="icons_settings_title">Icons</string>
     <string name="fonts_settings_title">Fonts</string>
     <string name="wallpaper_settings_title">Wallpapers</string>
-    <string name="lockscreen_wallpaper_settings_title">Lockscreen Wallpapers</string>
-    <string name="bootanim_settings_title">Boot Animations</string>
-    <string name="soundpack_settings_title">Sound Packs</string>
+    <string name="lockscreen_wallpaper_settings_title">Lock screen wallpapers</string>
+    <string name="bootanim_settings_title">Boot animations</string>
+    <string name="soundpack_settings_title">Sound packs</string>
 
     <!-- Performance settings -->
     <string name="performance_settings_title">Performance</string>
 
     <!-- Performance Settings : Warning dialog -->
     <string name="performance_settings_warning_title">Proceed with caution</string>
-    <string name="performance_settings_warning">These settings are included for experimentation and any changes made to them have the potential to cause instability, crashes, data loss or hardware failures.\n\nWe request you do not file bug reports if any of these settings have been changed from the defaults.</string>
+    <string name="performance_settings_warning">These settings are experimental and any applied changes have the potential to cause instability, crashes, data loss or hardware failures.\n\nWe request that you do not file bug reports if any settings are changed from their defaults.</string>
 
     <!-- Performance Settings : Set on boot option -->
     <string name="performance_set_on_boot">Set on boot</string>
-    <string name="performance_set_on_boot_summary">Restore the settings on boot</string>
+    <string name="performance_set_on_boot_summary">Restore applied settings on boot</string>
 
     <!-- Performance Settings : Processor Settings -->
     <!-- Performance Settings : Processor settings title -->
@@ -601,9 +603,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="pref_force_highend_gfx_title">Force high-end graphics</string>
     <string name="pref_force_highend_gfx_summary">Enables high-end visual effects such as transparent status/navigation bar (requires reboot)</string>
 
-    <!-- Kill app long-press back -->
+    <!-- Kill app long press back -->
     <string name="kill_app_longpress_back">Kill app back button</string>
-    <string name="kill_app_longpress_back_summary">Kill the foreground app by long-pressing the back button</string>
+    <string name="kill_app_longpress_back_summary">Kill the foreground app by long pressing the back button</string>
 
     <!-- Change Log strings -->
     <string name="changelog_title">View changelog</string>
@@ -641,7 +643,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="privacy_guard_help_title">Help</string>
     <string name="privacy_guard_reset_title">Reset</string>
     <string name="privacy_guard_reset_text">Reset permissions?</string>
-    <string name="privacy_guard_help_text">In this screen you can choose which apps Privacy Guard should be active for by simply tapping on them. Selected apps will not be able to access your personal data such as contacts, messages or call logs. Long pressing on an entry opens the app details screen for that app.\n\nBuilt-in apps are not shown by default but can be revealed by selecting the respective menu option.</string>
+    <string name="privacy_guard_help_text">In this screen you can choose which apps Privacy Guard should be active for by simply tapping on them. Selected apps will not be able to access your personal data such as contacts, messages or call logs. Long pressing an app\'s entry opens its app details screen.\n\nBuilt-in apps are not shown by default but can be revealed by selecting the respective menu option.</string>
     <string name="privacy_guard_manager_show_system_apps">Show built-in apps</string>
     <string name="privacy_guard_manager_filter_permissions">Permission filter</string>
     <string name="privacy_guard_advanced_settings_title">Advanced</string>
@@ -654,7 +656,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="blacklist_empty_text">You don\'t have any blacklisted numbers. Add an entry by touching the Add (+) button.</string>
     <string name="blacklist_disabled_empty_text">To blacklist calls and/or messages from certain numbers, enable the blacklist.</string>
     <string name="blacklist_summary_disabled">Disabled</string>
-    <string name="blacklist_summary">Incoming calls and messages from phone numbers in the blacklist will be blocked</string>
+    <string name="blacklist_summary">Incoming calls and messages from blacklisted phone numbers will be blocked</string>
     <string name="blacklist_notify">Show notification</string>
     <string name="blacklist_private_numbers_title">Private numbers</string>
     <string name="blacklist_private_numbers_summary_disabled">Don\'t block calls from private numbers</string>
@@ -830,7 +832,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="lockscreen_long_press_home_title">Long press Home button</string>
     <string name="lockscreen_long_press_menu_title">Long press Menu button</string>
     <string name="lockscreen_buttons_no_action">No action</string>
-    <string name="lockscreen_buttons_flashlight">Flashlight</string>
+    <string name="lockscreen_buttons_flashlight">Torch</string>
     <string name="lockscreen_buttons_next">Next song</string>
     <string name="lockscreen_buttons_previous">Previous song</string>
     <string name="lockscreen_buttons_playpause">Play/Pause music</string>
@@ -877,8 +879,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="expanded_desktop_disabled">Disabled</string>
     <string name="expanded_desktop_status_bar">Status bar visible</string>
     <string name="expanded_desktop_no_status_bar">Status bar hidden</string>
-    <string name="expanded_desktop_system_bars_visibility">Disable in lock screen</string>
-    <string name="expanded_desktop_system_bars_visibility_summary">Show status and navigation bar in lock screen during expanded desktop mode</string>
+    <string name="expanded_desktop_system_bars_visibility">Disable on lock screen</string>
+    <string name="expanded_desktop_system_bars_visibility_summary">Show status and navigation bar on lock screen during expanded desktop mode</string>
     <string name="power_menu_profiles_title">Profile switcher</string>
     <string name="power_menu_airplane_title">Airplane mode</string>
     <string name="power_menu_user_title">User switcher</string>
@@ -974,7 +976,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- USB Mass Storage -->
     <string name="usb_mass_storage_title">Mass storage (UMS)</string>
-    <string name="usb_mass_storage_summary">Lets you transfer any files between your computer and your SD card by mounting it as a flash device</string>
+    <string name="usb_mass_storage_summary">Lets you transfer files between your computer and SD card by mounting it as a flash device</string>
     <string name="storage_rescan_media">Rescan media for the storage volume</string>
     <string name="storage_rescan_media_complete">Scan completed</string>
 
@@ -984,7 +986,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Message of dialog confirming that user wants to restart their device with a new runtime -->
     <string name="custom_runtime_warning_title">Warning</string>
-    <string name="custom_runtime_warning_message">ART is not supported by CyanogenMod. This setting is included for experimentation only and has the potential to cause instability, crashes, data loss or prevent the proper boot of your device. Visit &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; for more information.&lt;br/&gt;&lt;br/&gt;We request you do not file bug reports if you have enabled ART as your runtime.&lt;br/&gt;&lt;br/&gt;Are you sure you want to reboot to change runtime from <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> to <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
+    <string name="custom_runtime_warning_message">ART is not officially supported by CyanogenMod as it is highly experimental and has the potential to cause instability, crashes, data loss or prevent the proper boot of your device. Visit &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; for more information.&lt;br/&gt;&lt;br/&gt;We request you do not file bug reports if you have enabled ART as your runtime.&lt;br/&gt;&lt;br/&gt;Are you sure you want to reboot to change runtime from <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> to <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
 
     <!-- GPS download data over wi-fi only -->
     <string name="gps_download_data_wifi_only">Download GPS assisted data only over Wi-Fi networks</string>
@@ -1186,4 +1188,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="voice_wakeup_activity_title">Activity to launch</string>
     <string name="voice_wakeup_default_activity">Google Now</string>
 
+    <!-- Set Subscription screen: label no sim -->
+    <string name="sub_no_sim">No SIM</string>
+    <string name="multi_sim_entry_format" translatable="false"><xliff:g id="operator">%1$s</xliff:g>-<xliff:g id="index">%2$d</xliff:g></string>
 </resources>

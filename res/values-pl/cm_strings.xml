@@ -112,13 +112,15 @@
   <string name="toggleWifi">Wi-Fi</string>
   <string name="toggleWifiAp">Hotspot Wi-Fi</string>
   <string name="toggleBluetooth">Bluetooth</string>
+  <string name="toggleGPS">GPS</string>
   <string name="toggleData">Dane mobilne</string>
   <string name="toggleSync">Synchronizacja</string>
+  <string name="toggle2g3g">2G/3G</string>
   <string name="toggleWimax">WiMAX</string>
+  <string name="toggleNfc">NFC</string>
   <string name="volume_ring_only_description">Dzwonek</string>
   <string name="link_volume_ringtones">Połącz głośność dzwonka i powiadomień</string>
   <string name="link_volume_mutes">Tryb cichy wpływa na powiadomienia</string>
-  <string name="volume_keys_control_ring_stream">Przyciski głośności regulują głośność dzwonka</string>
   <string name="ring_mode_title">Opcje dzwonka</string>
   <string name="ring_mode_normal">Normalny</string>
   <string name="ring_mode_vibrate">Wibracje</string>
@@ -134,7 +136,6 @@
   <string name="notification_vibrate_during_calls_title">Wibruj w trakcie rozmowy</string>
   <string name="notification_vibrate_during_calls_summary">Wibruj po otrzymaniu powiadomienia w trakcie rozmowy telefonicznej</string>
   <string name="volume_adjust_sounds_enable_title">Dźwięk regulacji głośności</string>
-  <string name="volume_adjust_sounds_enable_summary">Odtwarzaj dźwięk podczas regulacji głośności za pomocą przycisków</string>
   <string name="icon_picker_title">Wybierz źródło ikony</string>
   <string name="icon_picker_system_icons_title">Ikony systemowe</string>
   <string name="icon_picker_gallery_title">Galeria</string>
@@ -152,8 +153,8 @@
   <string name="notification_light_missed_call_title">Nieodebrane połączenie</string>
   <string name="notification_light_voicemail_title">Poczta głosowa</string>
   <string name="adaptive_backlight_title">Adaptacyjne podświetlenie</string>
-  <string name="adaptive_backlight_summary">Inteligentnie zmień jasność podświetlenia wyświetlacza w celu zwiększenia żywotności</string>
   <string name="wake_when_plugged_or_unplugged_title">Wybudź przy podłączaniu</string>
+  <string name="wake_when_plugged_or_unplugged_summary">Włącz ekran podczas podłączania i odłączania od źródła zasilania</string>
   <string name="screen_animation_off_title">Animacja wyłączenia ekranu</string>
   <string name="screen_animation_style_electronbeam">Wiązka elektronów</string>
   <string name="screen_animation_style_fade">Zanikanie</string>
@@ -222,11 +223,14 @@
   <string name="tile_choose_title">Wybierz przełącznik</string>
   <string name="title_tile_airplane">Tryb samolotowy</string>
   <string name="title_tile_battery">Statystyki baterii</string>
+  <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Jasność</string>
   <string name="title_tile_camera">Kamera</string>
   <string name="title_tile_sleep">Usypianie</string>
+  <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Latarka</string>
   <string name="title_tile_lockscreen">Ekran blokady</string>
+  <string name="title_tile_lte">LTE</string>
   <string name="title_tile_mobiledata">Dane mobilne</string>
   <string name="title_tile_profile">Profil</string>
   <string name="title_tile_performance_profile">Profil wydajności</string>
@@ -234,8 +238,11 @@
   <string name="title_tile_settings">Ustawienia</string>
   <string name="title_tile_sound">Dźwięk</string>
   <string name="title_tile_sync">Synchronizacja</string>
+  <string name="title_tile_wifiap">Wi-Fi AP</string>
+  <string name="title_tile_wifi">Wi-Fi</string>
   <string name="title_tile_user">Zmiana użytk.</string>
   <string name="title_tile_networkmode">Tryb sieci</string>
+  <string name="title_tile_nfc">NFC</string>
   <string name="title_tile_screen_timeout">Wygaszanie ekranu</string>
   <string name="title_tile_quiet_hours">Godziny ciszy</string>
   <string name="title_tile_volume">Głośność</string>
@@ -243,7 +250,6 @@
   <string name="title_tile_network_adb">ADB przez sieć</string>
   <string name="title_dynamic_tiles">Dynamiczne przełączniki</string>
   <string name="dynamic_tiles_note_title">Uwaga</string>
-  <string name="dynamic_tiles_note_summary">Dynamiczne przełączniki pojawiają się tylko w wybranych sytuacjach systemowych</string>
   <string name="title_dynamic_alarm">Alarm</string>
   <string name="title_dynamic_bugreport">Raportowanie błędów</string>
   <string name="title_dynamic_dock_battery">Stacja dokująca</string>
@@ -294,29 +300,6 @@
   <string name="auto_brightness_preview">Podgląd</string>
   <string name="auto_brightness_preview_dialog_title">Podgląd wykresu jasności</string>
   <string name="auto_brightness_help_dialog_title">Pomoc</string>
-  <string name="auto_brightness_help_text"><b>Jak obliczana jest jasność?</b>
-\n\n
-Wykres jasności jest obliczany poprzez wykonanie <i>interpolacji sześciennej krzywej składanej</i>
-na określonej liczbie <i>punktów kontrolnych</i>. Nie jest to typ obliczenia gdzie
-jasność ekranu będzie utrzymywała się na stałym poziomie dla pewnego zakresu jasności otoczenia. W ten sposób
-małe zmiany jasności otoczenia nie skutkują dużą zmianą podświetlenia ekranu. Niemniej
-trudno przewidzieć dokładne konsekwencje wynikające ze zmiany punktów kontrolnych.\n
-Pomocne w tym celu może być skorzystanie z podglądu wykresu jasności. Warto przy tym zauważyć,
-że podgląd pokazuje krzywą w skali <i>logarytmicznej</i>, aby wszystkie punkty kontrolne mogły być wyświetlane
-czytelnie. Użycie skali liniowej, mogłoby utrudnić odczytanie
-ważnych punktów kontrolnych w dolnych zakresach jasności otoczenia.
-\n\n
-<b>Jak edytować wykres jasności?</b>
-\n\n
-Każdy pasek na liście automatycznych poziomów jasności odpowiada <i>punktowi kontrolnemu</i> na
-krzywej. Aby edytować poziom jasności dla danego punktu, należy użyć suwaków
-obecnych na każdym pasku. Jasność ekranu będzie się zmieniała na bieżąco w trakcie przesuwania
-suwaków, aby zilustrować poziom podświetlenia.\n
-Dodatkowe opcje są dostępne po dłuższym naciśnięciu paska. Wybierając \'Dostosuj\', można
-zarówno edytować poziom jasności otoczenia dla danego punktu kontrolnego, jak i ręcznie określić
-pożądaną jasność ekranu. Wybranie \'Podziel\' pozwala przekształcić jeden pasek w
-dwa nowe, odpowiadające kolejnym punktom kontrolnym. \'Usuń\' kasuje wybrany pasek.
-    </string>
   <string name="auto_brightness_sensitivity_title">Dostosowanie czułości</string>
   <string name="auto_brightness_sensitivity_verylow">Bardzo niska</string>
   <string name="auto_brightness_sensitivity_low">Niska</string>
@@ -342,6 +325,7 @@ dwa nowe, odpowiadające kolejnym punktom kontrolnym. \'Usuń\' kasuje wybrany p
   <string name="root_access_apps">Tylko aplikacje</string>
   <string name="root_access_adb">Tylko ADB</string>
   <string name="root_access_all">Aplikacje i ADB</string>
+  <string name="ok">OK</string>
   <string name="quiet_hours_title">Godziny ciszy</string>
   <string name="quiet_hours_summary">Skonfiguruj godziny, w których wszystkie dźwięki będą wyciszone</string>
   <string name="quiet_hours_enabled">Aktywuj godziny ciszy</string>
@@ -380,11 +364,13 @@ dwa nowe, odpowiadające kolejnym punktom kontrolnym. \'Usuń\' kasuje wybrany p
   <string name="preview_carrier_title">Operator GSM</string>
   <string name="header_category_interface">Personalizacja</string>
   <string name="themes_settings_title">Motywy</string>
+  <string name="styles_settings_title">Style</string>
+  <string name="icons_settings_title">Ikony</string>
+  <string name="fonts_settings_title">Czcionki</string>
+  <string name="wallpaper_settings_title">Tapety</string>
   <string name="performance_settings_title">Wydajność</string>
   <string name="performance_settings_warning_title">Postępuj ostrożnie!</string>
-  <string name="performance_settings_warning">Ustawienia te są przeznaczone do eksperymentów i wszelkie zmiany mogą skutkować niestabilnością, błędami, utratą danych, a nawet uszkodzeniem sprzętu.\n\nProsimy o nie zgłaszanie błędów po zmianie tych ustawień.</string>
   <string name="performance_set_on_boot">Ustaw przy starcie</string>
-  <string name="performance_set_on_boot_summary">Zastosuj te ustawienia po uruchomieniu urządzenia</string>
   <string name="processor_title">Procesor</string>
   <string name="cpu_cur_freq_title">Aktualna częstotliwość</string>
   <string name="cpu_governors_title">Zarządca</string>
@@ -403,7 +389,6 @@ dwa nowe, odpowiadające kolejnym punktom kontrolnym. \'Usuń\' kasuje wybrany p
   <string name="pref_force_highend_gfx_title">Wymuś efekty graficzne</string>
   <string name="pref_force_highend_gfx_summary">Włącza efekty graficzne wymagające lepszego sprzętu, takie jak przeźroczysty pasek stanu/nawigacji (wymaga restartu)</string>
   <string name="kill_app_longpress_back">Zabijaj aplikacje przyciskiem wstecz</string>
-  <string name="kill_app_longpress_back_summary">Przytrzymanie przycisku wstecz zabija aktywną aplikację</string>
   <string name="changelog_title">Zobacz listę zmian</string>
   <string name="changelog_loading">Wczytywanie listy zmian\u2026</string>
   <string name="changelog_error">Nie można wczytać listy zmian</string>
@@ -427,7 +412,6 @@ dwa nowe, odpowiadające kolejnym punktom kontrolnym. \'Usuń\' kasuje wybrany p
   <string name="privacy_guard_help_title">Pomoc</string>
   <string name="privacy_guard_reset_title">Resetuj</string>
   <string name="privacy_guard_reset_text">Zresetować uprawnienia?</string>
-  <string name="privacy_guard_help_text">Na tym ekranie możesz wskazać aplikacje, dla których ochrona prywatności ma być aktywna. Zaznaczone aplikacje nie będą miały dostępu do osobistych danych, takich jak kontakty, wiadomości czy historia połączeń. Dłuższe przytrzymanie palcem na wybranej pozycji otworzy ekran ze szczegółowymi informacjami.\n\nAplikacje wbudowane w system nie są domyślnie wyświetlane. Jeżeli chcesz je zobaczyć lub zawęzić listę do aplikacji uzyskujących dostęp do danych osobistych, wybierz odpowiednią opcję z menu.</string>
   <string name="privacy_guard_manager_show_system_apps">Pokaż aplikacje wbudowane w system</string>
   <string name="privacy_guard_manager_filter_permissions">Filtr wg uprawnień</string>
   <string name="privacy_guard_advanced_settings_title">Zaawansowane</string>
@@ -438,7 +422,6 @@ dwa nowe, odpowiadające kolejnym punktom kontrolnym. \'Usuń\' kasuje wybrany p
   <string name="blacklist_empty_text">Nie masz żadnych numerów na czarnej liście. Dodaj numer dotykając przycisk (+).</string>
   <string name="blacklist_disabled_empty_text">Aby dodać numery do czarnej listy połączeń i/lub wiadomości, włącz czarną listę.</string>
   <string name="blacklist_summary_disabled">Wyłączona</string>
-  <string name="blacklist_summary">Przychodzące połączenia i wiadomości z numerów na czarnej liście będą zablokowane</string>
   <string name="blacklist_notify">Pokaż powiadomienia</string>
   <string name="blacklist_private_numbers_title">Prywatne numery</string>
   <string name="blacklist_private_numbers_summary_disabled">Nie blokuj połączeń z numerów prywatnych</string>
@@ -509,6 +492,7 @@ dwa nowe, odpowiadające kolejnym punktom kontrolnym. \'Usuń\' kasuje wybrany p
   <string name="lock_clock_summary">Podejrzyj lub edytuj sposób w jaki widżety \'cLock\' będą wyświetlane na pulpicie i ekranie blokady</string>
   <string name="power_notifications_category_title">Dźwięki ładowania</string>
   <string name="power_notifications_enable_title">Aktywuj dźwięki ładowania</string>
+  <string name="power_notifications_enable_summary">Odtwarzaj dźwięk podczas podłączania lub odłączania źródła zasilania</string>
   <string name="power_notifications_vibrate_title">Wibracje</string>
   <string name="power_notifications_ringtone_title">Dźwięk powiadomienia</string>
   <string name="power_notifications_ringtone_silent">Wyciszone</string>
@@ -558,12 +542,12 @@ dwa nowe, odpowiadające kolejnym punktom kontrolnym. \'Usuń\' kasuje wybrany p
   <string name="lockscreen_long_press_home_title">Przytrzymanie przycisku Home</string>
   <string name="lockscreen_long_press_menu_title">Przytrzymanie przycisku Menu</string>
   <string name="lockscreen_buttons_no_action">Brak akcji</string>
-  <string name="lockscreen_buttons_flashlight">Latarka</string>
   <string name="lockscreen_buttons_next">Następny utwór</string>
   <string name="lockscreen_buttons_previous">Poprzedni utwór</string>
   <string name="lockscreen_buttons_playpause">Odtwórz/Zatrzymaj muzykę</string>
   <string name="lockscreen_buttons_toggle_sound">Przełącz tryb dźwięku</string>
   <string name="lockscreen_buttons_sleep">Uśpij</string>
+  <string name="lockscreen_enable_modlock_title">Niestandardowy ekran blokady</string>
   <string name="navigation_bar_category">Pasek nawigacji</string>
   <string name="navigation_bar_title">Przyciski i ich układ</string>
   <string name="navigation_bar_left_title">Tryb leworęczny</string>
@@ -598,8 +582,6 @@ dwa nowe, odpowiadające kolejnym punktom kontrolnym. \'Usuń\' kasuje wybrany p
   <string name="expanded_desktop_disabled">Wyłączony</string>
   <string name="expanded_desktop_status_bar">Pasek stanu widoczny</string>
   <string name="expanded_desktop_no_status_bar">Pasek stanu ukryty</string>
-  <string name="expanded_desktop_system_bars_visibility">Wyłącz na ekranie blokady</string>
-  <string name="expanded_desktop_system_bars_visibility_summary">Pokaż paski statusu i nawigacji na ekranie blokady przy aktywnym trybie rozszerzonego pulpitu</string>
   <string name="power_menu_profiles_title">Przełączanie profilu</string>
   <string name="power_menu_airplane_title">Tryb samolotowy</string>
   <string name="power_menu_user_title">Przełączanie użytkownika</string>
@@ -649,6 +631,13 @@ dwa nowe, odpowiadające kolejnym punktom kontrolnym. \'Usuń\' kasuje wybrany p
   <string name="backlight_summary_disabled">Wyłączone</string>
   <string name="backlight_summary_enabled_with_timeout">Włączone przez <xliff:g id="timeout">%s</xliff:g></string>
   <string name="backlight_summary_enabled">Włączone</string>
+  <string name="lockscreen_background">Tło</string>
+  <string name="lockscreen_background_style_title">Tło ekranu blokady</string>
+  <string name="background_default">Domyślne tło</string>
+  <string name="background_wallpaper">Niestandardowa tapeta</string>
+  <string name="background_result_successful">Tło zostało zmienione</string>
+  <string name="background_result_not_successful">Tło nie zostało zmienione</string>
+  <string name="setting_lockscreen_background">Ustawianie nowego tła</string>
   <string name="accessibility_home_button_answers_call_prerefence_title">Odbieraj połączenia przyciskiem Home</string>
   <string name="confirm_delete_apn">APN zostanie usunięty...</string>
   <string name="status_bar_title">Pasek stanu</string>
@@ -672,13 +661,11 @@ dwa nowe, odpowiadające kolejnym punktom kontrolnym. \'Usuń\' kasuje wybrany p
   <string name="development_shortcut_title">Skrót deweloperski</string>
   <string name="development_shortcut_summary">Włącz opcje \'usuń dane\' oraz \'wymuś zamknięcie\' w opcjach powiadomień oraz na liście ostatnich aplikacji</string>
   <string name="usb_mass_storage_title">Tryb pamięci masowej</string>
-  <string name="usb_mass_storage_summary">Aktywuj tryb pamięci masowej USB</string>
   <string name="storage_rescan_media">Ponownie skanuj zawartość pamięci</string>
   <string name="storage_rescan_media_complete">Skanowanie zakończone</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Zarządzaj ustawieniami bezpiecznych SMS-ów</string>
   <string name="custom_runtime_warning_title">Ostrzeżenie</string>
-  <string name="custom_runtime_warning_message">ART nie jest wspierany przez CyanogenMod. To ustawienie jest eksperymentalne i może powodować braki stabilności, błędy w działaniu niektórych aplikacji, utratę danych lub spowodować brak możliwości włączenia urządzenia. Po więcej informacji odwiedź &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;Prosimy o nieprzesyłanie raportów o błędach jeśli ART jest aktywowany.&lt;br/&gt;&lt;br/&gt;Czy jesteś pewień, że chcesz zrestartować urządzenie w celu zmiany <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> na <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
   <string name="gps_download_data_wifi_only">Pobieraj dane wspomagające GPS tylko przez sieci Wi-Fi</string>
   <string name="battery_info_status_charging_dock_ac">Dok (AC)</string>
   <string name="battery_info_status_charging_dock_usb">Dok (USB)</string>
@@ -711,13 +698,27 @@ dwa nowe, odpowiadające kolejnym punktom kontrolnym. \'Usuń\' kasuje wybrany p
   <string name="ime_switcher_notify_summary">Wyświetlaj ikonę metod wprowadzania</string>
   <string name="app_ops_summaries_coarse_location">Przybliżona lokalizacja</string>
   <string name="app_ops_summaries_fine_location">Dokładna lokalizacja</string>
+  <string name="app_ops_summaries_gps">GPS</string>
   <string name="app_ops_summaries_vibrate">wibracja</string>
   <string name="app_ops_summaries_read_contacts">odczyt kontaktów</string>
+  <string name="app_ops_summaries_read_call_log">odczyt historii rozmów</string>
+  <string name="app_ops_summaries_modify_call_log">modyfikacja historii rozmów</string>
+  <string name="app_ops_summaries_read_calendar">odczyt kalendarza</string>
+  <string name="app_ops_summaries_modify_calendar">modyfikacja kalendarza</string>
+  <string name="app_ops_summaries_notification">powiadomienie</string>
+  <string name="app_ops_summaries_cell_scan">Skanowanie komórek</string>
   <string name="app_ops_summaries_read_sms">odczyt SMS-ów</string>
   <string name="app_ops_summaries_write_sms">zapis SMS-ów</string>
   <string name="app_ops_summaries_receive_sms">odbieranie SMS-ów</string>
   <string name="app_ops_summaries_receive_emergency_sms">odbieranie alarmowych SMS-ów</string>
+  <string name="app_ops_summaries_receive_mms">odbieranie MMSów</string>
   <string name="app_ops_summaries_send_sms">wysyłanie SMS-ów</string>
+  <string name="app_ops_summaries_modify_settings">zmiana ustawień</string>
+  <string name="app_ops_summaries_draw_on_top">rysowanie na wierzchu</string>
+  <string name="app_ops_summaries_access_notifications">dostęp do powiadomień</string>
+  <string name="app_ops_summaries_camera">aparat</string>
+  <string name="app_ops_summaries_record_audio">nagrywanie dźwięku</string>
+  <string name="app_ops_summaries_play_audio">odtwarzanie dźwięków</string>
   <string name="app_ops_summaries_master_volume">Głośność ogólna</string>
   <string name="app_ops_summaries_voice_volume">Głośność głosu</string>
   <string name="app_ops_summaries_ring_volume">Głośność dzwonka</string>

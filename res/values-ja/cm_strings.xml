@@ -118,9 +118,8 @@
   <string name="toggleWimax">WiMAX</string>
   <string name="toggleNfc">NFC</string>
   <string name="volume_ring_only_description">着信音</string>
-  <string name="link_volume_ringtones">着信音と通知音の音量を連動する</string>
-  <string name="link_volume_mutes">サイレントモードを通知音に反映する</string>
-  <string name="volume_keys_control_ring_stream">ボリュームキーで着信音の音量をコントロールする</string>
+  <string name="link_volume_ringtones">着信音と通知音の音量を連動</string>
+  <string name="link_volume_mutes">サイレントモードを通知音に反映</string>
   <string name="ring_mode_title">着信モード</string>
   <string name="ring_mode_normal">標準</string>
   <string name="ring_mode_vibrate">バイブレーション</string>
@@ -136,9 +135,8 @@
   <string name="notification_vibrate_during_calls_title">通話中のバイブレーション</string>
   <string name="notification_vibrate_during_calls_summary">通話中はおだやかに振動する</string>
   <string name="volume_adjust_sounds_enable_title">音量調整の音</string>
-  <string name="volume_adjust_sounds_enable_summary">音量キーで音量を調整した時に音を鳴らす</string>
   <string name="icon_picker_title">アイコンソースを選択</string>
-  <string name="icon_picker_system_icons_title">システムのアイコン</string>
+  <string name="icon_picker_system_icons_title">システムアイコン</string>
   <string name="icon_picker_gallery_title">ギャラリー</string>
   <string name="icon_picker_pack_title">アイコンパック</string>
   <string name="display_lights_settings_title">画面とライト</string>
@@ -153,11 +151,10 @@
   <string name="notification_light_default_value">デフォルト</string>
   <string name="notification_light_missed_call_title">不在着信</string>
   <string name="notification_light_voicemail_title">ボイスメール</string>
-  <string name="adaptive_backlight_title">適応型バックライト制御</string>
-  <string name="adaptive_backlight_summary">バックライトの明るさをスマートに変化させることで電池の寿命を最大限に高める</string>
+  <string name="adaptive_backlight_title">適応型バックライト</string>
   <string name="wake_when_plugged_or_unplugged_title">接続時に起動</string>
   <string name="wake_when_plugged_or_unplugged_summary">電源を接続または切断したときに画面を点灯する</string>
-  <string name="screen_animation_off_title">画面消灯のアニメーション</string>
+  <string name="screen_animation_off_title">画面消灯アニメーション</string>
   <string name="screen_animation_style_electronbeam">電子ビーム</string>
   <string name="screen_animation_style_fade">フェードアウト</string>
   <string name="edit_light_settings">ライトの設定を編集</string>
@@ -195,10 +192,10 @@
   <string name="unlock_home_unlock_summary">ホームボタンを押して端末のロックを解除する</string>
   <string name="unlock_camera_unlock_title">カメラボタンでロック解除</string>
   <string name="unlock_camera_unlock_summary">カメラボタンを押して端末のロックを解除する</string>
-  <string name="unlock_quick_unlock_control_title">クイックロック</string>
+  <string name="unlock_quick_unlock_control_title">クイックロック解除</string>
   <string name="unlock_quick_unlock_control_summary">正しいPIN/パスワードが入力されたときに自動でロックを解除する</string>
   <string name="delay_and_timeout_title">ロックの遅延</string>
-  <string name="slide_lock_delay_title">画面ロックの遅延</string>
+  <string name="slide_lock_delay_title">画面のロックの遅延</string>
   <string name="slide_lock_timeout_delay_title">タイムアウト後の遅延</string>
   <string name="slide_lock_screenoff_delay_title">画面消灯後の遅延</string>
   <string name="slide_lock_delay_none">なし</string>
@@ -252,7 +249,6 @@
   <string name="title_tile_network_adb">ネットワーク経由のADB</string>
   <string name="title_dynamic_tiles">ダイナミックタイル</string>
   <string name="dynamic_tiles_note_title">注意</string>
-  <string name="dynamic_tiles_note_summary">ダイナミックタイルは常に表示されるわけではなく、システムイベントによってトリガーされた場合にのみ表示されます</string>
   <string name="title_dynamic_alarm">アラーム</string>
   <string name="title_dynamic_bugreport">バグ報告</string>
   <string name="title_dynamic_dock_battery">ホルダーの電池</string>
@@ -303,8 +299,6 @@
   <string name="auto_brightness_preview">プレビュー</string>
   <string name="auto_brightness_preview_dialog_title">明るさの曲線のプレビュー</string>
   <string name="auto_brightness_help_dialog_title">ヘルプ</string>
-  <string name="auto_brightness_help_text"><b>明るさはどのように算出されていますか？</b>\n\n明るさの曲線は、与えられた<i>コントロールポイント</i>の数に<i>3次スプライン補間</i>を行って算出されています。特定の範囲の周囲の明るさに対して画面の明るさが一定に保たれるバケットタイプの算出ではありません。そちらの方が周囲の小さな明るさの変化が画面の明るさに大きな変化を与えませんが、正確なコントロールポイントの変化の結果を予測するのが少々困難になる可能性があります。\nそれを補助するために、計算した曲線のプレビューをテストできます。プレビューは<i>対数</i>目盛で表示されるため、すべてのコントロールポイントが区別して表示されることに注意してください。均等目盛を使用する場合は、低域の周囲の明るさにおいて、比較できないより重要なコントロールポイントを区別できなくなります。 \n\n<b>明るさの曲線の編集方法</b>\n\n明るさ一覧のそれぞれの行は、明るさの曲線の1つの<i>コントロールポイント</i>に対応しています。ポイントの明るさのレベルを編集するには、それぞれの行にあるスライダーが使用できます。明るさのレベルのプレビューを表示するために、スライダーをタッチしている間はそれに合わせて画面の明るさが変化します。\n
-行を長押しすると追加のオプションが利用できます。｢編集｣を選択すると、手動で希望の画面の明るさを入力できるのはもちろん、コントロールポイントの周囲の明るさも編集できます。｢スプリット｣を選択すると、追加のコントロールポイントを挿入するために2つの行に同じ設定をすることができます。｢削除｣で選択した行を削除します。  </string>
   <string name="auto_brightness_sensitivity_title">感度の調整</string>
   <string name="auto_brightness_sensitivity_verylow">とても低い</string>
   <string name="auto_brightness_sensitivity_low">低い</string>
@@ -321,7 +315,7 @@
   <string name="display_rotation_180_title">180度</string>
   <string name="display_rotation_270_title">270度</string>
   <string name="advanced_reboot_title">詳細な再起動</string>
-  <string name="advanced_reboot_summary">リカバリーとブートローダで再起動するオプションを電源メニューに追加する</string>
+  <string name="advanced_reboot_summary">リカバリーやブートローダで再起動するオプションを電源メニューに追加する</string>
   <string name="app_security_title">アプリのセキュリティ</string>
   <string name="root_access">ルートアクセス</string>
   <string name="root_access_warning_title">ルートアクセスを許可しますか？</string>
@@ -358,7 +352,7 @@
   <string name="enable_reporting_title">送信を有効にする</string>
   <string name="preview_data_title">データをプレビュー</string>
   <string name="view_stats_title">統計情報を表示</string>
-  <string name="anonymous_learn_more">詳細</string>
+  <string name="anonymous_learn_more">もっと詳しく</string>
   <string name="anonymous_notification_desc">CyanogenModの統計情報を有効または無効にする</string>
   <string name="preview_id_title">ユニークID</string>
   <string name="preview_device_title">端末</string>
@@ -367,19 +361,13 @@
   <string name="preview_carrier_title"> キャリア</string>
   <string name="header_category_interface">個人設定</string>
   <string name="themes_settings_title">テーマ</string>
-  <string name="themepacks_settings_title">テーマパック</string>
   <string name="styles_settings_title">スタイル</string>
   <string name="icons_settings_title">アイコン</string>
   <string name="fonts_settings_title">フォント</string>
   <string name="wallpaper_settings_title">壁紙</string>
-  <string name="lockscreen_wallpaper_settings_title">ロック画面の壁紙</string>
-  <string name="bootanim_settings_title">ブートアニメーション</string>
-  <string name="soundpack_settings_title">サウンドパック</string>
   <string name="performance_settings_title">パフォーマンス</string>
   <string name="performance_settings_warning_title">注意して進めてください</string>
-  <string name="performance_settings_warning">これらの設定には実験用の機能が含まれており、あらゆる変更が不安定性、クラッシュ、データの損失、ハードウェア障害を引き起こす原因になる可能性があります。\n\nこれらの設定をデフォルトから変更した場合には、バグ報告を送信しないようにご協力をお願いします。</string>
   <string name="performance_set_on_boot">起動時に設定</string>
-  <string name="performance_set_on_boot_summary">起動時に設定を復元する</string>
   <string name="processor_title">プロセッサ</string>
   <string name="cpu_cur_freq_title">現在のCPU周波数</string>
   <string name="cpu_governors_title">CPUガバナ</string>
@@ -388,7 +376,7 @@
   <string name="io_scheds_title">I/Oスケジューラ</string>
   <string name="io_sched_title">I/Oスケジューラ</string>
   <string name="perf_profile_title">プロファイル</string>
-  <string name="memory_management_title">メモリの管理</string>
+  <string name="memory_management_title">メモリ管理</string>
   <string name="pref_ksm_title">Kernel Samepage Merging</string>
   <string name="pref_ksm_summary">KSMで物理メモリ使用量を減らしてパフォーマンスを向上させる</string>
   <string name="pref_purgeable_assets_title">アセットのパージを許可</string>
@@ -398,7 +386,6 @@
   <string name="pref_force_highend_gfx_title">ハイエンドグラフィックスを強制</string>
   <string name="pref_force_highend_gfx_summary">透過ステータスバー/ナビゲーションバーなどのハイエンドな視覚効果を有効にする（要再起動）</string>
   <string name="kill_app_longpress_back">戻るボタンでアプリを終了</string>
-  <string name="kill_app_longpress_back_summary">戻るボタンの長押しでフォアグラウンドのアプリを終了する</string>
   <string name="changelog_title">更新履歴の表示</string>
   <string name="changelog_loading">更新履歴を読み込んでいます\u2026</string>
   <string name="changelog_error">更新履歴を読み込めませんでした</string>
@@ -423,7 +410,6 @@
   <string name="privacy_guard_help_title">ヘルプ</string>
   <string name="privacy_guard_reset_title">リセット</string>
   <string name="privacy_guard_reset_text">権限をリセットしますか？</string>
-  <string name="privacy_guard_help_text">この画面では、どのアプリでプライバシーガードを有効にするかタップするだけで選択することができます。選択されたアプリは連絡先、メッセージ、通話履歴などの個人データにアクセスできなくなります。エントリーを長押しすると、そのアプリの詳細を開きます。\n\n内蔵アプリはデフォルトでは表示されませんが、それぞれのメニューオプションから選択することで表示させることができます。</string>
   <string name="privacy_guard_manager_show_system_apps">内蔵アプリを表示</string>
   <string name="privacy_guard_manager_filter_permissions">権限フィルター</string>
   <string name="privacy_guard_advanced_settings_title">詳細設定</string>
@@ -434,7 +420,6 @@
   <string name="blacklist_empty_text">ブラックリストに番号がありません。追加（+）ボタンにタッチしてエントリーを追加してください。</string>
   <string name="blacklist_disabled_empty_text">この番号からの着信やメッセージをブラックリストに追加するには、ブラックリストを有効にしてください。</string>
   <string name="blacklist_summary_disabled">無効</string>
-  <string name="blacklist_summary">ブラックリストに登録されている電話番号からの着信とメッセージはブロックされます</string>
   <string name="blacklist_notify">通知を表示</string>
   <string name="blacklist_private_numbers_title">非通知番号</string>
   <string name="blacklist_private_numbers_summary_disabled">非通知番号からの着信をブロックしない</string>
@@ -473,7 +458,7 @@
   <string name="more_device_settings_title">その他の端末オプション</string>
   <string name="sensors_motors_title">センサーとモーター</string>
   <string name="display_calibration_title">画面の調整</string>
-  <string name="adb_notify">USBデバッグ通知</string>
+  <string name="adb_notify">USBデバッグの通知</string>
   <string name="adb_notify_summary">USBデバッグ接続時に通知を表示する</string>
   <string name="adb_over_network">ネットワーク経由のADB</string>
   <string name="adb_over_network_summary">ネットワークインターフェース（Wi-Fi、USBネットワーク）経由でのTCP/IPデバッグを有効にします。この設定は再起動時にリセットされます。</string>
@@ -496,7 +481,7 @@
   <string name="summary_quick_access_linked">クイック設定パネルと同じタイルとレイアウトを使用する</string>
   <string name="font_size_sample">サンプル</string>
   <string name="sms_security_check_limit_title">SMSメッセージの制限</string>
-  <string name="sms_security_check_limit_summary">アプリは確認を要求しないで30分間に%d通のメッセージを送信することができます</string>
+  <string name="sms_security_check_limit_summary">アプリは確認を要求しないで30分間に%d通のメッセージを送信することができる</string>
   <string name="sms_security_check_limit_summary_none">アプリは確認をしないでメッセージを送信することはできません</string>
   <string name="sms_security_check_limit_default">30（デフォルト）</string>
   <string name="sms_security_check_limit_none">なし</string>
@@ -513,7 +498,7 @@
   <string name="lockscreen_battery_status_charging">充電中のみ</string>
   <string name="lockscreen_battery_status_alwayson">常にON</string>
   <string name="lockscreen_battery_status_alwaysoff">常にOFF</string>
-  <string name="lockscreen_target_info">ショートカットを割り当てたい場所にスライダーをドラッグしてください</string>
+  <string name="lockscreen_target_info">ショートカットを割り当てるにはスライダーをターゲットにドラッグ</string>
   <string name="lockscreen_target_title">スライダーショートカット</string>
   <string name="lockscreen_target_summary">ロック画面のカスタムショートカットを表示または変更する</string>
   <string name="lockscreen_target_reset">ロック画面のショートカットをデフォルトにリセットしました</string>
@@ -555,7 +540,6 @@
   <string name="lockscreen_long_press_home_title">ホームボタンの長押し</string>
   <string name="lockscreen_long_press_menu_title">メニュー ボタンの長押し</string>
   <string name="lockscreen_buttons_no_action">なし</string>
-  <string name="lockscreen_buttons_flashlight">フラッシュライト</string>
   <string name="lockscreen_buttons_next">次の曲</string>
   <string name="lockscreen_buttons_previous">前の曲</string>
   <string name="lockscreen_buttons_playpause">音楽の再生/一時停止</string>
@@ -572,7 +556,7 @@
   <string name="navigation_bar_reset_message">現在の設定を削除してデフォルトに戻しますか？</string>
   <string name="navigation_bar_save_message">ナビゲーションバーの設定を保存しました</string>
   <string name="navigation_bar_reset_toast">ナビゲーションバーの設定をデフォルトにリセットしました</string>
-  <string name="navigation_bar_menu_editable">編集できます</string>
+  <string name="navigation_bar_menu_editable">編集可能</string>
   <string name="navigation_bar_menu_locked">ロックされています</string>
   <string name="navigation_ring_title">クイック起動ショートカット</string>
   <string name="navring_target_reset_message">ユーザーが作成したすべてのナビゲーションバーのショートカットを削除してデフォルトに戻しますか？</string>
@@ -596,8 +580,6 @@
   <string name="expanded_desktop_disabled">無効</string>
   <string name="expanded_desktop_status_bar">ステータスバーを表示する</string>
   <string name="expanded_desktop_no_status_bar">ステータスバーを表示しない</string>
-  <string name="expanded_desktop_system_bars_visibility">ロック画面では使用しない</string>
-  <string name="expanded_desktop_system_bars_visibility_summary">拡張デスクトップモード中でもロック画面にステータスバーとナビゲーションバーを表示する</string>
   <string name="power_menu_profiles_title">プロファイルの切り替え</string>
   <string name="power_menu_airplane_title">機内モード</string>
   <string name="power_menu_user_title">ユーザーの切り替え</string>
@@ -631,7 +613,7 @@
   <string name="volume_wake_summary">音量ボタンを押して端末をスリープ状態から復帰する</string>
   <string name="volbtn_music_controls_title">再生コントロール</string>
   <string name="volbtn_music_controls_summary">画面消灯時に、音量キーの長押しで曲をシークする</string>
-  <string name="volbtn_cursor_control_title">キーボードカーソルのコントロール</string>
+  <string name="volbtn_cursor_control_title">キーボードカーソルコントロール</string>
   <string name="volbtn_cursor_control_off">無効</string>
   <string name="volbtn_cursor_control_on">音量を上げる/下げるボタンでカーソルを左/右に移動する</string>
   <string name="volbtn_cursor_control_on_reverse">音量を上げる/下げるボタンでカーソルを右/左に移動する</string>
@@ -645,7 +627,7 @@
   <string name="backlight_timeout_title">点灯のタイムアウト</string>
   <string name="backlight_timeout_unlimited">消灯しない</string>
   <string name="backlight_summary_disabled">無効</string>
-  <string name="backlight_summary_enabled_with_timeout">Enabled for <xliff:g id="timeout">%s</xliff:g>間有効です</string>
+  <string name="backlight_summary_enabled_with_timeout"><xliff:g id="timeout">%s</xliff:g>間有効</string>
   <string name="backlight_summary_enabled">有効</string>
   <string name="lockscreen_background">背景</string>
   <string name="lockscreen_background_style_title">ロック画面の背景</string>
@@ -664,26 +646,24 @@
   <string name="status_bar_style_circle">サークル</string>
   <string name="status_bar_style_text">テキスト</string>
   <string name="status_bar_style_hidden">表示しない</string>
-  <string name="status_bar_battery_show_percent_title">電池残量をパーセント表示</string>
-  <string name="status_bar_signal_text_title">電波状態のスタイル</string>
+  <string name="status_bar_battery_show_percent_title">電池の状態をパーセント表示</string>
+  <string name="status_bar_signal_text_title">電波の状態のスタイル</string>
   <string name="status_bar_signal_style_icon">アイコン</string>
   <string name="status_bar_signal_style_text">テキスト</string>
-  <string name="status_bar_toggle_brightness">明るさのコントロール</string>
+  <string name="status_bar_toggle_brightness">明るさコントロール</string>
   <string name="status_bar_toggle_brightness_summary">ステータスバーの上をスライドして明るさを調整する</string>
   <string name="status_bar_toggle_info">明るさの自動調整が有効になっています</string>
   <string name="status_bar_notif_count_title">通知の数を表示</string>
   <string name="status_bar_notif_count_summary">保留している通知の数を表示する</string>
   <string name="status_bar_double_tap_to_sleep_title">ダブルタップでスリープ</string>
-  <string name="development_shortcut_title">開発者向けショートカット</string>
+  <string name="development_shortcut_title">開発用ショートカット</string>
   <string name="development_shortcut_summary">｢データを消去｣と｢強制停止｣のオプションを通知領域と最近使ったアプリに表示する</string>
   <string name="usb_mass_storage_title">マスストレージ（UMS）</string>
-  <string name="usb_mass_storage_summary">フラッシュデバイスとしてマウントすることでパソコンとSDカードの間で任意のファイルを転送できます</string>
   <string name="storage_rescan_media">ストレージのボリュームのためにメディアを再スキャンする</string>
   <string name="storage_rescan_media_complete">スキャンが完了しました</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">セキュアSMSの設定を管理する</string>
   <string name="custom_runtime_warning_title">警告</string>
-  <string name="custom_runtime_warning_message">ARTはCyanogenModではサポートされていません。この設定には実験専用の機能が含まれており、不安定性、クラッシュ、データの損失、正常な起動を妨げる原因になる可能性があります。詳細については&lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt;を参照してください。&lt;br/&gt;&lt;br/&gt;ランタイムとしてARTを有効にした場合には、バグ報告を送信しないようにご協力をお願いします。&lt;br/&gt;&lt;br/&gt;ランタイムを<xliff:g id="old" example="libdvm.so">%1$s</xliff:g>から<xliff:g id="new" example="libart.so">%2$s</xliff:g>に変更するために再起動してもよろしいですか？</string>
   <string name="gps_download_data_wifi_only">GPS補助データをWi-Fiネットワーク経由でのみダウンロード</string>
   <string name="battery_info_status_charging_dock_ac">（AC接続）</string>
   <string name="battery_info_status_charging_dock_usb">（USB接続）</string>

@@ -121,7 +121,7 @@
   <string name="volume_ring_only_description">Vyzváňanie</string>
   <string name="link_volume_ringtones">Prepojiť hlasitosti vyzváňania a upozornení</string>
   <string name="link_volume_mutes">Tichý režim ovplyvňuje upozornenia</string>
-  <string name="volume_keys_control_ring_stream">Tlačidlá hlasitosti ovládajú hlasitosť vyzváňania</string>
+  <string name="volume_keys_control_ring_stream">Tlačidlami hlasitosti ovládať hlasitosť zvonenia</string>
   <string name="ring_mode_title">Režim vyzváňania</string>
   <string name="ring_mode_normal">Normálne</string>
   <string name="ring_mode_vibrate">Vibrovať</string>
@@ -137,7 +137,7 @@
   <string name="notification_vibrate_during_calls_title">Vibrovať počas hovoru</string>
   <string name="notification_vibrate_during_calls_summary">Prichádzajúce oznámenia budú jemne vibrovať pri hovoroch</string>
   <string name="volume_adjust_sounds_enable_title">Zvuk pri nastavení hlasitosti</string>
-  <string name="volume_adjust_sounds_enable_summary">Prehrať zvuk pri nastavovaní hlasitosti tlačidlami na ovládanie hlasitosti</string>
+  <string name="volume_adjust_sounds_enable_summary">Prehrať zvuk pri zmene hlasitosti tlačidlami hlasitosti</string>
   <string name="icon_picker_title">Vyberte zdroj ikony</string>
   <string name="icon_picker_system_icons_title">Ikony systému</string>
   <string name="icon_picker_gallery_title">Galéria</string>
@@ -155,10 +155,12 @@
   <string name="notification_light_missed_call_title">Zmeškaný hovor</string>
   <string name="notification_light_voicemail_title">Hlasový hovor</string>
   <string name="adaptive_backlight_title">Adaptívne podsvietenie</string>
-  <string name="adaptive_backlight_summary">Inteligentne meniť jas podsvietenia displeja a tým maximalizovať životnosť batérie</string>
+  <string name="adaptive_backlight_summary">Dynamicky upravte jas podsvietenia pre maximalizovanie životnosti batérie pri zachovaní použiteľnosti</string>
   <string name="wake_when_plugged_or_unplugged_title">Prebudiť po pripojení</string>
   <string name="wake_when_plugged_or_unplugged_summary">Zapnúť obrazovku pri pripojení, alebo odpojení k zdroju nabíjania</string>
   <string name="screen_animation_off_title">Animácia vypnutia obrazovky</string>
+  <string name="screen_animation_style_title">Štýl animácie pri vypnutí obrazovky</string>
+  <string name="screen_animation_style_disabled">Zakázané</string>
   <string name="screen_animation_style_electronbeam">Elektrónový lúč</string>
   <string name="screen_animation_style_fade">Zoslabnutie</string>
   <string name="edit_light_settings">Upraviť nastavenia svetiel</string>
@@ -198,6 +200,7 @@
   <string name="unlock_camera_unlock_summary">Stlačením tlačidla Fotoaparát  sa odomkne zariadenie</string>
   <string name="unlock_quick_unlock_control_title">Rýchle odomknutie</string>
   <string name="unlock_quick_unlock_control_summary">Odomknúť automaticky po zadaní správneho PIN kódu alebo hesla</string>
+  <string name="unlock_buttons_disabled_by_security">Zámok obrazovky je bezpečný</string>
   <string name="delay_and_timeout_title">Oneskorené uzamknutie</string>
   <string name="slide_lock_delay_title">Oneskorené uzamknutie obrazovky</string>
   <string name="slide_lock_timeout_delay_title">Oneskorenie po časovom limite</string>
@@ -224,6 +227,8 @@
   <string name="tile_picker_title">Dlaždice a rozloženie</string>
   <string name="tile_picker_summary">Zobraziť, vybrať alebo zmeniť dlaždice na zobrazenie</string>
   <string name="tile_choose_title">Vyberte dlaždicu</string>
+  <string name="title_qs_small_icons">Zobraziť menšie dlaždice</string>
+  <string name="summary_qs_small_icons">Použiť menšie dlaždice pre zvýšenie počtu stĺpcov</string>
   <string name="title_tile_airplane">Režim V lietadle</string>
   <string name="title_tile_battery">Štatistiky batérie</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
@@ -305,7 +310,14 @@
   <string name="auto_brightness_preview">Náhľad</string>
   <string name="auto_brightness_preview_dialog_title">Náhľad krivky jasu</string>
   <string name="auto_brightness_help_dialog_title">Pomocník</string>
-  <string name="auto_brightness_help_text"><b>Ako je počítaná úroveň jasu?</b>\n\n\nKrivka jasu je počítaná pomocou <i>interpolácie kubickej spline krivky</i> cez určitý\npočet <i>riadiacich bodov</i>. Nie je to typ výpočtu, kde jas zostane konštantný pre\nšpecifický rozsah osvetlenia okolia. Tým je docielené, že malé zmeny v osvetlení okolia\nnespôsobia veľké skoky jasu, ale na druhú stranu je celkom obtiažne odhadnúť chovanie\njasu pri zmene riadiacich bodov.\Tomu napomáha zobrazeniu náhľadu vypočítanej krivky.\nZobrazenie náhľadu krivky je v <i>logaritmickom</i> meradle, teda sú všetky riadiace body\nzobrazené izolovane. Pri použití lineárneho meradla v niektorých prípadoch nebolo možné\nrozlíšiť jednotlivé úrovne riadiacich bodov pri nízkom okolitom osvetlení.\n\n\n\n<b>Ako meniť krivku jasu?</b>\n\n\n\nKaždý riadok v zozname jasu zodpovedá jednému <i>riadiacemu bodu</i> krivky jasu.\nPre zmenu úrovne jasu príslušného bodu zmeňte pomocou posuvného ovládacieho prvku jeho\nhodnotu. Úroveň jasu sa okamžite upraví na rovnakú úroveň, na ktorú je posuvný prvok\nnastavený a tým je možné okamžite skontrolovať úroveň jasu.\nĎalšie voľby sú dostupné\ndlhým dotykom na riadku daného bodu. Vybraním \'Zmeniť\', môžete zmeniť ako úroveň okolitého svetla\ntak i ručne vložiť požadovanú hodnotu jasu. Vybraním \'Rozdeliť\' dôjde k rozdeleniu daného\nbodu na dva, ktoré potom možno jednotlivo meniť a tým zväčšiť počet riadiacich bodov. \'Odstrániť\' zmaže vybraný riadok.</string>
+  <string name="auto_brightness_help_text"><b>Ako je počítaná úroveň jasu?</b>
+\n\n
+Krivka jasu je počítaná pomocou <i>interpolácie kubickej spline krivky</i> cez určitý počet <i>riadiacich bodov</i>. Nie je to typ výpočtu, kde jas zostane konštantný pre špecifický rozsah osvetlenia okolia. Tým je docielené, že malé zmeny v osvetlení okolia nespôsobia veľké skoky jasu, ale na druhú stranu je celkom obtiažne odhadnúť chovanie jasu pri zmene riadiacich bodov.\nTomu napomáha zobrazeniu náhľadu vypočítanej krivky. Zobrazenie náhľadu krivky je v <i>logaritmickom</i> meradle, teda sú všetky riadiace body zobrazené izolovane. Pri použití lineárneho meradla v niektorých prípadoch nebolo možné rozlíšiť jednotlivé úrovne riadiacich bodov pri nízkom okolitom osvetlení.
+\n\n
+<b>Ako meniť krivku jasu?</b>
+\n\n
+Každý riadok v zozname jasu zodpovedá jednému <i>riadiacemu bodu</i> krivky jasu. Pre zmenu úrovne jasu príslušného bodu zmeňte pomocou posuvného ovládacieho prvku jeho hodnotu. Úroveň jasu sa okamžite upraví na rovnakú úroveň, na ktorú je posuvný prvok nastavený a tým je možné okamžite skontrolovať úroveň jasu.\n
+Ďalšie voľby sú dostupné dlhým dotykom na riadku daného bodu. Vybraním \'Zmeniť\', môžete zmeniť ako úroveň okolitého svetla tak i ručne vložiť požadovanú hodnotu jasu. Vybraním \'Rozdeliť\' dôjde k rozdeleniu daného bodu na dva, ktoré potom možno jednotlivo meniť a tým zväčšiť počet riadiacich bodov. \'Odstrániť\' zmaže vybraný riadok.</string>
   <string name="auto_brightness_sensitivity_title">Úprava citlivosti</string>
   <string name="auto_brightness_sensitivity_verylow">Veľmi nízka</string>
   <string name="auto_brightness_sensitivity_low">Nízka</string>
@@ -354,6 +366,7 @@
   <string name="build_date">Dátum zostavy</string>
   <string name="cpu_info">CPU</string>
   <string name="mem_info">Pamäť</string>
+  <string name="phone_service_state">Hlas: <xliff:g id="voice_state">%1$s</xliff:g>, dáta: <xliff:g id="data_state">%2$s</xliff:g></string>
   <string name="anonymous_statistics_title">Štatistiky CyanogenMod</string>
   <string name="anonymous_statistics_summary">Pomôžte zlepšiť CyanogenMod povolením anonymných štatistických hlásení</string>
   <string name="anonymous_statistics_warning_title">O aplikácii</string>
@@ -375,14 +388,14 @@
   <string name="icons_settings_title">Ikony</string>
   <string name="fonts_settings_title">Písma</string>
   <string name="wallpaper_settings_title">Tapety</string>
-  <string name="lockscreen_wallpaper_settings_title">Tapety uzamknutej obrazovky</string>
+  <string name="lockscreen_wallpaper_settings_title">Tapeta uzamknutej obrazovky</string>
   <string name="bootanim_settings_title">Animácia spúšťania</string>
   <string name="soundpack_settings_title">Balíčky zvukov</string>
   <string name="performance_settings_title">Výkonný</string>
   <string name="performance_settings_warning_title">Výstraha pred pokračovaním</string>
-  <string name="performance_settings_warning">Tieto nastavenia sú zahrnuté pre experimentovanie a akékoľvek vykonané zmeny môžu prípadne spôsobiť nestabilitu, pády, stratu údajov, alebo zlyhania hardvéru.\n\nŽiadame vás, aby ste nenahlasovali chyby, ak boli akékoľvek z týchto nastavení zmenené.</string>
+  <string name="performance_settings_warning">Tieto nastavenia sú experimentálne a akékoľvek vykonané zmeny môžu spôsobiť nestabilitu, pády, stratu dát alebo hardvérové chyby.\n\nŽiadame, aby ste neposielali hlásenia o chybách, ak došlo zmene akýchkoľvek predvolených nastavení.</string>
   <string name="performance_set_on_boot">Nastaviť pri spúšťaní</string>
-  <string name="performance_set_on_boot_summary">Obnoviť nastavenia pri spúšťaní</string>
+  <string name="performance_set_on_boot_summary">Obnoviť aplikované nastavenia pri štarte</string>
   <string name="processor_title">Procesor</string>
   <string name="cpu_cur_freq_title">Aktuálna frekvencia CPU</string>
   <string name="cpu_governors_title">Správanie CPU</string>
@@ -680,13 +693,13 @@
   <string name="development_shortcut_title">Vývojárske odkazy</string>
   <string name="development_shortcut_summary">Povoliť možnosti  \'vymazať údaje aplikácie\' a \'vynútiť zatvorenie\' v oblasti pre oznámenia a v zozname nedávnych aplikácií</string>
   <string name="usb_mass_storage_title">Veľkokapacitné úložisko (UMS)</string>
-  <string name="usb_mass_storage_summary">Umožní Vám preniesť akékoľvek súbory medzi počítačom a vašou pamäťovou kartou SD</string>
+  <string name="usb_mass_storage_summary">Umožňuje prenášať súbory medzi počítačom a pamäťovou kartou SD pripojenou ako flash zariadenie</string>
   <string name="storage_rescan_media">Preskenovať médiá na úložisku</string>
   <string name="storage_rescan_media_complete">Skenovanie bolo dokončené</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Spravovať nastavenie zabezpečených SMS</string>
   <string name="custom_runtime_warning_title">Upozornenie</string>
-  <string name="custom_runtime_warning_message">Modul spustenia ART nie je podporovaný CyanogenModom. Toto nastavenie je zahrnuté iba pre experimentovanie a môže potencionálne spôsobiť nestabilitu, pády, straty dát alebo môže zabrániť správnemu spusteniu vášho zariadenia. Navštívte &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Úvod k ART&lt;/a&gt; pre viac informácií.&lt;br/&gt;&lt;br/&gt;Žiadame vás, aby ste nepodávali hlásenia o chybách, ak ste povolili ART ako Váš modul spustenia.&lt;br/&gt;&lt;br/&gt;Ste si istí, že chcete reštartovať pre zmenu modulu spustenia z <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> na <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
+  <string name="custom_runtime_warning_message">ART nie je ofciálne podporovaný CyanogenModom. Toto nastavenie je zahrnuté iba pre experimentovanie a môže potencionálne spôsobiť nestabilitu, pády, straty dát alebo môže zabrániť správnemu spusteniu vášho zariadenia. Navštívte &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Úvod k ART&lt;/a&gt; pre viac informácií.&lt;br/&gt;&lt;br/&gt;Žiadame vás, aby ste nepodávali hlásenia o chybách, ak ste povolili ART ako Váš modul spustenia.&lt;br/&gt;&lt;br/&gt;Ste si istí, že chcete reštartovať pre zmenu modulu spustenia z <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> na <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
   <string name="gps_download_data_wifi_only">Stiahnuť pomocné GPS dáta len pomocou Wi-Fi sietí</string>
   <string name="battery_info_status_charging_dock_ac">(DokAC)</string>
   <string name="battery_info_status_charging_dock_usb">(DokUSB)</string>
@@ -842,4 +855,5 @@
   <string name="voice_wakeup_retrain_title">Preškoliť váš hlas</string>
   <string name="voice_wakeup_activity_title">Spustiť aktivitu</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
+  <string name="sub_no_sim">Žiadna SIM</string>
 </resources>

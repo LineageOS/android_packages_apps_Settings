@@ -155,10 +155,12 @@
   <string name="notification_light_missed_call_title">Vastaamaton puhelu</string>
   <string name="notification_light_voicemail_title">Vastaaja</string>
   <string name="adaptive_backlight_title">Mukautuva taustavalo</string>
-  <string name="adaptive_backlight_summary">Vaihtele näytön taustavalon kirkkautta älykkäästi ja säästä akkua</string>
+  <string name="adaptive_backlight_summary">Vaihtele näytön taustavalon kirkkautta dynaamisesti säästääksesi akkua</string>
   <string name="wake_when_plugged_or_unplugged_title">Herää laturista</string>
   <string name="wake_when_plugged_or_unplugged_summary">Käynnistä näyttö kun liität tai irrotat virtalähteen</string>
   <string name="screen_animation_off_title">Näytön sulkemisanimaatio</string>
+  <string name="screen_animation_style_title">Näytön sulkemisanimaatio</string>
+  <string name="screen_animation_style_disabled">Pois käytöstä</string>
   <string name="screen_animation_style_electronbeam">Electron Beam</string>
   <string name="screen_animation_style_fade">Häivytä näyttö</string>
   <string name="edit_light_settings">Säädä valon asetuksia</string>
@@ -198,6 +200,7 @@
   <string name="unlock_camera_unlock_summary">Painamalla kameranäppäintä lukitus aukeaa</string>
   <string name="unlock_quick_unlock_control_title">Nopea lukituksen avaus</string>
   <string name="unlock_quick_unlock_control_summary">Avaa automaattisesti kun oikea PIN/salasana on syötetty</string>
+  <string name="unlock_buttons_disabled_by_security">Lukitusnäyttö on turvallinen</string>
   <string name="delay_and_timeout_title">Lukituksen viive</string>
   <string name="slide_lock_delay_title">Viivästytä näytön lukitusta</string>
   <string name="slide_lock_timeout_delay_title">Viive aikakatkaisun jälkeen</string>
@@ -224,6 +227,8 @@
   <string name="tile_picker_title">Laatat ja ulkoasu</string>
   <string name="tile_picker_summary">Katso, valitse tai muokkaa laattojen järjestystä</string>
   <string name="tile_choose_title">Valitse laatta</string>
+  <string name="title_qs_small_icons">Näytä pienemmät laatat</string>
+  <string name="summary_qs_small_icons">Käytä pienempiä laattoja lisätäksesi sarakkeiden määrää</string>
   <string name="title_tile_airplane">Lentokonetila</string>
   <string name="title_tile_battery">Akun tila</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
@@ -362,6 +367,7 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="build_date">Luontipäivä</string>
   <string name="cpu_info">Prosessori</string>
   <string name="mem_info">Muisti</string>
+  <string name="phone_service_state">Ääni:<xliff:g id="voice_state">%1$s</xliff:g>, data: <xliff:g id="data_state">%2$s</xliff:g></string>
   <string name="anonymous_statistics_title">CyanogenMod-tilastointi</string>
   <string name="anonymous_statistics_summary">Auta tekemään CyanogenModista parempi tarjoamalla anonyymejä tilastoraportteja</string>
   <string name="anonymous_statistics_warning_title">Tietoja</string>
@@ -388,9 +394,9 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="soundpack_settings_title">Äänipaketit</string>
   <string name="performance_settings_title">Suorituskyky</string>
   <string name="performance_settings_warning_title">Jatka varovaisesti</string>
-  <string name="performance_settings_warning">Nämä asetukset ovat kokeellisia ja niiten muuttaminen voi mahdollisesti aiheuttaa epävakautta, kaatumisia, tiedon häviämistä tai laitteistovikoja.\n\nPyydämme, ettet lähetä virheraportteja jos näitä asetuksia on muutettu.</string>
+  <string name="performance_settings_warning">Nämä asetukset ovat kokeellisia ja niiden muuttaminen voi mahdollisesti aiheuttaa epävakautta, kaatumisia, tiedon häviämistä tai laitteistovikoja.\n\nPyydämme, ettet lähetä virheraportteja jos näitä asetuksia on muutettu.</string>
   <string name="performance_set_on_boot">Palauta käynnistettäessä</string>
-  <string name="performance_set_on_boot_summary">Palauta asetukset käynnistettäessä</string>
+  <string name="performance_set_on_boot_summary">Palauta asetukset käynnistyksessä</string>
   <string name="processor_title">Prosessori</string>
   <string name="cpu_cur_freq_title">Nykyinen suorittimen taajuus</string>
   <string name="cpu_governors_title">CPU governor</string>
@@ -409,7 +415,7 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="pref_force_highend_gfx_title">Pakota parhaat grafiikat</string>
   <string name="pref_force_highend_gfx_summary">Ottaa käyttöön parhaat visuaaliset efektit kuten läpinäkyvät tila- ja navigointipalkit (uudelleenkäynnistys tarvitaan)</string>
   <string name="kill_app_longpress_back">Tapa sovellus</string>
-  <string name="kill_app_longpress_back_summary">Tappaa etualalla olevan sovelluksen kun takaisin-painiketta pidetään pohjassa</string>
+  <string name="kill_app_longpress_back_summary">Tappaa etualalla olevan sovelluksen kun takaisin-painiketta painetaan pitkään</string>
   <string name="changelog_title">Näytä muutosloki</string>
   <string name="changelog_loading">Ladataan muutoslokia\u2026</string>
   <string name="changelog_error">Muutoslokin lataus ei onnistu</string>
@@ -694,7 +700,7 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Hallitse turvallisten tekstiviestien asetuksia</string>
   <string name="custom_runtime_warning_title">Varoitus</string>
-  <string name="custom_runtime_warning_message">CyanogenMod ei tue ART-ympäristöä. Tämä asetus on vain kokeiluja varten ja saattaa aiheuttaa epävakautta, kaatumisia, tietojen katoamista ja estää laitteen käynnistymisen. Lue lisää: &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;Pyydämme, ettet lähetä virheraportteja jos valitset ART-ympäristön.&lt;br/&gt;&lt;br/&gt;Oletko varma että haluat vaihtaa suoritusympäristön <xliff:g id="old" example="libdvm.so">%1$s</xliff:g>-<xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
+  <string name="custom_runtime_warning_message">CyanogenMod ei tue ART-ympäristöä, sillä se on kokeellinen ominaisuus, ja saattaa aiheuttaa epävakautta, kaatumisia, tietojen katoamista ja estää laitteen käynnistymisen. Lue lisää: &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;Pyydämme, ettet lähetä virheraportteja jos valitset ART-ympäristön.&lt;br/&gt;&lt;br/&gt;Oletko varma että haluat vaihtaa suoritusympäristön Dalvik-ympäristöstä(<xliff:g id="old" example="libdvm.so">%1$s</xliff:g>) ART-ympäristöksi(<xliff:g id="new" example="libart.so">%2$s</xliff:g>)?</string>
   <string name="gps_download_data_wifi_only">Lataa GPS-avusteinen data vain Wi-Fi-verkkojen yli</string>
   <string name="battery_info_status_charging_dock_ac">(DockAC)</string>
   <string name="battery_info_status_charging_dock_usb">(DockUSB)</string>
@@ -850,4 +856,5 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="voice_wakeup_retrain_title">Opeta äänesi</string>
   <string name="voice_wakeup_activity_title">Avattava toiminto</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
+  <string name="sub_no_sim">Ei SIMiä</string>
 </resources>

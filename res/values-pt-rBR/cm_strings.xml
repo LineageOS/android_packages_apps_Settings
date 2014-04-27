@@ -121,7 +121,6 @@
   <string name="volume_ring_only_description">Toques de celular</string>
   <string name="link_volume_ringtones">Unir volumes de toques e notificações</string>
   <string name="link_volume_mutes">Modo silencioso afeta as notificações</string>
-  <string name="volume_keys_control_ring_stream">Botões de volume controlam o volume do toque</string>
   <string name="ring_mode_title">Modo de toque</string>
   <string name="ring_mode_normal">Normal</string>
   <string name="ring_mode_vibrate">Vibrar</string>
@@ -137,7 +136,6 @@
   <string name="notification_vibrate_during_calls_title">Vibrar durante a ligação</string>
   <string name="notification_vibrate_during_calls_summary">Notificações recebidas irão vibrar suavemente durante ligações</string>
   <string name="volume_adjust_sounds_enable_title">Som do ajuste de volume</string>
-  <string name="volume_adjust_sounds_enable_summary">Reproduzir som quando ajustando o volume com o botão externo</string>
   <string name="icon_picker_title">Escolha a fonte do ícone</string>
   <string name="icon_picker_system_icons_title">Ícones de sistema</string>
   <string name="icon_picker_gallery_title">Galeria</string>
@@ -155,7 +153,6 @@
   <string name="notification_light_missed_call_title">Chamada perdida</string>
   <string name="notification_light_voicemail_title">Correio de Voz</string>
   <string name="adaptive_backlight_title">Luz de fundo adaptável</string>
-  <string name="adaptive_backlight_summary">Variar o brilho da luz de fundo da tela inteligentemente e ajudar melhorar o consumo de bateria</string>
   <string name="wake_when_plugged_or_unplugged_title">Acordar ao conectar</string>
   <string name="wake_when_plugged_or_unplugged_summary">Ativar a tela quando conectar ou desconectar o carregador</string>
   <string name="screen_animation_off_title">Animação ao desligar tela</string>
@@ -253,7 +250,6 @@
   <string name="title_tile_network_adb">ADB pela rede</string>
   <string name="title_dynamic_tiles">Tiles dinâmicas</string>
   <string name="dynamic_tiles_note_title">Nota</string>
-  <string name="dynamic_tiles_note_summary">Tiles dinâmicos nem sempre são visíveis e só irão aparecer se forem desencadeados por eventos de sistemas</string>
   <string name="title_dynamic_alarm">Alarme</string>
   <string name="title_dynamic_bugreport">Relatório de erro</string>
   <string name="title_dynamic_dock_battery">Bateria do dock</string>
@@ -305,29 +301,6 @@
   <string name="auto_brightness_preview">Visualização prévia</string>
   <string name="auto_brightness_preview_dialog_title">Visualização prévia da curva de brilho</string>
   <string name="auto_brightness_help_dialog_title">Ajuda</string>
-  <string name="auto_brightness_help_text"><b>Como o brilho é calculado?</b>
-\n\n
-A curva do brilho é calculada através da realização de uma <i>interpolação de spline cúbica</i>
-em um determinado número de <i>pontos de controle</i>. Não é um cálculo estilo \'bucket\' quando
-o brilho da tela ficará constante por um intervalo específico de luminosidade ambiente. Deste modo,
-pequenas mudanças na luminosidade do ambiente não causará mudanças grandes na luminosidade da tela;
-porém, pode ser um pouco difícil prever as consequências exatas de trocar os pontos de controle.\n
-Para ajudar nisto, uma prévia da curva calculada pode ser examinada. Por favor, note que a prévia
-mostra em escala <i>logarítimica</i> na curva para que todos os pontos de controle possam ser exibidos
-distintamente. Quando usando uma escala linear, não poderia ser possível distinguir o tendencial dos
-pontos de controles mais importantes na faixa inferior da luminosidade ambiente.
-\n\n
-<b>Como editar a curva de luminosidade?</b>
-\n\n
-Cada linha na lista de luminosidade corresponde a um <i>ponto de controle</i> da curva de luminosidade.
-Para editar o nível de luminosidade do ponto, você pode usar a barra deslizante presente em cada linha.
-A luminosidade da tela será alterada em conformidade ao tocar a barra deslizante para ter uma prévia do
-nível de luz.\n
-Opções adicionais estão disponíveis ao tocar e segurar uma linha. Ao selecionar \'Editar\', você pode
-tanto editar o nível de luminosidade ambiante quanto inserir manualmente a luminosidade da tela
-desejada. Selecionando \'Dividir\' permite você a duplicar uma linha  para que possa inserir pontos de
-controle adicionais. \'Remover\' apaga a linha selecionada.
-    </string>
   <string name="auto_brightness_sensitivity_title">Ajuste de sensitividade</string>
   <string name="auto_brightness_sensitivity_verylow">Muito baixa</string>
   <string name="auto_brightness_sensitivity_low">Baixa</string>
@@ -392,19 +365,13 @@ controle adicionais. \'Remover\' apaga a linha selecionada.
   <string name="preview_carrier_title">Operadora</string>
   <string name="header_category_interface">INTERFACE</string>
   <string name="themes_settings_title">Temas</string>
-  <string name="themepacks_settings_title">Pacotes de temas</string>
   <string name="styles_settings_title">Estilos</string>
   <string name="icons_settings_title">Ícones</string>
   <string name="fonts_settings_title">Fontes</string>
   <string name="wallpaper_settings_title">Papéis de parede</string>
-  <string name="lockscreen_wallpaper_settings_title">Papéis de parede da tela de bloqueio</string>
-  <string name="bootanim_settings_title">Animações de inicialização</string>
-  <string name="soundpack_settings_title">Pacotes de som</string>
   <string name="performance_settings_title">Desempenho</string>
   <string name="performance_settings_warning_title">Proceda com cautela</string>
-  <string name="performance_settings_warning">Estas configurações são incluídas para testes e qualquer mudança feita nelas pode causar instabilidade, paradas, perda de dados ou falhas de hardware.\n\nPedimos que você não relate bugs se qualquer destas configurações estiverem diferentes do padrão.</string>
   <string name="performance_set_on_boot">Definir na inicialização</string>
-  <string name="performance_set_on_boot_summary">Restaurar configurações na inicialização</string>
   <string name="processor_title">Processador</string>
   <string name="cpu_cur_freq_title">Frequência de CPU atual</string>
   <string name="cpu_governors_title">Gerenciador de CPU</string>
@@ -423,7 +390,6 @@ controle adicionais. \'Remover\' apaga a linha selecionada.
   <string name="pref_force_highend_gfx_title">Forçar gráficos de alta qualidade</string>
   <string name="pref_force_highend_gfx_summary">Ativa efeitos visuais de alta qualidade com barra de status/navegação transparente (requer reinicilização)</string>
   <string name="kill_app_longpress_back">Matar app com botão voltar</string>
-  <string name="kill_app_longpress_back_summary">Matar o aplicativo mantendo pressionado o botão voltar</string>
   <string name="changelog_title">Visualizar alterações</string>
   <string name="changelog_loading">Carregando registro de mudanças\u2026</string>
   <string name="changelog_error">Não foi possível carregar as mudanças</string>
@@ -448,7 +414,6 @@ controle adicionais. \'Remover\' apaga a linha selecionada.
   <string name="privacy_guard_help_title">Ajuda</string>
   <string name="privacy_guard_reset_title">Redefinir</string>
   <string name="privacy_guard_reset_text">Redefinir permissões?</string>
-  <string name="privacy_guard_help_text">Nesta tela você pode escolher quais aplicativos a Privacidade deve estar ativa ao simplesmente tocar neles. Os aplicativos selecionados não serão capazes de acessar seus dados pessoais, como contatos, mensagens ou registos de chamadas. Pressionando e segurando um item, abre a tela de detalhes do aplicativo.\n\nAplicativos do sistema não são exibidos por padrão, mas podem ser exibidos selecionando a respectiva opção no menu.</string>
   <string name="privacy_guard_manager_show_system_apps">Mostrar aplicativos de sistema</string>
   <string name="privacy_guard_manager_filter_permissions">Filtro de permissão</string>
   <string name="privacy_guard_advanced_settings_title">Avançado</string>
@@ -459,7 +424,6 @@ controle adicionais. \'Remover\' apaga a linha selecionada.
   <string name="blacklist_empty_text">Você não possui nenhum número na lista de bloqueio. Adicione um número ao tocar no botão adicionar (+).</string>
   <string name="blacklist_disabled_empty_text">Para bloquear chamadas e/ou mensagens de números específicos, ative a lista de bloqueio.</string>
   <string name="blacklist_summary_disabled">Desativado</string>
-  <string name="blacklist_summary">Chamadas recebidas e mensagens dos números de telefone na lista de bloqueio serão bloqueadas</string>
   <string name="blacklist_notify">Mostrar notificação</string>
   <string name="blacklist_private_numbers_title">Números privados</string>
   <string name="blacklist_private_numbers_summary_disabled">Não bloquear chamadas de números privados</string>
@@ -580,7 +544,6 @@ controle adicionais. \'Remover\' apaga a linha selecionada.
   <string name="lockscreen_long_press_home_title">Toque longo no botão Home</string>
   <string name="lockscreen_long_press_menu_title">Toque longo no botão Menu</string>
   <string name="lockscreen_buttons_no_action">Sem ação</string>
-  <string name="lockscreen_buttons_flashlight">Lanterna</string>
   <string name="lockscreen_buttons_next">Próxima música</string>
   <string name="lockscreen_buttons_previous">Música anterior</string>
   <string name="lockscreen_buttons_playpause">Reproduzir/Pausar música</string>
@@ -621,8 +584,6 @@ controle adicionais. \'Remover\' apaga a linha selecionada.
   <string name="expanded_desktop_disabled">Desligado</string>
   <string name="expanded_desktop_status_bar">Barra de status visível</string>
   <string name="expanded_desktop_no_status_bar">Barra de status oculta</string>
-  <string name="expanded_desktop_system_bars_visibility">Desativar na tela de bloqueio</string>
-  <string name="expanded_desktop_system_bars_visibility_summary">Exibir barra de status e navegação na tela de bloqueio enquanto estiver em modo de área de trabalho expandida</string>
   <string name="power_menu_profiles_title">Alternador de perfil</string>
   <string name="power_menu_airplane_title">Modo avião</string>
   <string name="power_menu_user_title">Mudar usuário</string>
@@ -702,13 +663,11 @@ controle adicionais. \'Remover\' apaga a linha selecionada.
   <string name="development_shortcut_title">Atalho para desenvolvimento</string>
   <string name="development_shortcut_summary">Ativar opções \'limpar dados\' e \'forçar fechamento\' na área de notificação e lista de aplicativos recentes</string>
   <string name="usb_mass_storage_title">Armazenamento em massa</string>
-  <string name="usb_mass_storage_summary">Ativar armazenamento em massa USB</string>
   <string name="storage_rescan_media">Nova varredura por mídia no volume de armazenamento</string>
   <string name="storage_rescan_media_complete">Varredura completada</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Gerenciar configurações de SMS seguro</string>
   <string name="custom_runtime_warning_title">Aviso</string>
-  <string name="custom_runtime_warning_message">ART não é suportado por CyanogenMod. Esta configuração é incluída para apenas experimentos e pode provavelmente causar instabilidade, travamentos, perda de dados ou previnir que o sistema inicialize em seu dispositivo. Visite &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; para mais informações.&lt;br/&gt;&lt;br/&gt;Nós pedimos que você não reporte problemas se você estiver com o ART ativado.&lt;br/&gt;&lt;br/&gt;Você tem certeza que deseja reiniciar para trocar de <xliff:g xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" id="old" example="libdvm.so">%1$s</xliff:g> para <xliff:g xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" id="new" example="libart.so">%2$s</xliff:g>?</string>
   <string name="gps_download_data_wifi_only">Baixar dados GPS assistido somente em redes Wi-Fi</string>
   <string name="battery_info_status_charging_dock_ac">(DockAC)</string>
   <string name="battery_info_status_charging_dock_usb">(DockUSB)</string>

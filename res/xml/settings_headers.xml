@@ -43,7 +43,11 @@
         android:title="@string/network_settings_title"
         android:dependency="toggle_airplane">
         <intent
-            android:action="android.settings.DATA_ROAMING_SETTINGS" />
+            android:action="android.settings.DATA_ROAMING_SETTINGS" >
+        <extra android:name="PACKAGE" android:value="com.android.phone" />
+        <extra android:name="TARGET_CLASS"
+               android:value="com.android.phone.MSimMobileNetworkSubSettings" />
+        </intent>
     </header>
 
     <!-- Data Usage -->
