@@ -536,8 +536,13 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
             ContentResolver resolver = context.getContentResolver();
             mCurrentLocationMode = Settings.Secure.getInt(resolver,
                     Settings.Secure.LOCATION_MODE, Settings.Secure.LOCATION_MODE_OFF);
-            return (mCurrentLocationMode == Settings.Secure.LOCATION_MODE_OFF)
-                    ? STATE_DISABLED : STATE_ENABLED;
+            switch (mCurrentLocationMode) {
+                case Settings.Secure.LOCATION_MODE_BATTERY_SAVING:
+                case Settings.Secure.LOCATION_MODE_OFF:
+                    return STATE_DISABLED;
+            }
+
+            return STATE_ENABLED;
         }
 
         @Override
