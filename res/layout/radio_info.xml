@@ -182,6 +182,19 @@
             <TextView android:id="@+id/sentSinceReceived" style="@style/info_value" />
         </LinearLayout>
 
+        <!-- Network mode feature Type -->
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_info_set_network_feature_label"
+                style="@style/info_label"
+                />
+
+        <Spinner android:id="@+id/networkFeature"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                />
+
         <!-- Preferred Network Type -->
         <TextView
                 android:layout_width="match_parent"

@@ -122,6 +122,7 @@ public class RadioInfo extends Activity {
     private Button updateSmscButton;
     private Button refreshSmscButton;
     private Button oemInfoButton;
+    private Spinner networkFeature;
     private Spinner preferredNetworkType;
 
     private TelephonyManager mTelephonyManager;
@@ -279,6 +280,13 @@ public class RadioInfo extends Activity {
         mPingHostname = (TextView) findViewById(R.id.pingHostname);
         mHttpClientTest = (TextView) findViewById(R.id.httpClientTest);
 
+        networkFeature = (Spinner) findViewById(R.id.networkFeature);
+        ArrayAdapter<String> adapterNetFeature = new ArrayAdapter<String> (this,
+                android.R.layout.simple_spinner_item, mNetworkFeatureLabels);
+        adapterNetFeature.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        networkFeature.setAdapter(adapterNetFeature);
+        networkFeature.setOnItemSelectedListener(mNetworkFeatureHandler);
+
         preferredNetworkType = (Spinner) findViewById(R.id.preferredNetworkType);
         ArrayAdapter<String> adapter = new ArrayAdapter<String> (this,
                 android.R.layout.simple_spinner_item, mPreferredNetworkLabels);
@@ -356,6 +364,7 @@ public class RadioInfo extends Activity {
         updateLteRamDumpState();
         updateProperties();
         updateDnsCheckState();
+        updateNetworkFeature();
 
         log("onResume: register phone & data intents");
 
@@ -1077,6 +1086,29 @@ public class RadioInfo extends Activity {
         }
     };
 
+    AdapterView.OnItemSelectedListener mNetworkFeatureHandler = new AdapterView.OnItemSelectedListener() {
+        public void onItemSelected(AdapterView parent, View v, int pos, long id) {
+            if (pos >= 0 && pos <= (mNetworkFeatureLabels.length - 1)) {
+                log("Set network feature " +  pos);
+                SystemProperties.set("persist.radio.network_feature", String.valueOf(pos));
+                networkFeature.setSelection(pos, true);
+            }
+        }
+
+        public void onNothingSelected(AdapterView parent) {
+        }
+    };
+
+    private void updateNetworkFeature(){
+        int netFeature = SystemProperties.getInt("persist.radio.network_feature",0);
+        log("Get network feature " +  netFeature);
+        if (netFeature >= 0 && netFeature <= (mNetworkFeatureLabels.length - 1)) {
+            networkFeature.setSelection(netFeature, true);
+        } else {
+            networkFeature.setSelection(0, true);
+        }
+    }
+
     private String[] mPreferredNetworkLabels = {
             "WCDMA preferred",
             "GSM only",
@@ -1102,6 +1134,13 @@ public class RadioInfo extends Activity {
             "TD-SCDMA, GSM/WCDMA, CDMA and EvDo",
             "TD-SCDMA, LTE, CDMA, EvDo GSM/WCDMA",
             "Unknown"};
+
+    private String[] mNetworkFeatureLabels = {
+            "NETWORK_MODE_DEFAULT",
+            "NETWORK_MODE_HIDE",
+            "NETWORK_MODE_CMCC",
+            "NETWORK_MODE_TDCDMA",
+            "NETWORK_MODE_LTE"};
 
     private void log(String s) {
         Log.d(TAG, "[RadioInfo] " + s);
