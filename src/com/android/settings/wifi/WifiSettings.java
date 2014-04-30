@@ -116,6 +116,7 @@ public class WifiSettings extends RestrictedSettingsFragment
     // Combo scans can take 5-6s to complete - set to 10s.
     private static final int WIFI_RESCAN_INTERVAL_MS = 10 * 1000;
 
+    private static final int MANUALLY_DISCONNECT_LAST_AVAILABLE_AP = 1;
     // Instance state keys
     private static final String SAVE_DIALOG_EDIT_MODE = "edit_mode";
     private static final String SAVE_DIALOG_ACCESS_POINT_STATE = "wifi_ap_state";
@@ -168,6 +169,8 @@ public class WifiSettings extends RestrictedSettingsFragment
 
     // save the lable value of default credible ap
     private static final String TABLE_DEFAULT_CREDIBLE = "default_credible";
+
+    private static final String DISCONNECT_FROM_NETWORK = "disconnect_from_network";
     // the ap is default credible ap
     private static final int DEFAULT_CREDIBLE_LABLE = 1;
     // the ap is't default credible ap
@@ -665,7 +668,7 @@ public class WifiSettings extends RestrictedSettingsFragment
                 if (getResources().getBoolean(R.bool.config_auto_connect_wifi_enabled)) {
                     mWifiManager.disconnect();
                     if (mAutoConnect) {
-                        mWifiManager.reconnect();
+                        reconnect();
                     }
                 }
                 return true;
@@ -1335,5 +1338,65 @@ public class WifiSettings extends RestrictedSettingsFragment
         mDefaultTrustAP.removeAll();
         mConfigedAP.removeAll();
         mUnKnownAP.removeAll();
+    }
+
+    private void reconnect() {
+        List<AccessPoint> availableNetworks = getOtherAvaiConfigNetwork();
+        int highestPriority = 0;
+        if (availableNetworks.size() != 0) {
+            for (int index = 0; index < availableNetworks.size(); ++index) {
+                if (availableNetworks.get(index).getConfig().priority > availableNetworks.get(
+                        highestPriority).getConfig().priority) {
+                    highestPriority = index;
+                }
+            }
+        } else {
+            // manually disconnect AP and currently has not other available AP,
+            // should show wifi disconnected dialog in CmccMainReceiver.
+            Settings.System.putInt(getContentResolver(),
+                    DISCONNECT_FROM_NETWORK, MANUALLY_DISCONNECT_LAST_AVAILABLE_AP);
+            return;
+        }
+        final AccessPoint accessPoint = availableNetworks.get(highestPriority);
+        if (accessPoint.networkId != INVALID_NETWORK_ID) {
+            mWifiManager.connect(accessPoint.networkId, mConnectListener);
+        }
+    }
+
+    private List<AccessPoint> getOtherAvaiConfigNetwork() {
+        ArrayList<AccessPoint> availableNetworks = new ArrayList<AccessPoint>();
+        if (mConfigedAP != null && mConfigedAP.getPreferenceCount() > 1) {
+            for (int index = 0; index < mConfigedAP.getPreferenceCount(); ++index) {
+                Preference preference = mConfigedAP.getPreference(index);
+                if (preference instanceof AccessPoint) {
+                    final AccessPoint accessPoint = (AccessPoint) preference;
+                    if (accessPoint.getState() != null
+                            && (accessPoint.getState() == DetailedState.CONNECTING || accessPoint
+                                    .getState() == DetailedState.CONNECTED)) {
+                        // This AP is user manually disconnect AP, so ignore.
+                        continue;
+                    } else if (accessPoint.getLevel() != -1) {
+                        availableNetworks.add(accessPoint);
+                    }
+                }
+            }
+        }
+        if (mDefaultTrustAP != null && mDefaultTrustAP.getPreferenceCount() > 1) {
+            for (int index = 0; index < mDefaultTrustAP.getPreferenceCount(); ++index) {
+                Preference preference = mDefaultTrustAP.getPreference(index);
+                if (preference instanceof AccessPoint) {
+                    final AccessPoint accessPoint = (AccessPoint) preference;
+                    if (accessPoint.getState() != null
+                            && (accessPoint.getState() == DetailedState.CONNECTING || accessPoint
+                                    .getState() == DetailedState.CONNECTED)) {
+                        // This AP is user manually disconnect AP, so ignore.
+                        continue;
+                    } else if (accessPoint.getLevel() != -1) {
+                        availableNetworks.add(accessPoint);
+                    }
+                }
+            }
+        }
+        return availableNetworks;
     }
 }
