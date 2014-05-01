@@ -67,6 +67,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private static final String KEY_ENABLE_MAXIMIZE_WIGETS = "lockscreen_maximize_widgets";
     private static final String LOCKSCREEN_BACKGROUND_STYLE = "lockscreen_background_style";
     private static final String KEY_LOCKSCREEN_MODLOCK_ENABLED = "lockscreen_modlock_enabled";
+    private static final String KEY_LOCKSCREEN_TARGETS = "lockscreen_targets";
 
     private static final String LOCKSCREEN_WALLPAPER_TEMP_NAME = ".lockwallpaper";
 
@@ -78,6 +79,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private CheckBoxPreference mEnableMaximizeWidgets;
     private ListPreference mLockBackground;
     private ListPreference mBatteryStatus;
+    private Preference mLockscreenTargets;
 
     private ChooseLockSettingsHelper mChooseLockSettingsHelper;
     private LockPatternUtils mLockUtils;
@@ -104,6 +106,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         mEnableKeyguardWidgets = (CheckBoxPreference) findPreference(KEY_ENABLE_WIDGETS);
         mEnableCameraWidget = (CheckBoxPreference) findPreference(KEY_ENABLE_CAMERA);
         mEnableMaximizeWidgets = (CheckBoxPreference) findPreference(KEY_ENABLE_MAXIMIZE_WIGETS);
+        mLockscreenTargets = findPreference(KEY_LOCKSCREEN_TARGETS);
 
         mEnableModLock = (CheckBoxPreference) findPreference(KEY_LOCKSCREEN_MODLOCK_ENABLED);
         if (mEnableModLock != null) {
@@ -210,6 +213,9 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         }
         if (mEnableMaximizeWidgets != null) {
             mEnableMaximizeWidgets.setEnabled(enabled);
+        }
+        if (mLockscreenTargets != null) {
+            mLockscreenTargets.setEnabled(enabled);
         }
     }
 
