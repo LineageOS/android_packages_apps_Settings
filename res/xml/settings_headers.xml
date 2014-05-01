@@ -64,14 +64,6 @@
         <intent android:action="com.android.settings.OPERATOR_APPLICATION_SETTING" />
     </header>
 
-    <!-- Other wireless and network controls -->
-    <header
-        android:id="@+id/wireless_settings"
-        android:title="@string/radio_controls_title"
-        android:breadCrumbTitle="@string/wireless_networks_settings_title"
-        android:fragment="com.android.settings.WirelessSettings"
-        android:icon="@drawable/empty_icon" />
-
     <!-- Multi Sim Settings - this is in the settings process -->
     <header
         android:id="@+id/multi_sim_settings"
@@ -82,6 +74,14 @@
             android:targetPackage="com.android.settings"
             android:targetClass="com.android.settings.MultiSimSettings" />
     </header>
+
+    <!-- Other wireless and network controls -->
+    <header
+        android:id="@+id/wireless_settings"
+        android:title="@string/radio_controls_title"
+        android:breadCrumbTitle="@string/wireless_networks_settings_title"
+        android:fragment="com.android.settings.WirelessSettings"
+        android:icon="@drawable/empty_icon" />
 
     <!-- INTERFACE -->
     <header android:id="@+id/interface_section"

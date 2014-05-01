@@ -1270,8 +1270,8 @@ public class DataUsageSummary extends Fragment {
         final String rangePhrase = formatDateRange(context, start, end);
 
         final int summaryRes;
-        if (TAB_MOBILE.equals(mCurrentTab) || TAB_3G.equals(mCurrentApp)
-                || TAB_4G.equals(mCurrentApp) || mCurrentTab.startsWith(TAB_SIM)) {
+        if (TAB_MOBILE.equals(mCurrentTab) || TAB_3G.equals(mCurrentTab)
+                || TAB_4G.equals(mCurrentTab) || mCurrentTab.startsWith(TAB_SIM)) {
             summaryRes = R.string.data_usage_total_during_range_mobile;
         } else {
             summaryRes = R.string.data_usage_total_during_range;
