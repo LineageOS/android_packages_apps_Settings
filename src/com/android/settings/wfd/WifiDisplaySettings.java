@@ -82,8 +82,6 @@ public final class WifiDisplaySettings extends SettingsPreferenceFragment {
     private static final String TAG = "WifiDisplaySettings";
     private static final boolean DEBUG = false;
 
-    private static final int MENU_ID_ENABLE_WIFI_DISPLAY = Menu.FIRST;
-
     private static final int CHANGE_SETTINGS = 1 << 0;
     private static final int CHANGE_ROUTES = 1 << 1;
     private static final int CHANGE_WIFI_DISPLAY_STATUS = 1 << 2;
@@ -102,7 +100,6 @@ public final class WifiDisplaySettings extends SettingsPreferenceFragment {
     private boolean mStarted;
     private int mPendingChanges;
 
-    private boolean mWifiDisplayOnSetting;
     private WifiDisplayStatus mWifiDisplayStatus;
 
     private TextView mEmptyView;
@@ -117,6 +114,9 @@ public final class WifiDisplaySettings extends SettingsPreferenceFragment {
     private int mWpsConfig = WpsInfo.INVALID;
     private int mListenChannel;
     private int mOperatingChannel;
+
+    private Switch mActionBarSwitch;
+    private WifiDisplayEnabler mEnabler;
 
     public WifiDisplaySettings() {
         mHandler = new Handler();
@@ -143,11 +143,49 @@ public final class WifiDisplaySettings extends SettingsPreferenceFragment {
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
 
         mEmptyView = (TextView) getView().findViewById(android.R.id.empty);
         mEmptyView.setText(R.string.wifi_display_no_devices_found);
         getListView().setEmptyView(mEmptyView);
+
+        Activity activity = getActivity();
+        // Switch
+        mActionBarSwitch = new Switch(activity);
+
+        if (activity instanceof PreferenceActivity) {
+            PreferenceActivity preferenceActivity = (PreferenceActivity) activity;
+            if (preferenceActivity.onIsHidingHeaders() || !preferenceActivity.onIsMultiPane()) {
+                final int padding = activity.getResources().getDimensionPixelSize(
+                        R.dimen.action_bar_switch_padding);
+                mActionBarSwitch.setPaddingRelative(0, 0, padding, 0);
+                activity.getActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM,
+                        ActionBar.DISPLAY_SHOW_CUSTOM);
+                activity.getActionBar().setCustomView(mActionBarSwitch, new ActionBar.LayoutParams(
+                        ActionBar.LayoutParams.WRAP_CONTENT,
+                        ActionBar.LayoutParams.WRAP_CONTENT,
+                        Gravity.CENTER_VERTICAL | Gravity.END));
+            }
+        }
+
+        mEnabler = new WifiDisplayEnabler(getActivity(), mActionBarSwitch);
+
+        super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mEnabler != null) {
+            mEnabler.pause();
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mEnabler != null) {
+            mEnabler.resume();
+        }
     }
 
     @Override
@@ -188,31 +226,6 @@ public final class WifiDisplaySettings extends SettingsPreferenceFragment {
         unscheduleUpdate();
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        if (mWifiDisplayStatus != null && mWifiDisplayStatus.getFeatureState()
-                != WifiDisplayStatus.FEATURE_STATE_UNAVAILABLE) {
-            MenuItem item = menu.add(Menu.NONE, MENU_ID_ENABLE_WIFI_DISPLAY, 0,
-                    R.string.wifi_display_enable_menu_item);
-            item.setCheckable(true);
-            item.setChecked(mWifiDisplayOnSetting);
-        }
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case MENU_ID_ENABLE_WIFI_DISPLAY:
-                mWifiDisplayOnSetting = !item.isChecked();
-                item.setChecked(mWifiDisplayOnSetting);
-                Settings.Global.putInt(getContentResolver(),
-                        Settings.Global.WIFI_DISPLAY_ON, mWifiDisplayOnSetting ? 1 : 0);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     private void scheduleUpdate(int changes) {
         if (mStarted) {
             if (mPendingChanges == 0) {
@@ -234,8 +247,6 @@ public final class WifiDisplaySettings extends SettingsPreferenceFragment {
 
         // Update settings.
         if ((changes & CHANGE_SETTINGS) != 0) {
-            mWifiDisplayOnSetting = Settings.Global.getInt(getContentResolver(),
-                    Settings.Global.WIFI_DISPLAY_ON, 0) != 0;
             mWifiDisplayCertificationOn = Settings.Global.getInt(getContentResolver(),
                     Settings.Global.WIFI_DISPLAY_CERTIFICATION_ON, 0) != 0;
             mWpsConfig = Settings.Global.getInt(getContentResolver(),
@@ -287,6 +298,7 @@ public final class WifiDisplaySettings extends SettingsPreferenceFragment {
         // Invalidate menu options if needed.
         if (invalidateOptions) {
             getActivity().invalidateOptionsMenu();
+            mEnabler.resume();
         }
     }
 
@@ -748,5 +760,53 @@ public final class WifiDisplaySettings extends SettingsPreferenceFragment {
             pairWifiDisplay(mDisplay);
             return true;
         }
+    }
+
+    public class WifiDisplayEnabler implements CompoundButton.OnCheckedChangeListener {
+        private final Context mContext;
+        private Switch mSwitch;
+        private boolean mStateMachineEvent;
+
+        public WifiDisplayEnabler(Context context, Switch switch_) {
+            mContext = context;
+            mSwitch = switch_;
+        }
+
+        public void resume() {
+            mSwitch.setOnCheckedChangeListener(this);
+            setSwitchState();
+        }
+
+        public void pause() {
+            mSwitch.setOnCheckedChangeListener(null);
+        }
+
+        public void setSwitch(Switch switch_) {
+            if (mSwitch == switch_) {
+                return;
+            }
+            mSwitch.setOnCheckedChangeListener(null);
+            mSwitch = switch_;
+            mSwitch.setOnCheckedChangeListener(this);
+            setSwitchState();
+        }
+
+        private void setSwitchState() {
+            boolean enabled = Settings.Global.getInt(mContext.getContentResolver(),
+                    Settings.Global.WIFI_DISPLAY_ON, 0) == 1;
+            mStateMachineEvent = true;
+            mSwitch.setChecked(enabled);
+            mStateMachineEvent = false;
+        }
+
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            if (mStateMachineEvent) {
+                return;
+            }
+            // Handle a switch change
+            Settings.Global.putInt(mContext.getContentResolver(),
+                    Settings.Global.WIFI_DISPLAY_ON, isChecked ? 1 : 0);
+        }
+
     }
 }
