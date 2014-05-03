@@ -224,11 +224,9 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory
         }
 
         final boolean isRemovable = mVolume != null ? mVolume.isRemovable() : false;
-        final boolean isAccessible = mResources.getBoolean(
-                com.android.internal.R.bool.config_batterySdCardAccessibility);
         // Always create the preference since many code rely on it existing
         mMountTogglePreference = new Preference(context);
-        if (isRemovable && isAccessible) {
+        if (isRemovable) {
             mMountTogglePreference.setTitle(R.string.sd_eject);
             mMountTogglePreference.setSummary(R.string.sd_eject_summary);
             addPreference(mMountTogglePreference);
