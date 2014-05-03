@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "3afc51ec_3cdd3171",
+        "filename": "res/xml/display_settings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1579
+      },
+      "writtenOn": "2014-05-03T01:17:23Z",
+      "side": 1,
+      "message": "I see a regression here. The checkbox had been removed a while back.",
+      "revId": "ef1f11a245a8e746236feb213d7e0fbb44a36a43",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3afc51ec_1c3795e4",
         "filename": "src/com/android/settings/AnimationScalePreference.java",
         "patchSetId": 3
@@ -64,6 +81,23 @@
       "writtenOn": "2014-05-02T20:27:52Z",
       "side": 1,
       "message": "Please wrap to 100 chars",
+      "revId": "ef1f11a245a8e746236feb213d7e0fbb44a36a43",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3afc51ec_bccf81b2",
+        "filename": "src/com/android/settings/DisplaySettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1579
+      },
+      "writtenOn": "2014-05-03T01:17:23Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the double tap to wake option be belong to CATEGORY_DISPLAY instead of CATEGORY_ADVANCED?",
       "revId": "ef1f11a245a8e746236feb213d7e0fbb44a36a43",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
