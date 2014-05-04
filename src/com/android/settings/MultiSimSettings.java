@@ -146,6 +146,11 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
         mPrioritySub.setOnPreferenceChangeListener(this);
         mPhone = MSimPhoneFactory.getPhone(MSimConstants.SUB1);
 
+        if (!getResources().getBoolean(R.bool.config_show_TuneAway)) {
+            getPreferenceScreen().removePreference(mPrioritySub);
+            getPreferenceScreen().removePreference(mTuneAway);
+        }
+
         for (int subId = 0; subId < SubscriptionManager.NUM_SUBSCRIPTIONS; subId++) {
             mSubManager.registerForSubscriptionActivated(subId,
                     mHandler, EVENT_SUBSCRIPTION_ACTIVATED, null);
@@ -226,8 +231,10 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
             updateMultiSimEntriesForData();
             updateMultiSimEntriesForSms();
             updateState();
-            updateTuneAwayState();
-            updatePrioritySubState();
+            if (getResources().getBoolean(R.bool.config_show_TuneAway)) {
+                updateTuneAwayState();
+                updatePrioritySubState();
+            }
         } else {
             Log.d(TAG, "Invalid card count");
         }
@@ -391,14 +398,22 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
                     == SubscriptionStatus.SUB_ACTIVATED) {
                 Log.d(TAG, "setVoiceSubscription " + mVoiceSub);
                 MSimPhoneFactory.setPromptEnabled(false);
-                mHandler.sendMessage(mHandler.obtainMessage(EVENT_SET_VOICE_SUBSCRIPTION,
-                        mVoiceSub));
+                if (!getResources().getBoolean(R.bool.config_show_TuneAway)) {
+                    MSimPhoneFactory.setVoiceSubscription(mVoiceSub);
+                    mVoice.setSummary(summaries[mVoiceSub]);
+                } else {
+                    mHandler.sendMessage(mHandler.obtainMessage(EVENT_SET_VOICE_SUBSCRIPTION,
+                            mVoiceSub));
+                }
             } else {
                 status = getResources().getString(R.string.set_voice_error);
                 displayAlertDialog(status);
                 Log.w(TAG, "setVoiceSubscription: sub=" + mVoiceSub
                         + " failed due to sub not activated");
                 return false;
+            }
+            if (!getResources().getBoolean(R.bool.config_show_TuneAway)) {
+                mHandler.sendMessage(mHandler.obtainMessage(EVENT_SET_VOICE_SUBSCRIPTION));
             }
         }
 
@@ -581,61 +596,75 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
                     break;
 
                 case EVENT_SET_VOICE_SUBSCRIPTION:
-                    updateVoiceSub(msg.arg1);
+                    if (!getResources().getBoolean(R.bool.config_show_TuneAway)) {
+                        updateVoiceSummary();
+                    } else {
+                        updateVoiceSub(msg.arg1);
+                    }
                     break;
                 case EVENT_SET_VOICE_SUBSCRIPTION_DONE:
-                    Log.d(TAG, "EVENT_SET_VOICE_SUBSCRIPTION_DONE");
-                    ar = (AsyncResult) msg.obj;
-                    String sub;
-                    if (ar.exception != null) {
-                        Log.e(TAG, "SET_VOICE_SUBSCRIPTION_DONE: returned Exception: "
-                                + ar.exception);
-                        int voiceSub = MSimPhoneFactory.getVoiceSubscription();
-                        sub = Integer.toString(voiceSub);
+                    if (getResources().getBoolean(R.bool.config_show_TuneAway)) {
+                        Log.d(TAG, "EVENT_SET_VOICE_SUBSCRIPTION_DONE");
+                        ar = (AsyncResult) msg.obj;
+                        String sub;
+                        if (ar.exception != null) {
+                            Log.e(TAG, "SET_VOICE_SUBSCRIPTION_DONE: returned Exception: "
+                                    + ar.exception);
+                            int voiceSub = MSimPhoneFactory.getVoiceSubscription();
+                            sub = Integer.toString(voiceSub);
+                            mVoice.setValue(sub);
+                            mVoice.setSummary(summaries[voiceSub]);
+                            mVoiceSub = voiceSub;
+                            break;
+                        }
+                        sub = Integer.toString(mVoiceSub);
                         mVoice.setValue(sub);
-                        mVoice.setSummary(summaries[voiceSub]);
-                        mVoiceSub = voiceSub;
-                        break;
+                        mVoice.setSummary(summaries[mVoiceSub]);
+                        MSimPhoneFactory.setVoiceSubscription(mVoiceSub);
                     }
-                    sub = Integer.toString(mVoiceSub);
-                    mVoice.setValue(sub);
-                    mVoice.setSummary(summaries[mVoiceSub]);
-                    MSimPhoneFactory.setVoiceSubscription(mVoiceSub);
                     break;
                 case EVENT_SET_SMS_SUBSCRIPTION:
                     updateSmsSummary();
                     break;
                 case EVENT_SET_TUNE_AWAY:
-                    updateTuneAwayStatus();
+                    if (getResources().getBoolean(R.bool.config_show_TuneAway)) {
+                        updateTuneAwayStatus();
+                    }
                     break;
                 case EVENT_SET_TUNE_AWAY_DONE:
-                    ar = (AsyncResult) msg.obj;
-                    if (ar.exception != null) {
-                        Log.e(TAG, "SET_TUNE_AWAY_DONE: returned Exception: " + ar.exception);
-                        updateTuneAwayState();
-                        break;
+                    if (getResources().getBoolean(R.bool.config_show_TuneAway)) {
+                        ar = (AsyncResult) msg.obj;
+                        if (ar.exception != null) {
+                            Log.e(TAG, "SET_TUNE_AWAY_DONE: returned Exception: " + ar.exception);
+                            updateTuneAwayState();
+                            break;
+                        }
+                        Log.d(TAG, "SET_TUNE_AWAY_DONE: mTuneAwayValue = " + mTuneAwayValue);
+                        mTuneAway.setChecked(mTuneAwayValue);
+                        mTuneAway.setSummary(mTuneAwayValue ? "Enable" : "Disable");
+                        MSimPhoneFactory.setTuneAway(mTuneAwayValue);
                     }
-                    Log.d(TAG, "SET_TUNE_AWAY_DONE: mTuneAwayValue = " + mTuneAwayValue);
-                    mTuneAway.setChecked(mTuneAwayValue);
-                    mTuneAway.setSummary(mTuneAwayValue ? "Enable" : "Disable");
-                    MSimPhoneFactory.setTuneAway(mTuneAwayValue);
                     break;
                 case EVENT_SET_PRIORITY_SUBSCRIPTION:
-                    updatePrioritySub(msg.arg1);
+                    if (getResources().getBoolean(R.bool.config_show_TuneAway)) {
+                        updatePrioritySub(msg.arg1);
+                    }
                     break;
                 case EVENT_SET_PRIORITY_SUBSCRIPTION_DONE:
-                    ar = (AsyncResult) msg.obj;
-                    if (ar.exception != null) {
-                        Log.e(TAG, "EVENT_SET_PRIORITY_SUBSCRIPTION_DONE: returned Exception: "
-                                + ar.exception);
-                        updatePrioritySubState();
-                        break;
+                    if (getResources().getBoolean(R.bool.config_show_TuneAway)) {
+                        ar = (AsyncResult) msg.obj;
+                        if (ar.exception != null) {
+                            Log.e(TAG, "EVENT_SET_PRIORITY_SUBSCRIPTION_DONE: returned Exception: "
+                                    + ar.exception);
+                            updatePrioritySubState();
+                            break;
+                        }
+                        Log.d(TAG, "EVENT_SET_PRIORITY_SUBSCRIPTION_DONE : mPrioritySubValue "
+                                + mPrioritySubValue);
+                        mPrioritySub.setValue(Integer.toString(mPrioritySubValue));
+                        mPrioritySub.setSummary(summaries[mPrioritySubValue]);
+                        MSimPhoneFactory.setPrioritySubscription(mPrioritySubValue);
                     }
-                    Log.d(TAG, "EVENT_SET_PRIORITY_SUBSCRIPTION_DONE : mPrioritySubValue "
-                            + mPrioritySubValue);
-                    mPrioritySub.setValue(Integer.toString(mPrioritySubValue));
-                    mPrioritySub.setSummary(summaries[mPrioritySubValue]);
-                    MSimPhoneFactory.setPrioritySubscription(mPrioritySubValue);
                     break;
                     default:
                         Log.w(TAG, "Unknown Event " + msg.what);
