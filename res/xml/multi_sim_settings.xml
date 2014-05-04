@@ -31,7 +31,28 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <PreferenceCategory android:key="multi_sim_settings">
+    <PreferenceScreen
+        android:key="config_sub"
+        android:title="@string/sel_sub_title"
+        android:summary="@string/sel_sub_summary"
+        android:persistent="false">
+        <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="com.android.phone"
+                android:targetClass="com.android.phone.SetSubscription" />
+    </PreferenceScreen>
+
+    <CheckBoxPreference
+        android:key="tune_away"
+        android:title="@string/tune_away_title"
+        android:persistent="false" />
+
+    <ListPreference
+        android:key="priority_subscription"
+        android:title="@string/priority_sub_title"
+        android:persistent="false" />
+
+    <PreferenceCategory android:key="multi_sim_settings"
+        android:title="@string/multi_sim_settings_group_summary">
 
         <ListPreference
             android:key="voice"
@@ -46,26 +67,6 @@
         <ListPreference
             android:key="sms"
             android:title="@string/sms_title"
-            android:persistent="false" />
-
-        <PreferenceScreen
-            android:key="config_sub"
-            android:title="@string/sel_sub_title"
-            android:summary="@string/sel_sub_summary"
-            android:persistent="false">
-            <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.android.phone"
-                    android:targetClass="com.android.phone.SetSubscription" />
-        </PreferenceScreen>
-
-        <CheckBoxPreference
-            android:key="tune_away"
-            android:title="@string/tune_away_title"
-            android:persistent="false" />
-
-        <ListPreference
-            android:key="priority_subscription"
-            android:title="@string/priority_sub_title"
             android:persistent="false" />
 
     </PreferenceCategory>
