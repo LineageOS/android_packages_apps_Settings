@@ -40,26 +40,31 @@
     <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
         android:key="quiet_hours_mute"
         android:title="@string/quiet_hours_mute"
+        android:summary="@string/quiet_hours_mute_summary"
         android:dependency="quiet_hours_enabled" />
 
     <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
         android:key="quiet_hours_haptic"
         android:title="@string/quiet_hours_haptic"
+        android:summary="@string/quiet_hours_haptic_summary"
         android:dependency="quiet_hours_enabled" />
 
     <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
         android:key="quiet_hours_system"
         android:title="@string/quiet_hours_system"
+        android:summary="@string/quiet_hours_system_summary"
         android:dependency="quiet_hours_enabled" />
 
     <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
         android:key="quiet_hours_still"
         android:title="@string/quiet_hours_still"
+        android:summary="@string/quiet_hours_still_summary"
         android:dependency="quiet_hours_enabled" />
 
     <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
         android:key="quiet_hours_dim"
         android:title="@string/quiet_hours_dim"
+        android:summary="@string/quiet_hours_dim_summary"
         android:dependency="quiet_hours_enabled" />
 
 </PreferenceScreen>
