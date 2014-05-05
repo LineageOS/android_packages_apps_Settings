@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "3afc51ec_f01008ab",
+        "filename": "src/com/android/settings/MultiSimSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-05-05T21:35:37Z",
+      "side": 1,
+      "message": "private boolean mHasTuneAway;\n\nprotected void onCreate(Bundle savedInstanceState) {\n    [...]\n    mHasTuneAway \u003d getResources().getBoolean(...);\n    [...]\n}\n\nThe resources aren\u0027t initialized before onCreate().",
+      "parentUuid": "3afc51ec_1035b445",
+      "revId": "af8ca6b41053832914122359054ecc659afbbd73",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3afc51ec_f0b488d2",
         "filename": "src/com/android/settings/MultiSimSettings.java",
         "patchSetId": 4
