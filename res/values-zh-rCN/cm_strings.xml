@@ -121,6 +121,7 @@
   <string name="volume_ring_only_description">铃声</string>
   <string name="link_volume_ringtones">链接铃声与通知的音量</string>
   <string name="link_volume_mutes">静音模式将会影响通知</string>
+  <string name="volume_keys_control_ring_stream">音量按钮控制铃声音量</string>
   <string name="ring_mode_title">响铃模式</string>
   <string name="ring_mode_normal">正常</string>
   <string name="ring_mode_vibrate">振动</string>
@@ -136,6 +137,7 @@
   <string name="notification_vibrate_during_calls_title">通话时振动</string>
   <string name="notification_vibrate_during_calls_summary">通话时来电会轻微振动</string>
   <string name="volume_adjust_sounds_enable_title">音量键调节声音</string>
+  <string name="volume_adjust_sounds_enable_summary">用音量按钮调节音量时播放声音</string>
   <string name="icon_picker_title">选择图标来源</string>
   <string name="icon_picker_system_icons_title">系统图标</string>
   <string name="icon_picker_gallery_title">图库</string>
@@ -156,6 +158,8 @@
   <string name="wake_when_plugged_or_unplugged_title">插入/拔出电源点亮屏幕</string>
   <string name="wake_when_plugged_or_unplugged_summary">连接或断开电源时点亮屏幕</string>
   <string name="screen_animation_off_title">锁屏效果</string>
+  <string name="screen_animation_style_title">关屏动画样式</string>
+  <string name="screen_animation_style_disabled">已禁用 </string>
   <string name="screen_animation_style_electronbeam">CRT</string>
   <string name="screen_animation_style_fade">淡出</string>
   <string name="edit_light_settings">编辑指示灯设置</string>
@@ -195,6 +199,7 @@
   <string name="unlock_camera_unlock_summary">按下相机键解锁设备</string>
   <string name="unlock_quick_unlock_control_title">快速解锁</string>
   <string name="unlock_quick_unlock_control_summary">当输入正确的 PIN 码或密码后自动解锁</string>
+  <string name="unlock_buttons_disabled_by_security">锁屏是安全的</string>
   <string name="delay_and_timeout_title">锁定延迟</string>
   <string name="slide_lock_delay_title">延迟屏幕锁定</string>
   <string name="slide_lock_timeout_delay_title">屏幕超时后的延迟</string>
@@ -221,6 +226,8 @@
   <string name="tile_picker_title">按钮与布局</string>
   <string name="tile_picker_summary">查看、选择并改变显示按钮的布局</string>
   <string name="tile_choose_title">选择一个按钮</string>
+  <string name="title_qs_small_icons">显示小按钮</string>
+  <string name="summary_qs_small_icons">使用小按钮以增加列数</string>
   <string name="title_tile_airplane">飞行模式</string>
   <string name="title_tile_battery">电量显示</string>
   <string name="title_tile_bluetooth">蓝牙</string>
@@ -330,11 +337,6 @@
   <string name="quiet_hours_summary">配置设备应该安静的时段</string>
   <string name="quiet_hours_enabled">开启安静时段</string>
   <string name="quiet_hours_ringer">电话铃声</string>
-  <string name="quiet_hours_mute">静音提醒</string>
-  <string name="quiet_hours_system">禁用系统声音</string>
-  <string name="quiet_hours_still">禁用震动</string>
-  <string name="quiet_hours_dim">禁用指示灯</string>
-  <string name="quiet_hours_haptic">禁用触控反馈</string>
   <string name="quiet_hours_active_from">从</string>
   <string name="quiet_hours_active_to">激活到</string>
   <string name="quiet_hours_ringer_allow_all">所有来电响铃</string>
@@ -348,6 +350,7 @@
   <string name="build_date">编译日期</string>
   <string name="cpu_info">处理器</string>
   <string name="mem_info">内存</string>
+  <string name="phone_service_state">语音：<xliff:g id="voice_state">%1$s</xliff:g>，数据：<xliff:g id="data_state">%2$s</xliff:g></string>
   <string name="anonymous_statistics_title">CyanogenMod 统计</string>
   <string name="anonymous_statistics_summary">开启匿名统计报告以便帮助 CyanogenMod 未来向更好的方向发展</string>
   <string name="anonymous_statistics_warning_title">关于统计</string>
@@ -364,13 +367,19 @@
   <string name="preview_carrier_title">运营商</string>
   <string name="header_category_interface">个性化</string>
   <string name="themes_settings_title">主题</string>
+  <string name="themepacks_settings_title">主题包</string>
   <string name="styles_settings_title">样式</string>
   <string name="icons_settings_title">图标</string>
   <string name="fonts_settings_title">字体</string>
   <string name="wallpaper_settings_title">壁纸</string>
+  <string name="lockscreen_wallpaper_settings_title">锁屏壁纸</string>
+  <string name="bootanim_settings_title">开机动画</string>
+  <string name="soundpack_settings_title">音效包</string>
   <string name="performance_settings_title">性能</string>
   <string name="performance_settings_warning_title">请谨慎前进</string>
+  <string name="performance_settings_warning">这些设置是实验性的，任何应用的改变都有可能导致不稳定、崩溃、数据丢失或硬件故障。\n\n如果您更改了默认设置，我们请求您不要提交错误报告。</string>
   <string name="performance_set_on_boot">启动时设置</string>
+  <string name="performance_set_on_boot_summary">启动时还原已应用的设置</string>
   <string name="processor_title">处理器</string>
   <string name="cpu_cur_freq_title">当前 CPU 频率</string>
   <string name="cpu_governors_title">CPU 调节器</string>
@@ -389,6 +398,7 @@
   <string name="pref_force_highend_gfx_title">强制高端图形</string>
   <string name="pref_force_highend_gfx_summary">启用高端视觉特效，如透明状态栏/导航栏 (需要重启)</string>
   <string name="kill_app_longpress_back">使用返回键强制关闭程序</string>
+  <string name="kill_app_longpress_back_summary">长按返回键将终止前台应用</string>
   <string name="changelog_title">查看更改记录</string>
   <string name="changelog_loading">正在读取更改记录\u2026</string>
   <string name="changelog_error">无法读取更改记录</string>
@@ -423,6 +433,7 @@
   <string name="blacklist_empty_text">您没有任何的黑名单号码。您可以点击添加 (+) 按钮来添加。</string>
   <string name="blacklist_disabled_empty_text">要阻止来自特定号码的来电或短信，请启用黑名单。</string>
   <string name="blacklist_summary_disabled">禁用</string>
+  <string name="blacklist_summary">来自黑名单上电话号码的来电和信息将被拦截</string>
   <string name="blacklist_notify">显示通知</string>
   <string name="blacklist_private_numbers_title">私人号码</string>
   <string name="blacklist_private_numbers_summary_disabled">不要阻止私人号码的来电</string>
@@ -543,6 +554,7 @@
   <string name="lockscreen_long_press_home_title">长按 Home 键</string>
   <string name="lockscreen_long_press_menu_title">长按菜单键</string>
   <string name="lockscreen_buttons_no_action">无操作</string>
+  <string name="lockscreen_buttons_flashlight">手电筒</string>
   <string name="lockscreen_buttons_next">下一首歌</string>
   <string name="lockscreen_buttons_previous">上一首歌</string>
   <string name="lockscreen_buttons_playpause">播放/暂停 音乐</string>
@@ -617,7 +629,6 @@
   <string name="volbtn_cursor_control_off">禁用</string>
   <string name="volbtn_cursor_control_on">音量+/-光标左/右移动</string>
   <string name="volbtn_cursor_control_on_reverse">音量+/-光标右/左移动</string>
-  <string name="swap_volume_buttons_title">交换音量键</string>
   <string name="swap_volume_buttons_summary">旋转屏幕时交换音量键的布局</string>
   <string name="button_backlight_title">背光灯</string>
   <string name="button_backlight_enabled">点亮按键</string>
@@ -664,6 +675,7 @@
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">管理安全短信设置</string>
   <string name="custom_runtime_warning_title">警告</string>
+  <string name="custom_runtime_warning_message">ART 不被 CyanogenMod 官方支持，因为它是高度实验性的，可能造成不稳定、死机、数据丢失或导致设备不能正常开机。请访问 &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; 了解更多信息。&lt;br/&gt;&lt;br/&gt;如果您启用 ART 作为运行环境，我们请求您不要发送错误报告。&lt;br/&gt;&lt;br/&gt;您要重启设备将运行环境从 <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> 改为 <xliff:g id="new" example="libart.so">%2$s</xliff:g> 吗？</string>
   <string name="gps_download_data_wifi_only">只通过 WiFi 下载 GPS 辅助数据</string>
   <string name="battery_info_status_charging_dock_ac">(基座 AC)</string>
   <string name="battery_info_status_charging_dock_usb">(基座 USB)</string>
@@ -819,4 +831,5 @@
   <string name="voice_wakeup_retrain_title">重新训练您的声音</string>
   <string name="voice_wakeup_activity_title">要启动的活动</string>
   <string name="voice_wakeup_default_activity">Google 即时</string>
+  <string name="sub_no_sim">无 SIM 卡</string>
 </resources>

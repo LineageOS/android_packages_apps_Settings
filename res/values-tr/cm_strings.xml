@@ -121,6 +121,7 @@
   <string name="volume_ring_only_description">Zil sesi</string>
   <string name="link_volume_ringtones">Zilsesi ve bildirim ses düzeyini bağla</string>
   <string name="link_volume_mutes">Sessiz modu bildirimleri etkiler</string>
+  <string name="volume_keys_control_ring_stream">Ses tuşları zil sesini kontrol eder</string>
   <string name="ring_mode_title">Zil modu</string>
   <string name="ring_mode_normal">Normal</string>
   <string name="ring_mode_vibrate">Titreş</string>
@@ -136,6 +137,7 @@
   <string name="notification_vibrate_during_calls_title">Görüşürken titret</string>
   <string name="notification_vibrate_during_calls_summary">Görüşme sırasında gelen bildirimler yavaşça titreyecektir</string>
   <string name="volume_adjust_sounds_enable_title">Ses arttırma tonu</string>
+  <string name="volume_adjust_sounds_enable_summary">Ses tuşları ile ses düzeyini ayarlarken ses çıkar</string>
   <string name="icon_picker_title">Simge kaynağını seçin</string>
   <string name="icon_picker_system_icons_title">Sistem ikonları</string>
   <string name="icon_picker_gallery_title">Galeri</string>
@@ -153,9 +155,12 @@
   <string name="notification_light_missed_call_title">Kayıp çağrı</string>
   <string name="notification_light_voicemail_title">Voicemail</string>
   <string name="adaptive_backlight_title">Uyum sağlayan arka ışık</string>
+  <string name="adaptive_backlight_summary">Kullanılabilirliği koruyarak pil ömrünü en üst düzeye çıkarmak için ekranın arka ışık parlaklığını dinamik olarak ayarla</string>
   <string name="wake_when_plugged_or_unplugged_title">Takıp çıkarmada uyan</string>
   <string name="wake_when_plugged_or_unplugged_summary">Bir güç kaynağına bağlanırken ya da bağlantısını keserken ekranı aç</string>
   <string name="screen_animation_off_title">Ekran kapama animasyonu</string>
+  <string name="screen_animation_style_title">Ekran kapanma animasyonu stili</string>
+  <string name="screen_animation_style_disabled">Devre dışı</string>
   <string name="screen_animation_style_electronbeam">Elektron huzmesi</string>
   <string name="screen_animation_style_fade">Solma</string>
   <string name="edit_light_settings">Işık ayarlarını düzenle</string>
@@ -195,6 +200,7 @@
   <string name="unlock_camera_unlock_summary">Kamera tuşuna basmak cihazın kilidini açar</string>
   <string name="unlock_quick_unlock_control_title">Hızlı kilit aç</string>
   <string name="unlock_quick_unlock_control_summary">Doğru PIN/şifre girildiğinde otomatik olarak kilidi aç</string>
+  <string name="unlock_buttons_disabled_by_security">Kilit ekranı güvenli</string>
   <string name="delay_and_timeout_title">Kilit gecikmesi</string>
   <string name="slide_lock_delay_title">Ekran kilidi gecikmesi</string>
   <string name="slide_lock_timeout_delay_title">Zaman aşımı sonrası gecikme</string>
@@ -221,6 +227,8 @@
   <string name="tile_picker_title">Kareler ve düzen</string>
   <string name="tile_picker_summary">Görüntülenen kareler için düzeni görüntüleyin, seçin veya değiştirin</string>
   <string name="tile_choose_title">Kare seçin</string>
+  <string name="title_qs_small_icons">Daha küçük kareler göster</string>
+  <string name="summary_qs_small_icons">Sütun sayısını arttırmak için daha küçük kareler kullan</string>
   <string name="title_tile_airplane">Uçak modu</string>
   <string name="title_tile_battery">Pil istatistikleri</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
@@ -250,6 +258,7 @@
   <string name="title_tile_network_adb">Ağ üzerinden ADB</string>
   <string name="title_dynamic_tiles">Dinamik kareler</string>
   <string name="dynamic_tiles_note_title">Not</string>
+  <string name="dynamic_tiles_note_summary">Dinamik kareler her zaman görünmez ve sadece bir sistem olayı tarafından tetiklenirse görülürler</string>
   <string name="title_dynamic_alarm">Alarm</string>
   <string name="title_dynamic_bugreport">Hata raporu</string>
   <string name="title_dynamic_dock_battery">Dock pil</string>
@@ -331,11 +340,16 @@
   <string name="quiet_hours_summary">Cihazın sessiz olacağı saatleri ayarlayın</string>
   <string name="quiet_hours_enabled">Sessiz saatleri etkinleştir</string>
   <string name="quiet_hours_ringer">Telefon çalması</string>
-  <string name="quiet_hours_mute">Bildirimleri sessize al</string>
-  <string name="quiet_hours_system">Sistem seslerini devre dışı bırak</string>
-  <string name="quiet_hours_still">Titreşimi devre dışı bırak</string>
-  <string name="quiet_hours_dim">Bildirim ışığını devre dışı bırak</string>
-  <string name="quiet_hours_haptic">Titreşimli geribildirimi kapat</string>
+  <string name="quiet_hours_mute">Bildirimler</string>
+  <string name="quiet_hours_mute_summary">Bildirimleri sessize al</string>
+  <string name="quiet_hours_system">Sistem sesleri</string>
+  <string name="quiet_hours_system_summary">Sistem seslerini devre dışı bırak</string>
+  <string name="quiet_hours_still">Titreşimler</string>
+  <string name="quiet_hours_still_summary">Titreşimi kapat</string>
+  <string name="quiet_hours_dim">Bildirim ışığı</string>
+  <string name="quiet_hours_dim_summary">Bildirim ışığını kapat</string>
+  <string name="quiet_hours_haptic">Dokunmatik geri bildirim</string>
+  <string name="quiet_hours_haptic_summary">Dokunmatik geri bildirimi kapat</string>
   <string name="quiet_hours_active_from">Aktiflik başlangıcı</string>
   <string name="quiet_hours_active_to">sonu</string>
   <string name="quiet_hours_ringer_allow_all">Her arayan için çal</string>
@@ -349,6 +363,7 @@
   <string name="build_date">İnşa tarihi</string>
   <string name="cpu_info">İşlemci</string>
   <string name="mem_info">Bellek</string>
+  <string name="phone_service_state">Ses: <xliff:g id="voice_state">%1$s</xliff:g>, veri: <xliff:g id="data_state">%2$s</xliff:g></string>
   <string name="anonymous_statistics_title">CyanogenMod istatistikleri</string>
   <string name="anonymous_statistics_summary">Anonim istatistik raporları göndererek CyanogenMod\'un daha iyi olmasına yardım edin</string>
   <string name="anonymous_statistics_warning_title">Hakkında</string>
@@ -365,13 +380,19 @@
   <string name="preview_carrier_title">Şebeke</string>
   <string name="header_category_interface">Kişiselleştirme</string>
   <string name="themes_settings_title">Temalar</string>
+  <string name="themepacks_settings_title">Tema paketleri</string>
   <string name="styles_settings_title">Stiller</string>
   <string name="icons_settings_title">Simgeler</string>
   <string name="fonts_settings_title">Yazı tipleri</string>
   <string name="wallpaper_settings_title">Duvar kağıtları</string>
+  <string name="lockscreen_wallpaper_settings_title">Kilit ekranı duvar kağıtları</string>
+  <string name="bootanim_settings_title">Açılış animasyonları</string>
+  <string name="soundpack_settings_title">Ses paketleri</string>
   <string name="performance_settings_title">Performans</string>
   <string name="performance_settings_warning_title">Dikkatle hareket edin</string>
+  <string name="performance_settings_warning">Bu ayarlar deneyseldir ve uygulanan her değişikliğin kararsızlığa, çökmelere, veri kaybına ve donanım hatalarına sebep olma riski vardır.\n\nEğer ayarlar varsayılanlarından değiştirilmişse sizden hata raporu göndermemenizi istiyoruz.</string>
   <string name="performance_set_on_boot">Başlangıçta ayarla</string>
+  <string name="performance_set_on_boot_summary">Önyüklemede uygulanan ayarları geri yükle</string>
   <string name="processor_title">İşlemci</string>
   <string name="cpu_cur_freq_title">Şimdiki işlemci hızı</string>
   <string name="cpu_governors_title">İşlemci davranışı</string>
@@ -390,11 +411,13 @@
   <string name="pref_force_highend_gfx_title">Üst düzey grafiklere zorla</string>
   <string name="pref_force_highend_gfx_summary">Saydam durum/navigasyon çubuğu gibi gelişmiş görsel efektleri etkinleştirir (yeniden başlatma gerektirir)</string>
   <string name="kill_app_longpress_back">Uygulama öldürücü geri tuşu</string>
+  <string name="kill_app_longpress_back_summary">Geri tuşuna uzun dokunarak ön plandaki uygulamayı sonlandır</string>
   <string name="changelog_title">Değişiklik kütüğü</string>
   <string name="changelog_loading">Değişiklik kütüğü yükleniyor\u2026</string>
   <string name="changelog_error">Değişiklik kaydı yüklenemedi</string>
   <string name="changelog_unknown">Bilinmeyen</string>
   <string name="changelog_version">Sürüm</string>
+  <string name="contributor_cloud_title">Katkıda bulunanları görüntüle</string>
   <string name="cmupdate_settings_title">CyanogenMod güncellemeleri</string>
   <string name="cmupdate_settings_summary">Güncellemeleri denetleyin, görüntüleyin ve yükleyin</string>
   <string name="advanced_settings_title">Gelişmiş</string>
@@ -414,6 +437,7 @@
   <string name="privacy_guard_help_title">Yardım</string>
   <string name="privacy_guard_reset_title">Sıfırla</string>
   <string name="privacy_guard_reset_text">İzinleri sıfırla?</string>
+  <string name="privacy_guard_help_text">Bu ekranda Gizlilik Korumasının hangi uygulamalarda aktif olacağını basitçe dokunarak seçebilirsiniz. Seçili uygulamalar kişiler, mesajlar veya arama kaydı gibi kişisel bilgilerinize ulaşamayacaklar. Ögelere uzun dokunarak o uygulamalar için uygulama detayları penceresini açabilirsiniz.\n\nÖnyüklü uygulamalar varsayılan olarak gösterilmez ancak ilgili menü seçeneğiyle görüntülenebilirler.</string>
   <string name="privacy_guard_manager_show_system_apps">Dahili uygulamaları göster</string>
   <string name="privacy_guard_manager_filter_permissions">İzin filtresi</string>
   <string name="privacy_guard_advanced_settings_title">Gelişmiş</string>
@@ -424,6 +448,7 @@
   <string name="blacklist_empty_text">Henüz bir numarayı kara listeye eklemediniz. Yeni bir giriş eklemek için Ekle (+) butonuna dokunun.</string>
   <string name="blacklist_disabled_empty_text">İstediğiniz numaralardan arama ve/veya mesajları engellemek için kara listeyi aktifleştirebilirsiniz.</string>
   <string name="blacklist_summary_disabled">Devre dışı</string>
+  <string name="blacklist_summary">Kara listeye alınmış telefon numaralarından gelen çağrılar ve mesajlar engellenecek</string>
   <string name="blacklist_notify">Bildirim göster</string>
   <string name="blacklist_private_numbers_title">Özel numaralar</string>
   <string name="blacklist_private_numbers_summary_disabled">Özel numaralaradan gelen çağrıları engelleme</string>
@@ -544,6 +569,7 @@
   <string name="lockscreen_long_press_home_title">Ana ekran tuşuna uzun basma</string>
   <string name="lockscreen_long_press_menu_title">Menü tuşuna uzun basma</string>
   <string name="lockscreen_buttons_no_action">İşlev yok</string>
+  <string name="lockscreen_buttons_flashlight">El feneri</string>
   <string name="lockscreen_buttons_next">Sonraki şarkı</string>
   <string name="lockscreen_buttons_previous">Önceki şarkı</string>
   <string name="lockscreen_buttons_playpause">Müziği Çal/Duraklat</string>
@@ -584,6 +610,8 @@
   <string name="expanded_desktop_disabled">Devre dışı</string>
   <string name="expanded_desktop_status_bar">Durum çubuğu görünür</string>
   <string name="expanded_desktop_no_status_bar">Durum çubuğu gizli</string>
+  <string name="expanded_desktop_system_bars_visibility">Kilit ekranında devre dışı bırak</string>
+  <string name="expanded_desktop_system_bars_visibility_summary">Genişletilmiş masaüstü modunda kilit ekranında durum ve navigasyon çubuğunu göster</string>
   <string name="power_menu_profiles_title">Profil değiştirici</string>
   <string name="power_menu_airplane_title">Uçak modu</string>
   <string name="power_menu_user_title">Kullanıcı değiştirici</string>
@@ -618,7 +646,6 @@
   <string name="volbtn_cursor_control_off">Devre dışı</string>
   <string name="volbtn_cursor_control_on">Ses yukarı/aşağı imleci sol/sağa kaydırır</string>
   <string name="volbtn_cursor_control_on_reverse">Ses yukarı/aşağı imleci sağ/sola kaydırır</string>
-  <string name="swap_volume_buttons_title">Ses tuşlarını yer değiştir</string>
   <string name="swap_volume_buttons_summary">Ekran döndürüldüğünde ses tuşlarını yer değiştir</string>
   <string name="button_backlight_title">Arka aydınlatma</string>
   <string name="button_backlight_enabled">Tuşları aydınlat</string>
@@ -660,11 +687,13 @@
   <string name="development_shortcut_title">Geliştirme kısayolu</string>
   <string name="development_shortcut_summary">\'Verileri sil\' ve \'Kapatma zorla\' seçeneklerini bildirim çubuğunda ve en son uygulamalar listesinde etkin kıl</string>
   <string name="usb_mass_storage_title">Yığın depolama (UMS)</string>
+  <string name="usb_mass_storage_summary">SD kartınızı flash aygıtı şeklinde bağlayarak bilgisayarınız arasında dosya paylaşmanızı sağlar</string>
   <string name="storage_rescan_media">Depolama birimi için ortamları yeniden ara</string>
   <string name="storage_rescan_media_complete">Tarama tamamlandı</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Güvenli SMS ayarlarını yönet</string>
   <string name="custom_runtime_warning_title">Uyarı</string>
+  <string name="custom_runtime_warning_message">ART CyanogenMod tarafından desteklenmemektedir çünkü oldukça tehlikeli bir deneysel özelliktir ve kararsızlık, çökme, veri kaybı sebep olabilecek ya da cihazın düzgün başlamasına engel olabilecek potansiyele sahiptir. Daha fazla bilgi için &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;ARTa Giriş&lt;/a&gt; sayfasını ziyaret edebilirsiniz.&lt;br/&gt;&lt;br/&gt;ART\'ı çalışma zamanı olarak seçtiğinizde hata raporu oluşturmamanızı istiyoruz.&lt;br/&gt;&lt;br/&gt;Çalışma zamanınızı <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> yerine <xliff:g id="new" example="libart.so">%2$s</xliff:g> olarak değiştirmek için yeniden başlatmak istediğinize emin misiniz?</string>
   <string name="gps_download_data_wifi_only">Yardımlı GPS verisini sadece Wi-Fi ağları üzerinden indir.</string>
   <string name="battery_info_status_charging_dock_ac">(AC Dock)</string>
   <string name="battery_info_status_charging_dock_usb">(USB Dock)</string>
@@ -820,4 +849,5 @@
   <string name="voice_wakeup_retrain_title">Sesinizi ayarlayın</string>
   <string name="voice_wakeup_activity_title">Başlatılacak aktivite</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
+  <string name="sub_no_sim">SIM yok</string>
 </resources>
