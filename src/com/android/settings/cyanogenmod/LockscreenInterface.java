@@ -17,8 +17,10 @@
 package com.android.settings.cyanogenmod;
 
 import android.app.admin.DevicePolicyManager;
+import android.content.ActivityNotFoundException;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
@@ -27,6 +29,7 @@ import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
+import android.widget.Toast;
 
 import com.android.internal.widget.LockPatternUtils;
 import com.android.settings.ChooseLockSettingsHelper;
@@ -47,6 +50,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private static final String KEY_ENABLE_MAXIMIZE_WIGETS = "lockscreen_maximize_widgets";
     private static final String KEY_LOCKSCREEN_MODLOCK_ENABLED = "lockscreen_modlock_enabled";
     private static final String KEY_LOCKSCREEN_TARGETS = "lockscreen_targets";
+    private static final String KEY_LOCKSCREEN_WALLPAPER = "lockscreen_wallpaper_settings";
 
     private CheckBoxPreference mEnableKeyguardWidgets;
     private CheckBoxPreference mEnableCameraWidget;
@@ -58,6 +62,8 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private ChooseLockSettingsHelper mChooseLockSettingsHelper;
     private LockPatternUtils mLockUtils;
     private DevicePolicyManager mDPM;
+
+    private Toast mToast;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -195,6 +201,20 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             return true;
         } else if (KEY_ENABLE_CAMERA.equals(key)) {
             mLockUtils.setCameraEnabled(mEnableCameraWidget.isChecked());
+            return true;
+        } else if (KEY_LOCKSCREEN_WALLPAPER.equals(key)) {
+            try {
+                startActivity(new Intent("android.intent.action.SET_KEYGUARD_WALLPAPER"));
+            } catch (ActivityNotFoundException e) {
+                if (mToast != null) {
+                    mToast.cancel();
+                }
+                if (getActivity() != null) {
+                    mToast = Toast.makeText(getActivity(), R.string.lockscreen_picker_not_found,
+                            Toast.LENGTH_SHORT);
+                    mToast.show();
+                }
+            }
             return true;
         }
 
