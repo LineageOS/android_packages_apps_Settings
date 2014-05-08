@@ -121,6 +121,7 @@
   <string name="volume_ring_only_description">צלצול</string>
   <string name="link_volume_ringtones">קשר עוצמת צלצול &amp; הודעות</string>
   <string name="link_volume_mutes">מצב שקט משפיע על הודעות</string>
+  <string name="volume_keys_control_ring_stream">לחצני עוצמת קול שולטים בעוצמת צלצול</string>
   <string name="ring_mode_title">מצב צלצול</string>
   <string name="ring_mode_normal">רגיל</string>
   <string name="ring_mode_vibrate">רטט</string>
@@ -136,6 +137,7 @@
   <string name="notification_vibrate_during_calls_title">רטט במהלך שיחה</string>
   <string name="notification_vibrate_during_calls_summary">הודעות נכנסות ירטטו חלש בזמן שיחה</string>
   <string name="volume_adjust_sounds_enable_title">התאמת עוצמת קול</string>
+  <string name="volume_adjust_sounds_enable_summary">השמע צליל כאשר לחצני עוצמת הקול נלחצים</string>
   <string name="icon_picker_title">בחר מקור לסמל</string>
   <string name="icon_picker_system_icons_title">סמלי מערכת</string>
   <string name="icon_picker_gallery_title">גלרייה</string>
@@ -153,9 +155,12 @@
   <string name="notification_light_missed_call_title">שיחה שלא נענתה</string>
   <string name="notification_light_voicemail_title">דואר קולי</string>
   <string name="adaptive_backlight_title">תאורה אחורית מסתגלת</string>
+  <string name="adaptive_backlight_summary">כוון דינאמית את בהירות המסך כדי להגדיל את חיי הסוללה תוך שמירה על שימושיות</string>
   <string name="wake_when_plugged_or_unplugged_title">הער מסך בעת חיבור</string>
   <string name="wake_when_plugged_or_unplugged_summary">הדלק את המסך כאשר מקור חשמל מחובר או מנותק מהמכשיר</string>
   <string name="screen_animation_off_title">אנימציה לכיבוי מסך</string>
+  <string name="screen_animation_style_title">סגנון אנימציית כיבוי מסך</string>
+  <string name="screen_animation_style_disabled">מושבת</string>
   <string name="screen_animation_style_electronbeam">טלוויזיה ישנה</string>
   <string name="screen_animation_style_fade">עמעום</string>
   <string name="edit_light_settings">עריכת הגדרות אור</string>
@@ -195,6 +200,7 @@
   <string name="unlock_camera_unlock_summary">לחיצה על כפתור המצלמה פותחת את המכשיר</string>
   <string name="unlock_quick_unlock_control_title">פתיחה מהירה</string>
   <string name="unlock_quick_unlock_control_summary">פתח אוטומטית כאשר הסיסמה/קוד מוכנס</string>
+  <string name="unlock_buttons_disabled_by_security">מסך הנעילה מאובטח</string>
   <string name="delay_and_timeout_title">השהיית נעילה</string>
   <string name="slide_lock_delay_title">עיכוב נעילת מסך</string>
   <string name="slide_lock_timeout_delay_title">כיבוי מסך לאחר</string>
@@ -221,6 +227,8 @@
   <string name="tile_picker_title">אריחים ופריסה</string>
   <string name="tile_picker_summary">הצג, בחר או שנה את פריסת האריחים המוצגים</string>
   <string name="tile_choose_title">בחר אריח</string>
+  <string name="title_qs_small_icons">הצג אריחים קטנים יותר</string>
+  <string name="summary_qs_small_icons">השתמש באריחים קטנים יותר כדי להגדיל את מספר העמודות</string>
   <string name="title_tile_airplane">מצב טיסה</string>
   <string name="title_tile_battery">מצב סוללה</string>
   <string name="title_tile_bluetooth">בלוטוס</string>
@@ -250,6 +258,7 @@
   <string name="title_tile_network_adb">ADB דרך הרשת</string>
   <string name="title_dynamic_tiles">אריחים דינמיים</string>
   <string name="dynamic_tiles_note_title">הערה</string>
+  <string name="dynamic_tiles_note_summary">אריחים דינאמיים אינם נראים תמיד ויופיעו רק כאשר מתרחש אירוע מערכת</string>
   <string name="title_dynamic_alarm">שעון מעורר</string>
   <string name="title_dynamic_bugreport">דיווח תקלה</string>
   <string name="title_dynamic_dock_battery">עיגון סוללה</string>
@@ -330,10 +339,14 @@
   <string name="quiet_hours_summary">הגדר את השעות שהמכשיר יהיה שקט</string>
   <string name="quiet_hours_enabled">לאכוף שעות שקט</string>
   <string name="quiet_hours_ringer">צלצול טלפון</string>
-  <string name="quiet_hours_mute">השתק התראות</string>
-  <string name="quiet_hours_system">בטל צלילי המערכת</string>
-  <string name="quiet_hours_still">בטל רטט</string>
-  <string name="quiet_hours_dim">בטל הודעות אור</string>
+  <string name="quiet_hours_mute">התראות</string>
+  <string name="quiet_hours_mute_summary">השתק התראות</string>
+  <string name="quiet_hours_system">צלילי מערכת</string>
+  <string name="quiet_hours_system_summary">בטל צלילי מערכת</string>
+  <string name="quiet_hours_still">רטט</string>
+  <string name="quiet_hours_still_summary">בטל רטט</string>
+  <string name="quiet_hours_dim">אור הודעה</string>
+  <string name="quiet_hours_dim_summary">בטל אור התראה</string>
   <string name="quiet_hours_active_from">פעיל מ</string>
   <string name="quiet_hours_active_to">ל</string>
   <string name="quiet_hours_ringer_allow_all">צלצל עבור כל המתקשרים</string>
@@ -347,6 +360,7 @@
   <string name="build_date">תאריך בנייה</string>
   <string name="cpu_info">CPU</string>
   <string name="mem_info">זיכרון</string>
+  <string name="phone_service_state">קול: <xliff:g id="voice_state">%1$s</xliff:g>, מידע: <xliff:g id="data_state">%2$s</xliff:g></string>
   <string name="anonymous_statistics_title">סטטיסטיקת CyanogenMod</string>
   <string name="anonymous_statistics_summary">עזור לשפר את CyanogenMod על ידי דיווח סטטיסטיקה אנונימית</string>
   <string name="anonymous_statistics_warning_title">אודות</string>
@@ -363,13 +377,19 @@
   <string name="preview_carrier_title">חברת סלולר</string>
   <string name="header_category_interface">התאמה אישית</string>
   <string name="themes_settings_title">ערכות עיצוב</string>
+  <string name="themepacks_settings_title">ערכות עיצוב</string>
   <string name="styles_settings_title">סגנונות</string>
   <string name="icons_settings_title">סמלים</string>
   <string name="fonts_settings_title">גופנים</string>
   <string name="wallpaper_settings_title">רקעים</string>
+  <string name="lockscreen_wallpaper_settings_title">רקעים למסך הנעילה</string>
+  <string name="bootanim_settings_title">אנימציות אתחול</string>
+  <string name="soundpack_settings_title">ערכות צלילים</string>
   <string name="performance_settings_title">ביצועים</string>
   <string name="performance_settings_warning_title">המשך בזהירות</string>
+  <string name="performance_settings_warning">הגדרות אלה ניסיוניות והחלת השינויים יכול לגרום לחוסר יציבות, קריסות, איבוד מידע או כשל חומרה.\n\nאנו מבקשים לא למלות דיווח באגים אם שיניתה את אחת ההגדרות.</string>
   <string name="performance_set_on_boot">קבע כל אתחול</string>
+  <string name="performance_set_on_boot_summary">שחזר הגדרות מוחלות באתחול</string>
   <string name="processor_title">מעבד</string>
   <string name="cpu_cur_freq_title">תדר מעבד הנוכחי</string>
   <string name="cpu_governors_title">ניהול CPU</string>
@@ -386,11 +406,13 @@
   <string name="pref_force_highend_gfx_title">הכרח גרפיקה באיכות גבוהה</string>
   <string name="pref_force_highend_gfx_summary">אפשר אפקטים ויזואליים מתקדמים כמו ברים שקופים (דורש אתחול)</string>
   <string name="kill_app_longpress_back">הרוג יישום עם לחצן חזור</string>
+  <string name="kill_app_longpress_back_summary">הרוג יישום נראה על ידי לחיצה ארוכה על כפתור חזור</string>
   <string name="changelog_title">צפה ברשימת השינויים</string>
   <string name="changelog_loading">טוען יומן שינויים\u2026</string>
   <string name="changelog_error">אין אפשרות לטעון את רשימת השינויים</string>
   <string name="changelog_unknown">לא ידוע</string>
   <string name="changelog_version">גרסה</string>
+  <string name="contributor_cloud_title">תצוגת התורמים</string>
   <string name="cmupdate_settings_title">עדכוני CyanogenMod</string>
   <string name="cmupdate_settings_summary">חפש, הצג או התקן עדכונים זמינים</string>
   <string name="advanced_settings_title">מתקדם</string>
@@ -410,6 +432,7 @@
   <string name="privacy_guard_help_title">עזרה</string>
   <string name="privacy_guard_reset_title">איתחול</string>
   <string name="privacy_guard_reset_text">לאפס הרשאות?</string>
+  <string name="privacy_guard_help_text">בחלון זה אתה יכול לבחור עבור אילו יישומים שומר הפרטיות יפעל. הייישומים הנבחרים לא יקבלו גישה למידע הפרטי שלך כמו אנשי קשר, הודעות ויומן שיחות. לחיצה ארוכה על יישום יפתח את פרטי הרשאות היישום.\n\nיישומים מובנים לא מוצגים כברירת מחדל, אבל יכולים להיחשף על ידי בחירת ההגדרה המתאימה.</string>
   <string name="privacy_guard_manager_show_system_apps">הצג יישומים מובנים</string>
   <string name="privacy_guard_manager_filter_permissions">מסנן הרשאות</string>
   <string name="privacy_guard_advanced_settings_title">מתקדם</string>
@@ -420,6 +443,7 @@
   <string name="blacklist_empty_text">אין מספרים ברשימה שחורה. הוספת ערך על-ידי לחיצה על הוסף (+).</string>
   <string name="blacklist_disabled_empty_text">כדי לחסום שיחות או/ו הודעות ממספרים מסוימים, אפשר את הרשימה השחורה.</string>
   <string name="blacklist_summary_disabled">כבוי</string>
+  <string name="blacklist_summary">הודעות ושיחות נכנסות ממספרים ברשימה השחורה יחסמו</string>
   <string name="blacklist_notify">הצג הודעות</string>
   <string name="blacklist_private_numbers_title">מספרים פרטיים</string>
   <string name="blacklist_private_numbers_summary_disabled">אל תחסום שיחות ממספרים פרטיים</string>
@@ -446,6 +470,7 @@
   <string name="color_green_title">ירוק</string>
   <string name="color_blue_title">כחול</string>
   <string name="gamma_tuning_title_head">כיול גאמא</string>
+  <string name="gamma_tuning_summary_head">שנה ערכי גמא</string>
   <string name="gamma_tuning_control_set_header">קבוצה <xliff:g id="index">%d</xliff:g></string>
   <string name="gamma_tuning_contrast">ניגודיות</string>
   <string name="gamma_tuning_brightness">בהירות</string>
@@ -539,6 +564,7 @@
   <string name="lockscreen_long_press_home_title">לחיצה ארוכה על כפתור הבית</string>
   <string name="lockscreen_long_press_menu_title">לחיצה ארוכה על כפתור התפריט</string>
   <string name="lockscreen_buttons_no_action">ללא פעולה</string>
+  <string name="lockscreen_buttons_flashlight">פנס</string>
   <string name="lockscreen_buttons_next">השיר הבא</string>
   <string name="lockscreen_buttons_previous">השיר הקודם</string>
   <string name="lockscreen_buttons_playpause">הפעל/השהה מוזיקה</string>
@@ -579,6 +605,8 @@
   <string name="expanded_desktop_disabled">מושבת</string>
   <string name="expanded_desktop_status_bar">שורת מצב גלויה</string>
   <string name="expanded_desktop_no_status_bar">שורת מצב מוסתרת</string>
+  <string name="expanded_desktop_system_bars_visibility">בטל במסך הנעילה</string>
+  <string name="expanded_desktop_system_bars_visibility_summary">הראה את שורת המצב וסרגל הניווט במסך הנעילה במהלך מצב שולחן עבודה מורחב</string>
   <string name="power_menu_profiles_title">מחליף פרופילים</string>
   <string name="power_menu_airplane_title">מצב טיסה</string>
   <string name="power_menu_user_title">מחליף משתמשים</string>
@@ -602,6 +630,7 @@
   <string name="hardware_keys_action_launch_camera">הפעל מצלמה</string>
   <string name="home_wake_summary">לחיצה על כפתור הבית יעיר את המכשיר</string>
   <string name="camera_wake_summary">לחיצה על כפתור המצלמה יעיר את המכשיר</string>
+  <string name="camera_sleep_on_release_title">הצצה מהמסך</string>
   <string name="camera_sleep_on_release_summary">חצי לחיצה ישמור את המסך דלוק כל עוד הכפתור לחוץ</string>
   <string name="camera_music_controls_title">מעביר מוזיקה</string>
   <string name="camera_music_controls_summary">כאשר המסך כבוי, לחיצה ארוכה על מקש המצלמה יפעיל/ישהה את המוזיקה המתנגנת</string>
@@ -612,7 +641,7 @@
   <string name="volbtn_cursor_control_off">מושבת</string>
   <string name="volbtn_cursor_control_on">קול למעלה/למטה מעביר את הסמן שמאלה/ימינה</string>
   <string name="volbtn_cursor_control_on_reverse">קול למעלה/למטה מעביר את הסמן ימינה/שמאלה</string>
-  <string name="swap_volume_buttons_title">כיוון לחצני עוצמת הקול</string>
+  <string name="swap_volume_buttons_title">כיוון מחדש</string>
   <string name="swap_volume_buttons_summary">החלף מקשי קול כאשר המסך מסובב</string>
   <string name="button_backlight_title">תאורה אחורית</string>
   <string name="button_backlight_enabled">האר לחצנים</string>
@@ -654,11 +683,13 @@
   <string name="development_shortcut_title">קיצור דרך לכלי פיתוח</string>
   <string name="development_shortcut_summary">אפשר אפשרויות של \"מחיקת מידע\" ו-\"אלץ עצירה\" בחלון ההתראות וברשימת יישומים אחרונים</string>
   <string name="usb_mass_storage_title">אחסון בנפח גדול (UMS)</string>
+  <string name="usb_mass_storage_summary">מאפשר לך להעביר קבצים בין המחשב שלך לבין כרטיס SD זה על ידי חיבורו כהתקן USB</string>
   <string name="storage_rescan_media">סריקה מחדש של המדיה עבור אמצעי אחסון</string>
   <string name="storage_rescan_media_complete">סריקה הושלמה</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">ניהול הגדרות SMS מאובטח</string>
   <string name="custom_runtime_warning_title">אזהרה</string>
+  <string name="custom_runtime_warning_message">ART לא נתמך כראוי על ידי CyanogenMod. הגדרה זו קיימת רק לניסוי ויש סיכוי לאי יציבות, קריסות, איבוד מידע או אתחול לא נכון של המכשיר. בקר ב-&lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;הצגת ART&lt;/a&gt; עבור מידע נוסף.&lt;br/&gt;&lt;br/&gt;אנחנו מבקשים שאתה לא תמלא דיווחי שגיאות אם אתה משתמש ב-ART.&lt;br/&gt;&lt;br/&gt;האם אתה בטוח שאתה רוצה להחליף מ-<xliff:g id="old" example="libdvm.so">%1$s</xliff:g> ל-<xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
   <string name="gps_download_data_wifi_only">הורד נתוני GPS מרשת Wi-Fi בלבד</string>
   <string name="battery_info_status_charging_dock_ac">(DockAC)</string>
   <string name="battery_info_status_charging_dock_usb">(DockUSB)</string>
@@ -814,4 +845,5 @@
   <string name="voice_wakeup_retrain_title">הכשר את קולך</string>
   <string name="voice_wakeup_activity_title">פעילות להפעלה</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
+  <string name="sub_no_sim">אין SIM</string>
 </resources>
