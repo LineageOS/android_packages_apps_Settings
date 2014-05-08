@@ -121,6 +121,7 @@
   <string name="volume_ring_only_description">Tonos del teléfonu</string>
   <string name="link_volume_ringtones">Enllazar volume tonu / notificaciones</string>
   <string name="link_volume_mutes">Mou silenciu afeuta a les notificaciones</string>
+  <string name="volume_keys_control_ring_stream">Remanar volume de llamada</string>
   <string name="ring_mode_title">Mou de soníu</string>
   <string name="ring_mode_normal">Normal</string>
   <string name="ring_mode_vibrate">Vibración</string>
@@ -136,6 +137,7 @@
   <string name="notification_vibrate_during_calls_title">Vibrar mientres les llamaes</string>
   <string name="notification_vibrate_during_calls_summary">Les notificaciones entrantes van vibrar selemente mientres hai una llamada</string>
   <string name="volume_adjust_sounds_enable_title">Soníu al axustar volume</string>
+  <string name="volume_adjust_sounds_enable_summary">Reproducir un soníu cuando s\'axuste\'l volume colos botones de volume</string>
   <string name="icon_picker_title">Seleicionar fonte d\'iconos</string>
   <string name="icon_picker_system_icons_title">Iconos del sistema</string>
   <string name="icon_picker_gallery_title">Galería</string>
@@ -153,9 +155,12 @@
   <string name="notification_light_missed_call_title">Llamada perdida</string>
   <string name="notification_light_voicemail_title">Buzón de voz</string>
   <string name="adaptive_backlight_title">Brillu adautativu</string>
+  <string name="adaptive_backlight_summary">Variar intelixentemente\'l brillu de la pantalla ayudando d\'esti mou a la duración de la batería</string>
   <string name="wake_when_plugged_or_unplugged_title">Prender con cargador</string>
   <string name="wake_when_plugged_or_unplugged_summary">Prender la pantalla al coneutar o desconeutar el cargador</string>
   <string name="screen_animation_off_title">Animación al apagar</string>
+  <string name="screen_animation_style_title">Estilu d\'animación al apagar</string>
+  <string name="screen_animation_style_disabled">Deshabilitada</string>
   <string name="screen_animation_style_electronbeam">Faza d\'electrones</string>
   <string name="screen_animation_style_fade">Esvanecer</string>
   <string name="edit_light_settings">Editar axustes de lluz</string>
@@ -195,6 +200,7 @@
   <string name="unlock_camera_unlock_summary">Primir el botón Cámara desbloquia\'l preséu</string>
   <string name="unlock_quick_unlock_control_title">Desbloquéu rápidu</string>
   <string name="unlock_quick_unlock_control_summary">Desbloquiar automáticamente cuando s\'introduz el PIN/clave correutu</string>
+  <string name="unlock_buttons_disabled_by_security">El bloquéu de pantalla ye seguru</string>
   <string name="delay_and_timeout_title">Retardu y tiempu d\'espera</string>
   <string name="slide_lock_delay_title">Habilitar retardu</string>
   <string name="slide_lock_timeout_delay_title">Tiempu d\'espera de pantalla</string>
@@ -221,6 +227,8 @@
   <string name="tile_picker_title">Controles y disposición</string>
   <string name="tile_picker_summary">Ver, seleicionar o camudar la posición de los controles a amosar</string>
   <string name="tile_choose_title">Esbillar un control</string>
+  <string name="title_qs_small_icons">Controles pequeños</string>
+  <string name="summary_qs_small_icons">Usar controles pequeños pa incrementar el númberu de columnes</string>
   <string name="title_tile_airplane">Mou avión</string>
   <string name="title_tile_battery">Batería</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
@@ -250,6 +258,7 @@
   <string name="title_tile_network_adb">ADB sobre rede</string>
   <string name="title_dynamic_tiles">Controles dinámicos</string>
   <string name="dynamic_tiles_note_title">Nota</string>
+  <string name="dynamic_tiles_note_summary">Los controles dinámicos non siempre van tar visibles y namái van amosase por un eventu del sistema</string>
   <string name="title_dynamic_alarm">Alarma</string>
   <string name="title_dynamic_bugreport">Informe de fallu</string>
   <string name="title_dynamic_dock_battery">Batería de la base</string>
@@ -300,6 +309,16 @@
   <string name="auto_brightness_preview">Previsualizar</string>
   <string name="auto_brightness_preview_dialog_title">Curva de brillu</string>
   <string name="auto_brightness_help_dialog_title">Ayuda</string>
+  <string name="auto_brightness_help_text"><b>¿Cómo se calcula\'l nivel de brillu?</b>
+\n\n
+La curva de brillu calcúlase per aciu del usu d\'una <i>interpolación segmentaria cúbica</i> baxo un númberu dau de <i>puntos de control</i>. Nun ye un cálculu llinial, au\'l brillu de pantalla ta constante pa un rangu de lluminosidá ambiental determináu. Con esti sistema, pequeños cambeos na lluminosidá ambiental nun producen un gran saltu nel
+brillu de la pantalla, pero va ser abegoso albidrar les consecuencies de camudar dalgún puntu de control.\n
+P\'ayudar nesto, va poder amosase una previsualización de la curva resultante. Decátate que la previsualización va amosar la curva n\'escala <i>llogarítmica</i> polo que non tolos puntos puen amosase iguales. Si usásemos una escala llinial, sedría difícil distinguir les tendencies de los puntos de control allugaos nel rangu de mínima lluminosidá ambiental.
+\n\n
+<b>¿Cómo editar la curva de brillu?</b>
+\n\n
+Cada llinia en llista de valores correspuéndese con un <i>puntu de control</i> de la curva de brillu. Pa editar el nivel de brillu d\'esi puntu, pues usar el control eslizante presente en cada llinia. El brillu de la pantalla ca camudar en función del control eslizante p\'amosar una vista previa del nivel de lluminosidá.\n
+Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleicionando \u00ABEditar\u00BB, vas poder editar el nivel de lluminosidá ambiental del puntu de control asina como introducir manualmente el brillu de pantalla deseáu. Seleicionando \u00ABDividir\u00BB, vas poder crear una nueva llinia col envís d\'inxertar puntos de control adicionales. \u00ABDesaniciar\u00BB va borrar la llinia esbillada.</string>
   <string name="auto_brightness_sensitivity_title">Sensibilidá</string>
   <string name="auto_brightness_sensitivity_verylow">Mui baxa</string>
   <string name="auto_brightness_sensitivity_low">Baxa</string>
@@ -331,10 +350,15 @@
   <string name="quiet_hours_enabled">Habilitar</string>
   <string name="quiet_hours_ringer">Tonu de llamada</string>
   <string name="quiet_hours_mute">Notificaciones</string>
+  <string name="quiet_hours_mute_summary">Silenciar notificaciones</string>
   <string name="quiet_hours_system">Soníos del sistema</string>
-  <string name="quiet_hours_still">Vibración</string>
-  <string name="quiet_hours_dim">Notificaciones de lluz</string>
+  <string name="quiet_hours_system_summary">Desactiva los soníos del sistema</string>
+  <string name="quiet_hours_still">Vibraciones</string>
+  <string name="quiet_hours_still_summary">Desactiva les vibraciones</string>
+  <string name="quiet_hours_dim">Lluz de notificación</string>
+  <string name="quiet_hours_dim_summary">Desactiva la lluz de notificación</string>
   <string name="quiet_hours_haptic">Rempuesta háptica</string>
+  <string name="quiet_hours_haptic_summary">Desactiva la rempuesta háptica</string>
   <string name="quiet_hours_active_from">Activu de</string>
   <string name="quiet_hours_active_to">a</string>
   <string name="quiet_hours_ringer_allow_all">Sonar pa toles llamaes</string>
@@ -348,6 +372,7 @@
   <string name="build_date">Data de compilación</string>
   <string name="cpu_info">CPU</string>
   <string name="mem_info">Memoria</string>
+  <string name="phone_service_state">Voz: <xliff:g id="voice_state">%1$s</xliff:g>, datos: <xliff:g id="data_state">%2$s</xliff:g></string>
   <string name="anonymous_statistics_title">Estadístiques CyanogenMod</string>
   <string name="anonymous_statistics_summary">Ayuda a ameyorar CyanogenMod per aciu del unviu anónimu d\'estadístiques</string>
   <string name="anonymous_statistics_warning_title">Avisu</string>
@@ -364,13 +389,19 @@
   <string name="preview_carrier_title">Operadora móvil</string>
   <string name="header_category_interface">Personalización</string>
   <string name="themes_settings_title">Temes</string>
+  <string name="themepacks_settings_title">Paquetes de temes</string>
   <string name="styles_settings_title">Estilos</string>
   <string name="icons_settings_title">Iconos</string>
   <string name="fonts_settings_title">Fontes</string>
   <string name="wallpaper_settings_title">Fondos de pantalla</string>
+  <string name="lockscreen_wallpaper_settings_title">Fondos de la pantalla de bloquéu</string>
+  <string name="bootanim_settings_title">Animaciones d\'aniciu</string>
+  <string name="soundpack_settings_title">Paquetes de soníos</string>
   <string name="performance_settings_title">Rindimientu</string>
   <string name="performance_settings_warning_title">Procede con curiáu</string>
+  <string name="performance_settings_warning">Estos axustes incluyéronse a mou d\'esperimentación y cualquier cambéu fechu sobre ellos pue causar inestabilidá, zarru d\'aplicaciones, perda de datos o fallos de hardware.\n\nNun comuniques informes de fallos si camudasti dalgún de los valores definíos por defeutu.</string>
   <string name="performance_set_on_boot">Afitar al aniciar</string>
+  <string name="performance_set_on_boot_summary">Restaurar la configuración al aniciar el sistema</string>
   <string name="processor_title">Procesador</string>
   <string name="cpu_cur_freq_title">Frecuencia actual de la CPU</string>
   <string name="cpu_governors_title">Patrones CPU</string>
@@ -389,11 +420,13 @@
   <string name="pref_force_highend_gfx_title">Forciar los gráficos d\'alta resolución</string>
   <string name="pref_force_highend_gfx_summary">Habilitar los efeutos visuales d\'alta resolución, como la barra d\'estáu/navegación tresparente (necesita reaniciar)</string>
   <string name="kill_app_longpress_back">Botón Volver</string>
+  <string name="kill_app_longpress_back_summary">Matar aplicaciones per aciu de la pulsación prollongada del botón Volver</string>
   <string name="changelog_title">Rexistru de cambeos</string>
   <string name="changelog_loading">Cargando rexistru de cambeos\u2026</string>
   <string name="changelog_error">Imposible cargar el rexistru de cambeos</string>
   <string name="changelog_unknown">Desconocíu</string>
   <string name="changelog_version">Versión</string>
+  <string name="contributor_cloud_title">Ver collaboradores</string>
   <string name="cmupdate_settings_title">Anovamientos CyanogenMod</string>
   <string name="cmupdate_settings_summary">Comprobar, ver ya instalar anovamientos disponibles</string>
   <string name="advanced_settings_title">Opciones avanzaes</string>
@@ -413,6 +446,7 @@
   <string name="privacy_guard_help_title">Ayuda</string>
   <string name="privacy_guard_reset_title">Restablecer</string>
   <string name="privacy_guard_reset_text">¿Reafitar permisos?</string>
+  <string name="privacy_guard_help_text">Nesta pantalla pues elexir les aplicaciones pa les que va activase Privacidá namái tocando sobre elles. Les aplicaciones esbillaes nun van poder acceder a la to información personal, como contautos, mensaxes o rexistru de llamaes. Fai una pulsación prollongada p\'amosar la pantalla de detalles de l\'aplicación.\n\nLes aplicaciones del sistema nun s\'amuesen por defeutu, pero puen amosase seleicionando la opción de menú correspondiente.</string>
   <string name="privacy_guard_manager_show_system_apps">Aplicaciones del sistema</string>
   <string name="privacy_guard_manager_filter_permissions">Filtriar permisos</string>
   <string name="privacy_guard_advanced_settings_title">Avanzáu</string>
@@ -423,6 +457,7 @@
   <string name="blacklist_empty_text">Nun hai númberos na llista prieta. Amestar una entrada tocando\'l botón (+).</string>
   <string name="blacklist_disabled_empty_text">Habilita la llista prieta pa poder bloquiar llamaes o mensaxes de determinaos númberos.</string>
   <string name="blacklist_summary_disabled">Deshabilitada</string>
+  <string name="blacklist_summary">Los mensaxes y llamaes entrantes de los númberos de la llista prieta van bloquiase</string>
   <string name="blacklist_notify">Amosar notificación</string>
   <string name="blacklist_private_numbers_title">Númberos privaos</string>
   <string name="blacklist_private_numbers_summary_disabled">Nun bloquiar llamaes de númberos privaos</string>
@@ -543,6 +578,7 @@
   <string name="lockscreen_long_press_home_title">Pulsación llarga pa botón Aniciu</string>
   <string name="lockscreen_long_press_menu_title">Pulsación llarga pa botón Menú</string>
   <string name="lockscreen_buttons_no_action">Ensin aición</string>
+  <string name="lockscreen_buttons_flashlight">Llinterna</string>
   <string name="lockscreen_buttons_next">Pista siguiente</string>
   <string name="lockscreen_buttons_previous">Pista anterior</string>
   <string name="lockscreen_buttons_playpause">Reproducir/Posar</string>
@@ -583,6 +619,8 @@
   <string name="expanded_desktop_disabled">Desactiváu</string>
   <string name="expanded_desktop_status_bar">Barra d\'estáu visible</string>
   <string name="expanded_desktop_no_status_bar">Barra d\'estáu tapecida</string>
+  <string name="expanded_desktop_system_bars_visibility">Deshabilitar en bloquéu</string>
+  <string name="expanded_desktop_system_bars_visibility_summary">Amosar la barra d\'estáu y de navegación na pantalla de bloquéu mientres el mou d\'escritoriu estendíu</string>
   <string name="power_menu_profiles_title">Perfiles</string>
   <string name="power_menu_airplane_title">Mou avión</string>
   <string name="power_menu_user_title">Camudar d\'usuariu</string>
@@ -617,7 +655,7 @@
   <string name="volbtn_cursor_control_off">Deshabilitáu</string>
   <string name="volbtn_cursor_control_on">Los botones xubir y baxar volume van mover el cursor a esquierda y derecha respeutivamente</string>
   <string name="volbtn_cursor_control_on_reverse">Los botones xubir y baxar volume van mover el cursor a derecha y esquierda respeutivamente</string>
-  <string name="swap_volume_buttons_title">Reorientar botones</string>
+  <string name="swap_volume_buttons_title">Reorientar</string>
   <string name="swap_volume_buttons_summary">Intercamudar los botones de control de volume al xirar la pantalla</string>
   <string name="button_backlight_title">Retroilluminación</string>
   <string name="button_backlight_enabled">Illuminar botones</string>
@@ -659,11 +697,13 @@
   <string name="development_shortcut_title">Opciones de desendolcador</string>
   <string name="development_shortcut_summary">Habilitar les opciones de \u00ABDesaniciar datos\u00BB y \u00ABForciar detención\u00BB nel área de notificación y na llista aplicaciones recientes</string>
   <string name="usb_mass_storage_title">Almacenamientu masivu</string>
+  <string name="usb_mass_storage_summary">Permite tresferir ficheros ente la tarxeta SD y el ordenador</string>
   <string name="storage_rescan_media">Refrescar conteníu multimedia</string>
   <string name="storage_rescan_media_complete">Refrescu completáu</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Xestiona la configuración de seguridá de los SMS</string>
   <string name="custom_runtime_warning_title">Avisu</string>
+  <string name="custom_runtime_warning_message">ART nun ta sofitáu oficialmente por CyanogenMod. Esti axuste incluyóse namái pa fines d\'esperimentación y pue causar inestabilidá, bloqueos, perda de datos ya inclusu torgar el correutu aniciu del preséu. Pa más información visita &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Nun unvies ficheros d\'informes de fallos si habilitesti ART.&lt;br/&gt;&lt;br/&gt;¿De xuru que quies reaniciar pa camudar el tiempu d\'execución de <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> a <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
   <string name="gps_download_data_wifi_only">Descargar datos del GPS asistíu namái en redes Wi-Fi</string>
   <string name="battery_info_status_charging_dock_ac">(BaseAC)</string>
   <string name="battery_info_status_charging_dock_usb">(BaseUSB)</string>
@@ -819,4 +859,5 @@
   <string name="voice_wakeup_retrain_title">Calibra la to voz</string>
   <string name="voice_wakeup_activity_title">Actividá a executar</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
+  <string name="sub_no_sim">Ensin tarxeta SIM</string>
 </resources>

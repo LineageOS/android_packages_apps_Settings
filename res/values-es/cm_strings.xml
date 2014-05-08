@@ -121,6 +121,7 @@
   <string name="volume_ring_only_description">Tonos del teléfono</string>
   <string name="link_volume_ringtones">Vincular volúmenes</string>
   <string name="link_volume_mutes">Vincular silencio</string>
+  <string name="volume_keys_control_ring_stream">Controlar volumen de llamada</string>
   <string name="ring_mode_title">Modo de sonido</string>
   <string name="ring_mode_normal">Normal</string>
   <string name="ring_mode_vibrate">Vibración</string>
@@ -136,6 +137,7 @@
   <string name="notification_vibrate_during_calls_title">Vibrar durante llamadas</string>
   <string name="notification_vibrate_during_calls_summary">Las notificaciones entrantes vibrarán levemente durante una llamada</string>
   <string name="volume_adjust_sounds_enable_title">Sonido al ajustar volumen</string>
+  <string name="volume_adjust_sounds_enable_summary">Reproducir un sonido cuando se ajuste el volumen con los controles al efecto</string>
   <string name="icon_picker_title">Seleccionar fuente de iconos</string>
   <string name="icon_picker_system_icons_title">Iconos del sistema</string>
   <string name="icon_picker_gallery_title">Galería</string>
@@ -153,9 +155,12 @@
   <string name="notification_light_missed_call_title">Llamada perdida</string>
   <string name="notification_light_voicemail_title">Buzón de voz</string>
   <string name="adaptive_backlight_title">Brillo adaptativo</string>
+  <string name="adaptive_backlight_summary">Variar inteligentemente el brillo de la pantalla ayudando así a la duración de la batería</string>
   <string name="wake_when_plugged_or_unplugged_title">Encender con cargador</string>
   <string name="wake_when_plugged_or_unplugged_summary">Encender la pantalla al conectar o desconectar el cargador</string>
   <string name="screen_animation_off_title">Animación al apagar</string>
+  <string name="screen_animation_style_title">Animación al apagar</string>
+  <string name="screen_animation_style_disabled">Deshabilitada</string>
   <string name="screen_animation_style_electronbeam">Por defecto</string>
   <string name="screen_animation_style_fade">Desvanecer</string>
   <string name="edit_light_settings">Editar notificación</string>
@@ -195,6 +200,7 @@
   <string name="unlock_camera_unlock_summary">Presionar el botón Cámara desbloquea el dispositivo</string>
   <string name="unlock_quick_unlock_control_title">Desbloqueo rápido</string>
   <string name="unlock_quick_unlock_control_summary">Desbloquear automáticamente cuando se introduce el PIN/clave correcto</string>
+  <string name="unlock_buttons_disabled_by_security">El bloqueo de pantalla es seguro</string>
   <string name="delay_and_timeout_title">Retardo y tiempo de espera</string>
   <string name="slide_lock_delay_title">Habilitar retardo</string>
   <string name="slide_lock_timeout_delay_title">Tiempo de espera de pantalla</string>
@@ -221,6 +227,8 @@
   <string name="tile_picker_title">Controles y disposición</string>
   <string name="tile_picker_summary">Ver, seleccionar o cambiar la posición de los controles a mostrar</string>
   <string name="tile_choose_title">Elegir un control</string>
+  <string name="title_qs_small_icons">Controles pequeños</string>
+  <string name="summary_qs_small_icons">Usar controles pequeños para incrementar el número de columnas</string>
   <string name="title_tile_airplane">Modo avión</string>
   <string name="title_tile_battery">Batería</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
@@ -250,6 +258,7 @@
   <string name="title_tile_network_adb">ADB sobre red</string>
   <string name="title_dynamic_tiles">Controles dinámicos</string>
   <string name="dynamic_tiles_note_title">Nota</string>
+  <string name="dynamic_tiles_note_summary">Los controles dinámicos no siempre estarán visibles y solo se mostrarán por un evento del sistema</string>
   <string name="title_dynamic_alarm">Alarma</string>
   <string name="title_dynamic_bugreport">Informe de error</string>
   <string name="title_dynamic_dock_battery">Batería de la base</string>
@@ -300,6 +309,16 @@
   <string name="auto_brightness_preview">Previsualizar</string>
   <string name="auto_brightness_preview_dialog_title">Curva de brillo</string>
   <string name="auto_brightness_help_dialog_title">Ayuda</string>
+  <string name="auto_brightness_help_text"><b>¿Cómo se calcula el nivel de brillo?</b>
+\n\n
+La curva de brillo es calculada mediante el uso de una <i>interpolación segmentaria cúbica</i> bajo un número dado de <i>puntos de control</i>. No se trata de un cálculo lineal, donde el brillo de pantalla permanece constante para un rango de luminosidad ambiental determinado. Con este sistema, pequeños cambios en la luminosidad ambiental no producirán un gran salto en el
+brillo de la pantalla, pero será complicado poder predecir las consecuencias de cambiar algún punto de control.\n
+Para ayudar en esto, se podrá mostrar una previsualización de la curva resultante. Ten en cuenta que la previsualización mostrará la curva en escala <i>logarítmica</i> por lo que no todos los puntos pueden mostrarse iguales. Si utilizásemos una escala lineal, sería difícil distinguir las tendencias de los puntos de control situados en el rango de mínima luminosidad ambiental.
+\n\n
+<b>¿Cómo editar la curva de brillo?</b>
+\n\n
+Cada línea en lista de valores se corresponde con un <i>punto de control</i> de la curva de brillo. Para editar el nivel de brillo de ese punto, puedes usar el control deslizante presente en cada línea. El brillo de la pantalla cambiará en función del control deslizante para mostrar una vista previa del nivel de luminosidad.\n
+Tocando de forma prolongada cada línea se mostrarán opciones adicionales. Seleccionando \u00ABEditar\u00BB, podrás editar el nivel de luminosidad ambiental del punto de control así como introducir manualmente el brillo de pantalla deseado. Seleccionando \u00ABDividir\u00BB, podrás crear una nueva línea con el fin de insertar puntos de control adicionales. \u00ABEliminar\u00BB borrará la línea seleccionada.</string>
   <string name="auto_brightness_sensitivity_title">Sensibilidad</string>
   <string name="auto_brightness_sensitivity_verylow">Muy baja</string>
   <string name="auto_brightness_sensitivity_low">Baja</string>
@@ -331,10 +350,15 @@
   <string name="quiet_hours_enabled">Habilitar</string>
   <string name="quiet_hours_ringer">Tono de llamada</string>
   <string name="quiet_hours_mute">Notificaciones</string>
+  <string name="quiet_hours_mute_summary">Silenciar las notificaciones</string>
   <string name="quiet_hours_system">Sonidos del sistema</string>
+  <string name="quiet_hours_system_summary">Silenciar los sonidos del sistema</string>
   <string name="quiet_hours_still">Vibración</string>
+  <string name="quiet_hours_still_summary">Deshabilitar la vibración</string>
   <string name="quiet_hours_dim">Notificaciones de luz</string>
+  <string name="quiet_hours_dim_summary">Deshabilitar las notificaciones luminosas</string>
   <string name="quiet_hours_haptic">Respuesta háptica</string>
+  <string name="quiet_hours_haptic_summary">Deshabilitar la respuesta háptica</string>
   <string name="quiet_hours_active_from">Activo de</string>
   <string name="quiet_hours_active_to">a</string>
   <string name="quiet_hours_ringer_allow_all">Sonar para todas las llamadas</string>
@@ -348,6 +372,7 @@
   <string name="build_date">Fecha de compilación</string>
   <string name="cpu_info">CPU</string>
   <string name="mem_info">Memoria</string>
+  <string name="phone_service_state">Voz: <xliff:g id="voice_state">%1$s</xliff:g>, datos: <xliff:g id="data_state">%2$s</xliff:g></string>
   <string name="anonymous_statistics_title">Estadísticas CyanogenMod</string>
   <string name="anonymous_statistics_summary">Ayuda a mejorar CyanogenMod mediante el envío anónimo de estadísticas</string>
   <string name="anonymous_statistics_warning_title">Aviso</string>
@@ -364,13 +389,19 @@
   <string name="preview_carrier_title">Operadora móvil</string>
   <string name="header_category_interface">Personalización</string>
   <string name="themes_settings_title">Temas</string>
+  <string name="themepacks_settings_title">Paquetes de temas</string>
   <string name="styles_settings_title">Estilos</string>
   <string name="icons_settings_title">Iconos</string>
   <string name="fonts_settings_title">Tipos de letras</string>
   <string name="wallpaper_settings_title">Fondos de pantalla</string>
+  <string name="lockscreen_wallpaper_settings_title">Fondos de pantalla de bloqueo</string>
+  <string name="bootanim_settings_title">Animaciones de inicio</string>
+  <string name="soundpack_settings_title">Paquetes de sonidos</string>
   <string name="performance_settings_title">Rendimiento</string>
   <string name="performance_settings_warning_title">Procede con precaución</string>
+  <string name="performance_settings_warning">Estos ajustes han sido incluidos a modo de experimentación y cualquier cambio realizado sobre ellos puede causar inestabilidad, cierre de aplicaciones, pérdida de datos o fallos de hardware.\n\nNo comuniques informes de errores si has cambiado alguno de los valores definidos por defecto.</string>
   <string name="performance_set_on_boot">Establecer al iniciar</string>
+  <string name="performance_set_on_boot_summary">Restaurar la configuración al iniciar el sistema</string>
   <string name="processor_title">Procesador</string>
   <string name="cpu_cur_freq_title">Frecuencia actual de la CPU</string>
   <string name="cpu_governors_title">Patrones CPU</string>
@@ -389,11 +420,13 @@
   <string name="pref_force_highend_gfx_title">Forzar mejoras visuales</string>
   <string name="pref_force_highend_gfx_summary">Habilitar efectos visuales de alta calidad, como transparencias en la barra de estado y de navegación (requiere reiniciar)</string>
   <string name="kill_app_longpress_back">Botón Volver</string>
+  <string name="kill_app_longpress_back_summary">Cerrar aplicaciones mediante la pulsación prolongada del botón Volver</string>
   <string name="changelog_title">Registro de cambios</string>
   <string name="changelog_loading">Cargando registro de cambios\u2026</string>
   <string name="changelog_error">Imposible cargar el registro de cambios</string>
   <string name="changelog_unknown">Desconocido</string>
   <string name="changelog_version">Versión</string>
+  <string name="contributor_cloud_title">Colaboradores</string>
   <string name="cmupdate_settings_title">Actualizaciones CyanogenMod</string>
   <string name="cmupdate_settings_summary">Comprobar, ver e instalar actualizaciones disponibles</string>
   <string name="advanced_settings_title">Opciones avanzadas</string>
@@ -413,6 +446,7 @@
   <string name="privacy_guard_help_title">Ayuda</string>
   <string name="privacy_guard_reset_title">Restablecer</string>
   <string name="privacy_guard_reset_text">¿Restablecer permisos?</string>
+  <string name="privacy_guard_help_text">En esta pantalla puedes elegir las aplicaciones para las se activará Privacidad simplemente tocando sobre ellas. Las aplicaciones seleccionadas no podrán acceder a tu información personal, como contactos, mensajes o registro de llamadas. Realiza una pulsación prolongada para mostrar la pantalla de detalles de la aplicación.\n\nLas aplicaciones del sistema no se muestran por defecto, pero pueden mostrarse seleccionando la opción de menú correspondiente.</string>
   <string name="privacy_guard_manager_show_system_apps">Aplicaciones del sistema</string>
   <string name="privacy_guard_manager_filter_permissions">Filtrar permisos</string>
   <string name="privacy_guard_advanced_settings_title">Avanzado</string>
@@ -423,6 +457,7 @@
   <string name="blacklist_empty_text">No hay números en la lista negra. Añadir una entrada tocando el botón (+).</string>
   <string name="blacklist_disabled_empty_text">Habilita la lista negra para poder bloquear llamadas o mensajes de determinados números.</string>
   <string name="blacklist_summary_disabled">Deshabilitada</string>
+  <string name="blacklist_summary">Los mensajes y llamadas entrantes de los números de la lista negra serán bloqueados</string>
   <string name="blacklist_notify">Mostrar notificación</string>
   <string name="blacklist_private_numbers_title">Números privados</string>
   <string name="blacklist_private_numbers_summary_disabled">No bloquear llamadas de números privados</string>
@@ -543,6 +578,7 @@
   <string name="lockscreen_long_press_home_title">Pulsación larga para botón Inicio</string>
   <string name="lockscreen_long_press_menu_title">Pulsación larga para botón Menú</string>
   <string name="lockscreen_buttons_no_action">Sin acción</string>
+  <string name="lockscreen_buttons_flashlight">Linterna</string>
   <string name="lockscreen_buttons_next">Pista siguiente</string>
   <string name="lockscreen_buttons_previous">Pista anterior</string>
   <string name="lockscreen_buttons_playpause">Reproducir/Pausar</string>
@@ -583,6 +619,8 @@
   <string name="expanded_desktop_disabled">Desactivado</string>
   <string name="expanded_desktop_status_bar">Barra de estado visible</string>
   <string name="expanded_desktop_no_status_bar">Barra de estado oculta</string>
+  <string name="expanded_desktop_system_bars_visibility">Deshabilitar en bloqueo</string>
+  <string name="expanded_desktop_system_bars_visibility_summary">Mostrar la barra de estado y de navegación en la pantalla de bloqueo durante el modo de escritorio extendido</string>
   <string name="power_menu_profiles_title">Perfiles</string>
   <string name="power_menu_airplane_title">Modo avión</string>
   <string name="power_menu_user_title">Cambiar de usuario</string>
@@ -659,11 +697,13 @@
   <string name="development_shortcut_title">Opciones de desarrollador</string>
   <string name="development_shortcut_summary">Habilitar las opciones de \u00ABBorrar datos\u00BB y \u00ABForzar detención\u00BB en el área de notificación y en la lista aplicaciones recientes</string>
   <string name="usb_mass_storage_title">Almacenamiento masivo</string>
+  <string name="usb_mass_storage_summary">Permite transferir archivos entre la tarjeta SD y el ordenador</string>
   <string name="storage_rescan_media">Refrescar contenido multimedia</string>
   <string name="storage_rescan_media_complete">Refresco completado</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Administrar ajustes para cifrado de SMS</string>
   <string name="custom_runtime_warning_title">Aviso</string>
+  <string name="custom_runtime_warning_message">ART no está soportado oficialmente por CyanogenMod. Este ajuste ha sido incluido solamente para fines experimentales y puede causar inestabilidad, bloqueos, pérdida de datos e incluso impedir el correcto inicio del dispositivo. Para más información visita &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Te pedimos que no envíes archivos de informe de errores si has habilitado ART.&lt;br/&gt;&lt;br/&gt;¿Estás seguro de que quieres reiniciar para cambiar el tiempo de ejecución de <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> a <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
   <string name="gps_download_data_wifi_only">Descargar datos del GPS asistido solo en redes Wi-Fi</string>
   <string name="battery_info_status_charging_dock_ac">(BaseAC)</string>
   <string name="battery_info_status_charging_dock_usb">(BaseUSB)</string>
@@ -819,4 +859,5 @@
   <string name="voice_wakeup_retrain_title">Entrenar tu voz</string>
   <string name="voice_wakeup_activity_title">Actividad para lanzar</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
+  <string name="sub_no_sim">Sin tarjeta SIM</string>
 </resources>
