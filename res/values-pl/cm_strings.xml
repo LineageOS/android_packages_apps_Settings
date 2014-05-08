@@ -330,11 +330,6 @@
   <string name="quiet_hours_summary">Skonfiguruj godziny, w których wszystkie dźwięki będą wyciszone</string>
   <string name="quiet_hours_enabled">Aktywuj godziny ciszy</string>
   <string name="quiet_hours_ringer">Dzwonek</string>
-  <string name="quiet_hours_mute">Wycisz powiadomienia</string>
-  <string name="quiet_hours_system">Wycisz dźwięki systemowe</string>
-  <string name="quiet_hours_still">Wyłącz wibracje</string>
-  <string name="quiet_hours_dim">Wyłącz diodę powiadomień</string>
-  <string name="quiet_hours_haptic">Wyłącz wibracje przy dotknięciu</string>
   <string name="quiet_hours_active_from">Aktywne od</string>
   <string name="quiet_hours_active_to">do</string>
   <string name="quiet_hours_ringer_allow_all">Dzwoń dla wszystkich połączeń</string>
@@ -616,7 +611,6 @@
   <string name="volbtn_cursor_control_off">Wyłączone</string>
   <string name="volbtn_cursor_control_on">Przyciski głośności w górę/dół poruszają kursorem w lewo/prawo</string>
   <string name="volbtn_cursor_control_on_reverse">Przyciski głośności w górę/dół poruszają kursorem w prawo/lewo</string>
-  <string name="swap_volume_buttons_title">Zamień przyciski głośności</string>
   <string name="swap_volume_buttons_summary">Zamieniaj przyciski głośności po obróceniu ekranu</string>
   <string name="button_backlight_title">Podświetlenie przycisków</string>
   <string name="button_backlight_enabled">Podświetl przyciski</string>
@@ -663,6 +657,7 @@
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Zarządzaj ustawieniami bezpiecznych SMS-ów</string>
   <string name="custom_runtime_warning_title">Ostrzeżenie</string>
+  <string name="custom_runtime_warning_message">ART nie jest wspierany przez CyanogenMod. To ustawienie jest eksperymentalne i może powodować braki stabilności, błędy w działaniu niektórych aplikacji, utratę danych lub spowodować brak możliwości włączenia urządzenia. Po więcej informacji odwiedź &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;Prosimy o nieprzesyłanie raportów o błędach jeśli ART jest aktywowany.&lt;br/&gt;&lt;br/&gt;Czy jesteś pewien, że chcesz zrestartować urządzenie w celu zmiany <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> na <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
   <string name="gps_download_data_wifi_only">Pobieraj dane wspomagające GPS tylko przez sieci Wi-Fi</string>
   <string name="battery_info_status_charging_dock_ac">Dok (AC)</string>
   <string name="battery_info_status_charging_dock_usb">Dok (USB)</string>
@@ -727,18 +722,35 @@
   <string name="app_ops_summaries_bluetooth_change">zmiana bluetooth</string>
   <string name="app_ops_summaries_data_change">zmiana trybu danych</string>
   <string name="app_ops_summaries_alarm_wakeup">wybudzanie</string>
+  <string name="app_ops_summaries_send_mms">Wysyłanie MMS-ów</string>
+  <string name="app_ops_summaries_read_mms">Odczytywanie MMS-ów</string>
+  <string name="app_ops_summaries_write_mms">Pisanie MMS-ów</string>
   <string name="app_ops_summaries_auto_start">automatyczny start</string>
   <string name="app_ops_labels_call_phone">Wykonywanie połączeń</string>
+  <string name="app_ops_labels_read_sms_db">Odczytywanie bazy SMS</string>
+  <string name="app_ops_labels_write_sms_db">Edytowanie bazy SMS</string>
+  <string name="app_ops_labels_receive_sms">Odbieranie SMS-ów</string>
+  <string name="app_ops_labels_receive_mms">Odbieranie MMS-ów</string>
+  <string name="app_ops_labels_send_sms">Wysyłanie SMS-ów</string>
+  <string name="app_ops_labels_access_notifications">Dostęp do powiadomień</string>
+  <string name="app_ops_labels_camera">Aparat</string>
+  <string name="app_ops_labels_record_audio">Nagrywanie dźwięku</string>
   <string name="app_ops_labels_play_audio">Odtwarzanie dźwięku</string>
   <string name="app_ops_labels_read_clipboard">Odczytywanie schowka</string>
   <string name="app_ops_labels_modify_clipboard">Modyfikowanie schowka</string>
   <string name="app_ops_labels_media_buttons">Przyciski multimedialne</string>
   <string name="app_ops_labels_voice_volume">Regulacja głośności podczas połączeń</string>
+  <string name="app_ops_labels_alarm_volume">Głośność alarmu</string>
+  <string name="app_ops_labels_notification_volume">Głośność powiadomień</string>
+  <string name="app_ops_labels_bluetooth_volume">Głośność bluetooth</string>
   <string name="app_ops_labels_wifi_change">Zmiana Wi-Fi</string>
   <string name="app_ops_labels_bluetooth_change">Zmiana Bluetooth</string>
   <string name="app_ops_labels_data_change">Zmiana trybu danych</string>
   <string name="app_ops_labels_alarm_wakeup">Wybudzanie</string>
+  <string name="app_ops_labels_send_mms">Wysyłanie SMS-ów</string>
+  <string name="app_ops_labels_write_mms">Pisanie SMS-ów</string>
   <string name="app_ops_labels_auto_start">Automatyczny start</string>
+  <string name="app_ops_categories_location">Lokalizacja</string>
   <string name="app_ops_categories_bootup">Rozruch</string>
   <string name="app_ops_entry_summary"><xliff:g id="op">%1$s</xliff:g> (użyty <xliff:g id="count">%2$s</xliff:g>)</string>
   <string name="app_ops_allowed_count">Zezwolono <xliff:g id="count" example="2 times">%s</xliff:g></string>
@@ -751,4 +763,9 @@
   <string name="app_ops_reset_confirm_mesg">Jesteś pewien, że chcesz zresetować liczniki AppOps?</string>
   <string name="edge_gesture_service_title">Blokuj zdarzenia gestów dotykowych</string>
   <string name="edge_gesture_service_summary">Nie przesyłaj zdarzeń dotykowych dla gestów pasków nawigacji i statusu do aplikacji</string>
+  <string name="wifi_mode_ibss_short">Ad-Hoc</string>
+  <string name="wifi_mhz">MHz</string>
+  <string name="voice_wakeup_settings_title">Wybudzanie głosem</string>
+  <string name="voice_wakeup_default_activity">Google Now</string>
+  <string name="sub_no_sim">Brak karty SIM</string>
 </resources>
