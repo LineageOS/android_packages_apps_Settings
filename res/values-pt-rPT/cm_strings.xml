@@ -50,7 +50,7 @@
   <string name="profile_write_nfc_tag">Escrever numa etiqueta NFC</string>
   <string name="profile_write_touch_tag">Toque para escrever numa etiqueta</string>
   <string name="profile_write_success">A etiqueta foi alterada com sucesso</string>
-  <string name="profile_write_failed">Ocorreu um problema ao escrever na tag</string>
+  <string name="profile_write_failed">Ocorreu um problema ao escrever na etiqueta!</string>
   <string name="profile_selected">Perfil selecionado: %1$s</string>
   <string name="profile_nfc_text">Escrever um perfil numa etiqueta NFC vai permitir encostar na etiqueta para selecionar o perfil. Encostar uma segunda vez selecionará o perfil escolhido anteriormente.</string>
   <string name="profile_unknown_nfc_tag">Perfil desconhecido</string>
@@ -121,7 +121,7 @@
   <string name="volume_ring_only_description">Toque</string>
   <string name="link_volume_ringtones">Associar volumes de toque e notificação</string>
   <string name="link_volume_mutes">O modo de silêncio afeta as notificações</string>
-  <string name="volume_keys_control_ring_stream">Botões de volume controlam o volume da campainha</string>
+  <string name="volume_keys_control_ring_stream">Botões de volume controlam o volume do toque</string>
   <string name="ring_mode_title">Modo de toque</string>
   <string name="ring_mode_normal">Normal</string>
   <string name="ring_mode_vibrate">Vibrar</string>
@@ -217,18 +217,18 @@
   <string name="slide_lock_delay_30m">30 minutos</string>
   <string name="lockscreen_widgets_category_title">Widgets</string>
   <string name="lockscreen_maximize_widgets_title">Maximizar widgets</string>
-  <string name="lockscreen_maximize_widgets_summary">Expandir os widgets quando ecrã ligar</string>
+  <string name="lockscreen_maximize_widgets_summary">Expandir os widgets quando o ecrã ligar</string>
   <string name="lockscreen_enable_camera_title">Widget da câmara</string>
   <string name="safe_headset_volume_title">Proteção de volume nos auriculares</string>
   <string name="cyanogenmod_waiver_title">Aviso</string>
   <string name="cyanogenmod_waiver_body">Alterar esta configuração pode ser contra as leis do seu país.\n\nAo selecionar \'OK\' em baixo, você tem conhecimento deste aviso, e liberta a CyanogenMod e todos os seus colaboradores de qualquer responsabilidade legal.</string>
-  <string name="quick_settings_panel_title">Painel configurações rápidas</string>
+  <string name="quick_settings_panel_title">Painel de configurações rápidas</string>
   <string name="title_static_tiles">Botões estáticos</string>
   <string name="tile_picker_title">Botões e ordenação</string>
   <string name="tile_picker_summary">Ver, selecionar ou alterar a ordem dos botões mostrados</string>
   <string name="tile_choose_title">Escolher um botão</string>
   <string name="title_qs_small_icons">Mostrar botões mais pequenos</string>
-  <string name="summary_qs_small_icons">Usar botões mais pequenos para aumentar o número de colunas a serem mostrados no painel</string>
+  <string name="summary_qs_small_icons">Usar botões mais pequenos para aumentar o número de colunas a serem mostradas no painel</string>
   <string name="title_tile_airplane">Modo de avião</string>
   <string name="title_tile_battery">Estatísticas da bateria</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
@@ -340,11 +340,16 @@
   <string name="quiet_hours_summary">Configurar as horas em que o dispositivo se deve manter em silêncio</string>
   <string name="quiet_hours_enabled">Ativar horas de silêncio</string>
   <string name="quiet_hours_ringer">Campainha do telefone</string>
-  <string name="quiet_hours_mute">Desativar sons das notificações</string>
-  <string name="quiet_hours_system">Desativar sons do sistema</string>
-  <string name="quiet_hours_still">Desativar vibração</string>
-  <string name="quiet_hours_dim">Desativar luz de notificação</string>
-  <string name="quiet_hours_haptic">Desativar o retorno tátil</string>
+  <string name="quiet_hours_mute">Notificações</string>
+  <string name="quiet_hours_mute_summary">Desativar sons das notificações</string>
+  <string name="quiet_hours_system">Sons do sistema</string>
+  <string name="quiet_hours_system_summary">Desativar sons do sistema</string>
+  <string name="quiet_hours_still">Vibrações</string>
+  <string name="quiet_hours_still_summary">Desativar vibração</string>
+  <string name="quiet_hours_dim">Luz de notificação</string>
+  <string name="quiet_hours_dim_summary">Desativar luz de notificação</string>
+  <string name="quiet_hours_haptic">Retorno tátil</string>
+  <string name="quiet_hours_haptic_summary">Desativar o retorno tátil</string>
   <string name="quiet_hours_active_from">Ativar desde</string>
   <string name="quiet_hours_active_to">até</string>
   <string name="quiet_hours_ringer_allow_all">Tocar para todas as chamadas</string>
@@ -412,6 +417,7 @@
   <string name="changelog_error">Ocorreu um problema a carregar a lista de alterações</string>
   <string name="changelog_unknown">Desconhecido</string>
   <string name="changelog_version">Versão</string>
+  <string name="contributor_cloud_title">Ver colaboradores</string>
   <string name="cmupdate_settings_title">Atualizações</string>
   <string name="cmupdate_settings_summary">Verificar, ver ou instalar atualizações disponíveis</string>
   <string name="advanced_settings_title">Avançadas</string>
@@ -420,7 +426,7 @@
   <string name="privacy_settings_cyanogenmod_title">Privacidade</string>
   <string name="privacy_guard_switch_label">Ativar a Proteção da Privacidade</string>
   <string name="privacy_guard_dlg_title">Ativar a Proteção da Privacidade?</string>
-  <string name="privacy_guard_dlg_text">Quando a Proteção da Privacidade está ativada, a aplicação não será capaz de aceder aos dados pessoais, como contatos, mensagens ou registos de chamadas.</string>
+  <string name="privacy_guard_dlg_text">Quando a Proteção da Privacidade está ativada, a aplicação não será capaz de aceder aos dados pessoais, como contactos, mensagens ou registos de chamadas.</string>
   <string name="privacy_guard_dlg_system_app_text">Ao ativar a Proteção da Privacidade para uma aplicação de sistema, essa aplicação não será capaz de aceder ou fornecer dados pessoais. Isso pode causar que outras aplicações tenham um comportamento estranho.</string>
   <string name="privacy_guard_default_title">Ativar por defeito</string>
   <string name="privacy_guard_default_summary">Ativar por defeito para aplicações recém-instaladas</string>
@@ -431,7 +437,7 @@
   <string name="privacy_guard_help_title">Ajuda</string>
   <string name="privacy_guard_reset_title">Repor</string>
   <string name="privacy_guard_reset_text">Repor permissões?</string>
-  <string name="privacy_guard_help_text">Neste ecrã você pode escolher quais as aplicações que devem ter ativa a Proteção de Privacidade simplesmente tocando nelas. As aplicações selecionadas não serão capazes de aceder aos seus dados pessoais, como contatos, mensagens ou registos de chamadas. Pressionar continuamente uma aplicação abre o ecrã de detalhes para essa aplicação.\n\nAplicações de sistema não são exibidas por defeito, mas podem ser mostradas, ao selecionar a opção no respetivo menu.</string>
+  <string name="privacy_guard_help_text">Neste ecrã você pode escolher quais as aplicações que devem ter ativa a Proteção de Privacidade simplesmente tocando nelas. As aplicações selecionadas não serão capazes de aceder aos seus dados pessoais, como contactos, mensagens ou registos de chamadas. Pressionar continuamente uma aplicação abre o ecrã de detalhes para essa aplicação.\n\nAplicações de sistema não são exibidas por defeito, mas podem ser mostradas, ao selecionar a opção no respetivo menu.</string>
   <string name="privacy_guard_manager_show_system_apps">Mostrar aplicações de sistema</string>
   <string name="privacy_guard_manager_filter_permissions">Filtro de permissões</string>
   <string name="privacy_guard_advanced_settings_title">Avançadas</string>
@@ -448,8 +454,8 @@
   <string name="blacklist_private_numbers_summary_disabled">Não bloquear chamadas de números privados</string>
   <string name="blacklist_private_numbers_summary">Bloquear <xliff:g id="type">%s</xliff:g> recebidas de números privados</string>
   <string name="blacklist_unknown_numbers_title">Números desconhecidos</string>
-  <string name="blacklist_unknown_numbers_summary_disabled">Não bloquear chamadas ou mensagens de números que não estejam na lista de contatos</string>
-  <string name="blacklist_unknown_numbers_summary">Bloquear <xliff:g id="type">%s</xliff:g> de números que não estejam na lista de contatos</string>
+  <string name="blacklist_unknown_numbers_summary_disabled">Não bloquear chamadas ou mensagens de números que não estejam na lista de contactos</string>
+  <string name="blacklist_unknown_numbers_summary">Bloquear <xliff:g id="type">%s</xliff:g> de números que não estejam na lista de contactos</string>
   <string name="blacklist_summary_type_calls_only">chamadas</string>
   <string name="blacklist_summary_type_messages_only">mensagens</string>
   <string name="blacklist_summary_type_calls_and_messages">chamadas e mensagens</string>
@@ -460,7 +466,7 @@
   <string name="add_blacklist_number">Adicionar número</string>
   <string name="remove_blacklist_number_title">Eliminar número</string>
   <string name="remove_blacklist_entry">Quer eliminar este registo da lista negra?</string>
-  <string name="select_contact">Selecionar contato</string>
+  <string name="select_contact">Selecionar contacto</string>
   <string name="vibrator_intensity_title">Intensidade de vibração</string>
   <string name="vibrator_warning">Valores superiores a %1$d não são recomendados</string>
   <string name="color_calibration_title">Calibração de cores</string>
@@ -476,7 +482,7 @@
   <string name="gamma_tuning_saturation">Saturação</string>
   <string name="headset_category_title">Auricular</string>
   <string name="headset_connect_player_title">Iniciar a aplicação de música</string>
-  <string name="headset_connect_player_summary">Iniciar o aplicação de música padrão quando o auricular for ligado</string>
+  <string name="headset_connect_player_summary">Iniciar a aplicação de música padrão quando o auricular for ligado</string>
   <string name="more_device_controls_title">Mais\u2026</string>
   <string name="more_device_settings_title">Outras opções do dispositivo</string>
   <string name="sensors_motors_title">Sensores &amp; motores</string>
@@ -564,7 +570,7 @@
   <string name="lockscreen_long_press_menu_title">Pressão longa no botão Menu</string>
   <string name="lockscreen_buttons_no_action">Sem ação</string>
   <string name="lockscreen_buttons_flashlight">Lanterna</string>
-  <string name="lockscreen_buttons_next">Próxima canção</string>
+  <string name="lockscreen_buttons_next">Música seguinte</string>
   <string name="lockscreen_buttons_previous">Música anterior</string>
   <string name="lockscreen_buttons_playpause">reproduzir/pausar a música</string>
   <string name="lockscreen_buttons_toggle_sound">Ativar/desativar som</string>
@@ -640,7 +646,7 @@
   <string name="volbtn_cursor_control_off">Desativado</string>
   <string name="volbtn_cursor_control_on">Volume para cima/baixo move o cursor para a esquerda/direita</string>
   <string name="volbtn_cursor_control_on_reverse">Volume para cima/baixo move o cursor para a direita/esquerda</string>
-  <string name="swap_volume_buttons_title">Reorientar os botões de volume</string>
+  <string name="swap_volume_buttons_title">Reorientar</string>
   <string name="swap_volume_buttons_summary">Trocar os botões de volume quando o ecrã é rodado</string>
   <string name="button_backlight_title">Luz de fundo</string>
   <string name="button_backlight_enabled">Iluminar os botões</string>
