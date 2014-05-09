@@ -478,11 +478,16 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="quiet_hours_summary">Configure the hours the device should be quiet</string>
     <string name="quiet_hours_enabled">Enforce quiet hours</string>
     <string name="quiet_hours_ringer">Phone ringer</string>
-    <string name="quiet_hours_mute">Mute notifications</string>
-    <string name="quiet_hours_system">Disable system sounds</string>
-    <string name="quiet_hours_still">Disable vibrations</string>
-    <string name="quiet_hours_dim">Disable notification light</string>
-    <string name="quiet_hours_haptic">Disable haptic feedback</string>
+    <string name="quiet_hours_mute">Notifications</string>
+    <string name="quiet_hours_mute_summary">Mute notifications</string>
+    <string name="quiet_hours_system">System sounds</string>
+    <string name="quiet_hours_system_summary">Disable system sounds</string>
+    <string name="quiet_hours_still">Vibrations</string>
+    <string name="quiet_hours_still_summary">Disable vibrations</string>
+    <string name="quiet_hours_dim">Notification light</string>
+    <string name="quiet_hours_dim_summary">Disable notification light</string>
+    <string name="quiet_hours_haptic">Haptic feedback</string>
+    <string name="quiet_hours_haptic_summary">Disable haptic feedback</string>
     <string name="quiet_hours_active_from">Active from</string>
     <string name="quiet_hours_active_to">to</string>
 
@@ -906,15 +911,13 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="hardware_keys_action_voice_search">Voice search</string>
     <string name="hardware_keys_action_in_app_search">In-app search</string>
     <string name="hardware_keys_action_launch_camera">Launch Camera</string>
-    <string name="home_wake_title">Home button wake</string>
+    <string name="button_wake_title">Wake up</string>
     <string name="home_wake_summary">Pressing the home button will wake your device</string>
-    <string name="camera_wake_title">Camera button wake</string>
     <string name="camera_wake_summary">Pressing the camera button will wake your device</string>
     <string name="camera_sleep_on_release_title">Screen peek</string>
     <string name="camera_sleep_on_release_summary">A half press will keep the screen on only while the button is held down</string>
     <string name="camera_music_controls_title">Playback control</string>
     <string name="camera_music_controls_summary">When the screen is off, long pressing the camera key will play/pause current music track</string>
-    <string name="volume_wake_title">Volume button wake</string>
     <string name="volume_wake_summary">Pressing either volume button will wake your device</string>
     <string name="volbtn_music_controls_title">Playback control</string>
     <string name="volbtn_music_controls_summary">When the screen is off, long pressing the volume keys will seek music tracks</string>
@@ -922,7 +925,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="volbtn_cursor_control_off">Disabled</string>
     <string name="volbtn_cursor_control_on">Volume up/down moves cursor left/right</string>
     <string name="volbtn_cursor_control_on_reverse">Volume up/down moves cursor right/left</string>
-    <string name="swap_volume_buttons_title">Reorient volume buttons</string>
+    <string name="swap_volume_buttons_title">Reorient</string>
     <string name="swap_volume_buttons_summary">Swap volume buttons when the screen is rotated</string>
 
     <!-- Hardware tunables - Key backlight -->
@@ -1193,4 +1196,22 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Set Subscription screen: label no sim -->
     <string name="sub_no_sim">No SIM</string>
     <string name="multi_sim_entry_format" translatable="false"><xliff:g id="operator">%1$s</xliff:g>-<xliff:g id="index">%2$d</xliff:g></string>
+
+    <!-- Main settings screen, Multi Sim settings title for item to go into the Multi settings -->
+    <string name="multi_sim_settings_title">Multi SIM</string>
+
+    <!-- Multi Sim settings group title -->
+    <string name="multi_sim_settings_group_summary">Default SIM selection</string>
+
+    <!-- Multi Sim Settings screen, Voice box label -->
+    <string name="voice_title">Voice calls</string>
+
+    <!-- Multi Sim Settings screen, Data box label -->
+    <string name="data_title">Data calls</string>
+
+    <!-- Multi Sim Settings screen, SMS box label -->
+    <string name="sms_title">Sending SMS</string>
+
+    <!-- Priority subscription settings -->
+    <string name="priority_sub_title">Priority subscription</string>
 </resources>
