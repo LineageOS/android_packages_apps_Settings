@@ -71,8 +71,10 @@ public class Memory extends SettingsPreferenceFragment {
     // The mountToggle Preference that has last been clicked.
     // Assumes no two successive unmount event on 2 different volumes are performed before the first
     // one's preference is disabled
-    private static Preference sLastClickedMountToggle;
-    private static String sClickedMountPoint;
+    private Preference mLastClickedMountToggle;
+    private String mClickedMountPoint;
+    private StorageVolumePreferenceCategory mLastClickedCategory;
+    private String mVolumeTitle;
 
     // Access using getMountService()
     private IMountService mMountService;
@@ -234,8 +236,10 @@ public class Memory extends SettingsPreferenceFragment {
 
             final StorageVolume volume = category.getStorageVolume();
             if (volume != null && category.mountToggleClicked(preference)) {
-                sLastClickedMountToggle = preference;
-                sClickedMountPoint = volume.getPath();
+                mLastClickedCategory = category;
+                mLastClickedMountToggle = preference;
+                mClickedMountPoint = volume.getPath();
+                mVolumeTitle = volume.getDescription(getActivity());
                 String state = mStorageManager.getVolumeState(volume.getPath());
                 if (Environment.MEDIA_MOUNTED.equals(state) ||
                         Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
@@ -272,34 +276,37 @@ public class Memory extends SettingsPreferenceFragment {
     public Dialog onCreateDialog(int id) {
         switch (id) {
         case DLG_CONFIRM_UNMOUNT:
-                return new AlertDialog.Builder(getActivity())
-                    .setTitle(R.string.dlg_confirm_unmount_title)
-                    .setPositiveButton(R.string.dlg_ok, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            doUnmount();
-                        }})
-                    .setNegativeButton(R.string.cancel, null)
-                    .setMessage(R.string.dlg_confirm_unmount_text)
-                    .create();
+            return new AlertDialog.Builder(getActivity())
+                .setTitle(getString(R.string.storage_dlg_confirm_unmount_title, mVolumeTitle))
+                .setPositiveButton(R.string.dlg_ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        doUnmount();
+                    }})
+                .setNegativeButton(R.string.cancel, null)
+                .setMessage(getString(R.string.storage_dlg_confirm_unmount_text, mVolumeTitle))
+                .create();
         case DLG_ERROR_UNMOUNT:
-                return new AlertDialog.Builder(getActivity())
-            .setTitle(R.string.dlg_error_unmount_title)
-            .setNeutralButton(R.string.dlg_ok, null)
-            .setMessage(R.string.dlg_error_unmount_text)
-            .create();
+            return new AlertDialog.Builder(getActivity())
+                .setTitle(getString(R.string.storage_dlg_error_unmount_title, mVolumeTitle))
+                .setNeutralButton(R.string.dlg_ok, null)
+                .setMessage(getString(R.string.storage_dlg_error_unmount_text, mVolumeTitle))
+                .create();
         }
         return null;
     }
 
     private void doUnmount() {
         // Present a toast here
-        Toast.makeText(getActivity(), R.string.unmount_inform_text, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), getString(R.string.storage_unmount_inform_text,
+                mVolumeTitle), Toast.LENGTH_SHORT).show();
         IMountService mountService = getMountService();
         try {
-            sLastClickedMountToggle.setEnabled(false);
-            sLastClickedMountToggle.setTitle(getString(R.string.sd_ejecting_title));
-            sLastClickedMountToggle.setSummary(getString(R.string.sd_ejecting_summary));
-            mountService.unmountVolume(sClickedMountPoint, true, false);
+            mLastClickedMountToggle.setEnabled(false);
+            mLastClickedMountToggle.setTitle(getString(R.string.storage_ejecting_title, 
+                    mVolumeTitle));
+            mLastClickedMountToggle.setSummary(getString(R.string.storage_ejecting_summary,
+                    mVolumeTitle));
+            mountService.unmountVolume(mClickedMountPoint, true, false);
         } catch (RemoteException e) {
             // Informative dialog to user that unmount failed.
             showDialogInner(DLG_ERROR_UNMOUNT);
@@ -313,7 +320,7 @@ public class Memory extends SettingsPreferenceFragment {
 
     private boolean hasAppsAccessingStorage() throws RemoteException {
         IMountService mountService = getMountService();
-        int stUsers[] = mountService.getStorageUsers(sClickedMountPoint);
+        int stUsers[] = mountService.getStorageUsers(mClickedMountPoint);
         if (stUsers != null && stUsers.length > 0) {
             return true;
         }
@@ -351,7 +358,7 @@ public class Memory extends SettingsPreferenceFragment {
         IMountService mountService = getMountService();
         try {
             if (mountService != null) {
-                mountService.mountVolume(sClickedMountPoint);
+                mountService.mountVolume(mClickedMountPoint);
             } else {
                 Log.e(TAG, "Mount service is null, can't mount");
             }
