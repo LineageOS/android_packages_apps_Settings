@@ -18,11 +18,13 @@ package com.android.settings;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.storage.StorageVolume;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.android.internal.os.storage.ExternalStorageFormatter;
 
@@ -41,10 +43,15 @@ public class MediaFormat extends Activity {
     private LayoutInflater mInflater;
 
     private View mInitialView;
+    private TextView mInitiateText;
     private Button mInitiateButton;
 
     private View mFinalView;
+    private TextView mFinalText;
     private Button mFinalButton;
+
+    private StorageVolume mVolume;
+    private String mVolumeTitle;
 
     /**
      * The user has gone through the multiple confirmation, so now we go ahead
@@ -59,9 +66,7 @@ public class MediaFormat extends Activity {
                 Intent intent = new Intent(ExternalStorageFormatter.FORMAT_ONLY);
                 intent.setComponent(ExternalStorageFormatter.COMPONENT_NAME);
                 // Transfer the storage volume to the new intent
-                final StorageVolume storageVolume = getIntent().getParcelableExtra(
-                        StorageVolume.EXTRA_STORAGE_VOLUME);
-                intent.putExtra(StorageVolume.EXTRA_STORAGE_VOLUME, storageVolume);
+                intent.putExtra(StorageVolume.EXTRA_STORAGE_VOLUME, mVolume);
                 startService(intent);
                 finish();
             }
@@ -75,7 +80,7 @@ public class MediaFormat extends Activity {
         return new ChooseLockSettingsHelper(this)
                 .launchConfirmationActivity(request,
                         getText(R.string.media_format_gesture_prompt),
-                        getText(R.string.media_format_gesture_explanation));
+                        getString(R.string.storage_format_gesture_explanation, mVolumeTitle));
     }
 
     @Override
@@ -116,8 +121,12 @@ public class MediaFormat extends Activity {
     private void establishFinalConfirmationState() {
         if (mFinalView == null) {
             mFinalView = mInflater.inflate(R.layout.media_format_final, null);
+            mFinalText =
+                    (TextView) mFinalView.findViewById(R.id.execute_media_desc);
+            mFinalText.setText(getString(R.string.storage_format_final_desc, mVolumeTitle));
             mFinalButton =
                     (Button) mFinalView.findViewById(R.id.execute_media_format);
+            mFinalText.setText(getString(R.string.storage_format_button_text, mVolumeTitle));
             mFinalButton.setOnClickListener(mFinalClickListener);
         }
 
@@ -139,8 +148,12 @@ public class MediaFormat extends Activity {
     private void establishInitialState() {
         if (mInitialView == null) {
             mInitialView = mInflater.inflate(R.layout.media_format_primary, null);
+            mInitiateText =
+                    (TextView) mInitialView.findViewById(R.id.initiate_media_desc);
+            mInitiateText.setText(getString(R.string.storage_format_desc, mVolumeTitle));
             mInitiateButton =
                     (Button) mInitialView.findViewById(R.id.initiate_media_format);
+            mInitiateButton.setText(getString(R.string.storage_format_button_text, mVolumeTitle));
             mInitiateButton.setOnClickListener(mInitiateListener);
         }
 
@@ -154,6 +167,10 @@ public class MediaFormat extends Activity {
         mInitialView = null;
         mFinalView = null;
         mInflater = LayoutInflater.from(this);
+
+        mVolume = getIntent().getParcelableExtra(StorageVolume.EXTRA_STORAGE_VOLUME);
+        mVolumeTitle = mVolume.getDescription(this);
+        setTitle(getString(R.string.storage_format_title, mVolumeTitle));
 
         establishInitialState();
     }
