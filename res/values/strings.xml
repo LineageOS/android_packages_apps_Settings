@@ -2081,37 +2081,37 @@
     <!-- Storage item representing all cached data on device. [CHAR LIMIT=48] -->
     <string name="memory_media_cache_usage">Cached data</string>
     <!-- SD card & phone storage settings item title that will result in the phone unmounting the SD card.  This will be done before the user phyiscally removes the SD card from the phone.  Kind of like the "Safely remove" on some operating systems.   [CHAR LIMIT=25] -->
-    <string name="sd_eject" product="nosdcard">Unmount shared storage</string>
+    <string name="usb_eject">Unmount USB storage</string>
     <!-- SD card & phone storage settings item title that will result in the phone unmounting the SD card.  This will be done before the user phyiscally removes the SD card from the phone.  Kind of like the "Safely remove" on some operating systems.   -->
-    <string name="sd_eject" product="default">Unmount SD card</string>
+    <string name="sd_eject">Unmount SD card</string>
     <!-- SD card & phone storage settings item title that will result in the phone unmounting the SD card.  This will be done before the user phyiscally removes the SD card from the phone.  Kind of like the "Safely remove" on some operating systems.   [CHAR LIMIT=30] -->
-    <string name="sd_eject_summary" product="nosdcard">Unmount the internal USB storage</string>
+    <string name="usb_eject_summary">Unmount the USB storage so you can safely remove it</string>
     <!-- SD card & phone storage settings item title that will result in the phone unmounting the SD card.  This will be done before the user phyiscally removes the SD card from the phone.  Kind of like the "Safely remove" on some operating systems.   -->
-    <string name="sd_eject_summary" product="default">Unmount the SD card so you can safely remove it</string>
+    <string name="sd_eject_summary">Unmount the SD card so you can safely remove it</string>
     <!-- SD card & phone storage settings item title for toggling PTP mode on and off.  When PTP mode is on the device will appear on the USB bus as a PTP camera device instead of an MTP music player.   -->
 
     <!-- SD card & phone storage settings item summary that is displayed when no SD card is inserted.  This version of the string can probably never come up on current hardware. [CHAR LIMIT=25] -->
-    <string name="sd_insert_summary" product="nosdcard">Insert USB storage for mounting</string>
+    <string name="usb_insert_summary">Insert USB storage for mounting</string>
     <!-- SD card & phone storage settings item summary that is displayed when no SD card is inserted -->
-    <string name="sd_insert_summary" product="default">Insert an SD card for mounting</string>
+    <string name="sd_insert_summary">Insert an SD card for mounting</string>
 
     <!-- Storage setting item that will mount USB storage if it unmounted. A user should never see this. [CHAR LIMIT=25] -->
-    <string name="sd_mount" product="nosdcard">Mount USB storage</string>
+    <string name="usb_mount">Mount USB storage</string>
     <!-- SD card & phone storage settings item title that will result in the phone mounting the SD card. -->
-    <string name="sd_mount" product="default">Mount SD card</string>
+    <string name="sd_mount">Mount SD card</string>
 
     <!-- Subtext for Mount USB storage in Storage settings. User should never see this since we use automount. -->
-    <string name="sd_mount_summary" product="nosdcard"></string>
+    <string name="usb_mount_summary"></string>
     <!-- Subtext for Mount SD Card in Storage settings. User should never see this since we use automount. -->
-    <string name="sd_mount_summary" product="default"></string>
+    <string name="sd_mount_summary"></string>
     <!-- SD card & phone storage settings item title that will result in the phone formatting the USB storage.   [CHAR LIMIT=25] -->
-    <string name="sd_format" product="nosdcard">Erase USB storage</string>
+    <string name="usb_format">Erase USB storage</string>
     <!-- SD card & phone storage settings item title that will result in the phone formatting the SD card.   [CHAR LIMIT=25] -->
-    <string name="sd_format" product="default">Erase SD card</string>
+    <string name="sd_format">Erase SD card</string>
     <!-- SD card & phone storage settings item title that will result in the phone unmounting the SD card.   [CHAR LIMIT=80] -->
-    <string name="sd_format_summary" product="nosdcard">Erases all data on the internal USB storage, such as music and photos</string>
+    <string name="usb_format_summary">Erases all data on the USB storage, such as music and photos</string>
     <!-- SD card & phone storage settings item title that will result in the phone unmounting the SD card.   [CHAR LIMIT=80] -->
-    <string name="sd_format_summary" product="default">Erases all data on the SD card, such as music and photos</string>
+    <string name="sd_format_summary">Erases all data on the SD card, such as music and photos</string>
     <!-- SD card status when it is mounted as read only. Will be appended to size, starts with an unbreakable space -->
 
     <!-- Title of dialog asking user to confirm before clearing all caches. [CHAR LIMIT=48] -->
@@ -2123,29 +2123,33 @@
     <string name="mtp_ptp_mode_summary">MTP or PTP function is active</string>
 
     <!-- SD card eject confirmation dialog title   [CHAR LIMIT=25] -->
-    <string name="dlg_confirm_unmount_title" product="nosdcard">Unmount USB storage?</string>
+    <string name="dlg_confirm_usb_unmount_title">Unmount USB storage?</string>
     <!-- SD card eject confirmation dialog title   -->
-    <string name="dlg_confirm_unmount_title" product="default">Unmount SD card?</string>
+    <string name="dlg_confirm_sd_unmount_title">Unmount SD card?</string>
     <!-- SD card eject confirmation dialog  [CHAR LIMIT=NONE] -->
-    <string name="dlg_confirm_unmount_text" product="nosdcard">If you unmount the USB storage, some apps you are using will stop and may be unavailable until you remount the USB storage.</string>
+    <string name="dlg_confirm_usb_unmount_text">If you unmount the USB storage, some apps you are using will stop and may be unavailable until you remount the USB storage.</string>
     <!-- SD card eject confirmation dialog  -->
-    <string name="dlg_confirm_unmount_text" product="default">If you unmount the SD card, some apps you are using will stop and may be unavailable until you remount the SD card.</string>
+    <string name="dlg_confirm_sd_unmount_text">If you unmount the SD card, some apps you are using will stop and may be unavailable until you remount the SD card.</string>
     <!-- SD card eject error dialog title   [CHAR LIMIT=30] -->
-    <string name="dlg_error_unmount_title" product="nosdcard"></string>
+    <string name="dlg_error_usb_unmount_title"></string>
     <!-- SD card eject error dialog title   -->
-    <string name="dlg_error_unmount_title" product="default"></string>
+    <string name="dlg_error_sd_unmount_title"></string>
     <!-- SD card eject error dialog text   [CHAR LIMIT=NONE] -->
-    <string name="dlg_error_unmount_text" product="nosdcard">Couldn\'t unmount USB storage. Try again later.</string>
+    <string name="dlg_error_usb_unmount_text">Couldn\'t unmount USB storage. Try again later.</string>
     <!-- SD card eject error dialog text   -->
-    <string name="dlg_error_unmount_text" product="default">Couldn\'t unmount SD card. Try again later.</string>
+    <string name="dlg_error_sd_unmount_text">Couldn\'t unmount SD card. Try again later.</string>
     <!-- SD card unmount informative text   [CHAR LIMIT=NONE] -->
-    <string name="unmount_inform_text" product="nosdcard">USB storage will be unmounted.</string>
+    <string name="usb_unmount_inform_text">USB storage will be unmounted.</string>
     <!-- SD card unmount informative text   [CHAR LIMIT=NONE] -->
-    <string name="unmount_inform_text" product="default">SD card will be unmounted.</string>
+    <string name="sd_unmount_inform_text">SD card will be unmounted.</string>
     <!-- SD card eject progress title   -->
-    <string name="sd_ejecting_title">Unmounting</string>
+    <string name="usb_ejecting_title">Unmounting USB storage</string>
+    <!-- SD card eject progress title   -->
+    <string name="sd_ejecting_title">Unmounting SD card</string>
     <!-- SD card eject progress text   -->
-    <string name="sd_ejecting_summary">Unmount in progress</string>
+    <string name="usb_ejecting_summary">USB storage unmount in progress</string>
+    <!-- SD card eject progress text   -->
+    <string name="sd_ejecting_summary">SD card unmount in progress</string>
 
     <!-- Settings item title when storage is running low [CHAR LIMIT=32] -->
     <string name="storage_low_title">Storage space is running out</string>
@@ -2306,33 +2310,35 @@
 
     <!-- Media Format -->
     <!-- SD card & phone storage settings screen, setting option name under Internal phone storage heading [CHAR LIMIT=25] -->
-    <string name="media_format_title" product="nosdcard">Erase USB storage</string>
+    <string name="media_format_title">Media Format</string>
+    <!-- SD card & phone storage settings screen, setting option name under Internal phone storage heading [CHAR LIMIT=25] -->
+    <string name="usb_media_format_title">Erase USB storage</string>
     <!-- SD card & phone storage settings screen, setting option name under Internal phone storage heading -->
-    <string name="media_format_title" product="default">Erase SD card</string>
+    <string name="sd_media_format_title">Erase SD card</string>
     <!-- SD card & phone storage settings screen, setting option summary text under Internal phone storage heading [CHAR LIMIT=30] -->
-    <string name="media_format_summary" product="nosdcard">Erases all data in USB storage</string>
+    <string name="usb_media_format_summary">Erases all data in USB storage</string>
     <!-- SD card & phone storage settings screen, setting option summary text under Internal phone storage heading -->
-    <string name="media_format_summary" product="default">Erases all data on the SD card</string>
+    <string name="sd_media_format_summary">Erases all data on the SD card</string>
     <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
-    <string name="media_format_desc" product="nosdcard">Erase all USB storage? You will lose <b>all</b> stored data!</string>
+    <string name="usb_media_format_desc">Erase all USB storage? You will lose <b>all</b> stored data!</string>
     <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
-    <string name="media_format_desc" product="default">Erase the SD card? You will lose <b>all</b> data on the card!</string>
+    <string name="sd_media_format_desc">Erase the SD card? You will lose <b>all</b> data on the card!</string>
     <!-- SD card & phone storage settings screen, button on screen after user selects Factory data reset [CHAR LIMIT=25] -->
-    <string name="media_format_button_text" product="nosdcard">Erase USB storage</string>
+    <string name="usb_media_format_button_text">Erase USB storage</string>
     <!-- SD card & phone storage settings screen, button on screen after user selects Factory data reset -->
-    <string name="media_format_button_text" product="default">Erase SD card</string>
+    <string name="sd_media_format_button_text">Erase SD card</string>
     <!-- SD card & phone storage settings screen, message on screen after user selects Format media button [CHAR LIMIT=NONE] -->
-    <string name="media_format_final_desc" product="nosdcard">Erase the USB storage, deleting all files stored there? You can\'t reverse this action!</string>
+    <string name="usb_media_format_final_desc">Erase the USB storage, deleting all files stored there? You can\'t reverse this action!</string>
     <!-- SD card & phone storage settings screen, message on screen after user selects Format media button [CHAR LIMIT=NONE] -->
-    <string name="media_format_final_desc" product="default">Erase the SD card, deleting all files stored there? You can\'t reverse this action!</string>
+    <string name="sd_media_format_final_desc">Erase the SD card, deleting all files stored there? You can\'t reverse this action!</string>
     <!-- SD card & phone storage settings screen, button on screen after user selects Format media button -->
     <string name="media_format_final_button_text">Erase everything</string>
     <!-- Message to draw an unlock pattern before clearing the device -->
     <string name="media_format_gesture_prompt">Draw your unlock pattern</string>
     <!-- Explanation of drawing unlock pattern to format card [CHAR LIMIT=NONE] -->
-    <string name="media_format_gesture_explanation" product="nosdcard">You need to draw your unlock pattern to confirm that you want to erase the USB storage.</string>
+    <string name="usb_media_format_gesture_explanation">You need to draw your unlock pattern to confirm that you want to erase the USB storage.</string>
     <!-- Explanation of drawing unlock pattern to format card [CHAR LIMIT=NONE] -->
-    <string name="media_format_gesture_explanation" product="default">You need to draw your unlock pattern to confirm that you want to erase the SD card.</string>
+    <string name="sd_media_format_gesture_explanation">You need to draw your unlock pattern to confirm that you want to erase the SD card.</string>
 
     <!-- Main settings screen, Call settings title for item to go into the call settings -->
     <string name="call_settings_title">Call settings</string>
