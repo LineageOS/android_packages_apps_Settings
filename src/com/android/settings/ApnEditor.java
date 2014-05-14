@@ -98,6 +98,7 @@ public class ApnEditor extends PreferenceActivity
     private String mCurMcc;
     private int mSubscription = 0;
     private boolean mDisableEditor = false;
+    private String mOrigionName;
 
     private Uri mUri;
     private Cursor mCursor;
@@ -337,6 +338,7 @@ public class ApnEditor extends PreferenceActivity
             mName.setText(localizedName);
         }
 
+        mOrigionName = checkNull(mName.getText());
         mName.setSummary(checkNull(mName.getText()));
         mApn.setSummary(checkNull(mApn.getText()));
         mProxy.setSummary(checkNull(mProxy.getText()));
@@ -603,6 +605,9 @@ public class ApnEditor extends PreferenceActivity
         values.put(Telephony.Carriers.SERVER, checkNotSet(mServer.getText()));
         values.put(Telephony.Carriers.PASSWORD, checkNotSet(mPassword.getText()));
         values.put(Telephony.Carriers.MMSC, checkNotSet(mMmsc.getText()));
+        if (!name.equals(mOrigionName)) {
+            values.put(getString(R.string.localized_name), (String) (null));
+        }
 
         String authVal = mAuthType.getValue();
         if (authVal != null) {
