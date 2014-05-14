@@ -101,6 +101,24 @@
       "revId": "84dc5cd3c257b994048f2e6566e6258309876563",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da0c15f0_225a2f84",
+        "filename": "src/com/android/settings/deviceinfo/StorageVolumePreferenceCategory.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 8457
+      },
+      "writtenOn": "2014-05-14T05:21:43Z",
+      "side": 1,
+      "message": "This results in a compile error: cannot find symbol storage_usb instead we can use the following.\nmIsUsbStorage \u003d mVolume !\u003d null \u0026\u0026 mVolume.getDescriptionId() \u003d\u003d Resources.getSystem().getIdentifier(\"storage_usb\", \"string\", \"android\");",
+      "parentUuid": "da0c15f0_62c42792",
+      "revId": "84dc5cd3c257b994048f2e6566e6258309876563",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
