@@ -25,6 +25,7 @@ import static com.android.internal.util.cm.QSConstants.TILE_BRIGHTNESS;
 import static com.android.internal.util.cm.QSConstants.TILE_CAMERA;
 import static com.android.internal.util.cm.QSConstants.TILE_COMPASS;
 import static com.android.internal.util.cm.QSConstants.TILE_DELIMITER;
+import static com.android.internal.util.cm.QSConstants.TILE_DOUBLE_TAP;
 import static com.android.internal.util.cm.QSConstants.TILE_EXPANDEDDESKTOP;
 import static com.android.internal.util.cm.QSConstants.TILE_GPS;
 import static com.android.internal.util.cm.QSConstants.TILE_LOCKSCREEN;
@@ -62,6 +63,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.cyanogenmod.hardware.TapToWake;
 
 public class QuickSettingsUtil {
     private static final String TAG = "QuickSettingsUtil";
@@ -157,6 +160,9 @@ public class QuickSettingsUtil {
         registerTile(new QuickSettingsUtil.TileInfo(
                 TILE_NETWORKADB, R.string.title_tile_network_adb,
                 "com.android.systemui:drawable/ic_qs_network_adb_off"));
+        registerTile(new QuickSettingsUtil.TileInfo(
+                TILE_DOUBLE_TAP, R.string.title_tile_double_tap,
+                "com.android.systemui:drawable/ic_qs_double_tap_on"));
     }
 
     private static void registerTile(QuickSettingsUtil.TileInfo info) {
@@ -222,6 +228,11 @@ public class QuickSettingsUtil {
         // Don't show the Compass tile if the device has no orientation sensor
         if (!QSUtils.deviceSupportsCompass(context)) {
             removeTile(TILE_COMPASS);
+        }
+
+        // Don't show the Double Tap tile if is not available for the device
+        if (!TapToWake.isSupported()) {
+            removeTile(TILE_DOUBLE_TAP);
         }
     }
 
