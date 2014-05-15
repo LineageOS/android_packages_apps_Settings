@@ -495,7 +495,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     mWakeWhenPluggedOrUnplugged.isChecked() ? 1 : 0);
             return true;
         } else if (preference == mTapToWake) {
-            return TapToWake.setEnabled(mTapToWake.isChecked());
+            final boolean enabled = mTapToWake.isChecked();
+            if (TapToWake.setEnabled(enabled)) {
+                Settings.System.putInt(getContentResolver(),
+                        Settings.System.DOUBLE_TAP_WAKE_GESTURE, enabled ? 1 : 0);
+                return true;
+            } else {
+                return false;
+            }
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
@@ -570,8 +577,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             }
         }
         if (isTapToWakeSupported()) {
-            final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
-            final boolean enabled = prefs.getBoolean(KEY_TAP_TO_WAKE, true);
+            final boolean enabled = Settings.System.getInt(ctx.getContentResolver(),
+                    Settings.System.DOUBLE_TAP_WAKE_GESTURE, 1) == 1;
             if (!TapToWake.setEnabled(enabled)) {
                 Log.e(TAG, "Failed to restore tap-to-wake settings.");
             } else {
