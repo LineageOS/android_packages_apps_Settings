@@ -109,6 +109,17 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
     };
 
+    private ContentObserver mTapToWakeObserver =
+            new ContentObserver(new Handler()) {
+        @Override
+        public void onChange(boolean selfChange) {
+            if (mTapToWake != null) {
+                mTapToWake.setChecked(Settings.System.getInt(getContentResolver(),
+                        Settings.System.DOUBLE_TAP_WAKE_GESTURE, 1) == 1);
+            }
+        }
+    };
+
     private final RotationPolicy.RotationPolicyListener mRotationPolicyListener =
             new RotationPolicy.RotationPolicyListener() {
         @Override
@@ -380,6 +391,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 Settings.System.getUriFor(Settings.System.ACCELEROMETER_ROTATION), true,
                 mAccelerometerRotationObserver);
 
+        // Tap To Wake observer
+        resolver.registerContentObserver(
+                Settings.System.getUriFor(Settings.System.DOUBLE_TAP_WAKE_GESTURE), true,
+                mTapToWakeObserver);
+
         if (mAdaptiveBacklight != null) {
             mAdaptiveBacklight.setChecked(AdaptiveBacklight.isEnabled());
         }
@@ -408,6 +424,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
         // Display rotation observer
         getContentResolver().unregisterContentObserver(mAccelerometerRotationObserver);
+
+        // Display Tap To Wake observer
+        getContentResolver().unregisterContentObserver(mTapToWakeObserver);
     }
 
     @Override
@@ -495,7 +514,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     mWakeWhenPluggedOrUnplugged.isChecked() ? 1 : 0);
             return true;
         } else if (preference == mTapToWake) {
-            return TapToWake.setEnabled(mTapToWake.isChecked());
+            final boolean enabled = mTapToWake.isChecked();
+            if (TapToWake.setEnabled(enabled)) {
+                Settings.System.putInt(getContentResolver(),
+                        Settings.System.DOUBLE_TAP_WAKE_GESTURE, enabled ? 1 : 0);
+                return true;
+            } else {
+                return false;
+            }
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
@@ -570,8 +596,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             }
         }
         if (isTapToWakeSupported()) {
-            final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
-            final boolean enabled = prefs.getBoolean(KEY_TAP_TO_WAKE, true);
+            final boolean enabled = Settings.System.getInt(ctx.getContentResolver(),
+                    Settings.System.DOUBLE_TAP_WAKE_GESTURE, 1) == 1;
             if (!TapToWake.setEnabled(enabled)) {
                 Log.e(TAG, "Failed to restore tap-to-wake settings.");
             } else {
