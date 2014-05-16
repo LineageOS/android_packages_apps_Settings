@@ -162,6 +162,11 @@ public class LocationSettings extends LocationSettingsBase
             root.removePreference(mAGpsParas);
         }
 
+        if (mAssistedGps != null) {
+            mAssistedGps.setChecked(Settings.Global.getInt(getContentResolver(),
+                    Settings.Global.ASSISTED_GPS_ENABLED, 2) == 1);
+        }
+
         mCategoryRecentLocationRequests =
                 (PreferenceCategory) root.findPreference(KEY_RECENT_LOCATION_REQUESTS);
         RecentLocationApps recentApps = new RecentLocationApps(activity);
