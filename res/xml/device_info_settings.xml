@@ -17,6 +17,11 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="@string/about_settings">
 
+        <com.android.settings.BugreportPreference
+            android:key="bugreport"
+            android:title="@*android:string/bugreport_title"
+            android:dialogTitle="@*android:string/bugreport_title" />
+
         <!-- System update settings - launches activity -->
         <PreferenceScreen android:key="system_update_settings"
                 android:title="@string/system_update_settings_list_item_title" 
