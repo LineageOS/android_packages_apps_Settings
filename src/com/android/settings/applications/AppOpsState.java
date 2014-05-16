@@ -157,8 +157,10 @@ public class AppOpsState {
     public static final OpsTemplate DEVICE_TEMPLATE = new OpsTemplate(
             new int[] { AppOpsManager.OP_CALL_PHONE,
                     AppOpsManager.OP_WIFI_CHANGE,
-                    AppOpsManager.OP_BLUETOOTH_CHANGE },
+                    AppOpsManager.OP_BLUETOOTH_CHANGE,
+                    AppOpsManager.OP_NFC_CHANGE },
             new boolean[] { true,
+                    true,
                     true,
                     true }
             );
