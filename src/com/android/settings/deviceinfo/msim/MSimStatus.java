@@ -448,6 +448,8 @@ public class MSimStatus extends PreferenceActivity {
     protected void onResume() {
         super.onResume();
 
+        registerReceiver(mAreaInfoReceiver, new IntentFilter(CB_AREA_INFO_RECEIVED_ACTION),
+                CB_AREA_INFO_SENDER_PERMISSION, null);
         if (!Utils.isWifiOnly(getApplicationContext())) {
             for (int i = 0; i < mNumPhones; i++) {
                 mTelephonyManager.listen(mPhoneStateListener[i],
@@ -470,8 +472,6 @@ public class MSimStatus extends PreferenceActivity {
         }
         registerReceiver(mBatteryInfoReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
         mHandler.sendEmptyMessage(EVENT_UPDATE_STATS);
-        registerReceiver(mAreaInfoReceiver, new IntentFilter(CB_AREA_INFO_RECEIVED_ACTION),
-                CB_AREA_INFO_SENDER_PERMISSION, null);
     }
 
     @Override
