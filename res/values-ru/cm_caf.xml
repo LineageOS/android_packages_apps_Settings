@@ -16,6 +16,11 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string-array name="screen_color_setting">
+    <item>Стандартный</item>
+    <item>Яркий</item>
+    <item>Пользовательский</item>
+  </string-array>
   <string name="bluetooth_enter_pin_msg_hs">Для сопряжения с <xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g> введите PIN-код (16 цифр или больше):</string>
   <string name="bluetooth_profile_sap">Доступ к SIM-карте</string>
   <string name="bluetooth_profile_dun">Доступ к модему</string>
@@ -30,10 +35,11 @@
   <string name="device_additional_status">Дополнительная информация</string>
   <string name="enable_quickboot_title">Включить режим QuickBoot</string>
   <string name="enable_quickboot_summary">Переводить устройство в режим QuickBoot вместо полного выключения.</string>
+  <string name="data_usage_tab_slot">SIM </string>
   <string name="sel_sub_title">Настройка операторов</string>
-  <string name="sel_sub_summary">Выберите оператора</string>
+  <string name="sel_sub_summary">Изменение используемой SIM-карты или оператора</string>
   <string name="select_subscription">Выберите оператора</string>
-  <string name="no_sim_info">Не удалось получить доступ к SIM-карте.\nИспользование функций невозможно.</string>
+  <string name="no_sim_info">Не удалось получить доступ к SIM-карте.\nИспользование функций невозможно</string>
   <string name="subs_settings">Настройки операторов</string>
   <string name="set_data_subscription_progress">Сохранение настроек операторов\u2026</string>
   <string name="set_dds_success">Оператор мобильного интернета изменён</string>
@@ -59,9 +65,4 @@
   <string name="saturation_str">Насыщенность: <xliff:g id="saturation_value">%1$s</xliff:g></string>
   <string name="contrast_str">Контрастность: <xliff:g id="contrast_value">%1$s</xliff:g></string>
   <string name="intensity_str">Интенсивность: <xliff:g id="intensity_str_value">%1$s</xliff:g></string>
-  <string-array name="screen_color_setting">
-    <item>Стандартный</item>
-    <item>Яркий</item>
-    <item>Пользовательский</item>
-  </string-array>
 </resources>
