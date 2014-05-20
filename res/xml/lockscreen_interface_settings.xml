@@ -86,17 +86,4 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:key="lockscreen_background_category"
-        android:title="@string/lockscreen_background">
-
-        <Preference
-            android:key="lockscreen_wallpaper_settings"
-            android:title="@string/lockscreen_wallpaper_settings_title">
-            <intent android:targetPackage="com.android.wallpapercropper"
-                    android:targetClass="com.android.wallpapercropper.LockWallpaperPickerActivity" />
-        </Preference>
-
-    </PreferenceCategory>
-
 </PreferenceScreen>
