@@ -118,7 +118,7 @@
   <string name="toggleWimax">WiMAX</string>
   <string name="toggleNfc">NFC</string>
   <string name="volume_ring_only_description">着信音</string>
-  <string name="link_volume_ringtones">着信音と通知音の音量を連動する</string>
+  <string name="link_volume_ringtones">着信音と通知音の音量をリンクする</string>
   <string name="link_volume_mutes">サイレントモードを通知音に反映する</string>
   <string name="volume_keys_control_ring_stream">音量ボタンで着信音の音量をコントロールする</string>
   <string name="ring_mode_title">着信モード</string>
@@ -153,12 +153,12 @@
   <string name="notification_light_default_value">デフォルト</string>
   <string name="notification_light_missed_call_title">不在着信</string>
   <string name="notification_light_voicemail_title">ボイスメール</string>
-  <string name="adaptive_backlight_title">適応式バックライト</string>
+  <string name="adaptive_backlight_title">適応型バックライト</string>
   <string name="adaptive_backlight_summary">使い勝手を維持したままディスプレイのバックライトを動的に調整して電池の寿命を高める</string>
   <string name="wake_when_plugged_or_unplugged_title">接続時に起動</string>
   <string name="wake_when_plugged_or_unplugged_summary">電源を接続または切断したときに画面を点灯する</string>
   <string name="screen_animation_off_title">画面消灯アニメーション</string>
-  <string name="screen_animation_style_title">画面消灯アニメーション</string>
+  <string name="screen_animation_style_title">画面消灯アニメーションのスタイル</string>
   <string name="screen_animation_style_disabled">無効</string>
   <string name="screen_animation_style_electronbeam">電子ビーム</string>
   <string name="screen_animation_style_fade">フェードアウト</string>
@@ -215,7 +215,7 @@
   <string name="slide_lock_delay_10m">10分</string>
   <string name="slide_lock_delay_30m">30分</string>
   <string name="lockscreen_widgets_category_title">ウィジェット</string>
-  <string name="lockscreen_maximize_widgets_title">ウィジェットの最大化</string>
+  <string name="lockscreen_maximize_widgets_title">ウィジェットを最大化</string>
   <string name="lockscreen_maximize_widgets_summary">画面点灯時にウィジェットを最大化する</string>
   <string name="lockscreen_enable_camera_title">カメラウィジェット</string>
   <string name="safe_headset_volume_title">安全なヘッドセットの音量を使用する</string>
@@ -338,6 +338,16 @@
   <string name="quiet_hours_summary">端末をサイレントモードにする時間帯を設定する</string>
   <string name="quiet_hours_enabled">おやすみモード</string>
   <string name="quiet_hours_ringer">着信音</string>
+  <string name="quiet_hours_mute">通知</string>
+  <string name="quiet_hours_mute_summary">通知をミュート</string>
+  <string name="quiet_hours_system">システムの音</string>
+  <string name="quiet_hours_system_summary">システムの音を無効にする</string>
+  <string name="quiet_hours_still">バイブレーション</string>
+  <string name="quiet_hours_still_summary">バイブレーションを無効にする</string>
+  <string name="quiet_hours_dim">通知ライト</string>
+  <string name="quiet_hours_dim_summary">通知ライトを無効にする</string>
+  <string name="quiet_hours_haptic">タッチ操作バイブ</string>
+  <string name="quiet_hours_haptic_summary">タッチ操作バイブを無効にする</string>
   <string name="quiet_hours_ringer_allow_all">すべての着信で着信音を鳴らす</string>
   <string name="quiet_hours_ringer_allow_contacts">連絡先からの着信のみ着信音を鳴らす</string>
   <string name="quiet_hours_ringer_allow_starred">お気に入りの連絡先からの着信のみ着信音を鳴らす</string>
@@ -351,7 +361,7 @@
   <string name="mem_info">メモリ</string>
   <string name="phone_service_state">音声: <xliff:g id="voice_state">%1$s</xliff:g>、データ: <xliff:g id="data_state">%2$s</xliff:g></string>
   <string name="anonymous_statistics_title">CyanogenModの統計情報</string>
-  <string name="anonymous_statistics_summary">CyanogenModの機能向上のために匿名の統計情報を送信する</string>
+  <string name="anonymous_statistics_summary">CyanogenModの改善を手助けするために匿名の統計情報を送信する</string>
   <string name="anonymous_statistics_warning_title">情報</string>
   <string name="anonymous_statistics_warning">CyanogenModの統計情報に同意すると、端末間のユニークインストール回数を調べるためにCyanogenModの開発者への非個人情報の送信を許可します。送信される情報にはユニークIDが含まれますが、プライバシーや個人データが危険にさらされることはありません。データは起動時に送信されます。\n\n送信されるデータの見本は、「データをプレビュー」をタップして確認できます。</string>
   <string name="enable_reporting_title">送信を有効にする</string>
@@ -372,11 +382,11 @@
   <string name="fonts_settings_title">フォント</string>
   <string name="wallpaper_settings_title">壁紙</string>
   <string name="lockscreen_wallpaper_settings_title">ロック画面の壁紙</string>
-  <string name="bootanim_settings_title">ブートアニメーション</string>
+  <string name="bootanim_settings_title">起動アニメーション</string>
   <string name="soundpack_settings_title">サウンドパック</string>
   <string name="performance_settings_title">パフォーマンス</string>
   <string name="performance_settings_warning_title">注意して進めてください</string>
-  <string name="performance_settings_warning">これらの設定は実験的で、あらゆる変更が不安定性、クラッシュ、データの損失、ハードウェア障害を引き起こす原因になる可能性があります。\n\nこれらの設定をデフォルトから変更した場合には、バグ報告を送信しないようにご協力をお願いします。</string>
+  <string name="performance_settings_warning">これらの設定は実験的であり、あらゆる変更が不安定性、クラッシュ、データの損失、ハードウェア障害を引き起こす原因になる可能性があります。\n\nこれらの設定をデフォルトから変更した場合には、バグ報告を送信しないようにご協力をお願いします。</string>
   <string name="performance_set_on_boot">起動時に設定</string>
   <string name="performance_set_on_boot_summary">適用した設定を起動時に復元する</string>
   <string name="processor_title">プロセッサ</string>
@@ -403,6 +413,7 @@
   <string name="changelog_error">更新履歴を読み込めませんでした</string>
   <string name="changelog_unknown">不明</string>
   <string name="changelog_version">バージョン</string>
+  <string name="contributor_cloud_title">貢献者を表示</string>
   <string name="cmupdate_settings_title">CyanogenModのアップデート</string>
   <string name="cmupdate_settings_summary">利用可能なアップデートを確認、表示、インストールする</string>
   <string name="advanced_settings_title">詳細</string>
@@ -430,7 +441,7 @@
   <string name="blacklist_edit_dialog_title">ブラックリストのエントリーを編集</string>
   <string name="blacklist_prefs">設定</string>
   <string name="blacklist_button_delete">削除</string>
-  <string name="blacklist_empty_text">ブラックリストに番号がありません。追加（+）ボタンにタッチしてエントリーを追加してください。</string>
+  <string name="blacklist_empty_text">ブラックリストに番号がありません。追加（+）ボタンをタッチしてエントリーを追加してください。</string>
   <string name="blacklist_disabled_empty_text">この番号からの着信やメッセージをブラックリストに追加するには、ブラックリストを有効にしてください。</string>
   <string name="blacklist_summary_disabled">無効</string>
   <string name="blacklist_summary">ブラックリストに登録されている電話番号からの着信とメッセージはブロックされます</string>
@@ -452,10 +463,10 @@
   <string name="remove_blacklist_number_title">番号を削除</string>
   <string name="remove_blacklist_entry">このブラックリストのエントリーを削除しますか？</string>
   <string name="select_contact">連絡先を選択</string>
-  <string name="vibrator_intensity_title">バイブレーションの強度</string>
+  <string name="vibrator_intensity_title">バイブレーションの強さ</string>
   <string name="vibrator_warning">%1$dより大きい値は推奨されません</string>
-  <string name="color_calibration_title">色調整</string>
-  <string name="color_calibration_summary">画面を色調整する</string>
+  <string name="color_calibration_title">色の調整</string>
+  <string name="color_calibration_summary">画面の色を調整する</string>
   <string name="color_red_title">赤</string>
   <string name="color_green_title">緑</string>
   <string name="color_blue_title">青</string>
@@ -491,11 +502,11 @@
   <string name="double_tap_to_wake_title">ダブルタップで起動</string>
   <string name="category_quick_access">クイックアクセスリボン</string>
   <string name="title_quick_access">通知領域に表示</string>
-  <string name="title_quick_access_linked">レイアウトを連動</string>
+  <string name="title_quick_access_linked">レイアウトをリンク</string>
   <string name="summary_quick_access_linked">クイック設定パネルと同じタイルとレイアウトを使用する</string>
   <string name="font_size_sample">サンプル</string>
   <string name="sms_security_check_limit_title">SMSメッセージの制限</string>
-  <string name="sms_security_check_limit_summary">アプリは確認を要求しないで30分間に%d通のメッセージを送信することができる</string>
+  <string name="sms_security_check_limit_summary">アプリは確認を要求しないで30分間に%d通のメッセージを送信することができます</string>
   <string name="sms_security_check_limit_summary_none">アプリは確認をしないでメッセージを送信することはできません</string>
   <string name="sms_security_check_limit_default">30（デフォルト）</string>
   <string name="sms_security_check_limit_none">なし</string>
@@ -510,9 +521,9 @@
   <string name="power_notifications_ringtone_silent">サイレント</string>
   <string name="lockscreen_battery_status_title">電池の状態</string>
   <string name="lockscreen_battery_status_charging">充電中のみ</string>
-  <string name="lockscreen_battery_status_alwayson">常にON</string>
-  <string name="lockscreen_battery_status_alwaysoff">常にOFF</string>
-  <string name="lockscreen_target_info">ショートカットを割り当てるにはスライダーをターゲットにドラッグ</string>
+  <string name="lockscreen_battery_status_alwayson">常に表示</string>
+  <string name="lockscreen_battery_status_alwaysoff">表示しない</string>
+  <string name="lockscreen_target_info">ショートカットを割り当てるにはスライダーをターゲットにドラッグしてください</string>
   <string name="lockscreen_target_title">スライダーショートカット</string>
   <string name="lockscreen_target_summary">ロック画面のカスタムショートカットを表示または変更する</string>
   <string name="lockscreen_target_reset">ロック画面のショートカットをデフォルトにリセットしました</string>
@@ -618,19 +629,21 @@
   <string name="hardware_keys_action_voice_search">音声検索</string>
   <string name="hardware_keys_action_in_app_search">アプリ内検索</string>
   <string name="hardware_keys_action_launch_camera">カメラを起動</string>
-  <string name="home_wake_summary">ホームボタンを押して端末をスリープ状態から復帰する</string>
-  <string name="camera_wake_summary">カメラボタンを押して端末をスリープ状態から復帰する</string>
+  <string name="button_wake_title">スリープ解除</string>
+  <string name="home_wake_summary">ホームボタンを押して端末のスリープを解除する</string>
+  <string name="camera_wake_summary">カメラボタンを押して端末のスリープを解除する</string>
   <string name="camera_sleep_on_release_title">画面の覗き見</string>
   <string name="camera_sleep_on_release_summary">半押しで押し続けている間だけ画面を点灯する</string>
   <string name="camera_music_controls_title">再生コントロール</string>
   <string name="camera_music_controls_summary">画面消灯時にカメラキーの長押しで曲を再生/一時停止する</string>
-  <string name="volume_wake_summary">音量ボタンを押して端末をスリープ状態から復帰する</string>
+  <string name="volume_wake_summary">音量ボタンを押して端末のスリープを解除する</string>
   <string name="volbtn_music_controls_title">再生コントロール</string>
   <string name="volbtn_music_controls_summary">画面消灯時に音量キーの長押しで曲をシークする</string>
   <string name="volbtn_cursor_control_title">キーボードカーソルコントロール</string>
   <string name="volbtn_cursor_control_off">無効</string>
   <string name="volbtn_cursor_control_on">音量を上げる/下げるボタンでカーソルを左/右に移動する</string>
   <string name="volbtn_cursor_control_on_reverse">音量を上げる/下げるボタンでカーソルを右/左に移動する</string>
+  <string name="swap_volume_buttons_title">音量ボタンの入れ替え</string>
   <string name="swap_volume_buttons_summary">画面を回転したときに音量ボタンを入れ替える</string>
   <string name="button_backlight_title">バックライト</string>
   <string name="button_backlight_enabled">ボタンを点灯する</string>
@@ -663,7 +676,7 @@
   <string name="status_bar_signal_text_title">電波の状態のスタイル</string>
   <string name="status_bar_signal_style_icon">アイコン</string>
   <string name="status_bar_signal_style_text">テキスト</string>
-  <string name="status_bar_toggle_brightness">明るさコントロール</string>
+  <string name="status_bar_toggle_brightness">明るさのコントロール</string>
   <string name="status_bar_toggle_brightness_summary">ステータスバーの上をスライドして明るさを調整する</string>
   <string name="status_bar_toggle_info">明るさの自動調整が有効になっています</string>
   <string name="status_bar_notif_count_title">通知の数を表示</string>
@@ -678,7 +691,7 @@
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">セキュアSMSの設定を管理する</string>
   <string name="custom_runtime_warning_title">警告</string>
-  <string name="custom_runtime_warning_message">ARTは非常に実験的であり、不安定性、クラッシュ、データの損失、端末の正常な起動を妨げる原因になる可能性があるため、CyanogenModでは公式にサポートしていません。詳細については&lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt;を参照してください。&lt;br/&gt;&lt;br/&gt;ARTをランタイムとして有効にしている場合はバグ報告を送信しないようにご協力をお願いします。&lt;br/&gt;&lt;br/&gt;ランタイムを<xliff:g id="old" example="libdvm.so">%1$s</xliff:g>から<xliff:g id="new" example="libart.so">%2$s</xliff:g>に変更するために再起動してもよろしいですか？</string>
+  <string name="custom_runtime_warning_message">ARTは非常に実験的であり、不安定性、クラッシュ、データの損失、端末の正常な起動を妨げる原因になる可能性があるため、CyanogenModでは公式にサポートされていません。詳細については&lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt;を参照してください。&lt;br/&gt;&lt;br/&gt;ARTをランタイムとして有効にしている場合はバグ報告を送信しないようにご協力をお願いします。&lt;br/&gt;&lt;br/&gt;ランタイムを<xliff:g id="old" example="libdvm.so">%1$s</xliff:g>から<xliff:g id="new" example="libart.so">%2$s</xliff:g>に変更するために再起動してもよろしいですか？</string>
   <string name="gps_download_data_wifi_only">GPS補助データをWi-Fiネットワーク経由でのみダウンロード</string>
   <string name="battery_info_status_charging_dock_ac">（AC接続）</string>
   <string name="battery_info_status_charging_dock_usb">（USB接続）</string>
@@ -835,4 +848,10 @@
   <string name="voice_wakeup_activity_title">開始するアクティビティ</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
   <string name="sub_no_sim">SIMがありません</string>
+  <string name="multi_sim_settings_title">マルチSIM</string>
+  <string name="multi_sim_settings_group_summary">デフォルトのSIMの選択</string>
+  <string name="voice_title">音声通話</string>
+  <string name="data_title">データ通信</string>
+  <string name="sms_title">SMSの送信</string>
+  <string name="priority_sub_title">サブスクリプションの優先順位</string>
 </resources>

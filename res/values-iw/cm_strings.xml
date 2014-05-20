@@ -309,6 +309,29 @@
   <string name="auto_brightness_preview">תצוגה מקדימה</string>
   <string name="auto_brightness_preview_dialog_title">תצוגה מקדימה של עקומת בהירות</string>
   <string name="auto_brightness_help_dialog_title">עזרה</string>
+  <string name="auto_brightness_help_text"><b>How is brightness calculated?</b>
+\n\n
+The brightness curve is calculated by performing a <i>cubic spline interpolation</i>
+on a given number of <i>control points</i>. It\'s not a \'bucket-type\' calculation where
+screen brightness will stay constant for a specific range of ambient brightness. That way,
+small changes in ambient brightness do not cause a large jump in screen brightness; however,
+it can be a little hard to predict the exact consequences of changing control points.\n
+To help with that, a preview of the calculated curve can be examined. Please note that the
+preview shows the curve in <i>logarithmic</i> scale, so that all control points can be shown
+distinctively. When using a linear scale, it wouldn\'t be possible to distinguish the tendentially
+more important control points in the lower range of ambient brightness.
+\n\n
+<b>How to edit the brightness curve?</b>
+\n\n
+Each line in the brightness list corresponds to one <i>control point</i> of the
+brightness curve. To edit the brightness level of the point, you can use the slider
+present in each line. The screen brightness will be changed accordingly while touching
+the slider to give a preview of the light level.\n
+Additional options are available by long pressing a line. By selecting \'Edit\', you can
+adjust the ambient brightness level of the control point as well as manually input the
+desired screen brightness. Selecting \'Split\' allows you to to duplicate one line into
+two in order to insert additional control points. \'Remove\' deletes the selected line.
+    </string>
   <string name="auto_brightness_sensitivity_title">כיוונון רגישות</string>
   <string name="auto_brightness_sensitivity_verylow">נמוך מאוד</string>
   <string name="auto_brightness_sensitivity_low">נמוך</string>
@@ -347,6 +370,8 @@
   <string name="quiet_hours_still_summary">בטל רטט</string>
   <string name="quiet_hours_dim">אור הודעה</string>
   <string name="quiet_hours_dim_summary">בטל אור התראה</string>
+  <string name="quiet_hours_haptic">משוב רטט</string>
+  <string name="quiet_hours_haptic_summary">בטל משוב רטט</string>
   <string name="quiet_hours_active_from">פעיל מ</string>
   <string name="quiet_hours_active_to">ל</string>
   <string name="quiet_hours_ringer_allow_all">צלצל עבור כל המתקשרים</string>
@@ -399,8 +424,10 @@
   <string name="io_sched_title">מתזמן קלט/פלט</string>
   <string name="perf_profile_title">פרופיל</string>
   <string name="memory_management_title">ניהול זיכרון</string>
+  <string name="pref_ksm_title">איחוד דפי זכרון זהים (KSM)</string>
   <string name="pref_ksm_summary">KSM מפחית דרישות זיכרון ומגדיל ביצועים</string>
   <string name="pref_purgeable_assets_title">אפשר טיהור פעיליות</string>
+  <string name="pref_purgeable_assets_summary">טיהור מפת נכסי הזיכרון מאפשר את שחרורו של זיכרון RAM נוסף בעת הצורך (דרושה הפעלה מחדש)</string>
   <string name="pref_use_16bpp_alpha_title">שקיפות 16 סיביות</string>
   <string name="pref_use_16bpp_alpha_summary">יותר ביצועים גרפיים, אבל איכות קטנה ועלול לגרום אירועים חזותיים (דרושה הפעלה מחדש)</string>
   <string name="pref_force_highend_gfx_title">הכרח גרפיקה באיכות גבוהה</string>
@@ -628,6 +655,7 @@
   <string name="hardware_keys_action_voice_search">חיפוש קולי</string>
   <string name="hardware_keys_action_in_app_search">חיפוש ביישום</string>
   <string name="hardware_keys_action_launch_camera">הפעל מצלמה</string>
+  <string name="button_wake_title">התעוררות</string>
   <string name="home_wake_summary">לחיצה על כפתור הבית יעיר את המכשיר</string>
   <string name="camera_wake_summary">לחיצה על כפתור המצלמה יעיר את המכשיר</string>
   <string name="camera_sleep_on_release_title">הצצה מהמסך</string>
@@ -846,4 +874,10 @@
   <string name="voice_wakeup_activity_title">פעילות להפעלה</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
   <string name="sub_no_sim">אין SIM</string>
+  <string name="multi_sim_settings_title">מרובה SIM</string>
+  <string name="multi_sim_settings_group_summary">SIM ברירת מחדל</string>
+  <string name="voice_title">שיחות קוליות</string>
+  <string name="data_title">שיחות נתונים</string>
+  <string name="sms_title">שולח SMS</string>
+  <string name="priority_sub_title">העדפת הרשמה</string>
 </resources>

@@ -89,7 +89,7 @@
   <string name="sound_mode">提醒模式</string>
   <string name="ringer_mode">铃声模式</string>
   <string name="lights_mode">灯光模式</string>
-  <string name="vibrate_mode">震动模式</string>
+  <string name="vibrate_mode">振动模式</string>
   <string name="choose_soundtone">选择提醒音</string>
   <string name="choose_ringtone">选择铃声</string>
   <string name="soundtone_title">提醒音</string>
@@ -155,6 +155,7 @@
   <string name="notification_light_missed_call_title">未接来电</string>
   <string name="notification_light_voicemail_title">语音信箱</string>
   <string name="adaptive_backlight_title">自适应背光</string>
+  <string name="adaptive_backlight_summary">动态调整屏幕的背光亮度以最大化电池寿命，同时维持可用性</string>
   <string name="wake_when_plugged_or_unplugged_title">插入/拔出电源点亮屏幕</string>
   <string name="wake_when_plugged_or_unplugged_summary">连接或断开电源时点亮屏幕</string>
   <string name="screen_animation_off_title">锁屏效果</string>
@@ -257,6 +258,7 @@
   <string name="title_tile_network_adb">网络 ADB 调试</string>
   <string name="title_dynamic_tiles">动态按钮</string>
   <string name="dynamic_tiles_note_title">注意</string>
+  <string name="dynamic_tiles_note_summary">动态按钮不是随时都会显示的，它们仅会在有相关的系统事件时出现</string>
   <string name="title_dynamic_alarm">闹钟</string>
   <string name="title_dynamic_bugreport">错误报告</string>
   <string name="title_dynamic_dock_battery">基座电池</string>
@@ -278,9 +280,9 @@
   <string name="pref_ring_mode_title">声音模式</string>
   <string name="pref_ring_mode_summary">查看或改变声音按钮模式</string>
   <string name="cm_sound_mode_silent">静音</string>
-  <string name="cm_sound_mode_vibrate">震动</string>
+  <string name="cm_sound_mode_vibrate">振动</string>
   <string name="cm_sound_mode_sound">声音</string>
-  <string name="cm_sound_mode_soundVibrate">声音 &amp; 震动</string>
+  <string name="cm_sound_mode_soundVibrate">声音 &amp; 振动</string>
   <string name="tiles_reset_title">重置</string>
   <string name="tiles_reset_message">您确定将显示的按钮与布局还原为默认？</string>
   <string name="auto_brightness_setup_title">自动亮度</string>
@@ -307,6 +309,15 @@
   <string name="auto_brightness_preview">预览</string>
   <string name="auto_brightness_preview_dialog_title">亮度曲线</string>
   <string name="auto_brightness_help_dialog_title">帮助</string>
+  <string name="auto_brightness_help_text"><b>亮度是如何计算的？</b>
+\n\n
+亮度曲线是通过在选定的<i>控制点</i>上进行<i>三次样条插值</i>而计算出的。这并不是一个设定了环境亮度范围内，屏幕亮度就不会改变的计算方式。通过这种特殊方式，环境亮度的细微变化将不会导致屏幕亮度的大幅度改变。由于改变控制点会导致的结果是难以预测的，我们为您提供了一个计算后的曲线预览。\n
+请注意：为了能够清晰的显示各个控制点，预览是使用<i>对数刻度</i>绘制的。如果使用的是线性刻度，您将无法明确地区分各个控制点，特别是处于范围底部的。
+\n\n
+<b>如何编辑亮度曲线？</b>
+\n\n
+在亮度列表里的每一行都对应着一个在亮度曲线上的<i>控制点</i>。您可以通过各行的滑块来调整每个点的亮度级别。触摸滑块时屏幕的亮度也会做出相应的改变，作为一个亮度级别的预览。\n
+长按任何一行将显示更多的选项。选择“编辑”将让您调节环境亮度级别并手动输入所需的屏幕亮度。选择“分离”将让您把一行分离为两行并同时加入更多的控制点。选择“移除”将移除所选行。</string>
   <string name="auto_brightness_sensitivity_title">调整敏感度</string>
   <string name="auto_brightness_sensitivity_verylow">非常低</string>
   <string name="auto_brightness_sensitivity_low">低</string>
@@ -337,6 +348,16 @@
   <string name="quiet_hours_summary">配置设备应该安静的时段</string>
   <string name="quiet_hours_enabled">开启安静时段</string>
   <string name="quiet_hours_ringer">电话铃声</string>
+  <string name="quiet_hours_mute">通知</string>
+  <string name="quiet_hours_mute_summary">静音通知</string>
+  <string name="quiet_hours_system">系统声音</string>
+  <string name="quiet_hours_system_summary">禁用系统声音</string>
+  <string name="quiet_hours_still">振动</string>
+  <string name="quiet_hours_still_summary">禁用振动</string>
+  <string name="quiet_hours_dim">通知指示灯</string>
+  <string name="quiet_hours_dim_summary">禁用通知指示灯</string>
+  <string name="quiet_hours_haptic">触觉反馈</string>
+  <string name="quiet_hours_haptic_summary">禁用触觉反馈</string>
   <string name="quiet_hours_active_from">从</string>
   <string name="quiet_hours_active_to">激活到</string>
   <string name="quiet_hours_ringer_allow_all">所有来电响铃</string>
@@ -404,6 +425,7 @@
   <string name="changelog_error">无法读取更改记录</string>
   <string name="changelog_unknown">未知</string>
   <string name="changelog_version">版本</string>
+  <string name="contributor_cloud_title">查看贡献者</string>
   <string name="cmupdate_settings_title">CyanogenMod 更新</string>
   <string name="cmupdate_settings_summary">检查、查看或安装可用的更新</string>
   <string name="advanced_settings_title">高级</string>
@@ -423,6 +445,7 @@
   <string name="privacy_guard_help_title">帮助</string>
   <string name="privacy_guard_reset_title">重置</string>
   <string name="privacy_guard_reset_text">重置权限？</string>
+  <string name="privacy_guard_help_text">在这个页面上，您可以简单地通过点击来选择在哪些应用上启用隐私防护。选中的应用将无法访问个人数据，例如：联系人、短信或通话记录。长按一个应用的条目打开应用详细页面。\n\n默认不显示内置应用，在菜单中选择相应选项可以显示它们。</string>
   <string name="privacy_guard_manager_show_system_apps">显示内置应用</string>
   <string name="privacy_guard_manager_filter_permissions">权限过滤</string>
   <string name="privacy_guard_advanced_settings_title">高级</string>
@@ -453,7 +476,7 @@
   <string name="remove_blacklist_entry">您确定要从黑名单中移除吗？</string>
   <string name="select_contact">选择联系人</string>
   <string name="vibrator_intensity_title">振动强度</string>
-  <string name="vibrator_warning">不推荐高于 %1$d 的震动强度</string>
+  <string name="vibrator_warning">不推荐高于 %1$d 的振动强度</string>
   <string name="color_calibration_title">颜色校准</string>
   <string name="color_calibration_summary">校准屏幕颜色</string>
   <string name="color_red_title">红</string>
@@ -470,7 +493,7 @@
   <string name="headset_connect_player_summary">插入耳机时启动默认音乐播放器</string>
   <string name="more_device_controls_title">更多\u2026</string>
   <string name="more_device_settings_title">其他设备选项</string>
-  <string name="sensors_motors_title">传感器 &amp; 震动</string>
+  <string name="sensors_motors_title">传感器 &amp; 振动</string>
   <string name="display_calibration_title">屏幕校准</string>
   <string name="adb_notify">USB 调试通知</string>
   <string name="adb_notify_summary">USB 调试模式连接时将显示一个通知</string>
@@ -505,7 +528,7 @@
   <string name="power_notifications_category_title">插入/拔出电源提示音</string>
   <string name="power_notifications_enable_title">启用</string>
   <string name="power_notifications_enable_summary">连接或断开电源时发出声音</string>
-  <string name="power_notifications_vibrate_title">震动</string>
+  <string name="power_notifications_vibrate_title">振动</string>
   <string name="power_notifications_ringtone_title">提示音</string>
   <string name="power_notifications_ringtone_silent">静音</string>
   <string name="lockscreen_battery_status_title">电池状态</string>
@@ -580,9 +603,9 @@
   <string name="navring_action_kill_app">终止程序</string>
   <string name="navring_action_none">无</string>
   <string name="navring_action_take_screenshot">屏幕截图</string>
-  <string name="navring_action_ring_vibrate">响铃/震动</string>
+  <string name="navring_action_ring_vibrate">响铃/振动</string>
   <string name="navring_action_ring_silent">响铃/静音</string>
-  <string name="navring_action_ring_vibrate_silent">响铃/震动/静音</string>
+  <string name="navring_action_ring_vibrate_silent">响铃/振动/静音</string>
   <string name="navring_action_screen_off">关闭屏幕</string>
   <string name="navring_action_torch">手电筒开关</string>
   <string name="navring_action_google_now">Google 即时</string>
@@ -595,6 +618,8 @@
   <string name="expanded_desktop_disabled">禁用</string>
   <string name="expanded_desktop_status_bar">显示状态栏</string>
   <string name="expanded_desktop_no_status_bar">隐藏状态栏</string>
+  <string name="expanded_desktop_system_bars_visibility">在锁屏中禁用</string>
+  <string name="expanded_desktop_system_bars_visibility_summary">扩展桌面模式中在锁屏界面显示状态栏和导航栏</string>
   <string name="power_menu_profiles_title">情景模式</string>
   <string name="power_menu_airplane_title">飞行模式</string>
   <string name="power_menu_user_title">用户切换器</string>
@@ -616,6 +641,7 @@
   <string name="hardware_keys_action_voice_search">语音搜索</string>
   <string name="hardware_keys_action_in_app_search">程序内搜索</string>
   <string name="hardware_keys_action_launch_camera">启动相机</string>
+  <string name="button_wake_title">唤醒</string>
   <string name="home_wake_summary">按 Home 键唤醒设备</string>
   <string name="camera_wake_summary">按相机键唤醒设备</string>
   <string name="camera_sleep_on_release_title">屏幕窥探</string>
@@ -629,6 +655,7 @@
   <string name="volbtn_cursor_control_off">禁用</string>
   <string name="volbtn_cursor_control_on">音量+/-光标左/右移动</string>
   <string name="volbtn_cursor_control_on_reverse">音量+/-光标右/左移动</string>
+  <string name="swap_volume_buttons_title">重新调整</string>
   <string name="swap_volume_buttons_summary">旋转屏幕时交换音量键的布局</string>
   <string name="button_backlight_title">背光灯</string>
   <string name="button_backlight_enabled">点亮按键</string>
@@ -670,6 +697,7 @@
   <string name="development_shortcut_title">开发快捷方式</string>
   <string name="development_shortcut_summary">在通知区域和最近应用列表中启用“清除数据”和“强行停止”选项</string>
   <string name="usb_mass_storage_title">大容量存储 (UMS)</string>
+  <string name="usb_mass_storage_summary">挂载 SD 卡为闪存设备，使您可以在计算机和 SD 卡之间传输文件</string>
   <string name="storage_rescan_media">为存储卷重新扫描媒体</string>
   <string name="storage_rescan_media_complete">扫描完成</string>
   <string name="whisperpush_title">WhisperPush</string>
@@ -709,7 +737,7 @@
   <string name="app_ops_summaries_coarse_location">粗略位置</string>
   <string name="app_ops_summaries_fine_location">准确位置</string>
   <string name="app_ops_summaries_gps">GPS</string>
-  <string name="app_ops_summaries_vibrate">震动</string>
+  <string name="app_ops_summaries_vibrate">振动</string>
   <string name="app_ops_summaries_read_contacts">读取联系人</string>
   <string name="app_ops_summaries_modify_contacts">修改联系人</string>
   <string name="app_ops_summaries_read_call_log">读取通话记录</string>
@@ -832,4 +860,11 @@
   <string name="voice_wakeup_activity_title">要启动的活动</string>
   <string name="voice_wakeup_default_activity">Google 即时</string>
   <string name="sub_no_sim">无 SIM 卡</string>
+  <string name="multi_sim_settings_title">多 SIM 卡</string>
+  <string name="multi_sim_settings_group_summary">默认 SIM 卡</string>
+  <string name="voice_title">语音通话</string>
+  <string name="data_title">数据通话</string>
+  <string name="sms_title">正在发送短信</string>
+  <string name="priority_sub_title">优先订阅</string>
+  <string name="bluetooth_accept_all_files">接受所有文件类型</string>
 </resources>
