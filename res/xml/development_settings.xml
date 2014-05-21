@@ -128,6 +128,11 @@
             android:key="quick_settings_tiles"
             android:title="@string/quick_settings_developer_tiles"
             android:fragment="com.android.settings.development.qstile.DevelopmentTileConfigFragment" />
+
+        <SwitchPreference
+            android:key="update_recovery"
+            android:title="@string/update_recovery_title"
+            android:summary="@string/update_recovery_summary" />
     </PreferenceCategory>
 
     <PreferenceCategory
