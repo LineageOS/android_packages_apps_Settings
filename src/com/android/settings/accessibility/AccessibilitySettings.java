@@ -87,10 +87,6 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
     // Preferences
     private static final String TOGGLE_LARGE_TEXT_PREFERENCE =
             "toggle_large_text_preference";
-    private static final String TOGGLE_POWER_BUTTON_ENDS_CALL_PREFERENCE =
-            "toggle_power_button_ends_call_preference";
-    private static final String TOGGLE_HOME_BUTTON_ANSWERS_CALL_PREFERENCE =
-            "toggle_home_button_answers_call_preference";
     private static final String TOGGLE_SPEAK_PASSWORD_PREFERENCE =
             "toggle_speak_password_preference";
     private static final String SELECT_LONG_PRESS_TIMEOUT_PREFERENCE =
@@ -181,8 +177,6 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
     private PreferenceCategory mSystemsCategory;
 
     private CheckBoxPreference mToggleLargeTextPreference;
-    private CheckBoxPreference mTogglePowerButtonEndsCallPreference;
-    private CheckBoxPreference mToggleHomeButtonAnswersCallPreference;
     private CheckBoxPreference mToggleSpeakPasswordPreference;
     private ListPreference mSelectLongPressTimeoutPreference;
     private Preference mNoServicesMessagePreference;
@@ -236,12 +230,6 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
         if (mToggleLargeTextPreference == preference) {
             handleToggleLargeTextPreferenceClick();
             return true;
-        } else if (mTogglePowerButtonEndsCallPreference == preference) {
-            handleTogglePowerButtonEndsCallPreferenceClick();
-            return true;
-        } else if (mToggleHomeButtonAnswersCallPreference == preference) {
-            handleToggleHomeButtonAnswersCallPreferenceClick();
-            return true;
         } else if (mToggleSpeakPasswordPreference == preference) {
             handleToggleSpeakPasswordPreferenceClick();
             return true;
@@ -262,22 +250,6 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
         } catch (RemoteException re) {
             /* ignore */
         }
-    }
-
-    private void handleTogglePowerButtonEndsCallPreferenceClick() {
-        Settings.Secure.putInt(getContentResolver(),
-                Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR,
-                (mTogglePowerButtonEndsCallPreference.isChecked()
-                        ? Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR_HANGUP
-                        : Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR_SCREEN_OFF));
-    }
-
-    private void handleToggleHomeButtonAnswersCallPreferenceClick() {
-        Settings.Secure.putInt(getContentResolver(),
-                Settings.Secure.RING_HOME_BUTTON_BEHAVIOR,
-                (mToggleHomeButtonAnswersCallPreference.isChecked()
-                        ? Settings.Secure.RING_HOME_BUTTON_BEHAVIOR_ANSWER
-                        : Settings.Secure.RING_HOME_BUTTON_BEHAVIOR_DO_NOTHING));
     }
 
     private void handleToggleSpeakPasswordPreferenceClick() {
@@ -317,22 +289,6 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
         // Large text.
         mToggleLargeTextPreference =
                 (CheckBoxPreference) findPreference(TOGGLE_LARGE_TEXT_PREFERENCE);
-
-        // Power button ends calls.
-        mTogglePowerButtonEndsCallPreference =
-                (CheckBoxPreference) findPreference(TOGGLE_POWER_BUTTON_ENDS_CALL_PREFERENCE);
-        if (!KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_POWER)
-                || !Utils.isVoiceCapable(getActivity())) {
-            mSystemsCategory.removePreference(mTogglePowerButtonEndsCallPreference);
-        }
-
-        // Home button answers calls.
-        mToggleHomeButtonAnswersCallPreference =
-            (CheckBoxPreference) findPreference(TOGGLE_HOME_BUTTON_ANSWERS_CALL_PREFERENCE);
-        if (!KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_HOME)
-                || !Utils.isVoiceCapable(getActivity())) {
-            mSystemsCategory.removePreference(mToggleHomeButtonAnswersCallPreference);
-        }
 
         // Speak passwords.
         mToggleSpeakPasswordPreference =
@@ -478,28 +434,6 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
             /* ignore */
         }
         mToggleLargeTextPreference.setChecked(mCurConfig.fontScale == LARGE_FONT_SCALE);
-
-        // Power button ends calls.
-        if (KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_POWER)
-                && Utils.isVoiceCapable(getActivity())) {
-            final int incallPowerBehavior = Settings.Secure.getInt(getContentResolver(),
-                    Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR,
-                    Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR_DEFAULT);
-            final boolean powerButtonEndsCall =
-                    (incallPowerBehavior == Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR_HANGUP);
-            mTogglePowerButtonEndsCallPreference.setChecked(powerButtonEndsCall);
-        }
-
-        // Home button answers calls.
-        if (KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_HOME)
-                && Utils.isVoiceCapable(getActivity())) {
-            final int incallHomeBehavior = Settings.Secure.getInt(getContentResolver(),
-                    Settings.Secure.RING_HOME_BUTTON_BEHAVIOR,
-                    Settings.Secure.RING_HOME_BUTTON_BEHAVIOR_DEFAULT);
-            final boolean homeButtonAnswersCall =
-                (incallHomeBehavior == Settings.Secure.RING_HOME_BUTTON_BEHAVIOR_ANSWER);
-            mToggleHomeButtonAnswersCallPreference.setChecked(homeButtonAnswersCall);
-        }
 
         // Speak passwords.
         final boolean speakPasswordEnabled = Settings.Secure.getInt(getContentResolver(),
