@@ -52,7 +52,7 @@ public class BluetoothDiscoverableTimeoutReceiver extends BroadcastReceiver {
         pending = PendingIntent.getBroadcast(
             context, 0, intent, 0);
 
-        alarmManager.set(AlarmManager.RTC_WAKEUP, alarmTime, pending);
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, alarmTime, pending);
     }
 
     static void cancelDiscoverableAlarm(Context context) {
