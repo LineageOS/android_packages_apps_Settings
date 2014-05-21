@@ -77,11 +77,13 @@ public class DeviceInfoSettings extends RestrictedSettingsFragment {
     private static final String KEY_DEVICE_MEMORY = "device_memory";
     private static final String KEY_CM_UPDATES = "cm_updates";
     private static final String KEY_STATUS = "status_info";
+    private static final String BUGREPORT = "bugreport";
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
     long[] mHits = new long[3];
     int mDevHitCountdown;
     Toast mDevHitToast;
+    private Preference mBugreport;
 
     public DeviceInfoSettings() {
         super(null /* Don't PIN protect the entire screen */);
@@ -201,6 +203,8 @@ public class DeviceInfoSettings extends RestrictedSettingsFragment {
         // Remove regulatory information if not enabled.
         removePreferenceIfBoolFalse(KEY_REGULATORY_INFO,
                 R.bool.config_show_regulatory_info);
+
+        mBugreport = findPreference(BUGREPORT);
     }
 
     @Override

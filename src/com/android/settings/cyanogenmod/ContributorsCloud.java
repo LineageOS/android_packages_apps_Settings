@@ -35,26 +35,35 @@ public class ContributorsCloud extends Fragment {
             "</html>";
 
     private ViewGroup mContainer;
+    private WebView mWebView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
         mContainer = container;
-        WebView view= new WebView(getActivity());
-        view.setBackgroundColor(Color.DKGRAY);
-        view.loadDataWithBaseURL("file:///android_asset/", CONTENT_HTML, "text/html", "utf-8", null);
-        view.setVerticalScrollBarEnabled(false);
-        view.setHorizontalScrollBarEnabled(false);
-        WebSettings settings = view.getSettings();
+        mWebView = new WebView(getActivity());
+        mWebView.setBackgroundColor(Color.DKGRAY);
+        mWebView.loadDataWithBaseURL("file:///android_asset/", CONTENT_HTML, "text/html", "utf-8", null);
+        mWebView.setVerticalScrollBarEnabled(false);
+        mWebView.setHorizontalScrollBarEnabled(false);
+        WebSettings settings = mWebView.getSettings();
         settings.setBuiltInZoomControls(true);
         settings.setLoadWithOverviewMode(true);
         settings.setUseWideViewPort(true);
         settings.setDisplayZoomControls(false);
-        return view;
+        return mWebView;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         mContainer.setPadding(0, 0, 0, 0);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mWebView.setVisibility(View.GONE);
+        mWebView.destroy();
+        mContainer.removeView(mWebView);
     }
 }
