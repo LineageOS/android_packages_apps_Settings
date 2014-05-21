@@ -33,6 +33,8 @@ import android.preference.PreferenceScreen;
 import android.provider.Settings;
 
 import android.view.IWindowManager;
+import android.view.KeyCharacterMap;
+import android.view.KeyEvent;
 import android.view.WindowManagerGlobal;
 
 import com.android.settings.R;
@@ -56,7 +58,10 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private static final String KEY_VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
     private static final String KEY_BLUETOOTH_INPUT_SETTINGS = "bluetooth_input_settings";
     private static final String DISABLE_NAV_KEYS = "disable_nav_keys";
+    private static final String KEY_POWER_END_CALL = "power_end_call";
+    private static final String KEY_HOME_ANSWER_CALL = "home_answer_call";
 
+    private static final String CATEGORY_POWER = "power_key";
     private static final String CATEGORY_HOME = "home_key";
     private static final String CATEGORY_MENU = "menu_key";
     private static final String CATEGORY_ASSIST = "assist_key";
@@ -99,6 +104,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private ListPreference mVolumeKeyCursorControl;
     private CheckBoxPreference mSwapVolumeButtons;
     private CheckBoxPreference mDisableNavigationKeys;
+    private CheckBoxPreference mPowerEndCall;
+    private CheckBoxPreference mHomeAnswerCall;
 
     private Handler mHandler;
 
@@ -115,6 +122,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         final int deviceKeys = getResources().getInteger(
                 com.android.internal.R.integer.config_deviceHardwareKeys);
 
+        final boolean hasPowerKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_POWER);
         final boolean hasHomeKey = (deviceKeys & KEY_MASK_HOME) != 0;
         final boolean hasMenuKey = (deviceKeys & KEY_MASK_MENU) != 0;
         final boolean hasAssistKey = (deviceKeys & KEY_MASK_ASSIST) != 0;
@@ -122,6 +130,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         final boolean hasCameraKey = (deviceKeys & KEY_MASK_CAMERA) != 0;
 
         boolean hasAnyBindableKey = false;
+        final PreferenceCategory powerCategory =
+                (PreferenceCategory) prefScreen.findPreference(CATEGORY_POWER);
         final PreferenceCategory homeCategory =
                 (PreferenceCategory) prefScreen.findPreference(CATEGORY_HOME);
         final PreferenceCategory menuCategory =
@@ -134,6 +144,12 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                 (PreferenceCategory) prefScreen.findPreference(CATEGORY_CAMERA);
         final PreferenceCategory volumeCategory =
                 (PreferenceCategory) prefScreen.findPreference(CATEGORY_VOLUME);
+
+        // Power button ends calls.
+        mPowerEndCall = (CheckBoxPreference) findPreference(KEY_POWER_END_CALL);
+
+        // Home button answers calls.
+        mHomeAnswerCall = (CheckBoxPreference) findPreference(KEY_HOME_ANSWER_CALL);
 
         mHandler = new Handler();
 
@@ -160,10 +176,23 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             prefScreen.removePreference(mDisableNavigationKeys);
         }
 
+        if (hasPowerKey) {
+            if (!Utils.isVoiceCapable(getActivity())) {
+                powerCategory.removePreference(mPowerEndCall);
+                mPowerEndCall = null;
+            }
+        } else {
+            prefScreen.removePreference(powerCategory);
+        }
 
         if (hasHomeKey) {
             if (!res.getBoolean(R.bool.config_show_homeWake)) {
                 homeCategory.removePreference(findPreference(Settings.System.HOME_WAKE_SCREEN));
+            }
+
+            if (!Utils.isVoiceCapable(getActivity())) {
+                homeCategory.removePreference(mHomeAnswerCall);
+                mHomeAnswerCall = null;
             }
 
             int defaultLongPressAction = res.getInteger(
@@ -283,6 +312,31 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
         Utils.updatePreferenceToSpecificActivityFromMetaDataOrRemove(getActivity(),
                 getPreferenceScreen(), KEY_BLUETOOTH_INPUT_SETTINGS);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        // Power button ends calls.
+        if (mPowerEndCall != null) {
+            final int incallPowerBehavior = Settings.Secure.getInt(getContentResolver(),
+                    Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR,
+                    Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR_DEFAULT);
+            final boolean powerButtonEndsCall =
+                    (incallPowerBehavior == Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR_HANGUP);
+            mPowerEndCall.setChecked(powerButtonEndsCall);
+        }
+
+        // Home button answers calls.
+        if (mHomeAnswerCall != null) {
+            final int incallHomeBehavior = Settings.Secure.getInt(getContentResolver(),
+                    Settings.Secure.RING_HOME_BUTTON_BEHAVIOR,
+                    Settings.Secure.RING_HOME_BUTTON_BEHAVIOR_DEFAULT);
+            final boolean homeButtonAnswersCall =
+                (incallHomeBehavior == Settings.Secure.RING_HOME_BUTTON_BEHAVIOR_ANSWER);
+            mHomeAnswerCall.setChecked(homeButtonAnswersCall);
+        }
     }
 
     private ListPreference initActionList(String key, int value) {
@@ -447,8 +501,28 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                     mDisableNavigationKeys.setEnabled(true);
                 }
             }, 1000);
+        } else if (preference == mPowerEndCall) {
+            handleTogglePowerButtonEndsCallPreferenceClick();
+            return true;
+        } else if (preference == mHomeAnswerCall) {
+            handleToggleHomeButtonAnswersCallPreferenceClick();
+            return true;
         }
 
         return super.onPreferenceTreeClick(preferenceScreen, preference);
+    }
+
+    private void handleTogglePowerButtonEndsCallPreferenceClick() {
+        Settings.Secure.putInt(getContentResolver(),
+                Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR, (mPowerEndCall.isChecked()
+                        ? Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR_HANGUP
+                        : Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR_SCREEN_OFF));
+    }
+
+    private void handleToggleHomeButtonAnswersCallPreferenceClick() {
+        Settings.Secure.putInt(getContentResolver(),
+                Settings.Secure.RING_HOME_BUTTON_BEHAVIOR, (mHomeAnswerCall.isChecked()
+                        ? Settings.Secure.RING_HOME_BUTTON_BEHAVIOR_ANSWER
+                        : Settings.Secure.RING_HOME_BUTTON_BEHAVIOR_DO_NOTHING));
     }
 }
