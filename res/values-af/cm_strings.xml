@@ -121,6 +121,7 @@
   <string name="volume_ring_only_description">Luitoon</string>
   <string name="link_volume_ringtones">Koppel foon-luitoon &amp; kennisgewing volumes</string>
   <string name="link_volume_mutes">Demping affekteer ook kennisgewings</string>
+  <string name="volume_keys_control_ring_stream">Die volume knoppies beheer luitoon volume</string>
   <string name="ring_mode_title">Luimetode</string>
   <string name="ring_mode_normal">Normaal</string>
   <string name="ring_mode_vibrate">Vibreer</string>
@@ -136,6 +137,7 @@
   <string name="notification_vibrate_during_calls_title">Vibreer tydens oproep</string>
   <string name="notification_vibrate_during_calls_summary">Inkomende kennisgewings sal saggies vibreer tydens oproepe</string>
   <string name="volume_adjust_sounds_enable_title">Volume verandering</string>
+  <string name="volume_adjust_sounds_enable_summary">Speel klank wanneer die aanpassing van volume met die volume knoppies</string>
   <string name="icon_picker_title">Kies ikoon bron</string>
   <string name="icon_picker_system_icons_title">Stelsel ikone</string>
   <string name="icon_picker_gallery_title">Galery</string>
@@ -153,9 +155,12 @@
   <string name="notification_light_missed_call_title">Oproep gemis</string>
   <string name="notification_light_voicemail_title">Stempos</string>
   <string name="adaptive_backlight_title">Aanpasbare agtergrond verligting</string>
+  <string name="adaptive_backlight_summary">Dinamies verander die helderheid van die skerm om battery lewe te maksimeer en bruikbaarheid te maksimeer</string>
   <string name="wake_when_plugged_or_unplugged_title">Word wakker op in/uit prop</string>
   <string name="wake_when_plugged_or_unplugged_summary">Skakel die skerm aan met die koppeling of ontkoppeling van \'n kragbron</string>
   <string name="screen_animation_off_title">Skermaf animasie</string>
+  <string name="screen_animation_style_title">Skerm-af animasie styl</string>
+  <string name="screen_animation_style_disabled">Gediaktiveer</string>
   <string name="screen_animation_style_electronbeam">Elektronstraal</string>
   <string name="screen_animation_style_fade">Vervaag</string>
   <string name="edit_light_settings">&gt;Verander liggie instellings</string>
@@ -195,6 +200,7 @@
   <string name="unlock_camera_unlock_summary">Druk van die kamera knoppie ontsluit die toestel</string>
   <string name="unlock_quick_unlock_control_title">Vinnige oopsluit</string>
   <string name="unlock_quick_unlock_control_summary">Ontsluit outomaties wanneer die korrekte PIN/wagwoord ingesleutel is</string>
+  <string name="unlock_buttons_disabled_by_security">Slot skerm is veilig</string>
   <string name="delay_and_timeout_title">Slotskerm sluit vertraging</string>
   <string name="slide_lock_delay_title">Vertraag slotskerm sluit</string>
   <string name="slide_lock_timeout_delay_title">Vertraging na skerm afsnytyd verstryk</string>
@@ -221,6 +227,8 @@
   <string name="tile_picker_title">Teël uitleg</string>
   <string name="tile_picker_summary">Bestuur die vertoonde teëls en hulle uitleg</string>
   <string name="tile_choose_title">Kies \'n teël</string>
+  <string name="title_qs_small_icons">Wys kleiner teëls</string>
+  <string name="summary_qs_small_icons">Gebruik kleiner teëls om die aantal kolomme te verhoog</string>
   <string name="title_tile_airplane">Vliegtuigmodus</string>
   <string name="title_tile_battery">Battery statistieke</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
@@ -250,6 +258,7 @@
   <string name="title_tile_network_adb">ADB oor netwerk</string>
   <string name="title_dynamic_tiles">Dinamiese teëls</string>
   <string name="dynamic_tiles_note_title">Nota:</string>
+  <string name="dynamic_tiles_note_summary">Dinamiese teëls is nie altyd sigbaar nie en sal net vertoon word deur \'n stelsel gebeurtenis</string>
   <string name="title_dynamic_alarm">Wekker</string>
   <string name="title_dynamic_bugreport">Foutverslag</string>
   <string name="title_dynamic_dock_battery">Dok battery</string>
@@ -300,6 +309,18 @@
   <string name="auto_brightness_preview">Voorskou</string>
   <string name="auto_brightness_preview_dialog_title">Helderheidskurwe voorbeeld</string>
   <string name="auto_brightness_help_dialog_title">Help</string>
+  <string name="auto_brightness_help_text"><b>Hoe word helderheid bereken?</b>
+\n\n
+Die helderheid kurwe word bereken deur die uitvoering van \'n <i>kubieke \'spline\' interpolasie</i> op \'n gegewe aantal <i>beheer punte</i>. Dit is nie \'n \'n emmer-tipe berekening waar helderheid van die skerm sal konstant bly vir \'n spesifieke reeks van die omringende helderheid. Op dié manier, kan klein veranderinge in die omringende helderheid nie \'n groot sprong in die helderheid van die skerm verander nie; egter dit kan \'n bietjie moeilik wees om die presiese gevolge van die verandering van beheer punte te voorspel.\n
+Om te help met dit, kan \'n voorskou van die berekende kurwe ondersoek word. Let daarop dat die voorskou toon die kurwe in \'n<i>logaritmiese</i> skaal, sodat al die kontrolepunte gewysig kan word in \'n eiesoortige manier. By die gebruik van \'n lineêre skaal, sou dit nie moontlik wees om die \'tendentially\' te onderskei nie, maar meer belangrik, beheer punte in die laer reeks van die omringende helderheid toe te pas.\n\n
+<b>Hoe om die helderheids kurwe te wysig?</b>
+\n\n
+Elke lyn in die helderheids lys sal ooreenstem met een <i>beheer punt</i> van die
+helderheids kurwe. Om die helderheid vlak van die punt te wysig , kan jy die glyer gebruik
+in elke lyn. Die helderheid van die skerm sal dienooreenkomstig verander terwyl die skyf-balk verander om \'n voorskou van die lig vlak weer te gee .\n
+Addisionele opsies is beskikbaar deur \'n lang druk van \'n lyn. Deur die kies van \'Redigeer\' , kan jy die omringende helderheid vlak van die beheer punt sowel as die hand insette van die
+verlangde helderheid van die skerm aanpas. Kies van gesplete opsie kan jy een lyn dupliseer
+ten einde om bykomende kontrolepunte by te voeg . \'Verwyder\' verwyder die gekose lyn.</string>
   <string name="auto_brightness_sensitivity_title">Aanpassing sensitiwiteit</string>
   <string name="auto_brightness_sensitivity_verylow">Baie laag</string>
   <string name="auto_brightness_sensitivity_low">Laag</string>
@@ -330,11 +351,6 @@
   <string name="quiet_hours_summary">Konfigureer die ure wat die toestel moet stil wees</string>
   <string name="quiet_hours_enabled">Aktiveer stille-ure</string>
   <string name="quiet_hours_ringer">Foon lui</string>
-  <string name="quiet_hours_mute">Demp kennisgewings</string>
-  <string name="quiet_hours_system">Deaktiveer stelsel klank</string>
-  <string name="quiet_hours_still">Deaktiveer vibrasies</string>
-  <string name="quiet_hours_dim">Deaktiveer kennisgewing liggie</string>
-  <string name="quiet_hours_haptic">Deaktiveer haptiese terugvoer</string>
   <string name="quiet_hours_active_from">Aktiveer vanaf</string>
   <string name="quiet_hours_active_to">tot</string>
   <string name="quiet_hours_ringer_allow_all">Lui vir alle oproepe</string>
@@ -348,6 +364,7 @@
   <string name="build_date">Bou datum</string>
   <string name="cpu_info">SVE</string>
   <string name="mem_info">Geheue</string>
+  <string name="phone_service_state">Stem: <xliff:g id="voice_state">%1$s</xliff:g>, data: <xliff:g id="data_state">%2$s</xliff:g></string>
   <string name="anonymous_statistics_title">CyanogenMod statistieke</string>
   <string name="anonymous_statistics_summary">Help CyanogenMod verbeter deur anonieme statistiek verslagdoening te kies</string>
   <string name="anonymous_statistics_warning_title">Inligting</string>
@@ -364,13 +381,19 @@
   <string name="preview_carrier_title">Draer</string>
   <string name="header_category_interface">Personalisering</string>
   <string name="themes_settings_title">Temas</string>
+  <string name="themepacks_settings_title">Tema pakkette</string>
   <string name="styles_settings_title">Style</string>
   <string name="icons_settings_title">Ikone</string>
   <string name="fonts_settings_title">Lettertipes</string>
   <string name="wallpaper_settings_title">Muurpapiere</string>
+  <string name="lockscreen_wallpaper_settings_title">Slot skerm agtergrond</string>
+  <string name="bootanim_settings_title">Begin Animasies</string>
+  <string name="soundpack_settings_title">Klank Pakkette</string>
   <string name="performance_settings_title">Werkverrigting</string>
   <string name="performance_settings_warning_title">Pasop!</string>
+  <string name="performance_settings_warning">Hierdie instellings is eksperimenteel en enige veranderings verander hier het die potensiaal om onstabiliteit, ongelukke, die verlies van data of hardeware probleme te veroorsaak.\n\nOns versoek dat u nie \'n fout verslae indien as enige instellings verander word vanaf hulle standaard instelling nie.</string>
   <string name="performance_set_on_boot">Stel tydens selflaai</string>
+  <string name="performance_set_on_boot_summary">Herstel toegepaste instellings op begin</string>
   <string name="processor_title">Verwerker</string>
   <string name="cpu_cur_freq_title">Huidige SVE-frekwensie</string>
   <string name="cpu_governors_title">SVE goewerneur</string>
@@ -389,6 +412,7 @@
   <string name="pref_force_highend_gfx_title">Dwing hoë-einde grafika</string>
   <string name="pref_force_highend_gfx_summary">Aktiveer hoë-einde visuele effekte soos deursigtige status / navigasie balk (vereis herlaai)</string>
   <string name="kill_app_longpress_back">Beëindig met Terug-knoppie</string>
+  <string name="kill_app_longpress_back_summary">Sluit die voorgrond program deur die lang druk van die terug knoppie</string>
   <string name="changelog_title">Bekyk Veranderinge-log</string>
   <string name="changelog_loading">Laai Veranderinge-log\u2026</string>
   <string name="changelog_error">Kan nie Veranderinge-log laai nie</string>
@@ -413,6 +437,7 @@
   <string name="privacy_guard_help_title">Help</string>
   <string name="privacy_guard_reset_title">Herstel</string>
   <string name="privacy_guard_reset_text">Herstel regte?</string>
+  <string name="privacy_guard_help_text">Selekteer vir watter programme Privaatheidswag geaktiveer is deur die program ikoon te raak. Geselekteerde programme sal nie toegang tot persoonlike data soos kontakte, boodskappe en oproep geskiedenis kan kry nie. Lang-raak op \'n program om die program besonderhede te sien.\n\nBy verstek word interne programme uitgesluit. Om die filters vir sigbare programme te verander, selekteer die toepaslike opsies in die kieslys.</string>
   <string name="privacy_guard_manager_show_system_apps">Sluit interne programme in</string>
   <string name="privacy_guard_manager_filter_permissions">Slegs toepaslike regte</string>
   <string name="privacy_guard_advanced_settings_title">Gevorderd</string>
@@ -423,6 +448,7 @@
   <string name="blacklist_empty_text">Daar is geen geblokkeerde nommers nie. Voeg \'n inskrywing by deur die aanraking van die \"Voeg by\" knoppie (+).</string>
   <string name="blacklist_disabled_empty_text">Om oproepe en/of boodskappe van sekere nommers te blok, aktiveer die blokkeerlys.</string>
   <string name="blacklist_summary_disabled">Gedeaktiveer</string>
+  <string name="blacklist_summary">Inkomende oproepe en boodskappe van die swartlys telefoonnommers sal geblokkeer word</string>
   <string name="blacklist_notify">Wys kennisgewing</string>
   <string name="blacklist_private_numbers_title">Private nommers</string>
   <string name="blacklist_private_numbers_summary_disabled">Moet nie oproepe van private nommers blokkeer nie</string>
@@ -543,6 +569,7 @@
   <string name="lockscreen_long_press_home_title">Lang-druk Tuis</string>
   <string name="lockscreen_long_press_menu_title">Lang-druk Kieslys</string>
   <string name="lockscreen_buttons_no_action">Geen aksie</string>
+  <string name="lockscreen_buttons_flashlight">Flits</string>
   <string name="lockscreen_buttons_next">Volgende liedjie</string>
   <string name="lockscreen_buttons_previous">Vorige liedjie</string>
   <string name="lockscreen_buttons_playpause">Speel/Stop musiek</string>
@@ -583,6 +610,8 @@
   <string name="expanded_desktop_disabled">Gedeaktiveer</string>
   <string name="expanded_desktop_status_bar">Statusbalk sigbaar</string>
   <string name="expanded_desktop_no_status_bar">Versteek statusbalk</string>
+  <string name="expanded_desktop_system_bars_visibility">Afgeskakel in slot skerm</string>
+  <string name="expanded_desktop_system_bars_visibility_summary">Wys status en navigasie balk in die slot skerm tydens uitgebreide lessenaar modus</string>
   <string name="power_menu_profiles_title">Profiel wisselaar</string>
   <string name="power_menu_airplane_title">Vliegtuigmodus</string>
   <string name="power_menu_user_title">Gebruiker wisselaar</string>
@@ -617,7 +646,6 @@
   <string name="volbtn_cursor_control_off">Afgeskakel</string>
   <string name="volbtn_cursor_control_on">Volume op/af beweeg por links/regs</string>
   <string name="volbtn_cursor_control_on_reverse">Volume op/af beweeg por regs/links</string>
-  <string name="swap_volume_buttons_title">Ruil volume knoppies om</string>
   <string name="swap_volume_buttons_summary">Ruil volume knoppies om wanneer die skerm geroteer word</string>
   <string name="button_backlight_title">Agtergrond lig</string>
   <string name="button_backlight_enabled">Verlig knoppies</string>
@@ -659,11 +687,13 @@
   <string name="development_shortcut_title">Ontwikkeling kortpad</string>
   <string name="development_shortcut_summary">Aktiveer \'Vee data uit\' en \'Dwing stop\' opsies in kennisgewings gebied en onlangse programme lys</string>
   <string name="usb_mass_storage_title">Massa stoorplek</string>
+  <string name="usb_mass_storage_summary">Aktiveer USB massa stoorplek</string>
   <string name="storage_rescan_media">Herskandeer die skyf spasie</string>
   <string name="storage_rescan_media_complete">Skandering het voltooi</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Bestuur veilige SMS-instellings.</string>
   <string name="custom_runtime_warning_title">Waarskuwing</string>
+  <string name="custom_runtime_warning_message">ART word nie ondersteun deur CyanogenMod. Hierdie instelling is ingesluit slegs vir eksperimentering en het die potensiaal om onstabiliteit, ineenstortings, data verlies te veroorsaak of te verhoed dat die toestel behoorlike sal begin. Besoek &lt;a href="http://source.android.com/devices/tech/dalvik/art.html"&gt;Bekendstelling van ART&lt;/a&gt; vir meer inligting.&lt;br/&gt;&lt;br/&gt;Ons versoek jou om nie fout verslae te verskaf as jy ART geaktiveer het as jou \'runtime\'.&lt;br/&gt;&lt;br/&gt;Is jy seker jy wil herbegin om die \'runtime\' te verander van <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> na <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
   <string name="gps_download_data_wifi_only">Laai GPS aanvullende ​​data net oor Wi-Fi netwerke</string>
   <string name="battery_info_status_charging_dock_ac">(DokKRAG)</string>
   <string name="battery_info_status_charging_dock_usb">(DokUSB)</string>
@@ -819,4 +849,5 @@
   <string name="voice_wakeup_retrain_title">Herprogrammeer jou stem</string>
   <string name="voice_wakeup_activity_title">Aktiwiteit om te begin</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
+  <string name="sub_no_sim">Geen Sim</string>
 </resources>

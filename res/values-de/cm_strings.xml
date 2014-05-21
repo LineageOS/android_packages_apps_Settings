@@ -121,6 +121,7 @@
   <string name="volume_ring_only_description">Klingelton</string>
   <string name="link_volume_ringtones">Gleiche Lautstärke für Klingelton und Benachrichtigungen</string>
   <string name="link_volume_mutes">Klingelton und Benachrichtigungen gemeinsam stummschalten</string>
+  <string name="volume_keys_control_ring_stream">Lautstärketasten steuern Klingeltonlautstärke</string>
   <string name="ring_mode_title">Klingelmodus</string>
   <string name="ring_mode_normal">Normal</string>
   <string name="ring_mode_vibrate">Vibration</string>
@@ -136,6 +137,7 @@
   <string name="notification_vibrate_during_calls_title">Während Anruf vibrieren</string>
   <string name="notification_vibrate_during_calls_summary">Bei eingehenden Benachrichtigungen während eines Anrufs sanft vibrieren</string>
   <string name="volume_adjust_sounds_enable_title">Änderungston</string>
+  <string name="volume_adjust_sounds_enable_summary">Beim Anpassen der Lautstärke mit den Lautstärketasten einen Ton abspielen</string>
   <string name="icon_picker_title">Symbolquelle wählen</string>
   <string name="icon_picker_system_icons_title">Systemsymbole</string>
   <string name="icon_picker_gallery_title">Galerie</string>
@@ -153,8 +155,12 @@
   <string name="notification_light_missed_call_title">Verpasster Anruf</string>
   <string name="notification_light_voicemail_title">Sprachnachricht</string>
   <string name="adaptive_backlight_title">Adaptive Beleuchtung</string>
+  <string name="adaptive_backlight_summary">Die Hintergrundbeleuchtung des Bildschirms dynamisch regeln, um die Akkulaufzeit zu verbessern</string>
   <string name="wake_when_plugged_or_unplugged_title">Beim Einstecken aufwecken</string>
+  <string name="wake_when_plugged_or_unplugged_summary">Beim Anschließen oder Trennen einer Stromquelle das Display anschalten</string>
   <string name="screen_animation_off_title">Abschaltanimation</string>
+  <string name="screen_animation_style_title">Stil der Abschaltanimation</string>
+  <string name="screen_animation_style_disabled">Deaktiviert</string>
   <string name="screen_animation_style_electronbeam">Elektronenstrahl</string>
   <string name="screen_animation_style_fade">Ausblenden</string>
   <string name="edit_light_settings">Farbeinstellungen ändern</string>
@@ -220,6 +226,8 @@
   <string name="tile_picker_title">Kacheln anordnen</string>
   <string name="tile_picker_summary">Kacheln auswählen oder ihre Reihenfolge ändern</string>
   <string name="tile_choose_title">Kachel auswählen</string>
+  <string name="title_qs_small_icons">Kleinere Kacheln anzeigen</string>
+  <string name="summary_qs_small_icons">Kleinere Kachel anzeigen, um die Spaltenanzahl zu erhöhen</string>
   <string name="title_tile_airplane">Flugmodus</string>
   <string name="title_tile_battery">Akkustand</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
@@ -249,6 +257,7 @@
   <string name="title_tile_network_adb">ADB über Netzwerk</string>
   <string name="title_dynamic_tiles">Dynamische Kacheln</string>
   <string name="dynamic_tiles_note_title">Hinweis</string>
+  <string name="dynamic_tiles_note_summary">Dynamische Kacheln werden nur angezeigt, wenn das entsprechende Systemereignis eintritt</string>
   <string name="title_dynamic_alarm">Wecker</string>
   <string name="title_dynamic_bugreport">Fehlerprotokollierung</string>
   <string name="title_dynamic_dock_battery">Dock-Akku</string>
@@ -298,6 +307,30 @@
   <string name="auto_brightness_preview">Vorschau</string>
   <string name="auto_brightness_preview_dialog_title">Helligkeitsverlaufs-Vorschau</string>
   <string name="auto_brightness_help_dialog_title">Hilfe</string>
+  <string name="auto_brightness_help_text"><b>Wie wird die Helligkeit berechnet?</b>
+\n\n
+Der Verlauf der Helligkeit wird durch eine <i>kubische Interpolation</i> anhand der
+gegebenen Anzahl an <i>Stützstellen</i> berechnet - anders als gemeinhin angenommen, wird
+einem bestimmten Umgebungshelligkeitsbereich nicht eine konstante Bildschirmhelligkeit
+zugeordnet. Durch diese Art der Berechnung verursachen kleine Änderungen der Umgebungshelligkeit
+keine großen Sprünge der Bildschirmhelligkeit.\n
+Da die Abschätzung des exakten Verlaufs allerdings nicht ganz einfach ist, kann der berechnete
+Verlauf im Vorschaufenster betrachtet werden. Die Vorschau zeigt den Verlauf mit <i>logarithmischer</i>
+Skalierung, so dass alle Stützstellen unterscheidbar sind. Bei Verwendung einer linearen Skalierung
+wären die tendenziell wichtigeren Stützstellen im unteren Bereich der Umgebungshelligkeit nicht
+zu unterscheiden.
+\n\n
+<b>Wie kann der Helligkeitsverlauf verändert werden?</b>
+\n\n
+Jede Zeile in der Helligkeitsliste entspricht einer <i>Stützstelle</i> des Helligkeitsverlaufs.
+Der Bildschirmhelligkeitswert der Stützstelle kann mittels des Schiebereglers in der Zeile
+verändert werden. Während des Schiebens wird die momentane Bildschirmhelligkeit auf den gewählten
+Wert eingestellt, um die gewählte Helligkeit abschätzen zu können.\n
+Durch langes Drücken auf die Zeilen stehen weitere Optionen zur Verfügung. Durch Auswahl von
+\"Bearbeiten\" können sowohl der Umgebungshelligkeitswert der Stützstelle verändert als auch der
+Bildschirmhelligkeitswert manuell eingegeben werden. Die Auswahl von \"Helligkeitsstufe aufteilen\"
+erlaubt die Duplizierung einer Zeile in eine zweite Zeile, um zusätzliche Stützstellen hinzuzufügen.
+Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverlauf entfernt werden.</string>
   <string name="auto_brightness_sensitivity_title">Regelungsträgheit</string>
   <string name="auto_brightness_sensitivity_verylow">Sehr träge</string>
   <string name="auto_brightness_sensitivity_low">Träge</string>
@@ -328,11 +361,16 @@
   <string name="quiet_hours_summary">Benachrichtigungen in einem vorgegebenen Zeitraum ändern</string>
   <string name="quiet_hours_enabled">Ruhige Stunden aktiv</string>
   <string name="quiet_hours_ringer">Klingeln bei Anruf</string>
-  <string name="quiet_hours_mute">Benachrichtigungston  deaktivieren</string>
-  <string name="quiet_hours_system">Systemtöne deaktivieren</string>
-  <string name="quiet_hours_still">Vibration  deaktivieren</string>
-  <string name="quiet_hours_dim">Benachrichtigungslicht  deaktivieren</string>
-  <string name="quiet_hours_haptic">Haptisches Feedback  deaktivieren</string>
+  <string name="quiet_hours_mute">Benachrichtigungen</string>
+  <string name="quiet_hours_mute_summary">Benachrichtigungstton deaktivieren</string>
+  <string name="quiet_hours_system">Systemtöne</string>
+  <string name="quiet_hours_system_summary">Systemtöne deaktivieren</string>
+  <string name="quiet_hours_still">Vibration</string>
+  <string name="quiet_hours_still_summary">Vibration deaktivieren</string>
+  <string name="quiet_hours_dim">Benachrichtigungslicht</string>
+  <string name="quiet_hours_dim_summary">Benachrichtigungslicht deaktivieren</string>
+  <string name="quiet_hours_haptic">Haptisches Feedback</string>
+  <string name="quiet_hours_haptic_summary">Haptisches Feedback deaktivieren</string>
   <string name="quiet_hours_active_from">Aktiv von</string>
   <string name="quiet_hours_active_to">bis</string>
   <string name="quiet_hours_ringer_allow_all">Bei jedem Anrufer klingeln</string>
@@ -362,13 +400,19 @@
   <string name="preview_carrier_title">Anbieter</string>
   <string name="header_category_interface">Personalisierung</string>
   <string name="themes_settings_title">Designs</string>
+  <string name="themepacks_settings_title">Designpakete</string>
   <string name="styles_settings_title">Stile</string>
   <string name="icons_settings_title">Symbole</string>
   <string name="fonts_settings_title">Schriftarten</string>
   <string name="wallpaper_settings_title">Hintergründe</string>
+  <string name="lockscreen_wallpaper_settings_title">Sperrbildschirm-Hintergründe</string>
+  <string name="bootanim_settings_title">Boot-Animationen</string>
+  <string name="soundpack_settings_title">Tonpakete</string>
   <string name="performance_settings_title">Leistung</string>
   <string name="performance_settings_warning_title">VORSICHT</string>
+  <string name="performance_settings_warning">Diese experimentellen Einstellungen beeinflussen die Leistung und Stabilität des Systems.\n\nBitte keine Fehler melden, wenn die Standardeinstellungen geändert wurden.</string>
   <string name="performance_set_on_boot">Beim Booten einstellen</string>
+  <string name="performance_set_on_boot_summary">Einstellungen beim Booten wiederherstellen</string>
   <string name="processor_title">Prozessor</string>
   <string name="cpu_cur_freq_title">Aktuelle Taktfrequenz</string>
   <string name="cpu_governors_title">Governor</string>
@@ -387,11 +431,13 @@
   <string name="pref_force_highend_gfx_title">Verbesserte Grafikeffekte</string>
   <string name="pref_force_highend_gfx_summary">Verbesserte Transparenz- und Animationseffekte wie z.B. Status- und Navigationsleistentransparenz verwenden (Neustart erforderlich)</string>
   <string name="kill_app_longpress_back">App beenden</string>
+  <string name="kill_app_longpress_back_summary">Gedrückt halten der Zurück-Taste beendet die Anwendung im Vordergrund</string>
   <string name="changelog_title">Changelog anzeigen</string>
   <string name="changelog_loading">Changelog wird geladen\u2026</string>
   <string name="changelog_error">Changelog kann nicht geladen werden</string>
   <string name="changelog_unknown">Unbekannt</string>
   <string name="changelog_version">Version</string>
+  <string name="contributor_cloud_title">Mitwirkende anzeigen</string>
   <string name="cmupdate_settings_title">CyanogenMod-Updates</string>
   <string name="cmupdate_settings_summary">Auf neue Versionen prüfen und diese installieren</string>
   <string name="advanced_settings_title">Erweitert</string>
@@ -411,6 +457,7 @@
   <string name="privacy_guard_help_title">Hilfe</string>
   <string name="privacy_guard_reset_title">Zurücksetzen</string>
   <string name="privacy_guard_reset_text">Berechtigungen zurücksetzen?</string>
+  <string name="privacy_guard_help_text">An dieser Stelle kann der Datenschutz für einzelne Apps durch einfache Berührung ein- und ausgeschaltet werden. Ausgewählte Apps haben keinen Zugriff auf persönliche Daten wie Kontakte, Nachrichten oder das Anrufprotokoll. Langes Drücken auf einen Eintrag öffnet die Detailanzeige für diese App.\n\nStandardmäßig werden in das System integrierte Apps nicht angezeigt. Wenn diese angezeigt werden sollen, kann dies mit der entsprechenden Menü-Option ausgewählt werden.</string>
   <string name="privacy_guard_manager_show_system_apps">Integrierte Apps anzeigen</string>
   <string name="privacy_guard_manager_filter_permissions">Berechtigungsfilter</string>
   <string name="privacy_guard_advanced_settings_title">Erweitert</string>
@@ -421,6 +468,7 @@
   <string name="blacklist_empty_text">Es sind noch keine Einträge in der Sperrliste enthalten. Sie können Einträge hinzufügen, indem Sie das \"+\"-Symbol berühren.</string>
   <string name="blacklist_disabled_empty_text">Aktivieren Sie die Sperrliste, um Anrufe und/oder Nachrichten von bestimmten Telefonnummern automatisch abzuweisen.</string>
   <string name="blacklist_summary_disabled">Deaktiviert</string>
+  <string name="blacklist_summary">Eingehende Anrufe und Nachrichten von Nummern, die sich in der Sperrliste befinden, werden abgewiesen</string>
   <string name="blacklist_notify">Benachrichtigung anzeigen</string>
   <string name="blacklist_private_numbers_title">Unterdrückte Nummern</string>
   <string name="blacklist_private_numbers_summary_disabled">Anrufe mit unterdrückter Nummer nicht abweisen</string>
@@ -491,6 +539,7 @@
   <string name="lock_clock_summary">Einstellungen des Standard-Widgets auf Sperr- und Startbildschirm anpassen</string>
   <string name="power_notifications_category_title">Ladegeräte-Töne</string>
   <string name="power_notifications_enable_title">Aktivieren</string>
+  <string name="power_notifications_enable_summary">Beim Anschließen oder Trennen einer Stromquelle einen Ton abspielen</string>
   <string name="power_notifications_vibrate_title">Vibrieren</string>
   <string name="power_notifications_ringtone_title">Benachrichtigungston</string>
   <string name="power_notifications_ringtone_silent">Kein Ton</string>
@@ -540,6 +589,7 @@
   <string name="lockscreen_long_press_home_title">Home (gedrückt halten)</string>
   <string name="lockscreen_long_press_menu_title">Menü (gedrückt halten)</string>
   <string name="lockscreen_buttons_no_action">Keine Aktion</string>
+  <string name="lockscreen_buttons_flashlight">Taschenlampe</string>
   <string name="lockscreen_buttons_next">Medien: Nächster Titel</string>
   <string name="lockscreen_buttons_previous">Medien: Vorheriger Titel</string>
   <string name="lockscreen_buttons_playpause">Medien: Play/Pause</string>
@@ -580,6 +630,8 @@
   <string name="expanded_desktop_disabled">Deaktiviert</string>
   <string name="expanded_desktop_status_bar">Statusleiste anzeigen</string>
   <string name="expanded_desktop_no_status_bar">Statusleiste verbergen</string>
+  <string name="expanded_desktop_system_bars_visibility">Auf Sperrbildschirm deaktivieren</string>
+  <string name="expanded_desktop_system_bars_visibility_summary">Bei erweitertem Desktop die Status- und Navigationsleiste im Sperrbildschirm anzeigen</string>
   <string name="power_menu_profiles_title">Profilwechsel</string>
   <string name="power_menu_airplane_title">Flugmodus</string>
   <string name="power_menu_user_title">Benutzer</string>
@@ -614,7 +666,6 @@
   <string name="volbtn_cursor_control_off">Deaktiviert</string>
   <string name="volbtn_cursor_control_on">Lauter-/Leiser-Taste bewegt den Cursor nach links/rechts</string>
   <string name="volbtn_cursor_control_on_reverse">Lauter-/Leiser-Taste bewegt den Cursor nach rechts/links</string>
-  <string name="swap_volume_buttons_title">Lautstärketasten umkehren</string>
   <string name="swap_volume_buttons_summary">Belegung der Lautstärketasten umkehren, wenn das Gerät gedreht wird</string>
   <string name="button_backlight_title">Hintergrundbeleuchtung</string>
   <string name="button_backlight_enabled">Tasten beleuchten</string>
@@ -656,11 +707,15 @@
   <string name="development_shortcut_title">Entwickler-Abkürzungen</string>
   <string name="development_shortcut_summary">\'Anwendungsdaten löschen\' und\'Beenden erzwingen\' in der Benachrichtungsleiste und im Anwendungsverlauf anzeigen</string>
   <string name="usb_mass_storage_title">Massenspeicher</string>
+  <string name="usb_mass_storage_summary">Ermöglicht den Datentransfer zwischen Ihrem Computer und der SD-Karte, indem diese als USB-Massenspeicher eingebunden wird</string>
   <string name="storage_rescan_media">Speichermedium nach Mediendateien durchsuchen</string>
   <string name="storage_rescan_media_complete">Suche abgeschlossen</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Einstellungen für sichere SMS</string>
   <string name="custom_runtime_warning_title">Warnung</string>
+  <string name="custom_runtime_warning_message">ART wird von CyanogenMod nicht unterstützt. Diese Einstellung ist experimentell und nur für Entwickler gedacht. Sie kann zu Instabilitäten, Abstürzen oder Datenverlust führen oder verhindern, dass Ihr Gerät startet. Besuchen Sie &lt;a href=\"http://source.android.com/devices/tech
+/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; für mehr Informationen.&lt;br/&gt;&lt;br/&gt;Melden Sie keine Fehler, wenn Sie ART als Laufzeitumgebung aktiviert haben.&lt;br/&gt;&lt;br/&gt;Sind Sie sicher, dass Sie das Gerät neu starten wollen, um die Laufzeitumgebung von <xliff:g id="old" example="libdvm.so">%1$s</xliff:g>
+auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
   <string name="gps_download_data_wifi_only">A-GPS-Daten nur über WLAN herunterladen</string>
   <string name="battery_info_status_charging_dock_ac">Ladedock</string>
   <string name="battery_info_status_charging_dock_usb">USB-Dock</string>
@@ -812,4 +867,5 @@
   <string name="wifi_channel">Kanal</string>
   <string name="wifi_mhz">MHz</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
+  <string name="sub_no_sim">Keine SIM-Karte</string>
 </resources>
