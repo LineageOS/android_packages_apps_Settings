@@ -36,6 +36,8 @@ import android.widget.Toast;
 import com.android.internal.telephony.CommandException;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
+import com.android.internal.telephony.CommandException;
+import com.android.internal.telephony.IccCardConstants.State;
 import com.android.internal.telephony.TelephonyIntents;
 
 /**
@@ -124,13 +126,18 @@ public class IccLockSettings extends PreferenceActivity
         public void onReceive(Context context, Intent intent) {
             final String action = intent.getAction();
             if (TelephonyIntents.ACTION_SIM_STATE_CHANGED.equals(action)) {
-                if (mPhone.getIccCard().getState().isPinLocked()) {
-                    //Code control lands up here only if user pressed cancel for PIN unlock.
-                    //So disable the pin toggle option as card is in LOCKED state.
-                    mPinToggle.setChecked(true);
+                if (mPhone.getIccCard().getState() != State.READY) {
+                    //if Sim State is not READY, it is not possible to interact with uicc app
+                    //for enabling/disabling PIN so disable PIN options.
                     mPinToggle.setEnabled(false);
+                    mPinDialog.setEnabled(false);
+                    if (mPhone.getIccCard().getState().isPinLocked()) {
+                        //sim is PIN locked so mark it as selected.
+                        mPinToggle.setChecked(true);
+                    }
                 } else {
                     mPinToggle.setEnabled(true);
+                    mPinDialog.setEnabled(true);
                     mHandler.sendMessage(mHandler.obtainMessage(MSG_SIM_STATE_CHANGED));
                 }
             }
