@@ -16,7 +16,12 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="bluetooth_enter_pin_msg_hs">Pour s\'appairer avec : <xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g>, tapez le code PIN requis pour l\'appareil (16 chiffres ou plus):</string>
+  <string-array name="screen_color_setting">
+    <item>Par défaut</item>
+    <item>Vives</item>
+    <item>Personnalisée</item>
+  </string-array>
+  <string name="bluetooth_enter_pin_msg_hs">Pour s\'appairer avec : <xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g>, tapez le code PIN requis pour l\'appareil (16 chiffres ou plus) :</string>
   <string name="bluetooth_profile_sap">Accès à la SIM</string>
   <string name="bluetooth_profile_dun">Accès au réseau à distance</string>
   <string name="bluetooth_sap_profile_summary_connected">Connecté au serveur d\'accès SIM</string>
@@ -30,6 +35,7 @@
   <string name="device_additional_status">Informations d\'état complémentaires</string>
   <string name="enable_quickboot_title">Activer le mode QuickBoot</string>
   <string name="enable_quickboot_summary">Mettre le périphérique en mode QuickBoot au lieu de démarrage normale.</string>
+  <string name="data_usage_tab_slot">SIM </string>
   <string name="sel_sub_title">Configurer les abonnements</string>
   <string name="sel_sub_summary">Sélectionnez votre abonnement</string>
   <string name="select_subscription">Sélectionner l\'abonnement</string>
@@ -37,7 +43,7 @@
   <string name="subs_settings">État de l\'abonnement</string>
   <string name="set_data_subscription_progress">Paramètres des abonnements de données\u2026</string>
   <string name="set_dds_success">L\'abonnement de données a été correctement défini</string>
-  <string name="set_dds_failed">Erreur lors de la définition d\'abonnement de données. Supprimez les connexions de données existants, puis réessayez.</string>
+  <string name="set_dds_failed">Erreur lors de la définition de l\'abonnement de données. Supprimez les connexions de données existantes, puis réessayez.</string>
   <string name="set_dds_error">Erreur lors du paramétrage de l\'abonnement de données.</string>
   <string name="set_sms_error">Erreur lors de la définition d\'abonnement SMS. Abonnement non actif.</string>
   <string name="set_voice_error">Erreur lors de la définition d\'abonnement vocal. Abonnement non actif.</string>
@@ -51,7 +57,7 @@
   <string name="screencolor_cancel">Annuler</string>
   <string name="previous_str">Précédent</string>
   <string name="new_str">Nouveau</string>
-  <string name="restore_preview">Voir l\'image par défaut</string>
+  <string name="restore_preview">Afficher l\'image par défaut</string>
   <string name="selectnewfile_menu">Afficher la nouvelle image depuis la galerie</string>
   <string name="selectfile_menu">Afficher la photo depuis la galerie</string>
   <string name="restore_default_str">Réinitialiser</string>
@@ -59,9 +65,4 @@
   <string name="saturation_str">Saturation : <xliff:g id="saturation_value">%1$s</xliff:g></string>
   <string name="contrast_str">Contraste : <xliff:g id="contrast_value">%1$s</xliff:g></string>
   <string name="intensity_str">Intensité : <xliff:g id="intensity_str_value">%1$s</xliff:g></string>
-  <string-array name="screen_color_setting">
-    <item>Par défaut</item>
-    <item>Vives</item>
-    <item>Personnalisée</item>
-  </string-array>
 </resources>
