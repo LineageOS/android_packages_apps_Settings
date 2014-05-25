@@ -201,7 +201,7 @@
   <string name="unlock_quick_unlock_control_summary">正しいPIN/パスワードが入力されたときに自動でロックを解除する</string>
   <string name="unlock_buttons_disabled_by_security">ロック画面は保護されています</string>
   <string name="delay_and_timeout_title">ロックの遅延</string>
-  <string name="slide_lock_delay_title">画面のロックの遅延</string>
+  <string name="slide_lock_delay_title">画面ロックの遅延</string>
   <string name="slide_lock_timeout_delay_title">タイムアウト後の遅延</string>
   <string name="slide_lock_screenoff_delay_title">画面消灯後の遅延</string>
   <string name="slide_lock_delay_none">なし</string>
@@ -324,7 +324,7 @@
   <string name="display_rotation_180_title">180度</string>
   <string name="display_rotation_270_title">270度</string>
   <string name="advanced_reboot_title">詳細な再起動</string>
-  <string name="advanced_reboot_summary">リカバリーやブートローダで再起動するオプションを電源メニューに追加する</string>
+  <string name="advanced_reboot_summary">ロック解除時にリカバリーやブートローダで再起動するオプションを電源メニューに追加する</string>
   <string name="app_security_title">アプリのセキュリティ</string>
   <string name="root_access">ルートアクセス</string>
   <string name="root_access_warning_title">ルートアクセスを許可しますか？</string>
@@ -333,6 +333,8 @@
   <string name="root_access_apps">アプリのみ</string>
   <string name="root_access_adb">ADBのみ</string>
   <string name="root_access_all">アプリとADB</string>
+  <string name="update_recovery_title">CMリカバリーをアップデート</string>
+  <string name="update_recovery_summary">システムアップデートをインストールするときにリカバリーをアップデートする</string>
   <string name="ok">OK</string>
   <string name="quiet_hours_title">おやすみモード</string>
   <string name="quiet_hours_summary">端末をサイレントモードにする時間帯を設定する</string>
@@ -361,7 +363,7 @@
   <string name="mem_info">メモリ</string>
   <string name="phone_service_state">音声: <xliff:g id="voice_state">%1$s</xliff:g>、データ: <xliff:g id="data_state">%2$s</xliff:g></string>
   <string name="anonymous_statistics_title">CyanogenModの統計情報</string>
-  <string name="anonymous_statistics_summary">CyanogenModの改善を手助けするために匿名の統計情報を送信する</string>
+  <string name="anonymous_statistics_summary">CyanogenModの改善を助けるために匿名の統計情報を送信する</string>
   <string name="anonymous_statistics_warning_title">情報</string>
   <string name="anonymous_statistics_warning">CyanogenModの統計情報に同意すると、端末間のユニークインストール回数を調べるためにCyanogenModの開発者への非個人情報の送信を許可します。送信される情報にはユニークIDが含まれますが、プライバシーや個人データが危険にさらされることはありません。データは起動時に送信されます。\n\n送信されるデータの見本は、「データをプレビュー」をタップして確認できます。</string>
   <string name="enable_reporting_title">送信を有効にする</string>
@@ -463,7 +465,7 @@
   <string name="remove_blacklist_number_title">番号を削除</string>
   <string name="remove_blacklist_entry">このブラックリストのエントリーを削除しますか？</string>
   <string name="select_contact">連絡先を選択</string>
-  <string name="vibrator_intensity_title">バイブレーションの強さ</string>
+  <string name="vibrator_intensity_title">バイブレーションの強度</string>
   <string name="vibrator_warning">%1$dより大きい値は推奨されません</string>
   <string name="color_calibration_title">色の調整</string>
   <string name="color_calibration_summary">画面の色を調整する</string>
@@ -607,7 +609,7 @@
   <string name="expanded_desktop_status_bar">ステータスバーを表示する</string>
   <string name="expanded_desktop_no_status_bar">ステータスバーを表示しない</string>
   <string name="expanded_desktop_system_bars_visibility">ロック画面では無効にする</string>
-  <string name="expanded_desktop_system_bars_visibility_summary">拡張デスクトップモード中でもロック画面ではステータスバーとナビゲーションバーを表示する</string>
+  <string name="expanded_desktop_system_bars_visibility_summary">拡張デスクトップモードでもロック画面ではステータスバーとナビゲーションバーを表示する</string>
   <string name="power_menu_profiles_title">プロファイルの切り替え</string>
   <string name="power_menu_airplane_title">機内モード</string>
   <string name="power_menu_user_title">ユーザーの切り替え</string>
@@ -643,7 +645,7 @@
   <string name="volbtn_cursor_control_off">無効</string>
   <string name="volbtn_cursor_control_on">音量を上げる/下げるボタンでカーソルを左/右に移動する</string>
   <string name="volbtn_cursor_control_on_reverse">音量を上げる/下げるボタンでカーソルを右/左に移動する</string>
-  <string name="swap_volume_buttons_title">音量ボタンの入れ替え</string>
+  <string name="swap_volume_buttons_title">音量ボタンを入れ替える</string>
   <string name="swap_volume_buttons_summary">画面を回転したときに音量ボタンを入れ替える</string>
   <string name="button_backlight_title">バックライト</string>
   <string name="button_backlight_enabled">ボタンを点灯する</string>
@@ -676,11 +678,11 @@
   <string name="status_bar_signal_text_title">電波の状態のスタイル</string>
   <string name="status_bar_signal_style_icon">アイコン</string>
   <string name="status_bar_signal_style_text">テキスト</string>
-  <string name="status_bar_toggle_brightness">明るさのコントロール</string>
+  <string name="status_bar_toggle_brightness">明るさコントロール</string>
   <string name="status_bar_toggle_brightness_summary">ステータスバーの上をスライドして明るさを調整する</string>
   <string name="status_bar_toggle_info">明るさの自動調整が有効になっています</string>
   <string name="status_bar_notif_count_title">通知の数を表示</string>
-  <string name="status_bar_notif_count_summary">保留している通知の数を表示する</string>
+  <string name="status_bar_notif_count_summary">保留中の通知の数を表示する</string>
   <string name="status_bar_double_tap_to_sleep_title">ダブルタップでスリープ</string>
   <string name="development_shortcut_title">開発用ショートカット</string>
   <string name="development_shortcut_summary">｢データを消去｣と｢強制停止｣のオプションを通知領域と最近使ったアプリに表示する</string>
@@ -854,4 +856,8 @@
   <string name="data_title">データ通信</string>
   <string name="sms_title">SMSの送信</string>
   <string name="priority_sub_title">サブスクリプションの優先順位</string>
+  <string name="bluetooth_accept_all_files">すべてのファイル形式を許可する</string>
+  <string name="autoperf_title">アプリごとのプロファイルを有効</string>
+  <string name="autoperf_summary">そのアプリに適切なパフォーマンスプロファイルを自動で選択する</string>
+  <string name="graphics_title">グラフィックスとレンダリング</string>
 </resources>
