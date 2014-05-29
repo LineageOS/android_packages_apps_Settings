@@ -1215,7 +1215,7 @@
         <!-- Runs in the phone process since it needs access to the Phone object -->
         <activity android:name=".deviceinfo.msim.MSimSubscriptionStatus"
                 android:label="@string/device_status_activity_title"
-                android:theme="@android:style/Theme.Holo.DialogWhenLarge"
+                android:theme="@style/Theme.DialogWhenLarge"
                 android:process="com.android.phone">
         
             <intent-filter>
@@ -1228,8 +1228,9 @@
         <!-- Runs in the phone process since it needs access to the Phone object -->
         <activity android:name=".deviceinfo.msim.MSimStatus"
                 android:label="@string/device_status_activity_title"
-                android:theme="@android:style/Theme.Holo.DialogWhenLarge"
-                android:process="com.android.phone">
+                android:theme="@style/Theme.DialogWhenLarge"
+                android:process="com.android.phone"
+                android:parentActivityName="Settings$DeviceInfoSettingsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -1957,7 +1958,8 @@
         <activity android:name=".SelectSubscription"
                 android:label="@string/subs_settings"
                 android:process="com.android.phone"
-                android:clearTaskOnLaunch="true">
+                android:clearTaskOnLaunch="true"
+                android:parentActivityName=".deviceinfo.msim.MSimStatus">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
