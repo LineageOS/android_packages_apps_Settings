@@ -198,6 +198,20 @@ public class ApnSettings extends PreferenceActivity implements
     private void fillList() {
         String where = getOperatorNumericSelection();
 
+        int netType = 0;
+
+        if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
+            netType = MSimTelephonyManager.getDefault().getNetworkType(mSubscription);
+        } else {
+            netType = TelephonyManager.getDefault().getNetworkType();
+        }
+        Log.d(TAG, "Current RAT type is " + netType);
+
+        //UI should filter APN by bearer and enable status
+        where += "and (bearer=\"" + netType + "\" or bearer =\"" + 0 + "\")";
+        where += " and carrier_enabled = 1";
+        Log.d(TAG, "fillList: where=" + where);
+
         if (TextUtils.isEmpty(where)) {
             Log.d(TAG, "getOperatorNumericSelection is empty ");
             return;
