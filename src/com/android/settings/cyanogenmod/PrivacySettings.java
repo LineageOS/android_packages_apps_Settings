@@ -53,6 +53,13 @@ public class PrivacySettings extends SettingsPreferenceFragment {
             getPreferenceScreen().removePreference(mBlacklist);
             mBlacklist = null;
         }
+
+        addPreferencesFromResource(R.xml.security_settings_cyanogenmod);
+        // Logger
+        // Only add if device has Logger installed
+        if (Utils.isPackageInstalled(getActivity(), "com.cyngn.logger")) {
+            addPreferencesFromResource(R.xml.security_settings_logger);
+        }
     }
 
     @Override
