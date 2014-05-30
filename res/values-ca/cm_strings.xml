@@ -82,14 +82,14 @@
   <string name="profile_profile_manage">Gestiona un perfil</string>
   <string name="profile_appgroups_manage">Grups d\'aplicacions</string>
   <string name="profile_appgroup_manage">Gestiona un grup d\'aplicacions</string>
-  <string name="profile_settings">Ajustos dels perfils</string>
+  <string name="profile_settings">Configuració dels perfils</string>
   <string name="profile_trigger_connect">En connectar</string>
   <string name="profile_trigger_disconnect">En desconnectar</string>
   <string name="profile_trigger_notrigger">Sense disparador</string>
   <string name="sound_mode">Mode de notificació</string>
   <string name="ringer_mode">Trucades</string>
   <string name="lights_mode">Brillantor</string>
-  <string name="vibrate_mode">Vibració</string>
+  <string name="vibrate_mode">Mode de vibració</string>
   <string name="choose_soundtone">Escull el to de les notificacions</string>
   <string name="choose_ringtone">Escull un to</string>
   <string name="soundtone_title">To de les notificacions</string>
@@ -234,7 +234,7 @@
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Brillantor</string>
   <string name="title_tile_camera">Càmera</string>
-  <string name="title_tile_sleep">Ves a dormir</string>
+  <string name="title_tile_sleep">Posa en repòs</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Torxa</string>
   <string name="title_tile_lockscreen">Pantalla de bloqueig</string>
@@ -262,6 +262,7 @@
   <string name="title_dynamic_alarm">Rellotge alarma</string>
   <string name="title_dynamic_bugreport">Informe d\'error</string>
   <string name="title_dynamic_dock_battery">Acobla bateria</string>
+  <string name="title_dynamic_equalizer">Equalitzador</string>
   <string name="title_dynamic_ime">Canviador d\'IME</string>
   <string name="title_dynamic_usbtether">Ancoratge USB</string>
   <string name="title_dynamic_wifi">Pantalla inhalàmbrica</string>
@@ -277,7 +278,7 @@
   <string name="summary_collapse_panel">Tanca el panell d\'ajustos ràpids quan es toqui un interruptor</string>
   <string name="pref_network_mode_title">Modes de xarxa</string>
   <string name="pref_screentimeout_mode_title">Modes del temps d\'espera de la pantalla</string>
-  <string name="pref_ring_mode_title">Modes de So</string>
+  <string name="pref_ring_mode_title">Modes de so</string>
   <string name="pref_ring_mode_summary">Mostra o canvia els modes del botó so</string>
   <string name="cm_sound_mode_silent">Silenci</string>
   <string name="cm_sound_mode_vibrate">Vibració</string>
@@ -345,6 +346,8 @@ Hi ha disponibles opcions addicionals apretant llargament sobre la línia. Selec
   <string name="root_access_apps">Només Apps</string>
   <string name="root_access_adb">Només ADB</string>
   <string name="root_access_all">Apps i ADB</string>
+  <string name="update_recovery_title">Actualitza Recovery de CM</string>
+  <string name="update_recovery_summary">Actualitza el recovery quan s\'instal·lin noves actualitzacions del sistema</string>
   <string name="ok">D\'acord</string>
   <string name="quiet_hours_title">Hores silencioses</string>
   <string name="quiet_hours_summary">Configura les hores en que el dispositiu hauria d\'estar silenciós</string>
@@ -394,6 +397,7 @@ Hi ha disponibles opcions addicionals apretant llargament sobre la línia. Selec
   <string name="styles_settings_title">Estils</string>
   <string name="icons_settings_title">Icones</string>
   <string name="fonts_settings_title">Tipus de lletra</string>
+  <string name="wallpaper_settings_title_cm">Fons de pantalla</string>
   <string name="lockscreen_wallpaper_settings_title">Fons de la pantalla de bloqueig</string>
   <string name="bootanim_settings_title">Animacions d\'arrencada</string>
   <string name="soundpack_settings_title">Paquets de sons</string>
@@ -452,7 +456,7 @@ Hi ha disponibles opcions addicionals apretant llargament sobre la línia. Selec
   <string name="privacy_guard_advanced_settings_title">Avançat</string>
   <string name="blacklist_title">Llista negra</string>
   <string name="blacklist_edit_dialog_title">Edita entrada de la llista negra</string>
-  <string name="blacklist_prefs">Ajustaments</string>
+  <string name="blacklist_prefs">Configuració</string>
   <string name="blacklist_button_delete">Esborra</string>
   <string name="blacklist_empty_text">No tens cap número a la llista negra. Afegeix una entrada tocant el botó Afegeix (+).</string>
   <string name="blacklist_disabled_empty_text">Per bloquejar trucades i/o missatges de certs números, activa la llista negra.</string>
@@ -583,11 +587,11 @@ Hi ha disponibles opcions addicionals apretant llargament sobre la línia. Selec
   <string name="lockscreen_buttons_previous">Cançó anterior</string>
   <string name="lockscreen_buttons_playpause">Reprodueix/Pausa música</string>
   <string name="lockscreen_buttons_toggle_sound">Activa/Desactiva el so</string>
-  <string name="lockscreen_buttons_sleep">Ves a dormir</string>
+  <string name="lockscreen_buttons_sleep">Posa en repòs</string>
   <string name="lockscreen_enable_modlock_title">Pantalla de bloqueig personalitzada</string>
   <string name="navigation_bar_category">Barra de navegació</string>
   <string name="navigation_bar_title">Botons i disposició</string>
-  <string name="navigation_bar_left_title">Mode esquerra</string>
+  <string name="navigation_bar_left_title">Mode esquerrà</string>
   <string name="navigation_bar_left_summary">Col·loca la barra de navegació al costat esquerre de la pantalla en el mode horitzontal</string>
   <string name="navigation_bar_help_text">1 - Per començar l\'edició, pica a l\'icona de bloqueig\n\n2 - Pica qualsevol botó per assignar o canviar la funcionalitat\n\n3 - Pulsació llarga en qualsevol botó per reordenar l\'ordre\n\n4 - Per desar, pica el botó de bloqueig una altra vegada\n\n5 - Per restaurar la configuració predeterminada, pica el botó reset\n\n</string>
   <string name="navigation_bar_tips">\u2022 Les accions només poden ser assignades a un botó a la vegada\n\n\u2022 El botó d\'inici no pot ser reassignat\n\n\u2022 Els botons laterals no poden ser reassignats</string>
@@ -694,7 +698,7 @@ Hi ha disponibles opcions addicionals apretant llargament sobre la línia. Selec
   <string name="status_bar_toggle_info">La brillantor automàtica està activada</string>
   <string name="status_bar_notif_count_title">Mostra comptador de notificacions</string>
   <string name="status_bar_notif_count_summary">Mostra el nombre de notificacions pendents</string>
-  <string name="status_bar_double_tap_to_sleep_title">Pica dues vegades per adormir</string>
+  <string name="status_bar_double_tap_to_sleep_title">Pica dues vegades posar en repòs</string>
   <string name="development_shortcut_title">Drecera Desenvolupament</string>
   <string name="development_shortcut_summary">Activa les opcions \'neteja dades\' i \'força tancar\' a l\'area de notificacions i a la llista d\'apps recents</string>
   <string name="usb_mass_storage_title">Emmagatzematge massiu (UMS)</string>
@@ -758,7 +762,7 @@ Hi ha disponibles opcions addicionals apretant llargament sobre la línia. Selec
   <string name="app_ops_summaries_send_sms">enviar SMS</string>
   <string name="app_ops_summaries_read_icc_sms">llegir ICC SMS</string>
   <string name="app_ops_summaries_write_icc_sms">escriure ICC SMS</string>
-  <string name="app_ops_summaries_modify_settings">modificar ajustaments</string>
+  <string name="app_ops_summaries_modify_settings">modifica la configuració</string>
   <string name="app_ops_summaries_draw_on_top">dibuixar a sobre</string>
   <string name="app_ops_summaries_access_notifications">accedir a les notificacions</string>
   <string name="app_ops_summaries_camera">càmera</string>
@@ -801,7 +805,7 @@ Hi ha disponibles opcions addicionals apretant llargament sobre la línia. Selec
   <string name="app_ops_labels_receive_sms">Rebre SMS</string>
   <string name="app_ops_labels_receive_mms">Rebre MMS</string>
   <string name="app_ops_labels_send_sms">Enviar SMS</string>
-  <string name="app_ops_labels_modify_settings">Modificar els ajustaments</string>
+  <string name="app_ops_labels_modify_settings">Modifica la configuració</string>
   <string name="app_ops_labels_draw_on_top">Dibuixar a sobre</string>
   <string name="app_ops_labels_access_notifications">Accedir a les notificacions</string>
   <string name="app_ops_labels_camera">Càmera</string>

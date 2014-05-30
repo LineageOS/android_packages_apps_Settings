@@ -121,6 +121,7 @@
   <string name="volume_ring_only_description">Dzwonek</string>
   <string name="link_volume_ringtones">Połącz głośność dzwonka i powiadomień</string>
   <string name="link_volume_mutes">Tryb cichy wpływa na powiadomienia</string>
+  <string name="volume_keys_control_ring_stream">Przyciski głośności kontrolują głośność dzwonka</string>
   <string name="ring_mode_title">Opcje dzwonka</string>
   <string name="ring_mode_normal">Normalny</string>
   <string name="ring_mode_vibrate">Wibracje</string>
@@ -308,6 +309,15 @@
   <string name="auto_brightness_preview">Podgląd</string>
   <string name="auto_brightness_preview_dialog_title">Podgląd wykresu jasności</string>
   <string name="auto_brightness_help_dialog_title">Pomoc</string>
+  <string name="auto_brightness_help_text"><b>Jak oblicza się jasność?</b>
+\n\n
+Krzywa jasności jest obliczana przez wykonywanie <i>sześciennej interpolacji</i> na określoną liczbę <i>punktów kontrolnych</i>. Nie jest to kalkulacja \"typu wiadro\" gdzie jasność ekranu pozostanie stała dla określonego zakresu jasności otoczenia. W ten sposób, małe zmiany w jasności otoczenia nie powodują dużych skoków w jasności ekranu; jednak mogą być trochę trudne do przewidzenia szczegółowe konsekwencje zmiany kontroli punktów. \n
+Aby pomóc, można zbadać podgląd krzywej obliczeniowej. Należy pamiętać, że podgląd pokazuje łuk w skali <i>logarytmicznej</i>, tak, że wszystkie punkty kontroli mogą być wyświetlane wyraźnie. Przy użyciu skali liniowej, nie byłoby możliwe do odróżnienia ważniejszych punktów w dolnym zakresie jasności otoczenia. 
+\n\n
+<b>Jak edytować łuk jasności?</b>
+\n\n
+Na każdy wiersz na liście odpowiada jeden <i>punkt kontroli</i> krzywej jasności. Aby zmienić poziom jasności, można użyć suwaka w każdej linii. Jasność ekranu zostanie zmieniona odpowiednio do ustawień suwaka, aby dać podgląd na poziom światła.\n
+Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opcję \"Edytuj\", można zmienić poziom jasności otoczenia punktu kontroli, jak również ręcznie wprowadzić pożądaną jasność ekranu. Opcja \"Dzielenie\" pozwala na przerobieniu jednej linii na dwie identyczne, aby wstawić dodatkową kontrolę punktów. Opcja \"Usuń\" usuwa wybrany wiersz.</string>
   <string name="auto_brightness_sensitivity_title">Dostosowanie czułości</string>
   <string name="auto_brightness_sensitivity_verylow">Bardzo niska</string>
   <string name="auto_brightness_sensitivity_low">Niska</string>
