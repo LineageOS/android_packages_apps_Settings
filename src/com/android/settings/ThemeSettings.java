@@ -19,7 +19,7 @@ package com.android.settings;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
 
-public class ThemeSettings extends PreferenceFragment {
+public class ThemeSettings extends SettingsPreferenceFragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

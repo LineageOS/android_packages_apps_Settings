@@ -384,6 +384,24 @@
                 android:value="com.android.settings.ApnSettings" />
         </activity>
 
+        <activity android:name="Settings$ThemeSettingsActivity"
+                android:uiOptions="splitActionBarWhenNarrow"
+                android:configChanges="orientation|keyboardHidden|screenSize"
+                android:label="@string/themes_settings_title"
+                android:taskAffinity=""
+                android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.THEME_SETTINGS" />
+                <category android:name="com.android.settings.SHORTCUT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.ThemeSettings" />
+            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
+                android:resource="@id/theme_settings" />
+        </activity>
+
         <activity android:name="Settings$BluetoothSettingsActivity"
                 android:uiOptions="splitActionBarWhenNarrow"
                 android:configChanges="orientation|keyboardHidden|screenSize"
