@@ -1190,6 +1190,7 @@ public class Settings extends PreferenceActivity
     /*
      * Settings subclasses for launching independently.
      */
+    public static class ThemeSettingsActivity extends Settings { /* empty */ }
     public static class BluetoothSettingsActivity extends Settings { /* empty */ }
     public static class WirelessSettingsActivity extends Settings { /* empty */ }
     public static class TetherSettingsActivity extends Settings { /* empty */ }
