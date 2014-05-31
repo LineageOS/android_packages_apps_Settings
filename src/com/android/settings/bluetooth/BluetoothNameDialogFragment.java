@@ -25,6 +25,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -203,6 +204,13 @@ public final class BluetoothNameDialogFragment extends DialogFragment implements
                     Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
+        }
+    }
+
+    public void onConfigurationChanged(Configuration newConfig, CharSequence s) {
+        super.onConfigurationChanged(newConfig);
+        if (mOkButton != null) {
+            mOkButton.setEnabled(s.length() != 0 && !(s.toString().trim().isEmpty()));
         }
     }
 
