@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da0c15f0_35a094f4",
+        "filename": "src/com/android/settings/bluetooth/A2dpProfile.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 4884
+      },
+      "writtenOn": "2014-06-02T20:13:29Z",
+      "side": 1,
+      "message": "if (mService \u003d\u003d null) {\n    return false;\n}\n\n// Check if remote device supports AudioProfiles\nboolean peerHasSink \u003d (BluetoothUuid.isUuidPresent(\n        device.getUuids(), BluetoothUuid.AudioSink));\nboolean peerHasSrc \u003d (BluetoothUuid.isUuidPresent(\n        device.getUuids(), BluetoothUuid.AudioSource));\nif (peerHasSink || peerHasSrc) {\n    Log.d(TAG, \"Peer has Src: \" + peerHasSrc + \" Peer has Sink: \" + peerHasSink);\n} else {\n    Log.d(TAG, \"Remote device support does not support Src/Sink, ignoring\");\n    return false;\n}",
+      "revId": "b6d69b2de9119f15b401c2c555f3d565138ee5ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
