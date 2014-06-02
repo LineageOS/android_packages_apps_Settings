@@ -680,6 +680,10 @@ public class Settings extends PreferenceActivity
                 if(!Utils.isPackageInstalled(this, VOICE_WAKEUP_PACKAGE_NAME)) {
                     target.remove(header);
                 }
+            } else if (id == R.id.more_device_settings) {
+                if (!MoreDeviceSettings.hasItems()) {
+                    target.remove(header);
+                }
             }
 
             if (i < target.size() && target.get(i) == header
