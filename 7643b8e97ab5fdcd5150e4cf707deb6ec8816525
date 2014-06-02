@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da0c15f0_554d4871",
+        "filename": "src/com/android/settings/cyanogenmod/ButtonSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-02T18:48:19Z",
+      "side": 1,
+      "message": "I suggest setting mHomeAnswerCall to null here (same with mPowerEndCall above). In that case ...",
+      "revId": "7643b8e97ab5fdcd5150e4cf707deb6ec8816525",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da0c15f0_35525414",
+        "filename": "src/com/android/settings/cyanogenmod/ButtonSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-02T18:48:19Z",
+      "side": 1,
+      "message": "... you don\u0027t need to duplicate the hiding logic here, but can just check mPowerEndCall for being !\u003d null.",
+      "revId": "7643b8e97ab5fdcd5150e4cf707deb6ec8816525",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
