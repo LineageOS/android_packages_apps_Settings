@@ -47,7 +47,7 @@ public class BootReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context ctx, Intent intent) {
         if (SystemProperties.getBoolean(CPU_SETTINGS_PROP, false) == false
-                && intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
+                && intent.getAction().equals(Intent.ACTION_PRE_BOOT_COMPLETED)) {
             SystemProperties.set(CPU_SETTINGS_PROP, "true");
             configureCPU(ctx);
         } else {
@@ -55,7 +55,7 @@ public class BootReceiver extends BroadcastReceiver {
         }
 
         if (SystemProperties.getBoolean(IOSCHED_SETTINGS_PROP, false) == false
-                && intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
+                && intent.getAction().equals(Intent.ACTION_PRE_BOOT_COMPLETED)) {
             SystemProperties.set(IOSCHED_SETTINGS_PROP, "true");
             configureIOSched(ctx);
         } else {
@@ -64,7 +64,7 @@ public class BootReceiver extends BroadcastReceiver {
 
         if (Utils.fileExists(MemoryManagement.KSM_RUN_FILE)) {
             if (SystemProperties.getBoolean(KSM_SETTINGS_PROP, false) == false
-                    && intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
+                    && intent.getAction().equals(Intent.ACTION_PRE_BOOT_COMPLETED)) {
                 SystemProperties.set(KSM_SETTINGS_PROP, "true");
                 configureKSM(ctx);
             } else {
