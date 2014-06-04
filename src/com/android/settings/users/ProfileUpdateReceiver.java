@@ -20,6 +20,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
@@ -39,10 +41,19 @@ public class ProfileUpdateReceiver extends BroadcastReceiver {
         // Profile changed, lets get the photo and write to user manager
         new Thread() {
             public void run() {
-                Utils.copyMeProfilePhoto(context, null);
+                if (!Utils.copyMeProfilePhoto(context, null)) {
+                    assignDefaultPhoto(context, UserHandle.myUserId());
+                }
                 copyProfileName(context);
             }
         }.start();
+    }
+
+    public static void assignDefaultPhoto(Context context, int userId) {
+        Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(),
+                UserSettings.USER_DRAWABLES[userId % UserSettings.USER_DRAWABLES.length]);
+        UserManager um = (UserManager) context.getSystemService(Context.USER_SERVICE);
+        um.setUserIcon(userId, bitmap);
     }
 
     static void copyProfileName(Context context) {
