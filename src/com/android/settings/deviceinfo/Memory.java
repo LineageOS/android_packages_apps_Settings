@@ -39,6 +39,7 @@ import android.os.storage.IMountService;
 import android.os.storage.StorageEventListener;
 import android.os.storage.StorageManager;
 import android.os.storage.StorageVolume;
+import android.os.SystemProperties;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
@@ -106,10 +107,16 @@ public class Memory extends SettingsPreferenceFragment {
             // sometimes a storage drive like Mega SIM could carry two volumes,
             // with only one volume supported for UMS.
             if (!volume.isEmulated()) {
-                // check if the colume is for UICC
-                if (MediaFormat.isUiccStorage(volume, context) && !volume.allowMassStorage()) {
-                    // UICC volume that is not UMS enabled, shouldn't be shown on UI
-                    Log.w(TAG, "UICC volume not UMS enabled. Not showing up on UI");
+                // check if the volume is for UICC & if hardware has UICC enabled
+                // if hardware doesn't have UICC, do not show up on UI
+                boolean uiccStatus = SystemProperties.getBoolean("persist.sys.isUICCEnabled", false);
+                if (!uiccStatus) {
+                    Log.i(TAG, "Hardware has UICC disabled");
+                }
+
+                if (MediaFormat.isUiccStorage(volume, context) &&
+                        ((!uiccStatus) || !volume.allowMassStorage())) {
+                    Log.w(TAG, "Hiding UICC volume on UI : " + volume.getPath());
                     continue;
                 }
                 addCategory(StorageVolumePreferenceCategory.buildForPhysical(context, volume));
