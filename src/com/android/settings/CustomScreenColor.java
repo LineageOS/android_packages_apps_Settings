@@ -604,6 +604,8 @@ public class CustomScreenColor extends Activity implements SeekBar.OnSeekBarChan
             BitmapDrawable bd = new BitmapDrawable(bm);
             mRLayout.setBackgroundDrawable(bd);
         } catch (FileNotFoundException e) {
+            Log.e(TAG, "Can't find background drawable:" + e);
+            return;
         }
         canRestorePreview = true;
     }
