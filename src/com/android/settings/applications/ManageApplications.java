@@ -52,6 +52,7 @@ import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.text.BidiFormatter;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.format.Formatter;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -1319,6 +1320,11 @@ public class ManageApplications extends Fragment implements
                         host.getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(mTextView.getWindowToken(), 0);
             }
+        } else {
+            if (!TextUtils.isEmpty(mTextView.getText().toString())) {
+                mTextView.setText("");
+            }
+            mCurTab.mApplications.setFilterPrefix("");
         }
     }
 
