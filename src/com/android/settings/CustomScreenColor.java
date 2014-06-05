@@ -155,6 +155,7 @@ public class CustomScreenColor extends Activity implements SeekBar.OnSeekBarChan
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        restoreSavedHSCI(false);
         unbindService(mPPServiceConn);
     }
 
