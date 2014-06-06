@@ -87,6 +87,7 @@
     <uses-permission android:name="android.permission.REBOOT" />
     <uses-permission android:name="android.permission.MANAGE_DEVICE_ADMINS" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="com.qualcomm.permission.USE_PHONE_SERVICE" />
 
     <application android:label="@string/settings_label"
             android:icon="@mipmap/ic_launcher_settings"
@@ -95,6 +96,8 @@
             android:hardwareAccelerated="true"
             android:requiredForAllUsers="true"
             android:supportsRtl="true">
+      <uses-library android:name="com.qualcomm.qti.phoneclient"
+            android:required="false" />
 
       <!-- screen color Settings Controls -->
         <activity android:name=".ScreenColorSettings" android:label="@string/screencolor"

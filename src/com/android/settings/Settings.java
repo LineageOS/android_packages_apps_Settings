@@ -302,6 +302,11 @@ public class Settings extends PreferenceActivity
         if (mListeningToAccountUpdates) {
             AccountManager.get(this).removeOnAccountsUpdatedListener(this);
         }
+
+        ListAdapter listAdapter = getListAdapter();
+        if (listAdapter instanceof HeaderAdapter) {
+            ((HeaderAdapter) listAdapter).destroy();
+        }
     }
 
     @Override
@@ -613,6 +618,10 @@ public class Settings extends PreferenceActivity
                 if (!getResources().getBoolean(R.bool.config_roamingsettings_enabled)) {
                     target.remove(header);
                 }
+            } else if (id == R.id.lte_4g_settings) {
+                if (!getResources().getBoolean(R.bool.config_4gsettings_enabled)) {
+                    target.remove(header);
+                }
             }
 
             if (i < target.size() && target.get(i) == header
@@ -794,6 +803,7 @@ public class Settings extends PreferenceActivity
         private final WifiEnabler mWifiEnabler;
         private final BluetoothEnabler mBluetoothEnabler;
         private final DataEnabler mDataEnabler;
+        private final Lte4GEnabler m4GEnabler;
         private AuthenticatorHelper mAuthHelper;
         private DevicePolicyManager mDevicePolicyManager;
 
@@ -808,11 +818,18 @@ public class Settings extends PreferenceActivity
 
         private LayoutInflater mInflater;
 
+        //Some headers contain null fragment or intent, but still need to be set as the other type
+        private static boolean nullHeader(Header header) {
+            if (header.id == R.id.lte_4g_settings) {
+                return true;
+            }
+            return false;
+        }
         static int getHeaderType(Header header) {
-            if (header.fragment == null && header.intent == null) {
+            if (header.fragment == null && header.intent == null && !nullHeader(header)) {
                 return HEADER_TYPE_CATEGORY;
             } else if (header.id == R.id.wifi_settings || header.id == R.id.bluetooth_settings
-                    || header.id == R.id.mobiledata_settings) {
+                    || header.id == R.id.mobiledata_settings || header.id == R.id.lte_4g_settings) {
                 return HEADER_TYPE_SWITCH;
             } else if (header.id == R.id.security_settings) {
                 return HEADER_TYPE_BUTTON;
@@ -860,6 +877,7 @@ public class Settings extends PreferenceActivity
             mBluetoothEnabler = new BluetoothEnabler(context, new Switch(context));
             mDevicePolicyManager = dpm;
             mDataEnabler = new DataEnabler(context, new Switch(context));
+            m4GEnabler = new Lte4GEnabler(context, new Switch(context));
         }
 
         @Override
@@ -940,6 +958,8 @@ public class Settings extends PreferenceActivity
                             header.intent.putExtra(SelectSubscription.TARGET_CLASS,
                                     "com.android.phone.MSimMobileNetworkSubSettings");
                         }
+                    } else if(header.id == R.id.lte_4g_settings){
+                        m4GEnabler.setSwitch(holder.switch_);
                     }
                     updateCommonHeaderView(header, holder);
                     break;
@@ -1014,12 +1034,18 @@ public class Settings extends PreferenceActivity
             mWifiEnabler.resume();
             mBluetoothEnabler.resume();
             mDataEnabler.resume();
+            m4GEnabler.resume();
         }
 
         public void pause() {
             mWifiEnabler.pause();
             mBluetoothEnabler.pause();
             mDataEnabler.pause();
+            m4GEnabler.pause();
+        }
+
+        public void destroy() {
+            m4GEnabler.destroy();
         }
     }
 
