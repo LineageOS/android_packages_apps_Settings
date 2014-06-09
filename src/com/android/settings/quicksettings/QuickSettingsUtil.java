@@ -40,6 +40,7 @@ import static com.android.internal.util.cm.QSConstants.TILE_RINGER;
 import static com.android.internal.util.cm.QSConstants.TILE_SCREENTIMEOUT;
 import static com.android.internal.util.cm.QSConstants.TILE_SETTINGS;
 import static com.android.internal.util.cm.QSConstants.TILE_SLEEP;
+import static com.android.internal.util.cm.QSConstants.TILE_SOUNDRECORDER;
 import static com.android.internal.util.cm.QSConstants.TILE_SYNC;
 import static com.android.internal.util.cm.QSConstants.TILE_TORCH;
 import static com.android.internal.util.cm.QSConstants.TILE_USER;
@@ -137,6 +138,9 @@ public class QuickSettingsUtil {
                 TILE_RINGER, R.string.title_tile_sound,
                 "com.android.systemui:drawable/ic_qs_ring_on"));
         registerTile(new QuickSettingsUtil.TileInfo(
+                TILE_SOUNDRECORDER, R.string.title_tile_sound_recorder,
+                "com.android.systemui:drawable/ic_qs_sound_recorder_on"));
+        registerTile(new QuickSettingsUtil.TileInfo(
                 TILE_SYNC, R.string.title_tile_sync,
                 "com.android.systemui:drawable/ic_qs_sync_on"));
         registerTile(new QuickSettingsUtil.TileInfo(
@@ -222,6 +226,11 @@ public class QuickSettingsUtil {
         // Don't show the Compass tile if the device has no orientation sensor
         if (!QSUtils.deviceSupportsCompass(context)) {
             removeTile(TILE_COMPASS);
+        }
+
+        // Don't show the Sound recorder tile if the device has no microphone
+        if (!QSUtils.deviceSupportsMicrophone(context)) {
+            removeTile(TILE_SOUNDRECORDER);
         }
     }
 
