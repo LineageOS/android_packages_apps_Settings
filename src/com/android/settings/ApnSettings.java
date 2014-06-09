@@ -38,6 +38,7 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
+import android.provider.Settings;
 import android.provider.Telephony;
 import android.text.TextUtils;
 import android.telephony.TelephonyManager;
@@ -118,6 +119,11 @@ public class ApnSettings extends PreferenceActivity implements
                     break;
                 }
             }
+            if (intent.getAction().equals(Intent.ACTION_AIRPLANE_MODE_CHANGED) ||
+                    intent.getAction().equals(TelephonyIntents.ACTION_SIM_STATE_CHANGED)) {
+                setScreenEnabled();
+                invalidateOptionsMenu();
+            }
         }
     };
 
@@ -139,8 +145,10 @@ public class ApnSettings extends PreferenceActivity implements
         mSubscription = getIntent().getIntExtra(SelectSubscription.SUBSCRIPTION_KEY,
                 MSimTelephonyManager.getDefault().getDefaultSubscription());
         Log.d(TAG, "onCreate received sub :" + mSubscription);
-        mMobileStateFilter = new IntentFilter(
-                TelephonyIntents.ACTION_ANY_DATA_CONNECTION_STATE_CHANGED);
+        mMobileStateFilter = new IntentFilter();
+        mMobileStateFilter.addAction(TelephonyIntents.ACTION_ANY_DATA_CONNECTION_STATE_CHANGED);
+        mMobileStateFilter.addAction(TelephonyIntents.ACTION_SIM_STATE_CHANGED);
+        mMobileStateFilter.addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED);
         if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
             mPreferApnUri = Uri.parse(PREFERRED_APN_URI + "/" + mSubscription);
         } else {
@@ -152,7 +160,7 @@ public class ApnSettings extends PreferenceActivity implements
     @Override
     protected void onResume() {
         super.onResume();
-
+        setScreenEnabled();
         registerReceiver(mMobileStateReceiver, mMobileStateFilter);
 
         if (!mRestoreDefaultApnMode) {
@@ -299,6 +307,21 @@ public class ApnSettings extends PreferenceActivity implements
                 getResources().getString(R.string.menu_restore))
                 .setIcon(android.R.drawable.ic_menu_upload);
         return true;
+    }
+
+    /*
+     * If airplane mode is on or SIM card don't prepar, set options menu don't
+     * pop up. Restrict user to new APN, reset to default or click the APN list.
+     */
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        String where = getOperatorNumericSelection();
+        if (TextUtils.isEmpty(where) || isAirplaneOn()) {
+            return false;
+        } else {
+            super.onPrepareOptionsMenu(menu);
+            return true;
+        }
     }
 
     @Override
@@ -493,5 +516,27 @@ public class ApnSettings extends PreferenceActivity implements
             result.add(mccMncFromSim);
         }
         return result.toArray(new String[2]);
+    }
+
+    /**
+     * If airplane mode is on or SIM card don't prepar, make sure user can't
+     * edit the Apn. So we disable the screen.
+     */
+    private void setScreenEnabled() {
+        String where = getOperatorNumericSelection();
+        if (TextUtils.isEmpty(where) || isAirplaneOn()) {
+            getPreferenceScreen().setEnabled(false);
+        } else {
+            getPreferenceScreen().setEnabled(true);
+        }
+    }
+
+    /**
+     * Add the method to check the phone state is airplane mode or not. Return
+     * true, if the phone state is airplane mode.
+     */
+    private boolean isAirplaneOn() {
+        return Settings.System.getInt(getContentResolver(),
+                Settings.System.AIRPLANE_MODE_ON, 0) == 1;
     }
 }
