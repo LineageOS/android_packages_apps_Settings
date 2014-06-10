@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 The CyanogenMod Project
+ * Copyright (C) 2012-2014 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -138,8 +138,11 @@ public class BootReceiver extends BroadcastReceiver {
             return;
         }
 
+        String ioschedlist = IOScheduler.IOSCHED_LIST_FILE;
+        String mtdioschedlist = IOScheduler.IOSCHED_MTD_LIST_FILE;
+        String ioschedfile = "";
         String ioscheduler = prefs.getString(IOScheduler.IOSCHED_PREF, null);
-        String availableIOSchedulersLine = Utils.fileReadOneLine(IOScheduler.IOSCHED_LIST_FILE);
+        String availableIOSchedulersLine = Utils.fileReadOneLine(ioschedlist);
         boolean noSettings = ((availableIOSchedulersLine == null) || (ioscheduler == null));
         List<String> ioschedulers = null;
 
@@ -150,7 +153,33 @@ public class BootReceiver extends BroadcastReceiver {
                 ioschedulers = Arrays.asList(availableIOSchedulersLine.replace("[", "").replace("]", "").split(" "));
             }
             if (ioscheduler != null && ioschedulers != null && ioschedulers.contains(ioscheduler)) {
-                Utils.fileWriteOneLine(IOScheduler.IOSCHED_LIST_FILE, ioscheduler);
+                Utils.fileWriteOneLine(ioschedlist, ioscheduler);
+                final String file = ioschedlist;
+                ioschedfile = file.replace("mmcblk0", "mmcblk1");
+                if (Utils.fileExists(ioschedfile)) {
+                    if (Utils.fileIsWritable(ioschedfile)) {
+                        Utils.fileWriteOneLine(ioschedfile, ioscheduler);
+                    } else {
+                        Log.e(TAG, ioschedfile +
+                        " not writable, did you set ueventd rules?");
+                    }
+                }
+
+                if (Utils.fileExists(mtdioschedlist) && Utils.fileIsWritable(mtdioschedlist)) {
+                    Utils.fileWriteOneLine(mtdioschedlist, ioscheduler);
+                    final String mtdfile = mtdioschedlist;
+                    for (int i = 1; i < 10; i++) {
+                        ioschedfile = mtdfile.replace("mtdblock0", "mtdblock" + i);
+                        if (Utils.fileExists(ioschedfile)) {
+                            if (Utils.fileIsWritable(ioschedfile)) {
+                                Utils.fileWriteOneLine(ioschedfile, ioscheduler);
+                            } else {
+                                Log.e(TAG, ioschedfile +
+                                " not writable, did you set ueventd rules?");
+                            }
+                        }
+                    }
+                }
             }
             Log.d(TAG, "I/O scheduler settings restored.");
         }

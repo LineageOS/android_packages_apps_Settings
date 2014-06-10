@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 The CyanogenMod Project
+ * Copyright (C) 2012-2014 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@ import android.os.Message;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
+import android.util.Log;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -35,6 +36,7 @@ public class IOScheduler extends SettingsPreferenceFragment implements
 
     public static final String IOSCHED_PREF = "pref_io_sched";
     public static final String IOSCHED_LIST_FILE = "/sys/block/mmcblk0/queue/scheduler";
+    public static final String IOSCHED_MTD_LIST_FILE = "/sys/block/mtdblock0/queue/scheduler";
 
     public static final String SOB_PREF = "pref_io_sched_set_on_boot";
 
@@ -102,17 +104,48 @@ public class IOScheduler extends SettingsPreferenceFragment implements
         }
     }
 
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
+    public boolean onPreferenceChange(Preference preference, Object value) {
+        final String newValue = (String) value;
         String fname = "";
+        String mtdfname = "";
+        String ioschedfile = "";
 
         if (newValue != null) {
             if (preference == mIOSchedulerPref) {
                 fname = IOSCHED_LIST_FILE;
+                mtdfname = IOSCHED_MTD_LIST_FILE;
             }
 
-            if (Utils.fileWriteOneLine(fname, (String) newValue)) {
+            if (Utils.fileExists(fname) && Utils.fileWriteOneLine(fname, newValue)) {
+                final String file = fname;
+                ioschedfile = file.replace("mmcblk0", "mmcblk1");
+                if (Utils.fileExists(ioschedfile)) {
+                    if (Utils.fileIsWritable(ioschedfile)) {
+                        Utils.fileWriteOneLine(ioschedfile, newValue);
+                    } else {
+                        Log.e(TAG, ioschedfile +
+                        " not writable, did you set ueventd rules?");
+                    }
+                }
+
+                if (Utils.fileExists(mtdfname) && Utils.fileIsWritable(mtdfname)) {
+                    Utils.fileWriteOneLine(mtdfname, newValue);
+                    final String mtdfile = mtdfname;
+                    for (int i = 1; i < 10; i++) {
+                        ioschedfile = mtdfile.replace("mtdblock0", "mtdblock" + i);
+                        if (Utils.fileExists(ioschedfile)) {
+                            if (Utils.fileIsWritable(ioschedfile)) {
+                                Utils.fileWriteOneLine(ioschedfile, newValue);
+                            } else {
+                                Log.e(TAG, ioschedfile +
+                                " not writable, did you set ueventd rules?");
+                            }
+                        }
+                    }
+                }
+
                 if (preference == mIOSchedulerPref) {
-                    mIOSchedulerPref.setSummary(String.format(mIOSchedulerFormat, (String) newValue));
+                    mIOSchedulerPref.setSummary(String.format(mIOSchedulerFormat, newValue));
                 }
                 return true;
             } else {
