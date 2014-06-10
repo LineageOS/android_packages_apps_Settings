@@ -310,6 +310,10 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mUpdateRecovery = findAndInitCheckboxPref(UPDATE_RECOVERY_KEY);
         mDevelopmentShortcut = findAndInitCheckboxPref(DEVELOPMENT_SHORTCUT_KEY);
 
+        if (SystemProperties.getBoolean("ro.disable.recovery.updater", false)) {
+            removePreference(mUpdateRecovery);
+        }
+
         if (!android.os.Process.myUserHandle().equals(UserHandle.OWNER)) {
             disableForUser(mEnableAdb);
             disableForUser(mClearAdbKeys);
