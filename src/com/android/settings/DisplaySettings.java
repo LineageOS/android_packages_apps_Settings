@@ -54,6 +54,7 @@ import com.android.settings.hardware.DisplayGamma;
 
 import org.cyanogenmod.hardware.AdaptiveBacklight;
 import org.cyanogenmod.hardware.ColorEnhancement;
+import org.cyanogenmod.hardware.HighTouchSensitivity;
 import org.cyanogenmod.hardware.TapToWake;
 
 import java.util.ArrayList;
@@ -73,6 +74,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_ADAPTIVE_BACKLIGHT = "adaptive_backlight";
     private static final String KEY_COLOR_ENHANCEMENT = "color_enhancement";
     private static final String KEY_ADVANCED_DISPLAY_SETTINGS = "advanced_display_settings";
+    private static final String KEY_HIGH_TOUCH_SENSITIVITY = "high_touch_sensitivity";
     private static final String KEY_TAP_TO_WAKE = "double_tap_wake_gesture";
 
     private static final String CATEGORY_ADVANCED = "advanced_display_prefs";
@@ -114,6 +116,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private CheckBoxPreference mAdaptiveBacklight;
     private CheckBoxPreference mColorEnhancement;
+    private CheckBoxPreference mHighTouchSensitivity;
     private CheckBoxPreference mTapToWake;
 
     private ContentObserver mAccelerometerRotationObserver =
@@ -209,6 +212,12 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         if (!isColorEnhancementSupported()) {
             advancedPrefs.removePreference(mColorEnhancement);
             mColorEnhancement = null;
+        }
+
+        mHighTouchSensitivity = (CheckBoxPreference) findPreference(KEY_HIGH_TOUCH_SENSITIVITY);
+        if (!isHighTouchSensitivitySupported()) {
+            getPreferenceScreen().removePreference(mHighTouchSensitivity);
+            mHighTouchSensitivity = null;
         }
 
         mTapToWake = (CheckBoxPreference) findPreference(KEY_TAP_TO_WAKE);
@@ -561,6 +570,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     Settings.Global.WAKE_WHEN_PLUGGED_OR_UNPLUGGED,
                     mWakeWhenPluggedOrUnplugged.isChecked() ? 1 : 0);
             return true;
+        } else if (preference == mHighTouchSensitivity) {
+            return HighTouchSensitivity.setEnabled(mHighTouchSensitivity.isChecked());
         } else if (preference == mTapToWake) {
             return TapToWake.setEnabled(mTapToWake.isChecked());
         }
@@ -688,6 +699,16 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static boolean isColorEnhancementSupported() {
         try {
             return ColorEnhancement.isSupported();
+
+        } catch (NoClassDefFoundError e) {
+            // Hardware abstraction framework not installed
+            return false;
+        }
+    }
+
+    private static boolean isHighTouchSensitivitySupported() {
+        try {
+            return HighTouchSensitivity.isSupported();
         } catch (NoClassDefFoundError e) {
             // Hardware abstraction framework not installed
             return false;
