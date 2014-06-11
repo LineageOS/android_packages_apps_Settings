@@ -19,12 +19,10 @@ package com.android.settings;
 
 import android.app.Activity;
 import android.app.admin.DevicePolicyManager;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.UserInfo;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.UserManager;
 import android.preference.*;
@@ -93,16 +91,6 @@ public class LockscreenSecuritySettings extends RestrictedSettingsFragment
         }
         addPreferencesFromResource(R.xml.security_settings);
         root = getPreferenceScreen();
-
-        // CM - allows for calling the settings screen with stock or cm view
-        boolean isCmSecurity = false;
-        Bundle args = getArguments();
-        if (args != null) {
-            isCmSecurity = args.getBoolean("cm_security");
-        }
-
-        final ContentResolver resolver = getContentResolver();
-        final Resources res = getResources();
 
         // Add package manager to check if features are available
         PackageManager pm = getPackageManager();
