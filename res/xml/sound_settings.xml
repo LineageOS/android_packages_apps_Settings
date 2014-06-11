@@ -133,6 +133,12 @@
             android:title="@string/haptic_feedback_enable_title"
             android:defaultValue="true" />
 
+    <com.android.settings.hardware.VibratorIntensity
+            android:key="vibration_intensity"
+            android:title="@string/vibrator_intensity_title"
+            android:dialogTitle="@string/vibrator_intensity_title"
+            android:persistent="false" />
+
     <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
             android:key="volume_adjust_sounds_enabled"
             android:title="@string/volume_adjust_sounds_enable_title"
