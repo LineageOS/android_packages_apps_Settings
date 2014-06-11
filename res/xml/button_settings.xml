@@ -56,6 +56,27 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+            android:key="navigation_bar"
+            android:title="@string/navigation_bar_category" >
+
+        <PreferenceScreen
+                android:key="navigation_bar"
+                android:fragment="com.android.settings.cyanogenmod.NavBar"
+                android:title="@string/navigation_bar_title" />
+
+        <PreferenceScreen
+                android:key="navigation_ring"
+                android:fragment="com.android.settings.cyanogenmod.NavRing"
+                android:title="@string/navigation_ring_title" />
+
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+                android:key="navigation_bar_left"
+                android:title="@string/navigation_bar_left_title"
+                android:summary="@string/navigation_bar_left_summary"
+                android:defaultValue="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="home_key"
         android:title="@string/hardware_keys_home_key_title" >
 
