@@ -953,7 +953,8 @@ public class WifiSettings extends RestrictedSettingsFragment
     private void SetAPCategory(AccessPoint accessPoint, PreferenceCategory screen) {
         if (AccessPoint.isCarrierAp(accessPoint, getActivity())) {
             if (accessPoint.getState() != null
-                    && accessPoint.getState() == DetailedState.CONNECTING) {
+                    && (accessPoint.getState() == DetailedState.CONNECTING
+                    || accessPoint.getState() == DetailedState.CONNECTED)) {
                 sharedPreference = getActivity().getSharedPreferences(
                         TABLE_DEFAULT_CREDIBLE, Context.MODE_PRIVATE);
                 sharedPreference.edit().putInt(accessPoint.ssid,
