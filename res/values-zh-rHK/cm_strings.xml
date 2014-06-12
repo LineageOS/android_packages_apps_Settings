@@ -21,6 +21,8 @@
   <string name="wifi_setting_countrycode_error">設定區碼時遇到了問題。</string>
   <string name="wifi_setting_priority_title">Wi-Fi 連線優先次序</string>
   <string name="wifi_setting_priority_summary">規定 Wi-Fi 網絡的優先次序</string>
+  <string name="wifi_ssid_input_limit">SSID 超過長度上限</string>
+  <string name="p2p_device_name_input_limit">P2P 的名稱超過長度上限</string>
   <string name="change_crypt_password_title">更改密碼</string>
   <string name="change_crypt_password_summary">更改用於裝置加密的密碼</string>
   <string name="encryptionpassword_choose_your_password_header">設定加密密碼</string>
@@ -153,7 +155,7 @@
   <string name="notification_light_disabled">已停用</string>
   <string name="notification_light_default_value">預設</string>
   <string name="notification_light_missed_call_title">未接來電</string>
-  <string name="notification_light_voicemail_title">語音留言</string>
+  <string name="notification_light_voicemail_title">語音信箱</string>
   <string name="adaptive_backlight_title">自動背光調整</string>
   <string name="adaptive_backlight_summary">動態地調整顯示器的背光亮度達到盡量延長電池壽命，同時維持可用性</string>
   <string name="wake_when_plugged_or_unplugged_title">當接上喚醒</string>
@@ -184,7 +186,7 @@
   <string name="battery_low_pulse_title">脈衝如果電池電量低</string>
   <string name="battery_light_list_title">顏色</string>
   <string name="battery_light_low_color_title">低電量</string>
-  <string name="battery_light_medium_color_title">充電中</string>
+  <string name="battery_light_medium_color_title">正在充電</string>
   <string name="battery_light_full_color_title">完全充電</string>
   <string name="lockpattern_settings_enable_error_path_title">顯示圖案錯誤</string>
   <string name="lockpattern_settings_enable_dots_title">顯示圖案圓點</string>
@@ -410,8 +412,8 @@
   <string name="styles_settings_title">風格</string>
   <string name="icons_settings_title">圖示</string>
   <string name="fonts_settings_title">字體</string>
-  <string name="wallpaper_settings_title_cm">牆紙</string>
-  <string name="lockscreen_wallpaper_settings_title">鎖定螢幕牆紙</string>
+  <string name="wallpaper_settings_title_cm">桌布</string>
+  <string name="lockscreen_wallpaper_settings_title">鎖定螢幕桌布</string>
   <string name="bootanim_settings_title">開機動畫</string>
   <string name="soundpack_settings_title">音效包</string>
   <string name="performance_settings_title">效能</string>
@@ -688,11 +690,10 @@
   <string name="lockscreen_background">背景</string>
   <string name="lockscreen_background_style_title">鎖定螢幕背景</string>
   <string name="background_default">預設背景</string>
-  <string name="background_wallpaper">自訂牆紙</string>
+  <string name="background_wallpaper">自訂桌布</string>
   <string name="background_result_successful">背景已更改</string>
   <string name="background_result_not_successful">背景未更改</string>
   <string name="setting_lockscreen_background">正在套用背景</string>
-  <string name="accessibility_home_button_answers_call_prerefence_title">按主頁鍵接聽電話</string>
   <string name="confirm_delete_apn">APN 將會被刪除。</string>
   <string name="status_bar_title">狀態列</string>
   <string name="status_bar_show_clock_title">顯示時鐘</string>
@@ -720,6 +721,8 @@
   <string name="storage_rescan_media_complete">掃描完成</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">管理安全短訊設定</string>
+  <string name="logger_title">匿名當機日誌記錄</string>
+  <string name="logger_summary">管理當機日誌記錄設定</string>
   <string name="custom_runtime_warning_title">警告</string>
   <string name="custom_runtime_warning_message">ART 不被 CyanogenMod 所支援. 此設定僅用作實驗，有可能造成不穩定、死機、數據丟失或導致您的裝置不能正常開機。請瀏覽  &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt;  細閱更多資料。&lt;br/&gt;&lt;br/&gt;作為你的運作環境，我們請求你不要發送錯誤報告給我們。&lt;br/&gt;&lt;br/&gt; 你要重啟裝置將運作環境從 <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> 改為 <xliff:g id="new" example="libart.so">%2$s</xliff:g> 嗎?</string>
   <string name="gps_download_data_wifi_only">只透過 Wi-Fi 網絡下載 GPS 輔助數據</string>
@@ -750,7 +753,7 @@
   <string name="gestures_action_search">引用搜索</string>
   <string name="gestures_action_recent">最近應用程式</string>
   <string name="stylus_app_not_installed">%s尚未安裝</string>
-  <string name="ime_switcher_notify">輸入法通知</string>
+  <string name="ime_switcher_notify">選擇器通知</string>
   <string name="ime_switcher_notify_summary">顯示輸入法選擇器通知</string>
   <string name="app_ops_summaries_coarse_location">粗略位置</string>
   <string name="app_ops_summaries_fine_location">精確位置</string>

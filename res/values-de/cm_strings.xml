@@ -21,6 +21,8 @@
   <string name="wifi_setting_countrycode_error">Beim Festlegen des WLAN-Ländercodes ist ein Problem aufgetreten</string>
   <string name="wifi_setting_priority_title">WLAN-Priorität</string>
   <string name="wifi_setting_priority_summary">Priorität der gespeicherten Netzwerke festlegen</string>
+  <string name="wifi_ssid_input_limit">SSID ist zu lang</string>
+  <string name="p2p_device_name_input_limit">P2P-Name ist zu lang</string>
   <string name="change_crypt_password_title">Passwort ändern</string>
   <string name="change_crypt_password_summary">Ändert das zur Geräteverschlüsselung genutzte Passwort</string>
   <string name="encryptionpassword_choose_your_password_header">Verschlüsselungspasswort festlegen</string>
@@ -234,6 +236,7 @@
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Helligkeit</string>
   <string name="title_tile_camera">Kamera</string>
+  <string name="title_tile_compass">Kompass</string>
   <string name="title_tile_sleep">Standby</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Taschenlampe</string>
@@ -643,6 +646,7 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
   <string name="power_menu_user_title">Benutzer</string>
   <string name="power_menu_sound_title">Ton-Einstellungen</string>
   <string name="button_settings">Tasten</string>
+  <string name="hardware_keys_power_key_title">Ein-/Aus-Taste</string>
   <string name="hardware_keys_home_key_title">Home-Taste</string>
   <string name="hardware_keys_menu_key_title">Menü-Taste</string>
   <string name="hardware_keys_assist_key_title">Suche-Taste</string>
@@ -659,8 +663,12 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
   <string name="hardware_keys_action_voice_search">Sprachsuche</string>
   <string name="hardware_keys_action_in_app_search">In-App-Suche</string>
   <string name="hardware_keys_action_launch_camera">Kamera starten</string>
+  <string name="power_end_call_title">Anruf beenden</string>
+  <string name="power_end_call_summary">Beenden des aktuellen Telefonats durch drücken der Ein-/Aus-Taste</string>
   <string name="button_wake_title">Aufwecken</string>
   <string name="home_wake_summary">Drücken der Home-Taste aktiviert den Bildschirm</string>
+  <string name="home_answer_call_title">Anruf beantworten</string>
+  <string name="home_answer_call_summary">Annehmen eingehender Anruf durch drücken der Ein-/Aus-Taste</string>
   <string name="camera_wake_summary">Drücken der Kamera-Taste aktiviert den Bildschirm</string>
   <string name="camera_sleep_on_release_title">Kurzer Blick</string>
   <string name="camera_sleep_on_release_summary">Der Bildschirm wird aktiviert, solange die Kamera-Taste halb durchgedrückt gehalten wird</string>
@@ -692,7 +700,6 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
   <string name="background_result_successful">Hintergrund wurde geändert</string>
   <string name="background_result_not_successful">Hintergrund wurde nicht geändert</string>
   <string name="setting_lockscreen_background">Hintergrund anwenden</string>
-  <string name="accessibility_home_button_answers_call_prerefence_title">Anruf mit Home-Taste annehmen</string>
   <string name="confirm_delete_apn">Der Zugangspunkt wird gelöscht</string>
   <string name="status_bar_title">Statusleiste</string>
   <string name="status_bar_show_clock_title">Uhr anzeigen</string>
@@ -713,13 +720,15 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
   <string name="status_bar_notif_count_summary">Anzahl der ungelesenen Benachrichtigungen in der Statusleiste anzeigen</string>
   <string name="status_bar_double_tap_to_sleep_title">Standby durch doppeltes Tippen</string>
   <string name="development_shortcut_title">Entwickler-Abkürzungen</string>
-  <string name="development_shortcut_summary">\'Anwendungsdaten löschen\' und\'Beenden erzwingen\' in der Benachrichtungsleiste und im Anwendungsverlauf anzeigen</string>
+  <string name="development_shortcut_summary">\'Anwendungsdaten löschen\' und \'Beenden erzwingen\' in der Benachrichtungsleiste und im Anwendungsverlauf anzeigen</string>
   <string name="usb_mass_storage_title">Massenspeicher</string>
   <string name="usb_mass_storage_summary">Ermöglicht den Datentransfer zwischen Ihrem Computer und der SD-Karte, indem diese als USB-Massenspeicher eingebunden wird</string>
   <string name="storage_rescan_media">Speichermedium nach Mediendateien durchsuchen</string>
   <string name="storage_rescan_media_complete">Suche abgeschlossen</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Einstellungen für sichere SMS</string>
+  <string name="logger_title">Anonyme Absturzberichte</string>
+  <string name="logger_summary">Absturzbericht-Einstellungen</string>
   <string name="custom_runtime_warning_title">Warnung</string>
   <string name="custom_runtime_warning_message">ART wird von CyanogenMod nicht unterstützt. Diese Einstellung ist experimentell und nur für Entwickler gedacht. Sie kann zu Instabilitäten, Abstürzen oder Datenverlust führen oder verhindern, dass Ihr Gerät startet. Besuchen Sie &lt;a href=\"http://source.android.com/devices/tech
 /dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; für mehr Informationen.&lt;br/&gt;&lt;br/&gt;Melden Sie keine Fehler, wenn Sie ART als Laufzeitumgebung aktiviert haben.&lt;br/&gt;&lt;br/&gt;Sind Sie sicher, dass Sie das Gerät neu starten wollen, um die Laufzeitumgebung von <xliff:g id="old" example="libdvm.so">%1$s</xliff:g>
@@ -884,6 +893,7 @@ auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
   <string name="multi_sim_settings_group_summary">Standard-SIM Auswahl</string>
   <string name="voice_title">Sprachanrufe</string>
   <string name="data_title">Voip-Anrufe</string>
+  <string name="sms_title">SMS-Versand</string>
   <string name="bluetooth_accept_all_files">Alle Dateiformate akzeptieren</string>
   <string name="autoperf_title">App-Profile aktivieren</string>
   <string name="autoperf_summary">Wählt für einige Apps automatisch ein passendes Leistungsprofil aus</string>

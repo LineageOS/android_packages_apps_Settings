@@ -21,6 +21,8 @@
   <string name="wifi_setting_countrycode_error">Ongelma aluekoodia asetettaessa.</string>
   <string name="wifi_setting_priority_title">Wi-Fi-tukiasemien tärkeysjärjestys</string>
   <string name="wifi_setting_priority_summary">Aseta Wi-Fi-tukiasemat tärkeysjärjestykseen</string>
+  <string name="wifi_ssid_input_limit">SSID ylittää enimmäispituuden</string>
+  <string name="p2p_device_name_input_limit">P2P-nimi ylittää enimmäispituuden</string>
   <string name="change_crypt_password_title">Vaihda salasana</string>
   <string name="change_crypt_password_summary">Vaihda laitteen salauksessa käytettävä salasana</string>
   <string name="encryptionpassword_choose_your_password_header">Aseta salauksen salasana</string>
@@ -234,6 +236,7 @@
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Kirkkaus</string>
   <string name="title_tile_camera">Kamera</string>
+  <string name="title_tile_compass">Kompassi</string>
   <string name="title_tile_sleep">Lepotila</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Lamppu</string>
@@ -629,6 +632,7 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="power_menu_user_title">Käyttäjät</string>
   <string name="power_menu_sound_title">Äänipaneeli</string>
   <string name="button_settings">Painikkeet</string>
+  <string name="hardware_keys_power_key_title">Virtapainike</string>
   <string name="hardware_keys_home_key_title">Koti-näppäin</string>
   <string name="hardware_keys_menu_key_title">Menu-näppäin</string>
   <string name="hardware_keys_assist_key_title">Haku-näppäin</string>
@@ -645,8 +649,12 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="hardware_keys_action_voice_search">Äänihaku</string>
   <string name="hardware_keys_action_in_app_search">Haku sovelluksessa</string>
   <string name="hardware_keys_action_launch_camera">Kamera</string>
+  <string name="power_end_call_title">Lopeta puhelu</string>
+  <string name="power_end_call_summary">Virtapainikkeen painaminen lopettaa nykyisen puhelun</string>
   <string name="button_wake_title">Herätys</string>
   <string name="home_wake_summary">Painamalla kotinäppäintä laite herää</string>
+  <string name="home_answer_call_title">Vastaa puheluun</string>
+  <string name="home_answer_call_summary">Kotinäppäin vastaa tulevaan puheluun</string>
   <string name="camera_wake_summary">Painamalla kameranäppäintä laite herää</string>
   <string name="camera_sleep_on_release_title">Vilauta näyttöä</string>
   <string name="camera_sleep_on_release_summary">Puolikas painallus pitää näytön päällä kun näppäintä pidetään pohjassa</string>
@@ -678,7 +686,6 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="background_result_successful">Taustakuva vaihdettu</string>
   <string name="background_result_not_successful">Taustakuvaa ei vaihdettu</string>
   <string name="setting_lockscreen_background">Asetetaan taustakuvaa</string>
-  <string name="accessibility_home_button_answers_call_prerefence_title">Kotinäppäin vastaa puheluun</string>
   <string name="confirm_delete_apn">Yhteysosoite poistetaan.</string>
   <string name="status_bar_title">Tilapalkki</string>
   <string name="status_bar_show_clock_title">Näytä kello</string>
@@ -706,6 +713,8 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="storage_rescan_media_complete">Skannaus valmis</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Hallitse turvallisten tekstiviestien asetuksia</string>
+  <string name="logger_title">Nimettömät kaatumislokit</string>
+  <string name="logger_summary">Hallitse kaatumislokien asetuksia</string>
   <string name="custom_runtime_warning_title">Varoitus</string>
   <string name="custom_runtime_warning_message">CyanogenMod ei tue ART-ympäristöä, sillä se on kokeellinen ominaisuus, ja saattaa aiheuttaa epävakautta, kaatumisia, tietojen katoamista ja estää laitteen käynnistymisen. Lue lisää: &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;Pyydämme, ettet lähetä virheraportteja jos valitset ART-ympäristön.&lt;br/&gt;&lt;br/&gt;Oletko varma että haluat vaihtaa suoritusympäristön Dalvik-ympäristöstä(<xliff:g id="old" example="libdvm.so">%1$s</xliff:g>) ART-ympäristöksi(<xliff:g id="new" example="libart.so">%2$s</xliff:g>)?</string>
   <string name="gps_download_data_wifi_only">Lataa GPS-avusteinen data vain Wi-Fi-verkkojen yli</string>

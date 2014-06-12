@@ -21,6 +21,8 @@
   <string name="wifi_setting_countrycode_error">Houve um problema ao definir o código de região.</string>
   <string name="wifi_setting_priority_title">Prioridade Wi-Fi</string>
   <string name="wifi_setting_priority_summary">Especificar a prioridade das redes Wi-Fi</string>
+  <string name="wifi_ssid_input_limit">SSID excede o tamanho máximo</string>
+  <string name="p2p_device_name_input_limit">O nome do P2P excede o tamanho máximo</string>
   <string name="change_crypt_password_title">Alterar senha</string>
   <string name="change_crypt_password_summary">Alterar a senha usada para a criptografia de dispositivo</string>
   <string name="encryptionpassword_choose_your_password_header">Definir senha de criptografia</string>
@@ -234,6 +236,7 @@
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Brilho</string>
   <string name="title_tile_camera">Câmera</string>
+  <string name="title_tile_compass">Bússola</string>
   <string name="title_tile_sleep">Dormir</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Lanterna</string>
@@ -628,6 +631,7 @@ Opções adicionais estão disponíveis ao pressionar continuamente uma linha. A
   <string name="power_menu_user_title">Mudar usuário</string>
   <string name="power_menu_sound_title">Painel de som</string>
   <string name="button_settings">Botões</string>
+  <string name="hardware_keys_power_key_title">Botão liga/desliga</string>
   <string name="hardware_keys_home_key_title">Botão home</string>
   <string name="hardware_keys_menu_key_title">Botão menu</string>
   <string name="hardware_keys_assist_key_title">Botão busca</string>
@@ -644,8 +648,12 @@ Opções adicionais estão disponíveis ao pressionar continuamente uma linha. A
   <string name="hardware_keys_action_voice_search">Busca por voz</string>
   <string name="hardware_keys_action_in_app_search">Busca dentro do app</string>
   <string name="hardware_keys_action_launch_camera">Abrir câmera</string>
+  <string name="power_end_call_title">Encerrar chamada</string>
+  <string name="power_end_call_summary">Pressionar o botão liga/desliga encerrará a chamada em andamento</string>
   <string name="button_wake_title">Acordar</string>
   <string name="home_wake_summary">Ao pressionar o botão home, seu dispositivo irá acordar</string>
+  <string name="home_answer_call_title">Atender chamada</string>
+  <string name="home_answer_call_summary">Pressionar o botão home irá atender a chamada</string>
   <string name="camera_wake_summary">Ao pressionar o botão da câmera, o dispositivo irá acordar</string>
   <string name="camera_sleep_on_release_title">Espreitar a tela</string>
   <string name="camera_sleep_on_release_summary">Um meio toque irá manter a tela ligada somente enquanto o botão for segurado</string>
@@ -677,7 +685,6 @@ Opções adicionais estão disponíveis ao pressionar continuamente uma linha. A
   <string name="background_result_successful">Plano de fundo alterado</string>
   <string name="background_result_not_successful">Plano de fundo não alterado</string>
   <string name="setting_lockscreen_background">Aplicando plano de fundo</string>
-  <string name="accessibility_home_button_answers_call_prerefence_title">Atender chamadas com botão home</string>
   <string name="confirm_delete_apn">O APN vai ser removido.</string>
   <string name="status_bar_title">Barra de status</string>
   <string name="status_bar_show_clock_title">Mostrar relógio</string>
@@ -705,6 +712,8 @@ Opções adicionais estão disponíveis ao pressionar continuamente uma linha. A
   <string name="storage_rescan_media_complete">Varredura completada</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Gerenciar configurações de SMS seguro</string>
+  <string name="logger_title">Registro anônimo de erros</string>
+  <string name="logger_summary">Gerenciar configurações do registro de erros</string>
   <string name="custom_runtime_warning_title">Aviso</string>
   <string name="custom_runtime_warning_message">ART não é oficialmente suportado por CyanogenMod como é altamente experimental e pode portencialmente causar instabilidade, falhas no sistema, perda de dados ou prevenir o seu dispositivo de inicializar corretamente. Visite &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt;&lt; para mais informações.&lt;br/&gt;&lt;br/&gt;Nós pedimos que você não reporte problemas se você estiver com o ART ativado.&lt;br/&gt;&lt;br/&gt;Você tem certeza que deseja reiniciar para trocar de <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> para <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
   <string name="gps_download_data_wifi_only">Baixar dados GPS assistido somente em redes Wi-Fi</string>

@@ -21,6 +21,8 @@
   <string name="wifi_setting_countrycode_error">Hi ha un problema establint el codi de regió.</string>
   <string name="wifi_setting_priority_title">Prioritat del Wi-Fi</string>
   <string name="wifi_setting_priority_summary">Especifica la prioritat de les xarxes Wi-Fi</string>
+  <string name="wifi_ssid_input_limit">El SSID excedeix la llargada màxima</string>
+  <string name="p2p_device_name_input_limit">El nom P2P excedeix la llargada màxima</string>
   <string name="change_crypt_password_title">Canvia la contrasenya</string>
   <string name="change_crypt_password_summary">Canvia la contrasenya utilitzada per l\'encriptació del dispositiu</string>
   <string name="encryptionpassword_choose_your_password_header">Estableix la contrasenya d\'encriptació</string>
@@ -76,7 +78,7 @@
   <string name="profile_connectionoverrides_title">Substitueix Connexió</string>
   <string name="profile_volumeoverrides_title">Substitueix Volum</string>
   <string name="connection_state_disabled">Desactiva</string>
-  <string name="connection_state_enabled">Activat</string>
+  <string name="connection_state_enabled">Activa</string>
   <string name="volume_override_summary">Estableix a</string>
   <string name="profile_profiles_manage">Perfils</string>
   <string name="profile_profile_manage">Gestiona un perfil</string>
@@ -234,6 +236,7 @@
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Brillantor</string>
   <string name="title_tile_camera">Càmera</string>
+  <string name="title_tile_compass">Brúixola</string>
   <string name="title_tile_sleep">Posa en repòs</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Torxa</string>
@@ -630,6 +633,7 @@ Hi ha disponibles opcions addicionals apretant llargament sobre la línia. Selec
   <string name="power_menu_user_title">Intercanviador d\'usuaris</string>
   <string name="power_menu_sound_title">Panell de so</string>
   <string name="button_settings">Botons</string>
+  <string name="hardware_keys_power_key_title">Botó d\'apagat</string>
   <string name="hardware_keys_home_key_title">Botó inici</string>
   <string name="hardware_keys_menu_key_title">Botó menú</string>
   <string name="hardware_keys_assist_key_title">Botó cerca</string>
@@ -646,8 +650,12 @@ Hi ha disponibles opcions addicionals apretant llargament sobre la línia. Selec
   <string name="hardware_keys_action_voice_search">Cerca per veu</string>
   <string name="hardware_keys_action_in_app_search">Cerca dins l\'app</string>
   <string name="hardware_keys_action_launch_camera">Obre la càmera</string>
+  <string name="power_end_call_title">Finalitza la trucada</string>
+  <string name="power_end_call_summary">Apretant el botó d\'apagat es finalitzarà la trucada actual</string>
   <string name="button_wake_title">Encendre</string>
   <string name="home_wake_summary">Apretant el botó inici el dispositiu sortirà del repòs</string>
+  <string name="home_answer_call_title">Contesta la trucada</string>
+  <string name="home_answer_call_summary">Apretant el botó d\'inici es contestarà la trucada entrant actual</string>
   <string name="camera_wake_summary">Apretant la tecla càmera el dispositiu sortirà del repòs</string>
   <string name="camera_sleep_on_release_title">Cop d\'ull a la pantalla</string>
   <string name="camera_sleep_on_release_summary">Una mitja pressió mantindrà la pantalla encesa només mentre el botó mantingui apretat</string>
@@ -679,7 +687,6 @@ Hi ha disponibles opcions addicionals apretant llargament sobre la línia. Selec
   <string name="background_result_successful">S\'ha canviat el fons de pantalla</string>
   <string name="background_result_not_successful">No s\'ha canviat el fons de pantalla</string>
   <string name="setting_lockscreen_background">S\'està aplicant el fons de pantalla</string>
-  <string name="accessibility_home_button_answers_call_prerefence_title">El botó inici contesta la trucada</string>
   <string name="confirm_delete_apn">L\'APN serà esborrada.</string>
   <string name="status_bar_title">Barra d\'estat</string>
   <string name="status_bar_show_clock_title">Mostra el rellotge</string>
@@ -707,6 +714,8 @@ Hi ha disponibles opcions addicionals apretant llargament sobre la línia. Selec
   <string name="storage_rescan_media_complete">Cerca completada</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Gestiona la configuració d\'SMS segurs</string>
+  <string name="logger_title">Registre d\'errors anònim</string>
+  <string name="logger_summary">Gestiona la configuració del registre d\'errors</string>
   <string name="custom_runtime_warning_title">Alerta</string>
   <string name="custom_runtime_warning_message">Cyanogenmod no dóna oficialment suport a ART ja que aquest ajustament és altament experimental i té el potencial de causar inestabilitats, fallades, pèrdua de dades o pot impedir l\'arrancada correcta del teu dispositiu. Visita &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; per a més informació.&lt;br/&gt;&lt;br/&gt;Et demanem que no envïis informes d\'error si tens activada ART com la teva runtime.&lt;br/&gt;&lt;br/&gt;Estàs segur que vols reiniciar per canviar la runtime de <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> a <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
   <string name="gps_download_data_wifi_only">Descarrega dades de GPS assistides només sobre xarxes Wi-Fi</string>

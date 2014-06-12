@@ -21,6 +21,8 @@
   <string name="wifi_setting_countrycode_error">Det uppstod ett problem vid inställningen av regionskoden.</string>
   <string name="wifi_setting_priority_title">Wi-Fi-prioritet</string>
   <string name="wifi_setting_priority_summary">Specificera prioriteten för Wi-Fi-nätverk</string>
+  <string name="wifi_ssid_input_limit">SSID överskrider maxlängd</string>
+  <string name="p2p_device_name_input_limit">P2P-namn överskrider maxlängd</string>
   <string name="change_crypt_password_title">Byt lösenord</string>
   <string name="change_crypt_password_summary">Byt lösenordet som används för enhetskryptering</string>
   <string name="encryptionpassword_choose_your_password_header">Ställ in krypteringslösenord</string>
@@ -234,6 +236,7 @@
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Ljusstyrka</string>
   <string name="title_tile_camera">Kamera</string>
+  <string name="title_tile_compass">Kompass</string>
   <string name="title_tile_sleep">Somna</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Ficklampa</string>
@@ -262,6 +265,7 @@
   <string name="title_dynamic_alarm">Alarmklocka</string>
   <string name="title_dynamic_bugreport">Felrapport</string>
   <string name="title_dynamic_dock_battery">Batteri i docka</string>
+  <string name="title_dynamic_equalizer">Equalizer</string>
   <string name="title_dynamic_ime">Inmatningsväxlare</string>
   <string name="title_dynamic_usbtether">USB-tether</string>
   <string name="title_dynamic_wifi">Överför skärm</string>
@@ -356,6 +360,8 @@ två för att kunna infoga ytterligare kontrollpunkter. \"Ta bort\" raderar den 
   <string name="root_access_apps">Endast appar</string>
   <string name="root_access_adb">Endast ADB</string>
   <string name="root_access_all">Appar och ADB</string>
+  <string name="update_recovery_title">Uppdatera CM-recovery</string>
+  <string name="update_recovery_summary">Uppdatera recovery vid installation av systemuppdateringar</string>
   <string name="ok">OK</string>
   <string name="quiet_hours_title">Tysta timmar</string>
   <string name="quiet_hours_summary">Konfigurera timmarna då enheten ska vara tyst</string>
@@ -408,10 +414,12 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="styles_settings_title">Stilar</string>
   <string name="icons_settings_title">Ikoner</string>
   <string name="fonts_settings_title">Typsnitt</string>
+  <string name="wallpaper_settings_title_cm">Bakgrundsbilder</string>
   <string name="lockscreen_wallpaper_settings_title">Bakgrundsbilder för låsskärm</string>
   <string name="bootanim_settings_title">Uppstartsanimationer</string>
   <string name="soundpack_settings_title">Ljudpaket</string>
   <string name="performance_settings_title">Prestanda</string>
+  <string name="performance_settings_warning_title">Var försiktig</string>
   <string name="performance_settings_warning">Dessa inställningar är experimentella och alla tillämpade ändringar har potential att orsaka instabilitet, krascher, dataförlust eller hårdvarufel.\n\nVi önskar att du inte skickar felrapporter om någon av dessa inställningar är ändrade från sitt standardvärde.</string>
   <string name="performance_set_on_boot">Ställ in vid uppstart</string>
   <string name="performance_set_on_boot_summary">Återställ tillämpade inställningar vid uppstart</string>
@@ -600,6 +608,7 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="lockscreen_enable_modlock_title">Anpassad låsskärm</string>
   <string name="navigation_bar_category">Navigeringsfält</string>
   <string name="navigation_bar_title">Knappar och utformning</string>
+  <string name="navigation_bar_left_title">Vänsterhänt läge</string>
   <string name="navigation_bar_left_summary">Placera navigeringsfältet på vänster sida av skärmen i landskapsläge</string>
   <string name="navigation_bar_help_text">1 - För att börja redigera, tryck på låsikonen\n\n2 - Tryck på vilken knapp som helst för att tillägna eller ändra funktionalitet\n\n3 - Långtryck på vilken knapp som helst för att arrangera om ordningen\n\n4 - För att spara, tryck på låsikonen igen\n\n5 - För att återkalla systemstandard, tryck på återställningsknappen\n\n</string>
   <string name="navigation_bar_tips">\u2022 Åtgärder kan bara tillägnas en knapp i taget\n\n\u2022 Hemknappen kan inte omtilldelas\n\n\u2022 Sidoknapparna kan inte arrangeras om</string>
@@ -638,6 +647,7 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="power_menu_user_title">Användarväxlare</string>
   <string name="power_menu_sound_title">Ljudpanel</string>
   <string name="button_settings">Knappar</string>
+  <string name="hardware_keys_power_key_title">Avstängningsknapp</string>
   <string name="hardware_keys_home_key_title">Hemknapp</string>
   <string name="hardware_keys_menu_key_title">Menyknapp</string>
   <string name="hardware_keys_assist_key_title">Sökknapp</string>
@@ -654,8 +664,12 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="hardware_keys_action_voice_search">Röstsökning</string>
   <string name="hardware_keys_action_in_app_search">Sök i app</string>
   <string name="hardware_keys_action_launch_camera">Öppna kamera</string>
+  <string name="power_end_call_title">Avsluta samtal</string>
+  <string name="power_end_call_summary">Tryck på avstängningsknappen kommer att avsluta pågående samtal</string>
   <string name="button_wake_title">Vakna</string>
   <string name="home_wake_summary">Att trycka på hemknappen kommer att väcka din enhet</string>
+  <string name="home_answer_call_title">Svara samtal</string>
+  <string name="home_answer_call_summary">Tryck på hemknappen kommer att svara på inkommande samtal</string>
   <string name="camera_wake_summary">Att trycka på kameraknappen kommer att väcka din enhet</string>
   <string name="camera_sleep_on_release_title">Tjuvkika</string>
   <string name="camera_sleep_on_release_summary">Ett halvtryck kommer att hålla skärmen på endast medan knappen är nedtryckt</string>
@@ -687,7 +701,6 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="background_result_successful">Bakgrund ändrad</string>
   <string name="background_result_not_successful">Bakgrunden ändrades ej</string>
   <string name="setting_lockscreen_background">Tillämpar bakgrund</string>
-  <string name="accessibility_home_button_answers_call_prerefence_title">Hemknapp svarar samtal</string>
   <string name="confirm_delete_apn">Detta APN kommer tas bort.</string>
   <string name="status_bar_title">Statusfält</string>
   <string name="status_bar_show_clock_title">Visa klocka</string>
@@ -715,6 +728,8 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="storage_rescan_media_complete">Sökning klar</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Hantera säkra SMS-inställningar</string>
+  <string name="logger_title">Anonym kraschloggning</string>
+  <string name="logger_summary">Hantera inställningar för kraschloggning</string>
   <string name="custom_runtime_warning_title">Varning</string>
   <string name="custom_runtime_warning_message">ART saknar officiellt stöd från CyanogenMod då det är högst experimentellt och har potential att orsaka instabilitet, krascher, dataförlust eller förhindra din enhet från att starta. Besök &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; för mer information.&lt;br/&gt;&lt;br/&gt;Vi ber dig att inte skicka några felrapporter om du har aktiverat ART som din körningstid.&lt;br/&gt;&lt;br/&gt;Är du säker på att du vill starta om för att ändra din körningstid från <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> till <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
   <string name="gps_download_data_wifi_only">Ladda ned GPS-assisterad data endast över Wi-Fi-nätverk</string>
@@ -879,4 +894,8 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="data_title">Datasamtal</string>
   <string name="sms_title">Skickar SMS</string>
   <string name="priority_sub_title">Prioriterat abonnemang</string>
+  <string name="bluetooth_accept_all_files">Acceptera alla filtyper</string>
+  <string name="autoperf_title">Aktivera profiler per app</string>
+  <string name="autoperf_summary">Välj automatiskt en lämplig prestandaprofil för olika appar</string>
+  <string name="graphics_title">Grafik och rendering</string>
 </resources>

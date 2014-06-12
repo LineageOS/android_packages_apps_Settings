@@ -21,6 +21,8 @@
   <string name="wifi_setting_countrycode_error">Vyskytol sa problém pri nastavovaní kódu oblasti.</string>
   <string name="wifi_setting_priority_title">Priorita sietí Wi-Fi</string>
   <string name="wifi_setting_priority_summary">Určiť prioritu Wi-Fi sietí</string>
+  <string name="wifi_ssid_input_limit">SSID prekračuje maximálnu dĺžku</string>
+  <string name="p2p_device_name_input_limit">P2P názov prekračuje maximálnu dĺžku</string>
   <string name="change_crypt_password_title">Zmeniť heslo</string>
   <string name="change_crypt_password_summary">Zmena hesla používaného na šifrovanie zariadenia</string>
   <string name="encryptionpassword_choose_your_password_header">Nastavte heslo šifrovania</string>
@@ -234,6 +236,7 @@
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Jas</string>
   <string name="title_tile_camera">Fotoaparát</string>
+  <string name="title_tile_compass">Kompas</string>
   <string name="title_tile_sleep">Prejsť do spánku</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Svietidlo</string>
@@ -628,6 +631,7 @@ Každý riadok v zozname jasu zodpovedá jednému <i>riadiacemu bodu</i> krivky 
   <string name="power_menu_user_title">Prepínač používateľov</string>
   <string name="power_menu_sound_title">Panel zvuku</string>
   <string name="button_settings">Tlačidlá</string>
+  <string name="hardware_keys_power_key_title">Tlačidlo napájania</string>
   <string name="hardware_keys_home_key_title">Tlačidlo Domov</string>
   <string name="hardware_keys_menu_key_title">Tlačidlo Ponuka</string>
   <string name="hardware_keys_assist_key_title">Tlačidlo Hľadať</string>
@@ -644,8 +648,12 @@ Každý riadok v zozname jasu zodpovedá jednému <i>riadiacemu bodu</i> krivky 
   <string name="hardware_keys_action_voice_search">Hlasové vyhľadávanie</string>
   <string name="hardware_keys_action_in_app_search">Vyhľadávanie v aplikácii</string>
   <string name="hardware_keys_action_launch_camera">Spustiť fotoaparát</string>
+  <string name="power_end_call_title">Ukončiť hovor</string>
+  <string name="power_end_call_summary">Stlačením tlačidla napájania sa ukončí aktuálny hovor</string>
   <string name="button_wake_title">Prebudiť</string>
   <string name="home_wake_summary">Stlačenie tlačidla Domov prebudí vaše zariadenie</string>
+  <string name="home_answer_call_title">Prijať hovor</string>
+  <string name="home_answer_call_summary">Stlačením tlačidla Domov sa prijme aktuálny hovor</string>
   <string name="camera_wake_summary">Stlačenie tlačidla Fotoaparát prebudí vaše zariadenie</string>
   <string name="camera_sleep_on_release_title">Náhľad obrazovky</string>
   <string name="camera_sleep_on_release_summary">Polovičné stlačenie rozsvieti obrazovku iba vtedy, kým je tlačidlo držané</string>
@@ -677,7 +685,6 @@ Každý riadok v zozname jasu zodpovedá jednému <i>riadiacemu bodu</i> krivky 
   <string name="background_result_successful">Pozadie zmenené</string>
   <string name="background_result_not_successful">Pozadie nebolo zmenené</string>
   <string name="setting_lockscreen_background">Použiť pozadie</string>
-  <string name="accessibility_home_button_answers_call_prerefence_title">Odpovedať na hovor tlačidlom Domov</string>
   <string name="confirm_delete_apn">Táto položka zoznamu prístupových bodov bude vymazaná</string>
   <string name="status_bar_title">Stavový riadok</string>
   <string name="status_bar_show_clock_title">Zobraziť hodiny</string>
@@ -705,6 +712,8 @@ Každý riadok v zozname jasu zodpovedá jednému <i>riadiacemu bodu</i> krivky 
   <string name="storage_rescan_media_complete">Skenovanie bolo dokončené</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Spravovať nastavenie zabezpečených SMS</string>
+  <string name="logger_title">Anonymné zaznamenávanie pádov</string>
+  <string name="logger_summary">Spravovať nastavenia zaznamenávania pádov</string>
   <string name="custom_runtime_warning_title">Upozornenie</string>
   <string name="custom_runtime_warning_message">ART nie je oficiálne podporovaný CyanogenModom. Toto nastavenie je zahrnuté iba pre experimentovanie a môže potencionálne spôsobiť nestabilitu, pády, straty dát alebo môže zabrániť správnemu spusteniu vášho zariadenia. Navštívte &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Úvod k ART&lt;/a&gt; pre viac informácií.&lt;br/&gt;&lt;br/&gt;Žiadame vás, aby ste nepodávali hlásenia o chybách, ak ste povolili ART ako Váš modul spustenia.&lt;br/&gt;&lt;br/&gt;Ste si istí, že chcete reštartovať pre zmenu modulu spustenia z <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> na <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
   <string name="gps_download_data_wifi_only">Stiahnuť pomocné GPS údaje len pomocou Wi-Fi sietí</string>

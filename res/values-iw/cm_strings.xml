@@ -21,6 +21,8 @@
   <string name="wifi_setting_countrycode_error">אירעה שגיאה בהגדרת הקוד האזורי.</string>
   <string name="wifi_setting_priority_title">עדיפות Wi-Fi</string>
   <string name="wifi_setting_priority_summary">ציין עדיפות של רשתות Wi-Fi</string>
+  <string name="wifi_ssid_input_limit">SSID חורג מאורך מרבי</string>
+  <string name="p2p_device_name_input_limit">שם P2P חורג מאורך מרבי</string>
   <string name="change_crypt_password_title">שנה סיסמה</string>
   <string name="change_crypt_password_summary">שנה סיסמה שבשימוש להצפנת המכשיר</string>
   <string name="encryptionpassword_choose_your_password_header">הגדר סיסמת הצפנה</string>
@@ -234,6 +236,7 @@
   <string name="title_tile_bluetooth">בלוטוס</string>
   <string name="title_tile_brightness">בהירות</string>
   <string name="title_tile_camera">מצלמה</string>
+  <string name="title_tile_compass">מצפן</string>
   <string name="title_tile_sleep">לך לישון</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">פנס</string>
@@ -642,6 +645,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="power_menu_user_title">מחליף משתמשים</string>
   <string name="power_menu_sound_title">לוח קול</string>
   <string name="button_settings">כפתורים</string>
+  <string name="hardware_keys_power_key_title">לחצן הפעלה</string>
   <string name="hardware_keys_home_key_title">כפתור הבית</string>
   <string name="hardware_keys_menu_key_title">כפתור תפריט</string>
   <string name="hardware_keys_assist_key_title">לחצן חיפוש</string>
@@ -658,8 +662,12 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="hardware_keys_action_voice_search">חיפוש קולי</string>
   <string name="hardware_keys_action_in_app_search">חיפוש ביישום</string>
   <string name="hardware_keys_action_launch_camera">הפעל מצלמה</string>
+  <string name="power_end_call_title">סיים שיחה</string>
+  <string name="power_end_call_summary">לחיצה על לחצן ההפעלה תסיים את השיחה הנוכחית</string>
   <string name="button_wake_title">התעוררות</string>
   <string name="home_wake_summary">לחיצה על כפתור הבית יעיר את המכשיר</string>
+  <string name="home_answer_call_title">השב לשיחה</string>
+  <string name="home_answer_call_summary">לחיצה על כפתור הבית תענה לשיחה הנכנסת הנוכחית</string>
   <string name="camera_wake_summary">לחיצה על כפתור המצלמה יעיר את המכשיר</string>
   <string name="camera_sleep_on_release_title">הצצה מהמסך</string>
   <string name="camera_sleep_on_release_summary">חצי לחיצה ישמור את המסך דלוק כל עוד הכפתור לחוץ</string>
@@ -691,7 +699,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="background_result_successful">רקע השתנה</string>
   <string name="background_result_not_successful">רקע לא השתנה</string>
   <string name="setting_lockscreen_background">מחיל רקע</string>
-  <string name="accessibility_home_button_answers_call_prerefence_title">כפתור הבית משיב לשיחה</string>
   <string name="confirm_delete_apn">APN יימחקו.</string>
   <string name="status_bar_title">שורת מצב</string>
   <string name="status_bar_show_clock_title">הצג שעון</string>
@@ -719,6 +726,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="storage_rescan_media_complete">סריקה הושלמה</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">ניהול הגדרות SMS מאובטח</string>
+  <string name="logger_title">רשם קריסות אנונימי</string>
+  <string name="logger_summary">נהל הגדרות רישום קריסות</string>
   <string name="custom_runtime_warning_title">אזהרה</string>
   <string name="custom_runtime_warning_message">ART לא נתמך כראוי על ידי CyanogenMod. הגדרה זו קיימת רק לניסוי ויש סיכוי לאי יציבות, קריסות, איבוד מידע או אתחול לא נכון של המכשיר. בקר ב-&lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;הצגת ART&lt;/a&gt; עבור מידע נוסף.&lt;br/&gt;&lt;br/&gt;אנחנו מבקשים שאתה לא תמלא דיווחי שגיאות אם אתה משתמש ב-ART.&lt;br/&gt;&lt;br/&gt;האם אתה בטוח שאתה רוצה להחליף מ-<xliff:g id="old" example="libdvm.so">%1$s</xliff:g> ל-<xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
   <string name="gps_download_data_wifi_only">הורד נתוני GPS מרשת Wi-Fi בלבד</string>

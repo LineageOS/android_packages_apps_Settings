@@ -21,6 +21,8 @@
   <string name="wifi_setting_countrycode_error">มีปัญหาขณะตั้งรหัสภูมิภาค</string>
   <string name="wifi_setting_priority_title">ลำดับความสำคัญของWi-Fi</string>
   <string name="wifi_setting_priority_summary">ระบุลำดับความสำคัญของเครือข่าย Wi-Fi</string>
+  <string name="wifi_ssid_input_limit">SSID ยาวเกินไป</string>
+  <string name="p2p_device_name_input_limit">ชื่อ P2P ยาวเกินไป</string>
   <string name="change_crypt_password_title">เปลี่ยนรหัสผ่าน</string>
   <string name="change_crypt_password_summary">เปลี่ยนรหัสผ่านที่ใช้สำหรับเข้ารหัสอุปกรณ์</string>
   <string name="encryptionpassword_choose_your_password_header">ตั้งรหัสผ่านการเข้ารหัส</string>
@@ -234,6 +236,7 @@
   <string name="title_tile_bluetooth">บลูทูธ</string>
   <string name="title_tile_brightness">ความสว่าง</string>
   <string name="title_tile_camera">กล้อง</string>
+  <string name="title_tile_compass">เข็มทิศ</string>
   <string name="title_tile_sleep">พักหน้าจอ</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">ไฟฉาย</string>
@@ -262,6 +265,7 @@
   <string name="title_dynamic_alarm">นาฬิกาปลุก</string>
   <string name="title_dynamic_bugreport">แจ้งข้อผิดพลาด</string>
   <string name="title_dynamic_dock_battery">แท่นวางแบตเตอรี</string>
+  <string name="title_dynamic_equalizer">ปรับแต่งเสียง</string>
   <string name="title_dynamic_ime">วิธีการป้อนจ้อมูล</string>
   <string name="title_dynamic_usbtether">USB Tether</string>
   <string name="title_dynamic_wifi">บันทึกหน้าจอ</string>
@@ -581,6 +585,7 @@
   <string name="lockscreen_enable_modlock_title">หน้าล็อคจอกำหนดเอง</string>
   <string name="navigation_bar_category">แถบนำทาง</string>
   <string name="navigation_bar_title">ปุ่มและรูปแบบ</string>
+  <string name="navigation_bar_left_title">รูปแบบมือซ้าย</string>
   <string name="navigation_bar_left_summary">ให้แถบนำทางไปอยู่ด้านซ้ายจอเมื่ออยู่ในรูปแบบแนวนอน</string>
   <string name="navigation_bar_help_text">1 - เพื่อเริ่มการแก้ไข,แตะไอคอนล็อค\n\n2 - แตะที่ปุ่มใดๆเพื่อเปลี่ยนหรือตั้งความสามารถมัน\n\n3 - แตะค้างที่ปุ่มใดๆเพื่อเปลี่ยนตำแหน่งของมัน\n\n4 - เพื่อบันทึก,แตะไอคอนล็อคอีกครั้ง\n\n5 - เพื่อใช้ค่าเริ่มต้นระบบ, แตะปุ่มรีเซ็ต\n</string>
   <string name="navigation_bar_tips">\u2022 การกระทำสามารถตั้งได้หนึ่งปุ่มต่อครั้ง\n\n\u2022 ปุ่มโฮมจะทำการตั้งใหม่ไม่ได้\n\n\u2022 ปุ่มด้านข้างไม่สามารถย้ายตำแหน่งได้</string>
@@ -619,6 +624,7 @@
   <string name="power_menu_user_title">สลับผู้ใช้</string>
   <string name="power_menu_sound_title">แผงเสียง</string>
   <string name="button_settings">ปุ่ม</string>
+  <string name="hardware_keys_power_key_title">ปุ่มเพาเวอร์</string>
   <string name="hardware_keys_home_key_title">ปุ่มโฮม</string>
   <string name="hardware_keys_menu_key_title">ปุ่มเมนู</string>
   <string name="hardware_keys_assist_key_title">ปุ่มค้นหา</string>
@@ -635,8 +641,12 @@
   <string name="hardware_keys_action_voice_search">ค้นหาด้วยเสียง</string>
   <string name="hardware_keys_action_in_app_search">ค้นหาในแอป</string>
   <string name="hardware_keys_action_launch_camera">เปิดกล้อง</string>
+  <string name="power_end_call_title">วางสาย</string>
+  <string name="power_end_call_summary">กดปุ่มเพาวเวอร์เพื่อวางสาย</string>
   <string name="button_wake_title">เปิดหน้าจอ</string>
   <string name="home_wake_summary">แตะปุ่มโฮมเพื่อปลุกอุปกรณ์ของคุณ</string>
+  <string name="home_answer_call_title">รับสาย</string>
+  <string name="home_answer_call_summary">กดปุ่มโฮมเพื่อรับสาย</string>
   <string name="camera_wake_summary">แตะปุ่มกล้องเพื่อปลุกอุปกรณ์ของคุณ</string>
   <string name="camera_sleep_on_release_title">แอบมองหน้าจอ</string>
   <string name="camera_sleep_on_release_summary">การกดเพียงครึ่งเดียวจะเปิดจอค้างไว้เฉพาะขณะที่กดค้างอยู่</string>
@@ -668,7 +678,6 @@
   <string name="background_result_successful">เปลี่ยนพื้นหลัง</string>
   <string name="background_result_not_successful">ไม่เปลี่ยนพื้นหลัง</string>
   <string name="setting_lockscreen_background">กำลังกำหนดพื้นหลัง</string>
-  <string name="accessibility_home_button_answers_call_prerefence_title">ปุ่มโฮมเพื่อรับสาย</string>
   <string name="confirm_delete_apn">APN จะถูกลบ</string>
   <string name="status_bar_title">แถบสถานะ</string>
   <string name="status_bar_show_clock_title">แสดงนาฬิกา</string>
@@ -687,7 +696,7 @@
   <string name="status_bar_toggle_info">เปิดใช้งานปรับความสว่างอัตโนมัติอยู่</string>
   <string name="status_bar_notif_count_title">นับจำนวนการแจ้งเตือน</string>
   <string name="status_bar_notif_count_summary">แสดงตัวเลขของการแจ้งเตือน</string>
-  <string name="status_bar_double_tap_to_sleep_title">แตะสองครั้งเพื่อปิิดจอ</string>
+  <string name="status_bar_double_tap_to_sleep_title">แตะสองครั้งเพื่อปิดจอ</string>
   <string name="development_shortcut_title">ทางลัดการพัฒนา</string>
   <string name="development_shortcut_summary">เปิดตัวเลือก \'ล้างข้อมูล\' และ \'บังคับปิด\' ในพื้นที่การแจ้งเตือนและรายชื่อแอปที่ใช้งาน</string>
   <string name="usb_mass_storage_title">ที่เก็บข้อมูลขนาดใหญ่ (UMS)</string>
@@ -696,6 +705,8 @@
   <string name="storage_rescan_media_complete">ค้นหาเรียบร้อย</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">จัดการการตั้งค่าข้อความปลอดภัย</string>
+  <string name="logger_title">บันทึกการทำงานล้มเหลวแบบไม่ระบุตัวตน</string>
+  <string name="logger_summary">จัดการการตั้งค่าบันทึกการทำงานล้มเหลว</string>
   <string name="custom_runtime_warning_title">คำเตือน</string>
   <string name="custom_runtime_warning_message">ART ไม่รองรับอย่างเต็มรูปแบบบน CyanogenMod มันจึงเป็นอะไรที่อันตรายมาก อาจทำให้อุปกรณ์ ไม่สเถียร พัง หรือข้อมูลสูญหายได้ โปรดเข้า &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;แนะนำ ART &lt;/a&gt; เพื่อศึกษาเพิ่มเติม&lt;br/&gt;&lt;br/&gt; คุณต้องการที่จะเริ่มระบบใหม่โดยเปลี่ยนรันไทม?จาก <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> เป็น <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
   <string name="gps_download_data_wifi_only">ดาวน์โหลดข้อมูล GPS ผ่าน Wi-Fi เท่านั้น</string>

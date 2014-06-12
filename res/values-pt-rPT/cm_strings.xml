@@ -21,6 +21,8 @@
   <string name="wifi_setting_countrycode_error">Ocorreu um problema a definir o código de região.</string>
   <string name="wifi_setting_priority_title">Prioridade Wi-Fi</string>
   <string name="wifi_setting_priority_summary">Especifique a prioridade das redes Wi-Fi</string>
+  <string name="wifi_ssid_input_limit">SSID excede o comprimento máximo</string>
+  <string name="p2p_device_name_input_limit">Nome P2P excede o comprimento máximo</string>
   <string name="change_crypt_password_title">Alterar senha</string>
   <string name="change_crypt_password_summary">Alterar a senha usada para encriptar o dispositivo</string>
   <string name="encryptionpassword_choose_your_password_header">Colocar a senha de encriptação</string>
@@ -234,6 +236,7 @@
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Brilho</string>
   <string name="title_tile_camera">Câmara</string>
+  <string name="title_tile_compass">Bússola</string>
   <string name="title_tile_sleep">Suspender</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Lanterna</string>
@@ -620,6 +623,7 @@
   <string name="power_menu_user_title">Mudar Utilizador</string>
   <string name="power_menu_sound_title">Painel de som</string>
   <string name="button_settings">Botões</string>
+  <string name="hardware_keys_power_key_title">Botão de energia</string>
   <string name="hardware_keys_home_key_title">Botão Home</string>
   <string name="hardware_keys_menu_key_title">Botão Menu</string>
   <string name="hardware_keys_assist_key_title">Botão Pesquisa</string>
@@ -636,8 +640,12 @@
   <string name="hardware_keys_action_voice_search">Pesquisa por voz</string>
   <string name="hardware_keys_action_in_app_search">Pesquisa dentro da aplicação</string>
   <string name="hardware_keys_action_launch_camera">Iniciar a câmara</string>
+  <string name="power_end_call_title">Termina chamada</string>
+  <string name="power_end_call_summary">Pressionar o botão de energia terminará a chamada atual</string>
   <string name="button_wake_title">Ligar o ecrã</string>
   <string name="home_wake_summary">Pressionar o botão Home ligará o ecrã do seu dispositivo</string>
+  <string name="home_answer_call_title">Atender chamada</string>
+  <string name="home_answer_call_summary">Pressionar o botão home irá atender a chamada recebida atual</string>
   <string name="camera_wake_summary">Pressionar o botão da câmara liga o ecrã do seu dispositivo</string>
   <string name="camera_sleep_on_release_title">Vista rápida</string>
   <string name="camera_sleep_on_release_summary">Pressionar até metade irá manter o ecrã ligado apenas enquanto o botão estiver pressionado</string>
@@ -669,7 +677,6 @@
   <string name="background_result_successful">Imagem de fundo alterada</string>
   <string name="background_result_not_successful">Imagem de fundo não foi alterada</string>
   <string name="setting_lockscreen_background">A aplicar a imagem de fundo</string>
-  <string name="accessibility_home_button_answers_call_prerefence_title">Botão Home para atender chamada</string>
   <string name="confirm_delete_apn">O APN será eliminado.</string>
   <string name="status_bar_title">Barra de estado</string>
   <string name="status_bar_show_clock_title">Mostrar relógio</string>
@@ -697,6 +704,8 @@
   <string name="storage_rescan_media_complete">Verificação concluída</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Gerir as definições de SMS seguras</string>
+  <string name="logger_title">Registo anónimo de erros</string>
+  <string name="logger_summary">Gerir as definições do registo de erros</string>
   <string name="custom_runtime_warning_title">Aviso</string>
   <string name="custom_runtime_warning_message">ART não é suportado pelo CyanogenMod. Esta configuração é incluída para experimentação e tem o potencialidade de causar instabilidade, falhas de sistema, perda de dados ou impedir a inicialização adequada do seu dispositivo. Visite &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introdução a ART&lt;/a&gt; para mais informações.&lt;br/&gt;&lt;br/&gt;Solicitamos que não nos envie relatórios de erros se ativou ART.&lt;br/&gt;&lt;br/&gt;Tem a certeza que deseja reiniciar para alterar de<xliff:g id="old" example="libdvm.so">%1$s</xliff:g> para <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
   <string name="gps_download_data_wifi_only">Descarregar dados GPS assistido somente sobre redes Wi-Fi</string>

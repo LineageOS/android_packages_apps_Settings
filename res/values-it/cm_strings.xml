@@ -21,6 +21,8 @@
   <string name="wifi_setting_countrycode_error">Problema nell\'impostazione del codice regione.</string>
   <string name="wifi_setting_priority_title">Priorità Wi-Fi</string>
   <string name="wifi_setting_priority_summary">Specifica la priorità delle reti Wi-Fi</string>
+  <string name="wifi_ssid_input_limit">L\'SSID supera la lunghezza massima consentita</string>
+  <string name="p2p_device_name_input_limit">Il nome del P2P supera la lunghezza massima consentita</string>
   <string name="change_crypt_password_title">Cambia password</string>
   <string name="change_crypt_password_summary">Cambia la password utilizzata per la crittografia del dispositivo</string>
   <string name="encryptionpassword_choose_your_password_header">Imposta password crittografia</string>
@@ -234,6 +236,7 @@
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Luminosità</string>
   <string name="title_tile_camera">Fotocamera</string>
+  <string name="title_tile_compass">Bussola</string>
   <string name="title_tile_sleep">Sospendi dispositivo</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Torcia LED</string>
@@ -356,8 +359,8 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="root_access_apps">Solo applicazioni</string>
   <string name="root_access_adb">Solo ADB</string>
   <string name="root_access_all">Applicazioni e ADB</string>
-  <string name="update_recovery_title">Aggiorna recovery CM</string>
-  <string name="update_recovery_summary">Aggiorna la recovery durante l\'installazione di aggiornamenti di sistema</string>
+  <string name="update_recovery_title">Aggiorna recovery</string>
+  <string name="update_recovery_summary">Aggiorna la recovery durante l\'installazione degli aggiornamenti di sistema</string>
   <string name="ok">OK</string>
   <string name="quiet_hours_title">Periodo di quiete</string>
   <string name="quiet_hours_summary">Configura gli orari in cui il dispositivo dovrebbe essere silenzioso</string>
@@ -640,6 +643,7 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="power_menu_user_title">Cambia utente</string>
   <string name="power_menu_sound_title">Pannello suoni</string>
   <string name="button_settings">Pulsanti</string>
+  <string name="hardware_keys_power_key_title">Pulsante alimentazione</string>
   <string name="hardware_keys_home_key_title">Tasto Home</string>
   <string name="hardware_keys_menu_key_title">Tasto Menu</string>
   <string name="hardware_keys_assist_key_title">Tasto Cerca</string>
@@ -656,8 +660,12 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="hardware_keys_action_voice_search">Ricerca vocale</string>
   <string name="hardware_keys_action_in_app_search">Ricerca in applicazioni</string>
   <string name="hardware_keys_action_launch_camera">Avvia Fotocamera</string>
+  <string name="power_end_call_title">Termina chiamata</string>
+  <string name="power_end_call_summary">Premendo il pulsante alimentazione si concluderà la chiamata corrente</string>
   <string name="button_wake_title">Risveglia</string>
   <string name="home_wake_summary">Premere il tasto Home farà attivare il dispositivo</string>
+  <string name="home_answer_call_title">Rispondi chiamata</string>
+  <string name="home_answer_call_summary">Premendo il pulsante Home si risponderà alla chiamata in entrata</string>
   <string name="camera_wake_summary">Premere il tasto Fotocamera farà attivare il dispositivo</string>
   <string name="camera_sleep_on_release_title">Sguardo allo schermo</string>
   <string name="camera_sleep_on_release_summary">Una mezza pressione farà attivare lo schermo fino a quando il tasto resterà premuto</string>
@@ -689,7 +697,6 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="background_result_successful">Sfondo modificato</string>
   <string name="background_result_not_successful">Sfondo non modificato</string>
   <string name="setting_lockscreen_background">Applicazione sfondo</string>
-  <string name="accessibility_home_button_answers_call_prerefence_title">Il pulsante Home risponde alla chiamata</string>
   <string name="confirm_delete_apn">L\'APN sarà eliminato.</string>
   <string name="status_bar_title">Barra di stato</string>
   <string name="status_bar_show_clock_title">Mostra orologio</string>
@@ -717,6 +724,8 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="storage_rescan_media_complete">Scansione completata</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Gestisci le impostazioni SMS sicuri</string>
+  <string name="logger_title">Registrazione anonima errori</string>
+  <string name="logger_summary">Gestisci le impostazioni per la registrazione dei log d\'errore</string>
   <string name="custom_runtime_warning_title">Attenzione</string>
   <string name="custom_runtime_warning_message">ART non è ufficialmente supportato da CyanogenMod. Questa impostazione è disponibile solo a scopo di sperimentazione e può causare instabilità, crash, perdita di dati o impedire al dispositivo di avviarsi correttamente. Visita &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; per maggiori informazioni (in lingua inglese).&lt;br/&gt;&lt;br/&gt;Ti chiediamo di non segnalarci eventuali errori se hai attivo ART come runtime.&lt;br/&gt;&lt;br/&gt;Sei sicuro di volere riavviare per cambiare runtime da <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> a <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
   <string name="gps_download_data_wifi_only">Download dati GPS assistito solo su reti Wi-Fi</string>

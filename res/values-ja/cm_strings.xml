@@ -21,6 +21,8 @@
   <string name="wifi_setting_countrycode_error">地域コードを設定中に問題が発生しました。</string>
   <string name="wifi_setting_priority_title">Wi-Fi優先順位</string>
   <string name="wifi_setting_priority_summary">Wi-Fiネットワークの優先順位を指定する</string>
+  <string name="wifi_ssid_input_limit">SSIDが最大長を超えています</string>
+  <string name="p2p_device_name_input_limit">P2Pの名前が最大長を超えています</string>
   <string name="change_crypt_password_title">パスワードを変更</string>
   <string name="change_crypt_password_summary">端末の暗号化に使用しているパスワードを変更する</string>
   <string name="encryptionpassword_choose_your_password_header">暗号化パスワードを設定</string>
@@ -153,7 +155,7 @@
   <string name="notification_light_default_value">デフォルト</string>
   <string name="notification_light_missed_call_title">不在着信</string>
   <string name="notification_light_voicemail_title">ボイスメール</string>
-  <string name="adaptive_backlight_title">適応型バックライト</string>
+  <string name="adaptive_backlight_title">適応バックライト</string>
   <string name="adaptive_backlight_summary">使い勝手を維持したままディスプレイのバックライトを動的に調整して電池の寿命を高める</string>
   <string name="wake_when_plugged_or_unplugged_title">接続時にスリープ解除</string>
   <string name="wake_when_plugged_or_unplugged_summary">電源を接続または切断したときに画面を点灯する</string>
@@ -259,7 +261,7 @@
   <string name="dynamic_tiles_note_title">注意</string>
   <string name="dynamic_tiles_note_summary">ダイナミックタイルは常に表示されるわけではなく、システムイベントによってトリガーされた場合にのみ表示されます</string>
   <string name="title_dynamic_alarm">アラーム</string>
-  <string name="title_dynamic_bugreport">バグ報告</string>
+  <string name="title_dynamic_bugreport">バグレポート</string>
   <string name="title_dynamic_dock_battery">ホルダーの電池</string>
   <string name="title_dynamic_equalizer">イコライザー</string>
   <string name="title_dynamic_ime">入力方法の選択</string>
@@ -325,7 +327,7 @@
   <string name="display_rotation_180_title">180度</string>
   <string name="display_rotation_270_title">270度</string>
   <string name="advanced_reboot_title">詳細な再起動</string>
-  <string name="advanced_reboot_summary">ロック解除時、電源メニューにリカバリーやブートローダで再起動するオプションを含める</string>
+  <string name="advanced_reboot_summary">ロック解除時にリカバリーやブートローダで再起動するオプションを電源メニューに含める</string>
   <string name="app_security_title">アプリのセキュリティ</string>
   <string name="root_access">ルートアクセス</string>
   <string name="root_access_warning_title">ルートアクセスを許可しますか？</string>
@@ -335,7 +337,7 @@
   <string name="root_access_adb">ADBのみ</string>
   <string name="root_access_all">アプリとADB</string>
   <string name="update_recovery_title">CMリカバリーをアップデート</string>
-  <string name="update_recovery_summary">システムアップデートのインストール時にリカバリーをアップデートする</string>
+  <string name="update_recovery_summary">システムアップデートインストール時にリカバリーをアップデートする</string>
   <string name="ok">OK</string>
   <string name="quiet_hours_title">おやすみモード</string>
   <string name="quiet_hours_summary">端末をサイレントモードにする時間帯を設定する</string>
@@ -389,7 +391,7 @@
   <string name="soundpack_settings_title">サウンドパック</string>
   <string name="performance_settings_title">パフォーマンス</string>
   <string name="performance_settings_warning_title">注意して進めてください</string>
-  <string name="performance_settings_warning">これらの設定は実験的であり、あらゆる変更が不安定性、クラッシュ、データの損失、ハードウェア障害を引き起こす原因になる可能性があります。\n\nこれらの設定をデフォルトから変更した場合には、バグ報告を送信しないようにご協力をお願いします。</string>
+  <string name="performance_settings_warning">これらの設定は実験的であり、あらゆる変更が不安定性、クラッシュ、データの損失、ハードウェア障害を引き起こす原因になる可能性があります。\n\nこれらの設定をデフォルトから変更した場合には、バグレポートを送信しないようにご協力をお願いします。</string>
   <string name="performance_set_on_boot">起動時に設定</string>
   <string name="performance_set_on_boot_summary">適用した設定を起動時に復元する</string>
   <string name="processor_title">プロセッサ</string>
@@ -502,7 +504,7 @@
   <string name="collapse_on_dismiss_never_summary">通知を削除した後も開いたままにする</string>
   <string name="collapse_on_dismiss_if_empty_summary">最後の通知を削除した後に閉じる</string>
   <string name="collapse_on_dismiss_if_no_clearable_summary">最後の削除可能な通知を削除した後に閉じる</string>
-  <string name="double_tap_to_wake_title">ダブルタップでスリープ解除</string>
+  <string name="double_tap_to_wake_title">ダブルタップで起動</string>
   <string name="category_quick_access">クイックアクセスリボン</string>
   <string name="title_quick_access">通知領域に表示</string>
   <string name="title_quick_access_linked">レイアウトをリンク</string>
@@ -665,7 +667,6 @@
   <string name="background_result_successful">背景を変更しました</string>
   <string name="background_result_not_successful">背景を変更していません</string>
   <string name="setting_lockscreen_background">背景を適応しています</string>
-  <string name="accessibility_home_button_answers_call_prerefence_title">ホームボタンで通話に応答</string>
   <string name="confirm_delete_apn">APNを削除しますか？</string>
   <string name="status_bar_title">ステータスバー</string>
   <string name="status_bar_show_clock_title">時計を表示</string>
@@ -693,6 +694,8 @@
   <string name="storage_rescan_media_complete">スキャンが完了しました</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">セキュアSMSの設定を管理する</string>
+  <string name="logger_title">匿名のクラッシュログ</string>
+  <string name="logger_summary">クラッシュログの設定を管理する</string>
   <string name="custom_runtime_warning_title">警告</string>
   <string name="custom_runtime_warning_message">ARTは非常に実験的であり、不安定性、クラッシュ、データの損失、端末の正常な起動を妨げる原因になる可能性があるため、CyanogenModでは公式にサポートされていません。詳細については&lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt;を参照してください。&lt;br/&gt;&lt;br/&gt;ARTをランタイムとして有効にしている場合はバグ報告を送信しないようにご協力をお願いします。&lt;br/&gt;&lt;br/&gt;ランタイムを<xliff:g id="old" example="libdvm.so">%1$s</xliff:g>から<xliff:g id="new" example="libart.so">%2$s</xliff:g>に変更するために再起動してもよろしいですか？</string>
   <string name="gps_download_data_wifi_only">GPS補助データをWi-Fiネットワーク経由でのみダウンロード</string>

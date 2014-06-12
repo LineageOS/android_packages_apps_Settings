@@ -21,6 +21,8 @@
   <string name="wifi_setting_countrycode_error">Il y a eu un problème de réglage du code de région.</string>
   <string name="wifi_setting_priority_title">Priorité Wi-Fi</string>
   <string name="wifi_setting_priority_summary">Définir la priorité des réseaux Wi-Fi</string>
+  <string name="wifi_ssid_input_limit">Le SSID dépasse la longueur maximale</string>
+  <string name="p2p_device_name_input_limit">Le nom P2P dépasse la longueur maximale</string>
   <string name="change_crypt_password_title">Changer de mot de passe</string>
   <string name="change_crypt_password_summary">Changer le mot de passe utilisé pour le chiffrement de périphérique</string>
   <string name="encryptionpassword_choose_your_password_header">Choisir le mot de passe de cryptage</string>
@@ -234,6 +236,7 @@
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Luminosité</string>
   <string name="title_tile_camera">Appareil photo</string>
+  <string name="title_tile_compass">Boussole</string>
   <string name="title_tile_sleep">Mise en veille</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Lampe</string>
@@ -629,6 +632,7 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="power_menu_user_title">Utilisateur</string>
   <string name="power_menu_sound_title">Son et vibreur</string>
   <string name="button_settings">Boutons</string>
+  <string name="hardware_keys_power_key_title">Bouton marche/arrêt</string>
   <string name="hardware_keys_home_key_title">Bouton Accueil</string>
   <string name="hardware_keys_menu_key_title">Bouton Menu</string>
   <string name="hardware_keys_assist_key_title">Bouton Rechercher</string>
@@ -645,8 +649,12 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="hardware_keys_action_voice_search">Recherche vocale</string>
   <string name="hardware_keys_action_in_app_search">Recherche dans l\'application</string>
   <string name="hardware_keys_action_launch_camera">Lancer l\'appareil photo</string>
+  <string name="power_end_call_title">Terminer l\'appel</string>
+  <string name="power_end_call_summary">Appuyer sur le bouton marche/arrêt raccrochera l\'appel en cours</string>
   <string name="button_wake_title">Réveil</string>
   <string name="home_wake_summary">Un appui sur le bouton Accueil sortira votre appareil de la veille</string>
+  <string name="home_answer_call_title">Répondre à l\'appel</string>
+  <string name="home_answer_call_summary">Appuyer sur le bouton Accueil décrochera l\'appel entrant en cours</string>
   <string name="camera_wake_summary">Un appui sur le bouton appareil photo sortira votre appareil de la veille</string>
   <string name="camera_sleep_on_release_title">Aperçu de l\'écran</string>
   <string name="camera_sleep_on_release_summary">Un demi appui permet de garder l\'écran allumé tant que le bouton est maintenu appuyé</string>
@@ -678,7 +686,6 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="background_result_successful">Fond d\'écran modifié</string>
   <string name="background_result_not_successful">Fond d\'écran non modifié</string>
   <string name="setting_lockscreen_background">Modification du fond d\'écran</string>
-  <string name="accessibility_home_button_answers_call_prerefence_title">Bouton Accueil répond aux l\'appels</string>
   <string name="confirm_delete_apn">L\'APN va être supprimé.</string>
   <string name="status_bar_title">Barre d\'état</string>
   <string name="status_bar_show_clock_title">Afficher l\'horloge</string>
@@ -706,6 +713,8 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="storage_rescan_media_complete">Analyse terminée</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Gère les paramètres de sécurité des SMS</string>
+  <string name="logger_title">Journalisation anonyme d\'incident</string>
+  <string name="logger_summary">Gérer les paramètres de journalisation d\'incident</string>
   <string name="custom_runtime_warning_title">Attention</string>
   <string name="custom_runtime_warning_message">ART n\'est pas supporté par CyanogenMod. Ce paramètre est uniquement inclus a des fin d\'expérimentations. Il peut causer des instabilités, des plantages, des pertes de données ou empêcher votre appareil de démarrer. Lisez l\'&lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introduction à ART&lt;/a&gt; pour plus d\'informations.&lt;br/&gt;&lt;br/&gt;Merci de ne pas remplir de rapports de bugs si vous utilisez ART.&lt;br/&gt;&lt;br/&gt;Êtes-vous sûr de vouloir redémarrer pour changer le moteur d\'exécution de <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> à <xliff:g id="new" example="libart.so">%2$s</xliff:g>\u00A0?</string>
   <string name="gps_download_data_wifi_only">Télécharger les données d\'assistance GPS via Wi-Fi uniquement</string>

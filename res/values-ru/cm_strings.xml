@@ -21,6 +21,8 @@
   <string name="wifi_setting_countrycode_error">При настройке кода региона Wi-Fi возникла неполадка.</string>
   <string name="wifi_setting_priority_title">Приоритет Wi-Fi</string>
   <string name="wifi_setting_priority_summary">Установка приоритета Wi-Fi сетей</string>
+  <string name="wifi_ssid_input_limit">SSID превышает макс. длину</string>
+  <string name="p2p_device_name_input_limit">Имя P2P превышает макс. длину</string>
   <string name="change_crypt_password_title">Смена пароля</string>
   <string name="change_crypt_password_summary">Изменение пароля, используемого для шифрования устройства</string>
   <string name="encryptionpassword_choose_your_password_header">Установить пароль шифрования</string>
@@ -28,15 +30,15 @@
   <string name="increasing_ring_title">Возрастающая громкость звонка</string>
   <string name="checkbox_increasing_ring">Включить</string>
   <string name="increasing_ring_min_volume_title">Начальная громкость звонка</string>
-  <string name="increasing_ring_volume_notice">Примечание:\nЕсли начальная громкость выше установленной в данный момент, звонок будет воспроизведён на громкости, установленной в системе.</string>
+  <string name="increasing_ring_volume_notice">Начальная громкость выше установленной в данный момент. Звонок будет воспроизведён на той громкости, которая установлена в системе.</string>
   <string name="increasing_ring_interval_title">Интервал увеличения</string>
   <string name="increasing_ring_interval_eachring">При каждом гудке</string>
-  <string name="increasing_ring_interval_half_second">0,5 секунды</string>
-  <string name="increasing_ring_interval_1second">1 секунда</string>
-  <string name="increasing_ring_interval_2seconds">2 секунды</string>
-  <string name="increasing_ring_interval_3seconds">3 секунды</string>
-  <string name="increasing_ring_interval_5seconds">5 секунд</string>
-  <string name="increasing_ring_interval_10seconds">10 секунд</string>
+  <string name="increasing_ring_interval_half_second">Каждые 0,5 секунды</string>
+  <string name="increasing_ring_interval_1second">Каждую секунду</string>
+  <string name="increasing_ring_interval_2seconds">Каждые 2 секунды</string>
+  <string name="increasing_ring_interval_3seconds">Каждые 3 секунды</string>
+  <string name="increasing_ring_interval_5seconds">Каждые 5 секунд</string>
+  <string name="increasing_ring_interval_10seconds">Каждые 10 секунд</string>
   <string name="profiles_settings_title">Профили</string>
   <string name="profiles_add">Добавить</string>
   <string name="profile_menu_delete">Удалить</string>
@@ -137,7 +139,7 @@
   <string name="notification_vibrate_during_calls_title">Вибрация во время звонка</string>
   <string name="notification_vibrate_during_calls_summary">Вибрировать при уведомлениях во время телефонного разговора</string>
   <string name="volume_adjust_sounds_enable_title">Звук при регулировке громкости</string>
-  <string name="volume_adjust_sounds_enable_summary">Воспроизводить звук при изменении громкости кнопками «+» или «-»</string>
+  <string name="volume_adjust_sounds_enable_summary">Воспроизводить звук при нажатии кнопок громкости</string>
   <string name="icon_picker_title">Выберите источник значка</string>
   <string name="icon_picker_system_icons_title">Системные значки</string>
   <string name="icon_picker_gallery_title">Галерея</string>
@@ -234,6 +236,7 @@
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Подсветка</string>
   <string name="title_tile_camera">Камера</string>
+  <string name="title_tile_compass">Компас</string>
   <string name="title_tile_sleep">Выключить экран</string>
   <string name="title_tile_gps">Местоположение</string>
   <string name="title_tile_torch">Фонарик</string>
@@ -274,7 +277,7 @@
   <string name="quick_pulldown_off">Выключен</string>
   <string name="quick_pulldown_left">Левый</string>
   <string name="quick_pulldown_right">Правый</string>
-  <string name="title_collapse_panel">Автоскрытие панели</string>
+  <string name="title_collapse_panel">Автозакрытие панели</string>
   <string name="summary_collapse_panel">Скрывать панель быстрых настроек после переключения</string>
   <string name="pref_network_mode_title">Режимы сети</string>
   <string name="pref_screentimeout_mode_title">Время до отключения экрана</string>
@@ -377,16 +380,16 @@
   <string name="mem_info">Память</string>
   <string name="phone_service_state">Голосовая связь: <xliff:g id="voice_state">%1$s</xliff:g>\nПередача данных: <xliff:g id="data_state">%2$s</xliff:g></string>
   <string name="anonymous_statistics_title">Отправка статистики</string>
-  <string name="anonymous_statistics_summary">Помогите сделать CM лучше, включив отправку анонимных отчётов</string>
+  <string name="anonymous_statistics_summary">Передача анонимных данных об устройстве в CyanogenMod</string>
   <string name="anonymous_statistics_warning_title">Информация об использовании</string>
-  <string name="anonymous_statistics_warning">Анонимные отчёты позволяют разработчикам CyanogenMod отслеживать установки на различные устройства. Отсылаемая информацию включает в себя название устройства, версию прошивки и уникальный идентификатор, отправка которого никаким образом не вредит Вашей конфиденциальности. Отчёт отсылается при каждой загрузке устройства.</string>
+  <string name="anonymous_statistics_warning">Анонимные отчёты позволяют разработчикам CyanogenMod отслеживать установки на различные устройства.\nБудет передаваться модель устройства, версия прошивки и уникальный код, который не может быть использован для вашей идентификации.\nОтчёт отсылается при каждой загрузке устройства.</string>
   <string name="enable_reporting_title">Включить отправку отчётов</string>
   <string name="preview_data_title">Просмотр отправляемых данных</string>
   <string name="view_stats_title">Просмотр статистики установок</string>
   <string name="anonymous_learn_more">Подробнее</string>
   <string name="anonymous_notification_desc">Анонимная статистика CyanogenMod</string>
-  <string name="preview_id_title">Идентификатор</string>
-  <string name="preview_device_title">Устройство</string>
+  <string name="preview_id_title">Идентификатор устройства</string>
+  <string name="preview_device_title">Модель</string>
   <string name="preview_version_title">Версия</string>
   <string name="preview_country_title">Страна</string>
   <string name="preview_carrier_title">Оператор</string>
@@ -508,7 +511,7 @@
   <string name="system_settings_title">Интерфейс</string>
   <string name="system_interface_title">Системный интерфейс</string>
   <string name="notification_drawer_title">Панель уведомлений</string>
-  <string name="notification_drawer_collapse_on_dismiss_title">Автоскрытие панели</string>
+  <string name="notification_drawer_collapse_on_dismiss_title">Автозакрытие панели</string>
   <string name="collapse_on_dismiss_never">Выключено</string>
   <string name="collapse_on_dismiss_if_empty">Если нет уведомлений</string>
   <string name="collapse_on_dismiss_if_no_clearable">Если нет удаляемых уведомлений</string>
@@ -519,7 +522,7 @@
   <string name="category_quick_access">Лента быстрого доступа</string>
   <string name="title_quick_access">Показывать ленту</string>
   <string name="title_quick_access_linked">Связанное расположение</string>
-  <string name="summary_quick_access_linked">Используются плитки и их размещение из панели быстрых настроек</string>
+  <string name="summary_quick_access_linked">Использовать те же плитки, что и в панели быстрых настроек</string>
   <string name="font_size_sample">Пример текста</string>
   <string name="sms_security_check_limit_title">Ограничение SMS-сообщений</string>
   <string name="sms_security_check_limit_summary">Запрашивать подтверждение при отправке больше %d сообщений в течение 30 минут</string>
@@ -629,6 +632,7 @@
   <string name="power_menu_user_title">Переключение пользователей</string>
   <string name="power_menu_sound_title">Звуковая панель</string>
   <string name="button_settings">Кнопки</string>
+  <string name="hardware_keys_power_key_title">Кнопка питания</string>
   <string name="hardware_keys_home_key_title">Кнопка «Домой»</string>
   <string name="hardware_keys_menu_key_title">Кнопка «Меню»</string>
   <string name="hardware_keys_assist_key_title">Кнопка «Поиск»</string>
@@ -645,16 +649,20 @@
   <string name="hardware_keys_action_voice_search">Голосовой поиск</string>
   <string name="hardware_keys_action_in_app_search">Поиск в приложении</string>
   <string name="hardware_keys_action_launch_camera">Запуск камеры</string>
+  <string name="power_end_call_title">Завершение вызова</string>
+  <string name="power_end_call_summary">Завершать вызов нажатием кнопки питания</string>
   <string name="button_wake_title">Выход из режима сна</string>
   <string name="home_wake_summary">Включать экран при нажатии кнопки «Домой»</string>
+  <string name="home_answer_call_title">Ответ на звонок</string>
+  <string name="home_answer_call_summary">Отвечать на звонок нажатием кнопки «Домой»</string>
   <string name="camera_wake_summary">Включать экран при нажатии кнопки камеры</string>
   <string name="camera_sleep_on_release_title">Временное включение</string>
   <string name="camera_sleep_on_release_summary">Держать экран включённым только при удерживании кнопки наполовину нажатой</string>
   <string name="camera_music_controls_title">Управление плеером</string>
-  <string name="camera_music_controls_summary">Когда экран выключен, долгое нажатие кнопки камеры приостанавливает или продолжает воспроизведение музыки</string>
+  <string name="camera_music_controls_summary">Приостанавливать или продолжать воспроизведение музыки долгим нажатием кнопки камеры при выключенном экране</string>
   <string name="volume_wake_summary">Включать экран при нажатии кнопок регулировки громкости</string>
   <string name="volbtn_music_controls_title">Управление плеером</string>
-  <string name="volbtn_music_controls_summary">Когда экран выключен, долгое нажатие кнопок громкости переключает музыкальные треки</string>
+  <string name="volbtn_music_controls_summary">Переключать треки долгим нажатием кнопок громкости при выключенном экране</string>
   <string name="volbtn_cursor_control_title">Перемещение курсо­­­­­­ра</string>
   <string name="volbtn_cursor_control_off">Выключено</string>
   <string name="volbtn_cursor_control_on">Кнопка «+» двигает курсор влево, «-» — вправо</string>
@@ -678,7 +686,6 @@
   <string name="background_result_successful">Обои изменены</string>
   <string name="background_result_not_successful">Обои не изменены</string>
   <string name="setting_lockscreen_background">Установка обоев\u2026</string>
-  <string name="accessibility_home_button_answers_call_prerefence_title">Отвечать на вызов кнопкой «Домой»</string>
   <string name="confirm_delete_apn">Точка доступа (APN) будет удалена.</string>
   <string name="status_bar_title">Строка состояния</string>
   <string name="status_bar_show_clock_title">Показывать часы</string>
@@ -706,6 +713,8 @@
   <string name="storage_rescan_media_complete">Сканирование завершено</string>
   <string name="whisperpush_title">Технология WhisperPush</string>
   <string name="whisperpush_summary">Настройка шифрования SMS-сообщений</string>
+  <string name="logger_title">Отчёты об ошибках</string>
+  <string name="logger_summary">Управление настройками журнала системных ошибок</string>
   <string name="custom_runtime_warning_title">Внимание</string>
   <string name="custom_runtime_warning_message">ART не поддерживается CyanogenMod. Эта опция является экспериментальной и может повлечь нестабильную работу, ошибки, потерю данных или даже препятствовать загрузке устройства. Посетите страницу «&lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Введение в ART&lt;/a&gt;» (на английском языке) для получения подробных сведений.&lt;br/&gt;&lt;br/&gt;Мы просим не присылать баг-репорты, если вы выбрали ART в качестве среды выполнения системы.&lt;br/&gt;&lt;br/&gt;Вы действительно хотите перезагрузить устройство и переключить среду выполнения с «<xliff:g id="old" example="libdvm.so">%1$s</xliff:g>» на «<xliff:g id="new" example="libart.so">%2$s</xliff:g>»?</string>
   <string name="gps_download_data_wifi_only">Загружать вспомогательные данные GPS только через Wi-Fi</string>

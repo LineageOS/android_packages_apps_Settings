@@ -21,6 +21,8 @@
   <string name="wifi_setting_countrycode_error">කලාප කේතය පිහිටුවීමේදී ගැටළුවක් ඇතිවිය.</string>
   <string name="wifi_setting_priority_title">Wi-Fi ප්‍රමුඛතාව</string>
   <string name="wifi_setting_priority_summary">Wi-Fi ජාලයන්හී ප්‍රමුඛතාව සඳහන් කරන්න</string>
+  <string name="wifi_ssid_input_limit">SSID උපරිම දිග ඉක්මවා ඇත</string>
+  <string name="p2p_device_name_input_limit">P2P නම උපරිම දිග ඉක්මවා ඇත</string>
   <string name="change_crypt_password_title">මුරපදය වෙනස් කරන්න</string>
   <string name="change_crypt_password_summary">උපාංගයේ ගුප්ත කේතනය සඳහා භාවිතාකරන මුරපදය වෙනස් කරන්න</string>
   <string name="encryptionpassword_choose_your_password_header">ගුප්ත කේතන මුරපදය සකසන්න</string>
@@ -310,6 +312,16 @@
   <string name="auto_brightness_preview">පූර්වදර්ශනය</string>
   <string name="auto_brightness_preview_dialog_title">දීප්ති වක්‍රයේ පූර්වදර්ශනය</string>
   <string name="auto_brightness_help_dialog_title">උදව්</string>
+  <string name="auto_brightness_help_text"><b>දීප්තිය ගණනය කරන්නේ කෙසේද?</b>
+\n\n
+දීප්තියේ වක්‍රය ගණනය කරන්නේ නියමිත <i>පාලන ලක්ෂ්‍ය</i> ගණනක් සඳහා <i>ඝනක දාර අතුරු තැන් ලෑමක්</i> සිදු කිරීමෙනි. එය හාත්පස පැතුරුණු දීප්තියේ විශේෂී පරාසයක් සඳහා, නොවෙනස්ව පවතින තිර දීප්තියකින් යුත්, \'බඳුන්-ආකාරයේ\' ගණනය කිරීමක් නොවේ. එමගින්, හාත්පස පැතුරුණු දීප්තියේ සුළු වෙනස්කම් සඳහා, තිර දීප්තියේ විශාල පිම්මක් ඇති නොකරයි; කෙසේ වුවත්, පාලන ලක්ෂ්‍යයන් වෙනස්කිරීමේ සත්‍ය ප්‍රතිවිපාක කලින් දැකීම තරමක් අපහසු වියහැක.\n
+එයට සහාය වීම සඳහා, ගණනය කල වක්‍රයේ පූර්වදර්ශනයක් පරීක්ෂා කලහැකිය. පූර්වදර්ශනයේදී වක්‍රය පෙන්වන්නේ <i>ලඝුගණක</i> මිනුම් මගින් බව කරුණාවෙන් සලකන්න, එමගින් සියලු පාලන ලක්ෂ්‍ය පැහැදිලි ලෙස පෙන්විය හැකිවේ. රේඛීය මිනුමක් භාවිතාකරන විට, හාත්පස පැතුරුණු දීප්තියේ පහත් පරාස තුල ඇති, ප්‍රවණතාවකින් යුත් ඉතා වැදගත් පාලන ලක්ෂ්‍ය වෙන් වෙන්ව දැකීමට නොහැකිවනු ඇත.
+\n\n
+<b>දීප්තියේ වක්‍රය සකසන්නේ කෙසේද?</b>
+\n\n
+දීප්ති ලැයිස්තුවේ සෑම පේළියක්ම, දීප්ති වක්‍රයේ එක් <i>පාලන ලක්ෂ්‍යයක්</i> වෙත අනුරූපව පවතී. ලක්ෂ්‍යයේ දීප්ති මට්ටම සැකසීම සඳහා, ඔබට එක් එක් පේළියේ ඇති රූටන භාවිතා කලහැක. අලෝක මට්ටමේ පූර්වදර්ශනයක් ලබාදීම සඳහා, රූටනය ස්පර්ශ කරනවිට එයට අනුකූලව තිර දීප්තිය වෙනස්වනු ඇත.\n
+පේළියක් මත දිගු එබීමෙන් අමතර විකල්ප ලබාගත හැක. \'සකසන්න\' තේරීම මගින්, ඔබට පාලන ලක්ෂ්‍යයන්ගේ හාත්පස පැතුරුණු දීප්තියේ මට්ටම සීරුමාරු කලහැකි වන අතර අභිමත තිර දීප්තියක් හස්තීයව ආදානය කිරීමටද හැකිවේ. \'භේදනය\' තේරීම මගින් අමතර පාලන ලක්ෂ්‍යයන් ඇතුලත් කිරීම සඳහා එක් පේළියක් තවත් එකකට පිටපත් කිරීමට ඉඩ ලබාදෙයි. \'ඉවත් කරන්න\' මගින් තෝරාගත් පේළිය මකා දැමෙනු ඇත.
+    </string>
   <string name="auto_brightness_sensitivity_title">සීරු මාරුවේ සංවේදීතාව</string>
   <string name="auto_brightness_sensitivity_verylow">ඉතා අඩු</string>
   <string name="auto_brightness_sensitivity_low">අඩු</string>
@@ -668,7 +680,6 @@
   <string name="background_result_successful">පසුබිම වෙනස් කෙරුණි</string>
   <string name="background_result_not_successful">පසුබිම වෙනස් නොකෙරුණි</string>
   <string name="setting_lockscreen_background">පසුබිම යොදමින්</string>
-  <string name="accessibility_home_button_answers_call_prerefence_title">නිවස බොත්තම ඇමතුම් සඳහා පිළිතුරු දෙයි</string>
   <string name="confirm_delete_apn">APNය මකා දැමෙනු ඇත.</string>
   <string name="status_bar_title">තත්ව තීරුව</string>
   <string name="status_bar_show_clock_title">ඔරලෝසුව පෙන්වන්න</string>
@@ -696,7 +707,10 @@
   <string name="storage_rescan_media_complete">පරිලෝකනය සමාප්තයි</string>
   <string name="whisperpush_title">WhisperPush තාක්ෂණය</string>
   <string name="whisperpush_summary">සුරක්ෂිත කෙටි පණිවිඩ සැකසීම් පාලනය කරයි</string>
+  <string name="logger_title">නිර්නාමික බිඳ වැටීම් ලොග් තැබීම</string>
+  <string name="logger_summary">බිඳ වැටීම් ලොග් තැබීමේ, සැකසීම් කළමනාකරණය</string>
   <string name="custom_runtime_warning_title">අවවාදයයි</string>
+  <string name="custom_runtime_warning_message">ART සම්පූර්ණයෙන්ම පරීක්ෂණාත්මක වන අතර අස්ථායිතා, බිඳ වැටීම්, දත්ත නැතිවීම් හෝ ඔබගේ උපාංගය හරිහැටි ඇරඹීම වැලැක්වීම් වැනිදේ ඇතිකිරීමේ හැකියාව ඇති බැවින්, එය සඳහා CyanogenMod නිලවශයෙන් සහාය නොදක්වයි. වැඩි විස්තර සඳහා &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;ART හඳුන්වාදීම&lt;/a&gt; වෙත පිවිසෙන්න.&lt;br/&gt;&lt;br/&gt;ඔබ ඔබගේ ධාවනසමය ලෙස ART සබල කර ඇත්නම් දෝෂ වාර්තා ගොනු නොකරන මෙන් අපි ඔබෙන් ඉල්ලා සිටිමු.&lt;br/&gt;&lt;br/&gt;ඔබගේ ධාවනසමය <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> සිට <xliff:g id="new" example="libart.so">%2$s</xliff:g> වෙතට වෙනස්කිරීම සඳහා නැවත පණගැන්වීමට ඔබට අවශ්‍යද?</string>
   <string name="gps_download_data_wifi_only">GPS සහායක දත්ත Wi-Fi ජාල හරහා පමණක් භාගතකරන්න</string>
   <string name="battery_info_status_charging_dock_ac">(AC ඈඳුම)</string>
   <string name="battery_info_status_charging_dock_usb">(USB ඈඳුම)</string>
