@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba0121b8_bbc67314",
+        "filename": "src/com/android/settings/applications/ProtectedAppsActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 9621
+      },
+      "writtenOn": "2014-06-12T06:01:55Z",
+      "side": 1,
+      "message": "Do you need the mActivity variable, or could you just use \u0027this\u0027 when you need this Activity? Reading the code later on, it makes me think there\u0027s another activity besides this one, though there isn\u0027t.",
+      "revId": "45265b4d6337933dc8b23dd4255650ad799f9ade",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_bbedd390",
+        "filename": "src/com/android/settings/applications/ProtectedAppsActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 9621
+      },
+      "writtenOn": "2014-06-12T06:01:55Z",
+      "side": 1,
+      "message": "I feel like calling notifyDataSetChanged() here will do some unnecessary work, as all views reflecting the data will update every time (super class behavior). The only thing that really changes at each progress update is that the icon for a specific package name has updated. Can you add a method that will update that particular icon at every progress update, possibly?",
+      "revId": "45265b4d6337933dc8b23dd4255650ad799f9ade",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_fbe74baa",
+        "filename": "src/com/android/settings/cyanogenmod/ProtectedAppsReceiver.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 9621
+      },
+      "writtenOn": "2014-06-12T06:01:55Z",
+      "side": 1,
+      "message": "This is not a comment on your code so much as a question. Why do we need the secure settings db to mirror this data? Doesn\u0027t package manager already know which components are visible/protected?",
+      "revId": "45265b4d6337933dc8b23dd4255650ad799f9ade",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
