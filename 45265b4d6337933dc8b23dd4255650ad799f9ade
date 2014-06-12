@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ba0121b8_deafd592",
+        "filename": "src/com/android/settings/applications/ProtectedAppsActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 9528
+      },
+      "writtenOn": "2014-06-12T11:16:03Z",
+      "side": 1,
+      "message": "Agreed, will be updated in the next PS",
+      "parentUuid": "ba0121b8_bbc67314",
+      "revId": "45265b4d6337933dc8b23dd4255650ad799f9ade",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba0121b8_bbedd390",
         "filename": "src/com/android/settings/applications/ProtectedAppsActivity.java",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "ba0121b8_1e92ed57",
+        "filename": "src/com/android/settings/applications/ProtectedAppsActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 9528
+      },
+      "writtenOn": "2014-06-12T11:16:03Z",
+      "side": 1,
+      "message": "The override notifyDataSetChanged class already is handling this in a fairly competent way. Strict mode on lower end devices (maguro) seem to be handling this fine.",
+      "parentUuid": "ba0121b8_bbedd390",
+      "revId": "45265b4d6337933dc8b23dd4255650ad799f9ade",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba0121b8_fbe74baa",
         "filename": "src/com/android/settings/cyanogenmod/ProtectedAppsReceiver.java",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2014-06-12T06:01:55Z",
       "side": 1,
       "message": "This is not a comment on your code so much as a question. Why do we need the secure settings db to mirror this data? Doesn\u0027t package manager already know which components are visible/protected?",
+      "revId": "45265b4d6337933dc8b23dd4255650ad799f9ade",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_feaa9984",
+        "filename": "src/com/android/settings/cyanogenmod/ProtectedAppsReceiver.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 9528
+      },
+      "writtenOn": "2014-06-12T11:16:03Z",
+      "side": 1,
+      "message": "The justification is that storing things in Settings.Secure DB is \"cleaner\" than doing all of the work in PackageManagerService, I wanted to avoid doing anything busy in that class.  \n\nI was going to keep this to just the DB, but I need a way for ApplicationInfo to reflect these changes so that I can strip protected packages from the Apps view in Settings.",
+      "parentUuid": "ba0121b8_fbe74baa",
       "revId": "45265b4d6337933dc8b23dd4255650ad799f9ade",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
