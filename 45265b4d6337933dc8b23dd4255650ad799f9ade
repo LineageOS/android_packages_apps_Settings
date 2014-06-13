@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "ba0121b8_c14c1879",
+        "filename": "src/com/android/settings/applications/ProtectedAppsActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 9621
+      },
+      "writtenOn": "2014-06-13T05:21:21Z",
+      "side": 1,
+      "message": "Sounds good. No change.",
+      "parentUuid": "ba0121b8_1e92ed57",
+      "revId": "45265b4d6337933dc8b23dd4255650ad799f9ade",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba0121b8_fbe74baa",
         "filename": "src/com/android/settings/cyanogenmod/ProtectedAppsReceiver.java",
         "patchSetId": 3
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "The justification is that storing things in Settings.Secure DB is \"cleaner\" than doing all of the work in PackageManagerService, I wanted to avoid doing anything busy in that class.  \n\nI was going to keep this to just the DB, but I need a way for ApplicationInfo to reflect these changes so that I can strip protected packages from the Apps view in Settings.",
       "parentUuid": "ba0121b8_fbe74baa",
+      "revId": "45265b4d6337933dc8b23dd4255650ad799f9ade",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_a1512411",
+        "filename": "src/com/android/settings/cyanogenmod/ProtectedAppsReceiver.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 9621
+      },
+      "writtenOn": "2014-06-13T05:21:21Z",
+      "side": 1,
+      "message": "Okay, thanks for the info.",
+      "parentUuid": "ba0121b8_feaa9984",
       "revId": "45265b4d6337933dc8b23dd4255650ad799f9ade",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
