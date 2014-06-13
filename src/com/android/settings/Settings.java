@@ -951,12 +951,21 @@ public class Settings extends PreferenceActivity
                     } else if(header.id == R.id.mobiledata_settings){
                         mDataEnabler.setSwitch(holder.switch_);
                         if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
-                            header.intent.setClassName("com.android.phone",
-                                    "com.android.phone.SelectSubscription");
-                            header.intent.putExtra(SelectSubscription.PACKAGE,
-                                    "com.android.phone");
-                            header.intent.putExtra(SelectSubscription.TARGET_CLASS,
-                                    "com.android.phone.MSimMobileNetworkSubSettings");
+                            boolean is_config_mnetworksettings_enabled = getContext().getResources()
+                                    .getBoolean(R.bool.config_mnetworksettings_enabled);
+                            if (is_config_mnetworksettings_enabled ) {
+                                header.intent.setClassName("com.android.multisimsettings",
+                                        "com.android.multisimsettings.MultiSimSettings");
+                                header.intent.putExtra("MOBILE_NETWORK_CONFIG_FLAG",
+                                        is_config_mnetworksettings_enabled);
+                            } else {
+                                header.intent.setClassName("com.android.phone",
+                                        "com.android.phone.SelectSubscription");
+                                header.intent.putExtra(SelectSubscription.PACKAGE,
+                                        "com.android.phone");
+                                header.intent.putExtra(SelectSubscription.TARGET_CLASS,
+                                        "com.android.phone.MSimMobileNetworkSubSettings");
+                            }
                         }
                     } else if(header.id == R.id.lte_4g_settings){
                         m4GEnabler.setSwitch(holder.switch_);
