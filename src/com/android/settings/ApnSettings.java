@@ -56,8 +56,11 @@ import android.widget.Toast;
 
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
+import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.TelephonyProperties;
+import com.android.internal.telephony.uicc.IccRecords;
+import com.android.internal.telephony.uicc.UiccController;
 
 import java.util.ArrayList;
 
@@ -94,6 +97,10 @@ public class ApnSettings extends SettingsPreferenceFragment implements
 
     private static boolean mRestoreDefaultApnMode;
 
+    private static final String APN_TYPE_MMS = "mms";
+    private static final String APN_TYPE_SUPL = "supl";
+    private static final String APN_TYPE_FOTA = "fota";
+
     private RestoreApnUiHandler mRestoreApnUiHandler;
     private RestoreApnProcessHandler mRestoreApnProcessHandler;
     private HandlerThread mRestoreDefaultApnThread;
@@ -109,6 +116,8 @@ public class ApnSettings extends SettingsPreferenceFragment implements
     private IntentFilter mMobileStateFilter;
 
     private boolean mUnavailable;
+
+    private static final String ACTION_APN_RESRORE_COMPLETE = "com.android.apnsettings.RESRORE_COMPLETE";
 
     private final BroadcastReceiver mMobileStateReceiver = new BroadcastReceiver() {
         @Override
@@ -217,8 +226,57 @@ public class ApnSettings extends SettingsPreferenceFragment implements
         }
     }
 
+    private int getRadioTechnology(){
+        ServiceState serviceState = null;
+        if (TelephonyManager.getDefault().isMultiSimEnabled()) {
+            serviceState = PhoneFactory.getPhone((int)mSubId).getServiceState();
+        } else {
+            serviceState = PhoneFactory.getDefaultPhone().getServiceState();
+        }
+        int netType = serviceState.getRilDataRadioTechnology();
+        if (netType == ServiceState.RIL_RADIO_TECHNOLOGY_UNKNOWN) {
+            netType = serviceState.getRilVoiceRadioTechnology();
+        }
+        return netType;
+    }
+
+    private String getIccOperatorNumeric(){
+        String iccOperatorNumeric = null;
+        int dataRat = getRadioTechnology();
+        if (dataRat != ServiceState.RIL_RADIO_TECHNOLOGY_UNKNOWN) {
+            IccRecords iccRecords = null;
+            int appFamily = UiccController.getFamilyFromRadioTechnology(dataRat);
+            if (TelephonyManager.getDefault().isMultiSimEnabled()) {
+                iccRecords = UiccController.getInstance().getIccRecords((int)mSubId, appFamily);
+            } else {
+                iccRecords = UiccController.getInstance().getIccRecords(0, appFamily);
+            }
+            if (iccRecords != null) {
+                iccOperatorNumeric = iccRecords.getOperatorNumeric();
+            }
+        }
+        return iccOperatorNumeric;
+    }
+
     private void fillList() {
+        boolean isSelectedKeyMatch = false;
         String where = getOperatorNumericSelection();
+        //remove the filtered items, no need to show in UI
+        where += " and type <>\"" + APN_TYPE_FOTA + "\"";
+
+        //Hide mms if config is true
+        if(getResources().getBoolean(R.bool.config_mms_enable)) {
+            where += " and type <>\"" + APN_TYPE_MMS + "\"" ;
+        }
+
+        where += " and carrier_enabled = 1";
+        Log.d(TAG, "fillList: where= " + where);
+
+        if (TextUtils.isEmpty(where)) {
+            Log.d(TAG, "getOperatorNumericSelection is empty ");
+            return;
+        }
+
         Cursor cursor = getContentResolver().query(getUri(Telephony.Carriers.CONTENT_URI),
                 new String[] {"_id", "name", "apn", "type", "read_only", "localized_name"}, where, null,
                 Telephony.Carriers.DEFAULT_SORT_ORDER);
@@ -257,12 +315,22 @@ public class ApnSettings extends SettingsPreferenceFragment implements
                 if (selectable) {
                     if ((mSelectedKey != null) && mSelectedKey.equals(key)) {
                         pref.setChecked();
+                        isSelectedKeyMatch = true;
+                        Log.d(TAG, "find select key = " + mSelectedKey);
                     }
                     apnList.addPreference(pref);
                 } else {
                     mmsApnList.add(pref);
                 }
                 cursor.moveToNext();
+            }
+
+            //if find no selectedKey, set the first one as selected key 291
+            if (!isSelectedKeyMatch && apnList.getPreferenceCount() > 0) {
+                ApnPreference pref = (ApnPreference) apnList.getPreference(0);
+                setSelectedApnKey(pref.getKey());
+                Log.d(TAG, "find no select key = " + mSelectedKey);
+                Log.d(TAG, "set key to  " +pref.getKey());
             }
             cursor.close();
 
@@ -397,6 +465,7 @@ public class ApnSettings extends SettingsPreferenceFragment implements
                         mRestoreDefaultApnMode = false;
                         return;
                     }
+                    getActivity().sendBroadcast(new Intent(ACTION_APN_RESRORE_COMPLETE));
                     fillList();
                     getPreferenceScreen().setEnabled(true);
                     mRestoreDefaultApnMode = false;
@@ -461,11 +530,10 @@ public class ApnSettings extends SettingsPreferenceFragment implements
             }
         }
 
-        String mccMncFromSim = TelephonyManager.getDefault().getIccOperatorNumeric(mSubId);
-        Log.d(TAG, "getOperatorNumeric: sub= " + mSubId +
-                    " mcc-mnc= " + mccMncFromSim);
-        if (mccMncFromSim != null && mccMncFromSim.length() > 0) {
-            result.add(mccMncFromSim);
+        String iccOperatorNumeric = getIccOperatorNumeric();
+        Log.d(TAG, "getOperatorNumeric: sub= " + mSubId + " mcc-mnc= " + iccOperatorNumeric);
+        if (iccOperatorNumeric != null && iccOperatorNumeric.length() > 0) {
+            result.add(iccOperatorNumeric);
         }
         return result.toArray(new String[2]);
     }
