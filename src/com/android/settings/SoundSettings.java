@@ -198,10 +198,9 @@ public class SoundSettings extends SettingsPreferenceFragment implements
 
         mQuietHours = (PreferenceScreen) findPreference(KEY_QUIET_HOURS);
         if (Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_ENABLED, 0) == 1) {
-            mQuietHours.setSummary(getString(R.string.quiet_hours_active_from) + " " +
-                    returnTime(Settings.System.getString(resolver, Settings.System.QUIET_HOURS_START))
-                    + " " + getString(R.string.quiet_hours_active_to) + " " +
-                    returnTime(Settings.System.getString(resolver, Settings.System.QUIET_HOURS_END)));
+            mQuietHours.setSummary(getString(R.string.quiet_hours_active_period,
+                    returnTime(Settings.System.getString(resolver, Settings.System.QUIET_HOURS_START)),
+                    returnTime(Settings.System.getString(resolver, Settings.System.QUIET_HOURS_END))));
         } else {
             mQuietHours.setSummary(getString(R.string.quiet_hours_summary));
         }
@@ -356,10 +355,9 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         mRingMode.setValue(getPhoneRingModeSettingValue());
 
         if (Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_ENABLED, 0) == 1) {
-            mQuietHours.setSummary(getString(R.string.quiet_hours_active_from) + " " +
-                    returnTime(Settings.System.getString(resolver, Settings.System.QUIET_HOURS_START))
-                    + " " + getString(R.string.quiet_hours_active_to) + " " +
-                    returnTime(Settings.System.getString(resolver, Settings.System.QUIET_HOURS_END)));
+            mQuietHours.setSummary(getString(R.string.quiet_hours_active_period,
+                    returnTime(Settings.System.getString(resolver, Settings.System.QUIET_HOURS_START)),
+                    returnTime(Settings.System.getString(resolver, Settings.System.QUIET_HOURS_END))));
         } else {
             mQuietHours.setSummary(getString(R.string.quiet_hours_summary));
         }
