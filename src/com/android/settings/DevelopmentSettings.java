@@ -45,6 +45,7 @@ import android.os.StrictMode;
 import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.os.UserManager;
+import android.hardware.usb.UsbManager;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -171,6 +172,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private DevicePolicyManager mDpm;
     private UserManager mUm;
     private WifiManager mWifiManager;
+    private UsbManager mUsbManager;
 
     private SwitchBar mSwitchBar;
     private boolean mLastEnabledState;
@@ -257,6 +259,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         mUm = (UserManager) getSystemService(Context.USER_SERVICE);
 
         mWifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+
+        mUsbManager = (UsbManager)getActivity().getSystemService(Context.USB_SERVICE);
 
         if (android.os.Process.myUserHandle().getIdentifier() != UserHandle.USER_OWNER
                 || mUm.hasUserRestriction(UserManager.DISALLOW_DEBUGGING_FEATURES)) {
@@ -388,6 +392,11 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         CheckBoxPreference pref = (CheckBoxPreference) findPreference(key);
         if (pref == null) {
             throw new IllegalArgumentException("Cannot find preference with key = " + key);
+        }
+        if (key == ENABLE_ADB &&
+                UsbManager.USB_FUNCTION_CHARGING.equals(mUsbManager.getDefaultFunction())) {
+            pref.setSummary(getResources().getString(R.string.enable_adb_summary_charging));
+            disableForUser(pref);
         }
         mAllPrefs.add(pref);
         mResetCbPrefs.add(pref);
