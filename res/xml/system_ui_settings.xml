@@ -67,6 +67,13 @@
 
     </PreferenceCategory>
 
+    <ListPreference
+        android:key="button_backlight_mode"
+        android:title="@string/button_backlight_mode"
+        android:persistent="true"
+        android:entries="@array/button_backlight_entries"
+        android:entryValues="@array/button_backlight_values" />
+
     <PreferenceCategory
         android:key="navigation_bar"
         android:title="@string/navigation_bar_category" >

@@ -37,6 +37,10 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "SystemSettings";
 
+    // If there's no setting, keep this as a fallback
+    private static final int FALLBACK_BUTTON_BACKLIGHT_VALUE = 0;
+
+    private static final String KEY_BUTTON_BACKLIGHT = "button_backlight_mode";
     private static final String KEY_EXPANDED_DESKTOP = "expanded_desktop";
     private static final String KEY_EXPANDED_DESKTOP_NO_NAVBAR = "expanded_desktop_no_navbar";
     private static final String CATEGORY_EXPANDED_DESKTOP = "expanded_desktop_category";
@@ -44,6 +48,7 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
     private static final String KEY_SCREEN_GESTURE_SETTINGS = "touch_screen_gesture_settings";
     private static final String KEY_NAVIGATION_BAR_LEFT = "navigation_bar_left";
 
+    private ListPreference mButtonBacklightPref;
     private ListPreference mExpandedDesktopPref;
     private CheckBoxPreference mExpandedDesktopNoNavbarPref;
     private CheckBoxPreference mNavigationBarLeftPref;
@@ -101,6 +106,19 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
         } catch (RemoteException e) {
             Log.e(TAG, "Error getting navigation bar status");
         }
+         
+        boolean removeKeys = false; // TODO: Actually detect hardware keys
+        // Button lights. Per user.
+        if (removeKeys) {
+            prefScreen.removePreference(findPreference(KEY_BUTTON_BACKLIGHT));
+        } else {
+            mButtonBacklightPref = (ListPreference) findPreference(KEY_BUTTON_BACKLIGHT);
+            final int currentButtonBacklight = Settings.System.getInt(getContentResolver(),
+                    Settings.System.BUTTON_BACKLIGHT_MODE, FALLBACK_BUTTON_BACKLIGHT_VALUE);
+            mButtonBacklightPref.setValueIndex(currentButtonBacklight);
+            mButtonBacklightPref.setOnPreferenceChangeListener(this);
+            updateButtonBacklight(currentButtonBacklight);
+        }
     }
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
@@ -112,7 +130,11 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
             boolean value = (Boolean) objValue;
             updateExpandedDesktop(value ? 2 : 0);
             return true;
-        }
+        } else if (preference == mButtonBacklightPref) {
+            int value = Integer.parseInt((String) objValue);
+            updateButtonBacklight(value);
+            return true;
+		}
 
         return false;
     }
@@ -140,5 +162,11 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
         if (mExpandedDesktopPref != null && summary != -1) {
             mExpandedDesktopPref.setSummary(res.getString(summary));
         }
+    }
+
+    private void updateButtonBacklight(int value) {
+        mButtonBacklightPref.setSummary(mButtonBacklightPref.getEntries()[value]);
+        Settings.System.putInt(getContentResolver(),
+                Settings.System.BUTTON_BACKLIGHT_MODE, value);
     }
 }
