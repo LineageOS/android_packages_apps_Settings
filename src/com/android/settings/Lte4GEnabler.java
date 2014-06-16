@@ -28,20 +28,16 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package com.android.settings;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-
 import android.os.AsyncResult;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Messenger;
-
 import android.provider.Settings;
-
 import android.telephony.MSimTelephonyManager;
-
 import android.provider.Settings.SettingNotFoundException;
-
 import android.util.Log;
 import android.widget.CompoundButton;
 import android.widget.Switch;
@@ -72,8 +68,6 @@ public class Lte4GEnabler {
 
     public void resume() {
         setSwitchStatus();
-        int type = getPreferredNetworkType();
-        mSwitch.setChecked(type == Phone.NT_MODE_LTE_CMDA_EVDO_GSM_WCDMA);
         mSwitch.setOnClickListener(mLte4GEnabledListener);
     }
 
@@ -93,37 +87,83 @@ public class Lte4GEnabler {
             return;
         mSwitch.setOnCheckedChangeListener(null);
         mSwitch = switch_;
-
         setSwitchStatus();
-
         mSwitch.setOnClickListener(mLte4GEnabledListener);
-        int type = getPreferredNetworkType();
-        mSwitch.setChecked(type == Phone.NT_MODE_LTE_CMDA_EVDO_GSM_WCDMA);
     }
 
     // Adjust the switch component's availability
     // according to the "AirPlane" mode.
     private void setSwitchStatus() {
+        boolean isLTEMode = false;
+        int type = getPreferredNetworkType();
+        if (type == Phone.NT_MODE_TD_SCDMA_LTE_CDMA_EVDO_GSM_WCDMA
+                || type == Phone.NT_MODE_TD_SCDMA_GSM_WCDMA_LTE
+                || type == Phone.NT_MODE_TD_SCDMA_WCDMA_LTE
+                || type == Phone.NT_MODE_TD_SCDMA_GSM_LTE
+                || type == Phone.NT_MODE_TD_SCDMA_LTE
+                || type == Phone.NT_MODE_LTE_WCDMA
+                || type == Phone.NT_MODE_LTE_ONLY
+                || type == Phone.NT_MODE_LTE_CMDA_EVDO_GSM_WCDMA
+                || type == Phone.NT_MODE_LTE_GSM_WCDMA
+                || type == Phone.NT_MODE_LTE_CDMA_AND_EVDO
+                ) {
+            isLTEMode = true;
+        } else {
+            isLTEMode = false;
+        }
+        mSwitch.setChecked(isLTEMode);
         mSwitch.setEnabled(Settings.System.getInt(
                 mContext.getContentResolver(),
                 Settings.System.AIRPLANE_MODE_ON, 0) == 0 && mPhoneServiceClient != null);
     }
 
+    private void promptUser() {
+        AlertDialog alertDialog = new AlertDialog.Builder(mContext)
+                .setMessage(mContext.getString(R.string.lte_4g_switch_prompt))
+                .setNeutralButton(R.string.no,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(
+                                    DialogInterface dialog,
+                                    int which) {
+                                //Recover the button as disable status
+                                mSwitch.setChecked(false);
+                            }
+                        })
+                .setPositiveButton(R.string.yes,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(
+                                    DialogInterface dialog,
+                                    int which) {
+                                setPrefNetwork();
+                            }
+                        }).create();
+        alertDialog.show();
+    }
+
+    private void setPrefNetwork() {
+     // Disable it, enable it after getting reponse
+        mSwitch.setEnabled(false);
+        int networkType = mSwitch.isChecked() ? Phone.NT_MODE_LTE_CMDA_EVDO_GSM_WCDMA
+                : Phone.NT_MODE_GLOBAL;
+
+        Messenger msger = new Messenger(mHandler);
+        final Message msg = mHandler.obtainMessage(
+                MyHandler.MESSAGE_SET_PREFERRED_NETWORK_TYPE);
+        msg.replyTo = msger;
+        // both dsds and sss use this this interface
+        setPrefNetwork(MSimConstants.DEFAULT_SUBSCRIPTION,
+                networkType, msg);
+    }
+
     private OnClickListener mLte4GEnabledListener = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            // Disable it, enable it after getting reponse
-            mSwitch.setEnabled(false);
-            int networkType = mSwitch.isChecked() ? Phone.NT_MODE_LTE_CMDA_EVDO_GSM_WCDMA
-                    : Phone.NT_MODE_GLOBAL;
-
-            Messenger msger = new Messenger(mHandler);
-            final Message msg = mHandler.obtainMessage(
-                    MyHandler.MESSAGE_SET_PREFERRED_NETWORK_TYPE);
-            msg.replyTo = msger;
-            // both dsds and sss use this this interface
-            setPrefNetwork(MSimConstants.DEFAULT_SUBSCRIPTION,
-                    networkType, msg);
+            //Only prompt user when enable 4G
+            if (mSwitch.isChecked()){
+                promptUser();
+            } else {
+                setPrefNetwork();
+            }
         }
     };
 
@@ -236,7 +276,6 @@ public class Lte4GEnabler {
             int type = getPreferredNetworkType();
             //set it as true after mode processing
             setSwitchStatus();
-            mSwitch.setChecked(type == Phone.NT_MODE_LTE_CMDA_EVDO_GSM_WCDMA);
         }
     }
 }
