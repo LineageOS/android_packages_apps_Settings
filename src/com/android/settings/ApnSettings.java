@@ -41,6 +41,7 @@ import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.provider.Telephony;
 import android.text.TextUtils;
+import android.telephony.ServiceState;
 import android.telephony.TelephonyManager;
 import android.telephony.MSimTelephonyManager;
 import android.util.Log;
@@ -50,8 +51,13 @@ import android.widget.Toast;
 
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
+import com.android.internal.telephony.PhoneFactory;
+import com.codeaurora.telephony.msim.MSimPhoneFactory;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.TelephonyProperties;
+import com.android.internal.telephony.uicc.IccRecords;
+import com.android.internal.telephony.uicc.UiccController;
+import com.codeaurora.telephony.msim.MSimUiccController;
 
 import java.util.ArrayList;
 
@@ -89,7 +95,9 @@ public class ApnSettings extends PreferenceActivity implements
 
     private static boolean mRestoreDefaultApnMode;
 
-    private static final String APN_TYPE_FILTER = "fota";
+    private static final String APN_TYPE_MMS = "mms";
+    private static final String APN_TYPE_SUPL = "supl";
+    private static final String APN_TYPE_FOTA = "fota";
 
     private RestoreApnUiHandler mRestoreApnUiHandler;
     private RestoreApnProcessHandler mRestoreApnProcessHandler;
@@ -102,6 +110,8 @@ public class ApnSettings extends PreferenceActivity implements
             "persist.radio.use_nv_for_ehrpd", false);
 
     private IntentFilter mMobileStateFilter;
+
+    private static final String ACTION_APN_RESRORE_COMPLETE = "com.android.apnsettings.RESRORE_COMPLETE";
 
     private final BroadcastReceiver mMobileStateReceiver = new BroadcastReceiver() {
         @Override
@@ -195,22 +205,67 @@ public class ApnSettings extends PreferenceActivity implements
         }
     }
 
+    private int getRadioTechnology(){
+        ServiceState serviceState = null;
+        if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
+            serviceState = MSimPhoneFactory.getPhone(mSubscription).getServiceState();
+        } else {
+            serviceState = PhoneFactory.getDefaultPhone().getServiceState();
+        }
+        int netType = serviceState.getRilDataRadioTechnology();
+        if (netType == ServiceState.RIL_RADIO_TECHNOLOGY_UNKNOWN) {
+            netType = serviceState.getRilVoiceRadioTechnology();
+        }
+        return netType;
+    }
+
+    private String getIccOperatorNumeric(){
+        String iccOperatorNumeric = null;
+        int dataRat = getRadioTechnology();
+        if (dataRat != ServiceState.RIL_RADIO_TECHNOLOGY_UNKNOWN) {
+            IccRecords iccRecords = null;
+            int appFamily = UiccController.getFamilyFromRadioTechnology(dataRat);
+            if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
+                iccRecords = MSimUiccController.getInstance().getIccRecords(mSubscription, appFamily);
+            } else {
+                iccRecords = UiccController.getInstance().getIccRecords(appFamily);
+            }
+            if (iccRecords != null) {
+                iccOperatorNumeric = iccRecords.getOperatorNumeric();
+            }
+        }
+        return iccOperatorNumeric;
+    }
+
     private void fillList() {
+        boolean isSelectedKeyMatch = false;
         String where = getOperatorNumericSelection();
 
-        int netType = 0;
+        //remove the filtered items, no need to show in UI
+        where += " and type <>\"" + APN_TYPE_FOTA + "\"";
 
-        if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
-            netType = MSimTelephonyManager.getDefault().getNetworkType(mSubscription);
-        } else {
-            netType = TelephonyManager.getDefault().getNetworkType();
+        if (getResources().getBoolean(R.bool.config_hidesupl_enable)) {
+            boolean needHideSupl = false;
+            for (String plmn : getResources().getStringArray(R.array.hidesupl_plmn_list)) {
+                if (plmn.equals(MSimTelephonyManager.getDefault().getSimOperator(mSubscription))) {
+                    needHideSupl = true;
+                    break;
+                }
+            }
+
+            if (needHideSupl) {
+                where += " and type <>\"" + APN_TYPE_SUPL + "\"";
+            }
         }
-        Log.d(TAG, "Current RAT type is " + netType);
 
+        //Hide mms if config is true
+        if(getResources().getBoolean(R.bool.config_mms_enable)) {
+            where += " and type <>\"" + APN_TYPE_MMS + "\"" ;
+        }
         //UI should filter APN by bearer and enable status
-        where += "and (bearer=\"" + netType + "\" or bearer =\"" + 0 + "\")";
+        where += " and (bearer=\"" + getRadioTechnology() + "\" or bearer =\"" + 0 + "\")";
         where += " and carrier_enabled = 1";
-        Log.d(TAG, "fillList: where=" + where);
+        Log.d(TAG, "fillList: where= " + where);
 
         if (TextUtils.isEmpty(where)) {
             Log.d(TAG, "getOperatorNumericSelection is empty ");
@@ -236,29 +291,6 @@ public class ApnSettings extends PreferenceActivity implements
                 String type = cursor.getString(TYPES_INDEX);
                 boolean readOnly = (cursor.getInt(RO_INDEX) == 1);
 
-                if (type.equals("supl") &&
-                        getResources().getBoolean(R.bool.config_hidesupl_enable)) {
-                    boolean needHideSupl = false;
-                    for (String plmn : getResources().getStringArray(R.array.hidesupl_plmn_list)) {
-                        if (plmn.equals(MSimTelephonyManager.getDefault()
-                                   .getSimOperator(mSubscription))) {
-                            needHideSupl = true;
-                            break;
-                        }
-                    }
-
-                    if (needHideSupl) {
-                        cursor.moveToNext();
-                        continue;
-                    }
-                }
-
-                //remove the filtered items, no need to show in UI
-                if(APN_TYPE_FILTER.equalsIgnoreCase(type)){
-                    cursor.moveToNext();
-                    continue;
-                }
-
                 String localizedName = getLocalizedName(this, cursor, LOCALIZED_NAME_INDEX);
                 if (!TextUtils.isEmpty(localizedName)) {
                     name = localizedName;
@@ -278,12 +310,22 @@ public class ApnSettings extends PreferenceActivity implements
                 if (selectable) {
                     if ((mSelectedKey != null) && mSelectedKey.equals(key)) {
                         pref.setChecked();
+                        isSelectedKeyMatch = true;
+                        Log.d(TAG, "find select key = " + mSelectedKey);
                     }
                     apnList.addPreference(pref);
                 } else {
                     mmsApnList.add(pref);
                 }
                 cursor.moveToNext();
+            }
+
+            //if find no selectedKey, set the first one as selected key 291
+            if (!isSelectedKeyMatch && apnList.getPreferenceCount() > 0) {
+                ApnPreference pref = (ApnPreference) apnList.getPreference(0);
+                setSelectedApnKey(pref.getKey());
+                Log.d(TAG, "find no select key = " + mSelectedKey);
+                Log.d(TAG, "set key to  " +pref.getKey());
             }
             cursor.close();
 
@@ -426,6 +468,7 @@ public class ApnSettings extends PreferenceActivity implements
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case EVENT_RESTORE_DEFAULTAPN_COMPLETE:
+                    sendBroadcast(new Intent(ACTION_APN_RESRORE_COMPLETE));
                     fillList();
                     getPreferenceScreen().setEnabled(true);
                     mRestoreDefaultApnMode = false;
@@ -496,38 +539,10 @@ public class ApnSettings extends PreferenceActivity implements
                 result.add(mccMncForEhrpd);
             }
         }
-        String dataNetworkType;
-        String mccMncFromSim;
-        int activePhone;
-        String apnOperatorNumericProperty = TelephonyProperties.PROPERTY_APN_SIM_OPERATOR_NUMERIC;
-        if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
-            dataNetworkType = MSimTelephonyManager.getTelephonyProperty(
-                    TelephonyProperties.PROPERTY_DATA_NETWORK_TYPE, mSubscription, null);
-            activePhone = MSimTelephonyManager.from(this).getPhoneType(mSubscription);
-            if (activePhone == PhoneConstants.PHONE_TYPE_CDMA &&
-                    !dataNetworkType.equals("LTE")) {
-                apnOperatorNumericProperty = TelephonyProperties.PROPERTY_APN_RUIM_OPERATOR_NUMERIC;
-            }
-            mccMncFromSim = MSimTelephonyManager.getTelephonyProperty(
-                    apnOperatorNumericProperty, mSubscription, null);
-            Log.d(TAG, "getOperatorNumeric: sub= " + mSubscription +
-                    " activePhone= " + activePhone + " mcc-mnc= " + mccMncFromSim +
-                    " dataNetworkType: " + dataNetworkType);
-        } else {
-            dataNetworkType = TelephonyManager.getTelephonyProperty(
-                    TelephonyProperties.PROPERTY_DATA_NETWORK_TYPE, mSubscription, null);
-            activePhone = TelephonyManager.from(this).getPhoneType();
-            if (activePhone == PhoneConstants.PHONE_TYPE_CDMA &&
-                    !dataNetworkType.equals("LTE")) {
-                apnOperatorNumericProperty = TelephonyProperties.PROPERTY_APN_RUIM_OPERATOR_NUMERIC;
-            }
-            mccMncFromSim = TelephonyManager.getTelephonyProperty(
-                    apnOperatorNumericProperty, mSubscription, null);
-            Log.d(TAG, "getOperatorNumeric:  activePhone= " + activePhone +
-                    " mcc-mnc= " + mccMncFromSim + " dataNetworkType: " + dataNetworkType);
-        }
-        if (mccMncFromSim != null && mccMncFromSim.length() > 0) {
-            result.add(mccMncFromSim);
+        String iccOperatorNumeric = getIccOperatorNumeric();
+        Log.d(TAG, "getOperatorNumeric: sub= " + mSubscription + " mcc-mnc= " + iccOperatorNumeric);
+        if (iccOperatorNumeric != null && iccOperatorNumeric.length() > 0) {
+            result.add(iccOperatorNumeric);
         }
         return result.toArray(new String[2]);
     }
