@@ -252,6 +252,7 @@ public class ProtectedAppsActivity extends Activity {
         @Override
         protected void onPreExecute() {
             mDialog.setMessage(getResources().getString(R.string.saving_protected_components));
+            mDialog.setCancelable(false);
             mDialog.show();
         }
 
