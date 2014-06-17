@@ -50,6 +50,7 @@ import com.android.settings.Utils;
 import com.android.settings.cyanogenmod.DisplayRotation;
 
 import org.cyanogenmod.hardware.AdaptiveBacklight;
+import org.cyanogenmod.hardware.ColorEnhancement;
 import org.cyanogenmod.hardware.TapToWake;
 
 import java.util.ArrayList;
@@ -67,6 +68,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_SCREEN_SAVER = "screensaver";
     private static final String KEY_DISPLAY_ROTATION = "display_rotation";
     private static final String KEY_ADAPTIVE_BACKLIGHT = "adaptive_backlight";
+    private static final String KEY_COLOR_ENHANCEMENT = "color_enhancement";
     private static final String KEY_ADVANCED_DISPLAY_SETTINGS = "advanced_display_settings";
     private static final String KEY_TAP_TO_WAKE = "double_tap_wake_gesture";
 
@@ -99,6 +101,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private Preference mScreenSaverPreference;
 
     private CheckBoxPreference mAdaptiveBacklight;
+    private CheckBoxPreference mColorEnhancement;
     private CheckBoxPreference mTapToWake;
 
     private ContentObserver mAccelerometerRotationObserver =
@@ -155,6 +158,12 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         if (!isAdaptiveBacklightSupported()) {
             advancedPrefs.removePreference(mAdaptiveBacklight);
             mAdaptiveBacklight = null;
+        }
+
+        mColorEnhancement = (CheckBoxPreference) findPreference(KEY_COLOR_ENHANCEMENT);
+        if (!isColorEnhancementSupported()) {
+            advancedPrefs.removePreference(mColorEnhancement);
+            mColorEnhancement = null;
         }
 
         mTapToWake = (CheckBoxPreference) findPreference(KEY_TAP_TO_WAKE);
@@ -384,6 +393,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             mAdaptiveBacklight.setChecked(AdaptiveBacklight.isEnabled());
         }
 
+        if (mColorEnhancement != null) {
+            mColorEnhancement.setChecked(ColorEnhancement.isEnabled());
+        }
+
         if (mTapToWake != null) {
             mTapToWake.setChecked(TapToWake.isEnabled());
         }
@@ -489,6 +502,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         if (preference == mAdaptiveBacklight) {
             return AdaptiveBacklight.setEnabled(mAdaptiveBacklight.isChecked());
+        } else if (preference == mColorEnhancement) {
+            return ColorEnhancement.setEnabled(mColorEnhancement.isChecked());
         } else if (preference == mWakeWhenPluggedOrUnplugged) {
             Settings.Global.putInt(getContentResolver(),
                     Settings.Global.WAKE_WHEN_PLUGGED_OR_UNPLUGGED,
@@ -569,6 +584,15 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 Log.d(TAG, "Adaptive backlight settings restored.");
             }
         }
+        if (isColorEnhancementSupported()) {
+            final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
+            final boolean enabled = prefs.getBoolean(KEY_COLOR_ENHANCEMENT, true);
+            if (!ColorEnhancement.setEnabled(enabled)) {
+                Log.e(TAG, "Failed to restore color enhancement settings.");
+            } else {
+                Log.d(TAG, "Color enhancement settings restored.");
+            }
+        }
         if (isTapToWakeSupported()) {
             final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
             final boolean enabled = prefs.getBoolean(KEY_TAP_TO_WAKE, true);
@@ -594,6 +618,15 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static boolean isAdaptiveBacklightSupported() {
         try {
             return AdaptiveBacklight.isSupported();
+        } catch (NoClassDefFoundError e) {
+            // Hardware abstraction framework not installed
+            return false;
+        }
+    }
+
+    private static boolean isColorEnhancementSupported() {
+        try {
+            return ColorEnhancement.isSupported();
         } catch (NoClassDefFoundError e) {
             // Hardware abstraction framework not installed
             return false;
