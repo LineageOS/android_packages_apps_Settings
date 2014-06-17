@@ -306,8 +306,10 @@ public class ProfileConfig extends SettingsPreferenceFragment
                 StreamVolumePreference pref = new StreamVolumePreference(getActivity());
                 pref.setKey("stream_" + stream.mStreamId);
                 pref.setTitle(stream.mLabel);
-                pref.setSummary(getString(R.string.volume_override_summary) + " " + settings.getValue()
-                        + "/" + am.getStreamMaxVolume(stream.mStreamId));
+                int denominator = settings.getValue();
+                int numerator = am.getStreamMaxVolume(stream.mStreamId);
+                pref.setSummary(getString(R.string.volume_override_summary,
+                        denominator, numerator));
                 pref.setPersistent(false);
                 pref.setStreamItem(stream);
                 stream.mCheckbox = pref;
