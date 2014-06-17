@@ -189,6 +189,7 @@ public class InstalledAppDetails extends Fragment
 
     // Menu identifiers
     public static final int UNINSTALL_ALL_USERS_MENU = 1;
+    public static final int OPEN_PROTECTED_APPS = 2;
 
     // Result code identifiers
     public static final int REQUEST_UNINSTALL = 1;
@@ -267,6 +268,13 @@ public class InstalledAppDetails extends Fragment
                 mClearDataButton.setText(R.string.clear_user_data_text);
             }
             mClearDataButton.setOnClickListener(this);
+        }
+
+        // This is a protected app component.
+        // You cannot clear data for a protected component
+        if (mPackageInfo.applicationInfo.protect) {
+            mClearDataButton.setEnabled(false);
+            mCanClearData = false;
         }
     }
 
@@ -373,6 +381,12 @@ public class InstalledAppDetails extends Fragment
         // If this is a device admin, it can't be uninstalled or disabled.
         // We do this here so the text of the button is still set correctly.
         if (mDpm.packageHasActiveAdmins(mPackageInfo.packageName)) {
+            enabled = false;
+        }
+
+        // This is a protected app component.
+        // You cannot a uninstall a protected component
+        if (mPackageInfo.applicationInfo.protect) {
             enabled = false;
         }
 
@@ -514,6 +528,9 @@ public class InstalledAppDetails extends Fragment
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.add(0, UNINSTALL_ALL_USERS_MENU, 1, R.string.uninstall_all_users_text)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+        menu.add(0, OPEN_PROTECTED_APPS, Menu.NONE, R.string.protected_apps)
+                .setIcon(getResources().getDrawable(R.drawable.folder_lock))
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
     }
 
     @Override
@@ -533,6 +550,8 @@ public class InstalledAppDetails extends Fragment
             showIt = false;
         }
         menu.findItem(UNINSTALL_ALL_USERS_MENU).setVisible(showIt);
+
+        menu.findItem(OPEN_PROTECTED_APPS).setVisible(mPackageInfo.applicationInfo.protect);
     }
 
     @Override
@@ -541,6 +560,9 @@ public class InstalledAppDetails extends Fragment
         if (menuId == UNINSTALL_ALL_USERS_MENU) {
             uninstallPkg(mAppEntry.info.packageName, true, false);
             return true;
+        } else if (menuId == OPEN_PROTECTED_APPS) {
+            Intent protectedApps = new Intent(getActivity(), ProtectedAppsActivity.class);
+            startActivity(protectedApps);
         }
         return false;
     }
