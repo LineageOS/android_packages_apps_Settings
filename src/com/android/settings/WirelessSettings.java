@@ -74,6 +74,7 @@ public class WirelessSettings extends RestrictedSettingsFragment
     private static final String KEY_CELL_BROADCAST_SETTINGS = "cell_broadcast_settings";
 
     private static final String GOOGLE_VOICE_PACKAGE = "com.google.android.apps.googlevoice";
+    private static final String VOICE_PLUS_PACKAGE = "org.cyanogenmod.voiceplus";
     private static final ComponentName VOICE_PLUS_SETUP =
             new ComponentName("org.cyanogenmod.voiceplus", "org.cyanogenmod.voiceplus.VoicePlusSetup");
 
@@ -381,8 +382,9 @@ public class WirelessSettings extends RestrictedSettingsFragment
             removePreference(KEY_SMS_APPLICATION);
         }
 
-        // Remove Voice+ option if Google Voice is not installed
-        if (!Utils.isPackageInstalled(getActivity(), GOOGLE_VOICE_PACKAGE)) {
+        // Remove Voice+ option if Google Voice or Voice Plus is not installed
+        if (!Utils.isPackageInstalled(getActivity(), GOOGLE_VOICE_PACKAGE)
+                || !Utils.isPackageInstalled(getActivity(), VOICE_PLUS_PACKAGE)) {
             removePreference(KEY_VOICE_PLUS_ACCOUNT);
         }
 
