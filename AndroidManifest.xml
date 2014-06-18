@@ -1764,7 +1764,7 @@
 
         <!-- CyanogenMod activities Start -->
         <activity android:name="Settings$SystemSettingsActivity"
-                android:label="@string/system_settings_title"
+                android:label="@string/system_decorations_title"
                 android:taskAffinity=""
                 android:excludeFromRecents="true">
             <intent-filter>
@@ -1774,7 +1774,7 @@
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.cyanogenmod.SystemUiSettings" />
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
-                android:resource="@id/system_settings" />
+                android:resource="@id/status_bar_settings" />
         </activity>
 
         <activity android:name="Settings$QuickSettingsConfigActivity"
@@ -1892,6 +1892,10 @@
         <activity android:name=".notificationlight.BatteryLightSettings" />
 
         <activity android:name=".cyanogenmod.LockscreenInterface" />
+
+        <activity android:name=".cyanogenmod.StatusBar" />
+
+        <activity android:name=".cyanogenmod.NotificationDrawer" />
 
          <!-- "Blacklist settings" UI, used only on voice-capable phone devices. -->
         <activity android:name="Settings$BlacklistSettingsActivity"
