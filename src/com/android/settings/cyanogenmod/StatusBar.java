@@ -17,7 +17,9 @@
 package com.android.settings.cyanogenmod;
 
 import android.content.ContentResolver;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.RemoteException;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -32,6 +34,8 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
 public class StatusBar extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
+
+    private static final String TAG = "StatusBar";
 
     private static final String STATUS_BAR_BATTERY = "status_bar_battery";
     private static final String STATUS_BAR_SIGNAL = "status_bar_signal";
@@ -99,7 +103,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             Settings.System.putInt(resolver, Settings.System.STATUS_BAR_BATTERY, batteryStyle);
             mStatusBarBattery.setSummary(mStatusBarBattery.getEntries()[index]);
 
-            enableStatusBarBatteryDependents((String)newValue);
+            enableStatusBarBatteryDependents((String) newValue);
             return true;
         } else if (preference == mStatusBarCmSignal) {
             int signalStyle = Integer.valueOf((String) newValue);

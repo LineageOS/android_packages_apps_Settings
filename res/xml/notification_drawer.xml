@@ -26,6 +26,11 @@
         android:entries="@array/notification_drawer_collapse_on_dismiss_entries"
         android:entryValues="@array/notification_drawer_collapse_on_dismiss_values" />
 
+    <PreferenceScreen
+            android:key="quick_settings_panel"
+            android:fragment="com.android.settings.quicksettings.QuickSettings"
+            android:title="@string/quick_settings_panel_title" />
+
     <PreferenceCategory
         android:title="@string/category_quick_access" >
 
