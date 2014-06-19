@@ -42,7 +42,6 @@ public class AutoBrightnessSetup extends AlertActivity implements
     private AutoBrightnessCustomizeDialog mCustomizeDialog;
     private CheckBox mTwilightAdjustment;
     private Spinner mSensitivity;
-    private SeekBar mAdjustment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +63,6 @@ public class AutoBrightnessSetup extends AlertActivity implements
 
         mTwilightAdjustment = (CheckBox) view.findViewById(R.id.twilight_adjustment);
         mSensitivity = (Spinner) view.findViewById(R.id.sensitivity);
-        mAdjustment = (SeekBar) view.findViewById(R.id.adjustment);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.auto_brightness_sensitivity_entries,
@@ -107,12 +105,6 @@ public class AutoBrightnessSetup extends AlertActivity implements
             }
         }
 
-        float adjustmentValue = Settings.System.getFloat(resolver,
-                Settings.System.SCREEN_AUTO_BRIGHTNESS_ADJ, 0.0f);
-        // valid range is -1.0..1.0, but we clamp the extreme values
-        adjustmentValue = Math.min(Math.max(adjustmentValue, -0.5f), 0.5f);
-        mAdjustment.setProgress((int) ((adjustmentValue + 0.5f) * mAdjustment.getMax()));
-
         mTwilightAdjustment.setChecked(Settings.System.getInt(resolver,
                 Settings.System.AUTO_BRIGHTNESS_TWILIGHT_ADJUSTMENT, 0) != 0);
     }
@@ -127,7 +119,6 @@ public class AutoBrightnessSetup extends AlertActivity implements
             state.putBundle(STATE_CUSTOMIZE_STATE, mCustomizeDialog.onSaveInstanceState());
         }
         state.putInt(STATE_SENSITIVITY, mSensitivity.getSelectedItemPosition());
-        state.putInt(STATE_ADJUSTMENT, mAdjustment.getProgress());
         state.putBoolean(STATE_TWILIGHT, mTwilightAdjustment.isChecked());
     }
 
@@ -140,7 +131,6 @@ public class AutoBrightnessSetup extends AlertActivity implements
             showCustomizeDialog(dialogState);
         }
         mSensitivity.setSelection(state.getInt(STATE_SENSITIVITY));
-        mAdjustment.setProgress(state.getInt(STATE_ADJUSTMENT));
         mTwilightAdjustment.setChecked(state.getBoolean(STATE_TWILIGHT));
     }
 
@@ -160,11 +150,6 @@ public class AutoBrightnessSetup extends AlertActivity implements
             Settings.System.putFloat(resolver,
                     Settings.System.AUTO_BRIGHTNESS_RESPONSIVENESS, sensitivity);
         }
-
-        float adjustmentValue =
-                ((float) mAdjustment.getProgress() / (float) mAdjustment.getMax()) - 0.5f;
-        Settings.System.putFloat(resolver,
-                Settings.System.SCREEN_AUTO_BRIGHTNESS_ADJ, adjustmentValue);
 
         Settings.System.putInt(resolver,
                 Settings.System.AUTO_BRIGHTNESS_TWILIGHT_ADJUSTMENT,
