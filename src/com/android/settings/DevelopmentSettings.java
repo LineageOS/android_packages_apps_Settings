@@ -48,6 +48,7 @@ import android.os.ServiceManager;
 import android.os.StrictMode;
 import android.os.SystemProperties;
 import android.os.UserHandle;
+import android.hardware.usb.UsbManager;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -161,6 +162,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private IWindowManager mWindowManager;
     private IBackupManager mBackupManager;
     private DevicePolicyManager mDpm;
+    private UsbManager mUsbManager;
 
     private Switch mEnabledSwitch;
     private boolean mLastEnabledState;
@@ -236,6 +238,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mBackupManager = IBackupManager.Stub.asInterface(
                 ServiceManager.getService(Context.BACKUP_SERVICE));
         mDpm = (DevicePolicyManager)getActivity().getSystemService(Context.DEVICE_POLICY_SERVICE);
+        mUsbManager = (UsbManager)getActivity().getSystemService(Context.USB_SERVICE);
 
         if (android.os.Process.myUserHandle().getIdentifier() != UserHandle.USER_OWNER) {
             mUnavailable = true;
@@ -362,6 +365,11 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         CheckBoxPreference pref = (CheckBoxPreference) findPreference(key);
         if (pref == null) {
             throw new IllegalArgumentException("Cannot find preference with key = " + key);
+        }
+        if (key == ENABLE_ADB &&
+                UsbManager.USB_FUNCTION_CHARGING.equals(mUsbManager.getDefaultFunction())) {
+            pref.setSummary(getResources().getString(R.string.enable_adb_summary_charging));
+            disableForUser(pref);
         }
         mAllPrefs.add(pref);
         mResetCbPrefs.add(pref);
