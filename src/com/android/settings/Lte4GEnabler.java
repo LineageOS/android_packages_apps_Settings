@@ -40,9 +40,9 @@ import android.telephony.MSimTelephonyManager;
 import android.provider.Settings.SettingNotFoundException;
 import android.util.Log;
 import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.Switch;
 import android.view.View;
-import android.view.View.OnClickListener;
 
 import com.android.internal.telephony.MSimConstants;
 import com.android.internal.telephony.Phone;
@@ -68,11 +68,11 @@ public class Lte4GEnabler {
 
     public void resume() {
         setSwitchStatus();
-        mSwitch.setOnClickListener(mLte4GEnabledListener);
+        mSwitch.setOnCheckedChangeListener(mLte4GEnabledListener);
     }
 
     public void pause() {
-        mSwitch.setOnClickListener(null);
+        mSwitch.setOnCheckedChangeListener(null);
     }
 
     public void destroy() {
@@ -85,10 +85,9 @@ public class Lte4GEnabler {
     public void setSwitch(Switch switch_) {
         if (mSwitch == switch_)
             return;
-        mSwitch.setOnCheckedChangeListener(null);
         mSwitch = switch_;
         setSwitchStatus();
-        mSwitch.setOnClickListener(mLte4GEnabledListener);
+        mSwitch.setOnCheckedChangeListener(mLte4GEnabledListener);
     }
 
     // Adjust the switch component's availability
@@ -155,10 +154,11 @@ public class Lte4GEnabler {
                 networkType, msg);
     }
 
-    private OnClickListener mLte4GEnabledListener = new OnClickListener() {
+    private OnCheckedChangeListener mLte4GEnabledListener = new OnCheckedChangeListener() {
         @Override
-        public void onClick(View v) {
-            //Only prompt user when enable 4G
+        public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
+            // TODO Auto-generated method stub
+          //Only prompt user when enable 4G
             if (mSwitch.isChecked()){
                 promptUser();
             } else {
