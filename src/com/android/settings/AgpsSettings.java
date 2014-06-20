@@ -379,10 +379,16 @@ public class AgpsSettings extends PreferenceActivity
         if (null != supl_host && supl_host.length() > 0) {
             Settings.Global.putString(mContentResolver, ASSISTED_GPS_SUPL_HOST,
                     supl_host);
+        } else {
+            Settings.Global.putString(mContentResolver, ASSISTED_GPS_SUPL_HOST,
+                    getResources().getString(R.string.location_agps_def_supl_host));
         }
         if (null != supl_port) {
             Settings.Global.putString(mContentResolver, ASSISTED_GPS_SUPL_PORT,
                     supl_port);
+        } else {
+            Settings.Global.putString(mContentResolver, ASSISTED_GPS_SUPL_PORT,
+                    getResources().getString(R.string.location_agps_def_supl_port));
         }
         if (null != agps_provid && agps_provid.length() > 0) {
             Settings.Global.putString(mContentResolver, ASSISTED_GPS_POSITION_MODE,
