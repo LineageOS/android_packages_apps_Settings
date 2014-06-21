@@ -79,7 +79,7 @@
   <string name="profile_volumeoverrides_title">Volume instellen</string>
   <string name="connection_state_disabled">Uitgeschakeld</string>
   <string name="connection_state_enabled">Ingeschakeld</string>
-  <string name="volume_override_summary">Ingesteld op</string>
+  <string name="volume_override_summary">Ingesteld op %1$s/%2$s</string>
   <string name="profile_profiles_manage">Profielen</string>
   <string name="profile_profile_manage">Profiel beheren</string>
   <string name="profile_appgroups_manage">App-groepen</string>
@@ -191,9 +191,7 @@
   <string name="lockpattern_settings_enable_error_path_title">Patroonfout weergeven</string>
   <string name="lockpattern_settings_enable_dots_title">Patroonknoppen weergeven</string>
   <string name="screen_security_category">Schermbeveiliging</string>
-  <string name="screen_security_title">Schermvergrendeling</string>
-  <string name="screen_security_summary">Schermvergrendelingsbeveiliging en -vertragingen beheren</string>
-  <string name="additional_options_title">Extra opties</string>
+  <string name="screen_security_summary">Schermvergrendelingsbeveiliging beheren</string>
   <string name="unlock_menu_unlock_title">Menu-ontgrendeling</string>
   <string name="unlock_menu_unlock_summary">Ontgrendelen door op de menuknop te drukken</string>
   <string name="unlock_home_unlock_title">Thuis-ontgrendeling</string>
@@ -203,20 +201,6 @@
   <string name="unlock_quick_unlock_control_title">Snel ontgrendelen</string>
   <string name="unlock_quick_unlock_control_summary">Automatisch ontgrendelen als uw pincode/wachtwoord correct is ingevoerd</string>
   <string name="unlock_buttons_disabled_by_security">Vergrendelingsscherm is beveiligd</string>
-  <string name="delay_and_timeout_title">Vergrendelingsvertraging</string>
-  <string name="slide_lock_delay_title">Vertraging schermvergrendeling</string>
-  <string name="slide_lock_timeout_delay_title">Vertraging na time-out</string>
-  <string name="slide_lock_screenoff_delay_title">Vertraging na uitschakelen</string>
-  <string name="slide_lock_delay_none">Geen</string>
-  <string name="slide_lock_delay_1s">1 seconde</string>
-  <string name="slide_lock_delay_5s">5 seconden</string>
-  <string name="slide_lock_delay_10s">10 seconden</string>
-  <string name="slide_lock_delay_15s">15 seconden</string>
-  <string name="slide_lock_delay_30s">30 seconden</string>
-  <string name="slide_lock_delay_1m">1 minuut</string>
-  <string name="slide_lock_delay_5m">5 minuten</string>
-  <string name="slide_lock_delay_10m">10 minuten</string>
-  <string name="slide_lock_delay_30m">30 minuten</string>
   <string name="lockscreen_widgets_category_title">Widgets</string>
   <string name="lockscreen_maximize_widgets_title">Widgets maximaliseren</string>
   <string name="lockscreen_maximize_widgets_summary">Widgets maximaliseren bij scherm aanzetten</string>
@@ -290,7 +274,6 @@
   <string name="tiles_reset_title">Opnieuw instellen</string>
   <string name="tiles_reset_message">Tegels herstellen naar standaardwaarden?</string>
   <string name="auto_brightness_setup_title">Automatische helderheid</string>
-  <string name="auto_brightness_adjustment_title">Helderheid aanpassen</string>
   <string name="auto_brightness_twilight_adjustment">Aanpassen aan zonsopgang en zonsondergang</string>
   <string name="light_sensor_current_value">Huidige lichtsensorwaarde: <xliff:g id="light_level">%d</xliff:g> lux</string>
   <string name="auto_brightness_dialog_title">Autom. helderheidsstanden</string>
@@ -364,8 +347,7 @@ Extra opties zijn beschikbaar door een regel lang aan te raken. Door \'Aanpassen
   <string name="quiet_hours_dim_summary">Meldingsled uitschakelen</string>
   <string name="quiet_hours_haptic">Haptische feedback</string>
   <string name="quiet_hours_haptic_summary">Haptische feedback uitschakelen</string>
-  <string name="quiet_hours_active_from">Actief van</string>
-  <string name="quiet_hours_active_to">tot</string>
+  <string name="quiet_hours_active_period">Actief van <xliff:g id="start">%1$s</xliff:g> tot <xliff:g id="end">%2$s</xliff:g></string>
   <string name="quiet_hours_ringer_allow_all">Beltoon bij alle oproepen</string>
   <string name="quiet_hours_ringer_allow_contacts">Beltoon bij oproepen van contacten</string>
   <string name="quiet_hours_ringer_allow_starred">Beltoon bij oproepen van favoriete contacten</string>
@@ -494,13 +476,8 @@ Extra opties zijn beschikbaar door een regel lang aan te raken. Door \'Aanpassen
   <string name="gamma_tuning_contrast">Contrast</string>
   <string name="gamma_tuning_brightness">Helderheid</string>
   <string name="gamma_tuning_saturation">Verzadiging</string>
-  <string name="headset_category_title">Headset</string>
   <string name="headset_connect_player_title">Muziek-app openen</string>
   <string name="headset_connect_player_summary">Standaardmuziek-app openen bij aansluiten headset</string>
-  <string name="more_device_controls_title">Meer\u2026</string>
-  <string name="more_device_settings_title">Andere apparaatinstellingen</string>
-  <string name="sensors_motors_title">Sensoren &amp; motoren</string>
-  <string name="display_calibration_title">Schermkalibratie</string>
   <string name="adb_notify">USB-foutopsporingsmodus melden</string>
   <string name="adb_notify_summary">Melding tonen indien USB-foutopsporingmodus is ingeschakeld</string>
   <string name="adb_over_network">ADB over netwerk</string>
@@ -614,7 +591,7 @@ Extra opties zijn beschikbaar door een regel lang aan te raken. Door \'Aanpassen
   <string name="navring_action_torch">Zaklamp aan/uit</string>
   <string name="navring_action_google_now">Google Now</string>
   <string name="navring_choose_action_title">Actie selecteren</string>
-  <string name="power_menu_title">Aan/uit-knop</string>
+  <string name="power_menu_title">Opties in menu</string>
   <string name="power_menu_reboot_title">Herstarten</string>
   <string name="power_menu_screenshot_title">Screenshot</string>
   <string name="power_menu_expanded_desktop">Uitgebreid bureaublad</string>
@@ -698,7 +675,6 @@ Extra opties zijn beschikbaar door een regel lang aan te raken. Door \'Aanpassen
   <string name="status_bar_signal_style_text">Tekst</string>
   <string name="status_bar_toggle_brightness">Helderheid beheren</string>
   <string name="status_bar_toggle_brightness_summary">Helderheid aanpassen door over de statusbalk te slepen</string>
-  <string name="status_bar_toggle_info">Automatische helderheid ingeschakeld</string>
   <string name="status_bar_notif_count_title">Aantal meldingen tonen</string>
   <string name="status_bar_notif_count_summary">Aantal nieuwe meldingen tonen</string>
   <string name="status_bar_double_tap_to_sleep_title">Dubbeltikken voor slaapstand</string>
@@ -735,6 +711,7 @@ Extra opties zijn beschikbaar door een regel lang aan te raken. Door \'Aanpassen
   <string name="gestures_down_spen_title_head">Sleep omlaag</string>
   <string name="gestures_long_spen_title_head">Lang aanraken</string>
   <string name="gestures_double_spen_title_head">Dubbeltik</string>
+  <string name="gestures_settings_header_title">Gebaren</string>
   <string name="gestures_action_empty">Geen actie</string>
   <string name="gestures_action_home">Thuis</string>
   <string name="gestures_action_back">Terug</string>
@@ -880,4 +857,8 @@ Extra opties zijn beschikbaar door een regel lang aan te raken. Door \'Aanpassen
   <string name="autoperf_title">Profielen per app</string>
   <string name="autoperf_summary">Automatisch een passend prestatieprofiel kiezen voor verschillende toepassingen</string>
   <string name="graphics_title">Grafisch en weergave</string>
+  <string name="menu_hidden_apps_delete">Opnieuw instellen</string>
+  <string name="menu_hidden_apps_reset_lock">Patroon opnieuw instellen</string>
+  <string name="protected_apps">Beschermde apps</string>
+  <string name="saving_protected_components">Opslaan\u2026</string>
 </resources>

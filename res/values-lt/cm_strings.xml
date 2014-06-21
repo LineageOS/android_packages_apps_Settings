@@ -79,7 +79,7 @@
   <string name="profile_volumeoverrides_title">Profilio garsumas</string>
   <string name="connection_state_disabled">Išjungti</string>
   <string name="connection_state_enabled">Įjungti</string>
-  <string name="volume_override_summary">Nustatyti</string>
+  <string name="volume_override_summary">Nustatyti %1$s/%2$s</string>
   <string name="profile_profiles_manage">Profiliai</string>
   <string name="profile_profile_manage">Valdyti profilius</string>
   <string name="profile_appgroups_manage">Programų grupės</string>
@@ -191,9 +191,7 @@
   <string name="lockpattern_settings_enable_error_path_title">Rodyti modelio klaidą</string>
   <string name="lockpattern_settings_enable_dots_title">Rodyti modelio taškus</string>
   <string name="screen_security_category">Ekano sauga</string>
-  <string name="screen_security_title">Ekrano užraktas</string>
-  <string name="screen_security_summary">Žiūrėti arba keisti ekrano užrakto saugumą, atidėjimo ir delsimo parametrus</string>
-  <string name="additional_options_title">Papildomos parinktys</string>
+  <string name="screen_security_summary">Žiūrėti arba keisti ekrano užrakto saugumo nustatymus</string>
   <string name="unlock_menu_unlock_title">Atrakinti su meniu mygtuku</string>
   <string name="unlock_menu_unlock_summary">Paspaudus meniu mygtuką prietaisas atsirakins</string>
   <string name="unlock_home_unlock_title">Atrakinti su pagrindiniu mygtuku</string>
@@ -203,20 +201,6 @@
   <string name="unlock_quick_unlock_control_title">Greitas atrakinimas</string>
   <string name="unlock_quick_unlock_control_summary">Atrakinti automatiškai, kai suvedamas teisingas PIN / slaptažodis</string>
   <string name="unlock_buttons_disabled_by_security">Ekrano užraktas saugus</string>
-  <string name="delay_and_timeout_title">Užrakto delsimas</string>
-  <string name="slide_lock_delay_title">Delsti ekrano užraktą</string>
-  <string name="slide_lock_timeout_delay_title">Delsti</string>
-  <string name="slide_lock_screenoff_delay_title">Delsti užgesus ekranui</string>
-  <string name="slide_lock_delay_none">Nedelsti</string>
-  <string name="slide_lock_delay_1s">1 sek.</string>
-  <string name="slide_lock_delay_5s">5 sek.</string>
-  <string name="slide_lock_delay_10s">10 sek.</string>
-  <string name="slide_lock_delay_15s">15 sek.</string>
-  <string name="slide_lock_delay_30s">30 sek.</string>
-  <string name="slide_lock_delay_1m">1 min.</string>
-  <string name="slide_lock_delay_5m">5 min.</string>
-  <string name="slide_lock_delay_10m">10 min.</string>
-  <string name="slide_lock_delay_30m">30 min.</string>
   <string name="lockscreen_widgets_category_title">Valdikliai</string>
   <string name="lockscreen_maximize_widgets_title">Padidinti valdiklius</string>
   <string name="lockscreen_maximize_widgets_summary">Padidinti valdiklius, kai ekranas yra įjungiamas</string>
@@ -290,7 +274,6 @@
   <string name="tiles_reset_title">Atkurti</string>
   <string name="tiles_reset_message">Atkurti plyteles ir išdėstymą?</string>
   <string name="auto_brightness_setup_title">Automatinis ryškumas</string>
-  <string name="auto_brightness_adjustment_title">Ryškumo prisitaikymas</string>
   <string name="auto_brightness_twilight_adjustment">Prisitaikyti prie saulėtekio / saulėlydžio</string>
   <string name="light_sensor_current_value">Esamo šviesos jutiklio vertė: <xliff:g id="light_level">%d</xliff:g> lux</string>
   <string name="auto_brightness_dialog_title">Automatinio ryškumo lygiai</string>
@@ -378,8 +361,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="quiet_hours_dim_summary">Išjungti pranešimo šviesą</string>
   <string name="quiet_hours_haptic">Liečiamasis atsiliepimas</string>
   <string name="quiet_hours_haptic_summary">Išjungti liečiamąjį atsiliepimą</string>
-  <string name="quiet_hours_active_from">Aktyvus nuo</string>
-  <string name="quiet_hours_active_to">iki</string>
+  <string name="quiet_hours_active_period">Aktyvus nuo <xliff:g id="start">%1$s</xliff:g> iki <xliff:g id="end">%2$s</xliff:g></string>
   <string name="quiet_hours_ringer_allow_all">Skambėti visiems skambintojams</string>
   <string name="quiet_hours_ringer_allow_contacts">Skambėti visiems kontaktams</string>
   <string name="quiet_hours_ringer_allow_starred">Skambėti mėgstamiems kontaktams</string>
@@ -508,13 +490,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="gamma_tuning_contrast">Kontrastas</string>
   <string name="gamma_tuning_brightness">Ryškumas</string>
   <string name="gamma_tuning_saturation">Saturacija</string>
-  <string name="headset_category_title">Laisvų rankų įranga</string>
   <string name="headset_connect_player_title">Įjungti muzikos programą</string>
   <string name="headset_connect_player_summary">Įjungti numatytąją muzikos programą, kai prijungiama laisvų rankų įranga</string>
-  <string name="more_device_controls_title">Daugiau\u2026</string>
-  <string name="more_device_settings_title">Kitos įrenginio parinktys</string>
-  <string name="sensors_motors_title">Jutikliai ir varikliai</string>
-  <string name="display_calibration_title">Ekrano kalibravimas</string>
   <string name="adb_notify">USB derinimo pranešimas</string>
   <string name="adb_notify_summary">Rodyti pranešimą veikiant USB derinimui</string>
   <string name="adb_over_network">USB derinimas per tinklą</string>
@@ -712,7 +689,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="status_bar_signal_style_text">Tekstas</string>
   <string name="status_bar_toggle_brightness">Šviesumo valdymas</string>
   <string name="status_bar_toggle_brightness_summary">Nustatyti ryškumą braukiant per būsenos juostą</string>
-  <string name="status_bar_toggle_info">Automatinis ryškumas įjungtas</string>
   <string name="status_bar_notif_count_title">Rodyti pranešimų skaičių</string>
   <string name="status_bar_notif_count_summary">Rodyti neperžiūrėtų pranešimų skaičių</string>
   <string name="status_bar_double_tap_to_sleep_title">Dukart bakstelėti norint užmigdyti</string>
@@ -749,6 +725,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="gestures_down_spen_title_head">Braukiant į apačią</string>
   <string name="gestures_long_spen_title_head">Ilgas paspaudimas</string>
   <string name="gestures_double_spen_title_head">Dvigubas paspaudimas</string>
+  <string name="gestures_settings_header_title">Gestai</string>
   <string name="gestures_action_empty">Jokio veiksmo</string>
   <string name="gestures_action_home">Pagrindinis</string>
   <string name="gestures_action_back">Atgal</string>
@@ -894,4 +871,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="autoperf_title">Įjungti individualius programų profilius</string>
   <string name="autoperf_summary">Automatiškai parinkti tinkamą našumo profilį įvairioms programoms</string>
   <string name="graphics_title">Grafika ir atvaizdavimas</string>
+  <string name="menu_hidden_apps_delete">Atkurti</string>
+  <string name="menu_hidden_apps_reset_lock">Atkurti modelio užraktą</string>
+  <string name="protected_apps">Apsaugotos programos</string>
+  <string name="saving_protected_components">Išsaugoma komponentų būklė\u2026</string>
 </resources>

@@ -79,7 +79,7 @@
   <string name="profile_volumeoverrides_title">හඬ පරිමා අතික්‍රමණ</string>
   <string name="connection_state_disabled">අබලයි</string>
   <string name="connection_state_enabled">සබලයි</string>
-  <string name="volume_override_summary">සකසා ඇත්තේ</string>
+  <string name="volume_override_summary">%1$s/%2$s පිහිටුවන්න</string>
   <string name="profile_profiles_manage">පැතිකඩයන්</string>
   <string name="profile_profile_manage">පැතිකඩ කලමනාකරණය</string>
   <string name="profile_appgroups_manage">යෙදුම් කාණ්ඩ</string>
@@ -191,9 +191,7 @@
   <string name="lockpattern_settings_enable_error_path_title">රටාවේ දෝෂය පෙන්වන්න</string>
   <string name="lockpattern_settings_enable_dots_title">රටාවේ තිත් පෙන්වන්න</string>
   <string name="screen_security_category">තිරයේ ආරක්ෂාව</string>
-  <string name="screen_security_title">අගුළු තිරය</string>
-  <string name="screen_security_summary">අගුළු තිර ආරක්ෂාවේ, ප්‍රමාදයේ සහ කල්ඉකුත් වීමේ සැකසීම් බැලීම හෝ වෙනස් කිරීම</string>
-  <string name="additional_options_title">අමතර විකල්ප</string>
+  <string name="screen_security_summary">අගුළු තිර ආරක්ෂාවේ සැකසීම් බැලීම හෝ වෙනස් කිරීම</string>
   <string name="unlock_menu_unlock_title">මෙනුවෙන් අගුළු ඇරීම</string>
   <string name="unlock_menu_unlock_summary">මෙනුව බොත්තම එබූ විට උපාංගය අගුළු ඇරේ</string>
   <string name="unlock_home_unlock_title">නිවසින් අගුළු ඇරීම</string>
@@ -203,20 +201,6 @@
   <string name="unlock_quick_unlock_control_title">ඉක්මන් අගුළු ඇරීම</string>
   <string name="unlock_quick_unlock_control_summary">නිවැරදි PIN හෝ මුරපදය ඇතුලත් කලවිට ස්වයංක්‍රීයව අගුළු අරින්න</string>
   <string name="unlock_buttons_disabled_by_security">අගුළු තිරය සුරක්ෂිතයි</string>
-  <string name="delay_and_timeout_title">අගුළු වැටීමේ ප්‍රමාදය</string>
-  <string name="slide_lock_delay_title">තිරය අගුළු වැටීමේ ප්‍රමාදය</string>
-  <string name="slide_lock_timeout_delay_title">කල්ඉකුත්වූ පසු ප්‍රමාදය</string>
-  <string name="slide_lock_screenoff_delay_title">වැසුණු පසු ප්‍රමාදය</string>
-  <string name="slide_lock_delay_none">කිසිවක් නැත</string>
-  <string name="slide_lock_delay_1s">තත්පර 1</string>
-  <string name="slide_lock_delay_5s">තත්පර 5</string>
-  <string name="slide_lock_delay_10s">තත්පර 10</string>
-  <string name="slide_lock_delay_15s">තත්පර 15</string>
-  <string name="slide_lock_delay_30s">තත්පර 30</string>
-  <string name="slide_lock_delay_1m">මිනිත්තු 1</string>
-  <string name="slide_lock_delay_5m">මිනිත්තු 5</string>
-  <string name="slide_lock_delay_10m">මිනිත්තු 10</string>
-  <string name="slide_lock_delay_30m">මිනිත්තු 30</string>
   <string name="lockscreen_widgets_category_title">විජටයන්</string>
   <string name="lockscreen_maximize_widgets_title">විජට විහිදන්න</string>
   <string name="lockscreen_maximize_widgets_summary">තිරය ඇහැරුනුවිට විජට විහිදන්න</string>
@@ -231,11 +215,16 @@
   <string name="tile_choose_title">උළු කැටයක් තෝරන්න</string>
   <string name="title_qs_small_icons">කුඩා උළු පෙන්වන්න</string>
   <string name="summary_qs_small_icons">තීරු ගණන වැඩි කරගැනීමට කුඩා උළු භාවිතාකරන්න</string>
+  <string name="category_heads_up">හිස් එසවීම</string>
+  <string name="title_heads_up_enabled">හිස් එසවීම සබල කරන්න</string>
+  <string name="add_heads_up_dnd_package">යෙදුම \'කරදර කරන්න එපා\' වෙත එක් කරන්න</string>
+  <string name="heads_up_dnd_title">කරදර කරන්න එපා</string>
   <string name="title_tile_airplane">අහස්යානා ප්‍රකාරය</string>
   <string name="title_tile_battery">බැටරි තත්වය</string>
   <string name="title_tile_bluetooth">බ්ලූටූත්</string>
   <string name="title_tile_brightness">දීප්තිය</string>
   <string name="title_tile_camera">කැමරාව</string>
+  <string name="title_tile_compass">කොම්පාසුව</string>
   <string name="title_tile_sleep">නින්දට යන්න</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">පන්දම</string>
@@ -289,7 +278,6 @@
   <string name="tiles_reset_title">යලි පිහිටුවන්න</string>
   <string name="tiles_reset_message">පෙරනිමි සංදර්ශිත උළු සහ සැලැස්ම පිළිනගන්නද?</string>
   <string name="auto_brightness_setup_title">ස්වයංක්‍රීය දීප්තිය</string>
-  <string name="auto_brightness_adjustment_title">දීප්තිය සීරුමාරු කිරීම</string>
   <string name="auto_brightness_twilight_adjustment">හිරුඋදාවට සහ හිරුබැසීමට සීරුමාරු කරන්න</string>
   <string name="light_sensor_current_value">පවත්නා ආලෝක සංවේදකයේ අගය: <xliff:g id="light_level">%d</xliff:g> lux</string>
   <string name="auto_brightness_dialog_title">ස්වයංක්‍රීය දීප්තියේ මට්ටම්</string>
@@ -364,8 +352,7 @@
   <string name="quiet_hours_dim_summary">දැනුම්දීමේ එලිය අබල කරන්න</string>
   <string name="quiet_hours_haptic">ස්පර්ශක කම්පන ප්‍රතිචාර</string>
   <string name="quiet_hours_haptic_summary">ස්පර්ශක කම්පන ප්‍රතිචාර අබල කරන්න</string>
-  <string name="quiet_hours_active_from">සක්‍රීයවීමේ ඇරඹුම:</string>
-  <string name="quiet_hours_active_to">අවසානය:</string>
+  <string name="quiet_hours_active_period"><xliff:g id="start">%1$s</xliff:g> සිට <xliff:g id="end">%2$s</xliff:g> දක්වා සක්‍රීයයි</string>
   <string name="quiet_hours_ringer_allow_all">සියලු අමතන්නන් සඳහා නාදකරන්න</string>
   <string name="quiet_hours_ringer_allow_contacts">සියලු සම්බන්ධතා සඳහා නාදකරන්න</string>
   <string name="quiet_hours_ringer_allow_starred">ප්‍රියතම සම්බන්ධතා සඳහා නාදකරන්න</string>
@@ -494,13 +481,8 @@
   <string name="gamma_tuning_contrast">විලක්ෂණය</string>
   <string name="gamma_tuning_brightness">දීප්තිය</string>
   <string name="gamma_tuning_saturation">සන්තෘප්තිය</string>
-  <string name="headset_category_title">කන්යොමුව</string>
   <string name="headset_connect_player_title">සංගීත යෙදුම දියත් කරන්න</string>
   <string name="headset_connect_player_summary">කන්යොමුව සම්බන්ධ කලවිට පෙරනිමි සංගීත යෙදුම දියත් කරන්න</string>
-  <string name="more_device_controls_title">තව\u2026</string>
-  <string name="more_device_settings_title">උපාංගයේ වෙනත් විකල්ප</string>
-  <string name="sensors_motors_title">සංවේදක සහ චාලකයන්</string>
-  <string name="display_calibration_title">සංදර්ශක ප්‍රමාණ ශෝධනය</string>
   <string name="adb_notify">USB නිදොස්කරණය දැනුම්දෙන්න</string>
   <string name="adb_notify_summary">USB නිදොස්කරණය සම්බන්ධවී ඇතිවිට දැනුම්දීමක් පෙන්වන්න</string>
   <string name="adb_over_network">ජාලය හරහා ADB</string>
@@ -629,6 +611,7 @@
   <string name="power_menu_user_title">පරිශීලක මාරු කරනය</string>
   <string name="power_menu_sound_title">ශබ්ද පනේලය</string>
   <string name="button_settings">බොත්තම්</string>
+  <string name="hardware_keys_power_key_title">බල බොත්තම</string>
   <string name="hardware_keys_home_key_title">නිවස බොත්තම</string>
   <string name="hardware_keys_menu_key_title">මෙනුව බොත්තම</string>
   <string name="hardware_keys_assist_key_title">සොයන්න බොත්තම</string>
@@ -645,8 +628,12 @@
   <string name="hardware_keys_action_voice_search">කටහඬ සෙවීම</string>
   <string name="hardware_keys_action_in_app_search">යෙදුම තුල සෙවීම</string>
   <string name="hardware_keys_action_launch_camera">කැමරාව දියත් කරන්න</string>
+  <string name="power_end_call_title">ඇමතුම අවසන් කරන්න</string>
+  <string name="power_end_call_summary">බල බොත්තම එබීමෙන් පවත්නා ඇමතුම අවසන් වනු ඇත</string>
   <string name="button_wake_title">ඇහැරවන්න</string>
   <string name="home_wake_summary">නිවස බොත්තම එබූ විට ඔබගේ උපාංගය ඇහැරේ</string>
+  <string name="home_answer_call_title">ඇමතුමට පිළිතුරු දෙන්න</string>
+  <string name="home_answer_call_summary">නිවස බොත්තම එබීමෙන් පවත්නා පැමිණෙන ඇමතුමට පිළිතුරු දෙනු ඇත</string>
   <string name="camera_wake_summary">කැමරාව බොත්තම එබූ විට ඔබගේ උපාංගය ඇහැරේ</string>
   <string name="camera_sleep_on_release_title">තිරය හොරෙන් බැලීම</string>
   <string name="camera_sleep_on_release_summary">ඔබ බොත්තම බාගෙට ඔබාගෙන සිටින විට පමණක් තිරය ඇහැරී තිබෙනු ඇත</string>
@@ -693,7 +680,7 @@
   <string name="status_bar_signal_style_text">පෙළ</string>
   <string name="status_bar_toggle_brightness">දීප්තිය පාලනය</string>
   <string name="status_bar_toggle_brightness_summary">තත්ව තීරුව හරහා රූටනය මගින් දීප්තිය සීරුමාරු කරන්න</string>
-  <string name="status_bar_toggle_info">ස්වයංක්‍රීය දීප්තිය සබලය</string>
+  <string name="status_bar_toggle_info">ස්වයංක්‍රීය දීප්තිය සබල විට ලද නොහැකිය</string>
   <string name="status_bar_notif_count_title">දැනුම්දීම් ගණන පෙන්වන්න</string>
   <string name="status_bar_notif_count_summary">අතීරිත දැනුම්දීම් ගණන පෙන්වන්න</string>
   <string name="status_bar_double_tap_to_sleep_title">දෙවරක් තට්ටුකර නිදිකරවන්න</string>
@@ -730,6 +717,7 @@
   <string name="gestures_down_spen_title_head">පහළට ඇතිල්ලීම</string>
   <string name="gestures_long_spen_title_head">දිගු එබීම</string>
   <string name="gestures_double_spen_title_head">දෙවරක් තට්ටු කරන්න</string>
+  <string name="gestures_settings_header_title">අභිනයන්</string>
   <string name="gestures_action_empty">ක්‍රියාවක් නැත</string>
   <string name="gestures_action_home">නිවස</string>
   <string name="gestures_action_back">ආපසු</string>
@@ -875,4 +863,8 @@
   <string name="autoperf_title">යෙදුම් පැතිකඩ සබල කරන්න</string>
   <string name="autoperf_summary">විවිධ යෙදුම් සඳහා ඔබින ක්‍රියාකාරී පැතිකඩ ස්වයංක්‍රීයව තෝරන්න</string>
   <string name="graphics_title">චිත්‍රක සහ විදැහුම</string>
+  <string name="menu_hidden_apps_delete">යලි පිහිටුවන්න</string>
+  <string name="menu_hidden_apps_reset_lock">රටාව අගුල යළි පිහිටුවන්න</string>
+  <string name="protected_apps">ආරක්ෂිත යෙදුම්</string>
+  <string name="saving_protected_components">සංරචකයේ තත්වය සුරකිමින්\u2026</string>
 </resources>

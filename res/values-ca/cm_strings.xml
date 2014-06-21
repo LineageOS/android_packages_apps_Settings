@@ -79,7 +79,7 @@
   <string name="profile_volumeoverrides_title">Substitueix Volum</string>
   <string name="connection_state_disabled">Desactiva</string>
   <string name="connection_state_enabled">Activa</string>
-  <string name="volume_override_summary">Estableix a</string>
+  <string name="volume_override_summary">Estableix a %1$s/%2$s</string>
   <string name="profile_profiles_manage">Perfils</string>
   <string name="profile_profile_manage">Gestiona un perfil</string>
   <string name="profile_appgroups_manage">Grups d\'aplicacions</string>
@@ -191,9 +191,7 @@
   <string name="lockpattern_settings_enable_error_path_title">Mostra el patró erroni</string>
   <string name="lockpattern_settings_enable_dots_title">Mostra els punts del patró</string>
   <string name="screen_security_category">Seguretat de la pantalla</string>
-  <string name="screen_security_title">Bloqueig de pantalla</string>
-  <string name="screen_security_summary">Mostra o canvia la seguretat del bloqueig de pantalla, ajustos de retard i temps d\'espera</string>
-  <string name="additional_options_title">Opcions addicionals</string>
+  <string name="screen_security_summary">Mostra o canvia els ajustaments de seguretat de la pantalla de bloqueig</string>
   <string name="unlock_menu_unlock_title">Desbloqueig amb menú</string>
   <string name="unlock_menu_unlock_summary">Apretant el botó menú desbloqueja el dispositiu</string>
   <string name="unlock_home_unlock_title">Desbloqueig amb inici</string>
@@ -203,20 +201,6 @@
   <string name="unlock_quick_unlock_control_title">Desbloqueig ràpid</string>
   <string name="unlock_quick_unlock_control_summary">Desbloqueja automàticament quan s\'introdueixi el PIN/contrasenya correcta</string>
   <string name="unlock_buttons_disabled_by_security">La pantalla de bloqueig és segura</string>
-  <string name="delay_and_timeout_title">Retard del bloqueig</string>
-  <string name="slide_lock_delay_title">Retard del bloqueig de pantalla</string>
-  <string name="slide_lock_timeout_delay_title">Retard després del temps d\'espera</string>
-  <string name="slide_lock_screenoff_delay_title">Retard després d\'apagar-se</string>
-  <string name="slide_lock_delay_none">Cap</string>
-  <string name="slide_lock_delay_1s">1 segon</string>
-  <string name="slide_lock_delay_5s">5 segons</string>
-  <string name="slide_lock_delay_10s">10 segons</string>
-  <string name="slide_lock_delay_15s">15 segons</string>
-  <string name="slide_lock_delay_30s">30 segons</string>
-  <string name="slide_lock_delay_1m">1 minut</string>
-  <string name="slide_lock_delay_5m">5 minuts</string>
-  <string name="slide_lock_delay_10m">10 minuts</string>
-  <string name="slide_lock_delay_30m">30 minuts</string>
   <string name="lockscreen_widgets_category_title">Widgets</string>
   <string name="lockscreen_maximize_widgets_title">Maximitza els widgets</string>
   <string name="lockscreen_maximize_widgets_summary">Mostra els widgets maximitzats i el desbloqueig minimitzat quan s\'encengui la pantalla</string>
@@ -290,7 +274,6 @@
   <string name="tiles_reset_title">Reinicia</string>
   <string name="tiles_reset_message">Vols restaurar als valors predeterminats les cel·les mostres i la seva disposició?</string>
   <string name="auto_brightness_setup_title">Brillantor automàtica</string>
-  <string name="auto_brightness_adjustment_title">Ajust de la brillantor</string>
   <string name="auto_brightness_twilight_adjustment">Ajusta a l\'alba i a la posta de sol</string>
   <string name="light_sensor_current_value">Valor actual del sensor de llum: <xliff:g id="light_level">%d</xliff:g> lux</string>
   <string name="auto_brightness_dialog_title">Nivells de brillantor automàtics</string>
@@ -366,8 +349,7 @@ Hi ha disponibles opcions addicionals apretant llargament sobre la línia. Selec
   <string name="quiet_hours_dim_summary">Desactiva la llum de notificació</string>
   <string name="quiet_hours_haptic">Resposta hàptica</string>
   <string name="quiet_hours_haptic_summary">Desactiva la resposta hàptica</string>
-  <string name="quiet_hours_active_from">Actiu des de</string>
-  <string name="quiet_hours_active_to">fins</string>
+  <string name="quiet_hours_active_period">Actiu desde les <xliff:g id="start">%1$s</xliff:g> fins a les <xliff:g id="end">%2$s</xliff:g></string>
   <string name="quiet_hours_ringer_allow_all">To per a totes les trucades</string>
   <string name="quiet_hours_ringer_allow_contacts">To per tots els contactes</string>
   <string name="quiet_hours_ringer_allow_starred">To pels contactes preferits</string>
@@ -496,13 +478,8 @@ Hi ha disponibles opcions addicionals apretant llargament sobre la línia. Selec
   <string name="gamma_tuning_contrast">Contrast</string>
   <string name="gamma_tuning_brightness">Brillantor</string>
   <string name="gamma_tuning_saturation">Saturació</string>
-  <string name="headset_category_title">Auriculars</string>
   <string name="headset_connect_player_title">Llança app de la música</string>
   <string name="headset_connect_player_summary">Llança l\'app de música predeterminada quan es connecten els auriculars</string>
-  <string name="more_device_controls_title">Més\u2026</string>
-  <string name="more_device_settings_title">Opcions d\'altres dispositius</string>
-  <string name="sensors_motors_title">Sensors i motors</string>
-  <string name="display_calibration_title">Calibració de pantalla</string>
   <string name="adb_notify">Notificació de depuració USB</string>
   <string name="adb_notify_summary">Mostra una notificació quan la depuració USB estigui connectada</string>
   <string name="adb_over_network">ADB sobre la xarxa</string>
@@ -700,7 +677,6 @@ Hi ha disponibles opcions addicionals apretant llargament sobre la línia. Selec
   <string name="status_bar_signal_style_text">Text</string>
   <string name="status_bar_toggle_brightness">Control de brillantor</string>
   <string name="status_bar_toggle_brightness_summary">Ajusta la brillantor lliscant a través de la barra d\'estat</string>
-  <string name="status_bar_toggle_info">La brillantor automàtica està activada</string>
   <string name="status_bar_notif_count_title">Mostra comptador de notificacions</string>
   <string name="status_bar_notif_count_summary">Mostra el nombre de notificacions pendents</string>
   <string name="status_bar_double_tap_to_sleep_title">Pica dues vegades posar en repòs</string>
@@ -737,6 +713,7 @@ Hi ha disponibles opcions addicionals apretant llargament sobre la línia. Selec
   <string name="gestures_down_spen_title_head">Deslliça avall</string>
   <string name="gestures_long_spen_title_head">Pulsació llarga</string>
   <string name="gestures_double_spen_title_head">Doble pulsació</string>
+  <string name="gestures_settings_header_title">Gestos</string>
   <string name="gestures_action_empty">Cap acció</string>
   <string name="gestures_action_home">Inici</string>
   <string name="gestures_action_back">Torna</string>
@@ -882,4 +859,8 @@ Hi ha disponibles opcions addicionals apretant llargament sobre la línia. Selec
   <string name="autoperf_title">Habilita els perfils per-aplicació</string>
   <string name="autoperf_summary">Escull automàticament un perfil de rendiment adequat per cada aplicació</string>
   <string name="graphics_title">Gràfics i renderitzat</string>
+  <string name="menu_hidden_apps_delete">Reinicia</string>
+  <string name="menu_hidden_apps_reset_lock">Reinicia el patró de bloqueig</string>
+  <string name="protected_apps">Apps protegides</string>
+  <string name="saving_protected_components">Desant l\'estat del component\u2026</string>
 </resources>

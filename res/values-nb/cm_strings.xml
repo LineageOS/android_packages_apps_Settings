@@ -21,6 +21,8 @@
   <string name="wifi_setting_countrycode_error">Det oppstod et problem med å sette området.</string>
   <string name="wifi_setting_priority_title">Wi-Fi prioritet</string>
   <string name="wifi_setting_priority_summary">Angi wifinettverk prioritet</string>
+  <string name="wifi_ssid_input_limit">SSID overskrider maksimumslengden</string>
+  <string name="p2p_device_name_input_limit">P2P navnet overskrider maksimal lengde</string>
   <string name="change_crypt_password_title">Endre passord</string>
   <string name="change_crypt_password_summary">Endre passordet for Enhetskryptering</string>
   <string name="encryptionpassword_choose_your_password_header">Angi krypteringspassord</string>
@@ -77,7 +79,7 @@
   <string name="profile_volumeoverrides_title">Overstyr volum</string>
   <string name="connection_state_disabled">Deaktiver</string>
   <string name="connection_state_enabled">Aktiver</string>
-  <string name="volume_override_summary">Sett til</string>
+  <string name="volume_override_summary">Sett til %1$s/%2$s</string>
   <string name="profile_profiles_manage">Profiler</string>
   <string name="profile_profile_manage">Behandle profil</string>
   <string name="profile_appgroups_manage">App grupper</string>
@@ -189,9 +191,6 @@
   <string name="lockpattern_settings_enable_error_path_title">Vis feil</string>
   <string name="lockpattern_settings_enable_dots_title">Vis mønster prikker</string>
   <string name="screen_security_category">Skjermsikkerhet</string>
-  <string name="screen_security_title">Låseskjerm</string>
-  <string name="screen_security_summary">Vise eller endre låseskjermsikkerhet, forsinkelse og tidsavbrudd innstillinger</string>
-  <string name="additional_options_title">Flere alternativer</string>
   <string name="unlock_menu_unlock_title">Meny opplåsning</string>
   <string name="unlock_menu_unlock_summary">Trykk på menyknappen låser opp enheten</string>
   <string name="unlock_home_unlock_title">Hjemknapp opplåsning</string>
@@ -201,20 +200,6 @@
   <string name="unlock_quick_unlock_control_title">Hurtig opplåsning</string>
   <string name="unlock_quick_unlock_control_summary">Låse opp automatisk når det angis riktig PIN/passord</string>
   <string name="unlock_buttons_disabled_by_security">Låseskjermen er sikker</string>
-  <string name="delay_and_timeout_title">Låse forsinkelse</string>
-  <string name="slide_lock_delay_title">Forsink skjermlås</string>
-  <string name="slide_lock_timeout_delay_title">Forsinkelse etter tidsavbrudd</string>
-  <string name="slide_lock_screenoff_delay_title">Forsinkelse fra skjerm avskrudd</string>
-  <string name="slide_lock_delay_none">Ingen</string>
-  <string name="slide_lock_delay_1s">1 sekund</string>
-  <string name="slide_lock_delay_5s">5 sekunder</string>
-  <string name="slide_lock_delay_10s">10 sekunder</string>
-  <string name="slide_lock_delay_15s">15 sekunder</string>
-  <string name="slide_lock_delay_30s">30 sekunder</string>
-  <string name="slide_lock_delay_1m">1 minutt</string>
-  <string name="slide_lock_delay_5m">5 minutter</string>
-  <string name="slide_lock_delay_10m">10 minutter</string>
-  <string name="slide_lock_delay_30m">30 minutter</string>
   <string name="lockscreen_widgets_category_title">Widgets</string>
   <string name="lockscreen_maximize_widgets_title">Maksimere widgets</string>
   <string name="lockscreen_maximize_widgets_summary">Utvide widgets når skjermen er aktivert</string>
@@ -234,6 +219,7 @@
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Lysstyrke</string>
   <string name="title_tile_camera">Kamera</string>
+  <string name="title_tile_compass">Kompass</string>
   <string name="title_tile_sleep">Standby</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Lommelykt</string>
@@ -287,7 +273,6 @@
   <string name="tiles_reset_title">Tilbakestill</string>
   <string name="tiles_reset_message">Gjenopprette standard viste fliser og oppsett?</string>
   <string name="auto_brightness_setup_title">Automatisk lysstyrke</string>
-  <string name="auto_brightness_adjustment_title">Justering av lysstyrke</string>
   <string name="auto_brightness_twilight_adjustment">Justere til soloppgang og solnedgang</string>
   <string name="light_sensor_current_value">Gjeldende lyssensor verdi: <xliff:g id="light_level">%d</xliff:g> lux</string>
   <string name="auto_brightness_dialog_title">Automatiske lysstyrkenivåer</string>
@@ -353,8 +338,7 @@
   <string name="quiet_hours_dim_summary">Deaktivere notifikasjonslys</string>
   <string name="quiet_hours_haptic">Haptisk tilbakemelding</string>
   <string name="quiet_hours_haptic_summary">Deaktiver haptisk tilbakemelding</string>
-  <string name="quiet_hours_active_from">Aktiv fra</string>
-  <string name="quiet_hours_active_to">til</string>
+  <string name="quiet_hours_active_period">Aktiv fra<xliff:g id="start"> %1$s </xliff:g> til <xliff:g id="end"> %2$s </xliff:g></string>
   <string name="quiet_hours_ringer_allow_all">Ring for alle oppringere</string>
   <string name="quiet_hours_ringer_allow_contacts">Ring for alle kontakter</string>
   <string name="quiet_hours_ringer_allow_starred">Ring for Favorittkontakter</string>
@@ -483,13 +467,8 @@
   <string name="gamma_tuning_contrast">Kontrast</string>
   <string name="gamma_tuning_brightness">Lysstyrke</string>
   <string name="gamma_tuning_saturation">Metning</string>
-  <string name="headset_category_title">Hodetelefon</string>
   <string name="headset_connect_player_title">Start musikk-app</string>
   <string name="headset_connect_player_summary">Starte standard musikk-app når hodetelefonen er tilkoblet</string>
-  <string name="more_device_controls_title">Mer\u2026</string>
-  <string name="more_device_settings_title">Andre enhetsalternativer</string>
-  <string name="sensors_motors_title">Sensorer &amp; motorer</string>
-  <string name="display_calibration_title">Skjermkalibrering</string>
   <string name="adb_notify">Varsle om USB feilretting</string>
   <string name="adb_notify_summary">Vis en melding når USB feilretting er tilkoblet</string>
   <string name="adb_over_network">ADB over nettverk</string>
@@ -618,6 +597,7 @@
   <string name="power_menu_user_title">Brukerbytte</string>
   <string name="power_menu_sound_title">Lyd-panel</string>
   <string name="button_settings">Knapper</string>
+  <string name="hardware_keys_power_key_title">Strømknappen</string>
   <string name="hardware_keys_home_key_title">Hjem-knapp</string>
   <string name="hardware_keys_menu_key_title">Meny-knapp</string>
   <string name="hardware_keys_assist_key_title">Søkeknapp</string>
@@ -634,8 +614,12 @@
   <string name="hardware_keys_action_voice_search">Talesøk</string>
   <string name="hardware_keys_action_in_app_search">I-app søk</string>
   <string name="hardware_keys_action_launch_camera">Start kameraet</string>
+  <string name="power_end_call_title">Avslutt samtale</string>
+  <string name="power_end_call_summary">Ved å trykke på strømknappen så vil samtalen avsluttes</string>
   <string name="button_wake_title">Våkne</string>
   <string name="home_wake_summary">Trykk på Hjem-knappen vil vekke enheten</string>
+  <string name="home_answer_call_title">Besvar anrop</string>
+  <string name="home_answer_call_summary">Trykk på Hjem-knappen vil svare innkommende anrop</string>
   <string name="camera_wake_summary">Trykk kamera-knappen vil vekke enheten</string>
   <string name="camera_sleep_on_release_title">Skjermtitt</string>
   <string name="camera_sleep_on_release_summary">Et halvt trykk vil holde skjermen på bare mens knappen holdes nede</string>
@@ -682,7 +666,6 @@
   <string name="status_bar_signal_style_text">Tekst</string>
   <string name="status_bar_toggle_brightness">Lysstyrkekontroll</string>
   <string name="status_bar_toggle_brightness_summary">Justere lysstyrken ved å skyve over på statuslinjen</string>
-  <string name="status_bar_toggle_info">Automatisk lysstyrke er aktivert</string>
   <string name="status_bar_notif_count_title">Vis antall varslinger</string>
   <string name="status_bar_notif_count_summary">Vise antall ventende notifikasjoner</string>
   <string name="status_bar_double_tap_to_sleep_title">Dobbeltapp for å sove</string>
@@ -694,6 +677,8 @@
   <string name="storage_rescan_media_complete">Skanning fullført</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Administrere sikre SMS-innstillinger</string>
+  <string name="logger_title">Anonym krasj logging</string>
+  <string name="logger_summary">Administrere krasj loggingsinnstillinger</string>
   <string name="custom_runtime_warning_title">Advarsel</string>
   <string name="custom_runtime_warning_message">ART er ikke offisielt støttet av CyanogenMod, siden det er høyt eksperimentelt og har potensial til å forårsake ustabilitet, krasj, tap av data eller forhindre riktig oppstart av enheten. Besøk &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; for mer informasjon.&lt;br/&gt;&lt;br/&gt;Vi ber om at du ikke sender BUG-rapporter når du har ART aktivert som din runtime.&lt;br/&gt;&lt;br/&gt;Er du sikker på at du vil restarte og endre runtime fra <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> til <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
   <string name="gps_download_data_wifi_only">Laste ned GPS assistert data bare over WiFi-nettverk</string>
@@ -862,4 +847,8 @@
   <string name="autoperf_title">Aktiver per-app profiler</string>
   <string name="autoperf_summary">Velg automatisk en riktig ytelsesprofil for forskjellige applikasjoner</string>
   <string name="graphics_title">Grafikk og gjengivelse</string>
+  <string name="menu_hidden_apps_delete">Tilbakestille</string>
+  <string name="menu_hidden_apps_reset_lock">Tilbakestille mønster lås</string>
+  <string name="protected_apps">Beskyttede apps</string>
+  <string name="saving_protected_components">Lagre komponent status\u2026</string>
 </resources>

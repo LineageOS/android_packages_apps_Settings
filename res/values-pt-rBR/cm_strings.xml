@@ -79,7 +79,7 @@
   <string name="profile_volumeoverrides_title">Substituição de volume</string>
   <string name="connection_state_disabled">Desabilitar</string>
   <string name="connection_state_enabled">Habilitar</string>
-  <string name="volume_override_summary">Definir para</string>
+  <string name="volume_override_summary">Definir para %1$s/%2$s</string>
   <string name="profile_profiles_manage">Perfis</string>
   <string name="profile_profile_manage">Gerenciar perfil</string>
   <string name="profile_appgroups_manage">Grupos de aplicações</string>
@@ -191,9 +191,7 @@
   <string name="lockpattern_settings_enable_error_path_title">Exibir erro no padrão</string>
   <string name="lockpattern_settings_enable_dots_title">Exibir pontos no padrão</string>
   <string name="screen_security_category">Segurança de tela</string>
-  <string name="screen_security_title">Tela de bloqueio</string>
-  <string name="screen_security_summary">Ver ou alterar a segurança da tela de bloqueio, atraso e tempo limite</string>
-  <string name="additional_options_title">Opções adicionais</string>
+  <string name="screen_security_summary">Exibir ou alterar as configurações de segurança da tela de bloqueio</string>
   <string name="unlock_menu_unlock_title">Desbloquear com Menu</string>
   <string name="unlock_menu_unlock_summary">Pressionar o botão Menu desbloqueia o dispositivo</string>
   <string name="unlock_home_unlock_title">Destravar com home</string>
@@ -203,20 +201,6 @@
   <string name="unlock_quick_unlock_control_title">Desbloqueio rápido</string>
   <string name="unlock_quick_unlock_control_summary">Não é necessário pressionar OK ao digitar PIN ou senha. Apagar conta como erro.</string>
   <string name="unlock_buttons_disabled_by_security">Tela de bloqueio com segurança</string>
-  <string name="delay_and_timeout_title">Atraso de bloqueio</string>
-  <string name="slide_lock_delay_title">Atrasar bloqueio de tela</string>
-  <string name="slide_lock_timeout_delay_title">Atraso do tempo limite de dela</string>
-  <string name="slide_lock_screenoff_delay_title">Atraso da tela desligada</string>
-  <string name="slide_lock_delay_none">Nenhum</string>
-  <string name="slide_lock_delay_1s">1 segundo</string>
-  <string name="slide_lock_delay_5s">5 segundos</string>
-  <string name="slide_lock_delay_10s">10 segundos</string>
-  <string name="slide_lock_delay_15s">15 segundos</string>
-  <string name="slide_lock_delay_30s">30 segundos</string>
-  <string name="slide_lock_delay_1m">1 minuto</string>
-  <string name="slide_lock_delay_5m">5 minutos</string>
-  <string name="slide_lock_delay_10m">10 minutos</string>
-  <string name="slide_lock_delay_30m">30 minutos</string>
   <string name="lockscreen_widgets_category_title">Widgets</string>
   <string name="lockscreen_maximize_widgets_title">Maximizar widgets</string>
   <string name="lockscreen_maximize_widgets_summary">Mostrar widgets maximizados e o destravamento minimizado quando a tela é ligada</string>
@@ -290,7 +274,6 @@
   <string name="tiles_reset_title">Restaurar</string>
   <string name="tiles_reset_message">Restaurar os botões padrões exibidos e o layout?</string>
   <string name="auto_brightness_setup_title">Brilho automático</string>
-  <string name="auto_brightness_adjustment_title">Ajuste de brilho</string>
   <string name="auto_brightness_twilight_adjustment">Ajuste para nascer e pôr do sol</string>
   <string name="light_sensor_current_value">Valor atual do sensor de luz: <xliff:g id="light_level">%d</xliff:g> lux</string>
   <string name="auto_brightness_dialog_title">Níveis automáticos de brilho</string>
@@ -364,8 +347,7 @@ Opções adicionais estão disponíveis ao pressionar continuamente uma linha. A
   <string name="quiet_hours_dim_summary">Desativar luz de notificação</string>
   <string name="quiet_hours_haptic">Retorno tátil</string>
   <string name="quiet_hours_haptic_summary">Desativar retorno tátil</string>
-  <string name="quiet_hours_active_from">Ativo de</string>
-  <string name="quiet_hours_active_to">até</string>
+  <string name="quiet_hours_active_period">Ativo de <xliff:g id="start">%1$s</xliff:g> a <xliff:g id="end">%2$s</xliff:g></string>
   <string name="quiet_hours_ringer_allow_all">Tocar para todas chamadas</string>
   <string name="quiet_hours_ringer_allow_contacts">Tocar para todos contatos</string>
   <string name="quiet_hours_ringer_allow_starred">Tocar para contatos favoritos</string>
@@ -494,13 +476,8 @@ Opções adicionais estão disponíveis ao pressionar continuamente uma linha. A
   <string name="gamma_tuning_contrast">Contraste</string>
   <string name="gamma_tuning_brightness">Brilho</string>
   <string name="gamma_tuning_saturation">Saturação</string>
-  <string name="headset_category_title">Fone de ouvido</string>
   <string name="headset_connect_player_title">Abrir aplicativo de música</string>
   <string name="headset_connect_player_summary">Abrir aplicativo de música padrão quando o fone de ouvido for conectado</string>
-  <string name="more_device_controls_title">Mais\u2026</string>
-  <string name="more_device_settings_title">Outras opções do dispositivo</string>
-  <string name="sensors_motors_title">Sensores &amp; motores</string>
-  <string name="display_calibration_title">Calibragem da tela</string>
   <string name="adb_notify">Notificação de depuração USB</string>
   <string name="adb_notify_summary">Exibe uma notificação quando a depuração USB é conectada</string>
   <string name="adb_over_network">ADB sobre rede</string>
@@ -698,7 +675,6 @@ Opções adicionais estão disponíveis ao pressionar continuamente uma linha. A
   <string name="status_bar_signal_style_text">Texto</string>
   <string name="status_bar_toggle_brightness">Controle de brilho</string>
   <string name="status_bar_toggle_brightness_summary">Permite ajustar o brilho deslizando através da barra de status</string>
-  <string name="status_bar_toggle_info">Brilho automático está habilitado</string>
   <string name="status_bar_notif_count_title">Mostrar contador de notificação</string>
   <string name="status_bar_notif_count_summary">Mostrar o número de notificações pendentes na barra de status</string>
   <string name="status_bar_double_tap_to_sleep_title">Toque duplo para dormir</string>
@@ -735,6 +711,7 @@ Opções adicionais estão disponíveis ao pressionar continuamente uma linha. A
   <string name="gestures_down_spen_title_head">Deslizar p/ baixo</string>
   <string name="gestures_long_spen_title_head">Pressionar longo</string>
   <string name="gestures_double_spen_title_head">Toque duplo</string>
+  <string name="gestures_settings_header_title">Gestos</string>
   <string name="gestures_action_empty">Sem ação</string>
   <string name="gestures_action_home">Home</string>
   <string name="gestures_action_back">Voltar</string>
@@ -880,4 +857,8 @@ Opções adicionais estão disponíveis ao pressionar continuamente uma linha. A
   <string name="autoperf_title">Ativar perfis por aplicativo</string>
   <string name="autoperf_summary">Escolher automaticamente o perfil de performance apropriado para vários aplicativos</string>
   <string name="graphics_title">Gráficos e renderização</string>
+  <string name="menu_hidden_apps_delete">Redefinir</string>
+  <string name="menu_hidden_apps_reset_lock">Redefinir o bloqueio padrão</string>
+  <string name="protected_apps">Aplicativos protegidos</string>
+  <string name="saving_protected_components">Salvando o estado dos componentes\u2026</string>
 </resources>

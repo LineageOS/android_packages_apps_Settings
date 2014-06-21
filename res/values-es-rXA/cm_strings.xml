@@ -21,6 +21,8 @@
   <string name="wifi_setting_countrycode_error">Hebo un fallu al afitar el códigu de rexón</string>
   <string name="wifi_setting_priority_title">Prioridá Wi-Fi</string>
   <string name="wifi_setting_priority_summary">Especificar la prioridá de les redes Wi-Fi</string>
+  <string name="wifi_ssid_input_limit">EL SSID perpasa la llonxitú máxima</string>
+  <string name="p2p_device_name_input_limit">El nome del P2P perpasa la llonxitú máxima</string>
   <string name="change_crypt_password_title">Camudar la contraseña</string>
   <string name="change_crypt_password_summary">Camudar la contraseña usada pal cifráu del preséu</string>
   <string name="encryptionpassword_choose_your_password_header">Afitar la contraseña de cifráu</string>
@@ -77,7 +79,6 @@
   <string name="profile_volumeoverrides_title">Volume</string>
   <string name="connection_state_disabled">Deshabilitáu</string>
   <string name="connection_state_enabled">Habilitáu</string>
-  <string name="volume_override_summary">Afitar a</string>
   <string name="profile_profiles_manage">Perfiles</string>
   <string name="profile_profile_manage">Alministrar perfil</string>
   <string name="profile_appgroups_manage">Grupu d\'aplicaciones</string>
@@ -189,9 +190,6 @@
   <string name="lockpattern_settings_enable_error_path_title">Amosar patrón fallíu</string>
   <string name="lockpattern_settings_enable_dots_title">Amosar puntos de patrón</string>
   <string name="screen_security_category">Seguridá de pantalla</string>
-  <string name="screen_security_title">Bloquéu de pantalla</string>
-  <string name="screen_security_summary">Ver o camudar seguridá del bloquéu de pantalla, retardos y configuración de tiempos d\'espera</string>
-  <string name="additional_options_title">Opciones adicionales</string>
   <string name="unlock_menu_unlock_title">Botón Menú</string>
   <string name="unlock_menu_unlock_summary">Primir el botón Menú desbloquia\'l preséu</string>
   <string name="unlock_home_unlock_title">Botón Aniciu</string>
@@ -201,20 +199,6 @@
   <string name="unlock_quick_unlock_control_title">Desbloquéu rápidu</string>
   <string name="unlock_quick_unlock_control_summary">Desbloquiar automáticamente cuando s\'introduz el PIN/clave correutu</string>
   <string name="unlock_buttons_disabled_by_security">El bloquéu de pantalla ye seguru</string>
-  <string name="delay_and_timeout_title">Retardu y tiempu d\'espera</string>
-  <string name="slide_lock_delay_title">Habilitar retardu</string>
-  <string name="slide_lock_timeout_delay_title">Tiempu d\'espera de pantalla</string>
-  <string name="slide_lock_screenoff_delay_title">Apagáu de pantalla</string>
-  <string name="slide_lock_delay_none">Darréu</string>
-  <string name="slide_lock_delay_1s">1 segundu</string>
-  <string name="slide_lock_delay_5s">5 segundos</string>
-  <string name="slide_lock_delay_10s">10 segundos</string>
-  <string name="slide_lock_delay_15s">15 segundos</string>
-  <string name="slide_lock_delay_30s">30 segundos</string>
-  <string name="slide_lock_delay_1m">1 minutu</string>
-  <string name="slide_lock_delay_5m">5 minutos</string>
-  <string name="slide_lock_delay_10m">10 minutos</string>
-  <string name="slide_lock_delay_30m">30 minutos</string>
   <string name="lockscreen_widgets_category_title">Widgets</string>
   <string name="lockscreen_maximize_widgets_title">Maximizar widgets</string>
   <string name="lockscreen_maximize_widgets_summary">Espander los widgets al prender la pantalla</string>
@@ -234,6 +218,7 @@
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Brillu</string>
   <string name="title_tile_camera">Cámara</string>
+  <string name="title_tile_compass">Brúxula</string>
   <string name="title_tile_sleep">Bloquiar</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Llinterna</string>
@@ -287,7 +272,6 @@
   <string name="tiles_reset_title">Restablecer</string>
   <string name="tiles_reset_message">¿Restablecer los controles y la disposición?</string>
   <string name="auto_brightness_setup_title">Brillu automáticu</string>
-  <string name="auto_brightness_adjustment_title">Axustar brillu</string>
   <string name="auto_brightness_twilight_adjustment">Axustar a la salida y aséu del sol</string>
   <string name="light_sensor_current_value">Valor actual del sensor: <xliff:g id="light_level">%d</xliff:g> lux</string>
   <string name="auto_brightness_dialog_title">Niveles automáticos de brillu</string>
@@ -362,8 +346,6 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="quiet_hours_dim_summary">Desactiva la lluz de notificación</string>
   <string name="quiet_hours_haptic">Rempuesta háptica</string>
   <string name="quiet_hours_haptic_summary">Desactiva la rempuesta háptica</string>
-  <string name="quiet_hours_active_from">Activu de</string>
-  <string name="quiet_hours_active_to">a</string>
   <string name="quiet_hours_ringer_allow_all">Sonar pa toles llamaes</string>
   <string name="quiet_hours_ringer_allow_contacts">Sonar pa tolos contautos</string>
   <string name="quiet_hours_ringer_allow_starred">Sonar pa tolos favoritos</string>
@@ -492,13 +474,8 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="gamma_tuning_contrast">Contraste</string>
   <string name="gamma_tuning_brightness">Brillu</string>
   <string name="gamma_tuning_saturation">Saturación</string>
-  <string name="headset_category_title">Auriculares</string>
   <string name="headset_connect_player_title">Aniciar reproductor</string>
   <string name="headset_connect_player_summary">Aniciar el reproductor de música por defeutu al coneutar los auriculares</string>
-  <string name="more_device_controls_title">Más\u2026</string>
-  <string name="more_device_settings_title">Otros axustes del preséu</string>
-  <string name="sensors_motors_title">Sensores y vibración</string>
-  <string name="display_calibration_title">Calibración de pantalla</string>
   <string name="adb_notify">Notificar depuración USB</string>
   <string name="adb_notify_summary">Amosar una notificación cuando\'l mou de depuración USB tea coneutáu</string>
   <string name="adb_over_network">ADB sobre rede</string>
@@ -627,6 +604,7 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="power_menu_user_title">Camudar d\'usuariu</string>
   <string name="power_menu_sound_title">Panel de soníu</string>
   <string name="button_settings">Botones</string>
+  <string name="hardware_keys_power_key_title">Botón d\'apagáu</string>
   <string name="hardware_keys_home_key_title">Botón Aniciu</string>
   <string name="hardware_keys_menu_key_title">Botón Menú</string>
   <string name="hardware_keys_assist_key_title">Botón Gueta</string>
@@ -643,8 +621,12 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="hardware_keys_action_voice_search">Gueta por voz</string>
   <string name="hardware_keys_action_in_app_search">Gueta dientro de l\'aplicación</string>
   <string name="hardware_keys_action_launch_camera">Aniciar Cámara</string>
+  <string name="power_end_call_title">Finar llamada</string>
+  <string name="power_end_call_summary">Calcando\'l botón d\'apagáu, va finar la llamada en cursu</string>
   <string name="button_wake_title">Esconsoñar</string>
   <string name="home_wake_summary">Calcando\'l botón Aniciu, el preséu va salir del mou n\'espera</string>
+  <string name="home_answer_call_title">Contestar la llamada</string>
+  <string name="home_answer_call_summary">Calcando\'l botón d\'aniciu contéstase a la llamada entrante</string>
   <string name="camera_wake_summary">Calcando\'l botón Cámara, el preséu va salir del mou n\'espera</string>
   <string name="camera_sleep_on_release_title">Vista rápida</string>
   <string name="camera_sleep_on_release_summary">Una llixera pulsación del botón Cámara, va dexar la pantalla encesa hasta qu\'esti se llibere</string>
@@ -691,7 +673,6 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="status_bar_signal_style_text">Testu</string>
   <string name="status_bar_toggle_brightness">Axuste de brillu</string>
   <string name="status_bar_toggle_brightness_summary">Permitir axustar la lluminosidá de la pantalla eslizando\'l deu pela barra d\'estáu</string>
-  <string name="status_bar_toggle_info">El brillu automáticu ta activáu</string>
   <string name="status_bar_notif_count_title">Amosar contador notificaciones</string>
   <string name="status_bar_notif_count_summary">Amosar el númberu de notificaciones pendientes na barra d\'estáu</string>
   <string name="status_bar_double_tap_to_sleep_title">Doble toque pa bloquiar</string>
@@ -703,6 +684,8 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="storage_rescan_media_complete">Refrescu completáu</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Xestiona la configuración de seguridá de los SMS</string>
+  <string name="logger_title">Rexistru de fallos anónimu</string>
+  <string name="logger_summary">Xestionar los axustes del rexistru de fallos</string>
   <string name="custom_runtime_warning_title">Avisu</string>
   <string name="custom_runtime_warning_message">ART nun ta sofitáu oficialmente por CyanogenMod. Esti axuste incluyóse namái pa fines d\'esperimentación y pue causar inestabilidá, bloqueos, perda de datos ya inclusu torgar el correutu aniciu del preséu. Pa más información visita &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Nun unvies ficheros d\'informes de fallos si habilitesti ART.&lt;br/&gt;&lt;br/&gt;¿De xuru que quies reaniciar pa camudar el tiempu d\'execución de <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> a <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
   <string name="gps_download_data_wifi_only">Descargar datos del GPS asistíu namái en redes Wi-Fi</string>

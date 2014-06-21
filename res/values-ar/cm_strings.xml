@@ -79,7 +79,7 @@
   <string name="profile_volumeoverrides_title">تجاوز الصوت</string>
   <string name="connection_state_disabled">تعطيل</string>
   <string name="connection_state_enabled">تمكين</string>
-  <string name="volume_override_summary">تعيين إلى</string>
+  <string name="volume_override_summary">تعيين الى %1$s/%2$s</string>
   <string name="profile_profiles_manage">ملفات شخصية</string>
   <string name="profile_profile_manage">إدارة الملف الشخصي</string>
   <string name="profile_appgroups_manage">مجموعات التطبيق</string>
@@ -191,9 +191,7 @@
   <string name="lockpattern_settings_enable_error_path_title">إظهار خطأ النمط</string>
   <string name="lockpattern_settings_enable_dots_title">إظهار نقاط النمط</string>
   <string name="screen_security_category">أمن الشاشة</string>
-  <string name="screen_security_title">شاشة القفل</string>
-  <string name="screen_security_summary">عرض أو تغيير إعدادات الأمان،و تأخير مهلة الشاشة قفل</string>
-  <string name="additional_options_title">خيارات إضافية</string>
+  <string name="screen_security_summary">عرض أو تغيير إعدادات الأمان في شاشة القفل</string>
   <string name="unlock_menu_unlock_title">قائمة لفتح القفل</string>
   <string name="unlock_menu_unlock_summary">الضغط على زر القائمة يفتح الجهاز</string>
   <string name="unlock_home_unlock_title">المنزل يفتح القفل</string>
@@ -203,20 +201,6 @@
   <string name="unlock_quick_unlock_control_title">فتح سريع</string>
   <string name="unlock_quick_unlock_control_summary">فتح تلقائياً عندما يتم إدخال PIN/كلمة السر صحيحة</string>
   <string name="unlock_buttons_disabled_by_security">قفل الشاشة آمين</string>
-  <string name="delay_and_timeout_title">قفل متأخى</string>
-  <string name="slide_lock_delay_title">تأخير قفل الشاشة</string>
-  <string name="slide_lock_timeout_delay_title">تأخير بعد مهلة</string>
-  <string name="slide_lock_screenoff_delay_title">تأخير بعد إيقاف تشغيل</string>
-  <string name="slide_lock_delay_none">لا شيء</string>
-  <string name="slide_lock_delay_1s">الثانية 1</string>
-  <string name="slide_lock_delay_5s">5 ثوان</string>
-  <string name="slide_lock_delay_10s">10 ثوان</string>
-  <string name="slide_lock_delay_15s">15 ثوان</string>
-  <string name="slide_lock_delay_30s">30 ثانية</string>
-  <string name="slide_lock_delay_1m">1 دقيقة</string>
-  <string name="slide_lock_delay_5m">5 دقائق</string>
-  <string name="slide_lock_delay_10m">10 دقائق</string>
-  <string name="slide_lock_delay_30m">30دقيقه</string>
   <string name="lockscreen_widgets_category_title">تطبيقات مصغّرة</string>
   <string name="lockscreen_maximize_widgets_title">أقصى قدر من التطبيقات المصغرة</string>
   <string name="lockscreen_maximize_widgets_summary">توسيع النطبيفات المصغرة عند تشغيل الشاشة</string>
@@ -290,7 +274,6 @@
   <string name="tiles_reset_title">إعادة تعيين</string>
   <string name="tiles_reset_message">استعادة الافتراضي لي عرض البلاط وتخطيط؟</string>
   <string name="auto_brightness_setup_title">السطوع التلقائي</string>
-  <string name="auto_brightness_adjustment_title">ضبط السطوع</string>
   <string name="auto_brightness_twilight_adjustment">ضبط لشروق الشمس وغروب الشمس</string>
   <string name="light_sensor_current_value">القيمة الحاليةلي مستشعر الضوء: <xliff:g id="light_level">%d</xliff:g>لكس(وحدة الإضائه)</string>
   <string name="auto_brightness_dialog_title">مستويات السطوع التلقائي</string>
@@ -356,8 +339,7 @@
   <string name="quiet_hours_dim_summary">تعطيل ضوء الإعلام</string>
   <string name="quiet_hours_haptic">مردود فعل لمسي</string>
   <string name="quiet_hours_haptic_summary">تعطيل مردود فعل لمسي</string>
-  <string name="quiet_hours_active_from">نشط من</string>
-  <string name="quiet_hours_active_to">إلى</string>
+  <string name="quiet_hours_active_period">نشط من <xliff:g id="start">%1$s</xliff:g> الى <xliff:g id="end">%2$s</xliff:g></string>
   <string name="quiet_hours_ringer_allow_all">نغمة لجميع المتصلين</string>
   <string name="quiet_hours_ringer_allow_contacts">نغمة لكافة جهات الاتصال</string>
   <string name="quiet_hours_ringer_allow_starred">نغمة لجهات الاتصال المفضلة</string>
@@ -488,13 +470,8 @@
   <string name="gamma_tuning_contrast">التباين</string>
   <string name="gamma_tuning_brightness">السطوع</string>
   <string name="gamma_tuning_saturation">التشبع</string>
-  <string name="headset_category_title">سماعات الأذن</string>
   <string name="headset_connect_player_title">بدء تشغيل في تطبيق الموسيقى</string>
   <string name="headset_connect_player_summary">بدء تطبيق الموسيقى الافتراضي عندما يتم توصيل سماعات الرأس</string>
-  <string name="more_device_controls_title">المزيد\u2026</string>
-  <string name="more_device_settings_title">خيارات أخرى في الجهاز</string>
-  <string name="sensors_motors_title">أجهزة الاستشعار &amp; المحركات</string>
-  <string name="display_calibration_title">معايرة العرض</string>
   <string name="adb_notify">إعلام تصحيح الأخطاء USB</string>
   <string name="adb_notify_summary">عرض في الإعلام عند تصحيح أخطاء USB متصل</string>
   <string name="adb_over_network">ADB عبر الشبكة</string>
@@ -692,7 +669,6 @@
   <string name="status_bar_signal_style_text">نص</string>
   <string name="status_bar_toggle_brightness">التحكم بالسطوع</string>
   <string name="status_bar_toggle_brightness_summary">ضبط السطوع عن طريق الانزلاق عبر شريط الحالة</string>
-  <string name="status_bar_toggle_info">يتم تمكين السطوع التلقائي</string>
   <string name="status_bar_notif_count_title">إظهار عدد الإشعار</string>
   <string name="status_bar_notif_count_summary">عرض عدد الإعلامات المعلقة</string>
   <string name="status_bar_double_tap_to_sleep_title">الضغط المزدوج النوم</string>
@@ -731,6 +707,7 @@ href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing A
   <string name="gestures_down_spen_title_head">مرر لأسفل</string>
   <string name="gestures_long_spen_title_head">الضغط لمدة طويلة</string>
   <string name="gestures_double_spen_title_head">أنقر نقرتين متتالية</string>
+  <string name="gestures_settings_header_title">الإيماءات</string>
   <string name="gestures_action_empty">لا إجراء</string>
   <string name="gestures_action_home">الصفحة الرئيسية</string>
   <string name="gestures_action_back">رجوع</string>
@@ -876,4 +853,8 @@ href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing A
   <string name="autoperf_title">تمكين لكل تطبيق (per-app) ملف تعريف</string>
   <string name="autoperf_summary">اختيار ملف تعريف لأداء مناسب لمختلف التطبيقات تلقائياً</string>
   <string name="graphics_title">الرسومات والأداء</string>
+  <string name="menu_hidden_apps_delete">إعادة تعيين</string>
+  <string name="menu_hidden_apps_reset_lock">إعادة تعيين نمط القفل</string>
+  <string name="protected_apps">التطبيقات المحمية</string>
+  <string name="saving_protected_components">حفظ حالة العنصر\u2026</string>
 </resources>

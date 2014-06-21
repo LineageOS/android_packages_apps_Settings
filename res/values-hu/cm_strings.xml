@@ -79,7 +79,7 @@
   <string name="profile_volumeoverrides_title">Hangok felülbírálása</string>
   <string name="connection_state_disabled">Letiltva</string>
   <string name="connection_state_enabled">Engedélyezve</string>
-  <string name="volume_override_summary">Beállítva</string>
+  <string name="volume_override_summary">%1$s/%2$s beállítva</string>
   <string name="profile_profiles_manage">Profilok</string>
   <string name="profile_profile_manage">Profilok kezelése</string>
   <string name="profile_appgroups_manage">Alkalmazáscsoportok</string>
@@ -191,9 +191,7 @@
   <string name="lockpattern_settings_enable_error_path_title">Hibás minta megjelenítése</string>
   <string name="lockpattern_settings_enable_dots_title">Feloldási pontok megjelenítése</string>
   <string name="screen_security_category">Képernyővédelem</string>
-  <string name="screen_security_title">Képernyőzár</string>
-  <string name="screen_security_summary">Képernyőzár beállítások, biztonság, késleltetés</string>
-  <string name="additional_options_title">További lehetőségek</string>
+  <string name="screen_security_summary">Zárképernyő biztonságának megtekintése vagy módosítása</string>
   <string name="unlock_menu_unlock_title">Menü gomb feloldás</string>
   <string name="unlock_menu_unlock_summary">Készülék feloldása a menü gomb megnyomásával</string>
   <string name="unlock_home_unlock_title">Kezdő gomb feloldás</string>
@@ -203,20 +201,6 @@
   <string name="unlock_quick_unlock_control_title">Gyors feloldás</string>
   <string name="unlock_quick_unlock_control_summary">Automatikus feloldás a helyes jelszó/PIN kód beütése után</string>
   <string name="unlock_buttons_disabled_by_security">Védett a képernyőzár</string>
-  <string name="delay_and_timeout_title">Képernyőzár késleltetés</string>
-  <string name="slide_lock_delay_title">Képernyőzár késleltetése</string>
-  <string name="slide_lock_timeout_delay_title">Késleltetés bekapcsolt kijelzőnél</string>
-  <string name="slide_lock_screenoff_delay_title">Késleltetés kikapcsolt kijelzőnél</string>
-  <string name="slide_lock_delay_none">Nincs</string>
-  <string name="slide_lock_delay_1s">1 másodperc</string>
-  <string name="slide_lock_delay_5s">5 másodperc</string>
-  <string name="slide_lock_delay_10s">10 másodperc</string>
-  <string name="slide_lock_delay_15s">15 másodperc</string>
-  <string name="slide_lock_delay_30s">30 másodperc</string>
-  <string name="slide_lock_delay_1m">1 perc</string>
-  <string name="slide_lock_delay_5m">5 perc</string>
-  <string name="slide_lock_delay_10m">10 perc</string>
-  <string name="slide_lock_delay_30m">30 perc</string>
   <string name="lockscreen_widgets_category_title">Modulok</string>
   <string name="lockscreen_maximize_widgets_title">Teljes méretű modulok</string>
   <string name="lockscreen_maximize_widgets_summary">Modulok megjelenése maximális méretben a kijelző bekapcsolásakor</string>
@@ -290,7 +274,6 @@
   <string name="tiles_reset_title">Visszaállítás</string>
   <string name="tiles_reset_message">Biztosan vissza kívánja állítani alaphelyzetbe a csempék beállításait?</string>
   <string name="auto_brightness_setup_title">Automatikus fényerő</string>
-  <string name="auto_brightness_adjustment_title">Fényerő beállítások</string>
   <string name="auto_brightness_twilight_adjustment">Napkelte és napnyugta használata</string>
   <string name="light_sensor_current_value">Fényérzékelő jelenlegi értéke: <xliff:g id="light_level">%d</xliff:g> lux</string>
   <string name="auto_brightness_dialog_title">Automatikus fényerő</string>
@@ -375,8 +358,7 @@ Az \"Eltávolítás\" törli a kiválasztott sort.</string>
   <string name="quiet_hours_dim_summary">Értesítési fények letiltása</string>
   <string name="quiet_hours_haptic">Érintési visszajelzés</string>
   <string name="quiet_hours_haptic_summary">Érintési visszajelzés letiltása</string>
-  <string name="quiet_hours_active_from">Bekapcsolva ettől</string>
-  <string name="quiet_hours_active_to">eddig</string>
+  <string name="quiet_hours_active_period">Aktív innentől: <xliff:g id="start">%1$s</xliff:g> idáig: <xliff:g id="end">%2$s</xliff:g></string>
   <string name="quiet_hours_ringer_allow_all">Összes hívás</string>
   <string name="quiet_hours_ringer_allow_contacts">Csak kapcsolatok</string>
   <string name="quiet_hours_ringer_allow_starred">Csak kedvencek</string>
@@ -505,13 +487,8 @@ Az \"Eltávolítás\" törli a kiválasztott sort.</string>
   <string name="gamma_tuning_contrast">Kontraszt</string>
   <string name="gamma_tuning_brightness">Fényerő</string>
   <string name="gamma_tuning_saturation">Telítettség</string>
-  <string name="headset_category_title">Fejhallgató</string>
   <string name="headset_connect_player_title">Zenelejátszó indítása csatlakoztatáskor</string>
   <string name="headset_connect_player_summary">Alapértelmezett zenelejátszó elindítása fülhallgató csatlakoztatásakor</string>
-  <string name="more_device_controls_title">Továbbiak\u2026</string>
-  <string name="more_device_settings_title">További eszköz beállítások</string>
-  <string name="sensors_motors_title">Szenzorok &amp; motorok</string>
-  <string name="display_calibration_title">Kijelző kalibrálása</string>
   <string name="adb_notify">USB hibakeresés értesítései</string>
   <string name="adb_notify_summary">Értesítések megjelenítése USB hibakereső módban való csatlakozáskor</string>
   <string name="adb_over_network">ADB hálózaton keresztül</string>
@@ -709,7 +686,6 @@ Az \"Eltávolítás\" törli a kiválasztott sort.</string>
   <string name="status_bar_signal_style_text">Szöveg</string>
   <string name="status_bar_toggle_brightness">Fényerő vezérlés</string>
   <string name="status_bar_toggle_brightness_summary">Engedélyezi az értesítési sávon a fényerő változtatását ujjának csúsztatásával</string>
-  <string name="status_bar_toggle_info">Automatikus fényerő engedélyezve</string>
   <string name="status_bar_notif_count_title">Értesítések száma</string>
   <string name="status_bar_notif_count_summary">Folyamatban lévő értesítések számának megjelenítése az értesítési sávon</string>
   <string name="status_bar_double_tap_to_sleep_title">Dupla érintésre alvó mód</string>
@@ -746,6 +722,7 @@ Az \"Eltávolítás\" törli a kiválasztott sort.</string>
   <string name="gestures_down_spen_title_head">Lefelé húzás</string>
   <string name="gestures_long_spen_title_head">Hosszan nyomvatartás</string>
   <string name="gestures_double_spen_title_head">Dupla érintés</string>
+  <string name="gestures_settings_header_title">Kézmozdulatok</string>
   <string name="gestures_action_empty">Nincs esemény</string>
   <string name="gestures_action_home">Kezdő gomb emuláció</string>
   <string name="gestures_action_back">Vissza gomb emuláció</string>
@@ -891,4 +868,8 @@ Az \"Eltávolítás\" törli a kiválasztott sort.</string>
   <string name="autoperf_title">Automatikus profilválasztás engedélyezése</string>
   <string name="autoperf_summary">Automatikus teljesítményprofil választás a különböző alkalmazások számára</string>
   <string name="graphics_title">Grafika és renderelés</string>
+  <string name="menu_hidden_apps_delete">Visszaállítás</string>
+  <string name="menu_hidden_apps_reset_lock">Minta visszaállítása</string>
+  <string name="protected_apps">Védett alkalmazások</string>
+  <string name="saving_protected_components">Összetevő állapotának mentése\u2026</string>
 </resources>

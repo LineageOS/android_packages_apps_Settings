@@ -79,7 +79,7 @@
   <string name="profile_volumeoverrides_title">Substituições de volume</string>
   <string name="connection_state_disabled">Desativar</string>
   <string name="connection_state_enabled">Ativar</string>
-  <string name="volume_override_summary">Definir para</string>
+  <string name="volume_override_summary">Definir para %1$s/%2$s</string>
   <string name="profile_profiles_manage">Perfis</string>
   <string name="profile_profile_manage">Gerir perfil</string>
   <string name="profile_appgroups_manage">Grupos de aplicações</string>
@@ -191,9 +191,7 @@
   <string name="lockpattern_settings_enable_error_path_title">Mostrar erro padrão</string>
   <string name="lockpattern_settings_enable_dots_title">Mostrar pontos padrão</string>
   <string name="screen_security_category">Segurança de ecrã</string>
-  <string name="screen_security_title">Ecrã de bloqueio</string>
-  <string name="screen_security_summary">Exibir ou alterar definições de segurança, atraso e tempo limite do ecrã de bloqueio</string>
-  <string name="additional_options_title">Opções adicionais</string>
+  <string name="screen_security_summary">Ver ou alterar as definições de segurança do ecrã de bloqueio</string>
   <string name="unlock_menu_unlock_title">Desbloquear com Menu</string>
   <string name="unlock_menu_unlock_summary">Pressionar o botão Menu desbloqueia o dispositivo</string>
   <string name="unlock_home_unlock_title">Desbloquear com Home</string>
@@ -203,20 +201,6 @@
   <string name="unlock_quick_unlock_control_title">Desbloqueio rápido</string>
   <string name="unlock_quick_unlock_control_summary">Desbloquear automaticamente quando o PIN/senha correto é inserido</string>
   <string name="unlock_buttons_disabled_by_security">Ecrã de bloqueio com segurança</string>
-  <string name="delay_and_timeout_title">Atraso ao bloquear</string>
-  <string name="slide_lock_delay_title">Atraso a bloquear o ecrã</string>
-  <string name="slide_lock_timeout_delay_title">Atraso após</string>
-  <string name="slide_lock_screenoff_delay_title">Atraso depois de desligar</string>
-  <string name="slide_lock_delay_none">Nenhum</string>
-  <string name="slide_lock_delay_1s">1 segundo</string>
-  <string name="slide_lock_delay_5s">5 segundos</string>
-  <string name="slide_lock_delay_10s">10 segundos</string>
-  <string name="slide_lock_delay_15s">15 segundos</string>
-  <string name="slide_lock_delay_30s">30 segundos</string>
-  <string name="slide_lock_delay_1m">1 minuto</string>
-  <string name="slide_lock_delay_5m">5 minutos</string>
-  <string name="slide_lock_delay_10m">10 minutos</string>
-  <string name="slide_lock_delay_30m">30 minutos</string>
   <string name="lockscreen_widgets_category_title">Widgets</string>
   <string name="lockscreen_maximize_widgets_title">Maximizar widgets</string>
   <string name="lockscreen_maximize_widgets_summary">Expandir os widgets quando o ecrã ligar</string>
@@ -290,7 +274,6 @@
   <string name="tiles_reset_title">Repor</string>
   <string name="tiles_reset_message">Repor os botões e ordem padrão?</string>
   <string name="auto_brightness_setup_title">Brilho automático</string>
-  <string name="auto_brightness_adjustment_title">Ajuste do brilho</string>
   <string name="auto_brightness_twilight_adjustment">Ajustar para o nascer e pôr do sol</string>
   <string name="light_sensor_current_value">Valor atual do sensor de luz: <xliff:g id="light_level">%d</xliff:g> lux</string>
   <string name="auto_brightness_dialog_title">Níveis de brilho automático</string>
@@ -325,7 +308,7 @@
   <string name="display_rotation_unit">Graus</string>
   <string name="display_lockscreen_rotation_title">Rodar o ecrã de bloqueio</string>
   <string name="display_rotation_category_title">Modos de rotação</string>
-  <string name="display_rotation_0_title">o graus</string>
+  <string name="display_rotation_0_title">0 graus</string>
   <string name="display_rotation_90_title">90 graus</string>
   <string name="display_rotation_180_title">180 graus</string>
   <string name="display_rotation_270_title">270 graus</string>
@@ -356,8 +339,7 @@
   <string name="quiet_hours_dim_summary">Desativar luz de notificação</string>
   <string name="quiet_hours_haptic">Retorno tátil</string>
   <string name="quiet_hours_haptic_summary">Desativar o retorno tátil</string>
-  <string name="quiet_hours_active_from">Ativar desde</string>
-  <string name="quiet_hours_active_to">até</string>
+  <string name="quiet_hours_active_period">Ativo desde <xliff:g id="start">%1$s</xliff:g> a <xliff:g id="end">%2$s</xliff:g></string>
   <string name="quiet_hours_ringer_allow_all">Tocar para todas as chamadas</string>
   <string name="quiet_hours_ringer_allow_contacts">Tocar para todos os contactos</string>
   <string name="quiet_hours_ringer_allow_starred">Tocar para todos os contactos favoritos</string>
@@ -486,13 +468,8 @@
   <string name="gamma_tuning_contrast">Contraste</string>
   <string name="gamma_tuning_brightness">Brilho</string>
   <string name="gamma_tuning_saturation">Saturação</string>
-  <string name="headset_category_title">Auricular</string>
   <string name="headset_connect_player_title">Iniciar a aplicação de música</string>
   <string name="headset_connect_player_summary">Iniciar a aplicação de música padrão quando o auricular for ligado</string>
-  <string name="more_device_controls_title">Mais\u2026</string>
-  <string name="more_device_settings_title">Outras opções do dispositivo</string>
-  <string name="sensors_motors_title">Sensores &amp; motores</string>
-  <string name="display_calibration_title">Calibração do monitor</string>
   <string name="adb_notify">Notificação de depuração USB</string>
   <string name="adb_notify_summary">Exibir uma notificação quando a depuração USB estiver conectada</string>
   <string name="adb_over_network">ADB através da rede</string>
@@ -690,7 +667,6 @@
   <string name="status_bar_signal_style_text">Texto</string>
   <string name="status_bar_toggle_brightness">Controle de brilho</string>
   <string name="status_bar_toggle_brightness_summary">Ajustar o brilho deslizando através da barra de estado</string>
-  <string name="status_bar_toggle_info">Brilho automático está ativado</string>
   <string name="status_bar_notif_count_title">Contagem de notificações</string>
   <string name="status_bar_notif_count_summary">Exibir o número de notificações pendentes</string>
   <string name="status_bar_double_tap_to_sleep_title">Toque duplo para desligar ecrã</string>
@@ -727,6 +703,7 @@
   <string name="gestures_down_spen_title_head">Deslizar para baixo</string>
   <string name="gestures_long_spen_title_head">Pressão longa</string>
   <string name="gestures_double_spen_title_head">Duplo toque</string>
+  <string name="gestures_settings_header_title">Gestos</string>
   <string name="gestures_action_empty">Sem ação</string>
   <string name="gestures_action_home">Início</string>
   <string name="gestures_action_back">Voltar</string>
@@ -872,4 +849,8 @@
   <string name="autoperf_title">Ativar perfis por aplicação</string>
   <string name="autoperf_summary">Escolher automaticamemte o perfil de desempenho adequado para várias aplicações</string>
   <string name="graphics_title">Gráficos e renderização</string>
+  <string name="menu_hidden_apps_delete">Limpar</string>
+  <string name="menu_hidden_apps_reset_lock">Limpar o bloqueio padrão</string>
+  <string name="protected_apps">Aplicações protegidas</string>
+  <string name="saving_protected_components">A guardar o estado dos componentes\u2026</string>
 </resources>

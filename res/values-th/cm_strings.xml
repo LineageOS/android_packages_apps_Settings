@@ -79,7 +79,7 @@
   <string name="profile_volumeoverrides_title">แทนที่ระดับเสียง</string>
   <string name="connection_state_disabled">ปิด</string>
   <string name="connection_state_enabled">เปิด</string>
-  <string name="volume_override_summary">ตั้งเป็น</string>
+  <string name="volume_override_summary">ตั้งเป็น %1$s/%2$s</string>
   <string name="profile_profiles_manage">โปรไฟล์</string>
   <string name="profile_profile_manage">จัดการโปรไฟล์</string>
   <string name="profile_appgroups_manage">กลุ่มแอป</string>
@@ -191,9 +191,6 @@
   <string name="lockpattern_settings_enable_error_path_title">แสดงลายเส้นที่ผิดพลาด</string>
   <string name="lockpattern_settings_enable_dots_title">แสดงจุดที่ลากผ่าน</string>
   <string name="screen_security_category">ความปลอดภัยหน้าจอ</string>
-  <string name="screen_security_title">ล็อคหน้าจอ</string>
-  <string name="screen_security_summary">ดูหรือเปลี่ยนความปลอดภัยและการหน่วงเวลาหน้าล็อคจอ</string>
-  <string name="additional_options_title">ตัวเลือกเพิ่มเติม</string>
   <string name="unlock_menu_unlock_title">เมนูเพื่อปลดล็อค</string>
   <string name="unlock_menu_unlock_summary">แตะปุ่มเมนูจะปลดล็อคอุปกรณ์</string>
   <string name="unlock_home_unlock_title">โฮมเพื่อปลดล็อค</string>
@@ -203,20 +200,6 @@
   <string name="unlock_quick_unlock_control_title">ปลดล็อคแบบเร็ว</string>
   <string name="unlock_quick_unlock_control_summary">ปลดล็อคอัตโนมัติเมื่อ PIN/รหัส ที่ถูกต้องถูกป้อนเข้ามา</string>
   <string name="unlock_buttons_disabled_by_security">หน้าจอล็อคมีความปลอดภัย</string>
-  <string name="delay_and_timeout_title">เลื่อนเวลาการล็อคออกไป</string>
-  <string name="slide_lock_delay_title">เลื่อนเวลาการล็อคน่าจอออกไป</string>
-  <string name="slide_lock_timeout_delay_title">เลื่อนออกหลังจากหมดเวลา</string>
-  <string name="slide_lock_screenoff_delay_title">หน่วงเวลาหลังจากปิดหน้าจอ</string>
-  <string name="slide_lock_delay_none">ไม่มี</string>
-  <string name="slide_lock_delay_1s">1 วินาที</string>
-  <string name="slide_lock_delay_5s">5 วินาที</string>
-  <string name="slide_lock_delay_10s">10 วินาที</string>
-  <string name="slide_lock_delay_15s">15 วินาที</string>
-  <string name="slide_lock_delay_30s">30 วินาที</string>
-  <string name="slide_lock_delay_1m">1 นาที</string>
-  <string name="slide_lock_delay_5m">5 นาที</string>
-  <string name="slide_lock_delay_10m">10 นาที</string>
-  <string name="slide_lock_delay_30m">30 นาที</string>
   <string name="lockscreen_widgets_category_title">วิดเจ็ท</string>
   <string name="lockscreen_maximize_widgets_title">วิดเจ็ทสูงสุด</string>
   <string name="lockscreen_maximize_widgets_summary">ขยายวิดเจ็ทเมือเปิดจอ</string>
@@ -290,7 +273,6 @@
   <string name="tiles_reset_title">รีเซ็ต</string>
   <string name="tiles_reset_message">คืนค่าเริ่มต้นของไทต์และรูปแบบ?</string>
   <string name="auto_brightness_setup_title">ความสว่างอัตโนมัติ</string>
-  <string name="auto_brightness_adjustment_title">ปรับความสว่าง</string>
   <string name="auto_brightness_twilight_adjustment">ปรับตัวเข้ากับพระอาทิตย์ขึ้นและพระอาทิตย์ตก</string>
   <string name="light_sensor_current_value">ค่าความสว่างปัจจุบัน: <xliff:g id="light_level">%d</xliff:g> ลักซ์</string>
   <string name="auto_brightness_dialog_title">ระดับความสว่างอัตโนมัติ</string>
@@ -357,8 +339,7 @@
   <string name="quiet_hours_dim_summary">ปิดไฟแจ้งเตือน</string>
   <string name="quiet_hours_haptic">สั่นเมื่อแตะ</string>
   <string name="quiet_hours_haptic_summary">ปิดการสั่นเมื่อแตะ</string>
-  <string name="quiet_hours_active_from">ใช้งานจาก</string>
-  <string name="quiet_hours_active_to">ถึง</string>
+  <string name="quiet_hours_active_period">ทำงานจาก <xliff:g id="start">%1$s</xliff:g> ไปยัง <xliff:g id="end">%2$s</xliff:g></string>
   <string name="quiet_hours_ringer_allow_all">เสียงเรียกเข้าสำหรับทุกผู้ติดต่อ</string>
   <string name="quiet_hours_ringer_allow_contacts">เสียงเรียกเข้าสำหรับทุกรายชื่อผู้ติดต่อ</string>
   <string name="quiet_hours_ringer_allow_starred">เสียงเรียกเข้าสำหรับผู้ติดต่อที่ชื่นชอบ</string>
@@ -487,13 +468,8 @@
   <string name="gamma_tuning_contrast">สีตัด</string>
   <string name="gamma_tuning_brightness">ความสว่าง</string>
   <string name="gamma_tuning_saturation">ความอิ่มตัว</string>
-  <string name="headset_category_title">หูฟัง</string>
   <string name="headset_connect_player_title">เปิดแอปเล่นเพลง</string>
   <string name="headset_connect_player_summary">เปิดโปรแกรมเล่นเพลงเมื่อมีการเชื่อมต่อจากช่องหูฟัง</string>
-  <string name="more_device_controls_title">เพิ่มเติม\u2026</string>
-  <string name="more_device_settings_title">ตัวเลือกอุปกรณ์อื่นๆ</string>
-  <string name="sensors_motors_title">เซนเซอร์ &amp;  มอเตอร์</string>
-  <string name="display_calibration_title">เทียบการแสดงผล</string>
   <string name="adb_notify">แจ้งเตือนแก้ไขข้อบกพร่อง USB</string>
   <string name="adb_notify_summary">แสดงการแจ้งเตือนเมื่อมีการต่อ USB สำหรับแก้ไขข้อบกพร่อง</string>
   <string name="adb_over_network">ADB บนเครือข่าย</string>
@@ -691,7 +667,6 @@
   <string name="status_bar_signal_style_text">ข้อความ</string>
   <string name="status_bar_toggle_brightness">ความคุมความสว่าง</string>
   <string name="status_bar_toggle_brightness_summary">ตั้งความสว่างหน้าจอโดยการเลื่อนบริเวณแถบสถานะ</string>
-  <string name="status_bar_toggle_info">เปิดใช้งานปรับความสว่างอัตโนมัติอยู่</string>
   <string name="status_bar_notif_count_title">นับจำนวนการแจ้งเตือน</string>
   <string name="status_bar_notif_count_summary">แสดงตัวเลขของการแจ้งเตือน</string>
   <string name="status_bar_double_tap_to_sleep_title">แตะสองครั้งเพื่อปิดจอ</string>
@@ -873,4 +848,8 @@
   <string name="autoperf_title">เปิดใช้งาน โปรไฟล์แต่ละแอป</string>
   <string name="autoperf_summary">เลือกโปรไฟล์ที่เหมาะสมกับแอปต่างๆ โดยอัตโนมัติ</string>
   <string name="graphics_title">ภาพและกราฟฟิก</string>
+  <string name="menu_hidden_apps_delete">รีเซ็ต</string>
+  <string name="menu_hidden_apps_reset_lock">รีเซ็ตรูปแบบล็อค</string>
+  <string name="protected_apps">แอปที่ป้องกัน</string>
+  <string name="saving_protected_components">กำลังบันทึกองค์ประกอบ\u2026</string>
 </resources>

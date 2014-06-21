@@ -79,7 +79,7 @@
   <string name="profile_volumeoverrides_title">Lautstärke festlegen</string>
   <string name="connection_state_disabled">Deaktivieren</string>
   <string name="connection_state_enabled">Aktivieren</string>
-  <string name="volume_override_summary">Gesetzt auf</string>
+  <string name="volume_override_summary">Gesetzt auf %1$s/%2$s</string>
   <string name="profile_profiles_manage">Profile</string>
   <string name="profile_profile_manage">Profil bearbeiten</string>
   <string name="profile_appgroups_manage">App-Gruppen</string>
@@ -191,9 +191,7 @@
   <string name="lockpattern_settings_enable_error_path_title">Fehler anzeigen</string>
   <string name="lockpattern_settings_enable_dots_title">Punkte anzeigen</string>
   <string name="screen_security_category">Bildschirmsicherheit</string>
-  <string name="screen_security_title">Sicherheitssperre</string>
-  <string name="screen_security_summary">Einstellungen zur Sicherheitssperre, Timeouts und Abschaltverzögerungen anzeigen und ändern</string>
-  <string name="additional_options_title">Weitere Optionen</string>
+  <string name="screen_security_summary">Sperrbildschirm-Einstellungen anzeigen oder ändern</string>
   <string name="unlock_menu_unlock_title">Mit Menü entsperren</string>
   <string name="unlock_menu_unlock_summary">Entsperren durch Drücken der Menü-Taste</string>
   <string name="unlock_home_unlock_title">Mit Home entsperren</string>
@@ -203,20 +201,6 @@
   <string name="unlock_quick_unlock_control_title">Schnelles Entsperren</string>
   <string name="unlock_quick_unlock_control_summary">Entsperren durch korrekte PIN- oder Passworteingabe</string>
   <string name="unlock_buttons_disabled_by_security">Sperrbildschirm ist sicher</string>
-  <string name="delay_and_timeout_title">Sperrverzögerung</string>
-  <string name="slide_lock_delay_title">Bildschirmsperre verzögern</string>
-  <string name="slide_lock_timeout_delay_title">Verzögerung nach Timeout</string>
-  <string name="slide_lock_screenoff_delay_title">Verzögerung nach Abschalten</string>
-  <string name="slide_lock_delay_none">Keine</string>
-  <string name="slide_lock_delay_1s">1 Sekunde</string>
-  <string name="slide_lock_delay_5s">5 Sekunden</string>
-  <string name="slide_lock_delay_10s">10 Sekunden</string>
-  <string name="slide_lock_delay_15s">15 Sekunden</string>
-  <string name="slide_lock_delay_30s">30 Sekunden</string>
-  <string name="slide_lock_delay_1m">1 Minute</string>
-  <string name="slide_lock_delay_5m">5 Minuten</string>
-  <string name="slide_lock_delay_10m">10 Minuten</string>
-  <string name="slide_lock_delay_30m">30 Minuten</string>
   <string name="lockscreen_widgets_category_title">Widgets</string>
   <string name="lockscreen_maximize_widgets_title">Widgets maximieren</string>
   <string name="lockscreen_maximize_widgets_summary">Beim Einschalten Widgets maximiert anzeigen</string>
@@ -290,7 +274,6 @@
   <string name="tiles_reset_title">Zurücksetzen</string>
   <string name="tiles_reset_message">Auf Standard zurücksetzen?</string>
   <string name="auto_brightness_setup_title">Automatische Helligkeit</string>
-  <string name="auto_brightness_adjustment_title">Helligkeits-Einstellung</string>
   <string name="auto_brightness_twilight_adjustment">An Dämmerung anpassen</string>
   <string name="light_sensor_current_value">Aktueller Sensorwert: <xliff:g id="light_level">%d</xliff:g> Lux</string>
   <string name="auto_brightness_dialog_title">Helligkeitsstufen</string>
@@ -379,8 +362,7 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
   <string name="quiet_hours_dim_summary">Benachrichtigungslicht deaktivieren</string>
   <string name="quiet_hours_haptic">Haptisches Feedback</string>
   <string name="quiet_hours_haptic_summary">Haptisches Feedback deaktivieren</string>
-  <string name="quiet_hours_active_from">Aktiv von</string>
-  <string name="quiet_hours_active_to">bis</string>
+  <string name="quiet_hours_active_period">Aktiv von <xliff:g id="start">%1$s</xliff:g> bis <xliff:g id="end">%2$s</xliff:g></string>
   <string name="quiet_hours_ringer_allow_all">Bei jedem Anrufer klingeln</string>
   <string name="quiet_hours_ringer_allow_contacts">Bei allen Kontakten klingeln</string>
   <string name="quiet_hours_ringer_allow_starred">Bei favorisierten Kontakten klingeln</string>
@@ -509,13 +491,8 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
   <string name="gamma_tuning_contrast">Kontrast</string>
   <string name="gamma_tuning_brightness">Helligkeit</string>
   <string name="gamma_tuning_saturation">Sättigung</string>
-  <string name="headset_category_title">Kopfhörer</string>
   <string name="headset_connect_player_title">Musik-App starten</string>
   <string name="headset_connect_player_summary">Beim Verbinden eines Kopfhörers die Standard-Musik-App starten</string>
-  <string name="more_device_controls_title">Mehr\u2026</string>
-  <string name="more_device_settings_title">Weitere Geräteoptionen</string>
-  <string name="sensors_motors_title">Sensoren &amp; Vibration</string>
-  <string name="display_calibration_title">Displaykalibrierung</string>
   <string name="adb_notify">USB-Debugging-Info</string>
   <string name="adb_notify_summary">Eine Benachrichtigung zeigen, wenn USB-Debugging verbunden ist</string>
   <string name="adb_over_network">ADB über Netzwerk</string>
@@ -713,7 +690,6 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
   <string name="status_bar_signal_style_text">Text</string>
   <string name="status_bar_toggle_brightness">Helligkeitssteuerung</string>
   <string name="status_bar_toggle_brightness_summary">Helligkeit durch Wischen über die Statusleiste ändern</string>
-  <string name="status_bar_toggle_info">Automatische Helligkeit ist aktiviert</string>
   <string name="status_bar_notif_count_title">Benachrichtigungszähler</string>
   <string name="status_bar_notif_count_summary">Anzahl der ungelesenen Benachrichtigungen in der Statusleiste anzeigen</string>
   <string name="status_bar_double_tap_to_sleep_title">Standby durch doppeltes Tippen</string>
@@ -752,6 +728,7 @@ auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
   <string name="gestures_down_spen_title_head">Nach unten wischen</string>
   <string name="gestures_long_spen_title_head">Lange drücken</string>
   <string name="gestures_double_spen_title_head">Doppelt tippen</string>
+  <string name="gestures_settings_header_title">Gesten</string>
   <string name="gestures_action_empty">Keine Aktion</string>
   <string name="gestures_action_home">Home</string>
   <string name="gestures_action_back">Zurück</string>
@@ -896,4 +873,7 @@ auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
   <string name="autoperf_title">App-Profile aktivieren</string>
   <string name="autoperf_summary">Wählt für einige Apps automatisch ein passendes Leistungsprofil aus</string>
   <string name="graphics_title">Grafikoptionen</string>
+  <string name="menu_hidden_apps_delete">Zurücksetzen</string>
+  <string name="menu_hidden_apps_reset_lock">Sperrmuster zurücksetzen</string>
+  <string name="protected_apps">Geschützte Apps</string>
 </resources>

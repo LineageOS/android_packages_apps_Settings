@@ -79,7 +79,7 @@
   <string name="profile_volumeoverrides_title">Prepísanie hlasitostí</string>
   <string name="connection_state_disabled">Zakázať</string>
   <string name="connection_state_enabled">Povoliť</string>
-  <string name="volume_override_summary">Nastaviť na</string>
+  <string name="volume_override_summary">Nastaviť na %1$s/%2$s</string>
   <string name="profile_profiles_manage">Profily</string>
   <string name="profile_profile_manage">Spravovať profil</string>
   <string name="profile_appgroups_manage">Skupiny aplikácií</string>
@@ -191,9 +191,7 @@
   <string name="lockpattern_settings_enable_error_path_title">Zobraziť nesprávny vzor</string>
   <string name="lockpattern_settings_enable_dots_title">Zobraziť body vzoru</string>
   <string name="screen_security_category">Zabezpečenie obrazovky</string>
-  <string name="screen_security_title">Zamknúť obrazovku</string>
-  <string name="screen_security_summary">Zobraziť alebo zmeniť zabezpečenie obrazovky, nastavenia oneskorenia a časového limitu</string>
-  <string name="additional_options_title">Ďalšie možnosti</string>
+  <string name="screen_security_summary">Zobraziť alebo zmeniť nastavenia zabezpečenia zámku obrazovky</string>
   <string name="unlock_menu_unlock_title">Odomknúť tlačidlom Ponuka</string>
   <string name="unlock_menu_unlock_summary">Stlačením tlačidla Ponuka sa odomkne zariadenie</string>
   <string name="unlock_home_unlock_title">Odomknúť tlačidlom Domov</string>
@@ -203,20 +201,6 @@
   <string name="unlock_quick_unlock_control_title">Rýchle odomknutie</string>
   <string name="unlock_quick_unlock_control_summary">Odomknúť automaticky po zadaní správneho PIN kódu alebo hesla</string>
   <string name="unlock_buttons_disabled_by_security">Zámok obrazovky je zabezpečený</string>
-  <string name="delay_and_timeout_title">Oneskorené uzamknutie</string>
-  <string name="slide_lock_delay_title">Oneskorené uzamknutie obrazovky</string>
-  <string name="slide_lock_timeout_delay_title">Oneskorenie po časovom limite</string>
-  <string name="slide_lock_screenoff_delay_title">Oneskorenie po vypnutí</string>
-  <string name="slide_lock_delay_none">Žiadny</string>
-  <string name="slide_lock_delay_1s">1 sekunda</string>
-  <string name="slide_lock_delay_5s">5 sekúnd</string>
-  <string name="slide_lock_delay_10s">10 sekúnd</string>
-  <string name="slide_lock_delay_15s">15 sekúnd</string>
-  <string name="slide_lock_delay_30s">30 sekúnd</string>
-  <string name="slide_lock_delay_1m">1 minúta</string>
-  <string name="slide_lock_delay_5m">5 minút</string>
-  <string name="slide_lock_delay_10m">10 minút</string>
-  <string name="slide_lock_delay_30m">30 minút</string>
   <string name="lockscreen_widgets_category_title">Miniaplikácie</string>
   <string name="lockscreen_maximize_widgets_title">Maximalizovať miniaplikácie</string>
   <string name="lockscreen_maximize_widgets_summary">Rozbaliť miniaplikácie pri zapnutí obrazovky</string>
@@ -231,6 +215,10 @@
   <string name="tile_choose_title">Vyberte dlaždicu</string>
   <string name="title_qs_small_icons">Zobraziť menšie dlaždice</string>
   <string name="summary_qs_small_icons">Použiť menšie dlaždice pre zvýšenie počtu stĺpcov</string>
+  <string name="category_heads_up">Vyskakovacie oznámenia</string>
+  <string name="title_heads_up_enabled">Povoliť vyskakovacie oznámenia</string>
+  <string name="add_heads_up_dnd_package">Pridať aplikáciu do \"Nevyrušovať\"</string>
+  <string name="heads_up_dnd_title">Nevyrušovať</string>
   <string name="title_tile_airplane">Režim V lietadle</string>
   <string name="title_tile_battery">Štatistiky batérie</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
@@ -290,7 +278,6 @@
   <string name="tiles_reset_title">Obnoviť</string>
   <string name="tiles_reset_message">Obnoviť predvolené nastavenia a rozloženie dlaždíc?</string>
   <string name="auto_brightness_setup_title">Automatický jas</string>
-  <string name="auto_brightness_adjustment_title">Úprava jasu</string>
   <string name="auto_brightness_twilight_adjustment">Upraviť podľa západu/východu Slnka</string>
   <string name="light_sensor_current_value">Aktuálna hodnota svetelného senzora: <xliff:g id="light_level">%d</xliff:g> lux</string>
   <string name="auto_brightness_dialog_title">Automatické úrovne jasu</string>
@@ -364,8 +351,7 @@ Každý riadok v zozname jasu zodpovedá jednému <i>riadiacemu bodu</i> krivky 
   <string name="quiet_hours_dim_summary">Zakázať svetlo upozornenia</string>
   <string name="quiet_hours_haptic">Hmatová spätná väzba</string>
   <string name="quiet_hours_haptic_summary">Zakázať hmatovú spätnú väzbu</string>
-  <string name="quiet_hours_active_from">Aktívne od</string>
-  <string name="quiet_hours_active_to">do</string>
+  <string name="quiet_hours_active_period">Aktívne od <xliff:g id="start">%1$s</xliff:g> do <xliff:g id="end">%2$s</xliff:g></string>
   <string name="quiet_hours_ringer_allow_all">Zvonenie pri všetkých volajúcich</string>
   <string name="quiet_hours_ringer_allow_contacts">Zvonenie pri všetkých kontaktoch</string>
   <string name="quiet_hours_ringer_allow_starred">Zvonenie pri obľúbených kontaktoch</string>
@@ -494,13 +480,8 @@ Každý riadok v zozname jasu zodpovedá jednému <i>riadiacemu bodu</i> krivky 
   <string name="gamma_tuning_contrast">Kontrast</string>
   <string name="gamma_tuning_brightness">Jas</string>
   <string name="gamma_tuning_saturation">Sýtosť</string>
-  <string name="headset_category_title">Slúchadlá</string>
   <string name="headset_connect_player_title">Spustiť hudobnú aplikáciu</string>
   <string name="headset_connect_player_summary">Spustiť predvolenú hudobnú aplikáciu po pripojení slúchadiel</string>
-  <string name="more_device_controls_title">Viac\u2026</string>
-  <string name="more_device_settings_title">Ďalšie možnosti zariadenia</string>
-  <string name="sensors_motors_title">Senzory &amp; motorčeky</string>
-  <string name="display_calibration_title">Kalibrácia displeja</string>
   <string name="adb_notify">Oznamovať o ladení cez USB</string>
   <string name="adb_notify_summary">Zobraziť oznámenie pri pripojení k USB v režime ladenia</string>
   <string name="adb_over_network">ADB cez sieť</string>
@@ -698,7 +679,7 @@ Každý riadok v zozname jasu zodpovedá jednému <i>riadiacemu bodu</i> krivky 
   <string name="status_bar_signal_style_text">Text</string>
   <string name="status_bar_toggle_brightness">Ovládanie jasu</string>
   <string name="status_bar_toggle_brightness_summary">Nastaviť jas posúvaním po stavovom riadku</string>
-  <string name="status_bar_toggle_info">Automatický jas je povolený</string>
+  <string name="status_bar_toggle_info">Nedostupné pri povolenom automatickom jase</string>
   <string name="status_bar_notif_count_title">Zobraziť počítadlo oznámení</string>
   <string name="status_bar_notif_count_summary">Zobraziť počet čakajúcich oznámení</string>
   <string name="status_bar_double_tap_to_sleep_title">Dvojklik pre spánok</string>
@@ -735,6 +716,7 @@ Každý riadok v zozname jasu zodpovedá jednému <i>riadiacemu bodu</i> krivky 
   <string name="gestures_down_spen_title_head">Potiahnutie nadol</string>
   <string name="gestures_long_spen_title_head">Dlhé stlačenie</string>
   <string name="gestures_double_spen_title_head">Dvojklik</string>
+  <string name="gestures_settings_header_title">Gestá</string>
   <string name="gestures_action_empty">Žiadne akcie</string>
   <string name="gestures_action_home">Domov</string>
   <string name="gestures_action_back">Späť</string>
@@ -880,4 +862,8 @@ Každý riadok v zozname jasu zodpovedá jednému <i>riadiacemu bodu</i> krivky 
   <string name="autoperf_title">Povoliť profily pre aplikácie</string>
   <string name="autoperf_summary">Automaticky vybrať vhodný profil výkonu pre rôzne aplikácie</string>
   <string name="graphics_title">Grafika a vykresľovanie</string>
+  <string name="menu_hidden_apps_delete">Obnoviť</string>
+  <string name="menu_hidden_apps_reset_lock">Obnoviť uzamknutie vzorom</string>
+  <string name="protected_apps">Chránené aplikácie</string>
+  <string name="saving_protected_components">Uložiť stav komponentu\u2026</string>
 </resources>

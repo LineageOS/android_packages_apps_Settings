@@ -79,7 +79,7 @@
   <string name="profile_volumeoverrides_title">Громкость</string>
   <string name="connection_state_disabled">Выключить</string>
   <string name="connection_state_enabled">Включить</string>
-  <string name="volume_override_summary">Установить</string>
+  <string name="volume_override_summary">Установить в %1$s/%2$s</string>
   <string name="profile_profiles_manage">Профили</string>
   <string name="profile_profile_manage">Управление профилями</string>
   <string name="profile_appgroups_manage">Группы приложений</string>
@@ -183,7 +183,7 @@
   <string name="pulse_speed_slow">Медленно</string>
   <string name="pulse_speed_very_slow">Очень медленно</string>
   <string name="battery_light_title">Индикация батареи</string>
-  <string name="battery_low_pulse_title">Индикация разрядки батареи</string>
+  <string name="battery_low_pulse_title">Мигать при низком уровне заряда</string>
   <string name="battery_light_list_title">Цвета</string>
   <string name="battery_light_low_color_title">Батарея разряжена</string>
   <string name="battery_light_medium_color_title">Заряжается</string>
@@ -191,9 +191,7 @@
   <string name="lockpattern_settings_enable_error_path_title">Показывать неверный ввод</string>
   <string name="lockpattern_settings_enable_dots_title">Показывать точки</string>
   <string name="screen_security_category">Безопасность экрана</string>
-  <string name="screen_security_title">Экран блокировки</string>
-  <string name="screen_security_summary">Просмотр и изменение безопасности экрана блокировки, задержки и тайм-аута</string>
-  <string name="additional_options_title">Дополнительные опции</string>
+  <string name="screen_security_summary">Просмотр или изменение параметров безопасности экрана блокировки</string>
   <string name="unlock_menu_unlock_title">Разблок. по кнопке «Меню»</string>
   <string name="unlock_menu_unlock_summary">Нажатие кнопки «Меню» разблокирует устройство</string>
   <string name="unlock_home_unlock_title">Разблок. по кнопке «Домой»</string>
@@ -203,20 +201,6 @@
   <string name="unlock_quick_unlock_control_title">Быстрая разблокировка</string>
   <string name="unlock_quick_unlock_control_summary">Автоматическая разблокировка при вводе правильного пароля или PIN-кода</string>
   <string name="unlock_buttons_disabled_by_security">Необходимо отключить защиту паролем</string>
-  <string name="delay_and_timeout_title">Задержка при блокировке</string>
-  <string name="slide_lock_delay_title">Задержка блокировки экрана</string>
-  <string name="slide_lock_timeout_delay_title">Задержка после тайм-аута</string>
-  <string name="slide_lock_screenoff_delay_title">Задержка после выключения экрана</string>
-  <string name="slide_lock_delay_none">Нет</string>
-  <string name="slide_lock_delay_1s">1 секунда</string>
-  <string name="slide_lock_delay_5s">5 секунд</string>
-  <string name="slide_lock_delay_10s">10 секунд</string>
-  <string name="slide_lock_delay_15s">15 секунд</string>
-  <string name="slide_lock_delay_30s">30 секунд</string>
-  <string name="slide_lock_delay_1m">1 минута</string>
-  <string name="slide_lock_delay_5m">5 минут</string>
-  <string name="slide_lock_delay_10m">10 минут</string>
-  <string name="slide_lock_delay_30m">30 минут</string>
   <string name="lockscreen_widgets_category_title">Виджеты</string>
   <string name="lockscreen_maximize_widgets_title">Развёрнутые виджеты</string>
   <string name="lockscreen_maximize_widgets_summary">Показывать виджеты экрана блокировки развёрнутыми, а кольцо разблокировки экрана — в свёрнутом виде</string>
@@ -231,6 +215,10 @@
   <string name="tile_choose_title">Выбор плитки</string>
   <string name="title_qs_small_icons">Маленькие плитки</string>
   <string name="summary_qs_small_icons">Использовать плитки меньшего размера для увеличения количества столбцов</string>
+  <string name="category_heads_up">Всплывающие уведомления</string>
+  <string name="title_heads_up_enabled">Отображать уведомления в виде всплывающих окон</string>
+  <string name="add_heads_up_dnd_package">Добавить приложение в режим «Не беспокоить»</string>
+  <string name="heads_up_dnd_title">Не беспокоить</string>
   <string name="title_tile_airplane">Режим полёта</string>
   <string name="title_tile_battery">Батарея</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
@@ -290,7 +278,6 @@
   <string name="tiles_reset_title">Сброс</string>
   <string name="tiles_reset_message">Восстановить плитки и их расположение по умолчанию?</string>
   <string name="auto_brightness_setup_title">Автоматическая регулировка</string>
-  <string name="auto_brightness_adjustment_title">Корректировка яркости</string>
   <string name="auto_brightness_twilight_adjustment">Подстраивать под время захода и восхода Солнца</string>
   <string name="light_sensor_current_value">Текущее показание датчика: <xliff:g id="light_level">%d</xliff:g> лк</string>
   <string name="auto_brightness_dialog_title">Уровни автоматической подсветки</string>
@@ -365,8 +352,7 @@
   <string name="quiet_hours_dim_summary">Отключить светодиод индикатора событий</string>
   <string name="quiet_hours_haptic">Виброотклик</string>
   <string name="quiet_hours_haptic_summary">Отключить вибрацию при касании</string>
-  <string name="quiet_hours_active_from">Включены с</string>
-  <string name="quiet_hours_active_to">по</string>
+  <string name="quiet_hours_active_period">Включены с <xliff:g id="start">%1$s</xliff:g> до <xliff:g id="end">%2$s</xliff:g></string>
   <string name="quiet_hours_ringer_allow_all">Не отключать звук</string>
   <string name="quiet_hours_ringer_allow_contacts">Не отключать звук для контактов</string>
   <string name="quiet_hours_ringer_allow_starred">Не отключать звук для избранных контактов</string>
@@ -495,13 +481,8 @@
   <string name="gamma_tuning_contrast">Контрастность</string>
   <string name="gamma_tuning_brightness">Яркость</string>
   <string name="gamma_tuning_saturation">Насыщенность</string>
-  <string name="headset_category_title">Наушники</string>
   <string name="headset_connect_player_title">Автозапуск плеера</string>
   <string name="headset_connect_player_summary">Запускать плеер при подключении наушников</string>
-  <string name="more_device_controls_title">Ещё...</string>
-  <string name="more_device_settings_title">Другие настройки устройства</string>
-  <string name="sensors_motors_title">Датчики и вибрация</string>
-  <string name="display_calibration_title">Калибровка экрана</string>
   <string name="adb_notify">Уведомление об отладке по USB</string>
   <string name="adb_notify_summary">Показывать уведомление о включённом режиме отладки по USB</string>
   <string name="adb_over_network">Отладка по сети</string>
@@ -589,7 +570,7 @@
   <string name="lockscreen_buttons_toggle_sound">Перекл. режим звонка</string>
   <string name="lockscreen_buttons_sleep">Выключить экран</string>
   <string name="lockscreen_enable_modlock_title">Пользовательский экран блокировки</string>
-  <string name="navigation_bar_category">Строка навигации</string>
+  <string name="navigation_bar_category">Панель навигации</string>
   <string name="navigation_bar_title">Кнопки и их расположение</string>
   <string name="navigation_bar_left_title">Режим левши</string>
   <string name="navigation_bar_left_summary">Отображать строку навигации слева в альбомной ориентации экрана</string>
@@ -615,7 +596,7 @@
   <string name="navring_action_torch">Фонарик</string>
   <string name="navring_action_google_now">Google Now</string>
   <string name="navring_choose_action_title">Выбор действия</string>
-  <string name="power_menu_title">Меню кнопки питания</string>
+  <string name="power_menu_title">Меню при долгом нажатии</string>
   <string name="power_menu_reboot_title">Перезагрузка</string>
   <string name="power_menu_screenshot_title">Скриншот</string>
   <string name="power_menu_expanded_desktop">Расширенный экран</string>
@@ -699,7 +680,6 @@
   <string name="status_bar_signal_style_text">Текст</string>
   <string name="status_bar_toggle_brightness">Управление яркостью</string>
   <string name="status_bar_toggle_brightness_summary">Регулировать яркость экрана движением пальца по строке состояния</string>
-  <string name="status_bar_toggle_info">Включена автоматическая регулировка яркости</string>
   <string name="status_bar_notif_count_title">Счётчик уведомлений</string>
   <string name="status_bar_notif_count_summary">Показывать количество новых уведомлений в строке состояния</string>
   <string name="status_bar_double_tap_to_sleep_title">Выключать экран при двойном нажатии</string>
@@ -736,6 +716,7 @@
   <string name="gestures_down_spen_title_head">Провести вниз</string>
   <string name="gestures_long_spen_title_head">Долгое нажатие</string>
   <string name="gestures_double_spen_title_head">Двойное нажатие</string>
+  <string name="gestures_settings_header_title">Жесты</string>
   <string name="gestures_action_empty">Нет действия</string>
   <string name="gestures_action_home">Домой</string>
   <string name="gestures_action_back">Назад</string>
@@ -796,7 +777,7 @@
   <string name="app_ops_summaries_read_mms">чтение MMS</string>
   <string name="app_ops_summaries_write_mms">создание MMS</string>
   <string name="app_ops_summaries_auto_start">автозапуск</string>
-  <string name="app_ops_labels_location">Громкость будильника</string>
+  <string name="app_ops_labels_location">Местоположение</string>
   <string name="app_ops_labels_vibrate">Вибросигнал</string>
   <string name="app_ops_labels_read_contacts">Чтение данных контактов</string>
   <string name="app_ops_labels_modify_contacts">Изменение контактов</string>
@@ -809,7 +790,7 @@
   <string name="app_ops_labels_read_sms_db">Чтение БД SMS-сообщений</string>
   <string name="app_ops_labels_write_sms_db">Запись БД SMS-сообщений</string>
   <string name="app_ops_labels_receive_sms">Получение SMS</string>
-  <string name="app_ops_labels_receive_mms">Получение SMS/MMS</string>
+  <string name="app_ops_labels_receive_mms">Получение MMS</string>
   <string name="app_ops_labels_send_sms">Отправка SMS</string>
   <string name="app_ops_labels_modify_settings">Изменение настроек</string>
   <string name="app_ops_labels_draw_on_top">Отображение поверх других элементов</string>
@@ -828,7 +809,7 @@
   <string name="app_ops_labels_alarm_volume">Аудиофокус</string>
   <string name="app_ops_labels_notification_volume">Общая громкость</string>
   <string name="app_ops_labels_bluetooth_volume">Громкость при разговоре</string>
-  <string name="app_ops_labels_keep_awake">Громкость звонка</string>
+  <string name="app_ops_labels_keep_awake">Активный режим</string>
   <string name="app_ops_labels_wifi_change">Изм. состояния Wi-Fi</string>
   <string name="app_ops_labels_bluetooth_change">Изм. состояния Bluetooth</string>
   <string name="app_ops_labels_data_change">Изм. состояния моб. интернета</string>
@@ -881,4 +862,8 @@
   <string name="autoperf_title">Профили приложений</string>
   <string name="autoperf_summary">Автоматически переключать профиль производительности в зависимости от приложения</string>
   <string name="graphics_title">Графика и рисование</string>
+  <string name="menu_hidden_apps_delete">Сброс</string>
+  <string name="menu_hidden_apps_reset_lock">Удалить граф. ключ</string>
+  <string name="protected_apps">Заблокир. приложения</string>
+  <string name="saving_protected_components">Сохранение состояния приложений\u2026</string>
 </resources>

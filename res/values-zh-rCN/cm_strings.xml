@@ -79,7 +79,7 @@
   <string name="profile_volumeoverrides_title">音量覆盖</string>
   <string name="connection_state_disabled">禁用</string>
   <string name="connection_state_enabled">启用</string>
-  <string name="volume_override_summary">设置为</string>
+  <string name="volume_override_summary">设置为 %1$s/%2$s</string>
   <string name="profile_profiles_manage">情景</string>
   <string name="profile_profile_manage">管理情景</string>
   <string name="profile_appgroups_manage">应用组</string>
@@ -191,9 +191,7 @@
   <string name="lockpattern_settings_enable_error_path_title">显示图案错误</string>
   <string name="lockpattern_settings_enable_dots_title">显示图案圆点</string>
   <string name="screen_security_category">屏幕安全</string>
-  <string name="screen_security_title">锁屏</string>
-  <string name="screen_security_summary">查看或改变锁屏安全性、延迟以及超时设置</string>
-  <string name="additional_options_title">更多选项</string>
+  <string name="screen_security_summary">查看或更改锁屏安全设置</string>
   <string name="unlock_menu_unlock_title">菜单键解锁</string>
   <string name="unlock_menu_unlock_summary">按下菜单键即可解锁设备</string>
   <string name="unlock_home_unlock_title">Home 键解锁</string>
@@ -203,20 +201,6 @@
   <string name="unlock_quick_unlock_control_title">快速解锁</string>
   <string name="unlock_quick_unlock_control_summary">当输入正确的 PIN 码或密码后自动解锁</string>
   <string name="unlock_buttons_disabled_by_security">锁屏是安全的</string>
-  <string name="delay_and_timeout_title">锁定延迟</string>
-  <string name="slide_lock_delay_title">延迟屏幕锁定</string>
-  <string name="slide_lock_timeout_delay_title">屏幕超时后的延迟</string>
-  <string name="slide_lock_screenoff_delay_title">屏幕关闭后的延迟</string>
-  <string name="slide_lock_delay_none">无</string>
-  <string name="slide_lock_delay_1s">1 秒</string>
-  <string name="slide_lock_delay_5s">5 秒</string>
-  <string name="slide_lock_delay_10s">10 秒</string>
-  <string name="slide_lock_delay_15s">15 秒</string>
-  <string name="slide_lock_delay_30s">30 秒</string>
-  <string name="slide_lock_delay_1m">1 分钟</string>
-  <string name="slide_lock_delay_5m">5 分钟</string>
-  <string name="slide_lock_delay_10m">10 分钟</string>
-  <string name="slide_lock_delay_30m">30 分钟</string>
   <string name="lockscreen_widgets_category_title">小部件</string>
   <string name="lockscreen_maximize_widgets_title">最大化小部件</string>
   <string name="lockscreen_maximize_widgets_summary">屏幕开启时最大化锁屏小部件</string>
@@ -290,7 +274,6 @@
   <string name="tiles_reset_title">重置</string>
   <string name="tiles_reset_message">您确定将显示的按钮与布局还原为默认？</string>
   <string name="auto_brightness_setup_title">自动亮度</string>
-  <string name="auto_brightness_adjustment_title">亮度调节</string>
   <string name="auto_brightness_twilight_adjustment">根据日出和日落调节亮度</string>
   <string name="light_sensor_current_value">目前光线传感器值：<xliff:g id="light_level">%d</xliff:g> lux</string>
   <string name="auto_brightness_dialog_title">自动亮度级别</string>
@@ -364,8 +347,7 @@
   <string name="quiet_hours_dim_summary">禁用通知指示灯</string>
   <string name="quiet_hours_haptic">触觉反馈</string>
   <string name="quiet_hours_haptic_summary">禁用触觉反馈</string>
-  <string name="quiet_hours_active_from">从</string>
-  <string name="quiet_hours_active_to">激活到</string>
+  <string name="quiet_hours_active_period">从 <xliff:g id="start">%1$s</xliff:g> 到 <xliff:g id="end">%2$s</xliff:g> 启用</string>
   <string name="quiet_hours_ringer_allow_all">所有来电响铃</string>
   <string name="quiet_hours_ringer_allow_contacts">所有联系人响铃</string>
   <string name="quiet_hours_ringer_allow_starred">常用联系人响铃</string>
@@ -494,13 +476,8 @@
   <string name="gamma_tuning_contrast">对比度</string>
   <string name="gamma_tuning_brightness">亮度</string>
   <string name="gamma_tuning_saturation">饱和度</string>
-  <string name="headset_category_title">耳机</string>
   <string name="headset_connect_player_title">启动音乐播放器</string>
   <string name="headset_connect_player_summary">插入耳机时启动默认音乐播放器</string>
-  <string name="more_device_controls_title">更多\u2026</string>
-  <string name="more_device_settings_title">其他设备选项</string>
-  <string name="sensors_motors_title">传感器 &amp; 振动</string>
-  <string name="display_calibration_title">屏幕校准</string>
   <string name="adb_notify">USB 调试通知</string>
   <string name="adb_notify_summary">USB 调试模式连接时将显示一个通知</string>
   <string name="adb_over_network">网络 ADB 调试</string>
@@ -647,8 +624,11 @@
   <string name="hardware_keys_action_in_app_search">程序内搜索</string>
   <string name="hardware_keys_action_launch_camera">启动相机</string>
   <string name="power_end_call_title">结束通话</string>
+  <string name="power_end_call_summary">按下电源按钮将结束当前通话</string>
   <string name="button_wake_title">唤醒</string>
   <string name="home_wake_summary">按 Home 键唤醒设备</string>
+  <string name="home_answer_call_title">接听电话</string>
+  <string name="home_answer_call_summary">按 Home 键将接听当前来电</string>
   <string name="camera_wake_summary">按相机键唤醒设备</string>
   <string name="camera_sleep_on_release_title">屏幕窥探</string>
   <string name="camera_sleep_on_release_summary">仅当按钮被按下的时候，半按将会保持屏幕点亮</string>
@@ -695,7 +675,6 @@
   <string name="status_bar_signal_style_text">文字</string>
   <string name="status_bar_toggle_brightness">亮度控制</string>
   <string name="status_bar_toggle_brightness_summary">由滑过状态栏调整亮度</string>
-  <string name="status_bar_toggle_info">自动亮度调节已开启</string>
   <string name="status_bar_notif_count_title">显示通知数量</string>
   <string name="status_bar_notif_count_summary">显示未读通知的数量</string>
   <string name="status_bar_double_tap_to_sleep_title">双击以睡眠</string>
@@ -732,6 +711,7 @@
   <string name="gestures_down_spen_title_head">下划</string>
   <string name="gestures_long_spen_title_head">长按</string>
   <string name="gestures_double_spen_title_head">双击</string>
+  <string name="gestures_settings_header_title">手势</string>
   <string name="gestures_action_empty">无操作</string>
   <string name="gestures_action_home">主屏幕</string>
   <string name="gestures_action_back">后退</string>
@@ -877,4 +857,8 @@
   <string name="autoperf_title">启用单应用配置</string>
   <string name="autoperf_summary">自动为各种应用选择适当的性能配置</string>
   <string name="graphics_title">图形和渲染</string>
+  <string name="menu_hidden_apps_delete">重置</string>
+  <string name="menu_hidden_apps_reset_lock">重置锁定图案</string>
+  <string name="protected_apps">受保护的应用</string>
+  <string name="saving_protected_components">正在保存组件状态\u2026</string>
 </resources>

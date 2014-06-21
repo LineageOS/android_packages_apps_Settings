@@ -79,7 +79,7 @@
   <string name="profile_volumeoverrides_title">Sovrascrittura volumi</string>
   <string name="connection_state_disabled">Disattivato</string>
   <string name="connection_state_enabled">Attivato</string>
-  <string name="volume_override_summary">Imposta a</string>
+  <string name="volume_override_summary">Impostato su %1$s/%2$s</string>
   <string name="profile_profiles_manage">Profili</string>
   <string name="profile_profile_manage">Gestisci profili</string>
   <string name="profile_appgroups_manage">Gruppi applicazioni</string>
@@ -191,9 +191,7 @@
   <string name="lockpattern_settings_enable_error_path_title">Sequenza errata visibile</string>
   <string name="lockpattern_settings_enable_dots_title">Punti sequenza visibili</string>
   <string name="screen_security_category">Schermata di sicurezza</string>
-  <string name="screen_security_title">Schermata di sblocco</string>
-  <string name="screen_security_summary">Visualizza o cambia il livello di sicurezza e le impostazioni per la schermata di sblocco</string>
-  <string name="additional_options_title">Opzioni aggiuntive</string>
+  <string name="screen_security_summary">Visualizza o modifica le impostazioni di sicurezza della schermata di sblocco</string>
   <string name="unlock_menu_unlock_title">Sblocca con Menu</string>
   <string name="unlock_menu_unlock_summary">Il tasto Menu sblocca il dispositivo</string>
   <string name="unlock_home_unlock_title">Sblocca con Home</string>
@@ -203,20 +201,6 @@
   <string name="unlock_quick_unlock_control_title">Sblocco rapido</string>
   <string name="unlock_quick_unlock_control_summary">Sblocca automaticamente quando il PIN/la password viene inserito in modo corretto</string>
   <string name="unlock_buttons_disabled_by_security">Schermata di sblocco sicura</string>
-  <string name="delay_and_timeout_title">Ritardo blocco</string>
-  <string name="slide_lock_delay_title">Ritardo schermata blocco</string>
-  <string name="slide_lock_timeout_delay_title">Dopo timeout schermo</string>
-  <string name="slide_lock_screenoff_delay_title">Dopo spegnimento schermo</string>
-  <string name="slide_lock_delay_none">Nessuno</string>
-  <string name="slide_lock_delay_1s">1 secondo</string>
-  <string name="slide_lock_delay_5s">5 secondi</string>
-  <string name="slide_lock_delay_10s">10 secondi</string>
-  <string name="slide_lock_delay_15s">15 secondi</string>
-  <string name="slide_lock_delay_30s">30 secondi</string>
-  <string name="slide_lock_delay_1m">1 minuto</string>
-  <string name="slide_lock_delay_5m">5 minuti</string>
-  <string name="slide_lock_delay_10m">10 minuti</string>
-  <string name="slide_lock_delay_30m">30 minuti</string>
   <string name="lockscreen_widgets_category_title">Widget</string>
   <string name="lockscreen_maximize_widgets_title">Massimizza widget</string>
   <string name="lockscreen_maximize_widgets_summary">Espandi i widget quando lo schermo viene acceso</string>
@@ -290,7 +274,6 @@
   <string name="tiles_reset_title">Reimposta</string>
   <string name="tiles_reset_message">Reimpostare i tile predefiniti e la loro disposizione?</string>
   <string name="auto_brightness_setup_title">Luminosità automatica</string>
-  <string name="auto_brightness_adjustment_title">Regolazione luminosità</string>
   <string name="auto_brightness_twilight_adjustment">Regolazione per alba e tramonto</string>
   <string name="light_sensor_current_value">Valore attuale sensore luminosità: <xliff:g id="light_level">%d</xliff:g> lux</string>
   <string name="auto_brightness_dialog_title">Livelli automatici di luminosità</string>
@@ -376,8 +359,7 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="quiet_hours_dim_summary">Disattiva la luce di notifica</string>
   <string name="quiet_hours_haptic">Feedback tattile</string>
   <string name="quiet_hours_haptic_summary">Disattiva il feedback tattile</string>
-  <string name="quiet_hours_active_from">Attiva dalle</string>
-  <string name="quiet_hours_active_to">alle</string>
+  <string name="quiet_hours_active_period">Attivo da <xliff:g id="start">%1$s</xliff:g> a <xliff:g id="end">%2$s</xliff:g></string>
   <string name="quiet_hours_ringer_allow_all">Squilla per tutti i chiamanti</string>
   <string name="quiet_hours_ringer_allow_contacts">Squilla per tutti i contatti</string>
   <string name="quiet_hours_ringer_allow_starred">Squilla per i contatti preferiti</string>
@@ -506,13 +488,8 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="gamma_tuning_contrast">Contrasto</string>
   <string name="gamma_tuning_brightness">Luminosità</string>
   <string name="gamma_tuning_saturation">Saturazione</string>
-  <string name="headset_category_title">Auricolari</string>
   <string name="headset_connect_player_title">Lancia lettore musicale</string>
   <string name="headset_connect_player_summary">Lancia il lettore musicale predefinito quando vengono connesse le cuffie</string>
-  <string name="more_device_controls_title">Altro\u2026</string>
-  <string name="more_device_settings_title">Altre opzioni del dispositivo</string>
-  <string name="sensors_motors_title">Sensori &amp; Motori</string>
-  <string name="display_calibration_title">Calibrazione display</string>
   <string name="adb_notify">Notifica debug USB</string>
   <string name="adb_notify_summary">Visualizza una notifica quando il debug USB è collegato</string>
   <string name="adb_over_network">ADB attraverso la rete</string>
@@ -626,7 +603,7 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="navring_action_torch">Commuta torcia</string>
   <string name="navring_action_google_now">Google Now</string>
   <string name="navring_choose_action_title">Scegli azione</string>
-  <string name="power_menu_title">Menu tasto accensione</string>
+  <string name="power_menu_title">Menu tasto alimentazione</string>
   <string name="power_menu_reboot_title">Menu riavvio</string>
   <string name="power_menu_screenshot_title">Cattura schermata</string>
   <string name="power_menu_expanded_desktop">Desktop esteso</string>
@@ -710,7 +687,6 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="status_bar_signal_style_text">Testo</string>
   <string name="status_bar_toggle_brightness">Controllo luminosità</string>
   <string name="status_bar_toggle_brightness_summary">Modifica la luminosità strisciando sulla barra di stato</string>
-  <string name="status_bar_toggle_info">Luminosità automatica attiva</string>
   <string name="status_bar_notif_count_title">Mostra contatore notifiche</string>
   <string name="status_bar_notif_count_summary">Visualizza il numero di notifiche in sospeso</string>
   <string name="status_bar_double_tap_to_sleep_title">Doppio tocco per sospendere</string>
@@ -747,6 +723,7 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="gestures_down_spen_title_head">Scorrimento in basso</string>
   <string name="gestures_long_spen_title_head">Pressione prolungata</string>
   <string name="gestures_double_spen_title_head">Doppio tocco</string>
+  <string name="gestures_settings_header_title">Gesture</string>
   <string name="gestures_action_empty">Nessuna azione</string>
   <string name="gestures_action_home">Home</string>
   <string name="gestures_action_back">Indietro</string>
@@ -892,4 +869,8 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="autoperf_title">Attiva profili per app</string>
   <string name="autoperf_summary">Scegli automaticamente un adeguato profilo prestazioni per varie applicazioni</string>
   <string name="graphics_title">Grafica e rendering</string>
+  <string name="menu_hidden_apps_delete">Ripristina</string>
+  <string name="menu_hidden_apps_reset_lock">Ripristina schema blocco</string>
+  <string name="protected_apps">App protette</string>
+  <string name="saving_protected_components">Salvataggio stato componente\u2026</string>
 </resources>
