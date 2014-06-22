@@ -21,7 +21,12 @@
         android:title="@string/usb_tethering_button_text"
         android:persistent="false" />
 
-    <CheckBoxPreference
+    <PreferenceScreen
+        android:fragment="com.android.settings.APSettings"
+        android:key="ap_settings"
+        android:title="@string/wifi_tether_checkbox_text" />
+
+    <!--<CheckBoxPreference
         android:key="enable_wifi_ap"
         android:title="@string/wifi_tether_checkbox_text"
         android:persistent="false" />
@@ -29,7 +34,7 @@
     <Preference
         android:key="wifi_ap_ssid_and_security"
         android:title="@string/wifi_tether_configure_ap_text"
-        android:persistent="false" />
+        android:persistent="false" />-->
 
     <CheckBoxPreference
         android:key="enable_bluetooth_tethering"
