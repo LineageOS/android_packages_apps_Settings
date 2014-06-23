@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 The CyanogenMod Project
+ * Copyright (C) 2013-2014 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -73,6 +73,7 @@ public class NavRing extends Fragment implements
             mAvailableEntries.add(getString(entryResId));
             mAvailableValues.add(action);
         }
+
         public int getActionIndex(String action) {
             int count = mAvailableValues.size();
             for (int i = 0; i < count; i++) {
@@ -80,14 +81,18 @@ public class NavRing extends Fragment implements
                     return i;
                 }
             }
+
             return -1;
         }
+
         public String getAction(int index) {
             if (index > mAvailableValues.size()) {
                 return null;
             }
+
             return mAvailableValues.get(index);
         }
+
         public CharSequence[] getEntries() {
             return mAvailableEntries.toArray(new CharSequence[mAvailableEntries.size()]);
         }
@@ -101,7 +106,8 @@ public class NavRing extends Fragment implements
         createActionList();
 
         mIsScreenLarge = !Utils.isPhone(getActivity());
-        mIsLandscape = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
+        mIsLandscape = getResources().getConfiguration().orientation ==
+                Configuration.ORIENTATION_LANDSCAPE;
 
         mPicker = new ShortcutPickHelper(getActivity(), this);
 
@@ -128,17 +134,18 @@ public class NavRing extends Fragment implements
         }
 
         mActions.addAction(ACTION_SCREENSHOT, R.string.navring_action_take_screenshot);
-        mActions.addAction(ACTION_IME, R.string.navring_action_open_ime_switcher);
+        mActions.addAction(ACTION_IME_SWITCHER, R.string.navring_action_open_ime_switcher);
         mActions.addAction(ACTION_SILENT, R.string.navring_action_ring_silent);
 
         Vibrator vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
         if (vibrator != null && vibrator.hasVibrator()) {
             mActions.addAction(ACTION_VIBRATE, R.string.navring_action_ring_vibrate);
-            mActions.addAction(ACTION_RING_SILENT_VIBRATE, R.string.navring_action_ring_vibrate_silent);
+            mActions.addAction(ACTION_RING_SILENT_VIBRATE,
+                    R.string.navring_action_ring_vibrate_silent);
         }
 
-        mActions.addAction(ACTION_KILL, R.string.navring_action_kill_app);
-        mActions.addAction(ACTION_POWER, R.string.navring_action_screen_off);
+        mActions.addAction(ACTION_KILL_TASK, R.string.navring_action_kill_app);
+        mActions.addAction(ACTION_STANDBY, R.string.navring_action_screen_off);
 
         mActions.addAction(ACTION_APP, R.string.select_application);
     }
@@ -155,20 +162,21 @@ public class NavRing extends Fragment implements
             mEndPosOffset =  2;
         }
 
-         // Add Initial Place Holder Targets
+         // Add initial placeholder targets
         for (int i = 0; i < mStartPosOffset; i++) {
             targets.add(NavigationRingHelpers.getTargetDrawable(context, null));
         }
-        // Add User Targets
+
+        // Add user targets
         for (int i = 0; i < mTargetActivities.length; i++) {
             final TargetDrawable drawable =
                     NavigationRingHelpers.getTargetDrawable(context, mTargetActivities[i]);
-            // we also want empty targets to be selectable here
+            // We also want empty targets to be selectable here
             drawable.setEnabled(true);
             targets.add(drawable);
         }
 
-        // Add End Place Holder Targets
+        // Add end place holder targets
         for (int i = 0; i < mEndPosOffset; i++) {
             targets.add(NavigationRingHelpers.getTargetDrawable(context, null));
         }
@@ -190,10 +198,10 @@ public class NavRing extends Fragment implements
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.add(0, MENU_RESET, 0, R.string.profile_reset_title)
-            .setIcon(R.drawable.ic_settings_backup)
-            .setAlphabeticShortcut('r')
-            .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM |
-                MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+                .setIcon(R.drawable.ic_settings_backup)
+                .setAlphabeticShortcut('r')
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM |
+                        MenuItem.SHOW_AS_ACTION_WITH_TEXT);
     }
 
     @Override
@@ -234,6 +242,7 @@ public class NavRing extends Fragment implements
             Settings.System.putString(cr,
                     Settings.System.NAVIGATION_RING_TARGETS[i], mTargetActivities[i]);
         }
+
         setDrawables();
     }
 
@@ -292,17 +301,21 @@ public class NavRing extends Fragment implements
 
     @Override
     public void onGrabbed(View v, int handle) {
+        // Do nothing here
     }
 
     @Override
     public void onReleased(View v, int handle) {
+        // Do nothing here
     }
 
     @Override
     public void onGrabbedStateChange(View v, int handle) {
+        // Do nothing here
     }
 
     @Override
     public void onFinishFinalAnimation() {
+        // Do nothing here
     }
 }
