@@ -1,0 +1,446 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba0121b8_33cf18b2",
+        "filename": "res/xml/tether_prefs.xml",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-23T19:20:41Z",
+      "side": 1,
+      "message": "Please remove that stuff instead of commenting it.",
+      "revId": "1d9dd142ac66bf10eeadb503913a9e7e707e5140",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_93c42493",
+        "filename": "src/com/android/settings/APSettings.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-23T19:20:41Z",
+      "side": 1,
+      "message": "This should go into the com.android.settings.wifi package.",
+      "revId": "1d9dd142ac66bf10eeadb503913a9e7e707e5140",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_73c19080",
+        "filename": "src/com/android/settings/APSettings.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-23T19:20:41Z",
+      "side": 1,
+      "message": "Naming this class WifiApSettings would make it more consistent with the naming of other classes.",
+      "revId": "1d9dd142ac66bf10eeadb503913a9e7e707e5140",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_d355fcc6",
+        "filename": "src/com/android/settings/APSettings.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-23T19:20:41Z",
+      "side": 1,
+      "message": "http://source.android.com/source/code-style.html#follow-field-naming-conventions\n\n(applies below as well)",
+      "revId": "1d9dd142ac66bf10eeadb503913a9e7e707e5140",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_b35208dc",
+        "filename": "src/com/android/settings/APSettings.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-23T19:20:41Z",
+      "side": 1,
+      "message": "No need to make those two member variables.",
+      "revId": "1d9dd142ac66bf10eeadb503913a9e7e707e5140",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_135e54e9",
+        "filename": "src/com/android/settings/APSettings.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-23T19:20:41Z",
+      "side": 1,
+      "message": "http://source.android.com/source/code-style.html#be-consistent (use camelCase)",
+      "revId": "1d9dd142ac66bf10eeadb503913a9e7e707e5140",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_f362c0ac",
+        "filename": "src/com/android/settings/APSettings.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-23T19:20:41Z",
+      "side": 1,
+      "message": "Better add that category to the XML file and retrieve it via findPreference here.",
+      "revId": "1d9dd142ac66bf10eeadb503913a9e7e707e5140",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_335d58ea",
+        "filename": "src/com/android/settings/APSettings.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-23T19:20:41Z",
+      "side": 1,
+      "message": "This is - sorry - utterly wrong. This thread will never stop after opening this fragment. The right approach is:\n\n- Create a HandlerThread\n- Create a Handler which updates the connected client preference list \n- Create a Handler which is linked to the HandlerThread\u0027s looper and which \n    - fetches a list of connected clients\n    - on scan complete, sends a message containing the new list to the preference update handler\n    - afterwards, sends a delayed message to schedule the next scan\n- start the HandlerThread in onStart()\n- quit it in onStop()\n\nThat way, everything will be properly shut down and preference updates will properly happen in the main thread.",
+      "revId": "1d9dd142ac66bf10eeadb503913a9e7e707e5140",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_9372647b",
+        "filename": "src/com/android/settings/APSettings.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-23T19:20:41Z",
+      "side": 1,
+      "message": "This doesn\u0027t work. Use equals().",
+      "revId": "1d9dd142ac66bf10eeadb503913a9e7e707e5140",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_736fd092",
+        "filename": "src/com/android/settings/APSettings.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-23T19:20:41Z",
+      "side": 1,
+      "message": "100 chars.\n\nI also suggest to convert the reachable and unreachable strings to format strings:\n\n\u003cstring name\u003d\"wifi_ap_client_reachable\"\u003e\u003cxliff:g id\u003d\"addr\"\u003e%1$s\u003c/xliff:g\u003e - reachable\u003c/string\u003e\n\n(likewise for unreachable)\n\nThat way using is is easier:\nint summaryResId \u003d clientScanResult.isReachable() ? R.string.wifi_ap_client_reachable : R.string.wifi_ap_client_unreachable;\npreference.setSummary(getString(summaryResId, clientScanResult.getHwAddr()));",
+      "revId": "1d9dd142ac66bf10eeadb503913a9e7e707e5140",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_1305b4c1",
+        "filename": "src/com/android/settings/APSettings.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-23T19:20:41Z",
+      "side": 1,
+      "message": "This method is redundant and can be removed.",
+      "revId": "1d9dd142ac66bf10eeadb503913a9e7e707e5140",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_f30920df",
+        "filename": "src/com/android/settings/APSettings.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-23T19:20:41Z",
+      "side": 1,
+      "message": "http://source.android.com/source/code-style.html#follow-field-naming-conventions\n\nAlso please remove those redundant newlines inbetween.",
+      "revId": "1d9dd142ac66bf10eeadb503913a9e7e707e5140",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_530f2ce1",
+        "filename": "src/com/android/settings/APSettings.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-23T19:20:41Z",
+      "side": 1,
+      "message": "100 chars.",
+      "revId": "1d9dd142ac66bf10eeadb503913a9e7e707e5140",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_d3033cb7",
+        "filename": "src/com/android/settings/APSettings.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-23T19:20:41Z",
+      "side": 1,
+      "message": "This code already runs in a background thread, no need to fire up another one. Just execute the code synchronously.",
+      "revId": "1d9dd142ac66bf10eeadb503913a9e7e707e5140",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_b30048ac",
+        "filename": "src/com/android/settings/APSettings.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-23T19:20:41Z",
+      "side": 1,
+      "message": "String.split() never returns null, so that check is useless.",
+      "revId": "1d9dd142ac66bf10eeadb503913a9e7e707e5140",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_132c9449",
+        "filename": "src/com/android/settings/APSettings.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-23T19:20:41Z",
+      "side": 1,
+      "message": "Check above needs to check for length \u003e\u003d 6 if splitted[5] is accessed.\n\nAlso 100 chars.",
+      "revId": "1d9dd142ac66bf10eeadb503913a9e7e707e5140",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_f33000a1",
+        "filename": "src/com/android/settings/APSettings.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-23T19:20:41Z",
+      "side": 1,
+      "message": "http://source.android.com/source/code-style.html#dont-catch-generic-exception\n\nIf you have a specific one in mind, catch that one, else don\u0027t catch at all.",
+      "revId": "1d9dd142ac66bf10eeadb503913a9e7e707e5140",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_b369688e",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-23T19:20:41Z",
+      "side": 1,
+      "message": "Can\u0027t this be removed now?",
+      "revId": "1d9dd142ac66bf10eeadb503913a9e7e707e5140",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_b3bb280e",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-23T19:20:41Z",
+      "side": 1,
+      "message": "Variable needs renaming now, e.g. KEY_WIFI_AP_SETTINGS",
+      "revId": "1d9dd142ac66bf10eeadb503913a9e7e707e5140",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_133774b1",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-23T19:20:41Z",
+      "side": 1,
+      "message": "Please don\u0027t comment out old code.",
+      "revId": "1d9dd142ac66bf10eeadb503913a9e7e707e5140",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_f33be09a",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-23T19:20:41Z",
+      "side": 1,
+      "message": "As above, please remove this.",
+      "revId": "1d9dd142ac66bf10eeadb503913a9e7e707e5140",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_d36cdc9e",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-23T19:20:41Z",
+      "side": 1,
+      "message": "Can\u0027t this be removed now?",
+      "revId": "1d9dd142ac66bf10eeadb503913a9e7e707e5140",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_5341ec0a",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-23T19:20:41Z",
+      "side": 1,
+      "message": "As above.",
+      "revId": "1d9dd142ac66bf10eeadb503913a9e7e707e5140",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_3346f823",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-23T19:20:41Z",
+      "side": 1,
+      "message": "As above.",
+      "revId": "1d9dd142ac66bf10eeadb503913a9e7e707e5140",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_934b842b",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-23T19:20:41Z",
+      "side": 1,
+      "message": "As above.",
+      "revId": "1d9dd142ac66bf10eeadb503913a9e7e707e5140",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_7348702e",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-23T19:20:41Z",
+      "side": 1,
+      "message": "As above.",
+      "revId": "1d9dd142ac66bf10eeadb503913a9e7e707e5140",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
