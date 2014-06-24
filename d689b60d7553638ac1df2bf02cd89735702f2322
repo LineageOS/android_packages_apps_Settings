@@ -1,0 +1,208 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba0121b8_7995f13e",
+        "filename": "src/com/android/settings/cyanogenmod/NotificationDrawer.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-24T19:45:25Z",
+      "side": 1,
+      "message": "Use the constant here: Settings.System.HEADS_UP_NOTIFICATION",
+      "revId": "d689b60d7553638ac1df2bf02cd89735702f2322",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_999c456b",
+        "filename": "src/com/android/settings/headsup/HeadsUpSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-24T19:45:25Z",
+      "side": 1,
+      "message": "http://source.android.com/source/code-style.html#fully-qualify-imports\n\n(same for the two below)\n\nYour IDE settings might need tuning ;)",
+      "revId": "d689b60d7553638ac1df2bf02cd89735702f2322",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_f9874110",
+        "filename": "src/com/android/settings/headsup/HeadsUpSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-24T19:45:25Z",
+      "side": 1,
+      "message": "We might want to start putting this thing into a utility class, don\u0027t we?",
+      "revId": "d689b60d7553638ac1df2bf02cd89735702f2322",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_39825901",
+        "filename": "src/com/android/settings/headsup/HeadsUpSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-24T19:45:25Z",
+      "side": 1,
+      "message": "Why is this needed? AFAICT, the preference categories don\u0027t change after addPreferencesFromResource().",
+      "revId": "d689b60d7553638ac1df2bf02cd89735702f2322",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_797cd120",
+        "filename": "src/com/android/settings/headsup/HeadsUpSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-24T19:45:25Z",
+      "side": 1,
+      "message": "I would drop that method and instantiate the two add preferences in XML. Then fetch them via findPreference in onCreate(). When repopulating the list, simply to removeAll(), add the packages and then add those two at the end of their respective lists.",
+      "revId": "d689b60d7553638ac1df2bf02cd89735702f2322",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_f98e2126",
+        "filename": "src/com/android/settings/headsup/HeadsUpSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-24T19:45:25Z",
+      "side": 1,
+      "message": "You could spare the duplication by changing the signature:\n\naddCustomApplicationPrefToList(String packageName, Map\u003cString, Package\u003e map)",
+      "revId": "d689b60d7553638ac1df2bf02cd89735702f2322",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_59790d2f",
+        "filename": "src/com/android/settings/headsup/HeadsUpSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-24T19:45:25Z",
+      "side": 1,
+      "message": "Line wrap unneeded?",
+      "revId": "d689b60d7553638ac1df2bf02cd89735702f2322",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_d9935d4e",
+        "filename": "src/com/android/settings/headsup/HeadsUpSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-24T19:45:25Z",
+      "side": 1,
+      "message": "As before: removeApplicationPref(String packageName, Map\u003cString, Package\u003e map)",
+      "revId": "d689b60d7553638ac1df2bf02cd89735702f2322",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_9973a54d",
+        "filename": "src/com/android/settings/headsup/HeadsUpSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-24T19:45:25Z",
+      "side": 1,
+      "message": "Nit: Wouldn\u0027t this be more readable?\n\nif (baseString \u003d\u003d null) {\n    return;\n}\nfinal String[] ...",
+      "revId": "d689b60d7553638ac1df2bf02cd89735702f2322",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_b976693c",
+        "filename": "src/com/android/settings/headsup/HeadsUpSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-24T19:45:25Z",
+      "side": 1,
+      "message": "This check is useless, Package.fromString() already does it.",
+      "revId": "d689b60d7553638ac1df2bf02cd89735702f2322",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_59a0ed90",
+        "filename": "src/com/android/settings/headsup/HeadsUpSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-24T19:45:25Z",
+      "side": 1,
+      "message": "As before: savePackageList(boolean updated, Map\u003cString, Package\u003e map)\n\nFor\nthen do\n\nString setting \u003d map \u003d\u003d mDndPackageList\n        ? Settings.System.HEADS_UP_CUSTOM_VALUES\n        : Settings.System.HEADS_UP_BLACKLIST_VALUES;",
+      "revId": "d689b60d7553638ac1df2bf02cd89735702f2322",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0121b8_b9adc98a",
+        "filename": "src/com/android/settings/headsup/HeadsUpSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-06-24T19:45:25Z",
+      "side": 1,
+      "message": "AFAICT, that can\u0027t happen.",
+      "revId": "d689b60d7553638ac1df2bf02cd89735702f2322",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
