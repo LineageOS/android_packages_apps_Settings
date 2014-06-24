@@ -16,18 +16,13 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
-            android:title="@string/category_heads_up">
-
-        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
-                android:key="heads_up_enabled"
-                android:title="@string/title_heads_up_enabled"
-                android:defaultValue="false" />
-
+            android:title="@string/heads_up_dnd_title"
+            android:key="dnd_applications_list">
     </PreferenceCategory>
 
     <PreferenceCategory
-            android:key="applications_list"
-            android:title="@string/heads_up_dnd_title" >
+            android:title="@string/heads_up_blacklist_title"
+            android:key="blacklist_applications">
     </PreferenceCategory>
 
 </PreferenceScreen>
