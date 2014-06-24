@@ -16,9 +16,10 @@
 
 package com.android.settings.headsup;
 
+import android.app.ActionBar;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -29,32 +30,53 @@ import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.CheckBoxPreference;
 import android.preference.Preference;
+import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
 import android.provider.Settings;
 import android.text.TextUtils;
-import android.util.Log;
-import android.view.*;
-import android.widget.*;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.Switch;
+import android.widget.TextView;
+
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeSet;
 
-public class HeadsUpDoNotDisturbSettings extends SettingsPreferenceFragment
-        implements AdapterView.OnItemLongClickListener, Preference.OnPreferenceChangeListener {
+public class HeadsUpSettings extends SettingsPreferenceFragment
+        implements AdapterView.OnItemLongClickListener, Preference.OnPreferenceClickListener {
 
-    private static final int DIALOG_APPS = 0;
-    private static final int MENU_ADD = 0;
+    private static final int DIALOG_DND_APPS = 0;
+    private static final int DIALOG_BLACKLIST_APPS = 1;
 
     private PackageAdapter mPackageAdapter;
     private PackageManager mPackageManager;
-    private PreferenceGroup mApplicationPrefList;
-    private CheckBoxPreference mEnabledPref;
+    private PreferenceGroup mDndPrefList;
+    private PreferenceGroup mBlacklistPrefList;
+    private Preference mAddDndPref;
+    private Preference mAddBlacklistPref;
 
-    private String mPackageList;
-    private Map<String, Package> mPackages;
+    private String mDndPackageList;
+    private String mBlacklistPackageList;
+    private Map<String, Package> mDndPackages;
+    private Map<String, Package> mBlacklistPackages;
+
+    private Switch mActionBarSwitch;
+    private HeadsUpEnabler mHeadsUpEnabler;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,18 +86,49 @@ public class HeadsUpDoNotDisturbSettings extends SettingsPreferenceFragment
         mPackageManager = getPackageManager();
         mPackageAdapter = new PackageAdapter();
 
-        mEnabledPref = (CheckBoxPreference)
-                findPreference(Settings.System.HEADS_UP_NOTIFICATION);
-        mEnabledPref.setOnPreferenceChangeListener(this);
+        mDndPrefList = (PreferenceGroup) findPreference("dnd_applications_list");
+        mDndPrefList.setOrderingAsAdded(false);
 
-        mApplicationPrefList = (PreferenceGroup) findPreference("applications_list");
-        mApplicationPrefList.setOrderingAsAdded(false);
+        mBlacklistPrefList = (PreferenceGroup) findPreference("blacklist_applications");
+        mBlacklistPrefList.setOrderingAsAdded(false);
 
-        mPackages = new HashMap<String, Package>();
+        mDndPackages = new HashMap<String, Package>();
+        mBlacklistPackages = new HashMap<String, Package>();
+
+        mAddDndPref = findPreference("add_dnd_packages");
+        mAddBlacklistPref = findPreference("add_blacklist_packages");
+
+        mAddDndPref.setOnPreferenceClickListener(this);
+        mAddBlacklistPref.setOnPreferenceClickListener(this);
     }
 
     @Override
     public void onActivityCreated(Bundle icicle) {
+        // We don't call super.onActivityCreated() here, since it assumes we already set up
+        // Preference (probably in onCreate()), while ProfilesSettings exceptionally set it up in
+        // this method.
+        // On/off switch
+        Activity activity = getActivity();
+        //Switch
+        mActionBarSwitch = new Switch(activity);
+
+        if (activity instanceof PreferenceActivity) {
+            PreferenceActivity preferenceActivity = (PreferenceActivity) activity;
+            if (preferenceActivity.onIsHidingHeaders() || !preferenceActivity.onIsMultiPane()) {
+                final int padding = activity.getResources().getDimensionPixelSize(
+                        R.dimen.action_bar_switch_padding);
+                mActionBarSwitch.setPaddingRelative(0, 0, padding, 0);
+                activity.getActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM,
+                        ActionBar.DISPLAY_SHOW_CUSTOM);
+                activity.getActionBar().setCustomView(mActionBarSwitch, new ActionBar.LayoutParams(
+                        ActionBar.LayoutParams.WRAP_CONTENT,
+                        ActionBar.LayoutParams.WRAP_CONTENT,
+                        Gravity.CENTER_VERTICAL | Gravity.END));
+            }
+        }
+
+        mHeadsUpEnabler = new HeadsUpEnabler(activity, mActionBarSwitch);
+        // After confirming PreferenceScreen is available, we call super.
         super.onActivityCreated(icicle);
         setHasOptionsMenu(true);
     }
@@ -83,27 +136,20 @@ public class HeadsUpDoNotDisturbSettings extends SettingsPreferenceFragment
     @Override
     public void onResume() {
         super.onResume();
-        refreshDefault();
+        if (mHeadsUpEnabler != null) {
+            mHeadsUpEnabler.resume();
+        }
         refreshCustomApplicationPrefs();
         getListView().setOnItemLongClickListener(this);
         getActivity().invalidateOptionsMenu();
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.headsup, menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.heads_up_dnd_add:
-                showDialog(DIALOG_APPS);
-                return true;
+    public void onPause() {
+        super.onPause();
+        if (mHeadsUpEnabler != null) {
+            mHeadsUpEnabler.pause();
         }
-
-        return super.onOptionsItemSelected(item);
     }
 
     /**
@@ -113,27 +159,35 @@ public class HeadsUpDoNotDisturbSettings extends SettingsPreferenceFragment
     public Dialog onCreateDialog(int id) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         final Dialog dialog;
+        final ListView list = new ListView(getActivity());
+        list.setAdapter(mPackageAdapter);
+
+        builder.setTitle(R.string.profile_choose_app);
+        builder.setView(list);
+        dialog = builder.create();
+
         switch (id) {
-            case DIALOG_APPS:
-                final ListView list = new ListView(getActivity());
-                list.setAdapter(mPackageAdapter);
-
-                builder.setTitle(R.string.profile_choose_app);
-                builder.setView(list);
-                dialog = builder.create();
-
+            case DIALOG_DND_APPS:
                 list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        // Add empty application definition, the user will be able to edit it later
+                    public void onItemClick(AdapterView<?> parent,
+                                            View view, int position, long id) {
                         PackageItem info = (PackageItem) parent.getItemAtPosition(position);
-                        addCustomApplicationPref(info.packageName);
+                        addCustomApplicationPref(info.packageName, mDndPackages);
                         dialog.cancel();
                     }
                 });
                 break;
-            default:
-                dialog = null;
+            case DIALOG_BLACKLIST_APPS:
+                list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent,
+                                            View view, int position, long id) {
+                        PackageItem info = (PackageItem) parent.getItemAtPosition(position);
+                        addCustomApplicationPref(info.packageName, mBlacklistPackages);
+                        dialog.cancel();
+                    }
+                });
         }
         return dialog;
     }
@@ -271,13 +325,17 @@ public class HeadsUpDoNotDisturbSettings extends SettingsPreferenceFragment
             if (convertView != null) {
                 holder = (ViewHolder) convertView.getTag();
             } else {
-                final LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                final LayoutInflater layoutInflater =
+                        (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 convertView = layoutInflater.inflate(R.layout.preference_icon, null, false);
                 holder = new ViewHolder();
                 convertView.setTag(holder);
-                holder.title = (TextView) convertView.findViewById(com.android.internal.R.id.title);
-                holder.summary = (TextView) convertView.findViewById(com.android.internal.R.id.summary);
-                holder.icon = (ImageView) convertView.findViewById(R.id.icon);
+                holder.title = (TextView)
+                        convertView.findViewById(com.android.internal.R.id.title);
+                holder.summary = (TextView)
+                        convertView.findViewById(com.android.internal.R.id.summary);
+                holder.icon = (ImageView)
+                        convertView.findViewById(R.id.icon);
             }
             PackageItem applicationInfo = getItem(position);
 
@@ -286,7 +344,8 @@ public class HeadsUpDoNotDisturbSettings extends SettingsPreferenceFragment
 
             boolean needSummary = applicationInfo.activityTitles.size() > 0;
             if (applicationInfo.activityTitles.size() == 1) {
-                if (TextUtils.equals(applicationInfo.title, applicationInfo.activityTitles.first())) {
+                if (TextUtils.equals(applicationInfo.title,
+                        applicationInfo.activityTitles.first())) {
                     needSummary = false;
                 }
             }
@@ -308,128 +367,161 @@ public class HeadsUpDoNotDisturbSettings extends SettingsPreferenceFragment
         ImageView icon;
     }
 
-    /**
-     * Updates package.
-     *
-     * @param packageName Package name of application specific settings to update
-     */
-    protected void updateValues(String packageName) {
-        Package app = mPackages.get(packageName);
-        if (app != null) {
-            savePackageList(true);
-        }
-    }
-
-    private void refreshDefault() {
-        mApplicationPrefList = (PreferenceGroup) findPreference("applications_list");
-        mApplicationPrefList.setOrderingAsAdded(false);
-    }
-
     private void refreshCustomApplicationPrefs() {
-        Context context = getActivity();
-
         if (!parsePackageList()) {
             return;
         }
 
         // Add the Application Preferences
-        if (mApplicationPrefList != null) {
-            mApplicationPrefList.removeAll();
+        if (mDndPrefList != null && mBlacklistPrefList != null) {
+            mDndPrefList.removeAll();
+            mBlacklistPrefList.removeAll();
 
-            for (Package pkg : mPackages.values()) {
+            for (Package pkg : mDndPackages.values()) {
                 try {
-                    PackageInfo info = mPackageManager.getPackageInfo(pkg.name,
-                            PackageManager.GET_META_DATA);
-                    Preference pref =
-                            new Preference(context);
+                    Preference pref = createPreferenceFromInfo(pkg);
+                    mDndPrefList.addPreference(pref);
+                } catch (PackageManager.NameNotFoundException e) {
+                    // Do nothing
+                }
+            }
 
-                    pref.setKey(pkg.name);
-                    pref.setTitle(info.applicationInfo.loadLabel(mPackageManager));
-                    pref.setIcon(info.applicationInfo.loadIcon(mPackageManager));
-                    pref.setPersistent(false);
-                    pref.setOnPreferenceChangeListener(this);
-
-                    mApplicationPrefList.addPreference(pref);
+            for (Package pkg : mBlacklistPackages.values()) {
+                try {
+                    Preference pref = createPreferenceFromInfo(pkg);
+                    mBlacklistPrefList.addPreference(pref);
                 } catch (PackageManager.NameNotFoundException e) {
                     // Do nothing
                 }
             }
         }
+
+        // Keep these at the top
+        mAddDndPref.setOrder(0);
+        mAddBlacklistPref.setOrder(0);
+        // Add 'add' options
+        mDndPrefList.addPreference(mAddDndPref);
+        mBlacklistPrefList.addPreference(mAddBlacklistPref);
     }
 
-    public boolean onPreferenceChange(Preference preference, Object objValue) {
-        if (preference == mEnabledPref) {
-            getActivity().invalidateOptionsMenu();
-        }else {
-            Preference pref = preference;
-            updateValues(pref.getKey());
+    @Override
+    public boolean onPreferenceClick(Preference preference) {
+        if (preference == mAddDndPref) {
+            showDialog(DIALOG_DND_APPS);
+        }
+
+        if (preference == mAddBlacklistPref) {
+            showDialog(DIALOG_BLACKLIST_APPS);
         }
         return true;
     }
 
-    private void addCustomApplicationPref(String packageName) {
-        Package pkg = mPackages.get(packageName);
+    private void addCustomApplicationPref(String packageName, Map<String,Package> map) {
+        Package pkg = map.get(packageName);
         if (pkg == null) {
             pkg = new Package(packageName);
-            mPackages.put(packageName, pkg);
-            savePackageList(false);
+            map.put(packageName, pkg);
+            savePackageList(false, map);
             refreshCustomApplicationPrefs();
         }
     }
 
-    private void removeCustomApplicationPref(String packageName) {
-        if (mPackages.remove(packageName) != null) {
-            savePackageList(false);
+    private Preference createPreferenceFromInfo(Package pkg)
+            throws PackageManager.NameNotFoundException {
+        PackageInfo info = mPackageManager.getPackageInfo(pkg.name,
+                PackageManager.GET_META_DATA);
+        Preference pref =
+                new Preference(getActivity());
+
+        pref.setKey(pkg.name);
+        pref.setTitle(info.applicationInfo.loadLabel(mPackageManager));
+        pref.setIcon(info.applicationInfo.loadIcon(mPackageManager));
+        pref.setPersistent(false);
+        return pref;
+    }
+
+    private void removeApplicationPref(String packageName, Map<String,Package> map) {
+        if (map.remove(packageName) != null) {
+            savePackageList(false, map);
             refreshCustomApplicationPrefs();
         }
     }
 
     private boolean parsePackageList() {
-        final String baseString = Settings.System.getString(getContentResolver(),
+        boolean parsed = false;
+
+        final String dndString = Settings.System.getString(getContentResolver(),
                 Settings.System.HEADS_UP_CUSTOM_VALUES);
+        final String blacklistString = Settings.System.getString(getContentResolver(),
+                Settings.System.HEADS_UP_BLACKLIST_VALUES);
 
-        if (TextUtils.equals(mPackageList, baseString)) {
-            return false;
+        if (!TextUtils.equals(mDndPackageList, dndString)) {
+            mDndPackageList = dndString;
+            mDndPackages.clear();
+            parseAndAddToMap(dndString, mDndPackages);
+            parsed = true;
         }
 
-        mPackageList = baseString;
-        mPackages.clear();
-
-        if (baseString != null) {
-            final String[] array = TextUtils.split(baseString, "\\|");
-            for (String item : array) {
-                if (TextUtils.isEmpty(item)) {
-                    continue;
-                }
-                Package pkg = Package.fromString(item);
-                if (pkg != null) {
-                    mPackages.put(pkg.name, pkg);
-                }
-            }
+        if (!TextUtils.equals(mBlacklistPackageList, blacklistString)) {
+            mBlacklistPackageList = blacklistString;
+            mBlacklistPackages.clear();
+            parseAndAddToMap(blacklistString, mBlacklistPackages);
+            parsed = true;
         }
 
-        return true;
+        return parsed;
     }
 
-    private void savePackageList(boolean preferencesUpdated) {
+    private void parseAndAddToMap(String baseString, Map<String,Package> map) {
+        if (baseString == null) {
+            return;
+        }
+
+        final String[] array = TextUtils.split(baseString, "\\|");
+        for (String item : array) {
+            if (TextUtils.isEmpty(item)) {
+                continue;
+            }
+            Package pkg = Package.fromString(item);
+            map.put(pkg.name, pkg);
+        }
+    }
+
+    private void savePackageList(boolean preferencesUpdated, Map<String,Package> map) {
+        String setting = map == mDndPackages
+                ? Settings.System.HEADS_UP_CUSTOM_VALUES
+                : Settings.System.HEADS_UP_BLACKLIST_VALUES;
+
         List<String> settings = new ArrayList<String>();
-        for (Package app : mPackages.values()) {
+        for (Package app : map.values()) {
             settings.add(app.toString());
         }
         final String value = TextUtils.join("|", settings);
         if (preferencesUpdated) {
-            mPackageList = value;
+            if (TextUtils.equals(setting, Settings.System.HEADS_UP_CUSTOM_VALUES)) {
+                mDndPackageList = value;
+            } else {
+                mBlacklistPackageList = value;
+            }
         }
         Settings.System.putString(getContentResolver(),
-                Settings.System.HEADS_UP_CUSTOM_VALUES, value);
+                setting, value);
     }
 
+    @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-        final Preference pref = (Preference) getPreferenceScreen().getRootAdapter().getItem(position);
+        final Preference pref =
+                (Preference) getPreferenceScreen().getRootAdapter().getItem(position);
 
-        if (mApplicationPrefList.findPreference(pref.getKey()) != pref) {
+        if ((mBlacklistPrefList.findPreference(pref.getKey()) != pref)
+                && (mDndPrefList.findPreference(pref.getKey()) != pref)) {
             return false;
         }
+
+        if (mAddDndPref == pref || mAddBlacklistPref == pref) {
+            return false;
+        }
+
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
                 .setTitle(R.string.dialog_delete_title)
@@ -438,7 +530,11 @@ public class HeadsUpDoNotDisturbSettings extends SettingsPreferenceFragment
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        removeCustomApplicationPref(pref.getKey());
+                        if (mBlacklistPrefList.findPreference(pref.getKey()) == pref) {
+                            removeApplicationPref(pref.getKey(), mBlacklistPackages);
+                        } else if (mDndPrefList.findPreference(pref.getKey()) == pref) {
+                            removeApplicationPref(pref.getKey(), mDndPackages);
+                        }
                     }
                 })
                 .setNegativeButton(android.R.string.cancel, null);
