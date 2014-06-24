@@ -52,7 +52,8 @@
                 android:persistent="false"
                 android:fragment="com.android.settings.DeviceAdminSettings"/>
 
-        <Preference android:title="@string/app_ops_settings"
+        <Preference android:key="app_ops_summary"
+                android:title="@string/app_ops_settings"
                 android:summary="@string/app_ops_settings_summary"
                 android:persistent="false"
                 android:fragment="com.android.settings.applications.AppOpsSummary"/>
