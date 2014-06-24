@@ -17,6 +17,7 @@
 package com.android.settings.cyanogenmod;
 
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
@@ -25,6 +26,8 @@ import android.provider.Settings;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
+import com.android.settings.cyanogenmod.SystemSettingSwitchPreference;
+
 public class NotificationDrawer extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "NotificationDrawer";
@@ -32,6 +35,7 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
     private static final String UI_COLLAPSE_BEHAVIOUR = "notification_drawer_collapse_on_dismiss";
 
     private ListPreference mCollapseOnDismiss;
+    private SystemSettingSwitchPreference mSwitchPreference;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,9 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
 
         addPreferencesFromResource(R.xml.notification_drawer);
         PreferenceScreen prefScreen = getPreferenceScreen();
+
+        mSwitchPreference = (SystemSettingSwitchPreference)
+                findPreference(Settings.System.HEADS_UP_NOTIFICATION);
 
         // Notification drawer
         int collapseBehaviour = Settings.System.getInt(getContentResolver(),
@@ -48,6 +55,15 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
         mCollapseOnDismiss.setValue(String.valueOf(collapseBehaviour));
         mCollapseOnDismiss.setOnPreferenceChangeListener(this);
         updateCollapseBehaviourSummary(collapseBehaviour);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        boolean headsUpEnabled = Settings.System.getIntForUser(
+                getActivity().getContentResolver(),
+                Settings.System.HEADS_UP_NOTIFICATION, 0, UserHandle.USER_CURRENT) == 1;
+        mSwitchPreference.setChecked(headsUpEnabled);
     }
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
