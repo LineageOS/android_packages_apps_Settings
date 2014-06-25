@@ -279,8 +279,7 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
             throws PackageManager.NameNotFoundException {
         PackageInfo info = mPackageManager.getPackageInfo(pkg.name,
                 PackageManager.GET_META_DATA);
-        Preference pref =
-                new Preference(getActivity());
+        Preference pref = new Preference(getActivity());
 
         pref.setKey(pkg.name);
         pref.setTitle(info.applicationInfo.loadLabel(mPackageManager));
@@ -353,8 +352,7 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
                 mBlacklistPackageList = value;
             }
         }
-        Settings.System.putString(getContentResolver(),
-                setting, value);
+        Settings.System.putString(getContentResolver(), setting, value);
     }
 
     @Override
