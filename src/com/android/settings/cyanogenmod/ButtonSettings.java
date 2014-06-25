@@ -433,6 +433,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         final int defaultBrightness = context.getResources().getInteger(
                 com.android.internal.R.integer.config_buttonBrightnessSettingDefault);
+        final ButtonBacklightBrightness backlight =
+                (ButtonBacklightBrightness) prefScreen.findPreference(KEY_BUTTON_BACKLIGHT);
 
         Settings.System.putInt(context.getContentResolver(),
                 Settings.System.DEV_FORCE_SHOW_NAVBAR, enabled ? 1 : 0);
@@ -454,6 +456,11 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                     Settings.System.BUTTON_BRIGHTNESS,
                     prefs.getInt("pre_navbar_button_backlight", defaultBrightness));
             editor.remove("pre_navbar_button_backlight");
+
+            /* Navbar was disabled, enable backlight */
+            if (backlight != null) {
+            backlight.setEnabled(1);
+            }
         }
         editor.commit();
     }
@@ -478,10 +485,9 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         final ButtonBacklightBrightness backlight =
                 (ButtonBacklightBrightness) prefScreen.findPreference(KEY_BUTTON_BACKLIGHT);
 
-        /* Toggle backlight control depending on navbar state, force it to
-           off if enabling */
-        if (backlight != null) {
-            backlight.setEnabled(!enabled);
+        /* Turn off backlight if enabling navbar */
+        if (backlight != null && !enabled) {
+            backlight.setEnabled(0);
         }
 
         /* Toggle hardkey control availability depending on navbar state */
