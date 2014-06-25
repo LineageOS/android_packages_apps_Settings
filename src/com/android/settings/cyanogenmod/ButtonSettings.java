@@ -429,10 +429,13 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         return false;
     }
 
-    private static void writeDisableNavkeysOption(Context context, boolean enabled) {
+    private static void writeDisableNavkeysOption(Context context, boolean enabled, boolean onboot) {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         final int defaultBrightness = context.getResources().getInteger(
                 com.android.internal.R.integer.config_buttonBrightnessSettingDefault);
+        final PreferenceScreen prefScreen = getPreferenceScreen();
+        final ButtonBacklightBrightness backlight =
+                (ButtonBacklightBrightness) prefScreen.findPreference(KEY_BUTTON_BACKLIGHT);
 
         Settings.System.putInt(context.getContentResolver(),
                 Settings.System.DEV_FORCE_SHOW_NAVBAR, enabled ? 1 : 0);
@@ -449,11 +452,21 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             }
             Settings.System.putInt(context.getContentResolver(),
                     Settings.System.BUTTON_BRIGHTNESS, 0);
+
+            /* Turn off backlight if enabling navbar */
+            if (backlight != null) {
+                backlight.setEnabled(false);
+            }
         } else {
             Settings.System.putInt(context.getContentResolver(),
                     Settings.System.BUTTON_BRIGHTNESS,
                     prefs.getInt("pre_navbar_button_backlight", defaultBrightness));
             editor.remove("pre_navbar_button_backlight");
+
+            /* Navbar was disabled, enable backlight */
+            if (backlight != null && !onboot) {
+            backlight.setEnabled(true);
+            }
         }
         editor.commit();
     }
@@ -475,14 +488,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                 (PreferenceCategory) prefScreen.findPreference(CATEGORY_ASSIST);
         final PreferenceCategory appSwitchCategory =
                 (PreferenceCategory) prefScreen.findPreference(CATEGORY_APPSWITCH);
-        final ButtonBacklightBrightness backlight =
-                (ButtonBacklightBrightness) prefScreen.findPreference(KEY_BUTTON_BACKLIGHT);
-
-        /* Toggle backlight control depending on navbar state, force it to
-           off if enabling */
-        if (backlight != null) {
-            backlight.setEnabled(!enabled);
-        }
 
         /* Toggle hardkey control availability depending on navbar state */
         if (homeCategory != null) {
@@ -505,7 +510,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         }
 
         writeDisableNavkeysOption(context, Settings.System.getInt(context.getContentResolver(),
-                Settings.System.DEV_FORCE_SHOW_NAVBAR, 0) != 0);
+                Settings.System.DEV_FORCE_SHOW_NAVBAR, 0) != 0, true);
     }
 
 
@@ -524,7 +529,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             return true;
         } else if (preference == mDisableNavigationKeys) {
             mDisableNavigationKeys.setEnabled(false);
-            writeDisableNavkeysOption(getActivity(), mDisableNavigationKeys.isChecked());
+            writeDisableNavkeysOption(getActivity(), mDisableNavigationKeys.isChecked(), false);
             updateDisableNavkeysOption();
             mHandler.postDelayed(new Runnable() {
                 @Override
