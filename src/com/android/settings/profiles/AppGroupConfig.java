@@ -16,46 +16,37 @@
 
 package com.android.settings.profiles;
 
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.NotificationGroup;
 import android.app.ProfileManager;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.preference.Preference;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.cyanogenmod.PackageListAdapter;
+import com.android.settings.cyanogenmod.PackageListAdapter.PackageItem;
 
 public class AppGroupConfig extends SettingsPreferenceFragment
     implements Preference.OnPreferenceChangeListener {
@@ -84,7 +75,7 @@ public class AppGroupConfig extends SettingsPreferenceFragment
 
     private static final int MENU_ADD = Menu.FIRST + 1;
 
-    PackageAdaptor mAppAdapter;
+    private PackageListAdapter mAppAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -97,8 +88,7 @@ public class AppGroupConfig extends SettingsPreferenceFragment
         if (args != null) {
             mNotificationGroup = (NotificationGroup) args.getParcelable("NotificationGroup");
             mPackageManager = getPackageManager();
-            mAppAdapter = new PackageAdaptor(mPackageManager.getInstalledPackages(0));
-            mAppAdapter.update();
+            mAppAdapter = new PackageListAdapter(getActivity());
 
             updatePackages();
 
@@ -317,122 +307,5 @@ public class AppGroupConfig extends SettingsPreferenceFragment
     private void doDelete() {
         mNotificationGroup.removePackage(mPackageToDelete);
         updatePackages();
-    }
-
-    class PackageItem implements Comparable<PackageItem> {
-        String title;
-        String packageName;
-        Drawable icon;
-        boolean enabled;
-
-        @Override
-        public int compareTo(PackageItem another) {
-            if (enabled != another.enabled) {
-                return enabled ? -1 : 1;
-            }
-            int titleResult = title.compareToIgnoreCase(another.title);
-            if (titleResult != 0) {
-                return titleResult;
-            }
-            return packageName.compareTo(another.packageName);
-        }
-    }
-
-    class PackageAdaptor extends BaseAdapter {
-
-        protected List<PackageInfo> mInstalledPackageInfo;
-
-        protected List<PackageItem> mInstalledPackages = new LinkedList<PackageItem>();
-
-        private void reloadList() {
-            final Handler handler = new Handler();
-            new Thread(new Runnable() {
-
-                @Override
-                public void run() {
-                    synchronized (mInstalledPackages) {
-                        mInstalledPackages.clear();
-                        for (PackageInfo info : mInstalledPackageInfo) {
-                            final PackageItem item = new PackageItem();
-                            ApplicationInfo applicationInfo = info.applicationInfo;
-                            item.title = applicationInfo.loadLabel(mPackageManager).toString();
-                            item.icon = applicationInfo.loadIcon(mPackageManager);
-                            item.packageName = applicationInfo.packageName;
-                            item.enabled = applicationInfo.enabled;
-                            handler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    int index = Collections.binarySearch(mInstalledPackages, item);
-                                    if (index < 0) {
-                                        index = -index - 1;
-                                        mInstalledPackages.add(index, item);
-                                    }
-                                    notifyDataSetChanged();
-                                }
-                            });
-                        }
-                    }
-                }
-            }).start();
-        }
-
-        public PackageAdaptor(List<PackageInfo> installedPackagesInfo) {
-            mInstalledPackageInfo = installedPackagesInfo;
-        }
-
-        public void update() {
-            reloadList();
-        }
-
-        @Override
-        public int getCount() {
-            return mInstalledPackages.size();
-        }
-
-        @Override
-        public PackageItem getItem(int position) {
-            return mInstalledPackages.get(position);
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return mInstalledPackages.get(position).packageName.hashCode();
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            ViewHolder holder;
-            if (convertView != null) {
-                holder = (ViewHolder) convertView.getTag();
-            } else {
-                final LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                convertView = layoutInflater.inflate(R.layout.preference_icon, null, false);
-                holder = new ViewHolder();
-                convertView.setTag(holder);
-                holder.title = (TextView) convertView.findViewById(com.android.internal.R.id.title);
-                holder.summary = (TextView) convertView
-                        .findViewById(com.android.internal.R.id.summary);
-                holder.icon = (ImageView) convertView.findViewById(R.id.icon);
-            }
-            PackageItem applicationInfo = getItem(position);
-
-            if (holder.title != null) {
-                holder.title.setText(applicationInfo.title);
-            }
-            if (holder.summary != null) {
-                holder.summary.setVisibility(View.GONE);
-            }
-            if (holder.icon != null) {
-                Drawable loadIcon = applicationInfo.icon;
-                holder.icon.setImageDrawable(loadIcon);
-            }
-            return convertView;
-        }
-    }
-
-    static class ViewHolder {
-        TextView title;
-        TextView summary;
-        ImageView icon;
     }
 }
