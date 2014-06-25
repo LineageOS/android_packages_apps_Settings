@@ -179,7 +179,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                 prefScreen.removePreference(mDisableNavigationKeys);
             } else {
                 // Remove keys that can be provided by the navbar
-                updateDisableNavkeysOption();
+                updateDisableNavkeysOption(false);
             }
         } else {
             prefScreen.removePreference(mDisableNavigationKeys);
@@ -458,7 +458,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         editor.commit();
     }
 
-    private void updateDisableNavkeysOption() {
+    private void updateDisableNavkeysOption(boolean changeBacklight) {
         boolean enabled = Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.DEV_FORCE_SHOW_NAVBAR, 0) != 0;
 
@@ -480,7 +480,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
         /* Toggle backlight control depending on navbar state, force it to
            off if enabling */
-        if (backlight != null) {
+        if (backlight != null && changeBacklight) {
             backlight.setEnabled(!enabled);
         }
 
@@ -525,7 +525,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         } else if (preference == mDisableNavigationKeys) {
             mDisableNavigationKeys.setEnabled(false);
             writeDisableNavkeysOption(getActivity(), mDisableNavigationKeys.isChecked());
-            updateDisableNavkeysOption();
+            updateDisableNavkeysOption(true);
             mHandler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
