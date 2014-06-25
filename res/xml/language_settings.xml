@@ -32,6 +32,12 @@
             android:key="key_user_dictionary_settings"
             android:title="@string/user_dict_settings_title" />
 
+    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+        android:key="high_touch_sensitivity"
+        android:title="@string/high_touch_sensitivity_title"
+        android:summary="@string/high_touch_sensitivity_summary"
+        android:defaultValue="false" />
+
     <PreferenceCategory android:key="keyboard_settings_category"
             android:title="@string/keyboard_settings_category">
         <PreferenceScreen android:key="current_input_method"
