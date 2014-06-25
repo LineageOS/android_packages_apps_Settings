@@ -376,6 +376,15 @@ public class DateTimeSettings extends SettingsPreferenceFragment
     private static String getTimeZoneText(TimeZone tz) {
         SimpleDateFormat sdf = new SimpleDateFormat("ZZZZ, zzzz");
         sdf.setTimeZone(tz);
+
+        if (sdf.format(new Date()) != null) {
+            String[] timeZoneText = sdf.format(new Date()).split(",");
+            if (timeZoneText.length == 2 && timeZoneText[1].startsWith(" GMT")) {
+                timeZoneText[0] += ", ";
+                timeZoneText[0] += tz.getDisplayName();
+                return timeZoneText[0];
+            }
+        }
         return sdf.format(new Date());
     }
 
