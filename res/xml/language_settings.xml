@@ -110,6 +110,12 @@
                 android:defaultValue="false"
                 android:persistent="false" />
 
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+                android:key="high_touch_sensitivity"
+                android:title="@string/high_touch_sensitivity_title"
+                android:summary="@string/high_touch_sensitivity_summary"
+                android:defaultValue="false" />
+
         <!-- Gesture pad settings -->
         <Preference
             android:key="gesture_pad_settings">
