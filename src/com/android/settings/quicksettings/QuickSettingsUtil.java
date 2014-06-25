@@ -27,6 +27,7 @@ import static com.android.internal.util.cm.QSConstants.TILE_COMPASS;
 import static com.android.internal.util.cm.QSConstants.TILE_DELIMITER;
 import static com.android.internal.util.cm.QSConstants.TILE_EXPANDEDDESKTOP;
 import static com.android.internal.util.cm.QSConstants.TILE_GPS;
+import static com.android.internal.util.cm.QSConstants.TILE_HEADS_UP;
 import static com.android.internal.util.cm.QSConstants.TILE_LOCKSCREEN;
 import static com.android.internal.util.cm.QSConstants.TILE_LTE;
 import static com.android.internal.util.cm.QSConstants.TILE_MOBILEDATA;
@@ -86,11 +87,14 @@ public class QuickSettingsUtil {
                 TILE_BRIGHTNESS, R.string.title_tile_brightness,
                 "com.android.systemui:drawable/ic_qs_brightness_auto_off"));
         registerTile(new QuickSettingsUtil.TileInfo(
-                 TILE_CAMERA, R.string.title_tile_camera,
+                TILE_CAMERA, R.string.title_tile_camera,
                 "com.android.systemui:drawable/ic_qs_camera"));
         registerTile(new QuickSettingsUtil.TileInfo(
-                 TILE_COMPASS, R.string.title_tile_compass,
+                TILE_COMPASS, R.string.title_tile_compass,
                 "com.android.systemui:drawable/ic_qs_compass_on"));
+        registerTile(new QuickSettingsUtil.TileInfo(
+                TILE_HEADS_UP, R.string.title_tile_heads_up,
+                "com.android.systemui:drawable/ic_qs_heads_up_on"));
         registerTile(new QuickSettingsUtil.TileInfo(
                 TILE_EXPANDEDDESKTOP, R.string.title_tile_expanded_desktop,
                 "com.android.systemui:drawable/ic_qs_expanded_desktop_neutral"));
