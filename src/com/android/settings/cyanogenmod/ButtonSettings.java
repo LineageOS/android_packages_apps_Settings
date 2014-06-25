@@ -440,6 +440,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
         /* Save/restore button timeouts to disable them in softkey mode */
         Editor editor = prefs.edit();
+        int oldBright;
 
         if (enabled) {
             int currentBrightness = Settings.System.getInt(context.getContentResolver(),
@@ -450,10 +451,12 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(context.getContentResolver(),
                     Settings.System.BUTTON_BRIGHTNESS, 0);
         } else {
-            Settings.System.putInt(context.getContentResolver(),
-                    Settings.System.BUTTON_BRIGHTNESS,
-                    prefs.getInt("pre_navbar_button_backlight", defaultBrightness));
-            editor.remove("pre_navbar_button_backlight");
+            oldBright = prefs.getInt("pre_navbar_button_backlight", -1);
+            if (oldBright != -1) {
+                Settings.System.putInt(context.getContentResolver(),
+                        Settings.System.BUTTON_BRIGHTNESS, oldBright);
+                editor.remove("pre_navbar_button_backlight");
+            }
         }
         editor.commit();
     }
