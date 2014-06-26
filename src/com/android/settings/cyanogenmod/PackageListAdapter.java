@@ -23,6 +23,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,29 +43,42 @@ public class PackageListAdapter extends BaseAdapter implements Runnable {
     private PackageManager mPm;
     private LayoutInflater mInflater;
     private List<PackageItem> mInstalledPackages = new LinkedList<PackageItem>();
-    private final Handler mHandler = new Handler();
+
+    // Packages which don't have launcher icons, but which we want to show nevertheless
+    private static final String[] PACKAGE_WHITELIST = new String[] {
+        "android",                          /* system server */
+        "com.android.systemui",             /* system UI */
+        "com.android.providers.downloads"   /* download provider */
+    };
+
+    private final Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            PackageItem item = (PackageItem) msg.obj;
+            int index = Collections.binarySearch(mInstalledPackages, item);
+            if (index < 0) {
+                mInstalledPackages.add(-index - 1, item);
+            } else {
+                mInstalledPackages.get(index).activityTitles.addAll(item.activityTitles);
+            }
+            notifyDataSetChanged();
+        }
+    };
 
     public static class PackageItem implements Comparable<PackageItem> {
         public final String packageName;
         public final CharSequence title;
-        public final TreeSet<CharSequence> activityTitles = new TreeSet<CharSequence>();
+        private final TreeSet<CharSequence> activityTitles = new TreeSet<CharSequence>();
         public final Drawable icon;
-        public final boolean enabled;
 
-        PackageItem(String packageName, CharSequence title,
-                CharSequence activityTitle, Drawable icon, boolean enabled) {
+        PackageItem(String packageName, CharSequence title, Drawable icon) {
             this.packageName = packageName;
             this.title = title;
-            this.activityTitles.add(activityTitle);
             this.icon = icon;
-            this.enabled = enabled;
         }
 
         @Override
         public int compareTo(PackageItem another) {
-            if (enabled != another.enabled) {
-                return enabled ? -1 : 1;
-            }
             int result = title.toString().compareToIgnoreCase(another.title.toString());
             return result != 0 ? result : packageName.compareTo(another.packageName);
         }
@@ -134,15 +148,12 @@ public class PackageListAdapter extends BaseAdapter implements Runnable {
     }
 
     private void reloadList() {
+        mInstalledPackages.clear();
         new Thread(this).start();
     }
 
     @Override
     public void run() {
-        synchronized (mInstalledPackages) {
-            mInstalledPackages.clear();
-        }
-
         final Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
         mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
         List<ResolveInfo> installedAppsInfo = mPm.queryIntentActivities(mainIntent, 0);
@@ -150,24 +161,20 @@ public class PackageListAdapter extends BaseAdapter implements Runnable {
         for (ResolveInfo info : installedAppsInfo) {
             ApplicationInfo appInfo = info.activityInfo.applicationInfo;
             final PackageItem item = new PackageItem(appInfo.packageName,
-                    appInfo.loadLabel(mPm), info.loadLabel(mPm),
-                    appInfo.loadIcon(mPm), appInfo.enabled);
+                    appInfo.loadLabel(mPm), appInfo.loadIcon(mPm));
+            item.activityTitles.add(info.loadLabel(mPm));
+            mHandler.obtainMessage(0, item).sendToTarget();
+        }
 
-            mHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    // NO synchronize here: We know that mInstalledApps.clear()
-                    // was called and will never be called again.
-                    // At this point the only thread modifying mInstalledApp is main
-                    int index = Collections.binarySearch(mInstalledPackages, item);
-                    if (index < 0) {
-                        mInstalledPackages.add(-index - 1, item);
-                    } else {
-                        mInstalledPackages.get(index).activityTitles.addAll(item.activityTitles);
-                    }
-                    notifyDataSetChanged();
-                }
-            });
+        for (String packageName : PACKAGE_WHITELIST) {
+            try {
+                ApplicationInfo appInfo = mPm.getApplicationInfo(packageName, 0);
+                final PackageItem item = new PackageItem(appInfo.packageName,
+                        appInfo.loadLabel(mPm), appInfo.loadIcon(mPm));
+                mHandler.obtainMessage(0, item).sendToTarget();
+            } catch (PackageManager.NameNotFoundException ignored) {
+                // package not present, so nothing to add -> ignore it
+            }
         }
     }
 
