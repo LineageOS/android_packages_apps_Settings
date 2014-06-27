@@ -219,22 +219,43 @@ public class ApnSettings extends PreferenceActivity implements
         return netType;
     }
 
-    private String getIccOperatorNumeric(){
+    private String getIccOperatorNumeric() {
         String iccOperatorNumeric = null;
-        int dataRat = getRadioTechnology();
-        if (dataRat != ServiceState.RIL_RADIO_TECHNOLOGY_UNKNOWN) {
+        int family = getFamily();
+        if (UiccController.APP_FAM_UNKNOWN != family) {
             IccRecords iccRecords = null;
-            int appFamily = UiccController.getFamilyFromRadioTechnology(dataRat);
             if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
-                iccRecords = MSimUiccController.getInstance().getIccRecords(mSubscription, appFamily);
+                iccRecords = MSimUiccController.getInstance().getIccRecords(mSubscription, family);
             } else {
-                iccRecords = UiccController.getInstance().getIccRecords(appFamily);
+                iccRecords = UiccController.getInstance().getIccRecords(family);
             }
             if (iccRecords != null) {
                 iccOperatorNumeric = iccRecords.getOperatorNumeric();
             }
+
         }
         return iccOperatorNumeric;
+    }
+
+    private int getFamily() {
+        int family = UiccController.getFamilyFromRadioTechnology(getRadioTechnology());
+        if (UiccController.APP_FAM_UNKNOWN == family) {
+            int phoneType = TelephonyManager.PHONE_TYPE_NONE;
+            if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
+                phoneType = MSimTelephonyManager.getDefault().getPhoneType(mSubscription);
+            } else {
+                phoneType = TelephonyManager.getDefault().getPhoneType();
+            }
+            switch (phoneType) {
+                case TelephonyManager.PHONE_TYPE_GSM:
+                    family = UiccController.APP_FAM_3GPP;
+                    break;
+                case TelephonyManager.PHONE_TYPE_CDMA:
+                    family = UiccController.APP_FAM_3GPP2;
+                    break;
+            }
+        }
+        return family;
     }
 
     private void fillList() {
