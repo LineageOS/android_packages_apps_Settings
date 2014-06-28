@@ -100,11 +100,13 @@
                 android:dialogTitle="@string/pointer_speed" />
 
         <PreferenceScreen
+                settings:excludeFromSearch="true"
                 android:fragment="com.android.settings.inputmethod.StylusGestures"
                 android:key="stylus_gestures"
                 android:title="@string/gestures_settings_title" />
 
         <CheckBoxPreference android:key="stylus_icon_enabled"
+                settings:excludeFromSearch="true"
                 android:title="@string/stylus_icon_enabled_title"
                 android:summary="@string/stylus_icon_enabled_summary"
                 android:defaultValue="false"
