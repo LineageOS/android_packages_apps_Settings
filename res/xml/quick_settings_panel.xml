@@ -15,7 +15,8 @@
 -->
 
 <PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <PreferenceCategory
         android:key="pref_general_settings"
@@ -80,6 +81,7 @@
         android:title="@string/title_dynamic_tiles" >
 
         <Preference
+            settings:excludeFromSearch="true"
             style="?android:preferenceInformationStyle"
             android:title="@string/dynamic_tiles_note_title"
             android:summary="@string/dynamic_tiles_note_summary"

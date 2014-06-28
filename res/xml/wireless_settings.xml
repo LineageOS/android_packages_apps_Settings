@@ -15,6 +15,7 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
         android:title="@string/wireless_networks_settings_title">
 
     <CheckBoxPreference
@@ -29,6 +30,7 @@
         android:persistent="false" />
 
     <Preference
+        settings:excludeFromSearch="true"
         android:key="voice_plus"
         android:title="@string/voice_plus_title"
         android:summary="@string/voice_plus_summary"
@@ -61,6 +63,7 @@
         android:persistent="false" />
 
     <PreferenceScreen
+        settings:excludeFromSearch="true"
         android:key="wimax_settings"
         android:title="@string/wimax_settings" >
         <intent
@@ -70,12 +73,14 @@
     </PreferenceScreen>
 
     <CheckBoxPreference
+        settings:excludeFromSearch="true"
         android:key="toggle_nsd"
         android:title="@string/nsd_quick_toggle_title"
         android:summary="@string/nsd_quick_toggle_summary"
         android:persistent="false" />
 
     <PreferenceScreen
+        settings:excludeFromSearch="true"
         android:fragment="com.android.settings.ProxySelector"
         android:key="proxy_settings"
         android:title="@string/proxy_settings_title" />
