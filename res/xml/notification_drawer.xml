@@ -27,6 +27,7 @@
         android:entryValues="@array/notification_drawer_collapse_on_dismiss_values" />
 
     <PreferenceScreen
+            settings:includeXmlForSearch="@xml/quick_settings_panel"
             android:key="quick_settings_panel"
             android:fragment="com.android.settings.quicksettings.QuickSettings"
             android:title="@string/quick_settings_panel_title" />
