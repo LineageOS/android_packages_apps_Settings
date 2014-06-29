@@ -112,7 +112,7 @@
   <string name="profile_lockmode_disabled_summary">Kilit ekranı devre dışı</string>
   <string name="profile_airplanemode_title">Uçak modu</string>
   <string name="toggleWifi">Wi-Fi</string>
-  <string name="toggleWifiAp">Taşınabilir Wi-Fi hotspot</string>
+  <string name="toggleWifiAp">Taşınabilir Wi-Fi bağlantı noktası</string>
   <string name="toggleBluetooth">Bluetooth</string>
   <string name="toggleGPS">GPS</string>
   <string name="toggleData">Mobil Veri</string>
@@ -141,7 +141,7 @@
   <string name="volume_adjust_sounds_enable_title">Ses ayarlama tonu</string>
   <string name="volume_adjust_sounds_enable_summary">Ses tuşları ile ses düzeyini ayarlarken ses çıkar</string>
   <string name="icon_picker_title">Simge kaynağını seçin</string>
-  <string name="icon_picker_system_icons_title">Sistem ikonları</string>
+  <string name="icon_picker_system_icons_title">Sistem simgeleri</string>
   <string name="icon_picker_gallery_title">Galeri</string>
   <string name="icon_picker_pack_title">Simge paketi</string>
   <string name="display_lights_settings_title">Ekran ve ışıklar</string>
@@ -158,6 +158,8 @@
   <string name="notification_light_voicemail_title">Sesli mesaj</string>
   <string name="adaptive_backlight_title">Uyum sağlayan arka ışık</string>
   <string name="adaptive_backlight_summary">Kullanılabilirliği koruyarak pil ömrünü en üst düzeye çıkarmak için ekranın arka ışık parlaklığını dinamik olarak ayarla</string>
+  <string name="color_enhancement_title">Renk iyileştirmesi</string>
+  <string name="color_enhancement_summary">Ekran rengini dinamik olarak geliştir</string>
   <string name="wake_when_plugged_or_unplugged_title">Takıp çıkarmada uyan</string>
   <string name="wake_when_plugged_or_unplugged_summary">Bir güç kaynağına bağlanırken ya da bağlantısını keserken ekranı aç</string>
   <string name="screen_animation_off_title">Ekran kapama animasyonu</string>
@@ -215,12 +217,22 @@
   <string name="tile_choose_title">Kare seçin</string>
   <string name="title_qs_small_icons">Daha küçük kareler göster</string>
   <string name="summary_qs_small_icons">Sütun sayısını arttırmak için daha küçük kareler kullan</string>
+  <string name="category_heads_up">Bildirim Pencereleri</string>
+  <string name="summary_heads_up_enabled">Açılır bildirimler etkinleştirildi</string>
+  <string name="summary_heads_up_disabled">Açılır bildirimler devre dışı bırakıldı</string>
+  <string name="add_heads_up_package">Uyg. ekle</string>
+  <string name="add_heads_up_dnd_summary">Bu uygulamalarda bildirim pencerelerini gösterme</string>
+  <string name="add_heads_up_blacklist_summary">Bu uygulamalardan bildirim pencerelerini gösterme</string>
+  <string name="heads_up_dnd_title">Rahatsız Etme</string>
+  <string name="heads_up_blacklist_title">Kara liste</string>
+  <string name="heads_up_disabled_notice">Ekranınızda uygulamaların etkileşimli bildirimler göstermesi için, Bildirim Pencerelerini etkinleştirin.</string>
   <string name="title_tile_airplane">Uçak modu</string>
   <string name="title_tile_battery">Pil istatistikleri</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Parlaklık</string>
   <string name="title_tile_camera">Kamera</string>
   <string name="title_tile_compass">Pusula</string>
+  <string name="title_tile_heads_up">Bildirim Pencereleri</string>
   <string name="title_tile_sleep">Uyku moduna geç</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Fener</string>
@@ -413,7 +425,7 @@ parlaklık seviyesini ayarlayabilir hem de istediğiniz parlaklık düzeyini ell
   <string name="io_sched_title">G/Ç zamanlayıcısı</string>
   <string name="perf_profile_title">Profil</string>
   <string name="memory_management_title">Bellek yönetimi</string>
-  <string name="pref_ksm_title">Kernel samepage merging</string>
+  <string name="pref_ksm_title">KSM (Çekirdek benzer sayfaları birleştirsin)</string>
   <string name="pref_ksm_summary">KSM fiziksel bellek kullanımı azaltır ve performansı arttırır</string>
   <string name="pref_purgeable_assets_title">Varlıkların temizlenmesine izin ver</string>
   <string name="pref_purgeable_assets_summary">Bitmap bellek varlıklarının temizlenmesi gerektiğinde daha fazla RAM boşaltılmasını sağlar (yeniden başlatma gerekli)</string>
@@ -539,7 +551,7 @@ parlaklık seviyesini ayarlayabilir hem de istediğiniz parlaklık düzeyini ell
   <string name="lockscreen_target_reset_message">Kullanıcı tarafından oluşturulan tüm kilit ekranı kısayollarını sil ve varsayılana geri dön?</string>
   <string name="lockscreen_target_empty">Boş</string>
   <string name="lockscreen_target_edit_title">Kısyolu ve simgeyi düzenle</string>
-  <string name="lockscreen_target_edit_msg">İstenen uygulama ve aktivite ile atanmış simgeyi seçin veya değiştirin</string>
+  <string name="lockscreen_target_edit_msg">İstenen uygulama ya da etkinliğin ilgili simgesini seçin veya değiştirin</string>
   <string name="picker_activities">Aktiviteler</string>
   <string name="select_custom_app_title">Özel uygulama seç</string>
   <string name="select_custom_activity_title">Özel aktivite seç</string>
@@ -690,6 +702,7 @@ parlaklık seviyesini ayarlayabilir hem de istediğiniz parlaklık düzeyini ell
   <string name="status_bar_signal_style_text">Metin</string>
   <string name="status_bar_toggle_brightness">Parlaklık kontrolü</string>
   <string name="status_bar_toggle_brightness_summary">Durum çubuğu üzerinde kaydırarak parlaklığı ayarla</string>
+  <string name="status_bar_toggle_info">Otomatik parlaklık etkinken kullanılabilir değil</string>
   <string name="status_bar_notif_count_title">Bildirim sayısını göster</string>
   <string name="status_bar_notif_count_summary">Bekleyen bildirim sayısını göster</string>
   <string name="status_bar_double_tap_to_sleep_title">Uykuya geçmek için iki kez dokun</string>
@@ -726,6 +739,7 @@ parlaklık seviyesini ayarlayabilir hem de istediğiniz parlaklık düzeyini ell
   <string name="gestures_down_spen_title_head">Aşağı kaydırma</string>
   <string name="gestures_long_spen_title_head">Uzun basma</string>
   <string name="gestures_double_spen_title_head">Çift dokunma</string>
+  <string name="gestures_settings_header_title">Hareketler</string>
   <string name="gestures_action_empty">İşlev yok</string>
   <string name="gestures_action_home">Ana ekran</string>
   <string name="gestures_action_back">Geri</string>
@@ -869,7 +883,7 @@ parlaklık seviyesini ayarlayabilir hem de istediğiniz parlaklık düzeyini ell
   <string name="priority_sub_title">Öncelikli abonelik</string>
   <string name="bluetooth_accept_all_files">Tüm dosya türlerini kabul et</string>
   <string name="autoperf_title">Her bir uygulama için profilleri etkinleştir</string>
-  <string name="autoperf_summary">Uygun performans profilini çeşitli uygulamalar için otomatik olarak seç</string>
+  <string name="autoperf_summary">Uygun performans profilini çeşitli uygulamalar için otomatik seç</string>
   <string name="graphics_title">Grafik ve modelleme</string>
   <string name="menu_hidden_apps_delete">Sıfırla</string>
   <string name="menu_hidden_apps_reset_lock">Desen kilidini sıfırla</string>

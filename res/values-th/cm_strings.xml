@@ -148,7 +148,6 @@
   <string name="lights_category_title">แสง</string>
   <string name="notification_pulse_title">ไฟแจ้งเตือน</string>
   <string name="notification_light_general_title">ทั่วไป</string>
-  <string name="notification_light_applist_title">แอปพลิเคชัน</string>
   <string name="notification_light_phonelist_title">โทรศัพท์</string>
   <string name="notification_light_use_custom">ใช้ค่ากำหนดเอง</string>
   <string name="notification_light_enabled">เปิด</string>
@@ -158,6 +157,8 @@
   <string name="notification_light_voicemail_title">ข้อความเสียง</string>
   <string name="adaptive_backlight_title">ปรับแสงไฟหน้าจอ</string>
   <string name="adaptive_backlight_summary">ปรับความสว่างของแสงหน้าจออัตโนมัติเพื่อให้สามารถใช้งานได้ยาวนานขึ้น</string>
+  <string name="color_enhancement_title">เพิ่มประสิทธิภาพของสี</string>
+  <string name="color_enhancement_summary">เพิ่มสีบนจอแสดงผลแบบไดนามิก</string>
   <string name="wake_when_plugged_or_unplugged_title">ตื่นเมื่อเสียบปลั๊ก</string>
   <string name="wake_when_plugged_or_unplugged_summary">เปิดหน้าจอเมื่อเชื่อมต่อ หรือตัดการเชื่อมต่อกับแหล่งจ่ายไฟ</string>
   <string name="screen_animation_off_title">ภาพเคลื่อนไหวปิดหน้าจอ</string>
@@ -191,6 +192,7 @@
   <string name="lockpattern_settings_enable_error_path_title">แสดงลายเส้นที่ผิดพลาด</string>
   <string name="lockpattern_settings_enable_dots_title">แสดงจุดที่ลากผ่าน</string>
   <string name="screen_security_category">ความปลอดภัยหน้าจอ</string>
+  <string name="screen_security_summary">ดู หรือเปลี่ยนการตั้งค่าความปลอดภัยของล็อคหน้าจอ</string>
   <string name="unlock_menu_unlock_title">เมนูเพื่อปลดล็อค</string>
   <string name="unlock_menu_unlock_summary">แตะปุ่มเมนูจะปลดล็อคอุปกรณ์</string>
   <string name="unlock_home_unlock_title">โฮมเพื่อปลดล็อค</string>
@@ -214,12 +216,19 @@
   <string name="tile_choose_title">เลือกไทต์</string>
   <string name="title_qs_small_icons">แสดงไทต์เล็กลง</string>
   <string name="summary_qs_small_icons">ใช้ไทต์ที่เล็กลงเพื่อเพิ่มจำนวนคอลัมน์</string>
+  <string name="category_heads_up">Heads up</string>
+  <string name="summary_heads_up_enabled">เปิดใช้งานการแจ้งเตือนแบบป๊อปอัพ</string>
+  <string name="summary_heads_up_disabled">ไม่ใช้งานการแจ้งเตือนแบบป๊อปอัพ</string>
+  <string name="add_heads_up_package">เพิ่มแอป</string>
+  <string name="heads_up_dnd_title">ห้าม​รบกวน</string>
+  <string name="heads_up_blacklist_title">บัญชีดำ</string>
   <string name="title_tile_airplane">โหมดเครื่องบิน</string>
   <string name="title_tile_battery">แบตเตอรี</string>
   <string name="title_tile_bluetooth">บลูทูธ</string>
   <string name="title_tile_brightness">ความสว่าง</string>
   <string name="title_tile_camera">กล้อง</string>
   <string name="title_tile_compass">เข็มทิศ</string>
+  <string name="title_tile_heads_up">Heads up</string>
   <string name="title_tile_sleep">พักหน้าจอ</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">ไฟฉาย</string>
@@ -317,13 +326,12 @@
   <string name="app_security_title">ความปลอดภัยของแอป</string>
   <string name="root_access">สิทธิผู้ดูแลระบบ</string>
   <string name="root_access_warning_title">ให้สิทธิผู้ดูแลระบบ?</string>
-  <string name="root_access_warning_message">หากอนุญาติให้แอปพลิเคชันเข้าถึงสิทธิผู้ดูแลระบบมันจะอันตรายมากและอาจทำให้มีปัญหาด้านความปลอดภัยของระบบของคุณ!</string>
   <string name="root_access_none">ปิด</string>
   <string name="root_access_apps">แอปเท่านั้น</string>
   <string name="root_access_adb">ADB เท่านั้น</string>
   <string name="root_access_all">แอปและADB</string>
   <string name="update_recovery_title">ปรับปรุงการกู้คืน CM</string>
-  <string name="update_recovery_summary">ปรับปรุงการกู้คือเมื่อติดตั้งการปรับปรุงระบบใหม่</string>
+  <string name="update_recovery_summary">ปรับปรุงการกู้คืนเมื่อติดตั้งการปรับปรุงระบบใหม่</string>
   <string name="ok">ตกลง</string>
   <string name="quiet_hours_title">ชั่วโมงเงียบ</string>
   <string name="quiet_hours_summary">ตั้งค่าช่วงเวลาที่อุปกรณ์ควรจะเงียบ</string>
@@ -516,7 +524,6 @@
   <string name="lockscreen_target_reset_message">ต้องการลบทางลัดหน้าล็อคจอของทุกผู้ใช้งานและกลับคืนสู่ค่าเดิมหรือไม่ ?</string>
   <string name="lockscreen_target_empty">ว่างเปล่า</string>
   <string name="lockscreen_target_edit_title">แก้ไขทางลัดและไอคอน</string>
-  <string name="lockscreen_target_edit_msg">เลือกหรือเปลี่ยนแอปพลิเคชันหรือกิจกรรมที่ต้องการและกำหนดไอคอน</string>
   <string name="picker_activities">กิจกรรม</string>
   <string name="select_custom_app_title">เลือกแอปเอง</string>
   <string name="select_custom_activity_title">เลือกกิจกรรมเอง</string>
@@ -667,6 +674,7 @@
   <string name="status_bar_signal_style_text">ข้อความ</string>
   <string name="status_bar_toggle_brightness">ความคุมความสว่าง</string>
   <string name="status_bar_toggle_brightness_summary">ตั้งความสว่างหน้าจอโดยการเลื่อนบริเวณแถบสถานะ</string>
+  <string name="status_bar_toggle_info">ไม่สามารถใช้งานได้ขณะเปิดใช้งานความสว่างอัตโนมัติ</string>
   <string name="status_bar_notif_count_title">นับจำนวนการแจ้งเตือน</string>
   <string name="status_bar_notif_count_summary">แสดงตัวเลขของการแจ้งเตือน</string>
   <string name="status_bar_double_tap_to_sleep_title">แตะสองครั้งเพื่อปิดจอ</string>
@@ -703,6 +711,7 @@
   <string name="gestures_down_spen_title_head">ปัดลง</string>
   <string name="gestures_long_spen_title_head">แตะค้าง</string>
   <string name="gestures_double_spen_title_head">แตะสองครั้ง</string>
+  <string name="gestures_settings_header_title">ท่าทาง</string>
   <string name="gestures_action_empty">ไม่ทำอะไร</string>
   <string name="gestures_action_home">บ้าน</string>
   <string name="gestures_action_back">กลับ</string>
@@ -846,7 +855,6 @@
   <string name="priority_sub_title">บอกลำดับความสำคัญ</string>
   <string name="bluetooth_accept_all_files">ยอมรับแฟ้มทุกชนิด</string>
   <string name="autoperf_title">เปิดใช้งาน โปรไฟล์แต่ละแอป</string>
-  <string name="autoperf_summary">เลือกโปรไฟล์ที่เหมาะสมกับแอปต่างๆ โดยอัตโนมัติ</string>
   <string name="graphics_title">ภาพและกราฟฟิก</string>
   <string name="menu_hidden_apps_delete">รีเซ็ต</string>
   <string name="menu_hidden_apps_reset_lock">รีเซ็ตรูปแบบล็อค</string>

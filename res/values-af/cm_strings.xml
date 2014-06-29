@@ -79,6 +79,7 @@
   <string name="profile_volumeoverrides_title">Klankoorskrywings</string>
   <string name="connection_state_disabled">Gedeaktiveer</string>
   <string name="connection_state_enabled">Geaktiveer</string>
+  <string name="volume_override_summary">Stel na %1$s/%2$s</string>
   <string name="profile_profiles_manage">Profiele</string>
   <string name="profile_profile_manage">Bestuur profiel</string>
   <string name="profile_appgroups_manage">Program groepe</string>
@@ -147,7 +148,6 @@
   <string name="lights_category_title">Liggies</string>
   <string name="notification_pulse_title">Kennisgewing liggie</string>
   <string name="notification_light_general_title">Algemeen</string>
-  <string name="notification_light_applist_title">Programme</string>
   <string name="notification_light_phonelist_title">Telefoon</string>
   <string name="notification_light_use_custom">Gebruik persoonlike waardes</string>
   <string name="notification_light_enabled">Geaktifeer</string>
@@ -190,6 +190,7 @@
   <string name="lockpattern_settings_enable_error_path_title">Wys patroon fout</string>
   <string name="lockpattern_settings_enable_dots_title">Wys patroon kolle</string>
   <string name="screen_security_category">Skerm sekuriteit</string>
+  <string name="screen_security_summary">Bekyk of verander slot skerm sekuriteit instellings</string>
   <string name="unlock_menu_unlock_title">Kieslys ontsluit</string>
   <string name="unlock_menu_unlock_summary">Die druk van die Kieslys-knoppie sal die toestel ontsluit</string>
   <string name="unlock_home_unlock_title">Tuis ontsluit</string>
@@ -213,11 +214,14 @@
   <string name="tile_choose_title">Kies \'n teël</string>
   <string name="title_qs_small_icons">Wys kleiner teëls</string>
   <string name="summary_qs_small_icons">Gebruik kleiner teëls om die aantal kolomme te verhoog</string>
+  <string name="category_heads_up">Loer boodskap</string>
+  <string name="heads_up_dnd_title">Moenie steur nie</string>
   <string name="title_tile_airplane">Vliegtuigmodus</string>
   <string name="title_tile_battery">Battery statistieke</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Helderheid</string>
   <string name="title_tile_camera">Kamera</string>
+  <string name="title_tile_compass">Kompas</string>
   <string name="title_tile_sleep">Sluimer</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Flits</string>
@@ -325,7 +329,6 @@ ten einde om bykomende kontrolepunte by te voeg . \'Verwyder\' verwyder die geko
   <string name="app_security_title">Program sekuriteit</string>
   <string name="root_access">\'Root\' toegang</string>
   <string name="root_access_warning_title">Laat \'root\' toegang toe</string>
-  <string name="root_access_warning_message">Die toelaat van programme om \'root\' toegang aan te vra kan die sekuriteit van jou stelsel in gevaar stel!</string>
   <string name="root_access_none">Gedeaktiveer</string>
   <string name="root_access_apps">Slegs programme</string>
   <string name="root_access_adb">Slegs ADB</string>
@@ -347,6 +350,7 @@ ten einde om bykomende kontrolepunte by te voeg . \'Verwyder\' verwyder die geko
   <string name="quiet_hours_dim_summary">Deaktiveer kennisgewing liggie</string>
   <string name="quiet_hours_haptic">Haptiese terugvoer</string>
   <string name="quiet_hours_haptic_summary">Deaktiveer haptiese terugvoer</string>
+  <string name="quiet_hours_active_period">Aktief vanaf <xliff:g id="start">%1$s</xliff:g> tot <xliff:g id="end">%2$s</xliff:g></string>
   <string name="quiet_hours_ringer_allow_all">Lui vir alle oproepe</string>
   <string name="quiet_hours_ringer_allow_contacts">Lui vir alle kontakte</string>
   <string name="quiet_hours_ringer_allow_starred">Lui alleenlik vir gunsteling kontakte</string>
@@ -523,7 +527,6 @@ ten einde om bykomende kontrolepunte by te voeg . \'Verwyder\' verwyder die geko
   <string name="lockscreen_target_reset_message">Verwyder alle gebruiker geskepte slotskerm kits-loodskortpaaie en stel terug na standaard?</string>
   <string name="lockscreen_target_empty">leeg</string>
   <string name="lockscreen_target_edit_title">Verander kits-loodskortpad en ikoon</string>
-  <string name="lockscreen_target_edit_msg">Kies of verander die gewenste program of aktiwiteit en die gepaardgaande ikoon</string>
   <string name="picker_activities">Aktiwiteite</string>
   <string name="select_custom_app_title">Kies persoonlike program</string>
   <string name="select_custom_activity_title">Kies persoonlike aktiwiteit</string>
@@ -605,6 +608,7 @@ ten einde om bykomende kontrolepunte by te voeg . \'Verwyder\' verwyder die geko
   <string name="power_menu_user_title">Gebruiker wisselaar</string>
   <string name="power_menu_sound_title">Klankpaneel</string>
   <string name="button_settings">Knoppies</string>
+  <string name="hardware_keys_power_key_title">Krag knoppie</string>
   <string name="hardware_keys_home_key_title">Tuis-knoppie</string>
   <string name="hardware_keys_menu_key_title">Kieslys-knoppie</string>
   <string name="hardware_keys_assist_key_title">Soek-knoppie</string>
@@ -621,8 +625,12 @@ ten einde om bykomende kontrolepunte by te voeg . \'Verwyder\' verwyder die geko
   <string name="hardware_keys_action_voice_search">Stemsoektog</string>
   <string name="hardware_keys_action_in_app_search">In-program soek</string>
   <string name="hardware_keys_action_launch_camera">Begin kamera</string>
+  <string name="power_end_call_title">Beëindig oproep</string>
+  <string name="power_end_call_summary">Druk van krag knoppie sal die huidige oproep beëindig</string>
   <string name="button_wake_title">Maak wakker</string>
   <string name="home_wake_summary">Druk van die tuis-knoppie sal jou toestel aktiveer</string>
+  <string name="home_answer_call_title">Antwoord oproep</string>
+  <string name="home_answer_call_summary">Druk van die tuisknoppie sal die huidige inkomende oproep beantwoord</string>
   <string name="camera_wake_summary">Druk van die kamera knoppie sal jou toestel aktiveer</string>
   <string name="camera_sleep_on_release_title">Skerm loer</string>
   <string name="camera_sleep_on_release_summary">\'n Half druk sal die skerm aanhou slegs terwyl die knoppie ingehou word</string>
@@ -650,7 +658,7 @@ ten einde om bykomende kontrolepunte by te voeg . \'Verwyder\' verwyder die geko
   <string name="lockscreen_background">Agtergrond</string>
   <string name="lockscreen_background_style_title">Skermslot agtergrond</string>
   <string name="background_default">Standaard agtergrond</string>
-  <string name="background_wallpaper">Persoonlike muurpapier</string>
+  <string name="background_wallpaper">Persoonlike agtergrond</string>
   <string name="background_result_successful">Agtergrond het verander</string>
   <string name="background_result_not_successful">Agtergrond bly dieselfde</string>
   <string name="setting_lockscreen_background">Besig met agtergrond toepassing</string>
@@ -669,6 +677,7 @@ ten einde om bykomende kontrolepunte by te voeg . \'Verwyder\' verwyder die geko
   <string name="status_bar_signal_style_text">Teks</string>
   <string name="status_bar_toggle_brightness">Helderheid beheer</string>
   <string name="status_bar_toggle_brightness_summary">Verander helderheid aan deur te gly oor die statusbalk</string>
+  <string name="status_bar_toggle_info">Nie beskikbaar, terwyl die outomatiese helderheid geaktiveer is</string>
   <string name="status_bar_notif_count_title">Kennisgewingstelling</string>
   <string name="status_bar_notif_count_summary">Vertoon die aantal uitstaande kennisgewings</string>
   <string name="status_bar_double_tap_to_sleep_title">Klop-Klop om te slaap</string>
@@ -705,6 +714,7 @@ ten einde om bykomende kontrolepunte by te voeg . \'Verwyder\' verwyder die geko
   <string name="gestures_down_spen_title_head">Vee af</string>
   <string name="gestures_long_spen_title_head">Lang-druk</string>
   <string name="gestures_double_spen_title_head">Dubbele aanraak</string>
+  <string name="gestures_settings_header_title">Gebare</string>
   <string name="gestures_action_empty">Geen aksie</string>
   <string name="gestures_action_home">Tuis-knoppie aksie</string>
   <string name="gestures_action_back">Terug-knoppie aksie</string>
@@ -848,6 +858,9 @@ ten einde om bykomende kontrolepunte by te voeg . \'Verwyder\' verwyder die geko
   <string name="priority_sub_title">Prioriteit inskrywing</string>
   <string name="bluetooth_accept_all_files">Aanvaar alle lêer tipes</string>
   <string name="autoperf_title">Aktiveer per program profiele</string>
-  <string name="autoperf_summary">Outomaties kies \'n geskikte werkverrigting profiel vir verskeie programme</string>
   <string name="graphics_title">Grafika en vertoning</string>
+  <string name="menu_hidden_apps_delete">Stel terug</string>
+  <string name="menu_hidden_apps_reset_lock">Herstel patroon slot</string>
+  <string name="protected_apps">Beskermde programme</string>
+  <string name="saving_protected_components">Stoor komponent toestand\u2026</string>
 </resources>

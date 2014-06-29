@@ -79,6 +79,7 @@
   <string name="profile_volumeoverrides_title">Jiná hlasitost</string>
   <string name="connection_state_disabled">Zakázat</string>
   <string name="connection_state_enabled">Povolit</string>
+  <string name="volume_override_summary">Nastavit na %1$s/%2$s</string>
   <string name="profile_profiles_manage">Profily</string>
   <string name="profile_profile_manage">Upravit profil</string>
   <string name="profile_appgroups_manage">Skupiny aplikací</string>
@@ -157,6 +158,8 @@
   <string name="notification_light_voicemail_title">Hlasová schránka</string>
   <string name="adaptive_backlight_title">Přizpůsobivé podsvícení</string>
   <string name="adaptive_backlight_summary">Dynamicky upravovat podsvětlení obrazovky pro lepší výdrž baterie</string>
+  <string name="color_enhancement_title">Vylepšení barev</string>
+  <string name="color_enhancement_summary">Dynamické vylepšení barev zobrazení</string>
   <string name="wake_when_plugged_or_unplugged_title">Probudit při nabíjení</string>
   <string name="wake_when_plugged_or_unplugged_summary">Zapnout obrazovku při připojení nebo odpojení nabíječky</string>
   <string name="screen_animation_off_title">Animace vypnutí obrazovky</string>
@@ -190,6 +193,7 @@
   <string name="lockpattern_settings_enable_error_path_title">Zobrazit cestu chybného gesta</string>
   <string name="lockpattern_settings_enable_dots_title">Zobrazit body gesta</string>
   <string name="screen_security_category">Zabezpečení obrazovky</string>
+  <string name="screen_security_summary">Zobrazit nebo změnit nastavení zabezpečení zámku obrazovky</string>
   <string name="unlock_menu_unlock_title">Odemknout tlačítkem Nabídka</string>
   <string name="unlock_menu_unlock_summary">Po stisknutí tlačítka Nabídka se zařízení odemkne</string>
   <string name="unlock_home_unlock_title">Tlačítkem Domů</string>
@@ -213,12 +217,22 @@
   <string name="tile_choose_title">Zvolte dlaždici</string>
   <string name="title_qs_small_icons">Zobrazovat menší dlaždice</string>
   <string name="summary_qs_small_icons">Zobrazovat dlaždice menší a docílit tak většího počtu sloupců</string>
+  <string name="category_heads_up">Plovoucí upozornění</string>
+  <string name="summary_heads_up_enabled">Vyskakovací upozornění je povoleno</string>
+  <string name="summary_heads_up_disabled">Vyskakovací upozornění je zakázáno</string>
+  <string name="add_heads_up_package">Přidat aplikaci</string>
+  <string name="add_heads_up_dnd_summary">Nezobrazovat plovoucí upozornění v těchto aplikacích</string>
+  <string name="add_heads_up_blacklist_summary">Nezobrazovat plovoucí upozornění z těchto aplikací</string>
+  <string name="heads_up_dnd_title">Nerušit</string>
+  <string name="heads_up_blacklist_title">Černá listina</string>
+  <string name="heads_up_disabled_notice">Chcete-li povolit aplikacím zobrazit interaktivní vyskakovací upozornění, povolte „Plovoucí upozornění“.</string>
   <string name="title_tile_airplane">Režim V letadle</string>
   <string name="title_tile_battery">Stav baterie</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Jas</string>
   <string name="title_tile_camera">Fotoaparát</string>
   <string name="title_tile_compass">Kompas</string>
+  <string name="title_tile_heads_up">Plovoucí upozornění</string>
   <string name="title_tile_sleep">Uspat</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Svítilna</string>
@@ -354,6 +368,7 @@ jednotlivě měnit a tím zvětšit počet řídících bodů. „Odstranit“ s
   <string name="quiet_hours_dim_summary">Vypnout světelné upozornění</string>
   <string name="quiet_hours_haptic">Hmatová odezva</string>
   <string name="quiet_hours_haptic_summary">Vypnout hmatovou odezvu</string>
+  <string name="quiet_hours_active_period">Aktivní od <xliff:g id="start">%1$s</xliff:g> do <xliff:g id="end">%2$s</xliff:g></string>
   <string name="quiet_hours_ringer_allow_all">Pro všechny</string>
   <string name="quiet_hours_ringer_allow_contacts">Pouze uložené kontatky</string>
   <string name="quiet_hours_ringer_allow_starred">Pouze oblíbené kontakty</string>
@@ -382,7 +397,7 @@ jednotlivě měnit a tím zvětšit počet řídících bodů. „Odstranit“ s
   <string name="preview_carrier_title">Operátor</string>
   <string name="header_category_interface">Přizpůsobení</string>
   <string name="themes_settings_title">Motiv vzhledu</string>
-  <string name="themepacks_settings_title">Balíčky témat</string>
+  <string name="themepacks_settings_title">Balíčky motivů</string>
   <string name="styles_settings_title">Styly</string>
   <string name="icons_settings_title">Ikony</string>
   <string name="fonts_settings_title">Písma</string>
@@ -530,7 +545,7 @@ jednotlivě měnit a tím zvětšit počet řídících bodů. „Odstranit“ s
   <string name="lockscreen_target_reset_message">Odstranit všechny uživatelsky vytvořené zkratky a obnovit výchozí nastavení?</string>
   <string name="lockscreen_target_empty">Prázdné</string>
   <string name="lockscreen_target_edit_title">Upravit zktratku a ikonu</string>
-  <string name="lockscreen_target_edit_msg">Vybrat nebo změnit požadovanou aplikaci nebo činnost a související ikonu</string>
+  <string name="lockscreen_target_edit_msg">Vyberte nebo změňte požadovanou aplikaci nebo aktivitu a přidruženou ikonu</string>
   <string name="picker_activities">Aktivity</string>
   <string name="select_custom_app_title">Zvolte vlastní aplikaci</string>
   <string name="select_custom_activity_title">Zvolte vlastní aktivitu</string>
@@ -681,6 +696,7 @@ jednotlivě měnit a tím zvětšit počet řídících bodů. „Odstranit“ s
   <string name="status_bar_signal_style_text">Text</string>
   <string name="status_bar_toggle_brightness">Ovládání jasu</string>
   <string name="status_bar_toggle_brightness_summary">Umožňuje nastavit jas tažením prstu na stavové liště</string>
+  <string name="status_bar_toggle_info">Není k dispozici, pokud je aktivní automatické řízení jasu</string>
   <string name="status_bar_notif_count_title">Zobrazit počet upozornění</string>
   <string name="status_bar_notif_count_summary">Zobrazí počet nezobrazených upozornění v oznamovací oblasti</string>
   <string name="status_bar_double_tap_to_sleep_title">Dvojím klepnutím uspat</string>
@@ -722,6 +738,7 @@ z <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> na <xliff:g id="new" exam
   <string name="gestures_down_spen_title_head">Pohyb dolu</string>
   <string name="gestures_long_spen_title_head">Dlouhý dotyk</string>
   <string name="gestures_double_spen_title_head">Dvojklik</string>
+  <string name="gestures_settings_header_title">Gesta</string>
   <string name="gestures_action_empty">Bez akce</string>
   <string name="gestures_action_home">Domů</string>
   <string name="gestures_action_back">Zpět</string>
@@ -867,4 +884,8 @@ z <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> na <xliff:g id="new" exam
   <string name="autoperf_title">Povolit profily na aplikaci</string>
   <string name="autoperf_summary">Automaticky vybrat odpovídající výkonnostní profil pro různé aplikace</string>
   <string name="graphics_title">Grafika a vykreslování</string>
+  <string name="menu_hidden_apps_delete">Obnovit</string>
+  <string name="menu_hidden_apps_reset_lock">Obnovit gesto zámku</string>
+  <string name="protected_apps">Chráněné aplikace</string>
+  <string name="saving_protected_components">Ukládání stavu komponent\u2026</string>
 </resources>

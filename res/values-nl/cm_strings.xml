@@ -158,6 +158,8 @@
   <string name="notification_light_voicemail_title">Voicemail</string>
   <string name="adaptive_backlight_title">Aanpassende helderheid</string>
   <string name="adaptive_backlight_summary">Schermhelderheid intelligent aanpassen voor langer accugebruik met behoud van bruikbaarheid</string>
+  <string name="color_enhancement_title">Kleurverbetering</string>
+  <string name="color_enhancement_summary">Kleur van het display dynamisch verbeteren</string>
   <string name="wake_when_plugged_or_unplugged_title">Ontwaken door lader</string>
   <string name="wake_when_plugged_or_unplugged_summary">Scherm aan bij het aansluiten of loskoppelen van een lader</string>
   <string name="screen_animation_off_title">Scherm-uit-animatie</string>
@@ -215,12 +217,22 @@
   <string name="tile_choose_title">Tegel kiezen</string>
   <string name="title_qs_small_icons">Kleinere tegels</string>
   <string name="summary_qs_small_icons">Kleinere tegels voor meer tegels per kolom</string>
+  <string name="category_heads_up">Heads-up</string>
+  <string name="summary_heads_up_enabled">Zwevende meldingen ingeschakeld</string>
+  <string name="summary_heads_up_disabled">Zwevende meldingen uitgeschakeld</string>
+  <string name="add_heads_up_package">App toevoegen</string>
+  <string name="add_heads_up_dnd_summary">Heads-up niet weergeven in deze apps</string>
+  <string name="add_heads_up_blacklist_summary">Geen heads-up weergeven van deze apps</string>
+  <string name="heads_up_dnd_title">Niet storen</string>
+  <string name="heads_up_blacklist_title">Zwarte lijst</string>
+  <string name="heads_up_disabled_notice">Heads-up inschakelen zodat apps interactieve meldingen in een zwevend venster kunnen laten zien.</string>
   <string name="title_tile_airplane">Vliegmodus</string>
   <string name="title_tile_battery">Accustatus</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Helderheid</string>
   <string name="title_tile_camera">Camera</string>
   <string name="title_tile_compass">Kompas</string>
+  <string name="title_tile_heads_up">Heads-up</string>
   <string name="title_tile_sleep">Slaapstand</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Zaklamp</string>
@@ -325,7 +337,7 @@ Extra opties zijn beschikbaar door een regel lang aan te raken. Door \'Aanpassen
   <string name="app_security_title">App-beveiliging</string>
   <string name="root_access">Root-toegang</string>
   <string name="root_access_warning_title">Root-toegang toestaan?</string>
-  <string name="root_access_warning_message">Root-toegang toestaan kan zeer gevaarlijk zijn en kan uw systeem onveilig maken</string>
+  <string name="root_access_warning_message">Root-toegang toestaan kan zeer gevaarlijk zijn en kan uw systeem onveilig maken!</string>
   <string name="root_access_none">Uitgeschakeld</string>
   <string name="root_access_apps">Alleen apps</string>
   <string name="root_access_adb">Alleen ADB</string>
@@ -524,7 +536,7 @@ Extra opties zijn beschikbaar door een regel lang aan te raken. Door \'Aanpassen
   <string name="lockscreen_target_reset_message">Alle gemaakte snelkoppelingen verwijderen en standaardwaarden herstellen?</string>
   <string name="lockscreen_target_empty">Niet toegewezen</string>
   <string name="lockscreen_target_edit_title">Snelkoppeling wijzigen</string>
-  <string name="lockscreen_target_edit_msg">Gewenste app/activiteit en bijbehorend pictogram wijzigen</string>
+  <string name="lockscreen_target_edit_msg">Gewenste app of activiteit en bijbehorend pictogram wijzigen</string>
   <string name="picker_activities">Activiteiten</string>
   <string name="select_custom_app_title">Aangepaste app kiezen</string>
   <string name="select_custom_activity_title">Aangepaste activiteit kiezen</string>
@@ -675,6 +687,7 @@ Extra opties zijn beschikbaar door een regel lang aan te raken. Door \'Aanpassen
   <string name="status_bar_signal_style_text">Tekst</string>
   <string name="status_bar_toggle_brightness">Helderheid beheren</string>
   <string name="status_bar_toggle_brightness_summary">Helderheid aanpassen door over de statusbalk te slepen</string>
+  <string name="status_bar_toggle_info">Niet beschikbaar wanneer automatische helderheid ingeschakeld</string>
   <string name="status_bar_notif_count_title">Aantal meldingen tonen</string>
   <string name="status_bar_notif_count_summary">Aantal nieuwe meldingen tonen</string>
   <string name="status_bar_double_tap_to_sleep_title">Dubbeltikken voor slaapstand</string>
@@ -855,7 +868,7 @@ Extra opties zijn beschikbaar door een regel lang aan te raken. Door \'Aanpassen
   <string name="priority_sub_title">Voorkeursabonnement</string>
   <string name="bluetooth_accept_all_files">Alle bestandstypen accepteren</string>
   <string name="autoperf_title">Profielen per app</string>
-  <string name="autoperf_summary">Automatisch een passend prestatieprofiel kiezen voor verschillende toepassingen</string>
+  <string name="autoperf_summary">Automatisch een passend prestatieprofiel kiezen voor verschillende apps</string>
   <string name="graphics_title">Grafisch en weergave</string>
   <string name="menu_hidden_apps_delete">Opnieuw instellen</string>
   <string name="menu_hidden_apps_reset_lock">Patroon opnieuw instellen</string>

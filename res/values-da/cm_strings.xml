@@ -148,7 +148,6 @@
   <string name="lights_category_title">Lys</string>
   <string name="notification_pulse_title">Meddelelseslys</string>
   <string name="notification_light_general_title">Generelt</string>
-  <string name="notification_light_applist_title">Applikationer</string>
   <string name="notification_light_phonelist_title">Telefon</string>
   <string name="notification_light_use_custom">Anvend egne værdier</string>
   <string name="notification_light_enabled">Aktiveret</string>
@@ -158,6 +157,8 @@
   <string name="notification_light_voicemail_title">Telefonsvarer</string>
   <string name="adaptive_backlight_title">Tilpassende baggrundslys</string>
   <string name="adaptive_backlight_summary">Justér lysstyrken for skærmens baggrundslys dynamisk for at maksimere batterilevetid og samtidig bibeholde brugervenligheden</string>
+  <string name="color_enhancement_title">Farveforbedring</string>
+  <string name="color_enhancement_summary">Forbedrer dynamisk farven på skærmen</string>
   <string name="wake_when_plugged_or_unplugged_title">Væk ved strøm</string>
   <string name="wake_when_plugged_or_unplugged_summary">Tænd skærmen, når du tilslutter eller frakobler en strømkilde</string>
   <string name="screen_animation_off_title">Animation ved slukning af skærm</string>
@@ -215,12 +216,19 @@
   <string name="tile_choose_title">Vælg et felt</string>
   <string name="title_qs_small_icons">Vis mindre felter</string>
   <string name="summary_qs_small_icons">Brug mindre felter til at øge antallet af kolonner</string>
+  <string name="category_heads_up">Svævende meddelelser</string>
+  <string name="summary_heads_up_enabled">Pop op-meddelelser er aktiveret</string>
+  <string name="summary_heads_up_disabled">Pop op-meddelelser er deaktiveret</string>
+  <string name="add_heads_up_package">Tilføj app</string>
+  <string name="heads_up_dnd_title">Forstyr ikke</string>
+  <string name="heads_up_blacklist_title">Sortliste</string>
   <string name="title_tile_airplane">Flytilstand</string>
   <string name="title_tile_battery">Batteristatistik</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Lysstyrke</string>
   <string name="title_tile_camera">Kamera</string>
   <string name="title_tile_compass">Kompas</string>
+  <string name="title_tile_heads_up">Svævende meddelelser</string>
   <string name="title_tile_sleep">Gå i dvale</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Lommelygte</string>
@@ -325,7 +333,6 @@ Yderligere indstillinger er tilgængelige ved at trykke længe på en linje. Ved
   <string name="app_security_title">App-sikkerhed</string>
   <string name="root_access">Root-adgang</string>
   <string name="root_access_warning_title">Tillad root-adgang?</string>
-  <string name="root_access_warning_message">At tillade applikationer at anmode om root-adgang er meget farligt og kan kompromittere dit systems sikkerhed!</string>
   <string name="root_access_none">Deaktiveret</string>
   <string name="root_access_apps">Kun apps</string>
   <string name="root_access_adb">Kun ADB</string>
@@ -524,7 +531,6 @@ Yderligere indstillinger er tilgængelige ved at trykke længe på en linje. Ved
   <string name="lockscreen_target_reset_message">Slet egne genveje for skærmlåsen og nulstil til standard?</string>
   <string name="lockscreen_target_empty">Tom</string>
   <string name="lockscreen_target_edit_title">Rediger genvej og ikon</string>
-  <string name="lockscreen_target_edit_msg">Vælg eller skift den ønskede app eller aktivitet, samt det tilhørende ikon</string>
   <string name="picker_activities">Aktiviteter</string>
   <string name="select_custom_app_title">Vælg brugerdefineret app</string>
   <string name="select_custom_activity_title">Vælg brugerdefineret aktivitet</string>
@@ -675,6 +681,7 @@ Yderligere indstillinger er tilgængelige ved at trykke længe på en linje. Ved
   <string name="status_bar_signal_style_text">Tekst</string>
   <string name="status_bar_toggle_brightness">Lysstyrkeregulering</string>
   <string name="status_bar_toggle_brightness_summary">Juster lysstyrken ved at glide på tværs af statuslinjen</string>
+  <string name="status_bar_toggle_info">Ikke tilgængelig mens automatisk lysstyrke er aktiveret</string>
   <string name="status_bar_notif_count_title">Vis meddelelsestæller</string>
   <string name="status_bar_notif_count_summary">Vis antallet af uafsluttede meddelelser</string>
   <string name="status_bar_double_tap_to_sleep_title">Dobbelttryk for at sove</string>
@@ -855,7 +862,6 @@ Yderligere indstillinger er tilgængelige ved at trykke længe på en linje. Ved
   <string name="priority_sub_title">Prioritetsabonnement</string>
   <string name="bluetooth_accept_all_files">Acceptér alle filtyper</string>
   <string name="autoperf_title">Aktivér per-app-profiler</string>
-  <string name="autoperf_summary">Vælg automatisk en passende ydeevneprofil til diverse apps</string>
   <string name="graphics_title">Grafik og rendering</string>
   <string name="menu_hidden_apps_delete">Nulstil</string>
   <string name="menu_hidden_apps_reset_lock">Nulstil mønster lås</string>

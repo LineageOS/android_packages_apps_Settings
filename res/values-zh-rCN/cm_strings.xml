@@ -158,6 +158,8 @@
   <string name="notification_light_voicemail_title">语音信箱</string>
   <string name="adaptive_backlight_title">自适应背光</string>
   <string name="adaptive_backlight_summary">动态调整屏幕的背光亮度以最大化电池寿命，同时维持可用性</string>
+  <string name="color_enhancement_title">色彩增强</string>
+  <string name="color_enhancement_summary">动态增强屏幕色彩</string>
   <string name="wake_when_plugged_or_unplugged_title">插入/拔出电源点亮屏幕</string>
   <string name="wake_when_plugged_or_unplugged_summary">连接或断开电源时点亮屏幕</string>
   <string name="screen_animation_off_title">锁屏效果</string>
@@ -215,12 +217,22 @@
   <string name="tile_choose_title">选择一个按钮</string>
   <string name="title_qs_small_icons">显示小按钮</string>
   <string name="summary_qs_small_icons">使用小按钮以增加列数</string>
+  <string name="category_heads_up">浮动通知</string>
+  <string name="summary_heads_up_enabled">弹出通知已启用</string>
+  <string name="summary_heads_up_disabled">弹出通知已禁用</string>
+  <string name="add_heads_up_package">添加应用</string>
+  <string name="add_heads_up_dnd_summary">不要在这些应用上显示浮动通知</string>
+  <string name="add_heads_up_blacklist_summary">不要显示来自这些应用的浮动通知</string>
+  <string name="heads_up_dnd_title">请勿打扰</string>
+  <string name="heads_up_blacklist_title">黑名单</string>
+  <string name="heads_up_disabled_notice">要允许应用在您的屏幕上弹出窗口显示交互式通知，启用浮动通知。</string>
   <string name="title_tile_airplane">飞行模式</string>
   <string name="title_tile_battery">电量显示</string>
   <string name="title_tile_bluetooth">蓝牙</string>
   <string name="title_tile_brightness">亮度</string>
   <string name="title_tile_camera">相机</string>
   <string name="title_tile_compass">指南针</string>
+  <string name="title_tile_heads_up">浮动通知</string>
   <string name="title_tile_sleep">进入睡眠</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">手电筒</string>
@@ -325,7 +337,7 @@
   <string name="app_security_title">应用安全</string>
   <string name="root_access">Root 授权</string>
   <string name="root_access_warning_title">允许 Root 授权请求？</string>
-  <string name="root_access_warning_message">允许程序得到超级用户权限是非常危险的，可能会影响您的系统安全！</string>
+  <string name="root_access_warning_message">允许程序得到超级用户权限是有风险的，可能会影响您的系统安全！</string>
   <string name="root_access_none">已禁用</string>
   <string name="root_access_apps">仅限于应用程序</string>
   <string name="root_access_adb">仅限于 ADB</string>
@@ -524,7 +536,7 @@
   <string name="lockscreen_target_reset_message">删除所有用户设定的快捷方式并还原为默认值？</string>
   <string name="lockscreen_target_empty">空</string>
   <string name="lockscreen_target_edit_title">编辑快捷方式与图标</string>
-  <string name="lockscreen_target_edit_msg">选定或改变与快捷方式所关联的程序与图标</string>
+  <string name="lockscreen_target_edit_msg">选择或更改所需的应用或活动所关联的图标</string>
   <string name="picker_activities">活动</string>
   <string name="select_custom_app_title">选择自定义程序</string>
   <string name="select_custom_activity_title">选择自定义活动</string>
@@ -675,6 +687,7 @@
   <string name="status_bar_signal_style_text">文字</string>
   <string name="status_bar_toggle_brightness">亮度控制</string>
   <string name="status_bar_toggle_brightness_summary">由滑过状态栏调整亮度</string>
+  <string name="status_bar_toggle_info">自动亮度启用时不可用</string>
   <string name="status_bar_notif_count_title">显示通知数量</string>
   <string name="status_bar_notif_count_summary">显示未读通知的数量</string>
   <string name="status_bar_double_tap_to_sleep_title">双击以睡眠</string>

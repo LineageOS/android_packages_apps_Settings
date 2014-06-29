@@ -148,7 +148,7 @@
   <string name="lights_category_title">Lampu</string>
   <string name="notification_pulse_title">Lampu notifikasi</string>
   <string name="notification_light_general_title">Umum</string>
-  <string name="notification_light_applist_title">Aplikasi</string>
+  <string name="notification_light_applist_title">Apl</string>
   <string name="notification_light_phonelist_title">Telepon</string>
   <string name="notification_light_use_custom">Gunakan nilai lain</string>
   <string name="notification_light_enabled">Diaktifkan</string>
@@ -158,6 +158,8 @@
   <string name="notification_light_voicemail_title">Pesan suara</string>
   <string name="adaptive_backlight_title">Lampu latar adaptif</string>
   <string name="adaptive_backlight_summary">Sesuaikan dengan dinamis kecerahan lampu latar layar untuk memaksimalkan baterai sambil mempertahankan kegunaan</string>
+  <string name="color_enhancement_title">Peningkatan warna</string>
+  <string name="color_enhancement_summary">Tingkatkan warna tampilan secara dinamis</string>
   <string name="wake_when_plugged_or_unplugged_title">Bangun saat pengisi daya di pasang</string>
   <string name="wake_when_plugged_or_unplugged_summary">Aktifkan layar ketika menghubungkan atau melepaskan sumber daya</string>
   <string name="screen_animation_off_title">Animasi screen-off</string>
@@ -215,12 +217,22 @@
   <string name="tile_choose_title">Pilih tile</string>
   <string name="title_qs_small_icons">Tampilkan tiles lebih kecil</string>
   <string name="summary_qs_small_icons">Gunakan tiles kecil untuk meningkatkan jumlah kolom</string>
+  <string name="category_heads_up">Heads up</string>
+  <string name="summary_heads_up_enabled">Pemberitahuan pop-up diaktifkan</string>
+  <string name="summary_heads_up_disabled">Pemberitahuan pop-up dinonaktifkan</string>
+  <string name="add_heads_up_package">Tambahkan apl</string>
+  <string name="add_heads_up_dnd_summary">Jangan tampilkan heads up dalam aplikasi ini</string>
+  <string name="add_heads_up_blacklist_summary">Jangan tampilkan heads up dari aplikasi ini</string>
+  <string name="heads_up_dnd_title">Jangan mengganggu</string>
+  <string name="heads_up_blacklist_title">Blacklist</string>
+  <string name="heads_up_disabled_notice">Untuk mengizinkan aplikasi untuk menampilkan pemberitahuan interaktif pada jendela pop-up di layar Anda, aktifkan Heads up.</string>
   <string name="title_tile_airplane">Modus pesawat</string>
   <string name="title_tile_battery">Statistik baterai</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Kecerahan layar</string>
   <string name="title_tile_camera">Kamera</string>
   <string name="title_tile_compass">Kompas</string>
+  <string name="title_tile_heads_up">Heads up</string>
   <string name="title_tile_sleep">Matikan layar</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Senter</string>
@@ -324,7 +336,7 @@ Pilihan tambahan tersedia dengan menekan-lama sebuah garis. Dengan memilih \'Uba
   <string name="app_security_title">Keamanan aplikasi</string>
   <string name="root_access">Akses root</string>
   <string name="root_access_warning_title">Izinkan akses root?</string>
-  <string name="root_access_warning_message">Mengizinkan aplikasi untuk meminta akses root sangat berbahaya dan dapat mengancam keamanan sistem Anda!</string>
+  <string name="root_access_warning_message">Mengizinkan aplikasi untuk meminta akses root sangat berbahaya dan dapat membahayakan keamanan sistem anda!</string>
   <string name="root_access_none">Dinonaktifkan</string>
   <string name="root_access_apps">Aplikasi saja</string>
   <string name="root_access_adb">ADB saja</string>
@@ -523,7 +535,7 @@ Pilihan tambahan tersedia dengan menekan-lama sebuah garis. Dengan memilih \'Uba
   <string name="lockscreen_target_reset_message">Hapus semua pintasan layar kunci dan kembalikan ke default?</string>
   <string name="lockscreen_target_empty">Kosong</string>
   <string name="lockscreen_target_edit_title">Mengedit pintasan dan ikon</string>
-  <string name="lockscreen_target_edit_msg">Pilih atau ubah aplikasi yang diinginkan atau aktivitas dan ikon yang terkait</string>
+  <string name="lockscreen_target_edit_msg">Pilih atau ubah aplikasi yang diinginkan atau kegiatan dan ikon yang terkait</string>
   <string name="picker_activities">Aktivitas</string>
   <string name="select_custom_app_title">Pilih aplikasi kustom</string>
   <string name="select_custom_activity_title">Pilih aktivitas kustom</string>
@@ -674,6 +686,7 @@ Pilihan tambahan tersedia dengan menekan-lama sebuah garis. Dengan memilih \'Uba
   <string name="status_bar_signal_style_text">Teks</string>
   <string name="status_bar_toggle_brightness">Kontrol kecerahan</string>
   <string name="status_bar_toggle_brightness_summary">Sesuaikan kecerahan dengan menggeser di status bar</string>
+  <string name="status_bar_toggle_info">Tidak tersedia sementara saat kecerahan otomatis diaktifkan</string>
   <string name="status_bar_notif_count_title">Tampilkan hitungan pemberitahuan</string>
   <string name="status_bar_notif_count_summary">Tampilkan jumlah pemberitahuan tertunda</string>
   <string name="status_bar_double_tap_to_sleep_title">Dua kali tap untuk sleep</string>
@@ -854,7 +867,7 @@ Pilihan tambahan tersedia dengan menekan-lama sebuah garis. Dengan memilih \'Uba
   <string name="priority_sub_title">Prioritas berlangganan</string>
   <string name="bluetooth_accept_all_files">Terima semua jenis file</string>
   <string name="autoperf_title">Aktifkan profil per-aplikasi</string>
-  <string name="autoperf_summary">Secara otomatis memilih profil performa sesuai untuk berbagai aplikasi</string>
+  <string name="autoperf_summary">Secara otomatis memilih profil kinerja yang tepat untuk berbagai aplikasi</string>
   <string name="graphics_title">Grafis dan rendering</string>
   <string name="menu_hidden_apps_delete">Reset</string>
   <string name="menu_hidden_apps_reset_lock">Reset pola kunci</string>

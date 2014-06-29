@@ -158,6 +158,8 @@
   <string name="notification_light_voicemail_title">Говорна пошта</string>
   <string name="adaptive_backlight_title">Прилагодљиво позадинско осветљење</string>
   <string name="adaptive_backlight_summary">Динамично регулши позадинско осветљење екрана за максимално трајање батерије уз одржавање употребљивости</string>
+  <string name="color_enhancement_title">Унапређење боје</string>
+  <string name="color_enhancement_summary">Динамично унапреди боју на екрану</string>
   <string name="wake_when_plugged_or_unplugged_title">Пробуди на утикачу</string>
   <string name="wake_when_plugged_or_unplugged_summary">Укључи екран код повезивања или искључивања са извора напајања</string>
   <string name="screen_animation_off_title">Анимација искључивања екрана</string>
@@ -215,16 +217,22 @@
   <string name="tile_choose_title">Изабери плочицу</string>
   <string name="title_qs_small_icons">Прикажи мање плочице</string>
   <string name="summary_qs_small_icons">Користи мање плочице да повећаш број колона</string>
-  <string name="category_heads_up">Обавештења на екрану</string>
-  <string name="title_heads_up_enabled">Омогући обавештења на екрану</string>
-  <string name="add_heads_up_dnd_package">Додај апликацију у \'Не узнемиравај\'</string>
+  <string name="category_heads_up">Обавештења</string>
+  <string name="summary_heads_up_enabled">Искачућа обавештења су омогућена</string>
+  <string name="summary_heads_up_disabled">Искачућа обавештења су онемогућена</string>
+  <string name="add_heads_up_package">Додај апликацију</string>
+  <string name="add_heads_up_dnd_summary">Не приказуј искачућа обавештења у овим апликацијама</string>
+  <string name="add_heads_up_blacklist_summary">Не приказуј искачућа обавештења из ових апликација</string>
   <string name="heads_up_dnd_title">Не узнемиравај</string>
+  <string name="heads_up_blacklist_title">Црна листа</string>
+  <string name="heads_up_disabled_notice">Да би дозволио апликацијама да приказују интерактивна обавештења у искачућем прозору на твом екрану, омогући искачућа обавештења.</string>
   <string name="title_tile_airplane">Режим рада у авиону</string>
   <string name="title_tile_battery">Статистика батерије</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Осветљење</string>
   <string name="title_tile_camera">Камера</string>
   <string name="title_tile_compass">Компас</string>
+  <string name="title_tile_heads_up">Обавештења</string>
   <string name="title_tile_sleep">Спавање</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Бакља</string>
@@ -233,7 +241,7 @@
   <string name="title_tile_mobiledata">Мобилни подаци</string>
   <string name="title_tile_profile">Профил</string>
   <string name="title_tile_performance_profile">Перформансе профила</string>
-  <string name="title_tile_autorotate">Екран ротација</string>
+  <string name="title_tile_autorotate">Оријентација</string>
   <string name="title_tile_settings">Подешавања</string>
   <string name="title_tile_sound">Звук</string>
   <string name="title_tile_sync">Синхрон.</string>
@@ -280,18 +288,18 @@
   <string name="auto_brightness_setup_title">Аутоматско осветљење</string>
   <string name="auto_brightness_twilight_adjustment">Регулиши излазак и залазак сунца</string>
   <string name="light_sensor_current_value">Тренутна вредност светлосног сензора: <xliff:g id="light_level">%d</xliff:g> lux</string>
-  <string name="auto_brightness_dialog_title">Аутоматски нивои осветљености</string>
+  <string name="auto_brightness_dialog_title">Аутоматски ниво осветљења</string>
   <string name="auto_brightness_level_format"><xliff:g id="level">%1$d</xliff:g> lux</string>
   <string name="auto_brightness_last_level_format"><xliff:g id="level">%1$d</xliff:g> -\n\u221e lux</string>
   <string name="auto_brightness_adjust_button">Регулиши</string>
   <string name="auto_brightness_close_button">Затвори</string>
   <string name="auto_brightness_reset_button">Ресетуј</string>
-  <string name="auto_brightness_split_dialog_title">Подели ниво осветљености</string>
+  <string name="auto_brightness_split_dialog_title">Подели ниво осветљења</string>
   <string name="auto_brightness_level_dialog_title">Подешавања нивоа светлости</string>
-  <string name="auto_brightness_lux">Осветљеност амбијента (lux)</string>
-  <string name="auto_brightness_backlight">Осветљеност екрана (%)</string>
+  <string name="auto_brightness_lux">Осветљење амбијента (lux)</string>
+  <string name="auto_brightness_backlight">Осветљење екрана (%)</string>
   <string name="auto_brightness_reset_dialog_title">Ресетуј нивое?</string>
-  <string name="auto_brightness_reset_confirmation">Сви нивои осветљености ће бити ресетовани на подразумеване вредности.</string>
+  <string name="auto_brightness_reset_confirmation">Сви нивои осветљења ће бити ресетовани на подразумеване вредности.</string>
   <string name="auto_brightness_split_lux_format">Подели положај (између <xliff:g id="min">%1$d</xliff:g> и <xliff:g id="max">%2$d</xliff:g> lux)</string>
   <string name="auto_brightness_level_options">Опције нивоа светлости</string>
   <string name="auto_brightness_menu_edit">Уреди</string>
@@ -300,7 +308,7 @@
   <string name="auto_brightness_preview">Преглед</string>
   <string name="auto_brightness_preview_dialog_title">Осветљење прегледа кривине</string>
   <string name="auto_brightness_help_dialog_title">Помоћ</string>
-  <string name="auto_brightness_help_text"><b>Како се израчунава осветљеност?</b>
+  <string name="auto_brightness_help_text"><b>Како се израчунава осветљење?</b>
 Крива осветљености се израчунава обављањем <i>cubic spline interpolation</i> на датом броју <i>control points</i>. То није \'тип кофе\' калкулација где 
 осветљеност екрана остаје константна за одређени опсег амбијенталног осветљења. На тај начин, мале промене у осветљености амбијента не изазивају велики скок у осветљености екрана; међутим, то може бити мало тешко предвидети, тачне последице промене контролних тачака.\n Да би се помогло са тим, преглед обрачунате криве се може испитати. Молимо, упамтите да прегледи кривине у <i>logarithmic</i> скали, тако да све контролне тачке могу бити изразито приказане. Када користите линеарну скалу, то не би било могуће разликовати када тежи више важних контролних тачака у доњем опсегу амбијенталног осветљења.
 \n\n
@@ -334,7 +342,7 @@
   <string name="app_security_title">Безбедност апликација</string>
   <string name="root_access">Root приступ</string>
   <string name="root_access_warning_title">Дозволи root приступ?</string>
-  <string name="root_access_warning_message">Дозвољавање апликацијама да захтевају root приступ је веома опасно и може угрозити безбедност система!</string>
+  <string name="root_access_warning_message">Дозвољавање апликацијама да захтевају root приступ је веома опасно и може угрозити безбедност твог система!</string>
   <string name="root_access_none">Онемогућено</string>
   <string name="root_access_apps">Само апликације</string>
   <string name="root_access_adb">Само ADB</string>
@@ -347,7 +355,7 @@
   <string name="quiet_hours_enabled">Примени тихе сате</string>
   <string name="quiet_hours_ringer">Звоно телефона</string>
   <string name="quiet_hours_mute">Обавештења</string>
-  <string name="quiet_hours_mute_summary">Нечујна обавештења</string>
+  <string name="quiet_hours_mute_summary">Утишај обавештења</string>
   <string name="quiet_hours_system">Системски звукови</string>
   <string name="quiet_hours_system_summary">Онемогући системске звукове</string>
   <string name="quiet_hours_still">Вибрације</string>
@@ -360,7 +368,7 @@
   <string name="quiet_hours_ringer_allow_all">Звоно за све позиве</string>
   <string name="quiet_hours_ringer_allow_contacts">Звоно за све контакте</string>
   <string name="quiet_hours_ringer_allow_starred">Звоно за омиљене контакте</string>
-  <string name="quiet_hours_ringer_mute_all">Искључи звоно за све позиве</string>
+  <string name="quiet_hours_ringer_mute_all">Утишај звоно за све позиве</string>
   <string name="start_time_title">Почетак</string>
   <string name="end_time_title">Крај</string>
   <string name="mod_version">CyanogenMod верзија</string>
@@ -385,7 +393,7 @@
   <string name="preview_version_title">Верзија</string>
   <string name="preview_country_title">Земља</string>
   <string name="preview_carrier_title">Преносилац</string>
-  <string name="header_category_interface">Персонализација</string>
+  <string name="header_category_interface">Персонализовање</string>
   <string name="themes_settings_title">Теме</string>
   <string name="themepacks_settings_title">Пакети тема</string>
   <string name="styles_settings_title">Стилови</string>
@@ -452,7 +460,7 @@
   <string name="blacklist_edit_dialog_title">Измени црну листу</string>
   <string name="blacklist_prefs">Подешавања</string>
   <string name="blacklist_button_delete">Избриши</string>
-  <string name="blacklist_empty_text">Немаш никакве бројеве на црној листи. Додај унос додиром на дугме (+).</string>
+  <string name="blacklist_empty_text">Немаш никакве бројеве на црној листи. Додај унос додиром на дугме Додај (+).</string>
   <string name="blacklist_disabled_empty_text">За позиве из црне листе и/или порука са одређених бројева, омогући црну листу.</string>
   <string name="blacklist_summary_disabled">Онемогућено</string>
   <string name="blacklist_summary">Долазни позиви и поруке из црне листе телефонских бројева ће бити блокирани</string>
@@ -495,7 +503,7 @@
   <string name="adb_over_network_summary">Омогући TCP/IP отклањање грешака преко мрежних интерфејса (Wi-Fi, USB мреже). Ово подешавање се ресетује при рестарту</string>
   <string name="adb_over_network_warning">УПОЗОРЕЊЕ: Када је омогућено ADB преко мреже, твој телефон је отворен за упаде на свим повезаним мрежама, укључујући и GSM мреже података!\n\nКористи ову функцију само када си повезан на поузданим мрежама.\n\nДа ли заиста желиш да омогућиш ову функцију?</string>
   <string name="device_hostname">Име хоста уређаја</string>
-  <string name="notification_drawer_title">Фиока са обавештењима</string>
+  <string name="notification_drawer_title">Обавештења</string>
   <string name="notification_drawer_collapse_on_dismiss_title">Аутоматско затварање</string>
   <string name="collapse_on_dismiss_never">Онемогућено</string>
   <string name="collapse_on_dismiss_if_empty">Ако ниједно не преостаје</string>
@@ -579,7 +587,7 @@
   <string name="navigation_bar_category">Навигациона трака</string>
   <string name="navigation_bar_title">Дугмићи и распоред</string>
   <string name="navigation_bar_left_title">Лево-руки режим</string>
-  <string name="navigation_bar_left_summary">Постави траку за навигацију на левој страни екрана у положеном режиму</string>
+  <string name="navigation_bar_left_summary">Постави навигациону траку на левој страни екрана у положеном режиму</string>
   <string name="navigation_bar_help_text">1 - За почетак уређивања, додирни икону за закључавање\n\n2 - Додирни било које дугме да доделиш или промениш функционалност\n\n3 - Дуго притисни било које дугме да реорганизујеш редослед\n\n4 - Да би сачувао, поново додирни икону за закључавање\n\n5 - Да би вратио подразумевано, додирни дугме за ресетовање\n\n</string>
   <string name="navigation_bar_tips">\u2022 Акције могу бити додељене само на једно дугме у исто време\n\n\u2022 Главно дугме се не може пре-доделити\n\n\u2022 Бочни дугмићи не могу да се преуреде</string>
   <string name="navigation_bar_tips_title">Брзи савети</string>
@@ -732,7 +740,7 @@
   <string name="gestures_action_recent">Недавне апкликације</string>
   <string name="stylus_app_not_installed">%s није инсталирано</string>
   <string name="ime_switcher_notify">Бирач обавештења</string>
-  <string name="ime_switcher_notify_summary">Прикажи режим уноса бирача обавештења</string>
+  <string name="ime_switcher_notify_summary">Прикажи методу уноса бирача обавештења</string>
   <string name="app_ops_summaries_coarse_location">груба локација</string>
   <string name="app_ops_summaries_fine_location">фина локација</string>
   <string name="app_ops_summaries_gps">GPS</string>
@@ -844,8 +852,8 @@
   <string name="edge_gesture_service_summary">Немој слати додирне догађаје за навигацију и гестове статусне траке апликацијама</string>
   <string name="data_usage_cycle_editor_subtitle_cm">Датум сваког циклуса:</string>
   <string name="data_usage_lengths_spinner_subtitle">Дужина циклуса:</string>
-  <string name="disable_navkeys_title">Омогући на екрану нав траке</string>
-  <string name="disable_navkeys_summary">Омогући на екрану траке за навигацију и онемогући хардверске тастере</string>
+  <string name="disable_navkeys_title">Омогући нав. траку на екрану</string>
+  <string name="disable_navkeys_summary">Омогући навигациону траку на екрану и онемогући хардверске дугмиће</string>
   <string name="voice_plus_summary">Омогући све апликације за слање SMS порука преко Google Voice-а</string>
   <string name="accessibility_sync_in_progress">Синхронизација у току.</string>
   <string name="wifi_mode">Режим</string>

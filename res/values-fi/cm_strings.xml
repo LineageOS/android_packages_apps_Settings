@@ -79,6 +79,7 @@
   <string name="profile_volumeoverrides_title">Äänenvoimakkuuden ohitus</string>
   <string name="connection_state_disabled">Poista käytöstä</string>
   <string name="connection_state_enabled">Ota käyttöön</string>
+  <string name="volume_override_summary">Aseta %1$s/%2$s</string>
   <string name="profile_profiles_manage">Profiilit</string>
   <string name="profile_profile_manage">Hallitse profiilia</string>
   <string name="profile_appgroups_manage">Sovellusryhmät</string>
@@ -157,6 +158,8 @@
   <string name="notification_light_voicemail_title">Vastaaja</string>
   <string name="adaptive_backlight_title">Mukautuva taustavalo</string>
   <string name="adaptive_backlight_summary">Vaihtele näytön taustavalon kirkkautta dynaamisesti säästääksesi akkua</string>
+  <string name="color_enhancement_title">Värien tehostus</string>
+  <string name="color_enhancement_summary">Tehosta näytön värejä dynaamisesti</string>
   <string name="wake_when_plugged_or_unplugged_title">Herää laturista</string>
   <string name="wake_when_plugged_or_unplugged_summary">Käynnistä näyttö kun liität tai irrotat virtalähteen</string>
   <string name="screen_animation_off_title">Näytön sulkemisanimaatio</string>
@@ -190,6 +193,7 @@
   <string name="lockpattern_settings_enable_error_path_title">Näytä kuvion virhe</string>
   <string name="lockpattern_settings_enable_dots_title">Näytä kuvion pisteet</string>
   <string name="screen_security_category">Näytön turvallisuus</string>
+  <string name="screen_security_summary">Katso tai muuta lukitusnäytön suojausasetuksia</string>
   <string name="unlock_menu_unlock_title">Menu-näppäimen lukituksen avaus</string>
   <string name="unlock_menu_unlock_summary">Painamalla Menu-näppäintä lukitus aukeaa</string>
   <string name="unlock_home_unlock_title">Kotinäppäimen lukituksen avaus</string>
@@ -213,12 +217,22 @@
   <string name="tile_choose_title">Valitse laatta</string>
   <string name="title_qs_small_icons">Näytä pienemmät laatat</string>
   <string name="summary_qs_small_icons">Käytä pienempiä laattoja lisätäksesi sarakkeiden määrää</string>
+  <string name="category_heads_up">Heads up</string>
+  <string name="summary_heads_up_enabled">Pop-up-ilmoitukset ovat käytössä</string>
+  <string name="summary_heads_up_disabled">Pop-up-ilmoitukset ovat pois käytöstä</string>
+  <string name="add_heads_up_package">Lisää sovellus</string>
+  <string name="add_heads_up_dnd_summary">Älä näytä heads up-ilmoituksia näissä sovelluksissa</string>
+  <string name="add_heads_up_blacklist_summary">Älä näytä heads up-ilmoituksia näistä sovelluksista</string>
+  <string name="heads_up_dnd_title">Älä häiritse</string>
+  <string name="heads_up_blacklist_title">Musta lista</string>
+  <string name="heads_up_disabled_notice">Salliaksesi sovelluksien näyttää interaktiivisia ilmoituksia Pop-up-ikkunoissa, ota Heads Up käyttöön.</string>
   <string name="title_tile_airplane">Lentokonetila</string>
   <string name="title_tile_battery">Akun tila</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Kirkkaus</string>
   <string name="title_tile_camera">Kamera</string>
   <string name="title_tile_compass">Kompassi</string>
+  <string name="title_tile_heads_up">Heads up</string>
   <string name="title_tile_sleep">Lepotila</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Lamppu</string>
@@ -324,7 +338,7 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="app_security_title">Sovellusten turvallisuus</string>
   <string name="root_access">Root-oikeudet</string>
   <string name="root_access_warning_title">Ota root-oikeudet käyttöön?</string>
-  <string name="root_access_warning_message">Root-oikeuksien käyttöönotto on vaarallista ja voi vahingoittaa laitettasi!</string>
+  <string name="root_access_warning_message">Root-oikeuksien käyttöönotto on erittäin vaarallista ja voi vahingoittaa laitettasi!</string>
   <string name="root_access_none">Pois käytöstä</string>
   <string name="root_access_apps">Vain sovellukset</string>
   <string name="root_access_adb">Vain ADB</string>
@@ -346,6 +360,7 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="quiet_hours_dim_summary">Estä ilmoitusvalo</string>
   <string name="quiet_hours_haptic">Haptinen palaute</string>
   <string name="quiet_hours_haptic_summary">Estä haptinen palaute</string>
+  <string name="quiet_hours_active_period">Käytössä klo <xliff:g id="start">%1$s</xliff:g> - <xliff:g id="end">%2$s</xliff:g></string>
   <string name="quiet_hours_ringer_allow_all">Soi kenen tahansa soittaessa</string>
   <string name="quiet_hours_ringer_allow_contacts">Soi yhteystiedon soittaessa</string>
   <string name="quiet_hours_ringer_allow_starred">Soi suosikin soittaessa</string>
@@ -673,6 +688,7 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="status_bar_signal_style_text">Teksti</string>
   <string name="status_bar_toggle_brightness">Kirkkauden säätö</string>
   <string name="status_bar_toggle_brightness_summary">Säädä kirkkautta liu\'ttamalla pitkin tilapalkkia</string>
+  <string name="status_bar_toggle_info">Ei saatavilla kun näytön automaattinen kirkkaus on käytössä</string>
   <string name="status_bar_notif_count_title">Näytä ilmoitusten määrä</string>
   <string name="status_bar_notif_count_summary">Näyttää ilmoitusten määrän</string>
   <string name="status_bar_double_tap_to_sleep_title">Lepotila tuplanapautuksella</string>
@@ -709,6 +725,7 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="gestures_down_spen_title_head">Pyyhkäisy vasemmalle</string>
   <string name="gestures_long_spen_title_head">Pitkä kosketus</string>
   <string name="gestures_double_spen_title_head">Tuplakosketus</string>
+  <string name="gestures_settings_header_title">Eleet</string>
   <string name="gestures_action_empty">Ei tehtävää</string>
   <string name="gestures_action_home">Mene kotinäytölle</string>
   <string name="gestures_action_back">Mene takaisin</string>
@@ -857,5 +874,5 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="menu_hidden_apps_delete">Nollaa</string>
   <string name="menu_hidden_apps_reset_lock">Nollaa kuviolukitus</string>
   <string name="protected_apps">Suojatut sovellukset</string>
-  <string name="saving_protected_components">Tallennetaan komponentin tilaa\2026</string>
+  <string name="saving_protected_components">Tallennetaan komponentin tilaa\u2026</string>
 </resources>
