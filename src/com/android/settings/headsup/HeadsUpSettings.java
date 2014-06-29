@@ -43,6 +43,7 @@ import android.widget.Switch;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 import com.android.settings.cyanogenmod.PackageListAdapter;
 import com.android.settings.cyanogenmod.PackageListAdapter.PackageItem;
 
@@ -164,6 +165,13 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
                 Settings.System.getUriFor(Settings.System.HEADS_UP_NOTIFICATION),
                 true, mSettingsObserver);
         updateEnabledState();
+
+        // If running on a phone, remove padding around container
+        // and the preference listview
+        if (!Utils.isTablet(getActivity())) {
+            mPrefsContainer.setPadding(0, 0, 0, 0);
+            getListView().setPadding(0, 0, 0, 0);
+        }
     }
 
     @Override
