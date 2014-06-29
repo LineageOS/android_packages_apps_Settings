@@ -79,6 +79,7 @@
   <string name="profile_volumeoverrides_title">Volume</string>
   <string name="connection_state_disabled">Deshabilitáu</string>
   <string name="connection_state_enabled">Habilitáu</string>
+  <string name="volume_override_summary">Afitar a %1$s/%2$s</string>
   <string name="profile_profiles_manage">Perfiles</string>
   <string name="profile_profile_manage">Alministrar perfil</string>
   <string name="profile_appgroups_manage">Grupu d\'aplicaciones</string>
@@ -157,6 +158,8 @@
   <string name="notification_light_voicemail_title">Buzón de voz</string>
   <string name="adaptive_backlight_title">Brillu adautativu</string>
   <string name="adaptive_backlight_summary">Variar intelixentemente\'l brillu de la pantalla ayudando d\'esti mou a la duración de la batería</string>
+  <string name="color_enhancement_title">Ameyoramientu de color</string>
+  <string name="color_enhancement_summary">Ameyorar dinámicamente el color de la pantalla</string>
   <string name="wake_when_plugged_or_unplugged_title">Prender con cargador</string>
   <string name="wake_when_plugged_or_unplugged_summary">Prender la pantalla al coneutar o desconeutar el cargador</string>
   <string name="screen_animation_off_title">Animación al apagar</string>
@@ -190,6 +193,7 @@
   <string name="lockpattern_settings_enable_error_path_title">Amosar patrón fallíu</string>
   <string name="lockpattern_settings_enable_dots_title">Amosar puntos de patrón</string>
   <string name="screen_security_category">Seguridá de pantalla</string>
+  <string name="screen_security_summary">Amosar o cambiar la configuración de seguridá de la pantalla de bloquéu</string>
   <string name="unlock_menu_unlock_title">Botón Menú</string>
   <string name="unlock_menu_unlock_summary">Primir el botón Menú desbloquia\'l preséu</string>
   <string name="unlock_home_unlock_title">Botón Aniciu</string>
@@ -213,12 +217,22 @@
   <string name="tile_choose_title">Esbillar un control</string>
   <string name="title_qs_small_icons">Controles pequeños</string>
   <string name="summary_qs_small_icons">Usar controles pequeños pa incrementar el númberu de columnes</string>
+  <string name="category_heads_up">Notificaciones emerxentes</string>
+  <string name="summary_heads_up_enabled">Tán habilitaes les notificaciones emerxentes</string>
+  <string name="summary_heads_up_disabled">Tán deshabilitaes les notificaciones emerxentes</string>
+  <string name="add_heads_up_package">Amestar aplicación</string>
+  <string name="add_heads_up_dnd_summary">Nun amosar notificaciones emerxentes nestes aplicaciones</string>
+  <string name="add_heads_up_blacklist_summary">Nun amosar notificaciones emerxentes d\'estes aplicaciones</string>
+  <string name="heads_up_dnd_title">Nun molestar</string>
+  <string name="heads_up_blacklist_title">Llista prieta</string>
+  <string name="heads_up_disabled_notice">Pa permitir a les aplicaciones amosar notificaciones interactives en ventanes emerxentes, habilita les notificaciones emerxentes.</string>
   <string name="title_tile_airplane">Mou avión</string>
   <string name="title_tile_battery">Batería</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Brillu</string>
   <string name="title_tile_camera">Cámara</string>
   <string name="title_tile_compass">Brúxula</string>
+  <string name="title_tile_heads_up">Testera</string>
   <string name="title_tile_sleep">Bloquiar</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Llinterna</string>
@@ -324,7 +338,7 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="app_security_title">Seguridá n\'aplicaciones</string>
   <string name="root_access">Accesu alministrativu</string>
   <string name="root_access_warning_title">¿Permitir accesu alministrativu?</string>
-  <string name="root_access_warning_message">¡Permitir a les aplicaciones solicitar accesu alministrativu ye enforma peligroso y pue comprometer la seguridá del preséu!</string>
+  <string name="root_access_warning_message">¡Permitir a les aplicaciones solicitar accesu alministrativu ye enforma peligroso y pue comprometer la seguridá del sistema!</string>
   <string name="root_access_none">Desactivar</string>
   <string name="root_access_apps">Namái aplicaciones</string>
   <string name="root_access_adb">Namái ADB</string>
@@ -346,6 +360,7 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="quiet_hours_dim_summary">Desactiva la lluz de notificación</string>
   <string name="quiet_hours_haptic">Rempuesta háptica</string>
   <string name="quiet_hours_haptic_summary">Desactiva la rempuesta háptica</string>
+  <string name="quiet_hours_active_period">Activu dende les <xliff:g id="start">%1$s</xliff:g> hasta les <xliff:g id="end">%2$s</xliff:g></string>
   <string name="quiet_hours_ringer_allow_all">Sonar pa toles llamaes</string>
   <string name="quiet_hours_ringer_allow_contacts">Sonar pa tolos contautos</string>
   <string name="quiet_hours_ringer_allow_starred">Sonar pa tolos favoritos</string>
@@ -522,7 +537,7 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="lockscreen_target_reset_message">¿Desaniciar tolos accesos direutos creaos y restablecer valores por defeutu?</string>
   <string name="lockscreen_target_empty">Baleru</string>
   <string name="lockscreen_target_edit_title">Editar accesu direutu</string>
-  <string name="lockscreen_target_edit_msg">Seleicionar o camudar l\'aplicación (o actividá) y el so iconu</string>
+  <string name="lockscreen_target_edit_msg">Seleicionar o cambiar l\'aplicación (o actividá) y el so iconu asociáu</string>
   <string name="picker_activities">Actividaes</string>
   <string name="select_custom_app_title">Seleicionar aplicación personalizada</string>
   <string name="select_custom_activity_title">Seleicionar actividá personalizada</string>
@@ -673,6 +688,7 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="status_bar_signal_style_text">Testu</string>
   <string name="status_bar_toggle_brightness">Axuste de brillu</string>
   <string name="status_bar_toggle_brightness_summary">Permitir axustar la lluminosidá de la pantalla eslizando\'l deu pela barra d\'estáu</string>
+  <string name="status_bar_toggle_info">Nun ta disponible mientres ta activáu\'l brillu automáticu</string>
   <string name="status_bar_notif_count_title">Amosar contador notificaciones</string>
   <string name="status_bar_notif_count_summary">Amosar el númberu de notificaciones pendientes na barra d\'estáu</string>
   <string name="status_bar_double_tap_to_sleep_title">Doble toque pa bloquiar</string>
@@ -709,6 +725,7 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="gestures_down_spen_title_head">Eslizar hacia abaxo</string>
   <string name="gestures_long_spen_title_head">Pulsación llarga</string>
   <string name="gestures_double_spen_title_head">Doble toque</string>
+  <string name="gestures_settings_header_title">Xestos</string>
   <string name="gestures_action_empty">Ensin aición</string>
   <string name="gestures_action_home">Emular botón Aniciu</string>
   <string name="gestures_action_back">Emular botón Atrás</string>
@@ -852,6 +869,10 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="priority_sub_title">Prioridá de soscripción</string>
   <string name="bluetooth_accept_all_files">Aceutar tolos tipos de ficheros</string>
   <string name="autoperf_title">Habilitar los perfiles por aplicación</string>
-  <string name="autoperf_summary">Escoyer automáticamente un perfil de rindimientu afayadizu pa cada aplicación</string>
+  <string name="autoperf_summary">Escoyer automáticamente un perfil de rindimientu afayadizu pa delles aplicaciones</string>
   <string name="graphics_title">Gráficos y renderizáu</string>
+  <string name="menu_hidden_apps_delete">Reaniciar</string>
+  <string name="menu_hidden_apps_reset_lock">Reanicia\'l patrón de bloquéu</string>
+  <string name="protected_apps">Apps protexíes</string>
+  <string name="saving_protected_components">Guardando l\'estáu del componente\u2026</string>
 </resources>

@@ -21,6 +21,8 @@
   <string name="wifi_setting_countrycode_error">Wystąpił problem podczas ustawiania kodu regionu.</string>
   <string name="wifi_setting_priority_title">Priorytet sieci</string>
   <string name="wifi_setting_priority_summary">Określ priorytet łączenia z sieciami Wi-Fi</string>
+  <string name="wifi_ssid_input_limit">SSID przekracza maksymalną długość</string>
+  <string name="p2p_device_name_input_limit">Nazwa P2P przekracza maksymalną długość</string>
   <string name="change_crypt_password_title">Zmień hasło</string>
   <string name="change_crypt_password_summary">Zmień hasło używane do szyfrowania urządzenia</string>
   <string name="encryptionpassword_choose_your_password_header">Ustaw hasło do szyfrowania</string>
@@ -77,6 +79,7 @@
   <string name="profile_volumeoverrides_title">Sterowanie głośnością</string>
   <string name="connection_state_disabled">Wyłączone</string>
   <string name="connection_state_enabled">Włączone</string>
+  <string name="volume_override_summary">Ustaw %1$s/%2$s</string>
   <string name="profile_profiles_manage">Profile</string>
   <string name="profile_profile_manage">Zarządzaj profilem</string>
   <string name="profile_appgroups_manage">Grupy aplikacji</string>
@@ -145,7 +148,6 @@
   <string name="lights_category_title">Dioda powiadomień</string>
   <string name="notification_pulse_title">Pulsująca dioda</string>
   <string name="notification_light_general_title">Ogólne</string>
-  <string name="notification_light_applist_title">Aplikacje</string>
   <string name="notification_light_phonelist_title">Telefon</string>
   <string name="notification_light_use_custom">Użyj własnych wartości</string>
   <string name="notification_light_enabled">Włączony</string>
@@ -155,6 +157,8 @@
   <string name="notification_light_voicemail_title">Poczta głosowa</string>
   <string name="adaptive_backlight_title">Adaptacyjne podświetlenie</string>
   <string name="adaptive_backlight_summary">Dynamiczne dostosowanie jasności ekranu, aby zmaksymalizować czas pracy na baterii</string>
+  <string name="color_enhancement_title">Uwydatnienie kolorów</string>
+  <string name="color_enhancement_summary">Poprawia wyświetlanie kolorów</string>
   <string name="wake_when_plugged_or_unplugged_title">Wybudź przy podłączaniu</string>
   <string name="wake_when_plugged_or_unplugged_summary">Włącz ekran podczas podłączania i odłączania od źródła zasilania</string>
   <string name="screen_animation_off_title">Animacja wyłączenia ekranu</string>
@@ -188,6 +192,7 @@
   <string name="lockpattern_settings_enable_error_path_title">Pokazuj błędny wzór</string>
   <string name="lockpattern_settings_enable_dots_title">Pokazuj punkty wzoru</string>
   <string name="screen_security_category">Zabezpieczenia ekranu</string>
+  <string name="screen_security_summary">Wyświetl lub zmień ustawienia zabezpieczeń ekranu blokady</string>
   <string name="unlock_menu_unlock_title">Odblokowywanie przyciskiem Menu</string>
   <string name="unlock_menu_unlock_summary">Naciśnięcie przycisku Menu odblokuje urządzenie</string>
   <string name="unlock_home_unlock_title">Odblokowywanie przyciskiem Home</string>
@@ -211,11 +216,14 @@
   <string name="tile_choose_title">Wybierz przełącznik</string>
   <string name="title_qs_small_icons">Pokaż mniejsze ikony</string>
   <string name="summary_qs_small_icons">Użyj mniejszych ikon, aby zwiększyć liczbę kolumn</string>
+  <string name="category_heads_up">Wyskakujące powiadomienia</string>
+  <string name="heads_up_dnd_title">Nie przeszkadzać</string>
   <string name="title_tile_airplane">Tryb samolotowy</string>
   <string name="title_tile_battery">Statystyki baterii</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Jasność</string>
   <string name="title_tile_camera">Kamera</string>
+  <string name="title_tile_compass">Kompas</string>
   <string name="title_tile_sleep">Usypianie</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Latarka</string>
@@ -244,8 +252,10 @@
   <string name="title_dynamic_alarm">Alarm</string>
   <string name="title_dynamic_bugreport">Raportowanie błędów</string>
   <string name="title_dynamic_dock_battery">Stacja dokująca</string>
+  <string name="title_dynamic_equalizer">Equalizer</string>
   <string name="title_dynamic_ime">Zmiana metody wprowadzania</string>
   <string name="title_dynamic_usbtether">Tethering USB</string>
+  <string name="title_dynamic_wifi">Strumieniowanie obrazu</string>
   <string name="title_general">Główne</string>
   <string name="title_quick_pulldown">Szybkie rozwijanie</string>
   <string name="summary_quick_pulldown">%1$s krawędź ekranu rozwija szybkie ustawienia</string>
@@ -319,7 +329,6 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="app_security_title">Zabezpieczenia aplikacji</string>
   <string name="root_access">Dostęp do roota</string>
   <string name="root_access_warning_title">Przyznać dostęp do roota?</string>
-  <string name="root_access_warning_message">Przyznanie aplikacjom praw roota może być niebezpieczne i zagrozić bezpieczeństwu systemu!</string>
   <string name="root_access_none">Wyłączony</string>
   <string name="root_access_apps">Tylko aplikacje</string>
   <string name="root_access_adb">Tylko ADB</string>
@@ -341,6 +350,7 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="quiet_hours_dim_summary">Wyłącz diodę powiadomień</string>
   <string name="quiet_hours_haptic">Wibracja przy dotknięciu</string>
   <string name="quiet_hours_haptic_summary">Wyłącz wibracje przy dotknięciu</string>
+  <string name="quiet_hours_active_period">Aktywny od <xliff:g id="start">%1$s</xliff:g> do <xliff:g id="end">%2$s</xliff:g></string>
   <string name="quiet_hours_ringer_allow_all">Dzwoń dla wszystkich połączeń</string>
   <string name="quiet_hours_ringer_allow_contacts">Dzwoń tylko dla kontaktów</string>
   <string name="quiet_hours_ringer_allow_starred">Dzwoń tylko dla ulubionych kontaktów</string>
@@ -517,7 +527,6 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="lockscreen_target_reset_message">Czy usunąć wszystkie stworzone przez użytkownika skróty i przywrócić domyślne?</string>
   <string name="lockscreen_target_empty">Brak</string>
   <string name="lockscreen_target_edit_title">Edytuj skrót oraz ikonę</string>
-  <string name="lockscreen_target_edit_msg">Wskaż lub zmień pożądaną aplikację lub aktywność i przypisz do niej ikonę</string>
   <string name="picker_activities">Aktywności</string>
   <string name="select_custom_app_title">Wskaż aplikację</string>
   <string name="select_custom_activity_title">Wskaż aktywność</string>
@@ -599,6 +608,7 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="power_menu_user_title">Przełączanie użytkownika</string>
   <string name="power_menu_sound_title">Panel dźwięku</string>
   <string name="button_settings">Przyciski</string>
+  <string name="hardware_keys_power_key_title">Przycisk zasilania</string>
   <string name="hardware_keys_home_key_title">Przycisk Home</string>
   <string name="hardware_keys_menu_key_title">Przycisk menu</string>
   <string name="hardware_keys_assist_key_title">Przycisk szukaj</string>
@@ -615,8 +625,12 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="hardware_keys_action_voice_search">Wyszukiwanie głosowe</string>
   <string name="hardware_keys_action_in_app_search">Szukanie w aplikacjach</string>
   <string name="hardware_keys_action_launch_camera">Włącz aparat</string>
+  <string name="power_end_call_title">Kończenie połączeń</string>
+  <string name="power_end_call_summary">Naciśnięcie przycisku zasilania zakończy bieżące połączenie</string>
   <string name="button_wake_title">Wybudzanie</string>
   <string name="home_wake_summary">Naciśnięcie przycisku Home obudzi urządzenie</string>
+  <string name="home_answer_call_title">Odbieranie połączeń</string>
+  <string name="home_answer_call_summary">Naciśnięcie przycisku home odbierze przychodzące połączenie</string>
   <string name="camera_wake_summary">Naciśnięcie przycisku aparatu obudzi urządzenie</string>
   <string name="camera_sleep_on_release_title">Podgląd ekranu</string>
   <string name="camera_sleep_on_release_summary">Lekkie naciśnięcie aktywuje ekran tylko do czasu zwolnienia przycisku</string>
@@ -663,6 +677,7 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="status_bar_signal_style_text">Tekst</string>
   <string name="status_bar_toggle_brightness">Sterowanie jasnością</string>
   <string name="status_bar_toggle_brightness_summary">Dostosuj jasność, przeciągając palcem po pasku stanu</string>
+  <string name="status_bar_toggle_info">Niedostępne, gdy włączona jest automatyczna regulacja jasności</string>
   <string name="status_bar_notif_count_title">Pokaż liczbę powiadomień</string>
   <string name="status_bar_notif_count_summary">Wyświetla licznik oczekujących powiadomień</string>
   <string name="status_bar_double_tap_to_sleep_title">Dwukrotnie naciśnij, aby uśpić</string>
@@ -674,6 +689,8 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="storage_rescan_media_complete">Skanowanie zakończone</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Zarządzaj ustawieniami bezpiecznych SMS-ów</string>
+  <string name="logger_title">Anonimowo zarejestrowana awaria</string>
+  <string name="logger_summary">Zarządzaj ustawieniami rejestrowanych awarii</string>
   <string name="custom_runtime_warning_title">Ostrzeżenie</string>
   <string name="custom_runtime_warning_message">ART nie jest wspierany przez CyanogenMod. To ustawienie jest eksperymentalne i może powodować braki stabilności, błędy w działaniu niektórych aplikacji, utratę danych lub spowodować brak możliwości włączenia urządzenia. Po więcej informacji odwiedź &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;Prosimy o nieprzesyłanie raportów o błędach jeśli ART jest aktywowany.&lt;br/&gt;&lt;br/&gt;Czy jesteś pewien, że chcesz zrestartować urządzenie w celu zmiany <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> na <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
   <string name="gps_download_data_wifi_only">Pobieraj dane wspomagające GPS tylko przez sieci Wi-Fi</string>
@@ -697,6 +714,7 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="gestures_down_spen_title_head">Przeciągnięcie w dół</string>
   <string name="gestures_long_spen_title_head">Długie naciśnięcie</string>
   <string name="gestures_double_spen_title_head">Podwójne naciśnięcie</string>
+  <string name="gestures_settings_header_title">Gesty</string>
   <string name="gestures_action_empty">Brak akcji</string>
   <string name="gestures_action_home">Przycisk Home</string>
   <string name="gestures_action_back">Przycisk Wstecz</string>
@@ -837,8 +855,12 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="voice_title">Połączenia głosowe</string>
   <string name="data_title">Transmisja danych</string>
   <string name="sms_title">Wysyłanie SMS-ów</string>
+  <string name="priority_sub_title">Priorytetowa usługa</string>
   <string name="bluetooth_accept_all_files">Akceptuj wszystkie typy plików</string>
   <string name="autoperf_title">Włącz profile dla aplikacji</string>
-  <string name="autoperf_summary">Automatycznie wybierz odpowiednio wydajny profil do różnych zastosowań</string>
   <string name="graphics_title">Grafika i renderowanie</string>
+  <string name="menu_hidden_apps_delete">Przywróć domyślne</string>
+  <string name="menu_hidden_apps_reset_lock">Zresetuj wzór blokady</string>
+  <string name="protected_apps">Chronione aplikacje</string>
+  <string name="saving_protected_components">Zapisywanie obecnego stanu\u2026</string>
 </resources>

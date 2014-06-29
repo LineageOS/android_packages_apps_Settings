@@ -148,7 +148,7 @@
   <string name="lights_category_title">Llums</string>
   <string name="notification_pulse_title">Llum de notificació</string>
   <string name="notification_light_general_title">General</string>
-  <string name="notification_light_applist_title">Aplicacions</string>
+  <string name="notification_light_applist_title">Apps</string>
   <string name="notification_light_phonelist_title">Telèfon</string>
   <string name="notification_light_use_custom">Utilitza valors personalitzats</string>
   <string name="notification_light_enabled">Activada</string>
@@ -158,6 +158,8 @@
   <string name="notification_light_voicemail_title">Contestador</string>
   <string name="adaptive_backlight_title">Retroil·luminació adaptativa</string>
   <string name="adaptive_backlight_summary">Ajusta la brillantor dinàmicament de la retroiluminació de la pantalla per maximitzar la vida de la bateria tot mantenint la usabilitat</string>
+  <string name="color_enhancement_title">Millora del color</string>
+  <string name="color_enhancement_summary">Millora dinàmicament el color de la pantalla</string>
   <string name="wake_when_plugged_or_unplugged_title">Encén en endollar</string>
   <string name="wake_when_plugged_or_unplugged_summary">Encén la pantalla en connectar o desconnectar d\'una font d\'energia</string>
   <string name="screen_animation_off_title">Animació d\'apagat de la pantalla</string>
@@ -215,12 +217,22 @@
   <string name="tile_choose_title">Escull una cel·la</string>
   <string name="title_qs_small_icons">Mostra les cel·les més petites</string>
   <string name="summary_qs_small_icons">Utilitza cel·les més petites per poder incrementar el nombre de columnes</string>
+  <string name="category_heads_up">Notificacions emergents</string>
+  <string name="summary_heads_up_enabled">Les notificacions emergents estan activades</string>
+  <string name="summary_heads_up_disabled">Les notificacions emergents estan desactivades</string>
+  <string name="add_heads_up_package">Afegeix app</string>
+  <string name="add_heads_up_dnd_summary">No mostris notificacions emergents dins d\'aquestes apps</string>
+  <string name="add_heads_up_blacklist_summary">No mostris notificacions emergents d\'aquestes apps</string>
+  <string name="heads_up_dnd_title">No molestis</string>
+  <string name="heads_up_blacklist_title">Llista negra</string>
+  <string name="heads_up_disabled_notice">Per permetre que les apps mostrin notificacions interactives en una finestra emergent a la teva pantalla, activa les notificacions emergents.</string>
   <string name="title_tile_airplane">Mode avió</string>
   <string name="title_tile_battery">Estat de la bateria</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Brillantor</string>
   <string name="title_tile_camera">Càmera</string>
   <string name="title_tile_compass">Brúixola</string>
+  <string name="title_tile_heads_up">Notificacions emergents</string>
   <string name="title_tile_sleep">Posa en repòs</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Torxa</string>
@@ -327,7 +339,7 @@ Hi ha disponibles opcions addicionals apretant llargament sobre la línia. Selec
   <string name="app_security_title">Seguretat d\'app</string>
   <string name="root_access">Accés Root</string>
   <string name="root_access_warning_title">Vols permetre l\'accés root?</string>
-  <string name="root_access_warning_message">Permetre a les aplicacions demanar accés root és molt perillós i pot comprometre la seguretat del sistema!</string>
+  <string name="root_access_warning_message">Permetre a les apps demanar accés de superusuari és molt perillós i podria comprometre la seguretat del teu sistema!</string>
   <string name="root_access_none">Desactivat</string>
   <string name="root_access_apps">Només Apps</string>
   <string name="root_access_adb">Només ADB</string>
@@ -526,7 +538,7 @@ Hi ha disponibles opcions addicionals apretant llargament sobre la línia. Selec
   <string name="lockscreen_target_reset_message">Esborra totes les dreceres a la pantalla de bloqueig creades per l\'usuari i restaura als predeterminats?</string>
   <string name="lockscreen_target_empty">Buit</string>
   <string name="lockscreen_target_edit_title">Edita la drecera i l\'icona</string>
-  <string name="lockscreen_target_edit_msg">Selecciona o canvia l\'aplicació desitjada o l\'activitat i l\'icona associada</string>
+  <string name="lockscreen_target_edit_msg">Selecciona o canvia l\'app desitjada o activitat i la icona associada</string>
   <string name="picker_activities">Activitats</string>
   <string name="select_custom_app_title">Selecciona una app personalitzada</string>
   <string name="select_custom_activity_title">Selecciona una activitat personalitzada</string>
@@ -677,6 +689,7 @@ Hi ha disponibles opcions addicionals apretant llargament sobre la línia. Selec
   <string name="status_bar_signal_style_text">Text</string>
   <string name="status_bar_toggle_brightness">Control de brillantor</string>
   <string name="status_bar_toggle_brightness_summary">Ajusta la brillantor lliscant a través de la barra d\'estat</string>
+  <string name="status_bar_toggle_info">No està disponible mentre la brillantor automàtica estigui activada</string>
   <string name="status_bar_notif_count_title">Mostra comptador de notificacions</string>
   <string name="status_bar_notif_count_summary">Mostra el nombre de notificacions pendents</string>
   <string name="status_bar_double_tap_to_sleep_title">Pica dues vegades posar en repòs</string>
@@ -857,7 +870,7 @@ Hi ha disponibles opcions addicionals apretant llargament sobre la línia. Selec
   <string name="priority_sub_title">Subscripció prioritària</string>
   <string name="bluetooth_accept_all_files">Accepta tots els tipus d\'arxiu</string>
   <string name="autoperf_title">Habilita els perfils per-aplicació</string>
-  <string name="autoperf_summary">Escull automàticament un perfil de rendiment adequat per cada aplicació</string>
+  <string name="autoperf_summary">Escull automàticament un perfil de rendiment adequat per varies apps</string>
   <string name="graphics_title">Gràfics i renderitzat</string>
   <string name="menu_hidden_apps_delete">Reinicia</string>
   <string name="menu_hidden_apps_reset_lock">Reinicia el patró de bloqueig</string>
