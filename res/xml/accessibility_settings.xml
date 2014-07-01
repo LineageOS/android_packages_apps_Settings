@@ -28,7 +28,7 @@
             android:title="@string/accessibility_system_title">
 
         <PreferenceScreen
-            android:fragment="com.android.settings.accessibility.ToggleCaptioningPreferenceFragment"
+            android:fragment="com.android.settings.accessibility.CaptionPropertiesFragment"
             android:key="captioning_preference_screen"
             android:title="@string/accessibility_captioning_title" />
 
@@ -40,21 +40,6 @@
         <CheckBoxPreference
                 android:key="toggle_large_text_preference"
                 android:title="@string/accessibility_toggle_large_text_preference_title"
-                android:persistent="false"/>
-
-        <CheckBoxPreference
-                android:key="toggle_power_button_ends_call_preference"
-                android:title="@string/accessibility_power_button_ends_call_prerefence_title"
-                android:persistent="false"/>
-
-        <CheckBoxPreference
-                android:key="toggle_home_button_answers_call_preference"
-                android:title="@string/accessibility_home_button_answers_call_prerefence_title"
-                android:persistent="false"/>
-
-        <CheckBoxPreference
-                android:key="toggle_lock_screen_rotation_preference"
-                android:title="@string/accelerometer_title"
                 android:persistent="false"/>
 
         <CheckBoxPreference

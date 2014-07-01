@@ -21,6 +21,8 @@
   <string name="wifi_setting_countrycode_error">มีปัญหาขณะตั้งรหัสภูมิภาค</string>
   <string name="wifi_setting_priority_title">ลำดับความสำคัญของWi-Fi</string>
   <string name="wifi_setting_priority_summary">ระบุลำดับความสำคัญของเครือข่าย Wi-Fi</string>
+  <string name="wifi_ssid_input_limit">SSID ยาวเกินไป</string>
+  <string name="p2p_device_name_input_limit">ชื่อ P2P ยาวเกินไป</string>
   <string name="change_crypt_password_title">เปลี่ยนรหัสผ่าน</string>
   <string name="change_crypt_password_summary">เปลี่ยนรหัสผ่านที่ใช้สำหรับเข้ารหัสอุปกรณ์</string>
   <string name="encryptionpassword_choose_your_password_header">ตั้งรหัสผ่านการเข้ารหัส</string>
@@ -77,7 +79,7 @@
   <string name="profile_volumeoverrides_title">แทนที่ระดับเสียง</string>
   <string name="connection_state_disabled">ปิด</string>
   <string name="connection_state_enabled">เปิด</string>
-  <string name="volume_override_summary">ตั้งเป็น</string>
+  <string name="volume_override_summary">ตั้งเป็น %1$s/%2$s</string>
   <string name="profile_profiles_manage">โปรไฟล์</string>
   <string name="profile_profile_manage">จัดการโปรไฟล์</string>
   <string name="profile_appgroups_manage">กลุ่มแอป</string>
@@ -146,7 +148,6 @@
   <string name="lights_category_title">แสง</string>
   <string name="notification_pulse_title">ไฟแจ้งเตือน</string>
   <string name="notification_light_general_title">ทั่วไป</string>
-  <string name="notification_light_applist_title">แอปพลิเคชัน</string>
   <string name="notification_light_phonelist_title">โทรศัพท์</string>
   <string name="notification_light_use_custom">ใช้ค่ากำหนดเอง</string>
   <string name="notification_light_enabled">เปิด</string>
@@ -156,6 +157,8 @@
   <string name="notification_light_voicemail_title">ข้อความเสียง</string>
   <string name="adaptive_backlight_title">ปรับแสงไฟหน้าจอ</string>
   <string name="adaptive_backlight_summary">ปรับความสว่างของแสงหน้าจออัตโนมัติเพื่อให้สามารถใช้งานได้ยาวนานขึ้น</string>
+  <string name="color_enhancement_title">เพิ่มประสิทธิภาพของสี</string>
+  <string name="color_enhancement_summary">เพิ่มสีบนจอแสดงผลแบบไดนามิก</string>
   <string name="wake_when_plugged_or_unplugged_title">ตื่นเมื่อเสียบปลั๊ก</string>
   <string name="wake_when_plugged_or_unplugged_summary">เปิดหน้าจอเมื่อเชื่อมต่อ หรือตัดการเชื่อมต่อกับแหล่งจ่ายไฟ</string>
   <string name="screen_animation_off_title">ภาพเคลื่อนไหวปิดหน้าจอ</string>
@@ -189,9 +192,7 @@
   <string name="lockpattern_settings_enable_error_path_title">แสดงลายเส้นที่ผิดพลาด</string>
   <string name="lockpattern_settings_enable_dots_title">แสดงจุดที่ลากผ่าน</string>
   <string name="screen_security_category">ความปลอดภัยหน้าจอ</string>
-  <string name="screen_security_title">ล็อคหน้าจอ</string>
-  <string name="screen_security_summary">ดูหรือเปลี่ยนความปลอดภัยและการหน่วงเวลาหน้าล็อคจอ</string>
-  <string name="additional_options_title">ตัวเลือกเพิ่มเติม</string>
+  <string name="screen_security_summary">ดู หรือเปลี่ยนการตั้งค่าความปลอดภัยของล็อคหน้าจอ</string>
   <string name="unlock_menu_unlock_title">เมนูเพื่อปลดล็อค</string>
   <string name="unlock_menu_unlock_summary">แตะปุ่มเมนูจะปลดล็อคอุปกรณ์</string>
   <string name="unlock_home_unlock_title">โฮมเพื่อปลดล็อค</string>
@@ -201,20 +202,6 @@
   <string name="unlock_quick_unlock_control_title">ปลดล็อคแบบเร็ว</string>
   <string name="unlock_quick_unlock_control_summary">ปลดล็อคอัตโนมัติเมื่อ PIN/รหัส ที่ถูกต้องถูกป้อนเข้ามา</string>
   <string name="unlock_buttons_disabled_by_security">หน้าจอล็อคมีความปลอดภัย</string>
-  <string name="delay_and_timeout_title">เลื่อนเวลาการล็อคออกไป</string>
-  <string name="slide_lock_delay_title">เลื่อนเวลาการล็อคน่าจอออกไป</string>
-  <string name="slide_lock_timeout_delay_title">เลื่อนออกหลังจากหมดเวลา</string>
-  <string name="slide_lock_screenoff_delay_title">หน่วงเวลาหลังจากปิดหน้าจอ</string>
-  <string name="slide_lock_delay_none">ไม่มี</string>
-  <string name="slide_lock_delay_1s">1 วินาที</string>
-  <string name="slide_lock_delay_5s">5 วินาที</string>
-  <string name="slide_lock_delay_10s">10 วินาที</string>
-  <string name="slide_lock_delay_15s">15 วินาที</string>
-  <string name="slide_lock_delay_30s">30 วินาที</string>
-  <string name="slide_lock_delay_1m">1 นาที</string>
-  <string name="slide_lock_delay_5m">5 นาที</string>
-  <string name="slide_lock_delay_10m">10 นาที</string>
-  <string name="slide_lock_delay_30m">30 นาที</string>
   <string name="lockscreen_widgets_category_title">วิดเจ็ท</string>
   <string name="lockscreen_maximize_widgets_title">วิดเจ็ทสูงสุด</string>
   <string name="lockscreen_maximize_widgets_summary">ขยายวิดเจ็ทเมือเปิดจอ</string>
@@ -229,11 +216,19 @@
   <string name="tile_choose_title">เลือกไทต์</string>
   <string name="title_qs_small_icons">แสดงไทต์เล็กลง</string>
   <string name="summary_qs_small_icons">ใช้ไทต์ที่เล็กลงเพื่อเพิ่มจำนวนคอลัมน์</string>
+  <string name="category_heads_up">Heads up</string>
+  <string name="summary_heads_up_enabled">เปิดใช้งานการแจ้งเตือนแบบป๊อปอัพ</string>
+  <string name="summary_heads_up_disabled">ไม่ใช้งานการแจ้งเตือนแบบป๊อปอัพ</string>
+  <string name="add_heads_up_package">เพิ่มแอป</string>
+  <string name="heads_up_dnd_title">ห้าม​รบกวน</string>
+  <string name="heads_up_blacklist_title">บัญชีดำ</string>
   <string name="title_tile_airplane">โหมดเครื่องบิน</string>
   <string name="title_tile_battery">แบตเตอรี</string>
   <string name="title_tile_bluetooth">บลูทูธ</string>
   <string name="title_tile_brightness">ความสว่าง</string>
   <string name="title_tile_camera">กล้อง</string>
+  <string name="title_tile_compass">เข็มทิศ</string>
+  <string name="title_tile_heads_up">Heads up</string>
   <string name="title_tile_sleep">พักหน้าจอ</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">ไฟฉาย</string>
@@ -262,6 +257,7 @@
   <string name="title_dynamic_alarm">นาฬิกาปลุก</string>
   <string name="title_dynamic_bugreport">แจ้งข้อผิดพลาด</string>
   <string name="title_dynamic_dock_battery">แท่นวางแบตเตอรี</string>
+  <string name="title_dynamic_equalizer">ปรับแต่งเสียง</string>
   <string name="title_dynamic_ime">วิธีการป้อนจ้อมูล</string>
   <string name="title_dynamic_usbtether">USB Tether</string>
   <string name="title_dynamic_wifi">บันทึกหน้าจอ</string>
@@ -286,7 +282,6 @@
   <string name="tiles_reset_title">รีเซ็ต</string>
   <string name="tiles_reset_message">คืนค่าเริ่มต้นของไทต์และรูปแบบ?</string>
   <string name="auto_brightness_setup_title">ความสว่างอัตโนมัติ</string>
-  <string name="auto_brightness_adjustment_title">ปรับความสว่าง</string>
   <string name="auto_brightness_twilight_adjustment">ปรับตัวเข้ากับพระอาทิตย์ขึ้นและพระอาทิตย์ตก</string>
   <string name="light_sensor_current_value">ค่าความสว่างปัจจุบัน: <xliff:g id="light_level">%d</xliff:g> ลักซ์</string>
   <string name="auto_brightness_dialog_title">ระดับความสว่างอัตโนมัติ</string>
@@ -331,13 +326,12 @@
   <string name="app_security_title">ความปลอดภัยของแอป</string>
   <string name="root_access">สิทธิผู้ดูแลระบบ</string>
   <string name="root_access_warning_title">ให้สิทธิผู้ดูแลระบบ?</string>
-  <string name="root_access_warning_message">หากอนุญาติให้แอปพลิเคชันเข้าถึงสิทธิผู้ดูแลระบบมันจะอันตรายมากและอาจทำให้มีปัญหาด้านความปลอดภัยของระบบของคุณ!</string>
   <string name="root_access_none">ปิด</string>
   <string name="root_access_apps">แอปเท่านั้น</string>
   <string name="root_access_adb">ADB เท่านั้น</string>
   <string name="root_access_all">แอปและADB</string>
   <string name="update_recovery_title">ปรับปรุงการกู้คืน CM</string>
-  <string name="update_recovery_summary">ปรับปรุงการกู้คือเมื่อติดตั้งการปรับปรุงระบบใหม่</string>
+  <string name="update_recovery_summary">ปรับปรุงการกู้คืนเมื่อติดตั้งการปรับปรุงระบบใหม่</string>
   <string name="ok">ตกลง</string>
   <string name="quiet_hours_title">ชั่วโมงเงียบ</string>
   <string name="quiet_hours_summary">ตั้งค่าช่วงเวลาที่อุปกรณ์ควรจะเงียบ</string>
@@ -353,8 +347,7 @@
   <string name="quiet_hours_dim_summary">ปิดไฟแจ้งเตือน</string>
   <string name="quiet_hours_haptic">สั่นเมื่อแตะ</string>
   <string name="quiet_hours_haptic_summary">ปิดการสั่นเมื่อแตะ</string>
-  <string name="quiet_hours_active_from">ใช้งานจาก</string>
-  <string name="quiet_hours_active_to">ถึง</string>
+  <string name="quiet_hours_active_period">ทำงานจาก <xliff:g id="start">%1$s</xliff:g> ไปยัง <xliff:g id="end">%2$s</xliff:g></string>
   <string name="quiet_hours_ringer_allow_all">เสียงเรียกเข้าสำหรับทุกผู้ติดต่อ</string>
   <string name="quiet_hours_ringer_allow_contacts">เสียงเรียกเข้าสำหรับทุกรายชื่อผู้ติดต่อ</string>
   <string name="quiet_hours_ringer_allow_starred">เสียงเรียกเข้าสำหรับผู้ติดต่อที่ชื่นชอบ</string>
@@ -483,21 +476,14 @@
   <string name="gamma_tuning_contrast">สีตัด</string>
   <string name="gamma_tuning_brightness">ความสว่าง</string>
   <string name="gamma_tuning_saturation">ความอิ่มตัว</string>
-  <string name="headset_category_title">หูฟัง</string>
   <string name="headset_connect_player_title">เปิดแอปเล่นเพลง</string>
   <string name="headset_connect_player_summary">เปิดโปรแกรมเล่นเพลงเมื่อมีการเชื่อมต่อจากช่องหูฟัง</string>
-  <string name="more_device_controls_title">เพิ่มเติม\u2026</string>
-  <string name="more_device_settings_title">ตัวเลือกอุปกรณ์อื่นๆ</string>
-  <string name="sensors_motors_title">เซนเซอร์ &amp;  มอเตอร์</string>
-  <string name="display_calibration_title">เทียบการแสดงผล</string>
   <string name="adb_notify">แจ้งเตือนแก้ไขข้อบกพร่อง USB</string>
   <string name="adb_notify_summary">แสดงการแจ้งเตือนเมื่อมีการต่อ USB สำหรับแก้ไขข้อบกพร่อง</string>
   <string name="adb_over_network">ADB บนเครือข่าย</string>
   <string name="adb_over_network_summary">เปิดแก้ไขข้อบกพร่องผ่านTCP/IP โดยใช้เครือข่าย (Wi-Fi,เครือข่าย USB) การตั้งค่านี้จะถูกล้างเมื่อเริ่มระบบใหม่</string>
   <string name="adb_over_network_warning">คำเตือน: เมื่อ ADB ผ่านเครือข่ายเปิดอยู่ โทรศัพท์ของคุณจะเปิดให้โจมตีได้จากเครือข่ายที่คุณต่ออยู่รวมถึงเครือข่ายมือถือ!\n\nใช้งานฟังก์ชันนี้เมื่อต่อบนเครือข่ายที่ไว้ใจได้เท่านั้น\n\nคุณต้องการเปิดฟังก์ชันนี้หรือไม่?</string>
   <string name="device_hostname">ชื่อโฮสของอุปกรณ์</string>
-  <string name="system_settings_title">หน้าตา</string>
-  <string name="system_interface_title">หน้าตาระบบ</string>
   <string name="notification_drawer_title">แผงการแจ้งเตือน</string>
   <string name="notification_drawer_collapse_on_dismiss_title">ปิดอัตโนมัติ</string>
   <string name="collapse_on_dismiss_never">ปิด</string>
@@ -538,7 +524,6 @@
   <string name="lockscreen_target_reset_message">ต้องการลบทางลัดหน้าล็อคจอของทุกผู้ใช้งานและกลับคืนสู่ค่าเดิมหรือไม่ ?</string>
   <string name="lockscreen_target_empty">ว่างเปล่า</string>
   <string name="lockscreen_target_edit_title">แก้ไขทางลัดและไอคอน</string>
-  <string name="lockscreen_target_edit_msg">เลือกหรือเปลี่ยนแอปพลิเคชันหรือกิจกรรมที่ต้องการและกำหนดไอคอน</string>
   <string name="picker_activities">กิจกรรม</string>
   <string name="select_custom_app_title">เลือกแอปเอง</string>
   <string name="select_custom_activity_title">เลือกกิจกรรมเอง</string>
@@ -613,13 +598,14 @@
   <string name="expanded_desktop_disabled">ปิด</string>
   <string name="expanded_desktop_status_bar">แสดงแถบสถานะ</string>
   <string name="expanded_desktop_no_status_bar">ซ่อนแถบสถานะ</string>
-  <string name="expanded_desktop_system_bars_visibility">ไม่ล็อคหน้าจอ</string>
+  <string name="expanded_desktop_system_bars_visibility">ไม่เต็มจอเมื่อล็อคจอ</string>
   <string name="expanded_desktop_system_bars_visibility_summary">แสดงแถบสถานะและแถบนำทางบนหน้าจอล็อคขณะใช้รูปแบบเต็มจอ</string>
   <string name="power_menu_profiles_title">ตัวสลับโปรไฟล์</string>
   <string name="power_menu_airplane_title">รูปแบบบนเครื่องบิน</string>
   <string name="power_menu_user_title">สลับผู้ใช้</string>
   <string name="power_menu_sound_title">แผงเสียง</string>
   <string name="button_settings">ปุ่ม</string>
+  <string name="hardware_keys_power_key_title">ปุ่มเพาเวอร์</string>
   <string name="hardware_keys_home_key_title">ปุ่มโฮม</string>
   <string name="hardware_keys_menu_key_title">ปุ่มเมนู</string>
   <string name="hardware_keys_assist_key_title">ปุ่มค้นหา</string>
@@ -636,8 +622,12 @@
   <string name="hardware_keys_action_voice_search">ค้นหาด้วยเสียง</string>
   <string name="hardware_keys_action_in_app_search">ค้นหาในแอป</string>
   <string name="hardware_keys_action_launch_camera">เปิดกล้อง</string>
+  <string name="power_end_call_title">วางสาย</string>
+  <string name="power_end_call_summary">กดปุ่มเพาวเวอร์เพื่อวางสาย</string>
   <string name="button_wake_title">เปิดหน้าจอ</string>
   <string name="home_wake_summary">แตะปุ่มโฮมเพื่อปลุกอุปกรณ์ของคุณ</string>
+  <string name="home_answer_call_title">รับสาย</string>
+  <string name="home_answer_call_summary">กดปุ่มโฮมเพื่อรับสาย</string>
   <string name="camera_wake_summary">แตะปุ่มกล้องเพื่อปลุกอุปกรณ์ของคุณ</string>
   <string name="camera_sleep_on_release_title">แอบมองหน้าจอ</string>
   <string name="camera_sleep_on_release_summary">การกดเพียงครึ่งเดียวจะเปิดจอค้างไว้เฉพาะขณะที่กดค้างอยู่</string>
@@ -669,7 +659,6 @@
   <string name="background_result_successful">เปลี่ยนพื้นหลัง</string>
   <string name="background_result_not_successful">ไม่เปลี่ยนพื้นหลัง</string>
   <string name="setting_lockscreen_background">กำลังกำหนดพื้นหลัง</string>
-  <string name="accessibility_home_button_answers_call_prerefence_title">ปุ่มโฮมเพื่อรับสาย</string>
   <string name="confirm_delete_apn">APN จะถูกลบ</string>
   <string name="status_bar_title">แถบสถานะ</string>
   <string name="status_bar_show_clock_title">แสดงนาฬิกา</string>
@@ -685,10 +674,10 @@
   <string name="status_bar_signal_style_text">ข้อความ</string>
   <string name="status_bar_toggle_brightness">ความคุมความสว่าง</string>
   <string name="status_bar_toggle_brightness_summary">ตั้งความสว่างหน้าจอโดยการเลื่อนบริเวณแถบสถานะ</string>
-  <string name="status_bar_toggle_info">เปิดใช้งานปรับความสว่างอัตโนมัติอยู่</string>
+  <string name="status_bar_toggle_info">ไม่สามารถใช้งานได้ขณะเปิดใช้งานความสว่างอัตโนมัติ</string>
   <string name="status_bar_notif_count_title">นับจำนวนการแจ้งเตือน</string>
   <string name="status_bar_notif_count_summary">แสดงตัวเลขของการแจ้งเตือน</string>
-  <string name="status_bar_double_tap_to_sleep_title">แตะสองครั้งเพื่อปิิดจอ</string>
+  <string name="status_bar_double_tap_to_sleep_title">แตะสองครั้งเพื่อปิดจอ</string>
   <string name="development_shortcut_title">ทางลัดการพัฒนา</string>
   <string name="development_shortcut_summary">เปิดตัวเลือก \'ล้างข้อมูล\' และ \'บังคับปิด\' ในพื้นที่การแจ้งเตือนและรายชื่อแอปที่ใช้งาน</string>
   <string name="usb_mass_storage_title">ที่เก็บข้อมูลขนาดใหญ่ (UMS)</string>
@@ -697,6 +686,8 @@
   <string name="storage_rescan_media_complete">ค้นหาเรียบร้อย</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">จัดการการตั้งค่าข้อความปลอดภัย</string>
+  <string name="logger_title">บันทึกการทำงานล้มเหลวแบบไม่ระบุตัวตน</string>
+  <string name="logger_summary">จัดการการตั้งค่าบันทึกการทำงานล้มเหลว</string>
   <string name="custom_runtime_warning_title">คำเตือน</string>
   <string name="custom_runtime_warning_message">ART ไม่รองรับอย่างเต็มรูปแบบบน CyanogenMod มันจึงเป็นอะไรที่อันตรายมาก อาจทำให้อุปกรณ์ ไม่สเถียร พัง หรือข้อมูลสูญหายได้ โปรดเข้า &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;แนะนำ ART &lt;/a&gt; เพื่อศึกษาเพิ่มเติม&lt;br/&gt;&lt;br/&gt; คุณต้องการที่จะเริ่มระบบใหม่โดยเปลี่ยนรันไทม?จาก <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> เป็น <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
   <string name="gps_download_data_wifi_only">ดาวน์โหลดข้อมูล GPS ผ่าน Wi-Fi เท่านั้น</string>
@@ -720,6 +711,7 @@
   <string name="gestures_down_spen_title_head">ปัดลง</string>
   <string name="gestures_long_spen_title_head">แตะค้าง</string>
   <string name="gestures_double_spen_title_head">แตะสองครั้ง</string>
+  <string name="gestures_settings_header_title">ท่าทาง</string>
   <string name="gestures_action_empty">ไม่ทำอะไร</string>
   <string name="gestures_action_home">บ้าน</string>
   <string name="gestures_action_back">กลับ</string>
@@ -863,6 +855,9 @@
   <string name="priority_sub_title">บอกลำดับความสำคัญ</string>
   <string name="bluetooth_accept_all_files">ยอมรับแฟ้มทุกชนิด</string>
   <string name="autoperf_title">เปิดใช้งาน โปรไฟล์แต่ละแอป</string>
-  <string name="autoperf_summary">เลือกโปรไฟล์ที่เหมาะสมกับแอปต่างๆ โดยอัตโนมัติ</string>
   <string name="graphics_title">ภาพและกราฟฟิก</string>
+  <string name="menu_hidden_apps_delete">รีเซ็ต</string>
+  <string name="menu_hidden_apps_reset_lock">รีเซ็ตรูปแบบล็อค</string>
+  <string name="protected_apps">แอปที่ป้องกัน</string>
+  <string name="saving_protected_components">กำลังบันทึกองค์ประกอบ\u2026</string>
 </resources>

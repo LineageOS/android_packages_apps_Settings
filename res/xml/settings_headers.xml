@@ -15,8 +15,8 @@
 -->
 
 <preference-headers
-        xmlns:android="http://schemas.android.com/apk/res/android">
-
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <!-- WIRELESS and NETWORKS -->
     <header android:id="@+id/wireless_section"
@@ -73,6 +73,7 @@
 
     <!-- Other wireless and network controls -->
     <header
+        settings:includeXmlForSearch="@xml/wireless_settings"
         android:id="@+id/wireless_settings"
         android:title="@string/radio_controls_title"
         android:breadCrumbTitle="@string/wireless_networks_settings_title"
@@ -92,6 +93,7 @@
 
     <!-- Lock screen -->
     <header
+        settings:includeXmlForSearch="@xml/lockscreen_interface_settings"
         android:id="@+id/lock_screen_settings"
         android:fragment="com.android.settings.cyanogenmod.LockscreenInterface"
         android:title="@string/lock_screen_title"
@@ -99,18 +101,39 @@
 
     <!-- Themes -->
     <header
+        settings:includeXmlForSearch="@xml/theme_settings"
         android:id="@+id/theme_settings"
         android:title="@string/themes_settings_title"
         android:breadCrumbTitle="@string/themes_settings_title"
         android:fragment="com.android.settings.ThemeSettings"
         android:icon="@drawable/prd_ic_themepacks" />
 
-    <!-- System UI -->
+    <!-- Status Bar -->
     <header
-        android:id="@+id/system_settings"
+        settings:includeXmlForSearch="@xml/status_bar"
+        android:id="@+id/status_bar_settings"
         android:icon="@drawable/ic_settings_system"
-        android:fragment="com.android.settings.cyanogenmod.SystemUiSettings"
-        android:title="@string/system_settings_title" />
+        android:fragment="com.android.settings.cyanogenmod.StatusBar"
+        android:title="@string/status_bar_title" />
+
+    <!-- Notification Bar -->
+    <header
+        settings:includeXmlForSearch="@xml/notification_drawer"
+        android:id="@+id/notification_bar_settings"
+        android:icon="@drawable/ic_notify_open_normal"
+        android:fragment="com.android.settings.cyanogenmod.NotificationDrawer"
+        android:title="@string/notification_drawer_title" />
+
+    <!-- Gestures -->
+    <header
+        android:id="@+id/device_specific_gesture_settings"
+        android:icon="@drawable/ic_settings_gestures"
+        android:title="@string/gestures_settings_header_title">
+        <intent
+            android:action="com.cyanogenmod.action.LAUNCH_TOUCHSCREEN_GESTURE_SETTINGS"
+            android:targetPackage="com.cyanogenmod.settings.device"
+            android:targetClass="com.cyanogenmod.settings.device.TouchscreenGestureSettings" />
+    </header>
 
     <!-- DEVICE -->
     <header android:id="@+id/device_section"
@@ -118,6 +141,7 @@
 
     <!-- Sound -->
     <header
+        settings:includeXmlForSearch="@xml/sound_settings"
         android:id="@+id/sound_settings"
         android:icon="@drawable/ic_settings_sound"
         android:fragment="com.android.settings.SoundSettings"
@@ -125,6 +149,7 @@
 
     <!-- Display -->
     <header
+        settings:includeXmlForSearch="@xml/display_settings"
         android:id="@+id/display_settings"
         android:icon="@drawable/ic_settings_display"
         android:fragment="com.android.settings.DisplaySettings"
@@ -132,6 +157,7 @@
 
     <!-- Buttons -->
     <header
+        settings:includeXmlForSearch="@xml/button_settings"
         android:id="@+id/button_settings"
         android:icon="@drawable/ic_settings_buttons"
         android:fragment="com.android.settings.cyanogenmod.ButtonSettings"
@@ -179,14 +205,6 @@
         <intent android:action="com.android.settings.MANUFACTURER_APPLICATION_SETTING" />
     </header>
 
-    <!-- Other device controls -->
-    <header
-        android:id="@+id/more_device_settings"
-        android:title="@string/more_device_controls_title"
-        android:breadCrumbTitle="@string/more_device_settings_title"
-        android:fragment="com.android.settings.cyanogenmod.MoreDeviceSettings"
-        android:icon="@drawable/empty_icon" />
-
     <!-- PERSONAL -->
     <header android:id="@+id/personal_section"
         android:title="@string/header_category_personal" />
@@ -207,6 +225,7 @@
 
      <!-- Voice Wakeup -->
     <header
+        settings:excludeFromSearch="true"
         android:fragment="com.android.settings.voicewakeup.VoiceWakeupSettings"
         android:icon="@drawable/ic_voice_wakeup"
         android:title="@string/voice_wakeup_settings_title"
@@ -214,6 +233,7 @@
 
     <!-- Security -->
     <header
+        settings:includeXmlForSearch="@xml/security_settings"
         android:fragment="com.android.settings.SecuritySettings"
         android:icon="@drawable/ic_settings_security"
         android:title="@string/security_settings_title"
@@ -222,6 +242,7 @@
     <!-- CyanogenMod Privacy Settings -->
     <!-- This is the 'real' Privacy items and includes Privacy Guard, Blacklist & WhisperPush -->
     <header
+        settings:includeXmlForSearch="@xml/privacy_settings_cyanogenmod"
         android:fragment="com.android.settings.cyanogenmod.PrivacySettings"
         android:icon="@drawable/ic_settings_privacy"
         android:title="@string/privacy_settings_cyanogenmod_title"
@@ -229,6 +250,7 @@
 
     <!-- Language -->
     <header
+        settings:includeXmlForSearch="@xml/language_settings"
         android:id="@+id/language_settings"
         android:fragment="com.android.settings.inputmethod.InputMethodAndLanguageSettings"
         android:icon="@drawable/ic_settings_language"
@@ -263,6 +285,7 @@
 
     <!-- Date & Time -->
     <header
+        settings:includeXmlForSearch="@xml/date_time_prefs"
         android:id="@+id/date_time_settings"
         android:fragment="com.android.settings.DateTimeSettings"
         android:icon="@drawable/ic_settings_date_time"
@@ -270,6 +293,7 @@
 
     <!-- Accessibility feedback -->
     <header
+        settings:includeXmlForSearch="@xml/accessibility_settings"
         android:id="@+id/accessibility_settings"
         android:fragment="com.android.settings.accessibility.AccessibilitySettings"
         android:icon="@drawable/ic_settings_accessibility"
@@ -284,6 +308,7 @@
 
     <!-- Development -->
     <header
+        settings:includeXmlForSearch="@xml/development_prefs"
         android:id="@+id/development_settings"
         android:fragment="com.android.settings.DevelopmentSettings"
         android:icon="@drawable/ic_settings_development"
@@ -305,6 +330,7 @@
 
     <!-- About Device -->
     <header
+        settings:includeXmlForSearch="@xml/device_info_settings"
         android:id="@+id/about_settings"
         android:fragment="com.android.settings.DeviceInfoSettings"
         android:icon="@drawable/ic_settings_about"

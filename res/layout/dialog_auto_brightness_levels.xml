@@ -16,7 +16,7 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="wrap_content" >
 
     <LinearLayout
         android:id="@+id/top_container"
@@ -58,7 +58,6 @@
         android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/top_container"
-        android:layout_alignParentBottom="true" />
+        android:layout_below="@id/top_container" />
 
 </RelativeLayout>

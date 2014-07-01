@@ -21,12 +21,14 @@
   <string name="wifi_setting_countrycode_error">Ada masalah pada pengaturan kode wilayah.</string>
   <string name="wifi_setting_priority_title">Prioritas Wi-Fi</string>
   <string name="wifi_setting_priority_summary">Tentukan prioritas jaringan Wi-Fi</string>
+  <string name="wifi_ssid_input_limit">SSID melebihi panjang maksimum</string>
+  <string name="p2p_device_name_input_limit">Nama P2P melebihi panjang maksimum</string>
   <string name="change_crypt_password_title">Ubah kata sandi</string>
   <string name="change_crypt_password_summary">Ubah sandi yang digunakan untuk enkripsi perangkat</string>
   <string name="encryptionpassword_choose_your_password_header">Tetapkan sandi enkripsi</string>
-  <string name="lock_screen_title">Kunci layar</string>
+  <string name="lock_screen_title">Layar kunci</string>
   <string name="increasing_ring_title">Nada dering meningkat</string>
-  <string name="checkbox_increasing_ring">Aktif</string>
+  <string name="checkbox_increasing_ring">Aktifkan</string>
   <string name="increasing_ring_min_volume_title">Volume dering awal</string>
   <string name="increasing_ring_volume_notice">Pemberitahuan:\nkarena volume awal diatur lebih tinggi daripada volume dering, nada dering akan di putar menggunakan volume dering.</string>
   <string name="increasing_ring_interval_title">Tingkatkan jangka waktu</string>
@@ -77,7 +79,7 @@
   <string name="profile_volumeoverrides_title">Menimpa volume</string>
   <string name="connection_state_disabled">Nonaktifkan</string>
   <string name="connection_state_enabled">Aktifkan</string>
-  <string name="volume_override_summary">Atur ke</string>
+  <string name="volume_override_summary">Set ke %1$s/%2$s</string>
   <string name="profile_profiles_manage">Profil</string>
   <string name="profile_profile_manage">Kelola profil</string>
   <string name="profile_appgroups_manage">Kelompok aplikasi</string>
@@ -101,13 +103,13 @@
   <string name="profile_appgroup_name_title">Nama</string>
   <string name="profile_choose_app">Pilih aplikasi</string>
   <string name="profile_system_settings_title">Pengaturan aplikasi</string>
-  <string name="profile_lockmode_title">Mode kunci layar</string>
+  <string name="profile_lockmode_title">Mode layar kunci</string>
   <string name="profile_lockmode_default">Default</string>
   <string name="profile_lockmode_insecure">Tidak aman</string>
   <string name="profile_lockmode_disabled">Dinonaktifkan</string>
   <string name="profile_lockmode_default_summary">Gunakan bawaan sistem</string>
-  <string name="profile_lockmode_insecure_summary">Gunakan kunci layar yang tidak aman</string>
-  <string name="profile_lockmode_disabled_summary">Kunci layar dinonaktifkan</string>
+  <string name="profile_lockmode_insecure_summary">Gunakan layar pengunci yang tidak aman</string>
+  <string name="profile_lockmode_disabled_summary">Layar pengunci dinonaktifkan</string>
   <string name="profile_airplanemode_title">Mode pesawat</string>
   <string name="toggleWifi">Wi-Fi</string>
   <string name="toggleWifiAp">Hotspot Wi-Fi portabel</string>
@@ -146,7 +148,7 @@
   <string name="lights_category_title">Lampu</string>
   <string name="notification_pulse_title">Lampu notifikasi</string>
   <string name="notification_light_general_title">Umum</string>
-  <string name="notification_light_applist_title">Aplikasi</string>
+  <string name="notification_light_applist_title">Apl</string>
   <string name="notification_light_phonelist_title">Telepon</string>
   <string name="notification_light_use_custom">Gunakan nilai lain</string>
   <string name="notification_light_enabled">Diaktifkan</string>
@@ -156,6 +158,8 @@
   <string name="notification_light_voicemail_title">Pesan suara</string>
   <string name="adaptive_backlight_title">Lampu latar adaptif</string>
   <string name="adaptive_backlight_summary">Sesuaikan dengan dinamis kecerahan lampu latar layar untuk memaksimalkan baterai sambil mempertahankan kegunaan</string>
+  <string name="color_enhancement_title">Peningkatan warna</string>
+  <string name="color_enhancement_summary">Tingkatkan warna tampilan secara dinamis</string>
   <string name="wake_when_plugged_or_unplugged_title">Bangun saat pengisi daya di pasang</string>
   <string name="wake_when_plugged_or_unplugged_summary">Aktifkan layar ketika menghubungkan atau melepaskan sumber daya</string>
   <string name="screen_animation_off_title">Animasi screen-off</string>
@@ -189,9 +193,7 @@
   <string name="lockpattern_settings_enable_error_path_title">Tunjukkan pola kesalahan</string>
   <string name="lockpattern_settings_enable_dots_title">Tunjukkan titik-titik pola</string>
   <string name="screen_security_category">Keamanan layar</string>
-  <string name="screen_security_title">Kunci layar</string>
-  <string name="screen_security_summary">Lihat atau ubah pengaturan keamanan, penundaan dan timeout kunci layar</string>
-  <string name="additional_options_title">Opsi tambahan</string>
+  <string name="screen_security_summary">Lihat atau ubah pengaturan keamanan layar kunci</string>
   <string name="unlock_menu_unlock_title">Buka dengan tombol menu</string>
   <string name="unlock_menu_unlock_summary">Menekan tombol menu membuka perangkat</string>
   <string name="unlock_home_unlock_title">Buka dengan tombol home</string>
@@ -200,21 +202,7 @@
   <string name="unlock_camera_unlock_summary">Menekan tombol kamera membuka perangkat</string>
   <string name="unlock_quick_unlock_control_title">Membuka cepat</string>
   <string name="unlock_quick_unlock_control_summary">Membuka secara otomatis ketika memasuki password/PIN yang benar</string>
-  <string name="unlock_buttons_disabled_by_security">Kunci layar aman</string>
-  <string name="delay_and_timeout_title">Penundaan kunci</string>
-  <string name="slide_lock_delay_title">Penundaan kunci layar</string>
-  <string name="slide_lock_timeout_delay_title">Menunda setelah timeout</string>
-  <string name="slide_lock_screenoff_delay_title">Jeda setelah dimatikan</string>
-  <string name="slide_lock_delay_none">Tidak Ada</string>
-  <string name="slide_lock_delay_1s">1 detik</string>
-  <string name="slide_lock_delay_5s">5 detik</string>
-  <string name="slide_lock_delay_10s">10 detik</string>
-  <string name="slide_lock_delay_15s">15 detik</string>
-  <string name="slide_lock_delay_30s">30 detik</string>
-  <string name="slide_lock_delay_1m">1 menit</string>
-  <string name="slide_lock_delay_5m">5 menit</string>
-  <string name="slide_lock_delay_10m">10 menit</string>
-  <string name="slide_lock_delay_30m">30 menit</string>
+  <string name="unlock_buttons_disabled_by_security">Layar kunci aman</string>
   <string name="lockscreen_widgets_category_title">Widget</string>
   <string name="lockscreen_maximize_widgets_title">Lebarkan widgets</string>
   <string name="lockscreen_maximize_widgets_summary">Perluas widget ketka layar diaktifkan</string>
@@ -229,15 +217,26 @@
   <string name="tile_choose_title">Pilih tile</string>
   <string name="title_qs_small_icons">Tampilkan tiles lebih kecil</string>
   <string name="summary_qs_small_icons">Gunakan tiles kecil untuk meningkatkan jumlah kolom</string>
+  <string name="category_heads_up">Heads up</string>
+  <string name="summary_heads_up_enabled">Pemberitahuan pop-up diaktifkan</string>
+  <string name="summary_heads_up_disabled">Pemberitahuan pop-up dinonaktifkan</string>
+  <string name="add_heads_up_package">Tambahkan apl</string>
+  <string name="add_heads_up_dnd_summary">Jangan tampilkan heads up dalam aplikasi ini</string>
+  <string name="add_heads_up_blacklist_summary">Jangan tampilkan heads up dari aplikasi ini</string>
+  <string name="heads_up_dnd_title">Jangan mengganggu</string>
+  <string name="heads_up_blacklist_title">Blacklist</string>
+  <string name="heads_up_disabled_notice">Untuk mengizinkan aplikasi untuk menampilkan pemberitahuan interaktif pada jendela pop-up di layar Anda, aktifkan Heads up.</string>
   <string name="title_tile_airplane">Modus pesawat</string>
   <string name="title_tile_battery">Statistik baterai</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Kecerahan layar</string>
   <string name="title_tile_camera">Kamera</string>
+  <string name="title_tile_compass">Kompas</string>
+  <string name="title_tile_heads_up">Heads up</string>
   <string name="title_tile_sleep">Matikan layar</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Senter</string>
-  <string name="title_tile_lockscreen">Kunci layar</string>
+  <string name="title_tile_lockscreen">Layar kunci</string>
   <string name="title_tile_lte">LTE</string>
   <string name="title_tile_mobiledata">Data Seluler</string>
   <string name="title_tile_profile">Profil</string>
@@ -262,6 +261,7 @@
   <string name="title_dynamic_alarm">Jam alarm</string>
   <string name="title_dynamic_bugreport">Laporan bug</string>
   <string name="title_dynamic_dock_battery">Baterai dock</string>
+  <string name="title_dynamic_equalizer">Equalizer</string>
   <string name="title_dynamic_ime">Pengganti IME</string>
   <string name="title_dynamic_usbtether">Penambatan USB</string>
   <string name="title_dynamic_wifi">Cast layar</string>
@@ -286,7 +286,6 @@
   <string name="tiles_reset_title">Set ulang</string>
   <string name="tiles_reset_message">Kembalikan tampilan standar tiles dan tata letak?</string>
   <string name="auto_brightness_setup_title">Kecerahan otomatis</string>
-  <string name="auto_brightness_adjustment_title">Penyesuaian kecerahan</string>
   <string name="auto_brightness_twilight_adjustment">Sesuaikan dengan matahari terbit dan terbenam</string>
   <string name="light_sensor_current_value">Nilai sensor cahaya saat ini: <xliff:g id="light_level">%d</xliff:g> lux</string>
   <string name="auto_brightness_dialog_title">Tingkat kecerahan otomatis</string>
@@ -337,7 +336,7 @@ Pilihan tambahan tersedia dengan menekan-lama sebuah garis. Dengan memilih \'Uba
   <string name="app_security_title">Keamanan aplikasi</string>
   <string name="root_access">Akses root</string>
   <string name="root_access_warning_title">Izinkan akses root?</string>
-  <string name="root_access_warning_message">Mengizinkan aplikasi untuk meminta akses root sangat berbahaya dan dapat mengancam keamanan sistem Anda!</string>
+  <string name="root_access_warning_message">Mengizinkan aplikasi untuk meminta akses root sangat berbahaya dan dapat membahayakan keamanan sistem anda!</string>
   <string name="root_access_none">Dinonaktifkan</string>
   <string name="root_access_apps">Aplikasi saja</string>
   <string name="root_access_adb">ADB saja</string>
@@ -359,8 +358,7 @@ Pilihan tambahan tersedia dengan menekan-lama sebuah garis. Dengan memilih \'Uba
   <string name="quiet_hours_dim_summary">Nonaktifkan lampu pemberitahuan</string>
   <string name="quiet_hours_haptic">Umpan balik haptic</string>
   <string name="quiet_hours_haptic_summary">Nonaktifkan umpan balik haptic</string>
-  <string name="quiet_hours_active_from">Aktif dari</string>
-  <string name="quiet_hours_active_to">untuk</string>
+  <string name="quiet_hours_active_period">Aktif dari <xliff:g id="start">%1$s</xliff:g> ke <xliff:g id="end">%2$s</xliff:g></string>
   <string name="quiet_hours_ringer_allow_all">Dering untuk semua panggilan</string>
   <string name="quiet_hours_ringer_allow_contacts">Dering untuk semua kontak</string>
   <string name="quiet_hours_ringer_allow_starred">Dering untuk kontak favorit</string>
@@ -394,7 +392,7 @@ Pilihan tambahan tersedia dengan menekan-lama sebuah garis. Dengan memilih \'Uba
   <string name="icons_settings_title">Ikon</string>
   <string name="fonts_settings_title">Font</string>
   <string name="wallpaper_settings_title_cm">Wallpaper</string>
-  <string name="lockscreen_wallpaper_settings_title">Wallpaper kunci layar</string>
+  <string name="lockscreen_wallpaper_settings_title">Wallpaper layar kunci</string>
   <string name="bootanim_settings_title">Animasi boot</string>
   <string name="soundpack_settings_title">Paket suara</string>
   <string name="performance_settings_title">Performa</string>
@@ -447,7 +445,7 @@ Pilihan tambahan tersedia dengan menekan-lama sebuah garis. Dengan memilih \'Uba
   <string name="privacy_guard_reset_title">Set ulang</string>
   <string name="privacy_guard_reset_text">Set ulang izin?</string>
   <string name="privacy_guard_help_text">Di layar ini anda dapat memilih aplikasi Privacy Guard yang harus active dengan tap aplikasinya. Aplikasi yang terpilih tidak akan mendapar acces ke data personal anda seperti kontak, pesan, atau log telepon. Tekan dan tahan entri app dapat membuka detail app tersebut.\n\nAplikasi bawaan tidak ditampilkan secara default tapi dapat di tampilkan dengan memilih opsi respective.</string>
-  <string name="privacy_guard_manager_show_system_apps">Tampilkan apps bawaan</string>
+  <string name="privacy_guard_manager_show_system_apps">Tampilkan aplikasi bawaan</string>
   <string name="privacy_guard_manager_filter_permissions">Filter izin</string>
   <string name="privacy_guard_advanced_settings_title">Lanjutan</string>
   <string name="blacklist_title">Blacklist</string>
@@ -489,21 +487,14 @@ Pilihan tambahan tersedia dengan menekan-lama sebuah garis. Dengan memilih \'Uba
   <string name="gamma_tuning_contrast">Kontras</string>
   <string name="gamma_tuning_brightness">Kecerahan</string>
   <string name="gamma_tuning_saturation">Saturasi</string>
-  <string name="headset_category_title">Headset</string>
   <string name="headset_connect_player_title">Luncurkan app musik</string>
   <string name="headset_connect_player_summary">Jalankan aplikasi musik baku ketika headset tersambung</string>
-  <string name="more_device_controls_title">Lebih lanjut\u2026</string>
-  <string name="more_device_settings_title">Pilihan perangkat lain</string>
-  <string name="sensors_motors_title">Sensor &amp; motor</string>
-  <string name="display_calibration_title">Kalibrasi layar</string>
   <string name="adb_notify">Notifikasi USB debugging</string>
   <string name="adb_notify_summary">Tampilkan notifikasi bila USB debugging tersambung</string>
   <string name="adb_over_network">ADB melalui jaringan</string>
   <string name="adb_over_network_summary">Aktifkan TCP/IP debug melalui antarmuka jaringan (Wi-Fi, jaringan USB). Pengaturan ini direset pada saat dinyalakan ulang</string>
   <string name="adb_over_network_warning">PERINGATAN: Bila ADB melalui jaringan diaktifkan, telepon anda terbuka terhadap serangan dari semua jaringan yang terhubung, termasuk jaringan data GSM!\n\nHanya gunakan fitur ini ketika anda terhubung pada jaringan dipercaya.\n\nApakah anda benar-benar ingin mengaktifkan fungsi ini?</string>
   <string name="device_hostname">Nama host perangkat</string>
-  <string name="system_settings_title">Antarmuka</string>
-  <string name="system_interface_title">Antarmuka sistem</string>
   <string name="notification_drawer_title">Drawer pemberitahuan</string>
   <string name="notification_drawer_collapse_on_dismiss_title">Perilaku tutup otomatis</string>
   <string name="collapse_on_dismiss_never">Dinonaktifkan</string>
@@ -538,13 +529,13 @@ Pilihan tambahan tersedia dengan menekan-lama sebuah garis. Dengan memilih \'Uba
   <string name="lockscreen_battery_status_alwaysoff">Selalu nonaktif</string>
   <string name="lockscreen_target_info">Seret penggeser target untuk menetapkan pintasan</string>
   <string name="lockscreen_target_title">Slider pintas</string>
-  <string name="lockscreen_target_summary">Melihat atau mengubah kunci layar pintas</string>
-  <string name="lockscreen_target_reset">Kunci layar pintas reset ke default</string>
+  <string name="lockscreen_target_summary">Lihat atau ubah pintasan layar kunci</string>
+  <string name="lockscreen_target_reset">Pintasan layar kunci di reset ke default</string>
   <string name="lockscreen_target_reset_title">Set ulang</string>
-  <string name="lockscreen_target_reset_message">Menghapus semua pintasan kunci layar dan kembalikan ke default?</string>
+  <string name="lockscreen_target_reset_message">Hapus semua pintasan layar kunci dan kembalikan ke default?</string>
   <string name="lockscreen_target_empty">Kosong</string>
   <string name="lockscreen_target_edit_title">Mengedit pintasan dan ikon</string>
-  <string name="lockscreen_target_edit_msg">Pilih atau ubah aplikasi yang diinginkan atau aktivitas dan ikon yang terkait</string>
+  <string name="lockscreen_target_edit_msg">Pilih atau ubah aplikasi yang diinginkan atau kegiatan dan ikon yang terkait</string>
   <string name="picker_activities">Aktivitas</string>
   <string name="select_custom_app_title">Pilih aplikasi kustom</string>
   <string name="select_custom_activity_title">Pilih aktivitas kustom</string>
@@ -573,7 +564,7 @@ Pilihan tambahan tersedia dengan menekan-lama sebuah garis. Dengan memilih \'Uba
   <string name="icon_picker_sms">Pesan</string>
   <string name="icon_picker_twitter">Twitter</string>
   <string name="lockscreen_buttons_title">Tombol tindakan</string>
-  <string name="lockscreen_buttons_summary">Melihat atau mengubah tindakan tombol layar kunci</string>
+  <string name="lockscreen_buttons_summary">Lihat atau ubah tindakan tombol layar kunci</string>
   <string name="lockscreen_long_press_back_title">Tahan dan tekan tombol kembali</string>
   <string name="lockscreen_long_press_home_title">Tekan dan tahan tombol Home</string>
   <string name="lockscreen_long_press_menu_title">Tekan dan tahan tombol Menu</string>
@@ -584,7 +575,7 @@ Pilihan tambahan tersedia dengan menekan-lama sebuah garis. Dengan memilih \'Uba
   <string name="lockscreen_buttons_playpause">Putar/Jeda musik</string>
   <string name="lockscreen_buttons_toggle_sound">Ubah suara</string>
   <string name="lockscreen_buttons_sleep">Matikan layar</string>
-  <string name="lockscreen_enable_modlock_title">Kunci layar kustom</string>
+  <string name="lockscreen_enable_modlock_title">Layar kunci kustom</string>
   <string name="navigation_bar_category">Bar navigasi</string>
   <string name="navigation_bar_title">Tombol dan tata letak</string>
   <string name="navigation_bar_left_title">Mode tangan kiri</string>
@@ -620,12 +611,13 @@ Pilihan tambahan tersedia dengan menekan-lama sebuah garis. Dengan memilih \'Uba
   <string name="expanded_desktop_status_bar">Status bar terlihat</string>
   <string name="expanded_desktop_no_status_bar">Statusbar tersembunyi</string>
   <string name="expanded_desktop_system_bars_visibility">Nonaktifkan pada layar kunci</string>
-  <string name="expanded_desktop_system_bars_visibility_summary">Tampilkan status dan bar navigasi di kunci layar saat mode perluasan desktop</string>
+  <string name="expanded_desktop_system_bars_visibility_summary">Tampilkan status dan bar navigasi di layar kunci saat mode perluasan desktop</string>
   <string name="power_menu_profiles_title">Switcher profil</string>
   <string name="power_menu_airplane_title">Mode pesawat</string>
   <string name="power_menu_user_title">Switcher pengguna</string>
   <string name="power_menu_sound_title">Panel suara</string>
   <string name="button_settings">Tombol</string>
+  <string name="hardware_keys_power_key_title">Tombol power</string>
   <string name="hardware_keys_home_key_title">Tombol home</string>
   <string name="hardware_keys_menu_key_title">Tombol menu</string>
   <string name="hardware_keys_assist_key_title">Tombol cari</string>
@@ -642,8 +634,12 @@ Pilihan tambahan tersedia dengan menekan-lama sebuah garis. Dengan memilih \'Uba
   <string name="hardware_keys_action_voice_search">Pencarian suara</string>
   <string name="hardware_keys_action_in_app_search">Pencarian di dalam app</string>
   <string name="hardware_keys_action_launch_camera">Luncurkan Kamera</string>
+  <string name="power_end_call_title">Akhir panggilan</string>
+  <string name="power_end_call_summary">Menekan tombol power akan mengakhiri panggilan aktif</string>
   <string name="button_wake_title">Bangun</string>
   <string name="home_wake_summary">Menekan tombol home akan membangunkan perangkat Anda</string>
+  <string name="home_answer_call_title">Jawab panggilan</string>
+  <string name="home_answer_call_summary">Menekan tombol home akan menjawab panggilan masuk saat ini</string>
   <string name="camera_wake_summary">Menekan tombol kamera akan membangunkan perangkat Anda</string>
   <string name="camera_sleep_on_release_title">Layar peek</string>
   <string name="camera_sleep_on_release_summary">Setengah tekan akan menjaga layar tetap menyala pada saat tombol di tahan</string>
@@ -669,13 +665,12 @@ Pilihan tambahan tersedia dengan menekan-lama sebuah garis. Dengan memilih \'Uba
   <string name="backlight_summary_enabled_with_timeout">Diaktifkan untuk <xliff:g id="timeout">%s</xliff:g></string>
   <string name="backlight_summary_enabled">Diaktifkan</string>
   <string name="lockscreen_background">Latar belakang</string>
-  <string name="lockscreen_background_style_title">Latar belakang kunci layar</string>
+  <string name="lockscreen_background_style_title">Latar belakang layar kunci</string>
   <string name="background_default">Latar belakang default</string>
   <string name="background_wallpaper">Wallpaper kustom</string>
   <string name="background_result_successful">Latar belakang berubah</string>
   <string name="background_result_not_successful">Latar belakang tidak berubah</string>
   <string name="setting_lockscreen_background">Menerapkan latar belakang</string>
-  <string name="accessibility_home_button_answers_call_prerefence_title">Tombol home menjawab panggilan</string>
   <string name="confirm_delete_apn">APN akan dihapus.</string>
   <string name="status_bar_title">Status bar</string>
   <string name="status_bar_show_clock_title">Tampilkan jam</string>
@@ -691,7 +686,7 @@ Pilihan tambahan tersedia dengan menekan-lama sebuah garis. Dengan memilih \'Uba
   <string name="status_bar_signal_style_text">Teks</string>
   <string name="status_bar_toggle_brightness">Kontrol kecerahan</string>
   <string name="status_bar_toggle_brightness_summary">Sesuaikan kecerahan dengan menggeser di status bar</string>
-  <string name="status_bar_toggle_info">Kecerahan otomatis diaktifkan</string>
+  <string name="status_bar_toggle_info">Tidak tersedia sementara saat kecerahan otomatis diaktifkan</string>
   <string name="status_bar_notif_count_title">Tampilkan hitungan pemberitahuan</string>
   <string name="status_bar_notif_count_summary">Tampilkan jumlah pemberitahuan tertunda</string>
   <string name="status_bar_double_tap_to_sleep_title">Dua kali tap untuk sleep</string>
@@ -703,6 +698,8 @@ Pilihan tambahan tersedia dengan menekan-lama sebuah garis. Dengan memilih \'Uba
   <string name="storage_rescan_media_complete">Scan selesai</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Kelola pengaturan secure SMS</string>
+  <string name="logger_title">Crash logging anonim</string>
+  <string name="logger_summary">Kelola pengaturan crash logging</string>
   <string name="custom_runtime_warning_title">Peringatan</string>
   <string name="custom_runtime_warning_message">ART tidak di support official oleh CyanogenMod karena itu sangat eksperimental dan dapat menyebabkan ketidak stabilan, crashes, hilang data atau mencegah perangkat anda booting dengan baik. kunjungi &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; for more information.&lt;br/&gt;&lt;br/&gt;Kami meminta anda untuk tidak me laporkan bug jika anda mengaktifkan ART sebagai runtime.&lt;br/&gt;&lt;br/&gt;Apakah anda yakin ingin restart untuk mengganti runtime dari <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> ke <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
   <string name="gps_download_data_wifi_only">Download pembantu data GPS hanya melalui jaringan Wi-Fi</string>
@@ -726,6 +723,7 @@ Pilihan tambahan tersedia dengan menekan-lama sebuah garis. Dengan memilih \'Uba
   <string name="gestures_down_spen_title_head">Swipe bawah</string>
   <string name="gestures_long_spen_title_head">Tekan agak lama</string>
   <string name="gestures_double_spen_title_head">Dua kali tap</string>
+  <string name="gestures_settings_header_title">Gestur</string>
   <string name="gestures_action_empty">Tidak ada tindakan</string>
   <string name="gestures_action_home">Home</string>
   <string name="gestures_action_back">Kembali</string>
@@ -837,13 +835,13 @@ Pilihan tambahan tersedia dengan menekan-lama sebuah garis. Dengan memilih \'Uba
   <string name="app_ops_allowed_count">Perbolehkan <xliff:g id="count" example="2 times">%s</xliff:g></string>
   <string name="app_ops_ignored_count">Ditolak <xliff:g id="count" example="2 times">%s</xliff:g></string>
   <string name="app_ops_both_count">Diperbolehkan <xliff:g id="count">%1$s</xliff:g>, ditolak <xliff:g id="count">%2$s</xliff:g></string>
-  <string name="app_ops_show_user_apps">Tampilkan apps pengguna</string>
-  <string name="app_ops_show_system_apps">Tampilkan apps bawaan</string>
+  <string name="app_ops_show_user_apps">Tampilkan aplikasi pengguna</string>
+  <string name="app_ops_show_system_apps">Tampilkan aplikasi bawaan</string>
   <string name="app_ops_reset_counters">Reset  izinkan/tolak counter</string>
   <string name="app_ops_reset_confirm_title">Konfirmasi reset counter</string>
   <string name="app_ops_reset_confirm_mesg">Apakah Anda yakin Anda ingin me-reset counter AppOps?</string>
   <string name="edge_gesture_service_title">Block gesture touch events</string>
-  <string name="edge_gesture_service_summary">Jangan kirim events sentuhan untuk navigasi dan gerakan statusbar untuk apps</string>
+  <string name="edge_gesture_service_summary">Jangan kirim events sentuhan untuk navigasi dan gerakan statusbar untuk aplikasi</string>
   <string name="data_usage_cycle_editor_subtitle_cm">Tanggal setiap siklus:</string>
   <string name="data_usage_lengths_spinner_subtitle">Panjang siklus:</string>
   <string name="disable_navkeys_title">Aktifkan layar nav bar</string>
@@ -869,6 +867,10 @@ Pilihan tambahan tersedia dengan menekan-lama sebuah garis. Dengan memilih \'Uba
   <string name="priority_sub_title">Prioritas berlangganan</string>
   <string name="bluetooth_accept_all_files">Terima semua jenis file</string>
   <string name="autoperf_title">Aktifkan profil per-aplikasi</string>
-  <string name="autoperf_summary">Secara otomatis memilih profil performa sesuai untuk berbagai aplikasi</string>
+  <string name="autoperf_summary">Secara otomatis memilih profil kinerja yang tepat untuk berbagai aplikasi</string>
   <string name="graphics_title">Grafis dan rendering</string>
+  <string name="menu_hidden_apps_delete">Reset</string>
+  <string name="menu_hidden_apps_reset_lock">Reset pola kunci</string>
+  <string name="protected_apps">Aplikasi yang di lindungi</string>
+  <string name="saving_protected_components">Menyimpan kondisi komponen\u2026</string>
 </resources>

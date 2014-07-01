@@ -17,6 +17,7 @@
 package com.android.settings;
 
 import com.android.settings.bluetooth.DockEventReceiver;
+import com.android.settings.hardware.VibratorIntensity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -74,6 +75,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String KEY_DTMF_TONE = Settings.System.DTMF_TONE_WHEN_DIALING;
     private static final String KEY_SOUND_EFFECTS = Settings.System.SOUND_EFFECTS_ENABLED;
     private static final String KEY_HAPTIC_FEEDBACK = Settings.System.HAPTIC_FEEDBACK_ENABLED;
+    private static final String KEY_VIBRATION_INTENSITY = "vibration_intensity";
     private static final String KEY_EMERGENCY_TONE = "emergency_tone";
     private static final String KEY_SOUND_SETTINGS = "sound_settings";
     private static final String KEY_LOCK_SOUNDS = Settings.System.LOCKSCREEN_SOUNDS_ENABLED;
@@ -100,7 +102,8 @@ public class SoundSettings extends SettingsPreferenceFragment implements
 
     private static final String[] NEED_VOICE_CAPABILITY = {
             KEY_RINGTONE, KEY_DTMF_TONE, KEY_CATEGORY_CALLS,
-            KEY_EMERGENCY_TONE, KEY_INCREASING_RING, KEY_VIBRATE
+            KEY_EMERGENCY_TONE, KEY_INCREASING_RING, KEY_VIBRATE,
+            KEY_VOLUME_ADJUST_SOUNDS
     };
 
     private static final int MSG_UPDATE_RINGTONE_SUMMARY = 1;
@@ -196,14 +199,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         }
 
         mQuietHours = (PreferenceScreen) findPreference(KEY_QUIET_HOURS);
-        if (Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_ENABLED, 0) == 1) {
-            mQuietHours.setSummary(getString(R.string.quiet_hours_active_from) + " " +
-                    returnTime(Settings.System.getString(resolver, Settings.System.QUIET_HOURS_START))
-                    + " " + getString(R.string.quiet_hours_active_to) + " " +
-                    returnTime(Settings.System.getString(resolver, Settings.System.QUIET_HOURS_END)));
-        } else {
-            mQuietHours.setSummary(getString(R.string.quiet_hours_summary));
-        }
+        updateQuietHoursSummary();
 
         mSoundEffects = (CheckBoxPreference) findPreference(KEY_SOUND_EFFECTS);
 
@@ -218,8 +214,11 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         if (vibrator == null || !vibrator.hasVibrator()) {
             removePreference(KEY_VIBRATE);
             removePreference(KEY_HAPTIC_FEEDBACK);
+            removePreference(KEY_VIBRATION_INTENSITY);
             removePreference(KEY_CONVERT_SOUND_TO_VIBRATE);
             removePreference(KEY_VIBRATE_DURING_CALLS);
+        } else if (!VibratorIntensity.isSupported()) {
+            removePreference(KEY_VIBRATION_INTENSITY);
         }
 
         if (TelephonyManager.PHONE_TYPE_CDMA == activePhoneType) {
@@ -350,20 +349,22 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     // updateState in fact updates the UI to reflect the system state
     private void updateState(boolean force) {
         if (getActivity() == null) return;
-        ContentResolver resolver = getContentResolver();
 
         mRingMode.setValue(getPhoneRingModeSettingValue());
+        mRingMode.setSummary(mRingMode.getEntry());
+        updateQuietHoursSummary();
+    }
 
+    private void updateQuietHoursSummary() {
+        ContentResolver resolver = getContentResolver();
         if (Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_ENABLED, 0) == 1) {
-            mQuietHours.setSummary(getString(R.string.quiet_hours_active_from) + " " +
-                    returnTime(Settings.System.getString(resolver, Settings.System.QUIET_HOURS_START))
-                    + " " + getString(R.string.quiet_hours_active_to) + " " +
-                    returnTime(Settings.System.getString(resolver, Settings.System.QUIET_HOURS_END)));
+            String start = Settings.System.getString(resolver, Settings.System.QUIET_HOURS_START);
+            String end = Settings.System.getString(resolver, Settings.System.QUIET_HOURS_END);
+            mQuietHours.setSummary(getString(R.string.quiet_hours_active_period,
+                    returnTime(start), returnTime(end)));
         } else {
             mQuietHours.setSummary(getString(R.string.quiet_hours_summary));
         }
-
-        mRingMode.setSummary(mRingMode.getEntry());
     }
 
     private void updateRingtoneName(int type, Preference preference, int msg) {

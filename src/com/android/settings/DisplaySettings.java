@@ -44,12 +44,16 @@ import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.util.Log;
 
+import android.view.WindowManagerGlobal;
 import com.android.internal.view.RotationPolicy;
 import com.android.settings.DreamSettings;
 import com.android.settings.Utils;
 import com.android.settings.cyanogenmod.DisplayRotation;
+import com.android.settings.hardware.DisplayColor;
+import com.android.settings.hardware.DisplayGamma;
 
 import org.cyanogenmod.hardware.AdaptiveBacklight;
+import org.cyanogenmod.hardware.ColorEnhancement;
 import org.cyanogenmod.hardware.TapToWake;
 
 import java.util.ArrayList;
@@ -67,6 +71,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_SCREEN_SAVER = "screensaver";
     private static final String KEY_DISPLAY_ROTATION = "display_rotation";
     private static final String KEY_ADAPTIVE_BACKLIGHT = "adaptive_backlight";
+    private static final String KEY_COLOR_ENHANCEMENT = "color_enhancement";
     private static final String KEY_ADVANCED_DISPLAY_SETTINGS = "advanced_display_settings";
     private static final String KEY_TAP_TO_WAKE = "double_tap_wake_gesture";
 
@@ -78,9 +83,18 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_WAKE_WHEN_PLUGGED_OR_UNPLUGGED = "wake_when_plugged_or_unplugged";
     private static final String KEY_SCREEN_ANIMATION_OFF = "screen_off_animation";
     private static final String KEY_SCREEN_ANIMATION_STYLE = "screen_animation_style";
+    private static final String KEY_DISPLAY_COLOR = "color_calibration";
+    private static final String KEY_DISPLAY_GAMMA = "gamma_tuning";
     private static final String KEY_SCREEN_COLOR_SETTINGS = "screencolor_settings";
 
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
+
+    private static final String KEY_EXPANDED_DESKTOP = "expanded_desktop";
+    private static final String KEY_EXPANDED_DESKTOP_NO_NAVBAR = "expanded_desktop_no_navbar";
+    private static final String CATEGORY_EXPANDED_DESKTOP = "expanded_desktop_category";
+
+    private ListPreference mExpandedDesktopPref;
+    private CheckBoxPreference mExpandedDesktopNoNavbarPref;
 
     private CheckBoxPreference mAccelerometer;
     private FontDialogPreference mFontSizePref;
@@ -99,6 +113,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private Preference mScreenSaverPreference;
 
     private CheckBoxPreference mAdaptiveBacklight;
+    private CheckBoxPreference mColorEnhancement;
     private CheckBoxPreference mTapToWake;
 
     private ContentObserver mAccelerometerRotationObserver =
@@ -126,6 +141,39 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         addPreferencesFromResource(R.xml.display_settings);
 
         PreferenceCategory displayPrefs = (PreferenceCategory) findPreference(CATEGORY_DISPLAY);
+        PreferenceCategory expandedCategory =
+                (PreferenceCategory) findPreference(CATEGORY_EXPANDED_DESKTOP);
+
+        // Expanded desktop
+        mExpandedDesktopPref = (ListPreference) findPreference(KEY_EXPANDED_DESKTOP);
+        mExpandedDesktopNoNavbarPref =
+                (CheckBoxPreference) findPreference(KEY_EXPANDED_DESKTOP_NO_NAVBAR);
+
+        int expandedDesktopValue = Settings.System.getInt(getContentResolver(),
+                Settings.System.EXPANDED_DESKTOP_STYLE, 0);
+
+        try {
+            // Only show the navigation bar category on devices that has a navigation bar
+            // unless we are forcing it via development settings
+            boolean forceNavbar = android.provider.Settings.System.getInt(getContentResolver(),
+                    android.provider.Settings.System.DEV_FORCE_SHOW_NAVBAR, 0) == 1;
+            boolean hasNavBar = WindowManagerGlobal.getWindowManagerService().hasNavigationBar()
+                    || forceNavbar;
+
+            if (hasNavBar) {
+                mExpandedDesktopPref.setOnPreferenceChangeListener(this);
+                mExpandedDesktopPref.setValue(String.valueOf(expandedDesktopValue));
+                updateExpandedDesktop(expandedDesktopValue);
+                expandedCategory.removePreference(mExpandedDesktopNoNavbarPref);
+            } else {
+                // Hide no-op "Status bar visible" expanded desktop mode
+                mExpandedDesktopNoNavbarPref.setOnPreferenceChangeListener(this);
+                mExpandedDesktopNoNavbarPref.setChecked(expandedDesktopValue > 0);
+                expandedCategory.removePreference(mExpandedDesktopPref);
+            }
+        } catch (RemoteException e) {
+            Log.e(TAG, "Error getting navigation bar status");
+        }
 
         mDisplayRotationPreference = (PreferenceScreen) findPreference(KEY_DISPLAY_ROTATION);
 
@@ -157,6 +205,12 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             mAdaptiveBacklight = null;
         }
 
+        mColorEnhancement = (CheckBoxPreference) findPreference(KEY_COLOR_ENHANCEMENT);
+        if (!isColorEnhancementSupported()) {
+            advancedPrefs.removePreference(mColorEnhancement);
+            mColorEnhancement = null;
+        }
+
         mTapToWake = (CheckBoxPreference) findPreference(KEY_TAP_TO_WAKE);
         if (!isTapToWakeSupported()) {
             advancedPrefs.removePreference(mTapToWake);
@@ -168,6 +222,13 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
         mWakeWhenPluggedOrUnplugged =
                 (CheckBoxPreference) findPreference(KEY_WAKE_WHEN_PLUGGED_OR_UNPLUGGED);
+
+        if (!DisplayColor.isSupported()) {
+            advancedPrefs.removePreference(findPreference(KEY_DISPLAY_COLOR));
+        }
+        if (!DisplayGamma.isSupported()) {
+            advancedPrefs.removePreference(findPreference(KEY_DISPLAY_GAMMA));
+        }
 
         mScreenColorSettings = (PreferenceScreen) findPreference(KEY_SCREEN_COLOR_SETTINGS);
         if (!isPostProcessingSupported()) {
@@ -384,6 +445,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             mAdaptiveBacklight.setChecked(AdaptiveBacklight.isEnabled());
         }
 
+        if (mColorEnhancement != null) {
+            mColorEnhancement.setChecked(ColorEnhancement.isEnabled());
+        }
+
         if (mTapToWake != null) {
             mTapToWake.setChecked(TapToWake.isEnabled());
         }
@@ -489,6 +554,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         if (preference == mAdaptiveBacklight) {
             return AdaptiveBacklight.setEnabled(mAdaptiveBacklight.isChecked());
+        } else if (preference == mColorEnhancement) {
+            return ColorEnhancement.setEnabled(mColorEnhancement.isChecked());
         } else if (preference == mWakeWhenPluggedOrUnplugged) {
             Settings.Global.putInt(getContentResolver(),
                     Settings.Global.WAKE_WHEN_PLUGGED_OR_UNPLUGGED,
@@ -503,6 +570,15 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         final String key = preference.getKey();
+        if (KEY_EXPANDED_DESKTOP.equals(key)) {
+            int expandedDesktopValue = Integer.valueOf((String) objValue);
+            updateExpandedDesktop(expandedDesktopValue);
+        }
+        if (KEY_EXPANDED_DESKTOP_NO_NAVBAR.equals(key)) {
+            boolean value = (Boolean) objValue;
+            updateExpandedDesktop(value ? 2 : 0);
+        }
+
         if (KEY_SCREEN_TIMEOUT.equals(key)) {
             int value = Integer.parseInt((String) objValue);
             try {
@@ -569,6 +645,15 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 Log.d(TAG, "Adaptive backlight settings restored.");
             }
         }
+        if (isColorEnhancementSupported()) {
+            final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
+            final boolean enabled = prefs.getBoolean(KEY_COLOR_ENHANCEMENT, true);
+            if (!ColorEnhancement.setEnabled(enabled)) {
+                Log.e(TAG, "Failed to restore color enhancement settings.");
+            } else {
+                Log.d(TAG, "Color enhancement settings restored.");
+            }
+        }
         if (isTapToWakeSupported()) {
             final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
             final boolean enabled = prefs.getBoolean(KEY_TAP_TO_WAKE, true);
@@ -600,12 +685,46 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
     }
 
+    private static boolean isColorEnhancementSupported() {
+        try {
+            return ColorEnhancement.isSupported();
+        } catch (NoClassDefFoundError e) {
+            // Hardware abstraction framework not installed
+            return false;
+        }
+    }
+
     private static boolean isTapToWakeSupported() {
         try {
             return TapToWake.isSupported();
         } catch (NoClassDefFoundError e) {
             // Hardware abstraction framework not installed
             return false;
+        }
+    }
+
+    private void updateExpandedDesktop(int value) {
+        ContentResolver cr = getContentResolver();
+        Resources res = getResources();
+        int summary = -1;
+
+        Settings.System.putInt(cr, Settings.System.EXPANDED_DESKTOP_STYLE, value);
+
+        if (value == 0) {
+            // Expanded desktop deactivated
+            Settings.System.putInt(cr, Settings.System.POWER_MENU_EXPANDED_DESKTOP_ENABLED, 0);
+            Settings.System.putInt(cr, Settings.System.EXPANDED_DESKTOP_STATE, 0);
+            summary = R.string.expanded_desktop_disabled;
+        } else if (value == 1) {
+            Settings.System.putInt(cr, Settings.System.POWER_MENU_EXPANDED_DESKTOP_ENABLED, 1);
+            summary = R.string.expanded_desktop_status_bar;
+        } else if (value == 2) {
+            Settings.System.putInt(cr, Settings.System.POWER_MENU_EXPANDED_DESKTOP_ENABLED, 1);
+            summary = R.string.expanded_desktop_no_status_bar;
+        }
+
+        if (mExpandedDesktopPref != null && summary != -1) {
+            mExpandedDesktopPref.setSummary(res.getString(summary));
         }
     }
 }

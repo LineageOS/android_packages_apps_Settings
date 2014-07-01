@@ -24,10 +24,9 @@
 
         <PreferenceScreen
             android:key="screen_security"
-            android:fragment="com.android.settings.SecuritySettings"
+            android:fragment="com.android.settings.LockscreenSecuritySettings"
             android:title="@string/screen_security_category"
             android:summary="@string/screen_security_summary">
-            <extra android:name="cm_security" android:value="true" />
         </PreferenceScreen>
 
         <ListPreference
@@ -46,6 +45,7 @@
             android:title="@string/lockscreen_target_title" />
 
         <PreferenceScreen
+            settings:excludeFromSearch="true"
             android:fragment="com.android.settings.cyanogenmod.LockscreenButtons"
             android:key="lockscreen_buttons"
             android:title="@string/lockscreen_buttons_title"

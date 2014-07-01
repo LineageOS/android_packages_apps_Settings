@@ -16,6 +16,7 @@
 
 package com.android.settings.applications;
 
+import android.content.pm.ActivityInfo;
 import com.android.internal.telephony.ISms;
 import com.android.internal.telephony.SmsUsageMonitor;
 import com.android.settings.R;
@@ -85,6 +86,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import com.android.settings.cyanogenmod.ProtectedAppsReceiver;
 
 /**
  * Activity to display application information from Settings. This activity presents
@@ -100,7 +102,6 @@ public class InstalledAppDetails extends Fragment
         ApplicationsState.Callbacks {
     private static final String TAG="InstalledAppDetails";
     private static final boolean localLOGV = false;
-    
     public static final String ARG_PACKAGE_NAME = "package";
 
     private PackageManager mPm;
@@ -189,10 +190,12 @@ public class InstalledAppDetails extends Fragment
 
     // Menu identifiers
     public static final int UNINSTALL_ALL_USERS_MENU = 1;
+    public static final int OPEN_PROTECTED_APPS = 2;
 
     // Result code identifiers
     public static final int REQUEST_UNINSTALL = 1;
     public static final int REQUEST_MANAGE_SPACE = 2;
+    public static final int REQUEST_TOGGLE_PROTECTION = 3;
 
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
@@ -249,6 +252,7 @@ public class InstalledAppDetails extends Fragment
     }
     
     private void initDataButtons() {
+        boolean enabled = false;
         // If the app doesn't have its own space management UI
         // And it's a system app that doesn't allow clearing user data or is an active admin
         // Then disable the Clear Data button.
@@ -258,7 +262,7 @@ public class InstalledAppDetails extends Fragment
                         == ApplicationInfo.FLAG_SYSTEM
                         || mDpm.packageHasActiveAdmins(mPackageInfo.packageName))) {
             mClearDataButton.setText(R.string.clear_user_data_text);
-            mClearDataButton.setEnabled(false);
+            enabled = false;
             mCanClearData = false;
         } else {
             if (mAppEntry.info.manageSpaceActivityName != null) {
@@ -266,6 +270,18 @@ public class InstalledAppDetails extends Fragment
             } else {
                 mClearDataButton.setText(R.string.clear_user_data_text);
             }
+            enabled = true;
+        }
+
+        // This is a protected app component.
+        // You cannot clear data for a protected component
+        if (mPackageInfo.applicationInfo.protect) {
+            enabled = false;
+        }
+
+        mClearDataButton.setEnabled(enabled);
+        mCanClearData = enabled;
+        if (enabled) {
             mClearDataButton.setOnClickListener(this);
         }
     }
@@ -370,11 +386,34 @@ public class InstalledAppDetails extends Fragment
                 mUninstallButton.setText(R.string.uninstall_text);
             }
         }
-        // If this is a device admin, it can't be uninstall or disabled.
+        // If this is a device admin, it can't be uninstalled or disabled.
         // We do this here so the text of the button is still set correctly.
         if (mDpm.packageHasActiveAdmins(mPackageInfo.packageName)) {
             enabled = false;
         }
+
+        // This is a protected app component.
+        // You cannot a uninstall a protected component
+        if (mPackageInfo.applicationInfo.protect) {
+            enabled = false;
+        }
+
+        // If this is the default (or only) home app, suppress uninstall (even if
+        // we still think it should be allowed for other reasons)
+        if (enabled && mHomePackages.contains(mPackageInfo.packageName)) {
+            ArrayList<ResolveInfo> homeActivities = new ArrayList<ResolveInfo>();
+            ComponentName currentDefaultHome  = mPm.getHomeActivities(homeActivities);
+            if (currentDefaultHome == null) {
+                // No preferred default, so permit uninstall only when
+                // there is more than one candidate
+                enabled = (mHomePackages.size() > 1);
+            } else {
+                // There is an explicit default home app -- forbid uninstall of
+                // that one, but permit it for installed-but-inactive ones.
+                enabled = !mPackageInfo.packageName.equals(currentDefaultHome.getPackageName());
+            }
+        }
+
         mUninstallButton.setEnabled(enabled);
         if (enabled) {
             // Register listener
@@ -497,6 +536,9 @@ public class InstalledAppDetails extends Fragment
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.add(0, UNINSTALL_ALL_USERS_MENU, 1, R.string.uninstall_all_users_text)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+        menu.add(0, OPEN_PROTECTED_APPS, Menu.NONE, R.string.protected_apps)
+                .setIcon(getResources().getDrawable(R.drawable.folder_lock))
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
     }
 
     @Override
@@ -516,6 +558,8 @@ public class InstalledAppDetails extends Fragment
             showIt = false;
         }
         menu.findItem(UNINSTALL_ALL_USERS_MENU).setVisible(showIt);
+
+        menu.findItem(OPEN_PROTECTED_APPS).setVisible(mPackageInfo.applicationInfo.protect);
     }
 
     @Override
@@ -524,6 +568,10 @@ public class InstalledAppDetails extends Fragment
         if (menuId == UNINSTALL_ALL_USERS_MENU) {
             uninstallPkg(mAppEntry.info.packageName, true, false);
             return true;
+        } else if (menuId == OPEN_PROTECTED_APPS) {
+            // Verify protection for toggling protected component status
+            Intent protectedApps = new Intent(getActivity(), LockPatternActivity.class);
+            startActivityForResult(protectedApps, REQUEST_TOGGLE_PROTECTION);
         }
         return false;
     }
@@ -549,6 +597,37 @@ public class InstalledAppDetails extends Fragment
             if (!refreshUi()) {
                 setIntentAndFinish(true, true);
             }
+        } else if (requestCode == REQUEST_TOGGLE_PROTECTION) {
+            switch (resultCode) {
+                case Activity.RESULT_OK:
+                    new ToggleProtectedAppComponents().execute();
+                    break;
+                case Activity.RESULT_CANCELED:
+                    // User failed to enter/confirm a lock pattern, do nothing
+                    break;
+            }
+        }
+    }
+    private class ToggleProtectedAppComponents extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            getActivity().invalidateOptionsMenu();
+            if (!refreshUi()) {
+                setIntentAndFinish(true, true);
+            }
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            String components = "";
+            for (ActivityInfo aInfo : mPackageInfo.activities) {
+                components += new ComponentName(aInfo.packageName, aInfo.name)
+                        .flattenToString() + "|";
+            }
+
+            ProtectedAppsReceiver.protectedAppComponentsAndNotify
+                    (components, true, getActivity());
+            return null;
         }
     }
 
@@ -640,7 +719,8 @@ public class InstalledAppDetails extends Fragment
                 mPackageInfo = mPm.getPackageInfo(mAppEntry.info.packageName,
                         PackageManager.GET_DISABLED_COMPONENTS |
                         PackageManager.GET_UNINSTALLED_PACKAGES |
-                        PackageManager.GET_SIGNATURES);
+                        PackageManager.GET_SIGNATURES |
+                        PackageManager.GET_ACTIVITIES);
             } catch (NameNotFoundException e) {
                 Log.e(TAG, "Exception when retrieving package:" + mAppEntry.info.packageName, e);
             }

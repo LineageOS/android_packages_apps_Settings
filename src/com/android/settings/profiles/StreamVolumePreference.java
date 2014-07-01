@@ -134,7 +134,10 @@ public class StreamVolumePreference extends Preference implements
             public void onClick(DialogInterface dialog, int which) {
                 int value = mBar.getProgress();
                 mStreamItem.mSettings.setValue(value);
-                setSummary(getContext().getString(R.string.volume_override_summary) + " " + value + "/" + mBar.getMax());
+                int denominator = value;
+                int numerator = mBar.getMax();
+                setSummary(getContext().getString(R.string.volume_override_summary,
+                        denominator, numerator));
             }
         });
         builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {

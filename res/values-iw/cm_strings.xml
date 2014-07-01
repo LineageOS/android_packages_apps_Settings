@@ -21,6 +21,8 @@
   <string name="wifi_setting_countrycode_error">אירעה שגיאה בהגדרת הקוד האזורי.</string>
   <string name="wifi_setting_priority_title">עדיפות Wi-Fi</string>
   <string name="wifi_setting_priority_summary">ציין עדיפות של רשתות Wi-Fi</string>
+  <string name="wifi_ssid_input_limit">SSID חורג מאורך מרבי</string>
+  <string name="p2p_device_name_input_limit">שם P2P חורג מאורך מרבי</string>
   <string name="change_crypt_password_title">שנה סיסמה</string>
   <string name="change_crypt_password_summary">שנה סיסמה שבשימוש להצפנת המכשיר</string>
   <string name="encryptionpassword_choose_your_password_header">הגדר סיסמת הצפנה</string>
@@ -77,7 +79,7 @@
   <string name="profile_volumeoverrides_title">עקיפת עוצמת שמע</string>
   <string name="connection_state_disabled">השבת</string>
   <string name="connection_state_enabled">הפעל</string>
-  <string name="volume_override_summary">הגדר</string>
+  <string name="volume_override_summary">הגדר ל-%1$s/%2$s</string>
   <string name="profile_profiles_manage">פרופילים</string>
   <string name="profile_profile_manage">נהל פרופיל</string>
   <string name="profile_appgroups_manage">קבוצות יישומים</string>
@@ -156,6 +158,8 @@
   <string name="notification_light_voicemail_title">דואר קולי</string>
   <string name="adaptive_backlight_title">תאורה אחורית מסתגלת</string>
   <string name="adaptive_backlight_summary">כוון דינאמית את בהירות המסך כדי להגדיל את חיי הסוללה תוך שמירה על שימושיות</string>
+  <string name="color_enhancement_title">שיפור צבע</string>
+  <string name="color_enhancement_summary">שפר צבעי תצוגה באופן דינמי</string>
   <string name="wake_when_plugged_or_unplugged_title">הער מסך בעת חיבור</string>
   <string name="wake_when_plugged_or_unplugged_summary">הדלק את המסך כאשר מקור חשמל מחובר או מנותק מהמכשיר</string>
   <string name="screen_animation_off_title">אנימציה לכיבוי מסך</string>
@@ -189,9 +193,7 @@
   <string name="lockpattern_settings_enable_error_path_title">הצג שגיאות דפוס</string>
   <string name="lockpattern_settings_enable_dots_title">הצג דפוס נקודות</string>
   <string name="screen_security_category">אבטחת מסך</string>
-  <string name="screen_security_title">מסך נעילה</string>
-  <string name="screen_security_summary">הצג או שנה אבטחת מסך נעילה, השהה והגדרות זמן נעילה</string>
-  <string name="additional_options_title">אפשרויות נוספות</string>
+  <string name="screen_security_summary">צפה או שנה הגדרות אבטחת מסך הנעילה</string>
   <string name="unlock_menu_unlock_title">תפריט פתיחה</string>
   <string name="unlock_menu_unlock_summary">לחיצה על כפתור התפריט פותחת את המכשיר</string>
   <string name="unlock_home_unlock_title">פתיחת מסך בית</string>
@@ -201,20 +203,6 @@
   <string name="unlock_quick_unlock_control_title">פתיחה מהירה</string>
   <string name="unlock_quick_unlock_control_summary">פתח אוטומטית כאשר הסיסמה/קוד מוכנס</string>
   <string name="unlock_buttons_disabled_by_security">מסך הנעילה מאובטח</string>
-  <string name="delay_and_timeout_title">השהיית נעילה</string>
-  <string name="slide_lock_delay_title">עיכוב נעילת מסך</string>
-  <string name="slide_lock_timeout_delay_title">כיבוי מסך לאחר</string>
-  <string name="slide_lock_screenoff_delay_title">עיכוב לאחר כיבוי מסך</string>
-  <string name="slide_lock_delay_none">ללא</string>
-  <string name="slide_lock_delay_1s">לשנייה אחת</string>
-  <string name="slide_lock_delay_5s">5 שניות</string>
-  <string name="slide_lock_delay_10s">10 שניות</string>
-  <string name="slide_lock_delay_15s">15 שניות</string>
-  <string name="slide_lock_delay_30s">30 שניות</string>
-  <string name="slide_lock_delay_1m">דקה אחת</string>
-  <string name="slide_lock_delay_5m">חמש דקות</string>
-  <string name="slide_lock_delay_10m">עשר דקות</string>
-  <string name="slide_lock_delay_30m">30 דקות</string>
   <string name="lockscreen_widgets_category_title">ווידג\'טים</string>
   <string name="lockscreen_maximize_widgets_title">מקסם את הווידג\'טים</string>
   <string name="lockscreen_maximize_widgets_summary">הרחב ווידג\'טים כאשר המסך מודלק</string>
@@ -229,11 +217,22 @@
   <string name="tile_choose_title">בחר אריח</string>
   <string name="title_qs_small_icons">הצג אריחים קטנים יותר</string>
   <string name="summary_qs_small_icons">השתמש באריחים קטנים יותר כדי להגדיל את מספר העמודות</string>
+  <string name="category_heads_up">חלון קופץ</string>
+  <string name="summary_heads_up_enabled">הודעות קופצות מופעלות</string>
+  <string name="summary_heads_up_disabled">הודעות קופצות מושבתות</string>
+  <string name="add_heads_up_package">הוסף יישום</string>
+  <string name="add_heads_up_dnd_summary">אל תציג הודעות קופצות ביישומים אלה</string>
+  <string name="add_heads_up_blacklist_summary">אל תציג הודעות קופצות עבור יישומים אלה</string>
+  <string name="heads_up_dnd_title">אל להפריע</string>
+  <string name="heads_up_blacklist_title">רשימה שחורה</string>
+  <string name="heads_up_disabled_notice">כדי לאפשר ליישומים להציג הודעה אינטראקטיבית בחלון קופץ על המסך, הפעל הודעות קופצות.</string>
   <string name="title_tile_airplane">מצב טיסה</string>
   <string name="title_tile_battery">מצב סוללה</string>
   <string name="title_tile_bluetooth">בלוטוס</string>
   <string name="title_tile_brightness">בהירות</string>
   <string name="title_tile_camera">מצלמה</string>
+  <string name="title_tile_compass">מצפן</string>
+  <string name="title_tile_heads_up">הודעות קופצות</string>
   <string name="title_tile_sleep">לך לישון</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">פנס</string>
@@ -262,6 +261,7 @@
   <string name="title_dynamic_alarm">שעון מעורר</string>
   <string name="title_dynamic_bugreport">דיווח תקלה</string>
   <string name="title_dynamic_dock_battery">עיגון סוללה</string>
+  <string name="title_dynamic_equalizer">אקולייזר</string>
   <string name="title_dynamic_ime">מחליף IME</string>
   <string name="title_dynamic_usbtether">שיתוף דרך USB</string>
   <string name="title_dynamic_wifi">העבר מסך</string>
@@ -286,7 +286,6 @@
   <string name="tiles_reset_title">לאפס</string>
   <string name="tiles_reset_message">לשחזר פריסה ואריחים של ברירת מחדל?</string>
   <string name="auto_brightness_setup_title">בהירות אוטומטית</string>
-  <string name="auto_brightness_adjustment_title">כוונון בהירות</string>
   <string name="auto_brightness_twilight_adjustment">להתאים לזריחה ולשקיעה</string>
   <string name="light_sensor_current_value">ערך נוכחי של חיישן אור: <xliff:g id="light_level">%d</xliff:g> lux</string>
   <string name="auto_brightness_dialog_title">רמת בהירות אוטומטית</string>
@@ -374,8 +373,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="quiet_hours_dim_summary">בטל אור התראה</string>
   <string name="quiet_hours_haptic">משוב רטט</string>
   <string name="quiet_hours_haptic_summary">בטל משוב רטט</string>
-  <string name="quiet_hours_active_from">פעיל מ</string>
-  <string name="quiet_hours_active_to">ל</string>
+  <string name="quiet_hours_active_period">פעיל מ-<xliff:g id="start">%1$s</xliff:g> to <xliff:g id="end">%2$s</xliff:g></string>
   <string name="quiet_hours_ringer_allow_all">צלצל עבור כל המתקשרים</string>
   <string name="quiet_hours_ringer_allow_contacts">צלצול עבור כל אנשי קשר</string>
   <string name="quiet_hours_ringer_allow_starred">צלצל עבור אנשי קשר מועדפים</string>
@@ -504,21 +502,14 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="gamma_tuning_contrast">ניגודיות</string>
   <string name="gamma_tuning_brightness">בהירות</string>
   <string name="gamma_tuning_saturation">רוויה</string>
-  <string name="headset_category_title">אוזניות</string>
   <string name="headset_connect_player_title">הפעל אפליקציית מוזיקה</string>
   <string name="headset_connect_player_summary">הפעל את אפליקצית המוזיקה המוגדרת כברירת המחדל בעת חיבור אוזניות</string>
-  <string name="more_device_controls_title">עוד</string>
-  <string name="more_device_settings_title">אפשרויות התקן אחרות</string>
-  <string name="sensors_motors_title">חיישנים &amp; מוטורס</string>
-  <string name="display_calibration_title">כיול תצוגה</string>
   <string name="adb_notify">הודעת USB debugging</string>
   <string name="adb_notify_summary">הצג הודעה כאשר USB debugging מחובר</string>
   <string name="adb_over_network">ADB דרך הרשת</string>
   <string name="adb_over_network_summary">אפשר TCP/IP debugging דרך רשת (Wi-Fi, רשתות USB). אפשרות זו מאופסת באתחול</string>
   <string name="adb_over_network_warning">אזהרה: כאשר ADB על הרשת מופעל, המכשיר יהיה פתוח על כל הרשתות המחוברות, כולל חיבור נתוני GSM!\n\nהשתמש בזה רק כאשר אתה ברשת בטוחה.\n\nהאם אתה בטוח שאתה רוצה להפעיל אפשרות זו?</string>
   <string name="device_hostname">שם הרשת עבור ההתקן</string>
-  <string name="system_settings_title">ממשק</string>
-  <string name="system_interface_title">ממשק מערכת</string>
   <string name="notification_drawer_title">וילון הודעות</string>
   <string name="notification_drawer_collapse_on_dismiss_title">התנהגות סגירה אוטומטית</string>
   <string name="collapse_on_dismiss_never">מושבת</string>
@@ -559,7 +550,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="lockscreen_target_reset_message">מחק את כל קיצורי הדרך במסך הנעילה ושחזר לברירת מחדל?</string>
   <string name="lockscreen_target_empty">ריק</string>
   <string name="lockscreen_target_edit_title">ערוך קיצור וסמל</string>
-  <string name="lockscreen_target_edit_msg">בחר או שנה את היישום הנבחר או את הפעילות והסמל הנבחר</string>
+  <string name="lockscreen_target_edit_msg">בחר או שנה את היישום או הפעילות הרצויים ואת הסמל המשויך</string>
   <string name="picker_activities">פעילויות</string>
   <string name="select_custom_app_title">בחר יישום אחר</string>
   <string name="select_custom_activity_title">בחר הפעילות המותאמת אישית</string>
@@ -641,6 +632,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="power_menu_user_title">מחליף משתמשים</string>
   <string name="power_menu_sound_title">לוח קול</string>
   <string name="button_settings">כפתורים</string>
+  <string name="hardware_keys_power_key_title">לחצן הפעלה</string>
   <string name="hardware_keys_home_key_title">כפתור הבית</string>
   <string name="hardware_keys_menu_key_title">כפתור תפריט</string>
   <string name="hardware_keys_assist_key_title">לחצן חיפוש</string>
@@ -657,8 +649,12 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="hardware_keys_action_voice_search">חיפוש קולי</string>
   <string name="hardware_keys_action_in_app_search">חיפוש ביישום</string>
   <string name="hardware_keys_action_launch_camera">הפעל מצלמה</string>
+  <string name="power_end_call_title">סיים שיחה</string>
+  <string name="power_end_call_summary">לחיצה על לחצן ההפעלה תסיים את השיחה הנוכחית</string>
   <string name="button_wake_title">התעוררות</string>
   <string name="home_wake_summary">לחיצה על כפתור הבית יעיר את המכשיר</string>
+  <string name="home_answer_call_title">השב לשיחה</string>
+  <string name="home_answer_call_summary">לחיצה על כפתור הבית תענה לשיחה הנכנסת הנוכחית</string>
   <string name="camera_wake_summary">לחיצה על כפתור המצלמה יעיר את המכשיר</string>
   <string name="camera_sleep_on_release_title">הצצה מהמסך</string>
   <string name="camera_sleep_on_release_summary">חצי לחיצה ישמור את המסך דלוק כל עוד הכפתור לחוץ</string>
@@ -690,7 +686,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="background_result_successful">רקע השתנה</string>
   <string name="background_result_not_successful">רקע לא השתנה</string>
   <string name="setting_lockscreen_background">מחיל רקע</string>
-  <string name="accessibility_home_button_answers_call_prerefence_title">כפתור הבית משיב לשיחה</string>
   <string name="confirm_delete_apn">APN יימחקו.</string>
   <string name="status_bar_title">שורת מצב</string>
   <string name="status_bar_show_clock_title">הצג שעון</string>
@@ -706,7 +701,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="status_bar_signal_style_text">טקסט</string>
   <string name="status_bar_toggle_brightness">בקרת הבהירות</string>
   <string name="status_bar_toggle_brightness_summary">כיוונן את הבהירות על-ידי הזזה על שורת המצב</string>
-  <string name="status_bar_toggle_info">בהירות אוטומטית מופעלת</string>
+  <string name="status_bar_toggle_info">לא זמין כאשר בהירות אוטומטית מופעלת</string>
   <string name="status_bar_notif_count_title">הצג מספור הודעות</string>
   <string name="status_bar_notif_count_summary">הצג מספר הודעות ממתינות</string>
   <string name="status_bar_double_tap_to_sleep_title">הקשה כפולה לכיבוי מסך</string>
@@ -718,6 +713,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="storage_rescan_media_complete">סריקה הושלמה</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">ניהול הגדרות SMS מאובטח</string>
+  <string name="logger_title">רשם קריסות אנונימי</string>
+  <string name="logger_summary">נהל הגדרות רישום קריסות</string>
   <string name="custom_runtime_warning_title">אזהרה</string>
   <string name="custom_runtime_warning_message">ART לא נתמך כראוי על ידי CyanogenMod. הגדרה זו קיימת רק לניסוי ויש סיכוי לאי יציבות, קריסות, איבוד מידע או אתחול לא נכון של המכשיר. בקר ב-&lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;הצגת ART&lt;/a&gt; עבור מידע נוסף.&lt;br/&gt;&lt;br/&gt;אנחנו מבקשים שאתה לא תמלא דיווחי שגיאות אם אתה משתמש ב-ART.&lt;br/&gt;&lt;br/&gt;האם אתה בטוח שאתה רוצה להחליף מ-<xliff:g id="old" example="libdvm.so">%1$s</xliff:g> ל-<xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
   <string name="gps_download_data_wifi_only">הורד נתוני GPS מרשת Wi-Fi בלבד</string>
@@ -741,6 +738,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="gestures_down_spen_title_head">תנועה למטה</string>
   <string name="gestures_long_spen_title_head">לחיצה ארוכה</string>
   <string name="gestures_double_spen_title_head">לחיצה כפולה</string>
+  <string name="gestures_settings_header_title">מחוות</string>
   <string name="gestures_action_empty">ללא פעולה</string>
   <string name="gestures_action_home">בית</string>
   <string name="gestures_action_back">חזור</string>
@@ -886,4 +884,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="autoperf_title">הפעל פרופילים לכל יישום</string>
   <string name="autoperf_summary">בחר באופן אוטומטי פרופיל מתאים ליישומים שונים</string>
   <string name="graphics_title">גרפיקה ועיבוד</string>
+  <string name="menu_hidden_apps_delete">אפס</string>
+  <string name="menu_hidden_apps_reset_lock">אפס נעילת דפוס</string>
+  <string name="protected_apps">יישומים מוגנים</string>
+  <string name="saving_protected_components">שמירת מצב רכיב\u2026</string>
 </resources>

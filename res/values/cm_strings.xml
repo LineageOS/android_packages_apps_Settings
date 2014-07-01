@@ -104,12 +104,16 @@
     <string name="profile_networkmode_3g">3G</string>
     <string name="profile_networkmode_2g3g">2G/3G</string>
 
+    <!-- Search -->
+    <string name="settings_search_action_bar_button">Search</string>
+    <string name="settings_search_autocompleteview_hint">Search settings</string>
+
     <!-- Profile Config screen PreferenceGroup titles -->
     <string name="profile_connectionoverrides_title">Connection overrides</string>
     <string name="profile_volumeoverrides_title">Volume overrides</string>
     <string name="connection_state_disabled">Disable</string>
     <string name="connection_state_enabled">Enable</string>
-    <string name="volume_override_summary">Set to</string>
+    <string name="volume_override_summary">Set to %1$s/%2$s</string>
 
     <!-- Menu item for managing profiles -->
     <string name="profile_profiles_manage">Profiles</string>
@@ -213,7 +217,7 @@
     <string name="lights_category_title">Lights</string>
     <string name="notification_pulse_title">Notification light</string>
     <string name="notification_light_general_title">General</string>
-    <string name="notification_light_applist_title">Applications</string>
+    <string name="notification_light_applist_title">Apps</string>
     <string name="notification_light_phonelist_title">Phone</string>
     <string name="notification_light_use_custom">Use custom values</string>
     <string name="notification_light_enabled">Enabled</string>
@@ -225,6 +229,10 @@
     <!-- Backlight brightness settings screen -->
     <string name="adaptive_backlight_title">Adaptive backlight</string>
     <string name="adaptive_backlight_summary">Dynamically adjust the brightness of the display\'s backlight to maximize battery life while maintaining usability</string>
+
+    <!-- Color enhancement settings screen -->
+    <string name="color_enhancement_title">Color enhancement</string>
+    <string name="color_enhancement_summary">Dynamically enhance the color of the display</string>
 
     <!-- Turn on display when power connected; turn off display when power disconnected -->
     <string name="wake_when_plugged_or_unplugged_title">Wake on plug</string>
@@ -279,9 +287,7 @@
 
     <!-- Screen security -->
     <string name="screen_security_category">Screen security</string>
-    <string name="screen_security_title">Lock screen</string>
-    <string name="screen_security_summary">View or change lock screen security, delay and timeout settings</string>
-    <string name="additional_options_title">Additional options</string>
+    <string name="screen_security_summary">View or change lock screen security settings</string>
     <string name="unlock_menu_unlock_title">Menu unlock</string>
     <string name="unlock_menu_unlock_summary">Pressing the menu button unlocks the device</string>
     <string name="unlock_home_unlock_title">Home unlock</string>
@@ -291,22 +297,6 @@
     <string name="unlock_quick_unlock_control_title">Quick unlock</string>
     <string name="unlock_quick_unlock_control_summary">Unlock automatically when the correct PIN/password is entered</string>
     <string name="unlock_buttons_disabled_by_security">Lock screen is secure</string>
-
-    <!-- Slide lock delay -->
-    <string name="delay_and_timeout_title">Lock delay</string>
-    <string name="slide_lock_delay_title">Delay screen lock</string>
-    <string name="slide_lock_timeout_delay_title">Delay after timeout</string>
-    <string name="slide_lock_screenoff_delay_title">Delay after turned off</string>
-    <string name="slide_lock_delay_none">None</string>
-    <string name="slide_lock_delay_1s">1 second</string>
-    <string name="slide_lock_delay_5s">5 seconds</string>
-    <string name="slide_lock_delay_10s">10 seconds</string>
-    <string name="slide_lock_delay_15s">15 seconds</string>
-    <string name="slide_lock_delay_30s">30 seconds</string>
-    <string name="slide_lock_delay_1m">1 minute</string>
-    <string name="slide_lock_delay_5m">5 minutes</string>
-    <string name="slide_lock_delay_10m">10 minutes</string>
-    <string name="slide_lock_delay_30m">30 minutes</string>
 
     <!-- Lock screen widgets -->
     <string name="lockscreen_widgets_category_title">Widgets</string>
@@ -330,11 +320,24 @@
     <string name="title_qs_small_icons">Show smaller tiles</string>
     <string name="summary_qs_small_icons">Use smaller tiles to increase the number of columns</string>
 
+    <!-- Heads Up -->
+    <string name="category_heads_up">Heads up</string>
+    <string name="summary_heads_up_enabled">Pop-up notifications are enabled</string>
+    <string name="summary_heads_up_disabled">Pop-up notifications are disabled</string>
+    <string name="add_heads_up_package">Add app</string>
+    <string name="add_heads_up_dnd_summary">Don\'t show heads up in these apps</string>
+    <string name="add_heads_up_blacklist_summary">Don\'t show heads up from these apps</string>
+    <string name="heads_up_dnd_title">Do not disturb</string>
+    <string name="heads_up_blacklist_title">Blacklist</string>
+    <string name="heads_up_disabled_notice">To allow apps to display interactive notifications in a pop-up window on your screen, enable Heads up.</string>
+
     <string name="title_tile_airplane">Airplane mode</string>
     <string name="title_tile_battery">Battery stats</string>
     <string name="title_tile_bluetooth">Bluetooth</string>
     <string name="title_tile_brightness">Brightness</string>
     <string name="title_tile_camera">Camera</string>
+    <string name="title_tile_compass">Compass</string>
+    <string name="title_tile_heads_up">Heads up</string>
     <string name="title_tile_sleep">Go to sleep</string>
     <string name="title_tile_gps">GPS</string>
     <string name="title_tile_torch">Torch</string>
@@ -395,7 +398,6 @@
 
     <!-- Automatic brightness customization -->
     <string name="auto_brightness_setup_title">Automatic brightness</string>
-    <string name="auto_brightness_adjustment_title">Brightness adjustment</string>
     <string name="auto_brightness_twilight_adjustment">Adjust to sunrise and sunset</string>
     <string name="light_sensor_current_value">Current light sensor value: <xliff:g id="light_level">%d</xliff:g> lux</string>
     <string name="auto_brightness_dialog_title">Automatic brightness levels</string>
@@ -470,7 +472,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Setting checkbox title for root access -->
     <string name="root_access">Root access</string>
     <string name="root_access_warning_title">Allow root access?</string>
-    <string name="root_access_warning_message">Allowing applications to request root access is very dangerous and could compromise the security of your system!</string>
+    <string name="root_access_warning_message">Allowing apps to request root access is very dangerous and could compromise the security of your system!</string>
     <string name="root_access_none">Disabled</string>
     <string name="root_access_apps">Apps only</string>
     <string name="root_access_adb">ADB only</string>
@@ -497,8 +499,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="quiet_hours_dim_summary">Disable notification light</string>
     <string name="quiet_hours_haptic">Haptic feedback</string>
     <string name="quiet_hours_haptic_summary">Disable haptic feedback</string>
-    <string name="quiet_hours_active_from">Active from</string>
-    <string name="quiet_hours_active_to">to</string>
+    <string name="quiet_hours_active_period">Active from <xliff:g id="start">%1$s</xliff:g> to <xliff:g id="end">%2$s</xliff:g></string>
 
     <!-- Ringer mute options -->
     <string name="quiet_hours_ringer_allow_all">Ring for all callers</string>
@@ -715,19 +716,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="gamma_tuning_brightness">Brightness</string>
     <string name="gamma_tuning_saturation">Saturation</string>
 
-    <!-- Category title for headset specific Settings.
-         [CHAR LIMIT=40] -->
-    <string name="headset_category_title">Headset</string>
-
     <!-- Launch music player when headset is connected -->
     <string name="headset_connect_player_title">Launch music app</string>
     <string name="headset_connect_player_summary">Launch the default music app when headset is connected</string>
-
-    <!--  Other device settings -->
-    <string name="more_device_controls_title">More\u2026</string>
-    <string name="more_device_settings_title">Other device options</string>
-    <string name="sensors_motors_title">Sensors &amp; motors</string>
-    <string name="display_calibration_title">Display calibration</string>
 
     <!-- Setting checkbox summary for displaying USB debugging notification -->
     <string name="adb_notify">USB debugging notify</string>
@@ -740,10 +731,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="adb_over_network_warning">WARNING: When ADB over network is enabled, your phone is open for intrusions on all connected networks, including GSM data network!\n\nOnly use this feature when you are connected on trusted networks.\n\nDo you really want to enable this function?</string>
     <!-- Hostname setting -->
     <string name="device_hostname">Device hostname</string>
-
-    <!-- System Interface settings  -->
-    <string name="system_settings_title">Interface</string>
-    <string name="system_interface_title">System interface</string>
 
     <!-- Notification Drawer  -->
     <string name="notification_drawer_title">Notification drawer</string>
@@ -811,7 +798,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="lockscreen_target_reset_message">Delete all user created lock screen shortcuts and restore to default?</string>
     <string name="lockscreen_target_empty">Empty</string>
     <string name="lockscreen_target_edit_title">Edit shortcut and icon</string>
-    <string name="lockscreen_target_edit_msg">Select or change the desired application or activity and the associated icon</string>
+    <string name="lockscreen_target_edit_msg">Select or change the desired app or activity and the associated icon</string>
 
     <!-- Lock screen shortcuts -->
     <string name="picker_activities">Activities</string>
@@ -860,7 +847,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Navigation Bar -->
     <string name="navigation_bar_category">Navigation bar</string>
     <string name="navigation_bar_title">Buttons and layout</string>
-    <string name="navigation_bar_left_title">Left handed mode</string>
+    <string name="navigation_bar_left_title">Left-handed mode</string>
     <string name="navigation_bar_left_summary">Place the navigation bar on the left side of the screen in landscape mode</string>
     <string name="navigation_bar_help_text">1 - To begin editing, tap the lock icon\n\n2 - Tap any button to assign or change functionality\n\n3 - Long press any button to rearrange the order\n\n4 - To save, tap the lock icon again\n\n5 - To restore system default, tap the reset button\n\n</string>
     <string name="navigation_bar_tips">\u2022 Actions can only be assigned to one button at a time\n\n\u2022 The home button cannot be re-assigned\n\n\u2022 Side buttons cannot be rearranged</string>
@@ -905,6 +892,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Hardware keys -->
     <string name="button_settings">Buttons</string>
+    <string name="hardware_keys_power_key_title">Power button</string>
     <string name="hardware_keys_home_key_title">Home button</string>
     <string name="hardware_keys_menu_key_title">Menu button</string>
     <string name="hardware_keys_assist_key_title">Search button</string>
@@ -921,8 +909,12 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="hardware_keys_action_voice_search">Voice search</string>
     <string name="hardware_keys_action_in_app_search">In-app search</string>
     <string name="hardware_keys_action_launch_camera">Launch Camera</string>
+    <string name="power_end_call_title">End call</string>
+    <string name="power_end_call_summary">Pressing the power button will end the current call</string>
     <string name="button_wake_title">Wake up</string>
     <string name="home_wake_summary">Pressing the home button will wake your device</string>
+    <string name="home_answer_call_title">Answer call</string>
+    <string name="home_answer_call_summary">Pressing the home button will answer the current incoming call</string>
     <string name="camera_wake_summary">Pressing the camera button will wake your device</string>
     <string name="camera_sleep_on_release_title">Screen peek</string>
     <string name="camera_sleep_on_release_summary">A half press will keep the screen on only while the button is held down</string>
@@ -959,9 +951,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="background_result_not_successful">Background not changed</string>
     <string name="setting_lockscreen_background">Applying background</string>
 
-    <!-- Title for the accessibility preference to home button to answers a call. [CHAR LIMIT=35] -->
-    <string name="accessibility_home_button_answers_call_prerefence_title">Home button answers call</string>
-
     <!-- Delete apn confirmation dialog message -->
     <string name="confirm_delete_apn">The APN will be deleted.</string>
 
@@ -980,7 +969,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="status_bar_signal_style_text">Text</string>
     <string name="status_bar_toggle_brightness">Brightness control</string>
     <string name="status_bar_toggle_brightness_summary">Adjust brightness by sliding across the status bar</string>
-    <string name="status_bar_toggle_info">Automatic brightness is enabled</string>
+    <string name="status_bar_toggle_info">Not available while automatic brightness is enabled</string>
     <string name="status_bar_notif_count_title">Show notification count</string>
     <string name="status_bar_notif_count_summary">Display the number of pending notifications</string>
     <string name="status_bar_double_tap_to_sleep_title">Double-tap to sleep</string>
@@ -1042,6 +1031,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="gestures_double_spen_title_head">Double tap</string>
 
     <!-- Gestures Options -->
+    <string name="gestures_settings_header_title">Gestures</string>
     <string name="gestures_action_empty">No action</string>
     <string name="gestures_action_home">Home</string>
     <string name="gestures_action_back">Back</string>
@@ -1234,8 +1224,14 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Automatic performance profiles -->
     <string name="autoperf_title">Enable per-app profiles</string>
-    <string name="autoperf_summary">Automatically choose an appropriate performance profile for various applications</string>
+    <string name="autoperf_summary">Automatically choose an appropriate performance profile for various apps</string>
 
     <!-- Performance menu, graphics options category -->
     <string name="graphics_title">Graphics and rendering</string>
+
+    <!-- Protected Apps -->
+    <string name="menu_hidden_apps_delete">Reset</string>
+    <string name="menu_hidden_apps_reset_lock">Reset pattern lock</string>
+    <string name="protected_apps">Protected apps</string>
+    <string name="saving_protected_components">Saving component state\u2026</string>
 </resources>

@@ -21,6 +21,8 @@
   <string name="wifi_setting_countrycode_error">Problema nell\'impostazione del codice regione.</string>
   <string name="wifi_setting_priority_title">Priorità Wi-Fi</string>
   <string name="wifi_setting_priority_summary">Specifica la priorità delle reti Wi-Fi</string>
+  <string name="wifi_ssid_input_limit">L\'SSID supera la lunghezza massima consentita</string>
+  <string name="p2p_device_name_input_limit">Il nome del P2P supera la lunghezza massima consentita</string>
   <string name="change_crypt_password_title">Cambia password</string>
   <string name="change_crypt_password_summary">Cambia la password utilizzata per la crittografia del dispositivo</string>
   <string name="encryptionpassword_choose_your_password_header">Imposta password crittografia</string>
@@ -77,7 +79,7 @@
   <string name="profile_volumeoverrides_title">Sovrascrittura volumi</string>
   <string name="connection_state_disabled">Disattivato</string>
   <string name="connection_state_enabled">Attivato</string>
-  <string name="volume_override_summary">Imposta a</string>
+  <string name="volume_override_summary">Impostato su %1$s/%2$s</string>
   <string name="profile_profiles_manage">Profili</string>
   <string name="profile_profile_manage">Gestisci profili</string>
   <string name="profile_appgroups_manage">Gruppi applicazioni</string>
@@ -156,6 +158,8 @@
   <string name="notification_light_voicemail_title">Messaggio vocale</string>
   <string name="adaptive_backlight_title">Retroilluminazione adattiva</string>
   <string name="adaptive_backlight_summary">Regola la luminosità della retroilluminazione del display per massimizzare la durata della batteria mantenendo l\'usabilità</string>
+  <string name="color_enhancement_title">Miglioramento colore</string>
+  <string name="color_enhancement_summary">Migliora dinamicamente il colore del display</string>
   <string name="wake_when_plugged_or_unplugged_title">Risveglia al collegamento</string>
   <string name="wake_when_plugged_or_unplugged_summary">Accendi lo schermo quando si collega o si scollega l\'alimentazione</string>
   <string name="screen_animation_off_title">Animazione spegnimento schermo</string>
@@ -189,9 +193,7 @@
   <string name="lockpattern_settings_enable_error_path_title">Sequenza errata visibile</string>
   <string name="lockpattern_settings_enable_dots_title">Punti sequenza visibili</string>
   <string name="screen_security_category">Schermata di sicurezza</string>
-  <string name="screen_security_title">Schermata di sblocco</string>
-  <string name="screen_security_summary">Visualizza o cambia il livello di sicurezza e le impostazioni per la schermata di sblocco</string>
-  <string name="additional_options_title">Opzioni aggiuntive</string>
+  <string name="screen_security_summary">Visualizza o modifica le impostazioni di sicurezza della schermata di sblocco</string>
   <string name="unlock_menu_unlock_title">Sblocca con Menu</string>
   <string name="unlock_menu_unlock_summary">Il tasto Menu sblocca il dispositivo</string>
   <string name="unlock_home_unlock_title">Sblocca con Home</string>
@@ -201,20 +203,6 @@
   <string name="unlock_quick_unlock_control_title">Sblocco rapido</string>
   <string name="unlock_quick_unlock_control_summary">Sblocca automaticamente quando il PIN/la password viene inserito in modo corretto</string>
   <string name="unlock_buttons_disabled_by_security">Schermata di sblocco sicura</string>
-  <string name="delay_and_timeout_title">Ritardo blocco</string>
-  <string name="slide_lock_delay_title">Ritardo schermata blocco</string>
-  <string name="slide_lock_timeout_delay_title">Dopo timeout schermo</string>
-  <string name="slide_lock_screenoff_delay_title">Dopo spegnimento schermo</string>
-  <string name="slide_lock_delay_none">Nessuno</string>
-  <string name="slide_lock_delay_1s">1 secondo</string>
-  <string name="slide_lock_delay_5s">5 secondi</string>
-  <string name="slide_lock_delay_10s">10 secondi</string>
-  <string name="slide_lock_delay_15s">15 secondi</string>
-  <string name="slide_lock_delay_30s">30 secondi</string>
-  <string name="slide_lock_delay_1m">1 minuto</string>
-  <string name="slide_lock_delay_5m">5 minuti</string>
-  <string name="slide_lock_delay_10m">10 minuti</string>
-  <string name="slide_lock_delay_30m">30 minuti</string>
   <string name="lockscreen_widgets_category_title">Widget</string>
   <string name="lockscreen_maximize_widgets_title">Massimizza widget</string>
   <string name="lockscreen_maximize_widgets_summary">Espandi i widget quando lo schermo viene acceso</string>
@@ -229,11 +217,22 @@
   <string name="tile_choose_title">Scegli un tile</string>
   <string name="title_qs_small_icons">Visualizza tile più piccoli</string>
   <string name="summary_qs_small_icons">Utilizza tile più piccoli per aumentare il numero di colonne</string>
+  <string name="category_heads_up">Heads up</string>
+  <string name="summary_heads_up_enabled">Le notifiche pop-up sono attivate</string>
+  <string name="summary_heads_up_disabled">Le notifiche pop-up sono disattivate</string>
+  <string name="add_heads_up_package">Aggiungi app</string>
+  <string name="add_heads_up_dnd_summary">Non mostrare heads up in queste applicazioni</string>
+  <string name="add_heads_up_blacklist_summary">Non mostrare heads up da queste applicazioni</string>
+  <string name="heads_up_dnd_title">Non disturbare</string>
+  <string name="heads_up_blacklist_title">Blacklist</string>
+  <string name="heads_up_disabled_notice">Attiva Heads up per consentire alle applicazioni di mostrare a video notifiche interattive in una finestra pop-up.</string>
   <string name="title_tile_airplane">Modalità aeroplano</string>
   <string name="title_tile_battery">Statistiche batteria</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Luminosità</string>
   <string name="title_tile_camera">Fotocamera</string>
+  <string name="title_tile_compass">Bussola</string>
+  <string name="title_tile_heads_up">Heads up</string>
   <string name="title_tile_sleep">Sospendi dispositivo</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Torcia LED</string>
@@ -262,6 +261,7 @@
   <string name="title_dynamic_alarm">Sveglia</string>
   <string name="title_dynamic_bugreport">Segnalazione bug</string>
   <string name="title_dynamic_dock_battery">Batteria dock</string>
+  <string name="title_dynamic_equalizer">Equalizzatore</string>
   <string name="title_dynamic_ime">Metodo inserimento</string>
   <string name="title_dynamic_usbtether">Tether USB</string>
   <string name="title_dynamic_wifi">Screencast</string>
@@ -286,7 +286,6 @@
   <string name="tiles_reset_title">Reimposta</string>
   <string name="tiles_reset_message">Reimpostare i tile predefiniti e la loro disposizione?</string>
   <string name="auto_brightness_setup_title">Luminosità automatica</string>
-  <string name="auto_brightness_adjustment_title">Regolazione luminosità</string>
   <string name="auto_brightness_twilight_adjustment">Regolazione per alba e tramonto</string>
   <string name="light_sensor_current_value">Valore attuale sensore luminosità: <xliff:g id="light_level">%d</xliff:g> lux</string>
   <string name="auto_brightness_dialog_title">Livelli automatici di luminosità</string>
@@ -355,8 +354,8 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="root_access_apps">Solo applicazioni</string>
   <string name="root_access_adb">Solo ADB</string>
   <string name="root_access_all">Applicazioni e ADB</string>
-  <string name="update_recovery_title">Aggiorna recovery CM</string>
-  <string name="update_recovery_summary">Aggiorna la recovery durante l\'installazione di aggiornamenti di sistema</string>
+  <string name="update_recovery_title">Aggiorna recovery</string>
+  <string name="update_recovery_summary">Aggiorna la recovery durante l\'installazione degli aggiornamenti di sistema</string>
   <string name="ok">OK</string>
   <string name="quiet_hours_title">Periodo di quiete</string>
   <string name="quiet_hours_summary">Configura gli orari in cui il dispositivo dovrebbe essere silenzioso</string>
@@ -372,8 +371,7 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="quiet_hours_dim_summary">Disattiva la luce di notifica</string>
   <string name="quiet_hours_haptic">Feedback tattile</string>
   <string name="quiet_hours_haptic_summary">Disattiva il feedback tattile</string>
-  <string name="quiet_hours_active_from">Attiva dalle</string>
-  <string name="quiet_hours_active_to">alle</string>
+  <string name="quiet_hours_active_period">Attivo da <xliff:g id="start">%1$s</xliff:g> a <xliff:g id="end">%2$s</xliff:g></string>
   <string name="quiet_hours_ringer_allow_all">Squilla per tutti i chiamanti</string>
   <string name="quiet_hours_ringer_allow_contacts">Squilla per tutti i contatti</string>
   <string name="quiet_hours_ringer_allow_starred">Squilla per i contatti preferiti</string>
@@ -502,21 +500,14 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="gamma_tuning_contrast">Contrasto</string>
   <string name="gamma_tuning_brightness">Luminosità</string>
   <string name="gamma_tuning_saturation">Saturazione</string>
-  <string name="headset_category_title">Auricolari</string>
   <string name="headset_connect_player_title">Lancia lettore musicale</string>
   <string name="headset_connect_player_summary">Lancia il lettore musicale predefinito quando vengono connesse le cuffie</string>
-  <string name="more_device_controls_title">Altro\u2026</string>
-  <string name="more_device_settings_title">Altre opzioni del dispositivo</string>
-  <string name="sensors_motors_title">Sensori &amp; Motori</string>
-  <string name="display_calibration_title">Calibrazione display</string>
   <string name="adb_notify">Notifica debug USB</string>
   <string name="adb_notify_summary">Visualizza una notifica quando il debug USB è collegato</string>
   <string name="adb_over_network">ADB attraverso la rete</string>
   <string name="adb_over_network_summary">Attiva il debugging TCP/IP attraverso interfacce di rete (Wi-Fi, reti USB). Questa impostazione è ripristinata al riavvio</string>
   <string name="adb_over_network_warning">ATTENZIONE: Quando è attivo l\'ADB attraverso interfacce di rete il dispositivo è vulnerabile ad intrusioni da parte di tutte le reti connesse, inclusa quella GSM!\n\nUsare questa funzione esclusivamente se si è connessi a reti affidabili.\n\nSei sicuro di voler attivare questa funzione?</string>
   <string name="device_hostname">Hostname dispositivo</string>
-  <string name="system_settings_title">Interfaccia</string>
-  <string name="system_interface_title">Interfaccia sistema</string>
   <string name="notification_drawer_title">Menu notifiche</string>
   <string name="notification_drawer_collapse_on_dismiss_title">Chiudi automaticamente</string>
   <string name="collapse_on_dismiss_never">Disattivato</string>
@@ -557,7 +548,7 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="lockscreen_target_reset_message">Eliminare tutte le funzioni veloci e ripristinare quelle predefinite?</string>
   <string name="lockscreen_target_empty">Vuoto</string>
   <string name="lockscreen_target_edit_title">Modifica scorciatoia e icona</string>
-  <string name="lockscreen_target_edit_msg">Seleziona o modifica l\'applicazione desiderata o l\'activity e l\'icona associata</string>
+  <string name="lockscreen_target_edit_msg">Seleziona o cambia l\'applicazione desiderata oppure l\'activity e l\'icona associata</string>
   <string name="picker_activities">Activity</string>
   <string name="select_custom_app_title">Scegli applicazione</string>
   <string name="select_custom_activity_title">Scegli activity</string>
@@ -624,7 +615,7 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="navring_action_torch">Commuta torcia</string>
   <string name="navring_action_google_now">Google Now</string>
   <string name="navring_choose_action_title">Scegli azione</string>
-  <string name="power_menu_title">Menu tasto accensione</string>
+  <string name="power_menu_title">Menu tasto alimentazione</string>
   <string name="power_menu_reboot_title">Menu riavvio</string>
   <string name="power_menu_screenshot_title">Cattura schermata</string>
   <string name="power_menu_expanded_desktop">Desktop esteso</string>
@@ -639,6 +630,7 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="power_menu_user_title">Cambia utente</string>
   <string name="power_menu_sound_title">Pannello suoni</string>
   <string name="button_settings">Pulsanti</string>
+  <string name="hardware_keys_power_key_title">Pulsante alimentazione</string>
   <string name="hardware_keys_home_key_title">Tasto Home</string>
   <string name="hardware_keys_menu_key_title">Tasto Menu</string>
   <string name="hardware_keys_assist_key_title">Tasto Cerca</string>
@@ -655,8 +647,12 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="hardware_keys_action_voice_search">Ricerca vocale</string>
   <string name="hardware_keys_action_in_app_search">Ricerca in applicazioni</string>
   <string name="hardware_keys_action_launch_camera">Avvia Fotocamera</string>
+  <string name="power_end_call_title">Termina chiamata</string>
+  <string name="power_end_call_summary">Premendo il pulsante alimentazione si concluderà la chiamata corrente</string>
   <string name="button_wake_title">Risveglia</string>
   <string name="home_wake_summary">Premere il tasto Home farà attivare il dispositivo</string>
+  <string name="home_answer_call_title">Rispondi chiamata</string>
+  <string name="home_answer_call_summary">Premendo il pulsante Home si risponderà alla chiamata in entrata</string>
   <string name="camera_wake_summary">Premere il tasto Fotocamera farà attivare il dispositivo</string>
   <string name="camera_sleep_on_release_title">Sguardo allo schermo</string>
   <string name="camera_sleep_on_release_summary">Una mezza pressione farà attivare lo schermo fino a quando il tasto resterà premuto</string>
@@ -688,7 +684,6 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="background_result_successful">Sfondo modificato</string>
   <string name="background_result_not_successful">Sfondo non modificato</string>
   <string name="setting_lockscreen_background">Applicazione sfondo</string>
-  <string name="accessibility_home_button_answers_call_prerefence_title">Il pulsante Home risponde alla chiamata</string>
   <string name="confirm_delete_apn">L\'APN sarà eliminato.</string>
   <string name="status_bar_title">Barra di stato</string>
   <string name="status_bar_show_clock_title">Mostra orologio</string>
@@ -704,7 +699,7 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="status_bar_signal_style_text">Testo</string>
   <string name="status_bar_toggle_brightness">Controllo luminosità</string>
   <string name="status_bar_toggle_brightness_summary">Modifica la luminosità strisciando sulla barra di stato</string>
-  <string name="status_bar_toggle_info">Luminosità automatica attiva</string>
+  <string name="status_bar_toggle_info">Non disponibile mentre la luminosità automatica è attiva</string>
   <string name="status_bar_notif_count_title">Mostra contatore notifiche</string>
   <string name="status_bar_notif_count_summary">Visualizza il numero di notifiche in sospeso</string>
   <string name="status_bar_double_tap_to_sleep_title">Doppio tocco per sospendere</string>
@@ -716,6 +711,8 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="storage_rescan_media_complete">Scansione completata</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Gestisci le impostazioni SMS sicuri</string>
+  <string name="logger_title">Registrazione anonima errori</string>
+  <string name="logger_summary">Gestisci le impostazioni per la registrazione dei log d\'errore</string>
   <string name="custom_runtime_warning_title">Attenzione</string>
   <string name="custom_runtime_warning_message">ART non è ufficialmente supportato da CyanogenMod. Questa impostazione è disponibile solo a scopo di sperimentazione e può causare instabilità, crash, perdita di dati o impedire al dispositivo di avviarsi correttamente. Visita &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; per maggiori informazioni (in lingua inglese).&lt;br/&gt;&lt;br/&gt;Ti chiediamo di non segnalarci eventuali errori se hai attivo ART come runtime.&lt;br/&gt;&lt;br/&gt;Sei sicuro di volere riavviare per cambiare runtime da <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> a <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
   <string name="gps_download_data_wifi_only">Download dati GPS assistito solo su reti Wi-Fi</string>
@@ -739,6 +736,7 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="gestures_down_spen_title_head">Scorrimento in basso</string>
   <string name="gestures_long_spen_title_head">Pressione prolungata</string>
   <string name="gestures_double_spen_title_head">Doppio tocco</string>
+  <string name="gestures_settings_header_title">Gesture</string>
   <string name="gestures_action_empty">Nessuna azione</string>
   <string name="gestures_action_home">Home</string>
   <string name="gestures_action_back">Indietro</string>
@@ -855,8 +853,8 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="app_ops_reset_counters">Ripristina contatori consentito/negato</string>
   <string name="app_ops_reset_confirm_title">Conferma ripristino contatori</string>
   <string name="app_ops_reset_confirm_mesg">Sicuro di voler azzerare i contatori AppOps?</string>
-  <string name="edge_gesture_service_title">Blocca gli eventi gesto</string>
-  <string name="edge_gesture_service_summary">Non inviare eventi dei gesti per le barre di stato e navigazione alle applicazioni</string>
+  <string name="edge_gesture_service_title">Blocca eventi tocco gesture</string>
+  <string name="edge_gesture_service_summary">Non inviare eventi tocco per le gesture della barra di stato e navigazione alle applicazioni</string>
   <string name="data_usage_cycle_editor_subtitle_cm">Data di ogni ciclo:</string>
   <string name="data_usage_lengths_spinner_subtitle">Durata ciclo:</string>
   <string name="disable_navkeys_title">Barra navigazione a schermo</string>
@@ -884,4 +882,8 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="autoperf_title">Attiva profili per app</string>
   <string name="autoperf_summary">Scegli automaticamente un adeguato profilo prestazioni per varie applicazioni</string>
   <string name="graphics_title">Grafica e rendering</string>
+  <string name="menu_hidden_apps_delete">Ripristina</string>
+  <string name="menu_hidden_apps_reset_lock">Ripristina schema blocco</string>
+  <string name="protected_apps">App protette</string>
+  <string name="saving_protected_components">Salvataggio stato componente\u2026</string>
 </resources>

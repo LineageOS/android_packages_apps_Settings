@@ -21,6 +21,8 @@
   <string name="wifi_setting_countrycode_error">Det uppstod ett problem vid inställningen av regionskoden.</string>
   <string name="wifi_setting_priority_title">Wi-Fi-prioritet</string>
   <string name="wifi_setting_priority_summary">Specificera prioriteten för Wi-Fi-nätverk</string>
+  <string name="wifi_ssid_input_limit">SSID överskrider maxlängd</string>
+  <string name="p2p_device_name_input_limit">P2P-namn överskrider maxlängd</string>
   <string name="change_crypt_password_title">Byt lösenord</string>
   <string name="change_crypt_password_summary">Byt lösenordet som används för enhetskryptering</string>
   <string name="encryptionpassword_choose_your_password_header">Ställ in krypteringslösenord</string>
@@ -77,7 +79,6 @@
   <string name="profile_volumeoverrides_title">Åsidosättningar av volym</string>
   <string name="connection_state_disabled">Inaktivera</string>
   <string name="connection_state_enabled">Aktivera</string>
-  <string name="volume_override_summary">Ställ till</string>
   <string name="profile_profiles_manage">Profiler</string>
   <string name="profile_profile_manage">Hantera profiler</string>
   <string name="profile_appgroups_manage">Appgrupper</string>
@@ -146,7 +147,6 @@
   <string name="lights_category_title">Ljus</string>
   <string name="notification_pulse_title">Aviseringsljus</string>
   <string name="notification_light_general_title">Allmänt</string>
-  <string name="notification_light_applist_title">Appar</string>
   <string name="notification_light_phonelist_title">Telefon</string>
   <string name="notification_light_use_custom">Använd anpassade värden</string>
   <string name="notification_light_enabled">Aktiverat</string>
@@ -189,9 +189,6 @@
   <string name="lockpattern_settings_enable_error_path_title">Visa mönster vid fel</string>
   <string name="lockpattern_settings_enable_dots_title">Visa mönsterpunkter</string>
   <string name="screen_security_category">Skärmsäkerhet</string>
-  <string name="screen_security_title">Låsskärm</string>
-  <string name="screen_security_summary">Visa eller ändra låsskärmssäkerhets-, fördröjnings- och tidsgränsinställningar</string>
-  <string name="additional_options_title">Ytterligare alternativ</string>
   <string name="unlock_menu_unlock_title">Lås upp med meny</string>
   <string name="unlock_menu_unlock_summary">Tryck på menyknappen låser upp enheten</string>
   <string name="unlock_home_unlock_title">Lås upp med hem</string>
@@ -201,20 +198,6 @@
   <string name="unlock_quick_unlock_control_title">Snabb upplåsning</string>
   <string name="unlock_quick_unlock_control_summary">Lås upp automatiskt när rätt PIN/lösenord har angivits</string>
   <string name="unlock_buttons_disabled_by_security">Låsskärmen är säker</string>
-  <string name="delay_and_timeout_title">Låsfördröjning</string>
-  <string name="slide_lock_delay_title">Fördröj låsskärm</string>
-  <string name="slide_lock_timeout_delay_title">Fördröjning efter tidsgräns</string>
-  <string name="slide_lock_screenoff_delay_title">Fördröjning efter avstängning</string>
-  <string name="slide_lock_delay_none">Inget</string>
-  <string name="slide_lock_delay_1s">1 sekund</string>
-  <string name="slide_lock_delay_5s">5 sekunder</string>
-  <string name="slide_lock_delay_10s">10 sekunder</string>
-  <string name="slide_lock_delay_15s">15 sekunder</string>
-  <string name="slide_lock_delay_30s">30 sekunder</string>
-  <string name="slide_lock_delay_1m">1 minut</string>
-  <string name="slide_lock_delay_5m">5 minuter</string>
-  <string name="slide_lock_delay_10m">10 minuter</string>
-  <string name="slide_lock_delay_30m">30 minuter</string>
   <string name="lockscreen_widgets_category_title">Widgetar</string>
   <string name="lockscreen_maximize_widgets_title">Maximera widgetar</string>
   <string name="lockscreen_maximize_widgets_summary">Utöka widgetar när skärmen sätts på</string>
@@ -234,6 +217,7 @@
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Ljusstyrka</string>
   <string name="title_tile_camera">Kamera</string>
+  <string name="title_tile_compass">Kompass</string>
   <string name="title_tile_sleep">Somna</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Ficklampa</string>
@@ -262,6 +246,7 @@
   <string name="title_dynamic_alarm">Alarmklocka</string>
   <string name="title_dynamic_bugreport">Felrapport</string>
   <string name="title_dynamic_dock_battery">Batteri i docka</string>
+  <string name="title_dynamic_equalizer">Equalizer</string>
   <string name="title_dynamic_ime">Inmatningsväxlare</string>
   <string name="title_dynamic_usbtether">USB-tether</string>
   <string name="title_dynamic_wifi">Överför skärm</string>
@@ -286,7 +271,6 @@
   <string name="tiles_reset_title">Återställ</string>
   <string name="tiles_reset_message">Återställ till standardutformningen?</string>
   <string name="auto_brightness_setup_title">Automatisk ljusstyrka</string>
-  <string name="auto_brightness_adjustment_title">Justering av ljusstyrka</string>
   <string name="auto_brightness_twilight_adjustment">Justera till soluppgång och solnedgång</string>
   <string name="light_sensor_current_value">Aktuellt ljussensorvärde: <xliff:g id="light_level">%d</xliff:g> lux</string>
   <string name="auto_brightness_dialog_title">Automatiska ljusstyrkenivåer</string>
@@ -351,11 +335,12 @@ två för att kunna infoga ytterligare kontrollpunkter. \"Ta bort\" raderar den 
   <string name="app_security_title">Appsäkerhet</string>
   <string name="root_access">Rootåtkomst</string>
   <string name="root_access_warning_title">Tillåt rootåtkomst?</string>
-  <string name="root_access_warning_message">Att tillåta appar att begära rootåtkomst är mycket farligt och kan riskera säkerheten i ditt system!</string>
   <string name="root_access_none">Inaktiverat</string>
   <string name="root_access_apps">Endast appar</string>
   <string name="root_access_adb">Endast ADB</string>
   <string name="root_access_all">Appar och ADB</string>
+  <string name="update_recovery_title">Uppdatera CM-recovery</string>
+  <string name="update_recovery_summary">Uppdatera recovery vid installation av systemuppdateringar</string>
   <string name="ok">OK</string>
   <string name="quiet_hours_title">Tysta timmar</string>
   <string name="quiet_hours_summary">Konfigurera timmarna då enheten ska vara tyst</string>
@@ -371,8 +356,6 @@ två för att kunna infoga ytterligare kontrollpunkter. \"Ta bort\" raderar den 
   <string name="quiet_hours_dim_summary">Inaktivera aviseringsljus</string>
   <string name="quiet_hours_haptic">Haptisk feedback</string>
   <string name="quiet_hours_haptic_summary">Inaktivera haptisk feedback</string>
-  <string name="quiet_hours_active_from">Aktiv från</string>
-  <string name="quiet_hours_active_to">till</string>
   <string name="quiet_hours_ringer_allow_all">Ringsignal för alla samtal</string>
   <string name="quiet_hours_ringer_allow_contacts">Ringsignal för alla kontakter</string>
   <string name="quiet_hours_ringer_allow_starred">Ringsignal för alla favoritkontakter</string>
@@ -408,10 +391,12 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="styles_settings_title">Stilar</string>
   <string name="icons_settings_title">Ikoner</string>
   <string name="fonts_settings_title">Typsnitt</string>
+  <string name="wallpaper_settings_title_cm">Bakgrundsbilder</string>
   <string name="lockscreen_wallpaper_settings_title">Bakgrundsbilder för låsskärm</string>
   <string name="bootanim_settings_title">Uppstartsanimationer</string>
   <string name="soundpack_settings_title">Ljudpaket</string>
   <string name="performance_settings_title">Prestanda</string>
+  <string name="performance_settings_warning_title">Var försiktig</string>
   <string name="performance_settings_warning">Dessa inställningar är experimentella och alla tillämpade ändringar har potential att orsaka instabilitet, krascher, dataförlust eller hårdvarufel.\n\nVi önskar att du inte skickar felrapporter om någon av dessa inställningar är ändrade från sitt standardvärde.</string>
   <string name="performance_set_on_boot">Ställ in vid uppstart</string>
   <string name="performance_set_on_boot_summary">Återställ tillämpade inställningar vid uppstart</string>
@@ -502,21 +487,14 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="gamma_tuning_contrast">Kontrast</string>
   <string name="gamma_tuning_brightness">Ljusstyrka</string>
   <string name="gamma_tuning_saturation">Mättnad</string>
-  <string name="headset_category_title">Hörlurar</string>
   <string name="headset_connect_player_title">Öppna musikapp</string>
   <string name="headset_connect_player_summary">Öppna standardmusikapp när hörlurar kopplas in</string>
-  <string name="more_device_controls_title">Mer\u2026</string>
-  <string name="more_device_settings_title">Andra enhetsinställningar</string>
-  <string name="sensors_motors_title">Sensorer och motorer</string>
-  <string name="display_calibration_title">Skärmkalibrering</string>
   <string name="adb_notify">Avisering för USB-felsökning</string>
   <string name="adb_notify_summary">Visa en avisering när USB-felsökning är ansluten</string>
   <string name="adb_over_network">ADB över nätverk</string>
   <string name="adb_over_network_summary">Aktivera TCP/IP-felsökning över nätverksgränssnitt (Wi-Fi, USB-nätverk). Denna inställning återställs vid omstart</string>
   <string name="adb_over_network_warning">VARNING: När ADB över nätverk är aktiverat är din telefon öppen för intrång genom anslutna nätverk, inklusive mobildatanätverk.\n\nAnvänd endast denna funktion när du är ansluten till betrodda nätverk.\n\nVill du verkligen aktivera denna funktion?</string>
   <string name="device_hostname">Enhetens värdnamn</string>
-  <string name="system_settings_title">Gränssnitt</string>
-  <string name="system_interface_title">Systemgränssnitt</string>
   <string name="notification_drawer_title">Aviseringsfält</string>
   <string name="notification_drawer_collapse_on_dismiss_title">Beteende för automatisk stängning</string>
   <string name="collapse_on_dismiss_never">Inaktiverad</string>
@@ -557,7 +535,6 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="lockscreen_target_reset_message">Ta bort alla användarskapade genvägar på låsskärmen och återställ till standard?</string>
   <string name="lockscreen_target_empty">Tom</string>
   <string name="lockscreen_target_edit_title">Ändra genväg och ikon</string>
-  <string name="lockscreen_target_edit_msg">Välj eller ändra den önskade appen eller aktiviteten och den förknippade ikonen</string>
   <string name="picker_activities">Aktiviteter</string>
   <string name="select_custom_app_title">Välj anpassad app</string>
   <string name="select_custom_activity_title">Välj anpassad aktivitet</string>
@@ -639,6 +616,7 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="power_menu_user_title">Användarväxlare</string>
   <string name="power_menu_sound_title">Ljudpanel</string>
   <string name="button_settings">Knappar</string>
+  <string name="hardware_keys_power_key_title">Avstängningsknapp</string>
   <string name="hardware_keys_home_key_title">Hemknapp</string>
   <string name="hardware_keys_menu_key_title">Menyknapp</string>
   <string name="hardware_keys_assist_key_title">Sökknapp</string>
@@ -655,8 +633,12 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="hardware_keys_action_voice_search">Röstsökning</string>
   <string name="hardware_keys_action_in_app_search">Sök i app</string>
   <string name="hardware_keys_action_launch_camera">Öppna kamera</string>
+  <string name="power_end_call_title">Avsluta samtal</string>
+  <string name="power_end_call_summary">Tryck på avstängningsknappen kommer att avsluta pågående samtal</string>
   <string name="button_wake_title">Vakna</string>
   <string name="home_wake_summary">Att trycka på hemknappen kommer att väcka din enhet</string>
+  <string name="home_answer_call_title">Svara samtal</string>
+  <string name="home_answer_call_summary">Tryck på hemknappen kommer att svara på inkommande samtal</string>
   <string name="camera_wake_summary">Att trycka på kameraknappen kommer att väcka din enhet</string>
   <string name="camera_sleep_on_release_title">Tjuvkika</string>
   <string name="camera_sleep_on_release_summary">Ett halvtryck kommer att hålla skärmen på endast medan knappen är nedtryckt</string>
@@ -688,7 +670,6 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="background_result_successful">Bakgrund ändrad</string>
   <string name="background_result_not_successful">Bakgrunden ändrades ej</string>
   <string name="setting_lockscreen_background">Tillämpar bakgrund</string>
-  <string name="accessibility_home_button_answers_call_prerefence_title">Hemknapp svarar samtal</string>
   <string name="confirm_delete_apn">Detta APN kommer tas bort.</string>
   <string name="status_bar_title">Statusfält</string>
   <string name="status_bar_show_clock_title">Visa klocka</string>
@@ -704,7 +685,6 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="status_bar_signal_style_text">Text</string>
   <string name="status_bar_toggle_brightness">Ljusstyrkekontroll</string>
   <string name="status_bar_toggle_brightness_summary">Justera ljusstyrka genom att svepa över statusfältet</string>
-  <string name="status_bar_toggle_info">Automatisk ljusstyrka är aktiverad</string>
   <string name="status_bar_notif_count_title">Visa aviseringsantal</string>
   <string name="status_bar_notif_count_summary">Visa antalet väntande aviseringar</string>
   <string name="status_bar_double_tap_to_sleep_title">Dubbeltryck för att somna</string>
@@ -716,6 +696,8 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="storage_rescan_media_complete">Sökning klar</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Hantera säkra SMS-inställningar</string>
+  <string name="logger_title">Anonym kraschloggning</string>
+  <string name="logger_summary">Hantera inställningar för kraschloggning</string>
   <string name="custom_runtime_warning_title">Varning</string>
   <string name="custom_runtime_warning_message">ART saknar officiellt stöd från CyanogenMod då det är högst experimentellt och har potential att orsaka instabilitet, krascher, dataförlust eller förhindra din enhet från att starta. Besök &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; för mer information.&lt;br/&gt;&lt;br/&gt;Vi ber dig att inte skicka några felrapporter om du har aktiverat ART som din körningstid.&lt;br/&gt;&lt;br/&gt;Är du säker på att du vill starta om för att ändra din körningstid från <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> till <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
   <string name="gps_download_data_wifi_only">Ladda ned GPS-assisterad data endast över Wi-Fi-nätverk</string>
@@ -880,4 +862,11 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="data_title">Datasamtal</string>
   <string name="sms_title">Skickar SMS</string>
   <string name="priority_sub_title">Prioriterat abonnemang</string>
+  <string name="bluetooth_accept_all_files">Acceptera alla filtyper</string>
+  <string name="autoperf_title">Aktivera profiler per app</string>
+  <string name="graphics_title">Grafik och rendering</string>
+  <string name="menu_hidden_apps_delete">Återställ</string>
+  <string name="menu_hidden_apps_reset_lock">Återställ mönsterlås</string>
+  <string name="protected_apps">Skyddade appar</string>
+  <string name="saving_protected_components">Sparar komponenttillstånd\u2026</string>
 </resources>

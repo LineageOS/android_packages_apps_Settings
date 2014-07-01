@@ -79,6 +79,9 @@
     <permission
         android:name="android.permission.REPORT_SUPERUSER"
         android:protectionLevel="signature" />
+    <permission
+        android:name="cyanogenmod.permission.PROTECTED_APP"
+        android:protectionLevel="signatureOrSystem" />
 
     <permission-group
         android:name="android.permission-group.SUPERUSER"
@@ -111,6 +114,14 @@
             android:permission="android.permission.BIND_DEVICE_ADMIN">
             <meta-data android:name="android.app.device_admin"
                 android:resource="@xml/device_admin_lockscreen" />
+        </receiver>
+
+        <receiver
+            android:name=".cyanogenmod.ProtectedAppsReceiver"
+            android:permission="cyanogenmod.permission.PROTECTED_APP">
+            <intent-filter>
+                <action android:name="cyanogenmod.intent.action.PACKAGE_PROTECTED" />
+            </intent-filter>
         </receiver>
 
         <!-- Only system/su can open this activity -->
@@ -185,6 +196,7 @@
         <activity android:name="Settings"
                 android:label="@string/settings_label_launcher"
                 android:taskAffinity="com.android.settings"
+                android:configChanges="orientation|screenSize"
                 android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -740,7 +752,8 @@
         <activity android:name="MultiSimSettings"
                 android:label="@string/multi_sim_settings_title"
                 android:process="com.android.phone"
-                android:clearTaskOnLaunch="true">
+                android:clearTaskOnLaunch="true"
+                android:parentActivityName="Settings">
            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="com.android.settings.MULTI_SIM_SETTINGS" />
@@ -1159,7 +1172,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.accessibility.ToggleCaptioningPreferenceFragment" />
+                android:value="com.android.settings.accessibility.CaptionPropertiesFragment" />
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
                 android:resource="@id/accessibility_settings" />
         </activity>
@@ -1214,7 +1227,7 @@
         <!-- Runs in the phone process since it needs access to the Phone object -->
         <activity android:name=".deviceinfo.msim.MSimSubscriptionStatus"
                 android:label="@string/device_status_activity_title"
-                android:theme="@android:style/Theme.Holo.DialogWhenLarge"
+                android:theme="@style/Theme.DialogWhenLarge"
                 android:process="com.android.phone">
         
             <intent-filter>
@@ -1227,8 +1240,9 @@
         <!-- Runs in the phone process since it needs access to the Phone object -->
         <activity android:name=".deviceinfo.msim.MSimStatus"
                 android:label="@string/device_status_activity_title"
-                android:theme="@android:style/Theme.Holo.DialogWhenLarge"
-                android:process="com.android.phone">
+                android:theme="@style/Theme.DialogWhenLarge"
+                android:process="com.android.phone"
+                android:parentActivityName="Settings$DeviceInfoSettingsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -1538,13 +1552,6 @@
 
         <!-- Development settings -->
 
-        <activity android:name="DebugIntentSender" android:label="@string/debug_intent_sender_label">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.DEVELOPMENT_PREFERENCE" />
-            </intent-filter>
-        </activity>
-
         <!-- DeviceInfo adds the user's requested build to stats upload.  -->
         <receiver android:name=".DeviceInfo$StatsReportReceiver">
             <intent-filter>
@@ -1757,20 +1764,6 @@
         />
 
         <!-- CyanogenMod activities Start -->
-        <activity android:name="Settings$SystemSettingsActivity"
-                android:label="@string/system_settings_title"
-                android:taskAffinity=""
-                android:excludeFromRecents="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.cyanogenmod.SystemUiSettings" />
-            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
-                android:resource="@id/system_settings" />
-        </activity>
-
         <activity android:name="Settings$QuickSettingsConfigActivity"
                 android:label="@string/tile_picker_title"
                 android:taskAffinity=""
@@ -1784,6 +1777,8 @@
         </activity>
 
         <activity android:name=".quicksettings.QuickSettingsTiles" />
+
+        <activity android:name=".headsup.HeadsUpSettings" />
 
         <activity android:name=".cyanogenmod.AutoBrightnessSetup"
                 android:excludeFromRecents="true"
@@ -1809,6 +1804,7 @@
         <activity android:name="Settings$ProfilesSettingsActivity"
                 android:label="@string/profile_settings"
                 android:taskAffinity=""
+                android:uiOptions="splitActionBarWhenNarrow"
                 android:excludeFromRecents="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -1885,7 +1881,9 @@
 
         <activity android:name=".notificationlight.BatteryLightSettings" />
 
-        <activity android:name=".cyanogenmod.LockscreenInterface" />
+        <activity android:name=".cyanogenmod.StatusBar" />
+
+        <activity android:name=".cyanogenmod.NotificationDrawer" />
 
          <!-- "Blacklist settings" UI, used only on voice-capable phone devices. -->
         <activity android:name="Settings$BlacklistSettingsActivity"
@@ -1920,6 +1918,19 @@
                        android:resource="@id/sound_settings" />
         </activity>
 
+        <activity android:name="Settings$ThemeSettingsActivity"
+                  android:label="@string/themes_settings_title"
+                  android:taskAffinity=""
+                  android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.THEME_SETTINGS" />
+                <category android:name="com.android.settings.SHORTCUT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                       android:value="com.android.settings.ThemeSettings" />
+        </activity>
         <!-- CyanogenMod activities End -->
 
         <!-- Pseudo-activity used to provide an intent-filter entry point to encryption settings -->
@@ -1956,7 +1967,8 @@
         <activity android:name=".SelectSubscription"
                 android:label="@string/subs_settings"
                 android:process="com.android.phone"
-                android:clearTaskOnLaunch="true">
+                android:clearTaskOnLaunch="true"
+                android:parentActivityName=".deviceinfo.msim.MSimStatus">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -2058,6 +2070,25 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".applications.ProtectedAppsActivity"
+                  android:label="@string/protected_apps"
+                  android:excludeFromRecents="true"
+                  android:configChanges="orientation">
+            <intent-filter>
+                <action android:name=".applications.ProtectedAppsActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".applications.LockPatternActivity"
+                  android:label="@string/protected_apps"
+                  android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name=".applications.LockPatternActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <receiver android:name=".widget.SettingsAppWidgetProvider"
                 android:label="@string/gadget_title"
                 android:exported="false"
@@ -2129,5 +2160,6 @@
             android:name=".cyanogenmod.LtoService">
         </service>
 
+        <service android:name=".search.SearchPopulator"/>
     </application>
 </manifest>

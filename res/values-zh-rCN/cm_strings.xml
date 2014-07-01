@@ -21,6 +21,8 @@
   <string name="wifi_setting_countrycode_error">设置区域码时遇到了问题。</string>
   <string name="wifi_setting_priority_title">WLAN 连接优先</string>
   <string name="wifi_setting_priority_summary">设置各个 WLAN 网络的优先连接顺序</string>
+  <string name="wifi_ssid_input_limit">SSID 超过长度上限</string>
+  <string name="p2p_device_name_input_limit">P2P 名称超过长度上限</string>
   <string name="change_crypt_password_title">更改密码</string>
   <string name="change_crypt_password_summary">更改用于设备加密的密码</string>
   <string name="encryptionpassword_choose_your_password_header">设置加密密码</string>
@@ -77,7 +79,7 @@
   <string name="profile_volumeoverrides_title">音量覆盖</string>
   <string name="connection_state_disabled">禁用</string>
   <string name="connection_state_enabled">启用</string>
-  <string name="volume_override_summary">设置为</string>
+  <string name="volume_override_summary">设置为 %1$s/%2$s</string>
   <string name="profile_profiles_manage">情景</string>
   <string name="profile_profile_manage">管理情景</string>
   <string name="profile_appgroups_manage">应用组</string>
@@ -156,6 +158,8 @@
   <string name="notification_light_voicemail_title">语音信箱</string>
   <string name="adaptive_backlight_title">自适应背光</string>
   <string name="adaptive_backlight_summary">动态调整屏幕的背光亮度以最大化电池寿命，同时维持可用性</string>
+  <string name="color_enhancement_title">色彩增强</string>
+  <string name="color_enhancement_summary">动态增强屏幕色彩</string>
   <string name="wake_when_plugged_or_unplugged_title">插入/拔出电源点亮屏幕</string>
   <string name="wake_when_plugged_or_unplugged_summary">连接或断开电源时点亮屏幕</string>
   <string name="screen_animation_off_title">锁屏效果</string>
@@ -189,9 +193,7 @@
   <string name="lockpattern_settings_enable_error_path_title">显示图案错误</string>
   <string name="lockpattern_settings_enable_dots_title">显示图案圆点</string>
   <string name="screen_security_category">屏幕安全</string>
-  <string name="screen_security_title">锁屏</string>
-  <string name="screen_security_summary">查看或改变锁屏安全性、延迟以及超时设置</string>
-  <string name="additional_options_title">更多选项</string>
+  <string name="screen_security_summary">查看或更改锁屏安全设置</string>
   <string name="unlock_menu_unlock_title">菜单键解锁</string>
   <string name="unlock_menu_unlock_summary">按下菜单键即可解锁设备</string>
   <string name="unlock_home_unlock_title">Home 键解锁</string>
@@ -201,20 +203,6 @@
   <string name="unlock_quick_unlock_control_title">快速解锁</string>
   <string name="unlock_quick_unlock_control_summary">当输入正确的 PIN 码或密码后自动解锁</string>
   <string name="unlock_buttons_disabled_by_security">锁屏是安全的</string>
-  <string name="delay_and_timeout_title">锁定延迟</string>
-  <string name="slide_lock_delay_title">延迟屏幕锁定</string>
-  <string name="slide_lock_timeout_delay_title">屏幕超时后的延迟</string>
-  <string name="slide_lock_screenoff_delay_title">屏幕关闭后的延迟</string>
-  <string name="slide_lock_delay_none">无</string>
-  <string name="slide_lock_delay_1s">1 秒</string>
-  <string name="slide_lock_delay_5s">5 秒</string>
-  <string name="slide_lock_delay_10s">10 秒</string>
-  <string name="slide_lock_delay_15s">15 秒</string>
-  <string name="slide_lock_delay_30s">30 秒</string>
-  <string name="slide_lock_delay_1m">1 分钟</string>
-  <string name="slide_lock_delay_5m">5 分钟</string>
-  <string name="slide_lock_delay_10m">10 分钟</string>
-  <string name="slide_lock_delay_30m">30 分钟</string>
   <string name="lockscreen_widgets_category_title">小部件</string>
   <string name="lockscreen_maximize_widgets_title">最大化小部件</string>
   <string name="lockscreen_maximize_widgets_summary">屏幕开启时最大化锁屏小部件</string>
@@ -229,11 +217,22 @@
   <string name="tile_choose_title">选择一个按钮</string>
   <string name="title_qs_small_icons">显示小按钮</string>
   <string name="summary_qs_small_icons">使用小按钮以增加列数</string>
+  <string name="category_heads_up">浮动通知</string>
+  <string name="summary_heads_up_enabled">弹出通知已启用</string>
+  <string name="summary_heads_up_disabled">弹出通知已禁用</string>
+  <string name="add_heads_up_package">添加应用</string>
+  <string name="add_heads_up_dnd_summary">不要在这些应用上显示浮动通知</string>
+  <string name="add_heads_up_blacklist_summary">不要显示来自这些应用的浮动通知</string>
+  <string name="heads_up_dnd_title">请勿打扰</string>
+  <string name="heads_up_blacklist_title">黑名单</string>
+  <string name="heads_up_disabled_notice">要允许应用在您的屏幕上弹出窗口显示交互式通知，启用浮动通知。</string>
   <string name="title_tile_airplane">飞行模式</string>
   <string name="title_tile_battery">电量显示</string>
   <string name="title_tile_bluetooth">蓝牙</string>
   <string name="title_tile_brightness">亮度</string>
   <string name="title_tile_camera">相机</string>
+  <string name="title_tile_compass">指南针</string>
+  <string name="title_tile_heads_up">浮动通知</string>
   <string name="title_tile_sleep">进入睡眠</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">手电筒</string>
@@ -262,6 +261,7 @@
   <string name="title_dynamic_alarm">闹钟</string>
   <string name="title_dynamic_bugreport">错误报告</string>
   <string name="title_dynamic_dock_battery">基座电池</string>
+  <string name="title_dynamic_equalizer">均衡器</string>
   <string name="title_dynamic_ime">输入法更改器</string>
   <string name="title_dynamic_usbtether">USB 网络共享</string>
   <string name="title_dynamic_wifi">投射屏幕</string>
@@ -286,7 +286,6 @@
   <string name="tiles_reset_title">重置</string>
   <string name="tiles_reset_message">您确定将显示的按钮与布局还原为默认？</string>
   <string name="auto_brightness_setup_title">自动亮度</string>
-  <string name="auto_brightness_adjustment_title">亮度调节</string>
   <string name="auto_brightness_twilight_adjustment">根据日出和日落调节亮度</string>
   <string name="light_sensor_current_value">目前光线传感器值：<xliff:g id="light_level">%d</xliff:g> lux</string>
   <string name="auto_brightness_dialog_title">自动亮度级别</string>
@@ -338,11 +337,13 @@
   <string name="app_security_title">应用安全</string>
   <string name="root_access">Root 授权</string>
   <string name="root_access_warning_title">允许 Root 授权请求？</string>
-  <string name="root_access_warning_message">允许程序得到超级用户权限是非常危险的，可能会影响您的系统安全！</string>
+  <string name="root_access_warning_message">允许程序得到超级用户权限是有风险的，可能会影响您的系统安全！</string>
   <string name="root_access_none">已禁用</string>
   <string name="root_access_apps">仅限于应用程序</string>
   <string name="root_access_adb">仅限于 ADB</string>
   <string name="root_access_all">应用程序与 ADB</string>
+  <string name="update_recovery_title">更新 CM 恢复模式</string>
+  <string name="update_recovery_summary">安装系统更新时更新恢复模式</string>
   <string name="ok">确定</string>
   <string name="quiet_hours_title">安静时段</string>
   <string name="quiet_hours_summary">配置设备应该安静的时段</string>
@@ -358,8 +359,7 @@
   <string name="quiet_hours_dim_summary">禁用通知指示灯</string>
   <string name="quiet_hours_haptic">触觉反馈</string>
   <string name="quiet_hours_haptic_summary">禁用触觉反馈</string>
-  <string name="quiet_hours_active_from">从</string>
-  <string name="quiet_hours_active_to">激活到</string>
+  <string name="quiet_hours_active_period">从 <xliff:g id="start">%1$s</xliff:g> 到 <xliff:g id="end">%2$s</xliff:g> 启用</string>
   <string name="quiet_hours_ringer_allow_all">所有来电响铃</string>
   <string name="quiet_hours_ringer_allow_contacts">所有联系人响铃</string>
   <string name="quiet_hours_ringer_allow_starred">常用联系人响铃</string>
@@ -392,6 +392,7 @@
   <string name="styles_settings_title">样式</string>
   <string name="icons_settings_title">图标</string>
   <string name="fonts_settings_title">字体</string>
+  <string name="wallpaper_settings_title_cm">壁纸</string>
   <string name="lockscreen_wallpaper_settings_title">锁屏壁纸</string>
   <string name="bootanim_settings_title">开机动画</string>
   <string name="soundpack_settings_title">音效包</string>
@@ -487,21 +488,14 @@
   <string name="gamma_tuning_contrast">对比度</string>
   <string name="gamma_tuning_brightness">亮度</string>
   <string name="gamma_tuning_saturation">饱和度</string>
-  <string name="headset_category_title">耳机</string>
   <string name="headset_connect_player_title">启动音乐播放器</string>
   <string name="headset_connect_player_summary">插入耳机时启动默认音乐播放器</string>
-  <string name="more_device_controls_title">更多\u2026</string>
-  <string name="more_device_settings_title">其他设备选项</string>
-  <string name="sensors_motors_title">传感器 &amp; 振动</string>
-  <string name="display_calibration_title">屏幕校准</string>
   <string name="adb_notify">USB 调试通知</string>
   <string name="adb_notify_summary">USB 调试模式连接时将显示一个通知</string>
   <string name="adb_over_network">网络 ADB 调试</string>
   <string name="adb_over_network_summary">通过网络接口 (WLAN，USB 网络) 启用 TCP/IP 调试。该设置重启后失效</string>
   <string name="adb_over_network_warning">警告：网络 ADB 调试启用后，您的设备将会在已连接的网络 (包括 GSM 数据网络) 上被视为是开放的，并有可能被侵入！\n\n请仅在您所信任的网络上使用此功能。\n\n您确实要启用该功能吗？</string>
   <string name="device_hostname">设备网络名</string>
-  <string name="system_settings_title">界面</string>
-  <string name="system_interface_title">系统界面</string>
   <string name="notification_drawer_title">下拉通知栏</string>
   <string name="notification_drawer_collapse_on_dismiss_title">自动关闭行为</string>
   <string name="collapse_on_dismiss_never">禁用</string>
@@ -542,7 +536,7 @@
   <string name="lockscreen_target_reset_message">删除所有用户设定的快捷方式并还原为默认值？</string>
   <string name="lockscreen_target_empty">空</string>
   <string name="lockscreen_target_edit_title">编辑快捷方式与图标</string>
-  <string name="lockscreen_target_edit_msg">选定或改变与快捷方式所关联的程序与图标</string>
+  <string name="lockscreen_target_edit_msg">选择或更改所需的应用或活动所关联的图标</string>
   <string name="picker_activities">活动</string>
   <string name="select_custom_app_title">选择自定义程序</string>
   <string name="select_custom_activity_title">选择自定义活动</string>
@@ -585,7 +579,7 @@
   <string name="lockscreen_enable_modlock_title">自定义锁屏</string>
   <string name="navigation_bar_category">导航栏</string>
   <string name="navigation_bar_title">按键与布局</string>
-  <string name="navigation_bar_left_title">左撇子模式</string>
+  <string name="navigation_bar_left_title">左利手模式</string>
   <string name="navigation_bar_left_summary">横屏时在屏幕左侧显示虚拟键</string>
   <string name="navigation_bar_help_text">1 - 点击锁定图标以开始编辑\n\n2 - 点击任何按键以指定或改变它的功能\n\n3 - 长按任何按键以重新排列按键顺序\n\n4 - 再次点击锁定图标将会保存您的改变\n\n5 - 如果您想还原为系统默认值，请点击重置键\n\n</string>
   <string name="navigation_bar_tips">• 一个按键只能拥有一个行为\n\n• Home 键的行为是不能被改变的\n\n• 侧边按键的位置是不能改变的</string>
@@ -624,6 +618,7 @@
   <string name="power_menu_user_title">用户切换器</string>
   <string name="power_menu_sound_title">声音面板</string>
   <string name="button_settings">按键</string>
+  <string name="hardware_keys_power_key_title">电源按钮</string>
   <string name="hardware_keys_home_key_title">Home 键</string>
   <string name="hardware_keys_menu_key_title">菜单键</string>
   <string name="hardware_keys_assist_key_title">搜索键</string>
@@ -640,8 +635,12 @@
   <string name="hardware_keys_action_voice_search">语音搜索</string>
   <string name="hardware_keys_action_in_app_search">程序内搜索</string>
   <string name="hardware_keys_action_launch_camera">启动相机</string>
+  <string name="power_end_call_title">结束通话</string>
+  <string name="power_end_call_summary">按下电源按钮将结束当前通话</string>
   <string name="button_wake_title">唤醒</string>
   <string name="home_wake_summary">按 Home 键唤醒设备</string>
+  <string name="home_answer_call_title">接听电话</string>
+  <string name="home_answer_call_summary">按 Home 键将接听当前来电</string>
   <string name="camera_wake_summary">按相机键唤醒设备</string>
   <string name="camera_sleep_on_release_title">屏幕窥探</string>
   <string name="camera_sleep_on_release_summary">仅当按钮被按下的时候，半按将会保持屏幕点亮</string>
@@ -673,7 +672,6 @@
   <string name="background_result_successful">背景已更改</string>
   <string name="background_result_not_successful">背景未更改</string>
   <string name="setting_lockscreen_background">正在应用背景</string>
-  <string name="accessibility_home_button_answers_call_prerefence_title">Home 按钮接听电话</string>
   <string name="confirm_delete_apn">APN 将被删除。</string>
   <string name="status_bar_title">状态栏</string>
   <string name="status_bar_show_clock_title">显示时钟和日期</string>
@@ -689,7 +687,7 @@
   <string name="status_bar_signal_style_text">文字</string>
   <string name="status_bar_toggle_brightness">亮度控制</string>
   <string name="status_bar_toggle_brightness_summary">由滑过状态栏调整亮度</string>
-  <string name="status_bar_toggle_info">自动亮度调节已开启</string>
+  <string name="status_bar_toggle_info">自动亮度启用时不可用</string>
   <string name="status_bar_notif_count_title">显示通知数量</string>
   <string name="status_bar_notif_count_summary">显示未读通知的数量</string>
   <string name="status_bar_double_tap_to_sleep_title">双击以睡眠</string>
@@ -701,6 +699,8 @@
   <string name="storage_rescan_media_complete">扫描完成</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">管理安全短信设置</string>
+  <string name="logger_title">匿名崩溃日志记录</string>
+  <string name="logger_summary">管理崩溃日志记录设置</string>
   <string name="custom_runtime_warning_title">警告</string>
   <string name="custom_runtime_warning_message">ART 不被 CyanogenMod 官方支持，因为它是高度实验性的，可能造成不稳定、死机、数据丢失或导致设备不能正常开机。请访问 &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; 了解更多信息。&lt;br/&gt;&lt;br/&gt;如果您启用 ART 作为运行环境，我们请求您不要发送错误报告。&lt;br/&gt;&lt;br/&gt;您要重启设备将运行环境从 <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> 改为 <xliff:g id="new" example="libart.so">%2$s</xliff:g> 吗？</string>
   <string name="gps_download_data_wifi_only">只通过 WiFi 下载 GPS 辅助数据</string>
@@ -724,6 +724,7 @@
   <string name="gestures_down_spen_title_head">下划</string>
   <string name="gestures_long_spen_title_head">长按</string>
   <string name="gestures_double_spen_title_head">双击</string>
+  <string name="gestures_settings_header_title">手势</string>
   <string name="gestures_action_empty">无操作</string>
   <string name="gestures_action_home">主屏幕</string>
   <string name="gestures_action_back">后退</string>
@@ -866,5 +867,11 @@
   <string name="sms_title">正在发送短信</string>
   <string name="priority_sub_title">优先订阅</string>
   <string name="bluetooth_accept_all_files">接受所有文件类型</string>
+  <string name="autoperf_title">启用单应用配置</string>
+  <string name="autoperf_summary">自动为各种应用选择适当的性能配置</string>
   <string name="graphics_title">图形和渲染</string>
+  <string name="menu_hidden_apps_delete">重置</string>
+  <string name="menu_hidden_apps_reset_lock">重置锁定图案</string>
+  <string name="protected_apps">受保护的应用</string>
+  <string name="saving_protected_components">正在保存组件状态\u2026</string>
 </resources>

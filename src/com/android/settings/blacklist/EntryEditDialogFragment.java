@@ -155,8 +155,8 @@ public class EntryEditDialogFragment extends DialogFragment
         mContactPickButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent contactListIntent = new Intent(Intent.ACTION_GET_CONTENT);
-                contactListIntent.setType(CommonDataKinds.Phone.CONTENT_ITEM_TYPE);
+                Intent contactListIntent = new Intent(Intent.ACTION_PICK);
+                contactListIntent.setType(CommonDataKinds.Phone.CONTENT_TYPE);
 
                 startActivityForResult(contactListIntent, REQUEST_CODE_PICKER, null);
             }
