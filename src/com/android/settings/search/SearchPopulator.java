@@ -296,14 +296,13 @@ public class SearchPopulator extends IntentService {
                     populateFromXml(subXmlId, null, level + 1, header.iconRes,
                             fragment, title.resourceId);
                     dbHelper.insertEntry(preferenceTitle, level, fragment,
-                            header.iconRes, getString(titleRes));
+                            header.iconRes, titleRes);
                 } else if (header != null) {
                     header.title = preferenceTitle;
-                    header.titleRes = 0;
-                    dbHelper.insertHeader(header, getString(titleRes));
+                    dbHelper.insertHeader(header, titleRes);
                 } else {
                     dbHelper.insertEntry(preferenceTitle, level, prefFragment,
-                            iconRes, getString(titleRes));
+                            iconRes, titleRes);
                 }
 
                 sa.recycle();
@@ -344,7 +343,7 @@ public class SearchPopulator extends IntentService {
                 info.fragment = c.getString(fragmentIndex);
                 info.title = c.getString(titleIndex);
                 info.iconRes = c.getInt(iconIndex);
-                info.parentTitle = c.getString(parentIndex);
+                info.parentTitle = c.getInt(parentIndex);
                 infos.add(info);
             }
             c.close();

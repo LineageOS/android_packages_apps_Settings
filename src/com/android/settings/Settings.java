@@ -982,7 +982,7 @@ public class Settings extends PreferenceActivity
         } else {
             Intent i = new Intent(this, SubSettings.class);
             i.putExtra(EXTRA_SHOW_FRAGMENT, info.fragment);
-            i.putExtra(EXTRA_SHOW_FRAGMENT_TITLE_TEXT, info.parentTitle);
+            i.putExtra(EXTRA_SHOW_FRAGMENT_TITLE, info.parentTitle);
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
         }
