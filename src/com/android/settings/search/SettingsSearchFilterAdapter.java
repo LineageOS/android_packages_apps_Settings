@@ -73,8 +73,9 @@ public class SettingsSearchFilterAdapter extends ArrayAdapter<SearchInfo> implem
             LayoutInflater inflater = LayoutInflater.from(mContext);
             v = inflater.inflate(mResId, null);
             holder = new ViewHolder();
-            holder.imageView = (ImageView) v.findViewById(R.id.autocomplete_image);
-            holder.titleView = (TextView)  v.findViewById(R.id.autocomplete_title);
+            holder.imageView  = (ImageView) v.findViewById(R.id.autocomplete_image);
+            holder.titleView  = (TextView)  v.findViewById(R.id.autocomplete_title);
+            holder.parentView = (TextView)  v.findViewById(R.id.autocomplete_parent);
             v.setTag(holder);
         } else {
             holder = (ViewHolder) v.getTag();
@@ -94,6 +95,11 @@ public class SettingsSearchFilterAdapter extends ArrayAdapter<SearchInfo> implem
             }
             if (holder.titleView != null) {
                 holder.titleView.setText(info.title);
+            }
+            if (holder.parentView != null) {
+                holder.parentView.setText(info.parentTitle);
+                holder.parentView.setVisibility(
+                        info.parentTitle != null ? View.VISIBLE : View.GONE);
             }
         }
         return v;
@@ -128,6 +134,7 @@ public class SettingsSearchFilterAdapter extends ArrayAdapter<SearchInfo> implem
     private static class ViewHolder {
         private ImageView imageView;
         private TextView titleView;
+        private TextView parentView;
     }
 
     private class CustomFilter extends Filter {

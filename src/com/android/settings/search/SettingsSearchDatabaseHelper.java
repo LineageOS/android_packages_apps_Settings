@@ -73,6 +73,10 @@ public class SettingsSearchDatabaseHelper extends SQLiteOpenHelper {
     }
 
     public void insertHeader(Header header) {
+        insertHeader(header, null);
+    }
+
+    public void insertHeader(Header header, String parentTitle) {
         if (header == null) {
             return;
         }
@@ -85,7 +89,7 @@ public class SettingsSearchDatabaseHelper extends SQLiteOpenHelper {
         if (TextUtils.isEmpty(title)) {
             return;
         }
-        insertEntry(header, title, 0, null, header.iconRes, null);
+        insertEntry(header, title, 0, null, header.iconRes, parentTitle);
     }
 
     public void insertEntry(String title, int level, String fragment,
