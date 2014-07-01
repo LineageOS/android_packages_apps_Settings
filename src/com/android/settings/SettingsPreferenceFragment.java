@@ -16,32 +16,41 @@
 
 package com.android.settings;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.net.Uri;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceGroup;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewOverlay;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
+import android.widget.ListView;
+
+import com.android.settings.search.SearchPopulator;
 
 /**
  * Base class for Settings fragments, with some helper functions and dialog management.
  */
-public class SettingsPreferenceFragment extends PreferenceFragment implements DialogCreatable {
+public class SettingsPreferenceFragment extends PreferenceFragment implements
+        DialogCreatable, ViewTreeObserver.OnPreDrawListener {
 
     private static final String TAG = "SettingsPreferenceFragment";
 
@@ -65,12 +74,81 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
         }
     }
 
+    private int getPreferenceRealPosition(String key, PreferenceGroup group, int pos) {
+        int count = group.getPreferenceCount();
+        for (int i = 0; i < count; i++) {
+            Preference pref = group.getPreference(i);
+            pos++;
+            if (TextUtils.equals(pref.getKey(), key)) {
+                return pos;
+            }
+            if (pref instanceof PreferenceGroup) {
+                int result = getPreferenceRealPosition(key, (PreferenceGroup) pref, pos);
+                if (result != -1) {
+                    return result;
+                }
+            }
+        }
+        return -1;
+    }
+
+    private String getPreferenceKey() {
+        Bundle args = getArguments();
+        if (args != null && args.containsKey(SearchPopulator.EXTRA_PREF_KEY)) {
+            return args.getString(SearchPopulator.EXTRA_PREF_KEY);
+        }
+        return getActivity().getIntent().getStringExtra(SearchPopulator.EXTRA_PREF_KEY);
+    }
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (!TextUtils.isEmpty(mHelpUrl)) {
             setHasOptionsMenu(true);
         }
+        String prefKey = getPreferenceKey();
+        if (!TextUtils.isEmpty(prefKey)) {
+            int position = getPreferenceRealPosition(prefKey, getPreferenceScreen(), -1);
+            if (position != -1) {
+                getListView().setSelection(position);
+            }
+        }
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        if (!TextUtils.isEmpty(getPreferenceKey())) {
+            getListView().getViewTreeObserver().addOnPreDrawListener(this);
+        }
+    }
+
+    @Override
+    public boolean onPreDraw() {
+        final ListView list = getListView();
+        View child = list.getChildAt(0);
+
+        if (child != null) {
+            final ViewOverlay overlay = child.getOverlay();
+            final ColorDrawable d = new ColorDrawable(
+                    getResources().getColor(R.color.search_pref_highlight_background));
+            d.setBounds(0, 0, child.getWidth(), child.getHeight());
+            overlay.add(d);
+
+            ObjectAnimator bgAnim = ObjectAnimator.ofInt(d, "alpha", 0, 100, 0);
+            bgAnim.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animator) {
+                    overlay.remove(d);
+                }
+            });
+            bgAnim.setDuration(1000);
+            bgAnim.start();
+        }
+
+        list.getViewTreeObserver().removeOnPreDrawListener(this);
+        return true;
     }
 
     protected void removePreference(String key) {

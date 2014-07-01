@@ -978,11 +978,19 @@ public class Settings extends PreferenceActivity
         imm.hideSoftInputFromWindow(mSearchBar.getWindowToken(), 0);
 
         if (info.level == 0) {
+            Bundle args = info.header.fragmentArguments;
+            if (args == null) {
+                args = info.header.fragmentArguments = new Bundle();
+            }
+            if (info.key != null && !args.containsKey(SearchPopulator.EXTRA_PREF_KEY)) {
+                args.putString(SearchPopulator.EXTRA_PREF_KEY, info.key);
+            }
             onHeaderClick(info.header, 0);
         } else {
             Intent i = new Intent(this, SubSettings.class);
             i.putExtra(EXTRA_SHOW_FRAGMENT, info.fragment);
             i.putExtra(EXTRA_SHOW_FRAGMENT_TITLE, info.parentTitle);
+            i.putExtra(SearchPopulator.EXTRA_PREF_KEY, info.key);
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
         }
