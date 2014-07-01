@@ -17,7 +17,6 @@
 package com.android.settings.search;
 
 import android.app.IntentService;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -40,7 +39,6 @@ import android.util.Xml;
 
 import com.android.internal.util.XmlUtils;
 import com.android.settings.R;
-import com.android.settings.Settings;
 import com.android.settings.search.SettingsSearchFilterAdapter.SearchInfo;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -58,7 +56,7 @@ public class SearchPopulator extends IntentService {
 
     public static final String EXTRA_NOTIFIER = "notifier";
 
-    private static final String LAST_PACKAGE_HASH = "last_package_hash";
+    protected static final String LAST_PACKAGE_HASH = "last_package_hash";
     private ResultReceiver mNotifier;
 
     public SearchPopulator() {
