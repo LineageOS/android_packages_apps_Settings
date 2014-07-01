@@ -39,5 +39,7 @@ public final class DatabaseContract {
         public static String ACTION_FRAGMENT = "fragment";
 
         public static String ACTION_PARENT_TITLE = "parent_title";
+
+        public static String ACTION_KEY = "key";
     }
 }

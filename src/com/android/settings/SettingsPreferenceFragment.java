@@ -23,20 +23,24 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.net.Uri;
+import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceGroup;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+
+import com.android.settings.search.SearchHighlightAdapterWrapper;
+import com.android.settings.search.SearchPopulator;
 
 /**
  * Base class for Settings fragments, with some helper functions and dialog management.
@@ -54,6 +58,16 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
     // Cache the content resolver for async callbacks
     private ContentResolver mContentResolver;
 
+    private String mHighlightedPreferenceKey;
+    private SearchHighlightAdapterWrapper mSearchHighlightAdapter;
+    private boolean mPrefsObserverRegistered;
+    private DataSetObserver mPrefsObserver = new DataSetObserver() {
+        @Override
+        public void onChanged() {
+            updateHighlightPositionIfNeeded();
+        }
+    };
+
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -66,11 +80,91 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
     }
 
     @Override
+    protected void bindPreferences() {
+        super.bindPreferences();
+
+        ListAdapter adapter = getPreferenceScreen().getRootAdapter();
+        if (mPrefsObserverRegistered) {
+            adapter.unregisterDataSetObserver(mPrefsObserver);
+            mPrefsObserverRegistered = false;
+        }
+
+        if (mHighlightedPreferenceKey != null) {
+            int highlightColor = getResources().getColor(R.color.search_pref_highlight_background);
+
+            adapter.registerDataSetObserver(mPrefsObserver);
+            mPrefsObserverRegistered = true;
+
+            mSearchHighlightAdapter = new SearchHighlightAdapterWrapper(adapter,
+                    300, 650, highlightColor);
+            getListView().setAdapter(mSearchHighlightAdapter);
+            updateHighlightPositionIfNeeded();
+       } else {
+            mSearchHighlightAdapter = null;
+        }
+    }
+
+    private void updateHighlightPositionIfNeeded() {
+        Preference pref = mHighlightedPreferenceKey != null
+                ? findPreference(mHighlightedPreferenceKey) : null;
+        if (pref == null) {
+            return;
+        }
+
+        int position = Math.abs(countPreferencesInGroup(getPreferenceScreen(), pref));
+        getListView().smoothScrollToPosition(position);
+        mSearchHighlightAdapter.setHighlightedPosition(position);
+    }
+
+    private int countPreferencesInGroup(PreferenceGroup group, Preference stopAt) {
+        int result = 0, count = group.getPreferenceCount();
+        for (int i = 0; i < count; i++) {
+            Preference p = group.getPreference(i);
+
+            // if this is our target, stop right away
+            if (p == stopAt) {
+                // indicate we forcably stopped (as opposed to iterating until the end)
+                return -result;
+            }
+
+            // count the preference itself (or, in the case of a PreferenceCategory, its header)
+            result++;
+
+            if (p instanceof PreferenceGroup) {
+                // count preferences in this group
+                int prefsInGroup = countPreferencesInGroup((PreferenceGroup) p, stopAt);
+                result += Math.abs(prefsInGroup);
+                if (prefsInGroup < 0) {
+                    // see above
+                    return -result;
+                }
+            }
+        }
+        return result;
+    }
+
+    @Override
     public void onActivityCreated(Bundle savedInstanceState) {
+        Bundle args = getArguments();
+        if (args != null && args.containsKey(SearchPopulator.EXTRA_PREF_KEY)) {
+            mHighlightedPreferenceKey = args.getString(SearchPopulator.EXTRA_PREF_KEY);
+        }
+        if (mHighlightedPreferenceKey == null) {
+            Intent intent = getActivity().getIntent();
+            mHighlightedPreferenceKey = intent.getStringExtra(SearchPopulator.EXTRA_PREF_KEY);
+        }
+
         super.onActivityCreated(savedInstanceState);
         if (!TextUtils.isEmpty(mHelpUrl)) {
             setHasOptionsMenu(true);
         }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        // we only want to highlight once
+        mHighlightedPreferenceKey = null;
     }
 
     protected void removePreference(String key) {
