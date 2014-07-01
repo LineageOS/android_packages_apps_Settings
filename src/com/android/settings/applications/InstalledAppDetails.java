@@ -619,14 +619,13 @@ public class InstalledAppDetails extends Fragment
 
         @Override
         protected Void doInBackground(Void... params) {
-            String components = "";
+            ArrayList<ComponentName> components = new ArrayList<ComponentName>();
             for (ActivityInfo aInfo : mPackageInfo.activities) {
-                components += new ComponentName(aInfo.packageName, aInfo.name)
-                        .flattenToString() + "|";
+                components.add(new ComponentName(aInfo.packageName, aInfo.name));
             }
 
-            ProtectedAppsReceiver.protectedAppComponentsAndNotify
-                    (components, true, getActivity());
+            ProtectedAppsReceiver.updateProtectedAppComponentsAndNotify(getActivity(),
+                    components, true);
             return null;
         }
     }

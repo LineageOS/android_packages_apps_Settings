@@ -6,6 +6,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
@@ -70,7 +71,8 @@ public class ProtectedAppsActivity extends Activity {
                 boolean protect = !mListView.isItemChecked(position);
 
                 AppProtectList list = new AppProtectList(componentsList, protect);
-                StoreComponentProtectedStatus task = new StoreComponentProtectedStatus(ProtectedAppsActivity.this);
+                StoreComponentProtectedStatus task =
+                         new StoreComponentProtectedStatus(ProtectedAppsActivity.this);
                 task.execute(list);
             }
         });
@@ -111,19 +113,19 @@ public class ProtectedAppsActivity extends Activity {
         super.onPause();
 
         // Don't stick around
-        if (mWaitUserAuth){
+        if (mWaitUserAuth) {
             finish();
         }
     }
 
     private void restoreCheckedItems() {
         AppsAdapter listAdapter = (AppsAdapter) mListView.getAdapter();
+        PackageManager pm = getPackageManager();
 
         for (int i = 0; i < listAdapter.getCount(); i++) {
             AppEntry info = listAdapter.getItem(i);
             try {
-                if (getPackageManager().getActivityInfo(info.componentName, 0)
-                        .applicationInfo.protect) {
+                if (pm.getActivityInfo(info.componentName, 0).applicationInfo.protect) {
                     mListView.setItemChecked(i, true);
                     mProtect.add(info.componentName);
                 }
@@ -211,18 +213,17 @@ public class ProtectedAppsActivity extends Activity {
     }
 
     private final class AppEntry {
-
         public final ComponentName componentName;
         public final String title;
 
         public AppEntry(ResolveInfo info) {
-            componentName = new ComponentName(info.activityInfo.packageName, info.activityInfo.name);
+            ActivityInfo aInfo = info.activityInfo;
+            componentName = new ComponentName(aInfo.packageName, aInfo.name);
             title = info.loadLabel(mPackageManager).toString();
         }
     }
 
     private final class AppProtectList {
-
         public final ArrayList<ComponentName> componentNames;
         public final boolean protect;
 
@@ -265,14 +266,8 @@ public class ProtectedAppsActivity extends Activity {
         @Override
         protected Void doInBackground(final AppProtectList... args) {
             for (AppProtectList appList : args) {
-                String components = "";
-
-                for (ComponentName cn : appList.componentNames) {
-                    components += cn.flattenToShortString() + "|";
-                }
-
-                ProtectedAppsReceiver.protectedAppComponentsAndNotify
-                        (components, appList.protect, mContext);
+                ProtectedAppsReceiver.updateProtectedAppComponentsAndNotify(mContext,
+                        appList.componentNames, appList.protect);
             }
 
             return null;
@@ -307,8 +302,7 @@ public class ProtectedAppsActivity extends Activity {
 
             mInflator = LayoutInflater.from(context);
 
-            // set the default icon till the actual app icon is loaded in async
-            // task
+            // set the default icon till the actual app icon is loaded in async task
             mDefaultImg = context.getResources().getDrawable(android.R.mipmap.sym_def_app_icon);
             mIcons = new ConcurrentHashMap<String, Drawable>();
         }
@@ -373,12 +367,12 @@ public class ProtectedAppsActivity extends Activity {
             protected Void doInBackground(AppEntry... apps) {
                 for (AppEntry app : apps) {
                     try {
-                        if (mIcons.containsKey(app.componentName.getPackageName())) {
+                        String packageName = app.componentName.getPackageName();
+                        if (mIcons.containsKey(packageName)) {
                             continue;
                         }
-                        Drawable icon = mPackageManager.getApplicationIcon(app.componentName
-                                .getPackageName());
-                        mIcons.put(app.componentName.getPackageName(), icon);
+                        Drawable icon = mPackageManager.getApplicationIcon(packageName);
+                        mIcons.put(packageName, icon);
                         publishProgress();
                     } catch (PackageManager.NameNotFoundException e) {
                         // ignored; app will show up with default image
