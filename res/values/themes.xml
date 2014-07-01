@@ -60,12 +60,15 @@
     </style>
 
     <style name="Theme.Settings" parent="@android:style/Theme.Holo">
+        <item name="ic_menu_moreoverflow">@*android:drawable/ic_menu_moreoverflow_holo_dark</item>
+        <item name="android:actionBarStyle">@android:style/Widget.Holo.ActionBar.Solid</item>
+    </style>
+
+    <style name="Theme.Settings.Holo" parent="@style/Theme.Settings">
         <item name="apnPreferenceStyle">@style/ApnPreference</item>
         <item name="ic_menu_add">@drawable/ic_menu_add_dark</item>
-        <item name="ic_menu_moreoverflow">@*android:drawable/ic_menu_moreoverflow_holo_dark</item>
         <item name="ic_wps">@drawable/ic_wps_dark</item>
         <item name="wifi_signal">@drawable/wifi_signal_dark</item>
-        <item name="android:actionBarStyle">@android:style/Widget.Holo.ActionBar.Solid</item>
     </style>
 
     <style name="Theme.DialogWhenLarge" parent="@android:style/Theme.Holo.DialogWhenLarge">
