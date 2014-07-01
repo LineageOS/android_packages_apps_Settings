@@ -21,7 +21,6 @@
         android:key="disable_nav_keys"
         android:title="@string/disable_navkeys_title"
         android:summary="@string/disable_navkeys_summary"
-        android:disableDependentsState="true"
         android:defaultValue="false" />
 
     <com.android.settings.cyanogenmod.ButtonBacklightBrightness
@@ -63,21 +62,18 @@
         <PreferenceScreen
                 android:key="navigation_bar"
                 android:fragment="com.android.settings.cyanogenmod.NavBar"
-                android:title="@string/navigation_bar_title"
-                android:dependency="disable_nav_keys"/>
+                android:title="@string/navigation_bar_title" />
 
         <PreferenceScreen
                 android:key="navigation_ring"
                 android:fragment="com.android.settings.cyanogenmod.NavRing"
-                android:title="@string/navigation_ring_title"
-                android:dependency="disable_nav_keys"/>
+                android:title="@string/navigation_ring_title" />
 
         <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
                 android:key="navigation_bar_left"
                 android:title="@string/navigation_bar_left_title"
                 android:summary="@string/navigation_bar_left_summary"
-                android:defaultValue="false"
-                android:dependency="disable_nav_keys"/>
+                android:defaultValue="false" />
     </PreferenceCategory>
 
     <PreferenceCategory
