@@ -300,7 +300,7 @@ public class SearchPopulator extends IntentService {
                 } else if (header != null) {
                     header.title = preferenceTitle;
                     header.titleRes = 0;
-                    dbHelper.insertHeader(header);
+                    dbHelper.insertHeader(header, getString(titleRes));
                 } else {
                     dbHelper.insertEntry(preferenceTitle, level, prefFragment,
                             iconRes, getString(titleRes));
