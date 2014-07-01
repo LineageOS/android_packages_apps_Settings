@@ -16,26 +16,30 @@
 
 package com.android.settings;
 
+import com.android.settings.search.SearchPopulator;
+
+import android.animation.ObjectAnimator;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.net.Uri;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceGroup;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewTreeObserver.OnPreDrawListener;
 import android.widget.Button;
 
 /**
@@ -65,11 +69,73 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
         }
     }
 
+    private int getPreferenceRealPosition(String key, PreferenceGroup group, int pos) {
+        int result = -1;
+        for (int i = 0; i < group.getPreferenceCount(); i++) {
+            Preference pref = group.getPreference(i);
+            pos++;
+            if (pref.getKey().equals(key)) {
+                result = pos;
+                break;
+            }
+            if (pref instanceof PreferenceGroup) {
+                result = getPreferenceRealPosition(key, (PreferenceGroup) pref, pos);
+            }
+            if (result != -1) {
+                break;
+            }
+        }
+        return result;
+    }
+
+    private String getPreferenceKey() {
+        String prefKey = null;
+        Bundle initialArguments = getActivity().getIntent().getBundleExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT_ARGUMENTS);
+        if (initialArguments != null) {
+            prefKey = initialArguments.getString(SearchPopulator.EXTRA_PREF_KEY);
+        }
+        if (prefKey == null) {
+            prefKey = getActivity().getIntent().getStringExtra(SearchPopulator.EXTRA_PREF_KEY);
+        }
+        return prefKey;
+    }
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (!TextUtils.isEmpty(mHelpUrl)) {
             setHasOptionsMenu(true);
+        }
+        String prefKey = getPreferenceKey();
+        if (!TextUtils.isEmpty(prefKey)) {
+            int position = getPreferenceRealPosition(prefKey, getPreferenceScreen(), -1);
+            if (position != -1) {
+                getListView().setSelection(position);
+            }
+        }
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        String prefKey = getPreferenceKey();
+        if (!TextUtils.isEmpty(prefKey)) {
+            getListView().getViewTreeObserver().addOnPreDrawListener(new OnPreDrawListener() {
+                @Override
+                public boolean onPreDraw() {
+                    View child = getListView().getChildAt(0);
+                    if (child != null) {
+                        ColorDrawable d = new ColorDrawable(Color.WHITE);
+                        d.setBounds(0, 0, child.getWidth(), child.getHeight());
+                        child.getOverlay().add(d);
+                        getListView().getViewTreeObserver().removeOnPreDrawListener(this);
+                        ObjectAnimator bgAnim = ObjectAnimator.ofInt(d, "alpha", 0, 100, 0);
+                        bgAnim.setDuration(1000);
+                        bgAnim.start();
+                    }
+                    return true;
+                }
+            });
         }
     }
 
