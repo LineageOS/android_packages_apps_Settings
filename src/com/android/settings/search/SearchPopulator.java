@@ -16,20 +16,6 @@
 
 package com.android.settings.search;
 
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
-
-import com.android.settings.R;
-import com.android.settings.Settings;
-import com.android.settings.search.SettingsSearchFilterAdapter.SearchInfo;
-
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-
 import android.app.IntentService;
 import android.content.ContentValues;
 import android.content.Context;
@@ -53,24 +39,40 @@ import android.util.TypedValue;
 import android.util.Xml;
 
 import com.android.internal.util.XmlUtils;
+import com.android.settings.R;
+import com.android.settings.Settings;
+import com.android.settings.search.SettingsSearchFilterAdapter.SearchInfo;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 public class SearchPopulator extends IntentService {
-
     private static final String TAG = SearchPopulator.class.getSimpleName();
+
+    public static final String EXTRA_NOTIFIER = "notifier";
+
     private static final String LAST_PACKAGE_HASH = "last_package_hash";
     private ResultReceiver mNotifier;
 
     public SearchPopulator() {
-        super(SearchPopulator.class.getSimpleName());
+        super(TAG);
     }
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        mNotifier = intent.getParcelableExtra(Settings.NOTIFIER_EXTRA);
+        mNotifier = intent.getParcelableExtra(EXTRA_NOTIFIER);
+
         SharedPreferences sharedPreferences = getSharedPreferences(
                 getPackageName(), Context.MODE_PRIVATE);
         int lastHash = sharedPreferences.getInt(LAST_PACKAGE_HASH, -1);
-        int currentHash = getPackageHashCode();
+        int currentHash = getPackageHashCode(getBasePackageName());
 
         if (lastHash != currentHash) {
             populateDatabase();
@@ -89,10 +91,10 @@ public class SearchPopulator extends IntentService {
             AttributeSet attrs = Xml.asAttributeSet(parser);
 
             int type;
-            while ((type=parser.next()) != XmlPullParser.END_DOCUMENT
-                    && type != XmlPullParser.START_TAG) {
+            do {
+                type = parser.next();
                 // Parse next until start tag is found
-            }
+            } while (type != XmlPullParser.END_DOCUMENT && type != XmlPullParser.START_TAG);
 
             String nodeName = parser.getName();
             if (!"preference-headers".equals(nodeName)) {
@@ -101,10 +103,8 @@ public class SearchPopulator extends IntentService {
                         + nodeName + " at " + parser.getPositionDescription());
             }
 
-            Bundle curBundle = null;
-
             final int outerDepth = parser.getDepth();
-            while ((type=parser.next()) != XmlPullParser.END_DOCUMENT
+            while ((type = parser.next()) != XmlPullParser.END_DOCUMENT
                    && (type != XmlPullParser.END_TAG || parser.getDepth() > outerDepth)) {
                 if (type == XmlPullParser.END_TAG || type == XmlPullParser.TEXT) {
                     continue;
@@ -112,106 +112,30 @@ public class SearchPopulator extends IntentService {
 
                 nodeName = parser.getName();
                 if ("header".equals(nodeName)) {
-                    Header header = new Header();
-
-                    TypedArray sa = getResources().obtainAttributes(attrs,
-                            com.android.internal.R.styleable.PreferenceHeader);
-                    header.id = sa.getResourceId(
-                            com.android.internal.R.styleable.PreferenceHeader_id,
-                            (int)PreferenceActivity.HEADER_ID_UNDEFINED);
-
-                    // Fetch title
-                    TypedValue tv = sa.peekValue(
-                            com.android.internal.R.styleable.PreferenceHeader_title);
-                    if (tv != null && tv.type == TypedValue.TYPE_STRING) {
-                        if (tv.resourceId != 0) {
-                            header.titleRes = tv.resourceId;
-                        } else {
-                            header.title = tv.string;
-                        }
-                    }
-
-                    // Fetch breadcrumb title
-                    tv = sa.peekValue(
-                            com.android.internal.R.styleable.PreferenceHeader_breadCrumbTitle);
-                    if (tv != null && tv.type == TypedValue.TYPE_STRING) {
-                        if (tv.resourceId != 0) {
-                            header.breadCrumbTitleRes = tv.resourceId;
-                        } else {
-                            header.breadCrumbTitle = tv.string;
-                        }
-                    }
-
-                    // Fetch breadcrumb short title
-                    tv = sa.peekValue(
-                            com.android.internal.R.styleable.PreferenceHeader_breadCrumbShortTitle);
-                    if (tv != null && tv.type == TypedValue.TYPE_STRING) {
-                        if (tv.resourceId != 0) {
-                            header.breadCrumbShortTitleRes = tv.resourceId;
-                        } else {
-                            header.breadCrumbShortTitle = tv.string;
-                        }
-                    }
-
-                    // Fetch icon
-                    header.iconRes = sa.getResourceId(
-                            com.android.internal.R.styleable.PreferenceHeader_icon, 0);
-                    if (header.iconRes == R.drawable.empty_icon) {
-                        header.iconRes = 0;
-                    }
-
-                    // Fetch fragment
-                    header.fragment = sa.getString(
-                            com.android.internal.R.styleable.PreferenceHeader_fragment);
-                    sa.recycle();
-
-                    if (curBundle == null) {
-                        curBundle = new Bundle();
-                    }
-
                     // Fetch xml the fragment inflates
                     TypedArray se = getResources().obtainAttributes(attrs,
                             com.android.settings.R.styleable.SearchableInfo);
                     int xmlResId = se.getResourceId(
                             com.android.settings.R.styleable.SearchableInfo_includeXmlForSearch, 0);
+                    boolean excludeFromSearch = se.getBoolean(
+                            com.android.settings.R.styleable.SearchableInfo_excludeFromSearch,
+                            false);
 
-                    boolean excludeFromSearch = se.getBoolean(com.android.settings.R.styleable.SearchableInfo_excludeFromSearch, false);
+                    se.recycle();
+
                     if (excludeFromSearch) {
                         continue;
                     }
 
-                    final int innerDepth = parser.getDepth();
-                    while ((type=parser.next()) != XmlPullParser.END_DOCUMENT
-                           && (type != XmlPullParser.END_TAG || parser.getDepth() > innerDepth)) {
-                        if (type == XmlPullParser.END_TAG || type == XmlPullParser.TEXT) {
-                            continue;
-                        }
-
-                        String innerNodeName = parser.getName();
-                        if (innerNodeName.equals("extra")) {
-                            getResources().parseBundleExtra("extra", attrs, curBundle);
-                            XmlUtils.skipCurrentTag(parser);
-
-                        } else if (innerNodeName.equals("intent")) {
-                            header.intent = Intent.parseIntent(getResources(), parser, attrs);
-
-                        } else {
-                            XmlUtils.skipCurrentTag(parser);
-                        }
-                    }
-
-                    if (curBundle.size() > 0) {
-                        header.fragmentArguments = curBundle;
-                        curBundle = null;
-                    }
-
+                    Header header = parseHeader(parser, attrs);
                     if (TextUtils.isEmpty(header.fragment)) {
                         continue;
                     }
 
                     dbHelper.insertHeader(header);
                     if (xmlResId != 0) {
-                        populateFromXml(xmlResId, header, 1, header.iconRes, header.fragment, header.titleRes);
+                        populateFromXml(xmlResId, header, 1, header.iconRes,
+                                header.fragment, header.titleRes);
                     }
                 } else {
                     XmlUtils.skipCurrentTag(parser);
@@ -226,8 +150,88 @@ public class SearchPopulator extends IntentService {
         }
     }
 
+    private Header parseHeader(XmlResourceParser parser, AttributeSet attrs)
+            throws XmlPullParserException, IOException {
+        Header header = new Header();
+
+        TypedArray sa = getResources().obtainAttributes(attrs,
+                com.android.internal.R.styleable.PreferenceHeader);
+        header.id = sa.getResourceId(com.android.internal.R.styleable.PreferenceHeader_id,
+                (int) PreferenceActivity.HEADER_ID_UNDEFINED);
+
+        // Fetch title
+        TypedValue tv = sa.peekValue(com.android.internal.R.styleable.PreferenceHeader_title);
+        if (tv != null && tv.type == TypedValue.TYPE_STRING) {
+            if (tv.resourceId != 0) {
+                header.titleRes = tv.resourceId;
+            } else {
+                header.title = tv.string;
+            }
+        }
+
+        // Fetch breadcrumb title
+        tv = sa.peekValue(com.android.internal.R.styleable.PreferenceHeader_breadCrumbTitle);
+        if (tv != null && tv.type == TypedValue.TYPE_STRING) {
+            if (tv.resourceId != 0) {
+                header.breadCrumbTitleRes = tv.resourceId;
+            } else {
+                header.breadCrumbTitle = tv.string;
+            }
+        }
+
+        // Fetch breadcrumb short title
+        tv = sa.peekValue(com.android.internal.R.styleable.PreferenceHeader_breadCrumbShortTitle);
+        if (tv != null && tv.type == TypedValue.TYPE_STRING) {
+            if (tv.resourceId != 0) {
+                header.breadCrumbShortTitleRes = tv.resourceId;
+            } else {
+                header.breadCrumbShortTitle = tv.string;
+            }
+        }
+
+        // Fetch icon
+        header.iconRes = sa.getResourceId(
+                com.android.internal.R.styleable.PreferenceHeader_icon, 0);
+        if (header.iconRes == R.drawable.empty_icon) {
+            header.iconRes = 0;
+        }
+
+        // Fetch fragment
+        header.fragment = sa.getString(com.android.internal.R.styleable.PreferenceHeader_fragment);
+
+        sa.recycle();
+
+        Bundle args = new Bundle();
+        final int innerDepth = parser.getDepth();
+        int type;
+
+        while ((type = parser.next()) != XmlPullParser.END_DOCUMENT
+                && (type != XmlPullParser.END_TAG || parser.getDepth() > innerDepth)) {
+            if (type == XmlPullParser.END_TAG || type == XmlPullParser.TEXT) {
+                continue;
+            }
+
+            String innerNodeName = parser.getName();
+            if (innerNodeName.equals("extra")) {
+                getResources().parseBundleExtra("extra", attrs, args);
+                XmlUtils.skipCurrentTag(parser);
+            } else if (innerNodeName.equals("intent")) {
+                header.intent = Intent.parseIntent(getResources(), parser, attrs);
+            } else {
+                XmlUtils.skipCurrentTag(parser);
+            }
+        }
+
+        if (args.size() > 0) {
+            header.fragmentArguments = args;
+        }
+
+        return header;
+    }
+
     private void populateFromXml(int xmlResId, Header header,
-                                 int level, int iconRes, String prefFragment, int titleRes) {
+            int level, int iconRes, String prefFragment, int titleRes)
+            throws XmlPullParserException {
         SettingsSearchDatabaseHelper dbHelper = SettingsSearchDatabaseHelper.getInstance(this);
         AttributeSet attributeSet;
         int type;
@@ -235,13 +239,13 @@ public class SearchPopulator extends IntentService {
 
         try {
             xmlParser = getResources().getXml(xmlResId);
-            while ((type=xmlParser.next()) != XmlPullParser.END_DOCUMENT
-                    && type != XmlPullParser.START_TAG) {
+            do {
+                type = xmlParser.next();
                 // Parse next until start tag is found
-            }
+            } while (type != XmlPullParser.END_DOCUMENT && type != XmlPullParser.START_TAG);
 
             String tagName = xmlParser.getName();
-            if(!"PreferenceScreen".equals(tagName)) {
+            if (!"PreferenceScreen".equals(tagName)) {
                 throw new RuntimeException(
                         "XML document must start with <PreferenceScreen> tag; found"
                                 + tagName + " at " + xmlParser.getPositionDescription());
@@ -251,15 +255,15 @@ public class SearchPopulator extends IntentService {
             attributeSet = Xml.asAttributeSet(((XmlPullParser)xmlParser));
 
             while ((type = xmlParser.next()) != XmlPullParser.END_DOCUMENT) {
-                if(type == XmlPullParser.END_TAG && xmlParser.getDepth() <= nodeDepth) {
+                if (type == XmlPullParser.END_TAG && xmlParser.getDepth() <= nodeDepth) {
                     continue;
                 }
 
-                if(type == XmlPullParser.END_TAG) {
+                if (type == XmlPullParser.END_TAG) {
                     continue;
                 }
 
-                if(type == XmlPullParser.TEXT) {
+                if (type == XmlPullParser.TEXT) {
                     continue;
                 }
 
@@ -276,43 +280,58 @@ public class SearchPopulator extends IntentService {
                     if (title.resourceId != 0) {
                         preferenceTitle = getResources().getString(title.resourceId);
                     } else {
-                        preferenceTitle = (String) title.string;
+                        preferenceTitle = title.string.toString();
                     }
                 }
 
-                boolean excludeFromSearch = se.getBoolean(com.android.settings.R.styleable.SearchableInfo_excludeFromSearch, false);
+                boolean excludeFromSearch = se.getBoolean(
+                        com.android.settings.R.styleable.SearchableInfo_excludeFromSearch, false);
                 if (excludeFromSearch) {
                     continue;
                 }
+
                 String fragment = sa.getString(com.android.internal.R.styleable.Preference_fragment);
                 int subXmlId = se.getResourceId(
                         com.android.settings.R.styleable.SearchableInfo_includeXmlForSearch, 0);
+
                 if (subXmlId != 0 && !TextUtils.isEmpty(fragment)) {
-                    populateFromXml(subXmlId, null, level + 1, header.iconRes, fragment, title.resourceId);
-                    dbHelper.insertEntry(preferenceTitle, level, fragment, header.iconRes, getString(titleRes));
+                    populateFromXml(subXmlId, null, level + 1, header.iconRes,
+                            fragment, title.resourceId);
+                    dbHelper.insertEntry(preferenceTitle, level, fragment,
+                            header.iconRes, getString(titleRes));
                 } else if (header != null) {
                     header.title = preferenceTitle;
                     header.titleRes = 0;
                     dbHelper.insertHeader(header);
                 } else {
-                    dbHelper.insertEntry(preferenceTitle, level, prefFragment, iconRes, getString(titleRes));
+                    dbHelper.insertEntry(preferenceTitle, level, prefFragment,
+                            iconRes, getString(titleRes));
                 }
+
+                sa.recycle();
+                se.recycle();
             }
-        } catch(IOException v38) {
-            v38.printStackTrace();
-        } catch(Throwable v3) {
-            v3.printStackTrace();
+        } catch (IOException e) {
+            // ignored
         }
     }
 
-    public static ArrayList<SearchInfo> getTitles(Context ctx) {
-        SettingsSearchDatabaseHelper dbHelper = SettingsSearchDatabaseHelper.getInstance(ctx);
+    public static ArrayList<SearchInfo> loadSearchData(Context context) {
+        SettingsSearchDatabaseHelper dbHelper = SettingsSearchDatabaseHelper.getInstance(context);
         SQLiteDatabase database = dbHelper.getReadableDatabase();
         Cursor c = database.query(DatabaseContract.TABLE_NAME, null, null, null, null, null, null);
         ArrayList<SearchInfo> infos = new ArrayList<SearchInfo>();
+
         if (c != null) {
+            int levelIndex = c.getColumnIndex(DatabaseContract.Settings.ACTION_LEVEL);
+            int fragmentIndex = c.getColumnIndex(DatabaseContract.Settings.ACTION_FRAGMENT);
+            int titleIndex = c.getColumnIndex(DatabaseContract.Settings.ACTION_TITLE);
+            int iconIndex = c.getColumnIndex(DatabaseContract.Settings.ACTION_ICON);
+            int parentIndex = c.getColumnIndex(DatabaseContract.Settings.ACTION_PARENT_TITLE);
+            int headerIndex = c.getColumnIndex(DatabaseContract.Settings.ACTION_HEADER);
+
             while (c.moveToNext()) {
-                byte[] data = c.getBlob(c.getColumnIndex(DatabaseContract.Settings.ACTION_HEADER));
+                byte[] data = c.getBlob(headerIndex);
                 SearchInfo info = new SearchInfo();
                 if (data != null) {
                     Parcel p = Parcel.obtain();
@@ -323,29 +342,29 @@ public class SearchPopulator extends IntentService {
                     h.readFromParcel(p);
                     info.header = h;
                 }
-                info.level = c.getInt(c.getColumnIndex(DatabaseContract.Settings.ACTION_LEVEL));
-                info.fragment = c.getString(c.getColumnIndex(DatabaseContract.Settings.ACTION_FRAGMENT));
-                info.title = c.getString(c.getColumnIndex(DatabaseContract.Settings.ACTION_TITLE));
-                info.iconRes = c.getInt(c.getColumnIndex(DatabaseContract.Settings.ACTION_ICON));
-                info.parentTitle = c.getString(c.getColumnIndex(DatabaseContract.Settings.ACTION_PARENT_TITLE));
+                info.level = c.getInt(levelIndex);
+                info.fragment = c.getString(fragmentIndex);
+                info.title = c.getString(titleIndex);
+                info.iconRes = c.getInt(iconIndex);
+                info.parentTitle = c.getString(parentIndex);
                 infos.add(info);
             }
             c.close();
         }
+
         return infos;
     }
 
     /**
      * Get a 32 bit hashcode for the given package.
-     * @param pkg
+     * @param packageName
      * @return
      */
-    private int getPackageHashCode() {
+    private int getPackageHashCode(String packageName) {
         PackageInfo pInfo;
         try {
-            pInfo = getPackageManager().getPackageInfo(getBasePackageName(), 0);
+            pInfo = getPackageManager().getPackageInfo(packageName, 0);
         } catch (NameNotFoundException e) {
-            e.printStackTrace();
             return 0;
         }
 
@@ -368,7 +387,7 @@ public class SearchPopulator extends IntentService {
             long crc = entry.getCrc();
             if (crc == -1) Log.e(TAG, "Unable to get CRC for " + path);
             return ByteBuffer.allocate(8).putLong(crc).array();
-        } catch (Exception e) {
+        } catch (IOException e) {
         } finally {
             if (zfile != null) {
                 try {
