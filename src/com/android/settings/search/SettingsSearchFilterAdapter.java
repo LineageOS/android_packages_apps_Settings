@@ -51,7 +51,7 @@ public class SettingsSearchFilterAdapter extends ArrayAdapter<SearchInfo> implem
         public String fragment;
         public String title;
         public int iconRes;
-        public String parentTitle;
+        public int parentTitle;
     }
 
     public SettingsSearchFilterAdapter(Context context, int resourceId,
@@ -97,9 +97,12 @@ public class SettingsSearchFilterAdapter extends ArrayAdapter<SearchInfo> implem
                 holder.titleView.setText(info.title);
             }
             if (holder.parentView != null) {
-                holder.parentView.setText(info.parentTitle);
-                holder.parentView.setVisibility(
-                        info.parentTitle != null ? View.VISIBLE : View.GONE);
+                if (info.parentTitle != 0) {
+                    holder.parentView.setText(info.parentTitle);
+                    holder.parentView.setVisibility(View.VISIBLE);
+                } else {
+                    holder.parentView.setVisibility(View.GONE);
+                }
             }
         }
         return v;
