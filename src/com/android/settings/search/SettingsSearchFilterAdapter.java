@@ -20,7 +20,9 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.preference.PreferenceActivity.Header;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +46,7 @@ public class SettingsSearchFilterAdapter extends ArrayAdapter<SearchInfo> implem
     private Context mContext;
     private Resources mResources;
     private Drawable mDefaultIcon;
+    private int mMatchHighlightColor;
 
     public static class SearchInfo {
         public Header header;
@@ -53,6 +56,9 @@ public class SettingsSearchFilterAdapter extends ArrayAdapter<SearchInfo> implem
         public int iconRes;
         public int parentTitle;
         public String key;
+
+        private int mMatchStart;
+        private int mMatchEnd;
     }
 
     public SettingsSearchFilterAdapter(Context context, int resourceId,
@@ -64,6 +70,7 @@ public class SettingsSearchFilterAdapter extends ArrayAdapter<SearchInfo> implem
         mResId = resourceId;
         mResources = mContext.getResources();
         mDefaultIcon = mResources.getDrawable(R.drawable.default_search_icon);
+        mMatchHighlightColor = mResources.getColor(R.color.search_match_highlight_foreground);
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -95,7 +102,15 @@ public class SettingsSearchFilterAdapter extends ArrayAdapter<SearchInfo> implem
                 holder.imageView.setImageDrawable(d);
             }
             if (holder.titleView != null) {
-                holder.titleView.setText(info.title);
+                if (info.mMatchStart >= 0 && info.mMatchEnd >= 0) {
+                    SpannableStringBuilder titleSpan = new SpannableStringBuilder(info.title);
+                    ForegroundColorSpan span = new ForegroundColorSpan(mMatchHighlightColor);
+                    titleSpan.setSpan(span, info.mMatchStart, info.mMatchEnd,
+                            SpannableStringBuilder.SPAN_INCLUSIVE_EXCLUSIVE);
+                    holder.titleView.setText(titleSpan);
+                } else {
+                    holder.titleView.setText(info.title);
+                }
             }
             if (holder.parentView != null) {
                 if (info.parentTitle != 0) {
@@ -159,8 +174,30 @@ public class SettingsSearchFilterAdapter extends ArrayAdapter<SearchInfo> implem
                     SearchInfo item = mOriginalValues.get(i);
                     String title = item.title.toString().toLowerCase();
                     String filteredTitle = removeNonAlphaNumeric(title);
-                    if (title.contains(actualConstraint) ||
-                            filteredTitle.contains(filteredConstraint)) {
+
+                    item.mMatchStart = -1;
+                    item.mMatchEnd = -1;
+
+                    int pos = filteredTitle.indexOf(filteredConstraint);
+                    if (pos != -1) {
+                        int unfilteredLen = title.length();
+                        int filteredLen = filteredTitle.length();
+                        int constraintLen = filteredConstraint.length();
+                        for (int ufIndex = pos, fIndex = pos;
+                                ufIndex < unfilteredLen && fIndex < filteredLen; ufIndex++) {
+                            if (title.charAt(ufIndex) != filteredTitle.charAt(fIndex)) {
+                                continue;
+                            }
+                            if (fIndex == pos) {
+                                item.mMatchStart = ufIndex;
+                            }
+                            if (fIndex == pos + constraintLen - 1) {
+                                item.mMatchEnd = ufIndex + 1;
+                                break;
+                            }
+                            fIndex++;
+                        }
+
                         newValues.add(item);
                     }
                 }
