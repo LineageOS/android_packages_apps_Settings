@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba0121b8_ee264715",
+        "filename": "src/com/android/settings/search/LocaleChangedReceiver.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-07-02T05:29:24Z",
+      "side": 1,
+      "message": "This can be collapsed to\n\nif (Intent.ACTION_LOCALE_CHANGED.equals(intent.getAction())) {\n\nI don\u0027t think intent can be null here.",
+      "revId": "f82cabefc631bfb2e92d12b7541f093c83430296",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
