@@ -332,22 +332,19 @@ public class SearchPopulator extends IntentService {
             int keyIndex = c.getColumnIndex(DatabaseContract.Settings.ACTION_KEY);
             while (c.moveToNext()) {
                 byte[] data = c.getBlob(headerIndex);
-                SearchInfo info = new SearchInfo();
+                Header header = null;
                 if (data != null) {
                     Parcel p = Parcel.obtain();
                     p.setDataPosition(0);
                     p.unmarshall(data, 0, data.length);
                     p.setDataPosition(0);
-                    Header h = new Header();
-                    h.readFromParcel(p);
-                    info.header = h;
+                    header = new Header();
+                    header.readFromParcel(p);
                 }
-                info.level = c.getInt(levelIndex);
-                info.fragment = c.getString(fragmentIndex);
-                info.title = c.getString(titleIndex);
-                info.iconRes = c.getInt(iconIndex);
-                info.parentTitle = c.getInt(parentIndex);
-                info.key = c.getString(keyIndex);
+
+                SearchInfo info = new SearchInfo(header,
+                        c.getInt(levelIndex), c.getString(fragmentIndex), c.getString(titleIndex),
+                        c.getInt(iconIndex), c.getInt(parentIndex), c.getString(keyIndex));
                 infos.add(info);
             }
             c.close();
