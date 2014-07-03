@@ -656,6 +656,13 @@ public class Utils {
         }
     }
 
+    public static float convertDpToPixel(float dp, Context context){
+        Resources resources = context.getResources();
+        DisplayMetrics metrics = resources.getDisplayMetrics();
+        float px = dp * (metrics.densityDpi / 160f);
+        return px;
+    }
+
     private static final String getProfileDisplayName(Context context) {
         final ContentResolver cr = context.getContentResolver();
         final Cursor profile = cr.query(Profile.CONTENT_URI,

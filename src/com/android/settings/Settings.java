@@ -267,8 +267,16 @@ public class Settings extends PreferenceActivity
 
         new PopulateSearchSettingsTask().execute();
 
-        ActionBar.LayoutParams layout = new ActionBar.LayoutParams(
-                ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
+        ActionBar.LayoutParams layout;
+
+        if (!Utils.isTablet(this)) {
+            layout = new ActionBar.LayoutParams(
+                    ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
+        } else {
+            layout = new ActionBar.LayoutParams(
+                    (int) Utils.convertDpToPixel(450, this), ActionBar.LayoutParams.MATCH_PARENT);
+        }
+
         mSearchBar.setLayoutParams(layout);
         mSearchBar.setHint(R.string.settings_search_autocompleteview_hint);
         mSearchBar.setThreshold(1);
