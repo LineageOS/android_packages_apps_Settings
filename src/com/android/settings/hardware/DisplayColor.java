@@ -232,7 +232,8 @@ public class DisplayColor extends DialogPreference {
             mValue = value;
             mIndex = index;
 
-            mSeekBar.setMax(DisplayColorCalibration.getMaxValue());
+            mSeekBar.setMax(DisplayColorCalibration.getMaxValue() -
+                    DisplayColorCalibration.getMinValue());
             mSeekBar.setOnSeekBarChangeListener(this);
         }
 
@@ -242,13 +243,14 @@ public class DisplayColor extends DialogPreference {
 
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            int min = DisplayColorCalibration.getMinValue();
+            int max = DisplayColorCalibration.getMaxValue();
+
             if (fromUser) {
-                mCurrentColors[mIndex] = String.valueOf(progress);
+                mCurrentColors[mIndex] = String.valueOf(progress + min);
                 DisplayColorCalibration.setColors(TextUtils.join(" ", mCurrentColors));
             }
 
-            int min = DisplayColorCalibration.getMinValue();
-            int max = DisplayColorCalibration.getMaxValue();
             int percent = Math.round(100F * progress / (max - min));
             mValue.setText(String.format("%d%%", percent));
         }
