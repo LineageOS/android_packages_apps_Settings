@@ -433,6 +433,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         final int defaultBrightness = context.getResources().getInteger(
                 com.android.internal.R.integer.config_buttonBrightnessSettingDefault);
+        int currentBrightness = Settings.System.getInt(context.getContentResolver(),
+                Settings.System.BUTTON_BRIGHTNESS, defaultBrightness);
 
         Settings.System.putInt(context.getContentResolver(),
                 Settings.System.DEV_FORCE_SHOW_NAVBAR, enabled ? 1 : 0);
@@ -442,8 +444,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         Editor editor = prefs.edit();
 
         if (enabled) {
-            int currentBrightness = Settings.System.getInt(context.getContentResolver(),
-                    Settings.System.BUTTON_BRIGHTNESS, defaultBrightness);
             if (!prefs.contains("pre_navbar_button_backlight")) {
                 editor.putInt("pre_navbar_button_backlight", currentBrightness);
             }
@@ -452,7 +452,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         } else {
             Settings.System.putInt(context.getContentResolver(),
                     Settings.System.BUTTON_BRIGHTNESS,
-                    prefs.getInt("pre_navbar_button_backlight", defaultBrightness));
+                    prefs.getInt("pre_navbar_button_backlight", currentBrightness));
             editor.remove("pre_navbar_button_backlight");
         }
         editor.commit();
