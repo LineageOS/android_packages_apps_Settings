@@ -638,10 +638,12 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
         final int installedServiceInfoCount = installedServiceInfos.size();
         for (int i = 0; i < installedServiceInfoCount; i++) {
             ResolveInfo resolveInfo = installedServiceInfos.get(i).getResolveInfo();
-            ComponentName installedService = new ComponentName(
-                    resolveInfo.serviceInfo.packageName,
-                    resolveInfo.serviceInfo.name);
-            installedServices.add(installedService);
+            if (resolveInfo != null && resolveInfo.serviceInfo != null) {
+                ComponentName installedService = new ComponentName(
+                        resolveInfo.serviceInfo.packageName,
+                        resolveInfo.serviceInfo.name);
+                installedServices.add(installedService);
+            }
         }
     }
 }
