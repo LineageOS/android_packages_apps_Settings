@@ -46,6 +46,7 @@ import static android.net.TrafficStats.MB_IN_BYTES;
 import static android.net.TrafficStats.UID_REMOVED;
 import static android.net.TrafficStats.UID_TETHERING;
 import static android.telephony.TelephonyManager.SIM_STATE_READY;
+import static android.telephony.TelephonyManager.PHONE_TYPE_CDMA;
 import static android.text.format.DateUtils.FORMAT_ABBREV_MONTH;
 import static android.text.format.DateUtils.FORMAT_SHOW_DATE;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -2367,8 +2368,8 @@ public class DataUsageSummary extends Fragment {
         final ConnectivityManager conn = ConnectivityManager.from(context);
         final TelephonyManager tele = TelephonyManager.from(context);
 
-        // require both supported network and ready SIM
-        return conn.isNetworkSupported(TYPE_MOBILE) && tele.getSimState() == SIM_STATE_READY;
+        // require both supported network and ready SIM or CDMA phone
+        return conn.isNetworkSupported(TYPE_MOBILE) && (tele.getSimState() == SIM_STATE_READY || tele.getPhoneType() == PHONE_TYPE_CDMA);
     }
 
     /**
