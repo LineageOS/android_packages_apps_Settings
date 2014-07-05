@@ -267,9 +267,10 @@ public class Settings extends PreferenceActivity
 
         new PopulateSearchSettingsTask().execute();
 
-        ActionBar.LayoutParams layout = new ActionBar.LayoutParams(
-                ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
-        mSearchBar.setLayoutParams(layout);
+        ActionBar.LayoutParams layoutParams = new ActionBar.LayoutParams(
+                ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.MATCH_PARENT);
+
+        mSearchBar.setLayoutParams(layoutParams);
         mSearchBar.setHint(R.string.settings_search_autocompleteview_hint);
         mSearchBar.setThreshold(1);
         mSearchBar.setOnItemClickListener(this);
