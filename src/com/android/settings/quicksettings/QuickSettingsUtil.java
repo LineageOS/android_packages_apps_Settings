@@ -21,6 +21,7 @@ import static com.android.internal.util.cm.QSConstants.TILE_AIRPLANE;
 import static com.android.internal.util.cm.QSConstants.TILE_AUTOROTATE;
 import static com.android.internal.util.cm.QSConstants.TILE_BATTERY;
 import static com.android.internal.util.cm.QSConstants.TILE_BLUETOOTH;
+import static com.android.internal.util.cm.QSConstants.TILE_BLUETOOTH_TETHERING;
 import static com.android.internal.util.cm.QSConstants.TILE_BRIGHTNESS;
 import static com.android.internal.util.cm.QSConstants.TILE_CAMERA;
 import static com.android.internal.util.cm.QSConstants.TILE_COMPASS;
@@ -82,6 +83,9 @@ public class QuickSettingsUtil {
                 "com.android.systemui:drawable/ic_qs_battery_neutral"));
         registerTile(new QuickSettingsUtil.TileInfo(
                 TILE_BLUETOOTH, R.string.title_tile_bluetooth,
+                "com.android.systemui:drawable/ic_qs_bluetooth_on"));
+        registerTile(new QuickSettingsUtil.TileInfo(
+                TILE_BLUETOOTH_TETHERING, R.string.title_tile_bluetooth_tethering,
                 "com.android.systemui:drawable/ic_qs_bluetooth_on"));
         registerTile(new QuickSettingsUtil.TileInfo(
                 TILE_BRIGHTNESS, R.string.title_tile_brightness,
