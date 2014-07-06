@@ -30,7 +30,7 @@ public class SettingsSearchDatabaseHelper extends SQLiteOpenHelper {
     // general database configuration and tables
     private static final String sDatabaseName = "search.db";
 
-    protected static final int DATABASE_VERSION = 2;
+    protected static final int DATABASE_VERSION = 3;
     private Context mContext;
 
     public static SettingsSearchDatabaseHelper getInstance(Context context) {
