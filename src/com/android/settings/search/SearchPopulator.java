@@ -57,7 +57,8 @@ public class SearchPopulator extends IntentService {
     public static final String EXTRA_NOTIFIER = "notifier";
     public static final String EXTRA_PREF_KEY = "pref_key";
 
-    protected static final String LAST_PACKAGE_HASH = "last_package_hash";
+    private static final String LAST_PACKAGE_HASH = "last_package_hash";
+    private static final String LAST_LOCALE = "last_locale";
 
     public SearchPopulator() {
         super(TAG);
@@ -70,10 +71,15 @@ public class SearchPopulator extends IntentService {
                 getPackageName(), Context.MODE_PRIVATE);
         int lastHash = sharedPreferences.getInt(LAST_PACKAGE_HASH, -1);
         int currentHash = getPackageHashCode(getBasePackageName());
+        String lastLocale = sharedPreferences.getString(LAST_LOCALE, null);
+        String currentLocale = getResources().getConfiguration().locale.toString();
 
-        if (lastHash != currentHash) {
+        if (lastHash != currentHash || !TextUtils.equals(lastLocale, currentLocale)) {
             populateDatabase();
-            sharedPreferences.edit().putInt(LAST_PACKAGE_HASH, currentHash).commit();
+            sharedPreferences.edit()
+                    .putInt(LAST_PACKAGE_HASH, currentHash)
+                    .putString(LAST_LOCALE, currentLocale)
+                    .commit();
         }
         notifier.send(0, null);
     }
