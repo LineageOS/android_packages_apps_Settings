@@ -23,6 +23,12 @@
         android:title="@string/status_bar_show_clock_title"
         android:defaultValue="true" />
 
+   <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+        android:key="status_bar_clock_centered"
+        android:dependency="status_bar_clock"
+        android:title="@string/status_bar_center_clock_title"
+        android:defaultValue="false" />
+
     <ListPreference
         android:key="status_bar_battery"
         android:dialogTitle="@string/status_bar_battery_title"
