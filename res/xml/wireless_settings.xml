@@ -42,6 +42,13 @@
         android:summary="@string/nfc_quick_toggle_summary"
         android:persistent="false" />
 
+    <ListPreference
+        android:key="nfc_polling_mode"
+        android:title="@string/nfc_polling_mode_title"
+        android:entries="@array/nfc_polling_mode_entries"
+        android:entryValues="@array/nfc_polling_mode_values"
+        android:persistent="false" />
+
     <PreferenceScreen
         android:fragment="com.android.settings.nfc.AndroidBeam"
         android:key="android_beam_settings"
