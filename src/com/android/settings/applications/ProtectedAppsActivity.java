@@ -20,20 +20,51 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
 import com.android.settings.R;
+import com.android.settings.cyanogenmod.HiddenAppsReceiver;
 import com.android.settings.cyanogenmod.ProtectedAppsReceiver;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ProtectedAppsActivity extends Activity {
+    public static HashSet<ComponentName> getComponentList(Context context, String settingName) {
+        String components = Settings.Secure.getString(context.getContentResolver(), settingName);
+        HashSet<ComponentName> cmponentList = new HashSet<ComponentName>();
+
+        if (components != null) {
+            for (String flattened : components.split("\\|")) {
+                ComponentName cmp = ComponentName.unflattenFromString(flattened);
+                if (cmp != null) {
+                    cmponentList.add(cmp);
+                }
+            }
+        }
+        return cmponentList;
+    }
+
+    public static void putComponentList(Context context, String settingName,
+            HashSet<ComponentName> componentList) {
+
+        StringBuilder flattenedList = new StringBuilder();
+        for (ComponentName cmp : componentList) {
+            if (flattenedList.length() > 0) {
+                flattenedList.append("|");
+            }
+            flattenedList.append(cmp.flattenToString());
+        }
+        Settings.Secure.putString(context.getContentResolver(), settingName,
+                flattenedList.toString());
+    }
+
     private static final int REQ_ENTER_PATTERN = 1;
     private static final int REQ_RESET_PATTERN = 2;
 
@@ -49,6 +80,9 @@ public class ProtectedAppsActivity extends Activity {
     private ArrayList<ComponentName> mProtect;
 
     private boolean mWaitUserAuth = false;
+
+    // True if protected apps are handled, false for hidden apps
+    protected boolean mIsProtectedApps = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,9 +100,11 @@ public class ProtectedAppsActivity extends Activity {
 
         mProtect = new ArrayList<ComponentName>();
 
-        // Require unlock
-        Intent lockPattern = new Intent(this, LockPatternActivity.class);
-        startActivityForResult(lockPattern, REQ_ENTER_PATTERN);
+        if (mIsProtectedApps) {
+            // Require unlock
+            Intent lockPattern = new Intent(this, LockPatternActivity.class);
+            startActivityForResult(lockPattern, REQ_ENTER_PATTERN);
+        }
     }
 
     @Override
@@ -105,12 +141,17 @@ public class ProtectedAppsActivity extends Activity {
     }
 
     private boolean getProtectedStateFromComponentName(ComponentName componentName) {
-        PackageManager pm = getPackageManager();
+        if (mIsProtectedApps) {
+            PackageManager pm = getPackageManager();
 
-        try {
-            return pm.getApplicationInfo(componentName.getPackageName(), 0).protect;
-        } catch (PackageManager.NameNotFoundException e) {
-            return false;
+            try {
+                return pm.getApplicationInfo(componentName.getPackageName(), 0).protect;
+            } catch (PackageManager.NameNotFoundException e) {
+                return false;
+            }
+        } else {
+            return getComponentList(this, Settings.Secure.HIDDEN_COMPONENTS)
+                    .contains(componentName);
         }
     }
 
@@ -138,7 +179,8 @@ public class ProtectedAppsActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.add(0, MENU_RESET, 0, R.string.menu_hidden_apps_delete)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
-        menu.add(0, MENU_RESET_LOCK, 0, R.string.menu_hidden_apps_reset_lock)
+        if (mIsProtectedApps)
+            menu.add(0, MENU_RESET_LOCK, 0, R.string.menu_hidden_apps_reset_lock)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
         return true;
     }
@@ -151,7 +193,8 @@ public class ProtectedAppsActivity extends Activity {
         // but do not respond to the queryIntentActivities for Launcher Category
         ContentResolver resolver = getContentResolver();
         String hiddenComponents = Settings.Secure.getString(resolver,
-                Settings.Secure.PROTECTED_COMPONENTS);
+                mIsProtectedApps ? Settings.Secure.PROTECTED_COMPONENTS
+                        : Settings.Secure.HIDDEN_COMPONENTS);
 
         if (hiddenComponents != null && !hiddenComponents.equals("")) {
             for (String flattened : hiddenComponents.split("\\|")) {
@@ -259,8 +302,12 @@ public class ProtectedAppsActivity extends Activity {
         @Override
         protected Void doInBackground(final AppProtectList... args) {
             for (AppProtectList appList : args) {
-                ProtectedAppsReceiver.updateProtectedAppComponentsAndNotify(mContext,
+                if (mIsProtectedApps)
+                    ProtectedAppsReceiver.updateProtectedAppComponentsAndNotify(mContext,
                         appList.componentNames, appList.state);
+                else
+                    HiddenAppsReceiver.updateHiddenAppComponentsAndNotify(mContext,
+                            appList.componentNames, appList.state);
             }
 
             return null;
