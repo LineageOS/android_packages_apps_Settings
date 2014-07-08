@@ -17,6 +17,7 @@
 package com.android.settings;
 
 import com.android.settings.wifi.WifiApEnabler;
+import com.android.settings.wifi.WifiApEnablerSwitch;
 import com.android.settings.wifi.WifiApDialog;
 
 import android.app.Activity;
@@ -67,6 +68,7 @@ public class TetherSettings extends SettingsPreferenceFragment
 
     private static final String USB_TETHER_SETTINGS = "usb_tether_settings";
     private static final String ENABLE_WIFI_AP = "enable_wifi_ap";
+    private static final String ENABLE_WIFI_AP_SWITCH = "enable_wifi_ap_switch";
     private static final String ENABLE_BLUETOOTH_TETHERING = "enable_bluetooth_tethering";
 
     private static final int DIALOG_AP_SETTINGS = 1;
@@ -75,7 +77,9 @@ public class TetherSettings extends SettingsPreferenceFragment
     private CheckBoxPreference mUsbTether;
 
     private WifiApEnabler mWifiApEnabler;
+    private WifiApEnablerSwitch mWifiApEnablerSwitch;
     private CheckBoxPreference mEnableWifiAp;
+    private HotspotPreference mEnableWifiApSwitch;
 
     private CheckBoxPreference mBluetoothTether;
     private StorageManager mStorageManager = null;
@@ -115,12 +119,13 @@ public class TetherSettings extends SettingsPreferenceFragment
     /* Stores the package name and the class name of the provisioning app */
     private String[] mProvisionApp;
     private static final int PROVISION_REQUEST = 0;
+    private boolean mShowHotspotSetting;
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.tether_prefs);
-
+        mShowHotspotSetting = getResources().getBoolean(R.bool.show_wifi_hotspot_settings);
         final Activity activity = getActivity();
         mContext = activity;
         BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
@@ -129,9 +134,16 @@ public class TetherSettings extends SettingsPreferenceFragment
                     BluetoothProfile.PAN);
         }
 
-        mEnableWifiAp =
-                (CheckBoxPreference) findPreference(ENABLE_WIFI_AP);
-        Preference wifiApSettings = findPreference(WIFI_AP_SSID_AND_SECURITY);
+        if (mShowHotspotSetting) {
+            mEnableWifiApSwitch =
+                    (HotspotPreference) findPreference(ENABLE_WIFI_AP_SWITCH);
+            getPreferenceScreen().removePreference(findPreference(ENABLE_WIFI_AP));
+            getPreferenceScreen().removePreference(findPreference(WIFI_AP_SSID_AND_SECURITY));
+        } else {
+            mEnableWifiAp =
+                    (CheckBoxPreference) findPreference(ENABLE_WIFI_AP);
+            getPreferenceScreen().removePreference(findPreference(ENABLE_WIFI_AP_SWITCH));
+        }
         mUsbTether = (CheckBoxPreference) findPreference(USB_TETHER_SETTINGS);
         mBluetoothTether = (CheckBoxPreference) findPreference(ENABLE_BLUETOOTH_TETHERING);
 
@@ -152,11 +164,20 @@ public class TetherSettings extends SettingsPreferenceFragment
         }
 
         if (wifiAvailable && !Utils.isMonkeyRunning()) {
-            mWifiApEnabler = new WifiApEnabler(activity, mEnableWifiAp);
-            initWifiTethering();
+            if (mShowHotspotSetting) {
+                mWifiApEnablerSwitch = new WifiApEnablerSwitch(activity, mEnableWifiApSwitch);
+            } else {
+                mWifiApEnabler = new WifiApEnabler(activity, mEnableWifiAp);
+                initWifiTethering();
+            }
         } else {
-            getPreferenceScreen().removePreference(mEnableWifiAp);
-            getPreferenceScreen().removePreference(wifiApSettings);
+            if (mEnableWifiAp != null) {
+                getPreferenceScreen().removePreference(mEnableWifiAp);
+            }
+            if (mEnableWifiApSwitch != null) {
+                getPreferenceScreen().removePreference(mEnableWifiApSwitch);
+            }
+            getPreferenceScreen().removePreference(findPreference(WIFI_AP_SSID_AND_SECURITY));
         }
 
         if (!bluetoothAvailable) {
@@ -311,7 +332,10 @@ public class TetherSettings extends SettingsPreferenceFragment
         activity.registerReceiver(mTetherChangeReceiver, filter);
 
         if (intent != null) mTetherChangeReceiver.onReceive(activity, intent);
-        if (mWifiApEnabler != null) {
+        if (mShowHotspotSetting) {
+            mEnableWifiApSwitch.setOnPreferenceChangeListener(this);
+            mWifiApEnablerSwitch.resume();
+        } else {
             mEnableWifiAp.setOnPreferenceChangeListener(this);
             mWifiApEnabler.resume();
         }
@@ -324,7 +348,10 @@ public class TetherSettings extends SettingsPreferenceFragment
         super.onStop();
         getActivity().unregisterReceiver(mTetherChangeReceiver);
         mTetherChangeReceiver = null;
-        if (mWifiApEnabler != null) {
+        if (mShowHotspotSetting) {
+            mEnableWifiApSwitch.setOnPreferenceChangeListener(null);
+            mWifiApEnablerSwitch.pause();
+        } else {
             mEnableWifiAp.setOnPreferenceChangeListener(null);
             mWifiApEnabler.pause();
         }
@@ -463,7 +490,11 @@ public class TetherSettings extends SettingsPreferenceFragment
         if (enable) {
             startProvisioningIfNecessary(WIFI_TETHERING);
         } else {
-            mWifiApEnabler.setSoftapEnabled(false);
+            if (mShowHotspotSetting) {
+                mWifiApEnablerSwitch.setSoftapEnabled(false);
+            } else {
+                mWifiApEnabler.setSoftapEnabled(false);
+            }
         }
         return false;
     }
@@ -510,7 +541,11 @@ public class TetherSettings extends SettingsPreferenceFragment
     private void startTethering() {
         switch (mTetherChoice) {
             case WIFI_TETHERING:
-                mWifiApEnabler.setSoftapEnabled(true);
+                if (mShowHotspotSetting) {
+                    mWifiApEnablerSwitch.setSoftapEnabled(true);
+                } else {
+                    mWifiApEnabler.setSoftapEnabled(true);
+                }
                 break;
             case BLUETOOTH_TETHERING:
                 // turn on Bluetooth first
