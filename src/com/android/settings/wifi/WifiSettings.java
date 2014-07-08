@@ -124,6 +124,7 @@ public class WifiSettings extends RestrictedSettingsFragment
     // Activity result when pressing the Skip button
     private static final int RESULT_SKIP = Activity.RESULT_FIRST_USER;
 
+    private boolean mSetDefTrustAPFlag = false;
     private final IntentFilter mFilter;
     private final BroadcastReceiver mReceiver;
     private final Scanner mScanner;
@@ -952,9 +953,9 @@ public class WifiSettings extends RestrictedSettingsFragment
 
     private void SetAPCategory(AccessPoint accessPoint, PreferenceCategory screen) {
         if (AccessPoint.isCarrierAp(accessPoint, getActivity())) {
-            if (accessPoint.getState() != null
-                    && (accessPoint.getState() == DetailedState.CONNECTING
-                    || accessPoint.getState() == DetailedState.CONNECTED)) {
+            if (mSetDefTrustAPFlag && accessPoint.getState() != null
+                    && accessPoint.getState() == DetailedState.CONNECTED) {
+                mSetDefTrustAPFlag = false;
                 sharedPreference = getActivity().getSharedPreferences(
                         TABLE_DEFAULT_CREDIBLE, Context.MODE_PRIVATE);
                 sharedPreference.edit().putInt(accessPoint.ssid,
@@ -1020,6 +1021,9 @@ public class WifiSettings extends RestrictedSettingsFragment
                     WifiManager.EXTRA_NETWORK_INFO);
             mConnected.set(info.isConnected());
             changeNextButtonState(info.isConnected());
+            if (info.isConnected()) {
+                mSetDefTrustAPFlag = true;
+            }
             updateAccessPoints();
             updateConnectionState(info.getDetailedState());
             if (mAutoFinishOnConnection && info.isConnected()) {
