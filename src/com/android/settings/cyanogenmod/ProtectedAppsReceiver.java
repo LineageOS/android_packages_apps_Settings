@@ -2,12 +2,13 @@ package com.android.settings.cyanogenmod;
 
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.provider.Settings;
 import android.util.Log;
+
+import com.android.settings.applications.ProtectedOrHiddenAppsActivity;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -56,34 +57,16 @@ public class ProtectedAppsReceiver extends BroadcastReceiver {
 
     public static void updateSettingsSecure(Context context,
             ArrayList<ComponentName> components, boolean state) {
-        ContentResolver resolver = context.getContentResolver();
-        String hiddenComponents = Settings.Secure.getString(resolver,
-                Settings.Secure.PROTECTED_COMPONENTS);
-        HashSet<ComponentName> newComponentList = new HashSet<ComponentName>();
-
-        if (hiddenComponents != null) {
-            for (String flattened : hiddenComponents.split("\\|")) {
-                ComponentName cmp = ComponentName.unflattenFromString(flattened);
-                if (cmp != null) {
-                    newComponentList.add(cmp);
-                }
-            }
-        }
+        HashSet<ComponentName> newComponentList = ProtectedOrHiddenAppsActivity.getComponentList(
+                context, Settings.Secure.PROTECTED_COMPONENTS);
 
         boolean update = state == PackageManager.COMPONENT_PROTECTED_STATUS
             ? newComponentList.addAll(components)
             : newComponentList.removeAll(components);
 
         if (update) {
-            StringBuilder flattenedList = new StringBuilder();
-            for (ComponentName cmp : newComponentList) {
-                if (flattenedList.length() > 0) {
-                    flattenedList.append("|");
-                }
-                flattenedList.append(cmp.flattenToString());
-            }
-            Settings.Secure.putString(resolver, Settings.Secure.PROTECTED_COMPONENTS,
-                    flattenedList.toString());
+            ProtectedOrHiddenAppsActivity.putComponentList(context,
+                    Settings.Secure.HIDDEN_COMPONENTS, newComponentList);
         }
     }
 
