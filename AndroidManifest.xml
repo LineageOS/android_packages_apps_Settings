@@ -1854,5 +1854,23 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
+        <activity-alias
+            android:name=".wifi.HotspotSettings"
+            android:uiOptions="splitActionBarWhenNarrow"
+            android:clearTaskOnLaunch="true"
+            android:exported="true"
+            android:label="@string/wifi_tether_checkbox_text"
+            android:targetActivity="Settings$TetherSettingsActivity" >
+        </activity-alias>
+
+        <activity
+            android:name=".wifi.HotspotSettingsHelp"
+            android:clearTaskOnLaunch="true"
+            android:exported="true"
+            android:label="@string/hotspot_settings_menu_help"
+            android:targetActivity="Settings$TetherSettingsActivity" >
+        </activity>
+
     </application>
 </manifest>
