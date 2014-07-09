@@ -115,6 +115,7 @@
                 android:defaultValue="true" />
 
             <CheckBoxPreference
+                settings:excludeFromSearch="true"
                 android:key="double_tap_wake_gesture"
                 android:title="@string/double_tap_to_wake_title"
                 android:defaultValue="false" />
@@ -137,6 +138,7 @@
                 android:entryValues="@array/screen_animation_style_values" />
 
             <com.android.settings.hardware.DisplayColor
+                settings:excludeFromSearch="true"
                 android:key="color_calibration"
                 android:title="@string/color_calibration_title"
                 android:dialogTitle="@string/color_calibration_title"
@@ -144,6 +146,7 @@
                 android:persistent="false" />
 
             <com.android.settings.hardware.DisplayGamma
+                settings:excludeFromSearch="true"
                 android:key="gamma_tuning"
                 android:title="@string/gamma_tuning_title_head"
                 android:dialogTitle="@string/gamma_tuning_title_head"
