@@ -75,6 +75,9 @@
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_2g3g">2G/3G</string>
+  <string name="settings_search_action_bar_button">Buscar</string>
+  <string name="settings_search_autocompleteview_hint">Buscar ajustes</string>
+  <string name="settings_search_loading_text">Cargando datos de búsqueda\u2026</string>
   <string name="profile_connectionoverrides_title">Conectividad</string>
   <string name="profile_volumeoverrides_title">Volumen</string>
   <string name="connection_state_disabled">Deshabilitado</string>
@@ -146,6 +149,7 @@
   <string name="icon_picker_pack_title">Paquete de iconos</string>
   <string name="display_lights_settings_title">Pantalla y leds</string>
   <string name="lights_category_title">Leds</string>
+  <string name="notification_light_title">Luz de notificación</string>
   <string name="notification_light_general_title">General</string>
   <string name="notification_light_applist_title">Aplicaciones</string>
   <string name="notification_light_phonelist_title">Teléfono</string>
@@ -589,6 +593,8 @@ Tocando de forma prolongada cada línea se mostrarán opciones adicionales. Sele
   <string name="navigation_bar_reset_toast">Barra de navegación restablecida</string>
   <string name="navigation_bar_menu_editable">Editable</string>
   <string name="navigation_bar_menu_locked">Bloqueada</string>
+  <string name="navigation_bar_arrow_keys_title">Botones de dirección</string>
+  <string name="navigation_bar_arrow_keys_summary">Mostrar botones de dirección durante la escritura</string>
   <string name="navigation_ring_title">Accesos rápidos</string>
   <string name="navring_target_reset_message">¿Eliminar todos los accesos rápidos creados y restablecer a valores por defecto?</string>
   <string name="navring_target_reset">Accesos rápidos restablecidos</string>
@@ -675,7 +681,7 @@ Tocando de forma prolongada cada línea se mostrarán opciones adicionales. Sele
   <string name="confirm_delete_apn">El APN será eliminado.</string>
   <string name="status_bar_title">Barra de estado</string>
   <string name="status_bar_show_clock_title">Mostrar reloj</string>
-  <string name="status_bar_battery_title">Estilo batería</string>
+  <string name="status_bar_battery_title">Estilo de batería</string>
   <string name="status_bar_style_icon_portrait">Icono vertical</string>
   <string name="status_bar_style_icon_landscape">Icono horizontal</string>
   <string name="status_bar_style_circle">Circular</string>
@@ -874,4 +880,13 @@ Tocando de forma prolongada cada línea se mostrarán opciones adicionales. Sele
   <string name="menu_hidden_apps_reset_lock">Reestablecer patrón de bloqueo</string>
   <string name="protected_apps">Aplicaciones protegidas</string>
   <string name="saving_protected_components">Guardar el estado del componente\u2026</string>
+  <string name="keep_screen_on_summary_cm">La pantalla nunca se apagará mientras esté conectado</string>
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="one">Estás a <xliff:g id="step_count">%1$d</xliff:g> paso de habilitar los ajustes de desarrollo.</item>
+    <item quantity="other">Estás a <xliff:g id="step_count">%1$d</xliff:g> pasos de habilitar los ajustes de desarrollo.</item>
+  </plurals>
+  <string name="show_dev_on_cm">¡Los ajustes de desarrollo están habilitados!</string>
+  <string name="show_dev_already_cm">No es necesario, los ajustes de desarrollo ya están habilitados.</string>
+  <string name="enable_adb_cm">Depuración</string>
+  <string name="enable_adb_summary_cm">Habilitar Android Debug Bridge (adb)</string>
 </resources>

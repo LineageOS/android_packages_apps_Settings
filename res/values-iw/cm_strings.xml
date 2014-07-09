@@ -75,6 +75,9 @@
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_2g3g">2G/3G</string>
+  <string name="settings_search_action_bar_button">חיפוש</string>
+  <string name="settings_search_autocompleteview_hint">הגדרות חיפוש</string>
+  <string name="settings_search_loading_text">טוען נתוני חיפוש\u2026</string>
   <string name="profile_connectionoverrides_title">עקיפת חיבור</string>
   <string name="profile_volumeoverrides_title">עקיפת עוצמת שמע</string>
   <string name="connection_state_disabled">השבת</string>
@@ -146,6 +149,7 @@
   <string name="icon_picker_pack_title">אוסף סמלים</string>
   <string name="display_lights_settings_title">תצוגה ונוריות</string>
   <string name="lights_category_title">נוריות</string>
+  <string name="notification_light_title">אור להתראה</string>
   <string name="notification_light_general_title">כללי</string>
   <string name="notification_light_applist_title">יישומים</string>
   <string name="notification_light_phonelist_title">טלפון</string>
@@ -433,12 +437,12 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="pref_force_highend_gfx_summary">אפשר אפקטים ויזואליים מתקדמים כמו ברים שקופים (דורש אתחול)</string>
   <string name="kill_app_longpress_back">הרוג יישום עם לחצן חזור</string>
   <string name="kill_app_longpress_back_summary">הרוג יישום נראה על ידי לחיצה ארוכה על כפתור חזור</string>
-  <string name="changelog_title">צפה ברשימת השינויים</string>
+  <string name="changelog_title">יומן שינוים</string>
   <string name="changelog_loading">טוען יומן שינויים\u2026</string>
   <string name="changelog_error">אין אפשרות לטעון את רשימת השינויים</string>
   <string name="changelog_unknown">לא ידוע</string>
   <string name="changelog_version">גרסה</string>
-  <string name="contributor_cloud_title">תצוגת התורמים</string>
+  <string name="contributor_cloud_title">תורמים</string>
   <string name="cmupdate_settings_title">עדכוני CyanogenMod</string>
   <string name="cmupdate_settings_summary">חפש, הצג או התקן עדכונים זמינים</string>
   <string name="advanced_settings_title">מתקדם</string>
@@ -602,6 +606,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="navigation_bar_reset_toast">הגדרות בר ניווט שוחזרו לברירת מחדל</string>
   <string name="navigation_bar_menu_editable">ניתן לעריכה</string>
   <string name="navigation_bar_menu_locked">נעול</string>
+  <string name="navigation_bar_arrow_keys_title">מקשי סמן בעת הקלדה</string>
+  <string name="navigation_bar_arrow_keys_summary">הצג לחצני הזזת סמן שמאלה וימינה בזמן הקלדה</string>
   <string name="navigation_ring_title">קיצורי דרך של הפעלה מהירה</string>
   <string name="navring_target_reset_message">מחוק את כל קיצורי דרך בבר ניווט שנוצרו על ידי המשתמש ושחזר לברירת מחדל?</string>
   <string name="navring_target_reset">קיצורי בר ניווט אופסו לברירת מחדל</string>
@@ -887,4 +893,13 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="menu_hidden_apps_reset_lock">אפס נעילת דפוס</string>
   <string name="protected_apps">יישומים מוגנים</string>
   <string name="saving_protected_components">שמירת מצב רכיב\u2026</string>
+  <string name="keep_screen_on_summary_cm">המסך לא יכבה בטעינה</string>
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="one">אתה במרחק של צעד אחד מהפעלת אפשרויות מפתח.</item>
+    <item quantity="other">אתה במרחק של <xliff:g id="step_count">%1$d</xliff:g> צעדים מהפעלת אפשרויות מפתח.</item>
+  </plurals>
+  <string name="show_dev_on_cm">הפעלת אפשרויות מפתח!</string>
+  <string name="show_dev_already_cm">אין צורך, הפעלת כבר אפשרויות מפתח.</string>
+  <string name="enable_adb_cm">‏ניקוי באגים ב-USB</string>
+  <string name="enable_adb_summary_cm">הפעל ממשק adb</string>
 </resources>
