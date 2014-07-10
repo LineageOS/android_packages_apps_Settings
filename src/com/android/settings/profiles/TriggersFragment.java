@@ -24,6 +24,7 @@ import android.app.Profile.ProfileTrigger;
 import android.app.Profile.TriggerType;
 import android.app.ProfileManager;
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothClass;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -101,8 +102,13 @@ public class TriggersFragment extends SettingsPreferenceFragment implements Acti
     }
 
     private void initPreference(AbstractTriggerPreference pref, int state, Resources res, int icon) {
-        String summary = res.getStringArray(R.array.profile_trigger_wifi_options)[state];
-        pref.setSummary(summary);
+        String[] values = res.getStringArray(R.array.profile_trigger_wifi_options_values);
+        for(int i = 0; i < values.length; i++) {
+            if (Integer.parseInt(values[i]) == state) {
+                pref.setSummary(res.getStringArray(R.array.profile_trigger_wifi_options)[i]);
+                break;
+            }
+        }
         pref.setTriggerState(state);
         pref.setIcon(icon);
     }
@@ -161,7 +167,13 @@ public class TriggersFragment extends SettingsPreferenceFragment implements Acti
                 if (o1.getTriggerState() == o2.getTriggerState()) {
                     return o1.compareTo(o2);
                 }
-                return o1.getTriggerState() < o2.getTriggerState() ? -1 : 1;
+                if (o1.getTriggerState() == Profile.TriggerState.DISABLED) {
+                    return 1;
+                } else if (o2.getTriggerState() == Profile.TriggerState.DISABLED) {
+                    return -1;
+                } else {
+                    return o1.getTriggerState() < o2.getTriggerState() ? -1 : 1;
+                }
             }
         });
         for (Preference pref: prefs) {
@@ -183,35 +195,77 @@ public class TriggersFragment extends SettingsPreferenceFragment implements Acti
         return super.onPreferenceTreeClick(screen, preference);
     }
 
+    private class Trigger {
+        int value;
+        String name;
+    }
+
+    private void removeTrigger(List<Trigger> triggers, int value) {
+        for(Trigger t : triggers) {
+            if (t.value == value) {
+                triggers.remove(t);
+                return;
+            }
+        }
+    }
+
     @Override
     public Dialog onCreateDialog(final int dialogId) {
         final String id;
         final String triggerName = mSelectedTrigger.getTitle().toString();
         final int triggerType;
+        String[] entries = getResources().getStringArray(R.array.profile_trigger_wifi_options);
+        String[] values = getResources().getStringArray(R.array.profile_trigger_wifi_options_values);
+        List<Trigger> triggers = new ArrayList<Trigger>(entries.length);
+        for(int i = 0; i < entries.length; i++) {
+            Trigger toAdd = new Trigger();
+            toAdd.value = Integer.parseInt(values[i]);
+            toAdd.name = entries[i];
+            triggers.add(toAdd);
+        }
 
         switch (dialogId) {
             case WIFI_TRIGGER:
                 WifiTriggerAPPreference pref = (WifiTriggerAPPreference) mSelectedTrigger;
                 id = pref.getSSID();
                 triggerType = Profile.TriggerType.WIFI;
+                removeTrigger(triggers, Profile.TriggerState.ON_A2DP_CONNECT);
+                removeTrigger(triggers, Profile.TriggerState.ON_A2DP_DISCONNECT);
                 break;
             case BT_TRIGGER:
                 BluetoothTriggerPreference btpref = (BluetoothTriggerPreference) mSelectedTrigger;
                 id = btpref.getAddress();
                 triggerType = Profile.TriggerType.BLUETOOTH;
+                BluetoothDevice dev = mBluetoothAdapter.getRemoteDevice(id);
+                if (!dev.getBluetoothClass().doesClassMatch(BluetoothClass.PROFILE_A2DP)) {
+                    removeTrigger(triggers, Profile.TriggerState.ON_A2DP_CONNECT);
+                    removeTrigger(triggers, Profile.TriggerState.ON_A2DP_DISCONNECT);
+                }
                 break;
             default:
                 return super.onCreateDialog(dialogId);
         }
 
+        entries = new String[triggers.size()];
+        final int[] valueInts = new int[triggers.size()];
+        int currentTrigger = mProfile.getTrigger(triggerType, id);
+        int currentItem = -1;
+        for(int i = 0; i < triggers.size(); i++) {
+            Trigger t = triggers.get(i);
+            entries[i] = t.name;
+            valueInts[i] = t.value;
+            if (valueInts[i] == currentTrigger) {
+                currentItem = i;
+            }
+        }
         return new AlertDialog.Builder(getActivity())
                 .setTitle(R.string.profile_trigger_configure)
-                .setSingleChoiceItems(R.array.profile_trigger_wifi_options,
-                        mProfile.getTrigger(triggerType, id),
+                .setSingleChoiceItems(entries,
+                        currentItem,
                         new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        mProfile.setTrigger(triggerType, id, which, triggerName);
+                        mProfile.setTrigger(triggerType, id, valueInts[which], triggerName);
                         mProfileManager.updateProfile(mProfile);
                         loadPreferences();
                         dialog.dismiss();
