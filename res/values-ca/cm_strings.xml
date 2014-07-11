@@ -75,6 +75,9 @@
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_2g3g">2G/3G</string>
+  <string name="settings_search_action_bar_button">Cerca</string>
+  <string name="settings_search_autocompleteview_hint">Configuració de la cerca</string>
+  <string name="settings_search_loading_text">S\'estan carregant les dades de cerca\u2026</string>
   <string name="profile_connectionoverrides_title">Substitueix Connexió</string>
   <string name="profile_volumeoverrides_title">Substitueix Volum</string>
   <string name="connection_state_disabled">Desactiva</string>
@@ -146,6 +149,7 @@
   <string name="icon_picker_pack_title">Paquet d\'icones</string>
   <string name="display_lights_settings_title">Pantalla i llums</string>
   <string name="lights_category_title">Llums</string>
+  <string name="notification_light_title">Llum de notificació</string>
   <string name="notification_light_general_title">General</string>
   <string name="notification_light_applist_title">Apps</string>
   <string name="notification_light_phonelist_title">Telèfon</string>
@@ -421,12 +425,12 @@ Hi ha disponibles opcions addicionals apretant llargament sobre la línia. Selec
   <string name="pref_force_highend_gfx_summary">Habilita els efectes visuals d\'alta gamma com ara la barra d\'estat/navegació transparent (necessita reiniciar)</string>
   <string name="kill_app_longpress_back">Mata amb la tecla enrera l\'app</string>
   <string name="kill_app_longpress_back_summary">Mata l\'app en primer pla fent una pulsació llarga del botó enrera</string>
-  <string name="changelog_title">Veure el registre de canvis</string>
+  <string name="changelog_title">Registre de canvis</string>
   <string name="changelog_loading">S\'està carregant el registre de canvis\u2026</string>
   <string name="changelog_error">No s\'ha pogut carregar el registre de canvis</string>
   <string name="changelog_unknown">Desconegut</string>
   <string name="changelog_version">Versió</string>
-  <string name="contributor_cloud_title">Veure els contribuidors</string>
+  <string name="contributor_cloud_title">Contribuïdors</string>
   <string name="cmupdate_settings_title">Actualitzacions CyanogenMod</string>
   <string name="cmupdate_settings_summary">Verifica, mostra o instal·la les actualitzacions disponibles</string>
   <string name="advanced_settings_title">Avançat</string>
@@ -590,6 +594,8 @@ Hi ha disponibles opcions addicionals apretant llargament sobre la línia. Selec
   <string name="navigation_bar_reset_toast">Reinicia als valors predeterminats de la barra de navegació</string>
   <string name="navigation_bar_menu_editable">Editable</string>
   <string name="navigation_bar_menu_locked">Bloquejat</string>
+  <string name="navigation_bar_arrow_keys_title">Tecles de direcció mentre s\'escriu</string>
+  <string name="navigation_bar_arrow_keys_summary">Mostra els botons de cursor a esquerra i dreta mentre s\'escriu</string>
   <string name="navigation_ring_title">Dreceres de llançament ràpid</string>
   <string name="navring_target_reset_message">Vols esborrar totes les dreceres de la barra de navegació creades per l\'usuari i restaurar les predeterminades?</string>
   <string name="navring_target_reset">Reinicia les dreceres de la barra de navegació a les predeterminades</string>
@@ -875,4 +881,13 @@ Hi ha disponibles opcions addicionals apretant llargament sobre la línia. Selec
   <string name="menu_hidden_apps_reset_lock">Reinicia el patró de bloqueig</string>
   <string name="protected_apps">Apps protegides</string>
   <string name="saving_protected_components">Desant l\'estat del component\u2026</string>
+  <string name="keep_screen_on_summary_cm">La pantalla no mai es posarà en repòs mentre estigui endollat</string>
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="one">Ara ets a <xliff:g id="step_count">%1$d</xliff:g> pas d\'habilitar les opcions de desenvolupament.</item>
+    <item quantity="other">Ara ets a <xliff:g id="step_count">%1$d</xliff:g> passos d\'habilitar les opcions de desenvolupament.</item>
+  </plurals>
+  <string name="show_dev_on_cm">Has habilitat les opcions desenvolupament!</string>
+  <string name="show_dev_already_cm">No fa falta, ja has activat opcions de desenvolupament.</string>
+  <string name="enable_adb_cm">Depuració Android</string>
+  <string name="enable_adb_summary_cm">Habilita la interfície del pont de depuració d\'Android (adb)</string>
 </resources>

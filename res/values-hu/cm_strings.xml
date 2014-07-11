@@ -75,6 +75,8 @@
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_2g3g">2G/3G</string>
+  <string name="settings_search_action_bar_button">Keresés</string>
+  <string name="settings_search_autocompleteview_hint">Keresési beállítások</string>
   <string name="profile_connectionoverrides_title">Kapcsolatok felülbírálása</string>
   <string name="profile_volumeoverrides_title">Hangok felülbírálása</string>
   <string name="connection_state_disabled">Letiltva</string>
@@ -146,7 +148,9 @@
   <string name="icon_picker_pack_title">Ikon csomag</string>
   <string name="display_lights_settings_title">Kijelző &amp; Fények</string>
   <string name="lights_category_title">Fények</string>
+  <string name="notification_light_title">Értesítési fény</string>
   <string name="notification_light_general_title">Általános</string>
+  <string name="notification_light_applist_title">Alkalmazások</string>
   <string name="notification_light_phonelist_title">Telefon</string>
   <string name="notification_light_use_custom">Egyéni érték használata</string>
   <string name="notification_light_enabled">Engedélyezve</string>
@@ -219,8 +223,11 @@
   <string name="summary_heads_up_enabled">Felugró értesítések engedélyezve</string>
   <string name="summary_heads_up_disabled">Felugró értesítések letiltva</string>
   <string name="add_heads_up_package">Alkalmazás hozzáadása</string>
+  <string name="add_heads_up_dnd_summary">Ne mutasson felugró értesítéseket ezekben az alkalmazásokban</string>
+  <string name="add_heads_up_blacklist_summary">Ne mutasson felugró értesítéseket ezektől az alkalmazásoktól</string>
   <string name="heads_up_dnd_title">Ne zavarj</string>
   <string name="heads_up_blacklist_title">Tiltólista</string>
+  <string name="heads_up_disabled_notice">Ahhoz, hogy az alkalmazások felugró ablakban jelenítsenek interaktív tartalmat, engedélyezze a felugró értesítések opciót.</string>
   <string name="title_tile_airplane">Repülőgép üzemmód</string>
   <string name="title_tile_battery">Akkumulátor állapota</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
@@ -343,6 +350,7 @@ Az \"Eltávolítás\" törli a kiválasztott sort.</string>
   <string name="app_security_title">Alkalmazásbiztonság</string>
   <string name="root_access">Rendszergazda hozzáférés</string>
   <string name="root_access_warning_title">Engedélyezi a rendszergazdai hozzáférést?</string>
+  <string name="root_access_warning_message">Veszélyes rendszergazda jogosultságot adni az alkalmazásoknak, és veszélyeztetheti a rendszere biztonságát!</string>
   <string name="root_access_none">Letiltva</string>
   <string name="root_access_apps">Csak alkalmazások</string>
   <string name="root_access_adb">Csak ADB</string>
@@ -425,12 +433,10 @@ Az \"Eltávolítás\" törli a kiválasztott sort.</string>
   <string name="pref_force_highend_gfx_summary">Magas minőségű grafikai effektek engedélyezése, mint az átlátszó állapot/navigációs sáv (újraindítás szükséges)</string>
   <string name="kill_app_longpress_back">Alkalmazás bezárás</string>
   <string name="kill_app_longpress_back_summary">Alkalmazás bezárása nyomva tartott vissza gombbal</string>
-  <string name="changelog_title">Változások megtekintése</string>
   <string name="changelog_loading">Változások betöltése\u2026</string>
   <string name="changelog_error">Nem lehet betölteni a változásokat</string>
   <string name="changelog_unknown">Ismeretlen</string>
   <string name="changelog_version">Verzió</string>
-  <string name="contributor_cloud_title">Közreműködők megtekintése</string>
   <string name="cmupdate_settings_title">CyanogenMod frissítések</string>
   <string name="cmupdate_settings_summary">Elérhető frissítések keresése, megtekintése, vagy telepítése</string>
   <string name="advanced_settings_title">Haladó</string>
@@ -541,6 +547,7 @@ Az \"Eltávolítás\" törli a kiválasztott sort.</string>
   <string name="lockscreen_target_reset_message">Biztosan vissza kívánja állítani az összes hivatkozást alaphelyzetbe?</string>
   <string name="lockscreen_target_empty">Üres</string>
   <string name="lockscreen_target_edit_title">Hivatkozás és ikon szerkesztése</string>
+  <string name="lockscreen_target_edit_msg">Válassza ki, vagy változtassa meg a kívánt alkalmazást vagy tevékenységet, és a hozzá társított ikont</string>
   <string name="picker_activities">Tevékenységek</string>
   <string name="select_custom_app_title">Válasszon egyedi alkalmazást</string>
   <string name="select_custom_activity_title">Válasszon egyedi tevékenységet</string>
@@ -593,6 +600,8 @@ Az \"Eltávolítás\" törli a kiválasztott sort.</string>
   <string name="navigation_bar_reset_toast">Navigációs sáv beállításai visszaállítva az alaphelyzetbe</string>
   <string name="navigation_bar_menu_editable">Szerkeszthető</string>
   <string name="navigation_bar_menu_locked">Zárolt</string>
+  <string name="navigation_bar_arrow_keys_title">Nyílbillentyűk gépelés közben</string>
+  <string name="navigation_bar_arrow_keys_summary">Mutassa a bal és jobb kurzort gépelés közben</string>
   <string name="navigation_ring_title">Gyorsindítás</string>
   <string name="navring_target_reset_message">Biztosan vissza kívánja állítani alaphelyzetbe a navigációs sáv összes hivatkozását?</string>
   <string name="navring_target_reset">Alapbeállítások visszaállítva</string>
@@ -678,7 +687,6 @@ Az \"Eltávolítás\" törli a kiválasztott sort.</string>
   <string name="setting_lockscreen_background">Háttérkép alkalmazása</string>
   <string name="confirm_delete_apn">Az APN törlődni fog.</string>
   <string name="status_bar_title">Értesítési sáv</string>
-  <string name="status_bar_show_clock_title">Óra megjelenítése</string>
   <string name="status_bar_battery_title">Akkumulátor állapotjelző stílusa</string>
   <string name="status_bar_style_icon_portrait">Álló ikon</string>
   <string name="status_bar_style_icon_landscape">Fekvő ikon</string>
@@ -711,8 +719,6 @@ Az \"Eltávolítás\" törli a kiválasztott sort.</string>
   <string name="battery_info_status_charging_dock_ac">(DockAC)</string>
   <string name="battery_info_status_charging_dock_usb">(DockUSB)</string>
   <string name="menu_stats_reset">Visszaállítás</string>
-  <string name="cmlicense_title">CyanogenMod Jogi nyilatkozat</string>
-  <string name="settings_cmlicense_activity_title">CyanogenMod Jogi nyilatkozat</string>
   <string name="settings_cmlicense_activity_unreachable">Nincs internet kapcsolat. Az információ megtekintéséhez, látogasson el a %s címre egy olyan számítógéppel, mely kapcsolódik az internethez.</string>
   <string name="stylus_icon_enabled_title">Ikon megjelenítése stylus használatakor</string>
   <string name="stylus_icon_enabled_summary">Toll használatakor megjelenít egy ikont az értesítési sávon</string>
@@ -872,9 +878,19 @@ Az \"Eltávolítás\" törli a kiválasztott sort.</string>
   <string name="priority_sub_title">Előfizetések prioritása</string>
   <string name="bluetooth_accept_all_files">Minden fájltípus elfogadása</string>
   <string name="autoperf_title">Automatikus profilválasztás engedélyezése</string>
+  <string name="autoperf_summary">Automatikus teljesítményprofil választás a különböző alkalmazások számára</string>
   <string name="graphics_title">Grafika és renderelés</string>
   <string name="menu_hidden_apps_delete">Visszaállítás</string>
   <string name="menu_hidden_apps_reset_lock">Minta visszaállítása</string>
   <string name="protected_apps">Védett alkalmazások</string>
   <string name="saving_protected_components">Összetevő állapotának mentése\u2026</string>
+  <string name="keep_screen_on_summary_cm">A képernyő soha nem kapcsol ki töltés során</string>
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="one"><xliff:g id="step_count">%1$d</xliff:g> lépésre van attól, hogy engedélyezze a fejlesztői beállításokat.</item>
+    <item quantity="other"><xliff:g id="step_count">%1$d</xliff:g> lépésre van attól, hogy engedélyezze a fejlesztői beállításokat.</item>
+  </plurals>
+  <string name="show_dev_on_cm">Sikeresen engedélyezte a fejlesztői beállításokat!</string>
+  <string name="show_dev_already_cm">Ön már korábban engedélyezte a fejlesztői beállításokat.</string>
+  <string name="enable_adb_cm">Android hibakeresés</string>
+  <string name="enable_adb_summary_cm">Engedélyezze az Android Debug Bridge (adb) felületet</string>
 </resources>

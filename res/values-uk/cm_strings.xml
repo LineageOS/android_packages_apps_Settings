@@ -21,6 +21,8 @@
   <string name="wifi_setting_countrycode_error">Під час налаштування коду регіону Wi-Fi виникла помилка.</string>
   <string name="wifi_setting_priority_title">Wi-Fi пріоритет</string>
   <string name="wifi_setting_priority_summary">Вкажіть пріоритет мереж Wi-Fi</string>
+  <string name="wifi_ssid_input_limit">SSID перевищує максимальну довжину</string>
+  <string name="p2p_device_name_input_limit">Задовге ім\'я P2P</string>
   <string name="change_crypt_password_title">Змінити пароль</string>
   <string name="change_crypt_password_summary">Змінити пароль, який використовується для шифрування пристрою</string>
   <string name="encryptionpassword_choose_your_password_header">Встановити пароль шифрування</string>
@@ -73,10 +75,14 @@
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_2g3g">2G/3G</string>
+  <string name="settings_search_action_bar_button">Пошук</string>
+  <string name="settings_search_autocompleteview_hint">Параметри пошуку</string>
+  <string name="settings_search_loading_text">Завантаження даних для пошуку\u2026</string>
   <string name="profile_connectionoverrides_title">Мережеві з’єднання</string>
   <string name="profile_volumeoverrides_title">Налаштування гучності</string>
   <string name="connection_state_disabled">Вимкнено</string>
   <string name="connection_state_enabled">Увімкнено</string>
+  <string name="volume_override_summary">Встановити %1$s/%2$s</string>
   <string name="profile_profiles_manage">Профілі</string>
   <string name="profile_profile_manage">Керування профілями</string>
   <string name="profile_appgroups_manage">Групи програм</string>
@@ -143,7 +149,9 @@
   <string name="icon_picker_pack_title">Набір значків</string>
   <string name="display_lights_settings_title">Екран &amp; індикація</string>
   <string name="lights_category_title">Індикація</string>
+  <string name="notification_light_title">Індикатор подій</string>
   <string name="notification_light_general_title">Головні</string>
+  <string name="notification_light_applist_title">Програми</string>
   <string name="notification_light_phonelist_title">Телефон</string>
   <string name="notification_light_use_custom">Власні значення</string>
   <string name="notification_light_enabled">Увімкнено</string>
@@ -153,6 +161,8 @@
   <string name="notification_light_voicemail_title">Голосова пошта</string>
   <string name="adaptive_backlight_title">Адаптивна яскравість</string>
   <string name="adaptive_backlight_summary">Інтелектуальна зміна яскравості екрану для збереження заряду акумулятора</string>
+  <string name="color_enhancement_title">Покращення кольору</string>
+  <string name="color_enhancement_summary">Динамічне покращення кольорів на екрані</string>
   <string name="wake_when_plugged_or_unplugged_title">Екран прокидається при підключені</string>
   <string name="wake_when_plugged_or_unplugged_summary">Екран прокидається при підключені до зарядного пристрою</string>
   <string name="screen_animation_off_title">Анімація вимкнення екрану</string>
@@ -186,6 +196,7 @@
   <string name="lockpattern_settings_enable_error_path_title">Показувати неправильний код</string>
   <string name="lockpattern_settings_enable_dots_title">Показувати точки</string>
   <string name="screen_security_category">Безпека екрану</string>
+  <string name="screen_security_summary">Переглянути або змінити параметри безпеки екрану блокування</string>
   <string name="unlock_menu_unlock_title">Розблоковувати кнопкою Меню</string>
   <string name="unlock_menu_unlock_summary">Натиск на кнопку Меню розблокує пристрій</string>
   <string name="unlock_home_unlock_title">Розблокувати кнопкою Дім</string>
@@ -209,11 +220,22 @@
   <string name="tile_choose_title">Виберіть плитку</string>
   <string name="title_qs_small_icons">Малі плитки</string>
   <string name="summary_qs_small_icons">Використовувати плитки меншого розміру для збільшення кількості стовпчиків</string>
+  <string name="category_heads_up">Спливаючі сповіщення</string>
+  <string name="summary_heads_up_enabled">Увімкнені</string>
+  <string name="summary_heads_up_disabled">Вимкнені</string>
+  <string name="add_heads_up_package">Додати програму</string>
+  <string name="add_heads_up_dnd_summary">Не показувати спливаючі сповіщення у цих програмах</string>
+  <string name="add_heads_up_blacklist_summary">Не показувати спливаючі сповіщення від цих програм</string>
+  <string name="heads_up_dnd_title">Не турбувати</string>
+  <string name="heads_up_blacklist_title">Чорний список</string>
+  <string name="heads_up_disabled_notice">Щоб відобразити нові повідомлень у вигляді спливаючих вікон вгорі екрану, включіть Спливаючі сповіщення.</string>
   <string name="title_tile_airplane">Режим польоту</string>
   <string name="title_tile_battery">Батарея</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Яскравість</string>
   <string name="title_tile_camera">Камера</string>
+  <string name="title_tile_compass">Компас</string>
+  <string name="title_tile_heads_up">Спливаючі сповіщення</string>
   <string name="title_tile_sleep">Сон</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Ліхтарик</string>
@@ -242,6 +264,7 @@
   <string name="title_dynamic_alarm">Будильник</string>
   <string name="title_dynamic_bugreport">Звіт про помилку</string>
   <string name="title_dynamic_dock_battery">Док батареї</string>
+  <string name="title_dynamic_equalizer">Еквалайзер</string>
   <string name="title_dynamic_ime">IME перемикач</string>
   <string name="title_dynamic_usbtether">USB-модем</string>
   <string name="title_dynamic_wifi">Дублювання екрану</string>
@@ -317,6 +340,7 @@
   <string name="app_security_title">Безпека програм</string>
   <string name="root_access">Root доступ</string>
   <string name="root_access_warning_title">Дозволити root доступ?</string>
+  <string name="root_access_warning_message">Дозвіл програмам отримувати root доступ може бути дуже небезпечним і ставить під загрозу безпеку вашої системи!</string>
   <string name="root_access_none">Вимкнено</string>
   <string name="root_access_apps">Тільки програми</string>
   <string name="root_access_adb">Тільки ADB</string>
@@ -338,6 +362,7 @@
   <string name="quiet_hours_dim_summary">Вимкнути світлові сповіщення</string>
   <string name="quiet_hours_haptic">Вимкнути відгук на натиск</string>
   <string name="quiet_hours_haptic_summary">Вимкнути відгук на натиск</string>
+  <string name="quiet_hours_active_period">Увімкнено від <xliff:g id="start">%1$s</xliff:g> до <xliff:g id="end">%2$s</xliff:g></string>
   <string name="quiet_hours_ringer_allow_all">Дзвонити для всіх</string>
   <string name="quiet_hours_ringer_allow_contacts">Дзвонити для всіх контактів</string>
   <string name="quiet_hours_ringer_allow_starred">Дзвонити для улюблених контактів</string>
@@ -398,12 +423,12 @@
   <string name="pref_force_highend_gfx_summary">Увімкнути високоякісні візуальні ефекти такі як прозорість рядка стану, панелі навігації (необхідне перезавантаження)</string>
   <string name="kill_app_longpress_back">Закрити програму</string>
   <string name="kill_app_longpress_back_summary">Довгий натиск на кнопку Назад закриє запущену програму</string>
-  <string name="changelog_title">Подивитися зміни</string>
+  <string name="changelog_title">Журнал змін</string>
   <string name="changelog_loading">Завантажується журнал змін\u2026</string>
   <string name="changelog_error">Не можу завантажити журнал змін</string>
   <string name="changelog_unknown">Невідомий</string>
   <string name="changelog_version">Версія</string>
-  <string name="contributor_cloud_title">Імена розробників</string>
+  <string name="contributor_cloud_title">Учасники</string>
   <string name="cmupdate_settings_title">Оновлення CyanogenMod</string>
   <string name="cmupdate_settings_summary">Перевірка та встановлення доступних оновлень</string>
   <string name="advanced_settings_title">Додаткові</string>
@@ -514,6 +539,7 @@
   <string name="lockscreen_target_reset_message">Видалити всі створені ярлики екрану блокування та встановити типові значення?</string>
   <string name="lockscreen_target_empty">Пусто</string>
   <string name="lockscreen_target_edit_title">Змінити ярлик та значок</string>
+  <string name="lockscreen_target_edit_msg">Виберіть необхідну дію чи програму і значок</string>
   <string name="picker_activities">Дії</string>
   <string name="select_custom_app_title">Вибрати власну програму</string>
   <string name="select_custom_activity_title">Вибрати власну дію</string>
@@ -556,6 +582,7 @@
   <string name="lockscreen_enable_modlock_title">Користувацький екран блокування</string>
   <string name="navigation_bar_category">Рядок навігації</string>
   <string name="navigation_bar_title">Кнопки і компонування</string>
+  <string name="navigation_bar_left_title">Режим для лівші</string>
   <string name="navigation_bar_left_summary">Показувати рядок навігації зліва в альбомній орієнтації</string>
   <string name="navigation_bar_help_text">1 - Для редагування, натисніть значок замка\n\n2 - Натисніть будь-яку кнопку, щоб задати чи змінити функціональність\n\n3 - Довгим натиском на будь-якій кнопці можна змінити її порядок\n\n4 - Для збереження натисніть на значок замка\n\n5 - Для скидання налаштувань натисніть кнопку скидання\n</string>
   <string name="navigation_bar_tips">\u2022 Одна дія може бути призначена тільки на одну кнопку\n\n\u2022 Кнопка Дім не може бути змінена\n\n\u2022 Бокові кнопки не можуть бути змінені</string>
@@ -565,6 +592,8 @@
   <string name="navigation_bar_reset_toast">Налаштування рядка навігації скинуто</string>
   <string name="navigation_bar_menu_editable">Режим редагування</string>
   <string name="navigation_bar_menu_locked">Заблоковано</string>
+  <string name="navigation_bar_arrow_keys_title">Клавіші зі стрілками при введенні тексту</string>
+  <string name="navigation_bar_arrow_keys_summary">Відображати кнопки переміщення курсору вліво або вправо при введенні</string>
   <string name="navigation_ring_title">Ярлики швидкого запуску</string>
   <string name="navring_target_reset_message">Вилучити всі налаштовані ярлики та повернутись до типових?</string>
   <string name="navring_target_reset">Ярлики відновлено до типових</string>
@@ -594,6 +623,7 @@
   <string name="power_menu_user_title">Переключення користувачів</string>
   <string name="power_menu_sound_title">Звукова панель</string>
   <string name="button_settings">Кнопки</string>
+  <string name="hardware_keys_power_key_title">Кнопка живлення</string>
   <string name="hardware_keys_home_key_title">Кнопка Дім</string>
   <string name="hardware_keys_menu_key_title">Кнопка Меню</string>
   <string name="hardware_keys_assist_key_title">Кнопка Пошук</string>
@@ -610,8 +640,12 @@
   <string name="hardware_keys_action_voice_search">Голосовий пошук</string>
   <string name="hardware_keys_action_in_app_search">Пошук в програмі</string>
   <string name="hardware_keys_action_launch_camera">Запуск камери</string>
+  <string name="power_end_call_title">Завершення виклику</string>
+  <string name="power_end_call_summary">Завершувати виклик натисканням кнопки живлення</string>
   <string name="button_wake_title">Вихід з режиму сну</string>
   <string name="home_wake_summary">Натискаючи кнопку додому пристрій прокидається</string>
+  <string name="home_answer_call_title">Відповісти</string>
+  <string name="home_answer_call_summary">Відповідати на дзвінок натисканням кнопки Додому</string>
   <string name="camera_wake_summary">Натискаючи кнопку камери пристрій прокидається</string>
   <string name="camera_sleep_on_release_title">Тимчасове прокидання</string>
   <string name="camera_sleep_on_release_summary">Наполовину натиснута кнопка буде тримати екран увімкненим</string>
@@ -658,6 +692,7 @@
   <string name="status_bar_signal_style_text">Текст</string>
   <string name="status_bar_toggle_brightness">Керування яскравістю</string>
   <string name="status_bar_toggle_brightness_summary">Регулювання яскравості ковзанням вліво/вправо по рядку стану</string>
+  <string name="status_bar_toggle_info">Недоступно при включеному авторегулюванні яскравості</string>
   <string name="status_bar_notif_count_title">Показувати кількість сповіщень</string>
   <string name="status_bar_notif_count_summary">Показувати кількість нових повідомлень у рядку стану</string>
   <string name="status_bar_double_tap_to_sleep_title">Вимикати екран при подвійному натисканні</string>
@@ -669,6 +704,8 @@
   <string name="storage_rescan_media_complete">Сканування завершено</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Налаштування шифрування SMS-повідомлень</string>
+  <string name="logger_title">Звіт про помилки</string>
+  <string name="logger_summary">Керування налаштуваннями журналу системних помилок</string>
   <string name="custom_runtime_warning_title">Увага</string>
   <string name="custom_runtime_warning_message">ART не підтримується CyanogenMod. Ця опція є експериментальною і може спричинити нестабільну роботу, помилки, втрату даних чи навіть перешкоджати завантаженні пристрою. Відвідайте сторінку «&lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Вхід в ART&lt;/a&gt;» (на англійській мові) для отримання детальних відомостей.&lt;br/&gt;&lt;br/&gt;Ми просимо не надсилати баг-репорти, якщо ви вибрали ART в якості середовища виконання системи.&lt;br/&gt;&lt;br/&gt;Ви дійсно хочете перезавантажити пристрій і перемкнути середовище виконання з «<xliff:g id="old" example="libdvm.so">%1$s</xliff:g>» на «<xliff:g id="new" example="libart.so">%2$s</xliff:g>»?</string>
   <string name="gps_download_data_wifi_only">Завантажувати дані GPS тільки через Wi-Fi</string>
@@ -692,6 +729,7 @@
   <string name="gestures_down_spen_title_head">Свайп вниз</string>
   <string name="gestures_long_spen_title_head">Довге натискання</string>
   <string name="gestures_double_spen_title_head">Подвійне натискання</string>
+  <string name="gestures_settings_header_title">Жести</string>
   <string name="gestures_action_empty">Немає дії</string>
   <string name="gestures_action_home">Додому</string>
   <string name="gestures_action_back">Назад</string>
@@ -835,5 +873,20 @@
   <string name="priority_sub_title">Пріоритет підписки</string>
   <string name="bluetooth_accept_all_files">Приймати всі типи файлів</string>
   <string name="autoperf_title">Профілі програм</string>
+  <string name="autoperf_summary">Автоматично перемикати профіль продуктивності в залежності від програми</string>
   <string name="graphics_title">Графіка та візуалізація</string>
+  <string name="menu_hidden_apps_delete">Скинути</string>
+  <string name="menu_hidden_apps_reset_lock">Скинути графічний ключ</string>
+  <string name="protected_apps">Заблоковані програми</string>
+  <string name="saving_protected_components">Збереження стану програм\u2026</string>
+  <string name="keep_screen_on_summary_cm">При підключеному джерелі живлення екран не відключається</string>
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="one">Залишився <xliff:g id="step_count">%1$d</xliff:g> крок для включення налаштувань для розробників.</item>
+    <item quantity="few">Залишилось <xliff:g id="step_count">%1$d</xliff:g> кроки для включення налаштувань для розробників.</item>
+    <item quantity="other">Залишилось <xliff:g id="step_count">%1$d</xliff:g> кроків для включення налаштувань для розробників.</item>
+  </plurals>
+  <string name="show_dev_on_cm">Налаштування для розробників активовані!</string>
+  <string name="show_dev_already_cm">Немає необхідності, параметри розробника вже увімкненні.</string>
+  <string name="enable_adb_cm">Налагодження Android</string>
+  <string name="enable_adb_summary_cm">Увімкнути інтерфейс Android Debug Bridge (ADB)</string>
 </resources>

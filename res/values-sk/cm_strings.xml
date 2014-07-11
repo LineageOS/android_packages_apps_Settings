@@ -75,6 +75,9 @@
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_2g3g">2G/3G</string>
+  <string name="settings_search_action_bar_button">Hľadať</string>
+  <string name="settings_search_autocompleteview_hint">Hľadať nastavenia</string>
+  <string name="settings_search_loading_text">Prebieha načítavanie údajov\u2026</string>
   <string name="profile_connectionoverrides_title">Prepísanie pripojení</string>
   <string name="profile_volumeoverrides_title">Prepísanie hlasitostí</string>
   <string name="connection_state_disabled">Zakázať</string>
@@ -146,6 +149,7 @@
   <string name="icon_picker_pack_title">Balík ikon</string>
   <string name="display_lights_settings_title">Displej &amp; svetlá</string>
   <string name="lights_category_title">Svetlá</string>
+  <string name="notification_light_title">Svetlo upozornenia</string>
   <string name="notification_light_general_title">Všeobecné</string>
   <string name="notification_light_applist_title">Aplikácie</string>
   <string name="notification_light_phonelist_title">Telefón</string>
@@ -419,12 +423,12 @@ Každý riadok v zozname jasu zodpovedá jednému <i>riadiacemu bodu</i> krivky 
   <string name="pref_force_highend_gfx_summary">Povoliť vizuálne efekty ako napríklad priehľadný stavový a priehľadný navigačný panel (vyžaduje reštart)</string>
   <string name="kill_app_longpress_back">Ukončiť aplikáciu tlačidlom Späť</string>
   <string name="kill_app_longpress_back_summary">Dlhé stlačenie tlačidla Späť ukončí aplikáciu na popredí</string>
-  <string name="changelog_title">Zobraziť zoznam zmien</string>
+  <string name="changelog_title">Zoznam zmien</string>
   <string name="changelog_loading">Načítavanie zoznamu zmien\u2026</string>
   <string name="changelog_error">Nemožno načítať zoznam zmien</string>
   <string name="changelog_unknown">Neznáme</string>
   <string name="changelog_version">Verzia</string>
-  <string name="contributor_cloud_title">Zobraziť prispievateľov</string>
+  <string name="contributor_cloud_title">Prispievatelia</string>
   <string name="cmupdate_settings_title">Aktualizácie CyanogenMod</string>
   <string name="cmupdate_settings_summary">Skontrolovať, zobraziť alebo nainštalovať dostupné aktualizácie</string>
   <string name="advanced_settings_title">Pokročilé</string>
@@ -588,6 +592,8 @@ Každý riadok v zozname jasu zodpovedá jednému <i>riadiacemu bodu</i> krivky 
   <string name="navigation_bar_reset_toast">Nastavenia navigačného panela boli obnovené na predvolené</string>
   <string name="navigation_bar_menu_editable">Upraviteľné</string>
   <string name="navigation_bar_menu_locked">Zakmnuté</string>
+  <string name="navigation_bar_arrow_keys_title">Šípky pri písaní</string>
+  <string name="navigation_bar_arrow_keys_summary">Zobraziť ľavé a pravé kurzorové tlačidlá pri písaní</string>
   <string name="navigation_ring_title">Odkazy rýchleho spustenia</string>
   <string name="navring_target_reset_message">Vymazať všetky používateľom vytvorené odkazy v navigačnom paneli a obnoviť do predvolených nastavení?</string>
   <string name="navring_target_reset">Odkazy navigačného panela boli obnovené</string>
@@ -873,4 +879,14 @@ Každý riadok v zozname jasu zodpovedá jednému <i>riadiacemu bodu</i> krivky 
   <string name="menu_hidden_apps_reset_lock">Obnoviť uzamknutie vzorom</string>
   <string name="protected_apps">Chránené aplikácie</string>
   <string name="saving_protected_components">Ukladanie stavu komponentu\u2026</string>
+  <string name="keep_screen_on_summary_cm">Obrazovka sa nevypne počas pripojenia k napájaniu</string>
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="one">Teraz ste <xliff:g id="step_count">%1$d</xliff:g> krok od povolenia možnosti pre vývojárov.</item>
+    <item quantity="few">Teraz ste <xliff:g id="step_count">%1$d</xliff:g> kroky od povolenia možnosti pre vývojárov.</item>
+    <item quantity="other">Teraz ste <xliff:g id="step_count">%1$d</xliff:g> krokov od povolenia možnosti pre vývojárov.</item>
+  </plurals>
+  <string name="show_dev_on_cm">Povolili ste možnosti pre vývojárov!</string>
+  <string name="show_dev_already_cm">Netreba, už ste povolili možnosti pre vývojárov.</string>
+  <string name="enable_adb_cm">Ladenie systému Android</string>
+  <string name="enable_adb_summary_cm">Povoliť rozhranie Android Debug Bridge (adb)</string>
 </resources>

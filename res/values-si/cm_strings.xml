@@ -75,6 +75,9 @@
   <string name="profile_networkmode_2g">2G පමණි</string>
   <string name="profile_networkmode_3g">3G පමණි</string>
   <string name="profile_networkmode_2g3g">2G හෝ 3G ස්වයංක්‍රීයව</string>
+  <string name="settings_search_action_bar_button">සොයන්න</string>
+  <string name="settings_search_autocompleteview_hint">සෙවීම් සැකසීම්</string>
+  <string name="settings_search_loading_text">සෙවීම් දත්ත පූරණයවෙමින්\u2026</string>
   <string name="profile_connectionoverrides_title">සම්බන්ධතා අතික්‍රමණ</string>
   <string name="profile_volumeoverrides_title">හඬ පරිමා අතික්‍රමණ</string>
   <string name="connection_state_disabled">අබලයි</string>
@@ -146,6 +149,7 @@
   <string name="icon_picker_pack_title">අයිකන පොදිය</string>
   <string name="display_lights_settings_title">සංදර්ශකය සහ දැල්වීම්</string>
   <string name="lights_category_title">දැල්වීම්</string>
+  <string name="notification_light_title">දැනුම්දීමේ එලිය</string>
   <string name="notification_light_general_title">ප්‍රධාන</string>
   <string name="notification_light_applist_title">යෙදුම්</string>
   <string name="notification_light_phonelist_title">දුරකථනය</string>
@@ -420,12 +424,12 @@
   <string name="pref_force_highend_gfx_summary">පාරදෘශ්‍ය තත්ව/සංචාලන තීරු වැනි උසස් නිමාවැති දෘශ්‍ය ආටෝප සබල කරන්න (නැවත පණගැන්වීමට අවශ්‍යයි)</string>
   <string name="kill_app_longpress_back">ආපසු බොත්තම යෙදුම නසයි</string>
   <string name="kill_app_longpress_back_summary">ආපසු බොත්තම දිගු එබීම මගින් පෙරබිම් යෙදුම නසා දමන්න</string>
-  <string name="changelog_title">වෙනස්කම් ලොගය පෙන්වන්න</string>
+  <string name="changelog_title">වෙනස්කම් ලොගය</string>
   <string name="changelog_loading">වෙනස්කම් ලොගය පූරණයවෙමින්\u2026</string>
   <string name="changelog_error">වෙනස්කම් ලොගය පූරණය කළනොහැක</string>
   <string name="changelog_unknown">නොදනී</string>
   <string name="changelog_version">අනුවාදය</string>
-  <string name="contributor_cloud_title">දායකයන් පෙන්වන්න</string>
+  <string name="contributor_cloud_title">ආධාරකරුවන්</string>
   <string name="cmupdate_settings_title">CyanogenMod යාවත්කාලීනයන්</string>
   <string name="cmupdate_settings_summary">ලබාගතහැකි යාවත්කාලීනයන් බැලීමට හෝ ස්ථාපනයට සලකුණු කරන්න</string>
   <string name="advanced_settings_title">උසස්</string>
@@ -589,6 +593,8 @@
   <string name="navigation_bar_reset_toast">සංචාලන තීරුවේ පෙරනිමි යළි පිහිටුවන්න</string>
   <string name="navigation_bar_menu_editable">සැකසියහැකි</string>
   <string name="navigation_bar_menu_locked">අගුළු දමා</string>
+  <string name="navigation_bar_arrow_keys_title">ටයිප් කරන අතරතුර ඊතල යතුරු</string>
+  <string name="navigation_bar_arrow_keys_summary">ටයිප් කරන අතරතුර වම් සහ දකුණු කර්සර බොත්තම් පෙන්වන්න</string>
   <string name="navigation_ring_title">ක්ෂණිකව දියත්වන කෙටිමං</string>
   <string name="navring_target_reset_message">පරිශීලක සෑදූ සංචාලන තීරු කෙටිමං සියල්ල මකාදමා ඒවායේ පෙරනිමි පිළිනගන්නද?</string>
   <string name="navring_target_reset">සංචාලන තීරුවේ කෙටිමං පෙරනිමි යළි පිහිටුවන්න</string>
@@ -674,7 +680,6 @@
   <string name="setting_lockscreen_background">පසුබිම යොදමින්</string>
   <string name="confirm_delete_apn">APNය මකා දැමෙනු ඇත.</string>
   <string name="status_bar_title">තත්ව තීරුව</string>
-  <string name="status_bar_show_clock_title">ඔරලෝසුව පෙන්වන්න</string>
   <string name="status_bar_battery_title">බැටරි තත්වයේ විලාසය</string>
   <string name="status_bar_style_icon_portrait">සිරස් අයිකන</string>
   <string name="status_bar_style_icon_landscape">තිරස් අයිකන</string>
@@ -874,4 +879,13 @@
   <string name="menu_hidden_apps_reset_lock">රටාව අගුල යළි පිහිටුවන්න</string>
   <string name="protected_apps">ආරක්ෂිත යෙදුම්</string>
   <string name="saving_protected_components">සංරචකයේ තත්වය සුරකිමින්\u2026</string>
+  <string name="keep_screen_on_summary_cm">පේනුගත කර ඇතිවිට තිරය කිසිවිටකත් නොනිදයි</string>
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="one">ඔබ දැන් වර්ධක විකල්ප සබල කිරීමට <xliff:g id="step_count">%1$d</xliff:g> පියවරක් එපිටින් සිටී.</item>
+    <item quantity="other">ඔබ දැන් වර්ධක විකල්ප සබල කිරීමට පියවර <xliff:g id="step_count">%1$d</xliff:g> ක් එපිටින් සිටී.</item>
+  </plurals>
+  <string name="show_dev_on_cm">ඔබ වර්ධක විකල්ප සබල කර ඇත!</string>
+  <string name="show_dev_already_cm">අනවශ්‍යය, ඔබ මේ වන විටත් වර්ධක විකල්ප සබල කර ඇත.</string>
+  <string name="enable_adb_cm">ඇන්ඩ්‍රොයිඩ් නිදොස් කරණය</string>
+  <string name="enable_adb_summary_cm">ඇන්ඩ්‍රොයිඩ් නිදොස් කරණ පාලම (adb) අතුරු මුහුණත සබල කරන්න</string>
 </resources>

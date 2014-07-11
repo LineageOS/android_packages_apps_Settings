@@ -75,6 +75,9 @@
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_2g3g">2G/3G</string>
+  <string name="settings_search_action_bar_button">Vyhledávání</string>
+  <string name="settings_search_autocompleteview_hint">Nastavení vyhledávání</string>
+  <string name="settings_search_loading_text">Načítání dat vyhledávání\u2026</string>
   <string name="profile_connectionoverrides_title">Jiné připojení</string>
   <string name="profile_volumeoverrides_title">Jiná hlasitost</string>
   <string name="connection_state_disabled">Zakázat</string>
@@ -146,6 +149,7 @@
   <string name="icon_picker_pack_title">Balík ikon</string>
   <string name="display_lights_settings_title">Zobrazení a světla</string>
   <string name="lights_category_title">Světla</string>
+  <string name="notification_light_title">Světelná signalizace</string>
   <string name="notification_light_general_title">Hlavní</string>
   <string name="notification_light_applist_title">Aplikace</string>
   <string name="notification_light_phonelist_title">Telefon</string>
@@ -428,12 +432,12 @@ jednotlivě měnit a tím zvětšit počet řídících bodů. „Odstranit“ s
   <string name="pref_force_highend_gfx_summary">Povolit nejkvalitnější vizuální efekty - například průhlednou stavovou/navigační lištu (vyžaduje pokročilý grafický čip a také restart)</string>
   <string name="kill_app_longpress_back">Vynucené ukončení aplikace</string>
   <string name="kill_app_longpress_back_summary">Dlouhým stiskem tlačítka zpět se provede ukončení aplikace na popředí</string>
-  <string name="changelog_title">Zobrazit seznam změn</string>
+  <string name="changelog_title">Seznam změn</string>
   <string name="changelog_loading">Načítá se seznam změn\u2026</string>
   <string name="changelog_error">Chyba při načítání seznamu změn</string>
   <string name="changelog_unknown">Neznámý</string>
   <string name="changelog_version">Verze</string>
-  <string name="contributor_cloud_title">Zobrazit přispěvatele</string>
+  <string name="contributor_cloud_title">Přispěvatelé</string>
   <string name="cmupdate_settings_title">Aktualizace CyanogenMod</string>
   <string name="cmupdate_settings_summary">Zjištění dostupnosti nové aktualizace</string>
   <string name="advanced_settings_title">Rozšířené</string>
@@ -597,6 +601,8 @@ jednotlivě měnit a tím zvětšit počet řídících bodů. „Odstranit“ s
   <string name="navigation_bar_reset_toast">Nastavení navigační lišty bylo obnoveno</string>
   <string name="navigation_bar_menu_editable">Možnost úprav</string>
   <string name="navigation_bar_menu_locked">Zamknutý</string>
+  <string name="navigation_bar_arrow_keys_title">Klávesy šipek při psaní</string>
+  <string name="navigation_bar_arrow_keys_summary">Zobrazit tlačítka pro kurzor vlevo a vpravo při psaní</string>
   <string name="navigation_ring_title">Zkratky rychlého spuštění</string>
   <string name="navring_target_reset_message">Odstranit všechny uživatelem vytvořené zkratky v navigační liště a obnovit do výchozího nastavení?</string>
   <string name="navring_target_reset">Zkratky navigační lišty obnoveny</string>
@@ -720,8 +726,8 @@ z <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> na <xliff:g id="new" exam
   <string name="battery_info_status_charging_dock_ac">(DokAC)</string>
   <string name="battery_info_status_charging_dock_usb">(DokUSB)</string>
   <string name="menu_stats_reset">Obnovit</string>
-  <string name="cmlicense_title">CyanogenMod právní ujednání</string>
-  <string name="settings_cmlicense_activity_title">CyanogenMod právní ujednání</string>
+  <string name="cmlicense_title">Právní ujednání CyanogenMod</string>
+  <string name="settings_cmlicense_activity_title">Právní ujednání CyanogenMod</string>
   <string name="settings_cmlicense_activity_unreachable">Zobrazit licenční ujednání není možné, protože není aktivní žádné datové připojení. Pro zobrazení tohoto ujednání navštivte prosím stránku %s z jakéhokoliv počítače, připojeného na internet.</string>
   <string name="stylus_icon_enabled_title">Zobrazit ikonu, když je použitý stylus</string>
   <string name="stylus_icon_enabled_summary">Zobrazit ikonu při najetí kurzoru nebo kreslení pomocí tužky</string>
@@ -887,4 +893,14 @@ z <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> na <xliff:g id="new" exam
   <string name="menu_hidden_apps_reset_lock">Obnovit gesto zámku</string>
   <string name="protected_apps">Chráněné aplikace</string>
   <string name="saving_protected_components">Ukládání stavu komponent\u2026</string>
+  <string name="keep_screen_on_summary_cm">Při připojení k napájení nevypínat obrazovku</string>
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="one">Jste <xliff:g id="step_count">%1$d</xliff:g> krok od povolení vývojářských nástrojů.</item>
+    <item quantity="few">Jste <xliff:g id="step_count">%1$d</xliff:g> kroky od povolení vývojářských nástrojů.</item>
+    <item quantity="other">Jste <xliff:g id="step_count">%1$d</xliff:g> kroků od povolení vývojářských nástrojů.</item>
+  </plurals>
+  <string name="show_dev_on_cm">Máte povolené možnosti vývojáře!</string>
+  <string name="show_dev_already_cm">Možnosti vývojáře jsou již povolené.</string>
+  <string name="enable_adb_cm">Ladění systému Android</string>
+  <string name="enable_adb_summary_cm">Povolit rozhraní Android Debug Bridge (adb)</string>
 </resources>

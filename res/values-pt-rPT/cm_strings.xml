@@ -75,6 +75,9 @@
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_2g3g">2G/3G</string>
+  <string name="settings_search_action_bar_button">Pesquisa</string>
+  <string name="settings_search_autocompleteview_hint">Definições de pesquisa</string>
+  <string name="settings_search_loading_text">A carregar os dados de pesquisa\u2026</string>
   <string name="profile_connectionoverrides_title">Substituições de ligação</string>
   <string name="profile_volumeoverrides_title">Substituições de volume</string>
   <string name="connection_state_disabled">Desativar</string>
@@ -146,6 +149,7 @@
   <string name="icon_picker_pack_title">Pacote de ícones</string>
   <string name="display_lights_settings_title">Ecrã &amp; Luzes</string>
   <string name="lights_category_title">Luzes</string>
+  <string name="notification_light_title">Luz de notificação</string>
   <string name="notification_light_general_title">Geral</string>
   <string name="notification_light_applist_title">Aplicações</string>
   <string name="notification_light_phonelist_title">Telémovel</string>
@@ -411,12 +415,12 @@
   <string name="pref_force_highend_gfx_summary">Ativa efeitos visuais de alta qualidade como barra de estado/navegação transparentes (requer reinicialização)</string>
   <string name="kill_app_longpress_back">Fechar aplicação no botão voltar</string>
   <string name="kill_app_longpress_back_summary">Mantendo pressionado o botão de voltar fecha a aplicação em primeiro plano</string>
-  <string name="changelog_title">Ver lista de alterações</string>
+  <string name="changelog_title">Lista de alterações</string>
   <string name="changelog_loading">A carregar lista de alterações\u2026</string>
   <string name="changelog_error">Ocorreu um problema a carregar a lista de alterações</string>
   <string name="changelog_unknown">Desconhecido</string>
   <string name="changelog_version">Versão</string>
-  <string name="contributor_cloud_title">Ver colaboradores</string>
+  <string name="contributor_cloud_title">Colaboradores</string>
   <string name="cmupdate_settings_title">Atualizações</string>
   <string name="cmupdate_settings_summary">Verificar, ver ou instalar atualizações disponíveis</string>
   <string name="advanced_settings_title">Avançadas</string>
@@ -580,6 +584,8 @@
   <string name="navigation_bar_reset_toast">Restaurar a barra de navegação para os valores de origem</string>
   <string name="navigation_bar_menu_editable">Alterável</string>
   <string name="navigation_bar_menu_locked">Bloqueado</string>
+  <string name="navigation_bar_arrow_keys_title">Mostrar setas do teclado enquanto digita</string>
+  <string name="navigation_bar_arrow_keys_summary">Mostrar as setas para a esquerda e para a direita na barra de navegação enquanto digita</string>
   <string name="navigation_ring_title">Atalhos de início rápido</string>
   <string name="navring_target_reset_message">Eliminar todos os atalhos criados pelo utilizador na barra de navegação e restaurar para os valores de origem?</string>
   <string name="navring_target_reset">Atalhos da barra de navegação restaurados aos seus valores de origem</string>
@@ -865,4 +871,13 @@
   <string name="menu_hidden_apps_reset_lock">Limpar o bloqueio padrão</string>
   <string name="protected_apps">Aplicações protegidas</string>
   <string name="saving_protected_components">A guardar o estado dos componentes\u2026</string>
+  <string name="keep_screen_on_summary_cm">O ecrã nunca entrará em suspensão durante o carregamento</string>
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="one">Está agora a <xliff:g id="step_count">%1$d</xliff:g> passo de ativar as opções de programador.</item>
+    <item quantity="other">Está agora a <xliff:g id="step_count">%1$d</xliff:g> passos de ativar as opções de programador.</item>
+  </plurals>
+  <string name="show_dev_on_cm">Ativou as opções de programador!</string>
+  <string name="show_dev_already_cm">Não é preciso, já ativou a opções de programador.</string>
+  <string name="enable_adb_cm">Depuração Android</string>
+  <string name="enable_adb_summary_cm">Ativar a interface \"Android Debug Bridge\" (adb)</string>
 </resources>

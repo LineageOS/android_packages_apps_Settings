@@ -75,10 +75,14 @@
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_2g3g">2G/3G</string>
+  <string name="settings_search_action_bar_button">Sök</string>
+  <string name="settings_search_autocompleteview_hint">Sök i inställningar</string>
+  <string name="settings_search_loading_text">Laddar sökdata\u2026</string>
   <string name="profile_connectionoverrides_title">Åsidosättningar av anslutning</string>
   <string name="profile_volumeoverrides_title">Åsidosättningar av volym</string>
   <string name="connection_state_disabled">Inaktivera</string>
   <string name="connection_state_enabled">Aktivera</string>
+  <string name="volume_override_summary">Ställ till %1$s/%2$s</string>
   <string name="profile_profiles_manage">Profiler</string>
   <string name="profile_profile_manage">Hantera profiler</string>
   <string name="profile_appgroups_manage">Appgrupper</string>
@@ -145,7 +149,9 @@
   <string name="icon_picker_pack_title">Ikonpaket</string>
   <string name="display_lights_settings_title">Skärm och ljus</string>
   <string name="lights_category_title">Ljus</string>
+  <string name="notification_light_title">Aviseringsljus</string>
   <string name="notification_light_general_title">Allmänt</string>
+  <string name="notification_light_applist_title">Appar</string>
   <string name="notification_light_phonelist_title">Telefon</string>
   <string name="notification_light_use_custom">Använd anpassade värden</string>
   <string name="notification_light_enabled">Aktiverat</string>
@@ -155,6 +161,8 @@
   <string name="notification_light_voicemail_title">Telefonsvarare</string>
   <string name="adaptive_backlight_title">Adaptivt bakgrundsljus</string>
   <string name="adaptive_backlight_summary">Justera skärmens ljusstyrka dynamiskt för att maximera batteritiden med bibehållen användbarhet</string>
+  <string name="color_enhancement_title">Färgförbättring</string>
+  <string name="color_enhancement_summary">Öka färgen på displayen dynamiskt</string>
   <string name="wake_when_plugged_or_unplugged_title">Vakna vid koppling</string>
   <string name="wake_when_plugged_or_unplugged_summary">Starta skärmen vid anslutning till eller frånkoppling från strömkälla</string>
   <string name="screen_animation_off_title">Avstängningsanimation</string>
@@ -188,6 +196,7 @@
   <string name="lockpattern_settings_enable_error_path_title">Visa mönster vid fel</string>
   <string name="lockpattern_settings_enable_dots_title">Visa mönsterpunkter</string>
   <string name="screen_security_category">Skärmsäkerhet</string>
+  <string name="screen_security_summary">Visa eller ändra säkerhetsinställningar för låsskärmen</string>
   <string name="unlock_menu_unlock_title">Lås upp med meny</string>
   <string name="unlock_menu_unlock_summary">Tryck på menyknappen låser upp enheten</string>
   <string name="unlock_home_unlock_title">Lås upp med hem</string>
@@ -210,13 +219,23 @@
   <string name="tile_picker_summary">Visa, välj eller ändra utformningen av de visade brickorna</string>
   <string name="tile_choose_title">Välj en bricka</string>
   <string name="title_qs_small_icons">Visa mindre brickor</string>
-  <string name="summary_qs_small_icons">Använda mindre brickor för att öka antalet kolumner</string>
+  <string name="summary_qs_small_icons">Använd mindre brickor för att öka antalet kolumner</string>
+  <string name="category_heads_up">Heads up</string>
+  <string name="summary_heads_up_enabled">Pop-up-aviseringar är aktiverade</string>
+  <string name="summary_heads_up_disabled">Pop-up-aviseringar är inaktiverade</string>
+  <string name="add_heads_up_package">Lägg till app</string>
+  <string name="add_heads_up_dnd_summary">Visa inte Heads up i dessa appar</string>
+  <string name="add_heads_up_blacklist_summary">Visa inte Heads up från dessa appar</string>
+  <string name="heads_up_dnd_title">Stör ej</string>
+  <string name="heads_up_blacklist_title">Svartlista</string>
+  <string name="heads_up_disabled_notice">För att tillåta appar att visa interaktiva aviseringar i en pop-up på din skärm, aktivera Heads up.</string>
   <string name="title_tile_airplane">Flygplansläge</string>
   <string name="title_tile_battery">Batteristatus</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Ljusstyrka</string>
   <string name="title_tile_camera">Kamera</string>
   <string name="title_tile_compass">Kompass</string>
+  <string name="title_tile_heads_up">Heads up</string>
   <string name="title_tile_sleep">Somna</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Ficklampa</string>
@@ -334,6 +353,7 @@ två för att kunna infoga ytterligare kontrollpunkter. \"Ta bort\" raderar den 
   <string name="app_security_title">Appsäkerhet</string>
   <string name="root_access">Rootåtkomst</string>
   <string name="root_access_warning_title">Tillåt rootåtkomst?</string>
+  <string name="root_access_warning_message">Att tillåta appar att begära rootåtkomst är mycket farligt och kan riskera säkerheten i ditt system!</string>
   <string name="root_access_none">Inaktiverat</string>
   <string name="root_access_apps">Endast appar</string>
   <string name="root_access_adb">Endast ADB</string>
@@ -355,6 +375,7 @@ två för att kunna infoga ytterligare kontrollpunkter. \"Ta bort\" raderar den 
   <string name="quiet_hours_dim_summary">Inaktivera aviseringsljus</string>
   <string name="quiet_hours_haptic">Haptisk feedback</string>
   <string name="quiet_hours_haptic_summary">Inaktivera haptisk feedback</string>
+  <string name="quiet_hours_active_period">Aktiv från <xliff:g id="start">%1$s</xliff:g> till <xliff:g id="end">%2$s</xliff:g></string>
   <string name="quiet_hours_ringer_allow_all">Ringsignal för alla samtal</string>
   <string name="quiet_hours_ringer_allow_contacts">Ringsignal för alla kontakter</string>
   <string name="quiet_hours_ringer_allow_starred">Ringsignal för alla favoritkontakter</string>
@@ -418,12 +439,12 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="pref_force_highend_gfx_summary">Aktiverar visuella effekter av hög klass som exempelvis transparent status- och navigeringsfält (kräver omstart)</string>
   <string name="kill_app_longpress_back">Döda appar med bakåtknapp</string>
   <string name="kill_app_longpress_back_summary">Döda appen i förgrunden genom att långtrycka på bakåtknappen</string>
-  <string name="changelog_title">Visa ändringslogg</string>
+  <string name="changelog_title">Ändringslogg</string>
   <string name="changelog_loading">Laddar ändringslogg\u2026</string>
   <string name="changelog_error">Kan inte ladda ändringslogg</string>
   <string name="changelog_unknown">Okänd</string>
   <string name="changelog_version">Version</string>
-  <string name="contributor_cloud_title">Visa bidragsgivare</string>
+  <string name="contributor_cloud_title">Bidragsgivare</string>
   <string name="cmupdate_settings_title">CyanogenMod-uppdateringar</string>
   <string name="cmupdate_settings_summary">Sök efter, granska eller installera tillgängliga uppdateringar</string>
   <string name="advanced_settings_title">Avancerat</string>
@@ -534,6 +555,7 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="lockscreen_target_reset_message">Ta bort alla användarskapade genvägar på låsskärmen och återställ till standard?</string>
   <string name="lockscreen_target_empty">Tom</string>
   <string name="lockscreen_target_edit_title">Ändra genväg och ikon</string>
+  <string name="lockscreen_target_edit_msg">Välj eller ändra önskad app eller aktivitet och den tillhörande ikonen</string>
   <string name="picker_activities">Aktiviteter</string>
   <string name="select_custom_app_title">Välj anpassad app</string>
   <string name="select_custom_activity_title">Välj anpassad aktivitet</string>
@@ -586,6 +608,8 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="navigation_bar_reset_toast">Återställ navigeringsfältet till standard</string>
   <string name="navigation_bar_menu_editable">Ändringsbar</string>
   <string name="navigation_bar_menu_locked">Låst</string>
+  <string name="navigation_bar_arrow_keys_title">Piltangenter medan du skriver</string>
+  <string name="navigation_bar_arrow_keys_summary">Visa ikoner för att flytta markören medan du skriver</string>
   <string name="navigation_ring_title">Snabbstartsgenvägar</string>
   <string name="navring_target_reset_message">Ta bort alla användarskapade genvägar i navigeringsfältet och återställ till standard?</string>
   <string name="navring_target_reset">Genvägar i navigeringsfältet återställda till standard</string>
@@ -671,7 +695,6 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="setting_lockscreen_background">Tillämpar bakgrund</string>
   <string name="confirm_delete_apn">Detta APN kommer tas bort.</string>
   <string name="status_bar_title">Statusfält</string>
-  <string name="status_bar_show_clock_title">Visa klocka</string>
   <string name="status_bar_battery_title">Stil på batteristatus</string>
   <string name="status_bar_style_icon_portrait">Ikon i porträttläge</string>
   <string name="status_bar_style_icon_landscape">Ikon i landskapsläge</string>
@@ -684,6 +707,7 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="status_bar_signal_style_text">Text</string>
   <string name="status_bar_toggle_brightness">Ljusstyrkekontroll</string>
   <string name="status_bar_toggle_brightness_summary">Justera ljusstyrka genom att svepa över statusfältet</string>
+  <string name="status_bar_toggle_info">Ej tillgängligt då automatisk ljusstyrka är aktiverad</string>
   <string name="status_bar_notif_count_title">Visa aviseringsantal</string>
   <string name="status_bar_notif_count_summary">Visa antalet väntande aviseringar</string>
   <string name="status_bar_double_tap_to_sleep_title">Dubbeltryck för att somna</string>
@@ -720,6 +744,7 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="gestures_down_spen_title_head">Nedåtsvepning</string>
   <string name="gestures_long_spen_title_head">Långtryck</string>
   <string name="gestures_double_spen_title_head">Dubbeltryck</string>
+  <string name="gestures_settings_header_title">Gester</string>
   <string name="gestures_action_empty">Ingen åtgärd</string>
   <string name="gestures_action_home">Hem</string>
   <string name="gestures_action_back">Bakåt</string>
@@ -863,9 +888,19 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="priority_sub_title">Prioriterat abonnemang</string>
   <string name="bluetooth_accept_all_files">Acceptera alla filtyper</string>
   <string name="autoperf_title">Aktivera profiler per app</string>
+  <string name="autoperf_summary">Välj automatiskt en lämplig prestandaprofil för olika appar</string>
   <string name="graphics_title">Grafik och rendering</string>
   <string name="menu_hidden_apps_delete">Återställ</string>
   <string name="menu_hidden_apps_reset_lock">Återställ mönsterlås</string>
   <string name="protected_apps">Skyddade appar</string>
   <string name="saving_protected_components">Sparar komponenttillstånd\u2026</string>
+  <string name="keep_screen_on_summary_cm">Skärmen kommer aldrig att stängas av medan enheten är inkopplad</string>
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="one">Du är nu <xliff:g id="step_count">%1$d</xliff:g> steg ifrån att aktivera Utvecklaralternativ.</item>
+    <item quantity="other">Du är nu <xliff:g id="step_count">%1$d</xliff:g> steg ifrån att aktivera Utvecklaralternativ.</item>
+  </plurals>
+  <string name="show_dev_on_cm">Du har aktiverat Utvecklaralternativ!</string>
+  <string name="show_dev_already_cm">Det behövs inte, du har redan aktiverat Utvecklaralternativ.</string>
+  <string name="enable_adb_cm">Felsökning av Android</string>
+  <string name="enable_adb_summary_cm">Aktivera gränssnittet Android Debug Bridge (ADB)</string>
 </resources>
