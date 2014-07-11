@@ -75,6 +75,9 @@
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_2g3g">2G/3G</string>
+  <string name="settings_search_action_bar_button">Претрага</string>
+  <string name="settings_search_autocompleteview_hint">Претрага подешавања</string>
+  <string name="settings_search_loading_text">Учитавање података претраге\u2026</string>
   <string name="profile_connectionoverrides_title">Променљива повезивања</string>
   <string name="profile_volumeoverrides_title">Променљива јачина звука</string>
   <string name="connection_state_disabled">Онемогућено</string>
@@ -146,6 +149,7 @@
   <string name="icon_picker_pack_title">Пакет икона</string>
   <string name="display_lights_settings_title">Екран &amp; светла</string>
   <string name="lights_category_title">Светла</string>
+  <string name="notification_light_title">Светла обавештења</string>
   <string name="notification_light_general_title">Опште</string>
   <string name="notification_light_applist_title">Апликације</string>
   <string name="notification_light_phonelist_title">Телефон</string>
@@ -228,7 +232,7 @@
   <string name="title_tile_airplane">Режим рада у авиону</string>
   <string name="title_tile_battery">Статистика батерије</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
-  <string name="title_tile_brightness">Осветљење</string>
+  <string name="title_tile_brightness">Осветљеност</string>
   <string name="title_tile_camera">Камера</string>
   <string name="title_tile_compass">Компас</string>
   <string name="title_tile_heads_up">Обавештења</string>
@@ -284,41 +288,41 @@
   <string name="cm_sound_mode_soundVibrate">Звук &amp; Вибрација</string>
   <string name="tiles_reset_title">Ресетуј</string>
   <string name="tiles_reset_message">Врати подразумевани приказ плочица и распоред?</string>
-  <string name="auto_brightness_setup_title">Аутоматско осветљење</string>
+  <string name="auto_brightness_setup_title">Аутоматска осветљеност</string>
   <string name="auto_brightness_twilight_adjustment">Регулиши излазак и залазак сунца</string>
   <string name="light_sensor_current_value">Тренутна вредност светлосног сензора: <xliff:g id="light_level">%d</xliff:g> lux</string>
-  <string name="auto_brightness_dialog_title">Аутоматски ниво осветљења</string>
+  <string name="auto_brightness_dialog_title">Аутоматски нивои осветљености</string>
   <string name="auto_brightness_level_format"><xliff:g id="level">%1$d</xliff:g> lux</string>
   <string name="auto_brightness_last_level_format"><xliff:g id="level">%1$d</xliff:g> -\n\u221e lux</string>
   <string name="auto_brightness_adjust_button">Регулиши</string>
   <string name="auto_brightness_close_button">Затвори</string>
   <string name="auto_brightness_reset_button">Ресетуј</string>
-  <string name="auto_brightness_split_dialog_title">Подели ниво осветљења</string>
+  <string name="auto_brightness_split_dialog_title">Подели ниво осветљености</string>
   <string name="auto_brightness_level_dialog_title">Подешавања нивоа светлости</string>
-  <string name="auto_brightness_lux">Осветљење амбијента (lux)</string>
-  <string name="auto_brightness_backlight">Осветљење екрана (%)</string>
+  <string name="auto_brightness_lux">Осветљеност амбијента (lux)</string>
+  <string name="auto_brightness_backlight">Осветљеност екрана (%)</string>
   <string name="auto_brightness_reset_dialog_title">Ресетуј нивое?</string>
-  <string name="auto_brightness_reset_confirmation">Сви нивои осветљења ће бити ресетовани на подразумеване вредности.</string>
+  <string name="auto_brightness_reset_confirmation">Сви нивои осветљености ће бити ресетовани на подразумеване вредности.</string>
   <string name="auto_brightness_split_lux_format">Подели положај (између <xliff:g id="min">%1$d</xliff:g> и <xliff:g id="max">%2$d</xliff:g> lux)</string>
   <string name="auto_brightness_level_options">Опције нивоа светлости</string>
   <string name="auto_brightness_menu_edit">Уреди</string>
   <string name="auto_brightness_menu_split">Подели</string>
   <string name="auto_brightness_menu_remove">Премести</string>
   <string name="auto_brightness_preview">Преглед</string>
-  <string name="auto_brightness_preview_dialog_title">Осветљење прегледа кривине</string>
+  <string name="auto_brightness_preview_dialog_title">Осветљеност прегледа кривине</string>
   <string name="auto_brightness_help_dialog_title">Помоћ</string>
-  <string name="auto_brightness_help_text"><b>Како се израчунава осветљење?</b>
+  <string name="auto_brightness_help_text"><b>Како се израчунава осветљеност?</b>
 Крива осветљености се израчунава обављањем <i>cubic spline interpolation</i> на датом броју <i>control points</i>. То није \'тип кофе\' калкулација где 
-осветљеност екрана остаје константна за одређени опсег амбијенталног осветљења. На тај начин, мале промене у осветљености амбијента не изазивају велики скок у осветљености екрана; међутим, то може бити мало тешко предвидети, тачне последице промене контролних тачака.\n Да би се помогло са тим, преглед обрачунате криве се може испитати. Молимо, упамтите да прегледи кривине у <i>logarithmic</i> скали, тако да све контролне тачке могу бити изразито приказане. Када користите линеарну скалу, то не би било могуће разликовати када тежи више важних контролних тачака у доњем опсегу амбијенталног осветљења.
+осветљеност екрана остаје константно за одређени опсег амбијенталне осветљености. На тај начин, мале промене у осветљености амбијента не изазивају велики скок у осветљењу екрана; међутим, то може бити мало тешко предвидети, тачне последице промене контролних тачака.\n Да би се помогло са тим, преглед обрачунате криве се може испитати. Молимо, упамти да прегледи кривине у <i>logarithmic</i> скали, тако да све контролне тачке могу бити изразито приказане. Када користиш линеарну скалу, то не би било могуће разликовати када тежи више важних контролних тачака у доњем опсегу амбијенталног осветљења.
 \n\n
-<b>Како да уредите криву осветљености?</b>
-Свака линија у листи осветљености одговара једној <i>control point</i> криви осветљености. Да би сте изменили ниво осветљености тачке, можете да користите клизач 
-представљен у сваком реду. Осветљеност екрана ће се према томе мењати док додирујете 
+<b>Како да уредиш криву осветљености?</b>
+Свака линија у листи осветљености одговара једној <i>control point</i> криви осветљености. Да би изменио ниво осветљености, можеш да користиш клизач 
+представљен у сваком реду. Осветљеност екрана ће се према томе мењати док додирујеш 
 клизач да да преглед нивоа светлости.\n
-Додатне опције су на располагању дугим притиском на линију. Избором \'Измени\', можете 
-подесите ниво амбијенталног осветљења контролне тачке, као и ручно унети 
-жељену светлину екрана. Избор \'Подели\' омогућава Вам да дуплирате једну линију у 
-две како би сте убацили додатне контролне тачке. \'Уклони\' брише изабрану линију.
+Додатне опције су на располагању дугим притиском на линију. Избором \'Измени\', можеш 
+подесити ниво амбијенталног осветљења контролне тачке, као и ручно унети 
+жељену светлину екрана. Избор \'Подели\' омогућава да дуплираш једну линију у 
+две како би убацио додатне контролне тачке. \'Уклони\' брише изабрану линију.
 
  </string>
   <string name="auto_brightness_sensitivity_title">Регулисање осетљивости</string>
@@ -426,12 +430,12 @@
   <string name="pref_force_highend_gfx_summary">Омогућава врхунске визуелне ефекте као што су транспарентна статусна/навигациона трака (захтева поновно покретање)</string>
   <string name="kill_app_longpress_back">Затвори апликацију дугметом за Назад</string>
   <string name="kill_app_longpress_back_summary">Затвори предњу апликацију дугим притиском на дугме за Назад</string>
-  <string name="changelog_title">Погледај евиденцију измена</string>
+  <string name="changelog_title">Евиденција измена</string>
   <string name="changelog_loading">Учитавање евиденције измена\u2026</string>
   <string name="changelog_error">Није могуће учитати евиденцију измена</string>
   <string name="changelog_unknown">Непознато</string>
   <string name="changelog_version">Верзија</string>
-  <string name="contributor_cloud_title">Погледај сараднике</string>
+  <string name="contributor_cloud_title">Сарадници</string>
   <string name="cmupdate_settings_title">Системска ажурирања</string>
   <string name="cmupdate_settings_summary">Провери, погледај или инсталирај доступна ажурирања</string>
   <string name="advanced_settings_title">Напредно</string>
@@ -492,7 +496,7 @@
   <string name="gamma_tuning_summary_head">Штипање гама вредности</string>
   <string name="gamma_tuning_control_set_header">Група <xliff:g id="index">%d</xliff:g></string>
   <string name="gamma_tuning_contrast">Контраст</string>
-  <string name="gamma_tuning_brightness">Осветљење</string>
+  <string name="gamma_tuning_brightness">Осветљеност</string>
   <string name="gamma_tuning_saturation">Засићење</string>
   <string name="headset_connect_player_title">Покрени музичку апликацију</string>
   <string name="headset_connect_player_summary">Покрени подразумевану музичку апликацију када су слушалице повезане</string>
@@ -595,6 +599,8 @@
   <string name="navigation_bar_reset_toast">Навигациона трака ресетована је на подразумевано</string>
   <string name="navigation_bar_menu_editable">Уредиво</string>
   <string name="navigation_bar_menu_locked">Закључано</string>
+  <string name="navigation_bar_arrow_keys_title">Стрелице при куцању</string>
+  <string name="navigation_bar_arrow_keys_summary">Прикажи лево и десно дугме курсора при куцању</string>
   <string name="navigation_ring_title">Пречице за брзо покретање</string>
   <string name="navring_target_reset_message">Избриши све пречице на навигационој траци и врати на подразумевано?</string>
   <string name="navring_target_reset">Пречице на навигационој траци ресетоване на подразумевано</string>
@@ -659,13 +665,13 @@
   <string name="volbtn_cursor_control_off">Онемогућено</string>
   <string name="volbtn_cursor_control_on">Дугмићи за јачину звука покрећу курсор лево/десно</string>
   <string name="volbtn_cursor_control_on_reverse">Дугмићи за јачину звука покрећу курсор десно/лево</string>
-  <string name="swap_volume_buttons_title">Преусмерење</string>
+  <string name="swap_volume_buttons_title">Преусмеравање</string>
   <string name="swap_volume_buttons_summary">Замени дугмиће за јачину звука када се екран ротира</string>
-  <string name="button_backlight_title">Позадинско осветљење</string>
+  <string name="button_backlight_title">Позадинска осветљеност</string>
   <string name="button_backlight_enabled">Дугмићи са осветљењем</string>
   <string name="keyboard_backlight_enabled">Тастатура са осветљењем</string>
-  <string name="button_backlight_seekbar_title">Осветљење дугмића</string>
-  <string name="keyboard_backlight_seekbar_title">Осветљење тастатуре</string>
+  <string name="button_backlight_seekbar_title">Осветљеност дугмића</string>
+  <string name="keyboard_backlight_seekbar_title">Осветљеност тастатуре</string>
   <string name="backlight_timeout_title">Време истека осветљења</string>
   <string name="backlight_timeout_unlimited">Не искључуј</string>
   <string name="backlight_summary_disabled">Онемогућено</string>
@@ -680,7 +686,6 @@
   <string name="setting_lockscreen_background">Примена позадине</string>
   <string name="confirm_delete_apn">APN ће бити избрисан.</string>
   <string name="status_bar_title">Статусна трака</string>
-  <string name="status_bar_show_clock_title">Прикажи сат</string>
   <string name="status_bar_battery_title">Стил статуса батерије</string>
   <string name="status_bar_style_icon_portrait">Усправна икона</string>
   <string name="status_bar_style_icon_landscape">Положена икона</string>
@@ -691,10 +696,10 @@
   <string name="status_bar_signal_text_title">Стил статуса сигнала</string>
   <string name="status_bar_signal_style_icon">Икона</string>
   <string name="status_bar_signal_style_text">Текст</string>
-  <string name="status_bar_toggle_brightness">Контрола осветљења</string>
+  <string name="status_bar_toggle_brightness">Контрола осветљености</string>
   <string name="status_bar_toggle_brightness_summary">Подеси осветљеност превлачењем преко статусне траке</string>
-  <string name="status_bar_toggle_info">Није доступно док је аутоматско осветљење омогућено</string>
-  <string name="status_bar_notif_count_title">Прикажи број обавештења</string>
+  <string name="status_bar_toggle_info">Није доступно док је аутоматска осветљеност омогућена</string>
+  <string name="status_bar_notif_count_title">Број обавештења</string>
   <string name="status_bar_notif_count_summary">Прикажи број обавештења на чекању</string>
   <string name="status_bar_double_tap_to_sleep_title">Дупли-додир за спавање</string>
   <string name="development_shortcut_title">Пречица за развој</string>
@@ -713,8 +718,8 @@
   <string name="battery_info_status_charging_dock_ac">(ДokAC)</string>
   <string name="battery_info_status_charging_dock_usb">(ДokUSB)</string>
   <string name="menu_stats_reset">Ресетуј</string>
-  <string name="cmlicense_title">CyanogenMod Legal</string>
-  <string name="settings_cmlicense_activity_title">CyanogenMod Legal</string>
+  <string name="cmlicense_title">CyanogenMod лиценца</string>
+  <string name="settings_cmlicense_activity_title">CyanogenMod лиценца</string>
   <string name="settings_cmlicense_activity_unreachable">Немаш везу за пренос података. Да би одмах видео ове информације, иди на %s са било ког рачунара који је повезан на интернет.</string>
   <string name="stylus_icon_enabled_title">Прикажи икону када користим оловку</string>
   <string name="stylus_icon_enabled_summary">Прикажи икону курсора када лебдим или цртам помоћу оловке</string>
@@ -880,4 +885,9 @@
   <string name="menu_hidden_apps_reset_lock">Ресетуј шаблон</string>
   <string name="protected_apps">Заштићене апликације</string>
   <string name="saving_protected_components">Чување компонената\u2026</string>
+  <string name="keep_screen_on_summary_cm">Екран се неће искључити док је прикључено напајање</string>
+  <string name="show_dev_on_cm">Развојне опције су омогућене!</string>
+  <string name="show_dev_already_cm">Нема потребе, развојне опције су већ омогућене.</string>
+  <string name="enable_adb_cm">Android отклањање грешака</string>
+  <string name="enable_adb_summary_cm">Омогући Android Debug Bridge (adb) интерфејс</string>
 </resources>

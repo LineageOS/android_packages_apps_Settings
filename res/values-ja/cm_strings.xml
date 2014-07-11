@@ -49,7 +49,7 @@
   <string name="profile_trigger_filter_all">すべてのトリガー</string>
   <string name="profile_trigger_filter_wifi">Wi-Fiトリガー</string>
   <string name="profile_trigger_filter_bluetooth">Bluetoothトリガー</string>
-  <string name="profile_write_nfc_tag">NFCタグへ書き込む</string>
+  <string name="profile_write_nfc_tag">NFCタグに書き込む</string>
   <string name="profile_write_touch_tag">タグにタッチして書き込む</string>
   <string name="profile_write_success">タグに正常に書き込みました</string>
   <string name="profile_write_failed">タグの書き込みに失敗しました</string>
@@ -75,6 +75,9 @@
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_2g3g">2G/3G</string>
+  <string name="settings_search_action_bar_button">検索</string>
+  <string name="settings_search_autocompleteview_hint">設定を検索</string>
+  <string name="settings_search_loading_text">検索データを読み込み中\u2026</string>
   <string name="profile_connectionoverrides_title">接続の定義</string>
   <string name="profile_volumeoverrides_title">音量の定義</string>
   <string name="connection_state_disabled">無効</string>
@@ -146,6 +149,7 @@
   <string name="icon_picker_pack_title">アイコンパック</string>
   <string name="display_lights_settings_title">画面とライト</string>
   <string name="lights_category_title">ライト</string>
+  <string name="notification_light_title">通知のライト</string>
   <string name="notification_light_general_title">全般</string>
   <string name="notification_light_applist_title">アプリ</string>
   <string name="notification_light_phonelist_title">着信</string>
@@ -222,7 +226,7 @@
   <string name="add_heads_up_package">アプリを追加</string>
   <string name="add_heads_up_dnd_summary">これらのアプリではヘッドアップを表示しない</string>
   <string name="add_heads_up_blacklist_summary">これらのアプリからのヘッドアップを表示しない</string>
-  <string name="heads_up_dnd_title">ヘッドアップしないアプリ</string>
+  <string name="heads_up_dnd_title">ヘッドアップを表示しない</string>
   <string name="heads_up_blacklist_title">ブラックリスト</string>
   <string name="heads_up_disabled_notice">画面上へポップアップウインドウでのインタラクティブ通知の表示をアプリに許可するには、ヘッドアップを有効にしてください。</string>
   <string name="title_tile_airplane">機内モード</string>
@@ -427,20 +431,20 @@
   <string name="pref_force_highend_gfx_title">ハイエンドグラフィックスを強制</string>
   <string name="pref_force_highend_gfx_summary">透過ステータスバー/ナビゲーションバーなどのハイエンドな視覚効果を有効にする（要再起動）</string>
   <string name="kill_app_longpress_back">戻るボタンでアプリを終了</string>
-  <string name="kill_app_longpress_back_summary">戻るボタンの長押しでフォアグラウンドアプリを終了する</string>
-  <string name="changelog_title">更新履歴を表示</string>
+  <string name="kill_app_longpress_back_summary">戻るボタンを長押ししてフォアグラウンドアプリを終了する</string>
+  <string name="changelog_title">更新履歴</string>
   <string name="changelog_loading">更新履歴を読み込んでいます\u2026</string>
   <string name="changelog_error">更新履歴を読み込めませんでした</string>
   <string name="changelog_unknown">不明</string>
   <string name="changelog_version">バージョン</string>
-  <string name="contributor_cloud_title">貢献者を表示</string>
-  <string name="cmupdate_settings_title">CyanogenModのアップデート</string>
+  <string name="contributor_cloud_title">貢献者</string>
+  <string name="cmupdate_settings_title">CyanogenModアップデート</string>
   <string name="cmupdate_settings_summary">利用可能なアップデートを確認、表示、インストールする</string>
   <string name="advanced_settings_title">詳細設定</string>
   <string name="development_tools_title">ツールを起動</string>
   <string name="allow_mock_sms">疑似SMSを許可</string>
   <string name="privacy_settings_cyanogenmod_title">プライバシー</string>
-  <string name="privacy_guard_switch_label">プライバシーガードを有効化にする</string>
+  <string name="privacy_guard_switch_label">プライバシーガードを有効にする</string>
   <string name="privacy_guard_dlg_title">プライバシーガードを有効にしますか？</string>
   <string name="privacy_guard_dlg_text">プライバシーガードを有効にすると、このアプリは連絡先、メッセージ、通話履歴などの個人データにアクセスできなくなります。</string>
   <string name="privacy_guard_dlg_system_app_text">内蔵アプリでプライバシーガードを有効にすると、個人データの提供またはアクセスができなくなります。また、他のアプリがうまく動かなくなる可能性があります。</string>
@@ -508,7 +512,7 @@
   <string name="notification_drawer_collapse_on_dismiss_title">自動で閉じる動作</string>
   <string name="collapse_on_dismiss_never">無効</string>
   <string name="collapse_on_dismiss_if_empty">通知がない場合</string>
-  <string name="collapse_on_dismiss_if_no_clearable">削除できる通知がない場合</string>
+  <string name="collapse_on_dismiss_if_no_clearable">削除可能な通知がない場合</string>
   <string name="collapse_on_dismiss_never_summary">通知を削除した後も開いたままにする</string>
   <string name="collapse_on_dismiss_if_empty_summary">最後の通知を削除した後に閉じる</string>
   <string name="collapse_on_dismiss_if_no_clearable_summary">最後の削除可能な通知を削除した後に閉じる</string>
@@ -597,6 +601,8 @@
   <string name="navigation_bar_reset_toast">ナビゲーションバーの設定をデフォルトにリセットしました</string>
   <string name="navigation_bar_menu_editable">編集可能</string>
   <string name="navigation_bar_menu_locked">ロックされています</string>
+  <string name="navigation_bar_arrow_keys_title">入力中の矢印キー</string>
+  <string name="navigation_bar_arrow_keys_summary">入力中は左右のカーソルボタンを表示する</string>
   <string name="navigation_ring_title">クイック起動ショートカット</string>
   <string name="navring_target_reset_message">ユーザーが作成したすべてのナビゲーションバーのショートカットを削除してデフォルトに戻しますか？</string>
   <string name="navring_target_reset">ナビゲーションバーのショートカットをデフォルトにリセットしました</string>
@@ -653,10 +659,10 @@
   <string name="camera_sleep_on_release_title">画面の覗き見</string>
   <string name="camera_sleep_on_release_summary">半押しで押し続けている間だけ画面を点灯する</string>
   <string name="camera_music_controls_title">再生コントロール</string>
-  <string name="camera_music_controls_summary">画面消灯時にカメラキーの長押しで曲を再生/一時停止する</string>
+  <string name="camera_music_controls_summary">画面消灯時にカメラキーを長押しして曲を再生/一時停止する</string>
   <string name="volume_wake_summary">どちらかの音量ボタンを押してスリープを解除する</string>
   <string name="volbtn_music_controls_title">再生コントロール</string>
-  <string name="volbtn_music_controls_summary">画面消灯時に音量キーの長押しで曲をシークする</string>
+  <string name="volbtn_music_controls_summary">画面消灯時に音量キーを長押しして曲をシークする</string>
   <string name="volbtn_cursor_control_title">キーボードカーソルコントロール</string>
   <string name="volbtn_cursor_control_off">無効</string>
   <string name="volbtn_cursor_control_on">音量を上げる/下げるボタンでカーソルを左/右に移動する</string>
@@ -680,7 +686,7 @@
   <string name="background_result_successful">背景を変更しました</string>
   <string name="background_result_not_successful">背景を変更していません</string>
   <string name="setting_lockscreen_background">背景を適応しています</string>
-  <string name="confirm_delete_apn">APNを削除しますか？</string>
+  <string name="confirm_delete_apn">APNを削除します。</string>
   <string name="status_bar_title">ステータスバー</string>
   <string name="status_bar_show_clock_title">時計を表示</string>
   <string name="status_bar_battery_title">電池の状態のスタイル</string>
@@ -715,8 +721,8 @@
   <string name="battery_info_status_charging_dock_ac">（AC接続）</string>
   <string name="battery_info_status_charging_dock_usb">（USB接続）</string>
   <string name="menu_stats_reset">リセット</string>
-  <string name="cmlicense_title">CyanogenMod利用規則</string>
-  <string name="settings_cmlicense_activity_title">CyanogenMod利用規則</string>
+  <string name="cmlicense_title">CyanogenMod利用規約</string>
+  <string name="settings_cmlicense_activity_title">CyanogenMod利用規約</string>
   <string name="settings_cmlicense_activity_unreachable">データ接続されていません。この情報を表示するにはインターネットに接続されているパソコンから%sにアクセスしてください。</string>
   <string name="stylus_icon_enabled_title">スタイラス使用時にアイコンを表示</string>
   <string name="stylus_icon_enabled_summary">スタイラスでホバリングまたは描写しているときにポインターアイコンを表示する</string>
@@ -882,4 +888,12 @@
   <string name="menu_hidden_apps_reset_lock">パターンロックをリセット</string>
   <string name="protected_apps">アプリの保護</string>
   <string name="saving_protected_components">コンポーネントの状態を保存中\u2026</string>
+  <string name="keep_screen_on_summary_cm">接続中は画面をスリープにしない</string>
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="other">開発者向けオプションが有効になるまであと<xliff:g id="step_count">%1$d</xliff:g>ステップです。</item>
+  </plurals>
+  <string name="show_dev_on_cm">開発者向けオプションが有効になりました。</string>
+  <string name="show_dev_already_cm">必要ありません、既に開発者向けオプションを有効にしています。</string>
+  <string name="enable_adb_cm">Androidデバッグ</string>
+  <string name="enable_adb_summary_cm">Android Debug Bridge（adb）インターフェースを有効にする</string>
 </resources>

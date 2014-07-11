@@ -75,6 +75,9 @@
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_2g3g">2G/3G</string>
+  <string name="settings_search_action_bar_button">Ricerca</string>
+  <string name="settings_search_autocompleteview_hint">Ricerca impostazioni</string>
+  <string name="settings_search_loading_text">Caricamento dati ricerca\u2026</string>
   <string name="profile_connectionoverrides_title">Sovrascrittura connessioni</string>
   <string name="profile_volumeoverrides_title">Sovrascrittura volumi</string>
   <string name="connection_state_disabled">Disattivato</string>
@@ -146,6 +149,7 @@
   <string name="icon_picker_pack_title">Pacchetto icone</string>
   <string name="display_lights_settings_title">Display &amp; Luci</string>
   <string name="lights_category_title">Luci</string>
+  <string name="notification_light_title">Luce di notifica</string>
   <string name="notification_light_general_title">Generale</string>
   <string name="notification_light_applist_title">Applicazioni</string>
   <string name="notification_light_phonelist_title">Telefono</string>
@@ -244,7 +248,7 @@
   <string name="title_tile_settings">Impostazioni</string>
   <string name="title_tile_sound">Modalità suoneria</string>
   <string name="title_tile_sync">Sincronizzazione dati</string>
-  <string name="title_tile_wifiap">Wi-Fi AP</string>
+  <string name="title_tile_wifiap">AP Wi-Fi</string>
   <string name="title_tile_wifi">Wi-Fi</string>
   <string name="title_tile_user">Cambia utente</string>
   <string name="title_tile_networkmode">2G/3G</string>
@@ -431,12 +435,12 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="pref_force_highend_gfx_summary">Attiva gli effetti grafici di alta qualità come la trasparenza della barra di stato/navigazione (richiede il riavvio) </string>
   <string name="kill_app_longpress_back">Termina app con tasto</string>
   <string name="kill_app_longpress_back_summary">Termina l\'applicazione in primo piano tenendo premuto il tasto indietro</string>
-  <string name="changelog_title">Mostra changelog</string>
+  <string name="changelog_title">Changelog</string>
   <string name="changelog_loading">Caricamento changelog\u2026</string>
   <string name="changelog_error">Impossibile caricare il changelog</string>
   <string name="changelog_unknown">Sconosciuto</string>
   <string name="changelog_version">Versione</string>
-  <string name="contributor_cloud_title">Visualizza collaboratori</string>
+  <string name="contributor_cloud_title">Collaboratori</string>
   <string name="cmupdate_settings_title">Aggiornamento CyanogenMod</string>
   <string name="cmupdate_settings_summary">Controlla, visualizza e installa gli aggiornamenti disponibili</string>
   <string name="advanced_settings_title">Avanzate</string>
@@ -504,7 +508,7 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="adb_notify">Notifica debug USB</string>
   <string name="adb_notify_summary">Visualizza una notifica quando il debug USB è collegato</string>
   <string name="adb_over_network">ADB attraverso la rete</string>
-  <string name="adb_over_network_summary">Attiva il debugging TCP/IP attraverso interfacce di rete (Wi-Fi, reti USB). Questa impostazione è ripristinata al riavvio</string>
+  <string name="adb_over_network_summary">Attiva il debug TCP/IP attraverso interfacce di rete (Wi-Fi, reti USB). Questa impostazione è ripristinata al riavvio</string>
   <string name="adb_over_network_warning">ATTENZIONE: Quando è attivo l\'ADB attraverso interfacce di rete il dispositivo è vulnerabile ad intrusioni da parte di tutte le reti connesse, inclusa quella GSM!\n\nUsare questa funzione esclusivamente se si è connessi a reti affidabili.\n\nSei sicuro di voler attivare questa funzione?</string>
   <string name="device_hostname">Hostname dispositivo</string>
   <string name="notification_drawer_title">Menu notifiche</string>
@@ -600,6 +604,8 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="navigation_bar_reset_toast">Barra di navigazione ripristinata</string>
   <string name="navigation_bar_menu_editable">Modificabile</string>
   <string name="navigation_bar_menu_locked">Bloccata</string>
+  <string name="navigation_bar_arrow_keys_title">Tasti freccia durante la scrittura</string>
+  <string name="navigation_bar_arrow_keys_summary">Visualizza i pulsanti sinistro e destro del cursore durante la digitazione</string>
   <string name="navigation_ring_title">Scorciatoie di avvio rapido</string>
   <string name="navring_target_reset_message">Eliminare le impostazioni correnti e ripristinare le predefinite?</string>
   <string name="navring_target_reset">Avvio rapido ripristinato</string>
@@ -660,7 +666,7 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="volume_wake_summary">Premere i tasti del volume farà attivare il dispositivo</string>
   <string name="volbtn_music_controls_title">Cambia traccia</string>
   <string name="volbtn_music_controls_summary">Quando lo schermo è spento la pressione prolungata dei tasti volume cambia traccia</string>
-  <string name="volbtn_cursor_control_title">Controlla il cursore con i tasti</string>
+  <string name="volbtn_cursor_control_title">Controlla cursore con tasti</string>
   <string name="volbtn_cursor_control_off">Disattivato</string>
   <string name="volbtn_cursor_control_on">Volume su/giù muove il cursore a sinistra/destra</string>
   <string name="volbtn_cursor_control_on_reverse">Volume su/giù muove il cursore a destra/sinistra</string>
@@ -685,7 +691,7 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="setting_lockscreen_background">Applicazione sfondo</string>
   <string name="confirm_delete_apn">L\'APN sarà eliminato.</string>
   <string name="status_bar_title">Barra di stato</string>
-  <string name="status_bar_show_clock_title">Mostra orologio</string>
+  <string name="status_bar_show_clock_title">Visualizza orologio</string>
   <string name="status_bar_battery_title">Stile indicatore batteria</string>
   <string name="status_bar_style_icon_portrait">Icona verticale</string>
   <string name="status_bar_style_icon_landscape">Icona orizzontale</string>
@@ -885,4 +891,13 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="menu_hidden_apps_reset_lock">Ripristina schema blocco</string>
   <string name="protected_apps">App protette</string>
   <string name="saving_protected_components">Salvataggio stato componente\u2026</string>
+  <string name="keep_screen_on_summary_cm">Lo schermo non non si spegnerà quando collegato</string>
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="one">Ora sei ad <xliff:g id="step_count">%1$d</xliff:g> passo dall\'attivare le impostazioni sviluppatore.</item>
+    <item quantity="other">Ora sei a <xliff:g id="step_count">%1$d</xliff:g> passi dall\'attivare le impostazioni sviluppatore.</item>
+  </plurals>
+  <string name="show_dev_on_cm">Hai attivato le opzioni sviluppatore!</string>
+  <string name="show_dev_already_cm">Non è necessario, hai già attivato le opzioni sviluppatore.</string>
+  <string name="enable_adb_cm">Debug Android</string>
+  <string name="enable_adb_summary_cm">Attiva l\'interfaccia di Android Debug Bridge (adb)</string>
 </resources>

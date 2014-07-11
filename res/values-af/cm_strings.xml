@@ -75,6 +75,9 @@
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_2g3g">2G/3G</string>
+  <string name="settings_search_action_bar_button">Soek</string>
+  <string name="settings_search_autocompleteview_hint">Soek instellings</string>
+  <string name="settings_search_loading_text">Laai soek resultate\u2026</string>
   <string name="profile_connectionoverrides_title">Verbindingsoorskrywings</string>
   <string name="profile_volumeoverrides_title">Klankoorskrywings</string>
   <string name="connection_state_disabled">Gedeaktiveer</string>
@@ -146,7 +149,9 @@
   <string name="icon_picker_pack_title">Ikoonpak</string>
   <string name="display_lights_settings_title">Skerm &amp; liggies</string>
   <string name="lights_category_title">Liggies</string>
+  <string name="notification_light_title">Kennisgewing liggie</string>
   <string name="notification_light_general_title">Algemeen</string>
+  <string name="notification_light_applist_title">Programme</string>
   <string name="notification_light_phonelist_title">Telefoon</string>
   <string name="notification_light_use_custom">Gebruik persoonlike waardes</string>
   <string name="notification_light_enabled">Geaktifeer</string>
@@ -156,6 +161,8 @@
   <string name="notification_light_voicemail_title">Stempos</string>
   <string name="adaptive_backlight_title">Aanpasbare agtergrond verligting</string>
   <string name="adaptive_backlight_summary">Dinamies verander die helderheid van die skerm om battery lewe te maksimeer en bruikbaarheid te maksimeer</string>
+  <string name="color_enhancement_title">Kleur verbetering</string>
+  <string name="color_enhancement_summary">Dinamiese verbeter die kleur van die skerm</string>
   <string name="wake_when_plugged_or_unplugged_title">Word wakker op in/uit prop</string>
   <string name="wake_when_plugged_or_unplugged_summary">Skakel die skerm aan met die koppeling of ontkoppeling van \'n kragbron</string>
   <string name="screen_animation_off_title">Skermaf animasie</string>
@@ -214,13 +221,21 @@
   <string name="title_qs_small_icons">Wys kleiner teëls</string>
   <string name="summary_qs_small_icons">Gebruik kleiner teëls om die aantal kolomme te verhoog</string>
   <string name="category_heads_up">Loer boodskap</string>
+  <string name="summary_heads_up_enabled">Uit pop kennisgewings aangeskakel</string>
+  <string name="summary_heads_up_disabled">Uit pop kennisgewings is afgeskakel</string>
+  <string name="add_heads_up_package">Voeg by prog</string>
+  <string name="add_heads_up_dnd_summary">Moenie loer boodskappe wys binne in hierdie programme</string>
+  <string name="add_heads_up_blacklist_summary">Moenie loer boodskappe wys vanuit hierdie programme</string>
   <string name="heads_up_dnd_title">Moenie steur nie</string>
+  <string name="heads_up_blacklist_title">Swartlys</string>
+  <string name="heads_up_disabled_notice">Om interaktiewe kennisgewings toe te laat vir programme, dit vertoon \'n loer venster op jou skerm, aktiveer loer kennisgewings.</string>
   <string name="title_tile_airplane">Vliegtuigmodus</string>
   <string name="title_tile_battery">Battery statistieke</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Helderheid</string>
   <string name="title_tile_camera">Kamera</string>
   <string name="title_tile_compass">Kompas</string>
+  <string name="title_tile_heads_up">Loer kennisgewings</string>
   <string name="title_tile_sleep">Sluimer</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Flits</string>
@@ -328,6 +343,7 @@ ten einde om bykomende kontrolepunte by te voeg . \'Verwyder\' verwyder die geko
   <string name="app_security_title">Program sekuriteit</string>
   <string name="root_access">\'Root\' toegang</string>
   <string name="root_access_warning_title">Laat \'root\' toegang toe</string>
+  <string name="root_access_warning_message">Die toelaat van programme om \'root\' toegang aan te vra kan die sekuriteit van jou stelsel in gevaar stel!</string>
   <string name="root_access_none">Gedeaktiveer</string>
   <string name="root_access_apps">Slegs programme</string>
   <string name="root_access_adb">Slegs ADB</string>
@@ -410,12 +426,10 @@ ten einde om bykomende kontrolepunte by te voeg . \'Verwyder\' verwyder die geko
   <string name="pref_force_highend_gfx_summary">Aktiveer hoë-einde visuele effekte soos deursigtige status / navigasie balk (vereis herlaai)</string>
   <string name="kill_app_longpress_back">Beëindig met Terug-knoppie</string>
   <string name="kill_app_longpress_back_summary">Sluit die voorgrond program deur die lang druk van die terug knoppie</string>
-  <string name="changelog_title">Bekyk Veranderinge-log</string>
   <string name="changelog_loading">Laai Veranderinge-log\u2026</string>
   <string name="changelog_error">Kan nie Veranderinge-log laai nie</string>
   <string name="changelog_unknown">Onbekend</string>
   <string name="changelog_version">Weergawe</string>
-  <string name="contributor_cloud_title">Vertoon bydraers</string>
   <string name="cmupdate_settings_title">CyanogenMod opgradering</string>
   <string name="cmupdate_settings_summary">Soek vir of installeer beskikbare opgraderings</string>
   <string name="advanced_settings_title">Gevorderd</string>
@@ -526,6 +540,7 @@ ten einde om bykomende kontrolepunte by te voeg . \'Verwyder\' verwyder die geko
   <string name="lockscreen_target_reset_message">Verwyder alle gebruiker geskepte slotskerm kits-loodskortpaaie en stel terug na standaard?</string>
   <string name="lockscreen_target_empty">leeg</string>
   <string name="lockscreen_target_edit_title">Verander kits-loodskortpad en ikoon</string>
+  <string name="lockscreen_target_edit_msg">Kies of verander die verlangde program of aktiwiteit en die gepaardgaande ikoon</string>
   <string name="picker_activities">Aktiwiteite</string>
   <string name="select_custom_app_title">Kies persoonlike program</string>
   <string name="select_custom_activity_title">Kies persoonlike aktiwiteit</string>
@@ -578,6 +593,8 @@ ten einde om bykomende kontrolepunte by te voeg . \'Verwyder\' verwyder die geko
   <string name="navigation_bar_reset_toast">Navigasiebalk teruggestel na standaard</string>
   <string name="navigation_bar_menu_editable">Redigeerbaar</string>
   <string name="navigation_bar_menu_locked">Gesluit</string>
+  <string name="navigation_bar_arrow_keys_title">Pyltjie wysers terwyl tik</string>
+  <string name="navigation_bar_arrow_keys_summary">Wys links en regs wyser sleutels terwyl tik</string>
   <string name="navigation_ring_title">Kits-loodskortpaaie</string>
   <string name="navring_target_reset_message">Verwyder alle gebruiker kits-loodskortpaaie en herstel na standaard?</string>
   <string name="navring_target_reset">Navigasiebalk kits-loodskortpaaie is herstel na standaard.</string>
@@ -663,7 +680,6 @@ ten einde om bykomende kontrolepunte by te voeg . \'Verwyder\' verwyder die geko
   <string name="setting_lockscreen_background">Besig met agtergrond toepassing</string>
   <string name="confirm_delete_apn">Die TPN sal verwyder word.</string>
   <string name="status_bar_title">Statusbalk</string>
-  <string name="status_bar_show_clock_title">Vertoon klok</string>
   <string name="status_bar_battery_title">Battery status styl</string>
   <string name="status_bar_style_icon_portrait">Portret ikoon</string>
   <string name="status_bar_style_icon_landscape">Landskap ikoon</string>
@@ -696,8 +712,6 @@ ten einde om bykomende kontrolepunte by te voeg . \'Verwyder\' verwyder die geko
   <string name="battery_info_status_charging_dock_ac">(DokKRAG)</string>
   <string name="battery_info_status_charging_dock_usb">(DokUSB)</string>
   <string name="menu_stats_reset">Terugstel</string>
-  <string name="cmlicense_title">CyanogenMod Regs</string>
-  <string name="settings_cmlicense_activity_title">CyanogenMod Regs</string>
   <string name="settings_cmlicense_activity_unreachable">Jy het nie \'n data verbinding. Om hierdie inligting nou te sien, gaan na %s van enige rekenaar wat verbind is tot die Internet.</string>
   <string name="stylus_icon_enabled_title">Toon ikoon tydens die gebruik van \'n stillus</string>
   <string name="stylus_icon_enabled_summary">Toon die wyser ikoon tydens die beweeg of trek met die stillus</string>
@@ -857,9 +871,19 @@ ten einde om bykomende kontrolepunte by te voeg . \'Verwyder\' verwyder die geko
   <string name="priority_sub_title">Prioriteit inskrywing</string>
   <string name="bluetooth_accept_all_files">Aanvaar alle lêer tipes</string>
   <string name="autoperf_title">Aktiveer per program profiele</string>
+  <string name="autoperf_summary">Outomaties kies \'n geskikte werkverrigting profiel vir verskeie programme</string>
   <string name="graphics_title">Grafika en vertoning</string>
   <string name="menu_hidden_apps_delete">Stel terug</string>
   <string name="menu_hidden_apps_reset_lock">Herstel patroon slot</string>
   <string name="protected_apps">Beskermde programme</string>
   <string name="saving_protected_components">Stoor komponent toestand\u2026</string>
+  <string name="keep_screen_on_summary_cm">Skerm sal nooit slaap terwyl ingeprop nie</string>
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="one">Jy is nou <xliff:g id="step_count">%1$d</xliff:g> stap weg van aktivering van ontwikkelaar opsies.</item>
+    <item quantity="other">Jy is nou <xliff:g id="step_count">%1$d</xliff:g> stappe weg van aktivering van ontwikkelaar opsies.</item>
+  </plurals>
+  <string name="show_dev_on_cm">Jy het ontwikkelaar opsies geaktiveer!</string>
+  <string name="show_dev_already_cm">Dis nie nodig nie, het jy reeds ontwikkelaar opsies geaktiveer.</string>
+  <string name="enable_adb_cm">Android ontfouting</string>
+  <string name="enable_adb_summary_cm">Aktiveer die Android Debug Bridge (ADB) koppelvlak</string>
 </resources>

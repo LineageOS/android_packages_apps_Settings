@@ -75,6 +75,9 @@
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_2g3g">2G / 3G</string>
+  <string name="settings_search_action_bar_button">Rechercher</string>
+  <string name="settings_search_autocompleteview_hint">Recherche de paramètres</string>
+  <string name="settings_search_loading_text">Chargement des données de recherche\u2026</string>
   <string name="profile_connectionoverrides_title">Connexions</string>
   <string name="profile_volumeoverrides_title">Volumes</string>
   <string name="connection_state_disabled">Inactif</string>
@@ -146,6 +149,7 @@
   <string name="icon_picker_pack_title">Jeux d\'icônes</string>
   <string name="display_lights_settings_title">Affichage et voyant</string>
   <string name="lights_category_title">Luminosité</string>
+  <string name="notification_light_title">Voyant de notification</string>
   <string name="notification_light_general_title">Général</string>
   <string name="notification_light_applist_title">Applications</string>
   <string name="notification_light_phonelist_title">Téléphone</string>
@@ -274,9 +278,9 @@
   <string name="quick_pulldown_right">Droit</string>
   <string name="title_collapse_panel">Fermeture automatique</string>
   <string name="summary_collapse_panel">Fermer le panneau des raccourcis après un appui</string>
-  <string name="pref_network_mode_title">Modes réseau</string>
-  <string name="pref_screentimeout_mode_title">Mode mise en veille de l\'écran</string>
-  <string name="pref_ring_mode_title">Mode de sonnerie</string>
+  <string name="pref_network_mode_title">Modes de réseau</string>
+  <string name="pref_screentimeout_mode_title">Modes d\'extinction de l\'écran</string>
+  <string name="pref_ring_mode_title">Modes de sonnerie</string>
   <string name="pref_ring_mode_summary">Sélectionner les modes de fonctionnement du bouton Sonnerie</string>
   <string name="cm_sound_mode_silent">Silencieux</string>
   <string name="cm_sound_mode_vibrate">Vibreur</string>
@@ -420,12 +424,12 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="pref_force_highend_gfx_summary">Permet des effets visuels haute résolution tels que la barre de statut/navigation transparente (nécessite un redémarrage)</string>
   <string name="kill_app_longpress_back">Tuer avec bouton Retour</string>
   <string name="kill_app_longpress_back_summary">Tuer l\'application en premier plan par un appui long sur le bouton Retour</string>
-  <string name="changelog_title">Voir le rapport de version</string>
-  <string name="changelog_loading">Chargement du rapport de version\u2026</string>
-  <string name="changelog_error">Impossible de charger le rapport de version</string>
+  <string name="changelog_title">Note de version</string>
+  <string name="changelog_loading">Chargement de la note de version\u2026</string>
+  <string name="changelog_error">Impossible de charger la note de version</string>
   <string name="changelog_unknown">Inconnu</string>
   <string name="changelog_version">Version</string>
-  <string name="contributor_cloud_title">Afficher les contributeurs</string>
+  <string name="contributor_cloud_title">Contributeurs</string>
   <string name="cmupdate_settings_title">Mises à jour CyanogenMod</string>
   <string name="cmupdate_settings_summary">Vérifier, afficher ou installer les mises à jour disponibles</string>
   <string name="advanced_settings_title">Paramètres avancés</string>
@@ -440,7 +444,7 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="privacy_guard_default_summary">Activer par défaut la protection des données pour les applications nouvellement installées</string>
   <string name="privacy_guard_manager_title">Protection des données</string>
   <string name="privacy_guard_manager_summary">Contrôler l\'accès des applications à vos données personnelles</string>
-  <string name="privacy_guard_no_user_apps">Pas d\'application installée</string>
+  <string name="privacy_guard_no_user_apps">Aucune application installée</string>
   <string name="privacy_guard_filter_does_not_match">Aucune application demandant des autorisations sensibles n\'est installée</string>
   <string name="privacy_guard_help_title">Aide</string>
   <string name="privacy_guard_reset_title">Réinitialiser</string>
@@ -536,6 +540,7 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="lockscreen_target_reset_message">Supprimer tous les raccourcis et revenir à la configuration d\'origine\u00A0?</string>
   <string name="lockscreen_target_empty">Vide</string>
   <string name="lockscreen_target_edit_title">Modifier le raccourci</string>
+  <string name="lockscreen_target_edit_msg">Sélectionner ou modifier l\'application ou l\'activité souhaitée et l\'icône correspondante</string>
   <string name="picker_activities">Activités</string>
   <string name="select_custom_app_title">Sélectionner l\'application</string>
   <string name="select_custom_activity_title">Sélectionner l\'activité</string>
@@ -588,6 +593,8 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="navigation_bar_reset_toast">Barre de navigation remise à zéro</string>
   <string name="navigation_bar_menu_editable">Modifiable</string>
   <string name="navigation_bar_menu_locked">Verrouillée</string>
+  <string name="navigation_bar_arrow_keys_title">Boutons de direction lors de la frappe</string>
+  <string name="navigation_bar_arrow_keys_summary">Afficher les boutons curseur gauche et droite lors de la frappe</string>
   <string name="navigation_ring_title">Raccourcis de lancement rapide</string>
   <string name="navring_target_reset_message">Supprimer tous les raccourcis de la barre de navigation et revenir à la configuration d\'origine\u00A0?</string>
   <string name="navring_target_reset">Raccourcis de la barre de navigation réinitialisés</string>
@@ -608,8 +615,8 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="power_menu_expanded_desktop">Bureau étendu</string>
   <string name="expanded_desktop_style">Style du bureau étendu</string>
   <string name="expanded_desktop_disabled">Désactivé</string>
-  <string name="expanded_desktop_status_bar">Barre de notification visible</string>
-  <string name="expanded_desktop_no_status_bar">Barre de notification masquée</string>
+  <string name="expanded_desktop_status_bar">Barre d\'état visible</string>
+  <string name="expanded_desktop_no_status_bar">Barre d\'état masquée</string>
   <string name="expanded_desktop_system_bars_visibility">Désactiver pour l\'écran de verrouillage</string>
   <string name="expanded_desktop_system_bars_visibility_summary">Afficher la barre d\'état et de navigation sur l\'écran de verrouillage en mode bureau étendu</string>
   <string name="power_menu_profiles_title">Profils</string>
@@ -673,7 +680,6 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="setting_lockscreen_background">Modification du fond d\'écran</string>
   <string name="confirm_delete_apn">L\'APN va être supprimé.</string>
   <string name="status_bar_title">Barre d\'état</string>
-  <string name="status_bar_show_clock_title">Afficher l\'horloge</string>
   <string name="status_bar_battery_title">Affichage du niveau de batterie</string>
   <string name="status_bar_style_icon_portrait">Icône portrait</string>
   <string name="status_bar_style_icon_landscape">Icône paysage</string>
@@ -689,7 +695,7 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="status_bar_toggle_info">Non disponible lorsque la luminosité automatique est activée</string>
   <string name="status_bar_notif_count_title">Afficher le compteur de notification</string>
   <string name="status_bar_notif_count_summary">Afficher le nombre de notifications en attente</string>
-  <string name="status_bar_double_tap_to_sleep_title">Double appui pour mettre en veille</string>
+  <string name="status_bar_double_tap_to_sleep_title">Appui double pour mettre en veille</string>
   <string name="development_shortcut_title">Raccourcis développement</string>
   <string name="development_shortcut_summary">Active les options \'Effacer données\' et \'Forcer fermeture\' dans la zone de notification et la liste des applications récentes</string>
   <string name="usb_mass_storage_title">Stockage de masse (UMS)</string>
@@ -706,8 +712,6 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="battery_info_status_charging_dock_ac">(DockAC)</string>
   <string name="battery_info_status_charging_dock_usb">(DockUSB)</string>
   <string name="menu_stats_reset">Réinitialiser</string>
-  <string name="cmlicense_title">Infos légales CyanogenMod</string>
-  <string name="settings_cmlicense_activity_title">Infos légales CyanogenMod</string>
   <string name="settings_cmlicense_activity_unreachable">Vous n\'avez pas de connexion de données active. Pour voir ces informations maintenant, allez sur %s via un ordinateur connecté à Internet.</string>
   <string name="stylus_icon_enabled_title">Afficher l\'icône lors de l\'utilisation du stylet</string>
   <string name="stylus_icon_enabled_summary">Afficher l\'icône du pointeur lors de l\'écriture ou du survol de l\'écran</string>
@@ -722,7 +726,7 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="gestures_up_spen_title_head">Balayage vers le haut</string>
   <string name="gestures_down_spen_title_head">Balayage vers le bas</string>
   <string name="gestures_long_spen_title_head">Appui long</string>
-  <string name="gestures_double_spen_title_head">Double appui</string>
+  <string name="gestures_double_spen_title_head">Appui double</string>
   <string name="gestures_settings_header_title">Gestes</string>
   <string name="gestures_action_empty">Aucune action</string>
   <string name="gestures_action_home">Accueil</string>
@@ -731,7 +735,7 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="gestures_action_search">Lancer une recherche</string>
   <string name="gestures_action_recent">Applications récentes</string>
   <string name="stylus_app_not_installed">%s n\'est pas installé</string>
-  <string name="ime_switcher_notify">Sélecteur de notifications</string>
+  <string name="ime_switcher_notify">Notification de sélecteur</string>
   <string name="ime_switcher_notify_summary">Afficher une notification pour le sélectionneur de mode de saisie</string>
   <string name="app_ops_summaries_coarse_location">localisation approximative</string>
   <string name="app_ops_summaries_fine_location">localisation précise</string>
@@ -757,7 +761,7 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="app_ops_summaries_read_icc_sms">lire les SMS de l\'ICC</string>
   <string name="app_ops_summaries_write_icc_sms">écrire des SMS de l\'ICC</string>
   <string name="app_ops_summaries_modify_settings">modifier les paramètres</string>
-  <string name="app_ops_summaries_draw_on_top">déplacer au dessus</string>
+  <string name="app_ops_summaries_draw_on_top">déplacer au-dessus</string>
   <string name="app_ops_summaries_access_notifications">accéder aux notifications</string>
   <string name="app_ops_summaries_camera">appareil photo</string>
   <string name="app_ops_summaries_record_audio">enregistrer un son</string>
@@ -785,7 +789,7 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="app_ops_summaries_write_mms">écrire des MMS</string>
   <string name="app_ops_summaries_auto_start">démarrer automatiquement</string>
   <string name="app_ops_labels_location">Emplacement</string>
-  <string name="app_ops_labels_vibrate">Vibrer</string>
+  <string name="app_ops_labels_vibrate">Vibreur</string>
   <string name="app_ops_labels_read_contacts">Voir les contacts</string>
   <string name="app_ops_labels_modify_contacts">Modifier les contacts</string>
   <string name="app_ops_labels_read_call_log">Voir le journal d\'appel</string>
@@ -800,7 +804,7 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="app_ops_labels_receive_mms">Recevoir des MMS</string>
   <string name="app_ops_labels_send_sms">Envoyer des SMS</string>
   <string name="app_ops_labels_modify_settings">Modifier les paramètres</string>
-  <string name="app_ops_labels_draw_on_top">Déplacer au dessus</string>
+  <string name="app_ops_labels_draw_on_top">Déplacer au-dessus</string>
   <string name="app_ops_labels_access_notifications">Accéder aux notifications</string>
   <string name="app_ops_labels_camera">Appareil photo</string>
   <string name="app_ops_labels_record_audio">Enregistrer un son</string>
@@ -837,11 +841,11 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="app_ops_both_count">Autorisé <xliff:g id="count">%1$s</xliff:g>, refusé <xliff:g id="count">%2$s</xliff:g></string>
   <string name="app_ops_show_user_apps">Voir l\'utilisateur des applications</string>
   <string name="app_ops_show_system_apps">Afficher les applications système</string>
-  <string name="app_ops_reset_counters">Réinitialiser le conteur des autorisés/refusés</string>
+  <string name="app_ops_reset_counters">Réinitialiser le compteur des autorisés/refusés</string>
   <string name="app_ops_reset_confirm_title">Confirmer la réinitialisation des compteurs</string>
-  <string name="app_ops_reset_confirm_mesg">Êtes-vous sûr de que vouloir réinitialiser les compteurs de AppOps ?</string>
-  <string name="edge_gesture_service_title">Bloquer les événements gestuelles</string>
-  <string name="edge_gesture_service_summary">Ne pas envoyer à l\'application les événements de mouvement gestuelle dans la barre de navigation et de statut</string>
+  <string name="app_ops_reset_confirm_mesg">Êtes-vous sûr de vouloir réinitialiser les compteurs de AppOps ?</string>
+  <string name="edge_gesture_service_title">Bloquer les événements gestuels</string>
+  <string name="edge_gesture_service_summary">Ne pas envoyer aux applications les événements gestuels des barres de statut et de navigation</string>
   <string name="data_usage_cycle_editor_subtitle_cm">Date de chaque cycle :</string>
   <string name="data_usage_lengths_spinner_subtitle">Durée du cycle :</string>
   <string name="disable_navkeys_title">Activer la barre de navigation à l\'écran</string>
@@ -873,4 +877,12 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="menu_hidden_apps_reset_lock">Réinitialiser le modèle de verrouillage</string>
   <string name="protected_apps">Applications protégées</string>
   <string name="saving_protected_components">Enregistrement de l\'état du composant\u2026</string>
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="one">Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étape de l\'activation des options de développeur.</item>
+    <item quantity="other">Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étapes de l\'activation des options de développeur.</item>
+  </plurals>
+  <string name="show_dev_on_cm">Vous avez activé les options de développeur !</string>
+  <string name="show_dev_already_cm">Inutile, vous avez déjà activé les options de développeur.</string>
+  <string name="enable_adb_cm">Débogage Android</string>
+  <string name="enable_adb_summary_cm">Activer l\'interface Android Debug Bridge (adb)</string>
 </resources>

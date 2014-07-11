@@ -75,6 +75,8 @@
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_2g3g">2G/3G</string>
+  <string name="settings_search_action_bar_button">Søg</string>
+  <string name="settings_search_autocompleteview_hint">Søgeindstillinger</string>
   <string name="profile_connectionoverrides_title">Tilsidesættelser for forbindelse</string>
   <string name="profile_volumeoverrides_title">Tilsidesættelser for lydstyrke</string>
   <string name="connection_state_disabled">Deaktivér</string>
@@ -146,7 +148,9 @@
   <string name="icon_picker_pack_title">Ikonpakke</string>
   <string name="display_lights_settings_title">Skærm &amp; lys</string>
   <string name="lights_category_title">Lys</string>
+  <string name="notification_light_title">Meddelelseslys</string>
   <string name="notification_light_general_title">Generelt</string>
+  <string name="notification_light_applist_title">Apps</string>
   <string name="notification_light_phonelist_title">Telefon</string>
   <string name="notification_light_use_custom">Anvend egne værdier</string>
   <string name="notification_light_enabled">Aktiveret</string>
@@ -219,8 +223,11 @@
   <string name="summary_heads_up_enabled">Pop op-meddelelser er aktiveret</string>
   <string name="summary_heads_up_disabled">Pop op-meddelelser er deaktiveret</string>
   <string name="add_heads_up_package">Tilføj app</string>
+  <string name="add_heads_up_dnd_summary">Vis ikke svævende notifikationer i disse apps</string>
+  <string name="add_heads_up_blacklist_summary">Vis ikke svævende notifikationer fra disse apps</string>
   <string name="heads_up_dnd_title">Forstyr ikke</string>
   <string name="heads_up_blacklist_title">Sortliste</string>
+  <string name="heads_up_disabled_notice">Hvis du vil tillade apps at vise interaktive meddelelser i et pop-up-vindue på skærmen, skal du aktivere Svævende meddelelser.</string>
   <string name="title_tile_airplane">Flytilstand</string>
   <string name="title_tile_battery">Batteristatistik</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
@@ -332,6 +339,7 @@ Yderligere indstillinger er tilgængelige ved at trykke længe på en linje. Ved
   <string name="app_security_title">App-sikkerhed</string>
   <string name="root_access">Root-adgang</string>
   <string name="root_access_warning_title">Tillad root-adgang?</string>
+  <string name="root_access_warning_message">At tillade applikationer at anmode om root-adgang er meget farligt og kan kompromittere dit systems sikkerhed!</string>
   <string name="root_access_none">Deaktiveret</string>
   <string name="root_access_apps">Kun apps</string>
   <string name="root_access_adb">Kun ADB</string>
@@ -414,12 +422,10 @@ Yderligere indstillinger er tilgængelige ved at trykke længe på en linje. Ved
   <string name="pref_force_highend_gfx_summary">Aktiverer nogle rigtig flotte visuelle effekter, såsom transparent status-/navigationslinje (kræver genstart)</string>
   <string name="kill_app_longpress_back">Luk app på knappen Tilbage</string>
   <string name="kill_app_longpress_back_summary">Luk kørende app ved langt tryk på knappen Tilbage</string>
-  <string name="changelog_title">Vis ændringslog</string>
   <string name="changelog_loading">Indlæser ændringslog...</string>
   <string name="changelog_error">Kunne ikke indlæse ændringsloggen</string>
   <string name="changelog_unknown">Ukendt</string>
   <string name="changelog_version">Version</string>
-  <string name="contributor_cloud_title">Vis bidragydere</string>
   <string name="cmupdate_settings_title">CyanogenMod-opdateringer</string>
   <string name="cmupdate_settings_summary">Tjek for, se eller installér tilgængelige opdateringer</string>
   <string name="advanced_settings_title">Avanceret</string>
@@ -530,6 +536,7 @@ Yderligere indstillinger er tilgængelige ved at trykke længe på en linje. Ved
   <string name="lockscreen_target_reset_message">Slet egne genveje for skærmlåsen og nulstil til standard?</string>
   <string name="lockscreen_target_empty">Tom</string>
   <string name="lockscreen_target_edit_title">Rediger genvej og ikon</string>
+  <string name="lockscreen_target_edit_msg">Vælg eller redigér den ønskede app eller aktivitet og det tilhørende ikon</string>
   <string name="picker_activities">Aktiviteter</string>
   <string name="select_custom_app_title">Vælg brugerdefineret app</string>
   <string name="select_custom_activity_title">Vælg brugerdefineret aktivitet</string>
@@ -582,6 +589,8 @@ Yderligere indstillinger er tilgængelige ved at trykke længe på en linje. Ved
   <string name="navigation_bar_reset_toast">Indstillinger for navigationsbjælken er gendannet</string>
   <string name="navigation_bar_menu_editable">Redigerbar</string>
   <string name="navigation_bar_menu_locked">Låst</string>
+  <string name="navigation_bar_arrow_keys_title">Piletaster, mens du skriver</string>
+  <string name="navigation_bar_arrow_keys_summary">Vis knapper til venstre- og højremarkør, mens du skriver</string>
   <string name="navigation_ring_title">Genveje til hurtig start</string>
   <string name="navring_target_reset_message">Slet alle brugeroprettede genveje til navigationslinje og gendan til standard?</string>
   <string name="navring_target_reset">Genveje til navigationslinje nulstillet til standard</string>
@@ -667,7 +676,6 @@ Yderligere indstillinger er tilgængelige ved at trykke længe på en linje. Ved
   <string name="setting_lockscreen_background">Anvender baggrund</string>
   <string name="confirm_delete_apn">APN\'en vil blive slettet.</string>
   <string name="status_bar_title">Statuslinje</string>
-  <string name="status_bar_show_clock_title">Vis ur</string>
   <string name="status_bar_battery_title">Batteristatus</string>
   <string name="status_bar_style_icon_portrait">Ikon portræt</string>
   <string name="status_bar_style_icon_landscape">Ikon landskab</string>
@@ -700,8 +708,6 @@ Yderligere indstillinger er tilgængelige ved at trykke længe på en linje. Ved
   <string name="battery_info_status_charging_dock_ac">(DockAC)</string>
   <string name="battery_info_status_charging_dock_usb">(DockUSB)</string>
   <string name="menu_stats_reset">Nulstil</string>
-  <string name="cmlicense_title">Juridisk information for CyanogenMod</string>
-  <string name="settings_cmlicense_activity_title">Juridisk information for CyanogenMod</string>
   <string name="settings_cmlicense_activity_unreachable">Du har ingen dataforbindelse. Gå til %s fra en computer tilsluttet Internettet for at vise denne information nu.</string>
   <string name="stylus_icon_enabled_title">Vis ikon ved brug af pen</string>
   <string name="stylus_icon_enabled_summary">Vis markøren, når pennen benyttes</string>
@@ -861,9 +867,19 @@ Yderligere indstillinger er tilgængelige ved at trykke længe på en linje. Ved
   <string name="priority_sub_title">Prioritetsabonnement</string>
   <string name="bluetooth_accept_all_files">Acceptér alle filtyper</string>
   <string name="autoperf_title">Aktivér per-app-profiler</string>
+  <string name="autoperf_summary">Vælg automatisk en passende ydeevneprofil til diverse apps</string>
   <string name="graphics_title">Grafik og rendering</string>
   <string name="menu_hidden_apps_delete">Nulstil</string>
   <string name="menu_hidden_apps_reset_lock">Nulstil mønster lås</string>
   <string name="protected_apps">Beskyttede apps</string>
   <string name="saving_protected_components">Gemmer komponenttilstand\u2026</string>
+  <string name="keep_screen_on_summary_cm">Skærmen vil aldrig gå i dvale, når strøm er tilsluttet</string>
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="one">Du er nu <xliff:g id="step_count">%1$d</xliff:g> skridt væk fra at aktivere Indstillinger for udviklere.</item>
+    <item quantity="other">Du er nu <xliff:g id="step_count">%1$d</xliff:g> skridt væk fra at aktivere Indstillinger for udviklere.</item>
+  </plurals>
+  <string name="show_dev_on_cm">Du har aktiveret Indstillinger for udviklere!</string>
+  <string name="show_dev_already_cm">Du behøver ikke gøre dette, Indstillinger for udviklere er allerede aktiveret.</string>
+  <string name="enable_adb_cm">Android-fejlfinding</string>
+  <string name="enable_adb_summary_cm">Aktivér ADB-grænsefladen</string>
 </resources>

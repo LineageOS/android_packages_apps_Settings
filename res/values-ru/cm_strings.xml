@@ -75,6 +75,9 @@
   <string name="profile_networkmode_2g">Только 2G</string>
   <string name="profile_networkmode_3g">Только 3G</string>
   <string name="profile_networkmode_2g3g">Автовыбор 2G или 3G</string>
+  <string name="settings_search_action_bar_button">Поиск</string>
+  <string name="settings_search_autocompleteview_hint">Поиск в настройках</string>
+  <string name="settings_search_loading_text">Загрузка данных для поиска\u2026</string>
   <string name="profile_connectionoverrides_title">Сетевые подключения</string>
   <string name="profile_volumeoverrides_title">Громкость</string>
   <string name="connection_state_disabled">Выключить</string>
@@ -146,6 +149,7 @@
   <string name="icon_picker_pack_title">Набор значков</string>
   <string name="display_lights_settings_title">Экран и индикация</string>
   <string name="lights_category_title">Индикация</string>
+  <string name="notification_light_title">Индикатор событий</string>
   <string name="notification_light_general_title">Общие</string>
   <string name="notification_light_applist_title">Приложения</string>
   <string name="notification_light_phonelist_title">Телефон</string>
@@ -490,8 +494,8 @@
   <string name="gamma_tuning_saturation">Насыщенность</string>
   <string name="headset_connect_player_title">Автозапуск плеера</string>
   <string name="headset_connect_player_summary">Запускать плеер при подключении наушников</string>
-  <string name="adb_notify">Уведомление об отладке по USB</string>
-  <string name="adb_notify_summary">Показывать уведомление о включённом режиме отладки по USB</string>
+  <string name="adb_notify">Уведомление об отладке</string>
+  <string name="adb_notify_summary">Показывать уведомление при включённом режиме отладки</string>
   <string name="adb_over_network">Отладка по сети</string>
   <string name="adb_over_network_summary">Включить режим отладки через сетевые интерфейсы (Wi-Fi и USB-сети). Эта установка сбрасывается при перезагрузке</string>
   <string name="adb_over_network_warning">ВНИМАНИЕ: когда включена отладка по сети, устройство открыто для неконтролируемого доступа из всех подключённых сетей!\n\nИспользуйте эту функцию только тогда, когда вы подключены к доверенным сетям.\n\nВы действительно хотите включить эту функцию?</string>
@@ -589,6 +593,8 @@
   <string name="navigation_bar_reset_toast">Восстановлен набор кнопок по умолчанию</string>
   <string name="navigation_bar_menu_editable">Режим правки</string>
   <string name="navigation_bar_menu_locked">Заблокировано</string>
+  <string name="navigation_bar_arrow_keys_title">Перемещение курсора</string>
+  <string name="navigation_bar_arrow_keys_summary">Отображать кнопки перемещения курсора влево или вправо при вводе</string>
   <string name="navigation_ring_title">Ярлыки быстрого запуска</string>
   <string name="navring_target_reset_message">Удалить пользовательские настройки ярлыков быстрого запуска?</string>
   <string name="navring_target_reset">Восстановлены ярлыки быстрого запуска по умолчанию</string>
@@ -874,4 +880,14 @@
   <string name="menu_hidden_apps_reset_lock">Удалить граф. ключ</string>
   <string name="protected_apps">Заблокир. приложения</string>
   <string name="saving_protected_components">Сохранение состояния приложений\u2026</string>
+  <string name="keep_screen_on_summary_cm">При подключённом источнике питания экран не отключается</string>
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="one">Остался <xliff:g id="step_count">%1$d</xliff:g> шаг для включения настроек для разработчиков.</item>
+    <item quantity="few">Осталось <xliff:g id="step_count">%1$d</xliff:g> шага для включения настроек для разработчиков.</item>
+    <item quantity="other">Осталось <xliff:g id="step_count">%1$d</xliff:g> шагов для включения настроек для разработчиков.</item>
+  </plurals>
+  <string name="show_dev_on_cm">Настройки для разработчиков активированы!</string>
+  <string name="show_dev_already_cm">Не нужно, настройки для разработчиков уже включены.</string>
+  <string name="enable_adb_cm">Режим отладки</string>
+  <string name="enable_adb_summary_cm">Включить интерфейс Android Debug Bridge (ADB)</string>
 </resources>

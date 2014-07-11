@@ -75,6 +75,9 @@
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_2g3g">2G/3G</string>
+  <string name="settings_search_action_bar_button">ค้นหา</string>
+  <string name="settings_search_autocompleteview_hint">ตั้งค่าการค้นหา</string>
+  <string name="settings_search_loading_text">กำลังโหลดข้อมูลการค้นหา\u2026</string>
   <string name="profile_connectionoverrides_title">แทนที่การเชื่อมต่อ</string>
   <string name="profile_volumeoverrides_title">แทนที่ระดับเสียง</string>
   <string name="connection_state_disabled">ปิด</string>
@@ -146,7 +149,9 @@
   <string name="icon_picker_pack_title">ชุดไอคอน</string>
   <string name="display_lights_settings_title">การแสดงผล &amp; แสง</string>
   <string name="lights_category_title">แสง</string>
+  <string name="notification_light_title">ไฟแจ้งเตือน</string>
   <string name="notification_light_general_title">ทั่วไป</string>
+  <string name="notification_light_applist_title">แอป</string>
   <string name="notification_light_phonelist_title">โทรศัพท์</string>
   <string name="notification_light_use_custom">ใช้ค่ากำหนดเอง</string>
   <string name="notification_light_enabled">เปิด</string>
@@ -219,8 +224,11 @@
   <string name="summary_heads_up_enabled">เปิดใช้งานการแจ้งเตือนแบบป๊อปอัพ</string>
   <string name="summary_heads_up_disabled">ไม่ใช้งานการแจ้งเตือนแบบป๊อปอัพ</string>
   <string name="add_heads_up_package">เพิ่มแอป</string>
+  <string name="add_heads_up_dnd_summary">ไม่แสดง heads up ในแอปเหล่านี้</string>
+  <string name="add_heads_up_blacklist_summary">ไม่แสดง heads up จากแอปเหล่านี้</string>
   <string name="heads_up_dnd_title">ห้าม​รบกวน</string>
   <string name="heads_up_blacklist_title">บัญชีดำ</string>
+  <string name="heads_up_disabled_notice">เพื่ออนุญาติให้แอปแสดงการแจ้งเตือนเป็นป็อปอัพบนหน้าจอของคุณ, เปิดใช้งาน Heads up.</string>
   <string name="title_tile_airplane">โหมดเครื่องบิน</string>
   <string name="title_tile_battery">แบตเตอรี</string>
   <string name="title_tile_bluetooth">บลูทูธ</string>
@@ -325,6 +333,7 @@
   <string name="app_security_title">ความปลอดภัยของแอป</string>
   <string name="root_access">สิทธิผู้ดูแลระบบ</string>
   <string name="root_access_warning_title">ให้สิทธิผู้ดูแลระบบ?</string>
+  <string name="root_access_warning_message">หากอนุญาติให้แอปพลิเคชันเข้าถึงสิทธิผู้ดูแลระบบมันจะอันตรายมากและอาจทำให้มีปัญหาด้านความปลอดภัยของระบบของคุณ!</string>
   <string name="root_access_none">ปิด</string>
   <string name="root_access_apps">แอปเท่านั้น</string>
   <string name="root_access_adb">ADB เท่านั้น</string>
@@ -407,12 +416,12 @@
   <string name="pref_force_highend_gfx_summary">บังคับใช้กราฟฟิกโปร่งใสระดับสูง เช่น ทำให้แถบสถานะ/แถบนำทางโปร่งใส (ต้องเริ่มระบบใหม่)</string>
   <string name="kill_app_longpress_back">ปิดแอปด้วยปุ่มกลับ</string>
   <string name="kill_app_longpress_back_summary">ปิดแอปที่กำลังใช้งานโดยกดปุ่มกลับค้าง</string>
-  <string name="changelog_title">ดูความเปลี่ยนแปลง</string>
+  <string name="changelog_title">ความเปลี่ยนแปลง</string>
   <string name="changelog_loading">กำลังโหลด ความเปลี่ยนแปลง\u2026</string>
   <string name="changelog_error">ไม่สามารถโหลดความเปลี่ยนแปลงได้</string>
   <string name="changelog_unknown">ไม่ทราบ</string>
   <string name="changelog_version">รุ่น</string>
-  <string name="contributor_cloud_title">ดูรายชื่อผู้ร่วมพัฒนา</string>
+  <string name="contributor_cloud_title">ผู้ร่วมพัฒนา</string>
   <string name="cmupdate_settings_title">ปรับปรุงรุ่น CyanogenMod</string>
   <string name="cmupdate_settings_summary">ตรวจสอบ,ดู หรือติดตั้งการอัพเดต</string>
   <string name="advanced_settings_title">ขั้นสูง</string>
@@ -523,6 +532,7 @@
   <string name="lockscreen_target_reset_message">ต้องการลบทางลัดหน้าล็อคจอของทุกผู้ใช้งานและกลับคืนสู่ค่าเดิมหรือไม่ ?</string>
   <string name="lockscreen_target_empty">ว่างเปล่า</string>
   <string name="lockscreen_target_edit_title">แก้ไขทางลัดและไอคอน</string>
+  <string name="lockscreen_target_edit_msg">เลือกหรือเปลี่ยนแปลงแอปหรือกิจกรรมและไอคอนเกี่ยวข้อง</string>
   <string name="picker_activities">กิจกรรม</string>
   <string name="select_custom_app_title">เลือกแอปเอง</string>
   <string name="select_custom_activity_title">เลือกกิจกรรมเอง</string>
@@ -575,6 +585,8 @@
   <string name="navigation_bar_reset_toast">รีเซ็ตแถบนำทางสู่ค่าเริ่มต้น</string>
   <string name="navigation_bar_menu_editable">แก้ไขได้</string>
   <string name="navigation_bar_menu_locked">ล็อค</string>
+  <string name="navigation_bar_arrow_keys_title">ปุ่มลูกศรขณะพิมพ์</string>
+  <string name="navigation_bar_arrow_keys_summary">แสดงปุ่มเคอร์เซอร์ซ้ายและขวาในขณะพิมพ์</string>
   <string name="navigation_ring_title">ทางลัดการเปิด</string>
   <string name="navring_target_reset_message">ลบการสร้างแถบนำทางของผู้ใช้ทั้งหมดและคืนค่าสู่ค่าเริ่มต้น?</string>
   <string name="navring_target_reset">คืนค่าทางลัดแถบนำทางสู่ค่าเริ่มต้น</string>
@@ -660,7 +672,6 @@
   <string name="setting_lockscreen_background">กำลังกำหนดพื้นหลัง</string>
   <string name="confirm_delete_apn">APN จะถูกลบ</string>
   <string name="status_bar_title">แถบสถานะ</string>
-  <string name="status_bar_show_clock_title">แสดงนาฬิกา</string>
   <string name="status_bar_battery_title">รูปแบบของสถานะแบตเตอร์รี่</string>
   <string name="status_bar_style_icon_portrait">ไอคอนแนวตั้ง</string>
   <string name="status_bar_style_icon_landscape">ไอคอนแนวนอน</string>
@@ -854,9 +865,18 @@
   <string name="priority_sub_title">บอกลำดับความสำคัญ</string>
   <string name="bluetooth_accept_all_files">ยอมรับแฟ้มทุกชนิด</string>
   <string name="autoperf_title">เปิดใช้งาน โปรไฟล์แต่ละแอป</string>
+  <string name="autoperf_summary">เลือกโปรไฟล์ที่เหมาะสมกับแอปต่างๆ โดยอัตโนมัติ</string>
   <string name="graphics_title">ภาพและกราฟฟิก</string>
   <string name="menu_hidden_apps_delete">รีเซ็ต</string>
   <string name="menu_hidden_apps_reset_lock">รีเซ็ตรูปแบบล็อค</string>
   <string name="protected_apps">แอปที่ป้องกัน</string>
   <string name="saving_protected_components">กำลังบันทึกองค์ประกอบ\u2026</string>
+  <string name="keep_screen_on_summary_cm">หน้าจอจะไม่ดับขณะชาร์จแบตเตอรี</string>
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="other">ขณะนี้คุณอยู่ขั้นที่ <xliff:g id="step_count"> %1$d</xliff:g> ในการเปิดใช้งานตัวเลือกสำหรับนักพัฒนา</item>
+  </plurals>
+  <string name="show_dev_on_cm">คุณได้เปิดใช้งานตัวเลือกการพัฒนา!</string>
+  <string name="show_dev_already_cm">ไม่จำเป็น คุณได้เปิดตัวเลือกสำหรับนักพัฒนาแล้ว</string>
+  <string name="enable_adb_cm">แก้ไขข้อบกพร่องแอนดรอยด์</string>
+  <string name="enable_adb_summary_cm">เปิดใช้งานแก้ไขข้อบอกพร่องแอนดรอยด์ (ADB)</string>
 </resources>

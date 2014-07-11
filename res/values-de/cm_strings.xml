@@ -75,6 +75,9 @@
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_2g3g">2G/3G</string>
+  <string name="settings_search_action_bar_button">Suche</string>
+  <string name="settings_search_autocompleteview_hint">Einstellungen durchsuchen</string>
+  <string name="settings_search_loading_text">Suche wird geladen\u2026</string>
   <string name="profile_connectionoverrides_title">Verbindungen festlegen</string>
   <string name="profile_volumeoverrides_title">Lautstärke festlegen</string>
   <string name="connection_state_disabled">Deaktivieren</string>
@@ -146,6 +149,7 @@
   <string name="icon_picker_pack_title">Symbolbibliothek</string>
   <string name="display_lights_settings_title">Display &amp; LED</string>
   <string name="lights_category_title">LED</string>
+  <string name="notification_light_title">Benachrichtigungslicht</string>
   <string name="notification_light_general_title">Allgemein</string>
   <string name="notification_light_applist_title">Apps</string>
   <string name="notification_light_phonelist_title">Telefon</string>
@@ -221,10 +225,10 @@
   <string name="summary_heads_up_disabled">Pop-up-Benachrichtigungen sind deaktiviert</string>
   <string name="add_heads_up_package">App hinzufügen</string>
   <string name="add_heads_up_dnd_summary">Pop-up-Benachrichtigungen in diesen Apps nicht anzeigen</string>
-  <string name="add_heads_up_blacklist_summary">Pop-up-Benachrichtigungen von diesen Apps nicht anzeigen</string>
+  <string name="add_heads_up_blacklist_summary">Benachrichtigungen dieser Apps nicht als Pop-up anzeigen</string>
   <string name="heads_up_dnd_title">Nicht stören</string>
   <string name="heads_up_blacklist_title">Sperrliste</string>
-  <string name="heads_up_disabled_notice">Pop-up-Benachrichtigungen aktivieren, um Apps zu ermöglichen, interaktive Benachrichtigungen in einem Pop-up-Fenster darzustellen.</string>
+  <string name="heads_up_disabled_notice">Um Apps zu ermöglichen, interaktive Benachrichtigungen in einem Pop-up-Fenster darzustellen. aktivieren Sie Pop-up-Benachrichtigungen.</string>
   <string name="title_tile_airplane">Flugmodus</string>
   <string name="title_tile_battery">Akkustand</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
@@ -364,7 +368,7 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
   <string name="quiet_hours_enabled">Ruhige Stunden aktiv</string>
   <string name="quiet_hours_ringer">Klingeln bei Anruf</string>
   <string name="quiet_hours_mute">Benachrichtigungen</string>
-  <string name="quiet_hours_mute_summary">Benachrichtigungstton deaktivieren</string>
+  <string name="quiet_hours_mute_summary">Benachrichtigungston deaktivieren</string>
   <string name="quiet_hours_system">Systemtöne</string>
   <string name="quiet_hours_system_summary">Systemtöne deaktivieren</string>
   <string name="quiet_hours_still">Vibration</string>
@@ -434,12 +438,12 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
   <string name="pref_force_highend_gfx_summary">Verbesserte Transparenz- und Animationseffekte wie z.B. Status- und Navigationsleistentransparenz verwenden (Neustart erforderlich)</string>
   <string name="kill_app_longpress_back">App beenden</string>
   <string name="kill_app_longpress_back_summary">Gedrückt halten der Zurück-Taste beendet die Anwendung im Vordergrund</string>
-  <string name="changelog_title">Changelog anzeigen</string>
+  <string name="changelog_title">Changelog</string>
   <string name="changelog_loading">Changelog wird geladen\u2026</string>
   <string name="changelog_error">Changelog kann nicht geladen werden</string>
   <string name="changelog_unknown">Unbekannt</string>
   <string name="changelog_version">Version</string>
-  <string name="contributor_cloud_title">Mitwirkende anzeigen</string>
+  <string name="contributor_cloud_title">Mitwirkende</string>
   <string name="cmupdate_settings_title">CyanogenMod-Updates</string>
   <string name="cmupdate_settings_summary">Auf neue Versionen prüfen und diese installieren</string>
   <string name="advanced_settings_title">Erweitert</string>
@@ -550,6 +554,7 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
   <string name="lockscreen_target_reset_message">Anwendungen vom Sperrbildschirm löschen und auf Standard zurücksetzen?</string>
   <string name="lockscreen_target_empty">Nicht zugewiesen</string>
   <string name="lockscreen_target_edit_title">Zuordnung bearbeiten</string>
+  <string name="lockscreen_target_edit_msg">Wählen Sie die gewünschte App oder Aktivität und das dazugehörige Symbol aus</string>
   <string name="picker_activities">Aktivitäten</string>
   <string name="select_custom_app_title">Anwendung wählen</string>
   <string name="select_custom_activity_title">Aktivität wählen</string>
@@ -602,6 +607,8 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
   <string name="navigation_bar_reset_toast">Die Vorgaben der Navigationsleiste wurden wiederhergestellt</string>
   <string name="navigation_bar_menu_editable">Änderbar</string>
   <string name="navigation_bar_menu_locked">Gesperrt</string>
+  <string name="navigation_bar_arrow_keys_title">Pfeiltasten bei Eingabe</string>
+  <string name="navigation_bar_arrow_keys_summary">Während der Eingabe Tasten zur Cursorsteuerung in der Navigationsleiste einblenden</string>
   <string name="navigation_ring_title">Schnellstart-Verknüpfungen</string>
   <string name="navring_target_reset_message">Schnellstart-Verknüpfungen auf Standard zurücksetzen?</string>
   <string name="navring_target_reset">Schnellstart-Verknüpfungen zurückgesetzt</string>
@@ -616,7 +623,7 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
   <string name="navring_action_torch">Taschenlampe</string>
   <string name="navring_action_google_now">Google Now</string>
   <string name="navring_choose_action_title">Aktion auswählen</string>
-  <string name="power_menu_title">Ein/Aus-Taste</string>
+  <string name="power_menu_title">Ein-/Aus-Taste</string>
   <string name="power_menu_reboot_title">Neustart-Menü</string>
   <string name="power_menu_screenshot_title">Bildschirmfoto</string>
   <string name="power_menu_expanded_desktop">Erweiterter Desktop</string>
@@ -649,11 +656,11 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
   <string name="hardware_keys_action_in_app_search">In-App-Suche</string>
   <string name="hardware_keys_action_launch_camera">Kamera starten</string>
   <string name="power_end_call_title">Anruf beenden</string>
-  <string name="power_end_call_summary">Beenden des aktuellen Telefonats durch drücken der Ein-/Aus-Taste</string>
+  <string name="power_end_call_summary">Ein laufendes Telefonat durch Drücken der Ein-/Aus-Taste beenden</string>
   <string name="button_wake_title">Aufwecken</string>
   <string name="home_wake_summary">Drücken der Home-Taste aktiviert den Bildschirm</string>
   <string name="home_answer_call_title">Anruf beantworten</string>
-  <string name="home_answer_call_summary">Annehmen eingehender Anruf durch drücken der Ein-/Aus-Taste</string>
+  <string name="home_answer_call_summary">Eingehende Anrufe durch Drücken der Home-Taste annehmen</string>
   <string name="camera_wake_summary">Drücken der Kamera-Taste aktiviert den Bildschirm</string>
   <string name="camera_sleep_on_release_title">Kurzer Blick</string>
   <string name="camera_sleep_on_release_summary">Der Bildschirm wird aktiviert, solange die Kamera-Taste halb durchgedrückt gehalten wird</string>
@@ -723,7 +730,7 @@ auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
   <string name="battery_info_status_charging_dock_usb">USB-Dock</string>
   <string name="menu_stats_reset">Zurücksetzen</string>
   <string name="cmlicense_title">Rechtliche Hinweise zu CyanogenMod</string>
-  <string name="settings_cmlicense_activity_title">Rechtliche Hinweise CyanogenMod</string>
+  <string name="settings_cmlicense_activity_title">Rechtliche Hinweise zu CyanogenMod</string>
   <string name="settings_cmlicense_activity_unreachable">Es besteht keine Datenverbindung. Besuchen Sie %s mit einem beliebigen Computer mit Internetverbindung, um die Informationen jetzt anzusehen.</string>
   <string name="stylus_icon_enabled_title">Stift-Symbol</string>
   <string name="stylus_icon_enabled_summary">Zeiger einblenden, wenn ein Stift verwendet wird</string>
@@ -862,7 +869,7 @@ auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
   <string name="data_usage_lengths_spinner_subtitle">Zykluslänge:</string>
   <string name="disable_navkeys_title">Navigationsleiste aktivieren</string>
   <string name="disable_navkeys_summary">Navigationstasten deaktivieren und stattdessen eine Navigationsleiste auf dem Bildschirm anzeigen</string>
-  <string name="voice_plus_summary">Allen Apps erlauben SMS über Google Voice zu versenden</string>
+  <string name="voice_plus_summary">Allen Apps erlauben, SMS über Google Voice zu versenden</string>
   <string name="accessibility_sync_in_progress">Synchronisierung aktiv</string>
   <string name="wifi_mode">Modus</string>
   <string name="wifi_mode_ibss">Ad-Hoc-Netz (IBSS)</string>
@@ -883,10 +890,18 @@ auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
   <string name="priority_sub_title">Vorzugs-SIM</string>
   <string name="bluetooth_accept_all_files">Alle Dateiformate akzeptieren</string>
   <string name="autoperf_title">App-Profile aktivieren</string>
-  <string name="autoperf_summary">Automatisch ein passendes Leistungsprofil für bestimmte Anwendungen auswählen</string>
+  <string name="autoperf_summary">Wählt für einige Apps automatisch ein passendes Leistungsprofil aus</string>
   <string name="graphics_title">Grafikoptionen</string>
   <string name="menu_hidden_apps_delete">Zurücksetzen</string>
   <string name="menu_hidden_apps_reset_lock">Sperrmuster zurücksetzen</string>
   <string name="protected_apps">Geschützte Apps</string>
-  <string name="saving_protected_components">Zustand der Komponente speichern\u2026</string>
+  <string name="saving_protected_components">Geschützte Apps werden gespeichert\u2026</string>
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="one">Sie sind <xliff:g id="step_count">%1$d</xliff:g> Schritt von der Aktivierung der Entwickleroptionen entfernt.</item>
+    <item quantity="other">Sie sind <xliff:g id="step_count">%1$d</xliff:g> Schritte von der Aktivierung der Entwickleroptionen entfernt.</item>
+  </plurals>
+  <string name="show_dev_on_cm">Sie haben die Entwickleroptionen aktiviert!</string>
+  <string name="show_dev_already_cm">Nicht nötig, Sie haben die Entwickleroptionen bereits aktiviert.</string>
+  <string name="enable_adb_cm">Android-Debugging</string>
+  <string name="enable_adb_summary_cm">ADB-Protokoll für Debugging über USB oder Netzwerk aktivieren</string>
 </resources>

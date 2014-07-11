@@ -75,6 +75,9 @@
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_2g3g">2G / 3G</string>
+  <string name="settings_search_action_bar_button">Paieška</string>
+  <string name="settings_search_autocompleteview_hint">Paieškos nustatymai</string>
+  <string name="settings_search_loading_text">Įkeliami paieškos duomenys\u2026</string>
   <string name="profile_connectionoverrides_title">Profilio jungiamumas</string>
   <string name="profile_volumeoverrides_title">Profilio garsumas</string>
   <string name="connection_state_disabled">Išjungti</string>
@@ -146,6 +149,7 @@
   <string name="icon_picker_pack_title">Piktogramų rinkinys</string>
   <string name="display_lights_settings_title">Ekranas ir šviesos</string>
   <string name="lights_category_title">Šviesos</string>
+  <string name="notification_light_title">Pranešimo šviesa</string>
   <string name="notification_light_general_title">Bendra</string>
   <string name="notification_light_applist_title">Programos</string>
   <string name="notification_light_phonelist_title">Telefono</string>
@@ -433,12 +437,12 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="pref_force_highend_gfx_summary">Įjungia aukštos klasės vizualinius efektus, pavyzdžiui, permatomą būsenos / naršymo juostą (reikalinga perkrova)</string>
   <string name="kill_app_longpress_back">Uždaryti programą atgal mygtuku</string>
   <string name="kill_app_longpress_back_summary">Uždaryti programą ilgai spaudžiant mygtuką atgal</string>
-  <string name="changelog_title">Žiūrėti pakeitimų sąrašą</string>
+  <string name="changelog_title">Pakeitimų sąrašas</string>
   <string name="changelog_loading">Įkeliamas pakeitimų sąrašas\u2026</string>
   <string name="changelog_error">Nepavyko įkelti pakeitimų sąrašo</string>
   <string name="changelog_unknown">Nežinomas</string>
   <string name="changelog_version">Versija</string>
-  <string name="contributor_cloud_title">Žiūrėti pagalbininkus</string>
+  <string name="contributor_cloud_title">Pagalbininkai</string>
   <string name="cmupdate_settings_title">„CyanogenMod“ atnaujinimai</string>
   <string name="cmupdate_settings_summary">Tikrinti, žiūrėti ar įdiegti galimus atnaujinimus</string>
   <string name="advanced_settings_title">Išplėstinis</string>
@@ -602,6 +606,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="navigation_bar_reset_toast">Naršymo juosta atkurta į numatytąją</string>
   <string name="navigation_bar_menu_editable">Redaguojama</string>
   <string name="navigation_bar_menu_locked">Užrakinta</string>
+  <string name="navigation_bar_arrow_keys_title">Klavišų rodyklės rašant</string>
+  <string name="navigation_bar_arrow_keys_summary">Rašant rodyti kairiuosius ir dešiniuosius žymeklio klavišus</string>
   <string name="navigation_ring_title">Greito paleidimo nuorodos</string>
   <string name="navring_target_reset_message">Ištrinti visas vartotojo sukurtas naršymo juostos nuorodas ir atkurti į numatytuosius nustatymus?</string>
   <string name="navring_target_reset">Naršymo juostos nuorodas atkurti į numatytuosius nustatymus</string>
@@ -887,4 +893,14 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="menu_hidden_apps_reset_lock">Atkurti modelio užraktą</string>
   <string name="protected_apps">Apsaugotos programos</string>
   <string name="saving_protected_components">Išsaugoma komponentų būklė\u2026</string>
+  <string name="keep_screen_on_summary_cm">Prijungus maitinimo šaltinį ekranas niekada neveiks miego režimu</string>
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="one">Jūs esate <xliff:g id="step_count">%1$d</xliff:g> žingsniu toliau iki kūrėjo parinkčių įjungimo.</item>
+    <item quantity="few">Jūs esate <xliff:g id="step_count">%1$d</xliff:g> žingsniais toliau iki kūrėjo parinkčių įjungimo.</item>
+    <item quantity="other">Jūs esate <xliff:g id="step_count">%1$d</xliff:g> žingsnių toliau iki kūrėjo parinkčių įjungimo.</item>
+  </plurals>
+  <string name="show_dev_on_cm">Įjungėte kūrėjo parinktis!</string>
+  <string name="show_dev_already_cm">Nereikia, jūs jau įjungėte kūrėjo parinktis.</string>
+  <string name="enable_adb_cm">„Android“ derinimas</string>
+  <string name="enable_adb_summary_cm">Įjungti „Android“ derinimo tiltą (adb) sąsaja</string>
 </resources>

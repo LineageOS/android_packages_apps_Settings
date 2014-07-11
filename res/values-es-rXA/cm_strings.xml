@@ -75,6 +75,8 @@
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_2g3g">2G/3G</string>
+  <string name="settings_search_action_bar_button">Guetar</string>
+  <string name="settings_search_autocompleteview_hint">Axustes de la gueta</string>
   <string name="profile_connectionoverrides_title">Coneutividá</string>
   <string name="profile_volumeoverrides_title">Volume</string>
   <string name="connection_state_disabled">Deshabilitáu</string>
@@ -146,6 +148,7 @@
   <string name="icon_picker_pack_title">Paquete d\'iconos</string>
   <string name="display_lights_settings_title">Pantalla y leds</string>
   <string name="lights_category_title">Leds</string>
+  <string name="notification_light_title">Lluz de notificación</string>
   <string name="notification_light_general_title">Xeneral</string>
   <string name="notification_light_applist_title">Aplicaciones</string>
   <string name="notification_light_phonelist_title">Teléfonu</string>
@@ -420,12 +423,10 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="pref_force_highend_gfx_summary">Habilitar los efeutos visuales d\'alta resolución, como la barra d\'estáu/navegación tresparente (necesita reaniciar)</string>
   <string name="kill_app_longpress_back">Botón Volver</string>
   <string name="kill_app_longpress_back_summary">Matar aplicaciones per aciu de la pulsación prollongada del botón Volver</string>
-  <string name="changelog_title">Rexistru de cambeos</string>
   <string name="changelog_loading">Cargando rexistru de cambeos\u2026</string>
   <string name="changelog_error">Imposible cargar el rexistru de cambeos</string>
   <string name="changelog_unknown">Desconocíu</string>
   <string name="changelog_version">Versión</string>
-  <string name="contributor_cloud_title">Ver collaboradores</string>
   <string name="cmupdate_settings_title">Anovamientos CyanogenMod</string>
   <string name="cmupdate_settings_summary">Comprobar, ver ya instalar anovamientos disponibles</string>
   <string name="advanced_settings_title">Opciones avanzaes</string>
@@ -589,6 +590,8 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="navigation_bar_reset_toast">Barra de navegación restablecida</string>
   <string name="navigation_bar_menu_editable">Editable</string>
   <string name="navigation_bar_menu_locked">Bloquiada</string>
+  <string name="navigation_bar_arrow_keys_title">Tecles de direición mientres s\'escribe</string>
+  <string name="navigation_bar_arrow_keys_summary">Amuesa los botones del cursor a esquierda y derecha mientres s\'escribe</string>
   <string name="navigation_ring_title">Accesos rápidos</string>
   <string name="navring_target_reset_message">¿Desaniciar tolos accesos rápidos creaos y restablecer a valores por defeutu?</string>
   <string name="navring_target_reset">Accesos rápidos restablecíos</string>
@@ -674,7 +677,6 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="setting_lockscreen_background">Aplicando\'l fondu pantalla</string>
   <string name="confirm_delete_apn">El APN va desaniciase.</string>
   <string name="status_bar_title">Barra d\'estáu</string>
-  <string name="status_bar_show_clock_title">Amosar reló</string>
   <string name="status_bar_battery_title">Estilu batería</string>
   <string name="status_bar_style_icon_portrait">Iconu vertical</string>
   <string name="status_bar_style_icon_landscape">Iconu horizontal</string>
@@ -707,8 +709,6 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="battery_info_status_charging_dock_ac">(BaseAC)</string>
   <string name="battery_info_status_charging_dock_usb">(BaseUSB)</string>
   <string name="menu_stats_reset">Restablecer</string>
-  <string name="cmlicense_title">Llicencia de CyanogenMod</string>
-  <string name="settings_cmlicense_activity_title">Llicencia de CyanogenMod</string>
   <string name="settings_cmlicense_activity_unreachable">Nun hai una conexón de datos disponible. Pa ver esta información agora, introduz la direición %s en cualquier ordenador con accesu a Internet.</string>
   <string name="stylus_icon_enabled_title">Stylus</string>
   <string name="stylus_icon_enabled_summary">Amosar el cursor cuando s\'arrastra o dibuxa con Stylus</string>
@@ -874,4 +874,13 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="menu_hidden_apps_reset_lock">Reanicia\'l patrón de bloquéu</string>
   <string name="protected_apps">Apps protexíes</string>
   <string name="saving_protected_components">Guardando l\'estáu del componente\u2026</string>
+  <string name="keep_screen_on_summary_cm">La pantalla nun va apagase mientres tea coneutáu</string>
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="one">Tas a <xliff:g id="step_count">%1$d</xliff:g> pasu d\'habilitar los axustes de desendolcu.</item>
+    <item quantity="other">Tas a <xliff:g id="step_count">%1$d</xliff:g> pasos d\'habilitar los axustes de desendolcu.</item>
+  </plurals>
+  <string name="show_dev_on_cm">¡Habilitáronse los axustes de desendolcu!</string>
+  <string name="show_dev_already_cm">Nun fai falta, los axustes de desendolcu yá tán habilitaos.</string>
+  <string name="enable_adb_cm">Depuración Android</string>
+  <string name="enable_adb_summary_cm">Habilitar la interface Android Debug Bridge (adb)</string>
 </resources>
