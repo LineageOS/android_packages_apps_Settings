@@ -32,6 +32,7 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceGroup;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -111,20 +112,20 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
             return;
         }
 
-        int position = Math.abs(countPreferencesInGroup(getPreferenceScreen(), pref));
+        int position = countPreferencesInGroup(getPreferenceScreen(), pref).first;
         getListView().smoothScrollToPosition(position);
         mSearchHighlightAdapter.setHighlightedPosition(position);
     }
 
-    private int countPreferencesInGroup(PreferenceGroup group, Preference stopAt) {
+    private Pair<Integer, Boolean> countPreferencesInGroup(PreferenceGroup group,
+            Preference stopAt) {
         int result = 0, count = group.getPreferenceCount();
         for (int i = 0; i < count; i++) {
             Preference p = group.getPreference(i);
 
             // if this is our target, stop right away
             if (p == stopAt) {
-                // indicate we forcably stopped (as opposed to iterating until the end)
-                return -result;
+                return Pair.create(result, true);
             }
 
             // count the preference itself (or, in the case of a PreferenceCategory, its header)
@@ -132,15 +133,15 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
 
             if (p instanceof PreferenceGroup) {
                 // count preferences in this group
-                int prefsInGroup = countPreferencesInGroup((PreferenceGroup) p, stopAt);
-                result += Math.abs(prefsInGroup);
-                if (prefsInGroup < 0) {
-                    // see above
-                    return -result;
+                PreferenceGroup pg = (PreferenceGroup) p;
+                Pair<Integer, Boolean> prefsInGroup = countPreferencesInGroup(pg, stopAt);
+                result += prefsInGroup.first;
+                if (prefsInGroup.second) {
+                    return Pair.create(result, true);
                 }
             }
         }
-        return result;
+        return Pair.create(result, false);
     }
 
     @Override
