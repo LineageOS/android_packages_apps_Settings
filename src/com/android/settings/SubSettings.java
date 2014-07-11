@@ -38,4 +38,6 @@ public class SubSettings extends Settings {
         Log.d("SubSettings", "Launching fragment " + fragmentName);
         return true;
     }
+
+    public static class BluetoothSubSettings extends SubSettings { /* empty */ }
 }
