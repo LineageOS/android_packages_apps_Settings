@@ -111,13 +111,13 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
             return;
         }
 
-        int position = Math.abs(countPreferencesInGroup(getPreferenceScreen(), pref));
+        int position = Math.abs(countPreferencesInGroup(getPreferenceScreen(), pref, 0));
         getListView().smoothScrollToPosition(position);
         mSearchHighlightAdapter.setHighlightedPosition(position);
     }
 
-    private int countPreferencesInGroup(PreferenceGroup group, Preference stopAt) {
-        int result = 0, count = group.getPreferenceCount();
+    private int countPreferencesInGroup(PreferenceGroup group, Preference stopAt, int result) {
+        int count = group.getPreferenceCount();
         for (int i = 0; i < count; i++) {
             Preference p = group.getPreference(i);
 
@@ -132,8 +132,8 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
 
             if (p instanceof PreferenceGroup) {
                 // count preferences in this group
-                int prefsInGroup = countPreferencesInGroup((PreferenceGroup) p, stopAt);
-                result += Math.abs(prefsInGroup);
+                int prefsInGroup = countPreferencesInGroup((PreferenceGroup) p, stopAt, result);
+                result = Math.abs(prefsInGroup);
                 if (prefsInGroup < 0) {
                     // see above
                     return -result;
