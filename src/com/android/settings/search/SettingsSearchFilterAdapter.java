@@ -41,12 +41,13 @@ import android.widget.TextView;
 import com.android.settings.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class SettingsSearchFilterAdapter extends BaseAdapter implements Filterable {
     private Context mContext;
     private List<SearchInfo> mSearchInfo;
-    private List<SearchInfo> mFilteredInfo;
+    private final List<SearchInfo> mFilteredInfo;
     private LayoutInflater mInflater;
     private Resources mResources;
     private Drawable mDefaultIcon;
@@ -81,7 +82,8 @@ public class SettingsSearchFilterAdapter extends BaseAdapter implements Filterab
         @SuppressWarnings("unchecked")
         @Override
         protected void publishResults(CharSequence constraint, Filter.FilterResults results) {
-            mFilteredInfo = (List<SearchInfo>) results.values;
+            mFilteredInfo.clear();
+            mFilteredInfo.addAll((List<SearchInfo>) results.values);
             notifyDataSetChanged();
         }
     };
@@ -95,16 +97,17 @@ public class SettingsSearchFilterAdapter extends BaseAdapter implements Filterab
         @Override
         protected void onPostExecute(List<SearchInfo> infos) {
             mSearchInfo = infos;
+            mFilteredInfo.clear();
             if (mLastConstraint == null) {
-                mFilteredInfo = new ArrayList<SearchInfo>(infos);
+                mFilteredInfo.addAll(new ArrayList<SearchInfo>(infos));
             } else {
-                mFilteredInfo = filterInfos(mLastConstraint);
+                mFilteredInfo.addAll(filterInfos(mLastConstraint));
             }
             notifyDataSetChanged();
         }
     };
 
-    public static class SearchInfo {
+    public static class SearchInfo implements Cloneable {
         public final Header header;
         public final int level;
         public final String fragment;
@@ -131,6 +134,16 @@ public class SettingsSearchFilterAdapter extends BaseAdapter implements Filterab
             mMatchStart = -1;
             mMatchEnd = -1;
         }
+
+        @Override
+        protected Object clone() {
+            SearchInfo info = new SearchInfo(header, level, fragment, title, iconRes,
+                    parentTitle, key);
+            info.mNormalizedTitle = mNormalizedTitle;
+            info.mMatchStart = mMatchStart;
+            info.mMatchEnd = mMatchEnd;
+            return info;
+        }
     }
 
     public SettingsSearchFilterAdapter(Context context) {
@@ -140,6 +153,7 @@ public class SettingsSearchFilterAdapter extends BaseAdapter implements Filterab
         mResources = mContext.getResources();
         mDefaultIcon = mResources.getDrawable(R.drawable.default_search_icon);
         mMatchHighlightColor = mResources.getColor(R.color.search_match_highlight_foreground);
+        mFilteredInfo = Collections.synchronizedList(new ArrayList<SearchInfo>());
 
         Intent i = new Intent(context, SearchPopulator.class);
         i.putExtra(SearchPopulator.EXTRA_NOTIFIER, mPopulateDoneReceiver);
@@ -199,7 +213,7 @@ public class SettingsSearchFilterAdapter extends BaseAdapter implements Filterab
             holder = (ViewHolder) convertView.getTag();
         }
 
-        SearchInfo info = mFilteredInfo.get(position);
+        SearchInfo info = (SearchInfo) mFilteredInfo.get(position).clone();
         Drawable d = mIconCache.get(info.iconRes);
         if (info.iconRes != 0) {
             d = mResources.getDrawable(info.iconRes);
