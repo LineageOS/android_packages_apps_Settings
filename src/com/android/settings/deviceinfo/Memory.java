@@ -119,6 +119,15 @@ public class Memory extends SettingsPreferenceFragment {
                     Log.w(TAG, "Hiding UICC volume on UI : " + volume.getPath());
                     continue;
                 }
+
+                boolean isOtgSupported = SystemProperties.getBoolean("persist.sys.isUsbOtgEnabled",
+                        false);
+                if (MediaFormat.isUsbStorage(volume, context) &&
+                        (!isOtgSupported)) {
+                    Log.w(TAG, "Hiding OTG volume on UI : " + volume.getPath());
+                    continue;
+                }
+
                 addCategory(StorageVolumePreferenceCategory.buildForPhysical(context, volume));
             }
         }
