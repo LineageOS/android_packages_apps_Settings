@@ -82,6 +82,9 @@ public class SettingsSearchFilterAdapter extends BaseAdapter implements Filterab
         @Override
         protected void publishResults(CharSequence constraint, Filter.FilterResults results) {
             mFilteredInfo = (List<SearchInfo>) results.values;
+            if (mFilteredInfo != null) {
+                applyFilteredMatchSpans();
+            }
             notifyDataSetChanged();
         }
     };
@@ -99,6 +102,7 @@ public class SettingsSearchFilterAdapter extends BaseAdapter implements Filterab
                 mFilteredInfo = new ArrayList<SearchInfo>(infos);
             } else {
                 mFilteredInfo = filterInfos(mLastConstraint);
+                applyFilteredMatchSpans();
             }
             notifyDataSetChanged();
         }
@@ -114,8 +118,10 @@ public class SettingsSearchFilterAdapter extends BaseAdapter implements Filterab
         public final String key;
 
         private String mNormalizedTitle;
-        private int mMatchStart;
-        private int mMatchEnd;
+        // used in main thread
+        private int mMatchStart = -1, mMatchEnd = -1;
+        // updated in filter thread
+        private int mPendingMatchStart = -1, mPendingMatchEnd = -1;
 
         public SearchInfo(Header header, int level, String fragment, String title,
                 int iconRes, int parentTitle, String key) {
@@ -128,8 +134,6 @@ public class SettingsSearchFilterAdapter extends BaseAdapter implements Filterab
             this.key = key;
 
             mNormalizedTitle = removeNonAlphaNumeric(title.toLowerCase());
-            mMatchStart = -1;
-            mMatchEnd = -1;
         }
     }
 
@@ -252,8 +256,8 @@ public class SettingsSearchFilterAdapter extends BaseAdapter implements Filterab
             String title = item.title.toLowerCase();
             String filteredTitle = item.mNormalizedTitle;
 
-            item.mMatchStart = -1;
-            item.mMatchEnd = -1;
+            item.mPendingMatchStart = -1;
+            item.mPendingMatchEnd = -1;
 
             int pos = filteredTitle.indexOf(filteredConstraint);
             if (pos != -1) {
@@ -266,10 +270,10 @@ public class SettingsSearchFilterAdapter extends BaseAdapter implements Filterab
                         continue;
                     }
                     if (fIndex == pos) {
-                        item.mMatchStart = ufIndex;
+                        item.mPendingMatchStart = ufIndex;
                     }
                     if (fIndex == pos + constraintLen - 1) {
-                        item.mMatchEnd = ufIndex + 1;
+                        item.mPendingMatchEnd = ufIndex + 1;
                         break;
                     }
                     fIndex++;
@@ -280,6 +284,13 @@ public class SettingsSearchFilterAdapter extends BaseAdapter implements Filterab
         }
 
         return filteredValues;
+    }
+
+    private void applyFilteredMatchSpans() {
+        for (SearchInfo info : mFilteredInfo) {
+            info.mMatchStart = info.mPendingMatchStart;
+            info.mMatchEnd = info.mPendingMatchEnd;
+        }
     }
 
     private static String removeNonAlphaNumeric(String s) {
