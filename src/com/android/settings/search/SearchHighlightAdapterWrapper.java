@@ -99,10 +99,16 @@ public class SearchHighlightAdapterWrapper implements WrapperListAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView != null && convertView == mHighlightedView) {
+            // Remove highlight in case the highlighted view is re-used
+            // at another (non-highlighted) position
             removeHighlight();
         }
         final View v = mAdapter.getView(position, convertView, parent);
         if (position == mHighlightedPosition && !mHighlightDone) {
+            // Remove highlight in case the now highlighted view
+            // previously was used at another position
+            removeHighlight();
+
             Message msg = mHandler.obtainMessage(MSG_HIGHLIGHT, v);
             mHighlightedView = v;
             mHandler.sendMessageDelayed(msg, mInitialDelay);
