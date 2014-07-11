@@ -102,7 +102,7 @@ public class SearchHighlightAdapterWrapper implements WrapperListAdapter {
             removeHighlight();
         }
         final View v = mAdapter.getView(position, convertView, parent);
-        if (position == mHighlightedPosition && !mHighlightDone) {
+        if (mHighlightedView == null && position == mHighlightedPosition && !mHighlightDone) {
             Message msg = mHandler.obtainMessage(MSG_HIGHLIGHT, v);
             mHighlightedView = v;
             mHandler.sendMessageDelayed(msg, mInitialDelay);
