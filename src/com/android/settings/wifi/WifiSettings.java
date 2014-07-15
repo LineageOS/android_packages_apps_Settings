@@ -701,7 +701,22 @@ public class WifiSettings extends RestrictedSettingsFragment
                 mSelectedAccessPoint.generateOpenNetworkConfig();
                 mWifiManager.connect(mSelectedAccessPoint.getConfig(), mConnectListener);
             } else {
-                showDialog(mSelectedAccessPoint, false);
+                if (AccessPoint.isCmccauto(mSelectedAccessPoint)) {
+                    boolean isCmccautoPwdShown = AccessPoint.getBoolean(getActivity(),
+                            AccessPoint.KEY_CMCCAUTO_NEED_PWD,
+                            AccessPoint.B_CMCC_AUTO_DO_SHOW_PASSWORD);
+                    if (isCmccautoPwdShown == AccessPoint.B_CMCC_AUTO_DO_SHOW_PASSWORD) {
+                        if (mSelectedAccessPoint.getLevel() == -1) {
+                            showDialog(mSelectedAccessPoint, true);
+                        } else {
+                            showDialog(mSelectedAccessPoint, false);
+                        }
+                    } else {
+                        showDialog(mSelectedAccessPoint, false);
+                    }
+                } else {
+                    showDialog(mSelectedAccessPoint, false);
+                }
             }
         } else {
             return super.onPreferenceTreeClick(screen, preference);
@@ -1160,6 +1175,15 @@ public class WifiSettings extends RestrictedSettingsFragment
     /* package */ void submit(WifiConfigController configController) {
 
         final WifiConfiguration config = configController.getConfig();
+
+        boolean bl = AccessPoint.getBoolean(getActivity(),
+                AccessPoint.KEY_CMCCAUTO_NEED_PWD,
+                AccessPoint.B_CMCC_AUTO_DO_SHOW_PASSWORD);
+        if (bl == AccessPoint.B_CMCC_AUTO_DO_SHOW_PASSWORD) {
+            AccessPoint.setBoolean(getActivity(),
+                    AccessPoint.KEY_CMCCAUTO_NEED_PWD,
+                    AccessPoint.B_CMCC_AUTO_DONOT_SHOW_PASSWORD);
+        }
 
         if (config == null) {
             if (mSelectedAccessPoint != null

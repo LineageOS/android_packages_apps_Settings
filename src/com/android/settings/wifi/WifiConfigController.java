@@ -17,7 +17,6 @@
 package com.android.settings.wifi;
 
 import static android.net.wifi.WifiConfiguration.INVALID_NETWORK_ID;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.net.LinkAddress;
@@ -250,6 +249,15 @@ public class WifiConfigController implements TextWatcher,
                     showAdvancedFields = true;
                 } else {
                     mProxySettingsSpinner.setSelection(PROXY_NONE);
+                }
+            }
+
+            if (AccessPoint.isCmccauto(mAccessPoint)) {
+                boolean isCmccautoPwdShown = AccessPoint.getBoolean(mConfigUi.getContext(),
+                        AccessPoint.KEY_CMCCAUTO_NEED_PWD,
+                        AccessPoint.B_CMCC_AUTO_DO_SHOW_PASSWORD);
+                if (isCmccautoPwdShown == AccessPoint.B_CMCC_AUTO_DO_SHOW_PASSWORD) {
+                    showSecurityFields();
                 }
             }
 
@@ -650,14 +658,12 @@ public class WifiConfigController implements TextWatcher,
             showEapFieldsByMethod(mEapMethodSpinner.getSelectedItemPosition());
         }
 
-        if (mAccessPoint != null && CARRIER_AUTO_SSID.equals(mAccessPoint.ssid) && mEdit) {
-            if (mAccessPoint.security == AccessPoint.SECURITY_EAP) {
-                mView.findViewById(R.id.l_method).setVisibility(View.GONE);
-                setPhase2Invisible();
-                setCaCertInvisible();
-                setAnonymousIdentInvisible();
-                setUserCertInvisible();
-            }
+        if (AccessPoint.isCmccauto(mAccessPoint)) {
+            mView.findViewById(R.id.l_method).setVisibility(View.GONE);
+            setPhase2Invisible();
+            setCaCertInvisible();
+            setAnonymousIdentInvisible();
+            setUserCertInvisible();
         }
     }
 

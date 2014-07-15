@@ -18,7 +18,9 @@ package com.android.settings.wifi;
 
 import com.android.settings.R;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.NetworkInfo.DetailedState;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiConfiguration;
@@ -41,6 +43,10 @@ class AccessPoint extends Preference {
     static final String CARRIER_SSID = "CMCC";
     static final String CARRIER_EDU_SSID = "CMCC-EDU";
     static final String CARRIER_AUTO_SSID = "CMCC-AUTO";
+    static final String SP_WLAN = "wlan_extended";
+    static final String KEY_CMCCAUTO_NEED_PWD = "wlan_cmcc_auto_need_show_pwd";
+    static final boolean B_CMCC_AUTO_DO_SHOW_PASSWORD = true;
+    static final boolean B_CMCC_AUTO_DONOT_SHOW_PASSWORD = false;
 
     private static final int[] STATE_SECURED = {
         R.attr.state_encrypted
@@ -438,5 +444,30 @@ class AccessPoint extends Preference {
             }
         }
         return false;
+    }
+
+    public static boolean isCmccauto(AccessPoint mAccessPoint) {
+        if (mAccessPoint == null) {
+            return false;
+        }
+        if (CARRIER_AUTO_SSID.equals(mAccessPoint.ssid)) {
+            if (mAccessPoint.security == AccessPoint.SECURITY_EAP) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void setBoolean(Context context, String KEY, boolean bl) {
+        SharedPreferences sp = context.getSharedPreferences(SP_WLAN, Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean(KEY, bl);
+        editor.commit();
+    }
+
+    public static boolean getBoolean(Context context, String KEY, boolean defBl) {
+        SharedPreferences sp = context.getSharedPreferences(SP_WLAN, Activity.MODE_PRIVATE);
+        boolean bl = sp.getBoolean(KEY, defBl);
+        return bl;
     }
 }
