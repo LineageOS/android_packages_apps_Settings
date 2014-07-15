@@ -114,6 +114,7 @@ public class LocationMode extends LocationSettingsBase
     private void initUserPrefService(){
         mServiceConn = new XTServiceConnection();
         Intent i = new Intent(IXTSrv.class.getName());
+        i.setPackage("com.qualcomm.location.XT");
         izatConnResult = getActivity().bindService(i, mServiceConn, Context.BIND_AUTO_CREATE);
     }
 
