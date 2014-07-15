@@ -26,9 +26,11 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.SystemProperties;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
+import android.provider.Settings.SettingNotFoundException;
 import android.telephony.SubInfoRecord;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
@@ -40,7 +42,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-
+import com.android.internal.telephony.Phone;
 import com.android.settings.RestrictedSettingsFragment;
 import com.android.settings.Utils;
 import com.android.settings.notification.DropDownPreference;
@@ -55,6 +57,8 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     private static final String TAG = "SimSettings";
     private static final boolean DBG = true;
 
+    public static final String CONFIG_LTE_SUB_SELECT_MODE = "config_lte_sub_select_mode";
+
     private static final String DISALLOW_CONFIG_SIM = "no_config_sim";
     private static final String SIM_ENABLER_CATEGORY = "sim_enablers";
     private static final String SIM_CARD_CATEGORY = "sim_cards";
@@ -62,6 +66,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     private static final String KEY_CALLS = "sim_calls";
     private static final String KEY_SMS = "sim_sms";
     private static final String KEY_ACTIVITIES = "activities";
+    private static final String KEY_PRIMARY_SUB_SELECT = "select_primary_sub";
 
     private static final int EVT_UPDATE = 1;
     private static int mNumSlots = 0;
@@ -81,6 +86,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     private SubInfoRecord mSMS = null;
 
     private int mNumSims;
+    private Preference mPrimarySubSelect = null;
 
     public SimSettings() {
         super(DISALLOW_CONFIG_SIM);
@@ -112,6 +118,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     private void createPreferences() {
         addPreferencesFromResource(R.xml.sim_settings);
 
+        mPrimarySubSelect = (Preference) findPreference(KEY_PRIMARY_SUB_SELECT);
         final PreferenceCategory simCards = (PreferenceCategory)findPreference(SIM_CARD_CATEGORY);
         final PreferenceCategory simEnablers =
                 (PreferenceCategory)findPreference(SIM_ENABLER_CATEGORY);
@@ -245,14 +252,62 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     public void onResume() {
         super.onResume();
         Log.d(TAG,"on Resume, number of slots = " + mNumSlots);
+        initLTEPreference();
         updateAllOptions();
+    }
+
+    private void initLTEPreference() {
+        boolean isPrimarySubFeatureEnable = SystemProperties
+                .getBoolean("persist.radio.primarycard", false);
+        if (!isPrimarySubFeatureEnable) {
+            removePreference(KEY_PRIMARY_SUB_SELECT);
+            return;
+        }
+
+        int primarySlot = getCurrentPrimarySlot();
+
+        boolean isManualMode = android.provider.Settings.Global.getInt(
+                this.getContentResolver(), CONFIG_LTE_SUB_SELECT_MODE, 1) == 0;
+
+        Log.d(TAG, "init LTE primary slot : " + primarySlot + " isManualMode :" + isManualMode);
+        if (-1 != primarySlot) {
+            SubInfoRecord subInfo = findRecordBySlotId(primarySlot);
+            CharSequence lteSummary = (subInfo == null ) ? null : subInfo.displayName;
+            mPrimarySubSelect.setSummary(lteSummary);
+        } else {
+            mPrimarySubSelect.setSummary("");
+        }
+        mPrimarySubSelect.setEnabled(isManualMode);
+    }
+
+    public int getCurrentPrimarySlot() {
+        for (int index = 0; index < mNumSlots; index++) {
+            int current = getPreferredNetwork(index);
+            if (current == Phone.NT_MODE_TD_SCDMA_GSM_WCDMA_LTE
+                    || current == Phone.NT_MODE_TD_SCDMA_GSM_WCDMA) {
+                return index;
+            }
+        }
+        return -1;
+    }
+
+    private int getPreferredNetwork(int sub) {
+        int nwMode = -1;
+        try {
+            nwMode = TelephonyManager.getIntAtIndex(this.getContentResolver(),
+                    android.provider.Settings.Global.PREFERRED_NETWORK_MODE, sub);
+        } catch (SettingNotFoundException snfe) {
+        }
+        return nwMode;
     }
 
     @Override
     public boolean onPreferenceTreeClick(final PreferenceScreen preferenceScreen,
             final Preference preference) {
         if (preference instanceof SimPreference) {
-            ((SimPreference)preference).createEditDialog((SimPreference)preference);
+            ((SimPreference) preference).createEditDialog((SimPreference) preference);
+        } else if (preference == mPrimarySubSelect) {
+            startActivity(mPrimarySubSelect.getIntent());
         }
 
         return true;

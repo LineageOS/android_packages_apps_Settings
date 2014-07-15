@@ -42,4 +42,10 @@
 
     </PreferenceCategory>
 
+    <Preference
+        android:key="select_primary_sub"
+        android:persistent="false"
+        android:title="@string/primary_sub_select_title" >
+            <intent android:action="com.android.phone.LTE_CONFIGURE" />
+    </Preference>
 </PreferenceScreen>
