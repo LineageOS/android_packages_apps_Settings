@@ -60,6 +60,11 @@
             android:fragment="com.android.settings.applications.ProcessStatsUi">
     </PreferenceScreen>
 
+    <CheckBoxPreference
+        android:key="enable_quickboot"
+        android:title="@string/enable_quickboot_title"
+        android:summary="@string/enable_quickboot_summary" />
+
     <PreferenceCategory android:key="debug_debugging_category"
             android:title="@string/debug_debugging_category">
 
