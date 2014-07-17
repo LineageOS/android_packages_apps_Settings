@@ -108,7 +108,10 @@ public class ProfileConfig extends SettingsPreferenceFragment
             mConnections.add(new ConnectionItem(ConnectionSettings.PROFILE_CONNECTION_WIFIAP, getString(R.string.toggleWifiAp)));
             final TelephonyManager tm = (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
             if (tm.getPhoneType() == TelephonyManager.PHONE_TYPE_GSM) {
-                mConnections.add(new ConnectionItem(ConnectionSettings.PROFILE_CONNECTION_2G3G, getString(R.string.toggle2g3g), R.array.profile_networkmode_entries));
+                int array = (tm.getLteOnGsmModeStatic() == 1)
+                        ? R.array.profile_networkmode_entries_4g : R.array.profile_networkmode_entries;
+                mConnections.add(new ConnectionItem(ConnectionSettings.PROFILE_CONNECTION_2G3G4G,
+                        getString(R.string.toggle2g3g4g), array));
             }
         }
         if (WimaxHelper.isWimaxSupported(getActivity())) {
