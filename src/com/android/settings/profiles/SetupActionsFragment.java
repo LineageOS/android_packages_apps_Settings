@@ -64,7 +64,7 @@ import com.android.settings.profiles.actions.item.VolumeStreamItem;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.app.ConnectionSettings.PROFILE_CONNECTION_2G3G;
+import static android.app.ConnectionSettings.PROFILE_CONNECTION_2G3G4G;
 import static android.app.ConnectionSettings.PROFILE_CONNECTION_BLUETOOTH;
 import static android.app.ConnectionSettings.PROFILE_CONNECTION_GPS;
 import static android.app.ConnectionSettings.PROFILE_CONNECTION_MOBILEDATA;
@@ -81,6 +81,8 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
 
     private static final int MENU_REMOVE = Menu.FIRST;
     private static final int MENU_TRIGGERS = Menu.FIRST + 1;
+
+
 
     Profile mProfile;
     ItemListAdapter mAdapter;
@@ -142,7 +144,7 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
             final TelephonyManager tm =
                     (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
             if (tm.getPhoneType() == TelephonyManager.PHONE_TYPE_GSM) {
-                items.add(generateConnectionOverrideItem(PROFILE_CONNECTION_2G3G));
+                items.add(generateConnectionOverrideItem(PROFILE_CONNECTION_2G3G4G));
             }
         }
         if (WimaxHelper.isWimaxSupported(getActivity())) {
@@ -414,27 +416,64 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
         builder.setTitle(ConnectionOverrideItem.getConnectionTitle(setting.getConnectionId()));
         builder.setSingleChoiceItems(connectionNames, defaultIndex,
                 new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int item) {
-                switch (item) {
-                    case 0: // disable override
-                        setting.setOverride(false);
-                        break;
-                    case 1: // enable override, disable
-                        setting.setOverride(true);
-                        setting.setValue(0);
-                        break;
-                    case 2: // enable override, enable
-                        setting.setOverride(true);
-                        setting.setValue(1);
-                        break;
-                }
-                mProfile.setConnectionSettings(setting);
-                mAdapter.notifyDataSetChanged();
-                updateProfile();
-                dialog.dismiss();
-            }
-        });
+                    @Override
+                    public void onClick(DialogInterface dialog, int item) {
+                        switch (item) {
+                            case 0: // disable override
+                                setting.setOverride(false);
+                                break;
+                            case 1: // enable override, disable
+                                setting.setOverride(true);
+                                setting.setValue(0);
+                                break;
+                            case 2: // enable override, enable
+                                setting.setOverride(true);
+                                setting.setValue(1);
+                                break;
+                        }
+                        mProfile.setConnectionSettings(setting);
+                        mAdapter.notifyDataSetChanged();
+                        updateProfile();
+                        dialog.dismiss();
+                    }
+                });
+
+        builder.setNegativeButton(android.R.string.cancel, null);
+        builder.show();
+    }
+
+    private void requestMobileConnectionOverrideDialog(final ConnectionSettings setting) {
+        if (setting == null) {
+            throw new UnsupportedOperationException("connection setting cannot be null yo");
+        }
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        final String[] connectionNames =
+                getResources().getStringArray(R.array.profile_networkmode_entries_4g);
+
+        int defaultIndex = ConnectionOverrideItem.CM_MODE_UNCHANGED; // no action
+        if (setting.isOverride()) {
+            defaultIndex = setting.getValue();
+        }
+
+        builder.setTitle(ConnectionOverrideItem.getConnectionTitle(setting.getConnectionId()));
+        builder.setSingleChoiceItems(connectionNames, defaultIndex,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int item) {
+                        switch (item) {
+                            case ConnectionOverrideItem.CM_MODE_UNCHANGED:
+                                setting.setOverride(false);
+                                break;
+                            default:
+                                setting.setOverride(true);
+                                setting.setValue(item);
+                        }
+                        mProfile.setConnectionSettings(setting);
+                        mAdapter.notifyDataSetChanged();
+                        updateProfile();
+                        dialog.dismiss();
+                    }
+                });
 
         builder.setNegativeButton(android.R.string.cancel, null);
         builder.show();
@@ -554,7 +593,11 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
             requestRingModeDialog(item.getSettings());
         } else if (itemAtPosition instanceof ConnectionOverrideItem) {
             ConnectionOverrideItem item = (ConnectionOverrideItem) itemAtPosition;
-            requestConnectionOverrideDialog(item.getSettings());
+            if (item.getConnectionType() == ConnectionSettings.PROFILE_CONNECTION_2G3G4G) {
+                requestMobileConnectionOverrideDialog(item.getSettings());
+            } else {
+                requestConnectionOverrideDialog(item.getSettings());
+            }
         } else if (itemAtPosition instanceof VolumeStreamItem) {
             VolumeStreamItem item = (VolumeStreamItem) itemAtPosition;
             requestVolumeDialog(item.getStreamType(), item.getSettings());
