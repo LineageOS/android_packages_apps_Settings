@@ -64,7 +64,7 @@ import com.android.settings.profiles.actions.item.VolumeStreamItem;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.app.ConnectionSettings.PROFILE_CONNECTION_2G3G;
+import static android.app.ConnectionSettings.PROFILE_CONNECTION_2G3G4G;
 import static android.app.ConnectionSettings.PROFILE_CONNECTION_BLUETOOTH;
 import static android.app.ConnectionSettings.PROFILE_CONNECTION_GPS;
 import static android.app.ConnectionSettings.PROFILE_CONNECTION_MOBILEDATA;
@@ -81,6 +81,8 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
 
     private static final int MENU_REMOVE = Menu.FIRST;
     private static final int MENU_TRIGGERS = Menu.FIRST + 1;
+
+
 
     Profile mProfile;
     ItemListAdapter mAdapter;
@@ -142,7 +144,7 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
             final TelephonyManager tm =
                     (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
             if (tm.getPhoneType() == TelephonyManager.PHONE_TYPE_GSM) {
-                items.add(generateConnectionOverrideItem(PROFILE_CONNECTION_2G3G));
+                items.add(generateConnectionOverrideItem(PROFILE_CONNECTION_2G3G4G));
             }
         }
         if (WimaxHelper.isWimaxSupported(getActivity())) {
@@ -400,15 +402,11 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         final String[] connectionNames =
-                getResources().getStringArray(R.array.profile_action_generic_connection_entries);
+                getResources().getStringArray(R.array.profile_networkmode_entries_4g);
 
-        int defaultIndex = 0; // no action
+        int defaultIndex = ConnectionOverrideItem.CM_MODE_UNCHANGED; // no action
         if (setting.isOverride()) {
-            if (setting.getValue() == 1) {
-                defaultIndex = 2; // enabled
-            } else {
-                defaultIndex = 1; // disabled
-            }
+            defaultIndex = setting.getValue();
         }
 
         builder.setTitle(ConnectionOverrideItem.getConnectionTitle(setting.getConnectionId()));
@@ -417,17 +415,12 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
             @Override
             public void onClick(DialogInterface dialog, int item) {
                 switch (item) {
-                    case 0: // disable override
+                    case ConnectionOverrideItem.CM_MODE_UNCHANGED:
                         setting.setOverride(false);
                         break;
-                    case 1: // enable override, disable
+                    default:
                         setting.setOverride(true);
-                        setting.setValue(0);
-                        break;
-                    case 2: // enable override, enable
-                        setting.setOverride(true);
-                        setting.setValue(1);
-                        break;
+                        setting.setValue(item);
                 }
                 mProfile.setConnectionSettings(setting);
                 mAdapter.notifyDataSetChanged();
