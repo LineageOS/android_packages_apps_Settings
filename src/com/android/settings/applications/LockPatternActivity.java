@@ -1,28 +1,38 @@
+/*
+ * Copyright (C) 2014 The CyanogenMod Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.android.settings.applications;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.RemoteException;
 import android.preference.PreferenceManager;
-import android.text.TextUtils;
 import android.util.Base64;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
 import android.widget.Toast;
 import com.android.internal.widget.LockPatternUtils;
 import com.android.internal.widget.LockPatternView;
-import com.android.internal.widget.LockPatternView.Cell;
 import com.android.settings.R;
+import com.android.settings.cyanogenmod.ProtectedAccountView;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.RandomAccessFile;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
@@ -36,9 +46,13 @@ public class LockPatternActivity extends Activity {
     private static final int MAX_PATTERN_RETRY = 5;
     private static final int PATTERN_CLEAR_TIMEOUT_MS = 2000;
 
+    private static final int MENU_RESET = 0;
+
     LockPatternView mLockPatternView;
+    ProtectedAccountView mAccountView;
 
     TextView mPatternLockHeader;
+    MenuItem mItem;
     Button mCancel;
     Button mContinue;
     byte[] mPatternHash;
@@ -101,6 +115,52 @@ public class LockPatternActivity extends Activity {
         }
     };
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if (!mCreate) {
+            menu.add(0, MENU_RESET, 0, R.string.lockpattern_reset_button)
+                    .setIcon(R.drawable.ic_lockscreen_ime)
+                    .setAlphabeticShortcut('r')
+                    .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM |
+                            MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+            mItem = menu.findItem(0);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case MENU_RESET:
+
+                if (mAccountView.getVisibility() == View.VISIBLE) {
+                    switchToPattern();
+                } else {
+                    switchToAccount();
+                }
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    private void switchToPattern() {
+        mPatternLockHeader.setText(getResources()
+                .getString(R.string.lockpattern_settings_enable_summary));
+        mItem.setIcon(R.drawable.ic_lockscreen_ime);
+        mAccountView.clearFocusOnInput();
+        mAccountView.setVisibility(View.GONE);
+        mLockPatternView.setVisibility(View.VISIBLE);
+    }
+
+    private void switchToAccount() {
+        mPatternLockHeader.setText(getResources()
+                .getString(R.string.lockpattern_settings_reset_summary));
+        mItem.setIcon(R.drawable.ic_settings_lockscreen);
+        mAccountView.setVisibility(View.VISIBLE);
+        mLockPatternView.setVisibility(View.GONE);
+    }
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.patternlock);
@@ -130,6 +190,7 @@ public class LockPatternActivity extends Activity {
             mPatternLockHeader.setText(getResources().getString(R.string.lockpattern_settings_enable_summary));
         }
 
+        mAccountView = (ProtectedAccountView) findViewById(R.id.lock_account_view);
         mLockPatternView = (LockPatternView) findViewById(R.id.lock_pattern_view);
 
         //Setup Pattern Lock View
@@ -203,12 +264,12 @@ public class LockPatternActivity extends Activity {
                     mLockPatternView.postDelayed(mCancelPatternRunnable, PATTERN_CLEAR_TIMEOUT_MS);
 
                     if (mRetry >= MAX_PATTERN_RETRY) {
+                        mLockPatternView.removeCallbacks(mCancelPatternRunnable);
                         Toast.makeText(getApplicationContext(),
                                 getResources().getString(
                                         R.string.lockpattern_too_many_failed_confirmation_attempts_header),
                                 Toast.LENGTH_SHORT).show();
-                        setResult(RESULT_CANCELED);
-                        finish();
+                        switchToAccount();
                     }
                 }
             }
