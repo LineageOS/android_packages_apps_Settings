@@ -75,6 +75,9 @@
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_2g3g">2G/3G</string>
+  <string name="settings_search_action_bar_button">Szukaj</string>
+  <string name="settings_search_autocompleteview_hint">Szukaj ustawień</string>
+  <string name="settings_search_loading_text">Wczytywanie danych wyszukiwania\u2026</string>
   <string name="profile_connectionoverrides_title">Sterowanie łącznością</string>
   <string name="profile_volumeoverrides_title">Sterowanie głośnością</string>
   <string name="connection_state_disabled">Wyłączone</string>
@@ -146,6 +149,7 @@
   <string name="icon_picker_pack_title">Paczka ikon</string>
   <string name="display_lights_settings_title">Wyświetlacz i diody</string>
   <string name="lights_category_title">Dioda powiadomień</string>
+  <string name="notification_light_title">Dioda powiadomień</string>
   <string name="notification_light_general_title">Ogólne</string>
   <string name="notification_light_applist_title">Aplikacje</string>
   <string name="notification_light_phonelist_title">Telefon</string>
@@ -217,15 +221,21 @@
   <string name="title_qs_small_icons">Pokaż mniejsze ikony</string>
   <string name="summary_qs_small_icons">Użyj mniejszych ikon, aby zwiększyć liczbę kolumn</string>
   <string name="category_heads_up">Wyskakujące powiadomienia</string>
+  <string name="summary_heads_up_enabled">Wyskakujące powiadomienia są włączone</string>
+  <string name="summary_heads_up_disabled">Wyskakujące powiadomienia są wyłączone</string>
   <string name="add_heads_up_package">Dodaj aplikację</string>
+  <string name="add_heads_up_dnd_summary">Nie pokazuj wyskakujących powiadomień w tych aplikacjach</string>
+  <string name="add_heads_up_blacklist_summary">Nie pokazuj wyskakujących powiadomień od tych aplikacji</string>
   <string name="heads_up_dnd_title">Nie przeszkadzać</string>
   <string name="heads_up_blacklist_title">Czarna lista</string>
+  <string name="heads_up_disabled_notice">Włącz Wyskakujące powiadomienia, aby umożliwić aplikacji na wyświetlanie interaktywnych powiadomień w wyskakującym okienku.</string>
   <string name="title_tile_airplane">Tryb samolotowy</string>
   <string name="title_tile_battery">Statystyki baterii</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Jasność</string>
   <string name="title_tile_camera">Kamera</string>
   <string name="title_tile_compass">Kompas</string>
+  <string name="title_tile_heads_up">Wyskakujące powiadomienia</string>
   <string name="title_tile_sleep">Usypianie</string>
   <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Latarka</string>
@@ -331,6 +341,7 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="app_security_title">Zabezpieczenia aplikacji</string>
   <string name="root_access">Dostęp do roota</string>
   <string name="root_access_warning_title">Przyznać dostęp do roota?</string>
+  <string name="root_access_warning_message">Przyznanie aplikacjom dostępu do uprawień roota jest niebezpieczne i może zagrozić bezpieczeństwu systemu!</string>
   <string name="root_access_none">Wyłączony</string>
   <string name="root_access_apps">Tylko aplikacje</string>
   <string name="root_access_adb">Tylko ADB</string>
@@ -413,10 +424,12 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="pref_force_highend_gfx_summary">Włącza efekty graficzne wymagające lepszego sprzętu, takie jak przeźroczysty pasek stanu/nawigacji (wymaga restartu)</string>
   <string name="kill_app_longpress_back">Zabijaj aplikacje przyciskiem wstecz</string>
   <string name="kill_app_longpress_back_summary">Przytrzymanie przycisku wstecz zabija aktywną aplikację</string>
+  <string name="changelog_title">Lista zmian</string>
   <string name="changelog_loading">Wczytywanie listy zmian\u2026</string>
   <string name="changelog_error">Nie można wczytać listy zmian</string>
   <string name="changelog_unknown">Nieznane</string>
   <string name="changelog_version">Wersja</string>
+  <string name="contributor_cloud_title">Twórcy</string>
   <string name="cmupdate_settings_title">Aktualizacje CyanogenMod</string>
   <string name="cmupdate_settings_summary">Znajdź i zainstaluj dostępne aktualizacje</string>
   <string name="advanced_settings_title">Zaawansowane</string>
@@ -527,6 +540,7 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="lockscreen_target_reset_message">Czy usunąć wszystkie stworzone przez użytkownika skróty i przywrócić domyślne?</string>
   <string name="lockscreen_target_empty">Brak</string>
   <string name="lockscreen_target_edit_title">Edytuj skrót oraz ikonę</string>
+  <string name="lockscreen_target_edit_msg">Wskaż lub zmień wybraną aplikację lub aktywność oraz przypisaną ikonę</string>
   <string name="picker_activities">Aktywności</string>
   <string name="select_custom_app_title">Wskaż aplikację</string>
   <string name="select_custom_activity_title">Wskaż aktywność</string>
@@ -579,6 +593,8 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="navigation_bar_reset_toast">Przywrócono domyślny pasek nawigacji</string>
   <string name="navigation_bar_menu_editable">Edycja</string>
   <string name="navigation_bar_menu_locked">Zablokowano</string>
+  <string name="navigation_bar_arrow_keys_title">Przyciski strzałek podczas pisania</string>
+  <string name="navigation_bar_arrow_keys_summary">Wyświetlaj przyciski lewego i prawego kursora podczas wprowadzania tekstu</string>
   <string name="navigation_ring_title">Skróty paska nawigacji</string>
   <string name="navring_target_reset_message">Usunąć wszystkie skróty paska nawigacji stworzone przez użytkownika i przywrócić domyślne?</string>
   <string name="navring_target_reset">Przywrócono domyślne skróty paska nawigacji</string>
@@ -664,6 +680,10 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="setting_lockscreen_background">Ustawianie nowego tła</string>
   <string name="confirm_delete_apn">APN zostanie usunięty...</string>
   <string name="status_bar_title">Pasek stanu</string>
+  <string name="status_bar_clock_title">Styl zegara</string>
+  <string name="status_bar_clock_style_default">Domyślny</string>
+  <string name="status_bar_clock_style_center">Wyśrodkowany</string>
+  <string name="status_bar_clock_style_hidden">Ukryty</string>
   <string name="status_bar_battery_title">Styl wskaźnika baterii</string>
   <string name="status_bar_style_icon_portrait">Ikona pionowo</string>
   <string name="status_bar_style_icon_landscape">Ikona poziomo</string>
@@ -696,6 +716,8 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="battery_info_status_charging_dock_ac">Dok (AC)</string>
   <string name="battery_info_status_charging_dock_usb">Dok (USB)</string>
   <string name="menu_stats_reset">Zresetuj</string>
+  <string name="cmlicense_title">Informacje prawne CyanogenMod</string>
+  <string name="settings_cmlicense_activity_title">Informacje prawne CyanogenMod</string>
   <string name="settings_cmlicense_activity_unreachable">Nie masz połączenia z internetem. Aby zobaczyć te informacje przejdź do %s z dowolnego komputera podłączonego do internetu</string>
   <string name="stylus_icon_enabled_title">Pokaz ikonę podczas używania rysika</string>
   <string name="stylus_icon_enabled_summary">Pokaż ikonę wskaźnika podczas wskazywania lub rysowania rysikiem</string>
@@ -855,9 +877,20 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="priority_sub_title">Priorytetowa usługa</string>
   <string name="bluetooth_accept_all_files">Akceptuj wszystkie typy plików</string>
   <string name="autoperf_title">Włącz profile dla aplikacji</string>
+  <string name="autoperf_summary">Automatycznie wybierz odpowiednio wydajny profil dla różnych aplikacji</string>
   <string name="graphics_title">Grafika i renderowanie</string>
   <string name="menu_hidden_apps_delete">Przywróć domyślne</string>
   <string name="menu_hidden_apps_reset_lock">Zresetuj wzór blokady</string>
   <string name="protected_apps">Chronione aplikacje</string>
   <string name="saving_protected_components">Zapisywanie obecnego stanu\u2026</string>
+  <string name="keep_screen_on_summary_cm">Po podłączeniu ładowarki ekran nie będzie wygaszany</string>
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="one">Jesteś teraz <xliff:g id="step_count">%1$d</xliff:g> krok od włączenia opcji programistycznych.</item>
+    <item quantity="few">Jesteś teraz <xliff:g id="step_count">%1$d</xliff:g> kroki od włączenia opcji programistycznych.</item>
+    <item quantity="other">Jesteś teraz <xliff:g id="step_count">%1$d</xliff:g> kroków od włączenia opcji programistycznych.</item>
+  </plurals>
+  <string name="show_dev_on_cm">Aktywowałeś opcje programistyczne!</string>
+  <string name="show_dev_already_cm">Wystarczy, już jesteś programistą.</string>
+  <string name="enable_adb_cm">Debugowanie</string>
+  <string name="enable_adb_summary_cm">Włącz interfejs ADB</string>
 </resources>

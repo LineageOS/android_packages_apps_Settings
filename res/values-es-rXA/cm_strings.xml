@@ -77,6 +77,7 @@
   <string name="profile_networkmode_2g3g">2G/3G</string>
   <string name="settings_search_action_bar_button">Guetar</string>
   <string name="settings_search_autocompleteview_hint">Axustes de la gueta</string>
+  <string name="settings_search_loading_text">Cargando datos de gueta\u2026</string>
   <string name="profile_connectionoverrides_title">Coneutividá</string>
   <string name="profile_volumeoverrides_title">Volume</string>
   <string name="connection_state_disabled">Deshabilitáu</string>
@@ -90,6 +91,8 @@
   <string name="profile_trigger_connect">Al coneutar</string>
   <string name="profile_trigger_disconnect">Al desconeutar</string>
   <string name="profile_trigger_notrigger">Ensin eventu</string>
+  <string name="profile_trigger_a2dp_connect">Al coneutar A2DP</string>
+  <string name="profile_trigger_a2dp_disconnect">Al desconeutar A2DP</string>
   <string name="sound_mode">Mou de notificación</string>
   <string name="ringer_mode">Llamaes</string>
   <string name="lights_mode">Brillu</string>
@@ -192,6 +195,8 @@
   <string name="battery_light_low_color_title">Batería baxa</string>
   <string name="battery_light_medium_color_title">Cargando</string>
   <string name="battery_light_full_color_title">Cargada</string>
+  <string name="lockpattern_reset_button">Restaurar el patrón</string>
+  <string name="lockpattern_settings_reset_summary">Introduz la cuenta de corréu principal y la contraseña asociada pa restablecer el patrón de bloquéu</string>
   <string name="lockpattern_settings_enable_error_path_title">Amosar patrón fallíu</string>
   <string name="lockpattern_settings_enable_dots_title">Amosar puntos de patrón</string>
   <string name="screen_security_category">Seguridá de pantalla</string>
@@ -423,10 +428,12 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="pref_force_highend_gfx_summary">Habilitar los efeutos visuales d\'alta resolución, como la barra d\'estáu/navegación tresparente (necesita reaniciar)</string>
   <string name="kill_app_longpress_back">Botón Volver</string>
   <string name="kill_app_longpress_back_summary">Matar aplicaciones per aciu de la pulsación prollongada del botón Volver</string>
+  <string name="changelog_title">Rexistru de cambeos</string>
   <string name="changelog_loading">Cargando rexistru de cambeos\u2026</string>
   <string name="changelog_error">Imposible cargar el rexistru de cambeos</string>
   <string name="changelog_unknown">Desconocíu</string>
   <string name="changelog_version">Versión</string>
+  <string name="contributor_cloud_title">Collaboradores</string>
   <string name="cmupdate_settings_title">Anovamientos CyanogenMod</string>
   <string name="cmupdate_settings_summary">Comprobar, ver ya instalar anovamientos disponibles</string>
   <string name="advanced_settings_title">Opciones avanzaes</string>
@@ -677,6 +684,10 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="setting_lockscreen_background">Aplicando\'l fondu pantalla</string>
   <string name="confirm_delete_apn">El APN va desaniciase.</string>
   <string name="status_bar_title">Barra d\'estáu</string>
+  <string name="status_bar_clock_title">Estilu de reló</string>
+  <string name="status_bar_clock_style_default">Por defeutu</string>
+  <string name="status_bar_clock_style_center">Centráu</string>
+  <string name="status_bar_clock_style_hidden">Anubríu</string>
   <string name="status_bar_battery_title">Estilu batería</string>
   <string name="status_bar_style_icon_portrait">Iconu vertical</string>
   <string name="status_bar_style_icon_landscape">Iconu horizontal</string>
@@ -709,6 +720,8 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="battery_info_status_charging_dock_ac">(BaseAC)</string>
   <string name="battery_info_status_charging_dock_usb">(BaseUSB)</string>
   <string name="menu_stats_reset">Restablecer</string>
+  <string name="cmlicense_title">Llicencia CyanogenMod</string>
+  <string name="settings_cmlicense_activity_title">Llicencia CyanogenMod</string>
   <string name="settings_cmlicense_activity_unreachable">Nun hai una conexón de datos disponible. Pa ver esta información agora, introduz la direición %s en cualquier ordenador con accesu a Internet.</string>
   <string name="stylus_icon_enabled_title">Stylus</string>
   <string name="stylus_icon_enabled_summary">Amosar el cursor cuando s\'arrastra o dibuxa con Stylus</string>
@@ -874,6 +887,11 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="menu_hidden_apps_reset_lock">Reanicia\'l patrón de bloquéu</string>
   <string name="protected_apps">Apps protexíes</string>
   <string name="saving_protected_components">Guardando l\'estáu del componente\u2026</string>
+  <string name="pa_login_username_hint">Nome d\'usuariu (corréu-e)</string>
+  <string name="pa_login_password_hint">Contraseña</string>
+  <string name="pa_login_submit_button">Aniciar sesión</string>
+  <string name="pa_login_checking_password">Comprobando cuenta\u2026</string>
+  <string name="pa_login_incorrect_login">Conexón incorreuta</string>
   <string name="keep_screen_on_summary_cm">La pantalla nun va apagase mientres tea coneutáu</string>
   <plurals name="show_dev_countdown_cm">
     <item quantity="one">Tas a <xliff:g id="step_count">%1$d</xliff:g> pasu d\'habilitar los axustes de desendolcu.</item>
