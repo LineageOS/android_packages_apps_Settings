@@ -274,6 +274,16 @@ public class SettingsSearchFilterAdapter extends BaseAdapter implements Filterab
                     }
                     if (fIndex == pos + constraintLen - 1) {
                         item.mPendingMatchEnd = ufIndex + 1;
+                        int diffLen = item.mPendingMatchEnd - item.mPendingMatchStart;
+                        while (diffLen > constraintLen) {
+                            int titleMatchLen = removeNonAlphaNumeric(title.substring(item.mPendingMatchStart, item.mPendingMatchEnd)).trim().length();
+                            if (constraintLen < titleMatchLen) {
+                                item.mPendingMatchStart += (diffLen - titleMatchLen < 1) ? 1 : diffLen - titleMatchLen;
+                            } else {
+                                break;
+                            }
+                            diffLen = item.mPendingMatchEnd - item.mPendingMatchStart;
+                        }
                         break;
                     }
                     fIndex++;
