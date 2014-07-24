@@ -91,6 +91,8 @@
   <string name="profile_trigger_connect">Alla connessione</string>
   <string name="profile_trigger_disconnect">Alla disconnessione</string>
   <string name="profile_trigger_notrigger">Nessun innesco</string>
+  <string name="profile_trigger_a2dp_connect">Alla connessione A2DP</string>
+  <string name="profile_trigger_a2dp_disconnect">Alla disconnessione A2DP</string>
   <string name="sound_mode">Modalità notifica</string>
   <string name="ringer_mode">Modalità suoneria</string>
   <string name="lights_mode">Modalità luci di notifica</string>
@@ -193,6 +195,8 @@
   <string name="battery_light_low_color_title">Batteria scarica</string>
   <string name="battery_light_medium_color_title">In carica</string>
   <string name="battery_light_full_color_title">Carica completa</string>
+  <string name="lockpattern_reset_button">Reimposta la sequenza</string>
+  <string name="lockpattern_settings_reset_summary">Inserisci l\'email principale e la relativa password per reimpostare la sequenza di sblocco</string>
   <string name="lockpattern_settings_enable_error_path_title">Sequenza errata visibile</string>
   <string name="lockpattern_settings_enable_dots_title">Punti sequenza visibili</string>
   <string name="screen_security_category">Schermata di sicurezza</string>
@@ -604,8 +608,8 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="navigation_bar_reset_toast">Barra di navigazione ripristinata</string>
   <string name="navigation_bar_menu_editable">Modificabile</string>
   <string name="navigation_bar_menu_locked">Bloccata</string>
-  <string name="navigation_bar_arrow_keys_title">Tasti freccia durante la scrittura</string>
-  <string name="navigation_bar_arrow_keys_summary">Visualizza i pulsanti sinistro e destro del cursore durante la digitazione</string>
+  <string name="navigation_bar_arrow_keys_title">Tasti controllo cursore</string>
+  <string name="navigation_bar_arrow_keys_summary">Visualizza i pulsanti a sinistra e a destra per la direzione del cursore durante la digitazione</string>
   <string name="navigation_ring_title">Scorciatoie di avvio rapido</string>
   <string name="navring_target_reset_message">Eliminare le impostazioni correnti e ripristinare le predefinite?</string>
   <string name="navring_target_reset">Avvio rapido ripristinato</string>
@@ -666,7 +670,7 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="volume_wake_summary">Premere i tasti del volume farà attivare il dispositivo</string>
   <string name="volbtn_music_controls_title">Cambia traccia</string>
   <string name="volbtn_music_controls_summary">Quando lo schermo è spento la pressione prolungata dei tasti volume cambia traccia</string>
-  <string name="volbtn_cursor_control_title">Controlla cursore con tasti</string>
+  <string name="volbtn_cursor_control_title">Controllo cursore con tasti</string>
   <string name="volbtn_cursor_control_off">Disattivato</string>
   <string name="volbtn_cursor_control_on">Volume su/giù muove il cursore a sinistra/destra</string>
   <string name="volbtn_cursor_control_on_reverse">Volume su/giù muove il cursore a destra/sinistra</string>
@@ -691,7 +695,10 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="setting_lockscreen_background">Applicazione sfondo</string>
   <string name="confirm_delete_apn">L\'APN sarà eliminato.</string>
   <string name="status_bar_title">Barra di stato</string>
-  <string name="status_bar_show_clock_title">Visualizza orologio</string>
+  <string name="status_bar_clock_title">Stile orologio</string>
+  <string name="status_bar_clock_style_default">Predefinito</string>
+  <string name="status_bar_clock_style_center">Centrato</string>
+  <string name="status_bar_clock_style_hidden">Nascosto</string>
   <string name="status_bar_battery_title">Stile indicatore batteria</string>
   <string name="status_bar_style_icon_portrait">Icona verticale</string>
   <string name="status_bar_style_icon_landscape">Icona orizzontale</string>
@@ -891,6 +898,11 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="menu_hidden_apps_reset_lock">Ripristina schema blocco</string>
   <string name="protected_apps">App protette</string>
   <string name="saving_protected_components">Salvataggio stato componente\u2026</string>
+  <string name="pa_login_username_hint">Utente (e-mail)</string>
+  <string name="pa_login_password_hint">Password</string>
+  <string name="pa_login_submit_button">Accedi</string>
+  <string name="pa_login_checking_password">Controllo account\u2026</string>
+  <string name="pa_login_incorrect_login">Credenziali errate</string>
   <string name="keep_screen_on_summary_cm">Lo schermo non non si spegnerà quando collegato</string>
   <plurals name="show_dev_countdown_cm">
     <item quantity="one">Ora sei ad <xliff:g id="step_count">%1$d</xliff:g> passo dall\'attivare le impostazioni sviluppatore.</item>

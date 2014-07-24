@@ -91,6 +91,8 @@
   <string name="profile_trigger_connect">Yhdistettäessä</string>
   <string name="profile_trigger_disconnect">Yhteyttä katkaistaessa</string>
   <string name="profile_trigger_notrigger">Pois käytöstä</string>
+  <string name="profile_trigger_a2dp_connect">Muodostaessa A2DP-yhteys</string>
+  <string name="profile_trigger_a2dp_disconnect">Katkaistaessa A2DP-yhteys</string>
   <string name="sound_mode">Ilmoitus</string>
   <string name="ringer_mode">Äänet</string>
   <string name="lights_mode">Valot</string>
@@ -193,6 +195,8 @@
   <string name="battery_light_low_color_title">Akku lähes tyhjä</string>
   <string name="battery_light_medium_color_title">Ladataan</string>
   <string name="battery_light_full_color_title">Ladattu</string>
+  <string name="lockpattern_reset_button">Nollaa kuvio</string>
+  <string name="lockpattern_settings_reset_summary">Syötä ensisijainen sähköposti ja salasana nollataksesi kuvion</string>
   <string name="lockpattern_settings_enable_error_path_title">Näytä kuvion virhe</string>
   <string name="lockpattern_settings_enable_dots_title">Näytä kuvion pisteet</string>
   <string name="screen_security_category">Näytön turvallisuus</string>
@@ -680,7 +684,10 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="setting_lockscreen_background">Otetaan taustakuva käyttöön</string>
   <string name="confirm_delete_apn">Yhteysosoite poistetaan.</string>
   <string name="status_bar_title">Tilapalkki</string>
-  <string name="status_bar_show_clock_title">Näytä kello</string>
+  <string name="status_bar_clock_title">Kellon tyyli</string>
+  <string name="status_bar_clock_style_default">Oletus</string>
+  <string name="status_bar_clock_style_center">Keskitetty</string>
+  <string name="status_bar_clock_style_hidden">Piilotettu</string>
   <string name="status_bar_battery_title">Akkunäytön ulkoasu</string>
   <string name="status_bar_style_icon_portrait">Kuvake (pysty)</string>
   <string name="status_bar_style_icon_landscape">Kuvake (vaaka)</string>
@@ -880,6 +887,11 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="menu_hidden_apps_reset_lock">Nollaa kuviolukitus</string>
   <string name="protected_apps">Suojatut sovellukset</string>
   <string name="saving_protected_components">Tallennetaan komponentin tilaa\u2026</string>
+  <string name="pa_login_username_hint">Käyttäjänimi (sähköposti)</string>
+  <string name="pa_login_password_hint">Salasana</string>
+  <string name="pa_login_submit_button">Kirjaudu sisään</string>
+  <string name="pa_login_checking_password">Tarkistetaan tiliä\u2026</string>
+  <string name="pa_login_incorrect_login">Kirjautuminen epäonnistui</string>
   <string name="keep_screen_on_summary_cm">Näyttö ei sammu laitteen latautuessa</string>
   <plurals name="show_dev_countdown_cm">
     <item quantity="one">Kehittäjäasetukset otetaan käyttöön <xliff:g id="step_count">%1$d</xliff:g> vaiheen päästä.</item>
