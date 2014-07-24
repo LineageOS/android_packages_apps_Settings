@@ -77,6 +77,7 @@
   <string name="profile_networkmode_2g3g">2G/3G</string>
   <string name="settings_search_action_bar_button">Keresés</string>
   <string name="settings_search_autocompleteview_hint">Keresési beállítások</string>
+  <string name="settings_search_loading_text">Keresési adatok betöltése\u2026</string>
   <string name="profile_connectionoverrides_title">Kapcsolatok felülbírálása</string>
   <string name="profile_volumeoverrides_title">Hangok felülbírálása</string>
   <string name="connection_state_disabled">Letiltva</string>
@@ -90,6 +91,8 @@
   <string name="profile_trigger_connect">Csatlakozáskor</string>
   <string name="profile_trigger_disconnect">Lecsatlakozáskor</string>
   <string name="profile_trigger_notrigger">Ne váltson profilt</string>
+  <string name="profile_trigger_a2dp_connect">A2DP kapcsolat létrehozása</string>
+  <string name="profile_trigger_a2dp_disconnect">A2DP kapcsolat bontása</string>
   <string name="sound_mode">Értesítési mód</string>
   <string name="ringer_mode">Csengetés módja</string>
   <string name="lights_mode">Fényjelzés módja</string>
@@ -192,6 +195,8 @@
   <string name="battery_light_low_color_title">Gyenge az akkumulátor</string>
   <string name="battery_light_medium_color_title">Töltés</string>
   <string name="battery_light_full_color_title">Teljesen feltöltve</string>
+  <string name="lockpattern_reset_button">Minta visszaállítása</string>
+  <string name="lockpattern_settings_reset_summary">Adja meg az elsődleges e-mail fiókot és a hozzá társított jelszót a feloldó minta visszaállításához</string>
   <string name="lockpattern_settings_enable_error_path_title">Hibás minta megjelenítése</string>
   <string name="lockpattern_settings_enable_dots_title">Feloldási pontok megjelenítése</string>
   <string name="screen_security_category">Képernyővédelem</string>
@@ -433,10 +438,12 @@ Az \"Eltávolítás\" törli a kiválasztott sort.</string>
   <string name="pref_force_highend_gfx_summary">Magas minőségű grafikai effektek engedélyezése, mint az átlátszó állapot/navigációs sáv (újraindítás szükséges)</string>
   <string name="kill_app_longpress_back">Alkalmazás bezárás</string>
   <string name="kill_app_longpress_back_summary">Alkalmazás bezárása nyomva tartott vissza gombbal</string>
+  <string name="changelog_title">Újdonságok</string>
   <string name="changelog_loading">Változások betöltése\u2026</string>
   <string name="changelog_error">Nem lehet betölteni a változásokat</string>
   <string name="changelog_unknown">Ismeretlen</string>
   <string name="changelog_version">Verzió</string>
+  <string name="contributor_cloud_title">Közreműködők</string>
   <string name="cmupdate_settings_title">CyanogenMod frissítések</string>
   <string name="cmupdate_settings_summary">Elérhető frissítések keresése, megtekintése, vagy telepítése</string>
   <string name="advanced_settings_title">Haladó</string>
@@ -687,6 +694,10 @@ Az \"Eltávolítás\" törli a kiválasztott sort.</string>
   <string name="setting_lockscreen_background">Háttérkép alkalmazása</string>
   <string name="confirm_delete_apn">Az APN törlődni fog.</string>
   <string name="status_bar_title">Értesítési sáv</string>
+  <string name="status_bar_clock_title">Óra stílusa</string>
+  <string name="status_bar_clock_style_default">Alapértelmezett</string>
+  <string name="status_bar_clock_style_center">Középen</string>
+  <string name="status_bar_clock_style_hidden">Rejtett</string>
   <string name="status_bar_battery_title">Akkumulátor állapotjelző stílusa</string>
   <string name="status_bar_style_icon_portrait">Álló ikon</string>
   <string name="status_bar_style_icon_landscape">Fekvő ikon</string>
@@ -719,6 +730,8 @@ Az \"Eltávolítás\" törli a kiválasztott sort.</string>
   <string name="battery_info_status_charging_dock_ac">(DockAC)</string>
   <string name="battery_info_status_charging_dock_usb">(DockUSB)</string>
   <string name="menu_stats_reset">Visszaállítás</string>
+  <string name="cmlicense_title">CyanogenMod jogi nyilatkozat</string>
+  <string name="settings_cmlicense_activity_title">CyanogenMod jogi nyilatkozat</string>
   <string name="settings_cmlicense_activity_unreachable">Nincs internet kapcsolat. Az információ megtekintéséhez, látogasson el a %s címre egy olyan számítógéppel, mely kapcsolódik az internethez.</string>
   <string name="stylus_icon_enabled_title">Ikon megjelenítése stylus használatakor</string>
   <string name="stylus_icon_enabled_summary">Toll használatakor megjelenít egy ikont az értesítési sávon</string>
@@ -772,7 +785,7 @@ Az \"Eltávolítás\" törli a kiválasztott sort.</string>
   <string name="app_ops_summaries_access_notifications">hozzáférés az értesítésekhez</string>
   <string name="app_ops_summaries_camera">kamera</string>
   <string name="app_ops_summaries_record_audio">hangfelvétel</string>
-  <string name="app_ops_summaries_play_audio">Hang lejátszása</string>
+  <string name="app_ops_summaries_play_audio">zene lejátszása</string>
   <string name="app_ops_summaries_read_clipboard">vágólap olvasása</string>
   <string name="app_ops_summaries_modify_clipboard">vágólap módosítása</string>
   <string name="app_ops_summaries_media_buttons">média gombok</string>
@@ -884,6 +897,11 @@ Az \"Eltávolítás\" törli a kiválasztott sort.</string>
   <string name="menu_hidden_apps_reset_lock">Minta visszaállítása</string>
   <string name="protected_apps">Védett alkalmazások</string>
   <string name="saving_protected_components">Összetevő állapotának mentése\u2026</string>
+  <string name="pa_login_username_hint">Felhasználónév (e-mail)</string>
+  <string name="pa_login_password_hint">Jelszó</string>
+  <string name="pa_login_submit_button">Bejelentkezés</string>
+  <string name="pa_login_checking_password">Fiók ellenőrzése\u2026</string>
+  <string name="pa_login_incorrect_login">Sikertelen bejelentkezés</string>
   <string name="keep_screen_on_summary_cm">A képernyő soha nem kapcsol ki töltés során</string>
   <plurals name="show_dev_countdown_cm">
     <item quantity="one"><xliff:g id="step_count">%1$d</xliff:g> lépésre van attól, hogy engedélyezze a fejlesztői beállításokat.</item>

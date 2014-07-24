@@ -91,6 +91,8 @@
   <string name="profile_trigger_connect">连接时触发</string>
   <string name="profile_trigger_disconnect">断开时触发</string>
   <string name="profile_trigger_notrigger">无触发</string>
+  <string name="profile_trigger_a2dp_connect">A2DP 连接时</string>
+  <string name="profile_trigger_a2dp_disconnect">A2DP 断开时</string>
   <string name="sound_mode">提醒模式</string>
   <string name="ringer_mode">铃声模式</string>
   <string name="lights_mode">灯光模式</string>
@@ -193,6 +195,8 @@
   <string name="battery_light_low_color_title">电量低</string>
   <string name="battery_light_medium_color_title">正在充电</string>
   <string name="battery_light_full_color_title">已充满</string>
+  <string name="lockpattern_reset_button">重设图案</string>
+  <string name="lockpattern_settings_reset_summary">输入主要的电子邮件帐户和对应的密码来重设图案锁</string>
   <string name="lockpattern_settings_enable_error_path_title">显示图案错误</string>
   <string name="lockpattern_settings_enable_dots_title">显示图案圆点</string>
   <string name="screen_security_category">屏幕安全</string>
@@ -340,11 +344,11 @@
   <string name="app_security_title">应用安全</string>
   <string name="root_access">Root 授权</string>
   <string name="root_access_warning_title">允许 Root 授权请求？</string>
-  <string name="root_access_warning_message">允许程序得到超级用户权限是有风险的，可能会影响您的系统安全！</string>
+  <string name="root_access_warning_message">允许应用得到超级用户权限是有风险的，可能会影响您的系统安全！</string>
   <string name="root_access_none">已禁用</string>
-  <string name="root_access_apps">仅限于应用程序</string>
+  <string name="root_access_apps">仅限于应用</string>
   <string name="root_access_adb">仅限于 ADB</string>
-  <string name="root_access_all">应用程序与 ADB</string>
+  <string name="root_access_all">应用与 ADB</string>
   <string name="update_recovery_title">更新 CM 恢复模式</string>
   <string name="update_recovery_summary">安装系统更新时更新恢复模式</string>
   <string name="ok">确定</string>
@@ -421,7 +425,7 @@
   <string name="pref_use_16bpp_alpha_summary">更佳的图形性能，但会降低图像质量以及影响视觉效果 (需要重启)</string>
   <string name="pref_force_highend_gfx_title">强制高端图形</string>
   <string name="pref_force_highend_gfx_summary">启用高端视觉特效，如透明状态栏/导航栏 (需要重启)</string>
-  <string name="kill_app_longpress_back">使用返回键强制关闭程序</string>
+  <string name="kill_app_longpress_back">使用返回键强行关闭应用</string>
   <string name="kill_app_longpress_back_summary">长按返回键将终止前台应用</string>
   <string name="changelog_title">更新日志​​​​​</string>
   <string name="changelog_loading">正在读取更改记录\u2026</string>
@@ -541,7 +545,7 @@
   <string name="lockscreen_target_edit_title">编辑快捷方式与图标</string>
   <string name="lockscreen_target_edit_msg">选择或更改所需的应用或活动所关联的图标</string>
   <string name="picker_activities">活动</string>
-  <string name="select_custom_app_title">选择自定义程序</string>
+  <string name="select_custom_app_title">选择自定义应用</string>
   <string name="select_custom_activity_title">选择自定义活动</string>
   <string name="icon_picker_choose_icon_title">选择图标</string>
   <string name="icon_picker_alarm">闹钟</string>
@@ -598,7 +602,7 @@
   <string name="navring_target_reset_message">确定删除所有用户创建的导航栏快捷方式并还原为默认值？</string>
   <string name="navring_target_reset">导航栏快捷方式已还原为默认值</string>
   <string name="navring_action_open_ime_switcher">开启输入法切换器</string>
-  <string name="navring_action_kill_app">终止程序</string>
+  <string name="navring_action_kill_app">终止应用</string>
   <string name="navring_action_none">无</string>
   <string name="navring_action_take_screenshot">屏幕截图</string>
   <string name="navring_action_ring_vibrate">响铃/振动</string>
@@ -638,7 +642,7 @@
   <string name="hardware_keys_action_app_switch">最近使用应用切换器</string>
   <string name="hardware_keys_action_search">搜索助手</string>
   <string name="hardware_keys_action_voice_search">语音搜索</string>
-  <string name="hardware_keys_action_in_app_search">程序内搜索</string>
+  <string name="hardware_keys_action_in_app_search">应用内搜索</string>
   <string name="hardware_keys_action_launch_camera">启动相机</string>
   <string name="power_end_call_title">结束通话</string>
   <string name="power_end_call_summary">按下电源按钮将结束当前通话</string>
@@ -679,6 +683,10 @@
   <string name="setting_lockscreen_background">正在应用背景</string>
   <string name="confirm_delete_apn">APN 将被删除。</string>
   <string name="status_bar_title">状态栏</string>
+  <string name="status_bar_clock_title">时钟样式</string>
+  <string name="status_bar_clock_style_default">默认</string>
+  <string name="status_bar_clock_style_center">中心</string>
+  <string name="status_bar_clock_style_hidden">隐藏</string>
   <string name="status_bar_battery_title">电池状态样式</string>
   <string name="status_bar_style_icon_portrait">立式图标</string>
   <string name="status_bar_style_icon_landscape">卧式图标</string>
@@ -878,6 +886,11 @@
   <string name="menu_hidden_apps_reset_lock">重置锁定图案</string>
   <string name="protected_apps">受保护的应用</string>
   <string name="saving_protected_components">正在保存组件状态\u2026</string>
+  <string name="pa_login_username_hint">用户名(电子邮件)</string>
+  <string name="pa_login_password_hint">密码</string>
+  <string name="pa_login_submit_button">登录</string>
+  <string name="pa_login_checking_password">正在检查帐户\u2026</string>
+  <string name="pa_login_incorrect_login">不正确的登录</string>
   <string name="keep_screen_on_summary_cm">接入电源时屏幕将不会休眠</string>
   <plurals name="show_dev_countdown_cm">
     <item quantity="other">还需 <xliff:g id="step_count">%1$d</xliff:g> 步就可以启用开发者选项。</item>
