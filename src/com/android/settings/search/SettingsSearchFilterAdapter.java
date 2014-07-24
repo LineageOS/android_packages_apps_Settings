@@ -264,7 +264,7 @@ public class SettingsSearchFilterAdapter extends BaseAdapter implements Filterab
                 int unfilteredLen = title.length();
                 int filteredLen = filteredTitle.length();
                 int constraintLen = filteredConstraint.length();
-                for (int ufIndex = pos, fIndex = pos;
+                for (int ufIndex = 0, fIndex = 0;
                         ufIndex < unfilteredLen && fIndex < filteredLen; ufIndex++) {
                     if (title.charAt(ufIndex) != filteredTitle.charAt(fIndex)) {
                         continue;
