@@ -52,6 +52,24 @@
       "revId": "df8f66eb3156f78c84b7339e027d84965914b2b5",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a061dce_fd2a8de6",
+        "filename": "src/com/android/settings/applications/LockPatternActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2014-07-25T09:38:07Z",
+      "side": 1,
+      "message": "I think that clear the pattern is not needed, because if the user create the pattern then it will go directly to protected apps selection activity. There is not way that the user can access the reset account view from here. He has to return to apps, and access again to the unlock pattern activity, so the reset password fields are cleared. Don\u0027t they?",
+      "parentUuid": "9a061dce_3de7e5e5",
+      "revId": "df8f66eb3156f78c84b7339e027d84965914b2b5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
