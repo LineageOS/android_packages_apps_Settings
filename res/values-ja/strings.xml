@@ -20,7 +20,7 @@
     <string name="no" msgid="6731231425810196216">"いいえ"</string>
     <string name="create" msgid="3578857613172647409">"作成"</string>
     <string name="allow" msgid="3349662621170855910">"許可"</string>
-    <string name="deny" msgid="6947806159746484865">"許可しない"</string>
+    <string name="deny" msgid="6947806159746484865">"拒否"</string>
     <string name="device_info_default" msgid="7847265875578739287">"不明"</string>
   <plurals name="show_dev_countdown">
     <item quantity="one" msgid="5295687242294085452">"デベロッパーになるまであと<xliff:g id="STEP_COUNT">%1$d</xliff:g>ステップです。"</item>
@@ -554,11 +554,11 @@
     <string name="wifi_notify_open_networks_summary" msgid="3038290727701553612">"オープンネットワークが利用可能なときに通知する"</string>
     <string name="wifi_poor_network_detection" msgid="4925789238170207169">"接続不良のとき無効にする"</string>
     <string name="wifi_poor_network_detection_summary" msgid="7843672905900544785">"安定したインターネット接続があるときのみWi-Fiネットワークを使用する"</string>
-    <string name="wifi_scan_always_available" msgid="3470564139944368030">"スキャンを常に実行する"</string>
+    <string name="wifi_scan_always_available" msgid="3470564139944368030">"スキャンを常に実行"</string>
     <string name="wifi_scan_always_available_summary" msgid="7768204638882691453">"Wi-FiがOFFになっていても、Googleの位置情報サービスと他のアプリでネットワークをスキャンする"</string>
     <string name="wifi_install_credentials" msgid="3551143317298272860">"証明書のインストール"</string>
     <string name="wifi_scan_notify_text_location_on" msgid="8135076005488914200">"位置情報の精度を向上させるため、Wi-FiがOFFの場合でもGoogleやその他のアプリは近くのネットワークをスキャンすることができます。このスキャンが必要ない場合は、[詳細設定] &gt; [スキャンを常に実行する]にアクセスします。"</string>
-    <string name="wifi_scan_notify_text_location_off" msgid="6323983741393280935">"Wi-FiがOFFの場合でもアプリは近くのネットワークをスキャンできます。このスキャンが必要ない場合は、[詳細設定] &gt; [スキャンを常に実行する]にアクセスします。"</string>
+    <string name="wifi_scan_notify_text_location_off" msgid="6323983741393280935">"Wi-FiがOFFの場合でもアプリは近くのネットワークをスキャンできます。このスキャンが必要ない場合は、[詳細設定] &gt; [スキャンを常に実行]にアクセスしてください。"</string>
     <string name="wifi_scan_notify_remember_choice" msgid="5340097010842405981">"次回から表示しない"</string>
     <string name="wifi_setting_sleep_policy_title" msgid="5149574280392680092">"スリープ時にWi-Fi接続を維持"</string>
     <string name="wifi_setting_sleep_policy_error" msgid="8174902072673071961">"設定の変更中に問題が発生しました"</string>
@@ -1325,7 +1325,7 @@
     <string name="development_settings_not_available" msgid="4308569041701535607">"デベロッパー向けオプションはこのユーザーには表示されません"</string>
     <string name="enable_adb" msgid="7982306934419797485">"USBデバッグ"</string>
     <string name="enable_adb_summary" msgid="4881186971746056635">"USB接続時はデバッグモードにする"</string>
-    <string name="clear_adb_keys" msgid="4038889221503122743">"USBデバッグの許可の取り消し"</string>
+    <string name="clear_adb_keys" msgid="4038889221503122743">"USBデバッグの許可を取り消す"</string>
     <string name="bugreport_in_power" msgid="4548816486587403971">"電源メニューのバグレポート"</string>
     <string name="bugreport_in_power_summary" msgid="5764234382355067053">"電源メニューにバグレポートを取得するオプションを含める"</string>
     <string name="keep_screen_on" msgid="1146389631208760344">"スリープモードにしない"</string>
@@ -1472,7 +1472,7 @@
     <string name="battery_stats_duration" msgid="7464501326709469282">"電池使用時間: <xliff:g id="TIME">%1$s</xliff:g>"</string>
     <string name="battery_stats_charging_label" msgid="4223311142875178785">"充電中"</string>
     <string name="battery_stats_screen_on_label" msgid="7150221809877509708">"画面点灯"</string>
-    <string name="battery_stats_gps_on_label" msgid="1193657533641951256">"GPSがON"</string>
+    <string name="battery_stats_gps_on_label" msgid="1193657533641951256">"GPS ON"</string>
     <string name="battery_stats_wifi_running_label" msgid="1845839195549226252">"Wi-Fi"</string>
     <string name="battery_stats_wake_lock_label" msgid="1908942681902324095">"スリープなし"</string>
     <string name="battery_stats_phone_signal_label" msgid="4137799310329041341">"モバイルネットワークの電波"</string>
@@ -1865,7 +1865,7 @@
     <string name="data_usage_enable_4g" msgid="3635854097335036738">"4Gデータ"</string>
     <string name="data_usage_app_settings" msgid="8430240158135453271">"アプリの設定を表示"</string>
     <string name="data_usage_app_restrict_background" msgid="9149728936265100841">"バックグラウンドデータを制限する"</string>
-    <string name="data_usage_app_restrict_background_summary" msgid="518658001418490405">"モバイルネットワークでバックグラウンドデータを無効にし、可能な場合はモバイル以外を使用。"</string>
+    <string name="data_usage_app_restrict_background_summary" msgid="518658001418490405">"モバイルネットワークでのバックグラウンドデータを無効にします。利用可能であればモバイルネットワーク以外が使用されます。"</string>
     <string name="data_usage_app_restrict_background_summary_disabled" msgid="7401927377070755054">"このアプリのバックグラウンドデータを制限するには、最初にモバイルデータの上限を設定してください。"</string>
     <string name="data_usage_app_restrict_dialog_title" msgid="1613108390242737923">"バックグラウンドデータを制限しますか？"</string>
     <string name="data_usage_app_restrict_dialog" msgid="1466689968707308512">"この機能をONにすると、モバイルネットワークしか使用できない場合にバックグラウンドデータに依存するアプリが停止する可能性があります。\n\nデータ使用をより適切に管理できるオプションがアプリの設定画面にないかどうかを確認してください。"</string>
@@ -1881,8 +1881,8 @@
     <string name="data_usage_warning_editor_title" msgid="3704136912240060339">"データ使用の警告の設定"</string>
     <string name="data_usage_limit_editor_title" msgid="9153595142385030015">"データ使用の上限の設定"</string>
     <string name="data_usage_limit_dialog_title" msgid="3023111643632996097">"データ使用上限の設定"</string>
-    <string name="data_usage_limit_dialog_mobile" product="tablet" msgid="3893348029612821262">"モバイルデータ接続は指定の制限に達した場合無効になります。\n\nデータ利用はタブレットで記録されますが、携帯通信会社の利用明細は異なる可能性があるため、制限にできるだけ余裕をみておくことをおすすめします。"</string>
-    <string name="data_usage_limit_dialog_mobile" product="default" msgid="7962145861903746827">"モバイルデータ接続は指定の制限に達した場合無効になります。\n\nデータ利用は携帯端末で記録されますが、携帯通信会社の利用明細は異なる可能性があるため、制限にできるだけ余裕をみておくことをおすすめします。"</string>
+    <string name="data_usage_limit_dialog_mobile" product="tablet" msgid="3893348029612821262">"モバイルデータ接続は指定の制限に達した場合無効になります。\n\nデータ利用はタブレットで記録されますが、携帯通信会社の利用明細とは異なる可能性があるため、制限にできるだけ余裕をみておくことをおすすめします。"</string>
+    <string name="data_usage_limit_dialog_mobile" product="default" msgid="7962145861903746827">"モバイルデータ接続は指定の制限に達した場合無効になります。\n\nデータ利用は携帯端末で記録されますが、携帯通信会社の利用明細とは異なる可能性があるため、制限にできるだけ余裕をみておくことをおすすめします。"</string>
     <string name="data_usage_restrict_background_title" msgid="2201315502223035062">"バックグラウンドデータを制限しますか？"</string>
     <string name="data_usage_restrict_background" msgid="8447934953579275363">"バックグラウンドのモバイルデータを制限すると、アプリやサービスによっては、Wi-Fiネットワーク未接続時に機能しない場合があります。"</string>
     <string name="data_usage_restrict_background_multiuser" product="tablet" msgid="7132639594296036143">"バックグラウンドのモバイルデータを制限すると、アプリやサービスによっては、Wi-Fiネットワーク未接続時に機能しない場合があります。\n\nこの設定はこのタブレット上のすべてのユーザーに影響します。"</string>
