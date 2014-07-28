@@ -97,10 +97,6 @@ public class ApnSettings extends SettingsPreferenceFragment implements
 
     private static boolean mRestoreDefaultApnMode;
 
-    private static final String APN_TYPE_MMS = "mms";
-    private static final String APN_TYPE_SUPL = "supl";
-    private static final String APN_TYPE_FOTA = "fota";
-
     private RestoreApnUiHandler mRestoreApnUiHandler;
     private RestoreApnProcessHandler mRestoreApnProcessHandler;
     private HandlerThread mRestoreDefaultApnThread;
@@ -264,7 +260,8 @@ public class ApnSettings extends SettingsPreferenceFragment implements
         boolean isSelectedKeyMatch = false;
         String where = getOperatorNumericSelection();
         //remove the filtered items, no need to show in UI
-        where += " and type <>\"" + APN_TYPE_FOTA + "\"";
+        where += " and type <>\"" + PhoneConstants.APN_TYPE_FOTA + "\"";
+        where += " and type <>\"" + PhoneConstants.APN_TYPE_IA + "\"";
 
         if (getResources().getBoolean(R.bool.config_hidesupl_enable)) {
             boolean needHideSupl = false;
@@ -283,7 +280,7 @@ public class ApnSettings extends SettingsPreferenceFragment implements
 
         //Hide mms if config is true
         if(getResources().getBoolean(R.bool.config_mms_enable)) {
-            where += " and type <>\"" + APN_TYPE_MMS + "\"" ;
+            where += " and type <>\"" + PhoneConstants.APN_TYPE_MMS + "\"" ;
         }
 
         where += " and carrier_enabled = 1";
