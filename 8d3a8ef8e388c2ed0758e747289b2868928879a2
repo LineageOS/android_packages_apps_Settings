@@ -34,6 +34,24 @@
       "revId": "8d3a8ef8e388c2ed0758e747289b2868928879a2",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a061dce_f206371f",
+        "filename": "src/com/android/settings/DisplaySettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 940
+      },
+      "writtenOn": "2014-07-28T14:56:03Z",
+      "side": 1,
+      "message": "Yea this was done mainly because doing a check for isTapToWakeSupported on the framework side would mean figuring out how to get HAF loaded into bootclasspath...etc\n\nMain reason for all this being that for devices that have tap2wake, it should default to on and not have an option to toggle it.",
+      "parentUuid": "9a061dce_d29cd36b",
+      "revId": "8d3a8ef8e388c2ed0758e747289b2868928879a2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
