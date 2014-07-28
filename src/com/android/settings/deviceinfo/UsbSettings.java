@@ -72,7 +72,7 @@ public class UsbSettings extends SettingsPreferenceFragment {
         public void onReceive(Context content, Intent intent) {
             String action = intent.getAction();
             if (action.equals(UsbManager.ACTION_USB_STATE)) {
-               mUsbAccessoryMode = intent.getBooleanExtra(UsbManager.USB_FUNCTION_ACCESSORY, false);
+                mUsbAccessoryMode = intent.getBooleanExtra(UsbManager.USB_FUNCTION_ACCESSORY, false);
                 Log.e(TAG, "UsbAccessoryMode " + mUsbAccessoryMode);
                 boolean connected = intent.getExtras().getBoolean(UsbManager.USB_CONNECTED);
                 if (!connected) {
