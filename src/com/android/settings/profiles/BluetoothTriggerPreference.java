@@ -22,9 +22,11 @@ import android.content.Context;
 public class BluetoothTriggerPreference extends AbstractTriggerPreference {
 
     private String mAddress;
+    private int mTriggerType;
 
-    BluetoothTriggerPreference(Context context, BluetoothDevice device) {
+    BluetoothTriggerPreference(Context context, BluetoothDevice device, int triggerType) {
         super(context);
+        mTriggerType = triggerType;
         mAddress = device.getAddress();
         if (device.getAlias() != null) {
             setTitle(device.getAlias());
@@ -41,5 +43,9 @@ public class BluetoothTriggerPreference extends AbstractTriggerPreference {
 
     public String getAddress() {
         return mAddress;
+    }
+
+    public int getTriggerType() {
+        return mTriggerType;
     }
 }

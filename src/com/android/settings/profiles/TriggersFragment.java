@@ -24,6 +24,7 @@ import android.app.Profile.ProfileTrigger;
 import android.app.Profile.TriggerType;
 import android.app.ProfileManager;
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothClass;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -58,6 +59,7 @@ public class TriggersFragment extends SettingsPreferenceFragment implements Acti
     private int mTriggerFilter = 0;
     private static final int WIFI_TRIGGER = 1;
     private static final int BT_TRIGGER = 2;
+    private static final int BT_TRIGGER_A2DP = 3;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -139,7 +141,7 @@ public class TriggersFragment extends SettingsPreferenceFragment implements Acti
             if (!pairedDevices.isEmpty()) {
                 for (BluetoothDevice device : pairedDevices) {
                     BluetoothTriggerPreference bt =
-                            new BluetoothTriggerPreference(getActivity(), device);
+                            new BluetoothTriggerPreference(getActivity(), device, BT_TRIGGER);
                     int state = mProfile.getTrigger(Profile.TriggerType.BLUETOOTH, bt.getAddress());
                     initPreference(bt, state, res, R.drawable.ic_settings_bluetooth2);
                     prefs.add(bt);
@@ -150,6 +152,28 @@ public class TriggersFragment extends SettingsPreferenceFragment implements Acti
                     BluetoothTriggerPreference bt = new BluetoothTriggerPreference(getActivity(),
                             trigger.getName(), trigger.getId());
                     initPreference(bt, trigger.getState(), res, R.drawable.ic_settings_bluetooth2);
+                    prefs.add(bt);
+                }
+            }
+        }
+
+        if (mTriggerFilter == BT_TRIGGER_A2DP || mTriggerFilter == 0) {
+            if (!pairedDevices.isEmpty()) {
+                for (BluetoothDevice device : pairedDevices) {
+                    if (device.getBluetoothClass().doesClassMatch(BluetoothClass.PROFILE_A2DP)) {
+                        BluetoothTriggerPreference bt =
+                                new BluetoothTriggerPreference(getActivity(), device, BT_TRIGGER_A2DP);
+                        int state = mProfile.getTrigger(Profile.TriggerType.BLUETOOTH_A2DP, bt.getAddress() + "_a2dp");
+                        initPreference(bt, state, res, R.drawable.ic_bt_headphones_a2dp);
+                        prefs.add(bt);
+                    }
+                }
+            } else {
+                final List<ProfileTrigger> triggers = mProfile.getTriggersFromType(TriggerType.BLUETOOTH_A2DP);
+                for (ProfileTrigger trigger : triggers) {
+                    BluetoothTriggerPreference bt = new BluetoothTriggerPreference(getActivity(),
+                            trigger.getName(), trigger.getId());
+                    initPreference(bt, trigger.getState(), res, R.drawable.ic_bt_headphones_a2dp);
                     prefs.add(bt);
                 }
             }
@@ -177,7 +201,12 @@ public class TriggersFragment extends SettingsPreferenceFragment implements Acti
             showDialog(WIFI_TRIGGER);
             return true;
         } else if (preference instanceof BluetoothTriggerPreference) {
-            showDialog(BT_TRIGGER);
+            BluetoothTriggerPreference pref = (BluetoothTriggerPreference) preference;
+            if (pref.getTriggerType() == Profile.TriggerType.BLUETOOTH) {
+                showDialog(BT_TRIGGER);
+            } else {
+                showDialog(BT_TRIGGER_A2DP);
+            }
             return true;
         }
         return super.onPreferenceTreeClick(screen, preference);
@@ -199,6 +228,11 @@ public class TriggersFragment extends SettingsPreferenceFragment implements Acti
                 BluetoothTriggerPreference btpref = (BluetoothTriggerPreference) mSelectedTrigger;
                 id = btpref.getAddress();
                 triggerType = Profile.TriggerType.BLUETOOTH;
+                break;
+            case BT_TRIGGER_A2DP:
+                BluetoothTriggerPreference bta2dppref = (BluetoothTriggerPreference) mSelectedTrigger;
+                id = bta2dppref.getAddress() + "_a2dp";
+                triggerType = Profile.TriggerType.BLUETOOTH_A2DP;
                 break;
             default:
                 return super.onCreateDialog(dialogId);
