@@ -166,8 +166,10 @@ public class AppOpsState {
             new int[] { AppOpsManager.OP_CALL_PHONE,
                     AppOpsManager.OP_WIFI_CHANGE,
                     AppOpsManager.OP_BLUETOOTH_CHANGE,
-                    AppOpsManager.OP_NFC_CHANGE },
+                    AppOpsManager.OP_NFC_CHANGE,
+                    AppOpsManager.OP_DATA_CONNECT_CHANGE },
             new boolean[] { true,
+                    true,
                     true,
                     true,
                     true }
