@@ -87,7 +87,7 @@
 
             <PreferenceScreen
                 android:key="notification_pulse"
-                android:title="@string/notification_pulse_title"
+                android:title="@string/notification_light_title"
                 android:fragment="com.android.settings.notificationlight.NotificationLightSettings" />
 
             <PreferenceScreen
@@ -117,6 +117,12 @@
             <CheckBoxPreference
                 android:key="double_tap_wake_gesture"
                 android:title="@string/double_tap_to_wake_title"
+                android:defaultValue="false" />
+
+            <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+                android:key="proximity_on_wake"
+                android:title="@string/proximity_wake_title"
+                android:summary="@string/proximity_wake_summary"
                 android:defaultValue="false" />
 
             <CheckBoxPreference

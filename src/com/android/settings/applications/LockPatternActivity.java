@@ -1,34 +1,45 @@
+/*
+ * Copyright (C) 2014 The CyanogenMod Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.android.settings.applications;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.RemoteException;
 import android.preference.PreferenceManager;
-import android.text.TextUtils;
 import android.util.Base64;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
 import android.widget.Toast;
 import com.android.internal.widget.LockPatternUtils;
 import com.android.internal.widget.LockPatternView;
-import com.android.internal.widget.LockPatternView.Cell;
 import com.android.settings.R;
+import com.android.settings.cyanogenmod.ProtectedAccountView;
+import com.android.settings.cyanogenmod.ProtectedAccountView.OnNotifyAccountReset;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.RandomAccessFile;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.List;
 
-public class LockPatternActivity extends Activity {
+public class LockPatternActivity extends Activity implements OnNotifyAccountReset {
     public static final String PATTERN_LOCK_PROTECTED_APPS = "pattern_lock_protected_apps";
     public static final String RECREATE_PATTERN = "recreate_pattern_lock";
 
@@ -36,9 +47,13 @@ public class LockPatternActivity extends Activity {
     private static final int MAX_PATTERN_RETRY = 5;
     private static final int PATTERN_CLEAR_TIMEOUT_MS = 2000;
 
+    private static final int MENU_RESET = 0;
+
     LockPatternView mLockPatternView;
+    ProtectedAccountView mAccountView;
 
     TextView mPatternLockHeader;
+    MenuItem mItem;
     Button mCancel;
     Button mContinue;
     byte[] mPatternHash;
@@ -101,42 +116,102 @@ public class LockPatternActivity extends Activity {
         }
     };
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.clear();
+        if (!mCreate) {
+            menu.add(0, MENU_RESET, 0, R.string.lockpattern_reset_button)
+                    .setIcon(R.drawable.ic_lockscreen_ime)
+                    .setAlphabeticShortcut('r')
+                    .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM |
+                            MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+            mItem = menu.findItem(0);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case MENU_RESET:
+                if (mAccountView.getVisibility() == View.VISIBLE) {
+                    switchToPattern(false);
+                } else {
+                    switchToAccount();
+                }
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    @Override
+    public void onNotifyAccountReset() {
+        switchToPattern(true);
+    }
+
+    private void switchToPattern(boolean reset) {
+        if (reset) {
+            resetPatternState();
+        }
+        mPatternLockHeader.setText(getResources()
+                .getString(R.string.lockpattern_settings_enable_summary));
+        mItem.setIcon(R.drawable.ic_lockscreen_ime);
+        mAccountView.clearFocusOnInput();
+        mAccountView.setVisibility(View.GONE);
+        mLockPatternView.setVisibility(View.VISIBLE);
+    }
+
+    private void switchToAccount() {
+        mPatternLockHeader.setText(getResources()
+                .getString(R.string.lockpattern_settings_reset_summary));
+        mItem.setIcon(R.drawable.ic_settings_lockscreen);
+        mAccountView.setVisibility(View.VISIBLE);
+        mLockPatternView.setVisibility(View.GONE);
+    }
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.patternlock);
-
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        String pattern = prefs.getString(PATTERN_LOCK_PROTECTED_APPS, null);
-        mCreate = pattern == null;
-        if (RECREATE_PATTERN.equals(getIntent().getAction())) {
-            mCreate = true;
-        }
-
-        if (pattern != null) {
-            mPatternHash = Base64.decode(pattern, Base64.DEFAULT);
-        }
 
         mPatternLockHeader = (TextView) findViewById(R.id.pattern_lock_header);
         mCancel = (Button) findViewById(R.id.pattern_lock_btn_cancel);
         mCancel.setOnClickListener(mCancelOnClickListener);
         mContinue = (Button) findViewById(R.id.pattern_lock_btn_continue);
         mContinue.setOnClickListener(mContinueOnClickListener);
-        if (mCreate) {
-            mContinue.setEnabled(false);
-            mPatternLockHeader.setText(getResources().getString(R.string.lockpattern_recording_intro_header));
-        } else {
-            mCancel.setVisibility(View.GONE);
-            mContinue.setVisibility(View.GONE);
-            mPatternLockHeader.setText(getResources().getString(R.string.lockpattern_settings_enable_summary));
-        }
 
+        mAccountView = (ProtectedAccountView) findViewById(R.id.lock_account_view);
+        mAccountView.setOnNotifyAccountResetCb(this);
         mLockPatternView = (LockPatternView) findViewById(R.id.lock_pattern_view);
+
+        resetPatternState();
 
         //Setup Pattern Lock View
         mLockPatternView.setSaveEnabled(false);
         mLockPatternView.setFocusable(false);
         mLockPatternView.setOnPatternListener(new UnlockPatternListener());
 
+    }
+
+    private void resetPatternState() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String pattern = prefs.getString(PATTERN_LOCK_PROTECTED_APPS, null);
+        mCreate = pattern == null || RECREATE_PATTERN.equals(getIntent().getAction());
+
+        mPatternHash = null;
+        if (pattern != null) {
+            mPatternHash = Base64.decode(pattern, Base64.DEFAULT);
+        }
+
+        mContinue.setEnabled(!mCreate);
+        mCancel.setVisibility(mCreate ? View.VISIBLE : View.GONE);
+        mContinue.setVisibility(mCreate ? View.VISIBLE : View.GONE);
+        mPatternLockHeader.setText(mCreate
+                ? getResources().getString(R.string.lockpattern_recording_intro_header)
+                : getResources().getString(R.string.lockpattern_settings_enable_summary));
+        mLockPatternView.clearPattern();
+
+        invalidateOptionsMenu();
     }
 
     private class UnlockPatternListener implements LockPatternView.OnPatternListener {
@@ -203,12 +278,12 @@ public class LockPatternActivity extends Activity {
                     mLockPatternView.postDelayed(mCancelPatternRunnable, PATTERN_CLEAR_TIMEOUT_MS);
 
                     if (mRetry >= MAX_PATTERN_RETRY) {
+                        mLockPatternView.removeCallbacks(mCancelPatternRunnable);
                         Toast.makeText(getApplicationContext(),
                                 getResources().getString(
                                         R.string.lockpattern_too_many_failed_confirmation_attempts_header),
                                 Toast.LENGTH_SHORT).show();
-                        setResult(RESULT_CANCELED);
-                        finish();
+                        switchToAccount();
                     }
                 }
             }

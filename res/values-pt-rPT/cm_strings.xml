@@ -75,6 +75,9 @@
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_2g3g">2G/3G</string>
+  <string name="settings_search_action_bar_button">Pesquisa</string>
+  <string name="settings_search_autocompleteview_hint">Definições de pesquisa</string>
+  <string name="settings_search_loading_text">A carregar os dados de pesquisa\u2026</string>
   <string name="profile_connectionoverrides_title">Substituições de ligação</string>
   <string name="profile_volumeoverrides_title">Substituições de volume</string>
   <string name="connection_state_disabled">Desativar</string>
@@ -88,6 +91,8 @@
   <string name="profile_trigger_connect">Ao ligar</string>
   <string name="profile_trigger_disconnect">Ao desligar</string>
   <string name="profile_trigger_notrigger">Sem atuador</string>
+  <string name="profile_trigger_a2dp_connect">Ao ligar A2DP</string>
+  <string name="profile_trigger_a2dp_disconnect">Ao desligar A2DP</string>
   <string name="sound_mode">Modo de notificação</string>
   <string name="ringer_mode">Modo de toque</string>
   <string name="lights_mode">Modo de luzes</string>
@@ -146,7 +151,7 @@
   <string name="icon_picker_pack_title">Pacote de ícones</string>
   <string name="display_lights_settings_title">Ecrã &amp; Luzes</string>
   <string name="lights_category_title">Luzes</string>
-  <string name="notification_pulse_title">Luz de notificação</string>
+  <string name="notification_light_title">Luz de notificação</string>
   <string name="notification_light_general_title">Geral</string>
   <string name="notification_light_applist_title">Aplicações</string>
   <string name="notification_light_phonelist_title">Telémovel</string>
@@ -190,6 +195,8 @@
   <string name="battery_light_low_color_title">Bateria baixa</string>
   <string name="battery_light_medium_color_title">A carregar</string>
   <string name="battery_light_full_color_title">Completamente carregado</string>
+  <string name="lockpattern_reset_button">Repor o padrão</string>
+  <string name="lockpattern_settings_reset_summary">Introduza a conta de e-mail principal e a senha associada para repor o bloqueio padrão</string>
   <string name="lockpattern_settings_enable_error_path_title">Mostrar erro padrão</string>
   <string name="lockpattern_settings_enable_dots_title">Mostrar pontos padrão</string>
   <string name="screen_security_category">Segurança de ecrã</string>
@@ -412,12 +419,12 @@
   <string name="pref_force_highend_gfx_summary">Ativa efeitos visuais de alta qualidade como barra de estado/navegação transparentes (requer reinicialização)</string>
   <string name="kill_app_longpress_back">Fechar aplicação no botão voltar</string>
   <string name="kill_app_longpress_back_summary">Mantendo pressionado o botão de voltar fecha a aplicação em primeiro plano</string>
-  <string name="changelog_title">Ver lista de alterações</string>
+  <string name="changelog_title">Lista de alterações</string>
   <string name="changelog_loading">A carregar lista de alterações\u2026</string>
   <string name="changelog_error">Ocorreu um problema a carregar a lista de alterações</string>
   <string name="changelog_unknown">Desconhecido</string>
   <string name="changelog_version">Versão</string>
-  <string name="contributor_cloud_title">Ver colaboradores</string>
+  <string name="contributor_cloud_title">Colaboradores</string>
   <string name="cmupdate_settings_title">Atualizações</string>
   <string name="cmupdate_settings_summary">Verificar, ver ou instalar atualizações disponíveis</string>
   <string name="advanced_settings_title">Avançadas</string>
@@ -581,6 +588,8 @@
   <string name="navigation_bar_reset_toast">Restaurar a barra de navegação para os valores de origem</string>
   <string name="navigation_bar_menu_editable">Alterável</string>
   <string name="navigation_bar_menu_locked">Bloqueado</string>
+  <string name="navigation_bar_arrow_keys_title">Mostrar setas do teclado enquanto digita</string>
+  <string name="navigation_bar_arrow_keys_summary">Mostrar as setas para a esquerda e para a direita na barra de navegação enquanto digita</string>
   <string name="navigation_ring_title">Atalhos de início rápido</string>
   <string name="navring_target_reset_message">Eliminar todos os atalhos criados pelo utilizador na barra de navegação e restaurar para os valores de origem?</string>
   <string name="navring_target_reset">Atalhos da barra de navegação restaurados aos seus valores de origem</string>
@@ -666,7 +675,10 @@
   <string name="setting_lockscreen_background">A aplicar a imagem de fundo</string>
   <string name="confirm_delete_apn">O APN será eliminado.</string>
   <string name="status_bar_title">Barra de estado</string>
-  <string name="status_bar_show_clock_title">Mostrar relógio</string>
+  <string name="status_bar_clock_title">Estilo do relógio</string>
+  <string name="status_bar_clock_style_default">Direita</string>
+  <string name="status_bar_clock_style_center">Centro</string>
+  <string name="status_bar_clock_style_hidden">Escondido</string>
   <string name="status_bar_battery_title">Estilo da bateria</string>
   <string name="status_bar_style_icon_portrait">Ícone em modo retrato</string>
   <string name="status_bar_style_icon_landscape">Ícone em modo paisagem</string>
@@ -866,4 +878,18 @@
   <string name="menu_hidden_apps_reset_lock">Limpar o bloqueio padrão</string>
   <string name="protected_apps">Aplicações protegidas</string>
   <string name="saving_protected_components">A guardar o estado dos componentes\u2026</string>
+  <string name="pa_login_username_hint">Nome de utilizador (e-mail)</string>
+  <string name="pa_login_password_hint">Senha</string>
+  <string name="pa_login_submit_button">Iniciar sessão</string>
+  <string name="pa_login_checking_password">A verificar a conta\u2026</string>
+  <string name="pa_login_incorrect_login">Login incorreto</string>
+  <string name="keep_screen_on_summary_cm">O ecrã nunca entrará em suspensão durante o carregamento</string>
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="one">Está agora a <xliff:g id="step_count">%1$d</xliff:g> passo de ativar as opções de programador.</item>
+    <item quantity="other">Está agora a <xliff:g id="step_count">%1$d</xliff:g> passos de ativar as opções de programador.</item>
+  </plurals>
+  <string name="show_dev_on_cm">Ativou as opções de programador!</string>
+  <string name="show_dev_already_cm">Não é preciso, já ativou a opções de programador.</string>
+  <string name="enable_adb_cm">Depuração Android</string>
+  <string name="enable_adb_summary_cm">Ativar a interface \"Android Debug Bridge\" (adb)</string>
 </resources>

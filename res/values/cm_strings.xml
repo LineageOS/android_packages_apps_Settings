@@ -107,6 +107,7 @@
     <!-- Search -->
     <string name="settings_search_action_bar_button">Search</string>
     <string name="settings_search_autocompleteview_hint">Search settings</string>
+    <string name="settings_search_loading_text">Loading search data\u2026</string>
 
     <!-- Profile Config screen PreferenceGroup titles -->
     <string name="profile_connectionoverrides_title">Connection overrides</string>
@@ -126,6 +127,8 @@
     <string name="profile_trigger_connect">On connect</string>
     <string name="profile_trigger_disconnect">On disconnect</string>
     <string name="profile_trigger_notrigger">No trigger</string>
+    <string name="profile_trigger_a2dp_connect">On A2DP connect</string>
+    <string name="profile_trigger_a2dp_disconnect">On A2DP disconnect</string>
 
     <!-- Profile Settings sound modes labels -->
     <string name="sound_mode">Notification mode</string>
@@ -215,7 +218,7 @@
     <!-- Lights settings screen, notification light settings -->
     <string name="display_lights_settings_title">Display &amp; lights</string>
     <string name="lights_category_title">Lights</string>
-    <string name="notification_pulse_title">Notification light</string>
+    <string name="notification_light_title">Notification light</string>
     <string name="notification_light_general_title">General</string>
     <string name="notification_light_applist_title">Apps</string>
     <string name="notification_light_phonelist_title">Phone</string>
@@ -273,6 +276,10 @@
     <string name="battery_light_low_color_title">Battery low</string>
     <string name="battery_light_medium_color_title">Charging</string>
     <string name="battery_light_full_color_title">Fully charged</string>
+
+    <!-- Protected apps lockpattern reset button -->
+    <string name="lockpattern_reset_button">Reset pattern</string>
+    <string name="lockpattern_settings_reset_summary">Enter primary email account and associated password to reset pattern lock</string>
 
     <!-- Sizes for pattern lockscreen -->
     <string name="lock_pattern_size_3" translatable="false">3x3</string>
@@ -623,13 +630,13 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="kill_app_longpress_back_summary">Kill the foreground app by long pressing the back button</string>
 
     <!-- Change Log strings -->
-    <string name="changelog_title">View changelog</string>
+    <string name="changelog_title">Changelog</string>
     <string name="changelog_loading">Loading changelog\u2026</string>
     <string name="changelog_error">Unable to load changelog</string>
     <string name="changelog_unknown">Unknown</string>
     <string name="changelog_version">Version</string>
 
-    <string name="contributor_cloud_title">View contributors</string>
+    <string name="contributor_cloud_title">Contributors</string>
 
     <!-- CM Updater -->
     <string name="cmupdate_settings_title">CyanogenMod updates</string>
@@ -745,6 +752,10 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- tap-to-wake -->
     <string name="double_tap_to_wake_title">Double-tap to wake</string>
 
+    <!-- Proximity wake -->
+    <string name="proximity_wake_title">Proximity wake-up</string>
+    <string name="proximity_wake_summary">Use proximity sensor to help decide whether to wake device up</string>
+
     <!-- Quick access ribbon -->
     <string name="category_quick_access">Quick Access ribbon</string>
     <string name="title_quick_access">Show in drawer</string>
@@ -857,6 +868,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="navigation_bar_reset_toast">Navigation bar reset to default</string>
     <string name="navigation_bar_menu_editable">Editable</string>
     <string name="navigation_bar_menu_locked">Locked</string>
+    <string name="navigation_bar_arrow_keys_title">Arrow keys while typing</string>
+    <string name="navigation_bar_arrow_keys_summary">Display left and right cursor buttons while typing</string>
 
     <!-- Navigation ring shortcuts -->
     <string name="navigation_ring_title">Quick launch shortcuts</string>
@@ -956,7 +969,10 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Status bar -->
     <string name="status_bar_title">Status bar</string>
-    <string name="status_bar_show_clock_title">Show clock</string>
+    <string name="status_bar_clock_title">Clock style</string>
+    <string name="status_bar_clock_style_default">Default</string>
+    <string name="status_bar_clock_style_center">Center</string>
+    <string name="status_bar_clock_style_hidden">Hidden</string>
     <string name="status_bar_battery_title">Battery status style</string>
     <string name="status_bar_style_icon_portrait">Icon portrait</string>
     <string name="status_bar_style_icon_landscape">Icon landscape</string>
@@ -1008,8 +1024,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="menu_stats_reset">Reset</string>
 
     <!-- CM Legal -->
-    <string name="cmlicense_title">CyanogenMod Legal</string>
-    <string name="settings_cmlicense_activity_title">CyanogenMod Legal</string>
+    <string name="cmlicense_title">CyanogenMod legal</string>
+    <string name="settings_cmlicense_activity_title">CyanogenMod legal</string>
     <string name="settings_cmlicense_activity_unreachable">You don\'t have a data connection. To view this information now, go to %s from any computer connected to the Internet.</string>
 
     <!-- Stylus Icon -->
@@ -1234,4 +1250,34 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="menu_hidden_apps_reset_lock">Reset pattern lock</string>
     <string name="protected_apps">Protected apps</string>
     <string name="saving_protected_components">Saving component state\u2026</string>
+
+    <string name="pa_login_username_hint">Username (email)</string>
+    <string name="pa_login_password_hint">Password</string>
+    <string name="pa_login_submit_button">Sign in</string>
+    <string name="pa_login_checking_password">Checking account\u2026</string>
+    <string name="pa_login_incorrect_login">Login was incorrect</string>
+
+    <!-- Stay Awake while plugged in -->
+    <string name="keep_screen_on_summary_cm">Screen will never sleep while plugged in</string>
+
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable developer options -->
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="one">You are now <xliff:g id="step_count">%1$d</xliff:g> step away from enabling developer options.</item>
+        <item quantity="other">You are now <xliff:g id="step_count">%1$d</xliff:g> steps away from enabling developer options.</item>
+    </plurals>
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer options are enabled -->
+    <string name="show_dev_on_cm">You have enabled developer options!</string>
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
+    <string name="show_dev_already_cm">No need, you have already enabled developer options.</string>
+
+    <!-- Setting checkbox title for Whether to enable Android debugging support on the phone. -->
+    <string name="enable_adb_cm">Android debugging</string>
+    <!-- Setting checkbox summary for Whether to enable Android debugging support on the phone -->
+    <string name="enable_adb_summary_cm">Enable the Android Debug Bridge (adb) interface</string>
+
+    <string name="spam_added_title">Added %1$s</string>
+    <string name="spam_last_blocked_title">Last blocked %1$s</string>
+    <string name="block_notifications_title">Filter notifications</string>
+    <string name="no_filters_title">No filters set</string>
+
 </resources>

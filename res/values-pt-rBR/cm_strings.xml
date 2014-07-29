@@ -75,6 +75,9 @@
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_2g3g">2G/3G</string>
+  <string name="settings_search_action_bar_button">Pesquisa</string>
+  <string name="settings_search_autocompleteview_hint">Configurações de pesquisa</string>
+  <string name="settings_search_loading_text">Carregando os dados de pesquisa\u2026</string>
   <string name="profile_connectionoverrides_title">Substituição de conexão</string>
   <string name="profile_volumeoverrides_title">Substituição de volume</string>
   <string name="connection_state_disabled">Desabilitar</string>
@@ -88,6 +91,8 @@
   <string name="profile_trigger_connect">Ao conectar</string>
   <string name="profile_trigger_disconnect">Ao desconectar</string>
   <string name="profile_trigger_notrigger">Sem disparador</string>
+  <string name="profile_trigger_a2dp_connect">Ao ligar A2DP</string>
+  <string name="profile_trigger_a2dp_disconnect">Ao desligar A2DP</string>
   <string name="sound_mode">Modo de notificação</string>
   <string name="ringer_mode">Modo de toque</string>
   <string name="lights_mode">Modo de luzes</string>
@@ -146,7 +151,7 @@
   <string name="icon_picker_pack_title">Pacote de ícones</string>
   <string name="display_lights_settings_title">Tela &amp; luzes</string>
   <string name="lights_category_title">Luzes</string>
-  <string name="notification_pulse_title">Luz de notificação</string>
+  <string name="notification_light_title">Luz de notificação</string>
   <string name="notification_light_general_title">Geral</string>
   <string name="notification_light_applist_title">Aplicativos</string>
   <string name="notification_light_phonelist_title">Telefone</string>
@@ -190,6 +195,8 @@
   <string name="battery_light_low_color_title">Bateria baixa</string>
   <string name="battery_light_medium_color_title">Carregando</string>
   <string name="battery_light_full_color_title">Totalmente carregada</string>
+  <string name="lockpattern_reset_button">Redefinir padrão</string>
+  <string name="lockpattern_settings_reset_summary">Introduza a conta de e-mail principal e a senha associada para redefinir o bloqueio padrão</string>
   <string name="lockpattern_settings_enable_error_path_title">Exibir erro no padrão</string>
   <string name="lockpattern_settings_enable_dots_title">Exibir pontos no padrão</string>
   <string name="screen_security_category">Segurança de tela</string>
@@ -420,12 +427,12 @@ Opções adicionais estão disponíveis ao pressionar continuamente uma linha. A
   <string name="pref_force_highend_gfx_summary">Ativa efeitos visuais de alta qualidade com barra de status/navegação transparente (requer reinicilização)</string>
   <string name="kill_app_longpress_back">Matar app com botão voltar</string>
   <string name="kill_app_longpress_back_summary">Ao manter pressionado o botão de voltar, o aplicativo em primeiro plano é fechado</string>
-  <string name="changelog_title">Visualizar alterações</string>
+  <string name="changelog_title">Relatório de alterações</string>
   <string name="changelog_loading">Carregando registro de mudanças\u2026</string>
   <string name="changelog_error">Não foi possível carregar as mudanças</string>
   <string name="changelog_unknown">Desconhecido</string>
   <string name="changelog_version">Versão</string>
-  <string name="contributor_cloud_title">Visualizar colaboradores</string>
+  <string name="contributor_cloud_title">Colaboradores</string>
   <string name="cmupdate_settings_title">Atualizações CyanogenMod</string>
   <string name="cmupdate_settings_summary">Verificar, visualizar ou instalar atualizações disponíveis</string>
   <string name="advanced_settings_title">Avançado</string>
@@ -589,6 +596,8 @@ Opções adicionais estão disponíveis ao pressionar continuamente uma linha. A
   <string name="navigation_bar_reset_toast">Barra de navegação foi restaurada para o padrão</string>
   <string name="navigation_bar_menu_editable">Editável</string>
   <string name="navigation_bar_menu_locked">Travada</string>
+  <string name="navigation_bar_arrow_keys_title">Mostrar setas do teclado enquanto digita</string>
+  <string name="navigation_bar_arrow_keys_summary">Mostrar as setas para a esquerda e direita na barra de navegação enquanto digita</string>
   <string name="navigation_ring_title">Atalhos de início rápido</string>
   <string name="navring_target_reset_message">Remover todos atalhos de barra de navegação criados pelo usuário e restaurar para o padrão?</string>
   <string name="navring_target_reset">Atalhos de barra de navegação restaurados para o padrão</string>
@@ -674,7 +683,10 @@ Opções adicionais estão disponíveis ao pressionar continuamente uma linha. A
   <string name="setting_lockscreen_background">Aplicando plano de fundo</string>
   <string name="confirm_delete_apn">O APN vai ser removido.</string>
   <string name="status_bar_title">Barra de status</string>
-  <string name="status_bar_show_clock_title">Mostrar relógio</string>
+  <string name="status_bar_clock_title">Estilo do relógio</string>
+  <string name="status_bar_clock_style_default">Padrão</string>
+  <string name="status_bar_clock_style_center">Centro</string>
+  <string name="status_bar_clock_style_hidden">Oculto</string>
   <string name="status_bar_battery_title">Estilo do status da bateria</string>
   <string name="status_bar_style_icon_portrait">Ícone retrato</string>
   <string name="status_bar_style_icon_landscape">Ícone paisagem</string>
@@ -707,8 +719,8 @@ Opções adicionais estão disponíveis ao pressionar continuamente uma linha. A
   <string name="battery_info_status_charging_dock_ac">(DockAC)</string>
   <string name="battery_info_status_charging_dock_usb">(DockUSB)</string>
   <string name="menu_stats_reset">Redefinir</string>
-  <string name="cmlicense_title">CyanogenMod Legal</string>
-  <string name="settings_cmlicense_activity_title">CyanogenMod Legal</string>
+  <string name="cmlicense_title">Licença CyanogenMod</string>
+  <string name="settings_cmlicense_activity_title">Licença CyanogenMod</string>
   <string name="settings_cmlicense_activity_unreachable">Você não tem conexão com a Internet. Para ver esta informação agora, navegue para %s de qualquer computador conectado à Internet.</string>
   <string name="stylus_icon_enabled_title">Mostrar ícone quando usando stylus</string>
   <string name="stylus_icon_enabled_summary">Mostar ponteiro quando pairando ou desenhando com o stylus</string>
@@ -874,4 +886,18 @@ Opções adicionais estão disponíveis ao pressionar continuamente uma linha. A
   <string name="menu_hidden_apps_reset_lock">Redefinir o bloqueio padrão</string>
   <string name="protected_apps">Aplicativos protegidos</string>
   <string name="saving_protected_components">Salvando o estado dos componentes\u2026</string>
+  <string name="pa_login_username_hint">Nome de usuário (e-mail)</string>
+  <string name="pa_login_password_hint">Senha</string>
+  <string name="pa_login_submit_button">Entrar</string>
+  <string name="pa_login_checking_password">Verificando a conta\u2026</string>
+  <string name="pa_login_incorrect_login">Login incorreto</string>
+  <string name="keep_screen_on_summary_cm">Tela nunca dormirá enquanto estiver plugado</string>
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="one">Você está a <xliff:g id="step_count">%1$d</xliff:g> passo de ativar as configurações de desenvolvimento.</item>
+    <item quantity="other">Você está a <xliff:g id="step_count">%1$d</xliff:g> passos de ativar as configurações de desenvolvimento.</item>
+  </plurals>
+  <string name="show_dev_on_cm">Você ativou as configurações de desenvolvedor!</string>
+  <string name="show_dev_already_cm">Não é preciso, pois as configurações de desenvolvedor já estão ativadas.</string>
+  <string name="enable_adb_cm">Depuração Android</string>
+  <string name="enable_adb_summary_cm">Ativar a interface de Ponte de Depuração Android (adb)</string>
 </resources>

@@ -75,6 +75,9 @@
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_2g3g">2G/3G</string>
+  <string name="settings_search_action_bar_button">بحث</string>
+  <string name="settings_search_autocompleteview_hint">إعدادات البحث</string>
+  <string name="settings_search_loading_text">تحميل بحث البيانات\u2026</string>
   <string name="profile_connectionoverrides_title">تجاوز الاتصال</string>
   <string name="profile_volumeoverrides_title">تجاوز الصوت</string>
   <string name="connection_state_disabled">تعطيل</string>
@@ -88,6 +91,8 @@
   <string name="profile_trigger_connect">على الاتصال</string>
   <string name="profile_trigger_disconnect">على قطع الاتصال</string>
   <string name="profile_trigger_notrigger">لا يوجد مشغل</string>
+  <string name="profile_trigger_a2dp_connect">عند إتصال A2DP</string>
+  <string name="profile_trigger_a2dp_disconnect">عند قطع إتصال A2DP</string>
   <string name="sound_mode">وضع إعلام</string>
   <string name="ringer_mode">وضع الرنين</string>
   <string name="lights_mode">وضع الأضواء</string>
@@ -146,7 +151,7 @@
   <string name="icon_picker_pack_title">حزم الإيقونات</string>
   <string name="display_lights_settings_title">عرض &amp; أضواء</string>
   <string name="lights_category_title">أضواء</string>
-  <string name="notification_pulse_title">ضوء الإعلام</string>
+  <string name="notification_light_title">ضوء الإعلام</string>
   <string name="notification_light_general_title">عام</string>
   <string name="notification_light_applist_title">تطبيقات</string>
   <string name="notification_light_phonelist_title">الهاتف</string>
@@ -190,6 +195,8 @@
   <string name="battery_light_low_color_title">البطارية منخفضة</string>
   <string name="battery_light_medium_color_title">يشحن</string>
   <string name="battery_light_full_color_title">مشحونة بالكامل</string>
+  <string name="lockpattern_reset_button">إعادة تعيين النمط</string>
+  <string name="lockpattern_settings_reset_summary">أدخل الحساب الابتدائي و البريد الإلكتروني وكلمة المرور المقترنة لي إعادة تعيين نمط قفل</string>
   <string name="lockpattern_settings_enable_error_path_title">إظهار خطأ النمط</string>
   <string name="lockpattern_settings_enable_dots_title">إظهار نقاط النمط</string>
   <string name="screen_security_category">أمن الشاشة</string>
@@ -414,12 +421,12 @@
   <string name="pref_force_highend_gfx_summary">تمكن التأثيرات البصرية الراقية مثل شريط حالة شفافة والملاحة (يتطلب إعادة التشغيل)</string>
   <string name="kill_app_longpress_back">قتل التطبيق بزر الخلف</string>
   <string name="kill_app_longpress_back_summary">قتل التطبيق بالضغط الطويل على زر الخلف</string>
-  <string name="changelog_title">عرض سجل التغيير</string>
+  <string name="changelog_title">سِجل التغييرات</string>
   <string name="changelog_loading">تحميل التغيرات\u2026</string>
   <string name="changelog_error">غير قادر على تحميل التغيير</string>
   <string name="changelog_unknown">غير معروف</string>
   <string name="changelog_version">الإصدار</string>
-  <string name="contributor_cloud_title">عرض المساهمين</string>
+  <string name="contributor_cloud_title">المساهمون</string>
   <string name="cmupdate_settings_title">تحديثات CyanogenMod</string>
   <string name="cmupdate_settings_summary">التحقق من وجود أو عرض أو تثبيت التحديثات المتوفرة</string>
   <string name="advanced_settings_title">متقدم</string>
@@ -583,6 +590,8 @@
   <string name="navigation_bar_reset_toast">شريط التنقل ، إعادة تعيين إلى الافتراضي</string>
   <string name="navigation_bar_menu_editable">قابلة للتغيير</string>
   <string name="navigation_bar_menu_locked">مغلق</string>
+  <string name="navigation_bar_arrow_keys_title">مفاتيح الأسهم عند الكتابة</string>
+  <string name="navigation_bar_arrow_keys_summary">عرض أزرار المؤشر يميناً ويساراً أثناء الكتابة</string>
   <string name="navigation_ring_title">اختصارات شريط التشغيل السريع</string>
   <string name="navring_target_reset_message">حذف شريط الاختصارات واستعادة بشكل افتراضي كافة تنقل المستخدم التي تم إنشاؤها؟</string>
   <string name="navring_target_reset">اختصارات شريط التنقل، إعادة تعيين إلى الافتراضي</string>
@@ -668,7 +677,10 @@
   <string name="setting_lockscreen_background">تطبيق الخلفية</string>
   <string name="confirm_delete_apn">سيتم حذف APN.</string>
   <string name="status_bar_title">شريط المعلومات</string>
-  <string name="status_bar_show_clock_title">إظهار الساعة</string>
+  <string name="status_bar_clock_title">نمط الساعة</string>
+  <string name="status_bar_clock_style_default">الإفتراضي</string>
+  <string name="status_bar_clock_style_center">وسط</string>
+  <string name="status_bar_clock_style_hidden">خفي</string>
   <string name="status_bar_battery_title">نمط حالة البطارية</string>
   <string name="status_bar_style_icon_portrait">صورة الرمز</string>
   <string name="status_bar_style_icon_landscape">أيقونة المناظر الطبيعية</string>
@@ -703,8 +715,8 @@ href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing A
   <string name="battery_info_status_charging_dock_ac">(DockAC)</string>
   <string name="battery_info_status_charging_dock_usb">(DockUSB)</string>
   <string name="menu_stats_reset">إعادة تعيين</string>
-  <string name="cmlicense_title">CyanogenMod قانون</string>
-  <string name="settings_cmlicense_activity_title">CyanogenMod قانون</string>
+  <string name="cmlicense_title">قانون CyanogenMod</string>
+  <string name="settings_cmlicense_activity_title">قانون CyanogenMod</string>
   <string name="settings_cmlicense_activity_unreachable">لم يكن لديك اتصال بيانات. لعرض هذه المعلومات الآن، انتقل إلى %s من أي جهاز كمبيوتر متصل بالإنترنت.</string>
   <string name="stylus_icon_enabled_title">إظهار الرمز عند استخدام النمط</string>
   <string name="stylus_icon_enabled_summary">إظهار رمز المؤشر عند المرور بالماوس أو الرسم  النمط</string>
@@ -870,4 +882,22 @@ href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing A
   <string name="menu_hidden_apps_reset_lock">إعادة تعيين نمط القفل</string>
   <string name="protected_apps">التطبيقات المحمية</string>
   <string name="saving_protected_components">حفظ حالة العنصر\u2026</string>
+  <string name="pa_login_username_hint">اسم المستخدم (البريد الإلكتروني)</string>
+  <string name="pa_login_password_hint">كلمة المرور</string>
+  <string name="pa_login_submit_button">تسجيل الدخول</string>
+  <string name="pa_login_checking_password">التحقق من الحساب\u2026</string>
+  <string name="pa_login_incorrect_login">تسجيل دخول غير صحيحة</string>
+  <string name="keep_screen_on_summary_cm">الشاشة لن تغلق اثناء التوصيل</string>
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="zero">أنت الآن <xliff:g id="step_count">%1$d</xliff:g> بخطوة بعيد عن تمكين خيارات المطور.</item>
+    <item quantity="one">أنت الآن في <xliff:g id="step_count">%1$d</xliff:g> خطوات بعيداً عن تمكين خيارات المطور.</item>
+    <item quantity="two">أنت الآن في <xliff:g id="step_count">%1$d</xliff:g> خطوات بعيداً عن تمكين خيارات المطور.</item>
+    <item quantity="few">أنت الآن في <xliff:g id="step_count">%1$d</xliff:g> خطوات بعيداً عن تمكين خيارات المطور.</item>
+    <item quantity="many">أنت الآن في <xliff:g id="step_count">%1$d</xliff:g> خطوات بعيداً عن تمكين خيارات المطور.</item>
+    <item quantity="other">أنت الآن في <xliff:g id="step_count">%1$d</xliff:g> خطوات بعيداً عن تمكين خيارات المطور.</item>
+  </plurals>
+  <string name="show_dev_on_cm">قمت بتمكين خيارات المطورين!</string>
+  <string name="show_dev_already_cm">لا حاجة، قمت بالفعل بتمكين خيارات المطورين.</string>
+  <string name="enable_adb_cm">تصحيح Android</string>
+  <string name="enable_adb_summary_cm">تمكين واجهة تصحيح Android  جسر (adb)</string>
 </resources>
