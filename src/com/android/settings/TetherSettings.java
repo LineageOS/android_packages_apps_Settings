@@ -177,7 +177,9 @@ public class TetherSettings extends SettingsPreferenceFragment
             if (mEnableWifiApSwitch != null) {
                 getPreferenceScreen().removePreference(mEnableWifiApSwitch);
             }
-            getPreferenceScreen().removePreference(findPreference(WIFI_AP_SSID_AND_SECURITY));
+            if (findPreference(WIFI_AP_SSID_AND_SECURITY) != null) {
+                getPreferenceScreen().removePreference(findPreference(WIFI_AP_SSID_AND_SECURITY));
+            }
         }
 
         if (!bluetoothAvailable) {
