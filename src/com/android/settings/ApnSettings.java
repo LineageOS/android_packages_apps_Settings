@@ -264,6 +264,21 @@ public class ApnSettings extends SettingsPreferenceFragment implements
         //remove the filtered items, no need to show in UI
         where += " and type <>\"" + APN_TYPE_FOTA + "\"";
 
+        if (getResources().getBoolean(R.bool.config_hidesupl_enable)) {
+            boolean needHideSupl = false;
+            for (String plmn : getResources().getStringArray(R.array.hidesupl_plmn_list)) {
+                if (plmn.equals(TelephonyManager.getDefault()
+                           .getSimOperator(mSubId))) {
+                    needHideSupl = true;
+                    break;
+                }
+            }
+
+            if (needHideSupl) {
+                where += " and type <>\"" + PhoneConstants.APN_TYPE_SUPL + "\"";
+            }
+        }
+
         //Hide mms if config is true
         if(getResources().getBoolean(R.bool.config_mms_enable)) {
             where += " and type <>\"" + APN_TYPE_MMS + "\"" ;
