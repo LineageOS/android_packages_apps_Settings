@@ -26,6 +26,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Resources.NotFoundException;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -43,6 +44,7 @@ import android.provider.Telephony;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -77,6 +79,7 @@ public class ApnSettings extends SettingsPreferenceFragment implements
     private static final int APN_INDEX = 2;
     private static final int TYPES_INDEX = 3;
     private static final int RO_INDEX = 4;
+    private static final int LOCALIZED_NAME_INDEX = 5;
 
     private static final int MENU_NEW = Menu.FIRST;
     private static final int MENU_RESTORE = Menu.FIRST + 1;
@@ -217,7 +220,7 @@ public class ApnSettings extends SettingsPreferenceFragment implements
     private void fillList() {
         String where = getOperatorNumericSelection();
         Cursor cursor = getContentResolver().query(getUri(Telephony.Carriers.CONTENT_URI),
-                new String[] {"_id", "name", "apn", "type", "read_only"}, where, null,
+                new String[] {"_id", "name", "apn", "type", "read_only", "localized_name"}, where, null,
                 Telephony.Carriers.DEFAULT_SORT_ORDER);
 
         if (cursor != null) {
@@ -234,6 +237,11 @@ public class ApnSettings extends SettingsPreferenceFragment implements
                 String key = cursor.getString(ID_INDEX);
                 String type = cursor.getString(TYPES_INDEX);
                 boolean readOnly = (cursor.getInt(RO_INDEX) == 1);
+
+                String localizedName = getLocalizedName(getActivity(), cursor, LOCALIZED_NAME_INDEX);
+                if (!TextUtils.isEmpty(localizedName)) {
+                    name = localizedName;
+                }
 
                 ApnPreference pref = new ApnPreference(getActivity());
 
@@ -262,6 +270,23 @@ public class ApnSettings extends SettingsPreferenceFragment implements
                 apnList.addPreference(preference);
             }
         }
+    }
+
+    public static String getLocalizedName(Context context, Cursor cursor, int index) {
+        // If can find a localized name, replace the APN name with it
+        String resName = cursor.getString(index);
+        String localizedName = null;
+        if (resName != null && !resName.isEmpty()) {
+            int resId = context.getResources().getIdentifier(resName, "string",
+                    context.getPackageName());
+            try {
+                localizedName = context.getResources().getString(resId);
+                Log.d(TAG, "Replaced apn name with localized name");
+            } catch (NotFoundException e) {
+                Log.e(TAG, "Got execption while getting the localized apn name.", e);
+            }
+        }
+        return localizedName;
     }
 
     @Override
