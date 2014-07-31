@@ -99,12 +99,13 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
 
         mScreenTimeoutPreference = (ListPreference) findPreference(KEY_SCREEN_TIMEOUT);
-        final long currentTimeout = Settings.System.getLong(resolver, SCREEN_OFF_TIMEOUT,
+        long currentTimeout = Settings.System.getLong(resolver, SCREEN_OFF_TIMEOUT,
                 FALLBACK_SCREEN_TIMEOUT_VALUE);
-        mScreenTimeoutPreference.setValue(String.valueOf(currentTimeout));
+        long timeoutValue = (currentTimeout == Integer.MAX_VALUE) ? -1 : currentTimeout;
+        mScreenTimeoutPreference.setValue(String.valueOf(timeoutValue));
         mScreenTimeoutPreference.setOnPreferenceChangeListener(this);
         disableUnusableTimeouts(mScreenTimeoutPreference);
-        updateTimeoutPreferenceDescription(currentTimeout);
+        updateTimeoutPreferenceDescription(timeoutValue);
 
         mFontSizePref = (WarnedListPreference) findPreference(KEY_FONT_SIZE);
         mFontSizePref.setOnPreferenceChangeListener(this);
@@ -193,25 +194,23 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private void updateTimeoutPreferenceDescription(long currentTimeout) {
         ListPreference preference = mScreenTimeoutPreference;
         String summary;
-        if (currentTimeout < 0) {
+        if (currentTimeout == -1) {
+            summary = preference.getContext().getString(R.string.screensaver_timeout_zero_summary);
+        } else if (currentTimeout < -1) {
             // Unsupported value
             summary = "";
         } else {
             final CharSequence[] entries = preference.getEntries();
             final CharSequence[] values = preference.getEntryValues();
-            if (entries == null || entries.length == 0) {
-                summary = "";
-            } else {
                 int best = 0;
                 for (int i = 0; i < values.length; i++) {
                     long timeout = Long.parseLong(values[i].toString());
-                    if (currentTimeout >= timeout) {
+                if ((currentTimeout >= timeout)&&(timeout > 0)) {
                         best = i;
                     }
                 }
                 summary = preference.getContext().getString(R.string.screen_timeout_summary,
                         entries[best]);
-            }
         }
         preference.setSummary(summary);
     }
@@ -357,12 +356,17 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         final String key = preference.getKey();
         if (KEY_SCREEN_TIMEOUT.equals(key)) {
-            try {
-                int value = Integer.parseInt((String) objValue);
-                Settings.System.putInt(getContentResolver(), SCREEN_OFF_TIMEOUT, value);
-                updateTimeoutPreferenceDescription(value);
-            } catch (NumberFormatException e) {
-                Log.e(TAG, "could not persist screen timeout setting", e);
+            int value = Integer.parseInt((String) objValue);
+            int oldvalue = Integer.parseInt(((ListPreference)preference).getValue());
+            if (value != oldvalue) {
+                Log.d(TAG, "update screen timeout from "+ oldvalue + " to " + value);
+                int timeoutValue = ( -1 == value) ? Integer.MAX_VALUE : value;
+                try {
+                    Settings.System.putInt(getContentResolver(), SCREEN_OFF_TIMEOUT, timeoutValue);
+                    updateTimeoutPreferenceDescription(value);
+                } catch (NumberFormatException e) {
+                    Log.e(TAG, "could not persist screen timeout setting", e);
+                }
             }
         }
         if (KEY_FONT_SIZE.equals(key)) {
