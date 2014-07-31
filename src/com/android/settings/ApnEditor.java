@@ -59,6 +59,8 @@ public class ApnEditor extends PreferenceActivity
     private final static String KEY_CARRIER_ENABLED = "carrier_enabled";
     private final static String KEY_BEARER = "bearer";
     private final static String KEY_MVNO_TYPE = "mvno_type";
+    //Add China Telecom's PLMN
+    private final static String CT_NUMERIC = "46003";
 
     private static final int MENU_DELETE = Menu.FIRST;
     private static final int MENU_SAVE = Menu.FIRST + 1;
@@ -86,6 +88,7 @@ public class ApnEditor extends PreferenceActivity
     private ListPreference mBearer;
     private ListPreference mMvnoType;
     private EditTextPreference mMvnoMatchData;
+    private EditTextPreference mPppNumber;
 
     private String mCurMnc;
     private String mCurMcc;
@@ -123,7 +126,8 @@ public class ApnEditor extends PreferenceActivity
             Telephony.Carriers.BEARER, // 18
             Telephony.Carriers.ROAMING_PROTOCOL, // 19
             Telephony.Carriers.MVNO_TYPE,   // 20
-            Telephony.Carriers.MVNO_MATCH_DATA  // 21
+            Telephony.Carriers.MVNO_MATCH_DATA,  // 21
+            "ppp_number"  // 22
     };
 
     private static final int ID_INDEX = 0;
@@ -147,6 +151,7 @@ public class ApnEditor extends PreferenceActivity
     private static final int ROAMING_PROTOCOL_INDEX = 19;
     private static final int MVNO_TYPE_INDEX = 20;
     private static final int MVNO_MATCH_DATA_INDEX = 21;
+    private static final int PPP_NUMBER_INDEX = 22;
 
 
     @Override
@@ -169,6 +174,7 @@ public class ApnEditor extends PreferenceActivity
         mMcc = (EditTextPreference) findPreference("apn_mcc");
         mMnc = (EditTextPreference) findPreference("apn_mnc");
         mApnType = (EditTextPreference) findPreference("apn_type");
+        mPppNumber = (EditTextPreference) findPreference("apn_ppp_number");
 
         mAuthType = (ListPreference) findPreference(KEY_AUTH_TYPE);
         mAuthType.setOnPreferenceChangeListener(this);
@@ -294,6 +300,17 @@ public class ApnEditor extends PreferenceActivity
             mMvnoType.setValue(mCursor.getString(MVNO_TYPE_INDEX));
             mMvnoMatchData.setEnabled(false);
             mMvnoMatchData.setText(mCursor.getString(MVNO_MATCH_DATA_INDEX));
+
+            String pppNumber = mCursor.getString(PPP_NUMBER_INDEX);
+            mPppNumber.setText(pppNumber);
+            if (pppNumber == null) {
+                if (!mNewApn) {
+                    getPreferenceScreen().removePreference(mPppNumber);
+                } else if (!CT_NUMERIC.equals(defaultOperatorNumeric)) {
+                    getPreferenceScreen().removePreference(mPppNumber);
+                }
+            }
+
         }
 
         mName.setSummary(checkNull(mName.getText()));
@@ -309,6 +326,13 @@ public class ApnEditor extends PreferenceActivity
         mMcc.setSummary(checkNull(mMcc.getText()));
         mMnc.setSummary(checkNull(mMnc.getText()));
         mApnType.setSummary(checkNull(mApnType.getText()));
+
+        String pppNumber = mPppNumber.getText();
+        if (pppNumber != null) {
+            // Remove this preference if PPP number is not present
+            // in the APN settings
+            mPppNumber.setSummary(checkNull(pppNumber));
+        }
 
         String authVal = mAuthType.getValue();
         if (authVal != null) {
@@ -565,6 +589,11 @@ public class ApnEditor extends PreferenceActivity
         values.put(Telephony.Carriers.MNC, mnc);
 
         values.put(Telephony.Carriers.NUMERIC, mcc + mnc);
+
+        String pppNumber = mPppNumber.getText();
+        if (pppNumber != null) {
+            values.put(getResources().getString(R.string.ppp_number),pppNumber);
+        }
 
         if (mCurMnc != null && mCurMcc != null) {
             if (mCurMnc.equals(mnc) && mCurMcc.equals(mcc) &&
