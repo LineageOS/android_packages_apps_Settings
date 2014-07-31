@@ -69,6 +69,16 @@
                 android:persistent="false"
                 android:ringtoneType="ringtone" />
 
+        <PreferenceScreen
+                android:key="multisim_ringtone"
+                android:title="@string/ringtone_title"
+                android:dialogTitle="@string/ringtone_title"
+                android:persistent="false"
+                android:ringtoneType="ringtone">
+                <intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="com.android.settings"
+                android:targetClass="com.android.settings.MultiSimSettingTab"/>
+        </PreferenceScreen>
         <!-- Default notification ringtone -->
         <com.android.settings.DefaultRingtonePreference
                 android:key="notification_ringtone"
@@ -76,6 +86,17 @@
                 android:dialogTitle="@string/notification_ringtone_title"
                 android:persistent="false"
                 android:ringtoneType="notification" />
+
+        <PreferenceScreen
+                android:key="multisim_notification_ringtone"
+                android:title="@string/notification_ringtone_title"
+                android:dialogTitle="@string/notification_ringtone_title"
+                android:persistent="false"
+                android:ringtoneType="notification">
+                <intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="com.android.settings"
+                android:targetClass="com.android.settings.MultiSimSettingTab"/>
+        </PreferenceScreen>
 
         <!-- Other sounds -->
         <Preference

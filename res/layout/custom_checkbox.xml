@@ -45,9 +45,16 @@
         android:layout_marginBottom="2dip"
         android:layout_weight="1">
 
+        <ImageView android:id="@+id/subicon"
+            android:src="@drawable/ic_sim_icon_1"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:scaleType="fitCenter"
+            android:padding="2dip"/>
         <TextView android:id="@+id/subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/subicon"
             android:singleLine="true"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:fadingEdge="horizontal" />

@@ -18,6 +18,7 @@ package com.android.settings.notification;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.ContentObserver;
 import android.database.Cursor;
@@ -34,17 +35,20 @@ import android.os.Vibrator;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceCategory;
+import android.preference.PreferenceScreen;
 import android.preference.SeekBarVolumizer;
 import android.preference.TwoStatePreference;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 
 import android.widget.SeekBar;
 import com.android.internal.widget.LockPatternUtils;
 import com.android.settings.R;
+import com.android.settings.SelectSubscription;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -63,7 +67,9 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
     private static final String KEY_RING_VOLUME = "ring_volume";
     private static final String KEY_NOTIFICATION_VOLUME = "notification_volume";
     private static final String KEY_PHONE_RINGTONE = "ringtone";
+    private static final String KEY_MULTISIM_RINGTONE = "multisim_ringtone";
     private static final String KEY_NOTIFICATION_RINGTONE = "notification_ringtone";
+	private static final String KEY_MULTISIM_NOTIFICATION_RINGTONE = "multisim_notification_ringtone";
     private static final String KEY_VIBRATE_WHEN_RINGING = "vibrate_when_ringing";
     private static final String KEY_NOTIFICATION = "notification";
     private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
@@ -83,7 +89,9 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
     private VolumeSeekBarPreference mRingOrNotificationPreference;
 
     private Preference mPhoneRingtonePreference;
+    private Preference mMultiSimRingtonePreference;
     private Preference mNotificationRingtonePreference;
+    private Preference mMultiSimNotificationRingtonePreference;
     private TwoStatePreference mVibrateWhenRinging;
     private TwoStatePreference mNotificationPulse;
     private DropDownPreference mLockscreen;
@@ -145,6 +153,28 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         mSettingsObserver.register(false);
     }
 
+    @Override
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        if (mMultiSimRingtonePreference != null &&
+                preference == mMultiSimRingtonePreference) {
+            Intent intent = mMultiSimRingtonePreference.getIntent();
+            intent.putExtra(SelectSubscription.PACKAGE,
+                    "com.android.settings");
+            intent.putExtra(SelectSubscription.TARGET_CLASS,
+                    "com.android.settings.sim.MultiSimSoundSettings");
+            startActivity(intent);
+        } else if (mMultiSimNotificationRingtonePreference != null
+                && preference == mMultiSimNotificationRingtonePreference) {
+            Intent intent = mMultiSimNotificationRingtonePreference.getIntent();
+            intent.putExtra(SelectSubscription.PACKAGE,
+                    "com.android.settings");
+            intent.putExtra(SelectSubscription.TARGET_CLASS,
+                    "com.android.settings.sim.MultiSimSoundSettings");
+            startActivity(intent);
+        }
+        return true;
+    }
+
     // === Volumes ===
 
     private VolumeSeekBarPreference initVolumePreference(String key, int stream) {
@@ -197,11 +227,32 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
 
     private void initRingtones(PreferenceCategory root) {
         mPhoneRingtonePreference = root.findPreference(KEY_PHONE_RINGTONE);
-        if (mPhoneRingtonePreference != null && !mVoiceCapable) {
-            root.removePreference(mPhoneRingtonePreference);
-            mPhoneRingtonePreference = null;
-        }
+        mMultiSimRingtonePreference = root.findPreference(KEY_MULTISIM_RINGTONE);
         mNotificationRingtonePreference = root.findPreference(KEY_NOTIFICATION_RINGTONE);
+        mMultiSimNotificationRingtonePreference = root
+                .findPreference(KEY_MULTISIM_NOTIFICATION_RINGTONE);
+
+        if (TelephonyManager.getDefault().isMultiSimEnabled()) {
+            // if it support multi sim, remove ringtone setting, show multi sim ringtone setting
+            if (mMultiSimRingtonePreference != null && !mVoiceCapable) {
+                root.removePreference(mMultiSimRingtonePreference);
+                mMultiSimRingtonePreference = null;
+            }
+            root.removePreference(mPhoneRingtonePreference);
+            root.removePreference(mNotificationRingtonePreference);
+            mPhoneRingtonePreference = null;
+            mNotificationRingtonePreference = null;
+        } else {
+            // if it is not multi sim, remove multi sim ringtone setting, and show ringtone setting
+            if (mPhoneRingtonePreference != null && !mVoiceCapable) {
+                root.removePreference(mPhoneRingtonePreference);
+                mPhoneRingtonePreference = null;
+            }
+            root.removePreference(mMultiSimRingtonePreference);
+            root.removePreference(mMultiSimNotificationRingtonePreference);
+            mMultiSimRingtonePreference = null;
+            mMultiSimNotificationRingtonePreference = null;
+        }
     }
 
     private void lookupRingtoneNames() {

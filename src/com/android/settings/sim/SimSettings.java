@@ -122,6 +122,14 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
 
     @Override
     public void onDestroy() {
+        final PreferenceCategory simEnablers =
+                (PreferenceCategory)findPreference(SIM_ENABLER_CATEGORY);
+
+        for (int i = 0; i < simEnablers.getPreferenceCount(); ++i) {
+            MultiSimEnablerPreference simEnabler = (MultiSimEnablerPreference) simEnablers
+                    .getPreference(i);
+            simEnabler.destroy();
+        }
         super.onDestroy();
         Log.d(TAG,"on onDestroy");
         getActivity().unregisterReceiver(mDdsSwitchReceiver);

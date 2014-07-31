@@ -1770,6 +1770,18 @@
                 <category android:name="android.intent.category.VOICE_LAUNCH" />
             </intent-filter>
         </activity>
+
+        <!-- Multi Sim (Subscription) Settings Widget for Tab Layout-->
+        <activity android:name="MultiSimSettingTab"
+                android:label="@string/subs_settings"
+                android:configChanges="orientation|screenSize|keyboardHidden"
+                android:clearTaskOnLaunch="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <activity android:name="Settings$DreamSettingsActivity"
                 android:label="@string/screensaver_settings_title"
                 android:taskAffinity="">
@@ -2035,6 +2047,21 @@
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
                 android:resource="@id/sim_settings" />
         </activity>
+
+        <!-- Sim Configuration in Tab Layout -->
+        <activity android:name=".sim.SimConfiguration"
+                android:label="@string/sim_settings_title">
+        </activity>
+
+        <!-- Multi Sim Sound Setting Preference -->
+        <activity android:name=".sim.MultiSimSoundSettings"
+                android:label="@string/sim_settings_title">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!-- Multi Sim Sound Setting Preference -->
 
         <provider
             android:name=".search.SettingsSearchIndexablesProvider"
