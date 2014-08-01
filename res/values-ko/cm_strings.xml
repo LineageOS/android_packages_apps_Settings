@@ -315,6 +315,16 @@
   <string name="auto_brightness_preview">미리 보기</string>
   <string name="auto_brightness_preview_dialog_title">밝기 곡선 미리 보기</string>
   <string name="auto_brightness_help_dialog_title">도움말</string>
+  <string name="auto_brightness_help_text"><b>밝기는 어떻게 계산됩니까?</b>
+\n\n
+밝기 곡선은 <i>제어 포인트</i>에 <i>큐빅 스플라인 보간법</i>을 연산하여 도출됩니다. 이 방식은 주위 환경의 밝기 범위에 따라서 화면 밝기가 결정되는 단순 계산과는 차이가 있습니다. 복잡한 공식을 사용함으로써 작은 변화에도 민감하게 반응하는 오류를 줄일 수 있으나, 제어 포인트의 변화를 예측하는 데 어려움이 있을 수 있습니다.\n        
+이 문제를 해결하기 위해 계산된 곡선을 검증해볼 수 있습니다. 곡선은 <i>로그 함수</i> 비례를 이용함으로 각각의 제어 포인트를 구분할 수 있게 되어 있습니다. 직선 모양의 일차 함수 방식을 이용하였을 시에는 주변 환경이 어두울 때의 제어 포인트를 구분하기가 어려워집니다.
+\n\n
+<b>밝기 곡선은 어떻게 편집하나요?</b>
+\n\n
+밝기 목록의 각 줄은 밝기 곡선의 각 <i>제어 포인트</i>에 대응합니다. 포인트의 밝기 수준을 변경하려면, 각 줄에 있는 슬라이더를 이용하십시오. 슬라이더를 터치하고 있으면 화면의 밝기가 선택된 밝기의 값으로 미리 보여집니다.\n
+목록을 길게 눌러 추가 옵션을 사용할 수 있습니다. \'편집\'을 선택하면, 해당 제어 포인트의 주변 밝기 또한 수동으로 결정할 수 있습니다. \'분할\'을 선택하여 한 줄을 두 줄로 나눠 제어 포인트를 추가할 수도 있습니다. \'삭제\'를 누르면 선택한 줄이 제거됩니다.
+    </string>
   <string name="auto_brightness_sensitivity_title">감도 조정</string>
   <string name="auto_brightness_sensitivity_verylow">매우 낮게</string>
   <string name="auto_brightness_sensitivity_low">낮게</string>
@@ -503,6 +513,8 @@
   <string name="collapse_on_dismiss_if_empty_summary">마지막 알림 삭제 후 닫기</string>
   <string name="collapse_on_dismiss_if_no_clearable_summary">삭제 가능한 마지막 알림 삭제 후 닫기</string>
   <string name="double_tap_to_wake_title">더블 탭으로 화면 켜기</string>
+  <string name="proximity_wake_title">근접 켜기</string>
+  <string name="proximity_wake_summary">장치를 켤 것인지 결정하는 데 근접 센서 활용하기</string>
   <string name="category_quick_access">빠른 액세스 리본</string>
   <string name="title_quick_access">알림 서랍에 표시</string>
   <string name="title_quick_access_linked">연결된 레이아웃</string>
@@ -634,7 +646,7 @@
   <string name="hardware_keys_action_search">검색 도우미</string>
   <string name="hardware_keys_action_voice_search">음성 검색</string>
   <string name="hardware_keys_action_in_app_search">응용 프로그램에서 검색</string>
-  <string name="hardware_keys_action_launch_camera">카메라 작동</string>
+  <string name="hardware_keys_action_launch_camera">카메라 실행</string>
   <string name="power_end_call_title">통화 종료</string>
   <string name="power_end_call_summary">전원 버튼을 눌러 현재 통화를 종료</string>
   <string name="button_wake_title">깨우기</string>
@@ -890,4 +902,8 @@
   <string name="show_dev_already_cm">이미 개발자입니다.</string>
   <string name="enable_adb_cm">안드로이드 디버깅</string>
   <string name="enable_adb_summary_cm">안드로이드 디버그 브릿지 (adb) 인터페이스를 사용하도록 설정</string>
+  <string name="spam_added_title">%1$s 추가됨</string>
+  <string name="spam_last_blocked_title">%1$s 최근 차단됨</string>
+  <string name="block_notifications_title">알림 필터</string>
+  <string name="no_filters_title">필터가 설정되지 않음</string>
 </resources>

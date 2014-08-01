@@ -91,6 +91,8 @@
   <string name="profile_trigger_connect">À la connexion</string>
   <string name="profile_trigger_disconnect">À la déconnexion</string>
   <string name="profile_trigger_notrigger">Aucune activation</string>
+  <string name="profile_trigger_a2dp_connect">À la connexion A2DP</string>
+  <string name="profile_trigger_a2dp_disconnect">À la déconnexion A2DP</string>
   <string name="sound_mode">Mode de notification</string>
   <string name="ringer_mode">Sonnerie</string>
   <string name="lights_mode">Voyant</string>
@@ -193,6 +195,8 @@
   <string name="battery_light_low_color_title">Batterie faible</string>
   <string name="battery_light_medium_color_title">En charge</string>
   <string name="battery_light_full_color_title">Chargée</string>
+  <string name="lockpattern_reset_button">Réinitialiser le schéma</string>
+  <string name="lockpattern_settings_reset_summary">Entrez l\'adresse mail du compte principal et son mot de passe pour réinitialiser le schéma de déverrouillage</string>
   <string name="lockpattern_settings_enable_error_path_title">Afficher l\'erreur de schéma</string>
   <string name="lockpattern_settings_enable_dots_title">Afficher les points</string>
   <string name="screen_security_category">Verrouillage de l\'écran</string>
@@ -434,7 +438,7 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="cmupdate_settings_summary">Vérifier, afficher ou installer les mises à jour disponibles</string>
   <string name="advanced_settings_title">Paramètres avancés</string>
   <string name="development_tools_title">Outils de développement</string>
-  <string name="allow_mock_sms">Permettre les faux SMS</string>
+  <string name="allow_mock_sms">Permettre les SMS simulés</string>
   <string name="privacy_settings_cyanogenmod_title">Confidentialité</string>
   <string name="privacy_guard_switch_label">Activer la protection des données</string>
   <string name="privacy_guard_dlg_title">Activer la protection des données\u00A0?</string>
@@ -512,7 +516,7 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="category_quick_access">Bandeau d\'accès rapide</string>
   <string name="title_quick_access">Afficher avec les notifications</string>
   <string name="title_quick_access_linked">Lier la disposition</string>
-  <string name="summary_quick_access_linked">Utiliser les mêmes raccourcis et la même disposition que le volet des paramètres</string>
+  <string name="summary_quick_access_linked">Utiliser la même disposition que le volet des raccourcis</string>
   <string name="font_size_sample">Exemple</string>
   <string name="sms_security_check_limit_title">Limiter l\'émission de SMS</string>
   <string name="sms_security_check_limit_summary">Afficher un message d\'alerte pour prévenir qu\'une application envoie des messages SMS trop fréquemment. Limite actuelle : %d messages en 15 minutes</string>
@@ -883,6 +887,12 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="menu_hidden_apps_reset_lock">Réinitialiser le modèle de verrouillage</string>
   <string name="protected_apps">Applications protégées</string>
   <string name="saving_protected_components">Enregistrement de l\'état du composant\u2026</string>
+  <string name="pa_login_username_hint">Nom d\'utilisateur (email)</string>
+  <string name="pa_login_password_hint">Mot de passe</string>
+  <string name="pa_login_submit_button">Connexion</string>
+  <string name="pa_login_checking_password">Vérification du compte\u2026</string>
+  <string name="pa_login_incorrect_login">Le nom d\'utilisateur est incorrect</string>
+  <string name="keep_screen_on_summary_cm">L\'écran ne s\'éteint jamais tant qu\'il est branché</string>
   <plurals name="show_dev_countdown_cm">
     <item quantity="one">Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étape de l\'activation des options de développeur.</item>
     <item quantity="other">Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étapes de l\'activation des options de développeur.</item>
@@ -891,4 +901,6 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="show_dev_already_cm">Inutile, vous avez déjà activé les options de développeur.</string>
   <string name="enable_adb_cm">Débogage Android</string>
   <string name="enable_adb_summary_cm">Activer l\'interface Android Debug Bridge (adb)</string>
+  <string name="spam_added_title">%1$s ajouté</string>
+  <string name="spam_last_blocked_title">Dernier bloqué %1$s</string>
 </resources>
