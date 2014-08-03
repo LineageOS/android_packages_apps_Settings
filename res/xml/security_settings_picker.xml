@@ -88,6 +88,11 @@
             android:title="@string/lockpattern_settings_enhanced_pin_privacy_title"
             android:summary="@string/lockpattern_settings_enhanced_pin_privacy_summary" />
 
+        <!-- Lineage additions, available in pin -->
+        <SwitchPreferenceCompat
+            android:key="lockscreen_scramble_pin_layout"
+            android:title="@string/unlock_scramble_pin_layout_title"
+            android:summary="@string/unlock_scramble_pin_layout_summary" />
 
         <!-- available in pin/pattern/password -->
         <com.android.settings.security.screenlock.ProtectedTimeoutListPreference
