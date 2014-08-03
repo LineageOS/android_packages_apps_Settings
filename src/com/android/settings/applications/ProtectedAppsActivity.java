@@ -13,6 +13,7 @@ import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -193,7 +194,9 @@ public class ProtectedAppsActivity extends Activity {
         Collections.sort(apps, new ResolveInfo.DisplayNameComparator(mPackageManager));
         List<AppEntry> appEntries = new ArrayList<AppEntry>(apps.size());
         for (ResolveInfo info : apps) {
-            appEntries.add(new AppEntry(info));
+            if (!TextUtils.equals(info.activityInfo.packageName, "com.android.settings")) {
+                appEntries.add(new AppEntry(info));
+            }
         }
         return appEntries;
     }
