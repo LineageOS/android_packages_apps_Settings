@@ -61,6 +61,7 @@ public class LockPatternActivity extends Activity implements OnNotifyAccountRese
     int mRetry = 0;
 
     boolean mCreate;
+    boolean mRetryPattern = false;
     boolean mConfirming = false;
 
     Runnable mCancelPatternRunnable = new Runnable() {
@@ -86,6 +87,12 @@ public class LockPatternActivity extends Activity implements OnNotifyAccountRese
     View.OnClickListener mCancelOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            if (mCreate && !mConfirming) {
+                // Retry
+                mRetryPattern = true;
+                resetPatternState();
+                return;
+            }
             setResult(RESULT_CANCELED);
             finish();
         }
@@ -106,6 +113,7 @@ public class LockPatternActivity extends Activity implements OnNotifyAccountRese
                 finish();
             } else {
                 mConfirming = true;
+                mCancel.setText(getResources().getString(R.string.cancel));
                 mLockPatternView.clearPattern();
 
                 mPatternLockHeader.setText(getResources().getString(
@@ -196,7 +204,8 @@ public class LockPatternActivity extends Activity implements OnNotifyAccountRese
     private void resetPatternState() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String pattern = prefs.getString(PATTERN_LOCK_PROTECTED_APPS, null);
-        mCreate = pattern == null || RECREATE_PATTERN.equals(getIntent().getAction());
+        mCreate = pattern == null || RECREATE_PATTERN.equals(getIntent().getAction())
+                || mRetryPattern;
 
         mPatternHash = null;
         if (pattern != null) {
@@ -205,6 +214,7 @@ public class LockPatternActivity extends Activity implements OnNotifyAccountRese
 
         mContinue.setEnabled(!mCreate);
         mCancel.setVisibility(mCreate ? View.VISIBLE : View.GONE);
+        mCancel.setText(getResources().getString(R.string.cancel));
         mContinue.setVisibility(mCreate ? View.VISIBLE : View.GONE);
         mPatternLockHeader.setText(mCreate
                 ? getResources().getString(R.string.lockpattern_recording_intro_header)
@@ -212,6 +222,8 @@ public class LockPatternActivity extends Activity implements OnNotifyAccountRese
         mLockPatternView.clearPattern();
 
         invalidateOptionsMenu();
+
+        mRetryPattern = false;
     }
 
     private class UnlockPatternListener implements LockPatternView.OnPatternListener {
@@ -237,6 +249,8 @@ public class LockPatternActivity extends Activity implements OnNotifyAccountRese
 
                     mLockPatternView.setDisplayMode(LockPatternView.DisplayMode.Wrong);
                     mLockPatternView.postDelayed(mCancelPatternRunnable, PATTERN_CLEAR_TIMEOUT_MS);
+                    mCancel.setText(getResources()
+                            .getString(R.string.lockpattern_retry_button_text));
                     return;
                 }
 
@@ -258,6 +272,9 @@ public class LockPatternActivity extends Activity implements OnNotifyAccountRese
                     }
                 } else {
                     //Save pattern, user needs to redraw to confirm
+                    mCancel.setText(getResources()
+                            .getString(R.string.lockpattern_retry_button_text));
+
                     mPatternHash = patternToHash(pattern);
 
                     mPatternLockHeader.setText(getResources().getString(
