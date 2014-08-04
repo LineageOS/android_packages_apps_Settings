@@ -113,6 +113,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mHomeAnswerCall;
     private CheckBoxPreference mNavigationBarLeftPref;
 
+    private PreferenceCategory mNavigationPreferencesCat;
+
     private Handler mHandler;
 
     @Override
@@ -162,6 +164,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         // Force Navigation bar related options
         mDisableNavigationKeys = (CheckBoxPreference) findPreference(DISABLE_NAV_KEYS);
 
+        mNavigationPreferencesCat = (PreferenceCategory) findPreference(CATEGORY_NAVBAR);
+
         // Navigation bar left
         mNavigationBarLeftPref = (CheckBoxPreference) findPreference(KEY_NAVIGATION_BAR_LEFT);
 
@@ -180,6 +184,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             } else {
                 // Remove keys that can be provided by the navbar
                 updateDisableNavkeysOption();
+                mNavigationPreferencesCat.setEnabled(mDisableNavigationKeys.isChecked());
             }
         } else {
             prefScreen.removePreference(mDisableNavigationKeys);
@@ -323,13 +328,11 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
             if (hasNavBar) {
                 if (!Utils.isPhone(getActivity())) {
-                    PreferenceCategory navCategory =
-                            (PreferenceCategory) findPreference(CATEGORY_NAVBAR);
-                    navCategory.removePreference(mNavigationBarLeftPref);
+                    mNavigationPreferencesCat.removePreference(mNavigationBarLeftPref);
                 }
-            } else {
+            } else if (needsNavigationBar || !isKeyDisablerSupported()) {
                 // Hide navigation bar category
-                prefScreen.removePreference(findPreference(CATEGORY_NAVBAR));
+                prefScreen.removePreference(mNavigationPreferencesCat);
             }
         } catch (RemoteException e) {
             Log.e(TAG, "Error getting navigation bar status");
@@ -526,6 +529,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             return true;
         } else if (preference == mDisableNavigationKeys) {
             mDisableNavigationKeys.setEnabled(false);
+            mNavigationPreferencesCat.setEnabled(mDisableNavigationKeys.isChecked());
             writeDisableNavkeysOption(getActivity(), mDisableNavigationKeys.isChecked());
             updateDisableNavkeysOption();
             mHandler.postDelayed(new Runnable() {
