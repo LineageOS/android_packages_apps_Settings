@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -288,6 +289,11 @@ public class ProtectedAppsActivity extends Activity {
             icon = (ImageView) parentView.findViewById(R.id.icon);
             title = (TextView) parentView.findViewById(R.id.title);
         }
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
     }
 
     public class AppsAdapter extends ArrayAdapter<AppEntry> {
