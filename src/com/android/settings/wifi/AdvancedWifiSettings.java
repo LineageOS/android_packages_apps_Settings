@@ -22,6 +22,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.DhcpInfo;
 import android.net.NetworkScoreManager;
 import android.net.NetworkScorerAppManager;
 import android.net.NetworkScorerAppManager.NetworkScorerAppData;
@@ -38,6 +39,7 @@ import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.provider.Settings.Global;
 import android.security.Credentials;
+import android.text.format.Formatter;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
@@ -66,6 +68,8 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
     private static final String KEY_WPS_PUSH = "wps_push_button";
     private static final String KEY_WPS_PIN = "wps_pin_entry";
 
+    private static final String KEY_CURRENT_GATEWAY = "current_gateway";
+    private static final String KEY_CURRENT_NETMASK = "current_netmask";
     private WifiManager mWifiManager;
     private NetworkScoreManager mNetworkScoreManager;
     private static final int WPS_PBC_DIALOG_ID = 1;
@@ -338,6 +342,37 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
         wifiIpAddressPref.setSummary(ipAddress == null ?
                 context.getString(R.string.status_unavailable) : ipAddress);
         wifiIpAddressPref.setSelectable(false);
+        Preference wifiGatewayPref = findPreference(KEY_CURRENT_GATEWAY);
+        String gateway = null;
+        Preference wifiNetmaskPref = findPreference(KEY_CURRENT_NETMASK);
+        String netmask = null;
+        if (getResources().getBoolean(R.bool.config_netinfo)) {
+            DhcpInfo dhcpInfo = mWifiManager.getDhcpInfo();
+            if (wifiInfo != null) {
+                if (dhcpInfo != null) {
+                    gateway = Formatter.formatIpAddress(dhcpInfo.gateway);
+                    netmask = Formatter.formatIpAddress(dhcpInfo.netmask);
+                }
+            }
+            if (wifiGatewayPref != null) {
+                wifiGatewayPref.setSummary(gateway == null ?
+                        getString(R.string.status_unavailable) : gateway);
+            }
+            if (wifiNetmaskPref != null) {
+                wifiNetmaskPref.setSummary(netmask == null ?
+                        getString(R.string.status_unavailable) : netmask);
+            }
+        } else {
+            PreferenceScreen screen = getPreferenceScreen();
+            if (screen != null) {
+                if (wifiGatewayPref != null) {
+                    screen.removePreference(wifiGatewayPref);
+                }
+                if (wifiNetmaskPref != null) {
+                    screen.removePreference(wifiNetmaskPref);
+                }
+            }
+        }
     }
 
     /* Wrapper class for the WPS dialog to properly handle life cycle events like rotation. */

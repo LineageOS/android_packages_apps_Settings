@@ -87,4 +87,14 @@
             android:title="@string/wifi_advanced_ip_address_title"
             android:layout="@layout/wifi_advance_layout" />
 
+    <Preference
+            android:key="current_gateway"
+            style="?android:attr/preferenceInformationStyle"
+            android:title="@string/wifi_advanced_gateway" />
+
+    <Preference
+            android:key="current_netmask"
+            style="?android:attr/preferenceInformationStyle"
+            android:title="@string/wifi_advanced_network_netmask" />
+
 </PreferenceScreen>   
