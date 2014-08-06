@@ -43,6 +43,7 @@ import android.widget.CheckBox;
 public class MasterClearConfirm extends Fragment {
 
     private View mContentView;
+    private boolean mWipeMedia;
     private boolean mEraseSdCard;
     private Button mFinalButton;
 
@@ -63,7 +64,9 @@ public class MasterClearConfirm extends Fragment {
                 intent.setComponent(ExternalStorageFormatter.COMPONENT_NAME);
                 getActivity().startService(intent);
             } else {
-                getActivity().sendBroadcast(new Intent("android.intent.action.MASTER_CLEAR"));
+                Intent intent = new Intent("android.intent.action.MASTER_CLEAR");
+                intent.putExtra("wipe_media", mWipeMedia);
+                getActivity().sendBroadcast(intent);
                 // Intent handling is asynchronous -- assume it will happen soon.
             }
         }
@@ -90,6 +93,7 @@ public class MasterClearConfirm extends Fragment {
         super.onCreate(savedInstanceState);
 
         Bundle args = getArguments();
+        mWipeMedia = args != null ? args.getBoolean(MasterClear.WIPE_MEDIA_EXTRA) : false;
         mEraseSdCard = args != null ? args.getBoolean(MasterClear.ERASE_EXTERNAL_EXTRA) : false;
     }
 }
