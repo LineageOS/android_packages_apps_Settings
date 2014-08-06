@@ -162,8 +162,10 @@ public class MasterClear extends Fragment {
          * encrypted, and will also need to be wiped.
          */
         boolean isExtStorageEmulated = Environment.isExternalStorageEmulated();
-        if (isExtStorageEmulated
-                || (!Environment.isExternalStorageRemovable() && isExtStorageEncrypted())) {
+        /* CM's recovery (and most custom ones) does NOT clear emulated
+         * storage when asked for a reset  */
+        if (/*isExtStorageEmulated
+                || */(!Environment.isExternalStorageRemovable() && isExtStorageEncrypted())) {
             mExternalStorageContainer.setVisibility(View.GONE);
 
             final View externalOption = mContentView.findViewById(R.id.erase_external_option_text);
