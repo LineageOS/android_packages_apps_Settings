@@ -16,6 +16,24 @@
       "revId": "33d30e425e6fc0f4cf8d5f81a95897e7f97219bd",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a061dce_adb0d5de",
+        "filename": "src/com/android/settings/cyanogenmod/SpamList.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-08-06T20:43:37Z",
+      "side": 1,
+      "message": "I think a frameworks/base translation patch to make this consistent is more suitable there. E.g. for German, most of them start lower case (with the notable exception of the in_num_hours plural, where the singular form starts lower case, but the plural form starts upper case *facepalm*), so one could argue that it should be like that for all languages. Alternatively, the spam_added_title (and spam_last_blocked_title) string could be adjusted to say something among the lines of \"%s added\".\n\ntoLowerCase() is not suitable in any case as it destroys _all_ capitalization: in German, the string would become e.g. \u0027vor 5 minuten\u0027, which is definitely wrong.",
+      "parentUuid": "9a061dce_0dabc175",
+      "revId": "33d30e425e6fc0f4cf8d5f81a95897e7f97219bd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
