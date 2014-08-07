@@ -104,8 +104,8 @@ public final class DevicePickerFragment extends DeviceListPreferenceFragment {
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
+    public void onDestroy() {
+        super.onDestroy();
         /* Check if any device was selected, if no device selected
          * send  ACTION_DEVICE_NOT_SELECTED intent, otherwise
          * don;t do anything */
