@@ -16,9 +16,6 @@
 
 package com.android.settings;
 
-import com.android.settings.wifi.WifiApEnabler;
-import com.android.settings.wifi.WifiApDialog;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -56,21 +53,16 @@ import java.util.Locale;
 /*
  * Displays preferences for Tethering.
  */
-public class TetherSettings extends SettingsPreferenceFragment
-        implements DialogInterface.OnClickListener, Preference.OnPreferenceChangeListener {
+public class TetherSettings extends SettingsPreferenceFragment {
     private static final String TAG = "TetherSettings";
 
     private static final String USB_TETHER_SETTINGS = "usb_tether_settings";
-    private static final String ENABLE_WIFI_AP = "enable_wifi_ap";
     private static final String ENABLE_BLUETOOTH_TETHERING = "enable_bluetooth_tethering";
 
     private static final int DIALOG_AP_SETTINGS = 1;
 
     private WebView mView;
     private CheckBoxPreference mUsbTether;
-
-    private WifiApEnabler mWifiApEnabler;
-    private CheckBoxPreference mEnableWifiAp;
 
     private CheckBoxPreference mBluetoothTether;
 
@@ -83,15 +75,11 @@ public class TetherSettings extends SettingsPreferenceFragment
     private String[] mBluetoothRegexs;
     private AtomicReference<BluetoothPan> mBluetoothPan = new AtomicReference<BluetoothPan>();
 
-    private static final String WIFI_AP_SSID_AND_SECURITY = "wifi_ap_ssid_and_security";
+    private static final String KEY_WIFI_AP_SETTINGS = "ap_settings";
     private static final int CONFIG_SUBTEXT = R.string.wifi_tether_configure_subtext;
 
     private String[] mSecurityType;
     private Preference mCreateNetwork;
-
-    private WifiApDialog mDialog;
-    private WifiManager mWifiManager;
-    private WifiConfiguration mWifiConfig = null;
 
     private boolean mUsbConnected;
     private boolean mMassStorageActive;
@@ -99,7 +87,6 @@ public class TetherSettings extends SettingsPreferenceFragment
     private boolean mBluetoothEnableForTether;
 
     private static final int INVALID             = -1;
-    private static final int WIFI_TETHERING      = 0;
     private static final int USB_TETHERING       = 1;
     private static final int BLUETOOTH_TETHERING = 2;
 
@@ -122,9 +109,7 @@ public class TetherSettings extends SettingsPreferenceFragment
                     BluetoothProfile.PAN);
         }
 
-        mEnableWifiAp =
-                (CheckBoxPreference) findPreference(ENABLE_WIFI_AP);
-        Preference wifiApSettings = findPreference(WIFI_AP_SSID_AND_SECURITY);
+        Preference wifiApSettings = findPreference(KEY_WIFI_AP_SETTINGS);
         mUsbTether = (CheckBoxPreference) findPreference(USB_TETHER_SETTINGS);
         mBluetoothTether = (CheckBoxPreference) findPreference(ENABLE_BLUETOOTH_TETHERING);
 
@@ -143,11 +128,7 @@ public class TetherSettings extends SettingsPreferenceFragment
             getPreferenceScreen().removePreference(mUsbTether);
         }
 
-        if (wifiAvailable && !Utils.isMonkeyRunning()) {
-            mWifiApEnabler = new WifiApEnabler(activity, mEnableWifiAp);
-            initWifiTethering();
-        } else {
-            getPreferenceScreen().removePreference(mEnableWifiAp);
+        if (!wifiAvailable && Utils.isMonkeyRunning()) {
             getPreferenceScreen().removePreference(wifiApSettings);
         }
 
@@ -168,26 +149,6 @@ public class TetherSettings extends SettingsPreferenceFragment
         mView = new WebView(activity);
     }
 
-    private void initWifiTethering() {
-        final Activity activity = getActivity();
-        mWifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
-        mWifiConfig = mWifiManager.getWifiApConfiguration();
-        mSecurityType = getResources().getStringArray(R.array.wifi_ap_security);
-
-        mCreateNetwork = findPreference(WIFI_AP_SSID_AND_SECURITY);
-
-        if (mWifiConfig == null) {
-            final String s = activity.getString(
-                    com.android.internal.R.string.wifi_tether_configure_ssid_default);
-            mCreateNetwork.setSummary(String.format(activity.getString(CONFIG_SUBTEXT),
-                    s, mSecurityType[WifiApDialog.OPEN_INDEX]));
-        } else {
-            int index = WifiApDialog.getSecurityTypeIndex(mWifiConfig);
-            mCreateNetwork.setSummary(String.format(activity.getString(CONFIG_SUBTEXT),
-                    mWifiConfig.SSID,
-                    mSecurityType[index]));
-        }
-    }
 
     private BluetoothProfile.ServiceListener mProfileServiceListener =
         new BluetoothProfile.ServiceListener() {
@@ -198,17 +159,6 @@ public class TetherSettings extends SettingsPreferenceFragment
             mBluetoothPan.set(null);
         }
     };
-
-    @Override
-    public Dialog onCreateDialog(int id) {
-        if (id == DIALOG_AP_SETTINGS) {
-            final Activity activity = getActivity();
-            mDialog = new WifiApDialog(activity, this, mWifiConfig);
-            return mDialog;
-        }
-
-        return null;
-    }
 
     private class TetherChangeReceiver extends BroadcastReceiver {
         @Override
@@ -286,10 +236,6 @@ public class TetherSettings extends SettingsPreferenceFragment
         activity.registerReceiver(mTetherChangeReceiver, filter);
 
         if (intent != null) mTetherChangeReceiver.onReceive(activity, intent);
-        if (mWifiApEnabler != null) {
-            mEnableWifiAp.setOnPreferenceChangeListener(this);
-            mWifiApEnabler.resume();
-        }
 
         updateState();
     }
@@ -299,10 +245,6 @@ public class TetherSettings extends SettingsPreferenceFragment
         super.onStop();
         getActivity().unregisterReceiver(mTetherChangeReceiver);
         mTetherChangeReceiver = null;
-        if (mWifiApEnabler != null) {
-            mEnableWifiAp.setOnPreferenceChangeListener(null);
-            mWifiApEnabler.pause();
-        }
     }
 
     @Override
@@ -442,17 +384,6 @@ public class TetherSettings extends SettingsPreferenceFragment
         }
     }
 
-    public boolean onPreferenceChange(Preference preference, Object value) {
-        boolean enable = (Boolean) value;
-
-        if (enable) {
-            startProvisioningIfNecessary(WIFI_TETHERING);
-        } else {
-            mWifiApEnabler.setSoftapEnabled(false);
-        }
-        return false;
-    }
-
     boolean isProvisioningNeeded() {
         if (SystemProperties.getBoolean("net.tethering.noprovisioning", false)) {
             return false;
@@ -494,9 +425,6 @@ public class TetherSettings extends SettingsPreferenceFragment
 
     private void startTethering() {
         switch (mTetherChoice) {
-            case WIFI_TETHERING:
-                mWifiApEnabler.setSoftapEnabled(true);
-                break;
             case BLUETOOTH_TETHERING:
                 // turn on Bluetooth first
                 BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
@@ -588,29 +516,6 @@ public class TetherSettings extends SettingsPreferenceFragment
             }
         }
         return null;
-    }
-
-    public void onClick(DialogInterface dialogInterface, int button) {
-        if (button == DialogInterface.BUTTON_POSITIVE) {
-            mWifiConfig = mDialog.getConfig();
-            if (mWifiConfig != null) {
-                /**
-                 * if soft AP is stopped, bring up
-                 * else restart with new config
-                 * TODO: update config on a running access point when framework support is added
-                 */
-                if (mWifiManager.getWifiApState() == WifiManager.WIFI_AP_STATE_ENABLED) {
-                    mWifiManager.setWifiApEnabled(null, false);
-                    mWifiManager.setWifiApEnabled(mWifiConfig, true);
-                } else {
-                    mWifiManager.setWifiApConfiguration(mWifiConfig);
-                }
-                int index = WifiApDialog.getSecurityTypeIndex(mWifiConfig);
-                mCreateNetwork.setSummary(String.format(getActivity().getString(CONFIG_SUBTEXT),
-                        mWifiConfig.SSID,
-                        mSecurityType[index]));
-            }
-        }
     }
 
     @Override
