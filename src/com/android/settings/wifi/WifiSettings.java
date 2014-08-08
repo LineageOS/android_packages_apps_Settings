@@ -49,6 +49,7 @@ import android.os.Message;
 import android.os.UserHandle;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -102,6 +103,7 @@ public class WifiSettings extends RestrictedSettingsFragment
     private static final int MENU_ID_FORGET = Menu.FIRST + 7;
     private static final int MENU_ID_MODIFY = Menu.FIRST + 8;
     private static final int MENU_ID_WRITE_NFC = Menu.FIRST + 9;
+    private static final int MENU_ID_DISCONNECT = Menu.FIRST + 10;
 
     private static final String KEY_ASSISTANT_DISMISS_PLATFORM = "assistant_dismiss_platform";
 
@@ -113,6 +115,7 @@ public class WifiSettings extends RestrictedSettingsFragment
     // Combo scans can take 5-6s to complete - set to 10s.
     private static final int WIFI_RESCAN_INTERVAL_MS = 10 * 1000;
 
+    private static final int MANUALLY_DISCONNECT_LAST_AVAILABLE_AP = 1;
     // Instance state keys
     private static final String SAVE_DIALOG_EDIT_MODE = "edit_mode";
     private static final String SAVE_DIALOG_ACCESS_POINT_STATE = "wifi_ap_state";
@@ -127,6 +130,8 @@ public class WifiSettings extends RestrictedSettingsFragment
     private WifiManager.ActionListener mConnectListener;
     private WifiManager.ActionListener mSaveListener;
     private WifiManager.ActionListener mForgetListener;
+    private boolean mP2pSupported;
+    private boolean mAutoConnect = true;
 
     private WifiEnabler mWifiEnabler;
     // An access point being editted is stored here.
@@ -146,6 +151,7 @@ public class WifiSettings extends RestrictedSettingsFragment
     // account creation outside of setup wizard.
     private static final String EXTRA_ENABLE_NEXT_ON_CONNECT = "wifi_enable_next_on_connect";
 
+    private static final String DISCONNECT_FROM_NETWORK = "disconnect_from_network";
     // should Next button only be enabled when we have a connection?
     private boolean mEnableNextOnConnection;
 
@@ -374,6 +380,12 @@ public class WifiSettings extends RestrictedSettingsFragment
             mWifiEnabler.resume(activity);
         }
 
+        if (getResources().getBoolean(R.bool.config_auto_connect_wifi_enabled)) {
+            mAutoConnect = Settings.System.getInt(getActivity().getContentResolver(),
+                    getResources().getString(R.string.wifi_autoconn_type),
+                    getResources().getInteger(R.integer.wifi_autoconn_type_auto)) ==
+                    getResources().getInteger(R.integer.wifi_autoconn_type_auto);
+        }
         activity.registerReceiver(mReceiver, mFilter);
         updateAccessPoints();
     }
@@ -513,6 +525,12 @@ public class WifiSettings extends RestrictedSettingsFragment
                         && mSelectedAccessPoint.getState() == null) {
                     menu.add(Menu.NONE, MENU_ID_CONNECT, 0, R.string.wifi_menu_connect);
                 }
+                // current connected AP, add a disconnect option to it
+                if (getResources().getBoolean(R.bool.config_auto_connect_wifi_enabled)) {
+                    if (mSelectedAccessPoint.getState() != null) {
+                        menu.add(Menu.NONE, MENU_ID_DISCONNECT, 0, R.string.wifi_menu_disconnect);
+                    }
+                }
                 if (mSelectedAccessPoint.networkId != INVALID_NETWORK_ID) {
                     if (ActivityManager.getCurrentUser() == UserHandle.USER_OWNER) {
                         menu.add(Menu.NONE, MENU_ID_FORGET, 0, R.string.wifi_menu_forget);
@@ -552,6 +570,15 @@ public class WifiSettings extends RestrictedSettingsFragment
             }
             case MENU_ID_MODIFY: {
                 showDialog(mSelectedAccessPoint, true);
+                return true;
+            }
+            case MENU_ID_DISCONNECT: {
+                if (getResources().getBoolean(R.bool.config_auto_connect_wifi_enabled)) {
+                    mWifiManager.disconnect();
+                    if (mAutoConnect) {
+                        reconnect();
+                    }
+                }
                 return true;
             }
             case MENU_ID_WRITE_NFC:
@@ -1102,4 +1129,59 @@ public class WifiSettings extends RestrictedSettingsFragment
                 return result;
             }
         };
+
+    private void reconnect() {
+        List<AccessPoint> availableNetworks = getOtherAvaiConfigNetwork( getActivity(),
+                mWifiManager, mLastInfo, mLastState);
+        int highestPriority = 0;
+        if (availableNetworks.size() != 0) {
+            for (int index = 0; index < availableNetworks.size(); ++index) {
+                if (availableNetworks.get(index).getConfig().priority > availableNetworks.get(
+                        highestPriority).getConfig().priority) {
+                    highestPriority = index;
+                }
+            }
+        } else {
+            // manually disconnect AP and currently has not other available AP,
+            // should show wifi disconnected dialog in CmccMainReceiver.
+            Settings.System.putInt(getContentResolver(),
+                    DISCONNECT_FROM_NETWORK, MANUALLY_DISCONNECT_LAST_AVAILABLE_AP);
+            return;
+        }
+        final AccessPoint accessPoint = availableNetworks.get(highestPriority);
+        if (accessPoint.networkId != INVALID_NETWORK_ID) {
+            mWifiManager.connect(accessPoint.networkId, mConnectListener);
+        }
+    }
+
+    private List<AccessPoint> getOtherAvaiConfigNetwork(Context context,
+            WifiManager wifiManager, WifiInfo lastInfo, DetailedState lastState) {
+        ArrayList<AccessPoint> accessPoints = new ArrayList<AccessPoint>();
+
+        final List<WifiConfiguration> configs = wifiManager.getConfiguredNetworks();
+        if (configs != null) {
+            for (WifiConfiguration config : configs) {
+                AccessPoint accessPoint = new AccessPoint(context, config);
+                if (lastInfo != null && lastState != null) {
+                    accessPoint.update(lastInfo, lastState);
+                }
+                accessPoints.add(accessPoint);
+            }
+        }
+
+        if (accessPoints != null && accessPoints.size() > 1) {
+            for (AccessPoint point : accessPoints) {
+                if (point.getState() != null
+                        && (point.getState() == DetailedState.CONNECTING || point
+                                .getState() == DetailedState.CONNECTED)) {
+                    // This AP is user manually disconnect AP, so ignore.
+                    accessPoints.remove(point);
+                } else if (point.getLevel() != -1) {
+                    continue;
+                }
+            }
+        }
+
+        return accessPoints;
+    }
 }

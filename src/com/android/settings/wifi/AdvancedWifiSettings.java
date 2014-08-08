@@ -67,15 +67,21 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
     private static final String KEY_WIFI_DIRECT = "wifi_direct";
     private static final String KEY_WPS_PUSH = "wps_push_button";
     private static final String KEY_WPS_PIN = "wps_pin_entry";
+    private static final String KEY_SUSPEND_OPTIMIZATIONS = "suspend_optimizations";
+    private static final String KEY_AUTO_CONNECT_TYPE = "auto_connect_type";
 
     private static final String KEY_CURRENT_GATEWAY = "current_gateway";
     private static final String KEY_CURRENT_NETMASK = "current_netmask";
     private static final String KEY_WIFI_GSM_CONNECT_TYPE = "wifi_gsm_connect_type";
+    private static final String KEY_GSM_WIFI_CONNECT_TYPE = "gsm_wifi_connect_type";
 
     private WifiManager mWifiManager;
     private NetworkScoreManager mNetworkScoreManager;
     private static final int WPS_PBC_DIALOG_ID = 1;
     private static final int WPS_PIN_DIALOG_ID = 2;
+
+    CheckBoxPreference AutoPref;
+    ListPreference cell2wifiPref;
 
     private IntentFilter mFilter;
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
@@ -240,6 +246,40 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
         } else {
             Log.d(TAG, "Fail to get wifi2cell pref");
         }
+
+        AutoPref = (CheckBoxPreference) findPreference(KEY_AUTO_CONNECT_TYPE);
+        if (AutoPref != null) {
+            if (getResources().getBoolean(R.bool.config_auto_connect_wifi_enabled)) {
+                AutoPref.setChecked(Settings.System.getInt(getContentResolver(),
+                        getResources().getString(R.string.wifi_autoconn_type),
+                        getResources().getInteger(R.integer.wifi_autoconn_type_auto)) ==
+                        getResources().getInteger(R.integer.wifi_autoconn_type_auto));
+                AutoPref.setOnPreferenceChangeListener(this);
+            } else {
+                getPreferenceScreen().removePreference(AutoPref);
+            }
+        } else {
+            Log.d(TAG, "Fail to get auto connect pref");
+        }
+
+        String data2wifiKey = getActivity().getString(R.string.data_to_wifi_connect_key);
+        String data2wifiValueAuto = getActivity().getString(
+                R.string.data_to_wifi_connect_value_auto);
+        cell2wifiPref = (ListPreference) findPreference(KEY_GSM_WIFI_CONNECT_TYPE);
+
+        if (cell2wifiPref != null) {
+            if (getResources().getBoolean(R.bool.cell_to_wifi)) {
+                int value = Settings.System.getInt(getContentResolver(), data2wifiKey,
+                        Integer.parseInt(data2wifiValueAuto));
+                cell2wifiPref.setValue(String.valueOf(value));
+                updateCellToWifiSummary(cell2wifiPref, value);
+                cell2wifiPref.setOnPreferenceChangeListener(this);
+            } else {
+                getPreferenceScreen().removePreference(cell2wifiPref);
+            }
+        } else {
+            Log.d(TAG, "Fail to get cellular2wifi pref");
+        }
     }
 
     private void updateSleepPolicySummary(Preference sleepPolicyPref, String value) {
@@ -260,6 +300,11 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
 
         sleepPolicyPref.setSummary("");
         Log.e(TAG, "Invalid sleep policy value: " + value);
+    }
+
+    private void updateCellToWifiSummary(Preference preference, int index) {
+        String[] summaries = getResources().getStringArray(R.array.cellcular2wifi_entries);
+        preference.setSummary(summaries[index]);
     }
 
     private void updateFrequencyBandSummary(Preference frequencyBandPref, int index) {
@@ -341,6 +386,7 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
                 return false;
             }
         }
+
         if (KEY_WIFI_GSM_CONNECT_TYPE.equals(key)) {
             Log.d(TAG, "wifi2cell connect type is " + newValue);
             boolean checked = ((Boolean) newValue).booleanValue();
@@ -350,7 +396,56 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
                             : getResources().getInteger(R.integer.wifi2cell_connect_type_auto));
         }
 
+        if (KEY_AUTO_CONNECT_TYPE.equals(key)) {
+            boolean checked = ((Boolean) newValue).booleanValue();
+            setAutoPreference(checked);
+            if (checked) {
+                String data2wifiValueAuto = getActivity().getString(
+                        R.string.data_to_wifi_connect_value_auto);
+                setCellToWifiPreference(Integer.parseInt(data2wifiValueAuto));
+            } else {
+                String data2wifiValueManul = getActivity().getString(
+                        R.string.data_to_wifi_connect_value_manul);
+                setCellToWifiPreference(Integer.parseInt(data2wifiValueManul));
+            }
+
+        }
+
+        if (KEY_GSM_WIFI_CONNECT_TYPE.equals(key)) {
+            Log.d(TAG, "Gsm to Wifi connect type is " + newValue);
+            String data2wifiValueAuto = getActivity().getString(
+                    R.string.data_to_wifi_connect_value_auto);
+            String data2wifiValueManul = getActivity().getString(
+                    R.string.data_to_wifi_connect_value_manul);
+            try {
+                int value = Integer.parseInt(((String) newValue));
+                setCellToWifiPreference(value);
+                if (value == Integer.parseInt(data2wifiValueAuto)) {
+                    setAutoPreference(true);
+                } else if (value == Integer.parseInt(data2wifiValueManul)) {
+                    setAutoPreference(false);
+                }
+            } catch (NumberFormatException e) {
+                Toast.makeText(getActivity(), R.string.wifi_setting_connect_type_error,
+                        Toast.LENGTH_SHORT).show();
+            }
+        }
         return true;
+    }
+
+    private void setAutoPreference(boolean check) {
+        Settings.System.putInt(getContentResolver(),
+                getResources().getString(R.string.wifi_autoconn_type),
+                check ? getResources().getInteger(R.integer.wifi_autoconn_type_auto)
+                        : getResources().getInteger(R.integer.wifi_autoconn_type_manual));
+        AutoPref.setChecked(check);
+    }
+
+    private void setCellToWifiPreference(int value) {
+        String data2wifiKey = getActivity().getString(R.string.data_to_wifi_connect_key);
+        Settings.System.putInt(getContentResolver(), data2wifiKey, value);
+        cell2wifiPref.setValue(String.valueOf(value));
+        updateCellToWifiSummary(cell2wifiPref, value);
     }
 
     private void refreshWifiInfo() {
