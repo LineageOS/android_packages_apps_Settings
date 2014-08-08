@@ -70,6 +70,8 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
 
     private static final String KEY_CURRENT_GATEWAY = "current_gateway";
     private static final String KEY_CURRENT_NETMASK = "current_netmask";
+    private static final String KEY_WIFI_GSM_CONNECT_TYPE = "wifi_gsm_connect_type";
+
     private WifiManager mWifiManager;
     private NetworkScoreManager mNetworkScoreManager;
     private static final int WPS_PBC_DIALOG_ID = 1;
@@ -222,6 +224,22 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
             sleepPolicyPref.setValue(stringValue);
             updateSleepPolicySummary(sleepPolicyPref, stringValue);
         }
+
+        CheckBoxPreference wifi2cellPref =
+                (CheckBoxPreference) findPreference(KEY_WIFI_GSM_CONNECT_TYPE);
+        if (wifi2cellPref != null) {
+            if (getResources().getBoolean(R.bool.wifi_to_cell)) {
+                wifi2cellPref.setChecked(Settings.System.getInt(getContentResolver(),
+                        getResources().getString(R.string.wifi2cell_connect_type),
+                        getResources().getInteger(R.integer.wifi2cell_connect_type_ask))
+                        == getResources().getInteger(R.integer.wifi2cell_connect_type_ask));
+                wifi2cellPref.setOnPreferenceChangeListener(this);
+            } else {
+                getPreferenceScreen().removePreference(wifi2cellPref);
+            }
+        } else {
+            Log.d(TAG, "Fail to get wifi2cell pref");
+        }
     }
 
     private void updateSleepPolicySummary(Preference sleepPolicyPref, String value) {
@@ -322,6 +340,14 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
                         Toast.LENGTH_SHORT).show();
                 return false;
             }
+        }
+        if (KEY_WIFI_GSM_CONNECT_TYPE.equals(key)) {
+            Log.d(TAG, "wifi2cell connect type is " + newValue);
+            boolean checked = ((Boolean) newValue).booleanValue();
+            Settings.System.putInt(getContentResolver(),
+                    getResources().getString(R.string.wifi2cell_connect_type),
+                    checked ? getResources().getInteger(R.integer.wifi2cell_connect_type_ask)
+                            : getResources().getInteger(R.integer.wifi2cell_connect_type_auto));
         }
 
         return true;

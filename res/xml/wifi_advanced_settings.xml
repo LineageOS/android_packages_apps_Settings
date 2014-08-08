@@ -17,6 +17,11 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="@string/wifi_advanced_titlebar">
 
+    <CheckBoxPreference
+            android:key="wifi_gsm_connect_type"
+            android:title="@string/wifi_to_gsm_connect_type_title"
+            android:persistent="false" />
+
     <!-- android:dependency="enable_wifi" -->
     <SwitchPreference
             android:key="notify_open_networks"
