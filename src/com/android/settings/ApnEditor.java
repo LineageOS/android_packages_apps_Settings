@@ -33,6 +33,7 @@ import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.provider.Telephony;
+import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -88,6 +89,7 @@ public class ApnEditor extends PreferenceActivity
 
     private String mCurMnc;
     private String mCurMcc;
+    private long mSubId;
 
     private Uri mUri;
     private Cursor mCursor;
@@ -190,7 +192,10 @@ public class ApnEditor extends PreferenceActivity
 
         final Intent intent = getIntent();
         final String action = intent.getAction();
-
+        // Read the subscription received from Phone settings.
+        mSubId = intent.getLongExtra(SelectSubscription.SUBSCRIPTION_KEY,
+                SubscriptionManager.getDefaultSubId());
+        Log.d(TAG,"ApnEditor onCreate received sub: " + mSubId);
         mFirstTime = icicle == null;
 
         if (action.equals(Intent.ACTION_EDIT)) {
@@ -382,13 +387,12 @@ public class ApnEditor extends PreferenceActivity
             }
             if (newValue != null && newValue.equals(oldValue) == false) {
                 if (values[mvnoIndex].equals("SPN")) {
-                    mMvnoMatchData.setText(mTelephonyManager.getSimOperatorName());
+                    mMvnoMatchData.setText(mTelephonyManager.getSimOperatorName(mSubId));
                 } else if (values[mvnoIndex].equals("IMSI")) {
-                    String numeric =
-                            SystemProperties.get(TelephonyProperties.PROPERTY_ICC_OPERATOR_NUMERIC);
+                    String numeric = mTelephonyManager.getSimOperator(mSubId);
                     mMvnoMatchData.setText(numeric + "x");
                 } else if (values[mvnoIndex].equals("GID")) {
-                    mMvnoMatchData.setText(mTelephonyManager.getGroupIdLevel1());
+                    mMvnoMatchData.setText(mTelephonyManager.getGroupIdLevel1(mSubId));
                 }
             }
 
@@ -563,7 +567,8 @@ public class ApnEditor extends PreferenceActivity
         values.put(Telephony.Carriers.NUMERIC, mcc + mnc);
 
         if (mCurMnc != null && mCurMcc != null) {
-            if (mCurMnc.equals(mnc) && mCurMcc.equals(mcc)) {
+            if (mCurMnc.equals(mnc) && mCurMcc.equals(mcc) &&
+                    mSubId == SubscriptionManager.getDefaultDataSubId()) {
                 values.put(Telephony.Carriers.CURRENT, 1);
             }
         }

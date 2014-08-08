@@ -266,6 +266,23 @@ public class WirelessSettings extends SettingsPreferenceFragment
         final Activity activity = getActivity();
         mAirplaneModePreference = (SwitchPreference) findPreference(KEY_TOGGLE_AIRPLANE);
         SwitchPreference nfc = (SwitchPreference) findPreference(KEY_TOGGLE_NFC);
+
+        if (TelephonyManager.getDefault().getPhoneCount() > 1) {
+            // Mobile Networks menu will traverse to Select Subscription menu.
+            PreferenceScreen manageSub =
+                    (PreferenceScreen) findPreference(KEY_MOBILE_NETWORK_SETTINGS);
+
+            if (manageSub != null) {
+                Intent intent = manageSub.getIntent();
+                intent.setClassName("com.android.phone",
+                                    "com.android.phone.SelectSubscription");
+                intent.putExtra(SelectSubscription.PACKAGE,
+                                    "com.android.phone");
+                intent.putExtra(SelectSubscription.TARGET_CLASS,
+                                "com.android.phone.MSimMobileNetworkSubSettings");
+            }
+        }
+
         PreferenceScreen androidBeam = (PreferenceScreen) findPreference(KEY_ANDROID_BEAM_SETTINGS);
         CheckBoxPreference nsd = (CheckBoxPreference) findPreference(KEY_TOGGLE_NSD);
 

@@ -29,6 +29,7 @@ import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
+import android.telephony.SubscriptionManager;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -190,7 +191,12 @@ public class IccLockSettings extends PreferenceActivity
         // Don't need any changes to be remembered
         getPreferenceScreen().setPersistent(false);
 
-        mPhone = PhoneFactory.getDefaultPhone();
+        Intent intent = getIntent();
+        long subId = intent.getLongExtra(SelectSubscription.SUBSCRIPTION_KEY,
+                SubscriptionManager.getDefaultSubId());
+        // Use the right phone based on the subscription selected.
+        int phoneId = SubscriptionManager.getPhoneId(subId);
+        mPhone = PhoneFactory.getPhone(phoneId);
         mRes = getResources();
         updatePreferences();
     }

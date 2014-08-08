@@ -35,6 +35,7 @@ import android.os.SystemClock;
 import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.preference.Preference;
+import android.preference.PreferenceScreen;
 import android.preference.PreferenceActivity;
 import android.telephony.CellBroadcastMessage;
 import android.telephony.PhoneNumberUtils;
@@ -53,6 +54,7 @@ import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.PhoneStateIntentReceiver;
 import com.android.internal.util.ArrayUtils;
 import com.android.settings.R;
+import com.android.settings.SelectSubscription;
 import com.android.settings.Utils;
 
 import java.lang.ref.WeakReference;
@@ -111,6 +113,8 @@ public class Status extends PreferenceActivity {
         KEY_SIGNAL_STRENGTH,
         KEY_ICC_ID
     };
+
+    private static final String BUTTON_SELECT_SUB_KEY = "button_aboutphone_msim_status";
 
     static final String CB_AREA_INFO_RECEIVED_ACTION =
             "android.cellbroadcastreceiver.CB_AREA_INFO_RECEIVED";
@@ -263,7 +267,12 @@ public class Status extends PreferenceActivity {
         mTelephonyManager = (TelephonyManager)getSystemService(TELEPHONY_SERVICE);
         mWifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
 
-        addPreferencesFromResource(R.xml.device_info_status);
+        if (isMultiSimEnabled()) {
+            addPreferencesFromResource(R.xml.device_info_msim_status);
+        } else {
+            addPreferencesFromResource(R.xml.device_info_status);
+        }
+
         mBatteryLevel = findPreference(KEY_BATTERY_LEVEL);
         mBatteryStatus = findPreference(KEY_BATTERY_STATUS);
         mBtAddress = findPreference(KEY_BT_ADDRESS);
@@ -275,7 +284,8 @@ public class Status extends PreferenceActivity {
         mUnknown = mRes.getString(R.string.device_info_default);
         mUnavailable = mRes.getString(R.string.status_unavailable);
 
-        if (UserHandle.myUserId() == UserHandle.USER_OWNER) {
+        if (UserHandle.myUserId() == UserHandle.USER_OWNER &&
+                (!isMultiSimEnabled())) {
             mPhone = PhoneFactory.getDefaultPhone();
         }
         // Note - missing in zaku build, be careful later...
@@ -389,6 +399,14 @@ public class Status extends PreferenceActivity {
                     return true;
                 }
             });
+
+        PreferenceScreen selectSub = (PreferenceScreen) findPreference(BUTTON_SELECT_SUB_KEY);
+        if (selectSub != null) {
+            Intent intent = selectSub.getIntent();
+            intent.putExtra(SelectSubscription.PACKAGE, "com.android.settings");
+            intent.putExtra(SelectSubscription.TARGET_CLASS,
+                    "com.android.settings.deviceinfo.MSimSubscriptionStatus");
+        }
     }
 
     @Override
@@ -635,5 +653,9 @@ public class Status extends PreferenceActivity {
         int h = (int)((t / 3600));
 
         return h + ":" + pad(m) + ":" + pad(s);
+    }
+
+    private boolean isMultiSimEnabled() {
+        return (TelephonyManager.getDefault().getPhoneCount() > 1);
     }
 }
