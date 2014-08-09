@@ -49,12 +49,12 @@
   <string name="profile_trigger_filter_all">Toutes les activations</string>
   <string name="profile_trigger_filter_wifi">Activation par Wi-Fi</string>
   <string name="profile_trigger_filter_bluetooth">Activation par Bluetooth</string>
-  <string name="profile_write_nfc_tag">Écrire sur les tags NFC</string>
+  <string name="profile_write_nfc_tag">Écrire sur le tag NFC</string>
   <string name="profile_write_touch_tag">Toucher le tag pour écrire</string>
   <string name="profile_write_success">Tag écrit avec succès</string>
   <string name="profile_write_failed">L\'écriture a échoué\u00A0!</string>
   <string name="profile_selected">Profil sélectionné : %1$s</string>
-  <string name="profile_nfc_text">Écrire un profil sur un tag NFC permet de le relier avec celui-ci. Lors du deuxième contact ce profil sera sélectionné.</string>
+  <string name="profile_nfc_text">Écrire un profil sur un tag NFC permet de le sélectionner. Un deuxième contact restaure le profil précédent.</string>
   <string name="profile_unknown_nfc_tag">Profil inconnu</string>
   <string name="profile_add_nfc_text">Ce tag NFC ne se réfère à aucun profil. Le relier à un profil existant permettra à l\'avenir de le sélectionner.</string>
   <string name="profile_select">Sélectionner un profil</string>
@@ -271,7 +271,7 @@
   <string name="title_dynamic_equalizer">Égaliseur</string>
   <string name="title_dynamic_ime">Changement IME</string>
   <string name="title_dynamic_usbtether">Modem USB</string>
-  <string name="title_dynamic_wifi">Affichage sans fil</string>
+  <string name="title_dynamic_wifi">Diffusion sans fil</string>
   <string name="title_general">Général</string>
   <string name="title_quick_pulldown">Ouverture rapide</string>
   <string name="summary_quick_pulldown">Tirer le côté %1$s pour ouvrir le volet des raccourcis</string>
@@ -513,8 +513,11 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="collapse_on_dismiss_if_empty_summary">Fermer lorsque la dernière notification est supprimée</string>
   <string name="collapse_on_dismiss_if_no_clearable_summary">Fermer lorsque la dernière notification amovible est supprimée</string>
   <string name="double_tap_to_wake_title">Appui double pour réveiller</string>
+  <string name="proximity_wake_title">Empêcher un réveil accidentel</string>
+  <string name="proximity_wake_summary">Utiliser le capteur de proximité pour prévenir les réveils accidentels de l\'écran</string>
   <string name="category_quick_access">Bandeau d\'accès rapide</string>
   <string name="title_quick_access">Afficher avec les notifications</string>
+  <string name="title_quick_access_size">Taille du bandeau</string>
   <string name="title_quick_access_linked">Lier la disposition</string>
   <string name="summary_quick_access_linked">Utiliser la même disposition que le volet des raccourcis</string>
   <string name="font_size_sample">Exemple</string>
@@ -546,8 +549,8 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="lockscreen_target_edit_title">Modifier le raccourci</string>
   <string name="lockscreen_target_edit_msg">Sélectionner ou modifier l\'application ou l\'activité souhaitée et l\'icône correspondante</string>
   <string name="picker_activities">Activités</string>
-  <string name="select_custom_app_title">Sélectionner l\'application</string>
-  <string name="select_custom_activity_title">Sélectionner l\'activité</string>
+  <string name="select_custom_app_title">Sélectionner une application</string>
+  <string name="select_custom_activity_title">Sélectionner une activité</string>
   <string name="icon_picker_choose_icon_title">Sélectionner une icône</string>
   <string name="icon_picker_alarm">Alarme</string>
   <string name="icon_picker_browser">Navigateur</string>
@@ -903,4 +906,7 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="enable_adb_summary_cm">Activer l\'interface Android Debug Bridge (adb)</string>
   <string name="spam_added_title">%1$s ajouté</string>
   <string name="spam_last_blocked_title">Dernier bloqué %1$s</string>
+  <string name="block_notifications_title">Filtre des notifications</string>
+  <string name="block_notifications_summary">Gérer les notifications ignorées et les filtres</string>
+  <string name="no_filters_title">Aucun filtre défini</string>
 </resources>

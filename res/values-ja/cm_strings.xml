@@ -140,7 +140,7 @@
   <string name="volume_overlay_none">なし</string>
   <string name="automation_effects_title">自動制御と効果</string>
   <string name="notification_convert_sound_to_vibration_title">通知のバイブレーション</string>
-  <string name="notification_convert_sound_to_vibration_summary">バイブレーションモードで、それぞれのアプリの設定に関わらずすべての通知で振動する</string>
+  <string name="notification_convert_sound_to_vibration_summary">バイブレーションモードで、それぞれのアプリの設定に関わらずに、すべての通知で振動する</string>
   <string name="notification_vibrate_during_calls_title">通話中のバイブレーション</string>
   <string name="notification_vibrate_during_calls_summary">通話中はおだやかに振動する</string>
   <string name="volume_adjust_sounds_enable_title">音量調整の音</string>
@@ -521,10 +521,11 @@
   <string name="collapse_on_dismiss_if_empty_summary">最後の通知を削除した後に閉じる</string>
   <string name="collapse_on_dismiss_if_no_clearable_summary">最後の削除可能な通知を削除した後に閉じる</string>
   <string name="double_tap_to_wake_title">ダブルタップで起動</string>
-  <string name="proximity_wake_title">接近スリープ解除</string>
-  <string name="proximity_wake_summary">端末のスリープを解除するかどうか判断するのに接近センサーを使用する</string>
+  <string name="proximity_wake_title">誤作動を防止</string>
+  <string name="proximity_wake_summary">画面をスリープ解除する前に接近センサーを確認する</string>
   <string name="category_quick_access">クイックアクセスリボン</string>
-  <string name="title_quick_access">通知ドロワーに表示</string>
+  <string name="title_quick_access">ドロワーに表示</string>
+  <string name="title_quick_access_size">リボンバーのサイズ</string>
   <string name="title_quick_access_linked">レイアウトをリンク</string>
   <string name="summary_quick_access_linked">クイック設定パネルと同じタイルとレイアウトを使用する</string>
   <string name="font_size_sample">サンプル</string>
@@ -608,7 +609,7 @@
   <string name="navigation_bar_menu_editable">編集可能</string>
   <string name="navigation_bar_menu_locked">ロックされています</string>
   <string name="navigation_bar_arrow_keys_title">入力中の矢印キー</string>
-  <string name="navigation_bar_arrow_keys_summary">入力中は左右のカーソルボタンを表示する</string>
+  <string name="navigation_bar_arrow_keys_summary">入力中は右と左のカーソルボタンを表示する</string>
   <string name="navigation_ring_title">クイック起動ショートカット</string>
   <string name="navring_target_reset_message">ユーザーが作成したすべてのナビゲーションバーのショートカットを削除してデフォルトに戻しますか？</string>
   <string name="navring_target_reset">ナビゲーションバーのショートカットをデフォルトにリセットしました</string>
@@ -631,7 +632,7 @@
   <string name="expanded_desktop_disabled">無効</string>
   <string name="expanded_desktop_status_bar">ステータスバーを表示する</string>
   <string name="expanded_desktop_no_status_bar">ステータスバーを表示しない</string>
-  <string name="expanded_desktop_system_bars_visibility">ロック画面では無効</string>
+  <string name="expanded_desktop_system_bars_visibility">ロック画面では無効にする</string>
   <string name="expanded_desktop_system_bars_visibility_summary">拡張デスクトップモードでもロック画面ではステータスバーとナビゲーションバーを表示する</string>
   <string name="power_menu_profiles_title">プロファイルの切り替え</string>
   <string name="power_menu_airplane_title">機内モード</string>
@@ -673,7 +674,7 @@
   <string name="volbtn_cursor_control_off">無効</string>
   <string name="volbtn_cursor_control_on">音量を上げる/下げるボタンでカーソルを左/右に移動する</string>
   <string name="volbtn_cursor_control_on_reverse">音量を上げる/下げるボタンでカーソルを右/左に移動する</string>
-  <string name="swap_volume_buttons_title">音量ボタンを入れ替える</string>
+  <string name="swap_volume_buttons_title">再配置</string>
   <string name="swap_volume_buttons_summary">画面回転時に音量ボタンを入れ替える</string>
   <string name="button_backlight_title">バックライト</string>
   <string name="button_backlight_enabled">ボタンを点灯する</string>
@@ -912,6 +913,7 @@
   <string name="enable_adb_summary_cm">Androidデバッグブリッジ（ADB）インターフェースを有効にする</string>
   <string name="spam_added_title">%1$sを追加しました</string>
   <string name="spam_last_blocked_title">%1$sを前回ブロックしました</string>
-  <string name="block_notifications_title">通知をフィルタリング</string>
+  <string name="block_notifications_title">通知のフィルタリング</string>
+  <string name="block_notifications_summary">無視する通知やフィルターを管理する</string>
   <string name="no_filters_title">フィルターが設定されていません</string>
 </resources>
