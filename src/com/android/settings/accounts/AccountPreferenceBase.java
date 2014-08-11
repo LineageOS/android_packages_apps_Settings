@@ -1,5 +1,4 @@
 /*
-
  * Copyright (C) 2008 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -144,7 +143,8 @@ class AccountPreferenceBase extends SettingsPreferenceFragment
             AuthenticatorDescription desc = null;
             try {
                 desc = mAuthenticatorHelper.getAccountTypeDescription(accountType);
-                if (desc != null && desc.accountPreferencesId != 0) {
+                if (desc != null && desc.accountPreferencesId != 0
+                        && Utils.showAccount(getActivity(), accountType)) {
                     // Load the context of the target package, then apply the
                     // base Settings theme (no references to local resources)
                     // and create a context theme wrapper so that we get the

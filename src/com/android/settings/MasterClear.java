@@ -197,6 +197,11 @@ public class MasterClear extends Fragment {
 
         for (int i=0; i<N; i++) {
             Account account = accounts[i];
+            if (!Utils.showAccount(context, account.type)) {
+                // If needn't to show the account, skip this account.
+                continue;
+            }
+
             AuthenticatorDescription desc = null;
             for (int j=0; j<M; j++) {
                 if (account.type.equals(descs[j].type)) {

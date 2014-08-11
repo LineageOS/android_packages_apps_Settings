@@ -880,6 +880,19 @@ public final class Utils {
     }
 
     /**
+     * Returns if need show the account with the given account type.
+     */
+    public static boolean showAccount(Context context, String accountType) {
+        String[] hideAccounts = context.getResources().getStringArray(R.array.hide_account_list);
+        if (hideAccounts == null || hideAccounts.length == 0) return true;
+
+        for (String account : hideAccounts) {
+            if (account.equals(accountType)) return false;
+        }
+        return true;
+    }
+
+    /**
      * Determine whether a package is a "system package", in which case certain things (like
      * disabling notifications or disabling the package altogether) should be disallowed.
      */
