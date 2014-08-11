@@ -487,7 +487,11 @@ public class ApnSettings extends PreferenceActivity implements
             switch (msg.what) {
                 case EVENT_RESTORE_DEFAULTAPN_COMPLETE:
                     sendBroadcast(new Intent(ACTION_APN_RESRORE_COMPLETE));
-                    fillList();
+                    if (getResources().getBoolean(R.bool.config_restore_finish)) {
+                        finish();
+                    } else {
+                        fillList();
+                    }
                     getPreferenceScreen().setEnabled(true);
                     mRestoreDefaultApnMode = false;
                     dismissDialog(DIALOG_RESTORE_DEFAULTAPN);
