@@ -248,7 +248,8 @@ public final class BluetoothDevicePreference extends Preference implements
 
                 case BluetoothProfile.STATE_DISCONNECTED:
                     if (profile.isProfileReady()) {
-                        if (profile instanceof A2dpProfile) {
+                        if ((profile instanceof A2dpProfile) ||
+                            (profile instanceof A2dpSinkProfile)) {
                             a2dpNotConnected = true;
                         } else if (profile instanceof HeadsetProfile) {
                             headsetNotConnected = true;
