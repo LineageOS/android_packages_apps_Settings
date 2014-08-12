@@ -80,8 +80,12 @@ public class DropDownPreference extends Preference {
     }
 
     public void setSelectedItem(int position) {
+        setSelectedItem(position, true);
+    }
+
+    public void setSelectedItem(int position, boolean doCall) {
         final Object value = mValues.get(position);
-        if (mCallback != null && !mCallback.onItemSelected(position, value)) {
+        if (doCall && mCallback != null && !mCallback.onItemSelected(position, value)) {
             return;
         }
         mSpinner.setSelection(position);
@@ -89,6 +93,14 @@ public class DropDownPreference extends Preference {
         final boolean disableDependents = value == null;
         notifyDependencyChange(disableDependents);
     }
+
+    public void setSelectedValue(Object value,  boolean doCall) {
+        final int i = mValues.indexOf(value);
+        if (i > -1) {
+            setSelectedItem(i, doCall);
+        }
+    }
+
 
     public void setSelectedValue(Object value) {
         final int i = mValues.indexOf(value);

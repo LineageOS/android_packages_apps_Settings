@@ -20,14 +20,21 @@ import android.provider.SearchIndexableResource;
 import com.android.settings.R;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.DialogInterface;
+
 import android.content.res.Resources;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.AsyncResult;
 import android.os.Bundle;
-import android.os.IBinder;
+import android.os.Handler;
+import android.os.Message;
 import android.os.RemoteException;
 import android.os.UserHandle;
 import android.preference.ListPreference;
@@ -68,13 +75,32 @@ import java.util.List;
 
 public class SimSettings extends RestrictedSettingsFragment implements Indexable {
     private static final String TAG = "SimSettings";
+    private static final boolean DBG = true;
 
     private static final String DISALLOW_CONFIG_SIM = "no_config_sim";
+    private static final String SIM_ENABLER_CATEGORY = "sim_enablers";
     private static final String SIM_CARD_CATEGORY = "sim_cards";
     private static final String KEY_CELLULAR_DATA = "sim_cellular_data";
     private static final String KEY_CALLS = "sim_calls";
     private static final String KEY_SMS = "sim_sms";
     private static final String KEY_ACTIVITIES = "activities";
+    private static final String SLOTID_STR = "slotId";
+    private static final String ENABLED_STR = "enabled";
+    private static final String MESSAGE_STR = "message";
+
+    private static final int SIM_ENABLER_PROGRESS_DIALOG_ID = 1;
+    private static final int SIM_ENABLER_ALERT_DIALOG_ID = 2;
+
+    private static final int EVT_RESUME = 1;
+    private static final int EVT_SHOW_ALERT_DIALOG = 2;
+    private static final int EVT_SHOW_PROGRESS_DIALOG = 3;
+    // time out to dismiss progress dialog
+    private static final int EVT_PROGRESS_DLG_TIME_OUT = 4;
+    // 30 seconds for progress dialog time out
+    private static final int PROGRESS_DLG_TIME_OUT = 45000;
+
+    private static int mNumSlots = 0;
+    private boolean mIsPause = false;
 
     /**
      * By UX design we have use only one Subscription Information(SubInfo) record per SIM slot.
@@ -83,6 +109,8 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
      */
     private List<SubInfoRecord> mAvailableSubInfos = null;
     private List<SubInfoRecord> mSubInfoList = null;
+
+    private static List<MultiSimEnablerPreference> mSimEnablers = null;
 
     private SubInfoRecord mCellularData = null;
     private SubInfoRecord mCalls = null;
@@ -97,36 +125,41 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     @Override
     public void onCreate(final Bundle bundle) {
         super.onCreate(bundle);
+        final TelephonyManager tm =
+                    (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
 
         if (mSubInfoList == null) {
             mSubInfoList = SubscriptionManager.getActiveSubInfoList();
         }
+
+        mNumSlots = tm.getSimCount();
 
         createPreferences();
         updateAllOptions();
     }
 
     private void createPreferences() {
-        final TelephonyManager tm =
-            (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
-
         addPreferencesFromResource(R.xml.sim_settings);
 
         final PreferenceCategory simCards = (PreferenceCategory)findPreference(SIM_CARD_CATEGORY);
+        final PreferenceCategory simEnablers =
+                (PreferenceCategory)findPreference(SIM_ENABLER_CATEGORY);
 
-        final int numSlots = tm.getSimCount();
-        mAvailableSubInfos = new ArrayList<SubInfoRecord>(numSlots);
-        mNumSims = 0;
-        for (int i = 0; i < numSlots; ++i) {
+        mAvailableSubInfos = new ArrayList<SubInfoRecord>(mNumSlots);
+        for (int i = 0; i < mNumSlots; ++i) {
             final SubInfoRecord sir = findRecordBySlotId(i);
             simCards.addPreference(new SimPreference(getActivity(), sir, i));
+            if (mNumSlots > 1) {
+                simEnablers.addPreference(new MultiSimEnablerPreference(
+                        getActivity(), sir, mHandler, i));
+            } else {
+                removePreference(SIM_ENABLER_CATEGORY);
+            }
             mAvailableSubInfos.add(sir);
             if (sir != null) {
                 mNumSims++;
             }
         }
-
-        updateActivitesCategory();
     }
 
     private void updateAllOptions() {
@@ -135,8 +168,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     }
 
     private void updateSimSlotValues() {
-        SubscriptionManager.getAllSubInfoList();
-        final PreferenceCategory simCards = (PreferenceCategory)findPreference(SIM_CARD_CATEGORY);
         final PreferenceScreen prefScreen = getPreferenceScreen();
 
         final int prefSize = prefScreen.getPreferenceCount();
@@ -144,6 +175,8 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             Preference pref = prefScreen.getPreference(i);
             if (pref instanceof SimPreference) {
                 ((SimPreference)pref).update();
+            } else if (pref instanceof MultiSimEnablerPreference) {
+                ((MultiSimEnablerPreference)pref).update();
             }
         }
     }
@@ -152,7 +185,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         createDropDown((DropDownPreference) findPreference(KEY_CELLULAR_DATA));
         createDropDown((DropDownPreference) findPreference(KEY_CALLS));
         createDropDown((DropDownPreference) findPreference(KEY_SMS));
-
         updateCellularDataValues();
         updateCallValues();
         updateSmsValues();
@@ -171,7 +203,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
                 return sir;
             }
         }
-
         return null;
     }
 
@@ -197,9 +228,11 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
 
     private void updateSmsValues() {
         final DropDownPreference simPref = (DropDownPreference) findPreference(KEY_SMS);
-        final SubInfoRecord sir = findRecordBySubId(SubscriptionManager.getDefaultSmsSubId());
+        long subId = SubscriptionManager.isSMSPromptEnabled() ?
+                0 : SubscriptionManager.getDefaultSmsSubId();
+        final SubInfoRecord sir = findRecordBySubId(subId);
         if (sir != null) {
-            simPref.setSelectedItem(sir.slotId + 1);
+            simPref.setSelectedValue(sir, false);
         }
         simPref.setEnabled(mNumSims > 1);
     }
@@ -208,24 +241,34 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         final DropDownPreference simPref = (DropDownPreference) findPreference(KEY_CELLULAR_DATA);
         final SubInfoRecord sir = findRecordBySubId(SubscriptionManager.getDefaultDataSubId());
         if (sir != null) {
-            simPref.setSelectedItem(sir.slotId);
+            simPref.setSelectedValue(sir, false);
         }
         simPref.setEnabled(mNumSims > 1);
     }
 
     private void updateCallValues() {
         final DropDownPreference simPref = (DropDownPreference) findPreference(KEY_CALLS);
-        final SubInfoRecord sir = findRecordBySubId(SubscriptionManager.getDefaultVoiceSubId());
+        long subId = SubscriptionManager.isVoicePromptEnabled() ?
+                0 : SubscriptionManager.getDefaultVoiceSubId();
+        final SubInfoRecord sir = findRecordBySubId(subId);
         if (sir != null) {
-            simPref.setSelectedItem(sir.slotId + 1);
+            simPref.setSelectedValue(sir, false);
         }
         simPref.setEnabled(mNumSims > 1);
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        mIsPause = true;
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
+        mSubInfoList = SubscriptionManager.getActivatedSubInfoList(getActivity());
         updateAllOptions();
+        mIsPause = false;
     }
 
     @Override
@@ -241,11 +284,17 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     public void createDropDown(DropDownPreference preference) {
         final DropDownPreference simPref = preference;
         final String keyPref = simPref.getKey();
+        int mActCount = 0;
         final boolean askFirst = keyPref.equals(KEY_CALLS) || keyPref.equals(KEY_SMS);
 
         simPref.clearItems();
 
-        if (askFirst) {
+        //Get num of activated Subs
+        for (SubInfoRecord subInfo : mAvailableSubInfos) {
+            if (subInfo != null && subInfo.mStatus == SubscriptionManager.ACTIVE) mActCount++;
+        }
+
+        if (askFirst && mActCount > 1) {
             simPref.addItem(getResources().getString(
                     R.string.sim_calls_ask_first_prefs_title), null);
         }
@@ -263,13 +312,30 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             public boolean onItemSelected(int pos, Object value) {
                 final long subId = value == null ? 0 : ((SubInfoRecord)value).subId;
 
+                Log.d(TAG,"calling setCallback: " + simPref.getKey() + "subId: " + subId);
                 if (simPref.getKey().equals(KEY_CELLULAR_DATA)) {
-                    SubscriptionManager.setDefaultDataSubId(subId);
+                    if (SubscriptionManager.getDefaultDataSubId() != subId) {
+                        SubscriptionManager.setDefaultDataSubId(subId);
+                    }
                 } else if (simPref.getKey().equals(KEY_CALLS)) {
-                    SubscriptionManager.setDefaultVoiceSubId(subId);
+                    //subId 0 is meant for "Ask First"/"Prompt" option as per AOSP
+                    if (subId == 0) {
+                        SubscriptionManager.setVoicePromptEnabled(true);
+                    } else {
+                        if (SubscriptionManager.getDefaultVoiceSubId() != subId) {
+                            SubscriptionManager.setVoicePromptEnabled(false);
+                            SubscriptionManager.setDefaultVoiceSubId(subId);
+                        }
+                    }
                 } else if (simPref.getKey().equals(KEY_SMS)) {
-                    // TODO: uncomment once implemented. Bug: 16520931
-                    // SubscriptionManager.setDefaultSMSSubId(subId);
+                    if (subId == 0) {
+                        SubscriptionManager.setSMSPromptEnabled(true);
+                    } else {
+                        if (SubscriptionManager.getDefaultSmsSubId() != subId) {
+                            SubscriptionManager.setSMSPromptEnabled(false);
+                            SubscriptionManager.setDefaultSmsSubId(subId);
+                        }
+                    }
                 }
 
                 return true;
@@ -390,4 +456,164 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
                 }
             };
 
+    public static class MultiSimDialog extends DialogFragment {
+        public final static String TAG = "MultiSimDialog";
+        static int sSlotId = -1;
+        static boolean sEnabled;
+
+        // Argument bundle keys
+        private static final String BUNDLE_KEY_DIALOG_ID = "MultiSimDialog.id";
+        private static final String BUNDLE_KEY_DIALOG_MSG = "MultiSimDialog.msg";
+        private DialogInterface.OnClickListener mDialogClickListener =
+                new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        };
+
+        //Create the dialog with parameters
+        public static MultiSimDialog newInstance(int id, String message) {
+            MultiSimDialog fragment = new MultiSimDialog();
+            Bundle bundle = new Bundle();
+            bundle.putInt(BUNDLE_KEY_DIALOG_ID, id);
+            bundle.putString(BUNDLE_KEY_DIALOG_MSG, message);
+            fragment.setArguments(bundle);
+            return fragment;
+        }
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            Context context = getActivity();
+            Log.d(TAG, "onCreatedialog");
+            int dialogId = getArguments().getInt(BUNDLE_KEY_DIALOG_ID);
+            String dialogMsg = getArguments().getString(BUNDLE_KEY_DIALOG_MSG);
+            switch(dialogId) {
+                case SIM_ENABLER_PROGRESS_DIALOG_ID:
+                    List<SubInfoRecord> subInfoList =
+                            SubscriptionManager.getSubInfoUsingSlotId(context, sSlotId);
+                    if ( subInfoList == null) {
+                        return null;
+                    }
+                    String title = subInfoList.get(0).mDisplayName;
+
+                    String msg = getString(sEnabled ? R.string.sim_enabler_enabling
+                            : R.string.sim_enabler_disabling);
+                    ProgressDialog progressDiallog = new ProgressDialog(context);
+                    progressDiallog.setIndeterminate(true);
+                    progressDiallog.setTitle(title);
+                    progressDiallog.setMessage(msg);
+                    progressDiallog.setCancelable(false);
+                    progressDiallog.setCanceledOnTouchOutside(false);
+                    return progressDiallog;
+                case SIM_ENABLER_ALERT_DIALOG_ID:
+                    AlertDialog alertDialog = new AlertDialog.Builder(context)
+                            .setTitle(android.R.string.dialog_alert_title)
+                            .setMessage(dialogMsg)
+                            .setCancelable(false)
+                            .setNeutralButton(R.string.close_dialog, mDialogClickListener)
+                            .create();
+                    alertDialog.setCanceledOnTouchOutside(false);
+                    return alertDialog;
+                default:
+                    return null;
+            }
+        }
+
+
+        @Override
+        public void onDismiss(DialogInterface dialog) {
+            super.onDismiss(dialog);
+            int dialogId = getArguments().getInt(BUNDLE_KEY_DIALOG_ID);
+            switch(dialogId) {
+                case SIM_ENABLER_ALERT_DIALOG_ID:
+                    MultiSimEnablerPreference.mIsShowDialog = false;
+                    break;
+                case SIM_ENABLER_PROGRESS_DIALOG_ID:
+                    MultiSimEnablerPreference.mIsShowDialog = false;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+    }
+
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            logd("msg.what = " + msg.what);
+            switch(msg.what) {
+                case EVT_RESUME:
+                    Bundle bundle = msg.getData();
+                    dismissProgressDialog(SIM_ENABLER_PROGRESS_DIALOG_ID);
+                    MultiSimEnablerPreference.mIsShowDialog = false;
+                    updateAllOptions();
+                    break;
+                case EVT_SHOW_PROGRESS_DIALOG:
+                    showProgressDialog(SIM_ENABLER_PROGRESS_DIALOG_ID, msg);
+                    break;
+
+                case EVT_SHOW_ALERT_DIALOG:
+                    Bundle b = msg.getData();
+                    String disEnableMessage = b.getString(MESSAGE_STR);
+                    int subId = b.getInt(SLOTID_STR);
+                    showAlertDialog(SIM_ENABLER_ALERT_DIALOG_ID, disEnableMessage, subId);
+                    break;
+                case EVT_PROGRESS_DLG_TIME_OUT:
+                    dismissProgressDialog(SIM_ENABLER_PROGRESS_DIALOG_ID);
+                    break;
+                default:
+                    loge("Unknown Event " + msg.what);
+                    break;
+            }
+        }
+    };
+
+    private void showAlertDialog(int dialogId, String dialogMsg, int slotId) {
+        logd("showAlertDialogId = " + dialogId + ",mIsPause = " + mIsPause);
+        if (dialogId == SIM_ENABLER_ALERT_DIALOG_ID){
+            MultiSimDialog dialog = MultiSimDialog.newInstance(dialogId, dialogMsg);
+            dialog.sSlotId = slotId;
+            if (!mIsPause){
+                dialog.show(getFragmentManager(), "DisableEnableAlertDialog");
+            }
+        }
+    }
+
+    private void showProgressDialog(int dialogId, Message msg) {
+        if (dialogId == SIM_ENABLER_PROGRESS_DIALOG_ID) {
+            if (null != msg){
+                Bundle b = msg.getData();
+                int slotId = b.getInt(SLOTID_STR);
+                Boolean enabled = b.getBoolean(ENABLED_STR);
+                String message = b.getString(MESSAGE_STR);
+                MultiSimDialog dialog = MultiSimDialog.newInstance(
+                        SIM_ENABLER_PROGRESS_DIALOG_ID, message);
+                dialog.sEnabled = enabled;
+                dialog.sSlotId = slotId;
+                dialog.show(getFragmentManager(), "DisableEnableProgressDialog");
+                mHandler.sendEmptyMessageDelayed(EVT_PROGRESS_DLG_TIME_OUT,
+                        PROGRESS_DLG_TIME_OUT);
+            }
+        }
+    }
+
+    private void dismissProgressDialog(int dialogId) {
+        if (dialogId == SIM_ENABLER_PROGRESS_DIALOG_ID && !mIsPause) {
+            MultiSimDialog dialog = (MultiSimDialog)(getFragmentManager()
+                    .findFragmentByTag("DisableEnableProgressDialog"));
+            if (dialog != null) {
+                dialog.dismiss();
+                mHandler.removeMessages(EVT_PROGRESS_DLG_TIME_OUT);
+            }
+        }
+    }
+
+    private void logd(String msg) {
+        if (DBG) Log.d(TAG, msg);
+    }
+
+    private void loge(String s) {
+        Log.e(TAG, s);
+    }
 }
