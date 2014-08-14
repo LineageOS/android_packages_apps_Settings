@@ -58,6 +58,7 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
     private static final String KEY_MAC_ADDRESS = "mac_address";
     private static final String KEY_CURRENT_IP_ADDRESS = "current_ip_address";
     private static final String KEY_FREQUENCY_BAND = "frequency_band";
+    private static final String KEY_PRIORITY_SETTINGS = "wifi_priority_settings";
     private static final String KEY_NOTIFY_OPEN_NETWORKS = "notify_open_networks";
     private static final String KEY_SLEEP_POLICY = "sleep_policy";
     private static final String KEY_SCAN_ALWAYS_AVAILABLE = "wifi_scan_always_available";
@@ -198,6 +199,15 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
                     return true;
                 }
         });
+
+        Preference prioritySettingPref = findPreference(KEY_PRIORITY_SETTINGS);
+        if (prioritySettingPref != null) {
+            if (!getResources().getBoolean(R.bool.set_wifi_priority)) {
+                getPreferenceScreen().removePreference(prioritySettingPref);
+            }
+        } else {
+            Log.d(TAG, "Fail to get priority pref...");
+        }
 
         ListPreference frequencyPref = (ListPreference) findPreference(KEY_FREQUENCY_BAND);
 

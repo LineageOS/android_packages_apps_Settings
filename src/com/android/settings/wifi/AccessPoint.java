@@ -74,6 +74,9 @@ class AccessPoint extends Preference {
     private static final String KEY_WIFIINFO = "key_wifiinfo";
     private static final String KEY_SCANRESULT = "key_scanresult";
     private static final String KEY_CONFIG = "key_config";
+    static final String CARRIER_SSID = "CMCC";
+    static final String CARRIER_EDU_SSID = "CMCC-EDU";
+    static final String CARRIER_AUTO_SSID = "CMCC-AUTO";
 
     private static final int[] STATE_SECURED = {
         R.attr.state_encrypted
@@ -295,6 +298,17 @@ class AccessPoint extends Preference {
         // Active one goes first.
         if (mInfo != null && other.mInfo == null) return -1;
         if (mInfo == null && other.mInfo != null) return 1;
+
+        Context context = getContext();
+        if (context.getResources().getBoolean(R.bool.set_wifi_priority)) {
+            if (isCarrierAp(this, context)) {
+                if (!isCarrierAp(other, context)) {
+                    return -1;
+                }
+            } else if (isCarrierAp(other, context)) {
+                return 1;
+            }
+        }
 
         // Reachable one goes before unreachable one.
         if (mRssi != Integer.MAX_VALUE && other.mRssi == Integer.MAX_VALUE) return -1;
@@ -665,5 +679,26 @@ class AccessPoint extends Preference {
         mConfig = new WifiConfiguration();
         mConfig.SSID = AccessPoint.convertToQuotedString(ssid);
         mConfig.allowedKeyManagement.set(KeyMgmt.NONE);
+    }
+
+    static boolean isCarrierAp(AccessPoint mAccessPoint, Context context) {
+        if (mAccessPoint == null) {
+            return false;
+        }
+        if (!context.getResources().getBoolean(R.bool.set_wifi_priority)) {
+            return false;
+        }
+
+        if (CARRIER_SSID.equals(mAccessPoint.ssid) || CARRIER_EDU_SSID.equals(mAccessPoint.ssid)) {
+            if (mAccessPoint.security == AccessPoint.SECURITY_NONE) {
+                return true;
+            }
+        }
+        if (CARRIER_AUTO_SSID.equals(mAccessPoint.ssid)) {
+            if (mAccessPoint.security == AccessPoint.SECURITY_EAP) {
+                return true;
+            }
+        }
+        return false;
     }
 }
