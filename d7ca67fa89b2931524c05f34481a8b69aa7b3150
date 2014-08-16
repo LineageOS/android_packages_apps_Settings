@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a1b2928_bf813b50",
+        "filename": "src/com/android/settings/inputmethod/InputMethodAndLanguageSettings.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 883
+      },
+      "writtenOn": "2014-08-16T03:08:04Z",
+      "side": 1,
+      "message": "Right there, you are comparing 2 different object  in memory  which contains the memory location.  this will not work because you are comparing 2 object reference location in memory. like that guy said in  the comment, you mean  instanceof  instead of the \u003d\u003d",
+      "revId": "d7ca67fa89b2931524c05f34481a8b69aa7b3150",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
