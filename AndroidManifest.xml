@@ -2084,6 +2084,7 @@
 
         <activity android:name=".applications.LockPatternActivity"
                   android:label="@string/protected_apps"
+                  android:windowSoftInputMode="stateHidden|adjustResize"
                   android:excludeFromRecents="true">
             <intent-filter>
                 <action android:name=".applications.LockPatternActivity" />
