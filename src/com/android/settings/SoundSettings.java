@@ -358,8 +358,15 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private void updateQuietHoursSummary() {
         ContentResolver resolver = getContentResolver();
         if (Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_ENABLED, 0) == 1) {
-            String start = Settings.System.getString(resolver, Settings.System.QUIET_HOURS_START);
-            String end = Settings.System.getString(resolver, Settings.System.QUIET_HOURS_END);
+            String start;
+            String end;
+            if (Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_ENABLED_TEMP, 0) != 1) {
+                start = Settings.System.getString(resolver, Settings.System.QUIET_HOURS_START);
+                end = Settings.System.getString(resolver, Settings.System.QUIET_HOURS_END);
+            } else {
+                start = Settings.System.getString(resolver, Settings.System.QUIET_HOURS_START_TEMP);
+                end = Settings.System.getString(resolver, Settings.System.QUIET_HOURS_END_TEMP);
+            }
             mQuietHours.setSummary(getString(R.string.quiet_hours_active_period,
                     returnTime(start), returnTime(end)));
         } else {

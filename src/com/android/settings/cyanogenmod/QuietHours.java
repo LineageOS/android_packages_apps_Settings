@@ -21,6 +21,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.provider.Settings;
@@ -34,11 +35,13 @@ public class QuietHours extends SettingsPreferenceFragment implements
 
     private static final String TAG = "QuietHours";
     private static final String KEY_QUIET_HOURS_TIMERANGE = "quiet_hours_timerange";
+    private static final String KEY_QUIET_HOURS_ENABLED_TEMP = "quiet_hours_enabled_temp";
     private static final CharSequence KEY_QUIET_HOURS_RINGER = "quiet_hours_ringer";
 
     private TimeRangePreference mQuietHoursTimeRange;
     private ListPreference mQuietHoursRinger;
-
+    private CheckBoxPreference mTempCheckbox;
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,11 +53,22 @@ public class QuietHours extends SettingsPreferenceFragment implements
         // Load the preferences
         mQuietHoursTimeRange =
                 (TimeRangePreference) findPreference(KEY_QUIET_HOURS_TIMERANGE);
-        mQuietHoursTimeRange.setTimeRange(
-                Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_START, 0),
-                Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_END, 0));
+        mTempCheckbox =
+                (CheckBoxPreference) findPreference(KEY_QUIET_HOURS_ENABLED_TEMP);
+        boolean tempQuietOn = (Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_ENABLED_TEMP, 0) != 0);
+        mTempCheckbox.setChecked(tempQuietOn);
+        
+        if (!mTempCheckbox.isChecked()){
+            mQuietHoursTimeRange.setTimeRange(
+                    Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_START, 0),
+                    Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_END, 0));
+        } else{
+        	mQuietHoursTimeRange.setTimeRange(
+        			Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_START_TEMP, 0),
+        			Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_END_TEMP, 0));
+        }
         mQuietHoursTimeRange.setOnPreferenceChangeListener(this);
-
+        mTempCheckbox.setOnPreferenceChangeListener(this);
         // Remove the ringer setting on non-telephony devices else enable it
         mQuietHoursRinger = (ListPreference) findPreference(KEY_QUIET_HOURS_RINGER);
         TelephonyManager telephonyManager =
@@ -85,11 +99,20 @@ public class QuietHours extends SettingsPreferenceFragment implements
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getContentResolver();
+        
         if (preference == mQuietHoursTimeRange) {
-            Settings.System.putInt(resolver, Settings.System.QUIET_HOURS_START,
+        	if (!mTempCheckbox.isChecked()){
+        	
+        	Settings.System.putInt(resolver, Settings.System.QUIET_HOURS_START,
                     mQuietHoursTimeRange.getStartTime());
             Settings.System.putInt(resolver, Settings.System.QUIET_HOURS_END,
                     mQuietHoursTimeRange.getEndTime());
+        	} else {
+                Settings.System.putInt(resolver, Settings.System.QUIET_HOURS_START_TEMP,
+                        mQuietHoursTimeRange.getStartTime());
+                Settings.System.putInt(resolver, Settings.System.QUIET_HOURS_END_TEMP,
+                        mQuietHoursTimeRange.getEndTime());
+        	}
             return true;
         } else if (preference == mQuietHoursRinger) {
             int ringerMuteType = Integer.valueOf((String) newValue);
@@ -97,6 +120,25 @@ public class QuietHours extends SettingsPreferenceFragment implements
             Settings.System.putInt(resolver, Settings.System.QUIET_HOURS_RINGER, ringerMuteType);
             mQuietHoursRinger.setSummary(mQuietHoursRinger.getEntries()[index]);
             return true;
+        }
+        /* this creates a race condition 
+        else if (preference == mTempCheckbox) {
+            Settings.System.putInt(resolver, Settings.System.QUIET_HOURS_START_TEMP,
+                    mQuietHoursTimeRange.getStartTime());
+            Settings.System.putInt(resolver, Settings.System.QUIET_HOURS_END_TEMP,
+                    mQuietHoursTimeRange.getEndTime());
+        }*/
+        else if (preference == mTempCheckbox) {
+        if (!mTempCheckbox.isChecked()){
+            mQuietHoursTimeRange.setTimeRange(
+                    Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_START, 0),
+                    Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_END, 0));
+        } else{
+        	mQuietHoursTimeRange.setTimeRange(
+        			Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_START_TEMP, 0),
+        			Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_END_TEMP, 0));
+        }
+        return true;
         }
         return false;
     }
