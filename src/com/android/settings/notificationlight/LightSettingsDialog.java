@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2010 Daniel Nilsson
- * Copyright (C) 2012 THe CyanogenMod Project
+ * Copyright (C) 2012-2014 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -60,6 +60,7 @@ public class LightSettingsDialog extends AlertDialog implements
     private final static long LED_UPDATE_DELAY_MS = 250;
 
     private ColorPickerView mColorPicker;
+    private LinearLayout mColorPanel;
 
     private EditText mHexColorInput;
     private ColorPanelView mNewColor;
@@ -71,6 +72,7 @@ public class LightSettingsDialog extends AlertDialog implements
 
     private NotificationManager mNotificationManager;
 
+    private boolean mMultiColorNotificationLed;
     private boolean mReadyForLed;
     private int mLedLastColor;
     private int mLedLastSpeedOn;
@@ -129,7 +131,11 @@ public class LightSettingsDialog extends AlertDialog implements
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = mInflater.inflate(R.layout.dialog_light_settings, null);
 
+        mMultiColorNotificationLed = getContext().getResources().getBoolean(
+                com.android.internal.R.bool.config_multiColorNotificationLed);
+
         mColorPicker = (ColorPickerView) layout.findViewById(R.id.color_picker_view);
+        mColorPanel = (LinearLayout) layout.findViewById(R.id.color_panel_view);
         mHexColorInput = (EditText) layout.findViewById(R.id.hex_color_input);
         mNewColor = (ColorPanelView) layout.findViewById(R.id.color_panel);
 
@@ -159,6 +165,11 @@ public class LightSettingsDialog extends AlertDialog implements
 
         setView(layout);
         setTitle(R.string.edit_light_settings);
+
+        if (!mMultiColorNotificationLed) {
+            mColorPicker.setVisibility(View.GONE);
+            mColorPanel.setVisibility(View.GONE);
+        }
 
         mReadyForLed = true;
         updateLed();
