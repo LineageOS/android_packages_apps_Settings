@@ -23,7 +23,11 @@
         android:key="quiet_hours_enabled"
         android:title="@string/quiet_hours_enabled"
         android:defaultValue="false" />
-
+    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+        android:key="quiet_hours_enabled_temp"
+        android:title="@string/quiet_hours_enabled_temp"
+        android:defaultValue="false"
+        android:dependency="quiet_hours_enabled" />
     <com.android.settings.cyanogenmod.TimeRangePreference
         android:key="quiet_hours_timerange"
         android:dependency="quiet_hours_enabled" />
