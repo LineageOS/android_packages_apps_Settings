@@ -39,7 +39,7 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
     private static final String MEDIUM_COLOR_PREF = "medium_color";
     private static final String FULL_COLOR_PREF = "full_color";
 
-    private boolean mMultiColorLed;
+    private boolean mMultiColorBatteryLed;
     private CheckBoxPreference mEnabledPref;
     private PreferenceGroup mColorPrefs;
     private ApplicationLightPreference mLowColorPref;
@@ -53,9 +53,13 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
         addPreferencesFromResource(R.xml.battery_light_settings);
 
         PreferenceScreen prefSet = getPreferenceScreen();
+        Resources res = getResources();
+
+        mMultiColorBatteryLed = res.getBoolean(
+                com.android.internal.R.bool.config_multiColorBatteryLed);
 
         // Does the Device support changing battery LED colors?
-        if (getResources().getBoolean(com.android.internal.R.bool.config_multiColorBatteryLed)) {
+        if (mMultiColorBatteryLed) {
             setHasOptionsMenu(true);
 
             // Low, Medium and full color preferences
@@ -69,6 +73,7 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
             mFullColorPref.setOnPreferenceChangeListener(this);
         } else {
             prefSet.removePreference(prefSet.findPreference("colors_list"));
+            resetColors();
         }
     }
 
