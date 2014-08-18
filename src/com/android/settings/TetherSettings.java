@@ -335,11 +335,15 @@ public class TetherSettings extends SettingsPreferenceFragment
 
         if (intent != null) mTetherChangeReceiver.onReceive(activity, intent);
         if (mShowHotspotSetting) {
-            mEnableWifiApSwitch.setOnPreferenceChangeListener(this);
-            mWifiApEnablerSwitch.resume();
+            if (mWifiApEnablerSwitch != null) {
+                mEnableWifiApSwitch.setOnPreferenceChangeListener(this);
+                mWifiApEnablerSwitch.resume();
+            }
         } else {
-            mEnableWifiAp.setOnPreferenceChangeListener(this);
-            mWifiApEnabler.resume();
+            if (mWifiApEnabler != null) {
+                mEnableWifiAp.setOnPreferenceChangeListener(this);
+                mWifiApEnabler.resume();
+            }
         }
 
         updateState();
@@ -351,11 +355,15 @@ public class TetherSettings extends SettingsPreferenceFragment
         getActivity().unregisterReceiver(mTetherChangeReceiver);
         mTetherChangeReceiver = null;
         if (mShowHotspotSetting) {
-            mEnableWifiApSwitch.setOnPreferenceChangeListener(null);
-            mWifiApEnablerSwitch.pause();
+            if (mWifiApEnablerSwitch != null) {
+                mEnableWifiApSwitch.setOnPreferenceChangeListener(null);
+                mWifiApEnablerSwitch.pause();
+            }
         } else {
-            mEnableWifiAp.setOnPreferenceChangeListener(null);
-            mWifiApEnabler.pause();
+            if (mWifiApEnabler != null) {
+                mEnableWifiAp.setOnPreferenceChangeListener(null);
+                mWifiApEnabler.pause();
+            }
         }
     }
 
