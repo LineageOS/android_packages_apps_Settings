@@ -19,6 +19,11 @@
         android:title="@string/display_settings"
         settings:keywords="@string/keywords_display">
 
+        <CheckBoxPreference
+                android:key="cabl_brightness"
+                android:title="@string/enhanced_brightness"
+                android:summary="@string/enhanced_brightness_summary"/>
+
         <PreferenceScreen
                 android:key="brightness"
                 android:title="@string/brightness"

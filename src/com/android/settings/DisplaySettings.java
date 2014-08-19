@@ -1,4 +1,7 @@
 /*
+ * Copyright (C) 2014, The Linux Foundation. All Rights Reserved.
+ * Not a Contribution.
+ *
  * Copyright (C) 2010 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -43,6 +46,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.SystemProperties;
+import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
@@ -73,6 +77,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
+    private static final String KEY_BRIGHTNESS = "brightness";
+    private static final String KEY_CABL_BRIGHTNESS = "cabl_brightness";
+
+    private Preference mBrightnessSettingsPreference;
     private WarnedListPreference mFontSizePref;
 
     private final Configuration mCurConfig = new Configuration();
@@ -82,6 +90,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mLiftToWakePreference;
     private SwitchPreference mDozePreference;
     private SwitchPreference mAutoBrightnessPreference;
+
+    private CheckBoxPreference mCablBrightnessPreference;
+
+    CABLServiceWrapper mCABLServiceWrapper;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -116,6 +128,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             mAutoBrightnessPreference.setOnPreferenceChangeListener(this);
         } else {
             removePreference(KEY_AUTO_BRIGHTNESS);
+        }
+
+        mCablBrightnessPreference = (CheckBoxPreference) findPreference(KEY_CABL_BRIGHTNESS);
+        mCABLServiceWrapper = new CABLServiceWrapper(this.getActivity());
+        if (!mCABLServiceWrapper.isCABLAvailable()) {
+             getPreferenceScreen().removePreference(mCablBrightnessPreference);
+        } else {
+            mCABLServiceWrapper.initCABLService();
         }
 
         if (isLiftToWakeAvailable(activity)) {
@@ -311,6 +331,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         readFontSizePreference(mFontSizePref);
         updateScreenSaverSummary();
 
+        if (mCABLServiceWrapper.isCABLAvailable()) {
+            updateCablBrightnessCheckbox();
+        }
+
         // Update auto brightness if it is available.
         if (mAutoBrightnessPreference != null) {
             int brightnessMode = Settings.System.getInt(getContentResolver(),
@@ -349,6 +373,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        if (preference == mCablBrightnessPreference) {
+            final boolean checked = mCablBrightnessPreference.isChecked();
+            if (checked) {
+                mCABLServiceWrapper.startCABL();
+            } else {
+                mCABLServiceWrapper.stopCABL();
+            }
+        }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
@@ -401,6 +433,16 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         return false;
     }
 
+    // add for UX_Brightness_settings
+    private void updateCablBrightnessCheckbox() {
+        boolean cablEnabled = (1 == android.provider.Settings.Global.getInt(getContentResolver(),
+                CABLServiceWrapper.CABL_ENABLED, 0));
+        //set default value for CABL check status
+        if(null != mCablBrightnessPreference){
+            mCablBrightnessPreference.setChecked(cablEnabled);
+        }
+    }
+
     public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider() {
                 @Override
@@ -438,4 +480,13 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     return result;
                 }
             };
+
+
+    @Override
+    public void onDestroy() {
+        if(mCABLServiceWrapper.isCABLAvailable()){
+            mCABLServiceWrapper.onDestory();
+        }
+        super.onDestroy();
+    }
 }
