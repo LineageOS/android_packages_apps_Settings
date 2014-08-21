@@ -139,11 +139,37 @@ public class Lte4GEnabler {
         alertDialog.show();
     }
 
+
+    private boolean isPrefTDDDataOnly(int subscription) {
+        try {
+            int tddEnabled = MSimTelephonyManager.getIntAtIndex(mContext.getContentResolver(),
+                    "tdd_data_only_user_pref", subscription);
+            return tddEnabled == 1;
+        } catch (SettingNotFoundException e) {
+            return false;
+        }
+    }
+
+    private void setTDDDataOnly() {
+        final Message msg = mHandler.obtainMessage(
+                MyHandler.MESSAGE_SET_PREFERRED_NETWORK_TYPE);
+        msg.replyTo = new Messenger(mHandler);
+        setTDDDataOnly(MSimConstants.DEFAULT_SUBSCRIPTION, true, msg);
+    }
+
     private void setPrefNetwork() {
-     // Disable it, enable it after getting reponse
+        // Disable it, enable it after getting reponse
         mSwitch.setEnabled(false);
         int networkType = mSwitch.isChecked() ? Phone.NT_MODE_LTE_CMDA_EVDO_GSM_WCDMA
                 : Phone.NT_MODE_GLOBAL;
+        if (isPrefTDDDataOnly(MSimConstants.DEFAULT_SUBSCRIPTION)) {
+            if (mSwitch.isChecked()) {
+                setTDDDataOnly();
+                return;
+            } else {
+                networkType = Phone.NT_MODE_GLOBAL;
+            }
+        }
 
         Messenger msger = new Messenger(mHandler);
         final Message msg = mHandler.obtainMessage(
@@ -166,6 +192,15 @@ public class Lte4GEnabler {
             }
         }
     };
+
+    private void setTDDDataOnly(int sub, boolean tddOnly, Message callback) {
+        invokeMethod("com.qualcomm.qti.phonefeature.IServiceBinder",
+                "setTDDDataOnly", mPhoneServiceClient, new Class<?>[] {
+                        int.class, boolean.class, Message.class
+                }, new Object[] {
+                        sub, tddOnly, callback
+                });
+    }
 
     private void setPrefNetwork(int sub, int network, Message callback) {
         invokeMethod("com.qualcomm.qti.phonefeature.IServiceBinder",
