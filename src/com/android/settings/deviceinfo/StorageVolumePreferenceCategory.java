@@ -53,6 +53,7 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
 
     private static final int ORDER_USAGE_BAR = -2;
     private static final int ORDER_STORAGE_LOW = -1;
+    public static final String KEY_UNMOUNT_USB = "key_unmount_usb";
 
     /** Physical volume being measured, or {@code null} for internal. */
     private final StorageVolume mVolume;
@@ -214,6 +215,7 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
             if (MediaFormat.isUsbStorage(mVolume, context)) {
                 titleResId = R.string.usb_eject;
                 summaryResId = R.string.usb_eject_summary;
+                mMountTogglePreference.setKey(KEY_UNMOUNT_USB);
 
             } else if (MediaFormat.isUiccStorage(mVolume, context)) {
                 titleResId = R.string.uicc_eject;
