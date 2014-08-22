@@ -102,6 +102,9 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
     /** Minimum brightness at which the indicator is shown at full */
     private static final float FULL_BRIGHTNESS_THRESHOLD = 0.8f;
 
+    private static final String ACTION_SYNC_CONN_STATUS_CHANGED =
+            "com.android.sync.SYNC_CONN_STATUS_CHANGED";
+
     private static final StateTracker sWifiState = new WifiStateTracker();
     private static final StateTracker sBluetoothState = new BluetoothStateTracker();
     private static final StateTracker sLocationState = new LocationStateTracker();
@@ -815,7 +818,7 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
             sBluetoothState.onActualStateChange(context, intent);
         } else if (LocationManager.MODE_CHANGED_ACTION.equals(action)) {
             sLocationState.onActualStateChange(context, intent);
-        } else if (ContentResolver.ACTION_SYNC_CONN_STATUS_CHANGED.equals(action)) {
+        } else if (ACTION_SYNC_CONN_STATUS_CHANGED.equals(action)) {
             sSyncState.onActualStateChange(context, intent);
         } else if (intent.hasCategory(Intent.CATEGORY_ALTERNATIVE)) {
             Uri data = intent.getData();
