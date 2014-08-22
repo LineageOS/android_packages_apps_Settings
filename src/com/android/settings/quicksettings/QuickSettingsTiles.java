@@ -347,9 +347,15 @@ public class QuickSettingsTiles extends Fragment {
 
         @Override
         public boolean isEnabled(int position) {
-            String usedTiles = QuickSettingsUtil.getCurrentTiles(
-                    getContext(), mIsRibbon);
-            return !(usedTiles.contains(mTiles[position].tile.getId()));
+            String id = mTiles[position].tile.getId();
+            String currentTiles = QuickSettingsUtil.getCurrentTiles(getContext(), mIsRibbon);
+            ArrayList<String> tiles = QuickSettingsUtil.getTileListFromString(currentTiles);
+            for (String tile : tiles) {
+                if (tile.equals(id)) {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
