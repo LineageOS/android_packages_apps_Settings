@@ -357,7 +357,7 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
     }
 
     private void updateDataSummary() {
-        int dataSub = MSimPhoneFactory.getDataSubscription();
+        int dataSub = MSimPhoneFactory.getDefaultDataSubscription();
 
         Log.d(TAG, "updateDataSummary: Data Subscription : = " + dataSub);
         mData.setValue(Integer.toString(dataSub));
