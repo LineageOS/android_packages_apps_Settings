@@ -539,14 +539,16 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
             Log.d(TAG, "updatePrioritySub change priority sub to: " + priorityIndex);
             Message setPrioritySubMsg = Message.obtain(mHandler,
                     EVENT_SET_PRIORITY_SUBSCRIPTION_DONE, null);
-            mPhone.setPrioritySub(priorityIndex, setPrioritySubMsg);
+            Phone phone = MSimPhoneFactory.getPhone(priorityIndex);
+            phone.setPrioritySub(priorityIndex, setPrioritySubMsg);
         }
 
         private void updateVoiceSub(int subIndex) {
             Log.d(TAG, "updateVoiceSub change voice sub to: " + subIndex);
             Message setVoiceSubMsg = Message.obtain(mHandler,
                     EVENT_SET_VOICE_SUBSCRIPTION_DONE, null);
-            mPhone.setDefaultVoiceSub(subIndex, setVoiceSubMsg);
+            Phone phone = MSimPhoneFactory.getPhone(subIndex);
+            phone.setDefaultVoiceSub(subIndex, setVoiceSubMsg);
         }
 
         private Handler mHandler = new Handler() {
