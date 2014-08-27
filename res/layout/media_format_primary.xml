@@ -35,5 +35,21 @@
         android:layout_height="wrap_content"
         android:text="@string/media_format_button_text"
         android:gravity="center" />
-        
+
+    <CheckBox android:id="@+id/media_format_advanced"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/media_format_advanced" />
+
+    <TextView android:id="@+id/media_format_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="@string/media_format_select_fs" />
+
+    <RadioGroup android:id="@+id/media_format_supported_fs"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+
 </LinearLayout>
