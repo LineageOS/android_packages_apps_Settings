@@ -19,12 +19,25 @@ package com.android.settings;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.FileUtils;
 import android.os.storage.StorageVolume;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.android.internal.os.storage.ExternalStorageFormatter;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.InputStreamReader;
+import java.lang.Runtime;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Confirm and execute a format of the sdcard.
@@ -42,9 +55,14 @@ public class MediaFormat extends Activity {
 
     private View mInitialView;
     private Button mInitiateButton;
+    private CheckBox mAdvancedFormat;
+    private TextView mFormatTitle;
+    private RadioGroup mRadioGroup;
 
     private View mFinalView;
     private Button mFinalButton;
+
+    private List<String> mkfs = new ArrayList<String>();
 
     /**
      * The user has gone through the multiple confirmation, so now we go ahead
@@ -62,6 +80,13 @@ public class MediaFormat extends Activity {
                 final StorageVolume storageVolume = getIntent().getParcelableExtra(
                         StorageVolume.EXTRA_STORAGE_VOLUME);
                 intent.putExtra(StorageVolume.EXTRA_STORAGE_VOLUME, storageVolume);
+
+                if (mRadioGroup.getCheckedRadioButtonId() != -1) {
+                    RadioButton button = (RadioButton)mInitialView.
+                            findViewById(mRadioGroup.getCheckedRadioButtonId());
+                    intent.putExtra(StorageVolume.EXTRA_STORAGE_VOLUME_FS, button.getText());
+                }
+
                 startService(intent);
                 finish();
             }
@@ -142,9 +167,58 @@ public class MediaFormat extends Activity {
             mInitiateButton =
                     (Button) mInitialView.findViewById(R.id.initiate_media_format);
             mInitiateButton.setOnClickListener(mInitiateListener);
+
+            mFormatTitle = (TextView)
+                    mInitialView.findViewById(R.id.media_format_title);
+            mRadioGroup = (RadioGroup)
+                    mInitialView.findViewById(R.id.media_format_supported_fs);
+
+            mAdvancedFormat = (CheckBox)
+                    mInitialView.findViewById(R.id.media_format_advanced);
+
+            mFormatTitle.setVisibility(mAdvancedFormat.isChecked() ?
+                    View.VISIBLE : View.INVISIBLE);
+            mRadioGroup.setVisibility(mAdvancedFormat.isChecked() ?
+                    View.VISIBLE : View.INVISIBLE);
+
+            mAdvancedFormat.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mFormatTitle.setVisibility(mAdvancedFormat.isChecked() ?
+                            View.VISIBLE : View.INVISIBLE);
+                    mRadioGroup.setVisibility(mAdvancedFormat.isChecked() ?
+                            View.VISIBLE : View.INVISIBLE);
+                }
+            });
+
+            getSupportedFilesystems();
         }
 
         setContentView(mInitialView);
+    }
+
+    private void getSupportedFilesystems() {
+        String paths[] = {"/system/bin/", "/system/xbin/"};
+        File[] fileList;
+        mkfs.clear();
+
+        for (int i = 0; i < paths.length; i++) {
+            fileList = new File(paths[i]).listFiles();
+            for (int j = 0; j < fileList.length; j++) {
+                if (fileList[j].isFile() && fileList[j].getName().contains("mkfs")) {
+                    mkfs.add(paths[i] + fileList[j].getName());
+                }
+            }
+        }
+
+        for (int i = 0; i < mkfs.size(); i++) {
+            RadioButton radioButton = new RadioButton(this);
+            radioButton.setText(mkfs.get(i).split("mkfs.")[1]);
+            if (radioButton.getText().equals("ext2"))
+                radioButton.setText("ext4");
+            radioButton.setId(i);
+            mRadioGroup.addView(radioButton);
+        }
     }
 
     @Override
