@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a1b2928_1e401f56",
+        "filename": "src/com/android/settings/inputmethod/InputMethodAndLanguageSettings.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 10468
+      },
+      "writtenOn": "2014-08-28T21:00:18Z",
+      "side": 1,
+      "message": "mHighTouchSensitivity will be set to what was in settings.db.\nBut kernel boots with glove mode disabled.\nSo we need to add something like this\n        } else {\n            mHighTouchSensitivity.setChecked(HighTouchSensitivity.isEnabled());\n        }\nThen it needs to be handled in HighTouchSensitivity class.\nOr we can just clear flag\n            mHighTouchSensitivity.setChecked(false);\nBut this cause different state between kernel and settings in some cases.",
+      "revId": "37c46d039f2f10f797c559fb58688b18410373f6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a1b2928_de3507f8",
+        "filename": "src/com/android/settings/inputmethod/InputMethodAndLanguageSettings.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 10468
+      },
+      "writtenOn": "2014-08-28T21:00:18Z",
+      "side": 1,
+      "message": "This line wont work. As it was described before. Need to remove else clause.\nWith else it evaluates to (!(preference instanceof CheckBoxPreference) \u0026\u0026 preference \u003d\u003d mHighTouchSensitivity)\nwhich always will be false as mHighTouchSensitivity is instanceof CheckBoxPreference.",
+      "revId": "37c46d039f2f10f797c559fb58688b18410373f6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
