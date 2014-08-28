@@ -163,6 +163,16 @@ public class ManageApplications extends Fragment implements
     public static final int SIZE_INTERNAL = 1;
     public static final int SIZE_EXTERNAL = 2;
 
+    //For setting db key value
+    private static final int APP_INSTALL_AUTO = 0;
+    private static final int APP_INSTALL_DEVICE = 1;
+    private static final int APP_INSTALL_SDCARD = 2;
+
+    //For diaglog UI index
+    private static final int APP_INSTALL_DEVICE_ID = 0;
+    private static final int APP_INSTALL_SDCARD_ID = 1;
+    private static final int APP_INSTALL_AUTO_ID = 2;
+
     // sort order that can be changed through the menu can be sorted alphabetically
     // or size(descending)
     private static final int MENU_OPTIONS_BASE = 0;
@@ -179,6 +189,7 @@ public class ManageApplications extends Fragment implements
     public static final int RESET_APP_PREFERENCES = MENU_OPTIONS_BASE + 8;
     // add for new feature for search applications
     public static final int SHOW_SEARCH_APPLICATIONS = MENU_OPTIONS_BASE + 9;
+    public static final int APP_INSTALL_LOCATION = MENU_OPTIONS_BASE + 10;
 
     private boolean mSearchappEnabled;
 
@@ -347,7 +358,7 @@ public class ManageApplications extends Fragment implements
                 if (mContainerService != null) {
                     try {
                         final long[] stats = mContainerService.getFileSystemStats(
-                                Environment.getExternalStorageDirectory().getPath());
+                                Environment.getSecondaryStorageDirectory().getPath());
                         mTotalStorage = stats[0];
                         mFreeStorage = stats[1];
                     } catch (RemoteException e) {
@@ -824,13 +835,8 @@ public class ManageApplications extends Fragment implements
                 } else {
                     holder.disabled.setVisibility(View.GONE);
                 }
-                if (mFilterMode == FILTER_APPS_SDCARD) {
-                    holder.checkBox.setVisibility(View.VISIBLE);
-                    holder.checkBox.setChecked((entry.info.flags
-                            & ApplicationInfo.FLAG_EXTERNAL_STORAGE) != 0);
-                } else {
-                    holder.checkBox.setVisibility(View.GONE);
-                }
+                holder.checkBox.setVisibility(View.GONE);
+
             }
             mActive.remove(convertView);
             mActive.add(convertView);
@@ -898,7 +904,7 @@ public class ManageApplications extends Fragment implements
                 LIST_TYPE_DOWNLOADED, this, savedInstanceState);
         mTabs.add(tab);
 
-        if (!Environment.isExternalStorageEmulated()) {
+        if (Environment.isNoEmulatedStorageExist()) {
             tab = new TabInfo(this, mApplicationsState,
                     getActivity().getString(R.string.filter_apps_onsdcard),
                     LIST_TYPE_SDCARD, this, savedInstanceState);
@@ -1102,6 +1108,8 @@ public class ManageApplications extends Fragment implements
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
         menu.add(0, RESET_APP_PREFERENCES, 4, R.string.reset_app_preferences)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+        menu.add(0, APP_INSTALL_LOCATION, 4, R.string.app_install_location_title)
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
         updateOptionsMenu();
     }
 
@@ -1271,6 +1279,8 @@ public class ManageApplications extends Fragment implements
             //add for new feature for search applications
             if(menuId == SHOW_SEARCH_APPLICATIONS){
                 showInputmethod();
+        } else if (menuId == APP_INSTALL_LOCATION) {
+            showAppInstallLocationSettingDlg();
         } else {
             // Handle the home button
             return false;
@@ -1278,7 +1288,56 @@ public class ManageApplications extends Fragment implements
         updateOptionsMenu();
         return true;
     }
-    
+
+    private int locateIndex(int appInstallID) {
+        // locate index according to the array app_install_location_values
+        // default selected index is auto
+        int selectedLocation = 2;
+        if (APP_INSTALL_DEVICE == appInstallID) {
+            selectedLocation = 0;
+        } else if (APP_INSTALL_SDCARD == appInstallID) {
+            selectedLocation = 1;
+        } else if (APP_INSTALL_AUTO == appInstallID) {
+            selectedLocation = 2;
+        }
+        return selectedLocation;
+    }
+
+    private void showAppInstallLocationSettingDlg() {
+        int appInstallID = Settings.Global.getInt(getActivity().getContentResolver(),
+                Settings.Global.DEFAULT_INSTALL_LOCATION, APP_INSTALL_AUTO);
+        final int selectedLocation = locateIndex(appInstallID);
+
+        final String[] items = getActivity().getResources().getStringArray(
+                R.array.app_install_location_entries);
+        new AlertDialog.Builder(getActivity()).setTitle(R.string.app_install_location_title)
+                .setSingleChoiceItems(items, selectedLocation,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int item) {
+                                if (APP_INSTALL_DEVICE_ID == item) {
+                                    Settings.Global.putInt(getActivity().getContentResolver(),
+                                            Settings.Global.DEFAULT_INSTALL_LOCATION,
+                                            APP_INSTALL_DEVICE);
+                                } else if (APP_INSTALL_SDCARD_ID == item) {
+                                    Settings.Global.putInt(getActivity().getContentResolver(),
+                                            Settings.Global.DEFAULT_INSTALL_LOCATION,
+                                            APP_INSTALL_SDCARD);
+                                } else if (APP_INSTALL_AUTO_ID == item) {
+                                    Settings.Global.putInt(getActivity().getContentResolver(),
+                                            Settings.Global.DEFAULT_INSTALL_LOCATION,
+                                            APP_INSTALL_AUTO);
+                                } else {
+                                    // Should not happen, default to prompt.
+                                    Settings.Global.putInt(getActivity().getContentResolver(),
+                                            Settings.Global.DEFAULT_INSTALL_LOCATION,
+                                            APP_INSTALL_AUTO);
+                                }
+                                dialog.cancel();
+                            }
+                        }
+                ).show();
+    }
+
     public void onItemClick(TabInfo tab, AdapterView<?> parent, View view, int position,
             long id) {
         if (tab.mApplications != null && tab.mApplications.getCount() > position) {
