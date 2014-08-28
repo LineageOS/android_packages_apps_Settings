@@ -84,10 +84,12 @@ public class LocationMode extends LocationSettingsBase
         @Override public void handleMessage(Message msg) {
             switch (msg.what) {
                 case PRINT:
-                    if(POPUP_BOX_DISAGREE == msg.arg1){
-                        mIZat.setChecked(false);
-                    }else if(POPUP_BOX_AGREE == msg.arg1){
-                        mIZat.setChecked(true);
+                    if(null != mIZat) {
+                        if(POPUP_BOX_DISAGREE == msg.arg1){
+                            mIZat.setChecked(false);
+                        }else if(POPUP_BOX_AGREE == msg.arg1){
+                            mIZat.setChecked(true);
+                        }
                     }
                     break;
                 default:
@@ -207,9 +209,11 @@ public class LocationMode extends LocationSettingsBase
                 if (null != mXTService){
                     String izatMenuTitle = mXTService.getText(IZat_MENU_TEXT);
                     String izatSubtitle = mXTService.getText(IZat_SUB_TITLE_TEXT);
-                    mIZat.setTitle(izatMenuTitle);
-                    mIZat.setSummary(Html.fromHtml(izatSubtitle));
-                    mIZat.setChecked(mXTService.getStatus());
+                    if(null != mIZat) {
+                        mIZat.setTitle(izatMenuTitle);
+                        mIZat.setSummary(Html.fromHtml(izatSubtitle));
+                        mIZat.setChecked(mXTService.getStatus());
+                    }
                 }
              }catch(RemoteException e){
                  Log.d(TAG, "Service connection error!");
