@@ -685,7 +685,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
 
         if (isSunlightEnhancementSupported()) {
-            final boolean enabled = prefs.getBoolean(KEY_SUNLIGHT_ENHANCEMENT, true);
+            final boolean enabled = prefs.getBoolean(KEY_SUNLIGHT_ENHANCEMENT, false);
             if (SunlightEnhancement.isAdaptiveBacklightRequired() &&
                     !AdaptiveBacklight.isEnabled()) {
                 SunlightEnhancement.setEnabled(false);
