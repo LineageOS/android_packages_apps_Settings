@@ -117,7 +117,7 @@
   <string name="profile_lockmode_disabled_summary">ロック画面を無効にする</string>
   <string name="profile_airplanemode_title">機内モード</string>
   <string name="toggleWifi">Wi-Fi</string>
-  <string name="toggleWifiAp">Wi-Fiテザリング</string>
+  <string name="toggleWifiAp">ポータブルWi-Fiアクセスポイント</string>
   <string name="toggleBluetooth">Bluetooth</string>
   <string name="toggleGPS">GPS</string>
   <string name="toggleData">モバイルデータ</string>
@@ -162,9 +162,11 @@
   <string name="notification_light_missed_call_title">不在着信</string>
   <string name="notification_light_voicemail_title">ボイスメール</string>
   <string name="adaptive_backlight_title">適応バックライト</string>
-  <string name="adaptive_backlight_summary">使い勝手を維持したままディスプレイのバックライトを動的に調整して電池の寿命を高める</string>
+  <string name="adaptive_backlight_summary">使い勝手を維持したまま画面のバックライトを動的に調整して電池の寿命を高める</string>
+  <string name="sunlight_enhancement_title">太陽光強化</string>
+  <string name="sunlight_enhancement_summary">太陽光照射下での画面の明るさと見やすさを強化する</string>
   <string name="color_enhancement_title">色補正</string>
-  <string name="color_enhancement_summary">ディスプレイの色を動的に補正する</string>
+  <string name="color_enhancement_summary">画面の色を動的に補正する</string>
   <string name="wake_when_plugged_or_unplugged_title">接続時にスリープ解除</string>
   <string name="wake_when_plugged_or_unplugged_summary">電源を接続または切断したときに画面を点灯する</string>
   <string name="screen_animation_off_title">画面消灯アニメーション</string>
@@ -174,7 +176,7 @@
   <string name="screen_animation_style_fade">フェードアウト</string>
   <string name="edit_light_settings">ライトの設定を編集</string>
   <string name="pulse_speed_title">点滅の長さと速度</string>
-  <string name="default_time">通常</string>
+  <string name="default_time">普通</string>
   <string name="custom_time">カスタム</string>
   <string name="dialog_delete_title">削除</string>
   <string name="dialog_delete_message">選択した項目を削除しますか？</string>
@@ -254,7 +256,7 @@
   <string name="title_tile_settings">設定</string>
   <string name="title_tile_sound">サウンド</string>
   <string name="title_tile_sync">同期</string>
-  <string name="title_tile_wifiap">Wi-Fiテザリング</string>
+  <string name="title_tile_wifiap">Wi-Fi AP</string>
   <string name="title_tile_wifi">Wi-Fi</string>
   <string name="title_tile_user">ユーザーの切り替え</string>
   <string name="title_tile_networkmode">ネットワークモード</string>
@@ -329,7 +331,7 @@
 \n\n
 <b>明るさ曲線の編集方法</b>
 \n\n
-明るさリストのそれぞれの行は明るさ曲線の一つの<i>コントロールポイント</i>に対応しています。
+明るさリストのそれぞれの行は明るさ曲線の1つの<i>コントロールポイント</i>に対応しています。
 ポイントの明るさレベルを編集するには、それぞれの行にあるスライダーが使用できます。
 明るさレベルのプレビューを見るためにスライダーをタッチしている間は、画面の明るさはそれに応じて変化します。\n
 追加のオプションは行を長押しすることで利用できます。｢編集｣を選択すると、画面の明るさを手動で入力するのと同じように、
@@ -416,7 +418,7 @@
   <string name="soundpack_settings_title">サウンドパック</string>
   <string name="performance_settings_title">パフォーマンス</string>
   <string name="performance_settings_warning_title">注意して進めてください</string>
-  <string name="performance_settings_warning">これらの設定は実験的で、適用されるあらゆる変更が不安定性、クラッシュ、データの損失、ハードウェア障害を引き起こす原因になる可能性があります。\n\nこれらの設定が一つでもデフォルトから変更されている場合は、バグレポートを提出しないようにお願いします。</string>
+  <string name="performance_settings_warning">これらの設定は実験的で、適用されるあらゆる変更が不安定性、クラッシュ、データの損失、ハードウェア障害を引き起こす原因になる可能性があります。\n\nこれらの設定が1つでもデフォルトから変更されている場合は、バグレポートを提出しないようにお願いします。</string>
   <string name="performance_set_on_boot">ブート時に設定</string>
   <string name="performance_set_on_boot_summary">適用した設定をブート時に復元する</string>
   <string name="processor_title">プロセッサ</string>
@@ -658,6 +660,7 @@
   <string name="hardware_keys_action_voice_search">音声検索</string>
   <string name="hardware_keys_action_in_app_search">アプリ内検索</string>
   <string name="hardware_keys_action_launch_camera">カメラを起動</string>
+  <string name="hardware_keys_action_last_app">前回使ったアプリ</string>
   <string name="power_end_call_title">通話を終了</string>
   <string name="power_end_call_summary">電源ボタンを押して通話を終了する</string>
   <string name="button_wake_title">スリープ解除</string>
@@ -760,6 +763,8 @@
   <string name="stylus_app_not_installed">%sはインストールされていません</string>
   <string name="ime_switcher_notify">入力方法の選択の通知</string>
   <string name="ime_switcher_notify_summary">入力方法の選択の通知を表示する</string>
+  <string name="high_touch_sensitivity_title">高タッチ感度</string>
+  <string name="high_touch_sensitivity_summary">手袋を着けたまま使用できるようにタッチ画面の感度を向上させる</string>
   <string name="app_ops_summaries_coarse_location">おおよその位置情報</string>
   <string name="app_ops_summaries_fine_location">精細な位置情報</string>
   <string name="app_ops_summaries_gps">GPS</string>

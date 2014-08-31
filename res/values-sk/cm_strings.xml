@@ -108,7 +108,7 @@
   <string name="profile_appgroup_name_title">Názov</string>
   <string name="profile_choose_app">Vyberte aplikáciu</string>
   <string name="profile_system_settings_title">Nastavenia systému</string>
-  <string name="profile_lockmode_title">Režim uzamknutia obrazovky</string>
+  <string name="profile_lockmode_title">Režim obrazovky uzamknutia</string>
   <string name="profile_lockmode_default">Predvolené</string>
   <string name="profile_lockmode_insecure">Nezabezpečený</string>
   <string name="profile_lockmode_disabled">Zakázané</string>
@@ -163,6 +163,8 @@
   <string name="notification_light_voicemail_title">Hlasový hovor</string>
   <string name="adaptive_backlight_title">Adaptívne podsvietenie</string>
   <string name="adaptive_backlight_summary">Dynamicky upraviť jas podsvietenia pre zvýšenie životnosti batérie pri zachovaní použiteľnosti</string>
+  <string name="sunlight_enhancement_title">Vylepšenie pri slnečnom svetle</string>
+  <string name="sunlight_enhancement_summary">Vylepšiť jas a čitateľnosť displeja za jasného slnečného svetla</string>
   <string name="color_enhancement_title">Vylepšenie farieb</string>
   <string name="color_enhancement_summary">Dynamicky zlepšiť farbu displeja</string>
   <string name="wake_when_plugged_or_unplugged_title">Prebudiť po pripojení</string>
@@ -342,7 +344,7 @@ Každý riadok v zozname jasu zodpovedá jednému <i>riadiacemu bodu</i> krivky 
   <string name="display_rotation_180_title">180 stupňov</string>
   <string name="display_rotation_270_title">270 stupňov</string>
   <string name="advanced_reboot_title">Rozšírený reštart</string>
-  <string name="advanced_reboot_summary">Ak je povolené, do ponuky vypnutia budú pridané ďalšie voľby na reštart do recovery, bootloadera, alebo možnosť vykonať ľahký reštart</string>
+  <string name="advanced_reboot_summary">Ak je povolené, do ponuky napájania budú pridané ďalšie možnosti na reštart do recovery, bootloadera, alebo softvéru</string>
   <string name="app_security_title">Zapezpečenie aplikácií</string>
   <string name="root_access">Root prístup</string>
   <string name="root_access_warning_title">Povoliť root prístup?</string>
@@ -402,7 +404,7 @@ Každý riadok v zozname jasu zodpovedá jednému <i>riadiacemu bodu</i> krivky 
   <string name="icons_settings_title">Ikony</string>
   <string name="fonts_settings_title">Písma</string>
   <string name="wallpaper_settings_title_cm">Tapety</string>
-  <string name="lockscreen_wallpaper_settings_title">Tapety uzamknutej obrazovky</string>
+  <string name="lockscreen_wallpaper_settings_title">Tapety obrazovky uzamknutia</string>
   <string name="bootanim_settings_title">Animácie spúšťania</string>
   <string name="soundpack_settings_title">Balíky zvukov</string>
   <string name="performance_settings_title">Nastavenie výkonu</string>
@@ -617,7 +619,7 @@ Každý riadok v zozname jasu zodpovedá jednému <i>riadiacemu bodu</i> krivky 
   <string name="navring_action_torch">Prepnúť svietidlo</string>
   <string name="navring_action_google_now">Google Now</string>
   <string name="navring_choose_action_title">Vyberte akciu</string>
-  <string name="power_menu_title">Ponuka vypnutia</string>
+  <string name="power_menu_title">Ponuka napájania</string>
   <string name="power_menu_reboot_title">Ponuka reštartu</string>
   <string name="power_menu_screenshot_title">Snímka obrazovky</string>
   <string name="power_menu_expanded_desktop">Rozšírená plocha</string>
@@ -625,8 +627,8 @@ Každý riadok v zozname jasu zodpovedá jednému <i>riadiacemu bodu</i> krivky 
   <string name="expanded_desktop_disabled">Zakázané</string>
   <string name="expanded_desktop_status_bar">Stavový riadok je viditeľný</string>
   <string name="expanded_desktop_no_status_bar">Stavový riadok je skrytý</string>
-  <string name="expanded_desktop_system_bars_visibility">Zakázať na uzamknutej obrazovke</string>
-  <string name="expanded_desktop_system_bars_visibility_summary">V režime rozšírenej plochy zobrazovať na uzamknutej obrazovke stavový riadok a navigačný panel</string>
+  <string name="expanded_desktop_system_bars_visibility">Zakázať na obrazovke uzamknutia</string>
+  <string name="expanded_desktop_system_bars_visibility_summary">Zobraziť stavový riadok a navigačný panel na obrazovke uzamknutia počas režimu rozšírenej plochy</string>
   <string name="power_menu_profiles_title">Prepínač profilov</string>
   <string name="power_menu_airplane_title">Režim V lietadle</string>
   <string name="power_menu_user_title">Prepínač používateľov</string>
@@ -649,6 +651,7 @@ Každý riadok v zozname jasu zodpovedá jednému <i>riadiacemu bodu</i> krivky 
   <string name="hardware_keys_action_voice_search">Hlasové vyhľadávanie</string>
   <string name="hardware_keys_action_in_app_search">Vyhľadávanie v aplikácii</string>
   <string name="hardware_keys_action_launch_camera">Spustiť fotoaparát</string>
+  <string name="hardware_keys_action_last_app">Posledná aplikácia</string>
   <string name="power_end_call_title">Ukončiť hovor</string>
   <string name="power_end_call_summary">Stlačením tlačidla napájania sa ukončí aktuálny hovor</string>
   <string name="button_wake_title">Prebudiť</string>
@@ -680,7 +683,7 @@ Každý riadok v zozname jasu zodpovedá jednému <i>riadiacemu bodu</i> krivky 
   <string name="backlight_summary_enabled_with_timeout">Povolené na <xliff:g id="timeout">%s</xliff:g></string>
   <string name="backlight_summary_enabled">Povolené</string>
   <string name="lockscreen_background">Pozadie</string>
-  <string name="lockscreen_background_style_title">Pozadie uzamknutej obrazovky</string>
+  <string name="lockscreen_background_style_title">Pozadie obrazovky uzamknutia</string>
   <string name="background_default">Predvolené pozadie</string>
   <string name="background_wallpaper">Vlastná tapeta</string>
   <string name="background_result_successful">Pozadie zmenené</string>
@@ -751,6 +754,8 @@ Každý riadok v zozname jasu zodpovedá jednému <i>riadiacemu bodu</i> krivky 
   <string name="stylus_app_not_installed">Aplikácia %s nie je nainštalovaná</string>
   <string name="ime_switcher_notify">Oznámenie výberu metódy vstupu</string>
   <string name="ime_switcher_notify_summary">Zobraziť oznámenie výberu metódy vstupu</string>
+  <string name="high_touch_sensitivity_title">Vysoká citlivosť na dotyky</string>
+  <string name="high_touch_sensitivity_summary">Zvýšiť citlivosť dotykovej obrazovky, takže ju bude možné používať pri nosení rukavíc</string>
   <string name="app_ops_summaries_coarse_location">približná poloha</string>
   <string name="app_ops_summaries_fine_location">presná poloha</string>
   <string name="app_ops_summaries_gps">GPS</string>

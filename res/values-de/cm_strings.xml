@@ -196,10 +196,13 @@
   <string name="battery_light_medium_color_title">Laden</string>
   <string name="battery_light_full_color_title">Aufgeladen</string>
   <string name="lockpattern_reset_button">Muster zurücksetzen</string>
+  <string name="lockpattern_settings_reset_summary">Geben Sie die Adresse Ihres primären E-Mail-Kontos und das dazugehörige Passwort ein, um das Muster zurückzusetzen</string>
   <string name="lockpattern_settings_enable_error_path_title">Fehler anzeigen</string>
   <string name="lockpattern_settings_enable_dots_title">Punkte anzeigen</string>
   <string name="screen_security_category">Bildschirmsicherheit</string>
   <string name="screen_security_summary">Sperrbildschirm-Einstellungen anzeigen oder ändern</string>
+  <string name="unlock_scramble_pin_layout_title">Zufällige Anordnung</string>
+  <string name="unlock_scramble_pin_layout_summary">Bei jedem Entsperrversuch die Ziffernanordnung zufällig neu wählen</string>
   <string name="unlock_menu_unlock_title">Mit Menü entsperren</string>
   <string name="unlock_menu_unlock_summary">Entsperren durch Drücken der Menü-Taste</string>
   <string name="unlock_home_unlock_title">Mit Home entsperren</string>
@@ -354,6 +357,7 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
   <string name="display_rotation_180_title">180 Grad</string>
   <string name="display_rotation_270_title">270 Grad</string>
   <string name="advanced_reboot_title">Erweitertes Neustartmenü</string>
+  <string name="advanced_reboot_summary">Bei entsperrtem Bildschirm dem Neustartmenü Optionen für Neustart in Recovery, Bootloader oder schnellen Neustart hinzufügen</string>
   <string name="app_security_title">App-Sicherheit</string>
   <string name="root_access">Root-Zugriff</string>
   <string name="root_access_warning_title">Root-Zugriff erlauben?</string>
@@ -525,9 +529,11 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
   <string name="collapse_on_dismiss_if_empty_summary">Nach dem Entfernen der letzten Benachrichtigung schließen</string>
   <string name="collapse_on_dismiss_if_no_clearable_summary">Nach dem Entfernen der letzten nicht dauerhaft angezeigten Benachrichtigung schließen</string>
   <string name="double_tap_to_wake_title">Aufwecken durch doppeltes Tippen</string>
+  <string name="proximity_wake_title">Unbeabsichtigtes Aufwecken verhindern</string>
   <string name="proximity_wake_summary">Vor dem Aufwecken des Gerätes Näherungssensor überprüfen</string>
   <string name="category_quick_access">Schnellzugriffsleiste</string>
   <string name="title_quick_access">In Benachrichtigungsleiste anzeigen</string>
+  <string name="title_quick_access_size">Kachelgröße</string>
   <string name="title_quick_access_linked">Anordnung koppeln</string>
   <string name="summary_quick_access_linked">Kachelauswahl und -anordnung der Schnelleinstellungen verwenden</string>
   <string name="font_size_sample">Beispieltext</string>
@@ -658,6 +664,7 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
   <string name="hardware_keys_action_voice_search">Sprachsuche</string>
   <string name="hardware_keys_action_in_app_search">In-App-Suche</string>
   <string name="hardware_keys_action_launch_camera">Kamera öffnen</string>
+  <string name="hardware_keys_action_last_app">Vorherige App</string>
   <string name="power_end_call_title">Anruf beenden</string>
   <string name="power_end_call_summary">Ein laufendes Telefonat durch Drücken der Ein-/Aus-Taste beenden</string>
   <string name="button_wake_title">Aufwecken</string>
@@ -905,7 +912,8 @@ auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
   <string name="pa_login_username_hint">Benutzername (E-Mail)</string>
   <string name="pa_login_password_hint">Passwort</string>
   <string name="pa_login_submit_button">Anmelden</string>
-  <string name="pa_login_checking_password">Konto wird überprüft\u2026</string>
+  <string name="pa_login_checking_password">Anmeldedaten werden überprüft\u2026</string>
+  <string name="pa_login_incorrect_login">Anmeldedaten sind nicht korrekt</string>
   <string name="keep_screen_on_summary_cm">Bildschirm wird nicht ausgeschaltet, während das Gerät eingesteckt ist</string>
   <plurals name="show_dev_countdown_cm">
     <item quantity="one">Sie sind <xliff:g id="step_count">%1$d</xliff:g> Schritt von der Aktivierung der Entwickleroptionen entfernt.</item>
