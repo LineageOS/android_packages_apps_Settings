@@ -185,6 +185,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
                         findPreference(KEY_POINTER_SETTINGS_CATEGORY);
         mStylusGestures = (PreferenceScreen) findPreference(KEY_STYLUS_GESTURES);
         mStylusIconEnabled = (CheckBoxPreference) findPreference(KEY_STYLUS_ICON_ENABLED);
+        mHighTouchSensitivity = (CheckBoxPreference) findPreference(KEY_HIGH_TOUCH_SENSITIVITY);
 
         if (pointerSettingsCategory != null) {
             // remove stylus preference for non stylus devices
@@ -192,6 +193,11 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
                 pointerSettingsCategory.removePreference(mStylusGestures);
                 pointerSettingsCategory.removePreference(mStylusIconEnabled);
             }
+            if (!isHighTouchSensitivitySupported()) {
+                pointerSettingsCategory.removePreference(mHighTouchSensitivity);
+                mHighTouchSensitivity = null;
+            }
+
             Utils.updatePreferenceToSpecificActivityFromMetaDataOrRemove(getActivity(),
                             pointerSettingsCategory, KEY_TRACKPAD_SETTINGS);
             if (pointerSettingsCategory.getPreferenceCount() == 0) {
@@ -205,13 +211,6 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         if (!showCmImeSwitcher) {
             getPreferenceScreen().removePreference(
                     findPreference(Settings.System.STATUS_BAR_IME_SWITCHER));
-        }
-
-        // High touch sensitivity
-        mHighTouchSensitivity = (CheckBoxPreference) findPreference(KEY_HIGH_TOUCH_SENSITIVITY);
-        if (!isHighTouchSensitivitySupported()) {
-            getPreferenceScreen().removePreference(mHighTouchSensitivity);
-            mHighTouchSensitivity = null;
         }
 
         // Spell Checker
