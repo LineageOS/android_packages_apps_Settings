@@ -100,4 +100,12 @@ public class QuietHours extends SettingsPreferenceFragment implements
         }
         return false;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mQuietHoursTimeRange != null) {
+            mQuietHoursTimeRange.updatePreferenceViews();
+        }
+    }
 }
