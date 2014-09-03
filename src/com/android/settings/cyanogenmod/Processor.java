@@ -30,6 +30,9 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.lang.Runtime;
 
 //
@@ -48,7 +51,7 @@ public class Processor extends SettingsPreferenceFragment implements
     public static final String GOV_FILE = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor";
     public static final String FREQ_MIN_PREF = "pref_cpu_freq_min";
     public static final String FREQ_MAX_PREF = "pref_cpu_freq_max";
-    public static final String FREQ_LIST_FILE = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies";
+    public static final String FREQ_LIST_FILE = "/sys/devices/system/cpu/cpu0/cpufreq/stats/time_in_state";
     public static String FREQ_MAX_FILE = null;
     public static String FREQ_MIN_FILE = null;
     public static final String SOB_PREF = "pref_cpu_set_on_boot";
@@ -118,7 +121,7 @@ public class Processor extends SettingsPreferenceFragment implements
         String[] availableGovernors = new String[0];
         String[] frequencies;
         String availableGovernorsLine;
-        String availableFrequenciesLine;
+        String availableFrequenciesLines;
         String temp;
 
         addPreferencesFromResource(R.xml.processor_settings);
@@ -146,12 +149,15 @@ public class Processor extends SettingsPreferenceFragment implements
         }
 
         // Disable the min/max list if we dont have a list file
-        if (!Utils.fileExists(FREQ_LIST_FILE) || (availableFrequenciesLine = Utils.fileReadOneLine(FREQ_LIST_FILE)) == null) {
+        if (!Utils.fileExists(FREQ_LIST_FILE) || (availableFrequenciesLines = fileReadMoreLines(FREQ_LIST_FILE)) == null) {
             mMinFrequencyPref.setEnabled(false);
             mMaxFrequencyPref.setEnabled(false);
 
         } else {
-            availableFrequencies = availableFrequenciesLine.split(" ");
+            availableFrequencies = availableFrequenciesLines.split("\\r?\\n");
+            for (int i = 0; i < availableFrequencies.length; i++) {
+                availableFrequencies[i] = availableFrequencies[i].split(" ")[0];
+            }
 
             frequencies = new String[availableFrequencies.length];
             for (int i = 0; i < frequencies.length; i++) {
@@ -338,5 +344,22 @@ public class Processor extends SettingsPreferenceFragment implements
     private String toMHz(String mhzString) {
         return new StringBuilder().append(Integer.valueOf(mhzString) / 1000).append(" MHz")
                 .toString();
+    }
+
+    public String fileReadMoreLines(String filepath) {
+        try {
+            BufferedReader buffreader = new BufferedReader(new FileReader(filepath), 256);
+            String line;
+            StringBuilder text = new StringBuilder();
+            while ((line = buffreader.readLine()) != null) {
+                text.append(line);
+                text.append("\n");
+            }
+            buffreader.close();
+            return text.toString().trim();
+        } catch (Exception e) {
+            Log.e(TAG, "IO Exception when reading /sys/ file", e);
+        }
+        return null;
     }
 }
