@@ -542,7 +542,8 @@ public class AutoBrightnessCustomizeDialog extends AlertDialog
             if (which == DialogInterface.BUTTON_POSITIVE) {
                 try {
                     int newLux = Integer.valueOf(mLuxInput.getText().toString());
-                    mAdapter.setLuxForRow(mPosition, newLux);
+                    int newBacklight = (int) progressToBrightness(mBacklightBar.getProgress());
+                    mAdapter.updateRow(mPosition, newLux, newBacklight);
                 } catch (NumberFormatException e) {
                     //ignored
                 }
@@ -786,15 +787,22 @@ public class AutoBrightnessCustomizeDialog extends AlertDialog
             sanitizeValuesAndNotify();
         }
 
-        public void setLuxForRow(final int position, int newLux) {
+        public void updateRow(final int position, int newLux, int newBacklight) {
             final SettingRow row = getItem(position);
+            boolean changed = false;
 
-            if (isLastItem(position) || row.lux == newLux) {
-                return;
+            if (!isLastItem(position) && row.lux != newLux) {
+                row.lux = newLux;
+                changed = true;
+            }
+            if (row.backlight != newBacklight) {
+                row.backlight = newBacklight;
+                changed = true;
             }
 
-            row.lux = newLux;
-            sanitizeValuesAndNotify();
+            if (changed) {
+                sanitizeValuesAndNotify();
+            }
         }
 
         public void sanitizeValuesAndNotify() {
