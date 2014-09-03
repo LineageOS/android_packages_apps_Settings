@@ -339,7 +339,9 @@ public class Settings extends PreferenceActivity
         }
 
         mActionBar = getActionBar();
-        mActionBar.setDisplayShowCustomEnabled(true);
+        if (mActionBar != null) {
+            mActionBar.setDisplayShowCustomEnabled(true);
+        }
     }
 
     @Override
