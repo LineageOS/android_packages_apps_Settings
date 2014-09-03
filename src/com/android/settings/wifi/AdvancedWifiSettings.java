@@ -227,6 +227,8 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
 
         if (KEY_COUNTRY_CODE.equals(key)) {
             try {
+                Settings.Global.putString(getContentResolver(), Settings.Global.WIFI_COUNTRY_CODE,
+                        (String) newValue);
                 mWifiManager.setCountryCode((String) newValue, true);
             } catch (IllegalArgumentException e) {
                 Toast.makeText(getActivity(), R.string.wifi_setting_countrycode_error,

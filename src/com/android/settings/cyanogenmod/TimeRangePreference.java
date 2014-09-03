@@ -90,7 +90,7 @@ public class TimeRangePreference extends Preference implements
         setLayoutResource(R.layout.preference_time_range);
     }
 
-    private void updatePreferenceViews() {
+    public void updatePreferenceViews() {
         if (mStartTimeText != null) {
             mStartTimeText.setText(returnTime(mStartTime));
         }

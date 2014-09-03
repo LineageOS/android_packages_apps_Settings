@@ -65,6 +65,7 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory
 
     private static final int ORDER_USAGE_BAR = -2;
     private static final int ORDER_STORAGE_LOW = -1;
+    public static final String KEY_UNMOUNT_USB = "key_unmount_usb";
 
     /** Physical volume being measured, or {@code null} for internal. */
     private final StorageVolume mVolume;
@@ -147,6 +148,8 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory
 
         setTitle(volume != null ? volume.getDescription(context)
                 : context.getText(R.string.internal_storage));
+
+
     }
 
     private StorageItemPreference buildItem(int titleRes, int colorRes) {
@@ -235,6 +238,9 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory
             mMountTogglePreference.setTitle(R.string.sd_eject);
             mMountTogglePreference.setSummary(R.string.sd_eject_summary);
             addPreference(mMountTogglePreference);
+        }
+        if (isRemovable && isUsbStorage) {
+            mMountTogglePreference.setKey(KEY_UNMOUNT_USB);
         }
 
         final boolean allowFormat = mVolume != null;

@@ -20,6 +20,7 @@ import android.content.ContentResolver;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.os.UserManager;
+import android.preference.Preference;
 import android.provider.Settings;
 
 import com.android.settings.R;
@@ -35,8 +36,14 @@ public class PowerMenu extends SettingsPreferenceFragment {
         final ContentResolver resolver = getContentResolver();
 
         // Only enable expanded desktop item if expanded desktop support is also enabled
-        findPreference(Settings.System.POWER_MENU_EXPANDED_DESKTOP_ENABLED).setEnabled(
-                Settings.System.getInt(resolver, Settings.System.EXPANDED_DESKTOP_STYLE, 0) != 0);
+        Preference expandedDesktopPref = findPreference(Settings.System.
+                POWER_MENU_EXPANDED_DESKTOP_ENABLED);
+
+        if (Settings.System.getInt(getContentResolver(),
+                Settings.System.EXPANDED_DESKTOP_STYLE, 0) == 0) {
+            // expanded desktop is disabled, remove preference
+            getPreferenceScreen().removePreference(expandedDesktopPref);
+        }
 
         // Only enable profiles item if System Profiles are also enabled
         findPreference(Settings.System.POWER_MENU_PROFILES_ENABLED).setEnabled(
