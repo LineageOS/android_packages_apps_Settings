@@ -332,14 +332,15 @@ public class Settings extends PreferenceActivity
             });
         }
 
-        // Override up navigation for multi-pane, since we handle it in the fragment breadcrumbs
-        if (onIsMultiPane()) {
-            getActionBar().setDisplayHomeAsUpEnabled(false);
-            getActionBar().setHomeButtonEnabled(false);
-        }
-
         mActionBar = getActionBar();
-        mActionBar.setDisplayShowCustomEnabled(true);
+        if (mActionBar != null) {
+            // Override up navigation for multi-pane, since we handle it in the fragment breadcrumbs
+            if (onIsMultiPane()) {
+                mActionBar.setDisplayHomeAsUpEnabled(false);
+                mActionBar.setHomeButtonEnabled(false);
+            }
+            mActionBar.setDisplayShowCustomEnabled(true);
+        }
     }
 
     @Override
