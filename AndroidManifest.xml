@@ -2081,6 +2081,15 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".cyanogenmod.ProtectedAppsStatusAuth"
+                  android:label="@string/protected_apps"
+                  android:excludeFromRecents="true"
+                  android:configChanges="orientation|keyboardHidden|screenSize">
+            <intent-filter>
+                <action android:name=".cyanogenmod.ProtectedAppsStatusAuth" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
         <activity android:name=".applications.LockPatternActivity"
                   android:label="@string/protected_apps"
