@@ -342,6 +342,9 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
             } else if (!checked && cell2wifiPref.getValue().equals(data2wifiValueAuto)) {
                 cell2wifiPref.setValue(data2wifiValueAsk);
             }
+            Settings.System.putInt(getContentResolver(),
+                    getActivity().getString(R.string.data_to_wifi_connect_key),
+                    Integer.parseInt(cell2wifiPref.getValue()));
         }
 
         if (KEY_GSM_WIFI_CONNECT_TYPE.equals(key)) {
@@ -359,6 +362,12 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
                         AutoPref.isChecked()) {
                     AutoPref.setChecked(false);
                 }
+                Settings.System.putInt(
+                        getContentResolver(),
+                        getResources().getString(R.string.wifi_autoconn_type),
+                        AutoPref.isChecked() ? getResources().getInteger(
+                                R.integer.wifi_autoconn_type_auto)
+                                : getResources().getInteger(R.integer.wifi_autoconn_type_manual));
             } catch (NumberFormatException e) {
                 Toast.makeText(getActivity(), R.string.wifi_setting_connect_type_error,
                         Toast.LENGTH_SHORT).show();
