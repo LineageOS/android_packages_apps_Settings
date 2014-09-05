@@ -23,6 +23,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import com.android.settings.R;
 import com.android.settings.Utils;
@@ -34,29 +35,44 @@ public class DashboardTileView extends FrameLayout implements View.OnClickListen
     private ImageView mImageView;
     private TextView mTitleTextView;
     private TextView mStatusTextView;
+    private Switch mSwitch;
     private View mDivider;
 
     private int mColSpan = DEFAULT_COL_SPAN;
 
     private DashboardTile mTile;
 
-    public DashboardTileView(Context context) {
-        this(context, null);
+    public DashboardTileView(Context context, boolean hasSwitch) {
+        this(context, hasSwitch, null);
     }
 
-    public DashboardTileView(Context context, AttributeSet attrs) {
+    public DashboardTileView(Context context, boolean hasSwitch, AttributeSet attrs) {
         super(context, attrs);
+        if (hasSwitch) {
+            final View view = LayoutInflater.from(context).inflate(
+                    R.layout.dashboard_tile_switch, this);
 
-        final View view = LayoutInflater.from(context).inflate(R.layout.dashboard_tile, this);
+            mImageView = (ImageView) view.findViewById(R.id.icon);
+            mTitleTextView = (TextView) view.findViewById(R.id.title);
+            mSwitch = (Switch) view.findViewById(R.id.switchWidget);
+            mDivider = view.findViewById(R.id.tile_divider);
 
-        mImageView = (ImageView) view.findViewById(R.id.icon);
-        mTitleTextView = (TextView) view.findViewById(R.id.title);
-        mStatusTextView = (TextView) view.findViewById(R.id.status);
-        mDivider = view.findViewById(R.id.tile_divider);
+        } else {
+            final View view = LayoutInflater.from(context).inflate(R.layout.dashboard_tile, this);
+
+            mImageView = (ImageView) view.findViewById(R.id.icon);
+            mTitleTextView = (TextView) view.findViewById(R.id.title);
+            mStatusTextView = (TextView) view.findViewById(R.id.status);
+            mDivider = view.findViewById(R.id.tile_divider);
+        }
 
         setOnClickListener(this);
         setBackgroundResource(R.drawable.dashboard_tile_background);
         setFocusable(true);
+    }
+
+    public Switch getSwitch() {
+        return mSwitch;
     }
 
     public TextView getTitleTextView() {

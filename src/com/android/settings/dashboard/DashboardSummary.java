@@ -31,8 +31,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import com.android.settings.R;
+import com.android.settings.Lte4GEnabler;
 import com.android.settings.SettingsActivity;
 
 import java.util.List;
@@ -42,6 +44,8 @@ public class DashboardSummary extends Fragment {
 
     private LayoutInflater mLayoutInflater;
     private ViewGroup mDashboard;
+
+    private Lte4GEnabler mLte4GEnabler;
 
     private static final int MSG_REBUILD_UI = 1;
     private Handler mHandler = new Handler() {
@@ -68,6 +72,8 @@ public class DashboardSummary extends Fragment {
     public void onResume() {
         super.onResume();
 
+        mLte4GEnabler.resume();
+
         sendRebuildUI();
 
         final IntentFilter filter = new IntentFilter(Intent.ACTION_PACKAGE_ADDED);
@@ -82,15 +88,23 @@ public class DashboardSummary extends Fragment {
     public void onPause() {
         super.onPause();
 
+        mLte4GEnabler.pause();
+
         getActivity().unregisterReceiver(mHomePackageReceiver);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onPause();
+
+        mLte4GEnabler.destroy();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         mLayoutInflater = inflater;
-
+        mLte4GEnabler = new Lte4GEnabler(getActivity(), new Switch(getActivity()));
         final View rootView = inflater.inflate(R.layout.dashboard, container, false);
         mDashboard = (ViewGroup) rootView.findViewById(R.id.dashboard_container);
 
@@ -128,10 +142,18 @@ public class DashboardSummary extends Fragment {
             final int tilesCount = category.getTilesCount();
             for (int i = 0; i < tilesCount; i++) {
                 DashboardTile tile = category.getTile(i);
+                DashboardTileView tileView;
+                if (tile.getTitle(res).equals(res.getString(R.string.lte_4g_settings_title))) {
+                    tileView = new DashboardTileView(context,true);
+                    mLte4GEnabler.setSwitch(tileView.getSwitch());
+                    updateTileView(context, res, tile, tileView.getImageView(),
+                            tileView.getTitleTextView(), tileView.getSwitch());
 
-                DashboardTileView tileView = new DashboardTileView(context);
-                updateTileView(context, res, tile, tileView.getImageView(),
-                        tileView.getTitleTextView(), tileView.getStatusTextView());
+                } else {
+                    tileView = new DashboardTileView(context,false);
+                    updateTileView(context, res, tile, tileView.getImageView(),
+                            tileView.getTitleTextView(), tileView.getStatusTextView());
+                }
 
                 tileView.setTile(tile);
 
@@ -164,6 +186,19 @@ public class DashboardSummary extends Fragment {
         } else {
             statusTextView.setVisibility(View.GONE);
         }
+    }
+
+    private void updateTileView(Context context, Resources res, DashboardTile tile,
+        ImageView tileIcon, TextView tileTextView, Switch mSwitch) {
+
+        if (tile.iconRes > 0) {
+            tileIcon.setImageResource(tile.iconRes);
+        } else {
+            tileIcon.setImageDrawable(null);
+            tileIcon.setBackground(null);
+        }
+
+        tileTextView.setText(tile.getTitle(res));
     }
 
     private void sendRebuildUI() {
