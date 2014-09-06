@@ -122,6 +122,9 @@
             <intent-filter>
                 <action android:name="cyanogenmod.intent.action.PACKAGE_PROTECTED" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SCREEN_OFF" />
+            </intent-filter>
         </receiver>
 
         <!-- Only system/su can open this activity -->
@@ -2097,6 +2100,16 @@
                   android:excludeFromRecents="true">
             <intent-filter>
                 <action android:name=".applications.LockPatternActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".applications.UnlockAuthActivity"
+                  android:label="@string/protected_apps"
+                  android:windowSoftInputMode="stateHidden|adjustResize"
+                  android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name=".applications.UnlockActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

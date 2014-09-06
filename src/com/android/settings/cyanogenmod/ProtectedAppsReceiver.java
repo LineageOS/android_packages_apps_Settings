@@ -33,6 +33,10 @@ public class ProtectedAppsReceiver extends BroadcastReceiver {
                     intent.getParcelableArrayListExtra(PROTECTED_COMPONENTS);
             updateProtectedAppComponentsAndNotify(context, components, protect);
         }
+        if (Intent.ACTION_SCREEN_OFF.equals(intent.getAction())) {
+            Settings.Secure.putInt(context.getContentResolver(),
+                    ProtectedAppsStatusAuth.KEY_AUTHENTICATED, 0);
+        }
     }
 
     public static void updateProtectedAppComponentsAndNotify(Context context,

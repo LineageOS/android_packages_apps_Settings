@@ -67,9 +67,8 @@ public class ProtectedAppsActivity extends Activity {
 
         mProtect = new ArrayList<ComponentName>();
 
-        // Require pattern lock
-        Intent lockPattern = new Intent(this, LockPatternActivity.class);
-        startActivityForResult(lockPattern, REQ_ENTER_PATTERN);
+        // Require unlock
+        UnlockAuthActivity.startForAuth(this, REQ_ENTER_PATTERN);
     }
 
     @Override

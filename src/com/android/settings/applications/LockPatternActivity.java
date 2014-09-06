@@ -94,7 +94,7 @@ public class LockPatternActivity extends Activity implements OnNotifyAccountRese
                 resetPatternState(true);
                 return;
             }
-            setResult(RESULT_CANCELED);
+            setResult(false);
             finish();
         }
     };
@@ -110,7 +110,7 @@ public class LockPatternActivity extends Activity implements OnNotifyAccountRese
                 editor.putString(PATTERN_LOCK_PROTECTED_APPS,
                         Base64.encodeToString(mPatternHash, Base64.DEFAULT));
                 editor.commit();
-                setResult(RESULT_OK);
+                setResult(true);
                 finish();
             } else {
                 mConfirming = true;
@@ -285,7 +285,7 @@ public class LockPatternActivity extends Activity implements OnNotifyAccountRese
             } else {
                 //Check against existing pattern
                 if (Arrays.equals(mPatternHash, patternToHash(pattern))) {
-                    setResult(RESULT_OK);
+                    setResult(true);
                     finish();
                 } else {
                     mRetry++;
@@ -335,5 +335,13 @@ public class LockPatternActivity extends Activity implements OnNotifyAccountRese
         } catch (NoSuchAlgorithmException nsa) {
             return res;
         }
+    }
+
+    private void setResult(boolean success) {
+        UnlockAuthActivity.FaceUnlockStatus faceUnlockStatus = UnlockAuthActivity.FaceUnlockStatus
+                .getInstance();
+        int result = success ? RESULT_OK : RESULT_CANCELED;
+        faceUnlockStatus.setResult(result);
+        setResult(result);
     }
 }
