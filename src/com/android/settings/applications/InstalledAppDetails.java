@@ -144,6 +144,7 @@ public class InstalledAppDetails extends Fragment
     private Button mMoveAppButton;
     private CompoundButton mNotificationSwitch;
     private CompoundButton mPrivacyGuardSwitch;
+    private Button mAppOpsButton;
 
     private PackageMoveObserver mPackageMoveObserver;
     private AppOpsManager mAppOps;
@@ -510,6 +511,14 @@ public class InstalledAppDetails extends Fragment
         mSpecialDisableButton = (Button)mMoreControlButtons.findViewById(R.id.right_button);
         mMoreControlButtons.setVisibility(View.GONE);
         
+        // Get App Ops button panel and initialize its button
+        View appOpsBtnPanel = view.findViewById(R.id.app_ops_button_panel);
+        appOpsBtnPanel.findViewById(R.id.left_button).setVisibility(View.INVISIBLE);
+        mAppOpsButton = (Button)appOpsBtnPanel.findViewById(R.id.right_button);
+        mAppOpsButton.setText(R.string.app_ops_settings);
+        mAppOpsButton.setOnClickListener(this);
+        mAppOpsButton.setVisibility(View.VISIBLE);
+
         // Initialize clear data and move install location buttons
         View data_buttons_panel = view.findViewById(R.id.data_buttons_panel);
         mClearDataButton = (Button) data_buttons_panel.findViewById(R.id.right_button);
@@ -1519,6 +1528,12 @@ public class InstalledAppDetails extends Fragment
         } else if (v == mForceStopButton) {
             showDialogInner(DLG_FORCE_STOP, 0);
             //forceStopPackage(mAppInfo.packageName);
+        } else if (v == mAppOpsButton) {
+            Bundle args = new Bundle();
+            args.putString(AppOpsDetails.ARG_PACKAGE_NAME, retrieveAppEntry());
+            PreferenceActivity pa = (PreferenceActivity)getActivity();
+            pa.startPreferencePanel(AppOpsDetails.class.getName(), args,
+                    R.string.app_ops_settings, null, this, 1);
         } else if (v == mMoveAppButton) {
             if (mPackageMoveObserver == null) {
                 mPackageMoveObserver = new PackageMoveObserver();
