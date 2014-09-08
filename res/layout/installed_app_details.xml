@@ -62,13 +62,27 @@
                 android:layout_marginTop="4dip"
                 android:text="@string/app_notifications_switch_label" />
 
-            <!-- Enable Privacy Guard for this package -->
-            <CheckBox android:id="@+id/privacy_guard_switch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginTop="4dip"
-                android:text="@string/privacy_guard_switch_label" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- Enable Privacy Guard for this package -->
+                <CheckBox android:id="@+id/privacy_guard_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="4dip"
+                    android:text="@string/privacy_guard_switch_label" />
+
+                <!-- App ops shortcut button -->
+                <ImageView android:id="@+id/app_ops_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_sysbar_quicksettings" />
+            </RelativeLayout>
 
         </LinearLayout>
 

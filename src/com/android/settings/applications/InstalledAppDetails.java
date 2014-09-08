@@ -22,6 +22,7 @@ import com.android.internal.telephony.SmsUsageMonitor;
 import com.android.settings.R;
 import com.android.settings.Utils;
 import com.android.settings.applications.ApplicationsState.AppEntry;
+import com.android.settings.SubSettings;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -31,6 +32,7 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.INotificationManager;
+import android.app.TaskStackBuilder;
 import android.app.admin.DevicePolicyManager;
 import android.appwidget.AppWidgetManager;
 import android.content.BroadcastReceiver;
@@ -82,6 +84,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -144,6 +147,7 @@ public class InstalledAppDetails extends Fragment
     private Button mMoveAppButton;
     private CompoundButton mNotificationSwitch;
     private CompoundButton mPrivacyGuardSwitch;
+    private ImageView mAppOpsButton;
 
     private PackageMoveObserver mPackageMoveObserver;
     private AppOpsManager mAppOps;
@@ -509,7 +513,11 @@ public class InstalledAppDetails extends Fragment
         mMoreControlButtons.findViewById(R.id.left_button).setVisibility(View.INVISIBLE);
         mSpecialDisableButton = (Button)mMoreControlButtons.findViewById(R.id.right_button);
         mMoreControlButtons.setVisibility(View.GONE);
-        
+
+        // Get App Ops button panel and initialize its button
+        mAppOpsButton = (ImageView)view.findViewById(R.id.app_ops_button);
+        mAppOpsButton.setOnClickListener(this);
+
         // Initialize clear data and move install location buttons
         View data_buttons_panel = view.findViewById(R.id.data_buttons_panel);
         mClearDataButton = (Button) data_buttons_panel.findViewById(R.id.right_button);
@@ -1519,6 +1527,25 @@ public class InstalledAppDetails extends Fragment
         } else if (v == mForceStopButton) {
             showDialogInner(DLG_FORCE_STOP, 0);
             //forceStopPackage(mAppInfo.packageName);
+        } else if (v == mAppOpsButton && mPackageInfo != null) {
+            final Bundle args = new Bundle();
+            args.putString(AppOpsDetails.ARG_PACKAGE_NAME, mPackageInfo.packageName);
+            if ("android.settings.APPLICATION_DETAILS_SETTINGS"
+                    .equals(getActivity().getIntent().getAction())) {
+                final Intent intent = new Intent(getActivity(), SubSettings.class);
+                intent.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT,
+                        AppOpsDetails.class.getCanonicalName());
+                intent.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT_ARGUMENTS, args);
+                intent.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT_TITLE,
+                        R.string.app_ops_settings);
+                TaskStackBuilder.create(getActivity())
+                        .addNextIntent(intent)
+                        .startActivities();
+            } else {
+                ((PreferenceActivity)getActivity()).startPreferencePanel(
+                        AppOpsDetails.class.getName(), args,
+                        R.string.app_ops_settings, null, null, 0);
+            }
         } else if (v == mMoveAppButton) {
             if (mPackageMoveObserver == null) {
                 mPackageMoveObserver = new PackageMoveObserver();
