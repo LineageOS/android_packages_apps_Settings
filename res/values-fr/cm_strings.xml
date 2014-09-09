@@ -163,6 +163,8 @@
   <string name="notification_light_voicemail_title">Messagerie vocale</string>
   <string name="adaptive_backlight_title">Rétroéclairage adaptatif</string>
   <string name="adaptive_backlight_summary">Ajuster dynamiquement la luminosité du rétroéclairage de l\'écran pour maximiser l\'autonomie tout en conservant une bonne lisibilité</string>
+  <string name="sunlight_enhancement_title">Amélioration en plein soleil</string>
+  <string name="sunlight_enhancement_summary">Améliorer la luminosité de l\'affichage et la lisibilité en plein soleil</string>
   <string name="color_enhancement_title">Amélioration des couleurs</string>
   <string name="color_enhancement_summary">Améliorer dynamiquement la couleur d\'affichage</string>
   <string name="wake_when_plugged_or_unplugged_title">Réveiller au branchement</string>
@@ -268,7 +270,7 @@
   <string name="dynamic_tiles_note_title">Note</string>
   <string name="dynamic_tiles_note_summary">Les raccourcis dynamiques ne sont pas toujours visibles et ils ne peuvent s\'afficher que s\'ils sont déclenchés par un événement système</string>
   <string name="title_dynamic_alarm">Réveil</string>
-  <string name="title_dynamic_bugreport">Rapport de bogue</string>
+  <string name="title_dynamic_bugreport">Rapport de bug</string>
   <string name="title_dynamic_dock_battery">Batterie du dock</string>
   <string name="title_dynamic_equalizer">Égaliseur</string>
   <string name="title_dynamic_ime">Changement IME</string>
@@ -408,7 +410,7 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="soundpack_settings_title">Packs de sons</string>
   <string name="performance_settings_title">Performances</string>
   <string name="performance_settings_warning_title">ATTENTION\u00A0!</string>
-  <string name="performance_settings_warning">Ces paramètres sont expérimentaux et toutes les modifications appliquées sont susceptibles de provoquer des instabilités,  des plantages, des pertes de données ou de la casse matériel.\n\n Nous vous demandons de ne pas déposer de rapports de bogues si des valeurs par défaut de paramètre ont été modifiés.</string>
+  <string name="performance_settings_warning">Ces paramètres sont expérimentaux et toutes les modifications appliquées sont susceptibles de provoquer des instabilités,  des plantages, des pertes de données ou de la casse matériel.\n\n Nous vous demandons de ne pas déposer de rapports de bugs si des valeurs par défaut de paramètre ont été modifiés.</string>
   <string name="performance_set_on_boot">Définir au démarrage</string>
   <string name="performance_set_on_boot_summary">Paramètres de restauration appliqués au démarrage</string>
   <string name="processor_title">Processeur</string>
@@ -721,7 +723,7 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="logger_title">Journalisation anonyme d\'incident</string>
   <string name="logger_summary">Gérer les paramètres de journalisation d\'incident</string>
   <string name="custom_runtime_warning_title">Attention</string>
-  <string name="custom_runtime_warning_message">ART n\'est pas supporté par CyanogenMod. Ce paramètre est uniquement inclus à des fin d\'expérimentations. Il peut causer des instabilités, des plantages, des pertes de données ou empêcher votre appareil de démarrer. Lisez l\'&lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introduction à ART&lt;/a&gt; pour plus d\'informations.&lt;br/&gt;&lt;br/&gt;Merci de ne pas remplir de rapports de bogues si vous utilisez ART.&lt;br/&gt;&lt;br/&gt;Êtes-vous sûr de vouloir redémarrer pour changer le moteur d\'exécution de <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> à <xliff:g id="new" example="libart.so">%2$s</xliff:g>\u00A0?</string>
+  <string name="custom_runtime_warning_message">ART n\'est pas supporté par CyanogenMod. Ce paramètre est uniquement inclus à des fin d\'expérimentations. Il peut causer des instabilités, des plantages, des pertes de données ou empêcher votre appareil de démarrer. Lisez l\'&lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introduction à ART&lt;/a&gt; pour plus d\'informations.&lt;br/&gt;&lt;br/&gt;Merci de ne pas remplir de rapports de bugs si vous utilisez ART.&lt;br/&gt;&lt;br/&gt;Êtes-vous sûr de vouloir redémarrer pour changer le moteur d\'exécution de <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> à <xliff:g id="new" example="libart.so">%2$s</xliff:g>\u00A0?</string>
   <string name="gps_download_data_wifi_only">Télécharger les données d\'assistance GPS via Wi-Fi uniquement</string>
   <string name="battery_info_status_charging_dock_ac">(DockAC)</string>
   <string name="battery_info_status_charging_dock_usb">(DockUSB)</string>
@@ -753,6 +755,8 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="stylus_app_not_installed">%s n\'est pas installé</string>
   <string name="ime_switcher_notify">Notification de sélecteur</string>
   <string name="ime_switcher_notify_summary">Afficher une notification pour le sélectionneur de mode de saisie</string>
+  <string name="high_touch_sensitivity_title">Haute sensibilité tactile</string>
+  <string name="high_touch_sensitivity_summary">Augmenter la sensibilité de l\'écran permettant ainsi le port de gants</string>
   <string name="app_ops_summaries_coarse_location">localisation approximative</string>
   <string name="app_ops_summaries_fine_location">localisation précise</string>
   <string name="app_ops_summaries_gps">GPS</string>
@@ -808,8 +812,8 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="app_ops_labels_vibrate">Vibreur</string>
   <string name="app_ops_labels_read_contacts">Voir les contacts</string>
   <string name="app_ops_labels_modify_contacts">Modifier les contacts</string>
-  <string name="app_ops_labels_read_call_log">Voir le journal d\'appel</string>
-  <string name="app_ops_labels_modify_call_log">Modifier le journal des appels</string>
+  <string name="app_ops_labels_read_call_log">Lire le journal d\'appels</string>
+  <string name="app_ops_labels_modify_call_log">Modifier le journal d\'appels</string>
   <string name="app_ops_labels_read_calendar">Voir le calendrier</string>
   <string name="app_ops_labels_modify_calendar">Modifier le calendrier</string>
   <string name="app_ops_labels_notification_toast">Notification/Toast</string>

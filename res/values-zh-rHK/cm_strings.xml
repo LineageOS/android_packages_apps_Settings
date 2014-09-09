@@ -75,10 +75,13 @@
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_2g3g">2G/3G</string>
+  <string name="settings_search_action_bar_button">搜尋</string>
+  <string name="settings_search_loading_text">正在載入搜尋數據\ u2026</string>
   <string name="profile_connectionoverrides_title">連線覆蓋</string>
   <string name="profile_volumeoverrides_title">音量覆蓋</string>
   <string name="connection_state_disabled">停用</string>
   <string name="connection_state_enabled">啟用</string>
+  <string name="volume_override_summary">設定為 %1$s/%2$s</string>
   <string name="profile_profiles_manage">設定檔</string>
   <string name="profile_profile_manage">管理設定檔</string>
   <string name="profile_appgroups_manage">應用程式群組</string>
@@ -218,7 +221,7 @@
   <string name="title_tile_camera">相機</string>
   <string name="title_tile_sleep">進入休眠</string>
   <string name="title_tile_gps">GPS</string>
-  <string name="title_tile_torch">手電筒</string>
+  <string name="title_tile_torch">電筒</string>
   <string name="title_tile_lockscreen">鎖定螢幕</string>
   <string name="title_tile_lte">LTE</string>
   <string name="title_tile_mobiledata">流動數據</string>
@@ -237,7 +240,7 @@
   <string name="title_tile_quiet_hours">安靜時段</string>
   <string name="title_tile_volume">音量</string>
   <string name="title_tile_expanded_desktop">擴展桌面</string>
-  <string name="title_tile_network_adb">ADB 通過網絡</string>
+  <string name="title_tile_network_adb">ADB 透過網絡</string>
   <string name="title_dynamic_tiles">動態按鈕</string>
   <string name="dynamic_tiles_note_title">注意</string>
   <string name="dynamic_tiles_note_summary">動態按鈕不是隨時都會顯示的，僅會在有相關的系統事件時顯示</string>
@@ -415,10 +418,12 @@
   <string name="pref_force_highend_gfx_summary">啟用高階視覺效果，例如：透明的狀態列/導覽列 (需重新啟動)</string>
   <string name="kill_app_longpress_back">返回按鈕可終止應用程式</string>
   <string name="kill_app_longpress_back_summary">長按返回按鈕終止前台的應用程式</string>
-  <string name="changelog_loading">正在讀取更新日誌\u2026</string>
-  <string name="changelog_error">無法讀取更新日誌</string>
+  <string name="changelog_title">更新日誌</string>
+  <string name="changelog_loading">正在載入更新日誌\u2026</string>
+  <string name="changelog_error">無法載入更新日誌</string>
   <string name="changelog_unknown">不明</string>
   <string name="changelog_version">版本</string>
+  <string name="contributor_cloud_title">貢獻者</string>
   <string name="cmupdate_settings_title">CyanogenMod 更新</string>
   <string name="cmupdate_settings_summary">檢查、 查看或安裝可用的更新</string>
   <string name="advanced_settings_title">進階</string>
@@ -485,7 +490,7 @@
   <string name="headset_connect_player_summary">當連接耳機啟動預設音樂應用程式</string>
   <string name="adb_notify">USB 偵錯通知</string>
   <string name="adb_notify_summary">當 USB 偵錯模式連接時顯示通知</string>
-  <string name="adb_over_network">ADB 通過網絡</string>
+  <string name="adb_over_network">ADB 透過網絡</string>
   <string name="adb_over_network_summary">啟用透過網絡接口 (Wi-Fi、USB 網路) 進行 TCP/IP 偵錯。該設定會於重新啟動後重設</string>
   <string name="adb_over_network_warning">警告：網絡 ADB 啟用時，您的裝置會對所有已連線的網絡 (包括 GSM 數據網絡) 開放接收指令！\n\n只有當您連線到信任的網絡時才使用此功能。\n\n您真的要啟用此功能？</string>
   <string name="device_hostname">裝置主機名稱</string>
@@ -494,7 +499,7 @@
   <string name="collapse_on_dismiss_never">已停用</string>
   <string name="collapse_on_dismiss_if_empty">如果沒有通知存在</string>
   <string name="collapse_on_dismiss_if_no_clearable">如果沒有可移除的剩餘</string>
-  <string name="collapse_on_dismiss_never_summary">移除通知後不關閉下拉通知欄</string>
+  <string name="collapse_on_dismiss_never_summary">移除通知後不關閉下拉狀態列</string>
   <string name="collapse_on_dismiss_if_empty_summary">移除最後一則通知後關閉</string>
   <string name="collapse_on_dismiss_if_no_clearable_summary">移除最後一則可移除的通知後關閉</string>
   <string name="double_tap_to_wake_title">輕按兩下來喚醒</string>
@@ -562,7 +567,7 @@
   <string name="lockscreen_long_press_home_title">長按主頁鍵</string>
   <string name="lockscreen_long_press_menu_title">長按功能表按鈕</string>
   <string name="lockscreen_buttons_no_action">無操作</string>
-  <string name="lockscreen_buttons_flashlight">手電筒</string>
+  <string name="lockscreen_buttons_flashlight">電筒</string>
   <string name="lockscreen_buttons_next">下一首歌曲</string>
   <string name="lockscreen_buttons_previous">上一首歌曲</string>
   <string name="lockscreen_buttons_playpause">播放/暫停音樂</string>
@@ -592,7 +597,7 @@
   <string name="navring_action_ring_silent">鈴聲/靜音</string>
   <string name="navring_action_ring_vibrate_silent">鈴聲/震動/靜音</string>
   <string name="navring_action_screen_off">螢幕關閉</string>
-  <string name="navring_action_torch">切換手電筒</string>
+  <string name="navring_action_torch">切換電筒</string>
   <string name="navring_action_google_now">Google Now</string>
   <string name="navring_choose_action_title">選擇操作</string>
   <string name="power_menu_title">電源功能表</string>
@@ -675,7 +680,7 @@
   <string name="status_bar_signal_style_icon">圖示</string>
   <string name="status_bar_signal_style_text">文字</string>
   <string name="status_bar_toggle_brightness">亮度控制</string>
-  <string name="status_bar_toggle_brightness_summary">通過在狀態列上左右滑動調整亮度</string>
+  <string name="status_bar_toggle_brightness_summary">透過在狀態列上左右滑動調整亮度</string>
   <string name="status_bar_notif_count_title">顯示通知數量</string>
   <string name="status_bar_notif_count_summary">顯示未處理通知的數量</string>
   <string name="status_bar_double_tap_to_sleep_title">輕按兩下來休眠</string>
@@ -856,4 +861,7 @@
   <string name="graphics_title">圖像和繪製</string>
   <string name="menu_hidden_apps_delete">重設</string>
   <string name="menu_hidden_apps_reset_lock">重設圖案解銷</string>
+  <string name="block_notifications_title">過濾器通知</string>
+  <string name="block_notifications_summary">管理被忽略的通知和過濾器</string>
+  <string name="no_filters_title">沒有過濾器設定。若要過濾通知，長按它並選擇「忽略這樣的訊息」。</string>
 </resources>
