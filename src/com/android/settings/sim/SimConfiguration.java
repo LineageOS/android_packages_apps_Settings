@@ -99,7 +99,8 @@ public class SimConfiguration extends PreferenceActivity implements TextWatcher 
         public boolean onPreferenceChange(Preference preference, Object value) {
             logd("onPreferenceChange " + value);
             String multiSimName = (String) value;
-            String theOtherSimName = getMultiSimName(mSubscription == 0 ? 1 : 0);
+            String theOtherSimName = MultiSimSettingTab.getMultiSimName(preference.getContext(),
+                    mSubscription == 0 ? 1 : 0);
             if (multiSimName.equals(theOtherSimName)) {
                 new AlertDialog.Builder(preference.getContext())
                         .setIcon(android.R.drawable.ic_dialog_alert)
@@ -142,7 +143,8 @@ public class SimConfiguration extends PreferenceActivity implements TextWatcher 
             // The dialog should be created by now
             EditText et = mNamePreference.getEditText();
             if (et != null) {
-                et.setText(getMultiSimName(mSubscription));
+                et.setText(MultiSimSettingTab.getMultiSimName(preference.getContext(),
+                        mSubscription));
             }
             return true;
         }
@@ -159,7 +161,7 @@ public class SimConfiguration extends PreferenceActivity implements TextWatcher 
 
         mNamePreference = (EditTextPreference) findPreference(KEY_SIM_NAME);
         mNamePreference.setTitle(R.string.title_sim_alias);
-        mNamePreference.setSummary(getMultiSimName(mSubscription));
+        mNamePreference.setSummary(MultiSimSettingTab.getMultiSimName(this, mSubscription));
         mNamePreference.setOnPreferenceChangeListener(new NamePreferenceChangeListener());
         mNamePreference.setOnPreferenceClickListener(new NamePreferenceClickListener());
         EditText et = mNamePreference.getEditText();
@@ -331,15 +333,6 @@ public class SimConfiguration extends PreferenceActivity implements TextWatcher 
             return CHAR_LEN;
         } else {
             return CHAR_LEN*2;
-        }
-    }
-
-    private String getMultiSimName(int subscription) {
-        String name = MultiSimSettingTab.getMultiSimName(this, subscription);
-        if (name != null) {
-            return name;
-        } else {
-            return getResources().getString(R.string.sim_card_number_title, subscription + 1);
         }
     }
 

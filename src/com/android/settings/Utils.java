@@ -128,6 +128,9 @@ public final class Utils {
 
     private static final String SETTINGS_PACKAGE_NAME = "com.android.settings";
 
+    private static final Uri URI_PHONE_FEATURE = Uri
+            .parse("content://com.qualcomm.qti.phonefeature.FEATURE_PROVIDER");
+
     private static final int SECONDS_PER_MINUTE = 60;
     private static final int SECONDS_PER_HOUR = 60 * 60;
     private static final int SECONDS_PER_DAY = 24 * 60 * 60;
@@ -974,5 +977,15 @@ public final class Utils {
             }
         }
         return sb.toString();
+    }
+
+    /**
+      * Returns the function call result of phone feature
+      */
+    public static Bundle call(Context context, String method, Bundle extras) {
+        if (context.getContentResolver().acquireProvider(URI_PHONE_FEATURE) == null) {
+            return null;
+        }
+        return context.getContentResolver().call(URI_PHONE_FEATURE, method, null, extras);
     }
 }

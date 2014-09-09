@@ -117,9 +117,6 @@ public class ApnSettings extends SettingsPreferenceFragment implements
 
     private boolean mUnavailable;
 
-    private static final Uri URI_PHONE_FEATURE = Uri
-            .parse("content://com.qualcomm.qti.phonefeature.FEATURE_PROVIDER");
-
     private final BroadcastReceiver mMobileStateReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -481,7 +478,7 @@ public class ApnSettings extends SettingsPreferenceFragment implements
                         mRestoreDefaultApnMode = false;
                         return;
                     }
-                    Bundle result = call("update_apn_by_area", null);
+                    Bundle result = Utils.call(getActivity(), "update_apn_by_area", null);
                     if (result == null || result.getBoolean("result", false)) {
                         Log.d(TAG, "failed to update APN");
                     }
@@ -558,10 +555,4 @@ public class ApnSettings extends SettingsPreferenceFragment implements
         return result.toArray(new String[2]);
     }
 
-    private Bundle call(String method, Bundle extras) {
-        if (getContentResolver().acquireProvider(URI_PHONE_FEATURE) == null) {
-            return null;
-        }
-        return getContentResolver().call(URI_PHONE_FEATURE, method, null, extras);
-    }
 }

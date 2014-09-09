@@ -144,7 +144,8 @@ public class MultiSimSettingTab extends TabActivity {
         if (sir != null) {
             return sir.mDisplayName;
         } else {
-            return null;
+            return context.getResources().getString(R.string.sim_card_number_title,
+                    subscription + 1);
         }
     }
 
