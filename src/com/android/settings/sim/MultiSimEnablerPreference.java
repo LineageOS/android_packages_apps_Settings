@@ -191,7 +191,7 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
 
     private boolean isCurrentSubValid() {
         if (mSir == null || mSir.mSubId <= 0) {
-            List<SubInfoRecord> sirList = SubscriptionManager.getActivatedSubInfoList(mContext);
+            List<SubInfoRecord> sirList = SubscriptionManager.getActiveSubInfoList();
             if (sirList == null) return false;
             for (SubInfoRecord sir : sirList) {
                 if (sir != null && mSlotId == sir.mSlotId) {
@@ -300,7 +300,7 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
     }
 
     public static List<SubInfoRecord> getActivatedSubInfoList(Context context) {
-        List<SubInfoRecord> subInfoLists = SubscriptionManager.getActivatedSubInfoList(context);
+        List<SubInfoRecord> subInfoLists = SubscriptionManager.getActiveSubInfoList();
         if (subInfoLists != null) {
             Collections.sort(subInfoLists, new Comparator<SubInfoRecord>() {
                 @Override

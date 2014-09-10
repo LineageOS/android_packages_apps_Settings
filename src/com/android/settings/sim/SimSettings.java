@@ -266,7 +266,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     @Override
     public void onResume() {
         super.onResume();
-        mSubInfoList = SubscriptionManager.getActivatedSubInfoList(getActivity());
+        mSubInfoList = SubscriptionManager.getActiveSubInfoList();
         updateAllOptions();
         mIsPause = false;
     }
@@ -490,7 +490,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             switch(dialogId) {
                 case SIM_ENABLER_PROGRESS_DIALOG_ID:
                     List<SubInfoRecord> subInfoList =
-                            SubscriptionManager.getSubInfoUsingSlotId(context, sSlotId);
+                            SubscriptionManager.getSubInfoUsingSlotId(sSlotId);
                     if ( subInfoList == null) {
                         return null;
                     }

@@ -148,7 +148,7 @@ public class MSimSubscriptionStatus extends PreferenceActivity {
 
         // getting selected subscription
         int phoneId = getIntent().getIntExtra(PhoneConstants.SLOT_KEY,
-                PhoneConstants.DEFAULT_SUBSCRIPTION);
+		SubscriptionManager.getPhoneId(SubscriptionManager.getDefaultSubId()));
         mPhone = PhoneFactory.getPhone(phoneId);
         Log.d("Status","OnCreate phoneId =" + phoneId);
 

@@ -79,7 +79,7 @@ public class SelectSubscription extends  TabActivity {
 
         for (int i = 0; i < numPhones; i++) {
             List<SubInfoRecord> sir =
-                    SubscriptionManager.getSubInfoUsingSlotId(getApplicationContext(), i);
+                    SubscriptionManager.getSubInfoUsingSlotId(i);
             String displayName = (sir == null) ? tabLabel[i] : sir.get(0).mDisplayName;
 
             log("Creating SelectSub activity = " + i + " displayName = " + displayName);
