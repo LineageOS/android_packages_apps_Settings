@@ -206,7 +206,21 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
                 ((SimPreference)pref).update();
             }
         }
+        simPref.setEnabled(!needDisableDataSub2());
     }
+
+    private boolean needDisableDataSub2() {
+        boolean disableDataSub2 = false;
+        if (getResources().getBoolean(R.bool.disable_data_sub2)) {
+            if (TelephonyManager.getDefault().getMultiSimConfiguration().
+                equals(TelephonyManager.MultiSimVariants.DSDS)) {
+                if (mSubInfoList.size() == 2) {
+                    disableDataSub2 = true;
+                }
+            }
+        }
+        return disableDataSub2;
+     }
 
     private void updateActivitesCategory() {
         createDropDown((DropDownPreference) findPreference(KEY_CELLULAR_DATA));
