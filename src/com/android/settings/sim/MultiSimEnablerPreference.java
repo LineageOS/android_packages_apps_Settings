@@ -31,42 +31,33 @@
 
 package com.android.settings.sim;
 
-import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Resources;
-import android.os.AsyncResult;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.os.SystemProperties;
-import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.provider.Settings;
 import android.telephony.SubscriptionManager;
 import android.telephony.SubInfoRecord;
 import android.telephony.TelephonyManager;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.android.internal.telephony.IccCardConstants;
-import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.settings.R;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 
@@ -80,54 +71,34 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
     private String TAG = "MultiSimEnablerPreference";
     private static final boolean DBG = true;
 
-    private static final int EVT_RESUME = 1;
-    private static final int EVT_SHOW_ALERTDIALOG = 2;
-    private static final int EVT_SHOW_PROGRESS_DIALOG = 3;
-    private static final String SLOTID_STR = "slotId";
-    private static final String ENABLED_STR = "enabled";
-    private static final String MESSAGE_STR = "message";
+    private static final int EVT_UPDATE = 1;
+    private static final int EVT_SHOW_RESULT_DLG = 2;
+    private static final int EVT_SHOW_PROGRESS_DLG = 3;
+    private static final int EVT_PROGRESS_DLG_TIME_OUT = 4;
+
+    private static final int CONFIRM_ALERT_DLG_ID = 1;
+    private static final int ERROR_ALERT_DLG_ID = 2;
+    private static final int RESULT_ALERT_DLG_ID = 3;
 
     private int mSlotId;
     private SubInfoRecord mSir;
-    private String mSummary;
-    private boolean mState;
-    private boolean mRequest;
+    private boolean mCurrentState;
 
     private boolean mCmdInProgress = false;
-    private String mDialogString = null;
     private TextView mSubTitle, mSubSummary;
     private int mSwitchVisibility = View.VISIBLE;
     private Switch mSwitch;
     private Handler mParentHandler = null;
-    private AlertDialog mAlertDialog = null;
-
-    private static boolean mIsShowAlertDialog = false;
-    public static boolean mIsShowDialog = false;
-    private static String mCurrentStr = "";
-    private static boolean mCurrentStatus = true;
+    private static AlertDialog sAlertDialog = null;
+    private static ProgressDialog sProgressDialog = null;
+    //Delay for progress dialog to dismiss
+    private static final int PROGRESS_DLG_TIME_OUT = 30000;
+    private static final int MSG_DELAY_TIME = 2000;
 
     private static Object mSyncLock = new Object();
 
     private IntentFilter mIntentFilter = new IntentFilter(
-            TelephonyIntents.ACTION_SIM_STATE_CHANGED);
-
-    private void sendMessage(int event, Bundle b) {
-        Message message = mParentHandler.obtainMessage(event);
-        message.setData(b);
-        mParentHandler.sendMessage(message);
-    }
-
-    private void handleSetUiccDone(String msg) {
-        update();
-        Bundle b = new Bundle();
-        sendMessage(EVT_RESUME, b);
-        showAlertDialogWithMessage(msg);
-        mCmdInProgress = false;
-    }
-
-    private boolean hasCard() {
-        return TelephonyManager.getDefault().hasIccCard(mSlotId);
-    }
+            TelephonyIntents.ACTION_SUBINFO_CONTENT_CHANGE);
 
     public MultiSimEnablerPreference(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
@@ -139,9 +110,24 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
     public MultiSimEnablerPreference(Context context, SubInfoRecord sir, Handler handler,
             int slotId) {
         this(context, null, com.android.internal.R.attr.checkBoxPreferenceStyle);
+        logd("Contructor..Enter" + sir);
         mSlotId = slotId;
         mSir = sir;
         mParentHandler = handler;
+    }
+
+    private void sendMessage(int event, Handler handler, int delay) {
+        Message message = handler.obtainMessage(event);
+        handler.sendMessageDelayed(message, delay);
+    }
+
+    private boolean hasCard() {
+        return TelephonyManager.getDefault().hasIccCard(mSlotId);
+    }
+
+    private boolean isAirplaneModeOn() {
+        return (Settings.Global.getInt(mContext.getContentResolver(),
+                Settings.Global.AIRPLANE_MODE_ON, 0) != 0);
     }
 
     @Override
@@ -154,62 +140,52 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
         update();
         // now use other config screen to active/deactive sim card\
         mSwitch.setVisibility(mSwitchVisibility);
-        mContext.registerReceiver(mReceiver, mIntentFilter);
-    }
-
-    @Override
-    protected void onPrepareForRemoval() {
-        super.onPrepareForRemoval();
-        mContext.unregisterReceiver(mReceiver);
-    }
-
-    public void destroy() {
-        try {
-            mContext.unregisterReceiver(mReceiver);
-        } catch (IllegalArgumentException e) {
-            // May receive Receiver not registered error
-            logd(e.getMessage());
-        }
     }
 
     public void update() {
-        if (isAirplaneModeOn() || !hasCard()) {
-            setEnabled(false);
-            return;
-        }
+        logd("update()" + mSir);
+
         final Resources res = mContext.getResources();
         boolean isSubValid = isCurrentSubValid();
         setEnabled(isSubValid);
+
+        logd("update() isSubValid "  + isSubValid);
         if (isSubValid) {
             updateTitle();
             updateSummary();
         } else {
-            mSubTitle.setText(res.getString(R.string.sim_card_number_title, mSlotId + 1));
-            mSubSummary.setText(R.string.sim_slot_empty);
+            if (mSubTitle != null) {
+                mSubTitle.setText(res.getString(R.string.sim_card_number_title, mSlotId + 1));
+            }
+            if (mSubSummary != null) {
+                mSubSummary.setText(R.string.sim_slot_empty);
+            }
         }
     }
 
     private boolean isCurrentSubValid() {
-        if (mSir == null || mSir.subId <= 0) {
+        boolean isSubValid = false;
+        if (!isAirplaneModeOn() && hasCard()) {
             List<SubInfoRecord> sirList = SubscriptionManager.getActiveSubInfoList();
-            if (sirList == null) return false;
-            for (SubInfoRecord sir : sirList) {
-                if (sir != null && mSlotId == sir.slotId) {
-                    mSir = sir;
-                    break;
+            if (sirList != null ) {
+                for (SubInfoRecord sir : sirList) {
+                    if (sir != null && mSlotId == sir.slotId) {
+                        mSir = sir;
+                        break;
+                    }
+                }
+                if (mSir != null && mSir.subId > 0 && mSir.slotId >= 0 &&
+                        mSir.mStatus != SubscriptionManager.SUB_CONFIGURATION_IN_PROGRESS) {
+                    isSubValid = true;
                 }
             }
         }
-        if (mSir != null && mSir.subId > 0 && mSir.slotId >= 0 &&
-                mSir.mStatus != SubscriptionManager.SUB_CONFIGURATION_IN_PROGRESS) {
-            return true;
-        }
-        return false;
+        return isSubValid;
     }
 
     private void updateTitle() {
-        if (mContext == null || mSubTitle == null) return;
-        mSubTitle.setText(mSir.displayName);
+        if (mSubTitle == null) return;
+        mSubTitle.setText(mSir == null ? "SUB" : mSir.displayName);
     }
 
     public void setSwitchVisibility (int visibility) {
@@ -217,69 +193,40 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
     }
 
     private void setChecked(boolean state) {
+        logd("setChecked: state " + state + "sir:" + mSir);
         if (mSwitch != null) {
             mSwitch.setOnCheckedChangeListener(null);
             mSwitch.setChecked(state);
             mSwitch.setOnCheckedChangeListener(this);
+            mCurrentState = state;
         }
     }
 
     public void setEnabled(boolean isEnabled) {
-        logd("setEnabled: isEnabled " + isEnabled + "sir:" + mSir);
         if (mSwitch != null) {
             mSwitch.setEnabled(isEnabled);
         }
     }
 
-    private void sendCommand(boolean enabled) {
-        if (mParentHandler == null || !mSwitch.isEnabled()) {
-            return;
-        }
-        mIsShowDialog = true;
-        mCmdInProgress = true;
-
-        Bundle b = new Bundle();
-        b.putInt(SLOTID_STR, mSlotId);
-        b.putBoolean(ENABLED_STR, enabled);
-        sendMessage(EVT_SHOW_PROGRESS_DIALOG, b);
-        mSwitch.setEnabled(false);
-        if (enabled) {
-            logd("activateSubId: subId " + mSir.subId);
-            SubscriptionManager.activateSubId(mSir.subId);
-        } else {
-            logd("deactivateSubId: subId " + mSir.subId);
-            SubscriptionManager.deactivateSubId(mSir.subId);
-        }
-    }
-
     private void updateSummary() {
         Resources res = mContext.getResources();
+        String summary;
         boolean isActivated = (mSir.mStatus == SubscriptionManager.ACTIVE);
         logd("updateSummary: subId " + mSir.subId + " isActivated = " + isActivated +
                 " slot id = " + mSlotId);
 
-        if (mAlertDialog != null) mIsShowAlertDialog = mAlertDialog.isShowing();
-
-        if (mIsShowAlertDialog || mIsShowDialog) {
-            mSummary = mCurrentStr;
-            mState = mCurrentStatus;
+        if (isActivated) {
+            summary = mContext.getString(R.string.sim_enabler_summary,
+                    res.getString(R.string.sim_enabled));
         } else {
-            if (isActivated) {
-                mState = true;
-                mSummary = mContext.getString(R.string.sim_enabler_summary,
-                        res.getString(R.string.sim_enabled));
-            } else {
-                mState = false;
-                mSummary = mContext.getString(R.string.sim_enabler_summary,
-                        res.getString(hasCard() ? R.string.sim_disabled
-                                : R.string.sim_missing));
-            }
+            summary = mContext.getString(R.string.sim_enabler_summary,
+                    res.getString(hasCard() ? R.string.sim_disabled : R.string.sim_missing));
         }
 
         if (mSubSummary != null) {
-            mSubSummary.setText(mSummary);
+            mSubSummary.setText(summary);
         }
-        setChecked(mState);
+        setChecked(isActivated);
     }
 
 
@@ -290,7 +237,7 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
      */
     public static int getActivatedSubInfoCount(Context context) {
         int activeSubInfoCount = 0;
-        List<SubInfoRecord> subInfoLists = getActivatedSubInfoList(context);
+        List<SubInfoRecord> subInfoLists = SubscriptionManager.getActiveSubInfoList();
         if (subInfoLists != null) {
             for (SubInfoRecord subInfo : subInfoLists) {
                 if (subInfo.mStatus == SubscriptionManager.ACTIVE) activeSubInfoCount++;
@@ -299,126 +246,155 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
         return activeSubInfoCount;
     }
 
-    public static List<SubInfoRecord> getActivatedSubInfoList(Context context) {
-        List<SubInfoRecord> subInfoLists = SubscriptionManager.getActiveSubInfoList();
-        if (subInfoLists != null) {
-            Collections.sort(subInfoLists, new Comparator<SubInfoRecord>() {
-                @Override
-                public int compare(SubInfoRecord arg0, SubInfoRecord arg1) {
-                    return arg0.slotId - arg1.slotId;
-                }
-            });
-        }
-        return subInfoLists;
-    }
-
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        mRequest = isChecked;
+        mCurrentState = isChecked;
+        logd("onClick: " + isChecked);
 
         synchronized (mSyncLock) {
-            disableOrEnableSIMcard();
+            configureSubscription();
         }
-        // save the current status information of Switch widget.
-        mCurrentStatus = isChecked;
-        mCurrentStr = mSubSummary.getText().toString();
     }
 
-    private boolean isAirplaneModeOn() {
-        return (Settings.Global.getInt(mContext.getContentResolver(),
-                Settings.Global.AIRPLANE_MODE_ON, 0) != 0);
-    }
-
-    private void disableOrEnableSIMcard() {
-        logd("onClick: " + mRequest);
+    private void configureSubscription() {
         if (isAirplaneModeOn()) {
             // do nothing but warning
-            logd("airplane is on, show error!");
-            showAlertDialogWithMessage(mContext.getString(R.string.sim_enabler_airplane_on));
+            logd("APM is on, EXIT!");
+            showAlertDialog(ERROR_ALERT_DLG_ID, R.string.sim_enabler_airplane_on);
             return;
         }
         for (int i = 0; i < TelephonyManager.getDefault().getPhoneCount(); i++) {
             long[] subId = SubscriptionManager.getSubId(i);
             if (TelephonyManager.getDefault().getCallState(subId[0])
                 != TelephonyManager.CALL_STATE_IDLE) {
-                logd("call state " + i + " is not idle, show error!");
-                showAlertDialogWithMessage(mContext.getString(R.string.sim_enabler_in_call));
+                logd("Call state for phoneId: " + i + " is not idle, EXIT!");
+                showAlertDialog(ERROR_ALERT_DLG_ID, R.string.sim_enabler_in_call);
                 return;
             }
         }
 
-        if (!mRequest) {
+        if (!mCurrentState) {
             if (getActivatedSubInfoCount(mContext) > 1) {
-                logd("disable, both are active,can do");
-                displayConfirmDialog();
+                logd("More than one sub is active, Deactivation possible.");
+                showAlertDialog(CONFIRM_ALERT_DLG_ID, 0);
             } else {
-                logd("only one is active,can not do");
-                displayErrorDialog();
+                logd("Only one sub is active. Deactivation not possible.");
+                showAlertDialog(ERROR_ALERT_DLG_ID, R.string.sim_enabler_both_inactive);
                 return;
             }
         } else {
-            logd("enable, do it");
-            sendCommand(mRequest);
+            logd("Activate the sub");
+            sendSubConfigurationRequest();
         }
 
     }
 
-    private void displayConfirmDialog() {
-        String message = mContext.getString(R.string.sim_enabler_need_disable_sim);
-        // Confirm only one AlertDialog instance to show.
-        if (null != mAlertDialog) {
-            mAlertDialog.dismiss();
-            mAlertDialog = null;
-        }
-        mAlertDialog = new AlertDialog.Builder(mContext)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle(android.R.string.dialog_alert_title)
-                .setMessage(message)
-                .setPositiveButton(android.R.string.ok, mDialogClickListener)
-                .setNegativeButton(android.R.string.no, mDialogClickListener)
-                .setOnCancelListener(mDialogCanceListener).create();
-        mAlertDialog.setCanceledOnTouchOutside(false);
-        mAlertDialog.show();
-
-    }
-
-    private void displayErrorDialog() {
-        String message = mContext.getString(R.string.sim_enabler_both_inactive);
-        // Confirm only one AlertDialog instance to show.
-        if (null != mAlertDialog) {
-            mAlertDialog.dismiss();
-            mAlertDialog = null;
-        }
-        mAlertDialog = new AlertDialog.Builder(mContext)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle(android.R.string.dialog_alert_title)
-                .setMessage(message)
-                .setNegativeButton(android.R.string.ok, mDialogClickListener)
-                .setOnCancelListener(mDialogCanceListener).create();
-        mAlertDialog.setCanceledOnTouchOutside(false);
-        mAlertDialog.show();
-    }
-
-    private void showAlertDialogWithMessage(String msg) {
-        if (mParentHandler == null) {
+    private void sendSubConfigurationRequest() {
+        if (mParentHandler == null || !mSwitch.isEnabled()) {
             return;
         }
-        mIsShowDialog = true;
-        Bundle b = new Bundle();
-        b.putInt(SLOTID_STR, mSlotId);
-        b.putString(MESSAGE_STR, msg);
-        sendMessage(EVT_SHOW_ALERTDIALOG, b);
+        mCmdInProgress = true;
+
+        showProgressDialog();
+        mSwitch.setEnabled(false);
+        if (mCurrentState) {
+            SubscriptionManager.activateSubId(mSir.subId);
+        } else {
+            SubscriptionManager.deactivateSubId(mSir.subId);
+        }
+
+        mContext.registerReceiver(mReceiver, mIntentFilter);
+    }
+
+    private void processSetUiccDone() {
+        sendMessage(EVT_UPDATE, mParentHandler, MSG_DELAY_TIME);
+        sendMessage(EVT_SHOW_RESULT_DLG, mHandler, MSG_DELAY_TIME);
+        mCmdInProgress = false;
+        unregisterReceiver();
+    }
+
+    private void showAlertDialog(int dialogId, int msgId) {
+        String title = mSir == null ? "SUB" : mSir.displayName;
+        // Confirm only one AlertDialog instance to show.
+        dismissDialog(sAlertDialog);
+        dismissDialog(sProgressDialog);
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle(title);
+        switch(dialogId) {
+            case CONFIRM_ALERT_DLG_ID:
+                builder.setMessage(mContext.getString(R.string.sim_enabler_need_disable_sim));
+                builder.setPositiveButton(android.R.string.ok, mDialogClickListener);
+                builder.setNegativeButton(android.R.string.no, mDialogClickListener);
+                builder.setOnCancelListener(mDialogCanceListener);
+                break;
+            case ERROR_ALERT_DLG_ID:
+                builder.setMessage(mContext.getString(msgId));
+                builder.setNeutralButton(android.R.string.ok, mDialogClickListener);
+                builder.setCancelable(false);
+                break;
+            case RESULT_ALERT_DLG_ID:
+                String msg = mCurrentState ? mContext.getString(R.string.sub_activate_success) :
+                        mContext.getString(R.string.sub_deactivate_success);
+                builder.setMessage(msg);
+                builder.setNeutralButton(android.R.string.ok, null);
+                break;
+           default:
+           break;
+        }
+
+        sAlertDialog = builder.create();
+        sAlertDialog.setCanceledOnTouchOutside(false);
+        sAlertDialog.show();
+    }
+
+    private void showProgressDialog() {
+        String title = mSir == null ? "SUB" : mSir.displayName;
+
+        String msg = mContext.getString(mCurrentState ? R.string.sim_enabler_enabling
+                : R.string.sim_enabler_disabling);
+        dismissDialog(sProgressDialog);
+        sProgressDialog = new ProgressDialog(mContext);
+        sProgressDialog.setIndeterminate(true);
+        sProgressDialog.setTitle(title);
+        sProgressDialog.setMessage(msg);
+        sProgressDialog.setCancelable(false);
+        sProgressDialog.setCanceledOnTouchOutside(false);
+        sProgressDialog.show();
+
+        sendMessage(EVT_PROGRESS_DLG_TIME_OUT, mHandler, PROGRESS_DLG_TIME_OUT);
+    }
+
+    private void dismissDialog(Dialog dialog) {
+        if(dialog != null) {
+            dialog.dismiss();
+            dialog = null;
+        }
+    }
+
+    public void cleanUp() {
+        unregisterReceiver();
+        dismissDialog(sProgressDialog);
+        dismissDialog(sAlertDialog);
+    }
+
+    private void unregisterReceiver() {
+        try {
+            mContext.unregisterReceiver(mReceiver);
+        } catch (Exception ex) {}
     }
 
     private DialogInterface.OnClickListener mDialogClickListener = new DialogInterface
             .OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     if (which == DialogInterface.BUTTON_POSITIVE) {
-                        sendCommand(mRequest);
+                        sendSubConfigurationRequest();
                     } else if (which == DialogInterface.BUTTON_NEGATIVE) {
                         setChecked(true);
                         mSubSummary.setText(mContext.getString(
                                 R.string.sim_enabler_summary,
                                 mContext.getString(R.string.sim_enabled)));
+                    } else if (which == DialogInterface.BUTTON_NEUTRAL) {
+                        update();
                     }
                 }
             };
@@ -426,7 +402,7 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
     private DialogInterface.OnCancelListener mDialogCanceListener = new DialogInterface
             .OnCancelListener() {
                 public void onCancel(DialogInterface dialog) {
-                    setChecked(true);
+                    update();
                 }
             };
 
@@ -434,32 +410,54 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
-            if (TelephonyIntents.ACTION_SIM_STATE_CHANGED.equals(action)) {
-                int slotId = intent.getIntExtra(PhoneConstants.SLOT_KEY, 0);
-                String simStatus = intent.getStringExtra(IccCardConstants.INTENT_KEY_ICC_STATE);
-                logd("slotId: " + slotId + " simStatus: " + simStatus);
-
-                if (slotId != mSlotId || mCmdInProgress == false || mParentHandler == null) {
-                    return;
-                }
-                if (IccCardConstants.INTENT_VALUE_ICC_READY.equals(simStatus)
-                        || IccCardConstants.INTENT_VALUE_ICC_LOCKED.equals(simStatus)) {
-                    //SUB is activated
-                    if (mRequest) {
-                        handleSetUiccDone(mContext.getString(R.string.sub_activate_success));
-                    }
-                } else if (IccCardConstants.INTENT_VALUE_ICC_UNKNOWN.equals(simStatus)
-                        || IccCardConstants.INTENT_VALUE_ICC_NOT_READY.equals(simStatus)){
-                    //SUB is Deactivated
-                    if (!mRequest) {
-                        handleSetUiccDone(mContext.getString(R.string.sub_deactivate_success));
+            if (TelephonyIntents.ACTION_SUBINFO_CONTENT_CHANGE.equals(action)) {
+                long subId = intent.getLongExtra(SubscriptionManager._ID,
+                        SubscriptionManager.INVALID_SUB_ID);
+                String column = intent.getStringExtra(TelephonyIntents.EXTRA_COLUMN_NAME);
+                int intValue = intent.getIntExtra(TelephonyIntents.EXTRA_INT_CONTENT, 0);
+                logd("Received ACTION_SUBINFO_CONTENT_CHANGE on subId: " + subId
+                        + "for " + column + " intValue: " + intValue);
+                if (mCmdInProgress && column != null
+                        && column.equals(SubscriptionManager.SUB_STATE) && mSir.subId == subId) {
+                    if ((intValue == SubscriptionManager.ACTIVE && mCurrentState == true) ||
+                            (intValue == SubscriptionManager.INACTIVE && mCurrentState == false)) {
+                        processSetUiccDone();
                     }
                 }
             }
         }
     };
 
+    private Handler mHandler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                switch(msg.what) {
+                    case EVT_SHOW_RESULT_DLG:
+                        logd("EVT_SHOW_RESULT_DLG");
+                        update();
+                        showAlertDialog(RESULT_ALERT_DLG_ID, 0);
+                        mHandler.removeMessages(EVT_PROGRESS_DLG_TIME_OUT);
+                        break;
+                    case EVT_SHOW_PROGRESS_DLG:
+                        logd("EVT_SHOW_PROGRESS_DLG");
+                        showProgressDialog();
+                        break;
+                    case EVT_PROGRESS_DLG_TIME_OUT:
+                        logd("EVT_PROGRESS_DLG_TIME_OUT");
+                        dismissDialog(sProgressDialog);
+                        break;
+                    default:
+                    break;
+                }
+            }
+        };
+
     private void logd(String msg) {
         if (DBG) Log.d(TAG + "(" + mSlotId + ")", msg);
     }
+
+    private void loge(String msg) {
+        if (DBG) Log.e(TAG + "(" + mSlotId + ")", msg);
+    }
+
 }
