@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-13, The Linux Foundation. All rights reserved
+ * Copyright (c) 2011-2014, The Linux Foundation. All rights reserved
  * Not a Contribution.
  * Copyright (C) 2008 The Android Open Source Project
  *
@@ -41,7 +41,6 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.telephony.CellBroadcastMessage;
-import android.telephony.MSimTelephonyManager;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.PhoneStateListener;
 import android.telephony.ServiceState;
@@ -50,15 +49,14 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.android.internal.telephony.MSimConstants;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.PhoneStateIntentReceiver;
 import com.android.internal.telephony.TelephonyProperties;
 import com.android.settings.R;
+import com.android.settings.MultiSimSettingTab;
 import com.android.settings.SelectSubscription;
-import com.codeaurora.telephony.msim.MSimPhoneFactory;
 import com.android.settings.Utils;
 
 import java.lang.ref.WeakReference;
@@ -97,7 +95,7 @@ public class MSimStatus extends PreferenceActivity {
     private static final int GSM_SIGNAL_NULL = -113;
     private static final String BUTTON_SELECT_SUB_KEY = "button_aboutphone_msim_status";
 
-    private MSimTelephonyManager mTelephonyManager;
+    private TelephonyManager mTelephonyManager;
 
     private PhoneStateIntentReceiver mPhoneStateReceiver;
     private PhoneStateListener[] mPhoneStateListener;
@@ -204,17 +202,17 @@ public class MSimStatus extends PreferenceActivity {
             else
                 setSummaryText(key, msgs[0]);
         } else {
-            if (msgs[MSimConstants.SUB1] == null && msgs[MSimConstants.SUB2] == null)
+            if (msgs[PhoneConstants.SUB1] == null && msgs[PhoneConstants.SUB2] == null)
                 removePreferenceFromScreen(key);
             else {
                 StringBuffer summery = new StringBuffer();
-                if (msgs[MSimConstants.SUB1] != null)
-                    summery.append(msgs[MSimConstants.SUB1]);
-                if (msgs[MSimConstants.SUB2] != null) {
+                if (msgs[PhoneConstants.SUB1] != null)
+                    summery.append(msgs[PhoneConstants.SUB1]);
+                if (msgs[PhoneConstants.SUB2] != null) {
                     if (summery.length() > 0) {
                         summery.append("\n");
                     }
-                    summery.append(msgs[MSimConstants.SUB2]);
+                    summery.append(msgs[PhoneConstants.SUB2]);
                 }
                 setSummaryText(key, summery.toString());
             }
@@ -222,8 +220,12 @@ public class MSimStatus extends PreferenceActivity {
     }
 
     private String getMultiSimName(int subscription) {
-        return Settings.System.getString(getContentResolver(),
-                MULTI_SIM_NAME + (subscription + 1));
+        String name = MultiSimSettingTab.getMultiSimName(this, subscription);
+        if (name != null) {
+            return name;
+        } else {
+            return getResources().getString(R.string.sim_card_number_title, subscription + 1);
+        }
     }
 
     private Handler mHandler;
@@ -269,11 +271,11 @@ public class MSimStatus extends PreferenceActivity {
 
         mHandler = new MyHandler(this);
 
-        mTelephonyManager = (MSimTelephonyManager)getSystemService(MSIM_TELEPHONY_SERVICE);
+        mTelephonyManager = (TelephonyManager)getSystemService(TELEPHONY_SERVICE);
 
         addPreferencesFromResource(R.xml.device_info_msim_status);
 
-        mNumPhones = MSimTelephonyManager.getDefault().getPhoneCount();
+        mNumPhones = TelephonyManager.getDefault().getPhoneCount();
         mPhoneStateListener = new PhoneStateListener[mNumPhones];
         mEsnNumberSummary = new String[mNumPhones];
         mMeidNumberSummary = new String[mNumPhones];
@@ -303,7 +305,7 @@ public class MSimStatus extends PreferenceActivity {
 
         for (int i = 0; i < mNumPhones; i++) {
             mSim[i] = getMultiSimName(i);
-            mPhone[i] = MSimPhoneFactory.getPhone(i);
+            mPhone[i] = PhoneFactory.getPhone(i);
             if ("CDMA".equals(mPhone[i].getPhoneName())) {
                 indexOfCDMA = i;
             } else {
@@ -438,8 +440,8 @@ public class MSimStatus extends PreferenceActivity {
 
             //baseband is not related to DSDS, one phone has one base band.
             String basebandVersionSummery =
-                MSimTelephonyManager.getTelephonyProperty("gsm.version.baseband",
-                        MSimTelephonyManager.getDefault().getDefaultSubscription(), null);
+                TelephonyManager.getTelephonyProperty("gsm.version.baseband",
+                        PhoneFactory.getDefaultSubscription(), null);
             setSummaryText(KEY_BASEBAND_VERSION,basebandVersionSummery);
         }
     }
@@ -460,7 +462,7 @@ public class MSimStatus extends PreferenceActivity {
                 // Ask CellBroadcastReceiver to broadcast the latest area
                 // info received
                 Intent getLatestIntent = new Intent(GET_LATEST_CB_AREA_INFO_ACTION);
-                getLatestIntent.putExtra(MSimConstants.SUBSCRIPTION_KEY, i);
+                getLatestIntent.putExtra(PhoneConstants.SUBSCRIPTION_KEY, i);
                 sendBroadcastAsUser(getLatestIntent, UserHandle.ALL,
                         CB_AREA_INFO_SENDER_PERMISSION);
 
@@ -499,7 +501,7 @@ public class MSimStatus extends PreferenceActivity {
                 }
                 CellBroadcastMessage cbMessage = (CellBroadcastMessage) extras.get("message");
                 if (cbMessage != null && cbMessage.getServiceCategory() == 50) {
-                    int subscriptionId = cbMessage.getSubId();
+                    int subscriptionId = (int)cbMessage.getSubId();
                     String latestAreaInfo = cbMessage.getMessageBody();
                     updateAreaInfo(latestAreaInfo, subscriptionId);
                 }
@@ -663,7 +665,7 @@ public class MSimStatus extends PreferenceActivity {
 
     private void updateDataState(int subscription) {
         String display = null;
-        if (MSimPhoneFactory.getDataSubscription() == subscription
+        if (PhoneFactory.getDataSubscription() == subscription
                 && isDataServiceEnable(subscription)) {
             switch (mDataState[subscription]) {
             case TelephonyManager.DATA_CONNECTED:
@@ -727,8 +729,9 @@ public class MSimStatus extends PreferenceActivity {
     }
 
     private void setIpAddressStatus() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
         Preference ipAddressPref = findPreference(KEY_IP_ADDRESS);
-        String ipAddress = Utils.getDefaultIpAddresses(this);
+        String ipAddress = Utils.getDefaultIpAddresses(cm);
         if (ipAddress != null) {
             ipAddressPref.setSummary(ipAddress);
         } else {
