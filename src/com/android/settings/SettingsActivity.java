@@ -1200,6 +1200,10 @@ public class SettingsActivity extends Activity
                             UserManager.DISALLOW_DEBUGGING_FEATURES)) {
                         removeTile = true;
                     }
+                } else if (id == R.id.global_roaming_settings) {
+                    if (!getResources().getBoolean(R.bool.config_roamingsettings_enabled)) {
+                        removeTile = true;
+                    }
                 }
 
                 if (UserHandle.MU_ENABLED && UserHandle.myUserId() != 0
