@@ -153,7 +153,7 @@ public class MultiSimSettingTab extends TabActivity {
      * Since the number of SIMs are few, an array is fine.
      */
     private static SubInfoRecord findRecordBySlotId(Context context, final int slotId) {
-        List<SubInfoRecord> subInfoList = SubscriptionManager.getActivatedSubInfoList(context);
+        List<SubInfoRecord> subInfoList = SubscriptionManager.getActiveSubInfoList();
 
         if (subInfoList != null){
             final int availableSubInfoLength = subInfoList.size();

@@ -206,7 +206,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
                 ((SimPreference)pref).update();
             }
         }
-        simPref.setEnabled(!needDisableDataSub2());
     }
 
     private boolean needDisableDataSub2() {
@@ -285,6 +284,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             simPref.setSelectedValue(sir, false);
         }
         simPref.setEnabled(mNumSims > 1);
+        simPref.setEnabled(!needDisableDataSub2());
     }
 
     private void updateCallValues() {

@@ -115,7 +115,7 @@ public class SimConfiguration extends PreferenceActivity implements TextWatcher 
                 return false;
             }
 
-            SubscriptionManager.setDisplayName(SimConfiguration.this, multiSimName, mSubscription);
+            SubscriptionManager.setDisplayName(multiSimName, mSubscription);
 
             mNamePreference.setSummary(multiSimName);
             Intent intent = new Intent(MultiSimSettingsConstants.SUBNAME_CHANGED);

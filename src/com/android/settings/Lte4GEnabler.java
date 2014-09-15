@@ -57,6 +57,7 @@ public class Lte4GEnabler {
     private Switch mSwitch;
 
     private static MyHandler mHandler;
+    private static final int DEFAULT_SUBSCRIPTION = 0;
 
     private static final Uri URI_PHONE_FEATURE = Uri
             .parse("content://com.qualcomm.qti.phonefeature.FEATURE_PROVIDER");
@@ -151,7 +152,7 @@ public class Lte4GEnabler {
         final Message msg = mHandler.obtainMessage(
                 MyHandler.MESSAGE_SET_PREFERRED_NETWORK_TYPE);
         msg.replyTo = new Messenger(mHandler);
-        setTDDDataOnly(PhoneConstants.DEFAULT_SUBSCRIPTION, true, msg);
+        setTDDDataOnly(DEFAULT_SUBSCRIPTION, true, msg);
     }
 
     private void setPrefNetwork() {
@@ -159,7 +160,7 @@ public class Lte4GEnabler {
         mSwitch.setEnabled(false);
         int networkType = mSwitch.isChecked() ? Phone.NT_MODE_LTE_CDMA_EVDO_GSM_WCDMA
                 : Phone.NT_MODE_GLOBAL;
-        if (isPrefTDDDataOnly(PhoneConstants.DEFAULT_SUBSCRIPTION)) {
+        if (isPrefTDDDataOnly(DEFAULT_SUBSCRIPTION)) {
             if (mSwitch.isChecked()) {
                 //setTDDDataOnly();
                 return;
@@ -174,7 +175,7 @@ public class Lte4GEnabler {
         msg.replyTo = msger;
         // both dsds and sss use this this interface
         Bundle extras = new Bundle();
-        extras.putInt(PhoneConstants.SUBSCRIPTION_KEY, PhoneConstants.DEFAULT_SUBSCRIPTION);
+        extras.putInt(PhoneConstants.SUBSCRIPTION_KEY, DEFAULT_SUBSCRIPTION);
         extras.putInt("network", networkType);
         extras.putParcelable("callback", msg);
         setPrefNetwork(extras);
@@ -215,7 +216,7 @@ public class Lte4GEnabler {
             settingsNetworkMode = TelephonyManager.getIntAtIndex(
                     mContext.getContentResolver(),
                     Settings.Global.PREFERRED_NETWORK_MODE,
-                    PhoneConstants.DEFAULT_SUBSCRIPTION);
+                    DEFAULT_SUBSCRIPTION);
         } catch (SettingNotFoundException snfe) {
             Log.e(TAG, "getPreferredNetworkType: Could not find PREFERRED_NETWORK_MODE!!!");
         }
