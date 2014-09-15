@@ -18,7 +18,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/status_bar_title">
 
-    <ListPreference
+    <PreferenceCategory
+        android:title="@string/status_bar_styles_title">
+
+        <ListPreference
         android:key="status_bar_clock"
         android:dialogTitle="@string/status_bar_clock_title"
         android:title="@string/status_bar_clock_title"
@@ -26,7 +29,7 @@
         android:entryValues="@array/values_status_bar_clock"
         android:defaultValue="1" />
 
-    <ListPreference
+        <ListPreference
         android:key="status_bar_battery"
         android:dialogTitle="@string/status_bar_battery_title"
         android:title="@string/status_bar_battery_title"
@@ -34,28 +37,36 @@
         android:entryValues="@array/values_status_bar_battery"
         android:defaultValue="0" />
 
-    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
-        android:key="status_bar_battery_show_percent"
-        android:title="@string/status_bar_battery_show_percent_title"
-        android:defaultValue="false" />
-
-    <ListPreference
+        <ListPreference
         android:key="status_bar_signal"
         android:dialogTitle="@string/status_bar_signal_text_title"
         android:title="@string/status_bar_signal_text_title"
         android:entries="@array/entries_status_bar_signal"
         android:entryValues="@array/values_status_bar_signal" />
 
-    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
-        android:key="status_bar_brightness_control"
-        android:title="@string/status_bar_toggle_brightness"
-        android:summary="@string/status_bar_toggle_brightness_summary"
-        android:defaultValue="false" />
+    </PreferenceCategory>
 
-    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
-        android:key="status_bar_notif_count"
-        android:title="@string/status_bar_notif_count_title"
-        android:summary="@string/status_bar_notif_count_summary"
-        android:defaultValue="false" />
+    <PreferenceCategory
+        android:title="@string/status_bar_general_title">
+
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="status_bar_battery_show_percent"
+            android:title="@string/status_bar_battery_show_percent_title"
+            android:summary="@string/status_bar_battery_show_percent_summary"
+            android:defaultValue="false" />
+
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="status_bar_brightness_control"
+            android:title="@string/status_bar_toggle_brightness"
+            android:summary="@string/status_bar_toggle_brightness_summary"
+            android:defaultValue="false" />
+
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="status_bar_notif_count"
+            android:title="@string/status_bar_notif_count_title"
+            android:summary="@string/status_bar_notif_count_summary"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>
