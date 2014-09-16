@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a1b2928_f28613b8",
+        "filename": "res/layout/installed_app_details.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-09-16T23:19:32Z",
+      "side": 1,
+      "message": "Given that this is kind of a details button, I think an \u0027adjustment\u0027 icon (like ic_sysbar_quicksettings, but in the correct color) is more suitable. I also would disable the button if PG for the app is off, and perhaps use an ImageView instead of the ImageButton to get rid of the (IMHO ugly) frame.",
+      "revId": "8573ce21922c04d025e3ab478487433bd2b383ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a1b2928_b2a49b57",
+        "filename": "src/com/android/settings/applications/InstalledAppDetails.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1531,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-09-16T23:19:32Z",
+      "side": 1,
+      "message": "There should be a space after if (here and below).\n\nIndention depth reduction suggestion:\n\n} else if (v \u003d\u003d mAppOpsButton \u0026\u0026 mPackageInfo !\u003d null) {",
+      "revId": "8573ce21922c04d025e3ab478487433bd2b383ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
