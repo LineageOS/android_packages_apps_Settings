@@ -196,12 +196,24 @@ public class LinearColorBar extends LinearLayout {
         int right3 = right2 + (int)(width*mGreenRatio);
 
         int indicatorLeft, indicatorRight;
-        if (mShowingGreen) {
-            indicatorLeft = right2;
-            indicatorRight = right3;
+
+        // Change for RTL.
+        if (isLayoutRtl()) {
+            if (mShowingGreen) {
+                indicatorLeft = left + (width - right3);
+                indicatorRight = left + (width - right2);
+            } else {
+                indicatorLeft = left + (width - right2);
+                indicatorRight = left + (width - right);
+            }
         } else {
-            indicatorLeft = right;
-            indicatorRight = right2;
+            if (mShowingGreen) {
+                indicatorLeft = right2;
+                indicatorRight = right3;
+            } else {
+                indicatorLeft = right;
+                indicatorRight = right2;
+            }
         }
 
         if (mLastInterestingLeft != indicatorLeft || mLastInterestingRight != indicatorRight) {
@@ -239,14 +251,45 @@ public class LinearColorBar extends LinearLayout {
             canvas.drawPath(mColorPath, mColorGradientPaint);
         }
 
-        if (left < right) {
-            mRect.left = left;
-            mRect.right = right;
-            mPaint.setColor(pickColor(mLeftColor, REGION_RED));
-            canvas.drawRect(mRect, mPaint);
-            width -= (right-left);
-            left = right;
-        }
+        // Change for RTL.
+        if (isLayoutRtl()) {
+            int widthol;
+            widthol = width - ((int)(width * mYellowRatio) + (int)(width * mRedRatio));
+            right = left + widthol;
+            if (left < right) {
+                mRect.left = left;
+                mRect.right = right;
+                mPaint.setColor(RIGHT_COLOR);
+                canvas.drawRect(mRect, mPaint);
+                left = right;
+            }
+
+            right = left + (int)(width * mYellowRatio);
+
+            if (left < right) {
+                mRect.left = left;
+                mRect.right = right;
+                mPaint.setColor(MIDDLE_COLOR);
+                canvas.drawRect(mRect, mPaint);
+                left = right;
+            }
+
+            right = left + (int)(width * mRedRatio);
+            if (left < right) {
+                mRect.left = left;
+                mRect.right = right;
+                mPaint.setColor(LEFT_COLOR);
+                canvas.drawRect(mRect, mPaint);
+            }
+        } else {
+            if (left < right) {
+                mRect.left = left;
+                mRect.right = right;
+                mPaint.setColor(LEFT_COLOR);
+                canvas.drawRect(mRect, mPaint);
+                width -= (right-left);
+                left = right;
+            }
 
         mLastLeftDiv = right;
         mLastRightDiv = right2;
@@ -269,6 +312,7 @@ public class LinearColorBar extends LinearLayout {
             mRect.right = right;
             mPaint.setColor(pickColor(mRightColor, REGION_GREEN));
             canvas.drawRect(mRect, mPaint);
+            }
         }
     }
 }

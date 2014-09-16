@@ -58,6 +58,7 @@ import com.android.settings.SelectSubscription;
 import com.android.settings.Utils;
 
 import java.lang.ref.WeakReference;
+import java.util.Locale;
 
 /**
  * Display the following information
@@ -343,6 +344,13 @@ public class Status extends PreferenceActivity {
             if (!TextUtils.isEmpty(rawNumber)) {
                 formattedNumber = PhoneNumberUtils.formatNumber(rawNumber);
             }
+
+            // Make sure the phone number display normally for RTL.
+            if (TextUtils.getLayoutDirectionFromLocale(Locale.getDefault())
+                    == View.LAYOUT_DIRECTION_RTL) {
+                formattedNumber = '\u202D'+formattedNumber+'\u202C';
+            }
+
             // If formattedNumber is null or empty, it'll display as "Unknown".
             setSummaryText(KEY_PHONE_NUMBER, formattedNumber);
 
