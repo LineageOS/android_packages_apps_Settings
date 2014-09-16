@@ -206,6 +206,8 @@ public class RingerVolumePreference extends VolumePreference {
         final CheckBox linkMuteStates = (CheckBox) view.findViewById(R.id.link_mutes);
         final CheckBox volumeKeysControlRingStream = (CheckBox) view.findViewById(R.id.volume_keys_control_ring_stream);
         mSafeHeadsetVolume = (CheckBox) view.findViewById(R.id.safe_headset_volume);
+        final CheckBox safeHeadsetVolumeRestore =
+                (CheckBox) view.findViewById(R.id.safe_headset_volume_restore);
 
         final View ringerSection = view.findViewById(R.id.ringer_section);
         final View notificationSection = view.findViewById(R.id.notification_section);
@@ -362,6 +364,24 @@ public class RingerVolumePreference extends VolumePreference {
                             Settings.System.SAFE_HEADSET_VOLUME, 1);
                 }
             }
+        });
+
+        if (System.getInt(getContext().getContentResolver(),
+                System.SAFE_HEADSET_VOLUME_RESTORE, 0) == 1) {
+            safeHeadsetVolumeRestore.setChecked(true);
+        } else {
+            safeHeadsetVolumeRestore.setChecked(false);
+        }
+
+        safeHeadsetVolumeRestore.setOnCheckedChangeListener(
+                new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Settings.System.putInt(buttonView.getContext().getContentResolver(),
+                        Settings.System.SAFE_HEADSET_VOLUME_RESTORE, isChecked ? 1 : 0);
+            }
+
         });
 
         // Load initial states from AudioManager
