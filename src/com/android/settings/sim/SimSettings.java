@@ -494,7 +494,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
                     if ( subInfoList == null) {
                         return null;
                     }
-                    String title = subInfoList.get(0).mDisplayName;
+                    String title = subInfoList.get(0).displayName;
 
                     String msg = getString(sEnabled ? R.string.sim_enabler_enabling
                             : R.string.sim_enabler_disabling);

@@ -190,17 +190,17 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
     }
 
     private boolean isCurrentSubValid() {
-        if (mSir == null || mSir.mSubId <= 0) {
+        if (mSir == null || mSir.subId <= 0) {
             List<SubInfoRecord> sirList = SubscriptionManager.getActiveSubInfoList();
             if (sirList == null) return false;
             for (SubInfoRecord sir : sirList) {
-                if (sir != null && mSlotId == sir.mSlotId) {
+                if (sir != null && mSlotId == sir.slotId) {
                     mSir = sir;
                     break;
                 }
             }
         }
-        if (mSir != null && mSir.mSubId > 0 && mSir.mSlotId >= 0 &&
+        if (mSir != null && mSir.subId > 0 && mSir.slotId >= 0 &&
                 mSir.mStatus != SubscriptionManager.SUB_CONFIGURATION_IN_PROGRESS) {
             return true;
         }
@@ -209,7 +209,7 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
 
     private void updateTitle() {
         if (mContext == null || mSubTitle == null) return;
-        mSubTitle.setText(mSir.mDisplayName);
+        mSubTitle.setText(mSir.displayName);
     }
 
     public void setSwitchVisibility (int visibility) {
@@ -244,18 +244,18 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
         sendMessage(EVT_SHOW_PROGRESS_DIALOG, b);
         mSwitch.setEnabled(false);
         if (enabled) {
-            logd("activateSubId: subId " + mSir.mSubId);
-            SubscriptionManager.activateSubId(mSir.mSubId);
+            logd("activateSubId: subId " + mSir.subId);
+            SubscriptionManager.activateSubId(mSir.subId);
         } else {
-            logd("deactivateSubId: subId " + mSir.mSubId);
-            SubscriptionManager.deactivateSubId(mSir.mSubId);
+            logd("deactivateSubId: subId " + mSir.subId);
+            SubscriptionManager.deactivateSubId(mSir.subId);
         }
     }
 
     private void updateSummary() {
         Resources res = mContext.getResources();
         boolean isActivated = (mSir.mStatus == SubscriptionManager.ACTIVE);
-        logd("updateSummary: subId " + mSir.mSubId + " isActivated = " + isActivated +
+        logd("updateSummary: subId " + mSir.subId + " isActivated = " + isActivated +
                 " slot id = " + mSlotId);
 
         if (mAlertDialog != null) mIsShowAlertDialog = mAlertDialog.isShowing();
@@ -305,7 +305,7 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
             Collections.sort(subInfoLists, new Comparator<SubInfoRecord>() {
                 @Override
                 public int compare(SubInfoRecord arg0, SubInfoRecord arg1) {
-                    return arg0.mSlotId - arg1.mSlotId;
+                    return arg0.slotId - arg1.slotId;
                 }
             });
         }
