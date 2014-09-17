@@ -108,18 +108,20 @@
         <item>1</item>
         <item>2</item>
     </string-array>
-
-    <!-- Profile expanded desktop mode options. Do not translate. -->
-    <string-array name="profile_expanded_desktop_entries" translatable="false">
-        <item>@string/profile_lockmode_default</item>
-        <item>@string/connection_state_enabled</item>
-        <item>@string/connection_state_disabled</item>
+    
+    <string-array name="profile_action_generic_connection_entries">
+        <item>@string/profile_action_none</item>
+        <item>@string/profile_action_disabled</item>
+        <item>@string/profile_action_enable</item>
     </string-array>
-
-    <!-- Values for profile expanded desktop mode. Do not translate. -->
-    <string-array name="profile_expanded_desktop_values" translatable="false">
+    <string-array name="profile_action_generic_connection_values">
+        <item>-1</item>
         <item>0</item>
         <item>1</item>
-        <item>2</item>
+    </string-array>
+    <string-array name="trigger_page_title">
+        <item>WiFi</item>
+        <item>Bluetooth</item>
+        <item>NFC</item>
     </string-array>
 </resources>
