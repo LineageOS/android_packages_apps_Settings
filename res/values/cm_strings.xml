@@ -1341,4 +1341,95 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="sd_media_format_button_text">Erase SD card</string>
     <string name="sd_media_format_final_desc">Erase the SD card, deleting all files stored there? You can\'t reverse this action!</string>
     <string name="sd_media_format_gesture_explanation">You need to draw your unlock pattern to confirm that you want to erase the SD card.</string>
+
+    <!-- Message when bluetooth dialog for pin entry is showing  when HIGH security enabled-->
+    <string name="bluetooth_enter_pin_msg_hs">To pair with:<xliff:g id="bold">&lt;br>&lt;b></xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b>&lt;br>&lt;br></xliff:g>Type the device\'s required PIN (16 digits or more):</string>
+
+    <!-- Bluetooth settings.  The user-visible string that is used whenever referring to the SAP profile. -->
+    <string name="bluetooth_profile_sap">SIM Access</string>
+    <!-- Bluetooth settings.  The user-visible string that is used whenever referring to the DUN profile. -->
+    <string name="bluetooth_profile_dun">Dial-up Network Access</string>
+
+    <!-- Bluetooth settings.  Connection options screen.  The summary for the SAP checkbox preference when SAP is connected. -->
+    <string name="bluetooth_sap_profile_summary_connected">Connected to SIM Access server</string>
+    <!-- Bluetooth settings.  Connection options screen.  The summary for the DUN checkbox preference when DUN is connected. -->
+    <string name="bluetooth_dun_profile_summary_connected">Connected to DUN server</string>
+
+    <!-- Bluetooth settings.  Connection options screen.  The summary for the SAP checkbox preference that describes how checking it will set the SAP profile as preferred. -->
+    <string name="bluetooth_sap_profile_summary_use_for">Use for SIM Access</string>
+    <!-- Bluetooth settings.  Connection options screen.  The summary for the DUN checkbox preference that describes how checking it will set the DUN profile as preferred. -->
+    <string name="bluetooth_dun_profile_summary_use_for">Use for Dial-up Network Access</string>
+
+    <!-- Status for netwoks disabled from assoc reject from Access Point -->
+    <string name="wifi_disabled_association_rejected">Association rejected</string>
+
+    <string name="screencolor">Screen color</string>
+    <string name="custom_screencolor">Custom screen color</string>
+
+    <!-- About phone screen, summary of the item to go into the phone status screen -->
+    <string name="device_additional_status_summary">Phone number, signal, IMEI, etc.</string>
+    <!-- In About phone->Status screen, title of the item to go into the subscription status screen -->
+    <string name="device_additional_status">Additional status info</string>
+
+    <!-- Title of checkbox setting that enable quickboot. [CHAR LIMIT=32] -->
+    <string name="enable_quickboot_title">Enable QuickBoot mode</string>
+    <!-- Summary of checkbox setting that enable quickboot. [CHAR LIMIT=64] -->
+    <string name="enable_quickboot_summary">Put device into QuickBoot mode instead of normal power off.</string>
+
+    <string name="data_usage_tab_slot">SIM </string>
+
+    <!-- Multi Sim Settings screen, Select Sub label -->
+    <string name="sel_sub_title">Configure subscriptions</string>
+    <!-- Multi Sim Settings screen, Select Sub Summary label -->
+    <string name="sel_sub_summary">Select your subscription</string>
+    <!-- Select Subscription screen title -->
+    <string name="select_subscription">Select subscription</string>
+    <!-- String displayed when no SIM info is present and Multi SIM settings is accessed-->
+    <string name="no_sim_info">SIM card info not available.\nMenu cannot be accessed</string>
+    <!-- Subscription settings title -->
+    <string name="subs_settings">Subscription status</string>
+
+    <!-- Multi Sim Settings screen, Set DDS progress dialog message -->
+    <string name="set_data_subscription_progress">Setting data subscription\u2026</string>
+    <!-- Multi Sim Settings screen, Set DDS success message -->
+    <string name="set_dds_success">Data subscription was successfully set</string>
+    <!-- Multi Sim Settings screen, Set DDS failure message -->
+    <string name="set_dds_failed">Error while setting data subscription. Remove any existing data connections and try again.</string>
+    <!-- Multi Sim Settings screen, Set DDS error message -->
+    <string name="set_dds_error">Error while setting data subscription.</string>
+    <!-- Multi Sim Settings screen, Set SMS error message -->
+    <string name="set_sms_error">Error while setting SMS subscription. Subscription not active.</string>
+    <!-- Multi Sim Settings screen, Set VOICE error message -->
+    <string name="set_voice_error">Error while setting voice subscription. Subscription not active.</string>
+    <!-- Multi Sim Settings screen, Set PRIORITY SUB error message -->
+    <string name="set_priority_sub_error">Error while setting priority subscription. Subscription not active.</string>
+
+    <!--Prompt, used only for voice-->
+    <string name="prompt">Prompt</string>
+    <string name="prompt_user">Prompt user</string>
+
+    <!-- Tune Away settings -->
+    <string name="tune_away_title">TuneAway</string>
+    <string name="tune_away_Default" translatable="false">Disable</string>
+    <!-- Summary for the TuneAway status displayed in Multi SIM Settings -->
+    <string name="tune_away_enabled">TuneAway enabled</string>
+    <string name="tune_away_disabled">TuneAway disabled</string>
+
+    <string name="screencolor_save">Save</string>
+    <string name="screencolor_cancel">Cancel</string>
+    <string name="previous_str">Previous</string>
+    <string name="new_str">New</string>
+    <string name="restore_preview">View default picture</string>
+    <string name="selectnewfile_menu">View new picture from Gallery</string>
+    <string name="selectfile_menu">View picture from Gallery</string>
+    <string name="restore_default_str">Reset</string>
+    <string name="hue_str">Hue: <xliff:g id="hue_value">%1$s</xliff:g></string>
+    <string name="saturation_str">Saturation: <xliff:g id="saturation_value">%1$s</xliff:g></string>
+    <string name="contrast_str">Contrast: <xliff:g id="contrast_value">%1$s</xliff:g></string>
+    <string name="intensity_str">Intensity: <xliff:g id="intensity_str_value">%1$s</xliff:g></string>
+
+    <!-- About tablet screen, summary of the item that takes you to tablet status screen -->
+    <string name="device_status_summary_cm" product="tablet">Status of the battery, network, and other information</string>
+    <!-- About phone screen, summary of the item to go into the phone status screen -->
+    <string name="device_status_summary_cm" product="default">Battery status, battery level, etc.</string>
 </resources>
