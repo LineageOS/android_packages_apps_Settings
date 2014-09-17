@@ -16,7 +16,9 @@
 
 package com.android.settings.profiles;
 
+import android.app.Profile;
 import android.content.ActivityNotFoundException;
+import android.content.Intent;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.PreferenceActivity;
@@ -138,9 +140,14 @@ public class ProfilesPreference extends CheckBoxPreference {
 
     // utility method used to start sub activity
     private void startProfileConfigActivity() {
-        PreferenceActivity pa = (PreferenceActivity) mFragment.getActivity();
-        pa.startPreferencePanel(ProfileConfig.class.getName(), mSettingsBundle,
-                R.string.profile_profile_manage, null, mFragment, PROFILE_DETAILS);
+        Intent intent = new Intent(getContext(), ProfileActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("profile", mSettingsBundle.getParcelable("Profile"));
+        mFragment.startActivity(intent);
+//        PreferenceActivity pa = (PreferenceActivity) mFragment.getActivity();
+//        pa.startPreferenceFragment(SetupTriggersFragment.newInstance(new Profile("temp")), true /* ? */);
+//        pa.startPreferencePanel(ProfileConfig.class.getName(), mSettingsBundle,
+//                R.string.profile_profile_manage, null, mFragment, PROFILE_DETAILS);
     }
 
     @Override
