@@ -37,6 +37,7 @@ import android.preference.PreferenceCategory;
 import android.provider.MediaStore;
 import android.text.format.Formatter;
 
+import com.android.settings.MediaFormat;
 import com.android.settings.R;
 import com.android.settings.Settings;
 import com.android.settings.deviceinfo.StorageMeasurement.MeasurementDetails;
@@ -200,17 +201,55 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
         final boolean isRemovable = mVolume != null ? mVolume.isRemovable() : false;
         // Always create the preference since many code rely on it existing
         mMountTogglePreference = new Preference(context);
+
+        // resource IDs that are loaded appropriately based on the storage
+        // volume type
+        int titleResId = 0;
+        int summaryResId = 0;
+
         if (isRemovable) {
-            mMountTogglePreference.setTitle(R.string.sd_eject);
-            mMountTogglePreference.setSummary(R.string.sd_eject_summary);
+
+            // show appropriate title / summary based on volume type
+            if (MediaFormat.isUsbStorage(mVolume, context)) {
+                titleResId = R.string.usb_eject;
+                summaryResId = R.string.usb_eject_summary;
+
+            } else if (MediaFormat.isUiccStorage(mVolume, context)) {
+                titleResId = R.string.uicc_eject;
+                summaryResId = R.string.uicc_eject_summary;
+
+            } else {
+                titleResId = R.string.sd_eject;
+                summaryResId = R.string.sd_eject_summary;
+            }
+
+            mMountTogglePreference.setTitle(titleResId);
+            mMountTogglePreference.setSummary(summaryResId);
+
             addPreference(mMountTogglePreference);
         }
 
         final boolean allowFormat = mVolume != null;
         if (allowFormat) {
             mFormatPreference = new Preference(context);
-            mFormatPreference.setTitle(R.string.sd_format);
-            mFormatPreference.setSummary(R.string.sd_format_summary);
+
+            // show appropriate title / summary based on volume type
+            if (MediaFormat.isUsbStorage(mVolume, context)) {
+                titleResId = R.string.usb_format;
+                summaryResId = R.string.usb_format_summary;
+
+            } else if (MediaFormat.isUiccStorage(mVolume, context)) {
+                titleResId = R.string.uicc_format;
+                summaryResId = R.string.uicc_format_summary;
+
+            } else {
+                titleResId = R.string.sd_format;
+                summaryResId = R.string.sd_format_summary;
+            }
+
+            mFormatPreference.setTitle(titleResId);
+            mFormatPreference.setSummary(summaryResId);
+
             addPreference(mFormatPreference);
         }
 
@@ -236,7 +275,15 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
 
     private void updatePreferencesFromState() {
         // Only update for physical volumes
-        if (mVolume == null) return;
+        if (mVolume == null)
+            return;
+
+        // resource IDs that are loaded appropriately based on the storage
+        // volume type
+        int titleResId = 0;
+        int summaryResId = 0;
+
+        Context context = getContext();
 
         mMountTogglePreference.setEnabled(true);
 
@@ -251,8 +298,23 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
         if (Environment.MEDIA_MOUNTED.equals(state)
                 || Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
             mMountTogglePreference.setEnabled(true);
-            mMountTogglePreference.setTitle(mResources.getString(R.string.sd_eject));
-            mMountTogglePreference.setSummary(mResources.getString(R.string.sd_eject_summary));
+
+            if (MediaFormat.isUsbStorage(mVolume, context)) {
+                titleResId = R.string.usb_eject;
+                summaryResId = R.string.usb_eject_summary;
+
+            } else if (MediaFormat.isUiccStorage(mVolume, context)) {
+                titleResId = R.string.uicc_eject;
+                summaryResId = R.string.uicc_eject_summary;
+
+            } else {
+                titleResId = R.string.sd_eject;
+                summaryResId = R.string.sd_eject_summary;
+            }
+
+            mMountTogglePreference.setTitle(titleResId);
+            mMountTogglePreference.setSummary(summaryResId);
+
             addPreference(mUsageBarPreference);
             addPreference(mItemTotal);
             addPreference(mItemAvailable);
@@ -260,12 +322,41 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
             if (Environment.MEDIA_UNMOUNTED.equals(state) || Environment.MEDIA_NOFS.equals(state)
                     || Environment.MEDIA_UNMOUNTABLE.equals(state)) {
                 mMountTogglePreference.setEnabled(true);
-                mMountTogglePreference.setTitle(mResources.getString(R.string.sd_mount));
-                mMountTogglePreference.setSummary(mResources.getString(R.string.sd_mount_summary));
+
+                if (MediaFormat.isUsbStorage(mVolume, context)) {
+                    titleResId = R.string.usb_mount;
+                    summaryResId = R.string.usb_mount_summary;
+
+                } else if (MediaFormat.isUiccStorage(mVolume, context)) {
+                    titleResId = R.string.uicc_mount;
+                    summaryResId = R.string.uicc_mount_summary;
+
+                } else {
+                    titleResId = R.string.sd_mount;
+                    summaryResId = R.string.sd_mount_summary;
+                }
+
+                mMountTogglePreference.setTitle(mResources.getString(titleResId));
+                mMountTogglePreference.setSummary(mResources.getString(summaryResId));
+
             } else {
                 mMountTogglePreference.setEnabled(false);
-                mMountTogglePreference.setTitle(mResources.getString(R.string.sd_mount));
-                mMountTogglePreference.setSummary(mResources.getString(R.string.sd_insert_summary));
+
+                if (MediaFormat.isUsbStorage(mVolume, context)) {
+                    titleResId = R.string.usb_mount;
+                    summaryResId = R.string.usb_insert_summary;
+
+                } else if (MediaFormat.isUiccStorage(mVolume, context)) {
+                    titleResId = R.string.uicc_mount;
+                    summaryResId = R.string.uicc_insert_summary;
+
+                } else {
+                    titleResId = R.string.sd_mount;
+                    summaryResId = R.string.sd_insert_summary;
+                }
+
+                mMountTogglePreference.setTitle(mResources.getString(titleResId));
+                mMountTogglePreference.setSummary(mResources.getString(summaryResId));
             }
 
             removePreference(mUsageBarPreference);
@@ -288,7 +379,16 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
             }
         } else if (mFormatPreference != null) {
             mFormatPreference.setEnabled(mMountTogglePreference.isEnabled());
-            mFormatPreference.setSummary(mResources.getString(R.string.sd_format_summary));
+
+            if (MediaFormat.isUsbStorage(mVolume, context)) {
+                mFormatPreference.setSummary(R.string.usb_format_summary);
+
+            } else if (MediaFormat.isUiccStorage(mVolume, context)) {
+                mFormatPreference.setSummary(R.string.uicc_format_summary);
+
+            } else {
+                mFormatPreference.setSummary(R.string.sd_format_summary);
+            }
         }
     }
 
