@@ -22,30 +22,27 @@ import com.android.internal.telephony.TelephonyIntents;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.bluetooth.BluetoothA2dp;
+import android.bluetooth.BluetoothHeadset;
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.DialogInterface;
 import android.media.AudioManager;
 import android.media.AudioSystem;
 import android.net.Uri;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.preference.CheckBoxPreference;
 import android.preference.VolumePreference;
 import android.provider.Settings;
 import android.provider.Settings.System;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
@@ -66,6 +63,18 @@ public class RingerVolumePreference extends VolumePreference {
     // To track whether a confirmation dialog was clicked.
     private boolean mDialogClicked;
     private Dialog mWaiverDialog;
+
+    private static final String[] AUDIO_DEVICE_CHANGE_INTENTS = new String[] {
+        BluetoothA2dp.ACTION_CONNECTION_STATE_CHANGED,
+        BluetoothHeadset.ACTION_AUDIO_STATE_CHANGED,
+        BluetoothHeadset.ACTION_CONNECTION_STATE_CHANGED,
+        Intent.ACTION_ANALOG_AUDIO_DOCK_PLUG,
+        Intent.ACTION_DIGITAL_AUDIO_DOCK_PLUG,
+        Intent.ACTION_HDMI_AUDIO_PLUG,
+        Intent.ACTION_HEADSET_PLUG,
+        Intent.ACTION_USB_AUDIO_ACCESSORY_PLUG,
+        Intent.ACTION_USB_AUDIO_DEVICE_PLUG
+    };
 
     // These arrays must all match in length and order
     private static final int[] SEEKBAR_ID = new int[] {
@@ -371,12 +380,23 @@ public class RingerVolumePreference extends VolumePreference {
         if (mRingModeChangedReceiver == null) {
             final IntentFilter filter = new IntentFilter();
             filter.addAction(AudioManager.RINGER_MODE_CHANGED_ACTION);
+            for (String i : AUDIO_DEVICE_CHANGE_INTENTS) {
+                filter.addAction(i);
+            }
+
             mRingModeChangedReceiver = new BroadcastReceiver() {
                 public void onReceive(Context context, Intent intent) {
                     final String action = intent.getAction();
                     if (AudioManager.RINGER_MODE_CHANGED_ACTION.equals(action)) {
                         mHandler.sendMessage(mHandler.obtainMessage(MSG_RINGER_MODE_CHANGED, intent
                                 .getIntExtra(AudioManager.EXTRA_RINGER_MODE, -1), 0));
+                    } else {
+                        for (String i : AUDIO_DEVICE_CHANGE_INTENTS) {
+                            if (i.equals(action)) {
+                                updateSlidersAndMutedStates();
+                                break;
+                            }
+                        }
                     }
                 }
             };
