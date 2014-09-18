@@ -96,8 +96,6 @@ public class DashboardSummary extends Fragment {
     @Override
     public void onDestroy() {
         super.onPause();
-
-        mLte4GEnabler.destroy();
     }
 
     @Override
