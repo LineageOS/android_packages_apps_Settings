@@ -208,8 +208,13 @@ public class ApnEditor extends PreferenceActivity
         final String action = intent.getAction();
         mDisableEditor = intent.getBooleanExtra("DISABLE_EDITOR",false);
         if (mDisableEditor) {
-            getPreferenceScreen().setEnabled(false);
-            Log.d(TAG, "ApnEditor form is disabled.");
+            if (getResources().getBoolean(R.bool.config_name_apn)) {
+                getPreferenceScreen().setEnabled(false);
+                Log.d(TAG, "ApnEditor form is disabled.");
+            } else {
+                mApn.setEnabled(false);
+                Log.d(TAG, "Apn Name can't be edited.");
+            }
         }
         // Read the subscription received from Phone settings.
         mSubscription = intent.getIntExtra(SelectSubscription.SUBSCRIPTION_KEY,
@@ -568,7 +573,7 @@ public class ApnEditor extends PreferenceActivity
         int dataSub = 0;
 
         // If the form is not editable, do nothing and return.
-        if(mDisableEditor){
+        if(mDisableEditor && getResources().getBoolean(R.bool.config_name_apn)){
             Log.d(TAG, "Form is disabled. Nothing to save.");
             return true;
         }
