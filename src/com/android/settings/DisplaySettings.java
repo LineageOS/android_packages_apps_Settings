@@ -477,9 +477,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
 
         if (mTapToWake != null) {
-            final SharedPreferences prefs =
-                    PreferenceManager.getDefaultSharedPreferences(getActivity());
-            mTapToWake.setChecked(prefs.getBoolean(KEY_TAP_TO_WAKE, true));
+            mTapToWake.setChecked(TapToWake.isEnabled());
         }
 
         // Default value for wake-on-plug behavior from config.xml
@@ -709,7 +707,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
 
         if (isTapToWakeSupported()) {
-            final boolean enabled = prefs.getBoolean(KEY_TAP_TO_WAKE, true);
+            final boolean enabled = prefs.getBoolean(KEY_TAP_TO_WAKE, TapToWake.isEnabled());
             if (!TapToWake.setEnabled(enabled)) {
                 Log.e(TAG, "Failed to restore tap-to-wake settings.");
             } else {
