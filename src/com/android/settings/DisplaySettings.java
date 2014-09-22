@@ -97,6 +97,13 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_EXPANDED_DESKTOP_NO_NAVBAR = "expanded_desktop_no_navbar";
     private static final String CATEGORY_EXPANDED_DESKTOP = "expanded_desktop_category";
 
+    /*
+     * Right now if a device supports tap to wake, it is enabled by default. there's no notion
+     * of disabling it by default yet. If it needs to be disabled by default, this constant should
+     * be changed to a field and then read in some default value.
+     */
+    private static final boolean TAP_TO_WAKE_DEFAULT = true;
+
     private ListPreference mExpandedDesktopPref;
     private CheckBoxPreference mExpandedDesktopNoNavbarPref;
 
@@ -479,7 +486,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         if (mTapToWake != null) {
             final SharedPreferences prefs =
                     PreferenceManager.getDefaultSharedPreferences(getActivity());
-            mTapToWake.setChecked(prefs.getBoolean(KEY_TAP_TO_WAKE, true));
+            mTapToWake.setChecked(prefs.getBoolean(KEY_TAP_TO_WAKE, TAP_TO_WAKE_DEFAULT));
         }
 
         // Default value for wake-on-plug behavior from config.xml
@@ -709,7 +716,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
 
         if (isTapToWakeSupported()) {
-            final boolean enabled = prefs.getBoolean(KEY_TAP_TO_WAKE, true);
+            final boolean enabled = prefs.getBoolean(KEY_TAP_TO_WAKE, TAP_TO_WAKE_DEFAULT);
             if (!TapToWake.setEnabled(enabled)) {
                 Log.e(TAG, "Failed to restore tap-to-wake settings.");
             } else {
