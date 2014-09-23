@@ -227,7 +227,9 @@ public class ApnSettings extends SettingsPreferenceFragment implements
     private int getRadioTechnology(){
         ServiceState serviceState = null;
         if (TelephonyManager.getDefault().isMultiSimEnabled()) {
-            serviceState = PhoneFactory.getPhone((int)mSubId).getServiceState();
+            int phoneId = SubscriptionManager.getPhoneId(mSubId);
+            Log.d(TAG,"getRadioTechnology.phoneId = " + phoneId);
+            serviceState = PhoneFactory.getPhone(phoneId).getServiceState();
         } else {
             serviceState = PhoneFactory.getDefaultPhone().getServiceState();
         }
@@ -245,7 +247,9 @@ public class ApnSettings extends SettingsPreferenceFragment implements
             IccRecords iccRecords = null;
             int appFamily = UiccController.getFamilyFromRadioTechnology(dataRat);
             if (TelephonyManager.getDefault().isMultiSimEnabled()) {
-                iccRecords = UiccController.getInstance().getIccRecords((int)mSubId, appFamily);
+                int slotId = SubscriptionManager.getSlotId(mSubId);
+                Log.d(TAG,"getIccOperatorNumeric.slotId = " + slotId);
+                iccRecords = UiccController.getInstance().getIccRecords(slotId, appFamily);
             } else {
                 iccRecords = UiccController.getInstance().getIccRecords(0, appFamily);
             }
