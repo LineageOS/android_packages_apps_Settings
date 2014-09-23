@@ -142,7 +142,7 @@ public class MultiSimSettingTab extends TabActivity {
         final SubInfoRecord sir = findRecordBySlotId(context, subscription);
 
         if (sir != null) {
-            return sir.mDisplayName;
+            return sir.displayName;
         } else {
             return context.getResources().getString(R.string.sim_card_number_title,
                     subscription + 1);
@@ -161,7 +161,7 @@ public class MultiSimSettingTab extends TabActivity {
 
             for (int i = 0; i < availableSubInfoLength; ++i) {
                 final SubInfoRecord sir = subInfoList.get(i);
-                if (sir.mSlotId == slotId) {
+                if (sir.slotId== slotId) {
                     //Right now we take the first subscription on a SIM.
                     return sir;
                 }

@@ -61,6 +61,8 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
+import com.android.internal.telephony.PhoneConstants;
+import com.android.settings.SelectSubscription;
 
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.settings.R;
@@ -512,6 +514,15 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
                 }
             }
         };
+
+    public void destroy() {
+        try {
+            mContext.unregisterReceiver(mReceiver);
+        } catch (IllegalArgumentException e) {
+            // May receive Receiver not registered error
+            logd(e.getMessage());
+        }
+    }
 
     private void logd(String msg) {
         if (DBG) Log.d(TAG + "(" + mSlotId + ")", msg);
