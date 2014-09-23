@@ -182,10 +182,8 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
 
     public void update() {
         final Resources res = mContext.getResources();
-		//always update icon
+        //always update icon
         handleSubIconChanged();
-            mSubTitle.setText(res.getString(R.string.sim_card_number_title, mSlotId + 1));
-            mSubSummary.setText(R.string.sim_slot_empty);
         logd("update()" + mSir);
 
         boolean isSubValid = isCurrentSubValid();
@@ -258,7 +256,7 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
                 " slot id = " + mSlotId);
 
         String netOperatorName = TelephonyManager.getDefault().getNetworkOperatorName(
-                mSlotId);
+                mSir.subId);
         if (isActivated) {
             summary = netOperatorName;
         } else {
@@ -459,7 +457,9 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
     }
 
     private void handleSubIconChanged(){
-        mSubIcon.setImageResource(getResId(mSlotId));
+        if  (mSubIcon != null) {
+            mSubIcon.setImageResource(getResId(mSlotId));
+        }
     }
 
     private DialogInterface.OnCancelListener mDialogCanceListener = new DialogInterface
