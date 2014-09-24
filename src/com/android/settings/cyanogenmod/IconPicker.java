@@ -49,8 +49,8 @@ public class IconPicker {
     public static final String PACKAGE_NAME = "package_name";
 
     public static final int REQUEST_PICK_SYSTEM = 0;
-    public static final int REQUEST_PICK_ICON_PACK = 1;
-    public static final int REQUEST_PICK_GALLERY = 2;
+    public static final int REQUEST_PICK_GALLERY = 1;
+    public static final int REQUEST_PICK_ICON_PACK = 2;
 
     private Activity mParent;
     private Resources mResources;
@@ -74,11 +74,11 @@ public class IconPicker {
         Intent iconPackIntent = new Intent(ICON_ACTION);
         ComponentName component = iconPackIntent.resolveActivity(mParent.getPackageManager());
 
-        String[] items = new String[component != null ? 2 : 1];
+        String[] items = new String[component != null ? 3 : 2];
         items[0] = mResources.getString(R.string.icon_picker_system_icons_title);
-        //items[1] = mResources.getString(R.string.icon_picker_gallery_title);
+        items[1] = mResources.getString(R.string.icon_picker_gallery_title);
         if (component != null) {
-            items[1] = mResources.getString(R.string.icon_picker_pack_title);
+            items[2] = mResources.getString(R.string.icon_picker_pack_title);
         }
 
         new AlertDialog.Builder(mParent)
