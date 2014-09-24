@@ -432,26 +432,13 @@ public class ApnSettings extends SettingsPreferenceFragment implements
                 result.add(mccMncForEhrpd);
             }
         }
-        String apnOperatorNumericProperty = TelephonyProperties.PROPERTY_APN_SIM_OPERATOR_NUMERIC;
-        int dataNetworkType = TelephonyManager.getDefault().getDataNetworkType(mSubId);
-        int activePhone = TelephonyManager.getDefault().getCurrentPhoneType(mSubId);
-        if ( isRuimOperatorNumericRequired(activePhone, dataNetworkType) ) {
-            apnOperatorNumericProperty = TelephonyProperties.PROPERTY_APN_RUIM_OPERATOR_NUMERIC;
-        }
-        String mccMncFromSim = TelephonyManager.getTelephonyProperty(
-                    apnOperatorNumericProperty, mSubId, null);
-            Log.d(TAG, "getOperatorNumeric: sub= " + mSubId +
-                    " activePhone= " + activePhone + " mcc-mnc= " + mccMncFromSim +
-                    " dataNetworkType: " + dataNetworkType);
+
+        String mccMncFromSim = TelephonyManager.getDefault().getIccOperatorNumeric(mSubId);
+        Log.d(TAG, "getOperatorNumeric: sub= " + mSubId +
+                    " mcc-mnc= " + mccMncFromSim);
         if (mccMncFromSim != null && mccMncFromSim.length() > 0) {
             result.add(mccMncFromSim);
         }
         return result.toArray(new String[2]);
-    }
-
-    private boolean isRuimOperatorNumericRequired(int phoneType, int netType) {
-        return (phoneType == PhoneConstants.PHONE_TYPE_CDMA &&
-                netType != ServiceState.RIL_RADIO_TECHNOLOGY_LTE &&
-                netType != ServiceState.RIL_RADIO_TECHNOLOGY_EHRPD);
     }
 }
