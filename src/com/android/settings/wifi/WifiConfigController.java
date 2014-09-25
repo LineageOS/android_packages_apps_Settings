@@ -228,6 +228,13 @@ public class WifiConfigController implements TextWatcher,
                     }
                 } else {
                     mIpSettingsSpinner.setSelection(DHCP);
+                    int ipAddr = mAccessPoint.getInfo().getIpAddress();
+                    StringBuffer ipBuf = new StringBuffer();
+                    ipBuf.append(ipAddr  & 0xff).append('.').
+                    append((ipAddr >>>= 8) & 0xff).append('.').
+                    append((ipAddr >>>= 8) & 0xff).append('.').
+                    append((ipAddr >>>= 8) & 0xff);
+                    addRow(group, R.string.wifi_ip_address, ipBuf.toString());
                 }
 
 
