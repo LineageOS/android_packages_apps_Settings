@@ -94,6 +94,8 @@ public class Status extends PreferenceActivity {
     private static final String KEY_SERIAL_NUMBER = "serial_number";
     private static final String KEY_ICC_ID = "icc_id";
     private static final String KEY_WIMAX_MAC_ADDRESS = "wimax_mac_address";
+    private static final String KEY_DEVICE_SAR = "sar_info";
+
     private static final String[] PHONE_RELATED_ENTRIES = {
         KEY_DATA_STATE,
         KEY_SERVICE_STATE,
@@ -311,6 +313,8 @@ public class Status extends PreferenceActivity {
         } else {
             removePreferenceFromScreen(KEY_SERIAL_NUMBER);
         }
+
+        setPreferenceIfExist(KEY_DEVICE_SAR, R.string.sar_level);
     }
 
     @Override
@@ -584,5 +588,17 @@ public class Status extends PreferenceActivity {
         }
 
         return Build.SERIAL;
+    }
+
+    private void setPreferenceIfExist(String preference, int resId) {
+        String summary = getResources().getString(resId);
+        Preference pref = findPreference(preference);
+        if (!TextUtils.isEmpty(summary)) {
+            pref.setSummary(summary);
+        } else {
+            if (pref != null) {
+                getPreferenceScreen().removePreference(pref);
+            }
+        }
     }
 }
