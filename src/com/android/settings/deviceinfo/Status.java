@@ -94,6 +94,8 @@ public class Status extends PreferenceActivity {
     private static final String KEY_SERIAL_NUMBER = "serial_number";
     private static final String KEY_ICC_ID = "icc_id";
     private static final String KEY_WIMAX_MAC_ADDRESS = "wimax_mac_address";
+    private static final String KEY_DEVICE_SAR = "sar_info";
+
     private static final String[] PHONE_RELATED_ENTRIES = {
         KEY_DATA_STATE,
         KEY_SERVICE_STATE,
@@ -310,6 +312,15 @@ public class Status extends PreferenceActivity {
             setSummaryText(KEY_SERIAL_NUMBER, serial);
         } else {
             removePreferenceFromScreen(KEY_SERIAL_NUMBER);
+        }
+
+        Preference pref = findPreference(KEY_DEVICE_SAR);
+        if (getResources().getBoolean(R.bool.config_show_sar_enable)) {
+            pref.setSummary(getSarValues());
+        } else {
+            if (pref != null) {
+                removePreferenceFromScreen(KEY_DEVICE_SAR);
+            }
         }
     }
 
@@ -584,5 +595,13 @@ public class Status extends PreferenceActivity {
         }
 
         return Build.SERIAL;
+    }
+
+    private String getSarValues() {
+        String headLevel = String.format(getResources().getString(R.string.maximum_head_level,
+                getResources().getString(R.string.sar_head_level)));
+        String bodyLevel = String.format(getResources().getString(R.string.maximum_body_level,
+                getResources().getString(R.string.sar_body_level)));
+        return headLevel + "\n" + bodyLevel;
     }
 }
