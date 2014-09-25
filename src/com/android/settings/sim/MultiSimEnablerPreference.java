@@ -59,7 +59,6 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.settings.SelectSubscription;
@@ -98,7 +97,7 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
     private TextView mSubTitle, mSubSummary;
     private ImageView mSubIcon;
     private int mSwitchVisibility = View.VISIBLE;
-    private Switch mSwitch;
+    private CompoundButton mSwitch;
     private Handler mParentHandler = null;
     private static AlertDialog sAlertDialog = null;
     private static ProgressDialog sProgressDialog = null;
@@ -114,7 +113,11 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
     public MultiSimEnablerPreference(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         mContext = context;
-        setWidgetLayoutResource(R.layout.custom_checkbox);
+        if (mContext.getResources().getBoolean(R.bool.config_custom_multi_sim_checkbox)) {
+            setWidgetLayoutResource(R.layout.custom_checkbox_multisim);
+        } else {
+            setWidgetLayoutResource(R.layout.custom_checkbox);
+        }
         setSwitchVisibility(View.VISIBLE);
     }
 
@@ -171,7 +174,7 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
         super.onBindView(view);
         mSubTitle = (TextView) view.findViewById(R.id.subtitle);
         mSubSummary = (TextView) view.findViewById(R.id.subsummary);
-        mSwitch = (Switch) view.findViewById(R.id.subSwitchWidget);
+        mSwitch = (CompoundButton) view.findViewById(R.id.subSwitchWidget);
         mSubIcon = (ImageView) view.findViewById(R.id.subicon);
         mSubIcon.setImageResource(getResId(mSlotId));
         mSwitch.setOnCheckedChangeListener(this);
