@@ -172,7 +172,8 @@ public class ScreenColorSettings extends Activity {
 
     private void initPPService() {
         mPPServiceConn = new PPServiceConnection();
-        Intent i = new Intent(IPPService.class.getName());
+        Intent i = new Intent();
+        i.setClass(this, IPPService.class);
         bindService(i, mPPServiceConn, Context.BIND_AUTO_CREATE);
     }
 
