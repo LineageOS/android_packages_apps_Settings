@@ -95,6 +95,12 @@
                 android:title="@string/battery_light_title"
                 android:fragment="com.android.settings.notificationlight.BatteryLightSettings" />
 
+            <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+                android:key="music_light"
+                android:title="@string/music_light_title"
+                android:summary="@string/music_light_summary"
+                android:defaultValue="false" />
+
         </PreferenceCategory>
 
         <!-- DeviceParts Device Specific Display settings -->
