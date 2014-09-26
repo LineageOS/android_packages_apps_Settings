@@ -84,6 +84,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String CATEGORY_LIGHTS = "lights_prefs";
     private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
     private static final String KEY_BATTERY_LIGHT = "battery_light";
+    private static final String KEY_MUSIC_LIGHT = "music_light";
     private static final String KEY_WAKE_WHEN_PLUGGED_OR_UNPLUGGED = "wake_when_plugged_or_unplugged";
     private static final String KEY_SCREEN_ANIMATION_OFF = "screen_off_animation";
     private static final String KEY_SCREEN_ANIMATION_STYLE = "screen_animation_style";
@@ -108,6 +109,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private PreferenceScreen mNotificationPulse;
     private PreferenceScreen mBatteryPulse;
+    private PreferenceScreen mMusicPulse;
     private PreferenceScreen mDisplayRotationPreference;
     private PreferenceScreen mScreenColorSettings;
 
@@ -290,11 +292,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 com.android.internal.R.bool.config_intrusiveNotificationLed);
         boolean hasBatteryLed = res.getBoolean(
                 com.android.internal.R.bool.config_intrusiveBatteryLed);
+        boolean hasMusicLed = res.getBoolean(
+                com.android.internal.R.bool.config_deviceHasMusicLight);
         PreferenceCategory lightPrefs = (PreferenceCategory) findPreference(CATEGORY_LIGHTS);
 
-        if (hasNotificationLed || hasBatteryLed) {
+        if (hasNotificationLed || hasBatteryLed || hasMusicLed) {
             mBatteryPulse = (PreferenceScreen) findPreference(KEY_BATTERY_LIGHT);
             mNotificationPulse = (PreferenceScreen) findPreference(KEY_NOTIFICATION_PULSE);
+            mMusicPulse = (PreferenceScreen) findPreference(KEY_MUSIC_LIGHT);
 
             // Battery light is only for primary user
             if (UserHandle.myUserId() != UserHandle.USER_OWNER || !hasBatteryLed) {
@@ -305,6 +310,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             if (!hasNotificationLed) {
                 lightPrefs.removePreference(mNotificationPulse);
                 mNotificationPulse = null;
+            }
+
+            if (!hasMusicLed) {
+                lightPrefs.removePreference(mMusicPulse);
+                mMusicPulse = null;
             }
         } else {
             getPreferenceScreen().removePreference(lightPrefs);
