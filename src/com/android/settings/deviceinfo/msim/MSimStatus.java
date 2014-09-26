@@ -627,28 +627,22 @@ public class MSimStatus extends PreferenceActivity {
         // not loaded in some versions of the code (e.g., zaku)
 
         if (mSignalStrength[subscription] != null) {
-            int state = mServiceState[subscription].getState();
             Resources r = getResources();
 
-            if ((ServiceState.STATE_OUT_OF_SERVICE == state) ||
-                    (ServiceState.STATE_POWER_OFF == state)) {
-                mSigStrengthSummary[subscription] = getSimSummary(subscription, "0");
-            } else {
-                int signalDbm = mSignalStrength[subscription].getDbm();
-                if (-1 == signalDbm) signalDbm = 0;
+            int signalDbm = mSignalStrength[subscription].getDbm();
+            if (-1 == signalDbm) signalDbm = 0;
 
-                int signalAsu = mSignalStrength[subscription].getAsuLevel();
-                if (-1 == signalAsu)
-                    signalAsu = 0;
+            int signalAsu = mSignalStrength[subscription].getAsuLevel();
+            if (-1 == signalAsu)
+                signalAsu = 0;
 
-                mSigStrengthSummary[subscription] = getSimSummary(subscription,
-                        String.valueOf(signalDbm) + " "
-                                + r.getString(R.string.radioInfo_display_dbm) + "   "
-                                + String.valueOf(signalAsu) + " "
-                                + r.getString(R.string.radioInfo_display_asu));
-            }
-            setMSimSummary(KEY_SIGNAL_STRENGTH, mSigStrengthSummary);
+            mSigStrengthSummary[subscription] = getSimSummary(subscription,
+                    String.valueOf(signalDbm) + " "
+                            + r.getString(R.string.radioInfo_display_dbm) + "   "
+                            + String.valueOf(signalAsu) + " "
+                            + r.getString(R.string.radioInfo_display_asu));
         }
+        setMSimSummary(KEY_SIGNAL_STRENGTH, mSigStrengthSummary);
     }
 
     private void updateNetworkType(int subscription) {
