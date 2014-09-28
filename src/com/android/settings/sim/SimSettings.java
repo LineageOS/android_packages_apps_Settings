@@ -284,11 +284,14 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     private void updateCellularDataValues() {
         final DropDownPreference simPref = (DropDownPreference) findPreference(KEY_CELLULAR_DATA);
         final SubInfoRecord sir = findRecordBySubId(SubscriptionManager.getDefaultDataSubId());
+        boolean isCellularDataEnabled = false;
         if (sir != null) {
             simPref.setSelectedValue(sir, false);
         }
-        simPref.setEnabled(mNumSims > 1);
-        simPref.setEnabled(!needDisableDataSub2());
+        if (mNumSims > 1 && !needDisableDataSub2()) {
+            isCellularDataEnabled = true;
+        }
+        simPref.setEnabled(isCellularDataEnabled);
     }
 
     private void updateCallValues() {
