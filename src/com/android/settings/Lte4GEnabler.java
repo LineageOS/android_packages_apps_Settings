@@ -55,7 +55,7 @@ public class Lte4GEnabler {
     private static final String TAG = "Lte4GEnabler";
     private final Context mContext;
     private Switch mSwitch;
-
+    private boolean mDialogClicked = false;
     private static MyHandler mHandler;
     private static final int DEFAULT_SUBSCRIPTION = 0;
 
@@ -122,8 +122,7 @@ public class Lte4GEnabler {
                             public void onClick(
                                     DialogInterface dialog,
                                     int which) {
-                                //Recover the button as disable status
-                                mSwitch.setChecked(false);
+                                //dismiss dialog set switch to disable status
                             }
                         })
                 .setPositiveButton(R.string.yes,
@@ -132,8 +131,16 @@ public class Lte4GEnabler {
                                     DialogInterface dialog,
                                     int which) {
                                 setPrefNetwork();
+                                mDialogClicked = true;
                             }
                         }).create();
+        alertDialog.setOnDismissListener(
+                new DialogInterface.OnDismissListener() {
+                    public void onDismiss(DialogInterface dialog) {
+                        if (!mDialogClicked)
+                            mSwitch.setChecked(false);
+                    }
+                });
         alertDialog.show();
     }
 
@@ -240,6 +247,7 @@ public class Lte4GEnabler {
         private void handleSetPreferredNetworkTypeResponse(Message msg) {
             int type = getPreferredNetworkType();
             //set it as true after mode processing
+            mDialogClicked = false;
             setSwitchStatus();
         }
     }
