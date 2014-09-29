@@ -1590,7 +1590,7 @@
                  <action android:name="android.provider.Telephony.SECRET_CODE" />
                  <data android:scheme="android_secret_code" android:host="4636" />
             </intent-filter>
-       </receiver>
+        </receiver>
 
         <!-- Standard picker for widgets -->
         <activity android:name="AppWidgetPickActivity"
@@ -2036,6 +2036,19 @@
                 <action android:name="android.provider.Contacts.PROFILE_CHANGED" />
             </intent-filter>
         </receiver>
+
+        <receiver android:name="DiagPortBroadcastReceiver">
+            <intent-filter>
+                 <action android:name="android.provider.Telephony.SECRET_CODE" />
+                 <data android:scheme="android_secret_code" android:host="76278" />
+            </intent-filter>
+       </receiver>
+
+       <activity android:name="DiagPortActivity"
+            android:label="@string/development_settings_title"
+            android:configChanges="orientation|screenSize"
+            android:clearTaskOnLaunch="true"
+            android:parentActivityName="Settings"/>
 
         <provider
             android:name="android.support.v4.content.FileProvider"
