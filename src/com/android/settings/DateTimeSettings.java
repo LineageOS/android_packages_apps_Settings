@@ -144,7 +144,7 @@ public class DateTimeSettings extends SettingsPreferenceFragment
                     DateFormat.getDateFormatForSetting(getActivity(), dateFormats[i])
                     .format(mDummyDate.getTime());
 
-            if (dateFormats[i].length() == 0) {
+            if (i == 0) {
                 formattedDates[i] = getResources().
                     getString(R.string.normal_date_format, formatted);
             } else {
