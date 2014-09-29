@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <!--
     Copyright (c) 2014, The Linux Foundation. All rights reserved.
 
@@ -28,20 +27,40 @@
     OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
     IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
-
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <PreferenceScreen android:title="@string/factory_test" >
-        <intent
-            android:action="android.intent.action.MAIN"
-            android:targetClass="com.qti.factory.Framework.Framework"
-            android:targetPackage="com.qti.factory" />
-    </PreferenceScreen>
-    <PreferenceScreen android:title="@string/network_debug_info" >
-        <intent
-            android:action="android.intent.action.MAIN"
-            android:targetClass="com.android.settings.NetworkDebugInfoActivity"
-            android:targetPackage="com.android.settings" />
-    </PreferenceScreen>
+    <Preference
+        android:key="info_pn"
+        android:title="@string/info_pn" />
+    <Preference
+        android:key="info_channel"
+        android:title="@string/info_channel" />
+    <Preference
+        android:key="info_band"
+        android:title="@string/info_band" />
+    <Preference
+        android:key="info_rssi"
+        android:title="@string/info_rssi" />
+    <Preference
+        android:key="info_rx_agc"
+        android:title="@string/info_rx_agc" />
+    <Preference
+        android:key="info_rx_dbm"
+        android:title="@string/info_rx_dbm" />
+    <Preference
+        android:key="info_tx_agc"
+        android:title="@string/info_tx_agc" />
+    <Preference
+        android:key="info_tx_dbm"
+        android:title="@string/info_tx_dbm" />
+    <Preference
+        android:key="info_sid"
+        android:title="@string/info_sid" />
+    <Preference
+        android:key="info_nid"
+        android:title="@string/info_nid" />
+    <Preference
+        android:key="info_ec_io"
+        android:title="@string/info_ec_io" />
 
 </PreferenceScreen>
