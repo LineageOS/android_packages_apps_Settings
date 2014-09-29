@@ -344,7 +344,13 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         List<LocalePicker.LocaleInfo> locales = LocalePicker.getAllAssetLocales(context, true);
         for (LocalePicker.LocaleInfo locale : locales) {
             if (locale.getLocale().equals(currentLocale)) {
-                return locale.getLabel();
+                String label = locale.getLabel();
+                String[] localesList = Resources.getSystem().getAssets().getLocales();
+                if (isSingleLanguage(currentLocale.getLanguage(), localesList) &&
+                        context.getResources().getBoolean(R.bool.def_language_country_enable)) {
+                    label = label + " " + currentLocale.getCountry();
+                }
+                return label;
             }
         }
         // This can't happen as long as the locale was one set by Settings.
@@ -366,6 +372,20 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         return Settings.Secure.getInt(getContentResolver(),
                 Settings.Secure.INPUT_METHOD_SELECTOR_VISIBILITY,
                 mDefaultInputMethodSelectorVisibility);
+    }
+
+    private static boolean isSingleLanguage(String language, String[] locales) {
+        int count = 0;
+        for (String locale : locales) {
+            if (locale.length() > 2 && locale.startsWith(language)) {
+                count++;
+                if (count > 1) {
+                    return false;
+                }
+            }
+        }
+
+        return (count == 1);
     }
 
     @Override
