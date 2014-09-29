@@ -58,7 +58,6 @@
   <string name="profile_unknown_nfc_tag">Neznámý profil</string>
   <string name="profile_add_nfc_text">Tento NFC tag odkazuje na neznámý profil. Připojení tohoto NFC tagu k existujícího profilu umožní výběr profilu v budoucnosti.</string>
   <string name="profile_select">Vyberte profil</string>
-  <string name="add_profile_dialog_title">Vytvořit nový profil</string>
   <string name="profile_name_title">Název</string>
   <string name="profile_profile_name_prompt">Vložte název nového profilu</string>
   <string name="menu_new_profile">Nový profil</string>
@@ -97,8 +96,6 @@
   <string name="ringer_mode">Režim vyzvánění</string>
   <string name="lights_mode">Režim světelné indikace</string>
   <string name="vibrate_mode">Režim vibrací</string>
-  <string name="choose_soundtone">Zvolte tón upozornění</string>
-  <string name="choose_ringtone">Zvolte vyzváněcí melodii</string>
   <string name="soundtone_title">Zvuk upozornění</string>
   <string name="profile_appgroups_title">Skupiny aplikací</string>
   <string name="profile_applist_title">Aplikace</string>
@@ -245,7 +242,7 @@
   <string name="title_tile_compass">Kompas</string>
   <string name="title_tile_heads_up">Plovoucí upozornění</string>
   <string name="title_tile_sleep">Uspat</string>
-  <string name="title_tile_gps">GPS</string>
+  <string name="title_tile_gps">Poloha</string>
   <string name="title_tile_torch">Svítilna</string>
   <string name="title_tile_lockscreen">Zámek obrazovky</string>
   <string name="title_tile_lte">LTE</string>
@@ -400,7 +397,6 @@ jednotlivě měnit a tím zvětšit počet řídících bodů. „Odstranit“ s
   <string name="preview_data_title">Prohlédnout data</string>
   <string name="view_stats_title">Zobrazit statistiky</string>
   <string name="anonymous_learn_more">Zjistit více</string>
-  <string name="anonymous_notification_desc">Povolit nebo zakázat CyanogenMod statistiky</string>
   <string name="preview_id_title">Unikátní ID</string>
   <string name="preview_device_title">Zařízení</string>
   <string name="preview_version_title">Verze</string>
@@ -441,14 +437,10 @@ jednotlivě měnit a tím zvětšit počet řídících bodů. „Odstranit“ s
   <string name="kill_app_longpress_back">Vynucené ukončení aplikace</string>
   <string name="kill_app_longpress_back_summary">Dlouhým stiskem tlačítka zpět se provede ukončení aplikace na popředí</string>
   <string name="changelog_title">Seznam změn</string>
-  <string name="changelog_loading">Načítá se seznam změn\u2026</string>
   <string name="changelog_error">Chyba při načítání seznamu změn</string>
-  <string name="changelog_unknown">Neznámý</string>
-  <string name="changelog_version">Verze</string>
   <string name="contributor_cloud_title">Přispěvatelé</string>
   <string name="cmupdate_settings_title">Aktualizace CyanogenMod</string>
   <string name="cmupdate_settings_summary">Zjištění dostupnosti nové aktualizace</string>
-  <string name="advanced_settings_title">Rozšířené</string>
   <string name="development_tools_title">Spustit vývojové nástroje</string>
   <string name="allow_mock_sms">Povolit falešné SMS</string>
   <string name="privacy_settings_cyanogenmod_title">Soukromí</string>
@@ -461,13 +453,11 @@ jednotlivě měnit a tím zvětšit počet řídících bodů. „Odstranit“ s
   <string name="privacy_guard_manager_title">Ochrana soukromí</string>
   <string name="privacy_guard_manager_summary">Spravovat aplikace, které mohou mít přístup k osobním údajům</string>
   <string name="privacy_guard_no_user_apps">Není nainstalována žádná aplikace</string>
-  <string name="privacy_guard_filter_does_not_match">Není naisntalována žádná aplikace s příslušným oprávněním</string>
   <string name="privacy_guard_help_title">Nápověda</string>
   <string name="privacy_guard_reset_title">Obnovit</string>
   <string name="privacy_guard_reset_text">Obnovit oprávnění?</string>
   <string name="privacy_guard_help_text">Na této obrazovce můžete vybrat, která aplikace má být sledována Ochranou soukromí. Zvolené aplikace nebudou mít umožněno přistupovat k soukromím údajům, jako jsou kontakty, zprávy nebo seznamy hovorů. Dlouhým stiskem na dané aplikaci se zobrazí její systémové informace.\n\nVe výchozím stavu se systémové aplikace nezobrazují. Pokud chcete zobrazit i systémové aplikace, vyberte danou volbu z nabídky.</string>
   <string name="privacy_guard_manager_show_system_apps">Zobrazit systémové aplikace</string>
-  <string name="privacy_guard_manager_filter_permissions">Filtr oprávnění</string>
   <string name="privacy_guard_advanced_settings_title">Rozšířené</string>
   <string name="blacklist_title">Černá listina</string>
   <string name="blacklist_edit_dialog_title">Změnit položku černé listiny</string>
@@ -506,9 +496,6 @@ jednotlivě měnit a tím zvětšit počet řídících bodů. „Odstranit“ s
   <string name="gamma_tuning_title_head">Gamma kalibrace</string>
   <string name="gamma_tuning_summary_head">Přizpůsobení hodnot gamma</string>
   <string name="gamma_tuning_control_set_header">Skupina <xliff:g id="index">%d</xliff:g></string>
-  <string name="gamma_tuning_contrast">Kontrast</string>
-  <string name="gamma_tuning_brightness">Jas</string>
-  <string name="gamma_tuning_saturation">Sytost</string>
   <string name="headset_connect_player_title">Spustit aplikaci na hudbu</string>
   <string name="headset_connect_player_summary">Spustit zvolenou výchozí aplikaci, pokud byla připojena sluchátka</string>
   <string name="adb_notify">Upozornění na ladění USB</string>
@@ -526,6 +513,8 @@ jednotlivě měnit a tím zvětšit počet řídících bodů. „Odstranit“ s
   <string name="collapse_on_dismiss_if_empty_summary">Zavřít po odebrání posledního upozornění</string>
   <string name="collapse_on_dismiss_if_no_clearable_summary">Zavřít po odebrání posledního odebratelného upozornění</string>
   <string name="double_tap_to_wake_title">Probuzení dvojím dotykem</string>
+  <string name="double_tap_to_sleep_title">Dvojím klepnutím uspat</string>
+  <string name="double_tap_to_sleep_summary">Uspat dvojím klepnutím na stavovou lištu nebo posuvník zamykací obrazovky</string>
   <string name="proximity_wake_title">Zabránit nechtěnému probuzení</string>
   <string name="proximity_wake_summary">Kontrolovat senzor přiblížení pro zabránění nechtěného probuzení</string>
   <string name="category_quick_access">Lišta rychlého přístupu</string>
@@ -662,6 +651,7 @@ jednotlivě měnit a tím zvětšit počet řídících bodů. „Odstranit“ s
   <string name="hardware_keys_action_in_app_search">Hledat v aplikacích</string>
   <string name="hardware_keys_action_launch_camera">Spustit fotoaparát</string>
   <string name="hardware_keys_action_last_app">Poslední aplikace</string>
+  <string name="hardware_keys_action_sleep">Vypnout obrazovku</string>
   <string name="power_end_call_title">Ukončit hovor</string>
   <string name="power_end_call_summary">Stisknutí tlačítka vypínání dojde k ukončení hovoru</string>
   <string name="button_wake_title">Probudit</string>
@@ -692,13 +682,6 @@ jednotlivě měnit a tím zvětšit počet řídících bodů. „Odstranit“ s
   <string name="backlight_summary_disabled">Vypnuto</string>
   <string name="backlight_summary_enabled_with_timeout">Zapnout na <xliff:g id="timeout">%s</xliff:g></string>
   <string name="backlight_summary_enabled">Zapnuto</string>
-  <string name="lockscreen_background">Pozadí</string>
-  <string name="lockscreen_background_style_title">Pozadí zámku obrazovky</string>
-  <string name="background_default">Výchozí pozadí</string>
-  <string name="background_wallpaper">Vlastní tapeta</string>
-  <string name="background_result_successful">Pozadí změněno</string>
-  <string name="background_result_not_successful">Pozadí nezměněno</string>
-  <string name="setting_lockscreen_background">Pozadí se nastavuje\u2026</string>
   <string name="confirm_delete_apn">Položka APN bude smazána.</string>
   <string name="status_bar_title">Stavová lišta</string>
   <string name="status_bar_clock_title">Vzhled hodin</string>
@@ -720,7 +703,6 @@ jednotlivě měnit a tím zvětšit počet řídících bodů. „Odstranit“ s
   <string name="status_bar_toggle_info">Není k dispozici, pokud je aktivní automatické řízení jasu</string>
   <string name="status_bar_notif_count_title">Zobrazit počet upozornění</string>
   <string name="status_bar_notif_count_summary">Zobrazí počet nezobrazených upozornění v oznamovací oblasti</string>
-  <string name="status_bar_double_tap_to_sleep_title">Dvojím klepnutím uspat</string>
   <string name="development_shortcut_title">Zkratky pro vývojáře</string>
   <string name="development_shortcut_summary">Povolit \u201aVyčisti data\u2018 a \u201aVynutit ukončení\u2018 v oblasti upozornění a seznamu nedávných aplikací</string>
   <string name="usb_mass_storage_title">Připojeni paměťového úložiště (UMS)</string>
@@ -748,7 +730,6 @@ z <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> na <xliff:g id="new" exam
   <string name="stylus_icon_enabled_title">Zobrazit ikonu, když je použitý stylus</string>
   <string name="stylus_icon_enabled_summary">Zobrazit ikonu při najetí kurzoru nebo kreslení pomocí tužky</string>
   <string name="gestures_settings_title">Gesta stylusem</string>
-  <string name="category_spen_title">Gesta stylusem</string>
   <string name="enable_subcat_title">Stylus</string>
   <string name="enable_spen_title_head">Povolit gesta</string>
   <string name="enable_spen_summary_head">Spustit vlastní akci pomocí gesta a podržením tlačítka na stylusu</string>
@@ -944,7 +925,6 @@ z <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> na <xliff:g id="new" exam
   <string name="usb_ejecting_title">Odpojuje se úložiště USB</string>
   <string name="usb_ejecting_summary">Probíhá odpojení úložiště USB</string>
   <string name="usb_media_format_title">Vymazat úložiště USB</string>
-  <string name="usb_media_format_summary">Vymaže všechny data na úložišti USB</string>
   <string name="usb_media_format_desc">Vymazat celé USB úložiště? <b>Všechna</b> data na USB úložišti budou smazána!</string>
   <string name="usb_media_format_button_text">Vymazat úložiště USB</string>
   <string name="usb_media_format_final_desc">Vymazat celé USB úložiště smazáním všech souborů? Tato operace nelze vrátit zpět!</string>
@@ -962,9 +942,53 @@ z <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> na <xliff:g id="new" exam
   <string name="sd_ejecting_title">Odpojování SD karty</string>
   <string name="sd_ejecting_summary">Probíhá odpojení SD karty</string>
   <string name="sd_media_format_title">Vymazat kartu SD</string>
-  <string name="sd_media_format_summary">Vymazání všech dat na SD kartě</string>
   <string name="sd_media_format_desc">Vymazat SD kartu? <b>Všechna</b> data na SD kartě budou smazána!</string>
   <string name="sd_media_format_button_text">Vymazat kartu SD</string>
   <string name="sd_media_format_final_desc">Vymazat celou SD kartu smazáním všech souborů? Tato operace nelze vrátit zpět!</string>
   <string name="sd_media_format_gesture_explanation">Pro potvrzení vymazání SD karty je potřeba gesto pro odemčení.</string>
+  <string name="bluetooth_enter_pin_msg_hs">Pro spárování s „<xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g>“ vložte vyžadovaný PIN (16 nebo více čísel):</string>
+  <string name="bluetooth_profile_sap">Přístup k SIM</string>
+  <string name="bluetooth_profile_dun">Přístup k vytáčené síti</string>
+  <string name="bluetooth_sap_profile_summary_connected">Připojeno k serveru přístupu SIM</string>
+  <string name="bluetooth_dun_profile_summary_connected">Připojeno k serveru DUN</string>
+  <string name="bluetooth_sap_profile_summary_use_for">Použít pro přístup k SIM</string>
+  <string name="bluetooth_dun_profile_summary_use_for">Použít pro přístup k vytáčenému spojení</string>
+  <string name="wifi_disabled_association_rejected">Asociace odmítnuta</string>
+  <string name="screencolor">Barvy obrazovky</string>
+  <string name="custom_screencolor">Vlastní barvy obrazovky</string>
+  <string name="device_additional_status">Další informace o stavu</string>
+  <string name="enable_quickboot_title">Povolit režim QuickBoot</string>
+  <string name="enable_quickboot_summary">Místo vypnutí nastartovat zařízení do režimu QuickBoot.</string>
+  <string name="data_usage_tab_slot">SIM  </string>
+  <string name="sel_sub_title">Nastavení poskytovatelů</string>
+  <string name="sel_sub_summary">Vyberte poskytovatele</string>
+  <string name="no_sim_info">Informace o SIM kartě není dostupná.\nNabídka nemůže být zobrazena</string>
+  <string name="subs_settings">Stav poskytovatelů</string>
+  <string name="set_data_subscription_progress">Nastavování datového poskytovatele\u2026</string>
+  <string name="set_dds_success">Poskytovatel dat úspěšně nastaven</string>
+  <string name="set_dds_failed">Chyba při nastavení datového poskytovatele. Odeberte všechny datové spojení a zkuste znovu.</string>
+  <string name="set_dds_error">Chyba při nastavení datového poskytovatele.</string>
+  <string name="set_sms_error">Chyba při nastavení poskytovatele SMS. Poskytovatel není aktivní.</string>
+  <string name="set_voice_error">Chyba při nastavení hlasového poskytovatele. Poskytovatel není aktivní.</string>
+  <string name="set_priority_sub_error">Chyba při nastavení priority poskytovatele. Poskytovatel není aktivní.</string>
+  <string name="prompt">Ukázat</string>
+  <string name="prompt_user">Vyzvat uživatele</string>
+  <string name="tune_away_title">TuneAway</string>
+  <string name="tune_away_enabled">TuneAway povolen</string>
+  <string name="tune_away_disabled">TuneAway zakázán</string>
+  <string name="screencolor_save">Uložit</string>
+  <string name="screencolor_cancel">Zrušit</string>
+  <string name="restore_preview">Zobrazit výchozí obrázek</string>
+  <string name="selectnewfile_menu">Zobrazit nový obrázek z Galerie</string>
+  <string name="selectfile_menu">Zobrazit obrázek z Galerie</string>
+  <string name="restore_default_str">Obnovit</string>
+  <string name="hue_str">Barva: <xliff:g id="hue_value">%1$s</xliff:g></string>
+  <string name="saturation_str">Sytost: <xliff:g id="saturation_value">%1$s</xliff:g></string>
+  <string name="contrast_str">Kontrast: <xliff:g id="contrast_value">%1$s</xliff:g></string>
+  <string name="intensity_str">Intenzita: <xliff:g id="intensity_str_value">%1$s</xliff:g></string>
+  <string name="device_status_summary_cm" product="tablet">Stav baterie, sítě a další informace</string>
+  <string name="device_status_summary_cm" product="default">Stav baterie, úroveň nabití baterie, atd.</string>
+  <string name="wifi_ap_clients_title">Připojená zařízení</string>
+  <string name="wifi_ap_client_ap_disabled">Hotspot Wi-Fi zakázán</string>
+  <string name="wifi_ap_client_none_connected">Nepřipojeno žádné zařízení</string>
 </resources>

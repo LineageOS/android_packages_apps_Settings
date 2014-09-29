@@ -58,7 +58,6 @@
   <string name="profile_unknown_nfc_tag">不明的設定檔</string>
   <string name="profile_add_nfc_text">此 NFC 標籤指向了一個未知的設定檔，連結此 NFC 標籤到現有的設定檔將允許您以後選取那個設定檔。</string>
   <string name="profile_select">選取設定檔</string>
-  <string name="add_profile_dialog_title">建立新設定檔</string>
   <string name="profile_name_title">名稱</string>
   <string name="profile_profile_name_prompt">爲新設定檔輸入名稱</string>
   <string name="menu_new_profile">新設定檔</string>
@@ -76,6 +75,7 @@
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_2g3g">2G/3G</string>
   <string name="settings_search_action_bar_button">搜尋</string>
+  <string name="settings_search_autocompleteview_hint">搜尋設定</string>
   <string name="settings_search_loading_text">正在載入搜尋數據\ u2026</string>
   <string name="profile_connectionoverrides_title">連線覆蓋</string>
   <string name="profile_volumeoverrides_title">音量覆蓋</string>
@@ -94,8 +94,6 @@
   <string name="ringer_mode">鈴響模式</string>
   <string name="lights_mode">指示燈模式</string>
   <string name="vibrate_mode">震動模式</string>
-  <string name="choose_soundtone">選擇通知音效</string>
-  <string name="choose_ringtone">選擇鈴聲</string>
   <string name="soundtone_title">通知音效</string>
   <string name="profile_appgroups_title">應用程式群組</string>
   <string name="profile_applist_title">應用程式</string>
@@ -149,6 +147,7 @@
   <string name="display_lights_settings_title">顯示與指示燈</string>
   <string name="lights_category_title">指示燈</string>
   <string name="notification_light_general_title">一般</string>
+  <string name="notification_light_applist_title">應用程式</string>
   <string name="notification_light_phonelist_title">電話</string>
   <string name="notification_light_use_custom">使用自訂值</string>
   <string name="notification_light_enabled">已啟用</string>
@@ -219,8 +218,8 @@
   <string name="title_tile_bluetooth">藍牙</string>
   <string name="title_tile_brightness">亮度</string>
   <string name="title_tile_camera">相機</string>
+  <string name="title_tile_compass">指南針</string>
   <string name="title_tile_sleep">進入休眠</string>
-  <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">電筒</string>
   <string name="title_tile_lockscreen">鎖定螢幕</string>
   <string name="title_tile_lte">LTE</string>
@@ -378,7 +377,6 @@
   <string name="preview_data_title">預覽數據</string>
   <string name="view_stats_title">檢視統計</string>
   <string name="anonymous_learn_more">瞭解更多</string>
-  <string name="anonymous_notification_desc">啟用或停用 CyanogenMod 統計</string>
   <string name="preview_id_title">Unique ID</string>
   <string name="preview_device_title">裝置</string>
   <string name="preview_version_title">版本</string>
@@ -419,14 +417,10 @@
   <string name="kill_app_longpress_back">返回按鈕可終止應用程式</string>
   <string name="kill_app_longpress_back_summary">長按返回按鈕終止前台的應用程式</string>
   <string name="changelog_title">更新日誌</string>
-  <string name="changelog_loading">正在載入更新日誌\u2026</string>
   <string name="changelog_error">無法載入更新日誌</string>
-  <string name="changelog_unknown">不明</string>
-  <string name="changelog_version">版本</string>
   <string name="contributor_cloud_title">貢獻者</string>
   <string name="cmupdate_settings_title">CyanogenMod 更新</string>
   <string name="cmupdate_settings_summary">檢查、 查看或安裝可用的更新</string>
-  <string name="advanced_settings_title">進階</string>
   <string name="development_tools_title">啟動工具</string>
   <string name="allow_mock_sms">允許模擬短訊</string>
   <string name="privacy_settings_cyanogenmod_title">私隱</string>
@@ -439,13 +433,11 @@
   <string name="privacy_guard_manager_title">私隱守衛</string>
   <string name="privacy_guard_manager_summary">管理哪些可以存取您的個人資料的應用程式</string>
   <string name="privacy_guard_no_user_apps">沒有應用程式被安裝</string>
-  <string name="privacy_guard_filter_does_not_match">未安裝有相關權限的應用程式</string>
   <string name="privacy_guard_help_title">說明</string>
   <string name="privacy_guard_reset_title">重設</string>
   <string name="privacy_guard_reset_text">重設權限？</string>
   <string name="privacy_guard_help_text">在此畫面您可簡單地藉由輕按應用程式，選取是否啟用私隱守衛。被選取的應用程式將無法存取您的個人資料，例如：聯絡人、訊息或通話記錄。長按一個項目可開啟其應用程式資訊畫面。\n\n系統應用程式預設為不會顯示。如果您想要顯示他們，在選單中選取相對應的選項。</string>
   <string name="privacy_guard_manager_show_system_apps">顯示內置應用程式</string>
-  <string name="privacy_guard_manager_filter_permissions">權限過濾器</string>
   <string name="privacy_guard_advanced_settings_title">進階</string>
   <string name="blacklist_title">黑名單</string>
   <string name="blacklist_edit_dialog_title">編輯黑名單項目</string>
@@ -483,9 +475,6 @@
   <string name="gamma_tuning_title_head">伽瑪校準</string>
   <string name="gamma_tuning_summary_head">調校伽瑪值</string>
   <string name="gamma_tuning_control_set_header"><xliff:g id="index">%d</xliff:g>群組</string>
-  <string name="gamma_tuning_contrast">對比度</string>
-  <string name="gamma_tuning_brightness">亮度</string>
-  <string name="gamma_tuning_saturation">飽合度</string>
   <string name="headset_connect_player_title">啟動音樂應用程式</string>
   <string name="headset_connect_player_summary">當連接耳機啟動預設音樂應用程式</string>
   <string name="adb_notify">USB 偵錯通知</string>
@@ -660,13 +649,6 @@
   <string name="backlight_summary_disabled">已停用</string>
   <string name="backlight_summary_enabled_with_timeout">為 <xliff:g id="timeout">%s</xliff:g> 已啟用 </string>
   <string name="backlight_summary_enabled">已啟用</string>
-  <string name="lockscreen_background">背景</string>
-  <string name="lockscreen_background_style_title">鎖定螢幕背景</string>
-  <string name="background_default">預設背景</string>
-  <string name="background_wallpaper">自訂桌布</string>
-  <string name="background_result_successful">背景已更改</string>
-  <string name="background_result_not_successful">背景未更改</string>
-  <string name="setting_lockscreen_background">正在套用背景</string>
   <string name="confirm_delete_apn">APN 將會被刪除。</string>
   <string name="status_bar_title">狀態列</string>
   <string name="status_bar_battery_title">電池狀態風格</string>
@@ -683,7 +665,6 @@
   <string name="status_bar_toggle_brightness_summary">透過在狀態列上左右滑動調整亮度</string>
   <string name="status_bar_notif_count_title">顯示通知數量</string>
   <string name="status_bar_notif_count_summary">顯示未處理通知的數量</string>
-  <string name="status_bar_double_tap_to_sleep_title">輕按兩下來休眠</string>
   <string name="development_shortcut_title">開發快捷鍵</string>
   <string name="development_shortcut_summary">在通知區與最近使用的應用程式清單啟用「擦除數據」與「強制關閉」選項</string>
   <string name="usb_mass_storage_title">大容量儲存 (UMS)</string>
@@ -704,7 +685,6 @@
   <string name="stylus_icon_enabled_title">使用觸控筆時顯示圖示</string>
   <string name="stylus_icon_enabled_summary">使用觸控筆漂浮或繪圖時顯示指標圖示</string>
   <string name="gestures_settings_title">觸控筆手勢</string>
-  <string name="category_spen_title">觸控筆手勢</string>
   <string name="enable_subcat_title">觸控筆</string>
   <string name="enable_spen_title_head">啟用手勢</string>
   <string name="enable_spen_summary_head">按住觸控筆按鈕以使用滑動手勢</string>

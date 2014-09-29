@@ -58,7 +58,6 @@
   <string name="profile_unknown_nfc_tag">Непознат профил</string>
   <string name="profile_add_nfc_text">Ова NFC ознака се односи на непознати профил. Постављање ове NFC ознаке на постојећем профилу омогућиће избор профила у будућности.</string>
   <string name="profile_select">Изабери профил</string>
-  <string name="add_profile_dialog_title">Направи нови профил</string>
   <string name="profile_name_title">Име</string>
   <string name="profile_profile_name_prompt">Унеси име за нови профил</string>
   <string name="menu_new_profile">Нови профил</string>
@@ -97,8 +96,6 @@
   <string name="ringer_mode">Режим звона</string>
   <string name="lights_mode">Режим светла</string>
   <string name="vibrate_mode">Режим вибрације</string>
-  <string name="choose_soundtone">Изабери тон обавештења</string>
-  <string name="choose_ringtone">Изабери тон звона</string>
   <string name="soundtone_title">Тон обавештења</string>
   <string name="profile_appgroups_title">Групе апликација</string>
   <string name="profile_applist_title">Апликације</string>
@@ -245,7 +242,7 @@
   <string name="title_tile_compass">Компас</string>
   <string name="title_tile_heads_up">Heads up</string>
   <string name="title_tile_sleep">Спавање</string>
-  <string name="title_tile_gps">GPS</string>
+  <string name="title_tile_gps">Локација</string>
   <string name="title_tile_torch">Бакља</string>
   <string name="title_tile_lockscreen">Закључавање екрана</string>
   <string name="title_tile_lte">LTE</string>
@@ -398,7 +395,6 @@
   <string name="preview_data_title">Преглед података</string>
   <string name="view_stats_title">Погледај статистике</string>
   <string name="anonymous_learn_more">Сазнај више</string>
-  <string name="anonymous_notification_desc">Омогући или онемогући CyanogenMod статистику</string>
   <string name="preview_id_title">Јединствен ID</string>
   <string name="preview_device_title">Уређај</string>
   <string name="preview_version_title">Верзија</string>
@@ -439,14 +435,10 @@
   <string name="kill_app_longpress_back">Затвори апликацију дугметом за Назад</string>
   <string name="kill_app_longpress_back_summary">Затвори предњу апликацију дугим притиском на дугме за Назад</string>
   <string name="changelog_title">Евиденција измена</string>
-  <string name="changelog_loading">Учитавање евиденције измена\u2026</string>
   <string name="changelog_error">Није могуће учитати евиденцију измена</string>
-  <string name="changelog_unknown">Непознато</string>
-  <string name="changelog_version">Верзија</string>
   <string name="contributor_cloud_title">Сарадници</string>
   <string name="cmupdate_settings_title">Системска ажурирања</string>
   <string name="cmupdate_settings_summary">Провери, погледај или инсталирај доступна ажурирања</string>
-  <string name="advanced_settings_title">Напредно</string>
   <string name="development_tools_title">Покрени алате</string>
   <string name="allow_mock_sms">Дозволи лажни SMS</string>
   <string name="privacy_settings_cyanogenmod_title">Приватност</string>
@@ -459,13 +451,11 @@
   <string name="privacy_guard_manager_title">Заштита приватности</string>
   <string name="privacy_guard_manager_summary">Управљај које апликације могу имати приступ твојим личним подацима</string>
   <string name="privacy_guard_no_user_apps">Нема исталираних апликација</string>
-  <string name="privacy_guard_filter_does_not_match">Нема инсталираних апликација са релевантним дозволама</string>
   <string name="privacy_guard_help_title">Помоћ</string>
   <string name="privacy_guard_reset_title">Ресетуј</string>
   <string name="privacy_guard_reset_text">Ресетуј дозволе?</string>
   <string name="privacy_guard_help_text">У овом екрану можеш одабрати која апликација заштите приватности треба да буде активна са једноставним додиром. Изабране апликације неће моћи да приступе твојим личним подацима, као што су контакти, поруке или евиденција позива. Дугим притиском при уласку отварају се детаљи за ту апликацију.\n\nУ уграђеним апликацијама није приказано као подразумевано, али може бити подешено избором одговарајућих опција у менију.</string>
   <string name="privacy_guard_manager_show_system_apps">Прикажи уграђене апликације</string>
-  <string name="privacy_guard_manager_filter_permissions">Дозвола филтера</string>
   <string name="privacy_guard_advanced_settings_title">Напредно</string>
   <string name="blacklist_title">Црна листа</string>
   <string name="blacklist_edit_dialog_title">Измени црну листу</string>
@@ -504,9 +494,6 @@
   <string name="gamma_tuning_title_head">Гама калибрација</string>
   <string name="gamma_tuning_summary_head">Штипање гама вредности</string>
   <string name="gamma_tuning_control_set_header">Група <xliff:g id="index">%d</xliff:g></string>
-  <string name="gamma_tuning_contrast">Контраст</string>
-  <string name="gamma_tuning_brightness">Осветљеност</string>
-  <string name="gamma_tuning_saturation">Засићење</string>
   <string name="headset_connect_player_title">Покрени музичку апликацију</string>
   <string name="headset_connect_player_summary">Покрени подразумевану музичку апликацију када су слушалице повезане</string>
   <string name="adb_notify">USB обавештење о отклањању грешака</string>
@@ -524,6 +511,8 @@
   <string name="collapse_on_dismiss_if_empty_summary">Затвори након уклањања последњег обавештења</string>
   <string name="collapse_on_dismiss_if_no_clearable_summary">Затвори након уклањања последњег преносивог обавештења</string>
   <string name="double_tap_to_wake_title">Дупли-додир за буђење</string>
+  <string name="double_tap_to_sleep_title">Дупли-додир за спавање</string>
+  <string name="double_tap_to_sleep_summary">Два пута додирни статусну траку или клизач закључаног екрана да ставиш уређај у стању спавања</string>
   <string name="proximity_wake_title">Спречи случајно буђење</string>
   <string name="proximity_wake_summary">Провери растојање сензора пре буђења екрана</string>
   <string name="category_quick_access">Трака брзих приступа</string>
@@ -660,6 +649,7 @@
   <string name="hardware_keys_action_in_app_search">Претрага у апликацијама</string>
   <string name="hardware_keys_action_launch_camera">Покрени камеру</string>
   <string name="hardware_keys_action_last_app">Последња апликација</string>
+  <string name="hardware_keys_action_sleep">Искључи екран</string>
   <string name="power_end_call_title">Заврши позив</string>
   <string name="power_end_call_summary">Притискање дугмета за напајање ће завршити тренутни позив</string>
   <string name="button_wake_title">Буђење</string>
@@ -690,13 +680,6 @@
   <string name="backlight_summary_disabled">Онемогућено</string>
   <string name="backlight_summary_enabled_with_timeout">Омогућено за <xliff:g id="timeout">%s</xliff:g></string>
   <string name="backlight_summary_enabled">Омогућено</string>
-  <string name="lockscreen_background">Позадина</string>
-  <string name="lockscreen_background_style_title">Позадина закључаног екрана</string>
-  <string name="background_default">Подразумевана позадина</string>
-  <string name="background_wallpaper">Прилагођена позадина</string>
-  <string name="background_result_successful">Позадина је промењена</string>
-  <string name="background_result_not_successful">Позадина није промењена</string>
-  <string name="setting_lockscreen_background">Примена позадине</string>
   <string name="confirm_delete_apn">APN ће бити избрисан.</string>
   <string name="status_bar_title">Статусна трака</string>
   <string name="status_bar_clock_title">Стил сата</string>
@@ -718,7 +701,6 @@
   <string name="status_bar_toggle_info">Није доступно док је аутоматска осветљеност омогућена</string>
   <string name="status_bar_notif_count_title">Број обавештења</string>
   <string name="status_bar_notif_count_summary">Прикажи број обавештења на чекању</string>
-  <string name="status_bar_double_tap_to_sleep_title">Дупли-додир за спавање</string>
   <string name="development_shortcut_title">Развојна пречица</string>
   <string name="development_shortcut_summary">Омогући опције \'избриши податке\' и \'приморај затварање\' у обавештењу и у листи недавних апликација</string>
   <string name="usb_mass_storage_title">Масовно складиште (UMS)</string>
@@ -741,7 +723,6 @@
   <string name="stylus_icon_enabled_title">Прикажи икону када користим оловку</string>
   <string name="stylus_icon_enabled_summary">Прикажи икону курсора када лебдим или цртам помоћу оловке</string>
   <string name="gestures_settings_title">Гестови оловке</string>
-  <string name="category_spen_title">Гестови оловке</string>
   <string name="enable_subcat_title">Оловке</string>
   <string name="enable_spen_title_head">Омогући гестове</string>
   <string name="enable_spen_summary_head">Користи гестове превлачења држећи притиснут тастер оловке</string>
@@ -938,7 +919,6 @@
   <string name="usb_ejecting_title">Искључивање USB складишта</string>
   <string name="usb_ejecting_summary">Искључивање USB складишта у току</string>
   <string name="usb_media_format_title">Избриши USB складиште</string>
-  <string name="usb_media_format_summary">Избриши све податке у USB складишту</string>
   <string name="usb_media_format_desc">Избриши цело USB складиште? Изгубићеш <b>све</b> ускладиштене податке!</string>
   <string name="usb_media_format_button_text">Избриши USB складиште</string>
   <string name="usb_media_format_final_desc">Избриши USB складиште, брисањем свих фајлова ускладиштених тамо? Не можеш преокренути ову акцију!</string>
@@ -956,9 +936,53 @@
   <string name="sd_ejecting_title">Искључивање SD картице</string>
   <string name="sd_ejecting_summary">Искључивање SD картице у току</string>
   <string name="sd_media_format_title">Избриши SD картицу</string>
-  <string name="sd_media_format_summary">Избриши све податке са SD картице</string>
   <string name="sd_media_format_desc">Избриши SD картицу? Изгубићеш <b>све</b> податке на картици!</string>
   <string name="sd_media_format_button_text">Избриши SD картицу</string>
   <string name="sd_media_format_final_desc">Избриши SD картицу, брисањем свих фајлова ускладиштених тамо? Не можеш преокренути ову акцију!</string>
   <string name="sd_media_format_gesture_explanation">Потребно је да нацрташ шаблон за откључавање да би потврдио да желиш да избришеш SD картицу.</string>
+  <string name="bluetooth_enter_pin_msg_hs">За повезивање са:<xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g>Унеси одговарајућу PIN лозинку (мин. 16 цифара):</string>
+  <string name="bluetooth_profile_sap">SIM приступ</string>
+  <string name="bluetooth_profile_dun">Dial-up Мрежни приступ</string>
+  <string name="bluetooth_sap_profile_summary_connected">Повезано на SIM приступном серверу</string>
+  <string name="bluetooth_dun_profile_summary_connected">Повезано на DUN серверу</string>
+  <string name="bluetooth_sap_profile_summary_use_for">Користи за SIM приступ</string>
+  <string name="bluetooth_dun_profile_summary_use_for">Користи за Dial-up Мрежни приступ</string>
+  <string name="wifi_disabled_association_rejected">Удруживање одбијено</string>
+  <string name="screencolor">Боја екрана</string>
+  <string name="custom_screencolor">Прилагођена боја екрана</string>
+  <string name="device_additional_status">Додатне информације статуса</string>
+  <string name="enable_quickboot_title">Омогући QuickBoot режим</string>
+  <string name="enable_quickboot_summary">Стави уређај у режиму QuickBoot уместо нормалног напајања.</string>
+  <string name="data_usage_tab_slot">SIM </string>
+  <string name="sel_sub_title">Конфигурисање претплате</string>
+  <string name="sel_sub_summary">Изабери своју претплату</string>
+  <string name="no_sim_info">Информације о SIM картици нису доступне.\nНе може се приступити менију</string>
+  <string name="subs_settings">Статус претплате</string>
+  <string name="set_data_subscription_progress">Постављање претплате података\u2026</string>
+  <string name="set_dds_success">Претплата података је успешно постављена</string>
+  <string name="set_dds_failed">Грешка приликом подешавања података претплате. Уклони све постојеће везе за пренос података и покушај поново.</string>
+  <string name="set_dds_error">Грешка приликом подешавања података за претплату.</string>
+  <string name="set_sms_error">Грешка при подешавању SMS претплате. Претплата није активна.</string>
+  <string name="set_voice_error">Грешка приликом подешавања говорне претплате. Претплата није активна.</string>
+  <string name="set_priority_sub_error">Грешка при постављању приоритета претплате. Претплата није активна.</string>
+  <string name="prompt">Питај</string>
+  <string name="prompt_user">Питај корисника</string>
+  <string name="tune_away_title">Даљинско подешавање</string>
+  <string name="tune_away_enabled">Даљинско подешавање омогућено</string>
+  <string name="tune_away_disabled">Даљинско подешавање онемогућено</string>
+  <string name="screencolor_save">Сачувај</string>
+  <string name="screencolor_cancel">Откажи</string>
+  <string name="restore_preview">Погледај подразумевану слику</string>
+  <string name="selectnewfile_menu">Погледај нову слику из Галерије</string>
+  <string name="selectfile_menu">Погледај слику из Галерије</string>
+  <string name="restore_default_str">Ресетуј</string>
+  <string name="hue_str">Нијанса: <xliff:g id="hue_value">%1$s</xliff:g></string>
+  <string name="saturation_str">Засићење: <xliff:g id="saturation_value">%1$s</xliff:g></string>
+  <string name="contrast_str">Контраст: <xliff:g id="contrast_value">%1$s</xliff:g></string>
+  <string name="intensity_str">Интензитет: <xliff:g id="intensity_str_value">%1$s</xliff:g></string>
+  <string name="device_status_summary_cm" product="tablet">Статус батерије, мреже и друге информације</string>
+  <string name="device_status_summary_cm" product="default">Статус батерије, ниво батерије, итд.</string>
+  <string name="wifi_ap_clients_title">Повезани уређаји</string>
+  <string name="wifi_ap_client_ap_disabled">Hotspot је онемогућен</string>
+  <string name="wifi_ap_client_none_connected">Нема повезаних уређаја</string>
 </resources>
