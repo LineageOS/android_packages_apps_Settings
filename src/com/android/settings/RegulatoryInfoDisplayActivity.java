@@ -51,7 +51,11 @@ public class RegulatoryInfoDisplayActivity extends Activity implements
         super.onCreate(savedInstanceState);
         Resources resources = getResources();
 
-        if (!resources.getBoolean(R.bool.config_show_regulatory_info)) {
+        boolean isShowRegulatoryByProp = resources.getBoolean(
+                R.bool.def_regulatory_enable);
+
+        if (!isShowRegulatoryByProp
+                && !resources.getBoolean(R.bool.config_show_regulatory_info)) {
             finish();   // no regulatory info to display for this device
         }
 
@@ -73,7 +77,13 @@ public class RegulatoryInfoDisplayActivity extends Activity implements
             }
         }
 
-        CharSequence regulatoryText = resources.getText(R.string.regulatory_info_text);
+        CharSequence regulatoryText = "";
+        if (isShowRegulatoryByProp) {
+            regulatoryText = resources.getString(R.string.def_custome_sar_defvalue);
+        } else {
+            regulatoryText = resources.getText(R.string.regulatory_info_text);
+        }
+
 
         if (regulatoryInfoDrawableExists) {
             View view = getLayoutInflater().inflate(R.layout.regulatory_info, null);

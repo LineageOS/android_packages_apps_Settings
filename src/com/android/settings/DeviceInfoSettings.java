@@ -92,7 +92,14 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         super.onCreate(icicle);
 
         addPreferencesFromResource(R.xml.device_info_settings);
-
+        if (getResources().getBoolean(R.bool.def_system_ots_update_enable)) {
+            if (getResources().getBoolean(R.bool.def_ota_enable))
+                findPreference(KEY_SYSTEM_UPDATE_SETTINGS).setIntent(
+                        new Intent("com.android.softwareupdateclient.LAVA_OTA_UPDATE"));
+            else
+                findPreference(KEY_SYSTEM_UPDATE_SETTINGS).setIntent(
+                        new Intent("android.settings.SYSTEM_UPDATE"));
+        }
         setStringSummary(KEY_FIRMWARE_VERSION, Build.VERSION.RELEASE);
         findPreference(KEY_FIRMWARE_VERSION).setEnabled(true);
         setValueSummary(KEY_BASEBAND_VERSION, "gsm.version.baseband");
@@ -168,11 +175,14 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
                 R.bool.config_additional_system_update_setting_enable);
 
         // Remove regulatory information if none present.
-        final Intent intent = new Intent(Settings.ACTION_SHOW_REGULATORY_INFO);
-        if (getPackageManager().queryIntentActivities(intent, 0).isEmpty()) {
-            Preference pref = findPreference(KEY_REGULATORY_INFO);
-            if (pref != null) {
-                getPreferenceScreen().removePreference(pref);
+        if (!getResources().getBoolean(R.bool.def_system_ots_update_enable) ||
+                !getResources().getBoolean(R.bool.def_regulatory_enable)) {
+            final Intent intent = new Intent(Settings.ACTION_SHOW_REGULATORY_INFO);
+            if (getPackageManager().queryIntentActivities(intent, 0).isEmpty()) {
+                Preference pref = findPreference(KEY_REGULATORY_INFO);
+                if (pref != null) {
+                    getPreferenceScreen().removePreference(pref);
+                }
             }
         }
     }
