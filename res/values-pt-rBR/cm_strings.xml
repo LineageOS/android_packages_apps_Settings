@@ -58,7 +58,6 @@
   <string name="profile_unknown_nfc_tag">Perfil Desconhecido</string>
   <string name="profile_add_nfc_text">Esta etiqueta NFC se refere a um perfil desconhecido. Ao anexar esta etiqueta NFC à um perfil existente, irá permitir selecionar o perfil no futuro.</string>
   <string name="profile_select">Selecione o perfil</string>
-  <string name="add_profile_dialog_title">Criar novo perfil</string>
   <string name="profile_name_title">Nome do perfil</string>
   <string name="profile_profile_name_prompt">Entre um nome para o novo perfil</string>
   <string name="menu_new_profile">Novo perfil</string>
@@ -97,8 +96,6 @@
   <string name="ringer_mode">Modo de toque</string>
   <string name="lights_mode">Modo de luzes</string>
   <string name="vibrate_mode">Modo de vibração</string>
-  <string name="choose_soundtone">Selecione o som de notificação</string>
-  <string name="choose_ringtone">Selecione o toque do telefone</string>
   <string name="soundtone_title">Toque de notificação</string>
   <string name="profile_appgroups_title">Grupos de aplicações</string>
   <string name="profile_applist_title">Aplicações</string>
@@ -245,7 +242,7 @@
   <string name="title_tile_compass">Bússola</string>
   <string name="title_tile_heads_up">Notificações pop-up</string>
   <string name="title_tile_sleep">Dormir</string>
-  <string name="title_tile_gps">GPS</string>
+  <string name="title_tile_gps">Localização</string>
   <string name="title_tile_torch">Lanterna</string>
   <string name="title_tile_lockscreen">Tela de bloqueio</string>
   <string name="title_tile_lte">LTE</string>
@@ -391,7 +388,6 @@ Opções adicionais estão disponíveis ao pressionar continuamente uma linha. A
   <string name="preview_data_title">Pré-visualizar dados</string>
   <string name="view_stats_title">Ver estatísticas</string>
   <string name="anonymous_learn_more">Saiba mais</string>
-  <string name="anonymous_notification_desc">Habilitar ou desabilitar estatísticas CyanogenMod</string>
   <string name="preview_id_title">ID unico</string>
   <string name="preview_device_title">Dispositivo</string>
   <string name="preview_version_title">Versão</string>
@@ -432,14 +428,10 @@ Opções adicionais estão disponíveis ao pressionar continuamente uma linha. A
   <string name="kill_app_longpress_back">Matar app com botão voltar</string>
   <string name="kill_app_longpress_back_summary">Ao manter pressionado o botão de voltar, o aplicativo em primeiro plano é fechado</string>
   <string name="changelog_title">Relatório de alterações</string>
-  <string name="changelog_loading">Carregando registro de mudanças\u2026</string>
   <string name="changelog_error">Não foi possível carregar as mudanças</string>
-  <string name="changelog_unknown">Desconhecido</string>
-  <string name="changelog_version">Versão</string>
   <string name="contributor_cloud_title">Colaboradores</string>
   <string name="cmupdate_settings_title">Atualizações CyanogenMod</string>
   <string name="cmupdate_settings_summary">Verificar, visualizar ou instalar atualizações disponíveis</string>
-  <string name="advanced_settings_title">Avançado</string>
   <string name="development_tools_title">Abrir ferramentas</string>
   <string name="allow_mock_sms">Permitir a simulação SMS</string>
   <string name="privacy_settings_cyanogenmod_title">Privacidade</string>
@@ -452,13 +444,11 @@ Opções adicionais estão disponíveis ao pressionar continuamente uma linha. A
   <string name="privacy_guard_manager_title">Proteção à Privacidade</string>
   <string name="privacy_guard_manager_summary">Gerenciar quais aplicativos têm acesso aos seus dados pessoais</string>
   <string name="privacy_guard_no_user_apps">Nenhum aplicativo está instalado</string>
-  <string name="privacy_guard_filter_does_not_match">Nenhum aplicativo com permissões relevantes está instalado</string>
   <string name="privacy_guard_help_title">Ajuda</string>
   <string name="privacy_guard_reset_title">Redefinir</string>
   <string name="privacy_guard_reset_text">Redefinir permissões?</string>
   <string name="privacy_guard_help_text">Nesta tela você pode escolher quais aplicativos a Proteção à Privacidade deve estar ativa ao simplesmente tocar neles. Os aplicativos selecionados não serão capazes de acessar seus dados pessoais, como contatos, mensagens ou registos de chamadas. Pressionando e segurando um item de aplicativo, abre a tela de detalhes do aplicativo.\n\nAplicativos do sistema não são exibidos por padrão, mas podem ser exibidos selecionando a respectiva opção no menu.</string>
   <string name="privacy_guard_manager_show_system_apps">Mostrar aplicativos de sistema</string>
-  <string name="privacy_guard_manager_filter_permissions">Filtro de permissão</string>
   <string name="privacy_guard_advanced_settings_title">Avançado</string>
   <string name="blacklist_title">Lista de bloqueio</string>
   <string name="blacklist_edit_dialog_title">Editar entrada da lista de bloqueio</string>
@@ -497,9 +487,6 @@ Opções adicionais estão disponíveis ao pressionar continuamente uma linha. A
   <string name="gamma_tuning_title_head">Calibrar gama</string>
   <string name="gamma_tuning_summary_head">Ajustar valores de gama</string>
   <string name="gamma_tuning_control_set_header">Grupo <xliff:g xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" id="index">%d</xliff:g></string>
-  <string name="gamma_tuning_contrast">Contraste</string>
-  <string name="gamma_tuning_brightness">Brilho</string>
-  <string name="gamma_tuning_saturation">Saturação</string>
   <string name="headset_connect_player_title">Abrir aplicativo de música</string>
   <string name="headset_connect_player_summary">Abrir aplicativo de música padrão quando o fone de ouvido for conectado</string>
   <string name="adb_notify">Notificação de depuração USB</string>
@@ -517,6 +504,8 @@ Opções adicionais estão disponíveis ao pressionar continuamente uma linha. A
   <string name="collapse_on_dismiss_if_empty_summary">Fechar bandeja de notificação ao remover a última notificação</string>
   <string name="collapse_on_dismiss_if_no_clearable_summary">Fechar bandeja de notificação ao remover a última notificação removível</string>
   <string name="double_tap_to_wake_title">Toque duplo para acordar</string>
+  <string name="double_tap_to_sleep_title">Toque duplo para dormir</string>
+  <string name="double_tap_to_sleep_summary">Toque duas vezes na barra de status ou na barra deslizante de desbloqueio da tela para colocar o dispositivo para dormir</string>
   <string name="proximity_wake_title">Evitar despertar acidental</string>
   <string name="proximity_wake_summary">Verifique o sensor de proximidade antes de despertar a tela</string>
   <string name="category_quick_access">Barra de Acesso Rápido</string>
@@ -653,6 +642,7 @@ Opções adicionais estão disponíveis ao pressionar continuamente uma linha. A
   <string name="hardware_keys_action_in_app_search">Busca dentro do app</string>
   <string name="hardware_keys_action_launch_camera">Iniciar a câmera</string>
   <string name="hardware_keys_action_last_app">Último aplicativo</string>
+  <string name="hardware_keys_action_sleep">Desligar a tela</string>
   <string name="power_end_call_title">Encerrar chamada</string>
   <string name="power_end_call_summary">Pressionar o botão liga/desliga encerrará a chamada em andamento</string>
   <string name="button_wake_title">Acordar</string>
@@ -683,13 +673,6 @@ Opções adicionais estão disponíveis ao pressionar continuamente uma linha. A
   <string name="backlight_summary_disabled">Desativado</string>
   <string name="backlight_summary_enabled_with_timeout">Ativado por <xliff:g xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" id="timeout">%s</xliff:g></string>
   <string name="backlight_summary_enabled">Ativado</string>
-  <string name="lockscreen_background">Plano de fundo</string>
-  <string name="lockscreen_background_style_title">Plano de fundo da tela de bloqueio</string>
-  <string name="background_default">Plano de fundo padrão</string>
-  <string name="background_wallpaper">Papel de parede personalizado</string>
-  <string name="background_result_successful">Plano de fundo alterado</string>
-  <string name="background_result_not_successful">Plano de fundo não alterado</string>
-  <string name="setting_lockscreen_background">Aplicando plano de fundo</string>
   <string name="confirm_delete_apn">O APN vai ser removido.</string>
   <string name="status_bar_title">Barra de status</string>
   <string name="status_bar_clock_title">Estilo do relógio</string>
@@ -711,7 +694,6 @@ Opções adicionais estão disponíveis ao pressionar continuamente uma linha. A
   <string name="status_bar_toggle_info">Não disponível enquanto o brilho automático estiver ativado</string>
   <string name="status_bar_notif_count_title">Mostrar contador de notificação</string>
   <string name="status_bar_notif_count_summary">Mostrar o número de notificações pendentes na barra de status</string>
-  <string name="status_bar_double_tap_to_sleep_title">Toque duplo para dormir</string>
   <string name="development_shortcut_title">Atalho para desenvolvimento</string>
   <string name="development_shortcut_summary">Ativar opções \'limpar dados\' e \'forçar fechamento\' na área de notificação e lista de aplicativos recentes</string>
   <string name="usb_mass_storage_title">Armazenamento em massa</string>
@@ -734,7 +716,6 @@ Opções adicionais estão disponíveis ao pressionar continuamente uma linha. A
   <string name="stylus_icon_enabled_title">Mostrar ícone quando usando stylus</string>
   <string name="stylus_icon_enabled_summary">Mostar ponteiro quando pairando ou desenhando com o stylus</string>
   <string name="gestures_settings_title">Gestos p/ stylus</string>
-  <string name="category_spen_title">Gestos p/ stylus</string>
   <string name="enable_subcat_title">Stylus</string>
   <string name="enable_spen_title_head">Ativar gestos</string>
   <string name="enable_spen_summary_head">Usar gestos de deslizar ao segurar o botão stylus.</string>
@@ -929,7 +910,6 @@ Opções adicionais estão disponíveis ao pressionar continuamente uma linha. A
   <string name="usb_ejecting_title">Desmontando o armazenamento USB</string>
   <string name="usb_ejecting_summary">Desmontando armazenamento USB</string>
   <string name="usb_media_format_title">Apagar armazenamento USB</string>
-  <string name="usb_media_format_summary">Apaga todos os dados no armazenamento USB</string>
   <string name="usb_media_format_desc">Apagar tudo no armazenamento USB? Você vai perder <b>todos</b> os dados armazenados!</string>
   <string name="usb_media_format_button_text">Apagar armazenamento USB</string>
   <string name="usb_media_format_final_desc">Apagar tudo no armazenamento USB? Isto irá apagar todos os arquivos armazenados? Não é possível reverter esta ação!</string>
@@ -947,9 +927,53 @@ Opções adicionais estão disponíveis ao pressionar continuamente uma linha. A
   <string name="sd_ejecting_title">Desmontando cartão SD</string>
   <string name="sd_ejecting_summary">Desmontando cartão SD</string>
   <string name="sd_media_format_title">Apagar o cartão SD</string>
-  <string name="sd_media_format_summary">Apaga todos os dados do cartão SD</string>
   <string name="sd_media_format_desc">Apagar cartão SD? Você perderá <b>todos</b> os dados no cartão!</string>
   <string name="sd_media_format_button_text">Apagar o cartão SD</string>
   <string name="sd_media_format_final_desc">Apagar o cartão SD, eliminando todos os arquivos armazenados? Não é possível reverter esta ação!</string>
   <string name="sd_media_format_gesture_explanation">Você precisa inserir seu padrão de desbloqueio para confirmar que você deseja apagar o cartão SD.</string>
+  <string name="bluetooth_enter_pin_msg_hs">Para parear com:<xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g>Digite o PIN requerido (16 dígitos ou mais):</string>
+  <string name="bluetooth_profile_sap">Acesso ao SIM</string>
+  <string name="bluetooth_profile_dun">Acesso a rede discada</string>
+  <string name="bluetooth_sap_profile_summary_connected">Conectado ao servidor de acesso SIM</string>
+  <string name="bluetooth_dun_profile_summary_connected">Conectado ao servidor de acesso a redes discadas</string>
+  <string name="bluetooth_sap_profile_summary_use_for">Utilizar para acesso ao SIM</string>
+  <string name="bluetooth_dun_profile_summary_use_for">Utilizar para o acesso a redes discadas</string>
+  <string name="wifi_disabled_association_rejected">Associação rejeitada</string>
+  <string name="screencolor">Cor da tela</string>
+  <string name="custom_screencolor">Cor personalizada da tela</string>
+  <string name="device_additional_status">Informações adicionais do status</string>
+  <string name="enable_quickboot_title">Ativar modo Inicialização Rápida</string>
+  <string name="enable_quickboot_summary">Colocar dispositivo em modo de Inicialização Rápida em vez de desligamento normal.</string>
+  <string name="data_usage_tab_slot">SIM </string>
+  <string name="sel_sub_title">Configurar assinaturas</string>
+  <string name="sel_sub_summary">Selecione sua assinatura</string>
+  <string name="no_sim_info">Informação sobre cartão SIM não disponível.\nMenu não pode ser acessado</string>
+  <string name="subs_settings">Status da assinatura</string>
+  <string name="set_data_subscription_progress">Configurando assinatura de dados\u2026</string>
+  <string name="set_dds_success">Assinatura de dados foi definida com sucesso</string>
+  <string name="set_dds_failed">Erro ao configurar assinatura de dados. Feche qualquer conexão de dados existente e tente novamente.</string>
+  <string name="set_dds_error">Erro ao configurar assinatura de dados.</string>
+  <string name="set_sms_error">Erro ao configurar assinatura SMS. Assinatura não ativa.</string>
+  <string name="set_voice_error">Erro ao configurar assinatura de voz. Assinatura não ativa.</string>
+  <string name="set_priority_sub_error">Erro ao configurar prioridade de assinatura. Assinatura não ativa.</string>
+  <string name="prompt">Perguntar</string>
+  <string name="prompt_user">Perguntar ao usuário</string>
+  <string name="tune_away_title">TuneAway</string>
+  <string name="tune_away_enabled">TuneAway ativado</string>
+  <string name="tune_away_disabled">TuneAway desativado</string>
+  <string name="screencolor_save">Salvar</string>
+  <string name="screencolor_cancel">Cancelar</string>
+  <string name="restore_preview">Visualizar imagem padrão</string>
+  <string name="selectnewfile_menu">Visualizar nova imagem da Galeria</string>
+  <string name="selectfile_menu">Visualizar imagem da Galeria</string>
+  <string name="restore_default_str">Redefinir</string>
+  <string name="hue_str">Tonalidade: <xliff:g id="hue_value">%1$s</xliff:g></string>
+  <string name="saturation_str">Saturação: <xliff:g id="saturation_value">%1$s</xliff:g></string>
+  <string name="contrast_str">Contraste: <xliff:g id="contrast_value">%1$s</xliff:g></string>
+  <string name="intensity_str">Intensidade: <xliff:g id="intensity_str_value">%1$s</xliff:g></string>
+  <string name="device_status_summary_cm" product="tablet">Status da bateria, rede e outras informações</string>
+  <string name="device_status_summary_cm" product="default">Status da bateria, nível de bateria, etc.</string>
+  <string name="wifi_ap_clients_title">Dispositivos conectados</string>
+  <string name="wifi_ap_client_ap_disabled">Ponto de acesso está desativado</string>
+  <string name="wifi_ap_client_none_connected">Não há dispositivos conectados</string>
 </resources>
