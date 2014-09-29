@@ -58,7 +58,6 @@
   <string name="profile_unknown_nfc_tag">الملف الشخصية غير معروف</string>
   <string name="profile_add_nfc_text">ا الوسم NFC يشير إلى ملف تعريف غير معروف. إرفاق هذه العلامة نفك إلى تشكيل جانبي موجود سوف تسمح لتحديد الملف الشخصي في المستقبل.</string>
   <string name="profile_select">حدد ملف الشخصي</string>
-  <string name="add_profile_dialog_title">إنشاء ملف شخصي</string>
   <string name="profile_name_title">الاسم</string>
   <string name="profile_profile_name_prompt">أدخل اسماً للملف الشخصي الجديد</string>
   <string name="menu_new_profile">ملف شخصي جديد</string>
@@ -97,8 +96,6 @@
   <string name="ringer_mode">وضع الرنين</string>
   <string name="lights_mode">وضع الأضواء</string>
   <string name="vibrate_mode">الوضع الإهتزاز</string>
-  <string name="choose_soundtone">اختر نغمة الإعلام</string>
-  <string name="choose_ringtone">اختر نغمة الرنين</string>
   <string name="soundtone_title">نغمة الإعلام</string>
   <string name="profile_appgroups_title">مجموعات التطبيق</string>
   <string name="profile_applist_title">تطبيقات</string>
@@ -245,7 +242,6 @@
   <string name="title_tile_compass">بوصلة</string>
   <string name="title_tile_heads_up">الرأس فوق</string>
   <string name="title_tile_sleep">أذهب الى النوم</string>
-  <string name="title_tile_gps">نظام تحديد المواقع</string>
   <string name="title_tile_torch">الشعلة</string>
   <string name="title_tile_lockscreen">شاشة القفل</string>
   <string name="title_tile_lte">LTE</string>
@@ -385,7 +381,6 @@
   <string name="preview_data_title">معاينة البيانات</string>
   <string name="view_stats_title">عرض الإحصائيات</string>
   <string name="anonymous_learn_more">لمعرفة المزيد</string>
-  <string name="anonymous_notification_desc">تمكين أو تعطيل إحصاءات CyanogenMod</string>
   <string name="preview_id_title">Unique ID</string>
   <string name="preview_device_title">الجهاز</string>
   <string name="preview_version_title">الإصدار</string>
@@ -426,14 +421,10 @@
   <string name="kill_app_longpress_back">قتل التطبيق بزر الخلف</string>
   <string name="kill_app_longpress_back_summary">قتل التطبيق بالضغط الطويل على زر الخلف</string>
   <string name="changelog_title">سِجل التغييرات</string>
-  <string name="changelog_loading">تحميل التغيرات\u2026</string>
   <string name="changelog_error">غير قادر على تحميل التغيير</string>
-  <string name="changelog_unknown">غير معروف</string>
-  <string name="changelog_version">الإصدار</string>
   <string name="contributor_cloud_title">المساهمون</string>
   <string name="cmupdate_settings_title">تحديثات CyanogenMod</string>
   <string name="cmupdate_settings_summary">التحقق من وجود أو عرض أو تثبيت التحديثات المتوفرة</string>
-  <string name="advanced_settings_title">متقدم</string>
   <string name="development_tools_title">بدء تشغيل أدوات</string>
   <string name="allow_mock_sms">السماح بالرسائل القصيرة صورية</string>
   <string name="privacy_settings_cyanogenmod_title">الخصوصية</string>
@@ -446,13 +437,11 @@
   <string name="privacy_guard_manager_title">حارس الخصوصية</string>
   <string name="privacy_guard_manager_summary">إدارة تطبيقات التي يستطيعون الوصول إلى بياناتك الشخصية</string>
   <string name="privacy_guard_no_user_apps">لا تطبيقات مثبت</string>
-  <string name="privacy_guard_filter_does_not_match">لا يتم تثبيت أي تطبيقات مع أذونات ذات الصلة</string>
   <string name="privacy_guard_help_title">تعليمات</string>
   <string name="privacy_guard_reset_title">إعادة تعيين</string>
   <string name="privacy_guard_reset_text">إعادة تعيين الأذونات؟</string>
   <string name="privacy_guard_help_text">في هذه الشاشة يمكنك اختيار أي تطبيقات يجب أن يكون الحرس الخصوصية نشطة لببساطة عن طريق التنصت عليها. سوف التطبيقات المحددة لن تكون قادرة على الوصول إلى البيانات الشخصية الخاصة بك مثل الأسماء أو الرسائل أو سجلات المكالمات. الضغط طويلة على إدخال يفتح تفاصيل التطبيق كشف عن أن التطبيق.\n\n لا تظهر داخل في تطبيقات افتراضيا ولكن يمكن الكشف عنها عن طريق تحديد خيار القائمة منها.</string>
   <string name="privacy_guard_manager_show_system_apps">إظهار تطبيقات مضمنة</string>
-  <string name="privacy_guard_manager_filter_permissions">إذن عامل التصفية</string>
   <string name="privacy_guard_advanced_settings_title">متقدم</string>
   <string name="blacklist_title">القائمة السوداء</string>
   <string name="blacklist_edit_dialog_title">تحرير إدخال القائمة السوداء</string>
@@ -491,9 +480,6 @@
   <string name="gamma_tuning_title_head">Gamma المعيارية</string>
   <string name="gamma_tuning_summary_head">قرص قيم gamma</string>
   <string name="gamma_tuning_control_set_header">المجموعة <xliff:g id="index"> %d </xliff:g></string>
-  <string name="gamma_tuning_contrast">التباين</string>
-  <string name="gamma_tuning_brightness">السطوع</string>
-  <string name="gamma_tuning_saturation">التشبع</string>
   <string name="headset_connect_player_title">بدء تشغيل في تطبيق الموسيقى</string>
   <string name="headset_connect_player_summary">بدء تطبيق الموسيقى الافتراضي عندما يتم توصيل سماعات الرأس</string>
   <string name="adb_notify">إعلام تصحيح الأخطاء USB</string>
@@ -677,13 +663,6 @@
   <string name="backlight_summary_disabled">معطلة</string>
   <string name="backlight_summary_enabled_with_timeout">تمكين ل <xliff:g id="timeout"> %s </xliff:g></string>
   <string name="backlight_summary_enabled">سماح</string>
-  <string name="lockscreen_background">الخلفية</string>
-  <string name="lockscreen_background_style_title">خلفية شاشة القفل</string>
-  <string name="background_default">الخلفية الافتراضية</string>
-  <string name="background_wallpaper">خلفية مخصصة</string>
-  <string name="background_result_successful">تغيير خلفية</string>
-  <string name="background_result_not_successful">الخلفية لم يتغير</string>
-  <string name="setting_lockscreen_background">تطبيق الخلفية</string>
   <string name="confirm_delete_apn">سيتم حذف APN.</string>
   <string name="status_bar_title">شريط المعلومات</string>
   <string name="status_bar_clock_title">نمط الساعة</string>
@@ -705,7 +684,6 @@
   <string name="status_bar_toggle_info">غير متوفر أثناء تمكين السطوع التلقائي</string>
   <string name="status_bar_notif_count_title">إظهار عدد الإشعار</string>
   <string name="status_bar_notif_count_summary">عرض عدد الإعلامات المعلقة</string>
-  <string name="status_bar_double_tap_to_sleep_title">الضغط المزدوج النوم</string>
   <string name="development_shortcut_title">اختصار المطورين</string>
   <string name="development_shortcut_summary">تمكين \'مسح البيانات\' وخيارات \'فرض إغلاق\' في منطقة الإعلام وقائمة تطبيقات الأخيرة</string>
   <string name="usb_mass_storage_title">مخزن كبير السعة (UMS)</string>
@@ -730,7 +708,6 @@ href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing A
   <string name="stylus_icon_enabled_title">إظهار الرمز عند استخدام النمط</string>
   <string name="stylus_icon_enabled_summary">إظهار رمز المؤشر عند المرور بالماوس أو الرسم  النمط</string>
   <string name="gestures_settings_title">نمط إيماءات</string>
-  <string name="category_spen_title">نمط إيماءات</string>
   <string name="enable_subcat_title">أنماط</string>
   <string name="enable_spen_title_head">تمكين الإيماءات</string>
   <string name="enable_spen_summary_head">استخدام الإيماءات مرر بالضغط باستمرار على زر نمط</string>
@@ -929,7 +906,6 @@ href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing A
   <string name="usb_ejecting_title">يتم إلغاء تحميل وحدة تخزين USB</string>
   <string name="usb_ejecting_summary">إلغاء تحميل وحدة تخزين USB قيد التقديم</string>
   <string name="usb_media_format_title">مسح تخزين USB</string>
-  <string name="usb_media_format_summary">مسح كافة البيانات الموجودة في وحدة تخزين USB</string>
   <string name="usb_media_format_desc">محو كل وحدة تخزين USB؟ سوف تفقد <b>جميع</b> تخزين البيانات!</string>
   <string name="usb_media_format_button_text">مسح تخزين USB</string>
   <string name="usb_media_format_final_desc">مسح التخزين USB، حذف كافة الملفات المخزنة؟ لا يمكنك عكس هذا الإجراء!</string>
@@ -947,7 +923,6 @@ href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing A
   <string name="sd_ejecting_title">يتم إلغاء تركيب بطاقة SD</string>
   <string name="sd_ejecting_summary">إلغاء تحميل بطاقة SD قيد التقديم</string>
   <string name="sd_media_format_title">مسح بطاقة SD</string>
-  <string name="sd_media_format_summary">مسح كافة البيانات الموجودة على بطاقة SD</string>
   <string name="sd_media_format_desc">مسح بطاقة SD؟ فسوف تفقد <b>كافة</b> البيانات الموجودة على البطاقة!</string>
   <string name="sd_media_format_button_text">مسح بطاقة SD</string>
   <string name="sd_media_format_final_desc">مسح بطاقة SD، حذف كافة الملفات المخزنة هناك؟ لا يمكنك عكس هذا الإجراء!</string>

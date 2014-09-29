@@ -18,7 +18,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="wifi_setting_countrycode_title">Wi-Fi地域コード</string>
   <string name="wifi_setting_countrycode_summary">Wi-Fiの地域コードを指定する</string>
-  <string name="wifi_setting_countrycode_error">地域コードを設定中に問題が発生しました。</string>
+  <string name="wifi_setting_countrycode_error">地域コードの設定中に問題が発生しました。</string>
   <string name="wifi_setting_priority_title">Wi-Fi優先順位</string>
   <string name="wifi_setting_priority_summary">Wi-Fiネットワークの優先順位を指定する</string>
   <string name="wifi_ssid_input_limit">SSIDが最大長を超えています</string>
@@ -51,22 +51,21 @@
   <string name="profile_trigger_filter_bluetooth">Bluetoothトリガー</string>
   <string name="profile_write_nfc_tag">NFCタグに書き込む</string>
   <string name="profile_write_touch_tag">タグにタッチして書き込む</string>
-  <string name="profile_write_success">タグに正常に書き込みました</string>
-  <string name="profile_write_failed">タグの書き込みに失敗しました</string>
+  <string name="profile_write_success">タグへの書き込みが完了しました</string>
+  <string name="profile_write_failed">タグに書き込めませんでした</string>
   <string name="profile_selected">選択したプロファイル: %1$s</string>
-  <string name="profile_nfc_text">NFCタグにプロファイルを書き込むと、タグにタップするだけでプロファイルを選択できるようになります。同じタグに2回タップすると前回に選択していたプロファイルを選択します。</string>
+  <string name="profile_nfc_text">NFCタグにプロファイルを書き込むと、タグにタップするだけでプロファイルを選択できるようになります。同じタグに2回タップすると以前に選択していたプロファイルを選択します。</string>
   <string name="profile_unknown_nfc_tag">不明なプロファイル</string>
   <string name="profile_add_nfc_text">このNFCタグは不明なプロファイルを参照しています。存在しているプロファイルに書き換えることで、再びプロファイルを選択できるようになります。</string>
   <string name="profile_select">プロファイルを選択</string>
-  <string name="add_profile_dialog_title">新しいプロファイルを作成</string>
   <string name="profile_name_title">名前</string>
   <string name="profile_profile_name_prompt">新しいプロファイルの名前を入力してください</string>
   <string name="menu_new_profile">新しいプロファイル</string>
   <string name="new_profile_name">&lt;新しいプロファイル&gt;</string>
   <string name="rename_dialog_title">名前の変更</string>
   <string name="rename_dialog_message">新しい名前を入力してください</string>
-  <string name="duplicate_profile_name">プロファイルの名前が重複しています！</string>
-  <string name="duplicate_appgroup_name">アプリグループの名前が重複しています！</string>
+  <string name="duplicate_profile_name">プロファイルの名前が重複しています</string>
+  <string name="duplicate_appgroup_name">アプリグループの名前が重複しています</string>
   <string name="profile_reset_title">リセット</string>
   <string name="profile_reset_message">ユーザーが作成したすべてのプロファイルとアプリグループを削除してデフォルトに戻しますか？</string>
   <string name="profile_delete_confirm">このプロファイルを削除しますか？</string>
@@ -97,8 +96,6 @@
   <string name="ringer_mode">着信モード</string>
   <string name="lights_mode">ライトモード</string>
   <string name="vibrate_mode">バイブレーションモード</string>
-  <string name="choose_soundtone">通知音を選択</string>
-  <string name="choose_ringtone">着信音を選択</string>
   <string name="soundtone_title">通知音</string>
   <string name="profile_appgroups_title">アプリグループ</string>
   <string name="profile_applist_title">アプリ</string>
@@ -110,14 +107,14 @@
   <string name="profile_system_settings_title">システムの設定</string>
   <string name="profile_lockmode_title">ロック画面モード</string>
   <string name="profile_lockmode_default">デフォルト</string>
-  <string name="profile_lockmode_insecure">セキュリティを無効にする</string>
-  <string name="profile_lockmode_disabled">無効</string>
+  <string name="profile_lockmode_insecure">セキュリティを無効化</string>
+  <string name="profile_lockmode_disabled">ロック画面を無効化</string>
   <string name="profile_lockmode_default_summary">システムのデフォルトを使用する</string>
   <string name="profile_lockmode_insecure_summary">セキュリティのないロック画面を使用する</string>
   <string name="profile_lockmode_disabled_summary">ロック画面を無効にする</string>
   <string name="profile_airplanemode_title">機内モード</string>
   <string name="toggleWifi">Wi-Fi</string>
-  <string name="toggleWifiAp">ポータブルWi-Fiアクセスポイント</string>
+  <string name="toggleWifiAp">Wi-Fiテザリング</string>
   <string name="toggleBluetooth">Bluetooth</string>
   <string name="toggleGPS">GPS</string>
   <string name="toggleData">モバイルデータ</string>
@@ -165,7 +162,7 @@
   <string name="adaptive_backlight_summary">使い勝手を維持したまま画面のバックライトを動的に調整して電池の寿命を高める</string>
   <string name="sunlight_enhancement_title">太陽光強化</string>
   <string name="sunlight_enhancement_summary">太陽光照射下での画面の明るさと見やすさを強化する</string>
-  <string name="color_enhancement_title">色補正</string>
+  <string name="color_enhancement_title">色の補正</string>
   <string name="color_enhancement_summary">画面の色を動的に補正する</string>
   <string name="wake_when_plugged_or_unplugged_title">接続時にスリープ解除</string>
   <string name="wake_when_plugged_or_unplugged_summary">電源を接続または切断したときに画面を点灯する</string>
@@ -192,9 +189,9 @@
   <string name="pulse_speed_slow">遅い</string>
   <string name="pulse_speed_very_slow">非常に遅い</string>
   <string name="battery_light_title">電池のライト</string>
-  <string name="battery_low_pulse_title">電池残量低下時に点滅</string>
+  <string name="battery_low_pulse_title">残量低下時に点滅</string>
   <string name="battery_light_list_title">色</string>
-  <string name="battery_light_low_color_title">電池残量低下</string>
+  <string name="battery_light_low_color_title">残量低下</string>
   <string name="battery_light_medium_color_title">充電中</string>
   <string name="battery_light_full_color_title">充電完了</string>
   <string name="lockpattern_reset_button">パターンをリセット</string>
@@ -204,7 +201,7 @@
   <string name="screen_security_category">画面のセキュリティ</string>
   <string name="screen_security_summary">ロック画面のセキュリティの設定を表示または変更する</string>
   <string name="unlock_scramble_pin_layout_title">スクランブルレイアウト</string>
-  <string name="unlock_scramble_pin_layout_summary">端末のロックを解除するときにPINのレイアウトをスクランブルする</string>
+  <string name="unlock_scramble_pin_layout_summary">端末のロック解除時にPINレイアウトをランダムにする</string>
   <string name="unlock_menu_unlock_title">メニューボタンでロック解除</string>
   <string name="unlock_menu_unlock_summary">メニューボタンを押して端末のロックを解除する</string>
   <string name="unlock_home_unlock_title">ホームボタンでロック解除</string>
@@ -245,7 +242,7 @@
   <string name="title_tile_compass">コンパス</string>
   <string name="title_tile_heads_up">ヘッドアップ</string>
   <string name="title_tile_sleep">スリープ</string>
-  <string name="title_tile_gps">GPS</string>
+  <string name="title_tile_gps">位置情報</string>
   <string name="title_tile_torch">トーチ</string>
   <string name="title_tile_lockscreen">ロック画面</string>
   <string name="title_tile_lte">LTE</string>
@@ -256,7 +253,7 @@
   <string name="title_tile_settings">設定</string>
   <string name="title_tile_sound">サウンド</string>
   <string name="title_tile_sync">同期</string>
-  <string name="title_tile_wifiap">Wi-Fi AP</string>
+  <string name="title_tile_wifiap">Wi-Fiテザリング</string>
   <string name="title_tile_wifi">Wi-Fi</string>
   <string name="title_tile_user">ユーザーの切り替え</string>
   <string name="title_tile_networkmode">ネットワークモード</string>
@@ -297,7 +294,7 @@
   <string name="tiles_reset_title">リセット</string>
   <string name="tiles_reset_message">デフォルトのタイルとレイアウトに戻しますか？</string>
   <string name="auto_brightness_setup_title">明るさの自動調整</string>
-  <string name="auto_brightness_twilight_adjustment">日の出と日没に合わせる</string>
+  <string name="auto_brightness_twilight_adjustment">太陽の動きに合わせて調整する</string>
   <string name="light_sensor_current_value">現在の光センサの値: <xliff:g id="light_level">%d</xliff:g>ルクス</string>
   <string name="auto_brightness_dialog_title">自動明るさレベル</string>
   <string name="auto_brightness_level_format"><xliff:g id="level">%1$d</xliff:g>ルクス</string>
@@ -379,7 +376,7 @@
   <string name="quiet_hours_dim_summary">通知ライトを無効にする</string>
   <string name="quiet_hours_haptic">タッチ操作バイブ</string>
   <string name="quiet_hours_haptic_summary">タッチ操作バイブを無効にする</string>
-  <string name="quiet_hours_active_period"><xliff:g id="start">%1$s</xliff:g>から<xliff:g id="end">%2$s</xliff:g>まで有効です</string>
+  <string name="quiet_hours_active_period"><xliff:g id="start">%1$s</xliff:g>から<xliff:g id="end">%2$s</xliff:g>までの間に有効になります</string>
   <string name="quiet_hours_ringer_allow_all">すべての着信で着信音を鳴らす</string>
   <string name="quiet_hours_ringer_allow_contacts">連絡先からの着信のみ着信音を鳴らす</string>
   <string name="quiet_hours_ringer_allow_starred">お気に入りの連絡先からの着信のみ着信音を鳴らす</string>
@@ -400,7 +397,6 @@
   <string name="preview_data_title">データをプレビュー</string>
   <string name="view_stats_title">統計情報を表示</string>
   <string name="anonymous_learn_more">詳細</string>
-  <string name="anonymous_notification_desc">CyanogenModの統計情報を有効または無効にする</string>
   <string name="preview_id_title">ユニークID</string>
   <string name="preview_device_title">端末</string>
   <string name="preview_version_title">バージョン</string>
@@ -441,14 +437,10 @@
   <string name="kill_app_longpress_back">戻るボタンでアプリを終了</string>
   <string name="kill_app_longpress_back_summary">戻るボタンを長押ししてフォアグラウンドアプリを終了する</string>
   <string name="changelog_title">更新履歴</string>
-  <string name="changelog_loading">更新履歴を読み込んでいます\u2026</string>
   <string name="changelog_error">更新履歴を読み込めませんでした</string>
-  <string name="changelog_unknown">不明</string>
-  <string name="changelog_version">バージョン</string>
   <string name="contributor_cloud_title">貢献者</string>
   <string name="cmupdate_settings_title">CyanogenModアップデート</string>
   <string name="cmupdate_settings_summary">利用可能なアップデートを確認、表示、インストールする</string>
-  <string name="advanced_settings_title">詳細設定</string>
   <string name="development_tools_title">ツールを起動</string>
   <string name="allow_mock_sms">疑似SMSを許可</string>
   <string name="privacy_settings_cyanogenmod_title">プライバシー</string>
@@ -461,13 +453,11 @@
   <string name="privacy_guard_manager_title">プライバシーガード</string>
   <string name="privacy_guard_manager_summary">アプリの個人データへのアクセスを管理する</string>
   <string name="privacy_guard_no_user_apps">アプリがインストールされていません</string>
-  <string name="privacy_guard_filter_does_not_match">関連した権限を持つアプリがインストールされていません</string>
   <string name="privacy_guard_help_title">ヘルプ</string>
   <string name="privacy_guard_reset_title">リセット</string>
   <string name="privacy_guard_reset_text">権限をリセットしますか？</string>
   <string name="privacy_guard_help_text">この画面では、どのアプリでプライバシーガードを有効にするかタップするだけで選択できます。選択されたアプリは連絡先、メッセージ、通話履歴のような個人データにアクセスできなくなります。エントリーを長押しするとそのアプリの詳細画面が開きます。\n\n内蔵アプリはデフォルトでは表示されませんが、それぞれのメニューオプションから選択することで表示させることができます。</string>
   <string name="privacy_guard_manager_show_system_apps">内蔵アプリを表示</string>
-  <string name="privacy_guard_manager_filter_permissions">権限フィルター</string>
   <string name="privacy_guard_advanced_settings_title">詳細設定</string>
   <string name="blacklist_title">ブラックリスト</string>
   <string name="blacklist_edit_dialog_title">ブラックリストのエントリーを編集</string>
@@ -506,9 +496,6 @@
   <string name="gamma_tuning_title_head">ガンマ調整</string>
   <string name="gamma_tuning_summary_head">ガンマ値を調整する</string>
   <string name="gamma_tuning_control_set_header">グループ<xliff:g id="index">%d</xliff:g></string>
-  <string name="gamma_tuning_contrast">コントラスト</string>
-  <string name="gamma_tuning_brightness">明度</string>
-  <string name="gamma_tuning_saturation">彩度</string>
   <string name="headset_connect_player_title">音楽アプリを起動</string>
   <string name="headset_connect_player_summary">ヘッドセット接続時にデフォルトの音楽アプリを起動する</string>
   <string name="adb_notify">USBデバッグの通知</string>
@@ -525,7 +512,9 @@
   <string name="collapse_on_dismiss_never_summary">通知を削除した後も開いたままにする</string>
   <string name="collapse_on_dismiss_if_empty_summary">最後の通知を削除した後に閉じる</string>
   <string name="collapse_on_dismiss_if_no_clearable_summary">最後の削除可能な通知を削除した後に閉じる</string>
-  <string name="double_tap_to_wake_title">ダブルタップで起動</string>
+  <string name="double_tap_to_wake_title">ダブルタップでスリープ解除</string>
+  <string name="double_tap_to_sleep_title">ダブルタップでスリープ</string>
+  <string name="double_tap_to_sleep_summary">ステータスバーまたはロック画面のスライダーをダブルタップして端末をスリープさせる</string>
   <string name="proximity_wake_title">誤起動を防止</string>
   <string name="proximity_wake_summary">画面をスリープ解除する前に接近センサーを確認する</string>
   <string name="category_quick_access">クイックアクセスリボン</string>
@@ -662,6 +651,7 @@
   <string name="hardware_keys_action_in_app_search">アプリ内検索</string>
   <string name="hardware_keys_action_launch_camera">カメラを起動</string>
   <string name="hardware_keys_action_last_app">前回使ったアプリ</string>
+  <string name="hardware_keys_action_sleep">画面を消灯</string>
   <string name="power_end_call_title">通話を終了</string>
   <string name="power_end_call_summary">電源ボタンを押して通話を終了する</string>
   <string name="button_wake_title">スリープ解除</string>
@@ -692,13 +682,6 @@
   <string name="backlight_summary_disabled">無効</string>
   <string name="backlight_summary_enabled_with_timeout"><xliff:g id="timeout">%s</xliff:g>間有効です</string>
   <string name="backlight_summary_enabled">有効</string>
-  <string name="lockscreen_background">背景</string>
-  <string name="lockscreen_background_style_title">ロック画面の背景</string>
-  <string name="background_default">デフォルトの背景</string>
-  <string name="background_wallpaper">カスタムの壁紙</string>
-  <string name="background_result_successful">背景を変更しました</string>
-  <string name="background_result_not_successful">背景を変更していません</string>
-  <string name="setting_lockscreen_background">背景を適用中</string>
   <string name="confirm_delete_apn">APNを削除します。</string>
   <string name="status_bar_title">ステータスバー</string>
   <string name="status_bar_clock_title">時計のスタイル</string>
@@ -720,7 +703,6 @@
   <string name="status_bar_toggle_info">明るさの自動調整が有効になっている間は利用できません</string>
   <string name="status_bar_notif_count_title">通知の数を表示</string>
   <string name="status_bar_notif_count_summary">保留中の通知の数を表示する</string>
-  <string name="status_bar_double_tap_to_sleep_title">ダブルタップでスリープ</string>
   <string name="development_shortcut_title">開発用ショートカット</string>
   <string name="development_shortcut_summary">｢データを消去｣と｢強制停止｣のオプションを通知領域と最近使ったアプリ一覧に表示する</string>
   <string name="usb_mass_storage_title">マスストレージ（UMS）</string>
@@ -743,7 +725,6 @@
   <string name="stylus_icon_enabled_title">スタイラス使用時にアイコンを表示</string>
   <string name="stylus_icon_enabled_summary">スタイラスでホバリングまたは描写しているときにポインターアイコンを表示する</string>
   <string name="gestures_settings_title">スタイラスジェスチャー</string>
-  <string name="category_spen_title">スタイラスジェスチャー</string>
   <string name="enable_subcat_title">スタイラス</string>
   <string name="enable_spen_title_head">ジェスチャーを有効化</string>
   <string name="enable_spen_summary_head">スタイラスのボタンを押し続けてスワイプジェスチャーを使用する</string>
@@ -923,7 +904,7 @@
   <string name="spam_last_blocked_title">前回は<xliff:g id="time_since" example="5 minutes ago">%1$s</xliff:g>にブロックしました（合計: <xliff:g id="count" example="2 times">%2$s</xliff:g>）</string>
   <string name="block_notifications_title">通知のフィルタリング</string>
   <string name="block_notifications_summary">無視する通知やフィルターを管理する</string>
-  <string name="no_filters_title">フィルターが設定されていません。通知をフィルタリングするには、通知を長押しして「このようなメッセージを無視」を選択してください。</string>
+  <string name="no_filters_title">フィルターが設定されていません。通知をフィルタリングするには、通知を長押しして「このようなメッセージを無視」を選択します。</string>
   <string name="usb_eject">USBストレージをマウント解除</string>
   <string name="usb_eject_summary">USBストレージを安全に取り外すためにマウントを解除する</string>
   <string name="usb_insert_summary">マウントするUSBストレージを挿入してください</string>
@@ -937,7 +918,6 @@
   <string name="usb_ejecting_title">USBストレージをマウント解除中</string>
   <string name="usb_ejecting_summary">USBストレージのマウントを解除しています</string>
   <string name="usb_media_format_title">USBストレージを消去</string>
-  <string name="usb_media_format_summary">USBストレージ内のすべてのデータを消去する</string>
   <string name="usb_media_format_desc">すべてのUSBストレージを消去しますか？保存されている<b>すべての</b>データが失われます。</string>
   <string name="usb_media_format_button_text">USBストレージを消去</string>
   <string name="usb_media_format_final_desc">USBストレージを消去して、そこに保存されているすべてのファイルを削除しますか？この操作は元に戻せません。</string>
@@ -955,9 +935,53 @@
   <string name="sd_ejecting_title">SDカードをマウント解除中</string>
   <string name="sd_ejecting_summary">SDカードのマウントを解除しています</string>
   <string name="sd_media_format_title">SDカードを消去</string>
-  <string name="sd_media_format_summary">SDカード内のすべてのデータを消去する</string>
   <string name="sd_media_format_desc">SDカードを消去しますか？カード内の<b>すべての</b>データが失われます。</string>
   <string name="sd_media_format_button_text">SDカードを消去</string>
   <string name="sd_media_format_final_desc">SDカードを消去して、そこに保存されているすべてのファイルを削除しますか？この操作は元に戻せません。</string>
   <string name="sd_media_format_gesture_explanation">SDカード内のデータを消去してよいか確認するため、ロック解除パターンを入力する必要があります。</string>
+  <string name="bluetooth_enter_pin_msg_hs"><xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g>とペアリングするには、要求されるデバイスのPINを入力してください（16桁以上）:</string>
+  <string name="bluetooth_profile_sap">SIMアクセス</string>
+  <string name="bluetooth_profile_dun">ダイヤルアップネットワーク接続</string>
+  <string name="bluetooth_sap_profile_summary_connected">SIMアクセスサーバーに接続しました</string>
+  <string name="bluetooth_dun_profile_summary_connected">DUNサーバーに接続しました</string>
+  <string name="bluetooth_sap_profile_summary_use_for">SIMアクセスに使用する</string>
+  <string name="bluetooth_dun_profile_summary_use_for">ダイアルアップネットワーク接続に使用する</string>
+  <string name="wifi_disabled_association_rejected">アソシエーションが拒否されました</string>
+  <string name="screencolor">画面の色</string>
+  <string name="custom_screencolor">カスタムの画面の色</string>
+  <string name="device_additional_status">追加の状態情報</string>
+  <string name="enable_quickboot_title">クイックブートモードを有効化</string>
+  <string name="enable_quickboot_summary">標準の電源OFFの代わりに端末をクイックブートモードにする</string>
+  <string name="data_usage_tab_slot">SIM </string>
+  <string name="sel_sub_title">サブスクリプションを設定</string>
+  <string name="sel_sub_summary">サブスクリプションを選択する</string>
+  <string name="no_sim_info">SIMカードの情報が利用できません。\nメニューにアクセスできません</string>
+  <string name="subs_settings">サブスクリプションの状態</string>
+  <string name="set_data_subscription_progress">データサブスクリプションを設定中\u2026</string>
+  <string name="set_dds_success">データサブスクリプションの設定が完了しました</string>
+  <string name="set_dds_failed">データサブスクリプションの設定中にエラーが発生しました。すべての既存のデータ接続を切断してからもう一度お試しください。</string>
+  <string name="set_dds_error">データサブスクリプションの設定中にエラーが発生しました。</string>
+  <string name="set_sms_error">SMSサブスクリプションの設定中にエラーが発生しました。サブスクリプションが有効ではありません。</string>
+  <string name="set_voice_error">音声サブスクリプションの設定中にエラーが発生しました。サブスクリプションが有効ではありません。</string>
+  <string name="set_priority_sub_error">優先サブスクリプションの設定中にエラーが発生しました。サブスクリプションが有効ではありません。</string>
+  <string name="prompt">プロンプト</string>
+  <string name="prompt_user">プロンプトユーザー</string>
+  <string name="tune_away_title">チューンアウェイ</string>
+  <string name="tune_away_enabled">チューンアウェイは有効です</string>
+  <string name="tune_away_disabled">チューンアウェイは無効です</string>
+  <string name="screencolor_save">保存</string>
+  <string name="screencolor_cancel">キャンセル</string>
+  <string name="restore_preview">デフォルトの写真を表示</string>
+  <string name="selectnewfile_menu">ギャラリーから新しい写真を表示</string>
+  <string name="selectfile_menu">ギャラリーから写真を表示</string>
+  <string name="restore_default_str">リセット</string>
+  <string name="hue_str">色相: <xliff:g id="hue_value">%1$s</xliff:g></string>
+  <string name="saturation_str">彩度: <xliff:g id="saturation_value">%1$s</xliff:g></string>
+  <string name="contrast_str">コントラスト: <xliff:g id="contrast_value">%1$s</xliff:g></string>
+  <string name="intensity_str">強度: <xliff:g id="intensity_str_value">%1$s</xliff:g></string>
+  <string name="device_status_summary_cm" product="tablet">電池の状態、ネットワーク、その他の情報</string>
+  <string name="device_status_summary_cm" product="default">電池の状態、電池のレベルなど</string>
+  <string name="wifi_ap_clients_title">接続済みデバイス</string>
+  <string name="wifi_ap_client_ap_disabled">Wi-Fiテザリングは無効です</string>
+  <string name="wifi_ap_client_none_connected">接続しているデバイスがありません</string>
 </resources>

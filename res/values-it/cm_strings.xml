@@ -58,7 +58,6 @@
   <string name="profile_unknown_nfc_tag">Profilo sconosciuto</string>
   <string name="profile_add_nfc_text">Questo tag NFC si riferisce ad un profilo sconosciuto. Collegare questo tag NFC ad un profilo esistente permetterà di selezionarlo in futuro.</string>
   <string name="profile_select">Seleziona profilo</string>
-  <string name="add_profile_dialog_title">Crea nuovo profilo</string>
   <string name="profile_name_title">Nome</string>
   <string name="profile_profile_name_prompt">Inserisci un nome per il nuovo profilo</string>
   <string name="menu_new_profile">Nuovo profilo</string>
@@ -97,8 +96,6 @@
   <string name="ringer_mode">Modalità suoneria</string>
   <string name="lights_mode">Modalità luci di notifica</string>
   <string name="vibrate_mode">Modalità vibrazione</string>
-  <string name="choose_soundtone">Scegli suoneria notifiche</string>
-  <string name="choose_ringtone">Scegli suoneria telefono</string>
   <string name="soundtone_title">Suoneria notifiche</string>
   <string name="profile_appgroups_title">Gruppi di app</string>
   <string name="profile_applist_title">App</string>
@@ -245,7 +242,7 @@
   <string name="title_tile_compass">Bussola</string>
   <string name="title_tile_heads_up">Heads up</string>
   <string name="title_tile_sleep">Sospendi dispositivo</string>
-  <string name="title_tile_gps">GPS</string>
+  <string name="title_tile_gps">Posizione</string>
   <string name="title_tile_torch">Torcia LED</string>
   <string name="title_tile_lockscreen">Blocco schermo</string>
   <string name="title_tile_lte">LTE</string>
@@ -403,7 +400,6 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="preview_data_title">Anteprima dati</string>
   <string name="view_stats_title">Guarda statistiche</string>
   <string name="anonymous_learn_more">Maggiori informazioni</string>
-  <string name="anonymous_notification_desc">Attiva o disattiva le statistiche CyanogenMod</string>
   <string name="preview_id_title">ID Univoco</string>
   <string name="preview_device_title">Dispositivo</string>
   <string name="preview_version_title">Versione</string>
@@ -444,14 +440,10 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="kill_app_longpress_back">Termina app con tasto</string>
   <string name="kill_app_longpress_back_summary">Termina l\'app in primo piano tenendo premuto il tasto indietro</string>
   <string name="changelog_title">Changelog</string>
-  <string name="changelog_loading">Caricamento changelog\u2026</string>
   <string name="changelog_error">Impossibile caricare il changelog</string>
-  <string name="changelog_unknown">Sconosciuto</string>
-  <string name="changelog_version">Versione</string>
   <string name="contributor_cloud_title">Collaboratori</string>
   <string name="cmupdate_settings_title">Aggiornamento CyanogenMod</string>
   <string name="cmupdate_settings_summary">Controlla, visualizza e installa gli aggiornamenti disponibili</string>
-  <string name="advanced_settings_title">Avanzate</string>
   <string name="development_tools_title">Esegui dev. tools</string>
   <string name="allow_mock_sms">Consenti SMS finti</string>
   <string name="privacy_settings_cyanogenmod_title">Privacy</string>
@@ -464,13 +456,11 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="privacy_guard_manager_title">Privacy Guard</string>
   <string name="privacy_guard_manager_summary">Gestisci quali app hanno accesso ai tuoi dati personali</string>
   <string name="privacy_guard_no_user_apps">Nessuna app installata</string>
-  <string name="privacy_guard_filter_does_not_match">Nessuna app con permessi di rilievo è installata</string>
   <string name="privacy_guard_help_title">Guida</string>
   <string name="privacy_guard_reset_title">Ripristina</string>
   <string name="privacy_guard_reset_text">Ripristinare i permessi?</string>
   <string name="privacy_guard_help_text">In questa schermata puoi decidere per quali app sarà attivo Privacy Guard semplicemente selezionandole. Le app selezionate non saranno in grado di accedere ai tuoi dati personali, quali contatti, messaggi o elenco chiamate. Una pressione prolungata su di una voce apre la schermata dei dettagli per quell\'app.\n\nLe app integrate non sono visualizzate in modo predefinito. Se vuoi renderle visibili, attiva le rispettive opzioni nel menu.</string>
   <string name="privacy_guard_manager_show_system_apps">Mostra app integrate</string>
-  <string name="privacy_guard_manager_filter_permissions">Filtro sui permessi</string>
   <string name="privacy_guard_advanced_settings_title">Avanzate</string>
   <string name="blacklist_title">Blacklist</string>
   <string name="blacklist_edit_dialog_title">Modifica voci blacklist</string>
@@ -509,9 +499,6 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="gamma_tuning_title_head">Calibrazione gamma</string>
   <string name="gamma_tuning_summary_head">Modifica i valori gamma</string>
   <string name="gamma_tuning_control_set_header">Gruppo <xliff:g id="index">%d</xliff:g></string>
-  <string name="gamma_tuning_contrast">Contrasto</string>
-  <string name="gamma_tuning_brightness">Luminosità</string>
-  <string name="gamma_tuning_saturation">Saturazione</string>
   <string name="headset_connect_player_title">Lancia lettore musicale</string>
   <string name="headset_connect_player_summary">Lancia il lettore musicale predefinito quando vengono connesse le cuffie</string>
   <string name="adb_notify">Notifica debug USB</string>
@@ -529,6 +516,8 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="collapse_on_dismiss_if_empty_summary">Chiudi la barra di notifica quando si rimuove l\'ultima notifica</string>
   <string name="collapse_on_dismiss_if_no_clearable_summary">Chiudi la barra di notifica quando si rimuove l\'ultima notifica rimovibile</string>
   <string name="double_tap_to_wake_title">Risveglio con doppio tocco</string>
+  <string name="double_tap_to_sleep_title">Doppio tocco per sospendere</string>
+  <string name="double_tap_to_sleep_summary">Tocca due volte la barra di stato o l\'anello di sblocco per sospendere il dispositivo</string>
   <string name="proximity_wake_title">Previeni risvegli accidentali</string>
   <string name="proximity_wake_summary">Controlla il sensore di prossimità prima di accendere lo schermo</string>
   <string name="category_quick_access">Barra accesso rapido</string>
@@ -665,6 +654,7 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="hardware_keys_action_in_app_search">Ricerca in app</string>
   <string name="hardware_keys_action_launch_camera">Avvia Fotocamera</string>
   <string name="hardware_keys_action_last_app">Ultima app</string>
+  <string name="hardware_keys_action_sleep">Spegni lo schermo</string>
   <string name="power_end_call_title">Termina chiamata</string>
   <string name="power_end_call_summary">Premendo il pulsante alimentazione si concluderà la chiamata corrente</string>
   <string name="button_wake_title">Risveglia</string>
@@ -695,13 +685,6 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="backlight_summary_disabled">Disattivata</string>
   <string name="backlight_summary_enabled_with_timeout">Attiva per <xliff:g id="timeout">%s</xliff:g></string>
   <string name="backlight_summary_enabled">Attivata</string>
-  <string name="lockscreen_background">Sfondo</string>
-  <string name="lockscreen_background_style_title">Sfondo schermata sblocco</string>
-  <string name="background_default">Sfondo predefinito</string>
-  <string name="background_wallpaper">Wallpaper personalizzato</string>
-  <string name="background_result_successful">Sfondo modificato</string>
-  <string name="background_result_not_successful">Sfondo non modificato</string>
-  <string name="setting_lockscreen_background">Applicazione sfondo</string>
   <string name="confirm_delete_apn">L\'APN sarà eliminato.</string>
   <string name="status_bar_title">Barra di stato</string>
   <string name="status_bar_clock_title">Stile orologio</string>
@@ -723,7 +706,6 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="status_bar_toggle_info">Non disponibile mentre la luminosità automatica è attiva</string>
   <string name="status_bar_notif_count_title">Mostra contatore notifiche</string>
   <string name="status_bar_notif_count_summary">Visualizza il numero di notifiche in sospeso</string>
-  <string name="status_bar_double_tap_to_sleep_title">Doppio tocco per sospendere</string>
   <string name="development_shortcut_title">Scorciatoie sviluppatore</string>
   <string name="development_shortcut_summary">Attiva le opzioni \'Cancella dati\' e \'Arresto forzato\' nell\'area delle notifiche e nella lista delle app recenti</string>
   <string name="usb_mass_storage_title">Memoria di massa</string>
@@ -746,7 +728,6 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="stylus_icon_enabled_title">Icona uso dello stilo</string>
   <string name="stylus_icon_enabled_summary">Mostra l\'icona del puntatore durante il movimento o il disegno con lo stilo</string>
   <string name="gestures_settings_title">Gesture stilo</string>
-  <string name="category_spen_title">Gesture stilo</string>
   <string name="enable_subcat_title">Stilo</string>
   <string name="enable_spen_title_head">Attiva gesture</string>
   <string name="enable_spen_summary_head">Traccia le gesture tenendo premuto il pulsante dello stilo</string>
@@ -941,7 +922,6 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="usb_ejecting_title">Smontaggio memoria USB</string>
   <string name="usb_ejecting_summary">Smontaggio della memoria USB in corso</string>
   <string name="usb_media_format_title">Formatta memoria USB</string>
-  <string name="usb_media_format_summary">Elimina tutti i dati nella memoria USB</string>
   <string name="usb_media_format_desc">Formattare la memoria USB? Perderai <b>tutti</b> i dati salvati!</string>
   <string name="usb_media_format_button_text">Formatta memoria USB</string>
   <string name="usb_media_format_final_desc">Formattare la memoria USB, eliminando tutti i file presenti su di essa? L\'azione non è reversibile!</string>
@@ -959,9 +939,53 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' elimina la riga selezionata.
   <string name="sd_ejecting_title">Smontaggio scheda SD</string>
   <string name="sd_ejecting_summary">Smontaggio della scheda SD in corso</string>
   <string name="sd_media_format_title">Formatta scheda SD</string>
-  <string name="sd_media_format_summary">Elimina tutti i dati sulla scheda SD</string>
   <string name="sd_media_format_desc">Formattare la scheda USB? Perderai <b>tutti</b> i dati salvati sulla scheda!</string>
   <string name="sd_media_format_button_text">Formatta scheda SD</string>
   <string name="sd_media_format_final_desc">Formatta la scheda SD, eliminando tutti i file presenti su di essa? L\'azione non è reversibile!</string>
   <string name="sd_media_format_gesture_explanation">Devi tracciare la tua sequenza di sblocco per confermare la formattazione della scheda SD.</string>
+  <string name="bluetooth_enter_pin_msg_hs">Per accoppiare con:<xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g>Digita il PIN richiesto dal dispositivo (16 cifre o più):</string>
+  <string name="bluetooth_profile_sap">Accesso SIM</string>
+  <string name="bluetooth_profile_dun">Accesso rete remota</string>
+  <string name="bluetooth_sap_profile_summary_connected">Connesso al server di accesso SIM</string>
+  <string name="bluetooth_dun_profile_summary_connected">Connesso al server DUN</string>
+  <string name="bluetooth_sap_profile_summary_use_for">Usa per accesso SIM</string>
+  <string name="bluetooth_dun_profile_summary_use_for">Usa per accesso rete remota</string>
+  <string name="wifi_disabled_association_rejected">Associazione rifiutata</string>
+  <string name="screencolor">Colore schermo</string>
+  <string name="custom_screencolor">Colore schermo personalizzato</string>
+  <string name="device_additional_status">Informazioni di stato aggiuntive</string>
+  <string name="enable_quickboot_title">Attiva modalità avvio rapido</string>
+  <string name="enable_quickboot_summary">Metti il dispositivo in modalità avvio rapido invece di spegnerlo normalmente.</string>
+  <string name="data_usage_tab_slot">SIM </string>
+  <string name="sel_sub_title">Configura abbonamenti</string>
+  <string name="sel_sub_summary">Seleziona il tuo abbonamento</string>
+  <string name="no_sim_info">Informazioni SIM non disponibili.\nNon è possibile accedere al menu</string>
+  <string name="subs_settings">Stato abbonamento</string>
+  <string name="set_data_subscription_progress">Impostazione abbonamento dati in corso\u2026</string>
+  <string name="set_dds_success">Abbonamento dati impostato correttamente</string>
+  <string name="set_dds_failed">Impossibile impostare abbonamento dati. Rimuovere qualsiasi connessione esistente e riprovare.</string>
+  <string name="set_dds_error">Impossibile impostare abbonamento dati.</string>
+  <string name="set_sms_error">Impossibile impostare abbonamento SMS. Abbonamento non attivo.</string>
+  <string name="set_voice_error">Impossibile impostare abbonamento voce. Abbonamento non attivo.</string>
+  <string name="set_priority_sub_error">Impossibile impostare priorità abbonamento. Abbonamento non attivo.</string>
+  <string name="prompt">Chiedi</string>
+  <string name="prompt_user">Chiedi all\'utente</string>
+  <string name="tune_away_title">Tune Away</string>
+  <string name="tune_away_enabled">TuneAway attivato</string>
+  <string name="tune_away_disabled">TuneAway disattivato</string>
+  <string name="screencolor_save">Salva</string>
+  <string name="screencolor_cancel">Annulla</string>
+  <string name="restore_preview">Visualizza immagine predefinita</string>
+  <string name="selectnewfile_menu">Visualizza nuova immagine dalla Galleria</string>
+  <string name="selectfile_menu">Visualizza immagine dalla galleria</string>
+  <string name="restore_default_str">Reimposta</string>
+  <string name="hue_str">Tonalità: <xliff:g id="hue_value">%1$s</xliff:g></string>
+  <string name="saturation_str">Saturazione: <xliff:g id="saturation_value">%1$s</xliff:g></string>
+  <string name="contrast_str">Contrasto: <xliff:g id="contrast_value">%1$s</xliff:g></string>
+  <string name="intensity_str">Intensità: <xliff:g id="intensity_str_value">%1$s</xliff:g></string>
+  <string name="device_status_summary_cm" product="tablet">Stato della batteria, rete e altre informazioni</string>
+  <string name="device_status_summary_cm" product="default">Stato della batteria, livello batteria, ecc.</string>
+  <string name="wifi_ap_clients_title">Dispositivi connessi</string>
+  <string name="wifi_ap_client_ap_disabled">L\'hotspot è disattivato</string>
+  <string name="wifi_ap_client_none_connected">Nessun dispositivo collegato</string>
 </resources>

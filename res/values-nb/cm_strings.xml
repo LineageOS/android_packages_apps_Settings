@@ -58,7 +58,6 @@
   <string name="profile_unknown_nfc_tag">Ukjent Profil</string>
   <string name="profile_add_nfc_text">Denne NFC tagen refererer til en ukjent profil. Ved å knytte denne NFC tagen til en eksisterende profil vil det tillate å velge profilen i fremtiden.</string>
   <string name="profile_select">Velg profil</string>
-  <string name="add_profile_dialog_title">Opprett ny profil</string>
   <string name="profile_name_title">Navn</string>
   <string name="profile_profile_name_prompt">Angi et navn for den nye profilen</string>
   <string name="menu_new_profile">Ny profil</string>
@@ -97,8 +96,6 @@
   <string name="ringer_mode">Ringemodus</string>
   <string name="lights_mode">Lys-modus</string>
   <string name="vibrate_mode">Vibrasjonsmodus</string>
-  <string name="choose_soundtone">Velg meldingstone</string>
-  <string name="choose_ringtone">Velg ringetone</string>
   <string name="soundtone_title">Varslingstone</string>
   <string name="profile_appgroups_title">App grupper</string>
   <string name="profile_applist_title">Apps</string>
@@ -245,7 +242,7 @@
   <string name="title_tile_compass">Kompass</string>
   <string name="title_tile_heads_up">Heads-up</string>
   <string name="title_tile_sleep">Standby</string>
-  <string name="title_tile_gps">GPS</string>
+  <string name="title_tile_gps">Posisjon</string>
   <string name="title_tile_torch">Lommelykt</string>
   <string name="title_tile_lockscreen">Låseskjerm</string>
   <string name="title_tile_lte">LTE</string>
@@ -383,7 +380,6 @@
   <string name="preview_data_title">Forhåndsvis data</string>
   <string name="view_stats_title">Vis statistikk</string>
   <string name="anonymous_learn_more">Les mer</string>
-  <string name="anonymous_notification_desc">Aktivere eller deaktivere CyanogenMod statistikk</string>
   <string name="preview_id_title">Unik ID</string>
   <string name="preview_device_title">Enhet</string>
   <string name="preview_version_title">Versjon</string>
@@ -424,14 +420,10 @@
   <string name="kill_app_longpress_back">Stopp app-tilbake-knappen</string>
   <string name="kill_app_longpress_back_summary">Stopp aktivt program ved å trykke lenge på tilbake-knappen</string>
   <string name="changelog_title">Endringslogg</string>
-  <string name="changelog_loading">Laster inn endringslogg\u2026</string>
   <string name="changelog_error">Kunne ikke hente endringsloggen</string>
-  <string name="changelog_unknown">Ukjent</string>
-  <string name="changelog_version">Versjon</string>
   <string name="contributor_cloud_title">Bidragsytere</string>
   <string name="cmupdate_settings_title">CyanogenMod oppdateringer</string>
   <string name="cmupdate_settings_summary">Se etter, vise eller installerer tilgjengelige oppdateringer</string>
-  <string name="advanced_settings_title">Avansert</string>
   <string name="development_tools_title">Start verktøy</string>
   <string name="allow_mock_sms">Tillat simulert SMS</string>
   <string name="privacy_settings_cyanogenmod_title">Personvern</string>
@@ -444,13 +436,11 @@
   <string name="privacy_guard_manager_title">Personvernvakt</string>
   <string name="privacy_guard_manager_summary">Administrere hvilke apps som har tilgang til dine personopplysninger</string>
   <string name="privacy_guard_no_user_apps">Ingen programmer er installert</string>
-  <string name="privacy_guard_filter_does_not_match">Ingen apps med relevante tillatelser er installert</string>
   <string name="privacy_guard_help_title">hjelp</string>
   <string name="privacy_guard_reset_title">Tilbakestill</string>
   <string name="privacy_guard_reset_text">Tilbakestill tillatelser?</string>
   <string name="privacy_guard_help_text">I dette skjermbildet kan du velge hvilke apps Privacy Guard skal være aktiv for ved å trykke på dem. Valgte apps vil ikke ha tilgang til personlige data som kontakter, meldinger eller ringelogg. Langt trykk på en apps oppføring åpner app detaljer skjermen.\n\nSystem apps vises ikke som standard, men kan vises ved å velge alternativet i menyen.</string>
   <string name="privacy_guard_manager_show_system_apps">Vis innebygde programmer</string>
-  <string name="privacy_guard_manager_filter_permissions">Tillatelse filter</string>
   <string name="privacy_guard_advanced_settings_title">Avansert</string>
   <string name="blacklist_title">Svarteliste</string>
   <string name="blacklist_edit_dialog_title">Redigere svarteliste</string>
@@ -474,6 +464,7 @@
   <string name="blacklist_regex_summary">Bruk . som jokertegn og * for gjentakelse. F.eks 123.* blokkerer tall som starter med 123 og. * 123.* blokkerer tall som inneholder 123</string>
   <string name="blacklist_policy_block_calls">Blokker innkommende samtaler</string>
   <string name="blacklist_policy_block_messages">Blokker innkommende meldinger</string>
+  <string name="blacklist_bad_number_add">Kan ikke legge til ugyldig nummer på svarteliste</string>
   <string name="add_blacklist_number">Legg til nummer</string>
   <string name="remove_blacklist_number_title">Fjern nummer</string>
   <string name="remove_blacklist_entry">Vil du fjerne denne svarteliste oppføringen?</string>
@@ -488,9 +479,6 @@
   <string name="gamma_tuning_title_head">Gamma kalibrering</string>
   <string name="gamma_tuning_summary_head">Justere gammaverdiene</string>
   <string name="gamma_tuning_control_set_header">Gruppe <xliff:g id="index">%d</xliff:g></string>
-  <string name="gamma_tuning_contrast">Kontrast</string>
-  <string name="gamma_tuning_brightness">Lysstyrke</string>
-  <string name="gamma_tuning_saturation">Metning</string>
   <string name="headset_connect_player_title">Start musikk-app</string>
   <string name="headset_connect_player_summary">Starte standard musikk-app når hodetelefonen er tilkoblet</string>
   <string name="adb_notify">Varsle om USB feilretting</string>
@@ -508,6 +496,8 @@
   <string name="collapse_on_dismiss_if_empty_summary">Lukk etter fjerning av siste notifikasjon</string>
   <string name="collapse_on_dismiss_if_no_clearable_summary">Lukk etter fjerning av siste fjernbare notifikasjon</string>
   <string name="double_tap_to_wake_title">Dobbelttapp for å vekke</string>
+  <string name="double_tap_to_sleep_title">Dobbeltapp for å sove</string>
+  <string name="double_tap_to_sleep_summary">Dobbeltapp på statuslinjen eller låseskjermens skyvekontroller for å sette enheten i dvale</string>
   <string name="proximity_wake_title">Hindre utilsiktet vekking</string>
   <string name="proximity_wake_summary">Sjekk nærhetssensoren før skjermen vekkes</string>
   <string name="category_quick_access">Quick Access-båndet</string>
@@ -644,6 +634,7 @@
   <string name="hardware_keys_action_in_app_search">I-app søk</string>
   <string name="hardware_keys_action_launch_camera">Start kamera</string>
   <string name="hardware_keys_action_last_app">Siste app</string>
+  <string name="hardware_keys_action_sleep">Slå skjermen av</string>
   <string name="power_end_call_title">Avslutt samtale</string>
   <string name="power_end_call_summary">Ved å trykke på strømknappen så vil samtalen avsluttes</string>
   <string name="button_wake_title">Våkne</string>
@@ -674,13 +665,6 @@
   <string name="backlight_summary_disabled">Deaktivert</string>
   <string name="backlight_summary_enabled_with_timeout">Aktivert for <xliff:g id="timeout">%s</xliff:g></string>
   <string name="backlight_summary_enabled">Aktivert</string>
-  <string name="lockscreen_background">Bakgrunn</string>
-  <string name="lockscreen_background_style_title">Låsskjermbakgrunn</string>
-  <string name="background_default">Standardbakgrunn</string>
-  <string name="background_wallpaper">Egendefinert bakgrunnsbilde</string>
-  <string name="background_result_successful">Bakgrunn endret</string>
-  <string name="background_result_not_successful">Bakgrunnen ble ikke endret</string>
-  <string name="setting_lockscreen_background">Endrer bakgrunn</string>
   <string name="confirm_delete_apn">APN slettes.</string>
   <string name="status_bar_title">Statuslinjen</string>
   <string name="status_bar_clock_title">Klokkestil</string>
@@ -702,7 +686,6 @@
   <string name="status_bar_toggle_info">Ikke tilgjengelig mens automatisk lysstyrke er aktivert</string>
   <string name="status_bar_notif_count_title">Vis antall varslinger</string>
   <string name="status_bar_notif_count_summary">Vise antall ventende notifikasjoner</string>
-  <string name="status_bar_double_tap_to_sleep_title">Dobbeltapp for å sove</string>
   <string name="development_shortcut_title">Snarvei til utviklingsmodus</string>
   <string name="development_shortcut_summary">Aktiver \'slet data\' og \'tving avslutning\' valg i notifikasjonsområdet og i siste-apper listen</string>
   <string name="usb_mass_storage_title">Lagringsenheter (UMS)</string>
@@ -725,7 +708,6 @@
   <string name="stylus_icon_enabled_title">Viser ikon når du bruker penn</string>
   <string name="stylus_icon_enabled_summary">Viser pekeikonet når du hovrer eller tegner med en penn</string>
   <string name="gestures_settings_title">Pennebevegelser</string>
-  <string name="category_spen_title">Pennebevegelser</string>
   <string name="enable_subcat_title">Penn</string>
   <string name="enable_spen_title_head">Aktiver bevegelser</string>
   <string name="enable_spen_summary_head">Bruk swipebevegelser ved å holde nede penneknappen</string>
@@ -907,4 +889,83 @@
   <string name="block_notifications_title">Filtrere varslinger</string>
   <string name="block_notifications_summary">Administrere ignorerte varslinger og filtre</string>
   <string name="no_filters_title">Ingen filter er satt. For å filtrere en notifikasjon, trykk lenge på den og velg \"ignorer meldinger som denne\".</string>
+  <string name="usb_eject">Demonter USB lagring</string>
+  <string name="usb_eject_summary">Demonter USB lagringen så du trygt kan fjerne den</string>
+  <string name="usb_insert_summary">Sett inn USB-lagring for montering</string>
+  <string name="usb_mount">Monter USB lagring</string>
+  <string name="usb_format">Slett USB lagring</string>
+  <string name="usb_format_summary">Sletter alle data på USB-enheten, som musikk og bilder</string>
+  <string name="dlg_confirm_usb_unmount_title">Demonter USB lagring?</string>
+  <string name="dlg_confirm_usb_unmount_text">Hvis du har demontert USB lagring,  kan noen programmer du bruker stoppe og kan være utilgjengelige før du monterer USB-enheten igjen.</string>
+  <string name="dlg_error_usb_unmount_text">Kunne ikke demontere USB lagring. Prøv igjen senere.</string>
+  <string name="usb_unmount_inform_text">USB lagring blir demontert.</string>
+  <string name="usb_ejecting_title">Demonterer USB-lagring</string>
+  <string name="usb_ejecting_summary">USB lagring demontering pågår</string>
+  <string name="usb_media_format_title">Slett USB lagring</string>
+  <string name="usb_media_format_desc">Slette all USB-lagring? Du vil miste <b>alle</b> lagrede data!</string>
+  <string name="usb_media_format_button_text">Slett USB lagring</string>
+  <string name="usb_media_format_final_desc">Slette USB lagringen, slette alle filer lagret der? Du kan ikke angre denne handlingen!</string>
+  <string name="usb_media_format_gesture_explanation">Du må trekke låse mønster for å bekrefte at du vil slette USB-enheten.</string>
+  <string name="sd_eject">Demonter SD-kort</string>
+  <string name="sd_eject_summary">Demonter SD-kortet så kan du trygt fjerne det</string>
+  <string name="sd_insert_summary">Sett inn et SD-kort for montering</string>
+  <string name="sd_mount">Monter SD-kort</string>
+  <string name="sd_format">Slett SD-kort</string>
+  <string name="sd_format_summary">Sletter alle data på SD-kortet, som musikk og bilder</string>
+  <string name="dlg_confirm_sd_unmount_title">Demonter SD-kortet?</string>
+  <string name="dlg_confirm_sd_unmount_text">Hvis du har demontert SD-kortet, kan noen programmer du bruker stoppe og kan være utilgjengelige før du monterer SD-kortet igjen.</string>
+  <string name="dlg_error_sd_unmount_text">Kunne ikke demontere SD-kort. Prøv igjen senere.</string>
+  <string name="sd_unmount_inform_text">SD-kortet vil bli avmontert.</string>
+  <string name="sd_ejecting_title">demonterer SD-kort</string>
+  <string name="sd_ejecting_summary">SD-kort demontering pågår</string>
+  <string name="sd_media_format_title">Slett SD-kort</string>
+  <string name="sd_media_format_desc">Slette SD-kortet? Du vil miste <b>alle</b> data på kortet!</string>
+  <string name="sd_media_format_button_text">Slett SD-kort</string>
+  <string name="sd_media_format_final_desc">Slette SD-kortet, slette alle filer lagret der? Du kan ikke angre denne handlingen!</string>
+  <string name="sd_media_format_gesture_explanation">Du må trekke låse mønster for å bekrefte at du vil slette SD-kortet.</string>
+  <string name="bluetooth_enter_pin_msg_hs">Å sammenkoble med:<xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g>Skriv inn enhetens PIN (16 sifre eller mer):</string>
+  <string name="bluetooth_profile_sap">SIM-tilgang</string>
+  <string name="bluetooth_profile_dun">Oppringt pålogging</string>
+  <string name="bluetooth_sap_profile_summary_connected">Koblet til SIM-serveren</string>
+  <string name="bluetooth_dun_profile_summary_connected">Koblet til DUN server</string>
+  <string name="bluetooth_sap_profile_summary_use_for">Bruk for SIM-tilgang</string>
+  <string name="bluetooth_dun_profile_summary_use_for">Bruk for oppringt tilgang</string>
+  <string name="wifi_disabled_association_rejected">Assosiasjon avvist</string>
+  <string name="screencolor">Skjermfarge</string>
+  <string name="custom_screencolor">Tilpasset skjermfarge</string>
+  <string name="device_additional_status">Ekstra status info</string>
+  <string name="enable_quickboot_title">Aktivere QuickBoot-modus</string>
+  <string name="enable_quickboot_summary">Sette enheten til QuickBoot modus i stedet for vanlig avslutning.</string>
+  <string name="data_usage_tab_slot">SIM </string>
+  <string name="sel_sub_title">Konfigurer abonnementer</string>
+  <string name="sel_sub_summary">Velg abonnement</string>
+  <string name="no_sim_info">SIM kort info utilgjengelig. \nMeny kan ikke nås</string>
+  <string name="subs_settings">Medlemsstatus</string>
+  <string name="set_data_subscription_progress">Sette dataabonnementet\u2026</string>
+  <string name="set_dds_success">Dataabonnement var vellykket valgt</string>
+  <string name="set_dds_failed">Feil under angivelse av dataabonnement. Fjerne alle eksisterende datatilkoblinger og prøv igjen.</string>
+  <string name="set_dds_error">Feil under angivelse av dataabonnement.</string>
+  <string name="set_sms_error">Feil under angivelse av SMS abonnement. Abonnement er ikke aktiv.</string>
+  <string name="set_voice_error">Feil under angivelse av stemme abonnement. Abonnement er ikke aktiv.</string>
+  <string name="set_priority_sub_error">Feil under angivelse av prioritet abonnement. Abonnement er ikke aktiv.</string>
+  <string name="prompt">Spør</string>
+  <string name="prompt_user">Spør brukeren</string>
+  <string name="tune_away_title">TuneAway</string>
+  <string name="tune_away_enabled">TuneAway aktivert</string>
+  <string name="tune_away_disabled">TuneAway deaktivert</string>
+  <string name="screencolor_save">Lagre</string>
+  <string name="screencolor_cancel">Avbryt</string>
+  <string name="restore_preview">Vis standardbilde</string>
+  <string name="selectnewfile_menu">Vis nytt bilde fra galleriet</string>
+  <string name="selectfile_menu">Vis bilde fra galleriet</string>
+  <string name="restore_default_str">Tilbakestille</string>
+  <string name="hue_str">Fargetone: <xliff:g id="hue_value">%1$s</xliff:g></string>
+  <string name="saturation_str">Metning: <xliff:g id="saturation_value">%1$s</xliff:g></string>
+  <string name="contrast_str">Kontrast: <xliff:g id="contrast_value">%1$s</xliff:g></string>
+  <string name="intensity_str">Intensitet: <xliff:g id="intensity_str_value">%1$s</xliff:g></string>
+  <string name="device_status_summary_cm" product="tablet">Statusen for batteriet, nettverk og annen informasjon</string>
+  <string name="device_status_summary_cm" product="default">Batteristatus, batterinivå, etc.</string>
+  <string name="wifi_ap_clients_title">Tilkoblede enheter</string>
+  <string name="wifi_ap_client_ap_disabled">Hotspot er deaktivert</string>
+  <string name="wifi_ap_client_none_connected">Ingen enheter koblet til</string>
 </resources>

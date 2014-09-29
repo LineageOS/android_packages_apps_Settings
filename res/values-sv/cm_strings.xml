@@ -58,7 +58,6 @@
   <string name="profile_unknown_nfc_tag">Okänd profil</string>
   <string name="profile_add_nfc_text">Denna NFC-tagg refererar till en okänd profil. Att förknippa denna NFC-tagg med en existerande profil kommer möjliggöra valet av denna profil i framtiden.</string>
   <string name="profile_select">Välj profil</string>
-  <string name="add_profile_dialog_title">Skapa ny profil</string>
   <string name="profile_name_title">Namn</string>
   <string name="profile_profile_name_prompt">Ange ett namn för den nya profilen</string>
   <string name="menu_new_profile">Ny profil</string>
@@ -97,8 +96,6 @@
   <string name="ringer_mode">Ringsignalsläge</string>
   <string name="lights_mode">Ljusläge</string>
   <string name="vibrate_mode">Vibrationsläge</string>
-  <string name="choose_soundtone">Välj aviseringssignal</string>
-  <string name="choose_ringtone">Välj ringsignal</string>
   <string name="soundtone_title">Aviseringssignal</string>
   <string name="profile_appgroups_title">Appgrupper</string>
   <string name="profile_applist_title">Appar</string>
@@ -245,7 +242,6 @@
   <string name="title_tile_compass">Kompass</string>
   <string name="title_tile_heads_up">Heads up</string>
   <string name="title_tile_sleep">Somna</string>
-  <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Ficklampa</string>
   <string name="title_tile_lockscreen">Låsskärm</string>
   <string name="title_tile_lte">LTE</string>
@@ -407,7 +403,6 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="preview_data_title">Förhandsgranska data</string>
   <string name="view_stats_title">Visa statistik</string>
   <string name="anonymous_learn_more">Läs mer</string>
-  <string name="anonymous_notification_desc">Aktivera eller inaktivera CyanogenMod-statistik</string>
   <string name="preview_id_title">Unikt ID</string>
   <string name="preview_device_title">Enhet</string>
   <string name="preview_version_title">Version</string>
@@ -448,14 +443,10 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="kill_app_longpress_back">Döda appar med bakåtknapp</string>
   <string name="kill_app_longpress_back_summary">Döda appen i förgrunden genom att långtrycka på bakåtknappen</string>
   <string name="changelog_title">Ändringslogg</string>
-  <string name="changelog_loading">Laddar ändringslogg\u2026</string>
   <string name="changelog_error">Kan inte ladda ändringslogg</string>
-  <string name="changelog_unknown">Okänd</string>
-  <string name="changelog_version">Version</string>
   <string name="contributor_cloud_title">Bidragsgivare</string>
   <string name="cmupdate_settings_title">CyanogenMod-uppdateringar</string>
   <string name="cmupdate_settings_summary">Sök efter, granska eller installera tillgängliga uppdateringar</string>
-  <string name="advanced_settings_title">Avancerat</string>
   <string name="development_tools_title">Utvecklarverktyg</string>
   <string name="allow_mock_sms">Tillåt sken-SMS</string>
   <string name="privacy_settings_cyanogenmod_title">Integritet</string>
@@ -468,13 +459,11 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="privacy_guard_manager_title">Integritetsskydd</string>
   <string name="privacy_guard_manager_summary">Hantera vilka appar som ska ha tillgång till dina personliga data</string>
   <string name="privacy_guard_no_user_apps">Inga appar är installerade</string>
-  <string name="privacy_guard_filter_does_not_match">Inga appar med relevanta behörigheter är installerade</string>
   <string name="privacy_guard_help_title">Hjälp</string>
   <string name="privacy_guard_reset_title">Återställ</string>
   <string name="privacy_guard_reset_text">Återställ behörigheter?</string>
   <string name="privacy_guard_help_text">På denna skärm kan du välja vilka appar som integritetsskyddet ska vara aktivt för genom att trycka på dem. Valda appar kommer inte att få tillgång till dina personliga data som kontakter, meddelanden eller samtalslistan. Långtryck på en app visar appens detaljer.\n\nInbyggda appar visas inte som standard men kan visas genom att välja det i alternativmenyn.</string>
   <string name="privacy_guard_manager_show_system_apps">Visa inbyggda appar</string>
-  <string name="privacy_guard_manager_filter_permissions">Behörighetsfilter</string>
   <string name="privacy_guard_advanced_settings_title">Avancerat</string>
   <string name="blacklist_title">Svartlista</string>
   <string name="blacklist_edit_dialog_title">Ändra post i svartlistan</string>
@@ -512,9 +501,6 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="gamma_tuning_title_head">Gammakalibrering</string>
   <string name="gamma_tuning_summary_head">Justera gammavärden</string>
   <string name="gamma_tuning_control_set_header">Grupp <xliff:g id="index">%d</xliff:g></string>
-  <string name="gamma_tuning_contrast">Kontrast</string>
-  <string name="gamma_tuning_brightness">Ljusstyrka</string>
-  <string name="gamma_tuning_saturation">Mättnad</string>
   <string name="headset_connect_player_title">Öppna musikapp</string>
   <string name="headset_connect_player_summary">Öppna standardmusikapp när hörlurar kopplas in</string>
   <string name="adb_notify">Avisering för USB-felsökning</string>
@@ -698,13 +684,6 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="backlight_summary_disabled">Inaktiverat</string>
   <string name="backlight_summary_enabled_with_timeout">Aktiverat i <xliff:g id="timeout">%s</xliff:g></string>
   <string name="backlight_summary_enabled">Aktiverat</string>
-  <string name="lockscreen_background">Bakgrund</string>
-  <string name="lockscreen_background_style_title">Låsskärmsbakgrund</string>
-  <string name="background_default">Standardbakgrund</string>
-  <string name="background_wallpaper">Anpassad bakgrundsbild</string>
-  <string name="background_result_successful">Bakgrund ändrad</string>
-  <string name="background_result_not_successful">Bakgrunden ändrades ej</string>
-  <string name="setting_lockscreen_background">Tillämpar bakgrund</string>
   <string name="confirm_delete_apn">Detta APN kommer tas bort.</string>
   <string name="status_bar_title">Statusfält</string>
   <string name="status_bar_clock_title">Klockstil</string>
@@ -726,7 +705,6 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="status_bar_toggle_info">Ej tillgängligt då automatisk ljusstyrka är aktiverad</string>
   <string name="status_bar_notif_count_title">Visa aviseringsantal</string>
   <string name="status_bar_notif_count_summary">Visa antalet väntande aviseringar</string>
-  <string name="status_bar_double_tap_to_sleep_title">Dubbeltryck för att somna</string>
   <string name="development_shortcut_title">Utvecklingsgenväg</string>
   <string name="development_shortcut_summary">Lägg till alternativen \"Rensa data\" och \"Tvingad avslutning\" i aviseringsfältet och i listan över senaste appar</string>
   <string name="usb_mass_storage_title">Masslagring (UMS)</string>
@@ -749,7 +727,6 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="stylus_icon_enabled_title">Visa ikon vid användning av pekpenna</string>
   <string name="stylus_icon_enabled_summary">Visa pekarikonen vid hovring eller ritning med pekpennan</string>
   <string name="gestures_settings_title">Gester för pekpenna</string>
-  <string name="category_spen_title">Gester för pekpenna</string>
   <string name="enable_subcat_title">Pekpenna</string>
   <string name="enable_spen_title_head">Aktivera gester</string>
   <string name="enable_spen_summary_head">Använd svepgester genom att hålla ned pekpennknappen</string>

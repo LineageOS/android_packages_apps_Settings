@@ -58,7 +58,6 @@
   <string name="profile_unknown_nfc_tag">ไม่ทราบโปรไฟล์</string>
   <string name="profile_add_nfc_text">ไม่ทราบโปรไฟล์ของ NFC tag นี้ การติดโปรไฟล์ที่มีอยู่ไปยัง NFC tag นี้ จะช่วยเรื่องการเลือกโปรไฟล์ในอนาคต</string>
   <string name="profile_select">เลือกโปรไฟล์</string>
-  <string name="add_profile_dialog_title">สร้างโปรไฟล์ใหม่</string>
   <string name="profile_name_title">ชื่อ</string>
   <string name="profile_profile_name_prompt">กรอกชื่อโปรไฟล์ใหม่</string>
   <string name="menu_new_profile">โปรไฟล์ใหม่</string>
@@ -97,8 +96,6 @@
   <string name="ringer_mode">รูปแบบเสียงเรียกเข้า</string>
   <string name="lights_mode">รูปแบบแสง</string>
   <string name="vibrate_mode">รูปแบบสั่น</string>
-  <string name="choose_soundtone">เลือกเสียงแจ้งเตือน</string>
-  <string name="choose_ringtone">เลือกเสียงเรียกเข้า</string>
   <string name="soundtone_title">เสียงแจ้งเตือน</string>
   <string name="profile_appgroups_title">กลุ่มแอป</string>
   <string name="profile_applist_title">แอป</string>
@@ -245,7 +242,7 @@
   <string name="title_tile_compass">เข็มทิศ</string>
   <string name="title_tile_heads_up">Heads up</string>
   <string name="title_tile_sleep">พักหน้าจอ</string>
-  <string name="title_tile_gps">GPS</string>
+  <string name="title_tile_gps">ตำแหน่ง</string>
   <string name="title_tile_torch">ไฟฉาย</string>
   <string name="title_tile_lockscreen">ล็อคหน้าจอ</string>
   <string name="title_tile_lte">LTE</string>
@@ -384,7 +381,6 @@
   <string name="preview_data_title">แสดงตัวอย่างข้อมูล</string>
   <string name="view_stats_title">ดูสถิติ</string>
   <string name="anonymous_learn_more">เรียนรู้เพิ่มเติม</string>
-  <string name="anonymous_notification_desc">เปิดหรือปิดสถิติของ CyanogenMod</string>
   <string name="preview_id_title">ตัวระบุที่ไม่ซ้ำกัน</string>
   <string name="preview_device_title">อุปกรณ์</string>
   <string name="preview_version_title">รุ่น</string>
@@ -425,14 +421,10 @@
   <string name="kill_app_longpress_back">ปิดแอปด้วยปุ่มกลับ</string>
   <string name="kill_app_longpress_back_summary">ปิดแอปที่กำลังใช้งานโดยกดปุ่มกลับค้าง</string>
   <string name="changelog_title">ความเปลี่ยนแปลง</string>
-  <string name="changelog_loading">กำลังโหลด ความเปลี่ยนแปลง\u2026</string>
   <string name="changelog_error">ไม่สามารถโหลดความเปลี่ยนแปลงได้</string>
-  <string name="changelog_unknown">ไม่ทราบ</string>
-  <string name="changelog_version">รุ่น</string>
   <string name="contributor_cloud_title">ผู้ร่วมพัฒนา</string>
   <string name="cmupdate_settings_title">ปรับปรุงรุ่น CyanogenMod</string>
   <string name="cmupdate_settings_summary">ตรวจสอบ,ดู หรือติดตั้งการอัพเดต</string>
-  <string name="advanced_settings_title">ขั้นสูง</string>
   <string name="development_tools_title">เปิดอุปกรณ์ช่วยเหลือ</string>
   <string name="allow_mock_sms">อนุญาตใช้ข้อความจำลอง</string>
   <string name="privacy_settings_cyanogenmod_title">ความเป็นส่วนตัว</string>
@@ -445,13 +437,11 @@
   <string name="privacy_guard_manager_title">ป้องกันความเป็นส่วนตัว</string>
   <string name="privacy_guard_manager_summary">จัดการแอปที่เข้าถึงข้อมูลส่วนตัวของคุณ</string>
   <string name="privacy_guard_no_user_apps">ไม่มีแอปที่ติดตั้ง</string>
-  <string name="privacy_guard_filter_does_not_match">ไม่มีแอปที่ใช้การอนุญาตดังกล่าวอยู่</string>
   <string name="privacy_guard_help_title">ช่วยเหลือ</string>
   <string name="privacy_guard_reset_title">รีเซ็ต</string>
   <string name="privacy_guard_reset_text">ล้างค่าการอนุญาต</string>
   <string name="privacy_guard_help_text">ในหน้าจอนี้คุณสามารถเปิดป้องกันความเป็นส่วนตัวได้โดยแตะบนพวกมัน แอปที่เลือกจะไม่สามารถเข้าถึงข้อมูลส่วนตัวของคุณได้ เช่น รายชื่อผู้ติดต่อ,ข้อความหรือประวัติการโทร แตะค้างเพื่อเปิดรายละเอียดแอป\n\nแอปที่ติดมากับเครื่องจะไม่ถูกแสดง แต่คุณสามารถเปิดมันได้จากปุ่มเมนู</string>
   <string name="privacy_guard_manager_show_system_apps">แสดงแอประบบ</string>
-  <string name="privacy_guard_manager_filter_permissions">ตัวกรองการอนุญาต</string>
   <string name="privacy_guard_advanced_settings_title">ขั้นสูง</string>
   <string name="blacklist_title">บัญชีดำ</string>
   <string name="blacklist_edit_dialog_title">แก้ไขบัญชีดำ</string>
@@ -475,6 +465,7 @@
   <string name="blacklist_regex_summary">ใช้ . เป็น ไวด์การ์ด และ * สำหรับทำซ้ำ เช่น 123.* สำหรับบล็อคหมายเลขที่ขึ้นต้นด้วย 123 และใช้ .*123.* สำหรับใช้บล็อคหมายเลขที่ส่วนใดส่วนหนึ่งมีเลข 123</string>
   <string name="blacklist_policy_block_calls">บล็อคสายเรียกเข้า</string>
   <string name="blacklist_policy_block_messages">บล็อคข้อความเข้า</string>
+  <string name="blacklist_bad_number_add">ไม่สามารถเพิ่มหมายเลขที่ไม่ถูกต้องไปยังบัญชีดำได้</string>
   <string name="add_blacklist_number">เพิ่มหมายเลข</string>
   <string name="remove_blacklist_number_title">นำหมายเลขออก</string>
   <string name="remove_blacklist_entry">คุณต้องการลบรายการนี้ออกจากบัญชีดำ?</string>
@@ -489,9 +480,6 @@
   <string name="gamma_tuning_title_head">เทียบแกรมม่า</string>
   <string name="gamma_tuning_summary_head">ปรับแต่งค่าแกรมม่า</string>
   <string name="gamma_tuning_control_set_header">กลุ่ม <xliff:g id="index">%d</xliff:g></string>
-  <string name="gamma_tuning_contrast">สีตัด</string>
-  <string name="gamma_tuning_brightness">ความสว่าง</string>
-  <string name="gamma_tuning_saturation">ความอิ่มตัว</string>
   <string name="headset_connect_player_title">เปิดแอปเล่นเพลง</string>
   <string name="headset_connect_player_summary">เปิดโปรแกรมเล่นเพลงเมื่อมีการเชื่อมต่อจากช่องหูฟัง</string>
   <string name="adb_notify">แจ้งเตือนแก้ไขข้อบกพร่อง USB</string>
@@ -509,6 +497,8 @@
   <string name="collapse_on_dismiss_if_empty_summary">ปิดเมื่อนำการแจ้งเตือนสุดท้ายออก</string>
   <string name="collapse_on_dismiss_if_no_clearable_summary">ปิดเมื่อนำการแจ้งเตือนที่เอาออกได้อันสุดท้ายออก</string>
   <string name="double_tap_to_wake_title">แตะสองครั้งเพื่อเปิดจอ</string>
+  <string name="double_tap_to_sleep_title">แตะสองครั้งเพื่อปิดจอ</string>
+  <string name="double_tap_to_sleep_summary">แตะแถบสถานะหรือวงแหวนปลดล็อคหน้าจอสองครั้งเพื่อพักหน้าจอ</string>
   <string name="proximity_wake_title">ป้องกันการเปิดหน้าจอโดยอุบัติเหตุ</string>
   <string name="proximity_wake_summary">ตรวจสอบเซนเซอร์แนบหน้าจอก่อนที่จะเปิดหน้าจอ</string>
   <string name="category_quick_access">ริบบิ้นตั้งค่า</string>
@@ -645,6 +635,7 @@
   <string name="hardware_keys_action_in_app_search">ค้นหาในแอป</string>
   <string name="hardware_keys_action_launch_camera">เปิดกล้อง</string>
   <string name="hardware_keys_action_last_app">แอปล่าสุด</string>
+  <string name="hardware_keys_action_sleep">ปิดหน้าจอ</string>
   <string name="power_end_call_title">วางสาย</string>
   <string name="power_end_call_summary">กดปุ่มเพาวเวอร์เพื่อวางสาย</string>
   <string name="button_wake_title">เปิดหน้าจอ</string>
@@ -675,13 +666,6 @@
   <string name="backlight_summary_disabled">ปิด</string>
   <string name="backlight_summary_enabled_with_timeout">เปิดสำหรับ <xliff:g id="timeout">%s</xliff:g></string>
   <string name="backlight_summary_enabled">เปิด</string>
-  <string name="lockscreen_background">พื้นหลัง</string>
-  <string name="lockscreen_background_style_title">พื้นหลังล็อคหน้าจอ</string>
-  <string name="background_default">พื้นหลังเริ่มต้น</string>
-  <string name="background_wallpaper">พื้นหลังกำหนดเอง</string>
-  <string name="background_result_successful">เปลี่ยนพื้นหลัง</string>
-  <string name="background_result_not_successful">ไม่เปลี่ยนพื้นหลัง</string>
-  <string name="setting_lockscreen_background">กำลังกำหนดพื้นหลัง</string>
   <string name="confirm_delete_apn">APN จะถูกลบ</string>
   <string name="status_bar_title">แถบสถานะ</string>
   <string name="status_bar_clock_title">รูปแบบนาฬิกา</string>
@@ -703,7 +687,6 @@
   <string name="status_bar_toggle_info">ไม่สามารถใช้งานได้ขณะเปิดใช้งานความสว่างอัตโนมัติ</string>
   <string name="status_bar_notif_count_title">นับจำนวนการแจ้งเตือน</string>
   <string name="status_bar_notif_count_summary">แสดงตัวเลขของการแจ้งเตือน</string>
-  <string name="status_bar_double_tap_to_sleep_title">แตะสองครั้งเพื่อปิดจอ</string>
   <string name="development_shortcut_title">ทางลัดการพัฒนา</string>
   <string name="development_shortcut_summary">เปิดตัวเลือก \'ล้างข้อมูล\' และ \'บังคับปิด\' ในพื้นที่การแจ้งเตือนและรายชื่อแอปที่ใช้งาน</string>
   <string name="usb_mass_storage_title">ที่เก็บข้อมูลขนาดใหญ่ (UMS)</string>
@@ -726,7 +709,6 @@
   <string name="stylus_icon_enabled_title">แสดงไอคอนเมื่อใช้งานปากกาสไตลัส</string>
   <string name="stylus_icon_enabled_summary">แสดงจุดบนจอเมื่อตวัดหรือวาดด้วยปากกา stylus</string>
   <string name="gestures_settings_title">ท่าทางของปากกา Stylus</string>
-  <string name="category_spen_title">ท่าทางของปากกา Stylus</string>
   <string name="enable_subcat_title">ปากกาสไตลัส</string>
   <string name="enable_spen_title_head">เปิดใช้งานท่าทาง</string>
   <string name="enable_spen_summary_head">ใช้การปัดโดยการกดปุ่มสไตลัส</string>
@@ -907,4 +889,83 @@
   <string name="block_notifications_title">ตัวกรองการแจ้งเตือน</string>
   <string name="block_notifications_summary">จัดการการละเว้นการแจ้งเตือนและตัวกรอง</string>
   <string name="no_filters_title">ไม่ได้ตั้งตัวกรอง เพื่อกรองการแจ้งเตือน,แตะค้างแล้วเลือก \'ละเว้นข้อความเช่นนี้\'</string>
+  <string name="usb_eject">ยกเลิกการต่อเชื่อมที่เก็บ USB</string>
+  <string name="usb_eject_summary">การเลิกการเชื่อมต่อที่เก็บ USB จะทำให้คุณสามารถถอดมันออกได้อย่างปลอดภัย</string>
+  <string name="usb_insert_summary">ใส่ที่เก็บ USB เพื่อเชื่อมต่อ</string>
+  <string name="usb_mount">เชื่อมต่อที่เก็บ USB</string>
+  <string name="usb_format">ลบที่เก็บข้อมูล USB</string>
+  <string name="usb_format_summary">ลบข้อมูลทั้งหมดบนที่เก็บข้อมูล USB, เช่น เพลงและรูปถ่าย</string>
+  <string name="dlg_confirm_usb_unmount_title">ยกเลิกการต่อเชื่อมที่เก็บ USB?</string>
+  <string name="dlg_confirm_usb_unmount_text">ถ้าคุณเลิกเชื่อมต่อที่เก็บข้อมูล USB, บางแอปจะหยุดการทำงานและจะไม่สามารถทำงานได้จนกว่าคุณจะเชื่อมต่อที่เก็บข้อมูล USB อีกครั้งหนึ่ง</string>
+  <string name="dlg_error_usb_unmount_text">ไม่สามารถเลิกเชื่อมต่อที่เก็บข้อมูล USB ได้โปรดลองใหม่ภายหลัง</string>
+  <string name="usb_unmount_inform_text">ที่เก็บ USB จะถูกเลิกเชื่อมต่อ</string>
+  <string name="usb_ejecting_title">กำลังเลิกเชื่อมต่อที่เก็บ USB</string>
+  <string name="usb_ejecting_summary">กำลังยกเลิกการเชื่อมต่อที่เก็บ USB</string>
+  <string name="usb_media_format_title">ลบข้อมูลที่เก็บ USB</string>
+  <string name="usb_media_format_desc">ลบที่เก็บ USB ทั้งหมด? คุณจะสูญเสียข้อมูล<b>ทั้งหมด</b>!</string>
+  <string name="usb_media_format_button_text">ลบที่เก็บข้อมูล USB</string>
+  <string name="usb_media_format_final_desc">ลบที่เก็บ USB จะลบไฟล์ที่เก็บไว้ทั้งหมด และคุณไม่สามารถย้อนกลับการกระทำนี้ได้!</string>
+  <string name="usb_media_format_gesture_explanation">คุณต้องวาดการปลดล็อคหน้าจอเพื่อยืนยันว่าคุณต้องการลบที่เก็บ USB</string>
+  <string name="sd_eject">ยกเลิกการต่อเชื่อม SD card</string>
+  <string name="sd_eject_summary">ยกเลิกการต่อเชื่อม SD card เพื่อให้คุณสามารถนำการ์ดออกได้อย่างปลอดภัย</string>
+  <string name="sd_insert_summary">ใส่ SD card เพื่อเชื่อมต่อ</string>
+  <string name="sd_mount">เชื่อมต่อ SD card</string>
+  <string name="sd_format">ลบ SD card</string>
+  <string name="sd_format_summary">ลบข้อมูลทั้งหมดบน SD card เช่น เพลงและรูปภาพ</string>
+  <string name="dlg_confirm_sd_unmount_title">ยกเลิกการต่อเชื่อม SD card?</string>
+  <string name="dlg_confirm_sd_unmount_text">หากคุณเลิกเชื่อมต่อ SD card บางแอปที่คุณใช้อยู่จะหยุดทำงานและพวกมันจะใช้ไม่ได้จนกว่าคุณจะเชื่อม SD card ใหม่</string>
+  <string name="dlg_error_sd_unmount_text">ไม่สามารถเลิกเชื่อมต่อ SD card ได้ลองใหม่ในภายหลัง</string>
+  <string name="sd_unmount_inform_text">SD card จะถูกยกเลิกการเชื่อมต่อ</string>
+  <string name="sd_ejecting_title">กำลังยกเลิกการเชื่อมต่อ SD card</string>
+  <string name="sd_ejecting_summary">กำลังดำเนินการเลิกการเชื่อมต่อ SD card</string>
+  <string name="sd_media_format_title">ลบ SD card</string>
+  <string name="sd_media_format_desc">ลบ SD card คุณจะสูญเสียข้อมูล<b>ทั้งหมด</b>!</string>
+  <string name="sd_media_format_button_text">ลบ SD card</string>
+  <string name="sd_media_format_final_desc">ลบ SD card จะลบไฟล์ที่เก็บไว้ทั้งหมด และคุณไม่สามารถย้อนกลับการกระทำนี้ได้!</string>
+  <string name="sd_media_format_gesture_explanation">คุณต้องวาดการปลดล็อคหน้าจอเพื่อยืนยันว่าคุณต้องการลบ SD card</string>
+  <string name="bluetooth_enter_pin_msg_hs">จับคู่กับ:<xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g> กรอก PIN ที่ต้องใช้ (16 ตัวหรือมากกว่า):</string>
+  <string name="bluetooth_profile_sap">การเข้าถึง SIM</string>
+  <string name="bluetooth_profile_dun">เข้าถึง Dial-up Network</string>
+  <string name="bluetooth_sap_profile_summary_connected">เชื่อมต่อไปยัง SIM Access server แล้ว</string>
+  <string name="bluetooth_dun_profile_summary_connected">เชื่อมต่อไปยัง DUN server แล้ว</string>
+  <string name="bluetooth_sap_profile_summary_use_for">ใช้สำหรับเข้าถึง SIM</string>
+  <string name="bluetooth_dun_profile_summary_use_for">ใช้สำหรับการเข้าถึง Dial-up Network</string>
+  <string name="wifi_disabled_association_rejected">ถูกปฏิเสธ</string>
+  <string name="screencolor">สีหน้าจอ</string>
+  <string name="custom_screencolor">สีหน้าจอกำหนดเอง</string>
+  <string name="device_additional_status">ข้อมูลสถานะเพิ่มเติม</string>
+  <string name="enable_quickboot_title">เปิดใช้งาน QuickBoot</string>
+  <string name="enable_quickboot_summary">เมื่อใช้ Quickboot มันจะถูกแทนที่การปิดเปิดเครื่องแบบธรรมดา</string>
+  <string name="data_usage_tab_slot">ซิมการ์ด </string>
+  <string name="sel_sub_title">กำหนดการติดตาม</string>
+  <string name="sel_sub_summary">เลือกการติดตามของคุณ</string>
+  <string name="no_sim_info">ไม่มีข้อมูลซิมการ์ด \n รายการนี้ไม่สามารถเข้าถึงได้</string>
+  <string name="subs_settings">สถานะการติดตาม</string>
+  <string name="set_data_subscription_progress">ตั้งค่าข้อมูลการติดตาม\u2026</string>
+  <string name="set_dds_success">ข้อมูลการติดตามถูกกำหนดเรียบร้อย</string>
+  <string name="set_dds_failed">ผิดพลาดขณะกำหนดข้อมูลการติดตาม กรุณาตัดการเชื่อมต่อทั้งหมดแล้วลองอีกครั้ง</string>
+  <string name="set_dds_error">ผิดพลาดขณะการกำหนดข้อมูลการติดตาม</string>
+  <string name="set_sms_error">ผิดพลาดขณะตั้งต่าการติดตาม SMS การติดตามไม่ถูกเปิด</string>
+  <string name="set_voice_error">ผิดพลาดขณะตั้งต่าการติดตามเสียง การติดตามไม่ถูกเปิด</string>
+  <string name="set_priority_sub_error">ผิดพลาดขณะตั้งต่าความสำคัญการติดตาม การติดตามไม่ถูกเปิด</string>
+  <string name="prompt">เลือกเอง</string>
+  <string name="prompt_user">เลือกโดยผู้ใช้</string>
+  <string name="tune_away_title">TuneAway</string>
+  <string name="tune_away_enabled">TuneAway เปิดการใช้งาน</string>
+  <string name="tune_away_disabled">TuneAway ปิดการใช้งาน</string>
+  <string name="screencolor_save">บันทึก</string>
+  <string name="screencolor_cancel">ยกเลิก</string>
+  <string name="restore_preview">ดูรูปภาพเริ่มต้น</string>
+  <string name="selectnewfile_menu">ดูรูปภาพใหม่จากแกลเลอรี</string>
+  <string name="selectfile_menu">ดูรูปภาพจากแกลลอรี</string>
+  <string name="restore_default_str">รีเซ็ต</string>
+  <string name="hue_str">Hue: <xliff:g id="hue_value">%1$s</xliff:g></string>
+  <string name="saturation_str">Saturation: <xliff:g id="saturation_value">%1$s</xliff:g></string>
+  <string name="contrast_str">Contrast: <xliff:g id="contrast_value">%1$s</xliff:g></string>
+  <string name="intensity_str">Intensity: <xliff:g id="intensity_str_value">%1$s</xliff:g></string>
+  <string name="device_status_summary_cm" product="tablet">สถานะของแบตเตอรี่,เครือข่าย,และข้อมูลอื่นๆ</string>
+  <string name="device_status_summary_cm" product="default">สถานะแบตเตอรี่,ระดับแบตเตอรี่ ฯลฯ</string>
+  <string name="wifi_ap_clients_title">อุปกรณ์ที่เชื่อมต่อ</string>
+  <string name="wifi_ap_client_ap_disabled">ฮอตสปอตปิดอยู่</string>
+  <string name="wifi_ap_client_none_connected">ไม่มีอุปกรณ์ที่เชื่อมต่อ</string>
 </resources>
