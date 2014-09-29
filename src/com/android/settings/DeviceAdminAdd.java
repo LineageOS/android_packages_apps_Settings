@@ -285,14 +285,14 @@ public class DeviceAdminAdd extends Activity {
                         protected void onResult(Bundle bundle) {
                             CharSequence msg = bundle != null
                                     ? bundle.getCharSequence(
-                                            DeviceAdminReceiver.EXTRA_DISABLE_WARNING)
-                                    : null;
+                                            DeviceAdminReceiver.EXTRA_DISABLE_WARNING) : null;
                             continueRemoveAction(msg);
                         }
                     });
                     // Don't want to wait too long.
                     getWindow().getDecorView().getHandler().postDelayed(new Runnable() {
-                        @Override public void run() {
+                        @Override
+                        public void run() {
                             continueRemoveAction(null);
                         }
                     }, 2*1000);

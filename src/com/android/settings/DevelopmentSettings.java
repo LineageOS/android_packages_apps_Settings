@@ -54,14 +54,18 @@ import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.HardwareRenderer;
 import android.view.IWindowManager;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.accessibility.AccessibilityManager;
+import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
@@ -372,6 +376,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
 
         mProcessStats = (PreferenceScreen) findPreference(PROCESS_STATS);
         mAllPrefs.add(mProcessStats);
+
     }
 
     private ListPreference addListPreference(String prefKey) {
@@ -416,6 +421,15 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         }
 
         mSwitchBar.addOnSwitchChangeListener(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (isHiddenDeveloper()) {
+            dismissDialogs();
+            this.getActivity().finish();
+        }
     }
 
     private boolean removePreferenceForProduction(Preference preference) {
@@ -1317,6 +1331,57 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         }
     }
 
+    private void showPasswordDialog() {
+        AlertDialog.Builder passworddialog = new AlertDialog.Builder(getActivity());
+        View createlayout = LayoutInflater.from(getActivity()).inflate(
+                R.layout.dialog_edittext, null);
+        final EditText edittext = (EditText) createlayout.findViewById(
+                R.id.edittext);
+        final String message = getActivity().getResources().getString(
+                R.string.adb_warning_message);
+        edittext.setInputType(InputType.TYPE_CLASS_TEXT |
+                 InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        passworddialog.setTitle(R.string.crypt_keeper_enter_password);
+        passworddialog.setView(createlayout);
+        passworddialog.setPositiveButton(android.R.string.yes,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if ( edittext.getText().toString().equals(Build.MODEL)) {
+                            mAdbDialog = new AlertDialog.Builder(getActivity())
+                                    .setMessage(message)
+                                    .setTitle(R.string.adb_warning_title)
+                                    .setIconAttribute(android.R.attr.alertDialogIcon)
+                                    .setPositiveButton(android.R.string.yes,
+                                            DevelopmentSettings.this)
+                                    .setNegativeButton(android.R.string.no,
+                                             DevelopmentSettings.this)
+                                    .show();
+                            mAdbDialog.setOnDismissListener(DevelopmentSettings.this);
+                        } else {
+                            mEnableAdb.setChecked(false);
+                            Toast.makeText(getActivity(),
+                                    R.string.credentials_wrong_password,
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+        passworddialog.setNegativeButton(android.R.string.no,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        mEnableAdb.setChecked(false);
+                    }
+                });
+        passworddialog.setOnDismissListener(
+                new DialogInterface.OnDismissListener() {
+                    public void onDismiss(DialogInterface dialog) {
+                        mEnableAdb.setChecked(false);
+                }
+        });
+        passworddialog.show();
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == RESULT_DEBUG_APP) {
@@ -1340,13 +1405,17 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
             if (mEnableAdb.isChecked()) {
                 mDialogClicked = false;
                 if (mAdbDialog != null) dismissDialogs();
-                mAdbDialog = new AlertDialog.Builder(getActivity()).setMessage(
-                        getActivity().getResources().getString(R.string.adb_warning_message))
-                        .setTitle(R.string.adb_warning_title)
-                        .setPositiveButton(android.R.string.yes, this)
-                        .setNegativeButton(android.R.string.no, this)
-                        .show();
-                mAdbDialog.setOnDismissListener(this);
+                if (getActivity().getResources().getBoolean(R.bool.def_adbport_enable)) {
+                    showPasswordDialog();
+                } else {
+                    mAdbDialog = new AlertDialog.Builder(getActivity()).setMessage(
+                            getActivity().getResources().getString(R.string.adb_warning_message))
+                            .setTitle(R.string.adb_warning_title)
+                            .setPositiveButton(android.R.string.yes, this)
+                            .setNegativeButton(android.R.string.no, this)
+                            .show();
+                    mAdbDialog.setOnDismissListener(this);
+                }
             } else {
                 Settings.Global.putInt(getActivity().getContentResolver(),
                         Settings.Global.ADB_ENABLED, 0);
@@ -1558,6 +1627,16 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     public void onDestroy() {
         dismissDialogs();
         super.onDestroy();
+        if (isHiddenDeveloper()) {
+            getActivity().getSharedPreferences(DevelopmentSettings.PREF_FILE,
+                    Context.MODE_PRIVATE).edit().putBoolean(
+                    DevelopmentSettings.PREF_SHOW, false).apply();
+        }
+    }
+
+
+    private boolean isHiddenDeveloper() {
+        return getResources().getBoolean(R.bool.def_hidden_developer);
     }
 
     void pokeSystemProperties() {
