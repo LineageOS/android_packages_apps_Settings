@@ -175,7 +175,7 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
         int i = 0;
         for (i = 0; i < MAX_SUBSCRIPTIONS; i++) {
             String operatorName = tm.getSimState(i) != SIM_STATE_ABSENT
-                    ? tm.getNetworkOperatorName(i) : getString(R.string.sub_no_sim);
+                    ? tm.getSimOperatorName(i) : getString(R.string.sub_no_sim);
             String label = getString(R.string.multi_sim_entry_format, operatorName, i + 1);
             entries[i] = summaries[i] = label;
             entriesPrompt[i] = summariesPrompt[i] = label;
