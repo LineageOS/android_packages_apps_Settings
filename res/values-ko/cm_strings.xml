@@ -58,7 +58,6 @@
   <string name="profile_unknown_nfc_tag">알 수 없는 프로필</string>
   <string name="profile_add_nfc_text">이 NFC 태그는 알 수 없는 프로필을 가리킵니다. 이 NFC 태그를 기존 프로필에 추가하면 나중에 이 태그로 프로필을 선택할 수 있습니다.</string>
   <string name="profile_select">프로필 선택</string>
-  <string name="add_profile_dialog_title">신규 프로필 생성</string>
   <string name="profile_name_title">이름</string>
   <string name="profile_profile_name_prompt">새 프로필의 이름을 입력합니다</string>
   <string name="menu_new_profile">새 프로필</string>
@@ -97,8 +96,6 @@
   <string name="ringer_mode">벨소리 모드</string>
   <string name="lights_mode">조명 모드</string>
   <string name="vibrate_mode">진동 모드</string>
-  <string name="choose_soundtone">알림 소리 선택</string>
-  <string name="choose_ringtone">벨소리 선택</string>
   <string name="soundtone_title">알림 소리</string>
   <string name="profile_appgroups_title">앱 그룹</string>
   <string name="profile_applist_title">애플리케이션</string>
@@ -245,7 +242,7 @@
   <string name="title_tile_compass">나침반</string>
   <string name="title_tile_heads_up">헤드 업</string>
   <string name="title_tile_sleep">화면 잠금</string>
-  <string name="title_tile_gps">GPS</string>
+  <string name="title_tile_gps">위치</string>
   <string name="title_tile_torch">전등</string>
   <string name="title_tile_lockscreen">잠금 화면</string>
   <string name="title_tile_lte">LTE</string>
@@ -392,7 +389,6 @@
   <string name="preview_data_title">데이터 미리 보기</string>
   <string name="view_stats_title">통계 보기</string>
   <string name="anonymous_learn_more">더 알아보기</string>
-  <string name="anonymous_notification_desc">CyanogenMod 통계 활성화 또는 비활성화</string>
   <string name="preview_id_title">고유 ID</string>
   <string name="preview_device_title">장치</string>
   <string name="preview_version_title">버전</string>
@@ -433,14 +429,10 @@
   <string name="kill_app_longpress_back">뒤로 버튼으로 앱 종료</string>
   <string name="kill_app_longpress_back_summary">뒤로 버튼을 길게 눌러 실행중인 앱을 강제 종료하기</string>
   <string name="changelog_title">변경 내역</string>
-  <string name="changelog_loading">변경 내역 불러오는 중\u2026</string>
   <string name="changelog_error">변경 내역을 불러올 수 없습니다</string>
-  <string name="changelog_unknown">알 수 없음</string>
-  <string name="changelog_version">버전</string>
   <string name="contributor_cloud_title">기여자</string>
   <string name="cmupdate_settings_title">CyanogenMod 업데이트</string>
   <string name="cmupdate_settings_summary">사용 가능한 업데이트 확인 및 설치</string>
-  <string name="advanced_settings_title">고급</string>
   <string name="development_tools_title">개발자 도구 실행</string>
   <string name="allow_mock_sms">모의 SMS 허용</string>
   <string name="privacy_settings_cyanogenmod_title">프라이버시</string>
@@ -453,13 +445,11 @@
   <string name="privacy_guard_manager_title">프라이버시 가드</string>
   <string name="privacy_guard_manager_summary">개인 정보에 접근할 수 있는 애플리케이션 관리</string>
   <string name="privacy_guard_no_user_apps">앱이 설치되지 않았습니다</string>
-  <string name="privacy_guard_filter_does_not_match">관련 권한을 가진 응용 프로그램이 설치되지 않았습니다</string>
   <string name="privacy_guard_help_title">도움말</string>
   <string name="privacy_guard_reset_title">초기화</string>
   <string name="privacy_guard_reset_text">권한을 초기화할까요?</string>
   <string name="privacy_guard_help_text">이 화면에서는 어떤 앱에 프라이버시 가드 기능을 작동하게 할 것인지를 선택할 수 있습니다. 선택된 앱은 연락처, 메시지, 통화 기록 등의 개인 정보에 접근 할 수 없게 됩니다. 앱을 길게 누르면 자세한 정보가 표시됩니다.\n\n내장 앱은 기본적으로 보여지지 않으나 메뉴에서 설정을 변경하여 보여지게 할 수도 있습니다.</string>
   <string name="privacy_guard_manager_show_system_apps">내장 어플리케이션 표시</string>
-  <string name="privacy_guard_manager_filter_permissions">권한 필터</string>
   <string name="privacy_guard_advanced_settings_title">고급 설정</string>
   <string name="blacklist_title">블랙리스트</string>
   <string name="blacklist_edit_dialog_title">블랙리스트 항목 편집</string>
@@ -498,9 +488,6 @@
   <string name="gamma_tuning_title_head">감마 보정</string>
   <string name="gamma_tuning_summary_head">감마 값을 조정합니다</string>
   <string name="gamma_tuning_control_set_header">그룹 <xliff:g id="index">%d</xliff:g></string>
-  <string name="gamma_tuning_contrast">대비</string>
-  <string name="gamma_tuning_brightness">밝기</string>
-  <string name="gamma_tuning_saturation">채도</string>
   <string name="headset_connect_player_title">음악 앱 실행</string>
   <string name="headset_connect_player_summary">헤드셋이 연결되면 기본 음악 애플리케이션 실행</string>
   <string name="adb_notify">USB 디버깅 알림</string>
@@ -518,6 +505,8 @@
   <string name="collapse_on_dismiss_if_empty_summary">마지막 알림 삭제 후 닫기</string>
   <string name="collapse_on_dismiss_if_no_clearable_summary">삭제 가능한 마지막 알림 삭제 후 닫기</string>
   <string name="double_tap_to_wake_title">더블 탭으로 화면 켜기</string>
+  <string name="double_tap_to_sleep_title">더블 탭하여 화면 끄기</string>
+  <string name="double_tap_to_sleep_summary">상태 바 또는 잠금 슬라이더를 두 번 탭하여 화면 끄기</string>
   <string name="proximity_wake_title">실수로 화면 켜기 방지</string>
   <string name="proximity_wake_summary">화면을 켜기 전에 근접 센서 확인</string>
   <string name="category_quick_access">빠른 액세스 리본</string>
@@ -654,6 +643,7 @@
   <string name="hardware_keys_action_in_app_search">응용 프로그램에서 검색</string>
   <string name="hardware_keys_action_launch_camera">카메라 실행</string>
   <string name="hardware_keys_action_last_app">이전에 사용한 앱</string>
+  <string name="hardware_keys_action_sleep">화면 끄기</string>
   <string name="power_end_call_title">통화 종료</string>
   <string name="power_end_call_summary">전원 버튼을 눌러 현재 통화를 종료</string>
   <string name="button_wake_title">깨우기</string>
@@ -684,13 +674,6 @@
   <string name="backlight_summary_disabled">사용 안 함</string>
   <string name="backlight_summary_enabled_with_timeout"><xliff:g id="timeout">%s</xliff:g>동안 켬</string>
   <string name="backlight_summary_enabled">사용함</string>
-  <string name="lockscreen_background">배경화면</string>
-  <string name="lockscreen_background_style_title">잠금화면 배경화면</string>
-  <string name="background_default">기본 배경화면</string>
-  <string name="background_wallpaper">사용자 정의 배경화면</string>
-  <string name="background_result_successful">배경화면이 변경되었습니다.</string>
-  <string name="background_result_not_successful">배경화면이 변경되지 않았습니다</string>
-  <string name="setting_lockscreen_background">적용 중인 배경화면</string>
   <string name="confirm_delete_apn">APN 설정이 삭제됩니다.</string>
   <string name="status_bar_title">상태 표시줄</string>
   <string name="status_bar_clock_title">시계 스타일</string>
@@ -712,7 +695,6 @@
   <string name="status_bar_toggle_info">자동 밝기 설정 시 사용할 수 없음</string>
   <string name="status_bar_notif_count_title">알림 갯수 표시</string>
   <string name="status_bar_notif_count_summary">읽지 않은 알림 숫자 표시</string>
-  <string name="status_bar_double_tap_to_sleep_title">더블 탭으로 화면 끄기</string>
   <string name="development_shortcut_title">개발용 바로가기</string>
   <string name="development_shortcut_summary">\'데이터 지우기\'와 \'강제 종료\' 옵션을 알림 영역과 최근 앱 목록에 표시합니다</string>
   <string name="usb_mass_storage_title">대용량 저장장치 (UMS)</string>
@@ -735,7 +717,6 @@
   <string name="stylus_icon_enabled_title">스타일러스 사용 시 아이콘 표시</string>
   <string name="stylus_icon_enabled_summary">스타일러스로 그리거나 호버링할 때 포인터 아이콘 표시</string>
   <string name="gestures_settings_title">스타일러스 제스처</string>
-  <string name="category_spen_title">스타일러스 제스처</string>
   <string name="enable_subcat_title">스타일러스</string>
   <string name="enable_spen_title_head">제스처 사용</string>
   <string name="enable_spen_summary_head">스타일러스의 버튼을 눌러 스와이프 제스쳐 사용</string>
@@ -929,7 +910,6 @@
   <string name="usb_ejecting_title">USB 저장소 마운트 해제 중</string>
   <string name="usb_ejecting_summary">USB 저장소 마운트 해제 중</string>
   <string name="usb_media_format_title">USB 저장소 지우기</string>
-  <string name="usb_media_format_summary">USB 저장소에 있는 모든 데이터 지우기</string>
   <string name="usb_media_format_desc">USB 저장소를 지우시겠습니까? 저장소에 저장된 <b>모든</b> 데이터가 삭제되니 주의하세요!</string>
   <string name="usb_media_format_button_text">USB 저장소 지우기</string>
   <string name="usb_media_format_final_desc">USB 저장소를 지우고 저장된 모든 파일을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다!</string>
@@ -947,9 +927,53 @@
   <string name="sd_ejecting_title">SD 카드 마운트 해제 중</string>
   <string name="sd_ejecting_summary">SD 카드 마운트 해제 중</string>
   <string name="sd_media_format_title">SD 카드 지우기</string>
-  <string name="sd_media_format_summary">SD 카드에 있는 모든 데이터 지우기</string>
   <string name="sd_media_format_desc">SD 카드를 지우시겠습니까? 카드에 저장된 <b>모든</b> 데이터가 삭제되니 주의하세요!</string>
   <string name="sd_media_format_button_text">SD 카드 지우기</string>
   <string name="sd_media_format_final_desc">SD 카드를 지우고 저장된 모든 파일을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다!</string>
   <string name="sd_media_format_gesture_explanation">SD 카드를 지우려면 잠금 해제 패턴을 입력하십시오.</string>
+  <string name="bluetooth_enter_pin_msg_hs">장치 <xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g>와(과) 연결하려면 장치의 PIN을 입력하십시오(16자 이상):</string>
+  <string name="bluetooth_profile_sap">SIM 액세스</string>
+  <string name="bluetooth_profile_dun">전화 접속 네트워크 액세스</string>
+  <string name="bluetooth_sap_profile_summary_connected">SIM 액세스 서버에 연결됨</string>
+  <string name="bluetooth_dun_profile_summary_connected">DUN 서버에 연결됨</string>
+  <string name="bluetooth_sap_profile_summary_use_for">SIM 액세스 사용</string>
+  <string name="bluetooth_dun_profile_summary_use_for">전화 접속 네트워크 액세스 사용</string>
+  <string name="wifi_disabled_association_rejected">연결이 거부됨</string>
+  <string name="screencolor">화면 색상</string>
+  <string name="custom_screencolor">사용자 정의 화면 색상</string>
+  <string name="device_additional_status">추가 정보</string>
+  <string name="enable_quickboot_title">QuickBoot 모드 활성화</string>
+  <string name="enable_quickboot_summary">장치를 일반적인 종료 대신 QuickBoot 모드로 종료합니다.</string>
+  <string name="data_usage_tab_slot">SIM </string>
+  <string name="sel_sub_title">회선 구성</string>
+  <string name="sel_sub_summary">회선 선택</string>
+  <string name="no_sim_info">SIM 카드 정보를 사용할 수 없습니다.\n메뉴에 액세스할 수 없습니다</string>
+  <string name="subs_settings">회선 상태</string>
+  <string name="set_data_subscription_progress">데이터 회선 설정 중\u2026</string>
+  <string name="set_dds_success">데이터 회선이 성공적으로 설정되었습니다</string>
+  <string name="set_dds_failed">데이터 회선을 설정하는 도중에 오류가 발생했습니다. 데이터 연결을 모두 끊고 다시 시도해보십시오.</string>
+  <string name="set_dds_error">데이터 회선을 설정하는 도중에 오류가 발생했습니다.</string>
+  <string name="set_sms_error">SMS 회선을 설정하는 도중에 오류가 발생했습니다. 회선이 비활성화되어 있습니다.</string>
+  <string name="set_voice_error">음성통화 회선을 설정하는 도중에 오류가 발생했습니다. 회선이 비활성화되어 있습니다.</string>
+  <string name="set_priority_sub_error">우선순위 회선을 설정하는 도중에 오류가 발생했습니다. 회선이 비활성화되어 있습니다.</string>
+  <string name="prompt">알림</string>
+  <string name="prompt_user">사용자에게 알림</string>
+  <string name="tune_away_title">TuneAway</string>
+  <string name="tune_away_enabled">TuneAway 활성화</string>
+  <string name="tune_away_disabled">TuneAway 비활성화</string>
+  <string name="screencolor_save">저장</string>
+  <string name="screencolor_cancel">취소</string>
+  <string name="restore_preview">기본 사진 보기</string>
+  <string name="selectnewfile_menu">갤러리에서 새 사진 보기</string>
+  <string name="selectfile_menu">갤러리에서 사진 보기</string>
+  <string name="restore_default_str">초기화</string>
+  <string name="hue_str">색조: <xliff:g id="hue_value">%1$s</xliff:g></string>
+  <string name="saturation_str">채도: <xliff:g id="saturation_value">%1$s</xliff:g></string>
+  <string name="contrast_str">대비: <xliff:g id="contrast_value">%1$s</xliff:g></string>
+  <string name="intensity_str">강도: <xliff:g id="intensity_str_value">%1$s</xliff:g></string>
+  <string name="device_status_summary_cm" product="tablet">배터리, 네트워크 등의 상태</string>
+  <string name="device_status_summary_cm" product="default">배터리 상태, 배터리 수준 등</string>
+  <string name="wifi_ap_clients_title">연결된 장치</string>
+  <string name="wifi_ap_client_ap_disabled">핫스팟을 사용하지 않습니다</string>
+  <string name="wifi_ap_client_none_connected">연결된 장치 없음</string>
 </resources>

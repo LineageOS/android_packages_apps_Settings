@@ -58,7 +58,6 @@
   <string name="profile_unknown_nfc_tag">Nieznany profil</string>
   <string name="profile_add_nfc_text">Ten tag NFC odnosi się do nieznanego profilu. Przypisanie tagu do istniejącego profilu pozwoli aktywować go w przyszłości.</string>
   <string name="profile_select">Wybierz profil</string>
-  <string name="add_profile_dialog_title">Utwórz nowy profil</string>
   <string name="profile_name_title">Nazwa</string>
   <string name="profile_profile_name_prompt">Wprowadź nazwę nowego profilu</string>
   <string name="menu_new_profile">Nowy profil</string>
@@ -97,8 +96,6 @@
   <string name="ringer_mode">Opcje dzwonka</string>
   <string name="lights_mode">Opcje diody powiadomień</string>
   <string name="vibrate_mode">Opcje wibracji</string>
-  <string name="choose_soundtone">Wybierz dźwięk powiadomień</string>
-  <string name="choose_ringtone">Wybierz dźwięk dzwonka</string>
   <string name="soundtone_title">Dźwięk powiadomień</string>
   <string name="profile_appgroups_title">Grupy aplikacji</string>
   <string name="profile_applist_title">Aplikacje</string>
@@ -245,7 +242,6 @@
   <string name="title_tile_compass">Kompas</string>
   <string name="title_tile_heads_up">Wyskakujące powiadomienia</string>
   <string name="title_tile_sleep">Usypianie</string>
-  <string name="title_tile_gps">GPS</string>
   <string name="title_tile_torch">Latarka</string>
   <string name="title_tile_lockscreen">Ekran blokady</string>
   <string name="title_tile_lte">LTE</string>
@@ -392,7 +388,6 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="preview_data_title">Podejrzyj swoje dane</string>
   <string name="view_stats_title">Zobacz statystyki</string>
   <string name="anonymous_learn_more">Dowiedz się więcej</string>
-  <string name="anonymous_notification_desc">Włącz lub wyłącz statystyki CyanogenMod</string>
   <string name="preview_id_title">Unikatowy ID</string>
   <string name="preview_device_title">Urządzenie</string>
   <string name="preview_version_title">Wersja</string>
@@ -433,14 +428,10 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="kill_app_longpress_back">Zabijaj aplikacje przyciskiem wstecz</string>
   <string name="kill_app_longpress_back_summary">Przytrzymanie przycisku wstecz zabija aktywną aplikację</string>
   <string name="changelog_title">Lista zmian</string>
-  <string name="changelog_loading">Wczytywanie listy zmian\u2026</string>
   <string name="changelog_error">Nie można wczytać listy zmian</string>
-  <string name="changelog_unknown">Nieznane</string>
-  <string name="changelog_version">Wersja</string>
   <string name="contributor_cloud_title">Twórcy</string>
   <string name="cmupdate_settings_title">Aktualizacje CyanogenMod</string>
   <string name="cmupdate_settings_summary">Znajdź i zainstaluj dostępne aktualizacje</string>
-  <string name="advanced_settings_title">Zaawansowane</string>
   <string name="development_tools_title">Narzędzia uruchamiania</string>
   <string name="allow_mock_sms">Pozorowane SMS-y</string>
   <string name="privacy_settings_cyanogenmod_title">Prywatność</string>
@@ -453,13 +444,11 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="privacy_guard_manager_title">Ochrona prywatności</string>
   <string name="privacy_guard_manager_summary">Wskaż, które aplikacje otrzymają dostęp do osobistych danych</string>
   <string name="privacy_guard_no_user_apps">Brak zainstalowanych aplikacji</string>
-  <string name="privacy_guard_filter_does_not_match">Brak zainstalowanych aplikacji z odpowiednimi uprawnieniami</string>
   <string name="privacy_guard_help_title">Pomoc</string>
   <string name="privacy_guard_reset_title">Resetuj</string>
   <string name="privacy_guard_reset_text">Zresetować uprawnienia?</string>
   <string name="privacy_guard_help_text">Na tym ekranie możesz wskazać aplikacje, dla których ochrona prywatności ma być aktywna. Zaznaczone aplikacje nie będą miały dostępu do osobistych danych, takich jak kontakty, wiadomości czy historia połączeń. Dłuższe przytrzymanie palcem na wybranej pozycji otworzy ekran ze szczegółowymi informacjami.\n\nAplikacje wbudowane w system nie są domyślnie wyświetlane. Jeżeli chcesz je zobaczyć lub zawęzić listę do aplikacji uzyskujących dostęp do danych osobistych, wybierz odpowiednią opcję z menu.</string>
   <string name="privacy_guard_manager_show_system_apps">Pokaż aplikacje wbudowane w system</string>
-  <string name="privacy_guard_manager_filter_permissions">Filtr wg uprawnień</string>
   <string name="privacy_guard_advanced_settings_title">Zaawansowane</string>
   <string name="blacklist_title">Czarna lista</string>
   <string name="blacklist_edit_dialog_title">Edytuj czarną listę</string>
@@ -498,9 +487,6 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="gamma_tuning_title_head">Kalibracja gamma</string>
   <string name="gamma_tuning_summary_head">Tuning wartości gamma</string>
   <string name="gamma_tuning_control_set_header">Grupa <xliff:g id="index">%d</xliff:g></string>
-  <string name="gamma_tuning_contrast">Kontrast</string>
-  <string name="gamma_tuning_brightness">Jasność</string>
-  <string name="gamma_tuning_saturation">Nasycenie</string>
   <string name="headset_connect_player_title">Uruchom odtwarzacz muzyki</string>
   <string name="headset_connect_player_summary">Uruchom domyślny odtwarzacz muzyki po podłączeniu słuchawek</string>
   <string name="adb_notify">Powiadomienie trybu debugowania</string>
@@ -684,13 +670,6 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="backlight_summary_disabled">Wyłączone</string>
   <string name="backlight_summary_enabled_with_timeout">Włączone przez <xliff:g id="timeout">%s</xliff:g></string>
   <string name="backlight_summary_enabled">Włączone</string>
-  <string name="lockscreen_background">Tło</string>
-  <string name="lockscreen_background_style_title">Tło ekranu blokady</string>
-  <string name="background_default">Domyślne tło</string>
-  <string name="background_wallpaper">Niestandardowa tapeta</string>
-  <string name="background_result_successful">Tło zostało zmienione</string>
-  <string name="background_result_not_successful">Tło nie zostało zmienione</string>
-  <string name="setting_lockscreen_background">Ustawianie nowego tła</string>
   <string name="confirm_delete_apn">APN zostanie usunięty...</string>
   <string name="status_bar_title">Pasek stanu</string>
   <string name="status_bar_clock_title">Styl zegara</string>
@@ -712,7 +691,6 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="status_bar_toggle_info">Niedostępne, gdy włączona jest automatyczna regulacja jasności</string>
   <string name="status_bar_notif_count_title">Pokaż liczbę powiadomień</string>
   <string name="status_bar_notif_count_summary">Wyświetla licznik oczekujących powiadomień</string>
-  <string name="status_bar_double_tap_to_sleep_title">Dwukrotnie naciśnij, aby uśpić</string>
   <string name="development_shortcut_title">Skrót deweloperski</string>
   <string name="development_shortcut_summary">Włącz opcje \'usuń dane\' oraz \'wymuś zamknięcie\' w opcjach powiadomień oraz na liście ostatnich aplikacji</string>
   <string name="usb_mass_storage_title">Tryb pamięci masowej</string>
@@ -735,7 +713,6 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="stylus_icon_enabled_title">Pokaz ikonę podczas używania rysika</string>
   <string name="stylus_icon_enabled_summary">Pokaż ikonę wskaźnika podczas wskazywania lub rysowania rysikiem</string>
   <string name="gestures_settings_title">Gesty rysika</string>
-  <string name="category_spen_title">Aktywuj gesty</string>
   <string name="enable_subcat_title">Rysik</string>
   <string name="enable_spen_title_head">Aktywuj gesty rysika</string>
   <string name="enable_spen_summary_head">Używaj własnych akcji za pomocą gestów rysika z wciśniętym przyciskiem.</string>
@@ -931,7 +908,6 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="usb_ejecting_title">Odmontowywanie pamięci USB</string>
   <string name="usb_ejecting_summary">Odmontowywanie pamięci USB w toku</string>
   <string name="usb_media_format_title">Wyczyść pamięć USB</string>
-  <string name="usb_media_format_summary">Usuwa wszystkie dane na pamięci USB</string>
   <string name="usb_media_format_desc">Usunąć wszystkie dane z pamięci USB? Stracisz <b>wszystkie</b> przechowywane dane!</string>
   <string name="usb_media_format_button_text">Wyczyść pamięć USB</string>
   <string name="usb_media_format_final_desc">Wyczyścić pamięć USB usuwając z niego wszystkie pliki? Nie można odwrócić tej akcji!</string>
@@ -949,7 +925,6 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="sd_ejecting_title">Odmontowywanie karty SD</string>
   <string name="sd_ejecting_summary">Odmontowywanie karty SD w toku</string>
   <string name="sd_media_format_title">Wyczyść kartę SD</string>
-  <string name="sd_media_format_summary">Usuwa wszystkie dane na karcie SD</string>
   <string name="sd_media_format_desc">Usunąć wszystkie dane z karty SD? Spowoduje utratę <b>wszystkich</b> danych na karcie!</string>
   <string name="sd_media_format_button_text">Wyczyść kartę SD</string>
   <string name="sd_media_format_final_desc">Wyczyścić kartę SD usuwając z niej wszystkie pliki? Nie można odwrócić tej akcji!</string>

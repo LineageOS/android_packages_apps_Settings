@@ -58,7 +58,6 @@
   <string name="profile_unknown_nfc_tag">Bilinmeyen profil</string>
   <string name="profile_add_nfc_text">Bu NFC etiketi bilinmeyen bir profile denk geliyor. Bu NFC etiketini bilinen bir profile atamak gelecekte o profilin seçilmesini sağlayabilir.</string>
   <string name="profile_select">Profil seç</string>
-  <string name="add_profile_dialog_title">Yeni profil oluştur</string>
   <string name="profile_name_title">İsim</string>
   <string name="profile_profile_name_prompt">Yeni profil için bir isim girin</string>
   <string name="menu_new_profile">Yeni profil</string>
@@ -97,8 +96,6 @@
   <string name="ringer_mode">Zil modu</string>
   <string name="lights_mode">Işık modu</string>
   <string name="vibrate_mode">Titreşim modu</string>
-  <string name="choose_soundtone">Bildirim tonunu seçin</string>
-  <string name="choose_ringtone">Zil sesini seçin</string>
   <string name="soundtone_title">Bildirim tonu</string>
   <string name="profile_appgroups_title">Uygulama grupları</string>
   <string name="profile_applist_title">Uygulamalar</string>
@@ -245,7 +242,7 @@
   <string name="title_tile_compass">Pusula</string>
   <string name="title_tile_heads_up">Bildirim Pencereleri</string>
   <string name="title_tile_sleep">Uyku moduna geç</string>
-  <string name="title_tile_gps">GPS</string>
+  <string name="title_tile_gps">Konum</string>
   <string name="title_tile_torch">Fener</string>
   <string name="title_tile_lockscreen">Kilit Ekranı</string>
   <string name="title_tile_lte">LTE</string>
@@ -406,7 +403,6 @@ parlaklık seviyesini ayarlayabilir hem de istediğiniz parlaklık düzeyini ell
   <string name="preview_data_title">Veriyi önizle</string>
   <string name="view_stats_title">İstatistikleri görüntüle</string>
   <string name="anonymous_learn_more">Fazlasını öğren</string>
-  <string name="anonymous_notification_desc">CyanogenMod İstatistiklerini aç/kapat</string>
   <string name="preview_id_title">Benzersiz ID</string>
   <string name="preview_device_title">Cihaz</string>
   <string name="preview_version_title">Sürüm</string>
@@ -447,14 +443,10 @@ parlaklık seviyesini ayarlayabilir hem de istediğiniz parlaklık düzeyini ell
   <string name="kill_app_longpress_back">Uygulama sonlandırıcı geri tuşu</string>
   <string name="kill_app_longpress_back_summary">Geri tuşuna uzun dokunarak ön plandaki uygulamayı sonlandır</string>
   <string name="changelog_title">Değişiklik kaydı</string>
-  <string name="changelog_loading">Değişiklik kaydı yükleniyor\u2026</string>
   <string name="changelog_error">Değişiklik kaydı yüklenemedi</string>
-  <string name="changelog_unknown">Bilinmeyen</string>
-  <string name="changelog_version">Sürüm</string>
   <string name="contributor_cloud_title">Katkıda bulunanlar</string>
   <string name="cmupdate_settings_title">CyanogenMod güncellemeleri</string>
   <string name="cmupdate_settings_summary">Güncellemeleri denetleyin, görüntüleyin ve yükleyin</string>
-  <string name="advanced_settings_title">Gelişmiş</string>
   <string name="development_tools_title">Araçları başlat</string>
   <string name="allow_mock_sms">Sahte SMSlere izin ver</string>
   <string name="privacy_settings_cyanogenmod_title">Gizlilik</string>
@@ -467,13 +459,11 @@ parlaklık seviyesini ayarlayabilir hem de istediğiniz parlaklık düzeyini ell
   <string name="privacy_guard_manager_title">Gizlilik Koruması</string>
   <string name="privacy_guard_manager_summary">Hangi uygulamaların kişisel verilerinize erişebileceğini yönetin</string>
   <string name="privacy_guard_no_user_apps">Yüklü uygulama yok</string>
-  <string name="privacy_guard_filter_does_not_match">İlgili izinle ilgili uygulama yok</string>
   <string name="privacy_guard_help_title">Yardım</string>
   <string name="privacy_guard_reset_title">Sıfırla</string>
   <string name="privacy_guard_reset_text">İzinleri sıfırla?</string>
   <string name="privacy_guard_help_text">Bu ekranda Gizlilik Korumasının hangi uygulamalarda aktif olacağını basitçe dokunarak seçebilirsiniz. Seçili uygulamalar kişiler, mesajlar veya arama kaydı gibi kişisel bilgilerinize ulaşamayacaklar. Ögelere uzun dokunarak o uygulamalar için uygulama detayları penceresini açabilirsiniz.\n\nÖnyüklü uygulamalar varsayılan olarak gösterilmez ancak ilgili menü seçeneğiyle görüntülenebilirler.</string>
   <string name="privacy_guard_manager_show_system_apps">Dahili uygulamaları göster</string>
-  <string name="privacy_guard_manager_filter_permissions">İzin filtresi</string>
   <string name="privacy_guard_advanced_settings_title">Gelişmiş</string>
   <string name="blacklist_title">Kara liste</string>
   <string name="blacklist_edit_dialog_title">Kara liste girişini düzenle</string>
@@ -512,9 +502,6 @@ parlaklık seviyesini ayarlayabilir hem de istediğiniz parlaklık düzeyini ell
   <string name="gamma_tuning_title_head">Gamma kalibrasyonu</string>
   <string name="gamma_tuning_summary_head">Gamma değerlerini ayarlayın</string>
   <string name="gamma_tuning_control_set_header">Grup <xliff:g id="index">%d</xliff:g></string>
-  <string name="gamma_tuning_contrast">Karşıtlık</string>
-  <string name="gamma_tuning_brightness">Parlaklık</string>
-  <string name="gamma_tuning_saturation">Doygunluk</string>
   <string name="headset_connect_player_title">Müzik uygulamasını başlat</string>
   <string name="headset_connect_player_summary">Kulaklık takıldığında varsayılan müzik uygulamasını başlat</string>
   <string name="adb_notify">USB hata ayıklama bildirimi</string>
@@ -532,6 +519,8 @@ parlaklık seviyesini ayarlayabilir hem de istediğiniz parlaklık düzeyini ell
   <string name="collapse_on_dismiss_if_empty_summary">En son bildirimi sildikten sonra kapat</string>
   <string name="collapse_on_dismiss_if_no_clearable_summary">En son kaldırılabilir bildirimi sildikten sonra kapat</string>
   <string name="double_tap_to_wake_title">Uyanmak için çift dokun</string>
+  <string name="double_tap_to_sleep_title">Uykuya geçmek için iki kez dokun</string>
+  <string name="double_tap_to_sleep_summary">Cihazı uyutmak için durum çubuğuna ya da kilit ekranı kaydırıcısına çift dokunun</string>
   <string name="proximity_wake_title">Yanlış uyandırmaları önle</string>
   <string name="proximity_wake_summary">Ekranı açmadan önce yakınlık sensörünü kontrol et</string>
   <string name="category_quick_access">Hızlı Erişim çubuğu</string>
@@ -668,6 +657,7 @@ parlaklık seviyesini ayarlayabilir hem de istediğiniz parlaklık düzeyini ell
   <string name="hardware_keys_action_in_app_search">Uygulama içi arama</string>
   <string name="hardware_keys_action_launch_camera">Kamerayı başlat</string>
   <string name="hardware_keys_action_last_app">Son uygulama</string>
+  <string name="hardware_keys_action_sleep">Ekranı kapat</string>
   <string name="power_end_call_title">Çağrıyı Sonlandır</string>
   <string name="power_end_call_summary">Güç tuşuna basmak mevcut çağrıyı sonlandıracak</string>
   <string name="button_wake_title">Uyan</string>
@@ -698,13 +688,6 @@ parlaklık seviyesini ayarlayabilir hem de istediğiniz parlaklık düzeyini ell
   <string name="backlight_summary_disabled">Devre dışı</string>
   <string name="backlight_summary_enabled_with_timeout"><xliff:g id="timeout">%s</xliff:g> için aktif</string>
   <string name="backlight_summary_enabled">Etkin</string>
-  <string name="lockscreen_background">Arkaplan</string>
-  <string name="lockscreen_background_style_title">Kilit ekranı arkaplanı</string>
-  <string name="background_default">Varsayılan arkaplan</string>
-  <string name="background_wallpaper">Özel duvar kağıdı</string>
-  <string name="background_result_successful">Arkaplan değişti</string>
-  <string name="background_result_not_successful">Arkaplan değişmedi</string>
-  <string name="setting_lockscreen_background">Arkaplan uygulanıyor</string>
   <string name="confirm_delete_apn">APN erişim noktası silenecek.</string>
   <string name="status_bar_title">Durum çubuğu</string>
   <string name="status_bar_clock_title">Saat stili</string>
@@ -726,7 +709,6 @@ parlaklık seviyesini ayarlayabilir hem de istediğiniz parlaklık düzeyini ell
   <string name="status_bar_toggle_info">Otomatik parlaklık etkinken kullanılabilir değil</string>
   <string name="status_bar_notif_count_title">Bildirim sayısını göster</string>
   <string name="status_bar_notif_count_summary">Bekleyen bildirim sayısını göster</string>
-  <string name="status_bar_double_tap_to_sleep_title">Uykuya geçmek için iki kez dokun</string>
   <string name="development_shortcut_title">Geliştirme kısayolu</string>
   <string name="development_shortcut_summary">\'Verileri sil\' ve \'Kapatmaya zorla\' seçeneklerini bildirim çubuğunda ve en son uygulamalar listesinde etkin kıl</string>
   <string name="usb_mass_storage_title">Yığın depolama (UMS)</string>
@@ -749,7 +731,6 @@ parlaklık seviyesini ayarlayabilir hem de istediğiniz parlaklık düzeyini ell
   <string name="stylus_icon_enabled_title">Kalem kullanırken simge göster</string>
   <string name="stylus_icon_enabled_summary">Çizerken ya da üzerinde dururken işaretçi simgesi göster</string>
   <string name="gestures_settings_title">Kalem kısa yolları</string>
-  <string name="category_spen_title">Kalem kısayolları</string>
   <string name="enable_subcat_title">Kalem</string>
   <string name="enable_spen_title_head">Kısayolları etkinleştir</string>
   <string name="enable_spen_summary_head">Kalem butununa basılı tutarak kaydırma kısayollarını kullanın</string>
@@ -943,7 +924,6 @@ parlaklık seviyesini ayarlayabilir hem de istediğiniz parlaklık düzeyini ell
   <string name="usb_ejecting_title">USB depolamanın bağlantısı kesiliyor</string>
   <string name="usb_ejecting_summary">USB depolamanın bağlantısı kesiliyor</string>
   <string name="usb_media_format_title">USB depolamayı sil</string>
-  <string name="usb_media_format_summary">USB depolamadaki tüm verileri siler</string>
   <string name="usb_media_format_desc">Tüm USB depolama silinsin mi? Saklanan <b>tüm</b> verileri kaybedeceksiniz!</string>
   <string name="usb_media_format_button_text">USB depolamayı sil</string>
   <string name="usb_media_format_final_desc">USB depolamayı silinsin mi? Depolanan tüm verileri silecektir. Bu eylemi geri alamazsınız!</string>
@@ -961,9 +941,53 @@ parlaklık seviyesini ayarlayabilir hem de istediğiniz parlaklık düzeyini ell
   <string name="sd_ejecting_title">SD kartın bağlantısı kesiliyor</string>
   <string name="sd_ejecting_summary">SD kartın bağlantısı kesiliyor</string>
   <string name="sd_media_format_title">SD kartı sil</string>
-  <string name="sd_media_format_summary">SD karttaki tüm verileri siler</string>
   <string name="sd_media_format_desc">Tüm SD kart silinsin mi? Saklanan <b>tüm</b> verileri kaybedeceksiniz!</string>
   <string name="sd_media_format_button_text">SD kartı sil</string>
   <string name="sd_media_format_final_desc">SD kart silinsin mi? Depolanan tüm verileri silecektir. Bu eylemi geri alamazsınız!</string>
   <string name="sd_media_format_gesture_explanation">SD kart birimini silmek istediğinizi onaylamak için kilit açma şeklini çizmeniz gerekir.</string>
+  <string name="bluetooth_enter_pin_msg_hs"><xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g>ile eşleştirmek için cihazın gerekli PIN\'ini (16+ karakter) girin:</string>
+  <string name="bluetooth_profile_sap">SIM Erişimi</string>
+  <string name="bluetooth_profile_dun">Çevirmeli Ağ Erişimi</string>
+  <string name="bluetooth_sap_profile_summary_connected">SIM Erişim sunucusuna bağlandı</string>
+  <string name="bluetooth_dun_profile_summary_connected">DUN sunucusuna bağlandı</string>
+  <string name="bluetooth_sap_profile_summary_use_for">SIM Erişimi için kullan</string>
+  <string name="bluetooth_dun_profile_summary_use_for">Çevirmeli Ağ Erişimi için kullan</string>
+  <string name="wifi_disabled_association_rejected">İlişkilendirme reddedildi</string>
+  <string name="screencolor">Ekran rengi</string>
+  <string name="custom_screencolor">Özel ekran rengi</string>
+  <string name="device_additional_status">Ek durum bilgisi</string>
+  <string name="enable_quickboot_title">Hızlı Açılış modunu etkinleştir</string>
+  <string name="enable_quickboot_summary">Cihazı normal kapama yerine Hızlı Açılış moduna sok.</string>
+  <string name="data_usage_tab_slot">SIM </string>
+  <string name="sel_sub_title">Abonelikleri yapılandırın</string>
+  <string name="sel_sub_summary">Aboneliğinizi seçin</string>
+  <string name="no_sim_info">SIM kart bilgisi mevcut değil.\nMenüye erişilemez</string>
+  <string name="subs_settings">Abonelik durumu</string>
+  <string name="set_data_subscription_progress">Veri aboneliği ayarı\u2026</string>
+  <string name="set_dds_success">Veri aboneliği başarıyla ayarlandı</string>
+  <string name="set_dds_failed">Veri aboneliği ayarlanırken hata oldu. Mevcut veri bağlantılarını kaldırın ve yeniden deneyin.</string>
+  <string name="set_dds_error">Veri aboneliği ayarlanırken hata oldu.</string>
+  <string name="set_sms_error">SMS aboneliği ayarlanırken hata oldu. Abonelik etkin değil.</string>
+  <string name="set_voice_error">Ses aboneliği ayarlanırken hata oldu. Abonelik etkin değil.</string>
+  <string name="set_priority_sub_error">Öncelikli abonelik ayarlanırken hata oldu. Abonelik etkin değil.</string>
+  <string name="prompt">Sor</string>
+  <string name="prompt_user">Kullanıcıya sor</string>
+  <string name="tune_away_title">TuneAway</string>
+  <string name="tune_away_enabled">TuneAway etkinleştirildi</string>
+  <string name="tune_away_disabled">TuneAway devre dışı bırakıldı</string>
+  <string name="screencolor_save">Kaydet</string>
+  <string name="screencolor_cancel">İptal</string>
+  <string name="restore_preview">Varsayılan resmi görüntüle</string>
+  <string name="selectnewfile_menu">Galeriden yeni resmi görüntüle</string>
+  <string name="selectfile_menu">Galeriden resmi görüntüle</string>
+  <string name="restore_default_str">Sıfırla</string>
+  <string name="hue_str">Ton: <xliff:g id="hue_value">%1$s</xliff:g></string>
+  <string name="saturation_str">Doygunluk: <xliff:g id="saturation_value">%1$s</xliff:g></string>
+  <string name="contrast_str">Zıtlık: <xliff:g id="contrast_value">%1$s</xliff:g></string>
+  <string name="intensity_str">Yoğunluk: <xliff:g id="intensity_str_value">%1$s</xliff:g></string>
+  <string name="device_status_summary_cm" product="tablet">Pil, ağ durumu ve diğer bilgiler</string>
+  <string name="device_status_summary_cm" product="default">Pil durumu, pil seviyesi, vb.</string>
+  <string name="wifi_ap_clients_title">Bağlı cihazlar</string>
+  <string name="wifi_ap_client_ap_disabled">Hotspot devre dışı bırakıldı</string>
+  <string name="wifi_ap_client_none_connected">Bağlı cihaz yok</string>
 </resources>

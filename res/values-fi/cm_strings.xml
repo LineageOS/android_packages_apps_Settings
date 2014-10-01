@@ -58,7 +58,6 @@
   <string name="profile_unknown_nfc_tag">Tuntematon profiili</string>
   <string name="profile_add_nfc_text">Tämä NFC-tunniste viittaa tuntemattomaan profiiliin. Tämän tunnisteen liittäminen olemassa olevaan profiiliin antaa sinun valita profiilin myöhemmin.</string>
   <string name="profile_select">Valitse profiili</string>
-  <string name="add_profile_dialog_title">Luo uusi profiili</string>
   <string name="profile_name_title">Nimi</string>
   <string name="profile_profile_name_prompt">Nimeä uusi profiili</string>
   <string name="menu_new_profile">Uusi profiili</string>
@@ -97,8 +96,6 @@
   <string name="ringer_mode">Äänet</string>
   <string name="lights_mode">Valot</string>
   <string name="vibrate_mode">Värinä</string>
-  <string name="choose_soundtone">Valitse ilmoitusääni</string>
-  <string name="choose_ringtone">Valitse soittoääni</string>
   <string name="soundtone_title">Ilmoitusääni</string>
   <string name="profile_appgroups_title">Sovellusryhmät</string>
   <string name="profile_applist_title">Sovellukset</string>
@@ -245,7 +242,7 @@
   <string name="title_tile_compass">Kompassi</string>
   <string name="title_tile_heads_up">Leijuvat ilmoitukset</string>
   <string name="title_tile_sleep">Lepotila</string>
-  <string name="title_tile_gps">GPS</string>
+  <string name="title_tile_gps">Sijainti</string>
   <string name="title_tile_torch">Lamppu</string>
   <string name="title_tile_lockscreen">Lukitusnäyttö</string>
   <string name="title_tile_lte">LTE</string>
@@ -392,7 +389,6 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="preview_data_title">Esikatsele tietoja</string>
   <string name="view_stats_title">Näytä tilastot</string>
   <string name="anonymous_learn_more">Lue lisää</string>
-  <string name="anonymous_notification_desc">Salli tai estä CyanogenMod-tilastointi</string>
   <string name="preview_id_title">Yksilöllinen tunniste</string>
   <string name="preview_device_title">Laite</string>
   <string name="preview_version_title">Versio</string>
@@ -433,14 +429,10 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="kill_app_longpress_back">Tapa sovellus</string>
   <string name="kill_app_longpress_back_summary">Tappaa etualalla olevan sovelluksen kun takaisin-painiketta painetaan pitkään</string>
   <string name="changelog_title">Muutosloki</string>
-  <string name="changelog_loading">Ladataan muutoslokia\u2026</string>
   <string name="changelog_error">Muutoslokin lataus ei onnistu</string>
-  <string name="changelog_unknown">Tuntematon</string>
-  <string name="changelog_version">Versio</string>
   <string name="contributor_cloud_title">Kehittäjät ja avustajat</string>
   <string name="cmupdate_settings_title">CyanogenMod-päivitykset</string>
   <string name="cmupdate_settings_summary">Tarkista, näytä tai asenna saatavilla olevat päivitykset</string>
-  <string name="advanced_settings_title">Lisäasetukset</string>
   <string name="development_tools_title">Käynnistä kehitystyökalut</string>
   <string name="allow_mock_sms">Salli valetekstiviestit</string>
   <string name="privacy_settings_cyanogenmod_title">Yksityisyys</string>
@@ -453,13 +445,11 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="privacy_guard_manager_title">Yksityisyyden suojaus</string>
   <string name="privacy_guard_manager_summary">Hallitse millä sovelluksilla on pääsy henkilökohtaisiin tietoihisi</string>
   <string name="privacy_guard_no_user_apps">Sovelluksia ei ole asennettu</string>
-  <string name="privacy_guard_filter_does_not_match">Sovelluksia, joilla on merkityksellisiä oikeuksia, ei ole asennettu</string>
   <string name="privacy_guard_help_title">Ohje</string>
   <string name="privacy_guard_reset_title">Palauta oletukset</string>
   <string name="privacy_guard_reset_text">Palauta käyttöoikeudet?</string>
   <string name="privacy_guard_help_text">Tässä näytössä voit valita, missä sovelluksissa haluat yksityisyyden suojauksen olevan päällä. Valituilla sovelluksilla ei ole pääsyä henkilökohtaisiin tietoihisi, kuten yhteystietoihin, viesteihin tai puhelulokiin. Sovelluksen tiedot näytetään painettaessa pitkään sen nimeä.\n\nJärjestelmäsovelluksia ei näytetä oletuksena, mutta ne voidaan tarvittaessa tuoda näkyviin valitsemalla kyseisen vaihtoehdon.</string>
   <string name="privacy_guard_manager_show_system_apps">Näytä järjestelmäsovellukset</string>
-  <string name="privacy_guard_manager_filter_permissions">Lupasuodatin</string>
   <string name="privacy_guard_advanced_settings_title">Lisäasetukset</string>
   <string name="blacklist_title">Musta lista</string>
   <string name="blacklist_edit_dialog_title">Muokkaa mustaa listaa</string>
@@ -498,9 +488,6 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="gamma_tuning_title_head">Gammakalibrointi</string>
   <string name="gamma_tuning_summary_head">Muokkaa gamma-arvoja</string>
   <string name="gamma_tuning_control_set_header">Ryhmä <xliff:g id="index">%d</xliff:g></string>
-  <string name="gamma_tuning_contrast">Kontrasti</string>
-  <string name="gamma_tuning_brightness">Kirkkaus</string>
-  <string name="gamma_tuning_saturation">Kylläisyys</string>
   <string name="headset_connect_player_title">Käynnistä musiikkisovellus</string>
   <string name="headset_connect_player_summary">Käynnistä musiikkisovellus kytkettäessä kuulokkeet</string>
   <string name="adb_notify">USB-viankorjausilmoitus</string>
@@ -518,6 +505,8 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="collapse_on_dismiss_if_empty_summary">Sulje, kun viimeinen ilmoitus on poistettu</string>
   <string name="collapse_on_dismiss_if_no_clearable_summary">Sulje, kun viimeinen poistettava ilmoitus on poistettu</string>
   <string name="double_tap_to_wake_title">Herätys tuplanapautuksella</string>
+  <string name="double_tap_to_sleep_title">Lepotila kaksoisnapautuksella</string>
+  <string name="double_tap_to_sleep_summary">Tuplanapauta tilapalkkia tai lukitusnäytön liukusäädintä asettaaksesi laitteen lepotilaan</string>
   <string name="proximity_wake_title">Estä herätys vahingossa</string>
   <string name="proximity_wake_summary">Tarkista lähesyysanturi ennen laitteen herättämistä</string>
   <string name="category_quick_access">Pika-asetuspalkki</string>
@@ -654,6 +643,7 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="hardware_keys_action_in_app_search">Haku sovelluksessa</string>
   <string name="hardware_keys_action_launch_camera">Käynnistä kamera</string>
   <string name="hardware_keys_action_last_app">Viimeinen sovellus</string>
+  <string name="hardware_keys_action_sleep">Sammuta näyttö</string>
   <string name="power_end_call_title">Lopeta puhelu</string>
   <string name="power_end_call_summary">Virtapainikkeen painaminen lopettaa nykyisen puhelun</string>
   <string name="button_wake_title">Herätys</string>
@@ -684,13 +674,6 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="backlight_summary_disabled">Pois käytöstä</string>
   <string name="backlight_summary_enabled_with_timeout">Käytössä <xliff:g id="timeout">%s</xliff:g> ajan</string>
   <string name="backlight_summary_enabled">Käytössä</string>
-  <string name="lockscreen_background">Taustakuva</string>
-  <string name="lockscreen_background_style_title">Lukitusnäytön taustakuva</string>
-  <string name="background_default">Oletustaustakuva</string>
-  <string name="background_wallpaper">Mukautettu taustakuva</string>
-  <string name="background_result_successful">Taustakuva vaihdettu</string>
-  <string name="background_result_not_successful">Taustakuvaa ei vaihdettu</string>
-  <string name="setting_lockscreen_background">Otetaan taustakuva käyttöön</string>
   <string name="confirm_delete_apn">Yhteysosoite poistetaan.</string>
   <string name="status_bar_title">Tilapalkki</string>
   <string name="status_bar_clock_title">Kellon tyyli</string>
@@ -712,7 +695,6 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="status_bar_toggle_info">Ei saatavilla kun näytön automaattinen kirkkaus on käytössä</string>
   <string name="status_bar_notif_count_title">Näytä ilmoitusten määrä</string>
   <string name="status_bar_notif_count_summary">Näyttää ilmoitusten määrän</string>
-  <string name="status_bar_double_tap_to_sleep_title">Lepotila kaksoisnapautuksella</string>
   <string name="development_shortcut_title">Kehittäjän pikakuvakkeet</string>
   <string name="development_shortcut_summary">Ota käyttöön \"Tyhjennä tiedot\"- ja \"Pakota lopetus\" -vaihtoehdot ilmoitusvalikossa ja viimeisimpien sovellusten luettelossa</string>
   <string name="usb_mass_storage_title">Massamuisti (UMS)</string>
@@ -735,7 +717,6 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="stylus_icon_enabled_title">Näytä kuvake stylus-kynää käytettäessä</string>
   <string name="stylus_icon_enabled_summary">Näytä osoitinkuvake liikutettaessa kynää näytöllä tai näytön yläpuolella</string>
   <string name="gestures_settings_title">Stylus-eleet</string>
-  <string name="category_spen_title">Stylus-kynän eleet</string>
   <string name="enable_subcat_title">Stylus-kynä</string>
   <string name="enable_spen_title_head">Ota kynän eleet käyttöön</string>
   <string name="enable_spen_summary_head">Käytä kynän eleitä pitämällä stylus-kynän painiketta painettuna</string>
@@ -930,7 +911,6 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="usb_ejecting_title">Irroitetaan USB-muistia</string>
   <string name="usb_ejecting_summary">USB-muistin irroitus käynnissä</string>
   <string name="usb_media_format_title">Tyhjennä USB-muisti</string>
-  <string name="usb_media_format_summary">Poistaa kaikki tiedot USB-muistilta</string>
   <string name="usb_media_format_desc">Tyhjennetäänkö USB-muisti? Menetät <b>kaikki</b> tallennetut tiedot!</string>
   <string name="usb_media_format_button_text">Tyhjennä USB-muisti</string>
   <string name="usb_media_format_final_desc">Tyhjennetäänkö USB-muisti poistamalla kaikki tallennetut tiedot? Toimintoa ei voi peruuttaa!</string>
@@ -948,9 +928,53 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="sd_ejecting_title">Irroitetaan SD-korttia</string>
   <string name="sd_ejecting_summary">SD-kortin irroitus käynnissä</string>
   <string name="sd_media_format_title">Tyhjennä SD-kortti</string>
-  <string name="sd_media_format_summary">Poistaa kaikki tiedot SD-kortilta</string>
   <string name="sd_media_format_desc">Tyhjennetäänkö SD-kortti? Menetät <b>kaikki</b> tallennetut tiedot!</string>
   <string name="sd_media_format_button_text">Tyhjennä SD-kortti</string>
   <string name="sd_media_format_final_desc">Tyhjennetäänkö SD-kortti poistamalla kaikki tallennetut tiedot? Toimintoa ei voi peruuttaa!</string>
   <string name="sd_media_format_gesture_explanation">Sinun tulee piirtää lukituskuviosi vahvistaaksesi että haluat tyhjentää SD-kortin.</string>
+  <string name="bluetooth_enter_pin_msg_hs">Parittaaksesi seuraavan laitteen kanssa:<xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g> Syötä laitteen tarvitsema PIN (16 numeroa tai enemmän):</string>
+  <string name="bluetooth_profile_sap">SIM-pääsy</string>
+  <string name="bluetooth_profile_dun">DUN-pääsy</string>
+  <string name="bluetooth_sap_profile_summary_connected">Yhdistetty SIM Access-palvelimeen</string>
+  <string name="bluetooth_dun_profile_summary_connected">Yhdistetty DUN-palvelimeen</string>
+  <string name="bluetooth_sap_profile_summary_use_for">Käytä SIM-pääsyyn</string>
+  <string name="bluetooth_dun_profile_summary_use_for">Käytä DUN-pääsyyn</string>
+  <string name="wifi_disabled_association_rejected">Yhdistäminen hylätty</string>
+  <string name="screencolor">Näytön väri</string>
+  <string name="custom_screencolor">Mukautettu näytön väri</string>
+  <string name="device_additional_status">Lisätietoja</string>
+  <string name="enable_quickboot_title">QuickBoot-tila</string>
+  <string name="enable_quickboot_summary">Aseta laite QuickBoot-tilaan normaalin tilan sijaan.</string>
+  <string name="data_usage_tab_slot">SIM  </string>
+  <string name="sel_sub_title">Määritä tilaukset</string>
+  <string name="sel_sub_summary">Valitse tilauksesi</string>
+  <string name="no_sim_info">SIM-kortin tiedot eivät ole käytettävissä.\nValikkoa ei voi käyttää</string>
+  <string name="subs_settings">Tilauksen tila</string>
+  <string name="set_data_subscription_progress">Asetetaan datatilausta\u2026</string>
+  <string name="set_dds_success">Datatilaus asetettu onnistuneesti</string>
+  <string name="set_dds_failed">Virhe asetettaessa datatilausta. Poista edelliset datayhteydet ja yritä uudelleen.</string>
+  <string name="set_dds_error">Virhe asettaessa datatilausta.</string>
+  <string name="set_sms_error">Virhe määrittäessä tekstiviestitilausta. Tilaus ei ole aktiivinen.</string>
+  <string name="set_voice_error">Virhe asettaessa puhelutilausta. Tilaus ei ole aktiivinen.</string>
+  <string name="set_priority_sub_error">Virhe asettaessa ensisijaista tilausta. Tilaus ei ole aktiivinen.</string>
+  <string name="prompt">Kehote</string>
+  <string name="prompt_user">Kehota käyttäjää</string>
+  <string name="tune_away_title">TuneAway</string>
+  <string name="tune_away_enabled">TuneAway käytössä</string>
+  <string name="tune_away_disabled">TuneAway pois käytöstä</string>
+  <string name="screencolor_save">Tallenna</string>
+  <string name="screencolor_cancel">Peruuta</string>
+  <string name="restore_preview">Näytä oletuskuva</string>
+  <string name="selectnewfile_menu">Näytä uusi kuva Galleriasta</string>
+  <string name="selectfile_menu">Katso kuva Galleriasta</string>
+  <string name="restore_default_str">Palauta</string>
+  <string name="hue_str">Sävy: <xliff:g id="hue_value">%1$s</xliff:g></string>
+  <string name="saturation_str">Kylläisyys: <xliff:g id="saturation_value">%1$s</xliff:g></string>
+  <string name="contrast_str">Kontrasti: <xliff:g id="contrast_value">%1$s</xliff:g></string>
+  <string name="intensity_str">Intensiteetti: <xliff:g id="intensity_str_value">%1$s</xliff:g></string>
+  <string name="device_status_summary_cm" product="tablet">Tietoja akusta, verkosta ja muusta</string>
+  <string name="device_status_summary_cm" product="default">Akun tila, akun taso, jne.</string>
+  <string name="wifi_ap_clients_title">Yhdistetyt laitteet</string>
+  <string name="wifi_ap_client_ap_disabled">Tukiasema on poistettu käytöstä</string>
+  <string name="wifi_ap_client_none_connected">Laitteita ei yhdistetty</string>
 </resources>
