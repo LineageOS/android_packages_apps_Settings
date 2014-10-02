@@ -225,7 +225,7 @@ public class ButtonBacklightBrightness extends DialogPreference implements
                 com.android.internal.R.integer.config_keyboardBrightnessSettingDefault) > 0;
     }
 
-    private void updateSummary() {
+    public void updateSummary() {
         if (mButtonBrightness != null) {
             int buttonBrightness = mButtonBrightness.getBrightness(true);
             int timeout = getTimeout();
