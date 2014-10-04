@@ -242,6 +242,7 @@
   <string name="title_tile_compass">Kompass</string>
   <string name="title_tile_heads_up">Pop-up-Benachrichtigungen</string>
   <string name="title_tile_sleep">Standby</string>
+  <string name="title_tile_gps">Standort</string>
   <string name="title_tile_torch">Taschenlampe</string>
   <string name="title_tile_lockscreen">Bildschirmsperre</string>
   <string name="title_tile_lte">LTE</string>
@@ -518,6 +519,8 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
   <string name="collapse_on_dismiss_if_empty_summary">Nach dem Entfernen der letzten Benachrichtigung schließen</string>
   <string name="collapse_on_dismiss_if_no_clearable_summary">Nach dem Entfernen der letzten nicht dauerhaft angezeigten Benachrichtigung schließen</string>
   <string name="double_tap_to_wake_title">Aufwecken durch doppeltes Tippen</string>
+  <string name="double_tap_to_sleep_title">Standby durch doppeltes Tippen</string>
+  <string name="double_tap_to_sleep_summary">Das Gerät durch doppeltes Tippen auf die Statuszeile oder den Sperrbildschirm-Schieber ausschalten</string>
   <string name="proximity_wake_title">Unbeabsichtigtes Aufwecken verhindern</string>
   <string name="proximity_wake_summary">Vor dem Aufwecken des Gerätes Näherungssensor überprüfen</string>
   <string name="category_quick_access">Schnellzugriffsleiste</string>
@@ -912,9 +915,12 @@ auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
   <string name="no_filters_title">Keine Filter eingerichtet. Um eine Benachrichtigung zu filtern, halten Sie diese gedrückt und wählen Sie \'Ähnliche Benachrichtigungen ignorieren\'.</string>
   <string name="usb_eject">USB-Speicher auswerfen</string>
   <string name="usb_eject_summary">USB-Speicher auswerfen, um ihn sicher entfernen zu können</string>
+  <string name="usb_insert_summary">USB-Speicher zum Einhängen einsetzen</string>
+  <string name="usb_mount">USB-Speicher einhängen</string>
   <string name="usb_format">USB-Speicher löschen</string>
   <string name="usb_format_summary">Löscht alle Daten auf dem USB-Speicher, z. B. Musik und Fotos</string>
   <string name="dlg_confirm_usb_unmount_title">USB-Speicher auswerfen?</string>
+  <string name="dlg_confirm_usb_unmount_text">Das Auswerfen des USB-Speichers kann dazu führen, dass manche Anwendungen gestoppt werden und erst wieder verwendet werden können, wenn der USB-Speicher wieder eingehängt wurde.</string>
   <string name="dlg_error_usb_unmount_text">USB-Speicher konnte nicht ausgeworfen werden. Versuchen Sie es später erneut.</string>
   <string name="usb_ejecting_title">USB-Speicher wird ausgeworfen</string>
   <string name="usb_media_format_title">USB-Speicher löschen</string>
@@ -943,6 +949,7 @@ auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
   <string name="bluetooth_profile_sap">SIM-Zugriff</string>
   <string name="bluetooth_profile_dun">Internet-Einwahlverbindung</string>
   <string name="bluetooth_sap_profile_summary_connected">Verbunden mit SIM-Zugriffsserver</string>
+  <string name="bluetooth_dun_profile_summary_connected">Verbunden mit Einwahldienst</string>
   <string name="bluetooth_sap_profile_summary_use_for">Für SIM-Zugriff verwenden</string>
   <string name="bluetooth_dun_profile_summary_use_for">Für Einwahlverbindungen verwenden</string>
   <string name="wifi_disabled_association_rejected">Verbindung abgelehnt</string>
@@ -950,6 +957,8 @@ auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
   <string name="custom_screencolor">Benutzerdefinierte Bildschirmfarbe</string>
   <string name="device_additional_status">Weitere Statusinformationen</string>
   <string name="enable_quickboot_title">Schnellstart-Modus aktivieren</string>
+  <string name="enable_quickboot_summary">Gerät für schnellen Neustart vorbereiten, anstatt es vollständig auszuschalten.</string>
+  <string name="data_usage_tab_slot">SIM </string>
   <string name="sel_sub_title">SIM auswählen</string>
   <string name="sel_sub_summary">SIM-Karte auswählen</string>
   <string name="no_sim_info">Keine SIM-Informationen vorhanden.\nMenü nicht verfügbar</string>
@@ -963,6 +972,9 @@ auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
   <string name="set_priority_sub_error">Priorität der SIM konnte nicht gesetzt werden. Die SIM-Karte ist nicht aktiv.</string>
   <string name="prompt">Nachfragen</string>
   <string name="prompt_user">Bei jedem Anruf nachfragen</string>
+  <string name="sar_info">Maximale SAR</string>
+  <string name="maximum_head_level">Kopf: %1$s W/kg</string>
+  <string name="maximum_body_level">Körper: %1$s W/kg</string>
   <string name="tune_away_title">TuneAway</string>
   <string name="tune_away_enabled">TuneAway aktiviert</string>
   <string name="tune_away_disabled">TuneAway deaktiviert</string>
@@ -976,5 +988,8 @@ auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
   <string name="saturation_str">Sättigung: <xliff:g id="saturation_value">%1$s</xliff:g></string>
   <string name="contrast_str">Kontrast: <xliff:g id="contrast_value">%1$s</xliff:g></string>
   <string name="intensity_str">Intensität: <xliff:g id="intensity_str_value">%1$s</xliff:g></string>
+  <string name="device_status_summary_cm" product="tablet">Status des Akkus, Netzwerks und andere Informationen</string>
+  <string name="wifi_ap_clients_title">Verbundene Geräte</string>
   <string name="wifi_ap_client_ap_disabled">Hotspot ist deaktiviert</string>
+  <string name="wifi_ap_client_none_connected">Keine verbundenen Geräte</string>
 </resources>
