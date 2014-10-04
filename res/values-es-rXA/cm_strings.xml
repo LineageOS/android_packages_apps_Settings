@@ -242,6 +242,7 @@
   <string name="title_tile_compass">Brúxula</string>
   <string name="title_tile_heads_up">Testera</string>
   <string name="title_tile_sleep">Bloquiar</string>
+  <string name="title_tile_gps">Llocalización</string>
   <string name="title_tile_torch">Llinterna</string>
   <string name="title_tile_lockscreen">Bloquéu</string>
   <string name="title_tile_lte">LTE</string>
@@ -504,6 +505,8 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="collapse_on_dismiss_if_empty_summary">Zarrar l\'área de notificación al desaniciar la cabera notificación</string>
   <string name="collapse_on_dismiss_if_no_clearable_summary">Zarrar l\'área de notificación al desaniciar la cabera notificación non persistente</string>
   <string name="double_tap_to_wake_title">Doble toque pa esconsoñar</string>
+  <string name="double_tap_to_sleep_title">Doble toque pa bloquiar</string>
+  <string name="double_tap_to_sleep_summary">Un doble toque sobre la barra d\'estáu o sobre l\'eslizador de la pantalla de bloquéu, apagará la pantalla del preséu</string>
   <string name="proximity_wake_title">Prevenir encendíu accidental</string>
   <string name="proximity_wake_summary">Comprobar el sensor de proximidá enantes de prender la pantalla</string>
   <string name="category_quick_access">Cinta d\'axustes rápidos</string>
@@ -640,6 +643,7 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="hardware_keys_action_in_app_search">Gueta dientro de l\'aplicación</string>
   <string name="hardware_keys_action_launch_camera">Abrir cámara</string>
   <string name="hardware_keys_action_last_app">Cabera aplicación</string>
+  <string name="hardware_keys_action_sleep">Apagar la pantalla</string>
   <string name="power_end_call_title">Finar llamada</string>
   <string name="power_end_call_summary">Calcando\'l botón d\'apagáu, va finar la llamada en cursu</string>
   <string name="button_wake_title">Esconsoñar</string>
@@ -928,4 +932,52 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="sd_media_format_button_text">Desaniciar tarxeta SD</string>
   <string name="sd_media_format_final_desc">¿Quies desaniciar la tarxeta SD y desaniciar tolos ficheros? Esta aición nun pue desfacese!</string>
   <string name="sd_media_format_gesture_explanation">Has dibuxar el patrón de desbloquéu pa confirmar que quies desaniciar la tarxeta SD.</string>
+  <string name="bluetooth_enter_pin_msg_hs">Pa enllazar con:<xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g>Escribi\'l PIN que pide\'l preséu (16 díxitos o más):</string>
+  <string name="bluetooth_profile_sap">Accesu SIM</string>
+  <string name="bluetooth_profile_dun">Accesu telefónicu a redes</string>
+  <string name="bluetooth_sap_profile_summary_connected">Coneutáu al sirvidor d\'accesu SIM</string>
+  <string name="bluetooth_dun_profile_summary_connected">Coneutáu al sirvidor DUN</string>
+  <string name="bluetooth_sap_profile_summary_use_for">Usar p\'accesu a SIM</string>
+  <string name="bluetooth_dun_profile_summary_use_for">Usáu pal accesu telefónicu a redes</string>
+  <string name="wifi_disabled_association_rejected">Refugóse asociación</string>
+  <string name="screencolor">Color de la pantalla</string>
+  <string name="custom_screencolor">Color personalizáu de la pantalla</string>
+  <string name="device_additional_status">Información d\'estáu adicional</string>
+  <string name="enable_quickboot_title">Habilitar el mou d\'arranque rápidu</string>
+  <string name="enable_quickboot_summary">Poner el preséu en mou d\'arranque rápidu en cuenta del apagáu normal.</string>
+  <string name="data_usage_tab_slot">SIM  </string>
+  <string name="sel_sub_title">Configurar soscripciones</string>
+  <string name="sel_sub_summary">Esbillar la to soscripción</string>
+  <string name="no_sim_info">Información de tarxeta SIM non disponible.\nNun pue accedese al menú</string>
+  <string name="subs_settings">Estáu de la soscripción</string>
+  <string name="set_data_subscription_progress">Afitando soscripción de datos\u2026</string>
+  <string name="set_dds_success">Soscripción de datos afitada correchamente</string>
+  <string name="set_dds_failed">Fallu al afitar la soscripción pa conexón de datos. Desanicia cualquier conexón existente ya inténtalo otra vuelta.</string>
+  <string name="set_dds_error">Fallu al afitar la soscripción pa conexón de datos.</string>
+  <string name="set_sms_error">Fallu al afitar la soscripción pal unviu de SMS. Soscripción inactiva.</string>
+  <string name="set_voice_error">Fallu al afitar la soscripción pa llamaes de voz. Soscripción inactiva.</string>
+  <string name="set_priority_sub_error">Fallu al afitar la prioridá de la soscripción. Soscripción inactiva.</string>
+  <string name="prompt">Entruga</string>
+  <string name="prompt_user">Entruga al usuariu</string>
+  <string name="sar_info">Valor SAR máximu</string>
+  <string name="maximum_head_level">Cabeza: %1$s W/kg</string>
+  <string name="maximum_body_level">Cuerpu: %1$s W/kg</string>
+  <string name="tune_away_title">TuneAway</string>
+  <string name="tune_away_enabled">TuneAway habilitáu</string>
+  <string name="tune_away_disabled">TuneAway deshabilitáu</string>
+  <string name="screencolor_save">Guardar</string>
+  <string name="screencolor_cancel">Encaboxar</string>
+  <string name="restore_preview">Ver imaxe por defeutu</string>
+  <string name="selectnewfile_menu">Ver imaxe nueva dende la Galería</string>
+  <string name="selectfile_menu">Ver imaxe dende la Galería</string>
+  <string name="restore_default_str">Restablecer</string>
+  <string name="hue_str">Color: <xliff:g id="hue_value">%1$s</xliff:g></string>
+  <string name="saturation_str">Saturación: <xliff:g id="saturation_value">%1$s</xliff:g></string>
+  <string name="contrast_str">Contraste: <xliff:g id="contrast_value">%1$s</xliff:g></string>
+  <string name="intensity_str">Intensidá: <xliff:g id="intensity_str_value">%1$s</xliff:g></string>
+  <string name="device_status_summary_cm" product="tablet">Estáu de la batería, de la rede y otra información</string>
+  <string name="device_status_summary_cm" product="default">Estáu de la batería, nivel, etc</string>
+  <string name="wifi_ap_clients_title">Preseos coneutaos</string>
+  <string name="wifi_ap_client_ap_disabled">Puntu d\'accesu deshabilitáu</string>
+  <string name="wifi_ap_client_none_connected">Nun hai preseos coneutaos</string>
 </resources>
