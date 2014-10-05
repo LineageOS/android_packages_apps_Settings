@@ -21,6 +21,8 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.NotificationGroup;
+import android.app.Profile;
 import android.app.ProfileManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -40,12 +42,17 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
+
+import java.util.HashMap;
 
 public class ProfilesSettings extends SettingsPreferenceFragment {
 
@@ -99,8 +106,8 @@ public class ProfilesSettings extends SettingsPreferenceFragment {
         mAdapter = new ProfilesPagerAdapter(getFragmentManager());
         mViewPager.setAdapter(mAdapter);
 
-//        PagerTabStrip tabs = (PagerTabStrip) view.findViewById(R.id.tabs);
-//        tabs.setTabIndicatorColorResource(android.R.color.holo_blue_light);
+        PagerTabStrip tabs = (PagerTabStrip) view.findViewById(R.id.tabs);
+        tabs.setTabIndicatorColorResource(android.R.color.holo_blue_light);
 
         mProfileManager = (ProfileManager) getActivity().getSystemService(PROFILE_SERVICE);
 
@@ -194,6 +201,8 @@ public class ProfilesSettings extends SettingsPreferenceFragment {
                 // determine dialog to launch
                 if (mViewPager.getCurrentItem() == 0) {
                     addProfile();
+                } else {
+                    addAppGroup();
                 }
                 return true;
 
@@ -203,48 +212,35 @@ public class ProfilesSettings extends SettingsPreferenceFragment {
     }
 
     private void addProfile() {
-        Intent intent = new Intent(getActivity(), ProfileActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        View content = inflater.inflate(R.layout.profile_name_dialog, null);
+        final TextView prompt = (TextView) content.findViewById(R.id.prompt);
+        final EditText entry = (EditText) content.findViewById(R.id.name);
 
-//        LayoutInflater inflater = getActivity().getLayoutInflater();
-//        View content = inflater.inflate(R.layout.profile_name_dialog, null);
-//        final TextView prompt = (TextView) content.findViewById(R.id.prompt);
-//        final EditText entry = (EditText) content.findViewById(R.id.name);
-//
-//        prompt.setText(R.string.profile_profile_name_prompt);
-//
-//        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-//        builder.setTitle(R.string.menu_new_profile);
-//        builder.setView(content);
-//
-//        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                String name = entry.getText().toString();
-//                if (!mProfileManager.profileExists(name)) {
-//                    Profile profile = new Profile(name);
-//                    mProfileManager.addProfile(profile);
-//
-//
-//                    PreferenceActivity pa = (PreferenceActivity) getActivity();
-//
-//                    Bundle args = new Bundle();
-//                    args.putParcelable("profile", profile);
-//
-//                    pa.startWithFragment("Triggers", args, SetupTriggersFragment.newInstance(profile));
-//
-//                    mAdapter.refreshProfiles();
-//                } else {
-//                    Toast.makeText(getActivity(),
-//                            R.string.duplicate_profile_name, Toast.LENGTH_LONG).show();
-//                }
-//            }
-//        });
-//        builder.setNegativeButton(android.R.string.cancel, null);
-//
-//        AlertDialog dialog = builder.create();
-//        dialog.show();
+        prompt.setText(R.string.profile_profile_name_prompt);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle(R.string.menu_new_profile);
+        builder.setView(content);
+
+        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String name = entry.getText().toString();
+                if (!mProfileManager.profileExists(name)) {
+                    Profile profile = new Profile(name);
+                    mProfileManager.addProfile(profile);
+                    mAdapter.refreshProfiles();
+                } else {
+                    Toast.makeText(getActivity(),
+                            R.string.duplicate_profile_name, Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        builder.setNegativeButton(android.R.string.cancel, null);
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void resetAll() {
@@ -256,10 +252,43 @@ public class ProfilesSettings extends SettingsPreferenceFragment {
             public void onClick(DialogInterface dialog, int id) {
                 mProfileManager.resetAll();
                 mAdapter.refreshProfiles();
+                mAdapter.refreshAppGroups();
             }
         });
         alert.setNegativeButton(R.string.cancel, null);
         alert.show();
+    }
+
+    private void addAppGroup() {
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        View content = inflater.inflate(R.layout.profile_name_dialog, null);
+        final TextView prompt = (TextView) content.findViewById(R.id.prompt);
+        final EditText entry = (EditText) content.findViewById(R.id.name);
+
+        prompt.setText(R.string.profile_appgroup_name_prompt);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle(R.string.profile_new_appgroup);
+        builder.setView(content);
+
+        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String name = entry.getText().toString();
+                if (!mProfileManager.notificationGroupExists(name)) {
+                    NotificationGroup newGroup = new NotificationGroup(name);
+                    mProfileManager.addNotificationGroup(newGroup);
+                    mAdapter.refreshAppGroups();
+                } else {
+                    Toast.makeText(getActivity(),
+                            R.string.duplicate_appgroup_name, Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        builder.setNegativeButton(android.R.string.cancel, null);
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void updateProfilesEnabledState() {
@@ -274,8 +303,9 @@ public class ProfilesSettings extends SettingsPreferenceFragment {
     }
 
     class ProfilesPagerAdapter extends FragmentStatePagerAdapter {
-        Fragment[] frags = { new ProfilesList() };
-        String[] titles = { getString(R.string.profile_profiles_manage) };
+        Fragment[] frags = { new ProfilesList(), new AppGroupList() };
+        String[] titles = { getString(R.string.profile_profiles_manage),
+                            getString(R.string.profile_appgroups_manage) };
 
         ProfilesPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -300,5 +330,8 @@ public class ProfilesSettings extends SettingsPreferenceFragment {
             ((ProfilesList) frags[0]).refreshList();
         }
 
+        public void refreshAppGroups() {
+            ((AppGroupList) frags[1]).refreshList();
+        }
     }
 }
