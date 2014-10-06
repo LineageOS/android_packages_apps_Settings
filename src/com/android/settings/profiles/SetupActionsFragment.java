@@ -15,11 +15,11 @@
  */
 package com.android.settings.profiles;
 
+import android.app.Activity;
 import android.app.AirplaneModeSettings;
 import android.app.AlertDialog;
 import android.app.ConnectionSettings;
 import android.app.Fragment;
-import android.app.ListFragment;
 import android.app.Profile;
 import android.app.ProfileManager;
 import android.app.RingModeSettings;
@@ -31,15 +31,21 @@ import android.media.AudioManager;
 import android.media.RingtoneManager;
 import android.net.wimax.WimaxHelper;
 import android.os.Bundle;
+import android.preference.PreferenceActivity;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.SeekBar;
 import android.widget.TextView;
 import com.android.settings.R;
+import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.profiles.actions.ItemListAdapter;
 import com.android.settings.profiles.actions.item.AirplaneModeItem;
 import com.android.settings.profiles.actions.item.ConnectionOverrideItem;
@@ -67,22 +73,34 @@ import static com.android.internal.util.cm.QSUtils.deviceSupportsBluetooth;
 import static com.android.internal.util.cm.QSUtils.deviceSupportsMobileData;
 import static com.android.internal.util.cm.QSUtils.deviceSupportsNfc;
 
-
-public class SetupActionsFragment extends ListFragment {
+public class SetupActionsFragment extends SettingsPreferenceFragment
+        implements AdapterView.OnItemClickListener {
 
     private static final int RINGTONE_REQUEST_CODE = 1000;
+
+    private static final int MENU_REMOVE = Menu.FIRST;
+    private static final int MENU_TRIGGERS = Menu.FIRST + 1;
 
     Profile mProfile;
     ItemListAdapter mAdapter;
     ProfileManager mProfileManager;
+    ListView mListView;
 
     boolean mNewProfileMode;
+
+    private static final int[] LOCKMODE_MAPPING = new int[] {
+        Profile.LockMode.DEFAULT, Profile.LockMode.INSECURE, Profile.LockMode.DISABLE
+    };
+    private static final int[] EXPANDED_DESKTOP_MAPPING = new int[] {
+        Profile.ExpandedDesktopMode.DEFAULT, Profile.ExpandedDesktopMode.DISABLE,
+        Profile.ExpandedDesktopMode.ENABLE
+    };
 
     public static SetupActionsFragment newInstance(Profile profile, boolean newProfile) {
         SetupActionsFragment fragment = new SetupActionsFragment();
         Bundle args = new Bundle();
-        args.putParcelable("profile", profile);
-        args.putBoolean(ProfileActivity.EXTRA_NEW_PROFILE, newProfile);
+        args.putParcelable(ProfilesSettings.EXTRA_PROFILE, profile);
+        args.putBoolean(ProfilesSettings.EXTRA_NEW_PROFILE, newProfile);
 
         fragment.setArguments(args);
         return fragment;
@@ -96,9 +114,10 @@ public class SetupActionsFragment extends ListFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mProfile = getArguments().getParcelable("profile");
-            mNewProfileMode = getArguments().getBoolean(ProfileActivity.EXTRA_NEW_PROFILE, true);
+            mProfile = getArguments().getParcelable(ProfilesSettings.EXTRA_PROFILE);
+            mNewProfileMode = getArguments().getBoolean(ProfilesSettings.EXTRA_NEW_PROFILE, false);
         }
+
         mProfileManager = (ProfileManager) getActivity().getSystemService(Context.PROFILE_SERVICE);
         List<Item> items = new ArrayList<Item>();
         // general prefs
@@ -118,7 +137,8 @@ public class SetupActionsFragment extends ListFragment {
             items.add(generateConnectionOverrideItem(PROFILE_CONNECTION_MOBILEDATA));
             items.add(generateConnectionOverrideItem(PROFILE_CONNECTION_WIFIAP));
 
-            final TelephonyManager tm = (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
+            final TelephonyManager tm =
+                    (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
             if (tm.getPhoneType() == TelephonyManager.PHONE_TYPE_GSM) {
                 items.add(generateConnectionOverrideItem(PROFILE_CONNECTION_2G3G));
             }
@@ -146,6 +166,50 @@ public class SetupActionsFragment extends ListFragment {
 
 
         mAdapter = new ItemListAdapter(getActivity(), items);
+
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        if (!mNewProfileMode) {
+            menu.add(0, MENU_REMOVE, 0, R.string.profile_menu_delete_title)
+                    .setIcon(R.drawable.ic_menu_trash_holo_dark)
+                    .setAlphabeticShortcut('d')
+                    .setEnabled(true)
+                    .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM |
+                            MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+
+            menu.add(0, MENU_TRIGGERS, 0, R.string.profile_menu_triggers_title)
+                    .setIcon(R.drawable.ic_location)
+                    .setAlphabeticShortcut('t')
+                    .setEnabled(true)
+                    .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM |
+                            MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case MENU_REMOVE:
+                mProfileManager.removeProfile(mProfile);
+                finishFragment();
+                return true;
+
+            case MENU_TRIGGERS:
+                Bundle args = new Bundle();
+                args.putParcelable(ProfilesSettings.EXTRA_PROFILE,  mProfile);
+                args.putBoolean(ProfilesSettings.EXTRA_NEW_PROFILE, false);
+
+                PreferenceActivity pa = (PreferenceActivity) getActivity();
+                pa.startPreferencePanel(SetupTriggersFragment.class.getCanonicalName(), args,
+                        R.string.profile_profile_manage, null, null, 0);
+
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private ConnectionOverrideItem generateConnectionOverrideItem(int connectionId) {
@@ -170,154 +234,90 @@ public class SetupActionsFragment extends ListFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        TextView desc = new TextView(getActivity());
-        int descPadding = getResources().getDimensionPixelSize(R.dimen.profile_instruction_padding);
-        desc.setPadding(descPadding, descPadding, descPadding, descPadding);
-        desc.setText(R.string.profile_setup_actions_description);
-        getListView().addHeaderView(desc, null, false);
+        if (mNewProfileMode) {
+            TextView desc = new TextView(getActivity());
+            int descPadding = getResources().getDimensionPixelSize(
+                    R.dimen.profile_instruction_padding);
+            desc.setPadding(descPadding, descPadding, descPadding, descPadding);
+            desc.setText(R.string.profile_setup_actions_description);
+            getListView().addHeaderView(desc, null, false);
+        }
+    }
+
+    private void updateProfile() {
+        mProfileManager.updateProfile(mProfile);
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        setListAdapter(mAdapter);
+        mListView.setAdapter(mAdapter);
         getActivity().getActionBar().setTitle(mNewProfileMode
                 ? R.string.profile_setup_actions_title
                 : R.string.profile_setup_actions_title_config);
     }
 
-    @Override
-    public void onListItemClick(ListView l, View v, int position, long id) {
-        super.onListItemClick(l, v, position, id);
-
-        final Item itemAtPosition = (Item) l.getItemAtPosition(position);
-        final int viewType = itemAtPosition.getViewType();
-        if (viewType == ItemListAdapter.RowType.AIRPLANEMODE_ITEM.ordinal()) {
-            requestAirplaneModeDialog(((AirplaneModeItem) (itemAtPosition)).getSettings());
-        } else if (viewType == ItemListAdapter.RowType.EXPANDEDDESKTOP_ITEM.ordinal()) {
-            requestExpandedDesktopDialog();
-        } else if (viewType == ItemListAdapter.RowType.LOCKSCREENMODE_ITEM.ordinal()) {
-            requestLockscreenModeDialog();
-        } else if (viewType == ItemListAdapter.RowType.RINGMODE_ITEM.ordinal()) {
-            requestRingModeDialog(((RingModeItem) (itemAtPosition)).getSettings());
-        } else if (viewType == ItemListAdapter.RowType.CONNECTION_ITEM.ordinal()) {
-            requestConnectionOverrideDialog(((ConnectionOverrideItem) (itemAtPosition)).getSettings());
-        } else if (viewType == ItemListAdapter.RowType.VOLUME_STREAM_ITEM.ordinal()) {
-            ((VolumeStreamItem) (itemAtPosition)).requestVolumeDialog(getActivity(), new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    mAdapter.notifyDataSetChanged();
-                }
-            });
-        } else if (viewType == ItemListAdapter.RowType.NAME_ITEM.ordinal()) {
-            requestProfileName();
-        }
-    }
-
     private void requestLockscreenModeDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        final String[] lockValues = getResources().getStringArray(R.array.profile_action_generic_connection_values);
-        final String[] lockEntries = getResources().getStringArray(R.array.profile_lockmode_entries);
+        final String[] lockEntries =
+                getResources().getStringArray(R.array.profile_lockmode_entries);
 
         int defaultIndex = 0; // no action
-        switch (mProfile.getScreenLockMode()) {
-            case Profile.LockMode.DEFAULT:
-                defaultIndex = 0;
+        for (int i = 0; i < LOCKMODE_MAPPING.length; i++) {
+            if (LOCKMODE_MAPPING[i] == mProfile.getScreenLockMode()) {
+                defaultIndex = i;
                 break;
-            case Profile.LockMode.INSECURE:
-                defaultIndex = 1;
-                break;
-            case Profile.LockMode.DISABLE:
-                defaultIndex = 2;
-                break;
+            }
         }
 
         builder.setTitle(R.string.profile_lockmode_title);
-        builder.setSingleChoiceItems(lockEntries,
-                defaultIndex,
+        builder.setSingleChoiceItems(lockEntries, defaultIndex,
                 new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int item) {
-                        int newMode = Profile.LockMode.DEFAULT;
-                        switch (item) {
-                            case 0:
-                                break;
-                            case 1:
-                                newMode = Profile.LockMode.INSECURE;
-                                break;
-                            case 2:
-                                newMode = Profile.LockMode.DISABLE;
-                                break;
-                        }
-                        mProfile.setScreenLockMode(newMode);
-                        mAdapter.notifyDataSetChanged();
-                        dialog.dismiss();
-                    }
-                });
-
-        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int item) {
+                mProfile.setScreenLockMode(LOCKMODE_MAPPING[item]);
+                updateProfile();
+                mAdapter.notifyDataSetChanged();
                 dialog.dismiss();
             }
         });
-        builder.create().show();
+
+        builder.setNegativeButton(android.R.string.cancel, null);
+        builder.show();
     }
 
     private void requestExpandedDesktopDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        final String[] ConnectionValues = getResources().getStringArray(R.array.profile_expanded_desktop_values);
-        final String[] connectionNames = getResources().getStringArray(R.array.profile_expanded_desktop_entries);
+        final String[] expDesktopNames =
+                getResources().getStringArray(R.array.profile_expanded_desktop_entries);
 
         int defaultIndex = 0; // no action
-        switch (mProfile.getExpandedDesktopMode()) {
-            case Profile.ExpandedDesktopMode.DEFAULT:
-                defaultIndex = 0;
+        for (int i = 0; i < EXPANDED_DESKTOP_MAPPING.length; i++) {
+            if (EXPANDED_DESKTOP_MAPPING[i] == mProfile.getExpandedDesktopMode()) {
+                defaultIndex = i;
                 break;
-            case Profile.ExpandedDesktopMode.DISABLE:
-                defaultIndex = 2;
-                break;
-            case Profile.ExpandedDesktopMode.ENABLE:
-                defaultIndex = 1;
-                break;
+            }
         }
 
         builder.setTitle(R.string.power_menu_expanded_desktop);
-        builder.setSingleChoiceItems(connectionNames,
-                defaultIndex,
+        builder.setSingleChoiceItems(expDesktopNames, defaultIndex,
                 new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int item) {
-                        int newMode = Profile.ExpandedDesktopMode.DEFAULT;
-                        switch (item) {
-                            case 0:
-                                break;
-                            case 1:
-                                newMode = Profile.ExpandedDesktopMode.ENABLE;
-                                break;
-                            case 2:
-                                newMode = Profile.ExpandedDesktopMode.DISABLE;
-                                break;
-                        }
-                        mProfile.setExpandedDesktopMode(newMode);
-                        mAdapter.notifyDataSetChanged();
-                        dialog.dismiss();
-                    }
-                });
-
-        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int item) {
+                mProfile.setExpandedDesktopMode(EXPANDED_DESKTOP_MAPPING[item]);
+                mAdapter.notifyDataSetChanged();
                 dialog.dismiss();
             }
         });
-        builder.create().show();
+
+        builder.setNegativeButton(android.R.string.cancel, null);
+        builder.show();
     }
 
     private void requestAirplaneModeDialog(final AirplaneModeSettings setting) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        final String[] ConnectionValues = getResources().getStringArray(R.array.profile_action_generic_connection_values);
-        final String[] connectionNames = getResources().getStringArray(R.array.profile_action_generic_connection_entries);
+        final String[] connectionNames =
+                getResources().getStringArray(R.array.profile_action_generic_connection_entries);
 
         int defaultIndex = 0; // no action
         if (setting.isOverride()) {
@@ -329,92 +329,58 @@ public class SetupActionsFragment extends ListFragment {
         }
 
         builder.setTitle(R.string.profile_airplanemode_title);
-        builder.setSingleChoiceItems(connectionNames,
-                defaultIndex,
+        builder.setSingleChoiceItems(connectionNames, defaultIndex,
                 new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int item) {
-                        switch (item) {
-                            case 0: // disable override
-                                setting.setOverride(false);
-                                break;
-                            case 1: // enable override, disable
-                                setting.setOverride(true);
-                                setting.setValue(0);
-                                break;
-                            case 2: // enable override, enable
-                                setting.setOverride(true);
-                                setting.setValue(1);
-                                break;
-                        }
-                        mProfile.setAirplaneMode(setting);
-                        mAdapter.notifyDataSetChanged();
-                        dialog.dismiss();
-                    }
-                });
-
-        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int item) {
+                switch (item) {
+                    case 0: // disable override
+                        setting.setOverride(false);
+                        break;
+                    case 1: // enable override, disable
+                        setting.setOverride(true);
+                        setting.setValue(0);
+                        break;
+                    case 2: // enable override, enable
+                        setting.setOverride(true);
+                        setting.setValue(1);
+                        break;
+                }
+                mProfile.setAirplaneMode(setting);
+                mAdapter.notifyDataSetChanged();
+                updateProfile();
                 dialog.dismiss();
             }
         });
-        builder.create().show();
+
+        builder.setNegativeButton(android.R.string.cancel, null);
+        builder.show();
     }
 
     private void requestProfileRingMode() {
         // Launch the ringtone picker
         Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
-//        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI,
-//                onRestoreRingtone());
-
-        boolean showDefault = false;
-        boolean showSilent = true;
-        int ringToneType = RingtoneManager.TYPE_RINGTONE;
-        int subscriptionId = 0;
-        int dialogStyle = 0;
-        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_DEFAULT, showDefault);
-        if (showDefault) {
-            if (ringToneType == RingtoneManager.TYPE_RINGTONE) {
-                intent.putExtra(RingtoneManager.EXTRA_RINGTONE_DEFAULT_URI,
-                        RingtoneManager.getDefaultRingtoneUriBySubId(subscriptionId));
-            } else {
-                intent.putExtra(RingtoneManager.EXTRA_RINGTONE_DEFAULT_URI,
-                        RingtoneManager.getDefaultUri(ringToneType));
-            }
-        }
-        if (dialogStyle != 0) {
-            intent.putExtra(RingtoneManager.EXTRA_RINGTONE_DIALOG_THEME,
-                    dialogStyle);
-        }
-
-        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_SILENT, showSilent);
-        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, ringToneType);
-//        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, getTitle());
-        Fragment owningFragment = this;
-        if (owningFragment != null) {
-            owningFragment.startActivityForResult(intent, RINGTONE_REQUEST_CODE);
-        } else {
-            getActivity().startActivityForResult(intent, RINGTONE_REQUEST_CODE);
-        }
+        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_DEFAULT, false);
+        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_SILENT, true);
+        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_RINGTONE);
+        startActivityForResult(intent, RINGTONE_REQUEST_CODE);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
     }
 
     private void requestRingModeDialog(final RingModeSettings setting) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        final String[] ConnectionValues = getResources().getStringArray(R.array.ring_mode_values);
-        final String[] connectionNames = getResources().getStringArray(R.array.ring_mode_entries);
+        final String[] values = getResources().getStringArray(R.array.ring_mode_values);
+        final String[] names = getResources().getStringArray(R.array.ring_mode_entries);
 
         int defaultIndex = 0; // normal by default
         if (setting.isOverride()) {
-            if (setting.getValue().equals(ConnectionValues[1] /* vibrate */)) {
+            if (setting.getValue().equals(values[1] /* vibrate */)) {
                 defaultIndex = 1; // enabled
-            } else if (setting.getValue().equals(ConnectionValues[2] /* mute */)) {
+            } else if (setting.getValue().equals(values[2] /* mute */)) {
                 defaultIndex = 2; // mute
             } else {
                 defaultIndex = 1; // disabled
@@ -422,46 +388,41 @@ public class SetupActionsFragment extends ListFragment {
         }
 
         builder.setTitle(R.string.ring_mode_title);
-        builder.setSingleChoiceItems(connectionNames,
-                defaultIndex,
+        builder.setSingleChoiceItems(names, defaultIndex,
                 new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int item) {
-                        switch (item) {
-                            case 0: // disable override
-                                setting.setOverride(false);
-                                break;
-                            case 1: // enable override, disable
-                                setting.setOverride(true);
-                                setting.setValue(ConnectionValues[1]);
-                                break;
-                            case 2: // enable override, enable
-                                setting.setOverride(true);
-                                setting.setValue(ConnectionValues[2]);
-                                break;
-                        }
-                        mProfile.setRingMode(setting);
-                        mAdapter.notifyDataSetChanged();
-                        dialog.dismiss();
-                    }
-                });
-
-        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int item) {
+                switch (item) {
+                    case 0: // disable override
+                        setting.setOverride(false);
+                        break;
+                    case 1: // enable override, disable
+                        setting.setOverride(true);
+                        setting.setValue(values[1]);
+                        break;
+                    case 2: // enable override, enable
+                        setting.setOverride(true);
+                        setting.setValue(values[2]);
+                        break;
+                }
+                mProfile.setRingMode(setting);
+                mAdapter.notifyDataSetChanged();
+                updateProfile();
                 dialog.dismiss();
             }
         });
-        builder.create().show();
+
+        builder.setNegativeButton(android.R.string.cancel, null);
+        builder.show();
     }
 
     private void requestConnectionOverrideDialog(final ConnectionSettings setting) {
         if (setting == null) {
-            throw new UnsupportedOperationException("connection setting  cannot be null yo");
+            throw new UnsupportedOperationException("connection setting cannot be null yo");
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        final String[] ConnectionValues = getResources().getStringArray(R.array.profile_action_generic_connection_values);
-        final String[] connectionNames = getResources().getStringArray(R.array.profile_action_generic_connection_entries);
+        final String[] connectionNames =
+                getResources().getStringArray(R.array.profile_action_generic_connection_entries);
 
         int defaultIndex = 0; // no action
         if (setting.isOverride()) {
@@ -473,86 +434,116 @@ public class SetupActionsFragment extends ListFragment {
         }
 
         builder.setTitle(ConnectionOverrideItem.getConnectionTitle(setting.getConnectionId()));
-        builder.setSingleChoiceItems(connectionNames,
-                defaultIndex,
+        builder.setSingleChoiceItems(connectionNames, defaultIndex,
                 new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int item) {
-                        switch (item) {
-                            case 0: // disable override
-                                setting.setOverride(false);
-                                break;
-                            case 1: // enable override, disable
-                                setting.setOverride(true);
-                                setting.setValue(0);
-                                break;
-                            case 2: // enable override, enable
-                                setting.setOverride(true);
-                                setting.setValue(1);
-                                break;
-                        }
-                        mProfile.setConnectionSettings(setting);
-                        mAdapter.notifyDataSetChanged();
-                        dialog.dismiss();
-                    }
-                });
-
-        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int item) {
+                switch (item) {
+                    case 0: // disable override
+                        setting.setOverride(false);
+                        break;
+                    case 1: // enable override, disable
+                        setting.setOverride(true);
+                        setting.setValue(0);
+                        break;
+                    case 2: // enable override, enable
+                        setting.setOverride(true);
+                        setting.setValue(1);
+                        break;
+                }
+                mProfile.setConnectionSettings(setting);
+                mAdapter.notifyDataSetChanged();
+                updateProfile();
                 dialog.dismiss();
             }
         });
-        builder.create().show();
+
+        builder.setNegativeButton(android.R.string.cancel, null);
+        builder.show();
     }
 
     private void requestProfileName() {
-        Context context = getActivity();
-        if (context != null) {
-            final EditText entry = new EditText(context);
-            entry.setSingleLine();
-            entry.setText(mProfile.getName());
+        LayoutInflater inflater = LayoutInflater.from(getActivity());
+        View dialogView = inflater.inflate(R.layout.profile_name_dialog, null);
 
-            AlertDialog.Builder builder = new AlertDialog.Builder(context);
-            builder.setTitle(R.string.rename_dialog_title);
-            builder.setMessage(R.string.rename_dialog_message);
-            builder.setView(entry, 34, 16, 34, 16);
-            builder.setPositiveButton(android.R.string.ok,
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            String value = entry.getText().toString();
-                            mProfile.setName(value);
-                            mAdapter.notifyDataSetChanged();
-                        }
-                    });
-            builder.setNegativeButton(android.R.string.cancel, null);
-            AlertDialog dialog = builder.create();
-            dialog.show();
-            ((TextView) dialog.findViewById(android.R.id.message)).setTextAppearance(context,
-                    android.R.style.TextAppearance_DeviceDefault_Small);
-        }
+        final EditText entry = (EditText) dialogView.findViewById(R.id.name);
+        entry.setText(mProfile.getName());
+
+        new AlertDialog.Builder(getActivity())
+                .setTitle(R.string.rename_dialog_title)
+                .setView(dialogView)
+                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String value = entry.getText().toString();
+                        mProfile.setName(value);
+                        mAdapter.notifyDataSetChanged();
+                        updateProfile();
+                    }
+                })
+                .setNegativeButton(android.R.string.cancel, null)
+                .show();
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_setup_actions, container, false);
 
-        view.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getFragmentManager().popBackStack();
-            }
-        });
+        mListView = (ListView) view.findViewById(android.R.id.list);
+        mListView.setOnItemClickListener(this);
+        if (mNewProfileMode) {
+            view.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getActivity().setResult(Activity.RESULT_CANCELED);
+                    finishFragment();
+                }
+            });
 
-        view.findViewById(R.id.finish).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mProfileManager.addProfile(mProfile);
-                getActivity().finish();
-            }
-        });
+            view.findViewById(R.id.finish).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mProfileManager.addProfile(mProfile);
 
+                    getActivity().setResult(Activity.RESULT_OK);
+                    finishFragment();
+                }
+            });
+        } else {
+            view.findViewById(R.id.bottom_buttons).setVisibility(View.GONE);
+        }
         return view;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        final Item itemAtPosition = (Item) parent.getItemAtPosition(position);
+
+        if (itemAtPosition instanceof AirplaneModeItem) {
+            AirplaneModeItem item = (AirplaneModeItem) itemAtPosition;
+            requestAirplaneModeDialog(item.getSettings());
+        } else if (itemAtPosition instanceof ExpandedDesktopItem) {
+            requestExpandedDesktopDialog();
+        } else if (itemAtPosition instanceof LockModeItem) {
+            requestLockscreenModeDialog();
+        } else if (itemAtPosition instanceof RingModeItem) {
+            RingModeItem item = (RingModeItem) itemAtPosition;
+            requestRingModeDialog(item.getSettings());
+        } else if (itemAtPosition instanceof ConnectionOverrideItem) {
+            ConnectionOverrideItem item = (ConnectionOverrideItem) itemAtPosition;
+            requestConnectionOverrideDialog(item.getSettings());
+        } else if (itemAtPosition instanceof VolumeStreamItem) {
+            VolumeStreamItem item = (VolumeStreamItem) itemAtPosition;
+            item.requestVolumeDialog(getActivity(), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    mAdapter.notifyDataSetChanged();
+                    updateProfile();
+                }
+            });
+        } else if (itemAtPosition instanceof ProfileNameItem) {
+            requestProfileName();
+        }
     }
 }

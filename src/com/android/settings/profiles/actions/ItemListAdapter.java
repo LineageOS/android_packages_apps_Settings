@@ -51,12 +51,12 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
 
     @Override
     public int getItemViewType(int position) {
-        return getItem(position).getViewType();
+        return getItem(position).getRowType().ordinal();
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return getItem(position).getView(mInflater, convertView);
+        return getItem(position).getView(mInflater, convertView, parent);
     }
 
     @Override
