@@ -34,6 +34,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.android.settings.R;
+import com.android.settings.profiles.ProfilesSettings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +56,7 @@ public class BluetoothTriggerFragment extends ListFragment {
         BluetoothTriggerFragment fragment = new BluetoothTriggerFragment();
 
         Bundle extras = new Bundle();
-        extras.putParcelable("profile", profile);
+        extras.putParcelable(ProfilesSettings.EXTRA_PROFILE, profile);
 
         fragment.setArguments(extras);
         return fragment;
@@ -70,7 +71,7 @@ public class BluetoothTriggerFragment extends ListFragment {
         super.onCreate(savedInstanceState);
         mProfileManager = (ProfileManager) getActivity().getSystemService(Context.PROFILE_SERVICE);
         if (getArguments() != null) {
-            mProfile = getArguments().getParcelable("profile");
+            mProfile = getArguments().getParcelable(ProfilesSettings.EXTRA_PROFILE);
         }
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
     }
