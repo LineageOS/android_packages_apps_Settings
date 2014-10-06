@@ -34,17 +34,15 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.android.settings.R;
+import com.android.settings.profiles.ProfilesSettings;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class WifiTriggerFragment extends ListFragment {
-
     WifiManager mWifiManager;
     Profile mProfile;
     private ProfileManager mProfileManager;
-
 
     private List<WifiTrigger> mTriggers = new ArrayList<WifiTrigger>();
     private WifiTriggerAdapter mListAdapter;
@@ -53,7 +51,7 @@ public class WifiTriggerFragment extends ListFragment {
         WifiTriggerFragment fragment = new WifiTriggerFragment();
 
         Bundle extras = new Bundle();
-        extras.putParcelable("profile", profile);
+        extras.putParcelable(ProfilesSettings.EXTRA_PROFILE, profile);
 
         fragment.setArguments(extras);
         return fragment;
@@ -67,7 +65,7 @@ public class WifiTriggerFragment extends ListFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mProfile = getArguments().getParcelable("profile");
+            mProfile = getArguments().getParcelable(ProfilesSettings.EXTRA_PROFILE);
         } else {
             throw new UnsupportedOperationException("no profile!");
         }
@@ -102,7 +100,9 @@ public class WifiTriggerFragment extends ListFragment {
         final int triggerType;
 
         String[] entries = getResources().getStringArray(R.array.profile_trigger_wifi_options);
-        String[] values = getResources().getStringArray(R.array.profile_trigger_wifi_options_values);
+        String[] values =
+                getResources().getStringArray(R.array.profile_trigger_wifi_options_values);
+
         List<Trigger> triggers = new ArrayList<Trigger>(entries.length);
         for (int i = 0; i < entries.length; i++) {
             Trigger toAdd = new Trigger();
@@ -133,18 +133,15 @@ public class WifiTriggerFragment extends ListFragment {
 
         new AlertDialog.Builder(getActivity())
                 .setTitle(R.string.profile_trigger_configure)
-                .setSingleChoiceItems(entries,
-                        currentItem,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                mProfile.setTrigger(triggerType, triggerId, valueInts[which], triggerName);
-                                mProfileManager.updateProfile(mProfile);
-                                reloadTriggerListItems();
-                                dialog.dismiss();
-                            }
-                        })
-                .create()
+                .setSingleChoiceItems(entries, currentItem, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        mProfile.setTrigger(triggerType, triggerId, valueInts[which], triggerName);
+                        mProfileManager.updateProfile(mProfile);
+                        reloadTriggerListItems();
+                        dialog.dismiss();
+                    }
+                })
                 .show();
     }
 
@@ -179,11 +176,12 @@ public class WifiTriggerFragment extends ListFragment {
                 mTriggers.add(accessPoint);
             }
         } else {
-            final List<Profile.ProfileTrigger> triggers = mProfile.getTriggersFromType(Profile.TriggerType.WIFI);
+            final List<Profile.ProfileTrigger> triggers =
+                    mProfile.getTriggersFromType(Profile.TriggerType.WIFI);
             for (Profile.ProfileTrigger trigger : triggers) {
-                WifiTrigger accessPoint =
-                        new WifiTrigger(trigger.getName());
-                initPreference(accessPoint, trigger.getState(), res, R.drawable.ic_wifi_signal_4_dark);
+                WifiTrigger accessPoint = new WifiTrigger(trigger.getName());
+                initPreference(accessPoint, trigger.getState(), res,
+                        R.drawable.ic_wifi_signal_4_dark);
                 mTriggers.add(accessPoint);
             }
         }
@@ -198,15 +196,13 @@ public class WifiTriggerFragment extends ListFragment {
     }
 
     private class WifiTriggerAdapter extends ArrayAdapter<WifiTrigger> {
-
         public WifiTriggerAdapter(Context context) {
             super(context, R.layout.abstract_trigger_row, R.id.title, mTriggers);
         }
 
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
-            LayoutInflater inflater = (LayoutInflater) getContext()
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = LayoutInflater.from(getContext());
             View rowView = inflater.inflate(R.layout.abstract_trigger_row, viewGroup, false);
             TextView title = (TextView) rowView.findViewById(R.id.title);
             TextView desc = (TextView) rowView.findViewById(R.id.desc);
@@ -227,7 +223,7 @@ public class WifiTriggerFragment extends ListFragment {
         public WifiConfiguration mConfig;
 
         public WifiTrigger(WifiConfiguration config) {
-            this.mConfig = config;
+            mConfig = config;
             loadConfig(config);
         }
 

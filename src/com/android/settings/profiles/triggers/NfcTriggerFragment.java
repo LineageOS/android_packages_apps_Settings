@@ -18,33 +18,36 @@ package com.android.settings.profiles.triggers;
 import android.app.Fragment;
 import android.app.PendingIntent;
 import android.app.Profile;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 import com.android.settings.R;
+import com.android.settings.Settings;
+import com.android.settings.profiles.NFCProfileTagCallback;
 import com.android.settings.profiles.NFCProfileUtils;
-import com.android.settings.profiles.ProfileActivity;
+import com.android.settings.profiles.ProfilesSettings;
 
 
-public class NfcTriggerFragment extends Fragment {
-
+public class NfcTriggerFragment extends Fragment implements NFCProfileTagCallback {
     Profile mProfile;
 
     private NfcAdapter mNfcAdapter;
     private IntentFilter[] mWriteTagFilters;
 
-
     public static NfcTriggerFragment newInstance(Profile profile) {
         NfcTriggerFragment fragment = new NfcTriggerFragment();
 
         Bundle extras = new Bundle();
-        extras.putParcelable("profile", profile);
+        extras.putParcelable(ProfilesSettings.EXTRA_PROFILE, profile);
 
         fragment.setArguments(extras);
         return fragment;
@@ -59,8 +62,15 @@ public class NfcTriggerFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mNfcAdapter = NfcAdapter.getDefaultAdapter(getActivity());
         if (getArguments() != null) {
-            mProfile = getArguments().getParcelable("profile");
+            mProfile = getArguments().getParcelable(ProfilesSettings.EXTRA_PROFILE);
         }
+        ((Settings) getActivity()).setNfcProfileCallback(this);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ((Settings) getActivity()).setNfcProfileCallback(null);
     }
 
     @Override
@@ -68,7 +78,6 @@ public class NfcTriggerFragment extends Fragment {
         super.onResume();
         if (mProfile != null) {
             enableTagWriteMode();
-
         }
     }
 
@@ -79,9 +88,9 @@ public class NfcTriggerFragment extends Fragment {
     }
 
     private PendingIntent getPendingIntent() {
-        return PendingIntent.getActivity(getActivity(), 0,
-                new Intent(getActivity(), ProfileActivity.class)
-                        .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
+        Intent intent = new Intent(getActivity(), getActivity().getClass())
+                .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        return PendingIntent.getActivity(getActivity(), 0, intent, 0);
     }
 
     private void disableTagWriteMode() {
@@ -91,32 +100,24 @@ public class NfcTriggerFragment extends Fragment {
     private void enableTagWriteMode() {
         IntentFilter tagDetected = new IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED);
         mWriteTagFilters = new IntentFilter[] {
-                tagDetected
+            tagDetected
         };
         mNfcAdapter.enableForegroundDispatch(getActivity(), getPendingIntent(), mWriteTagFilters, null);
     }
 
-    public void onNfcIntent(Intent intent) {
-        if (mProfile == null) {
-            Toast.makeText(getActivity(), "no associated profile!!", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (NfcAdapter.ACTION_TAG_DISCOVERED.equals(intent.getAction())) {
-            Tag detectedTag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
-            if (NFCProfileUtils.writeTag(NFCProfileUtils.getProfileAsNdef(mProfile), detectedTag)) {
-                Toast.makeText(getActivity(), R.string.profile_write_success, Toast.LENGTH_LONG).show();
-                NFCProfileUtils.vibrate(getActivity());
-
-            } else {
-                Toast.makeText(getActivity(), R.string.profile_write_failed, Toast.LENGTH_LONG).show();
-            }
+    @Override
+    public void onTagRead(Tag tag) {
+        if (NFCProfileUtils.writeTag(NFCProfileUtils.getProfileAsNdef(mProfile), tag)) {
+            Toast.makeText(getActivity(), R.string.profile_write_success, Toast.LENGTH_LONG).show();
+            NFCProfileUtils.vibrate(getActivity());
+        } else {
+            Toast.makeText(getActivity(), R.string.profile_write_failed, Toast.LENGTH_LONG).show();
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.nfc_writer, container, false);
-        return root;
+            Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.nfc_writer, container, false);
     }
 }

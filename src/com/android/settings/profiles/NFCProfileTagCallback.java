@@ -13,16 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.android.settings.profiles.actions.item;
+package com.android.settings.profiles;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.nfc.Tag;
 
-import com.android.settings.profiles.actions.ItemListAdapter;
-
-public interface Item {
-    public ItemListAdapter.RowType getRowType();
-    public View getView(LayoutInflater inflater, View convertView, ViewGroup parent);
-    public boolean isEnabled();
+public interface NFCProfileTagCallback {
+    public void onTagRead(Tag tag);
 }

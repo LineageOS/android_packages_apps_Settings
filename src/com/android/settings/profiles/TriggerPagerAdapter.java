@@ -19,7 +19,6 @@ package com.android.settings.profiles;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.Profile;
 import android.os.Bundle;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.util.SparseArray;
@@ -33,7 +32,6 @@ import com.google.android.collect.Lists;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * A {@link android.support.v4.app.FragmentPagerAdapter} class for swiping
@@ -41,7 +39,8 @@ import java.util.Locale;
  */
 public class TriggerPagerAdapter extends FragmentPagerAdapter {
 
-    private final SparseArray<WeakReference<Fragment>> mFragmentArray = new SparseArray<WeakReference<Fragment>>();
+    private final SparseArray<WeakReference<Fragment>> mFragmentArray =
+            new SparseArray<WeakReference<Fragment>>();
 
     private final List<Holder> mHolderList = Lists.newArrayList();
 
@@ -69,10 +68,12 @@ public class TriggerPagerAdapter extends FragmentPagerAdapter {
      * @param params The instantiate params.
      */
     @SuppressWarnings("synthetic-access")
-    public void add(final Class<? extends Fragment> className, final Bundle params) {
+    public void add(final Class<? extends Fragment> className, final Bundle params,
+                    final int titleResId) {
         final Holder mHolder = new Holder();
         mHolder.mClassName = className.getName();
         mHolder.mParams = params;
+        mHolder.mTitleResId = titleResId;
 
         final int mPosition = mHolderList.size();
         mHolderList.add(mPosition, mHolder);
@@ -144,8 +145,7 @@ public class TriggerPagerAdapter extends FragmentPagerAdapter {
      */
     @Override
     public CharSequence getPageTitle(final int position) {
-        return mFragmentActivity.getResources().getStringArray(R.array.trigger_page_title)[position]
-                .toUpperCase(Locale.getDefault());
+        return mFragmentActivity.getString(mHolderList.get(position).mTitleResId);
     }
 
     /**
@@ -173,25 +173,27 @@ public class TriggerPagerAdapter extends FragmentPagerAdapter {
         /**
          * The wifi trigger fragment
          */
-        WIFI(WifiTriggerFragment.class),
+        WIFI(WifiTriggerFragment.class, R.string.profile_tabs_wifi),
         /**
          * The bluetooth trigger fragment
          */
-        BLUETOOTH(BluetoothTriggerFragment.class),
+        BLUETOOTH(BluetoothTriggerFragment.class, R.string.profile_tabs_bluetooth),
         /**
          * The nfc trigger fragment
          */
-        NFC(NfcTriggerFragment.class);
+        NFC(NfcTriggerFragment.class, R.string.profile_tabs_nfc);
 
         private Class<? extends Fragment> mFragmentClass;
+        private int mNameRes;
 
         /**
          * Constructor of <code>TriggerFragments</code>
          *
          * @param fragmentClass The fragment class
          */
-        private TriggerFragments(final Class<? extends Fragment> fragmentClass) {
+        private TriggerFragments(final Class<? extends Fragment> fragmentClass, int nameRes) {
             mFragmentClass = fragmentClass;
+            mNameRes = nameRes;
         }
 
         /**
@@ -203,6 +205,7 @@ public class TriggerPagerAdapter extends FragmentPagerAdapter {
             return mFragmentClass;
         }
 
+        public int getTitleRes() { return mNameRes; }
     }
 
     /**
@@ -210,7 +213,7 @@ public class TriggerPagerAdapter extends FragmentPagerAdapter {
      */
     private final static class Holder {
         String mClassName;
-
+        int mTitleResId;
         Bundle mParams;
     }
 }

@@ -34,6 +34,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.android.settings.R;
+import com.android.settings.profiles.ProfilesSettings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,12 +51,11 @@ public class BluetoothTriggerFragment extends ListFragment {
     private List<BluetoothTrigger> mTriggers = new ArrayList<BluetoothTrigger>();
     private BluetoothTriggerAdapter mListAdapter;
 
-
     public static BluetoothTriggerFragment newInstance(Profile profile) {
         BluetoothTriggerFragment fragment = new BluetoothTriggerFragment();
 
         Bundle extras = new Bundle();
-        extras.putParcelable("profile", profile);
+        extras.putParcelable(ProfilesSettings.EXTRA_PROFILE, profile);
 
         fragment.setArguments(extras);
         return fragment;
@@ -70,7 +70,7 @@ public class BluetoothTriggerFragment extends ListFragment {
         super.onCreate(savedInstanceState);
         mProfileManager = (ProfileManager) getActivity().getSystemService(Context.PROFILE_SERVICE);
         if (getArguments() != null) {
-            mProfile = getArguments().getParcelable("profile");
+            mProfile = getArguments().getParcelable(ProfilesSettings.EXTRA_PROFILE);
         }
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
     }
@@ -102,7 +102,9 @@ public class BluetoothTriggerFragment extends ListFragment {
         final int triggerType;
 
         String[] entries = getResources().getStringArray(R.array.profile_trigger_wifi_options);
-        String[] values = getResources().getStringArray(R.array.profile_trigger_wifi_options_values);
+        String[] values =
+                getResources().getStringArray(R.array.profile_trigger_wifi_options_values);
+
         List<Trigger> triggers = new ArrayList<Trigger>(entries.length);
         for (int i = 0; i < entries.length; i++) {
             Trigger toAdd = new Trigger();
@@ -136,18 +138,15 @@ public class BluetoothTriggerFragment extends ListFragment {
 
         new AlertDialog.Builder(getActivity())
                 .setTitle(R.string.profile_trigger_configure)
-                .setSingleChoiceItems(entries,
-                        currentItem,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                mProfile.setTrigger(triggerType, triggerId, valueInts[which], triggerName);
-                                mProfileManager.updateProfile(mProfile);
-                                reloadTriggerListItems();
-                                dialog.dismiss();
-                            }
-                        })
-                .create()
+                .setSingleChoiceItems(entries, currentItem, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        mProfile.setTrigger(triggerType, triggerId, valueInts[which], triggerName);
+                        mProfileManager.updateProfile(mProfile);
+                        reloadTriggerListItems();
+                        dialog.dismiss();
+                    }
+                })
                 .show();
     }
 
@@ -183,15 +182,14 @@ public class BluetoothTriggerFragment extends ListFragment {
                 mTriggers.add(bt);
             }
         } else {
-            final List<Profile.ProfileTrigger> triggers = mProfile.getTriggersFromType(Profile.TriggerType.BLUETOOTH);
+            final List<Profile.ProfileTrigger> triggers =
+                    mProfile.getTriggersFromType(Profile.TriggerType.BLUETOOTH);
             for (Profile.ProfileTrigger trigger : triggers) {
                 BluetoothTrigger bt = new BluetoothTrigger(trigger.getName(), trigger.getId());
                 initPreference(bt, trigger.getState(), res, R.drawable.ic_settings_bluetooth2);
                 mTriggers.add(bt);
             }
         }
-
-
 
         if (mListAdapter != null) {
             mListAdapter.notifyDataSetChanged();
@@ -204,15 +202,13 @@ public class BluetoothTriggerFragment extends ListFragment {
     }
 
     private class BluetoothTriggerAdapter extends ArrayAdapter<BluetoothTrigger> {
-
         public BluetoothTriggerAdapter(Context context) {
             super(context, R.layout.abstract_trigger_row, R.id.title, mTriggers);
         }
 
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
-            LayoutInflater inflater = (LayoutInflater) getContext()
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = LayoutInflater.from(getContext());
             View rowView = inflater.inflate(R.layout.abstract_trigger_row, viewGroup, false);
             TextView title = (TextView) rowView.findViewById(R.id.title);
             TextView desc = (TextView) rowView.findViewById(R.id.desc);
@@ -229,7 +225,6 @@ public class BluetoothTriggerFragment extends ListFragment {
     }
 
     public static class BluetoothTrigger extends AbstractTriggerItem {
-
         private String mAddress;
 
         public BluetoothTrigger(BluetoothDevice device) {
