@@ -36,8 +36,8 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * A {@link android.support.v4.app.FragmentPagerAdapter} class for swiping between playlists, recent,
- * artists, albums, songs, and genre {@link android.support.v4.app.Fragment}s on phones.<br/>
+ * A {@link android.support.v4.app.FragmentPagerAdapter} class for swiping
+ * between trigger fragments<br/>
  */
 public class TriggerPagerAdapter extends FragmentPagerAdapter {
 
@@ -171,22 +171,22 @@ public class TriggerPagerAdapter extends FragmentPagerAdapter {
      */
     public enum TriggerFragments {
         /**
-         * The artist fragment
+         * The wifi trigger fragment
          */
         WIFI(WifiTriggerFragment.class),
         /**
-         * The album fragment
+         * The bluetooth trigger fragment
          */
         BLUETOOTH(BluetoothTriggerFragment.class),
         /**
-         * The song fragment
+         * The nfc trigger fragment
          */
         NFC(NfcTriggerFragment.class);
 
         private Class<? extends Fragment> mFragmentClass;
 
         /**
-         * Constructor of <code>MusicFragments</code>
+         * Constructor of <code>TriggerFragments</code>
          *
          * @param fragmentClass The fragment class
          */
