@@ -117,12 +117,6 @@ public class NfcTriggerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.nfc_writer, container, false);
-
-
-
         return root;
-
     }
-
-
 }

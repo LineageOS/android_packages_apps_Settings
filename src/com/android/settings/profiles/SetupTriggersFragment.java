@@ -20,6 +20,7 @@ import android.app.Profile;
 import android.app.ProfileManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.support.v4.view.PagerTabStrip;
@@ -81,12 +82,19 @@ public class SetupTriggersFragment extends Fragment {
 
         ViewPager pager = (ViewPager) root.findViewById(R.id.view_pager);
         mAdapter = new TriggerPagerAdapter(getActivity(), getChildFragmentManager());
-        final TriggerPagerAdapter.TriggerFragments[] mFragments = TriggerPagerAdapter.TriggerFragments.values();
+        final TriggerPagerAdapter.TriggerFragments[] mFragments = TriggerPagerAdapter.
+                TriggerFragments.values();
 
         Bundle profileArgs = new Bundle();
         profileArgs.putParcelable("profile", mProfile);
-        for (final TriggerPagerAdapter.TriggerFragments mFragment : mFragments) {
-            mAdapter.add(mFragment.getFragmentClass(), profileArgs);
+        for (final TriggerPagerAdapter.TriggerFragments fragment : mFragments) {
+            if (fragment.getFragmentClass() == NfcTriggerFragment.class) {
+                if (!getActivity().getPackageManager().hasSystemFeature(
+                        PackageManager.FEATURE_NFC)) {
+                    continue;
+                }
+            }
+            mAdapter.add(fragment.getFragmentClass(), profileArgs);
         }
         pager.setAdapter(mAdapter);
 
@@ -99,7 +107,8 @@ public class SetupTriggersFragment extends Fragment {
             public void onClick(View view) {
                 getFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.container, SetupActionsFragment.newInstance(mProfile, mNewProfileMode))
+                        .replace(R.id.container, SetupActionsFragment.newInstance(mProfile,
+                                mNewProfileMode))
                         .addToBackStack(null)
                         .commit();
             }
@@ -129,6 +138,4 @@ public class SetupTriggersFragment extends Fragment {
             }
         }
     }
-
-
 }
