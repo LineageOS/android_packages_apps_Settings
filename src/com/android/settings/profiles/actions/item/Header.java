@@ -38,7 +38,7 @@ public class Header implements Item {
     public View getView(LayoutInflater inflater, View convertView) {
         View view;
         if (convertView == null) {
-            view = (View) inflater.inflate(R.layout.list_header, null);
+            view = (View) inflater.inflate(R.layout.profile_list_header, null);
             // Do some initialization
         } else {
             view = convertView;

@@ -46,7 +46,7 @@ public class ProfileNameItem implements Item {
     public View getView(LayoutInflater inflater, View convertView) {
         View view;
         if (convertView == null) {
-            view = (View) inflater.inflate(R.layout.list_item, null);
+            view = (View) inflater.inflate(R.layout.profile_list_item, null);
             // Do some initialization
         } else {
             view = convertView;
