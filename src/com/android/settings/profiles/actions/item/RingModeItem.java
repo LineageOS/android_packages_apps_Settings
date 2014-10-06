@@ -21,13 +21,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.android.settings.R;
 import com.android.settings.profiles.actions.ItemListAdapter;
 
 public class RingModeItem implements Item {
-
     RingModeSettings mSettings;
 
     public RingModeItem(RingModeSettings ringModeSettings) {
@@ -38,8 +38,8 @@ public class RingModeItem implements Item {
     }
 
     @Override
-    public int getViewType() {
-        return ItemListAdapter.RowType.RINGMODE_ITEM.ordinal();
+    public ItemListAdapter.RowType getRowType() {
+        return ItemListAdapter.RowType.RINGMODE_ITEM;
     }
 
     @Override
@@ -48,10 +48,10 @@ public class RingModeItem implements Item {
     }
 
     @Override
-    public View getView(LayoutInflater inflater, View convertView) {
+    public View getView(LayoutInflater inflater, View convertView, ViewGroup parent) {
         View view;
         if (convertView == null) {
-            view = (View) inflater.inflate(R.layout.list_two_line_item, null);
+            view = inflater.inflate(R.layout.list_two_line_item, parent, false);
             // Do some initialization
         } else {
             view = convertView;

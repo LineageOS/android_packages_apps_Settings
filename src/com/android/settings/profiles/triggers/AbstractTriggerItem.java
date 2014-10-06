@@ -19,7 +19,6 @@ import android.app.Profile;
 
 
 public class AbstractTriggerItem {
-
     private int mIcon;
     private String mSummary;
     private String mTitle;
@@ -35,7 +34,7 @@ public class AbstractTriggerItem {
     }
 
     public void setSummary(String summary) {
-        this.mSummary = summary;
+        mSummary = summary;
     }
 
     public String getTitle() {
@@ -43,7 +42,7 @@ public class AbstractTriggerItem {
     }
 
     public void setTitle(String title) {
-        this.mTitle = title;
+        mTitle = title;
     }
 
     public String getSummary() {
@@ -51,11 +50,10 @@ public class AbstractTriggerItem {
     }
 
     public void setIcon(int icon) {
-        this.mIcon = icon;
+        mIcon = icon;
     }
 
     public int getIcon() {
         return mIcon;
     }
-
 }

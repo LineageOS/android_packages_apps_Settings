@@ -15,14 +15,15 @@
  */
 package com.android.settings.profiles;
 
-import android.app.Fragment;
+import android.app.ActionBar;
+import android.app.Activity;
 import android.app.Profile;
 import android.app.ProfileManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.nfc.NfcAdapter;
 import android.os.Bundle;
+import android.preference.PreferenceActivity;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -30,9 +31,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import com.android.settings.R;
+import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.profiles.triggers.NfcTriggerFragment;
 
-public class SetupTriggersFragment extends Fragment {
+public class SetupTriggersFragment extends SettingsPreferenceFragment {
 
     ViewPager mPager;
     Profile mProfile;
@@ -40,11 +42,13 @@ public class SetupTriggersFragment extends Fragment {
     TriggerPagerAdapter mAdapter;
     boolean mNewProfileMode;
 
+    private static final int REQUEST_SETUP_ACTIONS = 5;
+
     public static SetupTriggersFragment newInstance(Profile profile, boolean newProfile) {
         SetupTriggersFragment fragment = new SetupTriggersFragment();
         Bundle args = new Bundle();
-        args.putParcelable("profile", profile);
-        args.putBoolean(ProfileActivity.EXTRA_NEW_PROFILE, newProfile);
+        args.putParcelable(ProfilesSettings.EXTRA_PROFILE, profile);
+        args.putBoolean(ProfilesSettings.EXTRA_NEW_PROFILE, newProfile);
 
         fragment.setArguments(args);
         return fragment;
@@ -58,8 +62,8 @@ public class SetupTriggersFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mProfile = getArguments().getParcelable("profile");
-            mNewProfileMode = getArguments().getBoolean(ProfileActivity.EXTRA_NEW_PROFILE, true);
+            mProfile = getArguments().getParcelable(ProfilesSettings.EXTRA_PROFILE);
+            mNewProfileMode = getArguments().getBoolean(ProfilesSettings.EXTRA_NEW_PROFILE, false);
         }
         mProfileManager = (ProfileManager) getActivity().getSystemService(Context.PROFILE_SERVICE);
     }
@@ -67,74 +71,83 @@ public class SetupTriggersFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        getActivity().getActionBar().setTitle(mNewProfileMode
-                ? R.string.profile_setup_setup_triggers_title
-                : R.string.profile_setup_setup_triggers_title_config);
+        final ActionBar actionBar = getActivity().getActionBar();
+        if (mNewProfileMode) {
+            actionBar.setTitle(R.string.profile_setup_setup_triggers_title);
+        } else {
+            String title = getString(R.string.profile_setup_setup_triggers_title_config,
+                    mProfile.getName());
+            actionBar.setTitle(title);
+        }
     }
 
-    ViewGroup mContainer;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        mContainer = container;
+            Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_setup_triggers, container, false);
 
         ViewPager pager = (ViewPager) root.findViewById(R.id.view_pager);
         mAdapter = new TriggerPagerAdapter(getActivity(), getChildFragmentManager());
-        final TriggerPagerAdapter.TriggerFragments[] mFragments = TriggerPagerAdapter.
-                TriggerFragments.values();
 
         Bundle profileArgs = new Bundle();
-        profileArgs.putParcelable("profile", mProfile);
-        for (final TriggerPagerAdapter.TriggerFragments fragment : mFragments) {
+        profileArgs.putParcelable(ProfilesSettings.EXTRA_PROFILE, mProfile);
+
+        final TriggerPagerAdapter.TriggerFragments[] fragments =
+                TriggerPagerAdapter.TriggerFragments.values();
+
+        for (final TriggerPagerAdapter.TriggerFragments fragment : fragments) {
             if (fragment.getFragmentClass() == NfcTriggerFragment.class) {
                 if (!getActivity().getPackageManager().hasSystemFeature(
                         PackageManager.FEATURE_NFC)) {
+                    // device doesn't have NFC
                     continue;
                 }
             }
-            mAdapter.add(fragment.getFragmentClass(), profileArgs);
+            mAdapter.add(fragment.getFragmentClass(), profileArgs, fragment.getTitleRes());
         }
+
         pager.setAdapter(mAdapter);
 
         PagerTabStrip tabs = (PagerTabStrip) root.findViewById(R.id.tabs);
         tabs.setTabIndicatorColorResource(android.R.color.holo_blue_light);
 
-        Button nextButton = (Button) root.findViewById(R.id.next);
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.container, SetupActionsFragment.newInstance(mProfile,
-                                mNewProfileMode))
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
+        if (mNewProfileMode) {
+            Button nextButton = (Button) root.findViewById(R.id.next);
+            nextButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Bundle args = new Bundle();
+                    args.putParcelable(ProfilesSettings.EXTRA_PROFILE,  mProfile);
+                    args.putBoolean(ProfilesSettings.EXTRA_NEW_PROFILE, mNewProfileMode);
 
-        // back button
-        root.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getActivity().finish();
-            }
-        });
+                    PreferenceActivity pa = (PreferenceActivity) getActivity();
+                    pa.startPreferencePanel(SetupActionsFragment.class.getCanonicalName(), args,
+                            R.string.profile_profile_manage, null,
+                            SetupTriggersFragment.this, REQUEST_SETUP_ACTIONS);
+                }
+            });
 
+            // back button
+            root.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    finishFragment();
+                }
+            });
+        } else {
+            root.findViewById(R.id.bottom_buttons).setVisibility(View.GONE);
+        }
         return root;
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        mContainer = null;
-    }
-
-    public void onNfcIntent(Intent intent) {
-        if (NfcAdapter.ACTION_TAG_DISCOVERED.equals(intent.getAction())) {
-            if (mAdapter != null && mContainer != null) {
-                ((NfcTriggerFragment) mAdapter.getFragment(2)).onNfcIntent(intent);
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_SETUP_ACTIONS) {
+            if (resultCode == Activity.RESULT_OK) {
+                // exit out of the wizard!
+                finishFragment();
             }
         }
     }

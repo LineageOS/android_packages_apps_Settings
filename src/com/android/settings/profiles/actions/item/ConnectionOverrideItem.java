@@ -18,13 +18,13 @@ package com.android.settings.profiles.actions.item;
 import android.app.ConnectionSettings;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.android.settings.R;
 import com.android.settings.profiles.actions.ItemListAdapter;
 
 public class ConnectionOverrideItem implements Item {
-
     int mConnectionId;
     ConnectionSettings mConnectionSettings;
 
@@ -37,15 +37,15 @@ public class ConnectionOverrideItem implements Item {
     }
 
     @Override
-    public int getViewType() {
-        return ItemListAdapter.RowType.CONNECTION_ITEM.ordinal();
+    public ItemListAdapter.RowType getRowType() {
+        return ItemListAdapter.RowType.CONNECTION_ITEM;
     }
 
     @Override
-    public View getView(LayoutInflater inflater, View convertView) {
+    public View getView(LayoutInflater inflater, View convertView, ViewGroup parent) {
         View view;
         if (convertView == null) {
-            view = (View) inflater.inflate(R.layout.list_two_line_item, null);
+            view = inflater.inflate(R.layout.list_two_line_item, parent, false);
             // Do some initialization
         } else {
             view = convertView;
