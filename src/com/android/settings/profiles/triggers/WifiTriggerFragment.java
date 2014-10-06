@@ -34,6 +34,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.android.settings.R;
+import com.android.settings.profiles.ProfilesSettings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +68,7 @@ public class WifiTriggerFragment extends ListFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mProfile = getArguments().getParcelable("profile");
+            mProfile = getArguments().getParcelable(ProfilesSettings.EXTRA_PROFILE);
         } else {
             throw new UnsupportedOperationException("no profile!");
         }

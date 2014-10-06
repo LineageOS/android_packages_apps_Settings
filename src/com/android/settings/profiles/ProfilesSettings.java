@@ -21,6 +21,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.Profile;
 import android.app.ProfileManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -30,9 +31,9 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.provider.Settings;
-import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.support.v13.app.FragmentStatePagerAdapter;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -49,8 +50,11 @@ import com.android.settings.Utils;
 
 public class ProfilesSettings extends SettingsPreferenceFragment {
 
+    public static final String EXTRA_NEW_PROFILE = "new_profile_mode";
     private static final String TAG = "ProfilesSettings";
     private static final String PROFILE_SERVICE = "profile";
+
+    public static final String EXTRA_PROFILE = "Profile";
 
     private static final int MENU_RESET = Menu.FIRST;
     private static final int MENU_ADD = Menu.FIRST + 1;
@@ -203,48 +207,13 @@ public class ProfilesSettings extends SettingsPreferenceFragment {
     }
 
     private void addProfile() {
-        Intent intent = new Intent(getActivity(), ProfileActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+        Bundle args = new Bundle();
+        args.putBoolean(EXTRA_NEW_PROFILE, true);
+        args.putParcelable(EXTRA_PROFILE, new Profile("New profile"));
 
-//        LayoutInflater inflater = getActivity().getLayoutInflater();
-//        View content = inflater.inflate(R.layout.profile_name_dialog, null);
-//        final TextView prompt = (TextView) content.findViewById(R.id.prompt);
-//        final EditText entry = (EditText) content.findViewById(R.id.name);
-//
-//        prompt.setText(R.string.profile_profile_name_prompt);
-//
-//        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-//        builder.setTitle(R.string.menu_new_profile);
-//        builder.setView(content);
-//
-//        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                String name = entry.getText().toString();
-//                if (!mProfileManager.profileExists(name)) {
-//                    Profile profile = new Profile(name);
-//                    mProfileManager.addProfile(profile);
-//
-//
-//                    PreferenceActivity pa = (PreferenceActivity) getActivity();
-//
-//                    Bundle args = new Bundle();
-//                    args.putParcelable("profile", profile);
-//
-//                    pa.startWithFragment("Triggers", args, SetupTriggersFragment.newInstance(profile));
-//
-//                    mAdapter.refreshProfiles();
-//                } else {
-//                    Toast.makeText(getActivity(),
-//                            R.string.duplicate_profile_name, Toast.LENGTH_LONG).show();
-//                }
-//            }
-//        });
-//        builder.setNegativeButton(android.R.string.cancel, null);
-//
-//        AlertDialog dialog = builder.create();
-//        dialog.show();
+        PreferenceActivity pa = (PreferenceActivity) getActivity();
+        pa.startPreferencePanel(SetupTriggersFragment.class.getCanonicalName(), args,
+                0, null, this, 0);
     }
 
     private void resetAll() {

@@ -15,11 +15,11 @@
  */
 package com.android.settings.profiles;
 
+import android.app.Activity;
 import android.app.AirplaneModeSettings;
 import android.app.AlertDialog;
 import android.app.ConnectionSettings;
 import android.app.Fragment;
-import android.app.ListFragment;
 import android.app.Profile;
 import android.app.ProfileManager;
 import android.app.RingModeSettings;
@@ -31,15 +31,21 @@ import android.media.AudioManager;
 import android.media.RingtoneManager;
 import android.net.wimax.WimaxHelper;
 import android.os.Bundle;
+import android.preference.PreferenceActivity;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.SeekBar;
 import android.widget.TextView;
 import com.android.settings.R;
+import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.profiles.actions.ItemListAdapter;
 import com.android.settings.profiles.actions.item.AirplaneModeItem;
 import com.android.settings.profiles.actions.item.ConnectionOverrideItem;
@@ -68,21 +74,25 @@ import static com.android.internal.util.cm.QSUtils.deviceSupportsMobileData;
 import static com.android.internal.util.cm.QSUtils.deviceSupportsNfc;
 
 
-public class SetupActionsFragment extends ListFragment {
+public class SetupActionsFragment extends SettingsPreferenceFragment implements AdapterView.OnItemClickListener {
 
     private static final int RINGTONE_REQUEST_CODE = 1000;
+
+    private static final int MENU_REMOVE = Menu.FIRST;
+    private static final int MENU_TRIGGERS = Menu.FIRST + 1;
 
     Profile mProfile;
     ItemListAdapter mAdapter;
     ProfileManager mProfileManager;
+    ListView mListView;
 
     boolean mNewProfileMode;
 
     public static SetupActionsFragment newInstance(Profile profile, boolean newProfile) {
         SetupActionsFragment fragment = new SetupActionsFragment();
         Bundle args = new Bundle();
-        args.putParcelable("profile", profile);
-        args.putBoolean(ProfileActivity.EXTRA_NEW_PROFILE, newProfile);
+        args.putParcelable(ProfilesSettings.EXTRA_PROFILE, profile);
+        args.putBoolean(ProfilesSettings.EXTRA_NEW_PROFILE, newProfile);
 
         fragment.setArguments(args);
         return fragment;
@@ -96,9 +106,10 @@ public class SetupActionsFragment extends ListFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mProfile = getArguments().getParcelable("profile");
-            mNewProfileMode = getArguments().getBoolean(ProfileActivity.EXTRA_NEW_PROFILE, true);
+            mProfile = getArguments().getParcelable(ProfilesSettings.EXTRA_PROFILE);
+            mNewProfileMode = getArguments().getBoolean(ProfilesSettings.EXTRA_NEW_PROFILE, false);
         }
+
         mProfileManager = (ProfileManager) getActivity().getSystemService(Context.PROFILE_SERVICE);
         List<Item> items = new ArrayList<Item>();
         // general prefs
@@ -146,6 +157,51 @@ public class SetupActionsFragment extends ListFragment {
 
 
         mAdapter = new ItemListAdapter(getActivity(), items);
+
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        if (!mNewProfileMode) {
+            menu.add(0, MENU_REMOVE, 0, R.string.profile_menu_delete_title)
+                    .setIcon(R.drawable.ic_menu_trash_holo_dark)
+                    .setAlphabeticShortcut('d')
+                    .setEnabled(true)
+                    .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM |
+                            MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+
+            menu.add(0, MENU_TRIGGERS, 0, R.string.profile_menu_triggers_title)
+                    .setIcon(R.drawable.ic_location)
+                    .setAlphabeticShortcut('t')
+                    .setEnabled(true)
+                    .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM |
+                            MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case MENU_REMOVE:
+                mProfileManager.removeProfile(mProfile);
+                finishFragment();
+                return true;
+            case MENU_TRIGGERS:
+
+                Bundle args = new Bundle();
+                args.putParcelable(ProfilesSettings.EXTRA_PROFILE,  mProfile);
+                args.putBoolean(ProfilesSettings.EXTRA_NEW_PROFILE, false);
+
+
+                PreferenceActivity pa = (PreferenceActivity) getActivity();
+                pa.startPreferencePanel(SetupTriggersFragment.class.getCanonicalName(), args,
+                        R.string.profile_profile_manage, null, null, 0);
+
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private ConnectionOverrideItem generateConnectionOverrideItem(int connectionId) {
@@ -170,47 +226,27 @@ public class SetupActionsFragment extends ListFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        TextView desc = new TextView(getActivity());
-        int descPadding = getResources().getDimensionPixelSize(R.dimen.profile_instruction_padding);
-        desc.setPadding(descPadding, descPadding, descPadding, descPadding);
-        desc.setText(R.string.profile_setup_actions_description);
-        getListView().addHeaderView(desc, null, false);
+        if (mNewProfileMode) {
+            TextView desc = new TextView(getActivity());
+            int descPadding = getResources().getDimensionPixelSize(R.dimen.profile_instruction_padding);
+            desc.setPadding(descPadding, descPadding, descPadding, descPadding);
+            desc.setText(R.string.profile_setup_actions_description);
+            getListView().addHeaderView(desc, null, false);
+        }
+    }
+
+    private void updateProfile() {
+        mProfileManager.updateProfile(mProfile);
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        setListAdapter(mAdapter);
-        getActivity().getActionBar().setTitle(mNewProfileMode
-                ? R.string.profile_setup_actions_title
-                : R.string.profile_setup_actions_title_config);
-    }
-
-    @Override
-    public void onListItemClick(ListView l, View v, int position, long id) {
-        super.onListItemClick(l, v, position, id);
-
-        final Item itemAtPosition = (Item) l.getItemAtPosition(position);
-        final int viewType = itemAtPosition.getViewType();
-        if (viewType == ItemListAdapter.RowType.AIRPLANEMODE_ITEM.ordinal()) {
-            requestAirplaneModeDialog(((AirplaneModeItem) (itemAtPosition)).getSettings());
-        } else if (viewType == ItemListAdapter.RowType.EXPANDEDDESKTOP_ITEM.ordinal()) {
-            requestExpandedDesktopDialog();
-        } else if (viewType == ItemListAdapter.RowType.LOCKSCREENMODE_ITEM.ordinal()) {
-            requestLockscreenModeDialog();
-        } else if (viewType == ItemListAdapter.RowType.RINGMODE_ITEM.ordinal()) {
-            requestRingModeDialog(((RingModeItem) (itemAtPosition)).getSettings());
-        } else if (viewType == ItemListAdapter.RowType.CONNECTION_ITEM.ordinal()) {
-            requestConnectionOverrideDialog(((ConnectionOverrideItem) (itemAtPosition)).getSettings());
-        } else if (viewType == ItemListAdapter.RowType.VOLUME_STREAM_ITEM.ordinal()) {
-            ((VolumeStreamItem) (itemAtPosition)).requestVolumeDialog(getActivity(), new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    mAdapter.notifyDataSetChanged();
-                }
-            });
-        } else if (viewType == ItemListAdapter.RowType.NAME_ITEM.ordinal()) {
-            requestProfileName();
+        mListView.setAdapter(mAdapter);
+        if (mNewProfileMode) {
+            getActivity().getActionBar().setTitle(R.string.profile_setup_actions_title);
+        } else {
+            getActivity().getActionBar().setTitle(R.string.profile_setup_actions_title_config);
         }
     }
 
@@ -250,6 +286,7 @@ public class SetupActionsFragment extends ListFragment {
                                 break;
                         }
                         mProfile.setScreenLockMode(newMode);
+                        updateProfile();
                         mAdapter.notifyDataSetChanged();
                         dialog.dismiss();
                     }
@@ -349,6 +386,7 @@ public class SetupActionsFragment extends ListFragment {
                         }
                         mProfile.setAirplaneMode(setting);
                         mAdapter.notifyDataSetChanged();
+                        updateProfile();
                         dialog.dismiss();
                     }
                 });
@@ -442,6 +480,7 @@ public class SetupActionsFragment extends ListFragment {
                         }
                         mProfile.setRingMode(setting);
                         mAdapter.notifyDataSetChanged();
+                        updateProfile();
                         dialog.dismiss();
                     }
                 });
@@ -493,6 +532,7 @@ public class SetupActionsFragment extends ListFragment {
                         }
                         mProfile.setConnectionSettings(setting);
                         mAdapter.notifyDataSetChanged();
+                        updateProfile();
                         dialog.dismiss();
                     }
                 });
@@ -524,6 +564,7 @@ public class SetupActionsFragment extends ListFragment {
                             String value = entry.getText().toString();
                             mProfile.setName(value);
                             mAdapter.notifyDataSetChanged();
+                            updateProfile();
                         }
                     });
             builder.setNegativeButton(android.R.string.cancel, null);
@@ -538,21 +579,56 @@ public class SetupActionsFragment extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_setup_actions, container, false);
 
-        view.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getFragmentManager().popBackStack();
-            }
-        });
+        mListView = (ListView) view.findViewById(android.R.id.list);
+        mListView.setOnItemClickListener(this);
+        if (mNewProfileMode) {
+            view.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getActivity().setResult(Activity.RESULT_CANCELED);
+                    finishFragment();
+                }
+            });
 
-        view.findViewById(R.id.finish).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mProfileManager.addProfile(mProfile);
-                getActivity().finish();
-            }
-        });
+            view.findViewById(R.id.finish).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mProfileManager.addProfile(mProfile);
 
+                    getActivity().setResult(Activity.RESULT_OK);
+                    finishFragment();
+                }
+            });
+        } else {
+            view.findViewById(R.id.bottom_buttons).setVisibility(View.GONE);
+        }
         return view;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        final Item itemAtPosition = (Item) parent.getItemAtPosition(position);
+        final int viewType = itemAtPosition.getViewType();
+        if (viewType == ItemListAdapter.RowType.AIRPLANEMODE_ITEM.ordinal()) {
+            requestAirplaneModeDialog(((AirplaneModeItem) (itemAtPosition)).getSettings());
+        } else if (viewType == ItemListAdapter.RowType.EXPANDEDDESKTOP_ITEM.ordinal()) {
+            requestExpandedDesktopDialog();
+        } else if (viewType == ItemListAdapter.RowType.LOCKSCREENMODE_ITEM.ordinal()) {
+            requestLockscreenModeDialog();
+        } else if (viewType == ItemListAdapter.RowType.RINGMODE_ITEM.ordinal()) {
+            requestRingModeDialog(((RingModeItem) (itemAtPosition)).getSettings());
+        } else if (viewType == ItemListAdapter.RowType.CONNECTION_ITEM.ordinal()) {
+            requestConnectionOverrideDialog(((ConnectionOverrideItem) (itemAtPosition)).getSettings());
+        } else if (viewType == ItemListAdapter.RowType.VOLUME_STREAM_ITEM.ordinal()) {
+            ((VolumeStreamItem) (itemAtPosition)).requestVolumeDialog(getActivity(), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    mAdapter.notifyDataSetChanged();
+                    updateProfile();
+                }
+            });
+        } else if (viewType == ItemListAdapter.RowType.NAME_ITEM.ordinal()) {
+            requestProfileName();
+        }
     }
 }
