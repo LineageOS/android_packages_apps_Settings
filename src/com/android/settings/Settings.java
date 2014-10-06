@@ -40,6 +40,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.nfc.NfcAdapter;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.os.INetworkManagementService;
 import android.os.RemoteException;
@@ -111,8 +112,10 @@ import com.android.settings.print.PrintJobSettingsFragment;
 import com.android.settings.print.PrintServiceSettingsFragment;
 import com.android.settings.print.PrintSettingsFragment;
 import com.android.settings.privacyguard.PrivacyGuardPrefs;
+import com.android.settings.profiles.NFCProfileTagCallback;
 import com.android.settings.profiles.ProfileEnabler;
 import com.android.settings.profiles.ProfilesSettings;
+import com.android.settings.profiles.triggers.NfcTriggerFragment;
 import com.android.settings.quicksettings.QuickSettingsTiles;
 import com.android.settings.search.SettingsAutoCompleteTextView;
 import com.android.settings.search.SearchPopulator;
@@ -221,6 +224,8 @@ public class Settings extends PreferenceActivity
     private ActionBar mActionBar;
     private MenuItem mSearchItem;
     private SettingsAutoCompleteTextView mSearchBar;
+
+    private NFCProfileTagCallback mNfcProfileCallback;
 
     private boolean mBatteryPresent = true;
     private BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
@@ -547,8 +552,15 @@ public class Settings extends PreferenceActivity
 
     @Override
     public void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
+        if (NfcAdapter.ACTION_TAG_DISCOVERED.equals(intent.getAction())) {
+            Tag detectedTag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
+            if (mNfcProfileCallback != null) {
+                mNfcProfileCallback.onTagRead(detectedTag);
+            }
+            return;
+        }
 
+        super.onNewIntent(intent);
         // If it is not launched from history, then reset to top-level
         if ((intent.getFlags() & Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY) == 0) {
             if (mFirstHeader != null && !onIsHidingHeaders() && onIsMultiPane()) {
@@ -1301,6 +1313,10 @@ public class Settings extends PreferenceActivity
         mAuthenticatorHelper.updateAuthDescriptions(this);
         mAuthenticatorHelper.onAccountsUpdated(this, accounts);
         invalidateHeaders();
+    }
+
+    public void setNfcProfileCallback(NFCProfileTagCallback callback) {
+        mNfcProfileCallback = callback;
     }
 
     public static void requestHomeNotice() {

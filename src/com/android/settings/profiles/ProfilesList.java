@@ -23,7 +23,6 @@ import android.app.ProfileManager;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
-import android.provider.Settings;
 import android.text.TextUtils;
 
 import com.android.settings.R;
@@ -66,7 +65,8 @@ public class ProfilesList extends SettingsPreferenceFragment implements
 
         for (Profile profile : mProfileManager.getProfiles()) {
             Bundle args = new Bundle();
-            args.putParcelable("Profile", profile);
+            args.putParcelable(ProfilesSettings.EXTRA_PROFILE, profile);
+            args.putBoolean(ProfilesSettings.EXTRA_NEW_PROFILE, false);
 
             ProfilesPreference ppref = new ProfilesPreference(this, args);
             ppref.setKey(profile.getUuid().toString());
