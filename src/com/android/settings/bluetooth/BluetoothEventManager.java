@@ -26,6 +26,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.os.SystemProperties;
+import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -102,10 +107,30 @@ final class BluetoothEventManager {
         addHandler(Intent.ACTION_DOCK_EVENT, new DockEventHandler());
 
         mContext.registerReceiver(mBroadcastReceiver, mAdapterIntentFilter);
+
+        setDefaultBtName();
     }
 
     void registerProfileIntentReceiver() {
         mContext.registerReceiver(mBroadcastReceiver, mProfileIntentFilter);
+    }
+
+    // set bluetooth default name
+    private void setDefaultBtName() {
+        String name = mContext.getResources().getString(R.string.def_custome_bt_defname);
+        Log.d(TAG, "custome bluetooth name: " + name);
+        boolean needSet = !TextUtils.isEmpty(name);
+        // This flag is to only set default bluetooth name once.
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
+        boolean notSet = prefs.getBoolean("is_first_boot", true);
+        // only bluetooth state is on, set name will success, or, it will fail.
+        boolean okToSet = mLocalAdapter.getBluetoothState() == BluetoothAdapter.STATE_ON;
+        if (needSet && notSet && okToSet) {
+            mLocalAdapter.setName(name);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("is_first_boot", false);
+            editor.apply();
+        }
     }
 
     /** Register to start receiving callbacks for Bluetooth events. */
@@ -159,6 +184,9 @@ final class BluetoothEventManager {
                                     BluetoothAdapter.ERROR);
             // update local profiles and get paired devices
             mLocalAdapter.setBluetoothStateInt(state);
+            if (state == BluetoothAdapter.STATE_ON) {
+                setDefaultBtName();
+            }
             // send callback to update UI and possibly start scanning
             synchronized (mCallbacks) {
                 for (BluetoothCallback callback : mCallbacks) {
