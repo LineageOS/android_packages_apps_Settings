@@ -48,6 +48,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
 
     private static final String SEPARATOR = "OV=I=XseparatorX=I=VO";
     private static final String EXP_RING_MODE = "pref_ring_mode";
+    private static final String EXP_LOCATION_MODE = "pref_location_mode";
     private static final String EXP_NETWORK_MODE = "pref_network_mode";
     private static final String EXP_SCREENTIMEOUT_MODE = "pref_screentimeout_mode";
     private static final String QUICK_PULLDOWN = "quick_pulldown";
@@ -57,6 +58,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private static final String QS_SMALL_ICONS = "qs_small_icons";
 
     private MultiSelectListPreference mRingMode;
+    private MultiSelectListPreference mLocationMode;
     private ListPreference mNetworkMode;
     private ListPreference mScreenTimeoutMode;
     private ListPreference mQuickPulldown;
@@ -111,6 +113,18 @@ public class QuickSettings extends SettingsPreferenceFragment implements
                 mStaticTiles.removePreference(mRingMode);
             }
         }
+
+        mLocationMode = (MultiSelectListPreference) prefSet.findPreference(EXP_LOCATION_MODE);
+        if (mLocationMode != null) {            
+                String storedLocationMode = Settings.System.getString(resolver,
+                        Settings.System.EXPANDED_LOCATION_MODE);
+                if (storedLocationMode != null) {
+                    String[] locationModeArray = TextUtils.split(storedLocationMode, SEPARATOR);
+                    mLocationMode.setValues(new HashSet<String>(Arrays.asList(locationModeArray)));
+                    updateSummary(storedLocationMode, mLocationMode, R.string.pref_location_mode_title);
+                }
+                mLocationMode.setOnPreferenceChangeListener(this);
+        } 
 
         // Add the network mode preference
         mNetworkMode = (ListPreference) prefSet.findPreference(EXP_NETWORK_MODE);
@@ -187,6 +201,13 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             String value = TextUtils.join(SEPARATOR, arrValue);
             Settings.System.putString(resolver, Settings.System.EXPANDED_RING_MODE, value);
             updateSummary(value, mRingMode, R.string.pref_ring_mode_summary);
+            return true;
+        } else if (preference == mLocationMode) {
+            ArrayList<String> arrValue = new ArrayList<String>((Set<String>) newValue);
+            Collections.sort(arrValue, new MultiSelectListPreferenceComparator(mLocationMode));
+            String value = TextUtils.join(SEPARATOR, arrValue);
+            Settings.System.putString(resolver, Settings.System.EXPANDED_LOCATION_MODE, value);
+            updateSummary(value, mLocationMode, R.string.pref_location_mode_title);
             return true;
         } else if (preference == mNetworkMode) {
             int value = Integer.valueOf((String) newValue);
