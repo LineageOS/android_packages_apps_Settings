@@ -76,7 +76,7 @@ public class NfcTriggerFragment extends Fragment implements NFCProfileTagCallbac
     @Override
     public void onResume() {
         super.onResume();
-        if (mProfile != null) {
+        if (mNfcAdapter != null && mProfile != null) {
             enableTagWriteMode();
         }
     }
@@ -84,7 +84,9 @@ public class NfcTriggerFragment extends Fragment implements NFCProfileTagCallbac
     @Override
     public void onPause() {
         super.onPause();
-        disableTagWriteMode();
+        if (mNfcAdapter != null) {
+            disableTagWriteMode();
+        }
     }
 
     private PendingIntent getPendingIntent() {
