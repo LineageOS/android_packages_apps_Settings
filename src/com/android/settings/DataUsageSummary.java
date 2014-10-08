@@ -1848,43 +1848,47 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
         private static final String EXTRA_LIMIT_BYTES = "limitBytes";
 
         public static void show(DataUsageSummary parent) {
-            if (!parent.isAdded()) return;
+            if (null != parent || !parent.isAdded())
+                return;
 
             final NetworkPolicy policy = parent.mPolicyEditor.getPolicy(parent.mTemplate);
             if (policy == null) return;
 
             final Resources res = parent.getResources();
             final CharSequence message;
-            final long minLimitBytes = (long) (policy.warningBytes * 1.2f);
-            final long limitBytes;
+            if (parent.mPolicyEditor != null
+                    && parent.mPolicyEditor.getPolicy(parent.mTemplate) != null) {
+                final long minLimitBytes = (long) (policy.warningBytes * 1.2f);
+                final long limitBytes;
 
-            // TODO: customize default limits based on network template
-            final String currentTab = parent.mCurrentTab;
-            if (TAB_3G.equals(currentTab)) {
-                message = res.getString(R.string.data_usage_limit_dialog_mobile);
-                limitBytes = Math.max(5 * GB_IN_BYTES, minLimitBytes);
-            } else if (TAB_4G.equals(currentTab)) {
-                message = res.getString(R.string.data_usage_limit_dialog_mobile);
-                limitBytes = Math.max(5 * GB_IN_BYTES, minLimitBytes);
-            } else if (TAB_MOBILE.equals(currentTab)) {
-                message = res.getString(R.string.data_usage_limit_dialog_mobile);
-                limitBytes = Math.max(5 * GB_IN_BYTES, minLimitBytes);
-            } else if (currentTab.startsWith(TAB_SIM)) {
-                message = res.getString(R.string.data_usage_limit_dialog_mobile);
-                limitBytes = Math.max(5 * GB_IN_BYTES, minLimitBytes);
+                // TODO: customize default limits based on network template
+                final String currentTab = parent.mCurrentTab;
+                if (TAB_3G.equals(currentTab)) {
+                    message = res.getString(R.string.data_usage_limit_dialog_mobile);
+                    limitBytes = Math.max(5 * GB_IN_BYTES, minLimitBytes);
+                } else if (TAB_4G.equals(currentTab)) {
+                    message = res.getString(R.string.data_usage_limit_dialog_mobile);
+                    limitBytes = Math.max(5 * GB_IN_BYTES, minLimitBytes);
+                } else if (TAB_MOBILE.equals(currentTab)) {
+                    message = res.getString(R.string.data_usage_limit_dialog_mobile);
+                    limitBytes = Math.max(5 * GB_IN_BYTES, minLimitBytes);
+                } else if (currentTab.startsWith(TAB_SIM)) {
+                    message = res.getString(R.string.data_usage_limit_dialog_mobile);
+                    limitBytes = Math.max(5 * GB_IN_BYTES, minLimitBytes);
 
-            } else {
-                throw new IllegalArgumentException("unknown current tab: " + currentTab);
+                } else {
+                    throw new IllegalArgumentException("unknown current tab: " + currentTab);
+                }
+
+                final Bundle args = new Bundle();
+                args.putCharSequence(EXTRA_MESSAGE, message);
+                args.putLong(EXTRA_LIMIT_BYTES, limitBytes);
+
+                final ConfirmLimitFragment dialog = new ConfirmLimitFragment();
+                dialog.setArguments(args);
+                dialog.setTargetFragment(parent, 0);
+                dialog.show(parent.getFragmentManager(), TAG_CONFIRM_LIMIT);
             }
-
-            final Bundle args = new Bundle();
-            args.putCharSequence(EXTRA_MESSAGE, message);
-            args.putLong(EXTRA_LIMIT_BYTES, limitBytes);
-
-            final ConfirmLimitFragment dialog = new ConfirmLimitFragment();
-            dialog.setArguments(args);
-            dialog.setTargetFragment(parent, 0);
-            dialog.show(parent.getFragmentManager(), TAG_CONFIRM_LIMIT);
         }
 
         @Override
