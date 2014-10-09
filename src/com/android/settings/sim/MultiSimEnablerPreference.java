@@ -261,7 +261,10 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
         String netOperatorName = TelephonyManager.getDefault().getNetworkOperatorName(
                 mSir.subId);
         if (isActivated) {
-            summary = netOperatorName;
+            summary = android.util.NativeTextHelper.getInternalLocalString(mContext,
+                    netOperatorName,
+                    R.array.origin_carrier_names,
+                    R.array.locale_carrier_names);;
         } else {
             summary = mContext.getString(R.string.sim_enabler_summary,
                     res.getString(hasCard() ? R.string.sim_disabled : R.string.sim_missing));
