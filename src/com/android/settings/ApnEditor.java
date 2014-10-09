@@ -208,8 +208,13 @@ public class ApnEditor extends PreferenceActivity
         Log.d(TAG,"ApnEditor onCreate received sub: " + mSubId);
         mDisableEditor = intent.getBooleanExtra("DISABLE_EDITOR",false);
         if (mDisableEditor) {
-            getPreferenceScreen().setEnabled(false);
-            Log.d(TAG, "ApnEditor form is disabled.");
+            if (getResources().getBoolean(R.bool.config_name_apn)) {
+                getPreferenceScreen().setEnabled(false);
+                Log.d(TAG, "ApnEditor form is disabled.");
+            } else {
+                mApn.setEnabled(false);
+                Log.d(TAG, "Apn Name can't be edited.");
+            }
         }
 
         mFirstTime = icicle == null;
@@ -492,12 +497,12 @@ public class ApnEditor extends PreferenceActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        if (mDisableEditor) {
+        if (mDisableEditor && getResources().getBoolean(R.bool.config_name_apn)) {
             Log.d(TAG, "Form is disabled. Do not create the options menu.");
             return true;
         }
         // If it's a new APN, then cancel will delete the new entry in onPause
-        if (!mNewApn) {
+        if (!mNewApn && !mDisableEditor) {
             menu.add(0, MENU_DELETE, 0, R.string.menu_delete)
                 .setIcon(R.drawable.ic_menu_delete);
         }
@@ -563,7 +568,7 @@ public class ApnEditor extends PreferenceActivity
         String mnc = checkNotSet(mMnc.getText());
 
         // If the form is not editable, do nothing and return.
-        if(mDisableEditor){
+        if(mDisableEditor && getResources().getBoolean(R.bool.config_name_apn)){
             Log.d(TAG, "Form is disabled. Nothing to save.");
             return true;
         }
