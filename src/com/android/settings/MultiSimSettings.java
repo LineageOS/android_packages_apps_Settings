@@ -53,7 +53,7 @@ import android.provider.Settings.SettingNotFoundException;
 import android.telephony.MSimTelephonyManager;
 import static android.telephony.TelephonyManager.SIM_STATE_ABSENT;
 import static android.telephony.TelephonyManager.SIM_STATE_READY;
-
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -177,9 +177,12 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
         int i = 0;
         for (i = 0; i < MAX_SUBSCRIPTIONS; i++) {
             String operatorName = tm.getSimOperatorName(i);
+            if (TextUtils.isEmpty(operatorName)) {
+                operatorName = tm.getNetworkOperatorName(i);
+            }
             String label;
             if (tm.getSimState(i) == SIM_STATE_ABSENT || tm.getSimState(i) != SIM_STATE_READY ||
-                    operatorName == null || operatorName.length() == 0) {
+                    TextUtils.isEmpty(operatorName)) {
                 label = getString(R.string.multi_sim_entry_format_no_carrier, i + 1);
             } else {
                 label = getString(R.string.multi_sim_entry_format, operatorName, i + 1);
