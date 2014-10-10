@@ -201,13 +201,15 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     }
 
     private void updateSimSlotValues() {
-        final PreferenceScreen prefScreen = getPreferenceScreen();
-
-        final int prefSize = prefScreen.getPreferenceCount();
-        for (int i = 0; i < prefSize; ++i) {
-            Preference pref = prefScreen.getPreference(i);
-            if (pref instanceof SimPreference) {
-                ((SimPreference)pref).update();
+        final PreferenceCategory prefScreen = (PreferenceCategory) getPreferenceScreen()
+                .findPreference(SIM_CARD_CATEGORY);
+        if (prefScreen != null) {
+            final int prefSize = prefScreen.getPreferenceCount();
+            for (int i=0; i<prefSize; ++i) {
+                Preference pref = prefScreen.getPreference(i);
+                if (pref instanceof SimPreference) {
+                    ((SimPreference)pref).update();
+                }
             }
         }
     }
@@ -226,6 +228,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
      }
 
     private void updateActivitesCategory() {
+        mAvailableSubInfos = SubscriptionManager.getActiveSubInfoList();
         createDropDown((DropDownPreference) findPreference(KEY_CELLULAR_DATA));
         createDropDown((DropDownPreference) findPreference(KEY_CALLS));
         createDropDown((DropDownPreference) findPreference(KEY_SMS));
@@ -485,6 +488,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         }
 
         public void update() {
+            mSubInfoRecord = findRecordBySlotId(mSlotId);
             final Resources res = getResources();
 
             setTitle(res.getString(R.string.sim_card_number_title, mSlotId + 1));

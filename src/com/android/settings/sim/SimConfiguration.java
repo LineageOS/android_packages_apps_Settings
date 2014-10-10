@@ -50,6 +50,7 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.provider.Settings;
 import android.provider.Settings.Global;
 import android.provider.Settings.System;
+import android.telephony.SubInfoRecord;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.text.TextWatcher;
@@ -116,7 +117,9 @@ public class SimConfiguration extends PreferenceActivity implements TextWatcher 
                 return false;
             }
 
-            SubscriptionManager.setDisplayName(multiSimName, mSubscription);
+            SubInfoRecord mSubInfoRecord = MultiSimSettingTab.findRecordBySlotId(
+                    preference.getContext(), mSubscription);
+            SubscriptionManager.setDisplayName(multiSimName, mSubInfoRecord.subId);
 
             mNamePreference.setSummary(multiSimName);
             Intent intent = new Intent(MultiSimSettingsConstants.SUBNAME_CHANGED);
