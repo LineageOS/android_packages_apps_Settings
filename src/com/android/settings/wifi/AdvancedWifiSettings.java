@@ -41,6 +41,7 @@ import android.security.Credentials;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
+import android.app.Dialog;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -67,6 +68,8 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
 
     private WifiManager mWifiManager;
     private NetworkScoreManager mNetworkScoreManager;
+    private static final int WPS_PBC_DIALOG_ID = 1;
+    private static final int WPS_PIN_DIALOG_ID = 2;
 
     private IntentFilter mFilter;
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
@@ -109,6 +112,17 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
     public void onPause() {
         super.onPause();
         getActivity().unregisterReceiver(mReceiver);
+    }
+
+    @Override
+    public Dialog onCreateDialog(int dialogId) {
+        switch (dialogId) {
+            case WPS_PBC_DIALOG_ID:
+                 return new WpsDialog(getActivity(), WpsInfo.PBC);
+            case WPS_PIN_DIALOG_ID:
+                 return new WpsDialog(getActivity(), WpsInfo.DISPLAY);
+        }
+        return super.onCreateDialog(dialogId);
     }
 
     private void initPreferences() {
@@ -159,8 +173,7 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
         Preference wpsPushPref = findPreference(KEY_WPS_PUSH);
         wpsPushPref.setOnPreferenceClickListener(new OnPreferenceClickListener() {
                 public boolean onPreferenceClick(Preference arg0) {
-                    WpsFragment wpsFragment = new WpsFragment(WpsInfo.PBC);
-                    wpsFragment.show(getFragmentManager(), KEY_WPS_PUSH);
+                    showDialog(WPS_PBC_DIALOG_ID);
                     return true;
                 }
         });
@@ -169,8 +182,7 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
         Preference wpsPinPref = findPreference(KEY_WPS_PIN);
         wpsPinPref.setOnPreferenceClickListener(new OnPreferenceClickListener(){
                 public boolean onPreferenceClick(Preference arg0) {
-                    WpsFragment wpsFragment = new WpsFragment(WpsInfo.DISPLAY);
-                    wpsFragment.show(getFragmentManager(), KEY_WPS_PIN);
+                    showDialog(WPS_PIN_DIALOG_ID);
                     return true;
                 }
         });
