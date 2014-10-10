@@ -46,6 +46,7 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
     private static final String KEY_FREQUENCY_BAND = "frequency_band";
     private static final String KEY_COUNTRY_CODE = "wifi_countrycode";
     private static final String KEY_NOTIFY_OPEN_NETWORKS = "notify_open_networks";
+    private static final String KEY_NOTIFY_CHANGED_NETWORKS = "notify_changed_networks";
     private static final String KEY_SLEEP_POLICY = "sleep_policy";
     private static final String KEY_POOR_NETWORK_DETECTION = "wifi_poor_network_detection";
     private static final String KEY_SCAN_ALWAYS_AVAILABLE = "wifi_scan_always_available";
@@ -54,6 +55,7 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
     private static final String KEY_WIFI_PRIORITY = "wifi_priority";
 
     private WifiManager mWifiManager;
+    private ListPreference mNotifyChangedNetwork;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -80,6 +82,14 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
         notifyOpenNetworks.setChecked(Settings.Global.getInt(getContentResolver(),
                 Settings.Global.WIFI_NETWORKS_AVAILABLE_NOTIFICATION_ON, 0) == 1);
         notifyOpenNetworks.setEnabled(mWifiManager.isWifiEnabled());
+
+        mNotifyChangedNetwork = (ListPreference) findPreference(KEY_NOTIFY_CHANGED_NETWORKS);
+        int notifyValue = Settings.System.getInt(getContentResolver(),
+                    Settings.System.WIFI_NETWORK_NOTIFICATIONS, 0);
+        mNotifyChangedNetwork.setValueIndex(notifyValue);
+        mNotifyChangedNetwork.setSummary(mNotifyChangedNetwork.getEntries()[notifyValue]);
+        mNotifyChangedNetwork.setOnPreferenceChangeListener(this);
+        mNotifyChangedNetwork.setEnabled(mWifiManager.isWifiEnabled());
 
         CheckBoxPreference poorNetworkDetection =
             (CheckBoxPreference) findPreference(KEY_POOR_NETWORK_DETECTION);
@@ -223,6 +233,15 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
                         Toast.LENGTH_SHORT).show();
                 return false;
             }
+        }
+
+        if (KEY_NOTIFY_CHANGED_NETWORKS.equals(key)) {
+            int notifyValue = Integer.valueOf((String) newValue);
+            int index = mNotifyChangedNetwork.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getContentResolver(), Settings.System.WIFI_NETWORK_NOTIFICATIONS,
+                    notifyValue);
+            mNotifyChangedNetwork.setSummary(mNotifyChangedNetwork.getEntries()[index]);
+            getActivity().sendBroadcast(new Intent("cm.UPDATE_WIFI_NOTIFICATION_PREFERENCE"));
         }
 
         if (KEY_COUNTRY_CODE.equals(key)) {
