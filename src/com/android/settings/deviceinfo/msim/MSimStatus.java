@@ -45,6 +45,7 @@ import android.telephony.PhoneNumberUtils;
 import android.telephony.PhoneStateListener;
 import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
+import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -655,10 +656,11 @@ public class MSimStatus extends PreferenceActivity {
 
     private void updateNetworkType(int subscription) {
         // Whether EDGE, UMTS, etc...
-        if (TelephonyManager.NETWORK_TYPE_UNKNOWN !=
-                mTelephonyManager.getNetworkType(subscription)) {
+        long[] subId = SubscriptionManager.getSubId(subscription);
+        int netwokType = mTelephonyManager.getNetworkType(subId[0]);
+        if (TelephonyManager.NETWORK_TYPE_UNKNOWN != netwokType) {
             mNetworkSummary[subscription] = getSimSummary(subscription,
-                    mTelephonyManager.getNetworkTypeName(subscription));
+                    mTelephonyManager.getNetworkTypeName(netwokType));
         }
         setMSimSummary(KEY_NETWORK_TYPE,mNetworkSummary);
     }
