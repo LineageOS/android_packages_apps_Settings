@@ -147,8 +147,8 @@ public class MSimSubscriptionStatus extends PreferenceActivity {
         addPreferencesFromResource(R.xml.device_info_subscription_status);
 
         // getting selected subscription
-        int phoneId = getIntent().getIntExtra(PhoneConstants.SLOT_KEY,
-		SubscriptionManager.getPhoneId(SubscriptionManager.getDefaultSubId()));
+        int phoneId = getIntent().getIntExtra(PhoneConstants.PHONE_KEY,
+                SubscriptionManager.getPhoneId(SubscriptionManager.getDefaultSubId()));
         mPhone = PhoneFactory.getPhone(phoneId);
         Log.d("Status","OnCreate phoneId =" + phoneId);
 
@@ -238,7 +238,7 @@ public class MSimSubscriptionStatus extends PreferenceActivity {
                     CB_AREA_INFO_SENDER_PERMISSION, null);
             // Ask CellBroadcastReceiver to broadcast the latest area info received
             Intent getLatestIntent = new Intent(GET_LATEST_CB_AREA_INFO_ACTION);
-            getLatestIntent.putExtra(PhoneConstants.SUBSCRIPTION_KEY, mPhone.getSubId());
+            getLatestIntent.putExtra(PhoneConstants.PHONE_KEY, mPhone.getPhoneId());
             sendBroadcastAsUser(getLatestIntent, UserHandle.ALL,
                     CB_AREA_INFO_SENDER_PERMISSION);
 
