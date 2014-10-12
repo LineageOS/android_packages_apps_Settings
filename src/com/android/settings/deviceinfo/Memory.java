@@ -276,26 +276,26 @@ public class Memory extends SettingsPreferenceFragment {
         case DLG_CONFIRM_UNMOUNT:
             return new AlertDialog.Builder(getActivity())
                 .setTitle(mLastClickedCategory.isUsbStorage() ?
-                        R.string.dlg_confirm_usb_unmount_title :
-                        R.string.dlg_confirm_sd_unmount_title)
+                        R.string.usb_dlg_confirm_unmount_title :
+                        R.string.sd_dlg_confirm_unmount_title)
                 .setPositiveButton(R.string.dlg_ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         doUnmount();
                     }})
                 .setNegativeButton(R.string.cancel, null)
                 .setMessage(mLastClickedCategory.isUsbStorage() ?
-                        R.string.dlg_confirm_usb_unmount_text :
-                        R.string.dlg_confirm_sd_unmount_text)
+                        R.string.usb_dlg_confirm_unmount_text :
+                        R.string.sd_dlg_confirm_unmount_text)
                 .create();
         case DLG_ERROR_UNMOUNT:
             return new AlertDialog.Builder(getActivity())
                 .setTitle(mLastClickedCategory.isUsbStorage() ?
-                        R.string.dlg_error_usb_unmount_title :
-                        R.string.dlg_error_sd_unmount_title)
+                        R.string.usb_dlg_error_unmount_title :
+                        R.string.sd_dlg_error_unmount_title)
                 .setNeutralButton(R.string.dlg_ok, null)
                 .setMessage(mLastClickedCategory.isUsbStorage() ?
-                        R.string.dlg_error_usb_unmount_text :
-                        R.string.dlg_error_sd_unmount_text)
+                        R.string.usb_dlg_error_unmount_text :
+                        R.string.sd_dlg_error_unmount_text)
                 .create();
         }
         return null;
@@ -310,9 +310,9 @@ public class Memory extends SettingsPreferenceFragment {
         try {
             mLastClickedMountToggle.setEnabled(false);
             mLastClickedMountToggle.setTitle(mLastClickedCategory.isUsbStorage() ?
-                    R.string.usb_ejecting_title : R.string.sd_ejecting_title);
+                    R.string.usb_sd_ejecting_title : R.string.sd_sd_ejecting_title);
             mLastClickedMountToggle.setSummary(mLastClickedCategory.isUsbStorage() ?
-                    R.string.usb_ejecting_summary : R.string.sd_ejecting_summary);
+                    R.string.usb_sd_ejecting_summary : R.string.sd_sd_ejecting_summary);
             mountService.unmountVolume(mClickedMountPoint, true, false);
         } catch (RemoteException e) {
             // Informative dialog to user that unmount failed.
