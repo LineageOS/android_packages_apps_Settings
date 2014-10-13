@@ -64,10 +64,10 @@ public class ExpandedDesktopItem implements Item {
         switch (profile.getExpandedDesktopMode()) {
             case Profile.ExpandedDesktopMode.DEFAULT:
                 return R.string.profile_action_none;
+            case Profile.ExpandedDesktopMode.ENABLE:
+                return R.string.profile_action_enable;
             case Profile.ExpandedDesktopMode.DISABLE:
                 return R.string.profile_action_disabled;
-            case Profile.LockMode.INSECURE:
-                return R.string.profile_action_enable;
             default: return 0;
         }
     }

@@ -305,6 +305,7 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
             @Override
             public void onClick(DialogInterface dialog, int item) {
                 mProfile.setExpandedDesktopMode(EXPANDED_DESKTOP_MAPPING[item]);
+                updateProfile();
                 mAdapter.notifyDataSetChanged();
                 dialog.dismiss();
             }
