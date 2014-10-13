@@ -58,10 +58,12 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     private static final boolean DBG = true;
 
     public static final String CONFIG_LTE_SUB_SELECT_MODE = "config_lte_sub_select_mode";
+    private static final String CONFIG_PRIMARY_SUB_SETABLE = "config_primary_sub_setable";
 
     private static final String DISALLOW_CONFIG_SIM = "no_config_sim";
     private static final String SIM_ENABLER_CATEGORY = "sim_enablers";
     private static final String SIM_CARD_CATEGORY = "sim_cards";
+    private static final String SIM_ACTIVITIES_CATEGORY = "sim_activities";
     private static final String KEY_CELLULAR_DATA = "sim_cellular_data";
     private static final String KEY_CALLS = "sim_calls";
     private static final String KEY_SMS = "sim_sms";
@@ -78,6 +80,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
      */
     private List<SubInfoRecord> mAvailableSubInfos = null;
     private List<SubInfoRecord> mSubInfoList = null;
+    private Preference mPrimarySubSelect = null;
 
     private static List<MultiSimEnablerPreference> mSimEnablers = null;
 
@@ -86,7 +89,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     private SubInfoRecord mSMS = null;
 
     private int mNumSims;
-    private Preference mPrimarySubSelect = null;
 
     public SimSettings() {
         super(DISALLOW_CONFIG_SIM);
@@ -259,8 +261,17 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     private void initLTEPreference() {
         boolean isPrimarySubFeatureEnable = SystemProperties
                 .getBoolean("persist.radio.primarycard", false);
-        if (!isPrimarySubFeatureEnable) {
-            removePreference(KEY_PRIMARY_SUB_SELECT);
+
+        boolean primarySetable = android.provider.Settings.Global.getInt(
+                this.getContentResolver(), CONFIG_PRIMARY_SUB_SETABLE, 0) == 1;
+
+        logd("isPrimarySubFeatureEnable :" + isPrimarySubFeatureEnable +
+                " primarySetable :" + primarySetable);
+
+        if (!isPrimarySubFeatureEnable || !primarySetable) {
+            final PreferenceCategory simActivities =
+                    (PreferenceCategory) findPreference(SIM_ACTIVITIES_CATEGORY);
+            simActivities.removePreference(mPrimarySubSelect);
             return;
         }
 
@@ -269,7 +280,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         boolean isManualMode = android.provider.Settings.Global.getInt(
                 this.getContentResolver(), CONFIG_LTE_SUB_SELECT_MODE, 1) == 0;
 
-        Log.d(TAG, "init LTE primary slot : " + primarySlot + " isManualMode :" + isManualMode);
+        logd("init LTE primary slot : " + primarySlot + " isManualMode :" + isManualMode);
         if (-1 != primarySlot) {
             SubInfoRecord subInfo = findRecordBySlotId(primarySlot);
             CharSequence lteSummary = (subInfo == null ) ? null : subInfo.displayName;
