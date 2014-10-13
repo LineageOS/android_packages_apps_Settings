@@ -104,6 +104,10 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private static final String PACKAGE_MIME_TYPE = "application/vnd.android.package-archive";
     private static final String KEY_TRUST_AGENT = "trust_agent";
     private static final String KEY_SCREEN_PINNING = "screen_pinning_settings";
+    private static final String KEY_TOGGLE_DM_AUTOBOOT = "toggle_dm_autoboot";
+    private static final String DM_AUTOBOOT_SETTING = "dm_selfregist_autoboot";
+    private static final int DM_AUTOBOOT_SETTING_ENABLE = 1;
+    private static final int DM_AUTOBOOT_SETTING_DISABLE = 0;
 
     // These switch preferences need special handling since they're not all stored in Settings.
     private static final String SWITCH_PREFERENCE_KEYS[] = { KEY_LOCK_AFTER_TIMEOUT,
@@ -130,6 +134,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private SwitchPreference mToggleAppInstallation;
     private DialogInterface mWarnInstallApps;
     private SwitchPreference mPowerButtonInstantlyLocks;
+    private SwitchPreference mDMAutoBoot;
 
     private boolean mIsPrimary;
 
@@ -377,6 +382,21 @@ public class SecuritySettings extends SettingsPreferenceFragment
             mToggleAppInstallation.setEnabled(false);
         }
 
+        // DM
+        mDMAutoBoot = (SwitchPreference) findPreference(KEY_TOGGLE_DM_AUTOBOOT);
+        if (mDMAutoBoot != null) {
+            if (getResources().getBoolean(R.bool.dm_autoboot_setting_visible)) {
+                mDMAutoBoot.setEnabled(true);
+                mDMAutoBoot.setChecked(isDMAutoboot());
+            } else {
+                if (deviceAdminCategory != null) {
+                    deviceAdminCategory.removePreference(mDMAutoBoot);
+                } else {
+                    mDMAutoBoot.setEnabled(false);
+                }
+            }
+        }
+
         // AppOps summary, only visible when strict mode is enabled.
         if (!AppOpsManager.isStrictEnable()) {
             Preference appOpsSummary = findPreference(KEY_APP_OPS_SUMMARY);
@@ -446,6 +466,17 @@ public class SecuritySettings extends SettingsPreferenceFragment
         // Change the system setting
         Settings.Global.putInt(getContentResolver(), Settings.Global.INSTALL_NON_MARKET_APPS,
                                 enabled ? 1 : 0);
+    }
+
+    private boolean isDMAutoboot() {
+        int enable = Settings.Global.getInt(getContentResolver(), DM_AUTOBOOT_SETTING,
+                DM_AUTOBOOT_SETTING_ENABLE);
+        return (enable == DM_AUTOBOOT_SETTING_ENABLE);
+    }
+
+    private void setDMAutoboot(boolean enable) {
+        Settings.Global.putInt(getContentResolver(), DM_AUTOBOOT_SETTING,
+                enable ? DM_AUTOBOOT_SETTING_ENABLE : DM_AUTOBOOT_SETTING_DISABLE);
     }
 
     private void warnAppInstallation() {
@@ -612,6 +643,8 @@ public class SecuritySettings extends SettingsPreferenceFragment
                 startActivity(mTrustAgentClickIntent);
                 mTrustAgentClickIntent = null;
             }
+        } else if (KEY_TOGGLE_DM_AUTOBOOT.equals(key)) {
+            setDMAutoboot(mDMAutoBoot.isChecked());
         } else {
             // If we didn't handle it, let preferences handle it.
             return super.onPreferenceTreeClick(preferenceScreen, preference);

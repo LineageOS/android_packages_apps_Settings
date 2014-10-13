@@ -64,6 +64,12 @@
                 android:summaryOn="@string/install_unknown_applications"
                 android:persistent="false" />
 
+        <SwitchPreference android:key="toggle_dm_autoboot"
+                android:title="@string/dm_autoboot"
+                android:summaryOff="@string/dm_autoboot_summary"
+                android:summaryOn="@string/dm_autoboot_summary"
+                android:persistent="false" />
+
     </PreferenceCategory>
 
     <PreferenceCategory android:key="credentials_management"
