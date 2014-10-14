@@ -44,11 +44,11 @@
   <string name="profile_menu_delete">Esborra</string>
   <string name="profile_settings_title">Perfil</string>
   <string name="profile_empty_list_profiles_off">Per configurar i utilitzar perfils de sistema, activa els Perfils.</string>
-  <string name="profile_trigger_configure">Configura un disparador</string>
-  <string name="profile_triggers">Disparadors</string>
-  <string name="profile_trigger_filter_all">Tots els disparadors</string>
-  <string name="profile_trigger_filter_wifi">Disparadors Wi-Fi</string>
-  <string name="profile_trigger_filter_bluetooth">Disparadors Bluetooth</string>
+  <string name="profile_trigger_configure">Configura un esdeveniment</string>
+  <string name="profile_triggers">Esdeveniments</string>
+  <string name="profile_trigger_filter_all">Tots els esdeveniments</string>
+  <string name="profile_trigger_filter_wifi">Esdeveniments Wi-Fi</string>
+  <string name="profile_trigger_filter_bluetooth">Esdeveniments Bluetooth</string>
   <string name="profile_write_nfc_tag">Escriu a l\'etiqueta NFC</string>
   <string name="profile_write_touch_tag">Toca l\'etiqueta per escriure-la</string>
   <string name="profile_write_success">Etiqueta escrita satisfactòriament</string>
@@ -89,7 +89,7 @@
   <string name="profile_settings">Configuració dels perfils</string>
   <string name="profile_trigger_connect">En connectar</string>
   <string name="profile_trigger_disconnect">En desconnectar</string>
-  <string name="profile_trigger_notrigger">Sense disparador</string>
+  <string name="profile_trigger_notrigger">Sense esdeveniment</string>
   <string name="profile_trigger_a2dp_connect">En connectar l\'A2DP</string>
   <string name="profile_trigger_a2dp_disconnect">En desconnectar l\'A2DP</string>
   <string name="sound_mode">Mode de notificació</string>
@@ -291,6 +291,10 @@
   <string name="cm_sound_mode_vibrate">Vibració</string>
   <string name="cm_sound_mode_sound">So</string>
   <string name="cm_sound_mode_soundVibrate">So i Vibració</string>
+  <string name="pref_location_mode_title">Modes d\'ubicació</string>
+  <string name="cm_location_mode_battery_saving">Estalvi de bateria</string>
+  <string name="cm_location_mode_device_only">Només dispositiu</string>
+  <string name="cm_location_mode_high_accuracy">Alta precisió</string>
   <string name="tiles_reset_title">Reinicia</string>
   <string name="tiles_reset_message">Vols restaurar als valors predeterminats les cel·les mostres i la seva disposició?</string>
   <string name="auto_brightness_setup_title">Brillantor automàtica</string>
@@ -981,4 +985,20 @@ Hi ha disponibles opcions addicionals apretant llargament sobre la línia. Selec
   <string name="wifi_ap_clients_title">Dispositius connectats</string>
   <string name="wifi_ap_client_ap_disabled">Punt d\'accés desactivat</string>
   <string name="wifi_ap_client_none_connected">No hi ha dispositius connectats</string>
+  <string name="profile_menu_delete_title">Esborra</string>
+  <string name="profile_menu_triggers_title">Modifica els esdeveniments</string>
+  <string name="profile_action_none">Cap acció</string>
+  <string name="profile_action_disabled">Desactiva</string>
+  <string name="profile_action_enable">Activa</string>
+  <string name="profile_tabs_wifi">Wi-Fi</string>
+  <string name="profile_tabs_bluetooth">Bluetooth</string>
+  <string name="profile_tabs_nfc">NFC</string>
+  <string name="profile_setup_setup_triggers_title">Pas 1: Afegeix esdeveniments</string>
+  <string name="profile_setup_setup_triggers_title_config">Modifica esdeveniments: <xliff:g id="profile_name">%1$s</xliff:g></string>
+  <string name="profile_setup_actions_title">Pas 2: Configura les accions</string>
+  <string name="profile_setup_actions_title_config">Reconfigura les accions</string>
+  <string name="no_bluetooth_triggers">Cap esdeveniment Bluetooth disponible</string>
+  <string name="no_wifi_triggers">Cap esdeveniment Wi-Fi disponible</string>
+  <string name="profile_setup_setup_triggers_description">Si us plau selecciona quins esdeveniments activaran aquest perfil</string>
+  <string name="profile_setup_actions_description">Configura ara el que passa quan s\'activa el perfil</string>
 </resources>

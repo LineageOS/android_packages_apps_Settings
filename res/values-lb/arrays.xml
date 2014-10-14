@@ -108,23 +108,23 @@
     <item>IP-Adress gëtt ofgeruff\u2026</item>
     <item>Connectéiert</item>
     <item>Ugehalen</item>
-    <item>Disconnecting\u2026</item>
-    <item>Disconnected</item>
-    <item>Unsuccessful</item>
+    <item>Connectioun gëtt getrennt\u2026</item>
+    <item>Deconnectéiert</item>
+    <item>Net erfollegräich</item>
     <item>Blockéiert</item>
     <item>Schlecht Internetconnectioun gëtt temporär ignoréiert</item>
   </string-array>
   <string-array name="wifi_status_with_ssid">
     <item/>
-    <item>Scanning\u2026</item>
-    <item>Connecting to <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
-    <item>Authenticating with <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
-    <item>Obtaining IP address from <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
-    <item>Connected to <xliff:g id="network_name">%1$s</xliff:g></item>
-    <item>Suspended</item>
-    <item>Disconnecting from <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
-    <item>Disconnected</item>
-    <item>Unsuccessful</item>
+    <item>Scan leeft\u2026</item>
+    <item>Connectioun mat <xliff:g id="network_name">%1$s</xliff:g> gëtt hiergestallt\u2026</item>
+    <item>Authentifizéierung mat <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
+    <item>IP-Adress gëtt fir <xliff:g id="network_name">%1$s</xliff:g> ofgeruff\u2026</item>
+    <item>Connectéiert mat <xliff:g id="network_name">%1$s</xliff:g></item>
+    <item>Ugehalen</item>
+    <item>Connectioun mat <xliff:g id="network_name">%1$s</xliff:g> gëtt getrennt\u2026</item>
+    <item>Deconnectéiert</item>
+    <item>Net erfollegräich</item>
     <item>Blockéiert</item>
     <item>Schlecht Internetconnectioun gëtt temporär ignoréiert</item>
   </string-array>
@@ -150,29 +150,34 @@
     <item>TTLS</item>
     <item>PWD</item>
   </string-array>
+  <string-array name="wifi_p2p_wps_setup">
+    <item>Push-Knäppchen</item>
+    <item>PIN vum associéierten Apparat</item>
+    <item>PIN vun dësem Apparat</item>
+  </string-array>
   <string-array name="wifi_p2p_status">
     <item>Verbonnen</item>
-    <item>Invited</item>
-    <item>Unsuccessful</item>
+    <item>Invitéiert</item>
+    <item>Net erfollegräich</item>
     <item>Disponibel</item>
-    <item>Out-of-range</item>
+    <item>Ausser Reechwäit</item>
   </string-array>
   <string-array name="bluetooth_visibility_timeout_entries">
     <item>2 Minutten</item>
     <item>5 Minutten</item>
     <item>1 hour</item>
-    <item>Never time out</item>
+    <item>Keen Timeout</item>
   </string-array>
   <string-array name="wifi_signal">
-    <item>Poor</item>
-    <item>Fair</item>
+    <item>Schwaach</item>
+    <item>Mëttel</item>
     <item>Gutt</item>
-    <item>Excellent</item>
+    <item>Exzellent</item>
   </string-array>
   <string-array name="wifi_sleep_policy_entries">
     <item>Ëmmer</item>
     <item>Just wann um Stroum ugeschloss</item>
-    <item>Never (increases data usage)</item>
+    <item>Ni (erhéicht den Dateverbrauch)</item>
   </string-array>
   <string-array name="wifi_sleep_policy_entries_wifi_only">
     <item>Ëmmer</item>
@@ -186,8 +191,8 @@
   </string-array>
   <string-array name="wifi_frequency_band_entries">
     <item>Automatesch</item>
-    <item>5 GHz only</item>
-    <item>2.4 GHz only</item>
+    <item>just 5 GHz</item>
+    <item>just 2.4 GHz</item>
   </string-array>
   <string-array name="wifi_frequency_band_values">
     <item>0</item>
@@ -195,8 +200,8 @@
     <item>2</item>
   </string-array>
   <string-array name="usage_stats_display_order_types">
-    <item>Usage time</item>
-    <item>Launch count</item>
+    <item>Notzungszäit</item>
+    <item>Startunzuel</item>
     <item>App-Numm</item>
   </string-array>
   <string-array name="wifi_eap_entries">
@@ -227,7 +232,7 @@
   </string-array>
   <string-array name="emergency_tone_entries">
     <item>Aus</item>
-    <item>Alert</item>
+    <item>Warnung</item>
     <item>Vibréieren</item>
   </string-array>
   <string-array name="emergency_tone_values">
@@ -236,7 +241,7 @@
     <item>2</item>
   </string-array>
   <string-array name="apn_auth_entries">
-    <item>None</item>
+    <item>Keng</item>
     <item>PAP</item>
     <item>CHAP</item>
     <item>PAP oder CHAP</item>
@@ -249,75 +254,75 @@
   <string-array name="bearer_entries">
     <item>LTE</item>
     <item>eHRPD</item>
-    <item>Unspecified</item>
+    <item>Keng Auswiel</item>
   </string-array>
   <string-array name="mvno_type_entries">
-    <item>None</item>
+    <item>Keen</item>
     <item>SPN</item>
     <item>IMSI</item>
     <item>GID</item>
   </string-array>
   <string-array name="app_install_location_entries">
     <item>Interne Späicher</item>
-    <item>Removable SD card</item>
-    <item>Let the system decide</item>
+    <item>Austauschbar SD-Kaart</item>
+    <item>De System auswiele loossen</item>
   </string-array>
   <string-array name="app_ops_categories">
-    <item>Lokaliséierung</item>
+    <item>Standuert</item>
     <item>Perséinlech</item>
     <item>Messagen</item>
     <item>Medien</item>
     <item>Apparat</item>
   </string-array>
   <string-array name="app_ops_summaries">
-    <item>coarse location</item>
-    <item>fine location</item>
+    <item>ongeféiere Standuert</item>
+    <item>geneeë Standuert</item>
     <item>GPS</item>
-    <item>vibrate</item>
-    <item>read contacts</item>
-    <item>modify contacts</item>
+    <item>vibréieren</item>
+    <item>Kontakter liesen</item>
+    <item>Kontakter änneren</item>
     <item>Urufflëscht liesen</item>
     <item>Urufflëscht änneren</item>
-    <item>read calendar</item>
-    <item>modify calendar</item>
-    <item>wi-fi scan</item>
-    <item>notification</item>
-    <item>cell scan</item>
-    <item>call phone</item>
-    <item>read SMS</item>
-    <item>write SMS</item>
-    <item>receive SMS</item>
-    <item>receive emergency SMS</item>
-    <item>receive MMS</item>
-    <item>receive WAP push</item>
-    <item>send SMS</item>
-    <item>read ICC SMS</item>
-    <item>write ICC SMS</item>
-    <item>modify settings</item>
-    <item>draw on top</item>
-    <item>access notifications</item>
+    <item>Kalenner liesen</item>
+    <item>Kalenner änneren</item>
+    <item>WLAN-Scan</item>
+    <item>Notifikatioun</item>
+    <item>Handysnetzwierk-Scan</item>
+    <item>Telefonéieren</item>
+    <item>SMS liesen</item>
+    <item>SMS schreiwen</item>
+    <item>SMS empfänken</item>
+    <item>Noufall-SMS empfänken</item>
+    <item>MMS empfänken</item>
+    <item>WAP-Push empfänken</item>
+    <item>SMS schécken</item>
+    <item>ICC-SMS liesen</item>
+    <item>ICC-SMS schreiwen</item>
+    <item>Astellungen änneren</item>
+    <item>virun aneren Appen ablenden</item>
+    <item>op Notifikatiounen zougräifen</item>
     <item>Kamera</item>
     <item>Audio ophuelen</item>
-    <item>play audio</item>
-    <item>read clipboard</item>
-    <item>modify clipboard</item>
-    <item>media buttons</item>
-    <item>audio focus</item>
-    <item>master volume</item>
-    <item>voice volume</item>
-    <item>ring volume</item>
-    <item>media volume</item>
-    <item>alarm volume</item>
-    <item>notification volume</item>
-    <item>bluetooth volume</item>
+    <item>Toun ofspillen</item>
+    <item>Tëschenoflag liesen</item>
+    <item>Tëschenoflag änneren</item>
+    <item>Medie-Knäppercher</item>
+    <item>Toun-Fokus</item>
+    <item>Gesamtlautstäerkt</item>
+    <item>Sproochlautstäerkt</item>
+    <item>Schelltounlautstäerkt</item>
+    <item>Medielautstäerkt</item>
+    <item>Weckerlautstäerkt</item>
+    <item>Notificatiounslautstäerkt</item>
+    <item>Bluetooth-Lautstäerkt</item>
     <item>keep awake</item>
     <item>monitor location</item>
     <item>monitor high power location</item>
   </string-array>
   <string-array name="app_ops_labels">
-    <item>Lokaliséierung</item>
-    <item>Lokaliséierung</item>
-    <item>Lokaliséierung</item>
+    <item>Standuert</item>
+    <item>Standuert</item>
+    <item>Standuert</item>
     <item>Vibréieren</item>
     <item>Read contacts</item>
     <item>Modify contacts</item>
@@ -325,9 +330,9 @@
     <item>Urufflëscht änneren</item>
     <item>Read calendar</item>
     <item>Modify calendar</item>
-    <item>Lokaliséierung</item>
+    <item>Standuert</item>
     <item>Post notification</item>
-    <item>Lokaliséierung</item>
+    <item>Standuert</item>
     <item>Telefonéieren</item>
     <item>SMS/MMS liesen</item>
     <item>SMS/MMS schreiwen</item>
@@ -356,8 +361,8 @@
     <item>Notification volume</item>
     <item>Bluetooth volume</item>
     <item>Keep awake</item>
-    <item>Lokaliséierung</item>
-    <item>Lokaliséierung</item>
+    <item>Standuert</item>
+    <item>Standuert</item>
   </string-array>
   <string-array name="captioning_opacity_selector_titles">
     <item>25%</item>

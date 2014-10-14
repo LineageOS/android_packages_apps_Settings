@@ -37,24 +37,28 @@
   <string name="sms_over_ims_off">SMS iwwer IMS ausmaachen</string>
   <string name="radioInfo_service_off">Radio aus</string>
   <string name="radioInfo_roaming_in">Roaming</string>
+  <string name="radioInfo_data_disconnected">Connectioun getrennt</string>
+  <string name="radioInfo_data_connecting">Connectéieren</string>
   <string name="radioInfo_data_connected">Verbonnen</string>
   <string name="radioInfo_unknown">onbekannt</string>
   <string name="radioInfo_display_dbm">dBm</string>
   <string name="font_size_save">OK</string>
   <string name="battery_info_health_good">Gutt</string>
   <string name="bluetooth">Bluetooth</string>
+  <string name="default_date_format"><xliff:g id="default_date_format">dd/MM/yyyy</xliff:g></string>
   <string name="proxy_clear_text">Eidel maachen</string>
   <string name="proxy_exclusionlist_hint">example.com,mycomp.test.com,localhost</string>
   <string name="proxy_action_text">Fäerdeg</string>
   <string name="proxy_error_dismiss">OK</string>
   <string name="skip_label">Iwwersprangen</string>
   <string name="next_label">Weider</string>
+  <string name="debug_intent_sender_label">Debug intent sender</string>
   <string name="cancel">Ofbriechen</string>
   <string name="settings_label">Astellungen</string>
   <string name="settings_label_launcher">Astellungen</string>
   <string name="date_picker_title">Datum</string>
   <string name="time_picker_title">Zäit</string>
-  <string name="location_settings_title">Lokaliséierung</string>
+  <string name="location_settings_title">Standuert</string>
   <string name="unlock_set_unlock_launch_picker_title">Schiermspär</string>
   <string name="lockpassword_continue_label">Weider</string>
   <string name="lockpassword_ok_label">OK</string>
@@ -65,15 +69,30 @@
   <string name="bluetooth_settings">Bluetooth</string>
   <string name="bluetooth_settings_title">Bluetooth</string>
   <string name="bluetooth_pairing_decline">Ofbriechen</string>
+  <string name="bluetooth_searching_for_devices">Gëtt gesicht\u2026</string>
   <string name="bluetooth_device_context_disconnect">Deconnectéieren</string>
   <string name="bluetooth_profile_opp">Fichiersiwwerdroung</string>
+  <string name="wifi_display_status_connecting">Connectéieren</string>
   <string name="wifi_display_status_connected">Verbonnen</string>
   <string name="wifi_display_options_done">Fäerdeg</string>
   <string name="wifi_display_options_name">Numm</string>
   <string name="wifi_quick_toggle_title">WLAN</string>
   <string name="wifi_settings_title">WLAN</string>
+  <string name="wifi_error">Feeler</string>
   <string name="wifi_more">Méi</string>
   <string name="wifi_status">Status</string>
+  <string name="wifi_security_short_wep">WEP</string>
+  <string name="wifi_security_short_wpa">WPA</string>
+  <string name="wifi_security_short_wpa2">WPA2</string>
+  <string name="wifi_security_short_wpa_wpa2">WPA/WPA2</string>
+  <string name="wifi_security_short_psk_generic">@string/wifi_security_short_wpa_wpa2</string>
+  <string name="wifi_security_short_eap">802.1x</string>
+  <string name="wifi_security_wep">WEP</string>
+  <string name="wifi_security_wpa">WPA PSK</string>
+  <string name="wifi_security_wpa2">WPA2 PSK</string>
+  <string name="wifi_security_wpa_wpa2">WPA/WPA2 PSK</string>
+  <string name="wifi_security_psk_generic">@string/wifi_security_wpa_wpa2</string>
+  <string name="wifi_security_eap">802.1x EAP</string>
   <string name="wifi_scan_always_confirm_allow">Erlaben</string>
   <string name="wifi_save">Späicheren</string>
   <string name="wifi_cancel">Ofbriechen</string>
@@ -82,6 +101,8 @@
   <string name="wifi_ip_settings_invalid_ip_address">Gëff eng gëlteg IP-Adress an.</string>
   <string name="wifi_ip_settings_invalid_gateway">Gëff eng gëlteg Gateway-Adress an.</string>
   <string name="wifi_ip_settings_invalid_dns">Gëff eng gëlteg DNS-Adress an.</string>
+  <string name="wifi_p2p_menu_searching">Gëtt gesicht\u2026</string>
+  <string name="sound_settings">Toun</string>
   <string name="ringtone_title">Schelltoun</string>
   <string name="ring_volume_title">Schelltounlautstäerkt</string>
   <string name="incoming_call_volume_title">Schelltoun</string>
@@ -94,6 +115,7 @@
   <string name="brightness">Hellegkeet</string>
   <string name="wallpaper_settings_title">Hannergrondbild</string>
   <string name="screensaver_settings_title">Dagesdram</string>
+  <string name="screensaver_settings_summary_off">Aus</string>
   <string name="screensaver_settings_button">Astellungen</string>
   <string name="sim_change_succeeded">SIM-PIN erfollegräich geännert</string>
   <string name="sim_enter_ok">OK</string>
@@ -104,6 +126,7 @@
   <string name="device_status">Status</string>
   <string name="storage_settings">Späicher</string>
   <string name="status_imei">IMEI</string>
+  <string name="status_imei_sv">IMEI-SV</string>
   <string name="status_meid_number">MEID</string>
   <string name="status_roaming">Roaming</string>
   <string name="memory_available">Disponibel</string>
@@ -114,7 +137,14 @@
   <string name="apn_auth_type_chap">CHAP</string>
   <string name="apn_auth_type_pap_chap">PAP oder CHAP</string>
   <string name="menu_save">Späicheren</string>
+  <string name="menu_cancel">Verwerfen</string>
+  <string name="menu_restore">Op de Standard zrécksetzen</string>
+  <string name="tether_settings_title_usb">USB-Tethering</string>
+  <string name="tether_settings_title_bluetooth">Bluetooth-Tethering</string>
+  <string name="bluetooth_tether_checkbox_text">Bluetooth-Tethering</string>
   <string name="tethering_help_button_text">Hëllef</string>
+  <string name="lockpattern_need_to_unlock_wrong">Nees probéieren:</string>
+  <string name="lockpattern_recording_intro_header">Entspäermuster zeechnen</string>
   <string name="lockpattern_continue_button_text">Weider</string>
   <string name="lockpattern_too_many_failed_confirmation_attempts_footer">Probéier nach eng Kéier a(n) <xliff:g id="number">%d</xliff:g> Sekonnen.</string>
   <string name="application_info_label">App-Info</string>
@@ -124,13 +154,25 @@
   <string name="filter_apps_all">All</string>
   <string name="dlg_ok">OK</string>
   <string name="dlg_cancel">Ofbriechen</string>
+  <string name="app_not_found_dlg_text"> D\'App gouf net an der Lëscht vun installéierten Appe fonnt.</string>
+  <string name="join_two_items"><xliff:g id="first_item">%1$s</xliff:g> a(n) <xliff:g id="second_item">%2$s</xliff:g></string>
+  <string name="join_many_items_last"><xliff:g id="all_but_last_item">%1$s</xliff:g> a(n) <xliff:g id="last_item">%2$s</xliff:g></string>
+  <string name="join_many_items_first"><xliff:g id="first_item">%1$s</xliff:g>, <xliff:g id="all_but_first_and_last_item">%2$s</xliff:g></string>
+  <string name="join_many_items_middle"><xliff:g id="added_item">%1$s</xliff:g>, <xliff:g id="rest_of_items">%2$s</xliff:g></string>
   <string name="service_manage">Astellungen</string>
   <string name="spellchecker_quick_settings">Astellungen</string>
   <string name="user_dict_settings_add_menu_title">Dobäisetzen</string>
+  <string name="user_dict_settings_add_screen_title">Saz</string>
+  <string name="user_dict_settings_add_dialog_less_options">Manner Optiounen</string>
   <string name="user_dict_settings_add_dialog_confirm">OK</string>
+  <string name="user_dict_settings_add_word_option_name">Wuert:</string>
+  <string name="user_dict_settings_add_locale_option_name">Sprooch:</string>
+  <string name="user_dict_settings_add_shortcut_hint">Optional Ofkierzung</string>
+  <string name="user_dict_settings_edit_dialog_title">Wuert änneren</string>
   <string name="user_dict_settings_context_menu_delete_title">Läschen</string>
   <string name="user_dict_settings_all_languages">Fir all d\'Sproochen</string>
   <string name="user_dict_settings_more_languages">Méi Sproochen&#8230;</string>
+  <string name="testing_sim_toolkit">SIM-Toolkit</string>
   <string name="quick_launch_clear_dialog_title">Eidel maachen</string>
   <string name="quick_launch_clear_ok_button">OK</string>
   <string name="quick_launch_clear_cancel_button">Ofbriechen</string>
@@ -144,14 +186,20 @@
   <string name="input_method_settings_button">Astellungen</string>
   <string name="builtin_keyboard_settings_title">Physesch Tastatur</string>
   <string name="adb_warning_title">USB-Debugging erlaben?</string>
+  <string name="accessibility_settings">Accessibilitéit</string>
+  <string name="accessibility_system_title">System</string>
   <string name="accessibility_global_gesture_preference_summary_on">Un</string>
+  <string name="accessibility_global_gesture_preference_summary_off">Aus</string>
+  <string name="accessibility_toggle_large_text_preference_title">Groussen Text</string>
   <string name="accessibility_menu_item_settings">Astellungen</string>
   <string name="accessibility_feature_state_on">Un</string>
+  <string name="captioning_preview_characters">Aa</string>
   <string name="color_none">Keen</string>
   <string name="settings_button">Astellungen</string>
   <string name="print_no_printers_found">Keen Drécker fonnt</string>
   <string name="print_menu_item_settings">Astellungen</string>
   <string name="print_feature_state_on">Un</string>
+  <string name="print_feature_state_off">Aus</string>
   <string name="print_menu_item_add_service">Service dobäisetzen</string>
   <string name="print_menu_item_add_printer">Drécker dobäisetzen</string>
   <string name="print_menu_item_search">Sichen</string>
@@ -168,13 +216,16 @@
     <item quantity="one"><xliff:g id="count" example="1">%1$s</xliff:g> Drécker fonnt</item>
     <item quantity="other"><xliff:g id="count" example="1">%1$s</xliff:g> Drécker fonnt</item>
   </plurals>
+  <string name="power_usage_level_and_status"><xliff:g id="level">%1$s</xliff:g> - <xliff:g id="status">%2$s</xliff:g></string>
   <string name="battery_stats_wifi_running_label">WLAN</string>
+  <string name="usage_name_percent"><xliff:g id="name">%1$s</xliff:g>" - "<xliff:g id="number" example="30">%2$s</xliff:g><xliff:g id="percent" example="%">%%</xliff:g></string>
   <string name="power_wifi">WLAN</string>
   <string name="power_bluetooth">Bluetooth</string>
   <string name="usage_type_phone" product="default">Telefon</string>
   <string name="usage_type_audio">Toun</string>
   <string name="usage_type_video">Video</string>
   <string name="battery_action_app_details">App-Info</string>
+  <string name="menu_stats_refresh">Nei lueden</string>
   <string name="menu_proc_stats_duration">Dauer</string>
   <string name="menu_duration_3h">3 Stonnen</string>
   <string name="menu_duration_6h">6 Stonnen</string>
@@ -185,18 +236,22 @@
   <string name="tts_general_section_title">Allgemeng</string>
   <string name="gadget_wifi">WLAN</string>
   <string name="gadget_bluetooth">Bluetooth</string>
-  <string name="gadget_location">Lokaliséierung</string>
+  <string name="gadget_location">Standuert</string>
   <string name="gadget_sync">Sync</string>
   <string name="credentials_wrong_password">Inkorrekt Passwuert.</string>
   <string name="backup_data_title">Meng Date sécheren</string>
+  <string name="untitled_apn">Ouni Titel</string>
   <string name="sound_category_sound_title">Allgemeng</string>
   <string name="sound_category_notification_title">Notifikatiounen</string>
+  <string name="sound_category_system_title">System</string>
   <string name="wifi_setup_skip">Iwwersprangen</string>
   <string name="wifi_setup_next">Weider</string>
   <string name="wifi_setup_back">Zréck</string>
   <string name="wifi_setup_save">Späicheren</string>
   <string name="wifi_setup_cancel">Ofbriechen</string>
   <string name="account_sync_settings_title">Sync</string>
+  <string name="add_account_label">Kont dobäisetzen</string>
+  <string name="sync_menu_sync_now">Elo synchroniséieren</string>
   <string name="sync_calendar">Kalenner</string>
   <string name="sync_contacts">Kontakter</string>
   <string name="sync_item_title"><xliff:g id="authority" example="Calendar">%s</xliff:g></string>
@@ -217,6 +272,7 @@
   <string name="vpn_cancel">Ofbriechen</string>
   <string name="vpn_save">Späicheren</string>
   <string name="vpn_lockdown_none">Keen</string>
+  <string name="trusted_credentials_system_tab">System</string>
   <string name="trusted_credentials_remove_label">Ewechhuelen</string>
   <string name="backup_pw_cancel_button_text">Ofbriechen</string>
   <string name="ssl_ca_cert_warning">D\'Netzwierk kéint iwwerwaacht sinn</string>
@@ -226,8 +282,9 @@
   <string name="user_setup_button_setup_later">Net elo</string>
   <string name="user_delete_button">Läschen</string>
   <string name="help_label">Hëllef</string>
+  <string name="user_account_title">Konto fir den Inhalt</string>
   <string name="restriction_bluetooth_config_title">Bluetooth</string>
-  <string name="restriction_location_enable_title">Lokaliséierung</string>
+  <string name="restriction_location_enable_title">Standuert</string>
   <string name="wizard_back">Zréck</string>
   <string name="wizard_next">Weider</string>
   <string name="user_image_take_photo" msgid="7496128293167402354">Foto maachen</string>

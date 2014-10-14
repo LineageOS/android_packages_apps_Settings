@@ -215,7 +215,8 @@
   <string name="lockscreen_maximize_widgets_title">Развёрнутые виджеты</string>
   <string name="lockscreen_maximize_widgets_summary">Показывать виджеты экрана блокировки развёрнутыми, а кольцо разблокировки экрана — в свёрнутом виде</string>
   <string name="lockscreen_enable_camera_title">Виджет камеры</string>
-  <string name="safe_headset_volume_title">Ограничение громкости наушников</string>
+  <string name="safe_headset_volume_title">Предупреждать при высокой громкости наушников</string>
+  <string name="safe_headset_volume_restore_title">Снижать громкость наушников при их подключении</string>
   <string name="cyanogenmod_waiver_title">Отказ от ответственности</string>
   <string name="cyanogenmod_waiver_body">Изменение этих настроек может противоречить законам вашего государства.\n\nНажимая «OK», вы соглашаетесь с этим предупреждением и освобождаете CyanogenMod и всех его разработчиков от любых юридических обязательств.</string>
   <string name="quick_settings_panel_title">Панель быстрых настроек</string>
@@ -291,6 +292,10 @@
   <string name="cm_sound_mode_vibrate">Вибрация</string>
   <string name="cm_sound_mode_sound">Звук</string>
   <string name="cm_sound_mode_soundVibrate">Звук и вибросигнал</string>
+  <string name="pref_location_mode_title">Определение местоположения</string>
+  <string name="cm_location_mode_battery_saving">По координатам сети</string>
+  <string name="cm_location_mode_device_only">По спутникам GPS</string>
+  <string name="cm_location_mode_high_accuracy">По всем источникам</string>
   <string name="tiles_reset_title">Сброс</string>
   <string name="tiles_reset_message">Восстановить плитки и их расположение по умолчанию?</string>
   <string name="auto_brightness_setup_title">Автоматическая регулировка</string>
@@ -981,4 +986,20 @@
   <string name="wifi_ap_clients_title">Подключённые устройства</string>
   <string name="wifi_ap_client_ap_disabled">Точка доступа отключена</string>
   <string name="wifi_ap_client_none_connected">Нет подключённых устройств</string>
+  <string name="profile_menu_delete_title">Удалить</string>
+  <string name="profile_menu_triggers_title">Условия переключения</string>
+  <string name="profile_action_none">Нет действия</string>
+  <string name="profile_action_disabled">Выключить</string>
+  <string name="profile_action_enable">Включить</string>
+  <string name="profile_tabs_wifi">Wi-Fi</string>
+  <string name="profile_tabs_bluetooth">Bluetooth</string>
+  <string name="profile_tabs_nfc">NFC</string>
+  <string name="profile_setup_setup_triggers_title">Шаг 1: добавьте условия переключения</string>
+  <string name="profile_setup_setup_triggers_title_config">Условия переключения: <xliff:g id="profile_name">%1$s</xliff:g></string>
+  <string name="profile_setup_actions_title">Шаг 2: настройте требуемые действия</string>
+  <string name="profile_setup_actions_title_config">Изменение действий</string>
+  <string name="no_bluetooth_triggers">Нет Bluetooth-устройств, которые можно использовать для переключения</string>
+  <string name="no_wifi_triggers">Нет сетей Wi-Fi, которые можно использовать для переключения</string>
+  <string name="profile_setup_setup_triggers_description">Укажите условия, при которых будет включаться данный профиль</string>
+  <string name="profile_setup_actions_description">Теперь можно настроить, что должно происходить при активации профиля</string>
 </resources>

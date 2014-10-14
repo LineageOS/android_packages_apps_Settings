@@ -124,10 +124,10 @@
   <string name="toggleNfc">NFC</string>
   <string name="volume_ring_only_description">着信音</string>
   <string name="link_volume_ringtones">着信音と通知の音量をリンク</string>
-  <string name="link_volume_mutes">サイレントモードを通知に反映する</string>
+  <string name="link_volume_mutes">サイレントモードを通知に反映</string>
   <string name="volume_keys_control_ring_stream">音量ボタンで着信音の音量をコントロール</string>
   <string name="ring_mode_title">着信モード</string>
-  <string name="ring_mode_normal">通常</string>
+  <string name="ring_mode_normal">標準</string>
   <string name="ring_mode_vibrate">バイブレーション</string>
   <string name="ring_mode_mute">ミュート</string>
   <string name="volume_overlay_title">音量パネルのスタイル</string>
@@ -137,7 +137,7 @@
   <string name="volume_overlay_none">なし</string>
   <string name="automation_effects_title">自動制御と効果</string>
   <string name="notification_convert_sound_to_vibration_title">通知のバイブレーション</string>
-  <string name="notification_convert_sound_to_vibration_summary">バイブレーションモードで、それぞれのアプリの設定に関係なくすべての通知で振動させる</string>
+  <string name="notification_convert_sound_to_vibration_summary">バイブモードで、それぞれのアプリの設定に関係なくすべての通知で振動させる</string>
   <string name="notification_vibrate_during_calls_title">通話中のバイブレーション</string>
   <string name="notification_vibrate_during_calls_summary">通話中はおだやかに振動させる</string>
   <string name="volume_adjust_sounds_enable_title">音量調整の音</string>
@@ -291,6 +291,10 @@
   <string name="cm_sound_mode_vibrate">バイブレーション</string>
   <string name="cm_sound_mode_sound">サウンド</string>
   <string name="cm_sound_mode_soundVibrate">サウンドとバイブレーション</string>
+  <string name="pref_location_mode_title">位置情報モード</string>
+  <string name="cm_location_mode_battery_saving">バッテリー節約</string>
+  <string name="cm_location_mode_device_only">端末のみ</string>
+  <string name="cm_location_mode_high_accuracy">高精度</string>
   <string name="tiles_reset_title">リセット</string>
   <string name="tiles_reset_message">デフォルトのタイルとレイアウトに戻しますか？</string>
   <string name="auto_brightness_setup_title">明るさの自動調整</string>
@@ -367,7 +371,7 @@
   <string name="quiet_hours_enabled">おやすみモード</string>
   <string name="quiet_hours_ringer">着信音</string>
   <string name="quiet_hours_mute">通知</string>
-  <string name="quiet_hours_mute_summary">通知をミュート</string>
+  <string name="quiet_hours_mute_summary">通知をミュートする</string>
   <string name="quiet_hours_system">システムの音</string>
   <string name="quiet_hours_system_summary">システムの音を無効にする</string>
   <string name="quiet_hours_still">バイブレーション</string>
@@ -431,7 +435,7 @@
   <string name="pref_purgeable_assets_title">アセットのパージを許可</string>
   <string name="pref_purgeable_assets_summary">必要に応じてビットマップメモリのアセットをパージすることで、より多くのRAMを解放できます（要再起動）</string>
   <string name="pref_use_16bpp_alpha_title">16ビット透過</string>
-  <string name="pref_use_16bpp_alpha_summary">グラフィックスのパフォーマンスは向上しますが、画質は低くなり、視覚的アーチファクトを発生させる可能性があります（要再起動）</string>
+  <string name="pref_use_16bpp_alpha_summary">グラフィックスのパフォーマンスは向上しますが、画質が低くなり、表示が乱れる可能性もあります（要再起動）</string>
   <string name="pref_force_highend_gfx_title">ハイエンドグラフィックスを強制</string>
   <string name="pref_force_highend_gfx_summary">透過のステータスバーやナビゲーションバーのようなハイエンドな視覚効果を有効にする（要再起動）</string>
   <string name="kill_app_longpress_back">戻るボタンでアプリを終了</string>
@@ -444,7 +448,7 @@
   <string name="development_tools_title">ツールを起動</string>
   <string name="allow_mock_sms">疑似SMSを許可</string>
   <string name="privacy_settings_cyanogenmod_title">プライバシー</string>
-  <string name="privacy_guard_switch_label">プライバシーガードを有効にする</string>
+  <string name="privacy_guard_switch_label">プライバシーガードを有効化</string>
   <string name="privacy_guard_dlg_title">プライバシーガードを有効にしますか？</string>
   <string name="privacy_guard_dlg_text">プライバシーガードを有効にすると、アプリは連絡先、メッセージ、通話履歴のような個人データにアクセスできなくなります。</string>
   <string name="privacy_guard_dlg_system_app_text">内蔵アプリでプライバシーガードを有効にすると、個人データへのアクセスまたは提供ができなくなります。また、他のアプリがうまく動かなくなる可能性があります。</string>
@@ -594,7 +598,7 @@
   <string name="navigation_bar_title">ボタンとレイアウト</string>
   <string name="navigation_bar_left_title">左利きモード</string>
   <string name="navigation_bar_left_summary">横画面モードでナビゲーションバーを画面の左側に配置する</string>
-  <string name="navigation_bar_help_text">1 - 編集を始めるには鍵アイコンをタップしてください\n\n2 - ボタンをタップすると機能の割り当てまたは変更をします\n\n3 - ボタンを長押しすると順番を並び替えます\n\n4 - 保存するには鍵アイコンを再びタップしてください\n\n5 - システムのデフォルトに戻すにはリセットボタンをタップしてください\n\n</string>
+  <string name="navigation_bar_help_text">1 - 編集を始めるには鍵アイコンをタップします\n\n2 - ボタンをタップして機能の割り当てまたは変更をします\n\n3 - ボタンを長押しして順番を並び替えます\n\n4 - 保存するには鍵アイコンを再びタップします\n\n5 - システムのデフォルトに戻すにはリセットボタンをタップします\n\n</string>
   <string name="navigation_bar_tips">\u2022 同じ動作は1つのボタンにしか割り当てられません\n\n\u2022 ホームボタンは再割り当てできません\n\n\u2022 サイドのボタンを並べ替えることはできません</string>
   <string name="navigation_bar_tips_title">ヒント</string>
   <string name="navigation_bar_reset_message">現在の設定を削除してデフォルトに戻しますか？</string>
@@ -945,7 +949,7 @@
   <string name="bluetooth_sap_profile_summary_connected">SIMアクセスサーバーに接続しました</string>
   <string name="bluetooth_dun_profile_summary_connected">DUNサーバーに接続しました</string>
   <string name="bluetooth_sap_profile_summary_use_for">SIMアクセスに使用する</string>
-  <string name="bluetooth_dun_profile_summary_use_for">ダイアルアップネットワーク接続に使用する</string>
+  <string name="bluetooth_dun_profile_summary_use_for">ダイヤルアップネットワーク接続に使用する</string>
   <string name="wifi_disabled_association_rejected">アソシエーションが拒否されました</string>
   <string name="screencolor">画面の色</string>
   <string name="custom_screencolor">カスタムの画面の色</string>
@@ -987,4 +991,20 @@
   <string name="wifi_ap_clients_title">接続済みデバイス</string>
   <string name="wifi_ap_client_ap_disabled">Wi-Fiテザリングは無効です</string>
   <string name="wifi_ap_client_none_connected">接続しているデバイスがありません</string>
+  <string name="profile_menu_delete_title">削除</string>
+  <string name="profile_menu_triggers_title">トリガーを変更</string>
+  <string name="profile_action_none">変更しない</string>
+  <string name="profile_action_disabled">無効</string>
+  <string name="profile_action_enable">有効</string>
+  <string name="profile_tabs_wifi">Wi-Fi</string>
+  <string name="profile_tabs_bluetooth">Bluetooth</string>
+  <string name="profile_tabs_nfc">NFC</string>
+  <string name="profile_setup_setup_triggers_title">ステップ1: トリガーを追加</string>
+  <string name="profile_setup_setup_triggers_title_config">トリガーを変更: <xliff:g id="profile_name">%1$s</xliff:g></string>
+  <string name="profile_setup_actions_title">ステップ2: 動作をセットアップ</string>
+  <string name="profile_setup_actions_title_config">動作を再設定</string>
+  <string name="no_bluetooth_triggers">Bluetoothトリガーはありません</string>
+  <string name="no_wifi_triggers">Wi-Fiトリガーはありません</string>
+  <string name="profile_setup_setup_triggers_description">このプロファイルを有効にするトリガーを選択してください</string>
+  <string name="profile_setup_actions_description">このプロファイルが有効になったときの動作を設定してください</string>
 </resources>
