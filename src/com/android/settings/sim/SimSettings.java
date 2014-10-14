@@ -20,6 +20,9 @@ import android.provider.SearchIndexableResource;
 import com.android.settings.R;
 
 import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import android.content.Intent;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.DialogInterface;
@@ -43,6 +46,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import com.android.internal.telephony.Phone;
+import com.android.internal.telephony.TelephonyIntents;
 import com.android.settings.RestrictedSettingsFragment;
 import com.android.settings.Utils;
 import com.android.settings.notification.DropDownPreference;
@@ -109,13 +113,44 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
 
         createPreferences();
         updateAllOptions();
+        IntentFilter intentFilter =
+                new IntentFilter(TelephonyIntents.ACTION_DEFAULT_DATA_SUBSCRIPTION_CHANGED);
+        intentFilter.addAction(TelephonyIntents.ACTION_SUBINFO_CONTENT_CHANGE);
+
+        getActivity().registerReceiver(mDdsSwitchReceiver, intentFilter);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         Log.d(TAG,"on onDestroy");
+        getActivity().unregisterReceiver(mDdsSwitchReceiver);
     }
+
+    private BroadcastReceiver mDdsSwitchReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            Log.d(TAG, "Intent received: " + action);
+            if (TelephonyIntents.ACTION_DEFAULT_DATA_SUBSCRIPTION_CHANGED.equals(action)) {
+                updateCellularDataValues();
+            } else if (TelephonyIntents.ACTION_SUBINFO_CONTENT_CHANGE.equals(action)) {
+                mAvailableSubInfos.clear();
+                mNumSims = 0;
+                mSubInfoList = SubscriptionManager.getActiveSubInfoList();
+                for (int i = 0; i < mNumSlots; ++i) {
+                    final SubInfoRecord sir = findRecordBySlotId(i);
+                    // Do not display deactivated subInfo in preference list
+                    if ((sir != null) && (sir.mStatus == SubscriptionManager.ACTIVE)) {
+                        mNumSims++;
+                        mAvailableSubInfos.add(sir);
+                    }
+                }
+                // Refresh UI whenever subinfo record gets changed
+                updateAllOptions();
+            }
+        }
+    };
 
     private void createPreferences() {
         addPreferencesFromResource(R.xml.sim_settings);
@@ -137,9 +172,10 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             } else {
                 removePreference(SIM_ENABLER_CATEGORY);
             }
-            mAvailableSubInfos.add(sir);
-            if (sir != null) {
+            // Do not display deactivated subInfo in preference list
+            if ((sir != null) && (sir.mStatus == SubscriptionManager.ACTIVE)) {
                 mNumSims++;
+                mAvailableSubInfos.add(sir);
             }
         }
     }
@@ -194,7 +230,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
      * Since the number of SIMs are few, an array is fine.
      */
     private SubInfoRecord findRecordBySlotId(final int slotId) {
-        if (mSubInfoList != null){
+        if (mSubInfoList != null) {
             final int availableSubInfoLength = mSubInfoList.size();
 
             for (int i = 0; i < availableSubInfoLength; ++i) {
