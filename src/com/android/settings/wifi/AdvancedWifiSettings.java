@@ -216,6 +216,8 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
         if (KEY_FREQUENCY_BAND.equals(key)) {
             try {
                 int value = Integer.parseInt((String) newValue);
+                Settings.Global.putInt(getContentResolver(), Settings.Global.WIFI_FREQUENCY_BAND,
+                        value);
                 mWifiManager.setFrequencyBand(value, true);
                 updateFrequencyBandSummary(preference, value);
             } catch (NumberFormatException e) {
