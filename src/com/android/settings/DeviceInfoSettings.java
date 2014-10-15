@@ -59,6 +59,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String LOG_TAG = "DeviceInfoSettings";
     private static final String FILENAME_PROC_VERSION = "/proc/version";
     private static final String FILENAME_MSV = "/sys/board_properties/soc/msv";
+    private static final String OTA_UPDATE_SYSTEM = "android.settings.SYSTEM_UPDATE";
 
     private static final String KEY_CONTAINER = "container";
     private static final String KEY_REGULATORY_INFO = "regulatory_info";
@@ -92,13 +93,17 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         super.onCreate(icicle);
 
         addPreferencesFromResource(R.xml.device_info_settings);
-        if (getResources().getBoolean(R.bool.def_system_ots_update_enable)) {
-            if (getResources().getBoolean(R.bool.def_ota_enable))
+        if (getResources().getBoolean(R.bool.def_device_info_ota_update_enable)) {
+            if (getResources().getBoolean(R.bool.def_carrier_ota_enable)) {
+                String address = getResources().getString(R.string.def_carrier_ota_address);
+                if (!TextUtils.isEmpty(address)) {
+                    findPreference(KEY_SYSTEM_UPDATE_SETTINGS).setIntent(
+                            new Intent(address));
+                }
+            } else {
                 findPreference(KEY_SYSTEM_UPDATE_SETTINGS).setIntent(
-                        new Intent("com.android.softwareupdateclient.LAVA_OTA_UPDATE"));
-            else
-                findPreference(KEY_SYSTEM_UPDATE_SETTINGS).setIntent(
-                        new Intent("android.settings.SYSTEM_UPDATE"));
+                        new Intent(OTA_UPDATE_SYSTEM));
+            }
         }
         setStringSummary(KEY_FIRMWARE_VERSION, Build.VERSION.RELEASE);
         findPreference(KEY_FIRMWARE_VERSION).setEnabled(true);
@@ -175,7 +180,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
                 R.bool.config_additional_system_update_setting_enable);
 
         // Remove regulatory information if none present.
-        if (!getResources().getBoolean(R.bool.def_system_ots_update_enable) ||
+        if (!getResources().getBoolean(R.bool.def_device_info_ota_update_enable) ||
                 !getResources().getBoolean(R.bool.def_regulatory_enable)) {
             final Intent intent = new Intent(Settings.ACTION_SHOW_REGULATORY_INFO);
             if (getPackageManager().queryIntentActivities(intent, 0).isEmpty()) {
