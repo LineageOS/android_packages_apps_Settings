@@ -21,6 +21,7 @@ import android.app.ActivityManagerNative;
 import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.pm.ServiceInfo;
@@ -57,6 +58,10 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.search.SearchIndexableRaw;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -81,6 +86,8 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
     // Preferences
     private static final String TOGGLE_LARGE_TEXT_PREFERENCE =
             "toggle_large_text_preference";
+    private static final String TOGGLE_LED_FLASHLIGHT_PREFERENCE =
+            "toggle_led_flashlight_preference";
     private static final String TOGGLE_HIGH_TEXT_CONTRAST_PREFERENCE =
             "toggle_high_text_contrast_preference";
     private static final String TOGGLE_INVERSION_PREFERENCE =
@@ -101,6 +108,7 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
             "screen_magnification_preference_screen";
     private static final String DISPLAY_DALTONIZER_PREFERENCE_SCREEN =
             "daltonizer_preference_screen";
+    private static final String ENABLE_QUICKBOOT= "enable_quickboot";
 
     // Extras passed to sub-fragments.
     static final String EXTRA_PREFERENCE_KEY = "preference_key";
@@ -127,6 +135,8 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
             new HashMap<String, String>();
 
     private final Configuration mCurConfig = new Configuration();
+
+    private static boolean mLightsOn = false;
 
     private final Handler mHandler = new Handler();
 
@@ -184,7 +194,9 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
     private PreferenceCategory mServicesCategory;
     private PreferenceCategory mSystemsCategory;
 
+    private CheckBoxPreference mQuickBoot;
     private CheckBoxPreference mToggleLargeTextPreference;
+    private CheckBoxPreference mToggleLEDflashlightPreference;
     private CheckBoxPreference mToggleHighTextContrastPreference;
     private CheckBoxPreference mTogglePowerButtonEndsCallPreference;
     private CheckBoxPreference mToggleLockScreenRotationPreference;
@@ -198,6 +210,7 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mToggleInversionPreference;
 
     private int mLongPressTimeoutDefault;
+    private boolean mShowQuickBoot = false;
 
     private DevicePolicyManager mDpm;
 
@@ -264,6 +277,10 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
         if (mToggleLargeTextPreference == preference) {
             handleToggleLargeTextPreferenceClick();
             return true;
+        } else if (mToggleLEDflashlightPreference != null
+                && mToggleLEDflashlightPreference == preference) {
+            handleToggleLEDflashlightPreferenceClick();
+            return true;
         } else if (mToggleHighTextContrastPreference == preference) {
             handleToggleTextContrastPreferenceClick();
             return true;
@@ -282,8 +299,53 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
         } else if (mDisplayMagnificationPreferenceScreen == preference) {
             handleDisplayMagnificationPreferenceScreenClick();
             return true;
-        }
+        } else if (preference == mQuickBoot) {
+            Settings.System.putInt(getActivity().getContentResolver(), ENABLE_QUICKBOOT,
+                    mQuickBoot.isChecked() ? 1 : 0);
+            return true;
+         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
+    }
+
+    private void handleToggleLEDflashlightPreferenceClick() {
+        mLightsOn = mToggleLEDflashlightPreference.isChecked() ? true : false;
+        Intent intent = new Intent(getActivity(), LedFlashlightReceiver.class);
+        intent.putExtra(LedFlashlightReceiver.LED_SWITCH, mLightsOn);
+        getActivity().sendBroadcast(intent);
+    }
+
+    private boolean getLEDStatus() {
+        String brightness;
+        if (isFileExists(LedFlashlightReceiver.MSM8226_FLASHLIGHT_BRIGHTNESS)) {
+            brightness = getLEDFlashBrightness(LedFlashlightReceiver.MSM8226_FLASHLIGHT_BRIGHTNESS);
+        } else {
+            brightness = getLEDFlashBrightness(LedFlashlightReceiver.COMMON_FLASHLIGHT_BRIGHTNESS);
+        }
+        if (brightness != null && !brightness.equals("0")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private String getLEDFlashBrightness(String node) {
+        try {
+            FileInputStream fileinputStream = new FileInputStream(new File(node));
+            byte[] brightnessByte = new byte[1];
+            fileinputStream.read(brightnessByte, 0, 1);
+            fileinputStream.close();
+            return new String(brightnessByte);
+        } catch (FileNotFoundException e) {
+            return null;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    private boolean isFileExists(String filePath) {
+        File file = new File(filePath);
+        return file.exists();
     }
 
     private void handleToggleLargeTextPreferenceClick() {
@@ -347,10 +409,24 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
     private void initializeAllPreferences() {
         mServicesCategory = (PreferenceCategory) findPreference(SERVICES_CATEGORY);
         mSystemsCategory = (PreferenceCategory) findPreference(SYSTEM_CATEGORY);
+        mShowQuickBoot = getResources().getBoolean(R.bool.def_quick_boot_enable);
+        if (mShowQuickBoot) {
+            mQuickBoot = (CheckBoxPreference) findPreference(ENABLE_QUICKBOOT);
+        } else {
+            mSystemsCategory.removePreference(findPreference(ENABLE_QUICKBOOT));
+        }
 
         // Large text.
         mToggleLargeTextPreference =
                 (CheckBoxPreference) findPreference(TOGGLE_LARGE_TEXT_PREFERENCE);
+
+         // LED flashlight.
+        if (getResources().getBoolean(R.bool.def_led_flashlight_enable)) {
+            mToggleLEDflashlightPreference =
+                    (CheckBoxPreference) findPreference(TOGGLE_LED_FLASHLIGHT_PREFERENCE);
+        } else {
+            mSystemsCategory.removePreference(findPreference(TOGGLE_LED_FLASHLIGHT_PREFERENCE));
+        }
 
         // Text contrast.
         mToggleHighTextContrastPreference =
@@ -526,6 +602,11 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
     }
 
     private void updateSystemPreferences() {
+        if (mQuickBoot != null) {
+            mQuickBoot.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+                ENABLE_QUICKBOOT, 0) != 0);
+        }
+
         // Large text.
         try {
             mCurConfig.updateFrom(ActivityManagerNative.getDefault().getConfiguration());
@@ -533,6 +614,11 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
             /* ignore */
         }
         mToggleLargeTextPreference.setChecked(mCurConfig.fontScale == LARGE_FONT_SCALE);
+
+        if (mToggleLEDflashlightPreference != null) {
+            mLightsOn = getLEDStatus();
+            mToggleLEDflashlightPreference.setChecked(mLightsOn);
+        }
 
         mToggleHighTextContrastPreference.setChecked(
                 Settings.Secure.getInt(getContentResolver(),

@@ -75,6 +75,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_SELINUX_STATUS = "selinux_status";
     private static final String KEY_BASEBAND_VERSION = "baseband_version";
     private static final String KEY_FIRMWARE_VERSION = "firmware_version";
+    private static final String KEY_CUSTOM_BUILD_VERSION = "custom_build_version";
     private static final String KEY_UPDATE_SETTING = "additional_system_update_settings";
     private static final String KEY_EQUIPMENT_ID = "fcc_equipment_id";
     private static final String PROPERTY_EQUIPMENT_ID = "ro.ril.fccid";
@@ -83,6 +84,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_STATUS = "status_info";
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
+    private static boolean mHideVersionName = false;
 
     long[] mHits = new long[3];
     int mDevHitCountdown;
@@ -91,6 +93,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+        mHideVersionName = getResources().getBoolean(R.bool.def_hide_kernel_version_name);
 
         addPreferencesFromResource(R.xml.device_info_settings);
         if (getResources().getBoolean(R.bool.def_device_info_ota_update_enable)) {
@@ -112,6 +115,12 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         setValueSummary(KEY_EQUIPMENT_ID, PROPERTY_EQUIPMENT_ID);
         setStringSummary(KEY_DEVICE_MODEL, Build.MODEL);
         setStringSummary(KEY_BUILD_NUMBER, Build.DISPLAY);
+        String customVersion = getResources().getString(R.string.def_build_version_defname);
+        if (!TextUtils.isEmpty(customVersion)) {
+            setStringSummary(KEY_CUSTOM_BUILD_VERSION, customVersion);
+        } else {
+            getPreferenceScreen().removePreference(findPreference(KEY_CUSTOM_BUILD_VERSION));
+        }
         findPreference(KEY_BUILD_NUMBER).setEnabled(true);
         findPreference(KEY_KERNEL_VERSION).setSummary(getFormattedKernelVersion());
 
@@ -366,9 +375,15 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
                     + " groups");
             return "Unavailable";
         }
-        return m.group(1) + "\n" +                 // 3.0.31-g6fb96c9
-            m.group(2) + " " + m.group(3) + "\n" + // x@y.com #1
-            m.group(4);                            // Thu Jun 28 11:02:39 PDT 2012
+
+        if (mHideVersionName) {
+            return m.group(1) + "\n" +                 // 3.0.31-g6fb96c9
+                m.group(4);                            // Thu Jun 28 11:02:39 PDT 2012
+        } else {
+            return m.group(1) + "\n" +                 // 3.0.31-g6fb96c9
+                m.group(2) + " " + m.group(3) + "\n" + // x@y.com #1
+                m.group(4);                            // Thu Jun 28 11:02:39 PDT 2012
+        }
     }
 
     /**

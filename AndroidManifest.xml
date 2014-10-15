@@ -80,6 +80,10 @@
             android:supportsRtl="true"
             android:allowBackup="false">
 
+      <uses-library
+            android:name="com.qualcomm.qcrilhook"
+            android:required="true" />
+
       <!-- screen color Settings Controls -->
         <activity android:name=".ScreenColorSettings" android:label="@string/screencolor"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -1098,6 +1102,12 @@
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
                 android:value="true" />
         </activity>
+
+        <receiver android:name=".accessibility.LedFlashlightReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_SHUTDOWN" />
+            </intent-filter>
+        </receiver>
 
         <activity android:name="Settings$CaptioningSettingsActivity"
                 android:label="@string/accessibility_captioning_title"
