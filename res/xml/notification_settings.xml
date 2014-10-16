@@ -87,17 +87,6 @@
                 android:persistent="false"
                 android:ringtoneType="notification" />
 
-        <PreferenceScreen
-                android:key="multisim_notification_ringtone"
-                android:title="@string/notification_ringtone_title"
-                android:dialogTitle="@string/notification_ringtone_title"
-                android:persistent="false"
-                android:ringtoneType="notification">
-                <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.android.settings"
-                android:targetClass="com.android.settings.MultiSimSettingTab"/>
-        </PreferenceScreen>
-
         <!-- Other sounds -->
         <Preference
                 android:key="other_sounds"
