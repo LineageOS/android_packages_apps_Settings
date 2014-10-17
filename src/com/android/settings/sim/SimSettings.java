@@ -387,8 +387,8 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             ((SimPreference) preference).createEditDialog((SimPreference) preference);
         } else if (preference == mPrimarySubSelect) {
             startActivity(mPrimarySubSelect.getIntent());
-        } else if (preference == mSubSelect) {
-            startActivity(mSubSelect.getIntent());
+        } else if (preference == mPrimarySubSelect) {
+            startActivity(mPrimarySubSelect.getIntent());
         }
 
         return true;
