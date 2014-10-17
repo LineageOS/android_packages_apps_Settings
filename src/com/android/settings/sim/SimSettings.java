@@ -87,6 +87,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     private List<SubInfoRecord> mAvailableSubInfos = null;
     private List<SubInfoRecord> mSubInfoList = null;
     private Preference mPrimarySubSelect = null;
+    private boolean needUpdate = false;
 
     private static List<MultiSimEnablerPreference> mSimEnablers = null;
 
@@ -503,6 +504,15 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             }
         }
 
+        @Override
+        protected void onAttachedToActivity() {
+            super.onAttachedToActivity();
+            if (needUpdate) {
+                needUpdate = false;
+                updateAllOptions();
+            }
+        }
+
         public void createEditDialog(SimPreference simPref) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
@@ -579,7 +589,11 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             logd("msg.what = " + msg.what);
             switch(msg.what) {
                 case EVT_UPDATE:
-                    updateAllOptions();
+                    if (isAdded()) {
+                        updateAllOptions();
+                    } else {
+                        needUpdate = true;
+                    }
                     break;
                 default:
                     break;
