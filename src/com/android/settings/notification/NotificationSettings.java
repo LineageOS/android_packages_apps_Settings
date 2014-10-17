@@ -161,6 +161,8 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
             intent.putExtra(SelectSubscription.TARGET_CLASS,
                     "com.android.settings.sim.MultiSimSoundSettings");
             startActivity(intent);
+        } else if (preference.getFragment() != null) {
+            startFragment(this, preference.getFragment(), preference.getTitleRes(), -1, null);
         }
         return true;
     }
