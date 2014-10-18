@@ -51,6 +51,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private ListPreference mStatusBarBattery;
     private SystemSettingCheckBoxPreference mStatusBarBatteryShowPercent;
     private ListPreference mStatusBarCmSignal;
+    private ListPreference mSignalBarNumber;
     private CheckBoxPreference mStatusBarBrightnessControl;
 
     private ContentObserver mSettingsObserver;
@@ -70,6 +71,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mStatusBarBatteryShowPercent =
                 (SystemSettingCheckBoxPreference) findPreference(STATUS_BAR_BATTERY_SHOW_PERCENT);
         mStatusBarCmSignal = (ListPreference) prefSet.findPreference(STATUS_BAR_SIGNAL);
+        mSignalBarNumber = (ListPreference) prefSet.findPreference(SIGNAL_BAR_NUMBER);
 
         mStatusBarBrightnessControl = (CheckBoxPreference)
                 prefSet.findPreference(Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL);
@@ -89,6 +91,11 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mStatusBarCmSignal.setValue(String.valueOf(signalStyle));
         mStatusBarCmSignal.setSummary(mStatusBarCmSignal.getEntry());
         mStatusBarCmSignal.setOnPreferenceChangeListener(this);
+
+        int signalStrengthBars = Settings.System.getInt(resolver, Settings.System.STATUS_BAR_SIGNAL_BAR_NUMBER, 4);
+        mSignalBarNumber.setValue(String.valueOf(signalStrengthBars));
+        mSignalBarNumber.setSummary(mSignalBarNumber.getEntry());
+        mSignalBarNumber.setOnPreferenceChangeListener(this);
 
         if (Utils.isWifiOnly(getActivity())
                 || (MSimTelephonyManager.getDefault().isMultiSimEnabled())) {
@@ -132,7 +139,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             int index = mStatusBarBattery.findIndexOfValue((String) newValue);
             Settings.System.putInt(resolver, Settings.System.STATUS_BAR_BATTERY, batteryStyle);
             mStatusBarBattery.setSummary(mStatusBarBattery.getEntries()[index]);
-
             enableStatusBarBatteryDependents((String) newValue);
             return true;
         } else if (preference == mStatusBarCmSignal) {
@@ -140,6 +146,12 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             int index = mStatusBarCmSignal.findIndexOfValue((String) newValue);
             Settings.System.putInt(resolver, Settings.System.STATUS_BAR_SIGNAL_TEXT, signalStyle);
             mStatusBarCmSignal.setSummary(mStatusBarCmSignal.getEntries()[index]);
+            return true;
+        } else if (preference == mSignalBarNumber) {
+            int signalStrengthBars = Integer.valueOf((String) newValue);
+            int index = mSignalBarNumber.findIndexOfValue((String) newValue);
+            Settings.System.putInt(resolver, Settings.System.STATUS_BAR_SIGNAL_BAR_NUMBER, signalStrengthBars);
+            mSignalBarNumber.setSummary(mSignalBarNumber.getEntries()[index]);
             return true;
         } else if (preference == mStatusBarClockStyle) {
             int clockStyle = Integer.valueOf((String) newValue);
