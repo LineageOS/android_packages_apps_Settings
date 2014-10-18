@@ -51,6 +51,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private ListPreference mStatusBarBattery;
     private SystemSettingCheckBoxPreference mStatusBarBatteryShowPercent;
     private ListPreference mStatusBarCmSignal;
+    private ListPreference mSignalBarNumber;
     private CheckBoxPreference mStatusBarBrightnessControl;
 
     private ContentObserver mSettingsObserver;
@@ -70,6 +71,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mStatusBarBatteryShowPercent =
                 (SystemSettingCheckBoxPreference) findPreference(STATUS_BAR_BATTERY_SHOW_PERCENT);
         mStatusBarCmSignal = (ListPreference) prefSet.findPreference(STATUS_BAR_SIGNAL);
+        mSignalBarNumber = (ListPreference) prefSet.findPreference(SIGNAL_BAR_NUMBER);
 
         mStatusBarBrightnessControl = (CheckBoxPreference)
                 prefSet.findPreference(Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL);
@@ -89,6 +91,11 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mStatusBarCmSignal.setValue(String.valueOf(signalStyle));
         mStatusBarCmSignal.setSummary(mStatusBarCmSignal.getEntry());
         mStatusBarCmSignal.setOnPreferenceChangeListener(this);
+        
+        int signalStrengthBars = Settings.System.getInt(resolver, Settings.System.STATUS_BAR_SIGNAL_BAR_NUMBER, 4);
+        mSignalBarNumber.setValue(String.valueOf(signalStrengthBars));
+        mSignalBarNumber.setSummary(mSignalBarNumber.getEntry());
+        mSignalBarNumber.setOnPreferenceChangeListener(this);
 
         if (Utils.isWifiOnly(getActivity())
                 || (MSimTelephonyManager.getDefault().isMultiSimEnabled())) {
