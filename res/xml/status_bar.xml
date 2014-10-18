@@ -46,6 +46,13 @@
         android:entries="@array/entries_status_bar_signal"
         android:entryValues="@array/values_status_bar_signal" />
 
+    <ListPreference
+        android:key="signal_bar_number"
+        android:dialogTitle="@string/status_bar_signal_bar_number_title"
+        android:title="@string/status_bar_signal_bar_number_title"
+        android:entries="@array/entries_signal_bar_number"
+        android:entryValues="@array/values_signal_bar_number" />
+
     <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
         android:key="status_bar_brightness_control"
         android:title="@string/status_bar_toggle_brightness"
