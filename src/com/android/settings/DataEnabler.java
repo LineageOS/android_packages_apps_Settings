@@ -118,6 +118,7 @@ public class DataEnabler {
     private OnCheckedChangeListener mDataEnabledListener = new OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            mMobileDataEnabled = mConnService.getMobileDataEnabled();
             if(mMobileDataEnabled != mSwitch.isChecked()){
                 mConnService.setMobileDataEnabled(isChecked);
                 for (int i = 0; i < MAX_PHONE_COUNT_TRI_SIM; i++) {
