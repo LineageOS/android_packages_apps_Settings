@@ -157,6 +157,7 @@
   <string name="notification_light_voicemail_title">語音信箱</string>
   <string name="adaptive_backlight_title">自動背光調整</string>
   <string name="adaptive_backlight_summary">動態地調整顯示器的背光亮度達到盡量延長電池壽命，同時維持可用性</string>
+  <string name="color_enhancement_summary">動態加強畫面色彩</string>
   <string name="wake_when_plugged_or_unplugged_title">當接上喚醒</string>
   <string name="wake_when_plugged_or_unplugged_summary">當連接或拔除電源時開啓螢幕</string>
   <string name="screen_animation_off_title">關閉螢幕動畫</string>
@@ -293,30 +294,6 @@
   <string name="auto_brightness_preview">預覽</string>
   <string name="auto_brightness_preview_dialog_title">亮度曲線預覽</string>
   <string name="auto_brightness_help_dialog_title">說明</string>
-  <string name="auto_brightness_help_text"><b>如何把亮度計算出來的？</b>
-\n\n
-計算亮度曲線是通過以用指定數目的<i>控制點（control points）</i>
-執行<i>三次樣條插值（cubic spline interpolation）</i>。 
-這不是一個“水桶型”的計算，於特定範圍的環境亮度，其中螢幕亮度將保持不變。
-
-這樣一來，
-在環境亮度的微小變化沒有造成大的跳躍在螢幕亮度;
-然而，
-它可以是一個有點難以預料的變動控制點的精確影響。\n
-為了有助於利用， 所計算出的曲線預覽可以進行檢查。
-請注意預覽顯示在<i>對數（logarithmic）</i>標度曲線，
-使所有控制點可以鮮明的顯示。
-當使用線性量程，這不可能分辨的傾向性更重要的控制點在較低範圍環境的亮度。
-\n\n
-<b>如何修改亮度曲線？</b>
-\n\n
-在亮度列表中的每一行對應著亮度曲線的一個<i>控制點</i>。
-編輯該點的亮度水平，可以使用存在於每一行的滑塊。
-螢幕亮度也隨之改變，而觸摸滑塊給予光線水平的預覽。\n
-附加選項可長按一條線， 
-通過選擇「編輯」，可以調整控制點的環境亮度水平以及手動輸入所需的屏幕亮度。
-您可以選擇「分割」，複製其中一條線分成兩條線，以便插入額外的控制點。 
-「移除」 刪除選定的一條線。</string>
   <string name="auto_brightness_sensitivity_title">調整靈敏度</string>
   <string name="auto_brightness_sensitivity_verylow">非常低</string>
   <string name="auto_brightness_sensitivity_low">低</string>
@@ -333,6 +310,7 @@
   <string name="display_rotation_180_title">180 度</string>
   <string name="display_rotation_270_title">270 度</string>
   <string name="advanced_reboot_title">進階重新啟動</string>
+  <string name="advanced_reboot_summary">當解鎖後，新增重新啟動進入修復模式 (Recovery) 或啟動載入程式 (Bootloader) 或進行軟重新啟動的選項至電源選單</string>
   <string name="app_security_title">應用程式安全性</string>
   <string name="root_access">超級使用者存取</string>
   <string name="root_access_warning_title">允許超級使用者存取？</string>
@@ -492,6 +470,7 @@
   <string name="collapse_on_dismiss_if_empty_summary">移除最後一則通知後關閉</string>
   <string name="collapse_on_dismiss_if_no_clearable_summary">移除最後一則可移除的通知後關閉</string>
   <string name="double_tap_to_wake_title">輕按兩下來喚醒</string>
+  <string name="proximity_wake_summary">喚醒畫面前檢查傳感器</string>
   <string name="category_quick_access">快速存取功能區</string>
   <string name="title_quick_access">顯示在抽屜</string>
   <string name="title_quick_access_linked">已連結配置</string>
