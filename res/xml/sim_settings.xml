@@ -35,12 +35,6 @@
             <intent android:action="codeaurora.intent.action.ACTION_LTE_CONFIGURE" />
         </Preference>
 
-        <Preference android:key="sub_select"
-            android:persistent="false"
-            android:title="@string/lte_select_title" >
-            <intent android:action="com.qualcomm.qti.phonefeature.LTE_CONFIGURE" />
-        </Preference>
-
         <com.android.settings.notification.DropDownPreference
             android:key="sim_cellular_data"
             android:title="@string/cellular_data_title" />

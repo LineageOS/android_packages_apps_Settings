@@ -69,7 +69,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     private static final String SIM_ENABLER_CATEGORY = "sim_enablers";
     private static final String SIM_CARD_CATEGORY = "sim_cards";
     private static final String SIM_ACTIVITIES_CATEGORY = "sim_activities";
-    private static final String KEY_SUB_SELECT = "sub_select";
     private static final String KEY_CELLULAR_DATA = "sim_cellular_data";
     private static final String KEY_CALLS = "sim_calls";
     private static final String KEY_SMS = "sim_sms";
@@ -386,8 +385,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             final Preference preference) {
         if (preference instanceof SimPreference) {
             ((SimPreference) preference).createEditDialog((SimPreference) preference);
-        } else if (preference == mPrimarySubSelect) {
-            startActivity(mPrimarySubSelect.getIntent());
         } else if (preference == mPrimarySubSelect) {
             startActivity(mPrimarySubSelect.getIntent());
         }
