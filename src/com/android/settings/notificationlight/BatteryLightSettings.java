@@ -39,7 +39,6 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
     private static final String MEDIUM_COLOR_PREF = "medium_color";
     private static final String FULL_COLOR_PREF = "full_color";
 
-    private boolean mMultiColorLed;
     private CheckBoxPreference mEnabledPref;
     private PreferenceGroup mColorPrefs;
     private ApplicationLightPreference mLowColorPref;
@@ -69,6 +68,7 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
             mFullColorPref.setOnPreferenceChangeListener(this);
         } else {
             prefSet.removePreference(prefSet.findPreference("colors_list"));
+            resetColors();
         }
     }
 
