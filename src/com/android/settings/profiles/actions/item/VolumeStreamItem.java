@@ -60,16 +60,23 @@ public class VolumeStreamItem implements Item {
 
         view.findViewById(android.R.id.icon).setVisibility(View.GONE);
         seekBar.setMax(am.getStreamMaxVolume(mStreamId));
-        seekBar.setProgress(am.getDevicesForStream(mStreamId));
+        seekBar.setProgress(mStreamSettings.getValue());
         builder.setView(view);
 
         final DialogInterface.OnClickListener l = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                if (which == DialogInterface.BUTTON_POSITIVE) {
+                    mStreamSettings.setOverride(true);
+                    mStreamSettings.setValue(seekBar.getProgress());
+                } else if (which == DialogInterface.BUTTON_NEUTRAL) {
+                    mStreamSettings.setOverride(false);
+                }
                 listener.onClick(dialog, which);
             }
         };
         builder.setPositiveButton(android.R.string.ok, l);
+        builder.setNeutralButton(R.string.profile_action_none, l);
         builder.setNegativeButton(android.R.string.cancel, l);
         builder.show();
     }
@@ -91,10 +98,14 @@ public class VolumeStreamItem implements Item {
         text.setText(getNameForStream(mStreamId));
 
         TextView desc = (TextView) view.findViewById(R.id.summary);
-        int denominator = am.getDevicesForStream(mStreamId);
-        int numerator = am.getStreamMaxVolume(mStreamId);
-        desc.setText(context.getResources().getString(R.string.volume_override_summary,
-                denominator, numerator));
+        if (mStreamSettings.isOverride()) {
+            int denominator = mStreamSettings.getValue();
+            int numerator = am.getStreamMaxVolume(mStreamId);
+            desc.setText(context.getResources().getString(R.string.volume_override_summary,
+                    denominator, numerator));
+        } else {
+            desc.setText(context.getResources().getString(R.string.profile_action_none));
+        }
 
         return view;
     }
