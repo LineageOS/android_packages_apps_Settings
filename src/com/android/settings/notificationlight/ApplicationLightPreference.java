@@ -127,6 +127,10 @@ public class ApplicationLightPreference extends DialogPreference {
         TextView tView = (TextView) view.findViewById(android.R.id.summary);
         tView.setVisibility(View.GONE);
 
+        if (!mResources.getBoolean(com.android.internal.R.bool.config_multiColorNotificationLed)) {
+            mLightColorView.setVisibility(View.GONE);
+        }
+
         updatePreferenceViews();
     }
 
