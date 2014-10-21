@@ -44,6 +44,7 @@ public class ApplicationLightPreference extends DialogPreference {
     private TextView mOnValueView;
     private TextView mOffValueView;
 
+    private boolean mMultiColorNotificationLed;
     private int mColorValue;
     private int mOnValue;
     private int mOffValue;
@@ -98,6 +99,9 @@ public class ApplicationLightPreference extends DialogPreference {
     private void init() {
         setLayoutResource(R.layout.preference_application_light);
         mResources = getContext().getResources();
+
+        mMultiColorNotificationLed = mResources.getBoolean(
+                com.android.internal.R.bool.config_multiColorNotificationLed);
     }
 
     public void onStart() {
@@ -126,6 +130,10 @@ public class ApplicationLightPreference extends DialogPreference {
         // We use it for storing the package name for the longClickListener
         TextView tView = (TextView) view.findViewById(android.R.id.summary);
         tView.setVisibility(View.GONE);
+
+        if (!mMultiColorNotificationLed) {
+            mLightColorView.setVisibility(View.GONE);
+        }
 
         updatePreferenceViews();
     }
