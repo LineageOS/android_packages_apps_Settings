@@ -53,6 +53,7 @@ public class WifiApDialog extends AlertDialog implements View.OnClickListener,
     private TextView mSsid;
     private int mSecurityTypeIndex = OPEN_INDEX;
     private EditText mPassword;
+    private CheckBox mCheckBox;
 
     WifiConfiguration mWifiConfig;
 
@@ -117,6 +118,7 @@ public class WifiApDialog extends AlertDialog implements View.OnClickListener,
         mView.findViewById(R.id.type).setVisibility(View.VISIBLE);
         mSsid = (TextView) mView.findViewById(R.id.ssid);
         mPassword = (EditText) mView.findViewById(R.id.password);
+        mCheckBox = (CheckBox) mView.findViewById(R.id.show_password);
 
         setButton(BUTTON_SUBMIT, context.getString(R.string.wifi_save), mListener);
         setButton(DialogInterface.BUTTON_NEGATIVE,
@@ -132,13 +134,24 @@ public class WifiApDialog extends AlertDialog implements View.OnClickListener,
 
         mSsid.addTextChangedListener(this);
         mPassword.addTextChangedListener(this);
-        ((CheckBox) mView.findViewById(R.id.show_password)).setOnClickListener(this);
+        mCheckBox.setOnClickListener(this);
         mSecurity.setOnItemSelectedListener(this);
 
         super.onCreate(savedInstanceState);
 
         showSecurityFields();
         validate();
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        if (mPassword != null && mCheckBox != null) {
+            mPassword.setInputType(
+                InputType.TYPE_CLASS_TEXT | (mCheckBox.isChecked() ?
+                InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD :
+                InputType.TYPE_TEXT_VARIATION_PASSWORD));
+        }
     }
 
     private void validate() {
