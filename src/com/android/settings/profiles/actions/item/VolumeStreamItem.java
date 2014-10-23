@@ -15,15 +15,12 @@
  */
 package com.android.settings.profiles.actions.item;
 
-import android.app.AlertDialog;
 import android.app.StreamSettings;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.media.AudioManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.android.settings.R;
@@ -48,32 +45,6 @@ public class VolumeStreamItem implements Item {
         return true;
     }
 
-    public void requestVolumeDialog(Context context,
-            final DialogInterface.OnClickListener listener) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle(VolumeStreamItem.getNameForStream(mStreamId));
-
-        final AudioManager am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-        final LayoutInflater inflater = LayoutInflater.from(context);
-        final View view = inflater.inflate(com.android.internal.R.layout.seekbar_dialog, null);
-        final SeekBar seekBar = (SeekBar) view.findViewById(com.android.internal.R.id.seekbar);
-
-        view.findViewById(android.R.id.icon).setVisibility(View.GONE);
-        seekBar.setMax(am.getStreamMaxVolume(mStreamId));
-        seekBar.setProgress(am.getDevicesForStream(mStreamId));
-        builder.setView(view);
-
-        final DialogInterface.OnClickListener l = new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                listener.onClick(dialog, which);
-            }
-        };
-        builder.setPositiveButton(android.R.string.ok, l);
-        builder.setNegativeButton(android.R.string.cancel, l);
-        builder.show();
-    }
-
     @Override
     public View getView(LayoutInflater inflater, View convertView, ViewGroup parent) {
         View view;
@@ -91,7 +62,7 @@ public class VolumeStreamItem implements Item {
         text.setText(getNameForStream(mStreamId));
 
         TextView desc = (TextView) view.findViewById(R.id.summary);
-        int denominator = am.getDevicesForStream(mStreamId);
+        int denominator = mStreamSettings.getValue();
         int numerator = am.getStreamMaxVolume(mStreamId);
         desc.setText(context.getResources().getString(R.string.volume_override_summary,
                 denominator, numerator));
@@ -115,5 +86,9 @@ public class VolumeStreamItem implements Item {
 
     public int getStreamType() {
         return mStreamId;
+    }
+
+    public StreamSettings getSettings() {
+        return mStreamSettings;
     }
 }
