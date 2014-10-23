@@ -305,6 +305,19 @@ public class SettingsActivity extends Activity
             "android.settings.APPLICATION_DETAILS_SETTINGS"
     };
 
+    private static final String[] CONTAINER_ACTIVITY_NAME = {
+        "ApnSettingsActivity"
+    };
+
+    private boolean isActivityShouldBeAvoided(String activityName) {
+        for (int i = 0; i < CONTAINER_ACTIVITY_NAME.length; i++) {
+            if (activityName.equals(CONTAINER_ACTIVITY_NAME[i])) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private SharedPreferences mDevelopmentPreferences;
     private SharedPreferences.OnSharedPreferenceChangeListener mDevelopmentPreferencesListener;
 
@@ -416,6 +429,9 @@ public class SettingsActivity extends Activity
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
+        if (isActivityShouldBeAvoided(this.getClass().getSimpleName())) {
+            return;
+        }
         Index.getInstance(this).update();
     }
 
@@ -564,6 +580,9 @@ public class SettingsActivity extends Activity
                     mDisplaySearch = true;
                 } else {
                     mDisplayHomeAsUpEnabled = false;
+                    mDisplaySearch = false;
+                }
+                if (isActivityShouldBeAvoided(this.getClass().getSimpleName())) {
                     mDisplaySearch = false;
                 }
                 setTitleFromIntent(intent);
