@@ -19,6 +19,7 @@ import android.app.Activity;
 import android.app.AirplaneModeSettings;
 import android.app.AlertDialog;
 import android.app.ConnectionSettings;
+import android.app.Dialog;
 import android.app.Fragment;
 import android.app.Profile;
 import android.app.ProfileManager;
@@ -42,6 +43,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -241,35 +243,6 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
         getActivity().getActionBar().setTitle(mNewProfileMode
                 ? R.string.profile_setup_actions_title
                 : R.string.profile_setup_actions_title_config);
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        final Item itemAtPosition = (Item) parent.getItemAtPosition(position);
-
-        if (itemAtPosition instanceof AirplaneModeItem) {
-            AirplaneModeItem item = (AirplaneModeItem) itemAtPosition;
-            requestAirplaneModeDialog(item.getSettings());
-        } else if (itemAtPosition instanceof LockModeItem) {
-            requestLockscreenModeDialog();
-        } else if (itemAtPosition instanceof RingModeItem) {
-            RingModeItem item = (RingModeItem) itemAtPosition;
-            requestRingModeDialog(item.getSettings());
-        } else if (itemAtPosition instanceof ConnectionOverrideItem) {
-            ConnectionOverrideItem item = (ConnectionOverrideItem) itemAtPosition;
-            requestConnectionOverrideDialog(item.getSettings());
-        } else if (itemAtPosition instanceof VolumeStreamItem) {
-            VolumeStreamItem item = (VolumeStreamItem) itemAtPosition;
-            item.requestVolumeDialog(getActivity(), new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    mAdapter.notifyDataSetChanged();
-                    updateProfile();
-                }
-            });
-        } else if (itemAtPosition instanceof ProfileNameItem) {
-            requestProfileName();
-        }
     }
 
     private void requestLockscreenModeDialog() {
@@ -477,6 +450,40 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
         builder.show();
     }
 
+    public void requestVolumeDialog(int streamId,
+                                    final StreamSettings streamSettings) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle(VolumeStreamItem.getNameForStream(streamId));
+
+        final AudioManager am = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
+        final LayoutInflater inflater = LayoutInflater.from(getActivity());
+        final View view = inflater.inflate(com.android.internal.R.layout.seekbar_dialog, null);
+        final SeekBar seekBar = (SeekBar) view.findViewById(com.android.internal.R.id.seekbar);
+
+        view.findViewById(android.R.id.icon).setVisibility(View.GONE);
+        seekBar.setMax(am.getStreamMaxVolume(streamId));
+        seekBar.setProgress(streamSettings.getValue());
+        builder.setView(view);
+        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                int value = seekBar.getProgress();
+                streamSettings.setValue(value);
+                mProfile.setStreamSettings(streamSettings);
+                mAdapter.notifyDataSetChanged();
+                updateProfile();
+                dialog.dismiss();
+            }
+        });
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+    }
+
     private void requestProfileName() {
         LayoutInflater inflater = LayoutInflater.from(getActivity());
         View dialogView = inflater.inflate(R.layout.profile_name_dialog, null);
@@ -529,5 +536,28 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
             view.findViewById(R.id.bottom_buttons).setVisibility(View.GONE);
         }
         return view;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        final Item itemAtPosition = (Item) parent.getItemAtPosition(position);
+
+        if (itemAtPosition instanceof AirplaneModeItem) {
+            AirplaneModeItem item = (AirplaneModeItem) itemAtPosition;
+            requestAirplaneModeDialog(item.getSettings());
+        } else if (itemAtPosition instanceof LockModeItem) {
+            requestLockscreenModeDialog();
+        } else if (itemAtPosition instanceof RingModeItem) {
+            RingModeItem item = (RingModeItem) itemAtPosition;
+            requestRingModeDialog(item.getSettings());
+        } else if (itemAtPosition instanceof ConnectionOverrideItem) {
+            ConnectionOverrideItem item = (ConnectionOverrideItem) itemAtPosition;
+            requestConnectionOverrideDialog(item.getSettings());
+        } else if (itemAtPosition instanceof VolumeStreamItem) {
+            VolumeStreamItem item = (VolumeStreamItem) itemAtPosition;
+            requestVolumeDialog(item.getStreamType(), item.getSettings());
+        } else if (itemAtPosition instanceof ProfileNameItem) {
+            requestProfileName();
+        }
     }
 }
