@@ -39,10 +39,10 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="6dip"
-        android:layout_marginLeft="2dip"
-        android:layout_marginRight="6dip"
-        android:layout_marginTop="6dip"
+        android:layout_marginBottom="2dip"
+        android:layout_marginStart="2dip"
+        android:layout_marginEnd="6dip"
+        android:layout_marginTop="2dip"
         android:layout_weight="1" >
 
         <ImageView android:id="@+id/subicon"
@@ -56,7 +56,7 @@
             android:id="@+id/subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/subicon"
+            android:layout_toEndOf="@id/subicon"
             android:fadingEdge="horizontal"
             android:singleLine="true"
             android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -65,7 +65,7 @@
             android:id="@+id/subsummary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/subtitle"
+            android:layout_alignStart="@id/subtitle"
             android:layout_below="@id/subtitle"
             android:ellipsize="end"
             android:maxLines="2"
@@ -75,7 +75,7 @@
             android:id="@+id/subSwitchWidget"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_gravity="center"
             android:clickable="true"
             android:focusable="false"
