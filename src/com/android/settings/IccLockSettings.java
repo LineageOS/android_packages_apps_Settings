@@ -427,8 +427,6 @@ public class IccLockSettings extends PreferenceActivity
         } else {
             handleException(exception, MSG_ENABLE_ICC_PIN_COMPLETE,
                 attemptsRemaining);
-            Toast.makeText(this, getPinPasswordErrorMessage(attemptsRemaining),
-                    Toast.LENGTH_LONG).show();
         }
         mPinToggle.setEnabled(true);
         resetDialogState();
@@ -438,8 +436,6 @@ public class IccLockSettings extends PreferenceActivity
         if (exception != null) {
             handleException(exception, MSG_CHANGE_ICC_PIN_COMPLETE,
                 attemptsRemaining);
-            Toast.makeText(this, getPinPasswordErrorMessage(attemptsRemaining),
-                    Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(this, mRes.getString(R.string.sim_change_succeeded),
                     Toast.LENGTH_SHORT)
