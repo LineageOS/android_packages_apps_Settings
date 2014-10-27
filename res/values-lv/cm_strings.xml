@@ -16,11 +16,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="wifi_setting_countrycode_title">WiFi reģiona kods</string>
-  <string name="wifi_setting_countrycode_summary">Norādiet WiFi reģiona kodu</string>
   <string name="wifi_setting_countrycode_error">Iestatot reģiona kodu, radās kļūda.</string>
-  <string name="wifi_setting_priority_title">WiFi prioritāte</string>
-  <string name="wifi_setting_priority_summary">Norādiet WiFi tīklu prioritāti</string>
   <string name="wifi_ssid_input_limit">SSID pārsniedz maksimālo garumu</string>
   <string name="p2p_device_name_input_limit">P2P nosaukums pārsniedz maksimālo garumu</string>
   <string name="change_crypt_password_title">Mainīt paroli</string>
@@ -47,7 +43,6 @@
   <string name="profile_trigger_configure">Iestatīt trigeri</string>
   <string name="profile_triggers">Trigeri</string>
   <string name="profile_trigger_filter_all">Visi trigeri</string>
-  <string name="profile_trigger_filter_wifi">WiFi trigeri</string>
   <string name="profile_trigger_filter_bluetooth">Bluetooth trigeri</string>
   <string name="profile_write_nfc_tag">Ierakstīt NFC tagā</string>
   <string name="profile_write_touch_tag">Pieskarieties tagam, lai rakstītu</string>
@@ -113,12 +108,8 @@
   <string name="profile_lockmode_insecure_summary">Lietot nedrošo slēgekrānu</string>
   <string name="profile_lockmode_disabled_summary">Ekrāna slēgšana ir izslēgta</string>
   <string name="profile_airplanemode_title">Lidmašīnas režīms</string>
-  <string name="toggleWifi">WiFi</string>
-  <string name="toggleWifiAp">Mobilais WiFi tīklājs</string>
   <string name="toggleBluetooth">Bluetooth</string>
   <string name="toggleGPS">GPS</string>
-  <string name="toggleData">Mobilie dati</string>
-  <string name="toggleSync">Datu sinhronizācija</string>
   <string name="toggle2g3g">2G/3G</string>
   <string name="toggleWimax">WiMAX</string>
   <string name="toggleNfc">NFC</string>
@@ -236,7 +227,6 @@
   <string name="heads_up_blacklist_title">Melnais saraksts</string>
   <string name="heads_up_disabled_notice">Lai šīm lietotnēm atļautu izmantot interaktīvus peldošos ziņojumus, ieslēdziet Peldošos ziņojumus iestatījumos.</string>
   <string name="title_tile_airplane">Lidmašīnas režīms</string>
-  <string name="title_tile_battery">Akumulatora statistika</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Spilgtums</string>
   <string name="title_tile_camera">Kamera</string>
@@ -254,8 +244,6 @@
   <string name="title_tile_settings">Iestatījumi</string>
   <string name="title_tile_sound">Skaņa</string>
   <string name="title_tile_sync">Sinhronizācija</string>
-  <string name="title_tile_wifiap">WiFi AP</string>
-  <string name="title_tile_wifi">WiFi</string>
   <string name="title_tile_user">Lietotāju pārslēgs</string>
   <string name="title_tile_networkmode">Tīkla režīms</string>
   <string name="title_tile_nfc">NFC</string>
@@ -266,13 +254,10 @@
   <string name="title_tile_network_adb">ADB tīkls</string>
   <string name="title_dynamic_tiles">Dinamiskas flīzes</string>
   <string name="dynamic_tiles_note_title">Piezīme</string>
-  <string name="dynamic_tiles_note_summary">Dinamiskās flīzes nav redzamas vienmēr un parādīsies tikai tad, ja tās ieslēdz sistēmas notikums</string>
   <string name="title_dynamic_alarm">Modinātājs</string>
   <string name="title_dynamic_bugreport">Kļūdas ziņojums</string>
   <string name="title_dynamic_dock_battery">Doka akumulators</string>
   <string name="title_dynamic_equalizer">Ekvalaizers</string>
-  <string name="title_dynamic_ime">IME lādētājs</string>
-  <string name="title_dynamic_usbtether">USB valgs</string>
   <string name="title_dynamic_wifi">WiFi</string>
   <string name="title_general">Vispārīgi</string>
   <string name="title_quick_pulldown">Ātrā novilkšana</string>
@@ -423,7 +408,6 @@ Papildu opcijas ir pieejamas, ilgi pieskaroties rindai. Izvēloties \'Mainīt\',
   <string name="io_sched_title">Ievadizvades plānotājs</string>
   <string name="perf_profile_title">Profils</string>
   <string name="memory_management_title">Atmiņas pārvaldība</string>
-  <string name="pref_ksm_title">Kodola vienādo lapu sapludināšana (KSM)</string>
   <string name="pref_ksm_summary">KSM samazina fiziskās atmiņas prasības aparatūrai un uzlabo veiktspēju</string>
   <string name="pref_purgeable_assets_title">Atļaut aktīvu dzēšanu</string>
   <string name="pref_purgeable_assets_summary">Bitkartes atmiņas aktīvu dzēšana ļauj atbrīvot vairāk RAM, kad tas ir nepieciešams (nepieciešama atsāknēšana)</string>
@@ -498,7 +482,6 @@ Papildu opcijas ir pieejamas, ilgi pieskaroties rindai. Izvēloties \'Mainīt\',
   <string name="adb_notify">USB atkļūdošanas ziņojumi</string>
   <string name="adb_notify_summary">Pievienojot USB, parādīt atkļūdošanas ziņojumus</string>
   <string name="adb_over_network">ADB pa tīklu</string>
-  <string name="adb_over_network_summary">Ieslēgt tīkla saskarņu (WiFi, USB tīkli) TCP/IP atkļūdošanu. Šis iestatījums tiek atstatīs pārsāknēšanas laikā</string>
   <string name="adb_over_network_warning">Brīdinājums: Ja ADB pa tīklu ir ieslēgts, jūsu telefons pieejams uzbrukumiem no visiem pievienotajiem tīkliem, ieskaitot GSM datu tīklu!\n\nIzmantojiet šo iespēju tikai tad, ja esat pieslēdzies uzticamiem tīkliem.\n\nVai tiešām vēlaties ieslēgt šo funkciju?</string>
   <string name="device_hostname">Iekārtas nosaukums tīklā</string>
   <string name="notification_drawer_title">Ziņojumu atvilktne</string>
@@ -701,7 +684,6 @@ Papildu opcijas ir pieejamas, ilgi pieskaroties rindai. Izvēloties \'Mainīt\',
   <string name="status_bar_notif_count_title">Rādīt paziņojumu skaitu</string>
   <string name="status_bar_notif_count_summary">Rādīt gaidošo paziņojumu skaitu</string>
   <string name="development_shortcut_title">Izstrādes saīsne</string>
-  <string name="development_shortcut_summary">Ieslēgt \'noslaucīt datus\' un \'piespiest aizvēršanu\' opcijas paziņojumu apgabalā un neseno lietotņu sarakstā</string>
   <string name="usb_mass_storage_title">Lielapjoma krātuve (UMS)</string>
   <string name="usb_mass_storage_summary">Ļauj pārsūtīt failus starp jūsu datoru un SD karti montējot to kā zibatmiņas iekārtu</string>
   <string name="storage_rescan_media">Atkārtoti skenēt multivides krātuves sējumus</string>
@@ -712,7 +694,6 @@ Papildu opcijas ir pieejamas, ilgi pieskaroties rindai. Izvēloties \'Mainīt\',
   <string name="logger_summary">Pārvaldīt avāriju žurnalēšanas iestatījumus</string>
   <string name="custom_runtime_warning_title">Brīdinājums</string>
   <string name="custom_runtime_warning_message">ART iestatījums ir eksperimentāls un CyanogenMod komanda oficiāli to neatbalsta. Tas var izraisīt nestabilitāti, avārijas un var pakļauj jūs riskam zaudēt jūsu datus, sabojāt iekārtas veiktspēju vai tās sāknēšanu. Dodieties uz &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Ievads ART&lt;/a&gt; lai iegūtu vairāk informācijas.&lt;br/&gt;&lt;br/&gt; Ja izmantojat ART, neiesūtiet kļūdu ziņojumus.&lt;br/&gt;&lt;br/&gt;Vai tiešām vēlaties pārslēgt izpildes vidi no <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> uz <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
-  <string name="gps_download_data_wifi_only">Lejuplādēt GPS palīgdatus, tikai izmantojot WiFi tīklus</string>
   <string name="battery_info_status_charging_dock_ac">(Doks AC)</string>
   <string name="battery_info_status_charging_dock_usb">(Doks USB)</string>
   <string name="menu_stats_reset">Atstatīt</string>
@@ -754,7 +735,6 @@ Papildu opcijas ir pieejamas, ilgi pieskaroties rindai. Izvēloties \'Mainīt\',
   <string name="app_ops_summaries_modify_call_log">mainīt zvanu žurnālu</string>
   <string name="app_ops_summaries_read_calendar">lasīt kalendāru</string>
   <string name="app_ops_summaries_modify_calendar">mainīt kalendāru</string>
-  <string name="app_ops_summaries_wifi_scan">WiFi skenēšana</string>
   <string name="app_ops_summaries_notification">paziņojums</string>
   <string name="app_ops_summaries_cell_scan">šūnu skenēšana</string>
   <string name="app_ops_summaries_call_phone">zvanīt telefonam</string>
@@ -783,12 +763,9 @@ Papildu opcijas ir pieejamas, ilgi pieskaroties rindai. Izvēloties \'Mainīt\',
   <string name="app_ops_summaries_media_volume">multivides skaļums</string>
   <string name="app_ops_summaries_alarm_volume">modinātāja skaļums</string>
   <string name="app_ops_summaries_notification_volume">ziņojumu skaļums</string>
-  <string name="app_ops_summaries_bluetooth_volume">Bluetooth skaļums</string>
   <string name="app_ops_summaries_keep_awake">neaizmigt</string>
   <string name="app_ops_summaries_monitor_location">pārraudzīt atrašanās vietu</string>
   <string name="app_ops_summaries_monitor_high_power_location">pārraudzīt lieljaudas atrašanās vietu</string>
-  <string name="app_ops_summaries_wifi_change">wifi izmaiņa</string>
-  <string name="app_ops_summaries_bluetooth_change">Bluetooth izmaiņa</string>
   <string name="app_ops_summaries_data_change">datu maiņa</string>
   <string name="app_ops_summaries_alarm_wakeup">mosties</string>
   <string name="app_ops_summaries_send_mms">sūtīt multiziņu</string>
@@ -828,7 +805,6 @@ Papildu opcijas ir pieejamas, ilgi pieskaroties rindai. Izvēloties \'Mainīt\',
   <string name="app_ops_labels_notification_volume">Ziņojumu skaļums</string>
   <string name="app_ops_labels_bluetooth_volume">Bluetooth skaļums</string>
   <string name="app_ops_labels_keep_awake">Neaizmigt</string>
-  <string name="app_ops_labels_wifi_change">WiFi maiņa</string>
   <string name="app_ops_labels_bluetooth_change">Bluetooth maiņa</string>
   <string name="app_ops_labels_data_change">Datu maiņa</string>
   <string name="app_ops_labels_alarm_wakeup">Mosties</string>
@@ -870,7 +846,6 @@ Papildu opcijas ir pieejamas, ilgi pieskaroties rindai. Izvēloties \'Mainīt\',
   <string name="voice_wakeup_activity_title">Darbības palaižot</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
   <string name="sub_no_sim">Bez SIM</string>
-  <string name="multi_sim_settings_title">Multi SIM</string>
   <string name="multi_sim_settings_group_summary">Noklusētā SIM izvēle</string>
   <string name="voice_title">Balss zvani</string>
   <string name="data_title">Datu zvani</string>
@@ -904,35 +879,13 @@ Papildu opcijas ir pieejamas, ilgi pieskaroties rindai. Izvēloties \'Mainīt\',
   <string name="block_notifications_title">Filtra paziņojumi</string>
   <string name="block_notifications_summary">Pārvaldīt ignorētos ziņojumus un filtrus</string>
   <string name="no_filters_title">Filtri nav iestatīti. Lai filtrētu paziņojumu, ilgi nospiediet un izvēlieties \"Ignorēt ziņojumus kā šis\".</string>
-  <string name="usb_eject">Nomontēt USB krātuvi</string>
-  <string name="usb_eject_summary">Nomontēt USB krātuvi, lai to var droši izņemt</string>
-  <string name="usb_insert_summary">Ievietojiet montējamo USB krātuvi</string>
-  <string name="usb_mount">Montēt USB krātuvi</string>
-  <string name="usb_format">Dzēst USB krātuvi</string>
-  <string name="usb_format_summary">Izdzēš visus datus USB krātuvē, piemēram, mūzikas ierakstus un fotoattēlus</string>
-  <string name="dlg_confirm_usb_unmount_title">Nomontēt USB krātuvi?</string>
-  <string name="dlg_confirm_usb_unmount_text">Ja jūs nomontējat, USB krātuvi, dažas jūs izmantotās lietotnes var apstāties vai nebūt pieejamas, kamēr jūs to atkal neuzmontēsiet.</string>
-  <string name="dlg_error_usb_unmount_text">Neizdevās nomontēt USB krātuvi. Mēģiniet vēlreiz vēlāk.</string>
   <string name="usb_unmount_inform_text">USB krātuve tiks nomontēta.</string>
-  <string name="usb_ejecting_title">Nomontēt USB krātuvi</string>
-  <string name="usb_ejecting_summary">Atmontē USB krātuvi</string>
   <string name="usb_media_format_title">Dzēst USB krātuvi</string>
   <string name="usb_media_format_desc">Dzēst visu USB krātuvi? Jūs zaudēsiet <b>visus</b> saglabātos datus!</string>
   <string name="usb_media_format_button_text">Dzēst USB krātuvi</string>
   <string name="usb_media_format_final_desc">Dzēst USB krātuvi, ar visiem tur saglabātajiem failiem? Šo darbību nevar atsaukt!</string>
   <string name="usb_media_format_gesture_explanation">Lai apstiprinātu, ka vēlaties dzēst USB krātuvi, jums ir jāiezīmē atslēgšanas attēls.</string>
-  <string name="sd_eject">Nomontēt SD karti</string>
-  <string name="sd_eject_summary">Nomontēt SD karti, lai varat to droši izņemt</string>
-  <string name="sd_insert_summary">Ievietojiet montējamo SD karti</string>
-  <string name="sd_mount">Montē SD karti</string>
-  <string name="sd_format">Dzēst SD karti</string>
-  <string name="sd_format_summary">Izdzēsīs visus SD kartes datus, piem., mūzikas ierakstus un fotoattēlus</string>
-  <string name="dlg_confirm_sd_unmount_title">Nomontēt SD karti?</string>
-  <string name="dlg_confirm_sd_unmount_text">Ja jūs atmomontjat SD karti, dažas jūsu lietotās lietotnes var apstāties un nebūs pieejamas, kamēr jūs vēlreiz neuzmontēsiet SD karti.</string>
-  <string name="dlg_error_sd_unmount_text">Neizdevās nomontēt SD karti. Vēlāk mēģiniet vēlreiz.</string>
   <string name="sd_unmount_inform_text">SD karte tiks nomontēta.</string>
-  <string name="sd_ejecting_title">Nomontē SD karti</string>
-  <string name="sd_ejecting_summary">Atmontē SD karti</string>
   <string name="sd_media_format_title">Dzēst SD karti</string>
   <string name="sd_media_format_desc">Dzēst SD karti? <b>Visi</b> tajā saglabātie dati tiks zaudēti!</string>
   <string name="sd_media_format_button_text">Dzēst SD karti</string>
@@ -952,10 +905,7 @@ Papildu opcijas ir pieejamas, ilgi pieskaroties rindai. Izvēloties \'Mainīt\',
   <string name="enable_quickboot_title">Ieslēgt QuickBoot režīmu</string>
   <string name="enable_quickboot_summary">Parastas izslēgšanas vietā uzlikt iekārtai QuickBoot režīmu.</string>
   <string name="data_usage_tab_slot">SIM </string>
-  <string name="sel_sub_title">Iestatīt abonēšanu</string>
-  <string name="sel_sub_summary">Izvēlieties abonementu</string>
   <string name="no_sim_info">SIM kartes informācija nav pieejama.\nIzvēlnei nevar piekļūt</string>
-  <string name="subs_settings">Abonementa statuss</string>
   <string name="set_data_subscription_progress">Iestata datu abonēšanu\u2026</string>
   <string name="set_dds_success">Datu abonēšana tika veiksmīgi iestatīta</string>
   <string name="set_dds_failed">Iestatot datu abonēšanu, radās kļūda. Atslēdziet visus esošos datu savienojumus un mēģiniet vēlreiz.</string>
@@ -990,7 +940,6 @@ Papildu opcijas ir pieejamas, ilgi pieskaroties rindai. Izvēloties \'Mainīt\',
   <string name="profile_action_none">Nekāda darbība</string>
   <string name="profile_action_disabled">Izslēgt</string>
   <string name="profile_action_enable">Ieslēgt</string>
-  <string name="profile_tabs_wifi">WiFi</string>
   <string name="profile_tabs_bluetooth">Bluetooth</string>
   <string name="profile_tabs_nfc">NFC</string>
   <string name="profile_setup_setup_triggers_title">1. darbība: Pievienojiet trigerus</string>
@@ -998,7 +947,6 @@ Papildu opcijas ir pieejamas, ilgi pieskaroties rindai. Izvēloties \'Mainīt\',
   <string name="profile_setup_actions_title">2. solis: Iestatiet darbības</string>
   <string name="profile_setup_actions_title_config">Pārstatīt darbības</string>
   <string name="no_bluetooth_triggers">Nav pieejami Bluetooth trigeri</string>
-  <string name="no_wifi_triggers">Nav pieejami WiFi trigeri</string>
   <string name="profile_setup_setup_triggers_description">Lūdzu, izvēlieties trigeri, kas aktivēs šo profilu</string>
   <string name="profile_setup_actions_description">Tagad iestatiet, kas notiks, kad profils būs aktivēts</string>
 </resources>

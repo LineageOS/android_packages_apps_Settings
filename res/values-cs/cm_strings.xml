@@ -16,11 +16,11 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="wifi_setting_countrycode_title">Kód regionu Wi-Fi</string>
-  <string name="wifi_setting_countrycode_summary">Zvolte kód regionu Wi-Fi</string>
+  <string name="wifi_setting_countrycode_title">Kód regionu Wi\u2011Fi</string>
+  <string name="wifi_setting_countrycode_summary">Zadejte kód regionu Wi\u2011Fi</string>
   <string name="wifi_setting_countrycode_error">Při nastavení kódu regionu došlo k problému.</string>
-  <string name="wifi_setting_priority_title">Wi-Fi priorita</string>
-  <string name="wifi_setting_priority_summary">Určit prioritu Wi-Fi sítí</string>
+  <string name="wifi_setting_priority_title">Wi\u2011Fi priorita</string>
+  <string name="wifi_setting_priority_summary">Zadejte prioritu sítí Wi\u2011Fi</string>
   <string name="wifi_ssid_input_limit">Název SSID je delší než maximální délka</string>
   <string name="p2p_device_name_input_limit">Název P2P je delší než maximální délka</string>
   <string name="change_crypt_password_title">Změnit heslo</string>
@@ -47,7 +47,7 @@
   <string name="profile_trigger_configure">Upravit vynucenou změnu</string>
   <string name="profile_triggers">Vynucené změny profilu</string>
   <string name="profile_trigger_filter_all">Všechny podmínky</string>
-  <string name="profile_trigger_filter_wifi">Wi-Fi podmínky</string>
+  <string name="profile_trigger_filter_wifi">Wi\u2011Fi aktivační události</string>
   <string name="profile_trigger_filter_bluetooth">Bluetooth podmínky</string>
   <string name="profile_write_nfc_tag">Zapsat do NFC tagu</string>
   <string name="profile_write_touch_tag">Pro zápis zvolte tag</string>
@@ -113,12 +113,12 @@
   <string name="profile_lockmode_insecure_summary">Použít nezabezpečený zámek obrazovky</string>
   <string name="profile_lockmode_disabled_summary">Zámek obrazovky je zakázán</string>
   <string name="profile_airplanemode_title">Režim V letadle</string>
-  <string name="toggleWifi">Wi-Fi</string>
-  <string name="toggleWifiAp">Přenosný Wi-Fi hotspot</string>
+  <string name="toggleWifi">Wi\u2011Fi</string>
+  <string name="toggleWifiAp">Přenosný Wi\u2011Fi hotspot</string>
   <string name="toggleBluetooth">Bluetooth</string>
   <string name="toggleGPS">GPS</string>
   <string name="toggleData">Mobilní data</string>
-  <string name="toggleSync">Synchronizace</string>
+  <string name="toggleSync">Auto. synch. data</string>
   <string name="toggle2g3g">2G/3G</string>
   <string name="toggleWimax">WiMAX</string>
   <string name="toggleNfc">NFC</string>
@@ -215,6 +215,7 @@
   <string name="lockscreen_maximize_widgets_title">Maximalizovat widgety</string>
   <string name="lockscreen_maximize_widgets_summary">Na obrazovce zámku zobrazit widgety maximalizované a ovládání zámku minimalizované</string>
   <string name="lockscreen_enable_camera_title">Widget fotoaparátu</string>
+  <string name="lockscreen_enable_application_widget_title">Wodget appcast</string>
   <string name="safe_headset_volume_title">Bezpečná hlasitost sluchátek</string>
   <string name="safe_headset_volume_restore_title">Snížení hlasitosti při připojení sluchátek</string>
   <string name="cyanogenmod_waiver_title">Zřeknutí se</string>
@@ -236,7 +237,7 @@
   <string name="heads_up_blacklist_title">Černá listina</string>
   <string name="heads_up_disabled_notice">Chcete-li povolit aplikacím zobrazit interaktivní vyskakovací upozornění, povolte „Plovoucí upozornění“.</string>
   <string name="title_tile_airplane">Režim V letadle</string>
-  <string name="title_tile_battery">Stav baterie</string>
+  <string name="title_tile_battery">Baterie</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Jas</string>
   <string name="title_tile_camera">Fotoaparát</string>
@@ -254,8 +255,8 @@
   <string name="title_tile_settings">Nastavení</string>
   <string name="title_tile_sound">Zvuk</string>
   <string name="title_tile_sync">Synchronizace</string>
-  <string name="title_tile_wifiap">Wi-Fi AP</string>
-  <string name="title_tile_wifi">Wi-Fi</string>
+  <string name="title_tile_wifiap">Wi\u2011Fi hotspot</string>
+  <string name="title_tile_wifi">Wi\u2011Fi</string>
   <string name="title_tile_user">Přepnutí uživatele</string>
   <string name="title_tile_networkmode">Režim sítě</string>
   <string name="title_tile_nfc">NFC</string>
@@ -266,13 +267,13 @@
   <string name="title_tile_network_adb">ADB po síti</string>
   <string name="title_dynamic_tiles">Dynamické dlaždice</string>
   <string name="dynamic_tiles_note_title">Poznámka</string>
-  <string name="dynamic_tiles_note_summary">Dynamické dlaždice nejsou vždy viditelné, zobrazí se vždy na událost systému</string>
+  <string name="dynamic_tiles_note_summary">Dynamické dlaždice jsou zobrazeny při určitých systémových událostech</string>
   <string name="title_dynamic_alarm">Budík</string>
   <string name="title_dynamic_bugreport">Ohlášení chyby</string>
   <string name="title_dynamic_dock_battery">Baterie doku</string>
   <string name="title_dynamic_equalizer">Ekvalizér</string>
-  <string name="title_dynamic_ime">Změna IME</string>
-  <string name="title_dynamic_usbtether">Sdílení USB</string>
+  <string name="title_dynamic_ime">Výběr vstupní metody</string>
+  <string name="title_dynamic_usbtether">USB tethering</string>
   <string name="title_dynamic_wifi">Přenášet obrazovku</string>
   <string name="title_general">Obecné</string>
   <string name="title_quick_pulldown">Rychlé vysunutí nabídky</string>
@@ -506,7 +507,7 @@ jednotlivě měnit a tím zvětšit počet řídících bodů. „Odstranit“ s
   <string name="adb_notify">Upozornění na ladění USB</string>
   <string name="adb_notify_summary">Zobrazit upozornění při připojení k USB v režimu ladění</string>
   <string name="adb_over_network">ADB přes síť</string>
-  <string name="adb_over_network_summary">Povolit ladění přes síťové připojení (např. Wi-Fi nebo síť USB). Toto nastavení bude obnoveno po restartu.</string>
+  <string name="adb_over_network_summary">Povolit ladění přes TCP/IP síťové připojení (např. Wi\u2011Fi nebo síť USB). Toto nastavení bude obnoveno po restartu</string>
   <string name="adb_over_network_warning">UPOZORNĚNÍ: Pokud je povoleno ADB přes síťové připojení, zařízení je otevřené pro pokusy o průniky na všech připojených sítích, včetně GSM datové sítě!\n\nPoužijte tuto vlastnost, pouze pokud jste připojeni k důvěryhodné síti.\n\nOpravdu chcete povolit tuto funkci?</string>
   <string name="device_hostname">Hostitelské jméno zařízení</string>
   <string name="notification_drawer_title">Oznamovací oblast</string>
@@ -609,6 +610,7 @@ jednotlivě měnit a tím zvětšit počet řídících bodů. „Odstranit“ s
   <string name="navigation_bar_menu_locked">Zamknutý</string>
   <string name="navigation_bar_arrow_keys_title">Klávesy šipek při psaní</string>
   <string name="navigation_bar_arrow_keys_summary">Zobrazit tlačítka pro kurzor vlevo a vpravo při psaní</string>
+  <string name="navigation_bar_recents_title">Akce dlouhého stisku na tlačítku „Nedávné“</string>
   <string name="navigation_ring_title">Zkratky rychlého spuštění</string>
   <string name="navring_target_reset_message">Odstranit všechny uživatelem vytvořené zkratky v navigační liště a obnovit do výchozího nastavení?</string>
   <string name="navring_target_reset">Zkratky navigační lišty obnoveny</string>
@@ -709,7 +711,7 @@ jednotlivě měnit a tím zvětšit počet řídících bodů. „Odstranit“ s
   <string name="status_bar_notif_count_title">Zobrazit počet upozornění</string>
   <string name="status_bar_notif_count_summary">Zobrazí počet nezobrazených upozornění v oznamovací oblasti</string>
   <string name="development_shortcut_title">Zkratky pro vývojáře</string>
-  <string name="development_shortcut_summary">Povolit \u201aVyčisti data\u2018 a \u201aVynutit ukončení\u2018 v oblasti upozornění a seznamu nedávných aplikací</string>
+  <string name="development_shortcut_summary">Povolit správu aplikací v oznamovací oblasti a v seznamu naposledy otevřených aplikací</string>
   <string name="usb_mass_storage_title">Připojeni paměťového úložiště (UMS)</string>
   <string name="usb_mass_storage_summary">Povolit přenášení dat mezí PC a SD kartou v zařízení pomocí připojení jako zařízení flash</string>
   <string name="storage_rescan_media">Prohledat úložiště pro média</string>
@@ -725,7 +727,7 @@ nestabilitu systému, pády aplikací, ztrátu dat či nemožnost správného na
 pro více informací.&lt;br/&gt;&lt;br/&gt;Pokud nastavíte ART jako výchozí běhové prostředí, nezadávejte žádné
 chybové hlášení.&lt;br/&gt;&lt;br/&gt;Opravdu chcete restartovat pro změnu běhového prostředí
 z <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> na <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
-  <string name="gps_download_data_wifi_only">Stahovat asistovaná data pro GPS pouze přes Wi-Fi síť</string>
+  <string name="gps_download_data_wifi_only">Stahovat asistovaná GPS data pouze přes síť Wi\u2011Fi</string>
   <string name="battery_info_status_charging_dock_ac">(DokAC)</string>
   <string name="battery_info_status_charging_dock_usb">(DokUSB)</string>
   <string name="menu_stats_reset">Obnovit</string>
@@ -767,7 +769,7 @@ z <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> na <xliff:g id="new" exam
   <string name="app_ops_summaries_modify_call_log">změna seznamu hovorů</string>
   <string name="app_ops_summaries_read_calendar">čtení kalendáře</string>
   <string name="app_ops_summaries_modify_calendar">změna kalendáře</string>
-  <string name="app_ops_summaries_wifi_scan">prohledávání wi-fi</string>
+  <string name="app_ops_summaries_wifi_scan">prohledávání Wi\u2011Fi</string>
   <string name="app_ops_summaries_notification">upozornění</string>
   <string name="app_ops_summaries_cell_scan">prohledávání buňky</string>
   <string name="app_ops_summaries_call_phone">hovor</string>
@@ -796,12 +798,12 @@ z <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> na <xliff:g id="new" exam
   <string name="app_ops_summaries_media_volume">hlasitost médií</string>
   <string name="app_ops_summaries_alarm_volume">hlasitost budíku</string>
   <string name="app_ops_summaries_notification_volume">hlasitost upozornění</string>
-  <string name="app_ops_summaries_bluetooth_volume">hlasitost Bluetooth</string>
+  <string name="app_ops_summaries_bluetooth_volume">Hlasitost Bluetooth</string>
   <string name="app_ops_summaries_keep_awake">udržet probuzené</string>
   <string name="app_ops_summaries_monitor_location">sledovat polohu</string>
   <string name="app_ops_summaries_monitor_high_power_location">sledovat polohu v režimu vysoké spotřeby</string>
-  <string name="app_ops_summaries_wifi_change">změna Wi-Fi</string>
-  <string name="app_ops_summaries_bluetooth_change">změna Bluetooth</string>
+  <string name="app_ops_summaries_wifi_change">změnit Wi\u2011Fi</string>
+  <string name="app_ops_summaries_bluetooth_change">změnit Bluetooth</string>
   <string name="app_ops_summaries_data_change">změna typu dat. připojení</string>
   <string name="app_ops_summaries_alarm_wakeup">probudit</string>
   <string name="app_ops_summaries_send_mms">poslat MMS</string>
@@ -841,7 +843,7 @@ z <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> na <xliff:g id="new" exam
   <string name="app_ops_labels_notification_volume">Hlasitost upozornění</string>
   <string name="app_ops_labels_bluetooth_volume">Hlasitost Bluetooth</string>
   <string name="app_ops_labels_keep_awake">Udržet probuzené</string>
-  <string name="app_ops_labels_wifi_change">Změnit Wi-Fi</string>
+  <string name="app_ops_labels_wifi_change">změnit Wi\u2011Fi</string>
   <string name="app_ops_labels_bluetooth_change">Změnit Bluetooth</string>
   <string name="app_ops_labels_data_change">Změnit typ dat. připojení</string>
   <string name="app_ops_labels_alarm_wakeup">Probuzení</string>
@@ -883,7 +885,7 @@ z <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> na <xliff:g id="new" exam
   <string name="voice_wakeup_activity_title">Aktivita ke spuštění</string>
   <string name="voice_wakeup_default_activity">Chytré karty Google</string>
   <string name="sub_no_sim">Není SIM karta</string>
-  <string name="multi_sim_settings_title">Více SIM</string>
+  <string name="multi_sim_settings_title">SIM karty</string>
   <string name="multi_sim_settings_group_summary">Výběr výchozí SIM</string>
   <string name="voice_title">Hlasová volání</string>
   <string name="data_title">Datové volání</string>
@@ -897,6 +899,7 @@ z <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> na <xliff:g id="new" exam
   <string name="menu_hidden_apps_reset_lock">Obnovit gesto zámku</string>
   <string name="protected_apps">Chráněné aplikace</string>
   <string name="saving_protected_components">Ukládání stavu komponent\u2026</string>
+  <string name="launch_app">Spustit aplikaci</string>
   <string name="pa_login_username_hint">Uživatelské jméno (e-mail)</string>
   <string name="pa_login_password_hint">Heslo</string>
   <string name="pa_login_submit_button">Přihlášení</string>
@@ -917,35 +920,35 @@ z <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> na <xliff:g id="new" exam
   <string name="block_notifications_title">Oznámení filtru</string>
   <string name="block_notifications_summary">Spravovat ignorovaná upozornění a filtry</string>
   <string name="no_filters_title">Nenastaven žádný filtr. Pro filtrování upozornění, proveďte na něm dlouhý stisk a zvolte „Ignorovat zprávy jako je tato“.</string>
-  <string name="usb_eject">Odpojit úložiště USB</string>
-  <string name="usb_eject_summary">Odpojit úložiště USB, aby jste jej mohli bezpečně odebrat</string>
-  <string name="usb_insert_summary">Vložte úložiště USB pro připojení</string>
-  <string name="usb_mount">Připojit úložiště USB</string>
-  <string name="usb_format">Vymazat úložiště USB</string>
-  <string name="usb_format_summary">Smaže všechna data na USB úložišti, například hudbu nebo fotografie</string>
-  <string name="dlg_confirm_usb_unmount_title">Odpojit úložiště USB?</string>
-  <string name="dlg_confirm_usb_unmount_text">Pokud odpojíte USB zařízení a některé aplikace jej používají, tyto aplikace budou ukončeny a nebudou k dispozici do té doby, dokud opět USB úložiště nepřipojíte.</string>
-  <string name="dlg_error_usb_unmount_text">USB úložiště nelze odpojit. Zkuste to později.</string>
+  <string name="usb_sd_eject">Odpojit úložiště USB</string>
+  <string name="usb_sd_eject_summary">Odpojit úložiště USB pro bezpečné odebrání</string>
+  <string name="usb_sd_insert_summary">Vložte úložiště USB pro připojení</string>
+  <string name="usb_sd_mount">Připojit úložiště USB</string>
+  <string name="usb_sd_format">Vymazat úložiště USB</string>
+  <string name="usb_sd_format_summary">Smaže všechna data na úložišti USB úložišti, například hudbu nebo fotografie</string>
+  <string name="usb_dlg_confirm_unmount_title">Odpojit úložiště USB?</string>
+  <string name="usb_dlg_confirm_unmount_text">Pokud odpojíte úložiště USB a některé aplikace jej používají, tyto aplikace budou ukončeny a nebudou k dispozici do té doby, dokud opět úložiště USB nepřipojíte.</string>
+  <string name="usb_dlg_error_unmount_text">Úložiště USB nelze odpojit. Zkuste to později.</string>
   <string name="usb_unmount_inform_text">Úložiště USB bude odpojeno.</string>
-  <string name="usb_ejecting_title">Odpojuje se úložiště USB</string>
-  <string name="usb_ejecting_summary">Probíhá odpojení úložiště USB</string>
+  <string name="usb_sd_ejecting_title">Odpojuje se úložiště USB</string>
+  <string name="usb_sd_ejecting_summary">Probíhá odpojení úložiště USB</string>
   <string name="usb_media_format_title">Vymazat úložiště USB</string>
   <string name="usb_media_format_desc">Vymazat celé USB úložiště? <b>Všechna</b> data na USB úložišti budou smazána!</string>
   <string name="usb_media_format_button_text">Vymazat úložiště USB</string>
   <string name="usb_media_format_final_desc">Vymazat celé USB úložiště smazáním všech souborů? Tato operace nelze vrátit zpět!</string>
   <string name="usb_media_format_gesture_explanation">Pro potvrzení vymazání USB úložiště je potřeba gesto pro odemčení.</string>
-  <string name="sd_eject">Odpojit kartu SD</string>
-  <string name="sd_eject_summary">Odpojení SD karty pro bezpečné odbrání</string>
-  <string name="sd_insert_summary">Vložte SD kartu pro připojení</string>
-  <string name="sd_mount">Připojit kartu SD</string>
-  <string name="sd_format">Vymazat kartu SD</string>
-  <string name="sd_format_summary">Smaže všechna data na kartě SD, například hudbu nebo fotografie</string>
-  <string name="dlg_confirm_sd_unmount_title">Odpojit kartu SD?</string>
-  <string name="dlg_confirm_sd_unmount_text">Pokud odpojíte SD kartu a některé aplikace ji používají, tyto aplikace budou ukončeny a nebudou k dispozici do té doby, dokud opět SD kartu nepřipojíte.</string>
-  <string name="dlg_error_sd_unmount_text">SD kartu nelze odebrat. Zkuste to později.</string>
+  <string name="sd_sd_eject">Odpojit kartu SD</string>
+  <string name="sd_sd_eject_summary">Odpojení SD karty pro bezpečné odebrání</string>
+  <string name="sd_sd_insert_summary">Vložte SD kartu pro připojení</string>
+  <string name="sd_sd_mount">Připojit kartu SD</string>
+  <string name="sd_sd_format">Vymazat kartu SD</string>
+  <string name="sd_sd_format_summary">Smaže všechna data na kartě SD, například hudbu nebo fotografie</string>
+  <string name="sd_dlg_confirm_unmount_title">Odpojit kartu SD?</string>
+  <string name="sd_dlg_confirm_unmount_text">Pokud odpojíte kartu SD a některé aplikace ji používají, tyto aplikace budou ukončeny a nebudou k dispozici do té doby, dokud opět kartu SD nepřipojíte.</string>
+  <string name="sd_dlg_error_unmount_text">Kartu SD nelze odebrat. Zkuste to později.</string>
   <string name="sd_unmount_inform_text">SD karta bude odpojena.</string>
-  <string name="sd_ejecting_title">Odpojování SD karty</string>
-  <string name="sd_ejecting_summary">Probíhá odpojení SD karty</string>
+  <string name="sd_sd_ejecting_title">Odpojování karty SD</string>
+  <string name="sd_sd_ejecting_summary">Probíhá odpojení karty SD</string>
   <string name="sd_media_format_title">Vymazat kartu SD</string>
   <string name="sd_media_format_desc">Vymazat SD kartu? <b>Všechna</b> data na SD kartě budou smazána!</string>
   <string name="sd_media_format_button_text">Vymazat kartu SD</string>
@@ -965,10 +968,10 @@ z <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> na <xliff:g id="new" exam
   <string name="enable_quickboot_title">Povolit režim QuickBoot</string>
   <string name="enable_quickboot_summary">Místo vypnutí nastartovat zařízení do režimu QuickBoot.</string>
   <string name="data_usage_tab_slot">SIM  </string>
-  <string name="sel_sub_title">Nastavení poskytovatelů</string>
-  <string name="sel_sub_summary">Vyberte poskytovatele</string>
+  <string name="sel_sub_title">Nastavit karty SIM</string>
+  <string name="sel_sub_summary">Vyberte karty SIM</string>
   <string name="no_sim_info">Informace o SIM kartě není dostupná.\nNabídka nemůže být zobrazena</string>
-  <string name="subs_settings">Stav poskytovatelů</string>
+  <string name="subs_settings">Stav karty SIM</string>
   <string name="set_data_subscription_progress">Nastavování datového poskytovatele\u2026</string>
   <string name="set_dds_success">Poskytovatel dat úspěšně nastaven</string>
   <string name="set_dds_failed">Chyba při nastavení datového poskytovatele. Odeberte všechny datové spojení a zkuste znovu.</string>
@@ -1003,7 +1006,7 @@ z <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> na <xliff:g id="new" exam
   <string name="profile_action_none">Žádná akce</string>
   <string name="profile_action_disabled">Zakázat</string>
   <string name="profile_action_enable">Povolit</string>
-  <string name="profile_tabs_wifi">Wi-Fi</string>
+  <string name="profile_tabs_wifi">Wi\u2011Fi</string>
   <string name="profile_tabs_bluetooth">Bluetooth</string>
   <string name="profile_tabs_nfc">NFC</string>
   <string name="profile_setup_setup_triggers_title">Krok 1: přidat vynucenou změnu</string>
@@ -1011,7 +1014,7 @@ z <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> na <xliff:g id="new" exam
   <string name="profile_setup_actions_title">Krok 2: nastavit akce</string>
   <string name="profile_setup_actions_title_config">Přenastavit akce</string>
   <string name="no_bluetooth_triggers">Pro Bluetooth nejsou dostupné aktivační změny</string>
-  <string name="no_wifi_triggers">Pro Wi-Fi nejsou dostupné aktivační změny</string>
+  <string name="no_wifi_triggers">Žádné Wi\u2011Fi aktivační události</string>
   <string name="profile_setup_setup_triggers_description">Vyberte události, které aktivují tento profil</string>
   <string name="profile_setup_actions_description">Nyní proveďte nastavení toho, co se má stát, při aktivaci profilu</string>
 </resources>

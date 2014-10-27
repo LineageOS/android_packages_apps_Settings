@@ -16,11 +16,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="wifi_setting_countrycode_title">Code de région Wi-Fi</string>
-  <string name="wifi_setting_countrycode_summary">Définir le code de région Wi-Fi</string>
   <string name="wifi_setting_countrycode_error">Il y a eu un problème de réglage du code de région.</string>
-  <string name="wifi_setting_priority_title">Priorité Wi-Fi</string>
-  <string name="wifi_setting_priority_summary">Définir la priorité des réseaux Wi-Fi</string>
   <string name="wifi_ssid_input_limit">Le SSID dépasse la longueur maximale</string>
   <string name="p2p_device_name_input_limit">Le nom P2P dépasse la longueur maximale</string>
   <string name="change_crypt_password_title">Changer de mot de passe</string>
@@ -47,7 +43,6 @@
   <string name="profile_trigger_configure">Configurer l\'activation</string>
   <string name="profile_triggers">Activation</string>
   <string name="profile_trigger_filter_all">Toutes les activations</string>
-  <string name="profile_trigger_filter_wifi">Activation par Wi-Fi</string>
   <string name="profile_trigger_filter_bluetooth">Activation par Bluetooth</string>
   <string name="profile_write_nfc_tag">Écrire sur le tag NFC</string>
   <string name="profile_write_touch_tag">Toucher le tag pour écrire</string>
@@ -113,12 +108,8 @@
   <string name="profile_lockmode_insecure_summary">Écran de verrouillage non sécurisé</string>
   <string name="profile_lockmode_disabled_summary">Écran de verrouillage désactivé</string>
   <string name="profile_airplanemode_title">Mode Avion</string>
-  <string name="toggleWifi">Wi-Fi</string>
-  <string name="toggleWifiAp">Partage Wi-Fi</string>
   <string name="toggleBluetooth">Bluetooth</string>
   <string name="toggleGPS">GPS</string>
-  <string name="toggleData">Données mobile</string>
-  <string name="toggleSync">Synchronisation</string>
   <string name="toggle2g3g">2G/3G</string>
   <string name="toggleWimax">WiMax</string>
   <string name="toggleNfc">NFC</string>
@@ -235,7 +226,6 @@
   <string name="heads_up_blacklist_title">Liste noire</string>
   <string name="heads_up_disabled_notice">Pour permettre aux applications d\'afficher des notifications interactives dans une fenêtre pop-up sur votre écran, activez les notifications flottantes.</string>
   <string name="title_tile_airplane">Mode Avion</string>
-  <string name="title_tile_battery">Batterie</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Luminosité</string>
   <string name="title_tile_camera">Appareil photo</string>
@@ -253,8 +243,6 @@
   <string name="title_tile_settings">Paramètres</string>
   <string name="title_tile_sound">Son</string>
   <string name="title_tile_sync">Synchronisation</string>
-  <string name="title_tile_wifiap">Partage Wi-Fi</string>
-  <string name="title_tile_wifi">Wi-Fi</string>
   <string name="title_tile_user">Utilisateur</string>
   <string name="title_tile_networkmode">Mode réseau</string>
   <string name="title_tile_nfc">NFC</string>
@@ -265,13 +253,10 @@
   <string name="title_tile_network_adb">ADB réseau</string>
   <string name="title_dynamic_tiles">Raccourcis dynamiques</string>
   <string name="dynamic_tiles_note_title">Note</string>
-  <string name="dynamic_tiles_note_summary">Les raccourcis dynamiques ne sont pas toujours visibles et ils ne peuvent s\'afficher que s\'ils sont déclenchés par un événement système</string>
   <string name="title_dynamic_alarm">Réveil</string>
   <string name="title_dynamic_bugreport">Rapport de bug</string>
   <string name="title_dynamic_dock_battery">Batterie du dock</string>
   <string name="title_dynamic_equalizer">Égaliseur</string>
-  <string name="title_dynamic_ime">Changement IME</string>
-  <string name="title_dynamic_usbtether">Modem USB</string>
   <string name="title_dynamic_wifi">Diffusion sans fil</string>
   <string name="title_general">Général</string>
   <string name="title_quick_pulldown">Ouverture rapide</string>
@@ -422,7 +407,6 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="io_sched_title">Horloge E/S</string>
   <string name="perf_profile_title">Profil</string>
   <string name="memory_management_title">Gestion de la mémoire</string>
-  <string name="pref_ksm_title">KSM</string>
   <string name="pref_ksm_summary">Cette fonction du noyau réduit l\'utilisation de la mémoire physique et améliore les performances (Kernel Samepage Merging)</string>
   <string name="pref_purgeable_assets_title">Purge des bitmaps</string>
   <string name="pref_purgeable_assets_summary">La purge des bitmaps actifs permet de libérer plus de RAM en cas de besoin (nécessite un redémarrage)</string>
@@ -497,7 +481,6 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="adb_notify">Notification débogage USB</string>
   <string name="adb_notify_summary">Afficher une notification lorsque le débogage USB est actif</string>
   <string name="adb_over_network">ADB par réseau</string>
-  <string name="adb_over_network_summary">Activer le débogage TCP/IP sur toutes les interfaces réseaux (réseaux USB, Wi-Fi et Bluetooth). Ce paramètre est réinitialisé au redémarrage</string>
   <string name="adb_over_network_warning">ATTENTION : Lorsque cette fonction est activée, votre appareil est ouvert aux intrusions sur tous les réseaux connectés, y compris via le réseau mobile\u00A0!\n\nN\'utilisez cette fonctionnalité que sur des réseaux de confiance.\n\nContinuer\u00A0?</string>
   <string name="device_hostname">Nom d\'hôte de l\'appareil</string>
   <string name="notification_drawer_title">Volet des notifications</string>
@@ -700,7 +683,6 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="status_bar_notif_count_title">Afficher le compteur de notification</string>
   <string name="status_bar_notif_count_summary">Afficher le nombre de notifications en attente</string>
   <string name="development_shortcut_title">Raccourcis développement</string>
-  <string name="development_shortcut_summary">Active les options \'Effacer données\' et \'Forcer fermeture\' dans la zone de notification et la liste des applications récentes</string>
   <string name="usb_mass_storage_title">Stockage de masse (UMS)</string>
   <string name="usb_mass_storage_summary">Vous permet de transférer des fichiers entre votre ordinateur et votre carte SD en la montant en tant que périphérique de stockage de masse</string>
   <string name="storage_rescan_media">Analyser les médias du volume de stockage</string>
@@ -711,7 +693,6 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="logger_summary">Gérer les paramètres de journalisation d\'incident</string>
   <string name="custom_runtime_warning_title">Attention</string>
   <string name="custom_runtime_warning_message">ART n\'est pas supporté par CyanogenMod. Ce paramètre est uniquement inclus à des fin d\'expérimentations. Il peut causer des instabilités, des plantages, des pertes de données ou empêcher votre appareil de démarrer. Lisez l\'&lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introduction à ART&lt;/a&gt; pour plus d\'informations.&lt;br/&gt;&lt;br/&gt;Merci de ne pas remplir de rapports de bugs si vous utilisez ART.&lt;br/&gt;&lt;br/&gt;Êtes-vous sûr de vouloir redémarrer pour changer le moteur d\'exécution de <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> à <xliff:g id="new" example="libart.so">%2$s</xliff:g>\u00A0?</string>
-  <string name="gps_download_data_wifi_only">Télécharger les données d\'assistance GPS via Wi-Fi uniquement</string>
   <string name="battery_info_status_charging_dock_ac">(DockAC)</string>
   <string name="battery_info_status_charging_dock_usb">(DockUSB)</string>
   <string name="menu_stats_reset">Réinitialiser</string>
@@ -753,7 +734,6 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="app_ops_summaries_modify_call_log">modifier le journal des appels</string>
   <string name="app_ops_summaries_read_calendar">voir le calendrier</string>
   <string name="app_ops_summaries_modify_calendar">modifier le calendrier</string>
-  <string name="app_ops_summaries_wifi_scan">scanner le Wi-Fi</string>
   <string name="app_ops_summaries_notification">notification</string>
   <string name="app_ops_summaries_cell_scan">scanner le réseau cellulaire</string>
   <string name="app_ops_summaries_call_phone">appel téléphonique</string>
@@ -782,12 +762,9 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="app_ops_summaries_media_volume">volume des médias</string>
   <string name="app_ops_summaries_alarm_volume">volume de l\'alarme</string>
   <string name="app_ops_summaries_notification_volume">volume des notifications</string>
-  <string name="app_ops_summaries_bluetooth_volume">volume de Bluetooth</string>
   <string name="app_ops_summaries_keep_awake">maintenir activé</string>
   <string name="app_ops_summaries_monitor_location">localisation du moniteur</string>
   <string name="app_ops_summaries_monitor_high_power_location">localisation du moniteur de forte puissance</string>
-  <string name="app_ops_summaries_wifi_change">changer de Wi-Fi</string>
-  <string name="app_ops_summaries_bluetooth_change">changement de Bluetooth</string>
   <string name="app_ops_summaries_data_change">modification de données</string>
   <string name="app_ops_summaries_alarm_wakeup">réveil</string>
   <string name="app_ops_summaries_send_mms">envoyer des MMS</string>
@@ -827,7 +804,6 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="app_ops_labels_notification_volume">Volume des notifications</string>
   <string name="app_ops_labels_bluetooth_volume">Volume du Bluetooth</string>
   <string name="app_ops_labels_keep_awake">Maintenir activé</string>
-  <string name="app_ops_labels_wifi_change">Changement de Wi-Fi</string>
   <string name="app_ops_labels_bluetooth_change">Changement de Bluetooth</string>
   <string name="app_ops_labels_data_change">Modification de données</string>
   <string name="app_ops_labels_alarm_wakeup">Réveil</string>
@@ -869,7 +845,6 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="voice_wakeup_activity_title">Activité à lancer</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
   <string name="sub_no_sim">Aucune carte SIM</string>
-  <string name="multi_sim_settings_title">Multi SIM</string>
   <string name="multi_sim_settings_group_summary">Sélection de la carte SIM par défaut</string>
   <string name="voice_title">Appels vocaux</string>
   <string name="data_title">Données d\'appels</string>
@@ -902,35 +877,13 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="block_notifications_title">Filtre des notifications</string>
   <string name="block_notifications_summary">Gérer les notifications ignorées et les filtres</string>
   <string name="no_filters_title">Aucun filtre défini. Pour filtrer une notification, faites un appui long dessus et choisissez \'Ignorer les messages similaires\'.</string>
-  <string name="usb_eject">Démonter le stockage USB</string>
-  <string name="usb_eject_summary">Démonter le stockage USB pour le retirer en toute sécurité</string>
-  <string name="usb_insert_summary">Insérer le stockage USB pour le montage</string>
-  <string name="usb_mount">Monter le stockage USB</string>
-  <string name="usb_format">Effacer le stockage USB</string>
-  <string name="usb_format_summary">Effacer toutes les données sur le stockage USB, telles que la musique et les photos</string>
-  <string name="dlg_confirm_usb_unmount_title">Démonter le stockage USB ?</string>
-  <string name="dlg_confirm_usb_unmount_text">Si vous démontez le stockage USB, certaines applications que vous utilisez seront arrêtées et peuvent ne plus être disponible jusqu’à ce que le stockage USB soit remonté.</string>
-  <string name="dlg_error_usb_unmount_text">Impossible de démonter le stockage USB. Essayez plus tard.</string>
   <string name="usb_unmount_inform_text">Le stockage USB sera démonté.</string>
-  <string name="usb_ejecting_title">Démontage du stockage USB</string>
-  <string name="usb_ejecting_summary">Démontage du stockage USB en cours</string>
   <string name="usb_media_format_title">Effacer le stockage USB</string>
   <string name="usb_media_format_desc">Effacer tout le stockage USB\u00A0? Vous perdrez <b>toutes</b> les données stockées\u00A0!</string>
   <string name="usb_media_format_button_text">Effacer le stockage USB</string>
   <string name="usb_media_format_final_desc">Effacer le stockage USB et supprimer tous les fichiers stockés ici\u00A0? Cette action est irréversible\u00A0!</string>
   <string name="usb_media_format_gesture_explanation">Vous devez dessiner votre schéma de déverrouillage pour confirmer que vous voulez effacer le stockage USB.</string>
-  <string name="sd_eject">Démonter la carte SD</string>
-  <string name="sd_eject_summary">Démonter la carte SD pour la retirer en toute sécurité</string>
-  <string name="sd_insert_summary">Insérer une carte SD pour le montage</string>
-  <string name="sd_mount">Monter la carte SD</string>
-  <string name="sd_format">Effacer la carte SD</string>
-  <string name="sd_format_summary">Effacer toutes les données de la carte SD, telles que la musique et les photos</string>
-  <string name="dlg_confirm_sd_unmount_title">Démonter la carte SD\u00A0?</string>
-  <string name="dlg_confirm_sd_unmount_text">Si vous démontez la carte SD, certaines applications que vous utilisez seront arrêtées et peuvent ne plus être disponible jusqu’à ce que la carte SD soit remontée.</string>
-  <string name="dlg_error_sd_unmount_text">Impossible de démonter la carte SD. Essayez plus tard.</string>
   <string name="sd_unmount_inform_text">La carte SD sera démontée.</string>
-  <string name="sd_ejecting_title">Démontage de la carte SD</string>
-  <string name="sd_ejecting_summary">Démontage de la carte SD en cours</string>
   <string name="sd_media_format_title">Effacer la carte SD</string>
   <string name="sd_media_format_desc">Effacer toute la carte SD\u00A0? Vous perdrez <b>toutes</b> les données stockées\u00A0!</string>
   <string name="sd_media_format_button_text">Effacer la carte SD</string>
@@ -950,10 +903,7 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="enable_quickboot_title">Activer le mode QuickBoot</string>
   <string name="enable_quickboot_summary">Mettre l\'appareil en mode QuickBoot au lieu de démarrage normal.</string>
   <string name="data_usage_tab_slot">SIM </string>
-  <string name="sel_sub_title">Configurer les abonnements</string>
-  <string name="sel_sub_summary">Sélectionnez votre abonnement</string>
   <string name="no_sim_info">Les informations de carte SIM ne sont pas disponibles.\nLe menu n\'est pas accessible</string>
-  <string name="subs_settings">État de l\'abonnement</string>
   <string name="set_data_subscription_progress">Paramétrer les données de l\'abonnement\u2026</string>
   <string name="set_dds_success">Les données de l\'abonnement ont été correctement définies</string>
   <string name="set_dds_failed">Erreur lors du paramétrage des données de l\'abonnement. Supprimez les connexions de données existantes, puis réessayez.</string>
@@ -988,7 +938,6 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="profile_action_none">Aucune action</string>
   <string name="profile_action_disabled">Désactiver</string>
   <string name="profile_action_enable">Activer</string>
-  <string name="profile_tabs_wifi">Wi-Fi</string>
   <string name="profile_tabs_bluetooth">Bluetooth</string>
   <string name="profile_tabs_nfc">NFC</string>
   <string name="profile_setup_setup_triggers_title">Étape 1 : Ajouter des actions</string>
@@ -996,7 +945,6 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="profile_setup_actions_title">Étape 2: Configurer les actions</string>
   <string name="profile_setup_actions_title_config">Reconfigurer les actions</string>
   <string name="no_bluetooth_triggers">Aucune action Bluetooth disponible</string>
-  <string name="no_wifi_triggers">Aucune action Wi-Fi disponible</string>
   <string name="profile_setup_setup_triggers_description">Veuillez sélectionner les actions qui activeront ce profil</string>
   <string name="profile_setup_actions_description">Configurer maintenant ce qu\'il se passe lorsque le profil est activé</string>
 </resources>

@@ -16,11 +16,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="wifi_setting_countrycode_title">Wi-Fi 區碼</string>
-  <string name="wifi_setting_countrycode_summary">指定 Wi-Fi 使用的區碼</string>
   <string name="wifi_setting_countrycode_error">設定區碼時遇到了問題。</string>
-  <string name="wifi_setting_priority_title">Wi-Fi 連線優先次序</string>
-  <string name="wifi_setting_priority_summary">規定 Wi-Fi 網絡的優先次序</string>
   <string name="wifi_ssid_input_limit">SSID 超過長度上限</string>
   <string name="p2p_device_name_input_limit">P2P 的名稱超過長度上限</string>
   <string name="change_crypt_password_title">更改密碼</string>
@@ -47,7 +43,6 @@
   <string name="profile_trigger_configure">設定觸發器</string>
   <string name="profile_triggers">觸發器</string>
   <string name="profile_trigger_filter_all">所有觸發器</string>
-  <string name="profile_trigger_filter_wifi">Wi-Fi 觸發器</string>
   <string name="profile_trigger_filter_bluetooth">藍牙觸發器</string>
   <string name="profile_write_nfc_tag">寫到 NFC 標籤</string>
   <string name="profile_write_touch_tag">輕觸標籤以寫入</string>
@@ -111,12 +106,8 @@
   <string name="profile_lockmode_insecure_summary">使用不安全的鎖定螢幕</string>
   <string name="profile_lockmode_disabled_summary">已停用鎖定螢幕</string>
   <string name="profile_airplanemode_title">飛航模式</string>
-  <string name="toggleWifi">Wi-Fi</string>
-  <string name="toggleWifiAp">可攜式 Wi-Fi 無線基地台</string>
   <string name="toggleBluetooth">藍牙</string>
   <string name="toggleGPS">GPS</string>
-  <string name="toggleData">流動數據</string>
-  <string name="toggleSync">數據同步</string>
   <string name="toggle2g3g">2G/3G</string>
   <string name="toggleWimax">WiMAX</string>
   <string name="toggleNfc">NFC</string>
@@ -215,7 +206,6 @@
   <string name="title_qs_small_icons">顯示較小的按鈕</string>
   <string name="summary_qs_small_icons">使用較小的按鈕，增加列的數目</string>
   <string name="title_tile_airplane">飛航模式</string>
-  <string name="title_tile_battery">電池狀態</string>
   <string name="title_tile_bluetooth">藍牙</string>
   <string name="title_tile_brightness">亮度</string>
   <string name="title_tile_camera">相機</string>
@@ -231,8 +221,6 @@
   <string name="title_tile_settings">設定</string>
   <string name="title_tile_sound">聲音</string>
   <string name="title_tile_sync">同步</string>
-  <string name="title_tile_wifiap">Wi-Fi 存取點</string>
-  <string name="title_tile_wifi">Wi-Fi</string>
   <string name="title_tile_user">使用者切換器</string>
   <string name="title_tile_networkmode">網絡模式</string>
   <string name="title_tile_nfc">NFC</string>
@@ -243,13 +231,10 @@
   <string name="title_tile_network_adb">ADB 透過網絡</string>
   <string name="title_dynamic_tiles">動態按鈕</string>
   <string name="dynamic_tiles_note_title">注意</string>
-  <string name="dynamic_tiles_note_summary">動態按鈕不是隨時都會顯示的，僅會在有相關的系統事件時顯示</string>
   <string name="title_dynamic_alarm">鬧鐘</string>
   <string name="title_dynamic_bugreport">錯誤報告</string>
   <string name="title_dynamic_dock_battery">座架電池</string>
   <string name="title_dynamic_equalizer">等化器</string>
-  <string name="title_dynamic_ime">輸入法選擇器</string>
-  <string name="title_dynamic_usbtether">USB 網絡共享</string>
   <string name="title_dynamic_wifi">投射螢幕</string>
   <string name="title_general">一般</string>
   <string name="title_quick_pulldown">快速拉下</string>
@@ -384,7 +369,6 @@
   <string name="io_sched_title">I/O scheduler</string>
   <string name="perf_profile_title">設定檔</string>
   <string name="memory_management_title">記憶體管理</string>
-  <string name="pref_ksm_title">Kernel samepage merging (KSM)</string>
   <string name="pref_ksm_summary">KSM 可降低實體記憶體需求並增進效能</string>
   <string name="pref_purgeable_assets_title">允許清除資源</string>
   <string name="pref_purgeable_assets_summary">清除點陣圖記憶體資源允許需要時釋放更多 RAM (需重新啟動)</string>
@@ -458,7 +442,6 @@
   <string name="adb_notify">USB 偵錯通知</string>
   <string name="adb_notify_summary">當 USB 偵錯模式連接時顯示通知</string>
   <string name="adb_over_network">ADB 透過網絡</string>
-  <string name="adb_over_network_summary">啟用透過網絡接口 (Wi-Fi、USB 網路) 進行 TCP/IP 偵錯。該設定會於重新啟動後重設</string>
   <string name="adb_over_network_warning">警告：網絡 ADB 啟用時，您的裝置會對所有已連線的網絡 (包括 GSM 數據網絡) 開放接收指令！\n\n只有當您連線到信任的網絡時才使用此功能。\n\n您真的要啟用此功能？</string>
   <string name="device_hostname">裝置主機名稱</string>
   <string name="notification_drawer_title">抽屜的通知</string>
@@ -645,7 +628,6 @@
   <string name="status_bar_notif_count_title">顯示通知數量</string>
   <string name="status_bar_notif_count_summary">顯示未處理通知的數量</string>
   <string name="development_shortcut_title">開發快捷鍵</string>
-  <string name="development_shortcut_summary">在通知區與最近使用的應用程式清單啟用「擦除數據」與「強制關閉」選項</string>
   <string name="usb_mass_storage_title">大容量儲存 (UMS)</string>
   <string name="usb_mass_storage_summary">透過掛載 SD 卡為快閃裝置，使您可在電腦及 SD 卡之間傳輸檔案</string>
   <string name="storage_rescan_media">為儲存裝置重新掃描媒體</string>
@@ -656,7 +638,6 @@
   <string name="logger_summary">管理當機日誌記錄設定</string>
   <string name="custom_runtime_warning_title">警告</string>
   <string name="custom_runtime_warning_message">ART 不被 CyanogenMod 所支援. 此設定僅用作實驗，有可能造成不穩定、死機、數據丟失或導致您的裝置不能正常開機。請瀏覽  &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt;  細閱更多資料。&lt;br/&gt;&lt;br/&gt;作為你的運作環境，我們請求你不要發送錯誤報告給我們。&lt;br/&gt;&lt;br/&gt; 你要重啟裝置將運作環境從 <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> 改為 <xliff:g id="new" example="libart.so">%2$s</xliff:g> 嗎?</string>
-  <string name="gps_download_data_wifi_only">只透過 Wi-Fi 網絡下載 GPS 輔助數據</string>
   <string name="battery_info_status_charging_dock_ac">(DockAC)</string>
   <string name="battery_info_status_charging_dock_usb">(DockUSB)</string>
   <string name="menu_stats_reset">重設</string>
@@ -693,7 +674,6 @@
   <string name="app_ops_summaries_modify_call_log">修改通話記錄</string>
   <string name="app_ops_summaries_read_calendar">讀取日曆</string>
   <string name="app_ops_summaries_modify_calendar">修改日曆</string>
-  <string name="app_ops_summaries_wifi_scan">Wi-Fi 掃描</string>
   <string name="app_ops_summaries_notification">通知</string>
   <string name="app_ops_summaries_cell_scan">蜂窩網絡掃描</string>
   <string name="app_ops_summaries_call_phone">撥打電話</string>
@@ -722,12 +702,9 @@
   <string name="app_ops_summaries_media_volume">媒體音量</string>
   <string name="app_ops_summaries_alarm_volume">鬧鐘音量</string>
   <string name="app_ops_summaries_notification_volume">通知音量</string>
-  <string name="app_ops_summaries_bluetooth_volume">藍牙音量</string>
   <string name="app_ops_summaries_keep_awake">保持喚醒狀態</string>
   <string name="app_ops_summaries_monitor_location">監控位置</string>
   <string name="app_ops_summaries_monitor_high_power_location">監控高耗電位置</string>
-  <string name="app_ops_summaries_wifi_change">Wi-Fi 變化</string>
-  <string name="app_ops_summaries_bluetooth_change">藍牙更改</string>
   <string name="app_ops_summaries_data_change">數據更改</string>
   <string name="app_ops_summaries_alarm_wakeup">喚醒</string>
   <string name="app_ops_summaries_send_mms">傳送多媒體簡訊</string>
@@ -767,7 +744,6 @@
   <string name="app_ops_labels_notification_volume">通知音量</string>
   <string name="app_ops_labels_bluetooth_volume">藍牙音量</string>
   <string name="app_ops_labels_keep_awake">保持喚醒狀態</string>
-  <string name="app_ops_labels_wifi_change">Wi-Fi 變化</string>
   <string name="app_ops_labels_bluetooth_change">藍牙更改</string>
   <string name="app_ops_labels_data_change">數據更改</string>
   <string name="app_ops_labels_alarm_wakeup">喚醒</string>
@@ -809,7 +785,6 @@
   <string name="voice_wakeup_activity_title">活動啟動</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
   <string name="sub_no_sim">沒有 SIM 咭</string>
-  <string name="multi_sim_settings_title">多張 SIM 咭</string>
   <string name="multi_sim_settings_group_summary">預設 SIM 咭選擇</string>
   <string name="voice_title">語音通話</string>
   <string name="data_title">數據通話</string>
@@ -823,9 +798,4 @@
   <string name="block_notifications_title">過濾器通知</string>
   <string name="block_notifications_summary">管理被忽略的通知和過濾器</string>
   <string name="no_filters_title">沒有過濾器設定。若要過濾通知，長按它並選擇「忽略這樣的訊息」。</string>
-  <string name="usb_mount">掛載 USB 儲存裝置</string>
-  <string name="dlg_confirm_usb_unmount_text">如果您卸載 USB 儲存裝置，一些使用中的應用程式將停止，並可能在您重新掛載 USB 儲存裝置前無法使用。</string>
-  <string name="sd_insert_summary">插入要掛載的 SD 卡</string>
-  <string name="sd_mount">掛載 SD 卡</string>
-  <string name="dlg_confirm_sd_unmount_text">如果您卸載 SD 卡，一些使用中的應用程式將停止，並可能在您重新掛載 SD 卡前無法使用。</string>
 </resources>

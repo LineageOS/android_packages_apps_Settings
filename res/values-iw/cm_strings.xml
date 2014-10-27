@@ -16,11 +16,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="wifi_setting_countrycode_title">קוד Wi-Fi אזורי</string>
-  <string name="wifi_setting_countrycode_summary">ציין קוד Wi-Fi אזורי</string>
   <string name="wifi_setting_countrycode_error">אירעה שגיאה בהגדרת הקוד האזורי.</string>
-  <string name="wifi_setting_priority_title">עדיפות Wi-Fi</string>
-  <string name="wifi_setting_priority_summary">ציין עדיפות של רשתות Wi-Fi</string>
   <string name="wifi_ssid_input_limit">SSID חורג מאורך מרבי</string>
   <string name="p2p_device_name_input_limit">שם P2P חורג מאורך מרבי</string>
   <string name="change_crypt_password_title">שנה סיסמה</string>
@@ -47,7 +43,6 @@
   <string name="profile_trigger_configure">להגדיר את הגורם המפעיל</string>
   <string name="profile_triggers">גורמים מפעילים</string>
   <string name="profile_trigger_filter_all">כל הגורמים המפעילים</string>
-  <string name="profile_trigger_filter_wifi">גורמים מפעילים של Wi-Fi</string>
   <string name="profile_trigger_filter_bluetooth">גורמים מפעילים של Bluetooth</string>
   <string name="profile_write_nfc_tag">לכתוב לתווית NFC</string>
   <string name="profile_write_touch_tag">גע בתווית לכתיבה</string>
@@ -113,12 +108,8 @@
   <string name="profile_lockmode_insecure_summary">השתמש במסך נעילה לא מאובטח</string>
   <string name="profile_lockmode_disabled_summary">מסך נעילה מושבת</string>
   <string name="profile_airplanemode_title">מצב טיסה</string>
-  <string name="toggleWifi">Wi-Fi</string>
-  <string name="toggleWifiAp">נקודת גישת Wi-Fi</string>
   <string name="toggleBluetooth">בלוטוס</string>
   <string name="toggleGPS">GPS</string>
-  <string name="toggleData">נתונים לנייד</string>
-  <string name="toggleSync">סינכרון נתונים</string>
   <string name="toggle2g3g">דור 2/3</string>
   <string name="toggleWimax">WiMAX</string>
   <string name="toggleNfc">NFC</string>
@@ -235,7 +226,6 @@
   <string name="heads_up_blacklist_title">רשימה שחורה</string>
   <string name="heads_up_disabled_notice">כדי לאפשר ליישומים להציג הודעה אינטראקטיבית בחלון קופץ על המסך, הפעל הודעות קופצות.</string>
   <string name="title_tile_airplane">מצב טיסה</string>
-  <string name="title_tile_battery">מצב סוללה</string>
   <string name="title_tile_bluetooth">בלוטוס</string>
   <string name="title_tile_brightness">בהירות</string>
   <string name="title_tile_camera">מצלמה</string>
@@ -253,8 +243,6 @@
   <string name="title_tile_settings">הגדרות</string>
   <string name="title_tile_sound">צליל</string>
   <string name="title_tile_sync">סנכרון</string>
-  <string name="title_tile_wifiap">נקודת גישת Wi-Fi</string>
-  <string name="title_tile_wifi">Wi-Fi</string>
   <string name="title_tile_user">מחליף משתמש</string>
   <string name="title_tile_networkmode">מצב רשת</string>
   <string name="title_tile_nfc">NFC</string>
@@ -265,13 +253,10 @@
   <string name="title_tile_network_adb">ADB דרך הרשת</string>
   <string name="title_dynamic_tiles">אריחים דינמיים</string>
   <string name="dynamic_tiles_note_title">הערה</string>
-  <string name="dynamic_tiles_note_summary">אריחים דינאמיים אינם נראים תמיד ויופיעו רק כאשר מתרחש אירוע מערכת</string>
   <string name="title_dynamic_alarm">שעון מעורר</string>
   <string name="title_dynamic_bugreport">דיווח תקלה</string>
   <string name="title_dynamic_dock_battery">עיגון סוללה</string>
   <string name="title_dynamic_equalizer">אקולייזר</string>
-  <string name="title_dynamic_ime">מחליף IME</string>
-  <string name="title_dynamic_usbtether">שיתוף דרך USB</string>
   <string name="title_dynamic_wifi">העבר מסך</string>
   <string name="title_general">כללי</string>
   <string name="title_quick_pulldown">הורדה מהירה</string>
@@ -431,7 +416,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="io_sched_title">מתזמן קלט/פלט</string>
   <string name="perf_profile_title">פרופיל</string>
   <string name="memory_management_title">ניהול זיכרון</string>
-  <string name="pref_ksm_title">איחוד דפי זכרון זהים (KSM)</string>
   <string name="pref_ksm_summary">KSM מפחית דרישות זיכרון ומגדיל ביצועים</string>
   <string name="pref_purgeable_assets_title">אפשר טיהור פעיליות</string>
   <string name="pref_purgeable_assets_summary">טיהור מפת נכסי הזיכרון מאפשר את שחרורו של זיכרון RAM נוסף בעת הצורך (דרושה הפעלה מחדש)</string>
@@ -506,7 +490,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="adb_notify">הודעת USB debugging</string>
   <string name="adb_notify_summary">הצג הודעה כאשר USB debugging מחובר</string>
   <string name="adb_over_network">ADB דרך הרשת</string>
-  <string name="adb_over_network_summary">אפשר TCP/IP debugging דרך רשת (Wi-Fi, רשתות USB). אפשרות זו מאופסת באתחול</string>
   <string name="adb_over_network_warning">אזהרה: כאשר ADB על הרשת מופעל, המכשיר יהיה פתוח על כל הרשתות המחוברות, כולל חיבור נתוני GSM!\n\nהשתמש בזה רק כאשר אתה ברשת בטוחה.\n\nהאם אתה בטוח שאתה רוצה להפעיל אפשרות זו?</string>
   <string name="device_hostname">שם הרשת עבור ההתקן</string>
   <string name="notification_drawer_title">וילון הודעות</string>
@@ -709,7 +692,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="status_bar_notif_count_title">הצג מספור הודעות</string>
   <string name="status_bar_notif_count_summary">הצג מספר הודעות ממתינות</string>
   <string name="development_shortcut_title">קיצור דרך לכלי פיתוח</string>
-  <string name="development_shortcut_summary">אפשר אפשרויות של \"מחיקת מידע\" ו-\"אלץ עצירה\" בחלון ההתראות וברשימת יישומים אחרונים</string>
   <string name="usb_mass_storage_title">אחסון בנפח גדול (UMS)</string>
   <string name="usb_mass_storage_summary">מאפשר לך להעביר קבצים בין המחשב שלך לבין כרטיס SD זה על ידי חיבורו כהתקן USB</string>
   <string name="storage_rescan_media">סריקה מחדש של המדיה עבור אמצעי אחסון</string>
@@ -720,7 +702,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="logger_summary">נהל הגדרות רישום קריסות</string>
   <string name="custom_runtime_warning_title">אזהרה</string>
   <string name="custom_runtime_warning_message">ART לא נתמך כראוי על ידי CyanogenMod. הגדרה זו קיימת רק לניסוי ויש סיכוי לאי יציבות, קריסות, איבוד מידע או אתחול לא נכון של המכשיר. בקר ב-&lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;הצגת ART&lt;/a&gt; עבור מידע נוסף.&lt;br/&gt;&lt;br/&gt;אנחנו מבקשים שאתה לא תמלא דיווחי שגיאות אם אתה משתמש ב-ART.&lt;br/&gt;&lt;br/&gt;האם אתה בטוח שאתה רוצה להחליף מ-<xliff:g id="old" example="libdvm.so">%1$s</xliff:g> ל-<xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
-  <string name="gps_download_data_wifi_only">הורד נתוני GPS מרשת Wi-Fi בלבד</string>
   <string name="battery_info_status_charging_dock_ac">(DockAC)</string>
   <string name="battery_info_status_charging_dock_usb">(DockUSB)</string>
   <string name="menu_stats_reset">איפוס</string>
@@ -762,7 +743,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="app_ops_summaries_modify_call_log">שנה יומן שיחות</string>
   <string name="app_ops_summaries_read_calendar">קרא יומן</string>
   <string name="app_ops_summaries_modify_calendar">שנה לוח שנה</string>
-  <string name="app_ops_summaries_wifi_scan">‏סריקת Wi-Fi</string>
   <string name="app_ops_summaries_notification">התראה</string>
   <string name="app_ops_summaries_cell_scan">סריקה סלולרית</string>
   <string name="app_ops_summaries_call_phone">שיחת טלפון</string>
@@ -791,12 +771,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="app_ops_summaries_media_volume">עוצמת קול של מדיה</string>
   <string name="app_ops_summaries_alarm_volume">עוצמת קול של התרעה</string>
   <string name="app_ops_summaries_notification_volume">עוצמת קול של התראה</string>
-  <string name="app_ops_summaries_bluetooth_volume">‏עוצמת קול של Bluetooth</string>
   <string name="app_ops_summaries_keep_awake">שמור במצב פעיל</string>
   <string name="app_ops_summaries_monitor_location">עקוב אחר מיקום</string>
   <string name="app_ops_summaries_monitor_high_power_location">מעקב אחר מיקום עם צריכת סוללה גבוהה</string>
-  <string name="app_ops_summaries_wifi_change">שינוי wifi</string>
-  <string name="app_ops_summaries_bluetooth_change">שינוי bluetooth</string>
   <string name="app_ops_summaries_data_change">שינוי נתונים</string>
   <string name="app_ops_summaries_alarm_wakeup">התעוררות</string>
   <string name="app_ops_summaries_send_mms">לשלוח MMS</string>
@@ -836,7 +813,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="app_ops_labels_notification_volume">שליטה ראשית בעוצמת קול</string>
   <string name="app_ops_labels_bluetooth_volume">עוצמת קול של Bluetooth</string>
   <string name="app_ops_labels_keep_awake">שמור במצב פעיל</string>
-  <string name="app_ops_labels_wifi_change">שינוי Wi-Fi</string>
   <string name="app_ops_labels_bluetooth_change">שינוי bluetooth</string>
   <string name="app_ops_labels_data_change">שינוי נתונים</string>
   <string name="app_ops_labels_alarm_wakeup">התעוררות</string>
@@ -878,7 +854,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="voice_wakeup_activity_title">פעילות להפעלה</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
   <string name="sub_no_sim">אין SIM</string>
-  <string name="multi_sim_settings_title">מרובה SIM</string>
   <string name="multi_sim_settings_group_summary">SIM ברירת מחדל</string>
   <string name="voice_title">שיחות קוליות</string>
   <string name="data_title">שיחות נתונים</string>
@@ -911,35 +886,13 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="block_notifications_title">סנן הודעות</string>
   <string name="block_notifications_summary">נהל הודעות שהוחבאו ומסננים</string>
   <string name="no_filters_title">לא הוגדרו מסננים. כדי לסנן הודעה, לחיצה ארוכה ובחר ב-\'התעלם מהודעות כאלה\'.</string>
-  <string name="usb_eject">בטל אחסון USB</string>
-  <string name="usb_eject_summary">בטל את אחסון ה-USB כדי שתוכל להסירו בבטחה</string>
-  <string name="usb_insert_summary">הכנס אחסון USB כדי שתוכל להפעילו</string>
-  <string name="usb_mount">הפעל אחסון USB</string>
-  <string name="usb_format">מחק אחסון USB</string>
-  <string name="usb_format_summary">מחק את כל המידע באחסון ה-USB, כגון מוסיקה ותמונות</string>
-  <string name="dlg_confirm_usb_unmount_title">לבטל את אחסון ה-USB?</string>
-  <string name="dlg_confirm_usb_unmount_text">אם אתה מבטל את אחסון ה-USB, מספר אפליקציות לא יהיו זמינות עד שתפעיל בחזרה את אחסון ה-USB.</string>
-  <string name="dlg_error_usb_unmount_text">לא ניתן לבטל את אחסון ה-USB. נסה שוב מאוחר יותר.</string>
   <string name="usb_unmount_inform_text">‏הטעינה של כרטיס SD תבוטל.</string>
-  <string name="usb_ejecting_title">מבטל טעינת אחסון USB</string>
-  <string name="usb_ejecting_summary">ביטול טעינת אחסון USB בתהליך</string>
   <string name="usb_media_format_title">מחק אחסון USB</string>
   <string name="usb_media_format_desc">‏למחוק את את כל אחסון ה-USB? תאבד את \"<b>"כל"</b>\" הנתונים שנמצאים עליו!</string>
   <string name="usb_media_format_button_text">מחק אחסון USB</string>
   <string name="usb_media_format_final_desc">‏למחוק את אחסון ה-USB ואת כל הקבצים המאוחסנים בו? לא ניתן לבטל פעולה זו!</string>
   <string name="usb_media_format_gesture_explanation">‏עליך לשרטט את קו ביטול הנעילה כדי לאשר שברצונך למחוק את אחסון ה-USB.</string>
-  <string name="sd_eject">בטל את הטעינה של כרטיס ה-SD</string>
-  <string name="sd_eject_summary">בטל את טעינת כרטיס ה-SD כדי שתוכל להסיר אותו בבטחה</string>
-  <string name="sd_insert_summary">הכנס כרטיס SD לצורך טעינה</string>
-  <string name="sd_mount">‏טען כרטיס SD</string>
-  <string name="sd_format">‏מחק כרטיס SD</string>
-  <string name="sd_format_summary">‏מוחק את כל הנתונים שבכרטיס SD, כגון מוסיקה ותמונות</string>
-  <string name="dlg_confirm_sd_unmount_title">בטל את הטעינה של כרטיס ה-SD?</string>
-  <string name="dlg_confirm_sd_unmount_text">‏אם תבטל את טעינת כרטיס ה-SD, הפעולה של אפליקציות מסוימות שאתה משתמש בהן תופסק וייתכן שהן לא יהיו זמינות עד שתטען מחדש את כרטיס ה-SD.</string>
-  <string name="dlg_error_sd_unmount_text">לא ניתן לבטל את טעינת כרטיס ה-SD. נסה שוב מאוחר יותר.</string>
   <string name="sd_unmount_inform_text">הטעינה של כרטיס ה-SD תבוטל.</string>
-  <string name="sd_ejecting_title">מבטל טעינת כרטיס SD</string>
-  <string name="sd_ejecting_summary">ביטול טעינת כרטיס SD בתהליך</string>
   <string name="sd_media_format_title">‏מחק כרטיס SD</string>
   <string name="sd_media_format_desc">למחוק את כרטיס ה-SD? תאבד את \"<b>"כל"</b>\" הנתונים שבכרטיס!</string>
   <string name="sd_media_format_button_text">מחק כרטיס SD</string>
@@ -958,8 +911,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="enable_quickboot_title">אפשר מצב אתחול מהיר</string>
   <string name="enable_quickboot_summary">שים את המכשיר במצב לאתחול מהיר במקום כיבוי רגיל.</string>
   <string name="data_usage_tab_slot">SIM </string>
-  <string name="sel_sub_title">הגדר הרשמות</string>
-  <string name="sel_sub_summary">בחר את הרשמתך</string>
   <string name="prompt">שאל</string>
   <string name="prompt_user">שאל משתמש</string>
   <string name="tune_away_title">TuneAway</string>

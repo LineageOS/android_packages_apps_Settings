@@ -16,10 +16,10 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="wifi_setting_countrycode_title">Ländercode</string>
+  <string name="wifi_setting_countrycode_title">WLAN-Ländercode</string>
   <string name="wifi_setting_countrycode_summary">WLAN-Ländercode festlegen</string>
   <string name="wifi_setting_countrycode_error">Beim Festlegen des WLAN-Ländercodes ist ein Problem aufgetreten</string>
-  <string name="wifi_setting_priority_title">WLAN-Priorität</string>
+  <string name="wifi_setting_priority_title">WLAN-Netzwerk-Priorität</string>
   <string name="wifi_setting_priority_summary">Priorität der gespeicherten Netzwerke festlegen</string>
   <string name="wifi_ssid_input_limit">SSID ist zu lang</string>
   <string name="p2p_device_name_input_limit">P2P-Name ist zu lang</string>
@@ -47,7 +47,7 @@
   <string name="profile_trigger_configure">Auslöser konfigurieren</string>
   <string name="profile_triggers">Auslöser</string>
   <string name="profile_trigger_filter_all">Alle Auslöser</string>
-  <string name="profile_trigger_filter_wifi">WLAN-Netze</string>
+  <string name="profile_trigger_filter_wifi">WLAN-Auslöser</string>
   <string name="profile_trigger_filter_bluetooth">Bluetooth-Geräte</string>
   <string name="profile_write_nfc_tag">NFC-Tag beschreiben</string>
   <string name="profile_write_touch_tag">Zum Beschreiben Gerät mit NFC-Tag berühren</string>
@@ -117,8 +117,6 @@
   <string name="toggleWifiAp">WLAN-Hotspot</string>
   <string name="toggleBluetooth">Bluetooth</string>
   <string name="toggleGPS">GPS</string>
-  <string name="toggleData">Mobilfunkdaten</string>
-  <string name="toggleSync">Synchronisierung</string>
   <string name="toggle2g3g">Netzmodus</string>
   <string name="toggleWimax">WiMAX</string>
   <string name="toggleNfc">NFC</string>
@@ -236,7 +234,7 @@
   <string name="heads_up_blacklist_title">Sperrliste</string>
   <string name="heads_up_disabled_notice">Um Apps zu ermöglichen, interaktive Benachrichtigungen in einem Pop-up-Fenster darzustellen, aktivieren Sie Pop-up-Benachrichtigungen.</string>
   <string name="title_tile_airplane">Flugmodus</string>
-  <string name="title_tile_battery">Akkustand</string>
+  <string name="title_tile_battery">Akku</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Helligkeit</string>
   <string name="title_tile_camera">Kamera</string>
@@ -266,12 +264,11 @@
   <string name="title_tile_network_adb">ADB über Netzwerk</string>
   <string name="title_dynamic_tiles">Dynamische Kacheln</string>
   <string name="dynamic_tiles_note_title">Hinweis</string>
-  <string name="dynamic_tiles_note_summary">Dynamische Kacheln werden nur angezeigt, wenn das entsprechende Systemereignis eintritt</string>
   <string name="title_dynamic_alarm">Wecker</string>
   <string name="title_dynamic_bugreport">Fehlerprotokollierung</string>
   <string name="title_dynamic_dock_battery">Dock-Akku</string>
   <string name="title_dynamic_equalizer">Equalizer</string>
-  <string name="title_dynamic_ime">Eingabemethode wählen</string>
+  <string name="title_dynamic_ime">Eingabemethoden-Auswahlwerkzeug</string>
   <string name="title_dynamic_usbtether">USB-Tethering</string>
   <string name="title_dynamic_wifi">Bildschirminhalt übertragen</string>
   <string name="title_general">Allgemein</string>
@@ -437,7 +434,7 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
   <string name="io_sched_title">I/O-Scheduler</string>
   <string name="perf_profile_title">Profile</string>
   <string name="memory_management_title">Speicherverwaltung</string>
-  <string name="pref_ksm_title">KSM</string>
+  <string name="pref_ksm_title">Kernel Samepage Merging</string>
   <string name="pref_ksm_summary">Kernel-SamePage-Merging (KSM) verringert den Speicherbedarf, benötigt aber mehr Rechenleistung</string>
   <string name="pref_purgeable_assets_title">Freigabe von Ressourcen</string>
   <string name="pref_purgeable_assets_summary">Erlaubt dem System, Speicherbereiche von nicht mehr benutzten Bildern freizugeben, um mehr RAM bereitzustellen (Neustart erforderlich)</string>
@@ -512,7 +509,7 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
   <string name="adb_notify">USB-Debugging-Info</string>
   <string name="adb_notify_summary">Eine Benachrichtigung zeigen, wenn USB-Debugging verbunden ist</string>
   <string name="adb_over_network">ADB über Netzwerk</string>
-  <string name="adb_over_network_summary">TCP/IP-Debugging über Netzwerkschnittstellen (WLAN, USB-Netzwerke, \u2026) aktivieren. Diese Einstellung wird beim Neustart zurückgesetzt.</string>
+  <string name="adb_over_network_summary">TCP/IP-Debugging über Netzwerkschnittstellen (WLAN, USB-Netzwerke) aktivieren. Diese Einstellung wird beim Neustart zurückgesetzt</string>
   <string name="adb_over_network_warning">WARNUNG:\n\nWenn ADB über Netzwerk eingeschaltet wird, ist das Gerät anfällig für das Eindringen Fremder aus allen verbundenen Netzwerken - auch Mobilfunknetzwerken.\n\nEine Verbindung sollte nur mit einem vertrauenswürdigen Netzwerk hergestellt werden.\n\nTrotzdem aktivieren?</string>
   <string name="device_hostname">Hostname des Geräts</string>
   <string name="notification_drawer_title">Benachrichtigungsanzeige</string>
@@ -715,7 +712,6 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
   <string name="status_bar_notif_count_title">Benachrichtigungszähler</string>
   <string name="status_bar_notif_count_summary">Anzahl der ungelesenen Benachrichtigungen in der Statusleiste anzeigen</string>
   <string name="development_shortcut_title">Entwickler-Abkürzungen</string>
-  <string name="development_shortcut_summary">\'Anwendungsdaten löschen\' und \'Beenden erzwingen\' in der Benachrichtungsleiste und im Anwendungsverlauf anzeigen</string>
   <string name="usb_mass_storage_title">Massenspeicher</string>
   <string name="usb_mass_storage_summary">Ermöglicht den Datentransfer zwischen Ihrem Computer und der SD-Karte, indem diese als USB-Massenspeicher eingebunden wird</string>
   <string name="storage_rescan_media">Speichermedium nach Mediendateien durchsuchen</string>
@@ -727,7 +723,6 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
   <string name="custom_runtime_warning_title">Warnung</string>
   <string name="custom_runtime_warning_message">ART wird von CyanogenMod nicht unterstützt. Diese Einstellung ist experimentell und nur für Entwickler gedacht. Sie kann zu Instabilitäten, Abstürzen oder Datenverlust führen oder verhindern, dass Ihr Gerät startet. Besuchen Sie &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; für mehr Informationen.&lt;br/&gt;&lt;br/&gt;Melden Sie keine Fehler, wenn Sie ART als Laufzeitumgebung aktiviert haben.&lt;br/&gt;&lt;br/&gt;Sind Sie sicher, dass Sie das Gerät neu starten wollen, um die Laufzeitumgebung von <xliff:g id="old" example="libdvm.so">%1$s</xliff:g>
 auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
-  <string name="gps_download_data_wifi_only">A-GPS-Daten nur über WLAN herunterladen</string>
   <string name="battery_info_status_charging_dock_ac">Ladedock</string>
   <string name="battery_info_status_charging_dock_usb">USB-Dock</string>
   <string name="menu_stats_reset">Zurücksetzen</string>
@@ -802,8 +797,6 @@ auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
   <string name="app_ops_summaries_keep_awake">aktiv lassen</string>
   <string name="app_ops_summaries_monitor_location">Standort beobachten</string>
   <string name="app_ops_summaries_monitor_high_power_location">Standort mit hohem Stromverbrauch beobachten</string>
-  <string name="app_ops_summaries_wifi_change">WLAN ändern</string>
-  <string name="app_ops_summaries_bluetooth_change">Bluetooth ändern</string>
   <string name="app_ops_summaries_data_change">mobile Daten ändern</string>
   <string name="app_ops_summaries_alarm_wakeup">Ruhezustand ändern</string>
   <string name="app_ops_summaries_send_mms">MMS senden</string>
@@ -843,7 +836,6 @@ auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
   <string name="app_ops_labels_notification_volume">Gesamtlautstärke</string>
   <string name="app_ops_labels_bluetooth_volume">Bluetooth-Lautstärke</string>
   <string name="app_ops_labels_keep_awake">Aktiv lassen</string>
-  <string name="app_ops_labels_wifi_change">WLAN ändern</string>
   <string name="app_ops_labels_bluetooth_change">Bluetooth ändern</string>
   <string name="app_ops_labels_data_change">Mobile Daten ändern</string>
   <string name="app_ops_labels_alarm_wakeup">Ruhezustand ändern</string>
@@ -885,7 +877,7 @@ auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
   <string name="voice_wakeup_activity_title">Auszuführende Aktion</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
   <string name="sub_no_sim">Keine SIM-Karte</string>
-  <string name="multi_sim_settings_title">Multi-SIM</string>
+  <string name="multi_sim_settings_title">SIM-Karten</string>
   <string name="multi_sim_settings_group_summary">Standard-SIM Auswahl</string>
   <string name="voice_title">Sprachanrufe</string>
   <string name="data_title">Voip-Anrufe</string>
@@ -899,6 +891,7 @@ auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
   <string name="menu_hidden_apps_reset_lock">Sperrmuster zurücksetzen</string>
   <string name="protected_apps">Geschützte Apps</string>
   <string name="saving_protected_components">Geschützte Apps werden gespeichert\u2026</string>
+  <string name="launch_app">App starten</string>
   <string name="pa_login_username_hint">Benutzername (E-Mail)</string>
   <string name="pa_login_password_hint">Passwort</string>
   <string name="pa_login_submit_button">Anmelden</string>
@@ -918,35 +911,35 @@ auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
   <string name="block_notifications_title">Benachrichtigungen filtern</string>
   <string name="block_notifications_summary">Ignorierte Benachrichtigungen und Filter verwalten</string>
   <string name="no_filters_title">Keine Filter eingerichtet. Um eine Benachrichtigung zu filtern, halten Sie diese gedrückt und wählen Sie \'Ähnliche Benachrichtigungen ignorieren\'.</string>
-  <string name="usb_eject">USB-Speicher auswerfen</string>
-  <string name="usb_eject_summary">USB-Speicher auswerfen, um ihn sicher entfernen zu können</string>
-  <string name="usb_insert_summary">USB-Speicher zum Einhängen einsetzen</string>
-  <string name="usb_mount">USB-Speicher einhängen</string>
-  <string name="usb_format">USB-Speicher löschen</string>
-  <string name="usb_format_summary">Löscht alle Daten auf dem USB-Speicher, z. B. Musik und Fotos</string>
-  <string name="dlg_confirm_usb_unmount_title">USB-Speicher auswerfen?</string>
-  <string name="dlg_confirm_usb_unmount_text">Das Auswerfen des USB-Speichers kann dazu führen, dass manche Anwendungen gestoppt werden und erst wieder verwendet werden können, wenn der USB-Speicher wieder eingehängt wurde.</string>
-  <string name="dlg_error_usb_unmount_text">USB-Speicher konnte nicht ausgeworfen werden. Versuchen Sie es später erneut.</string>
+  <string name="usb_sd_eject">USB-Speicher auswerfen</string>
+  <string name="usb_sd_eject_summary">USB-Speicher auswerfen, um ihn sicher entfernen zu können</string>
+  <string name="usb_sd_insert_summary">USB-Speicher zum Einhängen einsetzen</string>
+  <string name="usb_sd_mount">USB-Speicher einhängen</string>
+  <string name="usb_sd_format">USB-Speicher löschen</string>
+  <string name="usb_sd_format_summary">Löscht alle Daten auf dem USB-Speicher, z. B. Musik und Fotos</string>
+  <string name="usb_dlg_confirm_unmount_title">USB-Speicher auswerfen?</string>
+  <string name="usb_dlg_confirm_unmount_text">Das Auswerfen des USB-Speichers kann dazu führen, dass manche Anwendungen gestoppt werden und erst wieder verwendet werden können, wenn der USB-Speicher wieder eingehängt wurde.</string>
+  <string name="usb_dlg_error_unmount_text">USB-Speicher konnte nicht ausgeworfen werden. Versuchen Sie es später erneut.</string>
   <string name="usb_unmount_inform_text">USB-Speicher wird ausgeworfen werden.</string>
-  <string name="usb_ejecting_title">USB-Speicher wird ausgeworfen</string>
-  <string name="usb_ejecting_summary">Auswerfen des USB-Speichers wird ausgeführt</string>
+  <string name="usb_sd_ejecting_title">USB-Speicher wird ausgeworfen</string>
+  <string name="usb_sd_ejecting_summary">USB-Speichers wird ausgeworfen</string>
   <string name="usb_media_format_title">USB-Speicher löschen</string>
   <string name="usb_media_format_desc">Kompletten USB-Speicher löschen? Sie werden <b>alle</b> gespeicherten Daten verlieren!</string>
   <string name="usb_media_format_button_text">USB-Speicher löschen</string>
   <string name="usb_media_format_final_desc">Den USB-Speicher mit allen dort gespeicherten Dateien wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden!</string>
   <string name="usb_media_format_gesture_explanation">Zeichnen Sie ihr Entsperrmuster um den USB- Speicher zu löschen.</string>
-  <string name="sd_eject">SD-Karte auswerfen</string>
-  <string name="sd_eject_summary">SD-Karte auswerfen, um sie sicher entfernen zu können</string>
-  <string name="sd_insert_summary">Legen Sie eine SD-Karte zum Einbinden ein</string>
-  <string name="sd_mount">SD-Karte einbinden</string>
-  <string name="sd_format">SD-Karte löschen</string>
-  <string name="sd_format_summary">Löscht alle Daten auf der SD-Karte, z. B. Musik und Fotos</string>
-  <string name="dlg_confirm_sd_unmount_title">SD-Karte auswerfen?</string>
-  <string name="dlg_confirm_sd_unmount_text">Wenn Sie die SD-Karte auswerfen, werden einige verwendete Anwendungen gestoppt und sind möglicherweise nicht mehr verfügbar, bis Sie die SD-Karte erneut einhängen.</string>
-  <string name="dlg_error_sd_unmount_text">SD-Karte konnte nicht ausgeworfen werden. Versuchen Sie es später erneut.</string>
+  <string name="sd_sd_eject">SD-Karte auswerfen</string>
+  <string name="sd_sd_eject_summary">SD-Karte auswerfen, um sie sicher entfernen zu können</string>
+  <string name="sd_sd_insert_summary">Legen Sie eine SD-Karte zum Einbinden ein</string>
+  <string name="sd_sd_mount">SD-Karte einbinden</string>
+  <string name="sd_sd_format">SD-Karte löschen</string>
+  <string name="sd_sd_format_summary">Löscht alle Daten auf der SD-Karte, z. B. Musik und Fotos</string>
+  <string name="sd_dlg_confirm_unmount_title">SD-Karte auswerfen?</string>
+  <string name="sd_dlg_confirm_unmount_text">Wenn Sie die SD-Karte auswerfen, werden einige verwendete Anwendungen gestoppt und sind möglicherweise nicht mehr verfügbar, bis Sie die SD-Karte erneut einhängen.</string>
+  <string name="sd_dlg_error_unmount_text">SD-Karte konnte nicht ausgeworfen werden. Versuchen Sie es später erneut.</string>
   <string name="sd_unmount_inform_text">SD-Karte wird ausgeworfen.</string>
-  <string name="sd_ejecting_title">SD-Karte auswerfen</string>
-  <string name="sd_ejecting_summary">SD-Karte wird ausgeworfen</string>
+  <string name="sd_sd_ejecting_title">SD-Karte wird ausgeworfen</string>
+  <string name="sd_sd_ejecting_summary">SD-Karte wird ausgeworfen</string>
   <string name="sd_media_format_title">SD-Karte löschen</string>
   <string name="sd_media_format_desc">SD-Karte löschen? Sie werden <b>alle</b> auf der Karte gespeicherten Daten verlieren!</string>
   <string name="sd_media_format_button_text">SD-Karte löschen</string>
@@ -966,10 +959,9 @@ auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
   <string name="enable_quickboot_title">Schnellstart-Modus aktivieren</string>
   <string name="enable_quickboot_summary">Gerät für schnellen Neustart vorbereiten, anstatt es vollständig auszuschalten.</string>
   <string name="data_usage_tab_slot">SIM </string>
-  <string name="sel_sub_title">SIM auswählen</string>
-  <string name="sel_sub_summary">SIM-Karte auswählen</string>
+  <string name="sel_sub_title">SIM-Karten konfigurieren</string>
   <string name="no_sim_info">Keine SIM-Informationen vorhanden.\nMenü nicht verfügbar</string>
-  <string name="subs_settings">SIM-Status</string>
+  <string name="subs_settings">SIM-Karten-Status</string>
   <string name="set_data_subscription_progress">SIM für Datenverbindung wird ausgewählt\u2026</string>
   <string name="set_dds_success">SIM für Datenverbindungen erfolgreich ausgewählt</string>
   <string name="set_dds_failed">SIM für Datenverbindungen konnte nicht ausgewählt werden. Bitte deaktivieren Sie bestehende Datenverbindungen und versuchen Sie es erneut.</string>
@@ -1012,7 +1004,7 @@ auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
   <string name="profile_setup_actions_title">Schritt 2: Aktionen bestimmen</string>
   <string name="profile_setup_actions_title_config">Aktionen neu konfigurieren</string>
   <string name="no_bluetooth_triggers">Keine Bluetooth-Auslöser vorhanden</string>
-  <string name="no_wifi_triggers">Keine WLAN-Auslöser vorhanden</string>
+  <string name="no_wifi_triggers">Keine WLAN-Auslöser verfügbar</string>
   <string name="profile_setup_setup_triggers_description">Auslöser bestimmen, die dieses Profil aktivieren</string>
   <string name="profile_setup_actions_description">Konfigurieren was passiert, wenn das Profil aktiviert ist</string>
 </resources>

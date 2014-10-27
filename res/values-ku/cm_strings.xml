@@ -16,11 +16,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="wifi_setting_countrycode_title">Wi-Fi کۆدی ناوچه‌ی</string>
-  <string name="wifi_setting_countrycode_summary">دیاریکردنی کۆدی ناوچە بۆ WI-FI</string>
   <string name="wifi_setting_countrycode_error">کێشەیەک هەیە لە ڕێکخستنی کۆدی ناوچە.</string>
-  <string name="wifi_setting_priority_title">لەپێشی Wi-Fi</string>
-  <string name="wifi_setting_priority_summary">دیاریکردنی تۆڕی Wi-Fi</string>
   <string name="wifi_ssid_input_limit">ناوی SSID تێپه‌ڕی له‌ پیتی ڕێگه‌پێدراو</string>
   <string name="p2p_device_name_input_limit">ناوی p2p تێپه‌ڕی له‌ پیتی ڕێگه‌پێدراو</string>
   <string name="change_crypt_password_title">وشەتێپەڕ گۆڕین</string>
@@ -47,7 +43,6 @@
   <string name="profile_trigger_configure">سازدان Trigger</string>
   <string name="profile_triggers">لێدەرەکان</string>
   <string name="profile_trigger_filter_all">هەموو ئیشپێکەرەکان</string>
-  <string name="profile_trigger_filter_wifi">Wi-Fi کارپێکەری</string>
   <string name="profile_trigger_filter_bluetooth">کارپێکەری بلوتوس</string>
   <string name="profile_write_nfc_tag">نوسین بۆ سیمبولی NFC</string>
   <string name="profile_write_touch_tag">سوین بۆ ڕێکخستنی ناونیشان</string>
@@ -115,12 +110,8 @@
   <string name="profile_lockmode_insecure_summary">بێ ئاسایشی لە بەکارهێنانی قوفڵی ڕوونما</string>
   <string name="profile_lockmode_disabled_summary">قوفڵی ڕوونما لەکارخرا</string>
   <string name="profile_airplanemode_title">باری فڕۆکە</string>
-  <string name="toggleWifi">Wi-Fi</string>
-  <string name="toggleWifiAp">هەڵگرتنی Wi-Fi هۆتسپۆت</string>
   <string name="toggleBluetooth">بلوتوس</string>
   <string name="toggleGPS">GPS</string>
-  <string name="toggleData">داتای مۆبایل</string>
-  <string name="toggleSync">ناردنی داتا</string>
   <string name="toggle2g3g">2G/3G</string>
   <string name="toggleWimax">WiMAX</string>
   <string name="toggleNfc">NFC</string>
@@ -237,7 +228,6 @@
   <string name="heads_up_blacklist_title">لیستی ڕەش</string>
   <string name="heads_up_disabled_notice">بۆ ڕێگه‌پێدان به‌ به‌رنامه‌ بۆ نیشاندانی ئاگاداری  ده‌رکه‌وته‌ و په‌نجه‌ره‌ی له‌سه‌ر ڕوونماکه‌ت.ده‌رکه‌وته‌کان کارپێبکه‌.</string>
   <string name="title_tile_airplane">باری فڕۆکە</string>
-  <string name="title_tile_battery">باری باتری</string>
   <string name="title_tile_bluetooth">بلوتوس</string>
   <string name="title_tile_brightness">ڕۆشنایی</string>
   <string name="title_tile_camera">کامێرا</string>
@@ -254,8 +244,6 @@
   <string name="title_tile_settings">ڕێکخستن</string>
   <string name="title_tile_sound">دەنگ</string>
   <string name="title_tile_sync">ناردن</string>
-  <string name="title_tile_wifiap">Wi-Fi AP</string>
-  <string name="title_tile_wifi">Wi-Fi</string>
   <string name="title_tile_user">گۆڕینی بەکارهێنەر</string>
   <string name="title_tile_networkmode">باری تۆڕ</string>
   <string name="title_tile_nfc">NFC</string>
@@ -266,13 +254,10 @@
   <string name="title_tile_network_adb">ADB بۆ تۆڕ</string>
   <string name="title_dynamic_tiles">جووڵەیی  tiles</string>
   <string name="dynamic_tiles_note_title">تێبینی</string>
-  <string name="dynamic_tiles_note_summary">جووڵەیی  هەمیشە لەکارا نیە جارەجار دەرەکەوێت لە سیستەمەوە</string>
   <string name="title_dynamic_alarm">کاژێری بیرخەرەوە</string>
   <string name="title_dynamic_bugreport">ڕاپۆرتکردنی کەموکورتی بۆسیستەم</string>
   <string name="title_dynamic_dock_battery">دۆکی باتری</string>
   <string name="title_dynamic_equalizer">یه‌کسانکه‌ری ده‌نگ</string>
-  <string name="title_dynamic_ime">IME گۆڕەڕ</string>
-  <string name="title_dynamic_usbtether">کێبڵی USB</string>
   <string name="title_dynamic_wifi">جیپس کردن‌ ڕوونما</string>
   <string name="title_general">گشتی</string>
   <string name="title_quick_pulldown">خێرا بۆ خوارەوە</string>
@@ -434,7 +419,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="io_sched_title">I/O scheduler</string>
   <string name="perf_profile_title">پڕۆفایل</string>
   <string name="memory_management_title">ڕێکخستنی بیرگه‌</string>
-  <string name="pref_ksm_title">کێڕناڵ</string>
   <string name="pref_ksm_summary">KSM فیزیک بیرگه‌ که‌م ده‌کاته‌وه‌</string>
   <string name="pref_purgeable_assets_title">Allow purging of assets</string>
   <string name="pref_purgeable_assets_summary">Purging of bitmap memory assets allows the freeing of more RAM when needed (requires reboot)</string>
@@ -508,7 +492,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="adb_notify">USB تێبینی خه‌واندنی</string>
   <string name="adb_notify_summary">نیشاندانی تێبینی کاتێکUSB  په‌یوه‌ند کرا</string>
   <string name="adb_over_network">تۆڕی ئه‌نته‌رنێتی ADB</string>
-  <string name="adb_over_network_summary">چلاکردنی  TCP/IP خه‌واندنی (Wi-Fi, USB تۆڕ). ئه‌م ڕێکخستنه‌ له‌سه‌ر کردنه‌وه‌ کاریه‌تی</string>
   <string name="adb_over_network_warning">WARNING: When ADB over network is enabled, your phone is open for intrusions on all connected networks, including GSM data network!\n\nOnly use this feature when you are connected on trusted networks.\n\nDo you really want to enable this function?</string>
   <string name="device_hostname">ناوی میوانی ئامێر</string>
   <string name="notification_drawer_title">ڕاکێشی تێبینی</string>
@@ -708,7 +691,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="status_bar_notif_count_title">پێشاندانی تێبینی</string>
   <string name="status_bar_notif_count_summary">پیشاندانی ژماره‌ی ته‌له‌فۆن که‌ نه‌کراونه‌ته‌وه‌ له‌ تێبینی</string>
   <string name="development_shortcut_title">قه‌دبڕی گه‌شه‌</string>
-  <string name="development_shortcut_summary">چالاکردنی\'سڕینی داتا\'و\'داخستنی پالنان\' هه‌ڵبژارده‌ له‌ به‌رنامه‌ی تازه‌</string>
   <string name="usb_mass_storage_title">بیرگه‌ی ناوه‌کی (UMS)</string>
   <string name="usb_mass_storage_summary">با دۆسیه‌کان بگوازینه‌وه‌ له‌ کۆمپیوته‌ره‌که‌ت بۆ بیرگه‌ی ده‌ره‌کی له‌ مۆبایله‌کات و فلاشی لێبده‌</string>
   <string name="storage_rescan_media">گه‌ڕان بۆ زانینی قه‌باره‌ی بیرگه‌</string>
@@ -719,7 +701,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="logger_summary">به‌ڕێوه‌بردنی ڕێکخستنی ڕاپۆرتی هه‌ڵه‌کان</string>
   <string name="custom_runtime_warning_title">ئاگاداریی</string>
   <string name="custom_runtime_warning_message">ART is not officially supported by CyanogenMod as it is highly experimental and has the potential to cause instability, crashes, data loss or prevent the proper boot of your device. Visit وlt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"وgt;Introducing ARTوlt;/aوgt; for more information.وlt;br/وgt;وlt;br/وgt;We request you do not file bug reports if you have enabled ART as your runtime.وlt;br/وgt;وlt;br/وgt;Are you sure you want to reboot to change runtime from <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> to <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
-  <string name="gps_download_data_wifi_only">داگرتنی GPS به‌یارمه‌تی داتا ته‌نها و تۆڕی WIFI</string>
   <string name="battery_info_status_charging_dock_ac">(DockAC)</string>
   <string name="battery_info_status_charging_dock_usb">(DockUSB)</string>
   <string name="menu_stats_reset">ڕێکخستنه‌وه‌</string>
@@ -759,7 +740,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="app_ops_summaries_modify_call_log">لابردنی تۆماری ته‌له‌فۆن</string>
   <string name="app_ops_summaries_read_calendar">خوێندنه‌وه‌ی ڕۆژمێر</string>
   <string name="app_ops_summaries_modify_calendar">لابردنی ڕۆژمێر</string>
-  <string name="app_ops_summaries_wifi_scan">wi-fi گه‌ڕان</string>
   <string name="app_ops_summaries_notification">تێبینی</string>
   <string name="app_ops_summaries_cell_scan">خانه‌ی گه‌ڕان</string>
   <string name="app_ops_summaries_call_phone">ته‌له‌فۆن</string>
@@ -788,12 +768,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="app_ops_summaries_media_volume">ده‌نگی میدیا</string>
   <string name="app_ops_summaries_alarm_volume">ده‌نگی ئاگادارکه‌ره‌وه‌</string>
   <string name="app_ops_summaries_notification_volume">تێبینی ده‌نگ</string>
-  <string name="app_ops_summaries_bluetooth_volume">ده‌نگی بلوتوس</string>
   <string name="app_ops_summaries_keep_awake">باکراوه‌بێت</string>
   <string name="app_ops_summaries_monitor_location">ناوچه‌ی پیشانگەر</string>
   <string name="app_ops_summaries_monitor_high_power_location">به‌رزی هێزی ناوچه‌ی پیشانگەر</string>
-  <string name="app_ops_summaries_wifi_change">wifi گۆڕین</string>
-  <string name="app_ops_summaries_bluetooth_change">گۆڕینی بلوتوس</string>
   <string name="app_ops_summaries_data_change">گۆڕینی داتا</string>
   <string name="app_ops_summaries_alarm_wakeup">هه‌ڵسان</string>
   <string name="app_ops_summaries_send_mms">ناردنی MMS</string>
@@ -833,7 +810,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="app_ops_labels_notification_volume">ده‌نگی تێبینی</string>
   <string name="app_ops_labels_bluetooth_volume">ده‌نگی بلوتوس</string>
   <string name="app_ops_labels_keep_awake">هه‌ڵسان</string>
-  <string name="app_ops_labels_wifi_change">Wi-Fi گۆڕینی</string>
   <string name="app_ops_labels_bluetooth_change">گۆڕینی بلوتوس</string>
   <string name="app_ops_labels_data_change">گۆڕینی داتا</string>
   <string name="app_ops_labels_alarm_wakeup">هه‌ڵسان</string>
@@ -875,7 +851,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="voice_wakeup_activity_title">چالاکردن بۆ دابه‌زاندن</string>
   <string name="voice_wakeup_default_activity">Google ئێستا</string>
   <string name="sub_no_sim">سیمی تیانیه‌</string>
-  <string name="multi_sim_settings_title">سیمی جیاواز</string>
   <string name="multi_sim_settings_group_summary">دیاریکردنی سیمی بنه‌ڕه‌ت</string>
   <string name="voice_title">ده‌نگی ته‌له‌فۆن</string>
   <string name="data_title">ته‌له‌فۆنی داتا</string>

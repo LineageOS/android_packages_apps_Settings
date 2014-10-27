@@ -16,11 +16,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="wifi_setting_countrycode_title">Wi-Fi-regionskod</string>
-  <string name="wifi_setting_countrycode_summary">Specificera regionskoden för Wi-Fi</string>
   <string name="wifi_setting_countrycode_error">Det uppstod ett problem vid inställningen av regionskoden.</string>
-  <string name="wifi_setting_priority_title">Wi-Fi-prioritet</string>
-  <string name="wifi_setting_priority_summary">Specificera prioriteten för Wi-Fi-nätverk</string>
   <string name="wifi_ssid_input_limit">SSID överskrider maxlängd</string>
   <string name="p2p_device_name_input_limit">P2P-namn överskrider maxlängd</string>
   <string name="change_crypt_password_title">Byt lösenord</string>
@@ -47,7 +43,6 @@
   <string name="profile_trigger_configure">Konfigurera utlösare</string>
   <string name="profile_triggers">Utlösare</string>
   <string name="profile_trigger_filter_all">Alla utlösare</string>
-  <string name="profile_trigger_filter_wifi">Wi-Fi-utlösare</string>
   <string name="profile_trigger_filter_bluetooth">Bluetoothutlösare</string>
   <string name="profile_write_nfc_tag">Skriv till NFC-tagg</string>
   <string name="profile_write_touch_tag">Rör vid tagg för att skriva</string>
@@ -113,12 +108,8 @@
   <string name="profile_lockmode_insecure_summary">Använd osäker låsskärm</string>
   <string name="profile_lockmode_disabled_summary">Låsskärmen är inaktiverad</string>
   <string name="profile_airplanemode_title">Flygplansläge</string>
-  <string name="toggleWifi">Wi-Fi</string>
-  <string name="toggleWifiAp">Portabel Wi-Fi-hotspot</string>
   <string name="toggleBluetooth">Bluetooth</string>
   <string name="toggleGPS">GPS</string>
-  <string name="toggleData">Mobildata</string>
-  <string name="toggleSync">Datasynk</string>
   <string name="toggle2g3g">2G/3G</string>
   <string name="toggleWimax">WiMAX</string>
   <string name="toggleNfc">NFC</string>
@@ -235,7 +226,6 @@
   <string name="heads_up_blacklist_title">Svartlista</string>
   <string name="heads_up_disabled_notice">För att tillåta appar att visa interaktiva aviseringar i en pop-up på din skärm, aktivera Heads up.</string>
   <string name="title_tile_airplane">Flygplansläge</string>
-  <string name="title_tile_battery">Batteristatus</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Ljusstyrka</string>
   <string name="title_tile_camera">Kamera</string>
@@ -252,8 +242,6 @@
   <string name="title_tile_settings">Inställningar</string>
   <string name="title_tile_sound">Ljud</string>
   <string name="title_tile_sync">Synk</string>
-  <string name="title_tile_wifiap">Wi-Fi AP</string>
-  <string name="title_tile_wifi">Wi-Fi</string>
   <string name="title_tile_user">Användarväxlare</string>
   <string name="title_tile_networkmode">Nätverksläge</string>
   <string name="title_tile_nfc">NFC</string>
@@ -264,13 +252,10 @@
   <string name="title_tile_network_adb">ADB över nätverk</string>
   <string name="title_dynamic_tiles">Dynamiska brickor</string>
   <string name="dynamic_tiles_note_title">Notis</string>
-  <string name="dynamic_tiles_note_summary">Dynamiska brickor är inte alltid synliga och kommer endast att visas om de utlöses av en systemhändelse</string>
   <string name="title_dynamic_alarm">Alarmklocka</string>
   <string name="title_dynamic_bugreport">Felrapport</string>
   <string name="title_dynamic_dock_battery">Batteri i docka</string>
   <string name="title_dynamic_equalizer">Equalizer</string>
-  <string name="title_dynamic_ime">Inmatningsväxlare</string>
-  <string name="title_dynamic_usbtether">USB-tether</string>
   <string name="title_dynamic_wifi">Överför skärm</string>
   <string name="title_general">Allmänt</string>
   <string name="title_quick_pulldown">Snabb neddragning</string>
@@ -432,7 +417,6 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="io_sched_title">I/O-schemaläggare</string>
   <string name="perf_profile_title">Profil</string>
   <string name="memory_management_title">Minneshantering</string>
-  <string name="pref_ksm_title">Kernel Samepage Merging</string>
   <string name="pref_ksm_summary">KSM reducerar fysiska minneskrav och förbättrar prestanda</string>
   <string name="pref_purgeable_assets_title">Tillåt rensning av tillgångar</string>
   <string name="pref_purgeable_assets_summary">Rensning av bitmapminnestillgångar möjliggör frigörandet av mer RAM vid behov (kräver omstart)</string>
@@ -506,7 +490,6 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="adb_notify">Avisering för USB-felsökning</string>
   <string name="adb_notify_summary">Visa en avisering när USB-felsökning är ansluten</string>
   <string name="adb_over_network">ADB över nätverk</string>
-  <string name="adb_over_network_summary">Aktivera TCP/IP-felsökning över nätverksgränssnitt (Wi-Fi, USB-nätverk). Denna inställning återställs vid omstart</string>
   <string name="adb_over_network_warning">VARNING: När ADB över nätverk är aktiverat är din telefon öppen för intrång genom anslutna nätverk, inklusive mobildatanätverk.\n\nAnvänd endast denna funktion när du är ansluten till betrodda nätverk.\n\nVill du verkligen aktivera denna funktion?</string>
   <string name="device_hostname">Enhetens värdnamn</string>
   <string name="notification_drawer_title">Aviseringsfält</string>
@@ -706,7 +689,6 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="status_bar_notif_count_title">Visa aviseringsantal</string>
   <string name="status_bar_notif_count_summary">Visa antalet väntande aviseringar</string>
   <string name="development_shortcut_title">Utvecklingsgenväg</string>
-  <string name="development_shortcut_summary">Lägg till alternativen \"Rensa data\" och \"Tvingad avslutning\" i aviseringsfältet och i listan över senaste appar</string>
   <string name="usb_mass_storage_title">Masslagring (UMS)</string>
   <string name="usb_mass_storage_summary">Låter dig överföra filer mellan din dator och SD-kortet genom att montera det som en flyttbar enhet</string>
   <string name="storage_rescan_media">Sök igenom media för lagringsvolymen</string>
@@ -717,7 +699,6 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="logger_summary">Hantera inställningar för kraschloggning</string>
   <string name="custom_runtime_warning_title">Varning</string>
   <string name="custom_runtime_warning_message">ART saknar officiellt stöd från CyanogenMod då det är högst experimentellt och har potential att orsaka instabilitet, krascher, dataförlust eller förhindra din enhet från att starta. Besök &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; för mer information.&lt;br/&gt;&lt;br/&gt;Vi ber dig att inte skicka några felrapporter om du har aktiverat ART som din körningstid.&lt;br/&gt;&lt;br/&gt;Är du säker på att du vill starta om för att ändra din körningstid från <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> till <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
-  <string name="gps_download_data_wifi_only">Ladda ned GPS-assisterad data endast över Wi-Fi-nätverk</string>
   <string name="battery_info_status_charging_dock_ac">(DockaAC)</string>
   <string name="battery_info_status_charging_dock_usb">(DockaUSB)</string>
   <string name="menu_stats_reset">Återställ</string>
@@ -757,7 +738,6 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="app_ops_summaries_modify_call_log">modifiera samtalslista</string>
   <string name="app_ops_summaries_read_calendar">läsa kalender</string>
   <string name="app_ops_summaries_modify_calendar">modifiera kalender</string>
-  <string name="app_ops_summaries_wifi_scan">söka efter wi-fi</string>
   <string name="app_ops_summaries_notification">avisering</string>
   <string name="app_ops_summaries_cell_scan">söka efter mobilnät</string>
   <string name="app_ops_summaries_call_phone">ringa telefon</string>
@@ -786,12 +766,9 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="app_ops_summaries_media_volume">mediavolym</string>
   <string name="app_ops_summaries_alarm_volume">alarmvolym</string>
   <string name="app_ops_summaries_notification_volume">aviseringsvolym</string>
-  <string name="app_ops_summaries_bluetooth_volume">bluetoothvolym</string>
   <string name="app_ops_summaries_keep_awake">håll vaken</string>
   <string name="app_ops_summaries_monitor_location">övervaka plats</string>
   <string name="app_ops_summaries_monitor_high_power_location">övervaka högenergiplats</string>
-  <string name="app_ops_summaries_wifi_change">ändra wifi</string>
-  <string name="app_ops_summaries_bluetooth_change">ändra bluetooth</string>
   <string name="app_ops_summaries_data_change">ändra data</string>
   <string name="app_ops_summaries_alarm_wakeup">vakna</string>
   <string name="app_ops_summaries_send_mms">skicka MMS</string>
@@ -831,7 +808,6 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="app_ops_labels_notification_volume">Aviseringsvolym</string>
   <string name="app_ops_labels_bluetooth_volume">Bluetoothvolym</string>
   <string name="app_ops_labels_keep_awake">Håll vaken</string>
-  <string name="app_ops_labels_wifi_change">Ändra Wi-Fi</string>
   <string name="app_ops_labels_bluetooth_change">Ändra Bluetooth</string>
   <string name="app_ops_labels_data_change">Ändra data</string>
   <string name="app_ops_labels_alarm_wakeup">Vakna</string>
@@ -873,7 +849,6 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="voice_wakeup_activity_title">Aktivitet att öppna</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
   <string name="sub_no_sim">Inget SIM</string>
-  <string name="multi_sim_settings_title">Multi-SIM</string>
   <string name="multi_sim_settings_group_summary">Standardval av SIM</string>
   <string name="voice_title">Röstsamtal</string>
   <string name="data_title">Datasamtal</string>

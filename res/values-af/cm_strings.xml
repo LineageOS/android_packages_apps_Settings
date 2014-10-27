@@ -16,11 +16,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="wifi_setting_countrycode_title">Wi-Fi gebiedskode</string>
-  <string name="wifi_setting_countrycode_summary">Spesifiseer die gebiedskode vir Wi-Fi</string>
   <string name="wifi_setting_countrycode_error">Daar was a probleem om die gebiedskode te verander.</string>
-  <string name="wifi_setting_priority_title">Wi-Fi prioriteit</string>
-  <string name="wifi_setting_priority_summary">Bepaal die prioriteit van Wi-Fi netwerke</string>
   <string name="wifi_ssid_input_limit">SSID oorskry maksimum lengte</string>
   <string name="p2p_device_name_input_limit">P2P naam oorskry maksimum lengte</string>
   <string name="change_crypt_password_title">Verander wagwoord</string>
@@ -47,7 +43,6 @@
   <string name="profile_trigger_configure">Sneller konfigurasie</string>
   <string name="profile_triggers">Snellers</string>
   <string name="profile_trigger_filter_all">Alle snellers</string>
-  <string name="profile_trigger_filter_wifi">Wi-Fi snellers</string>
   <string name="profile_trigger_filter_bluetooth">Bluetooth snellers</string>
   <string name="profile_write_nfc_tag">Skryf na NFC merker</string>
   <string name="profile_write_touch_tag">Raak merker aan om te skryf</string>
@@ -113,12 +108,8 @@
   <string name="profile_lockmode_insecure_summary">Gebruik onveilige slotskerm</string>
   <string name="profile_lockmode_disabled_summary">Slotskerm is gedeaktifeer</string>
   <string name="profile_airplanemode_title">Vliegtuigmodus</string>
-  <string name="toggleWifi">Wi-Fi</string>
-  <string name="toggleWifiAp">Wi-Fi \'hotspot\'</string>
   <string name="toggleBluetooth">Bluetooth</string>
   <string name="toggleGPS">GPS</string>
-  <string name="toggleData">Mobiele data</string>
-  <string name="toggleSync">Data sinkronisasie</string>
   <string name="toggle2g3g">2G/3G</string>
   <string name="toggleWimax">WiMAX</string>
   <string name="toggleNfc">NFC</string>
@@ -235,7 +226,6 @@
   <string name="heads_up_blacklist_title">Swartlys</string>
   <string name="heads_up_disabled_notice">Om interaktiewe kennisgewings toe te laat vir programme, dit vertoon \'n loer venster op jou skerm, aktiveer loer kennisgewings.</string>
   <string name="title_tile_airplane">Vliegtuigmodus</string>
-  <string name="title_tile_battery">Battery statistieke</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Helderheid</string>
   <string name="title_tile_camera">Kamera</string>
@@ -253,8 +243,6 @@
   <string name="title_tile_settings">Instellings</string>
   <string name="title_tile_sound">Klank</string>
   <string name="title_tile_sync">Sinkronisasie</string>
-  <string name="title_tile_wifiap">Wi-Fi-warmkol</string>
-  <string name="title_tile_wifi">Wi-Fi</string>
   <string name="title_tile_user">Gebruiker</string>
   <string name="title_tile_networkmode">Netwerkmodus</string>
   <string name="title_tile_nfc">NFC</string>
@@ -265,13 +253,10 @@
   <string name="title_tile_network_adb">ADB oor netwerk</string>
   <string name="title_dynamic_tiles">Dinamiese teëls</string>
   <string name="dynamic_tiles_note_title">Nota:</string>
-  <string name="dynamic_tiles_note_summary">Dinamiese teëls is nie altyd sigbaar nie en sal net vertoon word deur \'n stelsel gebeurtenis</string>
   <string name="title_dynamic_alarm">Wekker</string>
   <string name="title_dynamic_bugreport">Foutverslag</string>
   <string name="title_dynamic_dock_battery">Dok battery</string>
   <string name="title_dynamic_equalizer">Gelykmaker</string>
-  <string name="title_dynamic_ime">Verander insetmetode</string>
-  <string name="title_dynamic_usbtether">USB internetverbinding</string>
   <string name="title_dynamic_wifi">Projekteer skerm</string>
   <string name="title_general">Algemeen</string>
   <string name="title_quick_pulldown">Vinnige Instellings</string>
@@ -424,7 +409,6 @@ ten einde om bykomende kontrolepunte by te voeg . \'Verwyder\' verwyder die geko
   <string name="io_sched_title">I/O skeduleerder</string>
   <string name="perf_profile_title">Profiel</string>
   <string name="memory_management_title">Geheue-bestuur</string>
-  <string name="pref_ksm_title">Bedryfstelselkern \'samepage\' samesmelting</string>
   <string name="pref_ksm_summary">\'KSM\' verminder fisiese geheue vereistes sodat werkverrigting verbeter</string>
   <string name="pref_purgeable_assets_title">Batereiniging</string>
   <string name="pref_purgeable_assets_summary">Reiniging van \'bitmap\' geheue bates kan meer RAM vrystel wanneer dit benodig word (vereis herlaai)</string>
@@ -499,7 +483,6 @@ ten einde om bykomende kontrolepunte by te voeg . \'Verwyder\' verwyder die geko
   <string name="adb_notify">USB-ontfouting kennisgewing</string>
   <string name="adb_notify_summary">Vertoon \'n kennisgewing wanneer USB-ontfouting gekoppel is</string>
   <string name="adb_over_network">ADB oor netwerk</string>
-  <string name="adb_over_network_summary">Aktiveer TCP/IP-ontfouting oor die netwerk koppelvlakke (Wi-Fi, USB netwerke). Hierdie instelling word teruggestel tydens herlaai</string>
   <string name="adb_over_network_warning">WAARSKUWING: Wanneer ADB oor netwerk aangeskakel is, is die toestel kwesbaar vir indringers op alle verbonde netwerke, insluitend die GSM data netwerk\n\nGebruik Slegs hierdie funksie wanneer vertroude netwerke verbind is\n\nWil jy dit aanskakel?</string>
   <string name="device_hostname">Toestel gasheernaam</string>
   <string name="notification_drawer_title">Kennisgewings laai</string>
@@ -702,7 +685,6 @@ ten einde om bykomende kontrolepunte by te voeg . \'Verwyder\' verwyder die geko
   <string name="status_bar_notif_count_title">Kennisgewingstelling</string>
   <string name="status_bar_notif_count_summary">Vertoon die aantal uitstaande kennisgewings</string>
   <string name="development_shortcut_title">Ontwikkeling kortpad</string>
-  <string name="development_shortcut_summary">Aktiveer \'Vee data uit\' en \'Dwing stop\' opsies in kennisgewings gebied en onlangse programme lys</string>
   <string name="usb_mass_storage_title">Massa stoorplek</string>
   <string name="usb_mass_storage_summary">Laat jou toe om lêers oor te dra tussen jou rekenaar en SD kaart deur dit te laai dit as \'n USB massa stoorplek</string>
   <string name="storage_rescan_media">Herskandeer die skyf spasie</string>
@@ -713,7 +695,6 @@ ten einde om bykomende kontrolepunte by te voeg . \'Verwyder\' verwyder die geko
   <string name="logger_summary">Bestuur ineenstorting verslaggewing instellings</string>
   <string name="custom_runtime_warning_title">Waarskuwing</string>
   <string name="custom_runtime_warning_message">ART word nie ondersteun deur CyanogenMod. Hierdie instelling is ingesluit slegs vir eksperimentering en het die potensiaal om onstabiliteit, ineenstortings, data verlies te veroorsaak of te verhoed dat die toestel behoorlike sal begin. Besoek &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Bekendstelling van ART&lt;/a&gt; vir meer inligting.&lt;br/&gt;&lt;br/&gt;Ons versoek jou om nie fout verslae te verskaf as jy ART geaktiveer het as jou \'runtime\'.&lt;br/&gt;&lt;br/&gt;Is jy seker jy wil herbegin om die \'runtime\' te verander van <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> na <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
-  <string name="gps_download_data_wifi_only">Laai GPS aanvullende ​​data net oor Wi-Fi netwerke</string>
   <string name="battery_info_status_charging_dock_ac">(DokKRAG)</string>
   <string name="battery_info_status_charging_dock_usb">(DokUSB)</string>
   <string name="menu_stats_reset">Terugstel</string>
@@ -755,7 +736,6 @@ ten einde om bykomende kontrolepunte by te voeg . \'Verwyder\' verwyder die geko
   <string name="app_ops_summaries_modify_call_log">verander oproep log</string>
   <string name="app_ops_summaries_read_calendar">lees kalendar</string>
   <string name="app_ops_summaries_modify_calendar">verander kalendar</string>
-  <string name="app_ops_summaries_wifi_scan">wi-fi skandeer</string>
   <string name="app_ops_summaries_notification">kennisgewing</string>
   <string name="app_ops_summaries_cell_scan">sel skandeer</string>
   <string name="app_ops_summaries_call_phone">telefoon oproep</string>
@@ -784,12 +764,9 @@ ten einde om bykomende kontrolepunte by te voeg . \'Verwyder\' verwyder die geko
   <string name="app_ops_summaries_media_volume">media volume</string>
   <string name="app_ops_summaries_alarm_volume">alarm volume</string>
   <string name="app_ops_summaries_notification_volume">kennisgewing volume</string>
-  <string name="app_ops_summaries_bluetooth_volume">bluetooth volume</string>
   <string name="app_ops_summaries_keep_awake">how wakker</string>
   <string name="app_ops_summaries_monitor_location">monitor ligging</string>
   <string name="app_ops_summaries_monitor_high_power_location">monitor hoë krag ligging</string>
-  <string name="app_ops_summaries_wifi_change">wifi verander</string>
-  <string name="app_ops_summaries_bluetooth_change">bluetooth verander</string>
   <string name="app_ops_summaries_data_change">data verander</string>
   <string name="app_ops_summaries_alarm_wakeup">wakker word</string>
   <string name="app_ops_summaries_send_mms">stuur MMS</string>
@@ -829,7 +806,6 @@ ten einde om bykomende kontrolepunte by te voeg . \'Verwyder\' verwyder die geko
   <string name="app_ops_labels_notification_volume">Meester volume</string>
   <string name="app_ops_labels_bluetooth_volume">Stem volume</string>
   <string name="app_ops_labels_keep_awake">How wakker</string>
-  <string name="app_ops_labels_wifi_change">Wi-Fi verander</string>
   <string name="app_ops_labels_bluetooth_change">Bluetooth verander</string>
   <string name="app_ops_labels_data_change">Data verander</string>
   <string name="app_ops_labels_alarm_wakeup">wakker word</string>
@@ -871,7 +847,6 @@ ten einde om bykomende kontrolepunte by te voeg . \'Verwyder\' verwyder die geko
   <string name="voice_wakeup_activity_title">Aktiwiteit om te begin</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
   <string name="sub_no_sim">Geen Sim</string>
-  <string name="multi_sim_settings_title">Multi-SIM</string>
   <string name="multi_sim_settings_group_summary">Standaard SIM keuse</string>
   <string name="voice_title">Stem oproepe</string>
   <string name="data_title">Data oproepe</string>
@@ -904,35 +879,13 @@ ten einde om bykomende kontrolepunte by te voeg . \'Verwyder\' verwyder die geko
   <string name="block_notifications_title">Filter kennisgewings</string>
   <string name="block_notifications_summary">Bestuur geïgnoreerde kennisgewings en ​​filters</string>
   <string name="no_filters_title">Geen filters ingestel. Vir \'n kennisgewing filter, lank druk en kies \'Ignoreer boodskappe soos hierdie\'.</string>
-  <string name="usb_eject">Ontheg USB-berging</string>
-  <string name="usb_eject_summary">Onthegting van USB-berging kan met veiligheid gedoen word</string>
-  <string name="usb_insert_summary">Voeg USB-berging by vir montering</string>
-  <string name="usb_mount">Laai USB-berging</string>
-  <string name="usb_format">Verwyder USB-berging</string>
-  <string name="usb_format_summary">Verwyder alles op die USB-berging, soos bv. musiek en foto\'s</string>
-  <string name="dlg_confirm_usb_unmount_title">Ontheg USB-berging?</string>
-  <string name="dlg_confirm_usb_unmount_text">As jy USB-berging ontheg sal sommige programme wat jy gebruik ophou werk en dit sal net weer werk as jy die USB-berging weer heg.</string>
-  <string name="dlg_error_usb_unmount_text">Kon nie USB-berging ontheg nie. Probeer weer later.</string>
   <string name="usb_unmount_inform_text">USB-berging sal ontheg word.</string>
-  <string name="usb_ejecting_title">Besig om USB-berging te ontheg</string>
-  <string name="usb_ejecting_summary">USB-berging ontheging is besig</string>
   <string name="usb_media_format_title">Vee uit USB-berging</string>
   <string name="usb_media_format_desc">Verwyder alle USB-berging? Jy sal <b>alle</b> gestoorde data verloor!</string>
   <string name="usb_media_format_button_text">Vee USB-berging uit</string>
   <string name="usb_media_format_final_desc">Uitvee van USB-berging, verwyder al die lêers wat daar gestoor word? Jy kan nie hierdie aksie ontdoen nie!</string>
   <string name="usb_media_format_gesture_explanation">Vir bevestiging het jy nodig om jou ontsluit patroon in te sleutel om die USB-berging uit te vee.</string>
-  <string name="sd_eject">Ontheg SD kaart</string>
-  <string name="sd_eject_summary">Ontheg die SD kaart sodat jy dit veilig kan verwyder</string>
-  <string name="sd_insert_summary">Laai \'n SD kaart vir montering</string>
-  <string name="sd_mount">Laai SD kaart</string>
-  <string name="sd_format">Vee SD kaart uit</string>
-  <string name="sd_format_summary">Vee al die data uit op die SD kaart, soos foto\'s en musiek</string>
-  <string name="dlg_confirm_sd_unmount_title">Ontheg SD kaart?</string>
-  <string name="dlg_confirm_sd_unmount_text">As jy die SD kaart ontheg, sal sommige programme ophou werk en mag onbeskikbaar wees totdat jy dit weer weer monteer.</string>
-  <string name="dlg_error_sd_unmount_text">Kon nie SD kaart ontheg nie, probeer weer later.</string>
   <string name="sd_unmount_inform_text">SD kaart as ontheg word.</string>
-  <string name="sd_ejecting_title">Besig om SD kaart te ontheg</string>
-  <string name="sd_ejecting_summary">Besig met SD kaart ontheging</string>
   <string name="sd_media_format_title">Vee SD kaart uit</string>
   <string name="sd_media_format_desc">Vee SD kaart uit? Jy sal <b>alle</b> data verloor!</string>
   <string name="sd_media_format_button_text">Vee SD kaart uit</string>
@@ -952,10 +905,7 @@ ten einde om bykomende kontrolepunte by te voeg . \'Verwyder\' verwyder die geko
   <string name="enable_quickboot_title">Aktiveer QuickBoot modus</string>
   <string name="enable_quickboot_summary">Stel toestel na VinnigeBegin modus in plaas van normale skakel af.</string>
   <string name="data_usage_tab_slot">SIM  </string>
-  <string name="sel_sub_title">Konfigureer inskrywings</string>
-  <string name="sel_sub_summary">Kies jou inskrywing</string>
   <string name="no_sim_info">SIM-kaart inligting nie beskikbaar nie.\nKieslys kan nie verkry word nie</string>
-  <string name="subs_settings">Inskrywing status</string>
   <string name="set_data_subscription_progress">Stel data-inskrywing\u2026</string>
   <string name="set_dds_success">Data inskrywing was suksesvol</string>
   <string name="set_dds_failed">Fout met verstelling van data-inskrywing. Maak skoon enige bestaande data konneksie en probeer weer.</string>
@@ -990,7 +940,6 @@ ten einde om bykomende kontrolepunte by te voeg . \'Verwyder\' verwyder die geko
   <string name="profile_action_none">Geen aksie</string>
   <string name="profile_action_disabled">Deaktiveer</string>
   <string name="profile_action_enable">Aktiveer</string>
-  <string name="profile_tabs_wifi">Wi-Fi</string>
   <string name="profile_tabs_bluetooth">Bluetooth</string>
   <string name="profile_tabs_nfc">NFC</string>
   <string name="profile_setup_setup_triggers_title">Stap 1: Voeg snellers by</string>
@@ -998,7 +947,6 @@ ten einde om bykomende kontrolepunte by te voeg . \'Verwyder\' verwyder die geko
   <string name="profile_setup_actions_title">Stap 2: Stel aksies</string>
   <string name="profile_setup_actions_title_config">Herkonfigureer aksies</string>
   <string name="no_bluetooth_triggers">Geen Bluetooth snellers beskikbaar nie</string>
-  <string name="no_wifi_triggers">Geen Wi-Fi snellers beskikbaar nie</string>
   <string name="profile_setup_setup_triggers_description">Kies snellers wat die profiel sal aktiveer</string>
   <string name="profile_setup_actions_description">Nou stel wat gebeur wanneer die profiel geaktiveer word</string>
 </resources>

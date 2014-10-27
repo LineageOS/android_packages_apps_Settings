@@ -103,7 +103,7 @@
   <string-array name="wifi_status">
     <item/>
     <item>Scan leeft\u2026</item>
-    <item>Connectioun gëtt hirgestallt\u2026</item>
+    <item>Connectioun gëtt hiergestallt\u2026</item>
     <item>Authentifizéierung\u2026</item>
     <item>IP-Adress gëtt ofgeruff\u2026</item>
     <item>Connectéiert</item>
@@ -315,23 +315,23 @@
     <item>Weckerlautstäerkt</item>
     <item>Notificatiounslautstäerkt</item>
     <item>Bluetooth-Lautstäerkt</item>
-    <item>keep awake</item>
-    <item>monitor location</item>
-    <item>monitor high power location</item>
+    <item>aktiv loossen</item>
+    <item>Standuert iwwerwaachen</item>
+    <item>Standuerter mat héijem Stroumverbrauch iwwerwaachen</item>
   </string-array>
   <string-array name="app_ops_labels">
     <item>Standuert</item>
     <item>Standuert</item>
     <item>Standuert</item>
     <item>Vibréieren</item>
-    <item>Read contacts</item>
-    <item>Modify contacts</item>
+    <item>Kontakter liesen</item>
+    <item>Kontakter änneren</item>
     <item>Urufflëscht liesen</item>
     <item>Urufflëscht änneren</item>
-    <item>Read calendar</item>
-    <item>Modify calendar</item>
+    <item>Kalenner liesen</item>
+    <item>Kalenner änneren</item>
     <item>Standuert</item>
-    <item>Post notification</item>
+    <item>Notifikatioun schreiwen</item>
     <item>Standuert</item>
     <item>Telefonéieren</item>
     <item>SMS/MMS liesen</item>
@@ -340,29 +340,53 @@
     <item>SMS/MMS empfänkenSMS/MMS empfänken</item>
     <item>SMS/MMS empfänken</item>
     <item>SMS/MMS empfänken</item>
-    <item>Send SMS/MMS</item>
-    <item>Read SMS/MMS</item>
-    <item>Write SMS/MMS</item>
-    <item>Modify settings</item>
-    <item>Draw on top</item>
-    <item>Access notifications</item>
+    <item>SMS/MMS schécken</item>
+    <item>SMS/MMS liesen</item>
+    <item>SMS/MMS schreiwen</item>
+    <item>Astellungen änneren</item>
+    <item>Virun aneren Appen ablenden</item>
+    <item>op Notifikatiounen zougräifen</item>
     <item>Fotoapparat</item>
-    <item>Record audio</item>
-    <item>Play audio</item>
-    <item>Read clipboard</item>
-    <item>Modify clipboard</item>
-    <item>Media buttons</item>
-    <item>Audio focus</item>
-    <item>Master volume</item>
-    <item>Voice volume</item>
-    <item>Ring volume</item>
-    <item>Media volume</item>
-    <item>Alarm volume</item>
-    <item>Notification volume</item>
-    <item>Bluetooth volume</item>
-    <item>Keep awake</item>
+    <item>Toun ophuelen</item>
+    <item>Audio ofspillen</item>
+    <item>Tëschenoflag liesen</item>
+    <item>Tëschenoflag änneren</item>
+    <item>Medieknäppercher</item>
+    <item>Tounfokus</item>
+    <item>Gesamtlautstäerkt</item>
+    <item>Sproochlautstäerkt</item>
+    <item>Schelltounlautstäerkt</item>
+    <item>Medielautstäerkt</item>
+    <item>Weckerlautstäerkt</item>
+    <item>Notifikatiounslautstäerkt</item>
+    <item>Bluetooth-Lautstäerkt</item>
+    <item>Aktiv loossen</item>
     <item>Standuert</item>
     <item>Standuert</item>
+  </string-array>
+  <string-array name="long_press_timeout_selector_titles">
+    <item>Kuerz</item>
+    <item>Mëttel</item>
+    <item>Laang</item>
+  </string-array>
+  <string-array name="captioning_typeface_selector_titles">
+    <item>Standard</item>
+    <item>Ouni Serifen</item>
+    <item>Ouni Serifen (kondenséiert)</item>
+    <item>Mat Serifen</item>
+    <item>Fest Breet</item>
+  </string-array>
+  <string-array name="captioning_font_size_selector_titles">
+    <item>Ganz kleng</item>
+    <item>Kleng</item>
+    <item>Normal</item>
+    <item>Grouss</item>
+    <item>Ganz grouss</item>
+  </string-array>
+  <string-array name="captioning_edge_type_selector_titles">
+    <item>Ouni</item>
+    <item>Kontur</item>
+    <item>Drop shadow</item>
   </string-array>
   <string-array name="captioning_opacity_selector_titles">
     <item>25%</item>
@@ -370,39 +394,126 @@
     <item>75%</item>
     <item>100%</item>
   </string-array>
+  <string-array name="captioning_preset_selector_titles">
+    <item>Wäiss op Schwaarz</item>
+    <item>Schwaarz op Wäiss</item>
+    <item>Giel op Schwaarz</item>
+    <item>Giel op Blo</item>
+    <item>Personaliséiert</item>
+  </string-array>
+  <string-array name="select_runtime_titles">
+    <item>Dalvik</item>
+    <item>ART</item>
+    <item>ART (Feelersich)</item>
+  </string-array>
+  <string-array name="select_runtime_summaries">
+    <item>Dalvik benotzen</item>
+    <item>ART benotzen</item>
+    <item>ART-Feelersichbuild benotzen</item>
+  </string-array>
+  <string-array name="hdcp_checking_titles">
+    <item>Ni iwwerpréiwen</item>
+    <item>Just op DRM-Inhalter iwwerpréiwen</item>
+    <item>Ëmmer iwwerpréiwen</item>
+  </string-array>
+  <string-array name="hdcp_checking_summaries">
+    <item>Ni HDCP-Iwwerpréiwung benotzen</item>
+    <item>HDCP-Iwwerpréiwung just fir DRM-Inhalter benotzen</item>
+    <item>Ëmmer HDCP-Iwwerpréiwung benotzen</item>
+  </string-array>
   <string-array name="window_animation_scale_entries">
     <item>Animatioun aus</item>
-    <item>Animation scale .5x</item>
-    <item>Animation scale 1x</item>
-    <item>Animation scale 1.5x</item>
-    <item>Animation scale 2x</item>
-    <item>Animation scale 5x</item>
-    <item>Animation scale 10x</item>
+    <item>Animatiounsskala 0,5x</item>
+    <item>Animatiounsskala 1x</item>
+    <item>Animatiounsskala 1,5x</item>
+    <item>Animatiounsskala 2x</item>
+    <item>Animatiounsskala 5x</item>
+    <item>Animatiounsskala 10x</item>
   </string-array>
   <string-array name="transition_animation_scale_entries">
     <item>Animatioun aus</item>
-    <item>Animation scale .5x</item>
-    <item>Animation scale 1x</item>
-    <item>Animation scale 1.5x</item>
-    <item>Animation scale 2x</item>
-    <item>Animation scale 5x</item>
-    <item>Animation scale 10x</item>
+    <item>Animatiounsskala 0,5x</item>
+    <item>Animatiounsskala 1x</item>
+    <item>Animatiounsskala 1,5x</item>
+    <item>Animatiounsskala 2x</item>
+    <item>Animatiounsskala 5x</item>
+    <item>Animatiounsskala 10x</item>
   </string-array>
   <string-array name="animator_duration_scale_entries">
     <item>Animatioun aus</item>
-    <item>Animation scale .5x</item>
-    <item>Animation scale 1x</item>
-    <item>Animation scale 1.5x</item>
-    <item>Animation scale 2x</item>
-    <item>Animation scale 5x</item>
-    <item>Animation scale 10x</item>
+    <item>Animatiounsskala 0,5x</item>
+    <item>Animatiounsskala 1x</item>
+    <item>Animatiounsskala 1,5x</item>
+    <item>Animatiounsskala 2x</item>
+    <item>Animatiounsskala 5x</item>
+    <item>Animatiounsskala 10x</item>
+  </string-array>
+  <string-array name="overlay_display_devices_entries">
+    <item>Keen</item>
+    <item>720x480 mdpi</item>
+    <item>720x480 mdpi (sécher)</item>
+    <item>1280x720 tvdpi</item>
+    <item>1280x720 tvdpi (secure)</item>
+    <item>1920x1080 xhdpi</item>
+    <item>1920x1080 xhdpi (secure)</item>
+    <item>1280x720 tvdpi an 1920x1080 xhdpi</item>
+  </string-array>
+  <string-array name="enable_opengl_traces_entries">
+    <item>Keen</item>
+    <item>Logcat</item>
+    <item>Systrace (Graphics)</item>
+    <item>Oprufflëscht fir glGetError</item>
+  </string-array>
+  <string-array name="show_non_rect_clip_entries">
+    <item>Aus</item>
+    <item>Draw non-rectangular clip region in blue</item>
+    <item>Highlight tested drawing commands in green</item>
+  </string-array>
+  <string-array name="track_frame_time_entries">
+    <item>Aus</item>
+    <item>Um Schierm als Strécher</item>
+    <item>Um Schierm als Linnen</item>
+    <item>An der ADB-Shell mat dumpsys gfxinfo</item>
+  </string-array>
+  <string-array name="debug_hw_overdraw_entries">
+    <item>Aus</item>
+    <item>Iwwerschneidungsberäicher uweisen</item>
+    <item>Beräicher fir Deuteranomalie uweisen</item>
+    <item>Iwwerschneidungszieler uweisen</item>
+  </string-array>
+  <string-array name="app_process_limit_entries">
+    <item>Standardlimitt</item>
+    <item>Keng Hannergrondprozesser</item>
+    <item>Héchstens 1 Prozess</item>
+    <item>Héchstens 2 Prozesser</item>
+    <item>Héchstens 3 Prozesser</item>
+    <item>Héchstens 4 Prozesser</item>
+  </string-array>
+  <string-array name="vpn_types_long">
+    <item>PPTP VPN</item>
+    <item>L2TP-/IPSec-VPN mat virinstalléierte Schlësselen</item>
+    <item>L2TP-/IPSec-VPN mat Zertifikaten</item>
+    <item>IPSec-VPN mat virinstalléierte Schlësselen an Xauth-Authentifizéierung</item>
+    <item>IPSec-VPN mat Zertifikaten an Xauth-Authentifizéierung</item>
+    <item>IPSec-VPN mat Zertifikaten an Hybrid-Authentifizéierung</item>
   </string-array>
   <string-array name="vpn_states">
-    <item>Disconnected</item>
-    <item>Initializing\u2026</item>
-    <item>Connecting\u2026</item>
+    <item>Deconnectéiert</item>
+    <item>Gëtt Initialiséiert\u2026</item>
+    <item>Gëtt connectéiert\u2026</item>
     <item>Verbonnen</item>
     <item>Timeout</item>
-    <item>Unsuccessful</item>
+    <item>Net erfollegräich</item>
+  </string-array>
+  <string-array name="security_settings_premium_sms_values">
+    <item>Froen</item>
+    <item>Ni erlaben</item>
+    <item>Ëmmer erlaben</item>
+  </string-array>
+  <string-array name="ram_states">
+    <item>normal</item>
+    <item>moderat</item>
+    <item>niddreg</item>
+    <item>kritesch</item>
   </string-array>
 </resources>
