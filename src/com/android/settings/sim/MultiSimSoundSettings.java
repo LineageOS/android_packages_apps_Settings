@@ -77,9 +77,7 @@ public class MultiSimSoundSettings extends PreferenceActivity {
         public void run() {
             if (mRingtonePref != null) {
                 Context context = MultiSimSoundSettings.this;
-                //Uri ringtoneUri = RingtoneManager.getActualRingtoneUriBySubId(context, mSubscription);
-                Uri ringtoneUri = RingtoneManager.getActualDefaultRingtoneUri(context,
-                        mRingtones[mSubscription]);
+                Uri ringtoneUri = RingtoneManager.getActualRingtoneUriBySubId(context, mSubscription);
                 CharSequence summary = context
                         .getString(com.android.internal.R.string.ringtone_unknown);
                 CharSequence ringtoneSummary;
@@ -194,8 +192,7 @@ public class MultiSimSoundSettings extends PreferenceActivity {
         mRingtonePref = (DefaultRingtonePreference) findPreference(KEY_RINGSTONE);
         mSubscription = this.getIntent().getIntExtra(PhoneConstants.SUBSCRIPTION_KEY,
                 PhoneConstants.SUB1);
-        //mRingtonePref.setSubId(mSubscription);
-        mRingtonePref.setRingtoneType(mRingtones[mSubscription]);
+        mRingtonePref.setSubId(mSubscription);
         // Register ACTION_MEDIA_SCANNER_FINISHED intent here, to refresh the ringtone's summary.
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(Intent.ACTION_MEDIA_SCANNER_FINISHED);

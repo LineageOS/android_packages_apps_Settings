@@ -45,12 +45,21 @@ public class DefaultRingtonePreference extends RingtonePreference {
 
     @Override
     protected void onSaveRingtone(Uri ringtoneUri) {
-        RingtoneManager.setActualDefaultRingtoneUri(getContext(), getRingtoneType(), ringtoneUri);
+        if (getRingtoneType() == RingtoneManager.TYPE_RINGTONE) {
+            RingtoneManager.setActualRingtoneUriBySubId(getContext(), getSubId(), ringtoneUri);
+        } else {
+            RingtoneManager.setActualDefaultRingtoneUri(getContext(), getRingtoneType(),
+                    ringtoneUri);
+        }
     }
 
     @Override
     protected Uri onRestoreRingtone() {
-        return RingtoneManager.getActualDefaultRingtoneUri(getContext(), getRingtoneType());
+        if (getRingtoneType() == RingtoneManager.TYPE_RINGTONE) {
+            return RingtoneManager.getActualRingtoneUriBySubId(getContext(), getSubId());
+        } else {
+            return RingtoneManager.getActualDefaultRingtoneUri(getContext(), getRingtoneType());
+        }
     }
     
 }
