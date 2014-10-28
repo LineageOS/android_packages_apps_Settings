@@ -1848,7 +1848,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
         private static final String EXTRA_LIMIT_BYTES = "limitBytes";
 
         public static void show(DataUsageSummary parent) {
-            if (null != parent || !parent.isAdded())
+            if (null == parent || !parent.isAdded())
                 return;
 
             final NetworkPolicy policy = parent.mPolicyEditor.getPolicy(parent.mTemplate);
