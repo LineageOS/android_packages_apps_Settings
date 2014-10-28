@@ -123,7 +123,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
                 String[] modes = getResources().getStringArray(R.array.values_location_widget);
                 int count = modes.length;
                 for (int i = 0; i < count; i++) {
-                    int mask = (int) Math.pow(2, i + 1); // Off is always preset
+                    int mask = (int) Math.pow(2, i);
                     if ((currentLocatorMode & mask) == mask) {
                         currentModes.add(modes[i]);
                     }
@@ -210,12 +210,12 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             updateSummary(value, mRingMode, R.string.pref_ring_mode_summary);
             return true;
         } else if (preference == mLocationMode) {
-            int currentLocatorMode = 1; // Off is always preset
+            int currentLocatorMode = 0;
             String[] currentModes = ((Set<String>) newValue).toArray(new String[]{});
             int count = currentModes.length;
             for (int i = 0; i < count; i++) {
                 int index = mLocationMode.findIndexOfValue(currentModes[i]);
-                currentLocatorMode |= (int) Math.pow(2, index + 1); // Off is always preset
+                currentLocatorMode |= (int) Math.pow(2, index);
             }
             Settings.System.putIntForUser(resolver, Settings.System.EXPANDED_LOCATION_MODE,
                     currentLocatorMode, UserHandle.USER_CURRENT);
