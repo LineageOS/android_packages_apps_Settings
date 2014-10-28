@@ -1623,6 +1623,12 @@
             </intent-filter>
         </receiver>
 
+        <service android:name=".wifi.HotsoptService" >
+            <intent-filter>
+                <action android:name="com.android.settings.wifi.HotsoptService" />
+            </intent-filter>
+        </service>
+
         <!-- Standard picker for widgets -->
         <activity android:name="AppWidgetPickActivity"
                 android:label="@string/widget_picker_title"
