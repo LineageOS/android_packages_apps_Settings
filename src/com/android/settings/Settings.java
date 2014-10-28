@@ -165,6 +165,8 @@ public class Settings extends PreferenceActivity
     private static final String VOICE_WAKEUP_PACKAGE_NAME = "com.cyanogenmod.voicewakeup";
     private static final String GESTURE_SETTINGS_PACKAGE_NAME = "com.cyanogenmod.settings";
 
+    private static final String THEME_CHOOSER_CATEGORY = "cyngn.intent.category.APP_THEMES";
+
     static final int DIALOG_ONLY_ONE_HOME = 1;
 
     private static boolean sShowNoHomeNotice = false;
@@ -1260,6 +1262,19 @@ public class Settings extends PreferenceActivity
         boolean revert = false;
         if (header.id == R.id.account_add) {
             revert = true;
+        }
+
+        // Launch the theme chooser if it supports the cyngn.intent.category.APP_THEMES category.
+        if (header.id == R.id.theme_settings) {
+            Intent intent = new Intent(Intent.ACTION_MAIN)
+                    .addCategory(THEME_CHOOSER_CATEGORY)
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            try {
+                startActivity(intent);
+                return;
+            } catch (ActivityNotFoundException e) {
+                // do nothing so the theme settings to be displayed
+            }
         }
 
         super.onHeaderClick(header, position);
