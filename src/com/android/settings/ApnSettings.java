@@ -183,7 +183,7 @@ public class ApnSettings extends SettingsPreferenceFragment implements
 
         Cursor cursor = getContentResolver().query(Telephony.Carriers.CONTENT_URI, new String[] {
                 "_id", "name", "apn", "type"}, where, null,
-                Telephony.Carriers.DEFAULT_SORT_ORDER);
+                "name COLLATE NOCASE ASC");
 
         if (cursor != null) {
             PreferenceGroup apnList = (PreferenceGroup) getPreferenceScreen().findPreference("apn_list");
