@@ -16,30 +16,24 @@
 
 package com.android.settings.sim;
 
-import android.provider.SearchIndexableResource;
-
-import com.android.settings.R;
-
 import android.app.AlertDialog;
-import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
-import android.content.Intent;
 import android.content.Context;
+import android.content.ContentUris;
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemProperties;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
+import android.provider.SearchIndexableResource;
 import android.provider.Settings.SettingNotFoundException;
+import android.provider.Telephony;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telecom.PhoneAccount;
-import android.telephony.CellInfo;
+import android.telecom.PhoneAccountHandle;
 import android.telephony.PhoneStateListener;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -50,17 +44,21 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.android.settings.MultiSimSettingTab;
+import android.app.Dialog;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.TelephonyIntents;
+
 import com.android.settings.RestrictedSettingsFragment;
 import com.android.settings.Utils;
-import com.android.settings.notification.DropDownPreference;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.search.Indexable.SearchIndexProvider;
+import com.android.settings.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 
 public class SimSettings extends RestrictedSettingsFragment implements Indexable, TextWatcher {
@@ -382,36 +380,30 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     }
 
     private void updateCellularDataValues() {
-        final DropDownPreference simPref = (DropDownPreference) findPreference(KEY_CELLULAR_DATA);
-        final SubscriptionInfo sir = findRecordBySubId(SubscriptionManager.getDefaultDataSubId());
-        boolean isCellularDataEnabled = false;
+        final Preference simPref = findPreference(KEY_CELLULAR_DATA);
+        final SubscriptionInfo sir = Utils.findRecordBySubId(getActivity(),
+                SubscriptionManager.getDefaultDataSubId());
+        simPref.setTitle(R.string.cellular_data_title);
+        if (DBG) log("[updateCellularDataValues] mSubInfoList=" + mSubInfoList);
+
         if (sir != null) {
-            simPref.setSelectedValue(sir, false);
+            simPref.setSummary(sir.getDisplayName());
+        } else if (sir == null) {
+            simPref.setSummary(R.string.sim_selection_required_pref);
         }
-        if (mNumSims > 1 && !needDisableDataSub2()) {
-            isCellularDataEnabled = true;
-        }
-        simPref.setEnabled(isCellularDataEnabled);
-        updateCellularDataPreference();
+        simPref.setEnabled(mSelectableSubInfos.size() >= 1);
     }
 
-    private void updateCellularDataPreference() {
-        final DropDownPreference simPref = (DropDownPreference) findPreference(KEY_CELLULAR_DATA);
-        boolean callStateIdle = isCallStateIdle();
-        // Enable data preference in msim mode and call state idle
-        boolean disableCellulardata = getResources().getBoolean(R.bool.disbale_cellular_data);
-        simPref.setEnabled((mNumSims > 1) && callStateIdle && (!disableCellulardata));
-        // Display toast only once when the user enters the activity even though the call moves
-        // through multiple call states (eg - ringing to offhook for incoming calls)
-        if (callStateIdle == false && inActivity && dataDisableToastDisplayed == false) {
-            Toast.makeText(getActivity(), R.string.data_disabled_in_active_call,
-                    Toast.LENGTH_SHORT).show();
-            dataDisableToastDisplayed = true;
-        }
-        // Reset dataDisableToastDisplayed
-        if (callStateIdle == true) {
-            dataDisableToastDisplayed = false;
-        }
+    private void updateCallValues() {
+        final Preference simPref = findPreference(KEY_CALLS);
+        final TelecomManager telecomManager = TelecomManager.from(getActivity());
+        final PhoneAccountHandle phoneAccount =
+            telecomManager.getUserSelectedOutgoingPhoneAccount();
+
+        simPref.setTitle(R.string.calls_title);
+        simPref.setSummary(phoneAccount == null
+                ? getResources().getString(R.string.sim_selection_required_pref)
+                : (String)telecomManager.getPhoneAccount(phoneAccount).getLabel());
     }
 
     private boolean isCallStateIdle() {
@@ -423,17 +415,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         }
         Log.d(TAG, "isCallStateIdle " + callStateIdle);
         return callStateIdle;
-    }
-
-    private void updateCallValues() {
-        final DropDownPreference simPref = (DropDownPreference) findPreference(KEY_CALLS);
-        int subId = SubscriptionManager.isVoicePromptEnabled() ?
-                0 : SubscriptionManager.getDefaultVoiceSubId();
-        final SubscriptionInfo sir = findRecordBySubId(subId);
-        if (sir != null) {
-            simPref.setSelectedValue(sir, false);
-        }
-        simPref.setEnabled(mNumSims > 1);
     }
 
     @Override
@@ -455,6 +436,80 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         Log.d(TAG,"on Resume, number of slots = " + mNumSlots);
         initLTEPreference();
         updateAllOptions();
+    }
+
+    @Override
+    public Dialog onCreateDialog(final int id) {
+        final ArrayList<String> list = new ArrayList<String>();
+        final int selectableSubInfoLength = mSelectableSubInfos.size();
+
+        final DialogInterface.OnClickListener selectionListener =
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int value) {
+
+                        final SubscriptionInfo sir;
+
+                        if (id == DATA_PICK) {
+                            sir = mSelectableSubInfos.get(value);
+                            SubscriptionManager.setDefaultDataSubId(sir.getSubscriptionId());
+                        } else if (id == CALLS_PICK) {
+                            final TelecomManager telecomManager =
+                                    TelecomManager.from(getActivity());
+                            final List<PhoneAccountHandle> phoneAccountsList =
+                                    telecomManager.getCallCapablePhoneAccounts();
+                            telecomManager.setUserSelectedOutgoingPhoneAccount(
+                                    value < 1 ? null : phoneAccountsList.get(value - 1));
+                        } else if (id == SMS_PICK) {
+                            sir = mSelectableSubInfos.get(value);
+                            SubscriptionManager.setDefaultSmsSubId(sir.getSubscriptionId());
+                        }
+
+                        updateActivitesCategory();
+                    }
+                };
+
+        if (id == CALLS_PICK) {
+            final TelecomManager telecomManager = TelecomManager.from(getActivity());
+            final Iterator<PhoneAccountHandle> phoneAccounts =
+                    telecomManager.getCallCapablePhoneAccounts().listIterator();
+
+            list.add(getResources().getString(R.string.sim_calls_ask_first_prefs_title));
+            while (phoneAccounts.hasNext()) {
+                final PhoneAccount phoneAccount =
+                        telecomManager.getPhoneAccount(phoneAccounts.next());
+                list.add((String)phoneAccount.getLabel());
+            }
+        } else {
+            for (int i = 0; i < selectableSubInfoLength; ++i) {
+                final SubscriptionInfo sir = mSelectableSubInfos.get(i);
+                CharSequence displayName = sir.getDisplayName();
+                if (displayName == null) {
+                    displayName = "";
+                }
+                list.add(displayName.toString());
+            }
+        }
+
+        String[] arr = list.toArray(new String[0]);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        ListAdapter adapter = new SelectAccountListAdapter(
+                builder.getContext(),
+                R.layout.select_account_list_item,
+                arr, id);
+
+        if (id == DATA_PICK) {
+            builder.setTitle(R.string.select_sim_for_data);
+        } else if (id == CALLS_PICK) {
+            builder.setTitle(R.string.select_sim_for_calls);
+        } else if (id == SMS_PICK) {
+            builder.setTitle(R.string.sim_card_select_title);
+        }
+
+        return builder.setAdapter(adapter, selectionListener)
+            .create();
     }
 
     private void initLTEPreference() {
