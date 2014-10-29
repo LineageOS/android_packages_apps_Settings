@@ -486,8 +486,7 @@ public class IccLockSettings extends PreferenceActivity
 
     private void displayRetryCounter(String s, int attemptsRemaining) {
         if (attemptsRemaining >= 0) {
-            String displayMsg = s + mRes.getString(R.string.sim_pin_attempts)
-                + attemptsRemaining;
+            String displayMsg = s + mRes.getString(R.string.sim_pin_attempts, attemptsRemaining);
             Toast.makeText(this, displayMsg, Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, mRes.getString(R.string.sim_lock_failed),
