@@ -109,6 +109,14 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
                     DevicePolicyManager.KEYGUARD_DISABLE_SECURE_CAMERA);
         }
 
+        // Enable or disable application widget based on policy
+        if (mEnableApplicationWidget != null) {
+            if (!checkDisabledByPolicy(mEnableApplicationWidget,
+                    DevicePolicyManager.KEYGUARD_DISABLE_APPLICATION_WIDGET)) {
+                mEnableApplicationWidget.setEnabled(true);
+            }
+        }
+
         boolean canEnableModLockscreen = false;
         final String keyguardPackage = getActivity().getString(
                 com.android.internal.R.string.config_keyguardPackage);
@@ -184,13 +192,6 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             if(!checkDisabledByPolicy(mEnableKeyguardWidgets,
                     DevicePolicyManager.KEYGUARD_DISABLE_WIDGETS_ALL)) {
                 mEnableKeyguardWidgets.setEnabled(enabled);
-            }
-        }
-        if (mEnableApplicationWidget != null) {
-            // Enable or disable application widgets based on policy
-            if (!checkDisabledByPolicy(mEnableApplicationWidget,
-                    DevicePolicyManager.KEYGUARD_DISABLE_APPLICATION_WIDGET)) {
-                mEnableApplicationWidget.setEnabled(enabled);
             }
         }
         if (mEnableMaximizeWidgets != null) {
