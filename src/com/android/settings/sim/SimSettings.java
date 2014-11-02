@@ -116,6 +116,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         IntentFilter intentFilter =
                 new IntentFilter(TelephonyIntents.ACTION_DEFAULT_DATA_SUBSCRIPTION_CHANGED);
         intentFilter.addAction(TelephonyIntents.ACTION_SUBINFO_CONTENT_CHANGE);
+        intentFilter.addAction(TelephonyIntents.ACTION_SUBINFO_RECORD_UPDATED);
 
         getActivity().registerReceiver(mDdsSwitchReceiver, intentFilter);
     }
@@ -134,7 +135,8 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             Log.d(TAG, "Intent received: " + action);
             if (TelephonyIntents.ACTION_DEFAULT_DATA_SUBSCRIPTION_CHANGED.equals(action)) {
                 updateCellularDataValues();
-            } else if (TelephonyIntents.ACTION_SUBINFO_CONTENT_CHANGE.equals(action)) {
+            } else if (TelephonyIntents.ACTION_SUBINFO_CONTENT_CHANGE.equals(action)
+                    || TelephonyIntents.ACTION_SUBINFO_RECORD_UPDATED.equals(action)) {
                 mAvailableSubInfos.clear();
                 mNumSims = 0;
                 mSubInfoList = SubscriptionManager.getActiveSubInfoList();
