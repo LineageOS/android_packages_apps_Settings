@@ -2562,7 +2562,8 @@ public class DataUsageSummary extends Fragment {
         if (i <= 0) {
             return "";
         } else {
-            return getText(R.string.data_usage_tab_slot).toString() + i;
+            String label = MultiSimSettings.getFormattedSimName(getActivity(), i - 1);
+            return getString(R.string.multi_sim_entry_format, operatorName, i);
         }
     }
 

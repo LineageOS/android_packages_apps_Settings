@@ -194,21 +194,9 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
     }
 
     private int updateSimNameEntries()  {
-        MSimTelephonyManager tm = MSimTelephonyManager.getDefault();
         int i = 0;
         for (i = 0; i < MAX_SUBSCRIPTIONS; i++) {
-            String label = Settings.Global.getSimNameForSubscription(this, i, null);
-            if (TextUtils.isEmpty(label)) {
-                String operatorName = tm.getSimOperatorName(i);
-                if (tm.getSimState(i) == SIM_STATE_ABSENT || tm.getSimState(i) != SIM_STATE_READY
-                        || TextUtils.isEmpty(operatorName)) {
-                    label = getString(R.string.multi_sim_entry_format_no_carrier, i + 1);
-                } else {
-                    label = getString(R.string.multi_sim_entry_format, operatorName, i + 1);
-                }
-            } else {
-                label = getString(R.string.multi_sim_entry_format, label, i + 1);
-            }
+            String label = getFormattedSimName(this, i);
             entries[i] = summaries[i] = label;
             entriesPrompt[i] = summariesPrompt[i] = label;
             entryValues[i] = Integer.toString(i);
@@ -732,5 +720,23 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
     private boolean isAirplaneModeOn() {
         return Settings.Global.getInt(getApplicationContext().getContentResolver(),
                 Settings.Global.AIRPLANE_MODE_ON, 0) != 0;
+    }
+
+    public static String getFormattedSimName(Context context, int subscription) {
+        String label = Settings.Global.getSimNameForSubscription(context, subscription, null);
+        if (TextUtils.isEmpty(label)) {
+            MSimTelephonyManager tm = MSimTelephonyManager.getDefault();
+            String operatorName = tm.getSimOperatorName(subscription);
+            if (tm.getSimState(subscription) == SIM_STATE_ABSENT
+                    || tm.getSimState(subscription) != SIM_STATE_READY
+                    || TextUtils.isEmpty(operatorName)) {
+                label = context.getString(R.string.multi_sim_entry_format_no_carrier, subscription + 1);
+            } else {
+                label = context.getString(R.string.multi_sim_entry_format, operatorName, subscription + 1);
+            }
+        } else {
+            label = context.getString(R.string.multi_sim_entry_format, label, subscription + 1);
+        }
+        return label;
     }
 }
