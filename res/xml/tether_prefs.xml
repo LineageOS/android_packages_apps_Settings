@@ -37,6 +37,12 @@
         android:entries="@array/wifi_hotsopt_mode_entries"
         android:entryValues="@array/wifi_hotsopt_mode_entryValues" />
 
+    <com.android.settings.HotspotPreference
+        android:fragment="com.android.settings.wifi.HotspotSettings"
+        android:key="enable_wifi_ap_switch"
+        android:persistent="false" >
+    </com.android.settings.HotspotPreference>
+
     <SwitchPreference
         android:key="enable_bluetooth_tethering"
         android:title="@string/bluetooth_tether_checkbox_text"

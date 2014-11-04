@@ -40,6 +40,8 @@ import android.widget.TextView;
 
 public class HotspotSettingsHelp extends Activity {
 
+    private static WifiConfiguration wifiApConfig = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -47,28 +49,39 @@ public class HotspotSettingsHelp extends Activity {
         setContentView(R.layout.hotspot_settings_help);
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+        WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+        wifiApConfig = wifiManager.getWifiApConfiguration();
+    }
+
+    private String getIndicateText() {
+        if (wifiApConfig == null) {
+            return null;
+        }
+
+        if (wifiApConfig.preSharedKey == null) {
+            return getString(R.string.hotspot_settings_indication_step3_ssid,
+                    wifiApConfig.SSID);
+        }
+        return getString(R.string.hotspot_settings_indication_step3_all,
+                wifiApConfig.SSID, wifiApConfig.preSharedKey);
+
+    }
+
+    private String getWifiApSsid() {
+        if (wifiApConfig == null) {
+            return null;
+        }
+        return getString(R.string.hotspot_settings_indication_step2,
+                wifiApConfig.SSID);
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        TextView ssidPwd = (TextView) findViewById(R.id.hotspot_help_ssid_pwd);
-        TextView selectSsid = (TextView) findViewById(R.id.hotspot_help_select_ssid);
 
-        WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
-        WifiConfiguration wifiConfig = wifiManager.getWifiApConfiguration();
-        String indicateSsidPwd = null;
-        if (wifiConfig != null && wifiConfig.preSharedKey == null) {
-            indicateSsidPwd = getString(R.string.hotspot_settings_indication_step3_ssid,
-                    wifiConfig.SSID);
-        } else {
-            indicateSsidPwd = getString(R.string.hotspot_settings_indication_step3_all,
-                    wifiConfig.SSID, wifiConfig.preSharedKey);
-        }
-        String selectSsidText = getString(R.string.hotspot_settings_indication_step2,
-                wifiConfig.SSID);
-        selectSsid.setText(selectSsidText);
-        ssidPwd.setText(indicateSsidPwd);
+        ((TextView) findViewById(R.id.hotspot_help_ssid_pwd)).setText(getIndicateText());
+        ((TextView) findViewById(R.id.hotspot_help_select_ssid)).setText(getWifiApSsid());
     }
 
     @Override

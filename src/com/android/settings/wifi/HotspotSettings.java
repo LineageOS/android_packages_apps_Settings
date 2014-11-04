@@ -70,16 +70,15 @@ import java.util.List;
 public class HotspotSettings extends SettingsPreferenceFragment implements
         DialogInterface.OnClickListener {
 
-    private WifiApDialog mDialog;
-    private WifiManager mWifiManager;
-    private WifiConfiguration mWifiConfig = null;
-    private String[] mSecurityType;
-    private String[] mProvisionApp;
-    private Preference mCreateNetwork;
+    public static final String TAG = "HotspotSettings";
+    private static final boolean DEBUG = true;
+
     private static final int PROVISION_REQUEST = 0;
     private static final int DIALOG_AP_SETTINGS = 1;
-    private static final String WIFI_AP_SSID_AND_SECURITY = "wifi_ap_ssid_and_security";
     private static final int CONFIG_SUBTEXT = R.string.wifi_tether_configure_subtext;
+    private static final int MENU_HELP = Menu.FIRST;
+
+    private static final String WIFI_AP_SSID_AND_SECURITY = "wifi_ap_ssid_and_security";
     private static final String AP_CONNECTED_STATE_CHANGED_ACTION =
             "android.net.conn.TETHER_CONNECT_STATE_CHANGED";
     private static final String KEY_AP_DEVICE_LIST = "ap_device_list";
@@ -87,28 +86,30 @@ public class HotspotSettings extends SettingsPreferenceFragment implements
     private static final String CONN_ADDR = "ConnectedAddress";
     private static final String CONN_NAME = "ConnectedName";
     private static final String CONN_COUNT = "ConnectedCount";
-    private static final int MENU_HELP = Menu.FIRST;
-    private static final String TAG = "HotspotSettings";
 
     private BroadcastReceiver mReceiver;
     private IntentFilter mFilter;
     private List<WifiDevice> mTetherConnectedStaList = new ArrayList<WifiDevice>();
-    private List<String> mConnectedName = new ArrayList<String>();
-    private List<String> mConnectedAddress = new ArrayList<String>();
+    private List<String> mConnectedNameList = new ArrayList<String>();
+    private List<String> mConnectedAddressList = new ArrayList<String>();
     private PreferenceCategory mListPref;
     private TextView mEmptyView;
     private WifiApSwitch mWifiApSwitch;
     private ConnectivityManager mCm;
+    private WifiApDialog mDialog;
+    private WifiManager mWifiManager;
+    private WifiConfiguration mWifiApConfig = null;
+    private String[] mProvisionApp;
+    private Preference mCreateNetworkPref;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
+
         addPreferencesFromResource(R.xml.hotspot_settings_pre);
 
-        ActionBar actionBar = getActivity().getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        initWifiTethering();
+        mWifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+        mWifiApConfig = mWifiManager.getWifiApConfiguration();
         mProvisionApp = getActivity().getResources().getStringArray(
                 com.android.internal.R.array.config_mobile_hotspot_provision_app);
 
@@ -121,8 +122,12 @@ public class HotspotSettings extends SettingsPreferenceFragment implements
                 handleEvent(context, intent);
             }
         };
-        mWifiManager = (WifiManager) getActivity().getSystemService(Context.WIFI_SERVICE);
+
+        ActionBar actionBar = getActivity().getActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
         setHasOptionsMenu(true);
+
+        initWifiTethering();
     }
 
     @Override
@@ -160,7 +165,7 @@ public class HotspotSettings extends SettingsPreferenceFragment implements
     @Override
     public void onResume() {
         super.onResume();
-        Log.d(TAG, "onResume..");
+        log("onResume..");
         mWifiApSwitch.resume();
         getActivity().registerReceiver(mReceiver, mFilter);
     }
@@ -191,23 +196,27 @@ public class HotspotSettings extends SettingsPreferenceFragment implements
         return super.onOptionsItemSelected(item);
     }
 
+    private String getSecurityTypeIndexToString() {
+        String[] securityList = getResources().getStringArray(R.array.wifi_ap_security);
+        if (mWifiApConfig == null) {
+            return securityList[WifiApDialog.OPEN_INDEX];
+        }
+        return securityList[WifiApDialog.getSecurityTypeIndex(mWifiApConfig)];
+    }
+
+    private String getApSsid() {
+        return mWifiApConfig.SSID;
+    }
+
     private void initWifiTethering() {
-        mWifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
-        mWifiConfig = mWifiManager.getWifiApConfiguration();
-        mSecurityType = getResources().getStringArray(R.array.wifi_ap_security);
-
-        mCreateNetwork = findPreference(WIFI_AP_SSID_AND_SECURITY);
-
-        if (mWifiConfig == null) {
-            final String s = getString(
-                    com.android.internal.R.string.wifi_tether_configure_ssid_default);
-            mCreateNetwork.setSummary(String.format(getString(CONFIG_SUBTEXT),
-                    s, mSecurityType[WifiApDialog.OPEN_INDEX]));
+        mCreateNetworkPref = findPreference(WIFI_AP_SSID_AND_SECURITY);
+        if (mWifiApConfig == null) {
+            mCreateNetworkPref.setSummary(String.format(getString(CONFIG_SUBTEXT),
+                    getString(com.android.internal.R.string.wifi_tether_configure_ssid_default),
+                    getSecurityTypeIndexToString()));
         } else {
-            int index = WifiApDialog.getSecurityTypeIndex(mWifiConfig);
-            mCreateNetwork.setSummary(String.format(getString(CONFIG_SUBTEXT),
-                    mWifiConfig.SSID,
-                    mSecurityType[index]));
+            mCreateNetworkPref.setSummary(String.format(getString(CONFIG_SUBTEXT),
+                    getApSsid(), getSecurityTypeIndexToString()));
         }
     }
 
@@ -216,7 +225,7 @@ public class HotspotSettings extends SettingsPreferenceFragment implements
         ConnectivityManager cm =
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        if (preference == mCreateNetwork) {
+        if (preference == mCreateNetworkPref) {
             showDialog(DIALOG_AP_SETTINGS);
         }
 
@@ -226,40 +235,40 @@ public class HotspotSettings extends SettingsPreferenceFragment implements
     @Override
     public Dialog onCreateDialog(int id) {
         if (id == DIALOG_AP_SETTINGS) {
-            final Activity activity = getActivity();
-            mDialog = new WifiApDialog(activity, this, mWifiConfig);
+            mDialog = new WifiApDialog(getActivity(), this, mWifiApConfig);
             return mDialog;
         }
-
         return null;
     }
 
     public void onClick(DialogInterface dialogInterface, int button) {
-        if (button == DialogInterface.BUTTON_POSITIVE) {
-            mWifiConfig = mDialog.getConfig();
-            if (mWifiConfig != null) {
-                /**
-                 * if soft AP is stopped, bring up else restart with new config
-                 * TODO: update config on a running access point when framework
-                 * support is added
-                 */
-                if (mWifiManager.getWifiApState() == WifiManager.WIFI_AP_STATE_ENABLED) {
-                    mWifiManager.setWifiApEnabled(null, false);
-                    mWifiManager.setWifiApEnabled(mWifiConfig, true);
-                } else {
-                    mWifiManager.setWifiApConfiguration(mWifiConfig);
-                }
-                int index = WifiApDialog.getSecurityTypeIndex(mWifiConfig);
-                mCreateNetwork.setSummary(String.format(getActivity().getString(CONFIG_SUBTEXT),
-                        mWifiConfig.SSID,
-                        mSecurityType[index]));
-            }
+        if (button != DialogInterface.BUTTON_POSITIVE) {
+            return;
         }
+        mWifiApConfig = mDialog.getConfig();
+        if (mWifiApConfig != null) {
+            /**
+             * if soft AP is stopped, bring up else restart with new config
+             * TODO: update config on a running access point when framework
+             * support is added
+             */
+            if (mWifiManager.getWifiApState() == WifiManager.WIFI_AP_STATE_ENABLED) {
+                mWifiManager.setWifiApEnabled(null, false);
+                mWifiManager.setWifiApEnabled(mWifiApConfig, true);
+            } else {
+                mWifiManager.setWifiApConfiguration(mWifiApConfig);
+            }
+            mCreateNetworkPref.setSummary(String.format(
+                    getActivity().getString(CONFIG_SUBTEXT),
+                    getApSsid(),
+                    getSecurityTypeIndexToString()));
+        }
+
     }
 
     private void handleEvent(Context context, Intent intent) {
         String action = intent.getAction();
-        Log.d(TAG, "action::" + action);
+        log("action::" + action);
         if (AP_CONNECTED_STATE_CHANGED_ACTION.equals(action)) {
             constructConnectedDevices();
         }
@@ -288,45 +297,42 @@ public class HotspotSettings extends SettingsPreferenceFragment implements
     }
 
     private void constructConnectedDevices() {
-        Log.d(TAG, "constructConnectedDevices..");
+        log("constructConnectedDevices..");
         mTetherConnectedStaList = mCm.getTetherConnectedSta();
         if (mTetherConnectedStaList == null || mTetherConnectedStaList.size() == 0) {
-            Log.d(TAG, "ConnectedCount = 0");
+            log("ConnectedCount = 0");
             mListPref.removeAll();
             return;
         }
-        mConnectedName.clear();
-        mConnectedAddress.clear();
+        mConnectedNameList.clear();
+        mConnectedAddressList.clear();
         for (int i = 0; i < mTetherConnectedStaList.size(); i++) {
             WifiDevice device = (WifiDevice) mTetherConnectedStaList.get(i);
             if (device.deviceState == WifiDevice.CONNECTED) {
-                mConnectedName.add(device.deviceName);
-                mConnectedAddress.add(device.deviceAddress);
+                mConnectedNameList.add(device.deviceName);
+                mConnectedAddressList.add(device.deviceAddress);
             }
         }
 
         mListPref.removeAll();
-        for (int index = 0; index < mConnectedAddress.size(); ++index) {
-            Log.d(TAG, "in construct pref addr = " + mConnectedAddress.get(index));
+        for (int index = 0; index < mConnectedAddressList.size(); ++index) {
+            log("in construct pref addr = " + mConnectedAddressList.get(index));
             Preference pref = new Preference(getActivity());
-            if (mConnectedName != null && !mConnectedName.get(index).isEmpty()) {
-                Log.d(TAG, "in construct pref.name = " + mConnectedName.get(index));
-                pref.setTitle(mConnectedName.get(index));
+            if (mConnectedNameList != null && !mConnectedNameList.get(index).isEmpty()) {
+                log("in construct pref.name = " + mConnectedNameList.get(index));
+                pref.setTitle(mConnectedNameList.get(index));
             } else {
                 pref.setTitle(R.string.ap_device_name_default);
             }
-            pref.setSummary(mConnectedAddress.get(index));
+            pref.setSummary(mConnectedAddressList.get(index));
             mListPref.addPreference(pref);
         }
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
-        if (requestCode == PROVISION_REQUEST) {
-            if (resultCode == Activity.RESULT_OK) {
-                mWifiApSwitch.setSoftapEnabled(true);
-                ;
-            }
+        if (requestCode == PROVISION_REQUEST && resultCode == Activity.RESULT_OK) {
+            mWifiApSwitch.setSoftapEnabled(true);
         }
     }
 
@@ -347,4 +353,9 @@ public class HotspotSettings extends SettingsPreferenceFragment implements
         return mProvisionApp.length == 2;
     }
 
+    private void log(String msg) {
+        if (DEBUG) {
+            Log.d(TAG, msg);
+        }
+    }
 }

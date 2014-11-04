@@ -35,31 +35,34 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     android:minHeight="48dp"
     android:paddingEnd="?android:attr/scrollbarSize" >
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="0dip"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:paddingLeft="16px" >
+        android:layout_marginStart="15dip"
+        android:layout_marginEnd="6dip"
+        android:layout_marginTop="6dip"
+        android:layout_marginBottom="6dip"
+        android:layout_weight="1">
 
-        <TextView
-            android:id="@+id/subtitle"
+        <TextView android:id="@+id/subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:fadingEdge="horizontal"
-            android:marqueeRepeatLimit="marquee_forever"
             android:singleLine="true"
             android:text="@string/wifi_tether_checkbox_text"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="@style/TextAppearance.HotsoptTitle"
+            android:ellipsize="marquee"
+            android:fadingEdge="horizontal" />
 
-        <TextView
-            android:id="@+id/subsummary"
+        <TextView android:id="@+id/subsummary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/subtitle"
             android:layout_alignStart="@+id/subtitle"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-    </LinearLayout>
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="?android:attr/textColorSecondary"
+            android:maxLines="4" />
+
+    </RelativeLayout>
 
     <Switch
         android:id="@+id/switchWidget"
