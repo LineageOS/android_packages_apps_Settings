@@ -127,7 +127,7 @@ public class DeviceInfoSettings extends RestrictedSettingsFragment {
         removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_SELINUX_STATUS,
                 PROPERTY_SELINUX_STATUS);
 
-        String cpuInfo = getCPUInfo();
+        final String cpuInfo = getCPUInfo();
         String memInfo = getMemInfo();
 
         // Only the owner should see the Updater settings, if it exists
@@ -427,16 +427,38 @@ public class DeviceInfoSettings extends RestrictedSettingsFragment {
 
     private String getCPUInfo() {
         String result = null;
+        int coreCount = 0;
 
         try {
             /* The expected /proc/cpuinfo output is as follows:
              * Processor	: ARMv7 Processor rev 2 (v7l)
              * BogoMIPS	: 272.62
+             *
+             * On kernel 3.10 this changed, it is now the last
+             * line. So let's read the whole thing, search
+             * specifically for "Processor", and retain the old
+             * "first line" as fallback.
+             * Also, use "processor : <id>" to count cores
              */
-            String firstLine = readLine(FILENAME_PROC_CPUINFO);
-            if (firstLine != null) {
+            BufferedReader ci = new BufferedReader(new FileReader(FILENAME_PROC_CPUINFO));
+            String firstLine = ci.readLine();
+            String latestLine = firstLine;
+            while (latestLine != null) {
+                if (latestLine.startsWith("Processor"))
+                  result = latestLine.split(":")[1].trim();
+                if (latestLine.startsWith("processor"))
+                  coreCount++;
+                latestLine = ci.readLine();
+            }
+            if (result == null && firstLine != null) {
                 result = firstLine.split(":")[1].trim();
             }
+            /* Don't do this. hotplug throws off the count
+            if (coreCount > 1) {
+                result = result + " (x" + coreCount + ")";
+            }
+            */
+            ci.close();
         } catch (IOException e) {}
 
         return result;

@@ -144,7 +144,7 @@ public class WifiApSettings extends SettingsPreferenceFragment implements
         if (mApEnabled) {
             mClientsCategory.setProgress(mLastClientList == null);
             mClientsCategory.setEmptyTextRes(R.string.wifi_ap_client_none_connected);
-            if (mLastClientList != null) {
+            if ((mLastClientList != null) && (activity != null)) {
                 for (ClientsList.ClientScanResult client : mLastClientList) {
                     Preference preference = new Preference(activity);
                     preference.setTitle(client.hwAddr);

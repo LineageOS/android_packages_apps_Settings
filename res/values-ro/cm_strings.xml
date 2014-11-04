@@ -16,11 +16,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="wifi_setting_countrycode_title">Codul de regiune Wi-Fi</string>
-  <string name="wifi_setting_countrycode_summary">Specificați codul de regiune pentru Wi-Fi</string>
   <string name="wifi_setting_countrycode_error">A intervenit o problemă la setarea codului de regiune.</string>
-  <string name="wifi_setting_priority_title">Prioritatea Wi-Fi</string>
-  <string name="wifi_setting_priority_summary">Specifică prioritatea rețelelor Wi-Fi</string>
   <string name="wifi_ssid_input_limit">SSID-ul depășește lungimea maximă</string>
   <string name="p2p_device_name_input_limit">Numele P2P depășește lungimea maximă</string>
   <string name="change_crypt_password_title">Schimbă parola</string>
@@ -47,7 +43,6 @@
   <string name="profile_trigger_configure">Configurare declanșare</string>
   <string name="profile_triggers">Declanșatoare</string>
   <string name="profile_trigger_filter_all">Toate declanșatoarele</string>
-  <string name="profile_trigger_filter_wifi">Declanșatoare Wi-Fi</string>
   <string name="profile_trigger_filter_bluetooth">Declanșatoare Bluetooth</string>
   <string name="profile_write_nfc_tag">Scrie la eticheta NFC</string>
   <string name="profile_write_touch_tag">Atinge eticheta pentru a scrie</string>
@@ -113,12 +108,8 @@
   <string name="profile_lockmode_insecure_summary">Utilizează blocarea de ecran nesigură</string>
   <string name="profile_lockmode_disabled_summary">Blocarea de ecran este dezactivată</string>
   <string name="profile_airplanemode_title">Modul avion</string>
-  <string name="toggleWifi">Wi-Fi</string>
-  <string name="toggleWifiAp">Hotspot Wi-Fi portabil</string>
   <string name="toggleBluetooth">Bluetooth</string>
   <string name="toggleGPS">GPS</string>
-  <string name="toggleData">Date Mobile</string>
-  <string name="toggleSync">Sincronizare date</string>
   <string name="toggle2g3g">2G/3G</string>
   <string name="toggleWimax">WiMAX</string>
   <string name="toggleNfc">NFC</string>
@@ -231,7 +222,6 @@
   <string name="heads_up_blacklist_title">Lista neagră</string>
   <string name="heads_up_disabled_notice">Pentru a permite aplicațiilor să arate notificări interactive într-o fereastră pop-up pe ecran, activează Heads Up.</string>
   <string name="title_tile_airplane">Mod Avion</string>
-  <string name="title_tile_battery">Statistici baterie</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Luminozitate</string>
   <string name="title_tile_camera">Camera</string>
@@ -248,8 +238,6 @@
   <string name="title_tile_settings">Setări</string>
   <string name="title_tile_sound">Sunet</string>
   <string name="title_tile_sync">Sincronizare</string>
-  <string name="title_tile_wifiap">Wi-Fi AP</string>
-  <string name="title_tile_wifi">Wi-Fi</string>
   <string name="title_tile_user">Comutator utilizator</string>
   <string name="title_tile_networkmode">Mod rețea</string>
   <string name="title_tile_nfc">NFC</string>
@@ -260,13 +248,10 @@
   <string name="title_tile_network_adb">ADB prin rețea</string>
   <string name="title_dynamic_tiles">Carduri dinamice</string>
   <string name="dynamic_tiles_note_title">Notă</string>
-  <string name="dynamic_tiles_note_summary">Cardurile dinamice nu sunt întotdeauna vizibile și vor apărea doar dacă sunt declanșate de un eveniment al sistemului</string>
   <string name="title_dynamic_alarm">Ceas alarmă</string>
   <string name="title_dynamic_bugreport">Raport bug</string>
   <string name="title_dynamic_dock_battery">Andocare baterie</string>
   <string name="title_dynamic_equalizer">Egalizator</string>
-  <string name="title_dynamic_ime">Încărcător IME</string>
-  <string name="title_dynamic_usbtether">USB Tether</string>
   <string name="title_dynamic_wifi">Partajare ecran</string>
   <string name="title_general">General</string>
   <string name="title_quick_pulldown">Derulare în jos rapidă</string>
@@ -425,7 +410,6 @@ două pentru a adăuga puncte de control adiționale. „Ștergere” elimină l
   <string name="io_sched_title">Planificator I/O</string>
   <string name="perf_profile_title">Profil</string>
   <string name="memory_management_title">Gestionarea memoriei</string>
-  <string name="pref_ksm_title">Fuziune kernel samepage</string>
   <string name="pref_ksm_summary">KSM reduce cerințele memoriei fizice și îmbunătățește performanța</string>
   <string name="pref_purgeable_assets_title">Permite curățarea activelor</string>
   <string name="pref_purgeable_assets_summary">Curățarea memoriei bitmap permite eliberarea de mai mult RAM atunci când este nevoie (necesită repornire sistem)</string>
@@ -499,7 +483,6 @@ două pentru a adăuga puncte de control adiționale. „Ștergere” elimină l
   <string name="adb_notify">Notificare depanare USB</string>
   <string name="adb_notify_summary">Afișează o notificare când depanarea USB este conectată</string>
   <string name="adb_over_network">ADB prin rețea</string>
-  <string name="adb_over_network_summary">Activează depanarea TCP/IP prin interfețele de rețea (Wi-Fi, rețele USB). Această setare este resetată la repornire</string>
   <string name="adb_over_network_warning">AVERTIZARE: Când ADB prin rețea este activat, telefonul dvs este deschis intruziunilor din toate rețelele conectate, inclusiv rețeaua de date GSM!\n\nFolosiți această caracteristică când sunteți conectat la rețele de încredere.\n\nSigur doriți să activați această funcție?</string>
   <string name="device_hostname">Hostname dispozitiv</string>
   <string name="notification_drawer_title">Sertar notificare</string>
@@ -695,7 +678,6 @@ două pentru a adăuga puncte de control adiționale. „Ștergere” elimină l
   <string name="status_bar_notif_count_title">Arată numărare notificare</string>
   <string name="status_bar_notif_count_summary">Afișează nr notificărilor în așteptare</string>
   <string name="development_shortcut_title">Comandă rapidă dezvoltare</string>
-  <string name="development_shortcut_summary">Activează opțiunile \'șterge date\' și \'închidere forțată\' în zona de notificări și în lista de aplicații recente</string>
   <string name="usb_mass_storage_title">Spațiul de stocare (UMS)</string>
   <string name="usb_mass_storage_summary">Vă permite să transferați orice fișier între calculatorul dvs și cardul SD prin montarea ca un dispozitiv flash</string>
   <string name="storage_rescan_media">Rescanare media pentru volumul de stocare</string>
@@ -706,7 +688,6 @@ două pentru a adăuga puncte de control adiționale. „Ștergere” elimină l
   <string name="logger_summary">Gestionați setările jurnalului de erori</string>
   <string name="custom_runtime_warning_title">Avertizare</string>
   <string name="custom_runtime_warning_message">ART nu este suportat de CyanogenMod. Această setare este inclusă doar pentru experimentare și poate cauza instabilitate, distrugere, pierdere de date sau poate preveni pornirea normală a dispozitivului dvs. Vizitați &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducere în ART&lt;/a&gt; pentru mai multe informații.&lt;br/&gt;&lt;br/&gt;Vă cerem să nu trimiteți rapoarte cu buguri dacă aveți activat ca rutină ART.&lt;br/&gt;&lt;br/&gt;Sunteți sigur că vreți să reporniți pentru a schimba rutina de la <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> la <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
-  <string name="gps_download_data_wifi_only">Descară date de asistență GPS doar prin rețelele Wi-Fi</string>
   <string name="battery_info_status_charging_dock_ac">(DockAC)</string>
   <string name="battery_info_status_charging_dock_usb">(DockUSB)</string>
   <string name="menu_stats_reset">Resetare</string>
@@ -746,7 +727,6 @@ două pentru a adăuga puncte de control adiționale. „Ștergere” elimină l
   <string name="app_ops_summaries_modify_call_log">modifică jurnalul de apeluri</string>
   <string name="app_ops_summaries_read_calendar">citește calendarul</string>
   <string name="app_ops_summaries_modify_calendar">modifică calendarul</string>
-  <string name="app_ops_summaries_wifi_scan">scanare wi-fi</string>
   <string name="app_ops_summaries_notification">notificare</string>
   <string name="app_ops_summaries_cell_scan">scanare celulă</string>
   <string name="app_ops_summaries_call_phone">apelare telefon</string>
@@ -775,12 +755,9 @@ două pentru a adăuga puncte de control adiționale. „Ștergere” elimină l
   <string name="app_ops_summaries_media_volume">volum media</string>
   <string name="app_ops_summaries_alarm_volume">volum alarma</string>
   <string name="app_ops_summaries_notification_volume">volum notificare</string>
-  <string name="app_ops_summaries_bluetooth_volume">volum bluetooth</string>
   <string name="app_ops_summaries_keep_awake">ține treaz</string>
   <string name="app_ops_summaries_monitor_location">monitorizează locația</string>
   <string name="app_ops_summaries_monitor_high_power_location">monitorizează locația de putere mare</string>
-  <string name="app_ops_summaries_wifi_change">schimbă wifi</string>
-  <string name="app_ops_summaries_bluetooth_change">schimbă bluetooth</string>
   <string name="app_ops_summaries_data_change">schimbă date mobile</string>
   <string name="app_ops_summaries_alarm_wakeup">trezește-te</string>
   <string name="app_ops_summaries_send_mms">trimite MMS</string>
@@ -820,7 +797,6 @@ două pentru a adăuga puncte de control adiționale. „Ștergere” elimină l
   <string name="app_ops_labels_notification_volume">Volum notificare</string>
   <string name="app_ops_labels_bluetooth_volume">Volum Bluetooth</string>
   <string name="app_ops_labels_keep_awake">Ține treaz</string>
-  <string name="app_ops_labels_wifi_change">Schimbă Wi-Fi</string>
   <string name="app_ops_labels_bluetooth_change">Schimbă bluetooth</string>
   <string name="app_ops_labels_data_change">Schimbă date mobile</string>
   <string name="app_ops_labels_alarm_wakeup">Trezește</string>
@@ -862,7 +838,6 @@ două pentru a adăuga puncte de control adiționale. „Ștergere” elimină l
   <string name="voice_wakeup_activity_title">Activitate pentru lansare</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
   <string name="sub_no_sim">Niciun SIM</string>
-  <string name="multi_sim_settings_title">Setări Multi SIM</string>
   <string name="multi_sim_settings_group_summary">Selectarea SIM-ului principal</string>
   <string name="voice_title">Apeluri de voce</string>
   <string name="data_title">Apeluri de date</string>

@@ -16,11 +16,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="wifi_setting_countrycode_title">Kod regionu Wi-Fi</string>
-  <string name="wifi_setting_countrycode_summary">Określ kod regionu dla Wi-Fi</string>
   <string name="wifi_setting_countrycode_error">Wystąpił problem podczas ustawiania kodu regionu.</string>
-  <string name="wifi_setting_priority_title">Priorytet sieci</string>
-  <string name="wifi_setting_priority_summary">Określ priorytet łączenia z sieciami Wi-Fi</string>
   <string name="wifi_ssid_input_limit">SSID przekracza maksymalną długość</string>
   <string name="p2p_device_name_input_limit">Nazwa P2P przekracza maksymalną długość</string>
   <string name="change_crypt_password_title">Zmień hasło</string>
@@ -47,7 +43,6 @@
   <string name="profile_trigger_configure">Skonfiguruj wyzwalacz</string>
   <string name="profile_triggers">Wyzwalacze</string>
   <string name="profile_trigger_filter_all">Wszystkie wyzwalacze</string>
-  <string name="profile_trigger_filter_wifi">Wyzwalacze WiFi</string>
   <string name="profile_trigger_filter_bluetooth">Wyzwalacze Bluetooth</string>
   <string name="profile_write_nfc_tag">Zapisz na tagu NFC</string>
   <string name="profile_write_touch_tag">Dotknij taga by zapisać</string>
@@ -113,12 +108,8 @@
   <string name="profile_lockmode_insecure_summary">Niezabezpieczony ekran blokady</string>
   <string name="profile_lockmode_disabled_summary">Ekran blokady jest wyłączony</string>
   <string name="profile_airplanemode_title">Opcje trybu samolotowego</string>
-  <string name="toggleWifi">Wi-Fi</string>
-  <string name="toggleWifiAp">Hotspot Wi-Fi</string>
   <string name="toggleBluetooth">Bluetooth</string>
   <string name="toggleGPS">GPS</string>
-  <string name="toggleData">Dane mobilne</string>
-  <string name="toggleSync">Synchronizacja</string>
   <string name="toggle2g3g">2G/3G</string>
   <string name="toggleWimax">WiMAX</string>
   <string name="toggleNfc">NFC</string>
@@ -216,6 +207,7 @@
   <string name="lockscreen_maximize_widgets_summary">Pokazuj widżety rozwinięte, a wzór blokady zminimalizowany, kiedy ekran zostanie włączony</string>
   <string name="lockscreen_enable_camera_title">Widżet kamery</string>
   <string name="safe_headset_volume_title">Bezpieczna głośność słuchawek</string>
+  <string name="safe_headset_volume_restore_title">Zmniejsz głośność słuchawek podczas połączenia</string>
   <string name="cyanogenmod_waiver_title">Zrzeczenie się</string>
   <string name="cyanogenmod_waiver_body">Zmiana tych ustawień może być niezgodna z lokalnym prawem.\n\nWybierając \'OK\' przyjmujesz to ostrzeżenie do wiadomości oraz odciążasz CyanogenMod i jego twórców od wszystkich konsekwencji prawnych.</string>
   <string name="quick_settings_panel_title">Panel szybkich ustawień</string>
@@ -235,13 +227,13 @@
   <string name="heads_up_blacklist_title">Czarna lista</string>
   <string name="heads_up_disabled_notice">Włącz Wyskakujące powiadomienia, aby umożliwić aplikacji na wyświetlanie interaktywnych powiadomień w wyskakującym okienku.</string>
   <string name="title_tile_airplane">Tryb samolotowy</string>
-  <string name="title_tile_battery">Statystyki baterii</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Jasność</string>
   <string name="title_tile_camera">Kamera</string>
   <string name="title_tile_compass">Kompas</string>
   <string name="title_tile_heads_up">Wyskakujące powiadomienia</string>
   <string name="title_tile_sleep">Usypianie</string>
+  <string name="title_tile_gps">Lokalizacja</string>
   <string name="title_tile_torch">Latarka</string>
   <string name="title_tile_lockscreen">Ekran blokady</string>
   <string name="title_tile_lte">LTE</string>
@@ -252,8 +244,6 @@
   <string name="title_tile_settings">Ustawienia</string>
   <string name="title_tile_sound">Dźwięk</string>
   <string name="title_tile_sync">Synchronizacja</string>
-  <string name="title_tile_wifiap">Wi-Fi AP</string>
-  <string name="title_tile_wifi">Wi-Fi</string>
   <string name="title_tile_user">Zmiana użytk.</string>
   <string name="title_tile_networkmode">Tryb sieci</string>
   <string name="title_tile_nfc">NFC</string>
@@ -264,13 +254,10 @@
   <string name="title_tile_network_adb">ADB przez sieć</string>
   <string name="title_dynamic_tiles">Dynamiczne przełączniki</string>
   <string name="dynamic_tiles_note_title">Uwaga</string>
-  <string name="dynamic_tiles_note_summary">Dynamiczne ikony nie zawsze są widoczne i pojawiają się w wybranych sytuacjach</string>
   <string name="title_dynamic_alarm">Alarm</string>
   <string name="title_dynamic_bugreport">Raportowanie błędów</string>
   <string name="title_dynamic_dock_battery">Stacja dokująca</string>
   <string name="title_dynamic_equalizer">Equalizer</string>
-  <string name="title_dynamic_ime">Zmiana metody wprowadzania</string>
-  <string name="title_dynamic_usbtether">Tethering USB</string>
   <string name="title_dynamic_wifi">Strumieniowanie obrazu</string>
   <string name="title_general">Główne</string>
   <string name="title_quick_pulldown">Szybkie rozwijanie</string>
@@ -290,6 +277,10 @@
   <string name="cm_sound_mode_vibrate">Wibracje</string>
   <string name="cm_sound_mode_sound">Dźwięk</string>
   <string name="cm_sound_mode_soundVibrate">Dźwięk i wibracje</string>
+  <string name="pref_location_mode_title">Tryby lokalizacji</string>
+  <string name="cm_location_mode_battery_saving">Oszczędzanie energii</string>
+  <string name="cm_location_mode_device_only">Tylko urządzenie</string>
+  <string name="cm_location_mode_high_accuracy">Wysoka dokładność</string>
   <string name="tiles_reset_title">Przywróć domyślne</string>
   <string name="tiles_reset_message">Przywrócić domyślne przełączniki i ich układ?</string>
   <string name="auto_brightness_setup_title">Automatyczna jasność</string>
@@ -417,7 +408,6 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="io_sched_title">Zarządca I/O</string>
   <string name="perf_profile_title">Profil</string>
   <string name="memory_management_title">Zarządzanie pamięcią</string>
-  <string name="pref_ksm_title">Kernel Samepage Merging</string>
   <string name="pref_ksm_summary">KSM zmniejsza fizyczne wymagania pamięci i poprawia wydajność</string>
   <string name="pref_purgeable_assets_title">Pozwól na czyszczenie bitmap</string>
   <string name="pref_purgeable_assets_summary">Czyszczenie bitmapowych zbiorów pamięci umożliwia uwolnienie więcej RAM-u, gdy zachodzi potrzeba (wymaga restartu)</string>
@@ -492,7 +482,6 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="adb_notify">Powiadomienie trybu debugowania</string>
   <string name="adb_notify_summary">Wyświetla powiadomienie, gdy debugowanie USB jest aktywne</string>
   <string name="adb_over_network">ADB przez sieć</string>
-  <string name="adb_over_network_summary">Aktywuj debugowanie TCP/IP przez interfejs sieciowy (Wi-Fi, sieci USB). Ustawienie zostanie zresetowane po ponownym uruchomieniu</string>
   <string name="adb_over_network_warning">UWAGA: Kiedy ADB przez sieć jest aktywne, telefon jest otwarty na instrukcje w każdej połączonej sieci, w tym GSM!\n\nUżywaj tej funkcji tylko, gdy jesteś połączony z zaufanymi sieciami.\n\nCzy na pewno chcesz aktywować?</string>
   <string name="device_hostname">Nazwa hosta urządzenia</string>
   <string name="notification_drawer_title">Pasek powiadomień</string>
@@ -504,6 +493,8 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="collapse_on_dismiss_if_empty_summary">Zamknij po usunięciu ostatniego powiadomienia</string>
   <string name="collapse_on_dismiss_if_no_clearable_summary">Zamknij po usunięciu ostatniego usuwalnego powiadomienia</string>
   <string name="double_tap_to_wake_title">Wybudzanie podwójnym dotknięciem</string>
+  <string name="double_tap_to_sleep_title">Dwukrotnie dotknij, aby uśpić</string>
+  <string name="double_tap_to_sleep_summary">Dwukrotnie stuknij pasek stanu lub suwak blokady ekranu, aby uśpić urządzenie</string>
   <string name="proximity_wake_title">Zapobiega przypadkowemu wybudzeniu</string>
   <string name="proximity_wake_summary">Używaj czujnika zbliżeniowego podczas wybudzania ekranu</string>
   <string name="category_quick_access">Wstążka szybkich ustawień</string>
@@ -640,6 +631,7 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="hardware_keys_action_in_app_search">Szukanie w aplikacjach</string>
   <string name="hardware_keys_action_launch_camera">Uruchom aparat</string>
   <string name="hardware_keys_action_last_app">Ostatnia aplikacja</string>
+  <string name="hardware_keys_action_sleep">Wyłączenie ekranu</string>
   <string name="power_end_call_title">Kończenie połączeń</string>
   <string name="power_end_call_summary">Naciśnięcie przycisku zasilania zakończy bieżące połączenie</string>
   <string name="button_wake_title">Wybudzanie</string>
@@ -692,7 +684,6 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="status_bar_notif_count_title">Pokaż liczbę powiadomień</string>
   <string name="status_bar_notif_count_summary">Wyświetla licznik oczekujących powiadomień</string>
   <string name="development_shortcut_title">Skrót deweloperski</string>
-  <string name="development_shortcut_summary">Włącz opcje \'usuń dane\' oraz \'wymuś zamknięcie\' w opcjach powiadomień oraz na liście ostatnich aplikacji</string>
   <string name="usb_mass_storage_title">Tryb pamięci masowej</string>
   <string name="usb_mass_storage_summary">Pozwala na transfer plików pomiędzy komputerem a kartą SD zamontowaną jako urządzenie pamięci masowej</string>
   <string name="storage_rescan_media">Ponownie skanuj zawartość pamięci</string>
@@ -703,7 +694,6 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="logger_summary">Zarządzaj ustawieniami rejestrowanych awarii</string>
   <string name="custom_runtime_warning_title">Ostrzeżenie</string>
   <string name="custom_runtime_warning_message">ART nie jest wspierany przez CyanogenMod. To ustawienie jest eksperymentalne i może powodować braki stabilności, błędy w działaniu niektórych aplikacji, utratę danych lub spowodować brak możliwości włączenia urządzenia. Po więcej informacji odwiedź &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;Prosimy o nieprzesyłanie raportów o błędach jeśli ART jest aktywowany.&lt;br/&gt;&lt;br/&gt;Czy jesteś pewien, że chcesz zrestartować urządzenie w celu zmiany <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> na <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
-  <string name="gps_download_data_wifi_only">Pobieraj dane wspomagające GPS tylko przez sieci Wi-Fi</string>
   <string name="battery_info_status_charging_dock_ac">Dok (AC)</string>
   <string name="battery_info_status_charging_dock_usb">Dok (USB)</string>
   <string name="menu_stats_reset">Zresetuj</string>
@@ -745,7 +735,6 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="app_ops_summaries_modify_call_log">modyfikacja historii rozmów</string>
   <string name="app_ops_summaries_read_calendar">odczyt kalendarza</string>
   <string name="app_ops_summaries_modify_calendar">modyfikacja kalendarza</string>
-  <string name="app_ops_summaries_wifi_scan">Skanuj Wi-Fi</string>
   <string name="app_ops_summaries_notification">powiadomienie</string>
   <string name="app_ops_summaries_cell_scan">Skanowanie komórek</string>
   <string name="app_ops_summaries_call_phone">Wykonywanie połączeń</string>
@@ -774,12 +763,9 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="app_ops_summaries_media_volume">Głośność mediów</string>
   <string name="app_ops_summaries_alarm_volume">Głośność alarmu</string>
   <string name="app_ops_summaries_notification_volume">Głośność powiadomień</string>
-  <string name="app_ops_summaries_bluetooth_volume">Głośność bluetooth</string>
   <string name="app_ops_summaries_keep_awake">Nie usypiaj</string>
   <string name="app_ops_summaries_monitor_location">Monitorowanie lokalizacji</string>
   <string name="app_ops_summaries_monitor_high_power_location">Monitorowanie lokalizacji z pełną mocą</string>
-  <string name="app_ops_summaries_wifi_change">zmiana wifi</string>
-  <string name="app_ops_summaries_bluetooth_change">zmiana bluetooth</string>
   <string name="app_ops_summaries_data_change">zmiana trybu danych</string>
   <string name="app_ops_summaries_alarm_wakeup">wybudzanie</string>
   <string name="app_ops_summaries_send_mms">Wysyłanie MMS-ów</string>
@@ -819,7 +805,6 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="app_ops_labels_notification_volume">Głośność powiadomień</string>
   <string name="app_ops_labels_bluetooth_volume">Głośność bluetooth</string>
   <string name="app_ops_labels_keep_awake">Nie usypiaj</string>
-  <string name="app_ops_labels_wifi_change">Zmiana Wi-Fi</string>
   <string name="app_ops_labels_bluetooth_change">Zmiana Bluetooth</string>
   <string name="app_ops_labels_data_change">Zmiana trybu danych</string>
   <string name="app_ops_labels_alarm_wakeup">Wybudzanie</string>
@@ -861,7 +846,6 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="voice_wakeup_activity_title">Aktywność do uruchomienia</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
   <string name="sub_no_sim">Brak karty SIM</string>
-  <string name="multi_sim_settings_title">Multi SIM</string>
   <string name="multi_sim_settings_group_summary">Domyślny wybór SIM</string>
   <string name="voice_title">Połączenia głosowe</string>
   <string name="data_title">Transmisja danych</string>
@@ -895,38 +879,74 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="block_notifications_title">Filtrowanie powiadomień</string>
   <string name="block_notifications_summary">Zarządzaj ignorowanymi powiadomieniami i filtrami</string>
   <string name="no_filters_title">Brak skonfigurowanych filtrów. Aby filtrować powiadomienia, przytrzymaj palcem na jednym z nich i wybierz opcję \"Ignoruj wiadomości tego typu\".</string>
-  <string name="usb_eject">Odmontuj pamięć USB</string>
-  <string name="usb_eject_summary">Odmontuj pamięć USB, aby móc ją bezpiecznie usunąć</string>
-  <string name="usb_insert_summary">Podłącz pamięć USB, aby ją zamontować</string>
-  <string name="usb_mount">Zamontuj pamięć USB</string>
-  <string name="usb_format">Wyczyść pamięć USB</string>
-  <string name="usb_format_summary">Usuwa wszystkie dane na pamięci USB, takie jak muzyka i zdjęcia</string>
-  <string name="dlg_confirm_usb_unmount_title">Odmontować pamięć USB?</string>
-  <string name="dlg_confirm_usb_unmount_text">Jeśli odmontujesz pamięć USB, niektóre aplikacje mogą przestać działać lub stać się niedostępne dopóki ponownie nie zamontujesz pamięci USB.</string>
-  <string name="dlg_error_usb_unmount_text">Nie udało się odmontować pamięci USB. Spróbuj ponownie później.</string>
   <string name="usb_unmount_inform_text">Pamięć USB zostanie odmontowana.</string>
-  <string name="usb_ejecting_title">Odmontowywanie pamięci USB</string>
-  <string name="usb_ejecting_summary">Odmontowywanie pamięci USB w toku</string>
   <string name="usb_media_format_title">Wyczyść pamięć USB</string>
   <string name="usb_media_format_desc">Usunąć wszystkie dane z pamięci USB? Stracisz <b>wszystkie</b> przechowywane dane!</string>
   <string name="usb_media_format_button_text">Wyczyść pamięć USB</string>
   <string name="usb_media_format_final_desc">Wyczyścić pamięć USB usuwając z niego wszystkie pliki? Nie można odwrócić tej akcji!</string>
   <string name="usb_media_format_gesture_explanation">Musisz narysować swój wzór odblokowania, by potwierdzić, że chcesz wyczyścić pamięć USB.</string>
-  <string name="sd_eject">Odmontuj kartę SD</string>
-  <string name="sd_eject_summary">Odmontuj kartę SD, aby móc ją bezpiecznie wyciągnąć</string>
-  <string name="sd_insert_summary">Włóż kartę SD, aby ją zamontować</string>
-  <string name="sd_mount">Montowanie karty SD</string>
-  <string name="sd_format">Wyczyść kartę SD</string>
-  <string name="sd_format_summary">Usuwa wszystkie dane na karcie SD, takie jak muzyka i zdjęcia</string>
-  <string name="dlg_confirm_sd_unmount_title">Odmontować kartę SD?</string>
-  <string name="dlg_confirm_sd_unmount_text">Jeśli odmontujesz kartę SD, niektóre aplikacje mogą przestać działać lub stać się niedostępne dopóki nie zamontujesz ponownie karty SD.</string>
-  <string name="dlg_error_sd_unmount_text">Nie udało się odmontować karty SD. Spróbuj ponownie później.</string>
   <string name="sd_unmount_inform_text">Karta SD będzie niezamontowana.</string>
-  <string name="sd_ejecting_title">Odmontowywanie karty SD</string>
-  <string name="sd_ejecting_summary">Odmontowywanie karty SD w toku</string>
   <string name="sd_media_format_title">Wyczyść kartę SD</string>
   <string name="sd_media_format_desc">Usunąć wszystkie dane z karty SD? Spowoduje utratę <b>wszystkich</b> danych na karcie!</string>
   <string name="sd_media_format_button_text">Wyczyść kartę SD</string>
   <string name="sd_media_format_final_desc">Wyczyścić kartę SD usuwając z niej wszystkie pliki? Nie można odwrócić tej akcji!</string>
   <string name="sd_media_format_gesture_explanation">Musisz narysować swój wzór odblokowania, aby potwierdzić, że chcesz wyczyścić kartę SD.</string>
+  <string name="bluetooth_enter_pin_msg_hs">Aby powiązać z:<xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g>Wprowadź kod PIN wymagany przez drugie urządzenie (16 cyfr lub więcej):</string>
+  <string name="bluetooth_profile_sap">Dostęp do karty SIM</string>
+  <string name="bluetooth_profile_dun">Telefoniczny dostęp do sieci</string>
+  <string name="bluetooth_sap_profile_summary_connected">Połączono do serwera dostępu karty SIM</string>
+  <string name="bluetooth_dun_profile_summary_connected">Połączono z serwerem DUN</string>
+  <string name="bluetooth_sap_profile_summary_use_for">Wykorzystanie dostępu do karty SIM</string>
+  <string name="bluetooth_dun_profile_summary_use_for">Wykorzystanie dostępu do sieci telefonicznych</string>
+  <string name="wifi_disabled_association_rejected">Skojarzenie odrzucone</string>
+  <string name="screencolor">Kolor ekranu</string>
+  <string name="custom_screencolor">Własny kolor ekranu</string>
+  <string name="device_additional_status">Dodatkowe informacje</string>
+  <string name="enable_quickboot_title">Włącz tryb Szybkiego Uruchamiania</string>
+  <string name="enable_quickboot_summary">Użyj trybu Szybkiego Uruchamiania zamiast normalnego.</string>
+  <string name="data_usage_tab_slot">SIM </string>
+  <string name="no_sim_info">Informacje o SIM niedostępne.\nBrak dostępu do menu</string>
+  <string name="set_data_subscription_progress">Ustawienia abonamentu dla transmisji danych\u2026</string>
+  <string name="set_dds_success">Ustawianie abonamentu dla danych pakietowych zakończone sukcesem</string>
+  <string name="set_dds_failed">Błąd podczas ustawiania subskrypcji danych. Usuń wszystkie istniejące połączenia danych i spróbuj ponownie.</string>
+  <string name="set_dds_error">Błąd podczas ustawiania abonamentu dla danych pakietowych.</string>
+  <string name="set_sms_error">Błąd podczas ustawiania subskrypcji SMS. Usługa nieaktywna.</string>
+  <string name="set_voice_error">Błąd podczas ustawiania subskrypcji głosowej. Usługa nieaktywna.</string>
+  <string name="set_priority_sub_error">Błąd podczas ustawiania usługi priorytetowej. Usługa nieaktywna.</string>
+  <string name="prompt">Monit</string>
+  <string name="prompt_user">Monituj użytkownika</string>
+  <string name="maximum_head_level">Głowa: %1$s W/kg</string>
+  <string name="maximum_body_level">Ciało: %1$s W/kg</string>
+  <string name="tune_away_title">TuneAway</string>
+  <string name="tune_away_enabled">TuneAway aktywne</string>
+  <string name="tune_away_disabled">TuneAway nieaktywne</string>
+  <string name="screencolor_save">Zapisz</string>
+  <string name="screencolor_cancel">Anuluj</string>
+  <string name="restore_preview">Pokaż domyślny obraz</string>
+  <string name="selectnewfile_menu">Zobacz nowy obraz w Galerii</string>
+  <string name="selectfile_menu">Zobacz zdjęcie z Galerii</string>
+  <string name="restore_default_str">Resetuj</string>
+  <string name="hue_str">Odcień: <xliff:g id="hue_value">%1$s</xliff:g></string>
+  <string name="saturation_str">Nasycenie: <xliff:g id="saturation_value">%1$s</xliff:g></string>
+  <string name="contrast_str">Kontrast: <xliff:g id="contrast_value">%1$s</xliff:g></string>
+  <string name="intensity_str">Intensywność: <xliff:g id="intensity_str_value">%1$s</xliff:g></string>
+  <string name="device_status_summary_cm" product="tablet">Stan baterii, sieci oraz inne informacje</string>
+  <string name="device_status_summary_cm" product="default">Stan baterii, poziom baterii, itp.</string>
+  <string name="wifi_ap_clients_title">Podłączone urządzenia</string>
+  <string name="wifi_ap_client_ap_disabled">Hotspot jest wyłączony</string>
+  <string name="wifi_ap_client_none_connected">Brak podłączonych urządzeń</string>
+  <string name="profile_menu_delete_title">Usuń</string>
+  <string name="profile_menu_triggers_title">Modyfikuj wyzwalacze</string>
+  <string name="profile_action_none">Brak akcji</string>
+  <string name="profile_action_disabled">Wyłącz</string>
+  <string name="profile_action_enable">Włącz</string>
+  <string name="profile_tabs_bluetooth">Bluetooth</string>
+  <string name="profile_tabs_nfc">NFC</string>
+  <string name="profile_setup_setup_triggers_title">Krok 1: Dodaj wyzwalacze</string>
+  <string name="profile_setup_setup_triggers_title_config">Modyfikuj przyciski: <xliff:g id="profile_name">%1$s</xliff:g></string>
+  <string name="profile_setup_actions_title">Krok 2: Ustaw akcje</string>
+  <string name="profile_setup_actions_title_config">Ponownie skonfiguruj akcje</string>
+  <string name="no_bluetooth_triggers">Brak dostępnych wyzwalaczy Bluetooth</string>
+  <string name="profile_setup_setup_triggers_description">Proszę wybrać wyzwalacze, które aktywują ten profil</string>
+  <string name="profile_setup_actions_description">Teraz skonfiguruj akcję, która wydarzy się po aktywowaniu profilu</string>
 </resources>

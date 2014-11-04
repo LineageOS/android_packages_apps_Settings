@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2011 The CyanogenMod Project
+ * Copyright (C) 2011-2014 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,6 +27,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.os.Vibrator;
 import android.preference.ListPreference;
 import android.preference.MultiSelectListPreference;
@@ -48,6 +49,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
 
     private static final String SEPARATOR = "OV=I=XseparatorX=I=VO";
     private static final String EXP_RING_MODE = "pref_ring_mode";
+    private static final String EXP_LOCATION_MODE = "pref_location_mode";
     private static final String EXP_NETWORK_MODE = "pref_network_mode";
     private static final String EXP_SCREENTIMEOUT_MODE = "pref_screentimeout_mode";
     private static final String QUICK_PULLDOWN = "quick_pulldown";
@@ -57,6 +59,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private static final String QS_SMALL_ICONS = "qs_small_icons";
 
     private MultiSelectListPreference mRingMode;
+    private MultiSelectListPreference mLocationMode;
     private ListPreference mNetworkMode;
     private ListPreference mScreenTimeoutMode;
     private ListPreference mQuickPulldown;
@@ -110,6 +113,23 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             } else {
                 mStaticTiles.removePreference(mRingMode);
             }
+        }
+
+        mLocationMode = (MultiSelectListPreference) prefSet.findPreference(EXP_LOCATION_MODE);
+        if (mLocationMode != null) {
+                int currentLocatorMode = Settings.System.getIntForUser(resolver,
+                        Settings.System.EXPANDED_LOCATION_MODE, 0, UserHandle.USER_CURRENT);
+                Set<String> currentModes = new HashSet<String>();
+                String[] modes = getResources().getStringArray(R.array.values_location_widget);
+                int count = modes.length;
+                for (int i = 0; i < count; i++) {
+                    int mask = (int) Math.pow(2, i + 1); // Off is always preset
+                    if ((currentLocatorMode & mask) == mask) {
+                        currentModes.add(modes[i]);
+                    }
+                }
+                mLocationMode.setValues(currentModes);
+                mLocationMode.setOnPreferenceChangeListener(this);
         }
 
         // Add the network mode preference
@@ -179,6 +199,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         }
     }
 
+    @SuppressWarnings("unchecked")
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getContentResolver();
         if (preference == mRingMode) {
@@ -187,6 +208,17 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             String value = TextUtils.join(SEPARATOR, arrValue);
             Settings.System.putString(resolver, Settings.System.EXPANDED_RING_MODE, value);
             updateSummary(value, mRingMode, R.string.pref_ring_mode_summary);
+            return true;
+        } else if (preference == mLocationMode) {
+            int currentLocatorMode = 1; // Off is always preset
+            String[] currentModes = ((Set<String>) newValue).toArray(new String[]{});
+            int count = currentModes.length;
+            for (int i = 0; i < count; i++) {
+                int index = mLocationMode.findIndexOfValue(currentModes[i]);
+                currentLocatorMode |= (int) Math.pow(2, index + 1); // Off is always preset
+            }
+            Settings.System.putIntForUser(resolver, Settings.System.EXPANDED_LOCATION_MODE,
+                    currentLocatorMode, UserHandle.USER_CURRENT);
             return true;
         } else if (preference == mNetworkMode) {
             int value = Integer.valueOf((String) newValue);

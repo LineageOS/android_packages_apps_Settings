@@ -22,6 +22,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.provider.Settings;
+import android.telephony.MSimTelephonyManager;
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
@@ -36,6 +38,8 @@ public class MobileDataEnabler implements CompoundButton.OnCheckedChangeListener
     public MobileDataEnabler(Context context, Switch switch_) {
         mContext = context;
         mSwitch = switch_;
+        mSwitch.setVisibility(MSimTelephonyManager.getDefault().isMultiSimEnabled() ?
+                View.GONE : View.VISIBLE);
         mAirplaneFilter = new IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED);
     }
 
@@ -62,6 +66,8 @@ public class MobileDataEnabler implements CompoundButton.OnCheckedChangeListener
             return;
         mSwitch.setOnCheckedChangeListener(null);
         mSwitch = switch_;
+        mSwitch.setVisibility(MSimTelephonyManager.getDefault().isMultiSimEnabled() ?
+                View.GONE : View.VISIBLE);
         mSwitch.setOnCheckedChangeListener(this);
         setSwitchState();
     }

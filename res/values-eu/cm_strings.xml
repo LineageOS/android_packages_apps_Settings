@@ -16,11 +16,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="wifi_setting_countrycode_title">Wi-Fi lurralde kodea</string>
-  <string name="wifi_setting_countrycode_summary">Wi-Fi -rako lurralde kodea ezarri</string>
   <string name="wifi_setting_countrycode_error">Arazo bat egon da lurralde kodea ezartzean.</string>
-  <string name="wifi_setting_priority_title">Wi-Fi lehentasuna</string>
-  <string name="wifi_setting_priority_summary">Wi-Fi sareen lehentasuna ezarri</string>
   <string name="wifi_ssid_input_limit">SSID-ak luzera maximoa gainditzen du</string>
   <string name="p2p_device_name_input_limit">P2P izenak luzeera maximoa gainditzen du</string>
   <string name="change_crypt_password_title">Pasahitza aldatu</string>
@@ -47,7 +43,6 @@
   <string name="profile_trigger_configure">Gertakaria konfiguratu</string>
   <string name="profile_triggers">Gertakariak</string>
   <string name="profile_trigger_filter_all">Edozein gertakari</string>
-  <string name="profile_trigger_filter_wifi">Wi-Fi gertakariak</string>
   <string name="profile_trigger_filter_bluetooth">Bluetooth gertakariak</string>
   <string name="profile_write_nfc_tag">NFC etiketara idatzi</string>
   <string name="profile_write_touch_tag">Idazteko etiketa sakatu</string>
@@ -113,12 +108,8 @@
   <string name="profile_lockmode_insecure_summary">Lokatze pantaila ez segurua erabili</string>
   <string name="profile_lockmode_disabled_summary">Lokatze pantaila ezgaituta dago</string>
   <string name="profile_airplanemode_title">Hegazkin modua</string>
-  <string name="toggleWifi">Wi-Fi</string>
-  <string name="toggleWifiAp">Wi-Fi hotspot mugikorra</string>
   <string name="toggleBluetooth">Bluetooth-a</string>
   <string name="toggleGPS">GPS</string>
-  <string name="toggleData">Datu mugikorrak</string>
-  <string name="toggleSync">Sinkronizazioa</string>
   <string name="toggle2g3g">2G/3G</string>
   <string name="toggleWimax">WiMAX</string>
   <string name="toggleNfc">NFC</string>
@@ -231,7 +222,6 @@
   <string name="heads_up_blacklist_title">Zerrenda beltza</string>
   <string name="heads_up_disabled_notice">Aplikazioak jakinarazpen interaktiboak leiho gainerakorretan erakustera baimentzeko, jakinarazpen gainerakorrak gaitu.</string>
   <string name="title_tile_airplane">Hegazkin modua</string>
-  <string name="title_tile_battery">Bateria</string>
   <string name="title_tile_bluetooth">Bluetooth-a</string>
   <string name="title_tile_brightness">Diztira</string>
   <string name="title_tile_camera">Kamera</string>
@@ -248,8 +238,6 @@
   <string name="title_tile_settings">Ezarpenak</string>
   <string name="title_tile_sound">Soinua</string>
   <string name="title_tile_sync">Sinkronizatu</string>
-  <string name="title_tile_wifiap">Wi-Fi AP</string>
-  <string name="title_tile_wifi">Wi-Fi</string>
   <string name="title_tile_user">Erabiltzaile aldaketa</string>
   <string name="title_tile_networkmode">Sare modua</string>
   <string name="title_tile_nfc">NFC</string>
@@ -260,13 +248,10 @@
   <string name="title_tile_network_adb">Sare gaineko ADB</string>
   <string name="title_dynamic_tiles">Kontrol dinamikoak</string>
   <string name="dynamic_tiles_note_title">Oharra</string>
-  <string name="dynamic_tiles_note_summary">Kontrol dinamikoak ez dira beti ikusgai egongo, sistemaren gertakari baten ondorioz erakutsiko dira</string>
   <string name="title_dynamic_alarm">Alarma</string>
   <string name="title_dynamic_bugreport">Akatsen txostena</string>
   <string name="title_dynamic_dock_battery">Oinarriaren bateria</string>
   <string name="title_dynamic_equalizer">Ekualizadorea</string>
-  <string name="title_dynamic_ime">IME hautatzailea</string>
-  <string name="title_dynamic_usbtether">USB ainguraketa</string>
   <string name="title_dynamic_wifi">Cast-aren pantaila</string>
   <string name="title_general">Orokorra</string>
   <string name="title_quick_pulldown">Hedapen azkarra</string>
@@ -411,7 +396,6 @@ Denbora luzez lerro bakoitza ikutuz ezarpen osagarriak erakutsiko dira. \u00ABEd
   <string name="io_sched_title">I/O antolatzailea</string>
   <string name="perf_profile_title">Profila</string>
   <string name="memory_management_title">Memoria kudeaketa</string>
-  <string name="pref_ksm_title">Kernelaren elkarbanaturiko memoria (KSM)</string>
   <string name="pref_ksm_summary">KSM-k memoria fisikoaren eskakizuna gutxitzen du eta etekina hobetzen du</string>
   <string name="pref_purgeable_assets_title">Baliabideen purga baimendu</string>
   <string name="pref_purgeable_assets_summary">Memorian dauden irudien baliabideen purgak beharrezkoa denean memoria gehiago askatzea baimentzen du (berrabiarazi behar da)</string>
@@ -485,7 +469,6 @@ Denbora luzez lerro bakoitza ikutuz ezarpen osagarriak erakutsiko dira. \u00ABEd
   <string name="adb_notify">USB arazketa jakinarazi</string>
   <string name="adb_notify_summary">Jakinarazpen bat erakutsi USB arazketa gaituta dagoenean</string>
   <string name="adb_over_network">Sare gaineko ADB</string>
-  <string name="adb_over_network_summary">Sare interfaze gaineko TCP/IP arazketa gaitu (Wi-Fi, USB sareak). Ezarpen hau gailua berrabiaraztean ezartzen da</string>
   <string name="adb_over_network_warning">OHARRA: Sare gaineko ADB-a gaituta dagoenean, gailua intrusioetara irekia egongo da konektaturiko edozein saretan, GSM datu sareak barne!\n\nEzaugarri hau konfidantzazko sareetara konektatuta egotean bakarrik erabili.\n\nZiur ezaugarri hau gaitu nahi duzula?</string>
   <string name="device_hostname">Gailuaren izena</string>
   <string name="notification_drawer_title">Jakinarazpen eremua</string>
@@ -681,7 +664,6 @@ Denbora luzez lerro bakoitza ikutuz ezarpen osagarriak erakutsiko dira. \u00ABEd
   <string name="status_bar_notif_count_title">Jakinarazpen zenbatzailea erakutsi</string>
   <string name="status_bar_notif_count_summary">Itxaroten dauden jakinarazpen kantitatea egoera barran erakutsi</string>
   <string name="development_shortcut_title">Garatzaile ezarpenak</string>
-  <string name="development_shortcut_summary">Jakinarazpen eremuan eta aplikazio berrikietan \u00ABDatuak ezabatu\u00BB eta \u00ABIxtea bortxatu\u00BB aukerak gaitu</string>
   <string name="usb_mass_storage_title">Biltegiratze masiboa</string>
   <string name="usb_mass_storage_summary">Fitxategiak SD txartelaren eta ordenagailuaren artean transferitzea ahalbidetzen du</string>
   <string name="storage_rescan_media">Media berritu</string>
@@ -692,7 +674,6 @@ Denbora luzez lerro bakoitza ikutuz ezarpen osagarriak erakutsiko dira. \u00ABEd
   <string name="logger_summary">Akatsen erregistroaren ezarpenak kudeatu</string>
   <string name="custom_runtime_warning_title">Kontuz</string>
   <string name="custom_runtime_warning_message">Ofizialki CyanogenMod-ek ez du ART jasaten. Ezarpen hau esperimentalki jarrita dago eta ezegonkortasuna, blokeoak, datu galera eta gailuaren pizte ez zuzena sor ditzake. Informazio gehiagorako ikusi &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;ART gaitu baduzu akats txostenik ez bidaltzea eskatzen dizugu.&lt;br/&gt;&lt;br/&gt;¿Ziur exekuzio denbora <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> -tik <xliff:g id="new" example="libart.so">%2$s</xliff:g> -ra aldatzeko berrabiarazi nahi duzula?</string>
-  <string name="gps_download_data_wifi_only">Lagundutako GPS-aren datuak Wi-Fi sareetan bakarrik deskargatu</string>
   <string name="battery_info_status_charging_dock_ac">(ACOinarria)</string>
   <string name="battery_info_status_charging_dock_usb">(USBOinarria)</string>
   <string name="menu_stats_reset">Berrezarri</string>
@@ -732,7 +713,6 @@ Denbora luzez lerro bakoitza ikutuz ezarpen osagarriak erakutsiko dira. \u00ABEd
   <string name="app_ops_summaries_modify_call_log">Dei erregistroa editatu</string>
   <string name="app_ops_summaries_read_calendar">Egutegiako gertakariak irakurri</string>
   <string name="app_ops_summaries_modify_calendar">Egutegiko gertakariak aldatu</string>
-  <string name="app_ops_summaries_wifi_scan">Wi-Fi konexioak ikusi</string>
   <string name="app_ops_summaries_notification">jakinarazpena argitaratu</string>
   <string name="app_ops_summaries_cell_scan">sare konexioak ikusi</string>
   <string name="app_ops_summaries_call_phone">telefono zenbakietara zuzenean deitu</string>
@@ -761,12 +741,9 @@ Denbora luzez lerro bakoitza ikutuz ezarpen osagarriak erakutsiko dira. \u00ABEd
   <string name="app_ops_summaries_media_volume">media-ren bolumena</string>
   <string name="app_ops_summaries_alarm_volume">alarmaren bolumena</string>
   <string name="app_ops_summaries_notification_volume">jakinarazpenen bolumena</string>
-  <string name="app_ops_summaries_bluetooth_volume">bluetooth-aren bolumena</string>
   <string name="app_ops_summaries_keep_awake">esna mantendu</string>
   <string name="app_ops_summaries_monitor_location">gutxi gora beherako kokapena ikusi</string>
   <string name="app_ops_summaries_monitor_high_power_location">kokapen zehatza ikusi</string>
-  <string name="app_ops_summaries_wifi_change">Wi-Fi egoera aldatu</string>
-  <string name="app_ops_summaries_bluetooth_change">Bluetooth egoera aldatu</string>
   <string name="app_ops_summaries_data_change">sare konexioa aldatu</string>
   <string name="app_ops_summaries_alarm_wakeup">esnatu</string>
   <string name="app_ops_summaries_send_mms">MMS-ak bidali</string>
@@ -806,7 +783,6 @@ Denbora luzez lerro bakoitza ikutuz ezarpen osagarriak erakutsiko dira. \u00ABEd
   <string name="app_ops_labels_notification_volume">Jakinarazpenen bolumena</string>
   <string name="app_ops_labels_bluetooth_volume">Bluetooth-aren bolumena</string>
   <string name="app_ops_labels_keep_awake">Esna mantendu</string>
-  <string name="app_ops_labels_wifi_change">Wi-Fi-a kudeatu</string>
   <string name="app_ops_labels_bluetooth_change">Bluetooth-a kudeatu</string>
   <string name="app_ops_labels_data_change">Sare konexioa kudeatu</string>
   <string name="app_ops_labels_alarm_wakeup">Esnatu</string>
@@ -848,7 +824,6 @@ Denbora luzez lerro bakoitza ikutuz ezarpen osagarriak erakutsiko dira. \u00ABEd
   <string name="voice_wakeup_activity_title">Hasi beharreko aktibitatea</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
   <string name="sub_no_sim">SIM-ik ez</string>
-  <string name="multi_sim_settings_title">Multi SIM</string>
   <string name="multi_sim_settings_group_summary">SIM hautatze lehenetsia</string>
   <string name="voice_title">Ahots deiak</string>
   <string name="data_title">Datu deiak</string>

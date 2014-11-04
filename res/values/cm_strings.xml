@@ -16,15 +16,15 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Wi-Fi region code -->
-    <string name="wifi_setting_countrycode_title">Wi-Fi region code</string>
+    <string name="wifi_setting_countrycode_title">Wi\u2011Fi region code</string>
     <!-- Wi-Fi settings screen, setting summary for setting the wifi frequency band [CHAR LIMIT=50]-->
-    <string name="wifi_setting_countrycode_summary">Specify the region code for Wi-Fi</string>
+    <string name="wifi_setting_countrycode_summary">Specify the region code for Wi\u2011Fi</string>
     <!-- Wi-Fi settings screen, error message when the frequency band could not be set [CHAR LIMIT=50]. -->
     <string name="wifi_setting_countrycode_error">There was a problem setting the region code.</string>
     <!-- Wi-Fi settings screen, advanced, title of the item to set the Wi-Fi priority. -->
-    <string name="wifi_setting_priority_title">Wi-Fi priority</string>
+    <string name="wifi_setting_priority_title">Wi\u2011Fi priority</string>
     <!-- Wi-Fi settings screen, setting summary for setting the Wi-Fi priority-->
-    <string name="wifi_setting_priority_summary">Specify the priority of the Wi-Fi networks</string>
+    <string name="wifi_setting_priority_summary">Specify the priority of the Wi\u2011Fi networks</string>
     <!-- Wi-Fi SSID string limits -->
     <string name="wifi_ssid_input_limit">SSID exceeds maximum length</string>
     <!-- Wi-Fi P2P string limits -->
@@ -65,7 +65,7 @@
     <string name="profile_trigger_configure">Configure trigger</string>
     <string name="profile_triggers">Triggers</string>
     <string name="profile_trigger_filter_all">All triggers</string>
-    <string name="profile_trigger_filter_wifi">Wi-Fi triggers</string>
+    <string name="profile_trigger_filter_wifi">Wi\u2011Fi triggers</string>
     <string name="profile_trigger_filter_bluetooth">Bluetooth triggers</string>
     <string name="profile_write_nfc_tag">Write to NFC tag</string>
     <string name="profile_write_touch_tag">Touch tag to write</string>
@@ -162,12 +162,12 @@
     <string name="profile_airplanemode_title">Airplane mode</string>
 
     <!-- Connection override toggles (not all are used at this time ) -->
-    <string name="toggleWifi">Wi-Fi</string>
-    <string name="toggleWifiAp">Portable Wi-Fi hotspot</string>
+    <string name="toggleWifi">Wi\u2011Fi</string>
+    <string name="toggleWifiAp">Portable Wi\u2011Fi hotspot</string>
     <string name="toggleBluetooth">Bluetooth</string>
     <string name="toggleGPS">GPS</string>
-    <string name="toggleData">Mobile Data</string>
-    <string name="toggleSync">Data Sync</string>
+    <string name="toggleData">Mobile data</string>
+    <string name="toggleSync">Auto-sync data</string>
     <string name="toggle2g3g">2G/3G</string>
     <string name="toggleWimax">WiMAX</string>
     <string name="toggleNfc">NFC</string>
@@ -283,10 +283,10 @@
     <string name="lockpattern_settings_reset_summary">Enter primary email account and associated password to reset pattern lock</string>
 
     <!-- Sizes for pattern lockscreen -->
-    <string name="lock_pattern_size_3" translatable="false">3x3</string>
-    <string name="lock_pattern_size_4" translatable="false">4x4</string>
-    <string name="lock_pattern_size_5" translatable="false">5x5</string>
-    <string name="lock_pattern_size_6" translatable="false">6x6</string>
+    <string name="lock_pattern_size_3" translatable="false">3 \u00d7 3</string>
+    <string name="lock_pattern_size_4" translatable="false">4 \u00d7 4</string>
+    <string name="lock_pattern_size_5" translatable="false">5 \u00d7 5</string>
+    <string name="lock_pattern_size_6" translatable="false">6 \u00d7 6</string>
 
     <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
     <string name="lockpattern_settings_enable_error_path_title">Show pattern error</string>
@@ -313,9 +313,11 @@
     <string name="lockscreen_maximize_widgets_title">Maximize widgets</string>
     <string name="lockscreen_maximize_widgets_summary">Expand widgets when the screen is turned on</string>
     <string name="lockscreen_enable_camera_title">Camera widget</string>
+    <string name="lockscreen_enable_application_widget_title">Appcast widget</string>
 
-    <!-- Safe headset volume restore checkbox -->
+    <!-- Safe headset volume checkboxes -->
     <string name="safe_headset_volume_title">Safe headset volume</string>
+    <string name="safe_headset_volume_restore_title">Reduce headset volume on connection</string>
 
     <!-- Waiver -->
     <string name="cyanogenmod_waiver_title">Waiver</string>
@@ -342,7 +344,7 @@
     <string name="heads_up_disabled_notice">To allow apps to display interactive notifications in a pop-up window on your screen, enable Heads up.</string>
 
     <string name="title_tile_airplane">Airplane mode</string>
-    <string name="title_tile_battery">Battery stats</string>
+    <string name="title_tile_battery">Battery</string>
     <string name="title_tile_bluetooth">Bluetooth</string>
     <string name="title_tile_brightness">Brightness</string>
     <string name="title_tile_camera">Camera</string>
@@ -360,8 +362,8 @@
     <string name="title_tile_settings">Settings</string>
     <string name="title_tile_sound">Sound</string>
     <string name="title_tile_sync">Sync</string>
-    <string name="title_tile_wifiap">Wi-Fi AP</string>
-    <string name="title_tile_wifi">Wi-Fi</string>
+    <string name="title_tile_wifiap">Wi\u2011Fi hotspot</string>
+    <string name="title_tile_wifi">Wi\u2011Fi</string>
     <string name="title_tile_user">User switcher</string>
     <string name="title_tile_networkmode">Network mode</string>
     <string name="title_tile_nfc">NFC</string>
@@ -373,13 +375,13 @@
 
     <string name="title_dynamic_tiles">Dynamic tiles</string>
     <string name="dynamic_tiles_note_title">Note</string>
-    <string name="dynamic_tiles_note_summary">Dynamic tiles are not always visible and will only appear if triggered by a system event</string>
+    <string name="dynamic_tiles_note_summary">Dynamic tiles will only appear if triggered by a system event</string>
     <string name="title_dynamic_alarm">Alarm clock</string>
     <string name="title_dynamic_bugreport">Bug report</string>
     <string name="title_dynamic_dock_battery">Dock battery</string>
     <string name="title_dynamic_equalizer">Equalizer</string>
-    <string name="title_dynamic_ime">IME changer</string>
-    <string name="title_dynamic_usbtether">USB Tether</string>
+    <string name="title_dynamic_ime">Input method selector</string>
+    <string name="title_dynamic_usbtether">USB tethering</string>
     <string name="title_dynamic_wifi">Cast screen</string>
 
     <string name="title_general">General</string>
@@ -401,6 +403,10 @@
     <string name="cm_sound_mode_vibrate">Vibrate</string>
     <string name="cm_sound_mode_sound">Sound</string>
     <string name="cm_sound_mode_soundVibrate">Sound &amp; Vibrate</string>
+    <string name="pref_location_mode_title">Location modes</string>
+    <string name="cm_location_mode_battery_saving">Battery saving</string>
+    <string name="cm_location_mode_device_only">Device only</string>
+    <string name="cm_location_mode_high_accuracy">High accuracy</string>
 
     <!-- Reset tiles -->
     <string name="tiles_reset_title">Reset</string>
@@ -609,7 +615,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Memory Management -->
     <string name="memory_management_title">Memory management</string>
     <!-- KSM -->
-    <string name="pref_ksm_title">Kernel samepage merging</string>
+    <string name="pref_ksm_title">Kernel Samepage Merging</string>
     <string name="pref_ksm_summary">KSM reduces physical memory requirements and improves performance</string>
     <!-- Purgeable Assets -->
     <string name="pref_purgeable_assets_title">Allow purging of assets</string>
@@ -721,7 +727,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Android debugging over WiFi -->
     <string name="adb_over_network">ADB over network</string>
-    <string name="adb_over_network_summary">Enable TCP/IP debugging over network interfaces (Wi-Fi, USB networks). This setting is reset on reboot</string>
+    <string name="adb_over_network_summary">Enable TCP/IP debugging over network interfaces (Wi\u2011Fi, USB networks). This setting is reset on reboot</string>
     <!-- Warning for Adb over Network -->
     <string name="adb_over_network_warning">WARNING: When ADB over network is enabled, your phone is open for intrusions on all connected networks, including GSM data network!\n\nOnly use this feature when you are connected on trusted networks.\n\nDo you really want to enable this function?</string>
     <!-- Hostname setting -->
@@ -863,6 +869,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="navigation_bar_menu_locked">Locked</string>
     <string name="navigation_bar_arrow_keys_title">Arrow keys while typing</string>
     <string name="navigation_bar_arrow_keys_summary">Display left and right cursor buttons while typing</string>
+    <string name="navigation_bar_recents_title">Recents long press action</string>
 
     <!-- Navigation ring shortcuts -->
     <string name="navigation_ring_title">Quick launch shortcuts</string>
@@ -977,7 +984,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Development shortcut -->
     <string name="development_shortcut_title">Development shortcut</string>
-    <string name="development_shortcut_summary">Enable \'wipe data\' and \'force close\' options in notification area and recent apps list</string>
+    <string name="development_shortcut_summary">Enable application management shortcuts in notification area and recent apps list</string>
 
     <!-- USB Mass Storage -->
     <string name="usb_mass_storage_title">Mass storage (UMS)</string>
@@ -998,7 +1005,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="custom_runtime_warning_message">ART is not officially supported by CyanogenMod as it is highly experimental and has the potential to cause instability, crashes, data loss or prevent the proper boot of your device. Visit &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; for more information.&lt;br/&gt;&lt;br/&gt;We request you do not file bug reports if you have enabled ART as your runtime.&lt;br/&gt;&lt;br/&gt;Are you sure you want to reboot to change runtime from <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> to <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
 
     <!-- GPS download data over wi-fi only -->
-    <string name="gps_download_data_wifi_only">Download GPS assisted data only over Wi-Fi networks</string>
+    <string name="gps_download_data_wifi_only">Download GPS assisted data only over Wi\u2011Fi networks</string>
 
     <!-- Battery Info screen. Units shown after a value.  Used for diagnostic info screens, precise translation isn't needed -->
     <string name="battery_info_status_charging_dock_ac">(DockAC)</string>
@@ -1061,7 +1068,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="app_ops_summaries_modify_call_log">modify call log</string>
     <string name="app_ops_summaries_read_calendar">read calendar</string>
     <string name="app_ops_summaries_modify_calendar">modify calendar</string>
-    <string name="app_ops_summaries_wifi_scan">wi-fi scan</string>
+    <string name="app_ops_summaries_wifi_scan">Wi\u2011Fi scan</string>
     <string name="app_ops_summaries_notification">notification</string>
     <string name="app_ops_summaries_cell_scan">cell scan</string>
     <string name="app_ops_summaries_call_phone">call phone</string>
@@ -1090,12 +1097,12 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="app_ops_summaries_media_volume">media volume</string>
     <string name="app_ops_summaries_alarm_volume">alarm volume</string>
     <string name="app_ops_summaries_notification_volume">notification volume</string>
-    <string name="app_ops_summaries_bluetooth_volume">bluetooth volume</string>
+    <string name="app_ops_summaries_bluetooth_volume">Bluetooth volume</string>
     <string name="app_ops_summaries_keep_awake">keep awake</string>
     <string name="app_ops_summaries_monitor_location">monitor location</string>
     <string name="app_ops_summaries_monitor_high_power_location">monitor high power location</string>
-    <string name="app_ops_summaries_wifi_change">wifi change</string>
-    <string name="app_ops_summaries_bluetooth_change">bluetooth change</string>
+    <string name="app_ops_summaries_wifi_change">Wi\u2011Fi change</string>
+    <string name="app_ops_summaries_bluetooth_change">Bluetooth change</string>
     <string name="app_ops_summaries_data_change">data change</string>
     <string name="app_ops_summaries_alarm_wakeup">wake up</string>
     <string name="app_ops_summaries_send_mms">send MMS</string>
@@ -1136,7 +1143,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="app_ops_labels_notification_volume">Notification volume</string>
     <string name="app_ops_labels_bluetooth_volume">Bluetooth volume</string>
     <string name="app_ops_labels_keep_awake">Keep awake</string>
-    <string name="app_ops_labels_wifi_change">Wi-Fi change</string>
+    <string name="app_ops_labels_wifi_change">Wi\u2011Fi change</string>
     <string name="app_ops_labels_bluetooth_change">Bluetooth change</string>
     <string name="app_ops_labels_data_change">Data change</string>
     <string name="app_ops_labels_alarm_wakeup">Wake up</string>
@@ -1203,10 +1210,11 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Set Subscription screen: label no sim -->
     <string name="sub_no_sim">No SIM</string>
-    <string name="multi_sim_entry_format" translatable="false"><xliff:g id="operator">%1$s</xliff:g>-<xliff:g id="index">%2$d</xliff:g></string>
+    <string name="multi_sim_entry_format_no_carrier" translatable="false">SIM - <xliff:g id="index">%1$d</xliff:g></string>
+    <string name="multi_sim_entry_format" translatable="false"><xliff:g id="operator">%1$s</xliff:g> - <xliff:g id="index">%2$d</xliff:g></string>
 
     <!-- Main settings screen, Multi Sim settings title for item to go into the Multi settings -->
-    <string name="multi_sim_settings_title">Multi SIM</string>
+    <string name="multi_sim_settings_title">SIM cards</string>
 
     <!-- Multi Sim settings group title -->
     <string name="multi_sim_settings_group_summary">Default SIM selection</string>
@@ -1215,7 +1223,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="voice_title">Voice calls</string>
 
     <!-- Multi Sim Settings screen, Data box label -->
-    <string name="data_title">Data calls</string>
+    <string name="data_title">Data connection</string>
 
     <!-- Multi Sim Settings screen, SMS box label -->
     <string name="sms_title">Sending SMS</string>
@@ -1238,6 +1246,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="menu_hidden_apps_reset_lock">Reset pattern lock</string>
     <string name="protected_apps">Protected apps</string>
     <string name="saving_protected_components">Saving component state\u2026</string>
+    <string name="launch_app">Launch app</string>
 
     <string name="pa_login_username_hint">Username (email)</string>
     <string name="pa_login_password_hint">Password</string>
@@ -1271,20 +1280,20 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="no_filters_title">No filters set. To filter a notification, long press it and choose \'Ignore messages like this\'.</string>
 
     <!-- Storage menu, label for usb storage -->
-    <string name="usb_eject">Unmount USB storage</string>
-    <string name="usb_eject_summary">Unmount the USB storage so you can safely remove it</string>
-    <string name="usb_insert_summary">Insert USB storage for mounting</string>
-    <string name="usb_mount">Mount USB storage</string>
-    <string name="usb_mount_summary" translatable="false"></string>
-    <string name="usb_format">Erase USB storage</string>
-    <string name="usb_format_summary">Erases all data on the USB storage, such as music and photos</string>
-    <string name="dlg_confirm_usb_unmount_title">Unmount USB storage?</string>
-    <string name="dlg_confirm_usb_unmount_text">If you unmount the USB storage, some apps you are using will stop and may be unavailable until you remount the USB storage.</string>
-    <string name="dlg_error_usb_unmount_title" translatable="false"></string>
-    <string name="dlg_error_usb_unmount_text">Couldn\'t unmount USB storage. Try again later.</string>
+    <string name="usb_sd_eject">Unmount USB storage</string>
+    <string name="usb_sd_eject_summary">Unmount the USB storage so you can safely remove it</string>
+    <string name="usb_sd_insert_summary">Insert USB storage for mounting</string>
+    <string name="usb_sd_mount">Mount USB storage</string>
+    <string name="usb_sd_mount_summary" translatable="false"></string>
+    <string name="usb_sd_format">Erase USB storage</string>
+    <string name="usb_sd_format_summary">Erases all data on the USB storage, such as music and photos</string>
+    <string name="usb_dlg_confirm_unmount_title">Unmount USB storage?</string>
+    <string name="usb_dlg_confirm_unmount_text">If you unmount the USB storage, some apps you are using will stop and may be unavailable until you remount the USB storage.</string>
+    <string name="usb_dlg_error_unmount_title" translatable="false"></string>
+    <string name="usb_dlg_error_unmount_text">Couldn\'t unmount USB storage. Try again later.</string>
     <string name="usb_unmount_inform_text">USB storage will be unmounted.</string>
-    <string name="usb_ejecting_title">Unmounting USB storage</string>
-    <string name="usb_ejecting_summary">USB storage unmount in progress</string>
+    <string name="usb_sd_ejecting_title">Unmounting USB storage</string>
+    <string name="usb_sd_ejecting_summary">USB storage unmount in progress</string>
     <string name="usb_media_format_title">Erase USB storage</string>
     <string name="usb_media_format_desc">Erase all USB storage? You will lose <b>all</b> stored data!</string>
     <string name="usb_media_format_button_text">Erase USB storage</string>
@@ -1292,20 +1301,20 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="usb_media_format_gesture_explanation">You need to draw your unlock pattern to confirm that you want to erase the USB storage.</string>
 
     <!-- Storage menu, label for SD card  -->
-    <string name="sd_eject">Unmount SD card</string>
-    <string name="sd_eject_summary">Unmount the SD card so you can safely remove it</string>
-    <string name="sd_insert_summary">Insert an SD card for mounting</string>
-    <string name="sd_mount">Mount SD card</string>
-    <string name="sd_mount_summary" translatable="false"></string>
-    <string name="sd_format">Erase SD card</string>
-    <string name="sd_format_summary">Erases all data on the SD card, such as music and photos</string>
-    <string name="dlg_confirm_sd_unmount_title">Unmount SD card?</string>
-    <string name="dlg_confirm_sd_unmount_text">If you unmount the SD card, some apps you are using will stop and may be unavailable until you remount the SD card.</string>
-    <string name="dlg_error_sd_unmount_title" translatable="false"></string>
-    <string name="dlg_error_sd_unmount_text">Couldn\'t unmount SD card. Try again later.</string>
+    <string name="sd_sd_eject">Unmount SD card</string>
+    <string name="sd_sd_eject_summary">Unmount the SD card so you can safely remove it</string>
+    <string name="sd_sd_insert_summary">Insert an SD card for mounting</string>
+    <string name="sd_sd_mount">Mount SD card</string>
+    <string name="sd_sd_mount_summary" translatable="false"></string>
+    <string name="sd_sd_format">Erase SD card</string>
+    <string name="sd_sd_format_summary">Erases all data on the SD card, such as music and photos</string>
+    <string name="sd_dlg_confirm_unmount_title">Unmount SD card?</string>
+    <string name="sd_dlg_confirm_unmount_text">If you unmount the SD card, some apps you are using will stop and may be unavailable until you remount the SD card.</string>
+    <string name="sd_dlg_error_unmount_title" translatable="false"></string>
+    <string name="sd_dlg_error_unmount_text">Couldn\'t unmount SD card. Try again later.</string>
     <string name="sd_unmount_inform_text">SD card will be unmounted.</string>
-    <string name="sd_ejecting_title">Unmounting SD card</string>
-    <string name="sd_ejecting_summary">SD card unmount in progress</string>
+    <string name="sd_sd_ejecting_title">Unmounting SD card</string>
+    <string name="sd_sd_ejecting_summary">SD card unmount in progress</string>
     <string name="sd_media_format_title">Erase SD card</string>
     <string name="sd_media_format_desc">Erase the SD card? You will lose <b>all</b> data on the card!</string>
     <string name="sd_media_format_button_text">Erase SD card</string>
@@ -1347,13 +1356,13 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="data_usage_tab_slot">SIM </string>
 
     <!-- Multi Sim Settings screen, Select Sub label -->
-    <string name="sel_sub_title">Configure subscriptions</string>
+    <string name="sel_sub_title">Configure SIM cards</string>
     <!-- Multi Sim Settings screen, Select Sub Summary label -->
-    <string name="sel_sub_summary">Select your subscription</string>
+    <string name="sel_sub_summary">Select your SIM cards</string>
     <!-- String displayed when no SIM info is present and Multi SIM settings is accessed-->
     <string name="no_sim_info">SIM card info not available.\nMenu cannot be accessed</string>
     <!-- Subscription settings title -->
-    <string name="subs_settings">Subscription status</string>
+    <string name="subs_settings">SIM card status</string>
 
     <!-- Multi Sim Settings screen, Set DDS progress dialog message -->
     <string name="set_data_subscription_progress">Setting data subscription\u2026</string>
@@ -1371,11 +1380,10 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="set_priority_sub_error">Error while setting priority subscription. Subscription not active.</string>
 
     <!--Prompt, used only for voice-->
-    <string name="prompt">Prompt</string>
-    <string name="prompt_user">Prompt user</string>
+    <string name="prompt">Always ask</string>
 
     <!-- About phone settings screen, setting option dialog title to show regulatory information [CHAR LIMIT=25] -->
-    <string name="regulatory_information_dialog_title">@string/regulatory_information</string>
+    <string name="regulatory_information_dialog_title" translatable="false">@string/regulatory_information</string>
 
     <!-- SAR information -->
     <string name="maximum_head_level">Head: %1$s W/kg</string>
@@ -1407,4 +1415,29 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="wifi_ap_clients_title">Connected devices</string>
     <string name="wifi_ap_client_ap_disabled">Hotspot is disabled</string>
     <string name="wifi_ap_client_none_connected">No devices connected</string>
+
+    <!-- Profiles -->
+    <string name="profile_menu_delete_title">Delete</string>
+    <string name="profile_menu_triggers_title">Modify triggers</string>
+
+    <string name="profile_action_none">No action</string>
+    <string name="profile_action_disabled">Disable</string>
+    <string name="profile_action_enable">Enable</string>
+
+    <string name="profile_tabs_wifi">Wi\u2011Fi</string>
+    <string name="profile_tabs_bluetooth">Bluetooth</string>
+    <string name="profile_tabs_nfc">NFC</string>
+
+    <string name="profile_setup_setup_triggers_title">Step 1: Add triggers</string>
+    <string name="profile_setup_setup_triggers_title_config">Modify triggers: <xliff:g id="profile_name">%1$s</xliff:g></string>
+
+    <string name="profile_setup_actions_title">Step 2: Setup actions</string>
+    <string name="profile_setup_actions_title_config">Reconfigure actions</string>
+
+    <string name="no_bluetooth_triggers">No Bluetooth triggers available</string>
+    <string name="no_wifi_triggers">No Wi\u2011Fi triggers available</string>
+
+    <string name="profile_setup_setup_triggers_description">Please select triggers which will activate this profile</string>
+    <string name="profile_setup_actions_description">Now configure what happens when the profile is activated</string>
+
 </resources>
