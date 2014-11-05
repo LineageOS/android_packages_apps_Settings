@@ -81,8 +81,6 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
     private static final String TUNE_AWAY = "tune_away";
     private static final String PRIORITY_SUB = "priority_subscription";
 
-    private static final int DIALOG_SET_DATA_SUBSCRIPTION_IN_PROGRESS = 100;
-
     static final int EVENT_SET_DATA_SUBSCRIPTION_DONE = 1;
     static final int EVENT_SUBSCRIPTION_ACTIVATED = 2;
     static final int EVENT_SUBSCRIPTION_DEACTIVATED = 3;
@@ -373,6 +371,11 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
         }
     }
 
+    private void setDataSummaryUpdating() {
+        mData.setEnabled(false);
+        mData.setSummary(getResources().getString(R.string.set_data_subscription_progress));
+    }
+
     private void updateDataSummary() {
         int dataSub = MSimPhoneFactory.getDataSubscription();
 
@@ -380,6 +383,9 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
         mData.setValue(Integer.toString(dataSub));
         if (!mIsAirplaneModeOn) {
             mData.setSummary(summaries[dataSub]);
+        }
+        if (mIsForeground) {
+            mData.setEnabled(true);
         }
     }
 
@@ -445,7 +451,7 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
             int dataSub = Integer.parseInt((String) objValue);
             Log.d(TAG, "setDataSubscription " + dataSub);
             if (mIsForeground) {
-                showDialog(DIALOG_SET_DATA_SUBSCRIPTION_IN_PROGRESS);
+                setDataSummaryUpdating();
             }
             SubscriptionManager mSubscriptionManager = SubscriptionManager.getInstance();
             Message setDdsMsg = Message.obtain(mHandler, EVENT_SET_DATA_SUBSCRIPTION_DONE, null);
@@ -496,30 +502,6 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
         }
 
         return true;
-    }
-
-
-    @Override
-    protected Dialog onCreateDialog(int id) {
-        if (id == DIALOG_SET_DATA_SUBSCRIPTION_IN_PROGRESS) {
-            ProgressDialog dialog = new ProgressDialog(this);
-
-            dialog.setMessage(getResources().getString(R.string.set_data_subscription_progress));
-            dialog.setCancelable(false);
-            dialog.setIndeterminate(true);
-
-            return dialog;
-        }
-        return null;
-    }
-
-    @Override
-    protected void onPrepareDialog(int id, Dialog dialog) {
-        if (id == DIALOG_SET_DATA_SUBSCRIPTION_IN_PROGRESS) {
-            // when the dialogs come up, we'll need to indicate that
-            // we're in a busy state to disallow further input.
-            getPreferenceScreen().setEnabled(false);
-        }
     }
 
     // This is a method implemented for DialogInterface.OnDismissListener
@@ -584,10 +566,6 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
             switch(msg.what) {
                 case EVENT_SET_DATA_SUBSCRIPTION_DONE:
                     Log.d(TAG, "EVENT_SET_DATA_SUBSCRIPTION_DONE");
-                    if (mIsForeground) {
-                        dismissDialog(DIALOG_SET_DATA_SUBSCRIPTION_IN_PROGRESS);
-                    }
-                    getPreferenceScreen().setEnabled(true);
                     updateDataSummary();
 
                     ar = (AsyncResult) msg.obj;
