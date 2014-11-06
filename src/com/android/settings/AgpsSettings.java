@@ -312,19 +312,16 @@ public class AgpsSettings extends PreferenceActivity
         bundle.putString(STRING_SUPL_PORT, checkNotSet(mPort.getText()));
         bundle.putString(STRING_PROVIDER_ID, mAssistedType);
         bundle.putString(STRING_ACCESS_NETWORK, mNetworkType);
-        SetValue(bundle);
+
         if ( mResetType.compareTo(AGPS_START_MODE_HOT) == 0 ) {
-            bundle.putString(STRING_AGPS_RESET_TYPE, "2");
+            bundle.putString(STRING_AGPS_RESET_TYPE, AGPS_START_MODE_HOT);
         } else if ( mResetType.compareTo(AGPS_START_MODE_WARM) == 0 ) {
-            bundle.putString(STRING_AGPS_RESET_TYPE, "1");
+            bundle.putString(STRING_AGPS_RESET_TYPE, AGPS_START_MODE_WARM);
         } else {
-            bundle.putString(STRING_AGPS_RESET_TYPE, "0");
+            bundle.putString(STRING_AGPS_RESET_TYPE, AGPS_START_MODE_COLD);
         }
-        LocationManager objLocManager = (LocationManager)
-                                        getSystemService(Context.LOCATION_SERVICE);
-        boolean bRet = objLocManager.sendExtraCommand(LocationManager.GPS_PROVIDER,
-                "agps_parms_changed", bundle);
-        Log.d(TAG, "sendExtraCommand ret=" + bRet);
+
+        SetValue(bundle);
     }
 
     private void restoreAgpsParam() {
