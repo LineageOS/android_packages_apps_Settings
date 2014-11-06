@@ -511,7 +511,8 @@ public class MSimStatus extends PreferenceActivity {
     };
 
     private PhoneStateListener getPhoneStateListener(final int subscription) {
-        PhoneStateListener phoneStateListener = new PhoneStateListener(subscription) {
+        long subId = SubscriptionManager.getSubId(subscription)[0];
+        PhoneStateListener phoneStateListener = new PhoneStateListener(subId) {
             @Override
             public void onSignalStrengthsChanged(SignalStrength signalStrength) {
                 mSignalStrength[subscription] = signalStrength;
