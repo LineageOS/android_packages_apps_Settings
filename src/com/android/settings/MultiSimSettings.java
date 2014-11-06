@@ -194,7 +194,7 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
     private int updateSimNameEntries()  {
         int i = 0;
         for (i = 0; i < MAX_SUBSCRIPTIONS; i++) {
-            String label = getFormattedSimName(this, i);
+            String label = MSimTelephonyManager.getFormattedSimName(this, i);
             entries[i] = summaries[i] = label;
             entriesPrompt[i] = summariesPrompt[i] = label;
             entryValues[i] = Integer.toString(i);
@@ -698,23 +698,5 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
     private boolean isAirplaneModeOn() {
         return Settings.Global.getInt(getApplicationContext().getContentResolver(),
                 Settings.Global.AIRPLANE_MODE_ON, 0) != 0;
-    }
-
-    public static String getFormattedSimName(Context context, int subscription) {
-        String label = Settings.Global.getSimNameForSubscription(context, subscription, null);
-        if (TextUtils.isEmpty(label)) {
-            MSimTelephonyManager tm = MSimTelephonyManager.getDefault();
-            String operatorName = tm.getSimOperatorName(subscription);
-            if (tm.getSimState(subscription) == SIM_STATE_ABSENT
-                    || tm.getSimState(subscription) != SIM_STATE_READY
-                    || TextUtils.isEmpty(operatorName)) {
-                label = context.getString(R.string.multi_sim_entry_format_no_carrier, subscription + 1);
-            } else {
-                label = context.getString(R.string.multi_sim_entry_format, operatorName, subscription + 1);
-            }
-        } else {
-            label = context.getString(R.string.multi_sim_entry_format, label, subscription + 1);
-        }
-        return label;
     }
 }

@@ -2562,7 +2562,7 @@ public class DataUsageSummary extends Fragment {
         if (i <= 0) {
             return "";
         } else {
-            return MultiSimSettings.getFormattedSimName(getActivity(), i - 1);
+            return MSimTelephonyManager.getFormattedSimName(getActivity(), i - 1);
         }
     }
 

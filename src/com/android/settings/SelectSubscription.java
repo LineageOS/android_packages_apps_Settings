@@ -77,17 +77,7 @@ public class SelectSubscription extends  TabActivity {
         int numPhones = tm.getPhoneCount();
 
         for (int i = 0; i < numPhones; i++) {
-            String label = android.provider.Settings.Global.getSimNameForSubscription(this, i, null);
-            if (TextUtils.isEmpty(label)) {
-                String operatorName = tm.getSimOperatorName(i);
-                if (tm.getSimState(i) == SIM_STATE_ABSENT || TextUtils.isEmpty(operatorName)) {
-                    label = getString(R.string.multi_sim_entry_format_no_carrier, i + 1);
-                } else {
-                    label = getString(R.string.multi_sim_entry_format, operatorName, i + 1);
-                }
-            } else {
-                label = getString(R.string.multi_sim_entry_format, label, i + 1);
-            }
+            String label = MSimTelephonyManager.getFormattedSimName(this, i);
             subscriptionPref = tabHost.newTabSpec(label);
             subscriptionPref.setIndicator(label);
             intent = new Intent().setClassName(pkg, targetClass)
