@@ -72,6 +72,8 @@ public class ApnSettings extends SettingsPreferenceFragment implements
 
     public static final String APN_ID = "apn_id";
 
+    private static final String APN_TYPE_DM = "dm";
+
     private static final int ID_INDEX = 0;
     private static final int NAME_INDEX = 1;
     private static final int APN_INDEX = 2;
@@ -216,6 +218,19 @@ public class ApnSettings extends SettingsPreferenceFragment implements
     private void fillList() {
         boolean isSelectedKeyMatch = false;
         String where = getOperatorNumericSelection();
+
+        // Filer fota and dm for specail carrier
+        if (getResources().getBoolean(R.bool.config_hide_dm_enabled)) {
+            String operatorMccMnc = TelephonyManager.getDefault().getIccOperatorNumeric(mSubId);
+            for (String plmn : getResources().getStringArray(R.array.hidedm_plmn_list)) {
+                if (plmn.equals(operatorMccMnc)) {
+                    where += " and type <>\"" + PhoneConstants.APN_TYPE_FOTA + "\"";
+                    where += " and type <>\"" + APN_TYPE_DM + "\"";
+                    break;
+                }
+            }
+        }
+
         Cursor cursor = getContentResolver().query(getUri(Telephony.Carriers.CONTENT_URI),
                 new String[] {"_id", "name", "apn", "type"}, where, null,
                 Telephony.Carriers.DEFAULT_SORT_ORDER);
@@ -259,6 +274,7 @@ public class ApnSettings extends SettingsPreferenceFragment implements
             //if find no selectedKey, set the first one as selected key
             if (!isSelectedKeyMatch && apnList.getPreferenceCount() > 0) {
                 ApnPreference pref = (ApnPreference) apnList.getPreference(0);
+                pref.setChecked();
                 setSelectedApnKey(pref.getKey());
                 Log.d(TAG, "find no select key = " + mSelectedKey);
                 Log.d(TAG, "set key to  " +pref.getKey());
