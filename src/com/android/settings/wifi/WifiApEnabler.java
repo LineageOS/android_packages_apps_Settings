@@ -17,10 +17,13 @@
 package com.android.settings.wifi;
 
 import com.android.settings.R;
+import com.android.settings.wifi.HotsoptService;
 import com.android.settings.WirelessSettings;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
@@ -43,7 +46,6 @@ public class WifiApEnabler {
     private final Context mContext;
     private final SwitchPreference mSwitch;
     private final CharSequence mOriginalSummary;
-
     private WifiManager mWifiManager;
     private final IntentFilter mIntentFilter;
 
@@ -197,6 +199,7 @@ public class WifiApEnabler {
     }
 
     private void handleWifiApStateChanged(int state) {
+        String hotsoptServiceClassName = HotsoptService.class.getName();
         switch (state) {
             case WifiManager.WIFI_AP_STATE_ENABLING:
                 mSwitch.setSummary(R.string.wifi_tether_starting);
@@ -207,6 +210,12 @@ public class WifiApEnabler {
                  * Summary on enable is handled by tether
                  * broadcast notice
                  */
+                if (isWifiHotsoptEnabled() &&
+                        (!isServiceRunning(mContext, hotsoptServiceClassName))) {
+                    Intent intent = new Intent().setClassName(mContext,
+                            hotsoptServiceClassName);
+                    mContext.startService(intent);
+                }
                 mSwitch.setChecked(true);
                 /* Doesnt need the airplane check */
                 mSwitch.setEnabled(true);
@@ -216,6 +225,12 @@ public class WifiApEnabler {
                 mSwitch.setEnabled(false);
                 break;
             case WifiManager.WIFI_AP_STATE_DISABLED:
+                if (isWifiHotsoptEnabled() &&
+                        isServiceRunning(mContext, hotsoptServiceClassName)) {
+                    Intent intent = new Intent().setClassName(mContext,
+                            hotsoptServiceClassName);
+                    mContext.stopService(intent);
+                }
                 mSwitch.setChecked(false);
                 mSwitch.setSummary(mOriginalSummary);
                 if (mWaitForWifiStateChange == false) {
@@ -238,5 +253,33 @@ public class WifiApEnabler {
                 break;
             default:
         }
+    }
+
+    private boolean isWifiHotsoptEnabled() {
+        boolean isWifiHotspotEnable = false;
+        if (mContext != null) {
+            isWifiHotspotEnable = mContext.getResources().getBoolean(
+                    R.bool.def_wifi_hotspot_enable);
+        }
+        return isWifiHotspotEnable;
+    }
+
+    private boolean isServiceRunning(Context context, String className) {
+        boolean isRunning = false;
+        if (context != null && (!TextUtils.isEmpty(className))) {
+            ActivityManager activityManager = (ActivityManager)
+                    context.getSystemService(Context.ACTIVITY_SERVICE);
+            List<ActivityManager.RunningServiceInfo> serviceList = activityManager
+                    .getRunningServices(100);
+            if (serviceList != null) {
+                for (int i = 0; i < serviceList.size(); i++) {
+                    if (serviceList.get(i).service.getClassName().equals(className)) {
+                        isRunning = true;
+                        break;
+                    }
+                }
+            }
+        }
+        return isRunning;
     }
 }
