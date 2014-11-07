@@ -119,7 +119,8 @@ public class SimConfiguration extends PreferenceActivity implements TextWatcher 
 
             SubInfoRecord mSubInfoRecord = MultiSimSettingTab.findRecordBySlotId(
                     preference.getContext(), mSubscription);
-            SubscriptionManager.setDisplayName(multiSimName, mSubInfoRecord.subId);
+            SubscriptionManager.setDisplayName(multiSimName, mSubInfoRecord.subId,
+                    SubscriptionManager.NAME_SOURCE_USER_INPUT);
 
             mNamePreference.setSummary(multiSimName);
             Intent intent = new Intent(MultiSimSettingsConstants.SUBNAME_CHANGED);
