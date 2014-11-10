@@ -94,8 +94,9 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
         Profile.LockMode.DEFAULT, Profile.LockMode.INSECURE, Profile.LockMode.DISABLE
     };
     private static final int[] EXPANDED_DESKTOP_MAPPING = new int[] {
-        Profile.ExpandedDesktopMode.DEFAULT, Profile.ExpandedDesktopMode.DISABLE,
-        Profile.ExpandedDesktopMode.ENABLE
+        Profile.ExpandedDesktopMode.DEFAULT,
+        Profile.ExpandedDesktopMode.ENABLE,
+        Profile.ExpandedDesktopMode.DISABLE
     };
 
     public static SetupActionsFragment newInstance(Profile profile, boolean newProfile) {
