@@ -16,7 +16,11 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="wifi_setting_countrycode_title">Код региона Wi-Fi</string>
+  <string name="wifi_setting_countrycode_summary">Укажите код региона Wi-Fi</string>
   <string name="wifi_setting_countrycode_error">При настройке кода региона Wi-Fi возникла неполадка.</string>
+  <string name="wifi_setting_priority_title">Приоритет сетей</string>
+  <string name="wifi_setting_priority_summary">Настройка приоритета подключения к сетям Wi-Fi</string>
   <string name="wifi_ssid_input_limit">SSID превышает макс. длину</string>
   <string name="p2p_device_name_input_limit">Имя P2P превышает макс. длину</string>
   <string name="change_crypt_password_title">Смена пароля</string>
@@ -43,6 +47,7 @@
   <string name="profile_trigger_configure">Настроить переключение</string>
   <string name="profile_triggers">Переключение</string>
   <string name="profile_trigger_filter_all">Все способы</string>
+  <string name="profile_trigger_filter_wifi">Переключение по Wi-Fi</string>
   <string name="profile_trigger_filter_bluetooth">Переключение по Bluetooth</string>
   <string name="profile_write_nfc_tag">Привязать к NFC-метке</string>
   <string name="profile_write_touch_tag">Приложите метку для её записи</string>
@@ -108,8 +113,12 @@
   <string name="profile_lockmode_insecure_summary">Не запрашивать пароль или PIN-код</string>
   <string name="profile_lockmode_disabled_summary">Отключить экран блокировки</string>
   <string name="profile_airplanemode_title">Режим полёта</string>
+  <string name="toggleWifi">Wi-Fi</string>
+  <string name="toggleWifiAp">Точка доступа Wi-Fi</string>
   <string name="toggleBluetooth">Bluetooth</string>
   <string name="toggleGPS">GPS</string>
+  <string name="toggleData">Мобильный интернет</string>
+  <string name="toggleSync">Автосинхронизация</string>
   <string name="toggle2g3g">Режим сети</string>
   <string name="toggleWimax">WiMAX</string>
   <string name="toggleNfc">NFC</string>
@@ -206,6 +215,7 @@
   <string name="lockscreen_maximize_widgets_title">Развёрнутые виджеты</string>
   <string name="lockscreen_maximize_widgets_summary">Показывать виджеты экрана блокировки развёрнутыми, а кольцо разблокировки экрана — в свёрнутом виде</string>
   <string name="lockscreen_enable_camera_title">Виджет камеры</string>
+  <string name="lockscreen_enable_application_widget_title">Виджет Appcast</string>
   <string name="safe_headset_volume_title">Предупреждать при высокой громкости наушников</string>
   <string name="safe_headset_volume_restore_title">Снижать громкость наушников при их подключении</string>
   <string name="cyanogenmod_waiver_title">Отказ от ответственности</string>
@@ -227,6 +237,7 @@
   <string name="heads_up_blacklist_title">Чёрный список</string>
   <string name="heads_up_disabled_notice">Для отображения новых уведомлений в виде всплывающих окон вверху экрана включите «Всплывающие уведомления».</string>
   <string name="title_tile_airplane">Режим полёта</string>
+  <string name="title_tile_battery">Батарея</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Подсветка</string>
   <string name="title_tile_camera">Камера</string>
@@ -244,6 +255,8 @@
   <string name="title_tile_settings">Настройки</string>
   <string name="title_tile_sound">Звук</string>
   <string name="title_tile_sync">Синхронизация</string>
+  <string name="title_tile_wifiap">Точка доступа Wi-Fi</string>
+  <string name="title_tile_wifi">Wi-Fi</string>
   <string name="title_tile_user">Пользователи</string>
   <string name="title_tile_networkmode">Режим сети</string>
   <string name="title_tile_nfc">NFC</string>
@@ -254,10 +267,13 @@
   <string name="title_tile_network_adb">Отладка по сети</string>
   <string name="title_dynamic_tiles">Динамические плитки</string>
   <string name="dynamic_tiles_note_title">Примечание</string>
+  <string name="dynamic_tiles_note_summary">Динамические плитки видны, только если они вызваны системным событием</string>
   <string name="title_dynamic_alarm">Будильник</string>
   <string name="title_dynamic_bugreport">Отчёт об ошибке</string>
   <string name="title_dynamic_dock_battery">Батарея док-станции</string>
   <string name="title_dynamic_equalizer">Эквалайзер</string>
+  <string name="title_dynamic_ime">Выбор способа ввода</string>
+  <string name="title_dynamic_usbtether">USB-модем</string>
   <string name="title_dynamic_wifi">Дублирование экрана</string>
   <string name="title_general">Общие</string>
   <string name="title_quick_pulldown">Быстрый доступ</string>
@@ -408,6 +424,7 @@
   <string name="io_sched_title">Планировщик I/O</string>
   <string name="perf_profile_title">Профиль</string>
   <string name="memory_management_title">Управление памятью</string>
+  <string name="pref_ksm_title">Объединять страницы памяти ядра</string>
   <string name="pref_ksm_summary">Позволяет снизить физические требования к памяти и увеличить производительность (требуется перезагрузка)</string>
   <string name="pref_purgeable_assets_title">Разрешить сброс активов</string>
   <string name="pref_purgeable_assets_summary">Позволяет освобождать больше памяти путём очистки активов графических элементов (требуется перезагрузка)</string>
@@ -482,6 +499,7 @@
   <string name="adb_notify">Уведомление об отладке</string>
   <string name="adb_notify_summary">Показывать уведомление при включённом режиме отладки</string>
   <string name="adb_over_network">Отладка по сети</string>
+  <string name="adb_over_network_summary">Включить режим отладки через сетевые интерфейсы (Wi-Fi и USB-сети). Эта установка сбрасывается при перезагрузке</string>
   <string name="adb_over_network_warning">ВНИМАНИЕ: когда включена отладка по сети, устройство открыто для неконтролируемого доступа из всех подключённых сетей!\n\nИспользуйте эту функцию только тогда, когда вы подключены к доверенным сетям.\n\nВы действительно хотите включить эту функцию?</string>
   <string name="device_hostname">Сетевое имя устройства</string>
   <string name="notification_drawer_title">Панель уведомлений</string>
@@ -584,6 +602,7 @@
   <string name="navigation_bar_menu_locked">Заблокировано</string>
   <string name="navigation_bar_arrow_keys_title">Перемещение курсора</string>
   <string name="navigation_bar_arrow_keys_summary">Отображать кнопки перемещения курсора влево или вправо при вводе</string>
+  <string name="navigation_bar_recents_title">Долгое нажатие кнопки «Недавние»</string>
   <string name="navigation_ring_title">Ярлыки быстрого запуска</string>
   <string name="navring_target_reset_message">Удалить пользовательские настройки ярлыков быстрого запуска?</string>
   <string name="navring_target_reset">Восстановлены ярлыки быстрого запуска по умолчанию</string>
@@ -684,6 +703,7 @@
   <string name="status_bar_notif_count_title">Счётчик уведомлений</string>
   <string name="status_bar_notif_count_summary">Показывать количество новых уведомлений в строке состояния</string>
   <string name="development_shortcut_title">Дополнительные пункты меню</string>
+  <string name="development_shortcut_summary">Показывать опции управления пакетом в уведомлениях и списке недавних приложений</string>
   <string name="usb_mass_storage_title">USB-накопитель</string>
   <string name="usb_mass_storage_summary">Позволяет передавать файлы путём использования SD-карты устройства в качестве съёмного диска</string>
   <string name="storage_rescan_media">Пересканировать память</string>
@@ -694,6 +714,7 @@
   <string name="logger_summary">Управление настройками журнала системных ошибок</string>
   <string name="custom_runtime_warning_title">Внимание</string>
   <string name="custom_runtime_warning_message">ART не поддерживается CyanogenMod. Эта опция является экспериментальной и может повлечь нестабильную работу, ошибки, потерю данных или даже препятствовать загрузке устройства. Посетите страницу «&lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Введение в ART&lt;/a&gt;» (на английском языке) для получения подробных сведений.&lt;br/&gt;&lt;br/&gt;Мы просим не присылать баг-репорты, если вы выбрали ART в качестве среды выполнения системы.&lt;br/&gt;&lt;br/&gt;Вы действительно хотите перезагрузить устройство и переключить среду выполнения с «<xliff:g id="old" example="libdvm.so">%1$s</xliff:g>» на «<xliff:g id="new" example="libart.so">%2$s</xliff:g>»?</string>
+  <string name="gps_download_data_wifi_only">Загружать вспомогательные данные GPS только через Wi-Fi</string>
   <string name="battery_info_status_charging_dock_ac">(док-станция, от сети)</string>
   <string name="battery_info_status_charging_dock_usb">(док-станция, по USB)</string>
   <string name="menu_stats_reset">Сброс</string>
@@ -735,6 +756,7 @@
   <string name="app_ops_summaries_modify_call_log">изменение списка вызовов</string>
   <string name="app_ops_summaries_read_calendar">чтение данных календаря</string>
   <string name="app_ops_summaries_modify_calendar">изменение календаря</string>
+  <string name="app_ops_summaries_wifi_scan">поиск Wi-Fi</string>
   <string name="app_ops_summaries_notification">уведомление</string>
   <string name="app_ops_summaries_cell_scan">поиск мобильных сетей</string>
   <string name="app_ops_summaries_call_phone">телефонный звонок</string>
@@ -763,9 +785,12 @@
   <string name="app_ops_summaries_media_volume">громкость мультимедиа</string>
   <string name="app_ops_summaries_alarm_volume">громкость будильника</string>
   <string name="app_ops_summaries_notification_volume">громкость уведомлений</string>
+  <string name="app_ops_summaries_bluetooth_volume">громкость Bluetooth-устройств</string>
   <string name="app_ops_summaries_keep_awake">активный режим</string>
   <string name="app_ops_summaries_monitor_location">отслеживание местоположения</string>
   <string name="app_ops_summaries_monitor_high_power_location">отслеживание высокоточного местоположения</string>
+  <string name="app_ops_summaries_wifi_change">изм. состояния Wi-Fi</string>
+  <string name="app_ops_summaries_bluetooth_change">изм. состояния Bluetooth</string>
   <string name="app_ops_summaries_data_change">изм. состояния моб. интернета</string>
   <string name="app_ops_summaries_alarm_wakeup">вывод из режима сна</string>
   <string name="app_ops_summaries_send_mms">отправка MMS</string>
@@ -805,6 +830,7 @@
   <string name="app_ops_labels_notification_volume">Общая громкость</string>
   <string name="app_ops_labels_bluetooth_volume">Громкость при разговоре</string>
   <string name="app_ops_labels_keep_awake">Активный режим</string>
+  <string name="app_ops_labels_wifi_change">Изм. состояния Wi-Fi</string>
   <string name="app_ops_labels_bluetooth_change">Изм. состояния Bluetooth</string>
   <string name="app_ops_labels_data_change">Изм. состояния моб. интернета</string>
   <string name="app_ops_labels_alarm_wakeup">Вывод из режима сна</string>
@@ -846,6 +872,7 @@
   <string name="voice_wakeup_activity_title">Действие для запуска</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
   <string name="sub_no_sim">Нет SIM-карты</string>
+  <string name="multi_sim_settings_title">SIM-карты</string>
   <string name="multi_sim_settings_group_summary">Настройка SIM-карт по умолчанию</string>
   <string name="voice_title">Голосовые вызовы</string>
   <string name="data_title">Передача данных</string>
@@ -859,6 +886,7 @@
   <string name="menu_hidden_apps_reset_lock">Удалить граф. ключ</string>
   <string name="protected_apps">Заблокир. приложения</string>
   <string name="saving_protected_components">Сохранение состояния приложений\u2026</string>
+  <string name="launch_app">Запустить приложение</string>
   <string name="pa_login_username_hint">Имя пользователя (эл. почта)</string>
   <string name="pa_login_password_hint">Пароль</string>
   <string name="pa_login_submit_button">Войти</string>
@@ -879,13 +907,35 @@
   <string name="block_notifications_title">Фильтр уведомлений</string>
   <string name="block_notifications_summary">Настройка игнорируемых уведомлений и фильтров</string>
   <string name="no_filters_title">Фильтр не настроен. Чтобы запретить показ какого-либо уведомления, нажмите и удерживайте его, а затем выберите «Скрыть подобные сообщения».</string>
+  <string name="usb_sd_eject">Извлечь USB-накопитель</string>
+  <string name="usb_sd_eject_summary">Отключить USB-накопитель для его безопасного извлечения</string>
+  <string name="usb_sd_insert_summary">Подключить вставленный накопитель</string>
+  <string name="usb_sd_mount">Подключить USB-накопитель</string>
+  <string name="usb_sd_format">Очистить USB-накопитель</string>
+  <string name="usb_sd_format_summary">Удаление с USB-накопителя всех данных, включая музыку и фотографии</string>
+  <string name="usb_dlg_confirm_unmount_title">Отключить USB-накопитель?</string>
+  <string name="usb_dlg_confirm_unmount_text">Если отключить USB-накопитель, некоторые приложения могут перестать работать. Чтобы снова получить к ним доступ, потребуется подключить накопитель.</string>
+  <string name="usb_dlg_error_unmount_text">Не удалось отключить USB-накопитель. Повторите попытку позже.</string>
   <string name="usb_unmount_inform_text">USB-накопитель будет отключён.</string>
+  <string name="usb_sd_ejecting_title">Отключение USB-накопителя</string>
+  <string name="usb_sd_ejecting_summary">Выполняется отключение накопителя</string>
   <string name="usb_media_format_title">Очистить USB-накопитель</string>
   <string name="usb_media_format_desc">Очистить USB-накопитель? Вы потеряете <b>все</b> сохранённые на нём данные!</string>
   <string name="usb_media_format_button_text">Очистить USB-накопитель</string>
   <string name="usb_media_format_final_desc">Очистить USB-накопитель, удалив на нём все файлы без возможности восстановления? Это действие нельзя будет отменить!</string>
   <string name="usb_media_format_gesture_explanation">Чтобы подтвердить очистку USB-накопителя, начертите графический ключ.</string>
+  <string name="sd_sd_eject">Извлечь SD-карту</string>
+  <string name="sd_sd_eject_summary">Отключение SD-карты для её безопасного извлечения из устройства</string>
+  <string name="sd_sd_insert_summary">Подключить вставленную карту</string>
+  <string name="sd_sd_mount">Подключить SD-карту</string>
+  <string name="sd_sd_format">Очистить SD-карту</string>
+  <string name="sd_sd_format_summary">Удаление с SD-карты всех данных, включая музыку и фотографии</string>
+  <string name="sd_dlg_confirm_unmount_title">Отключить SD-карту?</string>
+  <string name="sd_dlg_confirm_unmount_text">Если отключить SD-карту, некоторые приложения могут перестать работать. Чтобы снова получить к ним доступ, потребуется подключить карту.</string>
+  <string name="sd_dlg_error_unmount_text">Не удалось отключить SD-карту. Повторите попытку позже.</string>
   <string name="sd_unmount_inform_text">SD-карта будет отключена.</string>
+  <string name="sd_sd_ejecting_title">Отключение SD-карты</string>
+  <string name="sd_sd_ejecting_summary">Выполняется отключение карты</string>
   <string name="sd_media_format_title">Очистить SD-карту</string>
   <string name="sd_media_format_desc">Очистить SD-карту? Вы потеряете <b>все</b> сохранённые на ней данные!</string>
   <string name="sd_media_format_button_text">Очистить SD-карту</string>
@@ -903,9 +953,12 @@
   <string name="custom_screencolor">Пользовательская цветопередача</string>
   <string name="device_additional_status">Дополнительная информация</string>
   <string name="enable_quickboot_title">Включить режим QuickBoot</string>
-  <string name="enable_quickboot_summary">Переводить устройство в режим QuickBoot вместо полного выключения.</string>
+  <string name="enable_quickboot_summary">Переводить устройство в режим гибернации вместо полного выключения</string>
   <string name="data_usage_tab_slot">SIM  </string>
+  <string name="sel_sub_title">Настройка операторов</string>
+  <string name="sel_sub_summary">Изменение используемой SIM-карты или оператора</string>
   <string name="no_sim_info">Не удалось получить доступ к SIM-карте.\nИспользование функций невозможно</string>
+  <string name="subs_settings">Состояние SIM-карты</string>
   <string name="set_data_subscription_progress">Сохранение настроек операторов\u2026</string>
   <string name="set_dds_success">Оператор мобильного интернета изменён</string>
   <string name="set_dds_failed">Не удалось сменить оператора мобильного интернета. Отключите передачу данных и попробуйте снова.</string>
@@ -913,8 +966,7 @@
   <string name="set_sms_error">Не удалось изменить оператора сообщений. SIM-карта неактивна.</string>
   <string name="set_voice_error">Не удалось изменить оператора звонков. SIM-карта неактивна.</string>
   <string name="set_priority_sub_error">Не удалось изменить приоритетного оператора. SIM-карта неактивна.</string>
-  <string name="prompt">Спрашивать</string>
-  <string name="prompt_user">Спрашивать каждый раз</string>
+  <string name="prompt">Всегда спрашивать</string>
   <string name="maximum_head_level">Голова: %1$s Вт/кг</string>
   <string name="maximum_body_level">Тело: %1$s Вт/кг</string>
   <string name="tune_away_title">TuneAway</string>
@@ -940,6 +992,7 @@
   <string name="profile_action_none">Нет действия</string>
   <string name="profile_action_disabled">Выключить</string>
   <string name="profile_action_enable">Включить</string>
+  <string name="profile_tabs_wifi">Wi-Fi</string>
   <string name="profile_tabs_bluetooth">Bluetooth</string>
   <string name="profile_tabs_nfc">NFC</string>
   <string name="profile_setup_setup_triggers_title">Шаг 1: добавьте условия переключения</string>
@@ -947,6 +1000,7 @@
   <string name="profile_setup_actions_title">Шаг 2: настройте требуемые действия</string>
   <string name="profile_setup_actions_title_config">Изменение действий</string>
   <string name="no_bluetooth_triggers">Нет Bluetooth-устройств, которые можно использовать для переключения</string>
+  <string name="no_wifi_triggers">Нет сетей Wi-Fi, которые можно использовать для переключения</string>
   <string name="profile_setup_setup_triggers_description">Укажите условия, при которых будет включаться данный профиль</string>
   <string name="profile_setup_actions_description">Теперь можно настроить, что должно происходить при активации профиля</string>
 </resources>

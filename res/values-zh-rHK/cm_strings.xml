@@ -16,13 +16,17 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="wifi_setting_countrycode_title">Wi\u2011Fi 區域代碼</string>
+  <string name="wifi_setting_countrycode_summary">指定 Wi\u2011Fi 區域代碼</string>
   <string name="wifi_setting_countrycode_error">設定區碼時遇到了問題。</string>
+  <string name="wifi_setting_priority_title">Wi\u2011Fi 優先級</string>
+  <string name="wifi_setting_priority_summary">指定 Wi\u2011Fi 網絡的優先級</string>
   <string name="wifi_ssid_input_limit">SSID 超過長度上限</string>
   <string name="p2p_device_name_input_limit">P2P 的名稱超過長度上限</string>
   <string name="change_crypt_password_title">更改密碼</string>
   <string name="change_crypt_password_summary">更改用於裝置加密的密碼</string>
   <string name="encryptionpassword_choose_your_password_header">設定加密密碼</string>
-  <string name="lock_screen_title">鎖定螢幕</string>
+  <string name="lock_screen_title">鎖定畫面</string>
   <string name="increasing_ring_title">漸強鈴聲</string>
   <string name="checkbox_increasing_ring">啟用</string>
   <string name="increasing_ring_min_volume_title">鈴聲起初音量</string>
@@ -43,6 +47,7 @@
   <string name="profile_trigger_configure">設定觸發器</string>
   <string name="profile_triggers">觸發器</string>
   <string name="profile_trigger_filter_all">所有觸發器</string>
+  <string name="profile_trigger_filter_wifi">Wi\u2011Fi 觸發器</string>
   <string name="profile_trigger_filter_bluetooth">藍牙觸發器</string>
   <string name="profile_write_nfc_tag">寫到 NFC 標籤</string>
   <string name="profile_write_touch_tag">輕觸標籤以寫入</string>
@@ -72,7 +77,7 @@
   <string name="settings_search_action_bar_button">搜尋</string>
   <string name="settings_search_autocompleteview_hint">搜尋設定</string>
   <string name="settings_search_loading_text">正在載入搜尋數據\ u2026</string>
-  <string name="profile_connectionoverrides_title">連線覆蓋</string>
+  <string name="profile_connectionoverrides_title">連綫覆寫</string>
   <string name="profile_volumeoverrides_title">音量覆蓋</string>
   <string name="connection_state_disabled">停用</string>
   <string name="connection_state_enabled">啟用</string>
@@ -83,8 +88,10 @@
   <string name="profile_appgroup_manage">管理應用程式群組</string>
   <string name="profile_settings">設定檔設定</string>
   <string name="profile_trigger_connect">連接上</string>
-  <string name="profile_trigger_disconnect">當中斷連接時</string>
+  <string name="profile_trigger_disconnect">中斷連綫時</string>
   <string name="profile_trigger_notrigger">無觸發</string>
+  <string name="profile_trigger_a2dp_connect">A2DP 已連綫</string>
+  <string name="profile_trigger_a2dp_disconnect">A2DP 已斷開連綫</string>
   <string name="sound_mode">通知模式</string>
   <string name="ringer_mode">鈴響模式</string>
   <string name="lights_mode">指示燈模式</string>
@@ -98,13 +105,13 @@
   <string name="profile_appgroup_name_title">名稱</string>
   <string name="profile_choose_app">選擇應用程式</string>
   <string name="profile_system_settings_title">系統設定</string>
-  <string name="profile_lockmode_title">鎖定螢幕模式</string>
+  <string name="profile_lockmode_title">鎖定畫面模式</string>
   <string name="profile_lockmode_default">預設</string>
   <string name="profile_lockmode_insecure">不安全</string>
   <string name="profile_lockmode_disabled">已停用</string>
   <string name="profile_lockmode_default_summary">使用系統預設值</string>
-  <string name="profile_lockmode_insecure_summary">使用不安全的鎖定螢幕</string>
-  <string name="profile_lockmode_disabled_summary">已停用鎖定螢幕</string>
+  <string name="profile_lockmode_insecure_summary">使用不安全的鎖定畫面</string>
+  <string name="profile_lockmode_disabled_summary">已停用鎖定畫面</string>
   <string name="profile_airplanemode_title">飛航模式</string>
   <string name="toggleBluetooth">藍牙</string>
   <string name="toggleGPS">GPS</string>
@@ -154,7 +161,7 @@
   <string name="screen_animation_off_title">關閉螢幕動畫</string>
   <string name="screen_animation_style_title">關閉螢幕動畫風格</string>
   <string name="screen_animation_style_disabled">已停用</string>
-  <string name="screen_animation_style_electronbeam">電子射線</string>
+  <string name="screen_animation_style_electronbeam">電子射綫</string>
   <string name="screen_animation_style_fade">淡出</string>
   <string name="edit_light_settings">編輯指示燈設定</string>
   <string name="pulse_speed_title">脈衝長度和速度</string>
@@ -182,6 +189,7 @@
   <string name="lockpattern_settings_enable_error_path_title">顯示圖案錯誤</string>
   <string name="lockpattern_settings_enable_dots_title">顯示圖案圓點</string>
   <string name="screen_security_category">螢幕安全性</string>
+  <string name="screen_security_summary">檢視或變更鎖定畫面的安全設定</string>
   <string name="unlock_menu_unlock_title">功能表解鎖</string>
   <string name="unlock_menu_unlock_summary">按下功能表按鈕解鎖裝置</string>
   <string name="unlock_home_unlock_title">首頁解鎖</string>
@@ -190,7 +198,7 @@
   <string name="unlock_camera_unlock_summary">按下相機鍵即可解鎖裝置</string>
   <string name="unlock_quick_unlock_control_title">快速解鎖</string>
   <string name="unlock_quick_unlock_control_summary">當正確的 PIN 碼 / 密碼被輸入時自動解鎖</string>
-  <string name="unlock_buttons_disabled_by_security">鎖定螢幕的安全性</string>
+  <string name="unlock_buttons_disabled_by_security">鎖定畫面是安全的</string>
   <string name="lockscreen_widgets_category_title">小工具</string>
   <string name="lockscreen_maximize_widgets_title">最大化小工具</string>
   <string name="lockscreen_maximize_widgets_summary">當螢幕打開時擴展小工具</string>
@@ -212,7 +220,7 @@
   <string name="title_tile_compass">指南針</string>
   <string name="title_tile_sleep">進入休眠</string>
   <string name="title_tile_torch">電筒</string>
-  <string name="title_tile_lockscreen">鎖定螢幕</string>
+  <string name="title_tile_lockscreen">鎖定畫面</string>
   <string name="title_tile_lte">LTE</string>
   <string name="title_tile_mobiledata">流動數據</string>
   <string name="title_tile_profile">設定檔</string>
@@ -258,7 +266,7 @@
   <string name="tiles_reset_message">將按鈕與佈局還原爲預設值？</string>
   <string name="auto_brightness_setup_title">自動調整亮度</string>
   <string name="auto_brightness_twilight_adjustment">調整到日出和日落</string>
-  <string name="light_sensor_current_value">目前光線感應器測得值：<xliff:g id="light_level">%d</xliff:g> lux</string>
+  <string name="light_sensor_current_value">目前光綫感應器測得值：<xliff:g id="light_level">%d</xliff:g> lux</string>
   <string name="auto_brightness_dialog_title">自動調整亮度級別</string>
   <string name="auto_brightness_level_format"><xliff:g id="level">%1$d</xliff:g> lux</string>
   <string name="auto_brightness_last_level_format"><xliff:g id="level">%1$d</xliff:g> -\n\u221e lux</string>
@@ -277,7 +285,7 @@
   <string name="auto_brightness_menu_split">分離</string>
   <string name="auto_brightness_menu_remove">移除</string>
   <string name="auto_brightness_preview">預覽</string>
-  <string name="auto_brightness_preview_dialog_title">亮度曲線預覽</string>
+  <string name="auto_brightness_preview_dialog_title">亮度曲綫預覽</string>
   <string name="auto_brightness_help_dialog_title">說明</string>
   <string name="auto_brightness_sensitivity_title">調整靈敏度</string>
   <string name="auto_brightness_sensitivity_verylow">非常低</string>
@@ -288,7 +296,7 @@
   <string name="display_rotation_title">旋轉</string>
   <string name="display_rotation_disabled">已停用</string>
   <string name="display_rotation_unit">度數</string>
-  <string name="display_lockscreen_rotation_title">旋轉鎖定螢幕</string>
+  <string name="display_lockscreen_rotation_title">旋轉鎖定畫面</string>
   <string name="display_rotation_category_title">旋轉模式</string>
   <string name="display_rotation_0_title">0 度</string>
   <string name="display_rotation_90_title">90 度</string>
@@ -442,7 +450,8 @@
   <string name="adb_notify">USB 偵錯通知</string>
   <string name="adb_notify_summary">當 USB 偵錯模式連接時顯示通知</string>
   <string name="adb_over_network">ADB 透過網絡</string>
-  <string name="adb_over_network_warning">警告：網絡 ADB 啟用時，您的裝置會對所有已連線的網絡 (包括 GSM 數據網絡) 開放接收指令！\n\n只有當您連線到信任的網絡時才使用此功能。\n\n您真的要啟用此功能？</string>
+  <string name="adb_over_network_summary">啟用透過網絡接口 (Wi-Fi、USB 網絡) 進行 TCP/IP 偵錯。該設定會於重新啟動後重設</string>
+  <string name="adb_over_network_warning">警告：網絡 ADB 啟用時，你的裝置會對所有已連綫的網絡（包括 GSM 數據網絡）開放接收指令！\n\n只有當你連綫至信任的網絡時才使用此功能。\n\n你真的要啟用此功能？</string>
   <string name="device_hostname">裝置主機名稱</string>
   <string name="notification_drawer_title">抽屜的通知</string>
   <string name="notification_drawer_collapse_on_dismiss_title">自動關閉行為</string>
@@ -479,10 +488,10 @@
   <string name="lockscreen_battery_status_alwaysoff">永遠關閉</string>
   <string name="lockscreen_target_info">拖曳解鎖環到目標以指定捷徑</string>
   <string name="lockscreen_target_title">鎖定畫面捷徑</string>
-  <string name="lockscreen_target_summary">檢視或更改自訂鎖定螢幕快捷鍵</string>
-  <string name="lockscreen_target_reset">鎖定螢幕捷徑已還原爲預設值</string>
+  <string name="lockscreen_target_summary">檢視或更改自訂鎖定畫面捷徑</string>
+  <string name="lockscreen_target_reset">鎖定畫面捷徑已還原為預設值</string>
   <string name="lockscreen_target_reset_title">重設</string>
-  <string name="lockscreen_target_reset_message">刪除所有使用者建立的鎖定螢幕捷徑，並還原爲預設值？</string>
+  <string name="lockscreen_target_reset_message">刪除所有使用者建立的鎖定畫面捷徑，並還原為預設值？</string>
   <string name="lockscreen_target_empty">空</string>
   <string name="lockscreen_target_edit_title">編輯捷徑與圖示</string>
   <string name="picker_activities">Activities</string>
@@ -524,7 +533,7 @@
   <string name="lockscreen_buttons_playpause">播放/暫停音樂</string>
   <string name="lockscreen_buttons_toggle_sound">切換音效模式</string>
   <string name="lockscreen_buttons_sleep">進入休眠</string>
-  <string name="lockscreen_enable_modlock_title">自訂鎖定螢幕</string>
+  <string name="lockscreen_enable_modlock_title">自訂鎖定畫面</string>
   <string name="navigation_bar_category">導覽列</string>
   <string name="navigation_bar_title">按鈕與配置</string>
   <string name="navigation_bar_left_title">左慣用手模式</string>
@@ -537,6 +546,7 @@
   <string name="navigation_bar_reset_toast">導覽列設定已還原爲預設</string>
   <string name="navigation_bar_menu_editable">可編輯</string>
   <string name="navigation_bar_menu_locked">已鎖定</string>
+  <string name="navigation_bar_arrow_keys_summary">當您在打字時，於導覽列上顯示可左、右移動游標的方向鍵按鈕</string>
   <string name="navigation_ring_title">快速啟動捷徑</string>
   <string name="navring_target_reset_message">刪除所有使用者建立的導覽列捷徑並還原爲預設？</string>
   <string name="navring_target_reset">導覽列捷徑已還原爲預設</string>
@@ -559,7 +569,7 @@
   <string name="expanded_desktop_disabled">已停用</string>
   <string name="expanded_desktop_status_bar">顯示狀態列</string>
   <string name="expanded_desktop_no_status_bar">隱藏狀態列</string>
-  <string name="expanded_desktop_system_bars_visibility">停用鎖定螢幕</string>
+  <string name="expanded_desktop_system_bars_visibility">停用鎖定畫面</string>
   <string name="expanded_desktop_system_bars_visibility_summary">在擴展桌面模式中在鎖定畫面顯示狀態列及導覽列</string>
   <string name="power_menu_profiles_title">設定檔切換器</string>
   <string name="power_menu_airplane_title">飛航模式</string>
@@ -641,7 +651,7 @@
   <string name="battery_info_status_charging_dock_ac">(DockAC)</string>
   <string name="battery_info_status_charging_dock_usb">(DockUSB)</string>
   <string name="menu_stats_reset">重設</string>
-  <string name="settings_cmlicense_activity_unreachable">您沒有數據連線，如要立即查看這項資訊，請使用任何已連上網際網絡的電腦前往 %s。</string>
+  <string name="settings_cmlicense_activity_unreachable">你沒有數據連綫，如要立即查看這項資訊，請使用任何已連上網際網絡的電腦前往 %s。</string>
   <string name="stylus_icon_enabled_title">使用觸控筆時顯示圖示</string>
   <string name="stylus_icon_enabled_summary">使用觸控筆漂浮或繪圖時顯示指標圖示</string>
   <string name="gestures_settings_title">觸控筆手勢</string>
@@ -787,7 +797,7 @@
   <string name="sub_no_sim">沒有 SIM 咭</string>
   <string name="multi_sim_settings_group_summary">預設 SIM 咭選擇</string>
   <string name="voice_title">語音通話</string>
-  <string name="data_title">數據通話</string>
+  <string name="data_title">數據連綫</string>
   <string name="sms_title">傳送短訊</string>
   <string name="priority_sub_title">優先訂閱</string>
   <string name="bluetooth_accept_all_files">接受所有檔案類型</string>
@@ -798,4 +808,11 @@
   <string name="block_notifications_title">過濾器通知</string>
   <string name="block_notifications_summary">管理被忽略的通知和過濾器</string>
   <string name="no_filters_title">沒有過濾器設定。若要過濾通知，長按它並選擇「忽略這樣的訊息」。</string>
+  <string name="bluetooth_sap_profile_summary_connected">已連綫至 SIM 咭存取伺服器</string>
+  <string name="bluetooth_dun_profile_summary_connected">已連綫至撥號網絡伺服器</string>
+  <string name="wifi_disabled_association_rejected">連綫被拒絕</string>
+  <string name="set_dds_failed">設定數據訂閱時出現錯誤。停止任何現有數據連綫，然後重試。</string>
+  <string name="prompt">一律詢問</string>
+  <string name="wifi_ap_clients_title">已連綫裝置</string>
+  <string name="wifi_ap_client_ap_disabled">無綫基地台已停用</string>
 </resources>

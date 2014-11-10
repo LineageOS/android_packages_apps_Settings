@@ -16,7 +16,11 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="wifi_setting_countrycode_title">Códigu de rexón Wi\u2011Fi</string>
+  <string name="wifi_setting_countrycode_summary">Especificar el códigu de rexón pa Wi\u2011Fi</string>
   <string name="wifi_setting_countrycode_error">Hebo un fallu al afitar el códigu de rexón</string>
+  <string name="wifi_setting_priority_title">Prioridá Wi\u2011Fi</string>
+  <string name="wifi_setting_priority_summary">Especificar la prioridá de les redes Wi\u2011Fi</string>
   <string name="wifi_ssid_input_limit">EL SSID perpasa la llonxitú máxima</string>
   <string name="p2p_device_name_input_limit">El nome del P2P perpasa la llonxitú máxima</string>
   <string name="change_crypt_password_title">Camudar la contraseña</string>
@@ -43,6 +47,7 @@
   <string name="profile_trigger_configure">Configurar eventu</string>
   <string name="profile_triggers">Eventos</string>
   <string name="profile_trigger_filter_all">Cualquier eventu</string>
+  <string name="profile_trigger_filter_wifi">Eventos Wi\u2011Fi</string>
   <string name="profile_trigger_filter_bluetooth">Eventos Bluetooth</string>
   <string name="profile_write_nfc_tag">Escribir a etiqueta NFC</string>
   <string name="profile_write_touch_tag">Tocar etiqueta pa escribir</string>
@@ -108,8 +113,12 @@
   <string name="profile_lockmode_insecure_summary">Usar bloquéu de pantalla non seguru</string>
   <string name="profile_lockmode_disabled_summary">Bloquéu de pantalla desactiváu</string>
   <string name="profile_airplanemode_title">Mou avión</string>
+  <string name="toggleWifi">Wi\u2011Fi</string>
+  <string name="toggleWifiAp">Puntu d\'accesu Wi\u2011Fi</string>
   <string name="toggleBluetooth">Bluetooth</string>
   <string name="toggleGPS">GPS</string>
+  <string name="toggleData">Datos móviles</string>
+  <string name="toggleSync">Sincronización automática</string>
   <string name="toggle2g3g">2G/3G</string>
   <string name="toggleWimax">WiMAX</string>
   <string name="toggleNfc">NFC</string>
@@ -206,6 +215,7 @@
   <string name="lockscreen_maximize_widgets_title">Maximizar widgets</string>
   <string name="lockscreen_maximize_widgets_summary">Espander los widgets al prender la pantalla</string>
   <string name="lockscreen_enable_camera_title">Widget de cámara</string>
+  <string name="lockscreen_enable_application_widget_title">Widget d\'aplicación cast</string>
   <string name="safe_headset_volume_title">Volume seguru</string>
   <string name="safe_headset_volume_restore_title">Amenorgar el volume al coneutar los auriculares</string>
   <string name="cyanogenmod_waiver_title">Renuncia</string>
@@ -227,6 +237,7 @@
   <string name="heads_up_blacklist_title">Llista prieta</string>
   <string name="heads_up_disabled_notice">Pa permitir a les aplicaciones amosar notificaciones interactives en ventanes emerxentes, habilita les notificaciones emerxentes.</string>
   <string name="title_tile_airplane">Mou avión</string>
+  <string name="title_tile_battery">Batería</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Brillu</string>
   <string name="title_tile_camera">Cámara</string>
@@ -244,6 +255,8 @@
   <string name="title_tile_settings">Axustes</string>
   <string name="title_tile_sound">Soníu</string>
   <string name="title_tile_sync">Sincronizar</string>
+  <string name="title_tile_wifiap">Puntu d\'accesu Wi\u2011Fi</string>
+  <string name="title_tile_wifi">Wi\u2011Fi</string>
   <string name="title_tile_user">Cambéu d\'usuariu</string>
   <string name="title_tile_networkmode">Mou de rede</string>
   <string name="title_tile_nfc">NFC</string>
@@ -254,10 +267,13 @@
   <string name="title_tile_network_adb">ADB sobre rede</string>
   <string name="title_dynamic_tiles">Controles dinámicos</string>
   <string name="dynamic_tiles_note_title">Nota</string>
+  <string name="dynamic_tiles_note_summary">Los controles dinámicos namái van apaecer por eventu del sistema</string>
   <string name="title_dynamic_alarm">Alarma</string>
   <string name="title_dynamic_bugreport">Informe de fallu</string>
   <string name="title_dynamic_dock_battery">Batería de la base</string>
   <string name="title_dynamic_equalizer">Ecualizador</string>
+  <string name="title_dynamic_ime">Seleutor de métodu d\'entrada</string>
+  <string name="title_dynamic_usbtether">Anclaxe USB</string>
   <string name="title_dynamic_wifi">Pantalla inalámbrica</string>
   <string name="title_general">Xeneral</string>
   <string name="title_quick_pulldown">Despliegue rápidu</string>
@@ -408,6 +424,7 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="io_sched_title">Planificador E/S</string>
   <string name="perf_profile_title">Perfil</string>
   <string name="memory_management_title">Xestión de la memoria</string>
+  <string name="pref_ksm_title">Memoria compartida de kernel (KSM)</string>
   <string name="pref_ksm_summary">KSM amenorga los requerimientos de memoria física y meyora\'l rindimientu</string>
   <string name="pref_purgeable_assets_title">Permitir purgar recursos</string>
   <string name="pref_purgeable_assets_summary">Purgar recursos d\'imáxenes en memoria permite lliberar más memoria cuando se necesite (rique reaniciar)</string>
@@ -482,6 +499,7 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="adb_notify">Notificar depuración USB</string>
   <string name="adb_notify_summary">Amosar una notificación cuando\'l mou de depuración USB tea coneutáu</string>
   <string name="adb_over_network">ADB sobre rede</string>
+  <string name="adb_over_network_summary">Activar la depuración TCP/IP sobre les interfaces de rede (Wi\u2011Fi, redes USB). Esta configuración restablezse al reaniciar el preséu</string>
   <string name="adb_over_network_warning">AVISU: ¡Cuando ADB sobre rede tea activu, el preséu va tar abiertu a intrusiones en toles redes coneutaes, incluyida la rede de datos GSM!\n\nUsa esta carauterística namái cuando te coneutes a redes segures.\n\n¿Daveres que quies activar esta función?</string>
   <string name="device_hostname">Nome del preséu</string>
   <string name="notification_drawer_title">Área de notificación</string>
@@ -584,6 +602,7 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="navigation_bar_menu_locked">Bloquiada</string>
   <string name="navigation_bar_arrow_keys_title">Tecles de direición mientres s\'escribe</string>
   <string name="navigation_bar_arrow_keys_summary">Amuesa los botones del cursor a esquierda y derecha mientres s\'escribe</string>
+  <string name="navigation_bar_recents_title">Pulsación llarga en recientes</string>
   <string name="navigation_ring_title">Accesos rápidos</string>
   <string name="navring_target_reset_message">¿Desaniciar tolos accesos rápidos creaos y restablecer a valores por defeutu?</string>
   <string name="navring_target_reset">Accesos rápidos restablecíos</string>
@@ -684,6 +703,7 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="status_bar_notif_count_title">Amosar contador notificaciones</string>
   <string name="status_bar_notif_count_summary">Amosar el númberu de notificaciones pendientes na barra d\'estáu</string>
   <string name="development_shortcut_title">Opciones de desendolcador</string>
+  <string name="development_shortcut_summary">Permitir a l\'aplicación remanar los accesos direutos nel área de notificación y la llista d\'aplicaciones recientes</string>
   <string name="usb_mass_storage_title">Almacenamientu masivu</string>
   <string name="usb_mass_storage_summary">Permite tresferir ficheros ente la tarxeta SD y el ordenador</string>
   <string name="storage_rescan_media">Refrescar conteníu multimedia</string>
@@ -694,6 +714,7 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="logger_summary">Xestionar los axustes del rexistru de fallos</string>
   <string name="custom_runtime_warning_title">Avisu</string>
   <string name="custom_runtime_warning_message">ART nun ta sofitáu oficialmente por CyanogenMod. Esti axuste incluyóse namái pa fines d\'esperimentación y pue causar inestabilidá, bloqueos, perda de datos ya inclusu torgar el correutu aniciu del preséu. Pa más información visita &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Nun unvies ficheros d\'informes de fallos si habilitesti ART.&lt;br/&gt;&lt;br/&gt;¿De xuru que quies reaniciar pa camudar el tiempu d\'execución de <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> a <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
+  <string name="gps_download_data_wifi_only">Descargar datos de GPS asistíu namái baxo redes Wi\u2011Fi</string>
   <string name="battery_info_status_charging_dock_ac">(BaseAC)</string>
   <string name="battery_info_status_charging_dock_usb">(BaseUSB)</string>
   <string name="menu_stats_reset">Restablecer</string>
@@ -735,6 +756,7 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="app_ops_summaries_modify_call_log">camudar el rexistru de llamaes</string>
   <string name="app_ops_summaries_read_calendar">lleer calendariu</string>
   <string name="app_ops_summaries_modify_calendar">modificar calendariu</string>
+  <string name="app_ops_summaries_wifi_scan">Escaniar Wi\u2011Fi</string>
   <string name="app_ops_summaries_notification">notificación</string>
   <string name="app_ops_summaries_cell_scan">guetar redes</string>
   <string name="app_ops_summaries_call_phone">Llamar per teléfonu</string>
@@ -763,9 +785,12 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="app_ops_summaries_media_volume">volume de multimedia</string>
   <string name="app_ops_summaries_alarm_volume">volume d\'alarma</string>
   <string name="app_ops_summaries_notification_volume">volume de notificación</string>
+  <string name="app_ops_summaries_bluetooth_volume">volume de Bluetooth</string>
   <string name="app_ops_summaries_keep_awake">caltener encesu</string>
   <string name="app_ops_summaries_monitor_location">monitorizar llocalización</string>
   <string name="app_ops_summaries_monitor_high_power_location">monitorizar llocalización n\'alta precisión</string>
+  <string name="app_ops_summaries_wifi_change">cambiar Wi\u2011Fi</string>
+  <string name="app_ops_summaries_bluetooth_change">cambiar Bluetooth</string>
   <string name="app_ops_summaries_data_change">camudar datos</string>
   <string name="app_ops_summaries_alarm_wakeup">esconsoñar preséu</string>
   <string name="app_ops_summaries_send_mms">unviar MMS</string>
@@ -805,6 +830,7 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="app_ops_labels_notification_volume">Volume de notificación</string>
   <string name="app_ops_labels_bluetooth_volume">Volume de Bluetooth</string>
   <string name="app_ops_labels_keep_awake">Caltener encesu</string>
+  <string name="app_ops_labels_wifi_change">cambiar Wi\u2011Fi</string>
   <string name="app_ops_labels_bluetooth_change">Camudar Bluetooth</string>
   <string name="app_ops_labels_data_change">Camudar datos</string>
   <string name="app_ops_labels_alarm_wakeup">Esconsoñar</string>
@@ -846,9 +872,10 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="voice_wakeup_activity_title">Actividá a executar</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
   <string name="sub_no_sim">Ensin tarxeta SIM</string>
+  <string name="multi_sim_settings_title">Tarxetes SIM</string>
   <string name="multi_sim_settings_group_summary">Seleicionar SIM predeterminada</string>
   <string name="voice_title">Llamaes de voz</string>
-  <string name="data_title">Datos</string>
+  <string name="data_title">Conexón de datos</string>
   <string name="sms_title">Unviando SMS</string>
   <string name="priority_sub_title">Prioridá de soscripción</string>
   <string name="bluetooth_accept_all_files">Aceutar tolos tipos de ficheros</string>
@@ -859,6 +886,7 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="menu_hidden_apps_reset_lock">Reanicia\'l patrón de bloquéu</string>
   <string name="protected_apps">Apps protexíes</string>
   <string name="saving_protected_components">Guardando l\'estáu del componente\u2026</string>
+  <string name="launch_app">Llanzar applicación</string>
   <string name="pa_login_username_hint">Nome d\'usuariu (corréu-e)</string>
   <string name="pa_login_password_hint">Contraseña</string>
   <string name="pa_login_submit_button">Aniciar sesión</string>
@@ -878,13 +906,35 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="block_notifications_title">Filtriar notificaciones</string>
   <string name="block_notifications_summary">Remanar filtros y notificaciones bloquiaes</string>
   <string name="no_filters_title">Nun hai filtros afitaos. Pa filtrar una notificación, facer una pulsación llarga encima y seleicionar \u00ABInorar notificaciones como estes\u00BB.</string>
+  <string name="usb_sd_eject">Desmontar almacenamientu USB</string>
+  <string name="usb_sd_eject_summary">Desmontar l\'almacenamientu USB pa estrayelu de mou seguru</string>
+  <string name="usb_sd_insert_summary">Inxerta un almacenamientu USB pal so montaxe</string>
+  <string name="usb_sd_mount">Montar almacenamientu USB</string>
+  <string name="usb_sd_format">Desaniciar almacenamientu USB</string>
+  <string name="usb_sd_format_summary">Desaniciar tolos datos del almacenamientu USB, como música y semeyes</string>
+  <string name="usb_dlg_confirm_unmount_title">¿Desmontar almacenamientu USB?</string>
+  <string name="usb_dlg_confirm_unmount_text">Si desmontes l\'almacenamientu USB, dalgunes aplicaciones qu\'uses van detenese y puen dexar de tar disponibles hasta que vuelvas montar l\'almacenamientu USB.</string>
+  <string name="usb_dlg_error_unmount_text">Nun pudo desmontase l\'almacenamientu USB. Inténtalo dempués.</string>
   <string name="usb_unmount_inform_text">Va desactivase l\'almacenamientu USB.</string>
+  <string name="usb_sd_ejecting_title">Desmontando almacenamientu USB</string>
+  <string name="usb_sd_ejecting_summary">Desmontaxe del almacenamientu USB en cursu</string>
   <string name="usb_media_format_title">Desaniciar almacenamientu USB</string>
   <string name="usb_media_format_desc">¿Desaniciar tol almacenamientu USB? ¡Vas perder <b>tolos datos</b> guardaos!</string>
   <string name="usb_media_format_button_text">Desaniciar almacenamientu USB</string>
   <string name="usb_media_format_final_desc">¿Desaniciar l\'almacenamientu USB, esborrando tolos ficheros almacenaos dientro? ¡Esta aición nun pue desfacese!</string>
   <string name="usb_media_format_gesture_explanation">Necesites dibuxar el patrón de desbloquéu pa confirmar que quies desaniciar l\'almacenamientu USB.</string>
+  <string name="sd_sd_eject">Desmontar tarxeta SD</string>
+  <string name="sd_sd_eject_summary">Desmontar la tarxeta SD pa estrayer con seguridá</string>
+  <string name="sd_sd_insert_summary">Inxerta una tarxeta SD pal so montaxe</string>
+  <string name="sd_sd_mount">Montar tarxeta SD</string>
+  <string name="sd_sd_format">Desaniciar tarxeta SD</string>
+  <string name="sd_sd_format_summary">Desanicia tolos datos de la tarxeta SD, como la música y les semeyes</string>
+  <string name="sd_dlg_confirm_unmount_title">Desmontar tarxeta SD?</string>
+  <string name="sd_dlg_confirm_unmount_text">Si desactives la tarxeta SD, van parase dalgunes aplicaciones que tas usando y nun van tar disponibles hasta que vuelvas activala.</string>
+  <string name="sd_dlg_error_unmount_text">Nun pudo desactivase la tarxeta SD. Vuelvi intentalo dempués.</string>
   <string name="sd_unmount_inform_text">Va desactivase la tarxeta SD.</string>
+  <string name="sd_sd_ejecting_title">Desmontando tarxeta SD</string>
+  <string name="sd_sd_ejecting_summary">Desmontaxe de la tarxeta SD en cursu</string>
   <string name="sd_media_format_title">Desaniciar tarxeta SD</string>
   <string name="sd_media_format_desc">¿Desaniciar la tarxeta SD? Vas perder <b>tolos</b> datos de la tarxeta!</string>
   <string name="sd_media_format_button_text">Desaniciar tarxeta SD</string>
@@ -904,7 +954,10 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="enable_quickboot_title">Habilitar el mou d\'arranque rápidu</string>
   <string name="enable_quickboot_summary">Poner el preséu en mou d\'arranque rápidu en cuenta del apagáu normal.</string>
   <string name="data_usage_tab_slot">SIM  </string>
+  <string name="sel_sub_title">Configurar tarxetes SIM</string>
+  <string name="sel_sub_summary">Seleiciona les tarxetes SIM</string>
   <string name="no_sim_info">Información de tarxeta SIM non disponible.\nNun pue accedese al menú</string>
+  <string name="subs_settings">Estáu de tarxeta SIM</string>
   <string name="set_data_subscription_progress">Afitando soscripción de datos\u2026</string>
   <string name="set_dds_success">Soscripción de datos afitada correchamente</string>
   <string name="set_dds_failed">Fallu al afitar la soscripción pa conexón de datos. Desanicia cualquier conexón existente ya inténtalo otra vuelta.</string>
@@ -912,8 +965,7 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="set_sms_error">Fallu al afitar la soscripción pal unviu de SMS. Soscripción inactiva.</string>
   <string name="set_voice_error">Fallu al afitar la soscripción pa llamaes de voz. Soscripción inactiva.</string>
   <string name="set_priority_sub_error">Fallu al afitar la prioridá de la soscripción. Soscripción inactiva.</string>
-  <string name="prompt">Entruga</string>
-  <string name="prompt_user">Entruga al usuariu</string>
+  <string name="prompt">Entrugar siempre</string>
   <string name="maximum_head_level">Cabeza: %1$s W/kg</string>
   <string name="maximum_body_level">Cuerpu: %1$s W/kg</string>
   <string name="tune_away_title">TuneAway</string>
@@ -939,6 +991,7 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="profile_action_none">Ensin aición</string>
   <string name="profile_action_disabled">Deshabilitar</string>
   <string name="profile_action_enable">Habilitar</string>
+  <string name="profile_tabs_wifi">Wi\u2011Fi</string>
   <string name="profile_tabs_bluetooth">Bluetooth</string>
   <string name="profile_tabs_nfc">NFC</string>
   <string name="profile_setup_setup_triggers_title">Pasu 1: Amestar eventos</string>
@@ -946,6 +999,7 @@ Tocando de mou prollongáu cada llinia, van amosase opciones adicionales. Seleic
   <string name="profile_setup_actions_title">Paso 2: Configurar aiciones</string>
   <string name="profile_setup_actions_title_config">Reconfigurar aiciones</string>
   <string name="no_bluetooth_triggers">Nun hai eventos de Bluetooth disponibles</string>
+  <string name="no_wifi_triggers">Nun hai eventos Wi\u2011Fi disponibles</string>
   <string name="profile_setup_setup_triggers_description">Selecciona qué eventos van activar esti perfil</string>
   <string name="profile_setup_actions_description">Agora configura qué va asoceder cuando s\'active\'l perfil</string>
 </resources>

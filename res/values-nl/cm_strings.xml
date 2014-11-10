@@ -16,7 +16,11 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="wifi_setting_countrycode_title">Wifi-regiocode</string>
+  <string name="wifi_setting_countrycode_summary">Regiocode opgeven voor wifi</string>
   <string name="wifi_setting_countrycode_error">Kan regiocode niet instellen</string>
+  <string name="wifi_setting_priority_title">Wifi-prioriteit</string>
+  <string name="wifi_setting_priority_summary">Prioriteit instellen van wifi-netwerken</string>
   <string name="wifi_ssid_input_limit">SSID te lang</string>
   <string name="p2p_device_name_input_limit">P2P-naam te lang</string>
   <string name="change_crypt_password_title">Wachtwoord wijzigen</string>
@@ -43,6 +47,7 @@
   <string name="profile_trigger_configure">Trigger instellen</string>
   <string name="profile_triggers">Triggers</string>
   <string name="profile_trigger_filter_all">Alle triggers</string>
+  <string name="profile_trigger_filter_wifi">Wifi-triggers</string>
   <string name="profile_trigger_filter_bluetooth">Bluetooth-triggers</string>
   <string name="profile_write_nfc_tag">Schrijven naar NFC-tag</string>
   <string name="profile_write_touch_tag">Raak tag aan om te schrijven</string>
@@ -108,8 +113,12 @@
   <string name="profile_lockmode_insecure_summary">Onveilige schermvergrendeling gebruiken</string>
   <string name="profile_lockmode_disabled_summary">Schermvergrendeling uitgeschakeld</string>
   <string name="profile_airplanemode_title">Vliegmodus</string>
+  <string name="toggleWifi">Wifi</string>
+  <string name="toggleWifiAp">Draagbare wifi-hotspot</string>
   <string name="toggleBluetooth">Bluetooth</string>
   <string name="toggleGPS">GPS</string>
+  <string name="toggleData">Mobiele gegevens</string>
+  <string name="toggleSync">Gegevenssynchronisatie</string>
   <string name="toggle2g3g">2G/3G</string>
   <string name="toggleWimax">WiMAX</string>
   <string name="toggleNfc">NFC</string>
@@ -206,6 +215,7 @@
   <string name="lockscreen_maximize_widgets_title">Widgets maximaliseren</string>
   <string name="lockscreen_maximize_widgets_summary">Widgets maximaliseren bij scherm aanzetten</string>
   <string name="lockscreen_enable_camera_title">Camera-widget</string>
+  <string name="lockscreen_enable_application_widget_title">App-widget</string>
   <string name="safe_headset_volume_title">Veilig koptelefoonvolume</string>
   <string name="safe_headset_volume_restore_title">Koptelefoonvolume verminderen bij aansluiten</string>
   <string name="cyanogenmod_waiver_title">Afstandsverklaring</string>
@@ -227,6 +237,7 @@
   <string name="heads_up_blacklist_title">Zwarte lijst</string>
   <string name="heads_up_disabled_notice">Om apps interactieve meldingen in een zwevend venster te laten tonen, schakelt u Heads-up in.</string>
   <string name="title_tile_airplane">Vliegmodus</string>
+  <string name="title_tile_battery">Accustatus</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Helderheid</string>
   <string name="title_tile_camera">Camera</string>
@@ -244,6 +255,8 @@
   <string name="title_tile_settings">Instellingen</string>
   <string name="title_tile_sound">Geluid</string>
   <string name="title_tile_sync">Synchroniseren</string>
+  <string name="title_tile_wifiap">Wifi-hotspot</string>
+  <string name="title_tile_wifi">Wifi</string>
   <string name="title_tile_user">Gebruiker wisselen</string>
   <string name="title_tile_networkmode">Netwerkmodus</string>
   <string name="title_tile_nfc">NFC</string>
@@ -254,10 +267,13 @@
   <string name="title_tile_network_adb">ADB over netwerk</string>
   <string name="title_dynamic_tiles">Dynamische tegels</string>
   <string name="dynamic_tiles_note_title">Let op</string>
+  <string name="dynamic_tiles_note_summary">Dynamische tegels zijn alleen zichtbaar indien opgeroepen door een systeemgebeurtenis</string>
   <string name="title_dynamic_alarm">Alarmklok</string>
   <string name="title_dynamic_bugreport">Foutenrapport</string>
   <string name="title_dynamic_dock_battery">Dock-accu</string>
   <string name="title_dynamic_equalizer">Equalizer</string>
+  <string name="title_dynamic_ime">Invoermethode</string>
+  <string name="title_dynamic_usbtether">USB-tethering</string>
   <string name="title_dynamic_wifi">Scherm casten</string>
   <string name="title_general">Algemeen</string>
   <string name="title_quick_pulldown">Snel openen</string>
@@ -407,6 +423,7 @@ Extra opties zijn beschikbaar door een regel lang aan te raken. Door \'Aanpassen
   <string name="io_sched_title">In-/uitvoerscheduler</string>
   <string name="perf_profile_title">Profiel</string>
   <string name="memory_management_title">Geheugenbeheer</string>
+  <string name="pref_ksm_title">Kernel SamePage Merging (KSM)</string>
   <string name="pref_ksm_summary">Gelijke geheugengedeelten delen voor kleiner geheugengebruik en prestatieverbeteringen</string>
   <string name="pref_purgeable_assets_title">Assets wissen toestaan</string>
   <string name="pref_purgeable_assets_summary">Wissen van assets in bitmapgeheugen voor meer vrij geheugen indien nodig (herstart vereist)</string>
@@ -481,6 +498,7 @@ Extra opties zijn beschikbaar door een regel lang aan te raken. Door \'Aanpassen
   <string name="adb_notify">USB-foutopsporingsmodus melden</string>
   <string name="adb_notify_summary">Melding tonen indien USB-foutopsporingmodus is ingeschakeld</string>
   <string name="adb_over_network">ADB over netwerk</string>
+  <string name="adb_over_network_summary">TCP/IP-foutopsporing inschakelen over netwerkinterfaces (wifi, USB-netwerken). Wordt hersteld bij opstarten</string>
   <string name="adb_over_network_warning">Let op: als ADB over netwerk is ingeschakeld, kan op uw apparaat worden ingebroken via alle aangesloten netwerken, inclusief via uw GSM-gegevensnetwerk!\n\nGebruik deze functie alleen indien u verbonden bent met vertrouwde netwerken.\n\nWeet u zeker dat u deze functie wilt inschakelen?</string>
   <string name="device_hostname">Hostnaam apparaat</string>
   <string name="notification_drawer_title">Meldingenpaneel</string>
@@ -583,6 +601,7 @@ Extra opties zijn beschikbaar door een regel lang aan te raken. Door \'Aanpassen
   <string name="navigation_bar_menu_locked">Vergrendeld</string>
   <string name="navigation_bar_arrow_keys_title">Pijltjestoetsen tijdens typen</string>
   <string name="navigation_bar_arrow_keys_summary">Cursor links en rechts weergeven tijdens typen</string>
+  <string name="navigation_bar_recents_title">Recente apps-knop lang indrukken</string>
   <string name="navigation_ring_title">Snelkoppelingen</string>
   <string name="navring_target_reset_message">Alle snelkoppelingen herstellen naar standaard?</string>
   <string name="navring_target_reset">Snelkoppelingen hersteld naar standaard</string>
@@ -683,6 +702,7 @@ Extra opties zijn beschikbaar door een regel lang aan te raken. Door \'Aanpassen
   <string name="status_bar_notif_count_title">Aantal meldingen tonen</string>
   <string name="status_bar_notif_count_summary">Aantal nieuwe meldingen tonen</string>
   <string name="development_shortcut_title">Ontwikkelingssnelkoppeling</string>
+  <string name="development_shortcut_summary">Snelkoppelingen voor applicatiebeheer weergeven in meldingenpaneel en recente appslijst</string>
   <string name="usb_mass_storage_title">Massaopslag (UMS)</string>
   <string name="usb_mass_storage_summary">Bestanden uitwisselen tussen uw computer en SD-kaart door het aan te koppelen als flash-geheugen</string>
   <string name="storage_rescan_media">Mediabestanden op het opslagvolume opnieuw scannen</string>
@@ -693,6 +713,7 @@ Extra opties zijn beschikbaar door een regel lang aan te raken. Door \'Aanpassen
   <string name="logger_summary">Logboekinstellingen voor crashes beheren</string>
   <string name="custom_runtime_warning_title">Let op</string>
   <string name="custom_runtime_warning_message">ART wordt niet officieel ondersteund door CyanogenMod. Deze instelling is opgenomen voor testdoeleinden en kan leiden tot instabiliteit, crashes, gegevensverlies en/of opstartproblemen. Ga naar &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introductie van ART (Engels)&lt;/a&gt; voor meer informatie.&lt;br/&gt;&lt;br/&gt;Wij verzoeken u geen foutenrapporten in te sturen wanneer ART is ingeschakeld.&lt;br/&gt;&lt;br/&gt;Weet u zeker dat u wilt herstarten om apps niet meer te laten draaien op <xliff:g id="old" example="libdvm.so">%1$s</xliff:g>, maar op <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
+  <string name="gps_download_data_wifi_only">GPS-ondersteunende gegevens alleen downloaden via wifi</string>
   <string name="battery_info_status_charging_dock_ac">(dock-AC)</string>
   <string name="battery_info_status_charging_dock_usb">(dock-USB)</string>
   <string name="menu_stats_reset">Opnieuw instellen</string>
@@ -734,6 +755,7 @@ Extra opties zijn beschikbaar door een regel lang aan te raken. Door \'Aanpassen
   <string name="app_ops_summaries_modify_call_log">gesprekkenlijst aanpassen</string>
   <string name="app_ops_summaries_read_calendar">agenda lezen</string>
   <string name="app_ops_summaries_modify_calendar">agenda aanpassen</string>
+  <string name="app_ops_summaries_wifi_scan">wifi-scan</string>
   <string name="app_ops_summaries_notification">melding</string>
   <string name="app_ops_summaries_cell_scan">mobiele scan</string>
   <string name="app_ops_summaries_call_phone">nummer bellen</string>
@@ -762,9 +784,12 @@ Extra opties zijn beschikbaar door een regel lang aan te raken. Door \'Aanpassen
   <string name="app_ops_summaries_media_volume">mediavolume</string>
   <string name="app_ops_summaries_alarm_volume">alarmvolume</string>
   <string name="app_ops_summaries_notification_volume">meldingsvolume</string>
+  <string name="app_ops_summaries_bluetooth_volume">Bluetooth-volume</string>
   <string name="app_ops_summaries_keep_awake">ingeschakeld houden</string>
   <string name="app_ops_summaries_monitor_location">locatie controleren</string>
   <string name="app_ops_summaries_monitor_high_power_location">locatie met hoog energieverbruik controleren</string>
+  <string name="app_ops_summaries_wifi_change">wifi aan/uit</string>
+  <string name="app_ops_summaries_bluetooth_change">Bluetooth aan/uit</string>
   <string name="app_ops_summaries_data_change">gegevens aan/uit</string>
   <string name="app_ops_summaries_alarm_wakeup">ontwaken</string>
   <string name="app_ops_summaries_send_mms">mms verzenden</string>
@@ -804,6 +829,7 @@ Extra opties zijn beschikbaar door een regel lang aan te raken. Door \'Aanpassen
   <string name="app_ops_labels_notification_volume">Meldingsvolume</string>
   <string name="app_ops_labels_bluetooth_volume">Bluetooth-volume</string>
   <string name="app_ops_labels_keep_awake">Ingeschakeld houden</string>
+  <string name="app_ops_labels_wifi_change">wifi aan/uit</string>
   <string name="app_ops_labels_bluetooth_change">Bluetooth aan/uit</string>
   <string name="app_ops_labels_data_change">Gegevens aan/uit</string>
   <string name="app_ops_labels_alarm_wakeup">Ontwaken</string>
@@ -845,9 +871,10 @@ Extra opties zijn beschikbaar door een regel lang aan te raken. Door \'Aanpassen
   <string name="voice_wakeup_activity_title">Activiteit om te starten</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
   <string name="sub_no_sim">Geen SIM</string>
+  <string name="multi_sim_settings_title">Simkaarten</string>
   <string name="multi_sim_settings_group_summary">Standaard SIM-keuze</string>
   <string name="voice_title">Spraakoproep</string>
-  <string name="data_title">Gegevensgesprek</string>
+  <string name="data_title">Gegevensverbinding</string>
   <string name="sms_title">Sms verzenden</string>
   <string name="priority_sub_title">Voorkeursabonnement</string>
   <string name="bluetooth_accept_all_files">Alle bestandstypen accepteren</string>
@@ -858,6 +885,7 @@ Extra opties zijn beschikbaar door een regel lang aan te raken. Door \'Aanpassen
   <string name="menu_hidden_apps_reset_lock">Patroon opnieuw instellen</string>
   <string name="protected_apps">Beschermde apps</string>
   <string name="saving_protected_components">Opslaan\u2026</string>
+  <string name="launch_app">App starten</string>
   <string name="pa_login_username_hint">Gebruikersnaam (e-mail)</string>
   <string name="pa_login_password_hint">Wachtwoord</string>
   <string name="pa_login_submit_button">Inloggen</string>
@@ -877,13 +905,35 @@ Extra opties zijn beschikbaar door een regel lang aan te raken. Door \'Aanpassen
   <string name="block_notifications_title">Meldingen filteren</string>
   <string name="block_notifications_summary">Genegeerde meldingen en filters beheren</string>
   <string name="no_filters_title">Geen filters ingesteld. Om een melding te filteren, drukt u lang op een melding en kiest u \'Meldingen als deze negeren\'.</string>
+  <string name="usb_sd_eject">USB-opslag ontkoppelen</string>
+  <string name="usb_sd_eject_summary">Ontkoppel de USB-opslag zodat u deze veilig kunt verwijderen</string>
+  <string name="usb_sd_insert_summary">USB-opslag plaatsen voor koppelen</string>
+  <string name="usb_sd_mount">USB-opslag koppelen</string>
+  <string name="usb_sd_format">USB-opslag wissen</string>
+  <string name="usb_sd_format_summary">Alle gegevens in USB-opslag wissen, zoals muziek en foto\'s</string>
+  <string name="usb_dlg_confirm_unmount_title">USB-opslag ontkoppelen?</string>
+  <string name="usb_dlg_confirm_unmount_text">Als u de USB-opslag ontkoppelt, worden bepaalde apps die u gebruikt, gestopt en komen deze mogelijk pas weer beschikbaar wanneer u de USB-opslag opnieuw koppelt.</string>
+  <string name="usb_dlg_error_unmount_text">Kan USB-opslag niet ontkoppelen. Probeer het later opnieuw.</string>
   <string name="usb_unmount_inform_text">USB-opslag wordt ontkoppeld.</string>
+  <string name="usb_sd_ejecting_title">USB-opslag ontkoppelen</string>
+  <string name="usb_sd_ejecting_summary">USB-opslag ontkoppelen wordt uitgevoerd</string>
   <string name="usb_media_format_title">USB-opslag wissen</string>
   <string name="usb_media_format_desc">Alle USB-opslag wissen? <b>Alle</b> opgeslagen gegevens gaan verloren.</string>
   <string name="usb_media_format_button_text">USB-opslag wissen</string>
   <string name="usb_media_format_final_desc">USB-opslag formatteren en alle opgeslagen bestanden wissen? U kunt deze actie niet ongedaan maken.</string>
   <string name="usb_media_format_gesture_explanation">U moet het ontgrendelingspatroon tekenen om te bevestigen dat u de USB-opslag wilt wissen.</string>
+  <string name="sd_sd_eject">SD-kaart ontkoppelen</string>
+  <string name="sd_sd_eject_summary">Ontkoppel de SD-kaart zodat u deze veilig kunt verwijderen</string>
+  <string name="sd_sd_insert_summary">SD-kaart plaatsen voor koppelen</string>
+  <string name="sd_sd_mount">SD-kaart koppelen</string>
+  <string name="sd_sd_format">SD-kaart wissen</string>
+  <string name="sd_sd_format_summary">Alle gegevens op de SD-kaart wissen, zoals muziek en foto\'s</string>
+  <string name="sd_dlg_confirm_unmount_title">SD-kaart ontkoppelen?</string>
+  <string name="sd_dlg_confirm_unmount_text">Als u de SD-kaart ontkoppelt, worden bepaalde apps die u gebruikt, gestopt en komen deze mogelijk pas weer beschikbaar wanneer u de SD-kaart opnieuw koppelt.</string>
+  <string name="sd_dlg_error_unmount_text">Kan SD-kaart niet ontkoppelen. Probeer het later opnieuw.</string>
   <string name="sd_unmount_inform_text">SD-kaart wordt ontkoppeld.</string>
+  <string name="sd_sd_ejecting_title">SD-kaart ontkoppelen</string>
+  <string name="sd_sd_ejecting_summary">SD-kaart ontkoppelen wordt uitgevoerd</string>
   <string name="sd_media_format_title">SD-kaart wissen</string>
   <string name="sd_media_format_desc">SD-kaart wissen? <b>Alle</b> gegevens op de kaart gaan verloren.</string>
   <string name="sd_media_format_button_text">SD-kaart wissen</string>
@@ -903,7 +953,10 @@ Extra opties zijn beschikbaar door een regel lang aan te raken. Door \'Aanpassen
   <string name="enable_quickboot_title">QuickBoot inschakelen</string>
   <string name="enable_quickboot_summary">Apparaat in QuickBoot-modus zetten in plaats van uitschakelen.</string>
   <string name="data_usage_tab_slot">SIM </string>
+  <string name="sel_sub_title">Simkaarten beheren</string>
+  <string name="sel_sub_summary">Simkaarten selecteren</string>
   <string name="no_sim_info">Informatie simkaart niet beschikbaar.\nMenu niet toegankelijk</string>
+  <string name="subs_settings">Simkaartstatus</string>
   <string name="set_data_subscription_progress">Gegevensabonnement instellen\u2026</string>
   <string name="set_dds_success">Gegevensabonnement ingesteld</string>
   <string name="set_dds_failed">Kan gegevensabonnement niet instellen. Verwijder bestaande gegevensverbinding en probeer het opnieuw.</string>
@@ -912,7 +965,6 @@ Extra opties zijn beschikbaar door een regel lang aan te raken. Door \'Aanpassen
   <string name="set_voice_error">Kan belabonnement niet instellen, abonnement niet actief.</string>
   <string name="set_priority_sub_error">Kan voorkeursabonnement niet instellen, abonnement niet actief.</string>
   <string name="prompt">Vragen</string>
-  <string name="prompt_user">Vragen</string>
   <string name="maximum_head_level">Hoofd: %1$s W/kg</string>
   <string name="maximum_body_level">Lichaam: %1$s W/kg</string>
   <string name="tune_away_title">TuneAway</string>
@@ -938,6 +990,7 @@ Extra opties zijn beschikbaar door een regel lang aan te raken. Door \'Aanpassen
   <string name="profile_action_none">Geen actie</string>
   <string name="profile_action_disabled">Uitschakelen</string>
   <string name="profile_action_enable">Inschakelen</string>
+  <string name="profile_tabs_wifi">Wifi</string>
   <string name="profile_tabs_bluetooth">Bluetooth</string>
   <string name="profile_tabs_nfc">NFC</string>
   <string name="profile_setup_setup_triggers_title">Stap 1: triggers toevoegen</string>
@@ -945,6 +998,7 @@ Extra opties zijn beschikbaar door een regel lang aan te raken. Door \'Aanpassen
   <string name="profile_setup_actions_title">Stap 2: acties instellen</string>
   <string name="profile_setup_actions_title_config">Acties aanpassen</string>
   <string name="no_bluetooth_triggers">Geen Bluetooth-triggers beschikbaar</string>
+  <string name="no_wifi_triggers">Geen wifi-triggers beschikbaar</string>
   <string name="profile_setup_setup_triggers_description">Selecteer de triggers die dit profiel activeren</string>
   <string name="profile_setup_actions_description">Selecteer nu wat er moet gebeuren wanneer dit profiel wordt geactiveerd</string>
 </resources>

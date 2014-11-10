@@ -16,7 +16,11 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="wifi_setting_countrycode_title">„Wi-Fi“ regiono kodas</string>
+  <string name="wifi_setting_countrycode_summary">Nurodyti „Wi-Fi“ regiono kodą</string>
   <string name="wifi_setting_countrycode_error">Iškilo problema nustatant regiono kodą.</string>
+  <string name="wifi_setting_priority_title">„Wi-Fi“ prioritetas</string>
+  <string name="wifi_setting_priority_summary">Nurodyti „Wi-Fi“ tinklų prioritetą</string>
   <string name="wifi_ssid_input_limit">SSID viršija maksimalų ilgį</string>
   <string name="p2p_device_name_input_limit">P2P pavadinimas viršija maksimalų ilgį</string>
   <string name="change_crypt_password_title">Pakeisti slaptažodį</string>
@@ -43,6 +47,7 @@
   <string name="profile_trigger_configure">Konfigūruoti jungiklį</string>
   <string name="profile_triggers">Jungikliai</string>
   <string name="profile_trigger_filter_all">Visi jungikliai</string>
+  <string name="profile_trigger_filter_wifi">„Wi-Fi“ jungikliai</string>
   <string name="profile_trigger_filter_bluetooth">„Bluetooth“ jungiklis</string>
   <string name="profile_write_nfc_tag">Įrašyti į ALR žymę</string>
   <string name="profile_write_touch_tag">Prilieskite žymę įrašymui</string>
@@ -108,8 +113,12 @@
   <string name="profile_lockmode_insecure_summary">Naudoti nesaugų užraktą</string>
   <string name="profile_lockmode_disabled_summary">Ekrano užrakto nėra</string>
   <string name="profile_airplanemode_title">Lėktuvo režimas</string>
+  <string name="toggleWifi">Wi-Fi</string>
+  <string name="toggleWifiAp">„Wi-Fi“ prieigos taškas</string>
   <string name="toggleBluetooth">Bluetooth</string>
   <string name="toggleGPS">GPS</string>
+  <string name="toggleData">Mobilieji duomenys</string>
+  <string name="toggleSync">Duomenų sinchronizavimas</string>
   <string name="toggle2g3g">2G / 3G</string>
   <string name="toggleWimax">WiMAX</string>
   <string name="toggleNfc">ALR</string>
@@ -206,6 +215,7 @@
   <string name="lockscreen_maximize_widgets_title">Padidinti valdiklius</string>
   <string name="lockscreen_maximize_widgets_summary">Padidinti valdiklius, kai ekranas yra įjungiamas</string>
   <string name="lockscreen_enable_camera_title">Fotoaparato valdiklis</string>
+  <string name="lockscreen_enable_application_widget_title">„Appcast“ valdiklis</string>
   <string name="safe_headset_volume_title">Saugus laisvų rankų įrangos garsumas</string>
   <string name="safe_headset_volume_restore_title">Sumažinti garsumą prijungiant ausines</string>
   <string name="cyanogenmod_waiver_title">Atsisakymas</string>
@@ -227,6 +237,7 @@
   <string name="heads_up_blacklist_title">Juodasis sąrašas</string>
   <string name="heads_up_disabled_notice">Norint leisti programoms rodyti interaktyvius pranešimus iššokančiame lange jūsų ekrane, įjunkite plaukiojančius pranešimus.</string>
   <string name="title_tile_airplane">Lėktuvo režimas</string>
+  <string name="title_tile_battery">Akumuliatorius</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Ryškumas</string>
   <string name="title_tile_camera">Fotoaparatas</string>
@@ -244,6 +255,8 @@
   <string name="title_tile_settings">Nustatymai</string>
   <string name="title_tile_sound">Garsas</string>
   <string name="title_tile_sync">Synchronizavimas</string>
+  <string name="title_tile_wifiap">„Wi-Fi“ prieigos taškas</string>
+  <string name="title_tile_wifi">Wi-Fi</string>
   <string name="title_tile_user">Vartotojo perjungiklis</string>
   <string name="title_tile_networkmode">Tinklo režimas</string>
   <string name="title_tile_nfc">ALR</string>
@@ -254,10 +267,13 @@
   <string name="title_tile_network_adb">USB derin. per tinklą</string>
   <string name="title_dynamic_tiles">Dinaminės plytelės</string>
   <string name="dynamic_tiles_note_title">Pastaba</string>
+  <string name="dynamic_tiles_note_summary">Dinaminės plytelės rodomos nevisuomet, jos atsiranda tik pareikalavus sistemai</string>
   <string name="title_dynamic_alarm">Žadintuvas</string>
   <string name="title_dynamic_bugreport">Pranešimas apie triktį</string>
   <string name="title_dynamic_dock_battery">Doko akumuliatorius</string>
   <string name="title_dynamic_equalizer">Ekvalaizeris</string>
+  <string name="title_dynamic_ime">Dinaminės plytelės rodomos nevisuomet, jos atsiranda tik pareikalavus sistemai</string>
+  <string name="title_dynamic_usbtether">USB susiejimas</string>
   <string name="title_dynamic_wifi">Ekrano perdavimas</string>
   <string name="title_general">Bendra</string>
   <string name="title_quick_pulldown">Greitas ištraukimas</string>
@@ -421,6 +437,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="io_sched_title">I / O valdymas</string>
   <string name="perf_profile_title">Profilis</string>
   <string name="memory_management_title">Atminties valdymas</string>
+  <string name="pref_ksm_title">Atminties blokų apjungimas</string>
   <string name="pref_ksm_summary">Vienodų atminties blokų apjungimas sumažina atminties poreikį ir didina našumą</string>
   <string name="pref_purgeable_assets_title">Atminties valymas</string>
   <string name="pref_purgeable_assets_summary">Esant reikalui ištrinti paveikslėlius iš laikinosios atminties (reikalinga perkrova)</string>
@@ -495,6 +512,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="adb_notify">USB derinimo pranešimas</string>
   <string name="adb_notify_summary">Rodyti pranešimą veikiant USB derinimui</string>
   <string name="adb_over_network">USB derinimas per tinklą</string>
+  <string name="adb_over_network_summary">Įjungti TCP / IP derinimą per tinklą („Wi-Fi“, USB tinklai). Šis nustatymas veikia iki perkrovimo</string>
   <string name="adb_over_network_warning">DĖMESIO: Kai USB derinimas veikia per tinklą, prie jūsų įrenginio gali prisijungti bet kas, įskaitant ir GSM duomenų tinklą!\n\nNaudokite šią funkciją tik tada, kai esate prisijungę prie patikimų tinklų.\n\nAr tikrai norite įjungti šią funkciją?</string>
   <string name="device_hostname">Įrenginio vardas tinkle</string>
   <string name="notification_drawer_title">Pranešimų stalčius</string>
@@ -597,6 +615,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="navigation_bar_menu_locked">Užrakinta</string>
   <string name="navigation_bar_arrow_keys_title">Klavišų rodyklės rašant</string>
   <string name="navigation_bar_arrow_keys_summary">Rašant rodyti kairiuosius ir dešiniuosius žymeklio klavišus</string>
+  <string name="navigation_bar_recents_title">Naujausių ilgo paspaudimo veiksmas</string>
   <string name="navigation_ring_title">Greito paleidimo nuorodos</string>
   <string name="navring_target_reset_message">Ištrinti visas vartotojo sukurtas naršymo juostos nuorodas ir atkurti į numatytuosius nustatymus?</string>
   <string name="navring_target_reset">Naršymo juostos nuorodas atkurti į numatytuosius nustatymus</string>
@@ -697,6 +716,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="status_bar_notif_count_title">Rodyti pranešimų skaičių</string>
   <string name="status_bar_notif_count_summary">Rodyti neperžiūrėtų pranešimų skaičių</string>
   <string name="development_shortcut_title">Kūrėjo nuoroda</string>
+  <string name="development_shortcut_summary">Įjungti „Ištrinti duomenis“ ir „Priverstinai uždaryti“ pasirinkimus pranešimų srityje ir naujų programų sąraše</string>
   <string name="usb_mass_storage_title">Didelės talpos atmintis (UMS)</string>
   <string name="usb_mass_storage_summary">Leidžia perduoti failus tarp jūsų kompiuterio ir SD kortelės prijungiant ją kaip „Flash“ įrenginį</string>
   <string name="storage_rescan_media">Nuskaityti mediją</string>
@@ -707,6 +727,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="logger_summary">Valdyti gedimų registravimo nustatymus</string>
   <string name="custom_runtime_warning_title">Įspėjimas</string>
   <string name="custom_runtime_warning_message">„CyanogenMod“ oficialiai nepalaiko ART, ši nuostata yra eksperimentinė ir turi potencialą sukelti nestabilumą, duomenų praradimą ar sutrikdyti tinkamą jūsų prietaiso įsijungimą. Apsilankykite &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;ART supažindinimas&lt;/a&gt; dėl daugiau informacijos.&lt;br/&gt;&lt;br/&gt;Jei įjungėte ART, prašome nepranešinėti apie iškilusias triktis.&lt;br/&gt;&lt;br/&gt;Ar tikrai norite perkrauti ir pakeisti iš <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> į <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
+  <string name="gps_download_data_wifi_only">Parsisiųsti GPS pagalbinius duomenis tik per „Wi-Fi“ tinklus</string>
   <string name="battery_info_status_charging_dock_ac">(DokasAC)</string>
   <string name="battery_info_status_charging_dock_usb">(DokasUSB)</string>
   <string name="menu_stats_reset">Atkurti</string>
@@ -748,6 +769,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="app_ops_summaries_modify_call_log">keisti skambučių žurnalą</string>
   <string name="app_ops_summaries_read_calendar">skaityti kalendorių</string>
   <string name="app_ops_summaries_modify_calendar">keisti kalendorių</string>
+  <string name="app_ops_summaries_wifi_scan">„Wi-Fi“ žvalgymas</string>
   <string name="app_ops_summaries_notification">pranešimas</string>
   <string name="app_ops_summaries_cell_scan">mobiliųjų telefonų žvalgymas</string>
   <string name="app_ops_summaries_call_phone">skambinti į telefoną</string>
@@ -776,9 +798,12 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="app_ops_summaries_media_volume">medijos garsumas</string>
   <string name="app_ops_summaries_alarm_volume">žadintuvo garsumas</string>
   <string name="app_ops_summaries_notification_volume">pranešimo garsumas</string>
+  <string name="app_ops_summaries_bluetooth_volume">„Bluetooth“ garsumas</string>
   <string name="app_ops_summaries_keep_awake">budėti</string>
   <string name="app_ops_summaries_monitor_location">stebėti vietovę</string>
   <string name="app_ops_summaries_monitor_high_power_location">stebėti didelio galingumo vietovę</string>
+  <string name="app_ops_summaries_wifi_change">„Wi-Fi“ kaita</string>
+  <string name="app_ops_summaries_bluetooth_change">„Bluetooth“ kaita</string>
   <string name="app_ops_summaries_data_change">duomenų kaita</string>
   <string name="app_ops_summaries_alarm_wakeup">pažadinti</string>
   <string name="app_ops_summaries_send_mms">siųsti MMS</string>
@@ -818,6 +843,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="app_ops_labels_notification_volume">Pranešimo garsumas</string>
   <string name="app_ops_labels_bluetooth_volume">„Bluetooth“ garsumas</string>
   <string name="app_ops_labels_keep_awake">Budėti</string>
+  <string name="app_ops_labels_wifi_change">„Wi-Fi“ kaita</string>
   <string name="app_ops_labels_bluetooth_change">„Bluetooth“ kaita</string>
   <string name="app_ops_labels_data_change">Duomenų kaita</string>
   <string name="app_ops_labels_alarm_wakeup">Pažadinti</string>
@@ -859,6 +885,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="voice_wakeup_activity_title">Paleisti programą</string>
   <string name="voice_wakeup_default_activity">„Google“ Dabar</string>
   <string name="sub_no_sim">Nėra SIM</string>
+  <string name="multi_sim_settings_title">SIM kortelės</string>
   <string name="multi_sim_settings_group_summary">Numatytasis SIM pasirinkimas</string>
   <string name="voice_title">Balso skambučiai</string>
   <string name="data_title">Duomenų skambučiai</string>
@@ -872,6 +899,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="menu_hidden_apps_reset_lock">Atkurti modelio užraktą</string>
   <string name="protected_apps">Apsaugotos programos</string>
   <string name="saving_protected_components">Išsaugoma komponentų būklė\u2026</string>
+  <string name="launch_app">Paleisti programą</string>
   <string name="pa_login_username_hint">Vartotojo vardas (el. paštas)</string>
   <string name="pa_login_password_hint">Slaptažodis</string>
   <string name="pa_login_submit_button">Registruotis</string>
@@ -892,13 +920,35 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="block_notifications_title">Filtruoti pranešimus</string>
   <string name="block_notifications_summary">Valdyti ignoruojamus pranešimus ir filtrus</string>
   <string name="no_filters_title">Jokie filtrai nenustatyti. Norėdami filtruoti pranešimą, ilgai jį paspauskite ir pasirinkite „Nepaisyti pranešimų kaip šis“.</string>
+  <string name="usb_sd_eject">Atjungti USB saugyklą</string>
+  <string name="usb_sd_eject_summary">Atjunkite USB saugyklą tam kad saugiai ją pašalintumėte</string>
+  <string name="usb_sd_insert_summary">Įdėkite USB saugyklą dėl prijungimo</string>
+  <string name="usb_sd_mount">Prijungti USB saugyklą</string>
+  <string name="usb_sd_format">Ištrinti USB saugyklą</string>
+  <string name="usb_sd_format_summary">Ištrina visus duomenis USB saugykloje, pvz., muziką ir nuotraukas</string>
+  <string name="usb_dlg_confirm_unmount_title">Atjungti USB saugyklą?</string>
+  <string name="usb_dlg_confirm_unmount_text">Jei atjungsite USB saugyklą, kai kurios naudojamos programos sustos ir bus nepasiekiamos, kol jūs neprijungsite USB saugyklos iš naujo.</string>
+  <string name="usb_dlg_error_unmount_text">Nepavyko atjungti USB saugyklos. Bandykite vėliau dar kartą.</string>
   <string name="usb_unmount_inform_text">USB saugykla bus atjungta.</string>
+  <string name="usb_sd_ejecting_title">Atjungiama USB saugykla</string>
+  <string name="usb_sd_ejecting_summary">Vyksta USB saugyklos atjungimas</string>
   <string name="usb_media_format_title">Ištrinti USB saugyklą</string>
   <string name="usb_media_format_desc">Ištrinti visą USB saugyklą? jūs prarasite <b>visus</b> išsaugotus duomenis!</string>
   <string name="usb_media_format_button_text">Ištrinti USB saugyklą</string>
   <string name="usb_media_format_final_desc">Ištrinti USB saugyklą, ištrynus visus joje saugomus failus? jūs negalėsite atšaukti šio veiksmo!</string>
   <string name="usb_media_format_gesture_explanation">Jums reikia nubrėžti atrakinimo šabloną tam, kad patvirtintumėte jog norite ištrinti USB saugyklą.</string>
+  <string name="sd_sd_eject">Atjungti SD kortelę</string>
+  <string name="sd_sd_eject_summary">Atjunkite SD kortelę tam kad saugiai ją pašalintumėte</string>
+  <string name="sd_sd_insert_summary">Įdėkite SD kortelę dėl prijungimo</string>
+  <string name="sd_sd_mount">Prijungti SD kortelę</string>
+  <string name="sd_sd_format">Ištrinti SD kortelę</string>
+  <string name="sd_sd_format_summary">Ištrina visus SD kortelės duomenis, pvz., muziką ir nuotraukas</string>
+  <string name="sd_dlg_confirm_unmount_title">Atjungti SD kortelę?</string>
+  <string name="sd_dlg_confirm_unmount_text">Jei atjungsite SD kortelę, kai kurios naudojamos programos sustos ir bus nepasiekiamos, kol jūs neprijungsite SD kortelės iš naujo.</string>
+  <string name="sd_dlg_error_unmount_text">Nepavyko atjungti SD kortelės. Bandykite vėliau dar kartą.</string>
   <string name="sd_unmount_inform_text">SD kortelė bus atjungta.</string>
+  <string name="sd_sd_ejecting_title">Atjungiama SD kortelė</string>
+  <string name="sd_sd_ejecting_summary">Vyksta SD kortelės atjungimas</string>
   <string name="sd_media_format_title">Ištrinti SD kortelę</string>
   <string name="sd_media_format_desc">Ištrinti SD kortelę? jūs prarasite <b>visus</b> kortelėje esančius duomenis!</string>
   <string name="sd_media_format_button_text">Ištrinti SD kortelę</string>
@@ -918,7 +968,10 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="enable_quickboot_title">Įjungti greitąjį įkrovos režimą</string>
   <string name="enable_quickboot_summary">Įjungia greitąjį įkrovos režimą vietoj įprasto išsijungimo.</string>
   <string name="data_usage_tab_slot">SIM </string>
+  <string name="sel_sub_title">Konfigūruoti SIM korteles</string>
+  <string name="sel_sub_summary">Pasirinkite SIM korteles</string>
   <string name="no_sim_info">SIM kortelės informacijos nėra.\nMeniu negali būti atvertas</string>
+  <string name="subs_settings">SIM kortelės būsena</string>
   <string name="set_data_subscription_progress">Nustatoma duomenų prenumerata\u2026</string>
   <string name="set_dds_success">Duomenų prenumeratos nustatymas sėkmingas</string>
   <string name="set_dds_failed">Klaida nustatant duomenų prenumeratą. Pašalinkite esamą duomenų ryšį ir bandykite dar kartą.</string>
@@ -926,8 +979,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="set_sms_error">Klaida nustatant SMS prenumeratą. Prenumerata neaktyvi.</string>
   <string name="set_voice_error">Klaida nustatant balso prenumeratą. Prenumerata neaktyvi.</string>
   <string name="set_priority_sub_error">Klaida nustatant prenumeratos pirmenybę. Prenumerata neaktyvi.</string>
-  <string name="prompt">Klausti</string>
-  <string name="prompt_user">Klausti vartotojo</string>
+  <string name="prompt">Visada klausti</string>
   <string name="maximum_head_level">Galva: %1$s W/kg</string>
   <string name="maximum_body_level">Kūnas: %1$s W/kg</string>
   <string name="tune_away_title">TuneAway</string>
@@ -953,6 +1005,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="profile_action_none">Nieko nedaryti</string>
   <string name="profile_action_disabled">Išjungti</string>
   <string name="profile_action_enable">Įjungti</string>
+  <string name="profile_tabs_wifi">Wi-Fi</string>
   <string name="profile_tabs_bluetooth">Bluetooth</string>
   <string name="profile_tabs_nfc">NFC</string>
   <string name="profile_setup_setup_triggers_title">1 žingsnis: pridėti paleidiklius</string>
@@ -960,6 +1013,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="profile_setup_actions_title">2 žingsnis: sąrankos veiksmai</string>
   <string name="profile_setup_actions_title_config">Konfigūruoti iš naujo</string>
   <string name="no_bluetooth_triggers">Nėra „Bluetooth“ paleidiklių</string>
+  <string name="no_wifi_triggers">Nėra „Wi-Fi“ paleidiklių</string>
   <string name="profile_setup_setup_triggers_description">Prašome pasirinkti paleidiklius, kurie aktyvuos šį profilį</string>
   <string name="profile_setup_actions_description">Dabar nustatykite kas nutinka kai profilis yra aktyvuotas</string>
 </resources>
