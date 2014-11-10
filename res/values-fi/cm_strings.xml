@@ -16,7 +16,11 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="wifi_setting_countrycode_title">Wi\u2011Fi aluekoodi</string>
+  <string name="wifi_setting_countrycode_summary">Aseta Wi\u2011Fin aluekoodi</string>
   <string name="wifi_setting_countrycode_error">Ongelma aluekoodia asetettaessa.</string>
+  <string name="wifi_setting_priority_title">Wi\u2011Fi\u2011tukiasemien tärkeysjärjestys</string>
+  <string name="wifi_setting_priority_summary">Aseta Wi\u2011Fi\u2011tukiasemat tärkeysjärjestykseen</string>
   <string name="wifi_ssid_input_limit">SSID ylittää enimmäispituuden</string>
   <string name="p2p_device_name_input_limit">P2P-nimi ylittää enimmäispituuden</string>
   <string name="change_crypt_password_title">Vaihda salasana</string>
@@ -43,6 +47,7 @@
   <string name="profile_trigger_configure">Määritä käynnistin</string>
   <string name="profile_triggers">Käynnistimet</string>
   <string name="profile_trigger_filter_all">Kaikki käynnistimet</string>
+  <string name="profile_trigger_filter_wifi">Wi\u2011Fi\u2011käynnistimet</string>
   <string name="profile_trigger_filter_bluetooth">Bluetooth-käynnistimet</string>
   <string name="profile_write_nfc_tag">Kirjoita NFC-tunniste</string>
   <string name="profile_write_touch_tag">Kosketa tunnistetta kirjoittaaksesi</string>
@@ -108,8 +113,12 @@
   <string name="profile_lockmode_insecure_summary">Käytä epäturvallista lukitustapaa</string>
   <string name="profile_lockmode_disabled_summary">Lukitusnäyttö pois käytöstä</string>
   <string name="profile_airplanemode_title">Lentokonetila</string>
+  <string name="toggleWifi">Wi\u2011Fi</string>
+  <string name="toggleWifiAp">Kannettava Wi\u2011Fi\u2011hotspot</string>
   <string name="toggleBluetooth">Bluetooth</string>
   <string name="toggleGPS">GPS</string>
+  <string name="toggleData">Mobiilidata</string>
+  <string name="toggleSync">Tietojen automaattinen synkronointi</string>
   <string name="toggle2g3g">2G/3G</string>
   <string name="toggleWimax">WiMAX</string>
   <string name="toggleNfc">NFC</string>
@@ -228,6 +237,7 @@
   <string name="heads_up_blacklist_title">Musta lista</string>
   <string name="heads_up_disabled_notice">Ota leijuvat ilmoitukset käyttöön salliaksesi sovellusten näyttää interaktiivisia ilmoituksia ponnahdusikkunoissa.</string>
   <string name="title_tile_airplane">Lentokonetila</string>
+  <string name="title_tile_battery">Akku</string>
   <string name="title_tile_bluetooth">Bluetooth</string>
   <string name="title_tile_brightness">Kirkkaus</string>
   <string name="title_tile_camera">Kamera</string>
@@ -245,6 +255,8 @@
   <string name="title_tile_settings">Asetukset</string>
   <string name="title_tile_sound">Äänet</string>
   <string name="title_tile_sync">Synkronointi</string>
+  <string name="title_tile_wifiap">Wi\u2011Fi hotspot</string>
+  <string name="title_tile_wifi">Wi\u2011Fi</string>
   <string name="title_tile_user">Käyttäjätilin vaihto</string>
   <string name="title_tile_networkmode">Verkkotila</string>
   <string name="title_tile_nfc">NFC</string>
@@ -255,10 +267,12 @@
   <string name="title_tile_network_adb">ADB verkon yli</string>
   <string name="title_dynamic_tiles">Dynaamiset tiilet</string>
   <string name="dynamic_tiles_note_title">Huomautus</string>
+  <string name="dynamic_tiles_note_summary">Dynaamiset tiilet näkyvät vain järjestelmän käyttäessä niitä</string>
   <string name="title_dynamic_alarm">Herätyskello</string>
   <string name="title_dynamic_bugreport">Virheraportti</string>
   <string name="title_dynamic_dock_battery">Telakan akku</string>
   <string name="title_dynamic_equalizer">Taajuuskorjain</string>
+  <string name="title_dynamic_ime">Syöttötavan valitsin</string>
   <string name="title_dynamic_usbtether">USB-jakaminen</string>
   <string name="title_dynamic_wifi">Lähetysnäyttö</string>
   <string name="title_general">Yleiset</string>
@@ -410,6 +424,7 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="io_sched_title">I/O scheduler</string>
   <string name="perf_profile_title">Profiili</string>
   <string name="memory_management_title">Muistinhallinta</string>
+  <string name="pref_ksm_title">Kernel Samepage Merging</string>
   <string name="pref_ksm_summary">KSM vähentää fyysisen muistin tarvetta ja lisää suorituskykyä</string>
   <string name="pref_purgeable_assets_title">Salli muistin vapauttaminen</string>
   <string name="pref_purgeable_assets_summary">Bittikartan muistin vapauttaminen sallii enemmän RAMin vapauttamisen (uudelleenkäynnistys tarvitaan)</string>
@@ -484,6 +499,7 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="adb_notify">USB-viankorjausilmoitus</string>
   <string name="adb_notify_summary">Näytä ilmoitus, kun USB-viankorjaus on käytössä</string>
   <string name="adb_over_network">ADB verkon yli</string>
+  <string name="adb_over_network_summary">Salli TCP/IP virheenkorjaus verkon yli (Wi\u2011Fi\u2011, USB\u2011verkot). Tämä asetus nollataan uudelleenkäynnistyksen yhteydessä</string>
   <string name="adb_over_network_warning">VAROITUS: Kun ADB verkon yli on käytössä, laitteesi on vapaa hyökkäyksille kaikissa verkoissa, mukaanlukien mobiilidataverkossa!\n\nKäytä tätä ominaisuutta vain kun olet luotettavassa verkossa.\n\nHaluatko varmasti ottaa ominaisuuden käyttöön?</string>
   <string name="device_hostname">Laitteen verkkonimi</string>
   <string name="notification_drawer_title">Ilmoitusvalikko</string>
@@ -687,6 +703,7 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="status_bar_notif_count_title">Näytä ilmoitusten määrä</string>
   <string name="status_bar_notif_count_summary">Näyttää ilmoitusten määrän</string>
   <string name="development_shortcut_title">Kehittäjän pikakuvakkeet</string>
+  <string name="development_shortcut_summary">Ota sovelluksenhallinnan oikopolut käyttöön ilmoitusalueella ja viimeisimmissä sovelluksissa</string>
   <string name="usb_mass_storage_title">Massamuisti (UMS)</string>
   <string name="usb_mass_storage_summary">Voit siirtää tiedostoja tietokoneen ja SD-kortin välillä liittämällä sen flash-laitteena</string>
   <string name="storage_rescan_media">Skannaa tallennustilan media uudelleen</string>
@@ -697,6 +714,7 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="logger_summary">Hallitse kaatumislokien asetuksia</string>
   <string name="custom_runtime_warning_title">Varoitus</string>
   <string name="custom_runtime_warning_message">CyanogenMod ei tue ART-ympäristöä, sillä se on kokeellinen ominaisuus ja saattaa aiheuttaa epävakautta, kaatumisia, tietojen katoamista ja estää laitteen käynnistymisen. Lue lisää: &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;Pyydämme, ettet lähetä virheraportteja jos valitset ART-ympäristön.&lt;br/&gt;&lt;br/&gt;Oletko varma, että haluat vaihtaa suoritusympäristön Dalvik-ympäristöstä(<xliff:g id="old" example="libdvm.so">%1$s</xliff:g>) ART-ympäristöksi(<xliff:g id="new" example="libart.so">%2$s</xliff:g>)?</string>
+  <string name="gps_download_data_wifi_only">Lataa GPS\u2011avusteinen data vain Wi\u2011Fi\u2011verkoissa</string>
   <string name="battery_info_status_charging_dock_ac">(DockAC)</string>
   <string name="battery_info_status_charging_dock_usb">(DockUSB)</string>
   <string name="menu_stats_reset">Palauta oletukset</string>
@@ -738,6 +756,7 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="app_ops_summaries_modify_call_log">muokkaa puhelulokia</string>
   <string name="app_ops_summaries_read_calendar">lue kalenteria</string>
   <string name="app_ops_summaries_modify_calendar">muokkaa kalenteria</string>
+  <string name="app_ops_summaries_wifi_scan">Wi\u2011Fi skannaus</string>
   <string name="app_ops_summaries_notification">ilmoitus</string>
   <string name="app_ops_summaries_cell_scan">verkkohaku</string>
   <string name="app_ops_summaries_call_phone">soita puhelimella</string>
@@ -766,9 +785,12 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="app_ops_summaries_media_volume">median äänenvoimakkuus</string>
   <string name="app_ops_summaries_alarm_volume">hälytyksen äänenvoimakkuus</string>
   <string name="app_ops_summaries_notification_volume">ilmoituksen äänenvoimakkuus</string>
+  <string name="app_ops_summaries_bluetooth_volume">Bluetoothin äänenvoimakkuus</string>
   <string name="app_ops_summaries_keep_awake">pidä hereillä</string>
   <string name="app_ops_summaries_monitor_location">tarkkaile sijaintia</string>
   <string name="app_ops_summaries_monitor_high_power_location">näytä erittäin tarkka sijainti</string>
+  <string name="app_ops_summaries_wifi_change">Wi\u2011Fin vaihto</string>
+  <string name="app_ops_summaries_bluetooth_change">Bluetoothin vaihto</string>
   <string name="app_ops_summaries_data_change">datan vaihto</string>
   <string name="app_ops_summaries_alarm_wakeup">herätys</string>
   <string name="app_ops_summaries_send_mms">lähetä multimediaviestejä</string>
@@ -808,6 +830,7 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="app_ops_labels_notification_volume">Ilmoituksen äänenvoimakkuus</string>
   <string name="app_ops_labels_bluetooth_volume">Bluetoothin äänenvoimakkuus</string>
   <string name="app_ops_labels_keep_awake">Pidä hereillä</string>
+  <string name="app_ops_labels_wifi_change">Wi\u2011Fin vaihto</string>
   <string name="app_ops_labels_bluetooth_change">Bluetoothin vaihto</string>
   <string name="app_ops_labels_data_change">Datan vaihto</string>
   <string name="app_ops_labels_alarm_wakeup">Herätys</string>
@@ -849,9 +872,10 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="voice_wakeup_activity_title">Avattava toiminto</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
   <string name="sub_no_sim">Ei SIMiä</string>
+  <string name="multi_sim_settings_title">SIM-kortit</string>
   <string name="multi_sim_settings_group_summary">Oletus-SIMin valinta</string>
   <string name="voice_title">Äänipuhelut</string>
-  <string name="data_title">Datapuhelut</string>
+  <string name="data_title">Datayhteys</string>
   <string name="sms_title">Tekstiviestin lähetys</string>
   <string name="priority_sub_title">Ensisijainen tilaus</string>
   <string name="bluetooth_accept_all_files">Hyväksy kaikki tiedostotyypit</string>
@@ -882,13 +906,35 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="block_notifications_title">Suodata ilmoitukset</string>
   <string name="block_notifications_summary">Hallitse estettyjä ilmoituksia ja suodattimia</string>
   <string name="no_filters_title">Suodattimia ei asetettu. Suodattaaksesi ilmoituksen, paina ilmoitusta pitkään ja valitse \"Älä huomioi tämänlaisia viestejä\".</string>
+  <string name="usb_sd_eject">Irroita USB-muisti</string>
+  <string name="usb_sd_eject_summary">Irroita USB-muisti, jotta voit poistaa sen turvallisesti</string>
+  <string name="usb_sd_insert_summary">Aseta USB-muisti liittääksesi</string>
+  <string name="usb_sd_mount">Liitä USB-muisti</string>
+  <string name="usb_sd_format">Tyhjennä USB-muisti</string>
+  <string name="usb_sd_format_summary">Poistaa kaikki tiedot USB-muistilta, kuten musiikit ja valokuvat</string>
+  <string name="usb_dlg_confirm_unmount_title">Irroita USB-muisti?</string>
+  <string name="usb_dlg_confirm_unmount_text">Jos irroitat USB-muistin, jotkut käyttämäsi sovellukset pysähtyvät ja saattavat olla poissa käytöstä, kunnes kiinnität USB-muistin uudelleen.</string>
+  <string name="usb_dlg_error_unmount_text">USB-muistin irroitus epäonnistui. Yritä myöhemmin uudelleen.</string>
   <string name="usb_unmount_inform_text">USB-muisti irroitetaan.</string>
+  <string name="usb_sd_ejecting_title">Irroitetaan USB-muistia</string>
+  <string name="usb_sd_ejecting_summary">USB-muistin irroitus käynnissä</string>
   <string name="usb_media_format_title">Tyhjennä USB-muisti</string>
   <string name="usb_media_format_desc">Tyhjennetäänkö USB-muisti? Menetät <b>kaikki</b> tallennetut tiedot!</string>
   <string name="usb_media_format_button_text">Tyhjennä USB-muisti</string>
   <string name="usb_media_format_final_desc">Tyhjennetäänkö USB-muisti poistamalla kaikki tallennetut tiedot? Toimintoa ei voi peruuttaa!</string>
   <string name="usb_media_format_gesture_explanation">Sinun tulee piirtää lukituskuviosi vahvistaaksesi että haluat tyhjentää USB-muistin.</string>
+  <string name="sd_sd_eject">Irroita SD-kortti</string>
+  <string name="sd_sd_eject_summary">Irroita SD-kortti, jotta voit poistaa sen turvallisesti</string>
+  <string name="sd_sd_insert_summary">Aseta SD-kortti liittääksesi</string>
+  <string name="sd_sd_mount">Liitä SD-kortti</string>
+  <string name="sd_sd_format">Tyhjennä SD-kortti</string>
+  <string name="sd_sd_format_summary">Poistaa kaikki tiedot SD-kortilta, kuten musiikit ja valokuvat</string>
+  <string name="sd_dlg_confirm_unmount_title">Irroita SD-kortti?</string>
+  <string name="sd_dlg_confirm_unmount_text">Jos irroitat SD-kortin, jotkut käyttämäsi sovellukset pysähtyvät ja saattavat olla poissa käytöstä, kunnes kiinnität SD-kortin uudelleen.</string>
+  <string name="sd_dlg_error_unmount_text">SD-kortin irroitus epäonnistui. Yritä myöhemmin uudelleen.</string>
   <string name="sd_unmount_inform_text">SD-kortti irroitetaan.</string>
+  <string name="sd_sd_ejecting_title">Irroitetaan SD-korttia</string>
+  <string name="sd_sd_ejecting_summary">SD-kortin irroitus käynnissä</string>
   <string name="sd_media_format_title">Tyhjennä SD-kortti</string>
   <string name="sd_media_format_desc">Tyhjennetäänkö SD-kortti? Menetät <b>kaikki</b> tallennetut tiedot!</string>
   <string name="sd_media_format_button_text">Tyhjennä SD-kortti</string>
@@ -908,7 +954,10 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="enable_quickboot_title">QuickBoot-tila</string>
   <string name="enable_quickboot_summary">Aseta laite QuickBoot-tilaan normaalin tilan sijaan.</string>
   <string name="data_usage_tab_slot">SIM  </string>
+  <string name="sel_sub_title">Määritä SIM-kortit</string>
+  <string name="sel_sub_summary">Valitse SIM-korttisi</string>
   <string name="no_sim_info">SIM-kortin tiedot eivät ole käytettävissä.\nValikkoa ei voi käyttää</string>
+  <string name="subs_settings">SIM-kortin tila</string>
   <string name="set_data_subscription_progress">Asetetaan datatilausta\u2026</string>
   <string name="set_dds_success">Datatilaus asetettu onnistuneesti</string>
   <string name="set_dds_failed">Virhe asetettaessa datatilausta. Poista edelliset datayhteydet ja yritä uudelleen.</string>
@@ -916,8 +965,7 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="set_sms_error">Virhe määrittäessä tekstiviestitilausta. Tilaus ei ole aktiivinen.</string>
   <string name="set_voice_error">Virhe asettaessa puhelutilausta. Tilaus ei ole aktiivinen.</string>
   <string name="set_priority_sub_error">Virhe asettaessa ensisijaista tilausta. Tilaus ei ole aktiivinen.</string>
-  <string name="prompt">Kehote</string>
-  <string name="prompt_user">Kehota käyttäjää</string>
+  <string name="prompt">Kysy aina</string>
   <string name="maximum_head_level">Pää: %1$s W/kg</string>
   <string name="maximum_body_level">Vartalo: %1$s W/kg</string>
   <string name="tune_away_title">TuneAway</string>
@@ -943,6 +991,7 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="profile_action_none">Ei toimintoa</string>
   <string name="profile_action_disabled">Poista käytöstä</string>
   <string name="profile_action_enable">Ota käyttöön</string>
+  <string name="profile_tabs_wifi">Wi\u2011Fi</string>
   <string name="profile_tabs_bluetooth">Bluetooth</string>
   <string name="profile_tabs_nfc">NFC</string>
   <string name="profile_setup_setup_triggers_title">Vaihe 1: Lisää käynnistimiä</string>
@@ -950,6 +999,7 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="profile_setup_actions_title">Vaihe 2: Aseta toiminnot</string>
   <string name="profile_setup_actions_title_config">Määritä toiminnot</string>
   <string name="no_bluetooth_triggers">Bluetooth-käynnistimiä ei saatavilla</string>
+  <string name="no_wifi_triggers">Wi\u2011Fi\u2011käynnistimiä ei saatavilla</string>
   <string name="profile_setup_setup_triggers_description">Valitse käynnistimet jotka aktivoivat tämän profiilin</string>
   <string name="profile_setup_actions_description">Määritä nyt mitä tapahtuu kun profiili on aktivoitu</string>
 </resources>

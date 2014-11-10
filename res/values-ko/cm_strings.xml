@@ -16,7 +16,11 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="wifi_setting_countrycode_title">Wi\u2011Fi 지역 코드</string>
+  <string name="wifi_setting_countrycode_summary">Wi\u2011Fi 지역 코드를 지정하기</string>
   <string name="wifi_setting_countrycode_error">지역 코드 설정에 문제가 발생했습니다.</string>
+  <string name="wifi_setting_priority_title">Wi\u2011Fi 우선 순위</string>
+  <string name="wifi_setting_priority_summary">Wi\u2011Fi 네트워크의 우선 순위를 지정하기</string>
   <string name="wifi_ssid_input_limit">SSID 길이가 최대치를 초과했습니다</string>
   <string name="p2p_device_name_input_limit">P2P 이름 길이가 최대치를 초과했습니다</string>
   <string name="change_crypt_password_title">비밀번호 변경</string>
@@ -43,6 +47,7 @@
   <string name="profile_trigger_configure">트리거 구성</string>
   <string name="profile_triggers">트리거</string>
   <string name="profile_trigger_filter_all">모든 트리거</string>
+  <string name="profile_trigger_filter_wifi">Wi\u2011Fi 트리거</string>
   <string name="profile_trigger_filter_bluetooth">블루투스 트리거</string>
   <string name="profile_write_nfc_tag">NFC 태그에 쓰기</string>
   <string name="profile_write_touch_tag">태그를 터치해 작성</string>
@@ -108,8 +113,12 @@
   <string name="profile_lockmode_insecure_summary">안전하지 않은 잠금화면 사용</string>
   <string name="profile_lockmode_disabled_summary">잠금 화면을 사용하지 않음</string>
   <string name="profile_airplanemode_title">비행기 모드</string>
+  <string name="toggleWifi">Wi\u2011Fi</string>
+  <string name="toggleWifiAp">휴대용 Wi\u2011Fi 핫스팟</string>
   <string name="toggleBluetooth">블루투스</string>
   <string name="toggleGPS">GPS</string>
+  <string name="toggleData">모바일 데이터</string>
+  <string name="toggleSync">자동 동기화 데이터</string>
   <string name="toggle2g3g">2G/3G</string>
   <string name="toggleWimax">WiMAX</string>
   <string name="toggleNfc">NFC</string>
@@ -228,6 +237,7 @@
   <string name="heads_up_blacklist_title">블랙리스트</string>
   <string name="heads_up_disabled_notice">앱이 대화형 알림 팝업을 표시하게 하려면 헤드 업을 활성화하세요. </string>
   <string name="title_tile_airplane">비행기 모드</string>
+  <string name="title_tile_battery">배터리</string>
   <string name="title_tile_bluetooth">블루투스</string>
   <string name="title_tile_brightness">밝기</string>
   <string name="title_tile_camera">카메라</string>
@@ -245,6 +255,8 @@
   <string name="title_tile_settings">설정</string>
   <string name="title_tile_sound">소리</string>
   <string name="title_tile_sync">동기화</string>
+  <string name="title_tile_wifiap">Wi\u2011Fi 핫스팟</string>
+  <string name="title_tile_wifi">Wi\u2011Fi</string>
   <string name="title_tile_user">사용자 전환</string>
   <string name="title_tile_networkmode">네트워크 모드</string>
   <string name="title_tile_nfc">NFC</string>
@@ -255,10 +267,13 @@
   <string name="title_tile_network_adb">네트워크를 통한 ADB</string>
   <string name="title_dynamic_tiles">동적 타일</string>
   <string name="dynamic_tiles_note_title">노트</string>
+  <string name="dynamic_tiles_note_summary">동적 타일은 시스템 이벤트에 의해 발생했을 경우에만 나타납니다</string>
   <string name="title_dynamic_alarm">알람 시계</string>
   <string name="title_dynamic_bugreport">버그 신고</string>
   <string name="title_dynamic_dock_battery">독 배터리</string>
   <string name="title_dynamic_equalizer">이퀄라이저</string>
+  <string name="title_dynamic_ime">입력 방법 선택기</string>
+  <string name="title_dynamic_usbtether">USB 테더링</string>
   <string name="title_dynamic_wifi">화면 캐스트</string>
   <string name="title_general">일반</string>
   <string name="title_quick_pulldown">빠른 내리기</string>
@@ -409,6 +424,7 @@
   <string name="io_sched_title">I/O 스케줄러</string>
   <string name="perf_profile_title">프로필</string>
   <string name="memory_management_title">메모리 관리</string>
+  <string name="pref_ksm_title">커널 공유 메모리 (KSM)</string>
   <string name="pref_ksm_summary">KSM은 실제 메모리 요구 사항을 줄이고 성능을 향상시킵니다</string>
   <string name="pref_purgeable_assets_title">자원 제거 허용</string>
   <string name="pref_purgeable_assets_summary">필요한 경우 비트맵 메모리 자원을 제거해 더 많은 메모리를 확보 (재시작 필요)</string>
@@ -483,6 +499,7 @@
   <string name="adb_notify">USB 디버깅 알림</string>
   <string name="adb_notify_summary">USB 디버깅 상태에서 연결될 때 알림 표시</string>
   <string name="adb_over_network">네트워크를 통한 ADB</string>
+  <string name="adb_over_network_summary">네트워크 인터페이스(Wi\u2011Fi, USB 네트워크)를 통한 TCP/IP 디버깅을 사용합니다. 이 설정은 재부팅 시 초기화됩니다.</string>
   <string name="adb_over_network_warning">경고: 네트워크를 통한 ADB가 활성화되면 당신의 장치가 데이터 네트워크를 포함한 모든 연결된 네트워크로부터의 침입을 허용하게 됩니다! \n\n신뢰할 수 있는 네트워크에 연결된 경우에만 이 기능을 사용하십시오.\n\n정말 이 기능을 활성화하시겠습니까?</string>
   <string name="device_hostname">장치 호스트명</string>
   <string name="notification_drawer_title">알림 서랍</string>
@@ -686,6 +703,7 @@
   <string name="status_bar_notif_count_title">알림 갯수 표시</string>
   <string name="status_bar_notif_count_summary">읽지 않은 알림 숫자 표시</string>
   <string name="development_shortcut_title">개발용 바로가기</string>
+  <string name="development_shortcut_summary">알림 영역과 최근 사용한 앱 영역에 앱 관리 바로가기 사용</string>
   <string name="usb_mass_storage_title">대용량 저장장치 (UMS)</string>
   <string name="usb_mass_storage_summary">SD 카드를 플래시 장치로 마운트해 컴퓨터와 파일을 주고받을 수 있게 합니다</string>
   <string name="storage_rescan_media">스토리지 볼륨을 다시 미디어 스캔</string>
@@ -696,6 +714,7 @@
   <string name="logger_summary">오류 보고 설정 관리</string>
   <string name="custom_runtime_warning_title">경고</string>
   <string name="custom_runtime_warning_message">ART는 매우 실험적인 기능이며, 시스템의 불안정, 충돌, 데이터 손실 등을 야기하거나 기기를 켜지지 않게 할 수도 있으므로 CyanogenMod는 이를 공식적으로 지원하지 않고 있습니다. 자세한 정보는 &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt;에서 확인할 수 있습니다.&lt;br/&gt;&lt;br/&gt;ART를 런타임으로 사용할 경우 버그 리포트를 제출하지 말아주십시오.&lt;br/&gt;&lt;br/&gt;시스템을 재시작하여 런타임을 <xliff:g id="old" example="libdvm.so">%1$s</xliff:g>에서 <xliff:g id="new" example="libart.so">%2$s</xliff:g>로 변경하시겠습니까?</string>
+  <string name="gps_download_data_wifi_only">GPS 보조 데이터를 Wi\u2011Fi 네트워크를 통해서만 다운로드</string>
   <string name="battery_info_status_charging_dock_ac">(독 AC)</string>
   <string name="battery_info_status_charging_dock_usb">(독 USB)</string>
   <string name="menu_stats_reset">초기화</string>
@@ -737,6 +756,7 @@
   <string name="app_ops_summaries_modify_call_log">통화 기록 수정</string>
   <string name="app_ops_summaries_read_calendar">일정 읽기</string>
   <string name="app_ops_summaries_modify_calendar">일정 수정</string>
+  <string name="app_ops_summaries_wifi_scan">Wi\u2011Fi 검색</string>
   <string name="app_ops_summaries_notification">알림</string>
   <string name="app_ops_summaries_cell_scan">기지국 검색</string>
   <string name="app_ops_summaries_call_phone">전화 걸기</string>
@@ -765,9 +785,12 @@
   <string name="app_ops_summaries_media_volume">미디어 볼륨</string>
   <string name="app_ops_summaries_alarm_volume">알람 볼륨</string>
   <string name="app_ops_summaries_notification_volume">알림 볼륨</string>
+  <string name="app_ops_summaries_bluetooth_volume">블루투스 볼륨</string>
   <string name="app_ops_summaries_keep_awake">켜짐 유지</string>
   <string name="app_ops_summaries_monitor_location">위치 추적</string>
   <string name="app_ops_summaries_monitor_high_power_location">고성능 위치 추적</string>
+  <string name="app_ops_summaries_wifi_change">Wi\u2011Fi 변경</string>
+  <string name="app_ops_summaries_bluetooth_change">블루투스 변경</string>
   <string name="app_ops_summaries_data_change">데이터 변경</string>
   <string name="app_ops_summaries_alarm_wakeup">장치 깨우기</string>
   <string name="app_ops_summaries_send_mms">MMS 보내기</string>
@@ -807,6 +830,7 @@
   <string name="app_ops_labels_notification_volume">알림 볼륨</string>
   <string name="app_ops_labels_bluetooth_volume">블루투스 볼륨</string>
   <string name="app_ops_labels_keep_awake">켜짐 유지</string>
+  <string name="app_ops_labels_wifi_change">Wi\u2011Fi 변경</string>
   <string name="app_ops_labels_bluetooth_change">블루투스 변경</string>
   <string name="app_ops_labels_data_change">데이터 변경</string>
   <string name="app_ops_labels_alarm_wakeup">깨우기</string>
@@ -848,9 +872,10 @@
   <string name="voice_wakeup_activity_title">실행할 동작</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
   <string name="sub_no_sim">SIM 없음</string>
+  <string name="multi_sim_settings_title">SIM 카드</string>
   <string name="multi_sim_settings_group_summary">기본 SIM 선택</string>
   <string name="voice_title">음성 통화</string>
-  <string name="data_title">데이터 통화</string>
+  <string name="data_title">데이터 연결</string>
   <string name="sms_title">SMS 전송</string>
   <string name="priority_sub_title">우선 회선</string>
   <string name="bluetooth_accept_all_files">모든 파일 파일 형식 허용</string>
@@ -861,6 +886,7 @@
   <string name="menu_hidden_apps_reset_lock">패턴 잠금 초기화</string>
   <string name="protected_apps">보호된 애플리케이션</string>
   <string name="saving_protected_components">구성요소 상태 저장\u2026</string>
+  <string name="launch_app">어플리케이션 실행</string>
   <string name="pa_login_username_hint">사용자 이름 (이메일)</string>
   <string name="pa_login_password_hint">비밀번호</string>
   <string name="pa_login_submit_button">로그인</string>
@@ -879,13 +905,35 @@
   <string name="block_notifications_title">알림 필터</string>
   <string name="block_notifications_summary">무시할 알림 및 필터 관리</string>
   <string name="no_filters_title">필터가 설정되어 있지 않습니다. 알림을 걸러내려면 길게 누른 뒤 \'이와 같은 메시지 무시\'를 선택하십시오.</string>
+  <string name="usb_sd_eject">USB 저장소 마운트 해제</string>
+  <string name="usb_sd_eject_summary">USB 저장소를 마운트 해제하여 안전하게 제거</string>
+  <string name="usb_sd_insert_summary">마운트할 USB 저장소 삽입</string>
+  <string name="usb_sd_mount">USB 저장소 마운트</string>
+  <string name="usb_sd_format">USB 저장소 지우기</string>
+  <string name="usb_sd_format_summary">USB 저장소에 있는 모든 데이터(예: 음악 및 사진) 지우기</string>
+  <string name="usb_dlg_confirm_unmount_title">USB 저장소를 마운트 해제하시겠습니까?</string>
+  <string name="usb_dlg_confirm_unmount_text">USB 저장소를 마운트 해제하면 사용 중인 일부 앱이 중지되고 USB 저장소를 다시 마운트할 때까지 사용할 수 없게 됩니다.</string>
+  <string name="usb_dlg_error_unmount_text">USB 저장소를 마운트 해제할 수 없습니다. 나중에 다시 시도해주세요.</string>
   <string name="usb_unmount_inform_text">USB 저장소가 마운트 해제됩니다.</string>
+  <string name="usb_sd_ejecting_title">USB 저장소 마운트 해제 중</string>
+  <string name="usb_sd_ejecting_summary">USB 저장소 마운트 해제 중</string>
   <string name="usb_media_format_title">USB 저장소 지우기</string>
   <string name="usb_media_format_desc">USB 저장소를 지우시겠습니까? 저장소에 저장된 <b>모든</b> 데이터가 삭제되니 주의하세요!</string>
   <string name="usb_media_format_button_text">USB 저장소 지우기</string>
   <string name="usb_media_format_final_desc">USB 저장소를 지우고 저장된 모든 파일을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다!</string>
   <string name="usb_media_format_gesture_explanation">USB 저장소를 지우려면 잠금 해제 패턴을 입력하십시오.</string>
+  <string name="sd_sd_eject">SD 카드 마운트 해제</string>
+  <string name="sd_sd_eject_summary">SD 카드를 마운트 해제하여 안전하게 제거</string>
+  <string name="sd_sd_insert_summary">마운트할 SD 카드 삽입</string>
+  <string name="sd_sd_mount">SD 카드 마운트</string>
+  <string name="sd_sd_format">SD 카드 지우기</string>
+  <string name="sd_sd_format_summary">SD 카드에 있는 모든 데이터(예: 음악 및 사진) 지우기</string>
+  <string name="sd_dlg_confirm_unmount_title">SD 카드를 마운트 해제하시겠습니까?</string>
+  <string name="sd_dlg_confirm_unmount_text">SD 카드를 마운트 해제하면 사용 중인 일부 앱이 중지되고 SD 카드를 다시 마운트할 때까지 사용할 수 없게 됩니다.</string>
+  <string name="sd_dlg_error_unmount_text">SD 카드를 마운트 해제할 수 없습니다. 나중에 다시 시도해주세요.</string>
   <string name="sd_unmount_inform_text">SD 카드가 마운트 해제됩니다.</string>
+  <string name="sd_sd_ejecting_title">SD 카드 마운트 해제 중</string>
+  <string name="sd_sd_ejecting_summary">SD 카드 마운트 해제 중</string>
   <string name="sd_media_format_title">SD 카드 지우기</string>
   <string name="sd_media_format_desc">SD 카드를 지우시겠습니까? 카드에 저장된 <b>모든</b> 데이터가 삭제되니 주의하세요!</string>
   <string name="sd_media_format_button_text">SD 카드 지우기</string>
@@ -905,7 +953,10 @@
   <string name="enable_quickboot_title">QuickBoot 모드 활성화</string>
   <string name="enable_quickboot_summary">장치를 일반적인 종료 대신 QuickBoot 모드로 종료합니다.</string>
   <string name="data_usage_tab_slot">SIM </string>
+  <string name="sel_sub_title">SIM 카드 구성</string>
+  <string name="sel_sub_summary">SIM 카드 선택</string>
   <string name="no_sim_info">SIM 카드 정보를 사용할 수 없습니다.\n메뉴에 액세스할 수 없습니다</string>
+  <string name="subs_settings">SIM 카드 상태</string>
   <string name="set_data_subscription_progress">데이터 회선 설정 중\u2026</string>
   <string name="set_dds_success">데이터 회선이 성공적으로 설정되었습니다</string>
   <string name="set_dds_failed">데이터 회선을 설정하는 도중에 오류가 발생했습니다. 데이터 연결을 모두 끊고 다시 시도해보십시오.</string>
@@ -913,8 +964,7 @@
   <string name="set_sms_error">SMS 회선을 설정하는 도중에 오류가 발생했습니다. 회선이 비활성화되어 있습니다.</string>
   <string name="set_voice_error">음성통화 회선을 설정하는 도중에 오류가 발생했습니다. 회선이 비활성화되어 있습니다.</string>
   <string name="set_priority_sub_error">우선순위 회선을 설정하는 도중에 오류가 발생했습니다. 회선이 비활성화되어 있습니다.</string>
-  <string name="prompt">알림</string>
-  <string name="prompt_user">사용자에게 알림</string>
+  <string name="prompt">항상 물어보기</string>
   <string name="maximum_head_level">머리: %1$s W/kg</string>
   <string name="maximum_body_level">몸: %1$s W/kg</string>
   <string name="tune_away_title">TuneAway</string>
@@ -940,6 +990,7 @@
   <string name="profile_action_none">동작 없음</string>
   <string name="profile_action_disabled">사용 안 함</string>
   <string name="profile_action_enable">사용함</string>
+  <string name="profile_tabs_wifi">Wi\u2011Fi</string>
   <string name="profile_tabs_bluetooth">블루투스</string>
   <string name="profile_tabs_nfc">NFC</string>
   <string name="profile_setup_setup_triggers_title">1단계: 트리거 추가</string>
@@ -947,6 +998,7 @@
   <string name="profile_setup_actions_title">2단계: 동작 설정</string>
   <string name="profile_setup_actions_title_config">동작 다시 설정</string>
   <string name="no_bluetooth_triggers">사용 가능한 블루투스 트리거 없음</string>
+  <string name="no_wifi_triggers">사용 가능한 Wi\u2011Fi 트리거 없음</string>
   <string name="profile_setup_setup_triggers_description">이 프로필을 활성화할 트리거를 선택해주십시오</string>
   <string name="profile_setup_actions_description">이 프로필이 활성화되면 무엇을 할 것인지 설정해주십시오</string>
 </resources>
