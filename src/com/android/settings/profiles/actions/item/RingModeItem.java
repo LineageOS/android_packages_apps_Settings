@@ -79,7 +79,7 @@ public class RingModeItem implements Item {
                 return R.string.ring_mode_mute;
             }
         } else {
-            return R.string.ring_mode_normal;
+            return R.string.ring_mode_unchanged;
         }
     }
 

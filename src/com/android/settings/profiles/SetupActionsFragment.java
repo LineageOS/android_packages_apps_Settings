@@ -382,13 +382,15 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
 
         int defaultIndex = 0; // normal by default
         if (setting.isOverride()) {
-            if (setting.getValue().equals(values[1] /* vibrate */)) {
+            if (setting.getValue().equals(values[0] /* normal */)) {
+                defaultIndex = 0;
+            } else if (setting.getValue().equals(values[1] /* vibrate */)) {
                 defaultIndex = 1; // enabled
             } else if (setting.getValue().equals(values[2] /* mute */)) {
                 defaultIndex = 2; // mute
-            } else {
-                defaultIndex = 1; // disabled
             }
+        } else {
+            defaultIndex = 3;
         }
 
         builder.setTitle(R.string.ring_mode_title);
@@ -397,16 +399,20 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
             @Override
             public void onClick(DialogInterface dialog, int item) {
                 switch (item) {
-                    case 0: // disable override
-                        setting.setOverride(false);
+                    case 0: // enable override, normal
+                        setting.setOverride(true);
+                        setting.setValue(values[0]);
                         break;
-                    case 1: // enable override, disable
+                    case 1: // enable override, vibrate
                         setting.setOverride(true);
                         setting.setValue(values[1]);
                         break;
-                    case 2: // enable override, enable
+                    case 2: // enable override, mute
                         setting.setOverride(true);
                         setting.setValue(values[2]);
+                        break;
+                    case 3:
+                        setting.setOverride(false);
                         break;
                 }
                 mProfile.setRingMode(setting);
@@ -484,6 +490,7 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 int value = seekBar.getProgress();
+                streamSettings.setOverride(true);
                 streamSettings.setValue(value);
                 mProfile.setStreamSettings(streamSettings);
                 mAdapter.notifyDataSetChanged();
