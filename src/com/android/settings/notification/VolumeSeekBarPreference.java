@@ -41,6 +41,7 @@ public class VolumeSeekBarPreference extends SeekBarPreference
     private SeekBarVolumizer mVolumizer;
     private Callback mCallback;
     private ImageView mIconView;
+    private boolean mEnabled = true;
 
     public VolumeSeekBarPreference(Context context, AttributeSet attrs, int defStyleAttr,
             int defStyleRes) {
@@ -65,6 +66,11 @@ public class VolumeSeekBarPreference extends SeekBarPreference
 
     public void setCallback(Callback callback) {
         mCallback = callback;
+    }
+
+    public void setVolumizerEnabled(boolean enabled) {
+        mEnabled = enabled;
+        mVolumizer.setSeekBar(enabled ? mSeekBar : null);
     }
 
     @Override
@@ -105,7 +111,9 @@ public class VolumeSeekBarPreference extends SeekBarPreference
                 }
             };
         }
-        mVolumizer.setSeekBar(mSeekBar);
+        if (mEnabled) {
+            mVolumizer.setSeekBar(mSeekBar);
+        }
         mIconView = (ImageView) view.findViewById(com.android.internal.R.id.icon);
         mCallback.onStreamValueChanged(mStream, mSeekBar.getProgress());
     }
