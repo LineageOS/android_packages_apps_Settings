@@ -45,6 +45,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.settings.RestrictedSettingsFragment;
@@ -73,6 +74,8 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     private static final String KEY_SMS = "sim_sms";
     private static final String KEY_ACTIVITIES = "activities";
     private static final String KEY_PRIMARY_SUB_SELECT = "select_primary_sub";
+
+    private long mPreferredDataSubscription;
 
     private static final int EVT_UPDATE = 1;
     private static int mNumSlots = 0;
@@ -111,6 +114,8 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
 
         mNumSlots = tm.getSimCount();
 
+        mPreferredDataSubscription = SubscriptionManager.getDefaultDataSubId();
+
         createPreferences();
         updateAllOptions();
         IntentFilter intentFilter =
@@ -135,6 +140,13 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             Log.d(TAG, "Intent received: " + action);
             if (TelephonyIntents.ACTION_DEFAULT_DATA_SUBSCRIPTION_CHANGED.equals(action)) {
                 updateCellularDataValues();
+                long preferredDataSubscription = SubscriptionManager.getDefaultDataSubId();
+                if (preferredDataSubscription != mPreferredDataSubscription) {
+                    mPreferredDataSubscription = preferredDataSubscription;
+                    String status = getResources().getString(R.string.switch_data_subscription,
+                            SubscriptionManager.getSlotId(preferredDataSubscription) + 1);
+                    Toast.makeText(getActivity(), status, Toast.LENGTH_SHORT).show();
+                }
             } else if (TelephonyIntents.ACTION_SUBINFO_CONTENT_CHANGE.equals(action)
                     || TelephonyIntents.ACTION_SUBINFO_RECORD_UPDATED.equals(action)) {
                 mAvailableSubInfos.clear();
