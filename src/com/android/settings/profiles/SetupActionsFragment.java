@@ -42,6 +42,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SeekBar;
@@ -479,10 +481,22 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
 
         final AudioManager am = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
         final LayoutInflater inflater = LayoutInflater.from(getActivity());
-        final View view = inflater.inflate(com.android.internal.R.layout.seekbar_dialog, null);
-        final SeekBar seekBar = (SeekBar) view.findViewById(com.android.internal.R.id.seekbar);
+        final View view = inflater.inflate(R.layout.dialog_profiles_volume_override, null);
+        final SeekBar seekBar = (SeekBar) view.findViewById(R.id.seekbar);
+        final CheckBox override = (CheckBox) view.findViewById(R.id.checkbox);
+        override.setChecked(streamSettings.isOverride());
+        override.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                streamSettings.setOverride(isChecked);
+                seekBar.setEnabled(isChecked);
 
-        view.findViewById(android.R.id.icon).setVisibility(View.GONE);
+                mProfile.setStreamSettings(streamSettings);
+                mAdapter.notifyDataSetChanged();
+                updateProfile();
+            }
+        });
+        seekBar.setEnabled(streamSettings.isOverride());
         seekBar.setMax(am.getStreamMaxVolume(streamId));
         seekBar.setProgress(streamSettings.getValue());
         builder.setView(view);
@@ -490,7 +504,6 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 int value = seekBar.getProgress();
-                streamSettings.setOverride(true);
                 streamSettings.setValue(value);
                 mProfile.setStreamSettings(streamSettings);
                 mAdapter.notifyDataSetChanged();
