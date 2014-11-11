@@ -69,10 +69,13 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
     private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
     private static final String KEY_LOCK_SCREEN_NOTIFICATIONS = "lock_screen_notifications";
     private static final String KEY_NOTIFICATION_ACCESS = "manage_notification_access";
+    private static final String KEY_INCREASING_RING_MIN_VOLUME = "increasing_ring_min_volume";
 
     private static final int SAMPLE_CUTOFF = 2000;  // manually cap sample playback at 2 seconds
 
     private final VolumePreferenceCallback mVolumeCallback = new VolumePreferenceCallback();
+    private final IncreasingRingtoneMinVolumeCallback mIncreasingRingMinVolumeCallback =
+            new IncreasingRingtoneMinVolumeCallback();
     private final H mHandler = new H();
     private final SettingsObserver mSettingsObserver = new SettingsObserver();
 
@@ -82,6 +85,8 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
     private Vibrator mVibrator;
     private VolumeSeekBarPreference mRingOrNotificationPreference;
 
+    private TwoStatePreference mIncreasingRing;
+    private IncreasingRingMinVolumePreference mIncreasingRingMinVolume;
     private Preference mPhoneRingtonePreference;
     private Preference mNotificationRingtonePreference;
     private TwoStatePreference mVibrateWhenRinging;
@@ -120,6 +125,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         }
         initRingtones(sound);
         initVibrateWhenRinging(sound);
+        initIncreasingRing(sound);
 
         final PreferenceCategory notification = (PreferenceCategory)
                 findPreference(KEY_NOTIFICATION);
@@ -135,6 +141,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         super.onResume();
         refreshNotificationListeners();
         lookupRingtoneNames();
+        updateIncreasingRing();
         mSettingsObserver.register(true);
     }
 
@@ -169,6 +176,9 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         public void onSampleStarting(SeekBarVolumizer sbv) {
             if (mCurrent != null && mCurrent != sbv) {
                 mCurrent.stopSample();
+            }
+            if (mIncreasingRingMinVolume != null) {
+                mIncreasingRingMinVolume.stopSample();
             }
             mCurrent = sbv;
             if (mCurrent != null) {
@@ -265,6 +275,48 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
             }
         }
         return summary;
+    }
+
+    // === Increasing ringtone ===
+
+    private final class IncreasingRingtoneMinVolumeCallback implements
+            IncreasingRingMinVolumePreference.Callback {
+        @Override
+        public void onChangeStarting() {
+            mVolumeCallback.stopSample();
+            mRingOrNotificationPreference.setVolumizerEnabled(false);
+        }
+
+        @Override
+        public void onChangeStopped() {
+            mRingOrNotificationPreference.setVolumizerEnabled(true);
+        }
+    };
+
+    private void initIncreasingRing(PreferenceCategory root) {
+        mIncreasingRing = (TwoStatePreference)
+                root.findPreference(Settings.System.INCREASING_RING);
+        mIncreasingRingMinVolume = (IncreasingRingMinVolumePreference)
+                root.findPreference(KEY_INCREASING_RING_MIN_VOLUME);
+
+        if (mIncreasingRing == null || mIncreasingRingMinVolume == null || !mVoiceCapable) {
+            if (mIncreasingRing != null) {
+                root.removePreference(mIncreasingRing);
+                mIncreasingRing = null;
+            }
+            if (mIncreasingRingMinVolume != null) {
+                root.removePreference(mIncreasingRingMinVolume);
+                mIncreasingRingMinVolume = null;
+            }
+            return;
+        }
+        updateVibrateWhenRinging();
+        mIncreasingRingMinVolume.setCallback(mIncreasingRingMinVolumeCallback);
+    }
+
+    private void updateIncreasingRing() {
+        if (mIncreasingRing == null) return;
+        mIncreasingRingMinVolume.setEnabled(mIncreasingRing.isChecked());
     }
 
     // === Vibrate when ringing ===
@@ -423,11 +475,12 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
                 Settings.System.getUriFor(Settings.System.VIBRATE_WHEN_RINGING);
         private final Uri NOTIFICATION_LIGHT_PULSE_URI =
                 Settings.System.getUriFor(Settings.System.NOTIFICATION_LIGHT_PULSE);
+        private final Uri INCREASING_RING_URI =
+                Settings.System.getUriFor(Settings.System.INCREASING_RING);
         private final Uri LOCK_SCREEN_PRIVATE_URI =
                 Settings.Secure.getUriFor(Settings.Secure.LOCK_SCREEN_ALLOW_PRIVATE_NOTIFICATIONS);
         private final Uri LOCK_SCREEN_SHOW_URI =
                 Settings.Secure.getUriFor(Settings.Secure.LOCK_SCREEN_SHOW_NOTIFICATIONS);
-
         public SettingsObserver() {
             super(mHandler);
         }
@@ -437,6 +490,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
             if (register) {
                 cr.registerContentObserver(VIBRATE_WHEN_RINGING_URI, false, this);
                 cr.registerContentObserver(NOTIFICATION_LIGHT_PULSE_URI, false, this);
+                cr.registerContentObserver(INCREASING_RING_URI, false, this);
                 cr.registerContentObserver(LOCK_SCREEN_PRIVATE_URI, false, this);
                 cr.registerContentObserver(LOCK_SCREEN_SHOW_URI, false, this);
             } else {
@@ -452,6 +506,9 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
             }
             if (NOTIFICATION_LIGHT_PULSE_URI.equals(uri)) {
                 updatePulse();
+            }
+            if (INCREASING_RING_URI.equals(uri)) {
+                updateIncreasingRing();
             }
             if (LOCK_SCREEN_PRIVATE_URI.equals(uri) || LOCK_SCREEN_SHOW_URI.equals(uri)) {
                 updateLockscreenNotifications();
