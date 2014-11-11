@@ -42,6 +42,16 @@
                 android:icon="@drawable/ring_notif"
                 android:title="@string/ring_volume_option_title" />
 
+        <!-- Increasing ring -->
+        <com.android.settings.SystemSettingSwitchPreference
+                android:key="increasing_ring"
+                android:title="@string/increasing_ring_volume_option_title" />
+
+        <!-- Ring volume -->
+        <com.android.settings.notification.IncreasingRingMinVolumePreference
+                android:key="increasing_ring_min_volume"
+                android:title="@string/increasing_ring_min_volume_title" />
+
         <!-- Notification volume -->
         <com.android.settings.notification.VolumeSeekBarPreference
                 android:key="notification_volume"
