@@ -14,6 +14,7 @@ import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -49,6 +50,8 @@ public class ProtectedAppsActivity extends Activity {
     private ArrayList<ComponentName> mProtect;
 
     private boolean mWaitUserAuth = false;
+
+    private ArrayList<ComponentName> mProtectedApps = new ArrayList<ComponentName>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +95,23 @@ public class ProtectedAppsActivity extends Activity {
         refreshAppsTask.execute(null, null, null);
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
+
+        // Update Protected Apps list
+        updateProtectedComponentsList();
+    }
+
+    private void updateProtectedComponentsList() {
+        String protectedComponents = Settings.Secure.getString(getContentResolver(),
+                Settings.Secure.PROTECTED_COMPONENTS);
+        protectedComponents = protectedComponents == null ? "" : protectedComponents;
+        String [] flattened = protectedComponents.split("\\|");
+        mProtectedApps = new ArrayList<ComponentName>(flattened.length);
+        for (String flat : flattened) {
+            ComponentName cmp = ComponentName.unflattenFromString(flat);
+            if (cmp != null) {
+                mProtectedApps.add(cmp);
+            }
+        }
     }
 
     @Override
@@ -105,13 +125,7 @@ public class ProtectedAppsActivity extends Activity {
     }
 
     private boolean getProtectedStateFromComponentName(ComponentName componentName) {
-        PackageManager pm = getPackageManager();
-
-        try {
-            return pm.getApplicationInfo(componentName.getPackageName(), 0).protect;
-        } catch (PackageManager.NameNotFoundException e) {
-            return false;
-        }
+        return mProtectedApps.contains(componentName);
     }
 
     @Override
@@ -263,6 +277,7 @@ public class ProtectedAppsActivity extends Activity {
                         appList.componentNames, appList.state);
             }
 
+            updateProtectedComponentsList();
             return null;
         }
     }
