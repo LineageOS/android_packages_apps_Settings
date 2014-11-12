@@ -46,22 +46,25 @@ import android.widget.Switch;
 import java.util.ArrayList;
 
 public class WifiApSwitch implements CompoundButton.OnCheckedChangeListener {
-    private final Context mContext;
-    private final HotspotSettings mParent;
-    private Switch mSwitch;
+
+    private static final String TAG = "WifiApSwitch";
+
+    private static final int WIFI_STATE_ENABLE_ENABLING = 1;
+    private static final int WIFI_STATE_DISABLE_DISABLING = 0;
     private static final int WIFI_TETHERING = 0;
     private static final int PROVISION_REQUEST = 0;
-    private static final String TAG = "WifiApSwitch";
 
     private boolean mStateMachineEvent;
     private WifiManager mWifiManager;
-    private final IntentFilter mIntentFilter;
-
+    private Switch mSwitch;
     ConnectivityManager mCm;
     private String[] mWifiRegexs;
     /* Indicates if we have to wait for WIFI_STATE_CHANGED intent */
     private boolean mWaitForWifiStateChange;
 
+    private final Context mContext;
+    private final HotspotSettings mParent;
+    private final IntentFilter mIntentFilter;
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -70,18 +73,10 @@ public class WifiApSwitch implements CompoundButton.OnCheckedChangeListener {
                 handleWifiApStateChanged(intent.getIntExtra(
                         WifiManager.EXTRA_WIFI_AP_STATE, WifiManager.WIFI_AP_STATE_FAILED));
             } else if (WifiManager.WIFI_STATE_CHANGED_ACTION.equals(action)) {
-                if (mWaitForWifiStateChange == true) {
+                if (mWaitForWifiStateChange) {
                     handleWifiStateChanged(intent.getIntExtra(
                             WifiManager.EXTRA_WIFI_STATE, WifiManager.WIFI_STATE_UNKNOWN));
                 }
-            } else if (ConnectivityManager.ACTION_TETHER_STATE_CHANGED.equals(action)) {
-                ArrayList<String> available = intent.getStringArrayListExtra(
-                        ConnectivityManager.EXTRA_AVAILABLE_TETHER);
-                ArrayList<String> active = intent.getStringArrayListExtra(
-                        ConnectivityManager.EXTRA_ACTIVE_TETHER);
-                ArrayList<String> errored = intent.getStringArrayListExtra(
-                        ConnectivityManager.EXTRA_ERRORED_TETHER);
-                updateTetherState(available.toArray(), active.toArray(), errored.toArray());
             } else if (Intent.ACTION_AIRPLANE_MODE_CHANGED.equals(action)) {
                 enableWifiCheckBox();
             }
@@ -119,88 +114,53 @@ public class WifiApSwitch implements CompoundButton.OnCheckedChangeListener {
     private void enableWifiCheckBox() {
         boolean isAirplaneMode = Settings.Global.getInt(mContext.getContentResolver(),
                 Settings.Global.AIRPLANE_MODE_ON, 0) != 0;
-        if (!isAirplaneMode) {
-            mSwitch.setEnabled(true);
-        } else {
-            mSwitch.setEnabled(false);
-        }
+        mSwitch.setEnabled(!isAirplaneMode);
     }
 
     public void setSoftapEnabled(boolean enable) {
-        final ContentResolver cr = mContext.getContentResolver();
-        int wifiSavedState = 0;
-        /**
-         * Disable Wifi if enabling tethering
-         */
-        int wifiState = mWifiManager.getWifiState();
-        if (enable && ((wifiState == WifiManager.WIFI_STATE_ENABLING) ||
-                (wifiState == WifiManager.WIFI_STATE_ENABLED))) {
-            mWifiManager.setWifiEnabled(false);
-            Settings.Global.putInt(cr, Settings.Global.WIFI_SAVED_STATE, 1);
-        }
-        /**
-         * Check if we have to wait for the WIFI_STATE_CHANGED intent before we
-         * re-enable the Checkbox.
-         */
-        if (!enable) {
+        if (enable) {
+            if (mWifiManager.getWifiState() == WifiManager.WIFI_STATE_ENABLING ||
+                    mWifiManager.getWifiState() == WifiManager.WIFI_STATE_ENABLED) {
+                /**
+                 * Disable Wifi if enabling tethering
+                 */
+                mWifiManager.setWifiEnabled(false);
+                setWifiSavedState(mContext, WIFI_STATE_ENABLE_ENABLING);
+            }
+            if (mWifiManager.setWifiApEnabled(null, enable)) {
+                /* Disable here, enabled on receiving success broadcast */
+                mSwitch.setEnabled(false);
+            }
+        } else {
+            /**
+             * Check if we have to wait for the WIFI_STATE_CHANGED intent before
+             * we re-enable the Checkbox.
+             */
             mWaitForWifiStateChange = false;
-            try {
-                wifiSavedState = Settings.Global.getInt(cr, Settings.Global.WIFI_SAVED_STATE);
-            } catch (Settings.SettingNotFoundException e) {
-                ;
+
+            if (mWifiManager.setWifiApEnabled(null, enable)) {
+                /* Disable here, enabled on receiving success broadcast */
+                mSwitch.setEnabled(false);
             }
 
-            if (wifiSavedState == 1) {
+            /**
+             * If needed, restore Wifi on tether disable
+             */
+            if (getWifiSavedState(mContext) == WIFI_STATE_ENABLE_ENABLING) {
                 mWaitForWifiStateChange = true;
-            }
-        }
-
-        if (mWifiManager.setWifiApEnabled(null, enable)) {
-            /* Disable here, enabled on receiving success broadcast */
-            mSwitch.setEnabled(false);
-        }
-
-        /**
-         * If needed, restore Wifi on tether disable
-         */
-        if (!enable) {
-            if (wifiSavedState == 1) {
                 mWifiManager.setWifiEnabled(true);
-                Settings.Global.putInt(cr, Settings.Global.WIFI_SAVED_STATE, 0);
+                setWifiSavedState(mContext, WIFI_STATE_DISABLE_DISABLING);
             }
         }
     }
 
     public void setSwitch(Switch switch_) {
-        if (mSwitch == switch_)
+        if (mSwitch == switch_) {
             return;
+        }
         mSwitch.setOnCheckedChangeListener(null);
         mSwitch = switch_;
         mSwitch.setOnCheckedChangeListener(this);
-    }
-
-    private void updateTetherState(Object[] available, Object[] tethered, Object[] errored) {
-        boolean wifiTethered = false;
-        boolean wifiErrored = false;
-
-        for (Object o : tethered) {
-            String s = (String) o;
-            for (String regex : mWifiRegexs) {
-                if (s.matches(regex))
-                    wifiTethered = true;
-            }
-        }
-        for (Object o : errored) {
-            String s = (String) o;
-            for (String regex : mWifiRegexs) {
-                if (s.matches(regex))
-                    wifiErrored = true;
-            }
-        }
-
-        if (wifiTethered) {
-            WifiConfiguration wifiConfig = mWifiManager.getWifiApConfiguration();
-        }
     }
 
     private void handleWifiApStateChanged(int state) {
@@ -262,4 +222,13 @@ public class WifiApSwitch implements CompoundButton.OnCheckedChangeListener {
         }
     }
 
+    public static int getWifiSavedState(Context context) {
+        return Settings.Global.getInt(context.getContentResolver(),
+                Settings.Global.WIFI_SAVED_STATE, WIFI_STATE_DISABLE_DISABLING);
+    }
+
+    public static void setWifiSavedState(Context context, int state) {
+        Settings.Global.putInt(context.getContentResolver(),
+                Settings.Global.WIFI_SAVED_STATE, state);
+    }
 }

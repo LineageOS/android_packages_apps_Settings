@@ -18,6 +18,7 @@ package com.android.settings;
 
 import com.android.settings.wifi.HotsoptService;
 import com.android.settings.wifi.WifiApEnabler;
+import com.android.settings.wifi.WifiApEnablerSwitch;
 import com.android.settings.wifi.WifiApDialog;
 
 import android.app.Activity;
@@ -36,6 +37,7 @@ import android.content.res.AssetManager;
 import android.hardware.usb.UsbManager;
 import android.net.ConnectivityManager;
 import android.net.wifi.WifiConfiguration;
+import android.net.wifi.WifiDevice;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Environment;
@@ -68,6 +70,7 @@ public class TetherSettings extends SettingsPreferenceFragment
     private static final String TAG = "TetherSettings";
     private static final String USB_TETHER_SETTINGS = "usb_tether_settings";
     private static final String ENABLE_WIFI_AP = "enable_wifi_ap";
+    private static final String ENABLE_WIFI_AP_SWITCH = "enable_wifi_ap_switch";
     private static final String ENABLE_BLUETOOTH_TETHERING = "enable_bluetooth_tethering";
     private static final String TETHER_CHOICE = "TETHER_TYPE";
     private static final String KEY_HOTSPOT_MODE = "wifi_hotsopt_mode";
@@ -79,7 +82,9 @@ public class TetherSettings extends SettingsPreferenceFragment
     private ListPreference mHotsoptMode;
 
     private WifiApEnabler mWifiApEnabler;
+    private WifiApEnablerSwitch mWifiApEnablerSwitch;
     private SwitchPreference mEnableWifiAp;
+    private HotspotPreference mEnableWifiApSwitch;
 
     private SwitchPreference mBluetoothTether;
     private StorageManager mStorageManager = null;
@@ -108,7 +113,7 @@ public class TetherSettings extends SettingsPreferenceFragment
     private boolean mMassStorageActive;
 
     private boolean mBluetoothEnableForTether;
-
+    private Context mContext;
     private static final int INVALID             = -1;
     private static final int WIFI_TETHERING      = 0;
     private static final int USB_TETHERING       = 1;
@@ -120,7 +125,7 @@ public class TetherSettings extends SettingsPreferenceFragment
     /* Stores the package name and the class name of the provisioning app */
     private String[] mProvisionApp;
     private static final int PROVISION_REQUEST = 0;
-
+    private boolean mShowHotspotSetting;
     private boolean mUnavailable;
 
     @Override
@@ -141,14 +146,23 @@ public class TetherSettings extends SettingsPreferenceFragment
         }
 
         final Activity activity = getActivity();
+        mContext = activity;
+        mShowHotspotSetting = getResources().getBoolean(R.bool.show_wifi_hotspot_settings);
         BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
         if (adapter != null) {
             adapter.getProfileProxy(activity.getApplicationContext(), mProfileServiceListener,
                     BluetoothProfile.PAN);
         }
-        mEnableWifiAp =
-                (SwitchPreference) findPreference(ENABLE_WIFI_AP);
-        Preference wifiApSettings = findPreference(WIFI_AP_SSID_AND_SECURITY);
+        if (mShowHotspotSetting) {
+            mEnableWifiApSwitch =
+                    (HotspotPreference) findPreference(ENABLE_WIFI_AP_SWITCH);
+            getPreferenceScreen().removePreference(findPreference(ENABLE_WIFI_AP));
+            getPreferenceScreen().removePreference(findPreference(WIFI_AP_SSID_AND_SECURITY));
+        } else {
+            mEnableWifiAp =
+                    (SwitchPreference) findPreference(ENABLE_WIFI_AP);
+            getPreferenceScreen().removePreference(findPreference(ENABLE_WIFI_AP_SWITCH));
+        }
         mUsbTether = (SwitchPreference) findPreference(USB_TETHER_SETTINGS);
         mHotsoptMode = (ListPreference) findPreference(KEY_HOTSPOT_MODE);
         mBluetoothTether = (SwitchPreference) findPreference(ENABLE_BLUETOOTH_TETHERING);
@@ -172,18 +186,29 @@ public class TetherSettings extends SettingsPreferenceFragment
         }
 
         if (wifiAvailable && !Utils.isMonkeyRunning()) {
-            mWifiApEnabler = new WifiApEnabler(activity, mEnableWifiAp);
-            initWifiTethering();
+            if (mShowHotspotSetting) {
+                mWifiApEnablerSwitch = new WifiApEnablerSwitch(activity, mEnableWifiApSwitch);
+            } else {
+                mWifiApEnabler = new WifiApEnabler(activity, mEnableWifiAp);
+                initWifiTethering();
+            }
         } else {
-            getPreferenceScreen().removePreference(mEnableWifiAp);
-            getPreferenceScreen().removePreference(wifiApSettings);
+            if (mEnableWifiAp != null) {
+                getPreferenceScreen().removePreference(mEnableWifiAp);
+            }
+            if (mEnableWifiApSwitch != null) {
+                getPreferenceScreen().removePreference(mEnableWifiApSwitch);
+            }
+            if (findPreference(WIFI_AP_SSID_AND_SECURITY) != null) {
+                getPreferenceScreen().removePreference(findPreference(WIFI_AP_SSID_AND_SECURITY));
+            }
         }
 
         if (hotsoptAvailable) {
             mHotsoptMode.setOnPreferenceChangeListener(this);
             String hotsoptMode = HotsoptService.getHotspotMode(activity);
             mHotsoptMode.setValue(hotsoptMode);
-            updateHotsoptSummary(hotsoptMode);
+            updateHotsoptModeSummary(hotsoptMode);
         } else {
             this.getPreferenceScreen().removePreference(mHotsoptMode);
         }
@@ -354,9 +379,16 @@ public class TetherSettings extends SettingsPreferenceFragment
         activity.registerReceiver(mTetherChangeReceiver, filter);
 
         if (intent != null) mTetherChangeReceiver.onReceive(activity, intent);
-        if (mWifiApEnabler != null) {
-            mEnableWifiAp.setOnPreferenceChangeListener(this);
-            mWifiApEnabler.resume();
+        if (mShowHotspotSetting) {
+            if (mWifiApEnablerSwitch != null) {
+                mEnableWifiApSwitch.setOnPreferenceChangeListener(this);
+                mWifiApEnablerSwitch.resume();
+            }
+        } else {
+            if (mWifiApEnabler != null) {
+                mEnableWifiAp.setOnPreferenceChangeListener(this);
+                mWifiApEnabler.resume();
+            }
         }
 
         updateState();
@@ -371,9 +403,16 @@ public class TetherSettings extends SettingsPreferenceFragment
         }
         getActivity().unregisterReceiver(mTetherChangeReceiver);
         mTetherChangeReceiver = null;
-        if (mWifiApEnabler != null) {
-            mEnableWifiAp.setOnPreferenceChangeListener(null);
-            mWifiApEnabler.pause();
+        if (mShowHotspotSetting) {
+            if (mWifiApEnablerSwitch != null) {
+                mEnableWifiApSwitch.setOnPreferenceChangeListener(null);
+                mWifiApEnablerSwitch.pause();
+            }
+        } else {
+            if (mWifiApEnabler != null) {
+                mEnableWifiAp.setOnPreferenceChangeListener(null);
+                mWifiApEnabler.pause();
+            }
         }
     }
 
@@ -502,11 +541,17 @@ public class TetherSettings extends SettingsPreferenceFragment
             String hotsoptMode = (String)value;
             HotsoptService.setHotspotMode(getActivity(), hotsoptMode);
             mHotsoptMode.setValue(hotsoptMode);
-            updateHotsoptSummary(hotsoptMode);
+            updateHotsoptModeSummary(hotsoptMode);
+            return false;
+        }
+
+        boolean enable = (Boolean) value;
+
+        if (enable) {
+            startProvisioningIfNecessary(WIFI_TETHERING);
         } else {
-            boolean enable = (Boolean) value;
-            if (enable) {
-                startProvisioningIfNecessary(WIFI_TETHERING);
+            if (mShowHotspotSetting) {
+                mWifiApEnablerSwitch.setSoftapEnabled(false);
             } else {
                 mWifiApEnabler.setSoftapEnabled(false);
             }
@@ -514,7 +559,7 @@ public class TetherSettings extends SettingsPreferenceFragment
         return false;
     }
 
-    private void updateHotsoptSummary(String value) {
+    private void updateHotsoptModeSummary(String value) {
         String summary = "";
         if (!TextUtils.isEmpty(value)) {
             String[] entryValues = getResources().getStringArray(
@@ -531,6 +576,7 @@ public class TetherSettings extends SettingsPreferenceFragment
         }
         mHotsoptMode.setSummary(summary);
     }
+
     public static boolean isProvisioningNeededButUnavailable(Context context) {
         String[] provisionApp = context.getResources().getStringArray(
                 com.android.internal.R.array.config_mobile_hotspot_provision_app);
@@ -595,7 +641,11 @@ public class TetherSettings extends SettingsPreferenceFragment
     private void startTethering() {
         switch (mTetherChoice) {
             case WIFI_TETHERING:
-                mWifiApEnabler.setSoftapEnabled(true);
+                if (mShowHotspotSetting) {
+                    mWifiApEnablerSwitch.setSoftapEnabled(true);
+                } else {
+                    mWifiApEnabler.setSoftapEnabled(true);
+                }
                 break;
             case BLUETOOTH_TETHERING:
                 // turn on Bluetooth first

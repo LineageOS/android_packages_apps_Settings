@@ -42,6 +42,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 public class HotspotPreference extends Preference implements OnCheckedChangeListener {
+
     private Switch mSwitch;
     private TextView mSubSummary;
     private Context mContext;
@@ -52,7 +53,7 @@ public class HotspotPreference extends Preference implements OnCheckedChangeList
     }
 
     public HotspotPreference(Context context, AttributeSet attrs) {
-        this(context, attrs, com.android.internal.R.attr.checkBoxPreferenceStyle);
+        this(context, attrs, com.android.internal.R.attr.switchPreferenceStyle);
         mContext = context;
     }
 
@@ -78,14 +79,11 @@ public class HotspotPreference extends Preference implements OnCheckedChangeList
     }
 
     public void setSummary(CharSequence summary) {
-        if (mSubSummary != null) {
-            mSubSummary.setText(summary);
-            if (summary == null) {
-                mSubSummary.setVisibility(View.GONE);
-            } else {
-                mSubSummary.setVisibility(View.VISIBLE);
-            }
+        if (mSubSummary == null) {
+            return;
         }
+        mSubSummary.setVisibility(summary != null ? View.VISIBLE : View.GONE);
+        mSubSummary.setText(summary);
     }
 
     public void setChecked(boolean state) {
