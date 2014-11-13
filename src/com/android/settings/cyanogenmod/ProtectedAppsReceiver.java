@@ -13,12 +13,12 @@ import java.util.ArrayList;
 public class ProtectedAppsReceiver extends BroadcastReceiver {
     private static final String TAG = "ProtectedAppsReceiver";
 
-    private static final String PROTECTED_ACTION = "cyanogenmod.intent.action.PACKAGE_PROTECTED";
+    public static final String PROTECTED_ACTION = "cyanogenmod.intent.action.PACKAGE_PROTECTED";
     private static final String PROTECTED_CHANGED_ACTION =
             "cyanogenmod.intent.action.PROTECTED_COMPONENT_UPDATE";
-    private static final String PROTECTED_STATE =
+    public static final String PROTECTED_STATE =
             "cyanogenmod.intent.action.PACKAGE_PROTECTED_STATE";
-    private static final String PROTECTED_COMPONENT =
+    public static final String PROTECTED_COMPONENT =
             "cyanogenmod.intent.action.PACKAGE_PROTECTED_COMPONENT";
     private static final String PROTECTED_APP_PERMISSION = "cyanogenmod.permission.PROTECTED_APP";
 
@@ -28,12 +28,17 @@ public class ProtectedAppsReceiver extends BroadcastReceiver {
             boolean protect = intent.getBooleanExtra(PROTECTED_STATE, true);
             String components = intent.getStringExtra(PROTECTED_COMPONENT);
             components = components == null ? "" : components;
-            String [] cName = components.split("\\|");
 
-            protectedAppComponents(cName, protect, context);
-            updateSettingsSecure(cName, protect, context);
-            notifyProtectedChanged(components, protect, context);
+            protectedAppComponentsAndNotify(components, protect, context);
         }
+    }
+
+    public static void protectedAppComponentsAndNotify(String components, boolean protect, Context context) {
+        String [] cName = components.split("\\|");
+
+        protectedAppComponents(cName, protect, context);
+        updateSettingsSecure(cName, protect, context);
+        notifyProtectedChanged(components, protect, context);
     }
 
     public static void protectedAppComponents(String [] componentNames, boolean protect, Context context) {

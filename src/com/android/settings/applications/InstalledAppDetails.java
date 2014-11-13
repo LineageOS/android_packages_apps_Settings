@@ -28,6 +28,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -83,6 +84,8 @@ import com.android.settings.notification.NotificationBackend.AppRow;
 import com.android.settingslib.applications.ApplicationsState;
 import com.android.settingslib.applications.ApplicationsState.AppEntry;
 
+import com.android.settings.cyanogenmod.ProtectedAppsReceiver;
+
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -106,10 +109,12 @@ public class InstalledAppDetails extends AppInfoBase
     // Menu identifiers
     public static final int UNINSTALL_ALL_USERS_MENU = 1;
     public static final int UNINSTALL_UPDATES = 2;
+    public static final int OPEN_PROTECTED_APPS = 3;
 
     // Result code identifiers
     public static final int REQUEST_UNINSTALL = 0;
     private static final int SUB_INFO_FRAGMENT = 1;
+    public static final int REQUEST_TOGGLE_PROTECTION = 2;
 
     private static final int LOADER_CHART_DATA = 2;
 
@@ -375,6 +380,9 @@ public class InstalledAppDetails extends AppInfoBase
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
         menu.add(0, UNINSTALL_ALL_USERS_MENU, 1, R.string.uninstall_all_users_text)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+        menu.add(0, OPEN_PROTECTED_APPS, Menu.NONE, R.string.protected_apps)
+                .setIcon(getResources().getDrawable(R.drawable.folder_lock))
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
     }
 
     @Override
@@ -399,6 +407,7 @@ public class InstalledAppDetails extends AppInfoBase
         menu.findItem(UNINSTALL_ALL_USERS_MENU).setVisible(showIt);
         mUpdatedSysApp = (mAppEntry.info.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0;
         menu.findItem(UNINSTALL_UPDATES).setVisible(mUpdatedSysApp && !mAppControlRestricted);
+        menu.findItem(OPEN_PROTECTED_APPS).setVisible(mPackageInfo.applicationInfo.protect);
     }
 
     @Override
@@ -409,6 +418,11 @@ public class InstalledAppDetails extends AppInfoBase
                 return true;
             case UNINSTALL_UPDATES:
                 showDialogInner(DLG_FACTORY_RESET, 0);
+                return true;
+            case OPEN_PROTECTED_APPS:
+                // Verify protection for toggling protected component status
+                Intent protectedApps = new Intent(getActivity(), LockPatternActivity.class);
+                startActivityForResult(protectedApps, REQUEST_TOGGLE_PROTECTION);
                 return true;
         }
         return false;
@@ -435,6 +449,38 @@ public class InstalledAppDetails extends AppInfoBase
             if (!refreshUi()) {
                 setIntentAndFinish(true, true);
             }
+        } else if (requestCode == REQUEST_TOGGLE_PROTECTION) {
+            switch (resultCode) {
+                case Activity.RESULT_OK:
+                    new ToggleProtectedAppComponents().execute();
+                    break;
+                case Activity.RESULT_CANCELED:
+                // User failed to enter/confirm a lock pattern, do nothing
+                    break;
+            }
+        }
+    }
+
+    private class ToggleProtectedAppComponents extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            getActivity().invalidateOptionsMenu();
+            if (!refreshUi()) {
+                setIntentAndFinish(true, true);
+            }
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            String components = "";
+            for (ActivityInfo aInfo : mPackageInfo.activities) {
+                components += new ComponentName(aInfo.packageName, aInfo.name)
+                        .flattenToString() + "|";
+            }
+
+            ProtectedAppsReceiver.protectedAppComponentsAndNotify
+                    (components, true, getActivity());
+            return null;
         }
     }
 
