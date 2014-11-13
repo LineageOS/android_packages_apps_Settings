@@ -53,11 +53,16 @@ import java.io.IOException;
  */
 public class ProtectedAccountView extends LinearLayout implements View.OnClickListener {
 
+    public static interface OnNotifyAccountReset {
+        void onNotifyAccountReset();
+    }
+
     private EditText mLogin;
     private EditText mPassword;
     private Button mOk;
     private Context mContext;
     private LockPatternUtils mLockPatternUtils;
+    private OnNotifyAccountReset mNotifyAccountResetCb;
 
     /**
      * Shown while making asynchronous check of password.
@@ -101,6 +106,10 @@ public class ProtectedAccountView extends LinearLayout implements View.OnClickLi
 
     public boolean needsInput() {
         return true;
+    }
+
+    public void setOnNotifyAccountResetCb(OnNotifyAccountReset callback) {
+        this.mNotifyAccountResetCb = callback;
     }
 
     public void clearFocusOnInput() {
@@ -149,8 +158,12 @@ public class ProtectedAccountView extends LinearLayout implements View.OnClickLi
                         editor.remove(LockPatternActivity.PATTERN_LOCK_PROTECTED_APPS);
                         editor.commit();
 
-                        baseActivity.setResult(Activity.RESULT_OK);
-                        baseActivity.finish();
+                        if (mNotifyAccountResetCb != null) {
+                            mNotifyAccountResetCb.onNotifyAccountReset();
+                        } else {
+                            baseActivity.setResult(Activity.RESULT_OK);
+                            baseActivity.finish();
+                        }
                     }
                 } else {
                     Toast.makeText(mContext,
