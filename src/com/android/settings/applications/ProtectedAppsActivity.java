@@ -20,7 +20,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -63,26 +64,9 @@ public class ProtectedAppsActivity extends Activity {
         mListView = (ListView) findViewById(R.id.protected_apps_list);
         mListView.setAdapter(mAppsAdapter);
 
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ComponentName cn = mAppsAdapter.getItem(position).componentName;
-                ArrayList<ComponentName> componentsList = new ArrayList<ComponentName>();
-                componentsList.add(cn);
-                boolean state = mListView.isItemChecked(position)
-                        ? PackageManager.COMPONENT_PROTECTED_STATUS
-                        : PackageManager.COMPONENT_VISIBLE_STATUS;
-
-                AppProtectList list = new AppProtectList(componentsList, state);
-                StoreComponentProtectedStatus task =
-                         new StoreComponentProtectedStatus(ProtectedAppsActivity.this);
-                task.execute(list);
-            }
-        });
-
         mProtect = new ArrayList<ComponentName>();
 
-        // Require pattern lock
+        // Require unlock
         Intent lockPattern = new Intent(this, LockPatternActivity.class);
         startActivityForResult(lockPattern, REQ_ENTER_PATTERN);
     }
@@ -98,7 +82,6 @@ public class ProtectedAppsActivity extends Activity {
                     protected void onPostExecute(List<AppEntry> apps) {
                         mAppsAdapter.clear();
                         mAppsAdapter.addAll(apps);
-                        restoreCheckedItems();
                     }
 
                     @Override
@@ -121,20 +104,13 @@ public class ProtectedAppsActivity extends Activity {
         }
     }
 
-    private void restoreCheckedItems() {
-        AppsAdapter listAdapter = (AppsAdapter) mListView.getAdapter();
+    private boolean getProtectedStateFromComponentName(ComponentName componentName) {
         PackageManager pm = getPackageManager();
 
-        for (int i = 0; i < listAdapter.getCount(); i++) {
-            AppEntry info = listAdapter.getItem(i);
-            try {
-                if (pm.getActivityInfo(info.componentName, 0).applicationInfo.protect) {
-                    mListView.setItemChecked(i, true);
-                    mProtect.add(info.componentName);
-                }
-            } catch (PackageManager.NameNotFoundException e) {
-                continue; //ignore it and move on
-            }
+        try {
+            return pm.getApplicationInfo(componentName.getPackageName(), 0).protect;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
         }
     }
 
@@ -169,10 +145,6 @@ public class ProtectedAppsActivity extends Activity {
 
     private void reset() {
         ArrayList<ComponentName> componentsList = new ArrayList<ComponentName>();
-        for (int i = 0; i < mListView.getCount(); i++) {
-            componentsList.add(mAppsAdapter.getItem(i).componentName);
-            mListView.setItemChecked(i, false);
-        }
 
         // Check to see if any components that have been protected that aren't present in
         // the ListView. This can happen if there are components which have been protected
@@ -299,12 +271,18 @@ public class ProtectedAppsActivity extends Activity {
      * App view holder used to reuse the views inside the list.
      */
     private static class AppViewHolder {
+        public final View container;
         public final TextView title;
         public final ImageView icon;
+        public final View launch;
+        public final CheckBox checkBox;
 
         public AppViewHolder(View parentView) {
+            container = parentView.findViewById(R.id.app_item);
             icon = (ImageView) parentView.findViewById(R.id.icon);
             title = (TextView) parentView.findViewById(R.id.title);
+            launch = parentView.findViewById(R.id.launch_app);
+            checkBox = (CheckBox) parentView.findViewById(R.id.checkbox);
         }
     }
 
@@ -352,6 +330,27 @@ public class ProtectedAppsActivity extends Activity {
             Drawable icon = mIcons.get(app.componentName.getPackageName());
             viewHolder.icon.setImageDrawable(icon != null ? icon : mDefaultImg);
 
+            boolean state = getProtectedStateFromComponentName(app.componentName);
+            viewHolder.checkBox.setChecked(state);
+            if (state) {
+                viewHolder.launch.setVisibility(View.VISIBLE);
+                viewHolder.launch.setTag(app);
+                viewHolder.launch.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ComponentName cName = ((AppEntry)v.getTag()).componentName;
+                        Intent intent = new Intent();
+                        intent.setClassName(cName.getPackageName(), cName.getClassName());
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                    }
+                });
+            } else {
+                viewHolder.launch.setVisibility(View.GONE);
+            }
+
+            viewHolder.container.setTag(position);
+            viewHolder.container.setOnClickListener(mAppClickListener);
             return convertView;
         }
 
@@ -414,4 +413,20 @@ public class ProtectedAppsActivity extends Activity {
             }
         }
     }
+
+    private View.OnClickListener mAppClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            int position = (Integer) v.getTag();
+            ComponentName cn = mAppsAdapter.getItem(position).componentName;
+            ArrayList<ComponentName> componentsList = new ArrayList<ComponentName>();
+            componentsList.add(cn);
+            boolean state = getProtectedStateFromComponentName(cn);
+
+            AppProtectList list = new AppProtectList(componentsList, state);
+            StoreComponentProtectedStatus task =
+                    new StoreComponentProtectedStatus(ProtectedAppsActivity.this);
+            task.execute(list);
+        }
+    };
 }
