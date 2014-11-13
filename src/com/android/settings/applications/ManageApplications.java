@@ -1160,8 +1160,10 @@ public class ManageApplications extends Fragment implements
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
         menu.add(0, RESET_APP_PREFERENCES, 4, R.string.reset_app_preferences)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
-        menu.add(0, SHOW_PROTECTED_APPS, 5, R.string.protected_apps)
-                .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+        if (!Utils.isRestrictedProfile(getActivity())) {
+            menu.add(0, SHOW_PROTECTED_APPS, 5, R.string.protected_apps)
+                    .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+        }
         updateOptionsMenu();
     }
     
@@ -1199,7 +1201,9 @@ public class ManageApplications extends Fragment implements
             mOptionsMenu.findItem(SHOW_RUNNING_SERVICES).setVisible(showingBackground);
             mOptionsMenu.findItem(SHOW_BACKGROUND_PROCESSES).setVisible(!showingBackground);
             mOptionsMenu.findItem(RESET_APP_PREFERENCES).setVisible(false);
-            mOptionsMenu.findItem(SHOW_PROTECTED_APPS).setVisible(true);
+            if (!Utils.isRestrictedProfile(getActivity())) {
+                mOptionsMenu.findItem(SHOW_PROTECTED_APPS).setVisible(true);
+            }
             mShowBackground = showingBackground;
             if(mSearchappEnabled) {
                 //add for new feature for search applications
@@ -1216,7 +1220,9 @@ public class ManageApplications extends Fragment implements
                 //add for new feature for search applications
                 mOptionsMenu.findItem(SHOW_SEARCH_APPLICATIONS).setVisible(true);
             }
-            mOptionsMenu.findItem(SHOW_PROTECTED_APPS).setVisible(true);
+            if (!Utils.isRestrictedProfile(getActivity())) {
+                mOptionsMenu.findItem(SHOW_PROTECTED_APPS).setVisible(true);
+            }
         }
     }
 
