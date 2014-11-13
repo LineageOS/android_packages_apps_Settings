@@ -32,13 +32,14 @@ import com.android.internal.widget.LockPatternUtils;
 import com.android.internal.widget.LockPatternView;
 import com.android.settings.R;
 import com.android.settings.cyanogenmod.ProtectedAccountView;
+import com.android.settings.cyanogenmod.ProtectedAccountView.OnNotifyAccountReset;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.List;
 
-public class LockPatternActivity extends Activity {
+public class LockPatternActivity extends Activity implements OnNotifyAccountReset {
     public static final String PATTERN_LOCK_PROTECTED_APPS = "pattern_lock_protected_apps";
     public static final String RECREATE_PATTERN = "recreate_pattern_lock";
 
@@ -117,6 +118,7 @@ public class LockPatternActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        menu.clear();
         if (!mCreate) {
             menu.add(0, MENU_RESET, 0, R.string.lockpattern_reset_button)
                     .setIcon(R.drawable.ic_lockscreen_ime)
@@ -132,9 +134,8 @@ public class LockPatternActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case MENU_RESET:
-
                 if (mAccountView.getVisibility() == View.VISIBLE) {
-                    switchToPattern();
+                    switchToPattern(false);
                 } else {
                     switchToAccount();
                 }
@@ -144,7 +145,15 @@ public class LockPatternActivity extends Activity {
         }
     }
 
-    private void switchToPattern() {
+    @Override
+    public void onNotifyAccountReset() {
+        switchToPattern(true);
+    }
+
+    private void switchToPattern(boolean reset) {
+        if (reset) {
+            resetPatternState();
+        }
         mPatternLockHeader.setText(getResources()
                 .getString(R.string.lockpattern_settings_enable_summary));
         mItem.setIcon(R.drawable.ic_lockscreen_ime);
@@ -165,39 +174,44 @@ public class LockPatternActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.patternlock);
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        String pattern = prefs.getString(PATTERN_LOCK_PROTECTED_APPS, null);
-        mCreate = pattern == null;
-        if (RECREATE_PATTERN.equals(getIntent().getAction())) {
-            mCreate = true;
-        }
-
-        if (pattern != null) {
-            mPatternHash = Base64.decode(pattern, Base64.DEFAULT);
-        }
-
         mPatternLockHeader = (TextView) findViewById(R.id.pattern_lock_header);
         mCancel = (Button) findViewById(R.id.pattern_lock_btn_cancel);
         mCancel.setOnClickListener(mCancelOnClickListener);
         mContinue = (Button) findViewById(R.id.pattern_lock_btn_continue);
         mContinue.setOnClickListener(mContinueOnClickListener);
-        if (mCreate) {
-            mContinue.setEnabled(false);
-            mPatternLockHeader.setText(getResources().getString(R.string.lockpattern_recording_intro_header));
-        } else {
-            mCancel.setVisibility(View.GONE);
-            mContinue.setVisibility(View.GONE);
-            mPatternLockHeader.setText(getResources().getString(R.string.lockpattern_settings_enable_summary));
-        }
 
         mAccountView = (ProtectedAccountView) findViewById(R.id.lock_account_view);
+        mAccountView.setOnNotifyAccountResetCb(this);
         mLockPatternView = (LockPatternView) findViewById(R.id.lock_pattern_view);
+
+        resetPatternState();
 
         //Setup Pattern Lock View
         mLockPatternView.setSaveEnabled(false);
         mLockPatternView.setFocusable(false);
         mLockPatternView.setOnPatternListener(new UnlockPatternListener());
 
+    }
+
+    private void resetPatternState() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String pattern = prefs.getString(PATTERN_LOCK_PROTECTED_APPS, null);
+        mCreate = pattern == null || RECREATE_PATTERN.equals(getIntent().getAction());
+
+        mPatternHash = null;
+        if (pattern != null) {
+            mPatternHash = Base64.decode(pattern, Base64.DEFAULT);
+        }
+
+        mContinue.setEnabled(!mCreate);
+        mCancel.setVisibility(mCreate ? View.VISIBLE : View.GONE);
+        mContinue.setVisibility(mCreate ? View.VISIBLE : View.GONE);
+        mPatternLockHeader.setText(mCreate
+                ? getResources().getString(R.string.lockpattern_recording_intro_header)
+                : getResources().getString(R.string.lockpattern_settings_enable_summary));
+        mLockPatternView.clearPattern();
+
+        invalidateOptionsMenu();
     }
 
     private class UnlockPatternListener implements LockPatternView.OnPatternListener {
