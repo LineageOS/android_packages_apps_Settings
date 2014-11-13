@@ -30,6 +30,7 @@ import java.util.List;
 
 public class LockPatternActivity extends Activity {
     public static final String PATTERN_LOCK_PROTECTED_APPS = "pattern_lock_protected_apps";
+    public static final String RECREATE_PATTERN = "recreate_pattern_lock";
 
     private static final int MIN_PATTERN_SIZE = 4;
     private static final int MAX_PATTERN_RETRY = 5;
@@ -107,6 +108,9 @@ public class LockPatternActivity extends Activity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String pattern = prefs.getString(PATTERN_LOCK_PROTECTED_APPS, null);
         mCreate = pattern == null;
+        if (RECREATE_PATTERN.equals(getIntent().getAction())) {
+            mCreate = true;
+        }
 
         if (pattern != null) {
             mPatternHash = Base64.decode(pattern, Base64.DEFAULT);
