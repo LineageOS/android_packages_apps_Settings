@@ -76,6 +76,13 @@
             android:id="@+id/device_section"
             android:title="@string/header_category_device" >
 
+        <dashboard-tile
+                android:id="@+id/button_settings"
+                android:title="@string/button_pref_title"
+                android:fragment="com.android.settings.ButtonSettings"
+                android:icon="@drawable/ic_settings_home"
+                />
+
         <!-- Home -->
         <dashboard-tile
                 android:id="@+id/home_settings"
