@@ -54,6 +54,7 @@ public class DeviceInfoSettings extends RestrictedSettingsFragment {
 
     private static final String KEY_CONTAINER = "container";
     private static final String KEY_TEAM = "team";
+    private static final String KEY_CHANGELOG = "changelog";
     private static final String KEY_CONTRIBUTORS = "contributors";
     private static final String KEY_REGULATORY_INFO = "regulatory_info";
     private static final String KEY_TERMS = "terms";
@@ -191,6 +192,10 @@ public class DeviceInfoSettings extends RestrictedSettingsFragment {
             // Remove for secondary users
             removePreference(KEY_SYSTEM_UPDATE_SETTINGS);
         }
+        if ("user".equals(Build.TYPE)) {
+            removePreference(KEY_CHANGELOG);
+        }
+
         Utils.updatePreferenceToSpecificActivityOrRemove(act, parentPreference, KEY_CONTRIBUTORS,
                 Utils.UPDATE_PREFERENCE_FLAG_SET_TITLE_TO_MATCHING_ACTIVITY);
 
