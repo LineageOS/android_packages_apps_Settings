@@ -27,6 +27,7 @@ import android.provider.Settings;
 import com.android.internal.logging.MetricsLogger;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 import com.android.settings.applications.PermissionsSummaryHelper.PermissionsResultCallback;
 import com.android.settings.fuelgauge.PowerWhitelistBackend;
 import com.android.settingslib.applications.ApplicationsState;
@@ -45,6 +46,7 @@ public class AdvancedAppSettings extends SettingsPreferenceFragment implements
     private static final String KEY_HIGH_POWER_APPS = "high_power_apps";
     private static final String KEY_SYSTEM_ALERT_WINDOW = "system_alert_window";
     private static final String KEY_WRITE_SETTINGS_APPS = "write_settings_apps";
+    private static final String KEY_PROTECTED_APPS = "protected_apps";
 
     private Session mSession;
     private Preference mAppPermsPreference;
@@ -52,6 +54,7 @@ public class AdvancedAppSettings extends SettingsPreferenceFragment implements
     private Preference mHighPowerPreference;
     private Preference mSystemAlertWindowPreference;
     private Preference mWriteSettingsPreference;
+    private Preference mProtectedAppsPreference;
 
     private BroadcastReceiver mPermissionReceiver;
 
@@ -72,6 +75,10 @@ public class AdvancedAppSettings extends SettingsPreferenceFragment implements
         mHighPowerPreference = findPreference(KEY_HIGH_POWER_APPS);
         mSystemAlertWindowPreference = findPreference(KEY_SYSTEM_ALERT_WINDOW);
         mWriteSettingsPreference = findPreference(KEY_WRITE_SETTINGS_APPS);
+        mProtectedAppsPreference = findPreference(KEY_PROTECTED_APPS);
+        if (mProtectedAppsPreference != null && !Utils.isRestrictedProfile(getActivity())) {
+            getPreferenceScreen().removePreference(mProtectedAppsPreference);
+        }
     }
 
     @Override
