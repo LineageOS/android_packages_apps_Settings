@@ -280,6 +280,7 @@ public class MSimSubscriptionStatus extends PreferenceActivity {
             }
             @Override
             public void onDataConnectionStateChanged(int state) {
+                mDataState = state;
                 updateDataState();
                 updateNetworkType();
             }
@@ -321,11 +322,9 @@ public class MSimSubscriptionStatus extends PreferenceActivity {
     }
 
     private void updateDataState() {
-        // FIXME this needs to be sub based ?
-        int state = mTelephonyManager.getDataState();
         String display = mRes.getString(R.string.radioInfo_unknown);
 
-        switch (state) {
+        switch (mDataState) {
             case TelephonyManager.DATA_CONNECTED:
                 display = mRes.getString(R.string.radioInfo_data_connected);
                 break;
