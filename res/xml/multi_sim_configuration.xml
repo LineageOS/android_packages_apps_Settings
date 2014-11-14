@@ -42,7 +42,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         android:dialogTitle="@string/sim_naming_title"
         android:persistent="false"
         android:singleLine="true"
-        android:maxLength="6"
+        android:maxLength="@integer/sim_name_length"
         android:layout_marginLeft="16dip"
         android:inputType="textNoSuggestions"/>
 </PreferenceScreen>

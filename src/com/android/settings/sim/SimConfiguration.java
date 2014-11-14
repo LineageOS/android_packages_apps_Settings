@@ -81,7 +81,7 @@ public class SimConfiguration extends PreferenceActivity implements TextWatcher 
 
     private static final Uri SYSTEM_SETTINGS_URI = Uri.parse("content://settings/system");
 
-    private static final int CHANNEL_NAME_MAX_LENGTH = 6;
+    private int mChannelNameMaxLength;
     //The default legth to dispaly a character
     private static final int CHAR_LEN = 1;
 
@@ -159,6 +159,7 @@ public class SimConfiguration extends PreferenceActivity implements TextWatcher 
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.multi_sim_configuration);
 
+        mChannelNameMaxLength = getResources().getInteger(R.integer.sim_name_length);
         Intent intent = getIntent();
         mSubscription = intent.getIntExtra(PhoneConstants.SUBSCRIPTION_KEY,
                 PhoneConstants.SUB1);
@@ -296,8 +297,8 @@ public class SimConfiguration extends PreferenceActivity implements TextWatcher 
             }
 
             // Too many characters,cut off the new added characters
-            if (wholeLen > CHANNEL_NAME_MAX_LENGTH) {
-                int cutNum = wholeLen - CHANNEL_NAME_MAX_LENGTH;
+            if (wholeLen > mChannelNameMaxLength) {
+                int cutNum = wholeLen - mChannelNameMaxLength;
                 // Get start position of characters that will be cut off
                 int changeEndPos = mChangeStartPos + mChangeCount - 1;
                 int cutLen = 0;
