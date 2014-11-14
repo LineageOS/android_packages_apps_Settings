@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a122d0e_4610174f",
+        "filename": "src/com/android/settings/applications/ProtectedAppsActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 9621
+      },
+      "writtenOn": "2014-11-14T11:54:07Z",
+      "side": 1,
+      "message": "HashSet\u003cComponentName\u003e might be a better data structure since you\u0027re only ever using this to check that it contains a value and you\u0027ll get O(1) lookup time.\n\nBuuut, with the number of elements that this could ever contain, it probably doesn\u0027t really matter.",
+      "revId": "2e6e365c8708236ae80d8d6b1f29ee6afba9dfeb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
