@@ -20,6 +20,9 @@
 -keep class com.android.settings.accessibility.*FragmentForSetupWizard
 -keep class com.android.settings.display.*FragmentForSetupWizard
 
+-keep class com.android.settings.cyanogenmod.*Settings
+-keep class com.android.settings.privacyguard.*
+
 # Keep click responders
 -keepclassmembers class com.android.settings.inputmethod.UserDictionaryAddWordActivity {
   *** onClick*(...);
