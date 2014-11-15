@@ -56,6 +56,8 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.cyanogenmod.hardware.TapToWake;
+
 public class DisplaySettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, OnPreferenceClickListener, Indexable {
     private static final String TAG = "DisplaySettings";
@@ -70,6 +72,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_DOZE = "doze";
     private static final String KEY_AUTO_BRIGHTNESS = "auto_brightness";
     private static final String KEY_AUTO_ROTATE = "auto_rotate";
+    private static final String KEY_TAP_TO_WAKE = "double_tap_wake_gesture";
+
+    private static final String CATEGORY_ADVANCED = "advanced_display_prefs";
 
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
@@ -82,6 +87,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mLiftToWakePreference;
     private SwitchPreference mDozePreference;
     private SwitchPreference mAutoBrightnessPreference;
+    private SwitchPreference mTapToWake;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -164,6 +170,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             });
         } else {
             removePreference(KEY_AUTO_ROTATE);
+        }
+
+        PreferenceScreen advancedPrefs = (PreferenceScreen) findPreference(CATEGORY_ADVANCED);
+
+        mTapToWake = (SwitchPreference) findPreference(KEY_TAP_TO_WAKE);
+        if (!isTapToWakeSupported()) {
+            advancedPrefs.removePreference(mTapToWake);
+            mTapToWake = null;
         }
     }
 
@@ -291,6 +305,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     @Override
     public void onResume() {
         super.onResume();
+
+        if (mTapToWake != null) {
+            mTapToWake.setChecked(TapToWake.isEnabled());
+        }
+
         updateState();
     }
 
@@ -339,6 +358,15 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
     }
 
+    private static boolean isTapToWakeSupported() {
+        try {
+            return TapToWake.isSupported();
+        } catch (NoClassDefFoundError e) {
+            // Hardware abstraction framework not installed
+            return false;
+        }
+    }
+
     public void writeFontSizePreference(Object objValue) {
         try {
             mCurConfig.fontScale = Float.parseFloat(objValue.toString());
@@ -350,6 +378,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        if (preference == mTapToWake) {
+            return TapToWake.setEnabled(mTapToWake.isChecked());
+        }
+
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
