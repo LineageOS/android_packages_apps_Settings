@@ -89,4 +89,10 @@
                     android:key="double_tap_wake_gesture"
                     android:title="@string/double_tap_to_wake_title" />
         </PreferenceScreen>
+
+        <PreferenceScreen
+                android:key="expanded_desktop"
+                android:title="@string/power_menu_expanded_desktop"
+                android:fragment="com.android.settings.applications.ExpandedDesktopPreferenceFragment" />
+
 </PreferenceScreen>
