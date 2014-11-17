@@ -89,4 +89,21 @@
                     android:key="double_tap_wake_gesture"
                     android:title="@string/double_tap_to_wake_title" />
         </PreferenceScreen>
+
+        <PreferenceCategory
+            android:key="lights_prefs"
+            android:title="@string/lights_category_title">
+
+            <PreferenceScreen
+                android:key="notification_pulse"
+                android:title="@string/notification_light_title"
+                android:fragment="com.android.settings.notificationlight.NotificationLightSettings" />
+
+            <PreferenceScreen
+                android:key="battery_light"
+                android:title="@string/battery_light_title"
+                android:fragment="com.android.settings.notificationlight.BatteryLightSettings" />
+
+        </PreferenceCategory>
+
 </PreferenceScreen>
