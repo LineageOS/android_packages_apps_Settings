@@ -87,8 +87,10 @@ public class IncreasingRingVolumePreference extends Preference implements
     @Override
     public void onActivityStop() {
         postStopSample();
-        mHandler.getLooper().quitSafely();
-        mHandler = null;
+        if (mHandler != null) {
+            mHandler.getLooper().quitSafely();
+            mHandler = null;
+        }
     }
 
     @Override
@@ -209,9 +211,11 @@ public class IncreasingRingVolumePreference extends Preference implements
 
     private void postStopSample() {
         // remove pending delayed start messages
-        mHandler.removeMessages(MSG_START_SAMPLE);
-        mHandler.removeMessages(MSG_STOP_SAMPLE);
-        mHandler.sendEmptyMessage(MSG_STOP_SAMPLE);
+        if (mHandler != null) {
+            mHandler.removeMessages(MSG_START_SAMPLE);
+            mHandler.removeMessages(MSG_STOP_SAMPLE);
+            mHandler.sendEmptyMessage(MSG_STOP_SAMPLE);
+        }
     }
 
     private void onStopSample() {
