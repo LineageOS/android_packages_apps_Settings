@@ -16,6 +16,8 @@
 
 package com.android.settings;
 
+import android.preference.PreferenceCategory;
+import android.view.WindowManagerGlobal;
 import com.android.internal.view.RotationPolicy;
 import com.android.settings.notification.DropDownPreference;
 import com.android.settings.notification.DropDownPreference.Callback;
@@ -83,6 +85,17 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mDozePreference;
     private SwitchPreference mAutoBrightnessPreference;
 
+    private static final String KEY_EXPANDED_DESKTOP = "expanded_desktop";
+    private static final String KEY_EXPANDED_DESKTOP_NO_NAVBAR = "expanded_desktop_no_navbar";
+    private static final String CATEGORY_EXPANDED_DESKTOP = "expanded_desktop_category";
+
+    private static final String EXPANDED_DESKTOP_DISABLED = "";
+    private static final String EXPANDED_DESKTOP_STATUSBAR = "immersive.navigation=*";
+    private static final String EXPANDED_DESKTOP_NO_STATUSBAR = "immersive.full=*";
+
+    private ListPreference mExpandedDesktopPref;
+    private SwitchPreference mExpandedDesktopNoNavbarPref;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +103,41 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         final ContentResolver resolver = activity.getContentResolver();
 
         addPreferencesFromResource(R.xml.display_settings);
+
+        PreferenceCategory expandedCategory =
+                (PreferenceCategory) findPreference(CATEGORY_EXPANDED_DESKTOP);
+
+        // Expanded desktop
+        mExpandedDesktopPref = (ListPreference) findPreference(KEY_EXPANDED_DESKTOP);
+        mExpandedDesktopNoNavbarPref =
+                (SwitchPreference) findPreference(KEY_EXPANDED_DESKTOP_NO_NAVBAR);
+
+        String expandedDesktopValue = Settings.Global.getString(getContentResolver(),
+                Settings.Global.POLICY_CONTROL);
+
+        try {
+            // Only show the navigation bar category on devices that has a navigation bar
+            // unless we are forcing it via development settings
+//            boolean forceNavbar = android.provider.Settings.System.getInt(getContentResolver(),
+//                    android.provider.Settings.System.DEV_FORCE_SHOW_NAVBAR, 0) == 1;
+            boolean forceNavbar = false;
+            boolean hasNavBar = WindowManagerGlobal.getWindowManagerService().hasNavigationBar()
+                    || forceNavbar;
+
+            if (hasNavBar) {
+                mExpandedDesktopPref.setOnPreferenceChangeListener(this);
+                mExpandedDesktopPref.setValue(expandedDesktopValue);
+                updateExpandedDesktop(expandedDesktopValue);
+                expandedCategory.removePreference(mExpandedDesktopNoNavbarPref);
+            } else {
+                // Hide no-op "Status bar visible" expanded desktop mode
+                mExpandedDesktopNoNavbarPref.setOnPreferenceChangeListener(this);
+                mExpandedDesktopNoNavbarPref.setChecked(!TextUtils.isEmpty(expandedDesktopValue));
+                expandedCategory.removePreference(mExpandedDesktopPref);
+            }
+        } catch (RemoteException e) {
+            Log.e(TAG, "Error getting navigation bar status");
+        }
 
         mScreenSaverPreference = findPreference(KEY_SCREEN_SAVER);
         if (mScreenSaverPreference != null
@@ -356,6 +404,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         final String key = preference.getKey();
+        if (KEY_EXPANDED_DESKTOP.equals(key)) {
+            updateExpandedDesktop((String) objValue);
+        }
+        if (KEY_EXPANDED_DESKTOP_NO_NAVBAR.equals(key)) {
+            boolean value = (Boolean) objValue;
+            updateExpandedDesktop(value
+                    ? EXPANDED_DESKTOP_NO_STATUSBAR : EXPANDED_DESKTOP_DISABLED);
+        }
         if (KEY_SCREEN_TIMEOUT.equals(key)) {
             try {
                 int value = Integer.parseInt((String) objValue);
@@ -434,4 +490,28 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     return result;
                 }
             };
+
+    private void updateExpandedDesktop(String value) {
+        ContentResolver cr = getContentResolver();
+        Resources res = getResources();
+        int summary = -1;
+
+        Settings.Global.putString(cr, Settings.Global.POLICY_CONTROL, value);
+
+        if (EXPANDED_DESKTOP_DISABLED.equals(value)) {
+            // Expanded desktop deactivated
+//            Settings.System.putInt(cr, Settings.System.POWER_MENU_EXPANDED_DESKTOP_ENABLED, 0);
+            summary = R.string.expanded_desktop_disabled;
+        } else if (EXPANDED_DESKTOP_STATUSBAR.equals(value)) {
+//            Settings.System.putInt(cr, Settings.System.POWER_MENU_EXPANDED_DESKTOP_ENABLED, 1);
+            summary = R.string.expanded_desktop_status_bar;
+        } else if (EXPANDED_DESKTOP_NO_STATUSBAR.equals(value)) {
+//            Settings.System.putInt(cr, Settings.System.POWER_MENU_EXPANDED_DESKTOP_ENABLED, 1);
+            summary = R.string.expanded_desktop_no_status_bar;
+        }
+
+        if (mExpandedDesktopPref != null && summary != -1) {
+            mExpandedDesktopPref.setSummary(res.getString(summary));
+        }
+    }
 }

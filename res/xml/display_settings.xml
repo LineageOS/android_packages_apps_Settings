@@ -82,4 +82,21 @@
                 settings:keywords="@string/keywords_display_cast_screen"
                 android:fragment="com.android.settings.wfd.WifiDisplaySettings" />
 
+        <PreferenceCategory
+                android:key="expanded_desktop_category"
+                android:title="@string/power_menu_expanded_desktop" >
+
+            <ListPreference
+                    android:key="expanded_desktop"
+                    android:title="@string/expanded_desktop_style"
+                    android:entries="@array/expanded_desktop_entries"
+                    android:entryValues="@array/expanded_desktop_values"
+                    android:persistent="false" />
+
+            <SwitchPreference
+                    android:key="expanded_desktop_no_navbar"
+                    android:title="@string/power_menu_expanded_desktop"
+                    android:persistent="true" />
+        </PreferenceCategory>
+
 </PreferenceScreen>
