@@ -102,6 +102,17 @@
                 android:title="@string/notification_pulse_title"
                 android:persistent="false" />
 
+        <PreferenceScreen
+                android:key="notification_light"
+                android:title="@string/notification_light_title"
+                android:fragment="com.android.settings.notificationlight.NotificationLightSettings" />
+
+        <!-- Battery light -->
+        <PreferenceScreen
+                android:key="battery_light"
+                android:title="@string/battery_light_title"
+                android:fragment="com.android.settings.notificationlight.BatteryLightSettings" />
+
          <!-- When device is locked -->
         <com.android.settings.DropDownPreference
                 android:key="lock_screen_notifications"
