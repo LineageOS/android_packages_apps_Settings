@@ -782,7 +782,7 @@ public class InstalledAppDetails extends Fragment
 
         // Get list of preferred activities
         List<ComponentName> prefActList = new ArrayList<ComponentName>();
-        
+
         // Intent list cannot be null. so pass empty list
         List<IntentFilter> intentList = new ArrayList<IntentFilter>();
         mPm.getPreferredActivities(intentList, prefActList, packageName);
@@ -791,7 +791,7 @@ public class InstalledAppDetails extends Fragment
         boolean hasUsbDefaults = false;
         try {
             hasUsbDefaults = mUsbManager.hasDefaults(packageName, UserHandle.myUserId());
-        } catch (RemoteException e) {
+        } catch (RemoteException | NullPointerException e) {
             Log.e(TAG, "mUsbManager.hasDefaults", e);
         }
         boolean hasBindAppWidgetPermission =
