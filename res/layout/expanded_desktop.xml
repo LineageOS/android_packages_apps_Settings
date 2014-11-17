@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:animateLayoutChanges="true">
+    <ListView
+            android:id="@+id/user_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    <ProgressBar
+            android:id="@+id/progress_bar"
+            style="@android:style/Widget.Material.ProgressBar.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+    <TextView
+            android:id="@+id/nothing_to_show"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/expanded_nothing_to_show"
+            android:visibility="gone" />
+    <ListView
+            android:id="@+id/all_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/background_light"
+            android:visibility="invisible"
+            android:choiceMode="multipleChoice" />
+
+    <include layout="@layout/fab"
+            android:visibility="gone"/>
+</RelativeLayout>
