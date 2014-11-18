@@ -1319,6 +1319,12 @@ public class SettingsActivity extends Activity
                             UserManager.DISALLOW_DEBUGGING_FEATURES)) {
                         removeTile = true;
                     }
+                } else if (id == R.id.button_settings) {
+                    boolean hasDeviceKeys = getResources().getInteger(
+                            com.android.internal.R.integer.config_deviceHardwareKeys) != 0;
+                    if (!hasDeviceKeys) {
+                        removeTile = true;
+                    }
                 }
 
                 if (UserHandle.MU_ENABLED && UserHandle.myUserId() != 0
