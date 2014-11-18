@@ -44,15 +44,12 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private static final String KEY_ENABLE_WIDGETS = "keyguard_enable_widgets";
     private static final String KEY_LOCK_CLOCK = "lock_clock";
     private static final String KEY_ENABLE_CAMERA = "keyguard_enable_camera";
-    private static final String KEY_ENABLE_APPLICATION_WIDGET =
-            "keyguard_enable_application_widget";
     private static final String KEY_ENABLE_MAXIMIZE_WIGETS = "lockscreen_maximize_widgets";
     private static final String KEY_LOCKSCREEN_MODLOCK_ENABLED = "lockscreen_modlock_enabled";
     private static final String KEY_LOCKSCREEN_TARGETS = "lockscreen_targets";
 
     private CheckBoxPreference mEnableKeyguardWidgets;
     private CheckBoxPreference mEnableCameraWidget;
-    private CheckBoxPreference mEnableApplicationWidget;
     private CheckBoxPreference mEnableModLock;
     private CheckBoxPreference mEnableMaximizeWidgets;
     private ListPreference mBatteryStatus;
@@ -80,7 +77,6 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         // Find preferences
         mEnableKeyguardWidgets = (CheckBoxPreference) findPreference(KEY_ENABLE_WIDGETS);
         mEnableCameraWidget = (CheckBoxPreference) findPreference(KEY_ENABLE_CAMERA);
-        mEnableApplicationWidget = (CheckBoxPreference) findPreference(KEY_ENABLE_APPLICATION_WIDGET);
         mEnableMaximizeWidgets = (CheckBoxPreference) findPreference(KEY_ENABLE_MAXIMIZE_WIGETS);
         mLockscreenTargets = findPreference(KEY_LOCKSCREEN_TARGETS);
 
@@ -107,14 +103,6 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         } else if (mLockUtils.isSecure()) {
             checkDisabledByPolicy(mEnableCameraWidget,
                     DevicePolicyManager.KEYGUARD_DISABLE_SECURE_CAMERA);
-        }
-
-        // Enable or disable application widget based on policy
-        if (mEnableApplicationWidget != null) {
-            if (!checkDisabledByPolicy(mEnableApplicationWidget,
-                    DevicePolicyManager.KEYGUARD_DISABLE_APPLICATION_WIDGET)) {
-                mEnableApplicationWidget.setEnabled(true);
-            }
         }
 
         boolean canEnableModLockscreen = false;
@@ -151,10 +139,6 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         // Update custom widgets and camera
         if (mEnableKeyguardWidgets != null) {
             mEnableKeyguardWidgets.setChecked(mLockUtils.getWidgetsEnabled());
-        }
-
-        if (mEnableApplicationWidget != null) {
-            mEnableApplicationWidget.setChecked(mLockUtils.getApplicationWidgetEnabled());
         }
 
         if (mEnableCameraWidget != null) {
@@ -214,9 +198,6 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             return true;
         } else if (KEY_ENABLE_CAMERA.equals(key)) {
             mLockUtils.setCameraEnabled(mEnableCameraWidget.isChecked());
-            return true;
-        } else if (KEY_ENABLE_APPLICATION_WIDGET.equals(key)) {
-            mLockUtils.setApplicationWidgetEnabled(mEnableApplicationWidget.isChecked());
             return true;
         }
 

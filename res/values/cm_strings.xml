@@ -114,6 +114,8 @@
     <string name="connection_state_disabled">Disable</string>
     <string name="connection_state_enabled">Enable</string>
     <string name="volume_override_summary">Set to %1$s/%2$s</string>
+    <string name="volume_override_summary_no_override">Do not override</string>
+    <string name="profile_volume_override_checkbox_label">Override volume</string>
 
     <!-- Menu item for managing profiles -->
     <string name="profile_profiles_manage">Profiles</string>
@@ -180,9 +182,10 @@
 
     <!-- Ring mode -->
     <string name="ring_mode_title">Ring mode</string>
-    <string name="ring_mode_normal">Normal</string>
+    <string name="ring_mode_normal">Ring</string>
     <string name="ring_mode_vibrate">Vibrate</string>
     <string name="ring_mode_mute">Mute</string>
+    <string name="ring_mode_unchanged">Unchanged</string>
 
     <!-- Volume panel style -->
     <string name="volume_overlay_title">Volume panel style</string>
@@ -313,9 +316,6 @@
     <string name="lockscreen_maximize_widgets_title">Maximize widgets</string>
     <string name="lockscreen_maximize_widgets_summary">Expand widgets when the screen is turned on</string>
     <string name="lockscreen_enable_camera_title">Camera widget</string>
-    <!-- "Pass" is a proper noun and should not be translated -->
-    <string name="lockscreen_enable_application_widget_title">Pass widget</string>
-    <string name="lockscreen_application_widget_summary">Baton feature: Quick launch cloudified apps running on other devices</string>
 
     <!-- Safe headset volume checkboxes -->
     <string name="safe_headset_volume_title">Safe headset volume</string>
@@ -374,6 +374,7 @@
     <string name="title_tile_volume">Volume</string>
     <string name="title_tile_expanded_desktop">Expanded desktop</string>
     <string name="title_tile_network_adb">ADB over network</string>
+    <string name="title_tile_themes">Themes</string>
 
     <string name="title_dynamic_tiles">Dynamic tiles</string>
     <string name="dynamic_tiles_note_title">Note</string>
@@ -406,6 +407,8 @@
     <string name="cm_sound_mode_sound">Sound</string>
     <string name="cm_sound_mode_soundVibrate">Sound &amp; Vibrate</string>
     <string name="pref_location_mode_title">Location modes</string>
+    <string name="pref_location_mode_summary">Uncheck all modes for default behavior</string>
+    <string name="cm_location_mode_off">Location off</string>
     <string name="cm_location_mode_battery_saving">Battery saving</string>
     <string name="cm_location_mode_device_only">Device only</string>
     <string name="cm_location_mode_high_accuracy">High accuracy</string>
@@ -1209,11 +1212,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="voice_wakeup_retrain_title">Retrain your voice</string>
     <string name="voice_wakeup_activity_title">Activity to launch</string>
     <string name="voice_wakeup_default_activity">Google Now</string>
-
-    <!-- Set Subscription screen: label no sim -->
-    <string name="sub_no_sim">No SIM</string>
-    <string name="multi_sim_entry_format_no_carrier" translatable="false">SIM - <xliff:g id="index">%1$d</xliff:g></string>
-    <string name="multi_sim_entry_format" translatable="false"><xliff:g id="operator">%1$s</xliff:g> - <xliff:g id="index">%2$d</xliff:g></string>
 
     <!-- Main settings screen, Multi Sim settings title for item to go into the Multi settings -->
     <string name="multi_sim_settings_title">SIM cards</string>

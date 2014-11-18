@@ -775,7 +775,12 @@ public class Settings extends PreferenceActivity
                 }
             } else if (id == R.id.development_settings
                     || id == R.id.performance_settings) {
-                if (!showDev) {
+                boolean removePreference = !showDev;
+                if (!removePreference && id == R.id.performance_settings) {
+                    final Resources res = getResources();
+                    removePreference = res.getBoolean(R.bool.config_hidePerformanceSettings);
+                }
+                if (removePreference) {
                     target.remove(i);
                 }
             } else if (id == R.id.account_add) {
@@ -1267,8 +1272,7 @@ public class Settings extends PreferenceActivity
         // Launch the theme chooser if it supports the cyngn.intent.category.APP_THEMES category.
         if (header.id == R.id.theme_settings) {
             Intent intent = new Intent(Intent.ACTION_MAIN)
-                    .addCategory(THEME_CHOOSER_CATEGORY)
-                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    .addCategory(THEME_CHOOSER_CATEGORY);
             try {
                 startActivity(intent);
                 return;

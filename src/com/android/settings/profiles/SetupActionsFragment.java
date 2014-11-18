@@ -42,6 +42,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SeekBar;
@@ -94,8 +96,9 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
         Profile.LockMode.DEFAULT, Profile.LockMode.INSECURE, Profile.LockMode.DISABLE
     };
     private static final int[] EXPANDED_DESKTOP_MAPPING = new int[] {
-        Profile.ExpandedDesktopMode.DEFAULT, Profile.ExpandedDesktopMode.DISABLE,
-        Profile.ExpandedDesktopMode.ENABLE
+        Profile.ExpandedDesktopMode.DEFAULT,
+        Profile.ExpandedDesktopMode.ENABLE,
+        Profile.ExpandedDesktopMode.DISABLE
     };
 
     public static SetupActionsFragment newInstance(Profile profile, boolean newProfile) {
@@ -381,13 +384,15 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
 
         int defaultIndex = 0; // normal by default
         if (setting.isOverride()) {
-            if (setting.getValue().equals(values[1] /* vibrate */)) {
+            if (setting.getValue().equals(values[0] /* normal */)) {
+                defaultIndex = 0;
+            } else if (setting.getValue().equals(values[1] /* vibrate */)) {
                 defaultIndex = 1; // enabled
             } else if (setting.getValue().equals(values[2] /* mute */)) {
                 defaultIndex = 2; // mute
-            } else {
-                defaultIndex = 1; // disabled
             }
+        } else {
+            defaultIndex = 3;
         }
 
         builder.setTitle(R.string.ring_mode_title);
@@ -396,16 +401,20 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
             @Override
             public void onClick(DialogInterface dialog, int item) {
                 switch (item) {
-                    case 0: // disable override
-                        setting.setOverride(false);
+                    case 0: // enable override, normal
+                        setting.setOverride(true);
+                        setting.setValue(values[0]);
                         break;
-                    case 1: // enable override, disable
+                    case 1: // enable override, vibrate
                         setting.setOverride(true);
                         setting.setValue(values[1]);
                         break;
-                    case 2: // enable override, enable
+                    case 2: // enable override, mute
                         setting.setOverride(true);
                         setting.setValue(values[2]);
+                        break;
+                    case 3:
+                        setting.setOverride(false);
                         break;
                 }
                 mProfile.setRingMode(setting);
@@ -472,10 +481,22 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
 
         final AudioManager am = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
         final LayoutInflater inflater = LayoutInflater.from(getActivity());
-        final View view = inflater.inflate(com.android.internal.R.layout.seekbar_dialog, null);
-        final SeekBar seekBar = (SeekBar) view.findViewById(com.android.internal.R.id.seekbar);
+        final View view = inflater.inflate(R.layout.dialog_profiles_volume_override, null);
+        final SeekBar seekBar = (SeekBar) view.findViewById(R.id.seekbar);
+        final CheckBox override = (CheckBox) view.findViewById(R.id.checkbox);
+        override.setChecked(streamSettings.isOverride());
+        override.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                streamSettings.setOverride(isChecked);
+                seekBar.setEnabled(isChecked);
 
-        view.findViewById(android.R.id.icon).setVisibility(View.GONE);
+                mProfile.setStreamSettings(streamSettings);
+                mAdapter.notifyDataSetChanged();
+                updateProfile();
+            }
+        });
+        seekBar.setEnabled(streamSettings.isOverride());
         seekBar.setMax(am.getStreamMaxVolume(streamId));
         seekBar.setProgress(streamSettings.getValue());
         builder.setView(view);

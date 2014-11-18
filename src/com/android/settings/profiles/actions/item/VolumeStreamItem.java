@@ -64,8 +64,12 @@ public class VolumeStreamItem implements Item {
         TextView desc = (TextView) view.findViewById(R.id.summary);
         int denominator = mStreamSettings.getValue();
         int numerator = am.getStreamMaxVolume(mStreamId);
-        desc.setText(context.getResources().getString(R.string.volume_override_summary,
-                denominator, numerator));
+        if (mStreamSettings.isOverride()) {
+            desc.setText(context.getResources().getString(R.string.volume_override_summary,
+                    denominator, numerator));
+        } else {
+            desc.setText(context.getString(R.string.volume_override_summary_no_override));
+        }
 
         return view;
     }
