@@ -202,6 +202,10 @@ public final class BluetoothPermissionRequest extends BroadcastReceiver {
         }
 
         LocalBluetoothManager bluetoothManager = LocalBluetoothManager.getInstance(mContext);
+        if (bluetoothManager == null) {
+            Log.e(TAG, "Error: Can't get LocalBluetoothManager");
+            return false;
+        }
         CachedBluetoothDeviceManager cachedDeviceManager =
             bluetoothManager.getCachedDeviceManager();
         CachedBluetoothDevice cachedDevice = cachedDeviceManager.findDevice(mDevice);

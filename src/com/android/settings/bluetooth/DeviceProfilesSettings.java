@@ -83,6 +83,10 @@ public final class DeviceProfilesSettings extends SettingsPreferenceFragment
         mProfileContainer.setLayoutResource(R.layout.bluetooth_preference_category);
 
         mManager = LocalBluetoothManager.getInstance(getActivity());
+        if (mManager == null) {
+            Log.e(TAG, "Error: Can't get LocalBluetoothManager");
+            return;
+        }
         CachedBluetoothDeviceManager deviceManager =
                 mManager.getCachedDeviceManager();
         mProfileManager = mManager.getProfileManager();
@@ -209,7 +213,10 @@ public final class DeviceProfilesSettings extends SettingsPreferenceFragment
             mCachedDevice.setAliasName((String) newValue);
         } else if (preference instanceof CheckBoxPreference) {
             LocalBluetoothProfile prof = getProfileOf(preference);
-            onProfileClicked(prof, (CheckBoxPreference) preference);
+            if (prof != null)
+                onProfileClicked(prof, (CheckBoxPreference) preference);
+            else
+                Log.e(TAG, "Error: Can't get the profile for the preference");
             return false;   // checkbox will update from onDeviceAttributesChanged() callback
         } else {
             return false;

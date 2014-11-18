@@ -660,8 +660,15 @@ public final class DockService extends Service implements ServiceListener {
                     mCheckedItems[0] = true;
                     mCheckedItems[1] = true;
                 } else {
-                    mCheckedItems[0] = mProfiles[0].isPreferred(device);
-                    mCheckedItems[1] = mProfiles[1].isPreferred(device);
+                    if (mProfiles[0] != null)
+                        mCheckedItems[0] = mProfiles[0].isPreferred(device);
+                    else
+                        Log.e(TAG, "No headset Profile found");
+
+                    if (mProfiles[1] != null)
+                        mCheckedItems[1] = mProfiles[1].isPreferred(device);
+                    else
+                        Log.e(TAG, "No A2DP Profile found");
                 }
                 break;
 
@@ -674,7 +681,10 @@ public final class DockService extends Service implements ServiceListener {
                     // Disable by default for desk dock
                     mCheckedItems[0] = false;
                 } else {
-                    mCheckedItems[0] = mProfiles[0].isPreferred(device);
+                    if (mProfiles[0] != null)
+                        mCheckedItems[0] = mProfiles[0].isPreferred(device);
+                    else
+                        Log.e(TAG, "No A2DP Profile found");
                 }
                 break;
         }

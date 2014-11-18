@@ -193,6 +193,11 @@ public class BluetoothPermissionActivity extends AlertActivity implements
         boolean always = true;
         if (mRequestType == BluetoothDevice.REQUEST_TYPE_MESSAGE_ACCESS) {
             LocalBluetoothManager bluetoothManager = LocalBluetoothManager.getInstance(this);
+            if (bluetoothManager == null)
+            {
+                Log.e(TAG,"Error: Can't get LocalBluetoothManager");
+                return;
+            }
             CachedBluetoothDeviceManager cachedDeviceManager =
                     bluetoothManager.getCachedDeviceManager();
             CachedBluetoothDevice cachedDevice = cachedDeviceManager.findDevice(mDevice);
