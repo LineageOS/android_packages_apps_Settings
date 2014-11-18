@@ -62,7 +62,6 @@ public class DateTimeSettings extends SettingsPreferenceFragment
     private static final String KEY_DATE_FORMAT = "date_format";
     private static final String KEY_AUTO_TIME = "auto_time";
     private static final String KEY_AUTO_TIME_ZONE = "auto_zone";
-    private static final String KEY_SHOW_BATTERY_PERCENTAGE = "show_battery_percent";
 
     private static final int DIALOG_DATEPICKER = 0;
     private static final int DIALOG_TIMEPICKER = 1;
@@ -74,7 +73,6 @@ public class DateTimeSettings extends SettingsPreferenceFragment
     private Preference mTimePref;
     private Preference mTime24Pref;
     private CheckBoxPreference mAutoTimeZonePref;
-    private CheckBoxPreference mShowBatteryPercentage;
     private Preference mTimeZone;
     private Preference mDatePref;
     private ListPreference mDateFormat;
@@ -123,7 +121,6 @@ public class DateTimeSettings extends SettingsPreferenceFragment
         mTime24Pref = findPreference("24 hour");
         mTimeZone = findPreference("timezone");
         mDatePref = findPreference("date");
-        mShowBatteryPercentage = (CheckBoxPreference) findPreference(KEY_SHOW_BATTERY_PERCENTAGE);
         mDateFormat = (ListPreference) findPreference(KEY_DATE_FORMAT);
         if (isFirstRun) {
             getPreferenceScreen().removePreference(mTime24Pref);
@@ -158,10 +155,6 @@ public class DateTimeSettings extends SettingsPreferenceFragment
         mDateFormat.setEntries(formattedDates);
         mDateFormat.setEntryValues(R.array.date_format_values);
         mDateFormat.setValue(currentFormat);
-
-        boolean showPercentage = Settings.System.getInt(
-            getContentResolver(), "status_bar_show_battery_percent", 0) > 0;
-        mShowBatteryPercentage.setChecked(showPercentage);
 
         mTimePref.setEnabled(!autoTimeEnabled);
         mDatePref.setEnabled(!autoTimeEnabled);
@@ -251,10 +244,6 @@ public class DateTimeSettings extends SettingsPreferenceFragment
             Settings.Global.putInt(
                     getContentResolver(), Settings.Global.AUTO_TIME_ZONE, autoZoneEnabled ? 1 : 0);
             mTimeZone.setEnabled(!autoZoneEnabled);
-        } else if (key.equals(KEY_SHOW_BATTERY_PERCENTAGE)) {
-            boolean showPercentage = preferences.getBoolean(key, true);
-            Settings.System.putInt(getContentResolver(), "status_bar_show_battery_percent", showPercentage ? 1 : 0);
-            // mShowBatteryPercentage.setChecked(!showPercentage);
         }
     }
 
