@@ -95,7 +95,7 @@
                 android:id="@+id/button_settings"
                 android:title="@string/button_pref_title"
                 android:fragment="com.android.settings.ButtonSettings"
-                android:icon="@drawable/ic_settings_home"
+                android:icon="@drawable/ic_settings_buttons"
                 />
 
         <!-- Home -->
@@ -104,6 +104,13 @@
                 android:title="@string/home_settings"
                 android:fragment="com.android.settings.HomeSettings"
                 android:icon="@drawable/ic_settings_home"
+                />
+
+        <dashboard-tile
+                android:id="@+id/status_bar_settings"
+                android:title="@string/status_bar_prefs_title"
+                android:fragment="com.android.settings.StatusBarSettings"
+                android:icon="@drawable/ic_settings_statusbar"
                 />
 
         <!-- Display -->
