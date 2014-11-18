@@ -258,7 +258,8 @@ public final class BluetoothSettings extends DeviceListPreferenceFragment implem
         }
 
         mLocalManager.getCachedDeviceManager().clearNonBondedDevices();
-        mAvailableDevicesCategory.removeAll();
+        if (mAvailableDevicesCategory != null)
+            mAvailableDevicesCategory.removeAll();
         mInitialScanStarted = true;
         mLocalAdapter.startScanning(true);
     }
