@@ -22,6 +22,7 @@ import android.bluetooth.BluetoothProfile;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.widget.Toast;
+import android.util.Log;
 
 import com.android.settings.R;
 import com.android.settings.search.Index;
@@ -35,6 +36,8 @@ import com.android.settings.search.SearchIndexableRaw;
 final class Utils {
     static final boolean V = false; // verbose logging
     static final boolean D = true;  // regular logging
+
+    private static final String TAG = "Utils";
 
     private Utils() {
     }
@@ -92,6 +95,10 @@ final class Utils {
     static void showError(Context context, String name, int messageResId) {
         String message = context.getString(messageResId, name);
         LocalBluetoothManager manager = LocalBluetoothManager.getInstance(context);
+        if (manager == null) {
+            Log.e(TAG, "Error, Can't get LocalBluetoothManager");
+            return;
+        }
         Context activity = manager.getForegroundActivity();
         if(manager.isForegroundActivity()) {
             new AlertDialog.Builder(activity)

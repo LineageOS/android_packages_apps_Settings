@@ -46,9 +46,16 @@ public final class BluetoothVisibilityTimeoutFragment extends DialogFragment
 
     private final BluetoothDiscoverableEnabler mDiscoverableEnabler;
 
+    private static final String TAG = "BluetoothVisibilityTimeoutActivity";
+
     public BluetoothVisibilityTimeoutFragment() {
-        mDiscoverableEnabler = LocalBluetoothManager.getInstance(getActivity())
-                .getDiscoverableEnabler();
+        LocalBluetoothManager manager = LocalBluetoothManager.getInstance(getActivity());
+        if (manager != null) {
+            mDiscoverableEnabler = manager.getDiscoverableEnabler();
+        } else {
+            Log.e(TAG, "Error: Can't get LocalBluetoothManager");
+            mDiscoverableEnabler = null;
+        }
     }
 
     @Override
