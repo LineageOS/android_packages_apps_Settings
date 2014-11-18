@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "faac7902_b2304009",
+        "filename": "src/com/android/settings/applications/LockPatternActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 9528
+      },
+      "writtenOn": "2014-11-18T14:21:46Z",
+      "side": 1,
+      "message": "Two things to consider:\n\nCould we getting the calling activity so we can target this broadcast back to the calling app?\n\nNot sold on having a permission on this broadcast. Any app that knows this component name can ask it to validate the user. And it only returns a boolean value, so it can\u0027t be very harmful to expose this broadcast.",
+      "revId": "ace889a026cba968deee020aeb11e33888d50e23",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
