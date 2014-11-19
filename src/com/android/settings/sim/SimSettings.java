@@ -114,6 +114,9 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     private int mChangeStartPos;
     private int mChangeCount;
 
+    private SubscriptionManager mSubscriptionManager;
+    private Utils mUtils;
+
     public SimSettings() {
         super(DISALLOW_CONFIG_SIM);
     }
@@ -125,9 +128,12 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         final TelephonyManager tm =
                     (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
 
+        mSubscriptionManager = SubscriptionManager.from(getActivity());
+
         if (mSubInfoList == null) {
             mSubInfoList = SubscriptionManager.from(getActivity()).getActiveSubscriptionInfoList();
         }
+        if (DBG) log("[onCreate] mSubInfoList=" + mSubInfoList);
 
         mNumSlots = tm.getSimCount();
         mPhoneCount = TelephonyManager.getDefault().getPhoneCount();
@@ -335,9 +341,11 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
 
     private void updateSmsValues() {
         final Preference simPref = findPreference(KEY_SMS);
-        final SubscriptionInfo sir = Utils.findRecordBySubId(SubscriptionManager.getDefaultSmsSubId());
+        final SubscriptionInfo sir = Utils.findRecordBySubId(getActivity(),
+                mSubscriptionManager.getDefaultSmsSubId());
         simPref.setTitle(R.string.sms_messages_title);
-        if (mSubInfoList.size() == 1) {
+        if (DBG) log("[updateSmsValues] mSubInfoList=" + mSubInfoList);
+        if (mSubInfoList != null && mSubInfoList.size() == 1) {
             simPref.setSummary(mSubInfoList.get(0).getDisplayName());
         } else if (sir != null) {
             simPref.setSummary(sir.getDisplayName());
@@ -420,7 +428,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
 
                         if (id == DATA_PICK) {
                             sir = mSelectableSubInfos.get(value);
-                            SubscriptionManager.setDefaultDataSubId(sir.getSubscriptionId());
+                            mSubscriptionManager.setDefaultDataSubId(sir.getSubscriptionId());
                         } else if (id == CALLS_PICK) {
                             final TelecomManager telecomManager =
                                     TelecomManager.from(getActivity());
@@ -430,7 +438,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
                                     value < 1 ? null : phoneAccountsList.get(value - 1));
                         } else if (id == SMS_PICK) {
                             sir = mSelectableSubInfos.get(value);
-                            SubscriptionManager.setDefaultSmsSubId(sir.getSubscriptionId());
+                            mSubscriptionManager.setDefaultSmsSubId(sir.getSubscriptionId());
                         }
 
                         updateActivitesCategory();
@@ -738,16 +746,16 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
                     String displayName = nameText.getText().toString();
                     int subId = mSubInfoRecord.getSubscriptionId();
                     mSubInfoRecord.setDisplayName(displayName);
-                    SubscriptionManager.setDisplayName(displayName, subId,
+                    mSubscriptionManager.setDisplayName(displayName, subId,
                             SubscriptionManager.NAME_SOURCE_USER_INPUT);
-                    Utils.findRecordBySubId(subId).setDisplayName(displayName);
+                    Utils.findRecordBySubId(getActivity(), subId).setDisplayName(displayName);
 
                     final int tintSelected = tintSpinner.getSelectedItemPosition();
                     int subscriptionId = mSubInfoRecord.getSubscriptionId();
                     int tint = tintArr[tintSelected];
                     mSubInfoRecord.setIconTint(tint);
-                    SubscriptionManager.setIconTint(tint, subscriptionId);
-                    Utils.findRecordBySubId(subscriptionId).setIconTint(tint);
+                    mSubscriptionManager.setIconTint(tint, subscriptionId);
+                    Utils.findRecordBySubId(getActivity(), subscriptionId).setIconTint(tint);
 
                     updateAllOptions();
                     update();
