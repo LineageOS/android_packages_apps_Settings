@@ -992,7 +992,7 @@ public class InstalledAppDetails extends Fragment
                     mExternalDataSize.setText(getSizeStr( mAppEntry.externalDataSize));
                 }
             }
-            if (mLastCodeSize != codeSize) {
+            if (mLastCodeSize != codeSize && mAppSize != null) {
                 mLastCodeSize = codeSize;
                 mAppSize.setText(getSizeStr(codeSize));
             }
