@@ -747,9 +747,18 @@ public class DataUsageSummary extends Fragment {
             mTemplate = buildTemplateMobileAll(getActiveSubscriberId(context));
 
         } else if (currentTab.startsWith(TAB_SIM)) {
-            for (int i = 0; i < MSimTelephonyManager.getDefault()
-                    .getPhoneCount(); i++) {
+            MSimTelephonyManager mSimTelephonyManager = MSimTelephonyManager.getDefault();
+            for (int i = 0; i < mSimTelephonyManager.getPhoneCount(); i++) {
                 if (currentTab.equals(getSubTag(i+1))) {
+                    if (mSimTelephonyManager.getMultiSimConfiguration()
+                            == MSimTelephonyManager.MultiSimVariants.DSDS) {
+                        int dataSub = mSimTelephonyManager.getPreferredDataSubscription();
+                        if (dataSub == multiSimGetCurrentSub()) {
+                            mDataEnabledView.setVisibility(View.VISIBLE);
+                        } else {
+                            mDataEnabledView.setVisibility(View.GONE);
+                        }
+                    }
                     setPreferenceTitle(mDataEnabledView,
                             R.string.data_usage_enable_mobile);
                     setPreferenceTitle(mDisableAtLimitView,
