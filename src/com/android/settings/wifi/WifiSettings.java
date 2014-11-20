@@ -1175,19 +1175,20 @@ public class WifiSettings extends RestrictedSettingsFragment
             }
         }
 
+        ArrayList<AccessPoint> ignoreAccessPoint = new ArrayList<AccessPoint>();
         if (accessPoints != null && accessPoints.size() > 1) {
             for (AccessPoint point : accessPoints) {
                 if (point.getState() != null
                         && (point.getState() == DetailedState.CONNECTING || point
                                 .getState() == DetailedState.CONNECTED)) {
                     // This AP is user manually disconnect AP, so ignore.
-                    accessPoints.remove(point);
+                    ignoreAccessPoint.add(point);
                 } else if (point.getLevel() != -1) {
                     continue;
                 }
             }
         }
-
+        accessPoints.removeAll(ignoreAccessPoint);
         return accessPoints;
     }
 }
