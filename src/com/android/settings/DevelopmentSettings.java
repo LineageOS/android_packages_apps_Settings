@@ -68,6 +68,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.search.Index;
 import com.android.settings.search.Indexable;
 import com.android.settings.widget.SwitchBar;
 import dalvik.system.VMRuntime;
@@ -255,6 +256,16 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+
+        if (isHiddenDeveloper()) {
+            getActivity().getSharedPreferences(DevelopmentSettings.PREF_FILE,
+                    Context.MODE_PRIVATE).edit().putBoolean(
+                    DevelopmentSettings.PREF_SHOW, false).apply();
+            //This is good time to index the Developer Options
+            Index.getInstance(
+                    getActivity().getApplicationContext()).updateFromClassNameResource(
+                    DevelopmentSettings.class.getName(), true, false);
+        }
 
         mWindowManager = IWindowManager.Stub.asInterface(ServiceManager.getService("window"));
         mBackupManager = IBackupManager.Stub.asInterface(

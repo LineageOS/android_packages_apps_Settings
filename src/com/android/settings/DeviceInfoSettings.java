@@ -83,7 +83,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_SAFETY_LEGAL = "safetylegal";
     private static final String KEY_STATUS = "status_info";
 
-    static final int TAPS_TO_BE_A_DEVELOPER = 7;
+    static final int TAPS_TO_BE_A_DEVELOPER_NORMALLY = 5;
+    static final int TAPS_TO_BE_A_DEVELOPER_IN_HIDDEN_MODE = 7;
     private static boolean mHideVersionName = false;
 
     long[] mHits = new long[3];
@@ -206,8 +207,14 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         super.onResume();
         mDevHitCountdown = getActivity().getSharedPreferences(DevelopmentSettings.PREF_FILE,
                 Context.MODE_PRIVATE).getBoolean(DevelopmentSettings.PREF_SHOW,
-                        android.os.Build.TYPE.equals("eng")) ? -1 : TAPS_TO_BE_A_DEVELOPER;
+                        android.os.Build.TYPE.equals("eng")) ? -1 : (isHiddenDeveloper() ?
+                                TAPS_TO_BE_A_DEVELOPER_IN_HIDDEN_MODE :
+                                        TAPS_TO_BE_A_DEVELOPER_NORMALLY);
         mDevHitToast = null;
+    }
+
+    private boolean isHiddenDeveloper(){
+        return getResources().getBoolean(R.bool.def_hidden_developer);
     }
 
     @Override
@@ -250,7 +257,9 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
                                     DevelopmentSettings.class.getName(), true, true);
 
                 } else if (mDevHitCountdown > 0
-                        && mDevHitCountdown < (TAPS_TO_BE_A_DEVELOPER-2)) {
+                        && mDevHitCountdown < ((isHiddenDeveloper() ?
+                                TAPS_TO_BE_A_DEVELOPER_IN_HIDDEN_MODE :
+                                        TAPS_TO_BE_A_DEVELOPER_NORMALLY)-2)) {
                     if (mDevHitToast != null) {
                         mDevHitToast.cancel();
                     }
