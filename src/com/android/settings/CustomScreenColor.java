@@ -249,7 +249,7 @@ public class CustomScreenColor extends Activity implements SeekBar.OnSeekBarChan
     private void initPPService() {
         mPPServiceConn = new PPServiceConnection();
         Intent i = new Intent(IPPService.class.getName());
-        i.setClassName("com.android.display", IPPService.class.getName());
+        i.setClassName("com.qualcomm.display", "com.qualcomm.display.PPService");
         boolean ret = bindService(i, mPPServiceConn, Context.BIND_AUTO_CREATE);
     }
 
