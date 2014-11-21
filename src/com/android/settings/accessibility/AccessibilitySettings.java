@@ -410,10 +410,9 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
         mServicesCategory = (PreferenceCategory) findPreference(SERVICES_CATEGORY);
         mSystemsCategory = (PreferenceCategory) findPreference(SYSTEM_CATEGORY);
         mShowQuickBoot = getResources().getBoolean(R.bool.def_quick_boot_enable);
-        if (mShowQuickBoot) {
-            mQuickBoot = (CheckBoxPreference) findPreference(ENABLE_QUICKBOOT);
-        } else {
-            mSystemsCategory.removePreference(findPreference(ENABLE_QUICKBOOT));
+        mQuickBoot = (CheckBoxPreference) findPreference(ENABLE_QUICKBOOT);
+        if (!mShowQuickBoot && mQuickBoot!=null ) {
+            mSystemsCategory.removePreference(mQuickBoot);
         }
 
         // Large text.
@@ -421,11 +420,11 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
                 (CheckBoxPreference) findPreference(TOGGLE_LARGE_TEXT_PREFERENCE);
 
          // LED flashlight.
-        if (getResources().getBoolean(R.bool.def_led_flashlight_enable)) {
-            mToggleLEDflashlightPreference =
+         mToggleLEDflashlightPreference =
                     (CheckBoxPreference) findPreference(TOGGLE_LED_FLASHLIGHT_PREFERENCE);
-        } else {
-            mSystemsCategory.removePreference(findPreference(TOGGLE_LED_FLASHLIGHT_PREFERENCE));
+        if (!getResources().getBoolean(R.bool.def_led_flashlight_enable)
+                && mToggleLEDflashlightPreference != null) {
+            mSystemsCategory.removePreference(mToggleLEDflashlightPreference);
         }
 
         // Text contrast.
