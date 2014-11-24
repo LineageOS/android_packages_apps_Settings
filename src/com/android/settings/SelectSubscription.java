@@ -49,7 +49,7 @@ public class SelectSubscription extends  TabActivity {
     public static final String PACKAGE = "PACKAGE";
     public static final String TARGET_CLASS = "TARGET_CLASS";
 
-    private String[] tabLabel = {"SUB 1", "SUB 2", "SUB 3"};
+    private String[] tabLabel;
 
     private TabSpec subscriptionPref;
 
@@ -68,6 +68,7 @@ public class SelectSubscription extends  TabActivity {
         log("Creating activity");
 
         setContentView(R.layout.select_subscription);
+        tabLabel = getResources().getStringArray(R.array.default_sim_name);
 
         TabHost tabHost = getTabHost();
 
