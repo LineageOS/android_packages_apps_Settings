@@ -195,6 +195,11 @@ public class SimConfiguration extends PreferenceActivity implements TextWatcher 
         });
 
         mIntentFilter.addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED);
+
+        // if no sim card,no need to modify the sim name and icon
+        if (MultiSimSettingTab.findRecordBySlotId(this, mSubscription) == null) {
+            getPreferenceScreen().setEnabled(false);
+        }
     }
 
     private int getMultiSimIconIndex(int subscription) {
