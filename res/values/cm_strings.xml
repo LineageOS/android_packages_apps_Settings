@@ -136,6 +136,8 @@
 
     <string name="button_pref_title">Buttons</string>
     <string name="hardware_keys_home_key_title">Home button</string>
+    <string name="hardware_keys_volume_keys_title">Home button</string>
+    <string name="hardware_keys_power_key_title">Home button</string>
     <string name="hardware_keys_menu_key_title">Menu button</string>
     <string name="hardware_keys_short_press_title">Short press action</string>
     <string name="hardware_keys_long_press_title">Long press action</string>
@@ -148,9 +150,18 @@
     <string name="hardware_keys_action_in_app_search">In-app search</string>
     <string name="hardware_keys_action_launch_camera">Launch camera</string>
     <string name="hardware_keys_action_sleep">Turn screen off</string>
-
     <string name="show_battery_percent_title">Show battery percentage</string>
     <string name="app_security_title">App security</string>
+    <string name="volume_wake_title">Volume button wake</string>
+    <string name="volume_wake_summary">Pressing either volume button will wake your device</string>
+    <string name="home_answer_call_title">Home answer call</string>
+    <string name="home_answer_call_summary">
+        Pressing the home button will answer incoming call
+    </string>
+    <string name="power_end_call_title">Power end call</string>
+    <string name="power_end_call_summary">
+        Pressing the power button will end current call
+    </string>
 
     <!-- Blacklist preferences -->
     <string name="blacklist_title">Blacklist</string>
@@ -188,10 +199,6 @@
     <string name="lockpattern_settings_reset_summary">Enter primary email account and associated password to reset pattern lock</string>
 
     <!-- Protected Apps -->
-    <string name="menu_hidden_apps_delete">Reset</string>
-    <string name="menu_hidden_apps_reset_lock">Reset pattern lock</string>
-    <string name="protected_apps">Protected apps</string>
-    <string name="saving_protected_components">Saving component state\u2026</string>
     <string name="launch_app">Launch app</string>
 
     <string name="pa_login_username_hint">Username (email)</string>
@@ -201,8 +208,8 @@
     <string name="pa_login_incorrect_login">Login was incorrect</string>
 
     <!--- Sms security limit -->
-    <string name="app_security_title">App security</string>
     <string name="sms_security_check_limit_title">SMS message limit</string>
+
     <string name="sms_security_check_limit_summary">Display an alert dialog to prevent applications from sending SMS messages too frequently. Current limit: %d messages in 15 minutes</string>
     <string name="sms_security_check_limit_default">30 (Default)</string>
 </resources>

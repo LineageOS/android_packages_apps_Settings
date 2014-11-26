@@ -37,6 +37,12 @@
             android:entryValues="@array/hardware_keys_action_values"
             android:persistent="false" />
 
+         <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="home_answer_call"
+            android:title="@string/home_answer_call_title"
+            android:summary="@string/home_answer_call_summary"
+            android:defaultValue="false"/>
+
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -60,5 +66,32 @@
             android:persistent="false" />
 
     </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="volume_keys"
+        android:title="@string/hardware_keys_volume_keys_title">
+
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="volume_wake_screen"
+            android:title="@string/volume_wake_title"
+            android:summary="@string/volume_wake_summary"
+            android:defaultValue="false"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="power_keys"
+        android:title="@string/hardware_keys_power_key_title">
+
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="power_end_call"
+            android:title="@string/power_end_call_title"
+            android:summary="@string/power_end_call_summary"
+            android:defaultValue="false"/>
+
+    </PreferenceCategory>
+
+
+
 
 </PreferenceScreen>
