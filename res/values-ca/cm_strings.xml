@@ -82,6 +82,8 @@
   <string name="connection_state_disabled">Desactiva</string>
   <string name="connection_state_enabled">Activa</string>
   <string name="volume_override_summary">Estableix a %1$s/%2$s</string>
+  <string name="volume_override_summary_no_override">No invalidis</string>
+  <string name="profile_volume_override_checkbox_label">Invalida el volum</string>
   <string name="profile_profiles_manage">Perfils</string>
   <string name="profile_profile_manage">Gestiona un perfil</string>
   <string name="profile_appgroups_manage">Grups d\'aplicacions</string>
@@ -127,9 +129,10 @@
   <string name="link_volume_mutes">El mode silenci afecta les notificacions</string>
   <string name="volume_keys_control_ring_stream">Els botons de volum controlen el volum del to de trucada</string>
   <string name="ring_mode_title">Mode del to de trucada</string>
-  <string name="ring_mode_normal">Normal</string>
+  <string name="ring_mode_normal">Sona</string>
   <string name="ring_mode_vibrate">Vibració</string>
   <string name="ring_mode_mute">Silenci</string>
+  <string name="ring_mode_unchanged">Sense canvis</string>
   <string name="volume_overlay_title">Estil del panell de volum</string>
   <string name="volume_overlay_single">Individual</string>
   <string name="volume_overlay_expandable">Extensible</string>
@@ -202,7 +205,7 @@
   <string name="screen_security_summary">Mostra o canvia els ajustaments de seguretat de la pantalla de bloqueig</string>
   <string name="unlock_scramble_pin_layout_title">Disposició aleatòria</string>
   <string name="unlock_scramble_pin_layout_summary">Disposa aleatòriament les tecles del PIN quan es desbloquegi el dispositiu</string>
-  <string name="unlock_menu_unlock_title">Desbloqueig amb menú</string>
+  <string name="unlock_menu_unlock_title">Desbloqueig amb Menú</string>
   <string name="unlock_menu_unlock_summary">Apretant el botó menú desbloqueja el dispositiu</string>
   <string name="unlock_home_unlock_title">Desbloqueig amb inici</string>
   <string name="unlock_home_unlock_summary">Apretant el botó d\'inici desbloqueja el dispositiu</string>
@@ -215,7 +218,6 @@
   <string name="lockscreen_maximize_widgets_title">Maximitza els widgets</string>
   <string name="lockscreen_maximize_widgets_summary">Mostra els widgets maximitzats i el desbloqueig minimitzat quan s\'encengui la pantalla</string>
   <string name="lockscreen_enable_camera_title">Widget Càmera</string>
-  <string name="lockscreen_enable_application_widget_title">Widget Appcast</string>
   <string name="safe_headset_volume_title">Volum dels auriculars segur</string>
   <string name="safe_headset_volume_restore_title">Redueix el volum dels auriculars al connectar-los</string>
   <string name="cyanogenmod_waiver_title">Renúncia</string>
@@ -265,6 +267,7 @@
   <string name="title_tile_volume">Volum</string>
   <string name="title_tile_expanded_desktop">Escriptori extès</string>
   <string name="title_tile_network_adb">ADB sobre xarxa</string>
+  <string name="title_tile_themes">Temes</string>
   <string name="title_dynamic_tiles">Cel·les dinàmiques</string>
   <string name="dynamic_tiles_note_title">Nota</string>
   <string name="dynamic_tiles_note_summary">Les cel·les dinàmiques només apareixeran si són activades per un esdeveniment del sistema</string>
@@ -294,6 +297,8 @@
   <string name="cm_sound_mode_sound">So</string>
   <string name="cm_sound_mode_soundVibrate">So i Vibració</string>
   <string name="pref_location_mode_title">Modes d\'ubicació</string>
+  <string name="pref_location_mode_summary">Desactiva tots els modes per al comportament predefinit</string>
+  <string name="cm_location_mode_off">Ubicació Inactiva</string>
   <string name="cm_location_mode_battery_saving">Estalvi de bateria</string>
   <string name="cm_location_mode_device_only">Només dispositiu</string>
   <string name="cm_location_mode_high_accuracy">Alta precisió</string>
@@ -580,7 +585,7 @@ Hi ha disponibles opcions addicionals apretant llargament sobre la línia. Selec
   <string name="lockscreen_buttons_summary">Veure o canviar les accions dels botons en la pantalla de bloqueig</string>
   <string name="lockscreen_long_press_back_title">Pulsació llarga del botó Enrera</string>
   <string name="lockscreen_long_press_home_title">Pulsació llarga del botó inici</string>
-  <string name="lockscreen_long_press_menu_title">Pulsació llarga del botó Menu</string>
+  <string name="lockscreen_long_press_menu_title">Pulsació llarga del botó Menú</string>
   <string name="lockscreen_buttons_no_action">Cap acció</string>
   <string name="lockscreen_buttons_flashlight">Torxa</string>
   <string name="lockscreen_buttons_next">Cançó següent</string>
@@ -872,7 +877,6 @@ Hi ha disponibles opcions addicionals apretant llargament sobre la línia. Selec
   <string name="voice_wakeup_retrain_title">Calibra la teva veu</string>
   <string name="voice_wakeup_activity_title">Activitat a executar</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
-  <string name="sub_no_sim">Sense SIM</string>
   <string name="multi_sim_settings_title">Targetes SIM</string>
   <string name="multi_sim_settings_group_summary">Selecció de SIM per defecte</string>
   <string name="voice_title">Trucades de veu</string>

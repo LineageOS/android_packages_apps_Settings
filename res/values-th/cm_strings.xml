@@ -82,6 +82,8 @@
   <string name="connection_state_disabled">ปิด</string>
   <string name="connection_state_enabled">เปิด</string>
   <string name="volume_override_summary">ตั้งเป็น %1$s/%2$s</string>
+  <string name="volume_override_summary_no_override">ไม่แทนที่</string>
+  <string name="profile_volume_override_checkbox_label">แทนที่เสียง</string>
   <string name="profile_profiles_manage">โปรไฟล์</string>
   <string name="profile_profile_manage">จัดการโปรไฟล์</string>
   <string name="profile_appgroups_manage">กลุ่มแอป</string>
@@ -127,9 +129,10 @@
   <string name="link_volume_mutes">รูปแบบเงียบมีผลกระทบต่อการแจ้งเตือน</string>
   <string name="volume_keys_control_ring_stream">ปุ่มปรับระดับเสียงควบคุมระดับเสียงเรียกเข้า</string>
   <string name="ring_mode_title">รูปแบบเสียงเรียกเข้า</string>
-  <string name="ring_mode_normal">ปกติ</string>
+  <string name="ring_mode_normal">เสียงเรียกเข้า</string>
   <string name="ring_mode_vibrate">สั่น</string>
   <string name="ring_mode_mute">เงียบ</string>
+  <string name="ring_mode_unchanged">ไม่เปลี่ยนแปลง</string>
   <string name="volume_overlay_title">รูปแบบแผงควบคุมเสียง</string>
   <string name="volume_overlay_single">เดี่ยว</string>
   <string name="volume_overlay_expandable">ขยายได้</string>
@@ -215,7 +218,6 @@
   <string name="lockscreen_maximize_widgets_title">วิดเจ็ทสูงสุด</string>
   <string name="lockscreen_maximize_widgets_summary">ขยายวิดเจ็ทเมือเปิดจอ</string>
   <string name="lockscreen_enable_camera_title">วิดเจ็ทกล้อง</string>
-  <string name="lockscreen_enable_application_widget_title">วิดเจ็ด Appcast</string>
   <string name="safe_headset_volume_title">ระดับเสียงปลอดภัยต่อชุดหูฟัง</string>
   <string name="safe_headset_volume_restore_title">ลดเสียงหูฟังขณะทำการเชื่อมต่อ</string>
   <string name="cyanogenmod_waiver_title">สละสิทธิ</string>
@@ -265,6 +267,7 @@
   <string name="title_tile_volume">ระดับเสียง</string>
   <string name="title_tile_expanded_desktop">เต็มจอ</string>
   <string name="title_tile_network_adb">ADB บนเครือข่าย</string>
+  <string name="title_tile_themes">ชุดรูปแบบ</string>
   <string name="title_dynamic_tiles">ไดนามิก ไทต์</string>
   <string name="dynamic_tiles_note_title">หมายเหตุ</string>
   <string name="dynamic_tiles_note_summary">ไดนามิกไทต์จะแสดงเมื่อถูกกระตุ้นจากเหตุการณ์ของระบบเท่านั้น</string>
@@ -294,6 +297,8 @@
   <string name="cm_sound_mode_sound">เสียง</string>
   <string name="cm_sound_mode_soundVibrate">เสียง &amp;สั่น</string>
   <string name="pref_location_mode_title">รูปแบบตำแหน่ง</string>
+  <string name="pref_location_mode_summary">ไม่เลือกเป็นรูปแบบเริ่มต้นสำหรับการกระทำทั้งหมด</string>
+  <string name="cm_location_mode_off">ปิดใช้งานตำแหน่ง</string>
   <string name="cm_location_mode_battery_saving">ประหยัดแบตเตอรี่</string>
   <string name="cm_location_mode_device_only">อุปกรณ์เท่านั้น</string>
   <string name="cm_location_mode_high_accuracy">ความแม่นยำสูง</string>
@@ -863,10 +868,10 @@
   <string name="voice_wakeup_retrain_title">จดจำเสียงของคุณ</string>
   <string name="voice_wakeup_activity_title">กิจกรรมที่จะให้ทำงาน</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
-  <string name="sub_no_sim">ไม่มีซิม</string>
   <string name="multi_sim_settings_title">ซิมการ์ด</string>
   <string name="multi_sim_settings_group_summary">เลือกซิมหลัก</string>
   <string name="voice_title">การโทรด้วยเสียง</string>
+  <string name="data_title">การเชื่อมต่อข้อมูล</string>
   <string name="sms_title">ส่งข้อความ</string>
   <string name="priority_sub_title">บอกลำดับความสำคัญ</string>
   <string name="bluetooth_accept_all_files">ยอมรับแฟ้มทุกชนิด</string>
@@ -955,6 +960,7 @@
   <string name="set_sms_error">ผิดพลาดขณะตั้งต่าการติดตาม SMS การติดตามไม่ถูกเปิด</string>
   <string name="set_voice_error">ผิดพลาดขณะตั้งต่าการติดตามเสียง การติดตามไม่ถูกเปิด</string>
   <string name="set_priority_sub_error">ผิดพลาดขณะตั้งต่าความสำคัญการติดตาม การติดตามไม่ถูกเปิด</string>
+  <string name="prompt">ถามเสมอ</string>
   <string name="maximum_head_level">หัว: %1$s W/kg</string>
   <string name="maximum_body_level">ตัว: %1$s W/kg</string>
   <string name="tune_away_title">TuneAway</string>
