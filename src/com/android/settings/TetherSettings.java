@@ -111,6 +111,7 @@ public class TetherSettings extends SettingsPreferenceFragment
 
     private boolean mUsbConnected;
     private boolean mMassStorageActive;
+    private boolean mHideWifiHotspot;
 
     private boolean mBluetoothEnableForTether;
     private Context mContext;
@@ -148,11 +149,13 @@ public class TetherSettings extends SettingsPreferenceFragment
         final Activity activity = getActivity();
         mContext = activity;
         mShowHotspotSetting = getResources().getBoolean(R.bool.show_wifi_hotspot_settings);
+        mHideWifiHotspot = getResources().getBoolean(R.bool.hide_wifi_hotspot);
         BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
         if (adapter != null) {
             adapter.getProfileProxy(activity.getApplicationContext(), mProfileServiceListener,
                     BluetoothProfile.PAN);
         }
+
         if (mShowHotspotSetting) {
             mEnableWifiApSwitch =
                     (HotspotPreference) findPreference(ENABLE_WIFI_AP_SWITCH);
@@ -162,7 +165,12 @@ public class TetherSettings extends SettingsPreferenceFragment
             mEnableWifiAp =
                     (SwitchPreference) findPreference(ENABLE_WIFI_AP);
             getPreferenceScreen().removePreference(findPreference(ENABLE_WIFI_AP_SWITCH));
+            if (mHideWifiHotspot) {
+                getPreferenceScreen().removePreference(findPreference(ENABLE_WIFI_AP));
+                getPreferenceScreen().removePreference(findPreference(WIFI_AP_SSID_AND_SECURITY));
+            }
         }
+
         mUsbTether = (SwitchPreference) findPreference(USB_TETHER_SETTINGS);
         mHotsoptMode = (ListPreference) findPreference(KEY_HOTSPOT_MODE);
         mBluetoothTether = (SwitchPreference) findPreference(ENABLE_BLUETOOTH_TETHERING);
@@ -188,7 +196,7 @@ public class TetherSettings extends SettingsPreferenceFragment
         if (wifiAvailable && !Utils.isMonkeyRunning()) {
             if (mShowHotspotSetting) {
                 mWifiApEnablerSwitch = new WifiApEnablerSwitch(activity, mEnableWifiApSwitch);
-            } else {
+            } else if (!mHideWifiHotspot) {
                 mWifiApEnabler = new WifiApEnabler(activity, mEnableWifiAp);
                 initWifiTethering();
             }
