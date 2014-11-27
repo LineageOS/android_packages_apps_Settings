@@ -77,11 +77,13 @@
   <string name="settings_search_action_bar_button">検索</string>
   <string name="settings_search_autocompleteview_hint">設定を検索</string>
   <string name="settings_search_loading_text">検索データを読み込み中\u2026</string>
-  <string name="profile_connectionoverrides_title">接続の定義</string>
-  <string name="profile_volumeoverrides_title">音量の定義</string>
+  <string name="profile_connectionoverrides_title">接続の変更</string>
+  <string name="profile_volumeoverrides_title">音量の変更</string>
   <string name="connection_state_disabled">無効</string>
   <string name="connection_state_enabled">有効化</string>
   <string name="volume_override_summary">%1$s/%2$sに設定する</string>
+  <string name="volume_override_summary_no_override">変更しない</string>
+  <string name="profile_volume_override_checkbox_label">音量を変更</string>
   <string name="profile_profiles_manage">プロファイル</string>
   <string name="profile_profile_manage">プロファイルを管理</string>
   <string name="profile_appgroups_manage">アプリグループ</string>
@@ -127,9 +129,10 @@
   <string name="link_volume_mutes">サイレントモードを通知に反映</string>
   <string name="volume_keys_control_ring_stream">音量ボタンで着信音の音量をコントロール</string>
   <string name="ring_mode_title">着信モード</string>
-  <string name="ring_mode_normal">標準</string>
+  <string name="ring_mode_normal">着信音</string>
   <string name="ring_mode_vibrate">バイブレーション</string>
   <string name="ring_mode_mute">ミュート</string>
+  <string name="ring_mode_unchanged">変更しない</string>
   <string name="volume_overlay_title">音量パネルのスタイル</string>
   <string name="volume_overlay_single">シングル</string>
   <string name="volume_overlay_expandable">拡張可能</string>
@@ -215,7 +218,6 @@
   <string name="lockscreen_maximize_widgets_title">ウィジェットを最大化</string>
   <string name="lockscreen_maximize_widgets_summary">画面点灯時にウィジェットを最大化する</string>
   <string name="lockscreen_enable_camera_title">カメラウィジェット</string>
-  <string name="lockscreen_enable_application_widget_title">アプリキャストウィジェット</string>
   <string name="safe_headset_volume_title">安全なヘッドセットの音量を使用</string>
   <string name="safe_headset_volume_restore_title">接続時にヘッドセットの音量を下げる</string>
   <string name="cyanogenmod_waiver_title">権利放棄</string>
@@ -265,6 +267,7 @@
   <string name="title_tile_volume">音量</string>
   <string name="title_tile_expanded_desktop">拡張デスクトップ</string>
   <string name="title_tile_network_adb">ネットワーク経由のADB</string>
+  <string name="title_tile_themes">テーマ</string>
   <string name="title_dynamic_tiles">自動タイル</string>
   <string name="dynamic_tiles_note_title">注意</string>
   <string name="dynamic_tiles_note_summary">自動タイルはシステムイベントによってトリガーされた場合にのみ表示されます</string>
@@ -294,6 +297,8 @@
   <string name="cm_sound_mode_sound">サウンド</string>
   <string name="cm_sound_mode_soundVibrate">サウンドとバイブレーション</string>
   <string name="pref_location_mode_title">位置情報モード</string>
+  <string name="pref_location_mode_summary">すべてのモードのチェックを外すとデフォルトの動作になります</string>
+  <string name="cm_location_mode_off">位置情報OFF</string>
   <string name="cm_location_mode_battery_saving">バッテリー節約</string>
   <string name="cm_location_mode_device_only">端末のみ</string>
   <string name="cm_location_mode_high_accuracy">高精度</string>
@@ -879,7 +884,6 @@
   <string name="voice_wakeup_retrain_title">声を再登録</string>
   <string name="voice_wakeup_activity_title">起動するアクティビティ</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
-  <string name="sub_no_sim">SIMがありません</string>
   <string name="multi_sim_settings_title">SIMカード</string>
   <string name="multi_sim_settings_group_summary">デフォルトのSIMの選択</string>
   <string name="voice_title">音声通話</string>
@@ -996,8 +1000,8 @@
   <string name="profile_menu_delete_title">削除</string>
   <string name="profile_menu_triggers_title">トリガーを変更</string>
   <string name="profile_action_none">変更しない</string>
-  <string name="profile_action_disabled">無効</string>
-  <string name="profile_action_enable">有効</string>
+  <string name="profile_action_disabled">無効にする</string>
+  <string name="profile_action_enable">有効にする</string>
   <string name="profile_tabs_wifi">Wi\u2011Fi</string>
   <string name="profile_tabs_bluetooth">Bluetooth</string>
   <string name="profile_tabs_nfc">NFC</string>

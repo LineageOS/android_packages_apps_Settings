@@ -49,6 +49,7 @@
   <string name="radioInfo_roaming_not">Kee Roaming</string>
   <string name="radioInfo_phone_idle">Onbeschäftegt</string>
   <string name="radioInfo_phone_ringing">Schellt</string>
+  <string name="radioInfo_phone_offhook">Uruff am Gaang</string>
   <string name="radioInfo_data_disconnected">Connectioun getrennt</string>
   <string name="radioInfo_data_connecting">Connectéieren</string>
   <string name="radioInfo_data_connected">Verbonnen</string>
@@ -77,7 +78,9 @@
   <string name="battery_info_level_label">Akku-Niveau:</string>
   <string name="battery_info_health_label">Akku-Gesondheet:</string>
   <string name="battery_info_technology_label">Akku-Technologie:</string>
+  <string name="battery_info_voltage_label">Akkuspannung:</string>
   <string name="battery_info_voltage_units">mV</string>
+  <string name="battery_info_temperature_label">Akkutemperatur:</string>
   <string name="battery_info_temperature_units">\u00B0 C</string>
   <string name="battery_info_awake_battery">Waakreg Zäit um Akku:</string>
   <string name="battery_info_status_unknown">Onbekannt</string>
@@ -106,6 +109,9 @@
   <string name="bluetooth_is_discoverable_always">Siichtbar fir all Bluetooth-Apparater</string>
   <string name="bluetooth_not_visible_to_other_devices">Net siichtbar fir aner Bluetooth-Apparater</string>
   <string name="bluetooth_lock_voice_dialing">Stëmmwiel spären</string>
+  <string name="bluetooth_device_details">Apparatastellungen</string>
+  <string name="bluetooth_profile_details">Profilastellungen</string>
+  <string name="bluetooth_name_not_set">Keen Numm gesat, Kontennumm gëtt benotzt</string>
   <string name="bluetooth_scan_for_devices">Apparater sichen</string>
   <string name="bluetooth_rename_device" product="tablet">Tablet ëmbenennen</string>
   <string name="bluetooth_rename_device" product="default">Telefon ëmbenennen</string>
@@ -117,6 +123,7 @@
   <string name="bluetooth_disconnecting">Connectioun gëtt getrennt\u2026</string>
   <string name="bluetooth_connecting">Connectioun gëtt hiergestallt\u2026</string>
   <string name="bluetooth_device">Onbenannte Bluetooth-Apparat</string>
+  <string name="progress_scanning">Gëtt gesicht</string>
   <string name="bluetooth_no_devices_found">Keng Bluetooth-Apparater an der Géigend fonnt.</string>
   <string name="bluetooth_ask_discovery" product="tablet">Eng App wëll däin Tablet während <xliff:g id="timeout">%1$d</xliff:g> Sekonne fir aner Bluetooth-Apparater siichtbar maachen.</string>
   <string name="bluetooth_ask_discovery" product="default">Eng App wëll däin Telefon während <xliff:g id="timeout">%1$d</xliff:g> Sekonne fir aner Bluetooth-Apparater siichtbar maachen.</string>
@@ -132,6 +139,7 @@
   <string name="display_preview_label">Virschau:</string>
   <string name="display_font_size_label">Schrëftgréisst:</string>
   <string name="intent_sender_data_label"><xliff:g id="data">Daten:</xliff:g></string>
+  <string name="intent_sender_sendbroadcast_text"><xliff:g id="broadcast">Iwwerdroung</xliff:g> schécken</string>
   <string name="intent_sender_action_label"><xliff:g id="action">Aktioun</xliff:g>:</string>
   <string name="intent_sender_startactivity_text"><xliff:g id="activity">Aktivitéit</xliff:g> starten</string>
   <string name="intent_sender_resource_label"><xliff:g id="resource">Ressource</xliff:g>: </string>
@@ -157,6 +165,7 @@
   <string name="radio_info_gsm_service_label">GSM-Service:</string>
   <string name="radio_info_signal_strength_label">Signalstäerkt:</string>
   <string name="radio_info_call_status_label">Uruffstatus:</string>
+  <string name="radio_info_ppp_sent_label">PPP geschéckt:</string>
   <string name="radio_info_phone_number_label">Telefonsnummer:</string>
   <string name="radio_info_band_mode_label">Radiofrequenz auswielen</string>
   <string name="radio_info_network_type_label">Netzwierktyp:</string>
@@ -254,6 +263,7 @@
   <string name="bluetooth_pairing_decline">Ofbriechen</string>
   <string name="bluetooth_preference_scan_title">Apparater sichen</string>
   <string name="bluetooth_searching_for_devices">Gëtt gesicht\u2026</string>
+  <string name="bluetooth_preference_device_settings">Apparatastellungen</string>
   <string name="bluetooth_preference_found_devices">Disponibel Apparater</string>
   <string name="bluetooth_device_context_disconnect">Deconnectéieren</string>
   <string name="bluetooth_device_context_connect_advanced">Optiounen\u2026</string>
@@ -402,6 +412,10 @@
   <string name="sim_enter_ok">OK</string>
   <string name="sim_enter_cancel">Ofbriechen</string>
   <string name="wrong_pin_code_pukked">Inkorrekte SIM-PIN-Code. Du muss elo däin Netzbedreiwer kontaktéiere fir däin Apparat z\'entspären.</string>
+  <plurals name="wrong_pin_code">
+    <item quantity="one">Inkorrekte SIM-PIN-Code, du hues nach <xliff:g id="number">%d</xliff:g> Versuch iwwreg ier s de däin Netzbedreiwer kontaktéiere muss fir däin Apparat z\'entspären.</item>
+    <item quantity="other">Inkorrekte SIM-PIN-Code, du hues nach <xliff:g id="number">%d</xliff:g> Versich iwwreg.</item>
+  </plurals>
   <string name="pin_failed">SIM-PIN-Operatioun feelgeschloen!</string>
   <string name="system_update_settings_list_item_title">Systemaktualiséierungen</string>
   <string name="firmware_version">Android-Versioun</string>

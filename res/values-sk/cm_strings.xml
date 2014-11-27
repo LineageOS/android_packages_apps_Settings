@@ -82,6 +82,8 @@
   <string name="connection_state_disabled">Zakázať</string>
   <string name="connection_state_enabled">Povoliť</string>
   <string name="volume_override_summary">Nastaviť na %1$s/%2$s</string>
+  <string name="volume_override_summary_no_override">Neprepisovať</string>
+  <string name="profile_volume_override_checkbox_label">Prepísať hlasitosť</string>
   <string name="profile_profiles_manage">Profily</string>
   <string name="profile_profile_manage">Spravovať profil</string>
   <string name="profile_appgroups_manage">Skupiny aplikácií</string>
@@ -127,9 +129,10 @@
   <string name="link_volume_mutes">Tichý režim ovplyvňuje upozornenia</string>
   <string name="volume_keys_control_ring_stream">Tlačidlami hlasitosti ovládať hlasitosť zvonenia</string>
   <string name="ring_mode_title">Režim vyzváňania</string>
-  <string name="ring_mode_normal">Normálne</string>
+  <string name="ring_mode_normal">Zvonenie</string>
   <string name="ring_mode_vibrate">Vibrovať</string>
   <string name="ring_mode_mute">Stlmený</string>
+  <string name="ring_mode_unchanged">Nezmenené</string>
   <string name="volume_overlay_title">Štýl panela hlasitosti</string>
   <string name="volume_overlay_single">Jednoduchý</string>
   <string name="volume_overlay_expandable">Rozšírený</string>
@@ -200,8 +203,8 @@
   <string name="lockpattern_settings_enable_dots_title">Zobraziť body vzoru</string>
   <string name="screen_security_category">Zabezpečenie obrazovky</string>
   <string name="screen_security_summary">Zobraziť alebo zmeniť nastavenia zabezpečenia uzamykacej obrazovky</string>
-  <string name="unlock_scramble_pin_layout_title">Scramble rozloženie</string>
-  <string name="unlock_scramble_pin_layout_summary">Scramble PIN rozloženie pri odomykaní zariadenia</string>
+  <string name="unlock_scramble_pin_layout_title">Dynamické rozloženie</string>
+  <string name="unlock_scramble_pin_layout_summary">Prehádzať rozloženie pre zadanie kódu PIN pri odomykaní zariadenia</string>
   <string name="unlock_menu_unlock_title">Odomknúť tlačidlom Ponuka</string>
   <string name="unlock_menu_unlock_summary">Stlačením tlačidla Ponuka sa odomkne zariadenie</string>
   <string name="unlock_home_unlock_title">Odomknúť tlačidlom Domov</string>
@@ -215,7 +218,6 @@
   <string name="lockscreen_maximize_widgets_title">Maximalizovať miniaplikácie</string>
   <string name="lockscreen_maximize_widgets_summary">Rozbaliť miniaplikácie pri zapnutí obrazovky</string>
   <string name="lockscreen_enable_camera_title">Miniaplikácia fotoaparátu</string>
-  <string name="lockscreen_enable_application_widget_title">Miniaplikácia Appcast</string>
   <string name="safe_headset_volume_title">Bezpečná hlasitosť</string>
   <string name="safe_headset_volume_restore_title">Znížiť hlasitosť slúchadiel po ich pripojení</string>
   <string name="cyanogenmod_waiver_title">Upozornenie</string>
@@ -265,6 +267,7 @@
   <string name="title_tile_volume">Hlasitosť</string>
   <string name="title_tile_expanded_desktop">Rozšírená plocha</string>
   <string name="title_tile_network_adb">ADB cez sieť</string>
+  <string name="title_tile_themes">Témy</string>
   <string name="title_dynamic_tiles">Dynamické dlaždice</string>
   <string name="dynamic_tiles_note_title">Poznámka</string>
   <string name="dynamic_tiles_note_summary">Dynamické dlaždice sa zobrazia len pri ich spustení systémovou udalosťou</string>
@@ -294,6 +297,8 @@
   <string name="cm_sound_mode_sound">Zvuk</string>
   <string name="cm_sound_mode_soundVibrate">Zvuk a vibrácia</string>
   <string name="pref_location_mode_title">Režimy polohy</string>
+  <string name="pref_location_mode_summary">Zrušte označenie všetkých režimov pre predvolené správanie</string>
+  <string name="cm_location_mode_off">Poloha vyp.</string>
   <string name="cm_location_mode_battery_saving">Šetrenie batérie</string>
   <string name="cm_location_mode_device_only">Iba zariadenie</string>
   <string name="cm_location_mode_high_accuracy">Vysoká presnosť</string>
@@ -598,7 +603,7 @@ Každý riadok v zozname jasu zodpovedá jednému <i>riadiacemu bodu</i> krivky 
   <string name="navigation_bar_save_message">Nastavenia navigačného panela boli uložené</string>
   <string name="navigation_bar_reset_toast">Nastavenia navigačného panela boli obnovené na predvolené</string>
   <string name="navigation_bar_menu_editable">Upraviteľné</string>
-  <string name="navigation_bar_menu_locked">Zakmnuté</string>
+  <string name="navigation_bar_menu_locked">Zamknuté</string>
   <string name="navigation_bar_arrow_keys_title">Šípky pri písaní</string>
   <string name="navigation_bar_arrow_keys_summary">Zobraziť ľavé a pravé kurzorové tlačidlá pri písaní</string>
   <string name="navigation_bar_recents_title">Akcia dlhého stlačenia na tlačidle Nedávne</string>
@@ -870,7 +875,6 @@ Každý riadok v zozname jasu zodpovedá jednému <i>riadiacemu bodu</i> krivky 
   <string name="voice_wakeup_retrain_title">Preškoliť váš hlas</string>
   <string name="voice_wakeup_activity_title">Spustiť aktivitu</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
-  <string name="sub_no_sim">Žiadna SIM</string>
   <string name="multi_sim_settings_title">Karty SIM</string>
   <string name="multi_sim_settings_group_summary">Výber predvolenej SIM</string>
   <string name="voice_title">Hlasové hovory</string>

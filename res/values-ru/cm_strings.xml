@@ -67,7 +67,7 @@
   <string name="duplicate_profile_name">Профиль с таким названием уже существует</string>
   <string name="duplicate_appgroup_name">Группа приложений с таким названием уже существует</string>
   <string name="profile_reset_title">Сброс</string>
-  <string name="profile_reset_message">Вы действительно хотите удалить все профили, группы приложений и восстановить настройки по умолчанию?</string>
+  <string name="profile_reset_message">Все пользовательские профили будут удалены, а настройки сброшены к значениям по умолчанию.</string>
   <string name="profile_delete_confirm">Вы действительно хотите удалить этот профиль?</string>
   <string name="profile_app_delete_confirm">Вы уверены, что хотите удалить это приложение?</string>
   <string name="profile_cannot_delete">Удаление текущего профиля невозможно</string>
@@ -82,6 +82,8 @@
   <string name="connection_state_disabled">Выключить</string>
   <string name="connection_state_enabled">Включить</string>
   <string name="volume_override_summary">Установить в %1$s/%2$s</string>
+  <string name="volume_override_summary_no_override">Оставить без изменения</string>
+  <string name="profile_volume_override_checkbox_label">Изменять громкость</string>
   <string name="profile_profiles_manage">Профили</string>
   <string name="profile_profile_manage">Управление профилями</string>
   <string name="profile_appgroups_manage">Группы приложений</string>
@@ -130,6 +132,7 @@
   <string name="ring_mode_normal">Обычный</string>
   <string name="ring_mode_vibrate">Вибрация</string>
   <string name="ring_mode_mute">Беззвучный</string>
+  <string name="ring_mode_unchanged">Оставить без изменения</string>
   <string name="volume_overlay_title">Панель громкости</string>
   <string name="volume_overlay_single">Одиночная</string>
   <string name="volume_overlay_expandable">Расширяемая</string>
@@ -215,7 +218,6 @@
   <string name="lockscreen_maximize_widgets_title">Развёрнутые виджеты</string>
   <string name="lockscreen_maximize_widgets_summary">Показывать виджеты экрана блокировки развёрнутыми, а кольцо разблокировки экрана — в свёрнутом виде</string>
   <string name="lockscreen_enable_camera_title">Виджет камеры</string>
-  <string name="lockscreen_enable_application_widget_title">Виджет Appcast</string>
   <string name="safe_headset_volume_title">Предупреждать при высокой громкости наушников</string>
   <string name="safe_headset_volume_restore_title">Снижать громкость наушников при их подключении</string>
   <string name="cyanogenmod_waiver_title">Отказ от ответственности</string>
@@ -265,6 +267,7 @@
   <string name="title_tile_volume">Громкость</string>
   <string name="title_tile_expanded_desktop">Расширенный экран</string>
   <string name="title_tile_network_adb">Отладка по сети</string>
+  <string name="title_tile_themes">Темы</string>
   <string name="title_dynamic_tiles">Динамические плитки</string>
   <string name="dynamic_tiles_note_title">Примечание</string>
   <string name="dynamic_tiles_note_summary">Динамические плитки видны, только если они вызваны системным событием</string>
@@ -294,6 +297,8 @@
   <string name="cm_sound_mode_sound">Звук</string>
   <string name="cm_sound_mode_soundVibrate">Звук и вибросигнал</string>
   <string name="pref_location_mode_title">Определение местоположения</string>
+  <string name="pref_location_mode_summary">Снимите все флажки, чтобы использовать стандартное переключение режимов</string>
+  <string name="cm_location_mode_off">Местоположение выкл.</string>
   <string name="cm_location_mode_battery_saving">По координатам сети</string>
   <string name="cm_location_mode_device_only">По спутникам GPS</string>
   <string name="cm_location_mode_high_accuracy">По всем источникам</string>
@@ -871,7 +876,6 @@
   <string name="voice_wakeup_retrain_title">Перезаписать образец голоса</string>
   <string name="voice_wakeup_activity_title">Действие для запуска</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
-  <string name="sub_no_sim">Нет SIM-карты</string>
   <string name="multi_sim_settings_title">SIM-карты</string>
   <string name="multi_sim_settings_group_summary">Настройка SIM-карт по умолчанию</string>
   <string name="voice_title">Голосовые вызовы</string>

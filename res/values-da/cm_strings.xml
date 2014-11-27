@@ -82,6 +82,8 @@
   <string name="connection_state_disabled">Deaktivér</string>
   <string name="connection_state_enabled">Aktivér</string>
   <string name="volume_override_summary">Indstillet til %1$s/%2$s</string>
+  <string name="volume_override_summary_no_override">Underkend ikke</string>
+  <string name="profile_volume_override_checkbox_label">Underkend volume</string>
   <string name="profile_profiles_manage">Profiler</string>
   <string name="profile_profile_manage">Administrer profil</string>
   <string name="profile_appgroups_manage">App-grupper</string>
@@ -127,9 +129,10 @@
   <string name="link_volume_mutes">Forbind lydløs ringe- og meddelelseslydstyrke</string>
   <string name="volume_keys_control_ring_stream">Lydstyrkeknapper styrer ringetonens lydstyrke</string>
   <string name="ring_mode_title">Lydtilstande</string>
-  <string name="ring_mode_normal">Normal</string>
+  <string name="ring_mode_normal">Ring</string>
   <string name="ring_mode_vibrate">Vibrér</string>
   <string name="ring_mode_mute">Lydløs</string>
+  <string name="ring_mode_unchanged">Uændret</string>
   <string name="volume_overlay_title">Lydstyrkepanel</string>
   <string name="volume_overlay_single">Enkel</string>
   <string name="volume_overlay_expandable">Udvidelig</string>
@@ -215,7 +218,6 @@
   <string name="lockscreen_maximize_widgets_title">Maksimér widgets</string>
   <string name="lockscreen_maximize_widgets_summary">Vis widgets maksimeret og låsen minimeret, når skærmen er tændt</string>
   <string name="lockscreen_enable_camera_title">Kamera-widget</string>
-  <string name="lockscreen_enable_application_widget_title">Appcast-widget</string>
   <string name="safe_headset_volume_title">Sikker lydstyrke for håndfri</string>
   <string name="safe_headset_volume_restore_title">Reducér lydstyrken for headsettet ved tilslutning</string>
   <string name="cyanogenmod_waiver_title">Ophævelse</string>
@@ -265,6 +267,7 @@
   <string name="title_tile_volume">Lydstyrke</string>
   <string name="title_tile_expanded_desktop">Udvidet skrivebord</string>
   <string name="title_tile_network_adb">ADB via netværk</string>
+  <string name="title_tile_themes">Temaer</string>
   <string name="title_dynamic_tiles">Dynamiske felter</string>
   <string name="dynamic_tiles_note_title">NB:</string>
   <string name="dynamic_tiles_note_summary">Dynamiske fliser vises kun, hvis udløst af en systemhændelse</string>
@@ -294,6 +297,8 @@
   <string name="cm_sound_mode_sound">Lyd</string>
   <string name="cm_sound_mode_soundVibrate">Lyd + Vibrer</string>
   <string name="pref_location_mode_title">Placeringstilstande</string>
+  <string name="pref_location_mode_summary">Afmarkér alle tilstande for standard opførsel</string>
+  <string name="cm_location_mode_off">Placering fra</string>
   <string name="cm_location_mode_battery_saving">Batteribesparende</string>
   <string name="cm_location_mode_device_only">Kun enhed</string>
   <string name="cm_location_mode_high_accuracy">Høj nøjagtighed</string>
@@ -870,7 +875,6 @@ Yderligere indstillinger er tilgængelige ved at trykke længe på en linje. Ved
   <string name="voice_wakeup_retrain_title">Træn din stemme igen</string>
   <string name="voice_wakeup_activity_title">Aktivitet, som skal startes</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
-  <string name="sub_no_sim">Intet SIM-kort</string>
   <string name="multi_sim_settings_title">SIM-kort</string>
   <string name="multi_sim_settings_group_summary">Standardvalg af SIM-kort</string>
   <string name="voice_title">Taleopkald</string>
