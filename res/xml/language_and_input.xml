@@ -37,6 +37,12 @@
             android:title="@string/physical_keyboard_title"
             android:summary="@string/summary_placeholder"
             android:fragment="com.android.settings.inputmethod.PhysicalKeyboardFragment"/>
+
+        <lineageos.preference.LineageSecureSettingSwitchPreference
+            android:key="status_bar_ime_switcher"
+            android:title="@string/ime_switcher_notify"
+            android:summary="@string/ime_switcher_notify_summary"
+            android:defaultValue="true" />
     </PreferenceCategory>
 
     <PreferenceCategory
