@@ -16,6 +16,8 @@
 
 package com.android.settings.widget;
 
+import static android.net.TrafficStats.MB_IN_BYTES;
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -96,6 +98,8 @@ public class ChartSweepView extends View {
     private static final int LARGE_WIDTH = 1024;
 
     private long mDragInterval = 1;
+
+    private static final int INPUT_MAX_VALUE = (int) (Math.pow(10, 5) * 1024);
 
     public interface OnSweepListener {
         public void onSweep(ChartSweepView sweep, boolean sweepDone);
@@ -277,6 +281,10 @@ public class ChartSweepView extends View {
     }
 
     private void invalidateLabel() {
+        if (mValue > INPUT_MAX_VALUE * MB_IN_BYTES) {
+            mValue = INPUT_MAX_VALUE * MB_IN_BYTES;
+        }
+
         if (mLabelTemplate != null && mAxis != null) {
             mLabelValue = mAxis.buildLabel(getResources(), mLabelTemplate, mValue);
             setContentDescription(mLabelTemplate);
