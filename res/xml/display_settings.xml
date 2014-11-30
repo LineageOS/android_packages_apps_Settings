@@ -181,6 +181,12 @@
             android:summary="@string/status_bar_double_tap_to_sleep_summary"
             android:defaultValue="true" />
 
+        <lineageos.preference.LineageGlobalSettingSwitchPreference
+            android:key="wake_when_plugged_or_unplugged"
+            android:title="@string/wake_when_plugged_or_unplugged_title"
+            android:summary="@string/wake_when_plugged_or_unplugged_summary"
+            android:defaultValue="@*android:bool/config_unplugTurnsOnScreen" />
+
         <lineageos.preference.LineageSystemSettingSwitchPreference
             android:key="high_touch_sensitivity_enable"
             android:title="@string/high_touch_sensitivity_title"
