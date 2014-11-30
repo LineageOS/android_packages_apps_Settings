@@ -46,6 +46,7 @@ import android.os.RemoteException;
 import android.os.SystemProperties;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.CheckBoxPreference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
@@ -90,6 +91,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mDozePreference;
     private SwitchPreference mAutoBrightnessPreference;
     private SwitchPreference mTapToWake;
+    private CheckBoxPreference mWakeWhenPluggedOrUnplugged;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -181,6 +183,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             advancedPrefs.removePreference(mTapToWake);
             mTapToWake = null;
         }
+
+	mWakeWhenPluggedOrUnplugged =
+                (CheckBoxPreference) findPreference(KEY_WAKE_WHEN_PLUGGED_OR_UNPLUGGED);
     }
 
     private static boolean allowAllRotations(Context context) {
@@ -312,6 +317,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             mTapToWake.setChecked(TapToWake.isEnabled());
         }
 
+	// Default value for wake-on-plug behavior from config.xml
+        boolean wakeUpWhenPluggedOrUnpluggedConfig = getResources().getBoolean(
+                com.android.internal.R.bool.config_unplugTurnsOnScreen);
+
+        mWakeWhenPluggedOrUnplugged.setChecked(Settings.Global.getInt(resolver,
+                Settings.Global.WAKE_WHEN_PLUGGED_OR_UNPLUGGED,
+                (wakeUpWhenPluggedOrUnpluggedConfig ? 1 : 0)) == 1);
+
         updateState();
     }
 
@@ -382,6 +395,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         if (preference == mTapToWake) {
             return TapToWake.setEnabled(mTapToWake.isChecked());
+        } else if (preference == mWakeWhenPluggedOrUnplugged) {
+            Settings.Global.putInt(getContentResolver(),
+                    Settings.Global.WAKE_WHEN_PLUGGED_OR_UNPLUGGED,
+                    mWakeWhenPluggedOrUnplugged.isChecked() ? 1 : 0);
+            return true;
         }
 
         return super.onPreferenceTreeClick(preferenceScreen, preference);
