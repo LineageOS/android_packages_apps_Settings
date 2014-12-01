@@ -383,6 +383,10 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
         return mName;
     }
 
+    public String getAddress(){
+        return mDevice.getAddress();
+    }
+
     /**
      * Populate name from BluetoothDevice.ACTION_FOUND intent
      */
