@@ -40,21 +40,23 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class LedFlashlightReceiver extends BroadcastReceiver {
-    private static final String LOG_TAG = "LedFlashlightReceiver";
     public static final String LED_SWITCH = "LedSwitch";
+    public static final String LED_SWITCH_ACTION = "android.intent.action.ACTION_SHUTDOWN";
+    private static final String TAG = "LedFlashlightReceiver";
     // LED light on/off values.
-    private static final byte[] LIGHTE_ON = {
-            '1', '2', '7'
-    };
     private static final byte[] LIGHTE_OFF = {
             '0'
     };
-    private static final byte[] LIGHT_TORCH = {
+    private static final byte[] LIGHTE_ON = {
+            '1', '2', '7'
+    };
+    private static final byte[] LIGHT_MODE_TORCH = {
             '1'
     };
-    private static final byte[] LIGHT_DEFAULT = {
+    private static final byte[] LIGHT_MODE_DEFAULT = {
             '0'
     };
+
     // LED node used in different chipsets
     public final static String MSM8226_FLASHLIGHT_BRIGHTNESS =
             "/sys/class/leds/torch-light/brightness";
@@ -62,59 +64,79 @@ public class LedFlashlightReceiver extends BroadcastReceiver {
             "/sys/class/leds/flashlight/brightness";
     public final static String COMMON_FLASHLIGHT_MODE =
             "/sys/class/leds/flashlight/mode";
-    private static boolean mLightsOn = false;
     private static PowerManager.WakeLock mWakeLock;
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        mLightsOn = intent.getBooleanExtra(LED_SWITCH, false);
-        setLEDStatus(mLightsOn);
+        if (intent != null &&
+                LED_SWITCH_ACTION.equals(intent.getAction())) {
+            boolean isLightsOn = intent.getBooleanExtra(LED_SWITCH, false);
+            setLEDWakeLock(context, isLightsOn);
+            setLEDStatus(isLightsOn);
+        }
     }
 
     private void setLEDStatus(boolean status) {
-        Log.d(LOG_TAG, "setLEDStatus(" + status + ")");
-        if (mWakeLock != null && status) {
-            mWakeLock.acquire();
-        } else if (mWakeLock != null && !status) {
-            mWakeLock.release();
-        }
+        byte[] data = status ? LIGHTE_ON : LIGHTE_OFF;
         // for MSM8x26, BSP add MSM8226_TORCH_NODE for control torch brightness
         if (isFileExists(MSM8226_FLASHLIGHT_BRIGHTNESS)) {
-            changeLEDFlashBrightness(status, MSM8226_FLASHLIGHT_BRIGHTNESS);
+            setLEDFlashDataToDriver(MSM8226_FLASHLIGHT_BRIGHTNESS, data);
         } else {
-            changeLEDFlashMode(status, COMMON_FLASHLIGHT_MODE);
-            changeLEDFlashBrightness(status, COMMON_FLASHLIGHT_BRIGHTNESS);
+            byte[] mode = status ? LIGHT_MODE_TORCH : LIGHT_MODE_DEFAULT;
+            setLEDFlashDataToDriver(COMMON_FLASHLIGHT_MODE, mode);
+            setLEDFlashDataToDriver(COMMON_FLASHLIGHT_BRIGHTNESS, data);
         }
     }
 
-    private void changeLEDFlashMode(boolean status, String node) {
+    private void setLEDFlashDataToDriver(String node, byte[] data) {
+        FileOutputStream driver = null;
         try {
-            byte[] ledMode = status ? LIGHT_TORCH : LIGHT_DEFAULT;
-            FileOutputStream mode = new FileOutputStream(node);
-            mode.write(ledMode);
-            mode.close();
+            driver = new FileOutputStream(node);
+            driver.write(data);
         } catch (FileNotFoundException e) {
-            Log.d(LOG_TAG, e.toString());
+            Log.d(TAG, e.toString());
         } catch (IOException e) {
             e.printStackTrace();
-        }
-    }
-
-    private void changeLEDFlashBrightness(boolean status, String node) {
-        try {
-            byte[] ledData = status ? LIGHTE_ON : LIGHTE_OFF;
-            FileOutputStream brightness = new FileOutputStream(node);
-            brightness.write(ledData);
-            brightness.close();
-        } catch (FileNotFoundException e) {
-            Log.d(LOG_TAG, e.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
+        } finally {
+            try {
+                if (driver != null) {
+                    driver.flush();
+                    driver.close();
+                }
+            } catch (IOException e) {
+                Log.e(TAG, "Error closing file: " + e.toString());
+            }
         }
     }
 
     private boolean isFileExists(String filePath) {
         File file = new File(filePath);
         return file.exists();
+    }
+
+    private void acquireLEDWakeLock(Context context) {
+        if (mWakeLock == null && context != null) {
+            PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+            mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
+            mWakeLock.setReferenceCounted(false);
+            mWakeLock.acquire();
+        }
+    }
+
+    private void releaseLEDWakeLock() {
+        if (mWakeLock != null) {
+            if (mWakeLock.isHeld()) {
+                mWakeLock.release();
+            }
+            mWakeLock = null;
+        }
+    }
+
+    private void setLEDWakeLock(Context context, boolean isLightsOn) {
+        if (isLightsOn) {
+            acquireLEDWakeLock(context);
+        } else {
+            releaseLEDWakeLock();
+        }
     }
 }
