@@ -124,6 +124,8 @@ public class Settings extends PreferenceActivity
     private static final String SAVE_KEY_CURRENT_HEADER = "com.android.settings.CURRENT_HEADER";
     private static final String SAVE_KEY_PARENT_HEADER = "com.android.settings.PARENT_HEADER";
 
+    private static final String ACTION_GESTURE = "qualcomm.intent.action.GESTURE_SETTINGS";
+
     static final int DIALOG_ONLY_ONE_HOME = 1;
 
     private static boolean sShowNoHomeNotice = false;
@@ -623,6 +625,15 @@ public class Settings extends PreferenceActivity
             } else if (id == R.id.lte_4g_settings) {
                 if (!getResources().getBoolean(R.bool.config_4gsettings_enabled)) {
                     target.remove(header);
+                }
+            } else if (id  == R.id.gestures_settings) {
+                Intent intent = new Intent(ACTION_GESTURE);
+                List<ResolveInfo> infos = getBaseContext().getPackageManager()
+                        .queryIntentActivities(intent, 0);
+                if (infos == null || infos.isEmpty()) {
+                    target.remove(header);
+                } else {
+                    header.title = infos.get(0).activityInfo.loadLabel(getPackageManager());
                 }
             }
 

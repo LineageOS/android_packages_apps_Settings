@@ -197,7 +197,15 @@
         android:icon="@drawable/ic_settings_language"
         android:title="@string/language_settings" />
 
-    <!-- Backup and reset -->
+    <!-- gestures -->
+    <header
+        android:id="@+id/gestures_settings"
+        android:icon="@drawable/ic_settings_gestures" >
+        <intent
+            android:action="qualcomm.intent.action.GESTURE_SETTINGS" />
+    </header>
+
+<!-- Backup and reset -->
     <header
         android:fragment="com.android.settings.PrivacySettings"
         android:icon="@drawable/ic_settings_backup"
