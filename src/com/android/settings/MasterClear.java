@@ -21,6 +21,7 @@ import android.accounts.AccountManager;
 import android.accounts.AuthenticatorDescription;
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.admin.DevicePolicyManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -40,6 +41,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.android.internal.widget.LockPatternUtils;
 
 /**
  * Confirm and execute a reset of the device to a clean "just out of the box"
@@ -62,7 +64,6 @@ public class MasterClear extends Fragment {
     private Button mInitiateButton;
     private View mExternalStorageContainer;
     private CheckBox mExternalStorage;
-
     /**
      * Keyguard validation is run using the standard {@link ConfirmLockPattern}
      * component as a subactivity
@@ -71,10 +72,21 @@ public class MasterClear extends Fragment {
      */
     private boolean runKeyguardConfirmation(int request) {
         Resources res = getActivity().getResources();
-        return new ChooseLockSettingsHelper(getActivity(), this)
-                .launchConfirmationActivity(request,
-                        res.getText(R.string.master_clear_gesture_prompt),
-                        res.getText(R.string.master_clear_gesture_explanation));
+        int storedQuality = new LockPatternUtils(getActivity())
+                .getKeyguardStoredPasswordQuality();
+        boolean isAlpha = DevicePolicyManager.PASSWORD_QUALITY_ALPHABETIC == storedQuality
+                || DevicePolicyManager.PASSWORD_QUALITY_ALPHANUMERIC == storedQuality
+                || DevicePolicyManager.PASSWORD_QUALITY_COMPLEX == storedQuality;
+        CharSequence message = isAlpha ?
+                res.getText(R.string.lockpassword_confirm_your_password_header)
+                : res.getText(R.string.lockpassword_confirm_your_pin_header);
+
+        ChooseLockSettingsHelper chooseLockSettingsHelper = new ChooseLockSettingsHelper(
+                getActivity(), this);
+        chooseLockSettingsHelper.setConfirmPassword(message);
+        return chooseLockSettingsHelper.launchConfirmationActivity(request,
+                res.getText(R.string.master_clear_gesture_prompt),
+                res.getText(R.string.master_clear_gesture_explanation));
     }
 
     @Override

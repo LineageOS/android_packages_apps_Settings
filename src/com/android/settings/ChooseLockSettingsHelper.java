@@ -31,6 +31,7 @@ public final class ChooseLockSettingsHelper {
     private LockPatternUtils mLockPatternUtils;
     private Activity mActivity;
     private Fragment mFragment;
+    private CharSequence mConfirmPasswordHeader;
 
     public ChooseLockSettingsHelper(Activity activity) {
         mActivity = activity;
@@ -79,10 +80,17 @@ public final class ChooseLockSettingsHelper {
             case DevicePolicyManager.PASSWORD_QUALITY_ALPHANUMERIC:
             case DevicePolicyManager.PASSWORD_QUALITY_COMPLEX:
                 // TODO: update UI layout for ConfirmPassword to show message and details
+                if (mConfirmPasswordHeader != null) {
+                    message = mConfirmPasswordHeader;
+                }
                 launched = confirmPassword(request, message, returnCredentials);
                 break;
         }
         return launched;
+    }
+
+    void setConfirmPassword(CharSequence message) {
+        mConfirmPasswordHeader = message;
     }
 
     /**
