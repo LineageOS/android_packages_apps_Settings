@@ -33,6 +33,12 @@
                 android:summary="@string/auto_brightness_summary"
                 android:persistent="false" />
 
+        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+                android:key="recents_show_search_bar"
+                android:title="@string/recents_show_searchbar"
+                settings:keywords="@string/keywords_recents_show_searchbar"
+                android:defaultValue="true" />
+
         <PreferenceScreen
                 android:key="display_rotation"
                 android:title="@string/display_rotation_title"
