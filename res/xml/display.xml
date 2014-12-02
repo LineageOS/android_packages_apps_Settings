@@ -110,6 +110,14 @@
                 settings:keywords="@string/keywords_display_font_size"
                 android:summary="@string/summary_font_size"
                 android:dialogTitle="@string/dialog_title_font_size" />
+
+        <!-- Search in Recents -->
+        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+                android:key="recents_show_search_bar"
+                android:title="@string/recents_show_searchbar"
+                settings:keywords="@string/keywords_recents_show_searchbar"
+                android:defaultValue="true"
+                settings:advanced="true" />
     </PreferenceCategory>
 
     <PreferenceCategory
