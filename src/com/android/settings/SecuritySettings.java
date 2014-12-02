@@ -51,8 +51,11 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
 
+<<<<<<< HEAD
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.telephony.util.BlacklistUtils;
+=======
+>>>>>>> dc5e794... Move Blacklist and Notif Filter to Privacy
 import com.android.internal.widget.LockPatternUtils;
 import com.android.settings.TrustAgentUtils.TrustAgentComponentInfo;
 import com.android.settings.fingerprint.FingerprintEnrollIntroduction;
@@ -119,6 +122,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
     // Only allow one trust agent on the platform.
     private static final boolean ONLY_ONE_TRUST_AGENT = true;
 
+<<<<<<< HEAD
 
     private static final int MY_USER_ID = UserHandle.myUserId();
 
@@ -126,6 +130,8 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private static final String KEY_APP_SECURITY_CATEGORY = "app_security";
     private static final String KEY_BLACKLIST = "blacklist";
 
+=======
+>>>>>>> dc5e794... Move Blacklist and Notif Filter to Privacy
     private PackageManager mPM;
     private DevicePolicyManager mDPM;
     private SubscriptionManager mSubscriptionManager;
@@ -150,6 +156,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private boolean mIsPrimary;
 
     private Intent mTrustAgentClickIntent;
+<<<<<<< HEAD
 
     private Preference mOwnerInfoPref;
 
@@ -160,6 +167,8 @@ public class SecuritySettings extends SettingsPreferenceFragment
 
     // CyanogenMod Additions
     private PreferenceScreen mBlacklist;
+=======
+>>>>>>> dc5e794... Move Blacklist and Notif Filter to Privacy
 
 
     @Override
@@ -359,18 +368,6 @@ public class SecuritySettings extends SettingsPreferenceFragment
                 manageAgents.setEnabled(false);
                 manageAgents.setSummary(R.string.disabled_because_no_backup_security);
             }
-        }
-
-        // App security settings
-        addPreferencesFromResource(R.xml.security_settings_app_cyanogenmod);
-        mBlacklist = (PreferenceScreen) root.findPreference(KEY_BLACKLIST);
-
-        // Determine options based on device telephony support
-        if (!pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY)) {
-            // No telephony, remove dependent options
-            PreferenceGroup appCategory = (PreferenceGroup)
-                    root.findPreference(KEY_APP_SECURITY_CATEGORY);
-            appCategory.removePreference(mBlacklist);
         }
 
         // The above preferences come and go based on security state, so we need to update
@@ -672,7 +669,6 @@ public class SecuritySettings extends SettingsPreferenceFragment
         }
 
         updateOwnerInfo();
-        updateBlacklistSummary();
     }
 
     public void updateOwnerInfo() {
@@ -917,16 +913,6 @@ public class SecuritySettings extends SettingsPreferenceFragment
             }
 
             return keys;
-        }
-    }
-
-    private void updateBlacklistSummary() {
-        if (mBlacklist != null) {
-            if (BlacklistUtils.isBlacklistEnabled(getActivity())) {
-                mBlacklist.setSummary(R.string.blacklist_summary);
-            } else {
-                mBlacklist.setSummary(R.string.blacklist_summary_disabled);
-            }
         }
     }
 }
