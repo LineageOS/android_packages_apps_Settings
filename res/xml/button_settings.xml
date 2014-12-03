@@ -61,4 +61,16 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:key="volume_keys"
+        android:title="@string/hardware_keys_volume_keys_title" >
+
+        <CheckBoxPreference
+            android:key="volume_key_wake_device"
+            android:title="@string/volbtn_wake_device_title"
+            android:summary="@string/volbtn_wake_device_summary"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

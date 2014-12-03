@@ -40,7 +40,6 @@ import android.view.WindowManagerGlobal;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.Utils;
 
 public class ButtonSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
@@ -50,6 +49,9 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private static final String KEY_HOME_DOUBLE_TAP = "hardware_keys_home_double_tap";
     private static final String KEY_MENU_PRESS = "hardware_keys_menu_press";
     private static final String KEY_MENU_LONG_PRESS = "hardware_keys_menu_long_press";
+    private static final String KEY_VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
+    private static final String KEY_VOLUME_WAKE_DEVICE = "volume_key_wake_device";
+    private static final String DISABLE_NAV_KEYS = "disable_nav_keys";
 
     private static final String CATEGORY_POWER = "power_key";
     private static final String CATEGORY_HOME = "home_key";
@@ -87,6 +89,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private ListPreference mHomeDoubleTapAction;
     private ListPreference mMenuPressAction;
     private ListPreference mMenuLongPressAction;
+    private ListPreference mVolumeKeyCursorControl;
+    private CheckBoxPreference mVolumeKeyWakeControl;
 
     private PreferenceCategory mNavigationPreferencesCat;
 
@@ -162,6 +166,26 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         } else {
             prefScreen.removePreference(menuCategory);
         }
+
+        int wakeControlAction = Settings.System.getInt(resolver,
+                Settings.System.VOLUME_WAKE_SCREEN, 0);
+        mVolumeKeyWakeControl = initCheckBox(KEY_VOLUME_WAKE_DEVICE, (wakeControlAction == 1));
+    }
+
+    private CheckBoxPreference initCheckBox(String key, boolean checked) {
+        CheckBoxPreference checkBoxPreference = (CheckBoxPreference) getPreferenceManager()
+                .findPreference(key);
+        if (checkBoxPreference != null) {
+            checkBoxPreference.setChecked(checked);
+            checkBoxPreference.setOnPreferenceChangeListener(this);
+        }
+        return checkBoxPreference;
+    }
+
+    private void handleCheckBoxChange(CheckBoxPreference pref, Object newValue, String setting) {
+        Boolean value = (Boolean) newValue;
+        int intValue = (value) ? 1 : 0;
+        Settings.System.putInt(getContentResolver(), setting, intValue);
     }
 
     private ListPreference initActionList(String key, int value) {
@@ -175,7 +199,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private void handleActionListChange(ListPreference pref, Object newValue, String setting) {
         String value = (String) newValue;
         int index = pref.findIndexOfValue(value);
-
         pref.setSummary(pref.getEntries()[index]);
         Settings.System.putInt(getContentResolver(), setting, Integer.valueOf(value));
     }
@@ -197,6 +220,10 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         } else if (preference == mMenuLongPressAction) {
             handleActionListChange(mMenuLongPressAction, newValue,
                     Settings.System.KEY_MENU_LONG_PRESS_ACTION);
+            return true;
+       } else if (preference == mVolumeKeyWakeControl) {
+            handleCheckBoxChange(mVolumeKeyWakeControl, newValue,
+                    Settings.System.VOLUME_WAKE_SCREEN);
             return true;
         }
         return false;
