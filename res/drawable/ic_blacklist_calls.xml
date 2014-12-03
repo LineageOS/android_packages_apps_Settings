@@ -15,7 +15,12 @@
 -->
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="true" android:drawable="@drawable/ic_blacklist_calls_on" />
-    <item android:drawable="@drawable/ic_blacklist_calls_off" />
+    <item android:state_checked="true">
+        <bitmap android:src="@drawable/ic_blacklist_calls_icon"
+                android:tint="@color/theme_accent"/>
+    </item>
+    <item>
+        <bitmap android:src="@drawable/ic_blacklist_calls_icon"/>
+    </item>
 </selector>
 
