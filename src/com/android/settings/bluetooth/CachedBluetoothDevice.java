@@ -277,13 +277,16 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
         if (!ensurePaired()) {
             return;
         }
-        if (profile.connect(mDevice)) {
+        if (profile != null && profile.connect(mDevice)) {
             if (Utils.D) {
                 Log.d(TAG, "Command sent successfully:CONNECT " + describe(profile));
             }
             return;
         }
-        Log.i(TAG, "Failed to connect " + profile.toString() + " to " + mName);
+        if (profile != null)
+            Log.i(TAG, "Failed to connect " + profile.toString() + " to " + mName);
+        else
+            Log.i(TAG, "Failed to connect. No profile specified");
     }
 
     private boolean ensurePaired() {
@@ -343,8 +346,7 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
     }
 
     int getProfileConnectionState(LocalBluetoothProfile profile) {
-        if (mProfileConnectionState == null ||
-                mProfileConnectionState.get(profile) == null) {
+        if (mProfileConnectionState.get(profile) == null) {
             // If cache is empty make the binder call to get the state
             int state = profile.getConnectionStatus(mDevice);
             mProfileConnectionState.put(profile, state);
