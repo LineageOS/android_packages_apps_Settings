@@ -81,11 +81,12 @@ public class BlacklistSettings extends ListFragment
     private BlacklistAdapter mAdapter;
     private Cursor mCursor;
     private TextView mEmptyView;
+    private View mAddButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(com.android.internal.R.layout.preference_list_fragment,
+        return inflater.inflate(R.layout.preference_blacklist,
                 container, false);
     }
 
@@ -112,6 +113,14 @@ public class BlacklistSettings extends ListFragment
         final ListView listView = getListView();
         listView.setAdapter(mAdapter);
         listView.setEmptyView(mEmptyView);
+
+        mAddButton = getView().findViewById(R.id.floating_action_button);
+        mAddButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showEntryEditDialog(-1);
+            }
+        });
     }
 
     @Override
@@ -123,16 +132,12 @@ public class BlacklistSettings extends ListFragment
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
-        menu.findItem(R.id.blacklist_add).setEnabled(mLastEnabledState);
         menu.findItem(R.id.blacklist_prefs).setEnabled(mLastEnabledState);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.blacklist_add:
-                showEntryEditDialog(-1);
-                return true;
             case R.id.blacklist_prefs:
                 PreferenceFragment prefs = new PreferenceFragment();
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
@@ -193,6 +198,9 @@ public class BlacklistSettings extends ListFragment
         mEmptyView.setText(mLastEnabledState
                 ? R.string.blacklist_empty_text
                 : R.string.blacklist_disabled_empty_text);
+
+        mAddButton.setVisibility(mLastEnabledState ? View.VISIBLE : View.GONE);
+
         mAdapter.swapCursor(mLastEnabledState ? mCursor : null);
     }
 
