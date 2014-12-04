@@ -55,6 +55,9 @@ import android.widget.TextView;
 
 import com.android.internal.telephony.util.BlacklistUtils;
 import com.android.settings.R;
+import com.android.settings.SettingsActivity;
+import com.android.settings.cyanogenmod.BaseSystemSettingEnabler;
+import com.android.settings.widget.SwitchBar;
 
 import java.util.HashMap;
 
@@ -75,17 +78,18 @@ public class BlacklistSettings extends ListFragment
     private static final int COLUMN_PHONE = 2;
     private static final int COLUMN_MESSAGE = 3;
 
-    private Switch mEnabledSwitch;
-    private boolean mLastEnabledState;
+    private BlacklistEnabler mBlacklistEnabler;
 
     private BlacklistAdapter mAdapter;
     private Cursor mCursor;
     private TextView mEmptyView;
+    private View mAddButton;
+    private boolean mLastEnabledState;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(com.android.internal.R.layout.preference_list_fragment,
+        return inflater.inflate(R.layout.preference_blacklist,
                 container, false);
     }
 
@@ -96,12 +100,6 @@ public class BlacklistSettings extends ListFragment
         setHasOptionsMenu(true);
 
         final Activity activity = getActivity();
-        mEnabledSwitch = new Switch(activity);
-
-        final int padding = activity.getResources().getDimensionPixelSize(
-                R.dimen.action_bar_switch_padding);
-        mEnabledSwitch.setPaddingRelative(0, 0, padding, 0);
-        mEnabledSwitch.setOnCheckedChangeListener(this);
 
         mCursor = getActivity().managedQuery(Blacklist.CONTENT_URI,
                 BLACKLIST_PROJECTION, null, null, null);
@@ -112,6 +110,14 @@ public class BlacklistSettings extends ListFragment
         final ListView listView = getListView();
         listView.setAdapter(mAdapter);
         listView.setEmptyView(mEmptyView);
+
+        mAddButton = getView().findViewById(R.id.floating_action_button);
+        mAddButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showEntryEditDialog(-1);
+            }
+        });
     }
 
     @Override
@@ -123,16 +129,12 @@ public class BlacklistSettings extends ListFragment
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
-        menu.findItem(R.id.blacklist_add).setEnabled(mLastEnabledState);
         menu.findItem(R.id.blacklist_prefs).setEnabled(mLastEnabledState);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.blacklist_add:
-                showEntryEditDialog(-1);
-                return true;
             case R.id.blacklist_prefs:
                 PreferenceFragment prefs = new PreferenceFragment();
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
@@ -149,13 +151,11 @@ public class BlacklistSettings extends ListFragment
     @Override
     public void onStart() {
         super.onStart();
-        final Activity activity = getActivity();
+        final SettingsActivity activity = (SettingsActivity) getActivity();
         activity.getActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM,
                 ActionBar.DISPLAY_SHOW_CUSTOM);
-        activity.getActionBar().setCustomView(mEnabledSwitch, new ActionBar.LayoutParams(
-                ActionBar.LayoutParams.WRAP_CONTENT,
-                ActionBar.LayoutParams.WRAP_CONTENT,
-                Gravity.CENTER_VERTICAL | Gravity.END));
+
+        mBlacklistEnabler = new BlacklistEnabler(activity, activity.getSwitchBar());
     }
 
     @Override
@@ -170,10 +170,28 @@ public class BlacklistSettings extends ListFragment
     public void onResume() {
         super.onResume();
 
+        if (mBlacklistEnabler == null) {
+            mBlacklistEnabler.resume(getActivity());
+        }
+
         final Context context = getActivity();
-        mLastEnabledState = BlacklistUtils.isBlacklistEnabled(context);
-        mEnabledSwitch.setChecked(mLastEnabledState);
-        updateEnabledState();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        if (mBlacklistEnabler != null) {
+            mBlacklistEnabler.pause();
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        if (mBlacklistEnabler != null) {
+            mBlacklistEnabler.teardownSwitchBar();
+        }
+        super.onDestroyView();
     }
 
     @Override
@@ -186,24 +204,22 @@ public class BlacklistSettings extends ListFragment
         fragment.show(getFragmentManager(), "blacklist_edit");
     }
 
-    private void updateEnabledState() {
+    private void updateEnabledState(boolean isEnabled) {
+        mLastEnabledState = isEnabled;
         getListView().setEnabled(mLastEnabledState);
         getActivity().invalidateOptionsMenu();
 
         mEmptyView.setText(mLastEnabledState
                 ? R.string.blacklist_empty_text
                 : R.string.blacklist_disabled_empty_text);
+
+        mAddButton.setVisibility(mLastEnabledState ? View.VISIBLE : View.GONE);
+
         mAdapter.swapCursor(mLastEnabledState ? mCursor : null);
     }
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if (buttonView == mEnabledSwitch && isChecked != mLastEnabledState) {
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.PHONE_BLACKLIST_ENABLED, isChecked ? 1 : 0);
-            mLastEnabledState = isChecked;
-            updateEnabledState();
-        }
     }
 
     private static class BlacklistAdapter extends ResourceCursorAdapter
@@ -380,6 +396,22 @@ public class BlacklistSettings extends ListFragment
             ToggleImageView callStatus;
             ToggleImageView messageStatus;
             int position;
+        }
+    }
+
+    private class BlacklistEnabler extends BaseSystemSettingEnabler {
+        public BlacklistEnabler(Context context, SwitchBar switchBar) {
+            super(context, switchBar);
+        }
+
+        @Override
+        public String getSettingName() {
+            return Settings.System.PHONE_BLACKLIST_ENABLED;
+        }
+
+        @Override
+        public void onEnablerChanged(boolean isEnabled) {
+            updateEnabledState(isEnabled);
         }
     }
 }
