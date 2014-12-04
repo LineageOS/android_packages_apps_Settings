@@ -28,20 +28,22 @@
     </android.support.v4.view.ViewPager>
 
     <FrameLayout
-        android:id="@+id/floating_action_button_container"
-        android:background="@drawable/fab_accent"
+        android:id="@+id/floating_action_button"
+        android:layout_width="@dimen/fab_size"
+        android:layout_height="@dimen/fab_size"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="16dp"
-        android:elevation="4dp"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content">
-        <ImageButton
-            android:id="@+id/floating_action_button"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:background="@drawable/floating_action_button"
-            android:src="@drawable/ic_menu_add"/>
+        android:layout_margin="@dimen/fab_margin"
+        android:elevation="@dimen/fab_elevation_normal"
+        android:background="@drawable/floating_action_button"
+        android:stateListAnimator="@anim/floating_action_button_elevation"
+        >
+        <ImageView
+            android:layout_width="@dimen/fab_icon_size"
+            android:layout_height="@dimen/fab_icon_size"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_menu_add_white"/>
     </FrameLayout>
 
     <TextView
