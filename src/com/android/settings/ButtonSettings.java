@@ -48,6 +48,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
     private static final String KEY_HOME_LONG_PRESS = "hardware_keys_home_long_press";
     private static final String KEY_HOME_DOUBLE_TAP = "hardware_keys_home_double_tap";
+    private static final String KEY_HOME_ANSWER_CALL = "hardware_keys_home_answer_call";
     private static final String KEY_MENU_PRESS = "hardware_keys_menu_press";
     private static final String KEY_MENU_LONG_PRESS = "hardware_keys_menu_long_press";
 
@@ -85,6 +86,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
     private ListPreference mHomeLongPressAction;
     private ListPreference mHomeDoubleTapAction;
+    private CheckBoxPreference mHomeAnswerCallAction;
     private ListPreference mMenuPressAction;
     private ListPreference mMenuLongPressAction;
 
@@ -143,6 +145,12 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                     defaultDoubleTapAction);
             mHomeDoubleTapAction = initActionList(KEY_HOME_DOUBLE_TAP, doubleTapAction);
 
+            int defaultAnswerAction = 0;
+            int answerCallAction = Settings.System.getInt(resolver,
+                    Settings.System.KEY_HOME_ANSWER_RINGING_CALL,
+                    defaultAnswerAction);
+            mHomeAnswerCallAction = initCheckBox(KEY_HOME_ANSWER_CALL, (answerCallAction == 1));
+
             hasAnyBindableKey = true;
         } else {
             prefScreen.removePreference(homeCategory);
@@ -197,6 +205,14 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         } else if (preference == mMenuLongPressAction) {
             handleActionListChange(mMenuLongPressAction, newValue,
                     Settings.System.KEY_MENU_LONG_PRESS_ACTION);
+            return true;
+       } else if (preference == mVolumeKeyWakeControl) {
+            handleCheckBoxChange(mVolumeKeyWakeControl, newValue,
+                    Settings.System.VOLUME_WAKE_SCREEN);
+            return true;
+        } else if (preference == mHomeAnswerCallAction) {
+            handleCheckBoxChange(mHomeAnswerCallAction, newValue,
+                    Settings.System.KEY_HOME_ANSWER_RINGING_CALL);
             return true;
         }
         return false;

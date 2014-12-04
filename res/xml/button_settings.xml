@@ -59,6 +59,13 @@
             android:entryValues="@array/hardware_keys_action_values"
             android:persistent="false" />
 
+        <CheckBoxPreference
+            android:key="hardware_keys_home_answer_call"
+            android:title="@string/home_answer_ringing_call_title"
+            android:summary="@string/home_answer_ringing_call_summary"
+            android:defaultValue="false"
+            android:persistent="false" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>
