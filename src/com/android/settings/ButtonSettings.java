@@ -47,10 +47,11 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
     private static final String KEY_HOME_LONG_PRESS = "hardware_keys_home_long_press";
     private static final String KEY_HOME_DOUBLE_TAP = "hardware_keys_home_double_tap";
+    private static final String KEY_HOME_ANSWER_CALL = "hardware_keys_home_answer_call";
     private static final String KEY_MENU_PRESS = "hardware_keys_menu_press";
     private static final String KEY_MENU_LONG_PRESS = "hardware_keys_menu_long_press";
-    private static final String KEY_VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
     private static final String KEY_VOLUME_WAKE_DEVICE = "volume_key_wake_device";
+    private static final String KEY_POWER_END_CALL = "hardware_keys_power_end_call";
     private static final String DISABLE_NAV_KEYS = "disable_nav_keys";
 
     private static final String CATEGORY_POWER = "power_key";
@@ -87,10 +88,11 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
     private ListPreference mHomeLongPressAction;
     private ListPreference mHomeDoubleTapAction;
+    private CheckBoxPreference mHomeAnswerCallAction;
     private ListPreference mMenuPressAction;
     private ListPreference mMenuLongPressAction;
-    private ListPreference mVolumeKeyCursorControl;
     private CheckBoxPreference mVolumeKeyWakeControl;
+    private CheckBoxPreference mPowerKeyEndCallAction;
 
     private PreferenceCategory mNavigationPreferencesCat;
 
@@ -146,6 +148,18 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                     Settings.System.KEY_HOME_DOUBLE_TAP_ACTION,
                     defaultDoubleTapAction);
             mHomeDoubleTapAction = initActionList(KEY_HOME_DOUBLE_TAP, doubleTapAction);
+
+            int defaultAnswerAction = 0;
+            int answerCallAction = Settings.System.getInt(resolver,
+                    Settings.System.KEY_HOME_ANSWER_RINGING_CALL,
+                    defaultAnswerAction);
+            mHomeAnswerCallAction = initCheckBox(KEY_HOME_ANSWER_CALL, (answerCallAction == 1));
+
+            int defaultPowerAction = 0;
+            int powerEndCall = Settings.System.getInt(resolver,
+                    Settings.System.KEY_POWER_END_CALL,
+                    defaultPowerAction);
+            mPowerKeyEndCallAction = initCheckBox(KEY_POWER_END_CALL, (powerEndCall == 1));
 
             hasAnyBindableKey = true;
         } else {
@@ -225,6 +239,12 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             handleCheckBoxChange(mVolumeKeyWakeControl, newValue,
                     Settings.System.VOLUME_WAKE_SCREEN);
             return true;
+        } else if (preference == mHomeAnswerCallAction) {
+            handleCheckBoxChange(mHomeAnswerCallAction, newValue,
+                    Settings.System.KEY_HOME_ANSWER_RINGING_CALL);
+            return true;
+        } else if (preference == mPowerKeyEndCallAction) {
+            handleCheckBoxChange(mPowerKeyEndCallAction, newValue, Settings.System.KEY_POWER_END_CALL);
         }
         return false;
     }

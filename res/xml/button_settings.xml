@@ -17,7 +17,20 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
- <PreferenceCategory
+    <PreferenceCategory
+        android:key="power_key"
+        android:title="@string/hardware_keys_power_key_title">
+
+        <CheckBoxPreference
+            android:key="hardware_keys_power_key_end_call"
+            android:title="@string/hardware_keys_power_end_call_title"
+            android:summary="@string/hardware_keys_power_end_call_summary"
+            android:defaultValue="false"
+            android:persistent="false"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="home_key"
         android:title="@string/hardware_keys_home_key_title" >
 
@@ -57,6 +70,13 @@
             android:title="@string/hardware_keys_long_press_title"
             android:entries="@array/hardware_keys_action_entries"
             android:entryValues="@array/hardware_keys_action_values"
+            android:persistent="false" />
+
+        <CheckBoxPreference
+            android:key="hardware_keys_home_answer_call"
+            android:title="@string/home_answer_ringing_call_title"
+            android:summary="@string/home_answer_ringing_call_summary"
+            android:defaultValue="false"
             android:persistent="false" />
 
     </PreferenceCategory>
