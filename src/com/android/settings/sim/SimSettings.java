@@ -138,6 +138,10 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         intentFilter.addAction(TelephonyIntents.ACTION_SUBINFO_RECORD_UPDATED);
 
         getActivity().registerReceiver(mDdsSwitchReceiver, intentFilter);
+
+        IntentFilter intentRadioFilter = new IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED);
+        intentFilter.addAction(TelephonyIntents.ACTION_SIM_STATE_CHANGED);
+        getActivity().registerReceiver(mRadioReceiver, intentRadioFilter);
     }
 
     @Override
@@ -155,6 +159,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         super.onDestroy();
         Log.d(TAG,"on onDestroy");
         getActivity().unregisterReceiver(mDdsSwitchReceiver);
+        getActivity().unregisterReceiver(mRadioReceiver);
         unRegisterPhoneStateListener();
     }
 
@@ -202,6 +207,20 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         }
     };
 
+    private final BroadcastReceiver mRadioReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (TelephonyIntents.ACTION_SIM_STATE_CHANGED.equals(action)
+                    || Intent.ACTION_AIRPLANE_MODE_CHANGED.equals(action)) {
+                Log.d(TAG, "Received ACTION_SIM_STATE_CHANGED or ACTION_AIRPLANE_MODE_CHANGED");
+                // Refresh UI like on resume
+                initLTEPreference();
+                updateAllOptions();
+            }
+        }
+    };
+
     private void createPreferences() {
         addPreferencesFromResource(R.xml.sim_settings);
 
@@ -228,6 +247,9 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
                 mAvailableSubInfos.add(sir);
             }
         }
+
+        // Remove SIM_CARD_CATEGORY by default for UX, use SIM_ENABLER_CATEGORY replaced
+        removePreference(SIM_CARD_CATEGORY);
     }
 
     private void updateAllOptions() {
@@ -484,6 +506,8 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             final Preference preference) {
         if (preference instanceof SimPreference) {
             ((SimPreference) preference).createEditDialog((SimPreference) preference);
+        } else if (preference instanceof MultiSimEnablerPreference) {
+            ((MultiSimEnablerPreference) preference).createEditDialog();
         } else if (preference == mPrimarySubSelect) {
             startActivity(mPrimarySubSelect.getIntent());
         }

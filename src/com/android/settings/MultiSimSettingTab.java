@@ -53,7 +53,6 @@ import android.widget.TextView;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.settings.SelectSubscription;
 import com.android.settings.R;
-import com.android.settings.sim.MultiSimSettingsConstants;
 
 import java.util.List;
 
@@ -69,18 +68,6 @@ public class MultiSimSettingTab extends TabActivity {
 
     private String[] tabSpecTags = {
             "sim1", "sim2"
-    };
-
-    private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if (MultiSimSettingsConstants.SUBNAME_CHANGED.equals(action)) {
-                int subScription = intent.getIntExtra(PhoneConstants.SUBSCRIPTION_KEY,
-                        PhoneConstants.SUB1);
-                handleSimNameChanged(subScription);
-            }
-        }
     };
 
     /*
@@ -110,10 +97,11 @@ public class MultiSimSettingTab extends TabActivity {
             String className = preIntent.getStringExtra(SelectSubscription.TARGET_CLASS);
 
             // come in from shortcut packagename and classname is null
-            if (packageName == null)
-                packageName = MultiSimSettingsConstants.CONFIG_PACKAGE;
-            if (className == null)
-                className = MultiSimSettingsConstants.CONFIG_CLASS;
+            if (packageName == null || className == null) {
+                Log.e(LOG_TAG, "Enter into MultiSimSettingTab with null packageName or className");
+                return;
+            }
+
             // Create an Intent to launch an Activity for the tab (to be reused)
             intent = new Intent().setClassName(packageName, className)
                     .setAction(preIntent.getAction()).putExtra(PhoneConstants.SUBSCRIPTION_KEY, i);
@@ -129,9 +117,6 @@ public class MultiSimSettingTab extends TabActivity {
         }
         tabHost.setCurrentTab(preIntent.getIntExtra(PhoneConstants.SUBSCRIPTION_KEY,
                 PhoneConstants.SUB1));
-
-        registerReceiver(mBroadcastReceiver, new IntentFilter(
-                MultiSimSettingsConstants.SUBNAME_CHANGED));
     }
 
     private static void logd(String msg) {
@@ -170,14 +155,6 @@ public class MultiSimSettingTab extends TabActivity {
         return null;
     }
 
-    private void handleSimNameChanged(int subscription) {
-        logd("sim name changed on sub" + subscription);
-        TextView simName = (TextView) getTabHost().getTabWidget().getChildAt(subscription)
-                .findViewById(com.android.internal.R.id.title);
-        simName.setText(getMultiSimName(this, subscription));
-        simName.setAllCaps(false);
-    }
-
     // When user click the home icon we need finish current activity.
     @Override
     public boolean onNavigateUp() {
@@ -188,6 +165,5 @@ public class MultiSimSettingTab extends TabActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unregisterReceiver(mBroadcastReceiver);
     }
 }

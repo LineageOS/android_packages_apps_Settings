@@ -69,6 +69,7 @@ public class DashboardTileView extends FrameLayout implements View.OnClickListen
         setOnClickListener(this);
         setBackgroundResource(R.drawable.dashboard_tile_background);
         setFocusable(true);
+
     }
 
     public Switch getSwitch() {
@@ -110,6 +111,11 @@ public class DashboardTileView extends FrameLayout implements View.OnClickListen
                     mTile.titleRes, mTile.getTitle(getResources()));
         } else if (mTile.intent != null) {
             getContext().startActivity(mTile.intent);
+        } else if (mTile.getTitle(getResources()).equals(
+                getResources().getString(R.string.lte_4g_settings_title))) {
+            if (null != mSwitch) {
+                mSwitch.setChecked(!mSwitch.isChecked());
+            }
         }
     }
 }

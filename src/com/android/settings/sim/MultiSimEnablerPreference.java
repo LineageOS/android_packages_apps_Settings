@@ -31,8 +31,8 @@
 
 package com.android.settings.sim;
 
+import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.ActivityNotFoundException;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
@@ -41,31 +41,28 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Resources;
-import android.content.res.TypedArray;
-
 import android.os.Handler;
 import android.os.Message;
 import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.content.res.TypedArray;
 import android.provider.Settings;
-import android.provider.Settings.System;
 import android.telephony.SubscriptionManager;
 import android.telephony.SubInfoRecord;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.ImageView;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
+
 import com.android.internal.telephony.PhoneConstants;
 import com.android.settings.SelectSubscription;
-
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.settings.R;
-import android.preference.Preference.OnPreferenceClickListener;
 
 import java.util.List;
 
@@ -94,8 +91,6 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
     private boolean mCurrentState;
 
     private boolean mCmdInProgress = false;
-    private TextView mSubTitle, mSubSummary;
-    private ImageView mSubIcon;
     private int mSwitchVisibility = View.VISIBLE;
     private CompoundButton mSwitch;
     private Handler mParentHandler = null;
@@ -128,31 +123,6 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
         mSlotId = slotId;
         mSir = sir;
         mParentHandler = handler;
-        Intent intent = new Intent()
-                .setClassName("com.android.settings",
-                        "com.android.settings.MultiSimSettingTab")
-                .setAction("android.intent.action.MAIN")
-                .putExtra(SelectSubscription.PACKAGE, "com.android.settings")
-                .putExtra(SelectSubscription.TARGET_CLASS,
-                        "com.android.settings.sim.SimConfiguration")
-                .putExtra(PhoneConstants.SUBSCRIPTION_KEY, mSlotId);
-        setIntent(intent);
-
-        this.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-            public boolean onPreferenceClick(Preference preference) {
-                final Context context = getContext();
-                try {
-                    final Intent intent = getIntent();
-                    if (intent != null) {
-                        // Invoke a settings activity of an spell checker.
-                        context.startActivity(intent);
-                    }
-                } catch (final ActivityNotFoundException e) {
-                    logd("ActivityNotFoundException");
-                }
-                return true;
-            }
-        });
     }
 
     private void sendMessage(int event, Handler handler, int delay) {
@@ -172,37 +142,27 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
     @Override
     protected void onBindView(View view) {
         super.onBindView(view);
-        mSubTitle = (TextView) view.findViewById(R.id.subtitle);
-        mSubSummary = (TextView) view.findViewById(R.id.subsummary);
-        mSwitch = (CompoundButton) view.findViewById(R.id.subSwitchWidget);
-        mSubIcon = (ImageView) view.findViewById(R.id.subicon);
-        mSubIcon.setImageResource(getResId(mSlotId));
+        mSwitch = (CompoundButton) view.findViewById(R.id.sub_switch_widget);
         mSwitch.setOnCheckedChangeListener(this);
         update();
         // now use other config screen to active/deactive sim card\
         mSwitch.setVisibility(mSwitchVisibility);
+
     }
 
     public void update() {
         final Resources res = mContext.getResources();
-        //always update icon
-        handleSubIconChanged();
         logd("update()" + mSir);
 
         boolean isSubValid = isCurrentSubValid();
         setEnabled(isSubValid);
 
         logd("update() isSubValid "  + isSubValid);
+        setTitle(res.getString(R.string.sim_card_number_title, mSlotId + 1));
         if (isSubValid) {
-            updateTitle();
             updateSummary();
         } else {
-            if (mSubTitle != null) {
-                mSubTitle.setText(res.getString(R.string.sim_card_number_title, mSlotId + 1));
-            }
-            if (mSubSummary != null) {
-                mSubSummary.setText(R.string.sim_slot_empty);
-            }
+            setSummary(res.getString(R.string.sim_slot_empty));
         }
     }
 
@@ -226,11 +186,6 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
         return isSubValid;
     }
 
-    private void updateTitle() {
-        if (mSubTitle == null) return;
-        mSubTitle.setText(mSir == null ? "SUB" : mSir.displayName);
-    }
-
     public void setSwitchVisibility (int visibility) {
         mSwitchVisibility = visibility;
     }
@@ -239,40 +194,45 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
         logd("setChecked: state " + state + "sir:" + mSir);
         if (mSwitch != null) {
             mSwitch.setOnCheckedChangeListener(null);
-            mSwitch.setChecked(state);
+            // Do not update update checkstatus again in progress
+            if (!mCmdInProgress) {
+                mSwitch.setChecked(state);
+            }
             mSwitch.setOnCheckedChangeListener(this);
             mCurrentState = state;
         }
     }
 
-    public void setEnabled(boolean isEnabled) {
-        if (mSwitch != null) {
-            mSwitch.setEnabled(isEnabled);
-        }
+    private String getNetOperatorName () {
+        String netOperatorName = TelephonyManager.getDefault().getNetworkOperatorName(
+                mSir.subId);
+
+        return android.util.NativeTextHelper.getInternalLocalString(mContext,
+                netOperatorName,
+                R.array.origin_carrier_names,
+                R.array.locale_carrier_names);
     }
 
     private void updateSummary() {
         Resources res = mContext.getResources();
         String summary;
+
         boolean isActivated = (mSir.mStatus == SubscriptionManager.ACTIVE);
         logd("updateSummary: subId " + mSir.subId + " isActivated = " + isActivated +
                 " slot id = " + mSlotId);
 
-        String netOperatorName = TelephonyManager.getDefault().getNetworkOperatorName(
-                mSir.subId);
+        String displayName = mSir == null ? "SIM" : mSir.displayName;
         if (isActivated) {
-            summary = android.util.NativeTextHelper.getInternalLocalString(mContext,
-                    netOperatorName,
-                    R.array.origin_carrier_names,
-                    R.array.locale_carrier_names);;
+            summary = displayName;
+            if (!TextUtils.isEmpty(mSir.number)) {
+                summary = displayName + " - " + mSir.number;
+            }
         } else {
-            summary = mContext.getString(R.string.sim_enabler_summary,
+            summary = displayName + mContext.getString(R.string.sim_enabler_summary,
                     res.getString(hasCard() ? R.string.sim_disabled : R.string.sim_missing));
         }
 
-        if (mSubSummary != null) {
-            mSubSummary.setText(summary);
-        }
+        setSummary(summary);
         setChecked(isActivated);
     }
 
@@ -342,7 +302,7 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
         mCmdInProgress = true;
 
         showProgressDialog();
-        mSwitch.setEnabled(false);
+        setEnabled(false);
         if (mCurrentState) {
             SubscriptionManager.activateSubId(mSir.subId);
         } else {
@@ -436,37 +396,12 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
                     if (which == DialogInterface.BUTTON_POSITIVE) {
                         sendSubConfigurationRequest();
                     } else if (which == DialogInterface.BUTTON_NEGATIVE) {
-                        setChecked(true);
-                        mSubSummary.setText(mContext.getString(
-                                R.string.sim_enabler_summary,
-                                mContext.getString(R.string.sim_enabled)));
+                        update();
                     } else if (which == DialogInterface.BUTTON_NEUTRAL) {
                         update();
                     }
                 }
             };
-
-
-    private int getResId(int subScription){
-        TypedArray imgs = mContext.getResources().obtainTypedArray(R.array.sim_icons);
-
-        String simIconIndex = System.getString(mContext.getContentResolver(),
-            MultiSimSettingsConstants.PREFERRED_SIM_ICON_INDEX);
-        if (null == simIconIndex) {
-            simIconIndex =  "0,1";
-        }
-        String[] indexs = simIconIndex.split(",");
-
-        int id = imgs.getResourceId(Integer.parseInt(indexs[subScription]), -1);
-        imgs.recycle();
-        return id;
-    }
-
-    private void handleSubIconChanged(){
-        if  (mSubIcon != null) {
-            mSubIcon.setImageResource(getResId(mSlotId));
-        }
-    }
 
     private DialogInterface.OnCancelListener mDialogCanceListener = new DialogInterface
             .OnCancelListener() {
@@ -514,6 +449,8 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
                     case EVT_PROGRESS_DLG_TIME_OUT:
                         logd("EVT_PROGRESS_DLG_TIME_OUT");
                         dismissDialog(sProgressDialog);
+                        // Must update UI when time out
+                        update();
                         break;
                     default:
                     break;
@@ -528,6 +465,56 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
             // May receive Receiver not registered error
             logd(e.getMessage());
         }
+    }
+
+    //keep this function the same as SimSettings
+    public void createEditDialog() {
+        Activity activity = (Activity) mContext;
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+
+        final View dialogLayout = activity.getLayoutInflater().inflate(
+                R.layout.multi_sim_dialog, null);
+        builder.setView(dialogLayout);
+
+        EditText nameText = (EditText)dialogLayout.findViewById(R.id.sim_name);
+        nameText.setText(mSir.displayName);
+
+        TextView numberView = (TextView)dialogLayout.findViewById(R.id.number);
+        numberView.setText(mSir.number);
+
+        TextView carrierView = (TextView)dialogLayout.findViewById(R.id.carrier);
+        carrierView.setText(getNetOperatorName());
+
+        builder.setTitle(R.string.sim_editor_title);
+
+        builder.setPositiveButton(R.string.okay, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int whichButton) {
+                final EditText nameText = (EditText)dialogLayout.findViewById(R.id.sim_name);
+                final Spinner displayNumbers =
+                    (Spinner)dialogLayout.findViewById(R.id.display_numbers);
+
+                SubscriptionManager.setDisplayNumberFormat(
+                    displayNumbers.getSelectedItemPosition() == 0
+                        ? SubscriptionManager.DISPLAY_NUMBER_LAST
+                        : SubscriptionManager.DISPLAY_NUMBER_FIRST, mSir.subId);
+
+                mSir.displayName = nameText.getText().toString();
+                SubscriptionManager.setDisplayName(mSir.displayName,
+                        mSir.subId, SubscriptionManager.NAME_SOURCE_USER_INPUT);
+
+                update();
+            }
+        });
+
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int whichButton) {
+                dialog.dismiss();
+            }
+        });
+
+        builder.create().show();
     }
 
     private void logd(String msg) {
