@@ -723,7 +723,12 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             });
 
             TextView numberView = (TextView)dialogLayout.findViewById(R.id.number);
-            numberView.setText(mSubscriptionInfo.getNumber());
+            final String rawNumber = getPhoneNumber(mSubInfoRecord);
+            if (TextUtils.isEmpty(rawNumber)) {
+                numberView.setText(res.getString(com.android.internal.R.string.unknownName));
+            } else {
+                numberView.setText(PhoneNumberUtils.formatNumber(rawNumber));
+            }
 
             TextView carrierView = (TextView)dialogLayout.findViewById(R.id.carrier);
             carrierView.setText(mSubscriptionInfo.getDisplayName());
@@ -892,6 +897,18 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             MultiSimEnablerPreference simEnabler = mSimEnablers.get(i);
             if (simEnabler != null) simEnabler.update();
         }
+    }
+
+    // Returns the line1Number. Line1number should always be read from TelephonyManager since it can
+    // be overridden for display purposes.
+    private String getPhoneNumber(SubscriptionInfo info) {
+        final TelephonyManager tm =
+            (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
+        return tm.getLine1NumberForSubscriber(info.getSubscriptionId());
+    }
+
+    private void log(String s) {
+        Log.d(TAG, s);
     }
 
     private void logd(String msg) {
