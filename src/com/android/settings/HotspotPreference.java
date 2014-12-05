@@ -46,6 +46,7 @@ public class HotspotPreference extends Preference implements OnCheckedChangeList
     private Switch mSwitch;
     private TextView mSubSummary;
     private Context mContext;
+    private boolean mSwitchEnabled;
 
     public HotspotPreference(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
@@ -71,6 +72,7 @@ public class HotspotPreference extends Preference implements OnCheckedChangeList
         mSubSummary.setVisibility(View.GONE);
         mSwitch = (Switch) view.findViewById(R.id.switchWidget);
         mSwitch.setOnCheckedChangeListener(this);
+        setChecked(mSwitchEnabled);
         return view;
     }
 
@@ -92,5 +94,6 @@ public class HotspotPreference extends Preference implements OnCheckedChangeList
             mSwitch.setChecked(state);
             mSwitch.setOnCheckedChangeListener(this);
         }
+        mSwitchEnabled=state;
     }
 }
