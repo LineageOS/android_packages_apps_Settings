@@ -17,6 +17,7 @@
 package com.android.settings.sim;
 
 import android.provider.SearchIndexableResource;
+
 import com.android.settings.R;
 
 import android.app.AlertDialog;
@@ -39,6 +40,7 @@ import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telecom.PhoneAccount;
 import android.telephony.CellInfo;
+import android.telephony.PhoneStateListener;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -46,6 +48,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.settings.RestrictedSettingsFragment;
@@ -96,6 +99,12 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     private SubInfoRecord mSMS = null;
 
     private int mNumSims;
+    private int mPhoneCount;
+    private int[] mCallState;
+    private PhoneStateListener[] mPhoneStateListener;
+
+    private boolean inActivity;
+    private boolean dataDisableToastDisplayed = false;
 
     public SimSettings() {
         super(DISALLOW_CONFIG_SIM);
@@ -113,6 +122,10 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         }
 
         mNumSlots = tm.getSimCount();
+        mPhoneCount = TelephonyManager.getDefault().getPhoneCount();
+        mCallState = new int[mPhoneCount];
+        mPhoneStateListener = new PhoneStateListener[mPhoneCount];
+        listen();
 
         mPreferredDataSubscription = SubscriptionManager.getDefaultDataSubId();
 
@@ -131,6 +144,18 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         super.onDestroy();
         Log.d(TAG,"on onDestroy");
         getActivity().unregisterReceiver(mDdsSwitchReceiver);
+        unRegisterPhoneStateListener();
+    }
+
+    private void unRegisterPhoneStateListener() {
+        TelephonyManager tm =
+                (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
+        for (int i = 0; i < mPhoneCount; i++) {
+            if (mPhoneStateListener[i] != null) {
+                tm.listen(mPhoneStateListener[i], PhoneStateListener.LISTEN_NONE);
+                mPhoneStateListener[i] = null;
+            }
+        }
     }
 
     private BroadcastReceiver mDdsSwitchReceiver = new BroadcastReceiver() {
@@ -200,6 +225,34 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         updateSimSlotValues();
         updateActivitesCategory();
         updateSimEnablers();
+    }
+
+    private void listen() {
+        TelephonyManager tm =
+                (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
+        for (int i = 0; i < mPhoneCount; i++) {
+            long[] subId = SubscriptionManager.getSubId(i);
+            if (subId != null) {
+                if (subId[0] > 0) {
+                    mCallState[i] = tm.getCallState(subId[0]);
+                    tm.listen(getPhoneStateListener(i, subId[0]),
+                            PhoneStateListener.LISTEN_CALL_STATE);
+                }
+            }
+        }
+    }
+
+    private PhoneStateListener getPhoneStateListener(int phoneId, long subId) {
+        final int i = phoneId;
+        mPhoneStateListener[phoneId]  = new PhoneStateListener(subId) {
+            @Override
+            public void onCallStateChanged(int state, String ignored) {
+                Log.d(TAG, "onCallStateChanged: " + state);
+                mCallState[i] = state;
+                updateCellularDataPreference();
+            }
+        };
+        return mPhoneStateListener[phoneId];
     }
 
     private void updateSimSlotValues() {
@@ -276,7 +329,36 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         if (sir != null) {
             simPref.setSelectedValue(sir, false);
         }
-        simPref.setEnabled(mNumSims > 1);
+        updateCellularDataPreference();
+    }
+
+    private void updateCellularDataPreference() {
+        final DropDownPreference simPref = (DropDownPreference) findPreference(KEY_CELLULAR_DATA);
+        boolean callStateIdle = isCallStateIdle();
+        // Enable data preference in msim mode and call state idle
+        simPref.setEnabled((mNumSims > 1) && callStateIdle);
+        // Display toast only once when the user enters the activity even though the call moves
+        // through multiple call states (eg - ringing to offhook for incoming calls)
+        if (callStateIdle == false && inActivity && dataDisableToastDisplayed == false) {
+            Toast.makeText(getActivity(), R.string.data_disabled_in_active_call,
+                    Toast.LENGTH_SHORT).show();
+            dataDisableToastDisplayed = true;
+        }
+        // Reset dataDisableToastDisplayed
+        if (callStateIdle == true) {
+            dataDisableToastDisplayed = false;
+        }
+    }
+
+    private boolean isCallStateIdle() {
+        boolean callStateIdle = true;
+        for (int i = 0; i < mCallState.length; i++) {
+            if (TelephonyManager.CALL_STATE_IDLE != mCallState[i]) {
+                callStateIdle = false;
+            }
+        }
+        Log.d(TAG, "isCallStateIdle " + callStateIdle);
+        return callStateIdle;
     }
 
     private void updateCallValues() {
@@ -293,7 +375,9 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     @Override
     public void onPause() {
         super.onPause();
+        inActivity = false;
         Log.d(TAG,"on Pause");
+        dataDisableToastDisplayed = false;
         for (int i = 0; i < mSimEnablers.size(); ++i) {
             MultiSimEnablerPreference simEnabler = mSimEnablers.get(i);
             if (simEnabler != null) simEnabler.cleanUp();
@@ -303,6 +387,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     @Override
     public void onResume() {
         super.onResume();
+        inActivity = true;
         Log.d(TAG,"on Resume, number of slots = " + mNumSlots);
         initLTEPreference();
         updateAllOptions();
