@@ -21,7 +21,6 @@ LOCAL_PACKAGE_NAME := Settings
 LOCAL_CERTIFICATE := platform
 LOCAL_PRIVILEGED_MODULE := true
 
-LOCAL_JAVA_LIBRARIES += qcrilhook
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
 include frameworks/opt/setupwizard/navigationbar/common.mk

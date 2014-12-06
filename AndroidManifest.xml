@@ -80,10 +80,6 @@
             android:supportsRtl="true"
             android:allowBackup="false">
 
-      <uses-library
-            android:name="com.qualcomm.qcrilhook"
-            android:required="true" />
-
       <!-- screen color Settings Controls -->
         <activity android:name=".ScreenColorSettings" android:label="@string/screencolor"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -1600,26 +1596,6 @@
             <intent-filter>
                  <action android:name="android.provider.Telephony.SECRET_CODE" />
                  <data android:scheme="android_secret_code" android:host="4636" />
-            </intent-filter>
-        </receiver>
-
-       <activity
-            android:name="FactoryTest"
-            android:clearTaskOnLaunch="true"
-            android:configChanges="orientation|screenSize"
-            android:label="@string/factory_test_info"
-            android:parentActivityName="Settings" />
-        <activity
-            android:name="NetworkDebugInfoActivity"
-            android:clearTaskOnLaunch="true"
-            android:configChanges="orientation|screenSize"
-            android:label="@string/factory_test_info"
-            android:parentActivityName="Settings" />
-
-        <receiver android:name="FactoryTestBroadcastReceiver" >
-            <intent-filter>
-                <action android:name="android.provider.Telephony.SECRET_CODE" />
-                <data  android:scheme="android_secret_code" android:host="38378"/>
             </intent-filter>
         </receiver>
 
