@@ -236,6 +236,17 @@
         android:icon="@drawable/ic_settings_date_time"
         android:title="@string/date_and_time_settings_title" />
 
+    <!-- Scheduled power on and off -->
+    <header
+        android:id="@+id/timer_switch_settings"
+        android:icon="@drawable/ic_settings_timerswitch"
+        android:title="@string/timer_switch_settings_title" >
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.android.timerswitch"
+            android:targetClass="com.android.timerswitch.TimerSwitchSettings" />
+    </header>
+
     <!-- Accessibility feedback -->
     <header
         android:id="@+id/accessibility_settings"
