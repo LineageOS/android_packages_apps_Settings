@@ -123,7 +123,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         mFontSizePref.setOnPreferenceChangeListener(this);
         mFontSizePref.setOnPreferenceClickListener(this);
 
-        mBrightnessSettingsPreference = (Preference)findPreference(KEY_BRIGHTNESS);
         if (isAutomaticBrightnessAvailable(getResources())) {
             mAutoBrightnessPreference = (SwitchPreference) findPreference(KEY_AUTO_BRIGHTNESS);
             mAutoBrightnessPreference.setOnPreferenceChangeListener(this);
@@ -341,8 +340,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             int brightnessMode = Settings.System.getInt(getContentResolver(),
                     SCREEN_BRIGHTNESS_MODE, SCREEN_BRIGHTNESS_MODE_MANUAL);
             mAutoBrightnessPreference.setChecked(brightnessMode != SCREEN_BRIGHTNESS_MODE_MANUAL);
-            mBrightnessSettingsPreference.setEnabled(
-                    brightnessMode == SCREEN_BRIGHTNESS_MODE_MANUAL);
         }
 
         // Update lift-to-wake if it is available.
@@ -411,7 +408,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             boolean auto = (Boolean) objValue;
             Settings.System.putInt(getContentResolver(), SCREEN_BRIGHTNESS_MODE,
                     auto ? SCREEN_BRIGHTNESS_MODE_AUTOMATIC : SCREEN_BRIGHTNESS_MODE_MANUAL);
-            mBrightnessSettingsPreference.setEnabled(!auto);
         }
         if (preference == mLiftToWakePreference) {
             boolean value = (Boolean) objValue;
