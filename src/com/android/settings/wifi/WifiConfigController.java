@@ -311,13 +311,7 @@ public class WifiConfigController implements TextWatcher,
                     mView.findViewById(R.id.ip_fields).setVisibility(View.GONE);
                 }
                 if (mAccessPoint.networkId != INVALID_NETWORK_ID) {
-                    if (res.getBoolean(R.bool.set_wifi_priority)) {
-                        if (!AccessPoint.isCarrierAp(accessPoint, mContext)) {
-                            mConfigUi.setForgetButton(res.getString(R.string.wifi_forget));
-                        }
-                    } else {
-                        mConfigUi.setForgetButton(res.getString(R.string.wifi_forget));
-                    }
+                    mConfigUi.setForgetButton(res.getString(R.string.wifi_forget));
                 }
             }
         }
