@@ -935,6 +935,21 @@ public final class Utils {
     }
 
     /**
+     * Return whether or not the package is installed via package manager
+     */
+    public static boolean isPackageInstalled(Context context, String pkg) {
+        if (pkg == null) {
+            return false;
+        }
+        try {
+            PackageInfo pi = context.getPackageManager().getPackageInfo(pkg, 0);
+            return pi.applicationInfo.enabled;
+        } catch (NameNotFoundException e) {
+            return false;
+        }
+    }
+
+    /**
      * Determine whether a package is a "system package", in which case certain things (like
      * disabling notifications or disabling the package altogether) should be disallowed.
      */
