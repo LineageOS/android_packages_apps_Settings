@@ -50,6 +50,12 @@
             android:persistent="false" />
 
     <CheckBoxPreference
+            android:key="notify_cmcc_ap_connected"
+            android:persistent="false"
+            android:summary="@string/notify_connect_cmcc_summary"
+            android:title="@string/notify_connect_cmcc" />
+
+    <CheckBoxPreference
             android:key="wifi_gsm_connect_type"
             android:title="@string/wifi_to_gsm_connect_type_title"
             android:persistent="false"
