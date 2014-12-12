@@ -51,7 +51,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private static final String KEY_MENU_PRESS = "hardware_keys_menu_press";
     private static final String KEY_MENU_LONG_PRESS = "hardware_keys_menu_long_press";
     private static final String KEY_VOLUME_WAKE_DEVICE = "volume_key_wake_device";
-    private static final String KEY_POWER_END_CALL = "hardware_keys_power_end_call";
+    private static final String KEY_POWER_END_CALL = "hardware_keys_power_key_end_call";
     private static final String DISABLE_NAV_KEYS = "disable_nav_keys";
 
     private static final String CATEGORY_POWER = "power_key";
@@ -124,6 +124,15 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
         mHandler = new Handler();
 
+        if (hasPowerKey) {
+            int defaultPowerAction = 0;
+            int powerEndCall = Settings.System.getInt(resolver,
+                    Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR,
+                    Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR_DEFAULT);
+            mPowerKeyEndCallAction = initCheckBox(KEY_POWER_END_CALL, (powerEndCall == Settings
+                    .Secure.INCALL_POWER_BUTTON_BEHAVIOR_HANGUP));
+        }
+
         if (hasHomeKey) {
             int defaultLongPressAction = res.getInteger(
                     com.android.internal.R.integer.config_longPressOnHomeBehavior);
@@ -154,12 +163,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                     Settings.System.KEY_HOME_ANSWER_RINGING_CALL,
                     defaultAnswerAction);
             mHomeAnswerCallAction = initCheckBox(KEY_HOME_ANSWER_CALL, (answerCallAction == 1));
-
-            int defaultPowerAction = 0;
-            int powerEndCall = Settings.System.getInt(resolver,
-                    Settings.System.KEY_POWER_END_CALL,
-                    defaultPowerAction);
-            mPowerKeyEndCallAction = initCheckBox(KEY_POWER_END_CALL, (powerEndCall == 1));
 
             hasAnyBindableKey = true;
         } else {
@@ -244,7 +247,12 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                     Settings.System.KEY_HOME_ANSWER_RINGING_CALL);
             return true;
         } else if (preference == mPowerKeyEndCallAction) {
-            handleCheckBoxChange(mPowerKeyEndCallAction, newValue, Settings.System.KEY_POWER_END_CALL);
+            Boolean value = (Boolean) newValue;
+            int intValue = (value) ? Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR_HANGUP :
+                    Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR_SCREEN_OFF;
+            Settings.Secure.putInt(getContentResolver(),
+                    Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR, intValue);
+            return true;
         }
         return false;
     }
