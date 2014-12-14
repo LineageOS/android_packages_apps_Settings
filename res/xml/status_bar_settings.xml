@@ -37,10 +37,21 @@
         android:defaultValue="false" />
 
     <ListPreference
-        android:key="status_bar_show_battery_percent"
-        android:title="@string/status_bar_battery_percentage_title"
-        android:dialogTitle="@string/status_bar_battery_percentage_dialog_title"
-        android:entries="@array/status_bar_battery_percentage_entries"
-        android:entryValues="@array/status_bar_battery_percentage_values" />
+        android:key="status_bar_battery_style"
+        android:title="@string/status_bar_battery_style_title"
+        android:dialogTitle="@string/status_bar_battery_style_title"
+        android:entries="@array/status_bar_battery_style_entries"
+        android:entryValues="@array/status_bar_battery_style_values" />
+
+    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+        android:key="status_bar_battery_style_show_percent"
+        android:title="@string/status_bar_battery_style_show_percent_title"
+        android:defaultValue="false" />
+
+    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+        android:key="status_bar_notif_count"
+        android:title="@string/status_bar_notif_count_title"
+        android:summary="@string/status_bar_notif_count_summary"
+        android:defaultValue="false" />
 
 </PreferenceScreen>
