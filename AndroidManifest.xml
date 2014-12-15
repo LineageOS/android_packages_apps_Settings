@@ -1845,6 +1845,13 @@
             </intent-filter>
         </receiver>
 
+        <receiver android:name=".applications.DisableNotificationReceiver"
+                  android:permission="android.permission.ACCESS_NOTIFICATIONS">
+            <intent-filter>
+                <action android:name="action.disable.notification" />
+            </intent-filter>
+        </receiver>
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.android.settings.files"
