@@ -668,7 +668,7 @@ public class MSimStatus extends PreferenceActivity {
 
     private void updateDataState(int subscription) {
         String display = null;
-        if (PhoneFactory.getDataSubscription() == subscription
+        if (PhoneFactory.getDataSubscription() == SubscriptionManager.getSubId(subscription)[0]
                 && isDataServiceEnable(subscription)) {
             switch (mDataState[subscription]) {
             case TelephonyManager.DATA_CONNECTED:
