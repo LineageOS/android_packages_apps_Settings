@@ -224,14 +224,8 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
         CheckBoxPreference priorityTypePref = (CheckBoxPreference) findPreference(KEY_PRIORITY_TYPE);
         Preference prioritySettingPref = findPreference(KEY_PRIORITY_SETTINGS);
         if (priorityTypePref != null && prioritySettingPref != null) {
-            if (getResources().getBoolean(R.bool.set_wifi_priority)) {
-                priorityTypePref.setOnPreferenceChangeListener(this);
-                priorityTypePref.setChecked(Settings.System.getInt(getContentResolver(),
-                        getResources().getString(R.string.wifi_priority_type),
-                        getResources().getInteger(R.integer.wifi_priority_type_default))
-                        == getResources().getInteger(R.integer.wifi_priority_type_manual));
-            } else {
-                getPreferenceScreen().removePreference(priorityTypePref);
+            getPreferenceScreen().removePreference(priorityTypePref);
+            if (!getResources().getBoolean(R.bool.show_ap_priority_settings)) {
                 getPreferenceScreen().removePreference(prioritySettingPref);
             }
         } else {
