@@ -36,6 +36,7 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceCategory;
 import android.preference.SeekBarVolumizer;
+import android.preference.CheckBoxPreference;
 import android.preference.TwoStatePreference;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
@@ -73,6 +74,8 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
     private static final String KEY_INCREASING_RING_VOLUME = "increasing_ring_volume";
     private static final String KEY_NOTIFICATION_LIGHT = "notification_light";
     private static final String KEY_BATTERY_LIGHT = "battery_light";
+    private static final String KEY_VOLBTN_MUSIC_CTRL = "volbtn_music_controls";
+    private static final String KEY_MEDIA = "media";
 
     private static final int SAMPLE_CUTOFF = 2000;  // manually cap sample playback at 2 seconds
 
@@ -104,6 +107,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
     private Preference mNotificationAccess;
     private boolean mSecure;
     private int mLockscreenSelectedValue;
+    private CheckBoxPreference mVolBtnMusicCtrl;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -143,6 +147,10 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
 
         mNotificationAccess = findPreference(KEY_NOTIFICATION_ACCESS);
         refreshNotificationListeners();
+
+        final PreferenceCategory media = (PreferenceCategory)
+                findPreference(KEY_MEDIA);
+        initVolBtnMusicControl(media);
     }
 
     @Override
@@ -337,6 +345,23 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         if (mVibrateWhenRinging == null) return;
         mVibrateWhenRinging.setChecked(Settings.System.getInt(getContentResolver(),
                 Settings.System.VIBRATE_WHEN_RINGING, 0) != 0);
+    }
+
+    // === Volume Button Music Control ===
+
+    private void initVolBtnMusicControl(PreferenceCategory parent) {
+        mVolBtnMusicCtrl = (CheckBoxPreference) parent.findPreference(KEY_VOLBTN_MUSIC_CTRL);
+        mVolBtnMusicCtrl.setChecked(Settings.System.getInt(getContentResolver(),
+                Settings.System.VOLBTN_MUSIC_CONTROLS, 0) != 0);
+        mVolBtnMusicCtrl.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                final boolean val = (Boolean) newValue;
+                return Settings.System.putInt(getContentResolver(),
+                        Settings.System.VOLBTN_MUSIC_CONTROLS,
+                        val ? 1 : 0);
+            }
+        });
     }
 
     // === Pulse notification light ===
