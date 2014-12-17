@@ -63,6 +63,7 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
     private static final String KEY_CURRENT_NETMASK = "current_netmask";
     private static final String KEY_GSM_WIFI_CONNECT_TYPE = "gsm_wifi_connect_type";
     private static final String KEY_WIFI_GSM_CONNECT_TYPE = "wifi_gsm_connect_type";
+    private static final String KEY_CONNECT_CMCC_NOTIFY = "notify_cmcc_ap_connected";
     private WifiManager mWifiManager;
 
     private CheckBoxPreference AutoPref;
@@ -236,6 +237,22 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
         } else {
             Log.d(TAG, "Fail to get priority pref...");
         }
+
+        CheckBoxPreference notifyConnectedCmccApPref =
+                (CheckBoxPreference) findPreference(KEY_CONNECT_CMCC_NOTIFY);
+        if (notifyConnectedCmccApPref != null) {
+            if (getResources().getBoolean(R.bool.connect_to_cmcc_ap_prompt)) {
+                notifyConnectedCmccApPref.setChecked(Settings.System.getInt(getContentResolver(),
+                        getResources().getString(R.string.prompt_when_connect_cmcc),
+                        getResources().getInteger(R.integer.notify_user_to_connect_cmcc))
+                        == getResources().getInteger(R.integer.notify_user_to_connect_cmcc));
+                notifyConnectedCmccApPref.setOnPreferenceChangeListener(this);
+            } else {
+                getPreferenceScreen().removePreference(notifyConnectedCmccApPref);
+            }
+        } else {
+            Log.d(TAG, "Fail to get cmcc wlan prompt pref");
+        }
     }
 
     private void updateSleepPolicySummary(Preference sleepPolicyPref, String value) {
@@ -390,6 +407,15 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
                     getResources().getString(R.string.wifi_priority_type),
                     checked ? getResources().getInteger(R.integer.wifi_priority_type_manual)
                             : getResources().getInteger(R.integer.wifi_priority_type_default));
+        }
+
+        if (KEY_CONNECT_CMCC_NOTIFY.equals(key)) {
+            boolean checked = ((Boolean) newValue).booleanValue();
+            Settings.System.putInt(getContentResolver(),
+                    getResources().getString(R.string.prompt_when_connect_cmcc),
+                    checked ? getResources().getInteger(R.integer.notify_user_to_connect_cmcc)
+                            : getResources().getInteger(
+                                    R.integer.do_not_notify_user_to_connect_cmcc));
         }
         return true;
     }
