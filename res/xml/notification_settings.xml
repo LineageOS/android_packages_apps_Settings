@@ -134,4 +134,17 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:key="media"
+        android:title="@string/media_section_header" >
+
+        <!-- Volume Rocker Music Control  -->
+        <CheckBoxPreference
+                android:key="volbtn_music_controls"
+                android:title="@string/volbtn_music_controls_title"
+                android:summary="@string/volbtn_music_controls_summary"
+                android:persistent="false" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
