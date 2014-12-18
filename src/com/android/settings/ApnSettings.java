@@ -222,42 +222,6 @@ public class ApnSettings extends SettingsPreferenceFragment implements
         }
     }
 
-    private int getRadioTechnology(){
-        ServiceState serviceState = null;
-        if (TelephonyManager.getDefault().isMultiSimEnabled()) {
-            int phoneId = SubscriptionManager.getPhoneId(mSubId);
-            Log.d(TAG,"getRadioTechnology.phoneId = " + phoneId);
-            serviceState = PhoneFactory.getPhone(phoneId).getServiceState();
-        } else {
-            serviceState = PhoneFactory.getDefaultPhone().getServiceState();
-        }
-        int netType = serviceState.getRilDataRadioTechnology();
-        if (netType == ServiceState.RIL_RADIO_TECHNOLOGY_UNKNOWN) {
-            netType = serviceState.getRilVoiceRadioTechnology();
-        }
-        return netType;
-    }
-
-    private String getIccOperatorNumeric(){
-        String iccOperatorNumeric = null;
-        int dataRat = getRadioTechnology();
-        if (dataRat != ServiceState.RIL_RADIO_TECHNOLOGY_UNKNOWN) {
-            IccRecords iccRecords = null;
-            int appFamily = UiccController.getFamilyFromRadioTechnology(dataRat);
-            if (TelephonyManager.getDefault().isMultiSimEnabled()) {
-                int slotId = SubscriptionManager.getSlotId(mSubId);
-                Log.d(TAG,"getIccOperatorNumeric.slotId = " + slotId);
-                iccRecords = UiccController.getInstance().getIccRecords(slotId, appFamily);
-            } else {
-                iccRecords = UiccController.getInstance().getIccRecords(0, appFamily);
-            }
-            if (iccRecords != null) {
-                iccOperatorNumeric = iccRecords.getOperatorNumeric();
-            }
-        }
-        return iccOperatorNumeric;
-    }
-
     private void fillList() {
         boolean isSelectedKeyMatch = false;
         String where = getOperatorNumericSelection();
@@ -564,7 +528,7 @@ public class ApnSettings extends SettingsPreferenceFragment implements
             }
         }
 
-        String iccOperatorNumeric = getIccOperatorNumeric();
+        String iccOperatorNumeric = TelephonyManager.getDefault().getIccOperatorNumeric(mSubId);
         Log.d(TAG, "getOperatorNumeric: sub= " + mSubId + " mcc-mnc= " + iccOperatorNumeric);
         if (iccOperatorNumeric != null && iccOperatorNumeric.length() > 0) {
             result.add(iccOperatorNumeric);
