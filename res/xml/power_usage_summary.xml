@@ -34,6 +34,11 @@
             android:key="low_power"
             android:title="@string/battery_saver"/>
 
+    <PreferenceScreen
+            android:key="wakelock_blocker"
+            android:fragment="com.android.settings.cyanogenmod.WakeLockBlocker"
+            android:title="@string/wakelock_blocker_title" />
+
     <PreferenceCategory
             android:title="@string/power_usage_history_title"
             settings:keywords="@string/keywords_battery"
