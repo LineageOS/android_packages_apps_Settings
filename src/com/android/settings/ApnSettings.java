@@ -258,28 +258,34 @@ public class ApnSettings extends PreferenceActivity implements
         boolean isSelectedKeyMatch = false;
         String where = getOperatorNumericSelection();
 
-        //remove the filtered items, no need to show in UI
-        where += " and type <>\"" + PhoneConstants.APN_TYPE_FOTA + "\"";
-        where += " and type <>\"" + PhoneConstants.APN_TYPE_IA + "\"";
+        // Hide nothing if property is false, default is true
+        if (SystemProperties.getBoolean("persist.sys.hideapn", true)) {
+            // remove the filtered items, no need to show in UI
+            where += " and type <>\"" + PhoneConstants.APN_TYPE_FOTA + "\"";
+            where += " and type <>\"" + PhoneConstants.APN_TYPE_IA + "\"";
 
-        if (getResources().getBoolean(R.bool.config_hidesupl_enable)) {
-            boolean needHideSupl = false;
-            for (String plmn : getResources().getStringArray(R.array.hidesupl_plmn_list)) {
-                if (plmn.equals(MSimTelephonyManager.getDefault().getSimOperator(mSubscription))) {
-                    needHideSupl = true;
-                    break;
+            if (getResources().getBoolean(R.bool.config_hidesupl_enable)) {
+                boolean needHideSupl = false;
+                for (String plmn : getResources().getStringArray(
+                        R.array.hidesupl_plmn_list)) {
+                    if (plmn.equals(MSimTelephonyManager.getDefault()
+                            .getSimOperator(mSubscription))) {
+                        needHideSupl = true;
+                        break;
+                    }
+                }
+
+                if (needHideSupl) {
+                    where += " and type <>\"" + PhoneConstants.APN_TYPE_SUPL + "\"";
                 }
             }
 
-            if (needHideSupl) {
-                where += " and type <>\"" + PhoneConstants.APN_TYPE_SUPL + "\"";
+            // Hide mms if config is true
+            if (getResources().getBoolean(R.bool.config_mms_enable)) {
+                where += " and type <>\"" + PhoneConstants.APN_TYPE_MMS + "\"";
             }
         }
 
-        //Hide mms if config is true
-        if(getResources().getBoolean(R.bool.config_mms_enable)) {
-            where += " and type <>\"" + PhoneConstants.APN_TYPE_MMS + "\"" ;
-        }
         //UI should filter APN by bearer and enable status
         where += " and (bearer=\"" + getRadioTechnology() + "\" or bearer =\"" + 0 + "\")";
         where += " and carrier_enabled = 1";
