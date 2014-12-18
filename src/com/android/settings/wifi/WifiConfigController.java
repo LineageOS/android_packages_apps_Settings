@@ -293,6 +293,13 @@ public class WifiConfigController implements TextWatcher,
                 }
             }
 
+            if (AccessPoint.CARRIER_SSID.equals(mAccessPoint.ssid)
+                    && res.getBoolean(R.bool.show_abridged_connecting_wifi_dialog)) {
+                if (mAccessPoint.security == AccessPoint.SECURITY_EAP) {
+                    mView.findViewById(R.id.wifi_advanced_toggle).setVisibility(View.GONE);
+                }
+            }
+
             if (mEdit) {
                 mConfigUi.setSubmitButton(res.getString(R.string.wifi_save));
             } else {
@@ -755,6 +762,17 @@ public class WifiConfigController implements TextWatcher,
             }
         } else {
             showEapFieldsByMethod(mEapMethodSpinner.getSelectedItemPosition());
+        }
+        if (mAccessPoint != null && AccessPoint.CARRIER_SSID.equals(mAccessPoint.ssid)
+                && mContext.getResources().getBoolean(
+                R.bool.show_abridged_connecting_wifi_dialog)) {
+            if (mAccessPoint.security == AccessPoint.SECURITY_EAP) {
+                mView.findViewById(R.id.l_method).setVisibility(View.GONE);
+                setPhase2Invisible();
+                setCaCertInvisible();
+                setAnonymousIdentInvisible();
+                setUserCertInvisible();
+            }
         }
     }
 
