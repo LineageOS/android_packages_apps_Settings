@@ -52,6 +52,7 @@ import android.support.v4.view.ViewPager;
 import android.text.BidiFormatter;
 import android.text.Editable;
 import android.text.format.Formatter;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -91,6 +92,8 @@ import com.android.settings.Utils;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 final class CanBeOnSdCardChecker {
     final IPackageManager mPm;
@@ -994,6 +997,7 @@ public class ManageApplications extends Fragment implements
             public void afterTextChanged(Editable s) {
             }
         });
+        mTextView.setInputType(InputType.TYPE_NULL);
 
         mViewPager = (ViewPager) rootView.findViewById(R.id.pager);
         MyPagerAdapter adapter = new MyPagerAdapter();
@@ -1465,7 +1469,18 @@ public class ManageApplications extends Fragment implements
         if (mSearchView.getVisibility() != View.VISIBLE) {
             if (mCurTab.mListType != LIST_TYPE_RUNNING) {
                 mSearchView.setVisibility(View.VISIBLE);
+                mTextView.setInputType(InputType.TYPE_CLASS_TEXT);
                 mTextView.requestFocus();
+                //After the interface is loaded,the inputmethod can be shown
+                Timer timer = new Timer();
+                timer.schedule(new TimerTask(){
+                    public void run()
+                    {
+                        InputMethodManager inputManager = (InputMethodManager)mTextView.getContext()
+                                .getSystemService(Context.INPUT_METHOD_SERVICE);
+                        inputManager.showSoftInput(mTextView, 0);
+                    }
+                },150);
             }
         }
     }
