@@ -261,39 +261,42 @@ public class ApnSettings extends SettingsPreferenceFragment implements
     private void fillList() {
         boolean isSelectedKeyMatch = false;
         String where = getOperatorNumericSelection();
-        //remove the filtered items, no need to show in UI
-        where += " and type <>\"" + PhoneConstants.APN_TYPE_IA + "\"";
+        // Hide nothing if property is false, default is true
+        if (SystemProperties.getBoolean("persist.sys.hideapn", true)) {
+            //remove the filtered items, no need to show in UI
+            where += " and type <>\"" + PhoneConstants.APN_TYPE_IA + "\"";
 
-        // Filer fota and dm for specail carrier
-        if (getResources().getBoolean(R.bool.config_hide_dm_enabled)) {
-            String operatorMccMnc = TelephonyManager.getDefault().getIccOperatorNumeric(mSubId);
-            for (String plmn : getResources().getStringArray(R.array.hidedm_plmn_list)) {
-                if (plmn.equals(operatorMccMnc)) {
-                    where += " and type <>\"" + PhoneConstants.APN_TYPE_FOTA + "\"";
-                    where += " and type <>\"" + APN_TYPE_DM + "\"";
-                    break;
-                }
-            }
-        }
-
-        if (getResources().getBoolean(R.bool.config_hidesupl_enable)) {
-            boolean needHideSupl = false;
-            for (String plmn : getResources().getStringArray(R.array.hidesupl_plmn_list)) {
-                if (plmn.equals(TelephonyManager.getDefault()
-                           .getSimOperator(mSubId))) {
-                    needHideSupl = true;
-                    break;
+            // Filer fota and dm for specail carrier
+            if (getResources().getBoolean(R.bool.config_hide_dm_enabled)) {
+                String operatorMccMnc = TelephonyManager.getDefault().getIccOperatorNumeric(mSubId);
+                for (String plmn : getResources().getStringArray(R.array.hidedm_plmn_list)) {
+                    if (plmn.equals(operatorMccMnc)) {
+                        where += " and type <>\"" + PhoneConstants.APN_TYPE_FOTA + "\"";
+                        where += " and type <>\"" + APN_TYPE_DM + "\"";
+                        break;
+                    }
                 }
             }
 
-            if (needHideSupl) {
-                where += " and type <>\"" + PhoneConstants.APN_TYPE_SUPL + "\"";
-            }
-        }
+            if (getResources().getBoolean(R.bool.config_hidesupl_enable)) {
+                boolean needHideSupl = false;
+                for (String plmn : getResources().getStringArray(R.array.hidesupl_plmn_list)) {
+                    if (plmn.equals(TelephonyManager.getDefault()
+                               .getSimOperator(mSubId))) {
+                        needHideSupl = true;
+                        break;
+                    }
+                }
 
-        //Hide mms if config is true
-        if(getResources().getBoolean(R.bool.config_mms_enable)) {
-            where += " and type <>\"" + PhoneConstants.APN_TYPE_MMS + "\"" ;
+                if (needHideSupl) {
+                    where += " and type <>\"" + PhoneConstants.APN_TYPE_SUPL + "\"";
+                }
+            }
+
+            //Hide mms if config is true
+            if(getResources().getBoolean(R.bool.config_mms_enable)) {
+                where += " and type <>\"" + PhoneConstants.APN_TYPE_MMS + "\"" ;
+            }
         }
 
         where += " and carrier_enabled = 1";
