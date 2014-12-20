@@ -21,8 +21,8 @@
   <string name="wifi_setting_countrycode_error">地域コードの設定中に問題が発生しました。</string>
   <string name="wifi_setting_priority_title">Wi\u2011Fi優先順位</string>
   <string name="wifi_setting_priority_summary">Wi\u2011Fiネットワークの優先順位を指定する</string>
-  <string name="wifi_ssid_input_limit">SSIDが最大長を超えています</string>
-  <string name="p2p_device_name_input_limit">P2Pの名前が最大長を超えています</string>
+  <string name="wifi_ssid_input_limit">SSIDが長さの上限を超えています</string>
+  <string name="p2p_device_name_input_limit">P2Pの名前が長さの上限を超えています</string>
   <string name="change_crypt_password_title">パスワードを変更</string>
   <string name="change_crypt_password_summary">端末の暗号化に使用するパスワードを変更する</string>
   <string name="encryptionpassword_choose_your_password_header">暗号化パスワードを設定</string>
@@ -155,7 +155,7 @@
   <string name="notification_light_general_title">全般</string>
   <string name="notification_light_applist_title">アプリ</string>
   <string name="notification_light_phonelist_title">着信</string>
-  <string name="notification_light_use_custom">カスタムの値を使用</string>
+  <string name="notification_light_use_custom">カスタム値を使用</string>
   <string name="notification_light_enabled">有効</string>
   <string name="notification_light_disabled">無効</string>
   <string name="notification_light_default_value">デフォルト</string>
@@ -175,7 +175,7 @@
   <string name="screen_animation_style_electronbeam">電子ビーム</string>
   <string name="screen_animation_style_fade">フェードアウト</string>
   <string name="edit_light_settings">ライトの設定を編集</string>
-  <string name="pulse_speed_title">点滅の長さと速度</string>
+  <string name="pulse_speed_title">点滅時間と点滅速度</string>
   <string name="default_time">標準</string>
   <string name="custom_time">カスタム</string>
   <string name="dialog_delete_title">削除</string>
@@ -288,7 +288,7 @@
   <string name="quick_pulldown_right">右</string>
   <string name="title_collapse_panel">パネルを自動で閉じる</string>
   <string name="summary_collapse_panel">タイルを切り替えた後にクイック設定パネルを閉じる</string>
-  <string name="pref_network_mode_title">ネットワークモード</string>
+  <string name="pref_network_mode_title">ネットワークのモード</string>
   <string name="pref_screentimeout_mode_title">画面のタイムアウトのモード</string>
   <string name="pref_ring_mode_title">サウンドのモード</string>
   <string name="pref_ring_mode_summary">サウンドボタンのモードを表示または変更する</string>
@@ -296,7 +296,7 @@
   <string name="cm_sound_mode_vibrate">バイブレーション</string>
   <string name="cm_sound_mode_sound">サウンド</string>
   <string name="cm_sound_mode_soundVibrate">サウンドとバイブレーション</string>
-  <string name="pref_location_mode_title">位置情報モード</string>
+  <string name="pref_location_mode_title">位置情報のモード</string>
   <string name="pref_location_mode_summary">すべてのモードのチェックを外すとデフォルトの動作になります</string>
   <string name="cm_location_mode_off">位置情報OFF</string>
   <string name="cm_location_mode_battery_saving">バッテリー節約</string>
@@ -355,7 +355,7 @@
   <string name="display_rotation_disabled">無効</string>
   <string name="display_rotation_unit">度</string>
   <string name="display_lockscreen_rotation_title">ロック画面を回転</string>
-  <string name="display_rotation_category_title">回転モード</string>
+  <string name="display_rotation_category_title">回転のモード</string>
   <string name="display_rotation_0_title">0度</string>
   <string name="display_rotation_90_title">90度</string>
   <string name="display_rotation_180_title">180度</string>
@@ -425,7 +425,7 @@
   <string name="soundpack_settings_title">サウンドパック</string>
   <string name="performance_settings_title">パフォーマンス</string>
   <string name="performance_settings_warning_title">注意して進めてください</string>
-  <string name="performance_settings_warning">これらの設定は実験的で、適用されるあらゆる変更が不安定性、クラッシュ、データの損失、ハードウェア障害を引き起こす原因になる可能性があります。\n\nこれらの設定が1つでもデフォルトから変更されている場合は、バグレポートを提出しないようにお願いします。</string>
+  <string name="performance_settings_warning">これらの設定は試験的なもので、適用されるあらゆる変更が不安定性、クラッシュ、データの損失、ハードウェア障害を引き起こす原因になる可能性があります。\n\nこれらの設定が1つでもデフォルトから変更されている場合は、バグレポートを提出しないようにお願いします。</string>
   <string name="performance_set_on_boot">ブート時に設定</string>
   <string name="performance_set_on_boot_summary">適用した設定をブート時に復元する</string>
   <string name="processor_title">プロセッサ</string>
@@ -451,7 +451,6 @@
   <string name="changelog_error">更新履歴を読み込めませんでした</string>
   <string name="contributor_cloud_title">貢献者</string>
   <string name="cmupdate_settings_title">CyanogenModアップデート</string>
-  <string name="cmupdate_settings_summary">利用可能なアップデートを確認、表示、インストールする</string>
   <string name="development_tools_title">ツールを起動</string>
   <string name="allow_mock_sms">疑似SMSを許可</string>
   <string name="privacy_settings_cyanogenmod_title">プライバシー</string>
@@ -483,8 +482,8 @@
   <string name="blacklist_private_numbers_summary_disabled">非通知番号からの着信をブロックしない</string>
   <string name="blacklist_private_numbers_summary">非通知番号からの<xliff:g id="type">%s</xliff:g>をブロックする</string>
   <string name="blacklist_unknown_numbers_title">不明な番号</string>
-  <string name="blacklist_unknown_numbers_summary_disabled">連絡先に登録されていない番号からの着信やメッセージをブロックしない</string>
-  <string name="blacklist_unknown_numbers_summary">連絡先に登録されていない番号からの<xliff:g id="type">%s</xliff:g>をブロックする</string>
+  <string name="blacklist_unknown_numbers_summary_disabled">連絡帳に登録されていない番号からの着信やメッセージをブロックしない</string>
+  <string name="blacklist_unknown_numbers_summary">連絡帳に登録されていない番号からの<xliff:g id="type">%s</xliff:g>をブロックする</string>
   <string name="blacklist_summary_type_calls_only">着信</string>
   <string name="blacklist_summary_type_messages_only">メッセージ</string>
   <string name="blacklist_summary_type_calls_and_messages">着信とメッセージ</string>
@@ -726,7 +725,7 @@
   <string name="logger_title">匿名のクラッシュログ</string>
   <string name="logger_summary">クラッシュログの設定を管理する</string>
   <string name="custom_runtime_warning_title">警告</string>
-  <string name="custom_runtime_warning_message">ARTは非常に実験的で、不安定性、クラッシュ、データの損失、端末の正常な起動を妨げる原因になる可能性があるため、CyanogenModでは公式にサポートされていません。詳細については&lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt;を参照してください。&lt;br/&gt;&lt;br/&gt;ARTをランタイムとして有効にしている場合はバグレポートを提出しないようにお願いします。&lt;br/&gt;&lt;br/&gt;ランタイムを<xliff:g id="old" example="libdvm.so">%1$s</xliff:g>から<xliff:g id="new" example="libart.so">%2$s</xliff:g>に変更するために再起動してもよろしいですか？</string>
+  <string name="custom_runtime_warning_message">ARTは非常に試験的で、不安定性、クラッシュ、データの損失、端末の正常な起動を妨げる原因になる可能性があるため、CyanogenModでは公式にサポートされていません。詳細については&lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt;を参照してください。&lt;br/&gt;&lt;br/&gt;ARTをランタイムとして有効にしている場合はバグレポートを提出しないようにお願いします。&lt;br/&gt;&lt;br/&gt;ランタイムを<xliff:g id="old" example="libdvm.so">%1$s</xliff:g>から<xliff:g id="new" example="libart.so">%2$s</xliff:g>に変更するために再起動してもよろしいですか？</string>
   <string name="gps_download_data_wifi_only">GPS補助データをWi\u2011Fiネットワーク経由でのみダウンロードする</string>
   <string name="battery_info_status_charging_dock_ac">（AC接続）</string>
   <string name="battery_info_status_charging_dock_usb">（USB接続）</string>
