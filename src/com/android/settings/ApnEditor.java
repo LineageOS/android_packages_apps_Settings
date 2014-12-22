@@ -551,6 +551,7 @@ public class ApnEditor extends PreferenceActivity
     protected void onSaveInstanceState(Bundle icicle) {
         super.onSaveInstanceState(icicle);
         if (validateAndSave(true)) {
+            mCursor.moveToFirst();
             icicle.putInt(SAVED_POS, mCursor.getInt(ID_INDEX));
         }
     }
