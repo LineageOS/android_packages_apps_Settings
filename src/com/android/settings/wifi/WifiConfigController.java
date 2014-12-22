@@ -117,7 +117,7 @@ public class WifiConfigController implements TextWatcher,
 
     private static final String TAG = "WifiConfigController";
 
-    private static final String CARRIER_AUTO_SSID = "CMCC-AUTO";
+    private static final String CARRIER_SSID = "CMCC";
 
     private Spinner mIpSettingsSpinner;
     private TextView mIpAddressView;
@@ -274,7 +274,7 @@ public class WifiConfigController implements TextWatcher,
                 }
             }
 
-            if (CARRIER_AUTO_SSID.equals(mAccessPoint.ssid) && mEdit) {
+            if (CARRIER_SSID.equals(mAccessPoint.ssid) && mEdit) {
                 if (mAccessPoint.security == AccessPoint.SECURITY_EAP) {
                     mView.findViewById(R.id.wifi_advanced_toggle).setVisibility(View.GONE);
                 }
@@ -658,7 +658,8 @@ public class WifiConfigController implements TextWatcher,
             showEapFieldsByMethod(mEapMethodSpinner.getSelectedItemPosition());
         }
 
-        if (AccessPoint.isCmccauto(mAccessPoint)) {
+        if ((mAccessPoint != null) && (CARRIER_SSID.equals(mAccessPoint.ssid))
+                && (mAccessPoint.security == AccessPoint.SECURITY_EAP)) {
             mView.findViewById(R.id.l_method).setVisibility(View.GONE);
             setPhase2Invisible();
             setCaCertInvisible();
