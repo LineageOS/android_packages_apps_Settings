@@ -32,7 +32,7 @@
             android:title="@*android:string/bugreport_title"
             android:dialogTitle="@*android:string/bugreport_title" />
 
-    <CheckBoxPreference
+    <SwitchPreference
         android:key="advanced_reboot"
         android:title="@string/advanced_reboot_title"
         android:summary="@string/advanced_reboot_summary" />
@@ -96,13 +96,13 @@
             android:title="@string/enable_adb_cm"
             android:summary="@string/enable_adb_summary_cm"/>
 
-        <CheckBoxPreference
+        <SwitchPreference
             android:key="adb_notify"
             android:title="@string/adb_notify"
             android:summary="@string/adb_notify_summary"
             android:dependency="enable_adb"/>
 
-        <CheckBoxPreference
+        <SwitchPreference
             android:key="adb_over_network"
             android:title="@string/adb_over_network"
             android:summary="@string/adb_over_network_summary"
@@ -137,7 +137,7 @@
             android:title="@string/allow_mock_location"
             android:summary="@string/allow_mock_location_summary"/>
 
-        <CheckBoxPreference
+        <SwitchPreference
             android:key="development_shortcut"
             android:title="@string/development_shortcut_title"
             android:summary="@string/development_shortcut_summary" />
@@ -367,7 +367,7 @@
             android:title="@string/show_all_anrs"
             android:summary="@string/show_all_anrs_summary"/>
 
-        <CheckBoxPreference
+        <SwitchPreference
             android:key="kill_app_longpress_back"
             android:title="@string/kill_app_longpress_back"
             android:summary="@string/kill_app_longpress_back_summary"/>
