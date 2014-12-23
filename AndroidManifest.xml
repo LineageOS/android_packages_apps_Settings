@@ -2258,5 +2258,11 @@
             </intent-filter>
         </activity>
 
+        <!-- Let system application also could upate the airplane mode.  -->
+        <receiver android:name=".AirplaneModeUpdateReceiver">
+            <intent-filter>
+                <action android:name="android.action.SETTING_AIRPLANE_MODE_UPDATE" />
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>
