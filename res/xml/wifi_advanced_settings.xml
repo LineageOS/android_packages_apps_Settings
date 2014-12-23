@@ -60,6 +60,12 @@
             android:summary="@string/wifi_auto_connect_type_summary"
             android:persistent="false"/>
 
+    <CheckBoxPreference
+            android:key="notify_ap_connected"
+            android:title="@string/notify_connect"
+            android:summary="@string/notify_connect_summary"
+            android:persistent="false"/>
+
     <!-- android:dependency="enable_wifi" -->
     <ListPreference
             android:key="sleep_policy"
