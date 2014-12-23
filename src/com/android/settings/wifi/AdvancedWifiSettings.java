@@ -115,12 +115,20 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
 
         if (mWifiManager.isDualBandSupported()) {
             frequencyPref.setOnPreferenceChangeListener(this);
-            int value = mWifiManager.getFrequencyBand();
-            if (value != -1) {
-                frequencyPref.setValue(String.valueOf(value));
-                updateFrequencyBandSummary(frequencyPref, value);
-            } else {
-                Log.e(TAG, "Failed to fetch frequency band");
+            try {
+                int value = Settings.Global.getInt(getContentResolver(),
+                Global.WIFI_FREQUENCY_BAND);
+                if (value != -1) {
+                    frequencyPref.setValue(String.valueOf(value));
+                    updateFrequencyBandSummary(frequencyPref, value);
+
+                    // make sure this frequeny band is in use
+                    if (mWifiManager.getFrequencyBand() != value)
+                        mWifiManager.setFrequencyBand(value, true);
+
+                }
+            } catch(Settings.SettingNotFoundException e) {
+                Log.e(TAG, "Failed to fetch frequency band:" + e.getMessage());
             }
         } else {
             if (frequencyPref != null) {
@@ -132,9 +140,17 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
         ListPreference ccodePref = (ListPreference) findPreference(KEY_COUNTRY_CODE);
         if (ccodePref != null) {
             ccodePref.setOnPreferenceChangeListener(this);
-            String value = mWifiManager.getCountryCode();
+            String value = Settings.Global.getString(getContentResolver(),
+            Settings.Global.WIFI_COUNTRY_CODE);
             if (value != null) {
                 ccodePref.setValue(value);
+
+                // make sure this country code is in use
+                String ccode = mWifiManager.getCountryCode();
+                if (ccode != null) {
+                    if (!ccode.equals(value))
+                        mWifiManager.setCountryCode(value, true);
+                }
             } else {
                 Log.e(TAG, "Failed to fetch country code");
             }
@@ -216,6 +232,8 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
         if (KEY_FREQUENCY_BAND.equals(key)) {
             try {
                 int value = Integer.parseInt((String) newValue);
+                Settings.Global.putInt(getContentResolver(), Settings.Global.WIFI_FREQUENCY_BAND,
+                        value);
                 mWifiManager.setFrequencyBand(value, true);
                 updateFrequencyBandSummary(preference, value);
             } catch (NumberFormatException e) {

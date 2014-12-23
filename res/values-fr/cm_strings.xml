@@ -82,6 +82,8 @@
   <string name="connection_state_disabled">Inactif</string>
   <string name="connection_state_enabled">Actif</string>
   <string name="volume_override_summary">Défini à %1$s/%2$s</string>
+  <string name="volume_override_summary_no_override">Ne pas outrepasser</string>
+  <string name="profile_volume_override_checkbox_label">Outrepasser le volume</string>
   <string name="profile_profiles_manage">Profils</string>
   <string name="profile_profile_manage">Gérer le profil</string>
   <string name="profile_appgroups_manage">Groupes d\'applications</string>
@@ -127,9 +129,10 @@
   <string name="link_volume_mutes">Silence commun pour alertes et sonnerie</string>
   <string name="volume_keys_control_ring_stream">Les boutons de volume contrôlent le volume de la sonnerie</string>
   <string name="ring_mode_title">Sonnerie</string>
-  <string name="ring_mode_normal">Normale</string>
+  <string name="ring_mode_normal">Sonnerie</string>
   <string name="ring_mode_vibrate">Vibreur</string>
   <string name="ring_mode_mute">Silencieux</string>
+  <string name="ring_mode_unchanged">Inchangé</string>
   <string name="volume_overlay_title">Contrôle du volume</string>
   <string name="volume_overlay_single">Simple</string>
   <string name="volume_overlay_expandable">Extensible</string>
@@ -215,7 +218,6 @@
   <string name="lockscreen_maximize_widgets_title">Maximiser les widgets</string>
   <string name="lockscreen_maximize_widgets_summary">Afficher les widgets maximisés au déverrouillage</string>
   <string name="lockscreen_enable_camera_title">Widget de l\'appareil photo</string>
-  <string name="lockscreen_enable_application_widget_title">Widget appcast</string>
   <string name="safe_headset_volume_title">Volume sécurisé du casque</string>
   <string name="safe_headset_volume_restore_title">Réduire le volume du casque au branchement</string>
   <string name="cyanogenmod_waiver_title">Renonciation</string>
@@ -265,6 +267,7 @@
   <string name="title_tile_volume">Volume</string>
   <string name="title_tile_expanded_desktop">Bureau étendu</string>
   <string name="title_tile_network_adb">ADB réseau</string>
+  <string name="title_tile_themes">Thèmes</string>
   <string name="title_dynamic_tiles">Raccourcis dynamiques</string>
   <string name="dynamic_tiles_note_title">Note</string>
   <string name="dynamic_tiles_note_summary">Les raccourcis dynamiques s\'afficheront uniquement s\'ils sont déclenchés par un événement système</string>
@@ -294,6 +297,8 @@
   <string name="cm_sound_mode_sound">Son</string>
   <string name="cm_sound_mode_soundVibrate">Son &amp; Vibreur</string>
   <string name="pref_location_mode_title">Modes de localisation</string>
+  <string name="pref_location_mode_summary">Décocher tous les modes pour le comportement par défaut</string>
+  <string name="cm_location_mode_off">Localisation désactivée</string>
   <string name="cm_location_mode_battery_saving">Économie de batterie</string>
   <string name="cm_location_mode_device_only">Appareil uniquement</string>
   <string name="cm_location_mode_high_accuracy">Haute précision</string>
@@ -438,7 +443,6 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="changelog_error">Impossible de charger la note de version</string>
   <string name="contributor_cloud_title">Contributeurs</string>
   <string name="cmupdate_settings_title">Mises à jour CyanogenMod</string>
-  <string name="cmupdate_settings_summary">Vérifier, afficher ou installer les mises à jour disponibles</string>
   <string name="development_tools_title">Outils de développement</string>
   <string name="allow_mock_sms">Permettre les SMS simulés</string>
   <string name="privacy_settings_cyanogenmod_title">Confidentialité</string>
@@ -602,6 +606,7 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="navigation_bar_menu_locked">Verrouillée</string>
   <string name="navigation_bar_arrow_keys_title">Boutons de direction lors de la frappe</string>
   <string name="navigation_bar_arrow_keys_summary">Afficher les boutons curseur gauche et droite lors de la frappe</string>
+  <string name="navigation_bar_recents_title">Appui long applications récentes</string>
   <string name="navigation_ring_title">Raccourcis de lancement rapide</string>
   <string name="navring_target_reset_message">Supprimer tous les raccourcis de la barre de navigation et revenir à la configuration d\'origine\u00A0?</string>
   <string name="navring_target_reset">Raccourcis de la barre de navigation réinitialisés</string>
@@ -755,6 +760,7 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="app_ops_summaries_modify_call_log">modifier le journal des appels</string>
   <string name="app_ops_summaries_read_calendar">voir le calendrier</string>
   <string name="app_ops_summaries_modify_calendar">modifier le calendrier</string>
+  <string name="app_ops_summaries_wifi_scan">Scanner Wi\u2011Fi</string>
   <string name="app_ops_summaries_notification">notification</string>
   <string name="app_ops_summaries_cell_scan">scanner le réseau cellulaire</string>
   <string name="app_ops_summaries_call_phone">appel téléphonique</string>
@@ -869,7 +875,6 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="voice_wakeup_retrain_title">Entraîner votre voix</string>
   <string name="voice_wakeup_activity_title">Activité à lancer</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
-  <string name="sub_no_sim">Aucune carte SIM</string>
   <string name="multi_sim_settings_title">Cartes SIM</string>
   <string name="multi_sim_settings_group_summary">Sélection de la carte SIM par défaut</string>
   <string name="voice_title">Appels vocaux</string>
