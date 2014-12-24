@@ -71,6 +71,10 @@
     <uses-permission android:name="android.permission.OEM_UNLOCK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 
+    <permission
+        android:name="cyanogenmod.permission.PROTECTED_APP"
+        android:protectionLevel="signatureOrSystem" />
+
     <application android:label="@string/settings_label"
             android:icon="@mipmap/ic_launcher_settings"
             android:taskAffinity=""
@@ -1757,6 +1761,66 @@
             android:theme="@style/CryptKeeperBlankTheme"
         />
 
+        <!-- CyanogenMod activities Start -->
+        <activity android:name=".profiles.ProfilesSettings" />
+        <activity android:name="Settings$ProfilesSettingsActivity"
+                android:label="@string/profile_settings"
+                android:taskAffinity=""
+                android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.PROFILES_SETTINGS" />
+                <action android:name="com.android.settings.PROFILES_SETTINGS" />
+                <category android:name="android.intent.category.VOICE_LAUNCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.SHORTCUT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.profiles.ProfilesSettings" />
+            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
+                android:resource="@id/profiles_settings" />
+        </activity>
+
+        <!-- Keep compatibility with old shortcuts. -->
+        <activity-alias android:name="ProfileSettings"
+                android:label="@string/profile_settings"
+                android:exported="true"
+                android:targetActivity="Settings$ProfilesSettingsActivity">
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.profiles.ProfilesSettings" />
+            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
+                android:resource="@id/profiles_settings" />
+        </activity-alias>
+
+        <activity android:name=".profiles.NFCProfileSelect" />
+
+        <activity android:name=".profiles.NFCProfile"
+                android:theme="@android:style/Theme.NoDisplay">
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="cm/profile" />
+            </intent-filter>
+        </activity>
+
+        <!-- CyanogenMod activities End -->
+
+        <!-- "Blacklist settings" UI, used only on voice-capable phone devices. -->
+        <activity android:name="Settings$BlacklistSettingsActivity"
+                android:theme="@style/Theme.SubSettingsDialogWhenLarge"
+                android:uiOptions="splitActionBarWhenNarrow"
+                android:label="@string/blacklist_title"
+                android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.blacklist.BlacklistSettings" />
+            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
+                android:resource="@id/security_settings" />
+        </activity>
+
         <!-- Pseudo-activity used to provide an intent-filter entry point to encryption settings -->
         <activity android:name="Settings$CryptKeeperSettingsActivity"
                 android:label="@string/crypt_keeper_encrypt_title">
@@ -2020,6 +2084,25 @@
                 android:value="true" />
         </activity>
 
+        <activity android:name=".applications.ProtectedAppsActivity"
+                  android:label="@string/protected_apps"
+                  android:excludeFromRecents="true"
+                  android:configChanges="orientation|keyboardHidden|screenSize">
+            <intent-filter>
+                <action android:name=".applications.ProtectedAppsActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".applications.LockPatternActivity"
+                  android:label="@string/protected_apps"
+                  android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name=".applications.LockPatternActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <receiver android:name=".widget.SettingsAppWidgetProvider"
                 android:label="@string/gadget_title"
                 android:exported="false"
@@ -2130,6 +2213,33 @@
             android:exported="true"
             android:label="@string/hotspot_settings_menu_help"
             android:targetActivity="Settings$TetherSettingsActivity" >
+        </activity>
+
+        <receiver
+            android:name=".cyanogenmod.ProtectedAppsReceiver"
+            android:permission="cyanogenmod.permission.PROTECTED_APP">
+            <intent-filter>
+                <action android:name="cyanogenmod.intent.action.PACKAGE_PROTECTED" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".applications.ProtectedAppsActivity"
+                  android:label="@string/protected_apps"
+                  android:excludeFromRecents="true"
+                  android:configChanges="orientation">
+            <intent-filter>
+                <action android:name=".applications.ProtectedAppsActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".applications.LockPatternActivity"
+                  android:label="@string/protected_apps"
+                  android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name=".applications.LockPatternActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
 
     </application>

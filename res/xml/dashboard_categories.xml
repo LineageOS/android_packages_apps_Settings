@@ -91,12 +91,26 @@
             <intent android:action="com.android.action.roamingsettings"/>
         </dashboard-tile>
 
+        <dashboard-tile
+                android:id="@+id/button_settings"
+                android:title="@string/button_pref_title"
+                android:fragment="com.android.settings.ButtonSettings"
+                android:icon="@drawable/ic_settings_buttons"
+                />
+
         <!-- Home -->
         <dashboard-tile
                 android:id="@+id/home_settings"
                 android:title="@string/home_settings"
                 android:fragment="com.android.settings.HomeSettings"
                 android:icon="@drawable/ic_settings_home"
+                />
+
+        <dashboard-tile
+                android:id="@+id/status_bar_settings"
+                android:title="@string/status_bar_prefs_title"
+                android:fragment="com.android.settings.StatusBarSettings"
+                android:icon="@drawable/ic_settings_statusbar"
                 />
 
         <!-- Display -->
@@ -168,6 +182,14 @@
     <dashboard-category
             android:id="@+id/personal_section"
             android:title="@string/header_category_personal" >
+
+        <!-- Profiles -->
+        <dashboard-tile
+                android:id="@+id/profile_settings"
+                android:fragment="com.android.settings.profiles.ProfilesSettings"
+                android:title="@string/profiles_settings_title"
+                android:icon="@drawable/ic_settings_profiles"
+                />
 
         <!-- Location -->
         <dashboard-tile
