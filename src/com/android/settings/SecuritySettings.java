@@ -49,12 +49,14 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.android.internal.telephony.util.BlacklistUtils;
 import com.android.internal.widget.LockPatternUtils;
 import com.android.settings.TrustAgentUtils.TrustAgentComponentInfo;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Index;
 import com.android.settings.search.Indexable;
 import com.android.settings.search.SearchIndexableRaw;
+import com.android.settings.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -105,6 +107,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private static final String KEY_TRUST_AGENT = "trust_agent";
     private static final String KEY_SCREEN_PINNING = "screen_pinning_settings";
     private static final String KEY_TOGGLE_DM_AUTOBOOT = "toggle_dm_autoboot";
+    private static final String KEY_SMS_SECURITY_CHECK_PREF = "sms_security_check_limit";
     private static final String DM_AUTOBOOT_SETTING = "dm_selfregist_autoboot";
     private static final int DM_AUTOBOOT_SETTING_ENABLE = 1;
     private static final int DM_AUTOBOOT_SETTING_DISABLE = 0;
@@ -117,6 +120,11 @@ public class SecuritySettings extends SettingsPreferenceFragment
     // Only allow one trust agent on the platform.
     private static final boolean ONLY_ONE_TRUST_AGENT = true;
 
+    // CyanogenMod Additions
+    private static final String KEY_APP_SECURITY_CATEGORY = "app_security";
+    private static final String KEY_BLACKLIST = "blacklist";
+
+    private PackageManager mPM;
     private DevicePolicyManager mDPM;
 
     private ChooseLockSettingsHelper mChooseLockSettingsHelper;
@@ -136,9 +144,13 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private SwitchPreference mPowerButtonInstantlyLocks;
     private SwitchPreference mDMAutoBoot;
 
+    private ListPreference mSmsSecurityCheck;
+
     private boolean mIsPrimary;
 
     private Intent mTrustAgentClickIntent;
+    // CyanogenMod Additions
+    private PreferenceScreen mBlacklist;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -158,6 +170,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
 
     private static int getResIdForLockUnlockScreen(Context context,
             LockPatternUtils lockPatternUtils) {
+        // Add options for lock/unlock screen
         int resid = 0;
         if (!lockPatternUtils.isSecure()) {
             // if there are multiple users, disable "None" setting
@@ -205,6 +218,9 @@ public class SecuritySettings extends SettingsPreferenceFragment
         }
         addPreferencesFromResource(R.xml.security_settings);
         root = getPreferenceScreen();
+
+        // Add package manager to check if features are available
+        PackageManager pm = getPackageManager();
 
         // Add options for lock/unlock screen
         final int resid = getResIdForLockUnlockScreen(getActivity(), mLockPatternUtils);
@@ -330,6 +346,15 @@ public class SecuritySettings extends SettingsPreferenceFragment
                     getResources().getString(R.string.switch_on_text));
         }
 
+        // SMS rate limit security check
+        boolean isTelephony = pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
+        if (isTelephony) {
+            mSmsSecurityCheck = (ListPreference) root.findPreference(KEY_SMS_SECURITY_CHECK_PREF);
+            mSmsSecurityCheck.setOnPreferenceChangeListener(this);
+            int smsSecurityCheck = Integer.valueOf(mSmsSecurityCheck.getValue());
+            updateSmsSecuritySummary(smsSecurityCheck);
+        }
+
         // Show password
         mShowPassword = (SwitchPreference) root.findPreference(KEY_SHOW_PASSWORD);
         mResetCredentials = root.findPreference(KEY_RESET_CREDENTIALS);
@@ -416,6 +441,18 @@ public class SecuritySettings extends SettingsPreferenceFragment
             }
         }
 
+        // App security settings
+        addPreferencesFromResource(R.xml.security_settings_app_cyanogenmod);
+        mBlacklist = (PreferenceScreen) root.findPreference(KEY_BLACKLIST);
+
+        // Determine options based on device telephony support
+        if (!pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY)) {
+            // No telephony, remove dependent options
+            PreferenceGroup appCategory = (PreferenceGroup)
+                    root.findPreference(KEY_APP_SECURITY_CATEGORY);
+            appCategory.removePreference(mBlacklist);
+        }
+
         // The above preferences come and go based on security state, so we need to update
         // the index. This call is expected to be fairly cheap, but we may want to do something
         // smarter in the future.
@@ -426,6 +463,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
             final Preference pref = findPreference(SWITCH_PREFERENCE_KEYS[i]);
             if (pref != null) pref.setOnPreferenceChangeListener(this);
         }
+
         return root;
     }
 
@@ -507,6 +545,11 @@ public class SecuritySettings extends SettingsPreferenceFragment
         if (mWarnInstallApps != null) {
             mWarnInstallApps.dismiss();
         }
+    }
+
+    private void updateSmsSecuritySummary(int i) {
+        String message = getString(R.string.sms_security_check_limit_summary, i);
+        mSmsSecurityCheck.setSummary(message);
     }
 
     private void setupLockAfterPreference() {
@@ -614,6 +657,8 @@ public class SecuritySettings extends SettingsPreferenceFragment
         if (mResetCredentials != null) {
             mResetCredentials.setEnabled(!mKeyStore.isEmpty());
         }
+
+        updateBlacklistSummary();
     }
 
     @Override
@@ -732,6 +777,11 @@ public class SecuritySettings extends SettingsPreferenceFragment
             } else {
                 setNonMarketAppsAllowed(false);
             }
+        } else if (KEY_SMS_SECURITY_CHECK_PREF.equals(key)) {
+            int smsSecurityCheck = Integer.valueOf((String) value);
+            Settings.Secure.putInt(getContentResolver(), Settings.Global.SMS_OUTGOING_CHECK_MAX_COUNT,
+                    smsSecurityCheck);
+            updateSmsSecuritySummary(smsSecurityCheck);
         }
         return result;
     }
@@ -895,4 +945,13 @@ public class SecuritySettings extends SettingsPreferenceFragment
         }
     }
 
+    private void updateBlacklistSummary() {
+        if (mBlacklist != null) {
+            if (BlacklistUtils.isBlacklistEnabled(getActivity())) {
+                mBlacklist.setSummary(R.string.blacklist_summary);
+            } else {
+                mBlacklist.setSummary(R.string.blacklist_summary_disabled);
+            }
+        }
+    }
 }

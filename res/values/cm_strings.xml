@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2012-2014 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Sound settings screen -->
+    <string name="ring_mode_title">Ring mode</string>
+    <string name="ring_mode_normal">Normal</string>
+    <string name="ring_mode_vibrate">Vibrate</string>
+    <string name="ring_mode_mute">Mute</string>
+
+    <string name="ring_mode_unchanged">Unchanged</string>
+
+    <!-- Profiles settings  -->
+    <string name="profiles_settings_title">System profiles</string>
+    <string name="profiles_add">Add</string>
+    <string name="profile_menu_delete">Delete</string>
+    <string name="profile_settings_title">Profile</string>
+    <string name="profile_empty_list_profiles_off">To configure and use system profiles, turn profiles on.</string>
+    <string name="profile_trigger_configure">Configure trigger</string>
+    <string name="profile_triggers">Triggers</string>
+    <string name="profile_trigger_filter_all">All triggers</string>
+    <string name="profile_trigger_filter_wifi">Wi-Fi triggers</string>
+    <string name="profile_trigger_filter_bluetooth">Bluetooth triggers</string>
+    <string name="profile_write_nfc_tag">Write to NFC tag</string>
+    <string name="profile_write_touch_tag">Touch tag to write</string>
+    <string name="profile_write_success">Tag successfully written</string>
+    <string name="profile_write_failed">Tag writing failed!</string>
+    <string name="profile_selected">Profile selected: %1$s</string>
+    <string name="profile_nfc_text">Writing a profile to a NFC tag allows for tapping the tag to select the profile. Tapping a second time will select the previously selected profile.</string>
+    <string name="profile_unknown_nfc_tag">Unknown profile</string>
+    <string name="profile_add_nfc_text">This NFC tag refers to an unknown profile. Attaching this NFC tag to an existing profile will allow for selecting the profile in the future.</string>
+    <string name="profile_select">Select profile</string>
+
+    <!-- Add Profile -->
+    <string name="add_profile_dialog_title">Create new profile</string>
+    <string name="profile_name_title">Name</string>
+    <string name="profile_profile_name_prompt">Enter a name for the new profile</string>
+    <string name="menu_new_profile">New profile</string>
+    <string name="new_profile_name">&lt;new profile&gt;</string>
+
+    <!-- Rename Dialog  -->
+    <string name="rename_dialog_title">Rename</string>
+    <string name="rename_dialog_message">Enter a new name</string>
+    <string name="duplicate_profile_name">Duplicate profile name!</string>
+    <string name="duplicate_appgroup_name">Duplicate app group name!</string>
+
+    <!-- Reset Profiles -->
+    <string name="profile_reset_title">Reset</string>
+    <string name="profile_reset_message">Delete all user created profiles and app groups and restore them to default?</string>
+
+    <!-- Delete confimation messages -->
+    <string name="profile_delete_confirm">Delete this profile?</string>
+    <string name="profile_app_delete_confirm">Remove this app?</string>
+    <string name="profile_cannot_delete">An active profile cannot be deleted</string>
+
+    <!-- Profile network mode -->
+    <string name="profile_networkmode_2g">2G</string>
+    <string name="profile_networkmode_3g">3G</string>
+    <string name="profile_networkmode_2g3g">2G/3G</string>
+
+    <!-- Profile Config screen PreferenceGroup titles -->
+    <string name="profile_connectionoverrides_title">Connection overrides</string>
+    <string name="profile_volumeoverrides_title">Volume overrides</string>
+    <string name="connection_state_disabled">Disable</string>
+    <string name="connection_state_enabled">Enable</string>
+    <string name="volume_override_summary">Set to %1$s/%2$s</string>
+    <string name="volume_override_summary_no_override">Do not override</string>
+    <string name="profile_volume_override_checkbox_label">Override volume</string>
+
+    <!-- Menu item for managing profiles -->
+    <string name="profile_profiles_manage">Profiles</string>
+    <string name="profile_profile_manage">Manage profile</string>
+    <string name="profile_appgroups_manage">App groups</string>
+    <string name="profile_appgroup_manage">Manage app group</string>
+
+    <!-- Profile settings screen, section header for settings related to notification profiles -->
+    <string name="profile_settings">Profile settings</string>
+    <string name="profile_trigger_connect">On connect</string>
+    <string name="profile_trigger_disconnect">On disconnect</string>
+    <string name="profile_trigger_notrigger">No trigger</string>
+
+    <!-- Profile Settings sound modes labels -->
+    <string name="sound_mode">Notification mode</string>
+    <string name="ringer_mode">Ring mode</string>
+    <string name="lights_mode">Lights mode</string>
+    <string name="vibrate_mode">Vibrate mode</string>
+    <string name="choose_soundtone">Choose notification tone</string>
+    <string name="choose_ringtone">Choose ringtone</string>
+
+    <!-- Sound settings screen, setting option name to pick ringtone (a list dialog comes up)-->
+    <string name="soundtone_title">Notification tone</string>
+    <string name="soundtone_summary" translatable="false">""</string>
+
+    <!-- Title for application group setting screen -->
+    <string name="profile_appgroups_title">App groups</string>
+    <string name="profile_applist_title">Apps</string>
+    <string name="profile_new_appgroup">New app group</string>
+    <string name="profile_delete_appgroup">Delete this app group?</string>
+    <string name="profile_appgroup_name_prompt">Enter a name for the new app group</string>
+    <string name="profile_appgroup_name_title">Name</string>
+
+    <!-- Add application dialog box title -->
+    <string name="profile_choose_app">Choose app</string>
+
+    <!-- Profiles - system settings -->
+    <string name="profile_system_settings_title">System settings</string>
+    <string name="profile_lockmode_title">Lock screen mode</string>
+    <string name="profile_lockmode_default">Default</string>
+    <string name="profile_lockmode_insecure">Insecure</string>
+    <string name="profile_lockmode_disabled">Disabled</string>
+    <string name="profile_lockmode_default_summary">Use system default</string>
+    <string name="profile_lockmode_insecure_summary">Use insecure lock screen</string>
+    <string name="profile_lockmode_disabled_summary">Lock screen is disabled</string>
+    <string name="profile_airplanemode_title">Airplane mode</string>
+
+    <!-- Connection override toggles (not all are used at this time ) -->
+    <string name="toggleWifi">Wi-Fi</string>
+    <string name="toggleWifiAp">Portable Wi-Fi hotspot</string>
+    <string name="toggleBluetooth">Bluetooth</string>
+    <string name="toggleGPS">GPS</string>
+    <string name="toggleData">Mobile Data</string>
+    <string name="toggleSync">Data Sync</string>
+    <string name="toggle2g3g">2G/3G</string>
+    <string name="toggleWimax">WiMAX</string>
+    <string name="toggleNfc">NFC</string>
+
+    <string name="button_pref_title">Buttons</string>
+    <string name="hardware_keys_home_key_title">Home button</string>
+    <string name="hardware_keys_menu_key_title">Menu button</string>
+    <string name="hardware_keys_short_press_title">Short press action</string>
+    <string name="hardware_keys_volume_keys_title">Volume buttons</string>
+    <string name="hardware_keys_long_press_title">Long press action</string>
+    <string name="hardware_keys_double_tap_title">Double tap action</string>
+    <string name="hardware_keys_action_nothing">No action</string>
+    <string name="hardware_keys_action_menu">Open/close menu</string>
+    <string name="hardware_keys_action_app_switch">Recent apps switcher</string>
+    <string name="hardware_keys_action_search">Search assistant</string>
+    <string name="hardware_keys_action_voice_search">Voice search</string>
+    <string name="hardware_keys_action_in_app_search">In-app search</string>
+    <string name="hardware_keys_action_launch_camera">Launch camera</string>
+    <string name="hardware_keys_action_sleep">Turn screen off</string>
+    <string name="hardware_keys_power_key_title">Power Button</string>
+    <string name="hardware_keys_power_end_call_title">End Call</string>
+    <string name="hardware_keys_power_end_call_summary">End Call</string>
+    <string name="home_answer_ringing_call_title">Answer Call</string>
+    <string name="home_answer_ringing_call_summary">Pressing the home button will answer the current incoming call</string>
+    <string name="volbtn_cursor_control_title">Keyboard cursor control</string>
+    <string name="volbtn_cursor_control_off">Disabled</string>
+    <string name="volbtn_cursor_control_on">Volume up/down moves cursor left/right</string>
+    <string name="volbtn_cursor_control_on_reverse">Volume up/down moves cursor right/left</string>
+    <string name="button_wake_title">Wake up</string>
+    <string name="home_wake_summary">Pressing the home button will wake your device</string>
+    <string name="volbtn_wake_device_title">Wake up device</string>
+    <string name="volbtn_wake_device_summary">Pressing either volume button will wake your device</string>
+
+    <string name="show_battery_percent_title">Show battery percentage</string>
+    <string name="app_security_title">App security</string>
+
+    <!-- Blacklist preferences -->
+    <string name="blacklist_title">Blacklist</string>
+    <string name="blacklist_edit_dialog_title">Edit blacklist entry</string>
+    <string name="blacklist_prefs">Settings</string>
+    <string name="blacklist_button_delete">Delete</string>
+    <string name="blacklist_empty_text">You don\'t have any blacklisted numbers. Add an entry by touching the Add (+) button.</string>
+    <string name="blacklist_disabled_empty_text">To blacklist calls and/or messages from certain numbers, enable the blacklist.</string>
+    <string name="blacklist_summary_disabled">Disabled</string>
+    <string name="blacklist_summary">Incoming calls and messages from phone numbers in the blacklist will be blocked</string>
+    <string name="blacklist_notify">Show notification</string>
+    <string name="blacklist_private_numbers_title">Private numbers</string>
+    <string name="blacklist_private_numbers_summary_disabled">Don\'t block calls from private numbers</string>
+    <string name="blacklist_private_numbers_summary">Block incoming <xliff:g id="type">%s</xliff:g> from private numbers</string>
+    <string name="blacklist_unknown_numbers_title">Unknown numbers</string>
+    <string name="blacklist_unknown_numbers_summary_disabled">Don\'t block calls or messages from numbers not in the contact list</string>
+    <string name="blacklist_unknown_numbers_summary">Block incoming <xliff:g id="type">%s</xliff:g> from numbers not in the contact list</string>
+    <string name="blacklist_summary_type_calls_only">calls</string>
+    <string name="blacklist_summary_type_messages_only">messages</string>
+    <string name="blacklist_summary_type_calls_and_messages">calls and messages</string>
+    <string name="blacklist_regex_title">Use wildcards</string>
+    <string name="blacklist_regex_summary">Use . as a wildcard and * for repetition. E.g. 123.* blocks numbers starting with 123 and .*123.* blocks numbers containing 123</string>
+    <string name="blacklist_policy_block_calls">Block incoming calls</string>
+    <string name="blacklist_policy_block_messages">Block incoming messages</string>
+    <string name="blacklist_bad_number_add">Unable to add invalid number to blacklist</string>
+
+    <!-- Blacklist management -->
+    <string name="add_blacklist_number">Add number</string>
+    <string name="remove_blacklist_number_title">Remove number</string>
+    <string name="remove_blacklist_entry">Do you want to remove this blacklist entry?</string>
+    <string name="select_contact">Select contact</string>
+
+    <!-- Protected apps lockpattern reset button -->
+    <string name="lockpattern_reset_button">Reset pattern</string>
+    <string name="lockpattern_settings_reset_summary">Enter primary email account and associated password to reset pattern lock</string>
+
+    <!-- Protected Apps -->
+    <string name="menu_hidden_apps_delete">Reset</string>
+    <string name="menu_hidden_apps_reset_lock">Reset pattern lock</string>
+    <string name="protected_apps">Protected apps</string>
+    <string name="saving_protected_components">Saving component state\u2026</string>
+    <string name="launch_app">Launch app</string>
+
+    <string name="pa_login_username_hint">Username (email)</string>
+    <string name="pa_login_password_hint">Password</string>
+    <string name="pa_login_submit_button">Sign in</string>
+    <string name="pa_login_checking_password">Checking account\u2026</string>
+    <string name="pa_login_incorrect_login">Login was incorrect</string>
+
+    <!--- Sms security limit -->
+    <string name="app_security_title">App security</string>
+    <string name="sms_security_check_limit_title">SMS message limit</string>
+    <string name="sms_security_check_limit_summary">Display an alert dialog to prevent applications from sending SMS messages too frequently. Current limit: %d messages in 15 minutes</string>
+    <string name="sms_security_check_limit_default">30 (Default)</string>
+
+    <string name="ok">OK</string>
+
+    <!-- Profiles -->
+    <string name="profile_menu_delete_title">Delete</string>
+    <string name="profile_menu_triggers_title">Modify triggers</string>
+
+    <string name="profile_action_none">No action</string>
+    <string name="profile_action_disabled">Disable</string>
+    <string name="profile_action_enable">Enable</string>
+
+    <string name="profile_trigger_a2dp_connect">On A2DP connect</string>
+    <string name="profile_trigger_a2dp_disconnect">On A2DP disconnect</string>
+
+    <string name="profile_tabs_wifi">Wi-Fi</string>
+    <string name="profile_tabs_bluetooth">Bluetooth</string>
+    <string name="profile_tabs_nfc">NFC</string>
+
+    <string name="profile_setup_setup_triggers_title">Step 1: Add triggers</string>
+    <string name="profile_setup_setup_triggers_title_config">Modify triggers: <xliff:g id="profile_name">%1$s</xliff:g></string>
+
+    <string name="profile_setup_actions_title">Step 2: Setup actions</string>
+    <string name="profile_setup_actions_title_config">Reconfigure actions</string>
+
+    <string name="no_bluetooth_triggers">No Bluetooth triggers available</string>
+    <string name="no_wifi_triggers">No Wi-Fi triggers available</string>
+
+    <string name="profile_setup_setup_triggers_description">Please select triggers which will activate this profile</string>
+    <string name="profile_setup_actions_description">Now configure what happens when the profile is activated</string>
+
+    <!-- Status bar Settings -->
+    <string name="status_bar_prefs_title">Status bar</string>
+    <string name="keywords_status_bar">status bar drawer icons</string>
+</resources>
