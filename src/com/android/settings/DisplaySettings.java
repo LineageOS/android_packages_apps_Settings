@@ -369,13 +369,16 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     public void onResume() {
         super.onResume();
         updateDisplayRotationPreferenceDescription();
+        final SharedPreferences prefs = PreferenceManager.
+                getDefaultSharedPreferences(mAdaptiveBacklight.getContext());
+        final boolean enabled = prefs.getBoolean(KEY_ADAPTIVE_BACKLIGHT,
+                AdaptiveBacklight.isEnabled());
         if (mAdaptiveBacklight != null) {
-            mAdaptiveBacklight.setChecked(AdaptiveBacklight.isEnabled());
+            mAdaptiveBacklight.setChecked(enabled);
         }
 
         if (mSunlightEnhancement != null) {
-            if (SunlightEnhancement.isAdaptiveBacklightRequired() &&
-                    !AdaptiveBacklight.isEnabled()) {
+            if (SunlightEnhancement.isAdaptiveBacklightRequired() && !enabled) {
                 mSunlightEnhancement.setEnabled(false);
             } else {
                 mSunlightEnhancement.setChecked(SunlightEnhancement.isEnabled());
@@ -399,10 +402,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         resolver.registerContentObserver(
                 Settings.System.getUriFor(Settings.System.ACCELEROMETER_ROTATION), true,
                 mAccelerometerRotationObserver);
-
-        if (mAdaptiveBacklight != null) {
-            mAdaptiveBacklight.setChecked(AdaptiveBacklight.isEnabled());
-        }
 
         // Default value for wake-on-plug behavior from config.xml
         boolean wakeUpWhenPluggedOrUnpluggedConfig = getResources().getBoolean(
@@ -604,8 +603,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         if (isSunlightEnhancementSupported()) {
             final boolean enabled = prefs.getBoolean(KEY_SUNLIGHT_ENHANCEMENT,
                     SunlightEnhancement.isEnabled());
-            if (SunlightEnhancement.isAdaptiveBacklightRequired() &&
-                    !AdaptiveBacklight.isEnabled()) {
+            final boolean adaptiveEnabled = prefs.getBoolean(KEY_ADAPTIVE_BACKLIGHT,
+                    AdaptiveBacklight.isEnabled());
+            if (SunlightEnhancement.isAdaptiveBacklightRequired() && !adaptiveEnabled) {
                 SunlightEnhancement.setEnabled(false);
                 Log.d(TAG, "SRE requires CABC, disabled");
             } else {
