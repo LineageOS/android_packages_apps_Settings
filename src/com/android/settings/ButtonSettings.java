@@ -297,6 +297,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             boolean hasNavBar = WindowManagerGlobal.getWindowManagerService().hasNavigationBar()
                     || forceNavbar;
 
+            mNavigationPreferencesCat = (PreferenceCategory) findPreference("navigation_bar");
             if (hasNavBar) {
                 if (!Utils.isPhone(getActivity())) {
                     mNavigationPreferencesCat.removePreference(mNavigationBarLeftPref);
