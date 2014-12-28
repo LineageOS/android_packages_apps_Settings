@@ -303,7 +303,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                 }
             } else if (needsNavigationBar || !isKeyDisablerSupported()) {
                 // Hide navigation bar category
-                prefScreen.removePreference(mNavigationPreferencesCat);
+                if (mNavigationPreferencesCat != null)
+                    prefScreen.removePreference(mNavigationPreferencesCat);
             }
         } catch (RemoteException e) {
             Log.e(TAG, "Error getting navigation bar status");
