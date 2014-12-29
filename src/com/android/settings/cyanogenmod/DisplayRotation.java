@@ -19,6 +19,7 @@ package com.android.settings.cyanogenmod;
 import android.database.ContentObserver;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.CheckboxPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
@@ -40,10 +41,10 @@ public class DisplayRotation extends SettingsPreferenceFragment {
     private static final String ROTATION_270_PREF = "display_rotation_270";
 
     private SwitchPreference mAccelerometer;
-    private SwitchPreference mRotation0Pref;
-    private SwitchPreference mRotation90Pref;
-    private SwitchPreference mRotation180Pref;
-    private SwitchPreference mRotation270Pref;
+    private CheckboxPreference mRotation0Pref;
+    private CheckboxPreference mRotation90Pref;
+    private CheckboxPreference mRotation180Pref;
+    private CheckboxPreference mRotation270Pref;
 
     public static final int ROTATION_0_MODE = 1;
     public static final int ROTATION_90_MODE = 2;
@@ -68,10 +69,10 @@ public class DisplayRotation extends SettingsPreferenceFragment {
         mAccelerometer = (SwitchPreference) findPreference(KEY_ACCELEROMETER);
         mAccelerometer.setPersistent(false);
 
-        mRotation0Pref = (SwitchPreference) prefSet.findPreference(ROTATION_0_PREF);
-        mRotation90Pref = (SwitchPreference) prefSet.findPreference(ROTATION_90_PREF);
-        mRotation180Pref = (SwitchPreference) prefSet.findPreference(ROTATION_180_PREF);
-        mRotation270Pref = (SwitchPreference) prefSet.findPreference(ROTATION_270_PREF);
+        mRotation0Pref = (CheckboxPreference) prefSet.findPreference(ROTATION_0_PREF);
+        mRotation90Pref = (CheckboxPreference) prefSet.findPreference(ROTATION_90_PREF);
+        mRotation180Pref = (CheckboxPreference) prefSet.findPreference(ROTATION_180_PREF);
+        mRotation270Pref = (CheckboxPreference) prefSet.findPreference(ROTATION_270_PREF);
 
         int mode = Settings.System.getInt(getContentResolver(),
                 Settings.System.ACCELEROMETER_ROTATION_ANGLES,
