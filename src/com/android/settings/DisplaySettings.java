@@ -322,7 +322,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 int best = 0;
                 for (int i = 0; i < values.length; i++) {
                     long timeout = Long.parseLong(values[i].toString());
-                    if (currentTimeout >= timeout) {
+                    if (currentTimeout.compareTo(timeout) >= 0) {
                         best = i;
                     }
                 }
