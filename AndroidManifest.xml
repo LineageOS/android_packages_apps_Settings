@@ -1058,7 +1058,8 @@
         <activity android:name="IccLockSettings"
                 android:label="@string/sim_lock_settings_cm"
                 android:theme="@style/Theme.SubSettingsDialogWhenLarge"
-                android:process="com.android.phone">
+                android:process="com.android.phone"
+                android:parentActivityName="Settings$DeviceInfoSettingsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
