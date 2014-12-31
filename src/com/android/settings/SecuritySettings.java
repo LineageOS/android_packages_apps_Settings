@@ -105,11 +105,13 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private static final String KEY_TRUST_AGENT = "trust_agent";
     private static final String KEY_SCREEN_PINNING = "screen_pinning_settings";
     private static final String KEY_SMS_SECURITY_CHECK_PREF = "sms_security_check_limit";
+    private static final String KEY_QUICK_UNLOCK_CONTROL = "lockscreen_quick_unlock_control";
 
     // These switch preferences need special handling since they're not all stored in Settings.
     private static final String SWITCH_PREFERENCE_KEYS[] = { KEY_LOCK_AFTER_TIMEOUT,
             KEY_LOCK_ENABLED, KEY_VISIBLE_PATTERN, KEY_BIOMETRIC_WEAK_LIVELINESS,
-            KEY_POWER_INSTANTLY_LOCKS, KEY_SHOW_PASSWORD, KEY_TOGGLE_INSTALL_APPLICATIONS };
+            KEY_POWER_INSTANTLY_LOCKS, KEY_SHOW_PASSWORD, KEY_TOGGLE_INSTALL_APPLICATIONS,
+            KEY_QUICK_UNLOCK_CONTROL };
 
     // Only allow one trust agent on the platform.
     private static final boolean ONLY_ONE_TRUST_AGENT = true;
@@ -132,6 +134,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private SwitchPreference mToggleAppInstallation;
     private DialogInterface mWarnInstallApps;
     private SwitchPreference mPowerButtonInstantlyLocks;
+    private SwitchPreference mQuickUnlock;
 
     private ListPreference mSmsSecurityCheck;
 
@@ -290,6 +293,9 @@ public class SecuritySettings extends SettingsPreferenceFragment
                     R.string.lockpattern_settings_power_button_instantly_locks_summary,
                     trustAgentPreference.getTitle()));
         }
+
+        // quick unlock preference
+        mQuickUnlock = (SwitchPreference) root.findPreference(KEY_QUICK_UNLOCK_CONTROL);
 
         // don't display visible pattern if biometric and backup is not pattern
         if (resid == R.xml.security_settings_biometric_weak &&
@@ -596,6 +602,9 @@ public class SecuritySettings extends SettingsPreferenceFragment
         if (mPowerButtonInstantlyLocks != null) {
             mPowerButtonInstantlyLocks.setChecked(lockPatternUtils.getPowerButtonInstantlyLocks());
         }
+        if (mQuickUnlock != null) {
+            mQuickUnlock.setChecked(lockPatternUtils.getQuickUnlockControl());
+        }
 
         if (mShowPassword != null) {
             mShowPassword.setChecked(Settings.System.getInt(getContentResolver(),
@@ -709,6 +718,8 @@ public class SecuritySettings extends SettingsPreferenceFragment
             }
         } else if (KEY_POWER_INSTANTLY_LOCKS.equals(key)) {
             mLockPatternUtils.setPowerButtonInstantlyLocks((Boolean) value);
+        } else if (KEY_QUICK_UNLOCK_CONTROL.equals(key)) {
+            mLockPatternUtils.setQuickUnlockControl((Boolean) value);
         } else if (KEY_SHOW_PASSWORD.equals(key)) {
             Settings.System.putInt(getContentResolver(), Settings.System.TEXT_SHOW_PASSWORD,
                     ((Boolean) value) ? 1 : 0);
