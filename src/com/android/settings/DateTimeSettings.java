@@ -197,7 +197,14 @@ public class DateTimeSettings extends SettingsPreferenceFragment
         mDummyDate.set(now.get(Calendar.YEAR), 11, 31, 13, 0, 0);
         Date dummyDate = mDummyDate.getTime();
         mTimePref.setSummary(DateFormat.getTimeFormat(getActivity()).format(now.getTime()));
-        mTimeZone.setSummary(getTimeZoneText(now.getTimeZone(), true));
+
+        String timezoneText = getTimeZoneText(now.getTimeZone(), true);
+        String timezoneSeparatorLocale = getResources().getString(
+                R.string.timezone_separator_locale);
+        if (!TextUtils.isEmpty(timezoneSeparatorLocale)) {
+            timezoneText = timezoneText.replace(":", timezoneSeparatorLocale);
+        }
+        mTimeZone.setSummary(timezoneText);
         mDatePref.setSummary(shortDateFormat.format(now.getTime()));
         mDateFormat.setSummary(shortDateFormat.format(dummyDate));
         mTime24Pref.setSummary(DateFormat.getTimeFormat(getActivity()).format(dummyDate));
