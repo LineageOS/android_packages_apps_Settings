@@ -17,6 +17,7 @@
 package com.android.settings.dashboard;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -25,6 +26,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v13.app.FragmentPagerAdapter;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,11 +37,15 @@ import android.widget.TextView;
 import com.android.settings.R;
 import com.android.settings.SettingsActivity;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class DashboardSummary extends Fragment {
     private static final String LOG_TAG = "DashboardSummary";
 
+    private static final String KEY_POSITION = "position";
+
+    private int mWhichPage;
     private LayoutInflater mLayoutInflater;
     private ViewGroup mDashboard;
 
@@ -56,13 +62,33 @@ public class DashboardSummary extends Fragment {
         }
     };
 
+    public static DashboardSummary newInstance(int position) {
+        DashboardSummary dash = new DashboardSummary();
+
+        Bundle args = new Bundle();
+        args.putInt(KEY_POSITION, position);
+
+        dash.setArguments(args);
+        return dash;
+    }
+
     private class HomePackageReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
+            Log.d("RO", "onReceive() action: " + intent.getAction());
             rebuildUI(context);
         }
     }
     private HomePackageReceiver mHomePackageReceiver = new HomePackageReceiver();
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mWhichPage = getArguments().getInt(KEY_POSITION);
+        }
+    }
 
     @Override
     public void onResume() {
@@ -109,7 +135,7 @@ public class DashboardSummary extends Fragment {
         mDashboard.removeAllViews();
 
         List<DashboardCategory> categories =
-                ((SettingsActivity) context).getDashboardCategories(true);
+                ((SettingsActivity) context).getDashboardCategories(true, mWhichPage);
 
         final int count = categories.size();
 
@@ -120,7 +146,11 @@ public class DashboardSummary extends Fragment {
                     false);
 
             TextView categoryLabel = (TextView) categoryView.findViewById(R.id.category_title);
-            categoryLabel.setText(category.getTitle(res));
+            if (category.getTitle(res) == null) {
+                categoryLabel.setVisibility(View.GONE);
+            } else {
+                categoryLabel.setText(category.getTitle(res));
+            }
 
             ViewGroup categoryContent =
                     (ViewGroup) categoryView.findViewById(R.id.category_content);

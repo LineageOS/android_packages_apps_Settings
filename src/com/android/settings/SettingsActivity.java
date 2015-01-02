@@ -79,6 +79,8 @@ import com.android.settings.applications.ProcessStatsUi;
 import com.android.settings.blacklist.BlacklistSettings;
 import com.android.settings.bluetooth.BluetoothSettings;
 import com.android.settings.dashboard.DashboardCategory;
+import com.android.settings.dashboard.DashboardPage;
+import com.android.settings.dashboard.DashboardPages;
 import com.android.settings.dashboard.DashboardSummary;
 import com.android.settings.dashboard.DashboardTile;
 import com.android.settings.dashboard.NoHomeDialogFragment;
@@ -368,9 +370,6 @@ public class SettingsActivity extends Activity
     private SearchResultsSummary mSearchResultsFragment;
     private String mSearchQuery;
 
-    // Categories
-    private ArrayList<DashboardCategory> mCategories = new ArrayList<DashboardCategory>();
-
     private static final String MSG_DATA_FORCE_REFRESH = "msg_data_force_refresh";
     private static final int MSG_BUILD_CATEGORIES = 1;
     private Handler mHandler = new Handler() {
@@ -380,7 +379,7 @@ public class SettingsActivity extends Activity
                 case MSG_BUILD_CATEGORIES: {
                     final boolean forceRefresh = msg.getData().getBoolean(MSG_DATA_FORCE_REFRESH);
                     if (forceRefresh) {
-                        buildDashboardCategories(mCategories);
+                        buildDashboardPages();
                     }
                 } break;
             }
@@ -396,11 +395,11 @@ public class SettingsActivity extends Activity
         return mSwitchBar;
     }
 
-    public List<DashboardCategory> getDashboardCategories(boolean forceRefresh) {
-        if (forceRefresh || mCategories.size() == 0) {
-            buildDashboardCategories(mCategories);
+    public List<DashboardCategory> getDashboardCategories(boolean forceRefresh, int page) {
+        if (forceRefresh || DashboardPages.DASHBOARD_PAGES[page].categories.size() == 0) {
+            buildDashboardCategories(DashboardPages.DASHBOARD_PAGES[page]);
         }
-        return mCategories;
+        return DashboardPages.DASHBOARD_PAGES[page].categories;
     }
 
     @Override
@@ -559,13 +558,15 @@ public class SettingsActivity extends Activity
 
             setTitleFromIntent(intent);
 
-            ArrayList<DashboardCategory> categories =
-                    savedState.getParcelableArrayList(SAVE_KEY_CATEGORIES);
-            if (categories != null) {
-                mCategories.clear();
-                mCategories.addAll(categories);
-                setTitleFromBackStack();
-            }
+            // TODO add xml parser to save/restore them
+//            ArrayList<DashboardCategory> categories =
+//                    savedState.getParcelableArrayList(SAVE_KEY_CATEGORIES);
+//            if (categories != null) {
+
+//                mCategories.clear();
+//                mCategories.addAll(categories);
+//                setTitleFromBackStack();
+//            }
 
             mDisplayHomeAsUpEnabled = savedState.getBoolean(SAVE_KEY_SHOW_HOME_AS_UP);
             mDisplaySearch = savedState.getBoolean(SAVE_KEY_SHOW_SEARCH);
@@ -596,7 +597,7 @@ public class SettingsActivity extends Activity
                 // Show Search affordance
                 mDisplaySearch = true;
                 mInitialTitleResId = R.string.dashboard_title;
-                switchToFragment(DashboardSummary.class.getName(), null, false, false,
+                switchToFragment(DashboardPages.class.getName(), null, false, false,
                         mInitialTitleResId, mInitialTitle, false);
             }
         }
@@ -725,9 +726,10 @@ public class SettingsActivity extends Activity
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        if (mCategories.size() > 0) {
-            outState.putParcelableArrayList(SAVE_KEY_CATEGORIES, mCategories);
-        }
+        // TODO add xml parser to save/restore them
+//        if (mCategories.size() > 0) {
+//            outState.putParcelableArrayList(SAVE_KEY_CATEGORIES, mCategories);
+//        }
 
         outState.putBoolean(SAVE_KEY_SHOW_HOME_AS_UP, mDisplayHomeAsUpEnabled);
         outState.putBoolean(SAVE_KEY_SHOW_SEARCH, mDisplaySearch);
@@ -964,6 +966,19 @@ public class SettingsActivity extends Activity
         transaction.commitAllowingStateLoss();
         getFragmentManager().executePendingTransactions();
         return f;
+    }
+
+    private void buildDashboardPages() {
+        // TODO add xml parser for pages to build them only once per onCreate()
+        for (int i = 0; i < DashboardPages.DASHBOARD_PAGES.length; i++) {
+            buildDashboardCategories(DashboardPages.DASHBOARD_PAGES[i]);
+        }
+    }
+
+    private void buildDashboardCategories(DashboardPage page) {
+        page.categories.clear();
+        loadCategoriesFromResource(page.dashboardRes, page.categories);
+        updateTilesList(page.categories);
     }
 
     /**
