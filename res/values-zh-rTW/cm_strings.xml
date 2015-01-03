@@ -16,7 +16,11 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="wifi_setting_countrycode_title">Wi\u2011Fi 區域代碼</string>
+  <string name="wifi_setting_countrycode_summary">指定 Wi\u2011Fi 區域代碼</string>
   <string name="wifi_setting_countrycode_error">設定區碼時遇到了問題。</string>
+  <string name="wifi_setting_priority_title">Wi\u2011Fi 優先次序</string>
+  <string name="wifi_setting_priority_summary">指定 Wi\u2011Fi 網絡的優先次序</string>
   <string name="wifi_ssid_input_limit">SSID 超過長度上限</string>
   <string name="p2p_device_name_input_limit">P2P 名稱超過長度上限</string>
   <string name="change_crypt_password_title">變更密碼</string>
@@ -43,6 +47,7 @@
   <string name="profile_trigger_configure">設定觸發器</string>
   <string name="profile_triggers">觸發器</string>
   <string name="profile_trigger_filter_all">所有觸發器</string>
+  <string name="profile_trigger_filter_wifi">Wi\u2011Fi 觸發器</string>
   <string name="profile_trigger_filter_bluetooth">藍牙觸發器</string>
   <string name="profile_write_nfc_tag">寫到 NFC 標籤</string>
   <string name="profile_write_touch_tag">輕觸標籤以寫入</string>
@@ -77,6 +82,8 @@
   <string name="connection_state_disabled">停用</string>
   <string name="connection_state_enabled">啟用</string>
   <string name="volume_override_summary">設為 %1$s/%2$s</string>
+  <string name="volume_override_summary_no_override">不要覆寫</string>
+  <string name="profile_volume_override_checkbox_label">覆寫音量</string>
   <string name="profile_profiles_manage">設定檔</string>
   <string name="profile_profile_manage">管理設定檔</string>
   <string name="profile_appgroups_manage">應用程式群組</string>
@@ -109,8 +116,11 @@
   <string name="profile_lockmode_disabled_summary">已停用鎖定螢幕</string>
   <string name="profile_airplanemode_title">飛航模式</string>
   <string name="toggleWifi">Wi\u2011Fi</string>
+  <string name="toggleWifiAp">可攜式 Wi\u2011Fi 無線基地台</string>
   <string name="toggleBluetooth">藍牙</string>
   <string name="toggleGPS">GPS</string>
+  <string name="toggleData">行動數據</string>
+  <string name="toggleSync">自動同步資料</string>
   <string name="toggle2g3g">2G/3G</string>
   <string name="toggleWimax">WiMAX</string>
   <string name="toggleNfc">NFC</string>
@@ -119,8 +129,10 @@
   <string name="link_volume_mutes">靜音模式會影響通知</string>
   <string name="volume_keys_control_ring_stream">音量鍵控制鈴聲音量</string>
   <string name="ring_mode_title">鈴響模式</string>
+  <string name="ring_mode_normal">響音</string>
   <string name="ring_mode_vibrate">震動</string>
   <string name="ring_mode_mute">靜音</string>
+  <string name="ring_mode_unchanged">沒有變更</string>
   <string name="volume_overlay_title">音量面板樣式</string>
   <string name="volume_overlay_single">單一</string>
   <string name="volume_overlay_expandable">可展開</string>
@@ -207,6 +219,7 @@
   <string name="lockscreen_maximize_widgets_summary">開啟螢幕時擴展小工具</string>
   <string name="lockscreen_enable_camera_title">相機小工具</string>
   <string name="safe_headset_volume_title">安全耳機音量</string>
+  <string name="safe_headset_volume_restore_title">連接時降低耳機音量</string>
   <string name="cyanogenmod_waiver_title">棄權書</string>
   <string name="cyanogenmod_waiver_body">變更此設定可能違反您的州或政府的法律。\n\n選取「確定」意味著您已讀此警告並放棄一切起訴權，保證 CyanogenMod 及其貢獻者免於受罰，並且不承擔任何法律責任。</string>
   <string name="quick_settings_panel_title">快速設定面板</string>
@@ -226,6 +239,7 @@
   <string name="heads_up_blacklist_title">黑名單</string>
   <string name="heads_up_disabled_notice">允許應用程式在螢幕中顯示浮動通知</string>
   <string name="title_tile_airplane">飛航模式</string>
+  <string name="title_tile_battery">電池</string>
   <string name="title_tile_bluetooth">藍牙</string>
   <string name="title_tile_brightness">亮度</string>
   <string name="title_tile_camera">相機</string>
@@ -243,6 +257,8 @@
   <string name="title_tile_settings">設定</string>
   <string name="title_tile_sound">音效</string>
   <string name="title_tile_sync">同步處理</string>
+  <string name="title_tile_wifiap">Wi\u2011Fi 無線基地台</string>
+  <string name="title_tile_wifi">Wi\u2011Fi</string>
   <string name="title_tile_user">使用者切換器</string>
   <string name="title_tile_networkmode">網路模式</string>
   <string name="title_tile_nfc">NFC</string>
@@ -251,12 +267,16 @@
   <string name="title_tile_volume">音量</string>
   <string name="title_tile_expanded_desktop">擴展桌面</string>
   <string name="title_tile_network_adb">網路 ADB</string>
+  <string name="title_tile_themes">主題</string>
   <string name="title_dynamic_tiles">動態磚</string>
   <string name="dynamic_tiles_note_title">注意</string>
+  <string name="dynamic_tiles_note_summary">動態磚只有在系統事件觸發時才會顯示</string>
   <string name="title_dynamic_alarm">鬧鐘</string>
   <string name="title_dynamic_bugreport">錯誤報告</string>
   <string name="title_dynamic_dock_battery">座架電池</string>
   <string name="title_dynamic_equalizer">等化器</string>
+  <string name="title_dynamic_ime">輸入法選擇器</string>
+  <string name="title_dynamic_usbtether">USB 網路共用</string>
   <string name="title_dynamic_wifi">投放螢幕</string>
   <string name="title_general">一般</string>
   <string name="title_quick_pulldown">快速下拉</string>
@@ -277,6 +297,8 @@
   <string name="cm_sound_mode_sound">鈴聲</string>
   <string name="cm_sound_mode_soundVibrate">鈴聲與震動</string>
   <string name="pref_location_mode_title">定位模式</string>
+  <string name="pref_location_mode_summary">取消所有模式的預設值</string>
+  <string name="cm_location_mode_off">關閉定位服務</string>
   <string name="cm_location_mode_battery_saving">節約耗電量</string>
   <string name="cm_location_mode_device_only">僅限裝置</string>
   <string name="cm_location_mode_high_accuracy">高精確度</string>
@@ -413,6 +435,7 @@
   <string name="io_sched_title">I/O scheduler</string>
   <string name="perf_profile_title">設定檔</string>
   <string name="memory_management_title">記憶體管理</string>
+  <string name="pref_ksm_title">Kernel Samepage Merging</string>
   <string name="pref_ksm_summary">KSM 可降低實體記憶體需求並增進效能</string>
   <string name="pref_purgeable_assets_title">允許清除資源</string>
   <string name="pref_purgeable_assets_summary">清除點陣圖記憶體資源允許需要時釋放更多 RAM (需重新啟動)</string>
@@ -486,6 +509,7 @@
   <string name="adb_notify">USB 偵錯通知</string>
   <string name="adb_notify_summary">USB 偵錯模式開啟時顯示通知</string>
   <string name="adb_over_network">網路 ADB</string>
+  <string name="adb_over_network_summary">啟用透過網絡介面 (Wi-Fi、USB 網絡) 進行 TCP/IP 偵錯。此設定會於重啟後重設</string>
   <string name="adb_over_network_warning">警告：網路 ADB 啟用時，您的裝置會對所有已連線的網路 (包括 GSM 數據網路) 開放接收指令！\n\n只有當您連線到信任的網路時才使用此功能。\n\n您真的要啟用此功能？</string>
   <string name="device_hostname">裝置主機名稱</string>
   <string name="notification_drawer_title">通知列表</string>
@@ -588,6 +612,7 @@
   <string name="navigation_bar_menu_locked">已鎖定</string>
   <string name="navigation_bar_arrow_keys_title">游標方向鍵</string>
   <string name="navigation_bar_arrow_keys_summary">當您在打字時，於導覽列上顯示可左、右移動游標的方向鍵按鈕</string>
+  <string name="navigation_bar_recents_title">多工按鈕長按動作</string>
   <string name="navigation_ring_title">快速啟動捷徑</string>
   <string name="navring_target_reset_message">刪除所有使用者建立的導覽列捷徑並還原爲預設值？</string>
   <string name="navring_target_reset">導覽列捷徑已還原爲預設值</string>
@@ -635,6 +660,7 @@
   <string name="hardware_keys_action_in_app_search">應用程式內搜尋</string>
   <string name="hardware_keys_action_launch_camera">啟動相機</string>
   <string name="hardware_keys_action_last_app">最後一個應用程式</string>
+  <string name="hardware_keys_action_sleep">關閉螢幕</string>
   <string name="power_end_call_title">結束通話</string>
   <string name="power_end_call_summary">按下電源按鈕將會結束目前通話</string>
   <string name="button_wake_title">喚醒</string>
@@ -687,6 +713,7 @@
   <string name="status_bar_notif_count_title">顯示通知計數</string>
   <string name="status_bar_notif_count_summary">顯示未處理通知的數量</string>
   <string name="development_shortcut_title">開發捷徑</string>
+  <string name="development_shortcut_summary">在通知區域和最近應用程式清單中顯示應用程式管理快捷鍵</string>
   <string name="usb_mass_storage_title">大量儲存裝置 (UMS)</string>
   <string name="usb_mass_storage_summary">透過掛載 SD 卡為快閃裝置，使您可在電腦及 SD 卡之間傳輸檔案</string>
   <string name="storage_rescan_media">為儲存裝置重新掃描媒體</string>
@@ -697,6 +724,7 @@
   <string name="logger_summary">管理當機日誌記錄設定</string>
   <string name="custom_runtime_warning_title">警告</string>
   <string name="custom_runtime_warning_message">ART 不被 CyanogenMod 所支援. 此設定僅用作實驗，有可能造成不穩定、死機、數據丟失或導致您的設備不能正常開機。請瀏覽  &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt;  細閱更多資料。&lt;br/&gt;&lt;br/&gt;作為你的運作環境，我們請求你不要發送錯誤報告給我們。&lt;br/&gt;&lt;br/&gt; 你要重啟設備將運作環境從 <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> 改為 <xliff:g id="new" example="libart.so">%2$s</xliff:g> 嗎?</string>
+  <string name="gps_download_data_wifi_only">僅透過 Wi\u2011Fi 網絡下載 GPS 輔助數據</string>
   <string name="battery_info_status_charging_dock_ac">(座架 AC)</string>
   <string name="battery_info_status_charging_dock_usb">(座架 USB)</string>
   <string name="menu_stats_reset">重設</string>
@@ -738,6 +766,7 @@
   <string name="app_ops_summaries_modify_call_log">修改通話紀錄</string>
   <string name="app_ops_summaries_read_calendar">讀取日曆</string>
   <string name="app_ops_summaries_modify_calendar">修改日曆</string>
+  <string name="app_ops_summaries_wifi_scan">Wi\u2011Fi 掃描</string>
   <string name="app_ops_summaries_notification">通知</string>
   <string name="app_ops_summaries_cell_scan">手機掃描</string>
   <string name="app_ops_summaries_call_phone">撥打電話</string>
@@ -766,9 +795,12 @@
   <string name="app_ops_summaries_media_volume">媒體音量</string>
   <string name="app_ops_summaries_alarm_volume">鬧鐘音量</string>
   <string name="app_ops_summaries_notification_volume">通知音量</string>
+  <string name="app_ops_summaries_bluetooth_volume">藍牙音量</string>
   <string name="app_ops_summaries_keep_awake">停用休眠</string>
   <string name="app_ops_summaries_monitor_location">監控位置</string>
   <string name="app_ops_summaries_monitor_high_power_location">監控高耗電定位功能</string>
+  <string name="app_ops_summaries_wifi_change">變更 Wi\u2011Fi</string>
+  <string name="app_ops_summaries_bluetooth_change">變更藍牙</string>
   <string name="app_ops_summaries_data_change">數據更改</string>
   <string name="app_ops_summaries_alarm_wakeup">喚醒</string>
   <string name="app_ops_summaries_send_mms">傳送多媒體簡訊</string>
@@ -808,6 +840,7 @@
   <string name="app_ops_labels_notification_volume">通知音量</string>
   <string name="app_ops_labels_bluetooth_volume">藍牙音量</string>
   <string name="app_ops_labels_keep_awake">停用休眠</string>
+  <string name="app_ops_labels_wifi_change">變更 Wi\u2011Fi</string>
   <string name="app_ops_labels_bluetooth_change">藍牙更改</string>
   <string name="app_ops_labels_data_change">數據更改</string>
   <string name="app_ops_labels_alarm_wakeup">喚醒</string>
@@ -848,8 +881,10 @@
   <string name="voice_wakeup_retrain_title">重新訓練您的語音</string>
   <string name="voice_wakeup_activity_title">行動啟動</string>
   <string name="voice_wakeup_default_activity">Google 即時資訊</string>
+  <string name="multi_sim_settings_title">SIM 卡</string>
   <string name="multi_sim_settings_group_summary">預設 SIM 卡選取</string>
   <string name="voice_title">語音通話</string>
+  <string name="data_title">數據連接</string>
   <string name="sms_title">傳送簡訊</string>
   <string name="priority_sub_title">優先訂閱</string>
   <string name="bluetooth_accept_all_files">接受所有檔案類型</string>
@@ -860,6 +895,7 @@
   <string name="menu_hidden_apps_reset_lock">重設圖形鎖</string>
   <string name="protected_apps">受保護的應用程式</string>
   <string name="saving_protected_components">儲存組件狀態\u2026</string>
+  <string name="launch_app">啟動應用程式</string>
   <string name="pa_login_username_hint">使用者名稱（電子郵件）</string>
   <string name="pa_login_password_hint">密碼</string>
   <string name="pa_login_submit_button">登入</string>
@@ -878,26 +914,100 @@
   <string name="block_notifications_title">篩選通知</string>
   <string name="block_notifications_summary">管理已忽略的通知與篩選器</string>
   <string name="no_filters_title">沒有設定篩選器。長按並選擇「忽略像這樣的訊息」即可篩選掉通知。</string>
+  <string name="usb_sd_eject">卸載 USB 儲存裝置</string>
+  <string name="usb_sd_eject_summary">請先卸載 USB 儲存裝置，才能將其安全移除</string>
+  <string name="usb_sd_insert_summary">插入要掛載的 USB 儲存裝置</string>
+  <string name="usb_sd_mount">掛載 USB 儲存裝置</string>
+  <string name="usb_sd_format">清除 USB 儲存裝置</string>
+  <string name="usb_sd_format_summary">清除 USB 儲存裝置上所有數據，例如音樂和相片</string>
+  <string name="usb_dlg_confirm_unmount_title">卸載 USB 儲存裝置？</string>
+  <string name="usb_dlg_confirm_unmount_text">如果您卸載 USB 儲存裝置，某些正在使用中的應用程式會停止運作並無法使用，直至重新掛載 USB 儲存裝置後才會恢復正常。</string>
+  <string name="usb_dlg_error_unmount_text">無法卸載 USB 儲存裝置。請稍後再試。</string>
   <string name="usb_unmount_inform_text"> USB 儲存裝置將會被卸載。</string>
+  <string name="usb_sd_ejecting_title">正在卸載 USB 儲存裝置</string>
+  <string name="usb_sd_ejecting_summary">USB 儲存裝置卸載進行中</string>
   <string name="usb_media_format_title">清除 USB 儲存裝置</string>
   <string name="usb_media_format_desc">清除所有 USB 儲存裝置嗎？您將丟失<b>所有</b> 已儲存的資料 ！</string>
   <string name="usb_media_format_button_text">清除 USB 儲存裝置</string>
   <string name="usb_media_format_final_desc">清除 USB 儲存裝置時，是否刪除其中儲存的所有檔案？這項動作無法復原！</string>
   <string name="usb_media_format_gesture_explanation">請畫出解鎖圖形，確認您要清除 USB 儲存裝置中的資料。</string>
+  <string name="sd_sd_eject">卸載 SD 卡</string>
+  <string name="sd_sd_eject_summary">請先卸載 SD 卡，才能將其安全移除</string>
+  <string name="sd_sd_insert_summary">插入要掛載的 SD 卡</string>
+  <string name="sd_sd_mount">掛載 SD 卡</string>
+  <string name="sd_sd_format">清除 SD 卡</string>
+  <string name="sd_sd_format_summary">清除 SD 卡中的所有資料，例如音樂和相片</string>
+  <string name="sd_dlg_confirm_unmount_title">卸載 SD 卡?</string>
+  <string name="sd_dlg_confirm_unmount_text">如果您卸載 SD 卡，某些正在使用中的應用程式會停止運作並無法使用，直到重新掛載 SD 卡後才會恢復正常。</string>
+  <string name="sd_dlg_error_unmount_text">無法卸載 SD 卡。請稍後再試。</string>
+  <string name="sd_unmount_inform_text">即將卸載 SD 卡。</string>
+  <string name="sd_sd_ejecting_title">正在卸載 SD 卡</string>
+  <string name="sd_sd_ejecting_summary">SD 卡卸載進行中</string>
+  <string name="sd_media_format_title">清除 SD 卡</string>
+  <string name="sd_media_format_desc">您要清除 SD 卡嗎？您將失去 SD 卡上的<b>所有</b>資料！</string>
+  <string name="sd_media_format_button_text">清除 SD 卡</string>
+  <string name="sd_media_format_final_desc">清除 SD 卡時，是否刪除其中儲存的所有檔案？這項動作無法復原！</string>
+  <string name="sd_media_format_gesture_explanation">請畫出解鎖圖形，確認您要清除 SD 卡中的資料。</string>
+  <string name="bluetooth_enter_pin_msg_hs">欲與 <xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g> 配對，請輸入該裝置所需的 PIN 碼（16 碼或更多）：</string>
   <string name="bluetooth_profile_sap">SIM 卡存取</string>
+  <string name="bluetooth_profile_dun">撥號網絡存取</string>
+  <string name="bluetooth_sap_profile_summary_connected">已連接到 SIM 卡存取伺服器</string>
+  <string name="bluetooth_dun_profile_summary_connected">已連接到 DUN 伺服器</string>
+  <string name="bluetooth_sap_profile_summary_use_for">用於 SIM 卡存取</string>
+  <string name="bluetooth_dun_profile_summary_use_for">用於撥號網絡存取</string>
+  <string name="wifi_disabled_association_rejected">連接被拒絕</string>
+  <string name="screencolor">螢幕顏色</string>
+  <string name="custom_screencolor">自訂螢幕顏色</string>
+  <string name="device_additional_status">其他狀態資訊</string>
+  <string name="enable_quickboot_title">啟用 QuickBoot 模式</string>
+  <string name="enable_quickboot_summary">把裝置正常關機模式轉為 QuickBoot 模式。</string>
   <string name="data_usage_tab_slot">SIM 卡 </string>
+  <string name="sel_sub_title">設定 SIM 卡</string>
+  <string name="sel_sub_summary">選擇您的 SIM 卡</string>
+  <string name="no_sim_info">未能讀取 SIM 卡資訊。\n功能選單無法存取</string>
+  <string name="subs_settings">SIM 卡狀態</string>
+  <string name="set_data_subscription_progress">設定數據訂閱\u2026</string>
+  <string name="set_dds_success">成功設定數據訂閱</string>
+  <string name="set_dds_failed">設定數據訂閱時出錯。停止所有數據連接，然後重試。</string>
+  <string name="set_dds_error">設定數據訂閱時出錯。</string>
+  <string name="set_sms_error">設定短訊訂閱時出錯。訂閱未生效。</string>
+  <string name="set_voice_error">設定語音訂閱時出錯。訂閱未生效。</string>
+  <string name="set_priority_sub_error">設定優先訂閱時出錯。訂閱未生效。</string>
+  <string name="prompt">總是詢問</string>
+  <string name="maximum_head_level">頭部：%1$s W/kg</string>
+  <string name="maximum_body_level">身體：%1$s W/kg</string>
+  <string name="tune_away_title">TuneAway</string>
+  <string name="tune_away_enabled">已啟用 TuneAway</string>
+  <string name="tune_away_disabled">已停用 TuneAway</string>
   <string name="screencolor_save">儲存</string>
   <string name="screencolor_cancel">取消</string>
+  <string name="restore_preview">檢視預設相片</string>
+  <string name="selectnewfile_menu">從圖片庫查看新圖片</string>
+  <string name="selectfile_menu">從圖片庫查看圖片</string>
   <string name="restore_default_str">重設</string>
+  <string name="hue_str">色調：<xliff:g id="hue_value">%1$s</xliff:g></string>
+  <string name="saturation_str">飽和度：<xliff:g id="saturation_value">%1$s</xliff:g></string>
+  <string name="contrast_str">對比度：<xliff:g id="contrast_value">%1$s</xliff:g></string>
+  <string name="intensity_str">亮度：<xliff:g id="intensity_str_value">%1$s</xliff:g></string>
+  <string name="device_status_summary_cm" product="tablet">電池狀態、網路狀態等資訊</string>
   <string name="device_status_summary_cm" product="default">電池狀態、電池存量等</string>
   <string name="wifi_ap_clients_title">已連線的裝置</string>
   <string name="wifi_ap_client_ap_disabled">無線基地台已停用</string>
   <string name="wifi_ap_client_none_connected">沒有裝置連線至基地台</string>
   <string name="profile_menu_delete_title">刪除</string>
+  <string name="profile_menu_triggers_title">修改觸發器</string>
   <string name="profile_action_none">無動作</string>
   <string name="profile_action_disabled">停用</string>
   <string name="profile_action_enable">啟用</string>
   <string name="profile_tabs_wifi">Wi\u2011Fi</string>
   <string name="profile_tabs_bluetooth">藍牙</string>
   <string name="profile_tabs_nfc">NFC</string>
+  <string name="profile_setup_setup_triggers_title">步驟 1：新增觸發器</string>
+  <string name="profile_setup_setup_triggers_title_config">修改觸發器：<xliff:g id="profile_name">%1$s</xliff:g></string>
+  <string name="profile_setup_actions_title">步驟 2：指定動作</string>
+  <string name="profile_setup_actions_title_config">重新配置操作</string>
+  <string name="no_bluetooth_triggers">沒有可用的藍牙觸發器</string>
+  <string name="no_wifi_triggers">沒有可用的 Wi\u2011Fi 觸發器</string>
+  <string name="profile_setup_setup_triggers_description">請選擇啟動此設定檔的觸發器</string>
+  <string name="profile_setup_actions_description">現在配置設定檔啟動時將發生的操作</string>
 </resources>
