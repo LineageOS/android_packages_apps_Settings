@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "7aa08908_7abf97d0",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1053
+      },
+      "writtenOn": "2015-01-04T15:56:26Z",
+      "side": 1,
+      "message": "In CM11 we had \u0027Auto-sync data\u0027",
+      "revId": "876ac8aa97fb7e6e01daaa80e467e0d8aa12148c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7aa08908_7ad83754",
         "filename": "res/values/cm_strings.xml",
         "patchSetId": 2
@@ -13,6 +30,23 @@
       "writtenOn": "2015-01-04T15:46:10Z",
       "side": 1,
       "message": "That\u0027s a CM string but it should be simply \"Contributors\"",
+      "revId": "876ac8aa97fb7e6e01daaa80e467e0d8aa12148c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aa08908_3aefcfe9",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1053
+      },
+      "writtenOn": "2015-01-04T15:56:26Z",
+      "side": 1,
+      "message": "The only reason why we used \\u2011 is because it\u0027s a non breaking hyphen. It would look really bad if Wi- an Fi are on different lines.\n\nIt won\u0027t change much here, but I think it is usfull in some other strings.",
       "revId": "876ac8aa97fb7e6e01daaa80e467e0d8aa12148c",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
@@ -81,6 +115,24 @@
       "writtenOn": "2015-01-04T15:42:53Z",
       "side": 1,
       "message": "Is airplane mode capitalized in AOSP too?",
+      "revId": "876ac8aa97fb7e6e01daaa80e467e0d8aa12148c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aa08908_1acf7380",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1053
+      },
+      "writtenOn": "2015-01-04T15:56:26Z",
+      "side": 1,
+      "message": "It\u0027s not consistent in AOSP:\n\nhttps://github.com/CyanogenMod/android_packages_apps_Settings/blob/cm-11.0/res/values/strings.xml#L1322\n\nhttps://github.com/CyanogenMod/android_packages_apps_Settings/blob/cm-11.0/res/values/strings.xml#L3622",
+      "parentUuid": "7aa08908_1a21334e",
       "revId": "876ac8aa97fb7e6e01daaa80e467e0d8aa12148c",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
