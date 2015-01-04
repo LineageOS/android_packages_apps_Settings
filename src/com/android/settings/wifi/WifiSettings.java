@@ -532,17 +532,8 @@ public class WifiSettings extends RestrictedSettingsFragment
                     }
                 }
                 if (mSelectedAccessPoint.networkId != INVALID_NETWORK_ID) {
-                    if (getResources().getBoolean(R.bool.set_wifi_priority)) {
-                        if (!AccessPoint.isCarrierAp(mSelectedAccessPoint, getActivity())) {
-                            menu.add(Menu.NONE, MENU_ID_FORGET, 0, R.string.wifi_menu_forget);
-                        }
-                        menu.add(Menu.NONE, MENU_ID_MODIFY, 0, R.string.wifi_menu_modify);
-                    }
-                    else {
-                        menu.add(Menu.NONE, MENU_ID_FORGET, 0, R.string.wifi_menu_forget);
-                        menu.add(Menu.NONE, MENU_ID_MODIFY, 0, R.string.wifi_menu_modify);
-                    }
-
+                    menu.add(Menu.NONE, MENU_ID_FORGET, 0, R.string.wifi_menu_forget);
+                    menu.add(Menu.NONE, MENU_ID_MODIFY, 0, R.string.wifi_menu_modify);
                     if (mSelectedAccessPoint.security != AccessPoint.SECURITY_NONE) {
                         // Only allow writing of NFC tags for password-protected networks.
                         menu.add(Menu.NONE, MENU_ID_WRITE_NFC, 0, R.string.wifi_menu_write_to_nfc);
