@@ -100,15 +100,6 @@
             android:id="@+id/device_section"
             android:title="@string/header_category_device" >
 
-        <dashboard-tile
-                android:id="@+id/button_settings"
-                android:title="@string/button_pref_title"
-                android:fragment="com.android.settings.ButtonSettings"
-                android:icon="@drawable/ic_settings_buttons"
-                />
-
-
-
         <!-- Display -->
         <dashboard-tile
                 android:id="@+id/display_settings"
@@ -123,6 +114,14 @@
                 android:title="@string/notification_settings"
                 android:fragment="com.android.settings.notification.NotificationSettings"
                 android:icon="@drawable/ic_settings_notifications"
+                />
+
+        <!-- Buttons -->
+        <dashboard-tile
+                android:id="@+id/button_settings"
+                android:title="@string/button_pref_title"
+                android:fragment="com.android.settings.ButtonSettings"
+                android:icon="@drawable/ic_settings_buttons"
                 />
 
         <!-- Storage -->
