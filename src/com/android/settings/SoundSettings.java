@@ -42,6 +42,7 @@ import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 
 import com.android.internal.widget.LockPatternUtils;
@@ -69,6 +70,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private static final String KEY_NOTIFICATION_VOLUME = "notification_volume";
     private static final String KEY_VOLUME_LINK_NOTIFICATION = "volume_link_notification";
     private static final String KEY_PHONE_RINGTONE = "ringtone";
+    private static final String KEY_PHONE_RINGTONE_MSIM = "ringtone_msim";
     private static final String KEY_NOTIFICATION_RINGTONE = "notification_ringtone";
     private static final String KEY_VIBRATE_WHEN_RINGING = "vibrate_when_ringing";
     private static final String KEY_NOTIFICATION = "notification";
@@ -221,9 +223,19 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
 
     private void initRingtones(PreferenceCategory root) {
         mPhoneRingtonePreference = root.findPreference(KEY_PHONE_RINGTONE);
+        Preference msimRingtone = root.findPreference(KEY_PHONE_RINGTONE_MSIM);
         if (mPhoneRingtonePreference != null && !mVoiceCapable) {
             root.removePreference(mPhoneRingtonePreference);
+            root.removePreference(msimRingtone);
             mPhoneRingtonePreference = null;
+        } else {
+            TelephonyManager telephonyManager = (TelephonyManager) mContext.getSystemService(
+                    Context.TELEPHONY_SERVICE);
+            if (telephonyManager.isMultiSimEnabled()) {
+                root.removePreference(mPhoneRingtonePreference);
+            } else {
+                root.removePreference(msimRingtone);
+            }
         }
         mNotificationRingtonePreference = root.findPreference(KEY_NOTIFICATION_RINGTONE);
     }

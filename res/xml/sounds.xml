@@ -69,6 +69,18 @@
                 android:persistent="false"
                 android:ringtoneType="ringtone" />
 
+        <!-- MSim phone ringtone -->
+        <Preference
+                android:key="ringtone_msim"
+                android:title="@string/sound_ringtone_multisim_options" >
+                 <intent android:action="android.intent.action.MAIN"
+                   android:targetPackage="com.android.phone"
+                   android:targetClass="com.android.phone.msim.SelectSubscription">
+                   <extra android:name="PACKAGE" android:value="com.android.phone" />
+                   <extra android:name="TARGET_CLASS" android:value="com.android.phone.msim.MSimCallFeaturesSubSetting" />
+               </intent>
+        </Preference>
+
         <!-- Default notification ringtone -->
         <com.android.settings.DefaultRingtonePreference
                 android:key="notification_ringtone"
