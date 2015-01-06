@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aa08908_6a650244",
+        "filename": "src/com/android/settings/bluetooth/CachedBluetoothDevice.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 10984
+      },
+      "writtenOn": "2015-01-06T03:04:35Z",
+      "side": 1,
+      "message": "Do we really want to stop checking if mProfileConnectionState is null?",
+      "revId": "bac581eff2444f25c084c823ddb03cf025f2915f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aa08908_ea51f263",
+        "filename": "src/com/android/settings/bluetooth/DockService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 10984
+      },
+      "writtenOn": "2015-01-06T03:04:35Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we change mCheckedItems to false in these cases (for both profiles 0 and 1)?",
+      "revId": "bac581eff2444f25c084c823ddb03cf025f2915f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aa08908_4a4f66bd",
+        "filename": "src/com/android/settings/bluetooth/Utils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 10984
+      },
+      "writtenOn": "2015-01-06T03:04:35Z",
+      "side": 1,
+      "message": "Since the purpose here is to show an Error, shouldn\u0027t we, in this case, fallback to the toast behavior, instead of not showing any error at all?",
+      "revId": "bac581eff2444f25c084c823ddb03cf025f2915f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
