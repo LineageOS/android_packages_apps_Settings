@@ -16,6 +16,8 @@
 
 package com.android.settings;
 
+import android.content.ComponentName;
+import android.telephony.MSimTelephonyManager;
 import com.android.settings.bluetooth.DockEventReceiver;
 import com.android.settings.hardware.VibratorIntensity;
 
@@ -58,7 +60,7 @@ import java.util.Calendar;
 import java.util.List;
 
 public class SoundSettings extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener {
+        Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
     private static final String TAG = "SoundSettings";
 
     private static final int DIALOG_NOT_DOCKED = 1;
@@ -134,6 +136,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
 
     private CheckBoxPreference mPowerSounds;
     private CheckBoxPreference mPowerSoundsVibrate;
+    private MSimTelephonyManager mSimTelephonyManager;
     private Preference mPowerSoundsRingtone;
 
     private Handler mHandler = new Handler() {
@@ -169,6 +172,14 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         int activePhoneType = TelephonyManager.getDefault().getCurrentPhoneType();
 
         mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        mSimTelephonyManager =
+                (MSimTelephonyManager) getSystemService(Context.MSIM_TELEPHONY_SERVICE);
+
+        if (mSimTelephonyManager.isMultiSimEnabled()) {
+            addPreferencesFromResource(R.xml.msim_ringtone_settings);
+        } else {
+            addPreferencesFromResource(R.xml.ringtone_settings);
+        }
 
         addPreferencesFromResource(R.xml.sound_settings);
 
@@ -252,9 +263,14 @@ public class SoundSettings extends SettingsPreferenceFragment implements
             mRingtonePreference = null;
         }
 
+        // Set a new onclick listener if our preference is inherited from msim_ringtone_settings
+        if (mRingtonePreference != null && mSimTelephonyManager.isMultiSimEnabled()) {
+            mRingtonePreference.setOnPreferenceClickListener(this);
+        }
+
         mRingtoneLookupRunnable = new Runnable() {
             public void run() {
-                if (mRingtonePreference != null) {
+                if (!mSimTelephonyManager.isMultiSimEnabled() && mRingtonePreference != null) {
                     updateRingtoneName(RingtoneManager.TYPE_RINGTONE, mRingtonePreference,
                             MSG_UPDATE_RINGTONE_SUMMARY);
                 }
@@ -640,6 +656,23 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         ab.setMessage(R.string.dock_not_found_text);
         ab.setPositiveButton(android.R.string.ok, null);
         return ab.create();
+    }
+
+    @Override
+    public boolean onPreferenceClick(Preference preference) {
+        if (preference == mRingtonePreference && mSimTelephonyManager.isMultiSimEnabled()) {
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_MAIN);
+            intent.putExtra("PACKAGE", "com.android.phone");
+            intent.putExtra("TARGET_CLASS",
+                    "com.android.phone.MSimCallFeaturesSubSetting");
+            intent.setComponent(new ComponentName("com.android.phone",
+                    "com.android.phone.SelectSubscription"));
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            return true;
+        }
+        return false;
     }
 }
 
