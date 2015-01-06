@@ -85,7 +85,7 @@ public class RegulatoryInfoDisplayActivity extends Activity implements
         }
 
 
-        if (regulatoryInfoDrawableExists) {
+        if (regulatoryInfoDrawableExists && !isShowRegulatoryByProp) {
             View view = getLayoutInflater().inflate(R.layout.regulatory_info, null);
             ImageView image = (ImageView) view.findViewById(R.id.regulatoryInfo);
             image.setImageResource(resId);
