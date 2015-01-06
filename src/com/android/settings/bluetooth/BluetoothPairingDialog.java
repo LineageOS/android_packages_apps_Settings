@@ -23,6 +23,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.RemoteException;
+import android.os.ServiceManager;
+import android.service.dreams.DreamService;
+import android.service.dreams.IDreamManager;
 import android.text.Editable;
 import android.text.Html;
 import android.text.InputFilter;
@@ -111,6 +115,12 @@ public final class BluetoothPairingDialog extends AlertActivity implements
             finish();
             return;
         }
+
+        // If a pairing request is received and the device is dreaming (i.e. the screen timeout
+        // occurred while the user was initiating pairing), wake it up when this dialog is
+        // displayed.
+        wakeDeviceUpFromDreamIfDreaming();
+
         mCachedDeviceManager = mBluetoothManager.getCachedDeviceManager();
 
         mDevice = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
@@ -166,6 +176,22 @@ public final class BluetoothPairingDialog extends AlertActivity implements
          */
         registerReceiver(mReceiver, new IntentFilter(BluetoothDevice.ACTION_PAIRING_CANCEL));
         registerReceiver(mReceiver, new IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED));
+    }
+
+    /**
+     * If the device is in a daydream, wake it up.
+     */
+    private void wakeDeviceUpFromDreamIfDreaming() {
+        IDreamManager dreamManagerService = IDreamManager.Stub.asInterface(
+                ServiceManager.getService(DreamService.DREAM_SERVICE));
+
+        try {
+            if (dreamManagerService != null && dreamManagerService.isDreaming()) {
+                dreamManagerService.awaken();
+            }
+        } catch (RemoteException e) {
+            Log.w(TAG, "Failed to awaken from dream", e);
+        }
     }
 
     private void createUserEntryDialog() {
