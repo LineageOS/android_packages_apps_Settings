@@ -23,4 +23,10 @@
         android:summary="@string/qs_order_summary"
         android:fragment="com.android.settings.cyanogenmod.qs.QSTiles" />
 
+    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+        android:key="qs_location_advanced"
+        android:title="@string/qs_advanced_location_title"
+        android:summary="@string/qs_advanced_location_summary"
+        android:defaultValue="false" />
+
 </PreferenceScreen>
