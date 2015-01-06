@@ -49,11 +49,14 @@ import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v7.preference.PreferenceScreen;
 import android.support.v7.preference.TwoStatePreference;
+import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.R;
+import com.android.settings.DefaultRingtonePreference;
 import com.android.settings.RingtonePreference;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
@@ -124,7 +127,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
 
     private TwoStatePreference mIncreasingRing;
     private IncreasingRingVolumePreference mIncreasingRingVolume;
-    private Preference mPhoneRingtonePreference;
+    private ArrayList<DefaultRingtonePreference> mPhoneRingtonePreferences;
     private Preference mNotificationRingtonePreference;
     private Preference mAlarmRingtonePreference;
     private TwoStatePreference mVibrateWhenRinging;
@@ -361,10 +364,32 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     // === Phone & notification ringtone ===
 
     private void initRingtones() {
-        mPhoneRingtonePreference = getPreferenceScreen().findPreference(KEY_PHONE_RINGTONE);
-        if (mPhoneRingtonePreference != null && !mVoiceCapable) {
-            getPreferenceScreen().removePreference(mPhoneRingtonePreference);
-            mPhoneRingtonePreference = null;
+        DefaultRingtonePreference phoneRingtonePreference =
+                (DefaultRingtonePreference) getPreferenceScreen().findPreference(KEY_PHONE_RINGTONE);
+        if (mPhoneRingtonePreferences != null && !mVoiceCapable || !Utils.isUserOwner()) {
+            getPreferenceScreen().removePreference(phoneRingtonePreference);
+            mPhoneRingtonePreferences = null;
+        } else {
+            mPhoneRingtonePreferences = new ArrayList<DefaultRingtonePreference>();
+            TelephonyManager telephonyManager = (TelephonyManager) mContext.getSystemService(
+                    Context.TELEPHONY_SERVICE);
+            if (telephonyManager.isMultiSimEnabled()){
+                getPreferenceScreen().removePreference(phoneRingtonePreference);
+                soundCategory = getPreferenceScreen().findPreference(KEY_SOUND);
+                for (int i = 0; i < TelephonyManager.getDefault().getSimCount(); i++) {
+                    DefaultRingtonePreference ringtonePreference =
+                            new DefaultRingtonePreference(mContext, null);
+                    String title = getString(R.string.sim_ringtone_title, i + 1);
+                    ringtonePreference.setTitle(title);
+                    ringtonePreference.setSubId(i);
+                    ringtonePreference.setOrder(0);
+                    ringtonePreference.setRingtoneType(RingtoneManager.TYPE_RINGTONE);
+                    soundCategory.addPreference(ringtonePreference);
+                    mPhoneRingtonePreferences.add(ringtonePreference);
+                }
+            } else {
+                mPhoneRingtonePreferences.add(phoneRingtonePreference);
+            }
         }
         mNotificationRingtonePreference =
                 getPreferenceScreen().findPreference(KEY_NOTIFICATION_RINGTONE);
@@ -378,23 +403,27 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private final Runnable mLookupRingtoneNames = new Runnable() {
         @Override
         public void run() {
-            if (mPhoneRingtonePreference != null) {
-                final CharSequence summary = updateRingtoneName(
-                        mContext, RingtoneManager.TYPE_RINGTONE);
-                if (summary != null) {
-                    mHandler.obtainMessage(H.UPDATE_PHONE_RINGTONE, summary).sendToTarget();
+            if (mPhoneRingtonePreferences != null) {
+                ArrayList<CharSequence> summaries = new ArrayList<CharSequence>();
+                for (DefaultRingtonePreference preference : mPhoneRingtonePreferences) {
+                    CharSequence summary = updateRingtoneName(
+                            mContext, RingtoneManager.TYPE_RINGTONE, preference.getSubId());
+                    summaries.add(summary);
+                }
+                if (!summaries.isEmpty()) {
+                    mHandler.obtainMessage(H.UPDATE_PHONE_RINGTONE, summaries).sendToTarget();
                 }
             }
             if (mNotificationRingtonePreference != null) {
                 final CharSequence summary = updateRingtoneName(
-                        mContext, RingtoneManager.TYPE_NOTIFICATION);
+                        mContext, RingtoneManager.TYPE_NOTIFICATION, -1);
                 if (summary != null) {
                     mHandler.obtainMessage(H.UPDATE_NOTIFICATION_RINGTONE, summary).sendToTarget();
                 }
             }
             if (mAlarmRingtonePreference != null) {
                 final CharSequence summary =
-                        updateRingtoneName(mContext, RingtoneManager.TYPE_ALARM);
+                        updateRingtoneName(mContext, RingtoneManager.TYPE_ALARM, -1);
                 if (summary != null) {
                     mHandler.obtainMessage(H.UPDATE_ALARM_RINGTONE, summary).sendToTarget();
                 }
@@ -402,12 +431,17 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
         }
     };
 
-    private static CharSequence updateRingtoneName(Context context, int type) {
+    private static CharSequence updateRingtoneName(Context context, int type, int subId) {
         if (context == null) {
             Log.e(TAG, "Unable to update ringtone name, no context provided");
             return null;
         }
-        Uri ringtoneUri = RingtoneManager.getActualDefaultRingtoneUri(context, type);
+        Uri ringtoneUri;
+        if (type != RingtoneManager.TYPE_RINGTONE || subId <= 0) {
+            ringtoneUri = RingtoneManager.getActualDefaultRingtoneUri(context, type);
+        } else {
+            ringtoneUri = RingtoneManager.getActualRingtoneUriBySubId(context, subId);
+         }
         CharSequence summary = context.getString(com.android.internal.R.string.ringtone_unknown);
         // Is it a silent ringtone?
         if (ringtoneUri == null) {
@@ -446,17 +480,17 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private void initIncreasingRing() {
         PreferenceScreen root = getPreferenceScreen();
         mIncreasingRing = (TwoStatePreference)
-                root.findPreference(CMSettings.System.INCREASING_RING);
+                getPreferenceScreen().findPreference(CMSettings.System.INCREASING_RING);
         mIncreasingRingVolume = (IncreasingRingVolumePreference)
-                root.findPreference(KEY_INCREASING_RING_VOLUME);
+                getPreferenceScreen().findPreference(KEY_INCREASING_RING_VOLUME);
 
         if (mIncreasingRing == null || mIncreasingRingVolume == null || !mVoiceCapable) {
             if (mIncreasingRing != null) {
-                root.removePreference(mIncreasingRing);
+                getPreferenceScreen().removePreference(mIncreasingRing);
                 mIncreasingRing = null;
             }
             if (mIncreasingRingVolume != null) {
-                root.removePreference(mIncreasingRingVolume);
+                getPreferenceScreen().removePreference(mIncreasingRingVolume);
                 mIncreasingRingVolume = null;
             }
         } else {
@@ -541,7 +575,11 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case UPDATE_PHONE_RINGTONE:
-                    mPhoneRingtonePreference.setSummary((CharSequence) msg.obj);
+                    ArrayList<CharSequence> summaries = (ArrayList<CharSequence>) msg.obj;
+                    for (int i = 0; i < summaries.size(); i++) {
+                        Preference preference = mPhoneRingtonePreferences.get(i);
+                        preference.setSummary(summaries.get(i));
+                    }
                     break;
                 case UPDATE_NOTIFICATION_RINGTONE:
                     mNotificationRingtonePreference.setSummary((CharSequence) msg.obj);
