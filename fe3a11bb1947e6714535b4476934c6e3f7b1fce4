@@ -52,6 +52,24 @@
       "revId": "fe3a11bb1947e6714535b4476934c6e3f7b1fce4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aa08908_26d20ed3",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPairingDialog.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 9621
+      },
+      "writtenOn": "2015-01-07T16:04:35Z",
+      "side": 1,
+      "message": "Yeah, adding that flag to WindowManager in onCreate of the dialog does nothing, if the device is already asleep. It seems like they should add another constant in there, because I can\u0027t get the behavior I want without using at least one that is deprecated, unfortunately.",
+      "parentUuid": "7aa08908_a621defd",
+      "revId": "fe3a11bb1947e6714535b4476934c6e3f7b1fce4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
