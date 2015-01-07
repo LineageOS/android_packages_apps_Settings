@@ -76,6 +76,7 @@ public class ApnSettings extends SettingsPreferenceFragment implements
     private static final int NAME_INDEX = 1;
     private static final int APN_INDEX = 2;
     private static final int TYPES_INDEX = 3;
+    private static final int RO_INDEX = 4;
 
     private static final int MENU_NEW = Menu.FIRST;
     private static final int MENU_RESTORE = Menu.FIRST + 1;
@@ -217,7 +218,7 @@ public class ApnSettings extends SettingsPreferenceFragment implements
         boolean isSelectedKeyMatch = false;
         String where = getOperatorNumericSelection();
         Cursor cursor = getContentResolver().query(getUri(Telephony.Carriers.CONTENT_URI),
-                new String[] {"_id", "name", "apn", "type"}, where, null,
+                new String[] {"_id", "name", "apn", "type", "read_only"}, where, null,
                 Telephony.Carriers.DEFAULT_SORT_ORDER);
 
         if (cursor != null) {
@@ -233,9 +234,11 @@ public class ApnSettings extends SettingsPreferenceFragment implements
                 String apn = cursor.getString(APN_INDEX);
                 String key = cursor.getString(ID_INDEX);
                 String type = cursor.getString(TYPES_INDEX);
+                boolean readOnly = (cursor.getInt(RO_INDEX) == 1);
 
                 ApnPreference pref = new ApnPreference(getActivity());
 
+                pref.setApnReadOnly(readOnly);
                 pref.setKey(key);
                 pref.setTitle(name);
                 pref.setSummary(apn);
