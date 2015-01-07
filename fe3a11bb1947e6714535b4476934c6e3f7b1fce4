@@ -16,6 +16,24 @@
       "revId": "fe3a11bb1947e6714535b4476934c6e3f7b1fce4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aa08908_260dee90",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPairingDialog.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 9621
+      },
+      "writtenOn": "2015-01-07T15:50:19Z",
+      "side": 1,
+      "message": "I asked myself this several times, but I don\u0027t think I can. FLAG_KEEP_SCREEN_ON is a WindowManager flag that is only used to keep the screen on after the activity has been launched. PARTIAL_WAKE_LOCK is the only non deprecated wake_lock flag that I can use here, but it is not compatible with ACQUIRE_CAUSES_WAKEUP, which is what I need to happen, since the device can go right to sleep after the daydream is woken from.\n\nI can try to see if just having FLAG_KEEP_SCREEN_ON in the dialog is enough to turn the screen on when it\u0027s created. If so, that will probably make most of this patch useless, but I\u0027ll see.",
+      "parentUuid": "7aa08908_8645c2b4",
+      "revId": "fe3a11bb1947e6714535b4476934c6e3f7b1fce4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
