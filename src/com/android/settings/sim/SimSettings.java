@@ -482,7 +482,8 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             numberView.setText(mSubInfoRecord.number);
 
             TextView carrierView = (TextView)dialogLayout.findViewById(R.id.carrier);
-            carrierView.setText(mSubInfoRecord.displayName);
+            TelephonyManager tele = (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
+            carrierView.setText(tele.getNetworkOperatorName());
 
             builder.setTitle(R.string.sim_editor_title);
 
