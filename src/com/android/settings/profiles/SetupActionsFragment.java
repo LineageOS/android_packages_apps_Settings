@@ -684,6 +684,7 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
 
         final EditText entry = (EditText) dialogView.findViewById(R.id.name);
         entry.setText(mProfile.getName());
+        entry.setSelectAllOnFocus(true);
 
         new AlertDialog.Builder(getActivity())
                 .setTitle(R.string.rename_dialog_title)
