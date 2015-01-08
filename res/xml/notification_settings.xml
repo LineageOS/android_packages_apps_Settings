@@ -53,6 +53,11 @@
                 android:icon="@drawable/ring_notif_increasing"
                 android:dependency="increasing_ring" />
 
+        <!-- Link Volume Notification -->
+        <com.android.settings.cyanogenmod.SecureSettingSwitchPreference
+                android:key="volume_link_notification"
+                android:title="@string/link_volume_option_title" />
+
         <!-- Notification volume -->
         <com.android.settings.notification.VolumeSeekBarPreference
                 android:key="notification_volume"
