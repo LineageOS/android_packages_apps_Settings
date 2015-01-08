@@ -29,13 +29,13 @@ import android.os.storage.StorageEventListener;
 import android.os.storage.StorageManager;
 import android.os.storage.StorageVolume;
 import android.os.SystemProperties;
-import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.android.settings.R;
+import com.android.settings.location.RadioButtonPreference;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
@@ -59,10 +59,10 @@ public class UsbSettings extends SettingsPreferenceFragment {
             "ro.sys.usb.default.config", "diag,serial_smd,serial_tty,rmnet_bam,mass_storage");
 
     private UsbManager mUsbManager;
-    private CheckBoxPreference mMtp;
-    private CheckBoxPreference mPtp;
-    private CheckBoxPreference mCharging;
-    private CheckBoxPreference mSDCard;
+    private RadioButtonPreference mMtp;
+    private RadioButtonPreference mPtp;
+    private RadioButtonPreference mCharging;
+    private RadioButtonPreference mSDCard;
     private boolean mUsbAccessoryMode;
     private boolean operateInprogress = false;
 
@@ -115,10 +115,10 @@ public class UsbSettings extends SettingsPreferenceFragment {
         addPreferencesFromResource(R.xml.usb_settings);
         root = getPreferenceScreen();
 
-        mMtp = (CheckBoxPreference)root.findPreference(KEY_MTP);
-        mPtp = (CheckBoxPreference)root.findPreference(KEY_PTP);
-        mCharging = (CheckBoxPreference)root.findPreference(KEY_CHARGING);
-        mSDCard = (CheckBoxPreference)root.findPreference(KEY_SDCARD);
+        mMtp = (RadioButtonPreference)root.findPreference(KEY_MTP);
+        mPtp = (RadioButtonPreference)root.findPreference(KEY_PTP);
+        mCharging = (RadioButtonPreference)root.findPreference(KEY_CHARGING);
+        mSDCard = (RadioButtonPreference)root.findPreference(KEY_SDCARD);
         //not to show this mode if mass storage is not supported
         if (!isMassStorageEnabled()) {
             Log.d(TAG, "createPreferenceHierarchy mass_storage enabled");
