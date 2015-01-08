@@ -125,9 +125,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private static final String SHOW_SCREEN_UPDATES_KEY = "show_screen_updates";
     private static final String DISABLE_OVERLAYS_KEY = "disable_overlays";
     private static final String SIMULATE_COLOR_SPACE = "simulate_color_space";
-    private static final String USE_NUPLAYER_KEY = "use_nuplayer";
     private static final String USB_AUDIO_KEY = "usb_audio";
-    private static final String USE_AWESOMEPLAYER_PROPERTY = "persist.sys.media.use-awesome";
     private static final String SHOW_CPU_USAGE_KEY = "show_cpu_usage";
     private static final String FORCE_HARDWARE_UI_KEY = "force_hw_ui";
     private static final String FORCE_MSAA_KEY = "force_msaa";
@@ -245,7 +243,6 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
 
     private ListPreference mSimulateColorSpace;
 
-    private SwitchPreference mUseNuplayer;
     private SwitchPreference mUSBAudio;
     private SwitchPreference mImmediatelyDestroyActivities;
 
@@ -392,8 +389,6 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         mOverlayDisplayDevices = addListPreference(OVERLAY_DISPLAY_DEVICES_KEY);
         mOpenGLTraces = addListPreference(OPENGL_TRACES_KEY);
         mSimulateColorSpace = addListPreference(SIMULATE_COLOR_SPACE);
-        mUseNuplayer = (SwitchPreference) findPreference(USE_NUPLAYER_KEY);
-        mAllPrefs.add(mUseNuplayer);
         mUSBAudio = findAndInitSwitchPref(USB_AUDIO_KEY);
 
         mImmediatelyDestroyActivities = (SwitchPreference) findPreference(
@@ -625,7 +620,6 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         updateWifiAggressiveHandoverOptions();
         updateWifiAllowScansWithTrafficOptions();
         updateSimulateColorSpace();
-        updateUseNuplayerOptions();
         updateUSBAudioOptions();
         updateRootAccessOptions();
         updateAdvancedRebootOptions();
@@ -702,7 +696,6 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         resetAdbNotifyOptions();
         resetVerifyAppsOverUsbOptions();
         resetDevelopmentShortcutOptions();
-        resetUseNuplayerOptions();
         writeAnimationScaleOption(0, mWindowAnimationScale, null);
         writeAnimationScaleOption(1, mTransitionAnimationScale, null);
         writeAnimationScaleOption(2, mAnimatorDurationScale, null);
@@ -762,10 +755,6 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private void resetAdbNotifyOptions() {
         Settings.Secure.putInt(getActivity().getContentResolver(),
                 Settings.Secure.ADB_NOTIFY, 1);
-    }
-
-    private void resetUseNuplayerOptions() {
-        SystemProperties.set(USE_AWESOMEPLAYER_PROPERTY, "0");
     }
 
     private void updateHdcpValues() {
@@ -1209,17 +1198,6 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         }
     }
 
-    private void updateUseNuplayerOptions() {
-        updateSwitch(
-                mUseNuplayer, !SystemProperties.getBoolean(USE_AWESOMEPLAYER_PROPERTY, false));
-    }
-
-    private void writeUseNuplayerOptions() {
-        SystemProperties.set(
-                USE_AWESOMEPLAYER_PROPERTY, mUseNuplayer.isChecked() ? "false" : "true");
-        pokeSystemProperties();
-    }
-
     private void updateUSBAudioOptions() {
         updateSwitch(mUSBAudio, Settings.Secure.getInt(getContentResolver(),
                 Settings.Secure.USB_AUDIO_AUTOMATIC_ROUTING_DISABLED, 0) != 0);
@@ -1661,8 +1639,6 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
             writeWifiAggressiveHandoverOptions();
         } else if (preference == mWifiAllowScansWithTraffic) {
             writeWifiAllowScansWithTrafficOptions();
-        } else if (preference == mUseNuplayer) {
-            writeUseNuplayerOptions();
         } else if (preference == mUSBAudio) {
             writeUSBAudioOptions();
         } else if (preference == mAdvancedReboot) {
