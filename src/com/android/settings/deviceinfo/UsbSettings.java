@@ -29,9 +29,9 @@ import android.os.storage.StorageEventListener;
 import android.os.storage.StorageManager;
 import android.os.storage.StorageVolume;
 import android.os.SystemProperties;
-import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -59,10 +59,10 @@ public class UsbSettings extends SettingsPreferenceFragment {
             "ro.sys.usb.default.config", "diag,serial_smd,serial_tty,rmnet_bam,mass_storage");
 
     private UsbManager mUsbManager;
-    private CheckBoxPreference mMtp;
-    private CheckBoxPreference mPtp;
-    private CheckBoxPreference mCharging;
-    private CheckBoxPreference mSDCard;
+    private SwitchPreference mMtp;
+    private SwitchPreference mPtp;
+    private SwitchPreference mCharging;
+    private SwitchPreference mSDCard;
     private boolean mUsbAccessoryMode;
     private boolean operateInprogress = false;
 
@@ -115,10 +115,10 @@ public class UsbSettings extends SettingsPreferenceFragment {
         addPreferencesFromResource(R.xml.usb_settings);
         root = getPreferenceScreen();
 
-        mMtp = (CheckBoxPreference)root.findPreference(KEY_MTP);
-        mPtp = (CheckBoxPreference)root.findPreference(KEY_PTP);
-        mCharging = (CheckBoxPreference)root.findPreference(KEY_CHARGING);
-        mSDCard = (CheckBoxPreference)root.findPreference(KEY_SDCARD);
+        mMtp = (SwitchPreference)root.findPreference(KEY_MTP);
+        mPtp = (SwitchPreference)root.findPreference(KEY_PTP);
+        mCharging = (SwitchPreference)root.findPreference(KEY_CHARGING);
+        mSDCard = (SwitchPreference)root.findPreference(KEY_SDCARD);
         //not to show this mode if mass storage is not supported
         if (!isMassStorageEnabled()) {
             Log.d(TAG, "createPreferenceHierarchy mass_storage enabled");
