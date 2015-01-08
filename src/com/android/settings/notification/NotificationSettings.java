@@ -92,7 +92,8 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
     private PackageManager mPM;
     private boolean mVoiceCapable;
     private Vibrator mVibrator;
-    private VolumeSeekBarPreference mRingOrNotificationPreference;
+    private VolumeSeekBarPreference mRingPreference;
+    private VolumeSeekBarPreference mNotificationPreference;
 
     private TwoStatePreference mIncreasingRing;
     private IncreasingRingVolumePreference mIncreasingRingVolume;
@@ -123,15 +124,25 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         final PreferenceCategory sound = (PreferenceCategory) findPreference(KEY_SOUND);
         initVolumePreference(KEY_MEDIA_VOLUME, AudioManager.STREAM_MUSIC);
         initVolumePreference(KEY_ALARM_VOLUME, AudioManager.STREAM_ALARM);
+
+        final boolean linkNotificationVolume = Settings.System.getInt(getContentResolver(),
+                Settings.Secure.VOLUME_LINK_NOTIFICATION, 1) == 1;
+
         if (mVoiceCapable) {
-            mRingOrNotificationPreference =
+            if (!linkNotificationVolume) {
+                mNotificationPreference = initVolumePreference(KEY_NOTIFICATION_VOLUME,
+                                AudioManager.STREAM_NOTIFICATION);
+            } else {
+                sound.findPreference(KEY_NOTIFICATION_VOLUME).setEnabled(false);
+            }
+            mRingPreference =
                     initVolumePreference(KEY_RING_VOLUME, AudioManager.STREAM_RING);
-            sound.removePreference(sound.findPreference(KEY_NOTIFICATION_VOLUME));
         } else {
-            mRingOrNotificationPreference =
+            mNotificationPreference =
                     initVolumePreference(KEY_NOTIFICATION_VOLUME, AudioManager.STREAM_NOTIFICATION);
             sound.removePreference(sound.findPreference(KEY_RING_VOLUME));
         }
+
         initRingtones(sound);
         initVibrateWhenRinging(sound);
         initIncreasingRing(sound);
@@ -169,9 +180,9 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         return volumePref;
     }
 
-    private void updateRingOrNotificationIcon(int progress) {
-        mRingOrNotificationPreference.showIcon(progress > 0
-                    ? R.drawable.ring_notif
+    private void updateRingIcon(int progress) {
+        mRingPreference.showIcon(progress > 0
+                    ? R.drawable.ic_audio_ring_24dp
                     : (mVibrator == null
                             ? R.drawable.ring_notif_mute
                             : R.drawable.ring_notif_vibrate));
@@ -414,6 +425,17 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         mLockscreen.setSelectedValue(mLockscreenSelectedValue);
     }
 
+    private void updateNotificationPreferenceState() {
+        mNotificationPreference = (VolumeSeekBarPreference) findPreference(KEY_NOTIFICATION_VOLUME);
+
+        final boolean enabled = Settings.System.getInt(getContentResolver(),
+                Settings.Secure.VOLUME_LINK_NOTIFICATION, 1) == 1;
+
+        if (mNotificationPreference != null) {
+            mNotificationPreference.setEnabled(!enabled);
+        }
+    }
+
     private boolean getLockscreenNotificationsEnabled() {
         return Settings.Secure.getInt(getContentResolver(),
                 Settings.Secure.LOCK_SCREEN_SHOW_NOTIFICATIONS, 0) != 0;
@@ -456,6 +478,8 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
                 Settings.Secure.getUriFor(Settings.Secure.LOCK_SCREEN_ALLOW_PRIVATE_NOTIFICATIONS);
         private final Uri LOCK_SCREEN_SHOW_URI =
                 Settings.Secure.getUriFor(Settings.Secure.LOCK_SCREEN_SHOW_NOTIFICATIONS);
+        private final Uri VOLUME_LINK_NOTIFICATION_URI =
+                Settings.Secure.getUriFor(Settings.Secure.VOLUME_LINK_NOTIFICATION);
 
         public SettingsObserver() {
             super(mHandler);
@@ -468,6 +492,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
                 cr.registerContentObserver(NOTIFICATION_LIGHT_PULSE_URI, false, this);
                 cr.registerContentObserver(LOCK_SCREEN_PRIVATE_URI, false, this);
                 cr.registerContentObserver(LOCK_SCREEN_SHOW_URI, false, this);
+                cr.registerContentObserver(VOLUME_LINK_NOTIFICATION_URI, false, this);
             } else {
                 cr.unregisterContentObserver(this);
             }
@@ -484,6 +509,9 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
             }
             if (LOCK_SCREEN_PRIVATE_URI.equals(uri) || LOCK_SCREEN_SHOW_URI.equals(uri)) {
                 updateLockscreenNotifications();
+            }
+            if (VOLUME_LINK_NOTIFICATION_URI.equals(uri)) {
+                updateNotificationPreferenceState();
             }
         }
     }
@@ -511,7 +539,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
                     mVolumeCallback.stopSample();
                     break;
                 case UPDATE_RINGER_ICON:
-                    updateRingOrNotificationIcon(msg.arg1);
+                    updateRingIcon(msg.arg1);
                     break;
             }
         }
