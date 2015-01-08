@@ -765,7 +765,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     }
 
     private void resetUseNuplayerOptions() {
-        SystemProperties.set(USE_AWESOMEPLAYER_PROPERTY, "0");
+        SystemProperties.set(USE_AWESOMEPLAYER_PROPERTY, SystemProperties.getBoolean(
+                             "media.stagefright.use-awesome", false) ? "1" : "0");
     }
 
     private void updateHdcpValues() {
