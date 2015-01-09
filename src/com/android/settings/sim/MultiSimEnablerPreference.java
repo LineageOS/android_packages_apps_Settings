@@ -185,7 +185,7 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
 
     private void updateTitle() {
         if (mSubTitle == null) return;
-        mSubTitle.setText(mSir == null ? "SUB" : mSir.displayName);
+        mSubTitle.setText(mSir == null ? "SIM" : mSir.displayName);
     }
 
     public void setSwitchVisibility (int visibility) {
@@ -313,7 +313,7 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
     }
 
     private void showAlertDialog(int dialogId, int msgId) {
-        String title = mSir == null ? "SUB" : mSir.displayName;
+        String title = mSir == null ? "SIM" : mSir.displayName;
         // Confirm only one AlertDialog instance to show.
         dismissDialog(sAlertDialog);
         dismissDialog(sProgressDialog);
@@ -348,7 +348,7 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
     }
 
     private void showProgressDialog() {
-        String title = mSir == null ? "SUB" : mSir.displayName;
+        String title = mSir == null ? "SIM" : mSir.displayName;
 
         String msg = mContext.getString(mCurrentState ? R.string.sim_enabler_enabling
                 : R.string.sim_enabler_disabling);
