@@ -84,7 +84,7 @@
 
     <!-- Reset Profiles -->
     <string name="profile_reset_title">Reset</string>
-    <string name="profile_reset_message">Delete all user created profiles and app groups and restore them to default?</string>
+    <string name="profile_reset_message">Delete all user created profiles and restore them to default?</string>
 
     <!-- Delete confimation messages -->
     <string name="profile_delete_confirm">Delete this profile?</string>
@@ -355,14 +355,14 @@
     <string name="enable_adb_summary_cm">Enable the Android Debug Bridge (adb) interface</string>
 
     <!-- Setting checkbox summary for displaying USB debugging notification -->
-    <string name="adb_notify">USB debugging notify</string>
-    <string name="adb_notify_summary">Display a notification when USB debugging is connected</string>
+    <string name="adb_notify">Debugging notify</string>
+    <string name="adb_notify_summary">Display a notification when USB or network debugging is enabled</string>
 
     <!-- Android debugging over WiFi -->
     <string name="adb_over_network">ADB over network</string>
-    <string name="adb_over_network_summary">Enable TCP/IP debugging over network interfaces (Wi\u2011Fi, USB networks). This setting is reset on reboot</string>
+    <string name="adb_over_network_summary">Enable TCP/IP debugging over network interfaces (Wi-Fi, USB networks). This setting is reset on reboot</string>
     <!-- Warning for Adb over Network -->
-    <string name="adb_over_network_warning">WARNING: When ADB over network is enabled, your phone is open for intrusions on all connected networks, including GSM data network!\n\nOnly use this feature when you are connected on trusted networks.\n\nDo you really want to enable this function?</string>
+    <string name="adb_over_network_warning">WARNING: When ADB over network is enabled, your phone is open for intrusions on all connected networks!\n\nOnly use this feature when you are connected on trusted networks.\n\nDo you really want to enable this function?</string>
 
     <!-- Hostname setting -->
     <string name="device_hostname">Device hostname</string>
@@ -461,8 +461,8 @@
     <string name="notification_ringtone_title_cm">Notification tone</string>
 
     <!-- Whether to display IME switcher notifcation -->
-    <string name="ime_switcher_notify">Selector notification</string>
-    <string name="ime_switcher_notify_summary">Display input method selector notification</string>
+    <string name="ime_switcher_notify">Selector icon</string>
+    <string name="ime_switcher_notify_summary">Display input method selector icon</string>
 
     <!-- App ops -->
     <string name="app_ops_summaries_coarse_location">coarse location</string>
@@ -735,15 +735,7 @@
     <!-- SIM card lock settings screen, toast displayed on PIN1 disable: -->
     <string name="sim_pin_disabled">PIN1 disabled</string>
 
-    <!-- About tablet screen, summary of the item that takes you to tablet status screen -->
-    <string name="device_status_summary_cm" product="tablet">Status of the battery, network, and other information</string>
-    <!-- About phone screen, summary of the item to go into the phone status screen -->
-    <string name="device_status_summary_cm" product="default">Battery status, battery level, etc.</string>
     <string name="subs_settings">SIM card status</string>
-    <!-- About phone screen, summary of the item to go into the phone status screen -->
-    <string name="device_additional_status_summary">Phone number, signal, IMEI, etc.</string>
-    <!-- In About phone->Status screen, title of the item to go into the subscription status screen -->
-    <string name="device_additional_status">Additional status info</string>
 
     <!-- string resources for USB OTG & UICC features -->
     <string name="storage_usb">USB storage</string>
