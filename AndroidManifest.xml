@@ -2358,5 +2358,15 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".dnscrypt.DnsCryptPreferenceActivity"
+            android:label="DNS Encryption"
+            android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="com.android.settings.action.ACTION_DNSCRYPT_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
     </application>
 </manifest>
