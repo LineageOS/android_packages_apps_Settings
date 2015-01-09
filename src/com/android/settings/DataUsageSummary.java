@@ -2581,7 +2581,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
                    return mSubInfo.displayName;
                 }
             }
-            return getText(R.string.data_usage_tab_slot).toString() + " " + i;
+            return getString(R.string.data_usage_tab_slot, i);
         }
     }
 
