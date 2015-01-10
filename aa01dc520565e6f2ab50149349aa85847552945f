@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aa08908_ad725647",
+        "filename": "src/com/android/settings/notification/NotificationSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-01-10T05:58:13Z",
+      "side": 1,
+      "message": "I do not understand that distinction here. It will cause different behaviour of the settings pane depending on whether the link option was enabled when entering it or not, which isn\u0027t good UX. Is there a reason for not always initializing it using initVolumePreference() and just running updateNotificationPreferenceState() in onResume()?",
+      "revId": "aa01dc520565e6f2ab50149349aa85847552945f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aa08908_ed929e4a",
+        "filename": "src/com/android/settings/notification/NotificationSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-01-10T05:58:13Z",
+      "side": 1,
+      "message": "This should not be done if !mVoiceCapable.",
+      "revId": "aa01dc520565e6f2ab50149349aa85847552945f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
