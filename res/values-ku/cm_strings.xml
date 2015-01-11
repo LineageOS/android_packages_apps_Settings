@@ -16,7 +16,11 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="wifi_setting_countrycode_title">کۆدی ناوچەییی بێ\u2011تەل</string>
+  <string name="wifi_setting_countrycode_summary">کۆدی ناوچەیی بۆ بێ\u2011تەل دەستنیشان بکە</string>
   <string name="wifi_setting_countrycode_error">کێشەیەک هەیە لە ڕێکخستنی کۆدی ناوچە.</string>
+  <string name="wifi_setting_priority_title">پێشەنگایەتیی بێ\u2011تەل</string>
+  <string name="wifi_setting_priority_summary">پێشەنگیی تۆڕەکانی بێ\u2011تەل دەستنیشان بکە</string>
   <string name="wifi_ssid_input_limit">ناوی SSID تێپه‌ڕی له‌ پیتی ڕێگه‌پێدراو</string>
   <string name="p2p_device_name_input_limit">ناوی p2p تێپه‌ڕی له‌ پیتی ڕێگه‌پێدراو</string>
   <string name="change_crypt_password_title">وشەتێپەڕ گۆڕین</string>
@@ -43,6 +47,7 @@
   <string name="profile_trigger_configure">سازدان Trigger</string>
   <string name="profile_triggers">لێدەرەکان</string>
   <string name="profile_trigger_filter_all">هەموو ئیشپێکەرەکان</string>
+  <string name="profile_trigger_filter_wifi">داگیرسێنەرەکانی بێ\u2011تەل</string>
   <string name="profile_trigger_filter_bluetooth">کارپێکەری بلوتوس</string>
   <string name="profile_write_nfc_tag">نوسین بۆ سیمبولی NFC</string>
   <string name="profile_write_touch_tag">سوین بۆ ڕێکخستنی ناونیشان</string>
@@ -79,6 +84,8 @@
   <string name="connection_state_disabled">لەکارخرا</string>
   <string name="connection_state_enabled">چالاکرا</string>
   <string name="volume_override_summary">ڕێکخرا بۆ %1$s/%2$s</string>
+  <string name="volume_override_summary_no_override">پاشگەزی مەکەوە</string>
+  <string name="profile_volume_override_checkbox_label">پاشگەزکردنەوەی دەنگ</string>
   <string name="profile_profiles_manage">پرۆفایل</string>
   <string name="profile_profile_manage">ڕێکخستنی پرۆفایل</string>
   <string name="profile_appgroups_manage">گرووپی بەرنامەکان</string>
@@ -110,8 +117,12 @@
   <string name="profile_lockmode_insecure_summary">بێ ئاسایشی لە بەکارهێنانی قوفڵی ڕوونما</string>
   <string name="profile_lockmode_disabled_summary">قوفڵی ڕوونما لەکارخرا</string>
   <string name="profile_airplanemode_title">باری فڕۆکە</string>
+  <string name="toggleWifi">بێ\u2011تەل</string>
+  <string name="toggleWifiAp">خاڵی بەستنەوەی هەڵگرتەنیی بێ\u2011تەل</string>
   <string name="toggleBluetooth">بلوتوس</string>
   <string name="toggleGPS">GPS</string>
+  <string name="toggleData">داتای مۆبایل</string>
+  <string name="toggleSync">خۆکارانە-ناردنی داتا</string>
   <string name="toggle2g3g">2G/3G</string>
   <string name="toggleWimax">WiMAX</string>
   <string name="toggleNfc">NFC</string>
@@ -120,8 +131,10 @@
   <string name="link_volume_mutes">باری بێدەنگی کاریگەری هەیە لەسەر تێبینیەکان</string>
   <string name="volume_keys_control_ring_stream">دوگمەی دەنگ کۆنترۆڵی دوگمەی زەنگە</string>
   <string name="ring_mode_title">جۆری زەنگ</string>
+  <string name="ring_mode_normal">زەنگ</string>
   <string name="ring_mode_vibrate">لەرینەوە</string>
   <string name="ring_mode_mute">کپکردن</string>
+  <string name="ring_mode_unchanged">نەگۆڕدراو</string>
   <string name="volume_overlay_title">پەڕەی دەنگ</string>
   <string name="volume_overlay_single">تاک</string>
   <string name="volume_overlay_expandable">بڵاوچالاکردنی</string>
@@ -208,6 +221,7 @@
   <string name="lockscreen_maximize_widgets_summary">پانکردنی کورته‌وێنۆچکەکان کاتێک ڕوونماکە کرایەوە</string>
   <string name="lockscreen_enable_camera_title">کورته‌وێنۆچکەکانی کامێرا</string>
   <string name="safe_headset_volume_title">پاراستنی دەنگی بڵندگۆی سەر</string>
+  <string name="safe_headset_volume_restore_title">کەمکردنەوەی دەنگی بیستۆک لە سەر پەیوەندیدا</string>
   <string name="cyanogenmod_waiver_title">پاشگەزبونەوە</string>
   <string name="cyanogenmod_waiver_body">گۆڕینی ئەم ڕێکخستنە لەوە دەچێت دژی یاسای وڵاتەکەت بێت.\n\nIn دیاریکردنی\'باشە\' لەخوارەوە, تۆ ئەم زانیاریە ئەز سایۆنجن مۆد پێت دەڵێت.</string>
   <string name="quick_settings_panel_title">پەڕەی ڕێکخستنی خێرا</string>
@@ -227,12 +241,14 @@
   <string name="heads_up_blacklist_title">لیستی ڕەش</string>
   <string name="heads_up_disabled_notice">بۆ ڕێگه‌پێدان به‌ به‌رنامه‌ بۆ نیشاندانی ئاگاداری  ده‌رکه‌وته‌ و په‌نجه‌ره‌ی له‌سه‌ر ڕوونماکه‌ت.ده‌رکه‌وته‌کان کارپێبکه‌.</string>
   <string name="title_tile_airplane">باری فڕۆکە</string>
+  <string name="title_tile_battery">باتری</string>
   <string name="title_tile_bluetooth">بلوتوس</string>
   <string name="title_tile_brightness">ڕۆشنایی</string>
   <string name="title_tile_camera">کامێرا</string>
   <string name="title_tile_compass">قیبلە نما</string>
   <string name="title_tile_heads_up">ده‌رکه‌وته‌کان</string>
   <string name="title_tile_sleep">بڕۆ بۆ خەوتن</string>
+  <string name="title_tile_gps">ناوچه‌</string>
   <string name="title_tile_torch">مەشغەڵ</string>
   <string name="title_tile_lockscreen">قوفڵی ڕوونما</string>
   <string name="title_tile_lte">LTE</string>
@@ -243,6 +259,8 @@
   <string name="title_tile_settings">ڕێکخستن</string>
   <string name="title_tile_sound">دەنگ</string>
   <string name="title_tile_sync">ناردن</string>
+  <string name="title_tile_wifiap">خاڵی گرێدانی بێ\u2011تەل</string>
+  <string name="title_tile_wifi">بێ\u2011تەل</string>
   <string name="title_tile_user">گۆڕینی بەکارهێنەر</string>
   <string name="title_tile_networkmode">باری تۆڕ</string>
   <string name="title_tile_nfc">NFC</string>
@@ -251,12 +269,16 @@
   <string name="title_tile_volume">دەنگ</string>
   <string name="title_tile_expanded_desktop">بڵاوکردنەوەی شاشە</string>
   <string name="title_tile_network_adb">ADB بۆ تۆڕ</string>
+  <string name="title_tile_themes">سیم</string>
   <string name="title_dynamic_tiles">جووڵەیی  tiles</string>
   <string name="dynamic_tiles_note_title">تێبینی</string>
+  <string name="dynamic_tiles_note_summary">تەنیا لە کاتیک ئەستووونە جوڵاوەکان دەربکەون لە لە ڕێگای ڕووداوێکی سیستەمییەوە داگیرسابێت</string>
   <string name="title_dynamic_alarm">کاژێری بیرخەرەوە</string>
   <string name="title_dynamic_bugreport">ڕاپۆرتکردنی کەموکورتی بۆسیستەم</string>
   <string name="title_dynamic_dock_battery">دۆکی باتری</string>
   <string name="title_dynamic_equalizer">یه‌کسانکه‌ری ده‌نگ</string>
+  <string name="title_dynamic_ime">تێكردن ڕێگەی هەڵبژاردە</string>
+  <string name="title_dynamic_usbtether">گرتنەدەستی USB</string>
   <string name="title_dynamic_wifi">جیپس کردن‌ ڕوونما</string>
   <string name="title_general">گشتی</string>
   <string name="title_quick_pulldown">خێرا بۆ خوارەوە</string>
@@ -276,6 +298,12 @@
   <string name="cm_sound_mode_vibrate">لەرینەوە</string>
   <string name="cm_sound_mode_sound">دەنگ</string>
   <string name="cm_sound_mode_soundVibrate">دەنگوamp; لەرینەوە</string>
+  <string name="pref_location_mode_title">شێوازەکانی شوێن</string>
+  <string name="pref_location_mode_summary">دیارینەکردنی هەموو شێوازەکان بۆ ڕەوشی بنەڕەتی</string>
+  <string name="cm_location_mode_off">شوێن کوژاوەیە</string>
+  <string name="cm_location_mode_battery_saving">پاشەکەوتی بار</string>
+  <string name="cm_location_mode_device_only">تەنیا ئامێر</string>
+  <string name="cm_location_mode_high_accuracy">تێبینیی بەرز</string>
   <string name="tiles_reset_title">ڕێکخستنەوە</string>
   <string name="tiles_reset_message">گەڕانەوەی پیشاندانی بنەڕەت ؟</string>
   <string name="auto_brightness_setup_title">ڕۆشنایی خۆکارانە</string>
@@ -418,6 +446,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="io_sched_title">I/O scheduler</string>
   <string name="perf_profile_title">پڕۆفایل</string>
   <string name="memory_management_title">ڕێکخستنی بیرگه‌</string>
+  <string name="pref_ksm_title">کێڕناڵ</string>
   <string name="pref_ksm_summary">KSM فیزیک بیرگه‌ که‌م ده‌کاته‌وه‌</string>
   <string name="pref_purgeable_assets_title">Allow purging of assets</string>
   <string name="pref_purgeable_assets_summary">Purging of bitmap memory assets allows the freeing of more RAM when needed (requires reboot)</string>
@@ -471,6 +500,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="blacklist_regex_summary">به‌کارهێنان . as a wildcard and * for repetition. E.g. 123.* بلۆکردنی ژماره‌کان که‌ ده‌ستپێده‌که‌ن به‌ 123 and .*123.* بلۆکردنی ئه‌و ژمارانه‌ی ئه‌مه‌ی تیایدایه‌ 123</string>
   <string name="blacklist_policy_block_calls">بلۆکردنی ته‌له‌فۆنی هاتوو</string>
   <string name="blacklist_policy_block_messages">بلۆکردنی نامه‌ی هاتوو</string>
+  <string name="blacklist_bad_number_add">ناتوانا بوو لە زێدەکردنی ژمارەی ناڕاست بۆ لیستی ڕەش</string>
   <string name="add_blacklist_number">زیادکردنی ژماره‌</string>
   <string name="remove_blacklist_number_title">سڕینه‌وه‌ی ژماره‌</string>
   <string name="remove_blacklist_entry">ئایه‌ ئه‌ته‌وێت ئه‌م ژماره‌یه‌ بسڕیه‌ته‌وه‌؟</string>
@@ -490,6 +520,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="adb_notify">USB تێبینی خه‌واندنی</string>
   <string name="adb_notify_summary">نیشاندانی تێبینی کاتێکUSB  په‌یوه‌ند کرا</string>
   <string name="adb_over_network">تۆڕی ئه‌نته‌رنێتی ADB</string>
+  <string name="adb_over_network_summary">چلاکردنی  TCP/IP خه‌واندنی (Wi-Fi, USB تۆڕ). ئه‌م ڕێکخستنه‌ له‌سه‌ر کردنه‌وه‌ کاریه‌تی</string>
   <string name="adb_over_network_warning">WARNING: When ADB over network is enabled, your phone is open for intrusions on all connected networks, including GSM data network!\n\nOnly use this feature when you are connected on trusted networks.\n\nDo you really want to enable this function?</string>
   <string name="device_hostname">ناوی میوانی ئامێر</string>
   <string name="notification_drawer_title">ڕاکێشی تێبینی</string>
@@ -501,6 +532,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="collapse_on_dismiss_if_empty_summary">داخستن دوای سڕینه‌وه‌ی کۆتا تێبینی</string>
   <string name="collapse_on_dismiss_if_no_clearable_summary">داخستن دوای سڕینه‌وه‌ی تێبینی</string>
   <string name="double_tap_to_wake_title">دوجارلێیده‌ بۆ هه‌ڵسان</string>
+  <string name="double_tap_to_sleep_title">دوجار-لێدان بۆ خه‌وتن</string>
+  <string name="double_tap_to_sleep_summary">دووجار میلی دۆخ یان سلایدەری داخەری ڕوونما لێدە بۆ خستنەخەوی ئامێر</string>
   <string name="proximity_wake_title">قه‌ده‌غه‌کردنی هه‌ستانی ڕێکه‌وت</string>
   <string name="proximity_wake_summary">هه‌ستیاری نزیکی بپشکنه‌ بۆ هه‌ستانی ڕوونما</string>
   <string name="category_quick_access">ڕیگه‌ی خێرا</string>
@@ -590,6 +623,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="navigation_bar_menu_locked">قوفڵکرا</string>
   <string name="navigation_bar_arrow_keys_title">کلیلی ئاراسته‌کان له‌کاتی نوسین</string>
   <string name="navigation_bar_arrow_keys_summary">نیشاندانی چه‌پ و ڕاستی جێنیشانده‌ر له‌کاتی نوسین</string>
+  <string name="navigation_bar_recents_title">دوایین چالاکیی پەنجەلێدانی درێژ</string>
   <string name="navigation_ring_title">خێرا دانانی قه‌دبڕ</string>
   <string name="navring_target_reset_message">سڕینه‌وه‌ی هه‌موو ڕێدۆزه‌ره‌کان که‌ دروستکراون و قه‌دبڕه‌کان بۆ باری بنه‌ڕه‌تی خۆی؟</string>
   <string name="navring_target_reset">قه‌دبڕی شریتی ڕێدۆزه‌ر بۆ باری سه‌ره‌کی خۆی</string>
@@ -637,6 +671,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="hardware_keys_action_in_app_search">گەڕانی بەرنامە</string>
   <string name="hardware_keys_action_launch_camera">کامێرا کردنەوە</string>
   <string name="hardware_keys_action_last_app">کۆتا به‌رنامه‌</string>
+  <string name="hardware_keys_action_sleep">ڕوونما بکوژینەوە</string>
   <string name="power_end_call_title">کۆتاییهاتنی پەیوەندی</string>
   <string name="power_end_call_summary">ده‌ستنان به‌ دوگمه‌ی پاوه‌ر کۆتایی به‌ په‌یوه‌ندی ده‌هێنێت</string>
   <string name="button_wake_title">لەخەوهەستان</string>
@@ -689,6 +724,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="status_bar_notif_count_title">پێشاندانی تێبینی</string>
   <string name="status_bar_notif_count_summary">پیشاندانی ژماره‌ی ته‌له‌فۆن که‌ نه‌کراونه‌ته‌وه‌ له‌ تێبینی</string>
   <string name="development_shortcut_title">قه‌دبڕی گه‌شه‌</string>
+  <string name="development_shortcut_summary">بەتواناکردنی بەڕێوەبردنی کورتەڕێیەکانی بەرنامە لە ناو بەشی ئاگادارکردنەوەکان و لیستی دوایین بەرنامەکان</string>
   <string name="usb_mass_storage_title">بیرگه‌ی ناوه‌کی (UMS)</string>
   <string name="usb_mass_storage_summary">با دۆسیه‌کان بگوازینه‌وه‌ له‌ کۆمپیوته‌ره‌که‌ت بۆ بیرگه‌ی ده‌ره‌کی له‌ مۆبایله‌کات و فلاشی لێبده‌</string>
   <string name="storage_rescan_media">گه‌ڕان بۆ زانینی قه‌باره‌ی بیرگه‌</string>
@@ -699,6 +735,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="logger_summary">به‌ڕێوه‌بردنی ڕێکخستنی ڕاپۆرتی هه‌ڵه‌کان</string>
   <string name="custom_runtime_warning_title">ئاگاداریی</string>
   <string name="custom_runtime_warning_message">ART is not officially supported by CyanogenMod as it is highly experimental and has the potential to cause instability, crashes, data loss or prevent the proper boot of your device. Visit وlt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"وgt;Introducing ARTوlt;/aوgt; for more information.وlt;br/وgt;وlt;br/وgt;We request you do not file bug reports if you have enabled ART as your runtime.وlt;br/وgt;وlt;br/وgt;Are you sure you want to reboot to change runtime from <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> to <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
+  <string name="gps_download_data_wifi_only">دابەزاندنی دراوەی یارمەتیدەری GPS تەنیا لە ڕێگەی تۆڕەکانی بێ\u2011تەل</string>
   <string name="battery_info_status_charging_dock_ac">(DockAC)</string>
   <string name="battery_info_status_charging_dock_usb">(DockUSB)</string>
   <string name="menu_stats_reset">ڕێکخستنه‌وه‌</string>
@@ -728,6 +765,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="stylus_app_not_installed">%s دانه‌مه‌زراوه‌</string>
   <string name="ime_switcher_notify">تێبینی دیاریکه‌ر</string>
   <string name="ime_switcher_notify_summary">نیشاندانی ڕێگه‌ی تێبینی دیاریکه‌ر</string>
+  <string name="high_touch_sensitivity_title">هەستیاری ساوانی بەرز</string>
+  <string name="high_touch_sensitivity_summary">هەستیاری ساوڕوونما برز بکەوە، ئەوە ئەتوانرێ بەکاربهێنرێت کاتێک دەستەوانت لە دەستدایە</string>
   <string name="app_ops_summaries_coarse_location">ناوچه‌ی زبر</string>
   <string name="app_ops_summaries_fine_location">ناوچه‌ی باش</string>
   <string name="app_ops_summaries_gps">GPS</string>
@@ -738,6 +777,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="app_ops_summaries_modify_call_log">لابردنی تۆماری ته‌له‌فۆن</string>
   <string name="app_ops_summaries_read_calendar">خوێندنه‌وه‌ی ڕۆژمێر</string>
   <string name="app_ops_summaries_modify_calendar">لابردنی ڕۆژمێر</string>
+  <string name="app_ops_summaries_wifi_scan">پشکنینی بێ\u2011تەل</string>
   <string name="app_ops_summaries_notification">تێبینی</string>
   <string name="app_ops_summaries_cell_scan">خانه‌ی گه‌ڕان</string>
   <string name="app_ops_summaries_call_phone">ته‌له‌فۆن</string>
@@ -766,9 +806,12 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="app_ops_summaries_media_volume">ده‌نگی میدیا</string>
   <string name="app_ops_summaries_alarm_volume">ده‌نگی ئاگادارکه‌ره‌وه‌</string>
   <string name="app_ops_summaries_notification_volume">تێبینی ده‌نگ</string>
+  <string name="app_ops_summaries_bluetooth_volume">ده‌نگی بلوتوس</string>
   <string name="app_ops_summaries_keep_awake">باکراوه‌بێت</string>
   <string name="app_ops_summaries_monitor_location">ناوچه‌ی پیشانگەر</string>
   <string name="app_ops_summaries_monitor_high_power_location">به‌رزی هێزی ناوچه‌ی پیشانگەر</string>
+  <string name="app_ops_summaries_wifi_change">گۆڕینی بێ\u2011تەل</string>
+  <string name="app_ops_summaries_bluetooth_change">گۆڕینی بلوتوس</string>
   <string name="app_ops_summaries_data_change">گۆڕینی داتا</string>
   <string name="app_ops_summaries_alarm_wakeup">هه‌ڵسان</string>
   <string name="app_ops_summaries_send_mms">ناردنی MMS</string>
@@ -808,6 +851,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="app_ops_labels_notification_volume">ده‌نگی تێبینی</string>
   <string name="app_ops_labels_bluetooth_volume">ده‌نگی بلوتوس</string>
   <string name="app_ops_labels_keep_awake">هه‌ڵسان</string>
+  <string name="app_ops_labels_wifi_change">گۆڕینی بێ\u2011تەل</string>
   <string name="app_ops_labels_bluetooth_change">گۆڕینی بلوتوس</string>
   <string name="app_ops_labels_data_change">گۆڕینی داتا</string>
   <string name="app_ops_labels_alarm_wakeup">هه‌ڵسان</string>
@@ -848,8 +892,10 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="voice_wakeup_retrain_title">دوباره‌کردنه‌وه‌ی ده‌نگت</string>
   <string name="voice_wakeup_activity_title">چالاکردن بۆ دابه‌زاندن</string>
   <string name="voice_wakeup_default_activity">Google ئێستا</string>
+  <string name="multi_sim_settings_title">سیمکارتەکان</string>
   <string name="multi_sim_settings_group_summary">دیاریکردنی سیمی بنه‌ڕه‌ت</string>
   <string name="voice_title">ده‌نگی ته‌له‌فۆن</string>
+  <string name="data_title">پەیوەندیی دراوە</string>
   <string name="sms_title">ناردنی کورته‌نامه‌</string>
   <string name="priority_sub_title">باشترین ڕونکردنه‌وه‌</string>
   <string name="bluetooth_accept_all_files">وه‌رگرتنی هه‌موو په‌ڕگه‌یه‌ک</string>
@@ -860,6 +906,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="menu_hidden_apps_reset_lock">ڕێکخستنه‌وه‌ی قوفڵی گه‌یاندن</string>
   <string name="protected_apps">بەرنامە پارێزراوەکان</string>
   <string name="saving_protected_components">پاشه‌که‌وتکردنی بنچینه‌ ئاماره‌کان\u2026</string>
+  <string name="launch_app">داگیرساندنی بەرنامە</string>
   <string name="pa_login_username_hint">ناو(ئیمەیڵ)</string>
   <string name="pa_login_password_hint">تێپەڕەوشە</string>
   <string name="pa_login_submit_button">چونەژورەوە</string>
@@ -879,4 +926,101 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="block_notifications_title">فلتەرکردنی ئاگادارییه‌کان</string>
   <string name="block_notifications_summary">به‌ڕێوه‌بردنی ئاگادارییه‌ پشتگوێخراوه‌کان</string>
   <string name="no_filters_title">هیچ فلته‌ری له‌سه‌رنییه‌. بۆ دانانی فلته‌ر له‌سه‌ری، ده‌ستی له‌سه‌ر ڕابگره‌ و \'پشتگوێخستنی نامه‌کان وه‌ک ئه‌مانه‌\' هه‌ڵبژێره‌.</string>
+  <string name="usb_sd_eject">ناجێگیرکردنی کۆگای USB</string>
+  <string name="usb_sd_eject_summary">کۆگای USB ناجێگیر بکە ئەوکات دەتوانی بە پارێزراوی لایبەری</string>
+  <string name="usb_sd_insert_summary">کۆگای USB تێکە بۆ جێگیرکردن</string>
+  <string name="usb_sd_mount">جێگیرکردنی کۆگای USB</string>
+  <string name="usb_sd_format">پاککردنەوەی کۆگای USB</string>
+  <string name="usb_sd_format_summary">هەموو دراوەکانی ناو کۆگای USB پاک بکەوە، وەکوو موزیک و وێنەکان</string>
+  <string name="usb_dlg_confirm_unmount_title">سوانه‌کردنی بیرگه‌ی USB?</string>
+  <string name="usb_dlg_confirm_unmount_text">ئەگەر تۆ کۆگای USB ناجێگیر بکەی، هەندێک بەرنامە کە بەکاریان دەهێنی دەوەستن و لەوانە تا ئەوکات کۆگای USB جێگیر دەکەیتەوە بەردەست نەبن.</string>
+  <string name="usb_dlg_error_unmount_text">نەتوانرا بیرگەی USB دەربکرێ .دوبارەی بکەرەوە دواتر.</string>
+  <string name="usb_unmount_inform_text">بیرگەی ناوەکی USB ئسوار نابێت.</string>
+  <string name="usb_sd_ejecting_title">ناجێگیرکردنی کۆگای  USB</string>
+  <string name="usb_sd_ejecting_summary">ناجێگیرکردنی کۆگای USB لە بەردەوامیدایە</string>
+  <string name="usb_media_format_title">پاککردنەوەی کۆگای USB</string>
+  <string name="usb_media_format_desc">سڕینەوەی بیرگە?هەموو شتەکان لەناو ئەچن <b>all</b> داتای پاشەکەوتکراو!</string>
+  <string name="usb_media_format_button_text">سڕینه‌وه‌ی كۆگای USB</string>
+  <string name="usb_media_format_final_desc">سڕینەوەی بیرگەی USB، هەموو ئەو فایلە هەڵگیراوانە لەوێ ئەسڕێتەوە؟ تۆ ناتوانیت پێچەوانەی ئەم کارە بکەیت!</string>
+  <string name="usb_media_format_gesture_explanation">تۆ پێویستە شێوازی کردنەوەت بکێشیتەوە بۆ دوپاتکردنەوەی ئەوەی کە تۆ دەتەوێت بیرگەی USB بسڕیتەوە.</string>
+  <string name="sd_sd_eject">سواو نه‌کردنی بیرگه‌ی ده‌ره‌کی؟</string>
+  <string name="sd_sd_eject_summary">سواونەکردنی بیرگەی دەرەکی بە ئاسانی ئەتوانی لایبەریت</string>
+  <string name="sd_sd_insert_summary">بیرگه‌یه‌کی SD تێبکه‌ بۆ به‌ستنه‌وه‌</string>
+  <string name="sd_sd_mount">به‌ستنه‌وه‌ی بیرگه‌ی SD</string>
+  <string name="sd_sd_format">سڕینه‌وه‌ی SD card</string>
+  <string name="sd_sd_format_summary">سڕینه‌وه‌ی هه‌موو داتاکان له‌سه‌ر بیرگه‌ی ده‌ره‌کی،وه‌کو میوزک و وێنه‌کان</string>
+  <string name="sd_dlg_confirm_unmount_title">سواو نه‌کردنی بیرگه‌ی ده‌ره‌کی؟?</string>
+  <string name="sd_dlg_confirm_unmount_text">ئەگەر کارتی بیرگە دەربکەی لەوانەیە هەندێ لە بەرنامەکانت بوەستن وە نەکەونە کار تاکو دوبارە دایدەنێی.</string>
+  <string name="sd_dlg_error_unmount_text">ناتوانرێت بیرگەی دەرەکی ئاسوار نەبێت ،دوبارە هەوڵبدەرەوە.</string>
+  <string name="sd_unmount_inform_text">بیرگەی دەرەکەی ئسوارە ئەبیت.</string>
+  <string name="sd_sd_ejecting_title">ناجێگیرکردنی بیرگەی دەرەکی</string>
+  <string name="sd_sd_ejecting_summary">ناجێگیرکردنی بیرگەی دەرەکی لە بەردەوامیدایە</string>
+  <string name="sd_media_format_title">سڕینه‌وه‌ی SD card</string>
+  <string name="sd_media_format_desc">سڕینەوەی داتای بیرگەی دەرەکی?شتەکانت لەناو ئەچن <b>all</b> داتا لەسەر بیرگەی دەرەکی!</string>
+  <string name="sd_media_format_button_text">سڕینه‌وه‌ی SD card</string>
+  <string name="sd_media_format_final_desc">سڕینەوەی کارتی SD، هەموو ئەو فایلە هەڵگیراوانە لەوێ ئەسڕێتەوە؟ تۆ ناتوانیت پێچەوانەی ئەم کارە بکەیت!</string>
+  <string name="sd_media_format_gesture_explanation">ئەبێت قوفڵی چنینەکە بکێشیت بۆ کردنەوەی قوفڵەکە بۆ سڕینەوەی بیرگەی دەرەکی.</string>
+  <string name="bluetooth_enter_pin_msg_hs">بۆ جووتکردنە لەگەڵ:<xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="ناوی_ئامێرەکە">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g>PIN بنوسە ئامێرەکە پێویستیەتی (١٦ پیت زیاتر بێت):</string>
+  <string name="bluetooth_profile_sap">چوونەناو سیم</string>
+  <string name="bluetooth_profile_dun">لێدان بۆ چونە ژورەوەی تۆڕ</string>
+  <string name="bluetooth_sap_profile_summary_connected">پەیوەندکرا بە ڕێگەی ڕاژەی سیمکارت</string>
+  <string name="bluetooth_dun_profile_summary_connected">پەیوەندکرا بە DUN ڕاژەوە</string>
+  <string name="bluetooth_sap_profile_summary_use_for">بەکارهێنانی سیمکارت بۆ ڕێگە دان</string>
+  <string name="bluetooth_dun_profile_summary_use_for">لێدانی تۆڕ بۆ ڕاژە</string>
+  <string name="wifi_disabled_association_rejected">هاونشینی هەڵوەشایەوە</string>
+  <string name="screencolor">ڕەنگی ڕوونما</string>
+  <string name="custom_screencolor">ڕێکخستنی ڕەنگی ڕوونما</string>
+  <string name="device_additional_status">زانیاری زیاتر</string>
+  <string name="enable_quickboot_title">چالاکردنی باری خێرا بووت</string>
+  <string name="enable_quickboot_summary">خستنە ئامێرەکە بۆ باری خێرە لە جیاتی باری ئاسای کوژانەوە.</string>
+  <string name="data_usage_tab_slot">SIM  </string>
+  <string name="sel_sub_title">سازدانی سیمکارتەکان</string>
+  <string name="sel_sub_summary">سیمکارتەکانت دیاری بکە</string>
+  <string name="no_sim_info">زانیاری سیمکارتەکە لەکارانیە.\nپێڕستەکە ناتوانرێت بکرێت</string>
+  <string name="subs_settings">بارودۆخی سیمکارت</string>
+  <string name="set_data_subscription_progress">ڕێکخستنی داتای هاوبەش\u2026</string>
+  <string name="set_dds_success">داتای هاوبەش بە سەرکەوتی دانرا</string>
+  <string name="set_dds_failed">هەڵە لە کاتی ڕێکخستنی داتای هاوبەش.لابردنی هەرداتایەکی پەیوەندی و هەوڵبدەرەوە.</string>
+  <string name="set_dds_error">هەڵە لەکاتی ڕێکخستنی دراوەی بەشداریکردن.</string>
+  <string name="set_sms_error">هەڵە لە کاتی ڕێکخستنی بەشداریی کورتەنامە. بەشداری چالاک نییە.</string>
+  <string name="set_voice_error">هەڵە لە کاتی ڕێکخستنی بەشداریی دەنگ. بەشداری چالاک نییە.</string>
+  <string name="set_priority_sub_error">هەڵە لە کاتی ڕێکخستنی بەشداریی پێشەنگی. بەشداری چالاک نییە.</string>
+  <string name="prompt">هەردەم بپرسە</string>
+  <string name="maximum_head_level">سەر: %1$s W/kg</string>
+  <string name="maximum_body_level">تەن: %1$s W/kg</string>
+  <string name="tune_away_title">TuneAway</string>
+  <string name="tune_away_enabled">TuneAway تواناپێدراوە</string>
+  <string name="tune_away_disabled">TuneAway لەکار خرا</string>
+  <string name="screencolor_save">پاشەکەوتکردن</string>
+  <string name="screencolor_cancel">پاشگەزبوونەوە</string>
+  <string name="restore_preview">بینینی وێنەی بنەڕەتی</string>
+  <string name="selectnewfile_menu">بینینی وێنەی نوێ لە پێشانگەوە</string>
+  <string name="selectfile_menu">بینینی وێنە لە پێشانگەوە</string>
+  <string name="restore_default_str">ڕێکخستنەوە</string>
+  <string name="hue_str">ڕەنگ: <xliff:g id="hue_value">%1$s</xliff:g></string>
+  <string name="saturation_str">تێریی ڕەنگ: <xliff:g id="saturation_value">%1$s</xliff:g></string>
+  <string name="contrast_str">کۆنتراست: <xliff:g id="contrast_value">%1$s</xliff:g></string>
+  <string name="intensity_str">توندێتیی ڕەنگ: <xliff:g id="intensity_str_value">%1$s</xliff:g></string>
+  <string name="device_status_summary_cm" product="tablet">دۆخی بارگە،تۆڕ و دیکەی زانیارییەکان</string>
+  <string name="device_status_summary_cm" product="default">دۆخی بارگە،ئاستی بارگە ،هتد.</string>
+  <string name="wifi_ap_clients_title">ئامێرە بەستراوەکان</string>
+  <string name="wifi_ap_client_ap_disabled">Hotspot نەتوانا کراوە</string>
+  <string name="wifi_ap_client_none_connected">هیچ ئامێرێک نەبەستراوەتەەوە</string>
+  <string name="profile_menu_delete_title">سڕینه‌وه‌</string>
+  <string name="profile_menu_triggers_title">گۆڕین داگیرسێنەرەکان</string>
+  <string name="profile_action_none">چالاکیی نییە</string>
+  <string name="profile_action_disabled">نەتواناکردن</string>
+  <string name="profile_action_enable">تواناپێدان</string>
+  <string name="profile_tabs_wifi">بێ\u2011تەل</string>
+  <string name="profile_tabs_bluetooth">بلوتوس</string>
+  <string name="profile_tabs_nfc">NFC</string>
+  <string name="profile_setup_setup_triggers_title">هەنگاوی ١: زیاکردنی داگیرسێنەرەکان</string>
+  <string name="profile_setup_setup_triggers_title_config">گۆڕینی داگیرسینەرەکان: <xliff:g id="profile_name">%1$s</xliff:g></string>
+  <string name="profile_setup_actions_title">هەنگاوی ٢: ڕێکخستنی چالاکییەکان</string>
+  <string name="profile_setup_actions_title_config">سازدانەوەی چالاکییەکان</string>
+  <string name="no_bluetooth_triggers">هیچکام لە داگیرسێنەرەکانی بلوتوس بەردەست نییە</string>
+  <string name="no_wifi_triggers">هیچکام لە داگیرسێنەرەکانی بێ\u2011تەل بەردەست نییە</string>
+  <string name="profile_setup_setup_triggers_description">تکایە ئەو داگیرسێنەرانەی کە ئەم لاڕوووە چالاک دەکەن دیاری بکە</string>
+  <string name="profile_setup_actions_description">ئێستا سازدان بکە کە چی ڕوو دەدات کاتێک لاڕوووەکە چالاک کرابێت</string>
+  <string name="sound_ringtone_multisim_options">گۆڕینی  زەنگە بنەڕەتییەکان</string>
 </resources>

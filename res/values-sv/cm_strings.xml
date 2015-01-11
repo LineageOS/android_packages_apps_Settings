@@ -16,7 +16,11 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="wifi_setting_countrycode_title">Wi\u2011Fi regionskod</string>
+  <string name="wifi_setting_countrycode_summary">Ange regionskod för Wi\u2011Fi</string>
   <string name="wifi_setting_countrycode_error">Det uppstod ett problem vid inställningen av regionskoden.</string>
+  <string name="wifi_setting_priority_title">Wi\u2011Fi prioritet</string>
+  <string name="wifi_setting_priority_summary">Ange prioriteten för Wi\u2011Fi nätverken</string>
   <string name="wifi_ssid_input_limit">SSID överskrider maxlängd</string>
   <string name="p2p_device_name_input_limit">P2P-namn överskrider maxlängd</string>
   <string name="change_crypt_password_title">Byt lösenord</string>
@@ -77,6 +81,7 @@
   <string name="connection_state_disabled">Inaktivera</string>
   <string name="connection_state_enabled">Aktivera</string>
   <string name="volume_override_summary">Ställ till %1$s/%2$s</string>
+  <string name="volume_override_summary_no_override">Skriv inte över</string>
   <string name="profile_profiles_manage">Profiler</string>
   <string name="profile_profile_manage">Hantera profiler</string>
   <string name="profile_appgroups_manage">Appgrupper</string>
@@ -120,8 +125,10 @@
   <string name="link_volume_mutes">Tyst läge påverkar aviseringar</string>
   <string name="volume_keys_control_ring_stream">Volymknapparna kontrollerar ringsignalsvolym</string>
   <string name="ring_mode_title">Ringningsläge</string>
+  <string name="ring_mode_normal">Ring</string>
   <string name="ring_mode_vibrate">Vibrera</string>
   <string name="ring_mode_mute">Tyst</string>
+  <string name="ring_mode_unchanged">Oförändrad</string>
   <string name="volume_overlay_title">Stil på volympanel</string>
   <string name="volume_overlay_single">Enkel</string>
   <string name="volume_overlay_expandable">Utökningsbar</string>
@@ -234,6 +241,7 @@
   <string name="title_tile_compass">Kompass</string>
   <string name="title_tile_heads_up">Heads up</string>
   <string name="title_tile_sleep">Somna</string>
+  <string name="title_tile_gps">Plats</string>
   <string name="title_tile_torch">Ficklampa</string>
   <string name="title_tile_lockscreen">Låsskärm</string>
   <string name="title_tile_lte">LTE</string>
@@ -253,6 +261,7 @@
   <string name="title_tile_volume">Volym</string>
   <string name="title_tile_expanded_desktop">Utökat skrivbord</string>
   <string name="title_tile_network_adb">ADB över nätverk</string>
+  <string name="title_tile_themes">Teman</string>
   <string name="title_dynamic_tiles">Dynamiska brickor</string>
   <string name="dynamic_tiles_note_title">Notis</string>
   <string name="title_dynamic_alarm">Alarmklocka</string>
@@ -278,7 +287,10 @@
   <string name="cm_sound_mode_vibrate">Vibrera</string>
   <string name="cm_sound_mode_sound">Ljud</string>
   <string name="cm_sound_mode_soundVibrate">Ljud och vibration</string>
+  <string name="pref_location_mode_title">Platslägen</string>
+  <string name="cm_location_mode_off">Plats av</string>
   <string name="cm_location_mode_device_only">Endast enhet</string>
+  <string name="cm_location_mode_high_accuracy">Hög noggrannhet</string>
   <string name="tiles_reset_title">Återställ</string>
   <string name="tiles_reset_message">Återställ till standardutformningen?</string>
   <string name="auto_brightness_setup_title">Automatisk ljusstyrka</string>
@@ -474,6 +486,7 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="blacklist_regex_summary">Använd . som en joker och * för upprepning. E.g. 123.* blockerar nummer som börjar med 123 och .*123.* blockerar nummer som innehåller 123</string>
   <string name="blacklist_policy_block_calls">Blockera inkommande samtal</string>
   <string name="blacklist_policy_block_messages">Blockera inkommande meddelanden</string>
+  <string name="blacklist_bad_number_add">Kunde inte lägga till ogiltigt nummer till svartlistan</string>
   <string name="add_blacklist_number">Lägg till nummer</string>
   <string name="remove_blacklist_number_title">Ta bort nummer</string>
   <string name="remove_blacklist_entry">Vill du ta bort denna post från svartlistan?</string>
@@ -504,6 +517,7 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="collapse_on_dismiss_if_empty_summary">Stäng efter borttagning av den sista aviseringen</string>
   <string name="collapse_on_dismiss_if_no_clearable_summary">Stäng efter borttagningen av den sista borttagbara aviseringen</string>
   <string name="double_tap_to_wake_title">Dubbeltryck för att väcka</string>
+  <string name="double_tap_to_sleep_title">Dubbeltryck för att släcka</string>
   <string name="proximity_wake_title">Förhindra oavsiktlig väckning</string>
   <string name="proximity_wake_summary">Kontrollera närhetssensorn innan väckning av skärmen</string>
   <string name="category_quick_access">Snabbåtkomstmeny</string>
@@ -640,6 +654,7 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="hardware_keys_action_in_app_search">Sök i app</string>
   <string name="hardware_keys_action_launch_camera">Öppna kamera</string>
   <string name="hardware_keys_action_last_app">Senaste app</string>
+  <string name="hardware_keys_action_sleep">Stäng av skärmen</string>
   <string name="power_end_call_title">Avsluta samtal</string>
   <string name="power_end_call_summary">Tryck på avstängningsknappen kommer att avsluta pågående samtal</string>
   <string name="button_wake_title">Vakna</string>
@@ -731,6 +746,7 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="stylus_app_not_installed">%s är inte installerad</string>
   <string name="ime_switcher_notify">Inmatningsavisering</string>
   <string name="ime_switcher_notify_summary">Visa inmatningsväxlaren som avisering</string>
+  <string name="high_touch_sensitivity_title">Hög fingerkänslighet</string>
   <string name="app_ops_summaries_coarse_location">grov lokalisering</string>
   <string name="app_ops_summaries_fine_location">fin lokalisering</string>
   <string name="app_ops_summaries_gps">GPS</string>
@@ -741,6 +757,7 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="app_ops_summaries_modify_call_log">modifiera samtalslista</string>
   <string name="app_ops_summaries_read_calendar">läsa kalender</string>
   <string name="app_ops_summaries_modify_calendar">modifiera kalender</string>
+  <string name="app_ops_summaries_wifi_scan">Wi\u2011Fi-skanning</string>
   <string name="app_ops_summaries_notification">avisering</string>
   <string name="app_ops_summaries_cell_scan">söka efter mobilnät</string>
   <string name="app_ops_summaries_call_phone">ringa telefon</string>
@@ -851,8 +868,10 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="voice_wakeup_retrain_title">Omskola din röst</string>
   <string name="voice_wakeup_activity_title">Aktivitet att öppna</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
+  <string name="multi_sim_settings_title">SIM-kort</string>
   <string name="multi_sim_settings_group_summary">Standardval av SIM</string>
   <string name="voice_title">Röstsamtal</string>
+  <string name="data_title">Dataanslutning</string>
   <string name="sms_title">Skickar SMS</string>
   <string name="priority_sub_title">Prioriterat abonnemang</string>
   <string name="bluetooth_accept_all_files">Acceptera alla filtyper</string>
@@ -863,6 +882,7 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="menu_hidden_apps_reset_lock">Återställ mönsterlås</string>
   <string name="protected_apps">Skyddade appar</string>
   <string name="saving_protected_components">Sparar komponenttillstånd\u2026</string>
+  <string name="launch_app">Starta app</string>
   <string name="pa_login_username_hint">Användarnamn (email)</string>
   <string name="pa_login_password_hint">Lösenord</string>
   <string name="pa_login_submit_button">Logga in</string>
@@ -882,17 +902,53 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="block_notifications_title">Filtrera meddelanden</string>
   <string name="block_notifications_summary">Hantera ignorerade aviseringar och filter</string>
   <string name="no_filters_title">Inga inställda filter. För att filtrera en avisering, långtryck på den och välj \"Ignorera meddelanden som detta\".</string>
+  <string name="usb_sd_eject">Koppla från USB-lagring</string>
+  <string name="usb_sd_eject_summary">Koppla från USB-lagringsenheten så du kan ta bort den säkert</string>
+  <string name="usb_sd_insert_summary">Sätt in USB-lagring för montering</string>
+  <string name="usb_sd_mount">Anslut USB-lagring</string>
+  <string name="usb_sd_format">Radera USB-lagring</string>
+  <string name="usb_sd_format_summary">Raderar alla data på USB-lagringsenheten, som musik och bilder</string>
+  <string name="usb_dlg_confirm_unmount_title">Koppla från USB-lagring?</string>
+  <string name="usb_dlg_error_unmount_text">Kunde inte koppla från USB-lagringsenheten. Försök igen senare.</string>
+  <string name="usb_unmount_inform_text">USB-lagringsenheten kommer kopplas från.</string>
+  <string name="usb_sd_ejecting_title">Kopplar från USB-lagring</string>
+  <string name="usb_sd_ejecting_summary">Frånkoppling av USB-lagring pågår</string>
+  <string name="usb_media_format_title">Radera USB-lagring</string>
+  <string name="usb_media_format_button_text">Radera USB-lagring</string>
+  <string name="sd_sd_eject">Koppla från SD-kort</string>
+  <string name="sd_sd_mount">Anslut SD-kort</string>
+  <string name="sd_sd_format">Radera SD-kort</string>
+  <string name="sd_dlg_confirm_unmount_title">Koppla från SD-kort?</string>
+  <string name="sd_dlg_confirm_unmount_text">Om du kopplar från SD-kortet så kan några appar som du använder sluta fungera och kan vara otillgängliga tills du monterar SD-kortet igen.</string>
+  <string name="sd_unmount_inform_text">SD-kortet kommer kopplas från.</string>
+  <string name="sd_sd_ejecting_title">Kopplar från SD-kort</string>
+  <string name="sd_sd_ejecting_summary">Frånkoppling av SD-kort pågår</string>
   <string name="sd_media_format_title">Radera SD-kort</string>
+  <string name="sd_media_format_desc">Radera SD-kortet? Du kommer förlora <b>all</b> data på kortet!</string>
   <string name="sd_media_format_button_text">Radera SD-kort</string>
+  <string name="bluetooth_enter_pin_msg_hs">För att para ihop med:<xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g>Skriv enhetens PIN-kod (16 siffror eller fler):</string>
   <string name="bluetooth_profile_sap">SIM-åtkomst</string>
+  <string name="bluetooth_profile_dun">Åtkomst till uppringt nätverk</string>
+  <string name="bluetooth_dun_profile_summary_connected">Ansluten till DUN-server</string>
+  <string name="bluetooth_sap_profile_summary_use_for">Använd för SIM-åtkomst</string>
+  <string name="bluetooth_dun_profile_summary_use_for">Använd för uppringd nätverkåtkomst</string>
   <string name="screencolor">Skärmfärg</string>
   <string name="custom_screencolor">Anpassad skärmfärg</string>
   <string name="device_additional_status">Övrig statusinformation</string>
   <string name="data_usage_tab_slot">SIM </string>
+  <string name="sel_sub_title">Konfigurera SIM-kort</string>
+  <string name="sel_sub_summary">Välj dina SIM-kort</string>
+  <string name="set_data_subscription_progress">Ställer in dataabonnemang\u2026</string>
+  <string name="set_dds_error">Fel vid inställning av dataabonnemang.</string>
+  <string name="set_sms_error">Fel vid inställning av SMS-abonnemang. Abonnemang ej aktivt.</string>
+  <string name="prompt">Fråga alltid</string>
+  <string name="maximum_head_level">Huvud: %1$s W/kg</string>
+  <string name="maximum_body_level">Kropp: %1$s W/kg</string>
   <string name="tune_away_enabled">TuneAway aktiverat</string>
   <string name="tune_away_disabled">TuneAway inaktiverad</string>
   <string name="screencolor_save">Spara</string>
   <string name="screencolor_cancel">Avbryt</string>
+  <string name="restore_preview">Visa standardbild</string>
   <string name="selectnewfile_menu">Visa ny bild från galleriet</string>
   <string name="selectfile_menu">Visa bild från galleriet</string>
   <string name="restore_default_str">Återställ</string>
@@ -903,10 +959,21 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="device_status_summary_cm" product="tablet">Status för batteriet, nätverk och annan information</string>
   <string name="device_status_summary_cm" product="default">Batteristatus, batterinivå, etc.</string>
   <string name="wifi_ap_clients_title">Anslutna enheter</string>
+  <string name="wifi_ap_client_ap_disabled">Hotspot är inaktiverad</string>
+  <string name="wifi_ap_client_none_connected">Inga enheter anslutna</string>
   <string name="profile_menu_delete_title">Ta bort</string>
+  <string name="profile_menu_triggers_title">Redigera utlösare</string>
   <string name="profile_action_none">Ingen åtgärd</string>
   <string name="profile_action_disabled">Inaktivera</string>
   <string name="profile_action_enable">Aktivera</string>
+  <string name="profile_tabs_wifi">Wi\u2011Fi</string>
   <string name="profile_tabs_bluetooth">Bluetooth</string>
   <string name="profile_tabs_nfc">NFC</string>
+  <string name="profile_setup_setup_triggers_title">Steg 1: Lägg till utlösare</string>
+  <string name="profile_setup_setup_triggers_title_config">Modifiera utlösare: <xliff:g id="profile_name">%1$s</xliff:g></string>
+  <string name="profile_setup_actions_title">Steg 2: Ställ in åtgärder</string>
+  <string name="profile_setup_actions_title_config">Omkonfigurera åtgärder</string>
+  <string name="no_bluetooth_triggers">Inga Bluetoothutlösare tillgängliga</string>
+  <string name="no_wifi_triggers">Inga Wi\u2011Fi-utlösare finns</string>
+  <string name="profile_setup_actions_description">Konfigurera nu vad som ska hända när profilen aktiveras</string>
 </resources>

@@ -129,6 +129,7 @@
   <string name="link_volume_mutes">Modul silențios afectează notificările</string>
   <string name="volume_keys_control_ring_stream">Butoanele de volum controlează volumul tonului de apel</string>
   <string name="ring_mode_title">Modul tonului de apel</string>
+  <string name="ring_mode_normal">Sonerie</string>
   <string name="ring_mode_vibrate">Vibrează</string>
   <string name="ring_mode_mute">Mut</string>
   <string name="ring_mode_unchanged">Neschimbat</string>
@@ -162,6 +163,7 @@
   <string name="notification_light_voicemail_title">Mesagerie vocală</string>
   <string name="adaptive_backlight_title">Lumină de fundal adaptivă</string>
   <string name="adaptive_backlight_summary">Ajustează luminozitatea ecranului în mod dinamic pentru a mări durata bateriei fără a afecta performanța</string>
+  <string name="sunlight_enhancement_title">Îmbunătățire la lumina soarelui</string>
   <string name="sunlight_enhancement_summary">Sporește luminozitatea afişajului şi lizibilitatea sub lumina strălucitoare a soarelui</string>
   <string name="color_enhancement_title">Intensificare culoare</string>
   <string name="color_enhancement_summary">Intensificare dinamică a culorii de afișare</string>
@@ -294,6 +296,7 @@
   <string name="cm_sound_mode_vibrate">Vibrare</string>
   <string name="cm_sound_mode_sound">Sunet</string>
   <string name="cm_sound_mode_soundVibrate">Sunet &amp; Vibrare</string>
+  <string name="pref_location_mode_title">Moduri de localizare</string>
   <string name="pref_location_mode_summary">Debifați toate modurile pentru comportamentul implicit</string>
   <string name="cm_location_mode_off">Localizare oprită</string>
   <string name="cm_location_mode_battery_saving">Economisire baterie</string>
@@ -525,6 +528,8 @@ două pentru a adăuga puncte de control adiționale. „Ștergere” elimină l
   <string name="collapse_on_dismiss_if_empty_summary">Închide după eliminarea ultimei notificări</string>
   <string name="collapse_on_dismiss_if_no_clearable_summary">Închide după eliminarea ultimei notificări ce poate fi îndepărtată</string>
   <string name="double_tap_to_wake_title">Dublă-apăsare pentru trezire</string>
+  <string name="double_tap_to_sleep_title">Dublă-apăsare pentru stand-by</string>
+  <string name="double_tap_to_sleep_summary">Apăsaţi dublu bara de stare sau ecranul de blocare pentru a pune aparatul să doarmă</string>
   <string name="proximity_wake_title">Previne trezirea accidentală</string>
   <string name="proximity_wake_summary">Verificaţi senzorul de proximitate înainte de trezirea ecranului</string>
   <string name="category_quick_access">Panglica Acces Rapid</string>
@@ -614,6 +619,7 @@ două pentru a adăuga puncte de control adiționale. „Ștergere” elimină l
   <string name="navigation_bar_menu_locked">Blocat</string>
   <string name="navigation_bar_arrow_keys_title">Taste de direcție în timpul scrierii</string>
   <string name="navigation_bar_arrow_keys_summary">Afișează butoanele cursorului spre stânga și dreapta în timpul scrierii</string>
+  <string name="navigation_bar_recents_title">Acțiunea apăsării lungi a butonului Aplicații Recente</string>
   <string name="navigation_ring_title">Comenzi rapide de lansare rapidă</string>
   <string name="navring_target_reset_message">Se șterg toate comenzile rapide create de utilizator în bara de navigare și se restaurează valoarea implicită?</string>
   <string name="navring_target_reset">Resetare la implicit a comenzilor rapide din bara de navigare</string>
@@ -756,6 +762,7 @@ două pentru a adăuga puncte de control adiționale. „Ștergere” elimină l
   <string name="ime_switcher_notify">Selectorul de notificare</string>
   <string name="ime_switcher_notify_summary">Afișează metoda de intrare în selectorul de notificare</string>
   <string name="high_touch_sensitivity_title">Sensibilitate tactilă înaltă </string>
+  <string name="high_touch_sensitivity_summary">Creşte sensibilitatea ecranului tactil, astfel încât acesta poate fi utilizat în timp ce se poartă mănuşi</string>
   <string name="app_ops_summaries_coarse_location">locație aspră</string>
   <string name="app_ops_summaries_fine_location">locație fină</string>
   <string name="app_ops_summaries_gps">GPS</string>
@@ -914,25 +921,41 @@ două pentru a adăuga puncte de control adiționale. „Ștergere” elimină l
   <string name="spam_added_title">Adăugat <xliff:g id="time_since" example="5 minutes ago">%1$s</xliff:g></string>
   <string name="spam_last_blocked_title">Ultimul blocat <xliff:g id="time_since" example="5 minutes ago">%1$s</xliff:g> (total: <xliff:g id="count" example="2 times">%2$s</xliff:g>)</string>
   <string name="block_notifications_title">Filtru notificări</string>
+  <string name="block_notifications_summary">Gestionaţi notificările ignorate şi filtrele</string>
   <string name="no_filters_title">Niciun filtru setat. Pentru a filtra o notificare, țineți-l apăsat şi alegeţi \"Ignoră mesaje ca acesta\".</string>
   <string name="usb_sd_eject">Demontează mediul de stocare USB</string>
+  <string name="usb_sd_eject_summary">Demontează stocarea USB pentru a putea fi înlăturată în condiţii de siguranţă</string>
+  <string name="usb_sd_insert_summary">Introduceţi stocarea USB pentru montare</string>
+  <string name="usb_sd_mount">Montare stocare USB</string>
+  <string name="usb_sd_format">Ștergere stocare USB</string>
+  <string name="usb_sd_format_summary">Şterge toate datele de pe dispozitivul de stocare USB, cum ar fi muzică și fotografii</string>
+  <string name="usb_dlg_confirm_unmount_title">Demontează stocarea USB?</string>
+  <string name="usb_dlg_confirm_unmount_text">Dacă deconectaţi stocarea USB, unele aplicații pe care le utilizaţi se vor opri şi pot fi indisponibile până când se va remonta mediul de stocare USB.</string>
   <string name="usb_dlg_error_unmount_text">Nu s-a putut demonta mediul de stocare USB. Încercaţi din nou mai târziu.</string>
   <string name="usb_unmount_inform_text">Mediul de stocare USB va fi demontat.</string>
+  <string name="usb_sd_ejecting_title">Demontare stocare USB</string>
   <string name="usb_sd_ejecting_summary">Demontarea mediului de stocare USB în curs</string>
   <string name="usb_media_format_title">Șterge stocarea USB</string>
+  <string name="usb_media_format_desc">Ştergeți toată stocarea USB? Veţi pierde <b>toate</b> datele stocate!</string>
   <string name="usb_media_format_button_text">Șterge stocarea USB</string>
+  <string name="usb_media_format_final_desc">Ştergeți mediul de stocare USB, ştergând toate fişierele stocate acolo? Această acţiune nu este reversibilă!</string>
   <string name="usb_media_format_gesture_explanation">Este necesar să desenați modelul dumneavoastră de deblocare pentru a confirma ştergerea mediului de stocare USB.</string>
   <string name="sd_sd_eject">Demontează cardul SD</string>
   <string name="sd_sd_eject_summary">Demontați cardul SD pentru a-l înlătura în condiţii de siguranţă</string>
   <string name="sd_sd_insert_summary">Introduceţi un card SD pentru montare</string>
   <string name="sd_sd_mount">Montare card SD</string>
   <string name="sd_sd_format">Şterge card SD</string>
+  <string name="sd_sd_format_summary">Şterge toate datele de pe cardul SD, cum ar fii muzică și fotografii</string>
+  <string name="sd_dlg_confirm_unmount_title">Demontează cardul SD?</string>
+  <string name="sd_dlg_confirm_unmount_text">Dacă deconectaţi cartela SD, unele aplicații utilizate se vor opri şi pot fi indisponibile până când se va remonta cardul SD.</string>
   <string name="sd_dlg_error_unmount_text">Nu s-a putut demonta cardul SD. Încercaţi din nou mai târziu.</string>
   <string name="sd_unmount_inform_text">Cardul SD va fi demontat.</string>
   <string name="sd_sd_ejecting_title">Demontarea cardului SD</string>
   <string name="sd_sd_ejecting_summary">Demontarea cardului SD în curs</string>
   <string name="sd_media_format_title">Şterge card SD</string>
+  <string name="sd_media_format_desc">Ştergeți cardul SD? Veţi pierde <b>toate</b> datele de pe card!</string>
   <string name="sd_media_format_button_text">Şterge card SD</string>
+  <string name="sd_media_format_final_desc">Ştergeți cardul SD, ştergând toate fişierele stocate acolo? Această acţiune nu este reversibilă!</string>
   <string name="sd_media_format_gesture_explanation">Este necesar să desenați modelul dumneavoastră de deblocare pentru a confirma ştergerea mediului de stocare USB.</string>
   <string name="bluetooth_enter_pin_msg_hs">Pentru a asocia cu:<xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g>Scrie PIN-ul cerut de dispozitiv (16 cifre sau mai multe):</string>
   <string name="bluetooth_profile_sap">Acces SIM</string>
@@ -946,8 +969,19 @@ două pentru a adăuga puncte de control adiționale. „Ștergere” elimină l
   <string name="custom_screencolor">Culoare ecran personalizată</string>
   <string name="device_additional_status">Alte informații de stare</string>
   <string name="enable_quickboot_title">Activare modul QuickBoot</string>
+  <string name="enable_quickboot_summary">Pune dispozitivul în modul QuickBoot în loc de a-l opri normal.</string>
   <string name="data_usage_tab_slot">SIM </string>
+  <string name="sel_sub_title">Configuraţi cartele SIM</string>
+  <string name="sel_sub_summary">Selectaţi cartele dvs. SIM</string>
+  <string name="no_sim_info">Nu sunt disponibile informații despre cardul SIM.\nMeniul nu poate fi accesat</string>
   <string name="subs_settings">Starea cartelei SIM</string>
+  <string name="set_data_subscription_progress">Configurare abonament de date\u2026</string>
+  <string name="set_dds_success">Abonamentul de date a fost creat cu succes</string>
+  <string name="set_dds_failed">Eroare în timpul creării abonamentului de date. Îndepărtați orice conexiune de date existentă și încercați din nou.</string>
+  <string name="set_dds_error">Eroare în timpul setării abonamentului de date.</string>
+  <string name="set_sms_error">Eroare în timpul creării abonamentului SMS. Abonamentul nu este activ.</string>
+  <string name="set_voice_error">Eroare în timpul creării abonamentului de voce. Abonamentul nu este activ.</string>
+  <string name="set_priority_sub_error">Eroare în timpul creării abonamentului de prioritate. Abonamentul nu este activ.</string>
   <string name="prompt">Întreabă întotdeauna</string>
   <string name="maximum_head_level">Cap: %1$s W/kg</string>
   <string name="maximum_body_level">Corp: %1$s W/kg</string>
@@ -956,6 +990,9 @@ două pentru a adăuga puncte de control adiționale. „Ștergere” elimină l
   <string name="tune_away_disabled">TuneAway dezactivat</string>
   <string name="screencolor_save">Salvaţi</string>
   <string name="screencolor_cancel">Revocaţi</string>
+  <string name="restore_preview">Vezi imaginea implicită</string>
+  <string name="selectnewfile_menu">Vezi noua imagine din Galerie</string>
+  <string name="selectfile_menu">Vezi imaginea din Galerie</string>
   <string name="restore_default_str">Resetați</string>
   <string name="hue_str">Nuanța: <xliff:g id="hue_value">%1$s</xliff:g></string>
   <string name="saturation_str">Saturația: <xliff:g id="saturation_value">%1$s</xliff:g></string>
@@ -982,4 +1019,5 @@ două pentru a adăuga puncte de control adiționale. „Ștergere” elimină l
   <string name="no_wifi_triggers">Niciun declanșator Wi\u2011Fi disponibil</string>
   <string name="profile_setup_setup_triggers_description">Selectaţi declanşatoarele care vor activa acest profil</string>
   <string name="profile_setup_actions_description">Acum configuraţi ceea ce se întâmplă atunci când este activat profilul</string>
+  <string name="sound_ringtone_multisim_options">Schimbare tonuri de apel implicite</string>
 </resources>
