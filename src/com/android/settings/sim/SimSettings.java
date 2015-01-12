@@ -368,7 +368,8 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         final DropDownPreference simPref = (DropDownPreference) findPreference(KEY_CELLULAR_DATA);
         boolean callStateIdle = isCallStateIdle();
         // Enable data preference in msim mode and call state idle
-        simPref.setEnabled((mNumSims > 1) && callStateIdle);
+        boolean disableCellulardata = getResources().getBoolean(R.bool.disbale_cellular_data);
+        simPref.setEnabled((mNumSims > 1) && callStateIdle && (!disableCellulardata));
         // Display toast only once when the user enters the activity even though the call moves
         // through multiple call states (eg - ringing to offhook for incoming calls)
         if (callStateIdle == false && inActivity && dataDisableToastDisplayed == false) {
