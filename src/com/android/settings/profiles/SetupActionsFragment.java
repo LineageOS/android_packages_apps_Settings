@@ -182,8 +182,6 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
         mItems.add(new AirplaneModeItem(mProfile.getAirplaneMode()));
         mItems.add(new LockModeItem(mProfile));
 
-        mAdapter = new ItemListAdapter(getActivity(), mItems);
-
         mAdapter.notifyDataSetChanged();
     }
 
