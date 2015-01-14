@@ -195,8 +195,6 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
         mItems.add(new LockModeItem(mProfile));
         mItems.add(new ExpandedDesktopItem(mProfile));
 
-        mAdapter = new ItemListAdapter(getActivity(), mItems);
-
         mAdapter.notifyDataSetChanged();
     }
 
