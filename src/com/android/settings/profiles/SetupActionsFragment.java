@@ -194,8 +194,18 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case MENU_REMOVE:
-                mProfileManager.removeProfile(mProfile);
-                finishFragment();
+                new AlertDialog.Builder(getActivity())
+                    .setTitle(R.string.profile_delete_confirm)
+                    .setIconAttribute(android.R.attr.alertDialogIcon)
+                    .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            mProfileManager.removeProfile(mProfile);
+                            finishFragment();
+                        }
+                    })
+                    .setNegativeButton(R.string.cancel, null)
+                    .show();
                 return true;
 
             case MENU_TRIGGERS:
