@@ -137,15 +137,20 @@ public class LocationMode extends LocationSettingsBase
      * Bind Izat service
      */
     private void initUserPrefService(){
-        if (checkGsPresence()) {
+        if (mServiceConn == null) {
             mServiceConn = new XTServiceConnection();
-            Intent i = new Intent(IXTSrv.class.getName());
-            i.setPackage("com.qualcomm.location.XT");
-            izatConnResult = getActivity().bindService(i,
-                                                       mServiceConn,
-                                                       Context.BIND_AUTO_CREATE);
         }
+        Intent i = new Intent(IXTSrv.class.getName());
+        i.setPackage("com.qualcomm.location.XT");
+        izatConnResult = getActivity().bindService(i, mServiceConn, Context.BIND_AUTO_CREATE);
     }
+
+    IBinder.DeathRecipient mDeathRecipient = new IBinder.DeathRecipient() {
+        @Override
+        public void binderDied() {
+            initUserPrefService();
+        }
+    };
 
     /**
      * IZat service connection
@@ -164,6 +169,7 @@ public class LocationMode extends LocationSettingsBase
                         mIZat.setSummary(Html.fromHtml(izatSubtitle));
                     }
                     mXTService.registerCallback(mCallback);
+                    service.linkToDeath(mDeathRecipient, 0);
                 }
             }catch(RemoteException e){
                 Log.d(TAG,"Failed connecting service!");
@@ -197,9 +203,7 @@ public class LocationMode extends LocationSettingsBase
     @Override
     public void onStop() {
         super.onStop();
-        if (izatConnResult) {
-            getActivity().unbindService(mServiceConn);
-        }
+        getActivity().unbindService(mServiceConn);
     }
 
     @Override
@@ -231,7 +235,7 @@ public class LocationMode extends LocationSettingsBase
         PreferenceCategory enhancedLocation = (PreferenceCategory)
         root.findPreference(KEY_ENHANCED_LOCATION);
         mIZat = (WrappingIZatSwitchPreference) root.findPreference(KEY_LOCATION_IZAT);
-        if(!izatConnResult){
+        if(!izatConnResult || !checkGsPresence()){
             root.removePreference(enhancedLocation);
         }else{
             try{
