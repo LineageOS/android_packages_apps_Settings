@@ -401,18 +401,38 @@ public class IccLockSettings extends PreferenceActivity
             } else {
                  if (requestType == MSG_ENABLE_ICC_PIN_COMPLETE) {
                      if (mToState) {
-                         displayRetryCounter(
-                             mRes.getString(R.string.sim_pin_enable_failed),
-                             attemptsRemaining);
+                         if (err == CommandException.Error.PASSWORD_INCORRECT) {
+                             displayRetryCounter(
+                                     mRes.getString(
+                                             R.string.sim_pin_incorrect),
+                                             attemptsRemaining);
+                         } else {
+                             displayRetryCounter(
+                                     mRes.getString(R.string.sim_pin_enable_failed),
+                                     attemptsRemaining);
+                         }
                      } else {
-                         displayRetryCounter(
-                             mRes.getString(R.string.sim_pin_disable_failed),
-                             attemptsRemaining);
+                         if (err == CommandException.Error.PASSWORD_INCORRECT) {
+                             displayRetryCounter(
+                                     mRes.getString(
+                                             R.string.sim_pin_incorrect),
+                                             attemptsRemaining);
+                         } else {
+                            displayRetryCounter(
+                                     mRes.getString(R.string.sim_pin_disable_failed),
+                                     attemptsRemaining);
+                         }
                      }
                  } else {
-                     displayRetryCounter(
-                         mRes.getString(R.string.sim_change_failed),
-                         attemptsRemaining);
+                     if (err == CommandException.Error.PASSWORD_INCORRECT) {
+                         displayRetryCounter(
+                                 mRes.getString(R.string.sim_pin_incorrect),
+                                 attemptsRemaining);
+                     } else {
+                         displayRetryCounter(
+                                 mRes.getString(R.string.sim_change_failed),
+                                 attemptsRemaining);
+                     }
                  }
             }
         } else if (exception instanceof RuntimeException) {
@@ -434,8 +454,6 @@ public class IccLockSettings extends PreferenceActivity
         } else {
             handleException(exception, MSG_ENABLE_ICC_PIN_COMPLETE,
                 attemptsRemaining);
-            Toast.makeText(this, getPinPasswordErrorMessage(attemptsRemaining),
-                    Toast.LENGTH_LONG).show();
         }
         mPinToggle.setEnabled(true);
         resetDialogState();
@@ -445,8 +463,6 @@ public class IccLockSettings extends PreferenceActivity
         if (exception != null) {
             handleException(exception, MSG_CHANGE_ICC_PIN_COMPLETE,
                 attemptsRemaining);
-            Toast.makeText(this, getPinPasswordErrorMessage(attemptsRemaining),
-                    Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(this, mRes.getString(R.string.sim_change_succeeded),
                     Toast.LENGTH_SHORT)
@@ -459,23 +475,6 @@ public class IccLockSettings extends PreferenceActivity
         Message callback = Message.obtain(mHandler, MSG_CHANGE_ICC_PIN_COMPLETE);
         mPhone.getIccCard().changeIccLockPassword(mOldPin,
                 mNewPin, callback);
-    }
-
-    private String getPinPasswordErrorMessage(int attemptsRemaining) {
-        String displayMessage;
-
-        if (attemptsRemaining == 0) {
-            displayMessage = mRes.getString(R.string.wrong_pin_code_pukked);
-        } else if (attemptsRemaining > 0) {
-            displayMessage = mRes.getQuantityString(
-                R.plurals.wrong_pin_code, attemptsRemaining, attemptsRemaining);
-        } else {
-            displayMessage = mRes.getString(R.string.pin_failed);
-        }
-        if (DBG) Log.d(TAG, "getPinPasswordErrorMessage:"
-                + " attemptsRemaining=" + attemptsRemaining + " displayMessage="
-                + displayMessage);
-        return displayMessage;
     }
 
     private boolean reasonablePin(String pin) {
