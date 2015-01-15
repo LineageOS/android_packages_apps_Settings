@@ -118,11 +118,17 @@
                 android:title="@string/battery_light_title"
                 android:fragment="com.android.settings.notificationlight.BatteryLightSettings" />
 
-         <!-- When device is locked -->
+        <!-- When device is locked -->
         <com.android.settings.notification.DropDownPreference
                 android:key="lock_screen_notifications"
                 android:title="@string/lock_screen_notifications_title"
                 android:persistent="false" />
+
+        <!-- Heads up notifications -->
+        <Preference
+                android:key="heads_up_enabled"
+                android:fragment="com.android.settings.headsup.HeadsUpSettings"
+                android:title="@string/category_heads_up" />
 
         <!-- App notifications -->
         <PreferenceScreen
