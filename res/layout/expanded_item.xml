@@ -17,7 +17,7 @@
 */
 -->
 
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:minHeight="?android:attr/listPreferredItemHeight"
@@ -25,44 +25,51 @@
     android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
     android:paddingTop="8dip"
     android:paddingBottom="8dip"
-    android:columnCount="3"
+    android:orientation="horizontal"
     android:background="@drawable/expanded_item_background">
 
     <ImageView
         android:id="@+id/app_icon"
         android:layout_width="@android:dimen/app_icon_size"
         android:layout_height="@android:dimen/app_icon_size"
-        android:layout_rowSpan="2"
         android:layout_marginEnd="8dip"
         android:layout_gravity="center_vertical"
         android:scaleType="centerInside"
         android:contentDescription="@null" />
 
-    <TextView
-        android:id="@+id/app_name"
-        android:layout_width="0dip"
-        android:layout_gravity="fill_horizontal"
-        android:layout_marginTop="2dip"
-        android:singleLine="true"
-        android:ellipsize="marquee"
-        android:textAppearance="@android:style/TextAppearance.Material.Subhead"
-        android:textAlignment="viewStart" />
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical" >
 
-    <Button
+        <TextView
+            android:id="@+id/app_name"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_gravity="fill_horizontal"
+            android:layout_marginTop="2dip"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:textColor="@android:color/black"
+            android:textAppearance="@style/TextAppearance.Medium"
+            android:textAlignment="viewStart" />
+
+        <Spinner
+            android:id="@+id/app_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill_horizontal|top"
+            android:textAppearance="@style/TextAppearance.Small"
+            android:textAlignment="viewStart" />
+
+    </LinearLayout>
+
+    <ImageView
         android:id="@+id/close"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/expanded_close"
-        android:layout_rowSpan="2"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_menu_delete"
         android:gravity="center"
         android:background="@drawable/expanded_close_bg" />
-
-    <Spinner
-        android:id="@+id/app_mode"
-        android:layout_width="0dip"
-        android:layout_gravity="fill_horizontal|top"
-        android:textAppearance="@android:style/TextAppearance.Material.Body1"
-        android:textColor="?android:attr/textColorSecondary"
-        android:textAlignment="viewStart" />
-
-</GridLayout>
+</LinearLayout>

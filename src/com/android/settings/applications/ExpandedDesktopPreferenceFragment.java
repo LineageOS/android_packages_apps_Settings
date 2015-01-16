@@ -12,7 +12,6 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.content.res.ColorStateList;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
@@ -21,7 +20,6 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.RippleDrawable;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.provider.Settings;
@@ -32,7 +30,6 @@ import android.util.SparseBooleanArray;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,7 +44,6 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -56,7 +52,6 @@ import android.view.WindowManagerPolicyControl;
 import com.android.settings.R;
 import com.android.settings.SettingsActivity;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.applications.ApplicationsState;
 import com.android.settings.cyanogenmod.SpinnerBar;
 
 import java.util.ArrayList;
@@ -89,9 +84,8 @@ public class ExpandedDesktopPreferenceFragment extends SettingsPreferenceFragmen
     private View mAddAll;
     private ApplicationsState.Session mSession;
     private ActivityFilter mActivityFilter;
-    private AddCloseDrawable mAddCloseDrawable;
-    private WrappedRotationDrawable mAddAllDrawable;
-    private Map<String, ApplicationsState.AppEntry> mEntryMap = new HashMap<>();
+    private Map<String, ApplicationsState.AppEntry> mEntryMap =
+            new HashMap<String, ApplicationsState.AppEntry>();
     private ActionMode mActionMode;
     private Interpolator mInterpolator;
     private int mExpandedDesktopState;
@@ -110,29 +104,11 @@ public class ExpandedDesktopPreferenceFragment extends SettingsPreferenceFragmen
         }
     };
 
-    private AdapterView.OnItemClickListener mAllAppsClickListener
+    private AdapterView.OnItemClickListener mAllAppsOnClickListener
             = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            if (mAllListView.getCheckedItemCount() == 1
-                    && mAllListView.getCheckedItemPositions().get(position)) {
-                mUserPackagesAdapter.add(
-                        mAllPackagesAdapter.entries.get(position).info.packageName);
-                mUserPackagesAdapter.notifyDataSetChanged();
-                mNeedCallRebuild = true;
-            }
-        }
-    };
-
-    private AdapterView.OnItemLongClickListener mAllAppsOnLongClickListener
-            = new AdapterView.OnItemLongClickListener() {
-        @Override
-        public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-            if (mAllListView.getCheckedItemCount() == 0) {
-                mAllListView.setItemChecked(position, true);
-                return true;
-            }
-            return false;
+            mAllListView.setItemChecked(position, true);
         }
     };
 
@@ -179,19 +155,31 @@ public class ExpandedDesktopPreferenceFragment extends SettingsPreferenceFragmen
         mAddAll.setVisibility(View.GONE);
     }
 
+    private void hideSpinnerBar() {
+        if (mSpinnerBar != null) {
+            mSpinnerBar.hide();
+        }
+    }
+
+    private void showSpinnerBar() {
+        if (mSpinnerBar != null) {
+            mSpinnerBar.show();
+        }
+    }
+
     private void hideAllApps() {
         mAllListView.clearChoices();
         mAllListView.setVisibility(View.INVISIBLE);
         showAddAll();
-        mAddCloseDrawable.animateToAdd();
+        showSpinnerBar();
         mActionMode.finish();
     }
 
     private void showAllApps() {
+        hideSpinnerBar();
         mAllListView.setVisibility(View.VISIBLE);
         mAllListView.startLayoutAnimation();
         hideAddAll();
-        mAddCloseDrawable.animateToClose();
         mActionMode = mAllListView.startActionMode(this);
     }
 
@@ -219,10 +207,6 @@ public class ExpandedDesktopPreferenceFragment extends SettingsPreferenceFragmen
         mUserPackagesAdapter = new UserPackagesAdapter(getActivity());
         WindowManagerPolicyControl.reloadFromSetting(getActivity(),
                 Settings.Global.POLICY_CONTROL_SELECTED);
-
-        mAddCloseDrawable = new AddCloseDrawable(getActivity());
-        mAddAllDrawable = new WrappedRotationDrawable(getActivity(),
-                getActivity().getDrawable(R.drawable.checkmark));
 
         if (savedInstanceState == null || !savedInstanceState.containsKey(USER_APPS)) {
             mUserPackagesAdapter.entries.addAll(WindowManagerPolicyControl.getWhiteLists());
@@ -284,8 +268,7 @@ public class ExpandedDesktopPreferenceFragment extends SettingsPreferenceFragmen
 
         mAllListView = (ListView) view.findViewById(R.id.all_list_view);
         mAllListView.setAdapter(mAllPackagesAdapter);
-        mAllListView.setOnItemClickListener(mAllAppsClickListener);
-        mAllListView.setOnItemLongClickListener(mAllAppsOnLongClickListener);
+        mAllListView.setOnItemClickListener(mAllAppsOnClickListener);
 
         mSpinnerBar = ((SettingsActivity) getActivity()).getSpinnerBar();
         mSpinnerBar.show();
@@ -428,12 +411,28 @@ public class ExpandedDesktopPreferenceFragment extends SettingsPreferenceFragmen
 
     @Override
     public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-        if (item.getItemId() == R.id.show_launcher_only) {
-            boolean checked = !item.isChecked();
-            item.setChecked(checked);
-            mActivityFilter.setOnlyLauncher(checked);
-            rebuild();
-            return true;
+
+        switch (item.getItemId()) {
+            case R.id.done:
+                SparseBooleanArray positions = mAllListView.getCheckedItemPositions();
+                final int count = positions.size();
+                for (int i = 0; i < count; i++) {
+                    if (positions.valueAt(i)) {
+                        mUserPackagesAdapter.add(
+                                mAllPackagesAdapter.entries
+                                        .get(positions.keyAt(i)).info.packageName);
+                    }
+                }
+                mUserPackagesAdapter.notifyDataSetChanged();
+                mNeedCallRebuild = true;
+                hideAllApps();
+                return true;
+            case R.id.show_launcher_only:
+                boolean checked = !item.isChecked();
+                item.setChecked(checked);
+                mActivityFilter.setOnlyLauncher(checked);
+                rebuild();
+                return true;
         }
         return false;
     }
@@ -465,7 +464,7 @@ public class ExpandedDesktopPreferenceFragment extends SettingsPreferenceFragmen
 
     @Override
     public void onSpinnerNothingSelected(AdapterView<?> parent) {
-
+        // Ignore
     }
 
     private class UserPackagesAdapter extends BaseAdapter implements AdapterView.OnItemSelectedListener {
