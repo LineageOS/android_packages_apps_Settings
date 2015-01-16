@@ -76,6 +76,7 @@ import com.android.settings.applications.ManageApplications;
 import com.android.settings.applications.ProcessStatsUi;
 import com.android.settings.blacklist.BlacklistSettings;
 import com.android.settings.bluetooth.BluetoothSettings;
+import com.android.settings.cyanogenmod.SpinnerBar;
 import com.android.settings.dashboard.DashboardCategory;
 import com.android.settings.dashboard.DashboardSummary;
 import com.android.settings.dashboard.DashboardTile;
@@ -342,6 +343,7 @@ public class SettingsActivity extends Activity
 
     private ActionBar mActionBar;
     private SwitchBar mSwitchBar;
+    private SpinnerBar mSpinnerBar;
 
     private Button mNextButton;
 
@@ -385,6 +387,10 @@ public class SettingsActivity extends Activity
 
     public SwitchBar getSwitchBar() {
         return mSwitchBar;
+    }
+
+    public SpinnerBar getSpinnerBar() {
+        return mSpinnerBar;
     }
 
     public List<DashboardCategory> getDashboardCategories(boolean forceRefresh) {
@@ -598,6 +604,7 @@ public class SettingsActivity extends Activity
             mActionBar.setHomeButtonEnabled(mDisplayHomeAsUpEnabled);
         }
         mSwitchBar = (SwitchBar) findViewById(R.id.switch_bar);
+        mSpinnerBar = (SpinnerBar) findViewById(R.id.spinner_bar);
 
         // see if we should show Back/Next buttons
         if (intent.getBooleanExtra(EXTRA_PREFS_SHOW_BUTTON_BAR, false)) {
