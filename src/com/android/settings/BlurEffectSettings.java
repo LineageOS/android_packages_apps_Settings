@@ -59,21 +59,21 @@ public class BlurEffectSettings extends SettingsPreferenceFragment {
 
         mLockscreen = (CheckBoxPreference) findPreference(KEY_LOCKSCREEN);
         if (mLockscreen != null) {
-            Settings.System.putInt(resolver,
-                    Settings.System.BLUR_EFFECT_LOCKSCREEN, 0);
-            mLockscreen.setChecked(false);
+            boolean lockScreen = Settings.System.getInt(resolver,
+                    Settings.System.BLUR_EFFECT_LOCKSCREEN, 0) > 0 ? true : false;
+            mLockscreen.setChecked(lockScreen);
         }
         mGlobalaction = (CheckBoxPreference) findPreference(KEY_GLOBALACTION);
         if (mGlobalaction != null) {
-            Settings.System.putInt(resolver,
-                    Settings.System.BLUR_EFFECT_GLOBALACTION, 0);
-            mGlobalaction.setChecked(false);
+            boolean globalAction = Settings.System.getInt(resolver,
+                    Settings.System.BLUR_EFFECT_GLOBALACTION, 0) > 0 ? true : false;
+            mGlobalaction.setChecked(globalAction);
         }
         mVolumecontrol = (CheckBoxPreference) findPreference(KEY_VOLUMECONTROL);
         if (mVolumecontrol != null) {
-            Settings.System.putInt(resolver,
-                    Settings.System.BLUR_EFFECT_VOLUMECONTROL, 0);
-            mVolumecontrol.setChecked(false);
+            boolean volumeControl = Settings.System.getInt(resolver,
+                    Settings.System.BLUR_EFFECT_VOLUMECONTROL, 0) > 0 ? true : false;
+            mVolumecontrol.setChecked(volumeControl);
         }
     }
 
