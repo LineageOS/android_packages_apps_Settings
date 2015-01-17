@@ -48,6 +48,7 @@ import static com.android.internal.util.Preconditions.checkNotNull;
 import static com.android.settings.Utils.prepareCustomPreferencesList;
 
 import android.animation.LayoutTransition;
+import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -1156,9 +1157,12 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
         public void onClick(View v) {
             final boolean disableAtLimit = !mDisableAtLimit.isChecked();
             if (disableAtLimit) {
-                // enabling limit; show confirmation dialog which eventually
-                // calls setPolicyLimitBytes() once user confirms.
-                ConfirmLimitFragment.show(DataUsageSummary.this);
+                final Activity activity = getActivity();
+                if (activity != null && activity.isResumed() && !activity.isFinishing()) {
+                    // enabling limit; show confirmation dialog which eventually
+                    // calls setPolicyLimitBytes() once user confirms.
+                    ConfirmLimitFragment.show(DataUsageSummary.this);
+                }
             } else {
                 setPolicyLimitBytes(LIMIT_DISABLED);
             }
