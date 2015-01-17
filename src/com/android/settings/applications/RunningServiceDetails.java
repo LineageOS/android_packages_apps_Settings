@@ -485,7 +485,7 @@ public class RunningServiceDetails extends Fragment
             @Override
             public void run() {
                 Activity a = getActivity();
-                if (a != null) {
+                if (a != null && a.isResumed() && !a.isFinishing()) {
                     a.onBackPressed();
                 }
             }
