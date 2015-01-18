@@ -102,6 +102,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
     private PreferenceCategory mKeyboardSettingsCategory;
     private PreferenceCategory mHardKeyboardCategory;
     private PreferenceCategory mGameControllerCategory;
+    private PreferenceCategory mPointerSettingsCategory;
     private Preference mLanguagePref;
     private final ArrayList<InputMethodPreference> mInputMethodPreferenceList = new ArrayList<>();
     private final ArrayList<PreferenceScreen> mHardKeyboardPreferenceList = new ArrayList<>();
@@ -171,12 +172,11 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         mIm = (InputManager)activity.getSystemService(Context.INPUT_SERVICE);
         updateInputDevices();
 
-        PreferenceCategory pointerSettingsCategory = (PreferenceCategory)
-                        findPreference(KEY_POINTER_SETTINGS_CATEGORY);
+        mPointerSettingsCategory = (PreferenceCategory)findPreference("pointer_settings_category");
 
         mHighTouchSensitivity = (SwitchPreference) findPreference(KEY_HIGH_TOUCH_SENSITIVITY);
         if (!isHighTouchSensitivitySupported()) {
-            pointerSettingsCategory.removePreference(mHighTouchSensitivity);
+            mPointerSettingsCategory.removePreference(mHighTouchSensitivity);
             mHighTouchSensitivity = null;
         } else {
             mHighTouchSensitivity.setChecked(HighTouchSensitivity.isEnabled());
