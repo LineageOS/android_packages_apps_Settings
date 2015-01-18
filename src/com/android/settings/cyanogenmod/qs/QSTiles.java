@@ -42,7 +42,7 @@ public class QSTiles extends Fragment implements
 
     private static final String[] AVAILABLE_TILES = {
         "wifi" ,"bt", "cell", "airplane", "rotation", "flashlight",
-        "location", "cast", "inversion", "hotspot"
+        "location", "cast", "inversion", "hotspot", "camera"
     };
 
     private static final String QS_DEFAULT_ORDER =
