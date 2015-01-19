@@ -215,7 +215,6 @@ public class ApnSettings extends SettingsPreferenceFragment implements
     }
 
     private void fillList() {
-        boolean isSelectedKeyMatch = false;
         String where = getOperatorNumericSelection();
         Cursor cursor = getContentResolver().query(getUri(Telephony.Carriers.CONTENT_URI),
                 new String[] {"_id", "name", "apn", "type", "read_only"}, where, null,
@@ -250,7 +249,6 @@ public class ApnSettings extends SettingsPreferenceFragment implements
                 if (selectable) {
                     if ((mSelectedKey != null) && mSelectedKey.equals(key)) {
                         pref.setChecked();
-                        isSelectedKeyMatch = true;
                         Log.d(TAG, "find select key = " + mSelectedKey);
                     }
                     apnList.addPreference(pref);
@@ -258,13 +256,6 @@ public class ApnSettings extends SettingsPreferenceFragment implements
                     mmsApnList.add(pref);
                 }
                 cursor.moveToNext();
-            }
-            //if find no selectedKey, set the first one as selected key
-            if (!isSelectedKeyMatch && apnList.getPreferenceCount() > 0) {
-                ApnPreference pref = (ApnPreference) apnList.getPreference(0);
-                setSelectedApnKey(pref.getKey());
-                Log.d(TAG, "find no select key = " + mSelectedKey);
-                Log.d(TAG, "set key to  " +pref.getKey());
             }
             cursor.close();
 
