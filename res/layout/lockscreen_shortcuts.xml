@@ -1,0 +1,56 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <ImageView
+        android:id="@+id/phone_button"
+        android:gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/lockscreen_shortcuts_phone_background" />
+
+    <TextView
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:gravity="center"
+        android:layout_below="@id/phone_button"
+        android:layout_alignStart="@id/phone_button"
+        android:layout_alignEnd="@id/phone_button"
+        android:text="@string/lockscreen_message"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:layout_alignEnd="@id/phone_button"
+        android:layout_alignStart="@id/phone_button"
+        android:layout_alignBottom="@id/phone_button"
+        android:paddingRight="@dimen/phone_side_padding"
+        android:paddingLeft="@dimen/phone_side_padding"
+        android:paddingBottom="@dimen/phone_bottom_padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_margin="5dp"
+            android:id="@+id/left_button"
+            android:layout_width="35dp"
+            android:layout_height="35dp" />
+        <ImageView
+            android:id="@+id/middle_button"
+            android:tint="#333333"
+            android:layout_margin="5dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="35dp"
+            android:layout_height="35dp" />
+        <ImageView
+            android:id="@+id/right_button"
+            android:layout_margin="5dp"
+            android:layout_alignParentEnd="true"
+            android:layout_width="35dp"
+            android:layout_height="35dp" />
+        </RelativeLayout>
+</RelativeLayout>
