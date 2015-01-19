@@ -58,6 +58,9 @@
   <string name="profile_unknown_nfc_tag">Bilinmeyen profil</string>
   <string name="profile_add_nfc_text">Bu NFC etiketi bilinmeyen bir profile denk geliyor. Bu NFC etiketini bilinen bir profile atamak gelecekte o profilin seçilmesini sağlayabilir.</string>
   <string name="profile_select">Profil seç</string>
+  <string name="profile_remove_dialog_message">%1$s profili kaldırılsın mı?</string>
+  <string name="profile_populate_profile_from_state">Geçerli cihaz ayarları kullanılarak profil yapılandırılsın mı?</string>
+  <string name="profile_menu_fill_from_state">Geçerli cihaz ayarlarını al</string>
   <string name="profile_name_title">İsim</string>
   <string name="profile_profile_name_prompt">Yeni profil için bir isim girin</string>
   <string name="menu_new_profile">Yeni profil</string>
@@ -1015,9 +1018,12 @@ parlaklık seviyesini ayarlayabilir hem de istediğiniz parlaklık düzeyini ell
   <string name="profile_setup_setup_triggers_title_config">Tetikleyicileri değiştir: <xliff:g id="profile_name">%1$s</xliff:g></string>
   <string name="profile_setup_actions_title">Adım 2: Eylemleri kurun</string>
   <string name="profile_setup_actions_title_config">Eylemleri tekrar ayarla</string>
-  <string name="no_bluetooth_triggers">Bluetooth tetikleyicisi yok</string>
-  <string name="no_wifi_triggers">Wi\u2011Fi tetikleyicisi yok</string>
+  <string name="no_bluetooth_triggers">Eşleştirilmiş bluetooth aygıtı yok.\nTetikleyicileri yapılandırmadan önce Bluetooth cihazı ile eşleştirmek için dokunun.</string>
+  <string name="no_wifi_triggers">Hiç  Wi\u2011Fi erişim noktası yapılandırılmadı.\nTetikleyicileri yapılandırmadan önce  Wi\u2011Fi ağına bağlanmak için dokunun.</string>
   <string name="profile_setup_setup_triggers_description">Lütfen  bu profili etkinleştirecek tetikleyicileri seçin</string>
   <string name="profile_setup_actions_description">Şimdi profil etkinleştirildiğinde ne olacağını yapılandırın</string>
+  <string name="profile_triggers_header">Bu profili etkinleştirecek tetikleyiciler</string>
+  <string name="no_triggers_configured">Hiç tetikleyici ayarlanmadı. Eklemek için dokunun.</string>
+  <string name="no_triggers_configured_nfc">Yeni bir NFC tetikleyicisi kurmak için dokunun.</string>
   <string name="sound_ringtone_multisim_options">Varsayılan zil sesleri değiştir</string>
 </resources>

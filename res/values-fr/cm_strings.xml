@@ -44,11 +44,11 @@
   <string name="profile_menu_delete">Supprimer</string>
   <string name="profile_settings_title">Profil</string>
   <string name="profile_empty_list_profiles_off">Activer le système de profils pour le personnaliser et l\'utiliser.</string>
-  <string name="profile_trigger_configure">Configurer l\'activation</string>
-  <string name="profile_triggers">Activation</string>
-  <string name="profile_trigger_filter_all">Toutes les activations</string>
+  <string name="profile_trigger_configure">Configurer l\'action</string>
+  <string name="profile_triggers">Actions</string>
+  <string name="profile_trigger_filter_all">Toutes les actions</string>
   <string name="profile_trigger_filter_wifi">Actions Wi\u2011Fi</string>
-  <string name="profile_trigger_filter_bluetooth">Activation par Bluetooth</string>
+  <string name="profile_trigger_filter_bluetooth">Actions Bluetooth</string>
   <string name="profile_write_nfc_tag">Écrire sur le tag NFC</string>
   <string name="profile_write_touch_tag">Appuyez sur le tag pour écrire</string>
   <string name="profile_write_success">Tag écrit avec succès</string>
@@ -58,6 +58,9 @@
   <string name="profile_unknown_nfc_tag">Profil inconnu</string>
   <string name="profile_add_nfc_text">Ce tag NFC ne se réfère à aucun profil. Le relier à un profil existant permettra à l\'avenir de le sélectionner.</string>
   <string name="profile_select">Sélectionner un profil</string>
+  <string name="profile_remove_dialog_message">Supprimer le profil %1$s ?</string>
+  <string name="profile_populate_profile_from_state">Configurer le profil à l\'aide des paramètres actuels de l\'appareil ?</string>
+  <string name="profile_menu_fill_from_state">Importer les paramètres actuels de l\'appareil</string>
   <string name="profile_name_title">Nom</string>
   <string name="profile_profile_name_prompt">Saisir un nom pour le nouveau profil</string>
   <string name="menu_new_profile">Nouveau profil</string>
@@ -91,7 +94,7 @@
   <string name="profile_settings">Paramètres du profil</string>
   <string name="profile_trigger_connect">À la connexion</string>
   <string name="profile_trigger_disconnect">À la déconnexion</string>
-  <string name="profile_trigger_notrigger">Aucune activation</string>
+  <string name="profile_trigger_notrigger">Aucune action</string>
   <string name="profile_trigger_a2dp_connect">À la connexion A2DP</string>
   <string name="profile_trigger_a2dp_disconnect">À la déconnexion A2DP</string>
   <string name="sound_mode">Mode de notification</string>
@@ -436,7 +439,7 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="pref_use_16bpp_alpha_title">Transparence 16 bits</string>
   <string name="pref_use_16bpp_alpha_summary">Utiliser le mode 16 bits améliore la vitesse de défilement et des animations, mais peut affecter l\'affichage des éléments transparents (nécessite un redémarrage)</string>
   <string name="pref_force_highend_gfx_title">Forcer les graphiques haute résolution</string>
-  <string name="pref_force_highend_gfx_summary">Permet des effets visuels haute résolution tels que la barre de statut/navigation transparente (nécessite un redémarrage)</string>
+  <string name="pref_force_highend_gfx_summary">Permet des effets visuels haute résolution tels que la barre d\'état/navigation transparente (nécessite un redémarrage)</string>
   <string name="kill_app_longpress_back">Tuer avec bouton Retour</string>
   <string name="kill_app_longpress_back_summary">Tuer l\'application en premier plan par un appui long sur le bouton Retour</string>
   <string name="changelog_title">Note de version</string>
@@ -690,7 +693,7 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="status_bar_clock_title">Style de l\'horloge</string>
   <string name="status_bar_clock_style_default">Défaut</string>
   <string name="status_bar_clock_style_center">Centrée</string>
-  <string name="status_bar_clock_style_hidden">Masquée</string>
+  <string name="status_bar_clock_style_hidden">Ne pas afficher</string>
   <string name="status_bar_battery_title">Style du niveau de batterie</string>
   <string name="status_bar_style_icon_portrait">Icône portrait</string>
   <string name="status_bar_style_icon_landscape">Icône paysage</string>
@@ -858,7 +861,7 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="app_ops_reset_confirm_title">Confirmer la réinitialisation des compteurs</string>
   <string name="app_ops_reset_confirm_mesg">Êtes-vous sûr de vouloir réinitialiser les compteurs de AppOps ?</string>
   <string name="edge_gesture_service_title">Bloquer les événements gestuels</string>
-  <string name="edge_gesture_service_summary">Ne pas envoyer aux applications les événements gestuels des barres de statut et de navigation</string>
+  <string name="edge_gesture_service_summary">Ne pas envoyer aux applications les événements gestuels des barres d\'état et de navigation</string>
   <string name="data_usage_cycle_editor_subtitle_cm">Date de chaque cycle :</string>
   <string name="data_usage_lengths_spinner_subtitle">Durée du cycle :</string>
   <string name="disable_navkeys_title">Activer la barre de navigation à l\'écran</string>
@@ -1001,9 +1004,12 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="profile_setup_setup_triggers_title_config">Modifier les actions : <xliff:g id="profile_name">%1$s</xliff:g></string>
   <string name="profile_setup_actions_title">Étape 2: Configurer les actions</string>
   <string name="profile_setup_actions_title_config">Reconfigurer les actions</string>
-  <string name="no_bluetooth_triggers">Aucune action Bluetooth disponible</string>
-  <string name="no_wifi_triggers">Aucune action Wi\u2011Fi disponible</string>
+  <string name="no_bluetooth_triggers">Aucun appareil Bluetooth appairé.\nAppuyez pour appairer l\'appareil Bluetooth avant de configurer les actions.</string>
+  <string name="no_wifi_triggers">Aucun point d\'accès Wi\u2011Fi configuré.\nAppuyez pour connecter le Wi\u2011Fi avant de configurer les actions.</string>
   <string name="profile_setup_setup_triggers_description">Veuillez sélectionner les actions qui activeront ce profil</string>
   <string name="profile_setup_actions_description">Configurer maintenant ce qu\'il se passe lorsque le profil est activé</string>
+  <string name="profile_triggers_header">Actions qui activeront ce profil</string>
+  <string name="no_triggers_configured">Aucune action configurée. Appuyez pour en ajouter.</string>
+  <string name="no_triggers_configured_nfc">Appuyez pour configurer une nouvelle action NFC.</string>
   <string name="sound_ringtone_multisim_options">Modifier les sonneries par défaut</string>
 </resources>

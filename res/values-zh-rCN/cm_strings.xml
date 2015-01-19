@@ -58,6 +58,9 @@
   <string name="profile_unknown_nfc_tag">未知情景</string>
   <string name="profile_add_nfc_text">此 NFC 标签是与一个未知的情景相连的。把此 NFC 标签连接到一个现有的情景将会允许您以后选择这个情景。</string>
   <string name="profile_select">选择情景</string>
+  <string name="profile_remove_dialog_message">删除配置文件 %1$s 吗？</string>
+  <string name="profile_populate_profile_from_state">使用当前设备设置的配置文件吗？</string>
+  <string name="profile_menu_fill_from_state">导入当前设备设置</string>
   <string name="profile_name_title">名称</string>
   <string name="profile_profile_name_prompt">为新的情景模式输入一个名称</string>
   <string name="menu_new_profile">新情景模式</string>
@@ -999,9 +1002,12 @@
   <string name="profile_setup_setup_triggers_title_config">修改触发器：<xliff:g id="profile_name">%1$s</xliff:g></string>
   <string name="profile_setup_actions_title">步骤 2：设置操作</string>
   <string name="profile_setup_actions_title_config">重新配置操作</string>
-  <string name="no_bluetooth_triggers">无可用的蓝牙触发器</string>
-  <string name="no_wifi_triggers">没有可用的 Wi\u2011Fi 触发器</string>
+  <string name="no_bluetooth_triggers">没有已配对的蓝牙设备。\n配置触发器前轻按以配对蓝牙设备。</string>
+  <string name="no_wifi_triggers">没有已配置的 Wi\u2011Fi 接入点。\n配置触发器前轻按以连接 Wi\u2011Fi。</string>
   <string name="profile_setup_setup_triggers_description">请选择将激活此配置文件的触发器</string>
   <string name="profile_setup_actions_description">现在配置当配置文件激活时，将发生的操作</string>
+  <string name="profile_triggers_header">将激活此配置文件的触发器</string>
+  <string name="no_triggers_configured">没有配置触发器。轻按以添加更多。</string>
+  <string name="no_triggers_configured_nfc">轻按以设置一个新的 NFC 触发器。</string>
   <string name="sound_ringtone_multisim_options">改变默认铃声</string>
 </resources>

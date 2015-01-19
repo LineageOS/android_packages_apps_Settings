@@ -58,6 +58,9 @@
   <string name="profile_unknown_nfc_tag">Neznámy profil</string>
   <string name="profile_add_nfc_text">Tento NFC tag odkazuje na neznámy profil. Pripojenie tohto NFC tagu k existujúcemu profilu umožní neskorší výber profilu.</string>
   <string name="profile_select">Vyberte profil</string>
+  <string name="profile_remove_dialog_message">Odstrániť profil %1$s?</string>
+  <string name="profile_populate_profile_from_state">Nastaviť profil použitím aktuálnych nastavení zariadenia?</string>
+  <string name="profile_menu_fill_from_state">Importovať aktuálne nastavenia zariadenia</string>
   <string name="profile_name_title">Názov</string>
   <string name="profile_profile_name_prompt">Zadajte názov nového profilu</string>
   <string name="menu_new_profile">Nový profil</string>
@@ -202,7 +205,7 @@
   <string name="lockpattern_settings_enable_error_path_title">Zobraziť nesprávny vzor</string>
   <string name="lockpattern_settings_enable_dots_title">Zobraziť body vzoru</string>
   <string name="screen_security_category">Zabezpečenie obrazovky</string>
-  <string name="screen_security_summary">Zobraziť alebo zmeniť nastavenia zabezpečenia uzamykacej obrazovky</string>
+  <string name="screen_security_summary">Zobraziť alebo zmeniť nastavenia zabezpečenia obrazovky uzamknutia</string>
   <string name="unlock_scramble_pin_layout_title">Dynamické rozloženie</string>
   <string name="unlock_scramble_pin_layout_summary">Prehádzať rozloženie pre zadanie kódu PIN pri odomykaní zariadenia</string>
   <string name="unlock_menu_unlock_title">Odomknúť tlačidlom Ponuka</string>
@@ -345,7 +348,7 @@ Každý riadok v zozname jasu zodpovedá jednému <i>riadiacemu bodu</i> krivky 
   <string name="display_rotation_title">Otáčanie</string>
   <string name="display_rotation_disabled">Zakázané</string>
   <string name="display_rotation_unit">stupňov</string>
-  <string name="display_lockscreen_rotation_title">Otáčať uzamykaciu obrazovku</string>
+  <string name="display_lockscreen_rotation_title">Otáčať obrazovku uzamknutia</string>
   <string name="display_rotation_category_title">Režimy otáčania</string>
   <string name="display_rotation_0_title">0 stupňov</string>
   <string name="display_rotation_90_title">90 stupňov</string>
@@ -531,7 +534,7 @@ Každý riadok v zozname jasu zodpovedá jednému <i>riadiacemu bodu</i> krivky 
   <string name="sms_security_check_limit_none">Žiadny</string>
   <string name="lockscreen_custom_widgets_title">Vlastné miniaplikácie</string>
   <string name="lock_clock_title">Miniaplikácia hodín</string>
-  <string name="lock_clock_summary">Prispôsobiť predvolenú miniaplikáciu na domovskej a uzamykacej obrazovke</string>
+  <string name="lock_clock_summary">Prispôsobiť predvolenú miniaplikáciu na domovskej obrazovke a obrazovke uzamknutia</string>
   <string name="power_notifications_category_title">Zvuky nabíjania</string>
   <string name="power_notifications_enable_title">Povoliť</string>
   <string name="power_notifications_enable_summary">Prehrať zvuk pri pripojení alebo odpojení zdroja nabíjania</string>
@@ -545,7 +548,7 @@ Každý riadok v zozname jasu zodpovedá jednému <i>riadiacemu bodu</i> krivky 
   <string name="lockscreen_target_info">Potiahnite posuvník na požadovanú pozíciu pre priradenie odkazu</string>
   <string name="lockscreen_target_title">Odkazy posuvníka</string>
   <string name="lockscreen_target_summary">Zobraziť alebo zmeniť vlastné odkazy na obrazovke uzamknutia</string>
-  <string name="lockscreen_target_reset">Odkazy uzamykacej obrazovky boli obnovené na predvolené</string>
+  <string name="lockscreen_target_reset">Odkazy obrazovky uzamknutia boli obnovené na predvolené</string>
   <string name="lockscreen_target_reset_title">Obnoviť</string>
   <string name="lockscreen_target_reset_message">Vymazať všetky používateľské odkazy obrazovky uzamknutia a obnoviť predvolené?</string>
   <string name="lockscreen_target_empty">Prázdne</string>
@@ -1001,9 +1004,12 @@ Každý riadok v zozname jasu zodpovedá jednému <i>riadiacemu bodu</i> krivky 
   <string name="profile_setup_setup_triggers_title_config">Upraviť spúšťače: <xliff:g id="profile_name">%1$s</xliff:g></string>
   <string name="profile_setup_actions_title">Krok 2: Nastavenie akcií</string>
   <string name="profile_setup_actions_title_config">Nastaviť akcie</string>
-  <string name="no_bluetooth_triggers">Nedostupné Bluetooth spúšťače</string>
-  <string name="no_wifi_triggers">Nedostupné Wi\u2011Fi spúšťače</string>
+  <string name="no_bluetooth_triggers">Žiadne spárované Bluetooth zariadenia.\nKliknite pre spárovanie Bluetooth zariadenia pred nastavením prepínačov.</string>
+  <string name="no_wifi_triggers">Žiadne nastavené prístupové body Wi\u2011Fi. \nKliknite pre pripojenie k Wi\u2011Fi pred nastavením prepínačov.</string>
   <string name="profile_setup_setup_triggers_description">Prosím, vyberte spúšťače, ktoré aktivujú tento profil</string>
   <string name="profile_setup_actions_description">Teraz nastavte, čo sa stane, keď je profil aktívny</string>
+  <string name="profile_triggers_header">Prepínače, ktoré aktivujú tento profil</string>
+  <string name="no_triggers_configured">Žiadne nastavené prepínače. Kliknite pre pridanie ďalších.</string>
+  <string name="no_triggers_configured_nfc">Kliknite pre nastavenie nového NFC prepínača.</string>
   <string name="sound_ringtone_multisim_options">Zmeniť predvolené zvonenia</string>
 </resources>

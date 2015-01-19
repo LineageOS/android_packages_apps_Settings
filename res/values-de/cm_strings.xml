@@ -31,7 +31,7 @@
   <string name="checkbox_increasing_ring">Aktivieren</string>
   <string name="increasing_ring_min_volume_title">Anfangslautstärke</string>
   <string name="increasing_ring_volume_notice">Hinweis:\nDa die Anfangslautstärke größer als die Klingeltonlautstärke ist, wird der Klingelton mit der Klingeltonlautstärke abgespielt.</string>
-  <string name="increasing_ring_interval_title">Intervall ändern</string>
+  <string name="increasing_ring_interval_title">Intervall erhöhen</string>
   <string name="increasing_ring_interval_eachring">Bei jedem Klingelton</string>
   <string name="increasing_ring_interval_half_second">0,5 Sekunden</string>
   <string name="increasing_ring_interval_1second">1 Sekunde</string>
@@ -58,6 +58,9 @@
   <string name="profile_unknown_nfc_tag">Unbekanntes Profil</string>
   <string name="profile_add_nfc_text">Der NFC-Tag verweist auf ein unbekanntes Profil. Das Verknüpfen des NFC-Tags mit einem existierenden Profil ermöglicht es, das entsprechende Profil in Zukunft durch eine Berührung zu aktivieren.</string>
   <string name="profile_select">Profil auswählen</string>
+  <string name="profile_remove_dialog_message">Wollen Sie wirklich das Profil %1$s entfernen?</string>
+  <string name="profile_populate_profile_from_state">Profil mit aktuellen Geräteeinstellungen erstellen?</string>
+  <string name="profile_menu_fill_from_state">Aktuelle Geräteeinstellungen importieren</string>
   <string name="profile_name_title">Name</string>
   <string name="profile_profile_name_prompt">Name des neuen Profils</string>
   <string name="menu_new_profile">Neues Profil</string>
@@ -956,9 +959,9 @@ auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
   <string name="sd_media_format_title">SD-Karte löschen</string>
   <string name="sd_media_format_desc">SD-Karte löschen? Sie werden <b>alle</b> auf der Karte gespeicherten Daten verlieren!</string>
   <string name="sd_media_format_button_text">SD-Karte löschen</string>
-  <string name="sd_media_format_final_desc">SD-Karte mit allen darauf gespeicherten Dateien löschen? Sie können diese Aktion nicht umkehren!</string>
+  <string name="sd_media_format_final_desc">SD-Karte mit allen darauf gespeicherten Dateien löschen? Sie können diese Aktion nicht rückgängig machen!</string>
   <string name="sd_media_format_gesture_explanation">Sie müssen Ihr Entsperrmuster zeichnen, um das Löschen Ihrer SD-Karte zu bestätigen.</string>
-  <string name="bluetooth_enter_pin_msg_hs">Geben Sie zum Pairing mit <xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g> die erforderliche, aus mindestens 16 Stellen bestehende, PIN des Geräts ein:</string>
+  <string name="bluetooth_enter_pin_msg_hs">Geben Sie zum Koppeln mit <xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g> die erforderliche, aus mindestens 16 Stellen bestehende, PIN des Geräts ein:</string>
   <string name="bluetooth_profile_sap">SIM-Zugriff</string>
   <string name="bluetooth_profile_dun">Internet-Einwahlverbindung</string>
   <string name="bluetooth_sap_profile_summary_connected">Verbunden mit SIM-Zugriffsserver</string>
@@ -1016,9 +1019,12 @@ auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
   <string name="profile_setup_setup_triggers_title_config">Auslöser ändern: <xliff:g id="profile_name">%1$s</xliff:g></string>
   <string name="profile_setup_actions_title">Schritt 2: Aktionen bestimmen</string>
   <string name="profile_setup_actions_title_config">Aktionen neu konfigurieren</string>
-  <string name="no_bluetooth_triggers">Keine Bluetooth-Auslöser vorhanden</string>
-  <string name="no_wifi_triggers">Keine WLAN-Auslöser verfügbar</string>
+  <string name="no_bluetooth_triggers">Keine Bluetooth-Geräte gekoppelt.\nTippen Sie, um Bluetooth-Geräte vor dem Konfigurieren von Auslösern zu koppeln.</string>
+  <string name="no_wifi_triggers">Keine WLAN-Zugangspunkte konfiguriert.\nTippen Sie, um sich vor dem Konfigurieren von Auslösern per WLAN  zu verbinden.</string>
   <string name="profile_setup_setup_triggers_description">Auslöser bestimmen, die dieses Profil aktivieren</string>
   <string name="profile_setup_actions_description">Konfigurieren was passiert, wenn das Profil aktiviert ist</string>
+  <string name="profile_triggers_header">Auslöser, die dieses Profil aktivieren</string>
+  <string name="no_triggers_configured">Keine Auslöser konfiguriert. Tippen Sie, um weitere hinzuzufügen.</string>
+  <string name="no_triggers_configured_nfc">Tippen Sie zum Einrichten eines neuen NFC-Auslösers.</string>
   <string name="sound_ringtone_multisim_options">Standard-Klingeltöne ändern</string>
 </resources>

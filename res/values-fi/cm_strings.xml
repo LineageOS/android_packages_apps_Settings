@@ -16,7 +16,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="wifi_setting_countrycode_title">Wi\u2011Fi aluekoodi</string>
+  <string name="wifi_setting_countrycode_title">Wi\u2011Fi\u2011aluekoodi</string>
   <string name="wifi_setting_countrycode_summary">Aseta Wi\u2011Fin aluekoodi</string>
   <string name="wifi_setting_countrycode_error">Ongelma aluekoodia asetettaessa.</string>
   <string name="wifi_setting_priority_title">Wi\u2011Fi\u2011tukiasemien tärkeysjärjestys</string>
@@ -58,6 +58,9 @@
   <string name="profile_unknown_nfc_tag">Tuntematon profiili</string>
   <string name="profile_add_nfc_text">Tämä NFC-tunniste viittaa tuntemattomaan profiiliin. Tämän tunnisteen liittäminen olemassa olevaan profiiliin antaa sinun valita profiilin myöhemmin.</string>
   <string name="profile_select">Valitse profiili</string>
+  <string name="profile_remove_dialog_message">Poista profiili %1$s?</string>
+  <string name="profile_populate_profile_from_state">Määritä profiili käyttämään nykyisiä laitteen asetuksia?</string>
+  <string name="profile_menu_fill_from_state">Tuo nykyiset laitteen asetukset</string>
   <string name="profile_name_title">Nimi</string>
   <string name="profile_profile_name_prompt">Nimeä uusi profiili</string>
   <string name="menu_new_profile">Uusi profiili</string>
@@ -1001,9 +1004,12 @@ Lisää asetuksia on saaavilla painamalla riviä pitkään. Valitsemalla \'Muokk
   <string name="profile_setup_setup_triggers_title_config">Muokkaa käynnistimiä: <xliff:g id="profile_name">%1$s</xliff:g></string>
   <string name="profile_setup_actions_title">Vaihe 2: Aseta toiminnot</string>
   <string name="profile_setup_actions_title_config">Määritä toiminnot</string>
-  <string name="no_bluetooth_triggers">Bluetooth-käynnistimiä ei saatavilla</string>
-  <string name="no_wifi_triggers">Wi\u2011Fi\u2011käynnistimiä ei saatavilla</string>
+  <string name="no_bluetooth_triggers">Bluetooth-laitteita ei paritettu.\nPaina parittaaksesi Bluetooth-laitteen ennen käynnistimien määrittämistä.</string>
+  <string name="no_wifi_triggers">Wi\u2011Fi verkkoja ei määritetty.\nPaina yhdistääksesi Wi\u2011Fi-verkkoon ennen käynnistimien määrittämistä.</string>
   <string name="profile_setup_setup_triggers_description">Valitse käynnistimet jotka aktivoivat tämän profiilin</string>
   <string name="profile_setup_actions_description">Määritä nyt mitä tapahtuu kun profiili on aktivoitu</string>
+  <string name="profile_triggers_header">Tämän profiilin aktivoivat käynnistimet</string>
+  <string name="no_triggers_configured">Käynnistimiä ei määritetty. Paina lisätäksesi.</string>
+  <string name="no_triggers_configured_nfc">Paina asettaaksesi uuden NFC-käynnistimen.</string>
   <string name="sound_ringtone_multisim_options">Vaihda oletussoittoääniä</string>
 </resources>

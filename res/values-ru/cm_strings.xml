@@ -58,6 +58,9 @@
   <string name="profile_unknown_nfc_tag">Неизвестный профиль</string>
   <string name="profile_add_nfc_text">Эта NFC-метка присвоена неизвестному профилю. Привязка NFC-метки к существующему профилю позволит использовать метку для его выбора.</string>
   <string name="profile_select">Выберите профиль</string>
+  <string name="profile_remove_dialog_message">Удалить профиль «%1$s»?</string>
+  <string name="profile_populate_profile_from_state">Создать профиль из текущих настроек устройства?</string>
+  <string name="profile_menu_fill_from_state">Использ. текущие настройки</string>
   <string name="profile_name_title">Название профиля</string>
   <string name="profile_profile_name_prompt">Введите название для профиля</string>
   <string name="menu_new_profile">Новый профиль</string>
@@ -1002,9 +1005,12 @@
   <string name="profile_setup_setup_triggers_title_config">Условия переключения: <xliff:g id="profile_name">%1$s</xliff:g></string>
   <string name="profile_setup_actions_title">Шаг 2: настройте требуемые действия</string>
   <string name="profile_setup_actions_title_config">Изменение действий</string>
-  <string name="no_bluetooth_triggers">Нет Bluetooth-устройств, которые можно использовать для переключения</string>
-  <string name="no_wifi_triggers">Нет сетей Wi-Fi, которые можно использовать для переключения</string>
+  <string name="no_bluetooth_triggers">Нет сопряжённых устройств Bluetooth.\nНажмите, чтобы добавить устройство и создать условие переключения на его основе.</string>
+  <string name="no_wifi_triggers">Нет сохранённых сетей Wi\u2011Fi.\nНажмите, чтобы добавить сеть Wi\u2011Fi и создать условие переключения на её основе.</string>
   <string name="profile_setup_setup_triggers_description">Укажите условия, при которых будет включаться данный профиль</string>
   <string name="profile_setup_actions_description">Теперь можно настроить, что должно происходить при активации профиля</string>
+  <string name="profile_triggers_header">Условия активации этого профиля</string>
+  <string name="no_triggers_configured">Условия переключения не настроены. Нажмите, чтобы добавить условие.</string>
+  <string name="no_triggers_configured_nfc">Нажмите для добавления NFC-метки к этому профилю.</string>
   <string name="sound_ringtone_multisim_options">Рингтон по умолчанию</string>
 </resources>
