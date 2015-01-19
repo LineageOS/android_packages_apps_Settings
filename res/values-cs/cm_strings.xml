@@ -58,6 +58,9 @@
   <string name="profile_unknown_nfc_tag">Neznámý profil</string>
   <string name="profile_add_nfc_text">Tento NFC tag odkazuje na neznámý profil. Připojení tohoto NFC tagu k existujícího profilu umožní výběr profilu v budoucnosti.</string>
   <string name="profile_select">Vyberte profil</string>
+  <string name="profile_remove_dialog_message">Odstranit profil %1$s?</string>
+  <string name="profile_populate_profile_from_state">Nastavit profil použitím aktuálního nastavení zařízení?</string>
+  <string name="profile_menu_fill_from_state">Importovat aktuální nastavení zařízení</string>
   <string name="profile_name_title">Název</string>
   <string name="profile_profile_name_prompt">Vložte název nového profilu</string>
   <string name="menu_new_profile">Nový profil</string>
@@ -1015,9 +1018,12 @@ z <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> na <xliff:g id="new" exam
   <string name="profile_setup_setup_triggers_title_config">Úprava vynucené změny: <xliff:g id="profile_name">%1$s</xliff:g></string>
   <string name="profile_setup_actions_title">Krok 2: nastavit akce</string>
   <string name="profile_setup_actions_title_config">Přenastavit akce</string>
-  <string name="no_bluetooth_triggers">Pro Bluetooth nejsou dostupné aktivační změny</string>
-  <string name="no_wifi_triggers">Žádné Wi\u2011Fi aktivační události</string>
+  <string name="no_bluetooth_triggers">Nejsou spárovaná žádná Bluetooth zařízení.\nPřed nastavením spouštěčů nejprve dotykem spárujte Bluetooth zařízení.</string>
+  <string name="no_wifi_triggers">Nejsou nastavený žádné přístupové body Wi-Fi.\nPřed nastaveném spouštěčů se nejprve dotykem připojte k Wi-Fi.</string>
   <string name="profile_setup_setup_triggers_description">Vyberte události, které aktivují tento profil</string>
   <string name="profile_setup_actions_description">Nyní proveďte nastavení toho, co se má stát, při aktivaci profilu</string>
+  <string name="profile_triggers_header">Události, které aktivují tento profil</string>
+  <string name="no_triggers_configured">Žádné aktivační události nenastaveny. Dotykem přidejte nové.</string>
+  <string name="no_triggers_configured_nfc">Dotykem nastavte spouštěč NFC.</string>
   <string name="sound_ringtone_multisim_options">Změnit výchozí vyzvánění</string>
 </resources>

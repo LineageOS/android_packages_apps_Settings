@@ -58,6 +58,9 @@
   <string name="profile_unknown_nfc_tag">Perfil desconocido</string>
   <string name="profile_add_nfc_text">Esta etiqueta NFC hace referencia a un perfil desconocido. Añadir esta etiqueta NFC a un perfil existente permitirá seleccionar el perfil en el futuro</string>
   <string name="profile_select">Seleccionar perfil</string>
+  <string name="profile_remove_dialog_message">¿Eliminar perfil %1$s?</string>
+  <string name="profile_populate_profile_from_state">¿Configurar el perfil usando la configuración actual del dispositivo?</string>
+  <string name="profile_menu_fill_from_state">Importar la configuración actual del dispositivo</string>
   <string name="profile_name_title">Nombre</string>
   <string name="profile_profile_name_prompt">Introducir un nombre para el nuevo perfil</string>
   <string name="menu_new_profile">Nuevo perfil</string>
@@ -1001,9 +1004,12 @@ Tocando de forma prolongada cada línea se mostrarán opciones adicionales. Sele
   <string name="profile_setup_setup_triggers_title_config">Modificar eventos: <xliff:g id="profile_name">%1$s</xliff:g></string>
   <string name="profile_setup_actions_title">Paso 2: Configurar acciones</string>
   <string name="profile_setup_actions_title_config">Reconfigurar acciones</string>
-  <string name="no_bluetooth_triggers">No hay eventos de Bluetooth disponibles</string>
-  <string name="no_wifi_triggers">No hay eventos Wi\u2011Fi disponibles</string>
+  <string name="no_bluetooth_triggers">No hay dispositivos Bluetooth emparejados. \nToca para emparejar el dispositivo Bluetooth antes de configurar los eventos.</string>
+  <string name="no_wifi_triggers">Sin puntos Wi\u2011Fi de acceso configurados. \nToca para activar la conexión Wi\u2011Fi antes de configurar los eventos.</string>
   <string name="profile_setup_setup_triggers_description">Por favor, selecciona que eventos activarán este perfil</string>
   <string name="profile_setup_actions_description">Ahora configura que sucederá cuando el perfil sea activado</string>
+  <string name="profile_triggers_header">Eventos que activarán este perfil</string>
+  <string name="no_triggers_configured">Sin eventos configurados. Toca para añadir más.</string>
+  <string name="no_triggers_configured_nfc">Toca para configurar un nuevo evento NFC.</string>
   <string name="sound_ringtone_multisim_options">Cambiar tonos por defecto</string>
 </resources>

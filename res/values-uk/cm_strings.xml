@@ -58,6 +58,9 @@
   <string name="profile_unknown_nfc_tag">Невідомий профіль</string>
   <string name="profile_add_nfc_text">Ця NFC-мітка присвоєна невідомому профілю. Прив’язка NFC-мітки до існуючого профілю дозволить використовувати мітку для його вибору.</string>
   <string name="profile_select">Виберіть профіль</string>
+  <string name="profile_remove_dialog_message">Видалити профіль %1$s?</string>
+  <string name="profile_populate_profile_from_state">Налаштувати профіль, використовуючи поточні параметри пристрою?</string>
+  <string name="profile_menu_fill_from_state">Імпорт поточних параметрів пристрою</string>
   <string name="profile_name_title">Ім’я</string>
   <string name="profile_profile_name_prompt">Введіть ім’я для нового профілю</string>
   <string name="menu_new_profile">Новий профіль</string>
@@ -222,7 +225,7 @@
   <string name="safe_headset_volume_restore_title">Знижувати гучність навушників при їх підключенні</string>
   <string name="cyanogenmod_waiver_title">Відмова від відповідальності</string>
   <string name="cyanogenmod_waiver_body">Зміна цих налаштувань може суперечити законам вашої країни.\n\nНатискаючи «OK» Ви погоджуєтесь із цим попередженням та звільняєте CyanogenMod і всіх його розробників від будь-яких юридичних зобов’язань.</string>
-  <string name="quick_settings_panel_title">Панель «Швидких Налаштувань»</string>
+  <string name="quick_settings_panel_title">Панель «Швидкі Налаштування»</string>
   <string name="title_static_tiles">Статичні плитки</string>
   <string name="tile_picker_title">Плитки і планування</string>
   <string name="tile_picker_summary">Подивитися, вибрати або змінити макет плиток</string>
@@ -287,7 +290,7 @@
   <string name="quick_pulldown_left">Лівий</string>
   <string name="quick_pulldown_right">Правий</string>
   <string name="title_collapse_panel">Закривати панель</string>
-  <string name="summary_collapse_panel">Закривати панель «Швидких Налаштувань» після натискання плитки</string>
+  <string name="summary_collapse_panel">Закривати панель «Швидкі Налаштування» після натискання плитки</string>
   <string name="pref_network_mode_title">Режими мережі (2G/3G)</string>
   <string name="pref_screentimeout_mode_title">Режими вимкн. екрану</string>
   <string name="pref_ring_mode_title">Режими звуку</string>
@@ -522,7 +525,7 @@
   <string name="title_quick_access">Показати в стрічці</string>
   <string name="title_quick_access_size">Розмір стрічки</string>
   <string name="title_quick_access_linked">З’єднані плитки</string>
-  <string name="summary_quick_access_linked">Використовувати ті самі плитки і макет що у панелі «Швидких Налаштувань»</string>
+  <string name="summary_quick_access_linked">Використовувати ті самі плитки і макет що у панелі «Швидкі Налаштування»</string>
   <string name="font_size_sample">Приклад тексту</string>
   <string name="sms_security_check_limit_title">Обмеження SMS-повідомлень</string>
   <string name="sms_security_check_limit_summary">Запитувати підтвердження при надсиланні більше %d повідомлень протягом 30 хвилин.</string>
@@ -1002,9 +1005,12 @@
   <string name="profile_setup_setup_triggers_title_config">Змінити тригерів: <xliff:g id="profile_name">%1$s</xliff:g></string>
   <string name="profile_setup_actions_title">Крок 2: Налаштувати дії</string>
   <string name="profile_setup_actions_title_config">Зміна дій</string>
-  <string name="no_bluetooth_triggers">Немає доступних Bluetooth тригерів</string>
-  <string name="no_wifi_triggers">Немає Wi-Fi перемикачів</string>
+  <string name="no_bluetooth_triggers">Не створено жодної пари Bluetooth.\nТоркніться щоб створити пару Bluetooth перед налаштуванням тригерів.</string>
+  <string name="no_wifi_triggers">Жодних Wi\u2011Fi точок доступу не налаштавано.\nНатисніть для підключення Wi\u2011Fi перед налаштуванням тригерів.</string>
   <string name="profile_setup_setup_triggers_description">Вкажіть умови, за яких буде включатися даний профіль</string>
   <string name="profile_setup_actions_description">Тепер можна налаштувати, що має відбуватися при активації профілю</string>
+  <string name="profile_triggers_header">Тригери які активують цей профіль</string>
+  <string name="no_triggers_configured">Жодних тригерів не налаштавано. Натисніть щоб додати більше.</string>
+  <string name="no_triggers_configured_nfc">Торкніться щоб встановити новий NFC-тригер.</string>
   <string name="sound_ringtone_multisim_options">Мелодія за замовчуванням</string>
 </resources>

@@ -19,7 +19,7 @@
   <string name="wifi_setting_countrycode_title">Codul de regiune Wi\u2011Fi</string>
   <string name="wifi_setting_countrycode_summary">Specificaţi codul de regiune pentru Wi\u2011Fi</string>
   <string name="wifi_setting_countrycode_error">A intervenit o problemă la setarea codului de regiune.</string>
-  <string name="wifi_setting_priority_title">Prioritate de Wi\u2011Fi</string>
+  <string name="wifi_setting_priority_title">Prioritatea Wi\u2011Fi</string>
   <string name="wifi_setting_priority_summary">Specifică prioritatea rețelelor Wi\u2011Fi</string>
   <string name="wifi_ssid_input_limit">SSID-ul depășește lungimea maximă</string>
   <string name="p2p_device_name_input_limit">Numele P2P depășește lungimea maximă</string>
@@ -27,7 +27,7 @@
   <string name="change_crypt_password_summary">Schimbă parola utilizată pentru criptarea dispozitivului</string>
   <string name="encryptionpassword_choose_your_password_header">Setează parolă de criptare</string>
   <string name="lock_screen_title">Ecran de blocare</string>
-  <string name="increasing_ring_title">Ton de apel ascendent</string>
+  <string name="increasing_ring_title">Volum crescător al tonului de apel</string>
   <string name="checkbox_increasing_ring">Activare</string>
   <string name="increasing_ring_min_volume_title">Început volum sonerie</string>
   <string name="increasing_ring_volume_notice">Anunț:\nDeoarece nivelul de început al soneriei este setat superior față de nivelul normal al volumului soneriei, tonul sonor folosit va fi cel normal al soneriei.</string>
@@ -58,6 +58,9 @@
   <string name="profile_unknown_nfc_tag">Profil necunoscut</string>
   <string name="profile_add_nfc_text">Eticheta NFC se referă la un profil necunoscut. Atașarea acestei etichete NFC la un profil existent vă va permite să selectați profilul pe viitor.</string>
   <string name="profile_select">Selectați profilul</string>
+  <string name="profile_remove_dialog_message">Eliminați profilul %1$s?</string>
+  <string name="profile_populate_profile_from_state">Configurați profilul utilizând setările curente ale dispozitivului?</string>
+  <string name="profile_menu_fill_from_state">Încărcare setări curente ale dispozitivului</string>
   <string name="profile_name_title">Nume</string>
   <string name="profile_profile_name_prompt">Introduceți un nume pentru noul profil</string>
   <string name="menu_new_profile">Profil nou</string>
@@ -1015,9 +1018,12 @@ două pentru a adăuga puncte de control adiționale. „Ștergere” elimină l
   <string name="profile_setup_setup_triggers_title_config">Modifică declanşatoarele: <xliff:g id="profile_name">%1$s</xliff:g></string>
   <string name="profile_setup_actions_title">Pasul 2: Setare acţiuni</string>
   <string name="profile_setup_actions_title_config">Reconfiguraţi acţiuni</string>
-  <string name="no_bluetooth_triggers">Nu există declanșatoare Bluetooth disponibile</string>
-  <string name="no_wifi_triggers">Niciun declanșator Wi\u2011Fi disponibil</string>
+  <string name="no_bluetooth_triggers">Niciun dispozitiv Bluetooth conectat. \nApăsați pentru conectarea aparatului Bluetooth înainte de configurarea declanşatorilor.</string>
+  <string name="no_wifi_triggers">Niciun punct de acces Wi\u2011Fi configurat. \nApăsați pentru a conecta Wi\u2011Fi înainte de configurarea declanşatorilor.</string>
   <string name="profile_setup_setup_triggers_description">Selectaţi declanşatoarele care vor activa acest profil</string>
   <string name="profile_setup_actions_description">Acum configuraţi ceea ce se întâmplă atunci când este activat profilul</string>
+  <string name="profile_triggers_header">Declanşatori ce vor activa acest profil</string>
+  <string name="no_triggers_configured">Niciun declanșator configurat. Atingeţi pentru a adăuga suplimentar.</string>
+  <string name="no_triggers_configured_nfc">Atingeți pentru a configura un nou declanșator NFC.</string>
   <string name="sound_ringtone_multisim_options">Schimbare tonuri de apel implicite</string>
 </resources>
