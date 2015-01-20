@@ -80,6 +80,9 @@ public class QSTileSettingsDialog extends DialogFragment {
             case QSConstants.TILE_LOCATION:
                 title = R.string.qs_tile_location;
                 break;
+            case QSConstants.TILE_WIFI:
+                title = R.string.qs_tile_wifi;
+                break;
         }
 
         if (title != -1) {

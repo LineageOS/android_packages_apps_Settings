@@ -71,6 +71,7 @@ public class QSTileHolder {
             case QSConstants.TILE_WIFI:
                 resourceName = "ic_qs_wifi_full_4";
                 stringId = R.string.qs_tile_wifi;
+                settings = true;
                 break;
             case QSConstants.TILE_BLUETOOTH:
                 resourceName = "ic_qs_bluetooth_on";
