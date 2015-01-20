@@ -19,6 +19,12 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.VectorDrawable;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.TextUtils;
@@ -29,8 +35,8 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.android.internal.util.cm.QSUtils;
 import com.android.settings.R;
 
 import java.util.ArrayList;
@@ -40,15 +46,10 @@ import java.util.List;
 public class QSTiles extends Fragment implements
         DraggableGridView.OnRearrangeListener, AdapterView.OnItemClickListener {
 
-    private static final String[] AVAILABLE_TILES = {
-        "wifi" ,"bt", "cell", "airplane", "rotation", "flashlight",
-        "location", "cast", "inversion", "hotspot"
-    };
-
-    private static final String QS_DEFAULT_ORDER =
-            "wifi,bt,cell,airplane,rotation,flashlight,location,cast";
+    private static final String SYSTEM_UI_PACKAGE_NAME = "com.android.systemui";
 
     private DraggableGridView mDraggableGridView;
+    private Resources mSystemUIResources;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -62,22 +63,32 @@ public class QSTiles extends Fragment implements
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        try {
+            Context context = getActivity().createPackageContext(SYSTEM_UI_PACKAGE_NAME, 0);
+            mSystemUIResources = context.getResources();
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
         ContentResolver resolver = getActivity().getContentResolver();
         String order = Settings.System.getString(resolver, Settings.System.QS_TILES);
         if (TextUtils.isEmpty(order)) {
-            order = QS_DEFAULT_ORDER;
+            order = QSUtils.getDefaultTilesAsString(getActivity());
             Settings.System.putString(resolver, Settings.System.QS_TILES, order);
         }
 
         for (String tileType: order.split(",")) {
-            mDraggableGridView.addView(buildQSTile(tileType));
+            View tile = buildQSTile(tileType);
+            if (tile != null) {
+                mDraggableGridView.addView(tile);
+            }
         }
         // Add a dummy tile for the "Add / Delete" tile
-        mDraggableGridView.addView(buildQSTile(""));
+        mDraggableGridView.addView(buildQSTile(QSTileHolder.TILE_ADD_DELETE));
 
         mDraggableGridView.setOnRearrangeListener(this);
         mDraggableGridView.setOnItemClickListener(this);
-        mDraggableGridView.setMaxItemCount(AVAILABLE_TILES.length);
+        mDraggableGridView.setMaxItemCount(QSUtils.getAvailableTiles(getActivity()).size());
     }
 
     @Override
@@ -103,12 +114,15 @@ public class QSTiles extends Fragment implements
         List<String> savedTiles = Arrays.asList(order.split(","));
 
         List<QSTileHolder> tilesList = new ArrayList<QSTileHolder>();
-        for (String tile : AVAILABLE_TILES) {
+        for (String tile : QSUtils.getAvailableTiles(getActivity())) {
             // Don't count the already added tiles
             if (savedTiles.contains(tile)) continue;
             // Don't count the dummy tile
-            if (tile.equals("")) continue;
-            tilesList.add(QSTileHolder.from(getActivity(), tile));
+            if (tile.equals(QSTileHolder.TILE_ADD_DELETE)) continue;
+            QSTileHolder holder = QSTileHolder.from(getActivity(), tile);
+            if (holder != null) {
+                tilesList.add(QSTileHolder.from(getActivity(), tile));
+            }
         }
 
         if (tilesList.isEmpty()) {
@@ -116,7 +130,7 @@ public class QSTiles extends Fragment implements
         }
 
         ListView listView = new ListView(getActivity());
-        listView.setAdapter(new QSListAdapter(getActivity(), tilesList));
+        listView.setAdapter(new QSListAdapter(this, tilesList));
 
         final AlertDialog addTileDialog = new AlertDialog.Builder(getActivity())
                 .setTitle(R.string.add_qs)
@@ -155,13 +169,30 @@ public class QSTiles extends Fragment implements
         Settings.System.putString(resolver, Settings.System.QS_TILES, order);
     }
 
+    public Drawable getDrawableFromSystemUI(String name) {
+        if (mSystemUIResources == null) {
+            return null;
+        }
+        int resId = mSystemUIResources.getIdentifier(name, "drawable", SYSTEM_UI_PACKAGE_NAME);
+        if (resId > 0) {
+            Drawable d = mSystemUIResources.getDrawable(resId);
+            d.setColorFilter(getResources().getColor(R.color.qs_tile_tint_color), PorterDuff.Mode.SRC_ATOP);
+            return d;
+        }
+        return null;
+    }
+
     private View buildQSTile(String tileType) {
         QSTileHolder item = QSTileHolder.from(getActivity(), tileType);
+        if (item == null) {
+            return null;
+        }
+
         View qsTile = getLayoutInflater(null).inflate(R.layout.qs_item, null);
 
         if (item.name != null) {
             ImageView icon = (ImageView) qsTile.findViewById(android.R.id.icon);
-            icon.setImageResource(item.drawableId);
+            icon.setImageDrawable(getDrawableFromSystemUI(item.resourceName));
             TextView title = (TextView) qsTile.findViewById(android.R.id.title);
             title.setText(item.name);
         }
@@ -174,7 +205,7 @@ public class QSTiles extends Fragment implements
         String order = Settings.System.getString(context.getContentResolver(),
                 Settings.System.QS_TILES);
         if (TextUtils.isEmpty(order)) {
-            order = QS_DEFAULT_ORDER;
+            order = QSUtils.getDefaultTilesAsString(context);
         }
         return order.split(",").length;
     }
