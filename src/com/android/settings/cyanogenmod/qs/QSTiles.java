@@ -31,6 +31,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.internal.util.cm.QSUtils;
 import com.android.settings.R;
 
 import java.util.ArrayList;
@@ -39,14 +40,6 @@ import java.util.List;
 
 public class QSTiles extends Fragment implements
         DraggableGridView.OnRearrangeListener, AdapterView.OnItemClickListener {
-
-    private static final String[] AVAILABLE_TILES = {
-        "wifi" ,"bt", "cell", "airplane", "rotation", "flashlight",
-        "location", "cast", "inversion", "hotspot"
-    };
-
-    private static final String QS_DEFAULT_ORDER =
-            "wifi,bt,cell,airplane,rotation,flashlight,location,cast";
 
     private DraggableGridView mDraggableGridView;
 
@@ -65,19 +58,22 @@ public class QSTiles extends Fragment implements
         ContentResolver resolver = getActivity().getContentResolver();
         String order = Settings.System.getString(resolver, Settings.System.QS_TILES);
         if (TextUtils.isEmpty(order)) {
-            order = QS_DEFAULT_ORDER;
+            order = QSUtils.getDefaultTilesAsString(getActivity());
             Settings.System.putString(resolver, Settings.System.QS_TILES, order);
         }
 
         for (String tileType: order.split(",")) {
-            mDraggableGridView.addView(buildQSTile(tileType));
+            View tile = buildQSTile(tileType);
+            if (tile != null) {
+                mDraggableGridView.addView(tile);
+            }
         }
         // Add a dummy tile for the "Add / Delete" tile
-        mDraggableGridView.addView(buildQSTile(""));
+        mDraggableGridView.addView(buildQSTile(QSTileHolder.TILE_ADD_DELETE));
 
         mDraggableGridView.setOnRearrangeListener(this);
         mDraggableGridView.setOnItemClickListener(this);
-        mDraggableGridView.setMaxItemCount(AVAILABLE_TILES.length);
+        mDraggableGridView.setMaxItemCount(QSUtils.getAvailableTiles(getActivity()).size());
     }
 
     @Override
@@ -103,12 +99,15 @@ public class QSTiles extends Fragment implements
         List<String> savedTiles = Arrays.asList(order.split(","));
 
         List<QSTileHolder> tilesList = new ArrayList<QSTileHolder>();
-        for (String tile : AVAILABLE_TILES) {
+        for (String tile : QSUtils.getAvailableTiles(getActivity())) {
             // Don't count the already added tiles
             if (savedTiles.contains(tile)) continue;
             // Don't count the dummy tile
-            if (tile.equals("")) continue;
-            tilesList.add(QSTileHolder.from(getActivity(), tile));
+            if (tile.equals(QSTileHolder.TILE_ADD_DELETE)) continue;
+            QSTileHolder holder = QSTileHolder.from(getActivity(), tile);
+            if (holder != null) {
+                tilesList.add(QSTileHolder.from(getActivity(), tile));
+            }
         }
 
         if (tilesList.isEmpty()) {
@@ -157,6 +156,10 @@ public class QSTiles extends Fragment implements
 
     private View buildQSTile(String tileType) {
         QSTileHolder item = QSTileHolder.from(getActivity(), tileType);
+        if (item == null) {
+            return null;
+        }
+
         View qsTile = getLayoutInflater(null).inflate(R.layout.qs_item, null);
 
         if (item.name != null) {
@@ -174,7 +177,7 @@ public class QSTiles extends Fragment implements
         String order = Settings.System.getString(context.getContentResolver(),
                 Settings.System.QS_TILES);
         if (TextUtils.isEmpty(order)) {
-            order = QS_DEFAULT_ORDER;
+            order = QSUtils.getDefaultTilesAsString(context);
         }
         return order.split(",").length;
     }

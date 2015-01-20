@@ -17,6 +17,7 @@ package com.android.settings.cyanogenmod.qs;
 
 import android.content.Context;
 
+import com.android.internal.util.cm.QSConstants;
 import com.android.settings.R;
 
 /**
@@ -24,6 +25,9 @@ import com.android.settings.R;
  * and the value which will be stored
  */
 public class QSTileHolder {
+
+    public static final String TILE_ADD_DELETE = "";
+
     public final int drawableId;
     public final String value;
     public final String name;
@@ -38,36 +42,51 @@ public class QSTileHolder {
         int resId = -1;
         int stringId = -1;
 
-        if (tileType.equals("wifi")) {
-            resId = R.drawable.ic_settings_wireless;
-            stringId = R.string.wifi_quick_toggle_title;
-        } else if (tileType.equals("bt")) {
-            resId = R.drawable.ic_settings_bluetooth2;
-            stringId = R.string.bluetooth_settings_title;
-        } else if (tileType.equals("inversion")) {
-            resId = R.drawable.ic_settings_accessibility;
-            stringId = R.string.accessibility_display_inversion_preference_title;
-        } else if (tileType.equals("cell")) {
-            resId = R.drawable.ic_qs_signal;
-            stringId = R.string.cellular_data_title;
-        } else if (tileType.equals("airplane")) {
-            resId = R.drawable.ic_qs_airplane;
-            stringId = R.string.airplane_mode;
-        } else if (tileType.equals("rotation")) {
-            resId = R.drawable.ic_qs_rotation;
-            stringId = R.string.display_rotation_title;
-        } else if (tileType.equals("flashlight")) {
-            resId = R.drawable.ic_qs_flashlight;
-            stringId = R.string.power_flashlight;
-        } else if (tileType.equals("location")) {
-            resId = R.drawable.ic_settings_location;
-            stringId = R.string.location_title;
-        } else if (tileType.equals("cast")) {
-            resId = R.drawable.ic_qs_cast;
-            stringId = R.string.cast_screen;
-        } else if (tileType.equals("hotspot")) {
-            resId = R.drawable.ic_qs_hotspot;
-            stringId = R.string.hotspot;
+        switch (tileType) {
+            case TILE_ADD_DELETE:
+                break;
+            case QSConstants.TILE_WIFI:
+                resId = R.drawable.ic_settings_wireless;
+                stringId = R.string.wifi_quick_toggle_title;
+                break;
+            case QSConstants.TILE_BLUETOOTH:
+                resId = R.drawable.ic_settings_bluetooth2;
+                stringId = R.string.bluetooth_settings_title;
+                break;
+            case QSConstants.TILE_INVERSION:
+                resId = R.drawable.ic_settings_accessibility;
+                stringId = R.string.accessibility_display_inversion_preference_title;
+                break;
+            case QSConstants.TILE_CELLULAR:
+                resId = R.drawable.ic_qs_signal;
+                stringId = R.string.cellular_data_title;
+                break;
+            case QSConstants.TILE_AIRPLANE:
+                resId = R.drawable.ic_qs_airplane;
+                stringId = R.string.airplane_mode;
+                break;
+            case QSConstants.TILE_ROTATION:
+                resId = R.drawable.ic_qs_rotation;
+                stringId = R.string.display_rotation_title;
+                break;
+            case QSConstants.TILE_FLASHLIGHT:
+                resId = R.drawable.ic_qs_flashlight;
+                stringId = R.string.power_flashlight;
+                break;
+            case QSConstants.TILE_LOCATION:
+                resId = R.drawable.ic_settings_location;
+                stringId = R.string.location_title;
+                break;
+            case QSConstants.TILE_CAST:
+                resId = R.drawable.ic_qs_cast;
+                stringId = R.string.cast_screen;
+                break;
+            case QSConstants.TILE_HOTSPOT:
+                resId = R.drawable.ic_qs_hotspot;
+                stringId = R.string.hotspot;
+                break;
+            default:
+                return null;
         }
 
         String name = stringId != -1 ? context.getString(stringId) : null;
