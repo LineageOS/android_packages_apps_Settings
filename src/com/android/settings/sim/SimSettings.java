@@ -294,7 +294,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
      }
 
     private void updateActivitesCategory() {
-        mAvailableSubInfos = SubscriptionManager.getActiveSubInfoList();
         createDropDown((DropDownPreference) findPreference(KEY_CELLULAR_DATA));
         createDropDown((DropDownPreference) findPreference(KEY_CALLS));
         createDropDown((DropDownPreference) findPreference(KEY_SMS));
