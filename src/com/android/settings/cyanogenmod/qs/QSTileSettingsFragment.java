@@ -38,6 +38,9 @@ public class QSTileSettingsFragment extends PreferenceFragment {
             case QSConstants.TILE_LOCATION:
                 layout = R.xml.qs_settings_location;
                 break;
+            case QSConstants.TILE_WIFI:
+                layout = R.xml.qs_settings_wifi;
+                break;
         }
 
         // Load the preferences
