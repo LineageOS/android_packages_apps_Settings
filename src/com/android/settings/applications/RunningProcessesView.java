@@ -409,7 +409,7 @@ public class RunningProcessesView extends FrameLayout
         if (mOwner != null) {
             // start new fragment to display extended information
             Bundle args = new Bundle();
-            if (mi.mProcess != null) {
+            if (mi != null && mi.mProcess != null) {
                 args.putInt(RunningServiceDetails.KEY_UID, mi.mProcess.mUid);
                 args.putString(RunningServiceDetails.KEY_PROCESS, mi.mProcess.mProcessName);
             }

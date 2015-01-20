@@ -1058,7 +1058,7 @@ public class InstalledAppDetails extends Fragment
                 mLastCodeSize = codeSize;
                 mAppSize.setText(getSizeStr(codeSize));
             }
-            if (mLastDataSize != dataSize) {
+            if (mLastDataSize != dataSize && mDataSize != null) {
                 mLastDataSize = dataSize;
                 mDataSize.setText(getSizeStr(dataSize));
             }
