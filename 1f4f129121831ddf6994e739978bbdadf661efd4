@@ -34,6 +34,24 @@
       "revId": "1f4f129121831ddf6994e739978bbdadf661efd4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a9d85d2_44266269",
+        "filename": "res/values/cm_arrays.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5574
+      },
+      "writtenOn": "2015-01-20T11:09:38Z",
+      "side": 0,
+      "message": "Here\u0027s what I\u0027m currently with: \n\n\n packages/apps/Settings/src/com/android/settings/DataUsageSummary.java:2605: error: method getText in class Fragment cannot be applied to given types;\n            return getText(R.string.data_usage_tab_slot, i).toString();\n                   ^\n  required: int\n  found: int,int\n  reason: actual and formal argument lists differ in length\n packages/apps/Settings/src/com/android/settings/profiles/actions/item/VolumeStreamItem.java:71: error: cannot find symbol\n            desc.setText(context.getString(R.string.profile_entries_no_override));\n                                                   ^\n  symbol:   variable profile_entries_no_override\n  location: class string\n packages/apps/Settings/src/com/android/settings/profiles/SetupActionsFragment.java:434: error: cannot find symbol\n                getResources().getStringArray(R.array.profile_lockmode_entries);\n                                                     ^\n  symbol:   variable profile_lockmode_entries\n  location: class array",
+      "parentUuid": "5a9d85d2_c40372b7",
+      "revId": "1f4f129121831ddf6994e739978bbdadf661efd4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
