@@ -31,6 +31,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.internal.util.cm.QSUtils;
 import com.android.settings.R;
 
 import java.util.ArrayList;
@@ -39,14 +40,6 @@ import java.util.List;
 
 public class QSTiles extends Fragment implements
         DraggableGridView.OnRearrangeListener, AdapterView.OnItemClickListener {
-
-    private static final String[] AVAILABLE_TILES = {
-        "wifi" ,"bt", "cell", "airplane", "rotation", "flashlight",
-        "location", "cast", "inversion", "hotspot"
-    };
-
-    private static final String QS_DEFAULT_ORDER =
-            "wifi,bt,cell,airplane,rotation,flashlight,location,cast";
 
     private DraggableGridView mDraggableGridView;
 
@@ -65,7 +58,7 @@ public class QSTiles extends Fragment implements
         ContentResolver resolver = getActivity().getContentResolver();
         String order = Settings.System.getString(resolver, Settings.System.QS_TILES);
         if (TextUtils.isEmpty(order)) {
-            order = QS_DEFAULT_ORDER;
+            order = QSUtils.getDefaultTilesAsString(getActivity());
             Settings.System.putString(resolver, Settings.System.QS_TILES, order);
         }
 
@@ -77,7 +70,7 @@ public class QSTiles extends Fragment implements
 
         mDraggableGridView.setOnRearrangeListener(this);
         mDraggableGridView.setOnItemClickListener(this);
-        mDraggableGridView.setMaxItemCount(AVAILABLE_TILES.length);
+        mDraggableGridView.setMaxItemCount(QSUtils.getAvailableTiles(getActivity()).size());
     }
 
     @Override
@@ -103,7 +96,7 @@ public class QSTiles extends Fragment implements
         List<String> savedTiles = Arrays.asList(order.split(","));
 
         List<QSTileHolder> tilesList = new ArrayList<QSTileHolder>();
-        for (String tile : AVAILABLE_TILES) {
+        for (String tile : QSUtils.getAvailableTiles(getActivity())) {
             // Don't count the already added tiles
             if (savedTiles.contains(tile)) continue;
             // Don't count the dummy tile
@@ -174,7 +167,7 @@ public class QSTiles extends Fragment implements
         String order = Settings.System.getString(context.getContentResolver(),
                 Settings.System.QS_TILES);
         if (TextUtils.isEmpty(order)) {
-            order = QS_DEFAULT_ORDER;
+            order = QSUtils.getDefaultTilesAsString(context);
         }
         return order.split(",").length;
     }
