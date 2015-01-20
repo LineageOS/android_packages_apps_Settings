@@ -28,10 +28,12 @@ import com.android.settings.R;
 import java.util.List;
 
 public class QSListAdapter extends ArrayAdapter<QSTileHolder> {
+    private final QSTiles mFragment;
     private LayoutInflater mInflater;
-    public QSListAdapter(Context context, List<QSTileHolder> objects) {
-        super(context, 0, objects);
-        mInflater = LayoutInflater.from(context);
+    public QSListAdapter(QSTiles fragment, List<QSTileHolder> objects) {
+        super(fragment.getActivity(), 0, objects);
+        mInflater = LayoutInflater.from(fragment.getActivity());
+        mFragment = fragment;
     }
 
     @Override
@@ -50,8 +52,8 @@ public class QSListAdapter extends ArrayAdapter<QSTileHolder> {
         QSTileHolder item = getItem(position);
 
         holder.entry.setText(item.name);
-        if (item.drawableId != -1) {
-            holder.icon.setImageResource(item.drawableId);
+        if (item.resourceName != null) {
+            holder.icon.setImageDrawable(mFragment.getDrawableFromSystemUI(item.resourceName));
             holder.icon.setVisibility(View.VISIBLE);
         } else {
             holder.icon.setVisibility(View.GONE);
