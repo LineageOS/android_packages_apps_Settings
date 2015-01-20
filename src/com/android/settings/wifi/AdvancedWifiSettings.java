@@ -73,7 +73,7 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
     private static final String KEY_CURRENT_NETMASK = "current_netmask";
 
     private static final String KEY_AUTO_CONNECT_ENABLE = "auto_connect_type";
-    private static final String WIFI_AUTO_CONNECT_TYPE = "wifi_autoconn_type";
+    private static final String WIFI_AUTO_CONNECT_TYPE = "wifi_auto_connect_type";
     private static final int AUTO_CONNECT_ENABLED = 0;
     private static final int AUTO_CONNECT_FATAL_VALUE = -1;
     private static final int AUTO_CONNECT_DEFAULT_VALUE = AUTO_CONNECT_ENABLED;
