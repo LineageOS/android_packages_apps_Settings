@@ -42,6 +42,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.telecom.TelecomManager;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -709,9 +710,18 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String value = entry.getText().toString();
-                        mProfile.setName(value);
-                        mAdapter.notifyDataSetChanged();
-                        updateProfile();
+
+                        if (TextUtils.isEmpty(value)) {
+                            new AlertDialog.Builder(getActivity())
+                                    .setTitle(R.string.profile_needs_name_title)
+                                    .setMessage(R.string.profile_needs_name_message)
+                                    .setPositiveButton(android.R.string.ok, null)
+                                    .show();
+                        } else {
+                            mProfile.setName(value);
+                            mAdapter.notifyDataSetChanged();
+                            updateProfile();
+                        }
                     }
                 })
                 .setNegativeButton(android.R.string.cancel, null)
