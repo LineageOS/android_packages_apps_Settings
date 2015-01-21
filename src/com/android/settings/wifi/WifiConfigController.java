@@ -44,6 +44,7 @@ import android.os.Handler;
 import android.os.UserHandle;
 import android.security.Credentials;
 import android.security.KeyStore;
+import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -758,18 +759,24 @@ public class WifiConfigController implements TextWatcher,
     }
 
     private void checkEapSimInfo() {
-        for(int i = 0; i < mWifiEapSimInfo.mNumOfSims; i++) {
+        int numOfSims;
+        if (TelephonyManager.getDefault().isMultiSimEnabled()) {
+            numOfSims = mWifiEapSimInfo.mNumOfSims;
+        } else {
+            numOfSims = 1;
+        }
+        for (int i = 0; i < numOfSims; i++) {
             String displayname = MultiSimSettingTab.getMultiSimName(mContext, i);
             mSimDisplayNames.add(displayname);
             if (mWifiEapSimInfo.mSimTypes.get(i) == WifiEapSimInfo.SIM_2G) {
-                Log.d(TAG, "Sim " + (i+1) + " type is SIM_2G");
+                Log.d(TAG, "Sim " + (i + 1) + " type is SIM_2G");
                 mEapSimAvailableSimName.add(displayname);
             } else if (mWifiEapSimInfo.mSimTypes.get(i) == WifiEapSimInfo.SIM_3G) {
-                Log.d(TAG, "Sim " + (i+1) + " type is SIM_3G");
+                Log.d(TAG, "Sim " + (i + 1) + " type is SIM_3G");
                 mEapSimAvailableSimName.add(displayname);
                 mEapAkaAvailableSimName.add(displayname);
             } else {
-                Log.d(TAG, "Sim " + (i+1) + " type is Unknow");
+                Log.d(TAG, "Sim " + (i + 1) + " type is Unknow");
             }
         }
     }
