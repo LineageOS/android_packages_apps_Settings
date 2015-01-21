@@ -113,6 +113,12 @@ public final class Utils {
     };
 
     /**
+     * Type that refers to sounds that are used for the phone ringer
+     *
+     */
+    public static final int TYPE_RINGTONE_2 = 8;
+
+    /**
      * Name of the meta-data item that should be set in the AndroidManifest.xml
      * to specify the icon that should be displayed for the preference.
      */

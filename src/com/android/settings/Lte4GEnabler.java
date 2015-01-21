@@ -49,8 +49,6 @@ import android.view.View;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 
-import java.lang.reflect.InvocationTargetException;
-
 public class Lte4GEnabler {
     private static final String TAG = "Lte4GEnabler";
     private final Context mContext;
@@ -110,10 +108,12 @@ public class Lte4GEnabler {
         } else {
             isLTEMode = false;
         }
+
         mSwitch.setChecked(isLTEMode);
-        mSwitch.setEnabled(Settings.System.getInt(
-                mContext.getContentResolver(),
-                Settings.System.AIRPLANE_MODE_ON, 0) == 0);
+        int simState = TelephonyManager.getDefault().getSimState(PhoneConstants.SUB1);
+        mSwitch.setEnabled((Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.AIRPLANE_MODE_ON, 0) == 0)
+                && (simState == TelephonyManager.SIM_STATE_READY));
     }
 
     private void promptUser() {
