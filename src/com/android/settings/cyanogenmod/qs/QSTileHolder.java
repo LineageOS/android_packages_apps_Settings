@@ -90,6 +90,10 @@ public class QSTileHolder {
                 resourceName = "ic_qs_hotspot_on";
                 stringId = R.string.hotspot;
                 break;
+            case QSConstants.TILE_LTE:
+                resourceName = "ic_qs_lte_on";
+                stringId = R.string.lte;
+                break;
             default:
                 return null;
         }
