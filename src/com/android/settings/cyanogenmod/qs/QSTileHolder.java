@@ -17,9 +17,12 @@ package com.android.settings.cyanogenmod.qs;
 
 import android.content.Context;
 
+import android.text.TextUtils;
 import com.android.internal.util.cm.QSConstants;
 import com.android.internal.util.cm.QSUtils;
 import com.android.settings.R;
+
+import java.util.Arrays;
 
 /**
  * This class holds the icon, the name - or the string the user sees,
@@ -44,6 +47,14 @@ public class QSTileHolder {
 
         if (!TILE_ADD_DELETE.equals(tileType) &&
                 !QSUtils.getAvailableTiles(context).contains(tileType)) {
+            return null;
+        }
+
+        // We need to filter out the LTE tile manually, because
+        // filtering via getAvailableTiles during fwb init
+        // disallows reading our system prop
+        if (!QSUtils.deviceSupportsLte(context)
+                && TextUtils.equals(QSConstants.TILE_LTE, tileType)) {
             return null;
         }
 
@@ -89,6 +100,10 @@ public class QSTileHolder {
             case QSConstants.TILE_HOTSPOT:
                 resourceName = "ic_qs_hotspot_on";
                 stringId = R.string.hotspot;
+                break;
+            case QSConstants.TILE_LTE:
+                resourceName = "ic_qs_lte_on";
+                stringId = R.string.lte;
                 break;
             default:
                 return null;
