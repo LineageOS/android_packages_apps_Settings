@@ -84,11 +84,11 @@ public class QSTileHolder {
                 break;
             case QSConstants.TILE_CAST:
                 resourceName = "ic_qs_cast_on";
-                stringId = R.string.cast_screen;
+                stringId = R.string.qs_tile_cast_screen;
                 break;
             case QSConstants.TILE_HOTSPOT:
                 resourceName = "ic_qs_hotspot_on";
-                stringId = R.string.hotspot;
+                stringId = R.string.qs_tile_hotspot;
                 break;
             case QSConstants.TILE_ADB_NETWORK:
                 resourceName = "ic_qs_network_adb_on";
