@@ -41,7 +41,9 @@ import android.telephony.TelephonyManager;
 import android.telecom.PhoneAccount;
 import android.telephony.CellInfo;
 import android.telephony.PhoneStateListener;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -61,7 +63,7 @@ import com.android.settings.search.Indexable.SearchIndexProvider;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SimSettings extends RestrictedSettingsFragment implements Indexable {
+public class SimSettings extends RestrictedSettingsFragment implements Indexable, TextWatcher {
     private static final String TAG = "SimSettings";
     private static final boolean DBG = true;
 
@@ -82,7 +84,8 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
 
     private static final int EVT_UPDATE = 1;
     private static int mNumSlots = 0;
-
+    //The default legth to dispaly a character
+    private static final int CHAR_LEN = 1;
     /**
      * By UX design we have use only one Subscription Information(SubInfo) record per SIM slot.
      * mAvalableSubInfos is the list of SubInfos we present to the user.
@@ -106,6 +109,10 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
 
     private boolean inActivity;
     private boolean dataDisableToastDisplayed = false;
+    private AlertDialog mAlertDialog;
+    private EditText nameText;
+    private int mChangeStartPos;
+    private int mChangeCount;
 
     public SimSettings() {
         super(DISALLOW_CONFIG_SIM);
@@ -640,8 +647,9 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
                     R.layout.multi_sim_dialog, null);
             builder.setView(dialogLayout);
 
-            EditText nameText = (EditText)dialogLayout.findViewById(R.id.sim_name);
+            nameText = (EditText)dialogLayout.findViewById(R.id.sim_name);
             nameText.setText(mSubInfoRecord.displayName);
+            nameText.addTextChangedListener(SimSettings.this);
 
             TextView numberView = (TextView)dialogLayout.findViewById(R.id.number);
             numberView.setText(mSubInfoRecord.number);
@@ -678,8 +686,85 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
                     dialog.dismiss();
                 }
             });
+            mAlertDialog = builder.create();
+            mAlertDialog.show();
+        }
+    }
 
-            builder.create().show();
+    // TextWatcher interface
+    public void afterTextChanged(Editable s) {
+        limitTextSize(s.toString().trim());
+        // if user inputed whole space and saved,that is to say SLOT1 and
+        // SLOT2 may named blank space, it is meaningless.
+        mAlertDialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                    .setEnabled(!TextUtils.isEmpty(s.toString().trim()));
+    }
+
+    // TextWatcher interface
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        // not used
+    }
+
+    // TextWatcher interface
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+        // The start position of new added characters
+        mChangeStartPos = start;
+        // The number of new added characters
+        mChangeCount = count;
+    }
+
+    private void limitTextSize(String textString) {
+
+        if (nameText != null) {
+            int wholeLen = 0;
+            int i = 0;
+
+            for (i = 0; i < textString.length(); i++) {
+                wholeLen += getCharacterVisualLength(textString, i);
+            }
+           int InputNameMaxLength = getResources().getInteger(R.integer.sim_name_length);
+            // Too many characters,cut off the new added characters
+            if (wholeLen > InputNameMaxLength) {
+                int cutNum = wholeLen - InputNameMaxLength;
+                // Get start position of characters that will be cut off
+                int changeEndPos = mChangeStartPos + mChangeCount - 1;
+                int cutLen = 0;
+                for (i = changeEndPos; i >= 0; i--) {
+                    cutLen += getCharacterVisualLength(textString, i);
+                    if (cutLen >= cutNum) {
+                        break;
+                    }
+                }
+                // The cut off characters is in range [i,mChangeStartPos + mChangeCount)
+                int headStrEndPos = i;
+                // Head substring that is before the cut off characters
+                String headStr = "";
+                // Rear substring that is after the cut off characters
+                String rearStr = "";
+                if (headStrEndPos > 0) {
+                    // Get head substring if the cut off characters is not at the beginning
+                    headStr = textString.substring(0, headStrEndPos);
+                }
+                int rearStrStartPos = mChangeStartPos + mChangeCount;
+                if (rearStrStartPos < textString.length()) {
+                    // Get rear substring if the cut off characters is not at the end
+                    rearStr = textString.substring(rearStrStartPos, textString.length());
+                }
+                // headStr + rearStr is the new string after characters are cut off
+                nameText.setText(headStr + rearStr);
+                // Move cursor to the original position
+                nameText.setSelection(i);
+            }
+        }
+    }
+
+    // A character beyond 0xff is twice as big as a character within 0xff in width when showing.
+    private int getCharacterVisualLength(String seq, int index) {
+        int cp = Character.codePointAt(seq, index);
+        if (cp >= 0x00 && cp <= 0xFF) {
+            return CHAR_LEN;
+        } else {
+            return CHAR_LEN*2;
         }
     }
 
