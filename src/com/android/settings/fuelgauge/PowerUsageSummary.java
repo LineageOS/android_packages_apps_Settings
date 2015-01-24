@@ -288,7 +288,7 @@ public class PowerUsageSummary extends PreferenceFragment {
                     if (percentOfTotal < 10) {
                         continue;
                     }
-                    if ("user".equals(Build.TYPE)) {
+                    if ("user".equals(Build.TYPE) || "user-debug".equals(Build.TYPE)) {
                         continue;
                     }
                 }
@@ -301,7 +301,7 @@ public class PowerUsageSummary extends PreferenceFragment {
                     if (percentOfTotal < 5) {
                         continue;
                     }
-                    if ("user".equals(Build.TYPE)) {
+                    if ("user".equals(Build.TYPE) || "user-debug".equals(Build.TYPE)) {
                         continue;
                     }
                 }
