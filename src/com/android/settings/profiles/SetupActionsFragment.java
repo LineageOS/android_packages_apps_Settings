@@ -33,6 +33,9 @@ import android.media.RingtoneManager;
 import android.net.wimax.WimaxHelper;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -41,6 +44,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -507,7 +511,7 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
         final EditText entry = (EditText) dialogView.findViewById(R.id.name);
         entry.setText(mProfile.getName());
 
-        new AlertDialog.Builder(getActivity())
+        final AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
                 .setTitle(R.string.rename_dialog_title)
                 .setView(dialogView)
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
@@ -520,7 +524,27 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
                     }
                 })
                 .setNegativeButton(android.R.string.cancel, null)
-                .show();
+                .create();
+
+        entry.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                final boolean empty = TextUtils.isEmpty(s.toString());
+                alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(!empty);
+            }
+        });
+
+        alertDialog.show();
     }
 
     @Override
