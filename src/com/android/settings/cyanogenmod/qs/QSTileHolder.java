@@ -94,6 +94,10 @@ public class QSTileHolder {
                 resourceName = "ic_qs_network_adb_on";
                 stringId = R.string.adb_over_network;
                 break;
+            case QSConstants.TILE_PROFILES:
+                resourceName = "ic_qs_system_profiles";
+                stringId = R.string.profiles_settings_title;
+                break;
             default:
                 return null;
         }
