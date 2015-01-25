@@ -31,6 +31,7 @@
 
 package com.android.settings.sim;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -47,11 +48,14 @@ import android.provider.Settings;
 import android.telephony.SubscriptionManager;
 import android.telephony.SubInfoRecord;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -65,7 +69,7 @@ import java.util.List;
  * SimEnabler is a helper to manage the slot on/off checkbox preference. It is
  * turns on/off slot and ensures the summary of the preference reflects the current state.
  */
-public class MultiSimEnablerPreference extends Preference implements OnCheckedChangeListener {
+public class MultiSimEnablerPreference extends Preference implements OnCheckedChangeListener, View.OnClickListener {
     private final Context mContext;
 
     private String TAG = "MultiSimEnablerPreference";
@@ -137,6 +141,7 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
         mSubSummary = (TextView) view.findViewById(R.id.subsummary);
         mSwitch = (Switch) view.findViewById(R.id.subSwitchWidget);
         mSwitch.setOnCheckedChangeListener(this);
+        view.setOnClickListener(this);
         update();
         // now use other config screen to active/deactive sim card\
         mSwitch.setVisibility(mSwitchVisibility);
@@ -216,20 +221,13 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
         logd("updateSummary: subId " + mSir.subId + " isActivated = " + isActivated +
                 " slot id = " + mSlotId);
 
-        if (isActivated) {
-            summary = mContext.getString(R.string.sim_enabler_summary,
-                    res.getString(R.string.sim_enabled));
-        } else {
-            summary = mContext.getString(R.string.sim_enabler_summary,
-                    res.getString(hasCard() ? R.string.sim_disabled : R.string.sim_missing));
-        }
-
+        summary = res.getString(R.string.sim_card_number_title, mSlotId + 1);
+        summary += " - " + mSir.number;
         if (mSubSummary != null) {
             mSubSummary.setText(summary);
         }
         setChecked(isActivated);
     }
-
 
     /**
      * get count of active SubInfo on the device
@@ -245,6 +243,12 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
             }
         }
         return activeSubInfoCount;
+    }
+
+    @Override
+    public void onClick(View view) {
+        createEditDialog();
+        super.onClick();
     }
 
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -393,9 +397,6 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
                         sendSubConfigurationRequest();
                     } else if (which == DialogInterface.BUTTON_NEGATIVE) {
                         setChecked(true);
-                        mSubSummary.setText(mContext.getString(
-                                R.string.sim_enabler_summary,
-                                mContext.getString(R.string.sim_enabled)));
                     } else if (which == DialogInterface.BUTTON_NEUTRAL) {
                         update();
                     }
@@ -432,28 +433,85 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
     };
 
     private Handler mHandler = new Handler() {
-            @Override
-            public void handleMessage(Message msg) {
-                switch(msg.what) {
-                    case EVT_SHOW_RESULT_DLG:
-                        logd("EVT_SHOW_RESULT_DLG");
-                        update();
-                        showAlertDialog(RESULT_ALERT_DLG_ID, 0);
-                        mHandler.removeMessages(EVT_PROGRESS_DLG_TIME_OUT);
-                        break;
-                    case EVT_SHOW_PROGRESS_DLG:
-                        logd("EVT_SHOW_PROGRESS_DLG");
-                        showProgressDialog();
-                        break;
-                    case EVT_PROGRESS_DLG_TIME_OUT:
-                        logd("EVT_PROGRESS_DLG_TIME_OUT");
-                        dismissDialog(sProgressDialog);
-                        break;
-                    default:
+        @Override
+        public void handleMessage(Message msg) {
+            switch(msg.what) {
+                case EVT_SHOW_RESULT_DLG:
+                    logd("EVT_SHOW_RESULT_DLG");
+                    update();
+                    showAlertDialog(RESULT_ALERT_DLG_ID, 0);
+                    mHandler.removeMessages(EVT_PROGRESS_DLG_TIME_OUT);
                     break;
-                }
+                case EVT_SHOW_PROGRESS_DLG:
+                    logd("EVT_SHOW_PROGRESS_DLG");
+                    showProgressDialog();
+                    break;
+                case EVT_PROGRESS_DLG_TIME_OUT:
+                    logd("EVT_PROGRESS_DLG_TIME_OUT");
+                    dismissDialog(sProgressDialog);
+                    break;
+                default:
+                    break;
             }
-        };
+        }
+    };
+
+    public void createEditDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+
+        final View dialogLayout = ((Activity)mContext).getLayoutInflater().inflate(
+                R.layout.multi_sim_dialog, null);
+        builder.setView(dialogLayout);
+
+        EditText nameText = (EditText)dialogLayout.findViewById(R.id.sim_name);
+        nameText.setText(mSir.displayName);
+
+        TextView numberView = (TextView)dialogLayout.findViewById(R.id.number);
+        numberView.setText(mSir.number);
+
+        TextView carrierView = (TextView)dialogLayout.findViewById(R.id.carrier);
+        TelephonyManager tm = (TelephonyManager)
+                mContext.getSystemService(Context.TELEPHONY_SERVICE);
+        String spn = tm.getSimOperatorName(mSir.subId);
+        if (TextUtils.isEmpty(spn) && !tm.isNetworkRoaming(mSir.subId)) {
+            // Operator did not write the SPN inside the SIM, so set
+            // the current network operator as the SIM name, but only if
+            // we're not roaming.
+            spn = tm.getNetworkOperatorName(mSir.subId);
+        }
+        carrierView.setText(spn);
+
+        builder.setTitle(R.string.sim_editor_title);
+
+        builder.setPositiveButton(R.string.okay, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int whichButton) {
+                final EditText nameText = (EditText)dialogLayout.findViewById(R.id.sim_name);
+                final Spinner displayNumbers =
+                        (Spinner)dialogLayout.findViewById(R.id.display_numbers);
+
+                SubscriptionManager.setDisplayNumberFormat(
+                        displayNumbers.getSelectedItemPosition() == 0
+                                ? SubscriptionManager.DISPLAY_NUMBER_LAST
+                                : SubscriptionManager.DISPLAY_NUMBER_FIRST, mSir.subId);
+
+                mSir.displayName = nameText.getText().toString();
+                SubscriptionManager.setDisplayName(mSir.displayName,
+                        mSir.subId, SubscriptionManager.NAME_SOURCE_USER_INPUT);
+
+                update();
+            }
+        });
+
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int whichButton) {
+                dialog.dismiss();
+            }
+        });
+
+        builder.create().show();
+    }
 
     private void logd(String msg) {
         if (DBG) Log.d(TAG + "(" + mSlotId + ")", msg);
