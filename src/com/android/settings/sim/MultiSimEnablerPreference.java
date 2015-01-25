@@ -44,8 +44,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.preference.Preference;
 import android.provider.Settings;
-import android.telephony.SubscriptionManager;
 import android.telephony.SubInfoRecord;
+import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -78,7 +78,6 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
 
     private static final int CONFIRM_ALERT_DLG_ID = 1;
     private static final int ERROR_ALERT_DLG_ID = 2;
-    private static final int RESULT_ALERT_DLG_ID = 3;
 
     private int mSlotId;
     private SubInfoRecord mSir;
@@ -319,29 +318,22 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
         // Confirm only one AlertDialog instance to show.
         dismissDialog(sAlertDialog);
         dismissDialog(sProgressDialog);
-        AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle(title);
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         switch(dialogId) {
             case CONFIRM_ALERT_DLG_ID:
+                builder.setTitle(title);
                 builder.setMessage(mContext.getString(R.string.sim_enabler_need_disable_sim));
-                builder.setPositiveButton(android.R.string.ok, mDialogClickListener);
+                builder.setPositiveButton(R.string.sim_enabler_deactivate, mDialogClickListener);
                 builder.setNegativeButton(android.R.string.no, mDialogClickListener);
                 builder.setOnCancelListener(mDialogCanceListener);
                 break;
             case ERROR_ALERT_DLG_ID:
                 builder.setMessage(mContext.getString(msgId));
-                builder.setNeutralButton(android.R.string.ok, mDialogClickListener);
+                builder.setPositiveButton(android.R.string.ok, mDialogClickListener);
                 builder.setCancelable(false);
                 break;
-            case RESULT_ALERT_DLG_ID:
-                String msg = mCurrentState ? mContext.getString(R.string.sub_activate_success) :
-                        mContext.getString(R.string.sub_deactivate_success);
-                builder.setMessage(msg);
-                builder.setNeutralButton(android.R.string.ok, null);
+            default:
                 break;
-           default:
-           break;
         }
 
         sAlertDialog = builder.create();
@@ -350,15 +342,15 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
     }
 
     private void showProgressDialog() {
-        String title = mSir == null ? mContext.getString(R.string.sim_enabler_sim)
+        String sim_name = mSir == null ? mContext.getString(R.string.sim_enabler_sim)
                 : mSir.displayName;
 
         String msg = mContext.getString(mCurrentState ? R.string.sim_enabler_enabling
                 : R.string.sim_enabler_disabling);
+        msg += " " + sim_name;
         dismissDialog(sProgressDialog);
         sProgressDialog = new ProgressDialog(mContext);
         sProgressDialog.setIndeterminate(true);
-        sProgressDialog.setTitle(title);
         sProgressDialog.setMessage(msg);
         sProgressDialog.setCancelable(false);
         sProgressDialog.setCanceledOnTouchOutside(false);
@@ -432,28 +424,28 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
     };
 
     private Handler mHandler = new Handler() {
-            @Override
-            public void handleMessage(Message msg) {
-                switch(msg.what) {
-                    case EVT_SHOW_RESULT_DLG:
-                        logd("EVT_SHOW_RESULT_DLG");
-                        update();
-                        showAlertDialog(RESULT_ALERT_DLG_ID, 0);
-                        mHandler.removeMessages(EVT_PROGRESS_DLG_TIME_OUT);
-                        break;
-                    case EVT_SHOW_PROGRESS_DLG:
-                        logd("EVT_SHOW_PROGRESS_DLG");
-                        showProgressDialog();
-                        break;
-                    case EVT_PROGRESS_DLG_TIME_OUT:
-                        logd("EVT_PROGRESS_DLG_TIME_OUT");
-                        dismissDialog(sProgressDialog);
-                        break;
-                    default:
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case EVT_SHOW_RESULT_DLG:
+                    logd("EVT_SHOW_RESULT_DLG");
+                    update();
+                    dismissDialog(sProgressDialog);
+                    mHandler.removeMessages(EVT_PROGRESS_DLG_TIME_OUT);
                     break;
-                }
+                case EVT_SHOW_PROGRESS_DLG:
+                    logd("EVT_SHOW_PROGRESS_DLG");
+                    showProgressDialog();
+                    break;
+                case EVT_PROGRESS_DLG_TIME_OUT:
+                    logd("EVT_PROGRESS_DLG_TIME_OUT");
+                    dismissDialog(sProgressDialog);
+                    break;
+                default:
+                    break;
             }
-        };
+        }
+    };
 
     private void logd(String msg) {
         if (DBG) Log.d(TAG + "(" + mSlotId + ")", msg);
