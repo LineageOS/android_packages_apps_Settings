@@ -123,7 +123,8 @@ public class BluetoothTriggerFragment extends ListFragment {
         triggerId = btpref.getAddress();
         triggerType = Profile.TriggerType.BLUETOOTH;
         BluetoothDevice dev = mBluetoothAdapter.getRemoteDevice(triggerId);
-        if (!dev.getBluetoothClass().doesClassMatch(BluetoothClass.PROFILE_A2DP)) {
+        if (dev.getBluetoothClass() == null ||
+                !dev.getBluetoothClass().doesClassMatch(BluetoothClass.PROFILE_A2DP)) {
             removeTrigger(triggers, Profile.TriggerState.ON_A2DP_CONNECT);
             removeTrigger(triggers, Profile.TriggerState.ON_A2DP_DISCONNECT);
         }
