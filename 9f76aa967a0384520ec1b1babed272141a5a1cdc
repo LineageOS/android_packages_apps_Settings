@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fad55976_b635cdf8",
+        "filename": "src/com/android/settings/sim/MultiSimEnablerPreference.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-01-27T01:37:12Z",
+      "side": 1,
+      "message": "While you\u0027re at it, please also make those two non-static and name them mAlertDialog and mProgressDialog.",
+      "revId": "9f76aa967a0384520ec1b1babed272141a5a1cdc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fad55976_96588958",
+        "filename": "src/com/android/settings/sim/MultiSimEnablerPreference.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-01-27T01:37:12Z",
+      "side": 1,
+      "message": ", int which",
+      "revId": "9f76aa967a0384520ec1b1babed272141a5a1cdc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fad55976_7655151c",
+        "filename": "src/com/android/settings/sim/MultiSimEnablerPreference.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-01-27T01:37:12Z",
+      "side": 1,
+      "message": "simName",
+      "revId": "9f76aa967a0384520ec1b1babed272141a5a1cdc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fad55976_d630410a",
+        "filename": "src/com/android/settings/sim/MultiSimEnablerPreference.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-01-27T01:37:12Z",
+      "side": 1,
+      "message": "This should rather become part of the string resource:\n\n\u003cstring name\u003d\"sim_enabler_enabling\"\u003eEnabling \u003cxliff:g id\u003d\"name\"\u003e%s\u003c/xliff:g\u003e\\u2026\u003c/string\u003e\n\nThen use getString(R.string...., simName);",
+      "revId": "9f76aa967a0384520ec1b1babed272141a5a1cdc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
