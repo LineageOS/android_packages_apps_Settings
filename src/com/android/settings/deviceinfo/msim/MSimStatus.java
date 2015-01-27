@@ -408,15 +408,15 @@ public class MSimStatus extends PreferenceActivity {
                     if (mPhone[i].getLteOnCdmaMode() == PhoneConstants.LTE_ON_CDMA_TRUE) {
                         // Show ICC ID and IMEI for LTE device
                         mIccIdSummary[i] = getSimSummary(i, mPhone[i].getIccSerialNumber());
-                        mImeiSummary[i] = getSimSummary(i, mPhone[i].getImei());
                     } else {
                         // device is not GSM/UMTS, do not display GSM/UMTS
                         // features
                         // check Null in case no specified preference in overlay
                         // xml
                         mIccIdSummary[i] = null;
-                        mImeiSummary[i] = null;
                     }
+                    // For cdma, do not display IMEI.
+                    mImeiSummary[i] = null;
 
                 } else {
                     mPrlVersionSummary[i] = null;
