@@ -463,7 +463,7 @@ public class MSimStatus extends PreferenceActivity {
                 // Ask CellBroadcastReceiver to broadcast the latest area
                 // info received
                 Intent getLatestIntent = new Intent(GET_LATEST_CB_AREA_INFO_ACTION);
-                getLatestIntent.putExtra(PhoneConstants.SUBSCRIPTION_KEY, i);
+                getLatestIntent.putExtra(PhoneConstants.PHONE_KEY, i);
                 sendBroadcastAsUser(getLatestIntent, UserHandle.ALL,
                         CB_AREA_INFO_SENDER_PERMISSION);
 
