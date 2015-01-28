@@ -36,6 +36,7 @@ import android.media.RingtoneManager;
 import android.net.ConnectivityManager;
 import android.net.wifi.WifiManager;
 import android.net.wimax.WimaxHelper;
+import android.nfc.NfcAdapter;
 import android.nfc.NfcManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -330,9 +331,12 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
 
                 // nfc
                 NfcManager nfcManager = (NfcManager) getSystemService(Context.NFC_SERVICE);
-                mProfile.setConnectionSettings(
-                        new ConnectionSettings(ConnectionSettings.PROFILE_CONNECTION_NFC,
-                                nfcManager.getDefaultAdapter().isEnabled() ? 1 : 0, true));
+                final NfcAdapter nfcAdapter = nfcManager.getDefaultAdapter();
+                if (nfcAdapter != null) {
+                    mProfile.setConnectionSettings(
+                            new ConnectionSettings(ConnectionSettings.PROFILE_CONNECTION_NFC,
+                                    nfcManager.getDefaultAdapter().isEnabled() ? 1 : 0, true));
+                }
 
                 // alarm volume
                 final AudioManager am = (AudioManager) getActivity()
