@@ -30,55 +30,12 @@
  */
 -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
+<CheckBox xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sub_switch_widget"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:gravity="center_vertical"
-    android:minHeight="48dp" >
+    android:layout_gravity="center"
+    android:clickable="true"
+    android:focusable="false"
+    android:padding="8dip" />
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="2dip"
-        android:layout_marginStart="2dip"
-        android:layout_marginEnd="6dip"
-        android:layout_marginTop="2dip"
-        android:layout_weight="1" >
-
-        <ImageView android:id="@+id/subicon"
-            android:src="@drawable/ic_sim_icon_1"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:scaleType="fitCenter"
-            android:padding="2dip"/>
-
-        <TextView
-            android:id="@+id/subtitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/subicon"
-            android:fadingEdge="horizontal"
-            android:singleLine="true"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/subsummary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@id/subtitle"
-            android:layout_below="@id/subtitle"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        <CheckBox
-            android:id="@+id/subSwitchWidget"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_gravity="center"
-            android:clickable="true"
-            android:focusable="false"
-            android:padding="8dip" />
-    </RelativeLayout>
-</LinearLayout>

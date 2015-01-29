@@ -25,6 +25,8 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.Settings;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -33,6 +35,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import com.android.internal.telephony.PhoneConstants;
+import com.android.internal.telephony.TelephonyIntents;
 import com.android.settings.R;
 import com.android.settings.Lte4GEnabler;
 import com.android.settings.SettingsActivity;
@@ -60,6 +65,18 @@ public class DashboardSummary extends Fragment {
         }
     };
 
+    private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (TelephonyIntents.ACTION_SIM_STATE_CHANGED.equals(action)
+                    || Intent.ACTION_AIRPLANE_MODE_CHANGED.equals(action)) {
+                Log.d(LOG_TAG, "Received ACTION_SIM_STATE_CHANGED or ACTION_AIRPLANE_MODE_CHANGED");
+                sendRebuildUI();
+            }
+        }
+    };
+
     private class HomePackageReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -82,6 +99,11 @@ public class DashboardSummary extends Fragment {
         filter.addAction(Intent.ACTION_PACKAGE_REPLACED);
         filter.addDataScheme("package");
         getActivity().registerReceiver(mHomePackageReceiver, filter);
+
+        // Register for intent broadcasts
+        IntentFilter intentFilter = new IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED);
+        intentFilter.addAction(TelephonyIntents.ACTION_SIM_STATE_CHANGED);
+        getActivity().registerReceiver(mReceiver, intentFilter);
     }
 
     @Override
@@ -91,6 +113,7 @@ public class DashboardSummary extends Fragment {
         mLte4GEnabler.pause();
 
         getActivity().unregisterReceiver(mHomePackageReceiver);
+        getActivity().unregisterReceiver(mReceiver);
     }
 
     @Override
@@ -144,6 +167,20 @@ public class DashboardSummary extends Fragment {
                 if (tile.getTitle(res).equals(res.getString(R.string.lte_4g_settings_title))) {
                     tileView = new DashboardTileView(context,true);
                     mLte4GEnabler.setSwitch(tileView.getSwitch());
+
+                    int simState = TelephonyManager.getDefault().getSimState(PhoneConstants.SUB1);
+                    boolean enabled = (Settings.System.getInt(context.getContentResolver(),
+                            Settings.System.AIRPLANE_MODE_ON, 0) == 0)
+                            && (simState == TelephonyManager.SIM_STATE_READY);
+                    tileView.setEnabled(enabled);
+                    tileView.getTitleTextView().setEnabled(enabled);
+                    // update icons
+                    if (enabled) {
+                        tile.iconRes = R.drawable.ic_settings_4g;
+                    } else {
+                        tile.iconRes = R.drawable.ic_settings_4g_dis;
+                    }
+
                     updateTileView(context, res, tile, tileView.getImageView(),
                             tileView.getTitleTextView(), tileView.getSwitch());
 

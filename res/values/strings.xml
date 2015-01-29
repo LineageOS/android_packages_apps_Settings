@@ -286,6 +286,8 @@
     <string name="bluetooth_connected_no_headset">Connected (no phone)</string>
     <!-- Bluetooth settings.  Message when connected to a device, except for media audio. [CHAR LIMIT=40] -->
     <string name="bluetooth_connected_no_a2dp">Connected (no media)</string>
+    <!-- Bluetooth settings.  Message when connected to a device, except for pbap. [CHAR LIMIT=40] -->
+    <string name="bluetooth_connected_no_pbap">Connected (no phonebook access)</string>
     <!-- Bluetooth settings.  Message when connected to a device, except for map. [CHAR LIMIT=40] -->
     <string name="bluetooth_connected_no_map">Connected (no message access)</string>
     <!-- Bluetooth settings.  Message when connected to a device, except for phone/media audio. [CHAR LIMIT=40] -->
@@ -641,6 +643,8 @@
 
     <!-- check box cellular data title [CHAR LIMIT=30] -->
     <string name="cellular_data_title">Cellular data</string>
+    <!-- msg displayed when you are in sim settings screen during an active call -->
+    <string name="data_disabled_in_active_call">Cellular Data is disabled when a call is active.</string>
     <!-- check box Calls title [CHAR LIMIT=30] -->
     <string name="calls_title">Calls</string>
     <!-- check box SMS Messges title [CHAR LIMIT=30] -->
@@ -725,6 +729,10 @@
     <!-- Title string shown above TimePicker, letting a user select system time
          [CHAR LIMIT=20] -->
     <string name="time_picker_title">Time</string>
+
+    <!-- Timer Switch Settings --><skip />
+    <!-- Main Settings screen setting option name to go into the timer switch settings-->
+    <string name="timer_switch_settings_title">Scheduled power on and off</string>
 
     <!-- Security Settings --><skip />
 
@@ -1259,8 +1267,6 @@
     <string name="bluetooth_profile_pan">Internet access</string>
     <!-- Bluetooth settings. The user-visible string that is used whenever referring to the PBAP profile. [CHAR LIMIT=40] -->
     <string name="bluetooth_profile_pbap">Contact sharing</string>
-    <!-- Bluetooth settings. The user-visible summary string that is used whenever referring to the PBAP profile (sharing contacts). [CHAR LIMIT=60] -->
-    <string name="bluetooth_profile_pbap_summary">Use for contact sharing</string>
     <!-- Bluetooth settings. The user-visible string that is used whenever referring to the PAN profile (sharing this device's Internet connection). [CHAR LIMIT=40] -->
     <string name="bluetooth_profile_pan_nap">Internet connection sharing</string>
     <!-- Bluetooth settings.  The user-visible string that is used whenever referring to the map profile. -->
@@ -1301,6 +1307,8 @@
     <string name="bluetooth_headset_profile_summary_connected">Connected to phone audio</string>
     <!-- Bluetooth settings.  Connection options screen.  The summary for the OPP checkbox preference when OPP is connected. -->
     <string name="bluetooth_opp_profile_summary_connected">Connected to file transfer server</string>
+    <!-- Bluetooth settings.  Connection options screen.  The summary for the pbap checkbox preference when pbap is connected. -->
+    <string name="bluetooth_pbap_profile_summary_connected">Connected to pbap server</string>
     <!-- Bluetooth settings.  Connection options screen.  The summary for the map checkbox preference when map is connected. -->
     <string name="bluetooth_map_profile_summary_connected">Connected to map</string>
     <!-- Bluetooth settings.  Connection options screen.  The summary for the DUN checkbox preference when DUN is connected. -->
@@ -1334,6 +1342,8 @@
          for the PAN checkbox preference that describes how checking it
          will set the PAN profile as preferred. -->
     <string name="bluetooth_pan_profile_summary_use_for">Use for Internet access</string>
+    <!-- Bluetooth settings.  Connection options screen.  The summary for the pbap checkbox preference that describes how checking it will set the pbap profile as preferred. -->
+    <string name="bluetooth_pbap_profile_summary_use_for">Use for Contact sharing</string>
     <!-- Bluetooth settings.  Connection options screen.  The summary for the map checkbox preference that describes how checking it will set the map profile as preferred. -->
     <string name="bluetooth_map_profile_summary_use_for">Use for map</string>
 
@@ -3700,6 +3710,8 @@
     <string name="accessibility_global_gesture_preference_summary_off">Off</string>
     <!--  Description for the preference screen to enable the global geture taht turns on accessibility. [CHAR LIMIT=none] -->
     <string name="accessibility_global_gesture_preference_description">When this feature is turned on, you can quickly enable accessibility features in two steps:\n\nStep 1: Press and hold the power button until you hear a sound or feel a vibration.\n\nStep 2: Touch and hold two fingers until you hear audio confirmation.\n\nIf the device has multiple users, using this shortcut on the lock screen temporarily enables accessibility until the device is unlocked.</string>
+    <!-- Title for the accessibility preference to enable LED flashlight -->
+    <string name="accessibility_toggle_led_flashlight_preference_title">LED flashlight</string>
     <!-- Title for the accessibility preference to enable large text. [CHAR LIMIT=35] -->
     <string name="accessibility_toggle_large_text_preference_title">Large text</string>
     <!-- Title for the accessibility preference to high contrast text. [CHAR LIMIT=35] -->
@@ -5305,7 +5317,7 @@
     <!-- MultiSim Settings changes-->
     <string name="close_dialog">OK</string>
     <string name="sim_enabler_title">SIM Enablers</string>
-    <string name="sim_enabler_summary">SIM is %1$s</string>
+    <string name="sim_enabler_summary">" is %1$s"</string>
     <string name="sim_enabled">enabled</string>
     <string name="sim_disabled">disabled</string>
     <string name="sim_missing">missing or error</string>
@@ -6165,8 +6177,9 @@
     <string name="wifi_advanced_gateway">Gateway</string>
     <string name="wifi_advanced_network_netmask">Netmask</string>
 
-    <string name="wifi_to_gsm_connect_type_title">WLAN->Cellular hint</string>
-    <string name="wifi2cell_connect_type">"wifi_gsm_connect_type"</string>
+    <!-- support wlan to cellular hint -->
+    <string name="wlan_to_cellular_hint_title">WLAN->Cellular hint</string>
+
     <!-- for brightness adjusting -->
     <string name="enhanced_brightness">Dynamic Brightness </string>
     <string name="enhanced_brightness_summary">It is usually used to improve video quality and save more power when playing video clips. </string>
@@ -6206,21 +6219,13 @@
     <string name="wifi_menu_disconnect">Disconnect from network</string>
     <string name="wifi_autoconn_type">wifi_auto_connect_type</string>
     <string name="wifi_setting_connect_type_error">There was a problem setting the connect type.</string>
-    <string name="gsm_to_wifi_connect_type_title">Cellular->WLAN</string>
-    <string name="data_to_wifi_connect_key">data_to_wifi_connect_type</string>
-    <string name="data_to_wifi_connect_value_auto">0</string>
-    <string name="data_to_wifi_connect_value_manul">1</string>
-    <string name="data_to_wifi_connect_value_ask">2</string>
+    <string name="cellular_to_wlan_title">Cellular->WLAN</string>
     <string name="usb_sdcard_summary">Lets you transfer media files in the SD card on computer</string>
     <string name="usb_sdcard_title">Mount SD card</string>
     <string name="usb_charging_title">Charging</string>
     <string name="usb_charging_summary">Lets you only charge the device</string>
     <string name="external_storage_turn_on">External storage has been turned on</string>
     <string name="external_storage_turn_off">External storage has been turned off</string>
-    <string name="sim_naming_title">SIM Card Naming</string>
-    <string name="title_sim_alias">Alias name</string>
-    <string name="same_name_alert">Two sim cards can not be the same name!</string>
-    <string name="sim_icon_title">Icons</string>
     <string name="sound_category_calls_title">Incoming calls</string>
     <string name="lte_4g_settings_title">Enable 4G</string>
     <string name="lte_4g_switch_prompt">The phone will change from 3G/2G to 4G, some active task may be stopped</string>
@@ -6250,10 +6255,22 @@
     <string name="hotspot_settings_indication_step4">4. Start using the Internet on PC/Mobile device.</string>
     <string name="hotspot_turn_on_hint">To use WLAN hotspot, turn it on.</string>
     <string name="switch_data_subscription">Default data preference set to SIM%1$s.</string>
+    <string name="notify_connect">CMCC WLAN prompt</string>
+    <string name="notify_connect_summary">Prompt me when access to CMCC WLAN</string>
 
     <!-- Protected Apps -->
     <string name="menu_hidden_apps_delete">Reset</string>
     <string name="menu_hidden_apps_reset_lock">Reset pattern lock</string>
     <string name="protected_apps">Protected apps</string>
     <string name="saving_protected_components">Saving component state</string>
+
+    <!-- blur effect -->
+    <string name="blur_effect_settings_title">Blur Effect</string>
+    <string name="blur_effect_lockscreen_title">Lockscreen</string>
+    <string name="blur_effect_globalaction_title">Global action dialog</string>
+    <string name="blur_effect_volumecontrol_title">Volume control inside</string>
+    <string name="cellular_to_wlan_hint_title">Cellular->WLAN hint</string>
+    <string name="cellular_to_wlan_hint_summary">Allow hint when choose manually or always ask in Cellular->WLAN</string>
+    <string name="cellular_to_wlan_hint_toast">Cellular->WLAN connection may be affected</string>
+    <string name="select_sim_card">Select SIM card</string>
 </resources>

@@ -188,12 +188,12 @@ public class MSimStatus extends PreferenceActivity {
         }
     }
 
-    private String getSimSummary(int subscription, String msg) {
+    private String getSimSummary(int phoneId, String msg) {
         //The msg get from SystemProperties.get() my be "unknown"
         if ((msg == null) || msg.equalsIgnoreCase("unknown")) {
             msg = mUnknown;
         }
-        return mSim[subscription] + ": " + msg;
+        return mSim[phoneId] + ": " + msg;
     }
 
     private void setMSimSummary(String key, String... msgs) {
@@ -220,12 +220,12 @@ public class MSimStatus extends PreferenceActivity {
         }
     }
 
-    private String getMultiSimName(int subscription) {
-        String name = MultiSimSettingTab.getMultiSimName(this, subscription);
+    private String getMultiSimName(int phoneId) {
+        String name = MultiSimSettingTab.getMultiSimName(this, phoneId);
         if (name != null) {
             return name;
         } else {
-            return getResources().getString(R.string.sim_card_number_title, subscription + 1);
+            return getResources().getString(R.string.sim_card_number_title, phoneId + 1);
         }
     }
 
@@ -502,34 +502,35 @@ public class MSimStatus extends PreferenceActivity {
                 }
                 CellBroadcastMessage cbMessage = (CellBroadcastMessage) extras.get("message");
                 if (cbMessage != null && cbMessage.getServiceCategory() == 50) {
-                    int subscriptionId = (int)cbMessage.getSubId();
+                    long subId = cbMessage.getSubId();
+                    int phoneId = SubscriptionManager.getSlotId(subId);
                     String latestAreaInfo = cbMessage.getMessageBody();
-                    updateAreaInfo(latestAreaInfo, subscriptionId);
+                    updateAreaInfo(latestAreaInfo, phoneId);
                 }
             }
         }
     };
 
-    private PhoneStateListener getPhoneStateListener(final int subscription) {
-        long subId = SubscriptionManager.getSubId(subscription)[0];
+    private PhoneStateListener getPhoneStateListener(final int phoneId) {
+        long subId = SubscriptionManager.getSubId(phoneId)[0];
         PhoneStateListener phoneStateListener = new PhoneStateListener(subId) {
             @Override
             public void onSignalStrengthsChanged(SignalStrength signalStrength) {
-                mSignalStrength[subscription] = signalStrength;
-                updateSignalStrength(subscription);
+                mSignalStrength[phoneId] = signalStrength;
+                updateSignalStrength(phoneId);
             }
 
             @Override
             public void onServiceStateChanged(ServiceState state) {
-                mServiceState[subscription] = state;
-                updateServiceState(subscription);
-                updateNetworkType(subscription);
+                mServiceState[phoneId] = state;
+                updateServiceState(phoneId);
+                updateNetworkType(phoneId);
             }
             @Override
             public void onDataConnectionStateChanged(int state) {
-                mDataState[subscription] = state;
-                updateDataState(subscription);
-                updateNetworkType(subscription);
+                mDataState[phoneId] = state;
+                updateDataState(phoneId);
+                updateNetworkType(phoneId);
             }
         };
         return phoneStateListener;
@@ -570,10 +571,10 @@ public class MSimStatus extends PreferenceActivity {
              }
     }
 
-    private void updateServiceState(int subscription) {
+    private void updateServiceState(int phoneId) {
         String display = mRes.getString(R.string.radioInfo_unknown);
-        if (mServiceState[subscription] != null) {
-            int state = mServiceState[subscription].getState();
+        if (mServiceState[phoneId] != null) {
+            int state = mServiceState[phoneId].getState();
 
             switch (state) {
                 case ServiceState.STATE_IN_SERVICE:
@@ -588,24 +589,24 @@ public class MSimStatus extends PreferenceActivity {
                     break;
             }
 
-            mServiceStateSummary[subscription] = getSimSummary(subscription, display);
+            mServiceStateSummary[phoneId] = getSimSummary(phoneId, display);
             setMSimSummary(KEY_SERVICE_STATE, mServiceStateSummary);
 
-            if (mServiceState[subscription].getRoaming()) {
-                mRoamingStateSummary[subscription] = getSimSummary(subscription,
+            if (mServiceState[phoneId].getRoaming()) {
+                mRoamingStateSummary[phoneId] = getSimSummary(phoneId,
                         mRes.getString(R.string.radioInfo_roaming_in));
             } else {
-                mRoamingStateSummary[subscription] = getSimSummary(subscription,
+                mRoamingStateSummary[phoneId] = getSimSummary(phoneId,
                         mRes.getString(R.string.radioInfo_roaming_not));
             }
             setMSimSummary(KEY_ROAMING_STATE, mRoamingStateSummary);
 
             String operatorName = null;
             if (/*FeatureQuery.FEATURE_SHOW_CARRIER_BY_MCCMNC*/false) {
-                String spn = mTelephonyManager.getDefault().getNetworkOperator(subscription);
+                String spn = mTelephonyManager.getDefault().getNetworkOperator(phoneId);
                 operatorName = spn;
             } else {
-                operatorName = mServiceState[subscription].getOperatorAlphaLong();
+                operatorName = mServiceState[phoneId].getOperatorAlphaLong();
                 // parse the string to current language string in public resources
                 if (operatorName != null) {
                     operatorName = android.util.NativeTextHelper.getInternalLocalString(this,
@@ -614,38 +615,39 @@ public class MSimStatus extends PreferenceActivity {
                             R.array.locale_carrier_names);
                 }
             }
-            mOperatorNameSummary[subscription] = getSimSummary(subscription, operatorName);
+            mOperatorNameSummary[phoneId] = getSimSummary(phoneId, operatorName);
             setMSimSummary(KEY_OPERATOR_NAME, mOperatorNameSummary);
         }
     }
 
-    private void updateAreaInfo(String areaInfo, int subscription) {
-        if (DEBUG) Log.i(TAG, "updateAreaInfo areaInfo="+areaInfo+" sub="+subscription);
+    private void updateAreaInfo(String areaInfo, int phoneId) {
+        if (DEBUG)
+            Log.i(TAG, "updateAreaInfo areaInfo=" + areaInfo + " sub=" + phoneId);
         if (areaInfo != null) {
-            mLatestAreaInfoSummary[subscription] = getSimSummary(subscription, areaInfo);
+            mLatestAreaInfoSummary[phoneId] = getSimSummary(phoneId, areaInfo);
             setMSimSummary(KEY_LATEST_AREA_INFO, mLatestAreaInfoSummary);
         }
     }
 
-    void updateSignalStrength(int subscription) {
+    void updateSignalStrength(int phoneId) {
         // not loaded in some versions of the code (e.g., zaku)
 
-        if (mSignalStrength[subscription] != null) {
-            int state = mServiceState[subscription].getState();
+        if (mSignalStrength[phoneId] != null) {
+            int state = mServiceState[phoneId].getState();
             Resources r = getResources();
 
             if ((ServiceState.STATE_OUT_OF_SERVICE == state) ||
                     (ServiceState.STATE_POWER_OFF == state)) {
-                mSigStrengthSummary[subscription] = getSimSummary(subscription, "0");
+                mSigStrengthSummary[phoneId] = getSimSummary(phoneId, "0");
             } else {
-                int signalDbm = mSignalStrength[subscription].getDbm();
+                int signalDbm = mSignalStrength[phoneId].getDbm();
                 if (-1 == signalDbm) signalDbm = 0;
 
-                int signalAsu = mSignalStrength[subscription].getAsuLevel();
+                int signalAsu = mSignalStrength[phoneId].getAsuLevel();
                 if (-1 == signalAsu)
                     signalAsu = 0;
 
-                mSigStrengthSummary[subscription] = getSimSummary(subscription,
+                mSigStrengthSummary[phoneId] = getSimSummary(phoneId,
                         String.valueOf(signalDbm) + " "
                                 + r.getString(R.string.radioInfo_display_dbm) + "   "
                                 + String.valueOf(signalAsu) + " "
@@ -655,22 +657,22 @@ public class MSimStatus extends PreferenceActivity {
         }
     }
 
-    private void updateNetworkType(int subscription) {
+    private void updateNetworkType(int phoneId) {
         // Whether EDGE, UMTS, etc...
-        long[] subId = SubscriptionManager.getSubId(subscription);
+        long[] subId = SubscriptionManager.getSubId(phoneId);
         int netwokType = mTelephonyManager.getNetworkType(subId[0]);
         if (TelephonyManager.NETWORK_TYPE_UNKNOWN != netwokType) {
-            mNetworkSummary[subscription] = getSimSummary(subscription,
+            mNetworkSummary[phoneId] = getSimSummary(phoneId,
                     mTelephonyManager.getNetworkTypeName(netwokType));
         }
         setMSimSummary(KEY_NETWORK_TYPE,mNetworkSummary);
     }
 
-    private void updateDataState(int subscription) {
+    private void updateDataState(int phoneId) {
         String display = null;
-        if (PhoneFactory.getDataSubscription() == subscription
-                && isDataServiceEnable(subscription)) {
-            switch (mDataState[subscription]) {
+        if (PhoneFactory.getDataSubscription() == SubscriptionManager.getSubId(phoneId)[0]
+                && isDataServiceEnable(phoneId)) {
+            switch (mDataState[phoneId]) {
             case TelephonyManager.DATA_CONNECTED:
                 display = mRes.getString(R.string.radioInfo_data_connected);
                 break;
@@ -688,13 +690,13 @@ public class MSimStatus extends PreferenceActivity {
             display = mRes.getString(R.string.radioInfo_data_disconnected);
         }
 
-        mDataStateSummary[subscription] = getSimSummary(subscription, display);
+        mDataStateSummary[phoneId] = getSimSummary(phoneId, display);
         setMSimSummary(KEY_DATA_STATE, mDataStateSummary);
     }
 
-    private boolean isDataServiceEnable(int subscription) {
-        if (mServiceState[subscription] != null &&
-            mServiceState[subscription].getState() == ServiceState.STATE_IN_SERVICE) {
+    private boolean isDataServiceEnable(int phoneId) {
+        if (mServiceState[phoneId] != null &&
+                mServiceState[phoneId].getState() == ServiceState.STATE_IN_SERVICE) {
             ConnectivityManager connMgr =
                    (ConnectivityManager)getSystemService(CONNECTIVITY_SERVICE);
             if (connMgr != null && connMgr.getMobileDataEnabled()) {

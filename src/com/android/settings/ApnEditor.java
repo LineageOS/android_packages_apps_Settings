@@ -100,6 +100,7 @@ public class ApnEditor extends PreferenceActivity
     private Cursor mCursor;
     private boolean mNewApn;
     private boolean mFirstTime;
+    private boolean mApnDisable = false;
     private Resources mRes;
     private TelephonyManager mTelephonyManager;
 
@@ -207,15 +208,6 @@ public class ApnEditor extends PreferenceActivity
                 SubscriptionManager.getDefaultSubId());
         Log.d(TAG,"ApnEditor onCreate received sub: " + mSubId);
         mDisableEditor = intent.getBooleanExtra("DISABLE_EDITOR",false);
-        if (mDisableEditor) {
-            if (getResources().getBoolean(R.bool.config_name_apn)) {
-                getPreferenceScreen().setEnabled(false);
-                Log.d(TAG, "ApnEditor form is disabled.");
-            } else {
-                mApn.setEnabled(false);
-                Log.d(TAG, "Apn Name can't be edited.");
-            }
-        }
 
         mFirstTime = icicle == null;
 
@@ -382,6 +374,23 @@ public class ApnEditor extends PreferenceActivity
         } else {
             mCarrierEnabled.setEnabled(false);
         }
+        String mccMnc = mMcc.getText() + mMnc.getText();
+        for (String plmn : getResources().getStringArray(R.array.plmn_list_for_apn_disable)) {
+            if (plmn.equals(mccMnc)) {
+                mApnDisable  = true;
+                Log.d(TAG, "APN is China Unicom's.");
+                break;
+            }
+        }
+        if (mDisableEditor) {
+            if (mApnDisable ) {
+                getPreferenceScreen().setEnabled(false);
+                Log.d(TAG, "ApnEditor form is disabled.");
+            } else {
+                mApn.setEnabled(false);
+                Log.d(TAG, "Apn Name can't be edited.");
+            }
+        }
     }
 
     /**
@@ -497,7 +506,7 @@ public class ApnEditor extends PreferenceActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        if (mDisableEditor && getResources().getBoolean(R.bool.config_name_apn)) {
+        if (mDisableEditor && mApnDisable ) {
             Log.d(TAG, "Form is disabled. Do not create the options menu.");
             return true;
         }
@@ -551,6 +560,7 @@ public class ApnEditor extends PreferenceActivity
     protected void onSaveInstanceState(Bundle icicle) {
         super.onSaveInstanceState(icicle);
         if (validateAndSave(true)) {
+            mCursor.moveToFirst();
             icicle.putInt(SAVED_POS, mCursor.getInt(ID_INDEX));
         }
     }
@@ -568,7 +578,7 @@ public class ApnEditor extends PreferenceActivity
         String mnc = checkNotSet(mMnc.getText());
 
         // If the form is not editable, do nothing and return.
-        if(mDisableEditor && getResources().getBoolean(R.bool.config_name_apn)){
+        if (mDisableEditor && mApnDisable ) {
             Log.d(TAG, "Form is disabled. Nothing to save.");
             return true;
         }

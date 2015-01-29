@@ -76,6 +76,7 @@ import android.widget.TabWidget;
 import com.android.internal.util.ImageUtils;
 import com.android.internal.util.UserIcons;
 import com.android.settings.UserSpinnerAdapter.UserDetails;
+import com.android.settings.bluetooth.BluetoothSettings;
 import com.android.settings.dashboard.DashboardCategory;
 import com.android.settings.dashboard.DashboardTile;
 import com.android.settings.drawable.CircleFramedDrawable;
@@ -110,6 +111,12 @@ public final class Utils {
             0x00000000, 0xffc43828, 0xffe54918, 0xfff47b00,
             0xfffabf2c, 0xff679e37, 0xff0a7f42
     };
+
+    /**
+     * Type that refers to sounds that are used for the phone ringer
+     *
+     */
+    public static final int TYPE_RINGTONE_2 = 8;
 
     /**
      * Name of the meta-data item that should be set in the AndroidManifest.xml
@@ -689,7 +696,12 @@ public final class Utils {
     public static Intent onBuildStartFragmentIntent(Context context, String fragmentName,
             Bundle args, int titleResId, CharSequence title, boolean isShortcut) {
         Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.setClass(context, SubSettings.class);
+        if (BluetoothSettings.class.getName().equals(fragmentName)) {
+            intent.setClass(context, SubSettings.BluetoothSubSettings.class);
+            intent.putExtra(SettingsActivity.EXTRA_SHOW_FRAGMENT_AS_SUBSETTING, true);
+        } else {
+            intent.setClass(context, SubSettings.class);
+        }
         intent.putExtra(SettingsActivity.EXTRA_SHOW_FRAGMENT, fragmentName);
         intent.putExtra(SettingsActivity.EXTRA_SHOW_FRAGMENT_ARGUMENTS, args);
         intent.putExtra(SettingsActivity.EXTRA_SHOW_FRAGMENT_TITLE_RESID, titleResId);

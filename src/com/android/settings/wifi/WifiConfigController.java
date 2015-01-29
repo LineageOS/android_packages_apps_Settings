@@ -34,14 +34,17 @@ import android.net.Uri;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiConfiguration.AuthAlgorithm;
 import android.net.wifi.WifiConfiguration.KeyMgmt;
+import android.net.wifi.WifiEapSimInfo;
 import android.net.wifi.WifiEnterpriseConfig;
 import android.net.wifi.WifiEnterpriseConfig.Eap;
 import android.net.wifi.WifiEnterpriseConfig.Phase2;
 import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Handler;
 import android.os.UserHandle;
 import android.security.Credentials;
 import android.security.KeyStore;
+import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -59,11 +62,15 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.android.settings.MultiSimSettingTab;
 import com.android.settings.ProxySelector;
 import com.android.settings.R;
 
 import java.net.InetAddress;
 import java.net.Inet4Address;
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
 /**
@@ -92,6 +99,8 @@ public class WifiConfigController implements TextWatcher,
     public static final int WIFI_EAP_METHOD_TLS  = 1;
     public static final int WIFI_EAP_METHOD_TTLS = 2;
     public static final int WIFI_EAP_METHOD_PWD  = 3;
+    public static final int WIFI_EAP_METHOD_SIM  = 4;
+    public static final int WIFI_EAP_METHOD_AKA  = 5;
 
     /* These values come from "wifi_peap_phase2_entries" resource array */
     public static final int WIFI_PEAP_PHASE2_NONE 	    = 0;
@@ -119,8 +128,17 @@ public class WifiConfigController implements TextWatcher,
     private Spinner mEapMethodSpinner;
     private Spinner mEapCaCertSpinner;
     private Spinner mPhase2Spinner;
+    private Spinner mSimCardSpinner;
     // Associated with mPhase2Spinner, one of PHASE2_FULL_ADAPTER or PHASE2_PEAP_ADAPTER
     private ArrayAdapter<String> mPhase2Adapter;
+
+    private ArrayAdapter<String> mEapMethodAdapter;
+    private ArrayList<String> mSimDisplayNames;
+    /* List of EAP methods*/
+    private ArrayList<String> mEapSimAvailableSimName;
+    private ArrayList<String> mEapAkaAvailableSimName;
+    private String[] mEapMethods;
+
     private Spinner mEapUserCertSpinner;
     private TextView mEapIdentityView;
     private TextView mEapAnonymousView;
@@ -148,6 +166,10 @@ public class WifiConfigController implements TextWatcher,
     private TextView mSsidView;
 
     private Context mContext;
+    private WifiManager mWifiManager;
+    private WifiEapSimInfo mWifiEapSimInfo;
+    private static final String EAP_SIM_METHOD_STRING = "SIM";
+    private static final String EAP_AKA_METHOD_STRING = "AKA";
 
     public WifiConfigController(
             WifiConfigUiBase parent, View view, AccessPoint accessPoint, boolean edit) {
@@ -163,8 +185,14 @@ public class WifiConfigController implements TextWatcher,
         mTextViewChangedHandler = new Handler();
         mContext = mConfigUi.getContext();
         final Resources res = mContext.getResources();
+        mWifiManager = (WifiManager) mContext.getSystemService(Context.WIFI_SERVICE);
+        mWifiEapSimInfo = mWifiManager.getSimInfo();
+        mEapSimAvailableSimName = new ArrayList<String>();
+        mEapAkaAvailableSimName = new ArrayList<String>();
+        mSimDisplayNames = new ArrayList<String>();
 
         mLevels = res.getStringArray(R.array.wifi_signal);
+        mEapMethods = res.getStringArray(R.array.wifi_eap_entries);
         PHASE2_PEAP_ADAPTER = new ArrayAdapter<String>(
             mContext, android.R.layout.simple_spinner_item,
             res.getStringArray(R.array.wifi_peap_phase2_entries));
@@ -311,13 +339,7 @@ public class WifiConfigController implements TextWatcher,
                     mView.findViewById(R.id.ip_fields).setVisibility(View.GONE);
                 }
                 if (mAccessPoint.networkId != INVALID_NETWORK_ID) {
-                    if (res.getBoolean(R.bool.set_wifi_priority)) {
-                        if (!AccessPoint.isCarrierAp(accessPoint, mContext)) {
-                            mConfigUi.setForgetButton(res.getString(R.string.wifi_forget));
-                        }
-                    } else {
-                        mConfigUi.setForgetButton(res.getString(R.string.wifi_forget));
-                    }
+                    mConfigUi.setForgetButton(res.getString(R.string.wifi_forget));
                 }
             }
         }
@@ -459,6 +481,15 @@ public class WifiConfigController implements TextWatcher,
                                 Log.e(TAG, "Unknown phase2 method" + phase2Method);
                                 break;
                         }
+                        break;
+                    case Eap.SIM:
+                    case Eap.AKA:
+                        String selectedSimCardName = (String)mSimCardSpinner.getSelectedItem();
+                        int selectedSimCardNumber = mSimDisplayNames.
+                                indexOf(selectedSimCardName) + 1;
+                        Log.d(TAG, "selectedSimCardNumber is: " + selectedSimCardNumber);
+                        config.SIMNum = selectedSimCardNumber;
+                        config.enterpriseConfig.setPhase2Method(phase2Method);
                         break;
                     default:
                         // The default index from PHASE2_FULL_ADAPTER maps to the API
@@ -654,9 +685,28 @@ public class WifiConfigController implements TextWatcher,
         mView.findViewById(R.id.eap).setVisibility(View.VISIBLE);
 
         if (mEapMethodSpinner == null) {
+            if (mContext.getResources().getBoolean(R.bool.config_eap_sim_function)) {
+                checkEapSimInfo();
+                ArrayList<String> methodarray = new ArrayList<String>();
+                Collections.addAll(methodarray, mEapMethods);
+                if (mEapSimAvailableSimName.size() > 0) {
+                    methodarray.add(EAP_SIM_METHOD_STRING);
+                }
+                if (mEapAkaAvailableSimName.size() > 0) {
+                    methodarray.add(EAP_AKA_METHOD_STRING);
+                }
+                mEapMethods = methodarray.toArray(new String[methodarray.size()]);
+            }
+            mEapMethodAdapter = new ArrayAdapter<String>(
+                    mContext, android.R.layout.simple_spinner_item,
+                    mEapMethods);
+            mEapMethodAdapter.setDropDownViewResource(
+                    android.R.layout.simple_spinner_dropdown_item);
             mEapMethodSpinner = (Spinner) mView.findViewById(R.id.method);
+            mEapMethodSpinner.setAdapter(mEapMethodAdapter);
             mEapMethodSpinner.setOnItemSelectedListener(this);
             mPhase2Spinner = (Spinner) mView.findViewById(R.id.phase2);
+            mSimCardSpinner = (Spinner) mView.findViewById(R.id.sim_card);
             mEapCaCertSpinner = (Spinner) mView.findViewById(R.id.ca_cert);
             mEapUserCertSpinner = (Spinner) mView.findViewById(R.id.user_cert);
             mEapIdentityView = (TextView) mView.findViewById(R.id.identity);
@@ -708,6 +758,29 @@ public class WifiConfigController implements TextWatcher,
         }
     }
 
+    private void checkEapSimInfo() {
+        int numOfSims;
+        if (TelephonyManager.getDefault().isMultiSimEnabled()) {
+            numOfSims = mWifiEapSimInfo.mNumOfSims;
+        } else {
+            numOfSims = 1;
+        }
+        for (int i = 0; i < numOfSims; i++) {
+            String displayname = MultiSimSettingTab.getMultiSimName(mContext, i);
+            mSimDisplayNames.add(displayname);
+            if (mWifiEapSimInfo.mSimTypes.get(i) == WifiEapSimInfo.SIM_2G) {
+                Log.d(TAG, "Sim " + (i + 1) + " type is SIM_2G");
+                mEapSimAvailableSimName.add(displayname);
+            } else if (mWifiEapSimInfo.mSimTypes.get(i) == WifiEapSimInfo.SIM_3G) {
+                Log.d(TAG, "Sim " + (i + 1) + " type is SIM_3G");
+                mEapSimAvailableSimName.add(displayname);
+                mEapAkaAvailableSimName.add(displayname);
+            } else {
+                Log.d(TAG, "Sim " + (i + 1) + " type is Unknow");
+            }
+        }
+    }
+
     /**
      * EAP-PWD valid fields include
      *   identity
@@ -733,6 +806,7 @@ public class WifiConfigController implements TextWatcher,
         // Common defaults
         mView.findViewById(R.id.l_method).setVisibility(View.VISIBLE);
         mView.findViewById(R.id.l_identity).setVisibility(View.VISIBLE);
+        mView.findViewById(R.id.wifi_advanced_toggle).setVisibility(View.VISIBLE);
 
         // Defaults for most of the EAP methods and over-riden by
         // by certain EAP methods
@@ -747,12 +821,14 @@ public class WifiConfigController implements TextWatcher,
                 setCaCertInvisible();
                 setAnonymousIdentInvisible();
                 setUserCertInvisible();
+                setSimCardInvisible();
                 break;
             case WIFI_EAP_METHOD_TLS:
                 mView.findViewById(R.id.l_user_cert).setVisibility(View.VISIBLE);
                 setPhase2Invisible();
                 setAnonymousIdentInvisible();
                 setPasswordInvisible();
+                setSimCardInvisible();
                 break;
             case WIFI_EAP_METHOD_PEAP:
                 // Reset adapter if needed
@@ -763,6 +839,7 @@ public class WifiConfigController implements TextWatcher,
                 mView.findViewById(R.id.l_phase2).setVisibility(View.VISIBLE);
                 mView.findViewById(R.id.l_anonymous).setVisibility(View.VISIBLE);
                 setUserCertInvisible();
+                setSimCardInvisible();
                 break;
             case WIFI_EAP_METHOD_TTLS:
                 // Reset adapter if needed
@@ -773,8 +850,52 @@ public class WifiConfigController implements TextWatcher,
                 mView.findViewById(R.id.l_phase2).setVisibility(View.VISIBLE);
                 mView.findViewById(R.id.l_anonymous).setVisibility(View.VISIBLE);
                 setUserCertInvisible();
+                setSimCardInvisible();
+                break;
+            case WIFI_EAP_METHOD_SIM:
+                ArrayAdapter<String> eapSimAdapter = new ArrayAdapter<String>(
+                        mContext, android.R.layout.simple_spinner_item,
+                        mEapSimAvailableSimName.toArray(new String[mEapSimAvailableSimName.size()])
+                );
+                eapSimAdapter.setDropDownViewResource(
+                        android.R.layout.simple_spinner_dropdown_item);
+                mSimCardSpinner.setAdapter(eapSimAdapter);
+                mView.findViewById(R.id.l_sim_card).setVisibility(View.VISIBLE);
+                mView.findViewById(R.id.wifi_advanced_toggle).setVisibility(View.GONE);
+                setPhase2Invisible();
+                setCaCertInvisible();
+                setAnonymousIdentInvisible();
+                setUserCertInvisible();
+                setPasswordInvisible();
+                setIdentityInvisible();
+                break;
+            case WIFI_EAP_METHOD_AKA:
+                ArrayAdapter<String> eapAkaAdapter = new ArrayAdapter<String>(
+                        mContext, android.R.layout.simple_spinner_item,
+                        mEapAkaAvailableSimName.toArray(new String[mEapAkaAvailableSimName.size()])
+                );
+                eapAkaAdapter.setDropDownViewResource(
+                        android.R.layout.simple_spinner_dropdown_item);
+                mSimCardSpinner.setAdapter(eapAkaAdapter);
+                mView.findViewById(R.id.l_sim_card).setVisibility(View.VISIBLE);
+                mView.findViewById(R.id.wifi_advanced_toggle).setVisibility(View.GONE);
+                setPhase2Invisible();
+                setCaCertInvisible();
+                setAnonymousIdentInvisible();
+                setUserCertInvisible();
+                setPasswordInvisible();
+                setIdentityInvisible();
                 break;
         }
+    }
+
+    private void setSimCardInvisible() {
+        mView.findViewById(R.id.l_sim_card).setVisibility(View.GONE);
+    }
+
+    private void setIdentityInvisible() {
+        mView.findViewById(R.id.l_identity).setVisibility(View.GONE);
+        mEapIdentityView.setText("");
     }
 
     private void setPhase2Invisible() {

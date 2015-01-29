@@ -83,6 +83,9 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
     // User has rejected the connection and let Settings app remember the decision
     public final static int ACCESS_REJECTED = 2;
 
+    // PBAP Client has sent pbap connection request
+    public final static int PBAP_CONNECT_RECEIVED = 3;
+
     // How many times user should reject the connection to make the choice persist.
     private final static int MESSAGE_REJECTION_COUNT_LIMIT_TO_PERSIST = 2;
 
@@ -140,6 +143,8 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
         if (newProfileState == BluetoothProfile.STATE_CONNECTED) {
             if (profile instanceof MapProfile) {
                 profile.setPreferred(mDevice, true);
+                mRemovedProfiles.remove(profile);
+                mProfiles.add(profile);
             } else if (!mProfiles.contains(profile)) {
                 mRemovedProfiles.remove(profile);
                 mProfiles.add(profile);
@@ -296,15 +301,28 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
     }
 
     boolean startPairing() {
+        boolean pairingState = mLocalAdapter.checkPairingState();
+
+        if (pairingState == true)
+        {
+            Log.v(TAG, "Pairing is ongoing");
+            return true;
+        }
+
+        mLocalAdapter.setPairingState(true);
+        Log.v(TAG, "startPairing : isPairing : " + pairingState);
+
         // Pairing is unreliable while scanning, so cancel discovery
         if (mLocalAdapter.isDiscovering()) {
             mLocalAdapter.cancelDiscovery();
         }
 
         if (!mDevice.createBond()) {
+            mLocalAdapter.setPairingState(false);
             return false;
         }
 
+        Log.v(TAG, "startPairing CreateBond : isPairing : " + pairingState);
         mConnectAfterPairing = true;  // auto-connect after pairing
         return true;
     }
@@ -592,7 +610,9 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
     }
 
     void onBondingStateChanged(int bondState) {
+        boolean pairingState = mLocalAdapter.checkPairingState();
         if (bondState == BluetoothDevice.BOND_NONE) {
+            mLocalAdapter.setPairingState(false);
             mProfiles.clear();
             mDevice.setAlias(null);
             mConnectAfterPairing = false;  // cancel auto-connect
@@ -600,17 +620,20 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
             setMessagePermissionChoice(ACCESS_UNKNOWN);
             mMessageRejectionCount = 0;
             saveMessageRejectionCount();
+            Log.v(TAG,"BondState none: isPairing : " + pairingState);
         }
 
         refresh();
 
         if (bondState == BluetoothDevice.BOND_BONDED) {
+            mLocalAdapter.setPairingState(false);
             if (mDevice.isBluetoothDock()) {
                 onBondingDockConnect();
             } else if (mConnectAfterPairing) {
                 connect(false);
             }
             mConnectAfterPairing = false;
+            Log.v(TAG,"BondState bonded: isPairing : " + pairingState);
         }
     }
 
@@ -712,23 +735,12 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
     }
 
     int getPhonebookPermissionChoice() {
-        int permission = mDevice.getPhonebookAccessPermission();
-        if (permission == BluetoothDevice.ACCESS_ALLOWED) {
-            return ACCESS_ALLOWED;
-        } else if (permission == BluetoothDevice.ACCESS_REJECTED) {
-            return ACCESS_REJECTED;
-        }
-        return ACCESS_UNKNOWN;
+        return mDevice.getPhonebookAccessPermission();
     }
 
     void setPhonebookPermissionChoice(int permissionChoice) {
-        int permission = BluetoothDevice.ACCESS_UNKNOWN;
-        if (permissionChoice == ACCESS_ALLOWED) {
-            permission = BluetoothDevice.ACCESS_ALLOWED;
-        } else if (permissionChoice == ACCESS_REJECTED) {
-            permission = BluetoothDevice.ACCESS_REJECTED;
-        }
-        mDevice.setPhonebookAccessPermission(permission);
+        Log.d(TAG,"setPhonebookPermissionChoice, permissionChoice = " + permissionChoice);
+        mDevice.setPhonebookAccessPermission(permissionChoice);
     }
 
     // Migrates data from old data store (in Settings app's shared preferences) to new (in Bluetooth

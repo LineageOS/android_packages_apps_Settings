@@ -36,6 +36,7 @@ import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.INetworkManagementService;
@@ -198,9 +199,15 @@ public class SettingsActivity extends Activity
     private static final String META_DATA_KEY_FRAGMENT_CLASS =
         "com.android.settings.FRAGMENT_CLASS";
 
+    private static final String ACTION_TIMER_SWITCH = "qualcomm.intent.action.TIMER_SWITCH";
+
     private static final String EXTRA_UI_OPTIONS = "settings:ui_options";
 
     private static final String EMPTY_QUERY = "";
+
+    private static final String ACTION_GESTURE = "qualcomm.intent.action.GESTURE_SETTINGS";
+
+    private static CharSequence MODEL_8909 = "8909";
 
     private static boolean sShowNoHomeNotice = false;
 
@@ -1228,6 +1235,27 @@ public class SettingsActivity extends Activity
                 } else if (id == R.id.global_roaming_settings) {
                     if (!getResources().getBoolean(R.bool.config_roamingsettings_enabled)) {
                         removeTile = true;
+                    }
+                } else if (id == R.id.gestures_settings) {
+                    Intent intent = new Intent(ACTION_GESTURE);
+                    List<ResolveInfo> infos = getBaseContext().getPackageManager()
+                            .queryIntentActivities(intent, 0);
+
+                    if (infos == null || infos.isEmpty() || !Build.MODEL.contains(MODEL_8909)) {
+                        removeTile = true;
+                    } else {
+                        tile.title = infos.get(0).activityInfo.loadLabel(getPackageManager());
+                        tile.intent = intent;
+                    }
+                } else if (id == R.id.timer_switch_settings) {
+                    Intent intent = new Intent(ACTION_TIMER_SWITCH);
+                    List<ResolveInfo> infos = getBaseContext().getPackageManager()
+                        .queryIntentActivities(intent, 0);
+                    if (infos == null || infos.isEmpty()) {
+                        removeTile = true;
+                    } else {
+                        tile.title = infos.get(0).activityInfo.loadLabel(getPackageManager());
+                        tile.intent = intent;
                     }
                 }
 

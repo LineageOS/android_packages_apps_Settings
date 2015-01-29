@@ -78,12 +78,20 @@
     <!-- Whether to switch dm for autoboot -->
     <bool name="dm_autoboot_setting_visible">false</bool>
 
-    <!-- Whether to edit APN name-->
-    <bool name="config_name_apn">true</bool>
-
     <!-- Whether to show hotspot settings -->
     <bool name="show_wifi_hotspot_settings">false</bool>
 
     <!-- Whether to hide wifi hotspot -->
     <bool name="hide_wifi_hotspot">false</bool>
+
+    <!-- Whether notify user that current connected ap is CMCC -->
+    <bool name="connect_to_cmcc_notify">false</bool>
+
+    <!-- Whether notify user in cell to wlan feature -->
+    <bool name="cellular_to_wlan_hint">false</bool>
+    <!-- Whether to disable cellular data -->
+    <bool name="disbale_cellular_data">false</bool>
+
+    <!-- Whether to add SIM/AKA in EAP method for adding network -->
+    <bool name="config_eap_sim_function">false</bool>
 </resources>

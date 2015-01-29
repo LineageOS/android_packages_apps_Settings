@@ -222,78 +222,45 @@ public class ApnSettings extends SettingsPreferenceFragment implements
         }
     }
 
-    private int getRadioTechnology(){
-        ServiceState serviceState = null;
-        if (TelephonyManager.getDefault().isMultiSimEnabled()) {
-            int phoneId = SubscriptionManager.getPhoneId(mSubId);
-            Log.d(TAG,"getRadioTechnology.phoneId = " + phoneId);
-            serviceState = PhoneFactory.getPhone(phoneId).getServiceState();
-        } else {
-            serviceState = PhoneFactory.getDefaultPhone().getServiceState();
-        }
-        int netType = serviceState.getRilDataRadioTechnology();
-        if (netType == ServiceState.RIL_RADIO_TECHNOLOGY_UNKNOWN) {
-            netType = serviceState.getRilVoiceRadioTechnology();
-        }
-        return netType;
-    }
-
-    private String getIccOperatorNumeric(){
-        String iccOperatorNumeric = null;
-        int dataRat = getRadioTechnology();
-        if (dataRat != ServiceState.RIL_RADIO_TECHNOLOGY_UNKNOWN) {
-            IccRecords iccRecords = null;
-            int appFamily = UiccController.getFamilyFromRadioTechnology(dataRat);
-            if (TelephonyManager.getDefault().isMultiSimEnabled()) {
-                int slotId = SubscriptionManager.getSlotId(mSubId);
-                Log.d(TAG,"getIccOperatorNumeric.slotId = " + slotId);
-                iccRecords = UiccController.getInstance().getIccRecords(slotId, appFamily);
-            } else {
-                iccRecords = UiccController.getInstance().getIccRecords(0, appFamily);
-            }
-            if (iccRecords != null) {
-                iccOperatorNumeric = iccRecords.getOperatorNumeric();
-            }
-        }
-        return iccOperatorNumeric;
-    }
-
     private void fillList() {
         boolean isSelectedKeyMatch = false;
         String where = getOperatorNumericSelection();
-        //remove the filtered items, no need to show in UI
-        where += " and type <>\"" + PhoneConstants.APN_TYPE_IA + "\"";
+        // Hide nothing if property is false, default is true
+        if (SystemProperties.getBoolean("persist.sys.hideapn", true)) {
+            //remove the filtered items, no need to show in UI
+            where += " and type <>\"" + PhoneConstants.APN_TYPE_IA + "\"";
 
-        // Filer fota and dm for specail carrier
-        if (getResources().getBoolean(R.bool.config_hide_dm_enabled)) {
-            String operatorMccMnc = TelephonyManager.getDefault().getIccOperatorNumeric(mSubId);
-            for (String plmn : getResources().getStringArray(R.array.hidedm_plmn_list)) {
-                if (plmn.equals(operatorMccMnc)) {
-                    where += " and type <>\"" + PhoneConstants.APN_TYPE_FOTA + "\"";
-                    where += " and type <>\"" + APN_TYPE_DM + "\"";
-                    break;
-                }
-            }
-        }
-
-        if (getResources().getBoolean(R.bool.config_hidesupl_enable)) {
-            boolean needHideSupl = false;
-            for (String plmn : getResources().getStringArray(R.array.hidesupl_plmn_list)) {
-                if (plmn.equals(TelephonyManager.getDefault()
-                           .getSimOperator(mSubId))) {
-                    needHideSupl = true;
-                    break;
+            // Filer fota and dm for specail carrier
+            if (getResources().getBoolean(R.bool.config_hide_dm_enabled)) {
+                String operatorMccMnc = TelephonyManager.getDefault().getIccOperatorNumeric(mSubId);
+                for (String plmn : getResources().getStringArray(R.array.hidedm_plmn_list)) {
+                    if (plmn.equals(operatorMccMnc)) {
+                        where += " and type <>\"" + PhoneConstants.APN_TYPE_FOTA + "\"";
+                        where += " and type <>\"" + APN_TYPE_DM + "\"";
+                        break;
+                    }
                 }
             }
 
-            if (needHideSupl) {
-                where += " and type <>\"" + PhoneConstants.APN_TYPE_SUPL + "\"";
-            }
-        }
+            if (getResources().getBoolean(R.bool.config_hidesupl_enable)) {
+                boolean needHideSupl = false;
+                for (String plmn : getResources().getStringArray(R.array.hidesupl_plmn_list)) {
+                    if (plmn.equals(TelephonyManager.getDefault()
+                               .getSimOperator(mSubId))) {
+                        needHideSupl = true;
+                        break;
+                    }
+                }
 
-        //Hide mms if config is true
-        if(getResources().getBoolean(R.bool.config_mms_enable)) {
-            where += " and type <>\"" + PhoneConstants.APN_TYPE_MMS + "\"" ;
+                if (needHideSupl) {
+                    where += " and type <>\"" + PhoneConstants.APN_TYPE_SUPL + "\"";
+                }
+            }
+
+            //Hide mms if config is true
+            if(getResources().getBoolean(R.bool.config_mms_enable)) {
+                where += " and type <>\"" + PhoneConstants.APN_TYPE_MMS + "\"" ;
+            }
         }
 
         where += " and carrier_enabled = 1";
@@ -561,7 +528,7 @@ public class ApnSettings extends SettingsPreferenceFragment implements
             }
         }
 
-        String iccOperatorNumeric = getIccOperatorNumeric();
+        String iccOperatorNumeric = TelephonyManager.getDefault().getIccOperatorNumeric(mSubId);
         Log.d(TAG, "getOperatorNumeric: sub= " + mSubId + " mcc-mnc= " + iccOperatorNumeric);
         if (iccOperatorNumeric != null && iccOperatorNumeric.length() > 0) {
             result.add(iccOperatorNumeric);

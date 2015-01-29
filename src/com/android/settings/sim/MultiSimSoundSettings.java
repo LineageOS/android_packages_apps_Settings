@@ -34,39 +34,33 @@ import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-
 import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
-
 import android.media.RingtoneManager;
 import android.net.Uri;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemProperties;
-
 import android.preference.PreferenceActivity;
 import android.preference.RingtonePreference;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.provider.Settings.System;
-
 import android.telephony.TelephonyManager;
 import android.util.AttributeSet;
 import android.util.Log;
 
 import com.android.internal.telephony.PhoneConstants;
-
 import com.android.settings.R;
-
 import com.android.settings.DefaultRingtonePreference;
+import com.android.settings.Utils;
 
 public class MultiSimSoundSettings extends PreferenceActivity {
     private String LOG_TAG = "MultiSimSoundSettings";
     private static final String KEY_RINGSTONE = "ringtone";
     private static final int[] mRingtones = {
-            RingtoneManager.TYPE_RINGTONE, MultiSimSettingsConstants.TYPE_RINGTONE_2
+            RingtoneManager.TYPE_RINGTONE, Utils.TYPE_RINGTONE_2
     };
 
     private DefaultRingtonePreference mRingtonePref;

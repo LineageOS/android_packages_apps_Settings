@@ -18,6 +18,7 @@ package com.android.settings.wifi;
 
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -68,20 +69,42 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
     private static final String KEY_WPS_PUSH = "wps_push_button";
     private static final String KEY_WPS_PIN = "wps_pin_entry";
     private static final String KEY_SUSPEND_OPTIMIZATIONS = "suspend_optimizations";
-    private static final String KEY_AUTO_CONNECT_TYPE = "auto_connect_type";
-
     private static final String KEY_CURRENT_GATEWAY = "current_gateway";
     private static final String KEY_CURRENT_NETMASK = "current_netmask";
-    private static final String KEY_WIFI_GSM_CONNECT_TYPE = "wifi_gsm_connect_type";
-    private static final String KEY_GSM_WIFI_CONNECT_TYPE = "gsm_wifi_connect_type";
+
+    private static final String KEY_AUTO_CONNECT_ENABLE = "auto_connect_type";
+    private static final String WIFI_AUTO_CONNECT_TYPE = "wifi_auto_connect_type";
+    private static final int AUTO_CONNECT_ENABLED = 0;
+    private static final int AUTO_CONNECT_FATAL_VALUE = -1;
+    private static final int AUTO_CONNECT_DEFAULT_VALUE = AUTO_CONNECT_ENABLED;
+
+    private static final String KEY_CELLULAR_TO_WLAN = "cellular_to_wlan";
+    private static final String DATA_TO_WIFI_CONNECT_TYPE = "cellular_to_wlan_type";
+    private static final int DATA_WIFI_CONNECT_TYPE_AUTO = AUTO_CONNECT_ENABLED;
+    private static final int DATA_WIFI_CONNECT_TYPE_MANUAL = 1;
+    private static final int DATA_WIFI_CONNECT_TYPE_ASK = 2;
+    private static final int CELLULAR_WLAN_DEFAULT_VALUE = AUTO_CONNECT_ENABLED;
+
+    private static final String KEY_CELLULAR_TO_WLAN_HINT = "cellular_to_wlan_hint";
+    private static final String CELLULAR_TO_WLAN_HINT = "cellular_to_wlan_hint";
+
+    private static final String KEY_WLAN_CELLULAR_HINT = "wlan_to_cellular_hint";
+    private static final String WLAN_CELLULAR_HINT = "wlan_to_cellular_hint";
+
+    private static final String KEY_CONNECT_NOTIFY = "notify_ap_connected";
+    private static final String NOTIFY_USER_CONNECT = "notify_user_when_connect_cmcc";
+
+    private static final int NOTIFY_USER = 0;
+    private static final int DO_NOT_NOTIFY_USER = -1;
 
     private WifiManager mWifiManager;
     private NetworkScoreManager mNetworkScoreManager;
     private static final int WPS_PBC_DIALOG_ID = 1;
     private static final int WPS_PIN_DIALOG_ID = 2;
 
-    CheckBoxPreference AutoPref;
-    ListPreference cell2wifiPref;
+    CheckBoxPreference mAutoConnectionEnablePref;
+    ListPreference mCellularToWlanPref;
+    CheckBoxPreference mCellularToWlanHintPref;
 
     private IntentFilter mFilter;
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
@@ -235,54 +258,109 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
             updateSleepPolicySummary(sleepPolicyPref, stringValue);
         }
 
-        CheckBoxPreference wifi2cellPref =
-                (CheckBoxPreference) findPreference(KEY_WIFI_GSM_CONNECT_TYPE);
-        if (wifi2cellPref != null) {
-            if (getResources().getBoolean(R.bool.wifi_to_cell)) {
-                wifi2cellPref.setChecked(Settings.System.getInt(getContentResolver(),
-                        getResources().getString(R.string.wifi2cell_connect_type),
-                        getResources().getInteger(R.integer.wifi2cell_connect_type_ask))
-                        == getResources().getInteger(R.integer.wifi2cell_connect_type_ask));
-                wifi2cellPref.setOnPreferenceChangeListener(this);
-            } else {
-                getPreferenceScreen().removePreference(wifi2cellPref);
-            }
-        } else {
-            Log.d(TAG, "Fail to get wifi2cell pref");
-        }
-
-        AutoPref = (CheckBoxPreference) findPreference(KEY_AUTO_CONNECT_TYPE);
-        if (AutoPref != null) {
+        mAutoConnectionEnablePref =
+                (CheckBoxPreference) findPreference(KEY_AUTO_CONNECT_ENABLE);
+        if (mAutoConnectionEnablePref != null) {
             if (getResources().getBoolean(R.bool.config_auto_connect_wifi_enabled)) {
-                AutoPref.setChecked(Settings.System.getInt(getContentResolver(),
-                        getResources().getString(R.string.wifi_autoconn_type),
-                        getResources().getInteger(R.integer.wifi_autoconn_type_auto)) ==
-                        getResources().getInteger(R.integer.wifi_autoconn_type_auto));
-                AutoPref.setOnPreferenceChangeListener(this);
+                mAutoConnectionEnablePref.setChecked(isAutoConnectEnabled());
+                mAutoConnectionEnablePref.setOnPreferenceChangeListener(this);
             } else {
-                getPreferenceScreen().removePreference(AutoPref);
+                getPreferenceScreen().removePreference(mAutoConnectionEnablePref);
             }
-        } else {
-            Log.d(TAG, "Fail to get auto connect pref");
         }
 
-        String data2wifiKey = getActivity().getString(R.string.data_to_wifi_connect_key);
-        String data2wifiValueAuto = getActivity().getString(
-                R.string.data_to_wifi_connect_value_auto);
-        cell2wifiPref = (ListPreference) findPreference(KEY_GSM_WIFI_CONNECT_TYPE);
-
-        if (cell2wifiPref != null) {
+        mCellularToWlanPref =
+                (ListPreference) findPreference(KEY_CELLULAR_TO_WLAN);
+        if (mCellularToWlanPref != null) {
             if (getResources().getBoolean(R.bool.cell_to_wifi)) {
-                int value = Settings.System.getInt(getContentResolver(), data2wifiKey,
-                        Integer.parseInt(data2wifiValueAuto));
-                cell2wifiPref.setValue(String.valueOf(value));
-                updateCellToWifiSummary(cell2wifiPref, value);
-                cell2wifiPref.setOnPreferenceChangeListener(this);
+                int value = getCellularToWlanValue();
+                mCellularToWlanPref.setValue(String.valueOf(value));
+                updateCellToWlanSummary(mCellularToWlanPref, value);
+                mCellularToWlanPref.setOnPreferenceChangeListener(this);
             } else {
-                getPreferenceScreen().removePreference(cell2wifiPref);
+                getPreferenceScreen().removePreference(mCellularToWlanPref);
             }
+        }
+
+        CheckBoxPreference wlanToCellularPref =
+                (CheckBoxPreference) findPreference(KEY_WLAN_CELLULAR_HINT);
+        if (wlanToCellularPref != null) {
+            if (getResources().getBoolean(R.bool.wifi_to_cell)) {
+                wlanToCellularPref.setChecked(isWlanToCellHintEnable());
+                wlanToCellularPref.setOnPreferenceChangeListener(this);
+            } else {
+                getPreferenceScreen().removePreference(wlanToCellularPref);
+            }
+        }
+
+        CheckBoxPreference notifyConnectedApPref =
+                (CheckBoxPreference) findPreference(KEY_CONNECT_NOTIFY);
+        if (notifyConnectedApPref != null) {
+            if (getResources().getBoolean(R.bool.connect_to_cmcc_notify)) {
+                notifyConnectedApPref.setChecked(ifNotifyConnect());
+                notifyConnectedApPref.setOnPreferenceChangeListener(this);
+            } else {
+                getPreferenceScreen().removePreference(notifyConnectedApPref);
+            }
+        }
+
+        mCellularToWlanHintPref = (CheckBoxPreference) findPreference(KEY_CELLULAR_TO_WLAN_HINT);
+        if (mCellularToWlanHintPref != null) {
+            if (getResources().getBoolean(R.bool.cellular_to_wlan_hint)) {
+                mCellularToWlanHintPref.setChecked(isCellularToWlanHintEnable());
+                mCellularToWlanHintPref.setOnPreferenceChangeListener(this);
+            } else {
+                getPreferenceScreen().removePreference(mCellularToWlanHintPref);
+            }
+        }
+    }
+
+    private boolean isCellularToWlanHintEnable() {
+        return Settings.System.getInt(getActivity().getContentResolver(),
+                CELLULAR_TO_WLAN_HINT, NOTIFY_USER) == NOTIFY_USER;
+    }
+
+    private boolean isWlanToCellHintEnable() {
+        return Settings.System.getInt(getActivity().getContentResolver(),
+                WLAN_CELLULAR_HINT, NOTIFY_USER) == NOTIFY_USER;
+    }
+
+    private void setWlanToCellularHintEnable(boolean enable) {
+        if (enable) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    WLAN_CELLULAR_HINT, NOTIFY_USER);
         } else {
-            Log.d(TAG, "Fail to get cellular2wifi pref");
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    WLAN_CELLULAR_HINT, DO_NOT_NOTIFY_USER);
+        }
+    }
+
+    private boolean ifNotifyConnect() {
+        return Settings.System.getInt(getActivity().getContentResolver(),
+                NOTIFY_USER_CONNECT, NOTIFY_USER) == NOTIFY_USER;
+    }
+
+    private boolean isAutoConnectEnabled() {
+        return Settings.System.getInt(getActivity().getContentResolver(),
+                WIFI_AUTO_CONNECT_TYPE, AUTO_CONNECT_ENABLED) == AUTO_CONNECT_ENABLED;
+    }
+
+    private void setAutoConnectTypeEnabled(boolean enable) {
+        if (enable) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    WIFI_AUTO_CONNECT_TYPE, AUTO_CONNECT_ENABLED);
+        } else {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    WIFI_AUTO_CONNECT_TYPE, AUTO_CONNECT_FATAL_VALUE);
+        }
+    }
+
+    private int getCellularToWlanValue() {
+        if (isAutoConnectEnabled()) {
+            return DATA_WIFI_CONNECT_TYPE_AUTO;
+        } else {
+            return Settings.System.getInt(getContentResolver(), DATA_TO_WIFI_CONNECT_TYPE,
+                    DATA_WIFI_CONNECT_TYPE_AUTO);
         }
     }
 
@@ -306,7 +384,7 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
         Log.e(TAG, "Invalid sleep policy value: " + value);
     }
 
-    private void updateCellToWifiSummary(Preference preference, int index) {
+    private void updateCellToWlanSummary(Preference preference, int index) {
         String[] summaries = getResources().getStringArray(R.array.cellcular2wifi_entries);
         preference.setSummary(summaries[index]);
     }
@@ -386,65 +464,102 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
             }
         }
 
-        if (KEY_WIFI_GSM_CONNECT_TYPE.equals(key)) {
-            Log.d(TAG, "wifi2cell connect type is " + newValue);
+        if (KEY_WLAN_CELLULAR_HINT.equals(key)) {
             boolean checked = ((Boolean) newValue).booleanValue();
-            Settings.System.putInt(getContentResolver(),
-                    getResources().getString(R.string.wifi2cell_connect_type),
-                    checked ? getResources().getInteger(R.integer.wifi2cell_connect_type_ask)
-                            : getResources().getInteger(R.integer.wifi2cell_connect_type_auto));
+            setWlanToCellularHintEnable(checked);
         }
 
-        if (KEY_AUTO_CONNECT_TYPE.equals(key)) {
+        if (KEY_AUTO_CONNECT_ENABLE.equals(key)) {
             boolean checked = ((Boolean) newValue).booleanValue();
-            setAutoPreference(checked);
+            setAutoConnectTypeEnabled(checked);
+            updateCellularToWifiPrefs(checked);
             if (checked) {
-                String data2wifiValueAuto = getActivity().getString(
-                        R.string.data_to_wifi_connect_value_auto);
-                setCellToWifiPreference(Integer.parseInt(data2wifiValueAuto));
-            } else {
-                String data2wifiValueManul = getActivity().getString(
-                        R.string.data_to_wifi_connect_value_manul);
-                setCellToWifiPreference(Integer.parseInt(data2wifiValueManul));
-            }
-
-        }
-
-        if (KEY_GSM_WIFI_CONNECT_TYPE.equals(key)) {
-            Log.d(TAG, "Gsm to Wifi connect type is " + newValue);
-            String data2wifiValueAuto = getActivity().getString(
-                    R.string.data_to_wifi_connect_value_auto);
-            String data2wifiValueManul = getActivity().getString(
-                    R.string.data_to_wifi_connect_value_manul);
-            try {
-                int value = Integer.parseInt(((String) newValue));
-                setCellToWifiPreference(value);
-                if (value == Integer.parseInt(data2wifiValueAuto)) {
-                    setAutoPreference(true);
-                } else if (value == Integer.parseInt(data2wifiValueManul)) {
-                    setAutoPreference(false);
+                WifiManager wm = (WifiManager) getActivity().getSystemService(Service.WIFI_SERVICE);
+                if (wm.isWifiEnabled()) {
+                    wm.reconnect();
                 }
-            } catch (NumberFormatException e) {
-                Toast.makeText(getActivity(), R.string.wifi_setting_connect_type_error,
-                        Toast.LENGTH_SHORT).show();
+            } else {
+                updateCellularToWlanHintPref(true);
             }
         }
+
+        if (KEY_CELLULAR_TO_WLAN.equals(key)) {
+            int value = Integer.parseInt(((String) newValue));
+            setCellToWlanType(value);
+            mCellularToWlanPref.setValue(String.valueOf(value));
+            updateCellToWlanSummary(mCellularToWlanPref, value);
+            updateAutoConnectPref(value == DATA_WIFI_CONNECT_TYPE_AUTO);
+            if (DATA_WIFI_CONNECT_TYPE_AUTO != value) {
+                updateCellularToWlanHintPref(true);
+            }
+        }
+
+        if (KEY_CONNECT_NOTIFY.equals(key)) {
+            boolean checked = ((Boolean) newValue).booleanValue();
+            setApConnectedNotify(checked);
+        }
+
+        if (KEY_CELLULAR_TO_WLAN_HINT.equals(key)) {
+            boolean checked = ((Boolean) newValue).booleanValue();
+            setCellularToWlanHintEnable(checked);
+            if(!checked) {
+                Toast.makeText(getActivity(),
+                        getResources().getString(R.string.cellular_to_wlan_hint_toast),
+                        Toast.LENGTH_LONG).show();
+            }
+        }
+
         return true;
     }
 
-    private void setAutoPreference(boolean check) {
-        Settings.System.putInt(getContentResolver(),
-                getResources().getString(R.string.wifi_autoconn_type),
-                check ? getResources().getInteger(R.integer.wifi_autoconn_type_auto)
-                        : getResources().getInteger(R.integer.wifi_autoconn_type_manual));
-        AutoPref.setChecked(check);
+    private void updateCellularToWlanHintPref(boolean enable) {
+        mCellularToWlanHintPref.setChecked(enable);
+        setCellularToWlanHintEnable(enable);
     }
 
-    private void setCellToWifiPreference(int value) {
-        String data2wifiKey = getActivity().getString(R.string.data_to_wifi_connect_key);
-        Settings.System.putInt(getContentResolver(), data2wifiKey, value);
-        cell2wifiPref.setValue(String.valueOf(value));
-        updateCellToWifiSummary(cell2wifiPref, value);
+    private void setCellularToWlanHintEnable(boolean needNotify) {
+        if (needNotify) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    CELLULAR_TO_WLAN_HINT, NOTIFY_USER);
+        } else {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    CELLULAR_TO_WLAN_HINT, DO_NOT_NOTIFY_USER);
+        }
+    }
+
+    private void setApConnectedNotify(boolean needNotify) {
+        if (needNotify) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    NOTIFY_USER_CONNECT, NOTIFY_USER);
+        } else {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    NOTIFY_USER_CONNECT, DO_NOT_NOTIFY_USER);
+        }
+    }
+
+    private void setCellToWlanType(int value) {
+        try {
+            Settings.System.putInt(getContentResolver(), DATA_TO_WIFI_CONNECT_TYPE,
+                    value);
+        } catch (NumberFormatException e) {
+            Toast.makeText(getActivity(), R.string.wifi_setting_connect_type_error,
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void updateCellularToWifiPrefs(boolean isAutoEnabled) {
+        if (!isAutoEnabled) {
+            updateCellularToWlanHintPref(true);
+        }
+        int value = isAutoEnabled ? DATA_WIFI_CONNECT_TYPE_AUTO : DATA_WIFI_CONNECT_TYPE_MANUAL;
+        Settings.System.putInt(getContentResolver(), DATA_TO_WIFI_CONNECT_TYPE, value);
+        mCellularToWlanPref.setValue(String.valueOf(value));
+        updateCellToWlanSummary(mCellularToWlanPref, value);
+    }
+
+    private void updateAutoConnectPref(boolean isAutoMode) {
+        setAutoConnectTypeEnabled(isAutoMode);
+        mAutoConnectionEnablePref.setChecked(isAutoMode);
     }
 
     private void refreshWifiInfo() {

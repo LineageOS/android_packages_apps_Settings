@@ -2517,19 +2517,13 @@
     <string name="screen_pinning_description" msgid="7091642350452605379">"开启固定屏幕功能后，您可以让设备一直显示某个屏幕，直到取消固定屏幕为止。\n\n要使用固定屏幕功能，请执行以下操作：\n\n1. 确保固定屏幕功能已开启。\n\n2. 打开您要固定的屏幕。\n\n3. 触摸“概览”按钮。\n\n4. 触摸图钉图标。"</string>
     <string name="managed_user_title" msgid="8101244883654409696">"工作资料"</string>
     <string name="experimental_preference" msgid="7083015446690681376">"（实验性）"</string>
-    <string name="wifi_to_gsm_connect_type_title">WLAN 至蜂窝网重选提示</string>
+    <string name="wlan_to_cellular_hint_title">WLAN 至蜂窝网重选提示</string>
 
     <string name="wifi_auto_connect_type_title">自动连接类型</string>
     <string name="wifi_auto_connect_type_summary">设置网络连接方式</string>
     <string name="wifi_menu_disconnect">断开网络</string>
-    <string name="gsm_to_wifi_connect_type_title">蜂窝网至 WLAN 重选</string>
+    <string name="cellular_to_wlan_title">蜂窝网至 WLAN 重选</string>
     <string name="wifi_setting_connect_type_error">设置自动连接类型时出现错误。</string>
-    <string name="sim_naming_title">"SIM卡名称"</string>
-    <!-- Multi Sim Name Setting Title -->
-    <string name="title_sim_alias">SIM卡名称</string>
-    <!-- Multi Sim same name alert label -->
-    <string name="same_name_alert">"两张SIM卡不能同名!"</string>
-    <string name="sim_icon_title">图标</string>
     <string name="sound_category_calls_title">"来电"</string>
     <string name="display_auto_rotate_title" msgid="6176450657107806043">"设备旋转时"</string>
     <string name="display_auto_rotate_rotate" msgid="4544299861233497728">"旋转屏幕内容方向"</string>
@@ -2640,6 +2634,10 @@
     <string name="sim_pin_change_failed_enable_sim_lock">无法变更 SIM/RUIM PIN。\n 启用 SIM/RUIM 锁定。</string>
 
     <string name="sim_enabler_title">SIM开关</string>
+    <string name="sim_enabler_summary">%1$s</string>
+    <string name="sim_enabled">已启用</string>
+    <string name="sim_disabled">已禁用</string>
+    <string name="sim_missing">丢失或者错误</string>
     <string name="sim_enabler_need_disable_sim">禁用当前SIM卡，确定？</string>
     <string name="sub_deactivate_success">"禁用成功。"</string>
     <string name="sub_deactivate_failed">"禁用失败。"</string>
@@ -2662,7 +2660,6 @@
     <string name="sim_pin_disable_failed">无法关闭PIN锁。</string>
     <string name="sim_pin_attempts">\n您还有%s次尝试机会</string>
     <string name="switch_data_subscription">即将切换到卡%1$s进行数据业务.</string>
-    <string name="sim_missing">缺少或者有误</string>
     <string name="bluetooth_profile_sap">SIM卡接入</string>
     <string name="bluetooth_dun_profile_summary_connected">连接到DUN服务器</string>
     <string name="bluetooth_sap_profile_summary_connected">连接SIM 接入服务器</string>
@@ -2683,7 +2680,6 @@
     <string name="data_to_wifi_connect_key">数据到WIFI连接类型</string>
     <string name="wifi_advanced_gateway">网关</string>
     <string name="factory_test_info">厂商测试</string>
-    <string name="sim_enabled">开启</string>
     <string name="bluetooth_enter_pin_msg_hs">设备需要更高安全的16字符密码</string>
     <string name="sub_deactivate_not_supported">使无效失败</string>
     <string name="lock_to_app_screen_lock">使用锁屏</string>
@@ -2700,9 +2696,15 @@
     <string name="sub_activate_failed">启动失败</string>
     <string name="bluetooth_sap_profile_summary_use_for">用于SIM卡</string>
     <string name="sim_pin_enable_failed">无法启动PIN</string>
-    <string name="sim_disabled">使无效</string>
     <string name="lock_to_app_start_step2">开启你的应用</string>
     <string name="bluetooth_profile_dun">check</string>
     <string name="slot_name">SIM</string>
-    <string name="sim_enabler_summary">SIM卡</string>
+    <string name="notify_connect">连接CMCC告警</string>
+    <string name="notify_connect_summary">连接到CMCC热点后提示</string>
+    <string name="cellular_to_wlan_hint_title">蜂窝网至WLAN重选提示</string>
+    <string name="cellular_to_wlan_hint_summary">当数据至WLAN重选设置为手动或总是询问时, 允许弹出提示</string>
+    <string name="cellular_to_wlan_hint_toast">数据至WLAN重选功能将受影响</string>
+
+    <string name="timer_switch_settings_title">定时开关机</string>
+    <string name="select_sim_card">选择手机卡</string>
 </resources>

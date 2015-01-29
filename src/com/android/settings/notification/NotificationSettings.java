@@ -44,8 +44,8 @@ import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.Log;
-
 import android.widget.SeekBar;
+
 import com.android.internal.widget.LockPatternUtils;
 import com.android.settings.R;
 import com.android.settings.SelectSubscription;
@@ -156,10 +156,8 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         if (mMultiSimRingtonePreference != null &&
                 preference == mMultiSimRingtonePreference) {
             Intent intent = mMultiSimRingtonePreference.getIntent();
-            intent.putExtra(SelectSubscription.PACKAGE,
-                    "com.android.settings");
-            intent.putExtra(SelectSubscription.TARGET_CLASS,
-                    "com.android.settings.sim.MultiSimSoundSettings");
+            intent.putExtra(SelectSubscription.PACKAGE, SelectSubscription.SOUND_PACKAGE);
+            intent.putExtra(SelectSubscription.TARGET_CLASS, SelectSubscription.SOUND_CLASS);
             startActivity(intent);
         } else if (preference.getFragment() != null) {
             startFragment(this, preference.getFragment(), preference.getTitleRes(), -1, null);

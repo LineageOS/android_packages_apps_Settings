@@ -40,6 +40,7 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
+
 import java.util.List;
 
 public class SelectSubscription extends  TabActivity {
@@ -48,6 +49,17 @@ public class SelectSubscription extends  TabActivity {
     public static final String SUBSCRIPTION_KEY = "subscription";
     public static final String PACKAGE = "PACKAGE";
     public static final String TARGET_CLASS = "TARGET_CLASS";
+
+    /**
+     * Indicates multi sim sound related setting package
+     */
+    public static final String SOUND_PACKAGE = "com.android.settings";
+
+    /**
+     * Indicates multi sim sound related setting class
+     */
+    public static final String SOUND_CLASS =
+            "com.android.settings.sim.MultiSimSoundSettings";
 
     private String[] tabLabel;
 

@@ -26,6 +26,7 @@ import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -38,6 +39,7 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import com.android.settings.R;
+import com.android.settings.SelectSubscription;
 import com.android.settings.SettingsActivity;
 import com.android.settings.Utils;
 import com.android.settings.search.Index;
@@ -198,10 +200,17 @@ public class SearchResultsSummary extends Fragment {
                             Index.COLUMN_INDEX_INTENT_ACTION_TARGET_PACKAGE);
                     final String targetClass = cursor.getString(
                             Index.COLUMN_INDEX_INTENT_ACTION_TARGET_CLASS);
+                    final String targetSubClass = cursor.getString(
+                            Index.COLUMN_INDEX_CLASS_NAME);
                     if (!TextUtils.isEmpty(targetPackage) && !TextUtils.isEmpty(targetClass)) {
                         final ComponentName component =
                                 new ComponentName(targetPackage, targetClass);
                         intent.setComponent(component);
+                        if (TelephonyManager.getDefault().isMultiSimEnabled() &&
+                                !TextUtils.isEmpty(targetSubClass)) {
+                            intent.putExtra(SelectSubscription.PACKAGE, targetPackage);
+                            intent.putExtra(SelectSubscription.TARGET_CLASS, targetSubClass);
+                        }
                     }
                     intent.putExtra(SettingsActivity.EXTRA_FRAGMENT_ARG_KEY, key);
 

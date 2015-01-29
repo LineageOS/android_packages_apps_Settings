@@ -1058,7 +1058,7 @@ public class InstalledAppDetails extends Fragment
                 mLastCodeSize = codeSize;
                 mAppSize.setText(getSizeStr(codeSize));
             }
-            if (mLastDataSize != dataSize) {
+            if (mLastDataSize != dataSize && mDataSize != null) {
                 mLastDataSize = dataSize;
                 mDataSize.setText(getSizeStr(dataSize));
             }
@@ -1162,9 +1162,12 @@ public class InstalledAppDetails extends Fragment
     }
     
     private void showDialogInner(int id, int moveErrorCode) {
-        DialogFragment newFragment = MyAlertDialogFragment.newInstance(id, moveErrorCode);
-        newFragment.setTargetFragment(this, 0);
-        newFragment.show(getFragmentManager(), "dialog " + id);
+        final Activity activity = getActivity();
+        if ((activity != null) && activity.isResumed() && !activity.isFinishing()) {
+            DialogFragment newFragment = MyAlertDialogFragment.newInstance(id, moveErrorCode);
+            newFragment.setTargetFragment(this, 0);
+            newFragment.show(getFragmentManager(), "dialog " + id);
+        }
     }
     
     public static class MyAlertDialogFragment extends DialogFragment {

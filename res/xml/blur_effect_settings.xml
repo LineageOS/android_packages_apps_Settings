@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-     Copyright (c) 2014, The Linux Foundation. All Rights Reserved.
+<!--Copyright (c) 2014, The Linux Foundation. All rights reserved.
+
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
 met:
@@ -28,22 +28,19 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+        android:title="@string/blur_effect_settings_title">
 
-    <com.android.settings.sim.ImageListPreference
-        android:key="sim_icon_key"
-        android:title="@string/sim_icon_title"
-        android:persistent="false"
-        settings:entries="@array/select_sim_icon_entries"
-        settings:entryValues="@array/select_sim_icon_values" />
+    <CheckBoxPreference
+        android:key="lockscreen"
+        android:title="@string/blur_effect_lockscreen_title"
+        android:persistent="false" />
+    <CheckBoxPreference
+        android:key="globalaction"
+        android:title="@string/blur_effect_globalaction_title"
+        android:persistent="false" />
+    <CheckBoxPreference
+        android:key="volumecontrol"
+        android:title="@string/blur_effect_volumecontrol_title"
+        android:persistent="false" />
 
-    <EditTextPreference
-        android:key="sim_name_key"
-        android:dialogTitle="@string/sim_naming_title"
-        android:persistent="false"
-        android:singleLine="true"
-        android:maxLength="@integer/sim_name_length"
-        android:layout_marginLeft="16dip"
-        android:inputType="textNoSuggestions"/>
 </PreferenceScreen>
-

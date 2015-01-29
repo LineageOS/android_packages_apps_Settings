@@ -331,6 +331,12 @@
                        android:value="com.android.settings.ApnSettings" />
         </activity>
 
+        <activity android:name=".SubSettings$BluetoothSubSettings"
+                android:taskAffinity="com.android.settings"
+                android:configChanges="orientation|keyboardHidden|screenSize"
+                android:parentActivityName="Settings">
+        </activity>
+
         <activity android:name="Settings$BluetoothSettingsActivity"
                 android:label="@string/bluetooth_settings_title"
                 android:configChanges="orientation|keyboardHidden|screenSize"
@@ -729,7 +735,6 @@
 
         <activity android:name="Settings$ManageApplicationsActivity"
                 android:label="@string/applications_settings"
-                android:configChanges="orientation|keyboardHidden|screenSize"
                 android:taskAffinity="">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -2185,11 +2190,6 @@
                 android:value="com.android.settings.sim.SimSettings" />
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
                 android:resource="@id/sim_settings" />
-        </activity>
-
-        <!-- Sim Configuration in Tab Layout -->
-        <activity android:name=".sim.SimConfiguration"
-                android:label="@string/sim_settings_title">
         </activity>
 
         <!-- Multi Sim Sound Setting Preference -->

@@ -486,7 +486,6 @@ public class Index {
         addIndexableData(res);
         mDataToProcess.forceUpdate = true;
         updateInternal();
-        res.enabled = false;
     }
 
     public void updateFromSearchIndexableData(SearchIndexableData data) {
