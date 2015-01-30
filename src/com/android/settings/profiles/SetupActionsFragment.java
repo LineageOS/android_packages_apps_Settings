@@ -154,8 +154,12 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
         // triggers
         mItems.add(new Header(getString(R.string.profile_triggers_header)));
         mItems.add(generateTriggerItem(TriggerItem.WIFI));
-        mItems.add(generateTriggerItem(TriggerItem.BLUETOOTH));
-        mItems.add(generateTriggerItem(TriggerItem.NFC));
+        if (DeviceUtils.deviceSupportsBluetooth()) {
+            mItems.add(generateTriggerItem(TriggerItem.BLUETOOTH));
+        }
+        if (DeviceUtils.deviceSupportsNfc(getActivity())) {
+            mItems.add(generateTriggerItem(TriggerItem.NFC));
+        }
 
         // connection overrides
         mItems.add(new Header(getString(R.string.wireless_networks_settings_title)));
