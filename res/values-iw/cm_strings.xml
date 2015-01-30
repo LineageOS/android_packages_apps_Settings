@@ -16,7 +16,11 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="wifi_setting_countrycode_title">קוד אזור Wi-Fi</string>
+  <string name="wifi_setting_countrycode_summary">ציין קוד אזור עבור Wi-Fi</string>
   <string name="wifi_setting_countrycode_error">אירעה שגיאה בהגדרת הקוד האזורי.</string>
+  <string name="wifi_setting_priority_title">עדיפות Wi-Fi</string>
+  <string name="wifi_setting_priority_summary">קבע את סדר העדיפות של רשתות Wi-Fi</string>
   <string name="wifi_ssid_input_limit">SSID חורג מאורך מרבי</string>
   <string name="p2p_device_name_input_limit">שם P2P חורג מאורך מרבי</string>
   <string name="change_crypt_password_title">שנה סיסמה</string>
@@ -53,6 +57,7 @@
   <string name="profile_unknown_nfc_tag">פרופיל לא ידוע</string>
   <string name="profile_add_nfc_text">תג ה-NFC הזה מחובר לפרופיל לא ידוע. חיבור תג זה לפרופיל קיים יאפשר הפעלתו בעתיד.</string>
   <string name="profile_select">בחר פרופיל</string>
+  <string name="profile_remove_dialog_message">למחוק את הפרופיל %1$s?</string>
   <string name="profile_name_title">שם</string>
   <string name="profile_profile_name_prompt">הזן שם עבור הפרופיל החדש</string>
   <string name="menu_new_profile">פרופיל חדש</string>
@@ -77,6 +82,7 @@
   <string name="connection_state_disabled">השבת</string>
   <string name="connection_state_enabled">הפעל</string>
   <string name="volume_override_summary">הגדר ל-%1$s/%2$s</string>
+  <string name="profile_volume_override_checkbox_label">עקוף עוצמת שמע</string>
   <string name="profile_profiles_manage">פרופילים</string>
   <string name="profile_profile_manage">נהל פרופיל</string>
   <string name="profile_appgroups_manage">קבוצות יישומים</string>
@@ -108,6 +114,7 @@
   <string name="profile_lockmode_insecure_summary">השתמש במסך נעילה לא מאובטח</string>
   <string name="profile_lockmode_disabled_summary">מסך נעילה מושבת</string>
   <string name="profile_airplanemode_title">מצב טיסה</string>
+  <string name="toggleWifi">Wi-Fi</string>
   <string name="toggleBluetooth">בלוטוס</string>
   <string name="toggleGPS">GPS</string>
   <string name="toggleSync">סנכרון נתונים אוטומטי</string>
@@ -209,6 +216,7 @@
   <string name="lockscreen_maximize_widgets_summary">הרחב ווידג\'טים כאשר המסך מודלק</string>
   <string name="lockscreen_enable_camera_title">ווידג\'ט מצלמה</string>
   <string name="safe_headset_volume_title">עוצמת שמע בטוחה באוזניות</string>
+  <string name="safe_headset_volume_restore_title">הנמך את עוצמת השמע של ההתקן בעת החיבור</string>
   <string name="cyanogenmod_waiver_title">ויתור</string>
   <string name="cyanogenmod_waiver_body">שינוי הגדרות אלו יכול להיות מנוגד לחוקי מדינתך.\n\nבלחיצה על אישור אתה מודע לאזהרה זאת ומסכים של-CyanogenMod אין שום קשר משפטי לכך.</string>
   <string name="quick_settings_panel_title">לוח הגדרות מהירות</string>
@@ -246,6 +254,8 @@
   <string name="title_tile_settings">הגדרות</string>
   <string name="title_tile_sound">צליל</string>
   <string name="title_tile_sync">סנכרון</string>
+  <string name="title_tile_wifiap">נקודות חמות Wi-Fi</string>
+  <string name="title_tile_wifi">Wi-Fi</string>
   <string name="title_tile_user">מחליף משתמש</string>
   <string name="title_tile_networkmode">מצב רשת</string>
   <string name="title_tile_nfc">NFC</string>
@@ -261,6 +271,7 @@
   <string name="title_dynamic_bugreport">דיווח תקלה</string>
   <string name="title_dynamic_dock_battery">עיגון סוללה</string>
   <string name="title_dynamic_equalizer">אקולייזר</string>
+  <string name="title_dynamic_ime">בורר שיטת קלט</string>
   <string name="title_dynamic_wifi">העבר מסך</string>
   <string name="title_general">כללי</string>
   <string name="title_quick_pulldown">הורדה מהירה</string>
@@ -281,6 +292,7 @@
   <string name="cm_sound_mode_sound">צליל</string>
   <string name="cm_sound_mode_soundVibrate">קול &amp; רטט</string>
   <string name="cm_location_mode_battery_saving">חיסכון בסוללה</string>
+  <string name="cm_location_mode_device_only">רק המכשיר</string>
   <string name="cm_location_mode_high_accuracy">דיוק גבוה</string>
   <string name="tiles_reset_title">לאפס</string>
   <string name="tiles_reset_message">לשחזר פריסה ואריחים של ברירת מחדל?</string>
@@ -776,9 +788,12 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="app_ops_summaries_media_volume">עוצמת קול של מדיה</string>
   <string name="app_ops_summaries_alarm_volume">עוצמת קול של התרעה</string>
   <string name="app_ops_summaries_notification_volume">עוצמת קול של התראה</string>
+  <string name="app_ops_summaries_bluetooth_volume">עוצמת קול של Bluetooth</string>
   <string name="app_ops_summaries_keep_awake">שמור במצב פעיל</string>
   <string name="app_ops_summaries_monitor_location">עקוב אחר מיקום</string>
   <string name="app_ops_summaries_monitor_high_power_location">מעקב אחר מיקום עם צריכת סוללה גבוהה</string>
+  <string name="app_ops_summaries_wifi_change">שינוי Wi\u2011Fi</string>
+  <string name="app_ops_summaries_bluetooth_change">שינוי Bluetooth</string>
   <string name="app_ops_summaries_data_change">שינוי נתונים</string>
   <string name="app_ops_summaries_alarm_wakeup">התעוררות</string>
   <string name="app_ops_summaries_send_mms">לשלוח MMS</string>
@@ -818,6 +833,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="app_ops_labels_notification_volume">שליטה ראשית בעוצמת קול</string>
   <string name="app_ops_labels_bluetooth_volume">עוצמת קול של Bluetooth</string>
   <string name="app_ops_labels_keep_awake">שמור במצב פעיל</string>
+  <string name="app_ops_labels_wifi_change">שינוי Wi\u2011Fi</string>
   <string name="app_ops_labels_bluetooth_change">שינוי bluetooth</string>
   <string name="app_ops_labels_data_change">שינוי נתונים</string>
   <string name="app_ops_labels_alarm_wakeup">התעוררות</string>
@@ -861,6 +877,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="multi_sim_settings_title">כרטיסי SIM</string>
   <string name="multi_sim_settings_group_summary">SIM ברירת מחדל</string>
   <string name="voice_title">שיחות קוליות</string>
+  <string name="data_title">תקשורת נתונים</string>
   <string name="sms_title">שולח SMS</string>
   <string name="priority_sub_title">העדפת הרשמה</string>
   <string name="bluetooth_accept_all_files">התר את כל סוגי הקבצים</string>
@@ -891,14 +908,27 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="block_notifications_title">סנן הודעות</string>
   <string name="block_notifications_summary">נהל הודעות שהוחבאו ומסננים</string>
   <string name="no_filters_title">לא הוגדרו מסננים. כדי לסנן הודעה, לחיצה ארוכה ובחר ב-\'התעלם מהודעות כאלה\'.</string>
+  <string name="usb_sd_eject">בטל אחסון USB</string>
+  <string name="usb_sd_eject_summary">בטל את אחסון ה-USB כדי שתוכל להסירו בבטחה</string>
+  <string name="usb_sd_insert_summary">הכנס אחסון USB כדי שתוכל להפעילו</string>
   <string name="usb_sd_mount">‏טען כרטיס SD</string>
+  <string name="usb_sd_format">מחק אחסון USB</string>
+  <string name="usb_sd_format_summary">מוחק את כל המידע באחסון ה-USB, כגון מוסיקה ותמונות</string>
+  <string name="usb_dlg_confirm_unmount_title">לבטל אחסון USB?</string>
+  <string name="usb_dlg_confirm_unmount_text">אם אתה מבטל את אחסון ה-USB, מספר אפליקציות לא יהיו זמינות עד שתפעיל בחזרה את אחסון ה-USB.</string>
+  <string name="usb_dlg_error_unmount_text">לא ניתן לבטל את אחסון ה-USB. נסה שוב מאוחר יותר.</string>
   <string name="usb_unmount_inform_text">‏הטעינה של כרטיס SD תבוטל.</string>
   <string name="usb_sd_ejecting_title">מבטל טעינת אחסון USB</string>
+  <string name="usb_sd_ejecting_summary">ביטול טעינת אחסון USB בתהליך</string>
   <string name="usb_media_format_title">מחק אחסון USB</string>
   <string name="usb_media_format_desc">‏למחוק את את כל אחסון ה-USB? תאבד את \"<b>"כל"</b>\" הנתונים שנמצאים עליו!</string>
   <string name="usb_media_format_button_text">מחק אחסון USB</string>
   <string name="usb_media_format_final_desc">‏למחוק את אחסון ה-USB ואת כל הקבצים המאוחסנים בו? לא ניתן לבטל פעולה זו!</string>
   <string name="usb_media_format_gesture_explanation">‏עליך לשרטט את קו ביטול הנעילה כדי לאשר שברצונך למחוק את אחסון ה-USB.</string>
+  <string name="sd_sd_eject">בטל טעינת כרטיס SD</string>
+  <string name="sd_sd_eject_summary">בטל את טעינת כרטיס ה-SD כדי שתוכל להסירו בבטחה</string>
+  <string name="sd_sd_mount">‏טען כרטיס SD</string>
+  <string name="sd_sd_format">‏מחק כרטיס SD</string>
   <string name="sd_unmount_inform_text">הטעינה של כרטיס ה-SD תבוטל.</string>
   <string name="sd_media_format_title">‏מחק כרטיס SD</string>
   <string name="sd_media_format_desc">למחוק את כרטיס ה-SD? תאבד את \"<b>"כל"</b>\" הנתונים שבכרטיס!</string>
@@ -918,6 +948,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="enable_quickboot_title">אפשר מצב אתחול מהיר</string>
   <string name="enable_quickboot_summary">שים את המכשיר במצב לאתחול מהיר במקום כיבוי רגיל.</string>
   <string name="data_usage_tab_slot">SIM </string>
+  <string name="prompt">שאל תמיד</string>
+  <string name="maximum_head_level">ראש: %1$s  W/kg</string>
+  <string name="maximum_body_level">גוף: %1$s W/kg</string>
   <string name="tune_away_title">TuneAway</string>
   <string name="tune_away_enabled">TuneAway מופעל</string>
   <string name="tune_away_disabled">TuneAway מושבת</string>
@@ -927,7 +960,19 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="selectnewfile_menu">בחר תמונה חדשה מגלריה</string>
   <string name="selectfile_menu">בחר תמונה מגלריה</string>
   <string name="restore_default_str">איפוס</string>
+  <string name="hue_str">גוון: <xliff:g id="hue_value">%1$s</xliff:g></string>
+  <string name="saturation_str">רוויה: <xliff:g id="saturation_value">%1$s</xliff:g></string>
+  <string name="contrast_str">ניגודיות: <xliff:g id="contrast_value">%1$s</xliff:g></string>
   <string name="wifi_ap_clients_title">התקנים מחוברים</string>
   <string name="wifi_ap_client_ap_disabled">נקודת גישה מכובה</string>
   <string name="wifi_ap_client_none_connected">אין התקנים מחוברים</string>
+  <string name="profile_menu_delete_title">מחק</string>
+  <string name="profile_menu_triggers_title">שנה גורמי הפעלה</string>
+  <string name="profile_action_none">ללא פעולה</string>
+  <string name="profile_action_disabled">השבת</string>
+  <string name="profile_action_enable">הפעל</string>
+  <string name="profile_tabs_wifi">Wi-Fi</string>
+  <string name="profile_tabs_bluetooth">Bluetooth</string>
+  <string name="profile_tabs_nfc">NFC</string>
+  <string name="profile_setup_setup_triggers_title">שלב 1: הוספת גורמים מפעילים</string>
 </resources>
