@@ -77,6 +77,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     private static final String KEY_SMS = "sim_sms";
     private static final String KEY_ACTIVITIES = "activities";
     private static final String KEY_PRIMARY_SUB_SELECT = "select_primary_sub";
+    private static final String SETTING_USER_PREF_DATA_SUB = "user_preferred_data_sub";
 
     private long mPreferredDataSubscription;
 
@@ -554,7 +555,8 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
                 if (simPref.getKey().equals(KEY_CELLULAR_DATA)) {
                     if (SubscriptionManager.getDefaultDataSubId() != subId) {
                         SubscriptionManager.setDefaultDataSubId(subId);
-                    }
+                        setUserPrefDataSubIdInDb(subId);
+                   }
                 } else if (simPref.getKey().equals(KEY_CALLS)) {
                     //subId 0 is meant for "Ask First"/"Prompt" option as per AOSP
                     if (subId == 0) {
@@ -579,6 +581,12 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
                 return true;
             }
         });
+    }
+
+    private void setUserPrefDataSubIdInDb(long subId) {
+        android.provider.Settings.Global.putLong(getContentResolver(), SETTING_USER_PREF_DATA_SUB,
+                subId);
+        logd("updating data subId: " + subId + " in DB");
     }
 
     private void setActivity(Preference preference, SubInfoRecord sir) {
