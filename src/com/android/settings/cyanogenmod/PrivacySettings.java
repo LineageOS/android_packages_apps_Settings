@@ -16,19 +16,24 @@
 
 package com.android.settings.cyanogenmod;
 
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceScreen;
-
+import android.provider.SearchIndexableResource;
 import com.android.internal.telephony.util.BlacklistUtils;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.Utils;
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.search.Indexable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Privacy settings
  */
-public class PrivacySettings extends SettingsPreferenceFragment {
+public class PrivacySettings extends SettingsPreferenceFragment implements Indexable {
 
     private static final String KEY_BLACKLIST = "blacklist";
 
@@ -73,4 +78,31 @@ public class PrivacySettings extends SettingsPreferenceFragment {
         }
     }
 
+    public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+            new BaseSearchIndexProvider() {
+                @Override
+                public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                                                                            boolean enabled) {
+                    ArrayList<SearchIndexableResource> result =
+                            new ArrayList<SearchIndexableResource>();
+
+                    SearchIndexableResource sir = new SearchIndexableResource(context);
+                    sir.xmlResId = R.xml.privacy_settings_cyanogenmod;
+                    result.add(sir);
+
+                    return result;
+                }
+
+                @Override
+                public List<String> getNonIndexableKeys(Context context) {
+                    ArrayList<String> result = new ArrayList<String>();
+                    PackageManager pm = context.getPackageManager();
+
+                    // Determine options based on device telephony support
+                    if (!pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY)) {
+                        result.add(KEY_BLACKLIST);
+                    }
+                    return result;
+                }
+            };
 }
