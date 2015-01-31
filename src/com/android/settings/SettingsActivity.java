@@ -83,9 +83,12 @@ import com.android.settings.dashboard.NoHomeDialogFragment;
 import com.android.settings.dashboard.SearchResultsSummary;
 import com.android.settings.deviceinfo.Memory;
 import com.android.settings.deviceinfo.UsbSettings;
+import com.android.settings.display.DisplaySettings;
 import com.android.settings.fuelgauge.BatterySaverSettings;
 import com.android.settings.fuelgauge.PowerUsageSummary;
+import com.android.settings.lockscreen.LockScreenSettings;
 import com.android.settings.notification.NotificationAppList;
+import com.android.settings.notification.NotificationManagerSettings;
 import com.android.settings.notification.OtherSoundSettings;
 import com.android.settings.profiles.NFCProfileTagCallback;
 import com.android.settings.profiles.ProfilesSettings;
@@ -102,12 +105,11 @@ import com.android.settings.nfc.PaymentSettings;
 import com.android.settings.notification.AppNotificationSettings;
 import com.android.settings.notification.ConditionProviderSettings;
 import com.android.settings.notification.NotificationAccessSettings;
-import com.android.settings.notification.NotificationSettings;
+import com.android.settings.sounds.SoundSettings;
 import com.android.settings.notification.NotificationStation;
 import com.android.settings.notification.ZenModeSettings;
 import com.android.settings.print.PrintJobSettingsFragment;
 import com.android.settings.print.PrintSettingsFragment;
-import com.android.settings.privacyguard.PrivacyGuardPrefs;
 import com.android.settings.sim.SimSettings;
 import com.android.settings.tts.TextToSpeechSettings;
 import com.android.settings.users.UserSettings;
@@ -300,7 +302,7 @@ public class SettingsActivity extends Activity
             PaymentSettings.class.getName(),
             KeyboardLayoutPickerFragment.class.getName(),
             ZenModeSettings.class.getName(),
-            NotificationSettings.class.getName(),
+            SoundSettings.class.getName(),
             ChooseLockPassword.ChooseLockPasswordFragment.class.getName(),
             ChooseLockPattern.ChooseLockPatternFragment.class.getName(),
             InstalledAppDetails.class.getName(),
@@ -312,7 +314,9 @@ public class SettingsActivity extends Activity
             ApnSettings.class.getName(),
             BlacklistSettings.class.getName(),
             ProfilesSettings.class.getName(),
-            com.android.settings.cyanogenmod.PrivacySettings.class.getName()
+            com.android.settings.cyanogenmod.PrivacySettings.class.getName(),
+            NotificationManagerSettings.class.getName(),
+            LockScreenSettings.class.getName()
     };
 
 
@@ -1124,14 +1128,23 @@ public class SettingsActivity extends Activity
         final boolean showDev = mDevelopmentPreferences.getBoolean(
                 DevelopmentSettings.PREF_SHOW,
                 android.os.Build.TYPE.equals("eng"));
+        final boolean showAdvancedPreferences = showAdvancedPreferences(this);
 
         final UserManager um = (UserManager) getSystemService(Context.USER_SERVICE);
         final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+
+        int advancedCategoryId = -1;
 
         final int size = target.size();
         for (int i = 0; i < size; i++) {
 
             DashboardCategory category = target.get(i);
+            if (category.id == R.id.advanced) {
+                if (!showAdvancedPreferences) {
+                    advancedCategoryId = i;
+                    break;
+                }
+            }
 
             // Ids are integers, so downcasting is ok
             int id = (int) category.id;
@@ -1216,10 +1229,6 @@ public class SettingsActivity extends Activity
                     if (!hasDeviceKeys) {
                         removeTile = true;
                     }
-                } else if (id == R.id.voice_wakeup_settings) {
-                    if (!Utils.isPackageInstalled(this, VOICE_WAKEUP_PACKAGE_NAME, false)) {
-                        removeTile = true;
-                    }
                 } else if (id == R.id.performance_settings) {
                     if (!(pm.hasPowerProfiles() || (showDev && !Build.TYPE.equals("user")))) {
                         removeTile = true;
@@ -1236,6 +1245,9 @@ public class SettingsActivity extends Activity
                 }
                 n--;
             }
+        }
+        if (advancedCategoryId != -1) {
+            target.remove(advancedCategoryId);
         }
     }
 
@@ -1399,5 +1411,11 @@ public class SettingsActivity extends Activity
         }
         super.onNewIntent(intent);
     }
+
+    public static boolean showAdvancedPreferences(Context context) {
+        // always enable for userdebug and eng builds
+        return !Build.TYPE.equals("user");
+    }
+
 
 }
