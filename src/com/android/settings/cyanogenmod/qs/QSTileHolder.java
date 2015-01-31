@@ -140,6 +140,9 @@ public class QSTileHolder {
             case QSConstants.TILE_SCREEN_TIMEOUT:
                 resourceName = "ic_qs_screen_timeout_vector";
                 stringId = R.string.qs_tile_screen_timeout;
+            case QSConstants.TILE_USB_TETHER:
+                resourceName = "ic_qs_usb_tether";
+                stringId = R.string.qs_tile_usb_tether;
                 break;
             default:
                 return null;
