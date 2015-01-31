@@ -17,6 +17,7 @@
 package com.android.settings;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
@@ -29,6 +30,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceGroupAdapter;
 import android.text.TextUtils;
@@ -50,10 +52,13 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
 
     private static final String TAG = "SettingsPreferenceFragment";
 
+    protected static final String KEY_ADVANCED_CATEGORY = "advanced";
+
     private static final int MENU_HELP = Menu.FIRST + 100;
     private static final int DELAY_HIGHLIGHT_DURATION_MILLIS = 600;
 
     private static final String SAVE_HIGHLIGHTED_KEY = "android:preference_highlighted";
+    private static final String SAVE_HIGHLIGHTED_KEY_KEY = "android:preference_highlighted_key";
 
     private SettingsDialogFragment mDialogFragment;
 
@@ -86,14 +91,25 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
-        if (icicle != null) {
-            mPreferenceHighlighted = icicle.getBoolean(SAVE_HIGHLIGHTED_KEY);
-        }
-
         // Prepare help url and enable menu if necessary
         int helpResource = getHelpResource();
         if (helpResource != 0) {
             mHelpUrl = getResources().getString(helpResource);
+        }
+
+        final Bundle args = getArguments();
+        if (args != null) {
+            mPreferenceKey = args.getString(SettingsActivity.EXTRA_FRAGMENT_ARG_KEY);
+        }
+
+        if (icicle != null) {
+            if (icicle.getString(SAVE_HIGHLIGHTED_KEY_KEY, "").equals(mPreferenceKey)) {
+                // highlighting same thing as before, restore
+                mPreferenceHighlighted = icicle.getBoolean(SAVE_HIGHLIGHTED_KEY);
+            } else {
+                // highlighting a different preference
+                mPreferenceHighlighted = false;
+            }
         }
     }
 
@@ -116,10 +132,48 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
     }
 
     @Override
+    public void addPreferencesFromResource(int preferencesResId) {
+        super.addPreferencesFromResource(preferencesResId);
+        maybeStripAdvancedPreferences();
+    }
+
+    private void maybeStripAdvancedPreferences() {
+        if (!SettingsActivity.showAdvancedPreferences(getActivity())) {
+            PreferenceCategory advanced = (PreferenceCategory) findPreference(KEY_ADVANCED_CATEGORY);
+            boolean removeAdvanced = false;
+
+            // are we searching?
+            if (mPreferenceKey != null) {
+                if (advanced != null && advanced.findPreference(mPreferenceKey) != null) {
+                    // the search was for an advanced setting, enable it and continue
+                    getActivity().getSharedPreferences(DeviceInfoSettings.PREFS_FILE, 0)
+                            .edit()
+                            .putBoolean(DeviceInfoSettings.KEY_ADVANCED_MODE, true)
+                            .apply();
+                } else {
+                    // the search was for a regular setting
+                    removeAdvanced = true;
+                }
+            } else {
+                // not a search, remove advanced
+               removeAdvanced = true;
+            }
+            if (removeAdvanced) {
+                if (advanced != null) {
+                    getPreferenceScreen().removePreference(advanced);
+                }
+            }
+        }
+    }
+
+    @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
         outState.putBoolean(SAVE_HIGHLIGHTED_KEY, mPreferenceHighlighted);
+        if (mPreferenceHighlighted) {
+            outState.putString(SAVE_HIGHLIGHTED_KEY_KEY, mPreferenceKey);
+        }
     }
 
     @Override
@@ -136,9 +190,12 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
 
         final Bundle args = getArguments();
         if (args != null) {
-            mPreferenceKey = args.getString(SettingsActivity.EXTRA_FRAGMENT_ARG_KEY);
-            highlightPreferenceIfNeeded();
+            if (!args.getString(SettingsActivity.EXTRA_FRAGMENT_ARG_KEY).equals(mPreferenceKey)) {
+                mPreferenceKey = args.getString(SettingsActivity.EXTRA_FRAGMENT_ARG_KEY);
+                mPreferenceHighlighted = false;
+            }
         }
+        highlightPreferenceIfNeeded();
     }
 
     @Override
@@ -180,9 +237,14 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
     }
 
     public void highlightPreferenceIfNeeded() {
-        if (isAdded() && !mPreferenceHighlighted &&!TextUtils.isEmpty(mPreferenceKey)) {
-            highlightPreference(mPreferenceKey);
-        }
+        getView().post(new Runnable() {
+            @Override
+            public void run() {
+                if (isAdded() && !mPreferenceHighlighted &&!TextUtils.isEmpty(mPreferenceKey)) {
+                    highlightPreference(mPreferenceKey);
+                }
+            }
+        });
     }
 
     private Drawable getHighlightDrawable() {
