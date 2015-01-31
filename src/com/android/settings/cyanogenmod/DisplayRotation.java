@@ -33,7 +33,7 @@ import com.android.settings.SettingsPreferenceFragment;
 public class DisplayRotation extends SettingsPreferenceFragment {
     private static final String TAG = "DisplayRotation";
 
-    private static final String KEY_ACCELEROMETER = "accelerometer";
+    public static final String KEY_ACCELEROMETER = "accelerometer";
     private static final String KEY_LOCKSCREEN_ROTATION = "lockscreen_rotation";
     private static final String ROTATION_0_PREF = "display_rotation_0";
     private static final String ROTATION_90_PREF = "display_rotation_90";
