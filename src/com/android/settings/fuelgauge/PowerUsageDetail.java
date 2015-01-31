@@ -50,7 +50,7 @@ import android.widget.TextView;
 import com.android.internal.os.BatterySipper;
 import com.android.internal.os.BatteryStatsHelper;
 import com.android.internal.util.FastPrintWriter;
-import com.android.settings.DisplaySettings;
+import com.android.settings.display.DisplaySettings;
 import com.android.settings.R;
 import com.android.settings.SettingsActivity;
 import com.android.settings.Utils;
