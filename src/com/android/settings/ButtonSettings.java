@@ -70,7 +70,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private static final String KEY_NAVIGATION_BAR_LEFT = "navigation_bar_left";
     private static final String KEY_POWER_END_CALL = "power_end_call";
     private static final String KEY_HOME_ANSWER_CALL = "home_answer_call";
-    private static final String KEY_BLUETOOTH_INPUT_SETTINGS = "bluetooth_input_settings";
 
     private static final String CATEGORY_POWER = "power_key";
     private static final String CATEGORY_HOME = "home_key";
@@ -185,9 +184,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             // Hide navigation bar category
             prefScreen.removePreference(mNavigationPreferencesCat);
         }
-
-        Utils.updatePreferenceToSpecificActivityFromMetaDataOrRemove(getActivity(),
-                getPreferenceScreen(), KEY_BLUETOOTH_INPUT_SETTINGS);
     }
 
     private static Map<String, String> getPreferencesToRemove(ButtonSettings settings,
@@ -648,14 +644,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                 @Override
                 public List<String> getNonIndexableKeys(Context context) {
                     ArrayList<String> result = new ArrayList<String>();
-
-                    Intent intent =
-                            new Intent("com.cyanogenmod.action.LAUNCH_BLUETOOTH_INPUT_SETTINGS");
-                    intent.setClassName("com.cyanogenmod.settings.device",
-                            "com.cyanogenmod.settings.device.BluetoothInputSettings");
-                    if (!Utils.doesIntentResolve(context, intent)) {
-                        result.add(KEY_BLUETOOTH_INPUT_SETTINGS);
-                    }
 
                     Map<String, String> items = getPreferencesToRemove(null, context);
                     for (String key : items.keySet()) {
