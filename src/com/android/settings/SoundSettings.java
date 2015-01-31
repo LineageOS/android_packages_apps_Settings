@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.notification;
+package com.android.settings;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -43,11 +43,11 @@ import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.util.Log;
 
-import android.widget.SeekBar;
 import com.android.internal.widget.LockPatternUtils;
-import com.android.settings.R;
-import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.Utils;
+import com.android.settings.notification.DropDownPreference;
+import com.android.settings.notification.IncreasingRingVolumePreference;
+import com.android.settings.notification.NotificationAccessSettings;
+import com.android.settings.notification.VolumeSeekBarPreference;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
@@ -55,10 +55,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class NotificationSettings extends SettingsPreferenceFragment implements Indexable {
-    private static final String TAG = "NotificationSettings";
+public class SoundSettings extends SettingsPreferenceFragment implements Indexable {
+    private static final String TAG = SoundSettings.class.getSimpleName();
 
     private static final String KEY_SOUND = "sound";
+    private static final String KEY_VOLUMES = "volumes";
+    private static final String KEY_VIBRATE = "vibrate";
+    private static final String KEY_ADVANCED = "advanced";
     private static final String KEY_MEDIA_VOLUME = "media_volume";
     private static final String KEY_ALARM_VOLUME = "alarm_volume";
     private static final String KEY_RING_VOLUME = "ring_volume";
@@ -120,9 +123,11 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
             mVibrator = null;
         }
 
-        addPreferencesFromResource(R.xml.notification_settings);
+        addPreferencesFromResource(R.xml.sounds);
 
-        final PreferenceCategory sound = (PreferenceCategory) findPreference(KEY_SOUND);
+        final PreferenceCategory sound = (PreferenceCategory) findPreference(KEY_VOLUMES);
+        final PreferenceCategory advanced = (PreferenceCategory) findPreference(KEY_ADVANCED);
+        final PreferenceCategory vibrate = (PreferenceCategory) findPreference(KEY_VIBRATE);
         initVolumePreference(KEY_MEDIA_VOLUME, AudioManager.STREAM_MUSIC);
         initVolumePreference(KEY_ALARM_VOLUME, AudioManager.STREAM_ALARM);
 
@@ -131,17 +136,18 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
                     initVolumePreference(KEY_RING_VOLUME, AudioManager.STREAM_RING);
         } else {
             sound.removePreference(sound.findPreference(KEY_RING_VOLUME));
-            sound.removePreference(sound.findPreference(KEY_VOLUME_LINK_NOTIFICATION));
+            advanced.removePreference(advanced.findPreference(KEY_VOLUME_LINK_NOTIFICATION));
         }
 
         initRingtones(sound);
-        initVibrateWhenRinging(sound);
+        initVibrateWhenRinging(vibrate);
         initIncreasingRing(sound);
 
         final PreferenceCategory notification = (PreferenceCategory)
                 findPreference(KEY_NOTIFICATION);
-        initPulse(notification);
-        initLockscreenNotifications(notification);
+        // TODO move this to where it was moved!
+//        initPulse(notification);
+//        initLockscreenNotifications(notification);
 
         mNotificationAccess = findPreference(KEY_NOTIFICATION_ACCESS);
         refreshNotificationListeners();
@@ -549,7 +555,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         public List<SearchIndexableResource> getXmlResourcesToIndex(
                 Context context, boolean enabled) {
             final SearchIndexableResource sir = new SearchIndexableResource(context);
-            sir.xmlResId = R.xml.notification_settings;
+            sir.xmlResId = R.xml.sounds;
             return Arrays.asList(sir);
         }
 
