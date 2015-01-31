@@ -107,7 +107,7 @@ public class FontDialogPreference extends DialogPreference
      *  entryvalues_font_size have the same length and correspond to each other
      *  i.e. they are in the same order.
      */
-    static String getFontSizeDescription(Resources r, float val) {
+    public static String getFontSizeDescription(Resources r, float val) {
         String[] names = r.getStringArray(R.array.entries_font_size);
         String[] indices = r.getStringArray(R.array.entryvalues_font_size);
 
