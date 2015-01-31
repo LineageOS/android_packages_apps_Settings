@@ -34,16 +34,19 @@ public class QSTileHolder {
     public final String resourceName;
     public final String value;
     public final String name;
+    private final boolean mHasSettings;
 
-    public QSTileHolder(String resourceName, String value, String name) {
+    public QSTileHolder(String resourceName, String value, String name, boolean settings) {
         this.resourceName = resourceName;
         this.value = value;
         this.name = name;
+        mHasSettings = settings;
     }
 
     public static QSTileHolder from(Context context, String tileType) {
         String resourceName = null;
         int stringId = -1;
+        boolean settings = false;
 
         if (!TILE_ADD_DELETE.equals(tileType) &&
                 !QSUtils.getAvailableTiles(context).contains(tileType)) {
@@ -96,6 +99,7 @@ public class QSTileHolder {
             case QSConstants.TILE_LOCATION:
                 resourceName = "ic_qs_location_on";
                 stringId = R.string.qs_tile_location;
+                settings = true;
                 break;
             case QSConstants.TILE_CAST:
                 resourceName = "ic_qs_cast_on";
@@ -146,6 +150,10 @@ public class QSTileHolder {
         }
 
         String name = stringId != -1 ? context.getString(stringId) : null;
-        return new QSTileHolder(resourceName, tileType, name);
+        return new QSTileHolder(resourceName, tileType, name, settings);
+    }
+
+    public boolean hasSettings() {
+        return mHasSettings;
     }
 }
