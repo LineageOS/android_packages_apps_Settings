@@ -116,6 +116,21 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
     }
 
     @Override
+    public void addPreferencesFromResource(int preferencesResId) {
+        super.addPreferencesFromResource(preferencesResId);
+        maybeStripAdvancedPreferences();
+    }
+
+    private void maybeStripAdvancedPreferences() {
+        if (!SettingsActivity.showAdvancedPreferences(getActivity())) {
+            Preference advanced = findPreference("advanced");
+            if (advanced != null) {
+                getPreferenceScreen().removePreference(advanced);
+            }
+        }
+    }
+
+    @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
