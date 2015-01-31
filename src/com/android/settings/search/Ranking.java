@@ -21,7 +21,7 @@ import com.android.settings.DataUsageSummary;
 import com.android.settings.DateTimeSettings;
 import com.android.settings.DevelopmentSettings;
 import com.android.settings.DeviceInfoSettings;
-import com.android.settings.DisplaySettings;
+import com.android.settings.display.DisplaySettings;
 import com.android.settings.HomeSettings;
 import com.android.settings.ScreenPinningSettings;
 import com.android.settings.PrivacySettings;
@@ -35,7 +35,7 @@ import com.android.settings.fuelgauge.PowerUsageSummary;
 import com.android.settings.inputmethod.InputMethodAndLanguageSettings;
 import com.android.settings.location.LocationSettings;
 import com.android.settings.net.DataUsageMeteredSettings;
-import com.android.settings.notification.NotificationSettings;
+import com.android.settings.sounds.SoundSettings;
 import com.android.settings.notification.OtherSoundSettings;
 import com.android.settings.notification.ZenModeSettings;
 import com.android.settings.print.PrintSettingsFragment;
@@ -109,7 +109,7 @@ public final class Ranking {
         sRankMap.put(DisplaySettings.class.getName(), RANK_DISPLAY);
 
         // Notifications
-        sRankMap.put(NotificationSettings.class.getName(), RANK_NOTIFICATIONS);
+        sRankMap.put(SoundSettings.class.getName(), RANK_NOTIFICATIONS);
         sRankMap.put(OtherSoundSettings.class.getName(), RANK_NOTIFICATIONS);
         sRankMap.put(ZenModeSettings.class.getName(), RANK_NOTIFICATIONS);
 

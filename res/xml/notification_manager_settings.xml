@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- When device is locked -->
+    <com.android.settings.notification.DropDownPreference
+            android:key="lock_screen_notifications"
+            android:title="@string/lock_screen_notifications_title"
+            android:persistent="false" />
+
+    <!-- App notifications -->
+    <PreferenceScreen
+            android:key="app_notifications"
+            android:title="@string/app_notifications_title"
+            android:fragment="com.android.settings.notification.NotificationAppList" />
+
+    <!-- Notification access -->
+    <Preference
+            android:key="manage_notification_access"
+            android:title="@string/manage_notification_access_title"
+            android:persistent="false"
+            android:fragment="com.android.settings.notification.NotificationAccessSettings" />
+
+    <!-- Filter notifications -->
+    <PreferenceScreen
+            android:title="@string/block_notifications_title"
+            android:summary="@string/block_notifications_summary"
+            android:fragment="com.android.settings.cyanogenmod.SpamList" />
+
+</PreferenceScreen>
