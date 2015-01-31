@@ -43,6 +43,11 @@
         android:title="@string/android_beam_settings_title" />
 
     <PreferenceScreen
+        android:key="nfc_payment_settings"
+        android:title="@string/nfc_payment_settings_title"
+        android:fragment="com.android.settings.nfc.PaymentSettings" />
+
+    <PreferenceScreen
         android:fragment="com.android.settings.TetherSettings"
         android:key="tether_settings"
         android:title="@string/tether_settings_title_all" />
@@ -51,17 +56,6 @@
         android:fragment="com.android.settings.vpn2.VpnSettings"
         android:key="vpn_settings"
         android:title="@string/vpn_settings_title" />
-
-    <PreferenceScreen
-        android:key="mobile_network_settings"
-        android:title="@string/network_settings_title"
-        settings:keywords="@string/keywords_more_mobile_networks"
-        android:dependency="toggle_airplane">
-        <intent
-            android:action="android.intent.action.MAIN"
-            android:targetPackage="com.android.phone"
-            android:targetClass="com.android.phone.MobileNetworkSettings" />
-    </PreferenceScreen>
 
     <Preference
         android:key="manage_mobile_plan"
