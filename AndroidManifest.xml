@@ -635,7 +635,7 @@
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.notification.ZenModeSettings" />
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
-                android:resource="@id/notification_settings" />
+                android:resource="@id/sound_settings" />
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
                 android:value="true" />
         </activity>
@@ -671,7 +671,7 @@
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.DisplaySettings" />
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
-                android:resource="@id/display_settings" />
+                android:resource="@id/display_and_lights_settings" />
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
                 android:value="true" />
         </activity>
@@ -684,7 +684,7 @@
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.DisplaySettings" />
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
-                android:resource="@id/display_settings" />
+                android:resource="@+id/display_and_lights_settings" />
         </activity-alias>
 
         <activity android:name="Settings$DeviceInfoSettingsActivity"
@@ -1746,21 +1746,6 @@
         />
 
         <!-- CyanogenMod activities Start -->
-        <activity android:name="Settings$VoiceWakeupSettingsActivity"
-                android:label="@string/voice_wakeup_settings_title"
-                android:taskAffinity=""
-                android:excludeFromRecents="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.VOICE_LAUNCH" />
-                <category android:name="android.intent.category.DEFAULT" />
-                </intent-filter>
-            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.voicewakeup.VoiceWakeupSettings" />
-            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
-                android:resource="@id/voice_wakeup_settings" />
-        </activity>
-
         <activity android:name="Settings$ProfilesSettingsActivity"
                 android:label="@string/profile_settings"
                 android:taskAffinity=""
@@ -1884,7 +1869,7 @@
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.DreamSettings" />
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
-                android:resource="@id/display_settings" />
+                android:resource="@id/display_and_lights_settings" />
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
                 android:value="true" />
         </activity>
@@ -1916,7 +1901,7 @@
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.nfc.PaymentSettings" />
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
-                android:resource="@id/nfc_payment_settings" />
+                android:resource="@+id/nfc_payment_settings" />
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
                 android:value="true" />
         </activity>
@@ -1978,7 +1963,7 @@
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                        android:value="com.android.settings.notification.ConditionProviderSettings" />
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
-                       android:resource="@id/notification_settings" />
+                       android:resource="@id/sound_settings" />
         </activity>
 
         <activity android:name="Settings$NotificationSettingsActivity"
@@ -1992,9 +1977,9 @@
                 <category android:name="com.android.settings.SHORTCUT" />
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.notification.NotificationSettings" />
+                android:value="com.android.settings.sounds.SoundSettings" />
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
-                android:resource="@id/notification_settings" />
+                android:resource="@id/sound_settings" />
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
                 android:value="true" />
         </activity>
@@ -2012,9 +1997,9 @@
                 <category android:name="android.intent.category.VOICE_LAUNCH" />
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.notification.NotificationSettings" />
+                android:value="com.android.settings.sounds.SoundSettings" />
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
-                android:resource="@id/notification_settings" />
+                android:resource="@id/sound_settings" />
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
                 android:value="true" />
         </activity-alias>
@@ -2025,9 +2010,9 @@
                 android:exported="true"
                 android:targetActivity="Settings$NotificationSettingsActivity">
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.notification.NotificationSettings" />
+                android:value="com.android.settings.sound.SoundSettings" />
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
-                android:resource="@id/notification_settings" />
+                android:resource="@id/sound_settings" />
         </activity-alias>
 
         <activity android:name="Settings$OtherSoundSettingsActivity"
@@ -2042,7 +2027,7 @@
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.notification.OtherSoundSettings" />
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
-                android:resource="@id/notification_settings" />
+                android:resource="@id/sound_settings" />
         </activity>
 
         <!-- Show apps for which application-level notification settings are applicable -->
@@ -2053,7 +2038,7 @@
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.notification.NotificationAppList" />
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
-                android:resource="@id/notification_settings" />
+                android:resource="@id/notification_manager" />
         </activity>
 
         <!-- Show application-level notification settings (app passed in as extras) -->
@@ -2068,7 +2053,7 @@
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.notification.AppNotificationSettings" />
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
-                android:resource="@id/notification_settings" />
+                android:resource="@id/notification_manager" />
         </activity>
 
         <!-- Show regulatory info (from settings item or dialing "*#07#") -->
@@ -2164,6 +2149,15 @@
                 android:value="com.android.settings.sim.SimSettings" />
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
                 android:resource="@id/sim_settings" />
+        </activity>
+
+        <activity android:name=".Settings$LockScreenSettingsActivity"
+                  android:label="@string/lockscreen_settings"
+                  android:taskAffinity="">
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                       android:value="com.android.settings.lockscreen.LockScreenSettings" />
+            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
+                       android:resource="@id/lockscreen_settings" />
         </activity>
 
         <provider
