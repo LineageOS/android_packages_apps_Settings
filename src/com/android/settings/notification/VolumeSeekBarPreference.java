@@ -108,7 +108,9 @@ public class VolumeSeekBarPreference extends SeekBarPreference
         }
         mVolumizer.setSeekBar(mSeekBar);
         mIconView = (ImageView) view.findViewById(com.android.internal.R.id.icon);
-        mCallback.onStreamValueChanged(mStream, mSeekBar.getProgress());
+        if (mCallback != null) {
+            mCallback.onStreamValueChanged(mStream, mSeekBar.getProgress());
+        }
     }
 
     // during initialization, this preference is the SeekBar listener
@@ -116,7 +118,9 @@ public class VolumeSeekBarPreference extends SeekBarPreference
     public void onProgressChanged(SeekBar seekBar, int progress,
             boolean fromTouch) {
         super.onProgressChanged(seekBar, progress, fromTouch);
-        mCallback.onStreamValueChanged(mStream, progress);
+        if (mCallback != null) {
+            mCallback.onStreamValueChanged(mStream, progress);
+        }
     }
 
     public void showIcon(int resId) {

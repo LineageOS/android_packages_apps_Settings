@@ -355,7 +355,7 @@ public class WirelessSettings extends SettingsPreferenceFragment
         // if config_show_mobile_plan sets false.
         final boolean isMobilePlanEnabled = this.getResources().getBoolean(
                 R.bool.config_show_mobile_plan);
-        if (!isMobilePlanEnabled) {
+        if (!isMobilePlanEnabled || mCm.getMobileProvisioningUrl().isEmpty()) {
             Preference pref = findPreference(KEY_MANAGE_MOBILE_PLAN);
             if (pref != null) {
                 removePreference(KEY_MANAGE_MOBILE_PLAN);
@@ -531,11 +531,14 @@ public class WirelessSettings extends SettingsPreferenceFragment
                     result.add(KEY_MANAGE_MOBILE_PLAN);
                 }
 
+                final ConnectivityManager cm = (ConnectivityManager) context.getSystemService(
+                        Context.CONNECTIVITY_SERVICE);
+
                 // Remove Mobile Network Settings and Manage Mobile Plan
                 // if config_show_mobile_plan sets false.
                 final boolean isMobilePlanEnabled = context.getResources().getBoolean(
                         R.bool.config_show_mobile_plan);
-                if (!isMobilePlanEnabled) {
+                if (!isMobilePlanEnabled || cm.getMobileProvisioningUrl().isEmpty()) {
                     result.add(KEY_MANAGE_MOBILE_PLAN);
                 }
 
@@ -557,8 +560,6 @@ public class WirelessSettings extends SettingsPreferenceFragment
                 result.add(KEY_PROXY_SETTINGS);
 
                 // Disable Tethering if it's not allowed or if it's a wifi-only device
-                ConnectivityManager cm =
-                        (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
                 if (isSecondaryUser || !cm.isTetheringSupported()) {
                     result.add(KEY_TETHER_SETTINGS);
                 }
