@@ -29,6 +29,7 @@ import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -50,6 +51,8 @@ public class QSTiles extends Fragment implements
     private View mAddDeleteTile;
     private boolean mDraggingActive;
     private Context mSystemUiContext;
+
+    private static final String SETTINGS_ICON = "ic_settings";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -224,6 +227,23 @@ public class QSTiles extends Fragment implements
             d.setColorFilter(getResources().getColor(R.color.qs_tile_tint_color),
                     PorterDuff.Mode.SRC_ATOP);
             icon.setImageDrawable(d);
+
+            if (item.hasSettings()) {
+                ImageView settings = (ImageView) qsTile.findViewById(R.id.settings);
+                Drawable s = Utils.getNamedDrawable(mSystemUiContext, SETTINGS_ICON);
+                s.setColorFilter(getResources().getColor(R.color.qs_tile_tint_color),
+                        PorterDuff.Mode.SRC_ATOP);
+                settings.setImageDrawable(s);
+                settings.setTag(tileType);
+                settings.setOnClickListener(new OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        showSettings(v.getTag().toString());
+                    }
+                });
+            }
+
             TextView title = (TextView) qsTile.findViewById(android.R.id.title);
             title.setText(item.name);
         }
@@ -239,5 +259,10 @@ public class QSTiles extends Fragment implements
             order = QSUtils.getDefaultTilesAsString(context);
         }
         return order.split(",").length;
+    }
+
+    private void showSettings(String tileType) {
+        QSTileSettingsDialog dialog = QSTileSettingsDialog.newInstance(tileType);
+        dialog.show(getFragmentManager(), "tile_settings_dialog");
     }
 }
