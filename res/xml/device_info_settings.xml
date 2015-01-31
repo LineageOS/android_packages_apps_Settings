@@ -42,6 +42,12 @@
                     android:targetClass="com.cyanogenmod.updater.UpdatesSettings" />
         </PreferenceScreen>
 
+        <!-- Advanced mode -->
+        <SwitchPreference
+                android:key="advanced_mode"
+                android:title="@string/advanced_mode_title"
+                android:summary="@string/advanced_mode_summary"/>
+
         <!-- Device status - launches activity -->
         <PreferenceScreen android:key="status_info"
                 android:title="@string/device_status" 
