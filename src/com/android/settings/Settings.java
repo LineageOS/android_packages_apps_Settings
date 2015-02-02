@@ -1084,11 +1084,11 @@ public class Settings extends PreferenceActivity
             mBluetoothEnabler.pause();
             mDataEnabler.pause();
             m4GEnabler.pause();
+            mProfileEnabler.pause();
         }
 
         public void destroy() {
             m4GEnabler.destroy();
-            mProfileEnabler.pause();
         }
     }
 
