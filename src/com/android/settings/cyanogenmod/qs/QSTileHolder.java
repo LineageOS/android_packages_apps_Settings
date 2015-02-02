@@ -121,6 +121,10 @@ public class QSTileHolder {
                 resourceName = "ic_qs_perf_profile_highperf_avd";
                 stringId = R.string.qs_tile_performance;
                 break;
+            case QSConstants.TILE_POWERMENU:
+                resourceName = "ic_qs_powermenu";
+                stringId = R.string.quick_settings_powermenu_label;
+                break;
             case QSConstants.TILE_NFC:
                 resourceName = "ic_qs_nfc_on";
                 stringId = R.string.qs_tile_nfc;
