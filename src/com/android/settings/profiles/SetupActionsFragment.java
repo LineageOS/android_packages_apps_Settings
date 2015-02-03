@@ -100,6 +100,11 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
     ItemListAdapter mAdapter;
     ProfileManager mProfileManager;
     ListView mListView;
+    private Context mContext;
+
+    private Boolean isBluetoothSupported;
+    private Boolean isMobileDataSupported;
+    private Boolean isNfcSupported;
 
     boolean mNewProfileMode;
 
@@ -135,8 +140,13 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
             mNewProfileMode = getArguments().getBoolean(ProfilesSettings.EXTRA_NEW_PROFILE, false);
         }
 
-        mProfileManager = (ProfileManager) getActivity().getSystemService(Context.PROFILE_SERVICE);
-        mAdapter = new ItemListAdapter(getActivity(), mItems);
+        mContext = getActivity();
+        isBluetoothSupported = DeviceUtils.deviceSupportsBluetooth();
+        isMobileDataSupported = DeviceUtils.deviceSupportsMobileData(mContext);
+        isNfcSupported = DeviceUtils.deviceSupportsNfc(mContext);
+
+        mProfileManager = (ProfileManager) mContext.getSystemService(Context.PROFILE_SERVICE);
+        mAdapter = new ItemListAdapter(mContext, mItems);
         rebuildItemList();
 
         setHasOptionsMenu(true);
@@ -154,36 +164,36 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
         // triggers
         mItems.add(new Header(getString(R.string.profile_triggers_header)));
         mItems.add(generateTriggerItem(TriggerItem.WIFI));
-        if (DeviceUtils.deviceSupportsBluetooth()) {
+        if (isBluetoothSupported) {
             mItems.add(generateTriggerItem(TriggerItem.BLUETOOTH));
         }
-        if (DeviceUtils.deviceSupportsNfc(getActivity())) {
+        if (isNfcSupported) {
             mItems.add(generateTriggerItem(TriggerItem.NFC));
         }
 
         // connection overrides
         mItems.add(new Header(getString(R.string.wireless_networks_settings_title)));
-        if (DeviceUtils.deviceSupportsBluetooth()) {
+        if (isBluetoothSupported) {
             mItems.add(new ConnectionOverrideItem(PROFILE_CONNECTION_BLUETOOTH,
                     mProfile.getSettingsForConnection(PROFILE_CONNECTION_BLUETOOTH)));
         }
         mItems.add(generateConnectionOverrideItem(PROFILE_CONNECTION_GPS));
         mItems.add(generateConnectionOverrideItem(PROFILE_CONNECTION_WIFI));
         mItems.add(generateConnectionOverrideItem(PROFILE_CONNECTION_SYNC));
-        if (DeviceUtils.deviceSupportsMobileData(getActivity())) {
+        if (isMobileDataSupported) {
             mItems.add(generateConnectionOverrideItem(PROFILE_CONNECTION_MOBILEDATA));
             mItems.add(generateConnectionOverrideItem(PROFILE_CONNECTION_WIFIAP));
 
             final TelephonyManager tm =
-                    (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
+                    (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
             if (tm.getPhoneType() == TelephonyManager.PHONE_TYPE_GSM) {
                 mItems.add(generateConnectionOverrideItem(PROFILE_CONNECTION_2G3G4G));
             }
         }
-        if (WimaxHelper.isWimaxSupported(getActivity())) {
+        if (WimaxHelper.isWimaxSupported(mContext)) {
             mItems.add(generateConnectionOverrideItem(PROFILE_CONNECTION_WIMAX));
         }
-        if (DeviceUtils.deviceSupportsNfc(getActivity())) {
+        if (isNfcSupported) {
             mItems.add(generateConnectionOverrideItem(PROFILE_CONNECTION_NFC));
         }
 
@@ -265,7 +275,7 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
         super.onViewCreated(view, savedInstanceState);
 
         if (mNewProfileMode) {
-            TextView desc = new TextView(getActivity());
+            TextView desc = new TextView(mContext);
             int descPadding = getResources().getDimensionPixelSize(
                     R.dimen.profile_instruction_padding);
             desc.setPadding(descPadding, descPadding, descPadding, descPadding);
@@ -288,7 +298,7 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
     }
 
     private void requestFillProfileFromSettingsDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         builder.setMessage(R.string.profile_populate_profile_from_state);
         builder.setNegativeButton(R.string.no, null);
         builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
@@ -306,7 +316,7 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
             @Override
             protected Void doInBackground(Profile... params) {
                 // bt
-                if (DeviceUtils.deviceSupportsBluetooth()) {
+                if (isBluetoothSupported) {
                     mProfile.setConnectionSettings(
                             new ConnectionSettings(ConnectionSettings.PROFILE_CONNECTION_BLUETOOTH,
                                     BluetoothAdapter.getDefaultAdapter().isEnabled() ? 1 : 0,
@@ -334,7 +344,7 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
                                 ContentResolver.getMasterSyncAutomatically() ? 1 : 0, true));
 
                 // mobile data
-                if (DeviceUtils.deviceSupportsMobileData(getActivity())) {
+                if (isMobileDataSupported) {
                     ConnectivityManager cm = (ConnectivityManager)
                             getSystemService(Context.CONNECTIVITY_SERVICE);
                     mProfile.setConnectionSettings(
@@ -351,7 +361,7 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
                 // skipping this one
 
                 // nfc
-                if (DeviceUtils.deviceSupportsNfc(getActivity())) {
+                if (isNfcSupported) {
                     NfcManager nfcManager = (NfcManager) getSystemService(Context.NFC_SERVICE);
                     mProfile.setConnectionSettings(
                             new ConnectionSettings(ConnectionSettings.PROFILE_CONNECTION_NFC,
@@ -359,7 +369,7 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
                 }
 
                 // alarm volume
-                final AudioManager am = (AudioManager) getActivity()
+                final AudioManager am = (AudioManager) mContext
                         .getSystemService(Context.AUDIO_SERVICE);
                 mProfile.setStreamSettings(new StreamSettings(AudioManager.STREAM_ALARM,
                         am.getStreamVolume(AudioManager.STREAM_ALARM), true));
@@ -393,7 +403,7 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
                 mProfile.setRingMode(new RingModeSettings(ringValue, true));
 
                 // airplane mode
-                boolean airplaneMode = Settings.Global.getInt(getActivity().getContentResolver(),
+                boolean airplaneMode = Settings.Global.getInt(mContext.getContentResolver(),
                         Settings.Global.AIRPLANE_MODE_ON, 0) != 0;
                 mProfile.setAirplaneMode(new AirplaneModeSettings(airplaneMode ? 1 : 0, true));
 
@@ -417,7 +427,7 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
     private void requestRemoveProfileDialog() {
         Profile current = mProfileManager.getActiveProfile();
         if (mProfile.getUuid().equals(current.getUuid())) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
             builder.setMessage(getString(R.string.profile_remove_current_profile));
             builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                 @Override
@@ -429,7 +439,7 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
             return;
         }
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         builder.setMessage(getString(R.string.profile_remove_dialog_message, mProfile.getName()));
         builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             @Override
@@ -444,7 +454,7 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
     }
 
     private void requestLockscreenModeDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         final String[] lockEntries =
                 getResources().getStringArray(R.array.profile_lockmode_entries);
 
@@ -473,7 +483,7 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
     }
 
     private void requestAirplaneModeDialog(final AirplaneModeSettings setting) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         final String[] connectionNames =
                 getResources().getStringArray(R.array.profile_action_generic_connection_entries);
 
@@ -530,7 +540,7 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
     }
 
     private void requestRingModeDialog(final RingModeSettings setting) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         final String[] values = getResources().getStringArray(R.array.ring_mode_values);
         final String[] names = getResources().getStringArray(R.array.ring_mode_entries);
 
@@ -584,7 +594,7 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
         if (setting == null) {
             throw new UnsupportedOperationException("connection setting cannot be null yo");
         }
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         final String[] connectionNames =
                 getResources().getStringArray(R.array.profile_action_generic_connection_entries);
 
@@ -630,7 +640,7 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
         if (setting == null) {
             throw new UnsupportedOperationException("connection setting cannot be null yo");
         }
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         final String[] connectionNames =
                 getResources().getStringArray(R.array.profile_networkmode_entries_4g);
 
@@ -665,11 +675,11 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
 
     public void requestVolumeDialog(int streamId,
                                     final StreamSettings streamSettings) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         builder.setTitle(VolumeStreamItem.getNameForStream(streamId));
 
-        final AudioManager am = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
-        final LayoutInflater inflater = LayoutInflater.from(getActivity());
+        final AudioManager am = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
+        final LayoutInflater inflater = LayoutInflater.from(mContext);
         final View view = inflater.inflate(R.layout.dialog_profiles_volume_override, null);
         final SeekBar seekBar = (SeekBar) view.findViewById(R.id.seekbar);
         final CheckBox override = (CheckBox) view.findViewById(R.id.checkbox);
@@ -710,14 +720,14 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
     }
 
     private void requestProfileName() {
-        LayoutInflater inflater = LayoutInflater.from(getActivity());
+        LayoutInflater inflater = LayoutInflater.from(mContext);
         View dialogView = inflater.inflate(R.layout.profile_name_dialog, null);
 
         final EditText entry = (EditText) dialogView.findViewById(R.id.name);
         entry.setText(mProfile.getName());
         entry.setSelectAllOnFocus(true);
 
-        final AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
+        final AlertDialog alertDialog = new AlertDialog.Builder(mContext)
                 .setTitle(R.string.rename_dialog_title)
                 .setView(dialogView)
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
@@ -822,7 +832,7 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
         args.putBoolean(ProfilesSettings.EXTRA_NEW_PROFILE, false);
         args.putInt(SetupTriggersFragment.EXTRA_INITIAL_PAGE, openTo);
 
-        SubSettings pa = (SubSettings) getActivity();
+        SubSettings pa = (SubSettings) mContext;
         pa.startPreferencePanel(SetupTriggersFragment.class.getCanonicalName(), args,
                 R.string.profile_profile_manage, null, null, 0);
     }
