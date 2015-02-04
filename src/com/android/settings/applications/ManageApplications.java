@@ -383,10 +383,12 @@ public class ManageApplications extends Fragment implements
             if (mFilter == FILTER_APPS_SDCARD) {
                 if (mContainerService != null) {
                     try {
-                        final long[] stats = mContainerService.getFileSystemStats(
-                                Environment.getSecondaryStorageDirectory().getPath());
-                        mTotalStorage = stats[0];
-                        mFreeStorage = stats[1];
+                        if (Environment.getSecondaryStorageDirectory() != null) {
+                            final long[] stats = mContainerService.getFileSystemStats(
+                                     Environment.getSecondaryStorageDirectory().getPath());
+                            mTotalStorage = stats[0];
+                            mFreeStorage = stats[1];
+                        }
                     } catch (RemoteException e) {
                         Log.w(TAG, "Problem in container service", e);
                     }
