@@ -71,10 +71,12 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.DisplayInfo;
+import android.view.IWindowManager;
 import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.WindowManagerGlobal;
 import android.widget.ListView;
 import android.widget.TabWidget;
 
@@ -85,6 +87,8 @@ import com.android.settings.bluetooth.BluetoothSettings;
 import com.android.settings.dashboard.DashboardCategory;
 import com.android.settings.dashboard.DashboardTile;
 import com.android.settings.drawable.CircleFramedDrawable;
+
+import org.cyanogenmod.hardware.KeyDisabler;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -784,6 +788,41 @@ public final class Utils {
         final int deviceKeys = context.getResources().getInteger(
                 com.android.internal.R.integer.config_deviceHardwareKeys);
         return (deviceKeys & ButtonSettings.KEY_MASK_VOLUME) != 0;
+    }
+
+    /* returns whether the device has keys or not. */
+    public static boolean hasDeviceKeys(Context context) {
+        final int deviceKeys = context.getResources().getInteger(
+                com.android.internal.R.integer.config_deviceHardwareKeys);
+        return deviceKeys  != 0;
+    }
+
+    /* returns whether the device has navigation bar or not. */
+    public static boolean hasNavigationBar(Context context) {
+        // Only show the navigation bar category on devices that have a navigation bar
+        // unless we are forcing it via development settings
+        boolean wmNeedsNavigationBar = false;
+        boolean wmHasNavigationBar = false;
+        try {
+            IWindowManager wm = WindowManagerGlobal.getWindowManagerService();
+            wmNeedsNavigationBar = wm.needsNavigationBar();
+            wmHasNavigationBar = wm.hasNavigationBar();
+        } catch (RemoteException e) {
+        }
+        boolean forceNavbar = android.provider.Settings.System.getInt(
+                    context.getContentResolver(),
+                    android.provider.Settings.System.DEV_FORCE_SHOW_NAVBAR, 0) == 1;
+        return (wmHasNavigationBar || forceNavbar
+                    || (isKeyDisablerSupported() && !wmNeedsNavigationBar));
+    }
+
+    private static boolean isKeyDisablerSupported() {
+        try {
+            return KeyDisabler.isSupported();
+        } catch (NoClassDefFoundError e) {
+            // Hardware abstraction framework not installed
+            return false;
+        }
     }
 
     /**

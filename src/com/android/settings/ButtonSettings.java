@@ -375,23 +375,12 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             result.put(CATEGORY_VOLUME, null);
         }
 
-        try {
-            // Only show the navigation bar category on devices that have a navigation bar
-            // unless we are forcing it via development settings
-            boolean forceNavbar = android.provider.Settings.System.getInt(resolver,
-                    android.provider.Settings.System.DEV_FORCE_SHOW_NAVBAR, 0) == 1;
-            boolean hasNavBar = WindowManagerGlobal.getWindowManagerService().hasNavigationBar()
-                    || forceNavbar;
+        if (!Utils.isPhone(context)) {
+            result.put(KEY_NAVIGATION_BAR_LEFT, CATEGORY_NAVBAR);
+        }
 
-            if (!Utils.isPhone(context)) {
-                result.put(KEY_NAVIGATION_BAR_LEFT, CATEGORY_NAVBAR);
-            }
-
-            if ((!hasNavBar && (needsNavigationBar || !isKeyDisablerSupported()))) {
-                result.put(CATEGORY_NAVBAR, null);
-            }
-        } catch (RemoteException e) {
-            Log.e(TAG, "Error getting navigation bar status");
+        if (!Utils.hasNavigationBar(context)) {
+            result.put(CATEGORY_NAVBAR, null);
         }
 
         if (!ButtonBacklightBrightness.isButtonSupported(context) &&

@@ -1211,9 +1211,7 @@ public class SettingsActivity extends Activity
                         removeTile = true;
                     }
                 } else if (id == R.id.button_settings) {
-                    boolean hasDeviceKeys = getResources().getInteger(
-                            com.android.internal.R.integer.config_deviceHardwareKeys) != 0;
-                    if (!hasDeviceKeys) {
+                    if (!Utils.hasDeviceKeys(this) && !Utils.hasNavigationBar(this)) {
                         removeTile = true;
                     }
                 } else if (id == R.id.voice_wakeup_settings) {
