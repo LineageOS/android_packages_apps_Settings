@@ -121,7 +121,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private static final boolean ONLY_ONE_TRUST_AGENT = true;
 
     // CyanogenMod Additions
-    private static final String KEY_APP_SECURITY_CATEGORY = "app_security";
+    private static final String KEY_APP_SECURITY_CATEGORY = "app_security_key";
     private static final String KEY_BLACKLIST = "blacklist";
 
     private PackageManager mPM;
@@ -457,11 +457,17 @@ public class SecuritySettings extends SettingsPreferenceFragment
         mBlacklist = (PreferenceScreen) root.findPreference(KEY_BLACKLIST);
 
         // Determine options based on device telephony support
-        if (!pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY)) {
+        if (!pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY) ||
+                !BlacklistUtils.isBlacklistFeaturePresent(getActivity())) {
             // No telephony, remove dependent options
             PreferenceGroup appCategory = (PreferenceGroup)
                     root.findPreference(KEY_APP_SECURITY_CATEGORY);
             appCategory.removePreference(mBlacklist);
+            mBlacklist = null;
+
+            if (appCategory.getPreferenceCount() == 0) {
+                root.removePreference(appCategory);
+            }
         }
 
         // The above preferences come and go based on security state, so we need to update
