@@ -208,12 +208,16 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         final boolean hasMenuKey = (deviceKeys & KEY_MASK_MENU) != 0;
         final boolean hasAssistKey = (deviceKeys & KEY_MASK_ASSIST) != 0;
         final boolean hasAppSwitchKey = (deviceKeys & KEY_MASK_APP_SWITCH) != 0;
+        final boolean hasCameraKey = (deviceKeys & KEY_MASK_CAMERA) != 0;
+        final boolean hasCameraFocusKey = !res.getBoolean(
+                com.android.internal.R.bool.config_singleStageCameraKey);
 
         final boolean showHomeWake = (deviceWakeKeys & KEY_MASK_HOME) != 0;
         final boolean showBackWake = (deviceWakeKeys & KEY_MASK_BACK) != 0;
         final boolean showMenuWake = (deviceWakeKeys & KEY_MASK_MENU) != 0;
         final boolean showAssistWake = (deviceWakeKeys & KEY_MASK_ASSIST) != 0;
         final boolean showAppSwitchWake = (deviceWakeKeys & KEY_MASK_APP_SWITCH) != 0;
+        final boolean showCameraWake = (deviceWakeKeys & KEY_MASK_CAMERA) != 0;
         final boolean showVolumeWake = (deviceWakeKeys & KEY_MASK_VOLUME) != 0;
 
         // Only visible on devices that does not have a navigation bar already,
@@ -365,6 +369,18 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             }
         } else {
             result.put(CATEGORY_APPSWITCH, null);
+        }
+
+        if (hasCameraKey) {
+            if (!showCameraWake) {
+                result.put(Settings.System.CAMERA_WAKE_SCREEN, CATEGORY_CAMERA);
+            }
+
+            if (!hasCameraFocusKey) {
+                result.put(Settings.System.CAMERA_SLEEP_ON_RELEASE, CATEGORY_CAMERA);
+            }
+        } else {
+            result.put(CATEGORY_CAMERA, null);
         }
 
         if (Utils.hasVolumeRocker(context)) {
