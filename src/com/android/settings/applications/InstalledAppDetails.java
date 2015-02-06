@@ -1063,7 +1063,7 @@ public class InstalledAppDetails extends Fragment
                 mDataSize.setText(getSizeStr(dataSize));
             }
             long cacheSize = mAppEntry.cacheSize + mAppEntry.externalCacheSize;
-            if (mLastCacheSize != cacheSize) {
+            if (mLastCacheSize != cacheSize && mCacheSize != null) {
                 mLastCacheSize = cacheSize;
                 mCacheSize.setText(getSizeStr(cacheSize));
             }
