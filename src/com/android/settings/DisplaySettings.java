@@ -41,6 +41,7 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.SharedPreferences;
+import android.hardware.CmHardwareManager;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Build;
@@ -66,13 +67,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.android.settings.cyanogenmod.DisplayRotation;
-import com.android.settings.hardware.DisplayColor;
-import com.android.settings.hardware.DisplayGamma;
-
-import org.cyanogenmod.hardware.AdaptiveBacklight;
-import org.cyanogenmod.hardware.ColorEnhancement;
-import org.cyanogenmod.hardware.SunlightEnhancement;
-import org.cyanogenmod.hardware.TapToWake;
 
 public class DisplaySettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, OnPreferenceClickListener, Indexable {
@@ -120,6 +114,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mSunlightEnhancement;
     private SwitchPreference mColorEnhancement;
 
+    private CmHardwareManager mCmHardwareManager;
+
     private ContentObserver mAccelerometerRotationObserver =
             new ContentObserver(new Handler()) {
         @Override
@@ -141,6 +137,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
         final Activity activity = getActivity();
         final ContentResolver resolver = activity.getContentResolver();
+        mCmHardwareManager = (CmHardwareManager) activity.getSystemService(Context.CMHW_SERVICE);
 
         addPreferencesFromResource(R.xml.display_settings);
 
@@ -183,27 +180,27 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         PreferenceCategory advancedPrefs = (PreferenceCategory) findPreference(CATEGORY_ADVANCED);
 
         mAdaptiveBacklight = (SwitchPreference) findPreference(KEY_ADAPTIVE_BACKLIGHT);
-        if (!isAdaptiveBacklightSupported()) {
+        if (!mCmHardwareManager.isSupported(CmHardwareManager.FEATURE_ADAPTIVE_BACKLIGHT)) {
             advancedPrefs.removePreference(mAdaptiveBacklight);
             mAdaptiveBacklight = null;
         }
 
         mSunlightEnhancement = (SwitchPreference) findPreference(KEY_SUNLIGHT_ENHANCEMENT);
-        if (!isSunlightEnhancementSupported()) {
+        if (!mCmHardwareManager.isSupported(CmHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT)) {
             advancedPrefs.removePreference(mSunlightEnhancement);
             mSunlightEnhancement = null;
         }
 
         mColorEnhancement = (SwitchPreference) findPreference(KEY_COLOR_ENHANCEMENT);
-        if (!isColorEnhancementSupported()) {
+        if (!mCmHardwareManager.isSupported(CmHardwareManager.FEATURE_COLOR_ENHANCEMENT)) {
             advancedPrefs.removePreference(mColorEnhancement);
             mColorEnhancement = null;
         }
 
-        if (!DisplayColor.isSupported()) {
+        if (!mCmHardwareManager.isSupported(CmHardwareManager.FEATURE_DISPLAY_COLOR_CALIBRATION)) {
             advancedPrefs.removePreference(findPreference(KEY_DISPLAY_COLOR));
         }
-        if (!DisplayGamma.isSupported()) {
+        if (!mCmHardwareManager.isSupported(CmHardwareManager.FEATURE_DISPLAY_GAMMA_CALIBRATION)) {
             advancedPrefs.removePreference(findPreference(KEY_DISPLAY_GAMMA));
         }
 
@@ -215,7 +212,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
 
         mTapToWake = (SwitchPreference) findPreference(KEY_TAP_TO_WAKE);
-        if (!isTapToWakeSupported()) {
+        if (!mCmHardwareManager.isSupported(CmHardwareManager.FEATURE_TAP_TO_WAKE)) {
             advancedPrefs.removePreference(mTapToWake);
             mTapToWake = null;
         }
@@ -379,24 +376,24 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         super.onResume();
         updateDisplayRotationPreferenceDescription();
         if (mAdaptiveBacklight != null) {
-            mAdaptiveBacklight.setChecked(AdaptiveBacklight.isEnabled());
+            mAdaptiveBacklight.setChecked(mCmHardwareManager.get(CmHardwareManager.FEATURE_ADAPTIVE_BACKLIGHT));
         }
 
         if (mSunlightEnhancement != null) {
-            if (SunlightEnhancement.isAdaptiveBacklightRequired() &&
-                    !AdaptiveBacklight.isEnabled()) {
+            if (mCmHardwareManager.requireAdaptiveBacklightForSunlightEnhancement() &&
+                    !mCmHardwareManager.get(CmHardwareManager.FEATURE_ADAPTIVE_BACKLIGHT)) {
                 mSunlightEnhancement.setEnabled(false);
             } else {
-                mSunlightEnhancement.setChecked(SunlightEnhancement.isEnabled());
+                mSunlightEnhancement.setChecked(mCmHardwareManager.get(CmHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT));
             }
         }
 
         if (mColorEnhancement != null) {
-            mColorEnhancement.setChecked(ColorEnhancement.isEnabled());
+            mColorEnhancement.setChecked(mCmHardwareManager.get(CmHardwareManager.FEATURE_COLOR_ENHANCEMENT));
         }
 
         if (mTapToWake != null) {
-            mTapToWake.setChecked(TapToWake.isEnabled());
+            mTapToWake.setChecked(mCmHardwareManager.get(CmHardwareManager.FEATURE_TAP_TO_WAKE));
         }
 
         RotationPolicy.registerRotationPolicyListener(getActivity(),
@@ -408,10 +405,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         resolver.registerContentObserver(
                 Settings.System.getUriFor(Settings.System.ACCELEROMETER_ROTATION), true,
                 mAccelerometerRotationObserver);
-
-        if (mAdaptiveBacklight != null) {
-            mAdaptiveBacklight.setChecked(AdaptiveBacklight.isEnabled());
-        }
 
         // Default value for wake-on-plug behavior from config.xml
         boolean wakeUpWhenPluggedOrUnpluggedConfig = getResources().getBoolean(
@@ -480,15 +473,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
     }
 
-    private static boolean isTapToWakeSupported() {
-        try {
-            return TapToWake.isSupported();
-        } catch (NoClassDefFoundError e) {
-            // Hardware abstraction framework not installed
-            return false;
-        }
-    }
-
     /**
      * Reads the current font size and sets the value in the summary text
      */
@@ -517,17 +501,20 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         if (preference == mTapToWake) {
-            return TapToWake.setEnabled(mTapToWake.isChecked());
+            return mCmHardwareManager.set(CmHardwareManager.FEATURE_TAP_TO_WAKE, mTapToWake.isChecked());
         } else if (preference == mAdaptiveBacklight) {
             if (mSunlightEnhancement != null &&
-                    SunlightEnhancement.isAdaptiveBacklightRequired()) {
+                    mCmHardwareManager.requireAdaptiveBacklightForSunlightEnhancement()) {
                 mSunlightEnhancement.setEnabled(mAdaptiveBacklight.isChecked());
             }
-            return AdaptiveBacklight.setEnabled(mAdaptiveBacklight.isChecked());
+            return mCmHardwareManager.set(CmHardwareManager.FEATURE_ADAPTIVE_BACKLIGHT,
+                mAdaptiveBacklight.isChecked());
         } else if (preference == mSunlightEnhancement) {
-            return SunlightEnhancement.setEnabled(mSunlightEnhancement.isChecked());
+            return mCmHardwareManager.set(CmHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT,
+                mSunlightEnhancement.isChecked());
         } else if (preference == mColorEnhancement) {
-            return ColorEnhancement.setEnabled(mColorEnhancement.isChecked());
+            return mCmHardwareManager.set(CmHardwareManager.FEATURE_COLOR_ENHANCEMENT,
+                mColorEnhancement.isChecked());
         } else if (preference == mWakeWhenPluggedOrUnplugged) {
             Settings.Global.putInt(getContentResolver(),
                     Settings.Global.WAKE_WHEN_PLUGGED_OR_UNPLUGGED,
@@ -585,40 +572,42 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     /**
      * Restore the properties associated with this preference on boot
-       @param ctx A valid context
+     *
+     * @param ctx A valid context
      */
     public static void restore(Context ctx) {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
-        if (isTapToWakeSupported()) {
+        CmHardwareManager cmHardwareManager = (CmHardwareManager) ctx.getSystemService(Context.CMHW_SERVICE);
+        if (cmHardwareManager.isSupported(CmHardwareManager.FEATURE_TAP_TO_WAKE)) {
             final boolean enabled = prefs.getBoolean(KEY_TAP_TO_WAKE,
-                TapToWake.isEnabled());
+                cmHardwareManager.get(CmHardwareManager.FEATURE_TAP_TO_WAKE));
 
-            if (!TapToWake.setEnabled(enabled)) {
+            if (!cmHardwareManager.set(CmHardwareManager.FEATURE_TAP_TO_WAKE, enabled)) {
                 Log.e(TAG, "Failed to restore tap-to-wake settings.");
             } else {
                 Log.d(TAG, "Tap-to-wake settings restored.");
             }
         }
 
-        if (isAdaptiveBacklightSupported()) {
+        if (cmHardwareManager.isSupported(CmHardwareManager.FEATURE_ADAPTIVE_BACKLIGHT)) {
             final boolean enabled = prefs.getBoolean(KEY_ADAPTIVE_BACKLIGHT,
-                    AdaptiveBacklight.isEnabled());
-            if (!AdaptiveBacklight.setEnabled(enabled)) {
+                    cmHardwareManager.get(CmHardwareManager.FEATURE_ADAPTIVE_BACKLIGHT));
+            if (!cmHardwareManager.set(CmHardwareManager.FEATURE_ADAPTIVE_BACKLIGHT, enabled)) {
                 Log.e(TAG, "Failed to restore adaptive backlight settings.");
             } else {
                 Log.d(TAG, "Adaptive backlight settings restored.");
             }
         }
 
-        if (isSunlightEnhancementSupported()) {
+        if (cmHardwareManager.isSupported(CmHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT)) {
             final boolean enabled = prefs.getBoolean(KEY_SUNLIGHT_ENHANCEMENT,
-                    SunlightEnhancement.isEnabled());
-            if (SunlightEnhancement.isAdaptiveBacklightRequired() &&
-                    !AdaptiveBacklight.isEnabled()) {
-                SunlightEnhancement.setEnabled(false);
+                    cmHardwareManager.get(CmHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT));
+            if (cmHardwareManager.requireAdaptiveBacklightForSunlightEnhancement() &&
+                    !cmHardwareManager.get(CmHardwareManager.FEATURE_ADAPTIVE_BACKLIGHT)) {
+                cmHardwareManager.set(CmHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT, false);
                 Log.d(TAG, "SRE requires CABC, disabled");
             } else {
-                if (!SunlightEnhancement.setEnabled(enabled)) {
+                if (!cmHardwareManager.set(CmHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT, enabled)) {
                     Log.e(TAG, "Failed to restore SRE settings.");
                 } else {
                     Log.d(TAG, "SRE settings restored.");
@@ -626,10 +615,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             }
         }
 
-        if (isColorEnhancementSupported()) {
+        if (cmHardwareManager.isSupported(CmHardwareManager.FEATURE_COLOR_ENHANCEMENT)) {
             final boolean enabled = prefs.getBoolean(KEY_COLOR_ENHANCEMENT,
-                    ColorEnhancement.isEnabled());
-            if (!ColorEnhancement.setEnabled(enabled)) {
+                    cmHardwareManager.get(CmHardwareManager.FEATURE_COLOR_ENHANCEMENT));
+            if (!cmHardwareManager.set(CmHardwareManager.FEATURE_COLOR_ENHANCEMENT, enabled)) {
                 Log.e(TAG, "Failed to restore color enhancement settings.");
             } else {
                 Log.d(TAG, "Color enhancement settings restored.");
@@ -646,33 +635,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             ret = false;
         }
         return ret;
-    }
-
-    private static boolean isAdaptiveBacklightSupported() {
-        try {
-            return AdaptiveBacklight.isSupported();
-        } catch (NoClassDefFoundError e) {
-            // Hardware abstraction framework not installed
-            return false;
-        }
-    }
-
-    private static boolean isSunlightEnhancementSupported() {
-        try {
-            return SunlightEnhancement.isSupported();
-        } catch (NoClassDefFoundError e) {
-            // Hardware abstraction framework not installed
-            return false;
-        }
-    }
-
-    private static boolean isColorEnhancementSupported() {
-        try {
-            return ColorEnhancement.isSupported();
-        } catch (NoClassDefFoundError e) {
-            // Hardware abstraction framework not installed
-            return false;
-        }
     }
 
     public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =

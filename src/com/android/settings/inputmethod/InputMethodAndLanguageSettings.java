@@ -30,6 +30,7 @@ import android.content.pm.ServiceInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.ContentObserver;
+import android.hardware.CmHardwareManager;
 import android.hardware.input.InputDeviceIdentifier;
 import android.hardware.input.InputManager;
 import android.hardware.input.KeyboardLayout;
@@ -49,6 +50,7 @@ import android.provider.Settings.System;
 import android.speech.RecognitionService;
 import android.speech.tts.TtsEngines;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.InputDevice;
 import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodManager;
@@ -79,8 +81,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.TreeSet;
 
-import org.cyanogenmod.hardware.HighTouchSensitivity;
-
 public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener, InputManager.InputDeviceListener,
         KeyboardLayoutDialogFragment.OnSetupKeyboardLayoutsListener, Indexable,
@@ -96,6 +96,8 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
     private static final String KEY_TRACKPAD_SETTINGS = "gesture_pad_settings";
     private static final String KEY_STYLUS_GESTURES = "stylus_gestures";
     private static final String KEY_STYLUS_ICON_ENABLED = "stylus_icon_enabled";
+
+    private static final String TAG = InputMethodAndLanguageSettings.class.getSimpleName();
 
     // false: on ICS or later
     private static final boolean SHOW_INPUT_METHOD_SWITCHER_SETTINGS = false;
@@ -119,6 +121,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
     private Intent mIntentWaitingForResult;
     private InputMethodSettingValuesWrapper mInputMethodSettingValues;
     private DevicePolicyManager mDpm;
+    private CmHardwareManager mCmHardwareManager;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -129,6 +132,8 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         final Activity activity = getActivity();
         mImm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         mInputMethodSettingValues = InputMethodSettingValuesWrapper.getInstance(activity);
+
+        mCmHardwareManager = (CmHardwareManager) getSystemService(Context.CMHW_SERVICE);
 
         try {
             mDefaultInputMethodSelectorVisibility = Integer.valueOf(
@@ -190,11 +195,11 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
                 pointerSettingsCategory.removePreference(mStylusIconEnabled);
             }
 
-            if (!isHighTouchSensitivitySupported()) {
+            if (!mCmHardwareManager.isSupported(CmHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY)) {
                 pointerSettingsCategory.removePreference(mHighTouchSensitivity);
                 mHighTouchSensitivity = null;
             } else {
-                mHighTouchSensitivity.setChecked(HighTouchSensitivity.isEnabled());
+                mHighTouchSensitivity.setChecked(mCmHardwareManager.get(CmHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY));
             }
 
             Utils.updatePreferenceToSpecificActivityFromMetaDataOrRemove(getActivity(),
@@ -391,7 +396,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
                 return true;
             }
         } else if (preference == mHighTouchSensitivity) {
-            return HighTouchSensitivity.setEnabled(mHighTouchSensitivity.isChecked());
+            return mCmHardwareManager.set(CmHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY, mHighTouchSensitivity.isChecked());
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
@@ -669,15 +674,6 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         }
     }
 
-    private static boolean isHighTouchSensitivitySupported() {
-        try {
-            return HighTouchSensitivity.isSupported();
-        } catch (NoClassDefFoundError e) {
-            // Hardware abstraction framework not installed
-            return false;
-        }
-    }
-
     private static boolean haveInputDeviceWithVibrator() {
         final int[] devices = InputDevice.getDeviceIds();
         for (int i = 0; i < devices.length; i++) {
@@ -711,6 +707,20 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
 
         public void pause() {
             mContext.getContentResolver().unregisterContentObserver(this);
+        }
+    }
+
+    public static void restore(Context context) {
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        final CmHardwareManager cmHardwareManager = (CmHardwareManager) context.getSystemService(Context.CMHW_SERVICE);
+        if (cmHardwareManager.isSupported(CmHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY)) {
+            final boolean enabled = prefs.getBoolean(KEY_HIGH_TOUCH_SENSITIVITY,
+                    cmHardwareManager.get(CmHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY));
+            if (!cmHardwareManager.set(CmHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY, enabled)) {
+                Log.e(TAG, "Failed to restore high touch sensitivity settings.");
+            } else {
+                Log.d(TAG, "High touch sensitivity settings restored.");
+            }
         }
     }
 
