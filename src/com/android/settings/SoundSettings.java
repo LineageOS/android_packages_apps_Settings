@@ -22,6 +22,7 @@ import android.content.pm.PackageManager;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
+import android.hardware.CmHardwareManager;
 import android.media.AudioManager;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -45,7 +46,6 @@ import android.provider.Settings;
 import android.util.Log;
 
 import com.android.internal.widget.LockPatternUtils;
-import com.android.settings.hardware.VibratorIntensity;
 import com.android.settings.notification.DropDownPreference;
 import com.android.settings.notification.IncreasingRingVolumePreference;
 import com.android.settings.notification.NotificationAccessSettings;
@@ -137,7 +137,9 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
             volumes.removePreference(volumes.findPreference(KEY_VOLUME_LINK_NOTIFICATION));
         }
 
-        if (!VibratorIntensity.isSupported()) {
+        CmHardwareManager cmHardwareManager =
+            (CmHardwareManager) getSystemService(Context.CMHW_SERVICE);
+        if (!cmHardwareManager.isSupported(CmHardwareManager.FEATURE_VIBRATOR)) {
             removePreference(KEY_VIBRATION_INTENSITY);
         }
 

@@ -25,6 +25,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.database.ContentObserver;
+import android.hardware.CmHardwareManager;
 import android.media.AudioManager;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
@@ -143,7 +144,8 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
             TYPE_SYSTEM, KEY_VIBRATION_INTENSITY, System.HAPTIC_FEEDBACK_ENABLED, DEFAULT_ON) {
         @Override
         public boolean isApplicable(Context context) {
-            return VibratorIntensity.isSupported();
+            CmHardwareManager cmHardwareManager = (CmHardwareManager) context.getSystemService(Context.CMHW_SERVICE);
+            return cmHardwareManager.isSupported(CmHardwareManager.FEATURE_VIBRATOR);
         }
     };
 
