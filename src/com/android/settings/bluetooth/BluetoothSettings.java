@@ -93,6 +93,9 @@ public final class BluetoothSettings extends DeviceListPreferenceFragment implem
 
     private final IntentFilter mIntentFilter;
 
+    private static String mPreDeviceAddress = null;
+    private static boolean mNeedToRemove = false;
+
 
     // accessed from inner class (not private to avoid thunks)
     Preference mMyDevicePreference;
@@ -408,12 +411,23 @@ public final class BluetoothSettings extends DeviceListPreferenceFragment implem
             DeviceProfilesSettings profileFragment = (DeviceProfilesSettings)activity.
                 getFragmentManager().findFragmentById(R.id.bluetooth_fragment_settings);
 
+            if(null != mPreDeviceAddress){
+                if(!((device.getAddress()).equals(mPreDeviceAddress))){
+                    if(mNeedToRemove){
+                        activity.getFragmentManager().beginTransaction().remove(profileFragment)
+                            .commitAllowingStateLoss();
+                        profileFragment = null;
+                    }
+                }
+            }
+
             if (mSettingsDialogView != null){
                 ViewGroup parent = (ViewGroup) mSettingsDialogView.getParent();
                 if (parent != null) {
                     parent.removeView(mSettingsDialogView);
                 }
             }
+            mPreDeviceAddress = device.getAddress();
 
             if (profileFragment == null) {
                 LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -435,6 +449,7 @@ public final class BluetoothSettings extends DeviceListPreferenceFragment implem
 
             final DeviceProfilesSettings dpsFragment = profileFragment;
             final Context context = v.getContext();
+            mNeedToRemove = true;
             settingsDialog.setView(dialogLayout);
             settingsDialog.setTitle(R.string.bluetooth_preference_paired_devices);
             settingsDialog.setPositiveButton(R.string.okay,
@@ -464,6 +479,8 @@ public final class BluetoothSettings extends DeviceListPreferenceFragment implem
                     if (!activity.isDestroyed()) {
                         activity.getFragmentManager().beginTransaction().remove(dpsFragment)
                             .commitAllowingStateLoss();
+
+                        mNeedToRemove = false;
                     }
                 }
             });
