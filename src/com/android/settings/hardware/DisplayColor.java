@@ -21,21 +21,21 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.hardware.CmHardwareManager;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.preference.DialogPreference;
 import android.preference.PreferenceManager;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Button;
 
-import com.android.settings.R;
+import java.util.Arrays;
 
-import org.cyanogenmod.hardware.DisplayColorCalibration;
+import com.android.settings.R;
 
 /**
  * Special preference type that allows configuration of Color settings
@@ -57,15 +57,22 @@ public class DisplayColor extends DialogPreference {
     };
 
     private ColorSeekBar[] mSeekBars = new ColorSeekBar[SEEKBAR_ID.length];
-    private String[] mCurrentColors;
-    private String mOriginalColors;
+    private int[] mCurrentColors = new int[SEEKBAR_ID.length];
+    private int[] mOriginalColors = new int[SEEKBAR_ID.length];
+    private int mMinValue;
+    private int mMaxValue;
+    private int mDefaultValue;
+    private CmHardwareManager mCmHardwareManager;
 
     public DisplayColor(Context context, AttributeSet attrs) {
         super(context, attrs);
-
-        if (!isSupported()) {
+        mCmHardwareManager = (CmHardwareManager) context.getSystemService(Context.CMHW_SERVICE);
+        if (!mCmHardwareManager.isSupported(CmHardwareManager.FEATURE_DISPLAY_COLOR_CALIBRATION)) {
             return;
         }
+        mMinValue = mCmHardwareManager.getDisplayColorCalibrationMin();
+        mMaxValue = mCmHardwareManager.getDisplayColorCalibrationMax();
+        mDefaultValue = mCmHardwareManager.getDisplayColorCalibrationDefault();
 
         setDialogLayoutResource(R.layout.display_color_calibration);
     }
@@ -84,14 +91,13 @@ public class DisplayColor extends DialogPreference {
     protected void onBindDialogView(View view) {
         super.onBindDialogView(view);
 
-        mOriginalColors = DisplayColorCalibration.getCurColors();
-        mCurrentColors = mOriginalColors.split(" ");
+        mOriginalColors = mCmHardwareManager.getDisplayColorCalibration();
 
         for (int i = 0; i < SEEKBAR_ID.length; i++) {
             SeekBar seekBar = (SeekBar) view.findViewById(SEEKBAR_ID[i]);
             TextView value = (TextView) view.findViewById(SEEKBAR_VALUE_ID[i]);
-            mSeekBars[i] = new ColorSeekBar(seekBar, value, i);
-            mSeekBars[i].setValueFromString(mCurrentColors[i]);
+            mSeekBars[i] = new ColorSeekBar(seekBar, value, i, mMinValue, mMaxValue);
+            mSeekBars[i].mSeekBar.setProgress(mOriginalColors[i]);
         }
     }
 
@@ -106,12 +112,11 @@ public class DisplayColor extends DialogPreference {
         defaultsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int defaultValue = DisplayColorCalibration.getDefValue();
                 for (int i = 0; i < mSeekBars.length; i++) {
-                    mSeekBars[i].mSeekBar.setProgress(defaultValue);
-                    mCurrentColors[i] = String.valueOf(defaultValue);
+                    mSeekBars[i].mSeekBar.setProgress(mDefaultValue);
+                    mCurrentColors[i] = mDefaultValue;
                 }
-                DisplayColorCalibration.setColors(TextUtils.join(" ", mCurrentColors));
+                mCmHardwareManager.setDisplayColorCalibration(mCurrentColors);
             }
         });
     }
@@ -122,10 +127,11 @@ public class DisplayColor extends DialogPreference {
 
         if (positiveResult) {
             Editor editor = getEditor();
-            editor.putString("display_color_calibration", DisplayColorCalibration.getCurColors());
+            editor.putString("display_color_calibration",
+                Arrays.toString(mCmHardwareManager.getDisplayColorCalibration()));
             editor.commit();
         } else if (mOriginalColors != null) {
-            DisplayColorCalibration.setColors(mOriginalColors);
+            mCmHardwareManager.setDisplayColorCalibration(mOriginalColors);
         }
     }
 
@@ -142,7 +148,7 @@ public class DisplayColor extends DialogPreference {
         myState.originalColors = mOriginalColors;
 
         // Restore the old state when the activity or dialog is being paused
-        DisplayColorCalibration.setColors(mOriginalColors);
+        mCmHardwareManager.setDisplayColorCalibration(mOriginalColors);
         mOriginalColors = null;
 
         return myState;
@@ -161,22 +167,15 @@ public class DisplayColor extends DialogPreference {
         mOriginalColors = myState.originalColors;
         mCurrentColors = myState.currentColors;
         for (int i = 0; i < mSeekBars.length; i++) {
-            mSeekBars[i].setValueFromString(mCurrentColors[i]);
+            mSeekBars[i].mSeekBar.setProgress(mCurrentColors[i]);
         }
-        DisplayColorCalibration.setColors(TextUtils.join(" ", mCurrentColors));
-    }
-
-    public static boolean isSupported() {
-        try {
-            return DisplayColorCalibration.isSupported();
-        } catch (NoClassDefFoundError e) {
-            // Hardware abstraction framework isn't installed
-            return false;
-        }
+        mCmHardwareManager.setDisplayColorCalibration(mCurrentColors);
     }
 
     public static void restore(Context context) {
-        if (!isSupported()) {
+        CmHardwareManager cmHardwareManager =
+                (CmHardwareManager) context.getSystemService(Context.CMHW_SERVICE);
+        if (!cmHardwareManager.isSupported(CmHardwareManager.FEATURE_DISPLAY_COLOR_CALIBRATION)) {
             return;
         }
 
@@ -184,13 +183,18 @@ public class DisplayColor extends DialogPreference {
         final String value = prefs.getString("display_color_calibration", null);
 
         if (value != null) {
-            DisplayColorCalibration.setColors(value);
+            int[] rgb = new int[3];
+            String[] values = value.replace("[", "").replace("]", "").split(", ");
+            rgb[0] = Integer.valueOf(values[0]);
+            rgb[1] = Integer.valueOf(values[1]);
+            rgb[2] = Integer.valueOf(values[2]);
+            cmHardwareManager.setDisplayColorCalibration(rgb);
         }
     }
 
     private static class SavedState extends BaseSavedState {
-        String originalColors;
-        String[] currentColors;
+        int[] originalColors;
+        int[] currentColors;
 
         public SavedState(Parcelable superState) {
             super(superState);
@@ -198,15 +202,15 @@ public class DisplayColor extends DialogPreference {
 
         public SavedState(Parcel source) {
             super(source);
-            originalColors = source.readString();
-            currentColors = source.createStringArray();
+            originalColors = source.createIntArray();
+            currentColors = source.createIntArray();
         }
 
         @Override
         public void writeToParcel(Parcel dest, int flags) {
             super.writeToParcel(dest, flags);
-            dest.writeString(originalColors);
-            dest.writeStringArray(currentColors);
+            dest.writeIntArray(originalColors);
+            dest.writeIntArray(currentColors);
         }
 
         public static final Parcelable.Creator<SavedState> CREATOR =
@@ -226,32 +230,29 @@ public class DisplayColor extends DialogPreference {
         private int mIndex;
         private SeekBar mSeekBar;
         private TextView mValue;
+        private int mMin;
+        private int mMax;
 
-        public ColorSeekBar(SeekBar seekBar, TextView value, int index) {
+        public ColorSeekBar(SeekBar seekBar, TextView value, int index, int min, int max) {
             mSeekBar = seekBar;
             mValue = value;
             mIndex = index;
+            mMin = min;
+            mMax = max;
 
-            mSeekBar.setMax(DisplayColorCalibration.getMaxValue() -
-                    DisplayColorCalibration.getMinValue());
+            mSeekBar.setMax(max - min);
             mSeekBar.setOnSeekBarChangeListener(this);
-        }
-
-        public void setValueFromString(String valueString) {
-            mSeekBar.setProgress(Integer.valueOf(valueString));
         }
 
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-            int min = DisplayColorCalibration.getMinValue();
-            int max = DisplayColorCalibration.getMaxValue();
 
             if (fromUser) {
-                mCurrentColors[mIndex] = String.valueOf(progress + min);
-                DisplayColorCalibration.setColors(TextUtils.join(" ", mCurrentColors));
+                mCurrentColors[mIndex] = progress + mMin;
+                mCmHardwareManager.setDisplayColorCalibration(mCurrentColors);
             }
 
-            int percent = Math.round(100F * progress / (max - min));
+            int percent = Math.round(100F * progress / (mMax - mMin));
             mValue.setText(String.format("%d%%", percent));
         }
 
