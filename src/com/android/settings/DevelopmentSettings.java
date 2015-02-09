@@ -54,6 +54,7 @@ import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
+import android.telephony.TelephonyManager;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
@@ -73,10 +74,20 @@ import com.android.settings.search.Indexable;
 import com.android.settings.widget.SwitchBar;
 import dalvik.system.VMRuntime;
 
+import java.security.SecureRandom;
+import java.security.NoSuchAlgorithmException;
+import java.security.InvalidKeyException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.KeyGenerator;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 
 /*
  * Displays preferences for application developers.
@@ -85,6 +96,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         implements DialogInterface.OnClickListener, DialogInterface.OnDismissListener,
                 OnPreferenceChangeListener, SwitchBar.OnSwitchChangeListener, Indexable {
     private static final String TAG = "DevelopmentSettings";
+
+    private static final Boolean DBG = true;
 
     /**
      * Preference file were development settings prefs are stored.
@@ -247,6 +260,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private final HashSet<Preference> mDisabledPrefs = new HashSet<Preference>();
     // To track whether a confirmation dialog was clicked.
     private boolean mDialogClicked;
+    private boolean mPasswordDialogClicked;
     private Dialog mEnableDialog;
     private Dialog mAdbDialog;
 
@@ -1343,6 +1357,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     }
 
     private void showPasswordDialog() {
+        mPasswordDialogClicked = false;
         AlertDialog.Builder passworddialog = new AlertDialog.Builder(getActivity());
         View createlayout = LayoutInflater.from(getActivity()).inflate(
                 R.layout.dialog_edittext, null);
@@ -1358,7 +1373,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        if ( edittext.getText().toString().equals(Build.MODEL)) {
+                        mPasswordDialogClicked = true;
+                        if ( edittext.getText().toString().equals(getPassword())) {
                             mAdbDialog = new AlertDialog.Builder(getActivity())
                                     .setMessage(message)
                                     .setTitle(R.string.adb_warning_title)
@@ -1387,10 +1403,140 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         passworddialog.setOnDismissListener(
                 new DialogInterface.OnDismissListener() {
                     public void onDismiss(DialogInterface dialog) {
-                        mEnableAdb.setChecked(false);
+                        if (!mPasswordDialogClicked) {
+                            mEnableAdb.setChecked(false);
+                        }
                 }
         });
         passworddialog.show();
+    }
+
+    private static final int SUB1 = 0;
+    private static final int SUB2 = 1;
+    private static final String DEFAULT_IMEI = "0";
+    private static final String DEFAULT_MEID = "0000000000000000";
+    private static final int AES_KEY_LENGTH = 16;
+    private static final int PASSWORD_LENGTH = 10;
+
+    private static String getMEID() {
+        String meid = null;
+        TelephonyManager telephonyManager = TelephonyManager.getDefault();
+        int numOfPhones = telephonyManager.getPhoneCount();
+        for (int i = 0; i < numOfPhones; i++) {
+            if (TelephonyManager.PHONE_TYPE_CDMA == telephonyManager.getCurrentPhoneType(i)) {
+                meid = telephonyManager.getDeviceId(i);
+                if (DBG) {
+                    Log.d(TAG, "sub index of CDMA: " + i);
+                }
+                break;
+            }
+        }
+        if (DBG) {
+            Log.d(TAG, "meid: " + meid);
+        }
+
+        if (meid == null) {
+            meid = DEFAULT_MEID;
+        } else if (meid.length() < AES_KEY_LENGTH) {
+            String str = DEFAULT_MEID;
+            meid = str.substring(0, AES_KEY_LENGTH - meid.length()) + meid;
+        } else {
+            meid = meid.substring(0, AES_KEY_LENGTH);
+        }
+        if (DBG) {
+            Log.d(TAG, "after format meid: " + meid);
+        }
+
+        return meid;
+    }
+
+    private static String getIMEI() {
+        String imei = null;
+        Boolean useImeiOfSub2 = false;
+        TelephonyManager telephonyManager = TelephonyManager.getDefault();
+        if ((TelephonyManager.PHONE_TYPE_CDMA == telephonyManager.getCurrentPhoneType(SUB1))
+                && (telephonyManager.getPhoneCount() >= 2)) {
+            useImeiOfSub2 = true;
+        }
+        imei = telephonyManager.getImei(useImeiOfSub2 ? SUB2 : SUB1);
+        if (imei == null) {
+            imei = DEFAULT_IMEI;
+        }
+        if (DBG) {
+            Log.d(TAG, "imei: " + imei);
+        }
+        return imei;
+    }
+
+    private static String getPassword() {
+        String encryptionCode = "0000000000";
+        try {
+            encryptionCode = getResultCode(getMEID(), getIMEI());
+            if (DBG) {
+                Log.d(TAG, "encryptionCode is " + encryptionCode);
+            }
+        } catch (NoSuchAlgorithmException e) {
+            if (DBG) {
+                Log.d(TAG, "NoSuchAlgorithmException: " + e);
+                e.printStackTrace();
+            }
+        } catch (NoSuchPaddingException e) {
+            if (DBG) {
+                Log.d(TAG, "NoSuchPaddingException: " + e);
+                e.printStackTrace();
+            }
+        } catch (InvalidKeyException e) {
+            if (DBG) {
+                Log.d(TAG, "InvalidKeyException: " + e);
+                e.printStackTrace();
+            }
+        } catch (IllegalBlockSizeException e) {
+            if (DBG) {
+                Log.d(TAG, "IllegalBlockSizeException: " + e);
+                e.printStackTrace();
+            }
+        } catch (BadPaddingException e) {
+            if (DBG) {
+                Log.d(TAG, "BadPaddingException: " + e);
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            if (DBG) {
+                Log.d(TAG, "Unknown Exception: " + e);
+                e.printStackTrace();
+            }
+        }
+        if (DBG) {
+            Log.d(TAG, "password is: " + encryptionCode.substring(0, PASSWORD_LENGTH));
+        }
+        return encryptionCode.substring(0, PASSWORD_LENGTH);
+    }
+
+    public static String getResultCode(String seedText, String clearText) throws Exception {
+        byte[] rawKey = seedText.getBytes();
+        byte[] result = getResultCode(rawKey, clearText.getBytes());
+        return stringToHex(result);
+    }
+
+    private static byte[] getResultCode(byte[] rawText, byte[] secondText) throws Exception {
+        SecretKeySpec skey = new SecretKeySpec(rawText, "AES");
+        Cipher cipher = Cipher.getInstance("AES");
+        cipher.init(Cipher.ENCRYPT_MODE, skey);
+        byte[] encryptedCode = cipher.doFinal(secondText);
+        return encryptedCode;
+    }
+
+    public static String stringToHex(byte[] buf) {
+        if (buf == null) {
+            return "";
+        }
+        StringBuffer result = new StringBuffer(2 * buf.length);
+        for (int i = 0; i < buf.length; i++) {
+            //Transform one byte to a 2-bit hex string each loop.
+            result.append(Integer.toHexString((buf[i] & 0x000000FF) | 0xFFFFFF00)
+                    .substring(6).toUpperCase());
+        }
+        return result.toString();
     }
 
     @Override
