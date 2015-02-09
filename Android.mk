@@ -37,8 +37,6 @@ LOCAL_AAPT_FLAGS := \
 LOCAL_AAPT_INCLUDE_ALL_RESOURCES := true
 LOCAL_ASSET_DIR := $(LOCAL_PATH)/assets
 
-LOCAL_JAVA_LIBRARIES += org.cyanogenmod.hardware
-
 include frameworks/opt/setupwizard/navigationbar/common.mk
 include $(BUILD_PACKAGE)
 
