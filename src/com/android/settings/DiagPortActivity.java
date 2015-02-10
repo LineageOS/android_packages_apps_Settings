@@ -29,13 +29,17 @@
 package com.android.settings;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
+import android.hardware.usb.UsbManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemProperties;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.text.InputType;
 import android.view.LayoutInflater;
@@ -48,12 +52,22 @@ public class DiagPortActivity extends PreferenceActivity {
     private final String KEY_DIAG_PORT = "diag_port_enable_preference";
     private CheckBoxPreference mDiagport;
     private boolean mIsCancleDilog;
+    private UsbManager mUsbManager;
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+        mUsbManager = (UsbManager)getSystemService(Context.USB_SERVICE);
         addPreferencesFromResource(R.xml.diagport_settings);
         mDiagport = (CheckBoxPreference) findPreference(KEY_DIAG_PORT);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean set = prefs.getBoolean(KEY_DIAG_PORT, false);
+        mDiagport.setChecked(set);
     }
 
     @Override
@@ -83,14 +97,11 @@ public class DiagPortActivity extends PreferenceActivity {
                         if ( edittext.getText().toString().equals(getPassword())) {
                             if (mDiagport.isChecked()) {
                                 mDiagport.setChecked(true);
-                                SystemProperties.set("sys.usb.config",
-                                        "diag,serial_smd,rmnet_bam,adb");
+                                mUsbManager.setCurrentFunction("diag,serial_smd,rmnet_bam,adb",
+                                        true);
                             } else {
                                 mDiagport.setChecked(false);
-                                String function = SystemProperties.get(
-                                        "persist.sys.usb.config", "none");
-                                function = removeFunction(function, "diag");
-                                SystemProperties.set("sys.usb.config", function);
+                                mUsbManager.setCurrentFunction("ncm,adb", true);
                             }
                         } else {
                             if (mDiagport.isChecked()) {
