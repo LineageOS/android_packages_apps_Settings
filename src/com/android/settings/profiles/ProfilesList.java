@@ -51,11 +51,6 @@ public class ProfilesList extends SettingsPreferenceFragment implements
     public void onResume() {
         super.onResume();
         refreshList();
-
-        // On tablet devices remove the padding
-        if (Utils.isTablet(getActivity())) {
-            getListView().setPadding(0, 0, 0, 0);
-        }
     }
 
     @Override
