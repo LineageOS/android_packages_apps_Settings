@@ -729,6 +729,19 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider() {
+                private boolean mHasTapToWake;
+                private boolean mHasSunlightEnhancement, mHasColorEnhancement;
+                private boolean mHasDisplayGamma, mHasDisplayColor;
+
+                @Override
+                public void prepare() {
+                    mHasTapToWake = isTapToWakeSupported();
+                    mHasSunlightEnhancement = isSunlightEnhancementSupported();
+                    mHasColorEnhancement = isColorEnhancementSupported();
+                    mHasDisplayGamma = DisplayGamma.isSupported();
+                    mHasDisplayColor = DisplayColor.isSupported();
+                }
+
                 @Override
                 public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
                         boolean enabled) {
@@ -761,22 +774,22 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                             com.android.internal.R.bool.config_proximityCheckOnWake)) {
                         result.add(KEY_PROXIMITY_WAKE);
                     }
-                    if (!isTapToWakeSupported()) {
+                    if (!mHasTapToWake) {
                         result.add(KEY_TAP_TO_WAKE);
                     }
-                    if (!isSunlightEnhancementSupported()) {
+                    if (!mHasSunlightEnhancement) {
                         result.add(KEY_SUNLIGHT_ENHANCEMENT);
                     }
-                    if (!isColorEnhancementSupported()) {
+                    if (!mHasColorEnhancement) {
                         result.add(KEY_COLOR_ENHANCEMENT);
                     }
                     if (!isPostProcessingSupported(context)) {
                         result.add(KEY_SCREEN_COLOR_SETTINGS);
                     }
-                    if (!DisplayColor.isSupported()) {
+                    if (!mHasDisplayColor) {
                         result.add(KEY_DISPLAY_COLOR);
                     }
-                    if (!DisplayGamma.isSupported()) {
+                    if (!mHasDisplayGamma) {
                         result.add(KEY_DISPLAY_GAMMA);
                     }
                     if (!isAutomaticBrightnessAvailable(context.getResources())) {
