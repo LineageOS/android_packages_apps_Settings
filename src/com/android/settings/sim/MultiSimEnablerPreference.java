@@ -45,6 +45,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.preference.Preference;
 import android.provider.Settings;
+import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
 import android.telephony.SubInfoRecord;
 import android.telephony.TelephonyManager;
@@ -147,6 +148,9 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
         update();
         // now use other config screen to active/deactive sim card\
         mSwitch.setVisibility(mSwitchVisibility);
+        IntentFilter intentFilter = new IntentFilter(
+                TelephonyIntents.ACTION_SERVICE_STATE_CHANGED);
+        mContext.registerReceiver(mStateChanegReceiver, intentFilter);
 
     }
 
@@ -432,6 +436,22 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
         }
     };
 
+    private final BroadcastReceiver mStateChanegReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            logd("Intent received: " + action);
+            if (TelephonyIntents.ACTION_SERVICE_STATE_CHANGED.equals(action)) {
+                ServiceState serviceState = ServiceState.newFromBundle(intent.getExtras());
+                if (serviceState.getState() == ServiceState.STATE_IN_SERVICE) {
+                    if(isCurrentSubValid()) {
+                       updateSummary();
+                    }
+                }
+            }
+        }
+    };
+
     private Handler mHandler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
@@ -461,6 +481,12 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
     public void destroy() {
         try {
             mContext.unregisterReceiver(mReceiver);
+        } catch (IllegalArgumentException e) {
+            // May receive Receiver not registered error
+            logd(e.getMessage());
+        }
+        try {
+            mContext.unregisterReceiver(mStateChanegReceiver);
         } catch (IllegalArgumentException e) {
             // May receive Receiver not registered error
             logd(e.getMessage());

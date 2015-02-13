@@ -18,7 +18,6 @@
 
 package com.android.settings;
 
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AppOpsManager;
@@ -434,6 +433,15 @@ public class SecuritySettings extends SettingsPreferenceFragment
         PreferenceGroup advancedCategory =
                 (PreferenceGroup)root.findPreference(KEY_ADVANCED_SECURITY);
         if (advancedCategory != null) {
+
+            boolean hasNavBar = getActivity().getResources().getBoolean(
+                    com.android.internal.R.bool.config_showNavigationBar);
+            Preference screenPinning =
+                    advancedCategory.findPreference(KEY_SCREEN_PINNING);
+            if (!hasNavBar) {
+                advancedCategory.removePreference(screenPinning);
+            }
+
             Preference manageAgents = advancedCategory.findPreference(KEY_MANAGE_TRUST_AGENTS);
             if (manageAgents != null && !mLockPatternUtils.isSecure()) {
                 manageAgents.setEnabled(false);

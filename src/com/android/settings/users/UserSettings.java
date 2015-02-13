@@ -44,6 +44,7 @@ import android.os.UserManager;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceGroup;
+import android.provider.ContactsContract;
 import android.provider.Settings;
 import android.provider.Settings.Secure;
 import android.util.Log;
@@ -884,7 +885,10 @@ public class UserSettings extends SettingsPreferenceFragment
             if (mUserManager.isLinkedUser()) {
                 onManageUserClicked(UserHandle.myUserId(), false);
             } else {
-                showDialog(DIALOG_USER_PROFILE_EDITOR);
+                Intent intent = ContactsContract.QuickContact.composeQuickContactsIntent(
+                        getActivity(), getView(), ContactsContract.Profile.CONTENT_URI,
+                        ContactsContract.QuickContact.MODE_LARGE, null);
+                getActivity().startActivityAsUser(intent, new UserHandle(UserHandle.USER_CURRENT));
             }
         } else if (pref instanceof UserPreference) {
             int userId = ((UserPreference) pref).getUserId();

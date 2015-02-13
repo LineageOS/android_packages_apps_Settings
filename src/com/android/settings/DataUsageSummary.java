@@ -1028,6 +1028,9 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
             dataEnabledVisible = false;
             disableAtLimitVisible = false;
         }
+        if (!TelephonyManager.getDefault().hasIccCard(multiSimGetCurrentSub())) {
+            dataEnabledVisible = false;
+        }
 
         // TODO: move enabled state directly into policy
         if (TAB_MOBILE.equals(mCurrentTab) || mCurrentTab.startsWith(TAB_SIM)) {
