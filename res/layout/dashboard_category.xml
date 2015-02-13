@@ -14,32 +14,47 @@
      limitations under the License.
 -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/category"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/dashboard_category_padding_start"
-        android:paddingEnd="@dimen/dashboard_category_padding_end"
-        android:orientation="vertical"
-        android:background="@color/dashboard_category_background_color"
-        android:layout_marginBottom="8dip"
-        android:elevation="@dimen/dashboard_category_elevation">
+<!--<android.support.v7.widget.CardView-->
+        <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--xmlns:card_view="http://schemas.android.com/apk/res-auto"-->
+        <!--android:id="@+id/dashboard"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:paddingStart="4dp"-->
+        <!--android:paddingEnd="4dp"-->
+        <!--android:paddingTop="4dp"-->
+        <!--android:paddingBottom="4dp"-->
+        <!--android:background="@color/dashboard_category_background_color"-->
+        <!--android:elevation="4dp"-->
+        <!--card_view:cardCornerRadius="4dp">-->
 
-    <TextView android:id="@+id/category_title"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dashboard_category_title_height"
-            android:paddingStart="@dimen/dashboard_category_title_margin_start"
-            android:singleLine="true"
-            android:ellipsize="marquee"
-            android:gravity="center_vertical"
-            android:textAppearance="@style/TextAppearance.CategoryTitle"
-            android:textAlignment="viewStart"
-            />
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:id="@+id/category"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:paddingStart="@dimen/dashboard_category_padding_start"
+                  android:paddingEnd="@dimen/dashboard_category_padding_end"
+                  android:orientation="vertical"
+            >
 
-    <com.android.settings.dashboard.DashboardContainerView
-            android:id="@+id/category_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+        <TextView
+                android:id="@+id/category_title"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dashboard_category_title_height"
+                android:paddingStart="@dimen/dashboard_category_title_margin_start"
+                android:singleLine="true"
+                android:ellipsize="marquee"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.CategoryTitle"
+                android:textAlignment="viewStart"
+                />
 
-</LinearLayout>
+        <com.android.settings.dashboard.DashboardContainerView
+                android:id="@+id/category_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+    </LinearLayout>
+<!--</android.support.v7.widget.CardView>-->
