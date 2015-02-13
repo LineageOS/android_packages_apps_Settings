@@ -95,7 +95,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
     private int mLastScrollX = 0;
 
-    private int mTabBackgroundResId = R.drawable.background_tab;
+    private int mTabBackgroundResId = R.drawable.dashboard_tile_background;
 
     private Locale mLocale;
 
