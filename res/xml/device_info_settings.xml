@@ -43,9 +43,9 @@
         </PreferenceScreen>
 
         <!-- Advanced mode -->
-        <SwitchPreference
-                android:key="advanced_mode"
-                android:title="@string/advanced_mode_title"/>
+        <com.android.settings.cyanogenmod.SecureSettingSwitchPreference
+            android:key="advanced_mode"
+            android:title="@string/advanced_mode_title"/>
 
         <!-- Device status - launches activity -->
         <PreferenceScreen android:key="status_info"
