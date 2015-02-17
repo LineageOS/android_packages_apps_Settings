@@ -23,6 +23,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -46,6 +47,7 @@ import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.UserHandle;
 import android.os.UserManager;
+import android.provider.Settings;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
@@ -1423,11 +1425,8 @@ public class SettingsActivity extends Activity
     }
 
     public static boolean showAdvancedPreferences(Context context) {
-        boolean defValue = context.getResources().getBoolean(
-                R.bool.config_default_advanced_mode_enabled) || !Build.TYPE.equals("user");
-
-        return context.getSharedPreferences(DeviceInfoSettings.PREFS_FILE, 0)
-                .getBoolean(DeviceInfoSettings.KEY_ADVANCED_MODE, defValue);
+        ContentResolver resolver = context.getContentResolver();
+        return Settings.Secure.getInt(resolver, Settings.Secure.ADVANCED_MODE, -1) == 1;
     }
 
 
