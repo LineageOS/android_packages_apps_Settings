@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.hardware;
+package com.android.settings.livedisplay;
 
 import android.app.AlertDialog;
 import android.content.Context;
