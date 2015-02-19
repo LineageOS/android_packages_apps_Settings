@@ -50,6 +50,12 @@
                 android:title="@string/accelerometer_title"
                 settings:advanced="false"/>
 
+        <!-- Lift to wake -->
+        <SwitchPreference
+                android:key="lift_to_wake"
+                android:title="@string/lift_to_wake_title"
+                android:persistent="false" />
+
         <!-- Double tap to wake -->
         <SwitchPreference
                 android:key="double_tap_wake_gesture"
