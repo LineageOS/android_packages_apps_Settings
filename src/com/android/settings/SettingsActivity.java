@@ -229,6 +229,7 @@ public class SettingsActivity extends Activity
             R.id.device_section,
             R.id.notification_settings,
             R.id.display_settings,
+            R.id.button_settings,
             R.id.storage_settings,
             R.id.application_settings,
             R.id.battery_settings,
@@ -245,6 +246,7 @@ public class SettingsActivity extends Activity
             R.id.print_settings,
             R.id.nfc_payment_settings,
             R.id.home_settings,
+            R.id.status_bar_settings,
             R.id.dashboard
     };
 
