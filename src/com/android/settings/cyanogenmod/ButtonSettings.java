@@ -541,8 +541,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(context.getContentResolver(),
                     Settings.System.BUTTON_BRIGHTNESS, 0);
         } else {
-            int oldBright = prefs.getInt("pre_navbar_button_backlight", -1);
-            if (oldBright != -1) {
+            int oldBright = prefs.getInt("pre_navbar_button_backlight", defaultBrightness);
+            if (oldBright != defaultBrightness) {
                 Settings.System.putInt(context.getContentResolver(),
                         Settings.System.BUTTON_BRIGHTNESS, oldBright);
                 editor.remove("pre_navbar_button_backlight");
