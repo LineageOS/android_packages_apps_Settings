@@ -256,7 +256,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
             showKeyboardLayoutDialog(identifier);
         }
 
-        if (!Utils.isPackageInstalled(getActivity(), KEY_VOICE_WAKEUP, false)) {
+        if (!Utils.isPackageInstalled(getActivity(), VOICE_WAKEUP_PACKAGE, false)) {
             Preference wakeup = findPreference(KEY_VOICE_WAKEUP);
             if (wakeup != null) {
                 getPreferenceScreen().removePreference(wakeup);
