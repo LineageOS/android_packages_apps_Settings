@@ -61,11 +61,15 @@ public class PerformanceSettings extends SettingsPreferenceFragment {
 
     private AlertDialog mAlertDialog;
 
+    private PowerManager mPowerManager;
+
     private SharedPreferences mDevelopmentPreferences;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mPowerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
 
         mDevelopmentPreferences = getActivity().getSharedPreferences(
                 DevelopmentSettings.PREF_FILE, Context.MODE_PRIVATE);
@@ -79,6 +83,12 @@ public class PerformanceSettings extends SettingsPreferenceFragment {
         // 3. never show individual processor control if profiles enabled
 
         PreferenceCategory category = (PreferenceCategory) prefSet.findPreference(CATEGORY_PROFILES);
+        if (!mPowerManager.hasPowerProfiles()) {
+            prefSet.removePreference(category);
+        } else {
+            ((PreferenceCategory) prefSet.findPreference(CATEGORY_SYSTEM)).removePreference(
+                    prefSet.findPreference(CATEGORY_PROCESSOR));
+        }
 
         category = (PreferenceCategory) prefSet.findPreference(CATEGORY_SYSTEM);
         if (!showAdvancedPerfSettings()) {
