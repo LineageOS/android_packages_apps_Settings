@@ -139,7 +139,10 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
         }
 
         if (!VibratorIntensity.isSupported()) {
-            vibrate.removePreference(vibrate.findPreference(KEY_VIBRATION_INTENSITY));
+            Preference preference = vibrate.findPreference(KEY_VIBRATION_INTENSITY);
+            if (preference != null) {
+                vibrate.removePreference(preference);
+            }
         }
 
         initRingtones(sounds);
