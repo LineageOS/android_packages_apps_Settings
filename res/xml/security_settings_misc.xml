@@ -72,6 +72,16 @@
                 android:persistent="false"
                 android:fragment="com.android.settings.applications.AppOpsSummary"/>
 
+        <Preference android:key="file_protection"
+                android:title="@string/file_protection"
+                android:summary="@string/file_protection_summary"
+                android:persistent="false">
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetClass="com.qapp.secprotect.framework.SecProtect"
+                android:targetPackage="com.qapp.secprotect" />
+        </Preference>
+
         <SwitchPreference android:key="toggle_install_applications"
                 android:title="@string/install_applications"
                 android:summaryOff="@string/install_unknown_applications"

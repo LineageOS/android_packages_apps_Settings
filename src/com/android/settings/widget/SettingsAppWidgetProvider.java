@@ -559,10 +559,10 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
                         int mode = Settings.Secure.LOCATION_MODE_HIGH_ACCURACY;
                         switch (currentMode) {
                             case Settings.Secure.LOCATION_MODE_HIGH_ACCURACY:
-                                mode = Settings.Secure.LOCATION_MODE_BATTERY_SAVING;
+                                mode = Settings.Secure.LOCATION_MODE_OFF;
                                 break;
                             case Settings.Secure.LOCATION_MODE_BATTERY_SAVING:
-                                mode = Settings.Secure.LOCATION_MODE_HIGH_ACCURACY;
+                                mode = Settings.Secure.LOCATION_MODE_OFF;
                                 break;
                             case Settings.Secure.LOCATION_MODE_SENSORS_ONLY:
                                 mode = Settings.Secure.LOCATION_MODE_OFF;

@@ -311,7 +311,7 @@ public class AppOpsCategory extends ListFragment implements
 
         // Give some text to display if there is no data.  In a real
         // application this would come from a resource.
-        setEmptyText("No applications");
+        setEmptyText(getResources().getString(R.string.app_ops_no_applications));
 
         // We have a menu item to show in action bar.
         setHasOptionsMenu(true);

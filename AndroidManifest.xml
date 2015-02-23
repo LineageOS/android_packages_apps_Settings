@@ -2159,6 +2159,9 @@
                  <action android:name="android.provider.Telephony.SECRET_CODE" />
                  <data android:scheme="android_secret_code" android:host="76278" />
             </intent-filter>
+            <intent-filter>
+                 <action android:name="android.hardware.usb.action.USB_STATE" />
+            </intent-filter>
        </receiver>
 
        <activity android:name="DiagPortActivity"
@@ -2258,5 +2261,11 @@
             </intent-filter>
         </activity>
 
+        <!-- Let system application also could upate the airplane mode.  -->
+        <receiver android:name=".AirplaneModeUpdateReceiver">
+            <intent-filter>
+                <action android:name="android.action.SETTING_AIRPLANE_MODE_UPDATE" />
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>

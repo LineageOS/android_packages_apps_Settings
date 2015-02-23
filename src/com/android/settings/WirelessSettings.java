@@ -160,6 +160,7 @@ public class WirelessSettings extends SettingsPreferenceFragment
                     // Use NetworkOperatorName as second choice in case there is no
                     // SPN (Service Provider Name on the SIM). Such as with T-mobile.
                     operatorName = mTm.getNetworkOperatorName();
+                    operatorName = getLocaleString(getActivity().getBaseContext(), operatorName);
                     if (TextUtils.isEmpty(operatorName)) {
                         mManageMobilePlanMessage = resources.getString(
                                 R.string.mobile_unknown_sim_operator);
@@ -168,6 +169,7 @@ public class WirelessSettings extends SettingsPreferenceFragment
                                 R.string.mobile_no_provisioning_url, operatorName);
                     }
                 } else {
+                    operatorName = getLocaleString(getActivity().getBaseContext(), operatorName);
                     mManageMobilePlanMessage = resources.getString(
                             R.string.mobile_no_provisioning_url, operatorName);
                 }
@@ -183,6 +185,17 @@ public class WirelessSettings extends SettingsPreferenceFragment
             log("onManageMobilePlanClick: message=" + mManageMobilePlanMessage);
             showDialog(MANAGE_MOBILE_PLAN_DIALOG_ID);
         }
+    }
+
+    private String getLocaleString(Context context, String networkName) {
+        log("networkName: " + networkName);
+        if (networkName != null) {
+            networkName = android.util.NativeTextHelper.getInternalLocalString(context,
+                    networkName,
+                    R.array.origin_carrier_names,
+                    R.array.locale_carrier_names);
+        }
+        return networkName;
     }
 
     private void initSmsApplicationSetting() {

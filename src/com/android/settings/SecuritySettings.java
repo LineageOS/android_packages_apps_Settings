@@ -99,6 +99,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private static final String KEY_RESET_CREDENTIALS = "credentials_reset";
     private static final String KEY_CREDENTIALS_INSTALL = "credentials_install";
     private static final String KEY_APP_OPS_SUMMARY = "app_ops_summary";
+    private static final String KEY_FILE_PROTECTION = "file_protection";
     private static final String KEY_TOGGLE_INSTALL_APPLICATIONS = "toggle_install_applications";
     private static final String KEY_POWER_INSTANTLY_LOCKS = "power_button_instantly_locks";
     private static final String KEY_CREDENTIALS_MANAGER = "credentials_management";
@@ -421,11 +422,13 @@ public class SecuritySettings extends SettingsPreferenceFragment
             }
         }
 
-        // AppOps summary, only visible when strict mode is enabled.
+        // AppOps, only visible when strict mode is enabled.
         if (!AppOpsManager.isStrictEnable()) {
             Preference appOpsSummary = findPreference(KEY_APP_OPS_SUMMARY);
+            Preference fileProtection = findPreference(KEY_FILE_PROTECTION);
             if (deviceAdminCategory != null) {
                 deviceAdminCategory.removePreference(appOpsSummary);
+                deviceAdminCategory.removePreference(fileProtection);
             }
         }
 

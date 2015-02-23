@@ -34,6 +34,10 @@ import static com.android.internal.telephony.TelephonyIntents.SECRET_CODE_ACTION
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.hardware.usb.UsbManager;
+import android.os.SystemProperties;
+import android.preference.PreferenceManager;
 
 public class DiagPortBroadcastReceiver extends BroadcastReceiver {
 
@@ -47,6 +51,13 @@ public class DiagPortBroadcastReceiver extends BroadcastReceiver {
             i.setClass(context, DiagPortActivity.class);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(i);
+        } else if (intent.getAction().equals(UsbManager.ACTION_USB_STATE)) {
+            String function = SystemProperties.get("sys.usb.config", "none");
+            boolean hasDiag = function.contains("diag");
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("diag_port_enable_preference", hasDiag);
+            editor.apply();
         }
     }
 }
