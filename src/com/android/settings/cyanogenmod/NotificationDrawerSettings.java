@@ -37,8 +37,10 @@ import java.util.List;
 
 public class NotificationDrawerSettings extends SettingsPreferenceFragment implements Indexable,
         Preference.OnPreferenceChangeListener {
+    private static final String UI_COLLAPSE_BEHAVIOUR = "notification_drawer_collapse_on_dismiss";
     private static final String QUICK_PULLDOWN = "quick_pulldown";
 
+    private ListPreference mCollapseOnDismiss;
     private ListPreference mQuickPulldown;
     private Preference mQSTiles;
 
@@ -56,8 +58,18 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
 
         PreferenceScreen prefSet = getPreferenceScreen();
         ContentResolver resolver = getActivity().getContentResolver();
+        mCollapseOnDismiss = (ListPreference) prefSet.findPreference(UI_COLLAPSE_BEHAVIOUR);
         mQuickPulldown = (ListPreference) prefSet.findPreference(QUICK_PULLDOWN);
 
+        // Notification drawer auto collapse
+        mCollapseOnDismiss.setOnPreferenceChangeListener(this);
+        int collapseBehaviour = Settings.System.getIntForUser(resolver,
+                Settings.System.STATUS_BAR_COLLAPSE_ON_DISMISS,
+                Settings.System.STATUS_BAR_COLLAPSE_IF_NO_CLEARABLE, UserHandle.USER_CURRENT);
+        mCollapseOnDismiss.setValue(String.valueOf(collapseBehaviour));
+        updateCollapseBehaviourSummary(collapseBehaviour);
+
+        // QS quick pulldown
         mQuickPulldown.setOnPreferenceChangeListener(this);
         int quickPulldownValue = Settings.Secure.getIntForUser(resolver,
                 Settings.Secure.QS_QUICK_PULLDOWN, 0, UserHandle.USER_CURRENT);
@@ -77,7 +89,13 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getContentResolver();
-        if (preference == mQuickPulldown) {
+        if (preference == mCollapseOnDismiss) {
+            int collapseValue = Integer.valueOf((String) newValue);
+            Settings.System.putIntForUser(resolver, Settings.System.STATUS_BAR_COLLAPSE_ON_DISMISS,
+                    collapseValue, UserHandle.USER_CURRENT);
+            updateCollapseBehaviourSummary(value);
+            return true;
+        } else if (preference == mQuickPulldown) {
             int quickPulldownValue = Integer.valueOf((String) newValue);
             Settings.System.putIntForUser(resolver, Settings.Secure.QS_QUICK_PULLDOWN,
                     quickPulldownValue, UserHandle.USER_CURRENT);
@@ -85,6 +103,12 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
             return true;
         }
         return false;
+    }
+
+    private void updateCollapseBehaviourSummary(int value) {
+        String[] summaries = getResources().getStringArray(
+                R.array.notification_drawer_collapse_on_dismiss_summaries);
+        mCollapseOnDismiss.setSummary(summaries[value]);
     }
 
     private void updatePulldownSummary(int value) {
