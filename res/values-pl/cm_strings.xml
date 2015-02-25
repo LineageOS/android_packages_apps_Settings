@@ -59,6 +59,8 @@
   <string name="profile_add_nfc_text">Ten tag NFC odnosi się do nieznanego profilu. Przypisanie tagu do istniejącego profilu pozwoli aktywować go w przyszłości.</string>
   <string name="profile_select">Wybierz profil</string>
   <string name="profile_remove_dialog_message">Usunąć profil %1$s?</string>
+  <string name="profile_populate_profile_from_state">Skonfigurować profil przy użyciu bieżących ustawień urządzenia?</string>
+  <string name="profile_menu_fill_from_state">Importuj bieżące ustawienia urządzenia</string>
   <string name="profile_name_title">Nazwa</string>
   <string name="profile_profile_name_prompt">Wprowadź nazwę nowego profilu</string>
   <string name="menu_new_profile">Nowy profil</string>
@@ -363,6 +365,10 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="root_access_apps">Tylko aplikacje</string>
   <string name="root_access_adb">Tylko ADB</string>
   <string name="root_access_all">Aplikacje i ADB</string>
+  <string name="update_recovery_title">Aktualizuj recovery Cyanogen</string>
+  <string name="update_recovery_summary">Aktualizuj recovery wraz z aktualizacjami systemu</string>
+  <string name="update_recovery_on_warning">UWAGA: Kiedy ta funkcja jest włączona, twoje recovery zostanie zastąpione przez to dołączone do aktualnie działającej wersji systemu.\n\nTwoje recovery będzie aktualizowane wraz z aktualizacjami systemu, pomagając w zapewnieniu kompatybilności z przyszłymi wersjami.\n\nCzy chcesz włączyć tę funkcję?</string>
+  <string name="update_recovery_off_warning">OSTRZEŻENIE: Kiedy ta funkcja jest wyłączona, zainstalowane recovery nie będzie się aktualizowało wraz z aktualizacjami systemu.\n\nPrzyszłe aktualizacje systemu mogą się nie zainstalować przez przestarzałe lub zewnętrzne wersje recovery.\n\nCzy jesteś pewien, że chcesz wyłączyć tę funkcję?</string>
   <string name="ok">OK</string>
   <string name="quiet_hours_title">Godziny ciszy</string>
   <string name="quiet_hours_summary">Skonfiguruj godziny, w których wszystkie dźwięki będą wyciszone</string>
@@ -1001,7 +1007,12 @@ Dodatkowe opcje są dostępne przez długie przytrzymanie linii. Wybierając opc
   <string name="profile_setup_setup_triggers_title_config">Modyfikuj przyciski: <xliff:g id="profile_name">%1$s</xliff:g></string>
   <string name="profile_setup_actions_title">Krok 2: Ustaw akcje</string>
   <string name="profile_setup_actions_title_config">Ponownie skonfiguruj akcje</string>
+  <string name="no_bluetooth_triggers">Brak sparowanych urządzeń Bluetooth.\nDotknij, by sparować urządzenie Bluetooth przed skonfigurowaniem wyzwalaczy.</string>
+  <string name="no_wifi_triggers">Brak skonfigurowanych punktów dostępu Wi\u2011Fi.\nDotknij, by połączyć z Wi\u2011Fi przez skonfigurowaniem wyzwalaczy.</string>
   <string name="profile_setup_setup_triggers_description">Proszę wybrać wyzwalacze, które aktywują ten profil</string>
   <string name="profile_setup_actions_description">Teraz skonfiguruj akcję, która wydarzy się po aktywowaniu profilu</string>
+  <string name="profile_triggers_header">Wyzwalacze, które aktywują ten profil</string>
+  <string name="no_triggers_configured">Nie skonfigurowano wyzwalaczy. Dotknij, by dodać więcej.</string>
+  <string name="no_triggers_configured_nfc">Dotknij, by ustawić nowy wyzwalacz NFC.</string>
   <string name="sound_ringtone_multisim_options">Zmień domyślne dzwonki</string>
 </resources>
