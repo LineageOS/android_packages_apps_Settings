@@ -89,7 +89,7 @@ public class ApnEditor extends PreferenceActivity
 
     private String mCurMnc;
     private String mCurMcc;
-    private long mSubId;
+    private int mSubId;
     private boolean mDisableEditor = false;
 
     private Uri mUri;
@@ -194,7 +194,7 @@ public class ApnEditor extends PreferenceActivity
         final Intent intent = getIntent();
         final String action = intent.getAction();
         // Read the subscription received from Phone settings.
-        mSubId = intent.getLongExtra(SelectSubscription.SUBSCRIPTION_KEY,
+        mSubId = intent.getIntExtra(SelectSubscription.SUBSCRIPTION_KEY,
                 SubscriptionManager.getDefaultSubId());
         Log.d(TAG,"ApnEditor onCreate received sub: " + mSubId);
         mDisableEditor = intent.getBooleanExtra("DISABLE_EDITOR",false);

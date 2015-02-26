@@ -45,8 +45,9 @@ import android.os.Message;
 import android.preference.Preference;
 import android.provider.Settings;
 import android.telephony.SubscriptionManager;
-import android.telephony.SubInfoRecord;
+import android.telephony.SubscriptionInfo;
 import android.telephony.TelephonyManager;
+import android.telephony.SubscriptionManager.OnSubscriptionsChangedListener;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -55,8 +56,10 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.android.internal.telephony.SubscriptionController;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.settings.R;
+import com.android.settings.Utils;
 
 import java.util.List;
 
@@ -81,7 +84,7 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
     private static final int RESULT_ALERT_DLG_ID = 3;
 
     private int mSlotId;
-    private SubInfoRecord mSir;
+    private SubscriptionInfo mSir;
     private boolean mCurrentState;
 
     private boolean mCmdInProgress = false;
@@ -100,20 +103,24 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
     private IntentFilter mIntentFilter = new IntentFilter(
             TelephonyIntents.ACTION_SUBINFO_CONTENT_CHANGE);
 
+    private SubscriptionManager mSubscriptionManager;
+
     public MultiSimEnablerPreference(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         mContext = context;
+        mSubscriptionManager = SubscriptionManager.from(context);
         setWidgetLayoutResource(R.layout.custom_checkbox);
         setSwitchVisibility(View.VISIBLE);
     }
 
-    public MultiSimEnablerPreference(Context context, SubInfoRecord sir, Handler handler,
+    public MultiSimEnablerPreference(Context context, SubscriptionInfo sir, Handler handler,
             int slotId) {
         this(context, null, com.android.internal.R.attr.checkBoxPreferenceStyle);
         logd("Contructor..Enter" + sir);
         mSlotId = slotId;
         mSir = sir;
         mParentHandler = handler;
+        mSubscriptionManager = SubscriptionManager.from(context);
     }
 
     private void sendMessage(int event, Handler handler, int delay) {
@@ -166,15 +173,16 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
     private boolean isCurrentSubValid() {
         boolean isSubValid = false;
         if (!isAirplaneModeOn() && hasCard()) {
-            List<SubInfoRecord> sirList = SubscriptionManager.getActiveSubInfoList();
+            List<SubscriptionInfo> sirList = SubscriptionManager.from(mContext)
+                    .getActiveSubscriptionInfoList();
             if (sirList != null ) {
-                for (SubInfoRecord sir : sirList) {
-                    if (sir != null && mSlotId == sir.slotId) {
+                for (SubscriptionInfo sir : sirList) {
+                    if (sir != null && mSlotId == sir.getSimSlotIndex()) {
                         mSir = sir;
                         break;
                     }
                 }
-                if (mSir != null && mSir.subId > 0 && mSir.slotId >= 0 &&
+                if (mSir != null && mSir.getSubscriptionId() > 0 && mSir.getSimSlotIndex() >= 0 &&
                         mSir.mStatus != SubscriptionManager.SUB_CONFIGURATION_IN_PROGRESS) {
                     isSubValid = true;
                 }
@@ -185,7 +193,7 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
 
     private void updateTitle() {
         if (mSubTitle == null) return;
-        mSubTitle.setText(mSir == null ? "SUB" : mSir.displayName);
+        mSubTitle.setText(mSir == null ? "SUB" : mSir.getDisplayName().toString());
     }
 
     public void setSwitchVisibility (int visibility) {
@@ -212,8 +220,8 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
         Resources res = mContext.getResources();
         String summary;
         boolean isActivated = (mSir.mStatus == SubscriptionManager.ACTIVE);
-        logd("updateSummary: subId " + mSir.subId + " isActivated = " + isActivated +
-                " slot id = " + mSlotId);
+        logd("updateSummary: subId " + mSir.getSubscriptionId() + " isActivated = "
+                + isActivated + " slot id = " + mSlotId);
 
         if (isActivated) {
             summary = mContext.getString(R.string.sim_enabler_summary,
@@ -237,10 +245,13 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
      */
     public static int getActivatedSubInfoCount(Context context) {
         int activeSubInfoCount = 0;
-        List<SubInfoRecord> subInfoLists = SubscriptionManager.getActiveSubInfoList();
+        List<SubscriptionInfo> subInfoLists = SubscriptionManager.from(context)
+                .getActiveSubscriptionInfoList();
+        SubscriptionController subController = SubscriptionController.getInstance();
         if (subInfoLists != null) {
-            for (SubInfoRecord subInfo : subInfoLists) {
-                if (subInfo.mStatus == SubscriptionManager.ACTIVE) activeSubInfoCount++;
+            for (SubscriptionInfo subInfo : subInfoLists) {
+                if (subController.getSubState(subInfo.getSubscriptionId())
+                        == SubscriptionManager.ACTIVE) activeSubInfoCount++;
             }
         }
         return activeSubInfoCount;
@@ -263,7 +274,7 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
             return;
         }
         for (int i = 0; i < TelephonyManager.getDefault().getPhoneCount(); i++) {
-            long[] subId = SubscriptionManager.getSubId(i);
+            int[] subId = SubscriptionManager.getSubId(i);
             if (TelephonyManager.getDefault().getCallState(subId[0])
                 != TelephonyManager.CALL_STATE_IDLE) {
                 logd("Call state for phoneId: " + i + " is not idle, EXIT!");
@@ -297,12 +308,12 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
         showProgressDialog();
         mSwitch.setEnabled(false);
         if (mCurrentState) {
-            SubscriptionManager.activateSubId(mSir.subId);
+            SubscriptionManager.activateSubId(mSir.getSubscriptionId());
         } else {
-            SubscriptionManager.deactivateSubId(mSir.subId);
+            SubscriptionManager.deactivateSubId(mSir.getSubscriptionId());
         }
 
-        mContext.registerReceiver(mReceiver, mIntentFilter);
+        mSubscriptionManager.addOnSubscriptionsChangedListener(mSubscriptionListener);
     }
 
     private void processSetUiccDone() {
@@ -313,7 +324,7 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
     }
 
     private void showAlertDialog(int dialogId, int msgId) {
-        String title = mSir == null ? "SUB" : mSir.displayName;
+        String title = mSir == null ? "SUB" : mSir.getDisplayName().toString();
         // Confirm only one AlertDialog instance to show.
         dismissDialog(sAlertDialog);
         dismissDialog(sProgressDialog);
@@ -348,7 +359,7 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
     }
 
     private void showProgressDialog() {
-        String title = mSir == null ? "SUB" : mSir.displayName;
+        String title = mSir == null ? "SUB" : mSir.getDisplayName().toString();
 
         String msg = mContext.getString(mCurrentState ? R.string.sim_enabler_enabling
                 : R.string.sim_enabler_disabling);
@@ -379,7 +390,7 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
 
     private void unregisterReceiver() {
         try {
-            mContext.unregisterReceiver(mReceiver);
+            mSubscriptionManager.removeOnSubscriptionsChangedListener(mSubscriptionListener);
         } catch (Exception ex) {}
     }
 
@@ -406,25 +417,16 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
                 }
             };
 
-    private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if (TelephonyIntents.ACTION_SUBINFO_CONTENT_CHANGE.equals(action)) {
-                long subId = intent.getLongExtra(SubscriptionManager._ID,
-                        SubscriptionManager.INVALID_SUB_ID);
-                String column = intent.getStringExtra(TelephonyIntents.EXTRA_COLUMN_NAME);
-                int intValue = intent.getIntExtra(TelephonyIntents.EXTRA_INT_CONTENT, 0);
-                logd("Received ACTION_SUBINFO_CONTENT_CHANGE on subId: " + subId
-                        + "for " + column + " intValue: " + intValue);
-                if (mCmdInProgress && column != null
-                        && column.equals(SubscriptionManager.SUB_STATE) && mSir.subId == subId) {
-                    if ((intValue == SubscriptionManager.ACTIVE && mCurrentState == true) ||
-                            (intValue == SubscriptionManager.INACTIVE && mCurrentState == false)) {
-                        processSetUiccDone();
-                    }
-                }
-            }
+    private final OnSubscriptionsChangedListener mSubscriptionListener =
+            new OnSubscriptionsChangedListener() {
+        public void onSubscriptionChanged() {
+            logd("Received onSubscriptionChanged");
+             SubscriptionInfo sir = Utils.findRecordBySubId(mContext, mSir.getSubscriptionId());
+             // When sir is not null, the sub state will be ACTIVE. 
+             if ((sir != null && mCurrentState == true) ||
+                     ( (sir == null) && mCurrentState == false)) {
+                 processSetUiccDone();
+             }
         }
     };
 

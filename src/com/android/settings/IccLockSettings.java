@@ -201,7 +201,7 @@ public class IccLockSettings extends PreferenceActivity
         getPreferenceScreen().setPersistent(false);
 
         Intent intent = getIntent();
-        long subId = intent.getLongExtra(SelectSubscription.SUBSCRIPTION_KEY,
+        int subId = intent.getIntExtra(SelectSubscription.SUBSCRIPTION_KEY,
                 SubscriptionManager.getDefaultSubId());
         // Use the right phone based on the subscription selected.
         int phoneId = SubscriptionManager.getPhoneId(subId);

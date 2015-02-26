@@ -307,7 +307,6 @@ public class TetherSettings extends SettingsPreferenceFragment
             }
         } else {
             mMassStorageActive = false;
-            Log.w(TAG,"Could not get STORAGE_SERVICE service");
         }
 
         mTetherChangeReceiver = new TetherChangeReceiver();
