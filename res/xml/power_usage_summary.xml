@@ -24,6 +24,10 @@
             android:title="@string/perf_profile_title"
             android:persistent="false" />
 
+    <com.android.settings.cyanogenmod.GlobalSettingSwitchPreference
+            android:key="low_power"
+            android:title="@string/battery_saver"/>
+
     <PreferenceCategory
             android:title="@string/power_usage_history_title"
             settings:keywords="@string/keywords_battery"
