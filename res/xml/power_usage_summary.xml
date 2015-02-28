@@ -24,6 +24,17 @@
             android:title="@string/perf_profile_title"
             android:persistent="false" />
 
+    <SwitchPreference
+            android:key="battery_saver"
+            android:title="@string/battery_saver"
+            android:persistent="false"/>
+
+    <!-- Turn on battery saver automatically -->
+    <com.android.settings.notification.DropDownPreference
+            android:key="turn_on_automatically"
+            android:title="@string/battery_saver"
+            android:persistent="false" />
+
     <PreferenceCategory
             android:title="@string/power_usage_history_title"
             settings:keywords="@string/keywords_battery"

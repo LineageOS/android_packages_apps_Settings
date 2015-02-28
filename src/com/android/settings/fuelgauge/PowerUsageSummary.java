@@ -22,6 +22,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -37,6 +38,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -48,6 +50,8 @@ import com.android.internal.os.BatteryStatsHelper;
 import com.android.internal.os.PowerProfile;
 import com.android.settings.HelpUtils;
 import com.android.settings.R;
+import com.android.settings.notification.DropDownPreference;
+import com.android.settings.notification.SettingPref;
 import com.android.settings.SettingsActivity;
 import com.android.settings.SettingsPreferenceFragment;
 
@@ -68,11 +72,14 @@ public class PowerUsageSummary extends SettingsPreferenceFragment
 
     private static final String KEY_PERF_PROFILE = "pref_perf_profile";
 
+    private static final String KEY_BATTERY_SAVER = "battery_saver";
+
+    private static final String KEY_TURN_ON_AUTOMATICALLY = "turn_on_automatically";
+
     private static final String BATTERY_HISTORY_FILE = "tmp_bat_history.bin";
 
     private static final int MENU_STATS_TYPE = Menu.FIRST;
     private static final int MENU_STATS_REFRESH = Menu.FIRST + 1;
-    private static final int MENU_BATTERY_SAVER = Menu.FIRST + 2;
     private static final int MENU_HELP = Menu.FIRST + 3;
 
     private UserManager mUm;
@@ -93,10 +100,14 @@ public class PowerUsageSummary extends SettingsPreferenceFragment
 
     private PowerManager mPowerManager;
     private ListPreference mPerfProfilePref;
+    private SwitchPreference mBatterySaverPref;
+    private DropDownPreference mAutoBatterySaverPref;
+    private SettingPref mTriggerPref;
     private String[] mPerfProfileEntries;
     private String[] mPerfProfileValues;
     private String mPerfProfileDefaultEntry;
-    private PerformanceProfileObserver mPerformanceProfileObserver = null;
+    private String mAutoBatterySaverTitle;
+    private SettingsObserver mSettingsObserver = null;
 
     private BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
 
@@ -112,14 +123,21 @@ public class PowerUsageSummary extends SettingsPreferenceFragment
         }
     };
 
-    private class PerformanceProfileObserver extends ContentObserver {
-        public PerformanceProfileObserver(Handler handler) {
+    private class SettingsObserver extends ContentObserver {
+        private final Uri LOW_POWER_MODE_TRIGGER_LEVEL_URI =
+                Settings.Global.getUriFor(Settings.Global.LOW_POWER_MODE_TRIGGER_LEVEL);
+
+        public SettingsObserver(Handler handler) {
             super(handler);
         }
 
         @Override
         public void onChange(boolean selfChange, Uri uri) {
-            updatePerformanceValue();
+            if (LOW_POWER_MODE_TRIGGER_LEVEL_URI.equals(uri)) {
+                mTriggerPref.update(getActivity());
+            } else {
+                updatePerformanceValue();
+            }
         }
     }
 
@@ -140,16 +158,22 @@ public class PowerUsageSummary extends SettingsPreferenceFragment
                 com.android.internal.R.array.perf_profile_entries);
         mPerfProfileValues = getResources().getStringArray(
                 com.android.internal.R.array.perf_profile_values);
+        mAutoBatterySaverTitle = getResources().getString(
+                R.string.battery_saver_turn_on_automatically_title);
 
         addPreferencesFromResource(R.xml.power_usage_summary);
         mAppListGroup = (PreferenceGroup) findPreference(KEY_APP_LIST);
         setHasOptionsMenu(true);
 
         mPerfProfilePref = (ListPreference) findPreference(KEY_PERF_PROFILE);
+        mBatterySaverPref = (SwitchPreference) findPreference(KEY_BATTERY_SAVER);
+        mAutoBatterySaverPref = (DropDownPreference) findPreference(KEY_TURN_ON_AUTOMATICALLY);
         if (mPerfProfilePref != null && !mPowerManager.hasPowerProfiles()) {
             removePreference(KEY_PERF_PROFILE);
             mPerfProfilePref = null;
         } else if (mPerfProfilePref != null) {
+            removePreference(KEY_BATTERY_SAVER);
+            mBatterySaverPref = null;
             mPerfProfilePref.setOrder(-1);
             mPerfProfilePref.setEntries(mPerfProfileEntries);
             mPerfProfilePref.setEntryValues(mPerfProfileValues);
@@ -157,7 +181,24 @@ public class PowerUsageSummary extends SettingsPreferenceFragment
             mPerfProfilePref.setOnPreferenceChangeListener(this);
         }
 
-        mPerformanceProfileObserver = new PerformanceProfileObserver(new Handler());
+        mTriggerPref = new SettingPref(SettingPref.TYPE_GLOBAL, KEY_TURN_ON_AUTOMATICALLY,
+                Settings.Global.LOW_POWER_MODE_TRIGGER_LEVEL,
+                0, /*default*/
+                getResources().getIntArray(R.array.battery_saver_trigger_values)) {
+            @Override
+            protected String getCaption(Resources res, int value) {
+                if (value > 0 && value < 100) {
+                    return res.getString(R.string.battery_saver_turn_on_automatically_pct, value);
+                }
+                return res.getString(R.string.battery_saver_turn_on_automatically_never);
+            }
+        };
+        mTriggerPref.init(this);
+        if (mBatterySaverPref != null) {
+            mAutoBatterySaverPref.setTitle(mAutoBatterySaverTitle);
+        }
+
+        mSettingsObserver = new SettingsObserver(new Handler());
     }
 
     @Override
@@ -178,12 +219,14 @@ public class PowerUsageSummary extends SettingsPreferenceFragment
         }
         refreshStats();
 
+        ContentResolver resolver = getActivity().getContentResolver();
         if (mPerfProfilePref != null) {
             updatePerformanceValue();
-            ContentResolver resolver = getActivity().getContentResolver();
             resolver.registerContentObserver(Settings.Secure.getUriFor(
-                    Settings.Secure.PERFORMANCE_PROFILE), false, mPerformanceProfileObserver);
+                    Settings.Secure.PERFORMANCE_PROFILE), false, mSettingsObserver);
         }
+        resolver.registerContentObserver(Settings.Global.getUriFor(
+                Settings.Global.LOW_POWER_MODE_TRIGGER_LEVEL), false, mSettingsObserver);
     }
 
     @Override
@@ -193,10 +236,8 @@ public class PowerUsageSummary extends SettingsPreferenceFragment
         getActivity().unregisterReceiver(mBatteryInfoReceiver);
         super.onPause();
 
-        if (mPerfProfilePref != null) {
-            ContentResolver resolver = getActivity().getContentResolver();
-            resolver.unregisterContentObserver(mPerformanceProfileObserver);
-        }
+        ContentResolver resolver = getActivity().getContentResolver();
+        resolver.unregisterContentObserver(mSettingsObserver);
     }
 
     @Override
@@ -284,11 +325,6 @@ public class PowerUsageSummary extends SettingsPreferenceFragment
                 mStatsHelper.clearStats();
                 refreshStats();
                 mHandler.removeMessages(MSG_REFRESH_STATS);
-                return true;
-            case MENU_BATTERY_SAVER:
-                final SettingsActivity sa = (SettingsActivity) getActivity();
-                sa.startPreferencePanel(BatterySaverSettings.class.getName(), null,
-                        R.string.battery_saver, null, null, 0);
                 return true;
             default:
                 return false;
