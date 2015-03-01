@@ -333,6 +333,12 @@ public final class DeviceProfilesSettings extends SettingsPreferenceFragment
                     if (pbapPermission != CachedBluetoothDevice.ACCESS_UNKNOWN)
                         continue;
                 }
+                if (profile instanceof MapProfile) {
+                    final int mapPermission = mCachedDevice.getMessagePermissionChoice();
+                    Log.d(TAG, "refreshProfiles: mapPermission = " + mapPermission);
+                    if (mapPermission != CachedBluetoothDevice.ACCESS_UNKNOWN)
+                        continue;
+                }
                 Log.d(TAG, "Removing " + profile.toString() + " from profile list");
                 mProfileContainer.removePreference(profilePref);
             }
