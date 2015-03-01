@@ -187,9 +187,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         } else {
             removePreference(KEY_AUTO_ROTATE);
         }
-        if (getResources().getBoolean(R.bool.hide_cast_screen)){
-            removePreference(KEY_CAST_SCREEN);
-        }
     }
 
     private static boolean allowAllRotations(Context context) {
