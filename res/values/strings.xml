@@ -396,6 +396,12 @@
     <!-- The title of the activity to pick a time zone. -->
     <string name="choose_timezone">Choose time zone</string>
 
+
+    <string name="default_date_format"><xliff:g id="default_date_format">MM/dd/yyyy</xliff:g></string>
+     <!-- The option in the date-format picker for using the normal format
+        called for by the user's locale. -->
+    <string name="normal_date_format">Regional (<xliff:g id="date" example="12-31-2009">%s</xliff:g>)</string>
+
     <!-- Label of preview text when tweaking font size -->
     <string name="display_preview_label">Preview:</string>
     <!-- Label for chosen font size -->
@@ -1485,9 +1491,9 @@
     <!-- Checkbox summary for option to toggle scan always available setting -->
     <string name="wifi_scan_always_available_summary">Let Google\'s location service and other apps scan for networks, even when Wi\u2011Fi is off</string>
     <!-- Checkbox title for option to connect to open Wi-Fi automatically [CHAR LIMIT=40] -->
-    <string name="wifi_automatically_connect_title">Use open Wi\u2011Fi automatically</string>
+    <string name="wifi_automatically_manage_title">Use open Wi\u2011Fi automatically</string>
     <!-- Checkbox summary for option to connect to open Wi-Fi automatically  [CHAR LIMIT=100] -->
-    <string name="wifi_automatically_connect_summary">Let a Wi\u2011Fi assistant automatically connect to open networks determined to be high quality</string>
+    <string name="wifi_automatically_manage_summary">Let a Wi\u2011Fi assistant automatically connect to open networks determined to be high quality</string>
     <!-- Dialog title for option to select an app which connects to open Wi-Fi automatically [CHAR LIMIT=40] -->
     <string name="wifi_select_assistant_dialog_title">Choose assistant</string>
     <!-- Preference title for option to install certificates -->
@@ -2585,6 +2591,8 @@
     <string name="master_clear_final_desc">Erase all your personal information and downloaded apps? You can\'t reverse this action!</string>
     <!-- SD card & phone storage settings screen, button on screen after user selects Reset phone button -->
     <string name="master_clear_final_button_text">Erase everything</string>
+    <!-- Message to draw an unlock pattern before clearing the device -->
+    <string name="master_clear_gesture_prompt">Draw your unlock pattern</string>
     <!-- Explanation of drawing unlock pattern to reset phone -->
     <string name="master_clear_gesture_explanation">You need to draw your unlock pattern to confirm a factory data reset.</string>
     <!-- Master clear failed message -->
@@ -5733,6 +5741,8 @@
     <string name="sim_editor_number">Number</string>
     <!-- Color label of Sim Editor.  [CHAR LIMIT=40] -->
     <string name="sim_editor_color">SIM color</string>
+    <!-- Display label numbers of Sim Editor.  [CHAR LIMIT=40] -->
+    <string name="sim_editor_num_format">Display numbers</string>
     <!-- Select label Title of Sim Editor.  [CHAR LIMIT=40] -->
     <string name="sim_card_select_title">Select SIM card</string>
     <!-- Orange label.  [CHAR LIMIT=40] -->

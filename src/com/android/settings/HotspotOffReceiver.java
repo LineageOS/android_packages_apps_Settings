@@ -16,10 +16,10 @@ public class HotspotOffReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         if (WifiManager.WIFI_AP_STATE_CHANGED_ACTION.equals(intent.getAction())) {
             WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
-            if (wifiManager.getWifiApState() == WifiManager.WIFI_AP_STATE_DISABLED) {
+            /*if (wifiManager.getWifiApState() == WifiManager.WIFI_AP_STATE_DISABLED) {
                 // The hotspot has been turned off, we don't need to recheck tethering.
                 TetherService.cancelRecheckAlarmIfNecessary(context, TetherSettings.WIFI_TETHERING);
-            }
+            }*/
         }
     }
 }

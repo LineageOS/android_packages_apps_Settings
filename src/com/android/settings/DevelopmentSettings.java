@@ -207,6 +207,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private SwitchPreference mBugreportInPower;
     private SwitchPreference mKeepScreenOn;
     private SwitchPreference mBtHciSnoopLog;
+    private SwitchPreference mQuickBoot;
     private SwitchPreference mEnableOemUnlock;
     private SwitchPreference mAllowMockLocation;
     private SwitchPreference mDebugViewAttributes;
@@ -405,6 +406,20 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         mAllPrefs.add(mProcessStats);
 
     }
+    private SwitchPreference findAndInitCheckboxPref(String key) {
+                SwitchPreference pref = (SwitchPreference) findPreference(key);
+        if (pref == null) {
+        throw new IllegalArgumentException("Cannot find preference with key = " + key);
+                          }
+        if (key == ENABLE_ADB &&
+        UsbManager.USB_FUNCTION_CHARGING.equals(mUsbManager.getDefaultFunction())) {
+        pref.setSummary(getResources().getString(R.string.enable_adb_summary_charging));
+        disableForUser(pref);
+                          }
+        mAllPrefs.add(pref);
+
+        return pref;
+     }
 
     private ListPreference addListPreference(String prefKey) {
         ListPreference pref = (ListPreference) findPreference(prefKey);
@@ -564,7 +579,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                 Settings.Secure.ALLOW_MOCK_LOCATION, 0) != 0);
         updateSwitchPreference(mDebugViewAttributes, Settings.Global.getInt(cr,
                 Settings.Global.DEBUG_VIEW_ATTRIBUTES, 0) != 0);
-        updateCheckBox(mQuickBoot, Settings.System.getInt(cr, ENABLE_QUICKBOOT, 0) != 0);
+        updateSwitchPreference(mQuickBoot, Settings.System.getInt(cr, ENABLE_QUICKBOOT, 0) != 0);
         updateHdcpValues();
         updatePasswordSummary();
         updateDebuggerOptions();

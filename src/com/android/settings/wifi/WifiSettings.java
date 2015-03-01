@@ -538,7 +538,9 @@ public class WifiSettings extends RestrictedSettingsFragment
                 if (mSelectedAccessPoint.networkId != INVALID_NETWORK_ID) {
                     menu.add(Menu.NONE, MENU_ID_FORGET, 0, R.string.wifi_menu_forget);
                     menu.add(Menu.NONE, MENU_ID_MODIFY, 0, R.string.wifi_menu_modify);
-                    if (mSelectedAccessPoint.security != AccessPoint.SECURITY_NONE) {
+                    NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(getActivity());
+                    if (nfcAdapter != null && nfcAdapter.isEnabled() &&
+                            mSelectedAccessPoint.security != AccessPoint.SECURITY_NONE) {
                         // Only allow writing of NFC tags for password-protected networks.
                         menu.add(Menu.NONE, MENU_ID_WRITE_NFC, 0, R.string.wifi_menu_write_to_nfc);
                     }
@@ -1045,7 +1047,7 @@ public class WifiSettings extends RestrictedSettingsFragment
 
     private void reconnect() {
         List<AccessPoint> availableNetworks = getOtherAvaiConfigNetwork( getActivity(),
-                mWifiManager, mLastInfo, mLastState);
+                mWifiManager, mLastInfo, mLastNetworkInfo);
         int highestPriority = 0;
         if (availableNetworks.size() != 0) {
             for (int index = 0; index < availableNetworks.size(); ++index) {
@@ -1068,15 +1070,15 @@ public class WifiSettings extends RestrictedSettingsFragment
     }
 
     private List<AccessPoint> getOtherAvaiConfigNetwork(Context context,
-            WifiManager wifiManager, WifiInfo lastInfo, DetailedState lastState) {
+            WifiManager wifiManager, WifiInfo lastInfo, NetworkInfo mLastNetworkInfo) {
         ArrayList<AccessPoint> accessPoints = new ArrayList<AccessPoint>();
 
         final List<WifiConfiguration> configs = wifiManager.getConfiguredNetworks();
         if (configs != null) {
             for (WifiConfiguration config : configs) {
                 AccessPoint accessPoint = new AccessPoint(context, config);
-                if (lastInfo != null && lastState != null) {
-                    accessPoint.update(lastInfo, lastState);
+                if (lastInfo != null && mLastNetworkInfo != null) {
+                    accessPoint.update(lastInfo, mLastNetworkInfo);
                 }
                 accessPoints.add(accessPoint);
             }

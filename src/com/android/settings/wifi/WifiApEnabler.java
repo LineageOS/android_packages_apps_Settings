@@ -83,8 +83,10 @@ public class WifiApEnabler {
     public WifiApEnabler(Context context, SwitchPreference switchPreference) {
         mContext = context;
         mSwitch = switchPreference;
-        mOriginalSummary = switchPreference.getSummary();
-        switchPreference.setPersistent(false);
+        mOriginalSummary = switchPreference != null ? switchPreference.getSummary() : "";
+        if (switchPreference != null) {
+            switchPreference.setPersistent(false);
+        }
         mWaitForWifiStateChange = false;
 
         mWifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);

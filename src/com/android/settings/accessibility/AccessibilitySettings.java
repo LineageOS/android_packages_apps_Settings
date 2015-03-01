@@ -193,9 +193,11 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
     // Preference controls.
     private PreferenceCategory mServicesCategory;
     private PreferenceCategory mSystemsCategory;
+    private SwitchPreference mQuickBootPreference;
 
     private SwitchPreference mToggleLargeTextPreference;
     private SwitchPreference mToggleHighTextContrastPreference;
+    private SwitchPreference mToggleLEDflashlightPreference;
     private SwitchPreference mTogglePowerButtonEndsCallPreference;
     private SwitchPreference mToggleLockScreenRotationPreference;
     private SwitchPreference mToggleSpeakPasswordPreference;
@@ -440,7 +442,7 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
         // LED flashlight.
         mLedFlashLightEnable = getResources().getBoolean(R.bool.def_led_flashlight_enable);
         mToggleLEDflashlightPreference =
-                (CheckBoxPreference) findPreference(TOGGLE_LED_FLASHLIGHT_PREFERENCE);
+                (SwitchPreference) findPreference(TOGGLE_LED_FLASHLIGHT_PREFERENCE);
         if (!mLedFlashLightEnable && mToggleLEDflashlightPreference != null) {
             mSystemsCategory.removePreference(mToggleLEDflashlightPreference);
         }
@@ -467,7 +469,7 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
         // Qucik boot.
         mQuickBootEnable = getResources().getBoolean(R.bool.def_quick_boot_enable);
         mQuickBootPreference =
-                (CheckBoxPreference) findPreference(TOGGLE_ENABLE_QUICKBOOT_PREFERENCE);
+                (SwitchPreference) findPreference(TOGGLE_ENABLE_QUICKBOOT_PREFERENCE);
         if (!mQuickBootEnable && mQuickBootPreference != null) {
             mSystemsCategory.removePreference(mQuickBootPreference);
         }

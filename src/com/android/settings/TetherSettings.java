@@ -113,10 +113,10 @@ public class TetherSettings extends SettingsPreferenceFragment
 
     private boolean mBluetoothEnableForTether;
     private Context mContext;
-    private static final int INVALID             = -1;
-    private static final int WIFI_TETHERING      = 0;
-    private static final int USB_TETHERING       = 1;
-    private static final int BLUETOOTH_TETHERING = 2;
+    public static final int INVALID             = -1;
+    public static final int WIFI_TETHERING      = 0;
+    public static final int USB_TETHERING       = 1;
+    public static final int BLUETOOTH_TETHERING = 2;
 
     /* One of INVALID, WIFI_TETHERING, USB_TETHERING or BLUETOOTH_TETHERING */
     private int mTetherChoice = INVALID;

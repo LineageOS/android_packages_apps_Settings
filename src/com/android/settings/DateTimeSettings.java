@@ -125,15 +125,9 @@ public class DateTimeSettings extends SettingsPreferenceFragment
 
         String [] dateFormats = getResources().getStringArray(R.array.date_format_values);
         String [] formattedDates = new String[dateFormats.length];
-        String currentFormat = getDateFormat();
-        // Initialize if DATE_FORMAT is not set in the system settings
-        // This can happen after a factory reset (or data wipe)
-        if (currentFormat == null) {
-            currentFormat = "";
-        }
 
         // Prevents duplicated values on date format selector.
-        mDummyDate.set(mDummyDate.get(Calendar.YEAR), mDummyDate.DECEMBER, 31, 13, 0, 0);
+/*        mDummyDate.set(mDummyDate.get(Calendar.YEAR), mDummyDate.DECEMBER, 31, 13, 0, 0);
 
         for (int i = 0; i < formattedDates.length; i++) {
             String formatted =
@@ -149,8 +143,7 @@ public class DateTimeSettings extends SettingsPreferenceFragment
         }
 
         mDateFormat.setEntries(formattedDates);
-        mDateFormat.setEntryValues(R.array.date_format_values);
-        mDateFormat.setValue(currentFormat);
+        mDateFormat.setEntryValues(R.array.date_format_values);*/
 
         mTimePref.setEnabled(!autoTimeEnabled);
         mDatePref.setEnabled(!autoTimeEnabled);

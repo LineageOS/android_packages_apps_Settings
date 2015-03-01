@@ -441,8 +441,8 @@ public class MSimStatus extends PreferenceActivity {
 
             //baseband is not related to DSDS, one phone has one base band.
             String basebandVersionSummery =
-                TelephonyManager.getTelephonyProperty("gsm.version.baseband",
-                        PhoneFactory.getDefaultSubscription(), null);
+                TelephonyManager.getTelephonyProperty(PhoneFactory.getDefaultSubscription(),
+                        "gsm.version.baseband", null);
             setSummaryText(KEY_BASEBAND_VERSION,basebandVersionSummery);
         }
     }
@@ -502,7 +502,7 @@ public class MSimStatus extends PreferenceActivity {
                 }
                 CellBroadcastMessage cbMessage = (CellBroadcastMessage) extras.get("message");
                 if (cbMessage != null && cbMessage.getServiceCategory() == 50) {
-                    long subId = cbMessage.getSubId();
+                    int subId = cbMessage.getSubId();
                     int phoneId = SubscriptionManager.getSlotId(subId);
                     String latestAreaInfo = cbMessage.getMessageBody();
                     updateAreaInfo(latestAreaInfo, phoneId);
@@ -512,7 +512,7 @@ public class MSimStatus extends PreferenceActivity {
     };
 
     private PhoneStateListener getPhoneStateListener(final int phoneId) {
-        long subId = SubscriptionManager.getSubId(phoneId)[0];
+        int subId = SubscriptionManager.getSubId(phoneId)[0];
         PhoneStateListener phoneStateListener = new PhoneStateListener(subId) {
             @Override
             public void onSignalStrengthsChanged(SignalStrength signalStrength) {
@@ -603,7 +603,7 @@ public class MSimStatus extends PreferenceActivity {
 
             String operatorName = null;
             if (/*FeatureQuery.FEATURE_SHOW_CARRIER_BY_MCCMNC*/false) {
-                String spn = mTelephonyManager.getDefault().getNetworkOperator(phoneId);
+                String spn = mTelephonyManager.getDefault().getNetworkOperatorForSubscription(phoneId);
                 operatorName = spn;
             } else {
                 operatorName = mServiceState[phoneId].getOperatorAlphaLong();
@@ -659,7 +659,7 @@ public class MSimStatus extends PreferenceActivity {
 
     private void updateNetworkType(int phoneId) {
         // Whether EDGE, UMTS, etc...
-        long[] subId = SubscriptionManager.getSubId(phoneId);
+        int[] subId = SubscriptionManager.getSubId(phoneId);
         int netwokType = mTelephonyManager.getNetworkType(subId[0]);
         if (TelephonyManager.NETWORK_TYPE_UNKNOWN != netwokType) {
             mNetworkSummary[phoneId] = getSimSummary(phoneId,

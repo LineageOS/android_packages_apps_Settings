@@ -31,6 +31,7 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.net.wifi.WpsInfo;
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
 import android.os.UserHandle;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -103,9 +104,9 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
     private static final int WPS_PBC_DIALOG_ID = 1;
     private static final int WPS_PIN_DIALOG_ID = 2;
 
-    CheckBoxPreference AutoPref;
+    CheckBoxPreference mAutoConnectionEnablePref;
     ListPreference mCellularToWlanPref;
-    CheckBoxPreference cell2wifiPref;
+    CheckBoxPreference mCellularToWlanHintPref;
     private AppListSwitchPreference mWifiAssistantPreference;
 
     private IntentFilter mFilter;
