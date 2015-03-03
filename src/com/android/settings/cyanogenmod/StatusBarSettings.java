@@ -25,6 +25,7 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
+import android.telephony.TelephonyManager;
 import android.text.format.DateFormat;
 import android.view.View;
 
@@ -47,6 +48,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private static final String STATUS_BAR_AM_PM = "status_bar_am_pm";
     private static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
     private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
+    private static final String STATUS_BAR_MSIM_HIDE_EMPTY_ICONS = "status_bar_show_unused_sims";
 
     private static final int STATUS_BAR_BATTERY_STYLE_HIDDEN = 4;
     private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 6;
@@ -54,6 +56,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private ListPreference mStatusBarClock;
     private ListPreference mStatusBarAmPm;
     private ListPreference mStatusBarBattery;
+    private SystemSettingSwitchPreference mStatusBarMsim;
     private ListPreference mStatusBarBatteryShowPercent;
 
     @Override
@@ -65,7 +68,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
 
         mStatusBarClock = (ListPreference) findPreference(STATUS_BAR_CLOCK_STYLE);
         mStatusBarAmPm = (ListPreference) findPreference(STATUS_BAR_AM_PM);
-
+        mStatusBarMsim = (SystemSettingSwitchPreference) findPreference(STATUS_BAR_MSIM_HIDE_EMPTY_ICONS);
         mStatusBarBattery = (ListPreference) findPreference(STATUS_BAR_BATTERY_STYLE);
         mStatusBarBatteryShowPercent =
                 (ListPreference) findPreference(STATUS_BAR_SHOW_BATTERY_PERCENT);
@@ -99,6 +102,13 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         mStatusBarBatteryShowPercent.setSummary(mStatusBarBatteryShowPercent.getEntry());
         enableStatusBarBatteryDependents(batteryStyle);
         mStatusBarBatteryShowPercent.setOnPreferenceChangeListener(this);
+
+        if (TelephonyManager.getDefault().getPhoneCount() > 1) {
+            mStatusBarMsim.setChecked((Settings.System.getInt(resolver,
+                    Settings.System.STATUS_BAR_MSIM_HIDE_EMPTY_ICONS, 0)) != 0);
+        } else {
+            removePreference(STATUS_BAR_MSIM_HIDE_EMPTY_ICONS);
+        }
     }
 
     @Override
@@ -145,6 +155,11 @@ public class StatusBarSettings extends SettingsPreferenceFragment
                     resolver, Settings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, batteryShowPercent);
             mStatusBarBatteryShowPercent.setSummary(
                     mStatusBarBatteryShowPercent.getEntries()[index]);
+            return true;
+        } else if (preference == mStatusBarMsim) {
+            Settings.Secure.putInt(resolver,
+                    Settings.System.STATUS_BAR_MSIM_HIDE_EMPTY_ICONS,
+                    mStatusBarMsim.isChecked() ? 1 : 0);
             return true;
         }
         return false;
