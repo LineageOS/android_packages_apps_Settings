@@ -25,6 +25,7 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
+import android.telephony.TelephonyManager;
 import android.text.format.DateFormat;
 import android.view.View;
 
@@ -65,7 +66,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment
 
         mStatusBarClock = (ListPreference) findPreference(STATUS_BAR_CLOCK_STYLE);
         mStatusBarAmPm = (ListPreference) findPreference(STATUS_BAR_AM_PM);
-
         mStatusBarBattery = (ListPreference) findPreference(STATUS_BAR_BATTERY_STYLE);
         mStatusBarBatteryShowPercent =
                 (ListPreference) findPreference(STATUS_BAR_SHOW_BATTERY_PERCENT);
@@ -99,6 +99,10 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         mStatusBarBatteryShowPercent.setSummary(mStatusBarBatteryShowPercent.getEntry());
         enableStatusBarBatteryDependents(batteryStyle);
         mStatusBarBatteryShowPercent.setOnPreferenceChangeListener(this);
+
+        if (TelephonyManager.getDefault().getPhoneCount() <= 1) {
+            removePreference(Settings.System.STATUS_BAR_MSIM_SHOW_EMPTY_ICONS);
+        }
     }
 
     @Override
