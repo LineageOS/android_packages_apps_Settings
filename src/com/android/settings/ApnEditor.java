@@ -394,7 +394,8 @@ public class ApnEditor extends PreferenceActivity
             }
             if (newValue != null && newValue.equals(oldValue) == false) {
                 if (values[mvnoIndex].equals("SPN")) {
-                    mMvnoMatchData.setText(mTelephonyManager.getSimOperatorName(mSubId));
+                    mMvnoMatchData.setText(
+                            mTelephonyManager.getSimOperatorNameForSubscription(mSubId));
                 } else if (values[mvnoIndex].equals("IMSI")) {
                     String numeric = mTelephonyManager.getSimOperator(mSubId);
                     mMvnoMatchData.setText(numeric + "x");
