@@ -47,6 +47,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private static final String STATUS_BAR_AM_PM = "status_bar_am_pm";
     private static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
     private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
+    private static final String STATUS_BAR_MSIM_TWEAKS="status_bar_show_unused_sims";
 
     private static final int STATUS_BAR_BATTERY_STYLE_HIDDEN = 4;
     private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 6;
@@ -54,6 +55,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private ListPreference mStatusBarClock;
     private ListPreference mStatusBarAmPm;
     private ListPreference mStatusBarBattery;
+    private ListPreference mStatusBarMsim;
     private ListPreference mStatusBarBatteryShowPercent;
 
     @Override
@@ -65,7 +67,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
 
         mStatusBarClock = (ListPreference) findPreference(STATUS_BAR_CLOCK_STYLE);
         mStatusBarAmPm = (ListPreference) findPreference(STATUS_BAR_AM_PM);
-
+        mStatusBarMsim = (ListPreference) findPreference(STATUS_BAR_MSIM_TWEAKS);
         mStatusBarBattery = (ListPreference) findPreference(STATUS_BAR_BATTERY_STYLE);
         mStatusBarBatteryShowPercent =
                 (ListPreference) findPreference(STATUS_BAR_SHOW_BATTERY_PERCENT);
@@ -99,6 +101,11 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         mStatusBarBatteryShowPercent.setSummary(mStatusBarBatteryShowPercent.getEntry());
         enableStatusBarBatteryDependents(batteryStyle);
         mStatusBarBatteryShowPercent.setOnPreferenceChangeListener(this);
+
+        int msimShowUnusedIcons= Settings.System.getInt(resolver,STATUS_BAR_MSIM_TWEAKS,1);
+        mStatusBarMsim.setValue(String.valueOf(msimShowUnusedIcons));
+        mStatusBarMsim.setSummary(mStatusBarMsim.getEntry());
+        mStatusBarMsim.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -145,6 +152,14 @@ public class StatusBarSettings extends SettingsPreferenceFragment
                     resolver, Settings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, batteryShowPercent);
             mStatusBarBatteryShowPercent.setSummary(
                     mStatusBarBatteryShowPercent.getEntries()[index]);
+            return true;
+        } else if(preference==mStatusBarMsim){
+            int msimShowSim = Integer.valueOf((String) newValue);
+            int index = mStatusBarMsim.findIndexOfValue((String) newValue);
+            Settings.System.putInt(
+                    resolver, Settings.System.STATUS_BAR_MSIM_TWEAKS, msimShowSim);
+            mStatusBarMsim.setSummary(
+                    mStatusBarMsim.getEntries()[index]);
             return true;
         }
         return false;

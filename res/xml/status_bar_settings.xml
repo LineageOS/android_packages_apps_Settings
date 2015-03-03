@@ -46,6 +46,13 @@
         android:entries="@array/status_bar_battery_percentage_entries"
         android:entryValues="@array/status_bar_battery_percentage_values" />
 
+    <ListPreference
+        android:key="status_bar_show_unused_sims"
+        android:title="@string/status_bar_show_unused_sims_title"
+        android:dialogTitle="@string/status_bar_show_unused_sims_title"
+        android:entries="@array/status_bar_show_unused_sims_entries"
+        android:entryValues="@array/status_bar_show_unused_sims_values"/>
+
     <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
         android:key="status_bar_brightness_control"
         android:title="@string/status_bar_toggle_brightness"
