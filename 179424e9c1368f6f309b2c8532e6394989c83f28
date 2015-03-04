@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ad45d7e_09fe406b",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 17
+      },
+      "lineNbr": 1093,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-04T23:29:38Z",
+      "side": 1,
+      "message": "See previous comment of Abhisek about \u0027... without degradation\u0027",
+      "revId": "179424e9c1368f6f309b2c8532e6394989c83f28",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad45d7e_89db501b",
+        "filename": "src/com/android/settings/livedisplay/DisplayTemperature.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-04T23:29:38Z",
+      "side": 1,
+      "message": "See comment in LiveDisplay.java.",
+      "revId": "179424e9c1368f6f309b2c8532e6394989c83f28",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad45d7e_69d89c1e",
+        "filename": "src/com/android/settings/livedisplay/DisplayTemperature.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-04T23:29:38Z",
+      "side": 1,
+      "message": "Whitespace",
+      "revId": "179424e9c1368f6f309b2c8532e6394989c83f28",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad45d7e_a908d492",
+        "filename": "src/com/android/settings/livedisplay/DisplayTemperature.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-04T23:29:38Z",
+      "side": 1,
+      "message": "String resource for this, please.",
+      "revId": "179424e9c1368f6f309b2c8532e6394989c83f28",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad45d7e_c9038875",
+        "filename": "src/com/android/settings/livedisplay/DisplayTemperature.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-04T23:29:38Z",
+      "side": 1,
+      "message": "Whitespace",
+      "revId": "179424e9c1368f6f309b2c8532e6394989c83f28",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad45d7e_29c7c446",
+        "filename": "src/com/android/settings/livedisplay/LiveDisplay.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-04T23:29:38Z",
+      "side": 1,
+      "message": "Please order the imports properly:\n- first android.*\n- then com.*\n- then org.*\n- then java.*\n\nAnd all of that alphabetically ;)",
+      "revId": "179424e9c1368f6f309b2c8532e6394989c83f28",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad45d7e_89c4f040",
+        "filename": "src/com/android/settings/livedisplay/LiveDisplay.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-04T23:29:38Z",
+      "side": 1,
+      "message": "100 chars",
+      "revId": "179424e9c1368f6f309b2c8532e6394989c83f28",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad45d7e_a9e1f4d2",
+        "filename": "src/com/android/settings/livedisplay/LiveDisplay.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-04T23:29:38Z",
+      "side": 1,
+      "message": "This might be more elegant: http://stackoverflow.com/questions/3282390/add-floating-point-value-to-android-resources-values\n\n(one could do a utility method for this: float Utils.getFloatFromResources(Resources res, int id))\n\n(also might consider doing a \u0027final Resources res \u003d getResources();\u0027 looking at how often it\u0027s used)\n\nThinking about it, though: Why is this stored as a float at all? All summaries etc. treat it as an int.",
+      "revId": "179424e9c1368f6f309b2c8532e6394989c83f28",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad45d7e_e9ebecae",
+        "filename": "src/com/android/settings/livedisplay/LiveDisplay.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-04T23:29:38Z",
+      "side": 1,
+      "message": "Please put the format into a string resource, e.g. like this:\n\n\u003cstring name\u003d\"live_display_color_temperature_summary\"\u003eDay: \u003cxliff:g id\u003d\"day_temperature\u003e%1$d\u003c/xliff:g\u003eK, night: \u003cxliff:g id\u003d\"night_temperature\"\u003e%2$d\u003c/xliff:g\u003eK\u003c/string\u003e\n\nand then use getString(R.string.live_display_color_temperature_summary, (int) day, (int) night);",
+      "revId": "179424e9c1368f6f309b2c8532e6394989c83f28",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad45d7e_49d158fb",
+        "filename": "src/com/android/settings/livedisplay/LiveDisplay.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-04T23:29:38Z",
+      "side": 1,
+      "message": "Trailing whitespace",
+      "revId": "179424e9c1368f6f309b2c8532e6394989c83f28",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad45d7e_29cea45a",
+        "filename": "src/com/android/settings/livedisplay/LiveDisplay.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-04T23:29:38Z",
+      "side": 1,
+      "message": "Whitespace",
+      "revId": "179424e9c1368f6f309b2c8532e6394989c83f28",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
