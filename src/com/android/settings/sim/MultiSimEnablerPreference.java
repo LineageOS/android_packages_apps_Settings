@@ -250,8 +250,7 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
         SubscriptionController subController = SubscriptionController.getInstance();
         if (subInfoLists != null) {
             for (SubscriptionInfo subInfo : subInfoLists) {
-                if (subController.getSubState(subInfo.getSubscriptionId())
-                        == SubscriptionManager.ACTIVE) activeSubInfoCount++;
+                if (subInfo.getStatus() == SubscriptionManager.ACTIVE) activeSubInfoCount++;
             }
         }
         return activeSubInfoCount;
