@@ -74,6 +74,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_DOZE = "doze";
     private static final String KEY_AUTO_BRIGHTNESS = "auto_brightness";
     private static final String KEY_AUTO_ROTATE = "auto_rotate";
+    private static final String KEY_CAST_SCREEN = "wifi_display";
 
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
@@ -185,6 +186,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             });
         } else {
             removePreference(KEY_AUTO_ROTATE);
+        }
+        if (getResources().getBoolean(R.bool.hide_cast_screen)){
+            removePreference(KEY_CAST_SCREEN);
         }
     }
 
