@@ -103,6 +103,7 @@ public class Lte4GEnabler {
                 || type == Phone.NT_MODE_LTE_CDMA_EVDO_GSM_WCDMA
                 || type == Phone.NT_MODE_LTE_GSM_WCDMA
                 || type == Phone.NT_MODE_LTE_CDMA_AND_EVDO
+                || type == Phone.NT_MODE_LTE_CDMA_EVDO_GSM
                 ) {
             isLTEMode = true;
         } else {
