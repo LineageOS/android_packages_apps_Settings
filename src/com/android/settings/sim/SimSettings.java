@@ -573,6 +573,8 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         }
 
         public void createEditDialog(SimPreference simPref) {
+            final Resources res = getResources();
+
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
             final View dialogLayout = getActivity().getLayoutInflater().inflate(
@@ -586,9 +588,10 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             numberView.setText(mSubscriptionInfo.getNumber());
 
             TextView carrierView = (TextView)dialogLayout.findViewById(R.id.carrier);
-            carrierView.setText(mSubscriptionInfo.getDisplayName());
+            carrierView.setText(mSubscriptionInfo.getCarrierName());
 
-            builder.setTitle(R.string.sim_editor_title);
+             builder.setTitle(String.format(res.getString(R.string.sim_editor_title),
+                    (mSlotId)));
 
             builder.setPositiveButton(R.string.okay, new DialogInterface.OnClickListener() {
                 @Override
