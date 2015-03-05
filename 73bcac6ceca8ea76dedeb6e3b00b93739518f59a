@@ -19,6 +19,57 @@
     },
     {
       "key": {
+        "uuid": "9ad45d7e_9a76ec3c",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-05T23:22:56Z",
+      "side": 1,
+      "message": "\u0027Show empty SIM icons\u0027\n\n(note the logic inversion - it\u0027s easier to grasp the meaning of a switch if it _enables_ something)",
+      "revId": "73bcac6ceca8ea76dedeb6e3b00b93739518f59a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad45d7e_7a73384e",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-05T23:22:56Z",
+      "side": 1,
+      "message": "This should - IMHO be done as an on/off summary:\n\n\u0027Indicate unused SIM slots\u0027\n\u0027Hide icons of unused SIM slots\u0027",
+      "revId": "73bcac6ceca8ea76dedeb6e3b00b93739518f59a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad45d7e_da8ea426",
+        "filename": "res/xml/status_bar_settings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-05T23:22:56Z",
+      "side": 1,
+      "message": "Make this a SystemSettingSwitchPreference. There\u0027s no need for a list here, given it\u0027s only a toggle.",
+      "revId": "73bcac6ceca8ea76dedeb6e3b00b93739518f59a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ad45d7e_da87c410",
         "filename": "src/com/android/settings/cyanogenmod/StatusBarSettings.java",
         "patchSetId": 3
@@ -30,6 +81,58 @@
       "writtenOn": "2015-03-05T23:04:22Z",
       "side": 1,
       "message": "Add spaces before and after \u0027\u003d\u0027",
+      "revId": "73bcac6ceca8ea76dedeb6e3b00b93739518f59a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad45d7e_fa860812",
+        "filename": "src/com/android/settings/cyanogenmod/StatusBarSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-05T23:22:56Z",
+      "side": 1,
+      "message": "Also the variable name is off. I\u0027d suggest something like STTAUS_BAR_MSIM_HIDE_EMPTY_ICONS",
+      "parentUuid": "9ad45d7e_da87c410",
+      "revId": "73bcac6ceca8ea76dedeb6e3b00b93739518f59a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad45d7e_1a82fc00",
+        "filename": "src/com/android/settings/cyanogenmod/StatusBarSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-05T23:22:56Z",
+      "side": 1,
+      "message": "No need to store this in a member variable, it\u0027s only used once.",
+      "revId": "73bcac6ceca8ea76dedeb6e3b00b93739518f59a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad45d7e_5a7c7420",
+        "filename": "src/com/android/settings/cyanogenmod/StatusBarSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-05T23:22:56Z",
+      "side": 1,
+      "message": "There ought to be a Settings.System constant for the key.",
       "revId": "73bcac6ceca8ea76dedeb6e3b00b93739518f59a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
