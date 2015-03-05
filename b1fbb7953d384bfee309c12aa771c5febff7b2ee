@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ad45d7e_7aaa1872",
+        "filename": "res/layout/display_temperature.xml",
+        "patchSetId": 22
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-05T23:31:11Z",
+      "side": 1,
+      "message": "If using integers for the temperatures (see other comment), one could use a normal SeekBar here.",
+      "revId": "b1fbb7953d384bfee309c12aa771c5febff7b2ee",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad45d7e_9aad4c8b",
+        "filename": "res/layout/display_temperature.xml",
+        "patchSetId": 22
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-05T23:31:11Z",
+      "side": 1,
+      "message": "Maybe shrink the range a bit? 12000K seems a little high.",
+      "revId": "b1fbb7953d384bfee309c12aa771c5febff7b2ee",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad45d7e_3aa0a090",
+        "filename": "src/com/android/settings/livedisplay/LiveDisplay.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-05T23:31:11Z",
+      "side": 1,
+      "message": "This should go to line 40.",
+      "revId": "b1fbb7953d384bfee309c12aa771c5febff7b2ee",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad45d7e_5aa3d49e",
+        "filename": "src/com/android/settings/livedisplay/LiveDisplay.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-05T23:31:11Z",
+      "side": 1,
+      "message": "Following up on my earlier question: Why do those need to be floats? Does it really matter whether the user chooses 3500.1K or 3500.5K, especially given the huge slider range?",
+      "revId": "b1fbb7953d384bfee309c12aa771c5febff7b2ee",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
