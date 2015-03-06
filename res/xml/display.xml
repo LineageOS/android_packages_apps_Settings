@@ -140,11 +140,26 @@
                 android:summary="@string/summary_font_size"
                 android:dialogTitle="@string/dialog_title_font_size" />
 
+    </PreferenceCategory>
+
+    <PreferenceCategory
+            android:key="recents"
+            android:title="@string/category_recents"
+            settings:advanced="true">
+
         <!-- Search in Recents -->
         <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
                 android:key="recents_show_search_bar"
                 android:title="@string/recents_show_searchbar"
                 settings:keywords="@string/keywords_recents_show_searchbar"
+                android:defaultValue="true"
+                settings:advanced="true" />
+
+        <!-- Clear in Recents -->
+        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+                android:key="recents_show_clear_button"
+                android:title="@string/recents_show_clear"
+                settings:keywords="@string/keywords_recents_show_clear"
                 android:defaultValue="true"
                 settings:advanced="true" />
 
