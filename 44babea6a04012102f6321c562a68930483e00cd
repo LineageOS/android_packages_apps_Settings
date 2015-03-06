@@ -52,6 +52,24 @@
       "revId": "44babea6a04012102f6321c562a68930483e00cd",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad45d7e_f9bbb573",
+        "filename": "src/com/android/settings/livedisplay/DisplayGamma.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 10094
+      },
+      "writtenOn": "2015-03-06T23:39:24Z",
+      "side": 1,
+      "message": "The DisplayGamma API was written specifically to the original use of it in this class.  They would persist the value as a string in shared preferences, then send that string directly to the API.  It was up to DisplayGamma implementations to do the parsing...\n\nNow, the API accepts int arrays, so it\u0027s up to this app to parse it\u0027s own persisted string.",
+      "parentUuid": "9ad45d7e_b993fdf9",
+      "revId": "44babea6a04012102f6321c562a68930483e00cd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
