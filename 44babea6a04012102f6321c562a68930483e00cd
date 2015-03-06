@@ -124,6 +124,24 @@
       "revId": "44babea6a04012102f6321c562a68930483e00cd",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad45d7e_f9629515",
+        "filename": "src/com/android/settings/livedisplay/DisplayGamma.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-06T23:52:30Z",
+      "side": 1,
+      "message": "If I understand properly, the _actual_ problem is that the DisplayGammaCalibration classes might expect the string with []. Is that correct?\n\nIf yes, I\u0027d rather define the string more properly (as being a space delimited list of ints) and fix the classes that don\u0027t conform to that.",
+      "parentUuid": "9ad45d7e_b9aadd17",
+      "revId": "44babea6a04012102f6321c562a68930483e00cd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
