@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "9ad45d7e_5979212f",
+        "filename": "src/com/android/settings/DeviceInfoSettings.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 9813
+      },
+      "writtenOn": "2015-03-06T17:18:17Z",
+      "side": 1,
+      "message": "Its actually just referencing the wrong boolean resource. R.bool.config_default_advanced_mode_enabled is unused since there\u0027s a fwb overlay.\n\nThis patch is just derped atm",
+      "parentUuid": "9ad45d7e_1987a910",
+      "revId": "a9eda1c3ec8c922e3cf746f809a212a91f2bb30c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ad45d7e_39826d01",
         "filename": "src/com/android/settings/DeviceInfoSettings.java",
         "patchSetId": 6
