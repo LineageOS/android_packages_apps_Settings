@@ -51,14 +51,13 @@
             android:switchTextOn=""
             android:persistent="false" />
 
-    <!-- Vibrate on touch -->
+    <!-- Volume adjust sound -->
     <SwitchPreference
             android:key="volume_adjust_sounds"
             android:title="@string/volume_adjust_sounds_title"
             android:switchTextOff=""
             android:switchTextOn=""
             android:persistent="false" />
-
 
     <!-- Dock speaker plays -->
     <com.android.settings.notification.DropDownPreference
@@ -73,7 +72,8 @@
             android:persistent="false" />
 
     <PreferenceCategory
-            android:title="@string/power_notifications_category_title">
+            android:title="@string/power_notifications_category_title"
+            android:key="power_notifications_category">
 
         <SwitchPreference
                 android:key="power_notifications"
