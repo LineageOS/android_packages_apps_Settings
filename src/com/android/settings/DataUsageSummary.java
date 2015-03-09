@@ -1366,8 +1366,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
         final Context context = getActivity();
         if (hasReadyMobileRadio(context)) {
             final TelephonyManager tele = TelephonyManager.from(context);
-			return false;
-            //return mPolicyEditor.isMobilePolicySplit(getActiveSubscriberId(context));
+            return mPolicyEditor.isMobilePolicySplit(getActiveSubscriberId(context));
         } else {
             return false;
         }
@@ -1378,7 +1377,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
         final Context context = getActivity();
         if (hasReadyMobileRadio(context)) {
             final TelephonyManager tele = TelephonyManager.from(context);
-            //mPolicyEditor.setMobilePolicySplit(getActiveSubscriberId(context), split);
+            mPolicyEditor.setMobilePolicySplit(getActiveSubscriberId(context), split);
         }
     }
 

@@ -74,6 +74,7 @@ public class DateTimeSettings extends SettingsPreferenceFragment
     private SwitchPreference mAutoTimeZonePref;
     private Preference mTimeZone;
     private Preference mDatePref;
+    private ListPreference mDateFormat;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -127,7 +128,7 @@ public class DateTimeSettings extends SettingsPreferenceFragment
         String [] formattedDates = new String[dateFormats.length];
 
         // Prevents duplicated values on date format selector.
-/*        mDummyDate.set(mDummyDate.get(Calendar.YEAR), mDummyDate.DECEMBER, 31, 13, 0, 0);
+        mDummyDate.set(mDummyDate.get(Calendar.YEAR), mDummyDate.DECEMBER, 31, 13, 0, 0);
 
         for (int i = 0; i < formattedDates.length; i++) {
             String formatted =
@@ -143,7 +144,7 @@ public class DateTimeSettings extends SettingsPreferenceFragment
         }
 
         mDateFormat.setEntries(formattedDates);
-        mDateFormat.setEntryValues(R.array.date_format_values);*/
+        mDateFormat.setEntryValues(R.array.date_format_values);
 
         mTimePref.setEnabled(!autoTimeEnabled);
         mDatePref.setEnabled(!autoTimeEnabled);
