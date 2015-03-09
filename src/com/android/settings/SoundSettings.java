@@ -115,12 +115,9 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
         mPM = mContext.getPackageManager();
         mVoiceCapable = Utils.isVoiceCapable(mContext);
 
-        mVibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
-        if (mVibrator != null && !mVibrator.hasVibrator()) {
-            mVibrator = null;
-        }
-
         addPreferencesFromResource(R.xml.sounds);
+
+        final PreferenceScreen prefScreen = getPreferenceScreen();
 
         final PreferenceCategory volumes = (PreferenceCategory) findPreference(KEY_VOLUMES);
         final PreferenceCategory sounds = (PreferenceCategory) findPreference(KEY_SOUND);
@@ -136,6 +133,12 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
         } else {
             volumes.removePreference(volumes.findPreference(KEY_RING_VOLUME));
             volumes.removePreference(volumes.findPreference(KEY_VOLUME_LINK_NOTIFICATION));
+        }
+
+        mVibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
+        if (mVibrator == null || !mVibrator.hasVibrator()) {
+            mVibrator = null;
+            prefScreen.removePreference(vibrate);
         }
 
         CmHardwareManager cmHardwareManager =
