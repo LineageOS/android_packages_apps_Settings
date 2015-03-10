@@ -19,13 +19,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
-    android:orientation="vertical"
     android:paddingStart="4dp"
     android:paddingEnd="4dp"
-    android:paddingTop="16dp" >
+    android:paddingTop="16dp"
+    android:minWidth="96dp"
+    android:orientation="vertical">
 
     <FrameLayout
-        android:layout_width="96dp"
+        android:layout_width="match_parent"
         android:layout_height="96dp"
         android:background="@drawable/transparency_tileable" >
 
@@ -37,10 +38,16 @@
             android:text="@string/captioning_preview_characters" />
     </FrameLayout>
 
+    <!-- HACK: GridView doesn't perform layout properly in this configuration,
+         so we need to manually set the height to roughly two scaled lines. -->
     <TextView
         android:id="@+id/summary"
-        android:layout_width="96dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center" />
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:minLines="2"
+        android:gravity="top|center_horizontal"
+        android:textAppearance="@android:style/TextAppearance.Material.Body1" />
 
 </LinearLayout>

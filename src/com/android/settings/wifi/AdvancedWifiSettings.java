@@ -31,7 +31,7 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.net.wifi.WpsInfo;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
+import android.os.UserHandle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
@@ -46,6 +46,7 @@ import android.util.Log;
 import android.widget.Toast;
 import android.app.Dialog;
 
+import com.android.settings.AppListSwitchPreference;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
@@ -102,9 +103,10 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
     private static final int WPS_PBC_DIALOG_ID = 1;
     private static final int WPS_PIN_DIALOG_ID = 2;
 
-    CheckBoxPreference mAutoConnectionEnablePref;
+    CheckBoxPreference AutoPref;
     ListPreference mCellularToWlanPref;
-    CheckBoxPreference mCellularToWlanHintPref;
+    CheckBoxPreference cell2wifiPref;
+    private AppListSwitchPreference mWifiAssistantPreference;
 
     private IntentFilter mFilter;
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
@@ -180,18 +182,14 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
         pref.setIntent(intent);
 
         final Context context = getActivity();
-        NetworkScorerAppData scorer = WifiSettings.getWifiAssistantApp(context);
-        SwitchPreference wifiAssistant = (SwitchPreference)findPreference(KEY_WIFI_ASSISTANT);
-        if (scorer != null) {
-            final boolean checked = NetworkScorerAppManager.getActiveScorer(context) != null;
-            wifiAssistant.setSummary(getResources().getString(
-                    R.string.wifi_automatically_manage_summary, scorer.mScorerName));
-            wifiAssistant.setOnPreferenceChangeListener(this);
-            wifiAssistant.setChecked(checked);
-        } else {
-            if (wifiAssistant != null) {
-                getPreferenceScreen().removePreference(wifiAssistant);
-            }
+        mWifiAssistantPreference = (AppListSwitchPreference) findPreference(KEY_WIFI_ASSISTANT);
+        Collection<NetworkScorerAppData> scorers =
+                NetworkScorerAppManager.getAllValidScorers(context);
+        if (UserHandle.myUserId() == UserHandle.USER_OWNER && !scorers.isEmpty()) {
+            mWifiAssistantPreference.setOnPreferenceChangeListener(this);
+            initWifiAssistantPreference(scorers);
+        } else if (mWifiAssistantPreference != null) {
+            getPreferenceScreen().removePreference(mWifiAssistantPreference);
         }
 
         Intent wifiDirectIntent = new Intent(context,
@@ -364,6 +362,18 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
         }
     }
 
+    private void initWifiAssistantPreference(Collection<NetworkScorerAppData> scorers) {
+        int count = scorers.size();
+        String[] packageNames = new String[count];
+        int i = 0;
+        for (NetworkScorerAppData scorer : scorers) {
+            packageNames[i] = scorer.mPackageName;
+            i++;
+        }
+        mWifiAssistantPreference.setPackageNames(packageNames,
+                mNetworkScoreManager.getActiveScorerPackage());
+    }
+
     private void updateSleepPolicySummary(Preference sleepPolicyPref, String value) {
         if (value != null) {
             String[] values = getResources().getStringArray(R.array.wifi_sleep_policy_values);
@@ -428,12 +438,13 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
                 return false;
             }
         } else if (KEY_WIFI_ASSISTANT.equals(key)) {
-            if (((Boolean)newValue).booleanValue() == false) {
+            NetworkScorerAppData wifiAssistant =
+                    NetworkScorerAppManager.getScorer(context, (String) newValue);
+            if (wifiAssistant == null) {
                 mNetworkScoreManager.setActiveScorer(null);
                 return true;
             }
 
-            NetworkScorerAppData wifiAssistant = WifiSettings.getWifiAssistantApp(context);
             Intent intent = new Intent();
             if (wifiAssistant.mConfigurationActivityClassName != null) {
                 // App has a custom configuration activity; launch that.
@@ -449,6 +460,9 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
             }
 
             startActivity(intent);
+            // Don't update the preference widget state until the child activity returns.
+            // It will be updated in onResume after the activity finishes.
+            return false;
         }
 
         if (KEY_SLEEP_POLICY.equals(key)) {

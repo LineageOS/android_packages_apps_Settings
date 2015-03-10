@@ -25,18 +25,23 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.location.SettingInjectorService;
+import android.os.Binder;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
+import android.os.UserHandle;
+import android.os.UserManager;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.util.Log;
 import android.widget.Switch;
 
 import com.android.settings.R;
 import com.android.settings.SettingsActivity;
+import com.android.settings.Utils;
 import com.android.settings.widget.SwitchBar;
 
 import java.io.File;
@@ -55,6 +60,17 @@ public class LocationSettings extends LocationSettingsBase
 
     private static final String TAG = "LocationSettings";
 
+    /**
+     * Key for managed profile location preference category. Category is shown only
+     * if there is a managed profile
+     */
+    private static final String KEY_MANAGED_PROFILE_CATEGORY = "managed_profile_location_category";
+    /**
+     * Key for managed profile location preference. Note it used to be a switch pref and we had to
+     * keep the key as strings had been submitted for string freeze before the decision to
+     * demote this to a simple preference was made. TODO: Candidate for refactoring.
+     */
+    private static final String KEY_MANAGED_PROFILE_PREFERENCE = "managed_profile_location_switch";
     /** Key for preference screen "Mode" */
     private static final String KEY_LOCATION_MODE = "location_mode";
     /** Key for preference category "Recent location requests" */
@@ -68,11 +84,14 @@ public class LocationSettings extends LocationSettingsBase
 
     private Switch mSwitch;
     private boolean mValidListener = false;
+    private UserHandle mManagedProfile;
+    private Preference mManagedProfilePreference;
     private Preference mLocationMode;
     private PreferenceCategory mCategoryRecentLocationRequests;
     /** Receives UPDATE_INTENT  */
     private BroadcastReceiver mReceiver;
     private SettingsInjector injector;
+    private UserManager mUm;
 
     private CheckBoxPreference mAssistedGps;
     private Preference mAGpsParas;
@@ -103,6 +122,7 @@ public class LocationSettings extends LocationSettingsBase
         super.onActivityCreated(savedInstanceState);
 
         final SettingsActivity activity = (SettingsActivity) getActivity();
+        mUm = (UserManager) activity.getSystemService(Context.USER_SERVICE);
 
         mSwitchBar = activity.getSwitchBar();
         mSwitch = mSwitchBar.getSwitch();
@@ -164,6 +184,7 @@ public class LocationSettings extends LocationSettingsBase
         addPreferencesFromResource(R.xml.location_settings);
         root = getPreferenceScreen();
 
+        setupManagedProfileCategory(root);
         mLocationMode = root.findPreference(KEY_LOCATION_MODE);
         mLocationMode.setOnPreferenceClickListener(
                 new Preference.OnPreferenceClickListener() {
@@ -206,7 +227,15 @@ public class LocationSettings extends LocationSettingsBase
             mCategoryRecentLocationRequests.addPreference(banner);
         }
 
-        addLocationServices(activity, root);
+        boolean lockdownOnLocationAccess = false;
+        // Checking if device policy has put a location access lock-down on the managed
+        // profile. If managed profile has lock-down on location access then its
+        // injected location services must not be shown.
+        if (mManagedProfile != null
+                && mUm.hasUserRestriction(UserManager.DISALLOW_SHARE_LOCATION, mManagedProfile)) {
+            lockdownOnLocationAccess = true;
+        }
+        addLocationServices(activity, root, lockdownOnLocationAccess);
 
         refreshLocationMode();
         return root;
@@ -252,6 +281,27 @@ public class LocationSettings extends LocationSettingsBase
 
         return true;
     }
+    private void setupManagedProfileCategory(PreferenceScreen root) {
+        // Looking for a managed profile. If there are no managed profiles then we are removing the
+        // managed profile category.
+        mManagedProfile = Utils.getManagedProfile(mUm);
+        if (mManagedProfile == null) {
+            // There is no managed profile
+            root.removePreference(root.findPreference(KEY_MANAGED_PROFILE_CATEGORY));
+            mManagedProfilePreference = null;
+        } else {
+            mManagedProfilePreference = root.findPreference(KEY_MANAGED_PROFILE_PREFERENCE);
+            mManagedProfilePreference.setOnPreferenceClickListener(null);
+        }
+    }
+
+    private void changeManagedProfileLocationAccessStatus(boolean enabled, int summaryResId) {
+        if (mManagedProfilePreference == null) {
+            return;
+        }
+        mManagedProfilePreference.setEnabled(enabled);
+        mManagedProfilePreference.setSummary(summaryResId);
+    }
 
     /**
      * Add the settings injected by external apps into the "App Settings" category. Hides the
@@ -260,11 +310,15 @@ public class LocationSettings extends LocationSettingsBase
      * Reloads the settings whenever receives
      * {@link SettingInjectorService#ACTION_INJECTED_SETTING_CHANGED}.
      */
-    private void addLocationServices(Context context, PreferenceScreen root) {
+    private void addLocationServices(Context context, PreferenceScreen root,
+            boolean lockdownOnLocationAccess) {
         PreferenceCategory categoryLocationServices =
                 (PreferenceCategory) root.findPreference(KEY_LOCATION_SERVICES);
         injector = new SettingsInjector(context);
-        List<Preference> locationServices = injector.getInjectedSettings();
+        // If location access is locked down by device policy then we only show injected settings
+        // for the primary profile.
+        List<Preference> locationServices = injector.getInjectedSettings(lockdownOnLocationAccess ?
+                UserHandle.myUserId() : UserHandle.USER_CURRENT);
 
         mReceiver = new BroadcastReceiver() {
             @Override
@@ -315,7 +369,7 @@ public class LocationSettings extends LocationSettingsBase
         // Restricted user can't change the location mode, so disable the master switch. But in some
         // corner cases, the location might still be enabled. In such case the master switch should
         // be disabled but checked.
-        boolean enabled = (mode != android.provider.Settings.Secure.LOCATION_MODE_OFF);
+        final boolean enabled = (mode != android.provider.Settings.Secure.LOCATION_MODE_OFF);
         // Disable the whole switch bar instead of the switch itself. If we disabled the switch
         // only, it would be re-enabled again if the switch bar is not disabled.
         mSwitchBar.setEnabled(!restricted);
@@ -332,6 +386,20 @@ public class LocationSettings extends LocationSettingsBase
                 mSwitchBar.addOnSwitchChangeListener(this);
             }
         }
+
+        if (mManagedProfilePreference != null) {
+            if (mUm.hasUserRestriction(UserManager.DISALLOW_SHARE_LOCATION, mManagedProfile)) {
+                changeManagedProfileLocationAccessStatus(false,
+                        R.string.managed_profile_location_switch_lockdown);
+            } else {
+                if (enabled) {
+                    changeManagedProfileLocationAccessStatus(true, R.string.switch_on_text);
+                } else {
+                    changeManagedProfileLocationAccessStatus(false, R.string.switch_off_text);
+                }
+            }
+        }
+
         // As a safety measure, also reloads on location mode change to ensure the settings are
         // up-to-date even if an affected app doesn't send the setting changed broadcast.
         injector.reloadStatusMessages();

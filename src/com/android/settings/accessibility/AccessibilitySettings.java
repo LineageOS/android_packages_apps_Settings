@@ -31,7 +31,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.RemoteException;
 import android.os.UserHandle;
-import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
@@ -195,13 +194,11 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
     private PreferenceCategory mServicesCategory;
     private PreferenceCategory mSystemsCategory;
 
-    private CheckBoxPreference mQuickBootPreference;
-    private CheckBoxPreference mToggleLargeTextPreference;
-    private CheckBoxPreference mToggleLEDflashlightPreference;
-    private CheckBoxPreference mToggleHighTextContrastPreference;
-    private CheckBoxPreference mTogglePowerButtonEndsCallPreference;
-    private CheckBoxPreference mToggleLockScreenRotationPreference;
-    private CheckBoxPreference mToggleSpeakPasswordPreference;
+    private SwitchPreference mToggleLargeTextPreference;
+    private SwitchPreference mToggleHighTextContrastPreference;
+    private SwitchPreference mTogglePowerButtonEndsCallPreference;
+    private SwitchPreference mToggleLockScreenRotationPreference;
+    private SwitchPreference mToggleSpeakPasswordPreference;
     private ListPreference mSelectLongPressTimeoutPreference;
     private Preference mNoServicesMessagePreference;
     private PreferenceScreen mCaptioningPreferenceScreen;
@@ -430,11 +427,11 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
 
         // Large text.
         mToggleLargeTextPreference =
-                (CheckBoxPreference) findPreference(TOGGLE_LARGE_TEXT_PREFERENCE);
+                (SwitchPreference) findPreference(TOGGLE_LARGE_TEXT_PREFERENCE);
 
         // Text contrast.
         mToggleHighTextContrastPreference =
-                (CheckBoxPreference) findPreference(TOGGLE_HIGH_TEXT_CONTRAST_PREFERENCE);
+                (SwitchPreference) findPreference(TOGGLE_HIGH_TEXT_CONTRAST_PREFERENCE);
 
         // Display inversion.
         mToggleInversionPreference = (SwitchPreference) findPreference(TOGGLE_INVERSION_PREFERENCE);
@@ -450,7 +447,7 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
 
         // Power button ends calls.
         mTogglePowerButtonEndsCallPreference =
-                (CheckBoxPreference) findPreference(TOGGLE_POWER_BUTTON_ENDS_CALL_PREFERENCE);
+                (SwitchPreference) findPreference(TOGGLE_POWER_BUTTON_ENDS_CALL_PREFERENCE);
         if (!KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_POWER)
                 || !Utils.isVoiceCapable(getActivity())) {
             mSystemsCategory.removePreference(mTogglePowerButtonEndsCallPreference);
@@ -458,14 +455,14 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
 
         // Lock screen rotation.
         mToggleLockScreenRotationPreference =
-                (CheckBoxPreference) findPreference(TOGGLE_LOCK_SCREEN_ROTATION_PREFERENCE);
+                (SwitchPreference) findPreference(TOGGLE_LOCK_SCREEN_ROTATION_PREFERENCE);
         if (!RotationPolicy.isRotationSupported(getActivity())) {
             mSystemsCategory.removePreference(mToggleLockScreenRotationPreference);
         }
 
         // Speak passwords.
         mToggleSpeakPasswordPreference =
-                (CheckBoxPreference) findPreference(TOGGLE_SPEAK_PASSWORD_PREFERENCE);
+                (SwitchPreference) findPreference(TOGGLE_SPEAK_PASSWORD_PREFERENCE);
 
         // Qucik boot.
         mQuickBootEnable = getResources().getBoolean(R.bool.def_quick_boot_enable);

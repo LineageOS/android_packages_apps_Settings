@@ -280,7 +280,8 @@ public class WifiConfigController implements TextWatcher,
                 }
             }
 
-            if (mAccessPoint.networkId == INVALID_NETWORK_ID || mEdit) {
+            if ((mAccessPoint.networkId == INVALID_NETWORK_ID && !mAccessPoint.isActive())
+                    || mEdit) {
                 showSecurityFields();
                 showIpConfigFields();
                 showProxyFields();
@@ -311,7 +312,8 @@ public class WifiConfigController implements TextWatcher,
                 } else {
                     if (state != null) {
                         addRow(group, R.string.wifi_status, Summary.get(mConfigUi.getContext(),
-                                state));
+                                state, mAccessPoint.networkId ==
+                                WifiConfiguration.INVALID_NETWORK_ID));
                     }
 
                     if (signalLevel != null) {
@@ -351,7 +353,8 @@ public class WifiConfigController implements TextWatcher,
             }
         }
 
-        if (mEdit || (mAccessPoint.getState() == null && mAccessPoint.getLevel() != -1)){
+        if ((mEdit) || (mAccessPoint != null
+                && mAccessPoint.getState() == null && mAccessPoint.getLevel() != -1)){
             mConfigUi.setCancelButton(res.getString(R.string.wifi_cancel));
         }else{
             mConfigUi.setCancelButton(res.getString(R.string.wifi_display_options_done));
