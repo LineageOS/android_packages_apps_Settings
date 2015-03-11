@@ -57,6 +57,12 @@
                 android:title="@string/lockscreen_targets_message"
                 settings:advanced="true"/>
 
+        <com.android.settings.cyanogenmod.SecureSettingSwitchPreference
+                android:key="lockscreen_visualizer"
+                android:title="@string/lockscreen_visualizer_title"
+                android:defaultValue="true"
+                settings:advanced="true"/>
+
         <Preference android:key="manage_trust_agents"
                     android:title="@string/manage_trust_agents"
                     android:summary="@string/manage_trust_agents_summary"
