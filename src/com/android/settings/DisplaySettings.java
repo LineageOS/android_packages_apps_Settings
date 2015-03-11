@@ -196,15 +196,17 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
 
         mTapToWake = (SwitchPreference) findPreference(KEY_TAP_TO_WAKE);
-        if (displayPrefs != null && !mCmHardwareManager.isSupported(FEATURE_TAP_TO_WAKE)) {
+        if (displayPrefs != null && mTapToWake != null
+                && !mCmHardwareManager.isSupported(FEATURE_TAP_TO_WAKE)) {
             displayPrefs.removePreference(mTapToWake);
             mTapToWake = null;
         }
 
+        Preference proximityWake = findPreference(KEY_PROXIMITY_WAKE);
         boolean proximityCheckOnWake = getResources().getBoolean(
                 com.android.internal.R.bool.config_proximityCheckOnWake);
-        if (displayPrefs != null && !proximityCheckOnWake) {
-            displayPrefs.removePreference(findPreference(KEY_PROXIMITY_WAKE));
+        if (displayPrefs != null && proximityWake != null && !proximityCheckOnWake) {
+            displayPrefs.removePreference(proximityWake);
             Settings.System.putInt(getContentResolver(), Settings.System.PROXIMITY_ON_WAKE, 1);
         }
 
