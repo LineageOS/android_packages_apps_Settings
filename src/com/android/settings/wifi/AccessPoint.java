@@ -260,6 +260,9 @@ class AccessPoint extends Preference {
                 com.android.internal.R.id.summary);
         summaryView.setVisibility(showSummary ? View.VISIBLE : View.GONE);
 
+        final TextView title = (TextView)view.findViewById(com.android.internal.R.id.title);
+        title.setSingleLine(false);
+
         notifyChanged();
     }
 
