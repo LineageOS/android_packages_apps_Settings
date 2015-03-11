@@ -526,6 +526,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                 Settings.Secure.ALLOW_MOCK_LOCATION, 0) != 0);
         updateSwitchPreference(mDebugViewAttributes, Settings.Global.getInt(cr,
                 Settings.Global.DEBUG_VIEW_ATTRIBUTES, 0) != 0);
+        updateSwitchPreference(mQuickBoot, Settings.System.getInt(cr, ENABLE_QUICKBOOT, 0) != 0);
         updateHdcpValues();
         updatePasswordSummary();
         updateDebuggerOptions();
