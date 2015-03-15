@@ -47,18 +47,15 @@ public class BootReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context ctx, Intent intent) {
-        final PowerManager pm = (PowerManager)ctx.getSystemService(Context.POWER_SERVICE);
-
         if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)
                 && !ENCRYPTED_STATE.equals(SystemProperties.get("vold.decrypt"))) {
-            if (!pm.hasPowerProfiles()) {
-                if (SystemProperties.getBoolean(CPU_SETTINGS_PROP, false) == false) {
-                    SystemProperties.set(CPU_SETTINGS_PROP, "true");
-                    configureCPU(ctx);
-                } else {
-                    SystemProperties.set(CPU_SETTINGS_PROP, "false");
-                }
+            if (SystemProperties.getBoolean(CPU_SETTINGS_PROP, false) == false) {
+                SystemProperties.set(CPU_SETTINGS_PROP, "true");
+                configureCPU(ctx);
+            } else {
+                SystemProperties.set(CPU_SETTINGS_PROP, "false");
             }
+
             if (SystemProperties.getBoolean(IOSCHED_SETTINGS_PROP, false) == false) {
                 SystemProperties.set(IOSCHED_SETTINGS_PROP, "true");
                 configureIOSched(ctx);
@@ -85,6 +82,7 @@ public class BootReceiver extends BroadcastReceiver {
 
     private void configureCPU(Context ctx) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
+        final PowerManager pm = (PowerManager)ctx.getSystemService(Context.POWER_SERVICE);
 
         if (prefs.getBoolean(Processor.SOB_PREF, false) == false) {
             Log.i(TAG, "CPU restore disabled by user preference.");
@@ -105,7 +103,7 @@ public class BootReceiver extends BroadcastReceiver {
             Log.d(TAG, "No CPU settings saved. Nothing to restore.");
         } else {
             initFreqCapFiles(ctx);
-            if (availableGovernorsLine != null){
+            if (!pm.hasPowerProfiles() && availableGovernorsLine != null){
                 governors = Arrays.asList(availableGovernorsLine.split(" "));
             }
             if (availableFrequenciesLine != null){

@@ -16,11 +16,13 @@
 
 package com.android.settings.cyanogenmod;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
+import android.os.PowerManager;
 import android.os.SystemProperties;
 import android.os.SystemService;
 import android.preference.ListPreference;
@@ -154,14 +156,20 @@ public class Processor extends SettingsPreferenceFragment implements
 
         PreferenceScreen prefScreen = getPreferenceScreen();
 
+        final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+
         mGovernorPref = (ListPreference) prefScreen.findPreference(GOV_PREF);
         mCurFrequencyPref = (Preference) prefScreen.findPreference(FREQ_CUR_PREF);
         mMinFrequencyPref = (ListPreference) prefScreen.findPreference(FREQ_MIN_PREF);
         mMaxFrequencyPref = (ListPreference) prefScreen.findPreference(FREQ_MAX_PREF);
 
         /* Governor
-        Some systems might not use governors */
-        if (!Utils.fileExists(GOV_LIST_FILE) || !Utils.fileExists(GOV_FILE) || (temp = Utils.fileReadOneLine(GOV_FILE)) == null || (availableGovernorsLine = Utils.fileReadOneLine(GOV_LIST_FILE)) == null) {
+        1. Some systems might not use governors
+        2. Disable governor setting if profiles enabled */
+        if (!Utils.fileExists(GOV_LIST_FILE) || !Utils.fileExists(GOV_FILE)
+                || (temp = Utils.fileReadOneLine(GOV_FILE)) == null
+                || (availableGovernorsLine = Utils.fileReadOneLine(GOV_LIST_FILE)) == null
+                || pm.hasPowerProfiles()) {
             prefScreen.removePreference(mGovernorPref);
 
         } else {
