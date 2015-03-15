@@ -80,14 +80,10 @@ public class PerformanceSettings extends SettingsPreferenceFragment {
 
         // 1. always show performance profiles, if available on this device
         // 2. only show system / graphics options if dev mode enabled
-        // 3. never show individual processor control if profiles enabled
 
         PreferenceCategory category = (PreferenceCategory) prefSet.findPreference(CATEGORY_PROFILES);
         if (!mPowerManager.hasPowerProfiles()) {
             prefSet.removePreference(category);
-        } else {
-            ((PreferenceCategory) prefSet.findPreference(CATEGORY_SYSTEM)).removePreference(
-                    prefSet.findPreference(CATEGORY_PROCESSOR));
         }
 
         category = (PreferenceCategory) prefSet.findPreference(CATEGORY_SYSTEM);
