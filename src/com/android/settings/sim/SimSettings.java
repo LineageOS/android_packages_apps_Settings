@@ -695,12 +695,25 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             }
         }
 
-        @Override
-        protected void onAttachedToActivity() {
-            super.onAttachedToActivity();
-            if (needUpdate) {
-                needUpdate = false;
-                updateAllOptions();
+        public String getCarrierName() {
+            Uri mUri = ContentUris.withAppendedId(Telephony.Carriers.CONTENT_URI,
+                    mSubInfoRecord.getSubscriptionId());
+            Cursor mCursor = getActivity().managedQuery(mUri, sProjection, null, null);
+            mCursor.moveToFirst();
+            return mCursor.getString(1);
+        }
+
+        public String getFormattedPhoneNumber() {
+            try{
+                final String rawNumber = PhoneFactory.getPhone(mSlotId).getLine1Number();
+                String formattedNumber = null;
+                if (!TextUtils.isEmpty(rawNumber)) {
+                    formattedNumber = PhoneNumberUtils.formatNumber(rawNumber);
+                }
+
+                return formattedNumber;
+            } catch (java.lang.IllegalStateException ise){
+                return "Unknown";
             }
         }
 
@@ -714,6 +727,31 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             EditText nameText = (EditText)dialogLayout.findViewById(R.id.sim_name);
             nameText.setText(mSubscriptionInfo.getDisplayName());
             nameText.addTextChangedListener(SimSettings.this);
+
+            final Spinner colorSpinner = (Spinner) dialogLayout.findViewById(R.id.spinner);
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
+                    R.array.color_picker, android.R.layout.simple_spinner_item);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            colorSpinner.setAdapter(adapter);
+
+            for (int i = 0; i < colorArr.length; i++) {
+                if (colorArr[i] == mSubInfoRecord.getColor()) {
+                    colorSpinner.setSelection(i);
+                    break;
+                }
+            }
+
+            colorSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view,
+                    int pos, long id){
+                    colorSpinner.setSelection(pos);
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+                }
+            });
 
             TextView numberView = (TextView)dialogLayout.findViewById(R.id.number);
             numberView.setText(mSubscriptionInfo.getNumber());
@@ -735,6 +773,18 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
                             mSubscriptionInfo.getDisplayName().toString(),
                             mSubscriptionInfo.getSubscriptionId(),
                             SubscriptionManager.NAME_SOURCE_USER_INPUT);
+                    String displayName = nameText.getText().toString();
+                    int subId = mSubInfoRecord.getSubscriptionId();
+                    mSubInfoRecord.setDisplayName(displayName);
+                    SubscriptionManager.setDisplayName(displayName, subId);
+                    findRecordBySubId(subId).setDisplayName(displayName);
+
+                    final int colorSelected = colorSpinner.getSelectedItemPosition();
+                    int subscriptionId = mSubInfoRecord.getSubscriptionId();
+                    int color = colorArr[colorSelected];
+                    mSubInfoRecord.setColor(color);
+                    SubscriptionManager.setColor(color, subscriptionId);
+                    findRecordBySubId(subscriptionId).setColor(color);
 
                     updateAllOptions();
                     update();
