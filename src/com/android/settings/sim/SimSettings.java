@@ -546,10 +546,15 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             public boolean onItemSelected(int pos, Object value) {
                 final int subId = value == null ? 0 : ((SubscriptionInfo)value).getSubscriptionId();
 
-                Log.d(TAG,"calling setCallback: " + simPref.getKey() + "subId: " + subId);
+                Log.d(TAG,"calling setCallback: " + simPref.getKey() + "subId: " + subId +
+                        " defaultSubId: " + SubscriptionManager.getDefaultDataSubId());
                 if (simPref.getKey().equals(KEY_CELLULAR_DATA)) {
                     if (SubscriptionManager.getDefaultDataSubId() != subId) {
                         SubscriptionManager.from(getActivity()).setDefaultDataSubId(subId);
+                        Log.d(TAG,"subAvailableSize: "+ subAvailableSize);
+                        if(subAvailableSize > 1) {
+                            setUserPrefDataSubIdInDb(subId);
+                        }
                     }
                 } else if (simPref.getKey().equals(KEY_CALLS)) {
                     //subId 0 is meant for "Ask First"/"Prompt" option as per AOSP
