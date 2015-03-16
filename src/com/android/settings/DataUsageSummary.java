@@ -1834,6 +1834,7 @@ public class DataUsageSummary extends Fragment {
                 cdEditor.setVisibility(View.VISIBLE);
                 cycleWeekDayPicker.setVisibility(View.VISIBLE);
                 cycleDayPicker.setVisibility(View.GONE);
+                cycleDay = cycleDay % 7;
                 cycleWeekDayPicker.setValue(cycleDay);
             } else if (cycleLength == CYCLE_DAILY) {
                 cdEditor.setVisibility(View.GONE);
