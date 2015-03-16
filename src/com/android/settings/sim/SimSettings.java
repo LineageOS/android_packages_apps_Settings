@@ -344,7 +344,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         } else if (sir == null) {
             simPref.setSummary(R.string.sim_selection_required_pref);
         }
-        simPref.setEnabled(mNumSims > 1);
+        simPref.setEnabled(mSelectableSubInfos.size() >= 1);
     }
 
     private void updateCellularDataValues() {
@@ -618,20 +618,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         android.provider.Settings.Global.putLong(getContentResolver(), SETTING_USER_PREF_DATA_SUB,
                 subId);
         logd("updating data subId: " + subId + " in DB");
-    }
-
-    private void setActivity(Preference preference, SubscriptionInfo sir) {
-        final String key = preference.getKey();
-
-        if (key.equals(KEY_CELLULAR_DATA)) {
-            mCellularData = sir;
-        } else if (key.equals(KEY_CALLS)) {
-            mCalls = sir;
-        } else if (key.equals(KEY_SMS)) {
-            mSMS = sir;
-        }
-
-        updateActivitesCategory();
     }
 
     private class SimPreference extends Preference{
