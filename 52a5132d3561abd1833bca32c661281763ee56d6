@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac665da_2b205d49",
+        "filename": "src/com/android/settings/SoundSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-16T21:48:09Z",
+      "side": 1,
+      "message": "if (mVibrator \u003d\u003d null || !mVibrator.hasVibrator()) {\n\n(otherwise you won\u0027t remove it if mVibrator is null - not sure how likely this is to happen)",
+      "revId": "52a5132d3561abd1833bca32c661281763ee56d6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
