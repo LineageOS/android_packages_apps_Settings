@@ -78,6 +78,7 @@ public class WirelessSettings extends SettingsPreferenceFragment
     private static final String KEY_TOGGLE_NSD = "toggle_nsd"; //network service discovery
     private static final String KEY_CELL_BROADCAST_SETTINGS = "cell_broadcast_settings";
     private static final String KEY_NFC_PAYMENT_SETTINGS = "nfc_payment_settings";
+    private static final String KEY_CAPTIVE_PORTAL_DETECTION = "toggle_captive_portal_detection";
 
     public static final String EXIT_ECM_RESULT = "exit_ecm_result";
     public static final int REQUEST_CODE_EXIT_ECM = 1;
@@ -87,6 +88,7 @@ public class WirelessSettings extends SettingsPreferenceFragment
     private NfcEnabler mNfcEnabler;
     private NfcAdapter mNfcAdapter;
     private NsdEnabler mNsdEnabler;
+    private SwitchPreference mCaptivePortalDetectionPreference;
 
     private ConnectivityManager mCm;
     private TelephonyManager mTm;
@@ -274,6 +276,32 @@ public class WirelessSettings extends SettingsPreferenceFragment
 
         mAirplaneModeEnabler = new AirplaneModeEnabler(activity, mAirplaneModePreference);
         mNfcEnabler = new NfcEnabler(activity, nfc, androidBeam, nfcPayment);
+
+        int currentValue = Settings.Global.getInt(getContentResolver(), Settings.Global
+                .CAPTIVE_PORTAL_DETECTION_ENABLED, 1);
+        mCaptivePortalDetectionPreference = (SwitchPreference) findPreference
+                (KEY_CAPTIVE_PORTAL_DETECTION);
+        final String enabledString = getResources().getString(R.string.cpd_summary_enabled);
+        final String disabledString = getResources().getString(R.string.cpd_summary_disabled);
+        mCaptivePortalDetectionPreference
+                .setSummary((currentValue == 1) ? enabledString : disabledString);
+        mCaptivePortalDetectionPreference.setChecked(currentValue == 1);
+        mCaptivePortalDetectionPreference.setOnPreferenceChangeListener(
+                new OnPreferenceChangeListener() {
+                    @Override
+                    public boolean onPreferenceChange(Preference preference, Object o) {
+                        if (preference == mCaptivePortalDetectionPreference) {
+                            Boolean newVal = (Boolean) o;
+                            int val = (newVal) ? 1 : 0;
+                            Settings.Global.putInt(getContentResolver(),Settings.Global
+                                    .CAPTIVE_PORTAL_DETECTION_ENABLED, val);
+                            mCaptivePortalDetectionPreference.setSummary(
+                                    (val == 1) ? enabledString : disabledString);
+                            return true;
+                        }
+                        return false;
+                    }
+                });
 
         mSmsApplicationPreference = (AppListPreference) findPreference(KEY_SMS_APPLICATION);
         mSmsApplicationPreference.setOnPreferenceChangeListener(this);

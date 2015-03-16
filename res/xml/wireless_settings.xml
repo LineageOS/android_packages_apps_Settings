@@ -91,4 +91,9 @@
             android:targetClass="com.android.cellbroadcastreceiver.CellBroadcastSettings" />
     </PreferenceScreen>
 
+    <SwitchPreference
+        android:key="toggle_captive_portal_detection"
+        android:title="@string/captive_portal_detection"
+        android:persistent="false"/>
+
 </PreferenceScreen>
