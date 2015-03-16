@@ -96,6 +96,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     private boolean needUpdate = false;
 
     private static List<MultiSimEnablerPreference> mSimEnablers = null;
+    private List<SubscriptionInfo> mSelectableSubInfos = null;
 
     private SubscriptionInfo mCellularData = null;
     private SubscriptionInfo mCalls = null;
@@ -334,7 +335,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
 
     private void updateSmsValues() {
         final Preference simPref = findPreference(KEY_SMS);
-        final SubInfoRecord sir = Utils.findRecordBySubId(SubscriptionManager.getDefaultSmsSubId());
+        final SubscriptionInfo sir = Utils.findRecordBySubId(SubscriptionManager.getDefaultSmsSubId());
         simPref.setTitle(R.string.sms_messages_title);
         if (mSubInfoList.size() == 1) {
             simPref.setSummary(mSubInfoList.get(0).getDisplayName());
