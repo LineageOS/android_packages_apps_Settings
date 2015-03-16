@@ -684,9 +684,17 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             final Resources res = getResources();
 
             setTitle(res.getString(R.string.sim_card_number_title, mSlotId + 1));
-            if (mSubscriptionInfo != null) {
-                setSummary(res.getString(R.string.sim_settings_summary,
-                            mSubscriptionInfo.getDisplayName(), mSubscriptionInfo.getNumber()));
+            if (mSubInfoRecord != null) {
+                if(TextUtils.isEmpty(mSubInfoRecord.getDisplayName())) {
+                    setTitle(getCarrierName());
+                    String displayName = getCarrierName();
+                    mSubInfoRecord.setDisplayName(displayName);
+                    SubscriptionManager.setDisplayName(displayName,
+                            mSubInfoRecord.getSubscriptionId());
+                } else {
+                    setTitle(mSubInfoRecord.getDisplayName());
+                }
+                setSummary(mSubInfoRecord.getNumber());
                 setEnabled(true);
             } else {
                 setSummary(R.string.sim_slot_empty);
