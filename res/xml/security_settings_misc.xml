@@ -46,6 +46,11 @@
                         android:title="@string/device_admin_title"
                         android:persistent="false">
 
+        <SwitchPreference android:key="lock_to_cyanogen_account"
+                          android:title="@string/lock_to_cyanogen_title"
+                          android:summary="@string/lock_to_cyanogen_summary"
+                          android:persistent="false" />
+
         <Preference android:key="manage_device_admin"
                     android:title="@string/manage_device_admin"
                     android:summary="@string/manage_device_admin_summary"
