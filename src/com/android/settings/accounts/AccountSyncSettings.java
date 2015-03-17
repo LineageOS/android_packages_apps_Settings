@@ -28,6 +28,7 @@ import android.app.Dialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SyncAdapterType;
 import android.content.SyncInfo;
 import android.content.SyncStatusInfo;
@@ -50,6 +51,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.settings.R;
+import com.android.settings.SecuritySettings;
 import com.android.settings.Utils;
 import com.google.android.collect.Lists;
 import com.google.android.collect.Maps;
@@ -70,6 +72,7 @@ public class AccountSyncSettings extends AccountPreferenceBase {
     private static final int REALLY_REMOVE_DIALOG = 100;
     private static final int FAILED_REMOVAL_DIALOG = 101;
     private static final int CANT_DO_ONETIME_SYNC_DIALOG = 102;
+    private static final int REQUEST_CHECK_CREDENTIALS = 103;
     private TextView mUserId;
     private TextView mProviderId;
     private ImageView mProviderIcon;
@@ -94,9 +97,37 @@ public class AccountSyncSettings extends AccountPreferenceBase {
                         new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        AccountManager.get(AccountSyncSettings.this.getActivity())
-                                .removeAccount(mAccount,
-                                new AccountManagerCallback<Boolean>() {
+                        if (mAccount.type.equals(SecuritySettings.ACCOUNT_TYPE_CYANOGEN)
+                                && SecuritySettings.isDeviceLocked()) {
+                            SecuritySettings.updateCyanogenDeviceLockState(AccountSyncSettings.this,
+                                    false, REQUEST_CHECK_CREDENTIALS);
+                        } else {
+                            removeAccount();
+                        }
+
+                    }
+                })
+                .create();
+        } else if (id == FAILED_REMOVAL_DIALOG) {
+            dialog = new AlertDialog.Builder(getActivity())
+                .setTitle(R.string.really_remove_account_title)
+                .setPositiveButton(android.R.string.ok, null)
+                .setMessage(R.string.remove_account_failed)
+                .create();
+        } else if (id == CANT_DO_ONETIME_SYNC_DIALOG) {
+            dialog = new AlertDialog.Builder(getActivity())
+                .setTitle(R.string.cant_sync_dialog_title)
+                .setMessage(R.string.cant_sync_dialog_message)
+                .setPositiveButton(android.R.string.ok, null)
+                .create();
+        }
+        return dialog;
+    }
+
+    private void removeAccount() {
+        AccountManager.get(AccountSyncSettings.this.getActivity())
+                .removeAccount(mAccount,
+                        new AccountManagerCallback<Boolean>() {
                             @Override
                             public void run(AccountManagerFuture<Boolean> future) {
                                 // If already out of this screen, don't proceed.
@@ -123,23 +154,6 @@ public class AccountSyncSettings extends AccountPreferenceBase {
                                 }
                             }
                         }, null);
-                    }
-                })
-                .create();
-        } else if (id == FAILED_REMOVAL_DIALOG) {
-            dialog = new AlertDialog.Builder(getActivity())
-                .setTitle(R.string.really_remove_account_title)
-                .setPositiveButton(android.R.string.ok, null)
-                .setMessage(R.string.remove_account_failed)
-                .create();
-        } else if (id == CANT_DO_ONETIME_SYNC_DIALOG) {
-            dialog = new AlertDialog.Builder(getActivity())
-                .setTitle(R.string.cant_sync_dialog_title)
-                .setMessage(R.string.cant_sync_dialog_message)
-                .setPositiveButton(android.R.string.ok, null)
-                .create();
-        }
-        return dialog;
     }
 
     @Override
@@ -188,6 +202,16 @@ public class AccountSyncSettings extends AccountPreferenceBase {
             if (Log.isLoggable(TAG, Log.VERBOSE)) Log.v(TAG, "Got account: " + mAccount);
             mUserId.setText(mAccount.name);
             mProviderId.setText(mAccount.type);
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CHECK_CREDENTIALS) {
+            if (resultCode == Activity.RESULT_OK) {
+                removeAccount();
+            }
         }
     }
 
