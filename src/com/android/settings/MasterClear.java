@@ -20,8 +20,10 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.accounts.AuthenticatorDescription;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
@@ -56,6 +58,7 @@ public class MasterClear extends Fragment {
 
     private static final int KEYGUARD_REQUEST = 55;
     private static final int PIN_REQUEST = 56;
+    private static final int LOCK_REQUEST = 57;
 
     static final String WIPE_MEDIA_EXTRA = "wipe_media";
     static final String ERASE_EXTERNAL_EXTRA = "erase_sd";
@@ -98,6 +101,10 @@ public class MasterClear extends Fragment {
                 mPinConfirmed = true;
             }
             return;
+        } else if (requestCode == LOCK_REQUEST) {
+            if (resultCode != Activity.RESULT_OK) {
+                getActivity().finish();
+            }
         } else if (requestCode != KEYGUARD_REQUEST) {
             return;
         }
@@ -298,6 +305,28 @@ public class MasterClear extends Fragment {
             if (!runKeyguardConfirmation(KEYGUARD_REQUEST)) {
                 showFinalConfirmation();
             }
+        }
+
+        if (SecuritySettings.isDeviceLocked()) {
+            new AlertDialog.Builder(getActivity())
+                    .setMessage(R.string.lock_to_cyanogen_master_clear_warning)
+                    .setNegativeButton(R.string.wizard_back, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            getActivity().finish();
+                        }
+                    })
+                    .setPositiveButton(R.string.lockpassword_continue_label, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            SecuritySettings.updateCyanogenDeviceLockState(MasterClear.this,
+                                    false, LOCK_REQUEST);
+                        }
+                    })
+                    .setCancelable(false)
+                    .create()
+                    .show();
+
         }
     }
 }

@@ -16,6 +16,13 @@
 
 package com.android.settings;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
+import android.accounts.AccountManagerCallback;
+import android.accounts.AuthenticatorDescription;
+import android.accounts.AccountManagerFuture;
+import android.accounts.AccountManagerCallback;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.backup.IBackupManager;
@@ -24,12 +31,15 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
+import com.android.internal.os.IKillSwitchService;
+import android.util.Log;
 
 /**
  * Gesture lock pattern settings.
@@ -37,12 +47,15 @@ import android.provider.Settings;
 public class PrivacySettings extends SettingsPreferenceFragment implements
         DialogInterface.OnClickListener {
 
+    private static final String TAG = "PrivacySettings";
+
     // Vendor specific
     private static final String GSETTINGS_PROVIDER = "com.google.settings";
     private static final String BACKUP_CATEGORY = "backup_category";
     private static final String BACKUP_DATA = "backup_data";
     private static final String AUTO_RESTORE = "auto_restore";
     private static final String CONFIGURE_ACCOUNT = "configure_account";
+
     private IBackupManager mBackupManager;
     private CheckBoxPreference mBackup;
     private CheckBoxPreference mAutoRestore;
@@ -111,6 +124,7 @@ public class PrivacySettings extends SettingsPreferenceFragment implements
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
+
     private void showEraseBackupDialog() {
         mBackup.setChecked(true);
 
@@ -153,7 +167,7 @@ public class PrivacySettings extends SettingsPreferenceFragment implements
         mConfigure.setEnabled(configureEnabled);
         mConfigure.setIntent(configIntent);
         setConfigureSummary(configSummary);
-}
+    }
 
     private void setConfigureSummary(String summary) {
         if (summary != null) {
