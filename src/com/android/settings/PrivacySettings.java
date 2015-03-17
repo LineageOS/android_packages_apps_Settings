@@ -16,6 +16,13 @@
 
 package com.android.settings;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
+import android.accounts.AccountManagerCallback;
+import android.accounts.AuthenticatorDescription;
+import android.accounts.AccountManagerFuture;
+import android.accounts.AccountManagerCallback;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.backup.IBackupManager;
@@ -24,12 +31,15 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
+import com.android.internal.os.IKillSwitchService;
+import android.util.Log;
 
 /**
  * Gesture lock pattern settings.
@@ -37,15 +47,25 @@ import android.provider.Settings;
 public class PrivacySettings extends SettingsPreferenceFragment implements
         DialogInterface.OnClickListener {
 
+    private static final String TAG = "PrivacySettings";
+
     // Vendor specific
     private static final String GSETTINGS_PROVIDER = "com.google.settings";
     private static final String BACKUP_CATEGORY = "backup_category";
     private static final String BACKUP_DATA = "backup_data";
     private static final String AUTO_RESTORE = "auto_restore";
     private static final String CONFIGURE_ACCOUNT = "configure_account";
+
+    private static final String ACCOUNT_TYPE_CYANOGEN = "com.cyanogen";
+    private static final String EXTRA_CREATE_ACCOUNT = "create-account";
+    private static final String LOCK_TO_CYANOGEN_ACCOUNT = "lock_to_cyanogen_account";
+    private static final String EXTRA_SETCKS = "setCks";
+    private static final String EXTRA_AUTHCKS = "authCks";
+
     private IBackupManager mBackupManager;
     private CheckBoxPreference mBackup;
     private CheckBoxPreference mAutoRestore;
+    private CheckBoxPreference mLockDeviceToCyanogenAccount;
     private Dialog mConfirmDialog;
     private PreferenceScreen mConfigure;
 
@@ -64,6 +84,13 @@ public class PrivacySettings extends SettingsPreferenceFragment implements
         mBackup = (CheckBoxPreference) screen.findPreference(BACKUP_DATA);
         mAutoRestore = (CheckBoxPreference) screen.findPreference(AUTO_RESTORE);
         mConfigure = (PreferenceScreen) screen.findPreference(CONFIGURE_ACCOUNT);
+        mLockDeviceToCyanogenAccount = (CheckBoxPreference)
+                screen.findPreference(LOCK_TO_CYANOGEN_ACCOUNT);
+
+        if (!hasCyanogenAccountType(getActivity())) {
+            screen.removePreference(mLockDeviceToCyanogenAccount);
+            mLockDeviceToCyanogenAccount = null;
+        }
 
         // Vendor specific
         if (getActivity().getPackageManager().
@@ -71,6 +98,69 @@ public class PrivacySettings extends SettingsPreferenceFragment implements
             screen.removePreference(findPreference(BACKUP_CATEGORY));
         }
         updateToggles();
+    }
+
+    private boolean hasLoggedInCyanogenAccount(Context context) {
+        AccountManager accountManager = (AccountManager)
+                context.getSystemService(Context.ACCOUNT_SERVICE);
+        Account[] accountsByType = accountManager.getAccountsByType(ACCOUNT_TYPE_CYANOGEN);
+        return accountsByType != null && accountsByType.length > 0;
+    }
+
+    public static boolean hasCyanogenAccountType(Context context) {
+        AccountManager accountManager = (AccountManager)
+                context.getSystemService(Context.ACCOUNT_SERVICE);
+        for (AuthenticatorDescription authenticatorDescription :
+                accountManager.getAuthenticatorTypes()) {
+            if (authenticatorDescription.type.equals(ACCOUNT_TYPE_CYANOGEN)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean isDeviceLocked() {
+        IBinder b = ServiceManager.getService(Context.KILLSWITCH_SERVICE);
+        IKillSwitchService service = IKillSwitchService.Stub.asInterface(b);
+        if (service != null) {
+            try {
+                return service.isDeviceLocked();
+            } catch (Exception e) {
+                // silently fail
+            }
+        }
+        return false;
+    }
+
+    public static void confirmCyanogenCredentials(final Activity activity,
+                                                  boolean setCks,
+                                                  AccountManagerCallback<Bundle> callback) {
+        // verify creds
+        AccountManager accountManager = (AccountManager)
+                activity.getSystemService(Context.ACCOUNT_SERVICE);
+        Account cyanogenAccount = null;
+        Account[] accountsByType = accountManager.getAccountsByType(ACCOUNT_TYPE_CYANOGEN);
+        if (accountsByType != null && accountsByType.length > 0) {
+            // take the first account
+            cyanogenAccount = accountsByType[0];
+        }
+
+        Bundle opts = new Bundle();
+        opts.putBoolean(EXTRA_AUTHCKS, true);
+        opts.putInt(EXTRA_SETCKS, setCks ? 1 : 0);
+
+        accountManager.confirmCredentials(cyanogenAccount, opts, activity,
+            new AccountManagerCallback<Bundle>() {
+                public void run(AccountManagerFuture<Bundle> f) {
+                    try {
+                        Bundle b = f.getResult();
+                        Intent i = b.getParcelable("KEY_INTENT");
+                        activity.startActivityForResult(i, 0);
+                    } catch(Throwable t) {
+                        Log.e(TAG, "confirmCredentials failed", t);
+                    }
+                }
+            }, null);
     }
 
     @Override
@@ -107,9 +197,57 @@ public class PrivacySettings extends SettingsPreferenceFragment implements
             } catch (RemoteException e) {
                 mAutoRestore.setChecked(!curState);
             }
+        } else if (preference == mLockDeviceToCyanogenAccount) {
+            if (mLockDeviceToCyanogenAccount.isChecked()) {
+                // wants to opt in.
+                if (hasLoggedInCyanogenAccount(getActivity())) {
+                    confirmCyanogenCredentials(getActivity(), true, null);
+                } else {
+                    // no account, need to create one!
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
+                            .setMessage(R.string.lock_to_cyanogen_create_account_msg)
+                            .setPositiveButton(android.R.string.ok,
+                                    new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // create new account
+                                    AccountManager accountManager = (AccountManager)
+                                            getActivity().getSystemService(Context.ACCOUNT_SERVICE);
+                                    Bundle opts = new Bundle();
+                                    opts.putBoolean(EXTRA_CREATE_ACCOUNT, true);
+                                    opts.putInt(EXTRA_SETCKS, 1);
+
+                                    accountManager.addAccount(ACCOUNT_TYPE_CYANOGEN, null, null,
+                                            opts, getActivity(), null, null);
+                                }
+                            });
+                    builder.create().show();
+                }
+            } else {
+                //  opt out
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
+                        .setMessage(R.string.lock_to_cyanogen_disable_msg)
+                        .setNegativeButton(android.R.string.no,
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        updateToggles();
+                                    }
+                                })
+                        .setPositiveButton(android.R.string.yes,
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        confirmCyanogenCredentials(getActivity(), false,
+                                                null);
+                                    }
+                                });
+                builder.create().show();
+            }
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
+
 
     private void showEraseBackupDialog() {
         mBackup.setChecked(true);
@@ -153,7 +291,11 @@ public class PrivacySettings extends SettingsPreferenceFragment implements
         mConfigure.setEnabled(configureEnabled);
         mConfigure.setIntent(configIntent);
         setConfigureSummary(configSummary);
-}
+
+        if (mLockDeviceToCyanogenAccount != null) {
+            mLockDeviceToCyanogenAccount.setChecked(isDeviceLocked());
+        }
+    }
 
     private void setConfigureSummary(String summary) {
         if (summary != null) {

@@ -18,6 +18,8 @@ package com.android.settings;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
+import android.accounts.AccountManagerCallback;
+import android.accounts.AccountManagerFuture;
 import android.accounts.AuthenticatorDescription;
 import android.app.Activity;
 import android.app.Fragment;
@@ -28,6 +30,8 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.IBinder;
+import android.os.ServiceManager;
 import android.os.SystemProperties;
 import android.os.UserManager;
 import android.preference.Preference;
@@ -40,6 +44,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.android.internal.os.IKillSwitchService;
 
 /**
  * Confirm and execute a reset of the device to a clean "just out of the box"
@@ -112,6 +117,17 @@ public class MasterClear extends Fragment {
     }
 
     private void showFinalConfirmation() {
+        if (PrivacySettings.isDeviceLocked()) {
+            PrivacySettings.confirmCyanogenCredentials(getActivity(), false,
+                    new AccountManagerCallback<Bundle>() {
+                @Override
+                public void run(AccountManagerFuture<Bundle> future) {
+                    showFinalConfirmation(); // device should be unlocked and continue.
+                }
+            });
+            return;
+        }
+
         Preference preference = new Preference(getActivity());
         preference.setFragment(MasterClearConfirm.class.getName());
         preference.setTitle(R.string.master_clear_confirm_title);
