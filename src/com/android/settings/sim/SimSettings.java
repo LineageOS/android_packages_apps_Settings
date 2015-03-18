@@ -100,6 +100,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
      * By UX design we have use only one Subscription Information(SubInfo) record per SIM slot.
      * mAvalableSubInfos is the list of SubInfos we present to the user.
      * mSubInfoList is the list of all SubInfos.
+     * mSelectableSubInfos is the list of SubInfos that a user can select for data, calls, and SMS.
      */
     private List<SubscriptionInfo> mAvailableSubInfos = null;
     private List<SubscriptionInfo> mSubInfoList = null;
@@ -254,6 +255,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
                 (PreferenceCategory)findPreference(SIM_ENABLER_CATEGORY);
 
         mAvailableSubInfos = new ArrayList<SubscriptionInfo>(mNumSlots);
+        mSelectableSubInfos = new ArrayList<SubscriptionInfo>();
         mSimEnablers = new ArrayList<MultiSimEnablerPreference>(mNumSlots);
         for (int i = 0; i < mNumSlots; ++i) {
             final SubscriptionInfo sir = Utils.findRecordBySlotId(getActivity(), i);
@@ -269,6 +271,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             if ((sir != null) && (sir.getStatus() == SubscriptionManager.ACTIVE)) {
                 mNumSims++;
                 mAvailableSubInfos.add(sir);
+                mSelectableSubInfos.add(sir);
             }
         }
 
