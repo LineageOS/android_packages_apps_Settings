@@ -74,7 +74,6 @@ public class DateTimeSettings extends SettingsPreferenceFragment
     private SwitchPreference mAutoTimeZonePref;
     private Preference mTimeZone;
     private Preference mDatePref;
-    private ListPreference mDateFormat;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -142,9 +141,6 @@ public class DateTimeSettings extends SettingsPreferenceFragment
                 formattedDates[i] = formatted;
             }
         }
-
-        mDateFormat.setEntries(formattedDates);
-        mDateFormat.setEntryValues(R.array.date_format_values);
 
         mTimePref.setEnabled(!autoTimeEnabled);
         mDatePref.setEnabled(!autoTimeEnabled);
