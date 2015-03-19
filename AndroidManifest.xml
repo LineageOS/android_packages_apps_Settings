@@ -179,6 +179,12 @@
                 android:resource="@id/wifi_settings" />
         </activity>
 
+        <activity android:name=".SubSettings$WifiSubSettings"
+                android:taskAffinity="com.android.settings"
+                android:configChanges="orientation|keyboardHidden|screenSize"
+                android:parentActivityName="Settings">
+        </activity>
+
         <!-- Keep compatibility with old shortcuts. -->
         <activity-alias android:name=".wifi.WifiSettings"
                 android:taskAffinity="com.android.settings"
