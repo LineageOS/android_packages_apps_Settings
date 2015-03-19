@@ -30,6 +30,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.RemoteException;
 import android.os.UserManager;
+import android.os.Environment.UserEnvironment;
 import android.os.storage.StorageManager;
 import android.os.storage.StorageVolume;
 import android.preference.Preference;
@@ -57,6 +58,7 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
     /** Physical volume being measured, or {@code null} for internal. */
     private final StorageVolume mVolume;
     private final StorageMeasurement mMeasure;
+    private final boolean mIsInternal;
 
     private final Resources mResources;
     private final StorageManager mStorageManager;
@@ -123,6 +125,7 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
         super(context);
 
         mVolume = volume;
+        mIsInternal = mVolume == null;
         mMeasure = StorageMeasurement.getInstance(context, volume);
 
         mResources = context.getResources();
@@ -246,6 +249,10 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
             } else if (MediaFormat.isUiccStorage(mVolume, context)) {
                 titleResId = R.string.uicc_format;
                 summaryResId = R.string.uicc_format_summary;
+
+            } else if (mIsInternal && Environment.isExternalStorageEmulated()) {
+                titleResId = R.string.internal_sd_format;
+                summaryResId = R.string.internal_sd_format_summary;
 
             } else {
                 titleResId = R.string.sd_format;
