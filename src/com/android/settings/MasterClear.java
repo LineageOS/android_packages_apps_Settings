@@ -192,6 +192,23 @@ public class MasterClear extends Fragment {
                     mExternalStorage.toggle();
                 }
             });
+
+            final View wipeStorage = mContentView.findViewById(R.id.erase_external_option_text);
+            wipeStorage.setText(isExtStorageEmulated ?
+                    R.string.master_clear_desc_erase_internal_storage :
+                    R.string.master_clear_desc_erase_external_storage);
+
+            final View wipeStorageTitle =
+                    mContentView.findViewById(R.id.erase_storage_checkbox_title);
+            wipeStorageTitle.setText(isExtStorageEmulated ?
+                    R.string.erase_internal_storage :
+                    R.string.erase_external_storage);
+
+            final View wipeStorageDescription =
+                    mContentView.findViewById(R.id.erase_storage_checkbox_description);
+            wipeStorageDescription.setText(isExtStorageEmulated ?
+                    R.string.erase_internal_storage_description :
+                    R.string.erase_external_storage_description);
         }
 
         loadAccountList();
