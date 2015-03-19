@@ -248,11 +248,24 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory
 
         final boolean allowFormat = mVolume != null;
         if (allowFormat) {
+            // Resource IDs that are loaded appropriately based on the storage volume type
+            int titleResId = 0;
+            int summaryResId = 0;
+
+            if (mIsInternal && Environment.isExternalStorageEmulated()) {
+                titleResId = R.string.internal_sd_format;
+                summaryResId = R.string.internal_sd_format_summary;
+            } else if (mIsUsbStorage) {
+                titleResId = R.string.usb_sd_format;
+                summaryResId = R.string.usb_sd_format_summary;
+            } else {
+                titleResId = R.string.sd_sd_format;
+                summaryResId = R.string.sd_sd_format_summary;
+            }
+
             mFormatPreference = new Preference(context);
-            mFormatPreference.setTitle(mIsUsbStorage ? R.string.usb_sd_format :
-                    R.string.sd_sd_format);
-            mFormatPreference.setSummary(mIsUsbStorage ? R.string.usb_sd_format_summary :
-                    R.string.sd_sd_format_summary);
+            mFormatPreference.setTitle(titleResId);
+            mFormatPreference.setSummary(summaryResId);
             addPreference(mFormatPreference);
         }
 
