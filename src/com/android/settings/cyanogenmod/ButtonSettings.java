@@ -638,7 +638,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
-    private static boolean isKeyDisablerSupported() {
+    /* package */ static boolean isKeyDisablerSupported() {
         try {
             return KeyDisabler.isSupported();
         } catch (NoClassDefFoundError e) {

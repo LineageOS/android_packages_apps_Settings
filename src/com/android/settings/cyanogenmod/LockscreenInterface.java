@@ -21,6 +21,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.hardware.Camera;
 import android.os.Bundle;
+import android.os.RemoteException;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -28,6 +29,10 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 
+import android.view.IWindowManager;
+import android.view.WindowManagerGlobal;
+import android.view.WindowManagerPolicy;
+import com.android.internal.policy.PolicyManager;
 import com.android.internal.widget.LockPatternUtils;
 import com.android.settings.ChooseLockSettingsHelper;
 import com.android.settings.R;
@@ -90,9 +95,24 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             mBatteryStatus.setOnPreferenceChangeListener(this);
         }
 
+        // Only visible on devices that does not have a navigation bar already,
+        // and don't even try unless the existing keys can be disabled
+        boolean hasNavigationBar = false;
+        if (ButtonSettings.isKeyDisablerSupported()) {
+            try {
+                IWindowManager wm = WindowManagerGlobal.getWindowManagerService();
+                hasNavigationBar = wm.hasNavigationBar();
+            } catch (RemoteException e) {
+            }
+        }
+
         // Remove lockscreen button actions if device doesn't have hardware keys
+        Preference lockscreenButtonsPreference = findPreference(KEY_LOCKSCREEN_BUTTONS);
         if (!hasButtons()) {
-            generalCategory.removePreference(findPreference(KEY_LOCKSCREEN_BUTTONS));
+            generalCategory.removePreference(lockscreenButtonsPreference);
+        } else if (hasNavigationBar) {
+            lockscreenButtonsPreference.setEnabled(false);
+            lockscreenButtonsPreference.setSummary(R.string.lockscreen_buttons_disabled_summary);
         }
 
         // Enable or disable camera widget based on device and policy
