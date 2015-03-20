@@ -168,10 +168,12 @@ public class DashboardSummary extends Fragment {
             statusTextView.setVisibility(View.GONE);
         }
 
-        if (tile.switchControl != null) {
-            switchBar.setVisibility(View.VISIBLE);
-        } else {
-            switchBar.setVisibility(View.GONE);
+        if (switchBar != null) {
+            if (tile.switchControl != null) {
+                switchBar.setVisibility(View.VISIBLE);
+            } else {
+                switchBar.setVisibility(View.GONE);
+            }
         }
     }
 
