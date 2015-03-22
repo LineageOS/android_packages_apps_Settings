@@ -527,8 +527,11 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         simPref.clearItems();
 
         //Get num of activated Subs
-        for (SubscriptionInfo subInfo : mSubInfoList) {
-            if (subInfo != null && subInfo.getStatus() == SubscriptionManager.ACTIVE) mActCount++;
+        if (mSubInfoList != null) {
+            for (SubscriptionInfo subInfo : mSubInfoList) {
+                if (subInfo != null && subInfo.getStatus()
+                        == SubscriptionManager.ACTIVE) mActCount++;
+            }
         }
 
         if (askFirst && mActCount > 1) {
