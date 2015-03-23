@@ -49,7 +49,6 @@ import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
-import android.telephony.SubInfoRecord;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.util.Log;
@@ -137,7 +136,10 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
 
         addPreferencesFromResource(R.xml.sounds);
 
-        final PreferenceCategory sound = (PreferenceCategory) findPreference(KEY_SOUND);
+        final PreferenceCategory volumes = (PreferenceCategory) findPreference(KEY_VOLUMES);
+        final PreferenceCategory sounds = (PreferenceCategory) findPreference(KEY_SOUND);
+        final PreferenceCategory vibrate = (PreferenceCategory) findPreference(KEY_VIBRATE);
+
         initVolumePreference(KEY_MEDIA_VOLUME, AudioManager.STREAM_MUSIC,
                 com.android.internal.R.drawable.ic_audio_vol_mute);
         initVolumePreference(KEY_ALARM_VOLUME, AudioManager.STREAM_ALARM,
@@ -213,7 +215,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     }
 
     private void updateRingOrNotificationPreference() {
-        mRingOrNotificationPreference.showIcon(mSuppressor != null
+        mRingPreference.showIcon(mSuppressor != null
                 ? com.android.internal.R.drawable.ic_audio_ring_notif_mute
                 : mRingerMode == AudioManager.RINGER_MODE_VIBRATE
                 ? com.android.internal.R.drawable.ic_audio_ring_notif_vibrate
@@ -231,11 +233,11 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
         final ComponentName suppressor = NotificationManager.from(mContext).getEffectsSuppressor();
         if (Objects.equals(suppressor, mSuppressor)) return;
         mSuppressor = suppressor;
-        if (mRingOrNotificationPreference != null) {
+        if (mRingPreference != null) {
             final String text = suppressor != null ?
                     mContext.getString(com.android.internal.R.string.muted_by,
                             getSuppressorCaption(suppressor)) : null;
-            mRingOrNotificationPreference.setSuppressionText(text);
+            mRingPreference.setSuppressionText(text);
         }
         updateRingOrNotificationPreference();
     }
@@ -453,7 +455,8 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
 
     private void updateNotificationPreferenceState() {
         mNotificationPreference = initVolumePreference(KEY_NOTIFICATION_VOLUME,
-                AudioManager.STREAM_NOTIFICATION);
+                AudioManager.STREAM_NOTIFICATION,
+                com.android.internal.R.drawable.ic_audio_ring_notif_mute);
 
         if (mVoiceCapable) {
             final boolean enabled = Settings.System.getInt(getContentResolver(),
