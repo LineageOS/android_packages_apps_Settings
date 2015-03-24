@@ -203,7 +203,7 @@ public class ManageApplications extends Fragment implements
 
     private boolean mSearchappEnabled;
 
-    public static final int SHOW_PROTECTED_APPS = MENU_OPTIONS_BASE + 10;
+    public static final int SHOW_PROTECTED_APPS = MENU_OPTIONS_BASE + 11;
 
     // sort order
     private int mSortOrder = SORT_ORDER_ALPHA;
