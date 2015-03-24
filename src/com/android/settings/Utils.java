@@ -79,6 +79,7 @@ import com.android.settings.bluetooth.BluetoothSettings;
 import com.android.settings.dashboard.DashboardCategory;
 import com.android.settings.dashboard.DashboardTile;
 import com.android.settings.drawable.CircleFramedDrawable;
+import com.android.settings.wifi.WifiSettings;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -746,6 +747,9 @@ public final class Utils {
         Intent intent = new Intent(Intent.ACTION_MAIN);
         if (BluetoothSettings.class.getName().equals(fragmentName)) {
             intent.setClass(context, SubSettings.BluetoothSubSettings.class);
+            intent.putExtra(SettingsActivity.EXTRA_SHOW_FRAGMENT_AS_SUBSETTING, true);
+        } else if (WifiSettings.class.getName().equals(fragmentName)) {
+            intent.setClass(context, SubSettings.WifiSubSettings.class);
             intent.putExtra(SettingsActivity.EXTRA_SHOW_FRAGMENT_AS_SUBSETTING, true);
         } else {
             intent.setClass(context, SubSettings.class);
