@@ -1118,7 +1118,7 @@ public class ManageApplications extends Fragment implements
             menu.add(0, SHOW_PROTECTED_APPS, 5, R.string.protected_apps)
                     .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
         }
-        menu.add(0, APP_INSTALL_LOCATION, 4, R.string.app_install_location_title)
+        menu.add(0, APP_INSTALL_LOCATION, 6, R.string.app_install_location_title)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
         updateOptionsMenu();
     }
