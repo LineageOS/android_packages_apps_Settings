@@ -1138,6 +1138,10 @@ public class ManageApplications extends Fragment implements
             menu.add(0, APP_INSTALL_LOCATION, lastOptionOrder, R.string.app_install_location_title)
                     .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
         }
+        if(!getResources().getBoolean(R.bool.config_hide_app_install_location)) {
+            menu.add(0, APP_INSTALL_LOCATION, 4, R.string.app_install_location_title)
+                    .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+        }
         updateOptionsMenu();
     }
     
