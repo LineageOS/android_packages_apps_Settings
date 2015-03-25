@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac665da_b94e59bf",
+        "filename": "src/com/android/settings/deviceinfo/StorageVolumePreferenceCategory.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-03-25T10:04:27Z",
+      "side": 1,
+      "message": "Michael, I don\u0027t really understand how you can get to this line.\n\nIn the init of this class there is the next check\n\n boolean allowMediaScan \u003d false;\n if ((mIsInternal \u0026\u0026 Environment.isExternalStorageEmulated()) || mIsPrimary) {\n     allowMediaScan \u003d true;\n } else if (mVolume !\u003d null \u0026\u0026 !mVolume.isRemovable()) {\n     allowMediaScan \u003d true;\n }\n\nIt the first sentence isn\u0027t true and mVolume is null then allowMediaScan will be false, so the refresh button should be hidden and you cannot trigger the storage refresh.\n\nThis is exactly the same check do it here.\n\nif ((mIsInternal \u0026\u0026 Environment.isExternalStorageEmulated()) || mIsPrimary)  and mVolume !\u003d null, so this line never could reach if volume is null\n\nI need your help to debugging this, because i don\u0027t understand what led to this NPE.",
+      "revId": "996ca55b18c0945d571f7f6fb1c0ed3cca77839a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
