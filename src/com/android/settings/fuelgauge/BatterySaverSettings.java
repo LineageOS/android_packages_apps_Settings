@@ -37,6 +37,7 @@ import android.widget.Switch;
 import com.android.settings.R;
 import com.android.settings.SettingsActivity;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 import com.android.settings.notification.SettingPref;
 import com.android.settings.widget.SwitchBar;
 
@@ -62,7 +63,10 @@ public class BatterySaverSettings extends SettingsPreferenceFragment
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        if (mCreated) return;
+        if (mCreated) {
+            mSwitchBar.show();
+            return;
+        }
         mCreated = true;
         addPreferencesFromResource(R.xml.battery_saver_settings);
 
@@ -78,7 +82,8 @@ public class BatterySaverSettings extends SettingsPreferenceFragment
             @Override
             protected String getCaption(Resources res, int value) {
                 if (value > 0 && value < 100) {
-                    return res.getString(R.string.battery_saver_turn_on_automatically_pct, value);
+                    return res.getString(R.string.battery_saver_turn_on_automatically_pct,
+                                         Utils.formatPercentage(value));
                 }
                 return res.getString(R.string.battery_saver_turn_on_automatically_never);
             }

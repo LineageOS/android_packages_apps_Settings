@@ -417,6 +417,8 @@ public class AccountSettings extends SettingsPreferenceFragment
             if (label == null) {
                 continue;
             }
+            final String titleResPackageName = helper.getPackageForType(accountType);
+            final int titleResId = helper.getLabelIdForType(accountType);
 
             final Account[] accounts = AccountManager.get(getActivity())
                     .getAccountsByTypeAsUser(accountType, userHandle);
@@ -430,7 +432,8 @@ public class AccountSettings extends SettingsPreferenceFragment
                 fragmentArguments.putParcelable(EXTRA_USER, userHandle);
 
                 accountTypePreferences.add(new AccountPreference(getActivity(), label,
-                        AccountSyncSettings.class.getName(), fragmentArguments,
+                        titleResPackageName, titleResId, AccountSyncSettings.class.getName(),
+                        fragmentArguments,
                         helper.getDrawableForType(getActivity(), accountType)));
             } else {
                 final Bundle fragmentArguments = new Bundle();
@@ -440,7 +443,8 @@ public class AccountSettings extends SettingsPreferenceFragment
                 fragmentArguments.putParcelable(EXTRA_USER, userHandle);
 
                 accountTypePreferences.add(new AccountPreference(getActivity(), label,
-                        ManageAccountsSettings.class.getName(), fragmentArguments,
+                        titleResPackageName, titleResId, ManageAccountsSettings.class.getName(),
+                        fragmentArguments,
                         helper.getDrawableForType(getActivity(), accountType)));
             }
             helper.preloadDrawableForType(getActivity(), accountType);
@@ -483,6 +487,17 @@ public class AccountSettings extends SettingsPreferenceFragment
         private final CharSequence mTitle;
 
         /**
+         * Packange name used to resolve the resources of the title shown to the user in the new
+         * fragment.
+         */
+        private final String mTitleResPackageName;
+
+        /**
+         * Resource id of the title shown to the user in the new fragment.
+         */
+        private final int mTitleResId;
+
+        /**
          * Full class name of the fragment to display when this tile is
          * selected.
          * @attr ref android.R.styleable#PreferenceHeader_fragment
@@ -495,10 +510,13 @@ public class AccountSettings extends SettingsPreferenceFragment
          */
         private final Bundle mFragmentArguments;
 
-        public AccountPreference(Context context, CharSequence title, String fragment,
-                Bundle fragmentArguments, Drawable icon) {
+        public AccountPreference(Context context, CharSequence title, String titleResPackageName,
+                int titleResId, String fragment, Bundle fragmentArguments,
+                Drawable icon) {
             super(context);
             mTitle = title;
+            mTitleResPackageName = titleResPackageName;
+            mTitleResId = titleResId;
             mFragment = fragment;
             mFragmentArguments = fragmentArguments;
             setWidgetLayoutResource(R.layout.account_type_preference);
@@ -512,8 +530,9 @@ public class AccountSettings extends SettingsPreferenceFragment
         @Override
         public boolean onPreferenceClick(Preference preference) {
             if (mFragment != null) {
-                Utils.startWithFragment(
-                        getContext(), mFragment, mFragmentArguments, null, 0, 0, mTitle);
+                Utils.startWithFragment(getContext(), mFragment, mFragmentArguments,
+                        null /* resultTo */, 0 /* resultRequestCode */, mTitleResPackageName,
+                        mTitleResId, null /* title */);
                 return true;
             }
             return false;
@@ -584,6 +603,7 @@ public class AccountSettings extends SettingsPreferenceFragment
      */
     public static class ConfirmAutoSyncChangeFragment extends DialogFragment {
         private static final String SAVE_ENABLING = "enabling";
+        private static final String SAVE_USER_HANDLE = "userHandle";
         private boolean mEnabling;
         private UserHandle mUserHandle;
 
@@ -602,6 +622,7 @@ public class AccountSettings extends SettingsPreferenceFragment
             final Context context = getActivity();
             if (savedInstanceState != null) {
                 mEnabling = savedInstanceState.getBoolean(SAVE_ENABLING);
+                mUserHandle = (UserHandle) savedInstanceState.getParcelable(SAVE_USER_HANDLE);
             }
 
             final AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -629,6 +650,7 @@ public class AccountSettings extends SettingsPreferenceFragment
         public void onSaveInstanceState(Bundle outState) {
             super.onSaveInstanceState(outState);
             outState.putBoolean(SAVE_ENABLING, mEnabling);
+            outState.putParcelable(SAVE_USER_HANDLE, mUserHandle);
         }
     }
     // TODO Implement a {@link SearchIndexProvider} to allow Indexing and Search of account types

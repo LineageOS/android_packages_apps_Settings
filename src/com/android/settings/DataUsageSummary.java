@@ -949,7 +949,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
     private Boolean mMobileDataEnabled;
 
     private boolean isMobileDataEnabled() {
-        // How about exposing sub based API like TelephonyManager.getDataEnabled(long subId);
+        // How about exposing sub based API like TelephonyManager.getDataEnabled(int subId);
         if (mCurrentTab.startsWith(TAB_SIM)) {
             // as per SUB, return the individual flag
             return android.provider.Settings.Global.getInt(getActivity().getContentResolver(),
@@ -966,7 +966,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
 
     private void setMobileDataEnabled(boolean enabled) {
         if (LOGD) Log.d(TAG, "setMobileDataEnabled()");
-        // How about exposing sub based API like TelephonyManager.setDataEnabled(long subId);
+        // How about exposing sub based API like TelephonyManager.setDataEnabled(int subId);
         if (mCurrentTab.startsWith(TAB_SIM)) {
             int phoneId = multiSimGetCurrentSub();
 
@@ -974,8 +974,8 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
             android.provider.Settings.Global.putInt(getActivity().getContentResolver(),
                     android.provider.Settings.Global.MOBILE_DATA + phoneId, enabled ? 1 : 0);
 
-            long[] subId = SubscriptionManager.getSubId(phoneId);
-            mTelephonyManager.setDataEnabledUsingSubId(subId[0], enabled);
+            int[] subId = SubscriptionManager.getSubId(phoneId);
+            mTelephonyManager.setDataEnabled(subId[0], enabled);
         } else {
             mTelephonyManager.setDataEnabled(enabled);
             mMobileDataEnabled = enabled;
@@ -1388,7 +1388,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
     }
 
     private static String getActiveSubscriberId(int phoneId) {
-        long[] subId = SubscriptionManager.getSubId(phoneId);
+        int[] subId = SubscriptionManager.getSubId(phoneId);
         return TelephonyManager.getDefault().getSubscriberId(subId[0]);
     }
 
@@ -2340,7 +2340,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
         final TelephonyManager tele = TelephonyManager.from(context);
 
         // require both supported network and ready SIM
-        long defaultSubId = SubscriptionManager.getDefaultDataSubId();
+        int defaultSubId = SubscriptionManager.getDefaultDataSubId();
         int slotId = SubscriptionManager.getSlotId(defaultSubId);
         return conn.isNetworkSupported(TYPE_MOBILE) &&
                 tele.getSimState(slotId) == SIM_STATE_READY;

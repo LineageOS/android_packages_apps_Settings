@@ -37,10 +37,8 @@ import android.text.TextUtils;
 import android.text.format.Time;
 
 import com.google.android.collect.Lists;
-import com.google.android.collect.Sets;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Objects;
 
 /**
@@ -77,11 +75,6 @@ public class NetworkPolicyEditor {
             }
 
             mPolicies.add(policy);
-        }
-
-        // force combine any split policies when disabled
-        if (!ENABLE_SPLIT_POLICIES) {
-            modified |= forceMobilePolicyCombined();
         }
 
         // when we cleaned policies above, write back changes
@@ -246,21 +239,6 @@ public class NetworkPolicyEditor {
         if (modified) writeAsync();
     }
 
-    /**
-     * Remove any split {@link NetworkPolicy}.
-     */
-    private boolean forceMobilePolicyCombined() {
-        final HashSet<String> subscriberIds = Sets.newHashSet();
-        for (NetworkPolicy policy : mPolicies) {
-            subscriberIds.add(policy.template.getSubscriberId());
-        }
-
-        boolean modified = false;
-        for (String subscriberId : subscriberIds) {
-            modified |= setMobilePolicySplitInternal(subscriberId, false);
-        }
-        return modified;
-    }
 
     @Deprecated
     public boolean isMobilePolicySplit(String subscriberId) {

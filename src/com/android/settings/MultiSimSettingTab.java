@@ -42,7 +42,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.Settings;
-import android.telephony.SubInfoRecord;
+import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
@@ -124,10 +124,10 @@ public class MultiSimSettingTab extends TabActivity {
     }
 
     public static String getMultiSimName(Context context, int subscription) {
-        final SubInfoRecord sir = findRecordBySlotId(context, subscription);
+        final SubscriptionInfo sir = findRecordBySlotId(context, subscription);
 
         if (sir != null) {
-            return sir.displayName;
+            return sir.getDisplayName().toString();
         } else {
             return context.getResources().getString(R.string.sim_card_number_title,
                     subscription + 1);
@@ -138,15 +138,16 @@ public class MultiSimSettingTab extends TabActivity {
      * finds a record with slotId.
      * Since the number of SIMs are few, an array is fine.
      */
-    public static SubInfoRecord findRecordBySlotId(Context context, final int slotId) {
-        List<SubInfoRecord> subInfoList = SubscriptionManager.getActiveSubInfoList();
+    public static SubscriptionInfo findRecordBySlotId(Context context, final int slotId) {
+        List<SubscriptionInfo> subInfoList =
+                SubscriptionManager.from(context).getActiveSubscriptionInfoList();
 
         if (subInfoList != null){
             final int availableSubInfoLength = subInfoList.size();
 
             for (int i = 0; i < availableSubInfoLength; ++i) {
-                final SubInfoRecord sir = subInfoList.get(i);
-                if (sir.slotId== slotId) {
+                final SubscriptionInfo sir = subInfoList.get(i);
+                if (sir.getSimSlotIndex() == slotId) {
                     //Right now we take the first subscription on a SIM.
                     return sir;
                 }

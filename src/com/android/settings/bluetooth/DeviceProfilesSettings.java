@@ -201,7 +201,7 @@ public final class DeviceProfilesSettings extends SettingsPreferenceFragment
 
         int iconResource = profile.getDrawableResource(mCachedDevice.getBtClass());
         if (iconResource != 0) {
-            pref.setIcon(getResources().getDrawable(iconResource));
+            pref.setIcon(getActivity().getDrawable(iconResource));
         }
 
         refreshProfilePreference(pref, profile);
@@ -331,6 +331,12 @@ public final class DeviceProfilesSettings extends SettingsPreferenceFragment
                     final int pbapPermission = mCachedDevice.getPhonebookPermissionChoice();
                     Log.d(TAG, "refreshProfiles: pbapPermission = " + pbapPermission);
                     if (pbapPermission != CachedBluetoothDevice.ACCESS_UNKNOWN)
+                        continue;
+                }
+                if (profile instanceof MapProfile) {
+                    final int mapPermission = mCachedDevice.getMessagePermissionChoice();
+                    Log.d(TAG, "refreshProfiles: mapPermission = " + mapPermission);
+                    if (mapPermission != CachedBluetoothDevice.ACCESS_UNKNOWN)
                         continue;
                 }
                 Log.d(TAG, "Removing " + profile.toString() + " from profile list");

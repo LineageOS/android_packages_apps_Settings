@@ -17,12 +17,14 @@
 package com.android.settings.bluetooth;
 
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothUuid;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.ParcelUuid;
 import android.os.PowerManager;
 import android.os.RemoteException;
 import android.os.ServiceManager;
@@ -372,20 +374,7 @@ public final class BluetoothPairingDialog extends AlertActivity implements
         }
     }
 
-    private void allowPhonebookAccess() {
-        CachedBluetoothDevice cachedDevice = mCachedDeviceManager.findDevice(mDevice);
-        if (cachedDevice == null) {
-            cachedDevice = mCachedDeviceManager.addDevice(
-                    mBluetoothManager.getBluetoothAdapter(),
-                    mBluetoothManager.getProfileManager(),
-                    mDevice);
-        }
-        cachedDevice.setPhonebookPermissionChoice(CachedBluetoothDevice.ACCESS_ALLOWED);
-    }
-
     private void onPair(String value) {
-        allowPhonebookAccess();
-
         switch (mType) {
             case BluetoothDevice.PAIRING_VARIANT_PIN:
                 byte[] pinBytes = BluetoothDevice.convertPinToBytes(value);

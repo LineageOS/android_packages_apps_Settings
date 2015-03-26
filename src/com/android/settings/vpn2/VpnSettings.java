@@ -142,10 +142,12 @@ public class VpnSettings extends SettingsPreferenceFragment implements
                 while (mPreferences.containsKey(Long.toHexString(millis))) {
                     ++millis;
                 }
-                mDialog = new VpnDialog(
-                        getActivity(), this, new VpnProfile(Long.toHexString(millis)), true);
-                mDialog.setOnDismissListener(this);
-                mDialog.show();
+                if (mDialog == null) {
+                    mDialog = new VpnDialog(
+                            getActivity(), this, new VpnProfile(Long.toHexString(millis)), true);
+                    mDialog.setOnDismissListener(this);
+                    mDialog.show();
+                }
                 return true;
             }
             case R.id.vpn_lockdown: {

@@ -29,6 +29,7 @@ import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
 import android.telephony.SubscriptionManager;
 import android.util.Log;
 import android.widget.Toast;
@@ -93,7 +94,7 @@ public class IccLockSettings extends PreferenceActivity
     private Phone mPhone;
 
     private EditPinPreference mPinDialog;
-    private CheckBoxPreference mPinToggle;
+    private SwitchPreference mPinToggle;
 
     private Resources mRes;
 
@@ -169,7 +170,7 @@ public class IccLockSettings extends PreferenceActivity
         addPreferencesFromResource(R.xml.sim_lock_settings);
 
         mPinDialog = (EditPinPreference) findPreference(PIN_DIALOG);
-        mPinToggle = (CheckBoxPreference) findPreference(PIN_TOGGLE);
+        mPinToggle = (SwitchPreference) findPreference(PIN_TOGGLE);
         if (savedInstanceState != null &&
                savedInstanceState.containsKey(DIALOG_STATE)) {
             mDialogState = savedInstanceState.getInt(DIALOG_STATE);
@@ -201,7 +202,7 @@ public class IccLockSettings extends PreferenceActivity
         getPreferenceScreen().setPersistent(false);
 
         Intent intent = getIntent();
-        long subId = intent.getLongExtra(SelectSubscription.SUBSCRIPTION_KEY,
+        int subId = intent.getIntExtra(SelectSubscription.SUBSCRIPTION_KEY,
                 SubscriptionManager.getDefaultSubId());
         // Use the right phone based on the subscription selected.
         int phoneId = SubscriptionManager.getPhoneId(subId);

@@ -288,7 +288,8 @@ public class SearchResultsSummary extends Fragment {
         setSuggestionsVisibility(false);
         updateSearchResults();
         saveQueryToDatabase();
-        return true;
+
+        return false;
     }
 
     public boolean onQueryTextChange(String query) {
