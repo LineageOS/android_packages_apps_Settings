@@ -56,6 +56,18 @@
             android:textColor="?android:attr/textColorSecondary"
             android:singleLine="true" />
 
+        <TextView android:id="@+id/start_volume_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:layout_toEndOf="@id/start_volume_label"
+            android:layout_alignBaseline="@id/start_volume_label"
+            android:layout_alignParentEnd="true"
+            android:gravity="end"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="?android:attr/textColorSecondary"
+            android:singleLine="true" />
+
         <SeekBar android:id="@+id/start_volume"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
