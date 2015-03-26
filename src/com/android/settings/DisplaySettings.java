@@ -223,7 +223,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private static boolean isLiftToWakeAvailable(Context context) {
         SensorManager sensors = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
-        return sensors != null && sensors.getDefaultSensor(Sensor.TYPE_WAKE_GESTURE) != null;
+        return sensors != null && sensors.getDefaultSensor(Sensor.TYPE_WAKE_GESTURE) != null
+                       && !context.getResources().getBoolean(R.bool.config_forceDisableLiftToWake);
     }
 
     private static boolean isDozeAvailable(Context context) {
