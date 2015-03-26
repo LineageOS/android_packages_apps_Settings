@@ -63,6 +63,18 @@
             android:layout_alignParentEnd="true"
             android:max="1000" />
 
+        <TextView android:id="@+id/start_volume_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:layout_toEndOf="@id/start_volume_label"
+            android:layout_alignBaseline="@id/start_volume_label"
+            android:layout_alignParentEnd="true"
+            android:gravity="end"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="?android:attr/textColorSecondary"
+            android:singleLine="true" />
+
         <TextView android:id="@+id/ramp_up_time_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

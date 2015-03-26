@@ -46,6 +46,8 @@ public class IncreasingRingVolumePreference extends Preference implements
     }
 
     private SeekBar mStartVolumeSeekBar;
+    private TextView mStartVolumeValue;
+
     private SeekBar mRampUpTimeSeekBar;
     private TextView mRampUpTimeValue;
 
@@ -120,6 +122,7 @@ public class IncreasingRingVolumePreference extends Preference implements
         if (seekBar == mStartVolumeSeekBar) return;
 
         mStartVolumeSeekBar = seekBar;
+        mStartVolumeValue = (TextView) view.findViewById(R.id.start_volume_value);
         mRampUpTimeSeekBar = (SeekBar) view.findViewById(R.id.ramp_up_time);
         mRampUpTimeValue = (TextView) view.findViewById(R.id.ramp_up_time_value);
 
@@ -130,6 +133,7 @@ public class IncreasingRingVolumePreference extends Preference implements
                 Settings.System.INCREASING_RING_RAMP_UP_TIME, 10);
 
         mStartVolumeSeekBar.setProgress(Math.round(startVolume * 1000F));
+        mStartVolumeValue.setText(String.format("%d%%", Math.round(startVolume * 100f)));
         mStartVolumeSeekBar.setOnSeekBarChangeListener(this);
         mRampUpTimeSeekBar.setOnSeekBarChangeListener(this);
         mRampUpTimeSeekBar.setProgress((rampUpTime / 5) - 1);
@@ -152,9 +156,12 @@ public class IncreasingRingVolumePreference extends Preference implements
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromTouch) {
         ContentResolver cr = getContext().getContentResolver();
-        if (fromTouch && seekBar == mStartVolumeSeekBar) {
-            Settings.System.putFloat(cr, Settings.System.INCREASING_RING_START_VOLUME,
+        if (seekBar == mStartVolumeSeekBar) {
+            mStartVolumeValue.setText(String.format("%d%%", Math.round(progress / 10F)));
+            if (fromTouch) {
+                Settings.System.putFloat(cr, Settings.System.INCREASING_RING_START_VOLUME,
                         (float) progress / 1000F);
+            }
         } else if (seekBar == mRampUpTimeSeekBar) {
             int seconds = (progress + 1) * 5;
             mRampUpTimeValue.setText(
