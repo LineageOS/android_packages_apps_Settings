@@ -16,8 +16,12 @@
 
 package com.android.settings;
 
+import android.app.SearchManager;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -25,6 +29,7 @@ import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.Handler;
 import android.preference.CheckBoxPreference;
+import android.os.UserHandle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
@@ -40,6 +45,8 @@ import android.view.WindowManagerGlobal;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+
+import java.util.List;
 
 public class ButtonSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
@@ -133,6 +140,18 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                     .Secure.INCALL_POWER_BUTTON_BEHAVIOR_HANGUP));
         }
 
+        Intent intent = ((SearchManager) getSystemService(Context.SEARCH_SERVICE))
+                .getAssistIntent(getActivity(), true, UserHandle.USER_CURRENT);
+        List<ResolveInfo> list = null;
+        PackageManager pm = getPackageManager();
+        if (intent != null) {
+            list = pm.queryIntentActivities(intent, 0);
+        }
+        boolean assistAvailable = list != null && !list.isEmpty();
+        intent = new Intent(Intent.ACTION_SEARCH_LONG_PRESS);
+        list = pm.queryIntentActivities(intent, 0);
+        boolean voiceAssistAvailable = !list.isEmpty();
+
         if (hasHomeKey) {
             int defaultLongPressAction = res.getInteger(
                     com.android.internal.R.integer.config_longPressOnHomeBehavior);
@@ -152,11 +171,31 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                     Settings.System.KEY_HOME_LONG_PRESS_ACTION,
                     defaultLongPressAction);
             mHomeLongPressAction = initActionList(KEY_HOME_LONG_PRESS, longPressAction);
+            if (!assistAvailable) {
+                filterEntry(mHomeLongPressAction,
+                        getString(R.string.hardware_keys_action_search),
+                        ACTION_SEARCH);
+            }
+            if (!voiceAssistAvailable) {
+                filterEntry(mHomeLongPressAction,
+                        getString(R.string.hardware_keys_action_voice_search),
+                        ACTION_VOICE_SEARCH);
+            }
 
             int doubleTapAction = Settings.System.getInt(resolver,
                     Settings.System.KEY_HOME_DOUBLE_TAP_ACTION,
                     defaultDoubleTapAction);
             mHomeDoubleTapAction = initActionList(KEY_HOME_DOUBLE_TAP, doubleTapAction);
+            if (!assistAvailable) {
+                filterEntry(mHomeDoubleTapAction,
+                        getString(R.string.hardware_keys_action_search),
+                        ACTION_SEARCH);
+            }
+            if (!voiceAssistAvailable) {
+                filterEntry(mHomeDoubleTapAction,
+                        getString(R.string.hardware_keys_action_voice_search),
+                        ACTION_VOICE_SEARCH);
+            }
 
             int defaultAnswerAction = 0;
             int answerCallAction = Settings.System.getInt(resolver,
@@ -173,11 +212,31 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             int pressAction = Settings.System.getInt(resolver,
                     Settings.System.KEY_MENU_ACTION, ACTION_MENU);
             mMenuPressAction = initActionList(KEY_MENU_PRESS, pressAction);
+            if (!assistAvailable) {
+                filterEntry(mMenuPressAction,
+                        getString(R.string.hardware_keys_action_search),
+                        ACTION_SEARCH);
+            }
+            if (!voiceAssistAvailable) {
+                filterEntry(mMenuPressAction,
+                        getString(R.string.hardware_keys_action_voice_search),
+                        ACTION_VOICE_SEARCH);
+            }
 
             int longPressAction = Settings.System.getInt(resolver,
                         Settings.System.KEY_MENU_LONG_PRESS_ACTION,
                         hasAssistKey ? ACTION_NOTHING : ACTION_SEARCH);
             mMenuLongPressAction = initActionList(KEY_MENU_LONG_PRESS, longPressAction);
+            if (!assistAvailable) {
+                filterEntry(mMenuLongPressAction,
+                        getString(R.string.hardware_keys_action_search),
+                        ACTION_SEARCH);
+            }
+            if (!voiceAssistAvailable) {
+                filterEntry(mMenuLongPressAction,
+                        getString(R.string.hardware_keys_action_voice_search),
+                        ACTION_VOICE_SEARCH);
+            }
 
             hasAnyBindableKey = true;
         } else {
@@ -197,6 +256,36 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             checkBoxPreference.setOnPreferenceChangeListener(this);
         }
         return checkBoxPreference;
+    }
+
+    private static void filterEntry(ListPreference listPreference, String entry,
+        int entryValue) {
+        CharSequence[] entries = listPreference.getEntries();
+        int size = entries.length;
+        CharSequence[] filteredEntries = new CharSequence[size - 1];
+
+        int pos = 0; //new field in
+        for (int i = 0; i < size; i++) {
+            if (!entry.equals(entries[i])) {
+                filteredEntries[pos] = entries[i];
+                pos++;
+            }
+        }
+        listPreference.setEntries(filteredEntries);
+
+        CharSequence[] entryValues = listPreference.getEntryValues();
+        size = entryValues.length;
+        CharSequence[] filteredEntryValues = new CharSequence[size - 1];
+
+        pos = 0;
+        for (int i = 0; i < size; i++) {
+            if (entryValue != Integer.parseInt((String) entryValues[i])) {
+                filteredEntryValues[pos] = entryValues[i];
+                pos++;
+            }
+        }
+
+        listPreference.setEntryValues(filteredEntryValues);
     }
 
     private void handleCheckBoxChange(CheckBoxPreference pref, Object newValue, String setting) {
