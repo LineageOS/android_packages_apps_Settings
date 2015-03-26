@@ -16,6 +16,7 @@
 
 package com.android.settings;
 
+import android.app.SearchManager;
 import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -29,6 +30,7 @@ import android.hardware.CmHardwareManager;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.Handler;
+import android.os.UserHandle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
@@ -278,6 +280,18 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             result.put(CATEGORY_POWER, null);
         }
 
+        Intent intent = ((SearchManager) context.getSystemService(Context.SEARCH_SERVICE))
+                .getAssistIntent(context, true, UserHandle.USER_CURRENT);
+        PackageManager pm = context.getPackageManager();
+        List<ResolveInfo> list = null;
+        if (intent != null) {
+            list = pm.queryIntentActivities(intent, 0);
+        }
+        boolean assistAvailable = list != null && !list.isEmpty();
+        intent = new Intent(Intent.ACTION_SEARCH_LONG_PRESS);
+        list = pm.queryIntentActivities(intent, 0);
+        boolean voiceAssistAvailable = !list.isEmpty();
+
         if (hasHomeKey) {
             if (!showHomeWake) {
                 result.put(Settings.System.HOME_WAKE_SCREEN, CATEGORY_HOME);
@@ -310,12 +324,32 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                         defaultLongPressAction);
                 settings.mHomeLongPressAction = settings.initActionList(
                         KEY_HOME_LONG_PRESS, longPressAction);
+                if (!assistAvailable) {
+                    filterEntry(settings.mHomeLongPressAction,
+                            context.getString(R.string.hardware_keys_action_search),
+                            ACTION_SEARCH);
+                }
+                if (!voiceAssistAvailable) {
+                    filterEntry(settings.mHomeLongPressAction,
+                            context.getString(R.string.hardware_keys_action_voice_search),
+                            ACTION_VOICE_SEARCH);
+                }
 
                 int doubleTapAction = Settings.System.getInt(resolver,
                         Settings.System.KEY_HOME_DOUBLE_TAP_ACTION,
                         defaultDoubleTapAction);
                 settings.mHomeDoubleTapAction = settings.initActionList(
                         KEY_HOME_DOUBLE_TAP, doubleTapAction);
+                if (!assistAvailable) {
+                    filterEntry(settings.mHomeDoubleTapAction,
+                            context.getString(R.string.hardware_keys_action_search),
+                            ACTION_SEARCH);
+                }
+                if (!voiceAssistAvailable) {
+                    filterEntry(settings.mHomeDoubleTapAction,
+                            context.getString(R.string.hardware_keys_action_voice_search),
+                            ACTION_VOICE_SEARCH);
+                }
             }
 
         } else {
@@ -341,12 +375,32 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                         Settings.System.KEY_MENU_ACTION, ACTION_MENU);
                 settings.mMenuPressAction = settings.initActionList(
                         KEY_MENU_PRESS, pressAction);
+                if (!assistAvailable) {
+                    filterEntry(settings.mMenuPressAction,
+                            context.getString(R.string.hardware_keys_action_search),
+                            ACTION_SEARCH);
+                }
+                if (!voiceAssistAvailable) {
+                    filterEntry(settings.mMenuPressAction,
+                            context.getString(R.string.hardware_keys_action_voice_search),
+                            ACTION_VOICE_SEARCH);
+                }
 
                 int longPressAction = Settings.System.getInt(resolver,
                         Settings.System.KEY_MENU_LONG_PRESS_ACTION,
                         hasAssistKey ? ACTION_NOTHING : ACTION_SEARCH);
                 settings.mMenuLongPressAction = settings.initActionList(
                         KEY_MENU_LONG_PRESS, longPressAction);
+                if (!assistAvailable) {
+                    filterEntry(settings.mMenuLongPressAction,
+                            context.getString(R.string.hardware_keys_action_search),
+                            ACTION_SEARCH);
+                }
+                if (!voiceAssistAvailable) {
+                    filterEntry(settings.mMenuLongPressAction,
+                            context.getString(R.string.hardware_keys_action_voice_search),
+                            ACTION_VOICE_SEARCH);
+                }
             }
         } else {
             result.put(CATEGORY_MENU, null);
@@ -362,11 +416,31 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                         Settings.System.KEY_ASSIST_ACTION, ACTION_SEARCH);
                 settings.mAssistPressAction = settings.initActionList(
                         KEY_ASSIST_PRESS, pressAction);
+                if (!assistAvailable) {
+                    filterEntry(settings.mAssistPressAction,
+                            context.getString(R.string.hardware_keys_action_search),
+                            ACTION_SEARCH);
+                }
+                if (!voiceAssistAvailable) {
+                    filterEntry(settings.mAssistPressAction,
+                            context.getString(R.string.hardware_keys_action_voice_search),
+                            ACTION_VOICE_SEARCH);
+                }
 
                 int longPressAction = Settings.System.getInt(resolver,
                         Settings.System.KEY_ASSIST_LONG_PRESS_ACTION, ACTION_VOICE_SEARCH);
                 settings.mAssistLongPressAction = settings.initActionList(
                         KEY_ASSIST_LONG_PRESS, longPressAction);
+                if (!assistAvailable) {
+                    filterEntry(settings.mAssistLongPressAction,
+                            context.getString(R.string.hardware_keys_action_search),
+                            ACTION_SEARCH);
+                }
+                if (!voiceAssistAvailable) {
+                    filterEntry(settings.mAssistLongPressAction,
+                            context.getString(R.string.hardware_keys_action_voice_search),
+                            ACTION_VOICE_SEARCH);
+                }
             }
         } else {
             result.put(CATEGORY_ASSIST, null);
@@ -382,11 +456,31 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                         Settings.System.KEY_APP_SWITCH_ACTION, ACTION_APP_SWITCH);
                 settings.mAppSwitchPressAction = settings.initActionList(
                         KEY_APP_SWITCH_PRESS, pressAction);
+                if (!assistAvailable) {
+                    filterEntry(settings.mAppSwitchPressAction,
+                            context.getString(R.string.hardware_keys_action_search),
+                            ACTION_SEARCH);
+                }
+                if (!voiceAssistAvailable) {
+                    filterEntry(settings.mAppSwitchPressAction,
+                            context.getString(R.string.hardware_keys_action_voice_search),
+                            ACTION_VOICE_SEARCH);
+                }
 
                 int longPressAction = Settings.System.getInt(resolver,
                         Settings.System.KEY_APP_SWITCH_LONG_PRESS_ACTION, ACTION_NOTHING);
                 settings.mAppSwitchLongPressAction = settings.initActionList(
                         KEY_APP_SWITCH_LONG_PRESS, longPressAction);
+                if (!assistAvailable) {
+                    filterEntry(settings.mAppSwitchLongPressAction,
+                            context.getString(R.string.hardware_keys_action_search),
+                            ACTION_SEARCH);
+                }
+                if (!voiceAssistAvailable) {
+                    filterEntry(settings.mAppSwitchLongPressAction,
+                            context.getString(R.string.hardware_keys_action_voice_search),
+                            ACTION_VOICE_SEARCH);
+                }
             }
         } else {
             result.put(CATEGORY_APPSWITCH, null);
@@ -426,6 +520,36 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         }
 
         return result;
+    }
+
+    private static void filterEntry(ListPreference listPreference, String entry,
+        int entryValue) {
+        CharSequence[] entries = listPreference.getEntries();
+        int size = entries.length;
+        CharSequence[] filteredEntires = new CharSequence[size - 1];
+
+        int pos = 0; //new field in
+        for (int i = 0; i < size; i++) {
+            if (!entry.equals(entries[i])) {
+                filteredEntires[pos] = entries[i];
+                pos++;
+            }
+        }
+        listPreference.setEntries(filteredEntires);
+
+        CharSequence[] entryValues = listPreference.getEntryValues();
+        size = entryValues.length;
+        CharSequence[] filteredEntryValues = new CharSequence[size - 1];
+
+        pos = 0;
+        for (int i = 0; i < size; i++) {
+            if (entryValue != Integer.parseInt(((String) entryValues[i]))) {
+                filteredEntryValues[pos] = entryValues[i];
+                pos++;
+            }
+        }
+
+        listPreference.setEntryValues(filteredEntryValues);
     }
 
     @Override
