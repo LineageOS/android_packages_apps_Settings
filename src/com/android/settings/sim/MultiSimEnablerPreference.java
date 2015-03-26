@@ -513,7 +513,8 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
         TextView carrierView = (TextView)dialogLayout.findViewById(R.id.carrier);
         carrierView.setText(getNetOperatorName());
 
-        builder.setTitle(R.string.sim_editor_title);
+        final Resources res = mContext.getResources();
+        builder.setTitle(res.getString(R.string.sim_editor_title, mSlotId + 1));
 
         builder.setPositiveButton(R.string.okay, new DialogInterface.OnClickListener() {
             @Override
