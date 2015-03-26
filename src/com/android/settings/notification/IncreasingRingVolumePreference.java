@@ -46,6 +46,8 @@ public class IncreasingRingVolumePreference extends Preference implements
     }
 
     private SeekBar mStartVolumeSeekBar;
+    private TextView mStartVolumeValue;
+
     private SeekBar mRampUpTimeSeekBar;
     private TextView mRampUpTimeValue;
 
@@ -120,6 +122,7 @@ public class IncreasingRingVolumePreference extends Preference implements
         if (seekBar == mStartVolumeSeekBar) return;
 
         mStartVolumeSeekBar = seekBar;
+        mStartVolumeValue = (TextView) view.findViewById(R.id.start_volume_value);
         mRampUpTimeSeekBar = (SeekBar) view.findViewById(R.id.ramp_up_time);
         mRampUpTimeValue = (TextView) view.findViewById(R.id.ramp_up_time_value);
 
@@ -135,6 +138,8 @@ public class IncreasingRingVolumePreference extends Preference implements
         // on first instance of an object
         if (Math.round(startVolume * 1000F) != 0) {
            mStartVolumeSeekBar.setProgress(Math.round(startVolume * 1000F));
+        } else {
+            updateText(mStartVolumeValue, 0);
         }
 
         // 5 is ths start value
@@ -162,9 +167,12 @@ public class IncreasingRingVolumePreference extends Preference implements
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromTouch) {
         ContentResolver cr = getContext().getContentResolver();
-        if (fromTouch && seekBar == mStartVolumeSeekBar) {
-            Settings.System.putFloat(cr, Settings.System.INCREASING_RING_START_VOLUME,
+        if (seekBar == mStartVolumeSeekBar) {
+            updateText(mStartVolumeValue, progress);
+            if (fromTouch) {
+                Settings.System.putFloat(cr, Settings.System.INCREASING_RING_START_VOLUME,
                         (float) progress / 1000F);
+            }
         } else if (seekBar == mRampUpTimeSeekBar) {
             updateText(mRampUpTimeValue, progress);
             if (fromTouch) {
@@ -179,6 +187,8 @@ public class IncreasingRingVolumePreference extends Preference implements
             int seconds = (value + 1) * 5;
             view.setText(
                     Formatter.formatShortElapsedTime(getContext(), seconds * 1000));
+        } else if (view == mStartVolumeValue) {
+            view.setText(String.format("%d%%", Math.round(value / 10F)));
         }
     }
 
