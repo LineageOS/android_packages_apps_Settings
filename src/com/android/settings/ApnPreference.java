@@ -51,7 +51,6 @@ public class ApnPreference extends Preference implements
     private static CompoundButton mCurrentChecked = null;
     private boolean mProtectFromCheckedChange = false;
     private boolean mSelectable = true;
-    private boolean mApnReadOnly = false;
 
     @Override
     public View getView(View convertView, ViewGroup parent) {
@@ -119,9 +118,7 @@ public class ApnPreference extends Preference implements
             if (context != null) {
                 int pos = Integer.parseInt(getKey());
                 Uri url = ContentUris.withAppendedId(Telephony.Carriers.CONTENT_URI, pos);
-                Intent intent = new Intent(Intent.ACTION_EDIT, url);
-                intent.putExtra("DISABLE_EDITOR", mApnReadOnly);
-                context.startActivity(intent);
+                context.startActivity(new Intent(Intent.ACTION_EDIT, url));
             }
         }
     }
@@ -132,9 +129,5 @@ public class ApnPreference extends Preference implements
 
     public boolean getSelectable() {
         return mSelectable;
-    }
-
-    public void setApnReadOnly(boolean apnReadOnly){
-        mApnReadOnly = apnReadOnly;
     }
 }
