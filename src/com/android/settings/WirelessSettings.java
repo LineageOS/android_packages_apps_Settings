@@ -66,6 +66,7 @@ public class WirelessSettings extends SettingsPreferenceFragment
     private static final String TAG = "WirelessSettings";
 
     private static final String KEY_TOGGLE_AIRPLANE = "toggle_airplane";
+    private static final String KEY_TOGGLE_WIFI_ONLY = "toggle_wifi_only";
     private static final String KEY_TOGGLE_NFC = "toggle_nfc";
     private static final String KEY_WIMAX_SETTINGS = "wimax_settings";
     private static final String KEY_ANDROID_BEAM_SETTINGS = "android_beam_settings";
@@ -84,6 +85,7 @@ public class WirelessSettings extends SettingsPreferenceFragment
 
     private AirplaneModeEnabler mAirplaneModeEnabler;
     private SwitchPreference mAirplaneModePreference;
+    private SwitchPreference mWifiOnlyModePreference;
     private NfcEnabler mNfcEnabler;
     private NfcAdapter mNfcAdapter;
     private NsdEnabler mNsdEnabler;
@@ -116,6 +118,7 @@ public class WirelessSettings extends SettingsPreferenceFragment
         } else if (preference == findPreference(KEY_MANAGE_MOBILE_PLAN)) {
             onManageMobilePlanClick();
         }
+
         // Let the intents be launched by the Preference manager
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
@@ -266,6 +269,8 @@ public class WirelessSettings extends SettingsPreferenceFragment
 
         final Activity activity = getActivity();
         mAirplaneModePreference = (SwitchPreference) findPreference(KEY_TOGGLE_AIRPLANE);
+        mWifiOnlyModePreference = (SwitchPreference) findPreference(KEY_TOGGLE_WIFI_ONLY);
+        mWifiOnlyModePreference.setOnPreferenceChangeListener(this);
         SwitchPreference nfc = (SwitchPreference) findPreference(KEY_TOGGLE_NFC);
 
         PreferenceScreen androidBeam = (PreferenceScreen) findPreference(KEY_ANDROID_BEAM_SETTINGS);
@@ -285,7 +290,10 @@ public class WirelessSettings extends SettingsPreferenceFragment
 
         String toggleable = Settings.Global.getString(activity.getContentResolver(),
                 Settings.Global.AIRPLANE_MODE_TOGGLEABLE_RADIOS);
-
+        boolean isChecked = 1 == Settings.Global.getInt(activity.getContentResolver(),
+                                                 Settings.Global.SET_WIFI_ONLY,
+                                                 0);
+        mWifiOnlyModePreference.setChecked(isChecked);
         //enable/disable wimax depending on the value in config.xml
         final boolean isWimaxEnabled = !isSecondaryUser && this.getResources().getBoolean(
                 com.android.internal.R.bool.config_wimaxEnabled);
@@ -469,6 +477,11 @@ public class WirelessSettings extends SettingsPreferenceFragment
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == mSmsApplicationPreference && newValue != null) {
             SmsApplication.setDefaultApplication(newValue.toString(), getActivity());
+            return true;
+        } else if (mWifiOnlyModePreference == preference) {
+            Settings.Global.putInt(getActivity().getContentResolver(),
+                                                    Settings.Global.SET_WIFI_ONLY,
+                                                    (boolean)newValue ? 1:0);
             return true;
         }
         return false;
