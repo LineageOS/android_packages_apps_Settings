@@ -128,14 +128,26 @@ public class IncreasingRingVolumePreference extends Preference implements
 
         final ContentResolver cr = getContext().getContentResolver();
         float startVolume = Settings.System.getFloat(cr,
-                Settings.System.INCREASING_RING_START_VOLUME, 0.1f);
+                Settings.System.INCREASING_RING_START_VOLUME, 0.1f) * 1000F;
         int rampUpTime = Settings.System.getInt(cr,
-                Settings.System.INCREASING_RING_RAMP_UP_TIME, 10);
+                Settings.System.INCREASING_RING_RAMP_UP_TIME, 10) / 5;
 
         mStartVolumeSeekBar.setOnSeekBarChangeListener(this);
-        mStartVolumeSeekBar.setProgress(Math.round(startVolume * 1000F));
         mRampUpTimeSeekBar.setOnSeekBarChangeListener(this);
-        mRampUpTimeSeekBar.setProgress((rampUpTime / 5) - 1);
+
+        // when seek bar is set 0, it ignores the change because it is already at 0
+        // on first instance of an object
+        if (Math.round(startVolume) == 0) {
+            onProgressChanged(mStartVolumeSeekBar, 0, false);
+        } else {
+            mStartVolumeSeekBar.setProgress(Math.round(startVolume));
+        }
+
+        if ((rampUpTime - 1) == 0){
+            onProgressChanged(mRampUpTimeSeekBar, 0, false);
+        } else {
+            mRampUpTimeSeekBar.setProgress(rampUpTime - 1);
+        }
     }
 
     @Override
