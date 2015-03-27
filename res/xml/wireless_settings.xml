@@ -24,6 +24,11 @@
         android:persistent="false"
         android:disableDependentsState="true" />
 
+    <SwitchPreference
+        android:key="toggle_wifi_only"
+        android:title="@string/wifi_only_mode"
+        android:persistent="false" />
+
     <com.android.settings.AppListPreference
         android:key="sms_application"
         android:title="@string/sms_application_title"
