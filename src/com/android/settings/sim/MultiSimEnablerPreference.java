@@ -86,6 +86,7 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
     private static final int CONFIRM_ALERT_DLG_ID = 1;
     private static final int ERROR_ALERT_DLG_ID = 2;
     private static final int RESULT_ALERT_DLG_ID = 3;
+    private static final int SIM_ID[] = {1, 2};
 
     private int mSlotId;
     private SubscriptionInfo mSir;
@@ -334,7 +335,19 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
                 .setTitle(title);
         switch(dialogId) {
             case CONFIRM_ALERT_DLG_ID:
-                builder.setMessage(mContext.getString(R.string.sim_enabler_need_disable_sim));
+                String message;
+                if (mContext.getResources().getBoolean(R.bool.confirm_to_switch_data_service)) {
+                    if (SubscriptionManager.getDefaultDataSubId() == mSir.getSubscriptionId()) {
+                        message = mContext.getString(R.string.sim_enabler_need_switch_data_service,
+                                SIM_ID[1 - mSlotId]);
+                    } else {
+                        message = mContext.getString(R.string.sim_enabler_will_disable_sim);
+                    }
+                    builder.setTitle(R.string.sim_enabler_will_disable_sim_title);
+                } else {
+                    message = mContext.getString(R.string.sim_enabler_need_disable_sim);
+                }
+                builder.setMessage(message);
                 builder.setPositiveButton(android.R.string.ok, mDialogClickListener);
                 builder.setNegativeButton(android.R.string.no, mDialogClickListener);
                 builder.setOnCancelListener(mDialogCanceListener);
