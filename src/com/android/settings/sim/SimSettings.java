@@ -376,6 +376,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         if (sir != null) {
             simPref.setSelectedValue(sir, false);
         }
+        Log.d(TAG, "sir" + sir);
         if (mNumSims > 1 && !needDisableDataSub2()) {
             isCellularDataEnabled = true;
         }
@@ -400,6 +401,9 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         if (callStateIdle == true) {
             dataDisableToastDisplayed = false;
         }
+        final SubscriptionInfo sir = Utils.findRecordBySubId(getActivity(),
+                SubscriptionManager.getDefaultDataSubId());
+        simPref.setSummary(sir.getDisplayName());
     }
 
     private boolean isCallStateIdle() {
