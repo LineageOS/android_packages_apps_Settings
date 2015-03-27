@@ -82,6 +82,7 @@ public class SecuritySettings extends RestrictedSettingsFragment
     public static final String ACCOUNT_TYPE_CYANOGEN = "com.cyanogen";
     private static final String EXTRA_CREATE_ACCOUNT = "create-account";
     private static final String LOCK_TO_CYANOGEN_ACCOUNT = "lock_to_cyanogen_account";
+    private static final String EXTRA_LOGIN_FOR_KILL_SWITCH = "authCks";
     private static final String EXTRA_CKSOP = "cksOp";
     private static final int LOCK_REQUEST = 57;
 
@@ -372,6 +373,7 @@ public class SecuritySettings extends RestrictedSettingsFragment
                             Bundle b = f.getResult();
                             Intent i = b.getParcelable(AccountManager.KEY_INTENT);
                             i.putExtra(EXTRA_CKSOP, setCks ? 1 : 0);
+                            i.putExtra(EXTRA_LOGIN_FOR_KILL_SWITCH, true);
                             fragment.startActivityForResult(i, activityRequestCode);
                         } catch (Throwable t) {
                             Log.e(TAG, "confirmCredentials failed", t);
@@ -522,7 +524,7 @@ public class SecuritySettings extends RestrictedSettingsFragment
                                             // create new account
                                             AccountManager accountManager = (AccountManager)
                                                     getActivity()
-                                                        .getSystemService(Context.ACCOUNT_SERVICE);
+                                                            .getSystemService(Context.ACCOUNT_SERVICE);
                                             Bundle opts = new Bundle();
                                             opts.putBoolean(EXTRA_CREATE_ACCOUNT, true);
                                             opts.putInt(EXTRA_CKSOP, 1);

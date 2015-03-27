@@ -105,6 +105,7 @@ public class MasterClear extends Fragment {
             if (resultCode != Activity.RESULT_OK) {
                 getActivity().finish();
             }
+            return;
         } else if (requestCode != KEYGUARD_REQUEST) {
             return;
         }
