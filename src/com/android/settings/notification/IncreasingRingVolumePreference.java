@@ -128,11 +128,21 @@ public class IncreasingRingVolumePreference extends Preference implements
                 Settings.System.INCREASING_RING_START_VOLUME, 0.1f);
         int rampUpTime = Settings.System.getInt(cr,
                 Settings.System.INCREASING_RING_RAMP_UP_TIME, 10);
-
-        mStartVolumeSeekBar.setProgress(Math.round(startVolume * 1000F));
         mStartVolumeSeekBar.setOnSeekBarChangeListener(this);
         mRampUpTimeSeekBar.setOnSeekBarChangeListener(this);
-        mRampUpTimeSeekBar.setProgress((rampUpTime / 5) - 1);
+
+        // when seek bar is set 0, it ignores the change because it is already at 0
+        // on first instance of an object
+        if (Math.round(startVolume * 1000F) != 0) {
+           mStartVolumeSeekBar.setProgress(Math.round(startVolume * 1000F));
+        }
+        
+        // 5 is ths start value
+        if ((rampUpTime) == 5) {
+            updateText(mRampUpTimeValue, 0);
+        } else {
+            mRampUpTimeSeekBar.setProgress((rampUpTime - 1) / 5);
+        }
     }
 
     @Override
@@ -156,12 +166,19 @@ public class IncreasingRingVolumePreference extends Preference implements
             Settings.System.putFloat(cr, Settings.System.INCREASING_RING_START_VOLUME,
                         (float) progress / 1000F);
         } else if (seekBar == mRampUpTimeSeekBar) {
-            int seconds = (progress + 1) * 5;
-            mRampUpTimeValue.setText(
-                    Formatter.formatShortElapsedTime(getContext(), seconds * 1000));
+            updateText(mRampUpTimeValue, progress);
             if (fromTouch) {
+                int seconds = (progress + 1) * 5;
                 Settings.System.putInt(cr, Settings.System.INCREASING_RING_RAMP_UP_TIME, seconds);
             }
+        }
+    }
+
+    private void updateText(TextView view, int value) {
+        if(view == mRampUpTimeValue){
+            int seconds = (value + 1) * 5;
+            view.setText(
+                    Formatter.formatShortElapsedTime(getContext(), seconds * 1000));
         }
     }
 
