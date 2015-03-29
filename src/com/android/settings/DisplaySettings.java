@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014, The Linux Foundation. All Rights Reserved.
+ * Copyright (C) 2014-2015, The Linux Foundation. All Rights Reserved.
  * Not a Contribution.
  *
  * Copyright (C) 2010 The Android Open Source Project
@@ -80,8 +80,13 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private static final String KEY_BRIGHTNESS = "brightness";
     private static final String KEY_CABL_BRIGHTNESS = "cabl_brightness";
+    private static final String KEY_SCREENCOLOR = "screencolor_settings";
+
+    private static final String SET_VALUE = "1";
+    private static final String DEFAULT_VALUE = "0";
 
     private Preference mBrightnessSettingsPreference;
+    private Preference mScreenColorPreference;
     private WarnedListPreference mFontSizePref;
 
     private final Configuration mCurConfig = new Configuration();
@@ -109,6 +114,21 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 && getResources().getBoolean(
                         com.android.internal.R.bool.config_dreamsSupported) == false) {
             getPreferenceScreen().removePreference(mScreenSaverPreference);
+        }
+
+        mScreenColorPreference = findPreference(KEY_SCREENCOLOR);
+        if (mScreenColorPreference != null) {
+            if (DEFAULT_VALUE.equals(SystemProperties.get("ro.qcom.screencolor",
+                    DEFAULT_VALUE))) {
+                getPreferenceScreen().removePreference(mScreenColorPreference);
+            } else {
+                if (SET_VALUE.equals(SystemProperties.get(
+                        "ro.qcom.screencolor", DEFAULT_VALUE))
+                        && SET_VALUE.equals(SystemProperties.get(
+                        "persist.tuning.qdcm", DEFAULT_VALUE))) {
+                    getPreferenceScreen().removePreference(mScreenColorPreference);
+                }
+            }
         }
 
         mScreenTimeoutPreference = (ListPreference) findPreference(KEY_SCREEN_TIMEOUT);
