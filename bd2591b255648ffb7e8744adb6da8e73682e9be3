@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac665da_ff86ec63",
+        "filename": "src/com/android/settings/notification/IncreasingRingVolumePreference.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-29T01:35:46Z",
+      "side": 1,
+      "message": "The multiplication/division doesn\u0027t belong here, as it\u0027s no longer a time/volume with it.",
+      "revId": "bd2591b255648ffb7e8744adb6da8e73682e9be3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac665da_5f7c6072",
+        "filename": "src/com/android/settings/notification/IncreasingRingVolumePreference.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-29T01:35:46Z",
+      "side": 1,
+      "message": ") {",
+      "revId": "bd2591b255648ffb7e8744adb6da8e73682e9be3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac665da_3f81a44b",
+        "filename": "src/com/android/settings/notification/IncreasingRingVolumePreference.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-29T01:35:46Z",
+      "side": 1,
+      "message": "I\u0027d prefer to factor out the ramp up time summary update to a separate method and call that from here and from onProgressChanged()",
+      "revId": "bd2591b255648ffb7e8744adb6da8e73682e9be3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
