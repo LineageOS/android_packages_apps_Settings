@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac665da_52b457f1",
+        "filename": "src/com/android/settings/notification/IncreasingRingVolumePreference.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-29T22:56:28Z",
+      "side": 1,
+      "message": "What\u0027s the point of doing this? The check seems like a no-op.",
+      "revId": "45074aede39a9be595cc0a41e44846da272cfbb1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac665da_32b9dbea",
+        "filename": "src/com/android/settings/notification/IncreasingRingVolumePreference.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-29T22:56:28Z",
+      "side": 1,
+      "message": "Same here, the check is pointless. Just unconditionally update the summary text.",
+      "revId": "45074aede39a9be595cc0a41e44846da272cfbb1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac665da_32b0bbf4",
+        "filename": "src/com/android/settings/notification/IncreasingRingVolumePreference.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-03-29T22:56:28Z",
+      "side": 1,
+      "message": "Please make this look like this:\n\nprivate void updateRampUpTimeValueLabel(int seconds) {\n    mRampUpTimeValue.setText(Formatter.formatShortElapsedTime(...));\n}\n\n\n(The seconds value is present in both onBindView and onProgressChanged)",
+      "revId": "45074aede39a9be595cc0a41e44846da272cfbb1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
