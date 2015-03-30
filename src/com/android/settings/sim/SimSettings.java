@@ -367,7 +367,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         } else if (sir == null) {
             simPref.setSummary(R.string.sim_selection_required_pref);
         }
-        simPref.setEnabled(mSelectableSubInfos.size() > 1);
+        simPref.setEnabled(mSelectableSubInfos == null ? false : mSelectableSubInfos.size() >= 1);
     }
 
     private void updateCellularDataValues() {
@@ -545,15 +545,17 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             simPref.addItem(getResources().getString(
                     R.string.sim_calls_ask_first_prefs_title), null);
         }
-
-        final int subAvailableSize = mAvailableSubInfos.size();
-        for (int i = 0; i < subAvailableSize; ++i) {
-            final SubscriptionInfo sir = mAvailableSubInfos.get(i);
-            if(sir != null){
-                simPref.addItem(sir.getDisplayName().toString(), sir);
+        int avaSubSizes = 0;
+        if (mAvailableSubInfos != null) {
+            avaSubSizes = mAvailableSubInfos.size();
+            for (int i = 0; i < avaSubSizes; ++i) {
+                final SubscriptionInfo sir = mAvailableSubInfos.get(i);
+                if (sir != null) {
+                    simPref.addItem(sir.getDisplayName().toString(), sir);
+                }
             }
         }
-
+        final int subAvailableSize = avaSubSizes;
         simPref.setCallback(new DropDownPreference.Callback() {
             @Override
             public boolean onItemSelected(int pos, Object value) {
