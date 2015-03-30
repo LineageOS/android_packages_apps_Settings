@@ -80,13 +80,13 @@
   <string name="settings_search_action_bar_button">Cerca</string>
   <string name="settings_search_autocompleteview_hint">Configuració de la cerca</string>
   <string name="settings_search_loading_text">S\'estan carregant les dades de cerca\u2026</string>
-  <string name="profile_connectionoverrides_title">Substitueix Connexió</string>
-  <string name="profile_volumeoverrides_title">Substitueix Volum</string>
+  <string name="profile_connectionoverrides_title">Anul·lació de connexió</string>
+  <string name="profile_volumeoverrides_title">Anul·lació de volum</string>
   <string name="connection_state_disabled">Desactiva</string>
   <string name="connection_state_enabled">Activa</string>
   <string name="volume_override_summary">Estableix a %1$s/%2$s</string>
-  <string name="volume_override_summary_no_override">No invalidis</string>
-  <string name="profile_volume_override_checkbox_label">Invalida el volum</string>
+  <string name="volume_override_summary_no_override">No anul·lis</string>
+  <string name="profile_volume_override_checkbox_label">Anul·la el volum</string>
   <string name="profile_profiles_manage">Perfils</string>
   <string name="profile_profile_manage">Gestiona un perfil</string>
   <string name="profile_appgroups_manage">Grups d\'aplicacions</string>
@@ -598,6 +598,7 @@ Hi ha disponibles opcions addicionals apretant llargament sobre la línia. Selec
   <string name="lockscreen_buttons_toggle_sound">Activa/Desactiva el so</string>
   <string name="lockscreen_buttons_sleep">Posa en repòs</string>
   <string name="lockscreen_enable_modlock_title">Pantalla de bloqueig personalitzada</string>
+  <string name="lockscreen_buttons_disabled_summary">Els botons de la pantalla de bloqueig no estan disponibles mentre s\'utilitza la barra de Navegació en pantalla</string>
   <string name="navigation_bar_category">Barra de navegació</string>
   <string name="navigation_bar_title">Botons i disposició</string>
   <string name="navigation_bar_left_title">Mode esquerrà</string>
@@ -949,6 +950,11 @@ Hi ha disponibles opcions addicionals apretant llargament sobre la línia. Selec
   <string name="sd_media_format_button_text">Esborra la targeta SD</string>
   <string name="sd_media_format_final_desc">Vols esborrar la targeta SD, suprimint tots els fitxers que hi ha? Aquesta acció és irreversible!</string>
   <string name="sd_media_format_gesture_explanation">Has de dibuixar el patró de desbloqueig per confirmar que vols esborrar la targeta SD.</string>
+  <string name="internal_sd_format">Esborra el mitjà d\'emmagatzematge intern</string>
+  <string name="internal_sd_format_summary">Esborra totes les dades al mitjà d\'emmagatzematge intern, com ara la música i les fotos</string>
+  <string name="master_clear_desc_erase_internal_storage">\n\nPer netejar de música, d\'imatges i altres dades d\'usuari, el <b>mitjà d\'emmagatzematge intern</b> ha de ser esborrat.</string>
+  <string name="erase_internal_storage">Esborra el mitjà d\'emmagatzematge intern</string>
+  <string name="erase_internal_storage_description">Esborra totes les dades al mitjà d\'emmagatzematge intern, com ara la música o les fotos</string>
   <string name="bluetooth_enter_pin_msg_hs">Per enllaçar amb:<xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g>Introdueix el PIN que requereix el dispositiu (16 dígits o més):</string>
   <string name="bluetooth_profile_sap">Accés SIM</string>
   <string name="bluetooth_profile_dun">Accés telèfonic a xarxes</string>
@@ -1015,4 +1021,9 @@ Hi ha disponibles opcions addicionals apretant llargament sobre la línia. Selec
   <string name="no_triggers_configured">No hi ha activadors configurats. Pica per afegir-ne més.</string>
   <string name="no_triggers_configured_nfc">Pica per configurar un nou activador NFC.</string>
   <string name="sound_ringtone_multisim_options">Canvia els tons de trucada predeterminats</string>
+  <string name="lock_to_cyanogen_title">Habilita la protecció del dispositiu</string>
+  <string name="lock_to_cyanogen_summary">Demana la contrasenya del teu compte de Cyanogen OS fins i tot després de que es restableixin els ajustaments de fàbrica</string>
+  <string name="lock_to_cyanogen_create_account_msg">El teu dispositiu utilitza la contrasenya del compte Cyanogen OS per protegir el dispositiu fins i tot en cas d\'un restabliment als ajustaments de fàbrica. Necessitaràs crear un compte de Cyanogen OS.</string>
+  <string name="lock_to_cyanogen_disable_msg">Deshabilitant aquest característica permetràs que usuaris no autoritzats restableixin el teu telèfon als ajustaments de fàbrica en cas de robatori. Les teves dades personals podrien no estar protegides. Vols deshabilitar aquesta funció?</string>
+  <string name="lock_to_cyanogen_master_clear_warning">La protecció contra el restabliment de fàbrica està habilitada. Si us plau deshabilita-la abans de restaurar el teu telèfon.</string>
 </resources>
