@@ -41,9 +41,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Resources;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.Preference;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
@@ -53,6 +56,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
@@ -87,6 +91,8 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
     private static final int ERROR_ALERT_DLG_ID = 2;
     private static final int RESULT_ALERT_DLG_ID = 3;
     private static final int SIM_ID[] = {1, 2};
+
+    private static final String DISPLAY_NUMBERS_TYPE = "display_numbers_type";
 
     private int mSlotId;
     private SubscriptionInfo mSir;
@@ -526,6 +532,23 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
         TextView carrierView = (TextView)dialogLayout.findViewById(R.id.carrier);
         carrierView.setText(getNetOperatorName());
 
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
+        final Editor editor = prefs.edit();
+        Spinner displayNumbers = (Spinner)dialogLayout.findViewById(R.id.display_numbers);
+        displayNumbers.setSelection(prefs.getInt(DISPLAY_NUMBERS_TYPE, 0));
+        displayNumbers.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position,
+                    long id) {
+                editor.putInt(DISPLAY_NUMBERS_TYPE, position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                // do nothing
+            }
+        });
+
         final Resources res = mContext.getResources();
         builder.setTitle(res.getString(R.string.sim_editor_title, mSlotId + 1));
 
@@ -533,14 +556,12 @@ public class MultiSimEnablerPreference extends Preference implements OnCheckedCh
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
                 final EditText nameText = (EditText)dialogLayout.findViewById(R.id.sim_name);
-                final Spinner displayNumbers =
-                    (Spinner)dialogLayout.findViewById(R.id.display_numbers);
-
                 mSir.setDisplayName(nameText.getText());
                 SubscriptionManager.from(mContext).setDisplayName(mSir.getDisplayName().toString(),
                         mSir.getSubscriptionId(), SubscriptionManager.NAME_SOURCE_USER_INPUT);
 
                 update();
+                editor.commit();
             }
         });
 
