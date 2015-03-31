@@ -16,8 +16,9 @@
  * limitations under the License.
  */
 
-package com.android.settings.deviceinfo.msim;
+package com.android.settings.deviceinfo;
 
+import android.app.ActionBar;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -36,9 +37,11 @@ import android.telephony.PhoneStateListener;
 import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
 import android.telephony.TelephonyManager;
+import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MenuItem;
 
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
@@ -46,7 +49,6 @@ import com.android.internal.telephony.PhoneFactory;
 
 import com.android.settings.R;
 import com.android.settings.Utils;
-import com.android.settings.SelectSubscription;
 
 import java.lang.ref.WeakReference;
 
@@ -108,6 +110,9 @@ public class MSimSubscriptionStatus extends PreferenceActivity {
     static final String CB_AREA_INFO_SENDER_PERMISSION =
             "android.permission.RECEIVE_EMERGENCY_BROADCAST";
 
+    static final String EXTRA_SLOT_ID = "slot_id";
+    static final String EXTRA_SUB_INFO = "sub_info";
+
     private TelephonyManager mTelephonyManager;
     private Phone mPhone = null;
     private Resources mRes;
@@ -147,10 +152,18 @@ public class MSimSubscriptionStatus extends PreferenceActivity {
         addPreferencesFromResource(R.xml.device_info_subscription_status);
 
         // getting selected subscription
-        int phoneId = getIntent().getIntExtra(PhoneConstants.PHONE_KEY,
+        int phoneId = getIntent().getIntExtra(EXTRA_SLOT_ID,
                 SubscriptionManager.getPhoneId(SubscriptionManager.getDefaultSubId()));
         mPhone = PhoneFactory.getPhone(phoneId);
         Log.d("Status","OnCreate phoneId =" + phoneId);
+
+        ActionBar actionBar = getActionBar();
+        actionBar.setTitle(getString(R.string.sim_card_status_title, phoneId + 1));
+        SubscriptionInfo sir = getIntent().getParcelableExtra(EXTRA_SUB_INFO);
+        if (sir != null) {
+            actionBar.setSubtitle(sir.getDisplayName());
+        }
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         mPhoneStateListener = getPhoneStateListener(mPhone.getSubId());
         mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_SERVICE_STATE
@@ -253,6 +266,15 @@ public class MSimSubscriptionStatus extends PreferenceActivity {
             mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_NONE);
             unregisterReceiver(mAreaInfoReceiver);
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return false;
     }
 
     /**
