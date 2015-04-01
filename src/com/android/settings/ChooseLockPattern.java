@@ -102,6 +102,7 @@ public class ChooseLockPattern extends PreferenceActivity {
         private static final int WRONG_PATTERN_CLEAR_TIMEOUT_MS = 2000;
 
         private static final int ID_EMPTY_MESSAGE = -1;
+        private static final String KEY_PATTERN_SIZE = "pattern_size";
 
         protected TextView mHeaderText;
         protected LockPatternView mLockPatternView;
@@ -313,8 +314,12 @@ public class ChooseLockPattern extends PreferenceActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
 
-            mPatternSize = getActivity().getIntent().getByteExtra("pattern_size",
-                    LockPatternUtils.PATTERN_SIZE_DEFAULT);
+            if ( savedInstanceState != null && savedInstanceState.containsKey(KEY_PATTERN_SIZE) ) {
+                mPatternSize = savedInstanceState.getByte(KEY_PATTERN_SIZE);
+            } else {
+                mPatternSize = getActivity().getIntent().getByteExtra(KEY_PATTERN_SIZE,
+                        LockPatternUtils.PATTERN_SIZE_DEFAULT);
+            }
             LockPatternView.Cell.updateSize(mPatternSize);
             mAnimatePattern = Collections.unmodifiableList(Lists.newArrayList(
                     LockPatternView.Cell.of(0, 0, mPatternSize),
@@ -370,7 +375,7 @@ public class ChooseLockPattern extends PreferenceActivity {
                 final String patternString = savedInstanceState.getString(KEY_PATTERN_CHOICE);
                 if (patternString != null) {
                     LockPatternUtils utils = mChooseLockSettingsHelper.utils();
-                    mChosenPattern = utils.stringToPattern(patternString);
+                    mChosenPattern = utils.stringToPattern(patternString, mPatternSize);
                 }
                 updateStage(Stage.values()[savedInstanceState.getInt(KEY_UI_STAGE)]);
             }
@@ -435,10 +440,12 @@ public class ChooseLockPattern extends PreferenceActivity {
             super.onSaveInstanceState(outState);
 
             outState.putInt(KEY_UI_STAGE, mUiStage.ordinal());
+            outState.putByte(KEY_PATTERN_SIZE, mPatternSize);
+
             if (mChosenPattern != null) {
                 LockPatternUtils utils = mChooseLockSettingsHelper.utils();
                 outState.putString(KEY_PATTERN_CHOICE,
-                        utils.patternToString(mChosenPattern));
+                        utils.patternToString(mChosenPattern, mPatternSize));
             }
         }
 
