@@ -23,6 +23,8 @@ import android.content.ContentUris;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Resources;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.net.Uri;
@@ -32,6 +34,7 @@ import android.os.Message;
 import android.os.SystemProperties;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
+import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings.SettingNotFoundException;
@@ -89,6 +92,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     private static final String KEY_ACTIVITIES = "activities";
     private static final String KEY_PRIMARY_SUB_SELECT = "select_primary_sub";
     private static final String SETTING_USER_PREF_DATA_SUB = "user_preferred_data_sub";
+    private static final String DISPLAY_NUMBERS_TYPE = "display_numbers_type";
 
     private int mPreferredDataSubscription;
 
@@ -665,6 +669,23 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             TextView carrierView = (TextView)dialogLayout.findViewById(R.id.carrier);
             carrierView.setText(mSubscriptionInfo.getDisplayName());
 
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+            final Editor editor = prefs.edit();
+            Spinner displayNumbers = (Spinner)dialogLayout.findViewById(R.id.display_numbers);
+            displayNumbers.setSelection(prefs.getInt(DISPLAY_NUMBERS_TYPE, 0));
+            displayNumbers.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position,
+                            long id) {
+                        editor.putInt(DISPLAY_NUMBERS_TYPE, position);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> arg0) {
+                        // do nothing
+                    }
+                });
+
             final Resources res = getResources();
             builder.setTitle(res.getString(R.string.sim_editor_title, mSlotId + 1));
 
@@ -672,9 +693,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
                 @Override
                 public void onClick(DialogInterface dialog, int whichButton) {
                     final EditText nameText = (EditText)dialogLayout.findViewById(R.id.sim_name);
-                    final Spinner displayNumbers =
-                        (Spinner)dialogLayout.findViewById(R.id.display_numbers);
-
                     mSubscriptionInfo.setDisplayName(nameText.getText());
                     SubscriptionManager.from(getActivity()).setDisplayName(
                             mSubscriptionInfo.getDisplayName().toString(),
@@ -683,6 +701,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
 
                     updateAllOptions();
                     update();
+                    editor.commit();
                 }
             });
 
