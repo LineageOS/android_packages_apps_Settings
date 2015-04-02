@@ -538,6 +538,7 @@ public class SecuritySettings extends RestrictedSettingsFragment
             } else {
                 //  opt out
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
+                        .setCancelable(false)
                         .setMessage(R.string.lock_to_cyanogen_disable_msg)
                         .setNegativeButton(android.R.string.no,
                                 new DialogInterface.OnClickListener() {
