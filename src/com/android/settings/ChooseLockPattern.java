@@ -125,10 +125,10 @@ public class ChooseLockPattern extends SettingsActivity {
          */
         private final List<LockPatternView.Cell> mAnimatePattern =
                 Collections.unmodifiableList(Lists.newArrayList(
-                        LockPatternView.Cell.of(0, 0),
-                        LockPatternView.Cell.of(0, 1),
-                        LockPatternView.Cell.of(1, 1),
-                        LockPatternView.Cell.of(2, 1)
+                        LockPatternView.Cell.of(0, 0, LockPatternUtils.PATTERN_SIZE_DEFAULT),
+                        LockPatternView.Cell.of(0, 1, LockPatternUtils.PATTERN_SIZE_DEFAULT),
+                        LockPatternView.Cell.of(1, 1, LockPatternUtils.PATTERN_SIZE_DEFAULT),
+                        LockPatternView.Cell.of(2, 1, LockPatternUtils.PATTERN_SIZE_DEFAULT)
                 ));
 
         @Override
@@ -372,7 +372,8 @@ public class ChooseLockPattern extends SettingsActivity {
                 // restore from previous state
                 final String patternString = savedInstanceState.getString(KEY_PATTERN_CHOICE);
                 if (patternString != null) {
-                    mChosenPattern = LockPatternUtils.stringToPattern(patternString);
+                    mChosenPattern = new LockPatternUtils(getActivity())
+                            .stringToPattern(patternString);
                 }
                 updateStage(Stage.values()[savedInstanceState.getInt(KEY_UI_STAGE)]);
             }
@@ -440,7 +441,7 @@ public class ChooseLockPattern extends SettingsActivity {
             outState.putInt(KEY_UI_STAGE, mUiStage.ordinal());
             if (mChosenPattern != null) {
                 outState.putString(KEY_PATTERN_CHOICE,
-                        LockPatternUtils.patternToString(mChosenPattern));
+                        new LockPatternUtils(getActivity()).patternToString(mChosenPattern));
             }
         }
 
