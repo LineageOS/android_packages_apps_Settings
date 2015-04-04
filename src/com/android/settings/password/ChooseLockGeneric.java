@@ -95,6 +95,8 @@ import com.android.settings.safetycenter.LockScreenSafetySource;
 import com.android.settings.search.SearchFeatureProvider;
 import com.android.settings.security.screenlock.AutoPinConfirmPreferenceController;
 import com.android.settings.security.screenlock.LockAfterTimeoutPreferenceController;
+import com.android.settings.security.screenlock.PatternDotsVisiblePreferenceController;
+import com.android.settings.security.screenlock.PatternErrorVisiblePreferenceController;
 import com.android.settings.security.screenlock.PatternVisiblePreferenceController;
 import com.android.settings.security.screenlock.PinPrivacyPreferenceController;
 import com.android.settings.security.screenlock.PinScramblePreferenceController;
@@ -704,6 +706,10 @@ public class ChooseLockGeneric extends SettingsActivity {
 
         private void buildUnlockSettingsPreferenceControllers() {
             mUnlockSettingsControllers.add(new PatternVisiblePreferenceController(
+                    getContext(), mUserId, mLockPatternUtils));
+            mUnlockSettingsControllers.add(new PatternErrorVisiblePreferenceController(
+                    getContext(), mUserId, mLockPatternUtils));
+            mUnlockSettingsControllers.add(new PatternDotsVisiblePreferenceController(
                     getContext(), mUserId, mLockPatternUtils));
             mUnlockSettingsControllers.add(new PinPrivacyPreferenceController(
                     getContext(), mUserId, mLockPatternUtils));
