@@ -66,6 +66,8 @@ public class LockScreenSettings extends SettingsPreferenceFragment
     private static final String KEY_BIOMETRIC_WEAK_LIVELINESS = "biometric_weak_liveliness";
     private static final String KEY_LOCK_ENABLED = "lockenabled";
     private static final String KEY_VISIBLE_PATTERN = "visiblepattern";
+    private static final String KEY_VISIBLE_ERROR_PATTERN = "visible_error_pattern";
+    private static final String KEY_VISIBLE_DOTS = "visibledots";
     private static final String KEY_LOCK_AFTER_TIMEOUT = "lock_after_timeout";
     private static final String KEY_POWER_INSTANTLY_LOCKS = "power_button_instantly_locks";
     private static final String KEY_TRUST_AGENT = "trust_agent";
@@ -90,6 +92,8 @@ public class LockScreenSettings extends SettingsPreferenceFragment
 
     private SwitchPreference mBiometricWeakLiveliness;
     private SwitchPreference mVisiblePattern;
+    private SwitchPreference mVisibleErrorPattern;
+    private SwitchPreference mVisibleDots;
     private SwitchPreference mPowerButtonInstantlyLocks;
 
     private DevicePolicyManager mDPM;
@@ -125,6 +129,12 @@ public class LockScreenSettings extends SettingsPreferenceFragment
         }
         if (mVisiblePattern != null) {
             mVisiblePattern.setChecked(lockPatternUtils.isVisiblePatternEnabled());
+        }
+        if (mVisibleErrorPattern != null) {
+            mVisibleErrorPattern.setChecked(lockPatternUtils.isShowErrorPath());
+        }
+        if (mVisibleDots != null) {
+            mVisibleDots.setChecked(lockPatternUtils.isVisibleDotsEnabled());
         }
         if (mPowerButtonInstantlyLocks != null) {
             mPowerButtonInstantlyLocks.setChecked(lockPatternUtils.getPowerButtonInstantlyLocks());
@@ -175,6 +185,12 @@ public class LockScreenSettings extends SettingsPreferenceFragment
         // visible pattern
         mVisiblePattern = (SwitchPreference) root.findPreference(KEY_VISIBLE_PATTERN);
 
+        // visible error pattern
+        mVisibleErrorPattern = (SwitchPreference) root.findPreference(KEY_VISIBLE_ERROR_PATTERN);
+
+        // visible dots
+        mVisibleDots = (SwitchPreference) root.findPreference(KEY_VISIBLE_DOTS);
+
         // lock instantly on power key press
         mPowerButtonInstantlyLocks = (SwitchPreference) root.findPreference(
                 KEY_POWER_INSTANTLY_LOCKS);
@@ -193,8 +209,11 @@ public class LockScreenSettings extends SettingsPreferenceFragment
         if (resid == R.xml.security_settings_biometric_weak &&
                 mLockPatternUtils.getKeyguardStoredPasswordQuality() !=
                         DevicePolicyManager.PASSWORD_QUALITY_SOMETHING) {
-            if (securityCategory != null && mVisiblePattern != null) {
-                securityCategory.removePreference(root.findPreference(KEY_VISIBLE_PATTERN));
+            if (securityCategory != null && mVisiblePattern != null &&
+                   mVisibleErrorPattern != null && mVisibleDots != null) {
+                securityCategory.removePreference(mVisiblePattern);
+                securityCategory.removePreference(mVisibleErrorPattern);
+                securityCategory.removePreference(mVisibleDots);
             }
         }
 
@@ -408,6 +427,10 @@ public class LockScreenSettings extends SettingsPreferenceFragment
             lockPatternUtils.setLockPatternEnabled((Boolean) value);
         } else if (KEY_VISIBLE_PATTERN.equals(key)) {
             lockPatternUtils.setVisiblePatternEnabled((Boolean) value);
+        } else if (KEY_VISIBLE_ERROR_PATTERN.equals(key)) {
+            lockPatternUtils.setShowErrorPath(isToggled(preference));
+        } else if (KEY_VISIBLE_DOTS.equals(key)) {
+            lockPatternUtils.setVisibleDotsEnabled(isToggled(preference));
         } else  if (KEY_BIOMETRIC_WEAK_LIVELINESS.equals(key)) {
             if ((Boolean) value) {
                 lockPatternUtils.setBiometricWeakLivelinessEnabled(true);
