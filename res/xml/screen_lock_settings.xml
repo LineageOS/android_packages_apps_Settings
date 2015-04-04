@@ -27,6 +27,14 @@
         android:key="visiblepattern"
         android:title="@string/lockpattern_settings_enable_visible_pattern_title" />
 
+    <SwitchPreferenceCompat
+        android:key="visible_error_pattern"
+        android:title="@string/lockpattern_settings_enable_error_path_title" />
+
+    <SwitchPreferenceCompat
+        android:key="visibledots"
+        android:title="@string/lockpattern_settings_enable_dots_title" />
+
     <!-- available in pin -->
     <SwitchPreferenceCompat
         android:key="auto_pin_confirm"
@@ -37,8 +45,7 @@
         android:key="enhancedPinPrivacy"
         android:title="@string/lockpattern_settings_enhanced_pin_privacy_title"
         android:summary="@string/lockpattern_settings_enhanced_pin_privacy_summary" />
-
-
+ 
     <!-- available in pin/pattern/password -->
     <com.android.settings.security.screenlock.ProtectedTimeoutListPreference
         android:key="lock_after_timeout"
