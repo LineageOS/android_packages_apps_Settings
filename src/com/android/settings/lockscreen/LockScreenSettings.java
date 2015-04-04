@@ -57,6 +57,7 @@ public class LockScreenSettings extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener, Indexable {
 
     private static final String KEY_SECURITY_CATEGORY = "security_category";
+    private static final String KEY_GENERAL_CATEGORY = "general_category";
     private static final String KEY_OWNER_INFO_SETTINGS = "owner_info_settings";
 
     // Lock Settings
@@ -217,12 +218,14 @@ public class LockScreenSettings extends SettingsPreferenceFragment
             }
         }
 
+        PreferenceGroup generalCategory = (PreferenceGroup)
+                root.findPreference(KEY_GENERAL_CATEGORY);
         // remove lockscreen visualizer option on low end gfx devices
-        if (!ActivityManager.isHighEndGfx() && securityCategory != null) {
+        if (!ActivityManager.isHighEndGfx() && generalCategory != null) {
             SwitchPreference displayVisualizer = (SwitchPreference)
-                    securityCategory.findPreference(KEY_SHOW_VISUALIZER);
+                    generalCategory.findPreference(KEY_SHOW_VISUALIZER);
             if (displayVisualizer != null) {
-                securityCategory.removePreference(displayVisualizer);
+                generalCategory.removePreference(displayVisualizer);
             }
         }
 
