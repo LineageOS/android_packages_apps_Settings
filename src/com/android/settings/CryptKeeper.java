@@ -48,6 +48,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
@@ -199,6 +200,7 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
                 hide(R.id.status);
                 hide(R.id.owner_info);
                 hide(R.id.emergencyCallButton);
+                hide(R.id.pattern_sizes);
             } else if (failedAttempts == MAX_FAILED_ATTEMPTS) {
                 // Factory reset the device.
                 Intent intent = new Intent(Intent.ACTION_MASTER_CLEAR);
@@ -577,7 +579,7 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
         final Button button = (Button) findViewById(R.id.factory_reset);
         button.setVisibility(View.VISIBLE);
         button.setOnClickListener(new OnClickListener() {
-                @Override
+            @Override
             public void onClick(View v) {
                 // Factory reset the device.
                 Intent intent = new Intent(Intent.ACTION_MASTER_CLEAR);
@@ -651,6 +653,7 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
     /** Disable password input for a while to force the user to waste time between retries */
     private void cooldown() {
         final TextView status = (TextView) findViewById(R.id.status);
+        final ViewGroup sizes = (ViewGroup) findViewById(R.id.status);
 
         if (mCooldown <= 0) {
             // Re-enable the password entry and back presses.
@@ -663,6 +666,9 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
             }
             if (mLockPatternView != null) {
                 mLockPatternView.setEnabled(true);
+                if (sizes != null) {
+                    sizes.setEnabled(true);
+                }
             }
             status.setText(mStatusString);
         } else {
@@ -672,6 +678,9 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
             }
             if (mLockPatternView != null) {
                 mLockPatternView.setEnabled(false);
+                if (sizes != null) {
+                    sizes.setEnabled(false);
+                }
             }
 
             CharSequence template = getText(R.string.crypt_keeper_cooldown);
@@ -716,8 +725,8 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
         public void onPatternDetected(List<LockPatternView.Cell> pattern) {
             mLockPatternView.setEnabled(false);
             if (pattern.size() >= MIN_LENGTH_BEFORE_REPORT) {
-                new DecryptTask().execute(new LockPatternUtils(CryptKeeper.this)
-                        .patternToString(pattern));
+                new DecryptTask().execute(LockPatternUtils.patternToString(pattern,
+                        mLockPatternView.getLockPatternSize()));
             } else {
                 // Allow user to make as many of these as they want.
                 fakeUnlockAttempt(mLockPatternView);
@@ -1016,5 +1025,30 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
     @Override
     public void afterTextChanged(Editable s) {
         return;
+    }
+
+    public void onPatternButtonClick(View v) {
+        byte size;
+        switch (v.getId()) {
+            default:
+            case R.id.lock_pattern_size_3:
+                size = 3;
+                break;
+            case R.id.lock_pattern_size_4:
+                size = 4;
+                break;
+            case R.id.lock_pattern_size_5:
+                size = 5;
+                break;
+            case R.id.lock_pattern_size_6:
+                size = 6;
+                break;
+        }
+        if (mLockPatternView != null) {
+            setContentView(R.layout.crypt_keeper_pattern_entry);
+            passwordEntryInit();
+            mLockPatternView.setLockPatternSize(size);
+            mLockPatternView.postInvalidate();
+        }
     }
 }
