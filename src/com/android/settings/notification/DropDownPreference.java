@@ -34,7 +34,6 @@ public class DropDownPreference extends Preference {
     private final ArrayAdapter<String> mAdapter;
     private final Spinner mSpinner;
     private final ArrayList<Object> mValues = new ArrayList<Object>();
-    private boolean isUserClick = false;
     private Callback mCallback;
 
     public DropDownPreference(Context context) {
@@ -54,11 +53,7 @@ public class DropDownPreference extends Preference {
         mSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
-                Log.d("SimSettings", "position: " + position);
-                if (isUserClick) {
-                    setSelectedItem(position);
-                    isUserClick = false;
-                }
+                setSelectedItem(position);
             }
 
             @Override
@@ -71,7 +66,6 @@ public class DropDownPreference extends Preference {
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 mSpinner.performClick();
-                isUserClick = true;
                 return true;
             }
         });

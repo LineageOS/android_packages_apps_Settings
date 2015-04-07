@@ -102,23 +102,18 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     private static final int CHAR_LEN = 1;
     /**
      * By UX design we have use only one Subscription Information(SubInfo) record per SIM slot.
-     * mAvalableSubInfos is the list of SubInfos we present to the user.
      * mSubInfoList is the list of all SubInfos.
      * mSelectableSubInfos is the list of SubInfos that a user can select for data, calls, and SMS.
      */
-    private List<SubscriptionInfo> mAvailableSubInfos = null;
     private List<SubscriptionInfo> mSubInfoList = null;
+    private List<SubscriptionInfo> mSelectableSubInfos = null;
+
     private Preference mPrimarySubSelect = null;
     private boolean needUpdate = false;
 
+    private static final int ASK_VALUE = -1;
     private static List<MultiSimEnablerPreference> mSimEnablers = null;
-    private List<SubscriptionInfo> mSelectableSubInfos = null;
 
-    private SubscriptionInfo mCellularData = null;
-    private SubscriptionInfo mCalls = null;
-    private SubscriptionInfo mSMS = null;
-
-    private int mNumSims;
     private int mPhoneCount;
     private int[] mCallState;
     private PhoneStateListener[] mPhoneStateListener;
@@ -133,6 +128,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     private SubscriptionManager mSubscriptionManager;
     private Utils mUtils;
 
+
     public SimSettings() {
         super(DISALLOW_CONFIG_SIM);
     }
@@ -140,14 +136,14 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     @Override
     public void onCreate(final Bundle bundle) {
         super.onCreate(bundle);
-        Log.d(TAG,"on onCreate");
+
         final TelephonyManager tm =
                     (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
 
         mSubscriptionManager = SubscriptionManager.from(getActivity());
 
         if (mSubInfoList == null) {
-            mSubInfoList = SubscriptionManager.from(getActivity()).getActiveSubscriptionInfoList();
+            mSubInfoList = mSubscriptionManager.getActiveSubscriptionInfoList();
         }
         if (DBG) log("[onCreate] mSubInfoList=" + mSubInfoList);
 
@@ -161,6 +157,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
 
         createPreferences();
         updateAllOptions();
+
         IntentFilter intentFilter =
                 new IntentFilter(TelephonyIntents.ACTION_DEFAULT_DATA_SUBSCRIPTION_CHANGED);
         intentFilter.addAction(TelephonyIntents.ACTION_SUBINFO_CONTENT_CHANGE);
@@ -219,16 +216,12 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
                 }
             } else if (TelephonyIntents.ACTION_SUBINFO_CONTENT_CHANGE.equals(action)
                     || TelephonyIntents.ACTION_SUBINFO_RECORD_UPDATED.equals(action)) {
-                mAvailableSubInfos.clear();
-                mNumSims = 0;
                 mSelectableSubInfos.clear();
                 mSubInfoList = SubscriptionManager.from(context).getActiveSubscriptionInfoList();
                 for (int i = 0; i < mNumSlots; ++i) {
                     final SubscriptionInfo sir = Utils.findRecordBySlotId(getActivity(), i);
                     // Do not display deactivated subInfo in preference list
                     if ((sir != null) && (sir.getStatus() == SubscriptionManager.ACTIVE)) {
-                        mNumSims++;
-                        mAvailableSubInfos.add(sir);
                         mSelectableSubInfos.add(sir);
                     }
                 }
@@ -260,7 +253,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         final PreferenceCategory simEnablers =
                 (PreferenceCategory)findPreference(SIM_ENABLER_CATEGORY);
 
-        mAvailableSubInfos = new ArrayList<SubscriptionInfo>(mNumSlots);
         mSelectableSubInfos = new ArrayList<SubscriptionInfo>();
         mSimEnablers = new ArrayList<MultiSimEnablerPreference>(mNumSlots);
         for (int i = 0; i < mNumSlots; ++i) {
@@ -275,8 +267,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             }
             // Do not display deactivated subInfo in preference list
             if ((sir != null) && (sir.getStatus() == SubscriptionManager.ACTIVE)) {
-                mNumSims++;
-                mAvailableSubInfos.add(sir);
                 mSelectableSubInfos.add(sir);
             }
         }
@@ -287,7 +277,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
 
     private void updateAllOptions() {
         Log.d(TAG,"updateAllOptions");
-        mSubInfoList = SubscriptionManager.from(getActivity()).getActiveSubscriptionInfoList();
         updateSimSlotValues();
         updateActivitesCategory();
         updateSimEnablers();
@@ -315,7 +304,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             public void onCallStateChanged(int state, String ignored) {
                 Log.d(TAG, "onCallStateChanged: " + state);
                 mCallState[i] = state;
-                updateCellularDataPreference();
+                updateCellularDataValues();
             }
         };
         return mPhoneStateListener[phoneId];
@@ -326,7 +315,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
                 .findPreference(SIM_CARD_CATEGORY);
         if (prefScreen != null) {
             final int prefSize = prefScreen.getPreferenceCount();
-            for (int i=0; i<prefSize; ++i) {
+            for (int i = 0; i < prefSize; ++i) {
                 Preference pref = prefScreen.getPreference(i);
                 if (pref instanceof SimPreference) {
                     ((SimPreference)pref).update();
@@ -349,8 +338,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
      }
 
     private void updateActivitesCategory() {
-        mAvailableSubInfos =
-                SubscriptionManager.from(getActivity()).getActiveSubscriptionInfoList();
         createDropDown((DropDownPreference) findPreference(KEY_CELLULAR_DATA));
         createDropDown((DropDownPreference) findPreference(KEY_CALLS));
         createDropDown((DropDownPreference) findPreference(KEY_SMS));
@@ -364,38 +351,35 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         final SubscriptionInfo sir = Utils.findRecordBySubId(getActivity(),
                 mSubscriptionManager.getDefaultSmsSubId());
         simPref.setTitle(R.string.sms_messages_title);
-        if (DBG) log("[updateSmsValues] mSubInfoList=" + mSubInfoList);
-
-        if (sir != null) {
-            simPref.setSummary(sir.getDisplayName());
-        } else if (sir == null) {
+        if (SubscriptionManager.isSMSPromptEnabled() || sir == null) {
             simPref.setSummary(R.string.sim_selection_required_pref);
+            ((DropDownPreference) simPref).setSelectedValue(ASK_VALUE, false);
+        } else if (sir != null) {
+            simPref.setSummary(sir.getDisplayName());
+            ((DropDownPreference) simPref).setSelectedValue(sir.getSimSlotIndex(), false);
         }
-        simPref.setEnabled(mSelectableSubInfos == null ? false : mSelectableSubInfos.size() >= 1);
+        simPref.setEnabled(mSelectableSubInfos == null ? false : mSelectableSubInfos.size() > 1);
     }
 
     private void updateCellularDataValues() {
-        final DropDownPreference simPref = (DropDownPreference)findPreference(KEY_CELLULAR_DATA);
+        final Preference simPref = findPreference(KEY_CELLULAR_DATA);
         final SubscriptionInfo sir = Utils.findRecordBySubId(getActivity(),
                 SubscriptionManager.getDefaultDataSubId());
         boolean isCellularDataEnabled = false;
+        boolean disableCellulardata = getResources().getBoolean(R.bool.disbale_cellular_data);
+        // Enable data preference in msim mode and call state idle
+        boolean callStateIdle = isCallStateIdle();
         if (sir != null) {
-            simPref.setSelectedValue(sir, false);
+            ((DropDownPreference) simPref).setSelectedValue(sir.getSimSlotIndex(), false);
+            simPref.setSummary(sir.getDisplayName());
         }
-        Log.d(TAG, "sir" + sir);
-        if (mNumSims > 1 && !needDisableDataSub2()) {
+        Log.d(TAG, "updateCellularDataValues" + sir);
+        if (mSelectableSubInfos.size() > 1 && !needDisableDataSub2()) {
             isCellularDataEnabled = true;
         }
-        simPref.setEnabled(isCellularDataEnabled);
-        updateCellularDataPreference();
-    }
 
-    private void updateCellularDataPreference() {
-        final DropDownPreference simPref = (DropDownPreference) findPreference(KEY_CELLULAR_DATA);
-        boolean callStateIdle = isCallStateIdle();
-        // Enable data preference in msim mode and call state idle
-        boolean disableCellulardata = getResources().getBoolean(R.bool.disbale_cellular_data);
-        simPref.setEnabled((mNumSims > 1) && callStateIdle && (!disableCellulardata));
+        simPref.setEnabled(isCellularDataEnabled && (mSelectableSubInfos.size() > 1)
+                && callStateIdle && (!disableCellulardata));
         // Display toast only once when the user enters the activity even though the call moves
         // through multiple call states (eg - ringing to offhook for incoming calls)
         if (callStateIdle == false && inActivity && dataDisableToastDisplayed == false) {
@@ -407,9 +391,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         if (callStateIdle == true) {
             dataDisableToastDisplayed = false;
         }
-        final SubscriptionInfo sir = Utils.findRecordBySubId(getActivity(),
-                SubscriptionManager.getDefaultDataSubId());
-        simPref.setSummary(sir.getDisplayName());
     }
 
     private boolean isCallStateIdle() {
@@ -428,12 +409,18 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         final TelecomManager telecomManager = TelecomManager.from(getActivity());
         final PhoneAccountHandle phoneAccount =
             telecomManager.getUserSelectedOutgoingPhoneAccount();
-
+        int subId = SubscriptionManager.getDefaultVoiceSubId();
+        int slotId = SubscriptionManager.getSlotId(subId);
+        if (phoneAccount != null) {
+            ((DropDownPreference) simPref).setSelectedValue(slotId, false);
+        } else if (phoneAccount == null) {
+            ((DropDownPreference) simPref).setSelectedValue(ASK_VALUE, false);
+        }
         simPref.setTitle(R.string.calls_title);
         simPref.setSummary(phoneAccount == null
                 ? getResources().getString(R.string.sim_calls_ask_first_prefs_title)
                 : (String)telecomManager.getPhoneAccount(phoneAccount).getLabel());
-        simPref.setEnabled(mSelectableSubInfos.size() > 1);
+        simPref.setEnabled(mSelectableSubInfos == null ? false : mSelectableSubInfos.size() > 1);
     }
 
     @Override
@@ -451,8 +438,10 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     @Override
     public void onResume() {
         super.onResume();
+
         inActivity = true;
-        Log.d(TAG,"on Resume, number of slots = " + mNumSlots);
+        mSubInfoList = mSubscriptionManager.getActiveSubscriptionInfoList();
+        if (DBG) log("[onResme] mSubInfoList=" + mSubInfoList);
         initLTEPreference();
         updateAllOptions();
     }
@@ -528,8 +517,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     public void createDropDown(DropDownPreference preference) {
         final DropDownPreference simPref = preference;
         final String keyPref = simPref.getKey();
-        int mActCount = 0;
-        final boolean askFirst = keyPref.equals(KEY_CALLS) || keyPref.equals(KEY_SMS);
+
         //If Fragment not yet attached to Activity, return
         if (!isAdded()) {
             Log.d(TAG,"Fragment not yet attached to Activity, EXIT!!" );
@@ -537,47 +525,43 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         }
         simPref.clearItems();
 
-        //Get num of activated Subs
-        if (mSubInfoList != null) {
-            for (SubscriptionInfo subInfo : mSubInfoList) {
-                if (subInfo != null && subInfo.getStatus()
-                        == SubscriptionManager.ACTIVE) mActCount++;
+        if (mSelectableSubInfos == null) {
+            return;
+        }
+
+        final int subSelectableSize = mSelectableSubInfos.size();
+        if (subSelectableSize > 1 && !keyPref.equals(KEY_CELLULAR_DATA)) {
+            simPref.addItem(getResources().getString(
+                    R.string.sim_calls_ask_first_prefs_title), ASK_VALUE);
+        }
+
+        for (int i = 0; i < subSelectableSize; ++i) {
+            final SubscriptionInfo sir = mSelectableSubInfos.get(i);
+            if (sir != null) {
+                simPref.addItem(sir.getDisplayName().toString(), sir.getSimSlotIndex());
             }
         }
 
-        if (askFirst && mActCount > 1) {
-            simPref.addItem(getResources().getString(
-                    R.string.sim_calls_ask_first_prefs_title), null);
-        }
-        int avaSubSizes = 0;
-        if (mAvailableSubInfos != null) {
-            avaSubSizes = mAvailableSubInfos.size();
-            for (int i = 0; i < avaSubSizes; ++i) {
-                final SubscriptionInfo sir = mAvailableSubInfos.get(i);
-                if (sir != null) {
-                    simPref.addItem(sir.getDisplayName().toString(), sir);
-                }
-            }
-        }
-        final int subAvailableSize = avaSubSizes;
         simPref.setCallback(new DropDownPreference.Callback() {
             @Override
             public boolean onItemSelected(int pos, Object value) {
-                final int subId = value == null ? 0 : ((SubscriptionInfo)value).getSubscriptionId();
-
-                Log.d(TAG,"calling setCallback: " + simPref.getKey() + "subId: " + subId +
-                        " defaultSubId: " + SubscriptionManager.getDefaultDataSubId());
+                int subId = (Integer) value == ASK_VALUE ? ASK_VALUE :
+                        mSubscriptionManager.getSubId((Integer) value)[0];
+                Log.d(TAG, "Preference[" + simPref.getKey() + "]select value :" + (Integer) value
+                        + "with subid(" + subId + ")");
                 if (simPref.getKey().equals(KEY_CELLULAR_DATA)) {
+                    Log.d(TAG, "DefDataId [" + SubscriptionManager.getDefaultDataSubId() + "]");
                     if (SubscriptionManager.getDefaultDataSubId() != subId) {
-                        SubscriptionManager.from(getActivity()).setDefaultDataSubId(subId);
-                        Log.d(TAG,"subAvailableSize: "+ subAvailableSize);
-                        if(subAvailableSize > 1) {
+                        mSubscriptionManager.setDefaultDataSubId(subId);
+                        if (subSelectableSize > 1) {
                             setUserPrefDataSubIdInDb(subId);
                         }
                     }
+
                 } else if (simPref.getKey().equals(KEY_CALLS)) {
                     //subId 0 is meant for "Ask First"/"Prompt" option as per AOSP
-                    if (subId == 0) {
+                    Log.d(TAG, "DefVoiceId [" + SubscriptionManager.getDefaultVoiceSubId() + "]");
+                    if (subId == ASK_VALUE) {
                         SubscriptionManager.setVoicePromptEnabled(true);
                     } else {
                         SubscriptionManager.setVoicePromptEnabled(false);
@@ -586,7 +570,8 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
                         }
                     }
                 } else if (simPref.getKey().equals(KEY_SMS)) {
-                    if (subId == 0) {
+                    Log.d(TAG, "DefSMSId [" + SubscriptionManager.getDefaultSmsSubId() + "]");
+                    if (subId == ASK_VALUE) {
                         SubscriptionManager.setSMSPromptEnabled(true);
                     } else {
                         SubscriptionManager.setSMSPromptEnabled(false);
