@@ -655,8 +655,14 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
                 numberView.setText(PhoneNumberUtils.formatNumber(rawNumber));
             }
 
+            final TelephonyManager tm =
+                        (TelephonyManager) getActivity().getSystemService(
+                        Context.TELEPHONY_SERVICE);
+            String simCarrierName = tm.getSimOperatorNameForSubscription(mSubscriptionInfo
+                        .getSubscriptionId());
             TextView carrierView = (TextView)dialogLayout.findViewById(R.id.carrier);
-            carrierView.setText(mSubscriptionInfo.getDisplayName());
+            carrierView.setText(!TextUtils.isEmpty(simCarrierName) ? simCarrierName :
+                    getContext().getString(com.android.internal.R.string.unknownName));
 
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
             final Editor editor = prefs.edit();
