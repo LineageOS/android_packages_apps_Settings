@@ -49,7 +49,6 @@ public final class LocalBluetoothAdapter {
     private static final int SCAN_EXPIRATION_MS = 5 * 60 * 1000; // 5 mins
 
     private long mLastScan;
-    public static boolean mIsPairing = false;
     private LocalBluetoothAdapter(BluetoothAdapter adapter) {
         mAdapter = adapter;
     }
@@ -82,12 +81,10 @@ public final class LocalBluetoothAdapter {
     }
 
     boolean enable() {
-        mIsPairing = false;
         return mAdapter.enable();
     }
 
     boolean disable() {
-        mIsPairing = false;
         return mAdapter.disable();
     }
 
@@ -205,7 +202,6 @@ public final class LocalBluetoothAdapter {
         boolean success = enabled
                 ? mAdapter.enable()
                 : mAdapter.disable();
-        mIsPairing = false;
         if (success) {
             setBluetoothStateInt(enabled
                 ? BluetoothAdapter.STATE_TURNING_ON
@@ -218,13 +214,5 @@ public final class LocalBluetoothAdapter {
 
             syncBluetoothState();
         }
-    }
-
-    public boolean checkPairingState(){
-       return mIsPairing;
-    }
-
-    public void setPairingState(boolean state){
-       mIsPairing = state;
     }
 }
