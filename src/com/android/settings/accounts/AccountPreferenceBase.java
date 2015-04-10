@@ -149,6 +149,7 @@ class AccountPreferenceBase extends SettingsPreferenceFragment
                 desc = mAuthenticatorHelper.getAccountTypeDescription(accountType);
                 if (desc != null && desc.accountPreferencesId != 0) {
                     Context authContext = getActivity().createPackageContext(desc.packageName, 0);
+                    authContext.setTheme(com.android.internal.R.style.AccountPreference);
                     prefs = getPreferenceManager().inflateFromResource(authContext,
                             desc.accountPreferencesId, parent);
                 }
