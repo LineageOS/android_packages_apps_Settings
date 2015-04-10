@@ -145,6 +145,10 @@ public class QSTileHolder {
                 resourceName ="ic_livedisplay_day";
                 stringId = R.string.live_display_title;
                 break;
+            case QSConstants.TILE_USB_TETHER:
+                resourceName ="ic_qs_usb_tether_on";
+                stringId = R.string.usb_tethering_button_text;
+                break;
             default:
                 return null;
         }
