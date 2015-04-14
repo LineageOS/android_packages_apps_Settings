@@ -29,18 +29,18 @@
         >
 
         <ImageView
-            android:id="@android:id/icon"
-            android:layout_width="@*android:dimen/status_bar_icon_size"
-            android:layout_height="@*android:dimen/status_bar_icon_size"
-            android:layout_centerVertical="true"
-            android:layout_toEndOf="@id/pkgicon"
-            android:layout_marginStart="0dp"
-            android:layout_marginEnd="8dp"
-            android:contentDescription="@null"
-            android:adjustViewBounds="true"
-            android:maxHeight="@*android:dimen/status_bar_icon_size"
-            android:maxWidth="@*android:dimen/status_bar_icon_size"
-            android:scaleType="fitCenter" />
+        android:id="@android:id/icon"
+        android:layout_width="@*android:dimen/notificationstation_icon_size"
+        android:layout_height="@*android:dimen/notificationstation_icon_size"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/pkgicon"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="@null"
+        android:adjustViewBounds="true"
+        android:maxHeight="@*android:dimen/status_bar_icon_size"
+        android:maxWidth="@*android:dimen/status_bar_icon_size"
+        android:scaleType="fitCenter" />
 
         <TextView
             android:id="@android:id/title"
@@ -48,7 +48,6 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toStartOf="@+id/timestamp"
-            android:layout_toEndOf="@android:id/icon"
             android:ellipsize="end"
             android:singleLine="true"
             android:textAppearance="?android:attr/textAppearanceSmall"
@@ -87,7 +86,7 @@
         android:layout_width="match_parent"
         android:layout_height="@*android:dimen/status_bar_icon_size"
         android:orientation="horizontal"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="@dimen/notificationstation_second_row_margin"
         >
 
         <ImageView
