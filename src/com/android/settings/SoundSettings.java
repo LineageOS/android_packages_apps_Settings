@@ -392,7 +392,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
                 AudioManager.STREAM_NOTIFICATION);
 
         if (mVoiceCapable) {
-            final boolean enabled = Settings.System.getInt(getContentResolver(),
+            final boolean enabled = Settings.Secure.getInt(getContentResolver(),
                     Settings.Secure.VOLUME_LINK_NOTIFICATION, 1) == 1;
 
             if (mNotificationPreference != null) {
