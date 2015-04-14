@@ -30,8 +30,8 @@
 
         <ImageView
             android:id="@android:id/icon"
-            android:layout_width="@*android:dimen/status_bar_icon_size"
-            android:layout_height="@*android:dimen/status_bar_icon_size"
+            android:layout_width="@dimen/notificationstation_icon_size"
+            android:layout_height="@dimen/notificationstation_icon_size"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@id/pkgicon"
             android:layout_marginStart="0dp"
@@ -87,7 +87,7 @@
         android:layout_width="match_parent"
         android:layout_height="@*android:dimen/status_bar_icon_size"
         android:orientation="horizontal"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="@dimen/notificationstation_second_row_margin"
         >
 
         <ImageView
