@@ -185,7 +185,6 @@ public class NotificationStation extends SettingsPreferenceFragment {
         public String pkg;
         public Drawable pkgicon;
         public CharSequence pkgname;
-        public Drawable icon;
         public CharSequence title;
         public int priority;
         public int user;
@@ -208,7 +207,6 @@ public class NotificationStation extends SettingsPreferenceFragment {
                     final HistoricalNotificationInfo info = new HistoricalNotificationInfo();
                     info.pkg = sbn.getPackageName();
                     info.user = sbn.getUserId();
-                    info.icon = loadIconDrawable(info.pkg, info.user, sbn.getNotification().icon);
                     info.pkgicon = loadPackageIconDrawable(info.pkg, info.user);
                     info.pkgname = loadPackageName(info.pkg);
                     if (sbn.getNotification().extras != null) {
@@ -283,24 +281,6 @@ public class NotificationStation extends SettingsPreferenceFragment {
         return pkg;
     }
 
-    private Drawable loadIconDrawable(String pkg, int userId, int resId) {
-        Resources r = getResourcesForUserPackage(pkg, userId);
-
-        if (resId == 0) {
-            return null;
-        }
-
-        try {
-            return r.getDrawable(resId);
-        } catch (RuntimeException e) {
-            Log.w(TAG, "Icon not found in "
-                    + (pkg != null ? resId : "<system>")
-                    + ": " + Integer.toHexString(resId));
-        }
-
-        return null;
-    }
-
     private class NotificationHistoryAdapter extends ArrayAdapter<HistoricalNotificationInfo> {
         private final LayoutInflater mInflater;
 
@@ -316,10 +296,6 @@ public class NotificationStation extends SettingsPreferenceFragment {
             final View row = convertView != null ? convertView : createRow(parent);
             row.setTag(info);
 
-            // bind icon
-            if (info.icon != null) {
-                ((ImageView) row.findViewById(android.R.id.icon)).setImageDrawable(info.icon);
-            }
             if (info.pkgicon != null) {
                 ((ImageView) row.findViewById(R.id.pkgicon)).setImageDrawable(info.pkgicon);
             }
