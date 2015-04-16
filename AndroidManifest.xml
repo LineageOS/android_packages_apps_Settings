@@ -726,16 +726,6 @@
                 android:value="true" />
         </activity>
 
-        <activity android:name="SettingsCMLicenseActivity"
-                android:label="@string/settings_cmlicense_activity_title"
-                android:theme="@android:style/Theme.Material.Light.Panel"
-                android:configChanges="orientation|screenSize">
-            <intent-filter>
-                <action android:name="android.settings.CMLICENSE" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
         <activity android:name="Settings$ManageApplicationsActivity"
                 android:label="@string/applications_settings"
                 android:taskAffinity="">
