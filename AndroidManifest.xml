@@ -2040,7 +2040,7 @@
                 <category android:name="com.android.settings.SHORTCUT" />
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.sounds.SoundSettings" />
+                android:value="com.android.settings.SoundSettings" />
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
                 android:resource="@id/sound_settings" />
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
@@ -2060,7 +2060,7 @@
                 <category android:name="android.intent.category.VOICE_LAUNCH" />
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.sounds.SoundSettings" />
+                android:value="com.android.settings.SoundSettings" />
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
                 android:resource="@id/sound_settings" />
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
@@ -2073,7 +2073,7 @@
                 android:exported="true"
                 android:targetActivity="Settings$NotificationSettingsActivity">
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.sound.SoundSettings" />
+                android:value="com.android.settings.SoundSettings" />
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
                 android:resource="@id/sound_settings" />
         </activity-alias>
