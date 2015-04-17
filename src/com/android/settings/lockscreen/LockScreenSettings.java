@@ -45,6 +45,7 @@ import com.android.settings.SecuritySettings;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.TrustAgentUtils;
 import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.search.Index;
 import com.android.settings.search.Indexable;
 import com.android.settings.search.SearchIndexableRaw;
 
@@ -408,6 +409,10 @@ public class LockScreenSettings extends SettingsPreferenceFragment
                 mTrustAgentClickIntent = null;
             }
             return;
+        } else if (requestCode == SET_OR_CHANGE_LOCK_METHOD_REQUEST) {
+            Index.getInstance(
+                    getActivity().getApplicationContext()).updateFromClassNameResource(
+                    LockScreenSettings.class.getName(), true, true);
         }
         createPreferenceHierarchy();
     }
