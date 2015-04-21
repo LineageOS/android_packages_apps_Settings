@@ -110,8 +110,64 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+<<<<<<< HEAD   (f1b73f Merge tag 'android-12.1.0_r11' into staging/lineage-19.1_mer)
         android:key="advanced_section_header"
         android:title="@string/advanced_section_header">
+=======
+        android:key="configure_notifications_advanced"
+        android:order="15"
+        settings:initialExpandedChildrenCount="0">
+
+        <SwitchPreference
+            android:key="silent_icons"
+            android:title="@string/silent_notifications_status_bar"
+            settings:controller="com.android.settings.notification.SilentStatusBarPreferenceController"/>
+
+        <SwitchPreference
+            android:key="show_snooze_options"
+            android:title="@string/snooze_options_title"
+            settings:controller="com.android.settings.notification.SnoozeNotificationPreferenceController" />
+
+        <SwitchPreference
+            android:key="asst_capabilities_actions_replies"
+            android:title="@string/asst_capabilities_actions_replies_title"
+            android:summary="@string/asst_capabilities_actions_replies_summary"
+            settings:controller="com.android.settings.notification.AssistantCapabilityPreferenceController" />
+
+        <!-- Notification badging -->
+        <SwitchPreference
+            android:key="notification_badging"
+            android:title="@string/notification_badging_title"
+            settings:controller="com.android.settings.notification.BadgingNotificationPreferenceController"/>
+
+        <!-- Pulse notification light -->
+        <SwitchPreference
+            android:key="notification_pulse"
+            android:title="@string/notification_pulse_title"
+            settings:controller="com.android.settings.notification.PulseNotificationPreferenceController"/>
+
+        <!-- Heads up -->
+        <lineageos.preference.GlobalSettingSwitchPreference
+            android:key="heads_up_notifications_enabled"
+            android:title="@string/heads_up_notifications_enabled_title"
+            android:summary="@string/heads_up_notifications_enabled_summary" />
+
+        <!-- Default notification ringtone -->
+        <com.android.settings.DefaultRingtonePreference
+            android:key="notification_default_ringtone"
+            android:title="@string/notification_ringtone_title"
+            android:dialogTitle="@string/notification_ringtone_title"
+            android:summary="@string/summary_placeholder"
+            android:ringtoneType="notification"
+            settings:searchable="false"/>
+
+        <Preference
+            android:key="gesture_swipe_down_fingerprint_notifications"
+            android:title="@string/fingerprint_swipe_for_notifications_title"
+            android:fragment="com.android.settings.gestures.SwipeToNotificationSettings"
+            settings:controller="com.android.settings.gestures.SwipeToNotificationPreferenceController"/>
+
+>>>>>>> CHANGE (db9c85 Settings: Add toggle for heads up notifications)
         <com.android.settingslib.RestrictedPreference
             android:key="zen_mode_notifications"
             android:order="17"
