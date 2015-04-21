@@ -86,13 +86,20 @@
         <org.cyanogenmod.internal.cmparts.CMPartsPreference
                 android:key="contributors" />
 
+        <!-- Device name -->
+        <Preference android:key="device_name"
+                android:enabled="false"
+                android:shouldDisableView="false"
+                android:title="@string/device_name"
+                android:summary="@string/device_info_default"/>
+
         <!-- Device hardware model -->
         <com.android.settings.DividerPreference
                 android:key="device_model"
                 android:enabled="false"
                 android:shouldDisableView="false"
                 android:selectable="false"
-                android:title="@string/model_info"
+                android:title="@string/device_model"
                 android:summary="@string/device_info_default"
                 settings:allowDividerAbove="true"
                 settings:allowDividerBelow="true"/>
