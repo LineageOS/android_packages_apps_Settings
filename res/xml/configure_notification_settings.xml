@@ -133,6 +133,12 @@
             android:title="@string/notification_pulse_title"
             settings:controller="com.android.settings.notification.PulseNotificationPreferenceController"/>
 
+        <!-- Heads up -->
+        <lineageos.preference.GlobalSettingSwitchPreference
+            android:key="heads_up_notifications_enabled"
+            android:title="@string/heads_up_notifications_enabled_title"
+            android:summary="@string/heads_up_notifications_enabled_summary" />
+
         <!-- Default notification ringtone -->
         <com.android.settings.DefaultRingtonePreference
             android:key="notification_default_ringtone"
