@@ -33,6 +33,12 @@
         <intent android:action="com.android.settings.action.POWER_NOTIF_CONTROLS" />
     </PreferenceScreen>
 
+    <!-- Heads up -->
+    <cyanogenmod.preference.GlobalSettingSwitchPreference
+        android:key="heads_up_notifications_enabled"
+        android:title="@string/heads_up_notifications_enabled_title"
+        android:summary="@string/heads_up_notifications_enabled_summary" />
+
     <!-- Lights -->
     <PreferenceCategory
         android:key="lights"
