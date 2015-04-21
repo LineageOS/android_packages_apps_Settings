@@ -1610,6 +1610,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                         Settings.Global.ADB_ENABLED, 0);
                 mVerifyAppsOverUsb.setEnabled(false);
                 mVerifyAppsOverUsb.setChecked(false);
+                onPreferenceTreeClick(null, mVerifyAppsOverUsb);
                 updateBugreportOptions();
             }
         } else if (preference == mAdbNotify) {
