@@ -35,7 +35,8 @@ public class ZenModePrioritySettings extends ZenModeSettingsBase implements Inde
     private static final String KEY_MESSAGES = "messages";
     private static final String KEY_CALLS = "calls";
     private static final String KEY_REPEAT_CALLERS = "repeat_callers";
-
+    private static final String KEY_ALLOW_LIGHTS = "allow_lights";
+    
     private static final int SOURCE_NONE = -1;
 
     private boolean mDisableListeners;
@@ -145,6 +146,13 @@ public class ZenModePrioritySettings extends ZenModeSettingsBase implements Inde
             }
         });
 
+        
+        // Remove of the "Allow notification light" setting if an led is not supported
+        if (!getResources().getBoolean(
+                com.android.internal.R.bool.config_intrusiveNotificationLed)) {
+            root.removePreference(findPreference(KEY_ALLOW_LIGHTS));
+        }
+        
         updateControls();
     }
 
