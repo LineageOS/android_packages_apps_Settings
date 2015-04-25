@@ -409,55 +409,93 @@
         </LinearLayout>
 
         <!-- Permissions section -->
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/permissions_section"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical">
             <TextView
                 style="?android:attr/listSeparatorTextViewStyle"
-                android:layout_marginTop="8dip"
-                android:text="@string/permissions_label" />
-            <TextView android:id="@+id/security_settings_billing_desc"
-                android:text="@string/security_settings_billing_desc"
-                android:textColor="@color/security_settings_billing_desc_color"
+                android:id="@+id/permissions_label"
+                android:text="@string/permissions_label"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:paddingTop="6dip"
-                android:paddingBottom="6dip"
+                android:layout_alignParentStart="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="6dip" />
+            <LinearLayout
+                android:id="@+id/permissions_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/permissions_label"
                 android:paddingStart="?android:attr/listPreferredItemPaddingStart"
                 android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:paddingTop="4dip"
+                android:orientation="horizontal">
+                <View
+                    android:layout_width="120dip"
+                    android:layout_height="0dip"
+                    android:layout_weight="0.4" />
+                <View
+                    android:layout_width="0dip"
+                    android:layout_height="0dip"
+                    android:visibility="invisible"
+                    android:layout_weight="0.2" />
+                <Button
+                    android:id="@+id/app_ops_button"
+                    android:layout_width="120dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.4"
+                    android:text="@string/app_ops_btn_text" />
+            </LinearLayout>
             <LinearLayout
-                android:id="@+id/security_settings_billing_list"
+                android:id="@+id/permissions_detail_section"
+                android:layout_below="@id/permissions_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/security_settings_premium_sms_desc" />
-                <Spinner
-                    android:id="@+id/security_settings_premium_sms_list"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:spinnerMode="dropdown" />
+                <TextView android:id="@+id/security_settings_billing_desc"
+                    android:text="@string/security_settings_billing_desc"
+                    android:textColor="@color/security_settings_billing_desc_color"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:paddingTop="6dip"
+                    android:paddingBottom="6dip"
+                    android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+                    android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:id="@+id/security_settings_billing_list"
+                    android:layout_below="@id/security_settings_billing_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/security_settings_premium_sms_desc" />
+                    <Spinner
+                        android:id="@+id/security_settings_premium_sms_list"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:spinnerMode="dropdown" />
+                </LinearLayout>
+                <TextView android:id="@+id/security_settings_desc"
+                    android:text="@string/security_settings_desc"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:paddingTop="6dip"
+                    android:paddingBottom="6dip"
+                    android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+                    android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:id="@+id/security_settings_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"/>
             </LinearLayout>
-            <TextView android:id="@+id/security_settings_desc"
-                android:text="@string/security_settings_desc"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:paddingTop="6dip"
-                android:paddingBottom="6dip"
-                android:paddingStart="?android:attr/listPreferredItemPaddingStart"
-                android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <LinearLayout
-                android:id="@+id/security_settings_list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"/>
-        </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 </ScrollView>
 
