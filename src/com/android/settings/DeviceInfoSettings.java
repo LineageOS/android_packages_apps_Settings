@@ -125,8 +125,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         }
 
         setStringSummary(KEY_DEVICE_NAME, Build.PRODUCT);
-        removePreferenceIfBoolFalse(KEY_DEVICE_NAME, getResources().getBoolean(
-                R.bool.config_displayDeviceName));
+        removePreferenceIfBoolFalse(KEY_DEVICE_NAME, R.bool.config_displayDeviceName);
 
         // Remove selinux information if property is not present
         removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_SELINUX_STATUS,
