@@ -478,6 +478,10 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         for (int i = 0; i < subAvailableSize; ++i) {
             final SubscriptionInfo sir = mAvailableSubInfos.get(i);
             if(sir != null){
+                if (i > 0 && (keyPref.equals(KEY_CALLS) || keyPref.equals(KEY_SMS)) &&
+                        getResources().getBoolean(R.bool.config_hardcodeDefaultMobileNetworks)) {
+                    continue;
+                }
                 simPref.addItem(sir.getDisplayName().toString(), sir);
             }
         }
