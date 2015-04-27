@@ -302,6 +302,15 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         }
     }
 
+    private void removePreferenceIfBoolFalse(String preference, boolean bool) {
+        if (!bool) {
+            Preference pref = findPreference(preference);
+            if (pref != null) {
+                getPreferenceScreen().removePreference(pref);
+            }
+        }
+    }
+
     private void removePreferenceIfBoolFalse(String preference, int resId) {
         if (!getResources().getBoolean(resId)) {
             Preference pref = findPreference(preference);
