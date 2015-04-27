@@ -1773,7 +1773,7 @@
         <!-- "Blacklist settings" UI, used only on voice-capable phone devices. -->
         <activity android:name="Settings$BlacklistSettingsActivity"
                 android:uiOptions="splitActionBarWhenNarrow"
-                android:label="@string/blacklist_title"
+                android:label="@string/blocklist_title"
                 android:excludeFromRecents="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -1787,7 +1787,7 @@
 
         <activity-alias android:name=".blacklist.BlacklistSettings"
                 android:taskAffinity="com.android.settings"
-                android:label="@string/blacklist_title"
+                android:label="@string/blocklist_title"
                 android:targetActivity="Settings$BlacklistSettingsActivity"
                 android:configChanges="orientation|keyboardHidden|screenSize"
                 android:exported="true">

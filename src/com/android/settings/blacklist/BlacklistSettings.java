@@ -206,8 +206,8 @@ public class BlacklistSettings extends ListFragment
         getActivity().invalidateOptionsMenu();
 
         mEmptyView.setText(mLastEnabledState
-                ? R.string.blacklist_empty_text
-                : R.string.blacklist_disabled_empty_text);
+                ? R.string.blocklist_empty_text
+                : R.string.blocklist_disabled_empty_text);
         mAdapter.swapCursor(mLastEnabledState ? mCursor : null);
     }
 

@@ -92,7 +92,7 @@ public class EntryEditDialogFragment extends DialogFragment
                 ? savedInstanceState.getBundle(DIALOG_STATE) : null;
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
-                .setTitle(R.string.blacklist_edit_dialog_title)
+                .setTitle(R.string.blocklist_edit_dialog_title)
                 .setPositiveButton(android.R.string.ok, this)
                 .setNegativeButton(android.R.string.cancel, null)
                 .setView(createDialogView(id, dialogState));
@@ -209,7 +209,7 @@ public class EntryEditDialogFragment extends DialogFragment
         // Since BlacklistProvider enforces validity for a number to be added
         // we should alert the user if and when it gets rejected
         if (!BlacklistUtils.addOrUpdate(getActivity(), number, flags, valid)) {
-            Toast.makeText(getActivity(), getString(R.string.blacklist_bad_number_add),
+            Toast.makeText(getActivity(), getString(R.string.blocklist_bad_number_add),
                     Toast.LENGTH_LONG).show();
         }
     }
@@ -282,7 +282,7 @@ public class EntryEditDialogFragment extends DialogFragment
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             AlertDialog dialog = new AlertDialog.Builder(getActivity())
                     .setTitle(R.string.remove_blacklist_number_title)
-                    .setMessage(R.string.remove_blacklist_entry)
+                    .setMessage(R.string.remove_blocklist_entry)
                     .setPositiveButton(R.string.yes, this)
                     .setNegativeButton(R.string.no, this)
                     .create();

@@ -84,7 +84,7 @@ public class PrivacySettings extends SettingsPreferenceFragment implements Index
 
     private void updateBlacklistSummary() {
         if (BlacklistUtils.isBlacklistEnabled(getActivity())) {
-            mBlacklist.setSummary(R.string.blacklist_summary);
+            mBlacklist.setSummary(R.string.blocklist_summary);
         } else {
             mBlacklist.setSummary(R.string.blacklist_summary_disabled);
         }
