@@ -449,6 +449,10 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         for (int i = 0; i < subAvailableSize; ++i) {
             final SubInfoRecord sir = mAvailableSubInfos.get(i);
             if(sir != null){
+                if (i > 0 && (keyPref.equals(KEY_CALLS) || keyPref.equals(KEY_SMS)) &&
+                        getResources().getBoolean(R.bool.config_disableAltAlwaysSmsCallSimPref)) {
+                    continue;
+                }
                 simPref.addItem(sir.displayName + " - " + Integer.toString(i+1), sir);
             }
         }
