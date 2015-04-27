@@ -530,25 +530,14 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         KeyDisabler.setActive(enabled);
 
         /* Save/restore button timeouts to disable them in softkey mode */
-        Editor editor = prefs.edit();
-
         if (enabled) {
-            int currentBrightness = Settings.System.getInt(context.getContentResolver(),
-                    Settings.System.BUTTON_BRIGHTNESS, defaultBrightness);
-            if (!prefs.contains("pre_navbar_button_backlight")) {
-                editor.putInt("pre_navbar_button_backlight", currentBrightness);
-            }
             Settings.System.putInt(context.getContentResolver(),
                     Settings.System.BUTTON_BRIGHTNESS, 0);
         } else {
-            int oldBright = prefs.getInt("pre_navbar_button_backlight", -1);
-            if (oldBright != -1) {
-                Settings.System.putInt(context.getContentResolver(),
-                        Settings.System.BUTTON_BRIGHTNESS, oldBright);
-                editor.remove("pre_navbar_button_backlight");
-            }
+            int oldBright = prefs.getInt("pre_navbar_button_backlight", defaultBrightness);
+            Settings.System.putInt(context.getContentResolver(),
+                    Settings.System.BUTTON_BRIGHTNESS, oldBright);
         }
-        editor.commit();
     }
 
     private void updateDisableNavkeysOption() {
@@ -618,7 +607,18 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             return true;
         } else if (preference == mDisableNavigationKeys) {
             mDisableNavigationKeys.setEnabled(false);
-            mNavigationPreferencesCat.setEnabled(mDisableNavigationKeys.isChecked());
+
+            mNavigationPreferencesCat.setEnabled(false);
+
+            if (mDisableNavigationKeys.isChecked()) {
+                // enabling virtual nav keys, back it up lights setting
+                final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(
+                        getActivity());
+                int currentBrightness = Settings.System.getInt(getActivity().getContentResolver(),
+                        Settings.System.BUTTON_BRIGHTNESS, -1);
+                prefs.edit().putInt("pre_navbar_button_backlight", currentBrightness).apply();
+            }
+
             writeDisableNavkeysOption(getActivity(), mDisableNavigationKeys.isChecked());
             updateDisableNavkeysOption();
             mHandler.postDelayed(new Runnable() {
