@@ -197,9 +197,15 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         for (int i = 0; i < mNumSlots; ++i) {
             final SubscriptionInfo sir = findRecordBySlotId(i);
             if (mNumSlots > 1) {
-                mSimEnablers.add(i, new MultiSimEnablerPreference(
-                        getActivity(), sir, mHandler, i));
-                simEnablers.addPreference(mSimEnablers.get(i));
+                MultiSimEnablerPreference multiSimEnablerPreference =
+                        new MultiSimEnablerPreference(getActivity(), sir, mHandler,
+                                sir.getSimSlotIndex());
+                if (!getResources()
+                        .getBoolean(R.bool.config_hardcodeDefaultMobileNetworks)
+                        || sir.getSimSlotIndex() > 0) {
+                    mSimEnablers.add(multiSimEnablerPreference);
+                    simEnablers.addPreference(multiSimEnablerPreference);
+                }
             } else {
                 removePreference(SIM_ENABLER_CATEGORY);
             }
