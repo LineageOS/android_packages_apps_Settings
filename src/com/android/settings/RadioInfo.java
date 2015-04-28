@@ -294,6 +294,10 @@ public class RadioInfo extends Activity {
         preferredNetworkType.setAdapter(adapter);
         preferredNetworkType.setOnItemSelectedListener(mPreferredNetworkHandler);
 
+        boolean disablePreferredNetworkSwitch = getResources().getBoolean(
+                R.bool.config_disablePreferredNetworkSwitch);
+        preferredNetworkType.setEnabled(!disablePreferredNetworkSwitch);
+
         radioPowerButton = (Button) findViewById(R.id.radio_power);
         radioPowerButton.setOnClickListener(mPowerButtonHandler);
 
