@@ -20,11 +20,13 @@ import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.preference.DialogPreference;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.util.AttributeSet;
 import android.view.View;
@@ -44,6 +46,8 @@ public class ButtonBacklightBrightness extends DialogPreference implements
         SeekBar.OnSeekBarChangeListener {
     private static final int DEFAULT_BUTTON_TIMEOUT = 5;
 
+    public static final String KEY_BUTTON_BACKLIGHT = "pre_navbar_button_backlight";
+
     private Window mWindow;
 
     private BrightnessControl mButtonBrightness;
@@ -56,12 +60,16 @@ public class ButtonBacklightBrightness extends DialogPreference implements
 
     private ContentResolver mResolver;
 
+    private SharedPreferences mPrefs;
+
     public ButtonBacklightBrightness(Context context, AttributeSet attrs) {
         super(context, attrs);
 
         mResolver = context.getContentResolver();
 
         setDialogLayoutResource(R.layout.button_backlight);
+
+        mPrefs = PreferenceManager.getDefaultSharedPreferences(context);
 
         if (isKeyboardSupported(context)) {
             mKeyboardBrightness = new BrightnessControl(
@@ -299,6 +307,9 @@ public class ButtonBacklightBrightness extends DialogPreference implements
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         handleTimeoutUpdate(progress);
+        if (mButtonBrightness != null) {
+            mPrefs.edit().putInt(KEY_BUTTON_BACKLIGHT, progress).apply();
+        }
     }
 
     @Override
