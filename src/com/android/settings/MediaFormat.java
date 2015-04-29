@@ -119,8 +119,7 @@ public class MediaFormat extends Activity {
         }
 
         return new ChooseLockSettingsHelper(this)
-                .launchConfirmationActivity(request,
-                        getText(R.string.media_format_gesture_prompt),
+                .launchConfirmationActivity(request, null,
                         getText(explanationResId));
     }
 

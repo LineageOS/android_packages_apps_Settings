@@ -23,9 +23,10 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/data_usage_chart_height"
     android:paddingStart="?android:attr/listPreferredItemPaddingStart"
-    android:paddingEnd="40dp"
+    android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
     android:paddingTop="16dp"
-    android:paddingBottom="24dp">
+    android:paddingBottom="24dp"
+    android:layout_marginRight="15dp">
 
     <com.android.settings.widget.ChartGridView
         android:id="@+id/grid"

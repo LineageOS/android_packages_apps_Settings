@@ -179,6 +179,7 @@ public final class BluetoothSettings extends DeviceListPreferenceFragment implem
 
         getActivity().registerReceiver(mReceiver, mIntentFilter);
         if (mLocalAdapter != null) {
+            mLocalAdapter.setBluetoothStateInt(mLocalAdapter.getBluetoothState());
             updateContent(mLocalAdapter.getBluetoothState());
         }
     }

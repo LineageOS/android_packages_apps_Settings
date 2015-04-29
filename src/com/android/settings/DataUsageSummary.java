@@ -193,6 +193,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
     private INetworkStatsService mStatsService;
     private NetworkPolicyManager mPolicyManager;
     private TelephonyManager mTelephonyManager;
+    private SubscriptionManager mSubscriptionManager;
 
     private INetworkStatsSession mStatsSession;
 
@@ -281,6 +282,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
                 ServiceManager.getService(Context.NETWORK_STATS_SERVICE));
         mPolicyManager = NetworkPolicyManager.from(context);
         mTelephonyManager = TelephonyManager.from(context);
+        mSubscriptionManager = SubscriptionManager.from(context);
 
         mPrefs = getActivity().getSharedPreferences(PREF_FILE, Context.MODE_PRIVATE);
 

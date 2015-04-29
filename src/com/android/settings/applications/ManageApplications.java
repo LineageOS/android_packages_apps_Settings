@@ -124,7 +124,9 @@ final class CanBeOnSdCardChecker {
                     canBe = true;
                 } else if (info.installLocation
                         == PackageInfo.INSTALL_LOCATION_UNSPECIFIED) {
-                    if (mInstallLocation == PackageHelper.APP_INSTALL_EXTERNAL) {
+                    if (mInstallLocation == PackageHelper.APP_INSTALL_EXTERNAL ||
+                            mInstallLocation == PackageHelper.APP_INSTALL_INTERNAL ||
+                            mInstallLocation == PackageHelper.APP_INSTALL_AUTO) {
                         // For apps with no preference and the default value set
                         // to install on sdcard.
                         canBe = true;
@@ -201,7 +203,7 @@ public class ManageApplications extends Fragment implements
 
     private boolean mSearchappEnabled;
 
-    public static final int SHOW_PROTECTED_APPS = MENU_OPTIONS_BASE + 10;
+    public static final int SHOW_PROTECTED_APPS = MENU_OPTIONS_BASE + 11;
 
     // sort order
     private int mSortOrder = SORT_ORDER_ALPHA;

@@ -110,6 +110,8 @@ public class WifiSettings extends RestrictedSettingsFragment
     private static final String SAVE_DIALOG_EDIT_MODE = "edit_mode";
     private static final String SAVE_DIALOG_ACCESS_POINT_STATE = "wifi_ap_state";
 
+    private static final String WIFI_AUTO_CONNECT_TYPE = "wifi_auto_connect_type";
+
     private static boolean savedNetworksExist;
 
     private final IntentFilter mFilter;
@@ -374,8 +376,9 @@ public class WifiSettings extends RestrictedSettingsFragment
         }
 
         if (getResources().getBoolean(R.bool.config_auto_connect_wifi_enabled)) {
-            mAutoConnect = Settings.System.getInt(getActivity().getContentResolver(),
-                    getResources().getString(R.string.wifi_autoconn_type),
+            mAutoConnect = Settings.System.getInt(
+                    getActivity().getContentResolver(),
+                    WIFI_AUTO_CONNECT_TYPE,
                     getResources().getInteger(R.integer.wifi_autoconn_type_auto)) ==
                     getResources().getInteger(R.integer.wifi_autoconn_type_auto);
         }
@@ -536,7 +539,6 @@ public class WifiSettings extends RestrictedSettingsFragment
                     }
                 }
                 if (mSelectedAccessPoint.networkId != INVALID_NETWORK_ID) {
-                    menu.add(Menu.NONE, MENU_ID_FORGET, 0, R.string.wifi_menu_forget);
                     menu.add(Menu.NONE, MENU_ID_MODIFY, 0, R.string.wifi_menu_modify);
                     NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(getActivity());
                     if (nfcAdapter != null && nfcAdapter.isEnabled() &&

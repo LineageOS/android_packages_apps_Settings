@@ -302,28 +302,15 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
     }
 
     boolean startPairing() {
-        boolean pairingState = mLocalAdapter.checkPairingState();
-
-        if (pairingState == true)
-        {
-            Log.v(TAG, "Pairing is ongoing");
-            return true;
-        }
-
-        mLocalAdapter.setPairingState(true);
-        Log.v(TAG, "startPairing : isPairing : " + pairingState);
-
         // Pairing is unreliable while scanning, so cancel discovery
         if (mLocalAdapter.isDiscovering()) {
             mLocalAdapter.cancelDiscovery();
         }
 
         if (!mDevice.createBond()) {
-            mLocalAdapter.setPairingState(false);
             return false;
         }
 
-        Log.v(TAG, "startPairing CreateBond : isPairing : " + pairingState);
         mConnectAfterPairing = true;  // auto-connect after pairing
         return true;
     }
@@ -620,9 +607,7 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
     }
 
     void onBondingStateChanged(int bondState) {
-        boolean pairingState = mLocalAdapter.checkPairingState();
         if (bondState == BluetoothDevice.BOND_NONE) {
-            mLocalAdapter.setPairingState(false);
             mProfiles.clear();
             mDevice.setAlias(null);
             mConnectAfterPairing = false;  // cancel auto-connect
@@ -630,20 +615,17 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
             setMessagePermissionChoice(ACCESS_UNKNOWN);
             mMessageRejectionCount = 0;
             saveMessageRejectionCount();
-            Log.v(TAG,"BondState none: isPairing : " + pairingState);
         }
 
         refresh();
 
         if (bondState == BluetoothDevice.BOND_BONDED) {
-            mLocalAdapter.setPairingState(false);
             if (mDevice.isBluetoothDock()) {
                 onBondingDockConnect();
             } else if (mConnectAfterPairing) {
                 connect(false);
             }
             mConnectAfterPairing = false;
-            Log.v(TAG,"BondState bonded: isPairing : " + pairingState);
         }
     }
 

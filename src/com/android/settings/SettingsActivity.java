@@ -1264,7 +1264,9 @@ public class SettingsActivity extends Activity
                     List<ResolveInfo> infos = getBaseContext().getPackageManager()
                             .queryIntentActivities(intent, 0);
 
-                    if (infos == null || infos.isEmpty() || !Build.MODEL.contains(MODEL_8909)) {
+                    if (!getResources().getBoolean(R.bool.config_gesture_settings_enabled)
+                            || infos == null || infos.isEmpty()
+                            || !Build.MODEL.contains(MODEL_8909)) {
                         removeTile = true;
                     } else {
                         tile.title = infos.get(0).activityInfo.loadLabel(getPackageManager());

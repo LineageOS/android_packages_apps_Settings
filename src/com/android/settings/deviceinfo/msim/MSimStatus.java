@@ -603,7 +603,7 @@ public class MSimStatus extends PreferenceActivity {
 
             String operatorName = null;
             if (/*FeatureQuery.FEATURE_SHOW_CARRIER_BY_MCCMNC*/false) {
-                String spn = mTelephonyManager.getDefault().getNetworkOperatorForSubscription(phoneId);
+                String spn = mTelephonyManager.getDefault().getNetworkOperatorForPhone(phoneId);
                 operatorName = spn;
             } else {
                 operatorName = mServiceState[phoneId].getOperatorAlphaLong();

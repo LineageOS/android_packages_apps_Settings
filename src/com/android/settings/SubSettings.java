@@ -37,4 +37,5 @@ public class SubSettings extends SettingsActivity {
     }
 
     public static class BluetoothSubSettings extends SubSettings { /* empty */ }
+    public static class WifiSubSettings extends SubSettings { /* empty */ }
 }

@@ -19,6 +19,7 @@ package com.android.settings.notification;
 import android.content.Context;
 import android.preference.Preference;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -33,7 +34,6 @@ public class DropDownPreference extends Preference {
     private final ArrayAdapter<String> mAdapter;
     private final Spinner mSpinner;
     private final ArrayList<Object> mValues = new ArrayList<Object>();
-
     private Callback mCallback;
 
     public DropDownPreference(Context context) {

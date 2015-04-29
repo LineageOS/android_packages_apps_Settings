@@ -29,7 +29,6 @@ import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
 import android.telephony.SubscriptionManager;
 import android.util.Log;
 import android.widget.Toast;
@@ -94,7 +93,7 @@ public class IccLockSettings extends PreferenceActivity
     private Phone mPhone;
 
     private EditPinPreference mPinDialog;
-    private SwitchPreference mPinToggle;
+    private CheckBoxPreference mPinToggle;
 
     private Resources mRes;
 
@@ -170,7 +169,7 @@ public class IccLockSettings extends PreferenceActivity
         addPreferencesFromResource(R.xml.sim_lock_settings);
 
         mPinDialog = (EditPinPreference) findPreference(PIN_DIALOG);
-        mPinToggle = (SwitchPreference) findPreference(PIN_TOGGLE);
+        mPinToggle = (CheckBoxPreference) findPreference(PIN_TOGGLE);
         if (savedInstanceState != null &&
                savedInstanceState.containsKey(DIALOG_STATE)) {
             mDialogState = savedInstanceState.getInt(DIALOG_STATE);
