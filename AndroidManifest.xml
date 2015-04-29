@@ -797,6 +797,7 @@
         <activity android:name="SettingsLicenseActivity"
                 android:label="@string/settings_license_activity_title"
                 android:theme="@android:style/Theme.Holo.Panel"
+                android:launchMode="singleTask"
                 android:configChanges="orientation|screenSize"
                 android:parentActivityName="Settings$DeviceInfoSettingsActivity">
             <intent-filter>
@@ -808,6 +809,7 @@
         <activity android:name="SettingsCMLicenseActivity"
                 android:label="@string/settings_cmlicense_activity_title"
                 android:theme="@android:style/Theme.Holo.Panel"
+                android:launchMode="singleTask"
                 android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.settings.CMLICENSE" />
