@@ -16,6 +16,7 @@
 
 package com.android.settings;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.res.Configuration;
@@ -27,20 +28,19 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import com.android.internal.app.AlertActivity;
-import com.android.internal.app.AlertController;
 import android.content.DialogInterface;
 
 /**
  * The "dialog" that shows from "CyanogenMod Legal" in the Settings app.
  */
-public class SettingsCMLicenseActivity extends AlertActivity
+public class SettingsCMLicenseActivity extends Activity
         implements DialogInterface.OnCancelListener, DialogInterface.OnClickListener {
     private static final String PROPERTY_CMLICENSE_URL = "ro.cmlegal.url";
 
     private WebView mWebView;
 
     private AlertDialog mErrorDialog = null;
+    private AlertDialog mDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +59,7 @@ public class SettingsCMLicenseActivity extends AlertActivity
         mWebView = new WebView(this);
 
         // Begin accessing
+        mWebView.getSettings().setUseWideViewPort(true);
         mWebView.getSettings().setJavaScriptEnabled(true);
         if (savedInstanceState == null) {
             mWebView.loadUrl(userCMLicenseUrl);
@@ -69,7 +70,9 @@ public class SettingsCMLicenseActivity extends AlertActivity
             @Override
             public void onPageFinished(WebView view, String url) {
                 // Change from 'Loading...' to the real title
-                mAlert.setTitle(getString(R.string.settings_cmlicense_activity_title));
+                if (mDialog != null) {
+                    mDialog.setTitle(R.string.settings_cmlicense_activity_title);
+                }
             }
 
             @Override
@@ -79,14 +82,18 @@ public class SettingsCMLicenseActivity extends AlertActivity
             }
         });
 
-        final AlertController.AlertParams p = mAlertParams;
-        p.mTitle = getString(R.string.settings_license_activity_loading);
-        p.mView = mWebView;
-        p.mForceInverseBackground = true;
-        setupAlert();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.settings_license_activity_loading);
+        builder.setView(mWebView);
+        builder.setOnCancelListener(this);
+        mDialog = builder.create();
+        mDialog.show();
     }
 
     private void showErrorAndFinish(String url) {
+        if (mDialog != null) {
+            mDialog.dismiss();
+        }
         if (mErrorDialog == null) {
             mErrorDialog = new AlertDialog.Builder(this)
                     .setTitle(R.string.settings_cmlicense_activity_title)
