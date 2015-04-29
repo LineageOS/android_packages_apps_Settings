@@ -798,6 +798,8 @@
                 android:label="@string/settings_license_activity_title"
                 android:theme="@android:style/Theme.Holo.Panel"
                 android:launchMode="singleTask"
+                android:noHistory="true"
+                android:excludeFromRecents="true"
                 android:configChanges="orientation|screenSize"
                 android:parentActivityName="Settings$DeviceInfoSettingsActivity">
             <intent-filter>
@@ -810,7 +812,10 @@
                 android:label="@string/settings_cmlicense_activity_title"
                 android:theme="@android:style/Theme.Holo.Panel"
                 android:launchMode="singleTask"
-                android:configChanges="orientation|screenSize">
+                android:noHistory="true"
+                android:excludeFromRecents="true"
+                android:configChanges="orientation|screenSize"
+                android:parentActivityName="Settings$DeviceInfoSettingsActivity">
             <intent-filter>
                 <action android:name="android.settings.CMLICENSE" />
                 <category android:name="android.intent.category.DEFAULT" />
