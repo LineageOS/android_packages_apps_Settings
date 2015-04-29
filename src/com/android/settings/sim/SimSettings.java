@@ -94,6 +94,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     private PhoneStateListener[] mPhoneStateListener;
     private boolean mDataDisableToastDisplayed = false;
     private SubscriptionManager mSubscriptionManager;
+    private boolean mDisableAltAlwaysSmsCallSimPref = false;
 
     public SimSettings() {
         super(DISALLOW_CONFIG_SIM);
@@ -111,6 +112,9 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         if (mSubInfoList == null) {
             mSubInfoList = mSubscriptionManager.getActiveSubscriptionInfoList();
         }
+
+        mDisableAltAlwaysSmsCallSimPref = getResources()
+                .getBoolean(R.bool.config_hardcodeDefaultMobileNetworks);
 
         mNumSlots = tm.getSimCount();
         mPhoneCount = TelephonyManager.getDefault().getPhoneCount();
@@ -198,13 +202,11 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             final SubscriptionInfo sir = findRecordBySlotId(i);
             if (mNumSlots > 1) {
                 MultiSimEnablerPreference multiSimEnablerPreference =
-                        new MultiSimEnablerPreference(getActivity(), sir, mHandler,
-                                sir.getSimSlotIndex());
-                if (!getResources()
-                        .getBoolean(R.bool.config_hardcodeDefaultMobileNetworks)
-                        || sir.getSimSlotIndex() > 0) {
-                    mSimEnablers.add(multiSimEnablerPreference);
-                    simEnablers.addPreference(multiSimEnablerPreference);
+                        new MultiSimEnablerPreference(getActivity(), sir, mHandler, i);
+                mSimEnablers.add(multiSimEnablerPreference);
+                simEnablers.addPreference(multiSimEnablerPreference);
+                if (mDisableAltAlwaysSmsCallSimPref && i == 0) {
+                    multiSimEnablerPreference.setExplicitlyDisabled(true);
                 }
             } else {
                 removePreference(SIM_ENABLER_CATEGORY);
@@ -485,7 +487,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             final SubscriptionInfo sir = mAvailableSubInfos.get(i);
             if(sir != null){
                 if (i > 0 && (keyPref.equals(KEY_CALLS) || keyPref.equals(KEY_SMS)) &&
-                        getResources().getBoolean(R.bool.config_hardcodeDefaultMobileNetworks)) {
+                        mDisableAltAlwaysSmsCallSimPref) {
                     continue;
                 }
                 simPref.addItem(sir.getDisplayName().toString(), sir);
