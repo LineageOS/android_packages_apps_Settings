@@ -236,7 +236,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         mSimEnablers = new ArrayList<MultiSimEnablerPreference>(mNumSlots);
         for (int i = 0; i < mNumSlots; ++i) {
             final SubInfoRecord sir = findRecordBySlotId(i);
-            if (mNumSlots > 1) {
+            if (mNumSlots > 1 && sir != null) {
                 mSimEnablers.add(i, new MultiSimEnablerPreference(
                         getActivity(), sir, mHandler, i));
                 simEnablers.addPreference(mSimEnablers.get(i));
