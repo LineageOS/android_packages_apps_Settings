@@ -45,6 +45,7 @@ import android.os.Message;
 import android.os.PowerManager;
 import android.os.RemoteException;
 import android.os.ServiceManager;
+import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.preference.Preference;
@@ -1216,6 +1217,8 @@ public class SettingsActivity extends Activity
                     if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY)) {
                         removeTile = true;
                     } else if (TelephonyManager.getDefault().getPhoneCount() > 1) {
+                        removeTile = true;
+                    } else if (SystemProperties.getBoolean("ro.radio.noril", false)) {
                         removeTile = true;
                     }
                 } else if (id == R.id.data_usage_settings) {
