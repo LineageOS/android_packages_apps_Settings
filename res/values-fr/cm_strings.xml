@@ -365,6 +365,7 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="root_access_apps">Applications uniquement</string>
   <string name="root_access_adb">ADB uniquement</string>
   <string name="root_access_all">Applications et ADB</string>
+  <string name="update_recovery_title">Mettre à jour le recovery Cyanogen</string>
   <string name="update_recovery_summary">Mettre à jour le recovery avec les mises à jour système</string>
   <string name="update_recovery_on_warning">AVIS : Lorsque cette fonction est activée, votre recovery installé sera remplacé par celui inclus avec la version actuelle du système d\'exploitation.\n\nVotre recovery sera mis à jour avec les mises à niveau du système d\'exploitation, aidant à s\'assurer de sa compatibilité avec les futures versions.\n\nVoulez-vous activer cette fonction ?</string>
   <string name="update_recovery_off_warning">AVERTISSEMENT : Lorsque cette fonction est désactivée, votre recovery installé ne sera pas mis à jour avec les mises à niveau du système d\'exploitation.\n\nLes futures mises à niveau du système d\'exploitation peuvent ne pas s\'installer sur des versions obsolètes ou personnalisés du recovery.\n\nVoulez-vous vraiment désactiver cette fonction ?</string>
@@ -596,6 +597,7 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="lockscreen_buttons_toggle_sound">Activer/désactiver le son</string>
   <string name="lockscreen_buttons_sleep">Mise en veille</string>
   <string name="lockscreen_enable_modlock_title">Écran de verrouillage personnalisée</string>
+  <string name="lockscreen_buttons_disabled_summary">Les boutons de l\'écran de verrouillage ne sont pas disponibles pendant l\'utilisation de la barre de navigation</string>
   <string name="navigation_bar_category">Barre de navigation</string>
   <string name="navigation_bar_title">Boutons et disposition</string>
   <string name="navigation_bar_left_title">Mode gaucher</string>
@@ -947,6 +949,11 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="sd_media_format_button_text">Effacer la carte SD</string>
   <string name="sd_media_format_final_desc">Effacer la carte SD et supprimer tous les fichiers stockés ici\u00A0? Cette action est irréversible\u00A0!</string>
   <string name="sd_media_format_gesture_explanation">Vous devez dessiner votre schéma de déverrouillage pour confirmer que vous voulez effacer la carte SD.</string>
+  <string name="internal_sd_format">Effacer le stockage média interne</string>
+  <string name="internal_sd_format_summary">Effacer toutes les données sur le stockage média interne, telles que la musique et les photos</string>
+  <string name="master_clear_desc_erase_internal_storage">\n\nPour supprimer la musique, les photos et les autres données de l\'utilisateur, le <b>stockage de média interne</b> a besoin d\'être effacé.</string>
+  <string name="erase_internal_storage">Effacer le stockage média interne</string>
+  <string name="erase_internal_storage_description">Effacer toutes les données sur le stockage média interne, telles que la musique et les photos</string>
   <string name="bluetooth_enter_pin_msg_hs">Pour s\'appairer avec :<xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g>Entrez le code PIN requis pour l\'appareil (16 chiffres ou plus) :</string>
   <string name="bluetooth_profile_sap">Accès à la SIM</string>
   <string name="bluetooth_profile_dun">Accès au réseau à distance</string>
@@ -1013,4 +1020,9 @@ Des options supplémentaires sont disponibles en appuyant longtemps sur une lign
   <string name="no_triggers_configured">Aucune action configurée. Appuyez pour en ajouter.</string>
   <string name="no_triggers_configured_nfc">Appuyez pour configurer une nouvelle action NFC.</string>
   <string name="sound_ringtone_multisim_options">Modifier les sonneries par défaut</string>
+  <string name="lock_to_cyanogen_title">Protection de l\'appareil</string>
+  <string name="lock_to_cyanogen_summary">Exiger le mot de passe de votre compte Cyanogen OS même après une réinitialisation d\'usine</string>
+  <string name="lock_to_cyanogen_create_account_msg">Votre appareil utilise le mot de passe du compte Cyanogen OS pour protéger votre appareil même dans le cas d\'une réinitialisation d\'usine. Vous devrez créer un compte Cyanogen OS.</string>
+  <string name="lock_to_cyanogen_disable_msg">La désactivation de cette fonction permettra à des utilisateurs non autorisés de réinitialiser votre téléphone aux paramètres par défaut s\'il est volé. Vos données personnelles ne peuvent pas être protégées. Voulez-vous désactiver cette fonction ?</string>
+  <string name="lock_to_cyanogen_master_clear_warning">La protection de l\'appareil est activée. Veuillez la désactiver pour continuer la réinitialisation de votre appareil.</string>
 </resources>
