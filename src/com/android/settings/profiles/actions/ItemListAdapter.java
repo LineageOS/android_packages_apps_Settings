@@ -39,7 +39,8 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
         TRIGGER_ITEM,
         APP_GROUP_ITEM,
         BRIGHTNESS_ITEM,
-        DOZEMODE_ITEM
+        DOZEMODE_ITEM,
+        APP_ACTION_ITEM
     }
 
     public ItemListAdapter(Context context, List<Item> items) {

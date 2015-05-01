@@ -7,7 +7,8 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
 	android-support-v7-cardview \
 	android-support-v13 \
 	jsr305 \
-        libGoogleAnalyticsV3
+        libGoogleAnalyticsV3 \
+        org.cyanogenmod.platform.sdk
 
 LOCAL_MODULE_TAGS := optional
 
@@ -30,6 +31,7 @@ LOCAL_CERTIFICATE := platform
 LOCAL_PRIVILEGED_MODULE := true
 
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
+LOCAL_PROGUARD_ENABLED := disabled
 
 LOCAL_AAPT_FLAGS := \
     --auto-add-overlay \
@@ -41,7 +43,3 @@ LOCAL_ASSET_DIR := $(LOCAL_PATH)/assets
 include frameworks/opt/setupwizard/navigationbar/common.mk
 include $(BUILD_PACKAGE)
 
-# Use the following include to make our test apk.
-ifeq (,$(ONE_SHOT_MAKEFILE))
-include $(call all-makefiles-under,$(LOCAL_PATH))
-endif
