@@ -16,7 +16,6 @@
 package com.android.settings.profiles.actions.item;
 
 import android.app.Profile;
-import android.util.StringBuilderPrinter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +32,9 @@ public class TriggerItem implements Item {
     public static final int BLUETOOTH = 1;
     // not in Profile.TriggerType, but we need it.
     public static final int NFC = 2;
+    public static final int APPS = 3;
+    
+    
 
     Profile mProfile;
     int mTriggerType;
@@ -102,6 +104,8 @@ public class TriggerItem implements Item {
                 return R.string.profile_tabs_bluetooth;
             case NFC:
                 return R.string.profile_tabs_nfc;
+            case APPS:
+                return R.string.profile_tabs_apps;
             default: return 0;
         }
     }
