@@ -72,6 +72,7 @@ import com.android.settings.cyanogenmod.DeviceUtils;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.profiles.actions.ItemListAdapter;
 import com.android.settings.profiles.actions.item.AirplaneModeItem;
+import com.android.settings.profiles.actions.item.AppActionItem;
 import com.android.settings.profiles.actions.item.AppGroupItem;
 import com.android.settings.profiles.actions.item.BrightnessItem;
 import com.android.settings.profiles.actions.item.ConnectionOverrideItem;
@@ -84,6 +85,8 @@ import com.android.settings.profiles.actions.item.RingModeItem;
 import com.android.settings.profiles.actions.item.TriggerItem;
 import com.android.settings.profiles.actions.item.VolumeStreamItem;
 import com.android.settings.Utils;
+import cyanogenmod.app.profiles.Action;
+import cyanogenmod.app.profiles.ProfilePluginManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -178,6 +181,7 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
             if (DeviceUtils.deviceSupportsNfc(getActivity())) {
                 mItems.add(generateTriggerItem(TriggerItem.NFC));
             }
+            mItems.add(generateTriggerItem(TriggerItem.APPS));
         }
 
         // connection overrides
@@ -254,6 +258,14 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
                 // no notification groups available at all, nothing to add/remove
                 mItems.remove(mItems.get(mItems.size() - 1));
             }
+        }
+
+        // actions
+        ProfilePluginManager profilePluginManager = ProfilePluginManager.getInstance(getActivity());
+        List<Action> registeredActions = profilePluginManager.getRegisteredActions();
+        mItems.add(new Header("App actions"));
+        for (Action action : registeredActions) {
+            mItems.add(new AppActionItem(mProfile, action));
         }
 
         mAdapter.notifyDataSetChanged();
@@ -518,14 +530,14 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
         builder.setTitle(R.string.profile_lockmode_title);
         builder.setSingleChoiceItems(lockEntries, defaultIndex,
                 new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int item) {
-                mProfile.setScreenLockMode(LOCKMODE_MAPPING[item]);
-                updateProfile();
-                mAdapter.notifyDataSetChanged();
-                dialog.dismiss();
-            }
-        });
+                    @Override
+                    public void onClick(DialogInterface dialog, int item) {
+                        mProfile.setScreenLockMode(LOCKMODE_MAPPING[item]);
+                        updateProfile();
+                        mAdapter.notifyDataSetChanged();
+                        dialog.dismiss();
+                    }
+                });
 
         builder.setNegativeButton(android.R.string.cancel, null);
         builder.show();
@@ -577,27 +589,27 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
         builder.setTitle(R.string.profile_airplanemode_title);
         builder.setSingleChoiceItems(connectionNames, defaultIndex,
                 new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int item) {
-                switch (item) {
-                    case 0: // disable override
-                        setting.setOverride(false);
-                        break;
-                    case 1: // enable override, disable
-                        setting.setOverride(true);
-                        setting.setValue(0);
-                        break;
-                    case 2: // enable override, enable
-                        setting.setOverride(true);
-                        setting.setValue(1);
-                        break;
-                }
-                mProfile.setAirplaneMode(setting);
-                mAdapter.notifyDataSetChanged();
-                updateProfile();
-                dialog.dismiss();
-            }
-        });
+                    @Override
+                    public void onClick(DialogInterface dialog, int item) {
+                        switch (item) {
+                            case 0: // disable override
+                                setting.setOverride(false);
+                                break;
+                            case 1: // enable override, disable
+                                setting.setOverride(true);
+                                setting.setValue(0);
+                                break;
+                            case 2: // enable override, enable
+                                setting.setOverride(true);
+                                setting.setValue(1);
+                                break;
+                        }
+                        mProfile.setAirplaneMode(setting);
+                        mAdapter.notifyDataSetChanged();
+                        updateProfile();
+                        dialog.dismiss();
+                    }
+                });
 
         builder.setNegativeButton(android.R.string.cancel, null);
         builder.show();
@@ -928,6 +940,55 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
         builder.show();
     }
 
+
+    private void requestAppActionItemDialog(AppActionItem item) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
+                .setTitle(item.getAction().getTitle());
+
+        Bundle states = item.getAction().getStates();
+        List<String> stateList = new ArrayList<String>();
+        stateList.addAll(states.keySet());
+        final String[] items = new String[stateList.size()];
+        stateList.toArray(items);
+
+        CustomActions actions = mProfile.getCustomActions();
+        List<CustomAction> allActions = actions.getCustomActions();
+        int index = 0;
+        for (CustomAction action : allActions) {
+            index++;
+            if (action.mId.equals(item.getAction().getKey())) {
+                index = Arrays.asList(items).indexOf(action.mState);
+                break;
+            }
+        }
+
+        builder.setSingleChoiceItems(items, index, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                CustomActions actions = mProfile.getCustomActions();
+                List<CustomAction> allActions = actions.getCustomActions();
+                CustomAction target = null;
+                for (CustomAction action : allActions) {
+                    if (action.mId.equals(item.getAction().getKey())) {
+                        target = action;
+                       break;
+                    }
+                }
+                if (target == null) {
+                    target = new CustomAction(item.getAction().getPackageName()+item.getAction().getKey(), items[which]);
+                    actions.addAction(target);
+                } else {
+                    target.mState = items[which];
+                }
+                mProfile.setCustomActions(actions);
+                updateProfile();
+                mAdapter.notifyDataSetChanged();
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -998,6 +1059,9 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
             } else {
                 startProfileGroupActivity(item);
             }
+        } else if (itemAtPosition instanceof AppActionItem) {
+            AppActionItem item = (AppActionItem) itemAtPosition;
+            requestAppActionItemDialog(item);
         }
     }
 
