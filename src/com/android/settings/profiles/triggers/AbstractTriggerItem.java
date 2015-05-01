@@ -16,10 +16,12 @@
 package com.android.settings.profiles.triggers;
 
 import android.app.Profile;
+import android.graphics.drawable.Drawable;
 
 
 public class AbstractTriggerItem {
-    private int mIcon;
+    private int mIconRes;
+    private Drawable mIcon;
     private String mSummary;
     private String mTitle;
 
@@ -50,10 +52,18 @@ public class AbstractTriggerItem {
     }
 
     public void setIcon(int icon) {
-        mIcon = icon;
+        mIconRes = icon;
     }
 
     public int getIcon() {
+        return mIconRes;
+    }
+
+    public void setIcon(Drawable icon) {
+        mIcon = icon;
+    }
+
+    public Drawable getIconDrawable() {
         return mIcon;
     }
 }
