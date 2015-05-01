@@ -25,6 +25,7 @@ import android.util.SparseArray;
 import android.view.ViewGroup;
 
 import com.android.settings.R;
+import com.android.settings.profiles.triggers.AppTriggersFragment;
 import com.android.settings.profiles.triggers.BluetoothTriggerFragment;
 import com.android.settings.profiles.triggers.NfcTriggerFragment;
 import com.android.settings.profiles.triggers.WifiTriggerFragment;
@@ -181,7 +182,9 @@ public class TriggerPagerAdapter extends FragmentPagerAdapter {
         /**
          * The song fragment
          */
-        NFC(NfcTriggerFragment.class, R.string.profile_tabs_nfc);
+        NFC(NfcTriggerFragment.class, R.string.profile_tabs_nfc),
+
+        APP(AppTriggersFragment.class, R.string.profile_tabs_nfc);
 
         private Class<? extends Fragment> mFragmentClass;
         private int mNameRes;
