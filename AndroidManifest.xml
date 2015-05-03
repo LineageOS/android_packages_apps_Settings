@@ -128,6 +128,12 @@
             </intent-filter>
         </receiver>
 
+        <receiver android:name=".profiles.ActionFiredReceiver" >
+            <intent-filter>
+                <action android:name="com.android.settings.profiles.SEND_ACTIONS" />
+            </intent-filter>
+        </receiver>
+
         <activity android:name=".SubSettings"
                 android:taskAffinity="com.android.settings"
                 android:parentActivityName="Settings">
