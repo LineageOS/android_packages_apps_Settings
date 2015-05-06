@@ -607,9 +607,13 @@ public class SearchResultsSummary extends Fragment {
             imageView = (ImageView) view.findViewById(R.id.icon);
 
             final SearchResult result = (SearchResult) getItem(position);
-            textTitle.setText(result.title);
+            if (result == null || result.title == null) {
+                textTitle.setText(" ");
+            } else {
+                textTitle.setText(result.title);
+            }
 
-            if (result.iconResId != R.drawable.empty_icon) {
+            if (result != null && result.title == null && result.iconResId != null 
                 final Context packageContext = result.context;
                 final Drawable drawable;
                 try {
