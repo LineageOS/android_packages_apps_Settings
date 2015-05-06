@@ -93,4 +93,7 @@
     <!-- Using this on MSIM devices leads to weird states that break telephony's
     internal state machine. All MSIM devices should probably set this to "true"-->
     <bool name="config_disablePreferredNetworkSwitch" translatable="false">false</bool>
+
+    <!-- The default value of whether to check "Show password" in the WiFi AP dialog -->
+    <bool name="config_showWifiApPasswordDefault">false</bool>
 </resources>
