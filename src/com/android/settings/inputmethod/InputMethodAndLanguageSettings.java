@@ -102,6 +102,14 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
     // false: on ICS or later
     private static final boolean SHOW_INPUT_METHOD_SWITCHER_SETTINGS = false;
 
+    private static final String[] sSystemSettingNames = {
+        System.TEXT_AUTO_REPLACE, System.TEXT_AUTO_CAPS, System.TEXT_AUTO_PUNCTUATE,
+    };
+
+    private static final String[] sHardKeyboardKeys = {
+        "auto_replace", "auto_caps", "auto_punctuate",
+    };
+
     private int mDefaultInputMethodSelectorVisibility = 0;
     private ListPreference mShowInputMethodSelectorPref;
     private SwitchPreference mStylusIconEnabled;
@@ -359,6 +367,16 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
             }
         }
 
+        // Hard keyboard
+        if (!mHardKeyboardPreferenceList.isEmpty()) {
+            for (int i = 0; i < sHardKeyboardKeys.length; ++i) {
+                SwitchPreference swPref = (SwitchPreference)
+                        mHardKeyboardCategory.findPreference(sHardKeyboardKeys[i]);
+                swPref.setChecked(
+                        System.getInt(getContentResolver(), sSystemSettingNames[i], 1) > 0);
+            }
+        }
+
         updateInputDevices();
 
         // Refresh internal states in mInputMethodSettingValues to keep the latest
@@ -421,6 +439,15 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
                 System.putInt(getContentResolver(), Settings.System.VIBRATE_INPUT_DEVICES,
                         pref.isChecked() ? 1 : 0);
                 return true;
+            }
+            if (!mHardKeyboardPreferenceList.isEmpty()) {
+                for (int i = 0; i < sHardKeyboardKeys.length; ++i) {
+                    if (pref == mHardKeyboardCategory.findPreference(sHardKeyboardKeys[i])) {
+                        System.putInt(getContentResolver(), sSystemSettingNames[i],
+                                pref.isChecked() ? 1 : 0);
+                        return true;
+                    }
+                }
             }
         } else if (preference == mHighTouchSensitivity) {
             return mCmHardwareManager.set(CmHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY,
