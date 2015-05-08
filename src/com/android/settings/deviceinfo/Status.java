@@ -102,6 +102,8 @@ public class Status extends PreferenceActivity {
     private static final String KEY_SERIAL_NUMBER = "serial_number";
     private static final String KEY_ICC_ID = "icc_id";
     private static final String KEY_WIMAX_MAC_ADDRESS = "wimax_mac_address";
+    private static final String KEY_SIM_STATUS = "sim_status";
+    private static final String KEY_IMEI_INFO = "imei_info";
 
     private static final String[] PHONE_RELATED_ENTRIES = {
         KEY_DATA_STATE,
@@ -395,6 +397,12 @@ public class Status extends PreferenceActivity {
             removePreferenceFromScreen(KEY_SERIAL_NUMBER);
         }
 
+        //Remove SimStatus and Imei for Secondary user
+        if (UserHandle.myUserId() != UserHandle.USER_OWNER) {
+            removePreferenceFromScreen(KEY_SIM_STATUS);
+            removePreferenceFromScreen(KEY_IMEI_INFO);
+        }
+
         // Make every pref on this screen copy its data to the clipboard on longpress.
         // Super convenient for capturing the IMEI, MAC addr, serial, etc.
         getListView().setOnItemLongClickListener(
@@ -683,7 +691,11 @@ public class Status extends PreferenceActivity {
     }
 
     private boolean isMultiSimEnabled() {
-        return (SubscriptionController.getInstance().getActiveSubInfoCount() > 1);
+        if (UserHandle.myUserId() == UserHandle.USER_OWNER){
+            return (SubscriptionController.getInstance().getActiveSubInfoCount() > 1);
+        } else {
+            return false;
+        }
     }
 
     private String getSerialNumber() {
