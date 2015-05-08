@@ -90,6 +90,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_MOD_BUILD_DATE = "build_date";
     private static final String KEY_CM_UPDATES = "cm_updates";
     private static final String KEY_CM_LICENSE = "cmlicense";
+    private static final String KEY_DEVICE_STATUS = "status_info";
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
 
@@ -137,6 +138,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
             removePreferenceIfPackageNotInstalled(findPreference(KEY_CM_UPDATES));
         } else {
             getPreferenceScreen().removePreference(findPreference(KEY_CM_UPDATES));
+            //Also remove the Status menu for Secondary User
+            getPreferenceScreen().removePreference(findPreference(KEY_DEVICE_STATUS));
         }
 
         // Remove Safety information preference if PROPERTY_URL_SAFETYLEGAL is not set
