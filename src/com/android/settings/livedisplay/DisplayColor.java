@@ -19,6 +19,7 @@ package com.android.settings.livedisplay;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.hardware.CmHardwareManager;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -34,6 +35,8 @@ import android.widget.TextView;
 import com.android.settings.IntervalSeekBar;
 import com.android.settings.R;
 
+import static android.hardware.CmHardwareManager.FEATURE_DISPLAY_COLOR_CALIBRATION;
+
 /**
  * Special preference type that allows configuration of Color settings
  */
@@ -41,6 +44,9 @@ public class DisplayColor extends DialogPreference {
     private static final String TAG = "ColorCalibration";
 
     private final Context mContext;
+
+    private final CmHardwareManager mCmHardwareManager;
+    private final float mDefault;
 
     // These arrays must all match in length and order
     private static final int[] SEEKBAR_ID = new int[] {
@@ -65,6 +71,15 @@ public class DisplayColor extends DialogPreference {
 
         mContext = context;
 
+        mCmHardwareManager = (CmHardwareManager) mContext.getSystemService(Context.CMHW_SERVICE);
+        if (mCmHardwareManager.isSupported(FEATURE_DISPLAY_COLOR_CALIBRATION)) {
+            mDefault = (float) mCmHardwareManager.getDisplayColorCalibrationDefault() /
+                    (float) (mCmHardwareManager.getDisplayColorCalibrationMax() -
+                    mCmHardwareManager.getDisplayColorCalibrationMin());
+        } else {
+            mDefault = 1.0f;
+        }
+
         setDialogLayoutResource(R.layout.display_color_calibration);
     }
 
@@ -88,7 +103,8 @@ public class DisplayColor extends DialogPreference {
         String[] colorAdjustment = colorAdjustmentTemp == null ?
                 null : colorAdjustmentTemp.split(" ");
         if (colorAdjustment == null || colorAdjustment.length != 3) {
-            colorAdjustment = new String[] { "1.0", "1.0", "1.0" };
+            colorAdjustment = new String[] { Float.toString(mDefault),
+                    Float.toString(mDefault), Float.toString(mDefault) };
         }
         try {
             mOriginalColors[0] = Float.parseFloat(colorAdjustment[0]);
@@ -124,8 +140,8 @@ public class DisplayColor extends DialogPreference {
             @Override
             public void onClick(View v) {
                 for (int i = 0; i < mSeekBars.length; i++) {
-                    mSeekBars[i].mSeekBar.setProgressFloat(1.00f);
-                    mCurrentColors[i] = 1.0f;
+                    mSeekBars[i].mSeekBar.setProgressFloat(mDefault);
+                    mCurrentColors[i] = mDefault;
                 }
                 updateColors(mCurrentColors);
             }
