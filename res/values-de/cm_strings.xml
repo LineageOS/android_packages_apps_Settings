@@ -159,9 +159,14 @@
   <string name="sunlight_enhancement_summary">Ablesbarkeit des Displays bei hellem Sonnenlicht verbessern</string>
   <string name="color_enhancement_title">Farbverbesserung</string>
   <string name="color_enhancement_summary">Farbdarstellung des Displays dynamisch verbessern</string>
+  <string name="blacklist_title">Gesperrte Anruferliste</string>
+  <string name="blacklist_edit_dialog_title">Gesperrte Telefonnummer bearbeiten</string>
   <string name="blacklist_prefs">Einstellungen</string>
   <string name="blacklist_button_delete">Löschen</string>
+  <string name="blacklist_empty_text">Es sind noch keine Einträge in der Sperrliste enthalten. Sie können Einträge hinzufügen, indem Sie das \"+\"-Symbol berühren.</string>
+  <string name="blacklist_disabled_empty_text">Um Anrufe und Nachrichten von bestimmten Nummern zu verhindern, Gesperrte Anruferliste aktivieren.</string>
   <string name="blacklist_summary_disabled">Deaktiviert</string>
+  <string name="blacklist_summary">Sie werden keine Anrufe oder Nachrichten von Nummern aus der Sperrliste empfangen</string>
   <string name="blacklist_notify">Benachrichtigung anzeigen</string>
   <string name="blacklist_private_numbers_title">Unterdrückte Nummern</string>
   <string name="blacklist_private_numbers_summary_disabled">Anrufe mit unterdrückter Nummer nicht abweisen</string>
@@ -176,7 +181,9 @@
   <string name="blacklist_regex_summary">Einen Punkt als Platzhalter und ein Stern für Wiederholungen verwenden.\nBeispielsweise würde 123.* alle Nummern, die mit 123 beginnen, und .*123.* alle Nummern, die 123 enthalten, abweisen.</string>
   <string name="blacklist_policy_block_calls">Eingehende Anrufe abweisen</string>
   <string name="blacklist_policy_block_messages">Eingehende Nachrichten abweisen</string>
+  <string name="blacklist_bad_number_add">Ungültige Nummer kann nicht zur Liste der gesperrten Anrufer hinzugefügt werden</string>
   <string name="remove_blacklist_number_title">Nummer entfernen</string>
+  <string name="remove_blacklist_entry">Soll diese gesperrte Nummer entfernt werden?</string>
   <string name="select_contact">Kontakt auswählen</string>
   <string name="lockpattern_reset_button">Muster zurücksetzen</string>
   <string name="lockpattern_settings_reset_summary">Geben Sie die Adresse Ihres primären E-Mail-Kontos und das dazugehörige Passwort ein, um das Muster zurückzusetzen</string>
@@ -213,6 +220,8 @@
   <string name="update_recovery_off_warning">ACHTUNG: Wenn diese Funktion deaktiviert ist, wird das installierte Recovery-System nicht gemeinsam mit dem Betriebssystems aktualisiert.\n\nZukünftige OS-Updates können möglicherweise nicht mit veralteten oder benutzerdefinierten Recovery-Versionen installieren werden.\n\nMöchten sie diese Funktion wirklich deaktivieren?</string>
   <string name="mod_version">CyanogenMod-Version</string>
   <string name="mod_version_default">Unbekannt</string>
+  <string name="device_model">Gerätemodell</string>
+  <string name="device_name">Gerätename</string>
   <string name="build_date">Build-Datum</string>
   <string name="contributor_cloud_title">Mitwirkende</string>
   <string name="phone_service_state">Anrufe: <xliff:g id="voice_state">%1$s</xliff:g>, Daten: <xliff:g id="data_state">%2$s</xliff:g></string>
@@ -462,7 +471,7 @@
   <string name="app_ops_categories_bootup">Systemstart</string>
   <string name="app_ops_categories_su">Root-Zugriff</string>
   <string name="app_ops_permissions_allowed">Erlaubt</string>
-  <string name="app_ops_permissions_ignored">Ignoriert</string>
+  <string name="app_ops_permissions_ignored">Verboten</string>
   <string name="app_ops_permissions_always_ask">Immer nachfragen</string>
   <string name="ok">OK</string>
   <string name="profile_menu_delete_title">Löschen</string>

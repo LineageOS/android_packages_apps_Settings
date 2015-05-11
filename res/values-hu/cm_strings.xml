@@ -159,9 +159,14 @@
   <string name="sunlight_enhancement_summary">Növeli a kijelző fényerejét és az olvashatóságot ragyogó napfény esetén</string>
   <string name="color_enhancement_title">Színek javítása</string>
   <string name="color_enhancement_summary">Dinamikusan javítja a kijelző színét</string>
+  <string name="blacklist_title">Blokkolt hívók listája</string>
+  <string name="blacklist_edit_dialog_title">Blokkolt telefonszám szerkesztése</string>
   <string name="blacklist_prefs">Beállítások</string>
   <string name="blacklist_button_delete">Törlés</string>
+  <string name="blacklist_empty_text">Nincsenek letiltott telefonszámok. Hozzáadás a (+) gomb megérintésével.</string>
+  <string name="blacklist_disabled_empty_text">Egyes telefonszámokról történő hívások, vagy üzenetek fogadásának megakadályozására, engedélyezze a blokkolt hívók listáját.</string>
   <string name="blacklist_summary_disabled">Letiltva</string>
+  <string name="blacklist_summary">Nem fog bejövő hívásokat és üzeneteket kapni a blokkolt hívó listán szereplő telefonszámokról</string>
   <string name="blacklist_notify">Értesítés megjelenítése</string>
   <string name="blacklist_private_numbers_title">Rejtett számok</string>
   <string name="blacklist_private_numbers_summary_disabled">Ne blokkolja a rejtett számról érkező hívásokat</string>
@@ -176,7 +181,9 @@
   <string name="blacklist_regex_summary">Használja a \".\"-ot egy szám, a \"*\"-ot pedig több szám helyettesítésére. Példa: a 123.* blokkolja a 123-mal kezdődő számokat, a .*123.* pedig a 123-at tartalmazó számokat</string>
   <string name="blacklist_policy_block_calls">Bejövő hívások blokkolása</string>
   <string name="blacklist_policy_block_messages">Bejövő üzenetek blokkolása</string>
+  <string name="blacklist_bad_number_add">Érvénytelen telefonszám hozzáadása nem lehetséges a blokkolt hívók listájához</string>
   <string name="remove_blacklist_number_title">Szám eltávolítása</string>
+  <string name="remove_blacklist_entry">Biztosan eltávolítja ezt a blokkolt telefonszámot?</string>
   <string name="select_contact">Válasszon kapcsolatot</string>
   <string name="lockpattern_reset_button">Minta visszaállítása</string>
   <string name="lockpattern_settings_reset_summary">Adja meg az elsődleges e-mail fiókot és a hozzá társított jelszót a feloldó minta visszaállításához</string>
@@ -213,6 +220,8 @@
   <string name="update_recovery_off_warning">FIGYELEM: Ha ez a funkció ki van kapcsolva, a telepített recovery nem le lesz cserélve a jelenleg futó operációs rendszerének megfelelően.\n\nAz újabb operációs rendszer frissítések lehet, hogy nem támogatják a régi recovery verziókat.\n\nBiztosan inaktiválja a funkciót?</string>
   <string name="mod_version">CyanogenMod verzió</string>
   <string name="mod_version_default">Ismeretlen</string>
+  <string name="device_model">Eszköz modellje</string>
+  <string name="device_name">Eszköz neve</string>
   <string name="build_date">Build dátuma</string>
   <string name="contributor_cloud_title">Közreműködők</string>
   <string name="phone_service_state">Hang: <xliff:g id="voice_state">%1$s</xliff:g>, adat: <xliff:g id="data_state">%2$s</xliff:g></string>
@@ -820,6 +829,7 @@
   <string name="anonymous_statistics_title">CyanogenMod Statisztika</string>
   <string name="anonymous_statistics_summary">Segítsen a CyanogenMod jobbá tételében, kapcsolja be a névtelen statisztikai adatok gyűjtését</string>
   <string name="anonymous_statistics_warning_title">Névjegy</string>
+  <string name="anonymous_statistics_warning">A CyanogenMod statisztika engedélyezése nem terjed ki személyes adatokra, csak egy egyedi azonosítóval azonosítjuk az eszközöket. A beküldött adatok beleértve az egyedi azonosítót, nem veszélyeztetik az adatvédelmi vagy személyes adatokat. A statisztika minden rendszerindításkor elküldésre kerül.\n\nAz elküldött adatok menüpont alatt tekintheti meg a statisztikai adatokat.</string>
   <string name="enable_reporting_title">Statisztika engedélyezése</string>
   <string name="preview_data_title">Elküldött adatok</string>
   <string name="view_stats_title">Statisztika megtekintése</string>
