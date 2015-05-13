@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a89bdaa_4d6db831",
+        "filename": "src/com/android/settings/applications/LockPatternActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 9528
+      },
+      "writtenOn": "2015-05-13T10:42:11Z",
+      "side": 1,
+      "message": "Is \"this.getWindow()\" required? seems \"this\" isn\u0027t needed, there doesn\u0027t seem to be any ambiguity there.\n\nWhy is this \"SOFT_INPUT_STATE_ALWAYS_HIDDEN\"? I haven\u0027t run this patch yet, but what happens when the user goes to the recover their pattern and tries to enter a primary account in the recover screen? Will the EditText getting focus allow the soft keyboard to come up?",
+      "revId": "4042534651844820c5d137b7a728920171d71b1e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
