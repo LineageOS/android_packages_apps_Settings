@@ -16,6 +16,24 @@
       "revId": "4042534651844820c5d137b7a728920171d71b1e",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a89bdaa_ad7484fd",
+        "filename": "src/com/android/settings/applications/LockPatternActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 9621
+      },
+      "writtenOn": "2015-05-13T10:45:04Z",
+      "side": 1,
+      "message": "Okay I\u0027ll remove this. It is true that we don\u0027t need it.\n\nhttp://developer.android.com/reference/android/view/WindowManager.LayoutParams.html#SOFT_INPUT_STATE_ALWAYS_HIDDEN\n\n\"Please always hide any soft input area when this window receives focus.\" The bad behavior this is presenting is that when the window receives focus, the soft input is shown. So we\u0027re asking that WindowManager please not show it. The soft input behaves normally after the Activity is loaded.",
+      "parentUuid": "9a89bdaa_4d6db831",
+      "revId": "4042534651844820c5d137b7a728920171d71b1e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
