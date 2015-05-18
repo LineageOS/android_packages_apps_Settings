@@ -38,6 +38,8 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.pm.UserInfo;
 import android.content.res.Resources;
+import android.database.ContentObserver;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.ServiceManager;
@@ -145,6 +147,50 @@ public class SecuritySettings extends SettingsPreferenceFragment
         mDPM = (DevicePolicyManager)getSystemService(Context.DEVICE_POLICY_SERVICE);
     }
 
+    private boolean mScreenLockOn = false;
+
+    private ContentObserver mScreenLockObserver = new ContentObserver(new Handler()) {
+
+        public void onChange(boolean selfChange) {
+            updateScreenLockState(selfChange);
+        }
+
+        private void updateScreenLockState(boolean selfChange) {
+            boolean screenLockOn = Settings.System.getInt(getContentResolver(),
+                    Settings.System.LOCK_TO_APP_ENABLED, 0) != 0;
+            if (screenLockOn != mScreenLockOn) {
+                updateScreenLockUI(screenLockOn);
+            }
+        }
+    };
+
+    private void registerScreenLockListener() {
+        Uri uri = Settings.System.getUriFor(Settings.System.LOCK_TO_APP_ENABLED);
+        getActivity().getContentResolver().registerContentObserver(uri, false, mScreenLockObserver);
+    }
+
+    private void unRegisterScreenLockListener() {
+        getActivity().getContentResolver().unregisterContentObserver(mScreenLockObserver);
+    }
+
+    /**
+     * Method that update screen lock UI display when the screen lock state changed.
+     * */
+    private void updateScreenLockUI(boolean lockOn) {
+        PreferenceScreen root = getPreferenceScreen();
+        Preference lockPre = root.findPreference(KEY_SCREEN_PINNING);
+        if (lockPre != null) {
+            if (lockOn) {
+                lockPre.setSummary(
+                        getResources().getString(R.string.switch_on_text));
+            } else {
+                lockPre.setSummary(
+                        getResources().getString(R.string.switch_off_text));
+            }
+            mScreenLockOn = lockOn;
+        }
+    }
+
     /**
      * Important!
      *
@@ -202,9 +248,11 @@ public class SecuritySettings extends SettingsPreferenceFragment
         }
         if (Settings.System.getInt(getContentResolver(),
                 Settings.System.LOCK_TO_APP_ENABLED, 0) != 0) {
+            mScreenLockOn = true;
             root.findPreference(KEY_SCREEN_PINNING).setSummary(
                     getResources().getString(R.string.switch_on_text));
         }
+        registerScreenLockListener();
 
         // SMS rate limit security check
         boolean isTelephony = pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
@@ -478,6 +526,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
         if (mWarnInstallApps != null) {
             mWarnInstallApps.dismiss();
         }
+        unRegisterScreenLockListener();
     }
 
     private void updateSmsSecuritySummary(int i) {
