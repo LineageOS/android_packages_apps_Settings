@@ -23,6 +23,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.content.res.Resources.NotFoundException;
 import android.media.AudioManager;
 import android.os.AsyncTask;
@@ -71,6 +72,7 @@ import com.android.internal.widget.LockPatternView.Cell;
 
 import static com.android.internal.widget.LockPatternView.DisplayMode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -87,7 +89,7 @@ import java.util.List;
  * </pre>
  */
 public class CryptKeeper extends Activity implements TextView.OnEditorActionListener,
-        OnKeyListener, OnTouchListener, TextWatcher {
+        OnKeyListener, OnTouchListener, TextWatcher, OnClickListener {
     private static final String TAG = "CryptKeeper";
 
     private static final String DECRYPT_STATE = "trigger_restart_framework";
@@ -126,6 +128,15 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
     PowerManager.WakeLock mWakeLock;
     private EditText mPasswordEntry;
     private LockPatternView mLockPatternView;
+    private TextView mStatusText;
+    private List<Button> mLockPatternButtons = new ArrayList<>();
+    private static final int[] LOCK_BUTTON_IDS = new int[] {
+            R.id.lock_pattern_size_3,
+            R.id.lock_pattern_size_4,
+            R.id.lock_pattern_size_5,
+            R.id.lock_pattern_size_6
+    };
+
     /** Number of calls to {@link #notifyUser()} to ignore before notifying. */
     private int mNotificationCountdown = 0;
     /** Number of calls to {@link #notifyUser()} before we release the wakelock */
@@ -194,6 +205,10 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
                     mLockPatternView.removeCallbacks(mClearPatternRunnable);
                     mLockPatternView.postDelayed(mClearPatternRunnable, RIGHT_PATTERN_CLEAR_TIMEOUT_MS);
                 }
+<<<<<<< HEAD
+=======
+                mStatusText.setText(R.string.starting_android);
+>>>>>>> c429e68... CryptKeeper improvements
                 hide(R.id.passwordEntry);
                 hide(R.id.switch_ime_button);
                 hide(R.id.lockPattern);
@@ -229,20 +244,19 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
             mCooldown = COOL_DOWN_INTERVAL;
             cooldown();
         } else {
-            final TextView status = (TextView) findViewById(R.id.status);
-
             int remainingAttempts = MAX_FAILED_ATTEMPTS - failedAttempts;
             if (remainingAttempts < COOL_DOWN_ATTEMPTS) {
                 CharSequence warningTemplate = getText(R.string.crypt_keeper_warn_wipe);
                 CharSequence warning = TextUtils.expandTemplate(warningTemplate,
                         Integer.toString(remainingAttempts));
-                status.setText(warning);
+                mStatusText.setText(warning);
             } else {
-                status.setText(R.string.try_again);
+                mStatusText.setText(R.string.try_again);
             }
 
             if (mLockPatternView != null) {
                 mLockPatternView.setDisplayMode(DisplayMode.Wrong);
+                setPatternButtonsEnabled(true);
             }
             // Reenable the password entry
             if (mPasswordEntry != null) {
@@ -491,8 +505,7 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
                         setContentView(R.layout.crypt_keeper_password_entry);
                         mStatusString = R.string.enter_password;
                     }
-                    final TextView status = (TextView) findViewById(R.id.status);
-                    status.setText(mStatusString);
+                    mStatusText.setText(mStatusString);
 
                     final TextView ownerInfo = (TextView) findViewById(R.id.owner_info);
                     ownerInfo.setText(owner_info);
@@ -547,6 +560,12 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
             mWakeLock.release();
             mWakeLock = null;
         }
+    }
+
+    @Override
+    public void setContentView(int layoutResID) {
+        super.setContentView(layoutResID);
+        mStatusText = (TextView) findViewById(R.id.status);
     }
 
     /**
@@ -647,9 +666,8 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
             // Will happen if no time etc - show percentage
         }
 
-        final TextView tv = (TextView) findViewById(R.id.status);
-        if (tv != null) {
-            tv.setText(TextUtils.expandTemplate(status, progress));
+        if (mStatusText != null) {
+            mStatusText.setText(TextUtils.expandTemplate(status, progress));
         }
 
         // Check the progress every 1 seconds
@@ -660,7 +678,6 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
     /** Disable password input for a while to force the user to waste time between retries */
     private void cooldown() {
         final TextView status = (TextView) findViewById(R.id.status);
-        final ViewGroup sizes = (ViewGroup) findViewById(R.id.status);
 
         if (mCooldown <= 0) {
             // Re-enable the password entry and back presses.
@@ -673,9 +690,7 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
             }
             if (mLockPatternView != null) {
                 mLockPatternView.setEnabled(true);
-                if (sizes != null) {
-                    sizes.setEnabled(true);
-                }
+                setPatternButtonsEnabled(true);
             }
             status.setText(mStatusString);
         } else {
@@ -685,9 +700,7 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
             }
             if (mLockPatternView != null) {
                 mLockPatternView.setEnabled(false);
-                if (sizes != null) {
-                    sizes.setEnabled(false);
-                }
+                setPatternButtonsEnabled(false);
             }
 
             CharSequence template = getText(R.string.crypt_keeper_cooldown);
@@ -721,11 +734,13 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
 
         @Override
         public void onPatternStart() {
+            setPatternButtonsEnabled(false);
             mLockPatternView.removeCallbacks(mClearPatternRunnable);
         }
 
         @Override
         public void onPatternCleared() {
+            setPatternButtonsEnabled(true);
         }
 
         @Override
@@ -757,10 +772,18 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
             mPasswordEntry.addTextChangedListener(this);
         }
 
+         mLockPatternButtons.clear();
         // Pattern case
         mLockPatternView = (LockPatternView) findViewById(R.id.lockPattern);
         if (mLockPatternView != null) {
             mLockPatternView.setOnPatternListener(mChooseNewLockPatternListener);
+            for (int id : LOCK_BUTTON_IDS) {
+                Button btn = (Button) findViewById(id);
+                if (btn != null) {
+                    btn.setOnClickListener(this);
+                    mLockPatternButtons.add(btn);
+                }
+            }
         }
 
         // Disable the Emergency call button if the device has no voice telephone capability
@@ -1034,7 +1057,11 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
         return;
     }
 
-    public void onPatternButtonClick(View v) {
+    @Override
+    public void onClick(View v) {
+        if (mLockPatternView == null || !mLockPatternView.isEnabled()) {
+            return;
+        }
         byte size;
         switch (v.getId()) {
             default:
@@ -1051,11 +1078,17 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
                 size = 6;
                 break;
         }
-        if (mLockPatternView != null) {
-            setContentView(R.layout.crypt_keeper_pattern_entry);
-            passwordEntryInit();
-            mLockPatternView.setLockPatternSize(size);
-            mLockPatternView.postInvalidate();
+        setContentView(R.layout.crypt_keeper_pattern_entry);
+        passwordEntryInit();
+
+        mStatusText.setText(mStatusString = R.string.enter_pattern);
+        mLockPatternView.setLockPatternSize(size);
+        mLockPatternView.postInvalidate();
+    }
+
+    private void setPatternButtonsEnabled(boolean enabled) {
+        for (Button btn : mLockPatternButtons) {
+            btn.setEnabled(enabled);
         }
     }
 }
