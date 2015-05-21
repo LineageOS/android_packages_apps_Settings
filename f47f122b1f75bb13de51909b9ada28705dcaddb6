@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a89bdaa_8496ad92",
+        "filename": "src/com/android/settings/SecuritySettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-05-21T11:44:17Z",
+      "side": 1,
+      "message": "There is no need for a ContentObserver. Changes happens when switch changed on the screen pinned settings activity, so at onResume the property must have the proper value. Try this (remove all the rest of the code):\n\n final boolean screenPinning \u003d Settings.System.getInt(getContentResolver(),\n                Settings.System.LOCK_TO_APP_ENABLED, 0) !\u003d 0;\n root.findPreference(KEY_SCREEN_PINNING).setSummary(\n                getResources().getString(screenPinning\n                        ? R.string.switch_on_text : R.string.switch_off_text));",
+      "revId": "f47f122b1f75bb13de51909b9ada28705dcaddb6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
