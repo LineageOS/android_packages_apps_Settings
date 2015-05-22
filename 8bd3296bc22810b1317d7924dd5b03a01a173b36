@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a89bdaa_c458b559",
+        "filename": "src/com/android/settings/SecuritySettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-05-22T04:26:14Z",
+      "side": 1,
+      "message": "preference never can be null (it is never removed)",
+      "revId": "8bd3296bc22810b1317d7924dd5b03a01a173b36",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a89bdaa_a45bb153",
+        "filename": "src/com/android/settings/SecuritySettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-05-22T04:26:14Z",
+      "side": 1,
+      "message": "wrap to 100 lines",
+      "revId": "8bd3296bc22810b1317d7924dd5b03a01a173b36",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a89bdaa_845ead43",
+        "filename": "src/com/android/settings/SecuritySettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-05-22T04:26:14Z",
+      "side": 1,
+      "message": "The call to updateScreenPinningState() should be here. This code is exactly the new one.",
+      "revId": "8bd3296bc22810b1317d7924dd5b03a01a173b36",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a89bdaa_e455b91d",
+        "filename": "src/com/android/settings/SecuritySettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-05-22T04:26:14Z",
+      "side": 1,
+      "message": "This is called from createPreferenceHierarchy() so preference value set happens two times. Since createPreferenceHierarchy() call is only referenced from here, you can choose between leave the code here and remove the createPreferenceHierarchy\u0027s one, or the inverse.",
+      "revId": "8bd3296bc22810b1317d7924dd5b03a01a173b36",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
