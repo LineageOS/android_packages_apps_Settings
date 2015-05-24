@@ -288,7 +288,12 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+        try {
+            super.onActivityCreated(savedInstanceState);
+        } catch (Exception e) {
+            // TODO: handle exception
+            savedInstanceState = null;
+        }
         if (!TextUtils.isEmpty(mHelpUrl)) {
             setHasOptionsMenu(true);
         }
