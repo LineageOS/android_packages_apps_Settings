@@ -394,7 +394,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                         KEY_APP_SWITCH_PRESS, pressAction);
 
                 int longPressAction = Settings.System.getInt(resolver,
-                        Settings.System.KEY_APP_SWITCH_LONG_PRESS_ACTION, ACTION_NOTHING);
+                        Settings.System.KEY_APP_SWITCH_LONG_PRESS_ACTION, ACTION_MENU);
                 settings.mAppSwitchLongPressAction = settings.initActionList(
                         KEY_APP_SWITCH_LONG_PRESS, longPressAction);
             }
