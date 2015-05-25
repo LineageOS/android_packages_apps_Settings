@@ -21,7 +21,6 @@ import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.service.persistentdata.PersistentDataBlockManager;
-import com.android.internal.os.storage.ExternalStorageFormatter;
 
 import android.app.Fragment;
 import android.content.Intent;
@@ -46,6 +45,7 @@ public class MasterClearConfirm extends Fragment {
 
     private View mContentView;
     private boolean mEraseSdCard;
+    private boolean mEraseInternal;
 
     /**
      * The user has gone through the multiple confirmation, so now we go ahead
@@ -103,18 +103,13 @@ public class MasterClearConfirm extends Fragment {
     };
 
     private void doMasterClear() {
-        if (mEraseSdCard) {
-            Intent intent = new Intent(ExternalStorageFormatter.FORMAT_AND_FACTORY_RESET);
-            intent.putExtra(Intent.EXTRA_REASON, "MasterClearConfirm");
-            intent.setComponent(ExternalStorageFormatter.COMPONENT_NAME);
-            getActivity().startService(intent);
-        } else {
-            Intent intent = new Intent(Intent.ACTION_MASTER_CLEAR);
-            intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
-            intent.putExtra(Intent.EXTRA_REASON, "MasterClearConfirm");
-            getActivity().sendBroadcast(intent);
-            // Intent handling is asynchronous -- assume it will happen soon.
-        }
+        Intent intent = new Intent(Intent.ACTION_MASTER_CLEAR);
+        intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
+        intent.putExtra(Intent.EXTRA_REASON, "MasterClearConfirm");
+        intent.putExtra(MasterClear.EXTRA_WIPE_MEDIA, mEraseInternal);
+        intent.putExtra(MasterClear.EXTRA_WIPE_SDCARD, mEraseSdCard);
+        getActivity().sendBroadcast(intent);
+        // Intent handling is asynchronous -- assume it will happen soon.
     }
 
     /**
@@ -142,6 +137,7 @@ public class MasterClearConfirm extends Fragment {
         super.onCreate(savedInstanceState);
 
         Bundle args = getArguments();
-        mEraseSdCard = args != null && args.getBoolean(MasterClear.ERASE_EXTERNAL_EXTRA);
+        mEraseInternal = args != null && args.getBoolean(MasterClear.EXTRA_WIPE_MEDIA);
+        mEraseSdCard = args != null && args.getBoolean(MasterClear.EXTRA_WIPE_SDCARD);
     }
 }
