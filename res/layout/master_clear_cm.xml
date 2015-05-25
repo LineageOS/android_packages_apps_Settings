@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2015 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+  
+          http://www.apache.org/licenses/LICENSE-2.0
+  
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+        >
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1">
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="vertical">
+
+            <!-- top section "Personal data & apps" -->
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="?android:attr/listPreferredItemHeight"
+                    android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+                    android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    >
+
+                <TextView
+                        android:id="@+id/title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/factory_reset_instructions_title"
+                        android:textAppearance="?android:attr/textAppearanceListItem"/>
+
+                <TextView
+                        android:id="@+id/summary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/factory_reset_instructions_summary"
+                        android:textAppearance="?android:attr/textAppearanceListItemSecondary"
+                        android:textColor="?android:attr/textColorSecondary"/>
+
+            </LinearLayout>
+
+            <View style="@style/solidSettingSeparator"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="0dp" />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="?android:attr/listPreferredItemHeight"
+                    android:text="@string/factory_reset_personal_content"
+                    android:textAppearance="@style/TextAppearance.CategoryTitle"
+                    android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+                    android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    />
+
+            <!-- erase stored content -->
+            <LinearLayout android:id="@+id/erase_internal_container"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="horizontal"
+                          android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+                          android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+                          android:paddingBottom="8dp"
+                          android:focusable="true"
+                          android:clickable="true">
+                <CheckBox android:id="@+id/erase_internal"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="top"
+                          android:padding="3dp"
+                          android:focusable="false"
+                          android:clickable="false"
+                          android:duplicateParentState="true"/>
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:layout_marginLeft="16dp"
+                              android:layout_gravity="center_vertical"
+                              android:orientation="vertical"
+                              android:duplicateParentState="true">
+                    <TextView android:id="@+id/erase_storage_checkbox_title"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textStyle="bold"
+                              android:textAppearance="?android:attr/textAppearanceListItem"
+                              android:text="@string/factory_reset_erase_stored_content"
+                              android:duplicateParentState="true"/>
+                    <TextView android:id="@+id/erase_storage_checkbox_description"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:text="@string/factory_reset_erase_stored_content_summary"
+                              android:textAppearance="?android:attr/textAppearanceListItemSecondary"
+                              android:textColor="?android:attr/textColorSecondary"
+                              android:duplicateParentState="true"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- format sd card -->
+            <LinearLayout android:id="@+id/erase_external_container"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="horizontal"
+                          android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+                          android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+                          android:paddingTop="8dp"
+                          android:paddingBottom="8dp"
+                          android:focusable="true"
+                          android:clickable="true">
+                <CheckBox android:id="@+id/erase_external"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="top"
+                          android:padding="3dp"
+                          android:focusable="false"
+                          android:clickable="false"
+                          android:duplicateParentState="true"/>
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:layout_marginLeft="16dp"
+                              android:layout_gravity="center_vertical"
+                              android:orientation="vertical"
+                              android:duplicateParentState="true">
+                    <TextView android:id="@+id/erase_sdcard_checkbox_title"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textStyle="bold"
+                              android:textAppearance="?android:attr/textAppearanceListItem"
+                              android:text="@string/factory_reset_erase_sd_card"
+                              android:duplicateParentState="true"/>
+                    <TextView android:id="@+id/erase_sdcard_checkbox_description"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:text="@string/factory_reset_erase_sd_card_summary"
+                              android:textAppearance="?android:attr/textAppearanceListItemSecondary"
+                              android:textColor="?android:attr/textColorSecondary"
+                              android:duplicateParentState="true"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView android:id="@+id/other_users_present"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:visibility="gone"
+                      android:textSize="18sp"
+                      android:text="@string/master_clear_other_users_present"/>
+
+        </LinearLayout>
+    </ScrollView>
+    <View style="@style/solidSettingSeparator" />
+    <Button
+            android:id="@+id/initiate_master_clear"
+            android:layout_gravity="right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="12dp"
+            android:text="@string/master_clear_button_text"
+            android:textColor="@color/factory_reset_color"
+            android:textSize="14sp"
+            android:gravity="center"
+            style="?android:attr/borderlessButtonStyle"/>
+
+</LinearLayout>
