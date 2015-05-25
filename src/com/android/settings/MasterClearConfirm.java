@@ -16,12 +16,16 @@
 
 package com.android.settings;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
+import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.service.persistentdata.PersistentDataBlockManager;
-import com.android.internal.os.storage.ExternalStorageFormatter;
 
 import android.app.Fragment;
 import android.content.Intent;
@@ -31,6 +35,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import com.android.internal.os.storage.ExternalStorageFormatter;
 
 /**
  * Confirm and execute a reset of the device to a clean "just out of the box"
@@ -42,10 +47,23 @@ import android.widget.Button;
  *
  * This is the confirmation screen.
  */
-public class MasterClearConfirm extends Fragment {
+public class MasterClearConfirm extends DialogFragment {
 
-    private View mContentView;
     private boolean mEraseSdCard;
+    private boolean mEraseInternal;
+
+    public static MasterClearConfirm getInstance(boolean wipeInternal, boolean wipeExternal) {
+        Bundle b = new Bundle();
+        b.putBoolean(MasterClear.EXTRA_WIPE_MEDIA, wipeInternal);
+        b.putBoolean(MasterClear.EXTRA_WIPE_SDCARD, wipeExternal);
+        MasterClearConfirm fragment = new MasterClearConfirm();
+        fragment.setArguments(b);
+
+        return fragment;
+    }
+
+    public MasterClearConfirm() {
+    }
 
     /**
      * The user has gone through the multiple confirmation, so now we go ahead
@@ -106,35 +124,51 @@ public class MasterClearConfirm extends Fragment {
         if (mEraseSdCard) {
             Intent intent = new Intent(ExternalStorageFormatter.FORMAT_AND_FACTORY_RESET);
             intent.putExtra(Intent.EXTRA_REASON, "MasterClearConfirm");
+            intent.putExtra(MasterClear.EXTRA_WIPE_MEDIA, mEraseInternal);
+            intent.putExtra(MasterClear.EXTRA_WIPE_SDCARD, mEraseSdCard);
             intent.setComponent(ExternalStorageFormatter.COMPONENT_NAME);
             getActivity().startService(intent);
         } else {
             Intent intent = new Intent(Intent.ACTION_MASTER_CLEAR);
             intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
+            intent.putExtra(MasterClear.EXTRA_WIPE_MEDIA, mEraseInternal);
             intent.putExtra(Intent.EXTRA_REASON, "MasterClearConfirm");
             getActivity().sendBroadcast(intent);
             // Intent handling is asynchronous -- assume it will happen soon.
         }
     }
 
-    /**
-     * Configure the UI for the final confirmation interaction
-     */
-    private void establishFinalConfirmationState() {
-        mContentView.findViewById(R.id.execute_master_clear)
-                .setOnClickListener(mFinalClickListener);
-    }
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
         if (UserManager.get(getActivity()).hasUserRestriction(
                 UserManager.DISALLOW_FACTORY_RESET)) {
-            return inflater.inflate(R.layout.master_clear_disallowed_screen, null);
+            return new AlertDialog.Builder(getActivity())
+                    .setMessage(R.string.master_clear_not_available)
+                    .create();
         }
-        mContentView = inflater.inflate(R.layout.master_clear_confirm, null);
-        establishFinalConfirmationState();
-        return mContentView;
+
+        final AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
+                .setTitle(R.string.device_reset_title)
+                .setMessage("ARE YOU SURE YOU WANT TO RESET?")
+                .setNegativeButton(R.string.cancel_all_caps, null)
+                .setPositiveButton(R.string.factory_reset_warning_text_reset_now,
+                        new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        mFinalClickListener.onClick(getView());
+                    }
+                })
+                .create();
+        alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialog) {
+                AlertDialog d = (AlertDialog) dialog;
+                d.getButton(DialogInterface.BUTTON_POSITIVE)
+                        .setTextColor(getResources().getColor(R.color.factory_reset_color));
+            }
+        });
+
+        return alertDialog;
     }
 
     @Override
@@ -142,6 +176,9 @@ public class MasterClearConfirm extends Fragment {
         super.onCreate(savedInstanceState);
 
         Bundle args = getArguments();
-        mEraseSdCard = args != null && args.getBoolean(MasterClear.ERASE_EXTERNAL_EXTRA);
+        mEraseInternal = args != null && args.getBoolean(MasterClear.EXTRA_WIPE_MEDIA, false);
+        mEraseSdCard = args != null && args.getBoolean(MasterClear.EXTRA_WIPE_SDCARD, false);
+
+        setShowsDialog(true);
     }
 }
