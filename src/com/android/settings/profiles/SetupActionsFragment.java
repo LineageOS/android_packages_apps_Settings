@@ -28,6 +28,7 @@ import android.app.ProfileGroup;
 import android.app.ProfileManager;
 import android.app.RingModeSettings;
 import android.app.StreamSettings;
+import android.app.admin.DevicePolicyManager;
 import android.bluetooth.BluetoothAdapter;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -217,7 +218,11 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
         mItems.add(new Header(getString(R.string.profile_system_settings_title)));
         mItems.add(new RingModeItem(mProfile.getRingMode()));
         mItems.add(new AirplaneModeItem(mProfile.getAirplaneMode()));
-        mItems.add(new LockModeItem(mProfile));
+        DevicePolicyManager dpm = (DevicePolicyManager) getSystemService(
+                Context.DEVICE_POLICY_SERVICE);
+        if (!dpm.requireSecureKeyguard()) {
+            mItems.add(new LockModeItem(mProfile));
+        }
         mItems.add(new BrightnessItem(mProfile.getBrightness()));
 
         final Activity activity = getActivity();
