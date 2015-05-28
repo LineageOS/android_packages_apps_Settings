@@ -23,16 +23,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/screen_pinning_description"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:paddingTop="@dimen/screen_pinning_textview_padding"
-        android:text="@string/screen_pinning_description"
-        android:textAppearance="@style/TextAppearance.Medium"
-        android:paddingStart="@dimen/screen_margin_sides"
-        android:paddingEnd="@dimen/screen_margin_sides"
-        />
+        android:overScrollMode="ifContentScrolls" >
+        <TextView
+            android:id="@+id/screen_pinning_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:paddingEnd="@dimen/screen_margin_sides"
+            android:paddingStart="@dimen/screen_margin_sides"
+            android:paddingTop="@dimen/screen_pinning_textview_padding"
+            android:text="@string/screen_pinning_description"
+            android:textAppearance="@style/TextAppearance.Medium" />
+    </ScrollView>
 
-</ScrollView>
