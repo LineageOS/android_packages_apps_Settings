@@ -97,7 +97,7 @@ public class IncreasingRingVolumePreference extends Preference implements
     public boolean handleMessage(Message msg) {
         switch (msg.what) {
             case MSG_START_SAMPLE:
-                onStartSample();
+                onStartSample((float) msg.arg1 / 1000F);
                 break;
             case MSG_STOP_SAMPLE:
                 onStopSample();
@@ -145,7 +145,7 @@ public class IncreasingRingVolumePreference extends Preference implements
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
         if (seekBar == mStartVolumeSeekBar) {
-            postStartSample();
+            postStartSample(seekBar.getProgress());
         }
     }
 
@@ -183,21 +183,20 @@ public class IncreasingRingVolumePreference extends Preference implements
         }
     }
 
-    private void postStartSample() {
+    private void postStartSample(int progress) {
         mHandler.removeMessages(MSG_START_SAMPLE);
-        mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_START_SAMPLE),
+        mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_START_SAMPLE, progress, 0),
                 isSamplePlaying() ? CHECK_RINGTONE_PLAYBACK_DELAY_MS : 0);
     }
 
-    private void onStartSample() {
+    private void onStartSample(float volume) {
         if (!isSamplePlaying() && mRingtone != null) {
             try {
+                mRingtone.setVolume(volume);
                 mRingtone.play();
             } catch (Throwable e) {
                 Log.w(TAG, "Error playing ringtone", e);
             }
-            mHandler.removeMessages(MSG_STOP_SAMPLE);
-            mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_STOP_SAMPLE), 2000);
         }
     }
 

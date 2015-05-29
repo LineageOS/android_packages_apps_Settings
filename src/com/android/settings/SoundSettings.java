@@ -93,6 +93,8 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
         @Override
         public void onStartingSample() {
             mVolumeCallback.stopSample();
+            mHandler.removeMessages(H.STOP_SAMPLE);
+            mHandler.sendEmptyMessageDelayed(H.STOP_SAMPLE, SAMPLE_CUTOFF);
         }
     };
 
@@ -563,6 +565,9 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
                     break;
                 case STOP_SAMPLE:
                     mVolumeCallback.stopSample();
+                    if (mIncreasingRingVolume != null) {
+                        mIncreasingRingVolume.stopSample();
+                    }
                     break;
                 case UPDATE_EFFECTS_SUPPRESSOR:
                     updateEffectsSuppressor();
