@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a8ec9b2_0d881de7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 10631
+      },
+      "writtenOn": "2015-05-30T06:20:02Z",
+      "side": 1,
+      "message": "Could we reword this?\n\n\"Seekbar needs to be setEnabled() after setting the seekbar to the volumizer because ??? \"\n\nI\u0027m assuming the problem is we setEnabled, and even if we pass false as an argument the call to volumizer.setSeekBar() will re enable it?",
+      "revId": "de92fca94434b1b5abab6c02c0ef9ea0234a80c4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
