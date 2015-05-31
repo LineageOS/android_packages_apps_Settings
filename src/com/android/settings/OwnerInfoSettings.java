@@ -88,6 +88,8 @@ public class OwnerInfoSettings extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 mLockPatternUtils.setOwnerInfoEnabled(isChecked);
                 mOwnerInfo.setEnabled(isChecked); // disable text field if not enabled
+                mOwnerInfo.setFocusable(isChecked);
+                mOwnerInfo.setFocusableInTouchMode(isChecked);
             }
         });
 
@@ -95,6 +97,7 @@ public class OwnerInfoSettings extends Fragment {
 
         mOwnerInfo = (EditText) mView.findViewById(R.id.owner_info_edit_text);
         mOwnerInfo.setEnabled(enabled);
+        mOwnerInfo.setFocusable(enabled);
         if (!TextUtils.isEmpty(info)) {
             mOwnerInfo.setText(info);
         }
