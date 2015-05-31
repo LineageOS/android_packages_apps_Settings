@@ -81,12 +81,12 @@
   <string name="settings_search_autocompleteview_hint">Arama ayarları</string>
   <string name="settings_search_loading_text">Arama verisi yükleniyor\u2026</string>
   <string name="profile_connectionoverrides_title">Bağlantı zorlamaları</string>
-  <string name="profile_volumeoverrides_title">Ses düzeyi zorlamaları</string>
+  <string name="profile_volumeoverrides_title">Ses düzeyi değişimleri</string>
   <string name="connection_state_disabled">Devre dışı bırak</string>
   <string name="connection_state_enabled">Etkinleştir</string>
-  <string name="volume_override_summary">%1$s/%2$s ayarla</string>
-  <string name="volume_override_summary_no_override">Üstüne yazma</string>
-  <string name="profile_volume_override_checkbox_label">Üstüne yazma sesi</string>
+  <string name="volume_override_summary">%1$s/%2$s</string>
+  <string name="volume_override_summary_no_override">Değiştirme</string>
+  <string name="profile_volume_override_checkbox_label">Ses düzeyini değiştir</string>
   <string name="profile_profiles_manage">Profiller</string>
   <string name="profile_profile_manage">Profili yönet</string>
   <string name="profile_appgroups_manage">Uygulama grupları</string>
@@ -101,7 +101,7 @@
   <string name="ringer_mode">Zil modu</string>
   <string name="lights_mode">Işık modu</string>
   <string name="vibrate_mode">Titreşim modu</string>
-  <string name="soundtone_title">Bildirim tonu</string>
+  <string name="soundtone_title">Bildirim sesi</string>
   <string name="profile_appgroups_title">Uygulama grupları</string>
   <string name="profile_applist_title">Uygulamalar</string>
   <string name="profile_new_appgroup">Yeni uygulama grubu</string>
@@ -128,7 +128,7 @@
   <string name="toggleWimax">WiMAX</string>
   <string name="toggleNfc">NFC</string>
   <string name="volume_ring_only_description">Zil sesi</string>
-  <string name="link_volume_ringtones">Zilsesi ve bildirim ses düzeyini bağla</string>
+  <string name="link_volume_ringtones">Zil sesi ile Bildirim ses düzeyini bağla</string>
   <string name="link_volume_mutes">Sessiz mod bildirimleri etkiler</string>
   <string name="volume_keys_control_ring_stream">Ses tuşları zil sesini kontrol eder</string>
   <string name="ring_mode_title">Zil modu</string>
@@ -296,7 +296,7 @@
   <string name="pref_ring_mode_title">Ses modları</string>
   <string name="pref_ring_mode_summary">Ses tuşu modlarını görün ya da değiştirin</string>
   <string name="cm_sound_mode_silent">Sessiz</string>
-  <string name="cm_sound_mode_vibrate">Titreş</string>
+  <string name="cm_sound_mode_vibrate">Titre</string>
   <string name="cm_sound_mode_sound">Ses</string>
   <string name="cm_sound_mode_soundVibrate">Ses &amp; Titreşim</string>
   <string name="pref_location_mode_title">Konum modları</string>
@@ -555,7 +555,7 @@ parlaklık seviyesini ayarlayabilir hem de istediğiniz parlaklık düzeyini ell
   <string name="power_notifications_category_title">Güç sesleri</string>
   <string name="power_notifications_enable_title">Etkinleştir</string>
   <string name="power_notifications_enable_summary">Bir güç kaynağına bağlanırken ya da bağlantısını keserken bir ses çal</string>
-  <string name="power_notifications_vibrate_title">Titreş</string>
+  <string name="power_notifications_vibrate_title">Titre</string>
   <string name="power_notifications_ringtone_title">Bildirim sesi</string>
   <string name="power_notifications_ringtone_silent">Sessiz</string>
   <string name="lockscreen_battery_status_title">Pil durumu</string>
@@ -675,7 +675,7 @@ parlaklık seviyesini ayarlayabilir hem de istediğiniz parlaklık düzeyini ell
   <string name="hardware_keys_action_launch_camera">Kamerayı başlat</string>
   <string name="hardware_keys_action_last_app">Son uygulama</string>
   <string name="hardware_keys_action_sleep">Ekranı kapat</string>
-  <string name="power_end_call_title">Çağrıyı Sonlandır</string>
+  <string name="power_end_call_title">Çağrıyı sonlandır</string>
   <string name="power_end_call_summary">Güç tuşuna basmak mevcut çağrıyı sonlandıracak</string>
   <string name="button_wake_title">Uyan</string>
   <string name="home_wake_summary">Ana ekran tuşuna basmak cihazı uyandırır</string>
@@ -733,7 +733,7 @@ parlaklık seviyesini ayarlayabilir hem de istediğiniz parlaklık düzeyini ell
   <string name="storage_rescan_media">Depolama birimi için ortamları yeniden ara</string>
   <string name="storage_rescan_media_complete">Tarama tamamlandı</string>
   <string name="whisperpush_title">WhisperPush</string>
-  <string name="whisperpush_summary">Güvenli SMS ayarlarını yönet</string>
+  <string name="whisperpush_summary">Şifreli SMS ayarlarını yönet</string>
   <string name="logger_title">İsimsiz hata kaydı</string>
   <string name="logger_summary">Hata kayıt ayarlarını yönet</string>
   <string name="custom_runtime_warning_title">Uyarı</string>
@@ -926,7 +926,7 @@ parlaklık seviyesini ayarlayabilir hem de istediğiniz parlaklık düzeyini ell
   <string name="enable_adb_summary_cm">Android Hata Ayıklama (adb) arayüzünü etkinleştir</string>
   <string name="spam_added_title">Eklendi <xliff:g id="time_since" example="5 minutes ago">%1$s</xliff:g></string>
   <string name="spam_last_blocked_title">En son <xliff:g id="time_since" example="5 minutes ago">%1$s</xliff:g> engellendi (toplam: <xliff:g id="count" example="2 times">%2$s</xliff:g>)</string>
-  <string name="block_notifications_title">Filtre bildirimleri</string>
+  <string name="block_notifications_title">Bildirimleri filtrele</string>
   <string name="block_notifications_summary">Yoksayılan bildirimleri ve filtreleri yönet</string>
   <string name="no_filters_title">Hiçbir filtre ayarlanmadı. Bir bildirimi filtrelemek için, ona uzun dokunun ve \'Bunun gibi mesajları yok say\' ı seçin.</string>
   <string name="usb_sd_eject">USB belleği çıkar</string>
