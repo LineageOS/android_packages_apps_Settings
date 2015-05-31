@@ -76,9 +76,9 @@
   <string name="profile_delete_confirm">سڕینه‌وه‌ی ئه‌م پرۆفایله‌؟</string>
   <string name="profile_app_delete_confirm">سڕینه‌وه‌ی ئه‌م به‌رنامه‌یه‌؟</string>
   <string name="profile_cannot_delete">پرۆفایلی کراوه‌ ناتوانرێت بسڕێته‌وه‌</string>
-  <string name="profile_networkmode_2g">2G</string>
-  <string name="profile_networkmode_3g">3G</string>
-  <string name="profile_networkmode_2g3g">2G/3G</string>
+  <string name="profile_networkmode_2g">٢G</string>
+  <string name="profile_networkmode_3g">٣G</string>
+  <string name="profile_networkmode_2g3g">٢G/٣G</string>
   <string name="settings_search_action_bar_button">گه‌ڕان</string>
   <string name="settings_search_autocompleteview_hint">ڕێکخستنەکانی گەڕان</string>
   <string name="settings_search_loading_text">بارکردنی داتای گه‌ڕان\u2026</string>
@@ -126,7 +126,7 @@
   <string name="toggleGPS">GPS</string>
   <string name="toggleData">داتای مۆبایل</string>
   <string name="toggleSync">خۆکارانە-ناردنی داتا</string>
-  <string name="toggle2g3g">2G/3G</string>
+  <string name="toggle2g3g">٢G/٣G</string>
   <string name="toggleWimax">WiMAX</string>
   <string name="toggleNfc">NFC</string>
   <string name="volume_ring_only_description">زەنگ</string>
@@ -313,8 +313,8 @@
   <string name="auto_brightness_twilight_adjustment">ڕێکخستنی ڕۆژهەڵات و ڕۆژاوا</string>
   <string name="light_sensor_current_value">سینۆری ڕۆشنایی ئێستا: <xliff:g id="light_level">%d</xliff:g> lux</string>
   <string name="auto_brightness_dialog_title">ئاستی ڕۆشنایی خۆکارانە</string>
-  <string name="auto_brightness_level_format"><xliff:g id="level">%1$d</xliff:g> lux</string>
-  <string name="auto_brightness_last_level_format"><xliff:g id="level">%1$d</xliff:g> -\n\u221e lux</string>
+  <string name="auto_brightness_level_format"><xliff:g id="level">%١$d</xliff:g> lux</string>
+  <string name="auto_brightness_last_level_format"><xliff:g id="level">%١$d</xliff:g> -\n\u٢٢١e lux</string>
   <string name="auto_brightness_adjust_button">ڕێکخستن</string>
   <string name="auto_brightness_close_button">داخستن</string>
   <string name="auto_brightness_reset_button">ڕێکخستنەوە</string>
@@ -455,7 +455,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="pref_ksm_summary">KSM فیزیک بیرگه‌ که‌م ده‌کاته‌وه‌</string>
   <string name="pref_purgeable_assets_title">Allow purging of assets</string>
   <string name="pref_purgeable_assets_summary">Purging of bitmap memory assets allows the freeing of more RAM when needed (requires reboot)</string>
-  <string name="pref_use_16bpp_alpha_title">16bit transparency</string>
+  <string name="pref_use_16bpp_alpha_title">١٦bit transparency</string>
   <string name="pref_use_16bpp_alpha_summary">گراڤیکی باشتر،به‌ڵام جۆری که‌متری ( پێویستی به‌ دوباره‌هه‌ڵکردنه‌وه‌یه‌)</string>
   <string name="pref_force_highend_gfx_title">پاڵنانی به‌رزی-کۆتای گرافیکی</string>
   <string name="pref_force_highend_gfx_summary">لەکارخستنی کاریگەری باری گۆڕین /تولباری ناڤیگەیشن(دوبارەخستنەوەکار پێویستە)</string>
@@ -614,12 +614,13 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="lockscreen_buttons_toggle_sound">ده‌نگ</string>
   <string name="lockscreen_buttons_sleep">بڕۆ بۆ خه‌وتن</string>
   <string name="lockscreen_enable_modlock_title">قوفڵی ڕوونما ده‌ستکراو</string>
+  <string name="lockscreen_buttons_disabled_summary">دوگمەی قوفڵکردنی ڕونما لەکارە نیە لەکاتێکدا لەسەر-ڕونماکە شریتی دۆزەر بەکاردێت</string>
   <string name="navigation_bar_category">شریتی ڕێدۆزه‌ر</string>
   <string name="navigation_bar_title">کات و دوگمه‌</string>
   <string name="navigation_bar_left_title">باری ده‌ستی چه‌پله‌ر</string>
   <string name="navigation_bar_left_summary">دانانی شریتی ڕێدۆزه‌ره‌وه‌ له‌ ده‌ستی چه‌پی ڕوونماکه‌ به‌ باری ڕێکی</string>
-  <string name="navigation_bar_help_text">1 - To begin editing, tap the lock icon\n\n2 - Tap any button to assign or change functionality\n\n3 - Long press any button to rearrange the order\n\n4 - To save, tap the lock icon again\n\n5 - To restore system default, tap the reset button\n\n</string>
-  <string name="navigation_bar_tips">\u2022 Actions can only be assigned to one button at a time\n\n\u2022 The home button cannot be re-assigned\n\n\u2022 Side buttons cannot be rearranged</string>
+  <string name="navigation_bar_help_text">١ - To begin editing, tap the lock icon\n\n٢ - Tap any button to assign or change functionality\n\n٣ - Long press any button to rearrange the order\n\n٤ - To save, tap the lock icon again\n\n٥ - To restore system default, tap the reset button\n\n</string>
+  <string name="navigation_bar_tips">\u٢٠٢٢ Actions can only be assigned to one button at a time\n\n\u٢٠٢٢ The home button cannot be re-assigned\n\n\u٢٠٢٢ Side buttons cannot be rearranged</string>
   <string name="navigation_bar_tips_title">تپی خێرا</string>
   <string name="navigation_bar_reset_message">سڕینه‌وه‌ی ڕێکخستنی ئێستا و دوباره‌ کردنه‌وه‌ی بۆ باری بنه‌ڕه‌تی؟</string>
   <string name="navigation_bar_save_message">ڕێکخستنی شریتی ڕێدۆزه‌ر پاشه‌که‌وتکرا</string>
@@ -965,6 +966,11 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="sd_media_format_button_text">سڕینه‌وه‌ی SD card</string>
   <string name="sd_media_format_final_desc">سڕینەوەی کارتی SD، هەموو ئەو فایلە هەڵگیراوانە لەوێ ئەسڕێتەوە؟ تۆ ناتوانیت پێچەوانەی ئەم کارە بکەیت!</string>
   <string name="sd_media_format_gesture_explanation">ئەبێت قوفڵی چنینەکە بکێشیت بۆ کردنەوەی قوفڵەکە بۆ سڕینەوەی بیرگەی دەرەکی.</string>
+  <string name="internal_sd_format">سڕینەوەی ڕەنگاڵەی ناوەکی</string>
+  <string name="internal_sd_format_summary">سڕینه‌وه‌ی هه‌موو داتاکان له‌ بیرگه‌ی ناوه‌کی USB ،وه‌کو میوزک و وێنه‌</string>
+  <string name="master_clear_desc_erase_internal_storage">\n\nTبۆ پاکردنەوەی میوزک، وێنە، و بەکارهێنانی داتای تری، لە <b>یادگەی ڕەنگاڵەی ناوەکی</b> ئەبێت لابدرێت.</string>
+  <string name="erase_internal_storage">سڕینەوەی ڕەنگاڵەی ناوەکی</string>
+  <string name="erase_internal_storage_description">سڕینەوەی هەموو داتا لەسەر یادگەی ڕەنگاڵەی ناوەکی، وەکو گۆرانی  یان وێنەکان</string>
   <string name="bluetooth_enter_pin_msg_hs">بۆ جووتکردنە لەگەڵ:<xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="ناوی_ئامێرەکە">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g>PIN بنوسە ئامێرەکە پێویستیەتی (١٦ پیت زیاتر بێت):</string>
   <string name="bluetooth_profile_sap">چوونەناو سیم</string>
   <string name="bluetooth_profile_dun">لێدان بۆ چونە ژورەوەی تۆڕ</string>
@@ -1031,4 +1037,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
   <string name="no_triggers_configured">پیتکە مەکە ڕێکخرا. دەستلێدە بۆ زیادکردنی تر.</string>
   <string name="no_triggers_configured_nfc">دەستلێدە بۆ زیادکردنی NFC ی تازە.</string>
   <string name="sound_ringtone_multisim_options">گۆڕینی  زەنگە بنەڕەتییەکان</string>
+  <string name="lock_to_cyanogen_title">پارێزەری ئامێر</string>
+  <string name="lock_to_cyanogen_summary">پێویستی بە هەژماری ۆ ئێسی ساینەجنەکەت ئەکات وە داوای تێپەڕەوشەکەش ئەکات لە دوای گەڕانەوەی بۆ باری ئاسای خۆی</string>
+  <string name="lock_to_cyanogen_create_account_msg">ئامێرەکەت سیستەمی ساینەجن بەکار ئەهێنێت تێپەڕەوشە لەسەر ئامێرەکەت پێویستە دوای سڕینەوەی هەموو شتێک و گەڕانەوەی بۆ باری یەکەمجار. پێویستیت بە دروستکردنی هەژمارێکی ساینەجن ئەبێت.</string>
+  <string name="lock_to_cyanogen_disable_msg">لەکارخستنی ئەم کردارە ڕێگەدەدات بە بەکارهێنەری نەناسراو بۆ سڕینەوەی تەلەفۆنەکەت بۆ باری ئاسای خۆی وەکو یەکەم جار ئەگەر بدزرێت بەئاسانی مۆبایلەکەت وەکو یەکەمجار لێدەکات. وە زانیاری تاکەکەسی تۆ لەوانەیە پارێزراو نەبێت .ئایە ئەتەوێت ئەم شێوازە لەکار بخەیت?</string>
+  <string name="lock_to_cyanogen_master_clear_warning">پارێزەری ئامێرەکەت چالاککرا. تکایە لە کاری بخە بۆ بەردەوامبوون بە ڕێکخستنەوەی ئامێرەکەت.</string>
 </resources>
