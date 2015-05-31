@@ -123,7 +123,7 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
             if (value != 0) {
                 am.loadSoundEffects();
             } else {
-                am.unloadSoundEffects();
+                //am.unloadSoundEffects();
             }
             return super.setSetting(context, value);
         }
