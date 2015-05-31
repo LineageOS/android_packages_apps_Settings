@@ -122,12 +122,22 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
             final AudioManager am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
             if (value != 0) {
                 am.loadSoundEffects();
-            } else {
-                am.unloadSoundEffects();
             }
             return super.setSetting(context, value);
         }
     };
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        // Unload sound effects to free some memory
+        boolean touchSoundsEnabled = android.provider.Settings.System.getInt(getContentResolver(),
+                System.SOUND_EFFECTS_ENABLED, DEFAULT_ON) == 1 ? true : false;
+        if (!touchSoundsEnabled) {
+            AudioManager am = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
+            am.unloadSoundEffects();
+        }
+    }
 
     private static final SettingPref PREF_DOCK_AUDIO_MEDIA = new SettingPref(
             TYPE_GLOBAL, KEY_DOCK_AUDIO_MEDIA, Global.DOCK_AUDIO_MEDIA_ENABLED,
