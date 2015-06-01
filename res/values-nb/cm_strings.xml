@@ -55,6 +55,9 @@
   <string name="profile_app_group_category_title">Overstyring av notifikasjoner</string>
   <string name="profile_app_group_item_instructions">Legg til eller fjern grupper</string>
   <string name="profile_app_group_item_instructions_summary">Legg til eller fjern apper som overstyrer notifikasjonsvarsler på denne profilen</string>
+  <string name="profile_entries_on">På</string>
+  <string name="profile_entries_off">Av</string>
+  <string name="profile_entries_no_override">Ingen overstyring</string>
   <string name="profile_name_title">Navn</string>
   <string name="new_profile_name">&lt;ny profil&gt;</string>
   <string name="rename_dialog_title">Gi nytt navn</string>
@@ -83,6 +86,9 @@
   <string name="profile_lockmode_insecure_summary">Ikke spør om PIN-kode eller passord</string>
   <string name="profile_lockmode_disabled_summary">Deaktiver låseskjermen</string>
   <string name="profile_airplanemode_title">Flymodus</string>
+  <string name="profile_brightness_title">Lysstyrke</string>
+  <string name="profile_brightness_override_summary">Sett til %1$d%%</string>
+  <string name="profile_brightness_override_checkbox_label">Overstyr lysstyrke</string>
   <string name="toggleWifi">WiFi\u2011</string>
   <string name="toggleWifiAp">WiFi\u2011 hotspot</string>
   <string name="toggleBluetooth">Bluetooth</string>
@@ -153,9 +159,14 @@
   <string name="sunlight_enhancement_summary">Forbedre lysstyrken og lesbarhet under sterkt sollys</string>
   <string name="color_enhancement_title">Fargeforbedring</string>
   <string name="color_enhancement_summary">Dynamisk forbedre fargene på skjermen</string>
+  <string name="blacklist_title">Blokkerte anropsliste</string>
+  <string name="blacklist_edit_dialog_title">Rediger blokkert telefonnummer</string>
   <string name="blacklist_prefs">Innstillinger</string>
   <string name="blacklist_button_delete">Slett</string>
+  <string name="blacklist_empty_text">Du har ingen nummer på svartelisten. Legg til ett nummer ved å klikke på Legg til(+).</string>
+  <string name="blacklist_disabled_empty_text">For å hindre telefonnumre fra å ringe eller sende meldinger til deg, aktiverer du blokkert anropsliste.</string>
   <string name="blacklist_summary_disabled">Deaktivert</string>
+  <string name="blacklist_summary">Du vil ikke motta innkommende samtaler eller meldinger fra telefonnumre på listen over blokkerte telefonnummer</string>
   <string name="blacklist_notify">Vis varsling</string>
   <string name="blacklist_private_numbers_title">Skjulte nummer</string>
   <string name="blacklist_private_numbers_summary_disabled">Ikke blokk samtaler fra skjulte nummer</string>
@@ -170,7 +181,9 @@
   <string name="blacklist_regex_summary">Bruk . som jokertegn og * for gjentakelse. F.eks 123.* blokkerer tall som starter med 123 og. * 123.* blokkerer tall som inneholder 123</string>
   <string name="blacklist_policy_block_calls">Blokker innkommende samtaler</string>
   <string name="blacklist_policy_block_messages">Blokker innkommende meldinger</string>
+  <string name="blacklist_bad_number_add">Kan ikke legge til ugyldig telefonnummer til den blokkerte anropslisten</string>
   <string name="remove_blacklist_number_title">Fjern nummer</string>
+  <string name="remove_blacklist_entry">Vil du fjerne dette blokkerte telefonnummeret?</string>
   <string name="select_contact">Velg kontakt</string>
   <string name="lockpattern_reset_button">Tilbakestille mønster</string>
   <string name="lockpattern_settings_reset_summary">Angi primær epostkonto og tilhørende passord for å tilbakestille mønsterlås</string>
@@ -207,6 +220,8 @@
   <string name="update_recovery_off_warning">Advarsel: Når denne funksjonen er deaktivert, vil ikke din nåværende recovery bli oppdatert med systemoppdateringer.\n\nFremtidige systemoppdateringer vil kanskje ikke installeres på en gammel eller egendefinert recovery.\n\nVil du deaktivere denne funksjonen?</string>
   <string name="mod_version">CyanogenMod versjon</string>
   <string name="mod_version_default">Ukjent</string>
+  <string name="device_model">Enhetsmodell</string>
+  <string name="device_name">Enhetsnavn</string>
   <string name="build_date">Bygge dato</string>
   <string name="contributor_cloud_title">Bidragsytere</string>
   <string name="phone_service_state">Stemme: <xliff:g id="voice_state">%1$s</xliff:g>, data: <xliff:g id="data_state">%2$s</xliff:g></string>
@@ -289,6 +304,7 @@
   <string name="status_bar_show_unused_sims_title">Vis tomme SIM ikoner</string>
   <string name="status_bar_show_unused_sims_title_summary_off">Skjul ikoner av ubrukte SIM-spor</string>
   <string name="status_bar_show_unused_sims_title_summary_on">Vis ubrukte SIM-spor</string>
+  <string name="sim_name_hint">Angi SIM navn</string>
   <string name="edit_light_settings">Redigere lys innstillinger</string>
   <string name="pulse_speed_title">Puls lengde og hastighet</string>
   <string name="default_time">Normal</string>
@@ -558,6 +574,12 @@
   <string name="subs_settings">SIM-kortstatus</string>
   <string name="storage_usb">USB lagring</string>
   <string name="storage_uicc">UICC lagring</string>
+  <string name="sdcard_eject" product="default">Demonter SD-kort</string>
+  <string name="sdcard_eject_summary" product="default">Demonter SD-kortet så kan du trygt fjerne det</string>
+  <string name="sd_card_format" product="default">Formater SD-kort</string>
+  <string name="sd_card_format_summary" product="default">Sletter all data på SD-kortet, som musikk og bilder</string>
+  <string name="sdcard_mount" product="default">Monter SD-kort</string>
+  <string name="sdcard_insert_summary" product="default">Sett inn et SD-kort for å montere</string>
   <string name="usb_eject" product="default">Demonter USB lagring</string>
   <string name="usb_eject_summary" product="default">Demonter USB lagringen så du trygt kan fjerne den</string>
   <string name="usb_format" product="default">Slett USB lagring</string>
@@ -572,22 +594,36 @@
   <string name="uicc_insert_summary" product="default">Sett inn UICC lagring som skal monteres</string>
   <string name="usb_settings_enable_ums_title">Aktivere masselagring?</string>
   <string name="usb_settings_enable_ums_message">Systemkomponenter og programmer er avhengige av at primær lagring alltid være tilgjengelig. Denne funksjonen bryter den funksjonaliteten. Det anbefales å bruke MTP i stedet. Er du sikker på at du vil aktivere masselagringen?</string>
+  <string name="dlg_confirm_sdcard_unmount_title" product="default">Demontere SD-kort?</string>
   <string name="dlg_confirm_usb_unmount_title" product="default">Demonter USB lagring?</string>
   <string name="dlg_confirm_uicc_unmount_title" product="default">Demontere UICC lagring?</string>
+  <string name="dlg_confirm_sdcard_unmount_text" product="default">Hvis du demonterer SD-kortet, vil noen apper du bruker stoppe og vil kanskje være utilgjengelig helt til du remonterer SD-kortet.</string>
   <string name="dlg_confirm_usb_unmount_text" product="default">Hvis du demonterer USB lagring,  kan noen programmer du bruker stoppe og kan være utilgjengelige til du monterer USB-enheten igjen.</string>
   <string name="dlg_confirm_uicc_unmount_text" product="default">Hvis du har demonterer UICC lagring, noen programmer du bruker stopper og kan være utilgjengelig til du monterer UICC lagring.</string>
+  <string name="dlg_error_sdcard_unmount_text" product="default">Kunne ikke demontere SD-kortet. Prøv igjen senere.</string>
   <string name="dlg_error_usb_unmount_text" product="default">Kunne ikke demontere USB lagring. Prøv igjen senere.</string>
   <string name="dlg_error_uicc_unmount_text" product="default">Kunne ikke demontere UICC lagring. Prøv igjen senere.</string>
+  <string name="sdcard_unmount_inform_text" product="default">SD-kortet vil ble demontert.</string>
   <string name="usb_unmount_inform_text" product="default">USB lagring blir demontert.</string>
   <string name="uicc_unmount_inform_text" product="default">UICC lagring blir demontert.</string>
+  <string name="sdcard_media_format_desc" product="default">Formatere SD-kortet? Du vil miste <b>all</b> data på kortet!</string>
   <string name="usb_media_format_desc" product="default">Slette USB-enheten? Du vil miste <b>alle</b> data på lagring!</string>
   <string name="uicc_media_format_desc" product="default">Slette UICC lagring? Du vil miste <b>alle</b> data på lagring!</string>
+  <string name="sdcard_media_format_button_text" product="default">Formater SD-kort</string>
   <string name="usb_media_format_button_text" product="default">Slett USB lagring</string>
   <string name="uicc_media_format_button_text" product="default">Slette UICC lagring</string>
+  <string name="sdcard_media_format_final_desc" product="default">Formatere SD-kortet og slette alle filene? Du kan ikke reversere denne handlingen!</string>
   <string name="usb_media_format_final_desc" product="default">Slette USB lagringen, slette alle filer lagret der? Du kan ikke angre denne handlingen!</string>
   <string name="uicc_media_format_final_desc" product="default">Slette UICC lagring, slette alle filer lagret der? Du kan ikke angre denne handlingen!</string>
+  <string name="sdcard_media_format_gesture_explanation" product="default">Du må tegne opplåsnings-mønsteret ditt for å bekrefte formateringen av SD-kortet.</string>
   <string name="usb_media_format_gesture_explanation" product="default">Du må trekke låse mønster for å bekrefte at du vil slette USB-enheten.</string>
   <string name="uicc_media_format_gesture_explanation" product="default">Du må trekke låse mønster for å bekrefte at du vil slette UICC lagring.</string>
+  <string name="internal_sd_format">Formater internt media-lagring</string>
+  <string name="internal_sd_format_summary">Sletter alle data på det interne media lageret, som musikk og bilder</string>
+  <string name="master_clear_desc_erase_internal_storage">\n\nFor å slette musikk, bilder og andre data, må <b>det interne medialageret</b> slettes.</string>
+  <string name="erase_internal_storage">Formater internt media-lagring</string>
+  <string name="erase_internal_storage_description">Sletter alle data på det interne medialageret, slik som musikk og bilder</string>
+  <string name="storage_rescan_media">Skann media for lagringsenhet</string>
   <string name="location_category_enhanced_location">Forbedret plassering (IZat)</string>
   <string name="app_ops_settings_summary">Vise eller endre app-tillatelser</string>
   <string name="enable_adb_summary_charging">Enheten er i lademodus, USB feilretting er deaktivert</string>
@@ -652,6 +688,8 @@
   <string name="cmlicense_title">CyanogenMod juridisk</string>
   <string name="settings_cmlicense_activity_title">CyanogenMod juridisk</string>
   <string name="settings_cmlicense_activity_unreachable">Du trenger ikke en datatilkobling. For å se denne informasjonen nå, gå til %s fra enhver datamaskin koblet til Internett.</string>
+  <string name="lockpattern_settings_enable_error_path_title">Vis feil</string>
+  <string name="lockpattern_settings_enable_dots_title">Vis mønster prikker</string>
   <string name="unlock_quick_unlock_control_title">Hurtig opplåsning</string>
   <string name="unlock_quick_unlock_control_summary">Låse opp automatisk når det angis riktig PIN/passord</string>
   <string name="unlock_scramble_pin_layout_title">Endre layout</string>
@@ -693,6 +731,7 @@
   <string name="qs_tile_lockscreen">Låsskjerm</string>
   <string name="qs_tile_lte">LTE</string>
   <string name="qs_tile_screen_timeout">Tidsavbrudd for skjermen</string>
+  <string name="qs_tile_usb_tether">USB tethering</string>
   <string name="qs_main_tiles_title">Forstørre første rad</string>
   <string name="qs_main_tiles_summary_on">To viktigste brikker på første rad</string>
   <string name="qs_main_tiles_summary_off">Tre fliser på hver rad</string>
@@ -720,6 +759,7 @@
   <string name="expanded_desktop_style">Utvidet skrivebordsstil</string>
   <string name="expanded_desktop_style_description">Velg standard utvidet skrivebordsstil</string>
   <string name="expanded_desktop_title">Utvidet skrivebordsalternativer</string>
+  <string name="title_general">Generelt</string>
   <string name="lockscreen_targets_message">Låseskjermsnarveier</string>
   <string name="lockscreen_default_target">Standard</string>
   <string name="lockscreen_none_target">Ingen</string>
@@ -786,4 +826,17 @@
   <string name="battery_saver_threshold">Batterisparingsterskel</string>
   <string name="battery_saver_summary">Reduser ytelsen og begrens bakgrunnsdata</string>
   <string name="battery_saver_summary_unavailable">Ikke tilgjengelig under lading</string>
+  <string name="anonymous_statistics_title">CyanogenMod statistikk</string>
+  <string name="anonymous_statistics_summary">Hjelp oss å gjøre CyanogenMod bedre ved å velge å sende inn anonym statistikkrapportering</string>
+  <string name="anonymous_statistics_warning_title">Om</string>
+  <string name="anonymous_statistics_warning">Ved å bli med i CyanogenMod statistikk vil ikke-personlige data bli sendt til utvilkerne av CyanogenMod for å spore antall unike installasjoner spredt over typer enheter. Informasjonen som sendes inkluderer en unik identitetskode, som ikke kompromitterer ditt personvern eller dine personlige data. Data blir sendt ved hver oppstart.\n\nFor ett eksempel over data som blir sendt, trykk på Forhåndsvis Data.</string>
+  <string name="enable_reporting_title">Aktiver rapportering</string>
+  <string name="preview_data_title">Forhåndsvis data</string>
+  <string name="view_stats_title">Vis statistikk</string>
+  <string name="anonymous_learn_more">Les mer</string>
+  <string name="preview_id_title">Unik ID</string>
+  <string name="preview_device_title">Enhet</string>
+  <string name="preview_version_title">Versjon</string>
+  <string name="preview_country_title">Land</string>
+  <string name="preview_carrier_title">Operatør</string>
 </resources>
