@@ -62,7 +62,8 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
-public class ZenModeSettings extends SettingsPreferenceFragment implements Indexable {
+public class ZenModeSettings extends SettingsPreferenceFragment implements Indexable,
+        DialogInterface.OnDismissListener {
     private static final String TAG = "ZenModeSettings";
     private static final boolean DEBUG = Log.isLoggable(TAG, Log.DEBUG);
 
@@ -86,6 +87,8 @@ public class ZenModeSettings extends SettingsPreferenceFragment implements Index
     private static final String KEY_MUSIC_INTERRUPTIONS = "music_interruptions";
 
     private static final String KEY_ALLOW_LIGHTS = "allow_lights";
+
+    private static final String EXTRA_DAYS_DIALOG = "daysAlertDialog";
 
     private static final SettingPrefWithCallback PREF_ZEN_MODE = new SettingPrefWithCallback(
             SettingPref.TYPE_GLOBAL, KEY_ZEN_MODE, Global.ZEN_MODE, Global.ZEN_MODE_OFF,
@@ -159,6 +162,7 @@ public class ZenModeSettings extends SettingsPreferenceFragment implements Index
     private Preference mEntry;
     private Preference mConditionProviders;
     private AlertDialog mDialog;
+    private AlertDialog mDaysAlertDialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -257,27 +261,7 @@ public class ZenModeSettings extends SettingsPreferenceFragment implements Index
             mDays.setOnPreferenceClickListener(new OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    new AlertDialog.Builder(mContext)
-                            .setTitle(R.string.zen_mode_downtime_days)
-                            .setView(new ZenModeDowntimeDaysSelection(mContext, mConfig.sleepMode) {
-                                  @Override
-                                  protected void onChanged(String mode) {
-                                      if (mDisableListeners) return;
-                                      if (Objects.equals(mode, mConfig.sleepMode)) return;
-                                      if (DEBUG) Log.d(TAG, "days.onChanged sleepMode=" + mode);
-                                      final ZenModeConfig newConfig = mConfig.copy();
-                                      newConfig.sleepMode = mode;
-                                      setZenModeConfig(newConfig);
-                                  }
-                            })
-                            .setOnDismissListener(new OnDismissListener() {
-                                @Override
-                                public void onDismiss(DialogInterface dialog) {
-                                    updateDays();
-                                }
-                            })
-                            .setPositiveButton(R.string.done_button, null)
-                            .show();
+                    showDaysDialog();
                     return true;
                 }
             });
@@ -373,6 +357,10 @@ public class ZenModeSettings extends SettingsPreferenceFragment implements Index
             }
         });
         mConditionProviders = findPreference(KEY_CONDITION_PROVIDERS);
+
+        if (savedInstanceState != null && savedInstanceState.getBoolean(EXTRA_DAYS_DIALOG)) {
+            showDaysDialog();
+        }
 
         updateControls();
     }
@@ -784,4 +772,61 @@ public class ZenModeSettings extends SettingsPreferenceFragment implements Index
             boolean onSetTime(int hour, int minute);
         }
     }
+
+    private void showDaysDialog() {
+        if (mDaysAlertDialog == null) {
+            mDaysAlertDialog = new AlertDialog.Builder(mContext)
+                    .setTitle(R.string.zen_mode_downtime_days)
+                    .setView(new ZenModeDowntimeDaysSelection(mContext, mConfig.sleepMode) {
+                        @Override
+                        protected void onChanged(String mode) {
+                            if (mDisableListeners)
+                                return;
+                            if (Objects.equals(mode, mConfig.sleepMode))
+                                return;
+                            if (DEBUG)
+                                Log.d(TAG, "days.onChanged sleepMode=" + mode);
+                            final ZenModeConfig newConfig = mConfig.copy();
+                            newConfig.sleepMode = mode;
+                            setZenModeConfig(newConfig);
+                        }
+                    })
+                    .setOnDismissListener(new OnDismissListener() {
+                        @Override
+                        public void onDismiss(DialogInterface dialog) {
+                            updateDays();
+                        }
+                    })
+                    .setPositiveButton(R.string.done_button, null)
+                    .show();
+        } else {
+            mDaysAlertDialog.show();
+        }
+        mDaysAlertDialog.setOnDismissListener(this);
+    }
+
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        if (mDaysAlertDialog == dialog) {
+            mDaysAlertDialog = null;
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mDaysAlertDialog != null) {
+            mDaysAlertDialog.dismiss();
+            mDaysAlertDialog = null;
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (mDaysAlertDialog != null) {
+            outState.putBoolean(EXTRA_DAYS_DIALOG, true);
+        }
+    }
+
 }
