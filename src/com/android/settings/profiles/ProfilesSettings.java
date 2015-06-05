@@ -63,11 +63,12 @@ import java.util.UUID;
 
 public class ProfilesSettings extends SettingsPreferenceFragment
         implements BaseSystemSettingSwitchBar.SwitchBarChangeCallback,
-        Preference.OnPreferenceChangeListener {
+        Preference.OnPreferenceChangeListener, DialogInterface.OnDismissListener {
     private static final String TAG = "ProfilesSettings";
 
     public static final String EXTRA_PROFILE = "Profile";
     public static final String EXTRA_NEW_PROFILE = "new_profile_mode";
+    public static final String EXTRA_RESET_DIALOG = "reset_dialog";
 
     private static final int MENU_RESET = Menu.FIRST;
     private static final int MENU_APP_GROUPS = Menu.FIRST + 1;
@@ -84,6 +85,7 @@ public class ProfilesSettings extends SettingsPreferenceFragment
     ViewGroup mContainer;
 
     static Bundle mSavedState;
+    private AlertDialog mResetDialog;
 
     public ProfilesSettings() {
         mFilter = new IntentFilter();
@@ -115,6 +117,11 @@ public class ProfilesSettings extends SettingsPreferenceFragment
         FrameLayout frameLayout = new FrameLayout(getActivity());
         mContainer = frameLayout;
         frameLayout.addView(view);
+
+        if (savedInstanceState != null && savedInstanceState.getBoolean(EXTRA_RESET_DIALOG)) {
+            showResetDialog();
+        }
+
         return frameLayout;
     }
 
@@ -228,23 +235,7 @@ public class ProfilesSettings extends SettingsPreferenceFragment
     }
 
     private void resetAll() {
-        new AlertDialog.Builder(getActivity())
-                .setTitle(R.string.profile_reset_title)
-                .setIconAttribute(android.R.attr.alertDialogIcon)
-                .setMessage(R.string.profile_reset_message)
-                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        mProfileManager.resetAll();
-                        mProfileManager.setActiveProfile(
-                                mProfileManager.getActiveProfile().getUuid());
-                        dialog.dismiss();
-                        refreshList();
-
-                    }
-                })
-                .setNegativeButton(R.string.cancel, null)
-                .show();
+        showResetDialog();
     }
 
     private void updateProfilesEnabledState() {
@@ -320,6 +311,53 @@ public class ProfilesSettings extends SettingsPreferenceFragment
             mProfileManager.setActiveProfile(selectedUuid);
         } catch (IllegalArgumentException ex) {
             ex.printStackTrace();
+        }
+    }
+
+    private void showResetDialog() {
+        if (mResetDialog == null) {
+            mResetDialog = new AlertDialog.Builder(getActivity())
+                    .setTitle(R.string.profile_reset_title)
+                    .setIconAttribute(android.R.attr.alertDialogIcon)
+                    .setMessage(R.string.profile_reset_message)
+                    .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            mProfileManager.resetAll();
+                            mAdapter.refreshProfiles();
+                            mProfileManager.setActiveProfile(
+                                    mProfileManager.getActiveProfile().getUuid());
+                        }
+                    })
+                    .setNegativeButton(R.string.cancel, null)
+                    .show();
+        } else {
+            mResetDialog.show();
+        }
+        mResetDialog.setOnDismissListener(this);
+    }
+
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        if (dialog == mResetDialog) {
+            mResetDialog = null;
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mResetDialog != null) {
+            mResetDialog.dismiss();
+            mResetDialog = null;
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (mResetDialog != null) {
+            outState.putBoolean(EXTRA_RESET_DIALOG, true);
         }
     }
 
