@@ -260,7 +260,8 @@ public class SecuritySettings extends SettingsPreferenceFragment
             Preference credentialStorageType = root.findPreference(KEY_CREDENTIAL_STORAGE_TYPE);
 
             final int storageSummaryRes =
-                mKeyStore.isHardwareBacked() ? R.string.credential_storage_type_hardware
+                mKeystore != null && mKeyStore.isHardwareBacked()
+                        ? R.string.credential_storage_type_hardware
                         : R.string.credential_storage_type_software;
             credentialStorageType.setSummary(storageSummaryRes);
         } else {
