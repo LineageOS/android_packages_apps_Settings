@@ -177,7 +177,7 @@ public class LockPatternActivity extends Activity implements OnNotifyAccountRese
     }
 
     private void switchToPattern(boolean reset) {
-        if (reset) {
+        if (reset || mItem == null) {
             resetPatternState(false);
         }
         mPatternLockHeader.setText(getResources()
