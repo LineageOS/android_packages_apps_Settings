@@ -180,6 +180,9 @@ public class LockPatternActivity extends Activity implements OnNotifyAccountRese
         if (reset) {
             resetPatternState(false);
         }
+        if (mItem == null) {
+            invalidateOptionsMenu();
+        }
         mPatternLockHeader.setText(getResources()
                 .getString(R.string.lockpattern_settings_enable_summary));
         mItem.setIcon(R.drawable.ic_lockscreen_ime);
@@ -189,6 +192,9 @@ public class LockPatternActivity extends Activity implements OnNotifyAccountRese
     }
 
     private void switchToAccount() {
+        if (mItem == null) {
+            invalidateOptionsMenu();
+        }
         mPatternLockHeader.setText(getResources()
                 .getString(R.string.lockpattern_settings_reset_summary));
         mItem.setIcon(R.drawable.ic_settings_lockscreen);
