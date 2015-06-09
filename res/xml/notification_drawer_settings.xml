@@ -24,6 +24,13 @@
         android:entryValues="@array/quick_pulldown_values"
         android:persistent="false" />
 
+    <ListPreference
+        android:key="smart_pulldown"
+        android:title="@string/smart_pulldown_title"
+        android:entries="@array/smart_pulldown_entries"
+        android:entryValues="@array/smart_pulldown_values"
+        android:persistent="false" />
+
     <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
         android:key="status_bar_show_weather"
         android:title="@string/status_bar_show_weather_title"
