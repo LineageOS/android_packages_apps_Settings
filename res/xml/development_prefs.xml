@@ -358,6 +358,16 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory android:key="debug_network_category"
+            android:title="@string/debug_network_category">
+
+        <SwitchPreference
+            android:key="disable_radio_services"
+            android:title="@string/disable_radio_services"
+            android:summary="@string/disable_radio_services_summary"/>
+
+    </PreferenceCategory>
+
     <PreferenceCategory android:key="debug_applications_category"
             android:title="@string/debug_applications_category">
 

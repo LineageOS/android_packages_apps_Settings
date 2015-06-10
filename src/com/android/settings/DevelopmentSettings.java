@@ -129,6 +129,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private static final String USE_AWESOMEPLAYER_KEY = "use_awesomeplayer";
     private static final String USB_AUDIO_KEY = "usb_audio";
     private static final String USE_AWESOMEPLAYER_PROPERTY = "persist.sys.media.use-awesome";
+    private static final String DISABLE_RADIO_KEY = "disable_radio_services";
+    private static final String DISABLE_RADIO_PROPERTY = "persist.radio.noril";
     private static final String SHOW_CPU_USAGE_KEY = "show_cpu_usage";
     private static final String FORCE_HARDWARE_UI_KEY = "force_hw_ui";
     private static final String FORCE_MSAA_KEY = "force_msaa";
@@ -251,6 +253,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
 
     private SwitchPreference mUseAwesomePlayer;
     private SwitchPreference mUSBAudio;
+    private SwitchPreference mDisableRadio;
     private SwitchPreference mImmediatelyDestroyActivities;
 
     private ListPreference mAppProcessLimit;
@@ -403,6 +406,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         mSimulateColorSpace = addListPreference(SIMULATE_COLOR_SPACE);
         mUseAwesomePlayer = findAndInitSwitchPref(USE_AWESOMEPLAYER_KEY);
         mUSBAudio = findAndInitSwitchPref(USB_AUDIO_KEY);
+        mDisableRadio = findAndInitSwitchPref(DISABLE_RADIO_KEY);
 
         mImmediatelyDestroyActivities = (SwitchPreference) findPreference(
                 IMMEDIATELY_DESTROY_ACTIVITIES_KEY);
@@ -639,6 +643,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         updateAdvancedRebootOptions();
         updateDevelopmentShortcutOptions();
         updateUpdateRecoveryOptions();
+        updateDisableRadioOptions();
     }
 
     private void writeAdvancedRebootOptions() {
@@ -1236,6 +1241,17 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                 mUSBAudio.isChecked() ? 1 : 0);
     }
 
+    private void updateDisableRadioOptions() {
+        updateSwitchPreference(
+                mDisableRadio, SystemProperties.getBoolean(DISABLE_RADIO_PROPERTY, false));
+    }
+
+    private void writeDisableRadioOptions() {
+        SystemProperties.set(
+                DISABLE_RADIO_PROPERTY, mDisableRadio.isChecked() ? "true" : "false");
+        pokeSystemProperties();
+    }
+
     private void updateForceRtlOptions() {
         updateSwitchPreference(mForceRtlLayout, Settings.Global.getInt(getActivity().getContentResolver(),
                 Settings.Global.DEVELOPMENT_FORCE_RTL, 0) != 0);
@@ -1721,6 +1737,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
             writeUseAwesomePlayerOptions();
         } else if (preference == mUSBAudio) {
             writeUSBAudioOptions();
+        } else if (preference == mDisableRadio) {
+            writeDisableRadioOptions();
         } else if (preference == mAdvancedReboot) {
             writeAdvancedRebootOptions();
         } else if (preference == mDevelopmentShortcut) {
