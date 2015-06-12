@@ -16,6 +16,24 @@
       "revId": "94b2570b79610c6020036fad0e788d9b96f39d0b",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3905b3_edb4c5d2",
+        "filename": "src/com/android/settings/applications/LockPatternActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-06-12T05:13:06Z",
+      "side": 1,
+      "message": "Yeah, it\u0027s probably better check for mItem at the end of these methods in the next way:\n\nif (mItem \u003d\u003d null) {\n invalidateOptionsMenu();\n} else {\n mItem.setIcon(R.drawable.XXXX);\n}\n\nand in onCreateOptionsMenu set the icon based on AccountView visbility. Calling invalidateOptionsMenu() doesn\u0027t ensure that mItem won\u0027t be null.",
+      "parentUuid": "9a57fde8_b2ba1ebf",
+      "revId": "94b2570b79610c6020036fad0e788d9b96f39d0b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
