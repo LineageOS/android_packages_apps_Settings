@@ -18,11 +18,11 @@ package com.android.settings.cyanogenmod.qs;
 import android.content.Context;
 
 import android.text.TextUtils;
+
+import com.android.internal.util.cm.DynamicQSUtils;
 import com.android.internal.util.cm.QSConstants;
 import com.android.internal.util.cm.QSUtils;
 import com.android.settings.R;
-
-import java.util.Arrays;
 
 /**
  * This class holds the icon, the name - or the string the user sees,
@@ -46,7 +46,8 @@ public class QSTileHolder {
         int stringId = -1;
 
         if (!TILE_ADD_DELETE.equals(tileType) &&
-                !QSUtils.getAvailableTiles(context).contains(tileType)) {
+                !QSUtils.getAvailableTiles(context).contains(tileType) &&
+                !DynamicQSUtils.getAvailableTiles(context).contains(tileType)) {
             return null;
         }
 
@@ -161,6 +162,17 @@ public class QSTileHolder {
                 resourceName = "ic_qs_sync_on";
                 stringId = R.string.qs_tile_sync;
                 break;
+
+            // Dynamic tiles
+            case QSConstants.DYNAMIC_TILE_NEXT_ALARM:
+                resourceName = "ic_dynamic_qs_next_alarm";
+                stringId = R.string.qs_dynamic_tile_next_alarm;
+                break;
+            case QSConstants.DYNAMIC_TILE_IME_SELECTOR:
+                resourceName = "ic_dynamic_qs_ime_selector";
+                stringId = R.string.qs_dynamic_tile_ime_selector;
+                break;
+
             default:
                 return null;
         }
