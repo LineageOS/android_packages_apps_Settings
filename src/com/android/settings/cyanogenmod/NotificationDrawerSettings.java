@@ -28,6 +28,7 @@ import android.provider.Settings;
 import android.provider.SearchIndexableResource;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.cyanogenmod.qs.DynamicQSTiles;
 import com.android.settings.cyanogenmod.qs.QSTiles;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
@@ -41,6 +42,7 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
 
     private ListPreference mQuickPulldown;
     private Preference mQSTiles;
+    private Preference mDynamicQSTiles;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,7 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
         addPreferencesFromResource(R.xml.notification_drawer_settings);
 
         mQSTiles = findPreference("qs_order");
+        mDynamicQSTiles = findPreference("qs_dynamic");
     }
 
     @Override
@@ -71,7 +74,10 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
 
         int qsTileCount = QSTiles.determineTileCount(getActivity());
         mQSTiles.setSummary(getResources().getQuantityString(R.plurals.qs_tiles_summary,
-                    qsTileCount, qsTileCount));
+                qsTileCount, qsTileCount));
+        int dynamicQsTileCount = DynamicQSTiles.determineTileCount(getActivity());
+        mDynamicQSTiles.setSummary(getResources().getQuantityString(
+                R.plurals.dynamic_qs_tiles_summary, dynamicQsTileCount, dynamicQsTileCount));
     }
 
     @Override
