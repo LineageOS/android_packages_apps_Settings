@@ -38,6 +38,11 @@
             android:title="@string/qs_order_title"
             android:fragment="com.android.settings.cyanogenmod.qs.QSTiles" />
 
+        <PreferenceScreen
+            android:key="qs_dynamic"
+            android:title="@string/qs_dynamic_title"
+            android:fragment="com.android.settings.cyanogenmod.qs.DynamicQSTiles" />
+
         <com.android.settings.cyanogenmod.SecureSettingSwitchPreference
             android:key="sysui_qs_main_tiles"
             android:title="@string/qs_main_tiles_title"
