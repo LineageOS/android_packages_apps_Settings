@@ -364,10 +364,15 @@ public class DraggableGridView extends ViewGroup implements
                     draggedView.setColor(mIsDelete ? Color.RED : mDefaultColor);
 
                     // check for new target hover
-                    int target = getTargetFromCoordinate(x, y);
-                    if (target != -1 && mLastTarget != target && target != getChildCount() - 1) {
-                        animateGap(target);
-                        mLastTarget = target;
+                    boolean isDragAllowed = mOnRearrangeListener != null
+                            && mOnRearrangeListener.isDragAllowed();
+                    if (isDragAllowed) {
+                        int target = getTargetFromCoordinate(x, y);
+                        if (target != -1 && mLastTarget != target
+                                && target != getChildCount() - 1) {
+                            animateGap(target);
+                            mLastTarget = target;
+                        }
                     }
                 } else {
                     mScroll += delta;
@@ -388,7 +393,9 @@ public class DraggableGridView extends ViewGroup implements
 
                     mDragged = -1;
 
-                    if (mLastTarget != -1 && !mIsDelete) {
+                    boolean isDragAllowed = mOnRearrangeListener != null
+                            && mOnRearrangeListener.isDragAllowed();
+                    if (isDragAllowed && mLastTarget != -1 && !mIsDelete) {
                         reorderChildren(dragged, animators);
                     } else if (mIsDelete) {
                         mLastTarget = dragged;
@@ -609,5 +616,6 @@ public class DraggableGridView extends ViewGroup implements
         boolean onStartDrag(int position);
         void onEndDrag();
         boolean isDeleteTarget(int position);
+        boolean isDragAllowed();
     }
 }

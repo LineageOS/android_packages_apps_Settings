@@ -20,8 +20,6 @@ import android.app.Fragment;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -51,6 +49,22 @@ public class QSTiles extends Fragment implements
     private boolean mDraggingActive;
     private Context mSystemUiContext;
 
+    protected String getDefaultOrder() {
+        return QSUtils.getDefaultTilesAsString(getActivity());
+    }
+
+    protected List<String> getAvailableTiles() {
+        return QSUtils.getAvailableTiles(getActivity());
+    }
+
+    protected boolean hasLargeFirstRow() {
+        return true;
+    }
+
+    protected String getTilesUri() {
+        return Settings.Secure.QS_TILES;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -66,16 +80,18 @@ public class QSTiles extends Fragment implements
         mSystemUiContext = Utils.createPackageContext(getActivity(), "com.android.systemui");
 
         ContentResolver resolver = getActivity().getContentResolver();
-        String order = Settings.Secure.getString(resolver, Settings.Secure.QS_TILES);
-        if (TextUtils.isEmpty(order)) {
-            order = QSUtils.getDefaultTilesAsString(getActivity());;
-            Settings.Secure.putString(resolver, Settings.Secure.QS_TILES, order);
+        String order = Settings.Secure.getString(resolver, getTilesUri());
+        if (order == null) {
+            order = getDefaultOrder();
+            Settings.Secure.putString(resolver, getTilesUri(), order);
         }
 
-        for (String tileType: order.split(",")) {
-            View tile = buildQSTile(tileType);
-            if (tile != null) {
-                mDraggableGridView.addView(tile);
+        if (!TextUtils.isEmpty(order)) {
+            for (String tileType: order.split(",")) {
+                View tile = buildQSTile(tileType);
+                if (tile != null) {
+                    mDraggableGridView.addView(tile);
+                }
             }
         }
         // Add a dummy tile for the "Add / Delete" tile
@@ -85,8 +101,8 @@ public class QSTiles extends Fragment implements
 
         mDraggableGridView.setOnRearrangeListener(this);
         mDraggableGridView.setOnItemClickListener(this);
-        mDraggableGridView.setUseLargeFirstRow(Settings.Secure.getInt(resolver,
-                Settings.Secure.QS_USE_MAIN_TILES, 1) == 1);
+        mDraggableGridView.setUseLargeFirstRow(hasLargeFirstRow() &&
+                Settings.Secure.getInt(resolver, Settings.Secure.QS_USE_MAIN_TILES, 1) == 1);
     }
 
     @Override
@@ -113,6 +129,11 @@ public class QSTiles extends Fragment implements
     }
 
     @Override
+    public boolean isDragAllowed() {
+        return true;
+    }
+
+    @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         // Add / delete button clicked
         if (view == mAddDeleteTile) {
@@ -122,7 +143,7 @@ public class QSTiles extends Fragment implements
 
     private void updateAddDeleteState() {
         int activeTiles = mDraggableGridView.getChildCount() - (mDraggingActive ? 2 : 1);
-        boolean limitReached = activeTiles >= QSUtils.getAvailableTiles(getActivity()).size();
+        boolean limitReached = activeTiles >= getAvailableTiles().size();
         int iconResId = mDraggingActive ? R.drawable.ic_menu_delete : R.drawable.ic_menu_add_dark;
         int titleResId = mDraggingActive ? R.string.qs_action_delete :
                 limitReached ? R.string.qs_action_no_more_tiles : R.string.qs_action_add;
@@ -142,12 +163,12 @@ public class QSTiles extends Fragment implements
 
         // We load the added tiles and compare it to the list of available tiles.
         // We only show the tiles that aren't already on the grid.
-        String order = Settings.Secure.getString(resolver, Settings.Secure.QS_TILES);
+        String order = Settings.Secure.getString(resolver, getTilesUri());
 
         List<String> savedTiles = Arrays.asList(order.split(","));
 
         final List<QSTileHolder> tilesList = new ArrayList<QSTileHolder>();
-        for (String tile : QSUtils.getAvailableTiles(getActivity())) {
+        for (String tile : getAvailableTiles()) {
             // Don't count the already added tiles
             if (!savedTiles.contains(tile)) {
                 QSTileHolder holder = QSTileHolder.from(getActivity(), tile);
@@ -208,7 +229,7 @@ public class QSTiles extends Fragment implements
             }
         }
 
-        Settings.Secure.putString(resolver, Settings.Secure.QS_TILES, tiles.toString());
+        Settings.Secure.putString(resolver, getTilesUri(), tiles.toString());
     }
 
     private View buildQSTile(String tileType) {
@@ -237,8 +258,11 @@ public class QSTiles extends Fragment implements
     public static int determineTileCount(Context context) {
         String order = Settings.Secure.getString(context.getContentResolver(),
                 Settings.Secure.QS_TILES);
-        if (TextUtils.isEmpty(order)) {
+        if (order == null) {
             order = QSUtils.getDefaultTilesAsString(context);
+        }
+        if (TextUtils.isEmpty(order)) {
+            return 0;
         }
         return order.split(",").length;
     }
