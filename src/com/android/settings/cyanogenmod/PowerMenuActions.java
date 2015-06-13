@@ -29,6 +29,7 @@ import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.preference.ListPreference;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.SwitchPreference;
 import android.provider.Settings;
 
 import com.android.settings.R;
@@ -44,6 +45,7 @@ import java.util.List;
 public class PowerMenuActions extends SettingsPreferenceFragment {
     final static String TAG = "PowerMenuActions";
 
+    private SwitchPreference mKeyguardDisabledPref;
     private CheckBoxPreference mRebootPref;
     private CheckBoxPreference mScreenshotPref;
     private CheckBoxPreference mProfilePref;
@@ -77,7 +79,9 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
                 continue;
             }
 
-            if (action.equals(GLOBAL_ACTION_KEY_REBOOT)) {
+            if (action.equals(GLOBAL_ACTION_MENU_DISABLED)) {
+                mKeyguardDisabledPref = (SwitchPreference) findPreference(GLOBAL_ACTION_MENU_DISABLED);
+            } else if (action.equals(GLOBAL_ACTION_KEY_REBOOT)) {
                 mRebootPref = (CheckBoxPreference) findPreference(GLOBAL_ACTION_KEY_REBOOT);
             } else if (action.equals(GLOBAL_ACTION_KEY_SCREENSHOT)) {
                 mScreenshotPref = (CheckBoxPreference) findPreference(GLOBAL_ACTION_KEY_SCREENSHOT);
@@ -104,6 +108,10 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
     @Override
     public void onStart() {
         super.onStart();
+
+        if (mKeyguardDisabledPref != null) {
+            mKeyguardDisabledPref.setChecked(settingsArrayContains(GLOBAL_ACTION_MENU_DISABLED));
+        }
 
         if (mRebootPref != null) {
             mRebootPref.setChecked(settingsArrayContains(GLOBAL_ACTION_KEY_REBOOT));
@@ -162,7 +170,11 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         boolean value;
 
-        if (preference == mRebootPref) {
+        if (preference == mKeyguardDisabledPref) {
+            value = mKeyguardDisabledPref.isChecked();
+            updateUserConfig(value, GLOBAL_ACTION_MENU_DISABLED);
+
+        } else if (preference == mRebootPref) {
             value = mRebootPref.isChecked();
             updateUserConfig(value, GLOBAL_ACTION_KEY_REBOOT);
 
