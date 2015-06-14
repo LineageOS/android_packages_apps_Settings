@@ -19,6 +19,13 @@
     android:title="@string/power_menu_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+    <SwitchPreference
+        android:key="hidePowerMenu"
+        android:title="@string/power_menu_keyguard_disabled"
+        android:summaryOn="@string/power_menu_keyguard_disabled_sum"
+        android:summaryOff="@string/power_menu_keyguard_enabled_sum"
+        android:defaultValue="false" />
+
     <CheckBoxPreference
         android:key="reboot"
         android:title="@string/power_menu_reboot_title"

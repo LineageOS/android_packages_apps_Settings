@@ -16,6 +16,7 @@
 
 package com.android.settings.cyanogenmod;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.UserInfo;
@@ -29,6 +30,7 @@ import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.preference.ListPreference;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.SwitchPreference;
 import android.provider.Settings;
 
 import com.android.settings.R;
@@ -43,7 +45,9 @@ import java.util.List;
 
 public class PowerMenuActions extends SettingsPreferenceFragment {
     final static String TAG = "PowerMenuActions";
+    final static String KEY_HIDE_POWER_MENU = "hidePowerMenu";
 
+    private SwitchPreference mKeyguardDisabledPref;
     private CheckBoxPreference mRebootPref;
     private CheckBoxPreference mScreenshotPref;
     private CheckBoxPreference mProfilePref;
@@ -97,6 +101,7 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
                 mSilentPref = (CheckBoxPreference) findPreference(GLOBAL_ACTION_KEY_SILENT);
             }
         }
+        mKeyguardDisabledPref = (SwitchPreference) findPreference(KEY_HIDE_POWER_MENU);
 
         getUserConfig();
     }
@@ -104,6 +109,12 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
     @Override
     public void onStart() {
         super.onStart();
+
+        if (mKeyguardDisabledPref != null) {
+            boolean powerMenuDisabled = Settings.Secure.getInt(getContentResolver(),
+                    Settings.Secure.POWER_MENU_ON_LOCKSCREEN, 0) == 0;
+            mKeyguardDisabledPref.setChecked(powerMenuDisabled);
+        }
 
         if (mRebootPref != null) {
             mRebootPref.setChecked(settingsArrayContains(GLOBAL_ACTION_KEY_REBOOT));
@@ -162,7 +173,10 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         boolean value;
 
-        if (preference == mRebootPref) {
+        if (preference == mKeyguardDisabledPref) {
+            saveUserConfig();
+
+        } else if (preference == mRebootPref) {
             value = mRebootPref.isChecked();
             updateUserConfig(value, GLOBAL_ACTION_KEY_REBOOT);
 
@@ -292,8 +306,13 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
             }
         }
 
-        Settings.Secure.putStringForUser(getContentResolver(),
-                 Settings.Secure.POWER_MENU_ACTIONS, s.toString(), UserHandle.USER_CURRENT);
+        ContentResolver cr = getContentResolver();
+        Settings.Secure.putStringForUser(cr, Settings.Secure.POWER_MENU_ACTIONS,
+                s.toString(), UserHandle.USER_CURRENT);
+
+        Settings.Secure.putInt(cr, Settings.Secure.POWER_MENU_ON_LOCKSCREEN,
+                (mKeyguardDisabledPref.isChecked() ? 0 : 1));
+
         updatePowerMenuDialog();
     }
 
