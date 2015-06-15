@@ -27,6 +27,16 @@
             android:title="@string/crypt_keeper_encrypt_title"
             android:summary="@string/crypt_keeper_encrypted_summary"/>
 
+        <Preference
+            android:key="crypt_keeper_change_password"
+            android:title="@string/crypt_keeper_change_password_title"
+            android:summary="@string/crypt_keeper_change_password_summary">
+
+                <intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="com.android.settings"
+                    android:targetClass="com.android.settings.ChooseEncryptionPassword" />
+        </Preference>
+
     </PreferenceCategory>
 
 

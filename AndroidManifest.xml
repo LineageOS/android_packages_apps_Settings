@@ -1282,6 +1282,9 @@
         <activity android:name="ChooseLockPassword" android:exported="false"
             android:windowSoftInputMode="stateVisible|adjustResize"/>
 
+        <activity android:name="ChooseEncryptionPassword" android:exported="false"
+            android:windowSoftInputMode="stateVisible|adjustResize"/>
+
         <activity android:name=".SetupEncryptionInterstitial"
             android:taskAffinity="com.android.wizard"
             android:theme="@style/SetupWizardDisableAppStartingTheme"/>
