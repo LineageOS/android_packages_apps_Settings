@@ -179,6 +179,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
 
     private static final String ADVANCED_REBOOT_KEY = "advanced_reboot";
 
+    private static final String POWER_MENU_DISABLE_KEY = "power_menu_on_lockscreen";
+
     private static final String DEVELOPMENT_SHORTCUT_KEY = "development_shortcut";
 
     private static final int RESULT_DEBUG_APP = 1000;
@@ -265,6 +267,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
 
     private SwitchPreference mAdvancedReboot;
 
+    private SwitchPreference mDisablePowerMenuLockscreen;
+
     private SwitchPreference mUpdateRecovery;
 
     private SwitchPreference mDevelopmentShortcut;
@@ -345,7 +349,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         mAdvancedReboot = findAndInitSwitchPref(ADVANCED_REBOOT_KEY);
         mUpdateRecovery = findAndInitSwitchPref(UPDATE_RECOVERY_KEY);
         mDevelopmentShortcut = findAndInitSwitchPref(DEVELOPMENT_SHORTCUT_KEY);
-
+        mDisablePowerMenuLockscreen = findAndInitSwitchPref(POWER_MENU_DISABLE_KEY);
 
         if (!android.os.Process.myUserHandle().equals(UserHandle.OWNER)) {
             disableForUser(mEnableAdb);
@@ -353,6 +357,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
             disableForUser(mEnableTerminal);
             disableForUser(mPassword);
             disableForUser(mAdvancedReboot);
+            disableForUser(mDisablePowerMenuLockscreen);
             disableForUser(mUpdateRecovery);
             disableForUser(mDevelopmentShortcut);
             disableForUser(mQuickBoot);
@@ -639,6 +644,18 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         updateAdvancedRebootOptions();
         updateDevelopmentShortcutOptions();
         updateUpdateRecoveryOptions();
+        updateDisablePowerMenuOptions();
+    }
+
+    private void writeDisablePowerMenuOptions() {
+        Settings.Secure.putInt(getActivity().getContentResolver(),
+                Settings.Secure.POWER_MENU_ON_LOCKSCREEN,
+                mDisablePowerMenuLockscreen.isChecked() ? 0 : 1);
+    }
+
+    private void updateDisablePowerMenuOptions() {
+        mDisablePowerMenuLockscreen.setChecked(Settings.Secure.getInt(getActivity().getContentResolver(),
+                Settings.Secure.POWER_MENU_ON_LOCKSCREEN, 1) == 0);
     }
 
     private void writeAdvancedRebootOptions() {
@@ -1723,6 +1740,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
             writeUSBAudioOptions();
         } else if (preference == mAdvancedReboot) {
             writeAdvancedRebootOptions();
+        } else if (preference == mDisablePowerMenuLockscreen) {
+            writeDisablePowerMenuOptions();
         } else if (preference == mDevelopmentShortcut) {
             writeDevelopmentShortcutOptions();
         } else if (preference == mKillAppLongpressBack) {
