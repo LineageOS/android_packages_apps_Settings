@@ -17,7 +17,6 @@
 package com.android.settings.bluetooth;
 
 import android.app.AlertDialog;
-import android.bluetooth.BluetoothClass;
 import android.bluetooth.BluetoothProfile;
 import android.content.Context;
 import android.content.DialogInterface;

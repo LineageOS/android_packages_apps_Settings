@@ -26,7 +26,6 @@ import android.os.Handler;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.provider.Settings;
-import android.view.WindowManager;
 import android.view.WindowManagerPolicyControl;
 
 import com.android.settings.SettingsPreferenceFragment;

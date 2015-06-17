@@ -17,8 +17,6 @@
 package com.android.settings.cyanogenmod;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;

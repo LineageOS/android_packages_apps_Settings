@@ -38,9 +38,6 @@ import android.util.Log;
 
 import com.android.settings.R;
 
-import java.util.HashMap;
-import java.util.List;
-
 /**
  * SapServerProfile handles Bluetooth SAP server profile.
  */

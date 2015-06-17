@@ -18,7 +18,6 @@ package com.android.settings.blacklist;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
 import android.preference.MultiSelectListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
@@ -27,7 +26,6 @@ import android.provider.Settings;
 import com.android.internal.telephony.util.BlacklistUtils;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.SubSettings;
 
 import java.util.HashSet;
 import java.util.Set;

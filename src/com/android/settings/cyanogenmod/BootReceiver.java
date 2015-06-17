@@ -31,7 +31,6 @@ import com.android.settings.R;
 import com.android.settings.Utils;
 import com.android.settings.hardware.VibratorIntensity;
 import com.android.settings.inputmethod.InputMethodAndLanguageSettings;
-import com.android.settings.livedisplay.DisplayColor;
 import com.android.settings.livedisplay.DisplayGamma;
 
 import java.util.Arrays;

@@ -16,7 +16,6 @@
 
 package com.android.settings.bluetooth;
 
-import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothClass;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothPbap;
@@ -27,9 +26,6 @@ import android.os.ParcelUuid;
 import android.util.Log;
 
 import com.android.settings.R;
-
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * PBAPServer Profile

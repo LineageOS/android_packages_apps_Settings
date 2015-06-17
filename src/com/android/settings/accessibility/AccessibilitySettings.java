@@ -41,15 +41,12 @@ import android.text.TextUtils;
 import android.text.TextUtils.SimpleStringSplitter;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
-import android.view.View;
 import android.view.accessibility.AccessibilityManager;
-import android.widget.TextView;
 
 import com.android.internal.content.PackageMonitor;
 import com.android.settings.DialogCreatable;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.Utils;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.search.SearchIndexableRaw;

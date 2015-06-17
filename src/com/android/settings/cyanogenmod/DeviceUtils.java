@@ -1,11 +1,9 @@
 package com.android.settings.cyanogenmod;
 
 import android.bluetooth.BluetoothAdapter;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.nfc.NfcAdapter;
-import android.provider.Settings;
 
 /**
  * Created by roman on 11/24/14.

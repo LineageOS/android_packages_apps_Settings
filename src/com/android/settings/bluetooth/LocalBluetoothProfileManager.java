@@ -32,15 +32,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.ParcelUuid;
 import android.util.Log;
-import android.os.Handler;
-import android.os.Message;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
-import java.util.List;
 import android.os.SystemProperties;
 
 /**

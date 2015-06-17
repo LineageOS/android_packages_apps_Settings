@@ -20,7 +20,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.widget.Checkable;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 
 public class ToggleImageView extends ImageView implements Checkable {

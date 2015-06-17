@@ -20,7 +20,6 @@ import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.preference.Preference;
-import android.text.format.Formatter;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ProgressBar;

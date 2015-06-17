@@ -18,7 +18,6 @@ package com.android.settings.cmstats;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.preference.Preference;
 import android.preference.PreferenceScreen;
 
 import com.android.settings.R;

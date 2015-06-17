@@ -38,9 +38,6 @@ import android.util.Log;
 
 import com.android.settings.R;
 
-import java.util.HashMap;
-import java.util.List;
-
 /**
  * DunServerProfile handles Bluetooth DUN server profile.
  */
