@@ -16,6 +16,7 @@
 
 package com.android.settings.sim;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -25,6 +26,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemProperties;
+import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
@@ -66,8 +68,15 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     private static final String KEY_SMS = "sim_sms";
     private static final String KEY_ACTIVITIES = "activities";
     private static final String KEY_PRIMARY_SUB_SELECT = "select_primary_sub";
+    private static final String KEY_DATA_HIGHER_RAT = "data_higher_rat";
 
     private static final int EVT_UPDATE = 1;
+
+    // From com.android.phone.PhoneToggler
+    private static final String ACTION_MODIFY_NETWORK_MODE = "com.android.internal.telephony.MODIFY_NETWORK_MODE";
+    private static final String ACTION_NETWORK_MODE_CHANGED = "com.android.internal.telephony.NETWORK_MODE_CHANGED";
+    private static final String EXTRA_NETWORK_MODE = "networkMode";
+    private static final String EXTRA_PHONE_ID = "phoneId";
 
     private long mPreferredDataSubscription;
     private int mNumSlots = 0;
@@ -80,6 +89,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     private List<SubscriptionInfo> mAvailableSubInfos = null;
     private List<SubscriptionInfo> mSubInfoList = null;
     private Preference mPrimarySubSelect = null;
+    private CheckBoxPreference mDataHigherRat = null;
 
     private List<MultiSimEnablerPreference> mSimEnablers = null;
     private List<Preference> mMobileNetworkSettings = null;
@@ -94,9 +104,18 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     private PhoneStateListener[] mPhoneStateListener;
     private boolean mDataDisableToastDisplayed = false;
     private SubscriptionManager mSubscriptionManager;
+    private Context mContext;
+    private boolean mNetworkModeChanging = false;
+    private int mNetworkModeChangesCount = 0;
 
     public SimSettings() {
         super(DISALLOW_CONFIG_SIM);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        mContext = activity;
     }
 
     @Override
@@ -127,7 +146,10 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         intentFilter.addAction(TelephonyIntents.ACTION_SUBINFO_CONTENT_CHANGE);
         intentFilter.addAction(TelephonyIntents.ACTION_SUBINFO_RECORD_UPDATED);
 
+        IntentFilter intentFilter2 = new IntentFilter(ACTION_NETWORK_MODE_CHANGED);
+
         getActivity().registerReceiver(mDdsSwitchReceiver, intentFilter);
+        getActivity().registerReceiver(mDdsNetworkModeReceiver, intentFilter2);
     }
 
     @Override
@@ -135,6 +157,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         super.onDestroy();
         Log.d(TAG,"on onDestroy");
         getActivity().unregisterReceiver(mDdsSwitchReceiver);
+        getActivity().unregisterReceiver(mDdsNetworkModeReceiver);
         unRegisterPhoneStateListener();
     }
 
@@ -182,18 +205,46 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         }
     };
 
+    private BroadcastReceiver mDdsNetworkModeReceiver = new BroadcastReceiver(){
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            Log.d(TAG, "Intent received: " + action);
+            if (ACTION_NETWORK_MODE_CHANGED.equals(action)) {
+                if (mNetworkModeChanging) {
+                    if (mNetworkModeChangesCount < 2) {
+                        mNetworkModeChangesCount++;
+                    } else if (mNetworkModeChangesCount == 2) {
+                        final DropDownPreference simPref = (DropDownPreference) findPreference(KEY_CELLULAR_DATA);
+                        simPref.setEnabled(true);
+                        mNetworkModeChanging = false;
+                        mNetworkModeChangesCount = 0;
+                    }
+                }
+            }
+        }
+    };
+
     private void createPreferences() {
         addPreferencesFromResource(R.xml.sim_settings);
+        TelephonyManager tm = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
 
         mPrimarySubSelect = (Preference) findPreference(KEY_PRIMARY_SUB_SELECT);
         final PreferenceCategory simEnablers =
                 (PreferenceCategory)findPreference(SIM_ENABLER_CATEGORY);
         final PreferenceCategory mobileNetwork =
                 (PreferenceCategory) findPreference(MOBILE_NETWORK_CATEGORY);
+        mDataHigherRat = (CheckBoxPreference) findPreference(KEY_DATA_HIGHER_RAT);
 
         mAvailableSubInfos = new ArrayList<SubscriptionInfo>(mNumSlots);
         mSimEnablers = new ArrayList<MultiSimEnablerPreference>(mNumSlots);
         mMobileNetworkSettings = new ArrayList<Preference>(mNumSlots);
+
+        if (!tm.isMultiSimEnabled()
+            && tm.getMultiSimConfiguration() != TelephonyManager.MultiSimVariants.DSDS
+            && SystemProperties.getBoolean("ro.ril.multi_rat_capable", false)) {
+            removePreference(KEY_DATA_HIGHER_RAT);
+        }
         for (int i = 0; i < mNumSlots; ++i) {
             final SubscriptionInfo sir = findRecordBySlotId(i);
             if (mNumSlots > 1) {
@@ -202,6 +253,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
                 simEnablers.addPreference(mSimEnablers.get(i));
             } else {
                 removePreference(SIM_ENABLER_CATEGORY);
+                removePreference(KEY_DATA_HIGHER_RAT);
             }
             // Do not display deactivated subInfo in preference list
             if ((sir != null) && (sir.mStatus == mSubscriptionManager.ACTIVE)) {
@@ -490,8 +542,9 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
 
                 Log.d(TAG,"calling setCallback: " + simPref.getKey() + "subId: " + subId);
                 if (simPref.getKey().equals(KEY_CELLULAR_DATA)) {
-                    if (mSubscriptionManager.getDefaultDataSubId() != subId) {
-                        mSubscriptionManager.setDefaultDataSubId(subId);
+                    final int currentDataSubId = mSubscriptionManager.getDefaultDataSubId();
+                    if (currentDataSubId != subId) {
+                        changeDefaultDataSub(currentDataSubId, subId);
                     }
                 } else if (simPref.getKey().equals(KEY_CALLS)) {
                     //subId 0 is meant for "Ask First"/"Prompt" option as per AOSP
@@ -531,6 +584,28 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         }
 
         updateActivitesCategory();
+    }
+
+    private void changeDefaultDataSub(final int oldDataSubId, final int newDataSubId) {
+        if (mDataHigherRat.isChecked()) {
+            String defaultNetworkModes[] = SystemProperties.get("ro.telephony.default_network").split(",");
+            if (true) { // TODO: Change network mode only when needed.
+                final DropDownPreference simPref = (DropDownPreference) findPreference(KEY_CELLULAR_DATA);
+                simPref.setEnabled(false);
+                Intent intent = new Intent(ACTION_MODIFY_NETWORK_MODE);
+                Intent intent2 = new Intent(ACTION_MODIFY_NETWORK_MODE);
+                // Set the other SIM to 2G
+                intent.putExtra(EXTRA_NETWORK_MODE, Integer.parseInt(defaultNetworkModes[1]));
+                intent.putExtra(EXTRA_PHONE_ID, mSubscriptionManager.getPhoneId(oldDataSubId));
+                mContext.sendBroadcast(intent);
+                intent2.putExtra(EXTRA_NETWORK_MODE, Integer.parseInt(defaultNetworkModes[0]));
+                intent2.putExtra(EXTRA_PHONE_ID, mSubscriptionManager.getPhoneId(newDataSubId));
+                mContext.sendBroadcast(intent2);
+                mNetworkModeChanging = true;
+                mNetworkModeChangesCount = 0;
+            }
+        }
+        mSubscriptionManager.setDefaultDataSubId(newDataSubId);
     }
 
     /**
