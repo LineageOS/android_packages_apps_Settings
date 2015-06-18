@@ -45,6 +45,15 @@
 
     <PreferenceCategory
         android:key="mobile_network"
-        android:title="@string/sim_mobile_network_settings_category_title" />
+        android:title="@string/sim_mobile_network_settings_category_title" >
+
+        <CheckBoxPreference
+                android:key="data_higher_rat"
+                android:defaultValue="true"
+                android:title="@string/data_higher_rat_toggle"
+                android:summaryOn="@string/data_higher_rat_on"
+                android:summaryOff="@string/data_higher_rat_off" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>
