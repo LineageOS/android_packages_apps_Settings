@@ -46,7 +46,7 @@
   <string name="profile_selected">Hautatutako profila: %1$s</string>
   <string name="profile_nfc_text">Profila NFC etiketa batean idazteak etiketa profila hautatzeko sakatzea ahalbidetzen du. Bigarren aldiz sakatuta aurretik zegoen profilera bueltatuko da.</string>
   <string name="profile_unknown_nfc_tag">Profil ezezaguna</string>
-  <string name="profile_add_nfc_text">NFC etiketa honek profil ezezagun bati egiten dio erreferentzia. NFC etiketa hau existitzen den profil bati gehitzeak profila ahutatzea ahalbidetuko du.</string>
+  <string name="profile_add_nfc_text">NFC etiketa honek profil ezezagun bati egiten dio erreferentzia. NFC etiketa hau badagoen profil bati gehitzeak profila hautatzea ahalbidetuko du.</string>
   <string name="profile_select">Profila hautatu</string>
   <string name="profile_remove_dialog_message">Ezabatu %1$s profila?</string>
   <string name="profile_populate_profile_from_state">Konfiguratu profila gailuaren oraingo ezarpenak erabilita?</string>
@@ -136,7 +136,7 @@
   <string name="keyboard_backlight_enabled">Argitu teklatua</string>
   <string name="button_backlight_seekbar_title">Botoien distira</string>
   <string name="keyboard_backlight_seekbar_title">Teklatuaren distira</string>
-  <string name="backlight_timeout_title">Argitze denbora</string>
+  <string name="backlight_timeout_title">Argitze denbora-muga</string>
   <string name="backlight_timeout_unlimited">Ez itzali</string>
   <string name="backlight_summary_disabled">Ezgaituta</string>
   <string name="backlight_summary_enabled_with_timeout">Gaitu <xliff:g id="timeout">%s</xliff:g></string>
@@ -170,14 +170,14 @@
   <string name="blacklist_notify">Erakutsi jakinarazpena</string>
   <string name="blacklist_private_numbers_title">Zenbaki pribatuak</string>
   <string name="blacklist_private_numbers_summary_disabled">Ez blokeatu zenbaki pribatuen deirik</string>
-  <string name="blacklist_private_numbers_summary">Zenbaki pribatuen <xliff:g id="type">%s</xliff:g> blokeatu</string>
+  <string name="blacklist_private_numbers_summary">Blokeatu zenbaki pribatuen <xliff:g id="type">%s</xliff:g>ak</string>
   <string name="blacklist_unknown_numbers_title">Zenbaki ezezagunak</string>
   <string name="blacklist_unknown_numbers_summary_disabled">Ez blokeatu kontaktu zerrendan ez dauden zebakietako dei edo mezuak</string>
   <string name="blacklist_unknown_numbers_summary">Blokeatu kontaktu zerrendan ez dauden zenbakietako <xliff:g id="type">%s</xliff:g></string>
   <string name="blacklist_summary_type_calls_only">deiak</string>
   <string name="blacklist_summary_type_messages_only">mezuak</string>
   <string name="blacklist_summary_type_calls_and_messages">deiak eta mezuak</string>
-  <string name="blacklist_regex_title">Komodinak baimendu</string>
+  <string name="blacklist_regex_title">Erabili komodinak</string>
   <string name="blacklist_regex_summary">Erabili . komodin bezala eta * errepikapenerako. Adibidez 123.* 123z hasten diren zenbakiak blokeatuko ditu eta .*123.* 123 barnean duten zenbakiak blokeatuko ditu</string>
   <string name="blacklist_policy_block_calls">Blokeatu jasotako deiak</string>
   <string name="blacklist_policy_block_messages">Blokeatu jasotako mezuak</string>
@@ -191,7 +191,7 @@
   <string name="menu_hidden_apps_reset_lock">Berrezarri eredu blokeoa</string>
   <string name="protected_apps">Babesturiko aplikazioak</string>
   <string name="saving_protected_components">Osagaiaren egoera gordetzen\u2026</string>
-  <string name="pa_login_username_hint">Erabiltzaile izena (e-mail)</string>
+  <string name="pa_login_username_hint">Erabiltzaile izena (posta)</string>
   <string name="pa_login_password_hint">Pasahitza</string>
   <string name="pa_login_submit_button">Sartu</string>
   <string name="pa_login_checking_password">Kontua berresten\u2026</string>
@@ -225,7 +225,7 @@
   <string name="build_date">Konpilatze data</string>
   <string name="contributor_cloud_title">Laguntzaileak</string>
   <string name="phone_service_state">Ahotsa: <xliff:g id="voice_state">%1$s</xliff:g>, datuak: <xliff:g id="data_state">%2$s</xliff:g></string>
-  <string name="double_tap_to_wake_title">Esnatzeko birritan sakatu</string>
+  <string name="double_tap_to_wake_title">Birritan sakatu esnatzeko</string>
   <string name="double_tap_to_wake_summary">Birritan sakatu pantailan berau pizteko</string>
   <string name="proximity_wake_title">Ekidin ustekabeko esnatzea</string>
   <string name="proximity_wake_summary">Kontsultatu gertutasun sentsorea pantaila piztu aurretik</string>
@@ -339,7 +339,7 @@
   <string name="notification_ringtone_title_cm">Jakinarazpen doinua</string>
   <string name="headset_connect_player_title">Abiatu musika erreproduzigailua</string>
   <string name="headset_connect_player_summary">Abiatu musika erreproduzigailu lehenetsia aurikularrak konektatzean</string>
-  <string name="ime_switcher_notify">Hautatzaile ikonoa</string>
+  <string name="ime_switcher_notify">Hautaketa ikonoa</string>
   <string name="ime_switcher_notify_summary">Bistaratu sarrera metodoa hautatzeko ikonoa</string>
   <string name="app_notification_show_on_keyguard_title">Bistaratu blokeo-pantailan</string>
   <string name="app_notification_show_on_keyguard_summary">Bistaratu aplikazio honen jakinarazpenak blokeo-pantailan</string>
@@ -377,7 +377,7 @@
   <string name="app_ops_summaries_access_notifications">jakinarazpenak atzitzeko baimena</string>
   <string name="app_ops_summaries_camera">argazkiak eta bideoak atera</string>
   <string name="app_ops_summaries_record_audio">audioa grabatu</string>
-  <string name="app_ops_summaries_play_audio">soinua erreproduzitu</string>
+  <string name="app_ops_summaries_play_audio">erreproduzitu audioa</string>
   <string name="app_ops_summaries_read_clipboard">arbela irakurri</string>
   <string name="app_ops_summaries_modify_clipboard">arbela aldatu</string>
   <string name="app_ops_summaries_media_buttons">media botoiak</string>
@@ -419,7 +419,7 @@
   <string name="app_ops_labels_modify_call_log">Dei erregistroa editatu</string>
   <string name="app_ops_labels_read_calendar">Egutegia irakurri</string>
   <string name="app_ops_labels_modify_calendar">Egutegia aldatu</string>
-  <string name="app_ops_labels_notification_toast">jakinarazpena/Mezua</string>
+  <string name="app_ops_labels_notification_toast">Jakinarazpena/Laster-leihoa</string>
   <string name="app_ops_labels_call_phone">Deitu</string>
   <string name="app_ops_labels_read_sms_db">SMSak irakurri</string>
   <string name="app_ops_labels_write_sms_db">SMSak idatzi</string>
@@ -431,7 +431,7 @@
   <string name="app_ops_labels_access_notifications">Sarbidea jakinarazpenetara</string>
   <string name="app_ops_labels_camera">Kamera</string>
   <string name="app_ops_labels_record_audio">Soinua grabatu</string>
-  <string name="app_ops_labels_play_audio">Soinua erreproduzitu</string>
+  <string name="app_ops_labels_play_audio">Erreproduzitu audioa</string>
   <string name="app_ops_labels_read_clipboard">Paper-zorroa irakurri</string>
   <string name="app_ops_labels_modify_clipboard">Paper-zorroa editatu</string>
   <string name="app_ops_labels_media_buttons">Media botoiak</string>
@@ -681,7 +681,7 @@
   <string name="cpu_min_freq_title">CPU-aren maiztasun minimoa</string>
   <string name="cpu_max_freq_title">CPU-aren maiztasun maximoa</string>
   <string name="autoperf_title">Gaitu aplikazioen araberako profilak</string>
-  <string name="autoperf_summary">Automatikoki hautatu hainbat aplikazioentzako errendimendu profil egokida</string>
+  <string name="autoperf_summary">Automatikoki hautatu hainbat aplikazioentzako errendimendu profil egokia</string>
   <string name="graphics_title">Grafikoak eta errendatzea</string>
   <string name="edge_gesture_service_title">Blokeatu ukipen keinu gertaerak</string>
   <string name="edge_gesture_service_summary">Ez bidali nabigazio eta egoera barren keinuetarako ukipen gertakaririk aplikazioei</string>
@@ -727,7 +727,7 @@
   <string name="qs_tile_profiles">Sistema profilak</string>
   <string name="qs_tile_performance">Bateria modua</string>
   <string name="qs_tile_nfc">NFC</string>
-  <string name="qs_tile_compass">Iparorratza</string>
+  <string name="qs_tile_compass">Iparrorratza</string>
   <string name="qs_tile_lockscreen">Blokeo-pantaila</string>
   <string name="qs_tile_lte">LTE</string>
   <string name="qs_tile_screen_timeout">Pantailaren denbora-muga</string>
@@ -839,4 +839,14 @@
   <string name="preview_version_title">Bertsioa</string>
   <string name="preview_country_title">Herrialdea</string>
   <string name="preview_carrier_title">Operadorea</string>
+  <string name="factory_reset_instructions_title">Datu eta aplikazio pertsonalak</string>
+  <string name="factory_reset_instructions_summary">Honek zure kontuak, aplikazioak, aplikazioetako datuak eta sistemaren ezarpenak ezabatuko ditu gailu honetatik</string>
+  <string name="factory_reset_personal_content">Eduki pertsonala</string>
+  <string name="factory_reset_erase_stored_content">Ezabatu gordetako edukia</string>
+  <string name="factory_reset_erase_stored_content_summary">Ezabatu musika, argazkiak, bideoak, eta gailu honetan gordetako bestelako erabiltzaile datuak</string>
+  <string name="factory_reset_erase_stored_content_summary_forced">Ezabatu musika, argazkiak, bideoak, eta gailu honetan gordetako bestelako erabiltzaile datuak. \n\n<b>Edukia ezin da gorde gailua zifratuta dagoelako.</b></string>
+  <string name="factory_reset_erase_sd_card">Formateatu SD txartela</string>
+  <string name="factory_reset_erase_sd_card_summary">Ezabatu barne SD txarteleko datu guztiak, musika eta argazkiak barne</string>
+  <string name="factory_reset_warning_text_reset_now">LEHENERATU ORAIN</string>
+  <string name="factory_reset_warning_text_message">Zure kontu, aplikazio, aplikazioetako datuak eta sistema ezarpen guztiak gailu honetatik ezabatuko dira. Ez dago hau desegiterik.</string>
 </resources>
