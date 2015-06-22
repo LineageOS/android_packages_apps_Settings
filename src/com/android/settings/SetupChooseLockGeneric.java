@@ -16,6 +16,7 @@
 
 package com.android.settings;
 
+import android.widget.TextView;
 import com.android.setupwizard.navigationbar.SetupWizardNavBar;
 
 import android.app.admin.DevicePolicyManager;
@@ -59,11 +60,12 @@ public class SetupChooseLockGeneric extends ChooseLockGeneric
     @Override
     public void onNavigationBarCreated(SetupWizardNavBar bar) {
         SetupWizardUtils.setImmersiveMode(this, bar);
-        bar.getNextButton().setEnabled(false);
+        bar.getNextButton().setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void onNavigateBack() {
+        setResult(RESULT_CANCELED);
         onBackPressed();
     }
 
@@ -80,8 +82,18 @@ public class SetupChooseLockGeneric extends ChooseLockGeneric
             ListView list = (ListView) view.findViewById(android.R.id.list);
             View title = view.findViewById(R.id.title);
             if (title == null) {
-                final View header = inflater.inflate(R.layout.setup_wizard_header, list, false);
+                final View header = inflater.inflate(R.layout.setup_wizard_header_lock, list, false);
                 list.addHeaderView(header, null, false);
+                final TextView details = (TextView) header.findViewById(R.id.details);
+                if (details != null) {
+                    final Intent intent = getActivity().getIntent();
+                    final String detailsText =
+                            intent.getStringExtra(SetupWizardUtils.EXTRA_DETAILS);
+                    if (detailsText != null) {
+                        details.setVisibility(View.VISIBLE);
+                        details.setText(detailsText);
+                    }
+                }
             }
             return view;
         }
@@ -90,7 +102,7 @@ public class SetupChooseLockGeneric extends ChooseLockGeneric
         public void onViewCreated(View view, Bundle savedInstanceState) {
             super.onViewCreated(view, savedInstanceState);
             SetupWizardUtils.setIllustration(getActivity(),
-                    R.drawable.setup_illustration_lock_screen);
+                    R.drawable.setup_illustration_lock_screen_generic);
             SetupWizardUtils.setHeaderText(getActivity(), getActivity().getTitle());
         }
 
@@ -117,19 +129,21 @@ public class SetupChooseLockGeneric extends ChooseLockGeneric
 
         @Override
         protected Intent getLockPasswordIntent(Context context, int quality, boolean isFallback,
-                int minLength, int maxLength, boolean requirePasswordToDecrypt,
-                boolean confirmCredentials) {
+                boolean isFingerprintFallback, int minLength, int maxLength,
+                boolean requirePasswordToDecrypt, boolean confirmCredentials) {
             final Intent intent = SetupChooseLockPassword.createIntent(context, quality,
-                    isFallback, minLength, maxLength, requirePasswordToDecrypt, confirmCredentials);
+                    isFallback, isFingerprintFallback, minLength, maxLength,
+                    requirePasswordToDecrypt, confirmCredentials);
             SetupWizardUtils.copySetupExtras(getActivity().getIntent(), intent);
             return intent;
         }
 
         @Override
         protected Intent getLockPatternIntent(Context context, boolean isFallback,
-                boolean requirePassword, boolean confirmCredentials) {
+                boolean isFingerprintFallback, boolean requirePassword,
+                boolean confirmCredentials) {
             final Intent intent = SetupChooseLockPattern.createIntent(context, isFallback,
-                    requirePassword, confirmCredentials);
+                    requirePassword, isFingerprintFallback, confirmCredentials);
             SetupWizardUtils.copySetupExtras(getActivity().getIntent(), intent);
             return intent;
         }
