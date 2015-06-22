@@ -156,6 +156,7 @@ public class InstalledAppDetails extends Fragment
     private final HashSet<String> mHomePackages = new HashSet<String>();
 
     private boolean mDisableAfterUninstall;
+    private boolean mIsUiAvailable = false;
 
     private boolean mHaveSizes = false;
     private long mLastCodeSize = -1;
@@ -565,6 +566,7 @@ public class InstalledAppDetails extends Fragment
         mAppOps = (AppOpsManager) getActivity().getSystemService(Context.APP_OPS_SERVICE);
         mAppOpsButton = (Button) view.findViewById(R.id.app_ops_button);
 
+        mIsUiAvailable = true;
         return view;
     }
 
@@ -738,7 +740,7 @@ public class InstalledAppDetails extends Fragment
 
     @Override
     public void onPackageSizeChanged(String packageName) {
-        if (packageName.equals(mAppEntry.info.packageName)) {
+        if (packageName.equals(mAppEntry.info.packageName) && mIsUiAvailable) {
             refreshSizeInfo();
         }
     }
