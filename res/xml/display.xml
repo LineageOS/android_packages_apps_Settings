@@ -154,6 +154,12 @@
                 android:defaultValue="true"
                 settings:advanced="true" />
 
+        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+                android:key="disable_transition_animations"
+                android:title="@string/disable_animations"
+                android:summary="@string/disable_animations_summary"
+                android:defaultValue="false" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
