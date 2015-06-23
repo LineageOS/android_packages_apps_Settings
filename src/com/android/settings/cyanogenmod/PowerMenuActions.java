@@ -20,7 +20,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.UserInfo;
 import android.content.res.Resources;
+import android.hardware.CmHardwareManager;
 import android.os.Bundle;
+import android.os.RemoteException;
 import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.os.UserManager;
@@ -30,6 +32,9 @@ import android.preference.PreferenceScreen;
 import android.preference.ListPreference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.provider.Settings;
+import android.util.Log;
+import android.view.WindowManager;
+import android.view.WindowManagerGlobal;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -53,6 +58,7 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
     private CheckBoxPreference mLockdownPref;
     private CheckBoxPreference mBugReportPref;
     private CheckBoxPreference mSilentPref;
+    private CheckBoxPreference mAllowDisable;
 
     Context mContext;
     private ArrayList<String> mLocalUserConfig = new ArrayList<String>();
@@ -95,6 +101,8 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
                 mBugReportPref = (CheckBoxPreference) findPreference(GLOBAL_ACTION_KEY_BUGREPORT);
             } else if (action.equals(GLOBAL_ACTION_KEY_SILENT)) {
                 mSilentPref = (CheckBoxPreference) findPreference(GLOBAL_ACTION_KEY_SILENT);
+            } else if (action.equals(GLOBAL_ACTION_KEY_ALLOW_DISABLE)) {
+                mAllowDisable = (CheckBoxPreference) findPreference(GLOBAL_ACTION_KEY_ALLOW_DISABLE);
             }
         }
 
@@ -149,6 +157,10 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
             mSilentPref.setChecked(settingsArrayContains(GLOBAL_ACTION_KEY_SILENT));
         }
 
+        if (mAllowDisable != null) {
+            mAllowDisable.setChecked(settingsArrayContains(GLOBAL_ACTION_KEY_ALLOW_DISABLE));
+        }
+
         updatePreferences();
     }
 
@@ -197,6 +209,10 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
         } else if (preference == mSilentPref) {
             value = mSilentPref.isChecked();
             updateUserConfig(value, GLOBAL_ACTION_KEY_SILENT);
+
+        } else if (preference == mAllowDisable) {
+            value = mAllowDisable.isChecked();
+            updateUserConfig(value, GLOBAL_ACTION_KEY_ALLOW_DISABLE);
 
         } else {
             return super.onPreferenceTreeClick(preferenceScreen, preference);
@@ -251,6 +267,24 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
                 mBugReportPref.setSummary(R.string.power_menu_bug_report_disabled);
             }
         }
+
+        boolean allowKeyDisable = false;
+        final CmHardwareManager cmHardwareManager =
+                (CmHardwareManager) mContext.getSystemService(Context.CMHW_SERVICE);
+        try {
+            boolean forceNavbar = android.provider.Settings.Secure.getInt(getContentResolver(),
+                    android.provider.Settings.Secure.DEV_FORCE_SHOW_NAVBAR, 0) == 1;
+            boolean hasNavBar = WindowManagerGlobal.getWindowManagerService().hasNavigationBar()
+                    || forceNavbar;
+
+            if (!cmHardwareManager.isSupported(CmHardwareManager.FEATURE_KEY_DISABLE)
+                   && !hasNavBar) {
+                allowKeyDisable = true;
+            }
+        } catch (RemoteException e) {
+            Log.e(TAG, "Error getting navigation bar status");
+        }
+        mAllowDisable.setEnabled(allowKeyDisable);
     }
 
     private void getUserConfig() {
