@@ -93,6 +93,12 @@
         android:title="@string/update_recovery_title"
         android:summary="@string/update_recovery_summary" />
 
+    <com.android.settings.cyanogenmod.SecureSettingSwitchPreference
+        android:key="app_perf_profiles_enabled"
+        android:title="@string/autoperf_title"
+        android:summary="@string/autoperf_summary"
+        android:defaultValue="true" />
+
     <PreferenceCategory android:key="debug_debugging_category"
             android:title="@string/debug_debugging_category">
 
@@ -259,6 +265,11 @@
             android:persistent="false"
             android:entries="@array/overlay_display_devices_entries"
             android:entryValues="@array/overlay_display_devices_values" />
+
+        <SwitchPreference
+            android:key="pref_force_highend_gfx"
+            android:title="@string/pref_force_highend_gfx_title"
+            android:summary="@string/pref_force_highend_gfx_summary" />
 
     </PreferenceCategory>
 
