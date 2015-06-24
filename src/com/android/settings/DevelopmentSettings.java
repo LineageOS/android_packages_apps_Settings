@@ -44,6 +44,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Parcel;
+import android.os.PowerManager;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.StrictMode;
@@ -153,6 +154,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private static final String SELECT_LOGD_SIZE_PROPERTY = "persist.logd.size";
     private static final String SELECT_LOGD_DEFAULT_SIZE_PROPERTY = "ro.logd.size";
     private static final String UPDATE_RECOVERY_KEY = "update_recovery";
+    private static final String PER_APP_PROFILES_KEY = "app_perf_profiles_enabled";
 
     private static final String OPENGL_TRACES_KEY = "enable_opengl_traces";
 
@@ -195,6 +197,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private UserManager mUm;
     private WifiManager mWifiManager;
     private UsbManager mUsbManager;
+    private PowerManager mPowerManager;
 
     private SwitchBar mSwitchBar;
     private boolean mLastEnabledState;
@@ -267,6 +270,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
 
     private SwitchPreference mUpdateRecovery;
 
+    private SwitchPreference mPerAppProfiles;
+
     private SwitchPreference mDevelopmentShortcut;
 
     private final ArrayList<Preference> mAllPrefs = new ArrayList<Preference>();
@@ -298,6 +303,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         mWifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
 
         mUsbManager = (UsbManager)getActivity().getSystemService(Context.USB_SERVICE);
+
+        mPowerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
 
         if (android.os.Process.myUserHandle().getIdentifier() != UserHandle.USER_OWNER
                 || mUm.hasUserRestriction(UserManager.DISALLOW_DEBUGGING_FEATURES)) {
@@ -346,6 +353,13 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         mUpdateRecovery = findAndInitSwitchPref(UPDATE_RECOVERY_KEY);
         mDevelopmentShortcut = findAndInitSwitchPref(DEVELOPMENT_SHORTCUT_KEY);
 
+        mPerAppProfiles = findAndInitSwitchPref(PER_APP_PROFILES_KEY);
+        final boolean forceHide =
+                            getResources().getBoolean(R.bool.config_hidePerformanceSettings);
+        if (forceHide ||
+                !(mPowerManager.hasPowerProfiles() || !Build.TYPE.equals("user"))) {
+            removePreference(mPerAppProfiles);
+        }
 
         if (!android.os.Process.myUserHandle().equals(UserHandle.OWNER)) {
             disableForUser(mEnableAdb);
