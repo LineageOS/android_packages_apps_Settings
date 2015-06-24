@@ -17,7 +17,9 @@
 package com.android.settings.cyanogenmod;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.pm.PackageInfo;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
@@ -28,6 +30,7 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,8 +40,10 @@ import java.util.List;
  */
 public class PrivacySettings extends SettingsPreferenceFragment implements Indexable {
 
+    private static final String TAG = "PrivacySettings";
     private static final String KEY_BLACKLIST = "blacklist";
     private static final String KEY_WHISPERPUSH = "whisperpush";
+    private static final String WHISPERPUSH_UPDATE = "org.whispersystems.whisperpush2";
 
     private PreferenceScreen mBlacklist;
     private Preference mWhisperPush;
@@ -60,6 +65,8 @@ public class PrivacySettings extends SettingsPreferenceFragment implements Index
             // No telephony, remove dependent options
             PreferenceScreen root = getPreferenceScreen();
             root.removePreference(mWhisperPush);
+        } else {
+            updateWhisperPushIntent(pm);
         }
 
         // Determine options based on device telephony support
@@ -73,7 +80,27 @@ public class PrivacySettings extends SettingsPreferenceFragment implements Index
 
     private static boolean isWhisperPushable(Context context, PackageManager pm) {
         return pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY) &&
-                Utils.isPackageInstalled(context, "org.whispersystems.whisperpush");
+               (Utils.isPackageInstalled(context, "org.whispersystems.whisperpush") ||
+                Utils.isPackageInstalled(context, WHISPERPUSH_UPDATE));
+    }
+
+    // if whisperpush v2 is installed, and has correct permission, use it instead
+    private void updateWhisperPushIntent(PackageManager pm) {
+        if (Utils.isPackageInstalled(getActivity(), WHISPERPUSH_UPDATE)) {
+            int result = pm.checkPermission(
+                "android.permission.INTERCEPT_SMS",
+                WHISPERPUSH_UPDATE);
+            if(result == PackageManager.PERMISSION_GRANTED) {
+                // redirect intent to updated whisperpush2 package
+                Intent intent = mWhisperPush.getIntent();
+                intent.setPackage(WHISPERPUSH_UPDATE);
+                mWhisperPush.setIntent(intent);
+                Log.d(TAG, "Using WhisperPush2");
+            } else {
+                // Stranger Danger!
+                Log.e(TAG, "WhisperPush2 package present, but missing required permission!");
+            }
+        }
     }
 
     @Override
