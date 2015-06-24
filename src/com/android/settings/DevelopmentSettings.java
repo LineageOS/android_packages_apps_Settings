@@ -18,6 +18,7 @@
 package com.android.settings;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.ActivityManagerNative;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -44,6 +45,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Parcel;
+import android.os.PowerManager;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.StrictMode;
@@ -154,6 +156,9 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private static final String SELECT_LOGD_DEFAULT_SIZE_PROPERTY = "ro.logd.size";
     private static final String UPDATE_RECOVERY_KEY = "update_recovery";
 
+    private static final String FORCE_HIGHEND_GFX_KEY = "pref_force_highend_gfx";
+    private static final String FORCE_HIGHEND_GFX_PERSIST_PROP = "persist.sys.force_highendgfx";
+
     private static final String OPENGL_TRACES_KEY = "enable_opengl_traces";
 
     private static final String ROOT_ACCESS_KEY = "root_access";
@@ -195,6 +200,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private UserManager mUm;
     private WifiManager mWifiManager;
     private UsbManager mUsbManager;
+    private PowerManager mPowerManager;
 
     private SwitchBar mSwitchBar;
     private boolean mLastEnabledState;
@@ -267,6 +273,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
 
     private SwitchPreference mUpdateRecovery;
 
+    private SwitchPreference mForceHighEndGfx;
+
     private SwitchPreference mDevelopmentShortcut;
 
     private final ArrayList<Preference> mAllPrefs = new ArrayList<Preference>();
@@ -298,6 +306,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         mWifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
 
         mUsbManager = (UsbManager)getActivity().getSystemService(Context.USB_SERVICE);
+
+        mPowerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
 
         if (android.os.Process.myUserHandle().getIdentifier() != UserHandle.USER_OWNER
                 || mUm.hasUserRestriction(UserManager.DISALLOW_DEBUGGING_FEATURES)) {
@@ -346,6 +356,10 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         mUpdateRecovery = findAndInitSwitchPref(UPDATE_RECOVERY_KEY);
         mDevelopmentShortcut = findAndInitSwitchPref(DEVELOPMENT_SHORTCUT_KEY);
 
+        mForceHighEndGfx = findAndInitSwitchPref(FORCE_HIGHEND_GFX_KEY);
+        if (!ActivityManager.isLowRamDeviceStatic()) {
+            removePreference(mForceHighEndGfx);
+        }
 
         if (!android.os.Process.myUserHandle().equals(UserHandle.OWNER)) {
             disableForUser(mEnableAdb);
@@ -639,6 +653,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         updateAdvancedRebootOptions();
         updateDevelopmentShortcutOptions();
         updateUpdateRecoveryOptions();
+        updateHighEndGfxOptions();
     }
 
     private void writeAdvancedRebootOptions() {
@@ -1531,6 +1546,18 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         }
     }
 
+    private void updateHighEndGfxOptions() {
+        updateSwitchPreference(mForceHighEndGfx,
+                SystemProperties.getBoolean(FORCE_HIGHEND_GFX_PERSIST_PROP,
+                false));;
+    }
+
+    private void writeHighEndGfxOptions() {
+        SystemProperties.set(FORCE_HIGHEND_GFX_PERSIST_PROP,
+                mForceHighEndGfx.isChecked() ? "true" : "false");
+        pokeSystemProperties();
+    }
+
     @Override
     public void onSwitchChanged(Switch switchView, boolean isChecked) {
         if (switchView != mSwitchBar.getSwitch()) {
@@ -1749,6 +1776,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                 }
                 mUpdateRecoveryDialog.setOnDismissListener(this);
             }
+        } else if (preference == mForceHighEndGfx) {
+            writeHighEndGfxOptions();
         } else {
             return super.onPreferenceTreeClick(preferenceScreen, preference);
         }
