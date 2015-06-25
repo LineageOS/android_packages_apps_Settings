@@ -34,6 +34,24 @@
       "revId": "8c87d39732cd888f2e79dcf5d115ca0820b807bc",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bff0334d_233f94d7",
+        "filename": "src/com/android/settings/cyanogenmod/PrivacySettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 9045
+      },
+      "writtenOn": "2015-06-25T03:57:31Z",
+      "side": 1,
+      "message": "That part works out fine -- but the problem would be that we are still showing the old v1 intent, so if a user clicked the preference, it would crash because it couldn\u0027t find the activity.\n\nMaybe do the check on whether v2 is installed AND granted the required permission in one go?",
+      "parentUuid": "bff0334d_63359cf7",
+      "revId": "8c87d39732cd888f2e79dcf5d115ca0820b807bc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
