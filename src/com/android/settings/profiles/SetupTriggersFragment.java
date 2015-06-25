@@ -19,7 +19,7 @@ import android.annotation.Nullable;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Profile;
-import android.app.ProfileManager;
+import cyanogenmod.app.ProfileManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;

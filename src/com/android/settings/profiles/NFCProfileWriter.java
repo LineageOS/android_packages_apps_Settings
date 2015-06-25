@@ -20,8 +20,6 @@ import java.util.UUID;
 
 import android.app.Activity;
 import android.app.PendingIntent;
-import android.app.Profile;
-import android.app.ProfileManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -30,6 +28,9 @@ import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
+
+import cyanogenmod.app.Profile;
+import cyanogenmod.app.ProfileManager;
 
 import com.android.settings.R;
 

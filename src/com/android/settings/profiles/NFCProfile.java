@@ -19,8 +19,6 @@ package com.android.settings.profiles;
 import java.util.UUID;
 
 import android.app.Activity;
-import android.app.Profile;
-import android.app.ProfileManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -31,6 +29,9 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.provider.Settings;
 import android.widget.Toast;
+
+import cyanogenmod.app.Profile;
+import cyanogenmod.app.ProfileManager;
 
 import com.android.settings.R;
 

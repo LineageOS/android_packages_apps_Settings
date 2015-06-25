@@ -1,11 +1,12 @@
 package com.android.settings.profiles;
 
-import android.app.Profile;
-import android.app.ProfileManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.provider.Settings;
+
+import cyanogenmod.app.Profile;
+import cyanogenmod.app.ProfileManager;
 
 import java.util.UUID;
 
