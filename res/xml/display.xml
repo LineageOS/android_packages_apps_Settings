@@ -37,6 +37,11 @@
                 android:summary="@string/auto_brightness_summary"
                 android:persistent="false" />
 
+      <!-- Adaptive brightness with twilight option -->
+        <com.android.settings.notification.DropDownPreference
+                android:key="auto_brightness2"
+                android:title="@string/display_auto_brightness_dd_title" />
+
         <!-- LiveDisplay -->
         <PreferenceScreen
                 android:key="live_display"
