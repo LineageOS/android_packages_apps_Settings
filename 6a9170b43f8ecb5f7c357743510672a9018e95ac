@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bff0334d_c9d92923",
+        "filename": "res/xml/security_settings_fingerprint.xml",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 9199
+      },
+      "writtenOn": "2015-06-26T00:55:08Z",
+      "side": 1,
+      "message": "I don\u0027t think this preference makes sense for the fingerprint security.",
+      "revId": "6a9170b43f8ecb5f7c357743510672a9018e95ac",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bff0334d_690a1d8b",
+        "filename": "src/com/android/settings/ChooseLockGeneric.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 9199
+      },
+      "writtenOn": "2015-06-26T00:55:08Z",
+      "side": 1,
+      "message": "Does zero indicate LockPatternUtils.BIOMETRIC_WEAK_FACE?  If so that constant should be used here for clarity.  If not then either a comment or a constant with meaningful name would be good.",
+      "revId": "6a9170b43f8ecb5f7c357743510672a9018e95ac",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bff0334d_2904157b",
+        "filename": "src/com/android/settings/ChooseLockPattern.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 9199
+      },
+      "writtenOn": "2015-06-26T00:55:08Z",
+      "side": 1,
+      "message": "indentation here does not match the line below",
+      "revId": "6a9170b43f8ecb5f7c357743510672a9018e95ac",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bff0334d_09f9517f",
+        "filename": "src/com/android/settings/ManageFingerprints.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 9199
+      },
+      "writtenOn": "2015-06-26T00:55:08Z",
+      "side": 1,
+      "message": "could be simplified to if (!mPasswordConfirmed \u0026\u0026 !mWaitingForConfirmation) since nothing is being executed in the if block above.",
+      "revId": "6a9170b43f8ecb5f7c357743510672a9018e95ac",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bff0334d_892a01e5",
+        "filename": "src/com/android/settings/SetupChooseLockGeneric.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 9199
+      },
+      "writtenOn": "2015-06-26T00:55:08Z",
+      "side": 1,
+      "message": "LW",
+      "revId": "6a9170b43f8ecb5f7c357743510672a9018e95ac",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bff0334d_4934f94a",
+        "filename": "src/com/android/settings/lockscreen/LockScreenSettings.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 9199
+      },
+      "writtenOn": "2015-06-26T00:55:08Z",
+      "side": 1,
+      "message": "not necessary since you check for fingerprint up above.",
+      "revId": "6a9170b43f8ecb5f7c357743510672a9018e95ac",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
