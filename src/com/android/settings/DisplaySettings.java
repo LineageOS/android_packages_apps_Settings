@@ -26,6 +26,8 @@ import android.view.WindowManagerGlobal;
 import android.view.WindowManagerImpl;
 import android.widget.Toast;
 import com.android.internal.view.RotationPolicy;
+import com.android.settings.notification.DropDownPreference;
+import com.android.settings.notification.DropDownPreference.Callback;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
@@ -35,6 +37,7 @@ import static android.provider.Settings.Secure.WAKE_GESTURE_ENABLED;
 import static android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE;
 import static android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC;
 import static android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL;
+import static android.provider.Settings.System.SCREEN_AUTO_BRIGHTNESS_TWILIGHT;
 import static android.provider.Settings.System.SCREEN_OFF_TIMEOUT;
 
 import android.app.Activity;
@@ -59,6 +62,7 @@ import android.os.Handler;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.SystemProperties;
+import android.os.PowerManager;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
@@ -97,6 +101,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_LIFT_TO_WAKE = "lift_to_wake";
     private static final String KEY_DOZE = "doze";
     private static final String KEY_AUTO_BRIGHTNESS = "auto_brightness";
+    private static final String KEY_AUTO_BRIGHTNESS_DROP_DOWN = "auto_brightness2";
     private static final String KEY_TAP_TO_WAKE = "double_tap_wake_gesture";
     private static final String KEY_PROXIMITY_WAKE = "proximity_on_wake";
     private static final String KEY_DISPLAY_ROTATION = "display_rotation";
@@ -115,6 +120,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private ListPreference mScreenTimeoutPreference;
     private Preference mScreenSaverPreference;
     private SwitchPreference mAccelerometer;
+    private DropDownPreference mAutoBrightnessDropdown;
     private SwitchPreference mLiftToWakePreference;
     private SwitchPreference mDozePreference;
     private SwitchPreference mAutoBrightnessPreference;
@@ -216,12 +222,74 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         mFontSizePref.setOnPreferenceClickListener(this);
 
         mAutoBrightnessPreference = (SwitchPreference) findPreference(KEY_AUTO_BRIGHTNESS);
-        if (mAutoBrightnessPreference != null && isAutomaticBrightnessAvailable(getResources())) {
-            mAutoBrightnessPreference.setOnPreferenceChangeListener(this);
+        mAutoBrightnessDropdown =
+                (DropDownPreference) findPreference(KEY_AUTO_BRIGHTNESS_DROP_DOWN);
+        if (isAutomaticBrightnessAvailable(getResources())) {
+            if(mAutoBrightnessDropdown != null && isAutoBrightnessTwilightAdjAvailable()) {
+                if(displayPrefs != null &&
+                       mAutoBrightnessPreference != null) {
+                    displayPrefs.removePreference(mAutoBrightnessPreference);
+                    mAutoBrightnessPreference = null;
+                }
+                mAutoBrightnessDropdown.addItem(
+                        getString(R.string.display_auto_brightness_off),
+                        0);
+                mAutoBrightnessDropdown.addItem(
+                        getString(R.string.display_auto_brightness_on),
+                        1);
+                mAutoBrightnessDropdown.addItem(
+                        getString(R.string.display_auto_brightness_twilight),
+                        2);
+                mAutoBrightnessDropdown.setSelectedItem(
+                        Settings.System.getInt(getContentResolver(),
+                        SCREEN_BRIGHTNESS_MODE,
+                        SCREEN_BRIGHTNESS_MODE_MANUAL) ==
+                        SCREEN_BRIGHTNESS_MODE_MANUAL ? 0 :
+                        (Settings.System.getInt(getContentResolver(),
+                        SCREEN_AUTO_BRIGHTNESS_TWILIGHT,
+                        0) + 1),false);
+                mAutoBrightnessDropdown.setCallback(new Callback() {
+                    @Override
+                    public boolean onItemSelected(int pos, Object value) {
+                        switch((int) value) {
+                            case 0:
+                                Settings.System.putInt(getContentResolver(), SCREEN_BRIGHTNESS_MODE,
+                                    SCREEN_BRIGHTNESS_MODE_MANUAL);
+                                break;
+                            case 1:
+                                Settings.System.putInt(getContentResolver(), SCREEN_AUTO_BRIGHTNESS_TWILIGHT,
+                                    0);
+                                Settings.System.putInt(getContentResolver(), SCREEN_BRIGHTNESS_MODE,
+                                    SCREEN_BRIGHTNESS_MODE_AUTOMATIC);
+                                break;
+                            case 2:
+                                Settings.System.putInt(getContentResolver(), SCREEN_AUTO_BRIGHTNESS_TWILIGHT,
+                                    1);
+                                Settings.System.putInt(getContentResolver(), SCREEN_BRIGHTNESS_MODE,
+                                    SCREEN_BRIGHTNESS_MODE_AUTOMATIC);
+                                break;
+                        }
+                        return true;
+                    }
+                });
+            } else if(mAutoBrightnessPreference != null) {
+                if(displayPrefs != null &&
+                       mAutoBrightnessDropdown != null) {
+                    displayPrefs.removePreference(mAutoBrightnessDropdown);
+                    mAutoBrightnessDropdown = null;
+                }
+                mAutoBrightnessPreference.setOnPreferenceChangeListener(this);
+            }
         } else {
-            if (displayPrefs != null && mAutoBrightnessPreference != null) {
-                displayPrefs.removePreference(mAutoBrightnessPreference);
-                mAutoBrightnessPreference = null;
+            if (displayPrefs != null) {
+                if(mAutoBrightnessPreference != null) {
+                    displayPrefs.removePreference(mAutoBrightnessPreference);
+                    mAutoBrightnessPreference = null;
+                }
+                if(mAutoBrightnessDropdown != null) {
+                    displayPrefs.removePreference(mAutoBrightnessDropdown);
+                    mAutoBrightnessDropdown = null;
+                }
             }
         }
 
@@ -263,6 +331,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 (SwitchPreference) findPreference(KEY_WAKE_WHEN_PLUGGED_OR_UNPLUGGED);
 
         initPulse((PreferenceCategory) findPreference(KEY_CATEGORY_LIGHTS));
+    }
+
+    private static boolean isAutoBrightnessTwilightAdjAvailable() {
+        return PowerManager.useTwilightAdjustmentFeature();
     }
 
     private int getDefaultDensity() {
@@ -733,6 +805,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                         result.add(KEY_TAP_TO_WAKE);
                     }
                     if (!isAutomaticBrightnessAvailable(context.getResources())) {
+                        result.add(KEY_AUTO_BRIGHTNESS);
+                        result.add(KEY_AUTO_BRIGHTNESS_DROP_DOWN);
+                    }
+                    else if(!isAutoBrightnessTwilightAdjAvailable()) {
+                        result.add(KEY_AUTO_BRIGHTNESS_DROP_DOWN);
+                    }
+                    else
+                    {
                         result.add(KEY_AUTO_BRIGHTNESS);
                     }
                     if (!isLiftToWakeAvailable(context)) {
