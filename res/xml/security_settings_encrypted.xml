@@ -37,6 +37,16 @@
                     android:targetClass="com.android.settings.ChooseEncryptionPassword" />
         </Preference>
 
+        <Preference
+            android:key="crypt_keeper_replace_password"
+            android:title="@string/crypt_keeper_replace_password_title"
+            android:summary="@string/crypt_keeper_replace_password_summary">
+
+                <intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="com.android.settings"
+                    android:targetClass="com.android.settings.ReplaceEncryptionPassword" />
+        </Preference>
+
     </PreferenceCategory>
 
 

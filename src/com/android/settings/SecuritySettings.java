@@ -83,6 +83,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
             new Intent(TrustAgentService.SERVICE_INTERFACE);
 
     private static final String KEY_DEVICE_ADMIN_CATEGORY = "device_admin_category";
+    private static final String KEY_ENCRYPTION_CATEGORY = "security_category";
 
     // Misc Settings
     private static final String KEY_SIM_LOCK = "sim_lock";
@@ -96,6 +97,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private static final String KEY_CREDENTIALS_MANAGER = "credentials_management";
     private static final String PACKAGE_MIME_TYPE = "application/vnd.android.package-archive";
     private static final String KEY_SCREEN_PINNING = "screen_pinning_settings";
+    private static final String KEY_REPLACE_ENCRYPTION_PASSWORD = "crypt_keeper_replace_password";
 
     // Cyanogen device lock
     public static final String ACCOUNT_TYPE_CYANOGEN = "com.cyanogen";
@@ -168,6 +170,14 @@ public class SecuritySettings extends SettingsPreferenceFragment
             if (LockPatternUtils.isDeviceEncryptionEnabled()) {
                 // The device is currently encrypted.
                 addPreferencesFromResource(R.xml.security_settings_encrypted);
+                if (!mLockPatternUtils.isSeparateEncryptionPasswordEnabled()) {
+                    root = getPreferenceScreen();
+                    PreferenceGroup encryptionCategory =
+                            (PreferenceGroup)root.findPreference(KEY_ENCRYPTION_CATEGORY);
+                    Preference replaceEncryptionPassword =
+                            encryptionCategory.findPreference(KEY_REPLACE_ENCRYPTION_PASSWORD);
+                    encryptionCategory.removePreference(replaceEncryptionPassword);
+                }
             } else {
                 // This device supports encryption but isn't encrypted.
                 addPreferencesFromResource(R.xml.security_settings_unencrypted);
