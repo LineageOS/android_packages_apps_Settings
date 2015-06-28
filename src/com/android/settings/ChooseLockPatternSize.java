@@ -49,7 +49,7 @@ public class ChooseLockPatternSize extends SettingsActivity {
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            mChooseLockSettingsHelper = new ChooseLockSettingsHelper(this.getActivity());
+            mChooseLockSettingsHelper = new ChooseLockSettingsHelper(this.getActivity(), this);
             if (!(getActivity() instanceof ChooseLockPatternSize)) {
                 throw new SecurityException("Fragment contained in wrong activity");
             }
