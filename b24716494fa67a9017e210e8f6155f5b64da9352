@@ -68,6 +68,74 @@
       "revId": "b24716494fa67a9017e210e8f6155f5b64da9352",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ff52f3f_0527f614",
+        "filename": "res/xml/display.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-06-29T12:38:58Z",
+      "side": 1,
+      "message": "auto_brightness_extended\n\n(or something, but just appending \u00272\u0027 isn\u0027t ok)",
+      "revId": "b24716494fa67a9017e210e8f6155f5b64da9352",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ff52f3f_c520eefa",
+        "filename": "src/com/android/settings/DisplaySettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-06-29T12:38:58Z",
+      "side": 1,
+      "message": "Can omit the second line wrap here:\n\nmAutoBrightnessDropdown.addItem(\n        getString(R.string.display_auto_brightness_twilight), 2);\n\nAlso the passed in value could be done as a bitmask for the automatic and twilight adjustment flags, this would simplify the logic below.",
+      "revId": "b24716494fa67a9017e210e8f6155f5b64da9352",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ff52f3f_a51deabe",
+        "filename": "src/com/android/settings/DisplaySettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-06-29T12:38:58Z",
+      "side": 1,
+      "message": "The initialization should be done in onResume or onStart.\n\nPlease also break this into multiple lines with intermediate variables, it\u0027s unreadable as-is.",
+      "revId": "b24716494fa67a9017e210e8f6155f5b64da9352",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ff52f3f_657da2e6",
+        "filename": "src/com/android/settings/DisplaySettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2015-06-29T12:38:58Z",
+      "side": 1,
+      "message": "With the bitmask suggestion below this would become:\n\nint flags \u003d (int) value;\nContentResolver cr \u003d getContentResolver();\nSettings.System.putInt(cr, SCREEN_BRIGHTNESS_MODE, (flags \u0026 FLAG_AUTO_BRIGHTNESS) !\u003d 0\n        ? SCREEN_BRIGHTNESS_MODE_AUTOMATIC : SCREEN_BRIGHTNESS_MODE_MANUAL);\nSettings.System.putInt(cr, SCREEN_AUTO_BRIGHTNESS_TWILIGHT,\n        (flags \u0026 FLAG_TWILIGHT_ADJUST) ? 1 : 0);",
+      "revId": "b24716494fa67a9017e210e8f6155f5b64da9352",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
