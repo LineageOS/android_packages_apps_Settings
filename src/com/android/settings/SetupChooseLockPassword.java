@@ -112,7 +112,7 @@ public class SetupChooseLockPassword extends ChooseLockPassword
         public void onViewCreated(View view, Bundle savedInstanceState) {
             super.onViewCreated(view, savedInstanceState);
             SetupWizardUtils.setIllustration(getActivity(),
-                    R.drawable.setup_illustration_lock_screen);
+                    R.drawable.setup_illustration_lock_screen_generic);
             SetupWizardUtils.setHeaderText(getActivity(), getActivity().getTitle());
         }
 

@@ -111,7 +111,7 @@ public class SetupChooseLockPattern extends ChooseLockPattern
             mRetryButton.setOnClickListener(this);
             super.onViewCreated(view, savedInstanceState);
             SetupWizardUtils.setIllustration(getActivity(),
-                    R.drawable.setup_illustration_lock_screen);
+                    R.drawable.setup_illustration_lock_screen_generic);
             SetupWizardUtils.setHeaderText(getActivity(), getActivity().getTitle());
         }
 

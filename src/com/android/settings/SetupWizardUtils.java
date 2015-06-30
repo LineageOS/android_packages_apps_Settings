@@ -47,6 +47,8 @@ public class SetupWizardUtils {
     public static final String EXTRA_SCRIPT_URI = "scriptUri";
     public static final String EXTRA_ACTION_ID = "actionId";
     public static final String EXTRA_RESULT_CODE = "com.android.setupwizard.ResultCode";
+    public static final String EXTRA_TITLE = "title";
+    public static final String EXTRA_DETAILS = "details";
     public static final int NEXT_REQUEST = 10000;
 
     public static boolean isUsingWizardManager(Activity activity) {
