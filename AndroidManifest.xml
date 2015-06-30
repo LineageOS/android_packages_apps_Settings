@@ -1199,6 +1199,7 @@
             android:windowSoftInputMode="stateVisible|adjustResize"/>
 
         <activity android:name="SetupChooseLockGeneric"
+            android:screenOrientation="portrait"
             android:taskAffinity="com.android.wizard"
             android:theme="@style/SetupWizardDisableAppStartingTheme"
             android:label="@string/lock_settings_picker_title">
@@ -1226,6 +1227,13 @@
 
         <activity android:name="SetupChooseLockPattern"
             android:exported="false"
+            android:screenOrientation="portrait"
+            android:taskAffinity="com.android.wizard"
+            android:theme="@style/SetupWizardDisableAppStartingTheme" />
+
+        <activity android:name="SetupChooseLockPatternSize"
+            android:exported="false"
+            android:screenOrientation="portrait"
             android:taskAffinity="com.android.wizard"
             android:theme="@style/SetupWizardDisableAppStartingTheme" />
 
@@ -1237,8 +1245,21 @@
             android:theme="@style/FingerprintEnrollment"
             android:screenOrientation="portrait"/>
 
+        <activity android:name="SetupEnrollFingerprint"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:taskAffinity="com.android.wizard"
+            android:theme="@style/SetupWizardDisableAppStartingTheme"
+            android:label="@string/lock_settings_picker_title">
+            <intent-filter>
+                <action android:name="com.android.settings.SETUP_FINGERPRINT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <activity android:name="SetupChooseLockPassword"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:taskAffinity="com.android.wizard"
             android:theme="@style/SetupWizardDisableAppStartingTheme"
             android:windowSoftInputMode="stateVisible|adjustResize" />
