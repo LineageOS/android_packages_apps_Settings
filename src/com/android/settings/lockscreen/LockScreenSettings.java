@@ -297,8 +297,6 @@ public class LockScreenSettings extends SettingsPreferenceFragment
         } else if (lockPatternUtils.usingBiometricWeak() &&
                 lockPatternUtils.isBiometricWeakInstalled()) {
                 resid = R.xml.security_settings_biometric_weak;
-        } else if (lockPatternUtils.usingFingerprint()) {
-            resid = R.xml.security_settings_fingerprint;
         } else {
             switch (lockPatternUtils.getKeyguardStoredPasswordQuality()) {
                 case DevicePolicyManager.PASSWORD_QUALITY_SOMETHING:
