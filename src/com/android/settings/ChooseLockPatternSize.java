@@ -24,13 +24,12 @@ import android.preference.PreferenceScreen;
 
 import com.android.internal.widget.LockPatternUtils;
 
-public class ChooseLockPatternSize extends PreferenceActivity {
+public class ChooseLockPatternSize extends SettingsActivity {
 
     @Override
     public Intent getIntent() {
         Intent modIntent = new Intent(super.getIntent());
         modIntent.putExtra(EXTRA_SHOW_FRAGMENT, ChooseLockPatternSizeFragment.class.getName());
-        modIntent.putExtra(EXTRA_NO_HEADERS, true);
         return modIntent;
     }
 
