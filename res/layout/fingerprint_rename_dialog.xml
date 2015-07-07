@@ -27,9 +27,10 @@
         android:layout_height="wrap_content"
         android:text="@string/fingerprint_dialog_name_label" />
     <EditText
-          android:id="@+id/name"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:singleLine="true"
-          android:maxLength="20"/>
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:maxLength="20"
+        android:selectAllOnFocus="true"/>
 </LinearLayout>
