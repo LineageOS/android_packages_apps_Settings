@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "5ff73747_4334da4a",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 1276,
+      "author": {
+        "id": 9199
+      },
+      "writtenOn": "2015-07-08T09:37:02Z",
+      "side": 1,
+      "message": "going to double check with the designer since I blindly copy pasted these strings.  Vibration makes sense to me as well.",
+      "parentUuid": "5ff73747_83dc2219",
+      "revId": "48d068c80145e23d5a1569ceda6a5f8e3dbe77d0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ff73747_63e116d1",
         "filename": "res/values/cm_strings.xml",
         "patchSetId": 3
@@ -121,6 +139,24 @@
     },
     {
       "key": {
+        "uuid": "5ff73747_2339ce40",
+        "filename": "src/com/android/settings/EnrollFingerprint.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 9199
+      },
+      "writtenOn": "2015-07-08T09:37:02Z",
+      "side": 1,
+      "message": "Will either change my dependency or rebase depending on which comes first ;)",
+      "parentUuid": "5ff73747_03d012f7",
+      "revId": "48d068c80145e23d5a1569ceda6a5f8e3dbe77d0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ff73747_a3d6fef0",
         "filename": "src/com/android/settings/EnrollFingerprint.java",
         "patchSetId": 3
@@ -132,6 +168,24 @@
       "writtenOn": "2015-07-08T08:46:24Z",
       "side": 1,
       "message": "\"choosing a pattern\" -\u003e \"enrolling a fingerprint\" ?",
+      "revId": "48d068c80145e23d5a1569ceda6a5f8e3dbe77d0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ff73747_033ed228",
+        "filename": "src/com/android/settings/EnrollFingerprint.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 9199
+      },
+      "writtenOn": "2015-07-08T09:37:02Z",
+      "side": 1,
+      "message": "Good catch.",
+      "parentUuid": "5ff73747_a3d6fef0",
       "revId": "48d068c80145e23d5a1569ceda6a5f8e3dbe77d0",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
@@ -189,6 +243,24 @@
     },
     {
       "key": {
+        "uuid": "5ff73747_e33ac632",
+        "filename": "src/com/android/settings/EnrollFingerprint.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 9199
+      },
+      "writtenOn": "2015-07-08T09:37:02Z",
+      "side": 1,
+      "message": "Yup, will update by changing dependency or rabasing, whichever comes first.",
+      "parentUuid": "5ff73747_03f9327f",
+      "revId": "48d068c80145e23d5a1569ceda6a5f8e3dbe77d0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ff73747_c3f22a9b",
         "filename": "src/com/android/settings/ManageFingerprints.java",
         "patchSetId": 3
@@ -200,6 +272,24 @@
       "writtenOn": "2015-07-08T08:46:24Z",
       "side": 1,
       "message": "Could need mFpManager.cancel() as well?",
+      "revId": "48d068c80145e23d5a1569ceda6a5f8e3dbe77d0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ff73747_c347cabc",
+        "filename": "src/com/android/settings/ManageFingerprints.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 9199
+      },
+      "writtenOn": "2015-07-08T09:37:02Z",
+      "side": 1,
+      "message": "I\u0027ll have to double check but I believe cancel isn\u0027t needed since enrollment is started within the EnrollFingerprint activity. \n\nWe\u0027re only listening for changes to enrolled fingerprints.",
+      "parentUuid": "5ff73747_c3f22a9b",
       "revId": "48d068c80145e23d5a1569ceda6a5f8e3dbe77d0",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
