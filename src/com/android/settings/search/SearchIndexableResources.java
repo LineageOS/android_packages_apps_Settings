@@ -18,6 +18,7 @@ package com.android.settings.search;
 
 import android.provider.SearchIndexableResource;
 
+import com.android.settings.ButtonSettings;
 import com.android.settings.DataUsageSummary;
 import com.android.settings.DateTimeSettings;
 import com.android.settings.DevelopmentSettings;
@@ -28,6 +29,7 @@ import com.android.settings.ScreenPinningSettings;
 import com.android.settings.PrivacySettings;
 import com.android.settings.R;
 import com.android.settings.SecuritySettings;
+import com.android.settings.StatusBarSettings;
 import com.android.settings.WallpaperTypeSettings;
 import com.android.settings.WirelessSettings;
 import com.android.settings.accessibility.AccessibilitySettings;
@@ -262,6 +264,21 @@ public final class SearchIndexableResources {
                         NO_DATA_RES_ID,
                         DeviceInfoSettings.class.getName(),
                         R.drawable.ic_settings_about));
+
+
+        sResMap.put(ButtonSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(ButtonSettings.class.getName()),
+                        R.xml.button_settings,
+                        ButtonSettings.class.getName(),
+                        R.drawable.ic_settings_buttons));
+
+        sResMap.put(StatusBarSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(StatusBarSettings.class.getName()),
+                        R.xml.status_bar_prefs,
+                        StatusBarSettings.class.getName(),
+                        R.drawable.ic_settings_statusbar));
     }
 
     private SearchIndexableResources() {
