@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5ff73747_66cb641e",
+        "filename": "res/layout/fingerprint_list.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 9444
+      },
+      "writtenOn": "2015-07-08T23:30:22Z",
+      "side": 1,
+      "message": "The divider here is too thick and looks wrong. Changing to 1dp didn\u0027t help. Furthermore, the @color/divider has to then be themed with the standard divider color.\n\nNot a fan of having code for UI, but creating an empty footer in onCreateView solves the issue.\n\nmFingerList.addFooterView(new Space(inflater.getContext()), null, false);",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 45
+      },
+      "revId": "284f3457d5a8a0e0f44e6f5cac767f5b054bc839",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ff73747_e6689422",
         "filename": "src/com/android/settings/EnrollFingerprint.java",
         "patchSetId": 4
