@@ -21,9 +21,16 @@
   <PreferenceCategory
  	android:title="@string/custom_buttons_category" >
  
-    <PreferenceScreen
+  <PreferenceScreen
+            android:key="vol_steps"
+            android:fragment="com.android.settings.aim.fragments.VolumeStepsFragment"
+            android:title="@string/volume_steps_fragment_title"
+            android:icon="@drawable/ic_freedomhub_ico"
+            android:summary="@string/volume_steps_summary" /> 
+
+   <PreferenceScreen
             android:key="hardware_keys"
-            android:summary="hardwarekey_summary"
+            android:summary="@string/hardwarekey_summary"
             android:icon="@drawable/ic_freedomhub_ico"
             android:fragment="com.android.settings.aim.fragments.HardwareKeys"
             android:title="@string/aim_hardware_keys_title" />
@@ -32,7 +39,7 @@
             android:key="powermenu_category"
             android:fragment="com.android.settings.aim.fragments.PowerMenuSettings"
             android:icon="@drawable/ic_freedomhub_ico"     
-            android:summary="powermenu_summary"
+            android:summary="@string/powermenu_summary"
             android:title="@string/aim_power_menu_title" />
 
     <cyanogenmod.preference.CMSecureSettingSwitchPreference
