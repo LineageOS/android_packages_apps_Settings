@@ -37,6 +37,8 @@ public class ProtectedAppsActivity extends Activity {
     private static final int REQ_ENTER_PATTERN = 1;
     private static final int REQ_RESET_PATTERN = 2;
 
+    private static final String NEEDS_UNLOCK = "needs_unlock";
+
     private ListView mListView;
 
     private static final int MENU_RESET = 0;
@@ -49,6 +51,7 @@ public class ProtectedAppsActivity extends Activity {
     private ArrayList<ComponentName> mProtect;
 
     private boolean mWaitUserAuth = false;
+    private boolean mUserIsAuth = false;
 
     private HashSet<ComponentName> mProtectedApps = new HashSet<ComponentName>();
 
@@ -68,9 +71,21 @@ public class ProtectedAppsActivity extends Activity {
 
         mProtect = new ArrayList<ComponentName>();
 
-        // Require unlock
-        Intent lockPattern = new Intent(this, LockPatternActivity.class);
-        startActivityForResult(lockPattern, REQ_ENTER_PATTERN);
+        if (savedInstanceState != null) {
+            mUserIsAuth = savedInstanceState.getBoolean(NEEDS_UNLOCK);
+        }
+
+        if (!mUserIsAuth) {
+            // Require unlock
+            Intent lockPattern = new Intent(this, LockPatternActivity.class);
+            startActivityForResult(lockPattern, REQ_ENTER_PATTERN);
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(NEEDS_UNLOCK, mUserIsAuth);
     }
 
     @Override
@@ -118,7 +133,7 @@ public class ProtectedAppsActivity extends Activity {
         super.onPause();
 
         // Don't stick around
-        if (mWaitUserAuth) {
+        if (mWaitUserAuth && !mUserIsAuth) {
             finish();
         }
     }
@@ -135,6 +150,7 @@ public class ProtectedAppsActivity extends Activity {
                 switch (resultCode) {
                     case RESULT_OK:
                         //Nothing to do, proceed!
+                        mUserIsAuth = true;
                         break;
                     case RESULT_CANCELED:
                         // user failed to define a pattern, do not lock the folder
@@ -144,6 +160,7 @@ public class ProtectedAppsActivity extends Activity {
                 break;
             case REQ_RESET_PATTERN:
                 mWaitUserAuth = true;
+                mUserIsAuth = false;
         }
     }
 
