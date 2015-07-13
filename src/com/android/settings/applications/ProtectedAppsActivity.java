@@ -49,6 +49,7 @@ public class ProtectedAppsActivity extends Activity {
     private ArrayList<ComponentName> mProtect;
 
     private boolean mWaitUserAuth = false;
+    private boolean mUserIsAuth = false;
 
     private HashSet<ComponentName> mProtectedApps = new HashSet<ComponentName>();
 
@@ -68,15 +69,28 @@ public class ProtectedAppsActivity extends Activity {
 
         mProtect = new ArrayList<ComponentName>();
 
-        // Require unlock
-        Intent lockPattern = new Intent(this, LockPatternActivity.class);
-        startActivityForResult(lockPattern, REQ_ENTER_PATTERN);
+        if (savedInstanceState != null) {
+            mUserIsAuth = savedInstanceState.getBoolean("needsUnlock");
+        }
+
+        if (!mUserIsAuth) {
+            // Require unlock
+            Intent lockPattern = new Intent(this, LockPatternActivity.class);
+            startActivityForResult(lockPattern, REQ_ENTER_PATTERN);
+        } else {
+            // Unlock was done
+            // just refresh the list
+            updateAppsList();
+        }
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean("needsUnlock", mUserIsAuth);
+    }
 
+    private void updateAppsList() {
         AsyncTask<Void, Void, List<AppEntry>> refreshAppsTask =
                 new AsyncTask<Void, Void, List<AppEntry>>() {
 
@@ -99,6 +113,12 @@ public class ProtectedAppsActivity extends Activity {
         updateProtectedComponentsList();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateAppsList();
+    }
+
     private void updateProtectedComponentsList() {
         String protectedComponents = Settings.Secure.getString(getContentResolver(),
                 Settings.Secure.PROTECTED_COMPONENTS);
@@ -118,7 +138,7 @@ public class ProtectedAppsActivity extends Activity {
         super.onPause();
 
         // Don't stick around
-        if (mWaitUserAuth) {
+        if (mWaitUserAuth && !mUserIsAuth) {
             finish();
         }
     }
@@ -135,6 +155,7 @@ public class ProtectedAppsActivity extends Activity {
                 switch (resultCode) {
                     case RESULT_OK:
                         //Nothing to do, proceed!
+                        mUserIsAuth = true;
                         break;
                     case RESULT_CANCELED:
                         // user failed to define a pattern, do not lock the folder
@@ -144,6 +165,7 @@ public class ProtectedAppsActivity extends Activity {
                 break;
             case REQ_RESET_PATTERN:
                 mWaitUserAuth = true;
+                mUserIsAuth = false;
         }
     }
 
