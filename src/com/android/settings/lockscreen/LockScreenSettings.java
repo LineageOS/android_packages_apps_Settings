@@ -38,6 +38,7 @@ import android.security.KeyStore;
 import android.service.trust.TrustAgentService;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+
 import com.android.internal.widget.LockPatternUtils;
 import com.android.settings.ChooseLockSettingsHelper;
 import com.android.settings.ManageFingerprints;
@@ -172,6 +173,15 @@ public class LockScreenSettings extends SettingsPreferenceFragment
                 } else {
                     ownerInfoPref.setTitle(R.string.user_info_settings_title);
                 }
+            }
+        }
+
+        // Change title to include fingerprint if there is a sensor and primary owner
+        if (mIsPrimary && mLockPatternUtils.isFingerprintInstalled(getActivity())) {
+            Preference unlockSetOrChange = findPreference(KEY_UNLOCK_SET_OR_CHANGE);
+            if (unlockSetOrChange != null) {
+                unlockSetOrChange
+                        .setTitle(R.string.unlock_set_unlock_launch_picker_title_with_fingerprint);
             }
         }
 
@@ -583,6 +593,16 @@ public class LockScreenSettings extends SettingsPreferenceFragment
                     result.add(data);
                 }
             }
+
+            if (lockPatternUtils.isFingerprintInstalled(context)) {
+                data = new SearchIndexableRaw(context);
+                data.title =
+                        context.getString(
+                                R.string.unlock_set_unlock_launch_picker_title_with_fingerprint);
+                data.screenTitle = data.title;
+                result.add(data);
+            }
+
             return result;
         }
 
