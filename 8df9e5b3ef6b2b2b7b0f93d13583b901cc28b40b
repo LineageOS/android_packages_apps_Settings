@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff0f0b1f_8330a409",
+        "filename": "src/com/android/settings/applications/ProtectedAppsActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 9528
+      },
+      "writtenOn": "2015-07-14T03:42:05Z",
+      "side": 1,
+      "message": "Since this gets called in the onCreate as well, wouldn\u0027t this run twice if the user rotates?\n\nMaybe handle mUserAuth state in onResume?",
+      "range": {
+        "startLine": 119,
+        "startChar": 8,
+        "endLine": 119,
+        "endChar": 22
+      },
+      "revId": "8df9e5b3ef6b2b2b7b0f93d13583b901cc28b40b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
