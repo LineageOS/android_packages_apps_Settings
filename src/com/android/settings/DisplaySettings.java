@@ -256,7 +256,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 com.android.internal.R.bool.config_proximityCheckOnWake);
         if (displayPrefs != null && proximityWake != null && !proximityCheckOnWake) {
             displayPrefs.removePreference(proximityWake);
-            Settings.System.putInt(getContentResolver(), Settings.System.PROXIMITY_ON_WAKE, 1);
+            Settings.System.putInt(getContentResolver(), Settings.System.PROXIMITY_ON_WAKE, 0);
         }
 
         mWakeWhenPluggedOrUnplugged =
