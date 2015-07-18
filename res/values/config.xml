@@ -102,4 +102,8 @@
     <string name="stats_cyanogen_url">https://shopvac.cyngn.com/community/heartbeat</string>
     <string name="stats_cyanogen_token_url">https://account.cyngn.com/api/v1/community/heartbeat_token</string>
 
+    <!-- Using this on MSIM devices leads to weird states that break telephony's
+    internal state machine. All MSIM devices should probably set this to "true"-->
+    <bool name="config_disablePreferredNetworkSwitch" translatable="false">false</bool>
+
 </resources>
