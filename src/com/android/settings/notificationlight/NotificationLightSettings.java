@@ -84,6 +84,7 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
     private SystemSettingSwitchPreference mEnabledPref;
     private SystemSettingSwitchPreference mCustomEnabledPref;
     private SystemSettingSwitchPreference mMultipleLedsEnabledPref;
+    private SystemSettingSwitchPreference mScreenOnLightsPref;
     private ApplicationLightPreference mDefaultPref;
     private ApplicationLightPreference mCallPref;
     private ApplicationLightPreference mVoicemailPref;
@@ -138,6 +139,9 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
                     findPreference(Settings.System.NOTIFICATION_LIGHT_MULTIPLE_LEDS_ENABLE);
             mMultipleLedsEnabledPref.setOnPreferenceChangeListener(this);
         }
+        mScreenOnLightsPref = (SystemSettingSwitchPreference)
+                findPreference(Settings.System.NOTIFICATION_LIGHT_SCREEN_ON);
+        mScreenOnLightsPref.setOnPreferenceChangeListener(this);
         mCustomEnabledPref = (SystemSettingSwitchPreference)
                 findPreference(Settings.System.NOTIFICATION_LIGHT_PULSE_CUSTOM_ENABLE);
         mCustomEnabledPref.setOnPreferenceChangeListener(this);
@@ -432,7 +436,8 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         if (preference == mEnabledPref || preference == mCustomEnabledPref ||
-            preference == mMultipleLedsEnabledPref || preference == mBrightnessLedLevelPref) {
+            preference == mMultipleLedsEnabledPref || preference == mBrightnessLedLevelPref ||
+            preference == mScreenOnLightsPref) {
             getActivity().invalidateOptionsMenu();
         } else {
             ApplicationLightPreference lightPref = (ApplicationLightPreference) preference;
