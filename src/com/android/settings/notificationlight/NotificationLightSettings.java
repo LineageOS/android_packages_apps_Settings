@@ -81,6 +81,7 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
     private PackageManager mPackageManager;
     private PreferenceGroup mApplicationPrefList;
     private PreferenceScreen mBrightnessLedLevelPref;
+    private SystemSettingSwitchPreference mAlwaysAllowedPref;
     private SystemSettingSwitchPreference mEnabledPref;
     private SystemSettingSwitchPreference mCustomEnabledPref;
     private SystemSettingSwitchPreference mMultipleLedsEnabledPref;
@@ -127,6 +128,9 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
         mDefaultPref.setOnPreferenceChangeListener(this);
 
         // Advanced light settings
+        mAlwaysAllowedPref = (SystemSettingSwitchPreference)
+                findPreference(Settings.System.NOTIFICATION_LIGHT_ALWAYS_ALLOWED);
+        mAlwaysAllowedPref.setOnPreferenceChangeListener(this);
         mBrightnessLedLevelPref = (PreferenceScreen)
                 findPreference(Settings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL);
         mBrightnessLedLevelPref.setOnPreferenceChangeListener(this);
@@ -427,7 +431,8 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         if (preference == mEnabledPref || preference == mCustomEnabledPref ||
-            preference == mMultipleLedsEnabledPref || preference == mBrightnessLedLevelPref) {
+            preference == mAlwaysAllowedPref || preference == mMultipleLedsEnabledPref ||
+            preference == mBrightnessLedLevelPref) {
             getActivity().invalidateOptionsMenu();
         } else {
             ApplicationLightPreference lightPref = (ApplicationLightPreference) preference;
