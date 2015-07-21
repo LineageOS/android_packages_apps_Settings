@@ -36,7 +36,6 @@ LOCAL_AAPT_FLAGS := \
     --extra-packages android.support.v7.cardview
 
 LOCAL_AAPT_INCLUDE_ALL_RESOURCES := true
-LOCAL_ASSET_DIR := $(LOCAL_PATH)/assets
 
 include frameworks/opt/setupwizard/navigationbar/common.mk
 include $(BUILD_PACKAGE)
