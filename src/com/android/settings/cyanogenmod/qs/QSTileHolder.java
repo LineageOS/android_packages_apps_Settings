@@ -160,6 +160,10 @@ public class QSTileHolder {
                 resourceName = "ic_qs_sync_on";
                 stringId = R.string.qs_tile_sync;
                 break;
+            case QSConstants.TILE_THEMES:
+                resourceName = "ic_qs_themes";
+                stringId = R.string.qs_tile_theme;
+                break;
 
             // Dynamic tiles
             case QSConstants.DYNAMIC_TILE_NEXT_ALARM:
