@@ -21,6 +21,7 @@ import static android.os.UserManager.DISALLOW_CONFIG_WIFI;
 
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -47,6 +48,7 @@ import android.os.Message;
 import android.os.UserHandle;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -70,6 +72,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -95,6 +98,7 @@ public class WifiSettings extends RestrictedSettingsFragment
     private static final int MENU_ID_FORGET = Menu.FIRST + 7;
     private static final int MENU_ID_MODIFY = Menu.FIRST + 8;
     private static final int MENU_ID_WRITE_NFC = Menu.FIRST + 9;
+    private static final int MENU_ID_SLEEP = Menu.FIRST + 10;
 
     public static final int WIFI_DIALOG_ID = 1;
     /* package */ static final int WPS_PBC_DIALOG_ID = 2;
@@ -151,6 +155,8 @@ public class WifiSettings extends RestrictedSettingsFragment
     /** verbose logging flag. this flag is set thru developer debugging options
      * and used so as to assist with in-the-field WiFi connectivity debugging  */
     public static int mVerboseLogging = 0;
+
+    private AlertDialog mWifiSleepDialog;
 
     /* End of "used in Wifi Setup context" */
 
@@ -224,6 +230,7 @@ public class WifiSettings extends RestrictedSettingsFragment
         mFilter.addAction(WifiManager.LINK_CONFIGURATION_CHANGED_ACTION);
         mFilter.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
         mFilter.addAction(WifiManager.RSSI_CHANGED_ACTION);
+        mFilter.addAction(WifiWakeupService.WIFI_WAKEUP_CHANGED_ACTION);
 
         mReceiver = new BroadcastReceiver() {
             @Override
@@ -414,6 +421,8 @@ public class WifiSettings extends RestrictedSettingsFragment
                .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
         menu.add(Menu.NONE, MENU_ID_ADVANCED, 0, R.string.wifi_menu_advanced)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+        menu.add(Menu.NONE, MENU_ID_SLEEP, 0, R.string.wifi_sleep)
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
         ta.recycle();
     }
 
@@ -489,6 +498,62 @@ public class WifiSettings extends RestrictedSettingsFragment
                             R.string.wifi_advanced_titlebar, -1 /* Do not request a results */,
                             null);
                 }
+                return true;
+            case MENU_ID_SLEEP:
+
+                if (mWifiSleepDialog == null) {
+                    final int MINUTE = 1;
+                    final int HOUR = MINUTE * 60;
+                    final int[] timesInMinutes = new int[] {
+                            0,
+                            MINUTE,
+                            MINUTE * 2,
+                            MINUTE * 5,
+                            MINUTE * 10,
+                            MINUTE * 30,
+                            HOUR,
+                            HOUR * 2,
+                            HOUR * 3,
+                            HOUR * 6,
+                            HOUR * 12,
+                    };
+
+                    final Resources res = getResources();
+                    String[] listTimes = new String[timesInMinutes.length];
+                    for (int i = 0; i < listTimes.length; i++) {
+                        final int time = timesInMinutes[i];
+                        if (time == 0) {
+                            listTimes[i] = getString(R.string.wifi_wakeup_never);
+                        } else if (time >= HOUR) {
+                            listTimes[i] = res.getQuantityString(
+                                    R.plurals.time_hours, time / HOUR, time / HOUR);
+                        } else {
+                            listTimes[i] = res.getQuantityString(
+                                    R.plurals.time_minutes, time, time);
+                        }
+                    }
+
+                    mWifiSleepDialog = new AlertDialog.Builder(getActivity())
+                            .setTitle(R.string.wifi_wakeup_dialog_title)
+                            .setNegativeButton(R.string.cancel_all_caps,
+                                    null)
+                            .setSingleChoiceItems(listTimes, 0,
+                                    new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            if (timesInMinutes[which] == 0) {
+                                                WifiWakeupService.cancel(getActivity());
+                                            } else {
+                                                WifiWakeupService.scheduleSleep(getActivity(),
+                                                        timesInMinutes[which] * 60 * 1000);
+                                            }
+                                            dialog.dismiss();
+                                        }
+                                    })
+                            .create();
+                }
+
+                mWifiSleepDialog.show();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -707,6 +772,18 @@ public class WifiSettings extends RestrictedSettingsFragment
                 CharSequence charSeq = getText(resId);
                 mEmptyView.append(charSeq);
             }
+
+            long wakeupTime = WifiWakeupService.getWakeupWifiTime(getActivity());
+            if (wakeupTime > System.currentTimeMillis()) {
+                mEmptyView.append("\n\n");
+                mEmptyView.append(getString(R.string.wifi_wakeup_title));
+                mEmptyView.append("\n");
+                String bestFormat = DateFormat.getBestDateTimePattern(Locale.getDefault(),
+                        "MMMdhmma");
+                String formattedTime = DateFormat.format(bestFormat, wakeupTime).toString();
+                String wakeupTimeString = getString(R.string.wifi_wakeup_msg, formattedTime);
+                mEmptyView.append(wakeupTimeString);
+            }
         }
         getPreferenceScreen().removeAll();
     }
@@ -800,6 +877,13 @@ public class WifiSettings extends RestrictedSettingsFragment
             updateNetworkInfo(info);
         } else if (WifiManager.RSSI_CHANGED_ACTION.equals(action)) {
             updateNetworkInfo(null);
+        } else if (WifiWakeupService.WIFI_WAKEUP_CHANGED_ACTION.equals(action)) {
+            WifiManager wifiManager = (WifiManager) getActivity()
+                    .getSystemService(Context.WIFI_SERVICE);
+            wifiManager.setWifiEnabled(false);
+            if (wifiManager.getWifiState() == WifiManager.WIFI_STATE_DISABLED) {
+                setOffMessage();
+            }
         }
     }
 

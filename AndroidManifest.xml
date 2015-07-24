@@ -2344,5 +2344,11 @@
             </intent-filter>
         </receiver>
 
+        <service android:label="WifiWakeupService"
+                 android:name=".wifi.WifiWakeupService">
+            <intent-filter>
+                <action android:name="cyanogenmod.intent.action.WIFI_WAKEUP" />
+            </intent-filter>
+        </service>
     </application>
 </manifest>
