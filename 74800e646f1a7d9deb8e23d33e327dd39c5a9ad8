@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df140735_ceefdfe7",
+        "filename": "res/xml/sim_settings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-07-24T03:32:13Z",
+      "side": 1,
+      "message": "Here are 2 categories, one below the other. That doesn\u0027t really made sense to me",
+      "range": {
+        "startLine": 23,
+        "startChar": 6,
+        "endLine": 23,
+        "endChar": 24
+      },
+      "revId": "74800e646f1a7d9deb8e23d33e327dd39c5a9ad8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df140735_8ebb27e4",
+        "filename": "src/com/android/settings/sim/SimSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-07-24T03:32:13Z",
+      "side": 1,
+      "message": "While this null check? AFAIK, the preference isn\u0027t remove at any point. In other case, we need a check for dataToggle.setOnPreferenceChangeListener too",
+      "range": {
+        "startLine": 189,
+        "startChar": 16,
+        "endLine": 189,
+        "endChar": 26
+      },
+      "revId": "74800e646f1a7d9deb8e23d33e327dd39c5a9ad8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df140735_aeecabf3",
+        "filename": "src/com/android/settings/sim/SimSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-07-24T03:32:13Z",
+      "side": 1,
+      "message": "this is more like \"registerDataChangeListener\" or something like that. IHMO, currently it sounds like if you are adding a new preference to the screen.",
+      "range": {
+        "startLine": 195,
+        "startChar": 17,
+        "endLine": 195,
+        "endChar": 35
+      },
+      "revId": "74800e646f1a7d9deb8e23d33e327dd39c5a9ad8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
