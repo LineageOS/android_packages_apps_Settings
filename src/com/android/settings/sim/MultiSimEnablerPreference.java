@@ -165,18 +165,21 @@ public class MultiSimEnablerPreference extends SwitchPreference implements
         builder.setView(dialogLayout);
 
         final EditText nameText = (EditText)dialogLayout.findViewById(R.id.sim_name);
-        nameText.setText(mSir.getDisplayName());
+        nameText.setText(getSimDisplayName());
 
         final Spinner tintSpinner = (Spinner) dialogLayout.findViewById(R.id.spinner);
         SelectColorAdapter adapter = new SelectColorAdapter(getContext(),
                 R.layout.settings_color_picker_item, mColorStrings);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         tintSpinner.setAdapter(adapter);
-        for (int i = 0; i < mTintArr.length; i++) {
-            if (mTintArr[i] == mSir.getIconTint()) {
-                tintSpinner.setSelection(i);
-                mTintSelectorPos = i;
-                break;
+        if (mSir != null) {
+            int iconTint = mSir.getIconTint();
+            for (int i = 0; i < mTintArr.length; i++) {
+                if (mTintArr[i] == mSir.getIconTint()) {
+                    tintSpinner.setSelection(i);
+                    mTintSelectorPos = i;
+                    break;
+                }
             }
         }
         tintSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -190,14 +193,16 @@ public class MultiSimEnablerPreference extends SwitchPreference implements
             }
         });
 
-        final TextView numberView = (TextView)dialogLayout.findViewById(R.id.number);
-        numberView.setText(mSir.getNumber());
+        if (mSir != null) {
+            final TextView numberView = (TextView)dialogLayout.findViewById(R.id.number);
+            numberView.setText(mSir.getNumber());
 
-        final TextView carrierView = (TextView)dialogLayout.findViewById(R.id.carrier);
-        carrierView.setText(mSir.getCarrierName());
+            final TextView carrierView = (TextView)dialogLayout.findViewById(R.id.carrier);
+            carrierView.setText(mSir.getCarrierName());
+        }
 
         builder.setTitle(getContext().getString(R.string.sim_editor_title,
-                mSir.getSimSlotIndex() + 1));
+                (mSir != null ? mSir.getSimSlotIndex() : 0) + 1));
 
         builder.setPositiveButton(R.string.okay, new DialogInterface.OnClickListener() {
             @Override
@@ -361,10 +366,12 @@ public class MultiSimEnablerPreference extends SwitchPreference implements
         mTargetState = enable;
 
         showProgressDialog(enable);
-        if (enable) {
-            SubscriptionManager.activateSubId(mSir.getSubscriptionId());
-        } else {
-            SubscriptionManager.deactivateSubId(mSir.getSubscriptionId());
+        if (mSir != null) {
+            if (enable) {
+                SubscriptionManager.activateSubId(mSir.getSubscriptionId());
+            } else {
+                SubscriptionManager.deactivateSubId(mSir.getSubscriptionId());
+            }
         }
 
         mSubscriptionManager.addOnSubscriptionsChangedListener(mSubscriptionListener);
@@ -447,7 +454,8 @@ public class MultiSimEnablerPreference extends SwitchPreference implements
         @Override
         public void onSubscriptionsChanged() {
             logd("Received onSubscriptionChanged");
-            SubscriptionInfo sir = Utils.findRecordBySubId(getContext(), mSir.getSubscriptionId());
+            SubscriptionInfo sir = mSir != null ?
+                    Utils.findRecordBySubId(getContext(), mSir.getSubscriptionId()) : null;
             if (mTargetState == (sir != null)) {
                 processSetUiccDone();
             }
