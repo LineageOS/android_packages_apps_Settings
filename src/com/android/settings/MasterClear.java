@@ -180,9 +180,13 @@ public class MasterClear extends Fragment {
                         R.string.factory_reset_erase_stored_content_summary_forced);
             }
 
-            if (Environment.isExternalStorageRemovable(Environment.getSecondaryStorageDirectory())
-                    && Environment.getSecondaryStorageState().equals(Environment.MEDIA_MOUNTED)) {
-                hasExternalStorage = true;
+            try {
+                if (Environment.isExternalStorageRemovable(Environment.getSecondaryStorageDirectory())
+                        && Environment.getSecondaryStorageState().equals(Environment.MEDIA_MOUNTED)) {
+                    hasExternalStorage = true;
+                }
+            } catch (IllegalArgumentException e) {
+                // Secondary storage not exists or isn't mounted
             }
 
         } else {
