@@ -236,7 +236,7 @@ public class MultiSimEnablerPreference extends SwitchPreference implements
 
     @Override
     public boolean onPreferenceChange(Preference pref, Object newValue) {
-        if (mClicking || mExplicitlyDisabled) {
+        if (mClicking || mExplicitlyDisabled || !pref.isEnabled()) {
             return false;
         }
 
