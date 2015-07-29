@@ -229,7 +229,7 @@ public class MultiSimEnablerPreference extends SwitchPreference implements
         super.onBindView(view);
 
         mSwitch = (Switch) view.findViewById(com.android.internal.R.id.switchWidget);
-        mSwitch.setClickable(true);
+        mSwitch.setClickable(isEnabled());
 
         update();
     }
