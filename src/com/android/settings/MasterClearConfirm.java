@@ -116,7 +116,7 @@ public class MasterClearConfirm extends DialogFragment {
 
                 @Override
                 protected void onPostExecute(Void aVoid) {
-                    FrpDialog.this.dismiss();
+                    FrpDialog.this.dismissAllowingStateLoss();
                     doMasterClear(getActivity(),
                             getArguments().getBoolean(MasterClear.EXTRA_WIPE_MEDIA),
                             getArguments().getBoolean(MasterClear.EXTRA_WIPE_SDCARD));
