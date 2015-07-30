@@ -52,6 +52,8 @@ public class MasterClearConfirm extends DialogFragment {
 
     private static final String REASON_MASTER_CLEAR_CONFIRM = "MasterClearConfirm";
 
+    private static boolean sFrpHasRun;
+
     private boolean mEraseSdCard;
     private boolean mEraseInternal;
 
@@ -104,9 +106,15 @@ public class MasterClearConfirm extends DialogFragment {
         @Override
         public void onResume() {
             super.onResume();
+
+            if (sFrpHasRun) {
+                return;
+            }
+
             new AsyncTask<Void, Void, Void>() {
                 @Override
                 protected Void doInBackground(Void... params) {
+                    sFrpHasRun = true;
                     final PersistentDataBlockManager pdbManager = (PersistentDataBlockManager)
                             getActivity().getSystemService(Context.PERSISTENT_DATA_BLOCK_SERVICE);
                     if (pdbManager != null) pdbManager.wipe();
