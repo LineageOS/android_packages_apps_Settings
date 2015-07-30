@@ -83,6 +83,7 @@ public class MasterClearConfirm extends DialogFragment {
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setShowsDialog(true);
+            setCancelable(false);
         }
 
         @Override
@@ -115,10 +116,10 @@ public class MasterClearConfirm extends DialogFragment {
 
                 @Override
                 protected void onPostExecute(Void aVoid) {
+                    FrpDialog.this.dismiss();
                     doMasterClear(getActivity(),
                             getArguments().getBoolean(MasterClear.EXTRA_WIPE_MEDIA),
                             getArguments().getBoolean(MasterClear.EXTRA_WIPE_SDCARD));
-                    FrpDialog.this.dismiss();
                 }
             }.execute();
         }
