@@ -149,7 +149,7 @@ public class ApplicationLightPreference extends DialogPreference {
             mOnValueView.setText(mapLengthValue(mOnValue));
         }
         if (mOffValueView != null) {
-            if (mOnValue == 1) {
+            if (mOnValue == 1 || !mOnOffChangeable) {
                 mOffValueView.setVisibility(View.GONE);
             } else {
                 mOffValueView.setVisibility(View.VISIBLE);
@@ -227,7 +227,6 @@ public class ApplicationLightPreference extends DialogPreference {
         mColorValue = color;
         mOnValue = onValue;
         mOffValue = offValue;
-        mOnOffChangeable = true;
         updatePreferenceViews();
     }
 
