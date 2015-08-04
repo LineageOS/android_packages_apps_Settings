@@ -16,6 +16,24 @@
       "revId": "b08858b4be8244f26d5ec7667d9fee2c4cdeeff8",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f0e0f27_dd79db2f",
+        "filename": "src/com/android/settings/ChooseLockGeneric.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 9199
+      },
+      "writtenOn": "2015-08-04T23:40:11Z",
+      "side": 1,
+      "message": "It was changed to updateUnlockMethodAndFinish because the user still needs to pick a fallback security method and once they select that the EncryptionInterstitial will be shown when setUnlockMethod() is called for that step.  Leaving this as maybeEnableEncryption() causes the interstitial to be shown for both steps.",
+      "parentUuid": "9f0e0f27_bdc86774",
+      "revId": "b08858b4be8244f26d5ec7667d9fee2c4cdeeff8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
