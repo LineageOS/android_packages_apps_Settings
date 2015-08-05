@@ -396,8 +396,7 @@ public class ChooseLockPattern extends SettingsActivity {
                 // restore from previous state
                 final String patternString = savedInstanceState.getString(KEY_PATTERN_CHOICE);
                 if (patternString != null) {
-                    LockPatternUtils utils = mChooseLockSettingsHelper.utils();
-                    mChosenPattern = utils.stringToPattern(patternString);
+                    mChosenPattern = LockPatternUtils.stringToPattern(patternString, mPatternSize);
                 }
                 updateStage(Stage.values()[savedInstanceState.getInt(KEY_UI_STAGE)]);
             }
