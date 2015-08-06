@@ -51,6 +51,10 @@ public class ProgressCategory extends ProgressCategoryBase {
 
     public void setEmptyTextRes(int emptyTextRes) {
         mEmptyTextRes = emptyTextRes;
+        if (mNoDeviceFoundPreference != null) {
+            mNoDeviceFoundPreference.setTitle(emptyTextRes);
+        }
+        notifyChanged();
     }
 
     @Override
@@ -85,5 +89,11 @@ public class ProgressCategory extends ProgressCategoryBase {
     public void setProgress(boolean progressOn) {
         mProgress = progressOn;
         notifyChanged();
+    }
+
+    @Override
+    public void removeAll() {
+        super.removeAll();
+        mNoDeviceFoundAdded = false;
     }
 }

@@ -173,12 +173,12 @@ public class TetherService extends Service {
 
     private void enableWifiTetheringIfNeeded() {
         if (!isHotspotEnabled(this)) {
-            new WifiApEnabler(this, null).setSoftapEnabled(true);
+            (new WifiApEnabler(this, null, null, null)).setSoftapEnabled(true);
         }
     }
 
     private void disableWifiTethering() {
-        WifiApEnabler enabler = new WifiApEnabler(this, null);
+        WifiApEnabler enabler = new WifiApEnabler(this, null, null, null);
         enabler.setSoftapEnabled(false);
     }
 
