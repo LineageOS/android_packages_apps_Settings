@@ -117,8 +117,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private Preference mNotificationRingtonePreference;
     private TwoStatePreference mVibrateWhenRinging;
     private Preference mNotificationAccess;
-    private boolean mSecure;
-    private int mLockscreenSelectedValue;
     private ComponentName mSuppressor;
     private int mRingerMode = -1;
     private SwitchPreference mVolumeLinkNotificationSwitch;
@@ -342,7 +340,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private final Runnable mLookupRingtoneNames = new Runnable() {
         @Override
         public void run() {
-             if (mPhoneRingtonePreferences != null) {
+            if (mPhoneRingtonePreferences != null) {
                 ArrayList<CharSequence> summaries = new ArrayList<CharSequence>();
                 for (DefaultRingtonePreference preference : mPhoneRingtonePreferences) {
                     CharSequence summary = updateRingtoneName(
@@ -373,7 +371,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
             ringtoneUri = RingtoneManager.getActualDefaultRingtoneUri(context, type);
         } else {
             ringtoneUri = RingtoneManager.getActualRingtoneUriBySubId(context, subId);
-         }
+        }
         CharSequence summary = context.getString(com.android.internal.R.string.ringtone_unknown);
         // Is it a silent ringtone?
         if (ringtoneUri == null) {
@@ -507,12 +505,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private final class SettingsObserver extends ContentObserver {
         private final Uri VIBRATE_WHEN_RINGING_URI =
                 Settings.System.getUriFor(Settings.System.VIBRATE_WHEN_RINGING);
-        private final Uri NOTIFICATION_LIGHT_PULSE_URI =
-                Settings.System.getUriFor(Settings.System.NOTIFICATION_LIGHT_PULSE);
-        private final Uri LOCK_SCREEN_PRIVATE_URI =
-                Settings.Secure.getUriFor(Settings.Secure.LOCK_SCREEN_ALLOW_PRIVATE_NOTIFICATIONS);
-        private final Uri LOCK_SCREEN_SHOW_URI =
-                Settings.Secure.getUriFor(Settings.Secure.LOCK_SCREEN_SHOW_NOTIFICATIONS);
         private final Uri VOLUME_LINK_NOTIFICATION_URI =
                 Settings.Secure.getUriFor(Settings.Secure.VOLUME_LINK_NOTIFICATION);
 
@@ -524,9 +516,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
             final ContentResolver cr = getContentResolver();
             if (register) {
                 cr.registerContentObserver(VIBRATE_WHEN_RINGING_URI, false, this);
-                cr.registerContentObserver(NOTIFICATION_LIGHT_PULSE_URI, false, this);
-                cr.registerContentObserver(LOCK_SCREEN_PRIVATE_URI, false, this);
-                cr.registerContentObserver(LOCK_SCREEN_SHOW_URI, false, this);
                 cr.registerContentObserver(VOLUME_LINK_NOTIFICATION_URI, false, this);
             } else {
                 cr.unregisterContentObserver(this);
