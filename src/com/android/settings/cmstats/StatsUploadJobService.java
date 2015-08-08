@@ -57,15 +57,16 @@ public class StatsUploadJobService extends JobService {
     public static final String KEY_CARRIER_ID = "carrierId";
     public static final String KEY_TIMESTAMP = "timeStamp";
 
-    List<JobParameters> mFinishedJobs = new LinkedList<>();
-    ArrayMap<JobParameters, StatsUploadTask> mCurrentJobs = new ArrayMap<>();
+    private final ArrayMap<JobParameters, StatsUploadTask> mCurrentJobs = new ArrayMap<>();
 
     @Override
     public boolean onStartJob(JobParameters jobParameters) {
         if (DEBUG)
             Log.d(TAG, "onStartJob() called with " + "jobParameters = [" + jobParameters + "]");
         final StatsUploadTask uploadTask = new StatsUploadTask(jobParameters);
-        mCurrentJobs.put(jobParameters, uploadTask);
+        synchronized (mCurrentJobs) {
+            mCurrentJobs.put(jobParameters, uploadTask);
+        }
         uploadTask.execute((Void) null);
         return true;
     }
@@ -75,19 +76,18 @@ public class StatsUploadJobService extends JobService {
         if (DEBUG)
             Log.d(TAG, "onStopJob() called with " + "jobParameters = [" + jobParameters + "]");
 
-        final StatsUploadTask cancelledJob = mCurrentJobs.remove(jobParameters);
-
-        // if we can't remove from finished jobs, that means it's not finished!
-        final boolean jobSuccessfullyFinished = mFinishedJobs.remove(jobParameters);
-
-        if (!jobSuccessfullyFinished) {
-            // cancel the ongoing background task
-            if (cancelledJob != null) {
-                cancelledJob.cancel(true);
-            }
+        final StatsUploadTask cancelledJob;
+        synchronized (mCurrentJobs) {
+            cancelledJob = mCurrentJobs.remove(jobParameters);
         }
 
-        return !jobSuccessfullyFinished;
+        if (cancelledJob != null) {
+            // cancel the ongoing background task
+            cancelledJob.cancel(true);
+            return true; // reschedule
+        }
+
+        return false;
     }
 
     private class StatsUploadTask extends AsyncTask<Void, Void, Boolean> {
@@ -139,7 +139,14 @@ public class StatsUploadJobService extends JobService {
             }
 
             if (success) {
-                AnonymousStats.removeJob(StatsUploadJobService.this, mJobParams.getJobId());
+                synchronized (mCurrentJobs) {
+                    // if it was removed in onStopJob() because criteria was no longer met
+                    // then we need to make sure we fail out here to reschedule the job
+                    success = mCurrentJobs.remove(mJobParams) != null;
+                }
+                if (success) {
+                    AnonymousStats.removeJob(StatsUploadJobService.this, mJobParams.getJobId());
+                }
             }
 
             return success;
@@ -147,9 +154,6 @@ public class StatsUploadJobService extends JobService {
 
         @Override
         protected void onPostExecute(Boolean success) {
-            if (success) {
-                mFinishedJobs.add(mJobParams);
-            }
             if (DEBUG)
                 Log.d(TAG, "job id " + mJobParams.getJobId() + ", has finished with success="
                         + success);
