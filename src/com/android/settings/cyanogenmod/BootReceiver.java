@@ -29,6 +29,7 @@ import com.android.settings.ButtonSettings;
 import com.android.settings.DisplaySettings;
 import com.android.settings.R;
 import com.android.settings.Utils;
+import com.android.settings.contributors.ContributorsCloudFragment;
 import com.android.settings.hardware.VibratorIntensity;
 import com.android.settings.inputmethod.InputMethodAndLanguageSettings;
 import com.android.settings.livedisplay.DisplayColor;
@@ -73,6 +74,9 @@ public class BootReceiver extends BroadcastReceiver {
         DisplayGamma.restore(ctx);
         VibratorIntensity.restore(ctx);
         InputMethodAndLanguageSettings.restore(ctx);
+
+        // Extract the contributors database
+        ContributorsCloudFragment.extractContributorsCloudDatabase(ctx);
     }
 
     private void initFreqCapFiles(Context ctx)
