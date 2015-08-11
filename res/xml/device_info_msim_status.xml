@@ -27,6 +27,12 @@
         android:title="@string/battery_status_title"
         android:summary="@string/device_info_not_available"
         android:persistent="false" />
+    <PreferenceScreen android:key="imei_info"
+        android:title="@string/imei_information_title"
+        android:persistent="false">
+        <intent android:targetPackage="com.android.settings"
+            android:targetClass="com.android.settings.deviceinfo.ImeiInformation" />
+    </PreferenceScreen>
     <Preference android:key="battery_level"
         style="?android:attr/preferenceInformationStyle"
         android:title="@string/battery_level_title"
