@@ -57,6 +57,12 @@
                     android:targetClass="com.android.settings.deviceinfo.Status" />
         </PreferenceScreen>
 
+        <!-- Contributors cloud -->
+        <PreferenceScreen android:key="contributors_cloud"
+            android:title="@string/contributors_cloud_fragment_title"
+            android:fragment="com.android.settings.contributors.ContributorsCloudFragment" >
+        </PreferenceScreen>
+
         <!-- Legal Information -->
         <PreferenceScreen
                 android:key="container"
