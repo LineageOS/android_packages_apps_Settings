@@ -43,6 +43,9 @@ import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
+import libcore.icu.TimeZoneNames;
+
+import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -143,6 +146,7 @@ public class DateTimeSettings extends SettingsPreferenceFragment
         filter.addAction(Intent.ACTION_TIME_TICK);
         filter.addAction(Intent.ACTION_TIME_CHANGED);
         filter.addAction(Intent.ACTION_TIMEZONE_CHANGED);
+        filter.addAction(Intent.ACTION_DATE_CHANGED);
         getActivity().registerReceiver(mIntentReceiver, filter, null, null);
 
         updateTimeAndDateDisplay(getActivity());
@@ -329,6 +333,16 @@ public class DateTimeSettings extends SettingsPreferenceFragment
         if (when / 1000 < Integer.MAX_VALUE) {
             ((AlarmManager) context.getSystemService(Context.ALARM_SERVICE)).setTime(when);
         }
+        updateLocaleStrings();
+    }
+
+    static void updateLocaleStrings() {
+        // If a device was boot up with date 1970 and then date changes to some later time,
+        // the wrong string might be cached if the country's zones have changed.
+        // See external/icu/icu4c/source/data/misc/metaZones.txt for complete mapping
+        Locale locale = Locale.getDefault();
+        TimeZoneNames.clearLocaleCache(locale);
+        DateFormatSymbols.getInstance(locale).setZoneStrings(TimeZoneNames.getZoneStrings(locale));
     }
 
     /* package */ static void setTime(Context context, int hourOfDay, int minute) {
@@ -376,6 +390,10 @@ public class DateTimeSettings extends SettingsPreferenceFragment
     private BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals(Intent.ACTION_DATE_CHANGED)
+                    || intent.getAction().equals(Intent.ACTION_TIME_CHANGED)) {
+                updateLocaleStrings();
+            }
             final Activity activity = getActivity();
             if (activity != null) {
                 updateTimeAndDateDisplay(activity);
