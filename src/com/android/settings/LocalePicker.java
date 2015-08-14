@@ -72,6 +72,7 @@ public class LocalePicker extends com.android.internal.app.LocalePicker
         } else {
             getActivity().onBackPressed();
             LocalePicker.updateLocale(locale);
+            DateTimeSettings.updateLocaleStrings();
         }
     }
 
@@ -100,6 +101,7 @@ public class LocalePicker extends com.android.internal.app.LocalePicker
                         removeDialog(dialogId);
                         getActivity().onBackPressed();
                         LocalePicker.updateLocale(mTargetLocale);
+                        DateTimeSettings.updateLocaleStrings();
                     }
                 }
         );
