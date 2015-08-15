@@ -38,7 +38,17 @@
     <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
         android:key="none_is_silent"
         android:title="@string/none_is_silent_title"
-        android:summary="@string/none_is_silent_summary"
+        android:summaryOn="@string/none_is_silent_summary_on"
+        android:summaryOff="@string/none_is_silent_summary_off"
+        settings:advanced="true" />
+
+    <!-- Whether to allow notification lights in zen mode -->
+    <!-- This is set to true to match the default state in Android 5.1 -->
+    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+        android:key="allow_lights"
+        android:title="@string/allow_lights_title"
+        android:order="101"
+        android:defaultValue="true"
         settings:advanced="true" />
 
     <PreferenceCategory
@@ -71,14 +81,6 @@
                 android:title="@string/zen_mode_from"
                 android:persistent="false" />
 
-        <Preference
-            android:key="alarm_info"
-            android:title=""
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="?android:attr/colorForegroundInverse"
-            android:selectable="false"
-            android:summary="@string/zen_mode_alarm_info" />
-
     </PreferenceCategory>
 
     <!-- Downtime -->
@@ -100,15 +102,6 @@
                 android:title="@string/zen_mode_downtime_mode_title"
                 android:order="100"
                 android:persistent="false" />
-
-        <!-- Whether to allow notification lights in zen mode -->
-        <!-- This is set to true to match the default state in Android 5.1 -->
-        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
-            android:key="allow_lights"
-            android:title="@string/allow_lights_title"
-            android:order="101"
-            android:defaultValue="true"
-            settings:advanced="true" />
 
     </PreferenceCategory>
 

@@ -108,6 +108,14 @@
                 android:icon="@drawable/ic_settings_sounds"
                 />
 
+        <!-- Notification manager -->
+        <dashboard-tile
+                android:id="@+id/notification_manager"
+                android:title="@string/notification_manager"
+                android:fragment="com.android.settings.notification.NotificationManagerSettings"
+                android:icon="@drawable/ic_settings_notifications"
+                />
+
         <!-- Display & lights -->
         <dashboard-tile
                 android:id="@+id/display_and_lights_settings"
@@ -127,14 +135,6 @@
                 <categories android:name="cyanogenmod.intent.category.APP_THEMES" />
             </intent>
         </dashboard-tile>
-
-        <!-- Notification manager -->
-        <dashboard-tile
-                android:id="@+id/notification_manager"
-                android:title="@string/notification_manager"
-                android:fragment="com.android.settings.notification.NotificationManagerSettings"
-                android:icon="@drawable/ic_settings_notifications"
-                />
 
         <!-- Lock screen -->
         <dashboard-tile
@@ -199,7 +199,7 @@
 
     </dashboard-category>
 
-    <!-- Personalization -->
+    <!-- Personal -->
     <dashboard-category
             android:id="@+id/personal_section"
             android:title="@string/header_category_personal" >
@@ -246,14 +246,6 @@
                 android:icon="@drawable/ic_settings_applications"
                 />
 
-        <!-- Account -->
-        <dashboard-tile
-                android:id="@+id/account_settings"
-                android:title="@string/account_settings_title"
-                android:fragment="com.android.settings.accounts.AccountSettings"
-                android:icon="@drawable/ic_settings_accounts"
-                />
-
         <!-- CyanogenMod Privacy Settings -->
         <!-- This is the 'real' Privacy items and includes Privacy Guard, Blacklist & WhisperPush -->
         <dashboard-tile
@@ -261,6 +253,14 @@
                 android:title="@string/privacy_settings_cyanogenmod_title"
                 android:fragment="com.android.settings.cyanogenmod.PrivacySettings"
                 android:icon="@drawable/ic_settings_privacy"
+                />
+
+        <!-- Account -->
+        <dashboard-tile
+                android:id="@+id/account_settings"
+                android:title="@string/account_settings_title"
+                android:fragment="com.android.settings.accounts.AccountSettings"
+                android:icon="@drawable/ic_settings_accounts"
                 />
 
         <!-- Location -->
