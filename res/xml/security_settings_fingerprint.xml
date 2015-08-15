@@ -41,6 +41,12 @@
                     android:persistent="false"
                     android:fragment="com.android.settings.TrustAgentSettings"
                     settings:advanced="true"/>
+
+        <com.android.settings.cyanogenmod.SecureSettingSwitchPreference
+            android:key="lockscreen_hide_qs_tiles_with_sensitive_data"
+            android:title="@string/lockscreen_hide_qs_tiles_with_sensitive_data_title"
+            android:defaultValue="false"
+            settings:advanced="true"/>
     </PreferenceCategory>
 
     <PreferenceCategory
