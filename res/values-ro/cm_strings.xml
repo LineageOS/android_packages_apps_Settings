@@ -16,6 +16,11 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="one">Ești la <xliff:g id="step_count">%1$d</xliff:g> pas distanță de a activa opțiunile de dezvoltator.</item>
+    <item quantity="few">Ești la <xliff:g id="step_count">%1$d</xliff:g> pași distanță de a activa opțiunile de dezvoltator.</item>
+    <item quantity="other">Ești la <xliff:g id="step_count">%1$d</xliff:g> pași distanță de a activa opțiunile de dezvoltator.</item>
+  </plurals>
   <string name="show_dev_on_cm">Ați deblocat setările de dezvoltator!</string>
   <string name="show_dev_already_cm">Nu este nevoie, deja ai deblocat setările de dezvoltator.</string>
   <string name="development_tools_title">Unelte de dezvoltare</string>
@@ -48,6 +53,8 @@
   <string name="profile_populate_profile_from_state">Configurați profilul utilizând setările curente ale dispozitivului?</string>
   <string name="profile_menu_fill_from_state">Încărcare setări curente ale dispozitivului</string>
   <string name="profile_remove_current_profile">Nu se poate șterge profilul curent!</string>
+  <string name="profile_app_group_category_title">Suprascriere notificări</string>
+  <string name="profile_app_group_item_instructions">Adăugați sau eliminați grupuri</string>
   <string name="profile_entries_on">Pornit</string>
   <string name="profile_entries_off">Oprit</string>
   <string name="profile_entries_no_override">Nu suprascrie</string>
@@ -76,6 +83,7 @@
   <string name="profile_choose_app">Alegeți aplicația</string>
   <string name="profile_system_settings_title">Setari sistem</string>
   <string name="profile_lockmode_title">Modul blocare ecran</string>
+  <string name="profile_lockmode_disabled_summary">Dezactivare blocare ecran</string>
   <string name="profile_airplanemode_title">Modul avion</string>
   <string name="profile_brightness_title">Luminozitate ecran</string>
   <string name="profile_brightness_override_summary">Setat la %1$d%%</string>
@@ -136,6 +144,7 @@
   <string name="power_menu_profiles_title">Comutator profil</string>
   <string name="power_menu_airplane_title">Mod Avion</string>
   <string name="power_menu_users_title">Comutator utilizator</string>
+  <string name="power_menu_settings_title">Comandă rapidă pentru Setări</string>
   <string name="power_menu_lockdown_title">Blocare dispozitiv</string>
   <string name="power_menu_bug_report_title">Raport de eroare</string>
   <string name="power_menu_sound_title">Panou sunet</string>
@@ -169,6 +178,7 @@
   <string name="blacklist_policy_block_messages">Blochează mesajele primite</string>
   <string name="blacklist_bad_number_add">Nu se poate adăuga numărul de telefon incorect în lista abonaților blocați</string>
   <string name="remove_blacklist_number_title">Șterge număr</string>
+  <string name="remove_blacklist_entry">Doriți să eliminați acest număr de telefon blocat?</string>
   <string name="select_contact">Selectare contact</string>
   <string name="lockpattern_reset_button">Model de resetare</string>
   <string name="lockpattern_settings_reset_summary">Introduceți contul de email primar și parola asociată pentru a reseta modelul de blocare</string>
@@ -208,7 +218,7 @@
   <string name="double_tap_to_wake_title">Dublă-apăsare pentru trezire</string>
   <string name="double_tap_to_wake_summary">Atingeți de două ori ecranul pentru a activa afișajul</string>
   <string name="proximity_wake_title">Previne trezirea accidentală</string>
-  <string name="proximity_wake_summary">Verificaţi senzorul de proximitate înainte de trezirea ecranului</string>
+  <string name="proximity_wake_summary">Verificați senzorul de proximitate înainte de trezirea ecranului</string>
   <string name="privacy_settings_cyanogenmod_title">Intimitate</string>
   <string name="privacy_guard_default_title">Activat în mod implicit</string>
   <string name="privacy_guard_default_summary">Activat în mod implicit pentru aplicațiile nou-instalate</string>
@@ -307,6 +317,7 @@
   <string name="headset_connect_player_summary">Lansează aplicația implicită de muzică când se conectează casca audio</string>
   <string name="ime_switcher_notify_summary">Afișează pictograma selectorului metodei de introducere</string>
   <string name="app_notification_show_on_keyguard_title">Afișează pe ecranul de blocare</string>
+  <string name="app_notification_no_ongoing_on_keyguard_title">Dezactivați notificarea persistentă pe ecranul de blocare</string>
   <string name="high_touch_sensitivity_title">Sensibilitate tactilă înaltă </string>
   <string name="high_touch_sensitivity_summary">Crește sensibilitatea ecranului tactil, astfel încât acesta poate fi utilizat în timp ce se poartă mănuși</string>
   <string name="app_ops_summaries_coarse_location">locație aspră</string>
@@ -402,6 +413,8 @@
   <string name="app_ops_labels_bluetooth_volume">Volum Bluetooth</string>
   <string name="app_ops_labels_keep_awake">Ține treaz</string>
   <string name="app_ops_labels_get_usage_stats">Obține statistici de utilizare a aplicației</string>
+  <string name="app_ops_labels_mute_unmute_microphone">Dezactivează/activează microfon</string>
+  <string name="app_ops_labels_toast_window">Afișare mesaje temporare</string>
   <string name="app_ops_labels_activate_vpn">Activează VPN</string>
   <string name="app_ops_labels_wifi_change">Schimbare Wi\u2011Fi</string>
   <string name="app_ops_labels_bluetooth_change">Schimbă bluetooth</string>
@@ -462,6 +475,7 @@
   <string name="app_ops_show_system_apps">Arată aplicații preinstalate</string>
   <string name="app_ops_reset_counters">Permite/refuză resetare contoare</string>
   <string name="app_ops_reset_confirm_title">Confirmare resetare contoare</string>
+  <string name="app_ops_reset_confirm_mesg">Sunteți sigur că doriți să resetați contoarele?</string>
   <string name="font_size_sample">Exemplu</string>
   <string name="vibrator_intensity_title">Intensitate vibrare</string>
   <string name="vibrator_warning">Valorile mai mari de %1$d nu sunt recomandate</string>
@@ -503,6 +517,7 @@
   <string name="bluetooth_accept_all_files">Acceptă toate tipurile de fișiere</string>
   <string name="sim_pin_disable_failed">Nu se poate dezactiva PIN.</string>
   <string name="sim_pin_enable_failed">Imposibil de activat PIN-ul.</string>
+  <string name="sim_pin_change_failed_enable_sim_lock">Pentru a modifica PIN-ul SIM/RUIM, activează întâi blocarea SIM/RUIM.</string>
   <string name="sim_pin_enabled">PIN1 activat</string>
   <string name="sim_pin_disabled">PIN1 dezactivat</string>
   <string name="subs_settings">Starea cartelei SIM</string>
@@ -519,16 +534,19 @@
   <string name="uicc_format" product="default">Șterge stocarea UICC</string>
   <string name="uicc_format_summary" product="default">Șterge toate datele de pe dispozitivul de stocare UICC, cum ar fi muzică și fotografii</string>
   <string name="usb_settings_enable_ums_title">Activați stocarea în masă?</string>
+  <string name="usb_settings_enable_ums_message">Componente de sistem și aplicații se bazează pe stocarea primară ca fiind întotdeauna disponibilă. Această caracteristică întrerupe această funcționalitate. Este recomandat să utilizați MTP în schimb. Sunteți sigur că doriți să activați stocarea în masă?</string>
   <string name="dlg_confirm_sdcard_unmount_title" product="default">Demontează cardul SD?</string>
   <string name="dlg_confirm_usb_unmount_title" product="default">Demontează mediul de stocare USB?</string>
   <string name="sdcard_unmount_inform_text" product="default">Cardul SD va fi demontat.</string>
   <string name="usb_unmount_inform_text" product="default">Mediul de stocare USB va fi demontat.</string>
+  <string name="sdcard_media_format_desc" product="default">Ștergeți cardul SD? Veți pierde <b>toate</b> datele de pe card!</string>
   <string name="sdcard_media_format_button_text" product="default">Șterge cardul SD</string>
   <string name="usb_media_format_button_text" product="default">Șterge stocarea USB</string>
   <string name="uicc_media_format_button_text" product="default">Șterge stocarea UICC</string>
   <string name="sdcard_media_format_final_desc" product="default">Ștergeți cardul SD, ștergând toate fișierele stocate acolo? Această acțiune nu este reversibilă!</string>
   <string name="usb_media_format_final_desc" product="default">Ștergeți mediul de stocare USB, ștergând toate fișierele stocate acolo? Această acțiune nu este reversibilă!</string>
   <string name="uicc_media_format_final_desc" product="default">Ștergeți mediul de stocare UICC, ștergând toate fișierele stocate acolo? Această acțiune nu este reversibilă!</string>
+  <string name="sdcard_media_format_gesture_explanation" product="default">Este necesar să desenați modelul dumneavoastră de deblocare pentru a confirma ștergerea cardului SD.</string>
   <string name="usb_media_format_gesture_explanation" product="default">Este necesar să desenați modelul dumneavoastră de deblocare pentru a confirma ștergerea mediului de stocare USB.</string>
   <string name="uicc_media_format_gesture_explanation" product="default">Este necesar să desenați modelul dumneavoastră de deblocare pentru a confirma ștergerea mediului de stocare UICC.</string>
   <string name="internal_sd_format">Șterge mediul de stocare intern</string>
@@ -543,11 +561,14 @@
   <string name="sim_enabled">activat</string>
   <string name="sim_disabled">dezactivat</string>
   <string name="sim_missing">lipsă sau defect</string>
+  <string name="sim_enabler_airplane_on">Nu se poate efectua operațiunea cât timp modul avion este activ.</string>
+  <string name="sim_enabler_in_call">Nu se poate efectua operațiunea în timpul unui apel.</string>
   <string name="sim_enabler_both_inactive">Nu se pot dezactiva toate cartelele SIM</string>
   <string name="sim_enabler_sim">SIM</string>
   <string name="sim_enabler_deactivate">Dezactivează</string>
   <string name="primary_sub_select_title">Abonament 3G/LTE implicit</string>
   <string name="usb_charging_title">Doar încărcare</string>
+  <string name="usb_charging_summary">Dezactivează toate transferurile de date cu computerul și încarcă bateria prin portul USB</string>
   <string name="usb_sdcard_title">Spațiul de stocare (UMS)</string>
   <string name="usb_sdcard_summary">Permite transferul fișierelor între computer și cardul SD prin accesarea lui ca dispozitiv flash</string>
   <string name="external_storage_turn_on">Stocarea externă a fost activată</string>
@@ -645,8 +666,10 @@
   <string name="expanded_enabled_for_all">Activat pentru toate</string>
   <string name="expanded_desktop_style">Stil desktop extins</string>
   <string name="expanded_desktop_style_description">Alegeți un stil desktop extins implicit</string>
+  <string name="expanded_desktop_title">Opțiuni desktop extins</string>
   <string name="title_general">General</string>
   <string name="lockscreen_default_target">Implicit</string>
+  <string name="lockscreen_none_target">Nimic</string>
   <string name="lockscreen_choose_action_title">Alege acțiunea</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Gestionare setări SMS sigur</string>
