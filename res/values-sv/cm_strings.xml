@@ -16,7 +16,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="wifi_setting_countrycode_title">Wi\u2011Fi regionskod</string>
+  <string name="wifi_setting_countrycode_title">Wi\u2011Fi-regionskod</string>
   <string name="wifi_setting_countrycode_summary">Ange regionskod för Wi\u2011Fi</string>
   <string name="wifi_setting_countrycode_error">Det uppstod ett problem vid inställningen av regionskoden.</string>
   <string name="wifi_setting_priority_title">Wi\u2011Fi prioritet</string>
@@ -86,6 +86,7 @@
   <string name="connection_state_enabled">Aktivera</string>
   <string name="volume_override_summary">Ställ till %1$s/%2$s</string>
   <string name="volume_override_summary_no_override">Skriv inte över</string>
+  <string name="profile_volume_override_checkbox_label">Övergå volym</string>
   <string name="profile_profiles_manage">Profiler</string>
   <string name="profile_profile_manage">Hantera profiler</string>
   <string name="profile_appgroups_manage">Appgrupper</string>
@@ -272,11 +273,13 @@
   <string name="title_tile_themes">Teman</string>
   <string name="title_dynamic_tiles">Dynamiska brickor</string>
   <string name="dynamic_tiles_note_title">Notis</string>
+  <string name="dynamic_tiles_note_summary">Dynamiska bildrutor visas endast om utlöses av en systemhändelse</string>
   <string name="title_dynamic_alarm">Alarmklocka</string>
   <string name="title_dynamic_bugreport">Felrapport</string>
   <string name="title_dynamic_dock_battery">Batteri i docka</string>
   <string name="title_dynamic_equalizer">Equalizer</string>
   <string name="title_dynamic_ime">Väljare av inmatningsmetod</string>
+  <string name="title_dynamic_usbtether">USB-sammanlänkning</string>
   <string name="title_dynamic_wifi">Överför skärm</string>
   <string name="title_general">Allmänt</string>
   <string name="title_quick_pulldown">Snabb neddragning</string>
@@ -297,6 +300,7 @@
   <string name="cm_sound_mode_sound">Ljud</string>
   <string name="cm_sound_mode_soundVibrate">Ljud och vibration</string>
   <string name="pref_location_mode_title">Platslägen</string>
+  <string name="pref_location_mode_summary">Avmarkera alla lägen för standardbeteende</string>
   <string name="cm_location_mode_off">Plats av</string>
   <string name="cm_location_mode_battery_saving">Batterisparläge</string>
   <string name="cm_location_mode_device_only">Endast enhet</string>
@@ -373,6 +377,10 @@ två för att kunna infoga ytterligare kontrollpunkter. \"Ta bort\" raderar den 
   <string name="root_access_apps">Endast appar</string>
   <string name="root_access_adb">Endast ADB</string>
   <string name="root_access_all">Appar och ADB</string>
+  <string name="update_recovery_title">Uppdatera Cyanogen Recovery</string>
+  <string name="update_recovery_summary">Uppdatera Recovery med systemuppdateringar</string>
+  <string name="update_recovery_on_warning">NOTERA: När denna funktion är aktiverad, kommer din installerade recovery att ersättas av en som ingår i den aktuella versionen av ditt nuvarande OS.\n\n ditt Recovery kommer att uppdateras med uppgraderingar till ditt system, bidrar till att säkerställa kompatibilitet med framtida versioner.\n\nVill du aktivera den här funktionen?</string>
+  <string name="update_recovery_off_warning">VARNING: När den här funktion är inaktiverad, kommer din installerade recovery inte att uppdateras med OS-uppgraderingar.\n\nFramtida OS-uppdateringar kan inte installeras med föråldrade eller anpassade recoveryversioner.\n\nVill du verkligen inaktivera den här funktionen?</string>
   <string name="ok">OK</string>
   <string name="quiet_hours_title">Tysta timmar</string>
   <string name="quiet_hours_summary">Konfigurera timmarna då enheten ska vara tyst</string>
@@ -441,6 +449,7 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="io_sched_title">I/O-schemaläggare</string>
   <string name="perf_profile_title">Profil</string>
   <string name="memory_management_title">Minneshantering</string>
+  <string name="pref_ksm_title">Kernel SamePage Merging (KSM)</string>
   <string name="pref_ksm_summary">KSM reducerar fysiska minneskrav och förbättrar prestanda</string>
   <string name="pref_purgeable_assets_title">Tillåt rensning av tillgångar</string>
   <string name="pref_purgeable_assets_summary">Rensning av bitmapminnestillgångar möjliggör frigörandet av mer RAM vid behov (kräver omstart)</string>
@@ -527,6 +536,7 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="collapse_on_dismiss_if_no_clearable_summary">Stäng efter borttagningen av den sista borttagbara aviseringen</string>
   <string name="double_tap_to_wake_title">Dubbeltryck för att väcka</string>
   <string name="double_tap_to_sleep_title">Dubbeltryck för att släcka</string>
+  <string name="double_tap_to_sleep_summary">Dubbeltryck på statusfältet eller låsskärmens reglage för att sätta enheten i viloläge</string>
   <string name="proximity_wake_title">Förhindra oavsiktlig väckning</string>
   <string name="proximity_wake_summary">Kontrollera närhetssensorn innan väckning av skärmen</string>
   <string name="category_quick_access">Snabbåtkomstmeny</string>
@@ -602,6 +612,7 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="lockscreen_buttons_toggle_sound">Växla ljud</string>
   <string name="lockscreen_buttons_sleep">Somna</string>
   <string name="lockscreen_enable_modlock_title">Anpassad låsskärm</string>
+  <string name="lockscreen_buttons_disabled_summary">Låsskärmens knappar är inte tillgängliga, när navigationsfältet på skärmen används</string>
   <string name="navigation_bar_category">Navigeringsfält</string>
   <string name="navigation_bar_title">Knappar och utformning</string>
   <string name="navigation_bar_left_title">Vänsterhänt läge</string>
@@ -616,6 +627,7 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="navigation_bar_menu_locked">Låst</string>
   <string name="navigation_bar_arrow_keys_title">Piltangenter medan du skriver</string>
   <string name="navigation_bar_arrow_keys_summary">Visa ikoner för att flytta markören medan du skriver</string>
+  <string name="navigation_bar_recents_title">Senaste långtrycksåtgärden</string>
   <string name="navigation_ring_title">Snabbstartsgenvägar</string>
   <string name="navring_target_reset_message">Ta bort alla användarskapade genvägar i navigeringsfältet och återställ till standard?</string>
   <string name="navring_target_reset">Genvägar i navigeringsfältet återställda till standard</string>
@@ -726,6 +738,7 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="logger_summary">Hantera inställningar för kraschloggning</string>
   <string name="custom_runtime_warning_title">Varning</string>
   <string name="custom_runtime_warning_message">ART saknar officiellt stöd från CyanogenMod då det är högst experimentellt och har potential att orsaka instabilitet, krascher, dataförlust eller förhindra din enhet från att starta. Besök &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; för mer information.&lt;br/&gt;&lt;br/&gt;Vi ber dig att inte skicka några felrapporter om du har aktiverat ART som din körningstid.&lt;br/&gt;&lt;br/&gt;Är du säker på att du vill starta om för att ändra din körningstid från <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> till <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
+  <string name="gps_download_data_wifi_only">Hämta GPS\u2011assisterad data endast över Wi\u2011Fi\u2011nätverk</string>
   <string name="battery_info_status_charging_dock_ac">(DockaAC)</string>
   <string name="battery_info_status_charging_dock_usb">(DockaUSB)</string>
   <string name="menu_stats_reset">Återställ</string>
@@ -756,6 +769,7 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="ime_switcher_notify">Inmatningsavisering</string>
   <string name="ime_switcher_notify_summary">Visa inmatningsväxlaren som avisering</string>
   <string name="high_touch_sensitivity_title">Hög fingerkänslighet</string>
+  <string name="high_touch_sensitivity_summary">Öka pekskärmens känslighet så att den kan användas samtidigt som du bär handskar</string>
   <string name="app_ops_summaries_coarse_location">grov lokalisering</string>
   <string name="app_ops_summaries_fine_location">fin lokalisering</string>
   <string name="app_ops_summaries_gps">GPS</string>
@@ -928,8 +942,10 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="usb_sd_ejecting_title">Kopplar från USB-lagring</string>
   <string name="usb_sd_ejecting_summary">Frånkoppling av USB-lagring pågår</string>
   <string name="usb_media_format_title">Radera USB-lagring</string>
+  <string name="usb_media_format_desc">Radera all USB\u2011lagring? Du kommer att förlora <b>all</b> lagrad data!</string>
   <string name="usb_media_format_button_text">Radera USB-lagring</string>
   <string name="sd_sd_eject">Koppla från SD-kort</string>
+  <string name="sd_sd_insert_summary">Sätt i ett SD-kort för montering</string>
   <string name="sd_sd_mount">Anslut SD-kort</string>
   <string name="sd_sd_format">Radera SD-kort</string>
   <string name="sd_dlg_confirm_unmount_title">Koppla från SD-kort?</string>
@@ -954,6 +970,7 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="data_usage_tab_slot">SIM </string>
   <string name="sel_sub_title">Konfigurera SIM-kort</string>
   <string name="sel_sub_summary">Välj dina SIM-kort</string>
+  <string name="subs_settings">SIM-kortstatus</string>
   <string name="set_data_subscription_progress">Ställer in dataabonnemang\u2026</string>
   <string name="set_dds_error">Fel vid inställning av dataabonnemang.</string>
   <string name="set_sms_error">Fel vid inställning av SMS-abonnemang. Abonnemang ej aktivt.</string>
@@ -993,4 +1010,5 @@ som inte riskerar din integritet eller personliga data. Data skickas vid varje u
   <string name="profile_setup_setup_triggers_description">Vänligen välj de utlösare som kommer att aktiveras på denna profil</string>
   <string name="profile_setup_actions_description">Konfigurera nu vad som ska hända när profilen aktiveras</string>
   <string name="sound_ringtone_multisim_options">Ändra standard ringsignaler</string>
+  <string name="lock_to_cyanogen_master_clear_warning">Enhetsskydd är aktiverat. Inaktivera för att fortsätta återställning av din enhet.</string>
 </resources>
