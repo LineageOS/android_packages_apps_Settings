@@ -58,6 +58,9 @@
   <string name="profile_unknown_nfc_tag">未知的設定檔</string>
   <string name="profile_add_nfc_text">此 NFC 標籤指向了一個未知的設定檔，連結此 NFC 標籤到現有的設定檔將允許您以後選取那個設定檔。</string>
   <string name="profile_select">選取設定檔</string>
+  <string name="profile_remove_dialog_message">刪除設定檔「%1$s」？</string>
+  <string name="profile_populate_profile_from_state">使用目前的裝置設定新增設定檔嗎？</string>
+  <string name="profile_menu_fill_from_state">匯入目前裝置的設定</string>
   <string name="profile_name_title">名稱</string>
   <string name="profile_profile_name_prompt">爲新設定檔輸入名稱</string>
   <string name="menu_new_profile">新設定檔</string>
@@ -366,6 +369,10 @@
   <string name="root_access_apps">僅限應用程式</string>
   <string name="root_access_adb">僅限 ADB</string>
   <string name="root_access_all">應用程式與 ADB</string>
+  <string name="update_recovery_title">更新 Cyanogen Recovery</string>
+  <string name="update_recovery_summary">隨著系統更新來更新 Recovery</string>
+  <string name="update_recovery_on_warning">注意：啟用此功能後，您已安裝的 Recovery 將會被現在所運行之系統所包含的取代。\n\n您的 Recovery 將會隨著系統一起更新以確保與未來版本的相容性。\n\n您確定要啟用這個功能？</string>
+  <string name="update_recovery_off_warning">警告：此功能被停用後，你安裝的 Recovery 將不隨著一起更新。\n\n未來的系统更新可能不支援舊版或自制 Recovery。\n\n您確定要停用此功能？</string>
   <string name="ok">確定</string>
   <string name="quiet_hours_title">安靜時段</string>
   <string name="quiet_hours_summary">設定裝置應該安靜的時段</string>
@@ -596,6 +603,7 @@
   <string name="lockscreen_buttons_toggle_sound">切換音效模式</string>
   <string name="lockscreen_buttons_sleep">進入休眠</string>
   <string name="lockscreen_enable_modlock_title">自訂鎖定畫面</string>
+  <string name="lockscreen_buttons_disabled_summary">螢幕鎖定時禁用導覽列</string>
   <string name="navigation_bar_category">導覽列</string>
   <string name="navigation_bar_title">按鈕與配置</string>
   <string name="navigation_bar_left_title">左撇子模式</string>
@@ -946,6 +954,11 @@
   <string name="sd_media_format_button_text">清除 SD 卡</string>
   <string name="sd_media_format_final_desc">清除 SD 卡時，是否刪除其中儲存的所有檔案？這項動作無法復原！</string>
   <string name="sd_media_format_gesture_explanation">請畫出解鎖圖形，確認您要清除 SD 卡中的資料。</string>
+  <string name="internal_sd_format">格式化內部存儲空間</string>
+  <string name="internal_sd_format_summary">格式化內部存儲空間，例如音樂和照片</string>
+  <string name="master_clear_desc_erase_internal_storage">\n\nTo 清除音樂、 圖片和其他使用者資料，<b>內部存儲空間</b> 必須要被格式化。</string>
+  <string name="erase_internal_storage">格式化內部存儲空間</string>
+  <string name="erase_internal_storage_description">格式化內部存儲空間，例如音樂或照片</string>
   <string name="bluetooth_enter_pin_msg_hs">欲與 <xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g> 配對，請輸入該裝置所需的 PIN 碼（16 碼或更多）：</string>
   <string name="bluetooth_profile_sap">SIM 卡存取</string>
   <string name="bluetooth_profile_dun">撥號網絡存取</string>
@@ -1004,7 +1017,9 @@
   <string name="profile_setup_setup_triggers_title_config">修改觸發器：<xliff:g id="profile_name">%1$s</xliff:g></string>
   <string name="profile_setup_actions_title">步驟 2：指定動作</string>
   <string name="profile_setup_actions_title_config">重新配置操作</string>
+  <string name="no_bluetooth_triggers">沒有藍牙設備配對。 \n在配置觸發器之前，點擊配對藍牙設備。</string>
   <string name="profile_setup_setup_triggers_description">請選擇啟動此設定檔的觸發器</string>
   <string name="profile_setup_actions_description">現在配置設定檔啟動時將發生的操作</string>
   <string name="sound_ringtone_multisim_options">更改預設鈴聲</string>
+  <string name="lock_to_cyanogen_title">裝置保護</string>
 </resources>
