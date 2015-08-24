@@ -30,6 +30,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract.CommonDataKinds;
 import android.provider.Telephony.Blacklist;
+import android.telephony.PhoneNumberUtils;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.ArrowKeyMovementMethod;
@@ -206,9 +207,13 @@ public class EntryEditDialogFragment extends DialogFragment
         if (mBlockMessages.isChecked()) {
             flags = flags | BlacklistUtils.BLOCK_MESSAGES;
         }
+
+        // Preemptive check because the user can enter '/' and other weird characters
+        // from the number input keyboard.
+        boolean validNumber = PhoneNumberUtils.isGlobalPhoneNumber(number);
         // Since BlacklistProvider enforces validity for a number to be added
         // we should alert the user if and when it gets rejected
-        if (!BlacklistUtils.addOrUpdate(getActivity(), number, flags, valid)) {
+        if (!validNumber || !BlacklistUtils.addOrUpdate(getActivity(), number, flags, valid)) {
             Toast.makeText(getActivity(), getString(R.string.blacklist_bad_number_add),
                     Toast.LENGTH_LONG).show();
         }
