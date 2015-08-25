@@ -88,6 +88,17 @@ public class LockscreenShortcuts extends Fragment implements View.OnClickListene
     };
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setRetainInstance(true);
+
+        mPicker = new ShortcutPickHelper(getActivity(), this);
+        mShortcutHelper = new LockscreenShortcutsHelper(getActivity(), null);
+        createActionList();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.lockscreen_shortcuts, container, false);
@@ -96,9 +107,6 @@ public class LockscreenShortcuts extends Fragment implements View.OnClickListene
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mPicker = new ShortcutPickHelper(getActivity(), this);
-        mShortcutHelper = new LockscreenShortcutsHelper(getActivity(), null);
-        createActionList();
         initiateViews(view);
         setUnlockIcon(view);
         updateDrawables();
@@ -207,8 +215,7 @@ public class LockscreenShortcuts extends Fragment implements View.OnClickListene
         if (uri.equals(ACTION_APP)) {
             mPicker.pickShortcut(null, null, getId());
         } else {
-            mSelectedView.setTag(uri);
-            saveCustomActions();
+            saveCustomActions(uri);
             updateDrawables();
             mSelectedView.postOnAnimation(new Runnable() {
                 @Override
@@ -220,11 +227,13 @@ public class LockscreenShortcuts extends Fragment implements View.OnClickListene
         }
     }
 
-    private void saveCustomActions() {
+    private void saveCustomActions(String uri) {
         ArrayList<String> targets = new ArrayList<String>();
         for (int id : sIconIds) {
-            View v = getView().findViewById(id);
-            String uri = (String) v.getTag();
+            if (id != mSelectedView.getId()) {
+                View v = getView().findViewById(id);
+                uri = (String) v.getTag();
+            }
             targets.add(uri);
         }
         mShortcutHelper.saveTargets(targets);
