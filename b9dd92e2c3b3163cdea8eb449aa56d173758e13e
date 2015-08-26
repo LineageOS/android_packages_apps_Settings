@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f1d235d_d149c360",
+        "filename": "src/com/android/settings/cyanogenmod/LockscreenShortcuts.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 9045
+      },
+      "writtenOn": "2015-08-26T06:27:35Z",
+      "side": 1,
+      "message": "hmm not sure if we should be retaining the instance with any fragment that manipulates views.\n\nmaybe we need to stick the shortcut picker helper into a dialog fragment so it plays nicely with the fragment life cycle?",
+      "revId": "b9dd92e2c3b3163cdea8eb449aa56d173758e13e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
