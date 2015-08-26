@@ -976,6 +976,14 @@ public class ManageApplications extends Fragment implements
         mContentContainer = container;
         mRootView = rootView;
 
+        mPinnedHeader = (ViewGroup) mRootView.findViewById(R.id.pinned_header);
+        if (mProfileSpinnerAdapter != null) {
+            mSpinner = (Spinner) inflater.inflate(R.layout.spinner_view, null);
+            mSpinner.setAdapter(mProfileSpinnerAdapter);
+            mSpinner.setOnItemSelectedListener(this);
+            mPinnedHeader.addView(mSpinner);
+            mPinnedHeader.setVisibility(View.VISIBLE);
+        }
         mSearchView = (LinearLayout) rootView.findViewById(R.id.search);
         mTextView = (EditText) rootView.findViewById(R.id.search_prefix);
         mSearchTitle = (TextView) rootView.findViewById(R.id.search_title);
