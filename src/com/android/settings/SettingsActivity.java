@@ -1477,9 +1477,12 @@ public class SettingsActivity extends Activity
      * by default in an overlay.
      */
     public static boolean showAdvancedPreferences(Context context) {
-        return (android.provider.Settings.Secure.getInt(context.getContentResolver(),
-                android.provider.Settings.Secure.ADVANCED_MODE, 1) == 1)
-                && context.getResources().getBoolean(
+        final boolean forceAdvancedMode = context.getResources().getBoolean(
                 com.android.internal.R.bool.config_advancedSettingsMode);
+        if (forceAdvancedMode) {
+            return true;
+        }
+        return (android.provider.Settings.Secure.getInt(context.getContentResolver(),
+                android.provider.Settings.Secure.ADVANCED_MODE, 0) == 1);
     }
 }
