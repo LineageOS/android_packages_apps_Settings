@@ -219,10 +219,20 @@ public class ApnSettings extends SettingsPreferenceFragment implements
 
     private void fillList() {
         String where = getOperatorNumericSelection();
+        String[] projection = {
+                "_id", "name",
+                "apn", "type",
+                "read_only",
+                "mvno_type",
+                "mvno_match_data"
+        };
         Cursor cursor = getContentResolver().query(getUri(Telephony.Carriers.CONTENT_URI),
-                new String[] {"_id", "name", "apn", "type", "read_only", "mvno_type", "mvno_match_data" }, where, null,
-                Telephony.Carriers.DEFAULT_SORT_ORDER);
-        String simOperatorName = TelephonyManager.getDefault().getSimOperatorNameForSubscription(mSubId);
+                projection, where, null, Telephony.Carriers.DEFAULT_SORT_ORDER);
+
+        final TelephonyManager tm = TelephonyManager.getDefault();
+        String simOperatorName = tm.getSimOperatorNameForSubscription(mSubId);
+        String imsiSIM = tm.getSubscriberId(mSubId);
+        String gid1 = tm.getGroupIdLevel1(mSubId);
 
         if (cursor != null) {
             PreferenceGroup apnList = (PreferenceGroup) findPreference("apn_list");
@@ -231,8 +241,7 @@ public class ApnSettings extends SettingsPreferenceFragment implements
             ArrayList<Preference> mmsApnList = new ArrayList<Preference>();
 
             mSelectedKey = getSelectedApnKey();
-            cursor.moveToFirst();
-            while (!cursor.isAfterLast()) {
+            while (cursor.moveToNext()) {
                 String name = cursor.getString(NAME_INDEX);
                 String apn = cursor.getString(APN_INDEX);
                 String key = cursor.getString(ID_INDEX);
@@ -242,13 +251,9 @@ public class ApnSettings extends SettingsPreferenceFragment implements
                 String mvnoData = cursor.getString(MVNODATA_INDEX);
                 boolean isMvno = !TextUtils.isEmpty(mvnoType) && !TextUtils.isEmpty(mvnoData);
 
-                // Incomplete set of skip rules for MVNOs. We still need
-                // something for IMSI and GID mismatches, but those rules
-                // are a bit more complex. Still... spn-type is 93% of what
-                // we support...
                 if (isMvno &&
-                  (mvnoType.equalsIgnoreCase("spn") && !mvnoData.equalsIgnoreCase(simOperatorName))) {
-                    cursor.moveToNext();
+                  (!mvnoMatches(mvnoType, mvnoData, simOperatorName, imsiSIM, gid1))) {
+                    Log.d(TAG, "Skipping non-matching MVNO: " + name);
                     continue;
                 }
 
@@ -272,7 +277,6 @@ public class ApnSettings extends SettingsPreferenceFragment implements
                 } else {
                     mmsApnList.add(pref);
                 }
-                cursor.moveToNext();
             }
             cursor.close();
 
@@ -280,6 +284,50 @@ public class ApnSettings extends SettingsPreferenceFragment implements
                 apnList.addPreference(preference);
             }
         }
+    }
+
+    private static boolean imsiMatches(String imsiDB, String imsiSIM) {
+        // Note: imsiDB value has digit number or 'x' character for seperating USIM information
+        // for MVNO operator. And then digit number is matched at same order and 'x' character
+        // could replace by any digit number.
+        // ex) if imsiDB inserted '310260x10xxxxxx' for GG Operator,
+        //     that means first 6 digits, 8th and 9th digit
+        //     should be set in USIM for GG Operator.
+        int len = imsiDB.length();
+
+        if (len <= 0) return false;
+        if (len > imsiSIM.length()) return false;
+
+        for (int idx=0; idx<len; idx++) {
+            char c = imsiDB.charAt(idx);
+            if ((c == 'x') || (c == 'X') || (c == imsiSIM.charAt(idx))) {
+                continue;
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static boolean mvnoMatches(String mvnoType, String mvnoMatchData,
+            String serviceProviderName, String imsiSIM, String gid1) {
+        if (mvnoType.equalsIgnoreCase("spn")) {
+            if ((serviceProviderName != null) &&
+                    serviceProviderName.equalsIgnoreCase(mvnoMatchData)) {
+                return true;
+            }
+        } else if (mvnoType.equalsIgnoreCase("imsi")) {
+            if ((imsiSIM != null) && imsiMatches(mvnoMatchData, imsiSIM)) {
+                return true;
+            }
+        } else if (mvnoType.equalsIgnoreCase("gid")) {
+            int mvno_match_data_length = mvnoMatchData.length();
+            if ((gid1 != null) && (gid1.length() >= mvno_match_data_length) &&
+                    gid1.substring(0, mvno_match_data_length).equalsIgnoreCase(mvnoMatchData)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
