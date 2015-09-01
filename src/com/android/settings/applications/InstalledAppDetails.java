@@ -272,7 +272,7 @@ public class InstalledAppDetails extends Fragment
 
         // This is a protected app component.
         // You cannot clear data for a protected component
-        if (mPackageInfo.applicationInfo.protect) {
+        if (isProtectedApp()) {
             enabled = false;
         }
 
@@ -418,7 +418,7 @@ public class InstalledAppDetails extends Fragment
 
         // This is a protected app component.
         // You cannot a uninstall a protected component
-        if (mPackageInfo.applicationInfo.protect) {
+        if (isProtectedApp()) {
             enabled = false;
         }
 
@@ -557,7 +557,7 @@ public class InstalledAppDetails extends Fragment
         }
         menu.findItem(UNINSTALL_ALL_USERS_MENU).setVisible(showIt);
 
-        menu.findItem(OPEN_PROTECTED_APPS).setVisible(mPackageInfo.applicationInfo.protect);
+        menu.findItem(OPEN_PROTECTED_APPS).setVisible(isProtectedApp());
     }
 
     @Override
@@ -1503,6 +1503,12 @@ public class InstalledAppDetails extends Fragment
                 setNotificationsEnabled(true);
             }
         }
+    }
+
+    private boolean isProtectedApp() {
+        // Some system apps doesn't have applicationInfo. Ensure we don't access to a null
+        // reference. In that case we assume the app isn't protected
+        return mPackageInfo.applicationInfo != null && mPackageInfo.applicationInfo.protect;
     }
 }
 
