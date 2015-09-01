@@ -2406,5 +2406,13 @@
             android:name=".cyanogenmod.LtoService">
         </service>
 
+        <receiver android:name="CtsSetupHelper"
+                  android:enabled="false"
+                  android:exported="false">
+            <intent-filter>
+                <action android:name="com.android.settings.ACTION_SETUP_CTS"/>
+            </intent-filter>
+        </receiver>
+
     </application>
 </manifest>
