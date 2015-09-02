@@ -414,13 +414,18 @@ public class Status extends PreferenceActivity {
                     ListAdapter listAdapter = (ListAdapter) parent.getAdapter();
                     Preference pref = (Preference) listAdapter.getItem(position);
 
-                    ClipboardManager cm = (ClipboardManager)
-                            getSystemService(Context.CLIPBOARD_SERVICE);
-                    cm.setText(pref.getSummary());
-                    Toast.makeText(
-                        Status.this,
-                        com.android.internal.R.string.text_copied,
-                        Toast.LENGTH_SHORT).show();
+                    CharSequence summary = pref.getSummary();
+                    if (summary != null && summary.length() != 0) {
+                        ClipboardManager cm = (ClipboardManager)
+                                getSystemService(Context.CLIPBOARD_SERVICE);
+                        cm.setText(summary);
+                        Toast.makeText(
+                                Status.this,
+                                com.android.internal.R.string.text_copied,
+                                Toast.LENGTH_SHORT).show();
+                    } else {
+                        // nothing to copy to the clipboard
+                    }
                     return true;
                 }
             });
