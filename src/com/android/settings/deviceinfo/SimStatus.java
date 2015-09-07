@@ -23,9 +23,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.os.ServiceManager;
-import android.os.RemoteException;
-import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -37,22 +34,16 @@ import android.telephony.SignalStrength;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
-import android.provider.Telephony;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ListView;
 
-import com.android.internal.telephony.ITelephony;
 import com.android.internal.telephony.DefaultPhoneNotifier;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
+import com.android.settings.CopyOnItemLongClickListener;
 import com.android.settings.R;
 import com.android.settings.Utils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -148,6 +139,8 @@ public class SimStatus extends PreferenceActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+
+        getListView().setOnItemLongClickListener(new CopyOnItemLongClickListener());
     }
 
     @Override

@@ -24,14 +24,12 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
-import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
-import android.util.Log;
 
+import com.android.settings.CopyOnItemLongClickListener;
 import com.android.settings.R;
-import java.util.List;
 
 public class ImeiInformation extends PreferenceActivity {
 
@@ -52,6 +50,8 @@ public class ImeiInformation extends PreferenceActivity {
         final TelephonyManager telephonyManager =
             (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
         initPreferenceScreen(telephonyManager.getSimCount());
+
+        getListView().setOnItemLongClickListener(new CopyOnItemLongClickListener());
     }
 
     // Since there are multiple phone for dsds, therefore need to show information for different
