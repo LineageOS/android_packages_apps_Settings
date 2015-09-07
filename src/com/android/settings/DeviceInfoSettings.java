@@ -25,11 +25,8 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
-import android.os.Binder;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Parcel;
-import android.os.RemoteException;
 import android.os.SELinux;
 import android.os.SystemClock;
 import android.os.SystemProperties;
@@ -38,12 +35,12 @@ import android.os.UserManager;
 import android.preference.Preference;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.widget.AdapterView;
 import android.widget.Toast;
 import com.android.settings.cyanogenmod.SecureSettingSwitchPreference;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -101,6 +98,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     long[] mHits = new long[3];
     int mDevHitCountdown;
     Toast mDevHitToast;
+
+    AdapterView.OnItemLongClickListener mOnLongClickListener;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -210,6 +209,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         // If enabled by default, just remove the setting, because it's confusing.
         removePreferenceIfBoolFalse(KEY_ADVANCED_MODE, !getResources().getBoolean(
                 com.android.internal.R.bool.config_advancedSettingsMode));
+
+        mOnLongClickListener = new CopyOnItemLongClickListener();
     }
 
     @Override
@@ -220,6 +221,9 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
                 Context.MODE_PRIVATE).getBoolean(DevelopmentSettings.PREF_SHOW,
                         android.os.Build.TYPE.equals("eng")) ? -1 : TAPS_TO_BE_A_DEVELOPER;
         mDevHitToast = null;
+
+        // make preference items copiable to clipboard on long press
+        getListView().setOnItemLongClickListener(mOnLongClickListener);
     }
 
     @Override
