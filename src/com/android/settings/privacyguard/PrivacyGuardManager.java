@@ -126,7 +126,7 @@ public class PrivacyGuardManager extends Fragment
 
         // get shared preference
         mPreferences = mActivity.getSharedPreferences("privacy_guard_manager", Activity.MODE_PRIVATE);
-        if (!mPreferences.getBoolean("first_help_shown", false)) {
+        if (savedInstanceState == null && !mPreferences.getBoolean("first_help_shown", false)) {
             showHelp();
         }
 
@@ -329,7 +329,7 @@ public class PrivacyGuardManager extends Fragment
         return mPreferences.getBoolean("show_system_apps", false);
     }
 
-    private class HelpDialogFragment extends DialogFragment {
+    public static class HelpDialogFragment extends DialogFragment {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             return new AlertDialog.Builder(getActivity())
@@ -346,7 +346,10 @@ public class PrivacyGuardManager extends Fragment
 
         @Override
         public void onCancel(DialogInterface dialog) {
-            mPreferences.edit().putBoolean("first_help_shown", true).commit();
+            getActivity().getSharedPreferences("privacy_guard_manager", Activity.MODE_PRIVATE)
+                    .edit()
+                    .putBoolean("first_help_shown", true)
+                    .commit();
         }
     }
 
@@ -355,7 +358,7 @@ public class PrivacyGuardManager extends Fragment
         fragment.show(getFragmentManager(), "help_dialog");
     }
 
-    private class ResetDialogFragment extends DialogFragment {
+    public static class ResetDialogFragment extends DialogFragment {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             return new AlertDialog.Builder(getActivity())
@@ -364,12 +367,7 @@ public class PrivacyGuardManager extends Fragment
                     .setPositiveButton(R.string.ok,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                // turn off privacy guard for all apps shown in the current list
-                                for (AppInfo app : mApps) {
-                                    app.privacyGuardEnabled = false;
-                                }
-                                mAppOps.resetAllModes();
-                                mAdapter.notifyDataSetChanged();
+                                ((PrivacyGuardManager)getTargetFragment()).doReset();
                         }
                     })
                     .setNegativeButton(R.string.cancel,
@@ -382,8 +380,18 @@ public class PrivacyGuardManager extends Fragment
         }
     }
 
+    private void doReset() {
+        // turn off privacy guard for all apps shown in the current list
+        for (AppInfo app : mApps) {
+            app.privacyGuardEnabled = false;
+        }
+        mAppOps.resetAllModes();
+        mAdapter.notifyDataSetChanged();
+    }
+
     private void showResetDialog() {
         ResetDialogFragment dialog = new ResetDialogFragment();
+        dialog.setTargetFragment(this, 0);
         dialog.show(getFragmentManager(), "reset_dialog");
     }
 
