@@ -1988,6 +1988,9 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         } else if (dialog == mUpdateRecoveryDialog) {
             updateUpdateRecoveryOptions();
             mUpdateRecoveryDialog = null;
+        } else if (dialog == mRootDialog) {
+            updateRootAccessOptions();
+            mRootDialog = null;
         }
     }
 
