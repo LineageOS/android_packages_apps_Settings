@@ -654,7 +654,7 @@ public class BatteryHistoryChart extends View {
                 int status = mBatteryBroadcast.getIntExtra(BatteryManager.EXTRA_DOCK_STATUS,
                         BatteryManager.BATTERY_STATUS_UNKNOWN);
                 boolean plugged = plugType != 0 &&
-                        (status == BatteryManager.BATTERY_STATUS_CHARGING ||
+                        (BatteryManager.isStatusCharging(status) ||
                         status == BatteryManager.BATTERY_STATUS_FULL);
                 if (!plugged) {
                     mDockChargeLabelString = batteryPercentString;

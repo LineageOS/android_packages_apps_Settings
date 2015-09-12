@@ -206,6 +206,13 @@ public class BatteryEntry {
     void getQuickNameIconForUid(BatteryStats.Uid uidObj) {
         final int uid = uidObj.getUid();
         final String uidString = Integer.toString(uid);
+
+        name = name + " uid=" + uidString + " packages " + sipper.getPackages();
+        iconId = R.drawable.ic_power_system;
+        icon = context.getDrawable(iconId);
+
+        return;
+/*
         if (sUidCache.containsKey(uidString)) {
             UidToDetail utd = sUidCache.get(uidString);
             defaultPackageName = utd.packageName;
@@ -234,6 +241,7 @@ public class BatteryEntry {
                 mRequestQueue.add(this);
             }
         }
+*/
     }
 
     /**

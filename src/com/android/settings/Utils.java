@@ -482,7 +482,7 @@ public final class Utils {
         int status = intent.getIntExtra(BatteryManager.EXTRA_STATUS,
                 BatteryManager.BATTERY_STATUS_UNKNOWN);
         String statusString;
-        if (status == BatteryManager.BATTERY_STATUS_CHARGING) {
+        if (BatteryManager.isStatusCharging(status)) {
             int resId;
             if (plugType == BatteryManager.BATTERY_PLUGGED_AC) {
                 resId = R.string.battery_info_status_charging_ac;
@@ -514,7 +514,7 @@ public final class Utils {
         int status = intent.getIntExtra(BatteryManager.EXTRA_DOCK_STATUS,
                 BatteryManager.BATTERY_STATUS_UNKNOWN);
         String statusString;
-        if (status == BatteryManager.BATTERY_STATUS_CHARGING) {
+        if (BatteryManager.isStatusCharging(status)) {
             int resId;
             if (plugType == BatteryManager.BATTERY_DOCK_PLUGGED_AC) {
                 resId = R.string.battery_info_status_charging_dock_ac;

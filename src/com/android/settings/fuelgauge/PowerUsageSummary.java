@@ -428,7 +428,7 @@ public class PowerUsageSummary extends SettingsPreferenceFragment
     private boolean isBatteryPluggedIn(Intent intent) {
         int status = intent.getIntExtra(BatteryManager.EXTRA_STATUS,
                 BatteryManager.BATTERY_STATUS_UNKNOWN);
-        return status == BatteryManager.BATTERY_STATUS_CHARGING
+        return BatteryManager.isStatusCharging(status)
                 || status == BatteryManager.BATTERY_STATUS_FULL;
     }
 
