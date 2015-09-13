@@ -77,13 +77,6 @@
                 android:persistent="false"
                 android:ringtoneType="notification" />
 
-        <!-- Interruptions -->
-        <PreferenceScreen
-                android:key="zen_mode"
-                android:title="@string/zen_mode_settings_title"
-                settings:keywords="@string/keywords_sounds_and_notifications_interruptions"
-                android:fragment="com.android.settings.notification.ZenModeSettings" />
-
         <!-- Increasing ring -->
         <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
                 android:key="increasing_ring"
