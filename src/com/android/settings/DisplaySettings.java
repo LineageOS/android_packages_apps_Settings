@@ -213,6 +213,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             updateLcdDensityPreferenceDescription(currentDensity);
         }
 
+        if (mLcdDensityPreference != null && UserHandle.myUserId() != UserHandle.USER_OWNER) {
+            displayPrefs.removePreference(mLcdDensityPreference);
+        }
+
         mFontSizePref = (FontDialogPreference) findPreference(KEY_FONT_SIZE);
         mFontSizePref.setOnPreferenceChangeListener(this);
         mFontSizePref.setOnPreferenceClickListener(this);
