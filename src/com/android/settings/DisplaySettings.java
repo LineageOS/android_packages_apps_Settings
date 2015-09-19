@@ -179,7 +179,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         updateDisplayRotationPreferenceDescription();
 
         mLcdDensityPreference = (ListPreference) findPreference(KEY_LCD_DENSITY);
-        if (mLcdDensityPreference != null) {
+        if (mLcdDensityPreference != null && UserHandle.myUserId() == UserHandle.USER_OWNER) {
             int defaultDensity = getDefaultDensity();
             int currentDensity = getCurrentDensity();
             if (currentDensity < 10 || currentDensity >= 1000) {
@@ -211,6 +211,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             }
             mLcdDensityPreference.setOnPreferenceChangeListener(this);
             updateLcdDensityPreferenceDescription(currentDensity);
+        } else if (mLcdDensityPreference != null && UserHandle.myUserId() != UserHandle.USER_OWNER) { {
+            displayPrefs.removePreference(mLcdDensityPreference);
         }
 
         mFontSizePref = (FontDialogPreference) findPreference(KEY_FONT_SIZE);
