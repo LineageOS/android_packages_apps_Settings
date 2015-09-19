@@ -27,6 +27,9 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.LightingColorFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -269,13 +272,17 @@ public class NotificationStation extends SettingsPreferenceFragment {
 
     private Drawable loadIconDrawable(String pkg, int userId, int resId) {
         Resources r = getResourcesForUserPackage(pkg, userId);
+        Drawable d;
+        ColorFilter filter = new LightingColorFilter(Color.BLACK, Color.BLACK);
 
         if (resId == 0) {
             return null;
         }
 
         try {
-            return r.getDrawable(resId, null);
+            d = r.getDrawable(resId, null);
+            d.setColorFilter(filter);
+            return d;
         } catch (RuntimeException e) {
             Log.w(TAG, "Icon not found in "
                     + (pkg != null ? resId : "<system>")
