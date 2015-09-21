@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df3967d1_745fa6e5",
+        "filename": "src/com/android/settings/DisplaySettings.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2015-09-21T23:16:51Z",
+      "side": 1,
+      "message": "Or you could do \n\nif (myUserId !\u003d USER_OWNER) {\n\n     displayPrefs.removePreference(...);\n\n} else {\n\n    int defaultDensity \u003d getDefaultDensity();\n\n    ...\n\n}\n\nlike Adnan had suggested much earlier.\nThis works too though.",
+      "revId": "895acb7599b7814b0c1394b3ea287cfcf58807a5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
