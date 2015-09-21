@@ -19,6 +19,7 @@ package com.android.settings.cyanogenmod;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.SystemProperties;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
@@ -33,10 +34,10 @@ import com.android.settings.Utils;
 public class IOScheduler extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
-    public static final String IOSCHED_PREF = "pref_io_sched";
-    public static final String IOSCHED_LIST_FILE = "/sys/block/mmcblk0/queue/scheduler";
-
-    public static final String SOB_PREF = "pref_io_sched_set_on_boot";
+    private static final String IOSCHED_PREF = "pref_io_sched";
+    private static final String IOSCHED_LIST_FILE = "/sys/block/mmcblk0/queue/scheduler";
+    private static final String IOSCHED_PROP = "sys.io.scheduler";
+    private static final String IOSCHED_PERSIST_PROP = "persist.sys.io.scheduler";
 
     private static final String TAG = "IOScheduler";
 
@@ -61,18 +62,22 @@ public class IOScheduler extends SettingsPreferenceFragment implements
 
         mIOSchedulerPref = (ListPreference) prefScreen.findPreference(IOSCHED_PREF);
 
-        /* I/O scheduler
-        Some systems might not use I/O schedulers */
+        /* I/O scheduler - Some systems might not use I/O schedulers */
         if (!Utils.fileExists(IOSCHED_LIST_FILE) ||
             (availableIOSchedulersLine = Utils.fileReadOneLine(IOSCHED_LIST_FILE)) == null) {
             prefScreen.removePreference(mIOSchedulerPref);
-
         } else {
             availableIOSchedulers = availableIOSchedulersLine.replace("[", "").replace("]", "").split(" ");
-            bropen = availableIOSchedulersLine.indexOf("[");
-            brclose = availableIOSchedulersLine.lastIndexOf("]");
-            if (bropen >= 0 && brclose >= 0)
-                currentIOScheduler = availableIOSchedulersLine.substring(bropen + 1, brclose);
+            currentIOScheduler = SystemProperties.get(IOSCHED_PERSIST_PROP,
+                    SystemProperties.get(IOSCHED_PROP, null));
+            if (currentIOScheduler == null) {
+                bropen = availableIOSchedulersLine.indexOf("[");
+                brclose = availableIOSchedulersLine.lastIndexOf("]");
+                if (bropen >= 0 && brclose >= 0) {
+                    currentIOScheduler = availableIOSchedulersLine.substring(bropen + 1, brclose);
+                    SystemProperties.set(IOSCHED_PERSIST_PROP, currentIOScheduler);
+                }
+            }
 
             mIOSchedulerPref.setEntryValues(availableIOSchedulers);
             mIOSchedulerPref.setEntries(availableIOSchedulers);
@@ -93,31 +98,28 @@ public class IOScheduler extends SettingsPreferenceFragment implements
 
         if (Utils.fileExists(IOSCHED_LIST_FILE) &&
             (availableIOSchedulersLine = Utils.fileReadOneLine(IOSCHED_LIST_FILE)) != null) {
-            bropen = availableIOSchedulersLine.indexOf("[");
-            brclose = availableIOSchedulersLine.lastIndexOf("]");
-            if (bropen >= 0 && brclose >= 0) {
-                currentIOScheduler = availableIOSchedulersLine.substring(bropen + 1, brclose);
-                mIOSchedulerPref.setSummary(String.format(mIOSchedulerFormat, currentIOScheduler));
+            currentIOScheduler = SystemProperties.get(IOSCHED_PERSIST_PROP,
+                    SystemProperties.get(IOSCHED_PROP, null));
+            if (currentIOScheduler == null) {
+                bropen = availableIOSchedulersLine.indexOf("[");
+                brclose = availableIOSchedulersLine.lastIndexOf("]");
+                if (bropen >= 0 && brclose >= 0) {
+                    currentIOScheduler = availableIOSchedulersLine.substring(bropen + 1, brclose);
+                    SystemProperties.set(IOSCHED_PERSIST_PROP, currentIOScheduler);
+                }
             }
+
+            mIOSchedulerPref.setSummary(String.format(mIOSchedulerFormat, currentIOScheduler));
         }
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        String fname = "";
-
         if (newValue != null) {
             if (preference == mIOSchedulerPref) {
-                fname = IOSCHED_LIST_FILE;
+                SystemProperties.set(IOSCHED_PERSIST_PROP, (String) newValue);
+                mIOSchedulerPref.setSummary(String.format(mIOSchedulerFormat, (String) newValue));
             }
-
-            if (Utils.fileWriteOneLine(fname, (String) newValue)) {
-                if (preference == mIOSchedulerPref) {
-                    mIOSchedulerPref.setSummary(String.format(mIOSchedulerFormat, (String) newValue));
-                }
-                return true;
-            } else {
-                return false;
-            }
+            return true;
         }
         return false;
     }
