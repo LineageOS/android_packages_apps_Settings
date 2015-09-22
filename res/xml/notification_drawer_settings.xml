@@ -46,6 +46,20 @@
             android:summaryOff="@string/qs_main_tiles_summary_off"
             android:defaultValue="true" />
 
+       <com.android.settings.cyanogenmod.SecureSettingSwitchPreference
+            android:key="sysui_qs_three_tiles"
+            android:title="@string/qs_three_tiles_title"
+            android:summaryOn="@string/qs_three_tiles_summary_on"
+            android:summaryOff="@string/qs_three_tiles_summary_off"
+            android:defaultValue="false" />
+
+       <com.android.settings.cyanogenmod.SecureSettingSwitchPreference
+            android:key="sysui_qs_allow_small_secondary_click"
+            android:title="@string/qs_allow_small_secondary_click_title"
+            android:summaryOn="@string/qs_allow_small_secondary_click_summary_on"
+            android:summaryOff="@string/qs_allow_small_secondary_click_summary_off"
+            android:defaultValue="false" />
+
         <com.android.settings.cyanogenmod.SecureSettingSwitchPreference
             android:key="lockscreen_hide_qs_tiles_with_sensitive_data"
             android:title="@string/qs_hide_tiles_with_sensitive_data"
