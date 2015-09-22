@@ -1291,7 +1291,7 @@
         <!-- Runs in the phone process since it needs access to the Phone object -->
         <activity android:name=".deviceinfo.Status"
                 android:label="@string/device_status_activity_title"
-                android:theme="@style/Theme.Settings"
+                android:theme="@style/Theme.SubSettingsDialogWhenLarge"
                 android:process="com.android.phone"
                 android:parentActivityName="Settings$DeviceInfoSettingsActivity">
             <intent-filter>
@@ -1304,7 +1304,7 @@
         <!-- Runs in the phone process since it needs access to the Phone object -->
         <activity android:name=".deviceinfo.SimStatus"
                 android:label="@string/sim_status_title"
-                android:theme="@style/Theme.Settings"
+                android:theme="@style/Theme.SubSettingsDialogWhenLarge"
                 android:process="com.android.phone">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -1316,7 +1316,7 @@
         <!-- Runs in the phone process since it needs access to the Phone object -->
         <activity android:name=".deviceinfo.ImeiInformation"
                 android:label="@string/imei_information_title"
-                android:theme="@style/Theme.Settings"
+                android:theme="@style/Theme.SubSettingsDialogWhenLarge"
                 android:process="com.android.phone">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
