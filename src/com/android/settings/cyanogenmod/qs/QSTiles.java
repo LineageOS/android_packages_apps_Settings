@@ -102,8 +102,8 @@ public class QSTiles extends Fragment implements
 
         mDraggableGridView.setOnRearrangeListener(this);
         mDraggableGridView.setOnItemClickListener(this);
-        mDraggableGridView.setUseLargeFirstRow(Settings.Secure.getInt(resolver,
-                Settings.Secure.QS_USE_MAIN_TILES, 1) == 1);
+        mDraggableGridView.setUseThreeTiles(Settings.Secure.getInt(resolver,
+                Settings.Secure.QS_USE_THREE_TILES, 0) == 1);
     }
 
     private void rebuildTiles() {
