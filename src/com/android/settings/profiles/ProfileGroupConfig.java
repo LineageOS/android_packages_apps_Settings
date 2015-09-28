@@ -142,7 +142,9 @@ public class ProfileGroupConfig extends SettingsPreferenceFragment implements
             mProfileGroup.setSoundOverride(uri);
         }
 
+	if (mProfileManager != null) {
         mProfileManager.updateProfile(mProfile);
+	}
 
         updateState();
         return true;
