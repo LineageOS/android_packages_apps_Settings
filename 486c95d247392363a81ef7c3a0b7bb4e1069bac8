@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf3e73b7_50094cdb",
+        "filename": "src/com/android/settings/profiles/ProfileGroupConfig.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-09-28T20:08:37Z",
+      "side": 1,
+      "message": "If read the code correctly, this isn\u0027t going to avoid the crash, because in the mProfile will be null and ProfileManagerService#updateProfile will generate a NPE in onPreferenceChanged.",
+      "range": {
+        "startLine": 76,
+        "startChar": 43,
+        "endLine": 76,
+        "endChar": 59
+      },
+      "revId": "486c95d247392363a81ef7c3a0b7bb4e1069bac8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
