@@ -73,12 +73,13 @@ public class ProfileGroupConfig extends SettingsPreferenceFragment implements
 
         addPreferencesFromResource(R.xml.profile_settings);
 
+        mProfileManager = (ProfileManager) getSystemService(PROFILE_SERVICE);
+
         final Bundle args = getArguments();
         if (args != null) {
             mProfile = (Profile) args.getParcelable("Profile");
             UUID uuid = UUID.fromString(args.getString("ProfileGroup"));
 
-            mProfileManager = (ProfileManager) getSystemService(PROFILE_SERVICE);
             mProfileGroup = mProfile.getProfileGroup(uuid);
 
             mRingerMode = (ListPreference) findPreference(KEY_RINGERMODE);
