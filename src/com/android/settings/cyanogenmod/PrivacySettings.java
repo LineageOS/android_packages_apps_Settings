@@ -23,6 +23,8 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageInfo;
 import android.content.pm.ApplicationInfo;
 import android.os.Bundle;
+import android.os.UserHandle;
+import android.os.UserManager;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.provider.SearchIndexableResource;
@@ -47,6 +49,7 @@ public class PrivacySettings extends SettingsPreferenceFragment implements Index
     private static final String KEY_WHISPERPUSH = "whisperpush";
     private static final String WHISPERPUSH_ORIGINAL = "org.whispersystems.whisperpush";
     private static final String WHISPERPUSH_UPDATE = "org.whispersystems.whisperpush2";
+    private static final String KEY_STATS = "cmstats";
 
     private PreferenceScreen mBlacklist;
     private Preference mWhisperPush;
@@ -62,8 +65,14 @@ public class PrivacySettings extends SettingsPreferenceFragment implements Index
         // Add package manager to check if features are available
         PackageManager pm = getPackageManager();
 
+        boolean isOwner = UserHandle.myUserId() == UserHandle.USER_OWNER;
+        if (!isOwner) {
+            PreferenceScreen root = getPreferenceScreen();
+            root.removePreference(findPreference(KEY_STATS));
+        }
+
         // Determine options based on device telephony support
-        if (!pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY)) {
+        if (!pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY) || !isOwner) {
             // No telephony, remove dependent options
             PreferenceScreen root = getPreferenceScreen();
             root.removePreference(mBlacklist);
