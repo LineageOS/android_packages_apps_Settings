@@ -23,6 +23,8 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageInfo;
 import android.content.pm.ApplicationInfo;
 import android.os.Bundle;
+import android.os.UserHandle;
+import android.os.UserManager;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.provider.SearchIndexableResource;
@@ -62,8 +64,15 @@ public class PrivacySettings extends SettingsPreferenceFragment implements Index
         // Add package manager to check if features are available
         PackageManager pm = getPackageManager();
 
+        UserManager userManager = UserManager.get(getActivity());
+        UserHandle userHandle = new UserHandle(UserHandle.myUserId());
+        boolean callSmsNotAllowed = userManager.hasUserRestriction(
+                userManager.DISALLOW_OUTGOING_CALLS, userHandle);
+        callSmsNotAllowed &= userManager.hasUserRestriction(
+                UserManager.DISALLOW_SMS, userHandle);
+
         // Determine options based on device telephony support
-        if (!pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY)) {
+        if (!pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY) || callSmsNotAllowed) {
             // No telephony, remove dependent options
             PreferenceScreen root = getPreferenceScreen();
             root.removePreference(mBlacklist);
