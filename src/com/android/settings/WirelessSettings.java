@@ -276,9 +276,16 @@ public class WirelessSettings extends SettingsPreferenceFragment
         mAirplaneModeEnabler = new AirplaneModeEnabler(activity, mAirplaneModePreference);
         mNfcEnabler = new NfcEnabler(activity, nfc, androidBeam, nfcPayment);
 
+        UserManager userManager = UserManager.get(getActivity());
+        UserHandle userHandle = new UserHandle(myUserId);
+        boolean callSmsNotAllowed = userManager.hasUserRestriction(
+                userManager.DISALLOW_OUTGOING_CALLS, userHandle);
+        callSmsNotAllowed &= userManager.hasUserRestriction(
+                UserManager.DISALLOW_SMS, userHandle);
+
         mSmsApplicationPreference = (AppListPreference) findPreference(KEY_SMS_APPLICATION);
         // Restricted users cannot currently read/write SMS.
-        if (isRestrictedUser) {
+        if (isRestrictedUser || callSmsNotAllowed) {
             removePreference(KEY_SMS_APPLICATION);
         } else {
             mSmsApplicationPreference.setOnPreferenceChangeListener(this);

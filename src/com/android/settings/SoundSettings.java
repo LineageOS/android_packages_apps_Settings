@@ -36,6 +36,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.os.UserHandle;
 import android.os.Vibrator;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -305,10 +306,12 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private void initRingtones(PreferenceCategory root) {
         DefaultRingtonePreference phoneRingtonePreference =
                 (DefaultRingtonePreference) root.findPreference(KEY_PHONE_RINGTONE);
-        if (mPhoneRingtonePreferences != null && !mVoiceCapable) {
+        boolean isOwner = UserHandle.myUserId() == UserHandle.USER_OWNER;
+
+        if (mPhoneRingtonePreferences != null && (!mVoiceCapable || !isOwner)) {
             root.removePreference(phoneRingtonePreference);
             mPhoneRingtonePreferences = null;
-        } else {
+        } else if (isOwner) {
             mPhoneRingtonePreferences = new ArrayList<DefaultRingtonePreference>();
             TelephonyManager telephonyManager = (TelephonyManager) mContext.getSystemService(
                     Context.TELEPHONY_SERVICE);
@@ -329,6 +332,8 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
             } else {
                 mPhoneRingtonePreferences.add(phoneRingtonePreference);
             }
+        } else {
+            root.removePreference(phoneRingtonePreference);
         }
         mNotificationRingtonePreference = root.findPreference(KEY_NOTIFICATION_RINGTONE);
     }
@@ -437,7 +442,8 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
             Log.i(TAG, "Preference not found: " + KEY_VIBRATE_WHEN_RINGING);
             return;
         }
-        if (!mVoiceCapable) {
+        boolean isOwner = UserHandle.myUserId() == UserHandle.USER_OWNER;
+        if (!mVoiceCapable || !isOwner) {
             root.removePreference(mVibrateWhenRinging);
             mVibrateWhenRinging = null;
             return;
