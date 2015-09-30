@@ -47,7 +47,7 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.android.settings.cyanogenmod.SecureSettingSwitchPreference;
+import com.android.settings.cyanogenmod.CMSecureSettingSwitchPreference;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Index;
 import com.android.settings.search.Indexable;
@@ -103,7 +103,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
 
     public static final String KEY_ADVANCED_MODE = "advanced_mode";
 
-    SecureSettingSwitchPreference mAdvancedSettings;
+    CMSecureSettingSwitchPreference mAdvancedSettings;
 
     long[] mHits = new long[3];
     int mDevHitCountdown;
@@ -227,7 +227,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
             }
         }
 
-        mAdvancedSettings = (SecureSettingSwitchPreference) findPreference(KEY_ADVANCED_MODE);
+        mAdvancedSettings = (CMSecureSettingSwitchPreference) findPreference(KEY_ADVANCED_MODE);
         // If enabled by default, just remove the setting, because it's confusing.
         removePreferenceIfBoolFalse(KEY_ADVANCED_MODE, !getResources().getBoolean(
                 com.android.internal.R.bool.config_advancedSettingsMode));

@@ -35,6 +35,8 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.util.cm.PowerMenuConstants;
 
+import cyanogenmod.providers.CMSettings;
+
 import static com.android.internal.util.cm.PowerMenuConstants.*;
 
 import java.util.Arrays;
@@ -235,8 +237,8 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
     private void getUserConfig() {
         mLocalUserConfig.clear();
         String[] defaultActions;
-        String savedActions = Settings.Secure.getStringForUser(mContext.getContentResolver(),
-                Settings.Secure.POWER_MENU_ACTIONS, UserHandle.USER_CURRENT);
+        String savedActions = CMSettings.Secure.getStringForUser(mContext.getContentResolver(),
+                CMSettings.Secure.POWER_MENU_ACTIONS, UserHandle.USER_CURRENT);
 
         if (savedActions == null) {
             defaultActions = mContext.getResources().getStringArray(
@@ -271,8 +273,8 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
             }
         }
 
-        Settings.Secure.putStringForUser(getContentResolver(),
-                 Settings.Secure.POWER_MENU_ACTIONS, s.toString(), UserHandle.USER_CURRENT);
+        CMSettings.Secure.putStringForUser(getContentResolver(),
+                 CMSettings.Secure.POWER_MENU_ACTIONS, s.toString(), UserHandle.USER_CURRENT);
         updatePowerMenuDialog();
     }
 
