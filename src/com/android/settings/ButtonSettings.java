@@ -51,6 +51,7 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
 import cyanogenmod.hardware.CMHardwareManager;
+import cyanogenmod.providers.CMSettings;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -442,8 +443,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         try {
             // Only show the navigation bar category on devices that have a navigation bar
             // unless we are forcing it via development settings
-            boolean forceNavbar = android.provider.Settings.Secure.getInt(resolver,
-                    android.provider.Settings.Secure.DEV_FORCE_SHOW_NAVBAR, 0) == 1;
+            boolean forceNavbar = Settings.Secure.getInt(resolver,
+                    Settings.Secure.DEV_FORCE_SHOW_NAVBAR, 0) == 1;
             boolean hasNavBar = WindowManagerGlobal.getWindowManagerService().hasNavigationBar()
                     || forceNavbar;
 
@@ -642,13 +643,13 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
         /* Save/restore button timeouts to disable them in softkey mode */
         if (enabled) {
-            Settings.Secure.putInt(context.getContentResolver(),
-                    Settings.Secure.BUTTON_BRIGHTNESS, 0);
+            CMSettings.Secure.putInt(context.getContentResolver(),
+                    CMSettings.Secure.BUTTON_BRIGHTNESS, 0);
         } else {
             int oldBright = prefs.getInt(ButtonBacklightBrightness.KEY_BUTTON_BACKLIGHT,
                     defaultBrightness);
-            Settings.Secure.putInt(context.getContentResolver(),
-                    Settings.Secure.BUTTON_BRIGHTNESS, oldBright);
+            CMSettings.Secure.putInt(context.getContentResolver(),
+                    CMSettings.Secure.BUTTON_BRIGHTNESS, oldBright);
         }
     }
 

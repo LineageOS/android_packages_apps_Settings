@@ -41,6 +41,8 @@ import com.android.internal.util.cm.QSUtils;
 import com.android.settings.R;
 import com.android.settings.Utils;
 
+import cyanogenmod.providers.CMSettings;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -102,8 +104,8 @@ public class QSTiles extends Fragment implements
 
         mDraggableGridView.setOnRearrangeListener(this);
         mDraggableGridView.setOnItemClickListener(this);
-        mDraggableGridView.setUseLargeFirstRow(Settings.Secure.getInt(resolver,
-                Settings.Secure.QS_USE_MAIN_TILES, 1) == 1);
+        mDraggableGridView.setUseLargeFirstRow(CMSettings.Secure.getInt(resolver,
+                CMSettings.Secure.QS_USE_MAIN_TILES, 1) == 1);
     }
 
     private void rebuildTiles() {

@@ -23,7 +23,6 @@ import android.os.UserHandle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
-import android.provider.Settings;
 
 import android.provider.SearchIndexableResource;
 import com.android.settings.R;
@@ -31,6 +30,8 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.cyanogenmod.qs.QSTiles;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
+
+import cyanogenmod.providers.CMSettings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,8 +60,8 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
         mQuickPulldown = (ListPreference) prefSet.findPreference(QUICK_PULLDOWN);
 
         mQuickPulldown.setOnPreferenceChangeListener(this);
-        int quickPulldownValue = Settings.System.getIntForUser(resolver,
-                Settings.System.QS_QUICK_PULLDOWN, 0, UserHandle.USER_CURRENT);
+        int quickPulldownValue = CMSettings.System.getIntForUser(resolver,
+                CMSettings.System.QS_QUICK_PULLDOWN, 0, UserHandle.USER_CURRENT);
         mQuickPulldown.setValue(String.valueOf(quickPulldownValue));
         updatePulldownSummary(quickPulldownValue);
     }
@@ -79,7 +80,7 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
         ContentResolver resolver = getContentResolver();
         if (preference == mQuickPulldown) {
             int quickPulldownValue = Integer.valueOf((String) newValue);
-            Settings.System.putIntForUser(resolver, Settings.System.QS_QUICK_PULLDOWN,
+            CMSettings.System.putIntForUser(resolver, CMSettings.System.QS_QUICK_PULLDOWN,
                     quickPulldownValue, UserHandle.USER_CURRENT);
             updatePulldownSummary(quickPulldownValue);
             return true;
