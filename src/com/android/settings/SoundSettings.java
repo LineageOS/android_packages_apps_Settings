@@ -59,6 +59,7 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
 import cyanogenmod.hardware.CMHardwareManager;
+import cyanogenmod.providers.CMSettings;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -467,8 +468,8 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
                 com.android.internal.R.drawable.ic_audio_ring_notif_mute);
 
         if (mVoiceCapable) {
-            final boolean enabled = Settings.Secure.getInt(getContentResolver(),
-                    Settings.Secure.VOLUME_LINK_NOTIFICATION, 1) == 1;
+            final boolean enabled = CMSettings.Secure.getInt(getContentResolver(),
+                    CMSettings.Secure.VOLUME_LINK_NOTIFICATION, 1) == 1;
 
             if (mNotificationPreference != null) {
                 mNotificationPreference.setEnabled(!enabled);
@@ -506,7 +507,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
         private final Uri VIBRATE_WHEN_RINGING_URI =
                 Settings.System.getUriFor(Settings.System.VIBRATE_WHEN_RINGING);
         private final Uri VOLUME_LINK_NOTIFICATION_URI =
-                Settings.Secure.getUriFor(Settings.Secure.VOLUME_LINK_NOTIFICATION);
+                CMSettings.Secure.getUriFor(CMSettings.Secure.VOLUME_LINK_NOTIFICATION);
 
         public SettingsObserver() {
             super(mHandler);

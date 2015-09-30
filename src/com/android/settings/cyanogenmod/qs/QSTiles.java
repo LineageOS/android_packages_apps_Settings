@@ -25,7 +25,6 @@ import android.content.DialogInterface;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -40,6 +39,8 @@ import android.widget.TextView;
 import com.android.internal.util.cm.QSUtils;
 import com.android.settings.R;
 import com.android.settings.Utils;
+
+import cyanogenmod.providers.CMSettings;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -102,14 +103,14 @@ public class QSTiles extends Fragment implements
 
         mDraggableGridView.setOnRearrangeListener(this);
         mDraggableGridView.setOnItemClickListener(this);
-        mDraggableGridView.setUseLargeFirstRow(Settings.Secure.getInt(resolver,
-                Settings.Secure.QS_USE_MAIN_TILES, 1) == 1);
+        mDraggableGridView.setUseLargeFirstRow(CMSettings.Secure.getInt(resolver,
+                CMSettings.Secure.QS_USE_MAIN_TILES, 1) == 1);
     }
 
     private void rebuildTiles() {
         mDraggableGridView.resetState();
-        String order = Settings.Secure.getString(getActivity().getContentResolver(),
-                Settings.Secure.QS_TILES);
+        String order = CMSettings.Secure.getString(getActivity().getContentResolver(),
+                CMSettings.Secure.QS_TILES);
         if (order == null) {
             order = resetTiles(getActivity());
         }
@@ -203,7 +204,7 @@ public class QSTiles extends Fragment implements
             }
         }
 
-        Settings.Secure.putString(resolver, Settings.Secure.QS_TILES, tiles.toString());
+        CMSettings.Secure.putString(resolver, CMSettings.Secure.QS_TILES, tiles.toString());
     }
 
     private View buildQSTile(String tileType) {
@@ -237,14 +238,14 @@ public class QSTiles extends Fragment implements
 
     private static String resetTiles(Context context) {
         String tiles = QSUtils.getDefaultTilesAsString(context);
-        Settings.Secure.putString(context.getContentResolver(),
-                Settings.Secure.QS_TILES, tiles);
+        CMSettings.Secure.putString(context.getContentResolver(),
+                CMSettings.Secure.QS_TILES, tiles);
         return tiles;
     }
 
     public static int determineTileCount(Context context) {
-        String order = Settings.Secure.getString(context.getContentResolver(),
-                Settings.Secure.QS_TILES);
+        String order = CMSettings.Secure.getString(context.getContentResolver(),
+                CMSettings.Secure.QS_TILES);
         if (order == null) {
             order = QSUtils.getDefaultTilesAsString(context);
         }
@@ -272,7 +273,7 @@ public class QSTiles extends Fragment implements
 
             // We load the added tiles and compare it to the list of available tiles.
             // We only show the tiles that aren't already on the grid.
-            String order = Settings.Secure.getString(resolver, Settings.Secure.QS_TILES);
+            String order = CMSettings.Secure.getString(resolver, CMSettings.Secure.QS_TILES);
 
             List<String> savedTiles = Arrays.asList(order.split(","));
 
