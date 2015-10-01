@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9f436f4f_9846b94f",
+        "filename": "src/com/android/settings/SoundSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 940
+      },
+      "writtenOn": "2015-10-01T23:48:19Z",
+      "side": 1,
+      "message": "The first time around, mPhoneRingtonePreference is null, so its skipped.\n\nWhich now that i think about it might be a bug.\nWill confirm/fix.",
+      "parentUuid": "9f436f4f_182649b9",
+      "range": {
+        "startLine": 336,
+        "startChar": 17,
+        "endLine": 336,
+        "endChar": 33
+      },
+      "revId": "270409b9908e70e34450d2b45fd7a5b35a32345f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f436f4f_d837a1e3",
         "filename": "src/com/android/settings/WirelessSettings.java",
         "patchSetId": 4
@@ -59,6 +83,30 @@
       "writtenOn": "2015-10-01T02:23:11Z",
       "side": 1,
       "message": "if (callSmsNotAllowed ) {\n\n}",
+      "range": {
+        "startLine": 288,
+        "startChar": 12,
+        "endLine": 288,
+        "endChar": 28
+      },
+      "revId": "270409b9908e70e34450d2b45fd7a5b35a32345f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f436f4f_a3c5d25d",
+        "filename": "src/com/android/settings/WirelessSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 940
+      },
+      "writtenOn": "2015-10-01T23:48:19Z",
+      "side": 1,
+      "message": "Won\u0027t this break the removal of the preference for restricted users ?\n\nI think the current logic is a lot easier to follow, especially with the new patch",
+      "parentUuid": "9f436f4f_b834dddf",
       "range": {
         "startLine": 288,
         "startChar": 12,
