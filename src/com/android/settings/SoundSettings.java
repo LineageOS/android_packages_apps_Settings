@@ -305,7 +305,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private void initRingtones(PreferenceCategory root) {
         DefaultRingtonePreference phoneRingtonePreference =
                 (DefaultRingtonePreference) root.findPreference(KEY_PHONE_RINGTONE);
-        if (mPhoneRingtonePreferences != null && !mVoiceCapable) {
+        if (phoneRingtonePreference != null && !mVoiceCapable) {
             root.removePreference(phoneRingtonePreference);
             mPhoneRingtonePreferences = null;
         } else {
