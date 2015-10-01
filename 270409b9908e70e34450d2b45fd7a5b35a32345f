@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f436f4f_182649b9",
+        "filename": "src/com/android/settings/SoundSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-10-01T02:23:11Z",
+      "side": 1,
+      "message": "This case doesn\u0027t seem to be necessary. Shouldn\u0027t be the logic enough with:\n\nif (mPhoneRingtonePreferences !\u003d null \u0026\u0026 (!mVoiceCapable || !isOwner)) {\n\n} else {\n\n}",
+      "range": {
+        "startLine": 336,
+        "startChar": 17,
+        "endLine": 336,
+        "endChar": 33
+      },
+      "revId": "270409b9908e70e34450d2b45fd7a5b35a32345f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f436f4f_d837a1e3",
+        "filename": "src/com/android/settings/WirelessSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-10-01T02:23:11Z",
+      "side": 1,
+      "message": "boolean callSmsNotAllowed \u003d false;\nif (!isRestrictedUser) {\n        UserManager userManager \u003d UserManager.get(getActivity());\n        UserHandle userHandle \u003d new UserHandle(myUserId);\n        callSmsNotAllowed \u003d userManager.hasUserRestriction(\n                userManager.DISALLOW_OUTGOING_CALLS, userHandle);\n        callSmsNotAllowed \u0026\u003d userManager.hasUserRestriction(\n                UserManager.DISALLOW_SMS, userHandle);\n}",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 0
+      },
+      "revId": "270409b9908e70e34450d2b45fd7a5b35a32345f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f436f4f_b834dddf",
+        "filename": "src/com/android/settings/WirelessSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2015-10-01T02:23:11Z",
+      "side": 1,
+      "message": "if (callSmsNotAllowed ) {\n\n}",
+      "range": {
+        "startLine": 288,
+        "startChar": 12,
+        "endLine": 288,
+        "endChar": 28
+      },
+      "revId": "270409b9908e70e34450d2b45fd7a5b35a32345f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
