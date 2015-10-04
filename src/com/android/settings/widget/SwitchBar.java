@@ -28,6 +28,9 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import com.android.settings.R;
@@ -35,7 +38,7 @@ import com.android.settings.R;
 import java.util.ArrayList;
 
 public class SwitchBar extends LinearLayout implements CompoundButton.OnCheckedChangeListener,
-        View.OnClickListener {
+        View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     public static interface OnSwitchChangeListener {
         /**
@@ -47,14 +50,22 @@ public class SwitchBar extends LinearLayout implements CompoundButton.OnCheckedC
         void onSwitchChanged(Switch switchView, boolean isChecked);
     }
 
+    public static interface OnItemSelectedListener {
+        void onItemSelected(Switch switchView, int position);
+    }
+
     private ToggleSwitch mSwitch;
     private TextView mTextView;
+    private Spinner mSpinner;
 
     private int mStateOnLabel = R.string.switch_on_text;
     private int mStateOffLabel = R.string.switch_off_text;
 
     private ArrayList<OnSwitchChangeListener> mSwitchChangeListeners =
             new ArrayList<OnSwitchChangeListener>();
+
+    private ArrayList<OnItemSelectedListener> mItemSelectedListeners =
+            new ArrayList<OnItemSelectedListener>();
 
     private static int[] MARGIN_ATTRIBUTES = {
             R.attr.switchBarMarginStart, R.attr.switchBarMarginEnd};
@@ -84,6 +95,11 @@ public class SwitchBar extends LinearLayout implements CompoundButton.OnCheckedC
         mTextView = (TextView) findViewById(R.id.switch_text);
         mTextView.setText(R.string.switch_off_text);
         ViewGroup.MarginLayoutParams lp = (MarginLayoutParams) mTextView.getLayoutParams();
+        lp.setMarginStart(switchBarMarginStart);
+
+        mSpinner = (Spinner) findViewById(R.id.switch_spinner);
+        mSpinner.setOnItemSelectedListener(this);
+        lp = (MarginLayoutParams) mSpinner.getLayoutParams();
         lp.setMarginStart(switchBarMarginStart);
 
         mSwitch = (ToggleSwitch) findViewById(R.id.switch_widget);
@@ -135,7 +151,25 @@ public class SwitchBar extends LinearLayout implements CompoundButton.OnCheckedC
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
         mTextView.setEnabled(enabled);
+        mSpinner.setEnabled(enabled);
         mSwitch.setEnabled(enabled);
+    }
+
+    public void showSpinner(boolean visible) {
+        mTextView.setVisibility(visible ? View.GONE : View.VISIBLE);
+        mSpinner.setVisibility(visible ? View.VISIBLE : View.GONE);
+    }
+
+    public void setSpinnerEntries(String[] entries) {
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                     (getContext(), R.layout.spinner_item, entries);     
+        adapter.setDropDownViewResource
+                     (R.layout.spinner_dropdown_item);
+        mSpinner.setAdapter(adapter);
+    }
+
+    public final Spinner getSpinner() {
+        return mSpinner;
     }
 
     public final ToggleSwitch getSwitch() {
@@ -178,6 +212,16 @@ public class SwitchBar extends LinearLayout implements CompoundButton.OnCheckedC
         propagateChecked(isChecked);
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        for (OnItemSelectedListener mItemSelectedListener : mItemSelectedListeners)
+            mItemSelectedListener.onItemSelected(mSwitch, position);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+    }
+
     public void addOnSwitchChangeListener(OnSwitchChangeListener listener) {
         if (mSwitchChangeListeners.contains(listener)) {
             throw new IllegalStateException("Cannot add twice the same OnSwitchChangeListener");
@@ -190,6 +234,20 @@ public class SwitchBar extends LinearLayout implements CompoundButton.OnCheckedC
             throw new IllegalStateException("Cannot remove OnSwitchChangeListener");
         }
         mSwitchChangeListeners.remove(listener);
+    }
+
+    public void addOnItemSelectedListener(OnItemSelectedListener listener) {
+        if (mItemSelectedListeners.contains(listener)) {
+            throw new IllegalStateException("Cannot add twice the same OnItemSelectedListener");
+        }
+        mItemSelectedListeners.add(listener);
+    }
+
+    public void removeOnItemSelectedListener(OnItemSelectedListener listener) {
+        if (!mItemSelectedListeners.contains(listener)) {
+            throw new IllegalStateException("Cannot remove OnItemSelectedListener");
+        }
+        mItemSelectedListeners.remove(listener);
     }
 
     static class SavedState extends BaseSavedState {
