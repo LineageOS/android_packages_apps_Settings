@@ -19,7 +19,7 @@
 
         <!-- System update settings - launches activity -->
         <PreferenceScreen android:key="system_update_settings"
-                android:title="@string/system_update_settings_list_item_title" 
+                android:title="@string/system_update_settings_list_item_title"
                 android:summary="@string/system_update_settings_list_item_summary">
             <intent android:action="android.settings.SYSTEM_UPDATE_SETTINGS"
                     android:targetPackage="com.cyngn.fota"
@@ -50,7 +50,7 @@
 
         <!-- Device status - launches activity -->
         <PreferenceScreen android:key="status_info"
-                android:title="@string/device_status" 
+                android:title="@string/device_status"
                 android:summary="@string/device_status_summary">
             <intent android:action="android.intent.action.MAIN"
                     android:targetPackage="com.android.settings"
@@ -141,6 +141,11 @@
                 style="?android:preferenceInformationStyle"
                 android:title="@string/firmware_version"
                 android:summary="@string/device_info_default"/>
+
+        <Preference android:key="security_level"
+            style="?android:preferenceInformationStyle"
+            android:title="@string/security_level_title"
+            android:summary="@string/security_level_date" />
 
         <!-- Device FCC equipment id -->
         <Preference android:key="fcc_equipment_id"
