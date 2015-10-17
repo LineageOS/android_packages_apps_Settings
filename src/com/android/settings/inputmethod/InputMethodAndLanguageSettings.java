@@ -428,10 +428,15 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         }
         if (preference == mStylusIconEnabled) {
             Settings.System.putInt(getActivity().getContentResolver(),
-                Settings.System.STYLUS_ICON_ENABLED, mStylusIconEnabled.isChecked() ? 1 : 0);
+                    Settings.System.STYLUS_ICON_ENABLED,
+                    mStylusIconEnabled.isChecked() ? 1 : 0);
         } else if (preference == mHighTouchSensitivity) {
+            boolean mHighTouchSensitivityEnabled = mHighTouchSensitivity.isChecked();
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.CM_HARDWARE_HIGH_TOUCH_SENSITIVITY_ENABLE,
+                    mHighTouchSensitivityEnabled ? 1 : 0);
             return mHardware.set(CMHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY,
-                    mHighTouchSensitivity.isChecked());
+                    mHighTouchSensitivityEnabled);
         } else if (preference == mTouchscreenHovering) {
             return mHardware.set(CMHardwareManager.FEATURE_TOUCH_HOVERING,
                     mTouchscreenHovering.isChecked());
