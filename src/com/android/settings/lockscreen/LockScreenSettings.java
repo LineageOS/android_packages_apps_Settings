@@ -19,6 +19,7 @@ package com.android.settings.lockscreen;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.admin.DevicePolicyManager;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -79,6 +80,7 @@ public class LockScreenSettings extends SettingsPreferenceFragment
     private static final String KEY_MANAGE_TRUST_AGENTS = "manage_trust_agents";
     private static final String KEY_SHOW_VISUALIZER = "lockscreen_visualizer";
     private static final String KEY_MANAGE_FINGERPRINTS = "manage_fingerprints";
+    private static final String KEY_POWER_BUTTON_LONGPRESS = "lockscreen_power_button_longpress";
 
     private static final int SET_OR_CHANGE_LOCK_METHOD_REQUEST = 123;
     private static final int CONFIRM_EXISTING_FOR_BIOMETRIC_WEAK_IMPROVE_REQUEST = 124;
@@ -247,6 +249,19 @@ public class LockScreenSettings extends SettingsPreferenceFragment
                     generalCategory.findPreference(KEY_SHOW_VISUALIZER);
             if (displayVisualizer != null) {
                 generalCategory.removePreference(displayVisualizer);
+            }
+        }
+
+        // if switch exists, disable it and remove it in case
+        // user has no lock screen set or he uses only swipe
+        if (generalCategory != null && (resid == R.xml.security_settings_lockscreen 
+                || resid == R.xml.security_settings_chooser)) {
+            SwitchPreference powerButtonLongpress = (SwitchPreference)
+                    generalCategory.findPreference(KEY_POWER_BUTTON_LONGPRESS);
+            if (powerButtonLongpress != null) {
+                generalCategory.removePreference(powerButtonLongpress);
+                Settings.Secure.putInt(getContentResolver(),
+                        Settings.Secure.LOCKSCREEN_POWER_MENU_ENABLED, 0);
             }
         }
 
@@ -638,6 +653,8 @@ public class LockScreenSettings extends SettingsPreferenceFragment
                 keys.add(KEY_TRUST_AGENT);
                 keys.add(KEY_MANAGE_TRUST_AGENTS);
             }
+
+            keys.add(KEY_POWER_BUTTON_LONGPRESS);
 
             // hidden on low end gfx devices.
             if (!ActivityManager.isHighEndGfx()) {

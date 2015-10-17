@@ -52,6 +52,12 @@
             android:title="@string/lockscreen_visualizer_title"
             android:defaultValue="true"
             settings:advanced="true"/>
+
+        <com.android.settings.cyanogenmod.SecureSettingSwitchPreference
+            android:key="lockscreen_power_button_longpress"
+            android:title="@string/lockscreen_power_button_longpress_title"
+            android:defaultValue="false"
+            settings:advanced="true"/>
     </PreferenceCategory>
 
 </PreferenceScreen>
