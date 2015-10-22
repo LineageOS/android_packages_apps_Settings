@@ -181,7 +181,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         mLcdDensityPreference = (ListPreference) findPreference(KEY_LCD_DENSITY);
         if (mLcdDensityPreference != null) {
             if (UserHandle.myUserId() != UserHandle.USER_OWNER) {
-                displayPrefs.removePreference(mLcdDensityPreference);
+                interfacePrefs.removePreference(mLcdDensityPreference);
             } else {
                 int defaultDensity = getDefaultDensity();
                 int currentDensity = getCurrentDensity();
