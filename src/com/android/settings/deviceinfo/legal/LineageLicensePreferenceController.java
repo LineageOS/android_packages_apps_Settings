@@ -21,6 +21,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.SystemProperties;
 
+import androidx.preference.Preference;
+import androidx.preference.PreferenceScreen;
+
 public class LineageLicensePreferenceController extends LegalPreferenceController {
 
     private static final String PROPERTY_LINEAGELICENSE_URL = "ro.lineagelegal.url";
@@ -30,10 +33,30 @@ public class LineageLicensePreferenceController extends LegalPreferenceControlle
     }
 
     @Override
+    public void displayPreference(PreferenceScreen screen) {
+        super.displayPreference(screen);
+
+        Preference preference = screen.findPreference(getPreferenceKey());
+        if (preference != null) {
+            preference.setOnPreferenceClickListener(pref -> {
+                mContext.startActivity(getIntent());
+                return true;
+            });
+        }
+    }
+
+    @Override
+    public int getAvailabilityStatus() {
+        if (getIntent().resolveActivity(mContext.getPackageManager()) != null) {
+            return AVAILABLE;
+        } else {
+            return UNSUPPORTED_ON_DEVICE;
+        }
+    }
+
+    @Override
     protected Intent getIntent() {
-        final Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.addCategory(Intent.CATEGORY_DEFAULT);
-        intent.setData(Uri.parse(SystemProperties.get(PROPERTY_LINEAGELICENSE_URL)));
-        return intent;
+        return new Intent(Intent.ACTION_VIEW,
+                Uri.parse(SystemProperties.get(PROPERTY_LINEAGELICENSE_URL)));
     }
 }
