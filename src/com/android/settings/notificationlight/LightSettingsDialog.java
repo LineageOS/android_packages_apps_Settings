@@ -291,6 +291,7 @@ public class LightSettingsDialog extends AlertDialog implements
         b.putBoolean(Notification.EXTRA_FORCE_SHOW_LIGHTS, true);
 
         final Notification.Builder builder = new Notification.Builder(getContext());
+        builder.setSmallIcon(R.drawable.ic_power_system);
         builder.setLights(color, speedOn, speedOff);
         builder.setExtras(b);
 
