@@ -231,7 +231,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         } else {
             simPref.setSummary(sir.getDisplayName());
         }
-        simPref.setEnabled(mSelectableSubInfos.size() > 1);
     }
 
     private void updateCellularDataValues() {
@@ -245,7 +244,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         } else if (sir == null) {
             simPref.setSummary(R.string.sim_selection_required_pref);
         }
-        simPref.setEnabled(mSelectableSubInfos.size() > 1 && !disableDds());
     }
 
     private void updateCallValues() {
@@ -260,16 +258,12 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         simPref.setSummary(phoneAccount == null
                 ? mContext.getResources().getString(R.string.sim_calls_ask_first_prefs_title)
                 : (String)telecomManager.getPhoneAccount(phoneAccount).getLabel());
-        simPref.setEnabled(allPhoneAccounts.size() > 1);
     }
 
     @Override
     public void onResume() {
         super.onResume();
         mSubscriptionManager.addOnSubscriptionsChangedListener(mOnSubscriptionsChangeListener);
-        final TelephonyManager tm =
-                (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
-        tm.listen(mPhoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
         initLTEPreference();
         updateSubscriptions();
     }
@@ -278,8 +272,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     public void onPause() {
         super.onPause();
         mSubscriptionManager.removeOnSubscriptionsChangedListener(mOnSubscriptionsChangeListener);
-        final TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-        tm.listen(mPhoneStateListener, PhoneStateListener.LISTEN_NONE);
 
         for (int i = 0; i < mSimCards.getPreferenceCount(); ++i) {
             Preference pref = mSimCards.getPreference(i);
@@ -289,24 +281,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             }
         }
     }
-
-    private final PhoneStateListener mPhoneStateListener = new PhoneStateListener() {
-        // Disable Sim selection for Data when voice call is going on as changing the default data
-        // sim causes a modem reset currently and call gets disconnected
-        // ToDo : Add subtext on disabled preference to let user know that default data sim cannot
-        // be changed while call is going on
-        @Override
-        public void onCallStateChanged(int state, String incomingNumber) {
-            if (DBG) log("PhoneStateListener.onCallStateChanged: state=" + state);
-             final Preference pref = findPreference(KEY_CELLULAR_DATA);
-            if (pref != null) {
-                final boolean ecbMode = SystemProperties.getBoolean(
-                        TelephonyProperties.PROPERTY_INECM_MODE, false);
-                pref.setEnabled((state == TelephonyManager.CALL_STATE_IDLE) && !ecbMode
-                        && (mSelectableSubInfos.size() > 1) && !disableDds());
-            }
-        }
-    };
 
     @Override
     public boolean onPreferenceTreeClick(final PreferenceScreen preferenceScreen,
