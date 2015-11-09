@@ -233,7 +233,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         } else {
             simPref.setSummary(sir.getDisplayName());
         }
-        simPref.setEnabled(mSelectableSubInfos.size() > 1);
     }
 
     private void updateCellularDataValues() {
@@ -247,13 +246,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         } else if (sir == null) {
             simPref.setSummary(R.string.sim_selection_required_pref);
         }
-
-        boolean callStateIdle = isCallStateIdle();
-        final boolean ecbMode = SystemProperties.getBoolean(
-                TelephonyProperties.PROPERTY_INECM_MODE, false);
-        // Enable data preference in msim mode and call state idle
-        simPref.setEnabled((mSelectableSubInfos.size() > 1) && !disableDds()
-                && callStateIdle && !ecbMode);
     }
 
     private void updateCallValues() {
@@ -268,7 +260,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         simPref.setSummary(phoneAccount == null
                 ? mContext.getResources().getString(R.string.sim_calls_ask_first_prefs_title)
                 : (String)telecomManager.getPhoneAccount(phoneAccount).getLabel());
-        simPref.setEnabled(allPhoneAccounts.size() > 1);
     }
 
     @Override
@@ -284,7 +275,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     public void onPause() {
         super.onPause();
         mSubscriptionManager.removeOnSubscriptionsChangedListener(mOnSubscriptionsChangeListener);
-        unRegisterPhoneStateListener();
 
         for (int i = 0; i < mSimCards.getPreferenceCount(); ++i) {
             Preference pref = mSimCards.getPreference(i);
