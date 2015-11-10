@@ -627,8 +627,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         updateSwitchPreference(mEnableAdb, Settings.Global.getInt(cr,
                 Settings.Global.ADB_ENABLED, 0) != 0);
 
-        mAdbNotify.setChecked(Settings.Secure.getInt(cr,
-                Settings.Secure.ADB_NOTIFY, 1) != 0);
+        mAdbNotify.setChecked(CMSettings.Secure.getInt(cr,
+                CMSettings.Secure.ADB_NOTIFY, 1) != 0);
         updateAdbOverNetwork();
 
         if (mEnableTerminal != null) {
@@ -1803,8 +1803,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                 updateBugreportOptions();
             }
         } else if (preference == mAdbNotify) {
-            Settings.Secure.putInt(getActivity().getContentResolver(),
-                    Settings.Secure.ADB_NOTIFY,
+            CMSettings.Secure.putInt(getActivity().getContentResolver(),
+                    CMSettings.Secure.ADB_NOTIFY,
                     mAdbNotify.isChecked() ? 1 : 0);
         } else if (preference == mAdbOverNetwork) {
             if (mAdbOverNetwork.isChecked()) {
