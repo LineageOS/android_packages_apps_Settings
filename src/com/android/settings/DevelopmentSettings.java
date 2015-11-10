@@ -718,8 +718,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     }
 
     private void updateAdbOverNetwork() {
-        int port = Settings.Secure.getInt(getActivity().getContentResolver(),
-                Settings.Secure.ADB_PORT, 0);
+        int port = CMSettings.Secure.getInt(getActivity().getContentResolver(),
+                CMSettings.Secure.ADB_PORT, 0);
         boolean enabled = port > 0;
 
         updateSwitchPreference(mAdbOverNetwork, enabled);
@@ -1819,8 +1819,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                         .show();
                 mAdbTcpDialog.setOnDismissListener(this);
             } else {
-                Settings.Secure.putInt(getActivity().getContentResolver(),
-                        Settings.Secure.ADB_PORT, -1);
+                CMSettings.Secure.putInt(getActivity().getContentResolver(),
+                        CMSettings.Secure.ADB_PORT, -1);
                 updateAdbOverNetwork();
             }
         } else if (preference == mClearAdbKeys) {
@@ -2041,8 +2041,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
             }
         } else if (dialog == mAdbTcpDialog) {
             if (which == DialogInterface.BUTTON_POSITIVE) {
-                Settings.Secure.putInt(getActivity().getContentResolver(),
-                        Settings.Secure.ADB_PORT, 5555);
+                CMSettings.Secure.putInt(getActivity().getContentResolver(),
+                        CMSettings.Secure.ADB_PORT, 5555);
             }
         } else if (dialog == mAdbKeysDialog) {
             if (which == DialogInterface.BUTTON_POSITIVE) {
