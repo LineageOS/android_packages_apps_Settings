@@ -322,6 +322,11 @@ public final class Utils {
 
     public static boolean updateTileToSpecificActivityFromMetaDataOrRemove(Context context,
             DashboardTile tile) {
+        return updateTileToSpecificActivityFromMetaDataOrRemove(context, tile, true);
+    }
+
+    public static boolean updateTileToSpecificActivityFromMetaDataOrRemove(Context context,
+            DashboardTile tile, boolean useMetadataIcon) {
 
         Intent intent = tile.intent;
         if (intent != null) {
@@ -372,8 +377,10 @@ public final class Utils {
                     }
 
                     // Set icon, title and summary for the preference
-                    tile.iconRes = icon;
-                    tile.iconPkg = resolveInfo.activityInfo.packageName;
+                    if (useMetadataIcon) {
+                        tile.iconRes = icon;
+                        tile.iconPkg = resolveInfo.activityInfo.packageName;
+                    }
                     tile.title = title;
                     tile.summary = summary;
                     // Replace the intent with this specific activity
