@@ -112,6 +112,10 @@ public class QSTileHolder {
                 resourceName = "ic_qs_lte_on";
                 stringId = R.string.qs_tile_lte;
                 break;
+            case QSConstants.TILE_VOLTE:
+                resourceName = "ic_volte_enable";
+                stringId = R.string.qs_tile_volte;
+                break;
             case QSConstants.TILE_PROFILES:
                 resourceName = "ic_qs_system_profiles";
                 stringId = R.string.qs_tile_profiles;
