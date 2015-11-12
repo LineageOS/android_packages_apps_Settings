@@ -68,7 +68,7 @@ public class ButtonBacklightBrightness extends DialogPreference implements
 
         if (isKeyboardSupported()) {
             mKeyboardBrightness = new BrightnessControl(
-                    Settings.System.KEYBOARD_BRIGHTNESS, false);
+                    Settings.Secure.KEYBOARD_BRIGHTNESS, false);
             mActiveControl = mKeyboardBrightness;
         }
         if (isButtonSupported()) {
