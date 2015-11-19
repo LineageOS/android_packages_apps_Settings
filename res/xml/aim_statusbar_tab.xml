@@ -37,13 +37,20 @@
             android:icon="@drawable/ic_freedomhub_ico"
             android:defaultValue="true"/>  
 
-     <!-- Double tap to sleep -->
-    <cyanogenmod.preference.CMSystemSettingSwitchPreference
-         android:key="double_tap_sleep_gesture"
-         android:title="@string/status_bar_double_tap_to_sleep_title"
-         android:icon="@drawable/ic_freedomhub_ico"
-         android:summary="@string/status_bar_double_tap_to_sleep_summary"
-         android:defaultValue="true" />
+        <!-- Double tap to sleep -->
+        <cyanogenmod.preference.CMSystemSettingSwitchPreference
+        android:key="double_tap_sleep_gesture"
+        android:title="@string/status_bar_double_tap_to_sleep_title"
+        android:icon="@drawable/ic_freedomhub_ico"
+        android:summary="@string/status_bar_double_tap_to_sleep_summary"
+        android:defaultValue="true" />
+
+        <!-- Custom carrier label -->
+        <PreferenceScreen
+        android:key="aim_carrier"
+        android:fragment="com.android.settings.aim.fragments.CarrierLabel"
+        android:title="@string/carrier_title" 
+        android:icon="@drawable/ic_freedomhub_ico" />
  
       </PreferenceCategory>
 
