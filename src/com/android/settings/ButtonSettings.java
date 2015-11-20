@@ -51,7 +51,6 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
 import cyanogenmod.hardware.CMHardwareManager;
-import cyanogenmod.providers.CMSettings;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -643,13 +642,13 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
         /* Save/restore button timeouts to disable them in softkey mode */
         if (enabled) {
-            CMSettings.Secure.putInt(context.getContentResolver(),
-                    CMSettings.Secure.BUTTON_BRIGHTNESS, 0);
+            Settings.Secure.putInt(context.getContentResolver(),
+                    Settings.Secure.BUTTON_BRIGHTNESS, 0);
         } else {
             int oldBright = prefs.getInt(ButtonBacklightBrightness.KEY_BUTTON_BACKLIGHT,
                     defaultBrightness);
-            CMSettings.Secure.putInt(context.getContentResolver(),
-                    CMSettings.Secure.BUTTON_BRIGHTNESS, oldBright);
+            Settings.Secure.putInt(context.getContentResolver(),
+                    Settings.Secure.BUTTON_BRIGHTNESS, oldBright);
         }
     }
 
