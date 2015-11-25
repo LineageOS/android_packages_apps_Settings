@@ -202,6 +202,14 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
 
         // These are contained by the root preference screen
         parentPreference = getPreferenceScreen();
+
+        final Preference fotaUpdatePreference = findPreference(KEY_SYSTEM_UPDATE_SETTINGS);
+        if (fotaUpdatePreference != null) {
+            // we build the intent manually because the xml prefs can't declare two categories
+            fotaUpdatePreference.setIntent(new Intent(Intent.ACTION_MAIN)
+                    .addCategory("android.settings.SYSTEM_UPDATE_SETTINGS")
+                    .addCategory("com.android.settings.SHORTCUT"));
+        }
         if (UserHandle.myUserId() == UserHandle.USER_OWNER) {
             Utils.updatePreferenceToSpecificActivityOrRemove(act, parentPreference,
                     KEY_SYSTEM_UPDATE_SETTINGS,
