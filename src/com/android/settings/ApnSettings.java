@@ -26,6 +26,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.ContentObserver;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -97,6 +98,7 @@ public class ApnSettings extends SettingsPreferenceFragment implements
     private RestoreApnUiHandler mRestoreApnUiHandler;
     private RestoreApnProcessHandler mRestoreApnProcessHandler;
     private HandlerThread mRestoreDefaultApnThread;
+    private ApnObserver mApnObserver;
 
     private UserManager mUm;
     private int mSubId;
@@ -119,14 +121,39 @@ public class ApnSettings extends SettingsPreferenceFragment implements
                 PhoneConstants.DataState state = getMobileDataState(intent);
                 switch (state) {
                 case CONNECTED:
-                    if (!mRestoreDefaultApnMode) {
-                        fillList();
-                    } else if (mDialog == null || !mDialog.isShowing()) {
-                        showDialog(DIALOG_RESTORE_DEFAULTAPN);
-                    }
+                    handleResetOrFill();
                     break;
                 }
             }
+        }
+    };
+
+    private final Handler mHandler = new Handler() {
+        @Override
+        public void dispatchMessage(Message msg) {
+            handleResetOrFill();
+        }
+    };
+
+    /** ContentObserver to watch apn switch **/
+    private final class ApnObserver extends ContentObserver {
+        public ApnObserver(Handler handler) {
+            super(handler);
+        }
+
+        @Override
+        public void onChange(boolean selfChange, Uri uri) {
+            Log.i(TAG, "apnObserver: preferred apn changed.");
+            handleResetOrFill();
+        }
+
+        public void startObserving() {
+            final ContentResolver cr = getActivity().getContentResolver();
+            cr.registerContentObserver(PREFERAPN_URI, false, this);
+        }
+
+        public void endObserving() {
+            getActivity().getContentResolver().unregisterContentObserver(this);
         }
     };
 
@@ -147,6 +174,7 @@ public class ApnSettings extends SettingsPreferenceFragment implements
 
         mMobileStateFilter = new IntentFilter(
                 TelephonyIntents.ACTION_ANY_DATA_CONNECTION_STATE_CHANGED);
+        mApnObserver = new ApnObserver(mHandler);
 
         if (!mUm.hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS)) {
             setHasOptionsMenu(true);
@@ -188,6 +216,10 @@ public class ApnSettings extends SettingsPreferenceFragment implements
 
         getActivity().registerReceiver(mMobileStateReceiver, mMobileStateFilter);
 
+        if (mApnObserver != null) {
+            mApnObserver.startObserving();
+        }
+
         if (!mRestoreDefaultApnMode) {
             fillList();
         }
@@ -197,6 +229,13 @@ public class ApnSettings extends SettingsPreferenceFragment implements
         return Uri.withAppendedPath(uri, "/subId/" + mSubId);
     }
 
+    private void handleResetOrFill() {
+        if (!mRestoreDefaultApnMode) {
+            fillList();
+        } else if (mDialog == null || !mDialog.isShowing()) {
+            showDialog(DIALOG_RESTORE_DEFAULTAPN);
+        }
+    }
 
     @Override
     public void onPause() {
@@ -204,6 +243,10 @@ public class ApnSettings extends SettingsPreferenceFragment implements
 
         if (mUnavailable) {
             return;
+        }
+
+        if (mApnObserver != null) {
+            mApnObserver.endObserving();
         }
 
         getActivity().unregisterReceiver(mMobileStateReceiver);
