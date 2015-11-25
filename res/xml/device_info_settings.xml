@@ -21,9 +21,10 @@
         <PreferenceScreen android:key="system_update_settings"
                 android:title="@string/system_update_settings_list_item_title" 
                 android:summary="@string/system_update_settings_list_item_summary">
-            <intent android:action="android.settings.SYSTEM_UPDATE_SETTINGS"
-                    android:targetPackage="com.cyngn.fota"
-                    android:targetClass="com.cyngn.fota.SystemUpdateActivity" />
+            <intent android:action="android.intent.action.MAIN">
+                <categories android:name="android.settings.SYSTEM_UPDATE_SETTINGS" />
+                <categories android:name="com.android.settings.SHORTCUT" />
+            </intent>
         </PreferenceScreen>
 
         <PreferenceScreen android:key="additional_system_update_settings"
