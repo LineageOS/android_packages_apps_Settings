@@ -131,6 +131,9 @@
   <string name="volbtn_cursor_control_on_reverse">Los botones subir y bajar volumen moverán el cursor a derecha e izquierda respectivamente</string>
   <string name="swap_volume_buttons_title">Reorientar botones</string>
   <string name="swap_volume_buttons_summary">Intercambiar los botones de control de volumen al rotar la pantalla</string>
+  <string name="volume_keys_control_ring_stream_title">Controlar el volumen del timbre de llamada</string>
+  <string name="volume_keys_control_ring_stream_summary_on">Las teclas de volumen controlan el volumen del timbre de llamada</string>
+  <string name="volume_keys_control_ring_stream_summary_off">Las teclas de volumen controlan el volumen multimedia</string>
   <string name="power_end_call_title">Finalizar llamada</string>
   <string name="power_end_call_summary">Pulsando el botón de encendido finalizará la llamada en curso</string>
   <string name="button_wake_title">Despertar dispositivo</string>
@@ -342,6 +345,7 @@
   <string name="notification_light_missed_call_title">Llamada perdida</string>
   <string name="notification_light_voicemail_title">Buzón de voz</string>
   <string name="notification_light_screen_on">Luces con la pantalla encendida</string>
+  <string name="notification_light_use_multiple_leds">Múltiples LEDs</string>
   <string name="keywords_lights_brightness_level">atenuar el brillo de los leds</string>
   <string name="notification_ringtone_title_cm">Tono de notificación</string>
   <string name="headset_connect_player_title">Iniciar reproductor</string>
@@ -686,6 +690,7 @@
   <string name="lockpattern_settings_enable_dots_title">Mostrar puntos de patrón</string>
   <string name="lock_directly_show_password">Mostrar directamente la contraseña</string>
   <string name="lock_directly_show_pattern">Mostrar directamente el patrón</string>
+  <string name="lock_directly_show_pin">Mostrar directamente la entrada PIN</string>
   <string name="unlock_quick_unlock_control_title">Desbloqueo rápido</string>
   <string name="unlock_quick_unlock_control_summary">Desbloquear automáticamente cuando se introduce el PIN/clave correcto</string>
   <string name="unlock_scramble_pin_layout_title">Disposición aleatoria</string>
@@ -773,6 +778,7 @@
   <string name="lockscreen_message">Toca en un icono de la izquierda o derecha para reasignar un atajo en la pantalla de bloqueo.</string>
   <string name="lockscreen_choose_action_title">Elegir acción</string>
   <string name="lockscreen_visualizer_title">Mostrar visualizador musical</string>
+  <string name="nfc_title_category">NFC</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Administrar ajustes para cifrado de SMS</string>
   <string name="navigation_ring_title">Anillo de navegación</string>
@@ -823,6 +829,8 @@
   <string name="interruptions_ignore_while_media_title">Prevenir reducción de audio</string>
   <string name="interruptions_ignore_while_media_summary">No reducir el volumen de reproducción cuando llegue una notificación</string>
   <string name="none_is_silent_title">Nunca silenciar alarmas</string>
+  <string name="none_is_silent_summary_on">Las alarmas no serán ignoradas en modo silencio</string>
+  <string name="none_is_silent_summary_off">Las alarmas serán ignoradas en modo silencio</string>
   <string name="allow_lights_title">Permitir led de notificaciones</string>
   <string name="live_display_summary">Optimizar la pantalla según la hora del día y las condiciones ambientales para mejorar la legibilidad y reducir la fatiga visual</string>
   <string name="live_display_mode">Modo de visualización</string>
@@ -890,6 +898,11 @@
   <string name="factory_reset_erase_sd_card_summary">Borrar todos los datos de la tarjeta SD, incluyendo música y fotos</string>
   <string name="factory_reset_warning_text_reset_now">RESETEAR AHORA</string>
   <string name="factory_reset_warning_text_message">Todas tus cuentas, aplicaciones, datos de aplicaciones y ajustes del sistema se eliminarán del dispositivo. Esto no se puede revertir.</string>
+  <string name="wifi_show_all">Mostrar todo</string>
+  <string name="wifi_show_protected">Mostrar redes protegidas</string>
+  <string name="wifi_show_open">Mostrar redes abiertas</string>
+  <string name="wifi_empty_list_protected">No hay redes Wi\u2011Fi protegidas</string>
+  <string name="wifi_empty_list_open">No hay redes Wi\u2011Fi abiertas</string>
   <string name="wifi_setting_countrycode_title">Código de región Wi-Fi</string>
   <string name="wifi_setting_countrycode_summary">Especificar el código de región Wi-Fi</string>
   <string name="wifi_setting_countrycode_error">Ocurrió un error al establecer el código de región.</string>
@@ -915,6 +928,8 @@
   <string name="fingerprint_dialog_title_rename">Editar huella digital</string>
   <string name="fingerprint_dialog_name_label">Nombre para la huella digital</string>
   <string name="fingerprint_dialog_title_max_fingers_reached">Máximo de huellas digitales alcanzado</string>
+  <string name="fingerprint_dialog_msg_max_fingers_reached">Sólo puedes almacenar <xliff:g id="finger" example="5">%d </xliff:g> huellas. Borrar una huella existente.</string>
+  <string name="fingerprint_title_manage_fingerprints"><xliff:g id="finger">%d </xliff:g> de las huellas de <xliff:g id="max"> %d </xliff:g> inscritas</string>
   <string name="manage_fingerprints_description">El uso de huellas digitales te permitirá desbloquear tu teléfono y tomar fotos rápidamente.</string>
   <string name="fingerprint_enrollment_introduction_title">Localiza el sensor</string>
   <string name="fingerprint_enrollment_introduction_instructions">El sensor de huella dactilar se encuentra en la parte delantera o trasera del teléfono.</string>

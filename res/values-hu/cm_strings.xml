@@ -247,6 +247,7 @@
   <string name="privacy_guard_reset_text">Visszaállítja az engedélyeket?</string>
   <string name="privacy_guard_help_text">Ezen a képernyőn egyszerű érintéssel kiválaszthatja, hogy mely alkalmazásoknál legyen aktív az adatvédelmi mód. A kiválasztott alkalmazás nem fog hozzáférni a személyes adataihoz, mint például a névjegyzéke, üzenetei, vagy a hívásnaplója. Egy sort hosszan megérintve megjelenik az adott alkalmazás részleteit tartalmazó képernyő.\n\nAlapértelmezetten a rendszeralkalmazások nem jelennek meg. Amennyiben szeretné, hogy a rendszeralkalmazások, vagy csak azon alkalmazások jelenjenek meg, amelyek hozzáférést kérnek a személyes adatokhoz, válassza ki a megfelelő beállításokat a menüben.</string>
   <string name="privacy_guard_manager_show_system_apps">Rendszeralkalmazások megjelenítése</string>
+  <string name="privacy_guard_notification_title">Értesítés megjelenítése</string>
   <string name="app_ops_btn_text">Módosítás</string>
   <string name="increasing_ring_volume_option_title">Emelkedő csengőhang</string>
   <string name="increasing_ring_min_volume_title">Kezdeti hangerő</string>
@@ -340,6 +341,8 @@
   <string name="notification_light_default_value">Alapértelmezés</string>
   <string name="notification_light_missed_call_title">Nem fogadott hívás</string>
   <string name="notification_light_voicemail_title">Hangposta</string>
+  <string name="notification_light_screen_on">Értesítési LED bekapcsolt képernyőnél</string>
+  <string name="keywords_lights_brightness_level">ledek fényerősségének állítása</string>
   <string name="notification_ringtone_title_cm">Értesítés hangja</string>
   <string name="headset_connect_player_title">Zenelejátszó indítása</string>
   <string name="headset_connect_player_summary">Alapértelmezett zenelejátszó elindítása fülhallgató csatlakoztatásakor</string>
@@ -681,6 +684,9 @@
   <string name="settings_cmlicense_activity_title">CyanogenMod jogi nyilatkozat</string>
   <string name="lockpattern_settings_enable_error_path_title">Hibás minta megjelenítése</string>
   <string name="lockpattern_settings_enable_dots_title">Feloldási pontok megjelenítése</string>
+  <string name="lock_directly_show_password">Közvetlen jelszó megadás megjelenítése</string>
+  <string name="lock_directly_show_pattern">Közvetlen minta nézet megjelenítése</string>
+  <string name="lock_directly_show_pin">Közvetlen PIN megadás megjelenítése</string>
   <string name="unlock_quick_unlock_control_title">Gyors feloldás</string>
   <string name="unlock_quick_unlock_control_summary">Automatikus feloldás a helyes jelszó/PIN kód beütése után</string>
   <string name="unlock_scramble_pin_layout_title">Szoros elrendezés</string>
@@ -699,6 +705,7 @@
   <string name="status_bar_show_weather_summary">Időjárás megjelenítése a Gyors beállítások panel fölött</string>
   <string name="qs_category_title">Gyors beállítások panel</string>
   <string name="qs_brightness_slider_title">Fényerő csúszka megjelenítése</string>
+  <string name="qs_hide_tiles_with_sensitive_data">Érzékeny csempék elrejtése zárolt képernyőnél</string>
   <string name="qs_order_title">Csempék kiválasztása és átrendezése</string>
   <string name="add_qs">Új csempe hozzáadása</string>
   <string name="qs_action_delete">Törlés</string>
@@ -721,11 +728,13 @@
   <string name="qs_tile_compass">Iránytű</string>
   <string name="qs_tile_lockscreen">Képernyőzár</string>
   <string name="qs_tile_lte">LTE</string>
+  <string name="qs_tile_volume_panel">Hangerőszabályzás</string>
   <string name="qs_tile_screen_timeout">Képernyő időkorlátja</string>
   <string name="qs_tile_usb_tether">USB megosztás</string>
   <string name="qs_tile_heads_up">Lebegő értesítés</string>
   <string name="qs_tile_ambient_display">Környezeti kijelző</string>
   <string name="qs_tile_sync">Szinkronizálás</string>
+  <string name="qs_tile_battery_saver">Akkumulátor kímélő</string>
   <string name="qs_dynamic_tile_next_alarm">Következő riasztás</string>
   <string name="qs_dynamic_tile_ime_selector">IME választó</string>
   <string name="qs_dynamic_tile_su">Rendszergazda hozzáférés</string>
@@ -765,6 +774,7 @@
   <string name="lockscreen_message">Érintsen meg egy ikont jobb vagy bal oldalt a zárképernyő hivatkozások ismételt hozzárendeléséhez.</string>
   <string name="lockscreen_choose_action_title">Válasszon műveletet</string>
   <string name="lockscreen_visualizer_title">Zenei vizualítás megjelenítése</string>
+  <string name="nfc_title_category">NFC</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Biztonságos SMS beállítások kezelése</string>
   <string name="navigation_ring_title">Navigációs gyűrű hivatkozások</string>
@@ -831,10 +841,15 @@
   <string name="live_display_enhance_color_summary">Bőr színek, tájképek és egyéb képek színerősségének javítása</string>
   <string name="live_display_color_profile_title">Színprofil</string>
   <string name="live_display_color_profile_standard_title">Általános</string>
+  <string name="live_display_color_profile_standard_summary">Pontos színek és fényes fehér</string>
   <string name="live_display_color_profile_natural_title">Természetes</string>
+  <string name="live_display_color_profile_natural_summary">Realisztikus színek és telített tónusok</string>
   <string name="live_display_color_profile_dynamic_title">Dinamikus</string>
+  <string name="live_display_color_profile_dynamic_summary">Továbbfejlesztett színek és fényes fehér</string>
   <string name="live_display_color_profile_cinema_title">Mozi</string>
+  <string name="live_display_color_profile_cinema_summary">Tökéletes színreprodukció a médiák számára</string>
   <string name="live_display_color_profile_astronomy_title">Csillagászat</string>
+  <string name="live_display_color_profile_astronomy_summary">Mélyvörös az éjjellátás megőrzéséhez</string>
   <string name="battery_saver_threshold">Akkumulátor kímélő küszöb</string>
   <string name="battery_saver_summary">Csökkenti a teljesítményt és korlátozza a háttér adatokat</string>
   <string name="battery_saver_summary_unavailable">Töltés közben nem érhető el</string>
@@ -877,6 +892,11 @@
   <string name="factory_reset_erase_sd_card_summary">Az összes adatot törli az SD-kártyán, beleértve a zenéket és a fotókat</string>
   <string name="factory_reset_warning_text_reset_now">VISSZAÁLLÍTÁS MOST</string>
   <string name="factory_reset_warning_text_message">Minden fiókja, alkalmazása, adata és rendszerbeállítása eltávolításra kerül erről a készülékről. Nem lehet visszavonni.</string>
+  <string name="wifi_show_all">Mindet mutassa</string>
+  <string name="wifi_show_protected">Védett hálózatok megjelenítése</string>
+  <string name="wifi_show_open">Nyílt hálózatok megjelenítése</string>
+  <string name="wifi_empty_list_protected">Nincs védett Wi\u2011Fi hálózat</string>
+  <string name="wifi_empty_list_open">Nincs nyílt Wi\u2011Fi hálózat</string>
   <string name="wifi_setting_countrycode_title">Wi\u2011Fi régió kód</string>
   <string name="wifi_setting_countrycode_summary">Wi\u2011Fi régió kód megadása</string>
   <string name="wifi_setting_countrycode_error">Hiba történt a régiókód beállítása közben.</string>
