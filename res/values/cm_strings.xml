@@ -143,6 +143,7 @@
     <string name="hardware_keys_menu_key_title">Menu button</string>
     <string name="hardware_keys_assist_key_title">Search button</string>
     <string name="hardware_keys_appswitch_key_title">Recents button</string>
+    <string name="hardware_keys_camera_key_title">Camera button</string>
     <string name="hardware_keys_volume_keys_title">Volume buttons</string>
     <string name="hardware_keys_short_press_title">Short press action</string>
     <string name="hardware_keys_long_press_title">Long press action</string>
@@ -156,6 +157,10 @@
     <string name="hardware_keys_action_launch_camera">Launch camera</string>
     <string name="hardware_keys_action_sleep">Turn screen off</string>
     <string name="hardware_keys_action_last_app">Last app</string>
+    <string name="camera_sleep_on_release_title">Screen peek</string>
+    <string name="camera_sleep_on_release_summary">A half press will keep the screen on only while the button is held down</string>
+    <string name="camera_launch_title">Launch camera</string>
+    <string name="camera_launch_summary">A longpress and release will launch camera</string>
     <string name="volbtn_music_controls_title">Playback control</string>
     <string name="volbtn_music_controls_summary">When the screen is off, long pressing the volume keys will seek music tracks</string>
     <string name="volbtn_cursor_control_title">Keyboard cursor control</string>
@@ -164,8 +169,9 @@
     <string name="volbtn_cursor_control_on_reverse">Volume up/down moves cursor right/left</string>
     <string name="swap_volume_buttons_title">Reorient</string>
     <string name="swap_volume_buttons_summary">Swap volume buttons when the screen is rotated</string>
-    <string name="volume_keys_control_ring_stream_title">Volume keys control ringtone volume</string>
-    <string name="volume_keys_control_ring_stream_summary">If on, volume keys control ringtone volume. If off, volume keys control media volume.</string>
+    <string name="volume_keys_control_ring_stream_title">Control ringtone volume</string>
+    <string name="volume_keys_control_ring_stream_summary_on">Volume keys control ringtone volume</string>
+    <string name="volume_keys_control_ring_stream_summary_off">Volume keys control media volume</string>
     <string name="power_end_call_title">End call</string>
     <string name="power_end_call_summary">Pressing the power button will end the current call</string>
     <string name="button_wake_title">Wake up device</string>
@@ -328,6 +334,7 @@
     <string name="privacy_guard_reset_text">Reset permissions?</string>
     <string name="privacy_guard_help_text">In this screen you can choose which apps Privacy Guard should be active for by simply tapping on them. Selected apps will not be able to access your personal data such as contacts, messages or call logs. Long pressing an app\'s entry opens its app details screen.\n\nBuilt-in apps are not shown by default but can be revealed by selecting the respective menu option.</string>
     <string name="privacy_guard_manager_show_system_apps">Show built-in apps</string>
+    <string name="privacy_guard_notification_title">Show notification</string>
 
     <string name="app_ops_btn_text">Modify</string>
 
@@ -466,6 +473,10 @@
     <string name="notification_light_default_value">Default</string>
     <string name="notification_light_missed_call_title">Missed call</string>
     <string name="notification_light_voicemail_title">Voicemail</string>
+    <string name="notification_light_brightness" translatable="false">@string/brightness</string>
+    <string name="notification_light_screen_on">Lights with screen on</string>
+    <string name="notification_light_use_multiple_leds">Multiple LEDs</string>
+    <string name="keywords_lights_brightness_level">dim leds brightness</string>
 
     <!-- Sound & notification > Sound section: Title for the option defining the default notification ringtone. [CHAR LIMIT=30] -->
     <string name="notification_ringtone_title_cm">Notification tone</string>
@@ -629,6 +640,7 @@
     <string name="profile_menu_delete_title">Delete</string>
 
     <string name="profile_action_none">Leave unchanged</string>
+    <string name="profile_action_system">System default</string>
     <string name="profile_action_disable">Turn off</string>
     <string name="profile_action_enable">Turn on</string>
 
@@ -921,50 +933,14 @@
     <string name="select_custom_app_title">Select custom app</string>
     <string name="select_custom_activity_title">Select custom activity</string>
 
-    <!-- Performance settings -->
-    <string name="performance_settings_title">Performance</string>
-
-    <!-- Performance Settings : I/O scheduler settings title -->
-    <string name="io_scheds_title">I/O scheduler</string>
-
-    <!-- Performance Settings : I/O scheduler settings sub items -->
-    <string name="io_sched_title">I/O scheduler</string>
-    <string name="io_sched_summary" translatable="false">%S</string>
-
-    <!-- Performance Settings : Performance profile settings -->
+    <!-- Battery : Automatic performance profiles -->
+    <string name="autoperf_title">Enable per-app profiles</string>
+    <string name="autoperf_summary">Automatically choose an appropriate battery mode for various apps</string>
     <string name="perf_profile_title">Battery mode</string>
 
-    <!-- Performance : Force high-end graphics -->
+    <!-- Development : Force high-end graphics -->
     <string name="pref_force_highend_gfx_title">Force high-end graphics</string>
     <string name="pref_force_highend_gfx_summary">Enables high-end visual effects such as transparent status/navigation bar (requires reboot)</string>
-
-    <!-- Performance Settings : Warning dialog -->
-    <string name="performance_settings_warning_title">Proceed with caution</string>
-    <string name="performance_settings_warning">These settings are experimental and any applied changes have the potential to cause instability, crashes, data loss or hardware failures.\n\nWe request that you do not file bug reports if any settings are changed from their defaults.</string>
-
-    <!-- Performance Settings : Set on boot option -->
-    <string name="performance_set_on_boot">Set on boot</string>
-    <string name="performance_set_on_boot_summary">Restore the settings on boot</string>
-
-    <!-- Performance Settings : Processor Settings -->
-    <!-- Performance Settings : Processor settings title -->
-    <string name="processor_title">Processor</string>
-
-    <!-- Performance Settings : Processor settings sub items -->
-    <string name="cpu_cur_freq_title">Current CPU frequency</string>
-    <string name="cpu_governors_title">CPU governor</string>
-    <string name="cpu_governors_summary" translatable="false">%S</string>
-    <string name="cpu_min_freq_title">Minimum CPU frequency</string>
-    <string name="cpu_min_freq_summary" translatable="false">%s</string>
-    <string name="cpu_max_freq_title">Maximum CPU frequency</string>
-    <string name="cpu_max_freq_summary" translatable="false">%s</string>
-
-    <!-- Automatic performance profiles -->
-    <string name="autoperf_title">Enable per-app profiles</string>
-    <string name="autoperf_summary">Automatically choose an appropriate performance profile for various apps</string>
-
-    <!-- Performance menu, graphics options category -->
-    <string name="graphics_title">Graphics and rendering</string>
 
     <!-- EdgeGesture service -->
     <string name="edge_gesture_service_title">Block gesture touch events</string>
@@ -984,6 +960,12 @@
     <string name="lockpattern_settings_enable_error_path_title">Show pattern error</string>
     <!-- Whether the dots will be drawn when using the lockscreen pattern -->
     <string name="lockpattern_settings_enable_dots_title">Show pattern dots</string>
+    <!-- Whether the keyguard will directly pass to password entry -->
+    <string name="lock_directly_show_password">Directly show password entry</string>
+    <!-- Whether the keyguard will directly pass to pattern view -->
+    <string name="lock_directly_show_pattern">Directly show pattern view</string>
+    <!-- Whether the keyguard will directly pass to PIN entry -->
+    <string name="lock_directly_show_pin">Directly show PIN entry</string>
 
     <!-- Screen security -->
     <string name="unlock_quick_unlock_control_title">Quick unlock</string>
@@ -1012,6 +994,7 @@
     <string name="qs_category_title">Quick Settings panel</string>
 
     <string name="qs_brightness_slider_title">Show brightness slider</string>
+    <string name="qs_hide_tiles_with_sensitive_data">Hide sensitive tiles when locked</string>
 
     <string name="qs_order_title">Select and order tiles</string>
     <string name="add_qs">Add new tile</string>
@@ -1038,11 +1021,18 @@
     <string name="qs_tile_lockscreen">Lock screen</string>
     <string name="qs_tile_lte">LTE</string>
     <string name="qs_tile_visualizer" translatable="false">AudioFX</string>
+    <string name="qs_tile_volume_panel">Volume panel</string>
     <string name="qs_tile_screen_timeout">Screen timeout</string>
     <string name="qs_tile_usb_tether">USB tethering</string>
     <string name="qs_tile_heads_up">Heads up</string>
     <string name="qs_tile_ambient_display">Ambient display</string>
     <string name="qs_tile_sync">Sync</string>
+    <string name="qs_tile_battery_saver">Battery saver</string>
+
+    <string name="qs_dynamic_tile_next_alarm">Next alarm</string>
+    <string name="qs_dynamic_tile_ime_selector">IME selector</string>
+    <string name="qs_dynamic_tile_su">Root access</string>
+    <string name="qs_dynamic_tile_adb" translatable="false">ADB</string>
 
     <string name="qs_main_tiles_title">Enlarge first row</string>
     <string name="qs_main_tiles_summary_on">Two main tiles on the first row</string>
@@ -1069,6 +1059,9 @@
     <string name="wifi_ibss_freq_title">Channel / Frequency</string>
     <string name="wifi_channel">Channel</string>
     <string name="wifi_mhz">MHz</string>
+
+    <!-- WiFi auto-configure priorities -->
+    <string name="wifi_auto_config_priorities">Automatic priority</string>
 
     <!-- About phone settings screen, setting option dialog title to show regulatory information [CHAR LIMIT=25] -->
     <string name="regulatory_information_dialog_title" translatable="false">@string/regulatory_information</string>
@@ -1099,6 +1092,8 @@
     <string name="lockscreen_message">Tap an icon on the left or right to reassign a lock screen shortcut.</string>
     <string name="lockscreen_choose_action_title">Choose action</string>
     <string name="lockscreen_visualizer_title">Display music visualizer</string>
+
+    <string name="nfc_title_category">NFC</string>
 
     <!-- WhisperPush -->
     <string name="whisperpush_title">WhisperPush</string>
@@ -1168,7 +1163,8 @@
     <string name="interruptions_ignore_while_media_title">Prevent audio ducking</string>
     <string name="interruptions_ignore_while_media_summary">Do not reduce media playback volume when a notification arrives</string>
     <string name="none_is_silent_title">Never mute alarms</string>
-    <string name="none_is_silent_summary">Silent mode always sounds alarms</string>
+    <string name="none_is_silent_summary_on">Alarms will not be ignored in silent mode</string>
+    <string name="none_is_silent_summary_off">Alarms will be ignored in none mode</string>
     <string name="allow_lights_title">Allow notification lights</string>
 
     <!-- LiveDisplay -->
@@ -1186,6 +1182,18 @@
     <string name="live_display_low_power_summary">Adjust display for lowest power consumption without degradation</string>
     <string name="live_display_enhance_color_title">Enhance colors</string>
     <string name="live_display_enhance_color_summary">Improve color vibrance of flesh tones, scenery, and other images</string>
+
+    <string name="live_display_color_profile_title">Color profile</string>
+    <string name="live_display_color_profile_standard_title">Standard</string>
+    <string name="live_display_color_profile_standard_summary">Accurate colors and bright whites</string>
+    <string name="live_display_color_profile_natural_title">Natural</string>
+    <string name="live_display_color_profile_natural_summary">Realistic colors and flesh tones</string>
+    <string name="live_display_color_profile_dynamic_title">Dynamic</string>
+    <string name="live_display_color_profile_dynamic_summary">Enhanced colors and bright whites</string>
+    <string name="live_display_color_profile_cinema_title">Cinema</string>
+    <string name="live_display_color_profile_cinema_summary">Perfect color reproduction for media</string>
+    <string name="live_display_color_profile_astronomy_title">Astronomy</string>
+    <string name="live_display_color_profile_astronomy_summary">Deep red for preserving night vision</string>
 
     <string name="battery_saver_threshold">Battery saver threshold</string>
     <string name="battery_saver_summary">Reduce performance and limit background data</string>
@@ -1249,12 +1257,26 @@
     <string name="factory_reset_warning_text_reset_now">RESET NOW</string>
     <string name="factory_reset_warning_text_message">All your accounts, apps, app data, and system settings will be removed from this device. This cannot be reversed.</string>
 
+<<<<<<< HEAD
+=======
+    <!-- Wi-Fi filters -->
+    <string name="wifi_show_all">Show all</string>
+    <string name="wifi_show_protected">Show protected networks</string>
+    <string name="wifi_show_open">Show open networks</string>
+    <string name="wifi_empty_list_protected">No protected Wi\u2011Fi networks</string>
+    <string name="wifi_empty_list_open">No open Wi\u2011Fi networks</string>
+
+>>>>>>> remotes/origin/cm-12.1
     <!-- Wi-Fi region code -->
     <string name="wifi_setting_countrycode_title">Wi\u2011Fi region code</string>
     <!-- Wi-Fi settings screen, setting summary for setting the wifi frequency band [CHAR LIMIT=50]-->
     <string name="wifi_setting_countrycode_summary">Specify the region code for Wi\u2011Fi</string>
     <!-- Wi-Fi settings screen, error message when the frequency band could not be set [CHAR LIMIT=50]. -->
     <string name="wifi_setting_countrycode_error">There was a problem setting the region code.</string>
+<<<<<<< HEAD
+=======
+
+>>>>>>> remotes/origin/cm-12.1
     <!-- Wi-Fi region countries -->
     <string name="wifi_countrycode_entries_us">United States</string>
     <string name="wifi_countrycode_entries_ca">Canada, Taiwan</string>
@@ -1292,9 +1314,15 @@
     <!-- Title for dialog that shows when the user cannot add anymore fingers -->
     <string name="fingerprint_dialog_title_max_fingers_reached">Max fingerprints reached</string>
     <!-- Message for dialog that shows when the user cannot add anymore fingers -->
+<<<<<<< HEAD
     <string name="fingerprint_dialog_msg_max_fingers_reached">You can only enroll <xliff:g id="finger" example="5 fingerprints">%d</xliff:g> fingerprints. Delete an existing fingerprint.</string>
     <!-- Title for number of finger prints enrolled -->
     <string name="fingerprint_title_manage_fingerprints">Manage fingerprints <xliff:g id="finger">%d</xliff:g>/<xliff:g id="max">%d</xliff:g></string>
+=======
+    <string name="fingerprint_dialog_msg_max_fingers_reached">You can only enroll <xliff:g id="finger" example="5">%d</xliff:g> fingerprints. Delete an existing fingerprint.</string>
+    <!-- Title for number of finger prints enrolled -->
+    <string name="fingerprint_title_manage_fingerprints"><xliff:g id="finger">%d</xliff:g> of <xliff:g id="max">%d</xliff:g> fingerprints enrolled</string>
+>>>>>>> remotes/origin/cm-12.1
     <!-- Description for managing fingerprints -->
     <string name="manage_fingerprints_description">Fingerprints allow you to quickly unlock your phone and take photos.</string>
     <!-- Fingerprint enrollment introduction title -->
@@ -1356,10 +1384,39 @@
          the fingerprint feature -->
     <string name="lockscreen_settings_and_fingerprint">Lock screen &amp; fingerprint</string>
 
+<<<<<<< HEAD
+=======
+    <!-- Menu label for reset the battery stats -->
+    <string name="menu_stats_reset">Reset stats</string>
+    <!-- Reset stats confirmation dialog's message -->
+    <string name="reset_stats_msg">Battery history stats are going to be reset</string>
+
+    <!-- Dock battery not present message -->
+    <string name="dock_battery_not_present">Dock battery not present</string>
+
+    <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging on Dock AC. -->
+    <string name="battery_info_status_charging_dock_ac">Charging on dock AC</string>
+    <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging over Dock USB. -->
+    <string name="battery_info_status_charging_dock_usb">Charging over dock USB</string>
+
+>>>>>>> remotes/origin/cm-12.1
     <!-- Lock screen setup wizard pattern complexity -->
     <string name="setup_lock_pattern_size_title">Pattern complexity</string>
     <string name="setup_lock_pattern_size_details">How many nodes would you like to use with your pattern? The more nodes, the more complex the pattern can be.</string>
 
+<<<<<<< HEAD
+=======
+    <!-- LTO download data over wi-fi only -->
+    <string name="lto_download_data_wifi_only">GPS assisted data download</string>
+    <string name="lto_download_data_wifi_only_on">Over any networks</string>
+    <string name="lto_download_data_wifi_only_off">Only over Wi\u2011Fi networks</string>
+
+    <!-- Keep screen on strings -->
+    <string name="keep_screen_on_never">Never</string>
+    <string name="keep_screen_on_debugging">While USB debugging</string>
+    <string name="keep_screen_on_charging">While charging</string>
+
+>>>>>>> remotes/origin/cm-12.1
     <!-- Contributors cloud activity -->
     <string name="contributors_cloud_fragment_title">Contributors</string>
     <string name="contributors_cloud_loading_message">Loading contributors data\u2026</string>
@@ -1375,4 +1432,9 @@
         <![CDATA[<b>Total contributors:</b> <xliff:g id="total_contributors">%1$s</xliff:g><br/><br/>
                  <b>Total commits:</b> <xliff:g id="total_commits">%2$s</xliff:g><br/><br/>
                  <b>Last update:</b> <xliff:g id="date">%3$s</xliff:g>]]></string>
+<<<<<<< HEAD
+=======
+
+    <string name="quick_settings_reset_message">Reset quick settings tiles?</string>
+>>>>>>> remotes/origin/cm-12.1
 </resources>

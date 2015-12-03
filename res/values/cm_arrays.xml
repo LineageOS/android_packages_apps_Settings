@@ -42,7 +42,7 @@
 
     <!-- Profile lock mode summaries. Do not translate. -->
     <string-array name="profile_lockmode_entries" translatable="false">
-        <item>@string/profile_action_none</item>
+        <item>@string/profile_action_system</item>
         <item>@string/profile_lockmode_insecure_summary</item>
         <item>@string/profile_lockmode_disabled_summary</item>
     </string-array>
@@ -157,7 +157,7 @@
         <item>250</item>
         <item>500</item>
         <item>1000</item>
-        <item>2500</item>
+        <item>2000</item>
         <item>5000</item>
     </string-array>
 
@@ -173,7 +173,7 @@
         <item>250</item>
         <item>500</item>
         <item>1000</item>
-        <item>2500</item>
+        <item>2000</item>
         <item>5000</item>
     </string-array>
 
@@ -451,6 +451,7 @@
         <item>airplane</item>
         <item>users</item>
         <item>bugreport</item>
+        <item>silent</item>
     </string-array>
 
     <!-- Stylus Gestures -->
@@ -497,7 +498,61 @@
         <item>2</item>
     </string-array>
 
+<<<<<<< HEAD
     <string-array name="fingerprint_successful_scan_titles">
+=======
+    <!-- Wi-Fi settings -->
+    <string-array name="wifi_filter_entries" translatable="false">
+        <item>@string/wifi_show_all</item>
+        <item>@string/wifi_show_protected</item>
+        <item>@string/wifi_show_open</item>
+    </string-array>
+
+    <!-- Presented as a list dialog to the user to choose the Wi-Fi region code. -->
+    <string-array name="wifi_countrycode_entries" translatable="false">
+        <item>@string/wifi_countrycode_entries_us</item>
+        <item>@string/wifi_countrycode_entries_ca</item>
+        <item>@string/wifi_countrycode_entries_de</item>
+        <item>@string/wifi_countrycode_entries_gb</item>
+        <item>@string/wifi_countrycode_entries_jp</item>
+        <item>@string/wifi_countrycode_entries_au</item>
+        <item>@string/wifi_countrycode_entries_cn</item>
+        <item>@string/wifi_countrycode_entries_kr</item>
+        <item>@string/wifi_countrycode_entries_tr</item>
+        <item>@string/wifi_countrycode_entries_sg</item>
+        <item>@string/wifi_countrycode_entries_br</item>
+        <item>@string/wifi_countrycode_entries_in</item>
+    </string-array>
+
+    <string-array name="wifi_countrycode_values" translatable="false">
+        <item>US</item>
+        <item>CA</item>
+        <item>DE</item>
+        <item>GB</item>
+        <item>JP</item>
+        <item>AU</item>
+        <item>CN</item>
+        <item>KR</item>
+        <item>TR</item>
+        <item>SG</item>
+        <item>BR</item>
+        <item>IN</item>
+    </string-array>
+
+    <string-array name="keep_screen_on_titles" translatable="false">
+        <item>@string/keep_screen_on_never</item>
+        <item>@string/keep_screen_on_debugging</item>
+        <item>@string/keep_screen_on_charging</item>
+    </string-array>
+
+    <string-array name="keep_screen_on_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="fingerprint_successful_scan_titles" translatable="false">
+>>>>>>> remotes/origin/cm-12.1
         <item>@string/fingerprint_successful_scan_title_1</item>
         <item>@string/fingerprint_successful_scan_title_2</item>
         <item>@string/fingerprint_successful_scan_title_3</item>
@@ -506,7 +561,11 @@
         <item>@string/fingerprint_successful_scan_title_6</item>
     </string-array>
 
+<<<<<<< HEAD
     <string-array name="fingerprint_enrollment_error_titles">
+=======
+    <string-array name="fingerprint_enrollment_error_titles" translatable="false">
+>>>>>>> remotes/origin/cm-12.1
         <item>@string/fingerprint_enrollment_error_title_1</item>
         <item>@string/fingerprint_enrollment_error_title_2</item>
         <item>@string/fingerprint_enrollment_error_title_3</item>
