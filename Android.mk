@@ -22,13 +22,11 @@ LOCAL_SRC_FILES += \
 LOCAL_PACKAGE_NAME := Settings
 LOCAL_CERTIFICATE := platform
 LOCAL_PRIVILEGED_MODULE := true
-
+LOCAL_AAPT_FLAGS := -c port,land,en_US  
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
-ifneq ($(INCREMENTAL_BUILDS),)
     LOCAL_PROGUARD_ENABLED := disabled
     LOCAL_JACK_ENABLED := incremental
-endif
 
 include frameworks/opt/setupwizard/navigationbar/common.mk
 include frameworks/opt/setupwizard/library/common.mk
@@ -37,6 +35,3 @@ include frameworks/base/packages/SettingsLib/common.mk
 include $(BUILD_PACKAGE)
 
 # Use the following include to make our test apk.
-ifeq (,$(ONE_SHOT_MAKEFILE))
-include $(call all-makefiles-under,$(LOCAL_PATH))
-endif

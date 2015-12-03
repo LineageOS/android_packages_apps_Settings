@@ -77,6 +77,11 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private static final Intent TRUST_AGENT_INTENT =
             new Intent(TrustAgentService.SERVICE_INTERFACE);
 
+    // Fitler types for this panel
+    private static final String FILTER_TYPE_EXTRA = "filter_type";
+    private static final int TYPE_LOCKSCREEN_EXTRA = 0;
+    private static final int TYPE_SECURITY_EXTRA = 1;
+
     // Lock Settings
     private static final String KEY_UNLOCK_SET_OR_CHANGE = "unlock_set_or_change";
     private static final String KEY_VISIBLE_PATTERN = "visiblepattern";
@@ -141,6 +146,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private Intent mTrustAgentClickIntent;
 
     private Preference mOwnerInfoPref;
+    private int mFilterType = TYPE_SECURITY_EXTRA;
 
     @Override
     protected int getMetricsCategory() {
@@ -150,6 +156,11 @@ public class SecuritySettings extends SettingsPreferenceFragment
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            mFilterType = bundle.getInt(FILTER_TYPE_EXTRA, TYPE_SECURITY_EXTRA);
+        }
 
         mSubscriptionManager = SubscriptionManager.from(getActivity());
 
@@ -210,22 +221,26 @@ public class SecuritySettings extends SettingsPreferenceFragment
         // Add package manager to check if features are available
         PackageManager pm = getPackageManager();
 
-        // Add options for lock/unlock screen
-        final int resid = getResIdForLockUnlockScreen(getActivity(), mLockPatternUtils);
-        addPreferencesFromResource(resid);
+        if (mFilterType == TYPE_LOCKSCREEN_EXTRA) {
+            // Add options for lock/unlock screen
+            final int resid = getResIdForLockUnlockScreen(getActivity(), mLockPatternUtils);
+            addPreferencesFromResource(resid);
 
-        // Add options for device encryption
-        mIsPrimary = MY_USER_ID == UserHandle.USER_OWNER;
+            // Add options for device encryption
+            mIsPrimary = MY_USER_ID == UserHandle.USER_OWNER;
 
-        mOwnerInfoPref = findPreference(KEY_OWNER_INFO_SETTINGS);
-        if (mOwnerInfoPref != null) {
-            mOwnerInfoPref.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-                @Override
-                public boolean onPreferenceClick(Preference preference) {
-                    OwnerInfoSettings.show(SecuritySettings.this);
-                    return true;
-                }
-            });
+            mOwnerInfoPref = findPreference(KEY_OWNER_INFO_SETTINGS);
+            if (mOwnerInfoPref != null) {
+                mOwnerInfoPref.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+                    @Override
+                    public boolean onPreferenceClick(Preference preference) {
+                        OwnerInfoSettings.show(SecuritySettings.this);
+                        return true;
+                    }
+                });
+            }
+
+            return root;
         }
 
         if (mIsPrimary) {
