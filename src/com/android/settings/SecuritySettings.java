@@ -53,6 +53,7 @@ import android.util.Log;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.widget.LockPatternUtils;
+import com.android.settings.Settings.LockScreenSettingsActivity;
 import com.android.settings.TrustAgentUtils.TrustAgentComponentInfo;
 import com.android.settings.fingerprint.FingerprintEnrollIntroduction;
 import com.android.settings.fingerprint.FingerprintSettings;
@@ -76,6 +77,11 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private static final String TRUST_AGENT_CLICK_INTENT = "trust_agent_click_intent";
     private static final Intent TRUST_AGENT_INTENT =
             new Intent(TrustAgentService.SERVICE_INTERFACE);
+
+    // Fitler types for this panel
+    private static final String FILTER_TYPE_EXTRA = "filter_type";
+    private static final int TYPE_LOCKSCREEN_EXTRA = 0;
+    private static final int TYPE_SECURITY_EXTRA = 1;
 
     // Lock Settings
     private static final String KEY_UNLOCK_SET_OR_CHANGE = "unlock_set_or_change";
@@ -141,6 +147,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private Intent mTrustAgentClickIntent;
 
     private Preference mOwnerInfoPref;
+    private int mFilterType = TYPE_SECURITY_EXTRA;
 
     @Override
     protected int getMetricsCategory() {
@@ -150,6 +157,21 @@ public class SecuritySettings extends SettingsPreferenceFragment
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Ugly hack for legacy shortcuts :'(
+        Intent intent = getActivity().getIntent();
+        if (intent != null) {
+            ComponentName componentName = intent.getComponent();
+            if (componentName.getClassName().equals(
+                    LockScreenSettingsActivity.class.getName())) {
+                mFilterType = TYPE_LOCKSCREEN_EXTRA;
+            }
+        } else {
+            Bundle bundle = getArguments();
+            if (bundle != null) {
+                mFilterType = bundle.getInt(FILTER_TYPE_EXTRA, TYPE_SECURITY_EXTRA);
+            }
+        }
 
         mSubscriptionManager = SubscriptionManager.from(getActivity());
 
@@ -210,12 +232,13 @@ public class SecuritySettings extends SettingsPreferenceFragment
         // Add package manager to check if features are available
         PackageManager pm = getPackageManager();
 
+        // Add options for device encryption
+        mIsPrimary = MY_USER_ID == UserHandle.USER_OWNER;
+
+        if (mFilterType == TYPE_LOCKSCREEN_EXTRA) {
         // Add options for lock/unlock screen
         final int resid = getResIdForLockUnlockScreen(getActivity(), mLockPatternUtils);
         addPreferencesFromResource(resid);
-
-        // Add options for device encryption
-        mIsPrimary = MY_USER_ID == UserHandle.USER_OWNER;
 
         mOwnerInfoPref = findPreference(KEY_OWNER_INFO_SETTINGS);
         if (mOwnerInfoPref != null) {
@@ -227,8 +250,9 @@ public class SecuritySettings extends SettingsPreferenceFragment
                 }
             });
         }
+        }
 
-        if (mIsPrimary) {
+        if (mIsPrimary && mFilterType == TYPE_SECURITY_EXTRA) {
             if (LockPatternUtils.isDeviceEncryptionEnabled()) {
                 // The device is currently encrypted.
                 addPreferencesFromResource(R.xml.security_settings_encrypted);
@@ -238,6 +262,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
             }
         }
 
+        if (mFilterType == TYPE_LOCKSCREEN_EXTRA) {
         // Fingerprint and trust agents
         PreferenceGroup securityCategory = (PreferenceGroup)
                 root.findPreference(KEY_SECURITY_CATEGORY);
@@ -267,7 +292,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
                     R.string.lockpattern_settings_power_button_instantly_locks_summary,
                     trustAgentPreference.getTitle()));
         }
-
+        } else {
         // Append the rest of the settings
         addPreferencesFromResource(R.xml.security_settings_misc);
 
@@ -350,7 +375,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
         // smarter in the future.
         Index.getInstance(getActivity())
                 .updateFromClassNameResource(SecuritySettings.class.getName(), true, true);
-
+        }
         for (int i = 0; i < SWITCH_PREFERENCE_KEYS.length; i++) {
             final Preference pref = findPreference(SWITCH_PREFERENCE_KEYS[i]);
             if (pref != null) pref.setOnPreferenceChangeListener(this);
