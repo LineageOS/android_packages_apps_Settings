@@ -19,6 +19,11 @@
         android:title="@string/display_settings"
         settings:keywords="@string/keywords_display">
 
+    <PreferenceCategory
+        android:key="display"
+        android:title="@string/display_label">
+
+        <!-- Brightness slider -->
         <PreferenceScreen
                 android:key="brightness"
                 android:title="@string/brightness"
@@ -26,6 +31,7 @@
             <intent android:action="android.intent.action.SHOW_BRIGHTNESS_DIALOG" />
         </PreferenceScreen>
 
+        <!-- Adaptive brightness -->
         <SwitchPreference
                 android:key="auto_brightness"
                 android:title="@string/auto_brightness_title"
@@ -43,18 +49,38 @@
             android:entries="@array/night_mode_entries"
             android:entryValues="@array/night_mode_values" /> -->
 
+        <!-- LiveDisplay -->
+        <PreferenceScreen
+                android:key="live_display"
+                android:title="@string/live_display_title"
+                android:summary="@string/live_display_summary"
+                android:fragment="com.android.settings.livedisplay.LiveDisplay" />
+
+        <!-- Rotation modes -->
         <PreferenceScreen
                 android:key="display_rotation"
                 android:title="@string/display_rotation_title"
                 android:fragment="com.android.settings.cyanogenmod.DisplayRotation" />
 
-        <ListPreference
-                android:key="screen_timeout"
-                android:title="@string/screen_timeout"
-                android:summary="@string/screen_timeout_summary"
-                android:persistent="false"
-                android:entries="@array/screen_timeout_entries"
-                android:entryValues="@array/screen_timeout_values" />
+        <!-- Doze // Ambient display -->
+        <SwitchPreference
+                android:key="doze"
+                android:title="@string/doze_title"
+                android:summary="@string/doze_summary"
+                android:persistent="false" />
+
+        <!-- Lift to wake -->
+        <SwitchPreference
+                android:key="lift_to_wake"
+                android:title="@string/lift_to_wake_title"
+                android:persistent="false" />
+
+        <!-- Double tap to wake -->
+        <SwitchPreference
+                android:key="tap_to_wake"
+                android:title="@string/tap_to_wake"
+                android:summary="@string/tap_to_wake_summary"
+                android:persistent="false" />
 
         <SwitchPreference
                 android:key="camera_gesture"
@@ -68,104 +94,96 @@
                 android:summary="@string/camera_double_tap_power_gesture_desc"
                 android:persistent="false" />
 
-        <PreferenceScreen
-                android:key="screensaver"
-                android:title="@string/screensaver_settings_title"
-                android:fragment="com.android.settings.DreamSettings" />
-
-        <!-- LiveDisplay -->
-        <PreferenceScreen
-                android:key="live_display"
-                android:title="@string/live_display_title"
-                android:summary="@string/live_display_summary"
-                android:fragment="com.android.settings.livedisplay.LiveDisplay" />
-
-        <SwitchPreference
-                android:key="lift_to_wake"
-                android:title="@string/lift_to_wake_title"
-                android:persistent="false" />
-
-        <SwitchPreference
-                android:key="doze"
-                android:title="@string/doze_title"
-                android:summary="@string/doze_summary"
-                android:persistent="false" />
-
-        <SwitchPreference
-                android:key="tap_to_wake"
-                android:title="@string/tap_to_wake"
-                android:summary="@string/tap_to_wake_summary"
-                android:persistent="false" />
-
-        <com.android.settings.cyanogenmod.CMSystemSettingSwitchPreference
-                android:key="proximity_on_wake"
-                android:title="@string/proximity_wake_title"
-                android:summary="@string/proximity_wake_summary"
-                android:defaultValue="true" />
-
-        <com.android.settings.cyanogenmod.CMSystemSettingSwitchPreference
+        <!-- Double tap to sleep -->
+        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
                 android:key="double_tap_sleep_gesture"
                 android:title="@string/double_tap_to_sleep_title"
                 android:summary="@string/double_tap_to_sleep_summary"
                 android:defaultValue="true" />
 
-        <ListPreference
-                android:key="lcd_density"
-                android:title="@string/lcd_density"
-                android:persistent="false" />
+        <!-- Prevent accidental wake-up -->
+        <SwitchPreference
+                android:key="proximity_on_wake"
+                android:title="@string/proximity_wake_title"
+                android:summary="@string/proximity_wake_summary"/>
 
+        <!-- Seconds before sleep -->
+        <ListPreference
+                android:key="screen_timeout"
+                android:title="@string/screen_timeout"
+                android:summary="@string/screen_timeout_summary"
+                android:persistent="false"
+                android:entries="@array/screen_timeout_entries"
+                android:entryValues="@array/screen_timeout_values" />
+
+        <!-- Wake on plug -->
+        <SwitchPreference
+                android:key="wake_when_plugged_or_unplugged"
+                android:title="@string/wake_when_plugged_or_unplugged_title"
+                android:summary="@string/wake_when_plugged_or_unplugged_summary"
+                android:defaultValue="false"/>
+
+        <!-- Cast screen -->
         <PreferenceScreen
                 android:key="wifi_display"
                 android:title="@string/wifi_display_settings_title"
                 settings:keywords="@string/keywords_display_cast_screen"
                 android:fragment="com.android.settings.wfd.WifiDisplaySettings" />
+    </PreferenceCategory>
 
-        <PreferenceCategory
-                android:key="interface"
-                android:title="@string/category_interface">
+    <PreferenceCategory
+            android:key="interface"
+            android:title="@string/category_interface">
+        <!-- expanded desktop -->
+        <PreferenceScreen
+                android:key="expanded_desktop"
+                android:title="@string/power_menu_expanded_desktop"
+                android:fragment="com.android.settings.applications.ExpandedDesktopPreferenceFragment"/>
 
-            <PreferenceScreen
-                    android:key="wallpaper"
-                    android:title="@string/wallpaper_settings_title"
-                    settings:keywords="@string/keywords_display_wallpaper"
-                    android:fragment="com.android.settings.WallpaperTypeSettings" />
+        <!-- DPI chooser -->
+        <ListPreference
+                android:key="lcd_density"
+                android:title="@string/lcd_density"
+                android:persistent="false" />
 
-            <!-- expanded desktop -->
-            <PreferenceScreen
-                    android:key="expanded_desktop"
-                    android:title="@string/power_menu_expanded_desktop"
-                    android:fragment="com.android.settings.applications.ExpandedDesktopPreferenceFragment" />
+        <!-- Day dream -->
+        <PreferenceScreen
+                android:key="screensaver"
+                android:title="@string/screensaver_settings_title"
+                android:fragment="com.android.settings.DreamSettings" />
 
-            <!-- Search in Recents -->
-            <com.android.settings.cyanogenmod.CMSystemSettingSwitchPreference
-                    android:key="recents_show_search_bar"
-                    android:title="@string/recents_show_searchbar"
-                    android:defaultValue="true" />
+        <!-- Font size -->
+        <com.android.settings.FontDialogPreference
+                android:key="font_size"
+                android:title="@string/title_font_size"
+                settings:keywords="@string/keywords_display_font_size"
+                android:summary="@string/summary_font_size"
+                android:dialogTitle="@string/dialog_title_font_size" />
 
-            <com.android.settings.FontDialogPreference
-                    android:key="font_size"
-                    android:title="@string/title_font_size"
-                    settings:keywords="@string/keywords_display_font_size"
-                    android:summary="@string/summary_font_size"
-                    android:dialogTitle="@string/dialog_title_font_size" />
+        <!-- Search in Recents -->
+        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+                android:key="recents_show_search_bar"
+                android:title="@string/recents_show_searchbar"
+                settings:keywords="@string/keywords_recents_show_searchbar"
+                android:defaultValue="true" />
 
-        </PreferenceCategory>
+    </PreferenceCategory>
 
-        <PreferenceCategory
-                android:key="advanced_display_prefs"
-                android:title="@string/advanced_settings">
+    <PreferenceCategory
+            android:key="lights"
+            android:title="@string/category_lights">
 
-                <SwitchPreference
-                    android:key="wake_when_plugged_or_unplugged"
-                    android:title="@string/wake_when_plugged_or_unplugged_title"
-                    android:summary="@string/wake_when_plugged_or_unplugged_summary"
-                    android:defaultValue="false" />
+        <!-- Battery light -->
+        <PreferenceScreen
+                android:key="battery_light"
+                android:title="@string/battery_light_title"
+                android:fragment="com.android.settings.notificationlight.BatteryLightSettings" />
 
-                <SwitchPreference
-                    android:key="adaptive_backlight"
-                    android:title="@string/adaptive_backlight_title"
-                    android:summary="@string/adaptive_backlight_summary"
-                    android:defaultValue="true" />
-        </PreferenceCategory>
+        <!-- Notification lights -->
+        <PreferenceScreen
+                android:key="notification_light"
+                android:title="@string/notification_light_title"
+                android:fragment="com.android.settings.notificationlight.NotificationLightSettings" />
 
+    </PreferenceCategory>
 </PreferenceScreen>
