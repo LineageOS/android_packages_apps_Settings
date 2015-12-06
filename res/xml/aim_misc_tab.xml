@@ -16,21 +16,27 @@
 	android:title="@string/aim_misc_title"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
             
-<PreferenceScreen
+       <PreferenceScreen
          android:key="dev_info"
          android:title="@string/dev_info"
          android:icon="@drawable/ic_aim_amify"
          android:fragment="com.android.settings.devs" />
 
-<com.android.settings.aim.Preferences.SystemSettingSwitchPreference
+        <com.android.settings.aim.Preferences.SystemSettingSwitchPreference
                android:key="show_su_indicator"
                android:title="@string/show_su_indicator_title"
                android:summary="@string/show_su_indicator_summary"
                android:defaultValue="true" />
 
- <PreferenceScreen
+        <PreferenceScreen
              android:id="@+id/alarm_blocker"
              android:fragment="com.android.settings.aim.fragments.AlarmBlocker"
              android:title="@string/alarm_blocker" />
+
+        <PreferenceScreen
+            android:key="systemappremover"
+            android:fragment="com.android.settings.aim.Preferences.SystemappRemover"
+            android:layout="@layout/preference_systemappremover"
+            android:title="@string/system_app_remover" />
 
 </PreferenceScreen>
