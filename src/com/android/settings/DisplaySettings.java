@@ -260,19 +260,23 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             }
         }
 
+        mCameraGesturePreference = (SwitchPreference) findPreference(KEY_CAMERA_GESTURE);
         if (isCameraGestureAvailable(getResources())) {
-            mCameraGesturePreference = (SwitchPreference) findPreference(KEY_CAMERA_GESTURE);
             mCameraGesturePreference.setOnPreferenceChangeListener(this);
         } else {
-            removePreference(KEY_CAMERA_GESTURE);
+            if (displayPrefs != null && mCameraGesturePreference != null) {
+                displayPrefs.removePreference(mCameraGesturePreference);
+            }
         }
 
+        mCameraDoubleTapPowerGesturePreference
+                = (SwitchPreference) findPreference(KEY_CAMERA_DOUBLE_TAP_POWER_GESTURE);
         if (isCameraDoubleTapPowerGestureAvailable(getResources())) {
-            mCameraDoubleTapPowerGesturePreference
-                    = (SwitchPreference) findPreference(KEY_CAMERA_DOUBLE_TAP_POWER_GESTURE);
             mCameraDoubleTapPowerGesturePreference.setOnPreferenceChangeListener(this);
         } else {
-            removePreference(KEY_CAMERA_DOUBLE_TAP_POWER_GESTURE);
+            if (displayPrefs != null && mCameraDoubleTapPowerGesturePreference != null) {
+                displayPrefs.removePreference(mCameraDoubleTapPowerGesturePreference);
+            }
         }
 
         mNightModePreference = (ListPreference) findPreference(KEY_NIGHT_MODE);
@@ -288,7 +292,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         if (mTapToWakePreference != null && isTapToWakeAvailable(getResources())) {
             mTapToWakePreference.setOnPreferenceChangeListener(this);
         } else {
-            removePreference(KEY_TAP_TO_WAKE);
+            if (displayPrefs != null && mTapToWakePreference != null) {
+                displayPrefs.removePreference(mTapToWakePreference);
+            }
         }
 
         boolean proximityCheckOnWait = getResources().getBoolean(
