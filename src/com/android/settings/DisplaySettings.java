@@ -41,6 +41,7 @@ import android.support.v7.preference.DropDownPreference;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
+import android.support.v7.preference.PreferenceCategory;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -76,6 +77,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     /** If there is no setting in the provider, use this. */
     private static final int FALLBACK_SCREEN_TIMEOUT_VALUE = 30000;
 
+    private static final String KEY_CATEGORY_DISPLAY = "display";
     private static final String KEY_SCREEN_TIMEOUT = "screen_timeout";
     private static final String KEY_FONT_SIZE = "font_size";
     private static final String KEY_SCREEN_SAVER = "screensaver";
@@ -116,6 +118,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
         addPreferencesFromResource(R.xml.display_settings);
 
+        PreferenceCategory displayPrefs = (PreferenceCategory)
+                findPreference(KEY_CATEGORY_DISPLAY);
+
         mScreenSaverPreference = findPreference(KEY_SCREEN_SAVER);
         if (mScreenSaverPreference != null
                 && getResources().getBoolean(
@@ -141,38 +146,47 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             removePreference(KEY_LIFT_TO_WAKE);
         }
 
-        if (isDozeAvailable(activity)) {
-            mDozePreference = (SwitchPreference) findPreference(KEY_DOZE);
+        mDozePreference = (SwitchPreference) findPreference(KEY_DOZE);
+        if (mDozePreference != null && isDozeAvailable(activity)) {
             mDozePreference.setOnPreferenceChangeListener(this);
         } else {
-            removePreference(KEY_DOZE);
+            if (displayPrefs != null && mDozePreference != null) {
+                displayPrefs.removePreference(mDozePreference);
+            }
         }
 
-        if (isTapToWakeAvailable(getResources())) {
-            mTapToWakePreference = (SwitchPreference) findPreference(KEY_TAP_TO_WAKE);
+        mTapToWakePreference = (SwitchPreference) findPreference(KEY_TAP_TO_WAKE);
+        if (mTapToWakePreference != null && isTapToWakeAvailable(getResources())) {
             mTapToWakePreference.setOnPreferenceChangeListener(this);
         } else {
-            removePreference(KEY_TAP_TO_WAKE);
+            if (displayPrefs != null && mTapToWakePreference != null) {
+                displayPrefs.removePreference(mTapToWakePreference);
+            }
         }
 
-        if (isCameraGestureAvailable(getResources())) {
-            mCameraGesturePreference = (SwitchPreference) findPreference(KEY_CAMERA_GESTURE);
+        mCameraGesturePreference = (SwitchPreference) findPreference(KEY_CAMERA_GESTURE);
+        if (mCameraGesturePreference != null && isCameraGestureAvailable(getResources())) {
             mCameraGesturePreference.setOnPreferenceChangeListener(this);
         } else {
-            removePreference(KEY_CAMERA_GESTURE);
+            if (displayPrefs != null && mCameraGesturePreference != null) {
+                displayPrefs.removePreference(mCameraGesturePreference);
+            }
         }
 
-        if (isCameraDoubleTapPowerGestureAvailable(getResources())) {
-            mCameraDoubleTapPowerGesturePreference
-                    = (SwitchPreference) findPreference(KEY_CAMERA_DOUBLE_TAP_POWER_GESTURE);
+        mCameraDoubleTapPowerGesturePreference =
+                (SwitchPreference) findPreference(KEY_CAMERA_DOUBLE_TAP_POWER_GESTURE);
+        if (mCameraDoubleTapPowerGesturePreference != null &&
+                isCameraDoubleTapPowerGestureAvailable(getResources())) {
             mCameraDoubleTapPowerGesturePreference.setOnPreferenceChangeListener(this);
         } else {
-            removePreference(KEY_CAMERA_DOUBLE_TAP_POWER_GESTURE);
+            if (displayPrefs != null && mCameraDoubleTapPowerGesturePreference != null) {
+                displayPrefs.removePreference(mCameraDoubleTapPowerGesturePreference);
+            }
         }
 
+        DropDownPreference rotatePreference =
+                (DropDownPreference) findPreference(KEY_AUTO_ROTATE);
         if (RotationPolicy.isRotationLockToggleVisible(activity)) {
-            DropDownPreference rotatePreference =
-                    (DropDownPreference) findPreference(KEY_AUTO_ROTATE);
             int rotateLockedResourceId;
             // The following block sets the string used when rotation is locked.
             // If the device locks specifically to portrait or landscape (rather than current
@@ -207,12 +221,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 }
             });
         } else {
-            removePreference(KEY_AUTO_ROTATE);
+            if (displayPrefs != null && rotatePreference != null) {
+                displayPrefs.removePreference(rotatePreference);
+            }
         }
 
+        DropDownPreference vrDisplayPref =
+                (DropDownPreference) findPreference(KEY_VR_DISPLAY_PREF);
         if (isVrDisplayModeAvailable(activity)) {
-            DropDownPreference vrDisplayPref =
-                    (DropDownPreference) findPreference(KEY_VR_DISPLAY_PREF);
             vrDisplayPref.setEntries(new CharSequence[] {
                     activity.getString(R.string.display_vr_pref_low_persistence),
                     activity.getString(R.string.display_vr_pref_off),
@@ -241,7 +257,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 }
             });
         } else {
-            removePreference(KEY_VR_DISPLAY_PREF);
+            if (displayPrefs != null && vrDisplayPref != null) {
+                displayPrefs.removePreference(vrDisplayPref);
+            }
         }
 
         mNightModePreference = (ListPreference) findPreference(KEY_NIGHT_MODE);
