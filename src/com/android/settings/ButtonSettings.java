@@ -448,7 +448,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                     Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR,
                     Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR_DEFAULT);
             final boolean powerButtonEndsCall =
-                    (incallPowerBehavior == Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR_HANGUP);
+                    (incallPowerBehavior == CMSettings.Secure.INCALL_POWER_BUTTON_BEHAVIOR_HANGUP);
             mPowerEndCall.setChecked(powerButtonEndsCall);
         }
 
