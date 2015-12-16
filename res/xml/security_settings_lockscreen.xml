@@ -49,6 +49,11 @@
                 android:targetClass="com.android.systemui.cm.LockscreenShortcutsActivity" />
         </PreferenceScreen>
 
+        <com.android.settings.cyanogenmod.CMSecureSettingSwitchPreference
+            android:key="lockscreen_visualizer"
+            android:title="@string/lockscreen_visualizer_title"
+            android:defaultValue="true"/>
+
     </PreferenceCategory>
 
 </PreferenceScreen>
