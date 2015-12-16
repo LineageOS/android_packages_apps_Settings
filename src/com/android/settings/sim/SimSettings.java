@@ -38,6 +38,7 @@ import android.preference.PreferenceCategory;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.telephony.PhoneStateListener;
+import android.telephony.SmsManager;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
@@ -225,6 +226,9 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             loge("RemoteException @isSMSPromptEnabled" + ex);
         } catch (NullPointerException ex) {
             loge("NullPointerException @isSMSPromptEnabled" + ex);
+        }
+        if (mExtTelephony == null) {
+            isSMSPrompt = SmsManager.getDefault().isSMSPromptEnabled();
         }
         log("[updateSmsValues] isSMSPrompt: " + isSMSPrompt);
         if (isSMSPrompt || sir == null) {
