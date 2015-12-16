@@ -38,6 +38,7 @@ import android.preference.PreferenceCategory;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.telephony.PhoneStateListener;
+import android.telephony.SmsManager;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
@@ -67,7 +68,7 @@ import java.util.List;
 
 public class SimSettings extends RestrictedSettingsFragment implements Indexable {
     private static final String TAG = "SimSettings";
-    private static final boolean DBG = false;
+    private static final boolean DBG = true;
 
     // These are the list of  possible values that
     // IExtTelephony.getCurrentUiccCardProvisioningStatus() can return
@@ -154,7 +155,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     @Override
     public void onDestroy() {
         mContext.unregisterReceiver(mReceiver);
-        Log.d(TAG,"on onDestroy");
+        Log.d(TAG, "on onDestroy");
         super.onDestroy();
     }
 
@@ -225,6 +226,9 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             loge("RemoteException @isSMSPromptEnabled" + ex);
         } catch (NullPointerException ex) {
             loge("NullPointerException @isSMSPromptEnabled" + ex);
+        }
+        if (mExtTelephony == null) {
+            isSMSPrompt = SmsManager.getDefault().isSMSPromptEnabled();
         }
         log("[updateSmsValues] isSMSPrompt: " + isSMSPrompt);
         if (isSMSPrompt || sir == null) {
@@ -425,7 +429,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
 
 
         public SimEnablerPreference(Context context, SubscriptionInfo sir, int slotId) {
-            super(context, (AttributeSet)null,
+            super(context, (AttributeSet) null,
                     com.android.internal.R.attr.checkBoxPreferenceStyle);
             logd("Contructor..Enter");
             mContext = context;
