@@ -804,8 +804,25 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
             throw new UnsupportedOperationException("connection setting cannot be null");
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        // config_prefer_2g in p/s/Telephony
+        final Context telephonyContext = Utils.createPackageContext(getActivity(),
+                "com.android.phone");
+        boolean allow2g = true;
+        if (telephonyContext != null) {
+            int identifier = telephonyContext.getResources().getIdentifier("config_prefer_2g",
+                    "bool", telephonyContext.getPackageName());
+            if (identifier > 0) {
+                allow2g = telephonyContext.getResources().getBoolean(identifier);
+            }
+        }
+
         final String[] connectionNames =
-                getResources().getStringArray(R.array.profile_networkmode_entries_4g);
+                getResources().getStringArray(allow2g ? R.array.profile_networkmode_entries_4g
+                        : R.array.profile_networkmode_entries_no_2g);
+        final String[] connectionValues =
+                getResources().getStringArray(allow2g ? R.array.profile_networkmode_values_4g
+                        : R.array.profile_networkmode_values_no_2g);
 
         int defaultIndex = ConnectionOverrideItem.CM_MODE_UNCHANGED; // no action
         if (setting.isOverride()) {
@@ -823,7 +840,7 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
                                 break;
                             default:
                                 setting.setOverride(true);
-                                setting.setValue(item);
+                                setting.setValue(Integer.parseInt(connectionValues[item]));
                         }
                         mProfile.setConnectionSettings(setting);
                         mAdapter.notifyDataSetChanged();
