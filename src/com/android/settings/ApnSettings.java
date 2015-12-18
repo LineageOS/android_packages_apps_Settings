@@ -270,7 +270,11 @@ public class ApnSettings extends SettingsPreferenceFragment implements
 
                 if (isMvno) {
                     if (!mvnoMatches(mvnoType, mvnoData, simOperatorName, imsiSIM, gid1)) {
-                        apnList.removePreference(pref);
+                        if (pref.getSelectable()) {
+                            apnList.removePreference(pref);
+                        } else {
+                            mmsApnList.remove(pref);
+                        }
                     } else {
                         ApnInfo apnInfo = new ApnInfo(name, apn, key, type, mvnoType, readOnly);
                         if ("spn".equals(mvnoType)) {
