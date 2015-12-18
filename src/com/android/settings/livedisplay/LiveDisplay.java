@@ -94,6 +94,7 @@ public class LiveDisplay extends SettingsPreferenceFragment implements
     private DisplayTemperature mDisplayTemperature;
 
     private ListPreference mColorProfile;
+    private String[] mColorProfileSummaries;
 
     private String[] mModeEntries;
     private String[] mModeValues;
@@ -229,6 +230,17 @@ public class LiveDisplay extends SettingsPreferenceFragment implements
         mObserver.register(false);
     }
 
+    private String getStringForResourceName(String resourceName, String defaultValue) {
+        Resources res = getResources();
+        int resId = res.getIdentifier(resourceName, "string", "com.android.settings");
+        if (resId <= 0) {
+            Log.e(TAG, "No resource found for " + resourceName);
+            return defaultValue;
+        } else {
+            return res.getString(resId);
+        }
+    }
+
     private boolean updateDisplayModes() {
         final DisplayMode[] modes = mHardware.getDisplayModes();
         if (modes == null || modes.length == 0) {
@@ -239,11 +251,21 @@ public class LiveDisplay extends SettingsPreferenceFragment implements
         int curId = -1;
         String[] entries = new String[modes.length];
         String[] values = new String[modes.length];
-        String[] summaries = new String[modes.length];
+        mColorProfileSummaries = new String[modes.length];
         for (int i = 0; i < modes.length; i++) {
             values[i] = String.valueOf(modes[i].id);
-            entries[i] = modes[i].name;
-            summaries[i] = modes[i].name;
+            String name = modes[i].name.toLowerCase().replace(" ", "_");
+            String nameRes = String.format("live_display_color_profile_%s_title", name);
+            entries[i] = getStringForResourceName(nameRes, modes[i].name);
+
+            // Populate summary
+            String summaryRes = String.format("live_display_color_profile_%s_summary", name);
+            String summary = getStringForResourceName(summaryRes, null);
+            if (summary != null) {
+                summary = String.format("%s - %s", entries[i], summary);
+            }
+            mColorProfileSummaries[i] = summary;
+
             if (cur != null && modes[i].id == cur.id) {
                 curId = -1;
             }
@@ -277,18 +299,7 @@ public class LiveDisplay extends SettingsPreferenceFragment implements
         }
 
         mColorProfile.setValue(value);
-
-        String entry = mColorProfile.getEntries()[idx].toString();
-        String name = entry.toLowerCase().replace(" ", "_");
-        String summaryRes = String.format("live_display_color_profile_%s_summary", name);
-        int resId = getResources().getIdentifier(summaryRes, "string", "com.android.settings");
-        if (resId <= 0) {
-            Log.e(TAG, "No summary resource found for profile " + name);
-            mColorProfile.setSummary(null);
-            return;
-        }
-        mColorProfile.setSummary(String.format("%s - %s", entry.toString(),
-                getResources().getString(resId)));
+        mColorProfile.setSummary(mColorProfileSummaries[idx]);
     }
 
     private void updateModeSummary() {
