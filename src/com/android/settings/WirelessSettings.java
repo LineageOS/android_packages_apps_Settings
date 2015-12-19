@@ -293,6 +293,7 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
         mNfcAdapter = NfcAdapter.getDefaultAdapter(activity);
         if (mNfcAdapter == null) {
             getPreferenceScreen().removePreference(nfcCategory);
+            getPreferenceScreen().removePreference(nfcPayment);
             mNfcEnabler = null;
         } else if (!mPm.hasSystemFeature(PackageManager.FEATURE_NFC_HOST_CARD_EMULATION)) {
             // Only show if we have the HCE feature
