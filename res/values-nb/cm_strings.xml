@@ -131,6 +131,7 @@
   <string name="volbtn_cursor_control_on_reverse">Volum opp/ned flytter markøren høyre/venstre</string>
   <string name="swap_volume_buttons_title">Reorientere</string>
   <string name="swap_volume_buttons_summary">Bytte volumknappene når skjermen er rotert</string>
+  <string name="volume_keys_control_ring_stream_title">Ringetone volumkontroll</string>
   <string name="power_end_call_title">Avslutt samtale</string>
   <string name="power_end_call_summary">Ved å trykke på strømknappen så vil samtalen avsluttes</string>
   <string name="button_wake_title">Vekke enheten</string>
@@ -341,6 +342,8 @@
   <string name="notification_light_default_value">Standard</string>
   <string name="notification_light_missed_call_title">Tapt anrop</string>
   <string name="notification_light_voicemail_title">Talepostkasse</string>
+  <string name="notification_light_screen_on">Lys med skjermen på</string>
+  <string name="notification_light_use_multiple_leds">Flere lysdioder</string>
   <string name="notification_ringtone_title_cm">Varslingstone</string>
   <string name="headset_connect_player_title">Start musikk app</string>
   <string name="headset_connect_player_summary">Start standard musikk app når hodesett er tilkoblet</string>
@@ -682,6 +685,7 @@
   <string name="settings_cmlicense_activity_title">CyanogenMod juridisk</string>
   <string name="lockpattern_settings_enable_error_path_title">Vis feil</string>
   <string name="lockpattern_settings_enable_dots_title">Vis mønster prikker</string>
+  <string name="lock_directly_show_pin">Vis direkte PIN-kodeoppføringen</string>
   <string name="unlock_quick_unlock_control_title">Hurtig opplåsning</string>
   <string name="unlock_quick_unlock_control_summary">Låse opp automatisk når det angis riktig PIN/passord</string>
   <string name="unlock_scramble_pin_layout_title">Endre layout</string>
@@ -769,6 +773,7 @@
   <string name="lockscreen_message">Tapp ikonet på venstre eller høyre for å tilordne en låseskjermsnarvei.</string>
   <string name="lockscreen_choose_action_title">Velg handling</string>
   <string name="lockscreen_visualizer_title">Vis musikk visualizer</string>
+  <string name="nfc_title_category">NFC</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Administrere sikre SMS-innstillinger</string>
   <string name="navigation_ring_title">Mål for navigasjonsring</string>
@@ -819,6 +824,7 @@
   <string name="interruptions_ignore_while_media_title">Hindre lyd ducking</string>
   <string name="interruptions_ignore_while_media_summary">Ikke Reduser media avspillingsvolumet når en melding ankommer</string>
   <string name="none_is_silent_title">Aldri demp alarmer</string>
+  <string name="none_is_silent_summary_on">Alarmer vil ikke ignoreres i stille modus</string>
   <string name="allow_lights_title">Tillat varselslys</string>
   <string name="live_display_summary">Optimalisere skjermen basert på tidspunkt på dagen og omgivelsesforhold å forbedre lesbarhet og redusere belastningen på øynene</string>
   <string name="live_display_mode">Visningsmodus</string>
@@ -839,6 +845,9 @@
   <string name="live_display_color_profile_natural_title">Naturlig</string>
   <string name="live_display_color_profile_natural_summary">Realistiske farger og varme toner</string>
   <string name="live_display_color_profile_dynamic_title">Dynamisk</string>
+  <string name="live_display_color_profile_dynamic_summary">Forbedrede farger og lyse hvite</string>
+  <string name="live_display_color_profile_cinema_title">Kino</string>
+  <string name="live_display_color_profile_cinema_summary">Perfekt fargegjengivelse for medier</string>
   <string name="live_display_color_profile_astronomy_title">Astronomi</string>
   <string name="live_display_color_profile_astronomy_summary">Dyp rød for å bevare nattsynet</string>
   <string name="battery_saver_threshold">Batterisparingsterskel</string>
@@ -883,6 +892,11 @@
   <string name="factory_reset_erase_sd_card_summary">Slett alle data på SD-kortet, inkludert musikk og bilder</string>
   <string name="factory_reset_warning_text_reset_now">TILBAKESTILL NÅ</string>
   <string name="factory_reset_warning_text_message">Alle kontoene, appene, appdataene og systeminnstillingene dine fjernes fra denne enheten. Dette kan ikke angres.</string>
+  <string name="wifi_show_all">Vis alle</string>
+  <string name="wifi_show_protected">Vis beskyttede nettverk</string>
+  <string name="wifi_show_open">Vis åpne nettverk</string>
+  <string name="wifi_empty_list_protected">Ingen beskyttede Wi\u2011Fi nettverk</string>
+  <string name="wifi_empty_list_open">Ingen åpne Wi\u2011Fi nettverk</string>
   <string name="wifi_setting_countrycode_title">Wi\u2011Fi-regionskode</string>
   <string name="wifi_setting_countrycode_summary">Angi regionskoden for Wi\u2011Fi</string>
   <string name="wifi_setting_countrycode_error">Det oppsto et problem med å stille inn regionskoden.</string>
@@ -908,6 +922,7 @@
   <string name="fingerprint_dialog_title_rename">Rediger fingeravtrykk</string>
   <string name="fingerprint_dialog_name_label">Navn på fingeravtrykk</string>
   <string name="fingerprint_dialog_title_max_fingers_reached">Maks. antall fingeravtrykk er nådd</string>
+  <string name="fingerprint_dialog_msg_max_fingers_reached">Du kan bare registrere <xliff:g id="finger" example="5">%d </xliff:g> fingeravtrykk. Slett et eksisterende fingeravtrykk.</string>
   <string name="manage_fingerprints_description">Med fingeravtrykk kan du raskt og enkelt låse opp telefonen og ta bilder.</string>
   <string name="fingerprint_enrollment_introduction_title">Finn sensoren din</string>
   <string name="fingerprint_enrollment_introduction_instructions">Fingeravtrykkssensoren er plassert på forsiden eller baksiden av telefonen.</string>
@@ -941,6 +956,7 @@
   <string name="fingerprint_enrollment_error_title_3">Hmm, noe gikk galt</string>
   <string name="fingerprint_enrollment_error_title_4">Å nei. Prøv igjen</string>
   <string name="fingerprint_enrollment_error_title_5">Hoppsann. Det oppsto en feil</string>
+  <string name="lockscreen_settings_and_fingerprint">Låseskjermen &amp; fingeravtrykk</string>
   <string name="menu_stats_reset">Tilbakestill statistikk</string>
   <string name="reset_stats_msg">Batteriloggstatistikken vil bli tilbakestilt</string>
   <string name="dock_battery_not_present">Dokkbatteriet er ikke til stede</string>
@@ -948,5 +964,19 @@
   <string name="battery_info_status_charging_dock_usb">Lader via dokk-USB</string>
   <string name="setup_lock_pattern_size_title">Mønsterkompleksitet</string>
   <string name="setup_lock_pattern_size_details">Hvor mange noder vil du bruke med mønsteret ditt? Jo flere noder, desto mer komplisert vil mønsteret være.</string>
+  <string name="lto_download_data_wifi_only">GPS assistert data nedlasting</string>
+  <string name="lto_download_data_wifi_only_on">Over nettverk</string>
+  <string name="lto_download_data_wifi_only_off">Bare over Wi\u2011Fi nettverk</string>
   <string name="keep_screen_on_never">Aldri</string>
+  <string name="keep_screen_on_debugging">Under USB feilsøking</string>
+  <string name="keep_screen_on_charging">Under lading</string>
+  <string name="contributors_cloud_fragment_title">Bidragsytere</string>
+  <string name="contributor_info_menu">Bidragsyter info</string>
+  <string name="contributor_info_msg">
+        <![CDATA[<b>Navn:</b> <xliff:g id="name">%1$s</xliff:g><br/><br/>
+                 <b>Nick:</b> <xliff:g id="nick">%2$s</xliff:g><br/><br/>
+                 <b>Utfører:</b> <xliff:g id="commits">%3$s</xliff:g><br/><br/>
+                 <b>Rangering:</b> <xliff:g id="rank">%4$s</xliff:g>]]></string>
+  <string name="contributions_info_menu">Bidragsinfo</string>
+  <string name="quick_settings_reset_message">Tilbakestille innstillinger for fliser?</string>
 </resources>
