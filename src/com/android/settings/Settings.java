@@ -60,7 +60,7 @@ public class Settings extends SettingsActivity {
                 return true;
             }
             return super.isValidFragment(className);
-            }
+        }
     }
     public static class StorageUseActivity extends SettingsActivity { /* empty */ }
     public static class DevelopmentSettingsActivity extends SettingsActivity { /* empty */ }
