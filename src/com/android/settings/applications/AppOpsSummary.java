@@ -23,6 +23,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -39,6 +40,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.android.internal.logging.MetricsLogger;
@@ -125,6 +127,14 @@ public class AppOpsSummary extends InstrumentedFragment {
         // initialize the inflater
         mInflater = inflater;
 
+        mActivity = getActivity();
+        int currentViewPager = -1;
+        Intent intent = mActivity.getIntent();
+        if (intent.hasExtra("appops_tab")) {
+            currentViewPager = Arrays.asList(getContext().getResources().getTextArray(
+                    R.array.app_ops_categories_cm)).indexOf(intent.getExtra("appops_tab"));
+        }
+
         View rootView = mInflater.inflate(R.layout.app_ops_summary,
                 container, false);
         mContentContainer = container;
@@ -136,6 +146,9 @@ public class AppOpsSummary extends InstrumentedFragment {
         mAdapter = new MyPagerAdapter(getChildFragmentManager(),
                 filterTemplates(AppOpsState.ALL_TEMPLATES));
         mViewPager.setAdapter(mAdapter);
+        if (currentViewPager >= 0) {
+            mViewPager.setCurrentItem(currentViewPager);
+        }
         mViewPager.setOnPageChangeListener(mAdapter);
         PagerTabStrip tabs = (PagerTabStrip) rootView.findViewById(R.id.tabs);
 
@@ -150,8 +163,6 @@ public class AppOpsSummary extends InstrumentedFragment {
         if (container instanceof PreferenceFrameLayout) {
             ((PreferenceFrameLayout.LayoutParams) rootView.getLayoutParams()).removeBorders = true;
         }
-
-        mActivity = getActivity();
 
         return rootView;
     }
