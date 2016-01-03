@@ -483,12 +483,12 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             // now use other config screen to active/deactive sim card\
             mSwitch.setVisibility(mSwitchVisibility);
 
-            // Disable manual provisioning option to user when
-            // device is in Airplane mode.
-            if (isAirplaneModeOn()) {
-                mSwitch.setEnabled(false);
+            // Hide manual provisioning option to user when
+            // device is in Airplane mode or extphone framework is not present.
+            if (isAirplaneModeOn() || mExtTelephony == null) {
+                mSwitch.setVisibility(View.GONE);
             } else {
-                mSwitch.setEnabled(true);
+                mSwitch.setVisibility(View.VISIBLE);
             }
         }
 
