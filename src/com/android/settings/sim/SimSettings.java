@@ -484,8 +484,8 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             mSwitch.setVisibility(mSwitchVisibility);
 
             // Disable manual provisioning option to user when
-            // device is in Airplane mode.
-            if (isAirplaneModeOn()) {
+            // device is in Airplane mode or extphone framework is not present.
+            if (isAirplaneModeOn() || mExtTelephony == null) {
                 mSwitch.setEnabled(false);
             } else {
                 mSwitch.setEnabled(true);
