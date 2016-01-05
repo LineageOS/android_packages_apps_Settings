@@ -27,6 +27,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
+import android.provider.Settings;
 import android.service.persistentdata.PersistentDataBlockManager;
 import android.view.LayoutInflater;
 import android.view.View;
