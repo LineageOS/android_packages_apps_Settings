@@ -21,6 +21,7 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -29,6 +30,7 @@ import android.preference.PreferenceScreen;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import com.android.settings.InstrumentedPreferenceActivity;
 import com.android.settings.R;
 
@@ -52,6 +54,20 @@ public class ImeiInformation extends InstrumentedPreferenceActivity {
         final TelephonyManager telephonyManager =
             (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
         initPreferenceScreen(telephonyManager.getSimCount());
+
+        ActionBar actionBar = getActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return false;
     }
 
     // Since there are multiple phone for dsds, therefore need to show information for different
