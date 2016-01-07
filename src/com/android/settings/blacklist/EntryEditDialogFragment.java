@@ -54,6 +54,7 @@ public class EntryEditDialogFragment extends DialogFragment
     private CheckBox mBlockCalls;
     private CheckBox mBlockMessages;
     private Button mOkButton;
+    private String mOriginalNumber;
 
     private static final String[] BLACKLIST_PROJECTION = {
         Blacklist.NUMBER, Blacklist.PHONE_MODE, Blacklist.MESSAGE_MODE
@@ -193,11 +194,18 @@ public class EntryEditDialogFragment extends DialogFragment
             mBlockMessages.setChecked(true);
         }
 
+        // Store the original number
+        // Used for updating
+        mOriginalNumber = mEditText.getText().toString();
         return view;
     }
 
     private void updateBlacklistEntry() {
-        String number = mEditText.getText().toString();
+        String newNumber = mEditText.getText().toString();
+        if (TextUtils.isEmpty(mOriginalNumber)) {
+            // We are adding a new number
+            mOriginalNumber = newNumber;
+        }
         int flags = 0;
         int valid = BlacklistUtils.BLOCK_CALLS | BlacklistUtils.BLOCK_MESSAGES;
         if (mBlockCalls.isChecked()) {
@@ -208,7 +216,7 @@ public class EntryEditDialogFragment extends DialogFragment
         }
         // Since BlacklistProvider enforces validity for a number to be added
         // we should alert the user if and when it gets rejected
-        if (!BlacklistUtils.addOrUpdate(getActivity(), number, flags, valid)) {
+        if (!BlacklistUtils.addOrUpdate(getActivity(), mOriginalNumber, newNumber, flags, valid)) {
             Toast.makeText(getActivity(), getString(R.string.blacklist_bad_number_add),
                     Toast.LENGTH_LONG).show();
         }
