@@ -71,6 +71,7 @@ public class EntryEditDialogFragment extends DialogFragment
     private static final String STATE_NUMBER = "number";
     private static final String STATE_PHONE = "phone";
     private static final String STATE_MESSAGE = "message";
+    private static final String STATE_EDIT_ENABLED = "edit_enabled";
 
     public static EntryEditDialogFragment newInstance(long id) {
         Bundle args = new Bundle();
@@ -167,7 +168,8 @@ public class EntryEditDialogFragment extends DialogFragment
         mBlockMessages = (CheckBox) view.findViewById(R.id.incoming_messages);
 
         if (savedState != null) {
-            mEditText.setText(savedState.getCharSequence(STATE_NUMBER));
+            mEditText.append(savedState.getCharSequence(STATE_NUMBER));
+            mEditText.setEnabled(savedState.getBoolean(STATE_EDIT_ENABLED));
             mBlockCalls.setChecked(savedState.getBoolean(STATE_PHONE));
             mBlockMessages.setChecked(savedState.getBoolean(STATE_MESSAGE));
         } else if (id >= 0) {
@@ -175,7 +177,8 @@ public class EntryEditDialogFragment extends DialogFragment
             Cursor cursor = activity.getContentResolver().query(uri,
                     BLACKLIST_PROJECTION, null, null, null);
             if (cursor != null && cursor.moveToFirst()) {
-                mEditText.setText(cursor.getString(COLUMN_NUMBER));
+                mEditText.append(cursor.getString(COLUMN_NUMBER));
+                mEditText.setEnabled(false);
                 mBlockCalls.setChecked(cursor.getInt(COLUMN_PHONE) != 0);
                 mBlockMessages.setChecked(cursor.getInt(COLUMN_MESSAGE) != 0);
             } else {
@@ -191,6 +194,7 @@ public class EntryEditDialogFragment extends DialogFragment
             mEditText.setText("");
             mBlockCalls.setChecked(true);
             mBlockMessages.setChecked(true);
+            mEditText.setEnabled(true);
         }
 
         return view;
@@ -251,6 +255,7 @@ public class EntryEditDialogFragment extends DialogFragment
         dialogState.putCharSequence(STATE_NUMBER, mEditText.getText());
         dialogState.putBoolean(STATE_PHONE, mBlockCalls.isChecked());
         dialogState.putBoolean(STATE_MESSAGE, mBlockMessages.isChecked());
+        dialogState.putBoolean(STATE_EDIT_ENABLED, mEditText.isEnabled());
         state.putBundle(DIALOG_STATE, dialogState);
     }
 
