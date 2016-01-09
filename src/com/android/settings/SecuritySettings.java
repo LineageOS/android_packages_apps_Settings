@@ -61,6 +61,7 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Index;
 import com.android.settings.search.Indexable;
 import com.android.settings.search.SearchIndexableRaw;
+import cyanogenmod.providers.CMSettings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -233,6 +234,15 @@ public class SecuritySettings extends SettingsPreferenceFragment
 
         // Add options for device encryption
         mIsPrimary = MY_USER_ID == UserHandle.USER_OWNER;
+
+        if (CMSettings.Secure.getIntForUser(getContentResolver(),
+                CMSettings.Secure.LOCKSCREEN_INTERNALLY_ENABLED, 1, UserHandle.USER_OWNER) != 1) {
+            // lock screen is disabled by quick settings tile, let the user know!~
+            Preference disabledLock = new Preference(getActivity());
+            disabledLock.setTitle(R.string.lockscreen_disabled_by_qs_tile_title);
+            disabledLock.setSummary(R.string.lockscreen_disabled_by_qs_tile_summary);
+            root.addPreference(disabledLock);
+        }
 
         if (mFilterType == TYPE_LOCKSCREEN_EXTRA) {
             // Add options for lock/unlock screen
