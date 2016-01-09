@@ -26,6 +26,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceGroup;
@@ -33,6 +34,7 @@ import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -54,6 +56,8 @@ import java.util.List;
 import java.util.Map;
 
 import cyanogenmod.providers.CMSettings;
+import cyanogenmod.util.ColorUtils;
+
 import org.cyanogenmod.internal.logging.CMMetricsLogger;
 
 public class NotificationLightSettings extends SettingsPreferenceFragment implements
@@ -77,6 +81,7 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
     private CMSystemSettingSwitchPreference mCustomEnabledPref;
     private CMSystemSettingSwitchPreference mMultipleLedsEnabledPref;
     private CMSystemSettingSwitchPreference mScreenOnLightsPref;
+    private CMSystemSettingSwitchPreference mAutoMagic;
     private ApplicationLightPreference mDefaultPref;
     private ApplicationLightPreference mCallPref;
     private ApplicationLightPreference mVoicemailPref;
@@ -110,6 +115,10 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
 
         mDefaultPref = (ApplicationLightPreference) findPreference(DEFAULT_PREF);
         mDefaultPref.setOnPreferenceChangeListener(this);
+
+        mAutoMagic = (CMSystemSettingSwitchPreference)
+                findPreference(CMSettings.System.NOTIFICATION_LIGHT_COLOR_AUTO);
+        mAutoMagic.setOnPreferenceChangeListener(this);
 
         // Advanced light settings
         mNotificationLedBrightnessPref = (PreferenceScreen)
@@ -250,6 +259,9 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
             return;
         }
 
+        boolean autoMagic = CMSettings.System.getInt(getContentResolver(),
+                CMSettings.System.NOTIFICATION_LIGHT_COLOR_AUTO, 1) == 1;
+
         // Add the Application Preferences
         if (mApplicationPrefList != null) {
             mApplicationPrefList.removeAll();
@@ -275,10 +287,27 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
         }
     }
 
+    private int getInitialColorForPackage(String packageName) {
+        boolean autoMagic = CMSettings.System.getInt(getContentResolver(),
+                CMSettings.System.NOTIFICATION_LIGHT_COLOR_AUTO, 1) == 1;
+        int color = mDefaultColor;
+        if (autoMagic) {
+            try {
+                Drawable icon = mPackageManager.getApplicationIcon(packageName);
+                color = ColorUtils.generateAlertColorFromDrawable(icon);
+            } catch (NameNotFoundException e) {
+                Log.e("NOTIF", "package not found! " + packageName);
+            }
+        }
+        Log.d("NOTIF", "pkg=" + packageName + " color=" + color + " default=" + mDefaultColor + " magic=" + autoMagic);
+        return color;
+    }
+
     private void addCustomApplicationPref(String packageName) {
         Package pkg = mPackages.get(packageName);
         if (pkg == null) {
-            pkg = new Package(packageName, mDefaultColor, mDefaultLedOn, mDefaultLedOff);
+            int color = getInitialColorForPackage(packageName);
+            pkg = new Package(packageName, color, mDefaultLedOn, mDefaultLedOff);
             mPackages.put(packageName, pkg);
             savePackageList(false);
             refreshCustomApplicationPrefs();
@@ -411,7 +440,8 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
         if (preference == mEnabledPref || preference == mCustomEnabledPref ||
                 preference == mMultipleLedsEnabledPref ||
                 preference == mNotificationLedBrightnessPref ||
-                preference == mScreenOnLightsPref) {
+                preference == mScreenOnLightsPref ||
+                preference == mAutoMagic) {
             getActivity().invalidateOptionsMenu();
         } else {
             ApplicationLightPreference lightPref = (ApplicationLightPreference) preference;
