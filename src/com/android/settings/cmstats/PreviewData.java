@@ -21,9 +21,9 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 
-import com.android.internal.logging.MetricsLogger;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import org.cyanogenmod.internal.logging.CMMetricsLogger;
 
 public class PreviewData extends SettingsPreferenceFragment {
     private static final String UNIQUE_ID = "preview_id";
@@ -50,6 +50,6 @@ public class PreviewData extends SettingsPreferenceFragment {
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.DONT_TRACK_ME_BRO;
+        return CMMetricsLogger.PREVIEW_DATA;
     }
 }
