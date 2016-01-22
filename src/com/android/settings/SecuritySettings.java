@@ -98,6 +98,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private static final String KEY_FINGERPRINT_SETTINGS = "fingerprint_settings";
 
     private static final String KEY_LOCKSCREEN_ENABLED_INTERNAL = "lockscreen_enabled_internally";
+    private static final String KEY_LIVE_LOCK_SCREEN = "live_lock_screen";
 
     private static final int SET_OR_CHANGE_LOCK_METHOD_REQUEST = 123;
     private static final int CHANGE_TRUST_AGENT_SETTINGS = 126;
@@ -126,6 +127,8 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private static final boolean ONLY_ONE_TRUST_AGENT = true;
 
     private static final int MY_USER_ID = UserHandle.myUserId();
+
+    private static final String LIVE_LOCK_SCREEN_FEATURE = "org.cyanogenmod.livelockscreen";
 
     private PackageManager mPM;
     private DevicePolicyManager mDPM;
@@ -158,6 +161,8 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private int mFilterType = TYPE_SECURITY_EXTRA;
 
     private Preference mLockscreenDisabledPreference;
+
+    private Preference mLiveLockScreenEnabledPreference;
 
     @Override
     protected int getMetricsCategory() {
@@ -452,6 +457,14 @@ public class SecuritySettings extends SettingsPreferenceFragment
         for (int i = 0; i < SWITCH_PREFERENCE_KEYS.length; i++) {
             final Preference pref = findPreference(SWITCH_PREFERENCE_KEYS[i]);
             if (pref != null) pref.setOnPreferenceChangeListener(this);
+        }
+
+        // remove live lock screen preference if feature not available
+        if (!pm.hasSystemFeature(LIVE_LOCK_SCREEN_FEATURE)) {
+            Preference pref = root.findPreference(KEY_LIVE_LOCK_SCREEN);
+            if (pref != null) {
+                root.removePreference(pref);
+            }
         }
 
         return root;
