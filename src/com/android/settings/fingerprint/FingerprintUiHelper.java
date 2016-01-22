@@ -37,12 +37,14 @@ public class FingerprintUiHelper extends FingerprintManager.AuthenticationCallba
 
     private Callback mCallback;
     private FingerprintManager mFingerprintManager;
+    private boolean mDark;
 
     public FingerprintUiHelper(ImageView icon, TextView errorTextView, Callback callback) {
         mFingerprintManager = icon.getContext().getSystemService(FingerprintManager.class);
         mIcon = icon;
         mErrorTextView = errorTextView;
         mCallback = callback;
+        mDark = false;
     }
 
     public void startListening() {
@@ -50,7 +52,8 @@ public class FingerprintUiHelper extends FingerprintManager.AuthenticationCallba
             mCancellationSignal = new CancellationSignal();
             mFingerprintManager.authenticate(null, mCancellationSignal, 0 /* flags */, this, null);
             setFingerprintIconVisibility(true);
-            mIcon.setImageResource(R.drawable.ic_fingerprint);
+            mIcon.setImageResource(mDark ? R.drawable.ic_fingerprint_dark
+                    : R.drawable.ic_fingerprint);
         }
     }
 
@@ -59,6 +62,10 @@ public class FingerprintUiHelper extends FingerprintManager.AuthenticationCallba
             mCancellationSignal.cancel();
             mCancellationSignal = null;
         }
+    }
+
+    public void setDarkIconography(boolean dark) {
+        mDark = dark;
     }
 
     private boolean isListening() {
@@ -108,7 +115,8 @@ public class FingerprintUiHelper extends FingerprintManager.AuthenticationCallba
         @Override
         public void run() {
             mErrorTextView.setText("");
-            mIcon.setImageResource(R.drawable.ic_fingerprint);
+            mIcon.setImageResource(mDark ? R.drawable.ic_fingerprint_dark
+                    : R.drawable.ic_fingerprint);
         }
     };
 
