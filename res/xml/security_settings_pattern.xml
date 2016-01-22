@@ -83,6 +83,12 @@
                 android:targetClass="com.android.systemui.cm.LockscreenShortcutsActivity" />
         </PreferenceScreen>
 
+        <PreferenceScreen
+            android:key="live_lock_screen"
+            android:title="@string/live_lock_screen_title"
+            android:summary="@string/live_lock_screen_summary"
+            android:fragment="com.android.settings.cyanogenmod.LiveLockScreenSettings"/>
+
         <com.android.settings.cyanogenmod.CMSecureSettingSwitchPreference
             android:key="lockscreen_visualizer"
             android:title="@string/lockscreen_visualizer_title"
