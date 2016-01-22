@@ -18,6 +18,7 @@ package com.android.settings.applications;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.hardware.fingerprint.FingerprintManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Base64;
@@ -25,6 +26,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import android.widget.Toast;
@@ -33,13 +35,14 @@ import com.android.internal.widget.LockPatternView;
 import com.android.settings.R;
 import com.android.settings.cyanogenmod.ProtectedAccountView;
 import com.android.settings.cyanogenmod.ProtectedAccountView.OnNotifyAccountReset;
+import com.android.settings.fingerprint.FingerprintUiHelper;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.List;
 
-public class LockPatternActivity extends Activity implements OnNotifyAccountReset {
+public class LockPatternActivity extends Activity implements OnNotifyAccountReset, FingerprintUiHelper.Callback {
     public static final String PATTERN_LOCK_PROTECTED_APPS = "pattern_lock_protected_apps";
     public static final String RECREATE_PATTERN = "recreate_pattern_lock";
 
@@ -51,6 +54,7 @@ public class LockPatternActivity extends Activity implements OnNotifyAccountRese
 
     LockPatternView mLockPatternView;
     ProtectedAccountView mAccountView;
+    ImageView mFingerprintIconView;
 
     TextView mPatternLockHeader;
     MenuItem mItem;
@@ -63,6 +67,10 @@ public class LockPatternActivity extends Activity implements OnNotifyAccountRese
     boolean mCreate;
     boolean mRetryPattern = true;
     boolean mConfirming = false;
+    boolean mFingerPrintSetUp = false;
+
+    private FingerprintManager mFingerprintManager;
+    private FingerprintUiHelper mFingerPrintUiHelper;
 
     Runnable mCancelPatternRunnable = new Runnable() {
         public void run() {
@@ -192,6 +200,7 @@ public class LockPatternActivity extends Activity implements OnNotifyAccountRese
         mAccountView = (ProtectedAccountView) findViewById(R.id.lock_account_view);
         mAccountView.setOnNotifyAccountResetCb(this);
         mLockPatternView = (LockPatternView) findViewById(R.id.lock_pattern_view);
+        mFingerprintIconView = (ImageView) findViewById(R.id.protected_apps_fingerprint_icon);
 
         resetPatternState(false);
 
@@ -200,6 +209,20 @@ public class LockPatternActivity extends Activity implements OnNotifyAccountRese
         mLockPatternView.setFocusable(false);
         mLockPatternView.setOnPatternListener(new UnlockPatternListener());
 
+        mFingerprintManager = (FingerprintManager) getSystemService(FingerprintManager.class);
+
+        if (mFingerprintManager.isHardwareDetected()) {
+            if (mFingerprintManager.hasEnrolledFingerprints() && !mCreate) {
+                mFingerPrintSetUp = true;
+                mFingerPrintUiHelper =
+                        new FingerprintUiHelper(mFingerprintIconView, mPatternLockHeader, this);
+                mFingerPrintUiHelper.setDarkIconography(true);
+                mFingerPrintUiHelper.setIdleText(getString(
+                        R.string.lockpattern_recording_intro_header));
+            } else {
+                mFingerPrintSetUp = false;
+            }
+        }
     }
 
     private void resetPatternState(boolean clear) {
@@ -223,6 +246,17 @@ public class LockPatternActivity extends Activity implements OnNotifyAccountRese
         mLockPatternView.clearPattern();
 
         invalidateOptionsMenu();
+    }
+
+    @Override
+    public void onAuthenticated() {
+        setResult(RESULT_OK);
+        finish();
+    }
+
+    @Override
+    public void onFingerprintIconVisibilityChanged(boolean visible) {
+
     }
 
     private class UnlockPatternListener implements LockPatternView.OnPatternListener {
@@ -334,6 +368,22 @@ public class LockPatternActivity extends Activity implements OnNotifyAccountRese
             return hash;
         } catch (NoSuchAlgorithmException nsa) {
             return res;
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        if (mFingerPrintSetUp) {
+            mFingerPrintUiHelper.stopListening();
+        }
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mFingerPrintSetUp) {
+            mFingerPrintUiHelper.startListening();
         }
     }
 }
