@@ -29,6 +29,12 @@
 
     </PreferenceCategory>
 
+    <PreferenceScreen
+        android:key="live_lock_screen"
+        android:title="@string/live_lock_screen_title"
+        android:summary="@string/live_lock_screen_summary"
+        android:fragment="com.android.settings.cyanogenmod.LiveLockScreenSettings"/>
+
     <PreferenceCategory
         android:key="general_category"
         android:title="@string/title_general">
