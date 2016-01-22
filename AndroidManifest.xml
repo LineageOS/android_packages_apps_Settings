@@ -36,7 +36,6 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="com.android.certinstaller.INSTALL_AS_USER" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.OVERRIDE_WIFI_CONFIG" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CLEAR_APP_USER_DATA" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -83,6 +82,8 @@
     <uses-permission android:name="cyanogenmod.permission.FINISH_SETUP" />
     <uses-permission android:name="cyanogenmod.permission.MODIFY_PROFILES" />
     <uses-permission android:name="cyanogenmod.permission.PROTECTED_APP" />
+    <uses-permission android:name="android.permission.READ_DATAUSAGE" />
+    <uses-permission android:name="android.permission.WRITE_DATAUSAGE" />
 
     <application android:label="@string/settings_label"
             android:icon="@mipmap/ic_launcher_settings"
@@ -438,6 +439,34 @@
             android:name=".HotspotOffReceiver" >
             <intent-filter>
                 <action android:name="android.net.wifi.WIFI_AP_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".DataUsageService"
+                 android:label="DataUsageService" >
+        </service>
+
+        <provider android:name="com.android.settings.DataUsageProvider"
+                  android:authorities="com.android.settings.datausage"
+                  android:exported="true"
+                  android:readPermission="android.permission.READ_DATAUSAGE"
+                  android:writePermission="android.permission.WRITE_DATAUSAGE">
+        </provider>
+
+        <receiver android:name=".DataUsageNotificationReceiver">
+            <intent-filter>
+                <action android:name="com.android.settings.data_usage_hide_action"/>
+                <action android:name="com.android.settings.data_usage_disable_action"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".DataUsageAppInstallReceiver">
+            <intent-filter>
+                <action android:name="ANDROID.INTENT.ACTION.PACKAGE_ADDED" />
+                <action android:name="ANDROID.INTENT.ACTION.PACKAGE_REMOVED" />
+                <action android:name="ANDROID.INTENT.ACTION.PACKAGE_FULLY_REMOVED" />
+                <action android:name="ANDROID.INTENT.ACTION.PACKAGE_CHANGED" />
+                <action android:name="ANDROID.INTENT.ACTION.PACKAGE_REPLACED" />
             </intent-filter>
         </receiver>
 
@@ -1118,7 +1147,7 @@
         </activity>
 
         <activity android:name="Settings$AppOpsSummaryActivity"
-                android:label="@string/privacy_guard_manager_title"
+                android:label="@string/app_ops_settings"
                 android:taskAffinity=""
                 android:excludeFromRecents="true">
             <intent-filter>
@@ -1133,30 +1162,6 @@
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
                 android:resource="@id/application_settings" />
         </activity>
-
-        <!-- Still need a top-level activity for showing app ops details.  Aliasing
-             trick is so the code that is now a fragment can still be called
-             AppOpsDetails. -->
-        <activity android:name=".applications.AppOpsDetailsTop"
-                  android:label="@string/privacy_guard_manager_title"
-                  android:exported="true"
-                  android:taskAffinity=""
-                  android:excludeFromRecents="true"
-                  android:parentActivityName="Settings$AppOpsSummaryActivity">
-        </activity>
-
-        <!-- Keep compatibility with old shortcuts. -->
-        <activity-alias android:name=".applications.AppOpsDetails"
-                android:label="@string/privacy_guard_manager_title"
-                android:exported="true"
-                android:excludeFromRecents="true"
-                android:targetActivity=".applications.AppOpsDetailsTop">
-            <intent-filter>
-                <action android:name="android.settings.APP_OPS_DETAILS_SETTINGS" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data android:scheme="package" />
-            </intent-filter>
-        </activity-alias>
 
         <activity android:name="Settings$LocationSettingsActivity"
                 android:label="@string/location_settings_title"
@@ -1824,7 +1829,11 @@
             </intent-filter>
         </receiver>
 
-        <service android:name=".bluetooth.DockService" />
+        <service
+                android:name=".bluetooth.DockService"
+                android:enabled="true" >
+
+        </service>
 
         <activity android:name=".bluetooth.RequestPermissionActivity"
                   android:label="@string/bluetooth_permission_request"
@@ -2526,23 +2535,6 @@
                 android:resource="@id/sound_settings" />
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
                 android:value="true" />
-        </activity>
-
-        <!-- Notification manager -->
-        <activity android:name="Settings$NotificationManagerActivity"
-                android:label="@string/notification_manager"
-                android:exported="true"
-                android:taskAffinity="">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.settings.NOTIFICATION_MANAGER" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="com.android.settings.SHORTCUT" />
-            </intent-filter>
-            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.notification.NotificationManagerSettings" />
-            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
-                android:resource="@id/notification_manager" />
         </activity>
 
         <!-- Show apps for which application-level notification settings are applicable -->

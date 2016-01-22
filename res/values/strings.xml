@@ -2593,6 +2593,9 @@
     <string name="apn_protocol">APN protocol</string>
     <!-- Edit access point labels: The protocol of the APN when roaming, e.g., "IPv4", "IPv6", or "IPv4/IPv6". -->
     <string name="apn_roaming_protocol">APN roaming protocol</string>
+    <!-- Edit access point labels: PPP number -->
+    <string name="apn_ppp_number">APN PPP phone number</string>
+    <string name="ppp_number">ppp_number</string>
     <!-- Edit enable/disable of APN -->
     <string name="carrier_enabled">APN enable/disable</string>
     <string name="carrier_enabled_summaryOn">APN enabled</string>
@@ -2652,19 +2655,19 @@
     <!-- SD card & phone storage settings screen, setting option name under Internal phone storage heading -->
     <string name="master_clear_title">Factory data reset</string>
     <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
-    <string name="master_clear_desc" product="tablet">This will erase all data from your tablet\u2019s <b>internal storage</b>, including:\n\n<li>Your Google account</li>\n<li>System and app data and settings</li>\n<li>Downloaded apps</li></string>
+    <string name="master_clear_desc" product="tablet">"This will erase all data from your tablet\u2019s <b>internal storage</b>, including:\n\n<li>Your Google account</li>\n<li>System and app data and settings</li>\n<li>Downloaded apps</li>"</string>
     <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
-    <string name="master_clear_desc" product="default">This will erase all data from your phone\u2019s <b>internal storage</b>, including:\n\n<li>Your Google account</li>\n<li>System and app data and settings</li>\n<li>Downloaded apps</li></string>
+    <string name="master_clear_desc" product="default">"This will erase all data from your phone\u2019s <b>internal storage</b>, including:\n\n<li>Your Google account</li>\n<li>System and app data and settings</li>\n<li>Downloaded apps"</li></string>
     <!-- SD card & phone storage settings screen, instructions and list of current accounts.  The list of accounts follows this text[CHAR LIMIT=NONE] -->
-    <string name="master_clear_accounts" product="default">\n\nYou are currently signed into the following accounts:\n</string>
+    <string name="master_clear_accounts" product="default">"\n\nYou are currently signed into the following accounts:\n"</string>
     <!-- SD card & phone storage settings screen, notification if other users are present on the device [CHAR LIMIT=NONE] -->
-    <string name="master_clear_other_users_present" product="default">\n\nThere are other users present on this device.\n</string>
+    <string name="master_clear_other_users_present" product="default">"\n\nThere are other users present on this device.\n"</string>
     <!-- SD card & phone storage settings screen, list of items in user data storage (USB storage or SD card) that will be erased during this operation [CHAR LIMIT=NONE] -->
-    <string name="master_clear_desc_also_erases_external"><li>Music</li>\n<li>Photos</li>\n<li>Other user data</li></string>
+    <string name="master_clear_desc_also_erases_external">"<li>Music</li>\n<li>Photos</li>\n<li>Other user data</li>"</string>
     <!-- SD card & phone storage settings screen, instructions about whether to also erase the external storage (SD card) when erasing the internal storage [CHAR LIMIT=NONE] -->
-    <string name="master_clear_desc_erase_external_storage" product="nosdcard">\n\nTo clear music, pictures, and other user data, the <b>USB storage</b> needs to be erased.</string>
+    <string name="master_clear_desc_erase_external_storage" product="nosdcard">"\n\nTo clear music, pictures, and other user data, the <b>USB storage</b> needs to be erased."</string>
     <!-- SD card & phone storage settings screen, instructions about whether to also erase the external storage (SD card) when erasing the internal storage [CHAR LIMIT=NONE] -->
-    <string name="master_clear_desc_erase_external_storage" product="default">\n\nTo clear music, pictures, and other user data, the <b>SD card</b> needs to be erased.</string>
+    <string name="master_clear_desc_erase_external_storage" product="default">"\n\nTo clear music, pictures, and other user data, the <b>SD card</b> needs to be erased."</string>
     <!-- SD card & phone storage settings screen, label for check box to erase USB storage [CHAR LIMIT=30] -->
     <string name="erase_external_storage" product="nosdcard">Erase USB storage</string>
     <!-- SD card & phone storage settings screen, label for check box to erase SD card [CHAR LIMIT=30] -->
@@ -5248,12 +5251,21 @@
     <string name="data_usage_app_restrict_background">Restrict app background data</string>
     <!-- Summary message for checkbox that restricts background data usage of a specific application. [CHAR LIMIT=64] -->
     <string name="data_usage_app_restrict_background_summary">Disable background data on cellular networks.</string>
+    <!-- Checkbox label that restricts metered data usage of a specific application. [CHAR LIMIT=40] -->
+    <string name="data_usage_app_restrict_metered">Restrict app cellular data</string>
+    <!-- Summary message for checkbox that restricts metered data usage of a specific application. [CHAR LIMIT=64] -->
+    <string name="data_usage_app_restrict_metered_summary">Disable data on cellular networks.</string>
     <!-- Summary message for checkbox that restricts background data usage of a specific application when no networks have been limited. [CHAR LIMIT=84] -->
     <string name="data_usage_app_restrict_background_summary_disabled">To restrict background data for this app, first set a cellular data limit.</string>
     <!-- Title of dialog shown when user restricts background data usage of a specific application. [CHAR LIMIT=48] -->
     <string name="data_usage_app_restrict_dialog_title">Restrict background data?</string>
     <!-- Body of dialog shown when user restricts background data usage of a specific application. [CHAR LIMIT=NONE] -->
     <string name="data_usage_app_restrict_dialog">This feature may cause an app that depends on background data to stop working when only cellular networks are available.\n\nYou can find more appropriate data usage controls in the settings available within the app.</string>
+
+    <!-- Title of dialog shown when user restricts metered data usage of a specific application. [CHAR LIMIT=48] -->
+    <string name="data_usage_app_restrict_metered_dialog_title">Restrict cellular data?</string>
+    <!-- Body of dialog shown when user restricts metered data usage of a specific application. [CHAR LIMIT=NONE] -->
+    <string name="data_usage_app_restrict_metered_dialog">This feature may cause an app that depends on network data to stop working when only cellular networks are available.\n\nYou can find more appropriate data usage controls in the settings available within the app.</string>
     <!-- Body of dialog shown when user attempts to restrict background data before a network data limit has been set. [CHAR LIMIT=NONE] -->
     <string name="data_usage_restrict_denied_dialog">Restricting background data is possible only when you\u2019ve set a cellular data limit.</string>
     <!--  Title of dialog shown when user enables global auto sync [CHAR LIMIT=32] -->
@@ -5904,6 +5916,8 @@
     <string name="sim_pref_divider">Preferred SIM for</string>
     <!-- When a user chooses this "Ask first" preference for the SIM to use for phone calls, they'll be prompted to choose a SIM every time they initiate a call [CHAR LIMIT=50] -->
     <string name="sim_calls_ask_first_prefs_title">Ask every time</string>
+    <!-- When a user chooses this "Ask first" preference for the SIM to use for send SMS, they'll be prompted to choose a SIM every time they initiate a SMS [CHAR LIMIT=50] -->
+    <string name="sim_sms_ask_first_prefs_title">Ask every time</string>
     <!-- When a SIM preference hasn't been selected yet, this string is displayed as the pref summary until the user chooses a SIM subscription from the preference list [CHAR LIMIT=50] -->
     <string name="sim_selection_required_pref">Selection required</string>
 
@@ -7005,6 +7019,27 @@
     <!-- Summary of app not allowed to write system settings [CHAR LIMIT=45] -->
     <string name="write_settings_off">No</string>
 
+    <string name="sim_enabler_summary">" is %1$s"</string>
+    <string name="sim_enabled">enabled</string>
+    <string name="sim_disabled">disabled</string>
+    <string name="sim_missing">missing or error</string>
+    <string name="sim_enabler_need_enable_sim">Activating the SIM, are you sure?</string>
+    <string name="sim_enabler_need_disable_sim">Deactivating the SIM, are you sure?</string>
+    <string name="sim_enabler_will_disable_sim_title">Attention</string>
+    <string name="sim_enabler_need_switch_data_service">Will disable it and switch to SIM<xliff:g id="slotid">%1$s</xliff:g> for data services, are you sure?</string>
+    <string name="sim_enabler_airplane_on">ERROR, airplane mode is on!</string>
+    <string name="sim_enabler_in_call">ERROR, in call!</string>
+    <string name="sim_enabler_both_inactive">"Error, can't disable all the SIMs"</string>
+    <string name="sim_enabler_enabling">Activating...</string>
+    <string name="sim_enabler_disabling">Deactivating...</string>
+    <string name="sub_activate_success">Successfully Activated.</string>
+    <string name="sub_activate_failed">Activation failed.</string>
+    <string name="sub_deactivate_success">Successfully Deactivated.</string>
+    <string name="sub_deactivate_failed">Deactivation failed.</string>
+
+    <string name="primary_sub_select_title">Default 4G/3G Subscription</string>
+    <string name="select_sim_card">Select SIM card</string>
+
     <!-- Title of setting that controls gesture to open camera [CHAR LIMIT=40] -->
     <string name="camera_gesture_title">Double twist for camera</string>
 
@@ -7036,4 +7071,11 @@
 
     <!-- Description of feature to change color setting for the display [CHAR LIMIT=NONE] -->
     <string name="picture_color_mode_desc">Use sRGB</string>
+
+    <!-- Protected Apps -->
+    <string name="menu_hidden_apps_delete">Reset</string>
+    <string name="menu_hidden_apps_reset_lock">Reset pattern lock</string>
+    <string name="protected_apps">Protected apps</string>
+    <string name="saving_protected_components">Saving component state</string>
+
 </resources>
