@@ -16,12 +16,13 @@
 
 package com.android.settings.cyanogenmod;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.android.settings.ButtonSettings;
-import com.android.settings.R;
-import com.android.settings.Utils;
+import android.util.Log;
+import com.android.settings.*;
 import com.android.settings.contributors.ContributorsCloudFragment;
 import com.android.settings.hardware.VibratorIntensity;
 import com.android.settings.inputmethod.InputMethodAndLanguageSettings;
@@ -43,5 +44,9 @@ public class BootReceiver extends BroadcastReceiver {
 
         // Extract the contributors database
         ContributorsCloudFragment.extractContributorsCloudDatabase(ctx);
+
+        // start the DataUsage monitoring service
+        Log.v(TAG, "Starting DataUsageService Alarm from BootReceiver");
+        DataUsageUtils.enbDataUsageService(ctx, true);
     }
 }
