@@ -730,11 +730,18 @@ public class Status extends PreferenceActivity {
     }
 
     public static String getSarValues(Resources res) {
-        String headLevel = String.format(res.getString(R.string.maximum_head_level,
-                TextUtils.split(res.getString(R.string.sar_head_level), ",")));
-        String bodyLevel = String.format(res.getString(R.string.maximum_body_level,
-                TextUtils.split(res.getString(R.string.sar_body_level), ",")));
-        return headLevel + "\n" + bodyLevel;
+        String sar_level= String.format(res.getString(R.string.SAR_Values));
+        String sar_level_1g= String.format(res.getString(R.string.SAR_Values_1g));
+        String headLevel_1g = String.format(res.getString(R.string.maximum_head_level_1g,
+                res.getString(R.string.sar_head_level_1g)));
+        String bodyLevel_1g = String.format(res.getString(R.string.maximum_body_level_1g,
+                res.getString(R.string.sar_body_level_1g)));
+        String sar_level_10g= String.format(res.getString(R.string.SAR_Values_10g));
+        String headLevel_10g = String.format(res.getString(R.string.maximum_head_level_10g,
+                res.getString(R.string.sar_head_level_10g)));
+        String bodyLevel_10g = String.format(res.getString(R.string.maximum_body_level_10g,
+                res.getString(R.string.sar_body_level_10g)));
+        return sar_level + "\n" + sar_level_1g + "\n" +  headLevel_1g + "\n" + bodyLevel_1g + "\n"+ sar_level_10g + "\n" + headLevel_10g + "\n" + bodyLevel_10g + "\n";
     }
 
     public static String getIcCodes(Resources resources) {
