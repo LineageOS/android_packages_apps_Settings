@@ -25,6 +25,7 @@ import static android.net.NetworkPolicy.WARNING_DISABLED;
 import static android.net.NetworkPolicyManager.EXTRA_NETWORK_TEMPLATE;
 import static android.net.NetworkPolicyManager.POLICY_NONE;
 import static android.net.NetworkPolicyManager.POLICY_REJECT_METERED_BACKGROUND;
+import static android.net.NetworkPolicyManager.POLICY_REJECT_APP_METERED_USAGE;
 import static android.net.NetworkPolicyManager.computeLastCycleBoundary;
 import static android.net.NetworkPolicyManager.computeNextCycleBoundary;
 import static android.net.NetworkTemplate.MATCH_MOBILE_3G_LOWER;
@@ -112,6 +113,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -130,6 +132,7 @@ import android.widget.Toast;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.telephony.PhoneConstants;
+import com.android.settings.DataUsageUtils;
 import com.android.settings.drawable.InsetBoundsDrawable;
 import com.android.settings.net.ChartData;
 import com.android.settings.net.ChartDataLoader;
@@ -178,6 +181,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
     private static final String TAB_ETHERNET = "ethernet";
 
     private static final String TAG_CONFIRM_DATA_DISABLE = "confirmDataDisable";
+    private static final String TAG_CONFIRM_DATA_RESET = "confirmDataReset";
     private static final String TAG_CONFIRM_LIMIT = "confirmLimit";
     private static final String TAG_CYCLE_EDITOR = "cycleEditor";
     private static final String TAG_WARNING_EDITOR = "warningEditor";
@@ -185,6 +189,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
     private static final String TAG_CONFIRM_RESTRICT = "confirmRestrict";
     private static final String TAG_DENIED_RESTRICT = "deniedRestrict";
     private static final String TAG_CONFIRM_APP_RESTRICT = "confirmAppRestrict";
+    private static final String TAG_CONFIRM_APP_RESTRICT_METERED = "confirmAppRestrictMetered";
     private static final String TAG_APP_DETAILS = "appDetails";
 
     private static final String DATA_USAGE_ENABLE_MOBILE_KEY = "data_usage_enable_mobile";
@@ -196,6 +201,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
 
     private static final int LOADER_CHART_DATA = 2;
     private static final int LOADER_SUMMARY = 3;
+    private static final int APP_SUMMARY_SHORT_VERSION_COUNT = 4;
 
     private INetworkManagementService mNetworkService;
     private INetworkStatsService mStatsService;
@@ -208,6 +214,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
     private static final String PREF_FILE = "data_usage";
     private static final String PREF_SHOW_WIFI = "show_wifi";
     private static final String PREF_SHOW_ETHERNET = "show_ethernet";
+    private static final String PREF_ENB_DATA_USAGE_NOTIFY = "enb_data_usage_notify";
 
     private SharedPreferences mPrefs;
 
@@ -253,9 +260,18 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
 
     private LinearLayout mAppSwitches;
     private Switch mAppRestrict;
+    private Switch mAppDataAlert;
     private View mAppRestrictView;
+    private View mAppDataAlertView;
 
-    private boolean mShowWifi = false;
+    private LinearLayout mDataAlertLayout;
+    private Switch mDataAlertSwitch;
+    private View mDataAlertView;
+
+    private View mListViewFooter;
+    private View mListViewType;
+
+    private boolean mShowWifi = true;
     private boolean mShowEthernet = false;
 
     private NetworkTemplate mTemplate;
@@ -282,10 +298,15 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
     /** Flag used to ignore listeners during binding. */
     private boolean mBinding;
 
+    private boolean mShowShortList;
+
     private UidDetailProvider mUidDetailProvider;
 
     // Indicates request to show app immediately rather than list.
     private String mShowAppImmediatePkg;
+
+    // Flag for mobile switch visibility; true for mobile tab, false for Wi-Fi tab
+    private boolean mShowMobileSwitch;
 
     /**
      * Local cache of data enabled for subId, used to work around delays.
@@ -350,7 +371,9 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
             mShowAppImmediatePkg = arguments.getString(EXTRA_SHOW_APP_IMMEDIATE_PKG);
         }
 
-        setHasOptionsMenu(true);
+        mShowShortList = true;
+
+        setHasOptionsMenu(false);
     }
 
     @Override
@@ -454,6 +477,16 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
             mAppRestrictView.setFocusable(true);
             mAppRestrictView.setOnClickListener(mAppRestrictListener);
             mAppSwitches.addView(mAppRestrictView);
+
+            mAppDataAlert = new Switch(inflater.getContext());
+            mAppDataAlert.setClickable(false);
+            mAppDataAlert.setFocusable(false);
+            mAppDataAlertView = inflatePreference(inflater, mAppSwitches, mAppDataAlert);
+            mAppDataAlertView.setClickable(true);
+            mAppDataAlertView.setFocusable(true);
+            mAppDataAlertView.setOnClickListener(mAppDataAlertListner);
+            mAppSwitches.addView(mAppDataAlertView);
+
         }
 
         mDisclaimer = mHeader.findViewById(R.id.disclaimer);
@@ -461,8 +494,62 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
         mStupidPadding = mHeader.findViewById(R.id.stupid_padding);
 
         final UserManager um = (UserManager) context.getSystemService(Context.USER_SERVICE);
-        mAdapter = new DataUsageAdapter(um, mUidDetailProvider, mInsetSide);
+        mAdapter = new DataUsageAdapter(um, mUidDetailProvider, mInsetSide, mPolicyManager,
+                APP_SUMMARY_SHORT_VERSION_COUNT);
         mListView.setOnItemClickListener(mListListener);
+
+
+        mListViewFooter = inflater.inflate(R.layout.cm_data_summary_footer, mListView, false);
+
+        mListViewType = mListViewFooter.findViewById(R.id.list_type);
+        mListViewType.setClickable(true);
+        mListViewType.setOnClickListener(mListViewTypeListner);
+
+        View overflowMenu = mListViewFooter.findViewById(R.id.overflow_menu);
+        overflowMenu.setOnClickListener(null);
+
+        LinearLayout managerSettings = (LinearLayout) mListViewFooter.findViewById(R.id.manager_settings);
+        View managerSettingsView = Utils.inflateCategoryHeader(inflater, container);
+        final TextView managerSettingsTextView = (TextView) managerSettingsView.findViewById(android.R.id.title);
+        managerSettingsTextView.setText(R.string.manager_settings);
+        managerSettings.addView(managerSettingsView);
+
+
+        mDataAlertLayout = (LinearLayout) mListViewFooter.findViewById(R.id.data_alert_layout);
+        mDataAlertSwitch = new Switch(inflater.getContext());
+        mDataAlertSwitch.setClickable(false);
+        mDataAlertSwitch.setFocusable(false);
+        mDataAlertSwitch.setChecked(mPrefs.getBoolean(PREF_ENB_DATA_USAGE_NOTIFY, false));
+        mDataAlertView = inflatePreference(inflater, mDataAlertLayout, mDataAlertSwitch);
+        mDataAlertView.setClickable(true);
+        mDataAlertView.setFocusable(true);
+        mDataAlertView.setOnClickListener(mDataAlertListner);
+        mDataAlertLayout.addView(mDataAlertView);
+        setPreferenceTitle(mDataAlertView, R.string.data_usage_notification);
+        setPreferenceSummary(mDataAlertView,
+                getString(R.string.data_usage_notification_summary));
+
+
+        TextView resetStats = (TextView) mListViewFooter.findViewById(R.id.reset_data_stats);
+        resetStats.setClickable(true);
+        resetStats.setOnClickListener(mResetStatsListner);
+
+        LinearLayout otherSettings = (LinearLayout) mListViewFooter.findViewById(R.id.other_settings);
+        View otherSettingsView = Utils.inflateCategoryHeader(inflater, container);
+        final TextView otherSettingsTextView = (TextView) otherSettingsView.findViewById(android.R.id.title);
+        otherSettingsTextView.setText(R.string.other_settings);
+        otherSettings.addView(otherSettingsView);
+
+
+        TextView networkRestrictions = (TextView) mListViewFooter.findViewById(R.id.network_restrictions);
+        networkRestrictions.setClickable(true);
+        networkRestrictions.setOnClickListener(mNetworkRestrictionsListner);
+
+        TextView mobileNetworks = (TextView) mListViewFooter.findViewById(R.id.mobile_networks);
+        mobileNetworks.setClickable(true);
+        mobileNetworks.setOnClickListener(mMobileNetworksListner);
+
+        mListView.addFooterView(mListViewFooter);
         mListView.setAdapter(mAdapter);
 
         showRequestedAppIfNeeded(view);
@@ -833,6 +920,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
                     getActiveSubscriberId(context, getSubId(currentTab)));
             mTemplate = NetworkTemplate.normalize(mTemplate,
                     mTelephonyManager.getMergedSubscriberIds());
+            mShowMobileSwitch = true;
 
         } else if (TAB_3G.equals(currentTab)) {
             if (LOGD) Log.d(TAG, "updateBody() 3g tab");
@@ -840,6 +928,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
             setPreferenceTitle(mDisableAtLimitView, R.string.data_usage_disable_3g_limit);
             // TODO: bind mDataEnabled to 3G radio state
             mTemplate = buildTemplateMobile3gLower(getActiveSubscriberId(context));
+            mShowMobileSwitch = true;
 
         } else if (TAB_4G.equals(currentTab)) {
             if (LOGD) Log.d(TAG, "updateBody() 4g tab");
@@ -847,6 +936,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
             setPreferenceTitle(mDisableAtLimitView, R.string.data_usage_disable_4g_limit);
             // TODO: bind mDataEnabled to 4G radio state
             mTemplate = buildTemplateMobile4g(getActiveSubscriberId(context));
+            mShowMobileSwitch = true;
 
         } else if (TAB_WIFI.equals(currentTab)) {
             // wifi doesn't have any controls
@@ -854,6 +944,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
             mDataEnabledSupported = false;
             mDisableAtLimitSupported = false;
             mTemplate = buildTemplateWifiWildcard();
+            mShowMobileSwitch = false;
 
         } else if (TAB_ETHERNET.equals(currentTab)) {
             // ethernet doesn't have any controls
@@ -861,6 +952,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
             mDataEnabledSupported = false;
             mDisableAtLimitSupported = false;
             mTemplate = buildTemplateEthernet();
+            mShowMobileSwitch = false;
 
         } else {
             if (LOGD) Log.d(TAG, "updateBody() unknown tab");
@@ -1021,17 +1113,29 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
 
         updateDetailData();
 
-        if (UserHandle.isApp(uid) && !mPolicyManager.getRestrictBackground()
-                && isBandwidthControlEnabled() && hasReadyMobileRadio(context)) {
-            setPreferenceTitle(mAppRestrictView, R.string.data_usage_app_restrict_background);
-            setPreferenceSummary(mAppRestrictView,
-                    getString(R.string.data_usage_app_restrict_background_summary));
+        if (UserHandle.isApp(uid) && isBandwidthControlEnabled() && hasReadyMobileRadio(context)) {
 
-            mAppRestrictView.setVisibility(View.VISIBLE);
-            mAppRestrict.setChecked(getAppRestrictBackground());
+            if (mPolicyManager.getRestrictBackground()) {
+                mAppRestrictView.setVisibility(View.GONE);
+            } else {
+                setPreferenceTitle(mAppRestrictView, R.string.data_usage_app_restrict_background);
+                setPreferenceSummary(mAppRestrictView,
+                        getString(R.string.data_usage_app_restrict_background_summary));
+
+                mAppRestrictView.setVisibility(View.VISIBLE);
+                mAppRestrict.setChecked(getAppRestrictBackground());
+            }
+
+            setPreferenceTitle(mAppDataAlertView, R.string.mobile_data_alert);
+            setPreferenceSummary(mAppDataAlertView,
+                    getString(R.string.mobile_data_alert_summary));
+
+            mAppDataAlertView.setVisibility(View.VISIBLE);
+            mAppDataAlert.setChecked(getAppDataAlert());
 
         } else {
             mAppRestrictView.setVisibility(View.GONE);
+            mAppDataAlertView.setVisibility(View.GONE);
         }
     }
 
@@ -1085,6 +1189,29 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
         updatePolicy(false);
     }
 
+    private void resetDataStats(NetworkTemplate template) {
+        // kick off background task to update stats
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+                try {
+                    mStatsService.resetDataUsageHistoryForAllUid(mTemplate);
+                    mPolicyEditor.setPolicyLimitBytes(mTemplate, mPolicyEditor
+                            .getPolicyLimitBytes(mTemplate));
+                    mStatsService.forceUpdate();
+                } catch (RemoteException e) {
+
+                }
+                return null;
+            }
+            @Override
+            protected void onPostExecute (Void result){
+                updateBody();
+            }
+
+        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+    }
+
     private boolean isNetworkPolicyModifiable(NetworkPolicy policy) {
         return policy != null && isBandwidthControlEnabled() && mDataEnabled.isChecked()
                 && ActivityManager.getCurrentUser() == UserHandle.USER_OWNER;
@@ -1113,9 +1240,45 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
     private void setAppRestrictBackground(boolean restrictBackground) {
         if (LOGD) Log.d(TAG, "setAppRestrictBackground()");
         final int uid = mCurrentApp.key;
-        mPolicyManager.setUidPolicy(
-                uid, restrictBackground ? POLICY_REJECT_METERED_BACKGROUND : POLICY_NONE);
+        if (restrictBackground) {
+            mPolicyManager.addUidPolicy(uid, POLICY_REJECT_METERED_BACKGROUND);
+        } else {
+            mPolicyManager.removeUidPolicy(uid, POLICY_REJECT_METERED_BACKGROUND);
+        }
         mAppRestrict.setChecked(restrictBackground);
+    }
+
+    private void setAppDataAlert(boolean enableDataAlert){
+
+        final int uid = mCurrentApp.key;
+
+        // get App's details, to send to the DataUsage Provider, don't block, if not int the
+        // DetailProvider cache. (should be in the cache, as the App's label had already
+        // been displayed in the list of Apps
+        UidDetail detail = mUidDetailProvider.getUidDetail(uid, false);
+        String label = "";
+        if (detail != null) {
+            label = detail.label.toString();
+        }
+
+        try {
+            DataUsageUtils.enbApp(getContext(), uid, enableDataAlert, label);
+        } finally {
+            mAppDataAlert.setChecked(enableDataAlert);
+        }
+    }
+
+    private boolean getAppDataAlert() {
+
+        final int uid = mCurrentApp.key;
+
+        boolean enbStatus = false;
+
+        try {
+            enbStatus = DataUsageUtils.getAppEnb(getContext(), uid);
+        } finally {
+            return enbStatus;
+        }
     }
 
     /**
@@ -1309,6 +1472,73 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
         }
     };
 
+    private View.OnClickListener mAppDataAlertListner = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            final boolean enableDataAlert = !mAppDataAlert.isChecked();
+            setAppDataAlert(enableDataAlert);
+        }
+    };
+
+    private View.OnClickListener mListViewTypeListner = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            mShowShortList = !mShowShortList;
+            mAdapter.setListViewType(mShowShortList);
+            mAdapter.notifyDataSetChanged();
+
+            ImageView footerArrow = (ImageView) mListViewFooter.findViewById(R.id.footer_arrow);
+            TextView footerText = (TextView) mListViewFooter.findViewById(R.id.footer_text);
+
+            if (mShowShortList) {
+                footerArrow.setImageDrawable(
+                        getResources().getDrawable(R.drawable.ic_keyboard_arrow_down_black_24dp));
+                footerText.setText(R.string.data_summary_footer_see_all);
+            } else {
+                footerArrow.setImageDrawable(
+                        getResources().getDrawable(R.drawable.ic_keyboard_arrow_up_black_24dp));
+                footerText.setText(R.string.data_summary_footer_see_less);
+            }
+        }
+    };
+
+    private View.OnClickListener mDataAlertListner = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            final boolean enableDataAlert = !mDataAlertSwitch.isChecked();
+            mDataAlertSwitch.setChecked(enableDataAlert);
+            mPrefs.edit().putBoolean(PREF_ENB_DATA_USAGE_NOTIFY, enableDataAlert).apply();
+            DataUsageUtils.enbDataUsageService(getContext(), enableDataAlert);
+        }
+    };
+
+    private View.OnClickListener mResetStatsListner = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            ConfirmDataResetFragment.show(DataUsageSummary.this, mTemplate);
+        }
+    };
+
+    private View.OnClickListener mNetworkRestrictionsListner = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            final SettingsActivity sa = (SettingsActivity) getActivity();
+            sa.startPreferencePanel(DataUsageMeteredSettings.class.getCanonicalName(), null,
+                    R.string.data_usage_metered_title, null, DataUsageSummary.this, 0);
+        }
+    };
+
+    private View.OnClickListener mMobileNetworksListner = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            final Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.setComponent(new ComponentName("com.android.phone",
+                    "com.android.phone.MobileNetworkSettings"));
+            startActivity(intent);
+        }
+    };
+
     private OnItemClickListener mListListener = new OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -1465,13 +1695,18 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
         public void onLoadFinished(Loader<NetworkStats> loader, NetworkStats data) {
             final int[] restrictedUids = mPolicyManager.getUidsWithPolicy(
                     POLICY_REJECT_METERED_BACKGROUND);
-            mAdapter.bindStats(data, restrictedUids);
+
+            final int[] restrictedMeteredUids = mPolicyManager.getUidsWithPolicy(
+                    POLICY_REJECT_APP_METERED_USAGE);
+
+            mAdapter.bindStats(data, restrictedUids, restrictedMeteredUids, mShowMobileSwitch);
+
             updateEmptyVisible();
         }
 
         @Override
         public void onLoaderReset(Loader<NetworkStats> loader) {
-            mAdapter.bindStats(null, new int[0]);
+            mAdapter.bindStats(null, new int[0], new int[0], mShowMobileSwitch);
             updateEmptyVisible();
         }
 
@@ -1479,7 +1714,24 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
             final boolean isEmpty = mAdapter.isEmpty() && !isAppDetailMode();
             mEmpty.setVisibility(isEmpty ? View.VISIBLE : View.GONE);
             mStupidPadding.setVisibility(isEmpty ? View.VISIBLE : View.GONE);
-        }
+
+            //View listViewType = mListViewFooter.findViewById(R.id.list_type);
+
+             if (isAppDetailMode()) {
+                 if (mListView.getFooterViewsCount() > 0) {
+                     mListView.removeFooterView(mListViewFooter);
+                 }
+             } else {
+                    if (mListView.getFooterViewsCount() == 0) {
+                        mListView.addFooterView(mListViewFooter);
+                    }
+                    if (mAdapter.getActualListSize() <= APP_SUMMARY_SHORT_VERSION_COUNT) {
+                        mListViewType.setVisibility(View.GONE);
+                    } else {
+                        mListViewType.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
     };
 
     private static String getActiveSubscriberId(Context context) {
@@ -1702,22 +1954,34 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
         private final UidDetailProvider mProvider;
         private final int mInsetSide;
         private final UserManager mUm;
+        private boolean mShowMobileSwitch;
+        private NetworkPolicyManager mPolicyManager;
+        private boolean mShowShortList;
+        private final int mShortListSize;
+        private int mActualListSize;
 
         private ArrayList<AppItem> mItems = Lists.newArrayList();
         private long mLargest;
 
-        public DataUsageAdapter(final UserManager userManager, UidDetailProvider provider, int insetSide) {
+        public DataUsageAdapter(final UserManager userManager, UidDetailProvider provider,
+                                int insetSide, NetworkPolicyManager policyManager,
+                                int shortListSize) {
             mProvider = checkNotNull(provider);
             mInsetSide = insetSide;
             mUm = userManager;
+            mPolicyManager = policyManager;
+            mShowShortList = true;
+            mShortListSize = shortListSize;
         }
 
         /**
          * Bind the given {@link NetworkStats}, or {@code null} to clear list.
          */
-        public void bindStats(NetworkStats stats, int[] restrictedUids) {
+        public void bindStats(NetworkStats stats, int[] restrictedUids,
+                              int[] restrictedMeteredUids, boolean showMobileSwitch) {
             mItems.clear();
             mLargest = 0;
+            mShowMobileSwitch = showMobileSwitch;
 
             final int currentUserId = ActivityManager.getCurrentUser();
             final List<UserHandle> profiles = mUm.getUserProfiles();
@@ -1725,6 +1989,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
 
             NetworkStats.Entry entry = null;
             final int size = stats != null ? stats.size() : 0;
+
             for (int i = 0; i < size; i++) {
                 entry = stats.getValues(i, entry);
 
@@ -1785,14 +2050,44 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
                 item.restricted = true;
             }
 
+            final int restrictedMeteredUidsMax = restrictedMeteredUids.length;
+            for (int i = 0; i < restrictedMeteredUidsMax; ++i) {
+                final int uid = restrictedMeteredUids[i];
+                // Only splice in restricted state for current user or managed users
+                if (!profiles.contains(new UserHandle(UserHandle.getUserId(uid)))) {
+                    continue;
+                }
+
+                AppItem item = knownItems.get(uid);
+                if (item == null) {
+                    item = new AppItem(uid);
+                    item.total = -1;
+                    mItems.add(item);
+                    knownItems.put(item.key, item);
+                }
+                item.restricted = true;
+            }
+
             if (!mItems.isEmpty()) {
                 final AppItem title = new AppItem();
                 title.category = AppItem.CATEGORY_APP_TITLE;
                 mItems.add(title);
             }
 
+            mActualListSize = mItems.size();
+
+            Log.d(TAG, "bindStats " + Integer.toString(mItems.size()));
+
             Collections.sort(mItems);
             notifyDataSetChanged();
+        }
+
+        public int getActualListSize(){
+            return mActualListSize;
+        }
+
+        public void setListViewType(boolean showShortList){
+            mShowShortList = showShortList;
         }
 
         /**
@@ -1824,7 +2119,11 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
 
         @Override
         public int getCount() {
-            return mItems.size();
+            if (mShowShortList && mItems.size() > mShortListSize) {
+                return mShortListSize;
+            } else {
+                return mItems.size();
+            }
         }
 
         @Override
@@ -1873,6 +2172,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
+            MobileSwitchHolder mobileSwitchHolder;
             final AppItem item = mItems.get(position);
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
             if (getItemViewType(position) == 1) {
@@ -1892,6 +2192,49 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
                     if (mInsetSide > 0) {
                         convertView.setPaddingRelative(mInsetSide, 0, mInsetSide, 0);
                     }
+
+                    mobileSwitchHolder = new MobileSwitchHolder();
+                    mobileSwitchHolder.mobileSwitch =
+                            (Switch)convertView.findViewById(R.id.mobileSwitch);
+                    convertView.setTag(R.id.mobile_switch_key, mobileSwitchHolder);
+
+                    mobileSwitchHolder.mobileSwitch.setOnCheckedChangeListener(
+                        new CompoundButton.OnCheckedChangeListener() {
+                            @Override
+                            public void onCheckedChanged(CompoundButton buttonView,
+                                                         boolean isChecked) {
+                                if (buttonView.getTag() != null) {
+
+                                    final int position = (int) buttonView.getTag();
+
+                                    if (position >= 0 && position < mItems.size()) {
+                                        final AppItem item = mItems.get(position);
+
+                                        if (isChecked) {
+                                            setAppRestrictMetered(item.key, false);
+                                        } else {
+                                            setAppRestrictMetered(item.key, true);
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                }
+
+                mobileSwitchHolder = (MobileSwitchHolder)convertView.getTag(R.id.mobile_switch_key);
+
+                if (mShowMobileSwitch) {
+                    mobileSwitchHolder.mobileSwitch.setVisibility(View.VISIBLE);
+                    mobileSwitchHolder.mobileSwitch.setTag(position);
+
+                    if (UserHandle.isApp(item.key)) {
+                        mobileSwitchHolder.mobileSwitch.setChecked(!getAppRestrictMetered(item.key));
+                        mobileSwitchHolder.mobileSwitch.setEnabled(true);
+                    } else {
+                        mobileSwitchHolder.mobileSwitch.setEnabled(false);
+                    }
+                } else {
+                    mobileSwitchHolder.mobileSwitch.setVisibility(View.GONE);
                 }
 
                 final Context context = parent.getContext();
@@ -1917,6 +2260,24 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
 
             return convertView;
         }
+
+        private void setAppRestrictMetered(int uid, boolean restrictMetered) {
+            if (LOGD) Log.d(TAG, "setAppRestrictMetered()");
+            if (restrictMetered) {
+                mPolicyManager.addUidPolicy(uid, POLICY_REJECT_APP_METERED_USAGE);
+            } else {
+                mPolicyManager.removeUidPolicy(uid, POLICY_REJECT_APP_METERED_USAGE);
+            }
+        }
+
+        private boolean getAppRestrictMetered(int uid) {
+            final int uidPolicy = mPolicyManager.getUidPolicy(uid);
+            return (uidPolicy & POLICY_REJECT_APP_METERED_USAGE) != 0;
+        }
+    }
+
+    static class MobileSwitchHolder {
+        Switch mobileSwitch;
     }
 
     /**
@@ -2248,6 +2609,45 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
                     if (target != null) {
                         // TODO: extend to modify policy enabled flag.
                         target.setMobileDataEnabled(mSubId, false);
+                    }
+                }
+            });
+            builder.setNegativeButton(android.R.string.cancel, null);
+
+            return builder.create();
+        }
+    }
+
+    /**
+     * Dialog to request user confirmation before resetting data.
+     */
+    public static class ConfirmDataResetFragment extends DialogFragment {
+        static NetworkTemplate mTemplate;
+        public static void show(DataUsageSummary parent, NetworkTemplate template) {
+            mTemplate = template;
+            if (!parent.isAdded()) return;
+
+            final ConfirmDataResetFragment dialog = new ConfirmDataResetFragment();
+            dialog.setTargetFragment(parent, 0);
+            dialog.show(parent.getFragmentManager(), TAG_CONFIRM_DATA_RESET);
+        }
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            final Context context = getActivity();
+
+            final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setTitle(R.string.reset_data_stats);
+            builder.setMessage(R.string.reset_data_stats_msg);
+
+            builder.setPositiveButton(R.string.reset_stats_confirm,
+                    new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    final DataUsageSummary target = (DataUsageSummary) getTargetFragment();
+                    if (target != null) {
+                        // TODO: extend to modify policy enabled flag.
+                        target.resetDataStats(mTemplate);
                     }
                 }
             });
