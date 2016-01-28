@@ -17,8 +17,10 @@
 package com.android.settings.cyanogenmod;
 
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import com.android.settings.ButtonSettings;
 import com.android.settings.R;
 import com.android.settings.Utils;
@@ -43,5 +45,10 @@ public class BootReceiver extends BroadcastReceiver {
 
         // Extract the contributors database
         ContributorsCloudFragment.extractContributorsCloudDatabase(ctx);
+        // Hide debug settings
+        ComponentName hiddenSettingsDebugMenuComponent = new ComponentName("com.android.settings",
+                "com.android.settings.cyanogenmod.HiddenSettingsDebugMenu");
+        ctx.getPackageManager().setComponentEnabledSetting(hiddenSettingsDebugMenuComponent,
+                PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
     }
 }

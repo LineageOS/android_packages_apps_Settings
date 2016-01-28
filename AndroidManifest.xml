@@ -2864,5 +2864,16 @@
             </intent-filter>
         </activity>
 
+        <receiver android:name=".cyanogenmod.HiddenSettingsSecretReceiver">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SECRET_CODE" />
+                <data android:scheme="android_secret_code" android:host="26738" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".cyanogenmod.HiddenSettingsDebugMenu"
+                  android:label="@string/hidden_settings_debug_menu"
+                  android:excludeFromRecents="true" />
+
     </application>
 </manifest>
