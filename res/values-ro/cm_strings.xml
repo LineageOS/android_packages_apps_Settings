@@ -214,6 +214,7 @@
   <string name="block_notifications_summary">Gestionați notificările ignorate și filtrele</string>
   <string name="no_filters_title">Niciun filtru setat</string>
   <string name="cmupdate_settings_title">Actualizări CyanogenMod</string>
+  <string name="update_recovery_title">Actualizează Cyanogen recovery</string>
   <string name="mod_version">versiune CyanogenMod</string>
   <string name="mod_version_default">Necunoscut</string>
   <string name="device_model">Modelul dispozitivului</string>
@@ -234,6 +235,7 @@
   <string name="privacy_guard_reset_text">Resetați permisiunile?</string>
   <string name="privacy_guard_help_text">În acest ecran poți alege pentru ce aplicații este activă Garda de Confidențialitate prin simpla lor apăsare. Aplicațiile selectate nu îți vor putea accesa datele personale, cum ar fi contactele, mesajele sau jurnalul de apeluri. Apăsarea lungă pe o aplicație deschide ecranul cu detaliile aplicației.\n\nAplicațiile prestabilite nu sunt arătate implicit dar pot fi arătate prin selectarea opțiunii respective din meniu.</string>
   <string name="privacy_guard_manager_show_system_apps">Arată aplicațiile preinstalate</string>
+  <string name="privacy_guard_notification_title">Afișează notificare</string>
   <string name="app_ops_btn_text">Modifică</string>
   <string name="increasing_ring_volume_option_title">Volum crescător</string>
   <string name="increasing_ring_min_volume_title">Volum inițial</string>
@@ -322,6 +324,7 @@
   <string name="notification_light_default_value">Implicit</string>
   <string name="notification_light_missed_call_title">Apel pierdut</string>
   <string name="notification_light_voicemail_title">Mesagerie vocală</string>
+  <string name="notification_light_use_multiple_leds">LED-uri multiple</string>
   <string name="notification_ringtone_title_cm">Tonul de notificare</string>
   <string name="headset_connect_player_title">Lansează aplicație muzică</string>
   <string name="headset_connect_player_summary">Lansează aplicația implicită de muzică când se conectează casca audio</string>
@@ -393,6 +396,7 @@
   <string name="app_ops_summaries_delete_sms">șterge SMS</string>
   <string name="app_ops_summaries_delete_mms">șterge MMS</string>
   <string name="app_ops_summaries_delete_contacts">șterge contacte</string>
+  <string name="app_ops_summaries_delete_call_log">șterge jurnal de apeluri</string>
   <string name="app_ops_summaries_data_change">schimbă date mobile</string>
   <string name="app_ops_summaries_wake_up">trezește</string>
   <string name="app_ops_summaries_su">acces root</string>
@@ -444,6 +448,7 @@
   <string name="app_ops_labels_delete_sms">Șterge SMS</string>
   <string name="app_ops_labels_delete_mms">Șterge Mesaj Multimedia</string>
   <string name="app_ops_labels_delete_contacts">Șterge contacte</string>
+  <string name="app_ops_labels_delete_call_log">Ștergere jurnal de apeluri</string>
   <string name="app_ops_labels_data_change">Schimbă date mobile</string>
   <string name="app_ops_labels_su">Acces root</string>
   <string name="app_ops_categories_location">Locație</string>
@@ -459,6 +464,7 @@
   <string name="ok">OK</string>
   <string name="profile_menu_delete_title">Ștergeți</string>
   <string name="profile_action_none">Lasă neschimbat</string>
+  <string name="profile_action_system">Implicit sistem</string>
   <string name="profile_trigger_a2dp_connect">La conectarea A2DP</string>
   <string name="profile_trigger_a2dp_disconnect">La deconectarea A2DP</string>
   <string name="profile_tabs_wifi">Wi\u2011Fi</string>
@@ -700,6 +706,7 @@
   <string name="lockscreen_none_target">Nimic</string>
   <string name="lockscreen_message">Apăsați o pictogramă de pe stânga sau dreapta pentru a realoca o comandă rapidă pe ecranul de blocare.</string>
   <string name="lockscreen_choose_action_title">Alege acțiunea</string>
+  <string name="nfc_title_category">NFC</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Gestionare setări SMS sigur</string>
   <string name="navigation_ring_message">Atingeți pictograma editare pentru a deschide inelul de navigare pentru editare.\n\nSelectați o țintă pentru a configura comportamentul său.\n\nAtingeți pictograma \'\u2713\' pentru a salva modificările, sau \"Restabilire valori implicite\" pentru a reseta la setările implicite.</string>
@@ -754,6 +761,11 @@
   <string name="live_display_outdoor_mode_summary">Crește luminozitatea și saturația automat în lumina strălucitoare a soarelui</string>
   <string name="live_display_enhance_color_title">Sporește culorile</string>
   <string name="live_display_enhance_color_summary">Îmbunătățește dinamica culorilor pentru tonuri, peisaje și alte imagini</string>
+  <string name="live_display_color_profile_standard_title">Standard</string>
+  <string name="live_display_color_profile_natural_title">Natural</string>
+  <string name="live_display_color_profile_dynamic_title">Dinamic</string>
+  <string name="live_display_color_profile_cinema_title">Cinema</string>
+  <string name="live_display_color_profile_astronomy_title">Astronomie</string>
   <string name="battery_saver_summary_unavailable">Nu este disponibil în timpul încărcării</string>
   <string name="anonymous_statistics_title">Statistici CyanogenMod</string>
   <string name="anonymous_statistics_summary">Ajută-ne să facem CyanogenMod mai bun prin trimiterea de rapoarte anonime cu statistici</string>
@@ -782,6 +794,10 @@
   <string name="sim_mobile_network_settings_title">Setări cartelă SIM %d</string>
   <string name="factory_reset_instructions_title">Date personale &amp; aplicații</string>
   <string name="factory_reset_erase_sd_card">Formatare card SD</string>
+  <string name="factory_reset_warning_text_reset_now">RESETAȚI ACUM</string>
+  <string name="factory_reset_warning_text_message">Toate conturile, aplicațiile, datele lor, și setările de sistem vor fi eliminate din acest dispozitiv. Acest lucru nu este reversibil.</string>
+  <string name="wifi_show_all">Arată tot</string>
+  <string name="wifi_show_open">Arată rețele deschise</string>
   <string name="wifi_setting_countrycode_title">Codul de regiune Wi\u2011Fi</string>
   <string name="wifi_setting_countrycode_summary">Specificați codul de regiune pentru Wi\u2011Fi</string>
   <string name="wifi_setting_countrycode_error">A intervenit o problemă la setarea codului de regiune.</string>
@@ -815,15 +831,19 @@
   <string name="battery_info_status_charging_dock_usb">Încărcare prin stativ USB</string>
   <string name="setup_lock_pattern_size_title">Complexitatea modelului</string>
   <string name="lto_download_data_wifi_only">Descărcare date asistență GPS</string>
+  <string name="lto_download_data_wifi_only_on">Folosind orice rețea</string>
+  <string name="lto_download_data_wifi_only_off">Folosind doar rețele Wi\u2011Fi</string>
   <string name="keep_screen_on_never">Niciodată</string>
   <string name="keep_screen_on_debugging">În timpul depanării USB</string>
   <string name="keep_screen_on_charging">În timpul încărcării</string>
   <string name="contributors_cloud_fragment_title">Contribuitori</string>
+  <string name="contributors_cloud_failed_message">Nu se pot încărca datele contributorilor</string>
   <string name="contributor_info_msg">
         <![CDATA[<b>Nume:</b> <xliff:g id="name">%1$s</xliff:g><br/><br/>
                  <b>Pseudonim:</b> <xliff:g id="nick">%2$s</xliff:g><br/><br/>
                  <b>Contribuții:</b> <xliff:g id="commits">%3$s</xliff:g><br/><br/>
                  <b>Clasament:</b> <xliff:g id="rank">%4$s</xliff:g>]]></string>
+  <string name="contributions_info_menu">Informații contribuții</string>
   <string name="contributions_info_msg">
         <![CDATA[<b>Total colaboratori:</b> <xliff:g id="total_contributors">%1$s</xliff:g><br/><br/>
                  <b>Total contribuții:</b> <xliff:g id="total_commits">%2$s</xliff:g><br/><br/>
