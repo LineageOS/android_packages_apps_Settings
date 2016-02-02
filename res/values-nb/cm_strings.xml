@@ -132,6 +132,8 @@
   <string name="swap_volume_buttons_title">Reorientere</string>
   <string name="swap_volume_buttons_summary">Bytte volumknappene når skjermen er rotert</string>
   <string name="volume_keys_control_ring_stream_title">Ringetone volumkontroll</string>
+  <string name="volume_keys_control_ring_stream_summary_on">Volumtastene styrer ringetonevolum</string>
+  <string name="volume_keys_control_ring_stream_summary_off">Volumtastene styre media volum</string>
   <string name="power_end_call_title">Avslutt samtale</string>
   <string name="power_end_call_summary">Ved å trykke på strømknappen så vil samtalen avsluttes</string>
   <string name="button_wake_title">Vekke enheten</string>
@@ -344,6 +346,7 @@
   <string name="notification_light_voicemail_title">Talepostkasse</string>
   <string name="notification_light_screen_on">Lys med skjermen på</string>
   <string name="notification_light_use_multiple_leds">Flere lysdioder</string>
+  <string name="keywords_lights_brightness_level">dim lysdioder lysstyrke</string>
   <string name="notification_ringtone_title_cm">Varslingstone</string>
   <string name="headset_connect_player_title">Start musikk app</string>
   <string name="headset_connect_player_summary">Start standard musikk app når hodesett er tilkoblet</string>
@@ -685,6 +688,8 @@
   <string name="settings_cmlicense_activity_title">CyanogenMod juridisk</string>
   <string name="lockpattern_settings_enable_error_path_title">Vis feil</string>
   <string name="lockpattern_settings_enable_dots_title">Vis mønster prikker</string>
+  <string name="lock_directly_show_password">Vis direkte angivelse av passord</string>
+  <string name="lock_directly_show_pattern">Direkte vise mønster</string>
   <string name="lock_directly_show_pin">Vis direkte PIN-kodeoppføringen</string>
   <string name="unlock_quick_unlock_control_title">Hurtig opplåsning</string>
   <string name="unlock_quick_unlock_control_summary">Låse opp automatisk når det angis riktig PIN/passord</string>
@@ -825,6 +830,7 @@
   <string name="interruptions_ignore_while_media_summary">Ikke Reduser media avspillingsvolumet når en melding ankommer</string>
   <string name="none_is_silent_title">Aldri demp alarmer</string>
   <string name="none_is_silent_summary_on">Alarmer vil ikke ignoreres i stille modus</string>
+  <string name="none_is_silent_summary_off">Alarmer ignoreres i stille modus</string>
   <string name="allow_lights_title">Tillat varselslys</string>
   <string name="live_display_summary">Optimalisere skjermen basert på tidspunkt på dagen og omgivelsesforhold å forbedre lesbarhet og redusere belastningen på øynene</string>
   <string name="live_display_mode">Visningsmodus</string>
@@ -924,6 +930,7 @@
   <string name="fingerprint_dialog_name_label">Navn på fingeravtrykk</string>
   <string name="fingerprint_dialog_title_max_fingers_reached">Maks. antall fingeravtrykk er nådd</string>
   <string name="fingerprint_dialog_msg_max_fingers_reached">Du kan bare registrere <xliff:g id="finger" example="5">%d </xliff:g> fingeravtrykk. Slett et eksisterende fingeravtrykk.</string>
+  <string name="fingerprint_title_manage_fingerprints"><xliff:g id="finger">%d </xliff:g> av <xliff:g id="max"> %d </xliff:g> fingeravtrykk registrert</string>
   <string name="manage_fingerprints_description">Med fingeravtrykk kan du raskt og enkelt låse opp telefonen og ta bilder.</string>
   <string name="fingerprint_enrollment_introduction_title">Finn sensoren din</string>
   <string name="fingerprint_enrollment_introduction_instructions">Fingeravtrykkssensoren er plassert på forsiden eller baksiden av telefonen.</string>
@@ -972,6 +979,8 @@
   <string name="keep_screen_on_debugging">Under USB feilsøking</string>
   <string name="keep_screen_on_charging">Under lading</string>
   <string name="contributors_cloud_fragment_title">Bidragsytere</string>
+  <string name="contributors_cloud_loading_message">Lasting bidragsytere data\u2026</string>
+  <string name="contributors_cloud_failed_message">Kan ikke laste bidragsytere data</string>
   <string name="contributor_info_menu">Bidragsyter info</string>
   <string name="contributor_info_msg">
         <![CDATA[<b>Navn:</b> <xliff:g id="name">%1$s</xliff:g><br/><br/>
@@ -979,5 +988,9 @@
                  <b>Utfører:</b> <xliff:g id="commits">%3$s</xliff:g><br/><br/>
                  <b>Rangering:</b> <xliff:g id="rank">%4$s</xliff:g>]]></string>
   <string name="contributions_info_menu">Bidragsinfo</string>
+  <string name="contributions_info_msg">
+        <![CDATA[<b>Total bidragsytere:</b><xliff:g id="total_contributors">%1$s</xliff:g><br/><br/>
+                 <b>Total begår:</b><xliff:g id="total_commits">%2$s</xliff:g><br/><br/>
+                 <b>Siste oppdatering:</b><xliff:g id="date">%3$s</xliff:g>]]></string>
   <string name="quick_settings_reset_message">Tilbakestille innstillinger for fliser?</string>
 </resources>
