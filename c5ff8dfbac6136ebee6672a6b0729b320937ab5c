@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fcbff3d_c3fd1e3b",
+        "filename": "res/layout/preference_application_light.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 9199
+      },
+      "writtenOn": "2016-02-02T02:33:56Z",
+      "side": 0,
+      "message": "seems like the only thing you really need to do is add something like android:textColor\u003d\"?android:attr/textColorSecondary\"\n\nThat\u0027s really the only thing that is changing when you switch styles\n\nIf you want more flexibility, create a new style that inherits the one above and then modify the necessary attributes.",
+      "revId": "c5ff8dfbac6136ebee6672a6b0729b320937ab5c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
