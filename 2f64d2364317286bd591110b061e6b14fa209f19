@@ -46,6 +46,30 @@
       "revId": "2f64d2364317286bd591110b061e6b14fa209f19",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fcbff3d_e3ee1ab3",
+        "filename": "src/com/android/settings/ChooseLockGeneric.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 14515
+      },
+      "writtenOn": "2016-02-02T02:25:13Z",
+      "side": 1,
+      "message": "The reverse of current transition (going from non-secure to secure, show choice only if visibility !\u003d show all) is not restricted.  \n\nConsidering the change is to give user a choice to select visibility of notifications, it can not assume such choice is not needed for specific conditions only in going from secure to non-secure. Hence the above argument.",
+      "parentUuid": "1fcbff3d_43992e6c",
+      "range": {
+        "startLine": 509,
+        "startChar": 50,
+        "endLine": 509,
+        "endChar": 53
+      },
+      "revId": "2f64d2364317286bd591110b061e6b14fa209f19",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
