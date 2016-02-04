@@ -62,6 +62,7 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
     Context mContext;
     private ArrayList<String> mLocalUserConfig = new ArrayList<String>();
     private String[] mAvailableActions;
+    private String[] mAvailableActionsValues;
     private String[] mAllActions;
 
     @Override
@@ -73,6 +74,9 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
 
         mAvailableActions = getActivity().getResources().getStringArray(
                 R.array.power_menu_actions_array);
+        mAvailableActionsValues = getActivity().getResources().getStringArray(
+                R.array.power_menu_actions_array_values);
+
         mAllActions = PowerMenuConstants.getAllActions();
 
         for (String action : mAllActions) {
@@ -164,6 +168,13 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
 
         if (mAssistPref != null) {
             mAssistPref.setChecked(settingsArrayContains(GLOBAL_ACTION_KEY_ASSIST));
+        /*
+         * Update the preference values as per in the cm_array.xml files
+         * overriding any value provided in the power_menu_settings.xml
+         */
+        for (int i = 0 ; i != mAvailableActions.length ; i++) {
+            boolean val = Boolean.valueOf(mAvailableActionsValues[i]);
+            updateUserConfig(val, mAvailableActions[i]);
         }
 
         updatePreferences();
