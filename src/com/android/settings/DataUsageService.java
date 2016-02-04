@@ -1,36 +1,49 @@
 package com.android.settings;
 
 
-import android.app.*;
-import android.content.*;
-import android.database.*;
-import android.graphics.*;
-import android.net.*;
-import android.os.*;
-import android.os.Process;
-import android.support.v4.app.*;
-import android.support.v4.app.TaskStackBuilder;
-import android.telephony.*;
-import android.util.*;
-import android.view.*;
-import android.widget.*;
-import com.android.settings.net.*;
+
+import android.app.ActivityManager;
+import android.app.IntentService;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
 import android.net.NetworkTemplate;
 import static android.net.NetworkTemplate.buildTemplateMobileAll;
 import android.net.INetworkStatsService;
 import android.net.INetworkStatsSession;
 import static android.net.TrafficStats.UID_REMOVED;
 import static android.net.TrafficStats.UID_TETHERING;
+
+import android.os.Handler;
+import android.os.IBinder;
+import android.os.RemoteException;
+import android.os.UserHandle;
+import android.os.UserManager;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.net.NetworkStats;
+import android.os.ServiceManager;
 import android.os.SystemProperties;
 import android.content.pm.UserInfo;
 
+import android.telephony.TelephonyManager;
+import android.util.Log;
+import android.util.SparseArray;
+import com.android.settings.net.UidDetail;
+import com.android.settings.net.UidDetailProvider;
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-import java.util.*;
 
 /**
  * IntentService, launched by the AlarmManager at Boot Time from (BootReceiver) used
@@ -64,12 +77,18 @@ public class DataUsageService extends IntentService {
     private NotificationManager mNotificationManager;
 
     // specifies minimum number of samples to collect before running algorithm
-    private static final int MIN_SLOW_SAMPLE_COUNT = 10;
-    private static final int MIN_FAST_SAMPLE_COUNT = 3;
+    private static final int MIN_SLOW_SAMPLE_COUNT = 60;    // 1 hours worth of active traffic
+    private static final int MIN_FAST_SAMPLE_COUNT = 5;     // 5 min worth of active traffic
+
+    // specifies the number of samples to keep in the database for postprocessing and
+    // algorithm evaluation
+    private final static int MAX_EXTRA_SAMPLE_COUNT = 1000;
+
     // specifies percentage by which fast average must exceed slow avg to trigger a warning
     // one standard deviation - or should it be 34%, since we are only looking at above and not
     // below. And how many standard deviations should it be?
     private static final int WARNING_PERCENTAGE = 68;
+
     // specifies maximum bw that is still considered as idle - to discard pings, etc...
     private static final long MAX_IDLE_BW = 1024;
     // specifies the sample period in msec
@@ -93,7 +112,7 @@ public class DataUsageService extends IntentService {
 
     @android.support.annotation.Nullable
     @Override
-    public IBinder onBind(android.content.Intent intent) {
+    public IBinder onBind(Intent intent) {
         return null;
     }
 
@@ -308,15 +327,7 @@ public class DataUsageService extends IntentService {
                 }
                 if (bytesDelta > MAX_IDLE_BW) {
                     // enough BW consumed during this sample - evaluate algorithm
-                    if (DEBUG) {
-                        Log.v(TAG, "bytesDelta:" + bytesDelta + " greater than MAX_IDLE_BW");
-                    }
                     if (appWarnSlowSamples < MIN_SLOW_SAMPLE_COUNT) {
-                        if (DEBUG) {
-                            Log.v(TAG, "SlowSamples:" + appWarnSlowSamples + " less than:" +
-                                    MIN_SLOW_SAMPLE_COUNT);
-                            Log.v(TAG, "SlowAvg:" + appWarnSlowAvg);
-                        }
                         // not enough samples acquired for the slow average, keep accumulating
                         // samples
                         appWarnSlowAvg = computeAvg(appWarnSlowAvg, appWarnSlowSamples,
@@ -341,17 +352,10 @@ public class DataUsageService extends IntentService {
                                 appWarnFastAvg, appWarnFastSamples,
                                 0, appItem.total);
                     } else {
-                        if (DEBUG) {
-                            Log.v(TAG, "SlowSamples:" + appWarnSlowSamples + " greater than " +
-                                    MIN_SLOW_SAMPLE_COUNT);
-                        }
                         // enough samples acquired for the average, evaluate warning algorithm
                         float avgExceedPercent = appWarnFastAvg-appWarnSlowAvg;
                         avgExceedPercent /= appWarnSlowAvg;
                         avgExceedPercent *= 100;
-                        if (DEBUG) {
-                            Log.v(TAG, "avg exceeded percent:" + avgExceedPercent);
-                        }
 
                         if ((appWarnFastAvg > appWarnSlowAvg) && (avgExceedPercent >
                                 WARNING_PERCENTAGE)) {
@@ -376,9 +380,6 @@ public class DataUsageService extends IntentService {
                     }
                 } else {
                     // not enough BW consumed during this sample - simply update bytes
-                    if (DEBUG) {
-                        Log.v(TAG, "bytesDelta:" + bytesDelta + " less than MAX_IDLE_BW:" + MAX_IDLE_BW);
-                    }
                     updateDb(appItem.key, appItem.total);
                 }
             }
@@ -406,9 +407,7 @@ public class DataUsageService extends IntentService {
     private void updateDb(int uid, long bytes) {
         ContentValues values = new ContentValues();
         String extraInfo = genExtraInfo(bytes);
-        if (DEBUG) {
-            Log.v(TAG, "UID:" + uid + " Bytes:" + bytes + " ExtraInfo:" + extraInfo);
-        }
+
         values.put(DataUsageProvider.DATAUSAGE_DB_BYTES, bytes);
         values.put(DataUsageProvider.DATAUSAGE_DB_EXTRA, extraInfo);
         getContentResolver().update(
@@ -441,7 +440,7 @@ public class DataUsageService extends IntentService {
         );
     }
 
-    private final static int MAX_EXTRA_SAMPLE_COUNT = 10;
+
     private String genExtraInfo(long bytes) {
 
         Gson gson = new Gson();
@@ -461,9 +460,7 @@ public class DataUsageService extends IntentService {
             extraInfo = new DataUsageExtraInfo();
             extraInfo.samples = new ArrayList<Long>();
         }
-        if (DEBUG) {
-            Log.v(TAG, "genExtraInfo: currentSamples:" + extraInfo.samples.size());
-        }
+
         if (extraInfo.samples.size() == MAX_EXTRA_SAMPLE_COUNT) {
             extraInfo.samples.remove(0);
         }
@@ -507,12 +504,12 @@ public class DataUsageService extends IntentService {
                 // .setSmallIcon(R.drawable.data_warning)
                 // .setSmallIcon(R.drawable.ic_sim_card_alert_white_48dp)
                 .setSmallIcon(R.drawable.data_usage_48dp)
-                .setContentTitle("Mobile data alert")
+                .setContentTitle(getResources().getString(R.string.data_usage_notify_title))
                 .setAutoCancel(true)        // remove notification when clicked on
                 .setContentText(appTitle)   // non-expanded view message
                 .setColor(mContext.getColor(R.color.data_usage_notification_icon_color))
                 .setStyle(new Notification.BigTextStyle()
-                    .bigText(appTitle + " is using a lot of mobile data. Tap to view details."));
+                    .bigText(getResources().getString(R.string.data_usage_notify_big_text, appTitle)));
 
         if (firstTime) {
             builder.addAction(

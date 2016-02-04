@@ -1239,8 +1239,17 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
 
         final int uid = mCurrentApp.key;
 
+        // get App's details, to send to the DataUsage Provider, don't block, if not int the
+        // DetailProvider cache. (should be in the cache, as the App's label had already
+        // been displayed in the list of Apps
+        UidDetail detail = mUidDetailProvider.getUidDetail(uid, false);
+        String label = "";
+        if (detail != null) {
+            label = detail.label.toString();
+        }
+
         try {
-            DataUsageUtils.enbApp(getContext(), uid, enableDataAlert);
+            DataUsageUtils.enbApp(getContext(), uid, enableDataAlert, label);
         } finally {
             mAppDataAlert.setChecked(enableDataAlert);
         }
@@ -1491,6 +1500,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
         public void onClick(View v) {
             final boolean enableDataAlert = !mDataAlertSwitch.isChecked();
             mDataAlertSwitch.setChecked(enableDataAlert);
+            DataUsageUtils.enbDataUsageService(getContext(), enableDataAlert);
         }
     };
 

@@ -14,7 +14,7 @@ import android.util.*;
  */
 
 public class DataUsageProvider extends ContentProvider {
-    private static final boolean DEBUG = true;
+    private static final boolean DEBUG = false;
     private static final String TAG = DataUsageProvider.class.getSimpleName();
     private static final String DATABASE_NAME = "datausage.db";
     private static final int DATABASE_VERSION = 1;
@@ -30,9 +30,9 @@ public class DataUsageProvider extends ContentProvider {
     // define database columns
     public static final String DATAUSAGE_DB_ID              = "_id";
     public static final String DATAUSAGE_DB_UID             = "uid";
-    public static final String DATAUSAGE_DB_ENB             = "enb";     // warning generation enabled
-    public static final String DATAUSAGE_DB_ACTIVE          = "active";  // warning currently active
-    public static final String DATAUSAGE_DB_LABEL           = "label";   // app label - for debugging
+    public static final String DATAUSAGE_DB_ENB             = "enb";     // warning gen enabled
+    public static final String DATAUSAGE_DB_ACTIVE          = "active";  // warning active
+    public static final String DATAUSAGE_DB_LABEL           = "label";   // app label for debug
     public static final String DATAUSAGE_DB_BYTES           = "bytes";   // prev sample bytes
     // consumed bw avg over samples - slow moving
     public static final String DATAUSAGE_DB_SLOW_AVG        = "slow_avg";
@@ -42,7 +42,7 @@ public class DataUsageProvider extends ContentProvider {
     public static final String DATAUSAGE_DB_FAST_AVG        = "fast_avg";
     // accumulated samples - fast moving average
     public static final String DATAUSAGE_DB_FAST_SAMPLES    = "fast_samples";
-    public static final String DATAUSAGE_DB_EXTRA           = "extra";   // extra samples for debugging
+    public static final String DATAUSAGE_DB_EXTRA           = "extra";   // extra samples for debug
 
 
     public static final int DATAUSAGE_DB_COLUMN_OF_ID           = 0;
@@ -116,7 +116,10 @@ public class DataUsageProvider extends ContentProvider {
     }
 
     @Override
-    public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
+    public Cursor query(
+            Uri uri, String[] projection, String selection, String[] selectionArgs,
+            String sortOrder
+    ) {
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
         qb.setTables(DATAUSAGE_TABLE);
 
@@ -257,13 +260,17 @@ public class DataUsageProvider extends ContentProvider {
                 Log.v(TAG, "Update count:" + count);
             }
             if (count == 0) {
-                Log.v(TAG, "Count==0, Performing Insert");
+                if (DEBUG) {
+                    Log.v(TAG, "Count==0, Performing Insert");
+                }
                 values.put(DATAUSAGE_DB_UID, uid);
                 count = db.insert(DATAUSAGE_TABLE, null, values);
             }
             db.setTransactionSuccessful();
         } finally {
-            Log.v(TAG, "dbEndTransaction");
+            if (DEBUG) {
+                Log.v(TAG, "dbEndTransaction");
+            }
             db.endTransaction();
         }
         if (DEBUG) {

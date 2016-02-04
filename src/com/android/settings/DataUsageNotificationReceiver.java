@@ -1,11 +1,16 @@
 package com.android.settings;
 
 
-import android.app.*;
-import android.content.*;
-import android.util.*;
-import android.widget.*;
+
+import android.app.NotificationManager;
+import android.content.BroadcastReceiver;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
 import android.net.NetworkPolicyManager;
+import android.util.Log;
+import android.widget.Toast;
+
 import static android.net.NetworkPolicyManager.POLICY_REJECT_APP_METERED_USAGE;
 
 /**
@@ -40,7 +45,9 @@ public class DataUsageNotificationReceiver extends BroadcastReceiver {
         }
 
         if (DataUsageService.HIDE_ACTION.equals(action)) {
-            Toast.makeText(context, "Hiding Data Usage Warnings for " + title, Toast.LENGTH_LONG)
+            Toast.makeText(context, context.getString(R.string.data_usage_hide_message, title),
+                    Toast
+                    .LENGTH_LONG)
                     .show();
 
             ContentValues values = new ContentValues();
@@ -51,7 +58,7 @@ public class DataUsageNotificationReceiver extends BroadcastReceiver {
             DataUsageUtils.enbApp(context, uid, false);
 
         } else if (DataUsageService.DISABLE_ACTION.equals(action)) {
-            Toast.makeText(context, "Disabling Cellular Data Network Access for " + title,
+            Toast.makeText(context, context.getString(R.string.data_usage_disable_message, title),
                     Toast.LENGTH_LONG).show();
             NetworkPolicyManager policyManager = NetworkPolicyManager.from(context);
             policyManager.addUidPolicy(uid, POLICY_REJECT_APP_METERED_USAGE);

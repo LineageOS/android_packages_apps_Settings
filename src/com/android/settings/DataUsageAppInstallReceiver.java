@@ -1,13 +1,10 @@
 package com.android.settings;
 
 
-import android.app.*;
-import android.content.*;
-import android.net.*;
-import android.util.*;
-import android.widget.*;
-import com.android.settings.net.*;
-
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 
 /**
  * This class implements the receiver that will handle app installs & uninstalls
@@ -20,63 +17,15 @@ public class DataUsageAppInstallReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(final Context context, Intent intent) {
-        String action = intent.getAction();
+        Log.v(TAG, "AppInstallReceiver: onReceive");
 
-        final boolean added;
-        final boolean changed;
-        final boolean removed;
-        if (action.equalsIgnoreCase("ANDROID.INTENT.ACTION.PACKAGE_ADDED")) {
-            added = true;
-            removed = false;
-        } else if (action.equalsIgnoreCase("ANDROID.INTENT.ACTION.PACKAGE_CHANGED")) {
-            added = false;
-            removed = false;
-            changed = true;
-        } else if (action.equalsIgnoreCase("ANDROID.INTENT.ACTION.PACKAGE_REPLACED")) {
-            added = false;
-            removed = false;
-            changed = true;
-        } else if (action.equalsIgnoreCase("ANDROID.INTENT.ACTION.PACKAGE_REMOVED")) {
-            added = false;
-            removed = true;
-        } else if (action.equalsIgnoreCase("ANDROID.INTENT.ACTION.PACKAGE_FULLY_REMOVED")) {
-            added = false;
-            removed = true;
-        } else {
-            Log.e(TAG, "Unknown Action:" + action);
-            return;
+        Intent appInstallServiceIntent = new Intent(context, DataUsageAppInstallService.class);
+        appInstallServiceIntent.setAction(intent.getAction());
+        if (intent.hasExtra(Intent.EXTRA_UID)) {
+            appInstallServiceIntent.putExtra(
+                    Intent.EXTRA_UID,
+                    intent.getIntExtra(Intent.EXTRA_UID, 0));
         }
-
-        final int uid;
-        if (intent.hasExtra("android.intent.extra.UID")) {
-            uid = intent.getIntExtra("android.intent.extra.UID", 0);
-        } else {
-            uid = 0;
-        }
-
-        if (uid == 0) {
-            Log.e(TAG, "Invalid UID:" + uid + " for Action:" + action);
-            return;
-        }
-
-        // run on a background thread - since UidDetailProvider and/or DB access can take long time
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                if (added) {
-                    UidDetailProvider uidDetailProvider = new UidDetailProvider(context);
-                    UidDetail uidDetail = uidDetailProvider.getUidDetail(uid, true);
-                    String label = "";
-                    if (uidDetail != null) {
-                        label = uidDetail.label.toString();
-                    }
-
-                    DataUsageUtils.addApp(context, uid, label);
-                } else if (removed) {
-                    DataUsageUtils.removeApp(context, uid);
-                }
-            }
-        }).start();
-
+        context.startService(appInstallServiceIntent);
     }
 }

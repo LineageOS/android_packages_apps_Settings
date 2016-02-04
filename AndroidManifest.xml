@@ -448,11 +448,14 @@
                  android:label="DataUsageService" >
         </service>
 
+        <service android:name=".DataUsageAppInstallService"
+                 android:label="DataUsageAppInstallService" >
+        </service>
+
+        <!-- set exported to false to remove access to the provider, needed now by DataUsageDump -->
         <provider android:name="com.android.settings.DataUsageProvider"
                   android:authorities="com.android.settings.datausage"
-                  android:exported="true"
-                  android:readPermission="android.permission.READ_DATAUSAGE"
-                  android:writePermission="android.permission.WRITE_DATAUSAGE">
+                  android:exported="true">
         </provider>
 
         <receiver android:name=".DataUsageNotificationReceiver">
@@ -462,13 +465,15 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name=".DataUsageAppInstallReceiver">
+        <receiver android:name=".DataUsageAppInstallReceiver"
+            android:exported="true" >
             <intent-filter>
-                <action android:name="ANDROID.INTENT.ACTION.PACKAGE_ADDED" />
-                <action android:name="ANDROID.INTENT.ACTION.PACKAGE_REMOVED" />
-                <action android:name="ANDROID.INTENT.ACTION.PACKAGE_FULLY_REMOVED" />
-                <action android:name="ANDROID.INTENT.ACTION.PACKAGE_CHANGED" />
-                <action android:name="ANDROID.INTENT.ACTION.PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <action android:name="android.intent.action.PACKAGE_FULLY_REMOVED" />
+                <action android:name="android.intent.action.PACKAGE_CHANGED" />
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+                <data android:scheme="package" />
             </intent-filter>
         </receiver>
 
