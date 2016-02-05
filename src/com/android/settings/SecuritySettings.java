@@ -84,8 +84,8 @@ public class SecuritySettings extends SettingsPreferenceFragment
             new Intent(TrustAgentService.SERVICE_INTERFACE);
 
     // Fitler types for this panel
-    private static final String FILTER_TYPE_EXTRA = "filter_type";
-    private static final int TYPE_LOCKSCREEN_EXTRA = 0;
+    protected static final String FILTER_TYPE_EXTRA = "filter_type";
+    protected static final int TYPE_LOCKSCREEN_EXTRA = 0;
     private static final int TYPE_SECURITY_EXTRA = 1;
 
     // Lock Settings
@@ -132,9 +132,9 @@ public class SecuritySettings extends SettingsPreferenceFragment
     // Only allow one trust agent on the platform.
     private static final boolean ONLY_ONE_TRUST_AGENT = true;
 
-    private static final int MY_USER_ID = UserHandle.myUserId();
+    protected static final int MY_USER_ID = UserHandle.myUserId();
 
-    private static final String LIVE_LOCK_SCREEN_FEATURE = "org.cyanogenmod.livelockscreen";
+    protected static final String LIVE_LOCK_SCREEN_FEATURE = "org.cyanogenmod.livelockscreen";
 
     private PackageManager mPM;
     private DevicePolicyManager mDPM;
@@ -205,7 +205,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
         }
     }
 
-    private static int getResIdForLockUnlockScreen(Context context,
+    protected static int getResIdForLockUnlockScreen(Context context,
             LockPatternUtils lockPatternUtils) {
         int resid = 0;
         if (!lockPatternUtils.isSecure(MY_USER_ID)) {
@@ -540,7 +540,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
         }
     }
 
-    private static ArrayList<TrustAgentComponentInfo> getActiveTrustAgents(
+    protected static ArrayList<TrustAgentComponentInfo> getActiveTrustAgents(
             PackageManager pm, LockPatternUtils utils, DevicePolicyManager dpm) {
         ArrayList<TrustAgentComponentInfo> result = new ArrayList<TrustAgentComponentInfo>();
         List<ResolveInfo> resolveInfos = pm.queryIntentServices(TRUST_AGENT_INTENT,
@@ -874,14 +874,8 @@ public class SecuritySettings extends SettingsPreferenceFragment
 
             List<SearchIndexableResource> result = new ArrayList<SearchIndexableResource>();
 
-            LockPatternUtils lockPatternUtils = new LockPatternUtils(context);
-            // Add options for lock/unlock screen
-            int resId = getResIdForLockUnlockScreen(context, lockPatternUtils);
-
-            SearchIndexableResource sir = new SearchIndexableResource(context);
-            sir.xmlResId = resId;
-            result.add(sir);
-
+            int resId = 0;
+            SearchIndexableResource sir;
             if (mIsPrimary) {
                 DevicePolicyManager dpm = (DevicePolicyManager)
                         context.getSystemService(Context.DEVICE_POLICY_SERVICE);
@@ -928,22 +922,6 @@ public class SecuritySettings extends SettingsPreferenceFragment
 
                 data = new SearchIndexableRaw(context);
                 data.title = res.getString(resId);
-                data.screenTitle = screenTitle;
-                result.add(data);
-            }
-
-            // Fingerprint
-            FingerprintManager fpm =
-                    (FingerprintManager) context.getSystemService(Context.FINGERPRINT_SERVICE);
-            if (fpm.isHardwareDetected()) {
-                // This catches the title which can be overloaded in an overlay
-                data = new SearchIndexableRaw(context);
-                data.title = res.getString(R.string.security_settings_fingerprint_preference_title);
-                data.screenTitle = screenTitle;
-                result.add(data);
-                // Fallback for when the above doesn't contain "fingerprint"
-                data = new SearchIndexableRaw(context);
-                data.title = res.getString(R.string.fingerprint_manage_category_title);
                 data.screenTitle = screenTitle;
                 result.add(data);
             }
