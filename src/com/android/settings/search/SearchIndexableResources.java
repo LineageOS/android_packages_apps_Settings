@@ -54,6 +54,9 @@ import com.android.settings.wifi.AdvancedWifiSettings;
 import com.android.settings.wifi.SavedAccessPointsWifiSettings;
 import com.android.settings.wifi.WifiSettings;
 
+import com.android.settings.ButtonSettings;
+import com.android.settings.cyanogenmod.StatusBarSettings;
+
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -309,6 +312,37 @@ public final class SearchIndexableResources {
                         R.xml.wifi_calling_settings,
                         WifiCallingSettings.class.getName(),
                         R.drawable.ic_settings_wireless));
+
+        // CyanogenMod Settings
+        sResMap.put(ButtonSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(ButtonSettings.class.getName()),
+                        R.xml.button_settings,
+                        ButtonSettings.class.getName(),
+                        R.drawable.ic_settings_buttons));
+
+        sResMap.put(StatusBarSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(StatusBarSettings.class.getName()),
+                        R.xml.status_bar_settings,
+                        StatusBarSettings.class.getName(),
+                        R.drawable.ic_settings_statusbar));
+
+        sResMap.put(com.android.settings.cyanogenmod.PrivacySettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(
+                                com.android.settings.cyanogenmod.PrivacySettings.class.getName()),
+                        R.xml.privacy_settings_cyanogenmod,
+                        com.android.settings.cyanogenmod.PrivacySettings.class.getName(),
+                        R.drawable.ic_settings_privacy));
+
+        sResMap.put(com.android.settings.cyanogenmod.LockscreenSettingsAlias.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(
+                                com.android.settings.cyanogenmod.LockscreenSettingsAlias.class.getName()),
+                        NO_DATA_RES_ID,
+                        com.android.settings.cyanogenmod.LockscreenSettingsAlias.class.getName(),
+                        R.drawable.ic_settings_lockscreen));
     }
 
     private SearchIndexableResources() {
