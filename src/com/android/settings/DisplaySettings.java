@@ -93,6 +93,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private static final String KEY_SCREEN_TIMEOUT = "screen_timeout";
     private static final String KEY_LCD_DENSITY = "lcd_density";
+    private static final String KEY_WIFI_DISPLAY = "wifi_display";
     private static final String KEY_FONT_SIZE = "font_size";
     private static final String KEY_SCREEN_SAVER = "screensaver";
     private static final String KEY_LIFT_TO_WAKE = "lift_to_wake";
@@ -122,6 +123,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mTapToWake;
     private SwitchPreference mWakeWhenPluggedOrUnplugged;
     private SwitchPreference mProximityWakePreference;
+    private PreferenceScreen mWifiDisplayPreference;
 
     private CMHardwareManager mHardware;
 
@@ -160,6 +162,12 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         mAccelerometer = (SwitchPreference) findPreference(DisplayRotation.KEY_ACCELEROMETER);
         if (mAccelerometer != null) {
             mAccelerometer.setPersistent(false);
+        }
+        mWifiDisplayPreference = (PreferenceScreen) findPreference(KEY_WIFI_DISPLAY);
+        if (mWifiDisplayPreference != null
+                && getResources().getBoolean(
+                        com.android.internal.R.bool.config_enableWifiDisplay) == false) {
+            displayPrefs.removePreference(mWifiDisplayPreference);
         }
 
         mScreenSaverPreference = findPreference(KEY_SCREEN_SAVER);
