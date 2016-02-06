@@ -84,6 +84,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, OnPreferenceClickListener, Indexable {
     private static final String TAG = "DisplaySettings";
 
+    // When this system property is set to 0, WFD is forcibly disabled on boot.
+    // When this system property is set to 1, WFD is forcibly enabled on boot.
+    // Otherwise WFD is enabled according to the value of config_enableWifiDisplay.
+    private static final String FORCE_WIFI_DISPLAY_ENABLE = "persist.debug.wfd.enable";
+
     /** If there is no setting in the provider, use this. */
     private static final int FALLBACK_SCREEN_TIMEOUT_VALUE = 30000;
 
@@ -93,6 +98,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private static final String KEY_SCREEN_TIMEOUT = "screen_timeout";
     private static final String KEY_LCD_DENSITY = "lcd_density";
+    private static final String KEY_WIFI_DISPLAY = "wifi_display";
     private static final String KEY_FONT_SIZE = "font_size";
     private static final String KEY_SCREEN_SAVER = "screensaver";
     private static final String KEY_LIFT_TO_WAKE = "lift_to_wake";
@@ -122,6 +128,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mTapToWake;
     private SwitchPreference mWakeWhenPluggedOrUnplugged;
     private SwitchPreference mProximityWakePreference;
+    private PreferenceScreen mWifiDisplayPreference;
 
     private CMHardwareManager mHardware;
 
@@ -160,6 +167,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         mAccelerometer = (SwitchPreference) findPreference(DisplayRotation.KEY_ACCELEROMETER);
         if (mAccelerometer != null) {
             mAccelerometer.setPersistent(false);
+        }
+
+        mWifiDisplayPreference = (PreferenceScreen) findPreference(KEY_WIFI_DISPLAY);
+        if (mWifiDisplayPreference != null
+                && !getResources().getBoolean(
+                        com.android.internal.R.bool.config_enableWifiDisplay)
+                && (SystemProperties.getInt(FORCE_WIFI_DISPLAY_ENABLE, -1) != 1)) {
+            displayPrefs.removePreference(mWifiDisplayPreference);
         }
 
         mScreenSaverPreference = findPreference(KEY_SCREEN_SAVER);
