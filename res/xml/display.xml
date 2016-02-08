@@ -165,6 +165,14 @@
             android:key="lights"
             android:title="@string/category_lights">
 
+         <ListPreference
+                android:key="screen_colortone"
+                android:title="@string/screen_colortone"
+                android:summary="@string/screen_colortone_summary"
+                android:persistent="false"
+                android:entries="@array/screen_colortone_entries"
+                android:entryValues="@array/screen_colortone_values" />
+
         <!-- Battery light -->
         <PreferenceScreen
                 android:key="battery_light"
