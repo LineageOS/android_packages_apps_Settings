@@ -201,7 +201,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             mobileNetworkIntent.setComponent(new ComponentName(
                         "com.android.phone", "com.android.phone.MobileNetworkSettings"));
             SubscriptionManager.putPhoneIdAndSubIdExtra(mobileNetworkIntent, i, subscriptionId);
-            Preference mobileNetworkPref = new Preference(getActivity());
+            Preference mobileNetworkPref = new Preference(getContext());
             mobileNetworkPref.setTitle(
                     getString(R.string.sim_mobile_network_settings_title, (i + 1)));
             mobileNetworkPref.setIntent(mobileNetworkIntent);
