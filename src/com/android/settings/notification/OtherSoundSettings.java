@@ -69,14 +69,12 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
 
     private static final String KEY_DIAL_PAD_TONES = "dial_pad_tones";
     private static final String KEY_SCREEN_LOCKING_SOUNDS = "screen_locking_sounds";
-    private static final String KEY_CHARGING_SOUNDS = "charging_sounds";
     private static final String KEY_DOCKING_SOUNDS = "docking_sounds";
     private static final String KEY_VOLUME_ADJUST_SOUNDS = "volume_adjust_sounds";
     private static final String KEY_TOUCH_SOUNDS = "touch_sounds";
     private static final String KEY_DOCK_AUDIO_MEDIA = "dock_audio_media";
     private static final String KEY_EMERGENCY_TONE = "emergency_tone";
 
-    private static final String KEY_POWER_NOTIFICATIONS = "power_notifications";
     private static final String KEY_POWER_NOTIFICATIONS_VIBRATE = "power_notifications_vibrate";
     private static final String KEY_POWER_NOTIFICATIONS_RINGTONE = "power_notifications_ringtone";
 
@@ -86,7 +84,6 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
     // Used for power notification uri string if set to silent
     private static final String POWER_NOTIFICATIONS_SILENT_URI = "silent";
 
-    private SwitchPreference mPowerSounds;
     private SwitchPreference mPowerSoundsVibrate;
     private Preference mPowerSoundsRingtone;
 
@@ -100,9 +97,6 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
 
     private static final SettingPref PREF_SCREEN_LOCKING_SOUNDS = new SettingPref(
             TYPE_SYSTEM, KEY_SCREEN_LOCKING_SOUNDS, System.LOCKSCREEN_SOUNDS_ENABLED, DEFAULT_ON);
-
-    private static final SettingPref PREF_CHARGING_SOUNDS = new SettingPref(
-            TYPE_GLOBAL, KEY_CHARGING_SOUNDS, Global.CHARGING_SOUNDS_ENABLED, DEFAULT_ON);
 
     private static final SettingPref PREF_DOCKING_SOUNDS = new SettingPref(
             TYPE_GLOBAL, KEY_DOCKING_SOUNDS, Global.DOCK_SOUNDS_ENABLED, DEFAULT_ON) {
@@ -183,7 +177,6 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
     private static final SettingPref[] PREFS = {
         PREF_DIAL_PAD_TONES,
         PREF_SCREEN_LOCKING_SOUNDS,
-        PREF_CHARGING_SOUNDS,
         PREF_DOCKING_SOUNDS,
         PREF_VOLUME_ADJUST_SOUNDS,
         PREF_TOUCH_SOUNDS,
@@ -214,9 +207,6 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
         mContext = getActivity();
 
         // power state change notification sounds
-        mPowerSounds = (SwitchPreference) findPreference(KEY_POWER_NOTIFICATIONS);
-        mPowerSounds.setChecked(CMSettings.Global.getInt(getContentResolver(),
-                CMSettings.Global.POWER_NOTIFICATIONS_ENABLED, 0) != 0);
         mPowerSoundsVibrate = (SwitchPreference) findPreference(KEY_POWER_NOTIFICATIONS_VIBRATE);
         mPowerSoundsVibrate.setChecked(CMSettings.Global.getInt(getContentResolver(),
                 CMSettings.Global.POWER_NOTIFICATIONS_VIBRATE, 0) != 0);
@@ -266,12 +256,7 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        if (preference == mPowerSounds) {
-            CMSettings.Global.putInt(getContentResolver(),
-                    CMSettings.Global.POWER_NOTIFICATIONS_ENABLED,
-                    mPowerSounds.isChecked() ? 1 : 0);
-
-        } else if (preference == mPowerSoundsVibrate) {
+        if (preference == mPowerSoundsVibrate) {
             CMSettings.Global.putInt(getContentResolver(),
                     CMSettings.Global.POWER_NOTIFICATIONS_VIBRATE,
                     mPowerSoundsVibrate.isChecked() ? 1 : 0);
