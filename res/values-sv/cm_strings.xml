@@ -132,6 +132,8 @@
   <string name="swap_volume_buttons_title">Orientera om</string>
   <string name="swap_volume_buttons_summary">Växla volymknappar när skärmen är roterad</string>
   <string name="volume_keys_control_ring_stream_title">Kontrollera ringvolym</string>
+  <string name="volume_keys_control_ring_stream_summary_on">Volymknapparna kontrollerar ringsignalsvolym</string>
+  <string name="volume_keys_control_ring_stream_summary_off">Volymknapparna styr mediavolym</string>
   <string name="power_end_call_title">Avsluta samtal</string>
   <string name="power_end_call_summary">Tryck på avstängningsknappen kommer att avsluta pågående samtal</string>
   <string name="button_wake_title">Väck upp enhet</string>
@@ -686,6 +688,8 @@
   <string name="settings_cmlicense_activity_title">CyanogenMod Juridik</string>
   <string name="lockpattern_settings_enable_error_path_title">Visa mönster vid fel</string>
   <string name="lockpattern_settings_enable_dots_title">Visa mönsterpunkter</string>
+  <string name="lock_directly_show_password">Visa lösenordsinmatningen direkt</string>
+  <string name="lock_directly_show_pattern">Visa mönsterinmatningen direkt</string>
   <string name="lock_directly_show_pin">Visa PIN-inmatningen direkt</string>
   <string name="unlock_quick_unlock_control_title">Snabb upplåsning</string>
   <string name="unlock_quick_unlock_control_summary">Lås upp automatiskt när rätt PIN/lösenord har angivits</string>
@@ -705,6 +709,7 @@
   <string name="status_bar_show_weather_summary">Visa vädret över snabbinställningspanelen</string>
   <string name="qs_category_title">Snabbinställningspanel</string>
   <string name="qs_brightness_slider_title">Visa reglage för ljusstyrka</string>
+  <string name="qs_hide_tiles_with_sensitive_data">Dölj känsliga brickor när skärmen är låst</string>
   <string name="qs_order_title">Välj och ordna brickor</string>
   <string name="add_qs">Lägg till en ny bricka</string>
   <string name="qs_action_delete">Radera</string>
@@ -824,6 +829,7 @@
   <string name="interruptions_ignore_while_media_title">Undvik ljuddämpning</string>
   <string name="interruptions_ignore_while_media_summary">Minska inte ljudstyrkan för media när en avisering tas emot</string>
   <string name="none_is_silent_title">Stäng aldrig av larm</string>
+  <string name="none_is_silent_summary_on">Larm ignoreras inte i tyst läge</string>
   <string name="none_is_silent_summary_off">Larm ignoreras i tyst läge</string>
   <string name="allow_lights_title">Tillåt aviseringsljus</string>
   <string name="live_display_summary">Optimera din skärm baserad på dygnets tidpunkt och omgivande förhållanden för att förbättra läsbarhet och minska belastningen på ögonen</string>
@@ -843,9 +849,13 @@
   <string name="live_display_color_profile_standard_title">Standard</string>
   <string name="live_display_color_profile_standard_summary">Exakta färger och kritvitt</string>
   <string name="live_display_color_profile_natural_title">Naturlig</string>
+  <string name="live_display_color_profile_natural_summary">Realistiska färger och hudnära toner</string>
   <string name="live_display_color_profile_dynamic_title">Dynamisk</string>
+  <string name="live_display_color_profile_dynamic_summary">Förbättrade färger och kritvitt</string>
   <string name="live_display_color_profile_cinema_title">Biograf</string>
+  <string name="live_display_color_profile_cinema_summary">Perfekt färgåtergivning för media</string>
   <string name="live_display_color_profile_astronomy_title">Astronomi</string>
+  <string name="live_display_color_profile_astronomy_summary">Djupt röd för att bevara mörkerseendet</string>
   <string name="live_display_color_profile_basic_title">Grundläggande</string>
   <string name="live_display_color_profile_basic_summary">Använd skärmen okalibrerad</string>
   <string name="battery_saver_threshold">Batterisparningströskel</string>
@@ -894,7 +904,9 @@ inkluderar en unik identifikation,
   <string name="factory_reset_warning_text_reset_now">ÅTERSTÄLL NU</string>
   <string name="factory_reset_warning_text_message">Alla dina konton, appar, appdata och systeminställningar kommer tas bort från denna enhet. Detta kan inte ångras.</string>
   <string name="wifi_show_all">Visa alla</string>
+  <string name="wifi_show_protected">Visa skyddade nätverk</string>
   <string name="wifi_show_open">Visa öppna nätverk</string>
+  <string name="wifi_empty_list_protected">Inga skyddade Wi\u2011Fi nätverk</string>
   <string name="wifi_empty_list_open">Inga öppna Wi\u2011Fi nätverk</string>
   <string name="wifi_setting_countrycode_title">Wi\u2011Fi-regionskod</string>
   <string name="wifi_setting_countrycode_summary">Ange regionskoden för Wi\u2011Fi</string>
@@ -921,12 +933,15 @@ inkluderar en unik identifikation,
   <string name="fingerprint_dialog_title_rename">Redigera fingeravtryck</string>
   <string name="fingerprint_dialog_name_label">Fingeravtrycksnamn</string>
   <string name="fingerprint_dialog_title_max_fingers_reached">Maximalt antal fingeravtryck uppnått</string>
+  <string name="fingerprint_dialog_msg_max_fingers_reached">Du kan bara registrera <xliff:g id="finger" example="5">%d</xliff:g> fingeravtryck. Ta bort ett befintlig fingeravtryck.</string>
+  <string name="fingerprint_title_manage_fingerprints"><xliff:g id="finger">%d</xliff:g> av <xliff:g id="max">%d</xliff:g> fingeravtryck registrerade</string>
   <string name="manage_fingerprints_description">Med fingeravtryck kan du snabbt låsa upp telefonen och ta bilder.</string>
   <string name="fingerprint_enrollment_introduction_title">Hitta din avläsare</string>
   <string name="fingerprint_enrollment_introduction_instructions">Fingertrycksavläsare är placerad på fram- eller baksidan av din telefon.</string>
   <string name="fingerprint_enrollment_scan_title">Håll i 3 sekunder</string>
   <string name="fingerprint_enrollment_scan_instructions">Placera ditt indexfinger på fingeravtrycksavläsaren för att börja konfigurering. Lyft ditt finger när du känner en vibration.</string>
   <string name="fingerprint_enrollment_error_title_wrong_sensor">Försök igen</string>
+  <string name="fingerprint_enrollment_error_message">Placera ditt finger med ett stadigt tryck på fingeravtrycksavläsaren för att säkerställa en korrekt inskanning. Säkerställ också att du använder samma finger som tidigare. Lyft fingret när du känner en vibration.</string>
   <string name="fingerprint_enrollment_scan_instructions">Placera ditt indexfinger på fingeravtrycksavläsaren för att börja konfigurering. Lyft ditt finger när du känner en vibration.</string>
   <string name="fingerprint_enrollment_break_title">Fortsätt med nuvarande grepp</string>
   <string name="fingerprint_enrollment_break_instructions">Fortsätt för att fånga kanterna av ditt avtryck. Lyft fingret när du känner en vibration.</string>

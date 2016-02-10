@@ -35,7 +35,7 @@
   <string name="ring_mode_normal">Normal</string>
   <string name="ring_mode_vibrate">Vibrează</string>
   <string name="ring_mode_mute">Mut</string>
-  <string name="profiles_settings_title">Profile de sistem</string>
+  <string name="profiles_settings_title">Profiluri de sistem</string>
   <string name="profiles_add">Adăugare</string>
   <string name="profile_settings_title">Profil</string>
   <string name="profile_empty_list_profiles_off">Pentru a configura și folosi sistemul de profiluri, activați profilurile.</string>
@@ -84,6 +84,7 @@
   <string name="profile_choose_app">Alegeți aplicația</string>
   <string name="profile_system_settings_title">Setari sistem</string>
   <string name="profile_lockmode_title">Modul blocare ecran</string>
+  <string name="profile_lockmode_policy_disabled_summary">Opțiunea aceasta de profil este dezactivată de politica unui administrator al dispozitivului</string>
   <string name="profile_lockmode_insecure_summary">Nu cere codul PIN sau parola</string>
   <string name="profile_lockmode_disabled_summary">Dezactivare blocare ecran</string>
   <string name="profile_airplanemode_title">Modul avion</string>
@@ -129,7 +130,7 @@
   <string name="volbtn_cursor_control_on">Volum sus/jos mută cursorul stânga/dreapta</string>
   <string name="volbtn_cursor_control_on_reverse">Volum sus/jos mută cursorul dreapta/stânga</string>
   <string name="swap_volume_buttons_title">Reorientare</string>
-  <string name="swap_volume_buttons_summary">Schimba butoanele de volum atunci când ecranul este rotit</string>
+  <string name="swap_volume_buttons_summary">Schimbă butoanele de volum atunci când ecranul este rotit</string>
   <string name="power_end_call_title">Terminare apel</string>
   <string name="power_end_call_summary">Apăsarea butonului de pornire va termina apelul curent</string>
   <string name="home_answer_call_title">Răspundere apel</string>
@@ -153,7 +154,7 @@
   <string name="power_menu_lockdown_title">Blocare dispozitiv</string>
   <string name="power_menu_bug_report_title">Raport de eroare</string>
   <string name="power_menu_sound_title">Panou sunet</string>
-  <string name="power_menu_profiles_disabled">Profilele de sistem sunt dezactivate</string>
+  <string name="power_menu_profiles_disabled">Profilurile de sistem sunt dezactivate</string>
   <string name="adaptive_backlight_title">Lumină de fundal adaptivă</string>
   <string name="adaptive_backlight_summary">Ajustează luminozitatea ecranului în mod dinamic pentru a mări durata bateriei fără a afecta performanța</string>
   <string name="sunlight_enhancement_title">Îmbunătățire la lumina soarelui</string>
@@ -357,7 +358,7 @@
   <string name="app_ops_summaries_receive_sms">primește SMS</string>
   <string name="app_ops_summaries_receive_emergency_sms">primește SMS de urgență</string>
   <string name="app_ops_summaries_receive_mms">primește MMS</string>
-  <string name="app_ops_summaries_receive_wap_push">primește apăsare WAP</string>
+  <string name="app_ops_summaries_receive_wap_push">primește transmisii WAP</string>
   <string name="app_ops_summaries_send_sms">trimite SMS</string>
   <string name="app_ops_summaries_read_icc_sms">citește ICC SMS</string>
   <string name="app_ops_summaries_write_icc_sms">scrie ICC SMS</string>
@@ -465,6 +466,8 @@
   <string name="profile_menu_delete_title">Ștergeți</string>
   <string name="profile_action_none">Lasă neschimbat</string>
   <string name="profile_action_system">Implicit sistem</string>
+  <string name="profile_action_disable">Oprire</string>
+  <string name="profile_action_enable">Activare</string>
   <string name="profile_trigger_a2dp_connect">La conectarea A2DP</string>
   <string name="profile_trigger_a2dp_disconnect">La deconectarea A2DP</string>
   <string name="profile_tabs_wifi">Wi\u2011Fi</string>
@@ -484,6 +487,10 @@
   <string name="profile_appgroup_name_title">Nume</string>
   <string name="duplicate_appgroup_name">Nume de grup aplicație duplicat!</string>
   <string name="profile_app_delete_confirm">Eliminați această aplicație?</string>
+  <string name="sound_mode">Mod notificare</string>
+  <string name="choose_soundtone">Alegeți tonul de notificare</string>
+  <string name="choose_ringtone">Alegeți tonul de apel</string>
+  <string name="soundtone_title">Tonul de notificare</string>
   <string name="no_bluetooth_triggers">Niciun dispozitiv Bluetooth conectat. \nApăsați pentru conectarea aparatului Bluetooth înainte de configurarea declanșatorilor.</string>
   <string name="no_wifi_triggers">Niciun punct de acces Wi\u2011Fi configurat. \nApăsați pentru a conecta Wi\u2011Fi înainte de configurarea declanșatorilor.</string>
   <string name="no_triggers_configured">Niciun declanșator configurat. Atingeți pentru a adăuga suplimentar.</string>
@@ -500,6 +507,7 @@
   <string name="app_ops_reset_confirm_title">Confirmare resetare contoare</string>
   <string name="app_ops_reset_confirm_mesg">Sunteți sigur că doriți să resetați contoarele?</string>
   <string name="font_size_sample">Exemplu</string>
+  <string name="volume_adjust_sounds_title">Sunet ajustare volum</string>
   <string name="vibrator_intensity_title">Intensitate vibrare</string>
   <string name="vibrator_warning">Valorile mai mari de %1$d nu sunt recomandate</string>
   <string name="color_calibration_title">Calibrare culoare</string>
@@ -602,6 +610,7 @@
   <string name="usb_charging_title">Doar încărcare</string>
   <string name="usb_charging_summary">Dezactivează toate transferurile de date cu computerul și încarcă bateria prin portul USB</string>
   <string name="usb_sdcard_title">Spațiul de stocare (UMS)</string>
+  <string name="usb_sdcard_summary">Vă permite să transferați orice fișier între calculatorul dvs și cardul SD prin montarea ca un dispozitiv flash</string>
   <string name="usb_not_connected">USB este acum deconectat</string>
   <string name="stats_collection_title">Colectarea de statistici</string>
   <string name="power_notifications_category_title">Sunete de încărcare</string>
@@ -618,6 +627,7 @@
   <string name="select_custom_app_title">Selectați aplicație personalizată</string>
   <string name="select_custom_activity_title">Selectați activitate personalizată</string>
   <string name="autoperf_title">Activează profiluri per-aplicație</string>
+  <string name="perf_profile_title">Mod baterie</string>
   <string name="pref_force_highend_gfx_title">Forțeazâ grafică de calitate superioară</string>
   <string name="pref_force_highend_gfx_summary">Permite efecte vizuale de calitate înaltă, cum ar fi transparența barei de stare/navigare (necesită repornire sistem)</string>
   <string name="edge_gesture_service_title">Blochează evenimentele la gesturile de atingere</string>
@@ -660,7 +670,8 @@
   <string name="qs_tile_cast_screen">Partajare ecran</string>
   <string name="qs_tile_hotspot">Hotspot</string>
   <string name="qs_tile_adb_over_network">ADB prin rețea</string>
-  <string name="qs_tile_profiles">Profile de sistem</string>
+  <string name="qs_tile_profiles">Profiluri de sistem</string>
+  <string name="qs_tile_performance">Mod baterie</string>
   <string name="qs_tile_nfc">NFC</string>
   <string name="qs_tile_compass">Busolă</string>
   <string name="qs_tile_lockscreen">Ecran de blocare</string>
@@ -761,11 +772,16 @@
   <string name="live_display_outdoor_mode_summary">Crește luminozitatea și saturația automat în lumina strălucitoare a soarelui</string>
   <string name="live_display_enhance_color_title">Sporește culorile</string>
   <string name="live_display_enhance_color_summary">Îmbunătățește dinamica culorilor pentru tonuri, peisaje și alte imagini</string>
+  <string name="live_display_color_profile_title">Profilul culorii</string>
   <string name="live_display_color_profile_standard_title">Standard</string>
+  <string name="live_display_color_profile_standard_summary">Culori precise și alb luminos</string>
   <string name="live_display_color_profile_natural_title">Natural</string>
   <string name="live_display_color_profile_dynamic_title">Dinamic</string>
+  <string name="live_display_color_profile_dynamic_summary">Culori îmbunătățite și alb luminos</string>
   <string name="live_display_color_profile_cinema_title">Cinema</string>
   <string name="live_display_color_profile_astronomy_title">Astronomie</string>
+  <string name="live_display_color_profile_basic_summary">Utilizează ecranul necalibrat</string>
+  <string name="battery_saver_summary">Reduce performanța și limitează traficul de date în fundal</string>
   <string name="battery_saver_summary_unavailable">Nu este disponibil în timpul încărcării</string>
   <string name="anonymous_statistics_title">Statistici CyanogenMod</string>
   <string name="anonymous_statistics_summary">Ajută-ne să facem CyanogenMod mai bun prin trimiterea de rapoarte anonime cu statistici</string>
@@ -818,6 +834,7 @@
   <string name="fingerprint_manage_fingerprints">Gestionare amprente digitale</string>
   <string name="fingerprint_dialog_title_rename">Editare amprentă</string>
   <string name="fingerprint_dialog_name_label">Nume amprentă</string>
+  <string name="fingerprint_enrollment_introduction_instructions">Senzorul de amprente este situat pe partea din față sau pe spatele telefonului dvs.</string>
   <string name="fingerprint_enrollment_error_title_wrong_sensor">Vă rugăm să încercați din nou</string>
   <string name="fingerprint_enrollment_finished_title">Amprentă adăugată!</string>
   <string name="fingerprint_enrollment_done_label">Efectuat</string>
@@ -827,6 +844,7 @@
   <string name="fingerprint_successful_scan_title_2">Minunat! Din nou</string>
   <string name="fingerprint_successful_scan_title_6">Aproape gata</string>
   <string name="menu_stats_reset">Resetare statistici</string>
+  <string name="reset_stats_msg">Istoricul bateriei va fi resetat</string>
   <string name="battery_info_status_charging_dock_ac">Încărcare în stativ AC</string>
   <string name="battery_info_status_charging_dock_usb">Încărcare prin stativ USB</string>
   <string name="setup_lock_pattern_size_title">Complexitatea modelului</string>
