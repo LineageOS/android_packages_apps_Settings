@@ -67,7 +67,6 @@ import cyanogenmod.profiles.RingModeSettings;
 import cyanogenmod.profiles.StreamSettings;
 
 import com.android.settings.R;
-import com.android.settings.SettingsActivity;
 import com.android.settings.SubSettings;
 import com.android.settings.cyanogenmod.DeviceUtils;
 import com.android.settings.SettingsPreferenceFragment;
@@ -87,6 +86,7 @@ import com.android.settings.profiles.actions.item.RingModeItem;
 import com.android.settings.profiles.actions.item.TriggerItem;
 import com.android.settings.profiles.actions.item.VolumeStreamItem;
 import com.android.settings.Utils;
+import com.android.settings.utils.TelephonyUtils;
 import org.cyanogenmod.internal.logging.CMMetricsLogger;
 
 import java.util.ArrayList;
@@ -100,13 +100,15 @@ import static cyanogenmod.profiles.ConnectionSettings.PROFILE_CONNECTION_NFC;
 import static cyanogenmod.profiles.ConnectionSettings.PROFILE_CONNECTION_SYNC;
 import static cyanogenmod.profiles.ConnectionSettings.PROFILE_CONNECTION_WIFI;
 import static cyanogenmod.profiles.ConnectionSettings.PROFILE_CONNECTION_WIFIAP;
-import static cyanogenmod.profiles.ConnectionSettings.PROFILE_CONNECTION_WIMAX;
 
 public class SetupActionsFragment extends SettingsPreferenceFragment
         implements AdapterView.OnItemClickListener {
 
     private static final int RINGTONE_REQUEST_CODE = 1000;
     private static final int NEW_TRIGGER_REQUEST_CODE = 1001;
+    private static final int SET_NETWORK_MODE_REQUEST_CODE = 1002;
+
+    public static final String EXTRA_NETWORK_MODE_PICKED = "network_mode_picker::chosen_value";
 
     private static final int MENU_REMOVE = Menu.FIRST;
     private static final int MENU_FILL_PROFILE = Menu.FIRST + 1;
@@ -543,11 +545,7 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
 
             case DIALOG_CONNECTION_OVERRIDE:
                 ConnectionOverrideItem connItem = (ConnectionOverrideItem) mSelectedItem;
-                if (connItem.getConnectionType() == ConnectionSettings.PROFILE_CONNECTION_2G3G4G) {
-                    return requestMobileConnectionOverrideDialog(connItem.getSettings());
-                } else {
-                    return requestConnectionOverrideDialog(connItem.getSettings());
-                }
+                return requestConnectionOverrideDialog(connItem.getSettings());
 
             case DIALOG_VOLUME_STREAM:
                 VolumeStreamItem volumeItem = (VolumeStreamItem) mSelectedItem;
@@ -744,6 +742,26 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
         if (requestCode == NEW_TRIGGER_REQUEST_CODE) {
             mProfile = mProfileManager.getProfile(mProfile.getUuid());
             rebuildItemList();
+
+        } else if (requestCode == SET_NETWORK_MODE_REQUEST_CODE
+                && resultCode == Activity.RESULT_OK) {
+
+            int selectedMode = Integer.parseInt(data.getStringExtra(
+                    TelephonyUtils.EXTRA_NETWORK_PICKER_PICKED_VALUE));
+            final ConnectionSettings setting =
+                    mProfile.getSettingsForConnection(PROFILE_CONNECTION_2G3G4G);
+
+            switch (selectedMode) {
+                case ConnectionOverrideItem.CM_MODE_SYSTEM_DEFAULT:
+                    setting.setOverride(false);
+                    break;
+                default:
+                    setting.setOverride(true);
+                    setting.setValue(selectedMode);
+            }
+            mProfile.setConnectionSettings(setting);
+            mAdapter.notifyDataSetChanged();
+            updateProfile();
         }
     }
 
@@ -802,6 +820,9 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
         if (setting == null) {
             throw new UnsupportedOperationException("connection setting cannot be null");
         }
+        if (setting.getConnectionId() == PROFILE_CONNECTION_2G3G4G) {
+            throw new UnsupportedOperationException("dialog must be requested from Telephony");
+        }
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         final String[] connectionNames =
                 getResources().getStringArray(R.array.profile_action_generic_connection_entries);
@@ -832,73 +853,6 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
                                 setting.setOverride(true);
                                 setting.setValue(1);
                                 break;
-                        }
-                        mProfile.setConnectionSettings(setting);
-                        mAdapter.notifyDataSetChanged();
-                        updateProfile();
-                        dialog.dismiss();
-                    }
-                });
-
-        builder.setNegativeButton(android.R.string.cancel, null);
-        return builder.create();
-    }
-
-    private AlertDialog requestMobileConnectionOverrideDialog(final ConnectionSettings setting) {
-        if (setting == null) {
-            throw new UnsupportedOperationException("connection setting cannot be null");
-        }
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        boolean allow2g = true;
-
-        // config_prefer_2g in p/s/Telephony
-        // if false, 2g is not available.
-        try {
-            final Context telephonyContext = getActivity()
-                    .createPackageContext("com.android.phone", 0);
-            if (telephonyContext != null) {
-                int identifier = telephonyContext.getResources().getIdentifier("config_prefer_2g",
-                        "bool", telephonyContext.getPackageName());
-                if (identifier > 0) {
-                    allow2g = telephonyContext.getResources().getBoolean(identifier);
-                    android.util.Log.e("ro", "allow2g: " + allow2g);
-                }
-            }
-        } catch (PackageManager.NameNotFoundException e) {
-            // hmmm....
-        }
-
-        final String[] connectionNames =
-                getResources().getStringArray(allow2g ? R.array.profile_networkmode_entries_4g
-                        : R.array.profile_networkmode_entries_no_2g);
-        final String[] connectionValues =
-                getResources().getStringArray(allow2g ? R.array.profile_networkmode_values_4g
-                        : R.array.profile_networkmode_values_no_2g);
-
-        int defaultIndex = connectionValues.length - 1; // no action is the last
-        if (setting.isOverride()) {
-            // need to match the value
-            final int value = setting.getValue();
-            for (int i = 0; i < connectionValues.length; i++) {
-                if (Integer.parseInt(connectionValues[i]) == value) {
-                    defaultIndex = i;
-                    break;
-                }
-            }
-        }
-
-        builder.setTitle(ConnectionOverrideItem.getConnectionTitle(setting.getConnectionId()));
-        builder.setSingleChoiceItems(connectionNames, defaultIndex,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int item) {
-                        switch (item) {
-                            case ConnectionOverrideItem.CM_MODE_UNCHANGED:
-                                setting.setOverride(false);
-                                break;
-                            default:
-                                setting.setOverride(true);
-                                setting.setValue(Integer.parseInt(connectionValues[item]));
                         }
                         mProfile.setConnectionSettings(setting);
                         mAdapter.notifyDataSetChanged();
@@ -1133,7 +1087,20 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
         } else if (itemAtPosition instanceof RingModeItem) {
             showDialog(DIALOG_RING_MODE);
         } else if (itemAtPosition instanceof ConnectionOverrideItem) {
-            showDialog(DIALOG_CONNECTION_OVERRIDE);
+
+            ConnectionOverrideItem connItem = (ConnectionOverrideItem) mSelectedItem;
+            if (connItem.getConnectionType() == ConnectionSettings.PROFILE_CONNECTION_2G3G4G) {
+                final Intent intent = new Intent(TelephonyUtils.ACTION_PICK_NETWORK_MODE);
+                intent.putExtra(TelephonyUtils.EXTRA_NONE_TEXT,
+                        getString(R.string.profile_action_none));
+                intent.putExtra(TelephonyUtils.EXTRA_SHOW_NONE, true);
+                intent.putExtra(TelephonyUtils.EXTRA_INITIAL_NETWORK_VALUE,
+                        connItem.getSettings().isOverride()
+                                ? connItem.getSettings().getValue() : -1);
+                startActivityForResult(intent, SET_NETWORK_MODE_REQUEST_CODE);
+            } else {
+                showDialog(DIALOG_CONNECTION_OVERRIDE);
+            }
         } else if (itemAtPosition instanceof VolumeStreamItem) {
             showDialog(DIALOG_VOLUME_STREAM);
         } else if (itemAtPosition instanceof ProfileNameItem) {
