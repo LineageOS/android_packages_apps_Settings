@@ -69,7 +69,6 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
 
     private static final String KEY_DIAL_PAD_TONES = "dial_pad_tones";
     private static final String KEY_SCREEN_LOCKING_SOUNDS = "screen_locking_sounds";
-    private static final String KEY_CHARGING_SOUNDS = "charging_sounds";
     private static final String KEY_DOCKING_SOUNDS = "docking_sounds";
     private static final String KEY_VOLUME_ADJUST_SOUNDS = "volume_adjust_sounds";
     private static final String KEY_TOUCH_SOUNDS = "touch_sounds";
@@ -100,9 +99,6 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
 
     private static final SettingPref PREF_SCREEN_LOCKING_SOUNDS = new SettingPref(
             TYPE_SYSTEM, KEY_SCREEN_LOCKING_SOUNDS, System.LOCKSCREEN_SOUNDS_ENABLED, DEFAULT_ON);
-
-    private static final SettingPref PREF_CHARGING_SOUNDS = new SettingPref(
-            TYPE_GLOBAL, KEY_CHARGING_SOUNDS, Global.CHARGING_SOUNDS_ENABLED, DEFAULT_ON);
 
     private static final SettingPref PREF_DOCKING_SOUNDS = new SettingPref(
             TYPE_GLOBAL, KEY_DOCKING_SOUNDS, Global.DOCK_SOUNDS_ENABLED, DEFAULT_ON) {
@@ -183,7 +179,6 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
     private static final SettingPref[] PREFS = {
         PREF_DIAL_PAD_TONES,
         PREF_SCREEN_LOCKING_SOUNDS,
-        PREF_CHARGING_SOUNDS,
         PREF_DOCKING_SOUNDS,
         PREF_VOLUME_ADJUST_SOUNDS,
         PREF_TOUCH_SOUNDS,
