@@ -45,8 +45,5 @@ public class BootReceiver extends BroadcastReceiver {
 
         // Extract the contributors database
         ContributorsCloudFragment.extractContributorsCloudDatabase(ctx);
-
-        // start the DataUsage monitoring service
-        DataUsageUtils.enbDataUsageService(ctx, true);
     }
 }

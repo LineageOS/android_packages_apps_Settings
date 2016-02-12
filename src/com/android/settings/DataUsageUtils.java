@@ -9,6 +9,9 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.util.Log;
 
+import cyanogenmod.providers.DataUsageContract;
+
+
 /**
  * This class contains utility helper functions for accessing DataUsageProvider
  */
@@ -24,11 +27,11 @@ public class DataUsageUtils {
 
         ContentValues values = new ContentValues();
 
-        values.put(DataUsageProvider.DATAUSAGE_DB_UID, uid);
-        values.put(DataUsageProvider.DATAUSAGE_DB_LABEL, label);
+        values.put(DataUsageContract.UID, uid);
+        values.put(DataUsageContract.LABEL, label);
 
         context.getContentResolver().insert(
-                DataUsageProvider.CONTENT_URI,
+                DataUsageContract.CONTENT_URI,
                 values
         );
     }
@@ -38,8 +41,8 @@ public class DataUsageUtils {
             Log.v(TAG, "removeApp: uid:" + uid);
         }
         context.getContentResolver().delete(
-                DataUsageProvider.CONTENT_URI,
-                DataUsageProvider.DATAUSAGE_DB_UID + " = ? ",
+                DataUsageContract.CONTENT_URI,
+                DataUsageContract.UID + " = ? ",
                 new String [] { String.valueOf(uid)}
         );
     }
@@ -55,14 +58,15 @@ public class DataUsageUtils {
         }
         ContentValues values = new ContentValues();
 
-        values.put(DataUsageProvider.DATAUSAGE_DB_ENB, enb);
+        values.put(DataUsageContract.ENB, enb);
+        values.put(DataUsageContract.ACTIVE, 0);
         if (label != null) {
-            values.put(DataUsageProvider.DATAUSAGE_DB_LABEL, label);
+            values.put(DataUsageContract.LABEL, label);
         }
         context.getContentResolver().update(
-                DataUsageProvider.CONTENT_URI,
+                DataUsageContract.CONTENT_URI,
                 values,
-                DataUsageProvider.DATAUSAGE_DB_UID + " = ? ",
+                DataUsageContract.UID + " = ? ",
                 new String [] { String.valueOf(uid)}
         );
     }
@@ -70,14 +74,14 @@ public class DataUsageUtils {
     public static boolean getAppEnb(Context context, int uid) {
         boolean appEnb = false;
         Cursor cursor = context.getContentResolver().query(
-                DataUsageProvider.CONTENT_URI,
+                DataUsageContract.CONTENT_URI,
                 null,
-                DataUsageProvider.DATAUSAGE_DB_UID + " = ? ",
+                DataUsageContract.UID + " = ? ",
                 new String [] { String.valueOf(uid) },
                 null
         );
         if (cursor != null && cursor.getCount() > 0 && cursor.moveToFirst()) {
-            int enbValue = cursor.getInt(DataUsageProvider.DATAUSAGE_DB_COLUMN_OF_ENB);
+            int enbValue = cursor.getInt(DataUsageContract.COLUMN_OF_ENB);
             if (enbValue == 1) {
                 appEnb = true;
             }
@@ -95,23 +99,9 @@ public class DataUsageUtils {
     }
 
     public static void enbDataUsageService(Context context, boolean enb) {
-        Intent dataUsageServiceIntent = new Intent(context, DataUsageService.class);
-        PendingIntent alarmIntent = PendingIntent.getService(
-                context, DATAUSAGE_SERVICE_ALARM_ID, dataUsageServiceIntent, 0);
-        AlarmManager alarmManager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
-
-        if (enb) {
-            alarmManager.setRepeating(
-                    AlarmManager.ELAPSED_REALTIME,
-                    DataUsageService.START_DELAY,
-                    DataUsageService.SAMPLE_PERIOD,
-                    alarmIntent
-            );
-        } else {
-            alarmManager.cancel(alarmIntent);
-        }
-        if (DEBUG) {
-            Log.v(TAG, "enbDataUsageService: enb:" + enb);
-        }
+        Intent enbIntent = new Intent();
+        enbIntent.setAction("org.cyanogenmod.providers.datausage.enable");
+        enbIntent.putExtra("enable", enb);
+        context.sendBroadcast(enbIntent);
     }
 }

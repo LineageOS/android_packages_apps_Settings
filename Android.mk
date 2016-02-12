@@ -3,10 +3,10 @@ include $(CLEAR_VARS)
 
 LOCAL_JAVA_LIBRARIES := bouncycastle conscrypt telephony-common ims-common 
 LOCAL_STATIC_JAVA_LIBRARIES := \
+    org.cyanogenmod.platform.sdk \
 	android-support-v4 \
 	android-support-v13 \
 	jsr305 \
-        gson \
 	org.cyanogenmod.platform.internal
 
 LOCAL_MODULE_TAGS := optional

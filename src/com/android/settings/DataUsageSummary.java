@@ -136,7 +136,6 @@ import android.widget.Toast;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.telephony.PhoneConstants;
-import com.android.settings.DataUsageProvider;
 import com.android.settings.DataUsageUtils;
 import com.android.settings.drawable.InsetBoundsDrawable;
 import com.android.settings.net.ChartData;
@@ -222,6 +221,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
     private static final String PREF_FILE = "data_usage";
     private static final String PREF_SHOW_WIFI = "show_wifi";
     private static final String PREF_SHOW_ETHERNET = "show_ethernet";
+    private static final String PREF_ENB_DATA_USAGE_NOTIFY = "enb_data_usage_notify";
 
     private SharedPreferences mPrefs;
 
@@ -526,6 +526,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
         mDataAlertSwitch = new Switch(inflater.getContext());
         mDataAlertSwitch.setClickable(false);
         mDataAlertSwitch.setFocusable(false);
+        mDataAlertSwitch.setChecked(mPrefs.getBoolean(PREF_ENB_DATA_USAGE_NOTIFY, false));
         mDataAlertView = inflatePreference(inflater, mDataAlertLayout, mDataAlertSwitch);
         mDataAlertView.setClickable(true);
         mDataAlertView.setFocusable(true);
@@ -1500,6 +1501,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
         public void onClick(View v) {
             final boolean enableDataAlert = !mDataAlertSwitch.isChecked();
             mDataAlertSwitch.setChecked(enableDataAlert);
+            mPrefs.edit().putBoolean(PREF_ENB_DATA_USAGE_NOTIFY, enableDataAlert).apply();
             DataUsageUtils.enbDataUsageService(getContext(), enableDataAlert);
         }
     };
@@ -1507,8 +1509,25 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
     private View.OnClickListener mResetStatsListner = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            ;//final boolean enableDataAlert = !mDataAlertSwitch.isChecked();
-            //setAppDataAlert(enableDataAlert);
+            // kick off background task to update stats
+            new AsyncTask<Void, Void, Void>() {
+                @Override
+                protected Void doInBackground(Void... params) {
+                    try {
+                        //mStatsService.resetDataUsageHistoryForAllUid(mTemplate);
+                        mPolicyEditor.setPolicyLimitBytes(mTemplate, mPolicyEditor.getPolicyLimitBytes(mTemplate));
+                        mStatsService.forceUpdate();
+                    } catch (RemoteException e) {
+
+                    }
+                    return null;
+                }
+                @Override
+                protected void onPostExecute (Void result){
+                    updateBody();
+                }
+
+            }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         }
     };
 

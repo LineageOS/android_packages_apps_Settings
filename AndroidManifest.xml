@@ -84,8 +84,8 @@
     <uses-permission android:name="cyanogenmod.permission.FINISH_SETUP" />
     <uses-permission android:name="cyanogenmod.permission.MODIFY_PROFILES" />
     <uses-permission android:name="cyanogenmod.permission.PROTECTED_APP" />
-    <uses-permission android:name="android.permission.READ_DATAUSAGE" />
-    <uses-permission android:name="android.permission.WRITE_DATAUSAGE" />
+    <uses-permission android:name="cyanogenmod.permission.READ_DATAUSAGE" />
+    <uses-permission android:name="cyanogenmod.permission.WRITE_DATAUSAGE" />
 
     <application android:label="@string/settings_label"
             android:icon="@mipmap/ic_launcher_settings"
@@ -441,39 +441,6 @@
             android:name=".HotspotOffReceiver" >
             <intent-filter>
                 <action android:name="android.net.wifi.WIFI_AP_STATE_CHANGED" />
-            </intent-filter>
-        </receiver>
-
-        <service android:name=".DataUsageService"
-                 android:label="DataUsageService" >
-        </service>
-
-        <service android:name=".DataUsageAppInstallService"
-                 android:label="DataUsageAppInstallService" >
-        </service>
-
-        <!-- set exported to false to remove access to the provider, needed now by DataUsageDump -->
-        <provider android:name="com.android.settings.DataUsageProvider"
-                  android:authorities="com.android.settings.datausage"
-                  android:exported="true">
-        </provider>
-
-        <receiver android:name=".DataUsageNotificationReceiver">
-            <intent-filter>
-                <action android:name="com.android.settings.data_usage_hide_action"/>
-                <action android:name="com.android.settings.data_usage_disable_action"/>
-            </intent-filter>
-        </receiver>
-
-        <receiver android:name=".DataUsageAppInstallReceiver"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_ADDED" />
-                <action android:name="android.intent.action.PACKAGE_REMOVED" />
-                <action android:name="android.intent.action.PACKAGE_FULLY_REMOVED" />
-                <action android:name="android.intent.action.PACKAGE_CHANGED" />
-                <action android:name="android.intent.action.PACKAGE_REPLACED" />
-                <data android:scheme="package" />
             </intent-filter>
         </receiver>
 
@@ -2348,6 +2315,10 @@
         <activity android:name="Settings$DataUsageSummaryActivity"
                 android:label="@string/data_usage_summary_title"
                 android:taskAffinity="">
+            <intent-filter android:priority="1">
+                <action android:name="cyanogenmod.settings.ACTION_DATA_USAGE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
