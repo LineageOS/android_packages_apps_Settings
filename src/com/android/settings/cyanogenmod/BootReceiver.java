@@ -35,7 +35,7 @@ public class BootReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context ctx, Intent intent) {
         /* Restore the hardware tunable values */
-        ButtonSettings.restoreKeyDisabler(ctx);
+        ButtonSettings.restore(ctx);
         DisplayGamma.restore(ctx);
         VibratorIntensity.restore(ctx);
         InputMethodAndLanguageSettings.restore(ctx);
