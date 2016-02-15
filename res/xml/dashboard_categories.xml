@@ -152,6 +152,16 @@
                 android:icon="@drawable/ic_settings_buttons"
                 />
 
+        <!-- Notification Slider -->
+        <dashboard-tile
+                android:id="@+id/notification_slider"
+                android:icon="@drawable/ic_settings_notification_slider">
+            <intent
+                    android:action="com.cyanogenmod.action.LAUNCH_NOTIFICATION_SLIDER_SETTINGS"
+                    android:targetPackage="com.cyanogenmod.settings.device"
+                    android:targetClass="com.cyanogenmod.settings.device.SliderSettings" />
+        </dashboard-tile>
+
         <!-- O-Click -->
         <dashboard-tile
                 android:id="@+id/oclick"
