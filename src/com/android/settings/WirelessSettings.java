@@ -246,7 +246,7 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
         mButtonWfc = (PreferenceScreen) findPreference(KEY_WFC_SETTINGS);
 
         // Remove NSD checkbox by default
-        if (nsd != null) getPreferenceScreen().removePreference(nsd);
+        getPreferenceScreen().removePreference(nsd);
         //mNsdEnabler = new NsdEnabler(activity, nsd);
 
         String toggleable = Settings.Global.getString(activity.getContentResolver(),
@@ -292,13 +292,11 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
         // Remove NFC if not available
         mNfcAdapter = NfcAdapter.getDefaultAdapter(activity);
         if (mNfcAdapter == null) {
-            if (nfcCategory != null) getPreferenceScreen().removePreference(nfcCategory);
+            getPreferenceScreen().removePreference(nfcCategory);
             mNfcEnabler = null;
         } else if (!mPm.hasSystemFeature(PackageManager.FEATURE_NFC_HOST_CARD_EMULATION)) {
             // Only show if we have the HCE feature
-            if ((nfcCategory != null) && (nfcPayment != null)) {
-                nfcCategory.removePreference(nfcPayment);
-            }
+            nfcCategory.removePreference(nfcPayment);
         }
 
         // Remove Mobile Network Settings and Manage Mobile Plan for secondary users,
@@ -329,7 +327,7 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
         final DevicePolicyManager mDPM = (DevicePolicyManager)
                 activity.getSystemService(Context.DEVICE_POLICY_SERVICE);
         // proxy UI disabled until we have better app support
-        if (mGlobalProxy != null) getPreferenceScreen().removePreference(mGlobalProxy);
+        getPreferenceScreen().removePreference(mGlobalProxy);
         mGlobalProxy.setEnabled(mDPM.getGlobalProxyAdmin() == null);
 
         // Disable Tethering if it's not allowed or if it's a wifi-only device
