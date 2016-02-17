@@ -56,6 +56,7 @@ public class RegulatoryInfoDisplayActivity extends Activity implements
 
         if (!resources.getBoolean(R.bool.config_show_regulatory_info)) {
             finish();   // no regulatory info to display for this device
+            return;
         }
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this)
