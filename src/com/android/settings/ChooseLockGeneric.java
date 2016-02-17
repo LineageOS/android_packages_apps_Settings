@@ -25,9 +25,11 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.PendingIntent;
 import android.app.admin.DevicePolicyManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.pm.UserInfo;
 import android.os.Bundle;
 import android.os.Process;
@@ -558,6 +560,19 @@ public class ChooseLockGeneric extends SettingsActivity {
                 mChooseLockSettingsHelper.utils().clearLock(false);
                 mChooseLockSettingsHelper.utils().setLockScreenDisabled(disabled);
                 maybeShowRedactionInterstitial();
+                if (!disabled) {
+                    // If there is a third party keyguard component set and the lockscreen is
+                    // still enabled (i.e. swipe) then we want to be in PASSWORD_QUALITY_UNSECURED
+                    // mode.  Reapply component to make this happen.
+                    ComponentName cn = mLockPatternUtils.getThirdPartyKeyguardComponent();
+                    if (cn != null) {
+                        try {
+                            mLockPatternUtils.setThirdPartyKeyguard(cn);
+                        } catch (PackageManager.NameNotFoundException | SecurityException e) {
+                            Log.w(TAG, "Failed to reset third party keyguard: " + cn, e);
+                        }
+                    }
+                }
                 getActivity().setResult(Activity.RESULT_OK);
                 finish();
             } else {
