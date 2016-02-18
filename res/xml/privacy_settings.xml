@@ -50,6 +50,14 @@
         android:enabled="false"
         android:selectable="false" />
 
+    <!-- Settings reset -->
+    <PreferenceScreen
+        android:key="settings_reset"
+        android:title="@string/reset_settings_title"
+        android:summary="@string/reset_settings_summary"
+        settings:keywords="@string/keywords_settings_reset"
+        android:fragment="com.android.settings.FeaturePreferences" />
+
     <!-- Factory reset -->
     <com.android.settingslib.RestrictedPreference
         android:key="factory_reset"
