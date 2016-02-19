@@ -193,7 +193,7 @@
   <string name="saving_protected_components">Se salvează starea componentei\u2026</string>
   <string name="pa_login_username_hint">Nume de utilizator (email)</string>
   <string name="pa_login_password_hint">Parola</string>
-  <string name="pa_login_submit_button">Autentifică-te</string>
+  <string name="pa_login_submit_button">Autentificare</string>
   <string name="pa_login_checking_password">Verificarea contului\u2026</string>
   <string name="pa_login_incorrect_login">Autentificarea a fost incorectă</string>
   <string name="display_rotation_title">Rotație</string>
@@ -314,7 +314,7 @@
   <string name="battery_light_title">Lumină baterie</string>
   <string name="battery_low_pulse_title">Pulsează dacă bateria este slabă</string>
   <string name="battery_light_list_title">Culori</string>
-  <string name="battery_light_low_color_title">Baterie slabă</string>
+  <string name="battery_light_low_color_title">Baterie descărcată</string>
   <string name="battery_light_medium_color_title">Se încarcă</string>
   <string name="battery_light_full_color_title">Încărcare completă</string>
   <string name="notification_light_title">Lumină de notificare</string>
@@ -653,12 +653,12 @@
   <string name="status_bar_show_weather_summary">Arată vremea deasupra panoului de Setări Rapide</string>
   <string name="qs_category_title">Panoul Setări Rapide</string>
   <string name="qs_brightness_slider_title">Arată glisorul de luminozitate</string>
-  <string name="qs_hide_tiles_with_sensitive_data">Ascunde plăcuțele cu informații private când este blocat</string>
-  <string name="qs_order_title">Selectați și organizați plăcuțele</string>
-  <string name="add_qs">Adaugă o plăcuță nouă</string>
+  <string name="qs_hide_tiles_with_sensitive_data">Ascunde chenarele cu informații private când este blocat</string>
+  <string name="qs_order_title">Selectați și organizați chenarele</string>
+  <string name="add_qs">Adaugă un chenar nou</string>
   <string name="qs_action_delete">Ștergeți</string>
   <string name="qs_action_add">Adăugare</string>
-  <string name="qs_action_no_more_tiles">Nu mai sunt plăcuțe disponibile</string>
+  <string name="qs_action_no_more_tiles">Nu mai sunt chenare disponibile</string>
   <string name="qs_tile_wifi">Wi\u2011Fi</string>
   <string name="qs_tile_bluetooth">Bluetooth</string>
   <string name="qs_tile_display_inversion">Inversiune de culoare</string>
@@ -677,16 +677,18 @@
   <string name="qs_tile_lockscreen">Ecran de blocare</string>
   <string name="qs_tile_lte">4G</string>
   <string name="qs_tile_volume_panel">Panou volum</string>
+  <string name="qs_tile_screen_timeout">Timpul de expirare ecran</string>
   <string name="qs_tile_usb_tether">Tethering USB</string>
   <string name="qs_tile_heads_up">Atenționare</string>
   <string name="qs_tile_ambient_display">Afișare ambientală</string>
   <string name="qs_tile_sync">Sincronizare</string>
+  <string name="qs_tile_battery_saver">Economizor baterie</string>
   <string name="qs_dynamic_tile_next_alarm">Următoarea alarmă</string>
   <string name="qs_dynamic_tile_ime_selector">Selector IME</string>
   <string name="qs_dynamic_tile_su">Acces root</string>
   <string name="qs_main_tiles_title">Mărire primul rând</string>
-  <string name="qs_main_tiles_summary_on">Două plăcuțe principale pe primul rând</string>
-  <string name="qs_main_tiles_summary_off">Trei plăcuțe pe fiecare rând</string>
+  <string name="qs_main_tiles_summary_on">Două chenare principale pe primul rând</string>
+  <string name="qs_main_tiles_summary_off">Trei chenare pe fiecare rând</string>
   <string name="qs_advanced_location_title">Setări avansate locație</string>
   <string name="qs_advanced_location_summary">Permite setări avansate de locație în setările rapide</string>
   <string name="sim_no_number_set">Niciun număr atribuit</string>
@@ -838,6 +840,7 @@
   <string name="fingerprint_enrollment_error_title_wrong_sensor">Vă rugăm să încercați din nou</string>
   <string name="fingerprint_enrollment_finished_title">Amprentă adăugată!</string>
   <string name="fingerprint_enrollment_done_label">Efectuat</string>
+  <string name="fingerprint_dialog_msg_wrong_sensor">Folosiți senzorul de amprente de pe fața sau spatele telefonului</string>
   <string name="fingerprint_dialog_title_failed_enrollment">Nu se poate citi amprenta</string>
   <string name="fingerprint_enrollment_restart_label">Repornire</string>
   <string name="fingerprint_successful_scan_title_first">Perfect! Acum repetă</string>
@@ -866,4 +869,5 @@
         <![CDATA[<b>Total colaboratori:</b> <xliff:g id="total_contributors">%1$s</xliff:g><br/><br/>
                  <b>Total contribuții:</b> <xliff:g id="total_commits">%2$s</xliff:g><br/><br/>
                  <b>Ultima actualizare:</b> <xliff:g id="date">%3$s</xliff:g>]]></string>
+  <string name="quick_settings_reset_message">Resetare chenarele de setări rapide?</string>
 </resources>
