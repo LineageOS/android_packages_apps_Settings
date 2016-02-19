@@ -21,10 +21,12 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.graphics.PorterDuff;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.storage.DiskInfo;
@@ -63,15 +65,17 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
     private static final String TAG_VOLUME_UNMOUNTED = "volume_unmounted";
     private static final String TAG_DISK_INIT = "disk_init";
 
-    static final int COLOR_PUBLIC = Color.parseColor("#ff9e9e9e");
-    static final int COLOR_WARNING = Color.parseColor("#fff4511e");
+    Resources res = getContext().getResources();
+
+    static final int COLOR_PUBLIC = Color.(context.getColor(R.color.storage_summary_color_grey));
+    static final int COLOR_WARNING = Color.(context.getColor(R.color.storage_summary_color_red));
 
     static final int[] COLOR_PRIVATE = new int[] {
-            Color.parseColor("#ff26a69a"),
-            Color.parseColor("#ffab47bc"),
-            Color.parseColor("#fff2a600"),
-            Color.parseColor("#ffec407a"),
-            Color.parseColor("#ffc0ca33"),
+            Color.(context.getColor(R.color.storage_summary_color_teal)),
+            Color.(context.getColor(R.color.storage_summary_color_purple)),
+            Color.(context.getColor(R.color.storage_summary_color_orange)),
+            Color.(context.getColor(R.color.storage_summary_color_pink)),
+            Color.(context.getColor(R.color.storage_summary_color_green)),
     };
 
     private StorageManager mStorageManager;
@@ -169,7 +173,7 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
                 // TODO: add actual storage type to record
                 final Drawable icon = context.getDrawable(R.drawable.ic_sim_sd);
                 icon.mutate();
-                icon.setTint(COLOR_PUBLIC);
+                icon.setTint(COLOR_PUBLIC); PorterDuff.Mode.SRC_ATOP);
 
                 final Preference pref = new Preference(context);
                 pref.setKey(rec.getFsUuid());
