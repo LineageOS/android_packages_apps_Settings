@@ -18,8 +18,10 @@ package com.android.settings.deviceinfo;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.graphics.PorterDuff;
 import android.os.storage.StorageManager;
 import android.os.storage.VolumeInfo;
 import android.preference.Preference;
@@ -77,7 +79,7 @@ public class StorageVolumePreference extends Preference {
             mUsedPercent = (int) ((usedBytes * 100) / totalBytes);
 
             if (freeBytes < mStorageManager.getStorageLowBytes(path)) {
-                mColor = StorageSettings.COLOR_WARNING;
+                mColor = context.getColor(R.color.storage_volume_color_warning);
                 icon = context.getDrawable(R.drawable.ic_warning_24dp);
             }
 
@@ -88,6 +90,7 @@ public class StorageVolumePreference extends Preference {
 
         icon.mutate();
         icon.setTint(mColor);
+        icon.setTintMode(PorterDuff.Mode.SRC_ATOP);
         setIcon(icon);
 
         if (volume.getType() == VolumeInfo.TYPE_PUBLIC
@@ -99,9 +102,12 @@ public class StorageVolumePreference extends Preference {
 
     @Override
     protected void onBindView(View view) {
+
         final ImageView unmount = (ImageView) view.findViewById(R.id.unmount);
+
         if (unmount != null) {
-            unmount.setImageTintList(ColorStateList.valueOf(Color.parseColor("#8a000000")));
+            unmount.setImageTintList(ColorStateList.valueOf(
+                    getContext().getColor(R.color.eject_icon_tint_color)));
             unmount.setOnClickListener(mUnmountListener);
         }
 
