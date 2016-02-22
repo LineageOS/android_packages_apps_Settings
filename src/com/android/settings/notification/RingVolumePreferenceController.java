@@ -32,6 +32,7 @@ import android.os.Vibrator;
 import android.util.Log;
 
 import com.android.internal.annotations.VisibleForTesting;
+import com.android.settings.R;
 import com.android.settings.Utils;
 import com.android.settings.notification.VolumeSeekBarPreference.Callback;
 import com.android.settingslib.core.lifecycle.Lifecycle;
@@ -131,7 +132,7 @@ public class RingVolumePreferenceController extends VolumeSeekBarPreferenceContr
                 ? com.android.internal.R.drawable.ic_audio_ring_notif_mute
                 : mRingerMode == AudioManager.RINGER_MODE_VIBRATE || wasRingerModeVibrate()
                     ? com.android.internal.R.drawable.ic_audio_ring_notif_vibrate
-                    : com.android.internal.R.drawable.ic_audio_ring_notif);
+                    : R.drawable.ic_audio_ring);
         }
     }
 
