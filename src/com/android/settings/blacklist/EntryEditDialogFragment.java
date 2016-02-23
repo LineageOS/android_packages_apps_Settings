@@ -132,7 +132,10 @@ public class EntryEditDialogFragment extends DialogFragment
 
     private void onDeleteConfirmResult(boolean confirmed) {
         if (confirmed) {
-            Uri uri = ContentUris.withAppendedId(Blacklist.CONTENT_URI, getEntryId());
+            String number = mEditText.getText().toString();
+            Uri uri = Uri.withAppendedPath(Blacklist.CONTENT_URI, "/bynumber");
+            uri = Uri.withAppendedPath(uri, number);
+
             getActivity().getContentResolver().delete(uri, null, null);
             dismiss();
         }
