@@ -778,6 +778,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     if (!Utils.isDozeAvailable(context)) {
                         result.add(KEY_DOZE);
                     }
+                    if (!context.getResources().getBoolean(
+                                 com.android.internal.R.bool.config_enableWifiDisplay) &&
+                            (SystemProperties.getInt(FORCE_WIFI_DISPLAY_ENABLE, -1) != 1)) {
+                        result.add(KEY_WIFI_DISPLAY);
+                    }
                     return result;
                 }
             };
