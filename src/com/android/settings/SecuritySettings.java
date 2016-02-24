@@ -87,6 +87,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
     protected static final String FILTER_TYPE_EXTRA = "filter_type";
     protected static final int TYPE_LOCKSCREEN_EXTRA = 0;
     private static final int TYPE_SECURITY_EXTRA = 1;
+    private static final int TYPE_CTS_VERIFIER = 2;
 
     // Lock Settings
     private static final String KEY_UNLOCK_SET_OR_CHANGE = "unlock_set_or_change";
@@ -177,6 +178,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String callingPackage = getActivity().getCallingPackage();
 
         // Ugly hack for legacy shortcuts :'(
         Intent intent = getActivity().getIntent();
@@ -189,6 +191,11 @@ public class SecuritySettings extends SettingsPreferenceFragment
             if (bundle != null) {
                 mFilterType = bundle.getInt(FILTER_TYPE_EXTRA, TYPE_SECURITY_EXTRA);
             }
+        }
+
+        // Even uglier hack to make cts verifier expectations make sense.
+        if (TextUtils.equals(callingPackage, "com.android.cts.verifier")) {
+            mFilterType = TYPE_CTS_VERIFIER;
         }
 
         mSubscriptionManager = SubscriptionManager.from(getActivity());
@@ -263,7 +270,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
             root.addPreference(mLockscreenDisabledPreference);
         }
 
-        if (mFilterType == TYPE_LOCKSCREEN_EXTRA) {
+        if (mFilterType == TYPE_LOCKSCREEN_EXTRA || mFilterType == TYPE_CTS_VERIFIER ) {
             // Add options for lock/unlock screen
             final int resid = getResIdForLockUnlockScreen(getActivity(), mLockPatternUtils);
             addPreferencesFromResource(resid);
@@ -280,7 +287,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
             }
         }
 
-        if (mIsPrimary && mFilterType == TYPE_SECURITY_EXTRA) {
+        if (mIsPrimary && mFilterType == TYPE_SECURITY_EXTRA || mFilterType == TYPE_CTS_VERIFIER) {
             if (LockPatternUtils.isDeviceEncryptionEnabled()) {
                 // The device is currently encrypted.
                 addPreferencesFromResource(R.xml.security_settings_encrypted);
@@ -290,7 +297,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
             }
         }
 
-        if (mFilterType == TYPE_LOCKSCREEN_EXTRA) {
+        if (mFilterType == TYPE_LOCKSCREEN_EXTRA || mFilterType == TYPE_CTS_VERIFIER ) {
             // Fingerprint and trust agents
             PreferenceGroup securityCategory = (PreferenceGroup)
                     root.findPreference(KEY_SECURITY_CATEGORY);
