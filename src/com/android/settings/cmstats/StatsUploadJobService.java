@@ -88,7 +88,7 @@ public class StatsUploadJobService extends JobService {
         return false;
     }
 
-    private class StatsUploadTask extends AsyncTask<Void, Void, Void> {
+    private class StatsUploadTask extends AsyncTask<Void, Void, Boolean> {
 
         private JobParameters mJobParams;
 
@@ -97,7 +97,7 @@ public class StatsUploadJobService extends JobService {
         }
 
         @Override
-        protected Void doInBackground(Void... params) {
+        protected Boolean doInBackground(Void... params) {
 
             PersistableBundle extras = mJobParams.getExtras();
 
@@ -144,17 +144,16 @@ public class StatsUploadJobService extends JobService {
                         break;
                 }
             }
-
-            if (success) {
-                // we hit the server, succeed either which way.
-                mCurrentJobs.remove(mJobParams);
-            }
-
             if (DEBUG)
                 Log.d(TAG, "job id " + mJobParams.getJobId() + ", has finished with success="
                         + success);
+            return success;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean success) {
+            mCurrentJobs.remove(mJobParams);
             jobFinished(mJobParams, !success);
-            return null;
         }
     }
 
