@@ -190,7 +190,8 @@ public class SecuritySettings extends SettingsPreferenceFragment
 
         Bundle extras = getActivity().getIntent().getExtras();
         // Even uglier hack to make cts verifier expectations make sense.
-        if (extras.get(SettingsActivity.EXTRA_SHOW_FRAGMENT_ARGUMENTS) != null) {
+        if (extras.get(SettingsActivity.EXTRA_SHOW_FRAGMENT_ARGUMENTS) != null &&
+                extras.get(SettingsActivity.EXTRA_SHOW_FRAGMENT_AS_SHORTCUT) == null) {
             mFilterType = TYPE_EXTERNAL_RESOLUTION;
         }
 
@@ -266,7 +267,12 @@ public class SecuritySettings extends SettingsPreferenceFragment
             root.addPreference(mLockscreenDisabledPreference);
         }
 
-        if (mFilterType == TYPE_LOCKSCREEN_EXTRA || mFilterType == TYPE_EXTERNAL_RESOLUTION) {
+        final boolean securityOrExternal = mFilterType == TYPE_SECURITY_EXTRA
+                || mFilterType == TYPE_EXTERNAL_RESOLUTION;
+        final boolean lockscreenOrExternal = mFilterType == TYPE_SECURITY_EXTRA
+                || mFilterType == TYPE_EXTERNAL_RESOLUTION;
+
+        if (lockscreenOrExternal) {
             // Add options for lock/unlock screen
             final int resid = getResIdForLockUnlockScreen(getActivity(), mLockPatternUtils);
             addPreferencesFromResource(resid);
@@ -283,8 +289,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
             }
         }
 
-        if (mIsPrimary && mFilterType == TYPE_SECURITY_EXTRA
-                || mFilterType == TYPE_EXTERNAL_RESOLUTION) {
+        if (mIsPrimary && securityOrExternal) {
             if (LockPatternUtils.isDeviceEncryptionEnabled()) {
                 // The device is currently encrypted.
                 addPreferencesFromResource(R.xml.security_settings_encrypted);
@@ -294,7 +299,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
             }
         }
 
-        if (mFilterType == TYPE_LOCKSCREEN_EXTRA || mFilterType == TYPE_EXTERNAL_RESOLUTION) {
+        if (lockscreenOrExternal) {
             // Fingerprint and trust agents
             PreferenceGroup securityCategory = (PreferenceGroup)
                     root.findPreference(KEY_SECURITY_CATEGORY);
@@ -339,7 +344,9 @@ public class SecuritySettings extends SettingsPreferenceFragment
                 liveLockPreference.setSummary(R.string.live_lock_screen_summary);
                 generalCategory.addPreference(liveLockPreference);
             }
-        } else {
+        }
+
+        if (securityOrExternal) {
             // Append the rest of the settings
             addPreferencesFromResource(R.xml.security_settings_misc);
 
