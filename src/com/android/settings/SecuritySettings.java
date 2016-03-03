@@ -273,7 +273,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
 
         final boolean securityOrExternal = mFilterType == TYPE_SECURITY_EXTRA
                 || mFilterType == TYPE_EXTERNAL_RESOLUTION;
-        final boolean lockscreenOrExternal = mFilterType == TYPE_SECURITY_EXTRA
+        final boolean lockscreenOrExternal = mFilterType == TYPE_LOCKSCREEN_EXTRA
                 || mFilterType == TYPE_EXTERNAL_RESOLUTION;
 
         if (lockscreenOrExternal) {
