@@ -84,7 +84,7 @@ public class RegulatoryInfoDisplayActivity extends Activity implements
             image.setImageResource(resId);
         }
 
-        String sarValues = Status.getSarValues(getResources());
+        String sarValues = Status.getSarValues(this, getResources());
         TextView sarText = (TextView) view.findViewById(R.id.sarValues);
         if (!TextUtils.isEmpty(sarValues)) {
             sarText.setVisibility(resources.getBoolean(R.bool.config_show_sar_enable)

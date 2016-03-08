@@ -151,6 +151,8 @@ public class Status extends PreferenceActivity {
 
     private static final int EVENT_UPDATE_CONNECTIVITY = 600;
 
+    private static final int[] US_MCC_VALUES = {310, 311, 312, 313, 316};
+
     private ConnectivityManager mCM;
     private TelephonyManager mTelephonyManager;
     private WifiManager mWifiManager;
@@ -729,11 +731,49 @@ public class Status extends PreferenceActivity {
         }
     }
 
-    public static String getSarValues(Resources res) {
-        String headLevel = String.format(res.getString(R.string.maximum_head_level,
-                res.getString(R.string.sar_head_level).split(",")));
-        String bodyLevel = String.format(res.getString(R.string.maximum_body_level,
-                res.getString(R.string.sar_body_level).split(",")));
+    private static boolean IsUSMCC(int mcc) {
+        for (int idx = 0; idx < US_MCC_VALUES.length; idx++) {
+            if (mcc == US_MCC_VALUES[idx]) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static String getSarValues(Context context, Resources res) {
+        TelephonyManager tm = new TelephonyManager(context);
+        String networkOperator = tm.getNetworkOperator();
+
+        int mcc = 0;
+        if (TextUtils.isEmpty(networkOperator) == false) {
+            mcc = Integer.parseInt(networkOperator.substring(0, 3));
+        }
+
+        String headLevel;
+        String bodyLevel;
+        if (IsUSMCC(mcc)) {
+            headLevel = String.format(res.getString(
+                R.string.maximum_head_level,
+                TextUtils.split(res.getString(R.string.sar_head_level_fcc),
+                ",")
+                ));
+            bodyLevel = String.format(res.getString(
+                R.string.maximum_body_level,
+                TextUtils.split(res.getString(R.string.sar_body_level_fcc),
+                ",")
+                ));
+        } else {
+            headLevel = String.format(res.getString(
+                R.string.maximum_head_level,
+                TextUtils.split(res.getString(R.string.sar_head_level),
+                ",")
+                ));
+            bodyLevel = String.format(res.getString(
+                R.string.maximum_body_level,
+                TextUtils.split(res.getString(R.string.sar_body_level),
+                ",")
+                ));
+        }
         return headLevel + "\n" + bodyLevel;
     }
 
