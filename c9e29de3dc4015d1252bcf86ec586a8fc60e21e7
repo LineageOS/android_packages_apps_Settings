@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffb9cba7_1ba38fa0",
+        "filename": "src/com/android/settings/fingerprint/FingerprintEnrollIntroduction.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 15007
+      },
+      "writtenOn": "2016-03-08T01:08:19Z",
+      "side": 1,
+      "message": "I would prefer something like:\n\nfinal boolean hasFingerprintUrl \u003d !TextUtils.isEmpty(getString(R.string.help_url_fingerprint));\n\nlearnMoreButton.setVisibility(hasFingerprintUrl ? View.VISIBLE : View.GONE);\n\nif (hasFingerprintUrl) {\n    learnMoreButton.setOnClickListener(this);\n}",
+      "revId": "c9e29de3dc4015d1252bcf86ec586a8fc60e21e7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
