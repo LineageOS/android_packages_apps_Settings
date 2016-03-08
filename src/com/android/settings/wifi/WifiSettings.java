@@ -85,6 +85,7 @@ import com.android.settingslib.wifi.WifiTracker;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Two types of UI are provided here.
@@ -685,6 +686,9 @@ public class WifiSettings extends RestrictedSettingsFragment
                         }
                         getPreferenceScreen().addPreference(preference);
                         accessPoint.setListener(this);
+                    }
+                    if (Objects.equals(mSelectedAccessPoint, accessPoint)) {
+                        mSelectedAccessPoint = accessPoint;
                     }
                 }
                 if (!hasAvailableAccessPoints) {
