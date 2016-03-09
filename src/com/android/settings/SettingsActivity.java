@@ -137,6 +137,8 @@ import com.android.settingslib.drawer.SettingsDrawerActivity;
 import com.android.settingslib.drawer.Tile;
 
 import com.android.settings.aim.MainSettings;
+import com.android.settings.aim.navbar.FlingSettings;
+import com.android.settings.aim.navbar.SmartbarSettings;
 
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -372,11 +374,13 @@ public class SettingsActivity extends SettingsDrawerActivity
             TestingSettings.class.getName(),
             WifiAPITest.class.getName(),
             WifiInfo.class.getName(),
-		MainSettings.class.getName(),
-	    MasterClear.class.getName(),
+		    MainSettings.class.getName(),
+	        MasterClear.class.getName(),
             NightDisplaySettings.class.getName(),
             ManageDomainUrls.class.getName(),
-            AutomaticStorageManagerSettings.class.getName()
+            AutomaticStorageManagerSettings.class.getName(), 
+            FlingSettings.class.getName(),
+            SmartbarSettings.class.getName()
     };
 
 

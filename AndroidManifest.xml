@@ -2327,6 +2327,46 @@
                 android:value="com.android.settings.wfd.WifiDisplaySettings" />
         </activity>
 
+		<!-- Navigation settings activity. -->
+	        <activity android:name="Settings$NavigationSettingsActivity"
+	                android:label="@string/navigationbar_settings_title"
+	                android:excludeFromRecents="true">
+	            <intent-filter>
+	                <action android:name="android.intent.action.MAIN" />
+	                <category android:name="android.intent.category.DEFAULT" />
+	            </intent-filter>
+	            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+	                android:value="com.android.settings.aim.navbar.Navbar" />
+	        </activity>
+
+	       <!-- System action picker -->
+	        <activity android:name="com.android.settings.aim.navbar.ActionPickerDialogActivity"
+	                android:theme="@style/Theme.SettingsDialog"
+	                android:label="@string/choose_action_title"
+	                android:excludeFromRecents="true">
+	            <intent-filter>
+	                <action android:name="android.intent.action.MAIN" />
+	            </intent-filter>
+	        </activity>
+
+	       <!-- Icon pack picker -->
+	        <activity android:name="com.android.settings.aim.navbar.IconPickerActivity"
+	                android:theme="@style/Theme.SettingsDialog"
+	                android:label="@string/icon_pack_picker_dialog_title"
+	                android:excludeFromRecents="true">
+	            <intent-filter>
+	                <action android:name="android.intent.action.MAIN" />
+	            </intent-filter>
+	        </activity>
+
+	       <!-- Icon pack grid -->
+	        <activity android:name="com.android.settings.aim.navbar.IconPackGridActivity"
+	                android:excludeFromRecents="true">
+	            <intent-filter>
+	                <action android:name="android.intent.action.MAIN" />
+	            </intent-filter>
+	        </activity>
+
         <activity android:name="Display" android:label="@string/display_label"
                 android:configChanges="fontScale"
                 android:taskAffinity="com.android.settings"
@@ -2876,6 +2916,16 @@
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.notification.AppNotificationSettings" />
         </activity>
+		
+       <!-- Icon picker proxy for gallery -->
+        <activity android:name="com.android.settings.aim.navbar.IconPickerGallery"
+            android:theme="@style/Theme.SettingsDialog"
+            android:label="@string/icon_pack_picker_dialog_title"
+            android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
 
         <!-- Show Manual (from settings item) -->
         <activity android:name="ManualDisplayActivity"
@@ -3004,6 +3054,30 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
+        </activity>
+		
+	<!-- Navigation settings activity. -->
+        <activity android:name="Settings$SmartbarSettingsActivity"
+                android:label="@string/smartbar_settings_title"
+                android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.aim.navbar.SmartbarSettings" />
+        </activity>
+
+        <!-- Navigation settings activity. -->
+        <activity android:name="Settings$FlingSettingsActivity"
+                android:label="@string/fling_settings"
+                android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.aim.navbar.FlingSettings" />
         </activity>
 
         <activity android:name="Settings$WifiCallingSettingsActivity"
