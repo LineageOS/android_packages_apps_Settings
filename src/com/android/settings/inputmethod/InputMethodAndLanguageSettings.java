@@ -438,11 +438,13 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
             CMSettings.System.putInt(getActivity().getContentResolver(),
                     CMSettings.System.HIGH_TOUCH_SENSITIVITY_ENABLE,
                     mHighTouchSensitivityEnable ? 1 : 0);
-            return mHardware.set(CMHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY,
-                    mHighTouchSensitivityEnable);
+            return true;
         } else if (preference == mTouchscreenHovering) {
-            return mHardware.set(CMHardwareManager.FEATURE_TOUCH_HOVERING,
-                    mTouchscreenHovering.isChecked());
+            boolean touchHoveringEnable = mTouchscreenHovering.isChecked();
+            CMSettings.Secure.putInt(getActivity().getContentResolver(),
+                    CMSettings.Secure.FEATURE_TOUCH_HOVERING,
+                    touchHoveringEnable ? 1 : 0);
+            return true;
         } else if (preference instanceof PreferenceScreen) {
             if (preference.getFragment() != null) {
                 // Fragment will be handled correctly by the super class.
@@ -786,21 +788,16 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         if (hardware.isSupported(CMHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY)) {
             final boolean enabled = prefs.getBoolean(KEY_HIGH_TOUCH_SENSITIVITY,
                     hardware.get(CMHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY));
-            if (!hardware.set(CMHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY,
-                    enabled)) {
-                Log.e(TAG, "Failed to restore high touch sensitivity settings.");
-            } else {
-                Log.d(TAG, "High touch sensitivity settings restored.");
-            }
+            CMSettings.System.putInt(context.getContentResolver(),
+                    CMSettings.System.HIGH_TOUCH_SENSITIVITY_ENABLE,
+                    enabled ? 1 : 0);
         }
         if (hardware.isSupported(CMHardwareManager.FEATURE_TOUCH_HOVERING)) {
             final boolean enabled = prefs.getBoolean(KEY_TOUCHSCREEN_HOVERING,
                     hardware.get(CMHardwareManager.FEATURE_TOUCH_HOVERING));
-            if (!hardware.set(CMHardwareManager.FEATURE_TOUCH_HOVERING, enabled)) {
-                Log.e(TAG, "Failed to restore touch hovering settings.");
-            } else {
-                Log.d(TAG, "Touch hovering settings restored.");
-            }
+            CMSettings.Secure.putInt(context.getContentResolver(),
+                    CMSettings.Secure.FEATURE_TOUCH_HOVERING,
+                    enabled ? 1 : 0);
         }
     }
 
