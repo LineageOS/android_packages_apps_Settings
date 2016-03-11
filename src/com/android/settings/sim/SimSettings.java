@@ -40,7 +40,6 @@ import android.preference.PreferenceCategory;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.telephony.PhoneStateListener;
-import android.telephony.SmsManager;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
@@ -62,6 +61,8 @@ import com.android.settings.Utils;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.R;
+
+import cyanogenmod.app.CMTelephonyManager;
 import com.android.internal.telephony.IExtTelephony;
 import com.android.internal.telephony.TelephonyProperties;
 
@@ -89,8 +90,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     private static final String MOBILE_NETWORK_CATEGORY = "mobile_network";
     private static final String KEY_PRIMARY_SUB_SELECT = "select_primary_sub";
 
-    private IExtTelephony mExtTelephony = IExtTelephony.Stub.
-            asInterface(ServiceManager.getService("extphone"));
+    private IExtTelephony mExtTelephony = null;
 
     /**
      * By UX design we use only one Subscription Information(SubInfo) record per SIM slot.
@@ -155,6 +155,9 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
 
         IntentFilter intentFilter = new IntentFilter(ACTION_UICC_MANUAL_PROVISION_STATUS_CHANGED);
         mContext.registerReceiver(mReceiver, intentFilter);
+
+        final String extphone = CMTelephonyManager.getExtService(null);
+        mExtTelephony = IExtTelephony.Stub.asInterface(ServiceManager.getService(extphone));
     }
 
     @Override
@@ -249,10 +252,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             loge("RemoteException @isSMSPromptEnabled" + ex);
         } catch (NullPointerException ex) {
             loge("NullPointerException @isSMSPromptEnabled" + ex);
-        }
-        // External telephony interfaces may not exist, fall back to our impl
-        if (mExtTelephony == null) {
-            isSMSPrompt = SmsManager.getDefault().isSMSPromptEnabled();
         }
         log("[updateSmsValues] isSMSPrompt: " + isSMSPrompt);
         if (isSMSPrompt || sir == null) {
@@ -451,8 +450,8 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         private static final int PROGRESS_DLG_TIME_OUT = 30000;
         private static final int MSG_DELAY_TIME = 2000;
 
-        private IExtTelephony mExtTelephony;
-
+        private IExtTelephony mExtTelephony = null;
+        private String extphone = null;
 
         public SimEnablerPreference(Context context, SubscriptionInfo sir, int slotId) {
             super(context, (AttributeSet)null,
@@ -468,7 +467,8 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
                 setWidgetLayoutResource(R.layout.custom_sim_switch);
             }
 
-            mExtTelephony = IExtTelephony.Stub.asInterface(ServiceManager.getService("extphone"));
+            extphone = CMTelephonyManager.getExtService(null);
+            mExtTelephony = IExtTelephony.Stub.asInterface(ServiceManager.getService(extphone));
 
             setSwitchVisibility(View.VISIBLE);
             setKey("sim" + mSlotId);
@@ -511,7 +511,8 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             // Disable manual provisioning option to user when
             // device is in Airplane mode. Hide it if the extphone framework
             // is not present, as the operation relies on said framework.
-            if (mExtTelephony == null) {
+            // Also hide it if the service is cmtelephonymanagerext
+            if (mExtTelephony == null ||(!extphone.equals("extphone")) ) {
                 mSwitch.setVisibility(View.GONE);
             } else {
                 mSwitch.setVisibility(View.VISIBLE);
@@ -533,10 +534,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             } catch (NullPointerException ex) {
                 mUiccProvisionStatus[mSlotId] = INVALID_STATE;
                 loge("Failed to get pref, slotId: "+ mSlotId +" Exception: " + ex);
-            }
-
-            if (mUiccProvisionStatus[mSlotId] == INVALID_STATE) {
-                mUiccProvisionStatus[mSlotId] = PROVISIONED;
             }
 
             boolean isSubValid = isCurrentSubValid();

@@ -28,7 +28,6 @@ import android.os.ServiceManager;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
-import android.telephony.SmsManager;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
@@ -44,6 +43,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import cyanogenmod.app.CMTelephonyManager;
 import com.android.internal.telephony.IExtTelephony;
 import com.android.settings.R;
 import com.android.settings.Utils;
@@ -62,14 +62,17 @@ public class SimDialogActivity extends Activity {
     public static final int SMS_PICK = 2;
     public static final int PREFERRED_PICK = 3;
 
-    private IExtTelephony mExtTelephony = IExtTelephony.Stub.
-            asInterface(ServiceManager.getService("extphone"));
+    private IExtTelephony mExtTelephony = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final Bundle extras = getIntent().getExtras();
         final int dialogType = extras.getInt(DIALOG_TYPE_KEY, INVALID_PICK);
+
+        final String extphone = CMTelephonyManager.getExtService(null);
+        mExtTelephony = IExtTelephony.Stub.asInterface(ServiceManager.getService(extphone));
+        Log.d(TAG, "CMTelephonyManager.getExtService: " + mExtTelephony);
 
         switch (dialogType) {
             case DATA_PICK:
@@ -212,11 +215,6 @@ public class SimDialogActivity extends Activity {
                                 } catch (NullPointerException ex) {
                                     Log.e(TAG, "NullPointerException @setSMSPromptEnabled" + ex);
                                 }
-
-                                //Regardless, ignore the secondary telephony framework
-                                if (mExtTelephony == null) {
-                                    SmsManager.getDefault().setSMSPromptEnabled(isSmsPrompt);
-                                }
                                 break;
                             default:
                                 throw new IllegalArgumentException("Invalid dialog type "
@@ -276,11 +274,9 @@ public class SimDialogActivity extends Activity {
                 isSMSPrompt = mExtTelephony.isSMSPromptEnabled();
             } catch (RemoteException | NullPointerException e) {
                 // Assume sms prompt is disabled
+                Log.e(TAG, "RemoteException |NullPointerException @isSMSPromptEnabled" + e);
             }
-            // External telephony interfaces may not exist, fall back to our impl
-            if (mExtTelephony == null) {
-                isSMSPrompt = SmsManager.getDefault().isSMSPromptEnabled();
-            }
+
             for (int i = 0; i < selectableSubInfoLength; ++i) {
                 final SubscriptionInfo sir = subInfoList.get(i);
                 smsSubInfoList.add(sir);
