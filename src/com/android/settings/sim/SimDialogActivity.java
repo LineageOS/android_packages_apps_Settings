@@ -44,6 +44,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import cyanogenmod.app.CMTelephonyManager;
 import com.android.internal.telephony.IExtTelephony;
 import com.android.settings.R;
 import com.android.settings.Utils;
@@ -62,14 +63,17 @@ public class SimDialogActivity extends Activity {
     public static final int SMS_PICK = 2;
     public static final int PREFERRED_PICK = 3;
 
-    private IExtTelephony mExtTelephony = IExtTelephony.Stub.
-            asInterface(ServiceManager.getService("extphone"));
+    private IExtTelephony mExtTelephony = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final Bundle extras = getIntent().getExtras();
         final int dialogType = extras.getInt(DIALOG_TYPE_KEY, INVALID_PICK);
+
+        final String extphone = CMTelephonyManager.getExtService(null);
+        mExtTelephony = IExtTelephony.Stub.asInterface(ServiceManager.getService(extphone));
+        Log.d(TAG, "CMTelephonyManager.getExtService: " + mExtTelephony);
 
         switch (dialogType) {
             case DATA_PICK:
