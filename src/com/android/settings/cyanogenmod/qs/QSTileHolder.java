@@ -22,6 +22,7 @@ import android.text.TextUtils;
 import com.android.internal.util.cm.QSConstants;
 import com.android.internal.util.cm.QSUtils;
 import com.android.settings.R;
+import android.os.SystemProperties;
 
 /**
  * This class holds the icon, the name - or the string the user sees,
@@ -58,6 +59,11 @@ public class QSTileHolder {
         if (TextUtils.equals(QSConstants.TILE_LTE, tileType)
                 && (!QSUtils.deviceSupportsLte(context)
                 || QSUtils.deviceSupportsDdsSupported(context))) {
+            return null;
+        }
+        if (TextUtils.equals(QSConstants.TILE_CAST, tileType)
+                && !context.getResources().getBoolean(com.android.internal.R.bool.config_enableWifiDisplay)
+                && (SystemProperties.getInt("persist.debug.wfd.enable", -1) != 1)){
             return null;
         }
 
