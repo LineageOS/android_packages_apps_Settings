@@ -501,7 +501,7 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
 
         // media volume
         profile.setStreamSettings(new StreamSettings(AudioManager.STREAM_MUSIC,
-                am.getStreamVolume(AudioManager.STREAM_MUSIC), true));
+                am.getStreamVolume(AudioManager.STREAM_MUSIC), false));
 
         // ringtone volume
         profile.setStreamSettings(new StreamSettings(AudioManager.STREAM_RING,
