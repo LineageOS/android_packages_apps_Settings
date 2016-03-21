@@ -1328,6 +1328,11 @@ public class SettingsActivity extends Activity
                     if (!hasDeviceKeys) {
                         removeTile = true;
                     }
+                } else if (id == R.id.weather_settings) {
+                    //TODO Refactor once you bring the CMCOntextChanges in to use the inner Features static class
+                    if (!getPackageManager().hasSystemFeature("org.cyanogenmod.weather")) {
+                        removeTile = true;
+                    }
                 }
 
                 if (UserHandle.MU_ENABLED && UserHandle.myUserId() != 0
