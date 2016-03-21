@@ -83,6 +83,7 @@ import com.android.settings.blacklist.BlacklistSettings;
 import com.android.settings.bluetooth.BluetoothSettings;
 import com.android.settings.contributors.ContributorsCloudFragment;
 import com.android.settings.cyanogenmod.DisplayRotation;
+import com.android.settings.cyanogenmod.WeatherServiceSettings;
 import com.android.settings.dashboard.DashboardCategory;
 import com.android.settings.dashboard.DashboardSummary;
 import com.android.settings.dashboard.DashboardTile;
@@ -375,7 +376,8 @@ public class SettingsActivity extends Activity
             BlacklistSettings.class.getName(),
             ProfilesSettings.class.getName(),
             ContributorsCloudFragment.class.getName(),
-            NotificationManagerSettings.class.getName()
+            NotificationManagerSettings.class.getName(),
+            WeatherServiceSettings.class.getName()
     };
 
 
@@ -1326,6 +1328,11 @@ public class SettingsActivity extends Activity
                     boolean hasDeviceKeys = getResources().getInteger(
                             com.android.internal.R.integer.config_deviceHardwareKeys) != 0;
                     if (!hasDeviceKeys) {
+                        removeTile = true;
+                    }
+                } else if (id == R.id.weather_settings) {
+                    //TODO Refactor once you bring the CMCOntextChanges in to use the inner Features static class
+                    if (!getPackageManager().hasSystemFeature("org.cyanogenmod.weather")) {
                         removeTile = true;
                     }
                 }
