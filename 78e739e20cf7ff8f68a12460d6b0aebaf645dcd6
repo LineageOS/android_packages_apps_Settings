@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "7faddb67_b77ac485",
+        "filename": "src/com/android/settings/cyanogenmod/WeatherServiceSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 9199
+      },
+      "writtenOn": "2016-03-22T14:55:41Z",
+      "side": 1,
+      "message": "Can move this below the two if statements since if either of those are true serviceInfo will not be used for the current iteration.",
+      "revId": "78e739e20cf7ff8f68a12460d6b0aebaf645dcd6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7faddb67_12c2c986",
         "filename": "src/com/android/settings/cyanogenmod/WeatherServiceSettings.java",
         "patchSetId": 1
@@ -47,6 +64,24 @@
       "writtenOn": "2016-03-21T23:09:06Z",
       "side": 1,
       "message": "Maybe just getCurrentSelection().isActive \u003d false ?",
+      "revId": "78e739e20cf7ff8f68a12460d6b0aebaf645dcd6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7faddb67_d762e0d8",
+        "filename": "src/com/android/settings/cyanogenmod/WeatherServiceSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 9199
+      },
+      "writtenOn": "2016-03-22T14:55:41Z",
+      "side": 1,
+      "message": "Just make sure to do a null check since getCurrentSelection() can return null",
+      "parentUuid": "7faddb67_12c2c986",
       "revId": "78e739e20cf7ff8f68a12460d6b0aebaf645dcd6",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
