@@ -74,10 +74,13 @@ public final class BluetoothNameDialogFragment extends DialogFragment implements
             String action = intent.getAction();
             if (action.equals(BluetoothAdapter.ACTION_LOCAL_NAME_CHANGED)) {
                 updateDeviceName();
-            } else if (action.equals(BluetoothAdapter.ACTION_STATE_CHANGED) &&
-                    (intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, BluetoothAdapter.ERROR) ==
-                            BluetoothAdapter.STATE_ON)) {
-                updateDeviceName();
+            } else if (action.equals(BluetoothAdapter.ACTION_STATE_CHANGED)) {
+                int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, BluetoothAdapter.ERROR);
+                if(state == BluetoothAdapter.STATE_ON) {
+                    updateDeviceName();
+                } else if(state == BluetoothAdapter.STATE_OFF) {
+                    BluetoothNameDialogFragment.this.dismiss();
+                }
             }
         }
     };
