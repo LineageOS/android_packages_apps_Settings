@@ -148,7 +148,6 @@ public final class DeviceProfilesSettings extends DialogFragment implements
     public void onResume() {
         super.onResume();
 
-        mManager.setForegroundActivity(getActivity());
         if (mCachedDevice != null) {
             mCachedDevice.registerCallback(this);
             if (mCachedDevice.getBondState() == BluetoothDevice.BOND_NONE) {
@@ -168,7 +167,6 @@ public final class DeviceProfilesSettings extends DialogFragment implements
             mCachedDevice.unregisterCallback(this);
         }
 
-        mManager.setForegroundActivity(null);
     }
 
     private void addPreferencesForProfiles() {
