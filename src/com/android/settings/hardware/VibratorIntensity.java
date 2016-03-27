@@ -110,6 +110,9 @@ public class VibratorIntensity extends DialogPreference implements
             mWarning.setVisibility(View.GONE);
         }
 
+        if ((mMaxValue - mMinValue) < 100)
+            mSeekBar.setMax(mMaxValue - mMinValue);
+
         Drawable progressDrawable = mSeekBar.getProgressDrawable();
         if (progressDrawable instanceof LayerDrawable) {
             LayerDrawable ld = (LayerDrawable) progressDrawable;
@@ -120,7 +123,7 @@ public class VibratorIntensity extends DialogPreference implements
                 getContext().getResources().getColor(android.R.color.holo_red_light));
 
         mSeekBar.setOnSeekBarChangeListener(this);
-        mSeekBar.setProgress(intensityToPercent(mMinValue, mMaxValue, mOriginalValue));
+        mSeekBar.setProgress(intensityToProgress(mOriginalValue));
     }
 
     @Override
@@ -134,7 +137,7 @@ public class VibratorIntensity extends DialogPreference implements
         defaultsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mSeekBar.setProgress(intensityToPercent(mMinValue, mMaxValue, mDefaultValue));
+                mSeekBar.setProgress(intensityToProgress(mDefaultValue));
             }
         });
     }
@@ -146,7 +149,9 @@ public class VibratorIntensity extends DialogPreference implements
         if (positiveResult) {
             // Store percent value in SharedPreferences object
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
-            prefs.edit().putInt(PREF_NAME, mSeekBar.getProgress()).commit();
+            int intensity = progressToIntensity(mSeekBar.getProgress());
+            int percent = intensityToPercent(mMinValue, mMaxValue, intensity);
+            prefs.edit().putInt(PREF_NAME, percent).commit();
         } else {
             CMSettings.Secure.putInt(getContext().getContentResolver(),
                     CMSettings.Secure.VIBRATOR_INTENSITY, mOriginalValue);
@@ -161,9 +166,8 @@ public class VibratorIntensity extends DialogPreference implements
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         int min = hardware.getVibratorMinIntensity();
         int max = hardware.getVibratorMaxIntensity();
-        int defaultValue = intensityToPercent(min, max,
-                hardware.getVibratorDefaultIntensity());
-        int percent = prefs.getInt(PREF_NAME, defaultValue);
+        int defaultIntensity = hardware.getVibratorDefaultIntensity();
+        int percent = prefs.getInt(PREF_NAME, intensityToPercent(min, max, defaultIntensity));
 
         CMSettings.Secure.putInt(context.getContentResolver(),
                 CMSettings.Secure.VIBRATOR_INTENSITY, percentToIntensity(min, max, percent));
@@ -171,9 +175,9 @@ public class VibratorIntensity extends DialogPreference implements
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        int intensity = progressToIntensity(progress);
         boolean shouldWarn =
-                mWarningValue > 0 && progress >= intensityToPercent(mMinValue, mMaxValue,
-                        mWarningValue);
+                mWarningValue > 0 && intensity >= mWarningValue;
 
         if (mProgressDrawable != null) {
             mProgressDrawable.setColorFilter(shouldWarn ? mRedFilter : null);
@@ -183,9 +187,8 @@ public class VibratorIntensity extends DialogPreference implements
         }
 
         CMSettings.Secure.putInt(getContext().getContentResolver(),
-                CMSettings.Secure.VIBRATOR_INTENSITY, percentToIntensity(mMinValue, mMaxValue,
-                        progress));
-        mValue.setText(String.format("%d%%", progress));
+                CMSettings.Secure.VIBRATOR_INTENSITY, intensity);
+        mValue.setText(String.format("%d%%", intensityToPercent(mMinValue, mMaxValue, intensity)));
     }
 
     @Override
@@ -199,8 +202,24 @@ public class VibratorIntensity extends DialogPreference implements
         vib.vibrate(200);
     }
 
-    private static int intensityToPercent(double minValue, double maxValue, int value) {
-        double percent = (value - minValue) * (100 / (maxValue - minValue));
+    private int intensityToProgress(int intensity) {
+        if ((mMaxValue - mMinValue) > 100) {
+            return intensityToPercent(mMinValue, mMaxValue, intensity);
+        } else {
+            return intensity - mMinValue;
+        }
+    }
+
+    private int progressToIntensity(int progress) {
+        if ((mMaxValue - mMinValue) > 100) {
+            return percentToIntensity(mMinValue, mMaxValue, progress);
+        } else {
+            return progress + mMinValue;
+        }
+    }
+
+    private static int intensityToPercent(int minValue, int maxValue, int intensity) {
+        int percent = Math.round((intensity - minValue) * (100.f / (maxValue - minValue)));
 
         if (percent > 100) {
             percent = 100;
@@ -208,18 +227,18 @@ public class VibratorIntensity extends DialogPreference implements
             percent = 0;
         }
 
-        return (int) percent;
+        return percent;
     }
 
     private static int percentToIntensity(int minValue, int maxValue, int percent) {
-        int value = Math.round((((maxValue - minValue) * percent) / 100) + minValue);
+        int intensity = Math.round((((maxValue - minValue) * percent) / 100.f) + minValue);
 
-        if (value > maxValue) {
-            value = maxValue;
-        } else if (value < minValue) {
-            value = minValue;
+        if (intensity > maxValue) {
+            intensity = maxValue;
+        } else if (intensity < minValue) {
+            intensity = minValue;
         }
 
-        return value;
+        return intensity;
     }
 }
