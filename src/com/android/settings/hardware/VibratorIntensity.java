@@ -213,7 +213,7 @@ public class VibratorIntensity extends DialogPreference implements
     }
 
     private static int percentToIntensity(int minValue, int maxValue, int percent) {
-        int value = Math.round((((maxValue - minValue) * percent) / 100) + minValue);
+        int value = Math.round((((maxValue - minValue) * percent) / 100.f) + minValue);
 
         if (value > maxValue) {
             value = maxValue;
