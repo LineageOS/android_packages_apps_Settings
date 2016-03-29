@@ -150,6 +150,8 @@ public class VibratorIntensity extends DialogPreference implements
             int intensity = mSeekBar.getProgress() + mMinValue;
             int percent = intensityToPercent(mMinValue, mMaxValue, intensity);
             prefs.edit().putInt(PREF_NAME, percent).commit();
+            CMSettings.Secure.putInt(getContext().getContentResolver(),
+                    CMSettings.Secure.VIBRATOR_INTENSITY, intensity);
         } else {
             CMSettings.Secure.putInt(getContext().getContentResolver(),
                     CMSettings.Secure.VIBRATOR_INTENSITY, mOriginalValue);
@@ -183,8 +185,6 @@ public class VibratorIntensity extends DialogPreference implements
             mProgressThumb.setColorFilter(shouldWarn ? mRedFilter : null);
         }
 
-        CMSettings.Secure.putInt(getContext().getContentResolver(),
-                CMSettings.Secure.VIBRATOR_INTENSITY, intensity);
         mValue.setText(String.format("%d%%", intensityToPercent(mMinValue, mMaxValue, intensity)));
     }
 
@@ -195,8 +195,10 @@ public class VibratorIntensity extends DialogPreference implements
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
+        mHardware.setVibratorIntensity(seekBar.getProgress() + mMinValue);
         Vibrator vib = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
         vib.vibrate(200);
+        mHardware.setVibratorIntensity(mOriginalValue);
     }
 
     private static int intensityToPercent(int minValue, int maxValue, int value) {
