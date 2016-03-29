@@ -150,6 +150,8 @@ public class VibratorIntensity extends DialogPreference implements
             int intensity = mSeekBar.getProgress() + mMinValue;
             int percent = intensityToPercent(mMinValue, mMaxValue, intensity);
             prefs.edit().putInt(PREF_NAME, percent).commit();
+            CMSettings.Secure.putInt(getContext().getContentResolver(),
+                    CMSettings.Secure.VIBRATOR_INTENSITY, intensity);
         } else {
             CMSettings.Secure.putInt(getContext().getContentResolver(),
                     CMSettings.Secure.VIBRATOR_INTENSITY, mOriginalValue);
@@ -166,9 +168,6 @@ public class VibratorIntensity extends DialogPreference implements
         int max = hardware.getVibratorMaxIntensity();
         int defaultIntensity = hardware.getVibratorDefaultIntensity();
         int percent = prefs.getInt(PREF_NAME, intensityToPercent(min, max, defaultIntensity));
-
-        CMSettings.Secure.putInt(context.getContentResolver(),
-                CMSettings.Secure.VIBRATOR_INTENSITY, percentToIntensity(min, max, percent));
     }
 
     @Override
@@ -195,8 +194,10 @@ public class VibratorIntensity extends DialogPreference implements
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
+        mHardware.setVibratorIntensity(progressToIntensity(seekBar.getProgress()));
         Vibrator vib = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
         vib.vibrate(200);
+        mHardware.setVibratorIntensity(mOriginalValue);
     }
 
     private static int intensityToPercent(int minValue, int maxValue, int value) {
