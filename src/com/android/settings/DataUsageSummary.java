@@ -25,6 +25,8 @@ import static android.net.NetworkPolicy.WARNING_DISABLED;
 import static android.net.NetworkPolicyManager.EXTRA_NETWORK_TEMPLATE;
 import static android.net.NetworkPolicyManager.POLICY_NONE;
 import static android.net.NetworkPolicyManager.POLICY_REJECT_METERED_BACKGROUND;
+import static android.net.NetworkPolicyManager.POLICY_REJECT_ON_WLAN_BACKGROUND;
+import static android.net.NetworkPolicyManager.POLICY_REJECT_ON_DATA;
 import static android.net.NetworkPolicyManager.computeLastCycleBoundary;
 import static android.net.NetworkPolicyManager.computeNextCycleBoundary;
 import static android.net.NetworkTemplate.MATCH_MOBILE_3G_LOWER;
@@ -127,6 +129,7 @@ import android.widget.Toast;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.telephony.PhoneConstants;
+import com.android.settings.DataUsageUtils;
 import com.android.settings.drawable.InsetBoundsDrawable;
 import com.android.settings.net.DataUsageMeteredSettings;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -176,6 +179,8 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
     private static final String TAB_ETHERNET = "ethernet";
 
     private static final String TAG_CONFIRM_DATA_DISABLE = "confirmDataDisable";
+    private static final String TAG_CONFIRM_DATA_RESET = "confirmDataReset";
+    private static final String TAG_CONFIRM_APP_RESTRICT_CELLULAR = "confirmAppRestrictCellular";
     private static final String TAG_CONFIRM_LIMIT = "confirmLimit";
     private static final String TAG_CYCLE_EDITOR = "cycleEditor";
     private static final String TAG_WARNING_EDITOR = "warningEditor";
@@ -206,6 +211,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
     private static final String PREF_FILE = "data_usage";
     private static final String PREF_SHOW_WIFI = "show_wifi";
     private static final String PREF_SHOW_ETHERNET = "show_ethernet";
+    private static final String PREF_ENB_DATA_USAGE_NOTIFY = "enb_data_usage_notify";
 
     private SharedPreferences mPrefs;
 
@@ -251,10 +257,16 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
 
     private LinearLayout mAppSwitches;
     private Switch mAppRestrict;
+    private Switch mAppDataAlert;
+    private Switch mAppCellularAccess;
     private View mAppRestrictView;
+    private View mAppDataAlertView;
+    private View mAppCellularAccessView;
 
     private boolean mShowWifi = false;
     private boolean mShowEthernet = false;
+    private boolean mShowAlerts = false;
+    private boolean mDataAlertsSupported = false;
 
     private NetworkTemplate mTemplate;
     private ChartData mChartData;
@@ -273,6 +285,8 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
     private MenuItem mMenuShowEthernet;
     private MenuItem mMenuSimCards;
     private MenuItem mMenuCellularNetworks;
+    private MenuItem mMenuDataAlerts;
+    private MenuItem mMenuResetStats;
 
     private List<SubscriptionInfo> mSubInfoList;
     private Map<Integer,String> mMobileTagMap;
@@ -334,6 +348,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
 
         mShowWifi = mPrefs.getBoolean(PREF_SHOW_WIFI, true);
         mShowEthernet = mPrefs.getBoolean(PREF_SHOW_ETHERNET, false);
+        mShowAlerts = mPrefs.getBoolean(PREF_ENB_DATA_USAGE_NOTIFY, false);
 
         // override preferences when no mobile radio
         if (!hasReadyMobileRadio(context)) {
@@ -447,11 +462,39 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
             mAppRestrict = new Switch(inflater.getContext());
             mAppRestrict.setClickable(false);
             mAppRestrict.setFocusable(false);
+            mAppRestrict.setVisibility(View.GONE);
             mAppRestrictView = inflatePreference(inflater, mAppSwitches, mAppRestrict);
             mAppRestrictView.setClickable(true);
             mAppRestrictView.setFocusable(true);
             mAppRestrictView.setOnClickListener(mAppRestrictListener);
             mAppSwitches.addView(mAppRestrictView);
+
+            //switch for per app data alert enable/disable
+            mAppDataAlert = new Switch(inflater.getContext());
+            mAppDataAlert.setClickable(false);
+            mAppDataAlert.setFocusable(false);
+            mAppDataAlertView = inflatePreference(inflater, mAppSwitches, mAppDataAlert);
+            mAppDataAlertView.setClickable(true);
+            mAppDataAlertView.setFocusable(true);
+            mAppDataAlertView.setOnClickListener(mAppDataAlertListner);
+            mAppSwitches.addView(mAppDataAlertView);
+
+            // check if content provider is installed. If not, hide data alert switch
+            mDataAlertsSupported = DataUsageUtils.isDbEnabled(context);
+            if (!mDataAlertsSupported) {
+                mAppDataAlertView.setVisibility(View.GONE);
+            }
+
+            // switch for per app cellular access enabled/disable
+            mAppCellularAccess = new Switch(inflater.getContext());
+            mAppCellularAccess.setClickable(false);
+            mAppCellularAccess.setFocusable(false);
+            mAppCellularAccessView = inflatePreference(inflater, mAppSwitches, mAppCellularAccess);
+            mAppCellularAccessView.setClickable(true);
+            mAppCellularAccessView.setFocusable(true);
+            mAppCellularAccessView.setOnClickListener(mAppRestrictCellularListener);
+            mAppSwitches.addView(mAppCellularAccessView);
+
         }
 
         mDisclaimer = mHeader.findViewById(R.id.disclaimer);
@@ -591,6 +634,17 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
             help.setVisible(false);
         }
 
+        mMenuDataAlerts = menu.findItem(R.id.data_usage_menu_data_alerts);
+
+        if (mDataAlertsSupported) {
+            mMenuDataAlerts.setVisible(!appDetailMode);
+        } else {
+            mMenuDataAlerts.setVisible(false);
+        }
+
+        mMenuResetStats = menu.findItem(R.id.data_usage_menu_reset_stats);
+        mMenuResetStats.setVisible(!appDetailMode);
+
         updateMenuTitles();
     }
 
@@ -611,6 +665,11 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
             mMenuShowEthernet.setTitle(R.string.data_usage_menu_hide_ethernet);
         } else {
             mMenuShowEthernet.setTitle(R.string.data_usage_menu_show_ethernet);
+        }
+        if (mShowAlerts) {
+            mMenuDataAlerts.setTitle(R.string.data_usage_menu_disable_data_alerts);
+        } else {
+            mMenuDataAlerts.setTitle(R.string.data_usage_menu_enable_data_alerts);
         }
     }
 
@@ -658,6 +717,14 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
                         R.string.data_usage_metered_title, null, this, 0);
                 return true;
             }
+            case R.id.data_usage_menu_reset_stats: {
+                ConfirmDataResetFragment.show(DataUsageSummary.this, mTemplate);
+                return true;
+            }
+            case R.id.data_usage_menu_data_alerts: {
+                updateShowAlertsState(!mShowAlerts);
+                return true;
+            }
         }
         return false;
     }
@@ -673,6 +740,13 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
         TrafficStats.closeQuietly(mStatsSession);
 
         super.onDestroy();
+    }
+
+    private void updateShowAlertsState(boolean showAlert) {
+        mShowAlerts = showAlert;
+        mPrefs.edit().putBoolean(PREF_ENB_DATA_USAGE_NOTIFY, mShowAlerts).apply();
+        updateMenuTitles();
+        DataUsageUtils.enbDataUsageService(getContext(), mShowAlerts);
     }
 
     /**
@@ -1026,17 +1100,49 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
 
         updateDetailData();
 
-        if (UserHandle.isApp(uid) && !mPolicyManager.getRestrictBackground()
-                && isBandwidthControlEnabled() && hasReadyMobileRadio(context)) {
-            setPreferenceTitle(mAppRestrictView, R.string.data_usage_app_restrict_background);
-            setPreferenceSummary(mAppRestrictView,
-                    getString(R.string.data_usage_app_restrict_background_summary));
+        if (UserHandle.isApp(uid) && isBandwidthControlEnabled()) {
+            setPreferenceTitle(mAppRestrictView, R.string.background_data_access);
 
+            int backgroundPolicy = getAppRestrictBackground();
+
+            if ((backgroundPolicy & POLICY_REJECT_METERED_BACKGROUND) != 0) {
+                if ((backgroundPolicy & POLICY_REJECT_ON_WLAN_BACKGROUND) != 0) {
+                    setPreferenceSummary(mAppRestrictView, getString(R.string
+                            .allow_background_none));
+                } else {
+                    setPreferenceSummary(mAppRestrictView, getString(R.string
+                            .allow_background_wlan));
+                }
+            } else {
+                setPreferenceSummary(mAppRestrictView, getString(R.string.allow_background_both));
+            }
             mAppRestrictView.setVisibility(View.VISIBLE);
-            mAppRestrict.setChecked(getAppRestrictBackground());
 
+            if (isMobileTab(mCurrentTab) || TAB_3G.equals(mCurrentTab)
+                    || TAB_4G.equals(mCurrentTab)) {
+                setPreferenceTitle(mAppCellularAccessView, R.string.restrict_cellular_access_title);
+                setPreferenceSummary(mAppCellularAccessView,
+                        getString(R.string.restrict_cellular_access_summary));
+                mAppCellularAccessView.setVisibility(View.VISIBLE);
+                mAppCellularAccess.setChecked(getAppRestrictCellular());
+            } else {
+                mAppCellularAccessView.setVisibility(View.GONE);
+            }
+
+            if (mDataAlertsSupported) {
+                setPreferenceTitle(mAppDataAlertView, R.string.mobile_data_alert);
+                setPreferenceSummary(mAppDataAlertView,
+                        getString(R.string.mobile_data_alert_summary));
+
+                mAppDataAlertView.setVisibility(View.VISIBLE);
+                mAppDataAlert.setChecked(getAppDataAlert());
+            } else {
+                mAppDataAlertView.setVisibility(View.GONE);
+            }
         } else {
             mAppRestrictView.setVisibility(View.GONE);
+            mAppDataAlertView.setVisibility(View.GONE);
+            mAppCellularAccessView.setVisibility(View.GONE);
         }
     }
 
@@ -1090,6 +1196,29 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
         updatePolicy(false);
     }
 
+    private void resetDataStats(NetworkTemplate template) {
+        // kick off background task to reset stats
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+                try {
+                    mStatsService.resetDataUsageHistoryForAllUid(mTemplate);
+                    mPolicyEditor.setPolicyLimitBytes(mTemplate, mPolicyEditor
+                            .getPolicyLimitBytes(mTemplate));
+                    mStatsService.forceUpdate();
+                } catch (RemoteException e) {
+
+                }
+                return null;
+            }
+            @Override
+            protected void onPostExecute (Void result){
+                updateBody();
+            }
+
+        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+    }
+
     private boolean isNetworkPolicyModifiable(NetworkPolicy policy) {
         return policy != null && isBandwidthControlEnabled() && mDataEnabled.isChecked()
                 && ActivityManager.getCurrentUser() == UserHandle.USER_OWNER;
@@ -1109,18 +1238,108 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
         updateMenuTitles();
     }
 
-    private boolean getAppRestrictBackground() {
+    private int getAppRestrictBackground() {
         final int uid = mCurrentApp.key;
         final int uidPolicy = mPolicyManager.getUidPolicy(uid);
-        return (uidPolicy & POLICY_REJECT_METERED_BACKGROUND) != 0;
+
+        return ((uidPolicy & POLICY_REJECT_METERED_BACKGROUND) | (uidPolicy &
+                POLICY_REJECT_ON_WLAN_BACKGROUND));
     }
 
-    private void setAppRestrictBackground(boolean restrictBackground) {
+    private void setAppRestrictBackground(int newPolicy) {
         if (LOGD) Log.d(TAG, "setAppRestrictBackground()");
         final int uid = mCurrentApp.key;
-        mPolicyManager.setUidPolicy(
-                uid, restrictBackground ? POLICY_REJECT_METERED_BACKGROUND : POLICY_NONE);
-        mAppRestrict.setChecked(restrictBackground);
+        final int currentPolicy = mPolicyManager.getUidPolicy(uid);
+
+        if (((newPolicy & POLICY_REJECT_METERED_BACKGROUND) ^ (currentPolicy &
+                POLICY_REJECT_METERED_BACKGROUND)) != 0 ) {
+            if ((newPolicy & POLICY_REJECT_METERED_BACKGROUND) != 0) {
+                mPolicyManager.addUidPolicy(uid, POLICY_REJECT_METERED_BACKGROUND);
+            } else {
+                mPolicyManager.removeUidPolicy(uid, POLICY_REJECT_METERED_BACKGROUND);
+            }
+        }
+
+        if (((newPolicy & POLICY_REJECT_ON_WLAN_BACKGROUND) ^ (currentPolicy &
+                POLICY_REJECT_ON_WLAN_BACKGROUND)) != 0 ) {
+            if ((newPolicy & POLICY_REJECT_ON_WLAN_BACKGROUND) != 0) {
+                mPolicyManager.addUidPolicy(uid, POLICY_REJECT_ON_WLAN_BACKGROUND);
+            } else {
+                mPolicyManager.removeUidPolicy(uid, POLICY_REJECT_ON_WLAN_BACKGROUND);
+            }
+        }
+
+        if ((newPolicy & POLICY_REJECT_METERED_BACKGROUND) != 0) {
+            if ((newPolicy & POLICY_REJECT_ON_WLAN_BACKGROUND) != 0) {
+                setPreferenceSummary(mAppRestrictView, getString(R.string.allow_background_none));
+            } else {
+                setPreferenceSummary(mAppRestrictView, getString(R.string.allow_background_wlan));
+            }
+        } else {
+            setPreferenceSummary(mAppRestrictView, getString(R.string.allow_background_both));
+        }
+    }
+
+    private boolean getAppRestrictCellular() {
+        final int uid = mCurrentApp.key;
+        final int uidPolicy = mPolicyManager.getUidPolicy(uid);
+        return (uidPolicy & POLICY_REJECT_ON_DATA) != 0;
+    }
+
+    private void setAppRestrictCellular(boolean restrictCellular) {
+        if (LOGD) Log.d(TAG, "setAppRestrictCellular()");
+        final int uid = mCurrentApp.key;
+        if (restrictCellular) {
+            mPolicyManager.addUidPolicy(uid, POLICY_REJECT_ON_DATA);
+        } else {
+            mPolicyManager.removeUidPolicy(uid, POLICY_REJECT_ON_DATA);
+        }
+        mAppCellularAccess.setChecked(restrictCellular);
+    }
+
+
+    private void setAppDataAlert(boolean enableDataAlert){
+
+        final int uid = mCurrentApp.key;
+
+        // get App's details, to send to the DataUsage Provider, don't block, if not int the
+        // DetailProvider cache. (should be in the cache, as the App's label had already
+        // been displayed in the list of Apps
+        UidDetail detail = mUidDetailProvider.getUidDetail(uid, false);
+        String label = "";
+        if (detail != null) {
+            label = detail.label.toString();
+        }
+
+        try {
+            DataUsageUtils.enbApp(getContext(), uid, enableDataAlert, label);
+        } catch (Exception e) {
+            //content provider may not be installed.
+            Log.d(TAG, "Unable to set data alert state");
+            return;
+        }
+        mAppDataAlert.setChecked(enableDataAlert);
+
+        // automatically enable global alert for notifications when enabling first per app alert
+        if (enableDataAlert && !mShowAlerts) {
+            updateShowAlertsState(true);
+        }
+    }
+
+    private boolean getAppDataAlert() {
+
+        final int uid = mCurrentApp.key;
+
+        boolean enbStatus = false;
+
+        try {
+            enbStatus = DataUsageUtils.getAppEnb(getContext(), uid);
+        } catch (Exception e) {
+            //content provider may not be installed.
+            Log.d(TAG, "Unable to get data alert state");
+            return false;
+        }
+        return enbStatus;
     }
 
     /**
@@ -1301,16 +1520,31 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
     private View.OnClickListener mAppRestrictListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            final boolean restrictBackground = !mAppRestrict.isChecked();
+            ConfirmAppRestrictFragment.show(DataUsageSummary.this);
+        }
+    };
 
-            if (restrictBackground) {
+    private View.OnClickListener mAppRestrictCellularListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            final boolean restrictCellular = !mAppCellularAccess.isChecked();
+
+            if (restrictCellular) {
                 // enabling restriction; show confirmation dialog which
-                // eventually calls setRestrictBackground() once user
+                // eventually calls setRestrictCellular() once user
                 // confirms.
-                ConfirmAppRestrictFragment.show(DataUsageSummary.this);
+                ConfirmAppRestrictCellularFragment.show(DataUsageSummary.this);
             } else {
-                setAppRestrictBackground(false);
+                setAppRestrictCellular(false);
             }
+        }
+    };
+
+    private View.OnClickListener mAppDataAlertListner = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            final boolean enableDataAlert = !mAppDataAlert.isChecked();
+            setAppDataAlert(enableDataAlert);
         }
     };
 
@@ -2199,6 +2433,45 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
     }
 
     /**
+     * Dialog to request user confirmation before resetting data.
+     */
+    public static class ConfirmDataResetFragment extends DialogFragment {
+        static NetworkTemplate mTemplate;
+        public static void show(DataUsageSummary parent, NetworkTemplate template) {
+            mTemplate = template;
+            if (!parent.isAdded()) return;
+
+            final ConfirmDataResetFragment dialog = new ConfirmDataResetFragment();
+            dialog.setTargetFragment(parent, 0);
+            dialog.show(parent.getFragmentManager(), TAG_CONFIRM_DATA_RESET);
+        }
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            final Context context = getActivity();
+
+            final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setTitle(R.string.data_usage_menu_reset_stats);
+            builder.setMessage(R.string.reset_data_stats_msg);
+
+            builder.setPositiveButton(R.string.reset_stats_confirm,
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            final DataUsageSummary target = (DataUsageSummary) getTargetFragment();
+                            if (target != null) {
+                                // TODO: extend to modify policy enabled flag.
+                                target.resetDataStats(mTemplate);
+                            }
+                        }
+                    });
+            builder.setNegativeButton(android.R.string.cancel, null);
+
+            return builder.create();
+        }
+    }
+
+    /**
      * Dialog to request user confirmation before setting
      * {@link INetworkPolicyManager#setRestrictBackground(boolean)}.
      */
@@ -2267,7 +2540,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
 
     /**
      * Dialog to request user confirmation before setting
-     * {@link #POLICY_REJECT_METERED_BACKGROUND}.
+     * {@link #POLICY_REJECT_METERED_BACKGROUND} or {@link #POLICY_REJECT_ON_WLAN_BACKGROUND}
      */
     public static class ConfirmAppRestrictFragment extends DialogFragment {
         public static void show(DataUsageSummary parent) {
@@ -2283,15 +2556,63 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
             final Context context = getActivity();
 
             final AlertDialog.Builder builder = new AlertDialog.Builder(context);
-            builder.setTitle(R.string.data_usage_app_restrict_dialog_title);
-            builder.setMessage(R.string.data_usage_app_restrict_dialog);
+            builder.setItems(R.array.background_data_access_choices,
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // The 'which' argument contains the index position
+                            // of the selected item
+                            int backgroundPolicy = 0x0;
+
+                            switch (which) {
+                                case 0:
+                                    backgroundPolicy = 0x0;
+                                    break;
+                                case 1:
+                                    backgroundPolicy = POLICY_REJECT_METERED_BACKGROUND;
+                                    break;
+                                case 2:
+                                    backgroundPolicy = POLICY_REJECT_METERED_BACKGROUND |
+                                            POLICY_REJECT_ON_WLAN_BACKGROUND;
+                                    break;
+                            }
+                            final DataUsageSummary target = (DataUsageSummary) getTargetFragment();
+                            if (target != null) {
+                                target.setAppRestrictBackground(backgroundPolicy);
+                            }
+                        }
+                    });
+            return builder.create();
+        }
+    }
+
+    /**
+     * Dialog to request user confirmation before setting
+     * {@link #POLICY_REJECT_ON_DATA}.
+     */
+    public static class ConfirmAppRestrictCellularFragment extends DialogFragment {
+        public static void show(DataUsageSummary parent) {
+            if (!parent.isAdded()) return;
+
+            final ConfirmAppRestrictCellularFragment dialog = new
+                    ConfirmAppRestrictCellularFragment();
+            dialog.setTargetFragment(parent, 0);
+            dialog.show(parent.getFragmentManager(), TAG_CONFIRM_APP_RESTRICT_CELLULAR);
+        }
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            final Context context = getActivity();
+
+            final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setTitle(R.string.restrict_cellular_access_dialog_title);
+            builder.setMessage(R.string.restrict_cellular_access_dialog_summary);
 
             builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     final DataUsageSummary target = (DataUsageSummary) getTargetFragment();
                     if (target != null) {
-                        target.setAppRestrictBackground(true);
+                        target.setAppRestrictCellular(true);
                     }
                 }
             });
