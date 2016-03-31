@@ -271,8 +271,9 @@ public class AppOpsDetails extends InstrumentedFragment {
             }
         }
 
-        if (mPm.checkPermission(Manifest.permission.INTERNET, mPackageInfo.packageName)
-                == PackageManager.PERMISSION_GRANTED) {
+        if (UserHandle.isApp(mPackageInfo.applicationInfo.uid) &&
+                                  mPm.checkPermission(Manifest.permission.INTERNET,
+                                  mPackageInfo.packageName) == PackageManager.PERMISSION_GRANTED) {
             TextView internetCategory = (TextView) mInflater.inflate(
                     R.layout.preference_category_material, null);
             internetCategory.setText(R.string.privacy_guard_internet_category);
