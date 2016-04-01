@@ -1576,14 +1576,15 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         updateLogdSizeValues();
     }
 
-    private void updateUsbConfigurationValues() {
+    private void updateUsbConfigurationValues(boolean isUnlocked) {
         if (mUsbConfiguration != null) {
             UsbManager manager = (UsbManager) getSystemService(Context.USB_SERVICE);
 
             String[] values = getResources().getStringArray(R.array.usb_configuration_values);
             String[] titles = getResources().getStringArray(R.array.usb_configuration_titles);
             int index = 0;
-            for (int i = 0; i < titles.length; i++) {
+            // Assume if !isUnlocked -> charging, which should be at index 0
+            for (int i = 0; i < titles.length && isUnlocked; i++) {
                 if (manager.isFunctionEnabled(values[i])) {
                     index = i;
                     break;
@@ -1598,10 +1599,11 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private void writeUsbConfigurationOption(Object newValue) {
         UsbManager manager = (UsbManager)getActivity().getSystemService(Context.USB_SERVICE);
         String function = newValue.toString();
-        manager.setCurrentFunction(function);
         if (function.equals("none")) {
+            manager.setCurrentFunction(null);
             manager.setUsbDataUnlocked(false);
         } else {
+            manager.setCurrentFunction(function);
             manager.setUsbDataUnlocked(true);
         }
     }
@@ -2263,7 +2265,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private BroadcastReceiver mUsbReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            updateUsbConfigurationValues();
+            boolean isUnlocked = intent.getBooleanExtra(UsbManager.USB_DATA_UNLOCKED, false);
+            updateUsbConfigurationValues(isUnlocked);
         }
     };
 
