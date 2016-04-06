@@ -39,6 +39,9 @@ import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceCategory;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -360,6 +363,14 @@ public class PowerUsageDetail extends PowerUsageBase implements Button.OnClickLi
     @Override
     protected int getMetricsCategory() {
         return MetricsLogger.FUELGAUGE_POWER_USAGE_DETAIL;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        MenuItem menuItem = menu.findItem(PowerUsageBase.MSG_REFRESH_STATS);
+        menuItem.setVisible(false);
+        menuItem.setEnabled(false);
     }
 
     @Override

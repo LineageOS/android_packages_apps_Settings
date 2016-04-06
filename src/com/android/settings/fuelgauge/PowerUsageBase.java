@@ -107,6 +107,8 @@ public abstract class PowerUsageBase extends SettingsPreferenceFragment {
                 .setAlphabeticShortcut('r');
         refresh.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM |
                 MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+        refresh.setVisible(true);
+        refresh.setEnabled(true);
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
