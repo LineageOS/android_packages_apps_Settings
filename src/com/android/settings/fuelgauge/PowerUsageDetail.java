@@ -353,6 +353,7 @@ public class PowerUsageDetail extends PowerUsageBase implements Button.OnClickLi
         mControlsParent = (PreferenceCategory) findPreference(KEY_CONTROLS_PARENT);
         mMessagesParent = (PreferenceCategory) findPreference(KEY_MESSAGES_PARENT);
         mPackagesParent = (PreferenceCategory) findPreference(KEY_PACKAGES_PARENT);
+        hideRefreshButton(true);
 
         createDetails();
     }
@@ -361,6 +362,7 @@ public class PowerUsageDetail extends PowerUsageBase implements Button.OnClickLi
     protected int getMetricsCategory() {
         return MetricsLogger.FUELGAUGE_POWER_USAGE_DETAIL;
     }
+
 
     @Override
     public void onResume() {
