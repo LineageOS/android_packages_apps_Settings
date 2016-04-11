@@ -22,9 +22,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.UserHandle;
 import android.preference.DialogPreference;
-import android.provider.Settings;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
@@ -32,7 +30,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.android.settings.R;
-import cyanogenmod.providers.CMSettings;
+
+import cyanogenmod.hardware.LiveDisplayManager;
 
 /**
  * Preference for selection of color temperature range for LiveDisplay
@@ -51,14 +50,15 @@ public class DisplayTemperature extends DialogPreference {
     private final int mDefaultDayTemperature;
     private final int mDefaultNightTemperature;
 
+    private final LiveDisplayManager mLiveDisplay;
+
     public DisplayTemperature(Context context, AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
+        mLiveDisplay = LiveDisplayManager.getInstance(mContext);
 
-        mDefaultDayTemperature = mContext.getResources().getInteger(
-                org.cyanogenmod.platform.internal.R.integer.config_dayColorTemperature);
-        mDefaultNightTemperature = mContext.getResources().getInteger(
-                org.cyanogenmod.platform.internal.R.integer.config_nightColorTemperature);
+        mDefaultDayTemperature = mLiveDisplay.getDefaultDayTemperature();
+        mDefaultNightTemperature = mLiveDisplay.getDefaultNightTemperature();
 
         setDialogLayoutResource(R.layout.display_temperature);
     }
@@ -77,14 +77,8 @@ public class DisplayTemperature extends DialogPreference {
     protected void onBindDialogView(View view) {
         super.onBindDialogView(view);
 
-        mOriginalDayTemperature = CMSettings.System.getIntForUser(mContext.getContentResolver(),
-                CMSettings.System.DISPLAY_TEMPERATURE_DAY,
-                mDefaultDayTemperature,
-                UserHandle.USER_CURRENT);
-        mOriginalNightTemperature = CMSettings.System.getIntForUser(mContext.getContentResolver(),
-                CMSettings.System.DISPLAY_TEMPERATURE_NIGHT,
-                mDefaultNightTemperature,
-                UserHandle.USER_CURRENT);
+        mOriginalDayTemperature = mLiveDisplay.getDayTemperature();
+        mOriginalNightTemperature = mLiveDisplay.getNightTemperature();
 
         SeekBar day = (SeekBar) view.findViewById(R.id.day_temperature_seekbar);
         TextView dayText = (TextView) view.findViewById(R.id.day_temperature_value);
@@ -206,13 +200,8 @@ public class DisplayTemperature extends DialogPreference {
         int night = accept ? mNightTemperature.getProgress() : mOriginalNightTemperature;
         callChangeListener(new Integer[] { day, night });
 
-        CMSettings.System.putIntForUser(mContext.getContentResolver(),
-                CMSettings.System.DISPLAY_TEMPERATURE_DAY, day,
-                UserHandle.USER_CURRENT);
-
-        CMSettings.System.putIntForUser(mContext.getContentResolver(),
-                CMSettings.System.DISPLAY_TEMPERATURE_NIGHT, night,
-                UserHandle.USER_CURRENT);
+        mLiveDisplay.setDayTemperature(day);
+        mLiveDisplay.setNightTemperature(night);
     }
 
     private class ColorTemperatureSeekBar implements SeekBar.OnSeekBarChangeListener {

@@ -15,20 +15,18 @@
  */
 package com.android.settings.livedisplay;
 
-import static cyanogenmod.hardware.CMHardwareManager.FEATURE_ADAPTIVE_BACKLIGHT;
-import static cyanogenmod.hardware.CMHardwareManager.FEATURE_COLOR_ENHANCEMENT;
-import static cyanogenmod.hardware.CMHardwareManager.FEATURE_DISPLAY_MODES;
-import static cyanogenmod.hardware.CMHardwareManager.FEATURE_DISPLAY_GAMMA_CALIBRATION;
-import static cyanogenmod.hardware.CMHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT;
+import static cyanogenmod.hardware.LiveDisplayManager.FEATURE_CABC;
+import static cyanogenmod.hardware.LiveDisplayManager.FEATURE_COLOR_ENHANCEMENT;
+import static cyanogenmod.hardware.LiveDisplayManager.FEATURE_DISPLAY_MODES;
+import static cyanogenmod.hardware.LiveDisplayManager.MODE_OFF;
+import static cyanogenmod.hardware.LiveDisplayManager.MODE_OUTDOOR;
 
 import android.app.Activity;
-import android.database.ContentObserver;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.UserHandle;
@@ -38,7 +36,6 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.SearchIndexableResource;
-import android.provider.Settings;
 import android.util.Log;
 
 import com.android.internal.util.ArrayUtils;
@@ -48,13 +45,15 @@ import com.android.settings.Utils;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
-import cyanogenmod.hardware.CMHardwareManager;
-import cyanogenmod.hardware.DisplayMode;
-import cyanogenmod.providers.CMSettings;
 import org.cyanogenmod.internal.logging.CMMetricsLogger;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import cyanogenmod.hardware.CMHardwareManager;
+import cyanogenmod.hardware.DisplayMode;
+import cyanogenmod.hardware.LiveDisplayManager;
+import cyanogenmod.providers.CMSettings;
 
 public class LiveDisplay extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, Indexable {
@@ -72,16 +71,9 @@ public class LiveDisplay extends SettingsPreferenceFragment implements
     private static final String KEY_LIVE_DISPLAY_TEMPERATURE = "live_display_color_temperature";
 
     private static final String KEY_DISPLAY_COLOR = "color_calibration";
-    private static final String KEY_DISPLAY_GAMMA = "gamma_tuning";
     private static final String KEY_SCREEN_COLOR_SETTINGS = "screencolor_settings";
 
     private static final String KEY_LIVE_DISPLAY_COLOR_PROFILE = "live_display_color_profile";
-
-    public static final int MODE_OFF = 0;
-    public static final int MODE_NIGHT = 1;
-    public static final int MODE_AUTO = 2;
-    public static final int MODE_OUTDOOR = 3;
-    public static final int MODE_DAY = 4;
 
     private final Handler mHandler = new Handler();
     private final SettingsObserver mObserver = new SettingsObserver();
@@ -107,6 +99,7 @@ public class LiveDisplay extends SettingsPreferenceFragment implements
 
     private boolean mHasDisplayModes = false;
 
+    private LiveDisplayManager mLiveDisplayManager;
     private CMHardwareManager mHardware;
 
     @Override
@@ -116,12 +109,11 @@ public class LiveDisplay extends SettingsPreferenceFragment implements
         final ContentResolver resolver = activity.getContentResolver();
         final Resources res = getResources();
 
-        mDefaultDayTemperature = res.getInteger(
-                org.cyanogenmod.platform.internal.R.integer.config_dayColorTemperature);
-        mDefaultNightTemperature = res.getInteger(
-                org.cyanogenmod.platform.internal.R.integer.config_nightColorTemperature);
+        mHardware = CMHardwareManager.getInstance(getActivity());
+        mLiveDisplayManager = LiveDisplayManager.getInstance(getActivity());
 
-        mHardware = CMHardwareManager.getInstance(activity);
+        mDefaultDayTemperature = mLiveDisplayManager.getDefaultDayTemperature();
+        mDefaultNightTemperature = mLiveDisplayManager.getDefaultNightTemperature();
 
         addPreferencesFromResource(R.xml.livedisplay);
 
@@ -130,9 +122,8 @@ public class LiveDisplay extends SettingsPreferenceFragment implements
         PreferenceCategory advancedPrefs = (PreferenceCategory)
                 findPreference(KEY_CATEGORY_ADVANCED);
 
-        int adaptiveMode = CMSettings.System.getIntForUser(resolver,
-                CMSettings.System.DISPLAY_TEMPERATURE_MODE,
-                0, UserHandle.USER_CURRENT);
+        int adaptiveMode = mLiveDisplayManager.getMode();
+
         mLiveDisplay = (ListPreference) findPreference(KEY_LIVE_DISPLAY);
         mLiveDisplay.setValue(String.valueOf(adaptiveMode));
 
@@ -144,7 +135,7 @@ public class LiveDisplay extends SettingsPreferenceFragment implements
                 org.cyanogenmod.platform.internal.R.array.live_display_summaries);
 
         // Remove outdoor mode from lists if there is no support
-        if (!mHardware.isSupported(FEATURE_SUNLIGHT_ENHANCEMENT)) {
+        if (!mLiveDisplayManager.hasFeature(LiveDisplayManager.MODE_OUTDOOR)) {
             int idx = ArrayUtils.indexOf(mModeValues, String.valueOf(MODE_OUTDOOR));
             String[] entriesTemp = new String[mModeEntries.length - 1];
             String[] valuesTemp = new String[mModeValues.length - 1];
@@ -172,7 +163,7 @@ public class LiveDisplay extends SettingsPreferenceFragment implements
 
         mColorProfile = (ListPreference) findPreference(KEY_LIVE_DISPLAY_COLOR_PROFILE);
         if (liveDisplayPrefs != null && mColorProfile != null
-                && (!mHardware.isSupported(FEATURE_DISPLAY_MODES) || !updateDisplayModes())) {
+                && (!mLiveDisplayManager.hasFeature(FEATURE_DISPLAY_MODES) || !updateDisplayModes())) {
             liveDisplayPrefs.removePreference(mColorProfile);
         } else {
             mHasDisplayModes = true;
@@ -181,31 +172,23 @@ public class LiveDisplay extends SettingsPreferenceFragment implements
 
         mOutdoorMode = (SwitchPreference) findPreference(KEY_LIVE_DISPLAY_AUTO_OUTDOOR_MODE);
         if (liveDisplayPrefs != null && mOutdoorMode != null
-                && !mHardware.isSupported(FEATURE_SUNLIGHT_ENHANCEMENT)) {
+                && !mLiveDisplayManager.hasFeature(MODE_OUTDOOR)) {
             liveDisplayPrefs.removePreference(mOutdoorMode);
             mOutdoorMode = null;
         }
 
         mLowPower = (SwitchPreference) findPreference(KEY_LIVE_DISPLAY_LOW_POWER);
         if (advancedPrefs != null && mLowPower != null
-                && !mHardware.isSupported(FEATURE_ADAPTIVE_BACKLIGHT)) {
+                && !mLiveDisplayManager.hasFeature(FEATURE_CABC)) {
             advancedPrefs.removePreference(mLowPower);
             mLowPower = null;
         }
 
         mColorEnhancement = (SwitchPreference) findPreference(KEY_LIVE_DISPLAY_COLOR_ENHANCE);
         if (advancedPrefs != null && mColorEnhancement != null
-                && !mHardware.isSupported(FEATURE_COLOR_ENHANCEMENT)) {
+                && !mLiveDisplayManager.hasFeature(FEATURE_COLOR_ENHANCEMENT)) {
             advancedPrefs.removePreference(mColorEnhancement);
             mColorEnhancement = null;
-        }
-
-        if (advancedPrefs != null
-                && !mHardware.isSupported(FEATURE_DISPLAY_GAMMA_CALIBRATION)) {
-            Preference gammaPref = findPreference(KEY_DISPLAY_GAMMA);
-            if (gammaPref != null) {
-                advancedPrefs.removePreference(gammaPref);
-            }
         }
 
         mScreenColorSettings = (PreferenceScreen) findPreference(KEY_SCREEN_COLOR_SETTINGS);
@@ -347,9 +330,7 @@ public class LiveDisplay extends SettingsPreferenceFragment implements
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         if (preference == mLiveDisplay) {
-            CMSettings.System.putIntForUser(getContentResolver(),
-                    CMSettings.System.DISPLAY_TEMPERATURE_MODE,
-                    Integer.valueOf((String)objValue), UserHandle.USER_CURRENT);
+            mLiveDisplayManager.setMode(Integer.valueOf((String)objValue));
         } else if (preference == mColorProfile) {
             int id = Integer.valueOf((String)objValue);
             Log.i("LiveDisplay", "Setting mode: " + id);
@@ -402,7 +383,6 @@ public class LiveDisplay extends SettingsPreferenceFragment implements
     public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider() {
         private boolean mHasSunlightEnhancement, mHasColorEnhancement, mHasLowPower;
-        private boolean mHasDisplayGamma;
 
         @Override
         public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
@@ -419,28 +399,26 @@ public class LiveDisplay extends SettingsPreferenceFragment implements
 
         @Override
         public List<String> getNonIndexableKeys(Context context) {
-             CMHardwareManager hardware = CMHardwareManager.getInstance(context);
+            final CMHardwareManager hardware = CMHardwareManager.getInstance(context);
+            final LiveDisplayManager liveDisplay = LiveDisplayManager.getInstance(context);
 
             ArrayList<String> result = new ArrayList<String>();
             if (!hardware.isSupported(FEATURE_DISPLAY_MODES)) {
                 result.add(KEY_LIVE_DISPLAY_COLOR_PROFILE);
             }
-            if (!hardware.isSupported(FEATURE_SUNLIGHT_ENHANCEMENT)) {
+            if (!liveDisplay.hasFeature(MODE_OUTDOOR)) {
                 result.add(KEY_LIVE_DISPLAY_AUTO_OUTDOOR_MODE);
             }
-            if (!hardware.isSupported(FEATURE_COLOR_ENHANCEMENT)) {
+            if (!liveDisplay.hasFeature(FEATURE_COLOR_ENHANCEMENT)) {
                 result.add(KEY_LIVE_DISPLAY_COLOR_ENHANCE);
             }
-            if (!hardware.isSupported(FEATURE_ADAPTIVE_BACKLIGHT)) {
+            if (!liveDisplay.hasFeature(FEATURE_CABC)) {
                 result.add(KEY_LIVE_DISPLAY_LOW_POWER);
             }
             if (!isPostProcessingSupported(context)) {
                 result.add(KEY_SCREEN_COLOR_SETTINGS);
             } else {
                 result.add(KEY_DISPLAY_COLOR);
-            }
-            if (!hardware.isSupported(FEATURE_DISPLAY_GAMMA_CALIBRATION)) {
-                result.add(KEY_DISPLAY_GAMMA);
             }
             return result;
         }
