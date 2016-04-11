@@ -16,6 +16,24 @@
       "revId": "cde682d13613e77d88f7b7f898d1b631e6c714f7",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7faddb67_8e842360",
+        "filename": "src/com/android/settings/hardware/VibratorIntensity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 13897
+      },
+      "writtenOn": "2016-04-11T06:40:11Z",
+      "side": 1,
+      "message": "To provide access to only the levels that are actually used. I don\u0027t see the point of showing levels that we will never save.\n\nMoreover, there should be no difference between the levels that are in the same \"bucket\", not even for the preview.\n\nThings would be different with http://review.cyanogenmod.org/#/c/138571/, but if the levels are a lot more than 100, there might be a noticeable difference between what is previewed and what is saved.",
+      "parentUuid": "7faddb67_0e6a73b2",
+      "revId": "cde682d13613e77d88f7b7f898d1b631e6c714f7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
