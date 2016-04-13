@@ -154,6 +154,14 @@
 
         <external-tiles />
 
+        <!-- Motion -->
+        <dashboard-tile
+                android:id="@+id/motion_settings"
+                android:title="@string/motion_pref_title"
+                android:fragment="com.android.settings.MotionSettings"
+                android:icon="@drawable/ic_settings_sounds"
+                />
+
         <!-- Battery -->
         <dashboard-tile
                 android:id="@+id/battery_settings"
