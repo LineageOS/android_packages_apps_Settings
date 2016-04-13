@@ -94,6 +94,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private static final String KEY_VIBRATE_ON_TOUCH = "vibrate_on_touch";
     private static final String KEY_ZEN_MODE = "zen_mode";
     private static final String KEY_VOLUME_LINK_NOTIFICATION = "volume_link_notification";
+    private static final String KEY_FLIP_TO_MUTE_INCOMING_CALL = "flip_to_mute_incoming_call";
 
     private static final String[] RESTRICTED_KEYS = {
         KEY_MEDIA_VOLUME,
@@ -132,6 +133,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private TwoStatePreference mIncreasingRing;
     private IncreasingRingVolumePreference mIncreasingRingVolume;
     private ArrayList<DefaultRingtonePreference> mPhoneRingtonePreferences;
+    private SwitchPreference mFlipToMuteIncomingCallPref;
     private Preference mNotificationRingtonePreference;
     private TwoStatePreference mVibrateWhenRinging;
     private Preference mNotificationAccess;
@@ -185,6 +187,30 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
         if (!hardware.isSupported(CMHardwareManager.FEATURE_VIBRATOR)) {
             vibrate.removePreference(vibrate.findPreference(KEY_VIBRATION_INTENSITY));
         }
+
+        mFlipToMuteIncomingCallPref = (SwitchPreference)
+                findPreference(KEY_FLIP_TO_MUTE_INCOMING_CALL);
+
+        int flipBehavior =  CMSettings.Secure.getInt(
+                mContext.getContentResolver(), CMSettings.Secure.MOTION_BEHAVIOR,
+                CMSettings.Secure.MOTION_BEHAVIOR_DEFAULT);
+
+        mFlipToMuteIncomingCallPref.setChecked(
+                flipBehavior == CMSettings.Secure.MOTION_BEHAVIOR_FLIP_TO_MUTE_INCOMING_CALL);
+        
+        mFlipToMuteIncomingCallPref.setOnPreferenceChangeListener(
+                new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference arg0, Object isFlipOnObject) {
+                boolean isFlipOn = (Boolean) isFlipOnObject;
+                int value = isFlipOn ? 
+                        CMSettings.Secure.MOTION_BEHAVIOR_FLIP_TO_MUTE_INCOMING_CALL :
+                        CMSettings.Secure.MOTION_BEHAVIOR_NOTHING;
+                CMSettings.Secure.putInt(mContext.getContentResolver(),
+                    CMSettings.Secure.MOTION_BEHAVIOR, value);
+                return true;
+            }
+        });
 
         initRingtones(sounds);
         initIncreasingRing(sounds);

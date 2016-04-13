@@ -90,6 +90,12 @@
                 android:summary="@string/headset_connect_player_summary"
                 android:defaultValue="false" />
 
+        <!-- Flip to mute -->
+        <SwitchPreference
+                android:key="flip_to_mute_incoming_call"
+                android:title="@string/flip_to_mute_incoming_call_title"
+                android:summary="@string/flip_to_mute_incoming_call_summary" />
+
         <!-- Other sounds -->
         <Preference
                 android:key="other_sounds"
