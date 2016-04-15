@@ -17,6 +17,7 @@
 package com.android.settings.cyanogenmod;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -295,7 +296,11 @@ public class WeatherServiceSettings extends SettingsPreferenceFragment {
 
         private void launchSettingsActivity(WeatherProviderServiceInfo info) {
             if (info != null && info.settingsComponentName != null) {
-                mContext.startActivity(new Intent().setComponent(info.settingsComponentName));
+                try {
+                    mContext.startActivity(new Intent().setComponent(info.settingsComponentName));
+                } catch (ActivityNotFoundException e) {
+                    Log.w(TAG, info.settingsComponentName + " not found");
+                }
             }
         }
 
@@ -324,9 +329,7 @@ public class WeatherServiceSettings extends SettingsPreferenceFragment {
             CMSettings.Secure.putString(mContext.getContentResolver(),
                     CMSettings.Secure.WEATHER_PROVIDER_SERVICE,
                         info.componentName.flattenToString());
-            if (info.settingsComponentName != null) {
-                mContext.startActivity(new Intent().setComponent(info.settingsComponentName));
-            }
+            launchSettingsActivity(info);
             notifyDataSetChanged();
         }
 
