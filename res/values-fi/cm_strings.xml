@@ -261,6 +261,7 @@
   <!-- Lights settings, LED notification -->
   <string name="led_notification_title">Valoasetukset</string>
   <string name="led_notification_text">LED-valo otettu käyttöön asetuksissa</string>
+  <string name="notification_light_no_apps_summary">Lisätäksesi sovelluskohtaisen hallinnan, ota \'%1$s\' käyttöön ja paina \'\u002b\' valikkopalkista</string>
   <!-- Setting checkbox title for Whether to enable Android debugging support on the phone. -->
   <string name="enable_adb_cm">Android-vianetsintä</string>
   <!-- Setting checkbox summary for Whether to enable Android debugging support on the phone -->
@@ -517,6 +518,9 @@
   <!-- Buttons - Enable navbar -->
   <string name="disable_navkeys_title">Näytön navigointipalkki</string>
   <string name="disable_navkeys_summary">Ota näytön navigointipalkki käyttöön ja poista fyysiset näppäimet käytöstä</string>
+  <!-- tap-to-wake -->
+  <string name="double_tap_to_wake_title">Herätys kaksoisnapautuksella</string>
+  <string name="double_tap_to_wake_summary">Herätä laitteen näyttö kaksoisnapautuksella</string>
   <!-- tap-to-sleep -->
   <string name="double_tap_to_sleep_title">Lepotila kaksoisnapautuksella</string>
   <string name="double_tap_to_sleep_summary">Sulje laitteen näyttö tuplanapauttamalla tilapalkkia</string>
@@ -540,7 +544,6 @@
   <string name="color_red_title">Punainen</string>
   <string name="color_green_title">Vihreä</string>
   <string name="color_blue_title">Sininen</string>
-  <!-- used if no name provided by overlay -->
   <!-- Launch music player when headset is connected -->
   <string name="headset_connect_player_title">Käynnistä musiikkisovellus</string>
   <string name="headset_connect_player_summary">Käynnistä musiikkisovellus kytkettäessä kuulokkeet</string>
@@ -997,6 +1000,7 @@
   <string name="weather_settings_title">Sää</string>
   <string name="weather_settings_no_services_prompt">Säätarjoajapalveluita ei asennettu</string>
   <string name="weather_settings_button">Tarjoajan asetukset</string>
+  <string name="weather_settings_activity_not_found">Tämän palveluntarjoajan asetusvalikon avaaminen ei onnistu</string>
   <string name="background_data_access">Taustatiedonsiirron käyttö</string>
   <string name="allow_background_both">Mobiiliverkon &amp; Wi\u2011Fin yli</string>
   <string name="allow_background_wlan">Vain Wi\u2011Fin yli</string>
@@ -1012,4 +1016,6 @@
   <string name="restrict_cellular_access_summary">Poista datan käyttö mobiiliverkoissa</string>
   <string name="restrict_cellular_access_dialog_title">Rajoita mobiilidatan käyttöä?</string>
   <string name="restrict_cellular_access_dialog_summary">Tämä ominaisuus voi aiheuttaa verkkoyhteydestä riippuvaisen sovelluksen toiminnan lakkaamisen kun vain mobiilidataverkko on käytettävissä.\n\nLöydät lisää tiedonsiirron hallintaominaisuuksia sovelluksesta.</string>
+  <!-- Label for settings shortcut: carrier selection -->
+  <string name="shortcut_carrier_title">Verkko-operaattorit</string>
 </resources>

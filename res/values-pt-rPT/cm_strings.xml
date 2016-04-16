@@ -261,6 +261,7 @@
   <!-- Lights settings, LED notification -->
   <string name="led_notification_title">Definições de luz</string>
   <string name="led_notification_text">Luz do LED ativada pelas definições</string>
+  <string name="notification_light_no_apps_summary">Para configurar as luzes de notificação para uma aplicação específica, ative \"%1$s\" e toque em \"\u002b\" na barra de menu</string>
   <!-- Setting checkbox title for Whether to enable Android debugging support on the phone. -->
   <string name="enable_adb_cm">Depuração Android</string>
   <!-- Setting checkbox summary for Whether to enable Android debugging support on the phone -->
@@ -468,7 +469,7 @@
   <string name="camera_launch_title">Iniciar a câmara</string>
   <string name="camera_launch_summary">Pressionar algum tempo e depois soltar iniciará a câmara</string>
   <string name="volbtn_music_controls_title">Controlo de reprodução</string>
-  <string name="volbtn_music_controls_summary">Quando o ecrã estiver desligado, manter pressionados os botões de volume irá procurar as faixas de música</string>
+  <string name="volbtn_music_controls_summary">Alternar as faixas de música ao manter os botões de volume pressionados com o ecrã desligado</string>
   <string name="volbtn_cursor_control_title">Controlo do cursor de teclado</string>
   <string name="volbtn_cursor_control_off">Desativado</string>
   <string name="volbtn_cursor_control_on">Volume para cima/baixo move o cursor para a esquerda/direita</string>
@@ -517,6 +518,9 @@
   <!-- Buttons - Enable navbar -->
   <string name="disable_navkeys_title">Ativar os botões virtuais</string>
   <string name="disable_navkeys_summary">Ativar os botões virtuais e desativar os botões físicos</string>
+  <!-- tap-to-wake -->
+  <string name="double_tap_to_wake_title">Toque duplo liga o ecrã</string>
+  <string name="double_tap_to_wake_summary">Dê um toque duplo no ecrã para ligar o dispositivo</string>
   <!-- tap-to-sleep -->
   <string name="double_tap_to_sleep_title">Toque duplo para desligar o ecrã</string>
   <string name="double_tap_to_sleep_summary">Dê um toque duplo na barra de estado para desligar o dispositivo</string>
@@ -540,7 +544,6 @@
   <string name="color_red_title">Vermelho</string>
   <string name="color_green_title">Verde</string>
   <string name="color_blue_title">Azul</string>
-  <!-- used if no name provided by overlay -->
   <!-- Launch music player when headset is connected -->
   <string name="headset_connect_player_title">Iniciar a aplicação de música</string>
   <string name="headset_connect_player_summary">Iniciar a aplicação de música predefinida quando ligar os auscultadores</string>
@@ -1006,10 +1009,11 @@
   <string name="data_usage_menu_enable_data_alerts">Ativar alertas de uso de dados</string>
   <string name="data_usage_menu_disable_data_alerts">Desativar alertas de uso de dados</string>
   <string name="data_usage_menu_reset_stats">Redefinir as estatísticas de dados</string>
-  <string name="reset_data_stats_msg">Isto irá limpar todas as informações de rastreamento de dados</string>
+  <string name="reset_data_stats_msg">Isto irá apagar todas as informações de rastreamento de dados</string>
   <string name="reset_stats_confirm">Confirmar</string>
   <string name="restrict_cellular_access_title">Restringir o acesso de dados móveis</string>
   <string name="restrict_cellular_access_summary">Desativar o acesso de dados em redes móveis</string>
   <string name="restrict_cellular_access_dialog_title">Restringir o acesso de dados móveis?</string>
   <string name="restrict_cellular_access_dialog_summary">Este recurso pode fazer com que uma aplicação que dependa de acesso à rede deixe de responder quando só estiverem disponíveis redes móveis.\n\nPoderá encontrar ferramentas mais apropriadas para o controlo de dados nas definições disponíveis na aplicação.</string>
+  <!-- Label for settings shortcut: carrier selection -->
 </resources>

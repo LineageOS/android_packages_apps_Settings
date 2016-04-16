@@ -134,8 +134,8 @@
   <string name="ringer_mode">Mode de trucada</string>
   <string name="lights_mode">Mode dels llums</string>
   <string name="vibrate_mode">Mode de la vibració</string>
-  <string name="choose_soundtone">Escull el to de les notificacions</string>
-  <string name="choose_ringtone">Escull un to de trucada</string>
+  <string name="choose_soundtone">Tria el to de les notificacions</string>
+  <string name="choose_ringtone">Tria un to de trucada</string>
   <!-- Sound settings screen, setting option name to pick ringtone (a list dialog comes up)-->
   <string name="soundtone_title">To de les notificacions</string>
   <!-- Title for application group setting screen -->
@@ -146,7 +146,7 @@
   <string name="profile_appgroup_name_prompt">Introdueix el nom del grup d\'aplicacions</string>
   <string name="profile_appgroup_name_title">Nom</string>
   <!-- Add application dialog box title -->
-  <string name="profile_choose_app">Escull aplicació</string>
+  <string name="profile_choose_app">Tria una aplicació</string>
   <!-- Profiles - system settings -->
   <string name="profile_system_settings_title">Configuració del sistema</string>
   <string name="profile_lockmode_title">Mode del bloqueig de pantalla</string>
@@ -177,7 +177,7 @@
   <string name="profile_menu_delete_title">Esborra</string>
   <string name="profile_action_none">Deixa sense canvis</string>
   <string name="profile_action_system">Per defecte del sistema</string>
-  <string name="profile_action_disable">Apagar</string>
+  <string name="profile_action_disable">Apaga</string>
   <string name="profile_action_enable">Encén</string>
   <string name="profile_trigger_a2dp_connect">En connectar l\'A2DP</string>
   <string name="profile_trigger_a2dp_disconnect">En desconnectar l\'A2DP</string>
@@ -257,10 +257,11 @@
   <string name="notification_light_zen_mode">Llums en el mode No molestis</string>
   <string name="notification_light_use_multiple_leds">LEDs múltiples</string>
   <string name="keywords_lights_brightness_level">atenua la lluminositat dels leds</string>
-  <string name="notification_light_automagic">Escull els colors automàticament</string>
+  <string name="notification_light_automagic">Tria els colors automàticament</string>
   <!-- Lights settings, LED notification -->
   <string name="led_notification_title">Ajustaments de llums</string>
   <string name="led_notification_text">Llum LED habilitat per ajustos</string>
+  <string name="notification_light_no_apps_summary">Per afegir control específic per aplicació, activa \'%1$s\' i prem \"\u002b\" a la barra de menú</string>
   <!-- Setting checkbox title for Whether to enable Android debugging support on the phone. -->
   <string name="enable_adb_cm">Depuració Android</string>
   <!-- Setting checkbox summary for Whether to enable Android debugging support on the phone -->
@@ -517,6 +518,9 @@
   <!-- Buttons - Enable navbar -->
   <string name="disable_navkeys_title">Habilita bar nav en pantalla</string>
   <string name="disable_navkeys_summary">Habilita la barra de navegació en pantalla y deshabilitar els botons físics</string>
+  <!-- tap-to-wake -->
+  <string name="double_tap_to_wake_title">Pica doblement per encendre</string>
+  <string name="double_tap_to_wake_summary">Pica dues vegades a la pantalla per encendre la pantalla</string>
   <!-- tap-to-sleep -->
   <string name="double_tap_to_sleep_title">Pica dues vegades per posar en repòs</string>
   <string name="double_tap_to_sleep_summary">Pica dues vegades a la barra d\'estat per apagar la pantalla</string>
@@ -540,7 +544,6 @@
   <string name="color_red_title">Vermell</string>
   <string name="color_green_title">Verd</string>
   <string name="color_blue_title">Blau</string>
-  <!-- used if no name provided by overlay -->
   <!-- Launch music player when headset is connected -->
   <string name="headset_connect_player_title">Llança l\'aplicació de música</string>
   <string name="headset_connect_player_summary">Inicia l\'aplicació de música predeterminada quan es connectin els auriculars</string>
@@ -774,7 +777,7 @@
   <string name="expanded_nothing_to_show">Per afegir una configuració personalitzada per a cada aplicació en l\'estat extès, estableix com a deshabilitada l\'opció \"Habilitat per a tots\"</string>
   <string name="expanded_enabled_for_all">Habilitat per a tots</string>
   <string name="expanded_desktop_style">Estil d\'escriptori extès</string>
-  <string name="expanded_desktop_style_description">Escull un estil d\'escriptori extès per defecte</string>
+  <string name="expanded_desktop_style_description">Tria un estil d\'escriptori extès per defecte</string>
   <string name="expanded_desktop_title">Opcions d\'escriptori extès</string>
   <!-- Kill app long-press back -->
   <string name="kill_app_longpress_back">Mata l\'aplicació amb la tecla enrera</string>
@@ -1012,4 +1015,6 @@
   <string name="restrict_cellular_access_summary">Deshabilita l\'accés a les dades en xarxes mòbils</string>
   <string name="restrict_cellular_access_dialog_title">Vols restringir l\'accés a les dades mòbils?</string>
   <string name="restrict_cellular_access_dialog_summary">Aquesta característica podria provocar que una aplicació que depèn de l\'accés a la xarxa deixi de funcionar quan només les xarxes mòbils estiguin disponibles.\n\nPots trobar els controls d\'ús de dades més adequats a la configuració disponible dins de l\'aplicació.</string>
+  <!-- Label for settings shortcut: carrier selection -->
+  <string name="shortcut_carrier_title">Operadors de xarxa</string>
 </resources>
