@@ -16,13 +16,18 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
   <plurals name="show_dev_countdown_cm">
     <item quantity="one">Απομένει <xliff:g id="step_count">%1$d</xliff:g> βήμα για να ενεργοποιήσετε τις ρυθμίσεις για προγραμματιστές.</item>
     <item quantity="other">Απομένουν <xliff:g id="step_count">%1$d</xliff:g> βήματα για να ενεργοποιήσετε τις ρυθμίσεις για προγραμματιστές.</item>
   </plurals>
+  <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
   <string name="show_dev_on_cm">Ενεργοποιήσατε τις ρυθμίσεις για προγραμματιστές!</string>
+  <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
   <string name="show_dev_already_cm">Δεν χρειάζεται, έχετε ήδη ενεργοποιήσει τις ρυθμίσεις για προγραμματιστές.</string>
+  <!-- Launch Dev Tools -->
   <string name="development_tools_title">Εργαλεία ανάπτυξης</string>
+  <!-- Setting checkbox title for root access -->
   <string name="root_access">Πρόσβαση root</string>
   <string name="root_access_warning_title">Να επιτρέπεται η πρόσβαση root;</string>
   <string name="root_access_warning_message">Επιτρέποντας στις εφαρμογές να ζητούν πρόσβαση root είναι πολύ επικίνδυνο και θα μπορούσε να θέσει σε κίνδυνο την ασφάλεια του συστήματος σας!</string>
@@ -30,10 +35,12 @@
   <string name="root_access_apps">Μόνο εφαρμογές</string>
   <string name="root_access_adb">Μόνο ADB</string>
   <string name="root_access_all">Εφαρμογές και ADB</string>
+  <!-- Sound settings screen -->
   <string name="ring_mode_title">Λειτουργία κλήσης</string>
   <string name="ring_mode_normal">Κανονική</string>
   <string name="ring_mode_vibrate">Δόνηση</string>
   <string name="ring_mode_mute">Σίγαση</string>
+  <!-- Profiles settings  -->
   <string name="profiles_settings_title">Προφίλ συστήματος</string>
   <string name="profiles_add">Προσθήκη</string>
   <string name="profile_settings_title">Προφίλ</string>
@@ -55,32 +62,43 @@
   <string name="profile_app_group_category_title">Παράκαμψη ειδοποιήσεων</string>
   <string name="profile_app_group_item_instructions">Προσθήκη η αφαίρεση ομάδων</string>
   <string name="profile_app_group_item_instructions_summary">Προσθήκη ή αφαίρεση ομάδων παράκαμψης ειδοποιήσεων εφαρμογών σε αυτό το προφίλ</string>
+  <!-- Profile mode options. -->
   <string name="profile_entries_on">Ενεργό</string>
   <string name="profile_entries_off">Ανενεργό</string>
   <string name="profile_entries_no_override">Να μην παρακαμφθεί</string>
+  <!-- Add Profile -->
   <string name="profile_name_title">Όνομα</string>
   <string name="new_profile_name">&lt;νέο προφίλ&gt;</string>
+  <!-- Rename Dialog  -->
   <string name="rename_dialog_title">Μετονομασία</string>
   <string name="rename_dialog_message">Εισάγετε νέο όνομα</string>
   <string name="rename_dialog_hint">Εισάγετε όνομα προφίλ</string>
+  <!-- Reset Profiles -->
   <string name="profile_reset_title">Επαναφορά</string>
   <string name="profile_reset_message">Διαγραφή όλων των δημιουργημένων προφίλ και επαναφορά στις προεπιλογές;</string>
+  <!-- Profile network mode -->
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_4g">LTE</string>
   <string name="profile_networkmode_2g3g">2G/3G</string>
   <string name="profile_networkmode_2g3g4g">2G/3G/LTE</string>
+  <!-- Profile Config screen PreferenceGroup titles -->
   <string name="profile_volumeoverrides_title">Παράκαμψη έντασης</string>
   <string name="volume_override_summary">Ορισμός σε %1$s/%2$s</string>
   <string name="profile_volume_override_checkbox_label">Παράκαμψη έντασης</string>
+  <!-- Menu item for managing profiles -->
   <string name="profile_profiles_manage">Προφίλ</string>
   <string name="profile_profile_manage">Διαχείριση προφίλ</string>
+  <!-- Profile settings screen, section header for settings related to notification profiles -->
   <string name="profile_settings">Ρυθμίσεις προφίλ</string>
   <string name="profile_trigger_connect">Κατά τη σύνδεση</string>
   <string name="profile_trigger_disconnect">Κατά την αποσύνδεση</string>
   <string name="profile_trigger_notrigger">Κανένα έναυσμα</string>
+  <!-- Title for application group setting screen -->
   <string name="profile_applist_title">Εφαρμογές</string>
+  <!-- Add application dialog box title -->
   <string name="profile_choose_app">Επιλέξτε εφαρμογή</string>
+  <!-- Profiles - system settings -->
   <string name="profile_system_settings_title">Ρυθμίσεις συστήματος</string>
   <string name="profile_lockmode_title">Λειτουργία οθόνης κλειδώματος</string>
   <string name="profile_lockmode_policy_disabled_summary">Αυτή η επιλογή προφίλ είναι απενεργοποιημένη από μια πολιτική διαχειριστή συσκευής</string>
@@ -90,6 +108,7 @@
   <string name="profile_brightness_title">Φωτεινότητα οθόνης</string>
   <string name="profile_brightness_override_summary">Ορισμός σε %1$d%%</string>
   <string name="profile_brightness_override_checkbox_label">Παράκαμψη φωτεινότητας</string>
+  <!-- Connection override toggles (not all are used at this time ) -->
   <string name="toggleWifi">Wi-Fi</string>
   <string name="toggleWifiAp">Φορητό Wi-Fi hotspot</string>
   <string name="toggleBluetooth">Bluetooth</string>
@@ -98,6 +117,7 @@
   <string name="toggleSync">Αυτόματος συγχρονισμός</string>
   <string name="toggle2g3g4g">Προτιμώμενη λειτουργία δικτύου</string>
   <string name="toggleNfc">NFC</string>
+  <!-- Hardware keys -->
   <string name="button_pref_title">Πλήκτρα</string>
   <string name="hardware_keys_power_key_title">Πλήκτρο απενεργοποίησης</string>
   <string name="hardware_keys_home_key_title">Πλήκτρο αρχικής οθόνης</string>
@@ -140,6 +160,7 @@
   <string name="button_wake_summary">Παρακάμπτει τον έλεγχο αναπαραγωγής</string>
   <string name="home_answer_call_title">Απάντηση κλήσης</string>
   <string name="home_answer_call_summary">Απάντηση της τρέχουσας εισερχόμενης κλήσης κατά το πάτημα του πλήκτρου αρχικής οθόνης</string>
+  <!-- Key backlight -->
   <string name="button_backlight_title">Οπισθοφωτισμός</string>
   <string name="button_backlight_enabled">Φωτισμός πλήκτρων</string>
   <string name="keyboard_backlight_enabled">Φωτισμός πληκτρολογίου</string>
@@ -150,6 +171,7 @@
   <string name="backlight_summary_disabled">Ανενεργός</string>
   <string name="backlight_summary_enabled_with_timeout">Ενεργός για <xliff:g id="timeout">%s</xliff:g></string>
   <string name="backlight_summary_enabled">Ενεργός</string>
+  <!-- Power menu -->
   <string name="power_menu_title">Μενού πλήκτρου απενεργοποίησης</string>
   <string name="power_menu_reboot_title">Επανεκκίνηση</string>
   <string name="power_menu_screenshot_title">Στιγμιότυπο οθόνης</string>
@@ -162,12 +184,16 @@
   <string name="power_menu_sound_title">Πάνελ έντασης</string>
   <string name="power_menu_bug_report_disabled">Η αναφορά σφαλμάτων είναι απενεργοποιημένη στις ρυθμίσεις για προγραμματιστές</string>
   <string name="power_menu_profiles_disabled">Τα προφίλ συστήματος είναι απενεργοποιημένα</string>
+  <!-- Backlight brightness settings screen -->
   <string name="adaptive_backlight_title">Προσαρμοζόμενη φωτεινότητα</string>
   <string name="adaptive_backlight_summary">Δυναμική μεταβολή της φωτεινότητας για μεγιστοποίηση της διάρκειας της μπαταρίας διατηρώντας την χρηστικότητα</string>
+  <!-- Sunlight readability enhancement screen -->
   <string name="sunlight_enhancement_title">Βελτίωση υψηλής φωτεινότητας</string>
   <string name="sunlight_enhancement_summary">Ενίσχυση της φωτεινότητας και αναγνωσιμότητας της οθόνης κάτω από έντονο ηλιακό φως</string>
+  <!-- Color enhancement settings screen -->
   <string name="color_enhancement_title">Βελτίωση χρωμάτων</string>
   <string name="color_enhancement_summary">Δυναμική βελτίωση των χρωμάτων της οθόνης</string>
+  <!-- Blacklist preferences -->
   <string name="blacklist_title">Λίστα αποκλεισμένων καλούντων</string>
   <string name="blacklist_edit_dialog_title">Επεξεργασία αποκλεισμένου τηλεφωνικού αριθμού</string>
   <string name="blacklist_prefs">Ρυθμίσεις</string>
@@ -191,11 +217,14 @@
   <string name="blacklist_policy_block_calls">Φραγή εισερχόμενων κλήσεων</string>
   <string name="blacklist_policy_block_messages">Φραγή εισερχόμενων μηνυμάτων</string>
   <string name="blacklist_bad_number_add">Δεν είναι δυνατή η προσθήκη μη έγκυρου αριθμού στη λίστα αποκλεισμένων καλούντων</string>
+  <!-- Blacklist management -->
   <string name="remove_blacklist_number_title">Αφαίρεση αριθμού</string>
   <string name="remove_blacklist_entry">Θέλετε να αφαιρέσετε αυτόν τον αποκλεισμένο τηλεφωνικό αριθμό;</string>
   <string name="select_contact">Επιλογή επαφής</string>
+  <!-- Protected apps lockpattern reset button -->
   <string name="lockpattern_reset_button">Επαναφορά μοτίβου</string>
   <string name="lockpattern_settings_reset_summary">Εισάγετε την κύρια διεύθυνση ηλεκτρονικού ταχυδρομείου και τον κωδικό πρόσβασης για να επαναφέρετε το μοτίβο κλειδώματος</string>
+  <!-- Protected Apps -->
   <string name="menu_hidden_apps_delete">Επαναφορά</string>
   <string name="menu_hidden_apps_reset_lock">Επαναφέρετε το μοτίβο κλειδώματος</string>
   <string name="protected_apps">Προστατευμένες εφαρμογές</string>
@@ -205,6 +234,7 @@
   <string name="pa_login_submit_button">Είσοδος</string>
   <string name="pa_login_checking_password">Έλεγχος λογαριασμού\u2026</string>
   <string name="pa_login_incorrect_login">Τα στοιχεία είναι εσφαλμένα</string>
+  <!-- Display : Rotation  -->
   <string name="display_rotation_title">Περιστροφή</string>
   <string name="display_rotation_disabled">Απενεργοποιημένη</string>
   <string name="display_rotation_unit">μοίρες</string>
@@ -214,6 +244,7 @@
   <string name="display_rotation_90_title">90 μοίρες</string>
   <string name="display_rotation_180_title">180 μοίρες</string>
   <string name="display_rotation_270_title">270 μοίρες</string>
+  <!-- Sms security limit -->
   <string name="app_security_title">Ασφάλεια εφαρμογών</string>
   <string name="sms_security_check_limit_title">Όριο μηνυμάτων SMS</string>
   <string name="sms_security_check_limit_summary">Οι εφαρμογές μπορούν να στείλουν %d μηνύματα μέσα σε 1 λεπτό πριν χρειαστούν επιβεβαίωση</string>
@@ -224,22 +255,33 @@
   <string name="block_notifications_title">Φιλτράρισμα ειδοποιήσεων</string>
   <string name="block_notifications_summary">Διαχείριση φίλτρων και ειδοποιήσεων που αγνοούνται</string>
   <string name="no_filters_title">Δεν έχουν οριστεί φίλτρα</string>
+  <!-- CM Updater -->
   <string name="cmupdate_settings_title">Ενημερώσεις CyanogenMod</string>
+  <!-- Settings switch for updating Cyanogen recovery -->
   <string name="update_recovery_title">Ενημέρωση Cyanogen recovery</string>
   <string name="update_recovery_summary">Ενημέρωση της recovery με τις ενημερώσεις συστήματος</string>
   <string name="update_recovery_on_warning">ΣΗΜΕΙΩΣΗ: Όταν αυτή η λειτουργία είναι ενεργοποιημένη, η εγκατεστημένη recovery σας θα αντικατασταθεί με αυτήν που περιλαμβάνεται στην τρέχουσα έκδοση του το λειτουργικού συστήματος.\n\nΗ recovery θα ενημερώνεται μαζί με τις αναβαθμίσεις στο σύστημά σας, βοηθώντας να εξασφαλισθεί η συμβατότητα με μελλοντικές εκδόσεις.\n\nΘέλετε να ενεργοποιήσετε αυτήν τη λειτουργία;</string>
   <string name="update_recovery_off_warning">ΠΡΟΣΟΧΗ: Όταν αυτή η λειτουργία είναι απενεργοποιημένη, η εγκατεστημένη recovery σας δεν θα ενημερώνεται με τις αναβαθμίσεις του λειτουργικού συστήματος.\n\nΕνδέχεται να μην είναι η δυνατή η εγκατάσταση μελλοντικών ενημερώσεων με ξεπερασμένες ή τροποποιημένες εκδόσεις recovery.\n\nΘέλετε πράγματι να απενεργοποιήσετε αυτήν τη λειτουργία;</string>
+  <!-- About phone screen, CyanogenMod version -->
   <string name="mod_version">Έκδοση CyanogenMod</string>
   <string name="mod_version_default">Άγνωστη</string>
+  <!-- About phone screen, Device model -->
   <string name="device_model">Μοντέλο συσκευής</string>
+  <!-- About phone screen, Device name -->
   <string name="device_name">Όνομα συσκευής</string>
+  <!-- About phone screen, build date -->
   <string name="build_date">Ημερομηνία έκδοσης</string>
+  <!-- About phone screen, service state -->
   <string name="phone_service_state">Φωνή: <xliff:g id="voice_state">%1$s</xliff:g>, δεδομένα: <xliff:g id="data_state">%2$s</xliff:g></string>
+  <!--- Tap To Wake -->
   <string name="double_tap_to_wake_title">Διπλό χτύπημα για αφύπνιση</string>
   <string name="double_tap_to_wake_summary">Διπλό χτύπημα στην οθόνη για αφύπνιση της συσκευής</string>
+  <!-- Proximity wake -->
   <string name="proximity_wake_title">Πρόληψη ακούσιας αφύπνισης</string>
   <string name="proximity_wake_summary">Έλεγχος τον αισθητήρα εγγύτητας πριν την αφύπνιση της οθόνης</string>
+  <!-- Privacy Settings Header item -->
   <string name="privacy_settings_cyanogenmod_title">Απόρρητο</string>
+  <!-- Privacy Guard -->
   <string name="privacy_guard_default_title">Ενεργοποιημένη από προεπιλογή</string>
   <string name="privacy_guard_default_summary">Ενεργοποιημένη απο προεπιλογή για νέες εγκατεστημένες εφαρμογές</string>
   <string name="privacy_guard_manager_title">Προστασία Απορρήτου</string>
@@ -252,29 +294,43 @@
   <string name="privacy_guard_manager_show_system_apps">Εμφάνιση ενσωματωμένων εφαρμογών</string>
   <string name="privacy_guard_notification_title">Εμφάνιση ειδοποίησης</string>
   <string name="app_ops_btn_text">Τροποποίηση</string>
+  <!-- Increasing ring tone volume -->
   <string name="increasing_ring_volume_option_title">Αυξανόμενη ένταση κουδουνίσματος</string>
   <string name="increasing_ring_min_volume_title">Αρχική ένταση</string>
   <string name="increasing_ring_ramp_up_time_title">Χρονικό διάστημα αύξησης</string>
+  <!-- Advanced reboot options -->
   <string name="advanced_reboot_title">Προηγμένη επανεκκίνηση</string>
   <string name="advanced_reboot_summary">Όταν είναι ενεργή, περιλαμβάνονται στο μενού πλήκτρου απενεργοποίησης οι επιλογές επανεκκίνησης σε λειτουργία recovery, bootloader ή εκτέλεση γρήγορης επανεκκίνησης</string>
+  <!-- Setting checkbox title for Whether to enable Android debugging support on the phone. -->
   <string name="enable_adb_cm">Εντοπισμός σφαλμάτων Android</string>
+  <!-- Setting checkbox summary for Whether to enable Android debugging support on the phone -->
   <string name="enable_adb_summary_cm">Ενεργοποίηση του περιβάλλοντος Android Debug Bridge (adb)</string>
+  <!-- Android debugging over WiFi -->
   <string name="adb_over_network">ADB μέσω δικτύου</string>
   <string name="adb_over_network_summary">Λειτουργία εντοπισμού σφαλμάτων μέσω TCP/IP δικτύων (δίκτυα Wi-Fi, USB). Η ρύθμιση επαναφέρεται κατα την εκκίνηση</string>
+  <!-- Warning for Adb over Network -->
   <string name="adb_over_network_warning">ΠΡΟΣΟΧΗ: Όταν ο εντοπισμός σφαλμάτων μέσω δικτύου είναι ενεργοποιημένος, το τηλέφωνό σας είναι ανοικτό για εισβολές σε όλα τα συνδεδεμένα δίκτυα!\n\nΧρησιμοποιήστε αυτή τη λειτουργία μόνο όταν είστε συνδεδεμένοι σε έμπιστα δίκτυα.\n\nΘέλετε πραγματικά να ενεργοποιήσετε αυτή τη λειτουργία;</string>
+  <!-- Setting checkbox summary for displaying USB debugging notification -->
   <string name="adb_notify">Ειδοποίηση εντοπισμού σφαλμάτων</string>
   <string name="adb_notify_summary">Εμφάνιση ειδοποίησης όταν ο εντοπισμός σφαλμάτων μέσω USB ή δικτύου είναι ενεργοποιημένος</string>
+  <!-- Hostname setting -->
   <string name="device_hostname">Hostname συσκευής</string>
+  <!-- Development shortcut -->
   <string name="development_shortcut_title">Συντόμευση για προγραμματιστές</string>
   <string name="development_shortcut_summary">Ενεργοποίηση συντομεύσεων διαχείρισης εφαρμογών στη λίστα πρόσφατων εφαρμογών</string>
+  <!-- tap-to-sleep -->
   <string name="double_tap_to_sleep_title">Διπλό χτύπημα για αναστολή</string>
   <string name="double_tap_to_sleep_summary">Διπλό χτύπημα στη γραμμή κατάστασης για αναστολή της συσκευής</string>
+  <!-- Turn on display when power connected; turn off display when power disconnected -->
   <string name="wake_when_plugged_or_unplugged_title">Αφύπνιση κατά τη σύνδεση</string>
   <string name="wake_when_plugged_or_unplugged_summary">Ενεργοποίηση της οθόνης κατά την σύνδεση ή αποσύνδεση μιας πηγής ισχύος</string>
+  <!-- Kill app long-press back -->
   <string name="kill_app_longpress_back">Τερμ. με πλήκτρο πίσω</string>
   <string name="kill_app_longpress_back_summary">Πιέζοντας παρατεταμένα το πλήκτρο πίσω, τερματίζετε την τρέχουσα εφαρμογή</string>
+  <!-- Buttons - Enable navbar -->
   <string name="disable_navkeys_title">Ενεργοποίηση γραμμής πλοήγησης</string>
   <string name="disable_navkeys_summary">Ενεργοποίηση της γραμμής πλοήγησης στην οθόνη και απενεργοποίηση των φυσικών πλήκτρων</string>
+  <!-- Navigation Bar -->
   <string name="navigation_bar_category">Γραμμή πλοήγησης</string>
   <string name="navigation_bar_left_title">Λειτουργία για αριστερόχειρες</string>
   <string name="navigation_bar_left_summary">Τοποθέτηση της γραμμής πλοήγησης στην αριστερή πλευρά της οθόνης κατά την οριζόντια λειτουργία</string>
@@ -288,11 +344,13 @@
   <string name="navigation_bar_arrow_keys_summary">Εμφάνιση πλήκτρων αριστερού και δεξιού κέρσορα κατά την πληκτρολόγηση. Παρακάμπτει το εικονίδιο επιλογέα.</string>
   <string name="navigation_bar_recents_title">Ενέργεια παρατεταμένης πίεσης προσφάτων</string>
   <string name="header_category_personalization">Εξατομίκευση</string>
+  <!-- Status bar -->
   <string name="status_bar_title">Γραμμή κατάστασης</string>
   <string name="status_bar_toggle_brightness">Έλεγχος φωτεινότητας</string>
   <string name="status_bar_toggle_brightness_summary">Επιτρέπει τον έλεγχο της φωτεινότητας με ολίσθιση στη γραμή κατάστασης</string>
   <string name="status_bar_notif_count_title">Εμφ. αριθμού ειδοποιήσεων</string>
   <string name="status_bar_notif_count_summary">Εμφάνιση του αριθμού των ειδοποιήσεων που εκκρεμούν στη γραμμή κατάστασης</string>
+  <!-- Status bar - Clock -->
   <string name="status_bar_clock_style_title">Στυλ ρολογιού</string>
   <string name="status_bar_clock_style_right">Δεξιά</string>
   <string name="status_bar_clock_style_left">Αριστερά</string>
@@ -303,22 +361,26 @@
   <string name="status_bar_am_pm_normal">Κανονικό</string>
   <string name="status_bar_am_pm_small">Μικρό</string>
   <string name="status_bar_am_pm_hidden">Κρυφό</string>
+  <!-- Status bar - Battery -->
   <string name="status_bar_battery_style_title">Στυλ επιπέδου μπαταρίας</string>
   <string name="status_bar_battery_style_icon_portrait">Κάθετο εικονίδιο</string>
   <string name="status_bar_battery_style_icon_landscape">Οριζόντιο εικονίδιο</string>
   <string name="status_bar_battery_style_circle">Κύκλος</string>
   <string name="status_bar_battery_style_text">Κείμενο</string>
   <string name="status_bar_battery_style_hidden">Κρυφό</string>
+  <!-- Status bar - Battery percentage -->
   <string name="status_bar_battery_percentage_title">Ποσοστό μπαταρίας</string>
   <string name="status_bar_battery_percentage_default">Κρυφό</string>
   <string name="status_bar_battery_percentage_text_inside">Μέσα στο εικονίδιο</string>
   <string name="status_bar_battery_percentage_text_next">Δίπλα στο εικονίδιο</string>
+  <!-- Notification light dialogs -->
   <string name="edit_light_settings">Επεξεργασία ρυθμίσεων LED</string>
   <string name="pulse_speed_title">Μήκος και ταχύτητα παλμού</string>
   <string name="default_time">Κανονικό</string>
   <string name="custom_time">Προσαρμοσμένο</string>
   <string name="dialog_delete_title">Διαγραφή</string>
   <string name="dialog_delete_message">Αφαίρεση επιλεγμένου αντικειμένου;</string>
+  <!-- Values for the notification light pulse spinners -->
   <string name="pulse_length_always_on">Πάντα ενεργό</string>
   <string name="pulse_length_very_short">Πολύ σύντομο</string>
   <string name="pulse_length_short">Σύντομο</string>
@@ -330,12 +392,14 @@
   <string name="pulse_speed_normal">Κανονικό</string>
   <string name="pulse_speed_slow">Αργό</string>
   <string name="pulse_speed_very_slow">Πολύ αργό</string>
+  <!-- Battery light settings -->
   <string name="battery_light_title">Ένδειξη LED μπαταρίας</string>
   <string name="battery_low_pulse_title">Αναβόσβησε όταν η μπαταρία είναι χαμηλή</string>
   <string name="battery_light_list_title">Χρώματα</string>
   <string name="battery_light_low_color_title">Χαμηλή μπαταρία</string>
   <string name="battery_light_medium_color_title">Φόρτιση</string>
   <string name="battery_light_full_color_title">Πλήρης φόρτιση</string>
+  <!-- Lights settings screen, notification light settings -->
   <string name="notification_light_title">Ένδειξη LED ειδοποίησης</string>
   <string name="notification_light_general_title">Γενικά</string>
   <string name="notification_light_applist_title">Εφαρμογές</string>
@@ -347,19 +411,26 @@
   <string name="notification_light_screen_on">Φωτισμός ενώ η οθόνη είναι ενεργή</string>
   <string name="notification_light_use_multiple_leds">Πολλαπλά LED</string>
   <string name="keywords_lights_brightness_level">φωτεινότητα led</string>
+  <!-- Sound & notification > Sound section: Title for the option defining the default notification ringtone. [CHAR LIMIT=30] -->
   <string name="notification_ringtone_title_cm">Ήχος ειδοποίησης</string>
+  <!-- Launch music player when headset is connected -->
   <string name="headset_connect_player_title">Εκκίνηση εφαρμογής μουσικής</string>
   <string name="headset_connect_player_summary">Εκκίνηση της προεπιλεγμένης εφαρμογής μουσικής κατά τη σύνδεση ακουστικών</string>
+  <!-- Whether to display IME switcher notifcation -->
   <string name="ime_switcher_notify">Εικονίδιο επιλογέα</string>
   <string name="ime_switcher_notify_summary">Εμφάνιση εικονιδίου για τον επιλογέα μεθόδου εισαγωγής</string>
+  <!-- Per app controls for LP keyguard notifications -->
   <string name="app_notification_show_on_keyguard_title">Εμφάνιση στην οθόνη κλειδώματος</string>
   <string name="app_notification_show_on_keyguard_summary">Εμφάνιση ειδοποιήσεων από αυτήν την εφαρμογή στην οθόνη κλειδώματος</string>
   <string name="app_notification_no_ongoing_on_keyguard_title">Απενεργ. επίμονης ειδοποίησης στην οθόνη κλειδώματος</string>
   <string name="app_notification_no_ongoing_on_keyguard_summary">Να μην εμφανίζονται ποτέ επίμονες ειδοποιήσεις από αυτήν την εφαρμογή στην οθόνη κλειδώματος</string>
+  <!-- High touch sensitivity -->
   <string name="high_touch_sensitivity_title">Υψηλή ευαισθησία αφής</string>
   <string name="high_touch_sensitivity_summary">Αύξηση της ευαισθησίας της οθόνης αφής έτσι ώστε να μπορεί να χρησιμοποιηθεί φορώντας γάντια</string>
+  <!-- Touchscreen hovering -->
   <string name="touchscreen_hovering_title">Αιώρηση οθόνης αφής</string>
   <string name="touchscreen_hovering_summary">Σας επιτρέπει να αιωρείτε πάνω από την οθόνη όπως ένα ποντίκι σε προγράμματα περιήγησης στο web, απομακρυσμένες επιφάνειες εργασίας, κλπ</string>
+  <!-- App ops -->
   <string name="app_ops_summaries_coarse_location">τοποθεσία κατά προσέγγιση</string>
   <string name="app_ops_summaries_fine_location">ακριβής τοποθεσία</string>
   <string name="app_ops_summaries_gps">GPS</string>
@@ -474,6 +545,7 @@
   <string name="app_ops_labels_data_change">Αλλαγή δεδομένων</string>
   <string name="app_ops_labels_wake_up">Αφύπνιση</string>
   <string name="app_ops_labels_su">Πρόσβαση root</string>
+  <!-- App ops categories -->
   <string name="app_ops_categories_location">Τοποθεσία</string>
   <string name="app_ops_categories_personal">Προσωπικά</string>
   <string name="app_ops_categories_messaging">Ανταλλαγή μηνυμάτων</string>
@@ -481,10 +553,12 @@
   <string name="app_ops_categories_device">Συσκευή</string>
   <string name="app_ops_categories_bootup">Εκκίνηση</string>
   <string name="app_ops_categories_su">Πρόσβαση root</string>
+  <!-- App ops permissions -->
   <string name="app_ops_permissions_allowed">Επιτρέπεται</string>
   <string name="app_ops_permissions_ignored">Δεν επιτρέπεται</string>
   <string name="app_ops_permissions_always_ask">Ερώτηση πάντα</string>
   <string name="ok">ΟΚ</string>
+  <!-- Profiles -->
   <string name="profile_menu_delete_title">Διαγραφή</string>
   <string name="profile_action_none">Να μη γίνει αλλαγή</string>
   <string name="profile_action_system">Προεπιλογή συστήματος</string>
@@ -502,6 +576,7 @@
   <string name="profile_setup_actions_title_config">Ρυθμίστε ξανά τις ενέργειες</string>
   <string name="profile_appgroups_manage">Ομάδες εφαρμογών</string>
   <string name="profile_appgroup_manage">Διαχείριση ομάδας εφαρμογών</string>
+  <!-- Title for application group setting screen -->
   <string name="profile_appgroups_title">Ομάδες εφαρμογών</string>
   <string name="profile_new_appgroup">Νέα ομάδα εφαρμογών</string>
   <string name="profile_delete_appgroup">Διαγραφή αυτής της ομάδας εφαρμογών;</string>
@@ -509,12 +584,14 @@
   <string name="profile_appgroup_name_title">Όνομα</string>
   <string name="duplicate_appgroup_name">Το όνομα της ομάδας εφαρμογών υπάρχει ήδη!</string>
   <string name="profile_app_delete_confirm">Αφαίρεση αυτής της εφαρμογής;</string>
+  <!-- Profile Settings sound modes labels -->
   <string name="sound_mode">Ειδοποιήσεις</string>
   <string name="ringer_mode">Κουδούνισμα</string>
   <string name="lights_mode">LED</string>
   <string name="vibrate_mode">Δόνηση</string>
   <string name="choose_soundtone">Ήχος ειδοποίησης</string>
   <string name="choose_ringtone">Ήχος κλήσης</string>
+  <!-- Sound settings screen, setting option name to pick ringtone (a list dialog comes up)-->
   <string name="soundtone_title">Ήχος ειδοποίησης</string>
   <string name="no_bluetooth_triggers">Καμία συζευγμένη συσκευή Bluetooth.\nΠιέστε για τη σύζευξη μιας συσκευής Bluetooth πριν ρυθμίσετε τα εναύσματα.</string>
   <string name="no_wifi_triggers">Δεν έχει ρυθμιστεί κανένα σημείο πρόσβασης Wi\u2011Fi.\nΠιέστε για να συνδεθείτε στο Wi\u2011Fi πριν ρυθμίσετε τα εναύσματα.</string>
@@ -522,30 +599,40 @@
   <string name="no_triggers_configured_nfc">Πιέστε για να ρυθμίσετε ένα νέο έναυσμα NFC.</string>
   <string name="profile_setup_setup_triggers_description">Παρακαλώ επιλέξτε τα εναύσματα που θα ενεργοποιούν αυτό το προφίλ</string>
   <string name="profile_setup_actions_description">Τώρα ρυθμίστε τι θα συμβαίνει όταν είναι ενεργοποιημένο το προφίλ</string>
+  <!-- App ops detail -->
   <string name="app_ops_entry_summary"><xliff:g id="op">%1$s</xliff:g> (χρησιμοποιήθηκε <xliff:g id="count">%2$s</xliff:g>)</string>
   <string name="app_ops_allowed_count">Επιτράπηκε <xliff:g id="count" example="2 φορές">%s</xliff:g></string>
   <string name="app_ops_ignored_count">Δεν επιτράπηκε <xliff:g id="count" example="2 φορές">%s</xliff:g></string>
   <string name="app_ops_both_count">Επιτράπηκε <xliff:g id="count">%1$s</xliff:g>, δεν επιτράπηκε <xliff:g id="count">%2$s</xliff:g></string>
+  <!-- App ops menu options -->
   <string name="app_ops_show_user_apps">Εμφάνιση εφαρμογών χρήστη</string>
   <string name="app_ops_show_system_apps">Εμφάνιση ενσωματωμένων εφαρμογών</string>
   <string name="app_ops_reset_counters">Επαναφορά μετρητών \'επιτράπηκε/δεν επιτράπηκε\'</string>
   <string name="app_ops_reset_confirm_title">Επιβεβαίωση επαναφοράς μετρητών</string>
   <string name="app_ops_reset_confirm_mesg">Είστε σίγουρος/η ότι θέλετε να κάνετε επαναφορά των μετρητών;</string>
+  <!-- Font size sample text. This needs to be a very short string, as it is shown in
+    multiple font sizes in a limited amount of space. -->
   <string name="font_size_sample">Δείγμα</string>
+  <!-- Volume settings - Volume adjustment sound -->
   <string name="volume_adjust_sounds_title">Ήχοι πλήκτρων έντασης</string>
+  <!-- Hardware tunables - Vibrator intensity -->
   <string name="vibrator_intensity_title">Ένταση δόνησης</string>
   <string name="vibrator_warning">Δεν συνιστώνται τιμές άνω του %1$d</string>
+  <!-- Hardware tunables - Color calibration -->
   <string name="color_calibration_title">Βελτίωση χρωμάτων</string>
   <string name="color_calibration_summary">Βελτίωση των χρωμάτων της οθόνης</string>
   <string name="color_red_title">Κόκκινο</string>
   <string name="color_green_title">Πράσινο</string>
   <string name="color_blue_title">Μπλε</string>
+  <!-- Hardware tunables - Gamma calibration -->
   <string name="gamma_tuning_title_head">Βελτίωση γάμμα</string>
   <string name="gamma_tuning_summary_head">Βελτίωση επιπέδων γάμμα της οθόνης</string>
   <string name="gamma_tuning_control_set_header">Ομάδα <xliff:g id="index">%d</xliff:g></string>
+  <!-- used if no name provided by overlay -->
   <string name="gamma_tuning_contrast">Αντίθεση</string>
   <string name="gamma_tuning_brightness">Φωτεινότητα</string>
   <string name="gamma_tuning_saturation">Κορεσμός</string>
+  <!-- Display settings.  Screen color. -->
   <string name="screencolor">Χρώμα οθόνης</string>
   <string name="screencolor_summary">Βελτιώστε την απόχρωση, τον κορεσμό, την αντίθεση ή την ένταση της οθόνης</string>
   <string name="custom_screencolor">Προσαρμοσμένο χρώμα οθόνης</string>
@@ -563,26 +650,47 @@
   <string name="screen_color_setting_vivid">Ζωντανό</string>
   <string name="screen_color_setting_custom">Προσαρμοσμένο</string>
   <string name="settings_reset_button">Επαναφορά</string>
+  <!-- Message when bluetooth dialog for pin entry is showing  when HIGH security enabled-->
   <string name="bluetooth_enter_pin_msg_hs">Για σύζευξη με:<xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g>Πληκτρολογήστε τον απαιτούμενο αριθμό PIN της συσκευής (16 ή περισσότερα ψηφία):</string>
+  <!-- Bluetooth settings.  The user-visible string that is used whenever referring to the DUN profile. -->
   <string name="bluetooth_profile_dun">Πρόσβαση δικτύου dial-up</string>
+  <!-- Bluetooth settings.  The user-visible string that is used whenever referring to the SAP profile. -->
   <string name="bluetooth_profile_sap">Πρόσβαση SIM</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the DUN checkbox preference when DUN is connected. -->
   <string name="bluetooth_dun_profile_summary_connected">Συνδεθήκατε σε διακομιστή DUN</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the pbap checkbox preference when pbap is connected. -->
   <string name="bluetooth_pbap_profile_summary_connected">Συνδεθήκατε σε διακομιστή pbap</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the SAP checkbox preference when SAP is connected. -->
   <string name="bluetooth_sap_profile_summary_connected">Συνδεθήκατε σε διακομιστή πρόσβασης SIM</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the DUN checkbox preference that describes how checking it will set the DUN profile as preferred. -->
   <string name="bluetooth_dun_profile_summary_use_for">Χρήση για πρόσβαση δικτύου dial-up</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the pbap checkbox preference that describes how checking it will set the pbap profile as preferred. -->
   <string name="bluetooth_pbap_profile_summary_use_for">Χρήση για κοινή χρήση επαφών</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the SAP checkbox preference that describes how checking it will set the SAP profile as preferred. -->
   <string name="bluetooth_sap_profile_summary_use_for">Χρήση για πρόσβαση SIM</string>
+  <!-- Bluetooth settings.  A checkbox to set if we should accept all the file types regardless of their presence in MIME type whitelist -->
   <string name="bluetooth_accept_all_files">Αποδοχή όλων των τύπων αρχείων</string>
+  <!-- SIM lock settings title  [CHAR LIMIT=40] -->
   <string name="sim_lock_settings_cm">Ρυθμίσεις κλειδώματος κάρτας SIM/RUIM</string>
+  <!-- Security & location settings screen, setting option name  [CHAR LIMIT=40] -->
   <string name="sim_lock_settings_category_cm">Ορισμός κλειδώματος κάρτας SIM/RUIM</string>
+  <!-- Security & location settings screen, section heading for settings related to sim card locking  [CHAR LIMIT=40] -->
   <string name="sim_lock_settings_title_cm">Κλείδωμα κάρτας SIM/RUIM</string>
+  <!-- SIM card lock settings screen, SIM PIN dialog message when PIN disable fails-->
   <string name="sim_pin_disable_failed">Δεν είναι δυνατή η απενεργοποίηση του PIN.</string>
+  <!-- SIM card lock settings screen, SIM PIN dialog message when PIN enable fails-->
   <string name="sim_pin_enable_failed">Δεν είναι δυνατή η ενεργοποίηση του PIN.</string>
+  <!-- SIM password can't be changed as SIM LOCK is not enabled: -->
   <string name="sim_pin_change_failed_enable_sim_lock">Για να αλλάξετε το PIN της SIM/RUIM, ενεργοποιήστε το κλείδωμα SIM/RUIM πρώτα.</string>
+  <!-- SIM lock can't be changed - not supported -->
   <string name="sim_enable_disable_lock_not_supported">Το κλείδωμα SIM/RUIM δεν υποστηρίζεται από την κάρτα.</string>
+  <!-- SIM card lock settings screen, toast displayed on wrong PIN1: -->
   <string name="sim_pin_attempts">\nΠροσπάθειες που απομένουν:</string>
+  <!-- SIM card lock settings screen, toast displayed on PIN1 enable: -->
   <string name="sim_pin_enabled">ΡΙΝ1 ενεργοποιημένο</string>
+  <!-- SIM card lock settings screen, toast displayed on PIN1 disable: -->
   <string name="sim_pin_disabled">ΡΙΝ1 απενεργοποιημένο</string>
+  <!-- string resources for USB OTG & UICC features -->
   <string name="storage_usb">Αποθ. χώρος USB</string>
   <string name="storage_uicc">Αποθ. χώρος UICC</string>
   <string name="sdcard_eject" product="default">Αποπροσάρτηση κάρτας SD</string>
@@ -603,7 +711,9 @@
   <string name="uicc_format_summary" product="default">Διαγραφή όλων των δεδομένων στον αποθηκευτικό χώρο UICC όπως μουσική και φωτογραφίες</string>
   <string name="uicc_mount" product="default">Προσάρτηση αποθ. χώρου UICC</string>
   <string name="uicc_insert_summary" product="default">Εισάγετε αποθηκευτικό χώρο UICC για προσάρτηση</string>
+  <!-- Title of dialog asking user to confirm before enabling UMS. [CHAR LIMIT=48] -->
   <string name="usb_settings_enable_ums_title">Ενεργοποίηση αποθήκευσης USB;</string>
+  <!-- Message of dialog asking user to confirm before enabling UMS. [CHAR LIMIT=NONE] -->
   <string name="usb_settings_enable_ums_message">Τα στοιχεία του συστήματος και οι εφαρμογές βασίζονται στην ύπαρξη του πρωτεύων αποθηκευτικού χώρου. Αυτό το χαρακτηριστικό δημιουργεί προβλήματα σε αυτή την λειτουργία. Συνιστάται ανεπιφύλακτα να χρησιμοποιήσετε το πρωτόκολλο MTP αντ \'αυτού. Είστε σίγουροι ότι θέλετε να ενεργοποιήσετε την μαζική αποθήκευση;</string>
   <string name="dlg_confirm_sdcard_unmount_title" product="default">Αποπροσάρτηση κάρτας SD;</string>
   <string name="dlg_confirm_usb_unmount_title" product="default">Αποπροσάρτηση αποθ. χώρου USB;</string>
@@ -629,18 +739,27 @@
   <string name="sdcard_media_format_gesture_explanation" product="default">Πρέπει να σχεδιάσετε το μοτίβο ξεκλειδώματος για να επιβεβαιώσετε ότι θέλετε να διαγράψετε την κάρτα SD.</string>
   <string name="usb_media_format_gesture_explanation" product="default">Πρέπει να σχεδιάσετε το μοτίβο ξεκλειδώματος για να επιβεβαιώσετε ότι θέλετε να διαγράψετε το αποθηκευτικό χώρο USB.</string>
   <string name="uicc_media_format_gesture_explanation" product="default">Πρέπει να σχεδιάσετε το μοτίβο ξεκλειδώματος για να επιβεβαιώσετε ότι θέλετε να διαγράψετε το αποθηκευτικό χώρο UICC.</string>
+  <!-- Storage menu, label for internal media storage -->
   <string name="internal_sd_format">Διαγραφή εσωτερικού αποθ. χώρου</string>
   <string name="internal_sd_format_summary">Διαγραφή όλων των δεδομένων στον εσωτερικό αποθηκευτικό χώρο όπως μουσική και φωτογραφίες</string>
+  <!-- Media & phone storage settings screen, label for check box to erase media storage [CHAR LIMIT=30] -->
   <string name="master_clear_desc_erase_internal_storage">\n\nΓια διαγραφή μουσικής, φωτογραφιών και άλλων δεδομένων χρήστη, ο <b>εσωτερικός αποθηκευτικός χώρος</b> πρέπει να διαγραφεί.</string>
   <string name="erase_internal_storage">Διαγραφή εσωτερικού αποθ. χώρου</string>
   <string name="erase_internal_storage_description">Διαγραφή όλων των δεδομένων στον εσωτερικό αποθηκευτικό χώρο όπως μουσική ή φωτογραφίες</string>
+  <!-- Rescan storage -->
   <string name="storage_rescan_media">Σάρωση για πολυμέσα στον αποθ. χώρο</string>
+  <!-- [CHAR LIMIT=130] Location mode screen, sub category for IZat Location -->
   <string name="location_category_enhanced_location">Βελτιωμένη τοποθεσία (IZat)</string>
+  <!-- [CHAR LIMIT=NONE] App ops settings summary, on main settings screen. If clicked, the user is taken to a settings screen for app operations -->
   <string name="app_ops_settings_summary">Εμφάνιση ή αλλαγή δικαιωμάτων εφαρμογών</string>
+  <!-- Setting checkbox summary when device is in Charging mode -->
   <string name="enable_adb_summary_charging">Η συσκευή βρίσκεται σε λειτουργία φόρτισης, ο εντοπισμός σφαλμάτων μέσω USB είναι απενεργοποιημένος</string>
+  <!-- Title of checkbox setting that enable quickboot. [CHAR LIMIT=32] -->
   <string name="enable_quickboot_title">Ενεργοποίηση λειτουργίας QuickBoot</string>
+  <!-- Summary of checkbox setting that enable quickboot. [CHAR LIMIT=64] -->
   <string name="enable_quickboot_summary">Τοποθέτηση της συσκευής σε λειτουργία QuickBoot αντί για κανονική απενεργοποίηση</string>
   <string name="data_usage_tab_slot">SIM <xliff:g id="sub">%d</xliff:g></string>
+  <!-- MultiSim Settings changes-->
   <string name="sim_enabler_title">Κατάσταση SIM</string>
   <string name="sim_enabler_summary">Η SIM είναι <xliff:g id="status" example="enabled">%1$s</xliff:g></string>
   <string name="sim_enabled">ενεργοποιημένη</string>
@@ -664,12 +783,19 @@
   <string name="external_storage_turn_off">Ο εξωτερικός αποθ. χώρος έχει απενεργοποιηθεί</string>
   <string name="stats_collection_title">Συλλογή στατιστικών</string>
   <string name="stats_collection_summary">Όταν ενεργοποιηθεί, επιτρέπει τη συλλογή στατιστικών μετρήσεων</string>
+  <!-- Category title for Charging sounds (Power state change) specific Settings.
+         [CHAR LIMIT=40] -->
   <string name="power_notifications_category_title">Ήχοι φόρτισης</string>
+  <!-- Sound settings, Charging sounds enable/disable, setting check box label -->
   <string name="power_notifications_enable_title">Ενεργοποίηση</string>
   <string name="power_notifications_enable_summary">Αναπαραγωγή ήχου κατά τη σύνδεση ή την αποσύνδεση μιας πηγής ισχύος</string>
+  <!-- Sound settings, Charging sounds vibrate enable/disable, setting check box label -->
   <string name="power_notifications_vibrate_title">Δόνηση</string>
+  <!-- Sound settings, Charging sounds ringtone selection, preference label -->
   <string name="power_notifications_ringtone_title">Ήχος ειδοποίησης</string>
+  <!-- Sound settings, charging sounds label for ringtone == none -->
   <string name="power_notifications_ringtone_silent">Αθόρυβο</string>
+  <!-- Voice Wakeup -->
   <string name="voice_wakeup_settings_title">Φωνητική αφύπνιση</string>
   <string name="voice_wakeup_retrain_title">Επανεκπαίδευση της φωνής σας</string>
   <string name="voice_wakeup_activity_title">Δραστηριότητα για έναρξη</string>
@@ -677,26 +803,38 @@
   <string name="picker_activities">Δραστηριότητες</string>
   <string name="select_custom_app_title">Επιλέξτε προσαρμοσμένη εφαρμογή</string>
   <string name="select_custom_activity_title">Επιλέξτε προσαρμοσμένη δραστηριότητα</string>
+  <!-- Battery : Automatic performance profiles -->
   <string name="autoperf_title">Προφίλ ανά εφαρμογή</string>
   <string name="autoperf_summary">Αυτόματη επιλογή μιας κατάλληλης λειτουργίας μπαταρίας για διάφορες εφαρμογές</string>
   <string name="perf_profile_title">Λειτουργία μπαταρίας</string>
+  <!-- Development : Force high-end graphics -->
   <string name="pref_force_highend_gfx_title">Εξαναγκασμός high-end γραφικών</string>
   <string name="pref_force_highend_gfx_summary">Ενεργοποιεί high-end οπτικά εφέ, όπως διαφανείς μπάρες κατάστασης/πλοήγησης (απαιτεί επανεκκίνηση)</string>
+  <!-- EdgeGesture service -->
   <string name="edge_gesture_service_title">Μπλοκάρισμα γεγονότων χειρονομιών αφής</string>
   <string name="edge_gesture_service_summary">Να μην αποστέλλονται γεγονότα αφής για χειρονομίες στη γραμμή πλοήγησης και κατάστασης στις εφαρμογές</string>
+  <!-- CM Legal -->
   <string name="cmlicense_title">Νομικές πληροφορίες CyanogenMod</string>
   <string name="settings_cmlicense_activity_title">Νομικές πληροφορίες CyanogenMod</string>
+  <!-- Sizes for pattern lockscreen -->
+  <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
   <string name="lockpattern_settings_enable_error_path_title">Εμφάνιση λάθος μοτίβου</string>
+  <!-- Whether the dots will be drawn when using the lockscreen pattern -->
   <string name="lockpattern_settings_enable_dots_title">Εμφάνιση τελειών μοτίβου</string>
+  <!-- Whether the keyguard will directly pass to password entry -->
   <string name="lock_directly_show_password">Άμεση εμφάνιση εισόδου κωδικού</string>
+  <!-- Whether the keyguard will directly pass to pattern view -->
   <string name="lock_directly_show_pattern">Άμεση εμφάνιση εισόδου μοτίβου</string>
+  <!-- Whether the keyguard will directly pass to PIN entry -->
   <string name="lock_directly_show_pin">Άμεση εμφάνιση εισόδου PIN</string>
+  <!-- Screen security -->
   <string name="unlock_quick_unlock_control_title">Γρήγορο ξεκλείδωμα</string>
   <string name="unlock_quick_unlock_control_summary">Αυτόματο ξεκλείδωμα όταν δωθεί το σωστό PIN ή ο σωστός κωδικός</string>
   <string name="unlock_scramble_pin_layout_title">Ανακάτεμα διάταξης</string>
   <string name="unlock_scramble_pin_layout_summary">Ανακάτεμα της διάταξης PIN κατά το ξεκλείδωμα της συσκευής</string>
   <string name="link_volume_option_title">Σύνδεση εντάσεων ήχου κλήσης &amp; ειδοποιήσεων</string>
   <string name="notification_volume_option_title">Ένταση ήχου ειδοποιήσεων</string>
+  <!-- Notification drawer -->
   <string name="notification_drawer_title">Συρτάρι ειδοποιήσεων</string>
   <string name="quick_pulldown_title">Γρήγορο τράβηγμα</string>
   <string name="quick_pulldown_summary">Τραβώντας προς τα κάτω την %1$s άκρη της γραμμής κατάστασης εμφανίζονται οι Γρήγορες ρυθμίσεις</string>
@@ -705,6 +843,7 @@
   <string name="quick_pulldown_off">Ανενεργό</string>
   <string name="quick_pulldown_left">Αριστερά</string>
   <string name="quick_pulldown_right">Δεξιά</string>
+  <!-- Weather in status bar header -->
   <string name="status_bar_show_weather_title">Εμφάνιση καιρού</string>
   <string name="status_bar_show_weather_summary">Εμφάνιση του καιρού πάνω από τον πίνακα Γρήγορων ρυθμίσεων</string>
   <string name="qs_category_title">Πίνακας Γρήγορων ρυθμίσεων</string>
@@ -748,17 +887,26 @@
   <string name="qs_advanced_location_title">Προηγμένες ρυθμίσεις τοποθεσίας</string>
   <string name="qs_advanced_location_summary">Ενεργοποίηση προηγμένων ρυθμίσεων τοποθεσίας στις Γρήγορες ρυθμίσεις</string>
   <string name="sim_no_number_set">Δεν έχει οριστεί αριθμός</string>
+  <!-- Gesture Settings -->
+  <!-- Settings main menu entry -->
   <string name="gesture_settings_title">Χειρονομίες</string>
+  <!-- Themes Settings -->
+  <!-- Settings main menu entry -->
   <string name="themes_settings_title">Θέματα</string>
+  <!-- WiFi Ad-Hoc mode -->
   <string name="wifi_mode">Λειτουργία</string>
   <string name="wifi_mode_ibss">Δίκτυο Ad-Hoc (IBSS)</string>
   <string name="wifi_mode_ibss_short">Ad-Hoc</string>
   <string name="wifi_ibss_freq_title">Κανάλι / Συχνότητα</string>
   <string name="wifi_channel">Κανάλι</string>
   <string name="wifi_mhz">MHz</string>
+  <!-- WiFi auto-configure priorities -->
   <string name="wifi_auto_config_priorities">Αυτόματη προτεραιότητα</string>
+  <!-- About phone settings screen, setting option dialog title to show regulatory information [CHAR LIMIT=25] -->
+  <!-- SAR information -->
   <string name="maximum_head_level">Κεφάλι: %1$s W/kg</string>
   <string name="maximum_body_level">Σώμα: %1$s W/kg</string>
+  <!-- IC Codes -->
   <string name="ic_code_model">Μοντέλο: %1$s</string>
   <string name="ic_code_full">IC: %1$s</string>
   <string name="power_menu_expanded_desktop">Επέκταση επιφάνειας</string>
@@ -779,17 +927,21 @@
   <string name="lockscreen_choose_action_title">Επιλέξτε ενέργεια</string>
   <string name="lockscreen_visualizer_title">Εμφάνιση οπτικοποίησης μουσικής</string>
   <string name="nfc_title_category">NFC</string>
+  <!-- WhisperPush -->
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Διαχείριση ρυθμίσεων ασφαλών SMS</string>
   <string name="navigation_ring_title">Συντομεύσεις δαχτυλιδιού πλοήγησης</string>
   <string name="navigation_ring_message">Πιέστε το εικονίδιο επεξεργασίας για να ανοίξετε το δαχτυλίδι πλοήγησης.\n\nΕπιλέξτε μια συντόμευση για να ρυθμίσετε τη συμπεριφορά της.\n\nΠιέστε το εικονίδιο \'\u2713\' για να αποθηκεύσετε τις αλλαγές σας, ή \'Επαναφορά\' για να επαναφέρετε τη διάταξη στις προεπιλεγμένες ρυθμίσεις.</string>
+  <!-- Display & Lights screen, setting options for LCD density -->
   <string name="lcd_density">Πυκνότητα LCD</string>
   <string name="dialog_title_lcd_density">Πυκνότητα LCD</string>
   <string name="lcd_density_value_format">%d DPI</string>
   <string name="lcd_density_default_value_format">%d DPI (προεπιλογή)</string>
   <string name="restarting_ui">Επανεκκίνηση UI\u2026</string>
+  <!-- Stylus Icon -->
   <string name="stylus_icon_enabled_title">Ένδειξη κατά τη χρήση γραφίδας</string>
   <string name="stylus_icon_enabled_summary">Εμφάνιση ενδεικτικού εικονιδίου όταν αιωρείτε ή σχεδίαζετε με τη γραφίδα</string>
+  <!-- Stylus Gestures -->
   <string name="gestures_settings_title">Χειρονομίες γραφίδας</string>
   <string name="category_spen_title">Χειρονομίες γραφίδας</string>
   <string name="enable_subcat_title">Γραφίδα</string>
@@ -802,12 +954,14 @@
   <string name="gestures_down_spen_title_head">Σύρσιμο κάτω</string>
   <string name="gestures_long_spen_title_head">Παρατεταμένο πάτημα</string>
   <string name="gestures_double_spen_title_head">Διπλό χτύπημα</string>
+  <!-- Gestures Options -->
   <string name="gestures_action_empty">Καμία ενέργεια</string>
   <string name="gestures_action_home">Αρχική σελίδα</string>
   <string name="gestures_action_back">Πίσω</string>
   <string name="gestures_action_menu">Μενού</string>
   <string name="gestures_action_search">Αναζήτηση</string>
   <string name="gestures_action_recent">Πρόσφατες εφαρμογές</string>
+  <!-- Stylus gestures -->
   <string name="stylus_app_not_installed">Το %s δεν είναι εγκατεστημένο</string>
   <string name="advanced">Για προχωρημένους</string>
   <string name="advanced_mode_title">Λειτουργία για προχωρημένους</string>
@@ -823,6 +977,7 @@
   <string name="lockscreen_settings">Οθόνη κλειδώματος</string>
   <string name="category_lights">Φωτισμός</string>
   <string name="power_usage_history_title">Χρήση μπαταρίας</string>
+  <!-- Show/Hide Search Bar -->
   <string name="recents_show_searchbar">Εμφάνιση αναζήτησης στα \"πρόσφατα\"</string>
   <string name="keywords_recents_show_searchbar">πρόσφατα πρόσφατες απενεργοποίηση ενεργοποίηση εμφάνιση απόκρυψη αναζήτηση μπάρα γραμμή αναζήτησης</string>
   <string name="sim_ringtone_title">Ήχος κλήσης SIM %d</string>
@@ -832,6 +987,7 @@
   <string name="none_is_silent_summary_on">Τα ξυπνητήρια δεν θα αγνοούνται στην λειτουργία αθόρυβου</string>
   <string name="none_is_silent_summary_off">Τα ξυπνητήρια θα αγνοούνται στην λειτουργία διακοπών</string>
   <string name="allow_lights_title">Να επιτρέπεται το LED ειδοποίησης</string>
+  <!-- LiveDisplay -->
   <string name="live_display_summary">Βελτιστοποίηση της οθόνης σας με βάση την ώρα της ημέρας και τις συνθήκες περιβάλλοντος για βελτίωση της αναγνωσιμότητας και μείωση της καταπόνησης των ματιών</string>
   <string name="live_display_mode">Λειτουργία οθόνης</string>
   <string name="live_display_color_temperature_title">Θερμοκρασία χρώματος</string>
@@ -861,6 +1017,8 @@
   <string name="battery_saver_threshold">Όριο εξοικονόμησης μπαταρίας</string>
   <string name="battery_saver_summary">Μείωση της απόδοσης και περιορισμός των δεδομένων παρασκηνίου</string>
   <string name="battery_saver_summary_unavailable">Δεν είναι διαθέσιμο κατά τη φόρτιση</string>
+  <!-- Anonymous Statistics #CM -->
+  <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
   <string name="anonymous_statistics_title">Στατιστικά CyanogenMod</string>
   <string name="anonymous_statistics_summary">Βοηθήστε το CyanogenMod να γίνει καλύτερο ενεργοποιώντας την αποστολή ανώνυμων στατιστικών στοιχείων</string>
   <string name="anonymous_statistics_warning_title">Σχετικά</string>
@@ -873,27 +1031,34 @@
   <string name="preview_data_title">Προεπισκόπηση δεδομένων</string>
   <string name="view_stats_title">Εμφάνιση στατιστικών</string>
   <string name="anonymous_learn_more">Μάθετε περισσότερα</string>
+  <!-- Anonymous Statistics - Preview -->
   <string name="preview_id_title">Μοναδικό αναγνωριστικό</string>
   <string name="preview_device_title">Συσκευή</string>
   <string name="preview_version_title">Έκδοση</string>
   <string name="preview_country_title">Χώρα</string>
   <string name="preview_carrier_title">Εταιρία δικτύου</string>
+  <!-- Heads up -->
   <string name="heads_up_notifications">Αναδυόμενες ειδοποιήσεις</string>
   <string name="summary_heads_up_enabled">Οι αναδυόμενες ειδοποιήσεις είναι ενεργές</string>
   <string name="summary_heads_up_disabled">Οι αναδυόμενες ειδοποιήσεις είναι ανενεργές</string>
+  <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
   <string name="master_clear_desc_cm" product="tablet">Αυτό θα διαγράψει όλα τα δεδομένα από τον <b>εσωτερικό χώρο αποθήκευσης</b> του tablet σας, συμπεριλαμβάνοντας:\n\n<li>Λογαριασμούς της συσκευής σας</li>\n<li>Δεδομένα και ρυθμίσεις εφαρμογών και συστήματος</li>\n<li>Κατεβασμένες εφαρμογές</li></string>
+  <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
   <string name="master_clear_desc_cm" product="default">Αυτό θα διαγράψει όλα τα δεδομένα από τον <b>εσωτερικό χώρο αποθήκευσης</b> του τηλεφώνου σας, συμπεριλαμβάνοντας:\n\n<li>Λογαριασμούς της συσκευής σας</li>\n<li>Δεδομένα και ρυθμίσεις εφαρμογών και συστήματος</li>\n<li>Κατεβασμένες εφαρμογές</li></string>
+  <!-- Killswitch -->
   <string name="lock_to_cyanogen_title">Προστασία Συσκευής</string>
   <string name="lock_to_cyanogen_summary">Απαίτηση του κωδικού πρόσβασης του λογαριασμού σας Cyanogen OS ακόμα και μετά από επαναφορά εργοστασιακών ρυθμίσεων</string>
   <string name="lock_to_cyanogen_create_account_msg">Η συσκευή σας χρησιμοποιεί τον κωδικό πρόσβασης λογαριασμού Cyanogen OS για να προστατεύσει τη συσκευή σας ακόμη και στην περίπτωση επαναφοράς εργοστασιακών ρυθμίσεων. Θα πρέπει να δημιουργήσετε ένα λογαριασμό Cyanogen OS.</string>
   <string name="lock_to_cyanogen_disable_msg">Απενεργοποιώντας αυτό το χαρακτηριστικό επιτρέπετε σε μη εξουσιοδοτημένους χρήστες να επαναφέρουν το τηλέφωνό σας στις εργοστασιακές ρυθμίσεις εάν κλαπεί. Τα προσωπικά σας δεδομένα δεν μπορούν να προστατευθούν. Θέλετε να απενεργοποιήσετε αυτό το χαρακτηριστικό;</string>
   <string name="lock_to_cyanogen_master_clear_warning">Η Προστασία Συσκευής είναι ενεργοποιημένη. Παρακαλούμε απενεργοποιήστε την για να συνεχίσετε την επαναφορά της συσκευής σας.</string>
   <string name="bluetooth_pan_profile_summary_use_for_error">Σφάλμα σύνδεσης. Είναι η πρόσδεση Bluetooth ενεργοποιημένη σε αυτήν τη συσκευή;</string>
+  <!-- MSIM SIM status -->
   <string name="sim_card_status_title">Κατάσταση SIM %d</string>
   <string name="sim_card_lock_settings_title">Ρυθμίσεις κλειδώματος SIM %d</string>
   <string name="sim_card_summary_empty">Δεν έχει τοποθετηθεί SIM</string>
   <string name="sim_mobile_network_settings_category_title">Ρυθμίσεις δικτύων κινητής τηλεφωνίας</string>
   <string name="sim_mobile_network_settings_title">Ρυθμίσεις SIM %d</string>
+  <!-- Factory reset strings -->
   <string name="factory_reset_instructions_title">Προσωπικά δεδομένα &amp; εφαρμογές</string>
   <string name="factory_reset_instructions_summary">Αυτό θα διαγράψει όλους τους λογαριασμούς, τις εφαρμογές, τα δεδομένα εφαρμογών σας και τις ρυθμίσεις συστήματος στην συσκευή</string>
   <string name="factory_reset_personal_content">Προσωπικό περιεχόμενο</string>
@@ -904,14 +1069,19 @@
   <string name="factory_reset_erase_sd_card_summary">Διαγραφή όλων των δεδομένων στην κάρτα SD, συμπεριλαμβάνοντας μουσική και φωτογραφίες</string>
   <string name="factory_reset_warning_text_reset_now">ΕΠΑΝΑΦΟΡΑ ΤΩΡΑ</string>
   <string name="factory_reset_warning_text_message">Όλοι οι λογαριασμοί, οι εφαρμογές, τα δεδομένα εφαρμογών και οι ρυθμίσεις συστήματος θα διαγραφούν από την συσκευή. Αυτή η ενέργεια είναι μη αναστρέψιμη.</string>
+  <!-- Wi-Fi filters -->
   <string name="wifi_show_all">Εμφάνιση όλων</string>
   <string name="wifi_show_protected">Εμφάνιση προστατευόμενων δικτύων</string>
   <string name="wifi_show_open">Εμφάνιση ανοικτών δικτύων</string>
   <string name="wifi_empty_list_protected">Κανένα προστατευόμενο δίκτυο Wi\u2011Fi</string>
   <string name="wifi_empty_list_open">Κανένα ανοικτό δίκτυο Wi\u2011Fi</string>
+  <!-- Wi-Fi region code -->
   <string name="wifi_setting_countrycode_title">Κωδικός περιοχής Wi-Fi</string>
+  <!-- Wi-Fi settings screen, setting summary for setting the wifi frequency band [CHAR LIMIT=50]-->
   <string name="wifi_setting_countrycode_summary">Προσδιορίστε τον κωδικό περιοχής για το Wi-Fi</string>
+  <!-- Wi-Fi settings screen, error message when the frequency band could not be set [CHAR LIMIT=50]. -->
   <string name="wifi_setting_countrycode_error">Πρόβλημα κατά τη ρύθμιση του κωδικού περιοχής.</string>
+  <!-- Wi-Fi region countries -->
   <string name="wifi_countrycode_entries_us">Ηνωμένες Πολιτείες</string>
   <string name="wifi_countrycode_entries_ca">Καναδάς, Ταϊβάν</string>
   <string name="wifi_countrycode_entries_de">Γερμανία</string>
@@ -924,65 +1094,114 @@
   <string name="wifi_countrycode_entries_sg">Ισραήλ, Σιγκαπούρη</string>
   <string name="wifi_countrycode_entries_br">Βραζιλία</string>
   <string name="wifi_countrycode_entries_in">Ινδία</string>
+  <!-- FINGERPRINT -->
+  <!-- Title for preference which sets the unlock. This is only used when the device has
+         a fingerprint sensor , otherwise just "unlock_set_unlock_launch_picker_title" is used -->
   <string name="unlock_set_unlock_launch_picker_title_with_fingerprint">Ξεκλείδωμα οθόνης &amp; Δακτυλικό αποτύπωμα</string>
+  <!-- Summary for "Configure lockscreen" when security Fingerprint is enabled [CHAR LIMIT=45] -->
   <string name="unlock_set_unlock_mode_fingerprint">Δακτυλικό αποτύπωμα</string>
+  <!-- Title for preference that guides the user through creating a fingerprint [CHAR LIMIT=22] -->
   <string name="unlock_set_unlock_fingerprint_title">Δακτυλικό αποτύπωμα</string>
+  <!-- List item title to add a new fingerprint in fingerprint list screen -->
   <string name="fingerprint_item_add_new_fingerprint">Προσθήκη νέου δακτυλικού αποτυπώματος</string>
+  <!-- Title for preference in fingerprint lockscreen settings, takes user to fingerprint list -->
   <string name="fingerprint_manage_fingerprints">Διαχείριση δακτυλικών αποτυπωμάτων</string>
+  <!-- Summary for preference in fingerprint lockscreen settings, takes user to fingerprint list -->
   <string name="fingerprint_manage_fingerprints_summary">Προσθήκη ή αφαίρεση αποθηκευμένων δακτυλικών αποτυπωμάτων</string>
+  <!-- Info explaining the backup lock which is used for fingerprint -->
   <string name="unlock_backup_fingerprint_info_summary">Εάν δεν μπορείτε να χρησιμοποιήσετε το δάχτυλό σας, πώς θέλετε να ξεκλειδώσετε;</string>
+  <!-- Dialog title for renaming your fingerprint -->
   <string name="fingerprint_dialog_title_rename">Επεξεργασία δακτυλικού αποτυπώματος</string>
+  <!-- EditText label for renaming your fingerprint in rename dialog -->
   <string name="fingerprint_dialog_name_label">Όνομα δακτυλικού αποτυπώματος</string>
+  <!-- Title for dialog that shows when the user cannot add anymore fingers -->
   <string name="fingerprint_dialog_title_max_fingers_reached">Μέγιστα δακτυλικά αποτυπώματα</string>
+  <!-- Message for dialog that shows when the user cannot add anymore fingers -->
   <string name="fingerprint_dialog_msg_max_fingers_reached">Μπορείτε να εγγράψετε μόνο <xliff:g id="finger" example="5">%d</xliff:g> δακτυλικά αποτυπώματα. Διαγράψτε ένα υπάρχον δακτυλικό αποτύπωμα.</string>
+  <!-- Title for number of finger prints enrolled -->
   <string name="fingerprint_title_manage_fingerprints"><xliff:g id="finger">%d</xliff:g> από <xliff:g id="max">%d</xliff:g> δακτυλικά αποτυπώματα έχουν εγγραφεί</string>
+  <!-- Description for managing fingerprints -->
   <string name="manage_fingerprints_description">Τα δακτυλικά αποτυπώματα σας επιτρέπουν να ξεκλειδώσετε το τηλέφωνό σας γρήγορα και να βγάλετε φωτογραφίες.</string>
+  <!-- Fingerprint enrollment introduction title -->
   <string name="fingerprint_enrollment_introduction_title">Βρείτε τον αισθητήρα σας</string>
+  <!-- Fingerprint enrollment introduction instructions -->
   <string name="fingerprint_enrollment_introduction_instructions">Ο αισθητήρας βρίσκεται στο μπροστινό ή πίσω μέρος του τηλεφώνου σας.</string>
+  <!-- Fingerprint enrollment scan fingerprint title -->
   <string name="fingerprint_enrollment_scan_title">Κρατήστε πατημένο για 3 δευτερόλεπτα</string>
+  <!-- Fingerprint enrollment scan fingerprint instructions -->
   <string name="fingerprint_enrollment_scan_instructions">Τοποθετήστε το δείκτη του χεριού σας στον αισθητήρα δακτυλικών αποτυπωμάτων για να ξεκινήσει το πρόγραμμα εγκατάστασης. Ανασηκώσετε το δάχτυλό σας μόλις αισθανθείτε μια δόνηση.</string>
+  <!-- Fingerprint enrollment error title during first step only -->
   <string name="fingerprint_enrollment_error_title_wrong_sensor">Παρακαλώ προσπαθήστε ξανά</string>
+  <!-- Fingerprint enrollment error message -->
   <string name="fingerprint_enrollment_error_message">Τοποθετήστε το δάχτυλό σας στον αισθητήρα δακτυλικών αποτυπωμάτων για να εξασφαλίσετε μια ακριβή σάρωση. Επίσης, βεβαιωθείτε ότι χρησιμοποιείτε το ίδιο δάχτυλο. Ανασηκώσετε το δάχτυλό σας μόλις αισθανθείτε μια δόνηση.</string>
+  <!-- Fingerprint enrollment error instructions -->
   <string name="fingerprint_enrollment_scan_instructions">Τοποθετήστε το δείκτη του χεριού σας στον αισθητήρα δακτυλικών αποτυπωμάτων για να ξεκινήσει το πρόγραμμα εγκατάστασης. Ανασηκώσετε το δάχτυλό σας μόλις αισθανθείτε μια δόνηση.</string>
+  <!-- Fingerprint enrollment half way break title -->
   <string name="fingerprint_enrollment_break_title">Συνέχιση με το τρέχον αποτύπωμα</string>
+  <!-- Fingerprint enrollment introduction instructions -->
   <string name="fingerprint_enrollment_break_instructions">Συνεχίστε για να καταγραφούν οι άκρες του αποτυπώματός σας. Ανασηκώσετε το δάχτυλό σας μόλις αισθανθείτε μια δόνηση.</string>
+  <!-- Fingerprint enrollment finished title -->
   <string name="fingerprint_enrollment_finished_title">Το δακτυλικό αποτύπωμα προστέθηκε!</string>
+  <!-- Fingerprint enrollment finished instructions -->
   <string name="fingerprint_enrollment_finished_message">Το δακτυλικό σας αποτύπωμα μπορεί πλέον να χρησιμοποιηθεί για να ξεκλειδώσετε την οθόνη σας ή να βγάλετε selfies χρησιμοποιώντας τη φωτογραφική μηχανή σας.</string>
+  <!-- Next button title for finding sensor -->
   <string name="fingerprint_enrollment_found_it_label">Βρέθηκε</string>
+  <!-- Next button title for finding sensor -->
   <string name="fingerprint_enrollment_add_another_label">Προσθήκη άλλου</string>
+  <!-- Next button title for finding sensor -->
   <string name="fingerprint_enrollment_done_label">Τέλος</string>
+  <!-- Wrong fingerprint sensor dialog title -->
   <string name="fingerprint_dialog_title_wrong_sensor">Ουπς, αυτός δεν είναι ο αισθητήρας σας</string>
+  <!-- Wrong fingerprint sensor dialog message -->
   <string name="fingerprint_dialog_msg_wrong_sensor">Χρησιμοποιήστε τον αισθητήρα δακτυλικών αποτυπωμάτων στο μπροστινό ή πίσω μέρος του τηλεφώνου σας</string>
+  <!-- Failed fingerprint enrollment dialog title -->
   <string name="fingerprint_dialog_title_failed_enrollment">Δεν είναι δυνατή η ανάγνωση του δακτυλικού αποτυπώματος</string>
+  <!-- Failed fingerprint enrollment dialog message -->
   <string name="fingerprint_dialog_msg_failed_enrollment">Δοκιμάστε να χρησιμοποιήσετε ένα διαφορετικό δάχτυλο. Δεν ήταν δυνατή η ανάγνωση αυτού του δακτυλικού αποτυπώματος.</string>
+  <!-- Failed fingerprint enrollment button label -->
   <string name="fingerprint_enrollment_restart_label">Επανεκκίνηση</string>
+  <!-- Successful scan title for first successful scan -->
   <string name="fingerprint_successful_scan_title_first">Τέλεια! Τώρα επαναλάβετε</string>
+  <!-- Successful scan title for second to last successful scan -->
   <string name="fingerprint_successful_scan_final">Άλλη μια φορά παρακαλώ</string>
+  <!-- Successful scan title for all other successful scans -->
   <string name="fingerprint_successful_scan_title_1">Ωραία! Συνεχίστε</string>
   <string name="fingerprint_successful_scan_title_2">Πολύ ωραία! Και ξανά</string>
   <string name="fingerprint_successful_scan_title_3">Πολύ καλά! Συνεχίστε έτσι</string>
   <string name="fingerprint_successful_scan_title_4">Λίγες φορές ακόμη</string>
   <string name="fingerprint_successful_scan_title_5">Περίφημα! Και ξανά</string>
   <string name="fingerprint_successful_scan_title_6">Σχεδόν εκεί</string>
+  <!-- Fingerprint enrollment error titles -->
   <string name="fingerprint_enrollment_error_title_1">Ουπς. Δοκιμάστε ξανά</string>
   <string name="fingerprint_enrollment_error_title_2">Συγνώμη, δεν το \'πιασα</string>
   <string name="fingerprint_enrollment_error_title_3">Χμμ, κάτι πήγε στραβά</string>
   <string name="fingerprint_enrollment_error_title_4">Ωχ, προσπαθήστε ξανά</string>
   <string name="fingerprint_enrollment_error_title_5">Ουπς, υπήρξε ένα πρόβλημα</string>
+  <!-- Title for lockscreen settings, on dashboard, that is only used when a device supports
+         the fingerprint feature -->
   <string name="lockscreen_settings_and_fingerprint">Οθόνη κλειδώματος &amp; δακτυλικό αποτύπωμα</string>
+  <!-- Menu label for reset the battery stats -->
   <string name="menu_stats_reset">Επαναφορά στατιστικών</string>
+  <!-- Reset stats confirmation dialog's message -->
   <string name="reset_stats_msg">Θα γίνει επαναφορά των στατιστικών μπαταρίας</string>
+  <!-- Dock battery not present message -->
   <string name="dock_battery_not_present">Δεν υπάρχει μπαταρία dock</string>
+  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging on Dock AC. -->
   <string name="battery_info_status_charging_dock_ac">Φόρτιση με AC βάσης σύνδεσης</string>
+  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging over Dock USB. -->
   <string name="battery_info_status_charging_dock_usb">Φόρτιση μέσω USB βάσης σύνδεσης</string>
+  <!-- Lock screen setup wizard pattern complexity -->
   <string name="setup_lock_pattern_size_title">Πολυπλοκότητα μοτίβου</string>
   <string name="setup_lock_pattern_size_details">Πόσους κόμβους θα θέλατε να χρησιμοποιήσετε με το μοτίβο σας; Όσο περισσότεροι κόμβοι, τόσο πιο σύνθετο μπορεί να είναι το μοτίβο.</string>
+  <!-- LTO download data over wi-fi only -->
   <string name="lto_download_data_wifi_only">Λήψη βοηθητικών δεδομένων GPS</string>
   <string name="lto_download_data_wifi_only_on">Μέσω όλων των δικτύων</string>
   <string name="lto_download_data_wifi_only_off">Μόνο μέσω δικτύων Wi\u2011Fi</string>
+  <!-- Keep screen on strings -->
   <string name="keep_screen_on_never">Ποτέ</string>
   <string name="keep_screen_on_debugging">Κατά τον εντοπισμό σφαλμάτων USB</string>
   <string name="keep_screen_on_charging">Κατά τη φόρτιση</string>
+  <!-- Contributors cloud activity -->
   <string name="contributors_cloud_fragment_title">Συνεισφέροντες</string>
   <string name="contributors_cloud_loading_message">Φόρτωση δεδομένων συνεισφερόντων\u2026</string>
   <string name="contributors_cloud_failed_message">Δεν είναι δυνατή η φόρτωση των δεδομένων συνεισφερόντων</string>

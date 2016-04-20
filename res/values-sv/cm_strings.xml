@@ -16,13 +16,18 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
   <plurals name="show_dev_countdown_cm">
     <item quantity="one">Du är nu <xliff:g id="step_count">%1$d</xliff:g> steg från att aktivera utvecklingsinställningar.</item>
     <item quantity="other">Du är nu <xliff:g id="step_count">%1$d</xliff:g> steg från att aktivera utvecklingsinställningar.</item>
   </plurals>
+  <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
   <string name="show_dev_on_cm">Du har aktiverat utvecklingsinställningar!</string>
+  <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
   <string name="show_dev_already_cm">Det behövs inte, du har redan aktiverat utvecklingsinställningar.</string>
+  <!-- Launch Dev Tools -->
   <string name="development_tools_title">Utvecklingsverktyg</string>
+  <!-- Setting checkbox title for root access -->
   <string name="root_access">Rootåtkomst</string>
   <string name="root_access_warning_title">Tillåt rootåtkomst?</string>
   <string name="root_access_warning_message">Att tillåta appar att begära rootåtkomst är mycket farligt och kan riskera säkerheten i ditt system!</string>
@@ -30,14 +35,16 @@
   <string name="root_access_apps">Endast appar</string>
   <string name="root_access_adb">Endast ADB</string>
   <string name="root_access_all">Appar och ADB</string>
-  <string name="ring_mode_title">Ringningsläge</string>
+  <!-- Sound settings screen -->
+  <string name="ring_mode_title">Ringläge</string>
   <string name="ring_mode_normal">Normal</string>
   <string name="ring_mode_vibrate">Vibrera</string>
   <string name="ring_mode_mute">Tyst</string>
+  <!-- Profiles settings  -->
   <string name="profiles_settings_title">Systemprofiler</string>
   <string name="profiles_add">Lägg till</string>
   <string name="profile_settings_title">Profil</string>
-  <string name="profile_empty_list_profiles_off">För att konfigurera och använda systemprofiler, sätt på profiler.</string>
+  <string name="profile_empty_list_profiles_off">För att konfigurera och använda Systemprofiler, aktivera profiler.</string>
   <string name="profile_trigger_configure">Konfigurera utlösare</string>
   <string name="profile_write_nfc_tag">Skriv till NFC-tagg</string>
   <string name="profile_write_touch_tag">Rör vid tagg för att skriva</string>
@@ -55,32 +62,43 @@
   <string name="profile_app_group_category_title">Aviseringsåsidosättning</string>
   <string name="profile_app_group_item_instructions">Lägg till eller ta bort grupper</string>
   <string name="profile_app_group_item_instructions_summary">Lägg till eller ta bort åsidosättning av avisering för app-grupper till denna profil</string>
+  <!-- Profile mode options. -->
   <string name="profile_entries_on">På</string>
   <string name="profile_entries_off">Av</string>
   <string name="profile_entries_no_override">Ingen åsidosättning</string>
+  <!-- Add Profile -->
   <string name="profile_name_title">Namn</string>
   <string name="new_profile_name">&lt;ny profil&gt;</string>
+  <!-- Rename Dialog  -->
   <string name="rename_dialog_title">Byt namn</string>
   <string name="rename_dialog_message">Ange ett nytt namn</string>
   <string name="rename_dialog_hint">Ange profilnamnet</string>
+  <!-- Reset Profiles -->
   <string name="profile_reset_title">Återställ</string>
   <string name="profile_reset_message">Ta bort alla skapade profiler och återställ dem till standard?</string>
+  <!-- Profile network mode -->
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_4g">LTE</string>
   <string name="profile_networkmode_2g3g">2G/3G</string>
   <string name="profile_networkmode_2g3g4g">2G/3G/LTE</string>
+  <!-- Profile Config screen PreferenceGroup titles -->
   <string name="profile_volumeoverrides_title">Åsidosättningar av volym</string>
   <string name="volume_override_summary">Ställ till %1$s/%2$s</string>
   <string name="profile_volume_override_checkbox_label">Åsidosätt volym</string>
+  <!-- Menu item for managing profiles -->
   <string name="profile_profiles_manage">Profiler</string>
   <string name="profile_profile_manage">Hantera profiler</string>
+  <!-- Profile settings screen, section header for settings related to notification profiles -->
   <string name="profile_settings">Profilinställningar</string>
   <string name="profile_trigger_connect">Vid anslutning</string>
   <string name="profile_trigger_disconnect">Vid frånkoppling</string>
   <string name="profile_trigger_notrigger">Ingen utlösare</string>
+  <!-- Title for application group setting screen -->
   <string name="profile_applist_title">Appar</string>
+  <!-- Add application dialog box title -->
   <string name="profile_choose_app">Välj app</string>
+  <!-- Profiles - system settings -->
   <string name="profile_system_settings_title">Systeminställningar</string>
   <string name="profile_lockmode_title">Låsskärmsläge</string>
   <string name="profile_lockmode_policy_disabled_summary">Detta profilalternativ är inaktiverat av en enhetsadministratörspolicy</string>
@@ -90,6 +108,7 @@
   <string name="profile_brightness_title">Skärmljusstyrka</string>
   <string name="profile_brightness_override_summary">Inställd på %1$d%%</string>
   <string name="profile_brightness_override_checkbox_label">Åsidosätt ljusstyrka</string>
+  <!-- Connection override toggles (not all are used at this time ) -->
   <string name="toggleWifi">Wi\u2011Fi</string>
   <string name="toggleWifiAp">Mobil Wi\u2011Fi-internetdelning</string>
   <string name="toggleBluetooth">Bluetooth</string>
@@ -98,6 +117,7 @@
   <string name="toggleSync">Synkronisera data automatiskt</string>
   <string name="toggle2g3g4g">Föredragen nätverkstyp</string>
   <string name="toggleNfc">NFC</string>
+  <!-- Hardware keys -->
   <string name="button_pref_title">Knappar</string>
   <string name="hardware_keys_power_key_title">Avstängningsknapp</string>
   <string name="hardware_keys_home_key_title">Hemknapp</string>
@@ -140,6 +160,7 @@
   <string name="button_wake_summary">Åsidosätter uppspelningskontroll</string>
   <string name="home_answer_call_title">Svara samtal</string>
   <string name="home_answer_call_summary">Tryck på hemknappen kommer att svara på inkommande samtal</string>
+  <!-- Key backlight -->
   <string name="button_backlight_title">Knappljus</string>
   <string name="button_backlight_enabled">Lys upp knappar</string>
   <string name="keyboard_backlight_enabled">Lys upp tangentbord</string>
@@ -150,6 +171,7 @@
   <string name="backlight_summary_disabled">Inaktiverat</string>
   <string name="backlight_summary_enabled_with_timeout">Aktiverat i <xliff:g id="timeout">%s</xliff:g></string>
   <string name="backlight_summary_enabled">Aktiverat</string>
+  <!-- Power menu -->
   <string name="power_menu_title">Avstängningsmeny</string>
   <string name="power_menu_reboot_title">Omstartsmeny</string>
   <string name="power_menu_screenshot_title">Skärmdump</string>
@@ -162,12 +184,16 @@
   <string name="power_menu_sound_title">Ljudpanel</string>
   <string name="power_menu_bug_report_disabled">Buggrapportering har inaktiverats i utvecklarinställningarna</string>
   <string name="power_menu_profiles_disabled">Systemprofiler är inaktiverade</string>
+  <!-- Backlight brightness settings screen -->
   <string name="adaptive_backlight_title">Adaptivt bakgrundsljus</string>
   <string name="adaptive_backlight_summary">Justera skärmens ljusstyrka dynamiskt för att maximera batteritiden med bibehållen användbarhet</string>
+  <!-- Sunlight readability enhancement screen -->
   <string name="sunlight_enhancement_title">Solljusförstärkning</string>
   <string name="sunlight_enhancement_summary">Förstärk skärmljusstyrkan och läsbarhet vid starkt solljus</string>
+  <!-- Color enhancement settings screen -->
   <string name="color_enhancement_title">Färgförbättring</string>
   <string name="color_enhancement_summary">Öka färgen på displayen dynamiskt</string>
+  <!-- Blacklist preferences -->
   <string name="blacklist_title">Lista över blockerade nummer</string>
   <string name="blacklist_edit_dialog_title">Ändra blockerat telefonnummer</string>
   <string name="blacklist_prefs">Inställningar</string>
@@ -191,11 +217,14 @@
   <string name="blacklist_policy_block_calls">Blockera inkommande samtal</string>
   <string name="blacklist_policy_block_messages">Blockera inkommande meddelanden</string>
   <string name="blacklist_bad_number_add">Kunde inte lägga till ogiltigt telefonnummer till listan över blockerade nummer</string>
+  <!-- Blacklist management -->
   <string name="remove_blacklist_number_title">Ta bort nummer</string>
   <string name="remove_blacklist_entry">Vill du verkligen ta bort detta blockerade telefonnummer?</string>
   <string name="select_contact">Välj kontakt</string>
+  <!-- Protected apps lockpattern reset button -->
   <string name="lockpattern_reset_button">Återställ mönster</string>
   <string name="lockpattern_settings_reset_summary">Ange primärt e-postkonto och tillhörande lösenord för att återställa mönsterlåset</string>
+  <!-- Protected Apps -->
   <string name="menu_hidden_apps_delete">Återställ</string>
   <string name="menu_hidden_apps_reset_lock">Återställ mönsterlås</string>
   <string name="protected_apps">Skyddade appar</string>
@@ -205,6 +234,7 @@
   <string name="pa_login_submit_button">Logga in</string>
   <string name="pa_login_checking_password">Kontrollerar konto\u2026</string>
   <string name="pa_login_incorrect_login">Inloggningen var felaktig</string>
+  <!-- Display : Rotation  -->
   <string name="display_rotation_title">Rotation</string>
   <string name="display_rotation_disabled">Inaktiverad</string>
   <string name="display_rotation_unit">grader</string>
@@ -214,6 +244,7 @@
   <string name="display_rotation_90_title">90 grader</string>
   <string name="display_rotation_180_title">180 grader</string>
   <string name="display_rotation_270_title">270 grader</string>
+  <!-- Sms security limit -->
   <string name="app_security_title">Appsäkerhet</string>
   <string name="sms_security_check_limit_title">SMS-gräns</string>
   <string name="sms_security_check_limit_summary">Appar kan skicka %d meddelanden inom 1 minut innan bekräftelse krävs</string>
@@ -224,22 +255,33 @@
   <string name="block_notifications_title">Filtrera meddelanden</string>
   <string name="block_notifications_summary">Hantera ignorerade aviseringar och filter</string>
   <string name="no_filters_title">Inga filter valda</string>
+  <!-- CM Updater -->
   <string name="cmupdate_settings_title">CyanogenMod-uppdateringar</string>
+  <!-- Settings switch for updating Cyanogen recovery -->
   <string name="update_recovery_title">Uppdatera Cyanogen Recovery</string>
   <string name="update_recovery_summary">Uppdatera Recovery med systemuppdateringar</string>
   <string name="update_recovery_on_warning">OBSERVERA: När denna funktion är aktiverad, kommer din installerade Recovery att ersättas av en som ingår i den aktuella versionen av ditt nuvarande OS.\n\nRecovery kommer att uppdateras med uppgraderingar till ditt system, detta bidrar till att säkerställa kompatibilitet med framtida versioner.\n\nVill du aktivera den här funktionen?</string>
   <string name="update_recovery_off_warning">VARNING: När denna funktion är inaktiverad, kommer din installerade Recovery inte att uppdateras med OS-uppgraderingar.\n\nFramtida OS-uppdateringar kan komma att inte kunna installeras med inaktuella eller anpassade Recovery-versioner.\n\nVill du verkligen inaktivera denna funktion?</string>
+  <!-- About phone screen, CyanogenMod version -->
   <string name="mod_version">CyanogenMod-version</string>
   <string name="mod_version_default">Okänd</string>
+  <!-- About phone screen, Device model -->
   <string name="device_model">Enhetsmodell</string>
+  <!-- About phone screen, Device name -->
   <string name="device_name">Enhetsnamn</string>
+  <!-- About phone screen, build date -->
   <string name="build_date">Byggdatum</string>
+  <!-- About phone screen, service state -->
   <string name="phone_service_state">Röst: <xliff:g id="voice_state">%1$s</xliff:g>, data: <xliff:g id="data_state">%2$s</xliff:g></string>
+  <!--- Tap To Wake -->
   <string name="double_tap_to_wake_title">Dubbeltryck för att väcka</string>
   <string name="double_tap_to_wake_summary">Dubbeltryck på skärmen för att slå på displayen</string>
+  <!-- Proximity wake -->
   <string name="proximity_wake_title">Förhindra oavsiktlig väckning</string>
   <string name="proximity_wake_summary">Kontrollera närhetssensorn innan väckning av skärmen</string>
+  <!-- Privacy Settings Header item -->
   <string name="privacy_settings_cyanogenmod_title">Integritet</string>
+  <!-- Privacy Guard -->
   <string name="privacy_guard_default_title">Aktiverad som standard</string>
   <string name="privacy_guard_default_summary">Aktivera som standard för nyinstallerade appar</string>
   <string name="privacy_guard_manager_title">Integritetsskydd</string>
@@ -252,29 +294,43 @@
   <string name="privacy_guard_manager_show_system_apps">Visa inbyggda appar</string>
   <string name="privacy_guard_notification_title">Visa avisering</string>
   <string name="app_ops_btn_text">Ändra</string>
+  <!-- Increasing ring tone volume -->
   <string name="increasing_ring_volume_option_title">Ökande ljudvolym</string>
   <string name="increasing_ring_min_volume_title">Startvolym</string>
   <string name="increasing_ring_ramp_up_time_title">Upprampningstid</string>
+  <!-- Advanced reboot options -->
   <string name="advanced_reboot_title">Avancerad omstart</string>
   <string name="advanced_reboot_summary">När enheten är upplåst, inkludera alternativ i avstängningsmenyn för att starta om till recovery, bootloadern eller göra en mjuk omstart</string>
+  <!-- Setting checkbox title for Whether to enable Android debugging support on the phone. -->
   <string name="enable_adb_cm">Felsökning av Android</string>
+  <!-- Setting checkbox summary for Whether to enable Android debugging support on the phone -->
   <string name="enable_adb_summary_cm">Aktivera gränssnittet Android Debug Bridge (ADB)</string>
+  <!-- Android debugging over WiFi -->
   <string name="adb_over_network">ADB över nätverk</string>
-  <string name="adb_over_network_summary">Aktivera TCP/IP-felsökning över nätverksgränssnitt (Wi-Fi, USB-nätverk). Denna inställning återställs vid omstart</string>
+  <string name="adb_over_network_summary">Aktivera TCP/IP-felsökning över nätverksgränssnitt (Wi\u2011Fi, USB-nätverk). Denna inställning återställs vid omstart</string>
+  <!-- Warning for Adb over Network -->
   <string name="adb_over_network_warning">VARNING: När ADB över nätverk är aktiverat är din telefon öppen för intrång genom alla sorters anslutna nätverk!\n\nAnvänd endast denna funktion när du är ansluten till betrodda nätverk.\n\nVill du verkligen aktivera denna funktion?</string>
+  <!-- Setting checkbox summary for displaying USB debugging notification -->
   <string name="adb_notify">Felsökningsavisering</string>
   <string name="adb_notify_summary">Avisera när USB- eller nätverksfelsökning är aktiverad</string>
+  <!-- Hostname setting -->
   <string name="device_hostname">Enhetens värdnamn</string>
+  <!-- Development shortcut -->
   <string name="development_shortcut_title">Utvecklingsgenväg</string>
   <string name="development_shortcut_summary">Aktivera genvägar för apphantering i listan över senaste appar</string>
+  <!-- tap-to-sleep -->
   <string name="double_tap_to_sleep_title">Dubbeltryck för att släcka</string>
   <string name="double_tap_to_sleep_summary">Dubbeltryck på statusfältet för att stänga av skärmen</string>
+  <!-- Turn on display when power connected; turn off display when power disconnected -->
   <string name="wake_when_plugged_or_unplugged_title">Vakna vid koppling</string>
   <string name="wake_when_plugged_or_unplugged_summary">Starta skärmen vid anslutning till eller frånkoppling från strömkälla</string>
+  <!-- Kill app long-press back -->
   <string name="kill_app_longpress_back">Döda appar med bakåtknapp</string>
   <string name="kill_app_longpress_back_summary">Döda appen i förgrunden genom att långtrycka på bakåtknappen</string>
+  <!-- Buttons - Enable navbar -->
   <string name="disable_navkeys_title">Aktivera navigeringsfält på skärmen</string>
   <string name="disable_navkeys_summary">Aktivera navigeringsfält på skärmen och inaktivera hårdvaruknappar</string>
+  <!-- Navigation Bar -->
   <string name="navigation_bar_category">Navigeringsfält</string>
   <string name="navigation_bar_left_title">Vänsterhänt läge</string>
   <string name="navigation_bar_left_summary">Placera navigeringsfältet på vänster sida av skärmen i landskapsläge</string>
@@ -288,11 +344,13 @@
   <string name="navigation_bar_arrow_keys_summary">Visa de vänstra och högra piltangenterna medan du skriver. Åsidosätter IME-switch.</string>
   <string name="navigation_bar_recents_title">Senaste långtryckshandling</string>
   <string name="header_category_personalization">Anpassning</string>
+  <!-- Status bar -->
   <string name="status_bar_title">Statusfält</string>
   <string name="status_bar_toggle_brightness">Ljusstyrkekontroll</string>
   <string name="status_bar_toggle_brightness_summary">Justera ljusstyrka genom att svepa över statusfältet</string>
   <string name="status_bar_notif_count_title">Visa aviseringsantal</string>
   <string name="status_bar_notif_count_summary">Visa antalet väntande aviseringar</string>
+  <!-- Status bar - Clock -->
   <string name="status_bar_clock_style_title">Klockstil</string>
   <string name="status_bar_clock_style_right">Högra</string>
   <string name="status_bar_clock_style_left">Vänstra</string>
@@ -303,22 +361,26 @@
   <string name="status_bar_am_pm_normal">Normal</string>
   <string name="status_bar_am_pm_small">Liten</string>
   <string name="status_bar_am_pm_hidden">Dold</string>
+  <!-- Status bar - Battery -->
   <string name="status_bar_battery_style_title">Stil på batteristatus</string>
   <string name="status_bar_battery_style_icon_portrait">Ikon i porträttläge</string>
   <string name="status_bar_battery_style_icon_landscape">Ikon i landskapsläge</string>
   <string name="status_bar_battery_style_circle">Cirkel</string>
   <string name="status_bar_battery_style_text">Text</string>
   <string name="status_bar_battery_style_hidden">Dold</string>
+  <!-- Status bar - Battery percentage -->
   <string name="status_bar_battery_percentage_title">Batteriprocent</string>
   <string name="status_bar_battery_percentage_default">Dold</string>
   <string name="status_bar_battery_percentage_text_inside">Inuti ikonen</string>
   <string name="status_bar_battery_percentage_text_next">Bredvid ikonen</string>
+  <!-- Notification light dialogs -->
   <string name="edit_light_settings">Justera ljusinställningar</string>
   <string name="pulse_speed_title">Pulslängd och hastighet</string>
   <string name="default_time">Normal</string>
   <string name="custom_time">Anpassad</string>
   <string name="dialog_delete_title">Ta bort</string>
-  <string name="dialog_delete_message">Ta bort valt föremål?</string>
+  <string name="dialog_delete_message">Ta bort valt objekt?</string>
+  <!-- Values for the notification light pulse spinners -->
   <string name="pulse_length_always_on">Alltid på</string>
   <string name="pulse_length_very_short">Mycket kort</string>
   <string name="pulse_length_short">Kort</string>
@@ -330,12 +392,14 @@
   <string name="pulse_speed_normal">Normal</string>
   <string name="pulse_speed_slow">Långsam</string>
   <string name="pulse_speed_very_slow">Mycket långsam</string>
+  <!-- Battery light settings -->
   <string name="battery_light_title">Batteriljus</string>
   <string name="battery_low_pulse_title">Pulsera vid lågt batteri</string>
   <string name="battery_light_list_title">Färger</string>
   <string name="battery_light_low_color_title">Lågt batteri</string>
   <string name="battery_light_medium_color_title">Laddar</string>
   <string name="battery_light_full_color_title">Fulladdad</string>
+  <!-- Lights settings screen, notification light settings -->
   <string name="notification_light_title">Aviseringsljus</string>
   <string name="notification_light_general_title">Allmänt</string>
   <string name="notification_light_applist_title">Appar</string>
@@ -347,19 +411,26 @@
   <string name="notification_light_screen_on">Aviseringsljus med skärmen på</string>
   <string name="notification_light_use_multiple_leds">Flera lysdioder</string>
   <string name="keywords_lights_brightness_level">dimma lysdioder ljusstyrka</string>
+  <!-- Sound & notification > Sound section: Title for the option defining the default notification ringtone. [CHAR LIMIT=30] -->
   <string name="notification_ringtone_title_cm">Aviseringssignal</string>
+  <!-- Launch music player when headset is connected -->
   <string name="headset_connect_player_title">Öppna musikapp</string>
   <string name="headset_connect_player_summary">Öppna standardmusikapp när hörlurar kopplas in</string>
+  <!-- Whether to display IME switcher notifcation -->
   <string name="ime_switcher_notify">Väljarikonen</string>
   <string name="ime_switcher_notify_summary">Visa ikonen för inmatningsväxlare</string>
+  <!-- Per app controls for LP keyguard notifications -->
   <string name="app_notification_show_on_keyguard_title">Visa på låsskärmen</string>
   <string name="app_notification_show_on_keyguard_summary">Visa aviseringar från denna app på låsskärmen</string>
   <string name="app_notification_no_ongoing_on_keyguard_title">Inaktivera beständiga aviseringar på låsskärmen</string>
   <string name="app_notification_no_ongoing_on_keyguard_summary">Visa aldrig beständiga aviseringar från denna app på låsskärmen</string>
+  <!-- High touch sensitivity -->
   <string name="high_touch_sensitivity_title">Hög fingerkänslighet</string>
   <string name="high_touch_sensitivity_summary">Öka tryckskärmens känslighet så att den kan användas samtidigt som du bär handskar</string>
+  <!-- Touchscreen hovering -->
   <string name="touchscreen_hovering_title">Tryckskärm-hovring</string>
   <string name="touchscreen_hovering_summary">Låter dig hovra över skärmen som en mus i webbläsare, fjärrskrivbord, etc</string>
+  <!-- App ops -->
   <string name="app_ops_summaries_coarse_location">grov lokalisering</string>
   <string name="app_ops_summaries_fine_location">fin lokalisering</string>
   <string name="app_ops_summaries_gps">GPS</string>
@@ -474,6 +545,7 @@
   <string name="app_ops_labels_data_change">Ändra data</string>
   <string name="app_ops_labels_wake_up">Vakna</string>
   <string name="app_ops_labels_su">Root-åtkomst</string>
+  <!-- App ops categories -->
   <string name="app_ops_categories_location">Plats</string>
   <string name="app_ops_categories_personal">Personligt</string>
   <string name="app_ops_categories_messaging">Meddelanden</string>
@@ -481,10 +553,12 @@
   <string name="app_ops_categories_device">Enhet</string>
   <string name="app_ops_categories_bootup">Uppstart</string>
   <string name="app_ops_categories_su">Root-åtkomst</string>
+  <!-- App ops permissions -->
   <string name="app_ops_permissions_allowed">Tillåten</string>
   <string name="app_ops_permissions_ignored">Ignorerad</string>
   <string name="app_ops_permissions_always_ask">Fråga alltid</string>
   <string name="ok">OK</string>
+  <!-- Profiles -->
   <string name="profile_menu_delete_title">Ta bort</string>
   <string name="profile_action_none">Lämna oförändrad</string>
   <string name="profile_action_system">Systemstandard</string>
@@ -502,6 +576,7 @@
   <string name="profile_setup_actions_title_config">Omkonfigurera åtgärder</string>
   <string name="profile_appgroups_manage">Appgrupper</string>
   <string name="profile_appgroup_manage">Hantera appgrupper</string>
+  <!-- Title for application group setting screen -->
   <string name="profile_appgroups_title">Appgrupper</string>
   <string name="profile_new_appgroup">Ny appgrupp</string>
   <string name="profile_delete_appgroup">Ta bort denna appgrupp?</string>
@@ -509,12 +584,14 @@
   <string name="profile_appgroup_name_title">Namn</string>
   <string name="duplicate_appgroup_name">Dublett av appgruppnamn!</string>
   <string name="profile_app_delete_confirm">Ta bort denna app?</string>
+  <!-- Profile Settings sound modes labels -->
   <string name="sound_mode">Aviseringsläge</string>
   <string name="ringer_mode">Ringsignalsläge</string>
   <string name="lights_mode">Ljusläge</string>
   <string name="vibrate_mode">Vibrationsläge</string>
   <string name="choose_soundtone">Välj aviseringssignal</string>
   <string name="choose_ringtone">Välj ringsignal</string>
+  <!-- Sound settings screen, setting option name to pick ringtone (a list dialog comes up)-->
   <string name="soundtone_title">Aviseringssignal</string>
   <string name="no_bluetooth_triggers">Inga Bluetooth-enheter är kopplade.\nTryck för att para till en Bluetooth-enhet innan du konfigurerar utlösare.</string>
   <string name="no_wifi_triggers">Ingen Wi\u2011Fi åtkomstpunkter har konfigurerats.\nTryck för att koppla till Wi\u2011Fi innan du konfigurerar utlösare.</string>
@@ -522,30 +599,40 @@
   <string name="no_triggers_configured_nfc">Tryck för att ställa in en ny NFC-utlösare.</string>
   <string name="profile_setup_setup_triggers_description">Vänligen välj de utlösare som kommer att aktiveras på denna profil</string>
   <string name="profile_setup_actions_description">Konfigurera nu vad som ska hända när profilen aktiveras</string>
+  <!-- App ops detail -->
   <string name="app_ops_entry_summary"><xliff:g id="op">%1$s</xliff:g> (använd <xliff:g id="count">%2$s</xliff:g>)</string>
   <string name="app_ops_allowed_count">Tillåten <xliff:g id="count" example="2 times">%s</xliff:g></string>
   <string name="app_ops_ignored_count">Nekad <xliff:g id="count" example="2 times">%s</xliff:g></string>
   <string name="app_ops_both_count">Tillåten <xliff:g id="count">%1$s</xliff:g>, nekad <xliff:g id="count">%2$s</xliff:g></string>
+  <!-- App ops menu options -->
   <string name="app_ops_show_user_apps">Visa användarappar</string>
   <string name="app_ops_show_system_apps">Visa inbyggda appar</string>
   <string name="app_ops_reset_counters">Återställ tillåt/neka-räknare</string>
   <string name="app_ops_reset_confirm_title">Bekräfta räknaråterställning</string>
   <string name="app_ops_reset_confirm_mesg">Är du säker på att du vill återställa räknarna?</string>
+  <!-- Font size sample text. This needs to be a very short string, as it is shown in
+    multiple font sizes in a limited amount of space. -->
   <string name="font_size_sample">Prov</string>
+  <!-- Volume settings - Volume adjustment sound -->
   <string name="volume_adjust_sounds_title">Ljud vid volymjustering</string>
+  <!-- Hardware tunables - Vibrator intensity -->
   <string name="vibrator_intensity_title">Vibratorintensitet</string>
   <string name="vibrator_warning">Värden högre än %1$d är inte rekommenderade</string>
+  <!-- Hardware tunables - Color calibration -->
   <string name="color_calibration_title">Färgkalibrering</string>
   <string name="color_calibration_summary">Kalibrera skärmfärger</string>
   <string name="color_red_title">Röd</string>
   <string name="color_green_title">Grön</string>
   <string name="color_blue_title">Blå</string>
+  <!-- Hardware tunables - Gamma calibration -->
   <string name="gamma_tuning_title_head">Gammakalibrering</string>
   <string name="gamma_tuning_summary_head">Justera gammavärden</string>
   <string name="gamma_tuning_control_set_header">Grupp <xliff:g id="index">%d</xliff:g></string>
+  <!-- used if no name provided by overlay -->
   <string name="gamma_tuning_contrast">Kontrast</string>
   <string name="gamma_tuning_brightness">Ljusstyrka</string>
   <string name="gamma_tuning_saturation">Mättnad</string>
+  <!-- Display settings.  Screen color. -->
   <string name="screencolor">Skärmfärg</string>
   <string name="screencolor_summary">Ställ in skärmnyans, mättnad, kontrast eller intensitet</string>
   <string name="custom_screencolor">Anpassad skärmfärg</string>
@@ -563,26 +650,47 @@
   <string name="screen_color_setting_vivid">Levande</string>
   <string name="screen_color_setting_custom">Anpassad</string>
   <string name="settings_reset_button">Återställ</string>
+  <!-- Message when bluetooth dialog for pin entry is showing  when HIGH security enabled-->
   <string name="bluetooth_enter_pin_msg_hs">För att para ihop med:<xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g>Skriv enhetens PIN-kod (16 siffror eller fler):</string>
+  <!-- Bluetooth settings.  The user-visible string that is used whenever referring to the DUN profile. -->
   <string name="bluetooth_profile_dun">Åtkomst till uppringt nätverk</string>
+  <!-- Bluetooth settings.  The user-visible string that is used whenever referring to the SAP profile. -->
   <string name="bluetooth_profile_sap">SIM-åtkomst</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the DUN checkbox preference when DUN is connected. -->
   <string name="bluetooth_dun_profile_summary_connected">Ansluten till DUN-server</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the pbap checkbox preference when pbap is connected. -->
   <string name="bluetooth_pbap_profile_summary_connected">Ansluten till pbap-server</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the SAP checkbox preference when SAP is connected. -->
   <string name="bluetooth_sap_profile_summary_connected">Ansluten till SIM-åtkomstserver</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the DUN checkbox preference that describes how checking it will set the DUN profile as preferred. -->
   <string name="bluetooth_dun_profile_summary_use_for">Använd för uppringd nätverkåtkomst</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the pbap checkbox preference that describes how checking it will set the pbap profile as preferred. -->
   <string name="bluetooth_pbap_profile_summary_use_for">Använd för kontaktdelning</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the SAP checkbox preference that describes how checking it will set the SAP profile as preferred. -->
   <string name="bluetooth_sap_profile_summary_use_for">Använd för SIM-åtkomst</string>
+  <!-- Bluetooth settings.  A checkbox to set if we should accept all the file types regardless of their presence in MIME type whitelist -->
   <string name="bluetooth_accept_all_files">Acceptera alla filtyper</string>
+  <!-- SIM lock settings title  [CHAR LIMIT=40] -->
   <string name="sim_lock_settings_cm">SIM/RUIM-kort låsinställningar</string>
+  <!-- Security & location settings screen, setting option name  [CHAR LIMIT=40] -->
   <string name="sim_lock_settings_category_cm">Ställ in lås för SIM/RUIM-kort</string>
+  <!-- Security & location settings screen, section heading for settings related to sim card locking  [CHAR LIMIT=40] -->
   <string name="sim_lock_settings_title_cm">SIM/RUIM-kortlås</string>
+  <!-- SIM card lock settings screen, SIM PIN dialog message when PIN disable fails-->
   <string name="sim_pin_disable_failed">Kan inte inaktivera PIN-kod.</string>
+  <!-- SIM card lock settings screen, SIM PIN dialog message when PIN enable fails-->
   <string name="sim_pin_enable_failed">Kan inte aktivera PIN-kod.</string>
+  <!-- SIM password can't be changed as SIM LOCK is not enabled: -->
   <string name="sim_pin_change_failed_enable_sim_lock">För att ändra SIM/RUIM-PIN, aktivera SIM/RUIM-lås först.</string>
+  <!-- SIM lock can't be changed - not supported -->
   <string name="sim_enable_disable_lock_not_supported">SIM/RUIM-lås stöds inte av kortet.</string>
+  <!-- SIM card lock settings screen, toast displayed on wrong PIN1: -->
   <string name="sim_pin_attempts">\nÅterstående försök:</string>
+  <!-- SIM card lock settings screen, toast displayed on PIN1 enable: -->
   <string name="sim_pin_enabled">PIN1 aktiverad</string>
+  <!-- SIM card lock settings screen, toast displayed on PIN1 disable: -->
   <string name="sim_pin_disabled">PIN1 inaktiverad</string>
+  <!-- string resources for USB OTG & UICC features -->
   <string name="storage_usb">USB-lagring</string>
   <string name="storage_uicc">UICC-lagring</string>
   <string name="sdcard_eject" product="default">Koppla från SD-kort</string>
@@ -603,7 +711,9 @@
   <string name="uicc_format_summary" product="default">Raderar alla data på UICC-lagringsenheten, som musik och bilder</string>
   <string name="uicc_mount" product="default">Anslut UICC-lagring</string>
   <string name="uicc_insert_summary" product="default">Sätt in UICC-lagring för montering</string>
+  <!-- Title of dialog asking user to confirm before enabling UMS. [CHAR LIMIT=48] -->
   <string name="usb_settings_enable_ums_title">Aktivera masslagring?</string>
+  <!-- Message of dialog asking user to confirm before enabling UMS. [CHAR LIMIT=NONE] -->
   <string name="usb_settings_enable_ums_message">Systemkomponenter och appar är beroende på att primärlagringen alltid är tillgänglig. Denna funktion bryter den funktionaliteten. Det rekommenderas starkt att använda MTP istället. Är du säker på att du vill aktivera masslagring?</string>
   <string name="dlg_confirm_sdcard_unmount_title" product="default">Koppla från SD-kort?</string>
   <string name="dlg_confirm_usb_unmount_title" product="default">Koppla från USB-lagring?</string>
@@ -629,18 +739,27 @@
   <string name="sdcard_media_format_gesture_explanation" product="default">Du behöver rita ditt upplåsningsmönster för att bekräfta att du vill radera SD-kortet.</string>
   <string name="usb_media_format_gesture_explanation" product="default">Du behöver rita ditt upplåsningsmönster för att bekräfta att du vill ta bort USB-lagringen.</string>
   <string name="uicc_media_format_gesture_explanation" product="default">Du behöver rita ditt upplåsningsmönster för att bekräfta att du vill ta bort UICC-lagringen.</string>
+  <!-- Storage menu, label for internal media storage -->
   <string name="internal_sd_format">Ta bort intern medialagring</string>
   <string name="internal_sd_format_summary">Tar bort alla data på lagringsenheten för intern media, som musik och bilder</string>
+  <!-- Media & phone storage settings screen, label for check box to erase media storage [CHAR LIMIT=30] -->
   <string name="master_clear_desc_erase_internal_storage">\n\nFör att rensa musik, bilder och annan användardata, behöver den <b>interna medialagringen</b> raderas.</string>
   <string name="erase_internal_storage">Ta bort intern medialagring</string>
   <string name="erase_internal_storage_description">Radera alla data på lagringsenheten för intern media, så som musik och bilder</string>
+  <!-- Rescan storage -->
   <string name="storage_rescan_media">Sök igenom media för lagringsvolymen igen</string>
+  <!-- [CHAR LIMIT=130] Location mode screen, sub category for IZat Location -->
   <string name="location_category_enhanced_location">Utökad plats (IZat)</string>
+  <!-- [CHAR LIMIT=NONE] App ops settings summary, on main settings screen. If clicked, the user is taken to a settings screen for app operations -->
   <string name="app_ops_settings_summary">Visa eller ändra app-behörigheter</string>
+  <!-- Setting checkbox summary when device is in Charging mode -->
   <string name="enable_adb_summary_charging">Enheten är i laddningsläge, USB-felsökning är inaktiverad</string>
+  <!-- Title of checkbox setting that enable quickboot. [CHAR LIMIT=32] -->
   <string name="enable_quickboot_title">Aktivera QuickBoot-läge</string>
+  <!-- Summary of checkbox setting that enable quickboot. [CHAR LIMIT=64] -->
   <string name="enable_quickboot_summary">Ställ enheten i QuickBoot-läge istället för normal avstängning</string>
   <string name="data_usage_tab_slot">SIM <xliff:g id="sub">%d</xliff:g></string>
+  <!-- MultiSim Settings changes-->
   <string name="sim_enabler_title">SIM-status</string>
   <string name="sim_enabler_summary">SIM är <xliff:g id="status" example="enabled">%1$s</xliff:g></string>
   <string name="sim_enabled">aktiverat</string>
@@ -664,12 +783,19 @@
   <string name="external_storage_turn_off">Externlagring har slagits av</string>
   <string name="stats_collection_title">Statistikinsamling</string>
   <string name="stats_collection_summary">När aktiverad, tillåts insamling av mättal</string>
+  <!-- Category title for Charging sounds (Power state change) specific Settings.
+         [CHAR LIMIT=40] -->
   <string name="power_notifications_category_title">Laddningsljud</string>
+  <!-- Sound settings, Charging sounds enable/disable, setting check box label -->
   <string name="power_notifications_enable_title">Aktivera</string>
   <string name="power_notifications_enable_summary">Spela ett ljud vid anslutning eller frånkoppling av strömkälla</string>
+  <!-- Sound settings, Charging sounds vibrate enable/disable, setting check box label -->
   <string name="power_notifications_vibrate_title">Vibrera</string>
+  <!-- Sound settings, Charging sounds ringtone selection, preference label -->
   <string name="power_notifications_ringtone_title">Aviseringsljud</string>
+  <!-- Sound settings, charging sounds label for ringtone == none -->
   <string name="power_notifications_ringtone_silent">Tyst</string>
+  <!-- Voice Wakeup -->
   <string name="voice_wakeup_settings_title">Vakna med röst</string>
   <string name="voice_wakeup_retrain_title">Omskola din röst</string>
   <string name="voice_wakeup_activity_title">Aktivitet att öppna</string>
@@ -677,26 +803,38 @@
   <string name="picker_activities">Aktiviteter</string>
   <string name="select_custom_app_title">Välj anpassad app</string>
   <string name="select_custom_activity_title">Välj anpassad aktivitet</string>
+  <!-- Battery : Automatic performance profiles -->
   <string name="autoperf_title">Aktivera profiler per app</string>
   <string name="autoperf_summary">Välj automatiskt ett lämpligt batteriläge för olika appar</string>
   <string name="perf_profile_title">Batteriläge</string>
+  <!-- Development : Force high-end graphics -->
   <string name="pref_force_highend_gfx_title">Tvinga högklassgrafik</string>
   <string name="pref_force_highend_gfx_summary">Aktiverar visuella effekter av hög klass som exempelvis transparent status- och navigeringsfält (kräver omstart)</string>
+  <!-- EdgeGesture service -->
   <string name="edge_gesture_service_title">Blockera gesthändelser</string>
   <string name="edge_gesture_service_summary">Skicka inte beröringshändelser för navigerings- och statusfältsgester till appar</string>
+  <!-- CM Legal -->
   <string name="cmlicense_title">CyanogenMod Juridik</string>
   <string name="settings_cmlicense_activity_title">CyanogenMod Juridik</string>
+  <!-- Sizes for pattern lockscreen -->
+  <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
   <string name="lockpattern_settings_enable_error_path_title">Visa mönster vid fel</string>
+  <!-- Whether the dots will be drawn when using the lockscreen pattern -->
   <string name="lockpattern_settings_enable_dots_title">Visa mönsterpunkter</string>
+  <!-- Whether the keyguard will directly pass to password entry -->
   <string name="lock_directly_show_password">Visa lösenordsinmatningen direkt</string>
+  <!-- Whether the keyguard will directly pass to pattern view -->
   <string name="lock_directly_show_pattern">Visa mönsterinmatningen direkt</string>
+  <!-- Whether the keyguard will directly pass to PIN entry -->
   <string name="lock_directly_show_pin">Visa PIN-inmatningen direkt</string>
+  <!-- Screen security -->
   <string name="unlock_quick_unlock_control_title">Snabb upplåsning</string>
   <string name="unlock_quick_unlock_control_summary">Lås upp automatiskt när rätt PIN/lösenord har angivits</string>
   <string name="unlock_scramble_pin_layout_title">Kasta om layout</string>
   <string name="unlock_scramble_pin_layout_summary">Kasta om PIN-layout vid upplåsning av enheten</string>
   <string name="link_volume_option_title">Länka ringsignals- och aviseringsvolym</string>
   <string name="notification_volume_option_title">Aviseringsvolym</string>
+  <!-- Notification drawer -->
   <string name="notification_drawer_title">Aviseringsfält</string>
   <string name="quick_pulldown_title">Snabb neddragning</string>
   <string name="quick_pulldown_summary">%1$s kanten av statusfältet drar ned snabbinställningar</string>
@@ -705,6 +843,7 @@
   <string name="quick_pulldown_off">Av</string>
   <string name="quick_pulldown_left">Vänstra</string>
   <string name="quick_pulldown_right">Högra</string>
+  <!-- Weather in status bar header -->
   <string name="status_bar_show_weather_title">Visa väder</string>
   <string name="status_bar_show_weather_summary">Visa vädret över snabbinställningspanelen</string>
   <string name="qs_category_title">Snabbinställningspanel</string>
@@ -748,17 +887,26 @@
   <string name="qs_advanced_location_title">Avancerade platstjänster</string>
   <string name="qs_advanced_location_summary">Aktivera avancerade inställningar för plats i snabbinställningar</string>
   <string name="sim_no_number_set">Inget nummer tilldelat</string>
+  <!-- Gesture Settings -->
+  <!-- Settings main menu entry -->
   <string name="gesture_settings_title">Gester</string>
+  <!-- Themes Settings -->
+  <!-- Settings main menu entry -->
   <string name="themes_settings_title">Teman</string>
+  <!-- WiFi Ad-Hoc mode -->
   <string name="wifi_mode">Läge</string>
   <string name="wifi_mode_ibss">Ad-Hoc-nätverk (IBSS)</string>
   <string name="wifi_mode_ibss_short">Ad-Hoc</string>
   <string name="wifi_ibss_freq_title">Kanal / Frekvens</string>
   <string name="wifi_channel">Kanal</string>
   <string name="wifi_mhz">MHz</string>
+  <!-- WiFi auto-configure priorities -->
   <string name="wifi_auto_config_priorities">Automatisk prioritet</string>
+  <!-- About phone settings screen, setting option dialog title to show regulatory information [CHAR LIMIT=25] -->
+  <!-- SAR information -->
   <string name="maximum_head_level">Huvud: %1$s W/kg</string>
   <string name="maximum_body_level">Kropp: %1$s W/kg</string>
+  <!-- IC Codes -->
   <string name="ic_code_model">Modell: %1$s</string>
   <string name="ic_code_full">IC: %1$s</string>
   <string name="power_menu_expanded_desktop">Utökat skrivbord</string>
@@ -779,17 +927,21 @@
   <string name="lockscreen_choose_action_title">Välj åtgärd</string>
   <string name="lockscreen_visualizer_title">Visa musikvisualisering</string>
   <string name="nfc_title_category">NFC</string>
+  <!-- WhisperPush -->
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Hantera säkra SMS-inställningar</string>
   <string name="navigation_ring_title">Mål för navigeringsring</string>
   <string name="navigation_ring_message">Tryck på ikonen \'Ändra\' för att öppna navigeringsringen för redigering.\n\nVälj ett mål för att konfigurera dess beteende.\n\nTryck på \'\u2713\'-ikonen för att spara dina ändringar, eller \'Återställ standard\' för att återställa inställningarna till standard.</string>
+  <!-- Display & Lights screen, setting options for LCD density -->
   <string name="lcd_density">LCD-densitet</string>
   <string name="dialog_title_lcd_density">LCD-densitet</string>
   <string name="lcd_density_value_format">%d DPI</string>
   <string name="lcd_density_default_value_format">%d DPI (standard)</string>
   <string name="restarting_ui">Startar om UI\u2026</string>
+  <!-- Stylus Icon -->
   <string name="stylus_icon_enabled_title">Visa ikon vid användning av pekpenna</string>
   <string name="stylus_icon_enabled_summary">Visa pekarikonen vid hovring eller ritning med pekpennan</string>
+  <!-- Stylus Gestures -->
   <string name="gestures_settings_title">Gester för pekpenna</string>
   <string name="category_spen_title">Gester för pekpenna</string>
   <string name="enable_subcat_title">Pekpenna</string>
@@ -802,12 +954,14 @@
   <string name="gestures_down_spen_title_head">Nedåtsvepning</string>
   <string name="gestures_long_spen_title_head">Långtryck</string>
   <string name="gestures_double_spen_title_head">Dubbeltryck</string>
+  <!-- Gestures Options -->
   <string name="gestures_action_empty">Ingen åtgärd</string>
   <string name="gestures_action_home">Hem</string>
   <string name="gestures_action_back">Bakåt</string>
   <string name="gestures_action_menu">Meny</string>
   <string name="gestures_action_search">Framkalla sökning</string>
   <string name="gestures_action_recent">Senaste appar</string>
+  <!-- Stylus gestures -->
   <string name="stylus_app_not_installed">%s är inte installerad</string>
   <string name="advanced">Avancerade</string>
   <string name="advanced_mode_title">Avancerat läge</string>
@@ -823,6 +977,7 @@
   <string name="lockscreen_settings">Låsskärm</string>
   <string name="category_lights">Ljus</string>
   <string name="power_usage_history_title">Batterianvändning</string>
+  <!-- Show/Hide Search Bar -->
   <string name="recents_show_searchbar">Visa sökfältet i senastemenyn</string>
   <string name="keywords_recents_show_searchbar">den senaste de senaste inaktivera aktivera visa göm sökfält sökfält</string>
   <string name="sim_ringtone_title">SIM-%dringsignal</string>
@@ -832,6 +987,7 @@
   <string name="none_is_silent_summary_on">Larm ignoreras inte i tyst läge</string>
   <string name="none_is_silent_summary_off">Larm ignoreras i tyst läge</string>
   <string name="allow_lights_title">Tillåt aviseringsljus</string>
+  <!-- LiveDisplay -->
   <string name="live_display_summary">Optimera din skärm baserad på dygnets tidpunkt och omgivande förhållanden för att förbättra läsbarhet och minska belastningen på ögonen</string>
   <string name="live_display_mode">Visningsläge</string>
   <string name="live_display_color_temperature_title">Färgtemperatur</string>
@@ -861,6 +1017,8 @@
   <string name="battery_saver_threshold">Batterisparningströskel</string>
   <string name="battery_saver_summary">Minska prestanda och begränsa bakgrundsdata</string>
   <string name="battery_saver_summary_unavailable">Inte tillgängligt under laddning</string>
+  <!-- Anonymous Statistics #CM -->
+  <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
   <string name="anonymous_statistics_title">CyanogenMod-statistik</string>
   <string name="anonymous_statistics_summary">Hjälp till att göra CyanogenMod bättre genom att skicka anonyma statistikrapporter</string>
   <string name="anonymous_statistics_warning_title">Om</string>
@@ -872,27 +1030,34 @@ inkluderar en unik identifikation,
   <string name="preview_data_title">Förhandsgranska data</string>
   <string name="view_stats_title">Visa statistik</string>
   <string name="anonymous_learn_more">Läs mer</string>
+  <!-- Anonymous Statistics - Preview -->
   <string name="preview_id_title">Unikt ID</string>
   <string name="preview_device_title">Enhet</string>
   <string name="preview_version_title">Version</string>
   <string name="preview_country_title">Land</string>
   <string name="preview_carrier_title">Operatör</string>
+  <!-- Heads up -->
   <string name="heads_up_notifications">Heads up</string>
   <string name="summary_heads_up_enabled">Pop-up-aviseringar är aktiverade</string>
   <string name="summary_heads_up_disabled">Pop-up-aviseringar är inaktiverade</string>
+  <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
   <string name="master_clear_desc_cm" product="tablet">Detta kommer ta bort all information från din surfplattas <b>interna lagring</b>, inklusive:\n\n<li>Dina enhetskonton</li>\n<li>System- och appinformation och inställningar</li>\n<li>Nerladdade appar</li></string>
+  <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
   <string name="master_clear_desc_cm" product="default">Detta kommer ta bort all information från din telefons<b>interna lagring</b>, inklusive:\n\n<li>Dina enhetskonton</li>\n<li>System- och appinformation och inställningar</li>\n<li>Nerladdade appar</li></string>
+  <!-- Killswitch -->
   <string name="lock_to_cyanogen_title">Enhetsskydd</string>
   <string name="lock_to_cyanogen_summary">Kräv ditt kontolösenord för Cyanogen OS även efter fabriksinställning</string>
   <string name="lock_to_cyanogen_create_account_msg">Din enhet använder lösenordet för Cyanogen OS för att skydda enheten även vid en fabriksåterställning. Du kommer att behöva skapa en Cyanogen OS-konto.</string>
   <string name="lock_to_cyanogen_disable_msg">Att inaktivera denna funktion kommer tillåta obehöriga användare att återställa din telefon till fabriksinställningar om den stjäls. Din personliga data kanske inte skyddas. Vill du inaktivera denna funktion?</string>
   <string name="lock_to_cyanogen_master_clear_warning">Enhetsskydd är aktiverad. Inaktivera det för att fortsätta med enhetsåterställningen.</string>
   <string name="bluetooth_pan_profile_summary_use_for_error">Anslutningsfel; är Bluetooth-delning aktiverad på denna enhet?</string>
+  <!-- MSIM SIM status -->
   <string name="sim_card_status_title">SIM %d status</string>
   <string name="sim_card_lock_settings_title">SIM-%d låsinställningar</string>
   <string name="sim_card_summary_empty">SIM inte isatt</string>
   <string name="sim_mobile_network_settings_category_title">Inställningar för mobilt nätverk</string>
   <string name="sim_mobile_network_settings_title">SIM %d inställningar</string>
+  <!-- Factory reset strings -->
   <string name="factory_reset_instructions_title">Personuppgifter och appar</string>
   <string name="factory_reset_instructions_summary">Detta kommer att ta bort alla dina konton, appar, appdata och systeminställningar på denna enhet</string>
   <string name="factory_reset_personal_content">Personligt innehåll</string>
@@ -903,14 +1068,19 @@ inkluderar en unik identifikation,
   <string name="factory_reset_erase_sd_card_summary">Radera all data på SD-kortet, såsom musik och bilder</string>
   <string name="factory_reset_warning_text_reset_now">ÅTERSTÄLL NU</string>
   <string name="factory_reset_warning_text_message">Alla dina konton, appar, appdata och systeminställningar kommer tas bort från denna enhet. Detta kan inte ångras.</string>
+  <!-- Wi-Fi filters -->
   <string name="wifi_show_all">Visa alla</string>
   <string name="wifi_show_protected">Visa skyddade nätverk</string>
   <string name="wifi_show_open">Visa öppna nätverk</string>
   <string name="wifi_empty_list_protected">Inga skyddade Wi\u2011Fi nätverk</string>
   <string name="wifi_empty_list_open">Inga öppna Wi\u2011Fi nätverk</string>
+  <!-- Wi-Fi region code -->
   <string name="wifi_setting_countrycode_title">Wi\u2011Fi-regionskod</string>
+  <!-- Wi-Fi settings screen, setting summary for setting the wifi frequency band [CHAR LIMIT=50]-->
   <string name="wifi_setting_countrycode_summary">Ange regionskoden för Wi\u2011Fi</string>
+  <!-- Wi-Fi settings screen, error message when the frequency band could not be set [CHAR LIMIT=50]. -->
   <string name="wifi_setting_countrycode_error">Det uppstod ett problem vid inställningen av regionskoden.</string>
+  <!-- Wi-Fi region countries -->
   <string name="wifi_countrycode_entries_us">USA</string>
   <string name="wifi_countrycode_entries_ca">Kanada, Taiwan</string>
   <string name="wifi_countrycode_entries_de">Tyskland</string>
@@ -923,65 +1093,114 @@ inkluderar en unik identifikation,
   <string name="wifi_countrycode_entries_sg">Israel, Singapore</string>
   <string name="wifi_countrycode_entries_br">Brasilien</string>
   <string name="wifi_countrycode_entries_in">Indien</string>
+  <!-- FINGERPRINT -->
+  <!-- Title for preference which sets the unlock. This is only used when the device has
+         a fingerprint sensor , otherwise just "unlock_set_unlock_launch_picker_title" is used -->
   <string name="unlock_set_unlock_launch_picker_title_with_fingerprint">Skärmupplåsning &amp; Fingeravtryck</string>
+  <!-- Summary for "Configure lockscreen" when security Fingerprint is enabled [CHAR LIMIT=45] -->
   <string name="unlock_set_unlock_mode_fingerprint">Fingeravtryck</string>
+  <!-- Title for preference that guides the user through creating a fingerprint [CHAR LIMIT=22] -->
   <string name="unlock_set_unlock_fingerprint_title">Fingeravtryck</string>
+  <!-- List item title to add a new fingerprint in fingerprint list screen -->
   <string name="fingerprint_item_add_new_fingerprint">Lägg till nytt fingeravtryck</string>
+  <!-- Title for preference in fingerprint lockscreen settings, takes user to fingerprint list -->
   <string name="fingerprint_manage_fingerprints">Hantera fingeravtryck</string>
+  <!-- Summary for preference in fingerprint lockscreen settings, takes user to fingerprint list -->
   <string name="fingerprint_manage_fingerprints_summary">Lägg till eller ta bort registrerade fingeravtryck</string>
+  <!-- Info explaining the backup lock which is used for fingerprint -->
   <string name="unlock_backup_fingerprint_info_summary">Om du inte kan använda ditt finger, hur vill du att låsa upp?</string>
+  <!-- Dialog title for renaming your fingerprint -->
   <string name="fingerprint_dialog_title_rename">Redigera fingeravtryck</string>
+  <!-- EditText label for renaming your fingerprint in rename dialog -->
   <string name="fingerprint_dialog_name_label">Fingeravtrycksnamn</string>
+  <!-- Title for dialog that shows when the user cannot add anymore fingers -->
   <string name="fingerprint_dialog_title_max_fingers_reached">Maximalt antal fingeravtryck uppnått</string>
+  <!-- Message for dialog that shows when the user cannot add anymore fingers -->
   <string name="fingerprint_dialog_msg_max_fingers_reached">Du kan bara registrera <xliff:g id="finger" example="5">%d</xliff:g> fingeravtryck. Ta bort ett befintlig fingeravtryck.</string>
+  <!-- Title for number of finger prints enrolled -->
   <string name="fingerprint_title_manage_fingerprints"><xliff:g id="finger">%d</xliff:g> av <xliff:g id="max">%d</xliff:g> fingeravtryck registrerade</string>
+  <!-- Description for managing fingerprints -->
   <string name="manage_fingerprints_description">Med fingeravtryck kan du snabbt låsa upp telefonen och ta bilder.</string>
+  <!-- Fingerprint enrollment introduction title -->
   <string name="fingerprint_enrollment_introduction_title">Hitta din avläsare</string>
+  <!-- Fingerprint enrollment introduction instructions -->
   <string name="fingerprint_enrollment_introduction_instructions">Fingertrycksavläsare är placerad på fram- eller baksidan av din telefon.</string>
+  <!-- Fingerprint enrollment scan fingerprint title -->
   <string name="fingerprint_enrollment_scan_title">Håll i 3 sekunder</string>
+  <!-- Fingerprint enrollment scan fingerprint instructions -->
   <string name="fingerprint_enrollment_scan_instructions">Placera ditt indexfinger på fingeravtrycksavläsaren för att börja konfigurering. Lyft ditt finger när du känner en vibration.</string>
+  <!-- Fingerprint enrollment error title during first step only -->
   <string name="fingerprint_enrollment_error_title_wrong_sensor">Försök igen</string>
+  <!-- Fingerprint enrollment error message -->
   <string name="fingerprint_enrollment_error_message">Placera ditt finger med ett stadigt tryck på fingeravtrycksavläsaren för att säkerställa en korrekt inskanning. Säkerställ också att du använder samma finger som tidigare. Lyft fingret när du känner en vibration.</string>
+  <!-- Fingerprint enrollment error instructions -->
   <string name="fingerprint_enrollment_scan_instructions">Placera ditt indexfinger på fingeravtrycksavläsaren för att börja konfigurering. Lyft ditt finger när du känner en vibration.</string>
+  <!-- Fingerprint enrollment half way break title -->
   <string name="fingerprint_enrollment_break_title">Fortsätt med nuvarande grepp</string>
+  <!-- Fingerprint enrollment introduction instructions -->
   <string name="fingerprint_enrollment_break_instructions">Fortsätt för att fånga kanterna av ditt avtryck. Lyft fingret när du känner en vibration.</string>
+  <!-- Fingerprint enrollment finished title -->
   <string name="fingerprint_enrollment_finished_title">Fingeravtryck tillagt!</string>
+  <!-- Fingerprint enrollment finished instructions -->
   <string name="fingerprint_enrollment_finished_message">Ditt fingeravtryck kan nu användas för att låsa upp din skärm eller för att ta selfies med din kamera.</string>
+  <!-- Next button title for finding sensor -->
   <string name="fingerprint_enrollment_found_it_label">Hittade den</string>
+  <!-- Next button title for finding sensor -->
   <string name="fingerprint_enrollment_add_another_label">Lägg till en till</string>
+  <!-- Next button title for finding sensor -->
   <string name="fingerprint_enrollment_done_label">Färdig</string>
+  <!-- Wrong fingerprint sensor dialog title -->
   <string name="fingerprint_dialog_title_wrong_sensor">Oj då, det är inte din avläsare</string>
+  <!-- Wrong fingerprint sensor dialog message -->
   <string name="fingerprint_dialog_msg_wrong_sensor">Använd fingeravtrycksavläsaren på framsidan eller baksidan av din telefon</string>
+  <!-- Failed fingerprint enrollment dialog title -->
   <string name="fingerprint_dialog_title_failed_enrollment">Kunde inte läsa fingeravtryck</string>
+  <!-- Failed fingerprint enrollment dialog message -->
   <string name="fingerprint_dialog_msg_failed_enrollment">Prova att använda ett annat finger. Det gick inte att läsa detta fingeravtryck.</string>
+  <!-- Failed fingerprint enrollment button label -->
   <string name="fingerprint_enrollment_restart_label">Starta om</string>
+  <!-- Successful scan title for first successful scan -->
   <string name="fingerprint_successful_scan_title_first">Perfekt! Repetera nu igen</string>
+  <!-- Successful scan title for second to last successful scan -->
   <string name="fingerprint_successful_scan_final">En gång till tack</string>
+  <!-- Successful scan title for all other successful scans -->
   <string name="fingerprint_successful_scan_title_1">Du klarade det! Fortsätt</string>
   <string name="fingerprint_successful_scan_title_2">Grattis! En gång till</string>
   <string name="fingerprint_successful_scan_title_3">Bra gjort! Fortsätt så</string>
   <string name="fingerprint_successful_scan_title_4">Bara ett par gånger till</string>
   <string name="fingerprint_successful_scan_title_5">Du gjorde ett bra jobb! Och en gång till</string>
   <string name="fingerprint_successful_scan_title_6">Nästan framme</string>
+  <!-- Fingerprint enrollment error titles -->
   <string name="fingerprint_enrollment_error_title_1">Oj då. Försök igen</string>
   <string name="fingerprint_enrollment_error_title_2">Tyvärr fungerade det inte</string>
   <string name="fingerprint_enrollment_error_title_3">Hmm, något gick fel</string>
   <string name="fingerprint_enrollment_error_title_4">Försök igen</string>
   <string name="fingerprint_enrollment_error_title_5">Oj, det var uppstod ett fel</string>
+  <!-- Title for lockscreen settings, on dashboard, that is only used when a device supports
+         the fingerprint feature -->
   <string name="lockscreen_settings_and_fingerprint">Låsskärmen &amp; fingeravtryck</string>
+  <!-- Menu label for reset the battery stats -->
   <string name="menu_stats_reset">Återställ statistik</string>
+  <!-- Reset stats confirmation dialog's message -->
   <string name="reset_stats_msg">Statistiken för batterihistorik kommer att återställas</string>
+  <!-- Dock battery not present message -->
   <string name="dock_battery_not_present">Dockningsstationsbatteri hittades inte</string>
+  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging on Dock AC. -->
   <string name="battery_info_status_charging_dock_ac">Laddar i dockningsstationens AC</string>
+  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging over Dock USB. -->
   <string name="battery_info_status_charging_dock_usb">Laddar över dockningsstationens USB</string>
+  <!-- Lock screen setup wizard pattern complexity -->
   <string name="setup_lock_pattern_size_title">Mönsterkomplexitet</string>
   <string name="setup_lock_pattern_size_details">Hur många noder vill du använda med ditt mönster? Ju fler noder, desto mer komplext kan mönstret bli.</string>
+  <!-- LTO download data over wi-fi only -->
   <string name="lto_download_data_wifi_only">Ladda ner GPS-assisterad data</string>
   <string name="lto_download_data_wifi_only_on">Över alla nätverk</string>
   <string name="lto_download_data_wifi_only_off">Endast över Wi\u2011Fi nätverk</string>
+  <!-- Keep screen on strings -->
   <string name="keep_screen_on_never">Aldrig</string>
   <string name="keep_screen_on_debugging">Under USB-felsökning</string>
   <string name="keep_screen_on_charging">Under laddning</string>
+  <!-- Contributors cloud activity -->
   <string name="contributors_cloud_fragment_title">Bidragsgivare</string>
   <string name="contributors_cloud_loading_message">Laddar bidragsgivares data\u2026</string>
   <string name="contributors_cloud_failed_message">Kan inte ladda bidragsgivares data</string>

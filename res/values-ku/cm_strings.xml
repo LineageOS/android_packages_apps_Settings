@@ -16,9 +16,14 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
+  <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
   <string name="show_dev_on_cm">تۆ ڕێکخستنی گەشەپێدەریت چالاککرد!</string>
+  <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
   <string name="show_dev_already_cm">پێویست ناکا، تۆ پێشتر چالاکت کردوە.</string>
+  <!-- Launch Dev Tools -->
   <string name="development_tools_title">ئامرازەکانی گه‌شه‌پێدان</string>
+  <!-- Setting checkbox title for root access -->
   <string name="root_access">ڕێگای ڕەگ</string>
   <string name="root_access_warning_title">ڕێگەدان بە ڕێگەکان؟</string>
   <string name="root_access_warning_message">ڕێگەدان بە بەرنامەکان بۆ بەکارهێنانی ڕەگی ڕێگاکان زۆر مەترسی دارە و ترسی هەیە بۆ سیستەمی ئامێرەکەت!</string>
@@ -26,10 +31,12 @@
   <string name="root_access_apps">بەرنامەکان تەنها</string>
   <string name="root_access_adb">تەنها ADB</string>
   <string name="root_access_all">بەرنامەکان و ADB</string>
+  <!-- Sound settings screen -->
   <string name="ring_mode_title">جۆری زەنگ</string>
   <string name="ring_mode_normal">ئاسای</string>
   <string name="ring_mode_vibrate">لەرینەوە</string>
   <string name="ring_mode_mute">کپکردن</string>
+  <!-- Profiles settings  -->
   <string name="profiles_settings_title">ژیانامەکانی سیستەم</string>
   <string name="profiles_add">زۆرکردن</string>
   <string name="profile_settings_title">زانیاری تایبەتی</string>
@@ -51,32 +58,43 @@
   <string name="profile_app_group_category_title">تێبنیەکان زۆربوون</string>
   <string name="profile_app_group_item_instructions">زیادکردن یان سڕینەوەی گرووپەکان</string>
   <string name="profile_app_group_item_instructions_summary">زیادکردن یان سڕینەوەی تێبینیەکان لەسەر بەرنامەکانی گرووپ بۆ ئەم ژیانامە</string>
+  <!-- Profile mode options. -->
   <string name="profile_entries_on">کردنەوە</string>
   <string name="profile_entries_off">کوژانه‌وه‌</string>
   <string name="profile_entries_no_override">زیادەڕەوی نیە</string>
+  <!-- Add Profile -->
   <string name="profile_name_title">نێو</string>
   <string name="new_profile_name">وlt;زانیاری تایبەتیی تازه‌وgt;</string>
+  <!-- Rename Dialog  -->
   <string name="rename_dialog_title">ناوگۆڕین</string>
   <string name="rename_dialog_message">دانانی ناوی تازه‌</string>
   <string name="rename_dialog_hint">دانانی ناوی زانیاری تایبەتی</string>
+  <!-- Reset Profiles -->
   <string name="profile_reset_title">ڕێکخستنه‌وه‌</string>
   <string name="profile_reset_message">سڕینەوەی هەموو بەکارهێنەرەکان کە کورتە ژیانامەیان نوسیە و گەڕانەوەی بۆ باری ئاسای?</string>
+  <!-- Profile network mode -->
   <string name="profile_networkmode_2g">٢G</string>
   <string name="profile_networkmode_3g">٣G</string>
   <string name="profile_networkmode_4g">LTE</string>
   <string name="profile_networkmode_2g3g">٢G/٣G</string>
   <string name="profile_networkmode_2g3g4g">٢G/٣G/LTE</string>
+  <!-- Profile Config screen PreferenceGroup titles -->
   <string name="profile_volumeoverrides_title">زیادەڕەوی دەنگ</string>
   <string name="volume_override_summary">ڕێکخرا بۆ %1$s/%2$s</string>
   <string name="profile_volume_override_checkbox_label">پاشگەزکردنەوەی دەنگ</string>
+  <!-- Menu item for managing profiles -->
   <string name="profile_profiles_manage">زانیاری تایبەتی</string>
   <string name="profile_profile_manage">ڕێکخستنی زانیاری تایبەتی</string>
+  <!-- Profile settings screen, section header for settings related to notification profiles -->
   <string name="profile_settings">ڕێکخستنی زانیاری تایبەتی</string>
   <string name="profile_trigger_connect">لە پەیوەندی</string>
   <string name="profile_trigger_disconnect">لەسەر بێ پەیوەندی</string>
   <string name="profile_trigger_notrigger">ماشە نیە</string>
+  <!-- Title for application group setting screen -->
   <string name="profile_applist_title">بەرنامەکان</string>
+  <!-- Add application dialog box title -->
   <string name="profile_choose_app">هەڵبژراردنی بەرنامە</string>
+  <!-- Profiles - system settings -->
   <string name="profile_system_settings_title">ڕێکخستنی سیستەم</string>
   <string name="profile_lockmode_title">جۆری داخستنی ڕوونما</string>
   <string name="profile_lockmode_insecure_summary">پرسیار مەکە بۆ PIN یان تێپەڕەوشە</string>
@@ -85,6 +103,7 @@
   <string name="profile_brightness_title">ڕۆشنای شاشە</string>
   <string name="profile_brightness_override_summary">دانان بۆ %١$d%%</string>
   <string name="profile_brightness_override_checkbox_label">ئەوپەڕی ڕۆشنای</string>
+  <!-- Connection override toggles (not all are used at this time ) -->
   <string name="toggleWifi">بێ\u2011تەل</string>
   <string name="toggleWifiAp">خاڵی بەستنەوەی هەڵگرتەنیی بێ\u2011تەل</string>
   <string name="toggleBluetooth">بلوتوس</string>
@@ -93,6 +112,7 @@
   <string name="toggleSync">خۆکارانە-ناردنی داتا</string>
   <string name="toggle2g3g4g">جۆری تۆڕی پەسەندکراو</string>
   <string name="toggleNfc">NFC</string>
+  <!-- Hardware keys -->
   <string name="button_pref_title">دوگمه‌کان</string>
   <string name="hardware_keys_power_key_title">دوگمه‌ی پاوه‌ر</string>
   <string name="hardware_keys_home_key_title">دوگمەی ماڵەوە</string>
@@ -126,6 +146,7 @@
   <string name="button_wake_title">ئامێر هەڵسان</string>
   <string name="home_answer_call_title">وه‌ڵامدانه‌وه‌ی په‌یوه‌ندی</string>
   <string name="home_answer_call_summary">ده‌ستنان به‌ دوگمه‌ی ماڵه‌وه‌ وه‌ڵامی په‌یوه‌ندی هاتوو ده‌داته‌وه‌</string>
+  <!-- Key backlight -->
   <string name="button_backlight_title">لایتی پشته‌وه‌</string>
   <string name="button_backlight_enabled">دوگمه‌ی ڕووناککردنەوە</string>
   <string name="keyboard_backlight_enabled">ڕووناککردنەوەی ته‌خته‌کلیل</string>
@@ -136,6 +157,7 @@
   <string name="backlight_summary_disabled">له‌کارخرا</string>
   <string name="backlight_summary_enabled_with_timeout">چالاکردنی  <xliff:g id="کات">%s</xliff:g></string>
   <string name="backlight_summary_enabled">چالاکرا</string>
+  <!-- Power menu -->
   <string name="power_menu_title">کرداره‌کانی پێڕست</string>
   <string name="power_menu_reboot_title">خستنه‌وه‌گه‌ڕی پێڕست</string>
   <string name="power_menu_screenshot_title">گرتنی وێنه‌ی ڕوونما</string>
@@ -148,12 +170,16 @@
   <string name="power_menu_sound_title">پەڕەی دەنگ</string>
   <string name="power_menu_bug_report_disabled">ڕاپۆرتی کەلێن لەکارخرا لەلایەن گەشەپێدەر لە ڕێکخستن</string>
   <string name="power_menu_profiles_disabled">ژیانامە لە سیستەم لەکارخرا</string>
+  <!-- Backlight brightness settings screen -->
   <string name="adaptive_backlight_title">لایتی دواوە</string>
   <string name="adaptive_backlight_summary">ڕێکخستنی جوڵەی ڕۆشنایی نیشاندانی لایتی دواوە وە ماوەی باتری</string>
+  <!-- Sunlight readability enhancement screen -->
   <string name="sunlight_enhancement_title">هه‌ستیاری خۆر</string>
   <string name="sunlight_enhancement_summary">هه‌ستیاری ڕووناکی شاشه‌ و خوێندنه‌وه‌ی له‌ژێر خۆر</string>
+  <!-- Color enhancement settings screen -->
   <string name="color_enhancement_title">ڕەنگی زیادکراوەکان</string>
   <string name="color_enhancement_summary">زیادکردنی ڕه‌نگی ڕوونما </string>
+  <!-- Blacklist preferences -->
   <string name="blacklist_title">لیستی تەلەفۆنە بلۆکراوەکان</string>
   <string name="blacklist_edit_dialog_title">دەستکاریکردنی تەلەفۆنی بلۆکراو</string>
   <string name="blacklist_prefs">ڕێکخستنەکان</string>
@@ -177,11 +203,14 @@
   <string name="blacklist_policy_block_calls">بلۆکردنی ته‌له‌فۆنی هاتوو</string>
   <string name="blacklist_policy_block_messages">بلۆکردنی نامه‌ی هاتوو</string>
   <string name="blacklist_bad_number_add">لەتوانایدا نیە ژمارە تەلەفۆنی  لەکار نەبوو زیادبکرێت بۆ لیستی تەلەفۆنی بلۆکراو</string>
+  <!-- Blacklist management -->
   <string name="remove_blacklist_number_title">سڕینه‌وه‌ی ژماره‌</string>
   <string name="remove_blacklist_entry">ئایە ئەتەوێت ئەم ژمارە تەلەفۆنە لە لیستی بلۆکراوەکان بسڕیتەوە?</string>
   <string name="select_contact">دیاریکردنی ژماره‌</string>
+  <!-- Protected apps lockpattern reset button -->
   <string name="lockpattern_reset_button">ڕێکخستنه‌وه‌ی ڕاکێشان</string>
   <string name="lockpattern_settings_reset_summary">دانانی هه‌ژماری پۆستی ئیلکترۆنی سه‌ره‌تای به‌ تێپه‌ڕه‌ وشه‌وه‌ بۆ ڕێکخستنه‌وه‌ی قوفڵی ڕاکێشان</string>
+  <!-- Protected Apps -->
   <string name="menu_hidden_apps_delete">ڕێکخستنەوه</string>
   <string name="menu_hidden_apps_reset_lock">ڕێکخستنه‌وه‌ی قوفڵی گه‌یاندن</string>
   <string name="protected_apps">بەرنامە پارێزراوەکان</string>
@@ -191,6 +220,7 @@
   <string name="pa_login_submit_button">چونەژورەوە</string>
   <string name="pa_login_checking_password">پشکنینی هەژمار\u2026</string>
   <string name="pa_login_incorrect_login">چونه‌ژوره‌وه‌ هه‌ڵه‌بوو</string>
+  <!-- Display : Rotation  -->
   <string name="display_rotation_title">سوڕانەوە</string>
   <string name="display_rotation_disabled">لەکارخرا</string>
   <string name="display_rotation_unit">پله</string>
@@ -200,6 +230,7 @@
   <string name="display_rotation_90_title">90 پلە</string>
   <string name="display_rotation_180_title">180 پلە</string>
   <string name="display_rotation_270_title">270 پلە</string>
+  <!-- Sms security limit -->
   <string name="app_security_title">ئاسایشی بەرنامە</string>
   <string name="sms_security_check_limit_title">سنوردارکردنی نامەی SMS </string>
   <string name="spam_added_title">زیادکرا %١$s</string>
@@ -207,22 +238,33 @@
   <string name="block_notifications_title">فلتەرکردنی ئاگادارییه‌کان</string>
   <string name="block_notifications_summary">به‌ڕێوه‌بردنی ئاگادارییه‌ پشتگوێخراوه‌کان</string>
   <string name="no_filters_title">فلته‌ری نه‌بێت</string>
+  <!-- CM Updater -->
   <string name="cmupdate_settings_title">نوێکردنه‌وه‌ی وەشانەکە</string>
+  <!-- Settings switch for updating Cyanogen recovery -->
   <string name="update_recovery_title">بەڕۆژکردنی ڕیکاڤێری سایانۆجێن</string>
   <string name="update_recovery_summary">نوێکردنەوەی ڕیکەڤەری لەگەڵ نوێکردنەوەی سیستەمدا</string>
   <string name="update_recovery_on_warning">تێبینی: کاتێک ئەم خزمەتە چاڵاک کرا ریکەڤەریەکەی تۆ جێگەی دەگیرێت بە ئەو وەشانەی ئێستای سیستەمەکەت \n\n ریکەڤەریەکەت نوێ دەکرێتەوە لەگەڵ بەرزکردنەوەی سیستەمەکەت بۆ یارمەتیدان لە گونجاندنی وەشانەکە \n\n ئایە ئەتەوێت ئەم خزمەتە چاڵاک بکەیت؟?</string>
   <string name="update_recovery_off_warning">ئاگاداری : کاتێک ئەم خزمەتە ناچاڵاک دەکەیت ریکەڤەریەکەت نوێ ناکرێتەوە لەگەڵ بەرزکردنەوی سیستەمەکەت .\n\n  خزمەتی نوێ لەوانەیە دانەمەزرێ لەگەڵ بەرزکردنەوەی وەشانەکە \n\n. دڵنیای لە ناچاڵاک کردنی ئەم خزمەتە؟?</string>
+  <!-- About phone screen, CyanogenMod version -->
   <string name="mod_version">وەشانی کوردی</string>
   <string name="mod_version_default">نەناسراو</string>
+  <!-- About phone screen, Device model -->
   <string name="device_model">مۆدێلی ئامێر</string>
+  <!-- About phone screen, Device name -->
   <string name="device_name">ناوی ئامێر</string>
+  <!-- About phone screen, build date -->
   <string name="build_date">بنیاتنانی ڕۆژ</string>
+  <!-- About phone screen, service state -->
   <string name="phone_service_state">دەنگ: <xliff:g id="دەنگ">%1$s</xliff:g>, داتا: <xliff:g id="data_state">%2$s</xliff:g></string>
+  <!--- Tap To Wake -->
   <string name="double_tap_to_wake_title">دوجارلێیده‌ بۆ هه‌ڵسان</string>
   <string name="double_tap_to_wake_summary">دوجار دەستلێدە بۆ کردنەوەی شاشەکە</string>
+  <!-- Proximity wake -->
   <string name="proximity_wake_title">قه‌ده‌غه‌کردنی هه‌ستانی ڕێکه‌وت</string>
   <string name="proximity_wake_summary">هه‌ستیاری نزیکی بپشکنه‌ بۆ هه‌ستانی ڕوونما</string>
+  <!-- Privacy Settings Header item -->
   <string name="privacy_settings_cyanogenmod_title">تایبەتی</string>
+  <!-- Privacy Guard -->
   <string name="privacy_guard_default_title">چالاکرا لە بنەڕەت</string>
   <string name="privacy_guard_default_summary">چالاکردنی بنەڕەت بۆ دامەزراندنی بەرنامەی تازە</string>
   <string name="privacy_guard_manager_title">پاسکردنی تایبەتی</string>
@@ -234,28 +276,42 @@
   <string name="privacy_guard_help_text">لەسەر ڕوونماکە ئەتوانی بەرنامەیەک هەڵبژێریت بۆ پاسەوانی تایبەتی بۆ ئەکتڤکردنی بۆ ئاسانی لێدانی.بەرنامەی دیاریکراو دەستناداتە داتای تایبەتییتەوە وەکو ناوەکان،نامەکان،تۆماری تەلەفۆن.دەستنانی بەرنامە کردنەوەی زانیاری بەرنامە لەسەر ڕوونما\n\n دیارنادات لە بنەڕەتەوە لە هەڵبژاردەی دیاریکراوی پێڕست.</string>
   <string name="privacy_guard_manager_show_system_apps">پیشاندانی بنیاتنانی بەرنامەکان</string>
   <string name="app_ops_btn_text">لابردن</string>
+  <!-- Increasing ring tone volume -->
   <string name="increasing_ring_volume_option_title">زیادکردنی دەنگی زەنگ</string>
   <string name="increasing_ring_min_volume_title">دەستپێکردنی دەنگ</string>
   <string name="increasing_ring_ramp_up_time_title">هەڵسانی کات</string>
+  <!-- Advanced reboot options -->
   <string name="advanced_reboot_title">خستنەوەگەڕی پێشکەوتوو</string>
   <string name="advanced_reboot_summary">کاتێک قوفڵ کراوه‌یه‌، هه‌ڵبژاردنێک هه‌بێ بۆ لیستی دوگمه‌ی پاوه‌ر بۆ کوژانه‌وه‌ و دووباره‌ کارپێکردنه‌وه‌</string>
+  <!-- Setting checkbox title for Whether to enable Android debugging support on the phone. -->
   <string name="enable_adb_cm">ڕاستكردنه‌وه‌ی ئەندرۆید</string>
+  <!-- Setting checkbox summary for Whether to enable Android debugging support on the phone -->
   <string name="enable_adb_summary_cm">کارپێکردنی هه‌ڵدۆزه‌ری ئه‌ندرۆیدی پرد (abd)</string>
+  <!-- Android debugging over WiFi -->
   <string name="adb_over_network">تۆڕی ئه‌نته‌رنێتی ADB</string>
   <string name="adb_over_network_summary">چلاکردنی  TCP/IP خه‌واندنی (Wi-Fi, USB تۆڕ). ئه‌م ڕێکخستنه‌ له‌سه‌ر کردنه‌وه‌ کاریه‌تی</string>
+  <!-- Warning for Adb over Network -->
+  <!-- Setting checkbox summary for displaying USB debugging notification -->
   <string name="adb_notify">تێبینی هەڵدۆزین</string>
   <string name="adb_notify_summary">پیشاندانی تێبینی کاتێک USB یان تۆڕی هەڵدۆزین چالاکرا</string>
+  <!-- Hostname setting -->
   <string name="device_hostname">ناوی میوانی ئامێر</string>
+  <!-- Development shortcut -->
   <string name="development_shortcut_title">قه‌دبڕی گه‌شه‌</string>
   <string name="development_shortcut_summary">چالاکردنی قەدبڕی بەڕێوەبردنی بەرنامە لە لیستی بەرنامەی تازە</string>
+  <!-- tap-to-sleep -->
   <string name="double_tap_to_sleep_title">دوجار-لێدان بۆ خه‌وتن</string>
   <string name="double_tap_to_sleep_summary">دوجار دەستبدە لە شریتی دۆخ بۆ کوژانەوەی پیشاندان</string>
+  <!-- Turn on display when power connected; turn off display when power disconnected -->
   <string name="wake_when_plugged_or_unplugged_title">هەڵسان لە پلاگ</string>
   <string name="wake_when_plugged_or_unplugged_summary">کردنەوەی ڕۆشای ڕوونماکە لە کاتی پەیوەندکردن یان پچڕانی لەکارەبا</string>
+  <!-- Kill app long-press back -->
   <string name="kill_app_longpress_back">کوشتنی بەرنامە لە دوگمەی دواوە</string>
   <string name="kill_app_longpress_back_summary">کوشتنی پێشبنەما بەرنامە لەلایەن دەستنانی زۆر بە دوگمەی دواوە</string>
+  <!-- Buttons - Enable navbar -->
   <string name="disable_navkeys_title">چالاکردنی شریتی ڕوونما</string>
   <string name="disable_navkeys_summary">چالاکردنی کردنه‌وه‌ی ڕێدۆزه‌ره‌ی ڕوونما و له‌کارخستنی دوگمه‌ی ڕه‌قه‌کاڵڵا</string>
+  <!-- Navigation Bar -->
   <string name="navigation_bar_category">شریتی ڕێدۆزه‌ر</string>
   <string name="navigation_bar_left_title">باری ده‌ستی چه‌پله‌ر</string>
   <string name="navigation_bar_left_summary">دانانی شریتی ڕێدۆزه‌ره‌وه‌ له‌ ده‌ستی چه‌پی ڕوونماکه‌ به‌ باری ڕێکی</string>
@@ -267,11 +323,13 @@
   <string name="navigation_bar_arrow_keys_title">پیشاندانی کلیلی نزیکی کاتی نوسین</string>
   <string name="navigation_bar_recents_title">دوایین چالاکیی پەنجەلێدانی درێژ</string>
   <string name="header_category_personalization">کەسایەتی</string>
+  <!-- Status bar -->
   <string name="status_bar_title">شریتی دۆخ</string>
   <string name="status_bar_toggle_brightness">کۆنترۆڵکردنی ڕۆشنایی</string>
   <string name="status_bar_toggle_brightness_summary">ڕێکخستنی ڕۆشنایی به‌ سوینی شریتی دۆخ</string>
   <string name="status_bar_notif_count_title">پێشاندانی تێبینی</string>
   <string name="status_bar_notif_count_summary">پیشاندانی ژماره‌ی ته‌له‌فۆن که‌ نه‌کراونه‌ته‌وه‌ له‌ تێبینی</string>
+  <!-- Status bar - Clock -->
   <string name="status_bar_clock_style_title">شێوازی کاتژمێر</string>
   <string name="status_bar_clock_style_right">ڕاست</string>
   <string name="status_bar_clock_style_left">چەپ</string>
@@ -282,22 +340,26 @@
   <string name="status_bar_am_pm_normal">ئاسای</string>
   <string name="status_bar_am_pm_small">بچوک</string>
   <string name="status_bar_am_pm_hidden">شاراوه‌</string>
+  <!-- Status bar - Battery -->
   <string name="status_bar_battery_style_title">نیشاندانی دۆخی باتری</string>
   <string name="status_bar_battery_style_icon_portrait">وێنه‌ی وێنۆچکه‌</string>
   <string name="status_bar_battery_style_icon_landscape">وێنۆچکه‌ی شێوە ئاسۆی</string>
   <string name="status_bar_battery_style_circle">خڕ</string>
   <string name="status_bar_battery_style_text">ده‌ق</string>
   <string name="status_bar_battery_style_hidden">شاراوه‌</string>
+  <!-- Status bar - Battery percentage -->
   <string name="status_bar_battery_percentage_title">ڕیژەی سەدی باتری</string>
   <string name="status_bar_battery_percentage_default">شاراوه‌</string>
   <string name="status_bar_battery_percentage_text_inside">لەناوەی وێنۆچکە</string>
   <string name="status_bar_battery_percentage_text_next">لە تەنیشتی وێنۆچکەکە</string>
+  <!-- Notification light dialogs -->
   <string name="edit_light_settings">دەستکاری کردنی ڕۆشنایی</string>
   <string name="pulse_speed_title">ترپەی درێژی و خێرایی</string>
   <string name="default_time">ئاسایی</string>
   <string name="custom_time">درووستکراو</string>
   <string name="dialog_delete_title">سڕینەوە</string>
   <string name="dialog_delete_message">سڕینەوەی دیاریکراوەکان؟</string>
+  <!-- Values for the notification light pulse spinners -->
   <string name="pulse_length_always_on">هەمیشە کراوەبێ</string>
   <string name="pulse_length_very_short">زۆر کورت</string>
   <string name="pulse_length_short">کورت</string>
@@ -309,12 +371,14 @@
   <string name="pulse_speed_normal">ئاسایی</string>
   <string name="pulse_speed_slow">هێواش</string>
   <string name="pulse_speed_very_slow">زۆر هێواش</string>
+  <!-- Battery light settings -->
   <string name="battery_light_title">ڕۆشنایی باتری</string>
   <string name="battery_low_pulse_title">ترپە ئەگەر باتری کەم بوو</string>
   <string name="battery_light_list_title">ڕەنگەکان</string>
   <string name="battery_light_low_color_title">باتری کەمە</string>
   <string name="battery_light_medium_color_title">بارگاویکردن</string>
   <string name="battery_light_full_color_title">بارگاوی پڕ بوە</string>
+  <!-- Lights settings screen, notification light settings -->
   <string name="notification_light_title">لایتی ئاگادارکردنەوە</string>
   <string name="notification_light_general_title">گشتی</string>
   <string name="notification_light_applist_title">بەرنامەکان</string>
@@ -323,19 +387,26 @@
   <string name="notification_light_default_value">بنەڕەت</string>
   <string name="notification_light_missed_call_title">تەلەفۆنی لەدەستچوو</string>
   <string name="notification_light_voicemail_title">دەنگەنامە</string>
+  <!-- Sound & notification > Sound section: Title for the option defining the default notification ringtone. [CHAR LIMIT=30] -->
   <string name="notification_ringtone_title_cm">هەڵبژاردنی تۆن</string>
+  <!-- Launch music player when headset is connected -->
   <string name="headset_connect_player_title">کردنه‌وه‌ی به‌رنامه‌ی ده‌نگ</string>
   <string name="headset_connect_player_summary">کردنه‌وه‌ی به‌رنامه‌ی مۆسیقای بنه‌ڕه‌تی کاتێک بڵندگۆ په‌یوه‌ندکرا</string>
+  <!-- Whether to display IME switcher notifcation -->
   <string name="ime_switcher_notify">هەڵبژاردەی وێنۆچکە</string>
   <string name="ime_switcher_notify_summary">پیشاندانی ڕێگەی هەڵبژاردەی وێنۆچکە</string>
+  <!-- Per app controls for LP keyguard notifications -->
   <string name="app_notification_show_on_keyguard_title">پیشاندانی لەسەر قوفڵی شاشە</string>
   <string name="app_notification_show_on_keyguard_summary">پیشاندانی تێبینی لەم بەرنامەیە لەسەر قوفڵی شاشە</string>
   <string name="app_notification_no_ongoing_on_keyguard_title">لەکارخستنی بەردەوام تێبینی لەسەر قوفڵی سەرشاشە</string>
   <string name="app_notification_no_ongoing_on_keyguard_summary">هەرگیز بەبەردەوامی تێبینی پیشان مەدە لەسەر ئەم بەرنامەیە لەسەر قوفڵی سەر شاشە</string>
+  <!-- High touch sensitivity -->
   <string name="high_touch_sensitivity_title">هەستیاری ساوانی بەرز</string>
   <string name="high_touch_sensitivity_summary">هەستیاری ساوڕوونما برز بکەوە، ئەوە ئەتوانرێ بەکاربهێنرێت کاتێک دەستەوانت لە دەستدایە</string>
+  <!-- Touchscreen hovering -->
   <string name="touchscreen_hovering_title">دەستلێدانی شاشە سوڕانەوە</string>
   <string name="touchscreen_hovering_summary">هەمیشە شاشەکە بسوڕێنەوە وەکو مشک لە وێبگەری ماڵپەر، ڕومێزی دور،هتد</string>
+  <!-- App ops -->
   <string name="app_ops_summaries_coarse_location">ناوچه‌ی زبر</string>
   <string name="app_ops_summaries_fine_location">ناوچه‌ی باش</string>
   <string name="app_ops_summaries_gps">GPS</string>
@@ -450,6 +521,7 @@
   <string name="app_ops_labels_data_change">گۆڕینی داتا</string>
   <string name="app_ops_labels_wake_up">لەخەوهەستان</string>
   <string name="app_ops_labels_su">ڕێگای ڕەگ</string>
+  <!-- App ops categories -->
   <string name="app_ops_categories_location">ناوچه‌</string>
   <string name="app_ops_categories_personal">که‌سێتی</string>
   <string name="app_ops_categories_messaging">نامه‌</string>
@@ -457,10 +529,12 @@
   <string name="app_ops_categories_device">ئامێر</string>
   <string name="app_ops_categories_bootup">بووتهه‌ڵسان</string>
   <string name="app_ops_categories_su">ڕێگای ڕەگ</string>
+  <!-- App ops permissions -->
   <string name="app_ops_permissions_allowed">ڕێپێدراوه</string>
   <string name="app_ops_permissions_ignored">پشتگوێخرا</string>
   <string name="app_ops_permissions_always_ask">هەمیشه پرسیارکردن</string>
   <string name="ok">باشە</string>
+  <!-- Profiles -->
   <string name="profile_menu_delete_title">سڕینه‌وه‌</string>
   <string name="profile_action_none">جێهێشتن بێگۆڕان</string>
   <string name="profile_action_disable">کوژانەوە</string>
@@ -477,6 +551,7 @@
   <string name="profile_setup_actions_title_config">سازدانەوەی چالاکییەکان</string>
   <string name="profile_appgroups_manage">گرووپی بەرنامەکان</string>
   <string name="profile_appgroup_manage">ڕێکخستنی گروپی بەرنامە</string>
+  <!-- Title for application group setting screen -->
   <string name="profile_appgroups_title">گرووپی بەرنامەکان</string>
   <string name="profile_new_appgroup">گروپی نوێی بەرنامە</string>
   <string name="profile_delete_appgroup">سڕینەوەی ئەم گروپی بەرنامەیە?</string>
@@ -484,12 +559,14 @@
   <string name="profile_appgroup_name_title">ناو</string>
   <string name="duplicate_appgroup_name">ناوی گرووپی نامه‌ دوباره‌یه‌!</string>
   <string name="profile_app_delete_confirm">سڕینه‌وه‌ی ئه‌م به‌رنامه‌یه‌?</string>
+  <!-- Profile Settings sound modes labels -->
   <string name="sound_mode">باری تێبینی</string>
   <string name="ringer_mode">جۆری زەنگ</string>
   <string name="lights_mode">جۆری لایت</string>
   <string name="vibrate_mode">جۆری لەرینەوە</string>
   <string name="choose_soundtone">هەڵبژاردنی تۆنی تێبنینی</string>
   <string name="choose_ringtone">هەڵبژاردنی زەنگ</string>
+  <!-- Sound settings screen, setting option name to pick ringtone (a list dialog comes up)-->
   <string name="soundtone_title">هەڵبژاردنی دەنگ</string>
   <string name="no_bluetooth_triggers">هیچ بلوتوسێک جوت نەکراوە.\nدەستلێدە بۆ جوتکردنی بلوتوسی ئامێر پێش.</string>
   <string name="no_wifi_triggers">نیەWi\u2011Fi ڕێگای خاڵ ڕێکخرا.\nدەستلێدا بۆ ڕێکخستنی وای\u2011فای پێشی ڕێکخستن.</string>
@@ -497,30 +574,40 @@
   <string name="no_triggers_configured_nfc">دەستلێدە بۆ زیادکردنی NFC ی تازە.</string>
   <string name="profile_setup_setup_triggers_description">تکایە ئەو داگیرسێنەرانەی کە ئەم لاڕوووە چالاک دەکەن دیاری بکە</string>
   <string name="profile_setup_actions_description">ئێستا سازدان بکە کە چی ڕوو دەدات کاتێک لاڕوووەکە چالاک کرابێت</string>
+  <!-- App ops detail -->
   <string name="app_ops_entry_summary"><xliff:g id="op">%1$s</xliff:g> (به‌کارهێنا<xliff:g id="count">%2$s</xliff:g>)</string>
   <string name="app_ops_allowed_count">ڕێگه‌درا<xliff:g id="count" example="2 times">%s</xliff:g></string>
   <string name="app_ops_ignored_count">نکوڵیکرا<xliff:g id="count" example="2 times">%s</xliff:g></string>
   <string name="app_ops_both_count">ڕێگه‌درا<xliff:g id="count">%1$s</xliff:g>, denied <xliff:g id="count">%2$s</xliff:g></string>
+  <!-- App ops menu options -->
   <string name="app_ops_show_user_apps">نیشاندانی به‌رنامه‌ی به‌کارهێنه‌ر</string>
   <string name="app_ops_show_system_apps">پیشاندانی به‌رنامه‌-بنیاتنراو</string>
   <string name="app_ops_reset_counters">ڕێکخستنه‌وه‌ ڕێگه‌دان/نکوڵیکردنی باڵانسه‌کان</string>
   <string name="app_ops_reset_confirm_title">ڕێکخستنه‌وه‌ی دڵنیابونی باڵانس</string>
   <string name="app_ops_reset_confirm_mesg">ئایا دڵنیای کە ئەتەوێت هەژمارەکە ڕێکبخەیتەوە?</string>
+  <!-- Font size sample text. This needs to be a very short string, as it is shown in
+    multiple font sizes in a limited amount of space. -->
   <string name="font_size_sample">نموونه‌</string>
+  <!-- Volume settings - Volume adjustment sound -->
   <string name="volume_adjust_sounds_title">دەستکاریکردنی دەنگ</string>
+  <!-- Hardware tunables - Vibrator intensity -->
   <string name="vibrator_intensity_title">له‌رینه‌وه‌ی توندێتی</string>
   <string name="vibrator_warning">به‌های به‌رزتر له‌ %1$d پشتگیری نه‌کراوه‌</string>
+  <!-- Hardware tunables - Color calibration -->
   <string name="color_calibration_title">ڕه‌نگ کالیبره‌یشن</string>
   <string name="color_calibration_summary">کالیبره‌یت له‌سه‌ر ڕه‌نگی ڕوونما</string>
   <string name="color_red_title">سور</string>
   <string name="color_green_title">سه‌وز</string>
   <string name="color_blue_title">شین</string>
+  <!-- Hardware tunables - Gamma calibration -->
   <string name="gamma_tuning_title_head">کالیبره‌یشنی سێیه‌م</string>
   <string name="gamma_tuning_summary_head">به‌های تویک</string>
   <string name="gamma_tuning_control_set_header">کۆمەڵ<xliff:g id="index">%d</xliff:g></string>
+  <!-- used if no name provided by overlay -->
   <string name="gamma_tuning_contrast">جیاوازی</string>
   <string name="gamma_tuning_brightness">ڕوناکی</string>
   <string name="gamma_tuning_saturation">تێرایی</string>
+  <!-- Display settings.  Screen color. -->
   <string name="screencolor">ڕەنگی ڕوونما</string>
   <string name="custom_screencolor">ڕێکخستنی ڕەنگی ڕوونما</string>
   <string name="screencolor_save">پاشەکەوتکردن</string>
@@ -537,26 +624,47 @@
   <string name="screen_color_setting_vivid">زیرەکی</string>
   <string name="screen_color_setting_custom">دروستکراو</string>
   <string name="settings_reset_button">ڕێکخستنەوە</string>
+  <!-- Message when bluetooth dialog for pin entry is showing  when HIGH security enabled-->
   <string name="bluetooth_enter_pin_msg_hs">بۆ جووتکردنە لەگەڵ:<xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="ناوی_ئامێرەکە">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g>PIN بنوسە ئامێرەکە پێویستیەتی (١٦ پیت زیاتر بێت):</string>
+  <!-- Bluetooth settings.  The user-visible string that is used whenever referring to the DUN profile. -->
   <string name="bluetooth_profile_dun">لێدان بۆ چونە ژورەوەی تۆڕ</string>
+  <!-- Bluetooth settings.  The user-visible string that is used whenever referring to the SAP profile. -->
   <string name="bluetooth_profile_sap">چوونەناو سیم</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the DUN checkbox preference when DUN is connected. -->
   <string name="bluetooth_dun_profile_summary_connected">پەیوەندکرا بە DUN ڕاژەوە</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the pbap checkbox preference when pbap is connected. -->
   <string name="bluetooth_pbap_profile_summary_connected">پەیوەستکرا بە  pbap سێرڤەری</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the SAP checkbox preference when SAP is connected. -->
   <string name="bluetooth_sap_profile_summary_connected">پەیوەندکرا بە ڕێگەی ڕاژەی سیمکارت</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the DUN checkbox preference that describes how checking it will set the DUN profile as preferred. -->
   <string name="bluetooth_dun_profile_summary_use_for">لێدانی تۆڕ بۆ ڕاژە</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the pbap checkbox preference that describes how checking it will set the pbap profile as preferred. -->
   <string name="bluetooth_pbap_profile_summary_use_for">بەکارهێنانی بەشداری ناوەکان</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the SAP checkbox preference that describes how checking it will set the SAP profile as preferred. -->
   <string name="bluetooth_sap_profile_summary_use_for">بەکارهێنانی سیمکارت بۆ ڕێگە دان</string>
+  <!-- Bluetooth settings.  A checkbox to set if we should accept all the file types regardless of their presence in MIME type whitelist -->
   <string name="bluetooth_accept_all_files">وه‌رگرتنی هه‌موو په‌ڕگه‌یه‌ک</string>
+  <!-- SIM lock settings title  [CHAR LIMIT=40] -->
   <string name="sim_lock_settings_cm">SIM/RUIM ڕێکخستنی قوفڵی کارت</string>
+  <!-- Security & location settings screen, setting option name  [CHAR LIMIT=40] -->
   <string name="sim_lock_settings_category_cm">دامەزراندنی SIM/RUIM قوفڵی کارت</string>
+  <!-- Security & location settings screen, section heading for settings related to sim card locking  [CHAR LIMIT=40] -->
   <string name="sim_lock_settings_title_cm">SIM/RUIM قوفڵی کارت</string>
+  <!-- SIM card lock settings screen, SIM PIN dialog message when PIN disable fails-->
   <string name="sim_pin_disable_failed">ناتوانرێت PIN لەکاربخرێت.</string>
+  <!-- SIM card lock settings screen, SIM PIN dialog message when PIN enable fails-->
   <string name="sim_pin_enable_failed">ناتوانرێت pin  چالاک بکرێت.</string>
+  <!-- SIM password can't be changed as SIM LOCK is not enabled: -->
   <string name="sim_pin_change_failed_enable_sim_lock">بۆگۆڕینی SIM/RUIM PIN, چالاک SIM/RUIM قوفڵ یەکەم.</string>
+  <!-- SIM lock can't be changed - not supported -->
   <string name="sim_enable_disable_lock_not_supported">SIM/RUIM قوفڵەکە پاڵپشتناکرێت لەلایەن کارتەکەوە.</string>
+  <!-- SIM card lock settings screen, toast displayed on wrong PIN1: -->
   <string name="sim_pin_attempts">\nهه‌وڵه‌کان ماون:</string>
+  <!-- SIM card lock settings screen, toast displayed on PIN1 enable: -->
   <string name="sim_pin_enabled">PIN١ چالاکراوە</string>
+  <!-- SIM card lock settings screen, toast displayed on PIN1 disable: -->
   <string name="sim_pin_disabled">PIN١ لەکارخرا</string>
+  <!-- string resources for USB OTG & UICC features -->
   <string name="storage_usb">USB یادگە</string>
   <string name="storage_uicc">UICC بیرگه‌</string>
   <string name="sdcard_eject" product="default">سواو نه‌کردنی بیرگه‌ی ده‌ره‌کی؟</string>
@@ -577,7 +685,9 @@
   <string name="uicc_format_summary" product="default">هەموو دراوەکانی ناو کۆگای USB پاک بکەوە، وەکوو موزیک و وێنەکان</string>
   <string name="uicc_mount" product="default">جێگیرکردن UICC بیرگە</string>
   <string name="uicc_insert_summary" product="default">تێکردنی UICC بیرگە بۆ جێگیرکردنی</string>
+  <!-- Title of dialog asking user to confirm before enabling UMS. [CHAR LIMIT=48] -->
   <string name="usb_settings_enable_ums_title">چالاکردنی بیرگەی بەکۆمەڵ?</string>
+  <!-- Message of dialog asking user to confirm before enabling UMS. [CHAR LIMIT=NONE] -->
   <string name="dlg_confirm_sdcard_unmount_title" product="default">سواو نه‌کردنی بیرگه‌ی ده‌ره‌کی?</string>
   <string name="dlg_confirm_usb_unmount_title" product="default">سوانه‌کردنی بیرگه‌ی USB?</string>
   <string name="dlg_confirm_uicc_unmount_title" product="default">جێگیرنەکردنی UICC بیرگە?</string>
@@ -602,18 +712,27 @@
   <string name="sdcard_media_format_gesture_explanation" product="default">ئەبێت قوفڵی چنینەکە بکێشیت بۆ کردنەوەی قوفڵەکە بۆ سڕینەوەی بیرگەی دەرەکی.</string>
   <string name="usb_media_format_gesture_explanation" product="default">تۆ پێویستە شێوازی کردنەوەت بکێشیتەوە بۆ دوپاتکردنەوەی ئەوەی کە تۆ دەتەوێت بیرگەی USB بسڕیتەوە.</string>
   <string name="uicc_media_format_gesture_explanation" product="default">تۆ پێویستە شێوازی کردنەوەت بکێشیتەوە بۆ دوپاتکردنەوەی ئەوەی کە تۆ دەتەوێت بیرگەی USB بسڕیتەوە.</string>
+  <!-- Storage menu, label for internal media storage -->
   <string name="internal_sd_format">سڕینەوەی ڕەنگاڵەی ناوەکی</string>
   <string name="internal_sd_format_summary">سڕینه‌وه‌ی هه‌موو داتاکان له‌ بیرگه‌ی ناوه‌کی USB ،وه‌کو میوزک و وێنه‌</string>
+  <!-- Media & phone storage settings screen, label for check box to erase media storage [CHAR LIMIT=30] -->
   <string name="master_clear_desc_erase_internal_storage">\n\nTبۆ پاکردنەوەی میوزک، وێنە، و بەکارهێنانی داتای تری، لە <b>بیرگەی ڕەنگاڵەی ناوەکی</b> ئەبێت لابدرێت.</string>
   <string name="erase_internal_storage">سڕینەوەی ڕەنگاڵەی ناوەکی</string>
   <string name="erase_internal_storage_description">سڕینەوەی هەموو داتا لەسەر بیرگەی ڕەنگاڵەی ناوەکی، وەکو گۆرانی  یان وێنەکان</string>
+  <!-- Rescan storage -->
   <string name="storage_rescan_media">گه‌ڕان بۆ زانینی قه‌باره‌ی بیرگه‌</string>
+  <!-- [CHAR LIMIT=130] Location mode screen, sub category for IZat Location -->
   <string name="location_category_enhanced_location">زیادکردنی ناوچە (IZat)</string>
+  <!-- [CHAR LIMIT=NONE] App ops settings summary, on main settings screen. If clicked, the user is taken to a settings screen for app operations -->
   <string name="app_ops_settings_summary">پیشاندان یان گۆڕینی بەرنامەی ڕێگەپێدان</string>
+  <!-- Setting checkbox summary when device is in Charging mode -->
   <string name="enable_adb_summary_charging">ئامێرەکە لەباری بارگاویکردنە، USB هەڵدۆز چالاککرا</string>
+  <!-- Title of checkbox setting that enable quickboot. [CHAR LIMIT=32] -->
   <string name="enable_quickboot_title">چالاکردنی باری خێرا بووت</string>
+  <!-- Summary of checkbox setting that enable quickboot. [CHAR LIMIT=64] -->
   <string name="enable_quickboot_summary">خستنە ئامێرەکە بۆ باری خێرە لە جیاتی باری ئاسای کوژانەوە</string>
   <string name="data_usage_tab_slot">سیم <xliff:g id="sub">%d</xliff:g></string>
+  <!-- MultiSim Settings changes-->
   <string name="sim_enabler_title">باری سیم</string>
   <string name="sim_enabler_summary">سیم <xliff:g id="status" example="enabled">%1$s</xliff:g></string>
   <string name="sim_enabled">چاڵاک کراوە</string>
@@ -630,12 +749,19 @@
   <string name="external_storage_turn_off">بیرگەی دەرەکی کرایە کار</string>
   <string name="stats_collection_title">هەڵبژاردەی ئامار</string>
   <string name="stats_collection_summary">کاتێک چالاککرا، ڕێگەدان بە هەڵبژاردە لار</string>
+  <!-- Category title for Charging sounds (Power state change) specific Settings.
+         [CHAR LIMIT=40] -->
   <string name="power_notifications_category_title">دەنگی بارگاوی</string>
+  <!-- Sound settings, Charging sounds enable/disable, setting check box label -->
   <string name="power_notifications_enable_title">چالاکرا</string>
   <string name="power_notifications_enable_summary">لێدانی دەنگ کاتێک بارگاوی پەیوەند یان بێ پەیوەندکرا</string>
+  <!-- Sound settings, Charging sounds vibrate enable/disable, setting check box label -->
   <string name="power_notifications_vibrate_title">لەرینەوە</string>
+  <!-- Sound settings, Charging sounds ringtone selection, preference label -->
   <string name="power_notifications_ringtone_title">دەنگی تێبینیەکان</string>
+  <!-- Sound settings, charging sounds label for ringtone == none -->
   <string name="power_notifications_ringtone_silent">بێدەنگ</string>
+  <!-- Voice Wakeup -->
   <string name="voice_wakeup_settings_title">ده‌نگی هه‌ڵسان</string>
   <string name="voice_wakeup_retrain_title">دوباره‌کردنه‌وه‌ی ده‌نگت</string>
   <string name="voice_wakeup_activity_title">چالاکردن بۆ دابه‌زاندن</string>
@@ -643,22 +769,34 @@
   <string name="picker_activities">چالاکیەکان</string>
   <string name="select_custom_app_title">دیاریکردنی بەرنامەی دروستکراو</string>
   <string name="select_custom_activity_title">دیاریکردنی چالاکی </string>
+  <!-- Battery : Automatic performance profiles -->
   <string name="autoperf_title">جالاکردنی بۆ هه‌رزانیاری تایبەتیی-به‌رنامه‌یه‌ک</string>
   <string name="perf_profile_title">باری باتری</string>
+  <!-- Development : Force high-end graphics -->
   <string name="pref_force_highend_gfx_title">پاڵنانی به‌رزی-کۆتای گرافیکی</string>
   <string name="pref_force_highend_gfx_summary">لەکارخستنی کاریگەری باری گۆڕین /تولباری ناڤیگەیشن(دوبارەخستنەوەکار پێویستە)</string>
+  <!-- EdgeGesture service -->
   <string name="edge_gesture_service_title">بلۆکردنی سوینی میوان</string>
   <string name="edge_gesture_service_summary">ڕووداوی لێدانه‌کان مه‌نێره‌ بۆ ڕێدۆزه‌ر یان شریتی دۆخ بۆ به‌رنامه‌</string>
+  <!-- CM Legal -->
   <string name="cmlicense_title">یاسای وەشانەکە</string>
   <string name="settings_cmlicense_activity_title">یاسای وەشانەکە</string>
+  <!-- Sizes for pattern lockscreen -->
+  <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
   <string name="lockpattern_settings_enable_error_path_title">پیشاندانی هەڵەی چنراو</string>
+  <!-- Whether the dots will be drawn when using the lockscreen pattern -->
   <string name="lockpattern_settings_enable_dots_title">پیشاندانی خاڵەکانی چنراو</string>
+  <!-- Whether the keyguard will directly pass to password entry -->
+  <!-- Whether the keyguard will directly pass to pattern view -->
+  <!-- Whether the keyguard will directly pass to PIN entry -->
+  <!-- Screen security -->
   <string name="unlock_quick_unlock_control_title">چالاککردنی خێرا</string>
   <string name="unlock_quick_unlock_control_summary">چالاکردنی خۆکارانە کاتێک PIN/وشەی نێنی ڕاست لێدرا</string>
   <string name="unlock_scramble_pin_layout_title">ته‌خته‌ی تێکه‌ڵ</string>
   <string name="unlock_scramble_pin_layout_summary">ته‌خته‌ی PIN تێکه‌ڵ له‌کاتی کردنه‌وه‌ی ئامێره‌که‌</string>
   <string name="link_volume_option_title">پەیوەندکردنی زەنگ &amp; دەنگی تێبینیەکان</string>
   <string name="notification_volume_option_title">ده‌نگی تێبینی</string>
+  <!-- Notification drawer -->
   <string name="notification_drawer_title">ڕاکێشی تێبینی</string>
   <string name="quick_pulldown_title">خێرا بۆ خوارەوە</string>
   <string name="quick_pulldown_summary">%١$s edge oخێرا بۆ خوارەوە ڕیکخستن</string>
@@ -667,6 +805,7 @@
   <string name="quick_pulldown_off">کوژانەوە</string>
   <string name="quick_pulldown_left">چەپ</string>
   <string name="quick_pulldown_right">ڕاست</string>
+  <!-- Weather in status bar header -->
   <string name="status_bar_show_weather_title">پیشاندانی کەش و هەوا</string>
   <string name="status_bar_show_weather_summary">پیشاندانی کەش و هەوا بەسەر پەڕەی ڕێکخستنی خێرا</string>
   <string name="qs_category_title">پەڕەی ڕێکخستنی خێرا</string>
@@ -701,29 +840,44 @@
   <string name="qs_main_tiles_summary_on">دو خشتەی سەرەکی لەسەر یەکەم ڕیز</string>
   <string name="qs_main_tiles_summary_off">سێ خشتە لەسەر یەک ڕیز</string>
   <string name="qs_advanced_location_title">ڕێکخستنی ناوچەی پەرەسەندوو</string>
+  <!-- Gesture Settings -->
+  <!-- Settings main menu entry -->
+  <!-- Themes Settings -->
+  <!-- Settings main menu entry -->
   <string name="themes_settings_title">ڕووکارەکان</string>
+  <!-- WiFi Ad-Hoc mode -->
   <string name="wifi_mode">بار</string>
   <string name="wifi_mode_ibss_short">Ad-Hoc</string>
   <string name="wifi_ibss_freq_title">که‌ناڵ/فریکوێنسی</string>
   <string name="wifi_channel">که‌ناڵ</string>
   <string name="wifi_mhz">MHz</string>
+  <!-- WiFi auto-configure priorities -->
+  <!-- About phone settings screen, setting option dialog title to show regulatory information [CHAR LIMIT=25] -->
+  <!-- SAR information -->
   <string name="maximum_head_level">سەر: %1$s W/kg</string>
   <string name="maximum_body_level">تەن: %1$s W/kg</string>
+  <!-- IC Codes -->
   <string name="power_menu_expanded_desktop">پانکردنه‌وه‌ی ڕوونما</string>
+  <!-- WhisperPush -->
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">ڕێکخستنی ئاسایشی SMS</string>
+  <!-- Display & Lights screen, setting options for LCD density -->
+  <!-- Stylus Icon -->
+  <!-- Stylus Gestures -->
   <string name="gestures_left_spen_title_head">ساوین بۆ چه‌پ</string>
   <string name="gestures_right_spen_title_head">ساوین بۆ ڕاست</string>
   <string name="gestures_up_spen_title_head">ساوینی سه‌ره‌وه‌</string>
   <string name="gestures_down_spen_title_head">ساوین بۆ خوار</string>
   <string name="gestures_long_spen_title_head">په‌ستانی درێژ</string>
   <string name="gestures_double_spen_title_head">دوجار لێدان</string>
+  <!-- Gestures Options -->
   <string name="gestures_action_empty">چالاکی نیە</string>
   <string name="gestures_action_home">ماڵ</string>
   <string name="gestures_action_back">دووا</string>
   <string name="gestures_action_menu">پێڕست</string>
   <string name="gestures_action_search">گه‌ڕانی ئاماده‌</string>
   <string name="gestures_action_recent">به‌رنامه‌ی تازه‌</string>
+  <!-- Stylus gestures -->
   <string name="stylus_app_not_installed">%s دانەمەزراوە</string>
   <string name="advanced">پەرەسەندوو</string>
   <string name="advanced_mode_title">باری پەرەسەندو</string>
@@ -738,12 +892,14 @@
   <string name="lockscreen_settings">قوفڵکردنی ڕوونما</string>
   <string name="category_lights">لایت</string>
   <string name="power_usage_history_title">بەکارهێنانی باتری</string>
+  <!-- Show/Hide Search Bar -->
   <string name="recents_show_searchbar">پیشاندانی شریتی گەڕان لەسەر پێڕستی تازە</string>
   <string name="keywords_recents_show_searchbar">تازەی تازەی لەکارخرا بۆ پیشاندانی چالاک پیشاندانی شریتی گەڕان</string>
   <string name="sim_ringtone_title">سیم %d زەنگ</string>
   <string name="interruptions_ignore_while_media_summary">دەنگی میدیا دەنگ کەم مەکەرەوە کاتێک تێبینیەک دەگات</string>
   <string name="none_is_silent_title">هەرگیز بیرخەرەوە کپ مەکە</string>
   <string name="allow_lights_title">هەمیشە لەگەڵ تێبینیە لایت هەبێت</string>
+  <!-- LiveDisplay -->
   <string name="live_display_summary">پاشینەسازی لەسەر شاشەکەت  بەندە بە کاتی ڕۆژ وە مەرجی چاکسازی بۆ خوێندنەوەی و کەمکردنەوەی چاوسوین</string>
   <string name="live_display_mode">پیشاندانی بار</string>
   <string name="live_display_color_temperature_title">ڕەنگی پلەی گەرمی</string>
@@ -757,6 +913,8 @@
   <string name="live_display_low_power_summary">ڕێکخستنی پیشاندان بۆ هێزی کەم بەکارهێنان بەبێ پلەدابەزاندن</string>
   <string name="live_display_enhance_color_title">ڕەنگی زیادەکات</string>
   <string name="battery_saver_summary_unavailable">لەکارە نیە کاتێ بارگاوی ئەبێت</string>
+  <!-- Anonymous Statistics #CM -->
+  <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
   <string name="anonymous_statistics_title">ئاماری ساینۆجنمۆد</string>
   <string name="anonymous_statistics_summary">یارمەتی ساینۆجنمۆد بدە بۆ باشکردنی سیستەمەکە بە ڕاپۆرتکردن بۆ دیلان کەلاری</string>
   <string name="anonymous_statistics_warning_title">دەربارە</string>
@@ -764,19 +922,80 @@
   <string name="preview_data_title">پیشاندانی داتا</string>
   <string name="view_stats_title">پیشاندانی ئامار</string>
   <string name="anonymous_learn_more">زیاتر بزانە</string>
+  <!-- Anonymous Statistics - Preview -->
   <string name="preview_id_title">دانسقە ID</string>
   <string name="preview_device_title">ئامێر</string>
   <string name="preview_version_title">وه‌شان</string>
   <string name="preview_country_title">وڵات</string>
   <string name="preview_carrier_title">هەڵگر-کۆمپانیای سیمکارتەکە</string>
+  <!-- Heads up -->
   <string name="heads_up_notifications">فه‌رمووه‌کان</string>
   <string name="summary_heads_up_enabled">ئاگاداری بچوکه‌ دیده‌ن کارده‌کات</string>
   <string name="summary_heads_up_disabled">ئاگاداری بچوکه‌ دیده‌ن کارناکات</string>
+  <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
   <string name="master_clear_desc_cm" product="tablet">ئه‌مه‌ هه‌موو داتای ئامێره‌که‌ت ئه‌سڕدرێته‌وه‌ وه‌ک <b>بیرگه‌ی ناوه‌کی</b>، وه‌ پێکهاته‌کانی وه‌ک:\n\n<li>هه‌ژماری گۆگڵ وه‌ </li>\n<li>سیسته‌م و به‌رنامه‌ و ڕێکخستنه‌کان</li>\n<li>به‌رنامه‌ی داگیراو</li></string>
+  <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
   <string name="master_clear_desc_cm" product="default">ئه‌مه‌ هه‌موو داتای ئامێره‌که‌ت ئه‌سڕدرێته‌وه‌ وه‌ک <b>بیرگه‌ی ناوه‌کی</b>، وه‌ پێکهاته‌کانی وه‌ک:\n\n<li>هه‌ژماری گۆگڵ وه‌ </li>\n<li>سیسته‌م و به‌رنامه‌ و ڕێکخستنه‌کان</li>\n<li>به‌رنامه‌ی داگیراو</li></string>
+  <!-- Killswitch -->
   <string name="lock_to_cyanogen_title">پارێزەری ئامێر</string>
   <string name="lock_to_cyanogen_summary">پێویستی بە هەژماری ۆ ئێسی ساینەجنەکەت ئەکات وە داوای تێپەڕەوشەکەش ئەکات لە دوای گەڕانەوەی بۆ باری ئاسای خۆی</string>
   <string name="lock_to_cyanogen_create_account_msg">ئامێرەکەت سیستەمی ساینەجن بەکار ئەهێنێت تێپەڕەوشە لەسەر ئامێرەکەت پێویستە دوای سڕینەوەی هەموو شتێک و گەڕانەوەی بۆ باری یەکەمجار. پێویستیت بە دروستکردنی هەژمارێکی ساینەجن ئەبێت.</string>
   <string name="lock_to_cyanogen_disable_msg">لەکارخستنی ئەم کردارە ڕێگەدەدات بە بەکارهێنەری نەناسراو بۆ سڕینەوەی تەلەفۆنەکەت بۆ باری ئاسای خۆی وەکو یەکەم جار ئەگەر بدزرێت بەئاسانی مۆبایلەکەت وەکو یەکەمجار لێدەکات. وە زانیاری تاکەکەسی تۆ لەوانەیە پارێزراو نەبێت .ئایە ئەتەوێت ئەم شێوازە لەکار بخەیت?</string>
   <string name="lock_to_cyanogen_master_clear_warning">پارێزەری ئامێرەکەت چالاککرا. تکایە لە کاری بخە بۆ بەردەوامبوون بە ڕێکخستنەوەی ئامێرەکەت.</string>
+  <!-- MSIM SIM status -->
+  <!-- Factory reset strings -->
+  <!-- Wi-Fi filters -->
+  <!-- Wi-Fi region code -->
+  <!-- Wi-Fi settings screen, setting summary for setting the wifi frequency band [CHAR LIMIT=50]-->
+  <!-- Wi-Fi settings screen, error message when the frequency band could not be set [CHAR LIMIT=50]. -->
+  <!-- Wi-Fi region countries -->
+  <!-- FINGERPRINT -->
+  <!-- Title for preference which sets the unlock. This is only used when the device has
+         a fingerprint sensor , otherwise just "unlock_set_unlock_launch_picker_title" is used -->
+  <!-- Summary for "Configure lockscreen" when security Fingerprint is enabled [CHAR LIMIT=45] -->
+  <!-- Title for preference that guides the user through creating a fingerprint [CHAR LIMIT=22] -->
+  <!-- List item title to add a new fingerprint in fingerprint list screen -->
+  <!-- Title for preference in fingerprint lockscreen settings, takes user to fingerprint list -->
+  <!-- Summary for preference in fingerprint lockscreen settings, takes user to fingerprint list -->
+  <!-- Info explaining the backup lock which is used for fingerprint -->
+  <!-- Dialog title for renaming your fingerprint -->
+  <!-- EditText label for renaming your fingerprint in rename dialog -->
+  <!-- Title for dialog that shows when the user cannot add anymore fingers -->
+  <!-- Message for dialog that shows when the user cannot add anymore fingers -->
+  <!-- Title for number of finger prints enrolled -->
+  <!-- Description for managing fingerprints -->
+  <!-- Fingerprint enrollment introduction title -->
+  <!-- Fingerprint enrollment introduction instructions -->
+  <!-- Fingerprint enrollment scan fingerprint title -->
+  <!-- Fingerprint enrollment scan fingerprint instructions -->
+  <!-- Fingerprint enrollment error title during first step only -->
+  <!-- Fingerprint enrollment error message -->
+  <!-- Fingerprint enrollment error instructions -->
+  <!-- Fingerprint enrollment half way break title -->
+  <!-- Fingerprint enrollment introduction instructions -->
+  <!-- Fingerprint enrollment finished title -->
+  <!-- Fingerprint enrollment finished instructions -->
+  <!-- Next button title for finding sensor -->
+  <!-- Next button title for finding sensor -->
+  <!-- Next button title for finding sensor -->
+  <!-- Wrong fingerprint sensor dialog title -->
+  <!-- Wrong fingerprint sensor dialog message -->
+  <!-- Failed fingerprint enrollment dialog title -->
+  <!-- Failed fingerprint enrollment dialog message -->
+  <!-- Failed fingerprint enrollment button label -->
+  <!-- Successful scan title for first successful scan -->
+  <!-- Successful scan title for second to last successful scan -->
+  <!-- Successful scan title for all other successful scans -->
+  <!-- Fingerprint enrollment error titles -->
+  <!-- Title for lockscreen settings, on dashboard, that is only used when a device supports
+         the fingerprint feature -->
+  <!-- Menu label for reset the battery stats -->
+  <!-- Reset stats confirmation dialog's message -->
+  <!-- Dock battery not present message -->
+  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging on Dock AC. -->
+  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging over Dock USB. -->
+  <!-- Lock screen setup wizard pattern complexity -->
+  <!-- LTO download data over wi-fi only -->
+  <!-- Keep screen on strings -->
+  <!-- Contributors cloud activity -->
 </resources>

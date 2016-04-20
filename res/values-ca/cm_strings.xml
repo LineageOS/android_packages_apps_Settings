@@ -16,13 +16,18 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
   <plurals name="show_dev_countdown_cm">
     <item quantity="one">Ara ets a <xliff:g id="step_count">%1$d</xliff:g> pas d\'habilitar les configuracions de desenvolupament.</item>
     <item quantity="other">Ara ets a <xliff:g id="step_count">%1$d</xliff:g> passos d\'habilitar les configuracions de desenvolupament.</item>
   </plurals>
+  <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
   <string name="show_dev_on_cm">Has habilitat les configuracions de desenvolupament!</string>
+  <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
   <string name="show_dev_already_cm">No fa falta, ja has habilitat les configuracions de desenvolupament.</string>
+  <!-- Launch Dev Tools -->
   <string name="development_tools_title">Eines de desenvolupament</string>
+  <!-- Setting checkbox title for root access -->
   <string name="root_access">Accés Root</string>
   <string name="root_access_warning_title">Vols permetre l\'accés root?</string>
   <string name="root_access_warning_message">Permetre a les aplicacions demanar accés de superusuari és molt perillós i podria comprometre la seguretat del teu sistema!</string>
@@ -30,10 +35,12 @@
   <string name="root_access_apps">Només aplicacions</string>
   <string name="root_access_adb">Només ADB</string>
   <string name="root_access_all">Aplicacions i ADB</string>
+  <!-- Sound settings screen -->
   <string name="ring_mode_title">Mode del to de trucada</string>
   <string name="ring_mode_normal">Normal</string>
   <string name="ring_mode_vibrate">Vibració</string>
   <string name="ring_mode_mute">Silenci</string>
+  <!-- Profiles settings  -->
   <string name="profiles_settings_title">Perfils del sistema</string>
   <string name="profiles_add">Afegeix</string>
   <string name="profile_settings_title">Perfil</string>
@@ -55,41 +62,53 @@
   <string name="profile_app_group_category_title">Anul·lació de notificacions</string>
   <string name="profile_app_group_item_instructions">Afegeix o treu grups</string>
   <string name="profile_app_group_item_instructions_summary">Afegeix o treu grups d\'aplicacions que anul·lin les notificacions en aquest perfil</string>
+  <!-- Profile mode options. -->
   <string name="profile_entries_on">Sí</string>
   <string name="profile_entries_off">No</string>
   <string name="profile_entries_no_override">No anul·lis</string>
+  <!-- Add Profile -->
   <string name="profile_name_title">Nom</string>
   <string name="new_profile_name">&lt;nou perfil&gt;</string>
+  <!-- Rename Dialog  -->
   <string name="rename_dialog_title">Reanomena</string>
   <string name="rename_dialog_message">Introdueix el nou nom</string>
   <string name="rename_dialog_hint">Introdueix el nom del perfil</string>
+  <!-- Reset Profiles -->
   <string name="profile_reset_title">Reseteja</string>
   <string name="profile_reset_message">Vols esborrar tots els perfils creats per l\'usuari i restaurar-los als valors per defecte?</string>
+  <!-- Profile network mode -->
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_4g">LTE</string>
   <string name="profile_networkmode_2g3g">2G/3G</string>
   <string name="profile_networkmode_2g3g4g">2G/3G/LTE</string>
+  <!-- Profile Config screen PreferenceGroup titles -->
   <string name="profile_volumeoverrides_title">Anul·lació del volum</string>
   <string name="volume_override_summary">Estableix a %1$s/%2$s</string>
   <string name="profile_volume_override_checkbox_label">Anul·la el volum</string>
+  <!-- Menu item for managing profiles -->
   <string name="profile_profiles_manage">Perfils</string>
   <string name="profile_profile_manage">Gestiona un perfil</string>
+  <!-- Profile settings screen, section header for settings related to notification profiles -->
   <string name="profile_settings">Configuració dels perfils</string>
   <string name="profile_trigger_connect">En connectar</string>
   <string name="profile_trigger_disconnect">En desconnectar</string>
   <string name="profile_trigger_notrigger">Sense activador</string>
+  <!-- Title for application group setting screen -->
   <string name="profile_applist_title">Aplicacions</string>
-  <string name="profile_choose_app">Escull aplicació</string>
+  <!-- Add application dialog box title -->
+  <string name="profile_choose_app">Tria una aplicació</string>
+  <!-- Profiles - system settings -->
   <string name="profile_system_settings_title">Configuració del sistema</string>
   <string name="profile_lockmode_title">Mode del bloqueig de pantalla</string>
   <string name="profile_lockmode_policy_disabled_summary">Aquesta opció de perfil està deshabilitada per una política d\'administració de dispositiu</string>
   <string name="profile_lockmode_insecure_summary">No preguntis el PIN o la contrasenya</string>
   <string name="profile_lockmode_disabled_summary">Deshabilita la pantalla de bloqueig</string>
   <string name="profile_airplanemode_title">Mode avió</string>
-  <string name="profile_brightness_title">Brillantor de la pantalla</string>
+  <string name="profile_brightness_title">Lluminositat de la pantalla</string>
   <string name="profile_brightness_override_summary">Estableix a %1$d%%</string>
-  <string name="profile_brightness_override_checkbox_label">Anul·la la brillantor</string>
+  <string name="profile_brightness_override_checkbox_label">Anul·la la lluminositat</string>
+  <!-- Connection override toggles (not all are used at this time ) -->
   <string name="toggleWifi">Wi\u2011Fi</string>
   <string name="toggleWifiAp">Punt d\'accés Wi\u2011Fi portàtil</string>
   <string name="toggleBluetooth">Bluetooth</string>
@@ -98,6 +117,7 @@
   <string name="toggleSync">Sincronització automàtica de dades</string>
   <string name="toggle2g3g4g">Tipus de xarxa preferida</string>
   <string name="toggleNfc">NFC</string>
+  <!-- Hardware keys -->
   <string name="button_pref_title">Botons</string>
   <string name="hardware_keys_power_key_title">Botó d\'apagat</string>
   <string name="hardware_keys_home_key_title">Botó inici</string>
@@ -140,16 +160,18 @@
   <string name="button_wake_summary">Anul·la el control de reproducció</string>
   <string name="home_answer_call_title">Contesta la trucada</string>
   <string name="home_answer_call_summary">Apretant el botó d\'inici es contestarà la trucada entrant actual</string>
+  <!-- Key backlight -->
   <string name="button_backlight_title">Retroil·luminació</string>
   <string name="button_backlight_enabled">Il·lumina els botons</string>
   <string name="keyboard_backlight_enabled">Il·lumina el teclat</string>
-  <string name="button_backlight_seekbar_title">Brillantor dels botons</string>
-  <string name="keyboard_backlight_seekbar_title">Brillantor del teclat</string>
+  <string name="button_backlight_seekbar_title">Lluminositat dels botons</string>
+  <string name="keyboard_backlight_seekbar_title">Lluminositat del teclat</string>
   <string name="backlight_timeout_title">Temps d\'espera de l\'Il·luminació</string>
   <string name="backlight_timeout_unlimited">No apaguis</string>
   <string name="backlight_summary_disabled">Desactivada</string>
   <string name="backlight_summary_enabled_with_timeout">Activada durant <xliff:g id="timeout">%s</xliff:g></string>
   <string name="backlight_summary_enabled">Activada</string>
+  <!-- Power menu -->
   <string name="power_menu_title">Menú d\'apagat</string>
   <string name="power_menu_reboot_title">Menú reinicia</string>
   <string name="power_menu_screenshot_title">Captura de pantalla</string>
@@ -162,12 +184,16 @@
   <string name="power_menu_sound_title">Panell de so</string>
   <string name="power_menu_bug_report_disabled">Els informes d\'error estan deshabilitats a les opcions de desenvolupament</string>
   <string name="power_menu_profiles_disabled">Els perfils del sistema estan deshabilitats</string>
+  <!-- Backlight brightness settings screen -->
   <string name="adaptive_backlight_title">Retroil·luminació adaptativa</string>
-  <string name="adaptive_backlight_summary">Ajusta la brillantor dinàmicament de la retroiluminació de la pantalla per maximitzar la vida de la bateria tot mantenint la usabilitat</string>
+  <string name="adaptive_backlight_summary">Ajusta la lluminositat dinàmicament de la retroiluminació de la pantalla per maximitzar la vida de la bateria tot mantenint la usabilitat</string>
+  <!-- Sunlight readability enhancement screen -->
   <string name="sunlight_enhancement_title">Millora per la llum del sol</string>
-  <string name="sunlight_enhancement_summary">Millora la brillantor i la llegibilitat de la pantalla sota la llum del sol intensa</string>
+  <string name="sunlight_enhancement_summary">Millora la lluminositat i la llegibilitat de la pantalla sota la llum del sol intensa</string>
+  <!-- Color enhancement settings screen -->
   <string name="color_enhancement_title">Millora del color</string>
   <string name="color_enhancement_summary">Millora dinàmicament el color de la pantalla</string>
+  <!-- Blacklist preferences -->
   <string name="blacklist_title">Llista de números bloquejats</string>
   <string name="blacklist_edit_dialog_title">Edita un número de telèfon bloquejat</string>
   <string name="blacklist_prefs">Configuració</string>
@@ -191,11 +217,14 @@
   <string name="blacklist_policy_block_calls">Bloqueja les trucades entrants</string>
   <string name="blacklist_policy_block_messages">Bloqueja els missatges entrants</string>
   <string name="blacklist_bad_number_add">No s\'ha  pogut afegir el número de telèfon invàlid a la llista de números bloquejats</string>
+  <!-- Blacklist management -->
   <string name="remove_blacklist_number_title">Treu el número</string>
   <string name="remove_blacklist_entry">Vols esborrar aquest número de telèfon bloquejat?</string>
   <string name="select_contact">Selecciona contacte</string>
+  <!-- Protected apps lockpattern reset button -->
   <string name="lockpattern_reset_button">Restaura el patró</string>
   <string name="lockpattern_settings_reset_summary">Introdueix el compte de correu electrònic principal i la contrasenya associada per restaurar el patró de bloqueig</string>
+  <!-- Protected Apps -->
   <string name="menu_hidden_apps_delete">Reinicia</string>
   <string name="menu_hidden_apps_reset_lock">Reinicia el patró de bloqueig</string>
   <string name="protected_apps">Aplicacions protegides</string>
@@ -205,6 +234,7 @@
   <string name="pa_login_submit_button">Inicia la sessió</string>
   <string name="pa_login_checking_password">S\'està comprovant el compte\u2026</string>
   <string name="pa_login_incorrect_login">Connexió incorrecta</string>
+  <!-- Display : Rotation  -->
   <string name="display_rotation_title">Rotació</string>
   <string name="display_rotation_disabled">Desactivada</string>
   <string name="display_rotation_unit">graus</string>
@@ -214,6 +244,7 @@
   <string name="display_rotation_90_title">90 graus</string>
   <string name="display_rotation_180_title">180 graus</string>
   <string name="display_rotation_270_title">270 graus</string>
+  <!-- Sms security limit -->
   <string name="app_security_title">Seguretat de les aplicacions</string>
   <string name="sms_security_check_limit_title">Límit de missatges SMS</string>
   <string name="sms_security_check_limit_summary">Les aplicacions poden enviar %d missatges en 1 minut abans de necessitar una confirmació</string>
@@ -224,22 +255,33 @@
   <string name="block_notifications_title">Filtra les notificacions</string>
   <string name="block_notifications_summary">Gestiona les notificacions i filtres ignorats</string>
   <string name="no_filters_title">Sense filtres establerts</string>
+  <!-- CM Updater -->
   <string name="cmupdate_settings_title">Actualitzacions CyanogenMod</string>
+  <!-- Settings switch for updating Cyanogen recovery -->
   <string name="update_recovery_title">Actualitza la recuperació de Cyanogen</string>
   <string name="update_recovery_summary">Actualitza la recuperació amb les actualitzacions del sistema</string>
   <string name="update_recovery_on_warning">AVÍS: Quan aquesta funció estigui activada, la recuperació que tinguis instal·lada serà substituïda per la versió actual inclosa amb el SO instal·lat.\n\nEl teu sistema de recuperació s\'actualitzarà juntament amb les millores del sistema, ajudant a assegurar la compatibilitat amb futures versions.\n\nVols habilitar aquesta característica?</string>
   <string name="update_recovery_off_warning">ADVERTÈNCIA: Quan aquesta característica està inhabilitada, el teu sistema de recuperació instal·lat no s\'actualitzarà amb les millores del SO.\n\nFutures actualitzacions del SO podrien no instal·lar-se amb sistemes de recuperació obsolets o personalitzats.\n\nRealment vols deshabilitar aquesta característica?</string>
+  <!-- About phone screen, CyanogenMod version -->
   <string name="mod_version">CyanogenMod versió</string>
   <string name="mod_version_default">Desconegut</string>
+  <!-- About phone screen, Device model -->
   <string name="device_model">Model del dispositiu</string>
+  <!-- About phone screen, Device name -->
   <string name="device_name">Nom del dispositiu</string>
+  <!-- About phone screen, build date -->
   <string name="build_date">Data d\'elaboració</string>
+  <!-- About phone screen, service state -->
   <string name="phone_service_state">Veu: <xliff:g id="voice_state">%1$s</xliff:g>, dades: <xliff:g id="data_state">%2$s</xliff:g></string>
-  <string name="double_tap_to_wake_title">Pica doblement per encendre</string>
+  <!--- Tap To Wake -->
+  <string name="double_tap_to_wake_title">Pica dues vegades per encendre</string>
   <string name="double_tap_to_wake_summary">Pica dues vegades a la pantalla per encendre la pantalla</string>
+  <!-- Proximity wake -->
   <string name="proximity_wake_title">Evita l\'encesa accidental</string>
   <string name="proximity_wake_summary">Comprova el sensor de proximitat abans d\'encendre la pantalla</string>
+  <!-- Privacy Settings Header item -->
   <string name="privacy_settings_cyanogenmod_title">Privacitat</string>
+  <!-- Privacy Guard -->
   <string name="privacy_guard_default_title">Activa per defecte</string>
   <string name="privacy_guard_default_summary">Activa per defecte en les aplicacions de nova instal·lació</string>
   <string name="privacy_guard_manager_title">Guarda de privacitat</string>
@@ -252,29 +294,43 @@
   <string name="privacy_guard_manager_show_system_apps">Mostra les aplicacions integrades</string>
   <string name="privacy_guard_notification_title">Mostra una notificació</string>
   <string name="app_ops_btn_text">Modifica</string>
+  <!-- Increasing ring tone volume -->
   <string name="increasing_ring_volume_option_title">Volum del to de trucada creixent</string>
   <string name="increasing_ring_min_volume_title">Volum inicial</string>
   <string name="increasing_ring_ramp_up_time_title">Durada del crescendo</string>
+  <!-- Advanced reboot options -->
   <string name="advanced_reboot_title">Reinici avançat</string>
   <string name="advanced_reboot_summary">Quan està desbloquejat, inclou opcions al menú d\'apagat per reiniciar en mode recuperació, bootloader o bé realitzar un reinici ràpid</string>
+  <!-- Setting checkbox title for Whether to enable Android debugging support on the phone. -->
   <string name="enable_adb_cm">Depuració Android</string>
+  <!-- Setting checkbox summary for Whether to enable Android debugging support on the phone -->
   <string name="enable_adb_summary_cm">Habilita la interfície del pont de depuració d\'Android (adb)</string>
+  <!-- Android debugging over WiFi -->
   <string name="adb_over_network">ADB sobre la xarxa</string>
   <string name="adb_over_network_summary">Activa la depuració TCP/IP sobre interfícies de xarxa (Wi\u2011Fi, xarxes USB). Aquest ajustament es desactiva en reiniciar</string>
+  <!-- Warning for Adb over Network -->
   <string name="adb_over_network_warning">ADVERTÈNCIA: Quan l\'ADB sobre xarxa està activat, el teu telèfon està obert a intrusions en totes les xarxes connectades! \n\nFes servir aquesta característica només quan estiguis connectat en xarxes de confiança.\n\nRealment vols activar aquesta funció?</string>
+  <!-- Setting checkbox summary for displaying USB debugging notification -->
   <string name="adb_notify">Notificació de depuració</string>
   <string name="adb_notify_summary">Mostra una notificació quan s\'habiliti l\'USB o la depuració mitjançant la xarxa</string>
+  <!-- Hostname setting -->
   <string name="device_hostname">Hostname del dipositiu</string>
+  <!-- Development shortcut -->
   <string name="development_shortcut_title">Drecera Desenvolupament</string>
   <string name="development_shortcut_summary">Habilita les dreceres de gestió d\'aplicacions a la llista d\'aplicacions recents</string>
+  <!-- tap-to-sleep -->
   <string name="double_tap_to_sleep_title">Pica dues vegades per posar en repòs</string>
   <string name="double_tap_to_sleep_summary">Pica dues vegades a la barra d\'estat per apagar la pantalla</string>
+  <!-- Turn on display when power connected; turn off display when power disconnected -->
   <string name="wake_when_plugged_or_unplugged_title">Encén en endollar</string>
   <string name="wake_when_plugged_or_unplugged_summary">Encén la pantalla en connectar o desconnectar d\'una font d\'energia</string>
+  <!-- Kill app long-press back -->
   <string name="kill_app_longpress_back">Mata l\'aplicació amb la tecla enrera</string>
   <string name="kill_app_longpress_back_summary">Mata l\'aplicació en primer pla fent una pulsació llarga del botó enrera</string>
+  <!-- Buttons - Enable navbar -->
   <string name="disable_navkeys_title">Habilita bar nav en pantalla</string>
   <string name="disable_navkeys_summary">Habilita la barra de navegació en pantalla y deshabilitar els botons físics</string>
+  <!-- Navigation Bar -->
   <string name="navigation_bar_category">Barra de navegació</string>
   <string name="navigation_bar_left_title">Mode esquerrà</string>
   <string name="navigation_bar_left_summary">Col·loca la barra de navegació al costat esquerre de la pantalla en el mode horitzontal</string>
@@ -288,11 +344,13 @@
   <string name="navigation_bar_arrow_keys_summary">Mostra els botons dels cursors esquerra i dreta mentre escrius. Això anul·la el commutador IME.</string>
   <string name="navigation_bar_recents_title">Recents amb l\'acció pulsació llarga</string>
   <string name="header_category_personalization">Personalització</string>
+  <!-- Status bar -->
   <string name="status_bar_title">Barra d\'estat</string>
-  <string name="status_bar_toggle_brightness">Control de brillantor</string>
-  <string name="status_bar_toggle_brightness_summary">Ajusta la brillantor lliscant a través de la barra d\'estat</string>
+  <string name="status_bar_toggle_brightness">Control de lluminositat</string>
+  <string name="status_bar_toggle_brightness_summary">Ajusta la lluminositat lliscant a través de la barra d\'estat</string>
   <string name="status_bar_notif_count_title">Mostra comptador de notificacions</string>
   <string name="status_bar_notif_count_summary">Mostra el nombre de notificacions pendents</string>
+  <!-- Status bar - Clock -->
   <string name="status_bar_clock_style_title">Estil del rellotge</string>
   <string name="status_bar_clock_style_right">Dreta</string>
   <string name="status_bar_clock_style_left">Esquerra</string>
@@ -303,22 +361,26 @@
   <string name="status_bar_am_pm_normal">Normal</string>
   <string name="status_bar_am_pm_small">Petit</string>
   <string name="status_bar_am_pm_hidden">Amagada</string>
+  <!-- Status bar - Battery -->
   <string name="status_bar_battery_style_title">Estil de l\'estat de la bateria</string>
   <string name="status_bar_battery_style_icon_portrait">Icona vertical</string>
   <string name="status_bar_battery_style_icon_landscape">Icona horitzontal</string>
   <string name="status_bar_battery_style_circle">Cercle</string>
   <string name="status_bar_battery_style_text">Text</string>
   <string name="status_bar_battery_style_hidden">Amagat</string>
+  <!-- Status bar - Battery percentage -->
   <string name="status_bar_battery_percentage_title">Percentatge de bateria</string>
   <string name="status_bar_battery_percentage_default">Amagat</string>
   <string name="status_bar_battery_percentage_text_inside">Dins la icona</string>
   <string name="status_bar_battery_percentage_text_next">Al costat de la icona</string>
+  <!-- Notification light dialogs -->
   <string name="edit_light_settings">Edita els ajustos de llum</string>
   <string name="pulse_speed_title">Durada i velocitat del parpalleig</string>
   <string name="default_time">Normal</string>
   <string name="custom_time">Personalitzat</string>
   <string name="dialog_delete_title">Esborra</string>
   <string name="dialog_delete_message">Vols treure l\'element seleccionat?</string>
+  <!-- Values for the notification light pulse spinners -->
   <string name="pulse_length_always_on">Sempre encesa</string>
   <string name="pulse_length_very_short">Molt curt</string>
   <string name="pulse_length_short">Curt</string>
@@ -330,12 +392,14 @@
   <string name="pulse_speed_normal">Normal</string>
   <string name="pulse_speed_slow">Lent</string>
   <string name="pulse_speed_very_slow">Molt lent</string>
+  <!-- Battery light settings -->
   <string name="battery_light_title">Llum de la bateria</string>
   <string name="battery_low_pulse_title">Parpalleja si la bateria està baixa</string>
   <string name="battery_light_list_title">Colors</string>
   <string name="battery_light_low_color_title">Bateria baixa</string>
   <string name="battery_light_medium_color_title">Carregant</string>
   <string name="battery_light_full_color_title">Completament carregada</string>
+  <!-- Lights settings screen, notification light settings -->
   <string name="notification_light_title">Llum de notificació</string>
   <string name="notification_light_general_title">General</string>
   <string name="notification_light_applist_title">Aplicacions</string>
@@ -346,20 +410,27 @@
   <string name="notification_light_voicemail_title">Contestador</string>
   <string name="notification_light_screen_on">Llums amb la pantalla encesa</string>
   <string name="notification_light_use_multiple_leds">LEDs múltiples</string>
-  <string name="keywords_lights_brightness_level">atenua la brillantor dels leds</string>
+  <string name="keywords_lights_brightness_level">atenua la lluminositat dels leds</string>
+  <!-- Sound & notification > Sound section: Title for the option defining the default notification ringtone. [CHAR LIMIT=30] -->
   <string name="notification_ringtone_title_cm">To de les notificacions</string>
-  <string name="headset_connect_player_title">Crida l\'aplicació de música</string>
-  <string name="headset_connect_player_summary">Crida l\'aplicació de música predeterminada quan es connecten els auriculars</string>
+  <!-- Launch music player when headset is connected -->
+  <string name="headset_connect_player_title">Llança l\'aplicació de música</string>
+  <string name="headset_connect_player_summary">Inicia l\'aplicació de música predeterminada quan es connectin els auriculars</string>
+  <!-- Whether to display IME switcher notifcation -->
   <string name="ime_switcher_notify">Selector d\'icona</string>
   <string name="ime_switcher_notify_summary">Mostra la icona del selector de mètode d\'entrada</string>
+  <!-- Per app controls for LP keyguard notifications -->
   <string name="app_notification_show_on_keyguard_title">Mostra a la pantalla de bloqueig</string>
   <string name="app_notification_show_on_keyguard_summary">Mostra les notificacions d\'aquesta aplicació a la pantalla de bloqueig</string>
   <string name="app_notification_no_ongoing_on_keyguard_title">Deshabilita les notificacions persistents a la pantalla de bloqueig</string>
   <string name="app_notification_no_ongoing_on_keyguard_summary">No mostris mai notificacions persistents d\'aquesta aplicació a la pantalla de bloqueig</string>
+  <!-- High touch sensitivity -->
   <string name="high_touch_sensitivity_title">Sensibilitat al tacte alta</string>
   <string name="high_touch_sensitivity_summary">Incrementa la sensibilitat de la pantalla tàctil de manera que pugui utilitzar-se si es porten guants</string>
+  <!-- Touchscreen hovering -->
   <string name="touchscreen_hovering_title">Sura per sobre la pantalla tàctil</string>
   <string name="touchscreen_hovering_summary">Et permet surar per sobre la pantalla com un ratolí en els navegadors web, escriptoris remots, etc</string>
+  <!-- App ops -->
   <string name="app_ops_summaries_coarse_location">ubicació poc precisa</string>
   <string name="app_ops_summaries_fine_location">ubicació precisa</string>
   <string name="app_ops_summaries_gps">GPS</string>
@@ -474,6 +545,7 @@
   <string name="app_ops_labels_data_change">Canviar dades</string>
   <string name="app_ops_labels_wake_up">Encendre</string>
   <string name="app_ops_labels_su">Accés de superusuari</string>
+  <!-- App ops categories -->
   <string name="app_ops_categories_location">Ubicació</string>
   <string name="app_ops_categories_personal">Personal</string>
   <string name="app_ops_categories_messaging">Missatgeria</string>
@@ -481,14 +553,16 @@
   <string name="app_ops_categories_device">Dispositiu</string>
   <string name="app_ops_categories_bootup">Arrancada</string>
   <string name="app_ops_categories_su">Accés de superusuari</string>
+  <!-- App ops permissions -->
   <string name="app_ops_permissions_allowed">Permès</string>
   <string name="app_ops_permissions_ignored">Ignorat</string>
   <string name="app_ops_permissions_always_ask">Pregunta sempre</string>
   <string name="ok">D\'acord</string>
+  <!-- Profiles -->
   <string name="profile_menu_delete_title">Esborra</string>
   <string name="profile_action_none">Deixa sense canvis</string>
   <string name="profile_action_system">Per defecte del sistema</string>
-  <string name="profile_action_disable">Apagar</string>
+  <string name="profile_action_disable">Apaga</string>
   <string name="profile_action_enable">Encén</string>
   <string name="profile_trigger_a2dp_connect">En connectar l\'A2DP</string>
   <string name="profile_trigger_a2dp_disconnect">En desconnectar l\'A2DP</string>
@@ -502,6 +576,7 @@
   <string name="profile_setup_actions_title_config">Reconfigura les accions</string>
   <string name="profile_appgroups_manage">Grups d\'aplicacions</string>
   <string name="profile_appgroup_manage">Gestiona un grup d\'aplicacions</string>
+  <!-- Title for application group setting screen -->
   <string name="profile_appgroups_title">Grups d\'aplicacions</string>
   <string name="profile_new_appgroup">Nou grup d\'aplicacions</string>
   <string name="profile_delete_appgroup">Vols esborrar aquest grup d\'aplicacions?</string>
@@ -509,12 +584,14 @@
   <string name="profile_appgroup_name_title">Nom</string>
   <string name="duplicate_appgroup_name">Duplica el nom del grup d\'aplicacions!</string>
   <string name="profile_app_delete_confirm">Vols treure aquesta aplicació?</string>
+  <!-- Profile Settings sound modes labels -->
   <string name="sound_mode">Mode de notificació</string>
   <string name="ringer_mode">Mode de trucada</string>
   <string name="lights_mode">Mode dels llums</string>
   <string name="vibrate_mode">Mode de la vibració</string>
-  <string name="choose_soundtone">Escull el to de les notificacions</string>
-  <string name="choose_ringtone">Escull un to de trucada</string>
+  <string name="choose_soundtone">Tria el to de les notificacions</string>
+  <string name="choose_ringtone">Tria un to de trucada</string>
+  <!-- Sound settings screen, setting option name to pick ringtone (a list dialog comes up)-->
   <string name="soundtone_title">To de les notificacions</string>
   <string name="no_bluetooth_triggers">No hi ha dispositius Bluetooth enllaçats. \nPica per enllaçar el dispositiu Bluetooth abans de configurar els activadors.</string>
   <string name="no_wifi_triggers">No hi ha punts d\'accés Wi\u2011Fi configurats. \nPica per connectar el Wi\u2011Fi abans de configurar els activadors.</string>
@@ -522,30 +599,40 @@
   <string name="no_triggers_configured_nfc">Pica per configurar un nou activador NFC.</string>
   <string name="profile_setup_setup_triggers_description">Si us plau selecciona quins activadors activaran aquest perfil</string>
   <string name="profile_setup_actions_description">Configura ara el que passa quan s\'activa el perfil</string>
+  <!-- App ops detail -->
   <string name="app_ops_entry_summary"><xliff:g id="op">%1$s</xliff:g> (utilitzat <xliff:g id="count">%2$s</xliff:g>)</string>
   <string name="app_ops_allowed_count">Permès <xliff:g id="count" example="2 times">%s</xliff:g></string>
   <string name="app_ops_ignored_count">Denegat <xliff:g id="count" example="2 times">%s</xliff:g></string>
   <string name="app_ops_both_count">Permès <xliff:g id="count">%1$s</xliff:g>, denegat <xliff:g id="count">%2$s</xliff:g></string>
+  <!-- App ops menu options -->
   <string name="app_ops_show_user_apps">Mostra les aplicacions de l\'usuari</string>
   <string name="app_ops_show_system_apps">Mostra les aplicacions integrades</string>
   <string name="app_ops_reset_counters">Reinicia els comptadors permès/denegat</string>
   <string name="app_ops_reset_confirm_title">Confirma el reinici dels comptadors</string>
   <string name="app_ops_reset_confirm_mesg">Estàs segur que vols reinicialitzar comptadors?</string>
+  <!-- Font size sample text. This needs to be a very short string, as it is shown in
+    multiple font sizes in a limited amount of space. -->
   <string name="font_size_sample">Mostra</string>
+  <!-- Volume settings - Volume adjustment sound -->
   <string name="volume_adjust_sounds_title">Sons d\'ajust del volum</string>
+  <!-- Hardware tunables - Vibrator intensity -->
   <string name="vibrator_intensity_title">Intensitat del vibrador</string>
   <string name="vibrator_warning">No es recomanen valors més alts de %1$d</string>
+  <!-- Hardware tunables - Color calibration -->
   <string name="color_calibration_title">Calibració de color</string>
   <string name="color_calibration_summary">Calibra els colors de la pantalla</string>
   <string name="color_red_title">Vermell</string>
   <string name="color_green_title">Verd</string>
   <string name="color_blue_title">Blau</string>
+  <!-- Hardware tunables - Gamma calibration -->
   <string name="gamma_tuning_title_head">Calibració de gamma</string>
   <string name="gamma_tuning_summary_head">Millora els valors gamma</string>
   <string name="gamma_tuning_control_set_header">Grup <xliff:g id="index">%d</xliff:g></string>
+  <!-- used if no name provided by overlay -->
   <string name="gamma_tuning_contrast">Contrast</string>
-  <string name="gamma_tuning_brightness">Brillantor</string>
+  <string name="gamma_tuning_brightness">Lluminositat</string>
   <string name="gamma_tuning_saturation">Saturació</string>
+  <!-- Display settings.  Screen color. -->
   <string name="screencolor">Color de la pantalla</string>
   <string name="screencolor_summary">Ajusta el matís, la saturació, el contrast o la intensitat de la pantalla</string>
   <string name="custom_screencolor">Color de pantalla personalitzat</string>
@@ -563,26 +650,47 @@
   <string name="screen_color_setting_vivid">Viva</string>
   <string name="screen_color_setting_custom">Personalitzat</string>
   <string name="settings_reset_button">Reestableix</string>
+  <!-- Message when bluetooth dialog for pin entry is showing  when HIGH security enabled-->
   <string name="bluetooth_enter_pin_msg_hs">Per enllaçar amb:<xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g>Introdueix el PIN que requereix el dispositiu (16 dígits o més):</string>
+  <!-- Bluetooth settings.  The user-visible string that is used whenever referring to the DUN profile. -->
   <string name="bluetooth_profile_dun">Accés telèfonic a xarxes</string>
+  <!-- Bluetooth settings.  The user-visible string that is used whenever referring to the SAP profile. -->
   <string name="bluetooth_profile_sap">Accés SIM</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the DUN checkbox preference when DUN is connected. -->
   <string name="bluetooth_dun_profile_summary_connected">Connectat al servidor DUN</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the pbap checkbox preference when pbap is connected. -->
   <string name="bluetooth_pbap_profile_summary_connected">Connectat al servidor pbap</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the SAP checkbox preference when SAP is connected. -->
   <string name="bluetooth_sap_profile_summary_connected">Connectat al servidor d\'accés SIM</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the DUN checkbox preference that describes how checking it will set the DUN profile as preferred. -->
   <string name="bluetooth_dun_profile_summary_use_for">Utilitza per l\'accés telefònic a xarxes</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the pbap checkbox preference that describes how checking it will set the pbap profile as preferred. -->
   <string name="bluetooth_pbap_profile_summary_use_for">Utilitza per compartir contactes</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the SAP checkbox preference that describes how checking it will set the SAP profile as preferred. -->
   <string name="bluetooth_sap_profile_summary_use_for">Utilitza per a l\'accés SIM</string>
+  <!-- Bluetooth settings.  A checkbox to set if we should accept all the file types regardless of their presence in MIME type whitelist -->
   <string name="bluetooth_accept_all_files">Accepta tots els tipus d\'arxiu</string>
+  <!-- SIM lock settings title  [CHAR LIMIT=40] -->
   <string name="sim_lock_settings_cm">Configuració de bloqueig de la targeta SIM/RUIM</string>
+  <!-- Security & location settings screen, setting option name  [CHAR LIMIT=40] -->
   <string name="sim_lock_settings_category_cm">Configura el bloqueig de la targeta SIM/RUIM</string>
+  <!-- Security & location settings screen, section heading for settings related to sim card locking  [CHAR LIMIT=40] -->
   <string name="sim_lock_settings_title_cm">Bloqueig de la targeta SIM/RUIM</string>
+  <!-- SIM card lock settings screen, SIM PIN dialog message when PIN disable fails-->
   <string name="sim_pin_disable_failed">No es pot deshabilitar el PIN.</string>
+  <!-- SIM card lock settings screen, SIM PIN dialog message when PIN enable fails-->
   <string name="sim_pin_enable_failed">No es pot habilitar el PIN.</string>
+  <!-- SIM password can't be changed as SIM LOCK is not enabled: -->
   <string name="sim_pin_change_failed_enable_sim_lock">Per canviar el PIN de la SIM/RUIM, primer has d\'habilitar el bloqueig de la SIM/RUIM.</string>
+  <!-- SIM lock can't be changed - not supported -->
   <string name="sim_enable_disable_lock_not_supported">El bloqueig SIM/RUIM no és compatible amb la targeta.</string>
+  <!-- SIM card lock settings screen, toast displayed on wrong PIN1: -->
   <string name="sim_pin_attempts">\nIntents restants:</string>
+  <!-- SIM card lock settings screen, toast displayed on PIN1 enable: -->
   <string name="sim_pin_enabled">PIN1 habilitat</string>
+  <!-- SIM card lock settings screen, toast displayed on PIN1 disable: -->
   <string name="sim_pin_disabled">PIN1 deshabilitat</string>
+  <!-- string resources for USB OTG & UICC features -->
   <string name="storage_usb">Emmagatzematge USB</string>
   <string name="storage_uicc">Emmagatzematge UICC</string>
   <string name="sdcard_eject" product="default">Desmunta la targeta SD</string>
@@ -603,7 +711,9 @@
   <string name="uicc_format_summary" product="default">Esborra totes les dades de l\'emmagatzematge UICC, com ara música i fotos</string>
   <string name="uicc_mount" product="default">Munta l\'emmagatzematge UICC</string>
   <string name="uicc_insert_summary" product="default">Insereix un emmagatzematge UICC per muntar-lo</string>
+  <!-- Title of dialog asking user to confirm before enabling UMS. [CHAR LIMIT=48] -->
   <string name="usb_settings_enable_ums_title">Vols activar l\'emmagatzematge massiu?</string>
+  <!-- Message of dialog asking user to confirm before enabling UMS. [CHAR LIMIT=NONE] -->
   <string name="usb_settings_enable_ums_message">Components del sistema i aplicacions depenen de que l\'emmagatzematge principal sempre estigui disponible. Aquesta característica trenca aquesta funcionalitat. És molt recomanable utilitzar en canvi MTP. Estàs segur que vols habilitar l\'emmagatzematge massiu?</string>
   <string name="dlg_confirm_sdcard_unmount_title" product="default">Vols desmuntar la targeta SD?</string>
   <string name="dlg_confirm_usb_unmount_title" product="default">Vols desmuntar l\'emmagatzematge USB?</string>
@@ -629,18 +739,27 @@
   <string name="sdcard_media_format_gesture_explanation" product="default">Has de dibuixar el patró de desbloqueig per confirmar que vols esborrar la targeta SD.</string>
   <string name="usb_media_format_gesture_explanation" product="default">Has de dibuixar el patró de desbloqueig per confirmar que voleu esborrar tot l\'emmagatzematge USB.</string>
   <string name="uicc_media_format_gesture_explanation" product="default">Has de dibuixar el patró de desbloqueig per confirmar que vols esborrar tot l\'emmagatzematge UICC.</string>
+  <!-- Storage menu, label for internal media storage -->
   <string name="internal_sd_format">Esborra el mitjà d\'emmagatzematge intern</string>
   <string name="internal_sd_format_summary">Esborra totes les dades del mitjà d\'emmagatzematge intern, com ara la música i les fotos</string>
+  <!-- Media & phone storage settings screen, label for check box to erase media storage [CHAR LIMIT=30] -->
   <string name="master_clear_desc_erase_internal_storage">\n\nPer netejar de música, d\'imatges i altres dades d\'usuari, el <b>mitjà d\'emmagatzematge intern</b> ha de ser esborrat.</string>
   <string name="erase_internal_storage">Esborra el mitjà d\'emmagatzematge intern</string>
   <string name="erase_internal_storage_description">Esborra totes les dades del mitjà d\'emmagatzematge intern, com ara la música o les fotos</string>
+  <!-- Rescan storage -->
   <string name="storage_rescan_media">Cerca una altra vegada dispositius d\'emmagatzematge</string>
+  <!-- [CHAR LIMIT=130] Location mode screen, sub category for IZat Location -->
   <string name="location_category_enhanced_location">Ubicació millorada (IZat)</string>
+  <!-- [CHAR LIMIT=NONE] App ops settings summary, on main settings screen. If clicked, the user is taken to a settings screen for app operations -->
   <string name="app_ops_settings_summary">Mostra o canvia els permisos de les aplicacions</string>
+  <!-- Setting checkbox summary when device is in Charging mode -->
   <string name="enable_adb_summary_charging">El dispositiu està en mode de càrrega, la depuració per USB està deshabilitada</string>
+  <!-- Title of checkbox setting that enable quickboot. [CHAR LIMIT=32] -->
   <string name="enable_quickboot_title">Habilita el mode d\'arrancada ràpida</string>
+  <!-- Summary of checkbox setting that enable quickboot. [CHAR LIMIT=64] -->
   <string name="enable_quickboot_summary">Posa el dispositiu en el mode d\'arrancada ràpida enlloc de l\'apagada normal</string>
   <string name="data_usage_tab_slot">SIM <xliff:g id="sub">%d</xliff:g></string>
+  <!-- MultiSim Settings changes-->
   <string name="sim_enabler_title">Estat de la SIM</string>
   <string name="sim_enabler_summary">La SIM està <xliff:g id="status" example="enabled">%1$s</xliff:g></string>
   <string name="sim_enabled">activada</string>
@@ -664,12 +783,19 @@
   <string name="external_storage_turn_off">S\'ha apagat l\'emmagatzematge extern</string>
   <string name="stats_collection_title">Recollida d\'estadístiques</string>
   <string name="stats_collection_summary">Quan està activat, permet la recollida de mètriques</string>
+  <!-- Category title for Charging sounds (Power state change) specific Settings.
+         [CHAR LIMIT=40] -->
   <string name="power_notifications_category_title">Sons de càrrega</string>
+  <!-- Sound settings, Charging sounds enable/disable, setting check box label -->
   <string name="power_notifications_enable_title">Habilita</string>
   <string name="power_notifications_enable_summary">Reprodueix un so en connectar o desconnectar d\'una font d\'energia</string>
+  <!-- Sound settings, Charging sounds vibrate enable/disable, setting check box label -->
   <string name="power_notifications_vibrate_title">Vibració</string>
+  <!-- Sound settings, Charging sounds ringtone selection, preference label -->
   <string name="power_notifications_ringtone_title">So de la notificació</string>
+  <!-- Sound settings, charging sounds label for ringtone == none -->
   <string name="power_notifications_ringtone_silent">Silenci</string>
+  <!-- Voice Wakeup -->
   <string name="voice_wakeup_settings_title">Activació per veu</string>
   <string name="voice_wakeup_retrain_title">Calibra la teva veu</string>
   <string name="voice_wakeup_activity_title">Activitat a executar</string>
@@ -677,38 +803,51 @@
   <string name="picker_activities">Activitats</string>
   <string name="select_custom_app_title">Selecciona una aplicació personalitzada</string>
   <string name="select_custom_activity_title">Selecciona una activitat personalitzada</string>
+  <!-- Battery : Automatic performance profiles -->
   <string name="autoperf_title">Habilita els perfils per-aplicació</string>
   <string name="autoperf_summary">Tria automàticament un mode bateria adequat per diverses aplicacions</string>
   <string name="perf_profile_title">Mode de la bateria</string>
+  <!-- Development : Force high-end graphics -->
   <string name="pref_force_highend_gfx_title">Força els gràfics d\'alta gamma</string>
   <string name="pref_force_highend_gfx_summary">Habilita els efectes visuals d\'alta gamma com ara la barra d\'estat/navegació transparent (necessita reiniciar)</string>
+  <!-- EdgeGesture service -->
   <string name="edge_gesture_service_title">Bloqueja els esdeveniments de gestos tàctils</string>
   <string name="edge_gesture_service_summary">No enviïs esdeveniments tàctils per la navegació ni gestos de la barra d\'estat a les aplicacions</string>
+  <!-- CM Legal -->
   <string name="cmlicense_title">Llicència CyanogenMod</string>
   <string name="settings_cmlicense_activity_title">Llicència CyanogenMod</string>
+  <!-- Sizes for pattern lockscreen -->
+  <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
   <string name="lockpattern_settings_enable_error_path_title">Mostra el patró erroni</string>
+  <!-- Whether the dots will be drawn when using the lockscreen pattern -->
   <string name="lockpattern_settings_enable_dots_title">Mostra els punts del patró</string>
+  <!-- Whether the keyguard will directly pass to password entry -->
   <string name="lock_directly_show_password">Mostra directament l\'entrada de contrasenya</string>
+  <!-- Whether the keyguard will directly pass to pattern view -->
   <string name="lock_directly_show_pattern">Mostra directament la vista del patró</string>
+  <!-- Whether the keyguard will directly pass to PIN entry -->
   <string name="lock_directly_show_pin">Mostra directament l\'entrada del PIN</string>
+  <!-- Screen security -->
   <string name="unlock_quick_unlock_control_title">Desbloqueig ràpid</string>
   <string name="unlock_quick_unlock_control_summary">Desbloqueja automàticament quan s\'introdueixi el PIN/contrasenya correcta</string>
   <string name="unlock_scramble_pin_layout_title">Disposició aleatòria</string>
   <string name="unlock_scramble_pin_layout_summary">Disposa aleatòriament les tecles del PIN quan es desbloquegi el dispositiu</string>
   <string name="link_volume_option_title">Vincula el to de trucada &amp; els volums de les notificacions</string>
   <string name="notification_volume_option_title">Volum de les notificacions</string>
+  <!-- Notification drawer -->
   <string name="notification_drawer_title">Calaix de notificacions</string>
   <string name="quick_pulldown_title">Baixada ràpida</string>
   <string name="quick_pulldown_summary">La vora %1$s de la barra d\'estat desplega el panell d\'ajustos ràpids</string>
   <string name="quick_pulldown_summary_left">Esquerra</string>
   <string name="quick_pulldown_summary_right">Dreta</string>
-  <string name="quick_pulldown_off">no</string>
+  <string name="quick_pulldown_off">No</string>
   <string name="quick_pulldown_left">Esquerra</string>
   <string name="quick_pulldown_right">Dreta</string>
+  <!-- Weather in status bar header -->
   <string name="status_bar_show_weather_title">Mostra el temps</string>
   <string name="status_bar_show_weather_summary">Mostra el temps per sobre el panell d\'ajustos ràpids</string>
   <string name="qs_category_title">Panell d\'ajustos ràpids</string>
-  <string name="qs_brightness_slider_title">Mostra la barra lliscant de brillantor</string>
+  <string name="qs_brightness_slider_title">Mostra la barra lliscant de lluminositat</string>
   <string name="qs_hide_tiles_with_sensitive_data">Amaga les cel·les privades quan estigui bloquejat</string>
   <string name="qs_order_title">Selecciona i ordena cel·les</string>
   <string name="add_qs">Afegeix una nova cel·la</string>
@@ -748,17 +887,26 @@
   <string name="qs_advanced_location_title">Configuració d\'ubicació avançada</string>
   <string name="qs_advanced_location_summary">Habilita la configuració avançada d\'ubicació en els ajustos ràpids</string>
   <string name="sim_no_number_set">Sense número assignat</string>
+  <!-- Gesture Settings -->
+  <!-- Settings main menu entry -->
   <string name="gesture_settings_title">Gestos</string>
+  <!-- Themes Settings -->
+  <!-- Settings main menu entry -->
   <string name="themes_settings_title">Temes</string>
+  <!-- WiFi Ad-Hoc mode -->
   <string name="wifi_mode">Mode</string>
   <string name="wifi_mode_ibss">Xarxa Ad-Hoc (IBSS)</string>
   <string name="wifi_mode_ibss_short">Ad Hoc</string>
   <string name="wifi_ibss_freq_title">Canal / Freqüència</string>
   <string name="wifi_channel">Canal</string>
   <string name="wifi_mhz">MHz</string>
+  <!-- WiFi auto-configure priorities -->
   <string name="wifi_auto_config_priorities">Prioritat automàtica</string>
+  <!-- About phone settings screen, setting option dialog title to show regulatory information [CHAR LIMIT=25] -->
+  <!-- SAR information -->
   <string name="maximum_head_level">Cap: %1$s W/kg</string>
   <string name="maximum_body_level">Cos: %1$s W/kg</string>
+  <!-- IC Codes -->
   <string name="ic_code_model">Model: %1$s</string>
   <string name="ic_code_full">IC: %1$s</string>
   <string name="power_menu_expanded_desktop">Escriptori extès</string>
@@ -769,7 +917,7 @@
   <string name="expanded_nothing_to_show">Per afegir una configuració personalitzada per a cada aplicació en l\'estat extès, estableix com a deshabilitada l\'opció \"Habilitat per a tots\"</string>
   <string name="expanded_enabled_for_all">Habilitat per a tots</string>
   <string name="expanded_desktop_style">Estil d\'escriptori extès</string>
-  <string name="expanded_desktop_style_description">Escull un estil d\'escriptori extès per defecte</string>
+  <string name="expanded_desktop_style_description">Tria un estil d\'escriptori extès per defecte</string>
   <string name="expanded_desktop_title">Opcions d\'escriptori extès</string>
   <string name="title_general">General</string>
   <string name="lockscreen_targets_message">Dreceres de la pantalla de bloqueig</string>
@@ -779,17 +927,21 @@
   <string name="lockscreen_choose_action_title">Tria l\'acció</string>
   <string name="lockscreen_visualizer_title">Mostra la visualització de la música</string>
   <string name="nfc_title_category">NFC</string>
+  <!-- WhisperPush -->
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Gestiona la configuració d\'SMS segurs</string>
   <string name="navigation_ring_title">Objectius de l\'anell de navegació</string>
   <string name="navigation_ring_message">Pica sobre la icona edita per desbloquejar l\'edició de la barra de navegació.\n\nSelecciona un objectiu per configurar el seu comportament.\n\nPica la icona \'\u2713\' per desar els canvis, o \'Restaura predeterminats\' per restaurar els ajustaments predeterminats.</string>
+  <!-- Display & Lights screen, setting options for LCD density -->
   <string name="lcd_density">Densitat de l\'LCD</string>
   <string name="dialog_title_lcd_density">Densitat de l\'LCD</string>
   <string name="lcd_density_value_format">%d PPP</string>
   <string name="lcd_density_default_value_format">%d PPP (per defecte)</string>
   <string name="restarting_ui">S\'està reiniciant IU\u2026</string>
+  <!-- Stylus Icon -->
   <string name="stylus_icon_enabled_title">Mostra una icona quan s\'utilitzi un llapis</string>
   <string name="stylus_icon_enabled_summary">Mostra la icona del punter quan suris o dibuixis amb el llapis</string>
+  <!-- Stylus Gestures -->
   <string name="gestures_settings_title">Gestos del llapis</string>
   <string name="category_spen_title">Gestos del llapis</string>
   <string name="enable_subcat_title">Llapis</string>
@@ -802,12 +954,14 @@
   <string name="gestures_down_spen_title_head">Deslliça avall</string>
   <string name="gestures_long_spen_title_head">Pulsació llarga</string>
   <string name="gestures_double_spen_title_head">Doble pulsació</string>
+  <!-- Gestures Options -->
   <string name="gestures_action_empty">Cap acció</string>
   <string name="gestures_action_home">Inici</string>
   <string name="gestures_action_back">Enrera</string>
   <string name="gestures_action_menu">Menú</string>
   <string name="gestures_action_search">Invoca la cerca</string>
   <string name="gestures_action_recent">Aplicacions recents</string>
+  <!-- Stylus gestures -->
   <string name="stylus_app_not_installed">%s no està instal\U00B7lada</string>
   <string name="advanced">Avançat</string>
   <string name="advanced_mode_title">Mode avançat</string>
@@ -823,6 +977,7 @@
   <string name="lockscreen_settings">Pantalla de bloqueig</string>
   <string name="category_lights">Llums</string>
   <string name="power_usage_history_title">Ús de la bateria</string>
+  <!-- Show/Hide Search Bar -->
   <string name="recents_show_searchbar">Mostra la barra de cerca al menú de recents</string>
   <string name="keywords_recents_show_searchbar">recent recents desactiva activa habilita deshabilita mostra amaga cerca barra</string>
   <string name="sim_ringtone_title">To de trucada de la SIM %d</string>
@@ -832,6 +987,7 @@
   <string name="none_is_silent_summary_on">Les alarmes no seran ignorades en el mode silenci</string>
   <string name="none_is_silent_summary_off">Les alarmes seran ignorades en el mode res</string>
   <string name="allow_lights_title">Permet les llums de notificació</string>
+  <!-- LiveDisplay -->
   <string name="live_display_summary">Optimitza la teva pantalla basant-se en l\'hora del dia i les condicions ambientals per millorar la llegibilitat i reduir la fatiga ocular</string>
   <string name="live_display_mode">Mode de pantalla</string>
   <string name="live_display_color_temperature_title">Temperatura del color</string>
@@ -840,7 +996,7 @@
   <string name="live_display_day">Dia</string>
   <string name="live_display_night">Nit</string>
   <string name="live_display_outdoor_mode_title">Mode d\'exterior automàtic</string>
-  <string name="live_display_outdoor_mode_summary">Millora la brillantor i saturació automàticament sota la llum del sol intens</string>
+  <string name="live_display_outdoor_mode_summary">Millora la lluminositat i saturació automàticament sota la llum del sol intens</string>
   <string name="live_display_low_power_title">Redueix el consum d\'energia</string>
   <string name="live_display_low_power_summary">Ajusta la pantalla per un consum d\'energia més baix però sense degradació</string>
   <string name="live_display_enhance_color_title">Millora els colors</string>
@@ -861,6 +1017,8 @@
   <string name="battery_saver_threshold">Llindar d\'estalvi de bateria</string>
   <string name="battery_saver_summary">Redueix el rendiment i limita les dades en segon pla</string>
   <string name="battery_saver_summary_unavailable">No disponible durant la càrrega</string>
+  <!-- Anonymous Statistics #CM -->
+  <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
   <string name="anonymous_statistics_title">Estadístiques de CyanogenMod</string>
   <string name="anonymous_statistics_summary">Ajuda a fer millor CyanogenMod optant a transmetre estadístiques anònimes</string>
   <string name="anonymous_statistics_warning_title">Quant a</string>
@@ -869,27 +1027,34 @@
   <string name="preview_data_title">Vista prèvia de Dades</string>
   <string name="view_stats_title">Mostra estadístiques</string>
   <string name="anonymous_learn_more">Aprèn més</string>
+  <!-- Anonymous Statistics - Preview -->
   <string name="preview_id_title">ID únic</string>
   <string name="preview_device_title">Dispositiu</string>
   <string name="preview_version_title">Versió</string>
   <string name="preview_country_title">País</string>
   <string name="preview_carrier_title">Portadora</string>
+  <!-- Heads up -->
   <string name="heads_up_notifications">Notificacions emergents</string>
   <string name="summary_heads_up_enabled">Les notificacions emergents estan activades</string>
   <string name="summary_heads_up_disabled">Les notificacions emergents estan desactivades</string>
+  <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
   <string name="master_clear_desc_cm" product="tablet">Això esborrarà totes les dades de <b>l\'emmagatzematge intern</b> de la teva tauleta, incloent-hi:\n\n<li>Els teus comptes al dispositiu</li>\n<li>el sistema i les dades i els ajustaments de les aplicacions</li>\n<li>Les aplicacions descarregades</li></string>
+  <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
   <string name="master_clear_desc_cm" product="default">Això esborrarà totes les dades de <b>l\'emmagatzematge intern</b> del teu telèfon, incloent-hi:\n\n<li>Els teus comptes al dispositiu</li>\n<li>el sistema i les dades i els ajustaments de les aplicacions</li>\n<li>Les aplicacions descarregades</li></string>
+  <!-- Killswitch -->
   <string name="lock_to_cyanogen_title">Protecció del dispositiu</string>
   <string name="lock_to_cyanogen_summary">Demana la contrasenya del teu compte de Cyanogen OS fins i tot després de que es restableixin els ajustaments de fàbrica</string>
   <string name="lock_to_cyanogen_create_account_msg">El teu dispositiu utilitza la contrasenya del compte Cyanogen OS per protegir el dispositiu fins i tot en cas d\'un restabliment als ajustaments de fàbrica. Necessitaràs crear un compte de Cyanogen OS.</string>
   <string name="lock_to_cyanogen_disable_msg">Deshabilitant aquest característica permetràs que usuaris no autoritzats restableixin el teu telèfon als ajustaments de fàbrica en cas de robatori. Les teves dades personals podrien no estar protegides. Vols deshabilitar aquesta funció?</string>
   <string name="lock_to_cyanogen_master_clear_warning">La protecció del dispositiu està habilitada. Si us plau deshabilita-la per continuar amb la restauració del teu dispositiu.</string>
   <string name="bluetooth_pan_profile_summary_use_for_error">Error de connexió; està habilitat l\'ancoratge Bluetooth en aquest dispositiu?</string>
+  <!-- MSIM SIM status -->
   <string name="sim_card_status_title">Estat de la SIM %d</string>
   <string name="sim_card_lock_settings_title">Configuració de bloqueig de la SIM %d</string>
   <string name="sim_card_summary_empty">No hi ha SIM inserida</string>
   <string name="sim_mobile_network_settings_category_title">Configuració de xarxes mòbils</string>
   <string name="sim_mobile_network_settings_title">Configuració de la SIM %d</string>
+  <!-- Factory reset strings -->
   <string name="factory_reset_instructions_title">Dades personals i aplicacions</string>
   <string name="factory_reset_instructions_summary">Això esborrarà tots els teus comptes, aplicacions, dades d\'aplicacions i ajustaments del sistema en aquest dispositiu</string>
   <string name="factory_reset_personal_content">Contingut personal</string>
@@ -900,14 +1065,19 @@
   <string name="factory_reset_erase_sd_card_summary">Esborra totes les dades a la targeta SD, incloent-hi la música i les fotos</string>
   <string name="factory_reset_warning_text_reset_now">RESTAURA ARA</string>
   <string name="factory_reset_warning_text_message">S\'eliminaran tots els teus comptes, aplicacions, dades d\'aplicacions i ajustaments del sistema d\'aquest dispositiu. Això no es pot revertir.</string>
+  <!-- Wi-Fi filters -->
   <string name="wifi_show_all">Mostra-ho tot</string>
   <string name="wifi_show_protected">Mostra les xarxes protegides</string>
   <string name="wifi_show_open">Mostra les xarxes obertes</string>
   <string name="wifi_empty_list_protected">No hi ha xarxes Wi\u2011Fi protegides</string>
   <string name="wifi_empty_list_open">No hi ha xarxes Wi\u2011Fi obertes</string>
+  <!-- Wi-Fi region code -->
   <string name="wifi_setting_countrycode_title">Codi de regió de Wi\u2011Fi</string>
+  <!-- Wi-Fi settings screen, setting summary for setting the wifi frequency band [CHAR LIMIT=50]-->
   <string name="wifi_setting_countrycode_summary">Especifica el codi de regió per al Wi\u2011Fi</string>
+  <!-- Wi-Fi settings screen, error message when the frequency band could not be set [CHAR LIMIT=50]. -->
   <string name="wifi_setting_countrycode_error">Hi ha un problema al establir el codi de regió.</string>
+  <!-- Wi-Fi region countries -->
   <string name="wifi_countrycode_entries_us">Estats Units</string>
   <string name="wifi_countrycode_entries_ca">Canadà, Taiwan</string>
   <string name="wifi_countrycode_entries_de">Alemanya</string>
@@ -920,65 +1090,114 @@
   <string name="wifi_countrycode_entries_sg">Israel, Singapur</string>
   <string name="wifi_countrycode_entries_br">Brasil</string>
   <string name="wifi_countrycode_entries_in">Índia</string>
+  <!-- FINGERPRINT -->
+  <!-- Title for preference which sets the unlock. This is only used when the device has
+         a fingerprint sensor , otherwise just "unlock_set_unlock_launch_picker_title" is used -->
   <string name="unlock_set_unlock_launch_picker_title_with_fingerprint">Desbloqueig de pantalla &amp; Empremtes</string>
+  <!-- Summary for "Configure lockscreen" when security Fingerprint is enabled [CHAR LIMIT=45] -->
   <string name="unlock_set_unlock_mode_fingerprint">Empremta digital</string>
+  <!-- Title for preference that guides the user through creating a fingerprint [CHAR LIMIT=22] -->
   <string name="unlock_set_unlock_fingerprint_title">Empremta digital</string>
+  <!-- List item title to add a new fingerprint in fingerprint list screen -->
   <string name="fingerprint_item_add_new_fingerprint">Afegeix nova empremta digital</string>
+  <!-- Title for preference in fingerprint lockscreen settings, takes user to fingerprint list -->
   <string name="fingerprint_manage_fingerprints">Gestiona les empremtes digitals</string>
+  <!-- Summary for preference in fingerprint lockscreen settings, takes user to fingerprint list -->
   <string name="fingerprint_manage_fingerprints_summary">Afegeix o suprimeix les empremtes digitals registrades</string>
+  <!-- Info explaining the backup lock which is used for fingerprint -->
   <string name="unlock_backup_fingerprint_info_summary">Si no pots utilitzar el teu dit, com vols desbloquejar?</string>
+  <!-- Dialog title for renaming your fingerprint -->
   <string name="fingerprint_dialog_title_rename">Edita empremta digital</string>
+  <!-- EditText label for renaming your fingerprint in rename dialog -->
   <string name="fingerprint_dialog_name_label">Nom de l\'empremta digital</string>
+  <!-- Title for dialog that shows when the user cannot add anymore fingers -->
   <string name="fingerprint_dialog_title_max_fingers_reached">S\'ha assolit el màxim d\'empremtes digitals</string>
+  <!-- Message for dialog that shows when the user cannot add anymore fingers -->
   <string name="fingerprint_dialog_msg_max_fingers_reached">Només pots enregistrar <xliff:g id="finger" example="5">%d</xliff:g> empremtes digitals. Suprimeix una empremta digital existent.</string>
+  <!-- Title for number of finger prints enrolled -->
   <string name="fingerprint_title_manage_fingerprints"><xliff:g id="finger">%d</xliff:g> de <xliff:g id="max">%d</xliff:g> empremtes digitals enregistrades</string>
+  <!-- Description for managing fingerprints -->
   <string name="manage_fingerprints_description">Les empremtes digitals et permetran desbloquejar el telèfon ràpidament i fer fotos.</string>
+  <!-- Fingerprint enrollment introduction title -->
   <string name="fingerprint_enrollment_introduction_title">Troba el teu sensor</string>
+  <!-- Fingerprint enrollment introduction instructions -->
   <string name="fingerprint_enrollment_introduction_instructions">El sensor d\'empremtes digitals està situat a la part davantera o posterior del teu telèfon.</string>
+  <!-- Fingerprint enrollment scan fingerprint title -->
   <string name="fingerprint_enrollment_scan_title">Aguanta durant 3 segons</string>
+  <!-- Fingerprint enrollment scan fingerprint instructions -->
   <string name="fingerprint_enrollment_scan_instructions">Situa el dit índex al sensor d\'empremtes digitals per començar la configuració. Aixeca el teu dit quan sentis una vibració.</string>
+  <!-- Fingerprint enrollment error title during first step only -->
   <string name="fingerprint_enrollment_error_title_wrong_sensor">Si us plau intenta-ho un altre cop</string>
+  <!-- Fingerprint enrollment error message -->
   <string name="fingerprint_enrollment_error_message">Situa el teu dit sobre el sensor d\'empremtes digitals per assegurar una lectura precisa. També assegura\'t que estàs utilitzant el mateix dit que abans. Aixeca el teu dit quan sentis una vibració.</string>
+  <!-- Fingerprint enrollment error instructions -->
   <string name="fingerprint_enrollment_scan_instructions">Situa el dit índex al sensor d\'empremtes digitals per començar la configuració. Aixeca el teu dit quan sentis una vibració.</string>
+  <!-- Fingerprint enrollment half way break title -->
   <string name="fingerprint_enrollment_break_title">Continua amb la lectura actual</string>
+  <!-- Fingerprint enrollment introduction instructions -->
   <string name="fingerprint_enrollment_break_instructions">Continua per capturar les vores de la teva empremta. Aixeca el teu dit quan sentis una vibració.</string>
+  <!-- Fingerprint enrollment finished title -->
   <string name="fingerprint_enrollment_finished_title">Empremta digital afegida!</string>
+  <!-- Fingerprint enrollment finished instructions -->
   <string name="fingerprint_enrollment_finished_message">La teva empremta digital ara es pot utilitzar per desbloquejar la pantalla o prendre selfies utilitzant la càmera.</string>
+  <!-- Next button title for finding sensor -->
   <string name="fingerprint_enrollment_found_it_label">L\'he trobat</string>
+  <!-- Next button title for finding sensor -->
   <string name="fingerprint_enrollment_add_another_label">Afegeix-ne una altra</string>
+  <!-- Next button title for finding sensor -->
   <string name="fingerprint_enrollment_done_label">Fet</string>
+  <!-- Wrong fingerprint sensor dialog title -->
   <string name="fingerprint_dialog_title_wrong_sensor">Whoops, aquest no és el teu sensor</string>
+  <!-- Wrong fingerprint sensor dialog message -->
   <string name="fingerprint_dialog_msg_wrong_sensor">Utilitza el sensor d\'empremtes digitals a la part davantera o posterior del telèfon</string>
+  <!-- Failed fingerprint enrollment dialog title -->
   <string name="fingerprint_dialog_title_failed_enrollment">No es pot llegir l\'empremta digital</string>
+  <!-- Failed fingerprint enrollment dialog message -->
   <string name="fingerprint_dialog_msg_failed_enrollment">Prova un dit diferent. Aquesta empremta digital no s\'ha pogut llegir.</string>
+  <!-- Failed fingerprint enrollment button label -->
   <string name="fingerprint_enrollment_restart_label">Torna a començar</string>
+  <!-- Successful scan title for first successful scan -->
   <string name="fingerprint_successful_scan_title_first">Perfecte! Ara repeteix</string>
+  <!-- Successful scan title for second to last successful scan -->
   <string name="fingerprint_successful_scan_final">Una vegada més si us plau</string>
+  <!-- Successful scan title for all other successful scans -->
   <string name="fingerprint_successful_scan_title_1">Ja ho tens! Continua</string>
   <string name="fingerprint_successful_scan_title_2">Genial! I una altra vegada</string>
   <string name="fingerprint_successful_scan_title_3">Ben fet! Segueix així</string>
   <string name="fingerprint_successful_scan_title_4">Només un parell de vegades més</string>
   <string name="fingerprint_successful_scan_title_5">Ho estàs fent molt bé! I una altra vegada</string>
   <string name="fingerprint_successful_scan_title_6">Gairebé està</string>
+  <!-- Fingerprint enrollment error titles -->
   <string name="fingerprint_enrollment_error_title_1">Oops. Intenta-ho un altre cop</string>
   <string name="fingerprint_enrollment_error_title_2">Ho sento, no ho he captat</string>
   <string name="fingerprint_enrollment_error_title_3">Hmm, alguna cosa ha sortit malament</string>
   <string name="fingerprint_enrollment_error_title_4">Uh oh, intenta-ho un altre cop</string>
   <string name="fingerprint_enrollment_error_title_5">Whoops, hi ha hagut un error</string>
+  <!-- Title for lockscreen settings, on dashboard, that is only used when a device supports
+         the fingerprint feature -->
   <string name="lockscreen_settings_and_fingerprint">Pantalla de bloqueig &amp; empremtes digitals</string>
+  <!-- Menu label for reset the battery stats -->
   <string name="menu_stats_reset">Reinicia estadístiques</string>
+  <!-- Reset stats confirmation dialog's message -->
   <string name="reset_stats_msg">L\'historial d\'estadístiques de la bateria serà reiniciat</string>
+  <!-- Dock battery not present message -->
   <string name="dock_battery_not_present">Bateria no trobada a l\'acoblament</string>
+  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging on Dock AC. -->
   <string name="battery_info_status_charging_dock_ac">S\'està carregant en l\'acoblament CA</string>
+  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging over Dock USB. -->
   <string name="battery_info_status_charging_dock_usb">S\'està carregant sobre l\'acoblament USB</string>
+  <!-- Lock screen setup wizard pattern complexity -->
   <string name="setup_lock_pattern_size_title">Complexitat del patró</string>
   <string name="setup_lock_pattern_size_details">Quants nodes vols utilitzar en el teu patró? Com més nodes, més complex pot ser el patró.</string>
+  <!-- LTO download data over wi-fi only -->
   <string name="lto_download_data_wifi_only">Descàrrega de dades assistides de GPS</string>
   <string name="lto_download_data_wifi_only_on">Sobre qualsevol xarxa</string>
   <string name="lto_download_data_wifi_only_off">Només sobre xarxes Wi\u2011Fi</string>
+  <!-- Keep screen on strings -->
   <string name="keep_screen_on_never">Mai</string>
   <string name="keep_screen_on_debugging">Durant la depuració USB</string>
   <string name="keep_screen_on_charging">Mentre es carrega</string>
+  <!-- Contributors cloud activity -->
   <string name="contributors_cloud_fragment_title">Contribuïdors</string>
   <string name="contributors_cloud_loading_message">S\'estan carregant les dades dels contribuïdors\u2026</string>
   <string name="contributors_cloud_failed_message">No s\'han pogut carregar les dades dels contribuïdors</string>

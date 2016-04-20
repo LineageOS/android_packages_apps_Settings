@@ -16,13 +16,18 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
   <plurals name="show_dev_countdown_cm">
     <item quantity="one">विकास सेटिंग को सक्षम करने के लिए अब सिर्फ़ <xliff:g id="step_count">%1$d</xliff:g> चरण बाकी है।</item>
     <item quantity="other">विकास सेटिंग को सक्षम करने के लिए अब सिर्फ़ <xliff:g id="step_count">%1$d</xliff:g> चरण बाकी हैं।</item>
   </plurals>
+  <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
   <string name="show_dev_on_cm">आपने विकास सेटिंग को सक्षम किया है!</string>
+  <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
   <string name="show_dev_already_cm">इसकी ज़रूरत नहीं है, आपने पहले ही विकास सेटिंग को सक्षम कर दिया है।</string>
+  <!-- Launch Dev Tools -->
   <string name="development_tools_title">विकास उपकरण</string>
+  <!-- Setting checkbox title for root access -->
   <string name="root_access">मूल पहुँच</string>
   <string name="root_access_warning_title">मूल पहुँच की अनुमति दें?</string>
   <string name="root_access_warning_message">ऐपों को मूल पहूँच का अनुरोध करने की अनुमति देना ख़तरनाक हो सकता है और यह आपकी प्रणाली की सुरक्षा के साथ समझौता कर सकता है।</string>
@@ -30,10 +35,12 @@
   <string name="root_access_apps">केवल ऐप</string>
   <string name="root_access_adb">केवल एडीबी</string>
   <string name="root_access_all">ऐप और एडीबी</string>
+  <!-- Sound settings screen -->
   <string name="ring_mode_title">रिंग मोड</string>
   <string name="ring_mode_normal">सामान्य</string>
   <string name="ring_mode_vibrate">कंपन</string>
   <string name="ring_mode_mute">मूक</string>
+  <!-- Profiles settings  -->
   <string name="profiles_settings_title">सिस्टम प्रोफ़ाइलें</string>
   <string name="profiles_add">जोड़ें</string>
   <string name="profile_settings_title">प्रोफ़ाइल</string>
@@ -55,32 +62,43 @@
   <string name="profile_app_group_category_title">अधिसूचना ओवरराइड</string>
   <string name="profile_app_group_item_instructions">समूह जोड़ें या निकालें</string>
   <string name="profile_app_group_item_instructions_summary">इस प्रोफ़ाइल में अधिसूचना ओवरराइड ऐप समूह जोड़ें या उससे इन्हें निकालें</string>
+  <!-- Profile mode options. -->
   <string name="profile_entries_on">चालू</string>
   <string name="profile_entries_off">बंद</string>
   <string name="profile_entries_no_override">कोई ओवरराइड नहीं</string>
+  <!-- Add Profile -->
   <string name="profile_name_title">नाम</string>
   <string name="new_profile_name">&lt;नई प्रोफ़ाइल&gt;</string>
+  <!-- Rename Dialog  -->
   <string name="rename_dialog_title">नया नाम दें</string>
   <string name="rename_dialog_message">नया नाम दर्ज करें</string>
   <string name="rename_dialog_hint">प्रोफ़ाइल नाम दर्ज करें</string>
+  <!-- Reset Profiles -->
   <string name="profile_reset_title">रीसेट करें</string>
   <string name="profile_reset_message">सभी उपयोगकर्ता-निर्मित प्रोफ़ाइलों को हटाएँ और उन्हें डिफ़ॉल्ट से बहाल करें?</string>
+  <!-- Profile network mode -->
   <string name="profile_networkmode_2g">2जी</string>
   <string name="profile_networkmode_3g">3जी</string>
   <string name="profile_networkmode_4g">एलटीई</string>
   <string name="profile_networkmode_2g3g">2जी/3जी</string>
   <string name="profile_networkmode_2g3g4g">2जी/3जी/एलटीई</string>
+  <!-- Profile Config screen PreferenceGroup titles -->
   <string name="profile_volumeoverrides_title">वोल्यूम ओवरराइड</string>
   <string name="volume_override_summary">%1$s/%2$s पर सेट किया गया</string>
   <string name="profile_volume_override_checkbox_label">वोल्यूम को ओवरराइड करें</string>
+  <!-- Menu item for managing profiles -->
   <string name="profile_profiles_manage">प्रोफ़ाइलें</string>
   <string name="profile_profile_manage">प्रोफ़ाइल प्रबंधन</string>
+  <!-- Profile settings screen, section header for settings related to notification profiles -->
   <string name="profile_settings">प्रोफ़ाइल सेटिंग</string>
   <string name="profile_trigger_connect">कनेक्ट होने पर</string>
   <string name="profile_trigger_disconnect">डिसकनेक्ट होने पर</string>
   <string name="profile_trigger_notrigger">कोई ट्रिगर नहीं है</string>
+  <!-- Title for application group setting screen -->
   <string name="profile_applist_title">ऐप</string>
+  <!-- Add application dialog box title -->
   <string name="profile_choose_app">ऐप चुनें</string>
+  <!-- Profiles - system settings -->
   <string name="profile_system_settings_title">सिस्टम सेटिंग</string>
   <string name="profile_lockmode_title">स्क्रीन को लॉक करें मोड</string>
   <string name="profile_lockmode_policy_disabled_summary">इस प्रोफ़ाइल विकल्प को एक डिवाइस प्रशासक नीति के तहत अक्षम किया गया है</string>
@@ -90,6 +108,7 @@
   <string name="profile_brightness_title">स्क्रीन चमक</string>
   <string name="profile_brightness_override_summary">%1$d%% पर सेट किया गया</string>
   <string name="profile_brightness_override_checkbox_label">चमक को ओवरराइड करें</string>
+  <!-- Connection override toggles (not all are used at this time ) -->
   <string name="toggleWifi">वाई\u2011फ़ाई</string>
   <string name="toggleWifiAp">पोर्टेबल वाई\u2011फ़ाई हॉटस्पोट</string>
   <string name="toggleBluetooth">ब्लूटूथ</string>
@@ -98,6 +117,7 @@
   <string name="toggleSync">डेटा को स्वतः संकालित करें</string>
   <string name="toggle2g3g4g">पसंदीदा नेटवर्क प्रकार</string>
   <string name="toggleNfc">एनएफसी</string>
+  <!-- Hardware keys -->
   <string name="button_pref_title">बटन</string>
   <string name="hardware_keys_power_key_title">पावर बटन</string>
   <string name="hardware_keys_home_key_title">होम बटन</string>
@@ -137,6 +157,7 @@
   <string name="button_wake_summary">प्लेबैक नियंत्रण को ओवरराइड करता है</string>
   <string name="home_answer_call_title">कॉल का उत्तर दें</string>
   <string name="home_answer_call_summary">होम बटन को दबाने पर आवक कॉल का उत्तर दिया जाएगा</string>
+  <!-- Key backlight -->
   <string name="button_backlight_title">पार्श्वआलोकन</string>
   <string name="button_backlight_enabled">बटनों को प्रदीप्त करें</string>
   <string name="keyboard_backlight_enabled">कुंजीपटल को प्रदीप्त करें</string>
@@ -147,6 +168,7 @@
   <string name="backlight_summary_disabled">अक्षम</string>
   <string name="backlight_summary_enabled_with_timeout"><xliff:g id="timeout">%s</xliff:g> के लिए सक्षमित</string>
   <string name="backlight_summary_enabled">सक्षम</string>
+  <!-- Power menu -->
   <string name="power_menu_title">पावर मेनू</string>
   <string name="power_menu_reboot_title">रीबूट मेनू</string>
   <string name="power_menu_screenshot_title">स्क्रीनशॉट</string>
@@ -159,12 +181,16 @@
   <string name="power_menu_sound_title">ध्वनि पटल</string>
   <string name="power_menu_bug_report_disabled">विकास सेटिंग में बग रिपोर्टिंग को अक्षम किया जाता है</string>
   <string name="power_menu_profiles_disabled">सिस्टम प्रोफ़ाइलों को अक्षम किया गया है</string>
+  <!-- Backlight brightness settings screen -->
   <string name="adaptive_backlight_title">अनुकूलनात्मक पार्श्व प्रकाशन</string>
   <string name="adaptive_backlight_summary">गतिशील रीति से डिस्प्ले के पार्श्व प्रकाशन को समायोजित करके बैटरी बचाएँ और उपयोगिता बरकरार रखें</string>
+  <!-- Sunlight readability enhancement screen -->
   <string name="sunlight_enhancement_title">सूर्य प्रकाश वृद्धि</string>
   <string name="sunlight_enhancement_summary">तीव्र धूप में डिस्प्ले की चमक और पठनीयता को बढ़ाएँ</string>
+  <!-- Color enhancement settings screen -->
   <string name="color_enhancement_title">रंग संवर्धन</string>
   <string name="color_enhancement_summary">गतिशील रीति से डिस्प्ले के रंग को संवर्धित करें</string>
+  <!-- Blacklist preferences -->
   <string name="blacklist_title">अवरुद्ध किए गए कॉलरों की सूची</string>
   <string name="blacklist_edit_dialog_title">अवरुद्ध किए गए फ़ोन नंबर को संपादित करें</string>
   <string name="blacklist_prefs">सेटिंग</string>
@@ -188,11 +214,14 @@
   <string name="blacklist_policy_block_calls">आवक कॉलों को अवरुद्ध करें</string>
   <string name="blacklist_policy_block_messages">आवक संदेशों को अवरुद्ध करें</string>
   <string name="blacklist_bad_number_add">अमान्य फ़ोन नंबर को अवरुद्ध किए गए कॉलरों की सूची में जोड़ नहीं सके</string>
+  <!-- Blacklist management -->
   <string name="remove_blacklist_number_title">नंबर निकालें</string>
   <string name="remove_blacklist_entry">क्या आप इस अवरुद्ध किए गए फ़ोन नंबर को हटाना चाहते हैं?</string>
   <string name="select_contact">संपर्क चुनें</string>
+  <!-- Protected apps lockpattern reset button -->
   <string name="lockpattern_reset_button">पैटर्न रीसेट करें</string>
   <string name="lockpattern_settings_reset_summary">पैटर्न लॉक को रीसेट करने के लिए मुख्य ईमेल पता और उससे संबंधित पासवर्ड दर्ज करें</string>
+  <!-- Protected Apps -->
   <string name="menu_hidden_apps_delete">रीसेट करें</string>
   <string name="menu_hidden_apps_reset_lock">पैटर्न लॉक को रीसेट करें</string>
   <string name="protected_apps">रक्षित ऐप</string>
@@ -202,6 +231,7 @@
   <string name="pa_login_submit_button">साइनइन करें</string>
   <string name="pa_login_checking_password">खाते को जाँचें\u2026</string>
   <string name="pa_login_incorrect_login">लॉगइन ग़लत था</string>
+  <!-- Display : Rotation  -->
   <string name="display_rotation_title">घूर्णन</string>
   <string name="display_rotation_disabled">अक्षम</string>
   <string name="display_rotation_unit">डिग्री</string>
@@ -211,6 +241,7 @@
   <string name="display_rotation_90_title">90 डिग्री</string>
   <string name="display_rotation_180_title">180 डिग्री</string>
   <string name="display_rotation_270_title">270 डिग्री</string>
+  <!-- Sms security limit -->
   <string name="app_security_title">ऐप सुरक्षा</string>
   <string name="sms_security_check_limit_title">एसएमएस संदेश सीमा</string>
   <string name="sms_security_check_limit_summary">ऐप बिना पुष्टीकरण की आवश्यकता पड़े 1 मिनट में %d संदेश भेज सकते हैं</string>
@@ -221,22 +252,33 @@
   <string name="block_notifications_title">अधिसूचनाओं को फ़िल्टर करें</string>
   <string name="block_notifications_summary">नज़रंदाज़ की गई अधिसूचनाओं और फ़िल्टरों को प्रबंधित करें</string>
   <string name="no_filters_title">कोई फ़िल्टर सेट नहीं किए गए हैं</string>
+  <!-- CM Updater -->
   <string name="cmupdate_settings_title">सियानोजेनमोड अद्यतन</string>
+  <!-- Settings switch for updating Cyanogen recovery -->
   <string name="update_recovery_title">सियानोजेनमेड रिवकवरी अद्यतन</string>
   <string name="update_recovery_summary">रिकवरी को सिस्टम अद्यतनों से अद्यतित करें</string>
   <string name="update_recovery_on_warning">सूचना: जब इस सुविधा को सक्षम किया जाता है, आपकी स्थापित रिकवरी को चल रहे प्रचालन तंत्र में शामिल वर्तमान संस्करण से प्रतिस्थापित किया जाएगा।\n\nआपकीरिकवरी को आपके सिस्टम के अद्यतनों के साथ अद्यतित किया जाएगा, ताकि भावी संस्करणों की संगतता बनी रहे।\n\nक्या आप इस सुविधा को सक्षम करना चाहते हैं?</string>
   <string name="update_recovery_off_warning">चेतावनी: यदि इस सुविधा को अक्षम किया जाए, तो आपकी स्थापित रिकवरी को प्रचालन तंत्र के अद्यतनों के साथ अद्यतित नहीं किया जाएगा।\n\nप्रचालन तंत्र के भावी अद्यतन पुरानी पड़ चुकी या मनपसंद रिकवरी संस्करणों के रहते स्थापित नहीं होंगे।\n\nक्या आप सचमुच इस सुविधा को अक्षम करना चाहते हैं?</string>
+  <!-- About phone screen, CyanogenMod version -->
   <string name="mod_version">सियानोजेनमोड संस्करण</string>
   <string name="mod_version_default">अज्ञात</string>
+  <!-- About phone screen, Device model -->
   <string name="device_model">डिवाइस मॉडेल</string>
+  <!-- About phone screen, Device name -->
   <string name="device_name">डिवाइस का नाम</string>
+  <!-- About phone screen, build date -->
   <string name="build_date">बिल्ड तिथि</string>
+  <!-- About phone screen, service state -->
   <string name="phone_service_state">आवाज़: <xliff:g id="voice_state">%1$s</xliff:g>, डेटा: <xliff:g id="data_state">%2$s</xliff:g></string>
+  <!--- Tap To Wake -->
   <string name="double_tap_to_wake_title">जगाने के लिए दो बार टैप करें</string>
   <string name="double_tap_to_wake_summary">डिस्प्ले को चालू करने के लिए स्क्रीन पर दो बार टैप करें</string>
+  <!-- Proximity wake -->
   <string name="proximity_wake_title">ग़लती से जगाए जाने को रोकें</string>
   <string name="proximity_wake_summary">स्क्रीन को जगाने से पहले निकटता सेंसर को जाँचें</string>
+  <!-- Privacy Settings Header item -->
   <string name="privacy_settings_cyanogenmod_title">गोपनीयता</string>
+  <!-- Privacy Guard -->
   <string name="privacy_guard_default_title">डिफ़ॉल्ट रूप से सक्षम</string>
   <string name="privacy_guard_default_summary">नए स्थापित ऐपों के लिए डिफ़ॉल्ट रूप से सक्षम करें</string>
   <string name="privacy_guard_manager_title">गोपनीयता रक्षक</string>
@@ -248,29 +290,43 @@
   <string name="privacy_guard_help_text">इस स्क्रीन में आप ऐपों को टैप करके चुन सकते हैं कि किन ऐपों में गोपनीयता कवच सक्रिय होना चाहिए। चयनित ऐप आपकी निजी डेटा तक नहीं पहुँच सकेंगे, जैसे आपके संपर्क, संदेश या कॉल लॉग। किसी ऐप की प्रविष्टि को दीर्घ प्रेस करने से उस ऐप का विवरण स्क्रीन खुलेगा।\n\nडिफ़ॉल्ट रूप से अंतःस्थापित ऐपों को नहीं दिखाया जाता है, पर उचित मेनू विकल्प चुनकर उन्हें प्रत्यक्ष कर सकते हैं।</string>
   <string name="privacy_guard_manager_show_system_apps">अंतःस्थापित ऐपों को दिखाएँ</string>
   <string name="app_ops_btn_text">बदलें</string>
+  <!-- Increasing ring tone volume -->
   <string name="increasing_ring_volume_option_title">बढ़ता हुआ रिंगटोन वोल्यूम</string>
   <string name="increasing_ring_min_volume_title">वोल्यूम को शुरू करें</string>
   <string name="increasing_ring_ramp_up_time_title">समय को बढ़ाएँ</string>
+  <!-- Advanced reboot options -->
   <string name="advanced_reboot_title">उन्नत रीबूट</string>
   <string name="advanced_reboot_summary">अनलॉक करने पर, पावर मेनू में रिवकवरी, बूटलोडर या सॉफ़्ट बूट में रीबूट करने के लिए विकल्प शामिल करें</string>
+  <!-- Setting checkbox title for Whether to enable Android debugging support on the phone. -->
   <string name="enable_adb_cm">ऐंड्रोइड डीबगिंग</string>
+  <!-- Setting checkbox summary for Whether to enable Android debugging support on the phone -->
   <string name="enable_adb_summary_cm">ऐंड्रोइड डीबग ब्रिज (एडीबी) इंटरफ़ेस को सक्षम करें</string>
+  <!-- Android debugging over WiFi -->
   <string name="adb_over_network">नेटवर्क पर एडीबी</string>
   <string name="adb_over_network_summary">नेटवर्क इंटरफ़ेसों पर (वाई\u2011फ़ाई, यूएसबी नेटवर्क) नेटवर्क पर टीसीपी/आईपी डीबगिंग को सक्षम करें। यह सेटिंग रीबूट करने पर रीसेट होती है</string>
+  <!-- Warning for Adb over Network -->
   <string name="adb_over_network_warning">चेतावनी: जब नेटवर्क पर एडीबी को सक्षम किया जाता है, सभी कनेक्टेड नेटवर्कों में आपके फ़ोन में घुसपैठ हो सकती है।\n\nइस सुविधा का उपयोग केवल तब करें जब आप भरोसेमंद नेटवर्कों से जुड़े हैं।\n\nक्या आप इस सुविधा को सचमुच सक्षम करना चाहते हैं?</string>
+  <!-- Setting checkbox summary for displaying USB debugging notification -->
   <string name="adb_notify">डीबगिंग सूचना</string>
   <string name="adb_notify_summary">जब यूएसबी या नेटवर्क डीबगिंग सक्षम हो, तो सूचना प्रदर्शित करें</string>
+  <!-- Hostname setting -->
   <string name="device_hostname">उपकरण मेजबान नाम</string>
+  <!-- Development shortcut -->
   <string name="development_shortcut_title">विकास शॉटकट</string>
   <string name="development_shortcut_summary">हाल के ऐप सूची में ऐप प्रबंधन शॉटकटों को सक्षम करें</string>
+  <!-- tap-to-sleep -->
   <string name="double_tap_to_sleep_title">निद्रा के लिए दो बार टैप करें</string>
   <string name="double_tap_to_sleep_summary">डिस्प्ले को बंद करने के लिए स्थिति पट्टी पर दो बार टैप करें</string>
+  <!-- Turn on display when power connected; turn off display when power disconnected -->
   <string name="wake_when_plugged_or_unplugged_title">प्लग करने पर जागना</string>
   <string name="wake_when_plugged_or_unplugged_summary">पावर स्रोत से कनेक्ट करते समय या उससे डिसकनेक्ट करते समय स्क्रीन को चालू करें</string>
+  <!-- Kill app long-press back -->
   <string name="kill_app_longpress_back">ऐप के पीछे बटन को मृत करें</string>
   <string name="kill_app_longpress_back_summary">पीछे बटन को देर तक दबाकर अग्रभूमि ऐप को मृत करें</string>
+  <!-- Buttons - Enable navbar -->
   <string name="disable_navkeys_title">ऑन-स्क्रीन नेविगेशन पट्टी को सक्षम करें</string>
   <string name="disable_navkeys_summary">ऑ-स्क्रीन नेविगेशन पट्टी को सक्षम करें और हार्डवेयर बटनों को अक्षम करें</string>
+  <!-- Navigation Bar -->
   <string name="navigation_bar_category">नेविगेशन पट्टी</string>
   <string name="navigation_bar_left_title">वाम-हस्त मोड</string>
   <string name="navigation_bar_left_summary">लैंडस्केप मोड में नेविगेशन पट्टी को स्क्रीन के बाईं तरफ रखें</string>
@@ -284,11 +340,13 @@
   <string name="navigation_bar_arrow_keys_summary">टाइप करते समय दाएँ और बाएँ कर्सर बटनों को प्रदर्शित करें। आईएमई स्विचर को रद्द कर देगा।</string>
   <string name="navigation_bar_recents_title">हाल के दीर्घ प्रेस कार्य</string>
   <string name="header_category_personalization">निजीकरण</string>
+  <!-- Status bar -->
   <string name="status_bar_title">स्थिति पट्टी</string>
   <string name="status_bar_toggle_brightness">चमक नियंत्रण</string>
   <string name="status_bar_toggle_brightness_summary">स्थिति पट्टी पर स्लाइड करके चमक को समायोजित करें</string>
   <string name="status_bar_notif_count_title">अधिसूचना गिनती दिखाएँ</string>
   <string name="status_bar_notif_count_summary">लंबित अधिसूचनाओं की गिनती दिखाएँ</string>
+  <!-- Status bar - Clock -->
   <string name="status_bar_clock_style_title">घड़ी शैली</string>
   <string name="status_bar_clock_style_right">दायाँ</string>
   <string name="status_bar_clock_style_left">बायाँ</string>
@@ -299,22 +357,26 @@
   <string name="status_bar_am_pm_normal">सामान्य</string>
   <string name="status_bar_am_pm_small">छोटा</string>
   <string name="status_bar_am_pm_hidden">छिपा</string>
+  <!-- Status bar - Battery -->
   <string name="status_bar_battery_style_title">बैटरी स्थिति शैली</string>
   <string name="status_bar_battery_style_icon_portrait">आइकन पोर्ट्रेट</string>
   <string name="status_bar_battery_style_icon_landscape">आइकन लैंडस्केप</string>
   <string name="status_bar_battery_style_circle">वृत्त</string>
   <string name="status_bar_battery_style_text">पाठ</string>
   <string name="status_bar_battery_style_hidden">छिपा हुआ</string>
+  <!-- Status bar - Battery percentage -->
   <string name="status_bar_battery_percentage_title">बैटरी प्रतिशत</string>
   <string name="status_bar_battery_percentage_default">छिपा हुआ</string>
   <string name="status_bar_battery_percentage_text_inside">आइकन के अंदर</string>
   <string name="status_bar_battery_percentage_text_next">आइकन के बगल में</string>
+  <!-- Notification light dialogs -->
   <string name="edit_light_settings">प्रकाश सेटिंग को संपादित करें</string>
   <string name="pulse_speed_title">पल्स लंबाई और तीव्रता</string>
   <string name="default_time">सामान्य</string>
   <string name="custom_time">मनपसंद</string>
   <string name="dialog_delete_title">हटाएँ</string>
   <string name="dialog_delete_message">चुने गए आइटम को निकालें?</string>
+  <!-- Values for the notification light pulse spinners -->
   <string name="pulse_length_always_on">हमेशा चालू</string>
   <string name="pulse_length_very_short">बहुत छोटा</string>
   <string name="pulse_length_short">छोटा</string>
@@ -326,12 +388,14 @@
   <string name="pulse_speed_normal">सामान्य</string>
   <string name="pulse_speed_slow">धीमा</string>
   <string name="pulse_speed_very_slow">बहुत धीमा</string>
+  <!-- Battery light settings -->
   <string name="battery_light_title">बैटरी बत्ती</string>
   <string name="battery_low_pulse_title">बैटरी कम हो तो पल्स करें</string>
   <string name="battery_light_list_title">रंग</string>
   <string name="battery_light_low_color_title">बैटरी कम</string>
   <string name="battery_light_medium_color_title">चार्ज हो रही है</string>
   <string name="battery_light_full_color_title">पूरी तरह से चार्ज हो चुकी है</string>
+  <!-- Lights settings screen, notification light settings -->
   <string name="notification_light_title">अधिसूचना बत्ती</string>
   <string name="notification_light_general_title">सामान्य</string>
   <string name="notification_light_applist_title">ऐप</string>
@@ -340,19 +404,26 @@
   <string name="notification_light_default_value">डिफ़ॉल्ट</string>
   <string name="notification_light_missed_call_title">चूके कॉल</string>
   <string name="notification_light_voicemail_title">ध्वनि डाक</string>
+  <!-- Sound & notification > Sound section: Title for the option defining the default notification ringtone. [CHAR LIMIT=30] -->
   <string name="notification_ringtone_title_cm">अधिसूचना टोन</string>
+  <!-- Launch music player when headset is connected -->
   <string name="headset_connect_player_title">संगीत ऐप को चालू करें</string>
   <string name="headset_connect_player_summary">जब हेटसेट कनेक्ट किया जाए, तो डिफ़ॉल्ट संगीत ऐप को चालू करें</string>
+  <!-- Whether to display IME switcher notifcation -->
   <string name="ime_switcher_notify">चयनकर्ता आइकन</string>
   <string name="ime_switcher_notify_summary">इन्पुट विधि चयनकर्ता आइकन को दिखाएँ</string>
+  <!-- Per app controls for LP keyguard notifications -->
   <string name="app_notification_show_on_keyguard_title">लॉक स्क्रीन पर दिखाएँ</string>
   <string name="app_notification_show_on_keyguard_summary">इस ऐप की अधिसूचनाओं को लॉक स्क्रीन पर दिखाएँ</string>
   <string name="app_notification_no_ongoing_on_keyguard_title">लॉक स्क्रीन पर बने रहने वाली अधिसूचनाओं को अक्षम करें</string>
   <string name="app_notification_no_ongoing_on_keyguard_summary">इस ऐप की अधिसूचनाओं को कभी भी लॉक स्क्रीन पर नहीं दिखाएँ</string>
+  <!-- High touch sensitivity -->
   <string name="high_touch_sensitivity_title">उच्च स्पर्श संवेदनशीलता</string>
   <string name="high_touch_sensitivity_summary">स्पर्श स्क्रीन संवेदनशीलता को बढ़ाएँ ताकि दस्ताने पहने हुए हाथ से उसका उपयोग किया जा सके</string>
+  <!-- Touchscreen hovering -->
   <string name="touchscreen_hovering_title">स्पर्श स्क्रीन मँडराना</string>
   <string name="touchscreen_hovering_summary">यह आपको वेब ब्राउसरों, दूरस्थ डेस्कटॉपों, आदि में स्क्रीन को माउस की तरह मँडराने देता है</string>
+  <!-- App ops -->
   <string name="app_ops_summaries_coarse_location">असटीक स्थान</string>
   <string name="app_ops_summaries_fine_location">सटीक स्थान</string>
   <string name="app_ops_summaries_gps">जीपीएस</string>
@@ -467,6 +538,7 @@
   <string name="app_ops_labels_data_change">डेटा परिवर्तन</string>
   <string name="app_ops_labels_wake_up">जागें</string>
   <string name="app_ops_labels_su">मूल पहुँच</string>
+  <!-- App ops categories -->
   <string name="app_ops_categories_location">स्थान</string>
   <string name="app_ops_categories_personal">व्यक्तिगत</string>
   <string name="app_ops_categories_messaging">संदेशन</string>
@@ -474,10 +546,12 @@
   <string name="app_ops_categories_device">उपकरण</string>
   <string name="app_ops_categories_bootup">बूटअप</string>
   <string name="app_ops_categories_su">मूल पहुँच</string>
+  <!-- App ops permissions -->
   <string name="app_ops_permissions_allowed">अनुमति है</string>
   <string name="app_ops_permissions_ignored">नज़रंदाज़ किया गया</string>
   <string name="app_ops_permissions_always_ask">हमेशा पूछें</string>
   <string name="ok">ठीक है</string>
+  <!-- Profiles -->
   <string name="profile_menu_delete_title">हटाएँ</string>
   <string name="profile_action_none">अपरिवर्तित छोड़ें</string>
   <string name="profile_action_system">सिस्टम डिफ़ॉल्ट</string>
@@ -495,6 +569,7 @@
   <string name="profile_setup_actions_title_config">कार्यों को रीकॉन्फ़िगर करें</string>
   <string name="profile_appgroups_manage">ऐप समूह</string>
   <string name="profile_appgroup_manage">ऐप समूह को प्रबंधित करें</string>
+  <!-- Title for application group setting screen -->
   <string name="profile_appgroups_title">ऐप समूह</string>
   <string name="profile_new_appgroup">नया ऐप समूह</string>
   <string name="profile_delete_appgroup">इस ऐप समूह को हटा दें?</string>
@@ -502,12 +577,14 @@
   <string name="profile_appgroup_name_title">नाम</string>
   <string name="duplicate_appgroup_name">डुप्लिकेट ऐप समूह नाम।</string>
   <string name="profile_app_delete_confirm">इस ऐप को निकाल दें?</string>
+  <!-- Profile Settings sound modes labels -->
   <string name="sound_mode">अधिसूचना मोड</string>
   <string name="ringer_mode">रिंग मोड</string>
   <string name="lights_mode">प्रकाश मोड</string>
   <string name="vibrate_mode">कंपन मोड</string>
   <string name="choose_soundtone">अधिसूचना मोड चुनें</string>
   <string name="choose_ringtone">रिंगटोन चुनें</string>
+  <!-- Sound settings screen, setting option name to pick ringtone (a list dialog comes up)-->
   <string name="soundtone_title">अधिसूचना टोन</string>
   <string name="no_bluetooth_triggers">कोई ब्लूटूथ उपकरण युग्मित नहीं हैं।\n\nट्रिगरों को कॉन्फ़िगर करने से पहले ब्लूटूथ उपकरण को युग्मित करने के लिए टैप करें।</string>
   <string name="no_wifi_triggers">कोई वाी\u2011फ़ाई पहुँच बिंदु कॉन्फ़िगर नहीं किया गया है।\nट्रिगरों क कॉन्फ़िगर करने से पहले वाई\u2011फ़ाई को कनेक्ट करने के लिए टैप करें।</string>
@@ -515,30 +592,40 @@
   <string name="no_triggers_configured_nfc">नया एनएफसी ट्रिगर सेटअप करने के लिए टैप करें।</string>
   <string name="profile_setup_setup_triggers_description">कृपया इस प्रोफ़ािल को सक्रिय करनेवाले ट्रिगरों को चुनें।</string>
   <string name="profile_setup_actions_description">अब इसे कॉन्फ़िगर करें कि जब आपकी प्रोफ़ािल को सक्रिय किया जाता है, तब क्या होता है</string>
+  <!-- App ops detail -->
   <string name="app_ops_entry_summary"><xliff:g id="op">%1$s</xliff:g> (प्रयुक्त <xliff:g id="count">%2$s</xliff:g>)</string>
   <string name="app_ops_allowed_count">अनुमत <xliff:g id="count" example="2 times">%s</xliff:g></string>
   <string name="app_ops_ignored_count">अस्वीकृत <xliff:g id="count" example="2 times">%s</xliff:g></string>
   <string name="app_ops_both_count">अनुमत <xliff:g id="count">%1$s</xliff:g>, अस्वीकृत <xliff:g id="count">%2$s</xliff:g></string>
+  <!-- App ops menu options -->
   <string name="app_ops_show_user_apps">उपयोगकर्ता ऐप दिखाएँ</string>
   <string name="app_ops_show_system_apps">अंतःस्थापित ऐप दिखाएँ</string>
   <string name="app_ops_reset_counters">अनुमति दें/नहीं दें काउंटरों को रीसेट करें</string>
   <string name="app_ops_reset_confirm_title">काउंटर रीसेट की पुष्टि करें</string>
   <string name="app_ops_reset_confirm_mesg">क्या आपको पूरा यकीन है कि आप काउंटरों को रीसेट करना चाहते हैं?</string>
+  <!-- Font size sample text. This needs to be a very short string, as it is shown in
+    multiple font sizes in a limited amount of space. -->
   <string name="font_size_sample">नमूना</string>
+  <!-- Volume settings - Volume adjustment sound -->
   <string name="volume_adjust_sounds_title">वोल्यूम समायोजन ध्वनियाँ</string>
+  <!-- Hardware tunables - Vibrator intensity -->
   <string name="vibrator_intensity_title">कंपक तीव्रता</string>
   <string name="vibrator_warning">%1$d से बड़े मान उचित नहीं रहेंगे</string>
+  <!-- Hardware tunables - Color calibration -->
   <string name="color_calibration_title">रंग अंशांकन</string>
   <string name="color_calibration_summary">ऑन-स्क्रीन रंगों को अंशांकित करें</string>
   <string name="color_red_title">लाल</string>
   <string name="color_green_title">हरा</string>
   <string name="color_blue_title">नीला</string>
+  <!-- Hardware tunables - Gamma calibration -->
   <string name="gamma_tuning_title_head">गामा अंशांकन</string>
   <string name="gamma_tuning_summary_head">गामा मानों को समायोजित करें</string>
   <string name="gamma_tuning_control_set_header">समूह <xliff:g id="index">%d</xliff:g></string>
+  <!-- used if no name provided by overlay -->
   <string name="gamma_tuning_contrast">कोंट्रास्ट</string>
   <string name="gamma_tuning_brightness">चमक</string>
   <string name="gamma_tuning_saturation">संतृप्ति</string>
+  <!-- Display settings.  Screen color. -->
   <string name="screencolor">स्क्रीन का रंग</string>
   <string name="screencolor_summary">स्क्रीन के रंग, संतृत्पि, कोंट्रास्ट या तीव्रता को समायोजित करें</string>
   <string name="custom_screencolor">मनपसंद स्क्रीन रंग</string>
@@ -556,26 +643,47 @@
   <string name="screen_color_setting_vivid">सस्पष्ट</string>
   <string name="screen_color_setting_custom">मनपसंद</string>
   <string name="settings_reset_button">रीसेट करें</string>
+  <!-- Message when bluetooth dialog for pin entry is showing  when HIGH security enabled-->
   <string name="bluetooth_enter_pin_msg_hs">इसके साथ युग्मित होने के लिए:<xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g>उपकरण के आवश्यक पिन (16 अंक या इससे अधिक) को टाइप करें:</string>
+  <!-- Bluetooth settings.  The user-visible string that is used whenever referring to the DUN profile. -->
   <string name="bluetooth_profile_dun">डायल अप नेटवर्क पहुँच</string>
+  <!-- Bluetooth settings.  The user-visible string that is used whenever referring to the SAP profile. -->
   <string name="bluetooth_profile_sap">सिम पहुँच</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the DUN checkbox preference when DUN is connected. -->
   <string name="bluetooth_dun_profile_summary_connected">डीयूएन सर्वर के साथ जुड़ गया है</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the pbap checkbox preference when pbap is connected. -->
   <string name="bluetooth_pbap_profile_summary_connected">पीबीएपी सर्वर के साथ जुड़ा है</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the SAP checkbox preference when SAP is connected. -->
   <string name="bluetooth_sap_profile_summary_connected">सिम पहुँच सर्वर के सेाथ जुड़ गए</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the DUN checkbox preference that describes how checking it will set the DUN profile as preferred. -->
   <string name="bluetooth_dun_profile_summary_use_for">डायल-अप नेटवर्क पहुँच के लिए उपयोग करें</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the pbap checkbox preference that describes how checking it will set the pbap profile as preferred. -->
   <string name="bluetooth_pbap_profile_summary_use_for">संपर्क साझाकरण के लिए उपयोग करें</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the SAP checkbox preference that describes how checking it will set the SAP profile as preferred. -->
   <string name="bluetooth_sap_profile_summary_use_for">सिम पहुँच के लिए उपयोग करें</string>
+  <!-- Bluetooth settings.  A checkbox to set if we should accept all the file types regardless of their presence in MIME type whitelist -->
   <string name="bluetooth_accept_all_files">सभी फ़ाइल प्रकारों को स्वीकार करें</string>
+  <!-- SIM lock settings title  [CHAR LIMIT=40] -->
   <string name="sim_lock_settings_cm">सिम/आरयूआईएम कार्ड लॉक सेटिंग</string>
+  <!-- Security & location settings screen, setting option name  [CHAR LIMIT=40] -->
   <string name="sim_lock_settings_category_cm">सिम/आरयूआईएम कार्ड लॉक सेट अप करें</string>
+  <!-- Security & location settings screen, section heading for settings related to sim card locking  [CHAR LIMIT=40] -->
   <string name="sim_lock_settings_title_cm">सिम/आरयूआईएम कार्ड लॉक</string>
+  <!-- SIM card lock settings screen, SIM PIN dialog message when PIN disable fails-->
   <string name="sim_pin_disable_failed">पिन को अक्षम नहीं कर सकते।</string>
+  <!-- SIM card lock settings screen, SIM PIN dialog message when PIN enable fails-->
   <string name="sim_pin_enable_failed">पिन को सक्षम नहीं कर सके।</string>
+  <!-- SIM password can't be changed as SIM LOCK is not enabled: -->
   <string name="sim_pin_change_failed_enable_sim_lock">सिम/आरयूआईएम पिन बदलने के लिए, पहले सिम/आरयूआईएम लॉक को पहले सक्षम करें।</string>
+  <!-- SIM lock can't be changed - not supported -->
   <string name="sim_enable_disable_lock_not_supported">सिम/आरयूआईएम लॉक को कार्ड समर्थित नहीं करता है।</string>
+  <!-- SIM card lock settings screen, toast displayed on wrong PIN1: -->
   <string name="sim_pin_attempts">\nबचे प्रयास:</string>
+  <!-- SIM card lock settings screen, toast displayed on PIN1 enable: -->
   <string name="sim_pin_enabled">पिन1 सक्षम</string>
+  <!-- SIM card lock settings screen, toast displayed on PIN1 disable: -->
   <string name="sim_pin_disabled">पिन1 अक्षम</string>
+  <!-- string resources for USB OTG & UICC features -->
   <string name="storage_usb">यूएसबी भंडारण</string>
   <string name="storage_uicc">यूआईसीसी भंडारण</string>
   <string name="sdcard_eject" product="default">एसडी कार्ड को अनमाउंट करें</string>
@@ -596,7 +704,9 @@
   <string name="uicc_format_summary" product="default">यूआईसीसी भंडारण के सभी डेटा को मिटाता है, जैसे संगीत और फ़ोटो</string>
   <string name="uicc_mount" product="default">ययययूआईसीसी भंडारण को माउंट करें</string>
   <string name="uicc_insert_summary" product="default">माउंट करने के लिए यूआईसीसी भंडारण डालें</string>
+  <!-- Title of dialog asking user to confirm before enabling UMS. [CHAR LIMIT=48] -->
   <string name="usb_settings_enable_ums_title">व्यापक भंडारण को सक्षम करें?</string>
+  <!-- Message of dialog asking user to confirm before enabling UMS. [CHAR LIMIT=NONE] -->
   <string name="usb_settings_enable_ums_message">सिस्टम के घटक और ऐप इस पर निर्भर करते हैं कि प्राथमिक भंडारण हमेशा उपलब्ध रहेगा। यह सुविधा इस प्रकार्यता को भंग करता है। ज़ोर देकर सिफ़ारिश की जाती है कि इसके बजाए एमटीपी का उपयोग करें। क्या आपको पूरा यकीन है कि आप विशाल भंडारण को सक्षम करना चाहते हैं?</string>
   <string name="dlg_confirm_sdcard_unmount_title" product="default">एसडी कार्ड को अनमाउंट करें?</string>
   <string name="dlg_confirm_usb_unmount_title" product="default">यूएसबी भडारण को अनमाउंट कर दें?</string>
@@ -622,18 +732,27 @@
   <string name="sdcard_media_format_gesture_explanation" product="default">आपको अपना अनलॉक पैटर्न बनाकर इसकी पुष्टि करनी होगी कि आप एसडी कार्ड को मिटाना चाहते हैं।</string>
   <string name="usb_media_format_gesture_explanation" product="default">आपको अपना अनलॉक पैटर्न चित्रित करके इसकी पुष्टि करनी होगी कि आप यूएसबी भंडारण को मिटाना चाहते हैं।</string>
   <string name="uicc_media_format_gesture_explanation" product="default">आपको अपना अनलॉक पैटर्न चित्रित करके इसकी पुष्टि करनी होगी कि आप यूआईसीसी भंडारण को मिटाना चाहते हैं।</string>
+  <!-- Storage menu, label for internal media storage -->
   <string name="internal_sd_format">आंतरिक माध्यम भंडारण को मिटाएँ</string>
   <string name="internal_sd_format_summary">आंतरिक माध्यम भंडारण में मौजूद सभी डेटा को, जैसे संगीत और फ़ोटो, मिटा देगा</string>
+  <!-- Media & phone storage settings screen, label for check box to erase media storage [CHAR LIMIT=30] -->
   <string name="master_clear_desc_erase_internal_storage">\n\nसंगीत, फ़ोटो, और अन्य उपयोगकर्ता डेटा को साफ़ करने के लिए <b>आंतरिक माध्यम भंडारण</b> को मिटाना पड़ेगा।</string>
   <string name="erase_internal_storage">आंतरिक माध्यम भंडारण को मिटाएँ</string>
   <string name="erase_internal_storage_description">आंतरिक माध्यम भंडारण में मौजूद सभी डेटा को, जैसे संगीत या फ़ोटो, मिटा दें</string>
+  <!-- Rescan storage -->
   <string name="storage_rescan_media">भंडारण वॉल्यूम के माध्यम को फिर से स्कैन करें</string>
+  <!-- [CHAR LIMIT=130] Location mode screen, sub category for IZat Location -->
   <string name="location_category_enhanced_location">उन्नत स्थान (आईज़ैट)</string>
+  <!-- [CHAR LIMIT=NONE] App ops settings summary, on main settings screen. If clicked, the user is taken to a settings screen for app operations -->
   <string name="app_ops_settings_summary">ऐप अनुमतियों को देखें या परिवर्तित करें</string>
+  <!-- Setting checkbox summary when device is in Charging mode -->
   <string name="enable_adb_summary_charging">उपकरण चार्जिंग मोड में है, यूएसबी डीबगिंग अक्षम है</string>
+  <!-- Title of checkbox setting that enable quickboot. [CHAR LIMIT=32] -->
   <string name="enable_quickboot_title">तेज़बूट मोड को सक्षम करें</string>
+  <!-- Summary of checkbox setting that enable quickboot. [CHAR LIMIT=64] -->
   <string name="enable_quickboot_summary">सामान्य पावर ऑफ़ के स्थान पर उपकरण को तेज़बूट मड में डालें</string>
   <string name="data_usage_tab_slot">सिम <xliff:g id="sub">%d</xliff:g></string>
+  <!-- MultiSim Settings changes-->
   <string name="sim_enabler_title">सिम स्थिति</string>
   <string name="sim_enabler_summary">सिम <xliff:g id="status" example="enabled">%1$s</xliff:g> है</string>
   <string name="sim_enabled">सक्षम</string>
@@ -657,12 +776,19 @@
   <string name="external_storage_turn_off">बाहरी भंडारण को बंद कर दिया गया है</string>
   <string name="stats_collection_title">आँकड़ा संग्रहण</string>
   <string name="stats_collection_summary">इसे सक्षम करने पर आँकड़ा संग्रहण की अनुमति देता है</string>
+  <!-- Category title for Charging sounds (Power state change) specific Settings.
+         [CHAR LIMIT=40] -->
   <string name="power_notifications_category_title">चार्जिंग ध्वनियाँ</string>
+  <!-- Sound settings, Charging sounds enable/disable, setting check box label -->
   <string name="power_notifications_enable_title">सक्षम करें</string>
   <string name="power_notifications_enable_summary">पावर स्रोत के साथ कनेक्य या डिसकनेक्ट करते समय ध्वनि करें</string>
+  <!-- Sound settings, Charging sounds vibrate enable/disable, setting check box label -->
   <string name="power_notifications_vibrate_title">कंपन करें</string>
+  <!-- Sound settings, Charging sounds ringtone selection, preference label -->
   <string name="power_notifications_ringtone_title">अधिसूचना ध्वनि</string>
+  <!-- Sound settings, charging sounds label for ringtone == none -->
   <string name="power_notifications_ringtone_silent">मूक</string>
+  <!-- Voice Wakeup -->
   <string name="voice_wakeup_settings_title">आवाज़ से जगाना</string>
   <string name="voice_wakeup_retrain_title">अपनी आवाज़ को फिर से साधें</string>
   <string name="voice_wakeup_activity_title">किस कार्य को शुरू करना है</string>
@@ -670,23 +796,35 @@
   <string name="picker_activities">गतिविधियाँ</string>
   <string name="select_custom_app_title">मनपसंद ऐप चुनें</string>
   <string name="select_custom_activity_title">मनपसंद गतिविधि चुनें</string>
+  <!-- Battery : Automatic performance profiles -->
   <string name="autoperf_title">प्रति-ऐप प्रोफ़ाइलों को सक्षम करें</string>
   <string name="autoperf_summary">विभिन्न ऐपों के लिए स्वतः ही उचित बैटरी मोड चुनें</string>
   <string name="perf_profile_title">बैटरी मोड</string>
+  <!-- Development : Force high-end graphics -->
   <string name="pref_force_highend_gfx_title">उच्च स्तर के ग्राफ़ित को ज़बर्दस्ती सक्षम करें</string>
   <string name="pref_force_highend_gfx_summary">पारदर्शिता स्थिति/नेविगेशन पट्टी जैसे उच्च स्तरीय दृश्य प्रभावों को ज़बर्दस्ती सक्षम करता है (रीबूट आवश्यक है)</string>
+  <!-- EdgeGesture service -->
   <string name="edge_gesture_service_title">गेश्चर स्पर्श घटनाओं को अवरुद्ध करें</string>
   <string name="edge_gesture_service_summary">नेविगेशन और स्थिति पट्टी गेश्चरों के लिए स्पर्श घटनाएँ ऐपों को नहीं भेजें</string>
+  <!-- CM Legal -->
   <string name="cmlicense_title">सियानोजेनमोड क़ानूनी</string>
   <string name="settings_cmlicense_activity_title">सियानोजेनमोड क़ानूनी</string>
+  <!-- Sizes for pattern lockscreen -->
+  <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
   <string name="lockpattern_settings_enable_error_path_title">पैटर्न त्रुटि दिखाएँ</string>
+  <!-- Whether the dots will be drawn when using the lockscreen pattern -->
   <string name="lockpattern_settings_enable_dots_title">पैटर्न बिंदु दिखाएँ</string>
+  <!-- Whether the keyguard will directly pass to password entry -->
+  <!-- Whether the keyguard will directly pass to pattern view -->
+  <!-- Whether the keyguard will directly pass to PIN entry -->
+  <!-- Screen security -->
   <string name="unlock_quick_unlock_control_title">तेज़ अनलॉक</string>
   <string name="unlock_quick_unlock_control_summary">जब सही पिन/पासवर्ड दर्ज किया जाए तो अपने आप ही अनलॉक कर दें</string>
   <string name="unlock_scramble_pin_layout_title">विन्यास को बेतरतीब करें</string>
   <string name="unlock_scramble_pin_layout_summary">उपकरण को अनलॉक करते समय पिन विन्यास को बेतरतीब कर दें</string>
   <string name="link_volume_option_title">रिंगटोन और अधिसूचना वोल्यूमों को जोड़ें</string>
   <string name="notification_volume_option_title">अधिसूचना वोल्यूम</string>
+  <!-- Notification drawer -->
   <string name="notification_drawer_title">अधिसूचना दराज़</string>
   <string name="quick_pulldown_title">तेज़ पुलडाउन</string>
   <string name="quick_pulldown_summary">स्थिति पट्टी के किनारे का %1$s तेज़ सेटिंग को पुल डाउन करता है</string>
@@ -695,6 +833,7 @@
   <string name="quick_pulldown_off">बंद</string>
   <string name="quick_pulldown_left">बायाँ</string>
   <string name="quick_pulldown_right">दायाँ</string>
+  <!-- Weather in status bar header -->
   <string name="status_bar_show_weather_title">मौसम दिखाएँ</string>
   <string name="status_bar_show_weather_summary">तेज़ सेटिंग पटल के ऊपर मौसम दिखाएँ</string>
   <string name="qs_category_title">तेज़ सेटिंग पटल</string>
@@ -735,17 +874,26 @@
   <string name="qs_advanced_location_title">उन्नत स्थान सेटिंग</string>
   <string name="qs_advanced_location_summary">तेज़ सेटिंग में स्थान के लिए उन्नत सेटिंग को सक्षम करें</string>
   <string name="sim_no_number_set">कोई भी नंबर निर्दिष्ट नहीं किया गया है</string>
+  <!-- Gesture Settings -->
+  <!-- Settings main menu entry -->
   <string name="gesture_settings_title">गेश्चर</string>
+  <!-- Themes Settings -->
+  <!-- Settings main menu entry -->
   <string name="themes_settings_title">थीम</string>
+  <!-- WiFi Ad-Hoc mode -->
   <string name="wifi_mode">मोड</string>
   <string name="wifi_mode_ibss">तदर्थ (आईबीएसएस) नेटवर्क</string>
   <string name="wifi_mode_ibss_short">तदर्थ</string>
   <string name="wifi_ibss_freq_title">चैनेल / आवृत्ति</string>
   <string name="wifi_channel">चैनल</string>
   <string name="wifi_mhz">MHz</string>
+  <!-- WiFi auto-configure priorities -->
   <string name="wifi_auto_config_priorities">स्वचालित प्राथमिकता</string>
+  <!-- About phone settings screen, setting option dialog title to show regulatory information [CHAR LIMIT=25] -->
+  <!-- SAR information -->
   <string name="maximum_head_level">शीर्ष: %1$s W/kg</string>
   <string name="maximum_body_level">धड़: %1$s W/kg</string>
+  <!-- IC Codes -->
   <string name="ic_code_model">मॉडेल: %1$s</string>
   <string name="ic_code_full">आईसी: %1$s</string>
   <string name="power_menu_expanded_desktop">विस्तारित डेस्कटॉप</string>
@@ -765,17 +913,21 @@
   <string name="lockscreen_message">लॉक स्क्रीन शॉटकट को फिर से निर्दष्ट करने के लिए बाएँ या दाएँ के आइकन को टैप करें।</string>
   <string name="lockscreen_choose_action_title">कार्य चुनें</string>
   <string name="lockscreen_visualizer_title">संगीत दृश्यांकक को प्रदर्शित करें</string>
+  <!-- WhisperPush -->
   <string name="whisperpush_title">विस्परपुश</string>
   <string name="whisperpush_summary">सुरक्षित एसएमएस सेटिंग को प्रबंधित करें</string>
   <string name="navigation_ring_title">नेविगेशन छल्ला लक्ष्य</string>
   <string name="navigation_ring_message">संपादन के लिए नेविगेशन छल्ले को खोलने के लिए संपादन आइकन को टैप करें।\n\nकिसी लक्ष्य के व्यवहार को कॉन्फ़िगर करने के लिए उसे चुनें।\n\nअपने परिवर्तनों को सहेजने के लिए \'\u2713\' आइकन को टैप करें, या सेटिंग को डिफ़ॉल्ट पर रीसेट करने के लिए \'डिफ़ॉल्ट बहाल करें\' को टैप करें।</string>
+  <!-- Display & Lights screen, setting options for LCD density -->
   <string name="lcd_density">एलसीडी घनत्व</string>
   <string name="dialog_title_lcd_density">एलसीडी घनत्व</string>
   <string name="lcd_density_value_format">%d डीपीआई</string>
   <string name="lcd_density_default_value_format">%d डीपीआई (डिफ़ॉल्ट)</string>
   <string name="restarting_ui">यूआई को फिर से शुरू कर रहे हैं\u2026</string>
+  <!-- Stylus Icon -->
   <string name="stylus_icon_enabled_title">लेखनी का उपयोग करते समय आइकन दिखाएँ</string>
   <string name="stylus_icon_enabled_summary">लेखनी से मँडराते या चित्र बनाते समय पोइंटर आइकन दिखाएँ</string>
+  <!-- Stylus Gestures -->
   <string name="gestures_settings_title">लेखनी गेश्चर</string>
   <string name="category_spen_title">लेखनी गेश्चर</string>
   <string name="enable_subcat_title">लेखनी</string>
@@ -788,12 +940,14 @@
   <string name="gestures_down_spen_title_head">नीचे स्वाइप</string>
   <string name="gestures_long_spen_title_head">दीर्घ प्रेस</string>
   <string name="gestures_double_spen_title_head">दुहरा टैप</string>
+  <!-- Gestures Options -->
   <string name="gestures_action_empty">कोई कार्य नहीं</string>
   <string name="gestures_action_home">होम</string>
   <string name="gestures_action_back">पीछे</string>
   <string name="gestures_action_menu">मेनू</string>
   <string name="gestures_action_search">खोज प्रारंभ करें</string>
   <string name="gestures_action_recent">हाल के ऐप</string>
+  <!-- Stylus gestures -->
   <string name="stylus_app_not_installed">%s स्थापित नहीं है</string>
   <string name="advanced">उन्नत</string>
   <string name="advanced_mode_title">उन्नत मोड</string>
@@ -809,6 +963,7 @@
   <string name="lockscreen_settings">लॉक स्क्रीन</string>
   <string name="category_lights">रोशनियाँ</string>
   <string name="power_usage_history_title">बैटरी उपयोग</string>
+  <!-- Show/Hide Search Bar -->
   <string name="recents_show_searchbar">हाल के मेनू में खोज पट्टी को दिखाएँ</string>
   <string name="keywords_recents_show_searchbar">हाल के हाल के अक्षम सक्षम खोज पट्टी को दिखाएँ छिपाएँ खोज पट्टी</string>
   <string name="sim_ringtone_title">सिम %d रिंगटोन</string>
@@ -816,6 +971,7 @@
   <string name="interruptions_ignore_while_media_summary">जब कोई अधिसूचना आए, तो माध्यम प्लेबैक वोल्यूम को कम नहीं करें</string>
   <string name="none_is_silent_title">अलार्मों को कभी भी मूक नहीं करें</string>
   <string name="allow_lights_title">अधिसूचना रोशनी को अनुमति दें</string>
+  <!-- LiveDisplay -->
   <string name="live_display_summary">दिन के समय और परिवेशी स्थितियों के अनुसार स्क्रीन को इष्टतमीकृत करें ताकि पठनीयता बढ़ें और आँखों पर कम दबाव पड़े</string>
   <string name="live_display_mode">डिस्प्ले मोड</string>
   <string name="live_display_color_temperature_title">रंग तापमान</string>
@@ -832,6 +988,8 @@
   <string name="battery_saver_threshold">बैटरी बचत दहलीज सीमा</string>
   <string name="battery_saver_summary">निष्पादन घटाएँ और पृष्ठभूमि डेटा को सीमित करें</string>
   <string name="battery_saver_summary_unavailable">चार्जिंग के समय अनुपलब्ध</string>
+  <!-- Anonymous Statistics #CM -->
+  <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
   <string name="anonymous_statistics_title">सियानोजेनमोड आँकड़े</string>
   <string name="anonymous_statistics_summary">अनाम आँकड़ा रिपोर्टिंग के लिए सहमत होकर सियानोजेनमोड को बेहतर बनाने में मदद करें</string>
   <string name="anonymous_statistics_warning_title">संक्षिप्त परिचय</string>
@@ -840,27 +998,34 @@
   <string name="preview_data_title">डेटा पूर्वावलोकन</string>
   <string name="view_stats_title">आँकड़े देखें</string>
   <string name="anonymous_learn_more">अधिक जानें</string>
+  <!-- Anonymous Statistics - Preview -->
   <string name="preview_id_title">अद्वितीय आईडी</string>
   <string name="preview_device_title">उपकरण</string>
   <string name="preview_version_title">संस्करण</string>
   <string name="preview_country_title">देश</string>
   <string name="preview_carrier_title">वाहक</string>
+  <!-- Heads up -->
   <string name="heads_up_notifications">हेड्स अप</string>
   <string name="summary_heads_up_enabled">पॉप-अप सूचनाएँ सक्षम हैं</string>
   <string name="summary_heads_up_disabled">पॉप-अप सूचनाएँ अक्षम हैं</string>
+  <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
   <string name="master_clear_desc_cm" product="tablet">यह आपके टैबलेट के <b>आंतरिक भंडारण</b>, से सभी डेटा को मिटा देगा, जिसमें ये शामिल हैं:\n\n<li>आपके उपकरण के खाते</li>\n<li>सिस्टम और ऐप डेटा और सेटिंग</li>\n<li>डाउनलोड किए गए ऐप</li></string>
+  <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
   <string name="master_clear_desc_cm" product="default">यह आपके फ़ोन के <b>आंतरिक भंडारण</b> से सभी डेटा को मिटा देगा, जिसमें ये सब शामिल हैं:\n\n<li>आपके उपकरण के खाते</li>\n<li>सिस्टम और ऐप डेटा और सेटिंग</li>\n<li>डाउनलोड किए गए ऐप</li></string>
+  <!-- Killswitch -->
   <string name="lock_to_cyanogen_title">डिवाइस रक्षण</string>
   <string name="lock_to_cyanogen_summary">फ़ैक्टरी रीसेट के बाद भी आपके सियानोजेन ओएस खाता पासवर्ड को आवश्यक बनाएँ</string>
   <string name="lock_to_cyanogen_create_account_msg">आपका उपकरण फ़ैक्टरी रीसेट की स्थिति में भी आपके उपकरण को रक्षित करने के लिए सियानोजेन ओएस खाता पासवर्ड का उपयोग करता है। आपको एक सियानोजेन ओएस खाता निर्मित करना होगा।</string>
   <string name="lock_to_cyanogen_disable_msg">इस सुविधा को अक्षम करने पर यह हो सकता है कि यदि आपका फ़ोन चोरी चला जाए, तो अनधिकृत व्यक्ति आपके फ़ोन का फ़ैक्टरी रीसेट कर सकेंगे। आपके निजी डेटा की रक्षा नहीं हो सकेगी। क्या आप इस सुविधा को अक्षम करना चाहते हैं?</string>
   <string name="lock_to_cyanogen_master_clear_warning">डिवाइस रक्षण सक्षम है। अपने डिवाइस के रीसेटिंग को जारी रखने के लिए कृपया इसे अक्षम करें।</string>
   <string name="bluetooth_pan_profile_summary_use_for_error">कनेक्शन त्रुटि; क्या इस डिवाइस के लिए ब्लूटूथ टेदरिंग को सक्षम किया गया है?</string>
+  <!-- MSIM SIM status -->
   <string name="sim_card_status_title">सिम %d स्थिति</string>
   <string name="sim_card_lock_settings_title">सिम %d लॉक सेटिंग</string>
   <string name="sim_card_summary_empty">सिम नहीं डाला गया है</string>
   <string name="sim_mobile_network_settings_category_title">मोबाइल नेटवर्क सेटिंग</string>
   <string name="sim_mobile_network_settings_title">सिम %d सेटिंग</string>
+  <!-- Factory reset strings -->
   <string name="factory_reset_instructions_title">निजी डेटा और ऐप</string>
   <string name="factory_reset_instructions_summary">यह इस डिवाइस में मौजूद आपके सभी खाते, ऐप, ऐप डेटा और सिस्टम सेटिंग को मिटा देगा</string>
   <string name="factory_reset_personal_content">निजी सामग्री</string>
@@ -871,9 +1036,14 @@
   <string name="factory_reset_erase_sd_card_summary">संगीत और फ़ोटो सहित एसडी कार्ड में मौजूद सभी डेटा को मिटा दें</string>
   <string name="factory_reset_warning_text_reset_now">अभी रीसेट करें</string>
   <string name="factory_reset_warning_text_message">इस उपकरण से आपके सभी खाते, ऐप, ऐप डेटा, और सिस्टम सेटिंग हटा दिए जाएँगे। इसे पलटा नहीं जा सकेगा।</string>
+  <!-- Wi-Fi filters -->
+  <!-- Wi-Fi region code -->
   <string name="wifi_setting_countrycode_title">वाईफाई क्षेत्र कोड</string>
+  <!-- Wi-Fi settings screen, setting summary for setting the wifi frequency band [CHAR LIMIT=50]-->
   <string name="wifi_setting_countrycode_summary">वाईफाई के लिए क्षेत्र कोड निर्दिष्ट करें</string>
+  <!-- Wi-Fi settings screen, error message when the frequency band could not be set [CHAR LIMIT=50]. -->
   <string name="wifi_setting_countrycode_error">क्षेत्र कोड को सेटअप करते समय समस्या आई।</string>
+  <!-- Wi-Fi region countries -->
   <string name="wifi_countrycode_entries_us">अमरीका</string>
   <string name="wifi_countrycode_entries_ca">कनाडा, ताइवान</string>
   <string name="wifi_countrycode_entries_de">जर्मनी</string>
@@ -886,58 +1056,107 @@
   <string name="wifi_countrycode_entries_sg">इजराइल, सिंगापुर</string>
   <string name="wifi_countrycode_entries_br">ब्राज़ील</string>
   <string name="wifi_countrycode_entries_in">भारत</string>
+  <!-- FINGERPRINT -->
+  <!-- Title for preference which sets the unlock. This is only used when the device has
+         a fingerprint sensor , otherwise just "unlock_set_unlock_launch_picker_title" is used -->
   <string name="unlock_set_unlock_launch_picker_title_with_fingerprint">स्क्रीन अनलॉग और उँगलीछाप</string>
+  <!-- Summary for "Configure lockscreen" when security Fingerprint is enabled [CHAR LIMIT=45] -->
   <string name="unlock_set_unlock_mode_fingerprint">अँगुलि छाप</string>
+  <!-- Title for preference that guides the user through creating a fingerprint [CHAR LIMIT=22] -->
   <string name="unlock_set_unlock_fingerprint_title">अँगुलि छाप</string>
+  <!-- List item title to add a new fingerprint in fingerprint list screen -->
   <string name="fingerprint_item_add_new_fingerprint">एक नई अँगुलि छाप जोड़ें</string>
+  <!-- Title for preference in fingerprint lockscreen settings, takes user to fingerprint list -->
   <string name="fingerprint_manage_fingerprints">अँगुलि छापों का प्रबंधन</string>
+  <!-- Summary for preference in fingerprint lockscreen settings, takes user to fingerprint list -->
   <string name="fingerprint_manage_fingerprints_summary">दाखिल की गई अँगुलि छापों में जोड़ें या उनमें से किसी को निकालें</string>
+  <!-- Info explaining the backup lock which is used for fingerprint -->
   <string name="unlock_backup_fingerprint_info_summary">यदि आप उँगली का उपयोग नहीं कर सकते हों, तो आप किस विधि से अनलॉक करना चाहेंगे?</string>
+  <!-- Dialog title for renaming your fingerprint -->
   <string name="fingerprint_dialog_title_rename">अँगुलि छाप को संपादित करें</string>
+  <!-- EditText label for renaming your fingerprint in rename dialog -->
   <string name="fingerprint_dialog_name_label">अँगुलि छाप का नाम</string>
+  <!-- Title for dialog that shows when the user cannot add anymore fingers -->
   <string name="fingerprint_dialog_title_max_fingers_reached">अधिकतम अँगुलि छापों तक पहुँच गए हैं</string>
+  <!-- Message for dialog that shows when the user cannot add anymore fingers -->
+  <!-- Title for number of finger prints enrolled -->
+  <!-- Description for managing fingerprints -->
   <string name="manage_fingerprints_description">उँगलीछाप आपको अपने फ़ोन को तेज़ी से अनलॉक करने और तस्वीरें लेने देती है।</string>
+  <!-- Fingerprint enrollment introduction title -->
   <string name="fingerprint_enrollment_introduction_title">अपने संवेदक को खोजें</string>
+  <!-- Fingerprint enrollment introduction instructions -->
   <string name="fingerprint_enrollment_introduction_instructions">अँगुलि छाप संवेदक आपके फ़ोन के अगले या पिछले भाग में स्थित है।</string>
+  <!-- Fingerprint enrollment scan fingerprint title -->
   <string name="fingerprint_enrollment_scan_title">3 सेकंड के लिए होल्ड करें</string>
+  <!-- Fingerprint enrollment scan fingerprint instructions -->
   <string name="fingerprint_enrollment_scan_instructions">सेटअप शुरू करने के लिए अपनी तर्जनी को अँगुलि छाप संवेदक पर रखें। जब आपको कंपन महसूस हो, अपनी उँगली हटा लें।</string>
+  <!-- Fingerprint enrollment error title during first step only -->
   <string name="fingerprint_enrollment_error_title_wrong_sensor">कृपया फिर से कोशिश करें</string>
+  <!-- Fingerprint enrollment error message -->
   <string name="fingerprint_enrollment_error_message">अपनी उँगली को उँगलीछाप संवेदक पर रखें ताकि यह सुनिश्चित हो सके कि सटीक स्कैन होता है। यह भी सुनिश्चित करें कि आप उसी उँगली का उपयोग कर रहे हैं जिसका आपने पहले किया था। कंपन महसूस होने पर अपनी उँगली उठा लें।</string>
+  <!-- Fingerprint enrollment error instructions -->
   <string name="fingerprint_enrollment_scan_instructions">सेटअप शुरू करने के लिए अपनी तर्जनी को अँगुलि छाप संवेदक पर रखें। जब आपको कंपन महसूस हो, अपनी उँगली हटा लें।</string>
+  <!-- Fingerprint enrollment half way break title -->
   <string name="fingerprint_enrollment_break_title">वर्तमान पकड़ के साथ जारी रखें</string>
+  <!-- Fingerprint enrollment introduction instructions -->
   <string name="fingerprint_enrollment_break_instructions">अपनी छाप के किनारों को पकड़ने के लिए जारी रखें। कंपन महसूस होने पर अपनी उँगली को हटा लें।</string>
+  <!-- Fingerprint enrollment finished title -->
   <string name="fingerprint_enrollment_finished_title">अँगुलि छाप जोड़ी गई।</string>
+  <!-- Fingerprint enrollment finished instructions -->
   <string name="fingerprint_enrollment_finished_message">अब आप अपनी अँगुलि छाप का उपयोग करके अपने स्क्रीन को अनलॉक कर सकते हैं या अपने कैमरे का उपयोग करके सेल्फ़ी ले सकते हैं।</string>
+  <!-- Next button title for finding sensor -->
   <string name="fingerprint_enrollment_found_it_label">मिल गई</string>
+  <!-- Next button title for finding sensor -->
   <string name="fingerprint_enrollment_add_another_label">एक और जोड़ें</string>
+  <!-- Next button title for finding sensor -->
   <string name="fingerprint_enrollment_done_label">हो गया</string>
+  <!-- Wrong fingerprint sensor dialog title -->
   <string name="fingerprint_dialog_title_wrong_sensor">ओ-ओ, यह आपका संवेदक नहीं है</string>
+  <!-- Wrong fingerprint sensor dialog message -->
   <string name="fingerprint_dialog_msg_wrong_sensor">अपने फ़ोन के अगले या पिछले भाग में स्थित अँगुलि छाप संवेदक का उपयोग करें</string>
+  <!-- Failed fingerprint enrollment dialog title -->
   <string name="fingerprint_dialog_title_failed_enrollment">अँगुलि छाप को पढ़ नहीं सके</string>
+  <!-- Failed fingerprint enrollment dialog message -->
   <string name="fingerprint_dialog_msg_failed_enrollment">किसी दूसरी उँगली का उपयोग करके देखें। इस अँगुलि छाप को पढ़ा नहीं जा सका।</string>
+  <!-- Failed fingerprint enrollment button label -->
   <string name="fingerprint_enrollment_restart_label">रीस्टार्ट करें</string>
+  <!-- Successful scan title for first successful scan -->
   <string name="fingerprint_successful_scan_title_first">बढ़िया। अब इसे दुहराएँ</string>
+  <!-- Successful scan title for second to last successful scan -->
   <string name="fingerprint_successful_scan_final">एक बार और</string>
+  <!-- Successful scan title for all other successful scans -->
   <string name="fingerprint_successful_scan_title_1">आप समझ गए। लगे रहें</string>
   <string name="fingerprint_successful_scan_title_2">बढिया। फिर एक बार</string>
   <string name="fingerprint_successful_scan_title_3">शाबाश। इसे जारी रखें</string>
   <string name="fingerprint_successful_scan_title_4">बस कुछ बार और</string>
   <string name="fingerprint_successful_scan_title_5">आप बहुत अच्छा कर रहे हैं! एक बार फिर</string>
   <string name="fingerprint_successful_scan_title_6">बस पहुँच गए</string>
+  <!-- Fingerprint enrollment error titles -->
   <string name="fingerprint_enrollment_error_title_1">ओ-ओ, फिर से कोशिश करें</string>
   <string name="fingerprint_enrollment_error_title_2">माफ़ करें, इसे पकड़ नहीं पाए</string>
   <string name="fingerprint_enrollment_error_title_3">लगता है कुछ ग़लती हुई है</string>
   <string name="fingerprint_enrollment_error_title_4">ओ-ओ, फिर से कोशिश करें</string>
   <string name="fingerprint_enrollment_error_title_5">ओ-ओ, एक त्रुटि हुई</string>
+  <!-- Title for lockscreen settings, on dashboard, that is only used when a device supports
+         the fingerprint feature -->
   <string name="lockscreen_settings_and_fingerprint">स्क्रीन लॉक और उँगली छाप</string>
+  <!-- Menu label for reset the battery stats -->
   <string name="menu_stats_reset">आँकड़े रीसेट करें</string>
+  <!-- Reset stats confirmation dialog's message -->
   <string name="reset_stats_msg">बैटरी इतिहास आँकड़ा रीसेट किया जाने वाला है</string>
+  <!-- Dock battery not present message -->
   <string name="dock_battery_not_present">बैटरी को डॉक करें अनुपस्थित है</string>
+  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging on Dock AC. -->
   <string name="battery_info_status_charging_dock_ac">डॉक एसी पर चार्ज हो रहा है</string>
+  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging over Dock USB. -->
   <string name="battery_info_status_charging_dock_usb">डॉक यूएसबी पर चार्ज हो रहा है</string>
+  <!-- Lock screen setup wizard pattern complexity -->
   <string name="setup_lock_pattern_size_title">पैटर्न की जटिलता</string>
   <string name="setup_lock_pattern_size_details">आप अपने पैटर्न में कितने नोडों का उपयोग करना चाहेंगे? जितने अधिक नोड रहेंगे, पैटर्न उतना ही अधिक जटिल हो सकेगा।</string>
+  <!-- LTO download data over wi-fi only -->
   <string name="lto_download_data_wifi_only">जीपीएस समर्थित डेटा डाउनलोड</string>
   <string name="lto_download_data_wifi_only_on">किसी भी नेटवर्क पर</string>
   <string name="lto_download_data_wifi_only_off">केवल वाईफाई नेटवर्कों पर</string>
+  <!-- Keep screen on strings -->
+  <!-- Contributors cloud activity -->
 </resources>

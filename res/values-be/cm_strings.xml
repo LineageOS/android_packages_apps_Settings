@@ -16,14 +16,19 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
   <plurals name="show_dev_countdown_cm">
     <item quantity="one">Застаўся <xliff:g id="step_count">%1$d</xliff:g> крок для ўлучэння налад для распрацоўнікаў.</item>
     <item quantity="few">Засталося <xliff:g id="step_count">%1$d</xliff:g> кроку для ўлучэння налад для распрацоўнікаў.</item>
     <item quantity="other">Засталося <xliff:g id="step_count">%1$d</xliff:g> крокаў для ўлучэння налад для распрацоўнікаў.</item>
   </plurals>
+  <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
   <string name="show_dev_on_cm">Налады для распрацоўнікаў улучаны!</string>
+  <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
   <string name="show_dev_already_cm">Не патрэбна, налады для распрацоўнікаў ужо ўлучаны.</string>
+  <!-- Launch Dev Tools -->
   <string name="development_tools_title">Прылады распрацоўкі</string>
+  <!-- Setting checkbox title for root access -->
   <string name="root_access">Рэжым суперкарыстальніка</string>
   <string name="root_access_warning_title">Дазволіць выкарыстанне Суперкарыстальніка?</string>
   <string name="root_access_warning_message">Выкарыстанне дадаткамі праў суперкарыстальніка можа быць вельмі небяспечным і ставіць пад пагрозу бяспеку вашай прылады!</string>
@@ -31,10 +36,12 @@
   <string name="root_access_apps">Толькі для дадаткаў</string>
   <string name="root_access_adb">Толькі для ADB</string>
   <string name="root_access_all">Для дадаткаў і ADB</string>
+  <!-- Sound settings screen -->
   <string name="ring_mode_title">Рэжым званка</string>
   <string name="ring_mode_normal">Звычайны</string>
   <string name="ring_mode_vibrate">Вібрацыя</string>
   <string name="ring_mode_mute">Бязгучны</string>
+  <!-- Profiles settings  -->
   <string name="profiles_settings_title">Профілі сістэмы</string>
   <string name="profiles_add">Дадаць</string>
   <string name="profile_settings_title">Профіль</string>
@@ -56,32 +63,43 @@
   <string name="profile_app_group_category_title">Апавяшчэнні</string>
   <string name="profile_app_group_item_instructions">Дадаць ці выдаліць групы</string>
   <string name="profile_app_group_item_instructions_summary">Змена налад апавяшчэнняў для груп дадаткаў у гэтым профілі</string>
+  <!-- Profile mode options. -->
   <string name="profile_entries_on">Укл.</string>
   <string name="profile_entries_off">Выкл.</string>
   <string name="profile_entries_no_override">Пакінуць без змены</string>
+  <!-- Add Profile -->
   <string name="profile_name_title">Назва профілю</string>
   <string name="new_profile_name">&lt;новы профіль&gt;</string>
+  <!-- Rename Dialog  -->
   <string name="rename_dialog_title">Пераназваць</string>
   <string name="rename_dialog_message">Задайце новую назву</string>
   <string name="rename_dialog_hint">Увядзіце назву профілю</string>
+  <!-- Reset Profiles -->
   <string name="profile_reset_title">Скід</string>
   <string name="profile_reset_message">Выдаліць усе профілі і аднавіць налады па змаўчанні?</string>
+  <!-- Profile network mode -->
   <string name="profile_networkmode_2g">Толькі 2G</string>
   <string name="profile_networkmode_3g">Толькі 3G</string>
   <string name="profile_networkmode_4g">LTE</string>
   <string name="profile_networkmode_2g3g">Аўтаабранне 2G ці 3G2G</string>
   <string name="profile_networkmode_2g3g4g">2G/3G/LTE</string>
+  <!-- Profile Config screen PreferenceGroup titles -->
   <string name="profile_volumeoverrides_title">Гучнасць</string>
   <string name="volume_override_summary">Усталяваць у %1$s/%2$s</string>
   <string name="profile_volume_override_checkbox_label">Змяняць гучнасць</string>
+  <!-- Menu item for managing profiles -->
   <string name="profile_profiles_manage">Профілі</string>
   <string name="profile_profile_manage">Кіраванне профілямі</string>
+  <!-- Profile settings screen, section header for settings related to notification profiles -->
   <string name="profile_settings">Налады профілю</string>
   <string name="profile_trigger_connect">Пры падлучэнні</string>
   <string name="profile_trigger_disconnect">Пры адключэнні</string>
   <string name="profile_trigger_notrigger">Не ўплывае на змену профілю</string>
+  <!-- Title for application group setting screen -->
   <string name="profile_applist_title">Дадаткі</string>
+  <!-- Add application dialog box title -->
   <string name="profile_choose_app">Выбар дадатку</string>
+  <!-- Profiles - system settings -->
   <string name="profile_system_settings_title">Налады сістэмы</string>
   <string name="profile_lockmode_title">Блакаванне экрана</string>
   <string name="profile_lockmode_policy_disabled_summary">Гэты параметр профілю адключаны адміністратарам прылады</string>
@@ -91,6 +109,7 @@
   <string name="profile_brightness_title">Яркасць экрана</string>
   <string name="profile_brightness_override_summary">Усталяваць на ўзровень %1$d%%</string>
   <string name="profile_brightness_override_checkbox_label">Змяняць яркасць</string>
+  <!-- Connection override toggles (not all are used at this time ) -->
   <string name="toggleWifi">Wi\u2011Fi</string>
   <string name="toggleWifiAp">Кропка доступу Wi\u2011Fi</string>
   <string name="toggleBluetooth">Bluetooth</string>
@@ -99,6 +118,7 @@
   <string name="toggleSync">Аўтасiнхранiзацыя дадзеных</string>
   <string name="toggle2g3g4g">Тып сеткі</string>
   <string name="toggleNfc">NFC</string>
+  <!-- Hardware keys -->
   <string name="button_pref_title">Кнопкі</string>
   <string name="hardware_keys_power_key_title">Кнопка сілкавання</string>
   <string name="hardware_keys_home_key_title">Кнопка \"Дамоў\"</string>
@@ -141,6 +161,7 @@
   <string name="button_wake_summary">Адключае кіраванне плэерам</string>
   <string name="home_answer_call_title">Адказ на званок</string>
   <string name="home_answer_call_summary">Адказваць на званок націскам кнопкі \"Дамоў\"</string>
+  <!-- Key backlight -->
   <string name="button_backlight_title">Падсвятленне</string>
   <string name="button_backlight_enabled">Падсвятленне кнопак</string>
   <string name="keyboard_backlight_enabled">Падсвятленне клавіятуры</string>
@@ -151,6 +172,7 @@
   <string name="backlight_summary_disabled">Вымкнута</string>
   <string name="backlight_summary_enabled_with_timeout">Улучана <xliff:g id="timeout">%s</xliff:g></string>
   <string name="backlight_summary_enabled">Улучана заўсёды</string>
+  <!-- Power menu -->
   <string name="power_menu_title">Меню пры доўгім націску</string>
   <string name="power_menu_reboot_title">Перазагрузка</string>
   <string name="power_menu_screenshot_title">Здымак экрану</string>
@@ -163,12 +185,16 @@
   <string name="power_menu_sound_title">Гукавая панэль</string>
   <string name="power_menu_bug_report_disabled">Справаздача пра памылку адключаная ў наладах для распрацоўніка</string>
   <string name="power_menu_profiles_disabled">Профілі сістэмы адключаны</string>
+  <!-- Backlight brightness settings screen -->
   <string name="adaptive_backlight_title">Адаптыўнае падсвятленне</string>
   <string name="adaptive_backlight_summary">Інтэлектуальная змена яркасці падсвятлення экрана для захавання зарада акумулятара</string>
+  <!-- Sunlight readability enhancement screen -->
   <string name="sunlight_enhancement_title">Рэжым \"На вуліцы\"</string>
   <string name="sunlight_enhancement_summary">Падвышэнне яркасці і роўня чытальнасці экрана пры яркім сонечным святле</string>
+  <!-- Color enhancement settings screen -->
   <string name="color_enhancement_title">Паляпшэнне колеру</string>
   <string name="color_enhancement_summary">Дынамічнае паляпшэнне колераперадачы экрана</string>
+  <!-- Blacklist preferences -->
   <string name="blacklist_title">Чорны спіс</string>
   <string name="blacklist_edit_dialog_title">Змяніць заблакаваны нумар</string>
   <string name="blacklist_prefs">Налады</string>
@@ -192,11 +218,14 @@
   <string name="blacklist_policy_block_calls">Блакаваць уваходныя выклікі</string>
   <string name="blacklist_policy_block_messages">Блакаваць уваходныя паведамленні</string>
   <string name="blacklist_bad_number_add">Некарэктны нумар, даданне немагчымае</string>
+  <!-- Blacklist management -->
   <string name="remove_blacklist_number_title">Выдаліць нумар</string>
   <string name="remove_blacklist_entry">Вы сапраўды хочаце выдаліць дадзены нумар з чорнага спіса?</string>
   <string name="select_contact">Выбар кантакту</string>
+  <!-- Protected apps lockpattern reset button -->
   <string name="lockpattern_reset_button">Скінуць графічны ключ</string>
   <string name="lockpattern_settings_reset_summary">Увядзіце адрас электроннай пошты асноўнага акаўнта і адпаведны пароль для скіду графічнага ключа</string>
+  <!-- Protected Apps -->
   <string name="menu_hidden_apps_delete">Скід</string>
   <string name="menu_hidden_apps_reset_lock">Выдаліць графічны ключ</string>
   <string name="protected_apps">Заблакаваць дадаткі</string>
@@ -206,6 +235,7 @@
   <string name="pa_login_submit_button">Увайсцi</string>
   <string name="pa_login_checking_password">Праверка дадзеных\u2026</string>
   <string name="pa_login_incorrect_login">Уваход не атрымаўся</string>
+  <!-- Display : Rotation  -->
   <string name="display_rotation_title">Заваротак экрана</string>
   <string name="display_rotation_disabled">Вымкнуты</string>
   <string name="display_rotation_unit">градусаў</string>
@@ -215,6 +245,7 @@
   <string name="display_rotation_90_title">90 градусаў</string>
   <string name="display_rotation_180_title">180 градусаў</string>
   <string name="display_rotation_270_title">270 градусаў</string>
+  <!-- Sms security limit -->
   <string name="app_security_title">Бяспека дадаткаў</string>
   <string name="sms_security_check_limit_title">Абмежаванне SMS-паведамленняў</string>
   <string name="sms_security_check_limit_summary">Запытваць пацверджанне пры адпраўцы больш %d паведамленняў у хвіліну</string>
@@ -225,22 +256,33 @@
   <string name="block_notifications_title">Фільтр паведамленняў</string>
   <string name="block_notifications_summary">Налада ігнараваных паведамленняў і фільтраў</string>
   <string name="no_filters_title">Фільтр не ўсталяваны</string>
+  <!-- CM Updater -->
   <string name="cmupdate_settings_title">Абнаўленні сістэмы</string>
+  <!-- Settings switch for updating Cyanogen recovery -->
   <string name="update_recovery_title">Абнаўляць рэжым аднаўлення</string>
   <string name="update_recovery_summary">Перазапісваць падзел Recovery пры ўсталёўцы абнаўленняў</string>
   <string name="update_recovery_on_warning">Калі гэта функцыя ўключана, усталяваная прашыўка рэжыму аднаўлення будзе перазапісана той, якая адпавядае бягучай версіі АС.\n\n Рэжым аднаўлення будзе абнаўляцца разам з абнаўленнямі сістэмы, забяспечваючы сумяшчальнасць з будучымі версіямі.\n\nУключыць выкарыстанне гэтай функцыі?</string>
   <string name="update_recovery_off_warning">Калі гэта функцыя адключана, прашыўка рэжыму аднаўлення заўсёды будзе заставацца нязменнай.\n\nНекаторыя абнаўленні АС могуць не ўсталёўвацца пры выкарыстанні састарэлых ці карыстальніцкіх версій падзелу Recovery.\n\nАдключыць выкарыстанне гэтай функцыі?</string>
+  <!-- About phone screen, CyanogenMod version -->
   <string name="mod_version">Версія CyanogenMod</string>
   <string name="mod_version_default">Невядома</string>
+  <!-- About phone screen, Device model -->
   <string name="device_model">Мадэль прылады</string>
+  <!-- About phone screen, Device name -->
   <string name="device_name">Імя прылады</string>
+  <!-- About phone screen, build date -->
   <string name="build_date">Дата зборкі</string>
+  <!-- About phone screen, service state -->
   <string name="phone_service_state">Галасавая сувязь: <xliff:g id="voice_state">%1$s</xliff:g>, перадача дадзеных: <xliff:g id="data_state">%2$s</xliff:g></string>
+  <!--- Tap To Wake -->
   <string name="double_tap_to_wake_title">Улучэнне пры падвойным націсканні</string>
   <string name="double_tap_to_wake_summary">Двойчы дакраніцеся экрана, каб вывесці прыладу са спячага рэжыму</string>
+  <!-- Proximity wake -->
   <string name="proximity_wake_title">Прадухіляць выпадковае ўлучэнне</string>
   <string name="proximity_wake_summary">Правяраць датчык набліжэння пры выйсці з рэжыму сну</string>
+  <!-- Privacy Settings Header item -->
   <string name="privacy_settings_cyanogenmod_title">Прыватнасць</string>
+  <!-- Privacy Guard -->
   <string name="privacy_guard_default_title">Рэжым абароны па змаўчанні</string>
   <string name="privacy_guard_default_summary">Улучаць рэжым абароны для ўсіх новых дадаткаў</string>
   <string name="privacy_guard_manager_title">Рэжым абароны</string>
@@ -253,29 +295,43 @@
   <string name="privacy_guard_manager_show_system_apps">Сістэмныя дадаткі</string>
   <string name="privacy_guard_notification_title">Паказваць паведамленні</string>
   <string name="app_ops_btn_text">Змяніць</string>
+  <!-- Increasing ring tone volume -->
   <string name="increasing_ring_volume_option_title">Нарастальная гучнасць званку</string>
   <string name="increasing_ring_min_volume_title">Пачатковая гучнасць</string>
   <string name="increasing_ring_ramp_up_time_title">Час павелічэння</string>
+  <!-- Advanced reboot options -->
   <string name="advanced_reboot_title">Варыянты перазагрузкі</string>
   <string name="advanced_reboot_summary">Паказваць дадатковыя опцыі перазагрузкі прылады ў рэжым \"загрузчык\", \"аднаўлення\" ці \"перазапуску інтэрфейсу\" у меню кнопкі сілкавання</string>
+  <!-- Setting checkbox title for Whether to enable Android debugging support on the phone. -->
   <string name="enable_adb_cm">Рэжым адладкі</string>
+  <!-- Setting checkbox summary for Whether to enable Android debugging support on the phone -->
   <string name="enable_adb_summary_cm">Уключыць інтэрфейс Android Debug Bridge (Adb)</string>
+  <!-- Android debugging over WiFi -->
   <string name="adb_over_network">Адладка па сетцы</string>
   <string name="adb_over_network_summary">Уключыць рэжым адладкі праз сеткавыя інтэрфейсы (Wi-Fi і USB-сеткі). Адладка адключаецца пры перазагрузцы прылады</string>
+  <!-- Warning for Adb over Network -->
   <string name="adb_over_network_warning">УВАГА: калі ўключана адладка па сетцы, прылада адкрыта для некантралюемага доступу з усіх падлучаных сетак!\n\nСкарыстайце гэту функцыю толькі тады, калі вы падлучаны да давераных сетак.\n\nВы сапраўды хочаце ўключыць гэту функцыю?</string>
+  <!-- Setting checkbox summary for displaying USB debugging notification -->
   <string name="adb_notify">Апавяшчэнне пра адладку</string>
   <string name="adb_notify_summary">Паказваць апавяшчэнне пра ўлучаны рэжым адладкі па USB ці па сетцы</string>
+  <!-- Hostname setting -->
   <string name="device_hostname">Сеткавае імя прылады</string>
+  <!-- Development shortcut -->
   <string name="development_shortcut_title">Дадатковыя пункты меню</string>
   <string name="development_shortcut_summary">Уключыць цэтлікі кіравання дадаткамі ў спісе нядаўніх дадаткаў</string>
+  <!-- tap-to-sleep -->
   <string name="double_tap_to_sleep_title">Вымыкаць экран пры падвойным націсканні</string>
   <string name="double_tap_to_sleep_summary">Двойчы дакраніцеся радка стану, каб перавесці прыладу ў спячы рэжым</string>
+  <!-- Turn on display when power connected; turn off display when power disconnected -->
   <string name="wake_when_plugged_or_unplugged_title">Улучэнне пры зарадцы</string>
   <string name="wake_when_plugged_or_unplugged_summary">Улучаць экран пры падлучэнні ці адключэнні крыніцы сілкавання</string>
+  <!-- Kill app long-press back -->
   <string name="kill_app_longpress_back">Зачыненне дадатку</string>
   <string name="kill_app_longpress_back_summary">Завяршаць працу бягучага дадатку ўтрымліваннем кнопкі \"Назад\"</string>
+  <!-- Buttons - Enable navbar -->
   <string name="disable_navkeys_title">Экранныя кнопкі</string>
   <string name="disable_navkeys_summary">Уключыць панэль навігацыі і адключыць апаратныя сэнсорныя кнопкі</string>
+  <!-- Navigation Bar -->
   <string name="navigation_bar_category">Радок стану</string>
   <string name="navigation_bar_left_title">Рэжым ляўшы</string>
   <string name="navigation_bar_left_summary">Адлюстроўваць радок стану злева ў альбомнай арыентацыі экрана</string>
@@ -289,11 +345,13 @@
   <string name="navigation_bar_arrow_keys_summary">Адлюстроўваць кнопкі перасоўвання курсора налева ці направа пры ўводзе. Кнопка выбару метаду ўводу адлюстроўвацца не будзе.</string>
   <string name="navigation_bar_recents_title">Доўгі націск кнопкі \"Агляд\"</string>
   <string name="header_category_personalization">Персаналізацыя</string>
+  <!-- Status bar -->
   <string name="status_bar_title">Радок стану</string>
   <string name="status_bar_toggle_brightness">Кіраванне яскравасцю</string>
   <string name="status_bar_toggle_brightness_summary">Рэгуляваць яркасць экрана рухам пальца па радку стану</string>
   <string name="status_bar_notif_count_title">Лічыльнік паведамленняў</string>
   <string name="status_bar_notif_count_summary">Паказваць колькасць новых паведамленняў у радку стану</string>
+  <!-- Status bar - Clock -->
   <string name="status_bar_clock_style_title">Гадзіны</string>
   <string name="status_bar_clock_style_right">Справа</string>
   <string name="status_bar_clock_style_left">Злева</string>
@@ -304,22 +362,26 @@
   <string name="status_bar_am_pm_normal">Звычайны</string>
   <string name="status_bar_am_pm_small">Маленькі</string>
   <string name="status_bar_am_pm_hidden">Не паказваць індыкатар</string>
+  <!-- Status bar - Battery -->
   <string name="status_bar_battery_style_title">Індыкатар батарэі</string>
   <string name="status_bar_battery_style_icon_portrait">Вертыкальны значок</string>
   <string name="status_bar_battery_style_icon_landscape">Гарызантальны значок</string>
   <string name="status_bar_battery_style_circle">Кола</string>
   <string name="status_bar_battery_style_text">Тэкст</string>
   <string name="status_bar_battery_style_hidden">Не паказваць індыкатар</string>
+  <!-- Status bar - Battery percentage -->
   <string name="status_bar_battery_percentage_title">Адсотак зарада батарэі</string>
   <string name="status_bar_battery_percentage_default">Не паказваць</string>
   <string name="status_bar_battery_percentage_text_inside">Унутры значка</string>
   <string name="status_bar_battery_percentage_text_next">Шэрагам са значком</string>
+  <!-- Notification light dialogs -->
   <string name="edit_light_settings">Змена налад індыкатара</string>
   <string name="pulse_speed_title">Працягласць і хуткасць мігцення</string>
   <string name="default_time">Звычайная</string>
   <string name="custom_time">Уласная</string>
   <string name="dialog_delete_title">Выдалiць</string>
   <string name="dialog_delete_message">Выдаліць абраны элемент?</string>
+  <!-- Values for the notification light pulse spinners -->
   <string name="pulse_length_always_on">укл. увесь час</string>
   <string name="pulse_length_very_short">Вельмі кароткае</string>
   <string name="pulse_length_short">Коратка</string>
@@ -331,12 +393,14 @@
   <string name="pulse_speed_normal">Звычайна</string>
   <string name="pulse_speed_slow">Павольна</string>
   <string name="pulse_speed_very_slow">Вельмі павольна</string>
+  <!-- Battery light settings -->
   <string name="battery_light_title">Індыкацыя батарэі</string>
   <string name="battery_low_pulse_title">Мігацець пры нізкім роўні зарада</string>
   <string name="battery_light_list_title">Колеры</string>
   <string name="battery_light_low_color_title">Батарэя разраджана</string>
   <string name="battery_light_medium_color_title">Зарадка</string>
   <string name="battery_light_full_color_title">Цалкам зараджаны</string>
+  <!-- Lights settings screen, notification light settings -->
   <string name="notification_light_title">Індыкатар падзей</string>
   <string name="notification_light_general_title">Агульныя</string>
   <string name="notification_light_applist_title">Дадаткі</string>
@@ -348,19 +412,26 @@
   <string name="notification_light_screen_on">Выкарыстоўваць індыкатар пры ўключаным экране</string>
   <string name="notification_light_use_multiple_leds">Некалькі светадыёдаў</string>
   <string name="keywords_lights_brightness_level">бляклая яскравасць</string>
+  <!-- Sound & notification > Sound section: Title for the option defining the default notification ringtone. [CHAR LIMIT=30] -->
   <string name="notification_ringtone_title_cm">Гук апавяшчэння</string>
+  <!-- Launch music player when headset is connected -->
   <string name="headset_connect_player_title">Аўтазапуск плэера</string>
   <string name="headset_connect_player_summary">Запускаць плэер пры падлучэнні завушнікаў</string>
+  <!-- Whether to display IME switcher notifcation -->
   <string name="ime_switcher_notify">Значок выбару метаду ўводу</string>
   <string name="ime_switcher_notify_summary">Адлюстроўваць пераключальнік метаду ўводу пры адкрыцці тэкставых палёў</string>
+  <!-- Per app controls for LP keyguard notifications -->
   <string name="app_notification_show_on_keyguard_title">На экране блакавання</string>
   <string name="app_notification_show_on_keyguard_summary">Паказваць апавяшчэнні з гэтага дадатку на экране блакавання</string>
   <string name="app_notification_no_ongoing_on_keyguard_title">Адключыць шторазовыя апавяшчэнні пра блакаванне экрана</string>
   <string name="app_notification_no_ongoing_on_keyguard_summary">Не паказваць шторазовыя апавяшчэнні з гэтага дадатку на экране блакавання</string>
+  <!-- High touch sensitivity -->
   <string name="high_touch_sensitivity_title">Рэжым пальчаткаў</string>
   <string name="high_touch_sensitivity_summary">Павялічваць адчувальнасць экрана для магчымасці працы ў пальчатках</string>
+  <!-- Touchscreen hovering -->
   <string name="touchscreen_hovering_title">Навядзенне пальца</string>
   <string name="touchscreen_hovering_summary">Распазнаваць набліжэнне пальца да экрана для падзей навядзення курсора ў браўзары ці іншых дадатках</string>
+  <!-- App ops -->
   <string name="app_ops_summaries_coarse_location">прыблізнае месцазнаходжанне</string>
   <string name="app_ops_summaries_fine_location">дакладнае месцазнаходжанне</string>
   <string name="app_ops_summaries_gps">GPS-модуль</string>
@@ -475,6 +546,7 @@
   <string name="app_ops_labels_data_change">Змена стану мабільнага інтэрнэту</string>
   <string name="app_ops_labels_wake_up">Вывад з рэжыму сну</string>
   <string name="app_ops_labels_su">Суперкарыстальнік</string>
+  <!-- App ops categories -->
   <string name="app_ops_categories_location">Месцазнаходжанне</string>
   <string name="app_ops_categories_personal">Асабістыя дадзеныя</string>
   <string name="app_ops_categories_messaging">Гутарка</string>
@@ -482,10 +554,12 @@
   <string name="app_ops_categories_device">Прылада</string>
   <string name="app_ops_categories_bootup">Загрузка</string>
   <string name="app_ops_categories_su">Суперкарыстальнік</string>
+  <!-- App ops permissions -->
   <string name="app_ops_permissions_allowed">Дазваляць</string>
   <string name="app_ops_permissions_ignored">Забараняць</string>
   <string name="app_ops_permissions_always_ask">Пытаць</string>
   <string name="ok">Добра</string>
+  <!-- Profiles -->
   <string name="profile_menu_delete_title">Выдаліць</string>
   <string name="profile_action_none">Пакінуць без змянення</string>
   <string name="profile_action_system">Па змаўчанні</string>
@@ -503,6 +577,7 @@
   <string name="profile_setup_actions_title_config">Змена дзеянняў</string>
   <string name="profile_appgroups_manage">Групы дадаткаў</string>
   <string name="profile_appgroup_manage">Кіраванне групай дадаткаў</string>
+  <!-- Title for application group setting screen -->
   <string name="profile_appgroups_title">Групы дадаткаў</string>
   <string name="profile_new_appgroup">Новая група дадаткаў</string>
   <string name="profile_delete_appgroup">Выдаліць гэту групу дадаткаў?</string>
@@ -510,12 +585,14 @@
   <string name="profile_appgroup_name_title">Імя</string>
   <string name="duplicate_appgroup_name">Група дадаткаў з такой назвай ужо існуе!</string>
   <string name="profile_app_delete_confirm">Выдаліць дадзены дадатак?</string>
+  <!-- Profile Settings sound modes labels -->
   <string name="sound_mode">Рэжым паведамленняў</string>
   <string name="ringer_mode">Рэжым званку</string>
   <string name="lights_mode">Індыкатар падзей</string>
   <string name="vibrate_mode">Вібрацыя</string>
   <string name="choose_soundtone">Абраць гук паведамленняў</string>
   <string name="choose_ringtone">Абраць рынгтон</string>
+  <!-- Sound settings screen, setting option name to pick ringtone (a list dialog comes up)-->
   <string name="soundtone_title">Гук паведамлення</string>
   <string name="no_bluetooth_triggers">Няма спалучаных прылад Bluetooth.\nНацісніце, каб дадаць прыладу і стварыць умову пераключэння на яго аснове.</string>
   <string name="no_wifi_triggers">Няма захаваных сетак Wi\u2011Fi.\nНацісніце, каб дадаць сетку Wi\u2011Fi і стварыць умову пераключэння на яе аснове.</string>
@@ -523,30 +600,40 @@
   <string name="no_triggers_configured_nfc">Націсніце для дадання NFC-пазнакі да гэтага профілю.</string>
   <string name="profile_setup_setup_triggers_description">Пакажыце ўмовы, пры якіх будзе ўлучацца дадзены профіль</string>
   <string name="profile_setup_actions_description">Зараз можна наладзіць, што павінна адбывацца пры актывацыі профілю</string>
+  <!-- App ops detail -->
   <string name="app_ops_entry_summary"><xliff:g id="op">%1$s</xliff:g> (выкарыстана <xliff:g id="count">%2$s</xliff:g>)</string>
   <string name="app_ops_allowed_count">Дазволена <xliff:g id="count" example="2 times">%s</xliff:g></string>
   <string name="app_ops_ignored_count">Забаронена <xliff:g id="count" example="2 times">%s</xliff:g></string>
   <string name="app_ops_both_count">Дазволена <xliff:g id="count">%1$s</xliff:g>, забаронена <xliff:g id="count">%2$s</xliff:g></string>
+  <!-- App ops menu options -->
   <string name="app_ops_show_user_apps">Загружаныя дадаткі</string>
   <string name="app_ops_show_system_apps">Сістэмныя дадаткі</string>
   <string name="app_ops_reset_counters">Скінуць лічыльнікі</string>
   <string name="app_ops_reset_confirm_title">Пацверджанне скіду</string>
   <string name="app_ops_reset_confirm_mesg">Вы ўпэўнены, што хочаце скінуць лічыльнікі?</string>
+  <!-- Font size sample text. This needs to be a very short string, as it is shown in
+    multiple font sizes in a limited amount of space. -->
   <string name="font_size_sample">Прыклад тэксту</string>
+  <!-- Volume settings - Volume adjustment sound -->
   <string name="volume_adjust_sounds_title">Гук пры рэгулёўцы гучнасці</string>
+  <!-- Hardware tunables - Vibrator intensity -->
   <string name="vibrator_intensity_title">Магутнасць вібрасігналу</string>
   <string name="vibrator_warning">Усталёўка значэнняў ад %1$d і вышэй не рэкамендуецца</string>
+  <!-- Hardware tunables - Color calibration -->
   <string name="color_calibration_title">Колер</string>
   <string name="color_calibration_summary">Налада колераперадачы экрана</string>
   <string name="color_red_title">Чырвоны</string>
   <string name="color_green_title">Зялёны</string>
   <string name="color_blue_title">Сіні</string>
+  <!-- Hardware tunables - Gamma calibration -->
   <string name="gamma_tuning_title_head">Гама</string>
   <string name="gamma_tuning_summary_head">Налада гама-карэкцыі экрана</string>
   <string name="gamma_tuning_control_set_header">Група <xliff:g id="index">%d</xliff:g></string>
+  <!-- used if no name provided by overlay -->
   <string name="gamma_tuning_contrast">Кантраснасць</string>
   <string name="gamma_tuning_brightness">Яскравасць</string>
   <string name="gamma_tuning_saturation">Насычанасць</string>
+  <!-- Display settings.  Screen color. -->
   <string name="screencolor">Колераперадача экрана</string>
   <string name="screencolor_summary">Налада адцення, роўняў насычанасці і кантраснасці экрана</string>
   <string name="custom_screencolor">Карыстальніцкая колераперадача</string>
@@ -564,26 +651,47 @@
   <string name="screen_color_setting_vivid">Яскравы</string>
   <string name="screen_color_setting_custom">Карыстальніцкія</string>
   <string name="settings_reset_button">Скід</string>
+  <!-- Message when bluetooth dialog for pin entry is showing  when HIGH security enabled-->
   <string name="bluetooth_enter_pin_msg_hs">Для спалучэння з <xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g> увядзіце PIN-код (16 лічбаў ці больш):</string>
+  <!-- Bluetooth settings.  The user-visible string that is used whenever referring to the DUN profile. -->
   <string name="bluetooth_profile_dun">Доступ да мадэма</string>
+  <!-- Bluetooth settings.  The user-visible string that is used whenever referring to the SAP profile. -->
   <string name="bluetooth_profile_sap">Доступ да SIM-карты</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the DUN checkbox preference when DUN is connected. -->
   <string name="bluetooth_dun_profile_summary_connected">Падлучана да мадэма іншай прылады</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the pbap checkbox preference when pbap is connected. -->
   <string name="bluetooth_pbap_profile_summary_connected">Падлучана да pbab-серверу</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the SAP checkbox preference when SAP is connected. -->
   <string name="bluetooth_sap_profile_summary_connected">Падлучана да сервера доступу да SIM</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the DUN checkbox preference that describes how checking it will set the DUN profile as preferred. -->
   <string name="bluetooth_dun_profile_summary_use_for">Выкарыстоўваць у якасці Bluetooth-мадэма</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the pbap checkbox preference that describes how checking it will set the pbap profile as preferred. -->
   <string name="bluetooth_pbap_profile_summary_use_for">Выкарыстоўваць для адпраўкі кантактаў</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the SAP checkbox preference that describes how checking it will set the SAP profile as preferred. -->
   <string name="bluetooth_sap_profile_summary_use_for">Выкарыстоўваць для доступу да SIM</string>
+  <!-- Bluetooth settings.  A checkbox to set if we should accept all the file types regardless of their presence in MIME type whitelist -->
   <string name="bluetooth_accept_all_files">Прымаць усе тыпы файлаў</string>
+  <!-- SIM lock settings title  [CHAR LIMIT=40] -->
   <string name="sim_lock_settings_cm">Налады блакавання SIM/RUIM-карты</string>
+  <!-- Security & location settings screen, setting option name  [CHAR LIMIT=40] -->
   <string name="sim_lock_settings_category_cm">Наладзіць блакаванне SIM/RUIM-карты</string>
+  <!-- Security & location settings screen, section heading for settings related to sim card locking  [CHAR LIMIT=40] -->
   <string name="sim_lock_settings_title_cm">Блакаванне SIM/RUIM-карты</string>
+  <!-- SIM card lock settings screen, SIM PIN dialog message when PIN disable fails-->
   <string name="sim_pin_disable_failed">Немагчыма адключыць PIN.</string>
+  <!-- SIM card lock settings screen, SIM PIN dialog message when PIN enable fails-->
   <string name="sim_pin_enable_failed">Немагчыма актываваць PIN.</string>
+  <!-- SIM password can't be changed as SIM LOCK is not enabled: -->
   <string name="sim_pin_change_failed_enable_sim_lock">Каб змяніць PIN SIM/RUIM, спачатку ўключыце блакаванне SIM/RUIM.</string>
+  <!-- SIM lock can't be changed - not supported -->
   <string name="sim_enable_disable_lock_not_supported">Блакаванне SIM/RUIM не падтрымваецца карткай.</string>
+  <!-- SIM card lock settings screen, toast displayed on wrong PIN1: -->
   <string name="sim_pin_attempts">\nЗасталося спроб:</string>
+  <!-- SIM card lock settings screen, toast displayed on PIN1 enable: -->
   <string name="sim_pin_enabled">PIN1 улучаны</string>
+  <!-- SIM card lock settings screen, toast displayed on PIN1 disable: -->
   <string name="sim_pin_disabled">PIN1 адключаны</string>
+  <!-- string resources for USB OTG & UICC features -->
   <string name="storage_usb">USB-назапашвальнік</string>
   <string name="storage_uicc">Сховішча UICC</string>
   <string name="sdcard_eject" product="default">Адключыць SD-карту</string>
@@ -604,7 +712,9 @@
   <string name="uicc_format_summary" product="default">Выдаліць са сховішча UICC усе дадзеныя, уключна музыку і фатаздымкі</string>
   <string name="uicc_mount" product="default">Далучыць сховішча UICC</string>
   <string name="uicc_insert_summary" product="default">Далучыць устаўлены назапашвальнік</string>
+  <!-- Title of dialog asking user to confirm before enabling UMS. [CHAR LIMIT=48] -->
   <string name="usb_settings_enable_ums_title">Уключыць рэжым Usb-назапашвальніка?</string>
+  <!-- Message of dialog asking user to confirm before enabling UMS. [CHAR LIMIT=NONE] -->
   <string name="usb_settings_enable_ums_message">Многія дадаткі і сістэмныя кампаненты праектуюцца з разлікам на ўвесь час даступную асноўную памяць. Выкарыстанне функцыі USB-назапашвальніка парушае гэту функцыйнасць, таму для большасці выпадкаў рэкамендуецца скарыстаць MTP. Уключыць рэжым USB-назапашвальніка?</string>
   <string name="dlg_confirm_sdcard_unmount_title" product="default">Адключыць SD-карту?</string>
   <string name="dlg_confirm_usb_unmount_title" product="default">Адключыць USB-назапашвальнік?</string>
@@ -630,19 +740,28 @@
   <string name="sdcard_media_format_gesture_explanation" product="default">Каб пацвердзіць ачыстку SD-карты, начарціце графічны ключ.</string>
   <string name="usb_media_format_gesture_explanation" product="default">Каб пацвердзіць ачыстку USB-назапашвальніка, начарціце графічны ключ.</string>
   <string name="uicc_media_format_gesture_explanation" product="default">Каб пацвердзіць ачыстку назапашвальніка UICC, начарціце графічны ключ.</string>
+  <!-- Storage menu, label for internal media storage -->
   <string name="internal_sd_format">Вычысціць унутраную памяць</string>
   <string name="internal_sd_format_summary">Выдаленне з унутранай памяці ўсіх дадзеных, уключна музыку і фатаздымкі</string>
+  <!-- Media & phone storage settings screen, label for check box to erase media storage [CHAR LIMIT=30] -->
   <string name="master_clear_desc_erase_internal_storage">\n\nДоўжачы выдаленні музыкі, фотаздымкаў і іншых карыстальніцкіх дадзеных трэба <b>
 ачысціць унутраную памяць</b>.</string>
   <string name="erase_internal_storage">Вычысціць унутраную памяць</string>
   <string name="erase_internal_storage_description">Выдаленне з унутранай памяці ўсіх дадзеных, улучаючы музыку і фотаздымкі</string>
+  <!-- Rescan storage -->
   <string name="storage_rescan_media">Перасканаваць памяць</string>
+  <!-- [CHAR LIMIT=130] Location mode screen, sub category for IZat Location -->
   <string name="location_category_enhanced_location">Палепшанае месцазнаходжанне (IZat)</string>
+  <!-- [CHAR LIMIT=NONE] App ops settings summary, on main settings screen. If clicked, the user is taken to a settings screen for app operations -->
   <string name="app_ops_settings_summary">Прагляд ці змена дазволаў для дадаткаў</string>
+  <!-- Setting checkbox summary when device is in Charging mode -->
   <string name="enable_adb_summary_charging">Прылада знаходзіцца ў рэжыме зарадкі, USB-адладка адключана</string>
+  <!-- Title of checkbox setting that enable quickboot. [CHAR LIMIT=32] -->
   <string name="enable_quickboot_title">Уключыць рэжым QuickBoot</string>
+  <!-- Summary of checkbox setting that enable quickboot. [CHAR LIMIT=64] -->
   <string name="enable_quickboot_summary">Перакладаць прыладу ў рэжым QuickBoot замест поўнага вымыкання</string>
   <string name="data_usage_tab_slot">SIM <xliff:g id="sub">%d</xliff:g></string>
+  <!-- MultiSim Settings changes-->
   <string name="sim_enabler_title">Стан SIM-карт</string>
   <string name="sim_enabler_summary">SIM <xliff:g id="status" example="enabled">%1$s</xliff:g></string>
   <string name="sim_enabled">падлучана</string>
@@ -666,12 +785,19 @@
   <string name="external_storage_turn_off">Вонкавы назапашвальнік адключаны</string>
   <string name="stats_collection_title">Збор статыстыкі</string>
   <string name="stats_collection_summary">Калі ўключана, дазваляе збор метрыкі</string>
+  <!-- Category title for Charging sounds (Power state change) specific Settings.
+         [CHAR LIMIT=40] -->
   <string name="power_notifications_category_title">Зарадная прылада</string>
+  <!-- Sound settings, Charging sounds enable/disable, setting check box label -->
   <string name="power_notifications_enable_title">Гук пры зарадцы</string>
   <string name="power_notifications_enable_summary">Прайграваць гук пры далучэнні альбо адключэнні крыніцы сілкавання</string>
+  <!-- Sound settings, Charging sounds vibrate enable/disable, setting check box label -->
   <string name="power_notifications_vibrate_title">Вібрацыя</string>
+  <!-- Sound settings, Charging sounds ringtone selection, preference label -->
   <string name="power_notifications_ringtone_title">Гукавое паведамленне</string>
+  <!-- Sound settings, charging sounds label for ringtone == none -->
   <string name="power_notifications_ringtone_silent">Без гуку</string>
+  <!-- Voice Wakeup -->
   <string name="voice_wakeup_settings_title">Уключэнне галасавой камандай</string>
   <string name="voice_wakeup_retrain_title">Перазапісаць узор голасу</string>
   <string name="voice_wakeup_activity_title">Дзеянне для запуску</string>
@@ -679,26 +805,38 @@
   <string name="picker_activities">Дзеянні</string>
   <string name="select_custom_app_title">Выбар дадатку</string>
   <string name="select_custom_activity_title">Выбар дзеяння</string>
+  <!-- Battery : Automatic performance profiles -->
   <string name="autoperf_title">Профілі дадаткаў</string>
   <string name="autoperf_summary">Аўтаматычна абіраць адпаведны рэжым батарэі для дадаткаў</string>
   <string name="perf_profile_title">Энергаспажыванне</string>
+  <!-- Development : Force high-end graphics -->
   <string name="pref_force_highend_gfx_title">Высакаякасная графіка</string>
   <string name="pref_force_highend_gfx_summary">ыкарыстоўваць эфекты, адключаныя для прылад з нізкай прадукцыйнасцю, напрыклад, празрыстасць радка стану і панэлі навігацыі (патрабуецца перазагрузка)</string>
+  <!-- EdgeGesture service -->
   <string name="edge_gesture_service_title">Блакіяваць падзеі жэстаў</string>
   <string name="edge_gesture_service_summary">Не перадаваць дадаткам жэсты паказу радка стану і панэлі навігацыі</string>
+  <!-- CM Legal -->
   <string name="cmlicense_title">Палітыка прыватнасці CyanogenMod</string>
   <string name="settings_cmlicense_activity_title">Палітыка прыватнасці CyanogenMod</string>
+  <!-- Sizes for pattern lockscreen -->
+  <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
   <string name="lockpattern_settings_enable_error_path_title">Паказваць няправільны ўвод</string>
+  <!-- Whether the dots will be drawn when using the lockscreen pattern -->
   <string name="lockpattern_settings_enable_dots_title">Паказваць кропкі</string>
+  <!-- Whether the keyguard will directly pass to password entry -->
   <string name="lock_directly_show_password">Адразу прапанаваць увод пароля</string>
+  <!-- Whether the keyguard will directly pass to pattern view -->
   <string name="lock_directly_show_pattern">Адразу прапанаваць увод графічнага ключа</string>
+  <!-- Whether the keyguard will directly pass to PIN entry -->
   <string name="lock_directly_show_pin">Адразу прапанаваць увод PIN-кода</string>
+  <!-- Screen security -->
   <string name="unlock_quick_unlock_control_title">Хуткая разблакоўка</string>
   <string name="unlock_quick_unlock_control_summary">Аўтаматычная разблакоўка пры ўводзе правільнага пароля альбо PIN-кода</string>
   <string name="unlock_scramble_pin_layout_title">Змешваць кнопкі</string>
   <string name="unlock_scramble_pin_layout_summary">Перастаўляць кнопкі ўводу PIN-кода ў выпадковым парадку</string>
   <string name="link_volume_option_title">Звязаць гучнасць рынгтону &amp; паведамленняў</string>
   <string name="notification_volume_option_title">Гучнасць паведамленняў</string>
+  <!-- Notification drawer -->
   <string name="notification_drawer_title">Панэль паведамленняў</string>
   <string name="quick_pulldown_title">Хуткі доступ</string>
   <string name="quick_pulldown_summary">%1$s край радка стану выцягвае хуткія налады</string>
@@ -707,6 +845,7 @@
   <string name="quick_pulldown_off">Выкл.</string>
   <string name="quick_pulldown_left">Левы</string>
   <string name="quick_pulldown_right">Правы</string>
+  <!-- Weather in status bar header -->
   <string name="status_bar_show_weather_title">Звесткі пра надвор\'е</string>
   <string name="status_bar_show_weather_summary">Паказваць надвор\'е над панэллю хуткіх налад</string>
   <string name="qs_category_title">Панэль хуткіх налад</string>
@@ -750,17 +889,26 @@
   <string name="qs_advanced_location_title">Пашыраныя налады месцазнаходжання</string>
   <string name="qs_advanced_location_summary">Уключыць пашыраныя налады для месцазнаходжання ў хуткіх наладах</string>
   <string name="sim_no_number_set">Нумар не прысвоены</string>
+  <!-- Gesture Settings -->
+  <!-- Settings main menu entry -->
   <string name="gesture_settings_title">Жэсты</string>
+  <!-- Themes Settings -->
+  <!-- Settings main menu entry -->
   <string name="themes_settings_title">Тэмы</string>
+  <!-- WiFi Ad-Hoc mode -->
   <string name="wifi_mode">Рэжым</string>
   <string name="wifi_mode_ibss">Сетка Ad-Hoc (IBSS)</string>
   <string name="wifi_mode_ibss_short">Ad-Hoc</string>
   <string name="wifi_ibss_freq_title">Канал / Частата</string>
   <string name="wifi_channel">Канал</string>
   <string name="wifi_mhz">МГц</string>
+  <!-- WiFi auto-configure priorities -->
   <string name="wifi_auto_config_priorities">Аўтаабранне прыярытэту</string>
+  <!-- About phone settings screen, setting option dialog title to show regulatory information [CHAR LIMIT=25] -->
+  <!-- SAR information -->
   <string name="maximum_head_level">Галава: %1$s Вт/кг</string>
   <string name="maximum_body_level">Цела: %1$s Вт/кг</string>
+  <!-- IC Codes -->
   <string name="ic_code_model">Мадэль: %1$s</string>
   <string name="ic_code_full">Код IC: %1$s</string>
   <string name="power_menu_expanded_desktop">Пашыраны экран</string>
@@ -781,17 +929,21 @@
   <string name="lockscreen_choose_action_title">Абярыце дзеянне</string>
   <string name="lockscreen_visualizer_title">Візуалізацыя спектра музыкі</string>
   <string name="nfc_title_category">NFC</string>
+  <!-- WhisperPush -->
   <string name="whisperpush_title">Тэхналогія WhisperPush</string>
   <string name="whisperpush_summary">Налада шыфравання SMS-паведамленняў</string>
   <string name="navigation_ring_title">Цэтлікі навігацыйнага кола</string>
   <string name="navigation_ring_message">Дакраніцеся значка праўкі для змянення навігацыйнага кола.\n\nАбярыце цэтлік для налады яго паводзін.\n\nДакраніцеся галачкі \'\u2713\' для выйсця з рэжыму рэдагаванні і захаванні змен, а для звароту цэтлікаў па змаўчанні — дакраніцеся кнопкі \"Узнавіць\".</string>
+  <!-- Display & Lights screen, setting options for LCD density -->
   <string name="lcd_density">Шчыльнасць экрана</string>
   <string name="dialog_title_lcd_density">Шчыльнасць экрана</string>
   <string name="lcd_density_value_format">%d DPI</string>
   <string name="lcd_density_default_value_format">%d DPI (па змаўчанні)</string>
   <string name="restarting_ui">Перазапуск інтэрфейсу\u2026</string>
+  <!-- Stylus Icon -->
   <string name="stylus_icon_enabled_title">Курсор пры выкарыстанні сцілуса</string>
   <string name="stylus_icon_enabled_summary">Паказваць значок паказальніка пры працы са сцілусам</string>
+  <!-- Stylus Gestures -->
   <string name="gestures_settings_title">Падтрымка сцілуса</string>
   <string name="category_spen_title">Падтрымка сцілуса</string>
   <string name="enable_subcat_title">Сцілус</string>
@@ -804,12 +956,14 @@
   <string name="gestures_down_spen_title_head">Правесці наніз</string>
   <string name="gestures_long_spen_title_head">Доўгі націск</string>
   <string name="gestures_double_spen_title_head">Падвойны націск</string>
+  <!-- Gestures Options -->
   <string name="gestures_action_empty">Няма дзеяння</string>
   <string name="gestures_action_home">Дамоў</string>
   <string name="gestures_action_back">Назад</string>
   <string name="gestures_action_menu">Меню</string>
   <string name="gestures_action_search">Адчыніць пошук</string>
   <string name="gestures_action_recent">Нядаўнія дадаткі</string>
+  <!-- Stylus gestures -->
   <string name="stylus_app_not_installed">%s не ўсталявана</string>
   <string name="advanced">Падрабязней</string>
   <string name="advanced_mode_title">Пашыраны рэжым</string>
@@ -825,6 +979,7 @@
   <string name="lockscreen_settings">Экран блакавання</string>
   <string name="category_lights">Індыкацыя</string>
   <string name="power_usage_history_title">Выкарыстанне батарэі</string>
+  <!-- Show/Hide Search Bar -->
   <string name="recents_show_searchbar">Радок пошуку ў меню кнопкі \"Агляд\"</string>
   <string name="keywords_recents_show_searchbar">нядаўнія нядаўні агляд запушчаныя ўключыць выключыць паказаць схаваць пошукавы радок пошук</string>
   <string name="sim_ringtone_title">Рынгтон %d SIM</string>
@@ -834,6 +989,7 @@
   <string name="none_is_silent_summary_on">Рэжым «Без гуку»: будзільнік гучыць як звычайна</string>
   <string name="none_is_silent_summary_off">Рэжым «Не турбаваць»: гук будзільніка адключаецца</string>
   <string name="allow_lights_title">Уключыць індыкатар падзей</string>
+  <!-- LiveDisplay -->
   <string name="live_display_summary">Падладжваць экран на аснове часу сутак і асвятлення, каб палепшыць чытальнасць і зменшыць стомленасць вачэй</string>
   <string name="live_display_mode">Рэжым экрана</string>
   <string name="live_display_color_temperature_title">Каляровая тэмпература</string>
@@ -863,6 +1019,8 @@
   <string name="battery_saver_threshold">Аўтаматычнае энэргазахавання</string>
   <string name="battery_saver_summary">Зменшыць прадукцыйнасць і абмежаваць фонавую перадачу дадзеных</string>
   <string name="battery_saver_summary_unavailable">Недаступна падчас зарадкі</string>
+  <!-- Anonymous Statistics #CM -->
+  <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
   <string name="anonymous_statistics_title">Адпраўка статыстыкі</string>
   <string name="anonymous_statistics_summary">Дапамажыце зрабіць CyanogenMod лепш, дазволіўшы збор ананімнай статыстыкі</string>
   <string name="anonymous_statistics_warning_title">Звесткі</string>
@@ -871,27 +1029,34 @@
   <string name="preview_data_title">Прагляд дадзеных якія адпраўляюцца</string>
   <string name="view_stats_title">Прагляд статыстыкі ўсталёвак</string>
   <string name="anonymous_learn_more">Падрабязней</string>
+  <!-- Anonymous Statistics - Preview -->
   <string name="preview_id_title">Ідэнтыфікатар</string>
   <string name="preview_device_title">Прылада</string>
   <string name="preview_version_title">Версія</string>
   <string name="preview_country_title">Краіна</string>
   <string name="preview_carrier_title">Аператар</string>
+  <!-- Heads up -->
   <string name="heads_up_notifications">Усплывальныя паведамленні</string>
   <string name="summary_heads_up_enabled">Улучаны</string>
   <string name="summary_heads_up_disabled">Вымкнуты</string>
+  <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
   <string name="master_clear_desc_cm" product="tablet">Дадзенае дзеянне выдаліць усе дадзеныя з <b>унутранай памяці</b>, вашага планшэта, улучаючы:\n\n<li>акаўнты</li>\n<li>налады сістэмы і дадаткаў</li>\n<li>усе загружаныя дадаткі</li></string>
+  <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
   <string name="master_clear_desc_cm" product="default">Дадзенае дзеянне выдаліць усе дадзеныя з <b>унутранай памяці</b>, вашага тэлефона, улучаючы:\n\n<li>акаўнты</li>\n<li>налады сістэмы і дадаткаў</li>\n<li>усе загружаныя дадаткі</li></string>
+  <!-- Killswitch -->
   <string name="lock_to_cyanogen_title">Абарона прылады</string>
   <string name="lock_to_cyanogen_summary">Патрабаваць пароль акаўнта АС Cyanogen нават пасля выдалення ўсіх дадзеных</string>
   <string name="lock_to_cyanogen_create_account_msg">Прылада выкарыстоўвае пароль акаўнта АС Cyanogen для абароны прылады ад скіду налад. Патрабуецца стварыць новы акаўнт АС Cyanogen.</string>
   <string name="lock_to_cyanogen_disable_msg">Адключэнне гэтай функцыі дазволіць іншым людзям выканаць выдаленне ўсіх дадзеных на прыладзе ў выпадку яго крадзяжу. Вашы асабістыя дадзеныя могуць стаць недастаткова абароненымі. Вы сапраўды хочаце адключыць гэту функцыю?</string>
   <string name="lock_to_cyanogen_master_clear_warning">Абарона прылады ўключана. Трэба адключыць яе, каб выканаць скід налад на прыладзе.</string>
   <string name="bluetooth_pan_profile_summary_use_for_error">Памылка падлучэння: праверце, ці уключаны Bluetooth-мадэм на паказанай прыладзе?</string>
+  <!-- MSIM SIM status -->
   <string name="sim_card_status_title">Статус SIM %d</string>
   <string name="sim_card_lock_settings_title">Параметры блакавання SIM %d</string>
   <string name="sim_card_summary_empty">SIM не ўстаўлена</string>
   <string name="sim_mobile_network_settings_category_title">Налады мабільнай сеткі</string>
   <string name="sim_mobile_network_settings_title">Параметры SIM %d</string>
+  <!-- Factory reset strings -->
   <string name="factory_reset_instructions_title">Асабістыя дадзеныя &amp; дадаткі</string>
   <string name="factory_reset_instructions_summary">Гэта дзеянне выдаліць усе дададзеныя акаўнты, дадаткі, іх дадзеныя і налады з гэтай прылады</string>
   <string name="factory_reset_personal_content">Асабістыя дадзеныя</string>
@@ -903,14 +1068,19 @@
   <string name="factory_reset_erase_sd_card_summary">Выдаліць з SD-карты ўсе дадзеныя, улучаючы музыку і фотаздымкі</string>
   <string name="factory_reset_warning_text_reset_now">ВЫДАЛІЦЬ УСЁ</string>
   <string name="factory_reset_warning_text_message">Усе дададзеныя акаўнты, дадаткі, іх дадзеныя і налады будуць выдалены з гэтай прылады. Скасаваць гэта дзеянне будзе немагчыма.</string>
+  <!-- Wi-Fi filters -->
   <string name="wifi_show_all">Паказваць усё</string>
   <string name="wifi_show_protected">Абароненыя сеткі</string>
   <string name="wifi_show_open">Адкрытыя сеткі</string>
   <string name="wifi_empty_list_protected">Не знойдзена абароненых сетак Wi-Fi</string>
   <string name="wifi_empty_list_open">Не знойдзена адкрытых сетак Wi-Fi</string>
+  <!-- Wi-Fi region code -->
   <string name="wifi_setting_countrycode_title">Код рэгіёну Wi-Fi</string>
+  <!-- Wi-Fi settings screen, setting summary for setting the wifi frequency band [CHAR LIMIT=50]-->
   <string name="wifi_setting_countrycode_summary">Пакажыце код рэгіёну Wi\u2011Fi</string>
+  <!-- Wi-Fi settings screen, error message when the frequency band could not be set [CHAR LIMIT=50]. -->
   <string name="wifi_setting_countrycode_error">Пры наладзе кода рэгіёна Wi-Fi паўстала памылка.</string>
+  <!-- Wi-Fi region countries -->
   <string name="wifi_countrycode_entries_us">ЗША</string>
   <string name="wifi_countrycode_entries_ca">Канада, Тайвань</string>
   <string name="wifi_countrycode_entries_de">Германія</string>
@@ -923,65 +1093,114 @@
   <string name="wifi_countrycode_entries_sg">Ізраіль, Сінгапур</string>
   <string name="wifi_countrycode_entries_br">Бразілія</string>
   <string name="wifi_countrycode_entries_in">Індыя</string>
+  <!-- FINGERPRINT -->
+  <!-- Title for preference which sets the unlock. This is only used when the device has
+         a fingerprint sensor , otherwise just "unlock_set_unlock_launch_picker_title" is used -->
   <string name="unlock_set_unlock_launch_picker_title_with_fingerprint">Блакаванне экрана &amp; адбіткі пальцаў</string>
+  <!-- Summary for "Configure lockscreen" when security Fingerprint is enabled [CHAR LIMIT=45] -->
   <string name="unlock_set_unlock_mode_fingerprint">Адбітак пальца</string>
+  <!-- Title for preference that guides the user through creating a fingerprint [CHAR LIMIT=22] -->
   <string name="unlock_set_unlock_fingerprint_title">Адбітак пальца</string>
+  <!-- List item title to add a new fingerprint in fingerprint list screen -->
   <string name="fingerprint_item_add_new_fingerprint">Дадаць адбітак пальца</string>
+  <!-- Title for preference in fingerprint lockscreen settings, takes user to fingerprint list -->
   <string name="fingerprint_manage_fingerprints">Кіраванне адбіткамі</string>
+  <!-- Summary for preference in fingerprint lockscreen settings, takes user to fingerprint list -->
   <string name="fingerprint_manage_fingerprints_summary">Даданне альбо выдаленне зарэгістраваных адбіткаў</string>
+  <!-- Info explaining the backup lock which is used for fingerprint -->
   <string name="unlock_backup_fingerprint_info_summary">Якім метадам разблакаваць прыладу пры немагчымасці скарыстаць адбітак?</string>
+  <!-- Dialog title for renaming your fingerprint -->
   <string name="fingerprint_dialog_title_rename">Пераназваць адбітак</string>
+  <!-- EditText label for renaming your fingerprint in rename dialog -->
   <string name="fingerprint_dialog_name_label">Назва адбітка</string>
+  <!-- Title for dialog that shows when the user cannot add anymore fingers -->
   <string name="fingerprint_dialog_title_max_fingers_reached">Дададзена максімальная колькасць адбіткаў</string>
+  <!-- Message for dialog that shows when the user cannot add anymore fingers -->
   <string name="fingerprint_dialog_msg_max_fingers_reached">Вы можаце зарэгістраваць толькі <xliff:g id="finger" example="5">%d</xliff:g> адбіткаў пальцаў. Выдаліце непатрэбны адбітак.</string>
+  <!-- Title for number of finger prints enrolled -->
   <string name="fingerprint_title_manage_fingerprints"><xliff:g id="finger">%d</xliff:g> з <xliff:g id="max">%d</xliff:g> адбіткі пальцаў зарэгістраваны</string>
+  <!-- Description for managing fingerprints -->
   <string name="manage_fingerprints_description">Адбіткі пальцаў дазваляюць хутка разблакаваць тэлефон і рабіць фотаздымкі.</string>
+  <!-- Fingerprint enrollment introduction title -->
   <string name="fingerprint_enrollment_introduction_title">Вызначыце месцазнаходжанне сканара адбіткаў</string>
+  <!-- Fingerprint enrollment introduction instructions -->
   <string name="fingerprint_enrollment_introduction_instructions">Сканар адбіткаў мясцуецца на пярэдняй альбо задняй панэлі вашага тэлефона.</string>
+  <!-- Fingerprint enrollment scan fingerprint title -->
   <string name="fingerprint_enrollment_scan_title">Утрымвайце каля 3 секунд</string>
+  <!-- Fingerprint enrollment scan fingerprint instructions -->
   <string name="fingerprint_enrollment_scan_instructions">Прыкладзяце ўказальны палец да сканара для пачатку налады. Прыміце палец пасля вібрасігналу.</string>
+  <!-- Fingerprint enrollment error title during first step only -->
   <string name="fingerprint_enrollment_error_title_wrong_sensor">Паўторыце спробу</string>
+  <!-- Fingerprint enrollment error message -->
   <string name="fingerprint_enrollment_error_message">Шчыльна прыкладзяце палец да сканара, каб забяспечыць правільнае счытванне. Пераканаецеся таксама, што прыкладваеце той жа самы палец. Прыміце палец пасля вібрасігналу.</string>
+  <!-- Fingerprint enrollment error instructions -->
   <string name="fingerprint_enrollment_scan_instructions">Прыкладзяце ўказальны палец да сканара для пачатку налады. Прыміце палец пасля вібрасігналу.</string>
+  <!-- Fingerprint enrollment half way break title -->
   <string name="fingerprint_enrollment_break_title">Працягвайце з тым жа націскам</string>
+  <!-- Fingerprint enrollment introduction instructions -->
   <string name="fingerprint_enrollment_break_instructions">Працягвайце для сканавання краёў адбітка. Схавайце палец пасля вібрасігналу.</string>
+  <!-- Fingerprint enrollment finished title -->
   <string name="fingerprint_enrollment_finished_title">Адбітак дададзены!</string>
+  <!-- Fingerprint enrollment finished instructions -->
   <string name="fingerprint_enrollment_finished_message">Зараз з дапамогай адбітка пальца вы можаце разблакаваць экран альбо здымаць сябе на камеру.</string>
+  <!-- Next button title for finding sensor -->
   <string name="fingerprint_enrollment_found_it_label">Сканар знойдзены</string>
+  <!-- Next button title for finding sensor -->
   <string name="fingerprint_enrollment_add_another_label">Дадаць яшчэ</string>
+  <!-- Next button title for finding sensor -->
   <string name="fingerprint_enrollment_done_label">Выканана</string>
+  <!-- Wrong fingerprint sensor dialog title -->
   <string name="fingerprint_dialog_title_wrong_sensor">Памылачка! Гэта не сканар</string>
+  <!-- Wrong fingerprint sensor dialog message -->
   <string name="fingerprint_dialog_msg_wrong_sensor">Выкарыстоўвайце сканар адбіткаў на пярэдняй альбо задняй панэлі вашага тэлефона</string>
+  <!-- Failed fingerprint enrollment dialog title -->
   <string name="fingerprint_dialog_title_failed_enrollment">Не атрымалася прачытаць адбітак</string>
+  <!-- Failed fingerprint enrollment dialog message -->
   <string name="fingerprint_dialog_msg_failed_enrollment">Паспрабуйце іншы палец. Дадзены адбітак не атрымалася адсканаваць.</string>
+  <!-- Failed fingerprint enrollment button label -->
   <string name="fingerprint_enrollment_restart_label">Паўтарыць нанава</string>
+  <!-- Successful scan title for first successful scan -->
   <string name="fingerprint_successful_scan_title_first">Выдатна! Зараз паўторым</string>
+  <!-- Successful scan title for second to last successful scan -->
   <string name="fingerprint_successful_scan_final">Яшчэ раз, калі ласка</string>
+  <!-- Successful scan title for all other successful scans -->
   <string name="fingerprint_successful_scan_title_1">Атрымалася! Працягвайце</string>
   <string name="fingerprint_successful_scan_title_2">Цудоўна! І яшчэ раз</string>
   <string name="fingerprint_successful_scan_title_3">Выдатна! Так трымаць</string>
   <string name="fingerprint_successful_scan_title_4">Засталося зусім крыху</string>
   <string name="fingerprint_successful_scan_title_5">Добра атрымваецца! І яшчэ разок</string>
   <string name="fingerprint_successful_scan_title_6">Яшчэ ледзь-ледзь</string>
+  <!-- Fingerprint enrollment error titles -->
   <string name="fingerprint_enrollment_error_title_1">Вой! Паспрабуйце яшчэ раз</string>
   <string name="fingerprint_enrollment_error_title_2">Шкада, спроба не атрымалася</string>
   <string name="fingerprint_enrollment_error_title_3">Хмм, штосьці пайшло не так</string>
   <string name="fingerprint_enrollment_error_title_4">О не, паспрабуйце яшчэ раз</string>
   <string name="fingerprint_enrollment_error_title_5">Вой-вой-вой! Адбылася памылка</string>
+  <!-- Title for lockscreen settings, on dashboard, that is only used when a device supports
+         the fingerprint feature -->
   <string name="lockscreen_settings_and_fingerprint">Блакаванне экрана &amp; адбіткі пальцаў</string>
+  <!-- Menu label for reset the battery stats -->
   <string name="menu_stats_reset">Скід статыстыкі</string>
+  <!-- Reset stats confirmation dialog's message -->
   <string name="reset_stats_msg">Гісторыя выкарыстання батарэі будзе выдалена</string>
+  <!-- Dock battery not present message -->
   <string name="dock_battery_not_present">Батарэя дак-станцыі адсутнічае</string>
+  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging on Dock AC. -->
   <string name="battery_info_status_charging_dock_ac">Зарадка ад адаптара дак-станцыі</string>
+  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging over Dock USB. -->
   <string name="battery_info_status_charging_dock_usb">Зарадка праз USB дак-станцыю</string>
+  <!-- Lock screen setup wizard pattern complexity -->
   <string name="setup_lock_pattern_size_title">Складанасць узору</string>
   <string name="setup_lock_pattern_size_details">Колькі вузлоў будзе выкарыстана для вашай схемы? Чым больш вузлоў, тым складаней можа быць узор графічнага ключа.</string>
+  <!-- LTO download data over wi-fi only -->
   <string name="lto_download_data_wifi_only">Дапаможныя дадзеныя GPS</string>
   <string name="lto_download_data_wifi_only_on">Спампоўваць праз кожныя сеткі</string>
   <string name="lto_download_data_wifi_only_off">Спампоўваць толькі праз Wi-Fi</string>
+  <!-- Keep screen on strings -->
   <string name="keep_screen_on_never">Ніколі</string>
   <string name="keep_screen_on_debugging">Пры ўключанай адладцы</string>
   <string name="keep_screen_on_charging">Пры зарадцы</string>
+  <!-- Contributors cloud activity -->
   <string name="contributors_cloud_fragment_title">Імёны распрацоўнікаў</string>
   <string name="contributors_cloud_loading_message">Загрузка дадзеных\u2026</string>
   <string name="contributors_cloud_failed_message">Не атрымалася загрузіць звесткі пра ўдзельнікаў праекта</string>

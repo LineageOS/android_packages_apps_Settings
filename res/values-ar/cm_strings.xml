@@ -16,6 +16,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
   <plurals name="show_dev_countdown_cm">
     <item quantity="zero">أنت الآن على بُعد <xliff:g id="step_count">%1$d</xliff:g> خطوة من تمكين خيارات المطور.</item>
     <item quantity="one">أنت الآن على بُعد خطوة واحدة من تمكين خيارات المطور.</item>
@@ -24,9 +25,13 @@
     <item quantity="many">أنت الآن على بُعد <xliff:g id="step_count">%1$d</xliff:g> خطوة من تمكين خيارات المطور.</item>
     <item quantity="other">أنت الآن على بُعد <xliff:g id="step_count">%1$d</xliff:g> خطوة من تمكين خيارات المطور.</item>
   </plurals>
+  <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
   <string name="show_dev_on_cm">مكّنتَ خيارات المطور!</string>
+  <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
   <string name="show_dev_already_cm">لا داعي، فخيارات المطور مفعّلة.</string>
+  <!-- Launch Dev Tools -->
   <string name="development_tools_title">أدوات التطوير</string>
+  <!-- Setting checkbox title for root access -->
   <string name="root_access">صلاحيات الجذر</string>
   <string name="root_access_warning_title">السماح بالوصول الجذري؟</string>
   <string name="root_access_warning_message">السماح للتطبيقات بالوصول الجذري من الأمور الخطيرة للغاية وقد يشكل خطورة على حماية وسلامة نظامك!</string>
@@ -34,10 +39,12 @@
   <string name="root_access_apps">للتطبيقات فقط</string>
   <string name="root_access_adb">لـADB فقط</string>
   <string name="root_access_all">التطبيقات وADB</string>
+  <!-- Sound settings screen -->
   <string name="ring_mode_title">وضع الرنين</string>
   <string name="ring_mode_normal">عادي</string>
   <string name="ring_mode_vibrate">اهتزاز</string>
   <string name="ring_mode_mute">كتم الصوت</string>
+  <!-- Profiles settings  -->
   <string name="profiles_settings_title">أوضاع الجهاز</string>
   <string name="profiles_add">إضافة</string>
   <string name="profile_settings_title">ملف تعريفي</string>
@@ -59,32 +66,43 @@
   <string name="profile_app_group_category_title">تجاوز الإشعار</string>
   <string name="profile_app_group_item_instructions">إضافة أو إزالة مجموعات</string>
   <string name="profile_app_group_item_instructions_summary">إضافة أو إزالة مجموعات تطبيقات تجاوز الإشعارات إلى الملف التعريفي </string>
+  <!-- Profile mode options. -->
   <string name="profile_entries_on">يعمل</string>
   <string name="profile_entries_off">مغلق</string>
   <string name="profile_entries_no_override">دون فرض</string>
+  <!-- Add Profile -->
   <string name="profile_name_title">الاسم</string>
   <string name="new_profile_name">&lt;ملف تعريف جديد&gt;</string>
+  <!-- Rename Dialog  -->
   <string name="rename_dialog_title">إعادة تسمية</string>
   <string name="rename_dialog_message">ادخل اسم جديد</string>
   <string name="rename_dialog_hint">أدخل اسم الوضع</string>
+  <!-- Reset Profiles -->
   <string name="profile_reset_title">إعادة تعيين</string>
   <string name="profile_reset_message">أتريد حذف كل الأوضاع التي أنشأتها وإعادة الأوضاع المبدئيّة؟</string>
+  <!-- Profile network mode -->
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_4g">LTE</string>
   <string name="profile_networkmode_2g3g">2G/3G</string>
   <string name="profile_networkmode_2g3g4g">2G/3G/LTE</string>
+  <!-- Profile Config screen PreferenceGroup titles -->
   <string name="profile_volumeoverrides_title">تجاوز مستوى الصوت</string>
   <string name="volume_override_summary">تعيين الى %1$s/%2$s</string>
   <string name="profile_volume_override_checkbox_label">تجاوز حجم الصوت</string>
+  <!-- Menu item for managing profiles -->
   <string name="profile_profiles_manage">ملفات التعريف</string>
   <string name="profile_profile_manage">إدارة ملف التعريف</string>
+  <!-- Profile settings screen, section header for settings related to notification profiles -->
   <string name="profile_settings">إعدادات ملف التعريف</string>
   <string name="profile_trigger_connect">عند الاتصال</string>
   <string name="profile_trigger_disconnect">عند انقطاع الاتصال</string>
   <string name="profile_trigger_notrigger">لا مشغل</string>
+  <!-- Title for application group setting screen -->
   <string name="profile_applist_title">تطبيقات</string>
+  <!-- Add application dialog box title -->
   <string name="profile_choose_app">اختر التطبيق</string>
+  <!-- Profiles - system settings -->
   <string name="profile_system_settings_title">إعدادات النظام</string>
   <string name="profile_lockmode_title">وضع شاشة التأمين</string>
   <string name="profile_lockmode_policy_disabled_summary">عُطِّل هذا الخيار بناءً على سياسة مدير الجهاز</string>
@@ -94,6 +112,7 @@
   <string name="profile_brightness_title">سطوع الشاشة</string>
   <string name="profile_brightness_override_summary">يُصبح في وضع ال%1$d%%</string>
   <string name="profile_brightness_override_checkbox_label">فرض قيمة السّطوع</string>
+  <!-- Connection override toggles (not all are used at this time ) -->
   <string name="toggleWifi">Wi\u2011Fi</string>
   <string name="toggleWifiAp">نقطة اتصال Wi\u2011Fi محمولة</string>
   <string name="toggleBluetooth">بلوتوث</string>
@@ -102,6 +121,7 @@
   <string name="toggleSync">مزامنة تلقائية للبيانات</string>
   <string name="toggle2g3g4g">نوع الشبكة المفضل</string>
   <string name="toggleNfc">NFC</string>
+  <!-- Hardware keys -->
   <string name="button_pref_title">الأزرار</string>
   <string name="hardware_keys_power_key_title">زر الطاقة</string>
   <string name="hardware_keys_home_key_title">زر الرئيسية</string>
@@ -144,6 +164,7 @@
   <string name="button_wake_summary">تجاوز التحكم في التشغيل</string>
   <string name="home_answer_call_title">الرد على المكالمة</string>
   <string name="home_answer_call_summary">الضغط على زر الرئيسية سيرد على المكالمة الواردة حالياً</string>
+  <!-- Key backlight -->
   <string name="button_backlight_title">الإضاءة الخلفية</string>
   <string name="button_backlight_enabled">إضاءة أزرار</string>
   <string name="keyboard_backlight_enabled">إضاءة لوحة المفاتيح</string>
@@ -154,6 +175,7 @@
   <string name="backlight_summary_disabled">معطلة</string>
   <string name="backlight_summary_enabled_with_timeout">تمكين لـ <xliff:g id="timeout"> %s </xliff:g></string>
   <string name="backlight_summary_enabled">تمكين</string>
+  <!-- Power menu -->
   <string name="power_menu_title">قائمة خيارات التشغيل</string>
   <string name="power_menu_reboot_title">قائمة إعادة التمهيد</string>
   <string name="power_menu_screenshot_title">لقطة للشاشة</string>
@@ -166,12 +188,16 @@
   <string name="power_menu_sound_title">لوحة الصوت</string>
   <string name="power_menu_bug_report_disabled">تقرير الأخطاء معطل في إعدادات التطوير</string>
   <string name="power_menu_profiles_disabled">أوضاع الجهاز مُعطّلة</string>
+  <!-- Backlight brightness settings screen -->
   <string name="adaptive_backlight_title">الإضاءة الخلفية التكيفية</string>
   <string name="adaptive_backlight_summary">الضبط الديناميكي لسطوع الإضاءة الخلفية لشاشة العرض بما يزيد من عمر البطارية مع الحفاظ على إمكانية الاستخدام</string>
+  <!-- Sunlight readability enhancement screen -->
   <string name="sunlight_enhancement_title">تعزيز ضوء الشمس</string>
   <string name="sunlight_enhancement_summary">تحسين سطوع الشاشة وإمكانية قراءتها أسفل ضوء الشمس الساطع</string>
+  <!-- Color enhancement settings screen -->
   <string name="color_enhancement_title">تعزيز اللون</string>
   <string name="color_enhancement_summary">تحسين ألوان الشاشة ديناميكياً</string>
+  <!-- Blacklist preferences -->
   <string name="blacklist_title">قائمة المتصلين المحظورين</string>
   <string name="blacklist_edit_dialog_title">تحرير رقم الهاتف المحظور</string>
   <string name="blacklist_prefs">إعدادات</string>
@@ -195,11 +221,14 @@
   <string name="blacklist_policy_block_calls">حظر المكالمات الواردة</string>
   <string name="blacklist_policy_block_messages">حظر الرسائل الواردة</string>
   <string name="blacklist_bad_number_add">تعذر إضافة رقم هاتف غير صالح إلى قائمة المتصلين المحظورين</string>
+  <!-- Blacklist management -->
   <string name="remove_blacklist_number_title">إزالة الرقم</string>
   <string name="remove_blacklist_entry">هل تريد إزالة رقم الهاتف المحظور هذا؟</string>
   <string name="select_contact">حدد جهة الاتصال</string>
+  <!-- Protected apps lockpattern reset button -->
   <string name="lockpattern_reset_button">إعادة تعيين النمط</string>
   <string name="lockpattern_settings_reset_summary">أدخل الحساب الأولي و البريد الإلكتروني وكلمة المرور المقترنة لإعادة تعيين نمط التأمين</string>
+  <!-- Protected Apps -->
   <string name="menu_hidden_apps_delete">إعادة تعيين</string>
   <string name="menu_hidden_apps_reset_lock">إعادة تعيين تأمين النمط</string>
   <string name="protected_apps">التطبيقات المحمية</string>
@@ -209,6 +238,7 @@
   <string name="pa_login_submit_button">تسجيل الدخول</string>
   <string name="pa_login_checking_password">التحقق من الحساب\u2026</string>
   <string name="pa_login_incorrect_login">تسجيل دخول غير صحيح</string>
+  <!-- Display : Rotation  -->
   <string name="display_rotation_title">الدوران</string>
   <string name="display_rotation_disabled">معطلة</string>
   <string name="display_rotation_unit">درجات</string>
@@ -218,6 +248,7 @@
   <string name="display_rotation_90_title">90 درجة</string>
   <string name="display_rotation_180_title">180 درجة</string>
   <string name="display_rotation_270_title">270 درجة</string>
+  <!-- Sms security limit -->
   <string name="app_security_title">أمان التطبيق</string>
   <string name="sms_security_check_limit_title">تحديد حد الرسالة النصية القصيرة SMS</string>
   <string name="sms_security_check_limit_summary">تستطيع التطبيقات إرسال %d رسائل في الدقيقة قبل طلب إذنك</string>
@@ -228,22 +259,33 @@
   <string name="block_notifications_title">إشعارات عامل التصفية</string>
   <string name="block_notifications_summary">إدارة اﻹشعارات التي تم تجاهلها وعوامل التصفية</string>
   <string name="no_filters_title">لم يتم تعيين عوامل التصفية</string>
+  <!-- CM Updater -->
   <string name="cmupdate_settings_title">تحديثات CyanogenMod</string>
+  <!-- Settings switch for updating Cyanogen recovery -->
   <string name="update_recovery_title">تحديث استعادة Cyanogen (Cyanogen recovery)</string>
   <string name="update_recovery_summary">تحديث الاستعادة بتحديثات النظام</string>
   <string name="update_recovery_on_warning">ملحوظة: عندما يتم تمكين هذه الميزة، سيتم استبدال النسخة المستعادة المثبتة بأخرى مضمنة مع الإصدار الحالي من برنامج التشغيل العامل.\n\nوسيتم تحديث نسختك المستعادة مع ترقيات النظام، مما يساعد على ضمان التوافق مع الإصدارات المستقبلية. \n\nهل ترغب في تمكين هذه الميزة؟</string>
   <string name="update_recovery_off_warning">تحذير: عندما يتم تعطيل هذه الميزة، لن يتم تحديث نسختك المستعادة المثبتة بترقيات النظام.\n\n كما أن ترقيات نظام التشغيل الجديدة قد لا يمكن تثبيتها مع النسخ المستعادة القديمة أو المخصصة. \n\nهل ترغب في تعطيل هذه الميزة؟</string>
+  <!-- About phone screen, CyanogenMod version -->
   <string name="mod_version">إصدار CyanogenMod</string>
   <string name="mod_version_default">مجهول</string>
+  <!-- About phone screen, Device model -->
   <string name="device_model">طراز الجهاز</string>
+  <!-- About phone screen, Device name -->
   <string name="device_name">اسم الجهاز</string>
+  <!-- About phone screen, build date -->
   <string name="build_date">تاريخ إنشاء</string>
+  <!-- About phone screen, service state -->
   <string name="phone_service_state">صوت: <xliff:g id="voice_state">%1$s</xliff:g>, بيانات: <xliff:g id="data_state">%2$s</xliff:g></string>
+  <!--- Tap To Wake -->
   <string name="double_tap_to_wake_title">الضغط المزدوج لتنبيه</string>
   <string name="double_tap_to_wake_summary">المس الشاشة مرتين لتشغيل العرض</string>
+  <!-- Proximity wake -->
   <string name="proximity_wake_title">منع الاستيقاظ العشوائي</string>
   <string name="proximity_wake_summary">التحقق من مستشعر القرب قبل إيقاظ الشاشة</string>
+  <!-- Privacy Settings Header item -->
   <string name="privacy_settings_cyanogenmod_title">الخصوصية</string>
+  <!-- Privacy Guard -->
   <string name="privacy_guard_default_title">تمكين بشكل افتراضي</string>
   <string name="privacy_guard_default_summary">تمكين بشكل افتراضي لتطبيقات المثبتة حديثا</string>
   <string name="privacy_guard_manager_title">حارس الخصوصية</string>
@@ -256,29 +298,43 @@
   <string name="privacy_guard_manager_show_system_apps">إظهار تطبيقات مدمجة</string>
   <string name="privacy_guard_notification_title">إظهار الإشعار</string>
   <string name="app_ops_btn_text">تعديل</string>
+  <!-- Increasing ring tone volume -->
   <string name="increasing_ring_volume_option_title">حجم الصوت متزايد</string>
   <string name="increasing_ring_min_volume_title">حجم الصوت البدئيّ</string>
   <string name="increasing_ring_ramp_up_time_title">زمن التدرج</string>
+  <!-- Advanced reboot options -->
   <string name="advanced_reboot_title">إعادة التمهيد المتقدم</string>
   <string name="advanced_reboot_summary">عند إلغاء التأمين، يتم تضمين الخيارات في قائمة الطاقة خيارات التشغيل الى عملية الاسترداد معرف معلومات أو إجراء إعادة التمهيد السلس. مُحمّل الإقلاع</string>
+  <!-- Setting checkbox title for Whether to enable Android debugging support on the phone. -->
   <string name="enable_adb_cm">تصحيح أخطاء Android</string>
+  <!-- Setting checkbox summary for Whether to enable Android debugging support on the phone -->
   <string name="enable_adb_summary_cm">⁯تمكين واجهة جسر تصحيح أخطاء Android⁯ (adb)</string>
+  <!-- Android debugging over WiFi -->
   <string name="adb_over_network">ADB عبر الشبكة</string>
   <string name="adb_over_network_summary">تمكين تنقيح الأخطاء عبر TCP/IP عبر واجهات شبكة الاتصال (Wi\u2011Fi وUSB). يُعاد تعيين هذا الإعداد عند إعادة التشغيل</string>
+  <!-- Warning for Adb over Network -->
   <string name="adb_over_network_warning">تحذير: عند تمكين ADB عبر الشبكة، يصبح هاتفك عرضة للتطفل على جميع شبكات المتصل بها!\n\nاستخدم هذه الميزة فقط عندما تكون متصلاً بشبكات موثوق بها.\n\nهل تريد حقا تمكين هذه الوظيفة؟</string>
+  <!-- Setting checkbox summary for displaying USB debugging notification -->
   <string name="adb_notify">إشعار تنقيح الأخطاء</string>
   <string name="adb_notify_summary">عرض إشعار عند تمكين تنقيح الأخطاء عبر USB أو الشبكات</string>
+  <!-- Hostname setting -->
   <string name="device_hostname">اسم مضيف الجهاز</string>
+  <!-- Development shortcut -->
   <string name="development_shortcut_title">اختصار المطور</string>
   <string name="development_shortcut_summary">تمكين اختصارات إدارة التطبيقات في قائمة التطبيقات الأخيرة</string>
+  <!-- tap-to-sleep -->
   <string name="double_tap_to_sleep_title">المس مرتين لبدء وضع السكون</string>
   <string name="double_tap_to_sleep_summary">الضغط مرتين فوق شريط الحالة لإطفاء الشاشة</string>
+  <!-- Turn on display when power connected; turn off display when power disconnected -->
   <string name="wake_when_plugged_or_unplugged_title">الإيقاظ عند التوصيل</string>
   <string name="wake_when_plugged_or_unplugged_summary">تشغيل الشاشة عند الاتصال أو قطع الاتصال بمصدر الطاقة</string>
+  <!-- Kill app long-press back -->
   <string name="kill_app_longpress_back">زر إلغاء التطبيق مجدداً</string>
   <string name="kill_app_longpress_back_summary">قم بإنهاء التطبيق الأمامي بالضغط الطويل على زر العودة</string>
+  <!-- Buttons - Enable navbar -->
   <string name="disable_navkeys_title">تمكين شريط التنقل على الشاشة</string>
   <string name="disable_navkeys_summary">تمكين شريط التنقل على الشاشة وتعطيل أزرار الجهاز</string>
+  <!-- Navigation Bar -->
   <string name="navigation_bar_category">شريط التنقل</string>
   <string name="navigation_bar_left_title">وضع اليد اليسرى</string>
   <string name="navigation_bar_left_summary">وضع شريط التنقل على الجانب الأيسر من الشاشة عندما تكون في وضعها الأفقي</string>
@@ -292,11 +348,13 @@
   <string name="navigation_bar_arrow_keys_summary">عرض أزرار المؤشر يميناً ويساراً أثناء الكتابة (يمنع ظهور زر مبدل وسيلة الإدخال).</string>
   <string name="navigation_bar_recents_title">يحدث ضغط طويل</string>
   <string name="header_category_personalization">إضفاء الطابع الشخصي</string>
+  <!-- Status bar -->
   <string name="status_bar_title">شريط الحالة</string>
   <string name="status_bar_toggle_brightness">التحكم بالسطوع</string>
   <string name="status_bar_toggle_brightness_summary">ضبط السطوع بالانزلاق عبر شريط الحالة</string>
   <string name="status_bar_notif_count_title">إظهار عدد الإشعار</string>
   <string name="status_bar_notif_count_summary">عرض عدد الإشعارات المعلقة</string>
+  <!-- Status bar - Clock -->
   <string name="status_bar_clock_style_title">نمط الساعة</string>
   <string name="status_bar_clock_style_right">يُمنى</string>
   <string name="status_bar_clock_style_left">يُسرى</string>
@@ -307,22 +365,26 @@
   <string name="status_bar_am_pm_normal">عادي</string>
   <string name="status_bar_am_pm_small">صغير</string>
   <string name="status_bar_am_pm_hidden">خفي</string>
+  <!-- Status bar - Battery -->
   <string name="status_bar_battery_style_title">نمط حالة البطارية</string>
   <string name="status_bar_battery_style_icon_portrait">صورة الرمز في وضع رأسي</string>
   <string name="status_bar_battery_style_icon_landscape">صورة الرمز في وضع أفقي</string>
   <string name="status_bar_battery_style_circle">دائرة</string>
   <string name="status_bar_battery_style_text">نص</string>
   <string name="status_bar_battery_style_hidden">خفي</string>
+  <!-- Status bar - Battery percentage -->
   <string name="status_bar_battery_percentage_title">نسبة شحن البطارية</string>
   <string name="status_bar_battery_percentage_default">خفي</string>
   <string name="status_bar_battery_percentage_text_inside">داخل الرمز</string>
   <string name="status_bar_battery_percentage_text_next">بجوار الرمز</string>
+  <!-- Notification light dialogs -->
   <string name="edit_light_settings">تحرير إعدادات الضوء</string>
   <string name="pulse_speed_title">طول النبض والسرعة</string>
   <string name="default_time">عادي</string>
   <string name="custom_time">مخصص</string>
   <string name="dialog_delete_title">حذف</string>
   <string name="dialog_delete_message">إزالة العنصر المحدد؟</string>
+  <!-- Values for the notification light pulse spinners -->
   <string name="pulse_length_always_on">على الدوام</string>
   <string name="pulse_length_very_short">قصيرة جداً</string>
   <string name="pulse_length_short">قصير</string>
@@ -334,12 +396,14 @@
   <string name="pulse_speed_normal">عادي</string>
   <string name="pulse_speed_slow">بطىء</string>
   <string name="pulse_speed_very_slow">بطيئة جداً</string>
+  <!-- Battery light settings -->
   <string name="battery_light_title">ضوء البطارية</string>
   <string name="battery_low_pulse_title">نبض إذا كانت البطارية منخفضة</string>
   <string name="battery_light_list_title">ألوان</string>
   <string name="battery_light_low_color_title">البطارية منخفضة</string>
   <string name="battery_light_medium_color_title">شحن</string>
   <string name="battery_light_full_color_title">مشحونة بالكامل</string>
+  <!-- Lights settings screen, notification light settings -->
   <string name="notification_light_title">ضوء الإشعار</string>
   <string name="notification_light_general_title">عام</string>
   <string name="notification_light_applist_title">تطبيقات</string>
@@ -351,19 +415,26 @@
   <string name="notification_light_screen_on">الأضواء عند تشغيل الشاشة</string>
   <string name="notification_light_use_multiple_leds">مصابيح دليلية متعددة</string>
   <string name="keywords_lights_brightness_level">تعتيم سطوع المصابيح الدليلية</string>
+  <!-- Sound & notification > Sound section: Title for the option defining the default notification ringtone. [CHAR LIMIT=30] -->
   <string name="notification_ringtone_title_cm">نغمة الإشعار</string>
+  <!-- Launch music player when headset is connected -->
   <string name="headset_connect_player_title">بدء تشغيل تطبيق الموسيقى</string>
   <string name="headset_connect_player_summary">بدء تشغيل تطبيق الموسيقى المبدئيّ عند توصيل سماعات الرأس</string>
+  <!-- Whether to display IME switcher notifcation -->
   <string name="ime_switcher_notify">رمز التحديد</string>
   <string name="ime_switcher_notify_summary">عرض رمز تحديد طريقة الإدخال </string>
+  <!-- Per app controls for LP keyguard notifications -->
   <string name="app_notification_show_on_keyguard_title">إظهار على شاشة التأمين</string>
   <string name="app_notification_show_on_keyguard_summary">إظهار إشعارات من هذا التطبيق على شاشة التأمين</string>
   <string name="app_notification_no_ongoing_on_keyguard_title">منع الإشعارات الثابتة على شاشة التأمين</string>
   <string name="app_notification_no_ongoing_on_keyguard_summary">عدم إظهار إشعارات ثابتة من هذا التطبيق على شاشة التأمين</string>
+  <!-- High touch sensitivity -->
   <string name="high_touch_sensitivity_title">حساسية ذات لمس عالي</string>
   <string name="high_touch_sensitivity_summary">زيادة حساسية شاشة اللمس حتى يمكن استخدامها أثناء ارتداء القفازات</string>
+  <!-- Touchscreen hovering -->
   <string name="touchscreen_hovering_title">المرور فوق الشاشة اللمسية</string>
   <string name="touchscreen_hovering_summary">يسمح لك بالمرور فوق الشاشة مثل الماوس في مستعرضات الويب، أو سطح المكتب عن بُعد، إلخ</string>
+  <!-- App ops -->
   <string name="app_ops_summaries_coarse_location">موقع خشن</string>
   <string name="app_ops_summaries_fine_location">موقع جيد</string>
   <string name="app_ops_summaries_gps">نظام تحديد المواقع</string>
@@ -479,6 +550,7 @@
   <string name="app_ops_labels_data_change">تغيير البيانات</string>
   <string name="app_ops_labels_wake_up">استيقظ</string>
   <string name="app_ops_labels_su">الوصول إلى الجذر</string>
+  <!-- App ops categories -->
   <string name="app_ops_categories_location">الموقع</string>
   <string name="app_ops_categories_personal">شخصي</string>
   <string name="app_ops_categories_messaging">المراسلة</string>
@@ -486,10 +558,12 @@
   <string name="app_ops_categories_device">الجهاز</string>
   <string name="app_ops_categories_bootup">إعادة تحميل</string>
   <string name="app_ops_categories_su">الوصول إلى الجذر</string>
+  <!-- App ops permissions -->
   <string name="app_ops_permissions_allowed">مسموح به</string>
   <string name="app_ops_permissions_ignored">تم تجاهله</string>
   <string name="app_ops_permissions_always_ask">دائماً اسأل</string>
   <string name="ok">موافق</string>
+  <!-- Profiles -->
   <string name="profile_menu_delete_title">حذف</string>
   <string name="profile_action_none">يبقى دون تغيير</string>
   <string name="profile_action_system">الإعداد الافتراضي للنظام</string>
@@ -507,6 +581,7 @@
   <string name="profile_setup_actions_title_config">إعادة تهيئة الأحداث</string>
   <string name="profile_appgroups_manage">مجموعات التطبيقات</string>
   <string name="profile_appgroup_manage">إدارة مجموعة التطبيقات</string>
+  <!-- Title for application group setting screen -->
   <string name="profile_appgroups_title">مجموعات التطبيقات</string>
   <string name="profile_new_appgroup">مجموعة جديدة من التطبيقات</string>
   <string name="profile_delete_appgroup">أتريد حذف مجموعة التطبيقات هذه؟</string>
@@ -514,12 +589,14 @@
   <string name="profile_appgroup_name_title">الاسم</string>
   <string name="duplicate_appgroup_name">اسم مجموعة التطبيقات مكرر!</string>
   <string name="profile_app_delete_confirm">أتريد إزالة هذا التطبيق؟</string>
+  <!-- Profile Settings sound modes labels -->
   <string name="sound_mode">وضع الإشعارات</string>
   <string name="ringer_mode">وضع الرنين</string>
   <string name="lights_mode">وضع الأضواء</string>
   <string name="vibrate_mode">الوضع الاهتزاز</string>
   <string name="choose_soundtone">اختر نغمة الإشعار</string>
   <string name="choose_ringtone">اختر نغمة الرنين</string>
+  <!-- Sound settings screen, setting option name to pick ringtone (a list dialog comes up)-->
   <string name="soundtone_title">نغمة الإشعارات</string>
   <string name="no_bluetooth_triggers">لا توجد أجهزة بلوتوث مقترنة. \nالمس لإقران جهاز بلوتوث قبل تهيئة المشغلات.</string>
   <string name="no_wifi_triggers">لا توجد نقاط اتصال واي فاي مهيئة. \nالمس للاتصال بالواي فاي قبل تهيئة المشغلات.</string>
@@ -527,30 +604,40 @@
   <string name="no_triggers_configured_nfc">المس لإنشاء مشغل NFC جديد.</string>
   <string name="profile_setup_setup_triggers_description">اختر الأحداث التي تُفعّل هذا الوضع عند وقوعها</string>
   <string name="profile_setup_actions_description">والآن اختر ما يحدث عندما يبدأ هذا الوضع</string>
+  <!-- App ops detail -->
   <string name="app_ops_entry_summary"><xliff:g id="op">%1$s</xliff:g> (مستخدم<xliff:g id="count">%2$s</xliff:g>)</string>
   <string name="app_ops_allowed_count">المسموح بها <xliff:g id="count" example="2 times">%s</xliff:g></string>
   <string name="app_ops_ignored_count">مرفوض<xliff:g id="count" example="2 times">%s</xliff:g></string>
   <string name="app_ops_both_count">مسموح<xliff:g id="count">%1$s</xliff:g>, مرفوض<xliff:g id="count">%2$s</xliff:g></string>
+  <!-- App ops menu options -->
   <string name="app_ops_show_user_apps">إظهار تطبيقات المستخدم</string>
   <string name="app_ops_show_system_apps">إظهار تطبيقات مضمنة</string>
   <string name="app_ops_reset_counters">إعادة تعيين عدادات السماح/رفض</string>
   <string name="app_ops_reset_confirm_title">تأكيد إعادة تعيين العدادات</string>
   <string name="app_ops_reset_confirm_mesg">هل أنت متأكد من رغبتك في إعادة تعيين العدادات؟</string>
+  <!-- Font size sample text. This needs to be a very short string, as it is shown in
+    multiple font sizes in a limited amount of space. -->
   <string name="font_size_sample">عينة</string>
+  <!-- Volume settings - Volume adjustment sound -->
   <string name="volume_adjust_sounds_title">أصوات تعديل حجم الصوت </string>
+  <!-- Hardware tunables - Vibrator intensity -->
   <string name="vibrator_intensity_title">شدة الاهتزاز</string>
   <string name="vibrator_warning">لا ينصح باستخدام قيم أعلى من %1$d</string>
+  <!-- Hardware tunables - Color calibration -->
   <string name="color_calibration_title">معايرة الألوان</string>
   <string name="color_calibration_summary">معايرة للألوان على الشاشة</string>
   <string name="color_red_title">أحمر</string>
   <string name="color_green_title">أخضر</string>
   <string name="color_blue_title">أزرق</string>
+  <!-- Hardware tunables - Gamma calibration -->
   <string name="gamma_tuning_title_head">معايرة چاما</string>
   <string name="gamma_tuning_summary_head">قيم Tweak gamma</string>
   <string name="gamma_tuning_control_set_header">مجموعة <xliff:g id="index">%d</xliff:g></string>
+  <!-- used if no name provided by overlay -->
   <string name="gamma_tuning_contrast">التباين</string>
   <string name="gamma_tuning_brightness">السطوع</string>
   <string name="gamma_tuning_saturation">التشبع</string>
+  <!-- Display settings.  Screen color. -->
   <string name="screencolor">لون الشاشة</string>
   <string name="screencolor_summary">ضبط لون شاشة أو مستوى التشبع أو التباين أو الكثافة</string>
   <string name="custom_screencolor">لون الشاشة المخصص</string>
@@ -568,26 +655,47 @@
   <string name="screen_color_setting_vivid">حي</string>
   <string name="screen_color_setting_custom">مخصص</string>
   <string name="settings_reset_button">إعادة تعيين</string>
+  <!-- Message when bluetooth dialog for pin entry is showing  when HIGH security enabled-->
   <string name="bluetooth_enter_pin_msg_hs">للإقتران مع :<xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g>Typeأدخل PIN الجهاز مطلوب (16 رقماً أو أكثر):</string>
+  <!-- Bluetooth settings.  The user-visible string that is used whenever referring to the DUN profile. -->
   <string name="bluetooth_profile_dun">الوصول إلى الشبكة عبر الطلب الهاتفي</string>
+  <!-- Bluetooth settings.  The user-visible string that is used whenever referring to the SAP profile. -->
   <string name="bluetooth_profile_sap">الوصول إلى شريحة SIM</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the DUN checkbox preference when DUN is connected. -->
   <string name="bluetooth_dun_profile_summary_connected">متّصل بخادم DUN</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the pbap checkbox preference when pbap is connected. -->
   <string name="bluetooth_pbap_profile_summary_connected">متّصل خادم pbap</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the SAP checkbox preference when SAP is connected. -->
   <string name="bluetooth_sap_profile_summary_connected">متّصل بخادوم الوصول إلى شريحة SIM</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the DUN checkbox preference that describes how checking it will set the DUN profile as preferred. -->
   <string name="bluetooth_dun_profile_summary_use_for">الاستخدام للوصول إلى الشبكة عبر الاتصال الهاتفي</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the pbap checkbox preference that describes how checking it will set the pbap profile as preferred. -->
   <string name="bluetooth_pbap_profile_summary_use_for">الاستخدام لمشاركة جهات الاتصال</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the SAP checkbox preference that describes how checking it will set the SAP profile as preferred. -->
   <string name="bluetooth_sap_profile_summary_use_for">الاستخدام للوصول إلى شريحة SIM</string>
+  <!-- Bluetooth settings.  A checkbox to set if we should accept all the file types regardless of their presence in MIME type whitelist -->
   <string name="bluetooth_accept_all_files">قبول كل أنواع الملفات</string>
+  <!-- SIM lock settings title  [CHAR LIMIT=40] -->
   <string name="sim_lock_settings_cm">إعدادات قفل شريحة SIM/RUIM</string>
+  <!-- Security & location settings screen, setting option name  [CHAR LIMIT=40] -->
   <string name="sim_lock_settings_category_cm">إعداد قفل شريحة SIM/RUIM</string>
+  <!-- Security & location settings screen, section heading for settings related to sim card locking  [CHAR LIMIT=40] -->
   <string name="sim_lock_settings_title_cm">قفل شريحة SIM/RUIM</string>
+  <!-- SIM card lock settings screen, SIM PIN dialog message when PIN disable fails-->
   <string name="sim_pin_disable_failed">لا يمكن تعطيل رقم التعريف الشخصي.</string>
+  <!-- SIM card lock settings screen, SIM PIN dialog message when PIN enable fails-->
   <string name="sim_pin_enable_failed">لا يمكن تمكين رقم رقم التعريف الشخصي.</string>
+  <!-- SIM password can't be changed as SIM LOCK is not enabled: -->
   <string name="sim_pin_change_failed_enable_sim_lock">لتغيير رقم التعريف الشخصي لشريحة SIM/RUIM، قم بتمكين قفل SIM/RUIM أولاً.</string>
+  <!-- SIM lock can't be changed - not supported -->
   <string name="sim_enable_disable_lock_not_supported">قفل شريحة SIM/RUIM غير معتمد من قبل البطاقة.</string>
+  <!-- SIM card lock settings screen, toast displayed on wrong PIN1: -->
   <string name="sim_pin_attempts">\nالمحاولات المتبقية:</string>
+  <!-- SIM card lock settings screen, toast displayed on PIN1 enable: -->
   <string name="sim_pin_enabled">تم تمكينPIN1</string>
+  <!-- SIM card lock settings screen, toast displayed on PIN1 disable: -->
   <string name="sim_pin_disabled">PIN1 معطل</string>
+  <!-- string resources for USB OTG & UICC features -->
   <string name="storage_usb">وحدة تخزين USB</string>
   <string name="storage_uicc">وحدة تخزين UICC</string>
   <string name="sdcard_eject" product="default">قم بإلغاء تحميل بطاقة SD</string>
@@ -608,7 +716,9 @@
   <string name="uicc_format_summary" product="default">مسح كافة البيانات الموجودة على وحدة التخزين UICC، مثل الموسيقى والصور</string>
   <string name="uicc_mount" product="default">تحميل وحدة تخزين UICC</string>
   <string name="uicc_insert_summary" product="default">أدخل وحدة تخزين UICC لتحميلها</string>
+  <!-- Title of dialog asking user to confirm before enabling UMS. [CHAR LIMIT=48] -->
   <string name="usb_settings_enable_ums_title">تمكين التخزين كبير السعة؟</string>
+  <!-- Message of dialog asking user to confirm before enabling UMS. [CHAR LIMIT=NONE] -->
   <string name="usb_settings_enable_ums_message">تعتمد مكونات النظام والتطبيقات على توافر وحدات التخزين الأساسية دائماً. هذه الميزة تتعارض مع تلك الوظيفة. من المستحسن جداً استخدام MTP بدلاً من ذلك. هل أنت متأكد من أنك تريد تمكين التخزين كبير السعة؟</string>
   <string name="dlg_confirm_sdcard_unmount_title" product="default">إلغاء تحميل بطاقة SD؟</string>
   <string name="dlg_confirm_usb_unmount_title" product="default">إلغاء تحميل وحدة تخزين USB؟</string>
@@ -634,18 +744,27 @@
   <string name="sdcard_media_format_gesture_explanation" product="default">أنت بحاجة إلى رسم نمط إلغاء القفل للتأكد من أنك تريد مسح بطاقة SD.</string>
   <string name="usb_media_format_gesture_explanation" product="default">أنت بحاجة إلى رسم نمط إلغاء التأمين الخاص بك للتأكد من أنك تريد مسح جهاز تخزين USB.</string>
   <string name="uicc_media_format_gesture_explanation" product="default">أنت بحاجة إلى رسم نمط إلغاء القفل للتأكد من أنك تريد مسح وحدة التخزين UICC.</string>
+  <!-- Storage menu, label for internal media storage -->
   <string name="internal_sd_format">مسح وحدة تخزين الوسائط الداخلية</string>
   <string name="internal_sd_format_summary">مسح كافة البيانات الموجودة على وحدة تخزين الوسائط الداخلية، مثل الموسيقى والصور</string>
+  <!-- Media & phone storage settings screen, label for check box to erase media storage [CHAR LIMIT=30] -->
   <string name="master_clear_desc_erase_internal_storage">\n\nلمسح الموسيقى والصور وبيانات المستخدم الأخرى، يجب مسح<b>وحدة تخزين الوسائط الداخلية</b> .</string>
   <string name="erase_internal_storage">مسح وحدة تخزين الوسائط الداخلية</string>
   <string name="erase_internal_storage_description">مسح كافة البيانات الموجودة على وحدة تخزين الوسائط الداخلية، مثل الموسيقى والصور</string>
+  <!-- Rescan storage -->
   <string name="storage_rescan_media">إعادة مسح الوسائط لتحديد حجم التخزين</string>
+  <!-- [CHAR LIMIT=130] Location mode screen, sub category for IZat Location -->
   <string name="location_category_enhanced_location">موقع معزز (IZat)</string>
+  <!-- [CHAR LIMIT=NONE] App ops settings summary, on main settings screen. If clicked, the user is taken to a settings screen for app operations -->
   <string name="app_ops_settings_summary">عرض أو تغيير أذونات التطبيقات</string>
+  <!-- Setting checkbox summary when device is in Charging mode -->
   <string name="enable_adb_summary_charging">الجهاز في وضع الشحن، عُطِّل تنقيح الأخطاء عبر USB</string>
+  <!-- Title of checkbox setting that enable quickboot. [CHAR LIMIT=32] -->
   <string name="enable_quickboot_title">تمكين وضع التشغيل السريع</string>
+  <!-- Summary of checkbox setting that enable quickboot. [CHAR LIMIT=64] -->
   <string name="enable_quickboot_summary">وضع الجهاز في وضع التشغيل السريع بدلاً من إيقاف التشغيل العادي.</string>
   <string name="data_usage_tab_slot">شريحة SIM <xliff:g id="index">%d </xliff:g></string>
+  <!-- MultiSim Settings changes-->
   <string name="sim_enabler_title">حالة شريحة SIM</string>
   <string name="sim_enabler_summary">SIM هي <xliff:g id="status" example="enabled">%1$s</xliff:g> شريحة</string>
   <string name="sim_enabled">تمكين</string>
@@ -669,12 +788,19 @@
   <string name="external_storage_turn_off">تم إيقاف وحدة التخزين الخارجية</string>
   <string name="stats_collection_title">جمع الإحصائيات</string>
   <string name="stats_collection_summary">عند التمكين، يسمح بجمع المقاييس</string>
+  <!-- Category title for Charging sounds (Power state change) specific Settings.
+         [CHAR LIMIT=40] -->
   <string name="power_notifications_category_title">أصوات الشحن</string>
+  <!-- Sound settings, Charging sounds enable/disable, setting check box label -->
   <string name="power_notifications_enable_title">تمكين</string>
   <string name="power_notifications_enable_summary">تشغيل الصوت عند الاتصال أو قطع الاتصال من مصدر الطاقة</string>
+  <!-- Sound settings, Charging sounds vibrate enable/disable, setting check box label -->
   <string name="power_notifications_vibrate_title">إهتزاز</string>
+  <!-- Sound settings, Charging sounds ringtone selection, preference label -->
   <string name="power_notifications_ringtone_title">صوت الإشعار</string>
+  <!-- Sound settings, charging sounds label for ringtone == none -->
   <string name="power_notifications_ringtone_silent">صامت</string>
+  <!-- Voice Wakeup -->
   <string name="voice_wakeup_settings_title">صوت التنبيه</string>
   <string name="voice_wakeup_retrain_title">إعادة تدريب صوتك</string>
   <string name="voice_wakeup_activity_title">نشاط مراد إطلاقه</string>
@@ -682,26 +808,38 @@
   <string name="picker_activities">الأنشطة</string>
   <string name="select_custom_app_title">حدد التطبيق المخصص</string>
   <string name="select_custom_activity_title">حدد نشاط مخصص</string>
+  <!-- Battery : Automatic performance profiles -->
   <string name="autoperf_title">تمكين ملفات التعريف لكل تطبيق</string>
   <string name="autoperf_summary">اختيار وضع بطارية مناسب تلقائياً للتطبيقات المختلفة</string>
   <string name="perf_profile_title">وضع البطارية</string>
+  <!-- Development : Force high-end graphics -->
   <string name="pref_force_highend_gfx_title">فرض الرسومات الحديثة</string>
   <string name="pref_force_highend_gfx_summary">تمكين التأثيرات البصرية الحديثة كشريط التنقل/ الحالة الشفاف (تتطلب إعادة التمهيد)</string>
+  <!-- EdgeGesture service -->
   <string name="edge_gesture_service_title">حظر أحداث لمس الإيماءة</string>
   <string name="edge_gesture_service_summary">عدم إرسال الأحداث الخاصة بإيماءات شريط التنقل والحالة للتطبيقات</string>
+  <!-- CM Legal -->
   <string name="cmlicense_title">قانون CyanogenMod</string>
   <string name="settings_cmlicense_activity_title">قانون CyanogenMod</string>
+  <!-- Sizes for pattern lockscreen -->
+  <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
   <string name="lockpattern_settings_enable_error_path_title">إظهار خطأ النمط</string>
+  <!-- Whether the dots will be drawn when using the lockscreen pattern -->
   <string name="lockpattern_settings_enable_dots_title">إظهار نقاط النمط</string>
+  <!-- Whether the keyguard will directly pass to password entry -->
   <string name="lock_directly_show_password">إظهار إدخال كلمة المرور مباشرة</string>
+  <!-- Whether the keyguard will directly pass to pattern view -->
   <string name="lock_directly_show_pattern">إظهار عرض النمط مباشرة</string>
+  <!-- Whether the keyguard will directly pass to PIN entry -->
   <string name="lock_directly_show_pin">إظهار إدخال رقم PIN مباشرة</string>
+  <!-- Screen security -->
   <string name="unlock_quick_unlock_control_title">إلغاء تأمين سريع</string>
   <string name="unlock_quick_unlock_control_summary">إلغاء تأمين تلقائي عندما يتم إدخال PIN/كلمة السر صحيحة</string>
   <string name="unlock_scramble_pin_layout_title">تخطيط الترميز</string>
   <string name="unlock_scramble_pin_layout_summary">تخطيط رقم PIN المرمز عند إلغاء تأمين الجهاز</string>
   <string name="link_volume_option_title">ربط حجم صوت النغمة وصوت الإشعارات</string>
   <string name="notification_volume_option_title">حجم صوت الإخطارات</string>
+  <!-- Notification drawer -->
   <string name="notification_drawer_title">شكل الإشعار</string>
   <string name="quick_pulldown_title">القائمة المنسدلة السريعة</string>
   <string name="quick_pulldown_summary">سحب الحافّة ال%1$s لشريط الحالة إلى أسفل يُظهر لوحة الإعدادات السّريعة</string>
@@ -710,6 +848,7 @@
   <string name="quick_pulldown_off">لا تُسدل بالسّحب من أيّ الزّاويتين</string>
   <string name="quick_pulldown_left">من الحافّة اليُسرى</string>
   <string name="quick_pulldown_right">من الحافّة اليُمنى</string>
+  <!-- Weather in status bar header -->
   <string name="status_bar_show_weather_title">إظهار حالة الطقس</string>
   <string name="status_bar_show_weather_summary">إظهار الطقس فوق لوحة \"الإعدادات السريعة\"</string>
   <string name="qs_category_title">لوحة إعدادات سريعة</string>
@@ -753,17 +892,26 @@
   <string name="qs_advanced_location_title">إعدادات الموقع المتقدمة</string>
   <string name="qs_advanced_location_summary">تمكين الإعدادات المتقدمة للموقع في لوحة الإعدادات السّريعة</string>
   <string name="sim_no_number_set">لا يوجد رقم يتم تعيينه</string>
+  <!-- Gesture Settings -->
+  <!-- Settings main menu entry -->
   <string name="gesture_settings_title">الإيماءات</string>
+  <!-- Themes Settings -->
+  <!-- Settings main menu entry -->
   <string name="themes_settings_title">السمات</string>
+  <!-- WiFi Ad-Hoc mode -->
   <string name="wifi_mode">وضع</string>
   <string name="wifi_mode_ibss">شبكة الاتصال المخصص (IBSS)</string>
   <string name="wifi_mode_ibss_short">مؤقت</string>
   <string name="wifi_ibss_freq_title">قناة/التردد</string>
   <string name="wifi_channel">القناة</string>
   <string name="wifi_mhz">ميغا هرتز</string>
+  <!-- WiFi auto-configure priorities -->
   <string name="wifi_auto_config_priorities">أولوية عادية</string>
+  <!-- About phone settings screen, setting option dialog title to show regulatory information [CHAR LIMIT=25] -->
+  <!-- SAR information -->
   <string name="maximum_head_level">الرأس: %1$s w/ كغ</string>
   <string name="maximum_body_level">الجسم: %1$s w/ كغ</string>
+  <!-- IC Codes -->
   <string name="ic_code_model">النموذج: %1$s</string>
   <string name="ic_code_full">IC: %1$s</string>
   <string name="power_menu_expanded_desktop">سطح المكتب الموسع</string>
@@ -784,17 +932,21 @@
   <string name="lockscreen_choose_action_title">اختر إجراء</string>
   <string name="lockscreen_visualizer_title">عرض صورة الغلاف للموسيقى</string>
   <string name="nfc_title_category">الاتصال بالحقل القريب</string>
+  <!-- WhisperPush -->
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">إدارة إعدادات SMS آمنة</string>
   <string name="navigation_ring_title">أهداف حلقة التنقّل</string>
   <string name="navigation_ring_message">اضغط رمز \"تعديل\" لبدء تعديل حلقة التنقل.\n\nحدد واحدًا من الأهداف لتهيئة سلوكه.\n\nاضغط رمز \'\u2713\' لحفظ التغييرات التي قمت بها، أو \"استعادة الضّبط المبدئيّ\" لإعادة الإعدادات إلى وضعها المبدئيّ.</string>
+  <!-- Display & Lights screen, setting options for LCD density -->
   <string name="lcd_density">كثافة الشاشة</string>
   <string name="dialog_title_lcd_density">كثافة الشاشة</string>
   <string name="lcd_density_value_format">%d نقطة في البوصة</string>
   <string name="lcd_density_default_value_format">%d نقطة في البوصة (المبدئي)</string>
   <string name="restarting_ui">إعادة التشغيل\u2026</string>
+  <!-- Stylus Icon -->
   <string name="stylus_icon_enabled_title">إظهار الرمز عند استخدام القلم</string>
   <string name="stylus_icon_enabled_summary">إظهار رمز المؤشر عند المرور بالماوس أو الرسم  النمط</string>
+  <!-- Stylus Gestures -->
   <string name="gestures_settings_title">إيماءات القلم</string>
   <string name="category_spen_title">إيماءات القلم</string>
   <string name="enable_subcat_title">القلم</string>
@@ -807,12 +959,14 @@
   <string name="gestures_down_spen_title_head">مرر إلى أسفل</string>
   <string name="gestures_long_spen_title_head">الضغط لمدة طويلة</string>
   <string name="gestures_double_spen_title_head">لمسة مزدوجة</string>
+  <!-- Gestures Options -->
   <string name="gestures_action_empty">لا إجراء</string>
   <string name="gestures_action_home">الصفحة الرئيسية</string>
   <string name="gestures_action_back">رجوع</string>
   <string name="gestures_action_menu">القائمة</string>
   <string name="gestures_action_search">استدعاء البحث</string>
   <string name="gestures_action_recent">تطبيقات الأخيرة</string>
+  <!-- Stylus gestures -->
   <string name="stylus_app_not_installed">%s لم يتم تثبيته</string>
   <string name="advanced">متقدم</string>
   <string name="advanced_mode_title">الوضع المتقدم</string>
@@ -828,6 +982,7 @@
   <string name="lockscreen_settings">شاشة التأمين</string>
   <string name="category_lights">أضواء</string>
   <string name="power_usage_history_title">استخدام البطارية</string>
+  <!-- Show/Hide Search Bar -->
   <string name="recents_show_searchbar">إظهار شريط البحث في القائمة الأحدث</string>
   <string name="keywords_recents_show_searchbar">الأخيرة الأحدث تعطيل تمكين إظهار إخفاء البحث شريط البحث</string>
   <string name="sim_ringtone_title">نغمة %d شريحة SIM</string>
@@ -837,6 +992,7 @@
   <string name="none_is_silent_summary_on">لن يتم تجاهل التنبيهات في الوضع الصامت</string>
   <string name="none_is_silent_summary_off">سيتم تجاهل التنبيهات في وضع بلا</string>
   <string name="allow_lights_title">السماح بالإشعارات الضوئية</string>
+  <!-- LiveDisplay -->
   <string name="live_display_summary">تحسين الشاشة بحسب الوقت من اليوم والظروف المحيطة لتسهيل القراءة وتقليل إجهاد العين</string>
   <string name="live_display_mode">نمط العرض</string>
   <string name="live_display_color_temperature_title">درجة حرارة اللون</string>
@@ -861,9 +1017,13 @@
   <string name="live_display_color_profile_cinema_summary">نسخة طبقة الأصل ملونة مثالية للوسائط</string>
   <string name="live_display_color_profile_astronomy_title">علم الفلك</string>
   <string name="live_display_color_profile_astronomy_summary">أحمر عميق للحفاظ على الرؤية الليلية</string>
+  <string name="live_display_color_profile_basic_title">أساسي</string>
+  <string name="live_display_color_profile_basic_summary">استخدام العرض غير المعاير</string>
   <string name="battery_saver_threshold">عتبة توفير البطارية</string>
   <string name="battery_saver_summary">خفض الأداء والحد من البيانات الخلفية</string>
   <string name="battery_saver_summary_unavailable">غير متوفر أثناء الشحن</string>
+  <!-- Anonymous Statistics #CM -->
+  <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
   <string name="anonymous_statistics_title">إحصائيات CyanogenMod</string>
   <string name="anonymous_statistics_summary">ساهم في جعل CyanogenMod أفضل بموافقتك على إرسال تقارير بالإحصائيات مجهولة للمصدر</string>
   <string name="anonymous_statistics_warning_title">حول</string>
@@ -873,27 +1033,34 @@
   <string name="preview_data_title">معاينة البيانات</string>
   <string name="view_stats_title">عرض الإحصائيات</string>
   <string name="anonymous_learn_more">لمعرفة المزيد</string>
+  <!-- Anonymous Statistics - Preview -->
   <string name="preview_id_title">معرف فريد</string>
   <string name="preview_device_title">الجهاز</string>
   <string name="preview_version_title">الإصدار</string>
   <string name="preview_country_title">الدولة</string>
   <string name="preview_carrier_title">شركة المحمول</string>
+  <!-- Heads up -->
   <string name="heads_up_notifications">الإشعارات العائمة</string>
   <string name="summary_heads_up_enabled">الإشعارات العائمة مُفعّلة</string>
   <string name="summary_heads_up_disabled">الإشعارات العائمة مُعطَّلة</string>
+  <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
   <string name="master_clear_desc_cm" product="tablet">سيؤدي هذا إلى مسح كافة البيانات من <b>التخزين الداخلي</b> في جهازك اللوحيّ، بما في ذلك: \n\n <li>حسابات جهازك</li>\n<li>بيانات وإعدادات النظام والتطبيقات</li>\n<li>التطبيقات التي تم تنزيلها</li></string>
+  <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
   <string name="master_clear_desc_cm" product="default">سيؤدي هذا إلى مسح كافة البيانات من <b>التخزين الداخلي</b> في هاتفك، بما في ذلك: \n\n <li>حسابات جهازك</li>\n<li>بيانات وإعدادات النظام والتطبيقات</li>\n<li>التطبيقات التي تم تنزيلها</li></string>
+  <!-- Killswitch -->
   <string name="lock_to_cyanogen_title">حماية الجهاز</string>
   <string name="lock_to_cyanogen_summary">يتطلب كلمة مرور حساب Cyanogen OS حتى بعد إعادة تعيين المصنع.</string>
   <string name="lock_to_cyanogen_create_account_msg">يستخدم جهازك كلمة مرور حساب Cyanogen OS لحماية جهازك حتى في حالة إعادة تعيين المصنع. سوف تحتاج إلى إنشاء حساب Cyanogen OS.</string>
   <string name="lock_to_cyanogen_disable_msg">تعطيل هذه الميزة سيسمح للمستخدمين غير المصرح لهم بإعادة تعيين هاتفك إلى إعدادات المصنع الافتراضية إذا سرق. لا يمكن حماية بياناتك الشخصية. هل تريد تعطيل هذه الميزة؟</string>
   <string name="lock_to_cyanogen_master_clear_warning">تم تمكين حماية الجهاز. يرجى تعطيل هذه الخاصية الاستمرار لإعادة تعيين جهازك.</string>
   <string name="bluetooth_pan_profile_summary_use_for_error">وقع خطأ في الاتصال؛ هل فُعّل الربط بالبلوتوث على هذا الجهاز؟</string>
+  <!-- MSIM SIM status -->
   <string name="sim_card_status_title">حالة شريحة SIM</string>
   <string name="sim_card_lock_settings_title">إعدادات قفل شريحة SIM/RUIM</string>
   <string name="sim_card_summary_empty">لم يتم إدخال شريحة SIM</string>
   <string name="sim_mobile_network_settings_category_title">إعدادات شبكة الهاتف النقال</string>
   <string name="sim_mobile_network_settings_title">إعدادات شريحة SIM %d</string>
+  <!-- Factory reset strings -->
   <string name="factory_reset_instructions_title">البيانات الشخصية والتطبيقات</string>
   <string name="factory_reset_instructions_summary">سيؤدي ذلك إلى  إزالة كافة حساباتك وتطبيقاتك وبيانات تطبيقك وإعدادات النظام من هذا الجهاز</string>
   <string name="factory_reset_personal_content">المحتوى الشخصي</string>
@@ -904,14 +1071,19 @@
   <string name="factory_reset_erase_sd_card_summary">مسح كافة البيانات الموجودة على بطاقة SD، مثل الموسيقى والصور</string>
   <string name="factory_reset_warning_text_reset_now">إعادة التعيين الآن</string>
   <string name="factory_reset_warning_text_message">سيتم إزالة كافة حساباتك وتطبيقاتك وبيانات تطبيقك وإعدادات النظام من هذا الجهاز. لا يمكن التراجع عن هذا الإجراء.</string>
+  <!-- Wi-Fi filters -->
   <string name="wifi_show_all">اظهار الكل</string>
   <string name="wifi_show_protected">إظهار الشبكات المحمية</string>
   <string name="wifi_show_open">إظهار الشبكات المفتوحة</string>
   <string name="wifi_empty_list_protected">لا توجد شبكات Wi\u2011Fi محمية</string>
   <string name="wifi_empty_list_open">لا توجد شبكات Wi\u2011Fi مفتوحة</string>
+  <!-- Wi-Fi region code -->
   <string name="wifi_setting_countrycode_title">رمز الواي فاي للمنطقة</string>
+  <!-- Wi-Fi settings screen, setting summary for setting the wifi frequency band [CHAR LIMIT=50]-->
   <string name="wifi_setting_countrycode_summary">تحديد رمز الواي فاي للمنطقة</string>
+  <!-- Wi-Fi settings screen, error message when the frequency band could not be set [CHAR LIMIT=50]. -->
   <string name="wifi_setting_countrycode_error">هناك مشكلة في تحديد رمز المنطقة.</string>
+  <!-- Wi-Fi region countries -->
   <string name="wifi_countrycode_entries_us">الولايات المتحدة</string>
   <string name="wifi_countrycode_entries_ca">كندا، تايوان</string>
   <string name="wifi_countrycode_entries_de">ألمانيا</string>
@@ -924,65 +1096,114 @@
   <string name="wifi_countrycode_entries_sg">إسرائيل، سنغافورة</string>
   <string name="wifi_countrycode_entries_br">البرازيل</string>
   <string name="wifi_countrycode_entries_in">الهند</string>
+  <!-- FINGERPRINT -->
+  <!-- Title for preference which sets the unlock. This is only used when the device has
+         a fingerprint sensor , otherwise just "unlock_set_unlock_launch_picker_title" is used -->
   <string name="unlock_set_unlock_launch_picker_title_with_fingerprint">إلغاء تأمين الشاشة وبصمة الإصبع</string>
+  <!-- Summary for "Configure lockscreen" when security Fingerprint is enabled [CHAR LIMIT=45] -->
   <string name="unlock_set_unlock_mode_fingerprint">بصمة الإصبع</string>
+  <!-- Title for preference that guides the user through creating a fingerprint [CHAR LIMIT=22] -->
   <string name="unlock_set_unlock_fingerprint_title">بصمة إصبع</string>
+  <!-- List item title to add a new fingerprint in fingerprint list screen -->
   <string name="fingerprint_item_add_new_fingerprint">إضافة بصمة جديدة</string>
+  <!-- Title for preference in fingerprint lockscreen settings, takes user to fingerprint list -->
   <string name="fingerprint_manage_fingerprints">إدارة بصمات الأصابع</string>
+  <!-- Summary for preference in fingerprint lockscreen settings, takes user to fingerprint list -->
   <string name="fingerprint_manage_fingerprints_summary">إضافة بصمات الأصابع أو إزالتها</string>
+  <!-- Info explaining the backup lock which is used for fingerprint -->
   <string name="unlock_backup_fingerprint_info_summary">إذا كنت لا تستخدم إصبعك، كيف تريد فتح الجهاز؟</string>
+  <!-- Dialog title for renaming your fingerprint -->
   <string name="fingerprint_dialog_title_rename">تعديل بصمة الإصبع</string>
+  <!-- EditText label for renaming your fingerprint in rename dialog -->
   <string name="fingerprint_dialog_name_label">اسم بصمة الإصبع</string>
+  <!-- Title for dialog that shows when the user cannot add anymore fingers -->
   <string name="fingerprint_dialog_title_max_fingers_reached">تم الوصول إلى الحد الأقصى لبصمات الأصابع</string>
+  <!-- Message for dialog that shows when the user cannot add anymore fingers -->
   <string name="fingerprint_dialog_msg_max_fingers_reached">يمكنك فقط التمرير عبر <xliff:g id="finger" example="5">%d</xliff:g> بصمات إصابعك. حذف بصمة الإصبع الحالية.</string>
+  <!-- Title for number of finger prints enrolled -->
   <string name="fingerprint_title_manage_fingerprints"><xliff:g id="finger">%d</xliff:g> من <xliff:g id="max">%d</xliff:g> بصمات الإصابع المسجلة</string>
+  <!-- Description for managing fingerprints -->
   <string name="manage_fingerprints_description">بصمات الأصابع تسمح لك بفتح هاتفك بسرعة والتقاط الصور.</string>
+  <!-- Fingerprint enrollment introduction title -->
   <string name="fingerprint_enrollment_introduction_title">ابحث عن مستشعرك</string>
+  <!-- Fingerprint enrollment introduction instructions -->
   <string name="fingerprint_enrollment_introduction_instructions">يقع مستشعر بصمة الإصبع في مقدمة أو مؤخرة هاتفك.</string>
+  <!-- Fingerprint enrollment scan fingerprint title -->
   <string name="fingerprint_enrollment_scan_title">استمر لمدة 3 ثوان</string>
+  <!-- Fingerprint enrollment scan fingerprint instructions -->
   <string name="fingerprint_enrollment_scan_instructions">ضع السبابة على مستشعر بصمة الإصبع لبدء الإعداد. ارفع إصبعك بمجرد أن تشعر باهتزاز.</string>
+  <!-- Fingerprint enrollment error title during first step only -->
   <string name="fingerprint_enrollment_error_title_wrong_sensor">الرجاء المحاولة مرة أخرى</string>
+  <!-- Fingerprint enrollment error message -->
   <string name="fingerprint_enrollment_error_message">ضع إصبعك فوق حسّاس البصمة لضمان المسح الدقيق. تأكد أيضًا أنك تضع الإصبع ذاتها التي استخدمتها من قبل. ارفع إصبعك بعد أن تشعر باهتزاز الجهاز.</string>
+  <!-- Fingerprint enrollment error instructions -->
   <string name="fingerprint_enrollment_scan_instructions">ضع السبابة على مستشعر بصمة الإصبع لبدء الإعداد. ارفع إصبعك بمجرد أن تشعر باهتزاز.</string>
+  <!-- Fingerprint enrollment half way break title -->
   <string name="fingerprint_enrollment_break_title">استمر في قبضتك الحالية</string>
+  <!-- Fingerprint enrollment introduction instructions -->
   <string name="fingerprint_enrollment_break_instructions">استمر لمسح حواف بصمتك. ارفع أصبعك بمجرد أن تشعر باهتزاز.</string>
+  <!-- Fingerprint enrollment finished title -->
   <string name="fingerprint_enrollment_finished_title">تمت إضافة بصمة الإصبع!</string>
+  <!-- Fingerprint enrollment finished instructions -->
   <string name="fingerprint_enrollment_finished_message">يمكنك الآن استخدام بصمة الإصبع لفتح الشاشة وأخذ صور ذاتيّة باستخدام الكاميرا.</string>
+  <!-- Next button title for finding sensor -->
   <string name="fingerprint_enrollment_found_it_label">وجدته</string>
+  <!-- Next button title for finding sensor -->
   <string name="fingerprint_enrollment_add_another_label">إضافة آخر</string>
+  <!-- Next button title for finding sensor -->
   <string name="fingerprint_enrollment_done_label">تم</string>
+  <!-- Wrong fingerprint sensor dialog title -->
   <string name="fingerprint_dialog_title_wrong_sensor">معذرة، هذا ليس مستشعرك</string>
+  <!-- Wrong fingerprint sensor dialog message -->
   <string name="fingerprint_dialog_msg_wrong_sensor">استخدم مستشعر بصمة الإصبع في مقدمة أو مؤخرة هاتفك.</string>
+  <!-- Failed fingerprint enrollment dialog title -->
   <string name="fingerprint_dialog_title_failed_enrollment">تعذر قراءة بصمة الإصبع</string>
+  <!-- Failed fingerprint enrollment dialog message -->
   <string name="fingerprint_dialog_msg_failed_enrollment">حاول استخدام إصبع مختلف. تعذر قراءة هذه البصمة.</string>
+  <!-- Failed fingerprint enrollment button label -->
   <string name="fingerprint_enrollment_restart_label">إعادة التشغيل</string>
+  <!-- Successful scan title for first successful scan -->
   <string name="fingerprint_successful_scan_title_first">رائع! الآن كرر</string>
+  <!-- Successful scan title for second to last successful scan -->
   <string name="fingerprint_successful_scan_final">مرة أخرى من فضلك</string>
+  <!-- Successful scan title for all other successful scans -->
   <string name="fingerprint_successful_scan_title_1">أحسنت! استمر</string>
   <string name="fingerprint_successful_scan_title_2">عظيم! مرة أخرى</string>
   <string name="fingerprint_successful_scan_title_3">أحسنت! استمر</string>
   <string name="fingerprint_successful_scan_title_4">مرات قليلة فقط تبقت</string>
   <string name="fingerprint_successful_scan_title_5">رائع ما تفعل! مرة أخرى</string>
   <string name="fingerprint_successful_scan_title_6">كدت تنتهي</string>
+  <!-- Fingerprint enrollment error titles -->
   <string name="fingerprint_enrollment_error_title_1">معذرة. كرر المحاولة </string>
   <string name="fingerprint_enrollment_error_title_2">نأسف، لم نفهم ذلك</string>
   <string name="fingerprint_enrollment_error_title_3">هناك مشكلة ما </string>
   <string name="fingerprint_enrollment_error_title_4">الرجاء المحاولة مرة أخرى</string>
   <string name="fingerprint_enrollment_error_title_5">عفواً، هناك خطأ</string>
+  <!-- Title for lockscreen settings, on dashboard, that is only used when a device supports
+         the fingerprint feature -->
   <string name="lockscreen_settings_and_fingerprint">شاشة التأمين &amp; وبصمة الإصبع</string>
+  <!-- Menu label for reset the battery stats -->
   <string name="menu_stats_reset">إعادة تعيين الإحصائيات</string>
+  <!-- Reset stats confirmation dialog's message -->
   <string name="reset_stats_msg">إحصائيات تاريخ البطارية سيُعاد تعيينها</string>
+  <!-- Dock battery not present message -->
   <string name="dock_battery_not_present">بطارية الإرساء غير موجودة</string>
+  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging on Dock AC. -->
   <string name="battery_info_status_charging_dock_ac">شحن على الإرساء بالتيار المتناوب</string>
+  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging over Dock USB. -->
   <string name="battery_info_status_charging_dock_usb">شحن على الإرساء عبر USB</string>
+  <!-- Lock screen setup wizard pattern complexity -->
   <string name="setup_lock_pattern_size_title">مدى تعقيد النمط</string>
   <string name="setup_lock_pattern_size_details">كم عدد العقد التي تريد أن تستخدمها في نمطك؟ كلما زادت العقد، كان النمط أكثر تعقيداً.</string>
+  <!-- LTO download data over wi-fi only -->
   <string name="lto_download_data_wifi_only">تنزيل البيانات المُساعدة لنظام تحديد المواقع العالمي (GPS)</string>
   <string name="lto_download_data_wifi_only_on">عبر أي شبكات</string>
   <string name="lto_download_data_wifi_only_off">عبر شبكات Wi\u2011Fi فقط</string>
+  <!-- Keep screen on strings -->
   <string name="keep_screen_on_never">مطلقًا</string>
   <string name="keep_screen_on_debugging">أثناء تصحيح أخطاء USB</string>
   <string name="keep_screen_on_charging">أثناء الشحن</string>
+  <!-- Contributors cloud activity -->
   <string name="contributors_cloud_fragment_title">المُساهمون</string>
   <string name="contributors_cloud_loading_message">يُحمِّل بيانات المُساهمين\u2026</string>
   <string name="contributors_cloud_failed_message">تعذّر تحميل بيانات المُساهمين</string>

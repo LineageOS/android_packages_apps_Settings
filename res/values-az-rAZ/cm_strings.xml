@@ -16,13 +16,18 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
   <plurals name="show_dev_countdown_cm">
     <item quantity="one">Tərtibatçı tənzimləmələrinin fəallaşdırılmasına <xliff:g id="step_count">%1$d</xliff:g> addım qaldı.</item>
     <item quantity="other">Tərtibatçı tənzimləmələrinin fəallaşdırılmasına <xliff:g id="step_count">%1$d</xliff:g> addım qaldı.</item>
   </plurals>
+  <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
   <string name="show_dev_on_cm">Tərtibatçı tənzimləmələrini fəallaşdırdınız!</string>
+  <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
   <string name="show_dev_already_cm">Artıq tərtibatçı tənzimləmələrini fəallaşdırmısınız.</string>
+  <!-- Launch Dev Tools -->
   <string name="development_tools_title">Tərtibatçı alətləri</string>
+  <!-- Setting checkbox title for root access -->
   <string name="root_access">Root müraciəti</string>
   <string name="root_access_warning_title">Root müraciətinə icazə verilsin?</string>
   <string name="root_access_warning_message">Root müraciətinə icazə vermək çox təhlükəlidir və sisteminizin təhlükəsizliyinə ziyan vura bilər!</string>
@@ -30,10 +35,12 @@
   <string name="root_access_apps">Yalnız tətbiqetmələr</string>
   <string name="root_access_adb">Yalnız ADB</string>
   <string name="root_access_all">Tətbiqetmələr və ADB</string>
+  <!-- Sound settings screen -->
   <string name="ring_mode_title">Zəng rejimi</string>
   <string name="ring_mode_normal">Normal</string>
   <string name="ring_mode_vibrate">Titrəmə</string>
   <string name="ring_mode_mute">Səssiz</string>
+  <!-- Profiles settings  -->
   <string name="profiles_settings_title">Sistem profilləri</string>
   <string name="profiles_add">Əlavə et</string>
   <string name="profile_settings_title">Profil</string>
@@ -55,32 +62,43 @@
   <string name="profile_app_group_category_title">Bildirişləri rədd et</string>
   <string name="profile_app_group_item_instructions">Qrupları əlavə et və ya çıxart</string>
   <string name="profile_app_group_item_instructions_summary">Qrupları əlavə etmək  və ya çıxartmaq bildirişi bu profilin tətbiqetmə qruplarını rədd edər</string>
+  <!-- Profile mode options. -->
   <string name="profile_entries_on">Açıq</string>
   <string name="profile_entries_off">Bağlı</string>
   <string name="profile_entries_no_override">Dəyişiklik yoxdur</string>
+  <!-- Add Profile -->
   <string name="profile_name_title">Ad</string>
   <string name="new_profile_name">&lt;yeni profil&gt;</string>
+  <!-- Rename Dialog  -->
   <string name="rename_dialog_title">Yenidən adlandır</string>
   <string name="rename_dialog_message">Yeni ad daxil edin</string>
   <string name="rename_dialog_hint">Profil adını daxil edin</string>
+  <!-- Reset Profiles -->
   <string name="profile_reset_title">Sıfırla</string>
   <string name="profile_reset_message">Bütün istifadəçi profilləri silinib ilkin hala qaytarılsın?</string>
+  <!-- Profile network mode -->
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_4g">LTE</string>
   <string name="profile_networkmode_2g3g">2G/3G</string>
   <string name="profile_networkmode_2g3g4g">2G/3G/LTE</string>
+  <!-- Profile Config screen PreferenceGroup titles -->
   <string name="profile_volumeoverrides_title">Səs səviyyəsi dəyişiklikləri</string>
   <string name="volume_override_summary">%1$s/%2$s</string>
   <string name="profile_volume_override_checkbox_label">Səs səviyyəsini dəyişdir</string>
+  <!-- Menu item for managing profiles -->
   <string name="profile_profiles_manage">Profillər</string>
   <string name="profile_profile_manage">Profili idarə et</string>
+  <!-- Profile settings screen, section header for settings related to notification profiles -->
   <string name="profile_settings">Profil tənzimləməsi</string>
   <string name="profile_trigger_connect">Qoşulanda</string>
   <string name="profile_trigger_disconnect">Bağlantı kəsiləndə</string>
   <string name="profile_trigger_notrigger">Tətikləyici yoxdur</string>
+  <!-- Title for application group setting screen -->
   <string name="profile_applist_title">Tətbiqetmələr</string>
+  <!-- Add application dialog box title -->
   <string name="profile_choose_app">Tətbiqetmə seç</string>
+  <!-- Profiles - system settings -->
   <string name="profile_system_settings_title">Sistem tənzimləməsi</string>
   <string name="profile_lockmode_title">Kilit ekranı rejimi</string>
   <string name="profile_lockmode_policy_disabled_summary">Bu profil cihaz idarəçisi siyasətinə tərəfindən ləğv edildi</string>
@@ -90,6 +108,7 @@
   <string name="profile_brightness_title">Ekran parlaqlığı</string>
   <string name="profile_brightness_override_summary">%1$d%% tənzimləndi</string>
   <string name="profile_brightness_override_checkbox_label">Parlaqlığı ləğv et</string>
+  <!-- Connection override toggles (not all are used at this time ) -->
   <string name="toggleWifi">Wi\u2011Fi</string>
   <string name="toggleWifiAp">Daşına bilən Wi\u2011Fi giriş nöqtəsi</string>
   <string name="toggleBluetooth">Bluetooth</string>
@@ -98,6 +117,7 @@
   <string name="toggleSync">Verilənləri avtomatik eyniləşdirmə</string>
   <string name="toggle2g3g4g">Üstünlük verilən şəbəkə növü</string>
   <string name="toggleNfc">NFC</string>
+  <!-- Hardware keys -->
   <string name="button_pref_title">Düymәlәr</string>
   <string name="hardware_keys_power_key_title">Güc düyməsi</string>
   <string name="hardware_keys_home_key_title">Əsas ekran düyməsi</string>
@@ -135,6 +155,7 @@
   <string name="button_wake_title">Cihazı oyandır</string>
   <string name="home_answer_call_title">Zəngə cavab ver</string>
   <string name="home_answer_call_summary">Əsas ekran düyməsinə basmaq mövcud gələn zəngi cavablandıracaq</string>
+  <!-- Key backlight -->
   <string name="button_backlight_title">Arxa işıq</string>
   <string name="button_backlight_enabled">Düymələri aydınlat</string>
   <string name="keyboard_backlight_enabled">Klaviaturanı aydınlat</string>
@@ -145,6 +166,7 @@
   <string name="backlight_summary_disabled">Ləğv edildi</string>
   <string name="backlight_summary_enabled_with_timeout"><xliff:g id="timeout">%s</xliff:g> üçün fəaldır</string>
   <string name="backlight_summary_enabled">Fəaldır</string>
+  <!-- Power menu -->
   <string name="power_menu_title">Güc menyusu</string>
   <string name="power_menu_reboot_title">Yenidən başlat menyusu</string>
   <string name="power_menu_screenshot_title">Ekran şəkli</string>
@@ -157,12 +179,16 @@
   <string name="power_menu_sound_title">Səs paneli</string>
   <string name="power_menu_bug_report_disabled">Xəta hesabatı tərtibatçı tənzimləmələrində ləğv edildi</string>
   <string name="power_menu_profiles_disabled">Sistem profilləri ləğv edildi</string>
+  <!-- Backlight brightness settings screen -->
   <string name="adaptive_backlight_title">Uyğunlaşan arxa işıq</string>
   <string name="adaptive_backlight_summary">İstifadə imkanını qoruyaraq batereya ömrünü ən yaxşı səviyyəyə gətirmək üçün ekranın arxa işıq parlaqlığını dinamik olaraq tənzimlə</string>
+  <!-- Sunlight readability enhancement screen -->
   <string name="sunlight_enhancement_title">Günəş işığı yaxşılaşdırma</string>
   <string name="sunlight_enhancement_summary">Parlaq günəş işığı altında ekran parlaqlığını və oxuma imkanını yaxşılaşdırar</string>
+  <!-- Color enhancement settings screen -->
   <string name="color_enhancement_title">Rəng yaxşılaşdırması</string>
   <string name="color_enhancement_summary">Ekran rəngini dinamik olaraq yaxşılaşdırır</string>
+  <!-- Blacklist preferences -->
   <string name="blacklist_title">Əngəllənən zəng edənlərin siyahısı</string>
   <string name="blacklist_edit_dialog_title">Əngəllənən telefon nömrəsinə düzəliş et</string>
   <string name="blacklist_prefs">Tənzimləmələr</string>
@@ -184,11 +210,14 @@
   <string name="blacklist_policy_block_calls">Gələn zəngləri əngəllə</string>
   <string name="blacklist_policy_block_messages">Gələn mesajları əngəllə</string>
   <string name="blacklist_bad_number_add">Etibarsız telefon nömrələri əngəllənən zəng edənlər siyahısına əlavə edilə bilməz</string>
+  <!-- Blacklist management -->
   <string name="remove_blacklist_number_title">Nömrəni çıxart</string>
   <string name="remove_blacklist_entry">Bu əngəllənmiş telefon nömrəsini çıxartmaq istəyirsiniz?</string>
   <string name="select_contact">Şəxs seç</string>
+  <!-- Protected apps lockpattern reset button -->
   <string name="lockpattern_reset_button">Formanı sıfırla</string>
   <string name="lockpattern_settings_reset_summary">Forma kilidini sıfırlamaq üçün əsas e-poçt hesabınızı və əlaqəli şifrəni daxil edin</string>
+  <!-- Protected Apps -->
   <string name="menu_hidden_apps_delete">Sıfırla</string>
   <string name="menu_hidden_apps_reset_lock">Forma kilidini sıfırla</string>
   <string name="protected_apps">Qorunan tətbiqetmələr</string>
@@ -198,6 +227,7 @@
   <string name="pa_login_submit_button">Giriş et</string>
   <string name="pa_login_checking_password">Hesab yoxlanılır\u2026</string>
   <string name="pa_login_incorrect_login">Xətalı giriş</string>
+  <!-- Display : Rotation  -->
   <string name="display_rotation_title">Ekranı döndərmə</string>
   <string name="display_rotation_disabled">Ləğv edildi</string>
   <string name="display_rotation_unit">dərəcə</string>
@@ -207,6 +237,7 @@
   <string name="display_rotation_90_title">90 dərəcə</string>
   <string name="display_rotation_180_title">180 dərəcə</string>
   <string name="display_rotation_270_title">270 dərəcə</string>
+  <!-- Sms security limit -->
   <string name="app_security_title">Tətbiqetmə təhlükəsizliyi</string>
   <string name="sms_security_check_limit_title">SMS mesaj limiti</string>
   <string name="sms_security_check_limit_summary">Tətbiqetmələr təsdiqləmə almadan 1 dəqiqədə %d mesaj göndərə bilər</string>
@@ -217,22 +248,33 @@
   <string name="block_notifications_title">Bildirişləri filtrlə</string>
   <string name="block_notifications_summary">Rədd edilmiş bildirişləri və filtrləri idarə et</string>
   <string name="no_filters_title">Heç bir filtr tənzimlənməyib</string>
+  <!-- CM Updater -->
   <string name="cmupdate_settings_title">CyanogenMod yeniləmələri</string>
+  <!-- Settings switch for updating Cyanogen recovery -->
   <string name="update_recovery_title">Cyanogen bərpa rejimini yenilə</string>
   <string name="update_recovery_summary">Sistem yeniləməsi ilə bərpa rejimini yenilə</string>
   <string name="update_recovery_on_warning">DİQQƏT: Bu özəllik fəal olduğu halda, quraşdırılmış bərpa rejiminiz hazırki ƏS versiyasındakı rejim ilə əvəz olunacaq.\n\nBərpa rejiminiz sistem yeniləmələri ilə birgə yeniləcək, beləliklə gələcək versiyalar ilə uyğunluq təmin ediləcək.\n\nBu özəlliyi fəallaşdırmaq istəyirsiniz?</string>
   <string name="update_recovery_off_warning">XƏBƏRDARLIQ: Bu özəllik ləğv edilərsə, quraşdırılmış bərpa rejiminiz ƏS yeniləmələri ilə yenilənməyəcək.\n\nGələcək ƏS yeniləmələri köhnəlmiş və ya xüsusi bərpa versiyaları ilə yüklənməyə bilər.\n\nBu özəlliyi həqiqətən də ləğv etmək istəyirsiniz?</string>
+  <!-- About phone screen, CyanogenMod version -->
   <string name="mod_version">CyanogenMod versiyası</string>
   <string name="mod_version_default">Bilinməyən</string>
+  <!-- About phone screen, Device model -->
   <string name="device_model">Cihaz modeli</string>
+  <!-- About phone screen, Device name -->
   <string name="device_name">Cihaz adı</string>
+  <!-- About phone screen, build date -->
   <string name="build_date">Quruluş tarixi</string>
+  <!-- About phone screen, service state -->
   <string name="phone_service_state">Səs: <xliff:g id="voice_state">%1$s</xliff:g>, verilənlər: <xliff:g id="data_state">%2$s</xliff:g></string>
+  <!--- Tap To Wake -->
   <string name="double_tap_to_wake_title">Oyanmaq üçün iki dəfə toxun</string>
   <string name="double_tap_to_wake_summary">Ekranı açmaq üçün ekrana iki dəfə toxunun</string>
+  <!-- Proximity wake -->
   <string name="proximity_wake_title">Təsadüfi oyanmaların qarşısını al</string>
   <string name="proximity_wake_summary">Ekranı açmamışdan əvvəl yaxınlıq sensoruna nəzər yetir</string>
+  <!-- Privacy Settings Header item -->
   <string name="privacy_settings_cyanogenmod_title">Gizlilik</string>
+  <!-- Privacy Guard -->
   <string name="privacy_guard_default_title">İlkin olaraq fəaldır</string>
   <string name="privacy_guard_default_summary">Yeni yüklənmiş tətbiqlər üçün Gizlilik Qorumasını ilkin olaraq fəallaşdır</string>
   <string name="privacy_guard_manager_title">Gizlilik Qoruması</string>
@@ -245,19 +287,33 @@
   <string name="privacy_guard_manager_show_system_apps">Daxili tətbiqetmələri göstər</string>
   <string name="privacy_guard_notification_title">Bildirişi göstər</string>
   <string name="app_ops_btn_text">Dəyişdir</string>
+  <!-- Increasing ring tone volume -->
   <string name="increasing_ring_volume_option_title">Artan zəng səsi</string>
   <string name="increasing_ring_min_volume_title">Başlanğıc səsi</string>
   <string name="increasing_ring_ramp_up_time_title">Artma vaxtı</string>
+  <!-- Advanced reboot options -->
   <string name="advanced_reboot_title">Qabaqcıl yenidən başlatma</string>
+  <!-- Setting checkbox title for Whether to enable Android debugging support on the phone. -->
+  <!-- Setting checkbox summary for Whether to enable Android debugging support on the phone -->
+  <!-- Android debugging over WiFi -->
+  <!-- Warning for Adb over Network -->
   <string name="adb_over_network_warning">XƏBƏRDARLIQ: Şəbəkə üzərindən ADB fəal olduğu halda, telefonunuz bütün bağlanmış şəbəkələrdə icazəsiz müraciətlərə açıqdır!\n\nBu özəlliyi yalnız etibarlı şəbəkələrə bağlı olduğunuz zaman istifadə edin.\n\nHəqiqətən də bu özəliyi fəallaşdırmaq istəyirsiniz?</string>
+  <!-- Setting checkbox summary for displaying USB debugging notification -->
+  <!-- Hostname setting -->
   <string name="device_hostname">Cihaz şəbəkə adı</string>
+  <!-- Development shortcut -->
   <string name="development_shortcut_title">Təkmilləşdirmə qısayolu</string>
+  <!-- tap-to-sleep -->
   <string name="double_tap_to_sleep_title">Yuxuya keçmək üçün iki dəfə toxun</string>
   <string name="double_tap_to_sleep_summary">Ekranı bağlamaq üçün durum sətrinə iki dəfə toxunun</string>
+  <!-- Turn on display when power connected; turn off display when power disconnected -->
   <string name="wake_when_plugged_or_unplugged_summary">Güc mənbəsinə bağlananda və ya bağlantını kəsəndə ekranı aç</string>
+  <!-- Kill app long-press back -->
   <string name="kill_app_longpress_back">Tətbiq dayandırıcı geri düyməsi</string>
   <string name="kill_app_longpress_back_summary">Geri düyməsinə uzun basaraq ön plandakı tətbiqi dayandırar</string>
+  <!-- Buttons - Enable navbar -->
   <string name="disable_navkeys_summary">Ekran üstü hərəkət zolağını fəallaşdır və avadanlıq düymələri ləğv et</string>
+  <!-- Navigation Bar -->
   <string name="navigation_bar_category">Hərəkət zolağı</string>
   <string name="navigation_bar_left_title">Solaxay rejim</string>
   <string name="navigation_bar_left_summary">Hərəkət zolağını üfüqi rejimində solda yerləşdir</string>
@@ -270,11 +326,13 @@
   <string name="navigation_bar_arrow_keys_title">Yazı yazanda ox düymələrini göstər</string>
   <string name="navigation_bar_arrow_keys_summary">Yazı yazanda sol və sağ kursor düymələri göstər. IME dəyişdiricini göstərmə.</string>
   <string name="header_category_personalization">Şəxsiləşdirmə</string>
+  <!-- Status bar -->
   <string name="status_bar_title">Durum sətri</string>
   <string name="status_bar_toggle_brightness">Parlaqlıq nəzarəti</string>
   <string name="status_bar_toggle_brightness_summary">Durum sətri üzərində sürüşdürərək parlaqlığı nizamla</string>
   <string name="status_bar_notif_count_title">Bildiriş sayını göstər</string>
   <string name="status_bar_notif_count_summary">Gözləyən bildiriş sayını göstər</string>
+  <!-- Status bar - Clock -->
   <string name="status_bar_clock_style_title">Saat stili</string>
   <string name="status_bar_clock_style_right">Sağ</string>
   <string name="status_bar_clock_style_left">Sol</string>
@@ -284,22 +342,26 @@
   <string name="status_bar_am_pm_normal">Normal</string>
   <string name="status_bar_am_pm_small">Kiçik</string>
   <string name="status_bar_am_pm_hidden">Gizli</string>
+  <!-- Status bar - Battery -->
   <string name="status_bar_battery_style_title">Batareya durum stili</string>
   <string name="status_bar_battery_style_icon_portrait">Şaquli nişan</string>
   <string name="status_bar_battery_style_icon_landscape">Üfüqi nişan</string>
   <string name="status_bar_battery_style_circle">Dairə</string>
   <string name="status_bar_battery_style_text">Mətn</string>
   <string name="status_bar_battery_style_hidden">Gizli</string>
+  <!-- Status bar - Battery percentage -->
   <string name="status_bar_battery_percentage_title">Batareya faizi</string>
   <string name="status_bar_battery_percentage_default">Gizli</string>
   <string name="status_bar_battery_percentage_text_inside">Nişan içində</string>
   <string name="status_bar_battery_percentage_text_next">Nişan yanında</string>
+  <!-- Notification light dialogs -->
   <string name="edit_light_settings">İşıq tənzimləmələrinə düzəliş et</string>
   <string name="pulse_speed_title">Yanma sürəti və uzunluğu</string>
   <string name="default_time">Normal</string>
   <string name="custom_time">Xüsusi</string>
   <string name="dialog_delete_title">Sil</string>
   <string name="dialog_delete_message">Seçilən element silinsin?</string>
+  <!-- Values for the notification light pulse spinners -->
   <string name="pulse_length_always_on">Həmişə açıq</string>
   <string name="pulse_length_very_short">Çox qısa</string>
   <string name="pulse_length_short">Qısa</string>
@@ -311,12 +373,14 @@
   <string name="pulse_speed_normal">Normal</string>
   <string name="pulse_speed_slow">Yavaş</string>
   <string name="pulse_speed_very_slow">Çox yavaş</string>
+  <!-- Battery light settings -->
   <string name="battery_light_title">Batareya işığı</string>
   <string name="battery_low_pulse_title">Batereya zəifdirsə yanıb sön</string>
   <string name="battery_light_list_title">Rənglər</string>
   <string name="battery_light_low_color_title">Zəif batareya</string>
   <string name="battery_light_medium_color_title">Yüklənir</string>
   <string name="battery_light_full_color_title">Tam yükləndi</string>
+  <!-- Lights settings screen, notification light settings -->
   <string name="notification_light_title">Bildiriş işığı</string>
   <string name="notification_light_general_title">Ümumi</string>
   <string name="notification_light_applist_title">Tətbiqetmələr</string>
@@ -328,19 +392,26 @@
   <string name="notification_light_screen_on">Ekran açıq olanda işıqlar</string>
   <string name="notification_light_use_multiple_leds">Çoxlu LEDlər</string>
   <string name="keywords_lights_brightness_level">zəif led parlaqlığı</string>
+  <!-- Sound & notification > Sound section: Title for the option defining the default notification ringtone. [CHAR LIMIT=30] -->
   <string name="notification_ringtone_title_cm">Bildiriş səsi</string>
+  <!-- Launch music player when headset is connected -->
   <string name="headset_connect_player_title">Musiqi tətbiqini başlat</string>
   <string name="headset_connect_player_summary">Qulaqcıq taxılanda musiqi tətbiqetməsini başladar</string>
+  <!-- Whether to display IME switcher notifcation -->
   <string name="ime_switcher_notify">Seçici nişanı</string>
   <string name="ime_switcher_notify_summary">Giriş üsulu seçici nişanını görüntülə</string>
+  <!-- Per app controls for LP keyguard notifications -->
   <string name="app_notification_show_on_keyguard_title">Kilik ekranında göstər</string>
   <string name="app_notification_show_on_keyguard_summary">Kilid ekranında bu tətbiqetmənin bildirişlərini göstər</string>
   <string name="app_notification_no_ongoing_on_keyguard_title">Kilid ekranında davamlı bildirişləri ləğv et</string>
   <string name="app_notification_no_ongoing_on_keyguard_summary">Kilid ekranında bu tətbiqmənin davamlı bildirişlərini heç vaxt göstərmə</string>
+  <!-- High touch sensitivity -->
   <string name="high_touch_sensitivity_title">Yüksək toxunuş həssaslığı</string>
   <string name="high_touch_sensitivity_summary">Toxunuş həssaslığını artıraraq əlcəklə istifadəni mümkün edər</string>
+  <!-- Touchscreen hovering -->
   <string name="touchscreen_hovering_title">Toxunuşlu ekranda toxunmadan hərəkət</string>
   <string name="touchscreen_hovering_summary">Ekrana toxunmadan barmağınızı yaxınlaşdıraraq siçan (maus) kimi veb səyyahlarda, uzaq masaüstlərində və s. hərəkətinizi təmin edər</string>
+  <!-- App ops -->
   <string name="app_ops_summaries_coarse_location">təxmini yer</string>
   <string name="app_ops_summaries_fine_location">dəqiq yer</string>
   <string name="app_ops_summaries_gps">GPS</string>
@@ -450,6 +521,7 @@
   <string name="app_ops_labels_data_change">Verilənlərin dəyişdirilməsi</string>
   <string name="app_ops_labels_wake_up">Oyat</string>
   <string name="app_ops_labels_su">Root müraciəti</string>
+  <!-- App ops categories -->
   <string name="app_ops_categories_location">Yer</string>
   <string name="app_ops_categories_personal">Şəxsi</string>
   <string name="app_ops_categories_messaging">Mesajlaşma</string>
@@ -457,10 +529,12 @@
   <string name="app_ops_categories_device">Cihaz</string>
   <string name="app_ops_categories_bootup">Açılış</string>
   <string name="app_ops_categories_su">Root müraciəti</string>
+  <!-- App ops permissions -->
   <string name="app_ops_permissions_allowed">İcazə verildi</string>
   <string name="app_ops_permissions_ignored">Rədd edildi</string>
   <string name="app_ops_permissions_always_ask">Həmişə soruş</string>
   <string name="ok">Oldu</string>
+  <!-- Profiles -->
   <string name="profile_menu_delete_title">Sil</string>
   <string name="profile_action_none">Dəyişdirmədən tərk et</string>
   <string name="profile_action_system">İlkin sistem</string>
@@ -475,42 +549,55 @@
   <string name="profile_setup_actions_title_config">Hərəkətləri təkrar nizamla</string>
   <string name="profile_appgroups_manage">Tətbiqetmə qrupları</string>
   <string name="profile_appgroup_manage">Tətbiqetmə qrupunu idarə et</string>
+  <!-- Title for application group setting screen -->
   <string name="profile_appgroups_title">Tətbiqetmə qrupları</string>
   <string name="profile_new_appgroup">Yeni tətbiqetmə qrupu</string>
   <string name="profile_appgroup_name_prompt">Yeni tətbiqetmə qrupuna ad daxil edin</string>
   <string name="profile_appgroup_name_title">Ad</string>
   <string name="duplicate_appgroup_name">Təkrarlanan tətbiqetmə qrup adı!</string>
+  <!-- Profile Settings sound modes labels -->
   <string name="sound_mode">Bildiriş rejimi</string>
   <string name="ringer_mode">Zəng rejimi</string>
   <string name="lights_mode">İşıq rejimi</string>
   <string name="vibrate_mode">Titrəmə rejimi</string>
   <string name="choose_soundtone">Bildiriş səsini seçin</string>
   <string name="choose_ringtone">Zəng səsi seçin</string>
+  <!-- Sound settings screen, setting option name to pick ringtone (a list dialog comes up)-->
   <string name="soundtone_title">Bildiriş səsi</string>
   <string name="profile_setup_actions_description">İndi profil aktivləşdiriləndə nə baş verəcəyini nizamlayın</string>
+  <!-- App ops detail -->
   <string name="app_ops_entry_summary"><xliff:g id="op">%1$s</xliff:g> (<xliff:g id="count">%2$s</xliff:g> istifadə)</string>
   <string name="app_ops_allowed_count"><xliff:g id="count" example="2 times">%s</xliff:g> icazə verildi</string>
   <string name="app_ops_ignored_count"><xliff:g id="count" example="2 times">%s</xliff:g> rədd edildi</string>
   <string name="app_ops_both_count"><xliff:g id="count">%1$s</xliff:g> icazə verildi, <xliff:g id="count">%2$s</xliff:g> rədd edildi</string>
+  <!-- App ops menu options -->
   <string name="app_ops_show_user_apps">İstifadəçi tətbiqlərini göstər</string>
   <string name="app_ops_show_system_apps">Daxili tətbiqləri göstər</string>
   <string name="app_ops_reset_counters">İcazə vermə/rədd etmə sayğaclarını sıfırla</string>
   <string name="app_ops_reset_confirm_title">Sayğac sıfırlamağı təsdiqlə</string>
   <string name="app_ops_reset_confirm_mesg">Sayğacları sıfırlamaq istədiyinizə əminsiniz?</string>
+  <!-- Font size sample text. This needs to be a very short string, as it is shown in
+    multiple font sizes in a limited amount of space. -->
   <string name="font_size_sample">Nümunə</string>
+  <!-- Volume settings - Volume adjustment sound -->
   <string name="volume_adjust_sounds_title">Səs artırma tonları</string>
+  <!-- Hardware tunables - Vibrator intensity -->
   <string name="vibrator_intensity_title">Titrəmə intensivliyi</string>
   <string name="vibrator_warning">%1$d üstündəki dəyərlər tövsiyə edilmir</string>
+  <!-- Hardware tunables - Color calibration -->
   <string name="color_calibration_title">Rəng kalibrasiyası</string>
   <string name="color_calibration_summary">Ekran rənglərini kalibrlə</string>
   <string name="color_red_title">Qırmızı</string>
   <string name="color_green_title">Yaşıl</string>
   <string name="color_blue_title">Mavi</string>
+  <!-- Hardware tunables - Gamma calibration -->
   <string name="gamma_tuning_title_head">Qamma kalibrasiyası</string>
   <string name="gamma_tuning_summary_head">Qamma dəyərlərini düzəltin</string>
   <string name="gamma_tuning_control_set_header">Qrup <xliff:g id="index">%d</xliff:g></string>
+  <!-- used if no name provided by overlay -->
   <string name="gamma_tuning_brightness">Parlaqlıq</string>
   <string name="gamma_tuning_saturation">Doydurma</string>
+  <!-- Display settings.  Screen color. -->
   <string name="screencolor">Ekran rəngi</string>
   <string name="screencolor_summary">Ekran rəng çalarını, doydurmanı, təzadını və gərginliyini tənzimlə</string>
   <string name="custom_screencolor">Xüsusi ekran rəngi</string>
@@ -528,26 +615,47 @@
   <string name="screen_color_setting_vivid">Canlı</string>
   <string name="screen_color_setting_custom">Xüsusi</string>
   <string name="settings_reset_button">Sıfırla</string>
+  <!-- Message when bluetooth dialog for pin entry is showing  when HIGH security enabled-->
   <string name="bluetooth_enter_pin_msg_hs"><xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g> ilə cütləşdirmək üçün cihazın lazımi PIN\'ini (16 və ya daha çox simvol) yazın:</string>
+  <!-- Bluetooth settings.  The user-visible string that is used whenever referring to the DUN profile. -->
   <string name="bluetooth_profile_dun">Zənglə Bağlanma Şəbəkə Müraciəti</string>
+  <!-- Bluetooth settings.  The user-visible string that is used whenever referring to the SAP profile. -->
   <string name="bluetooth_profile_sap">SIM Müraciəti</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the DUN checkbox preference when DUN is connected. -->
   <string name="bluetooth_dun_profile_summary_connected">DUN serverinə bağlandı</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the pbap checkbox preference when pbap is connected. -->
   <string name="bluetooth_pbap_profile_summary_connected">Pbap serverinə bağlandı</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the SAP checkbox preference when SAP is connected. -->
   <string name="bluetooth_sap_profile_summary_connected">SIM Müraciəti serverinə bağlandı</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the DUN checkbox preference that describes how checking it will set the DUN profile as preferred. -->
   <string name="bluetooth_dun_profile_summary_use_for">Zənglə Bağlanma Şəbəkə Müraciəti üçün istifadə et</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the pbap checkbox preference that describes how checking it will set the pbap profile as preferred. -->
   <string name="bluetooth_pbap_profile_summary_use_for">Şəxs paylaşmaq üçün istifadə et</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the SAP checkbox preference that describes how checking it will set the SAP profile as preferred. -->
   <string name="bluetooth_sap_profile_summary_use_for">SIM Müraciəti üçün istifadə et</string>
+  <!-- Bluetooth settings.  A checkbox to set if we should accept all the file types regardless of their presence in MIME type whitelist -->
   <string name="bluetooth_accept_all_files">Bütün fayl növlərini qəbul et</string>
+  <!-- SIM lock settings title  [CHAR LIMIT=40] -->
   <string name="sim_lock_settings_cm">SIM/RUIM kart kilidi tənzimləmələri</string>
+  <!-- Security & location settings screen, setting option name  [CHAR LIMIT=40] -->
   <string name="sim_lock_settings_category_cm">SIM/RUIM kart kilidi tənzimlə</string>
+  <!-- Security & location settings screen, section heading for settings related to sim card locking  [CHAR LIMIT=40] -->
   <string name="sim_lock_settings_title_cm">SIM/RUIM kart kilidi</string>
+  <!-- SIM card lock settings screen, SIM PIN dialog message when PIN disable fails-->
   <string name="sim_pin_disable_failed">PIN ləğv edilə bilmədi.</string>
+  <!-- SIM card lock settings screen, SIM PIN dialog message when PIN enable fails-->
   <string name="sim_pin_enable_failed">PIN fəallaşdırıla bilmədi.</string>
+  <!-- SIM password can't be changed as SIM LOCK is not enabled: -->
   <string name="sim_pin_change_failed_enable_sim_lock">SIM/RUIM PIN\'ini dəyişdirmək üçün, əvvəlcə SIM/RUIM kilidini fəallaşdırın.</string>
+  <!-- SIM lock can't be changed - not supported -->
   <string name="sim_enable_disable_lock_not_supported">SIM/RUIM kilidi kart tərəfindən dəstəklənmir.</string>
+  <!-- SIM card lock settings screen, toast displayed on wrong PIN1: -->
   <string name="sim_pin_attempts">\nQalan cəhd sayı:</string>
+  <!-- SIM card lock settings screen, toast displayed on PIN1 enable: -->
   <string name="sim_pin_enabled">PIN1 fəallaşdırıldı</string>
+  <!-- SIM card lock settings screen, toast displayed on PIN1 disable: -->
   <string name="sim_pin_disabled">PIN1 ləğv edildi</string>
+  <!-- string resources for USB OTG & UICC features -->
   <string name="storage_usb">USB yaddaş</string>
   <string name="storage_uicc">UICC yaddaş</string>
   <string name="sdcard_eject" product="default">SD kartın bağlantısını kəs</string>
@@ -563,6 +671,8 @@
   <string name="usb_mount" product="default">USB yaddaşı qoşun</string>
   <string name="usb_insert_summary" product="default">Qoşmaq üçün USB yaddaşı taxın</string>
   <string name="uicc_format_summary" product="default">USB yaddaşdakı musiqi və foto kimi bütün verilənləri silər</string>
+  <!-- Title of dialog asking user to confirm before enabling UMS. [CHAR LIMIT=48] -->
+  <!-- Message of dialog asking user to confirm before enabling UMS. [CHAR LIMIT=NONE] -->
   <string name="dlg_confirm_uicc_unmount_title" product="default">UICC yaddaşın bağlantısı kəsilsin?</string>
   <string name="dlg_confirm_sdcard_unmount_text" product="default">SD kartın bağlantısını kəssəniz, təkrar bağlanana qədər istifadə etdiyiniz bəzi tətbiqetmələr dayandırılacaq və istifadə edilə bilməyəcək.</string>
   <string name="dlg_confirm_usb_unmount_text" product="default">USB yaddaşın bağlantısını kəssəniz, təkrar bağlanana qədər istifadə etdiyiniz bəzi tətbiqetmələr dayandırılacaq və istifadə edilə bilməyəcək.</string>
@@ -573,12 +683,41 @@
   <string name="sdcard_unmount_inform_text" product="default">SD kartın bağlantısı kəsiləcək.</string>
   <string name="usb_unmount_inform_text" product="default">USB yaddaşın bağlantısı kəsiləcək.</string>
   <string name="uicc_unmount_inform_text" product="default">UICC yaddaşın bağlantısı kəsiləcək.</string>
+  <!-- Storage menu, label for internal media storage -->
   <string name="internal_sd_format_summary">Daxili media yaddaşındakı musiqi və foto kimi bütün verilənləri silər</string>
+  <!-- Media & phone storage settings screen, label for check box to erase media storage [CHAR LIMIT=30] -->
   <string name="erase_internal_storage_description">Daxili media yaddaşındakı musiqi və foto kimi bütün verilənləri silər</string>
+  <!-- Rescan storage -->
+  <!-- [CHAR LIMIT=130] Location mode screen, sub category for IZat Location -->
+  <!-- [CHAR LIMIT=NONE] App ops settings summary, on main settings screen. If clicked, the user is taken to a settings screen for app operations -->
+  <!-- Setting checkbox summary when device is in Charging mode -->
+  <!-- Title of checkbox setting that enable quickboot. [CHAR LIMIT=32] -->
+  <!-- Summary of checkbox setting that enable quickboot. [CHAR LIMIT=64] -->
+  <!-- MultiSim Settings changes-->
+  <!-- Category title for Charging sounds (Power state change) specific Settings.
+         [CHAR LIMIT=40] -->
   <string name="power_notifications_category_title">Batereya yükləmə səsləri</string>
+  <!-- Sound settings, Charging sounds enable/disable, setting check box label -->
+  <!-- Sound settings, Charging sounds vibrate enable/disable, setting check box label -->
+  <!-- Sound settings, Charging sounds ringtone selection, preference label -->
   <string name="power_notifications_ringtone_title">Bildiriş səsi</string>
+  <!-- Sound settings, charging sounds label for ringtone == none -->
   <string name="power_notifications_ringtone_silent">Səssiz</string>
+  <!-- Voice Wakeup -->
+  <!-- Battery : Automatic performance profiles -->
+  <!-- Development : Force high-end graphics -->
+  <!-- EdgeGesture service -->
+  <!-- CM Legal -->
+  <!-- Sizes for pattern lockscreen -->
+  <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
+  <!-- Whether the dots will be drawn when using the lockscreen pattern -->
+  <!-- Whether the keyguard will directly pass to password entry -->
+  <!-- Whether the keyguard will directly pass to pattern view -->
+  <!-- Whether the keyguard will directly pass to PIN entry -->
+  <!-- Screen security -->
   <string name="link_volume_option_title">Zəng səsi ilə bildiriş səsini bağla</string>
+  <!-- Notification drawer -->
+  <!-- Weather in status bar header -->
   <string name="qs_tile_cellular_data">Verilənlər bağlantısı</string>
   <string name="qs_tile_adb_over_network">Şəbəkə üzərindən ADB</string>
   <string name="qs_tile_profiles">Sistem profilləri</string>
@@ -589,22 +728,37 @@
   <string name="qs_tile_screen_timeout">Ekrana qoyulan vaxt</string>
   <string name="qs_tile_usb_tether">USB İnternet Paylaşma</string>
   <string name="qs_dynamic_tile_su">Root müraciəti</string>
+  <!-- Gesture Settings -->
+  <!-- Settings main menu entry -->
+  <!-- Themes Settings -->
+  <!-- Settings main menu entry -->
   <string name="themes_settings_title">Temalar</string>
+  <!-- WiFi Ad-Hoc mode -->
   <string name="wifi_mode">Rejim</string>
   <string name="wifi_channel">Kanal</string>
   <string name="wifi_mhz">MHz</string>
+  <!-- WiFi auto-configure priorities -->
+  <!-- About phone settings screen, setting option dialog title to show regulatory information [CHAR LIMIT=25] -->
+  <!-- SAR information -->
+  <!-- IC Codes -->
   <string name="expanded_hide_navigation">Hərəkət zolağını gizlət</string>
+  <!-- WhisperPush -->
   <string name="navigation_ring_title">Hərəkət halqası tətbiqetmələri</string>
   <string name="navigation_ring_message">Hərəkət halqasına düzəliş etmək üçün düzəliş nişanına toxunun.\n\nQısayol üçün tətbiqetmə seçin.\n\nDəyişiklikləri saxlamaq üçün \'\u2713\' nişanına toxunun və ya tənzimləmələri ilkin hala qaytarmaq üçün \'İlkin hala qaytar\'a toxunun.</string>
+  <!-- Display & Lights screen, setting options for LCD density -->
+  <!-- Stylus Icon -->
+  <!-- Stylus Gestures -->
   <string name="gestures_left_spen_title_head">Sola sürüşdürmə</string>
   <string name="gestures_right_spen_title_head">Sağa sürüşdürmə</string>
   <string name="gestures_up_spen_title_head">Yuxarı sürüşdürmə</string>
   <string name="gestures_down_spen_title_head">Aşağı sürüşdürmə</string>
   <string name="gestures_long_spen_title_head">Uzun basma</string>
   <string name="gestures_double_spen_title_head">İki dəfə toxunma</string>
+  <!-- Gestures Options -->
   <string name="gestures_action_home">Əsas ekran</string>
   <string name="gestures_action_back">Geri</string>
   <string name="gestures_action_menu">Menyu</string>
+  <!-- Stylus gestures -->
   <string name="category_vibrate">Titrəmə</string>
   <string name="category_volume">Səs</string>
   <string name="category_sounds">Səslər</string>
@@ -612,15 +766,31 @@
   <string name="notification_manager">Bildirişlər</string>
   <string name="lockscreen_settings">Kilit ekranı</string>
   <string name="category_lights">İşıqlar</string>
+  <!-- Show/Hide Search Bar -->
   <string name="sim_ringtone_title">SIM %d zəng səsi</string>
+  <!-- LiveDisplay -->
   <string name="live_display_day">Gündüz</string>
   <string name="live_display_night">Gecə</string>
+  <!-- Anonymous Statistics #CM -->
+  <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
+  <!-- Anonymous Statistics - Preview -->
+  <!-- Heads up -->
   <string name="summary_heads_up_enabled">Açılan bildirişlər fəallaşdırıldı</string>
   <string name="summary_heads_up_disabled">Açılan bildirişlər ləğv edildi</string>
+  <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
+  <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
+  <!-- Killswitch -->
+  <!-- MSIM SIM status -->
+  <!-- Factory reset strings -->
   <string name="factory_reset_erase_stored_content_summary">Cihazdakı musiqi, foto, video və digər istifadəçi verilənlərini sil</string>
   <string name="factory_reset_erase_stored_content_summary_forced">Cihazdakı musiqi, foto, video və digər istifadəçi verilənlərini sil. \n\n<b>Məzmun cihaz şifrələndiyinə görə qaytarıla bilməyəcək.</b></string>
   <string name="factory_reset_erase_sd_card_summary">Musiqi və fotolar daxil olmaqla SD kartdakı bütün verilənləri sil</string>
+  <!-- Wi-Fi filters -->
+  <!-- Wi-Fi region code -->
+  <!-- Wi-Fi settings screen, setting summary for setting the wifi frequency band [CHAR LIMIT=50]-->
   <string name="wifi_setting_countrycode_summary">Wi\u2011Fi üçün bölgə kodu daxil edin</string>
+  <!-- Wi-Fi settings screen, error message when the frequency band could not be set [CHAR LIMIT=50]. -->
+  <!-- Wi-Fi region countries -->
   <string name="wifi_countrycode_entries_us">Birləşmiş Ştatlar</string>
   <string name="wifi_countrycode_entries_ca">Kanada, Tayvan</string>
   <string name="wifi_countrycode_entries_de">Almaniya</string>
@@ -633,5 +803,54 @@
   <string name="wifi_countrycode_entries_sg">İsrail, Sinqapur</string>
   <string name="wifi_countrycode_entries_br">Braziliya</string>
   <string name="wifi_countrycode_entries_in">Hindistan</string>
+  <!-- FINGERPRINT -->
+  <!-- Title for preference which sets the unlock. This is only used when the device has
+         a fingerprint sensor , otherwise just "unlock_set_unlock_launch_picker_title" is used -->
+  <!-- Summary for "Configure lockscreen" when security Fingerprint is enabled [CHAR LIMIT=45] -->
+  <!-- Title for preference that guides the user through creating a fingerprint [CHAR LIMIT=22] -->
+  <!-- List item title to add a new fingerprint in fingerprint list screen -->
+  <!-- Title for preference in fingerprint lockscreen settings, takes user to fingerprint list -->
+  <!-- Summary for preference in fingerprint lockscreen settings, takes user to fingerprint list -->
+  <!-- Info explaining the backup lock which is used for fingerprint -->
+  <!-- Dialog title for renaming your fingerprint -->
+  <!-- EditText label for renaming your fingerprint in rename dialog -->
+  <!-- Title for dialog that shows when the user cannot add anymore fingers -->
+  <!-- Message for dialog that shows when the user cannot add anymore fingers -->
+  <!-- Title for number of finger prints enrolled -->
+  <!-- Description for managing fingerprints -->
   <string name="manage_fingerprints_description">Barmaq izləri cihaz kilidinizi tez açıb fotoşəkil çəkməyinizə icazə verər.</string>
+  <!-- Fingerprint enrollment introduction title -->
+  <!-- Fingerprint enrollment introduction instructions -->
+  <!-- Fingerprint enrollment scan fingerprint title -->
+  <!-- Fingerprint enrollment scan fingerprint instructions -->
+  <!-- Fingerprint enrollment error title during first step only -->
+  <!-- Fingerprint enrollment error message -->
+  <!-- Fingerprint enrollment error instructions -->
+  <!-- Fingerprint enrollment half way break title -->
+  <!-- Fingerprint enrollment introduction instructions -->
+  <!-- Fingerprint enrollment finished title -->
+  <!-- Fingerprint enrollment finished instructions -->
+  <!-- Next button title for finding sensor -->
+  <!-- Next button title for finding sensor -->
+  <!-- Next button title for finding sensor -->
+  <!-- Wrong fingerprint sensor dialog title -->
+  <!-- Wrong fingerprint sensor dialog message -->
+  <!-- Failed fingerprint enrollment dialog title -->
+  <!-- Failed fingerprint enrollment dialog message -->
+  <!-- Failed fingerprint enrollment button label -->
+  <!-- Successful scan title for first successful scan -->
+  <!-- Successful scan title for second to last successful scan -->
+  <!-- Successful scan title for all other successful scans -->
+  <!-- Fingerprint enrollment error titles -->
+  <!-- Title for lockscreen settings, on dashboard, that is only used when a device supports
+         the fingerprint feature -->
+  <!-- Menu label for reset the battery stats -->
+  <!-- Reset stats confirmation dialog's message -->
+  <!-- Dock battery not present message -->
+  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging on Dock AC. -->
+  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging over Dock USB. -->
+  <!-- Lock screen setup wizard pattern complexity -->
+  <!-- LTO download data over wi-fi only -->
+  <!-- Keep screen on strings -->
+  <!-- Contributors cloud activity -->
 </resources>

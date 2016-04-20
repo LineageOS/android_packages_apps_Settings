@@ -16,13 +16,18 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
   <plurals name="show_dev_countdown_cm">
     <item quantity="one">Du bass <xliff:g id="step_count">%1$d</xliff:g> Schrëtt dovun ewech, d\'Entwéckleroptiounen z\'aktivéieren.</item>
     <item quantity="other">Du bass <xliff:g id="step_count">%1$d</xliff:g> Schrëtter dovun ewech, d\'Entwéckleroptiounen z\'aktivéieren.</item>
   </plurals>
+  <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
   <string name="show_dev_on_cm">Du hues d\'Entwéckleroptiounen aktivéiert!</string>
+  <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
   <string name="show_dev_already_cm">Net néideg, du hues d\'Entwécklungsoptioune schonn aktivéiert.</string>
+  <!-- Launch Dev Tools -->
   <string name="development_tools_title">Entwécklungsgeschir</string>
+  <!-- Setting checkbox title for root access -->
   <string name="root_access">Root-Zougrëff</string>
   <string name="root_access_warning_title">Root-Accès erlaben?</string>
   <string name="root_access_warning_message">Appen de Root-Zougrëff erméigleche ka geféierlech sinn an d\'Sécherheet vum System beanträchtegen!</string>
@@ -30,10 +35,12 @@
   <string name="root_access_apps">Just Appen</string>
   <string name="root_access_adb">Just ADB</string>
   <string name="root_access_all">Appen an ADB</string>
+  <!-- Sound settings screen -->
   <string name="ring_mode_title">Schellmodus</string>
   <string name="ring_mode_normal">Normal</string>
   <string name="ring_mode_vibrate">Vibréieren</string>
   <string name="ring_mode_mute">Roueg</string>
+  <!-- Profiles settings  -->
   <string name="profiles_settings_title">Systemprofiller</string>
   <string name="profiles_add">Dobäisetzen</string>
   <string name="profile_settings_title">Profil</string>
@@ -55,32 +62,43 @@
   <string name="profile_app_group_category_title">Notifikatioun iwwerschreiwen</string>
   <string name="profile_app_group_item_instructions">Gruppen dobäisetzen oder läschen</string>
   <string name="profile_app_group_item_instructions_summary">App-Gruppen zu dësem Profil dobäisetzen oder ewechhuelen, fir déi Notifikatioune geännert ginn</string>
+  <!-- Profile mode options. -->
   <string name="profile_entries_on">Un</string>
   <string name="profile_entries_off">Aus</string>
   <string name="profile_entries_no_override">Net iwwerschreiwen</string>
+  <!-- Add Profile -->
   <string name="profile_name_title">Numm</string>
   <string name="new_profile_name">&lt;neie Profil&gt;</string>
+  <!-- Rename Dialog  -->
   <string name="rename_dialog_title">Ëmbenennen</string>
   <string name="rename_dialog_message">Neien Numm aginn</string>
   <string name="rename_dialog_hint">Profilnumm aginn</string>
+  <!-- Reset Profiles -->
   <string name="profile_reset_title">Zrécksetzen</string>
   <string name="profile_reset_message">All Benotzerprofiller läschen an op de Standard zrécksetzen?</string>
+  <!-- Profile network mode -->
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
   <string name="profile_networkmode_4g">LTE</string>
   <string name="profile_networkmode_2g3g">2G/3G</string>
   <string name="profile_networkmode_2g3g4g">2G/3G/LTE</string>
+  <!-- Profile Config screen PreferenceGroup titles -->
   <string name="profile_volumeoverrides_title">Lautstäerkt festleeën</string>
   <string name="volume_override_summary">Op %1$s/%2$s setzen</string>
   <string name="profile_volume_override_checkbox_label">Lautstäerkt iwwerschreiwen</string>
+  <!-- Menu item for managing profiles -->
   <string name="profile_profiles_manage">Profiller</string>
   <string name="profile_profile_manage">Profil geréieren</string>
+  <!-- Profile settings screen, section header for settings related to notification profiles -->
   <string name="profile_settings">Profilastellungen</string>
   <string name="profile_trigger_connect">Beim Connectéieren</string>
   <string name="profile_trigger_disconnect">Beim deconnectéieren</string>
   <string name="profile_trigger_notrigger">Keen Ausléiser</string>
+  <!-- Title for application group setting screen -->
   <string name="profile_applist_title">Appen</string>
+  <!-- Add application dialog box title -->
   <string name="profile_choose_app">App auswielen</string>
+  <!-- Profiles - system settings -->
   <string name="profile_system_settings_title">Systemastellungen</string>
   <string name="profile_lockmode_title">Spärschiermmodus</string>
   <string name="profile_lockmode_policy_disabled_summary">Dës Profiloptioun ass duerch den Apparatadministrateur gespaart</string>
@@ -90,6 +108,7 @@
   <string name="profile_brightness_title">Schiermhellegkeet</string>
   <string name="profile_brightness_override_summary">Op %1$d%% setzen</string>
   <string name="profile_brightness_override_checkbox_label">Hellegkeet iwwerschreiwen</string>
+  <!-- Connection override toggles (not all are used at this time ) -->
   <string name="toggleWifi">WLAN</string>
   <string name="toggleWifiAp">Mobille WLAN-Hotspot</string>
   <string name="toggleBluetooth">Bluetooth</string>
@@ -98,6 +117,7 @@
   <string name="toggleSync">Daten automatesch synchroniséieren</string>
   <string name="toggle2g3g4g">Preferéierten Netzwierktyp</string>
   <string name="toggleNfc">NFC</string>
+  <!-- Hardware keys -->
   <string name="button_pref_title">Knäppercher</string>
   <string name="hardware_keys_power_key_title">Un-/Aus-Schalter</string>
   <string name="hardware_keys_home_key_title">Startsäit-Knäppchen</string>
@@ -137,6 +157,7 @@
   <string name="button_wake_summary">Iwwerschreift d\'Ofspill-Steierung</string>
   <string name="home_answer_call_title">Uruff unhuelen</string>
   <string name="home_answer_call_summary">Duerch Drécke vun der Startschierm-Tast gëtt den erakommenden Uruff ugeholl</string>
+  <!-- Key backlight -->
   <string name="button_backlight_title">Hannergrondluucht</string>
   <string name="button_backlight_enabled">Knäppercher beliichten</string>
   <string name="keyboard_backlight_enabled">Tastatur beliichten</string>
@@ -147,6 +168,7 @@
   <string name="backlight_summary_disabled">Desaktivéiert</string>
   <string name="backlight_summary_enabled_with_timeout">Aktivéiert fir <xliff:g id="timeout">%s</xliff:g></string>
   <string name="backlight_summary_enabled">Aktivéiert</string>
+  <!-- Power menu -->
   <string name="power_menu_title">Ausschaltmenü</string>
   <string name="power_menu_reboot_title">Neistart-Menü</string>
   <string name="power_menu_screenshot_title">Schiermfoto</string>
@@ -159,12 +181,16 @@
   <string name="power_menu_sound_title">Toun-Astellungen</string>
   <string name="power_menu_bug_report_disabled">Feelerberichter sinn an den Entwéckleroptiounen desaktivéiert</string>
   <string name="power_menu_profiles_disabled">Systemprofiller sinn desaktivéiert</string>
+  <!-- Backlight brightness settings screen -->
   <string name="adaptive_backlight_title">Adaptiv Hannergrondluucht</string>
   <string name="adaptive_backlight_summary">D\'Hellegkeet vun der Hannergrondbeliichtung dynamesch ajustéiere, fir d\'Akkulafzäit ze maximéieren ouni d\'Liesbarkeet anzeschränken</string>
+  <!-- Sunlight readability enhancement screen -->
   <string name="sunlight_enhancement_title">Verbesserung bei Sonneliicht</string>
   <string name="sunlight_enhancement_summary">Liesbarkeet vum Schierm bei hellem Sonneliicht verbesseren</string>
+  <!-- Color enhancement settings screen -->
   <string name="color_enhancement_title">Faarfverbesserung</string>
   <string name="color_enhancement_summary">Faarfduerstellung vum Schierm dynamesch verbesseren</string>
+  <!-- Blacklist preferences -->
   <string name="blacklist_title">Lëscht vu blockéierten Nummeren</string>
   <string name="blacklist_edit_dialog_title">Blockéiert Telefonsnummer änneren</string>
   <string name="blacklist_prefs">Astellungen</string>
@@ -188,11 +214,14 @@
   <string name="blacklist_policy_block_calls">Erakommend Uriff blockéieren</string>
   <string name="blacklist_policy_block_messages">Erakommend Messagë blockéieren</string>
   <string name="blacklist_bad_number_add">D\'ongëlteg Nummer kann net zu der Lëscht vun de blockéierten Nummeren dobäigesat ginn</string>
+  <!-- Blacklist management -->
   <string name="remove_blacklist_number_title">Nummer läschen</string>
   <string name="remove_blacklist_entry">Wëlls du dës blockéiert Nummer ewechhuelen?</string>
   <string name="select_contact">Kontakt auswielen</string>
+  <!-- Protected apps lockpattern reset button -->
   <string name="lockpattern_reset_button">Muster zrécksetzen</string>
   <string name="lockpattern_settings_reset_summary">Gëff d\'E-Mail-Adress vun dengem primäre Kont zesumme mam Passwuert an, fir d\'Muster zréckzesetzen</string>
+  <!-- Protected Apps -->
   <string name="menu_hidden_apps_delete">Zrécksetzen</string>
   <string name="menu_hidden_apps_reset_lock">Spärmuster zrécksetzen</string>
   <string name="protected_apps">Geschützt Appen</string>
@@ -202,6 +231,7 @@
   <string name="pa_login_submit_button">Aloggen</string>
   <string name="pa_login_checking_password">Kont gëtt iwwerpréift\u2026</string>
   <string name="pa_login_incorrect_login">Login war inkorrekt</string>
+  <!-- Display : Rotation  -->
   <string name="display_rotation_title">Rotéierung</string>
   <string name="display_rotation_disabled">Desaktivéiert</string>
   <string name="display_rotation_unit">Grad</string>
@@ -211,6 +241,7 @@
   <string name="display_rotation_90_title">90 Grad</string>
   <string name="display_rotation_180_title">180 Grad</string>
   <string name="display_rotation_270_title">270 Grad</string>
+  <!-- Sms security limit -->
   <string name="app_security_title">App-Sécherheet</string>
   <string name="sms_security_check_limit_title">SMS-Messagëlimitt</string>
   <string name="sms_security_check_limit_summary">Appe kënne(n) %d Messagen an 1 Minutt ouni zousätzlech Bestätegung schécken</string>
@@ -221,22 +252,33 @@
   <string name="block_notifications_title">Notifikatiounsfilter</string>
   <string name="block_notifications_summary">Ignoréiert Notifikatiounen a Filtere geréieren</string>
   <string name="no_filters_title">Keng Filtere gesat</string>
+  <!-- CM Updater -->
   <string name="cmupdate_settings_title">CyanogenMod-Aktualiséierungen</string>
+  <!-- Settings switch for updating Cyanogen recovery -->
   <string name="update_recovery_title">Cyanogen-Recovery aktualiséieren</string>
   <string name="update_recovery_summary">De Recovery-Programm zesumme mam System aktualiséieren</string>
   <string name="update_recovery_on_warning">HIWÄIS: Wann dës Funktioun aktivéiert ass, gëtt däin installéierte Recuperatiounssystem duerch dat an der aktueller Versioun vum Betribssystem ersat.\n\nDäi Recuperatiounssystem gëtt zesumme mat de Systemaktualiséierungen aktualiséiert, sou kann d\'Kompatibilitéit mat zukünftege Versiounen garantéiert ginn.\n\nWëlls du dës Funktioun aktivéieren?</string>
   <string name="update_recovery_off_warning">WARNUNG: Wann dës Funktioun desaktivéiert ass, gëtt däin installéierte Recovery-Programm net mat dengem System aktualiséiert.\n\nZukünfteg System-Aktualiséierunge loosse sech mat veraalten oder eegene Recovery-Programmer eventuell net installéierne.\n\nWëlls du dës Funktioun sécher desaktivéieren?</string>
+  <!-- About phone screen, CyanogenMod version -->
   <string name="mod_version">CyanogenMod-Versioun</string>
   <string name="mod_version_default">Onbekannt</string>
+  <!-- About phone screen, Device model -->
   <string name="device_model">Apparatmodell</string>
+  <!-- About phone screen, Device name -->
   <string name="device_name">Apparatnumm</string>
+  <!-- About phone screen, build date -->
   <string name="build_date">Build-Datum</string>
+  <!-- About phone screen, service state -->
   <string name="phone_service_state">Stëmm: <xliff:g id="voice_state">%1$s</xliff:g>, Daten: <xliff:g id="data_state">%2$s</xliff:g></string>
+  <!--- Tap To Wake -->
   <string name="double_tap_to_wake_title">Zweemol drécke fir waakreg ze maachen</string>
   <string name="double_tap_to_wake_summary">Zweemol op de Schierm drécke fir en unzeschalten</string>
+  <!-- Proximity wake -->
   <string name="proximity_wake_title">Onbeofsiichtegt waakreg maache verhënneren</string>
   <string name="proximity_wake_summary">Virum waakreg maachen de Proximitéitssensor iwwerpréiwen</string>
+  <!-- Privacy Settings Header item -->
   <string name="privacy_settings_cyanogenmod_title">Privatsphär</string>
+  <!-- Privacy Guard -->
   <string name="privacy_guard_default_title">Standardméisseg aktivéiert</string>
   <string name="privacy_guard_default_summary">Standardméisseg fir nei-installéiert Appen aktivéiert</string>
   <string name="privacy_guard_manager_title">Privatsphärschutz</string>
@@ -249,29 +291,43 @@
   <string name="privacy_guard_manager_show_system_apps">Integréiert Appen uweisen</string>
   <string name="privacy_guard_notification_title">Notifikatioun uweisen</string>
   <string name="app_ops_btn_text">Änneren</string>
+  <!-- Increasing ring tone volume -->
   <string name="increasing_ring_volume_option_title">Usteigend Schelltounlautstäerkt</string>
   <string name="increasing_ring_min_volume_title">Start-Lautstäerkt</string>
   <string name="increasing_ring_ramp_up_time_title">Ulafzäit</string>
+  <!-- Advanced reboot options -->
   <string name="advanced_reboot_title">Erweiderten Neistart</string>
   <string name="advanced_reboot_summary">Wann entspäert, Optioune am Startmenü uweise fir den Neistart an de Recuperatiounsmodus, de Bootloader oder fir e séieren Neistart auszeféieren</string>
+  <!-- Setting checkbox title for Whether to enable Android debugging support on the phone. -->
   <string name="enable_adb_cm">Android-Debugging</string>
+  <!-- Setting checkbox summary for Whether to enable Android debugging support on the phone -->
   <string name="enable_adb_summary_cm">D\'Android-Debug-Bridge-Schnëttstell (adb) aktivéieren</string>
+  <!-- Android debugging over WiFi -->
   <string name="adb_over_network">ADB iwwer Netzwierk</string>
   <string name="adb_over_network_summary">TCP/IP-Debugging iwwer Netzwierkschnëttstellen (WLAN, USB-Netzwierker) aktivéieren. Dës Astellung gëtt beim Neistart zréckgesat</string>
+  <!-- Warning for Adb over Network -->
   <string name="adb_over_network_warning">WARNUNG: Wann ADB iwwer Netzwierk aktivéiert ass, ass däin Telefon op fir Intrusiounen aus alle connectéierten Netzwierker!\n\nBenotz dës Funktioun just, wann s du mat vertrauenswierdegen Netzwierker connectéiert bass.\n\nWëlls du dës Funktioun aktivéieren?</string>
+  <!-- Setting checkbox summary for displaying USB debugging notification -->
   <string name="adb_notify">Debugging-Notifikatioun</string>
   <string name="adb_notify_summary">Weis eng Notifikatioun un, wann USB- oder Netzwierk-Debugging aktivéiert ass</string>
+  <!-- Hostname setting -->
   <string name="device_hostname">Hostnumm vum Apparat</string>
+  <!-- Development shortcut -->
   <string name="development_shortcut_title">Entwéckler-Ofkierzung</string>
   <string name="development_shortcut_summary">Aktivéier Ofkierzunge fir d\'App-Gestioun an der Lëscht vun de rezent benotzten Appen</string>
+  <!-- tap-to-sleep -->
   <string name="double_tap_to_sleep_title">Zweemol drécke fir auszemaachen</string>
   <string name="double_tap_to_sleep_summary">Zweemol drécken op der Statusläischt mécht de Schierm aus</string>
+  <!-- Turn on display when power connected; turn off display when power disconnected -->
   <string name="wake_when_plugged_or_unplugged_title">Beim Astieche waakreg maachen</string>
   <string name="wake_when_plugged_or_unplugged_summary">De Schierm uschalte wann eng Stroumquell ugeschloss oder getrennt gëtt</string>
+  <!-- Kill app long-press back -->
   <string name="kill_app_longpress_back">Appe mam \"Zréck\"-Knäppchen zoumaachen</string>
   <string name="kill_app_longpress_back_summary">D\'App am Virgrond zoumaache wann den \"Zréck\"-Knäppche laang gedréckt gëtt</string>
+  <!-- Buttons - Enable navbar -->
   <string name="disable_navkeys_title">Navigatiounsläischt um Schierm aktivéieren</string>
   <string name="disable_navkeys_summary">D\'Hardware-Tasten desaktivéieren an eng Navigatiounsläischt um Schierm uweisen</string>
+  <!-- Navigation Bar -->
   <string name="navigation_bar_category">Navigatiounsläischt</string>
   <string name="navigation_bar_left_title">Lénkshänner-Modus</string>
   <string name="navigation_bar_left_summary">Navigatiounsläischt am Breetformat op der lénkser Säit vum Schierm uweisen</string>
@@ -285,11 +341,13 @@
   <string name="navigation_bar_arrow_keys_summary">Beim Schreiwe Cursor-Knäppercher lénks a riets uweisen. Iwwerschreift den Agabmethod-Wiessler.</string>
   <string name="navigation_bar_recents_title">Laangt Drécken op den Applikatiounsverlaf</string>
   <string name="header_category_personalization">Personaliséierung</string>
+  <!-- Status bar -->
   <string name="status_bar_title">Statusläischt</string>
   <string name="status_bar_toggle_brightness">Hellegkeetssteierung</string>
   <string name="status_bar_toggle_brightness_summary">Hellegkeet duerch Wëschen iwwer d\'Statusläischt änneren</string>
   <string name="status_bar_notif_count_title">Notifikatiounszieler</string>
   <string name="status_bar_notif_count_summary">Unzuel vun ongeliesen Notifikatiounen an der Statusläischt uweisen</string>
+  <!-- Status bar - Clock -->
   <string name="status_bar_clock_style_title">Duerstellung vun der Auer</string>
   <string name="status_bar_clock_style_right">Riets</string>
   <string name="status_bar_clock_style_left">Lénks</string>
@@ -300,22 +358,26 @@
   <string name="status_bar_am_pm_normal">Normal</string>
   <string name="status_bar_am_pm_small">Kleng</string>
   <string name="status_bar_am_pm_hidden">Verstoppt</string>
+  <!-- Status bar - Battery -->
   <string name="status_bar_battery_style_title">Stil vum Akkustatus</string>
   <string name="status_bar_battery_style_icon_portrait">Symbol (Héichformat)</string>
   <string name="status_bar_battery_style_icon_landscape">Symbol (Breetformat)</string>
   <string name="status_bar_battery_style_circle">Krees</string>
   <string name="status_bar_battery_style_text">Text</string>
   <string name="status_bar_battery_style_hidden">Verstoppt</string>
+  <!-- Status bar - Battery percentage -->
   <string name="status_bar_battery_percentage_title">Prozentwäert vum Akku</string>
   <string name="status_bar_battery_percentage_default">Verstoppt</string>
   <string name="status_bar_battery_percentage_text_inside">Am Symbol</string>
   <string name="status_bar_battery_percentage_text_next">Nieft dem Symbol</string>
+  <!-- Notification light dialogs -->
   <string name="edit_light_settings">Luuchtastellungen änneren</string>
   <string name="pulse_speed_title">Pulsdauer a -geschwindegkeet</string>
   <string name="default_time">Normal</string>
   <string name="custom_time">Ugepasst</string>
   <string name="dialog_delete_title">Läschen</string>
   <string name="dialog_delete_message">Ausgewielt Element läschen?</string>
+  <!-- Values for the notification light pulse spinners -->
   <string name="pulse_length_always_on">Ëmmer un</string>
   <string name="pulse_length_very_short">Ganz kuerz</string>
   <string name="pulse_length_short">Kuerz</string>
@@ -327,12 +389,14 @@
   <string name="pulse_speed_normal">Normal</string>
   <string name="pulse_speed_slow">Lues</string>
   <string name="pulse_speed_very_slow">Ganz lues</string>
+  <!-- Battery light settings -->
   <string name="battery_light_title">Akkuluucht</string>
   <string name="battery_low_pulse_title">Pulséiere wann den Akku schwaach ass</string>
   <string name="battery_light_list_title">Faarwen</string>
   <string name="battery_light_low_color_title">Akku schwaach</string>
   <string name="battery_light_medium_color_title">Lueden</string>
   <string name="battery_light_full_color_title">Opgelueden</string>
+  <!-- Lights settings screen, notification light settings -->
   <string name="notification_light_title">Notifikatiounsluucht</string>
   <string name="notification_light_general_title">Allgemeng</string>
   <string name="notification_light_applist_title">Appen</string>
@@ -343,19 +407,26 @@
   <string name="notification_light_voicemail_title">Mailboxopnam</string>
   <string name="notification_light_screen_on">Liicht wann de Schierm un ass</string>
   <string name="keywords_lights_brightness_level">LED-Hellegkeet reduzéieren</string>
+  <!-- Sound & notification > Sound section: Title for the option defining the default notification ringtone. [CHAR LIMIT=30] -->
   <string name="notification_ringtone_title_cm">Notifikatiounstoun</string>
+  <!-- Launch music player when headset is connected -->
   <string name="headset_connect_player_title">Musek-App starten</string>
   <string name="headset_connect_player_summary">Wa Kopfhörer verbonne ginn, gëtt Standard-Musek-App gestart</string>
+  <!-- Whether to display IME switcher notifcation -->
   <string name="ime_switcher_notify">Auswielsymbol</string>
   <string name="ime_switcher_notify_summary">Symbol fir de Wiessel vun der Agabmethod uweisen</string>
+  <!-- Per app controls for LP keyguard notifications -->
   <string name="app_notification_show_on_keyguard_title">Um Spärschierm uweisen</string>
   <string name="app_notification_show_on_keyguard_summary">Notifikatioune vun dëser App op dem Spärschierm uweisen</string>
   <string name="app_notification_no_ongoing_on_keyguard_title">Dauerhaft Notifikatiounen op de Spärschierm desaktivéieren</string>
   <string name="app_notification_no_ongoing_on_keyguard_summary">Ni dauerhaft Notifikatiounen op de Spärschierm uweisen</string>
+  <!-- High touch sensitivity -->
   <string name="high_touch_sensitivity_title">Héich Beréierungsempfindlechkeet</string>
   <string name="high_touch_sensitivity_summary">Touch-Empfindlechkeet erhéijen, fir den Touchscreen och mat Hännsche benotzen ze kënnen</string>
+  <!-- Touchscreen hovering -->
   <string name="touchscreen_hovering_title">Iwwerschwiewe vum Touchscreen</string>
   <string name="touchscreen_hovering_summary">Erméiglecht et, mam Fanger iwwer dem Schierm ze schwieren an den Zeiger wéi mat enger Maus ze beweegen</string>
+  <!-- App ops -->
   <string name="app_ops_summaries_coarse_location">Ongeféiere Standuert</string>
   <string name="app_ops_summaries_fine_location">Geneeë Standuert</string>
   <string name="app_ops_summaries_gps">GPS</string>
@@ -470,6 +541,7 @@
   <string name="app_ops_labels_data_change">Mobil Daten änneren</string>
   <string name="app_ops_labels_wake_up">Waakreg maachen</string>
   <string name="app_ops_labels_su">Root-Zougrëff</string>
+  <!-- App ops categories -->
   <string name="app_ops_categories_location">Standuert</string>
   <string name="app_ops_categories_personal">Perséinlech</string>
   <string name="app_ops_categories_messaging">Messagen</string>
@@ -477,10 +549,12 @@
   <string name="app_ops_categories_device">Apparat</string>
   <string name="app_ops_categories_bootup">Systemstart</string>
   <string name="app_ops_categories_su">Root-Zougrëff</string>
+  <!-- App ops permissions -->
   <string name="app_ops_permissions_allowed">Erlaabt</string>
   <string name="app_ops_permissions_ignored">Ignoréiert</string>
   <string name="app_ops_permissions_always_ask">Ëmmer nofroen</string>
   <string name="ok">OK</string>
+  <!-- Profiles -->
   <string name="profile_menu_delete_title">Läschen</string>
   <string name="profile_action_none">Onverännert loossen</string>
   <string name="profile_action_system">Systemstandard</string>
@@ -498,6 +572,7 @@
   <string name="profile_setup_actions_title_config">Aktiounen ëmkonfiguréieren</string>
   <string name="profile_appgroups_manage">App-Gruppen</string>
   <string name="profile_appgroup_manage">App-Gruppe geréieren</string>
+  <!-- Title for application group setting screen -->
   <string name="profile_appgroups_title">App-Gruppen</string>
   <string name="profile_new_appgroup">Nei App-Grupp</string>
   <string name="profile_delete_appgroup">Dës App-Grupp läschen?</string>
@@ -505,12 +580,14 @@
   <string name="profile_appgroup_name_title">Numm</string>
   <string name="duplicate_appgroup_name">Duebelen App-Gruppen-Numm!</string>
   <string name="profile_app_delete_confirm">Dës App läschen?</string>
+  <!-- Profile Settings sound modes labels -->
   <string name="sound_mode">Notificatiounsmodus</string>
   <string name="ringer_mode">Schellmodus</string>
   <string name="lights_mode">Luuchtmodus</string>
   <string name="vibrate_mode">Vibratiounsmodus</string>
   <string name="choose_soundtone">Notificatiounstoun auswielen</string>
   <string name="choose_ringtone">Schelltoun auswielen</string>
+  <!-- Sound settings screen, setting option name to pick ringtone (a list dialog comes up)-->
   <string name="soundtone_title">Notifikatiounstoun</string>
   <string name="no_bluetooth_triggers">Kee Bluetooth-Apparat gekoppelt.\nDréck fir e Bluetooth-Apparat ze koppelen, ier d\'Ausléiser kënne konfiguréiert ginn.</string>
   <string name="no_wifi_triggers">Kee WLAN-Zougankspunkt konfiguréiert.\nDréck fir WLAN ze verbannen, ier d\'Ausléiser kënne konfiguréiert ginn.</string>
@@ -518,30 +595,40 @@
   <string name="no_triggers_configured_nfc">Dréck fir en NFC-Ausléiser ze konfiguréiren.</string>
   <string name="profile_setup_setup_triggers_description">Ausléiser auswielen déi dëse Profil aktivéieren</string>
   <string name="profile_setup_actions_description">Konfiguréier wat passéiert wann de Profil aktivéiert gëtt</string>
+  <!-- App ops detail -->
   <string name="app_ops_entry_summary"><xliff:g id="op">%1$s</xliff:g> (<xliff:g id="count">%2$s</xliff:g> benotzt)</string>
   <string name="app_ops_allowed_count"><xliff:g id="count" example="2 times">%s</xliff:g> erlaabt</string>
   <string name="app_ops_ignored_count"><xliff:g id="count" example="2 times">%s</xliff:g> refuséiert</string>
   <string name="app_ops_both_count"><xliff:g id="count">%1$s</xliff:g> erlaabt, <xliff:g id="count">%2$s</xliff:g> refuséiert</string>
+  <!-- App ops menu options -->
   <string name="app_ops_show_user_apps">Benotzer-Appen uweisen</string>
   <string name="app_ops_show_system_apps">Integréiert Appen uweisen</string>
   <string name="app_ops_reset_counters">Erlaabt/Verweigert-Zieleren zrécksetzen</string>
   <string name="app_ops_reset_confirm_title">Bestäteg d\'Zrécksetze vun den Zieleren</string>
   <string name="app_ops_reset_confirm_mesg">Wëlls du d\'Compteure sécher zrécksetzen?</string>
+  <!-- Font size sample text. This needs to be a very short string, as it is shown in
+    multiple font sizes in a limited amount of space. -->
   <string name="font_size_sample">Beispill</string>
+  <!-- Volume settings - Volume adjustment sound -->
   <string name="volume_adjust_sounds_title">Lautstäerktännerungstoun</string>
+  <!-- Hardware tunables - Vibrator intensity -->
   <string name="vibrator_intensity_title">Vibratiounsintensitéit</string>
   <string name="vibrator_warning">Wäerter méi héich wéI %1$d sinn net recommandéiert</string>
+  <!-- Hardware tunables - Color calibration -->
   <string name="color_calibration_title">Faarfkalibréierung</string>
   <string name="color_calibration_summary">Schiermfaarwe kalibréieren</string>
   <string name="color_red_title">Rout</string>
   <string name="color_green_title">Gréng</string>
   <string name="color_blue_title">Blo</string>
+  <!-- Hardware tunables - Gamma calibration -->
   <string name="gamma_tuning_title_head">Gammakorrektur</string>
   <string name="gamma_tuning_summary_head">Gammawäerter astellen</string>
   <string name="gamma_tuning_control_set_header">Grupp <xliff:g id="index">%d</xliff:g></string>
+  <!-- used if no name provided by overlay -->
   <string name="gamma_tuning_contrast">Kontrast</string>
   <string name="gamma_tuning_brightness">Hellegkeet</string>
   <string name="gamma_tuning_saturation">Faarfsättegung</string>
+  <!-- Display settings.  Screen color. -->
   <string name="screencolor">Schiermfaarf</string>
   <string name="screencolor_summary">Faarftoun, Faarfsättegung, Kontrast an Intensitéit vum Schierm veränneren</string>
   <string name="custom_screencolor">Benotzerdefinéiert Schiermfaarf</string>
@@ -559,26 +646,47 @@
   <string name="screen_color_setting_vivid">Lieweg</string>
   <string name="screen_color_setting_custom">Personaliséiert</string>
   <string name="settings_reset_button">Zrécksetzen</string>
+  <!-- Message when bluetooth dialog for pin entry is showing  when HIGH security enabled-->
   <string name="bluetooth_enter_pin_msg_hs">Gëff fir d\'Koppelung mat <xliff:g id="bold">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g> de PIN vum Apparat an (16 Zifferen oder méi):</string>
+  <!-- Bluetooth settings.  The user-visible string that is used whenever referring to the DUN profile. -->
   <string name="bluetooth_profile_dun">Awielverbindung</string>
+  <!-- Bluetooth settings.  The user-visible string that is used whenever referring to the SAP profile. -->
   <string name="bluetooth_profile_sap">SIM-Accès</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the DUN checkbox preference when DUN is connected. -->
   <string name="bluetooth_dun_profile_summary_connected">Mam Awiel-Server verbonnen</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the pbap checkbox preference when pbap is connected. -->
   <string name="bluetooth_pbap_profile_summary_connected">Mam PBAP-Server verbonnen</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the SAP checkbox preference when SAP is connected. -->
   <string name="bluetooth_sap_profile_summary_connected">Mam SIM-Zougrëffsserver verbonnen</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the DUN checkbox preference that describes how checking it will set the DUN profile as preferred. -->
   <string name="bluetooth_dun_profile_summary_use_for">Fir Awielverbindunge verwennen</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the pbap checkbox preference that describes how checking it will set the pbap profile as preferred. -->
   <string name="bluetooth_pbap_profile_summary_use_for">Benotze fir Kontakter ze deelen</string>
+  <!-- Bluetooth settings.  Connection options screen.  The summary for the SAP checkbox preference that describes how checking it will set the SAP profile as preferred. -->
   <string name="bluetooth_sap_profile_summary_use_for">Fir SIM-Accès benotzen</string>
+  <!-- Bluetooth settings.  A checkbox to set if we should accept all the file types regardless of their presence in MIME type whitelist -->
   <string name="bluetooth_accept_all_files">All d\'Fichierstypen acceptéieren</string>
+  <!-- SIM lock settings title  [CHAR LIMIT=40] -->
   <string name="sim_lock_settings_cm">SIM/RUIM-Kaartespär-Astellungen</string>
+  <!-- Security & location settings screen, setting option name  [CHAR LIMIT=40] -->
   <string name="sim_lock_settings_category_cm">SIM/RUIM-Kaartespär definéieren</string>
+  <!-- Security & location settings screen, section heading for settings related to sim card locking  [CHAR LIMIT=40] -->
   <string name="sim_lock_settings_title_cm">SIM/RUIM-Kaartespär</string>
+  <!-- SIM card lock settings screen, SIM PIN dialog message when PIN disable fails-->
   <string name="sim_pin_disable_failed">PIN kann net desaktivéiert ginn.</string>
+  <!-- SIM card lock settings screen, SIM PIN dialog message when PIN enable fails-->
   <string name="sim_pin_enable_failed">PIN kann net aktivéiert ginn.</string>
+  <!-- SIM password can't be changed as SIM LOCK is not enabled: -->
   <string name="sim_pin_change_failed_enable_sim_lock">Aktivéier fir d\'éischt d\'SIM/RUIM-Spär fir de SIM/RUIM-PIN z\'änneren.</string>
+  <!-- SIM lock can't be changed - not supported -->
   <string name="sim_enable_disable_lock_not_supported">SIM/RUIM-Spär net vun der Kaart ënnerstëtzt.</string>
+  <!-- SIM card lock settings screen, toast displayed on wrong PIN1: -->
   <string name="sim_pin_attempts">\nVersich iwwreg:</string>
+  <!-- SIM card lock settings screen, toast displayed on PIN1 enable: -->
   <string name="sim_pin_enabled">PIN1 aktivéiert</string>
+  <!-- SIM card lock settings screen, toast displayed on PIN1 disable: -->
   <string name="sim_pin_disabled">PIN1 desaktivéiert</string>
+  <!-- string resources for USB OTG & UICC features -->
   <string name="storage_usb">USB-Späicher</string>
   <string name="storage_uicc">UICC-Späicher</string>
   <string name="sdcard_eject" product="default">SD-Kaart trennen</string>
@@ -599,7 +707,9 @@
   <string name="uicc_format_summary" product="default">Läscht all d\'Daten um UICC-Späicher, wéi Musek a Fotoen</string>
   <string name="uicc_mount" product="default">UICC-Späicher abannen</string>
   <string name="uicc_insert_summary" product="default">UICC-Späicher asetzen deen agebonne soll ginn</string>
+  <!-- Title of dialog asking user to confirm before enabling UMS. [CHAR LIMIT=48] -->
   <string name="usb_settings_enable_ums_title">Massespäicher aktivéieren?</string>
+  <!-- Message of dialog asking user to confirm before enabling UMS. [CHAR LIMIT=NONE] -->
   <string name="usb_settings_enable_ums_message">Systemkomponenten an Appe brauchen e stänneg disponibele Primärspäicher. Dës Funktioun schalt dat aus. Et gëtt dréngend recommendéiert, MTP ze benotzen. Wëlls du wierklech de Massespäicher aktivéieren?</string>
   <string name="dlg_confirm_sdcard_unmount_title" product="default">SD-Kaart trennen?</string>
   <string name="dlg_confirm_usb_unmount_title" product="default">USB-Späicher trennen?</string>
@@ -625,18 +735,27 @@
   <string name="sdcard_media_format_gesture_explanation" product="default">Du muss däin Entspärmuster zeechne fir ze bestätegen datt s du d\'SD-Kaart läsche wëlls.</string>
   <string name="usb_media_format_gesture_explanation" product="default">Du muss däin Entspärmuster zeechne fir ze bestätegen datt s du den USB-Späicher läsche wëlls.</string>
   <string name="uicc_media_format_gesture_explanation" product="default">Du muss däin Entspärmuster zeechne fir ze bestätegen datt s du den UICC-Späicher läsche wëlls.</string>
+  <!-- Storage menu, label for internal media storage -->
   <string name="internal_sd_format">Interne Mediespäicher läschen</string>
   <string name="internal_sd_format_summary">Läscht all d\'Daten um interne Mediespäicher, wéi Musek a Fotoen</string>
+  <!-- Media & phone storage settings screen, label for check box to erase media storage [CHAR LIMIT=30] -->
   <string name="master_clear_desc_erase_internal_storage">\n\nFir Musek, Biller an aner Benotzerdaten ze läschen, muss den<b>interne Späicher</b> geläscht ginn.</string>
   <string name="erase_internal_storage">Interne Mediespäicher läschen</string>
   <string name="erase_internal_storage_description">All d\'Daten um interne Mediespäicher, wéi Musek a Fotoen, läschen</string>
+  <!-- Rescan storage -->
   <string name="storage_rescan_media">Späicher no Mediefichieren duerchsichen</string>
+  <!-- [CHAR LIMIT=130] Location mode screen, sub category for IZat Location -->
   <string name="location_category_enhanced_location">Erweidert Lokaliséierung (IZat)</string>
+  <!-- [CHAR LIMIT=NONE] App ops settings summary, on main settings screen. If clicked, the user is taken to a settings screen for app operations -->
   <string name="app_ops_settings_summary">App-Berechtegungen ukucken oder änneren</string>
+  <!-- Setting checkbox summary when device is in Charging mode -->
   <string name="enable_adb_summary_charging">Den Apparat ass am Opluetmodus, USB-Debugging ass desaktivéiert</string>
+  <!-- Title of checkbox setting that enable quickboot. [CHAR LIMIT=32] -->
   <string name="enable_quickboot_title">QuickBoot-Modus aktivéieren</string>
+  <!-- Summary of checkbox setting that enable quickboot. [CHAR LIMIT=64] -->
   <string name="enable_quickboot_summary">Apparat an de QuickBoot-Modus setzen amplaz en normal auszeschalten</string>
   <string name="data_usage_tab_slot">SIM <xliff:g id="sub">%d</xliff:g></string>
+  <!-- MultiSim Settings changes-->
   <string name="sim_enabler_title">SIM-Status</string>
   <string name="sim_enabler_summary">SIM ass <xliff:g id="status" example="enabled">%1$s</xliff:g></string>
   <string name="sim_enabled">aktivéiert</string>
@@ -660,12 +779,19 @@
   <string name="external_storage_turn_off">Externe Späicher gouf ausgeschalt</string>
   <string name="stats_collection_title">Statistiksammlung</string>
   <string name="stats_collection_summary">Erlaabt d\'Sammele vu Metriken, wann aktivéiert</string>
+  <!-- Category title for Charging sounds (Power state change) specific Settings.
+         [CHAR LIMIT=40] -->
   <string name="power_notifications_category_title">Téin beim Oplueden</string>
+  <!-- Sound settings, Charging sounds enable/disable, setting check box label -->
   <string name="power_notifications_enable_title">Aktivéieren</string>
   <string name="power_notifications_enable_summary">En Toun ofspille wann eng Stroumquell ugeschloss oder getrennt gëtt</string>
+  <!-- Sound settings, Charging sounds vibrate enable/disable, setting check box label -->
   <string name="power_notifications_vibrate_title">Vibréieren</string>
+  <!-- Sound settings, Charging sounds ringtone selection, preference label -->
   <string name="power_notifications_ringtone_title">Notifikatiounstoun</string>
+  <!-- Sound settings, charging sounds label for ringtone == none -->
   <string name="power_notifications_ringtone_silent">Roueg</string>
+  <!-- Voice Wakeup -->
   <string name="voice_wakeup_settings_title">Mat Stëmm waakreg maachen</string>
   <string name="voice_wakeup_retrain_title">Deng Stëmm nei trainéieren</string>
   <string name="voice_wakeup_activity_title">Aktivitéit déi soll lancéiert ginn</string>
@@ -673,23 +799,35 @@
   <string name="picker_activities">Aktivitéiten</string>
   <string name="select_custom_app_title">Eegen App auswielen</string>
   <string name="select_custom_activity_title">Eegen Aktivitéit auswielen</string>
+  <!-- Battery : Automatic performance profiles -->
   <string name="autoperf_title">App-Profiller aktivéieren</string>
   <string name="autoperf_summary">Automatesch e passende Batteriemodus fir ënnerschiddlech Appen auswielen</string>
   <string name="perf_profile_title">Akkumodus</string>
+  <!-- Development : Force high-end graphics -->
   <string name="pref_force_highend_gfx_title">Verbessert Grafikeffekter forcéieren</string>
   <string name="pref_force_highend_gfx_summary">Aktivéiert héich-opléisend visuell Effekter, wéi z. B. transparent Status-  an Navigatiounsläischten (Neistart néideg)</string>
+  <!-- EdgeGesture service -->
   <string name="edge_gesture_service_title">Gesten-Evenementer blockéieren</string>
   <string name="edge_gesture_service_summary">Keng Beréierungsgesten déi op der Navigatiouns- oder Statusläischt ausgefouert ginn un Appe schécken</string>
+  <!-- CM Legal -->
   <string name="cmlicense_title">Rechtlech Hiweiser iwwer CyanogenMod</string>
   <string name="settings_cmlicense_activity_title">Rechtlech Hiweiser iwwer CyanogenMod</string>
+  <!-- Sizes for pattern lockscreen -->
+  <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
   <string name="lockpattern_settings_enable_error_path_title">Musterfeeler uweisen</string>
+  <!-- Whether the dots will be drawn when using the lockscreen pattern -->
   <string name="lockpattern_settings_enable_dots_title">Musterpunkten uweisen</string>
+  <!-- Whether the keyguard will directly pass to password entry -->
+  <!-- Whether the keyguard will directly pass to pattern view -->
+  <!-- Whether the keyguard will directly pass to PIN entry -->
+  <!-- Screen security -->
   <string name="unlock_quick_unlock_control_title">Séiert Entspären</string>
   <string name="unlock_quick_unlock_control_summary">Automatesch Entspäre wann de PIN oder d\'Passwuert korrekt sinn</string>
   <string name="unlock_scramble_pin_layout_title">Zoufälleg Unuerdnung</string>
   <string name="unlock_scramble_pin_layout_summary">Bei all Entspärversuch d\'Zifferereiefolleg zoufälleg nei wielen</string>
   <string name="link_volume_option_title">Lautstäerkt vu Schelltoun an Notifikatioune koppelen</string>
   <string name="notification_volume_option_title">Notifikatiounslautstäerkt</string>
+  <!-- Notification drawer -->
   <string name="notification_drawer_title">Notifikatiounsläischt</string>
   <string name="quick_pulldown_title">Séiert Opmaachen</string>
   <string name="quick_pulldown_summary">D\'Erofzéie vun der Notifikatiounsläischt um %1$se Rand mécht déi séier Astellungen op</string>
@@ -698,6 +836,7 @@
   <string name="quick_pulldown_off">Aus</string>
   <string name="quick_pulldown_left">Lénks</string>
   <string name="quick_pulldown_right">Riets</string>
+  <!-- Weather in status bar header -->
   <string name="status_bar_show_weather_title">Wieder uweisen</string>
   <string name="status_bar_show_weather_summary">D\'Wieder iwwer dem Panneau mat de séieren Astellungen uweisen</string>
   <string name="qs_category_title">Panneau mat séieren Astellungen</string>
@@ -739,17 +878,26 @@
   <string name="qs_advanced_location_title">Erweidert Standuertastellungen</string>
   <string name="qs_advanced_location_summary">Erweidert Standuertastellungen an de séieren Astellungen aktivéieren</string>
   <string name="sim_no_number_set">Keng Nummer zougewisen</string>
+  <!-- Gesture Settings -->
+  <!-- Settings main menu entry -->
   <string name="gesture_settings_title">Gesten</string>
+  <!-- Themes Settings -->
+  <!-- Settings main menu entry -->
   <string name="themes_settings_title">Designen</string>
+  <!-- WiFi Ad-Hoc mode -->
   <string name="wifi_mode">Modus</string>
   <string name="wifi_mode_ibss">Ad-Hoc-Netzwierk (IBSS)</string>
   <string name="wifi_mode_ibss_short">Ad-Hoc</string>
   <string name="wifi_ibss_freq_title">Kanal / Frequenz</string>
   <string name="wifi_channel">Kanal</string>
   <string name="wifi_mhz">MHz</string>
+  <!-- WiFi auto-configure priorities -->
   <string name="wifi_auto_config_priorities">Automatesch Prioritéit</string>
+  <!-- About phone settings screen, setting option dialog title to show regulatory information [CHAR LIMIT=25] -->
+  <!-- SAR information -->
   <string name="maximum_head_level">Kapp: %1$s W/kg</string>
   <string name="maximum_body_level">Kierper: %1$s W/kg</string>
+  <!-- IC Codes -->
   <string name="ic_code_model">Modell: %1$s</string>
   <string name="ic_code_full">IC: %1$s</string>
   <string name="power_menu_expanded_desktop">Vergréisserten Desktop</string>
@@ -770,17 +918,21 @@
   <string name="lockscreen_choose_action_title">Aktioun auswielen</string>
   <string name="lockscreen_visualizer_title">Musek-Visualiséierung uweisen</string>
   <string name="nfc_title_category">NFC</string>
+  <!-- WhisperPush -->
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Astellunge fir sécher SMSen</string>
   <string name="navigation_ring_title">Ziler vun den Navigatiounsréng</string>
   <string name="navigation_ring_message">Dréck op d\'Ännerungssymbol, fir den Navigatiounsrank z\'änneren.\n\nWiel en Zil aus, fir d\'Behuelen ze konfiguréieren.\n\nDréck op d\'\"\u2713\"-Symbol fir d\'Ännerungen ze späicheren, oder \"Standardastellungen zrécksetzen\", fir d\'Astellungen op d\'Standardwäerter zréckzesetzen.</string>
+  <!-- Display & Lights screen, setting options for LCD density -->
   <string name="lcd_density">LCD-Opléisung</string>
   <string name="dialog_title_lcd_density">LCD-Opléisung</string>
   <string name="lcd_density_value_format">%d DPI</string>
   <string name="lcd_density_default_value_format">%d DPI (Standard)</string>
   <string name="restarting_ui">UI gëtt nei gestart\u2026</string>
+  <!-- Stylus Icon -->
   <string name="stylus_icon_enabled_title">Symbol uweise wann e Stëft benotzt gëtt</string>
   <string name="stylus_icon_enabled_summary">D\'Zeiger-Symbol uweise wann e Stëft benotzt gëtt</string>
+  <!-- Stylus Gestures -->
   <string name="gestures_settings_title">Stëftgesten</string>
   <string name="category_spen_title">Stëftgesten</string>
   <string name="enable_subcat_title">Stëft</string>
@@ -793,12 +945,14 @@
   <string name="gestures_down_spen_title_head">No ënne wëschen</string>
   <string name="gestures_long_spen_title_head">Laang drécken</string>
   <string name="gestures_double_spen_title_head">Zweemol drécken</string>
+  <!-- Gestures Options -->
   <string name="gestures_action_empty">Keng Aktioun</string>
   <string name="gestures_action_home">Startsäit</string>
   <string name="gestures_action_back">Zréck</string>
   <string name="gestures_action_menu">Menü</string>
   <string name="gestures_action_search">Sich opruffen</string>
   <string name="gestures_action_recent">Rezent Appen</string>
+  <!-- Stylus gestures -->
   <string name="stylus_app_not_installed">%s ass net installéiert</string>
   <string name="advanced">Erweidert</string>
   <string name="advanced_mode_title">Erweiderte Modus</string>
@@ -814,6 +968,7 @@
   <string name="lockscreen_settings">Spärschierm</string>
   <string name="category_lights">Beliichtung</string>
   <string name="power_usage_history_title">Akkubenotzung</string>
+  <!-- Show/Hide Search Bar -->
   <string name="recents_show_searchbar">Sichläischt am Appverlaf uweisen</string>
   <string name="keywords_recents_show_searchbar">Appverlaf aktivéieren desaktivéieren uweisen verstoppen Sichläischt sichen rezent</string>
   <string name="sim_ringtone_title">SIM %d Schelltoun</string>
@@ -821,6 +976,7 @@
   <string name="interruptions_ignore_while_media_summary">Medielautstäerkt net reduzéiere wann eng Notifikatioun empfaange gëtt</string>
   <string name="none_is_silent_title">Weckeren ni roueg schalten</string>
   <string name="allow_lights_title">Notifikatiounsluuchten erlaben</string>
+  <!-- LiveDisplay -->
   <string name="live_display_summary">Optiméiert däi Schierm andeem s e sech op der Dageszäit an den Ëmgéigendskonditioune baséiert, fir d\'Liesbarkeet ze verbesseren an d\'Ermiddung vun den Aen ze reduzéieren</string>
   <string name="live_display_mode">Schiermmodus</string>
   <string name="live_display_color_temperature_title">Faarftemperatur</string>
@@ -849,6 +1005,8 @@
   <string name="battery_saver_threshold">Schwellewäert vum Akkuschouner</string>
   <string name="battery_saver_summary">Leeschtung an Hannergronddaten reduzéieren</string>
   <string name="battery_saver_summary_unavailable">Beim Oplueden net disponibel</string>
+  <!-- Anonymous Statistics #CM -->
+  <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
   <string name="anonymous_statistics_title">CyanogenMod-Statistiken</string>
   <string name="anonymous_statistics_summary">Duerch anonym Statistiken hëllefen, CyanogenMod ze verbesseren</string>
   <string name="anonymous_statistics_warning_title">Iwwer</string>
@@ -857,27 +1015,34 @@
   <string name="preview_data_title">Virschau vun den Donnéeën</string>
   <string name="view_stats_title">Statistike kucken</string>
   <string name="anonymous_learn_more">Méi gewuer ginn</string>
+  <!-- Anonymous Statistics - Preview -->
   <string name="preview_id_title">Eendeiteg ID</string>
   <string name="preview_device_title">Apparat</string>
   <string name="preview_version_title">Versioun</string>
   <string name="preview_country_title">Land</string>
   <string name="preview_carrier_title">Provider</string>
+  <!-- Heads up -->
   <string name="heads_up_notifications">Pop-Up-Notifikatiounen</string>
   <string name="summary_heads_up_enabled">Pop-Up-Notifikatioune sinn aktivéiert</string>
   <string name="summary_heads_up_disabled">Pop-Up-Notifikatioune sinn desaktivéiert</string>
+  <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
   <string name="master_clear_desc_cm" product="tablet">Heiduerch ginn all d\'Date vun dengem Tablet sengem <b>interne Späicher</b> geläscht, inklusiv:\n\n<li>Däi Google-Kont</li>\n<li>System- an App-Daten an -Astellungen</li>\n<li>Erofgelueden Appen</li></string>
+  <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
   <string name="master_clear_desc_cm" product="default">Heiduerch ginn all d\'Date vun dengem Telefon sengem <b>interne Späicher</b> geläscht, inklusiv:\n\n<li>Däi Google-Kont</li>\n<li>System- an App-Daten an -Astellungen</li>\n<li>Erofgelueden Appen</li></string>
+  <!-- Killswitch -->
   <string name="lock_to_cyanogen_title">Schutz vum Apparat</string>
   <string name="lock_to_cyanogen_summary">Braucht däi Cyanogen-OS-Passwuert, och no engem Zrécksetzen op d\'Wierksastellungen</string>
   <string name="lock_to_cyanogen_create_account_msg">D\'Passwuert vun dengem Cyanogen-OS-Kont gëtt benotzt, souguer fir d\'Gerät beim Zrécksetzen op d\'Wierksastellungen ze schützen. Dofir muss du e Cyanogen-OS-Kont uleeën.</string>
   <string name="lock_to_cyanogen_disable_msg">D\'Desaktivéiere vun dëser Funktioun erlaabt et net-autoriséiert Benotzer hiren Telefon op d\'Wierksastellungen zréckzesetzen, wann e geklaut ass. Är perséinlech Date kënnen net geschützt sinn. Wëlls du dës Funktioun desaktivéieren?</string>
   <string name="lock_to_cyanogen_master_clear_warning">Apparateschutz ass aktivéiert. Désaktivéier et w.e.g., fir mam Zrécksetzen vun dengem Apparat weiderzefueren.</string>
   <string name="bluetooth_pan_profile_summary_use_for_error">Verbindungsfeeler – ass Bluetooth-Tethering op dësem Apparat aktivéiert?</string>
+  <!-- MSIM SIM status -->
   <string name="sim_card_status_title">SIM %d-Status</string>
   <string name="sim_card_lock_settings_title">SIM %d-Spärastellungen</string>
   <string name="sim_card_summary_empty">SIM-Kaart net dran</string>
   <string name="sim_mobile_network_settings_category_title">Datennetzwierk-Astellungen</string>
   <string name="sim_mobile_network_settings_title">SIM %d-Einstellungen</string>
+  <!-- Factory reset strings -->
   <string name="factory_reset_instructions_title">Perséinlech Daten an Appen</string>
   <string name="factory_reset_instructions_summary">Dës wäert all deng Konten, Appen, App-Daten a Systemastellungen op dësem Apparat läschen</string>
   <string name="factory_reset_personal_content">Perséinlechen Inhalt</string>
@@ -888,9 +1053,14 @@
   <string name="factory_reset_erase_sd_card_summary">All d\'Daten op der SD-Kaart läschen, souwéi Musek a Fotoen</string>
   <string name="factory_reset_warning_text_reset_now">ELO ZRÉCKSETZEN</string>
   <string name="factory_reset_warning_text_message">All d\'Konten, Appen, App-Daten a Systemastellunge gi vun dësem Apparat geläscht. Dëst kann net réckgängeg gemaach ginn.</string>
+  <!-- Wi-Fi filters -->
+  <!-- Wi-Fi region code -->
   <string name="wifi_setting_countrycode_title">WLAN-Lännercode</string>
+  <!-- Wi-Fi settings screen, setting summary for setting the wifi frequency band [CHAR LIMIT=50]-->
   <string name="wifi_setting_countrycode_summary">WLAN-Lännercode festleeën</string>
+  <!-- Wi-Fi settings screen, error message when the frequency band could not be set [CHAR LIMIT=50]. -->
   <string name="wifi_setting_countrycode_error">Beim Festleeë vum WLAN-Lännercode ass e Problem opgetrueden.</string>
+  <!-- Wi-Fi region countries -->
   <string name="wifi_countrycode_entries_us">Vereenegt Staate vun Amerika</string>
   <string name="wifi_countrycode_entries_ca">Kanada, Taiwan</string>
   <string name="wifi_countrycode_entries_de">Däitschland</string>
@@ -903,63 +1073,112 @@
   <string name="wifi_countrycode_entries_sg">Israel, Singapur</string>
   <string name="wifi_countrycode_entries_br">Brasilien</string>
   <string name="wifi_countrycode_entries_in">Indien</string>
+  <!-- FINGERPRINT -->
+  <!-- Title for preference which sets the unlock. This is only used when the device has
+         a fingerprint sensor , otherwise just "unlock_set_unlock_launch_picker_title" is used -->
   <string name="unlock_set_unlock_launch_picker_title_with_fingerprint">Schierm entspären a Fangerofdrock</string>
+  <!-- Summary for "Configure lockscreen" when security Fingerprint is enabled [CHAR LIMIT=45] -->
   <string name="unlock_set_unlock_mode_fingerprint">Fangerofdrock</string>
+  <!-- Title for preference that guides the user through creating a fingerprint [CHAR LIMIT=22] -->
   <string name="unlock_set_unlock_fingerprint_title">Fangerofdrock</string>
+  <!-- List item title to add a new fingerprint in fingerprint list screen -->
   <string name="fingerprint_item_add_new_fingerprint">Neie Fangerofdrock dobäisetzen</string>
+  <!-- Title for preference in fingerprint lockscreen settings, takes user to fingerprint list -->
   <string name="fingerprint_manage_fingerprints">Fangerofdréck verwalten</string>
+  <!-- Summary for preference in fingerprint lockscreen settings, takes user to fingerprint list -->
   <string name="fingerprint_manage_fingerprints_summary">Setz Fangerofdréck dobäi oder huel déi, déi schonn do sinn ewech</string>
+  <!-- Info explaining the backup lock which is used for fingerprint -->
   <string name="unlock_backup_fingerprint_info_summary">Wann s du däi Fanger net benotze kanns, wéi wëlls du entspären?</string>
+  <!-- Dialog title for renaming your fingerprint -->
   <string name="fingerprint_dialog_title_rename">Fangerofdrock änneren</string>
+  <!-- EditText label for renaming your fingerprint in rename dialog -->
   <string name="fingerprint_dialog_name_label">Numm vum Fangerofdrock</string>
+  <!-- Title for dialog that shows when the user cannot add anymore fingers -->
   <string name="fingerprint_dialog_title_max_fingers_reached">Max. Fangerofdréck erreecht</string>
+  <!-- Message for dialog that shows when the user cannot add anymore fingers -->
+  <!-- Title for number of finger prints enrolled -->
+  <!-- Description for managing fingerprints -->
   <string name="manage_fingerprints_description">Mat Fangerofdréck kanns du däin Telefon séier entspären oder Fotoe maachen.</string>
+  <!-- Fingerprint enrollment introduction title -->
   <string name="fingerprint_enrollment_introduction_title">Fann däi Sensor</string>
+  <!-- Fingerprint enrollment introduction instructions -->
   <string name="fingerprint_enrollment_introduction_instructions">De Fangerofdrock-Sensor ass an der Vir- oder Récksäit vun dengem Telefon.</string>
+  <!-- Fingerprint enrollment scan fingerprint title -->
   <string name="fingerprint_enrollment_scan_title">Dräi Sekonnen halen</string>
+  <!-- Fingerprint enrollment scan fingerprint instructions -->
   <string name="fingerprint_enrollment_scan_instructions">Maach däin Uweisfanger op de Fangerofdrock-Sensor, fir d\'Ariichtung ze starten. Hief däi Finger op, soubal s du eng Vibratioun spiers.</string>
+  <!-- Fingerprint enrollment error title during first step only -->
   <string name="fingerprint_enrollment_error_title_wrong_sensor">Versich et nees w.e.g.</string>
+  <!-- Fingerprint enrollment error message -->
   <string name="fingerprint_enrollment_error_message">Lee däi Fanger op de Fangerofdrock-Sensor, fir e geneeë Scan sécherzestellen. Pass op datt s du de selwechte Fanger wéi dee vu virdrun benotz. Hief däi Fanger, soubal s du eng Vibratioun spiers.</string>
+  <!-- Fingerprint enrollment error instructions -->
   <string name="fingerprint_enrollment_scan_instructions">Maach däin Uweisfanger op de Fangerofdrock-Sensor, fir d\'Ariichtung ze starten. Hief däi Finger op, soubal s du eng Vibratioun spiers.</string>
+  <!-- Fingerprint enrollment half way break title -->
   <string name="fingerprint_enrollment_break_title">Mat der aktueller Stäerkt weidermaachen</string>
+  <!-- Fingerprint enrollment introduction instructions -->
   <string name="fingerprint_enrollment_break_instructions">Maach mat der Erfassung vun de Borde vun dengem Ofdrock weider. Hief däi Fanger, soubal s du eng Vibratioun spiers.</string>
+  <!-- Fingerprint enrollment finished title -->
   <string name="fingerprint_enrollment_finished_title">Fangerofdrock dobäigesat!</string>
+  <!-- Fingerprint enrollment finished instructions -->
   <string name="fingerprint_enrollment_finished_message">Däi Fangerofdrock kann elo zum Entspäre vum Schierm oder zum Ophuele vu Selfië mat denger Kamera benotzt ginn.</string>
+  <!-- Next button title for finding sensor -->
   <string name="fingerprint_enrollment_found_it_label">Fonnt</string>
+  <!-- Next button title for finding sensor -->
   <string name="fingerprint_enrollment_add_another_label">Aneren dobäisetzen</string>
+  <!-- Next button title for finding sensor -->
   <string name="fingerprint_enrollment_done_label">Fäerdeg</string>
+  <!-- Wrong fingerprint sensor dialog title -->
   <string name="fingerprint_dialog_title_wrong_sensor">Upps, dat ass net däi Sensor</string>
+  <!-- Wrong fingerprint sensor dialog message -->
   <string name="fingerprint_dialog_msg_wrong_sensor">Benotz de Fangerofdrock-Sensor an der Vir- oder Récksäit vun dengem Telefon</string>
+  <!-- Failed fingerprint enrollment dialog title -->
   <string name="fingerprint_dialog_title_failed_enrollment">Fangerofdrock kann net gelies ginn</string>
+  <!-- Failed fingerprint enrollment dialog message -->
   <string name="fingerprint_dialog_msg_failed_enrollment">Versich et mat engem anere Fanger. Dëse Fangerofdrock konnt net gelies ginn.</string>
+  <!-- Failed fingerprint enrollment button label -->
   <string name="fingerprint_enrollment_restart_label">Nei starten</string>
+  <!-- Successful scan title for first successful scan -->
   <string name="fingerprint_successful_scan_title_first">Perfekt! Elo nees</string>
+  <!-- Successful scan title for second to last successful scan -->
   <string name="fingerprint_successful_scan_final">Nach eng lescht Kéier w.e.g.</string>
+  <!-- Successful scan title for all other successful scans -->
   <string name="fingerprint_successful_scan_title_1">Du hues et! Maach sou weider</string>
   <string name="fingerprint_successful_scan_title_2">Top! An nees</string>
   <string name="fingerprint_successful_scan_title_3">Gutt méchs du dat! Weider sou</string>
   <string name="fingerprint_successful_scan_title_4">Just nach e puer Kéieren</string>
   <string name="fingerprint_successful_scan_title_5">Du méchs dat immens gutt! An nees</string>
   <string name="fingerprint_successful_scan_title_6">Bal gepackt</string>
+  <!-- Fingerprint enrollment error titles -->
   <string name="fingerprint_enrollment_error_title_1">Upps. Probéier nees</string>
   <string name="fingerprint_enrollment_error_title_2">Pardon, dat hunn ech net verstanen</string>
   <string name="fingerprint_enrollment_error_title_3">Hmm, eppes ass schifgaangen</string>
   <string name="fingerprint_enrollment_error_title_4">Oh oh, probéier nees</string>
   <string name="fingerprint_enrollment_error_title_5">Upps, et ass e Feeler opgetrueden</string>
+  <!-- Title for lockscreen settings, on dashboard, that is only used when a device supports
+         the fingerprint feature -->
   <string name="lockscreen_settings_and_fingerprint">Schiermspär a Fangerofdrock</string>
+  <!-- Menu label for reset the battery stats -->
   <string name="menu_stats_reset">Statistiken zrécksetzen</string>
+  <!-- Reset stats confirmation dialog's message -->
   <string name="reset_stats_msg">Statistiken iwwer den Akkuverlaf ginn zréckgesat</string>
+  <!-- Dock battery not present message -->
   <string name="dock_battery_not_present">Dock-Akku net disponibel</string>
+  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging on Dock AC. -->
   <string name="battery_info_status_charging_dock_ac">Gëtt mam Dock gelueden</string>
+  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging over Dock USB. -->
   <string name="battery_info_status_charging_dock_usb">Luede mam USB-Dock</string>
+  <!-- Lock screen setup wizard pattern complexity -->
   <string name="setup_lock_pattern_size_title">Muster-Komplexitéit</string>
   <string name="setup_lock_pattern_size_details">Wéi vill Knietpunkte wëlls du fir däi Muster benotzen? Wat méi Kniet, desto méi komplex kann däi Muster sinn.</string>
+  <!-- LTO download data over wi-fi only -->
   <string name="lto_download_data_wifi_only">Download vu GPS assistéiert Daten</string>
   <string name="lto_download_data_wifi_only_on">Iwwer all Netzwierker</string>
   <string name="lto_download_data_wifi_only_off">Nëmmen iwwer WLAN-Netzwierker</string>
+  <!-- Keep screen on strings -->
   <string name="keep_screen_on_never">Ni</string>
   <string name="keep_screen_on_debugging">Beim Debuggen iwwer USB</string>
   <string name="keep_screen_on_charging">Beim Oplueden</string>
+  <!-- Contributors cloud activity -->
   <string name="contributors_cloud_fragment_title">Mataarbechter</string>
   <string name="contributors_cloud_loading_message">Mataarbechter gi gelueden\u2026</string>
   <string name="contributors_cloud_failed_message">Luede vun de Mataarbechter net méiglech</string>
