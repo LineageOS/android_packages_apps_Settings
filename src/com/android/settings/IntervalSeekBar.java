@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.SeekBar;
+import android.util.MathUtils;
 
 /**
  * Custom SeekBar that allows setting both a minimum and maximum value.
@@ -48,7 +49,10 @@ public class IntervalSeekBar extends SeekBar {
      *  This operation is the inverse of setFontScaling.
      */
     public float getProgressFloat() {
-        return (getProgress() / mMultiplier) + mMin;
+        float val = (getProgress() / mMultiplier) + mMin;
+
+        /* HACK: avoid edge case rounding errors */
+        return MathUtils.constrain(val, mMin, mMax);
     }
 
     /*
