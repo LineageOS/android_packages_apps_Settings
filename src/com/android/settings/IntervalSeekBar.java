@@ -48,7 +48,12 @@ public class IntervalSeekBar extends SeekBar {
      *  This operation is the inverse of setFontScaling.
      */
     public float getProgressFloat() {
-        return (getProgress() / mMultiplier) + mMin;
+        float val = (getProgress() / mMultiplier) + mMin;
+
+        /* HACK: avoid edge case rounding errors */
+        if (val > mMax) val = mMax;
+        else if (val < mMin) val = mMin;
+        return val;
     }
 
     /*
