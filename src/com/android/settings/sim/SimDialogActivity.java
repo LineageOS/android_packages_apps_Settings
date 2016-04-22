@@ -238,7 +238,7 @@ public class SimDialogActivity extends Activity {
                 }
             };
 
-        int currentIndex = 0;
+        int currentIndex = -1;
         ArrayList<SubscriptionInfo> callsSubInfoList = new ArrayList<SubscriptionInfo>();
         if (id == CALLS_PICK) {
             final TelecomManager telecomManager = TelecomManager.from(context);
@@ -295,6 +295,7 @@ public class SimDialogActivity extends Activity {
                 }
             }
         } else {
+            currentIndex = 0;
             final int defaultDataSubId = SubscriptionManager.getDefaultDataSubId();
             for (int i = 0; i < selectableSubInfoLength; ++i) {
                 final SubscriptionInfo sir = subInfoList.get(i);
