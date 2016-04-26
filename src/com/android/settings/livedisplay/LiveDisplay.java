@@ -232,7 +232,7 @@ public class LiveDisplay extends SettingsPreferenceFragment implements
             return false;
         }
 
-        final DisplayMode cur = mHardware.getDefaultDisplayMode();
+        final DisplayMode cur = mHardware.getCurrentDisplayMode();
         int curId = -1;
         String[] entries = new String[modes.length];
         String[] values = new String[modes.length];
@@ -252,7 +252,7 @@ public class LiveDisplay extends SettingsPreferenceFragment implements
             mColorProfileSummaries[i] = summary;
 
             if (cur != null && modes[i].id == cur.id) {
-                curId = -1;
+                curId = cur.id;
             }
         }
         mColorProfile.setEntries(entries);
@@ -270,7 +270,7 @@ public class LiveDisplay extends SettingsPreferenceFragment implements
         }
 
         if (value == null) {
-            DisplayMode cur = mHardware.getDefaultDisplayMode();
+            DisplayMode cur = mHardware.getCurrentDisplayMode();
             if (cur != null && cur.id >= 0) {
                 value = String.valueOf(cur.id);
             }
