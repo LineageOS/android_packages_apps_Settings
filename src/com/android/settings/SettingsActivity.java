@@ -642,7 +642,11 @@ public class SettingsActivity extends Activity
                     1 /* one home activity by default */);
         } else {
             if (!mIsShowingDashboard) {
-                mDisplaySearch = true;
+                String nameForUid = getPackageManager().getNameForUid(android.os.Process.myUid());
+                if (!TextUtils.isEmpty(nameForUid) && nameForUid.contains(":")) {
+                    nameForUid = nameForUid.split(":")[0];
+                }
+                mDisplaySearch = nameForUid.equals("android.uid.system");
                 // UP will be shown only if it is a sub settings
                 if (mIsShortcut) {
                     mDisplayHomeAsUpEnabled = isSubSettings;
