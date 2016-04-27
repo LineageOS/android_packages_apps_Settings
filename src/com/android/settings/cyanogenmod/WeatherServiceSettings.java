@@ -27,18 +27,22 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.UserHandle;
+import android.preference.Preference;
+import android.preference.PreferenceCategory;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.Xml;
 import android.view.Gravity;
-import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -63,15 +67,31 @@ import java.util.List;
 public class WeatherServiceSettings extends SettingsPreferenceFragment {
 
     private Context mContext;
-    private WeatherProviderServiceInfoAdapter mAdapter;
     private Handler mHandler;
     private static final String TAG = WeatherServiceSettings.class.getSimpleName();
+
+    private static final String PREFERENCE_GENERAL = "weather_general_settings";
+    private static final String PREFERENCE_PROVIDERS = "weather_service_providers";
+
+    private PreferenceCategory mGeneralSettingsCategory;
+    private PreferenceCategory mProvidersCategory;
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         mContext = activity;
         mHandler = new Handler(mContext.getMainLooper());
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        addPreferencesFromResource(R.xml.weather_settings);
+        setHasOptionsMenu(true);
+        mGeneralSettingsCategory = (PreferenceCategory) getPreferenceScreen()
+                .findPreference(PREFERENCE_GENERAL);
+        mProvidersCategory = (PreferenceCategory) getPreferenceScreen()
+                .findPreference(PREFERENCE_PROVIDERS);
     }
 
     @Override
@@ -95,6 +115,29 @@ public class WeatherServiceSettings extends SettingsPreferenceFragment {
     private void registerPackageMonitor() {
         mPackageMonitor.register(mContext, BackgroundThread.getHandler().getLooper(),
                 UserHandle.ALL, true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.weather_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.get_more_weather_providers) {
+            launchGetWeatherProviders();
+        }
+        return false;
+    }
+
+    private void launchGetWeatherProviders() {
+        try {
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(getString(R.string.weather_settings_play_store_market_url))));
+        } catch (ActivityNotFoundException e) {
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(getString(R.string.weather_settings_play_store_http_url))));
+        }
     }
 
     private void unregisterPackageMonitor() {
@@ -154,9 +197,146 @@ public class WeatherServiceSettings extends SettingsPreferenceFragment {
 
             weatherProviderServiceInfos.add(serviceInfo);
         }
-        mAdapter.clear();
-        mAdapter.addAll(weatherProviderServiceInfos);
 
+        if (weatherProviderServiceInfos.size() > 0) {
+            if (getPreferenceScreen().findPreference(PREFERENCE_GENERAL) == null);
+                getPreferenceScreen().addPreference(mGeneralSettingsCategory);
+            if (getPreferenceScreen().findPreference(PREFERENCE_PROVIDERS) == null);
+                getPreferenceScreen().addPreference(mProvidersCategory);
+
+            mProvidersCategory.removeAll();
+            for (WeatherProviderServiceInfo info : weatherProviderServiceInfos) {
+                Preference preference = new WeatherProviderPreference(mContext, info);
+                preference.setLayoutResource(R.layout.weather_service_provider_info_row);
+                mProvidersCategory.addPreference(preference);
+            }
+
+        } else {
+            getPreferenceScreen().removePreference(mGeneralSettingsCategory);
+            getPreferenceScreen().removePreference(mProvidersCategory);
+        }
+
+    }
+
+    private class WeatherProviderPreference extends Preference {
+
+        private WeatherProviderServiceInfo mInfo;
+        private View mView;
+
+        public WeatherProviderPreference(Context context, WeatherProviderServiceInfo info) {
+            super(context);
+            mInfo = info;
+        }
+
+        @Override
+        protected void onBindView(final View view) {
+            ((ImageView) view.findViewById(android.R.id.icon))
+                    .setImageDrawable(mInfo.icon);
+            view.setTag(mInfo);
+            mView = view;
+
+            ((TextView) view.findViewById(android.R.id.title)).setText(mInfo.caption);
+
+            RadioButton radioButton = (RadioButton) view.findViewById(android.R.id.button1);
+            radioButton.setChecked(mInfo.isActive);
+            radioButton.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    view.onTouchEvent(event);
+                    return false;
+                }
+            });
+
+            boolean showSettings = mInfo.settingsComponentName != null;
+            View settingsDivider = view.findViewById(R.id.divider);
+            settingsDivider.setVisibility(showSettings ? View.VISIBLE : View.INVISIBLE);
+            ImageView settingsButton = (ImageView) view.findViewById(android.R.id.button2);
+            settingsButton.setVisibility(showSettings ? View.VISIBLE : View.INVISIBLE);
+            settingsButton.setAlpha(mInfo.isActive ? 1f : Utils.DISABLED_ALPHA);
+            settingsButton.setEnabled(mInfo.isActive);
+            settingsButton.setFocusable(mInfo.isActive);
+            settingsButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    launchSettingsActivity(mInfo);
+                }
+            });
+            final View header = mView.findViewById(R.id.provider);
+            header.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    v.setPressed(true);
+                    setActiveWeatherProviderService();
+                }
+            });
+
+            notifyChanged();
+        }
+
+        private boolean isActiveProvider() {
+            return mInfo.isActive;
+        }
+
+        public void setActiveState(boolean active) {
+            mInfo.isActive = active;
+            RadioButton radioButton = (RadioButton) mView.findViewById(android.R.id.button1);
+            radioButton.setChecked(active);
+
+            boolean hasSettings = mInfo.settingsComponentName != null;
+            if (hasSettings) {
+                ImageView settingsButton = (ImageView) mView.findViewById(android.R.id.button2);
+                settingsButton.setAlpha(mInfo.isActive ? 1f : Utils.DISABLED_ALPHA);
+                settingsButton.setEnabled(mInfo.isActive);
+                settingsButton.setFocusable(mInfo.isActive);
+            }
+        }
+
+        private void launchSettingsActivity(WeatherProviderServiceInfo info) {
+            if (info != null && info.settingsComponentName != null) {
+                try {
+                    mContext.startActivity(new Intent().setComponent(info.settingsComponentName));
+                } catch (ActivityNotFoundException e) {
+                    mHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast t = Toast.makeText(mContext,
+                                    R.string.weather_settings_activity_not_found,
+                                    Toast.LENGTH_LONG);
+                            TextView v = (TextView) t.getView().findViewById(android.R.id.message);
+                            if (v != null) v.setGravity(Gravity.CENTER);
+                            t.show();
+                        }
+                    });
+                    Log.w(TAG, info.settingsComponentName + " not found");
+                }
+            }
+        }
+
+        private void setActiveWeatherProviderService() {
+            if (!mInfo.isActive) {
+                markAsActiveProvider();
+                CMSettings.Secure.putString(mContext.getContentResolver(),
+                        CMSettings.Secure.WEATHER_PROVIDER_SERVICE,
+                        mInfo.componentName.flattenToString());
+            }
+            launchSettingsActivity(mInfo);
+        }
+
+        private void markAsActiveProvider() {
+            // Check for current active provider
+            for (int indx = 0; indx < mProvidersCategory.getPreferenceCount(); indx++) {
+                Preference p = mProvidersCategory.getPreference(indx);
+                if (p instanceof WeatherProviderPreference) {
+                    WeatherProviderPreference preference = (WeatherProviderPreference) p;
+                    if (preference.isActiveProvider()) {
+                        preference.setActiveState(false);
+                        break;
+                    }
+                }
+            }
+            // Marks this provider as active
+            setActiveState(true);
+        }
     }
 
     private ComponentName getSettingsComponent(PackageManager pm, ResolveInfo resolveInfo) {
@@ -222,20 +402,17 @@ public class WeatherServiceSettings extends SettingsPreferenceFragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ListView listView = getListView();
-        ViewGroup contentRoot = (ViewGroup) listView.getParent();
-        listView.setItemsCanFocus(true);
 
+        ViewGroup contentRoot = (ViewGroup) getListView().getParent();
         View emptyView = getActivity().getLayoutInflater().inflate(
                 R.layout.empty_weather_state, contentRoot, false);
         TextView emptyTextView = (TextView) emptyView.findViewById(R.id.message);
         emptyTextView.setText(R.string.weather_settings_no_services_prompt);
 
-        listView.setEmptyView(emptyView);
-
         contentRoot.addView(emptyView);
-        mAdapter = new WeatherProviderServiceInfoAdapter(mContext);
-        listView.setAdapter(mAdapter);
+
+        ListView listView = getListView();
+        listView.setEmptyView(emptyView);
     }
 
     private class WeatherProviderServiceInfo {
@@ -244,116 +421,5 @@ public class WeatherServiceSettings extends SettingsPreferenceFragment {
         boolean isActive;
         ComponentName componentName;
         public ComponentName settingsComponentName;
-    }
-
-    private class WeatherProviderServiceInfoAdapter
-            extends ArrayAdapter<WeatherProviderServiceInfo> {
-
-        private final LayoutInflater mInflater;
-
-        public WeatherProviderServiceInfoAdapter(Context context) {
-            super(context, 0);
-            mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            WeatherProviderServiceInfo info = getItem(position);
-            final View row = convertView != null ? convertView :
-                    buildRow(parent);
-            row.setTag(info);
-
-            ((ImageView) row.findViewById(android.R.id.icon))
-                    .setImageDrawable(info.icon);
-
-            ((TextView) row.findViewById(android.R.id.title)).setText(info.caption);
-
-            RadioButton radioButton = (RadioButton) row.findViewById(android.R.id.button1);
-            radioButton.setChecked(info.isActive);
-            radioButton.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    row.onTouchEvent(event);
-                    return false;
-                }
-            });
-
-            boolean showSettings = info.settingsComponentName != null;
-            View settingsDivider = row.findViewById(R.id.divider);
-            settingsDivider.setVisibility(showSettings ? View.VISIBLE : View.INVISIBLE);
-            ImageView settingsButton = (ImageView) row.findViewById(android.R.id.button2);
-            settingsButton.setVisibility(showSettings ? View.VISIBLE : View.INVISIBLE);
-            settingsButton.setAlpha(info.isActive ? 1f : Utils.DISABLED_ALPHA);
-            settingsButton.setEnabled(info.isActive);
-            settingsButton.setFocusable(info.isActive);
-            settingsButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    launchSettingsActivity((WeatherProviderServiceInfo)row.getTag());
-                }
-            });
-
-            return row;
-        }
-
-        private void launchSettingsActivity(WeatherProviderServiceInfo info) {
-            if (info != null && info.settingsComponentName != null) {
-                try {
-                    mContext.startActivity(new Intent().setComponent(info.settingsComponentName));
-                } catch (ActivityNotFoundException e) {
-                    mHandler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast t = Toast.makeText(mContext,
-                                    R.string.weather_settings_activity_not_found,
-                                        Toast.LENGTH_LONG);
-                            TextView v = (TextView) t.getView().findViewById(android.R.id.message);
-                            if (v != null) v.setGravity(Gravity.CENTER);
-                            t.show();
-                        }
-                    });
-                    Log.w(TAG, info.settingsComponentName + " not found");
-                }
-            }
-        }
-
-        private View buildRow(ViewGroup parent) {
-            final View row =  mInflater.inflate(R.layout.weather_service_provider_info_row,
-                    parent, false);
-            final View header = row.findViewById(android.R.id.widget_frame);
-            header.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    v.setPressed(true);
-                    setActiveWeatherProviderService((WeatherProviderServiceInfo) row.getTag());
-                }
-            });
-
-            return row;
-        }
-
-        private void setActiveWeatherProviderService(WeatherProviderServiceInfo info) {
-            WeatherProviderServiceInfo currentSelection = getCurrentSelection();
-            if (info.equals(currentSelection)) return;
-            if (currentSelection != null) {
-                currentSelection.isActive = false;
-            }
-            info.isActive = true;
-            CMSettings.Secure.putString(mContext.getContentResolver(),
-                    CMSettings.Secure.WEATHER_PROVIDER_SERVICE,
-                        info.componentName.flattenToString());
-            launchSettingsActivity(info);
-            notifyDataSetChanged();
-        }
-
-        private WeatherProviderServiceInfo getCurrentSelection() {
-            for (int indx = 0; indx < getCount(); indx++) {
-                WeatherProviderServiceInfo info = getItem(indx);
-                if (info.isActive) {
-                    return info;
-                }
-            }
-            return null;
-        }
     }
 }
