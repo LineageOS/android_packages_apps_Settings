@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5faad753_e1c86b75",
+        "filename": "res/values/cm_arrays.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 14421
+      },
+      "writtenOn": "2016-04-27T22:34:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5faad753_465cf54a",
+      "revId": "c0cdf189ed18bb8f07a97c14fdc72275a9ccb83a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5faad753_e6064121",
         "filename": "res/values/cm_arrays.xml",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "5faad753_01c6e768",
+        "filename": "res/values/cm_arrays.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 14421
+      },
+      "writtenOn": "2016-04-27T22:34:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5faad753_e6064121",
+      "revId": "c0cdf189ed18bb8f07a97c14fdc72275a9ccb83a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5faad753_0656fd2a",
         "filename": "src/com/android/settings/cyanogenmod/WeatherServiceSettings.java",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2016-04-27T17:02:48Z",
       "side": 1,
       "message": "call through super?",
+      "revId": "c0cdf189ed18bb8f07a97c14fdc72275a9ccb83a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5faad753_610ebbe6",
+        "filename": "src/com/android/settings/cyanogenmod/WeatherServiceSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 14421
+      },
+      "writtenOn": "2016-04-27T22:34:59Z",
+      "side": 1,
+      "message": "We decided to get rid of the menu, so this was removed",
+      "parentUuid": "5faad753_0656fd2a",
       "revId": "c0cdf189ed18bb8f07a97c14fdc72275a9ccb83a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "5faad753_8113b70d",
+        "filename": "src/com/android/settings/cyanogenmod/WeatherServiceSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 14421
+      },
+      "writtenOn": "2016-04-27T22:34:59Z",
+      "side": 1,
+      "message": "Same as above",
+      "parentUuid": "5faad753_a6304909",
+      "range": {
+        "startLine": 131,
+        "startChar": 15,
+        "endLine": 131,
+        "endChar": 21
+      },
+      "revId": "c0cdf189ed18bb8f07a97c14fdc72275a9ccb83a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5faad753_a6192989",
         "filename": "src/com/android/settings/cyanogenmod/WeatherServiceSettings.java",
         "patchSetId": 2
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "5faad753_499ba571",
+        "filename": "src/com/android/settings/cyanogenmod/WeatherServiceSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 14421
+      },
+      "writtenOn": "2016-04-27T22:34:59Z",
+      "side": 1,
+      "message": "I believe you\u0027re right. Fixed it",
+      "parentUuid": "5faad753_a6192989",
+      "revId": "c0cdf189ed18bb8f07a97c14fdc72275a9ccb83a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5faad753_8618ad81",
         "filename": "src/com/android/settings/cyanogenmod/WeatherServiceSettings.java",
         "patchSetId": 2
@@ -104,6 +200,24 @@
       "writtenOn": "2016-04-27T17:02:48Z",
       "side": 1,
       "message": "does this reference anything in WeatherServiceSettings? Can you make it static?",
+      "revId": "c0cdf189ed18bb8f07a97c14fdc72275a9ccb83a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5faad753_49bc0505",
+        "filename": "src/com/android/settings/cyanogenmod/WeatherServiceSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 14421
+      },
+      "writtenOn": "2016-04-27T22:34:59Z",
+      "side": 1,
+      "message": "It was referencing the parent preference category, but found how to get that reference within the class, so this is now static",
+      "parentUuid": "5faad753_8618ad81",
       "revId": "c0cdf189ed18bb8f07a97c14fdc72275a9ccb83a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
