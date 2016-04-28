@@ -49,6 +49,7 @@ public class LockPatternActivity extends Activity implements OnNotifyAccountRese
     private static final int MIN_PATTERN_SIZE = 4;
     private static final int MAX_PATTERN_RETRY = 5;
     private static final int PATTERN_CLEAR_TIMEOUT_MS = 2000;
+    private static final long FAILED_ATTEMPT_RETRY = 30;
 
     private static final int MENU_RESET = 0;
 
@@ -343,7 +344,8 @@ public class LockPatternActivity extends Activity implements OnNotifyAccountRese
                         mLockPatternView.removeCallbacks(mCancelPatternRunnable);
                         Toast.makeText(getApplicationContext(),
                                 getResources().getString(
-                                        R.string.lockpattern_too_many_failed_confirmation_attempts),
+                                        R.string.lockpattern_too_many_failed_confirmation_attempts,
+                                        FAILED_ATTEMPT_RETRY),
                                 Toast.LENGTH_SHORT).show();
                         switchToAccount();
                     }
