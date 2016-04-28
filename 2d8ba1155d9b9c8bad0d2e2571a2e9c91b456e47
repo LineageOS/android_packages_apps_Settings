@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5faad753_aff25905",
+        "filename": "res/values/config.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2016-04-28T05:48:42Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it be better to default this to Celsius and override it in the configs of the 3 (!) countries in the world that use Fahrenheit? It\u0027s en_US, ms_MY and si_LK, FWIW.\n\nMight also add a (hidden?) method to CMWeatherManager to fetch the current temperature unit for that purpose.",
+      "revId": "2d8ba1155d9b9c8bad0d2e2571a2e9c91b456e47",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5faad753_8fd99d84",
+        "filename": "src/com/android/settings/cyanogenmod/WeatherServiceSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2016-04-28T05:48:42Z",
+      "side": 1,
+      "message": "Would this be more elegant?\n\nIntent intent \u003d new Intent(Intent.ACTION_VIEW,\n        Uri.parse(getString(R.string.weather_settings_play_store_market_url)))\n        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);\n\ntry {\n    startActivity(intent);\n} catch (ActivityNotFoundException e) {\n    intent.setData(uri.parse(getString(R.string.weather_settings_play_store_http_url)));\n    startActivity(intent);\n}",
+      "revId": "2d8ba1155d9b9c8bad0d2e2571a2e9c91b456e47",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
