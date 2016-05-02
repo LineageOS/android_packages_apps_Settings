@@ -30,6 +30,7 @@ import com.android.internal.view.RotationPolicy;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
+import cyanogenmod.providers.CMSettings;
 import org.cyanogenmod.internal.logging.CMMetricsLogger;
 
 public class DisplayRotation extends SettingsPreferenceFragment {
@@ -43,6 +44,7 @@ public class DisplayRotation extends SettingsPreferenceFragment {
     private static final String ROTATION_270_PREF = "display_rotation_270";
 
     private SwitchPreference mAccelerometer;
+    private SwitchPreference mLockScreenRotation;
     private CheckBoxPreference mRotation0Pref;
     private CheckBoxPreference mRotation90Pref;
     private CheckBoxPreference mRotation180Pref;
@@ -98,13 +100,9 @@ public class DisplayRotation extends SettingsPreferenceFragment {
             mRotation270Pref.setDependency(null);
         }
 
-        final SwitchPreference lockScreenRotation =
-                (SwitchPreference) findPreference(KEY_LOCKSCREEN_ROTATION);
-        boolean canRotateLockscreen = getResources().getBoolean(
+        if (!getResources().getBoolean(
                 com.android.internal.R.bool.config_enableLockScreenRotation);
-
-        if (lockScreenRotation != null && !canRotateLockscreen) {
-            getPreferenceScreen().removePreference(lockScreenRotation);
+            getPreferenceScreen().removePreference(mLockScreenRotation);
         }
     }
 
@@ -173,6 +171,10 @@ public class DisplayRotation extends SettingsPreferenceFragment {
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.ACCELEROMETER_ROTATION_ANGLES, mode);
             return true;
+        } else if (preference == mLockScreenRotation) {
+            CMSettings.System.putInt(getActivity().getContentResolver(),
+                    CMSettings.System.LOCKSCREEN_ROTATION,
+                    (mLockScreenRotation.isChecked() ? 1 : 0));
         }
 
         return super.onPreferenceTreeClick(preferenceScreen, preference);
