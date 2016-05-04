@@ -774,7 +774,7 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
             mPasswordEntry.addTextChangedListener(this);
         }
 
-         mLockPatternButtons.clear();
+        mLockPatternButtons.clear();
         // Pattern case
         mLockPatternView = (LockPatternView) findViewById(R.id.lockPattern);
         if (mLockPatternView != null) {
@@ -800,7 +800,9 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
         final View imeSwitcher = findViewById(R.id.switch_ime_button);
         final InputMethodManager imm = (InputMethodManager) getSystemService(
                 Context.INPUT_METHOD_SERVICE);
-        if (imeSwitcher != null && hasMultipleEnabledIMEsOrSubtypes(imm, false)) {
+        if(imeSwitcher != null && mLockPatternView != null) {
+            imeSwitcher.setVisibility(View.GONE);
+        } else if (imeSwitcher != null && hasMultipleEnabledIMEsOrSubtypes(imm, false)) {
             imeSwitcher.setVisibility(View.VISIBLE);
             imeSwitcher.setOnClickListener(new OnClickListener() {
                     @Override
