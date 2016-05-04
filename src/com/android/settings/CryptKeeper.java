@@ -778,6 +778,7 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
         // Pattern case
         mLockPatternView = (LockPatternView) findViewById(R.id.lockPattern);
         if (mLockPatternView != null) {
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
             mLockPatternView.setOnPatternListener(mChooseNewLockPatternListener);
             for (int id : LOCK_BUTTON_IDS) {
                 Button btn = (Button) findViewById(id);
