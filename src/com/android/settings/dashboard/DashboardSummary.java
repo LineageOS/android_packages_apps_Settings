@@ -105,6 +105,10 @@ public class DashboardSummary extends InstrumentedFragment {
         filter.addAction(Intent.ACTION_PACKAGE_REPLACED);
         filter.addDataScheme("package");
         getActivity().registerReceiver(mHomePackageReceiver, filter);
+
+        final IntentFilter airplaneModeFilter
+                = new IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED);
+        getActivity().registerReceiver(mHomePackageReceiver, airplaneModeFilter);
     }
 
     @Override
