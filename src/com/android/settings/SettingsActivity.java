@@ -1284,7 +1284,7 @@ public class SettingsActivity extends Activity
                     }
                  } else if (id == R.id.mobile_networks) {
                     if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY)
-                            || Utils.showSimCardTile(this)) {
+                            || Utils.showSimCardTile(this) || Utils.isAirplaneModeEnabled(this)) {
                         removeTile = true;
                     }
                 }  else if (id == R.id.sim_settings) {
