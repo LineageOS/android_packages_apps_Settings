@@ -26,6 +26,7 @@ import android.graphics.LightingColorFilter;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.os.Vibrator;
 import android.preference.DialogPreference;
 import android.preference.PreferenceManager;
@@ -158,6 +159,13 @@ public class VibratorIntensity extends DialogPreference implements
         }
     }
 
+    @Override
+    protected Parcelable onSaveInstanceState() {
+        final Parcelable superState = super.onSaveInstanceState();
+        mHardware.setVibratorIntensity(mOriginalValue);
+        return superState;
+    }
+
     public static void restore(Context context) {
         CMHardwareManager hardware = CMHardwareManager.getInstance(context);
         if (!hardware.isSupported(CMHardwareManager.FEATURE_VIBRATOR)) {
@@ -198,7 +206,6 @@ public class VibratorIntensity extends DialogPreference implements
         mHardware.setVibratorIntensity(seekBar.getProgress() + mMinValue);
         Vibrator vib = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
         vib.vibrate(200);
-        mHardware.setVibratorIntensity(mOriginalValue);
     }
 
     private static int intensityToPercent(int minValue, int maxValue, int value) {
