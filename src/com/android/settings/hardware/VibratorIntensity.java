@@ -42,7 +42,7 @@ import cyanogenmod.providers.CMSettings;
 import com.android.settings.R;
 
 public class VibratorIntensity extends DialogPreference implements
-        SeekBar.OnSeekBarChangeListener {
+        SeekBar.OnSeekBarChangeListener, PreferenceManager.OnActivityStopListener {
     private static final String PREF_NAME = "vibrator_intensity";
     private SeekBar mSeekBar;
     private TextView mValue;
@@ -122,6 +122,8 @@ public class VibratorIntensity extends DialogPreference implements
         mSeekBar.setOnSeekBarChangeListener(this);
         mSeekBar.setMax(mMaxValue - mMinValue);
         mSeekBar.setProgress(mOriginalValue - mMinValue);
+
+        getPreferenceManager().registerOnActivityStopListener(this);
     }
 
     @Override
@@ -156,6 +158,13 @@ public class VibratorIntensity extends DialogPreference implements
             CMSettings.Secure.putInt(getContext().getContentResolver(),
                     CMSettings.Secure.VIBRATOR_INTENSITY, mOriginalValue);
         }
+
+        getPreferenceManager().unregisterOnActivityStopListener(this);
+    }
+
+    @Override
+    public void onActivityStop() {
+        mHardware.setVibratorIntensity(mOriginalValue);
     }
 
     public static void restore(Context context) {
@@ -198,7 +207,6 @@ public class VibratorIntensity extends DialogPreference implements
         mHardware.setVibratorIntensity(seekBar.getProgress() + mMinValue);
         Vibrator vib = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
         vib.vibrate(200);
-        mHardware.setVibratorIntensity(mOriginalValue);
     }
 
     private static int intensityToPercent(int minValue, int maxValue, int value) {
