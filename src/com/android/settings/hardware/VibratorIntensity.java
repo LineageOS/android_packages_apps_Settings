@@ -198,7 +198,6 @@ public class VibratorIntensity extends DialogPreference implements
         mHardware.setVibratorIntensity(seekBar.getProgress() + mMinValue);
         Vibrator vib = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
         vib.vibrate(200);
-        mHardware.setVibratorIntensity(mOriginalValue);
     }
 
     private static int intensityToPercent(int minValue, int maxValue, int value) {
