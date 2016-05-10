@@ -17,6 +17,10 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="one">Você agora está a <xliff:g id="step_count">%1$d </xliff:g> passo de ativar as configurações de desenvolvimento.</item>
+    <item quantity="other">Você agora está a <xliff:g id="step_count">%1$d </xliff:g> passos de ativar as configurações de desenvolvimento.</item>
+  </plurals>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
   <string name="show_dev_on_cm">Você ativou as configurações de desenvolvedor!</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
@@ -990,14 +994,21 @@
   <string name="restrict_app_wlan_title">Impedir o uso de Wi\u2011Fi no app</string>
   <string name="restrict_app_wlan_summary">Impedir que o app use a conexão de dados de Wi\u2011Fi</string>
   <string name="restrict_app_cellular_title">Impedir que o aplicativo use a rede de celular</string>
-  <string name="restrict_app_cellular_summary">Impedir que este aplicativo use a conexão de dados celular</string>
+  <string name="restrict_app_cellular_summary">Impedir que este aplicativo use a conexão de dados móveis</string>
   <string name="privacy_guard_internet_category">Internet</string>
   <!-- Weather -->
   <string name="weather_settings_title">Clima</string>
   <string name="weather_settings_no_services_prompt">Não há provedor de previsão do tempo instalado</string>
   <string name="weather_settings_button">Configurações do provedor</string>
   <string name="weather_settings_activity_not_found">Não foi possível iniciar o menu de configurações deste provedor</string>
-  <string name="background_data_access">Acesso aos dados em 2º plano</string>
+  <string name="weather_settings_add_weather_provider">Adicionar provedor de previsão do tempo</string>
+  <string name="weather_settings_general_settings_title">Geral</string>
+  <string name="weather_settings_providers_title">Provedores</string>
+  <string name="weather_settings_temp_units_title">Unidade de temperatura</string>
+  <string name="weather_settings_temp_celsius">Celsius</string>
+  <string name="weather_settings_temp_fahrenheit">Fahrenheit</string>
+  <string name="weather_settings_keyword">tempo</string>
+  <string name="background_data_access">Acesso aos dados em segundo plano</string>
   <string name="allow_background_both">Através dos dados móveis e Wi\u2011Fi</string>
   <string name="allow_background_wlan">Apenas através de Wi\u2011Fi</string>
   <string name="allow_background_none">Sem acesso</string>
@@ -1006,7 +1017,7 @@
   <string name="data_usage_menu_enable_data_alerts">Ativar alertas de uso de dados</string>
   <string name="data_usage_menu_disable_data_alerts">Desativar os alertas de uso de dados</string>
   <string name="data_usage_menu_reset_stats">Redefinir as estatísticas de dados</string>
-  <string name="reset_data_stats_msg">Isto irá limpar todas as informações de rastreamento de dados</string>
+  <string name="reset_data_stats_msg">Isto irá apagar todas as informações de rastreamento de dados</string>
   <string name="reset_stats_confirm">Confirmar</string>
   <string name="restrict_cellular_access_title">Restringir o acesso de dados móveis</string>
   <string name="restrict_cellular_access_summary">Desativar o acesso de dados em redes móveis</string>

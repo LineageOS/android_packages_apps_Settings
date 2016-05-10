@@ -261,6 +261,7 @@
   <!-- Lights settings, LED notification -->
   <string name="led_notification_title">Işık ayarları</string>
   <string name="led_notification_text">LED ışık ayarlar tarafından etkinleştirilmiş</string>
+  <string name="notification_light_no_apps_summary">Uygulama denetimi eklemek için \'%1$s\' etkinleştirin ve menü çubuğu üzerindeki \'\u002b\' basın</string>
   <!-- Setting checkbox title for Whether to enable Android debugging support on the phone. -->
   <string name="enable_adb_cm">Android hata ayıklama</string>
   <!-- Setting checkbox summary for Whether to enable Android debugging support on the phone -->
@@ -430,6 +431,7 @@
   <string name="app_ops_allowed_count"><xliff:g id="count" example="2 times">%s</xliff:g> izin verildi</string>
   <string name="app_ops_ignored_count"><xliff:g id="count" example="2 times">%s</xliff:g> reddedildi</string>
   <string name="app_ops_both_count"><xliff:g id="count">%1$s</xliff:g> izin verildi, <xliff:g id="count">%2$s</xliff:g> reddedildi</string>
+  <string name="app_ops_disabled_by_optimization">Pil optimizasyonu tarafından devre dışı bırakıldı</string>
   <!-- App ops menu options -->
   <string name="app_ops_show_user_apps">Kullanıcı uygulamalarını göster</string>
   <string name="app_ops_show_system_apps">Dahili uygulamaları göster</string>
@@ -995,5 +997,32 @@
   <string name="restrict_app_cellular_summary">Uygulamanın hücresel veri bağlantısını kullanmasını engelle</string>
   <string name="privacy_guard_internet_category">İnternet</string>
   <!-- Weather -->
+  <string name="weather_settings_title">Hava durumu</string>
+  <string name="weather_settings_no_services_prompt">Yüklü hava durumu hizmet sağlayıcısı yok</string>
+  <string name="weather_settings_button">Sağlayıcı ayarları</string>
+  <string name="weather_settings_activity_not_found">Bu sağlayıcının ayarlar menüsü açılamadı</string>
+  <string name="weather_settings_add_weather_provider">Hava durumu sağlayıcısı ekle</string>
+  <string name="weather_settings_general_settings_title">Genel</string>
+  <string name="weather_settings_providers_title">Sağlayıcılar</string>
+  <string name="weather_settings_temp_units_title">Sıcaklık birimi</string>
+  <string name="weather_settings_temp_celsius">Santigrat</string>
+  <string name="weather_settings_temp_fahrenheit">Fahrenhayt</string>
+  <string name="weather_settings_keyword">hava durumu</string>
+  <string name="background_data_access">Arka plan veri erişimi</string>
+  <string name="allow_background_both">Hücresel veri üzerinden &amp; Wi\u2011Fi</string>
+  <string name="allow_background_wlan">Sadece Wi\u2011Fi üzerinden</string>
+  <string name="allow_background_none">Erişim yok</string>
+  <string name="mobile_data_alert">Hücresel veri uyarısı</string>
+  <string name="mobile_data_alert_summary">Uygulama önemli miktarda veri kullanınca bildir</string>
+  <string name="data_usage_menu_enable_data_alerts">Veri kullanımı uyarılarını etkinleştir</string>
+  <string name="data_usage_menu_disable_data_alerts">Veri kullanımı uyarılarını devre dışı bırak</string>
+  <string name="data_usage_menu_reset_stats">Veri istatistiklerini sıfırla</string>
+  <string name="reset_data_stats_msg">Bu geçmişteki ve şimdiki tüm veri izleme bilgilerini temizleyecek</string>
+  <string name="reset_stats_confirm">Onayla</string>
+  <string name="restrict_cellular_access_title">Hücresel veri erişimini sınırla</string>
+  <string name="restrict_cellular_access_summary">Hücresel ağlar üzerinde veri erişimini devre dışı bırak</string>
+  <string name="restrict_cellular_access_dialog_title">Hücresel veri erişimi sınırlansın mı?</string>
+  <string name="restrict_cellular_access_dialog_summary">Bu özellik sadece hücresel ağ kullanılabilirken ağ erişimine bağlı çalışan bir uygulamanın çalışmayı durdurmasına sebep olabilir.\n\nDaha uygun veri kullanım seçeneklerini uygulama içindeki ayarlardan bulabilirsiniz.</string>
   <!-- Label for settings shortcut: carrier selection -->
+  <string name="shortcut_carrier_title">Ağ operatörleri</string>
 </resources>

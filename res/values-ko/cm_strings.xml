@@ -164,6 +164,7 @@
   <string name="toggleData">데이터통신 연결</string>
   <string name="toggleSync">자동 동기화 데이터</string>
   <string name="toggle2g3g4g">선호하는 통신 유형</string>
+  <string name="toggle2g3g4g_msim">선호하는 통신 유형</string>
   <string name="toggleNfc">NFC</string>
   <!-- Wi-Fi region code -->
   <string name="wifi_setting_countrycode_title">Wi\u2011Fi 지역 코드</string>
@@ -259,6 +260,7 @@
   <!-- Lights settings, LED notification -->
   <string name="led_notification_title">조명 설정</string>
   <string name="led_notification_text">설정 앱이 LED 전등을 활성화함</string>
+  <string name="notification_light_no_apps_summary">앱 별 제어를 추가하려면, \'%1$s\'을(를) 활성화하고 메뉴 바에서 \'\u002b\'를 누르세요</string>
   <!-- Setting checkbox title for Whether to enable Android debugging support on the phone. -->
   <string name="enable_adb_cm">안드로이드 디버깅</string>
   <!-- Setting checkbox summary for Whether to enable Android debugging support on the phone -->
@@ -428,6 +430,7 @@
   <string name="app_ops_allowed_count"><xliff:g id="count" example="2 times">%s</xliff:g> 허용</string>
   <string name="app_ops_ignored_count"><xliff:g id="count" example="2 times">%s</xliff:g> 거부</string>
   <string name="app_ops_both_count"><xliff:g id="count">%1$s</xliff:g> 허용됨, <xliff:g id="count">%2$s</xliff:g> 거부됨</string>
+  <string name="app_ops_disabled_by_optimization">배터리 최적화에 의해 비활성화됨</string>
   <!-- App ops menu options -->
   <string name="app_ops_show_user_apps">사용자 애플리케이션 표시</string>
   <string name="app_ops_show_system_apps">내장 애플리케이션 표시</string>
@@ -855,6 +858,7 @@
   <string name="menu_hidden_apps_delete">초기화</string>
   <string name="menu_hidden_apps_reset_lock">패턴 잠금 초기화</string>
   <string name="protected_apps">보호된 애플리케이션</string>
+  <string name="protected_apps_summary">보안 잠금 사용시 숨겨질 앱 선택</string>
   <string name="saving_protected_components">구성요소 상태 저장\u2026</string>
   <string name="pa_login_username_hint">사용자 이름 (이메일)</string>
   <string name="pa_login_password_hint">비밀번호</string>
@@ -890,6 +894,8 @@
   <!-- Edit access point labels: PPP number -->
   <string name="apn_ppp_number">APN PPP 전화번호</string>
   <!-- APNs screen message indicating new APN user is adding is a duplicate -->
+  <string name="duplicate_apn_error_title">중복된 APN</string>
+  <string name="duplicate_apn_error_message">이 APN이 이미 존재합니다. 삭제하거나 매개 변수를 변경하세요.</string>
   <string name="sim_enabler_summary"><xliff:g id="displayName">%1$s</xliff:g> <xliff:g id="status" example="disabled">%2$s</xliff:g></string>
   <string name="sim_disabled">비활성화 됨</string>
   <string name="sim_missing">SIM 카드가 없거나 잘못되었습니다</string>
@@ -984,6 +990,32 @@
   <string name="battery_info_status_charging_dock_ac">독 AC로 충전중</string>
   <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging over Dock USB. -->
   <string name="battery_info_status_charging_dock_usb">독 USB로 충전중</string>
+  <string name="restrict_app_wlan_title">앱의 Wi\u2011Fi 사용 끄기</string>
+  <string name="restrict_app_wlan_summary">앱이 Wi\u2011Fi 데이터 연결을 사용하지 않도록 설정</string>
+  <string name="restrict_app_cellular_title">앱의 모바일 데이터 사용 끄기</string>
+  <string name="restrict_app_cellular_summary">앱이 모바일 데이터 연결을 하지 않도록 설정</string>
+  <string name="privacy_guard_internet_category">인터넷</string>
   <!-- Weather -->
+  <string name="weather_settings_title">날씨</string>
+  <string name="weather_settings_no_services_prompt">날씨 제공자 서비스 설치되지 않음</string>
+  <string name="weather_settings_button">제공자 설정</string>
+  <string name="weather_settings_activity_not_found">이 제공자의 설정 메뉴를 열 수 없습니다</string>
+  <string name="weather_settings_general_settings_title">일반</string>
+  <string name="background_data_access">백그라운드 데이터 사용</string>
+  <string name="allow_background_both">셀룰러 데이터와 Wi\u2011Fi를 통해</string>
+  <string name="allow_background_wlan">Wi\u2011Fi에서만</string>
+  <string name="allow_background_none">허용하지 않음</string>
+  <string name="mobile_data_alert">셀룰러 데이터 경고</string>
+  <string name="mobile_data_alert_summary">앱이 많은 데이터를 사용할 때 알림</string>
+  <string name="data_usage_menu_enable_data_alerts">데이터 사용량 경고 켜기</string>
+  <string name="data_usage_menu_disable_data_alerts">데이터 사용량 경고 끄기</string>
+  <string name="data_usage_menu_reset_stats">데이터 통계 초기화</string>
+  <string name="reset_data_stats_msg">과거와 현재의 데이터 정보를 모두 삭제합니다</string>
+  <string name="reset_stats_confirm">확인</string>
+  <string name="restrict_cellular_access_title">셀룰러 데이터 사용 제한</string>
+  <string name="restrict_cellular_access_summary">셀룰러 네트워크에서 데이터 사용을 끄기</string>
+  <string name="restrict_cellular_access_dialog_title">셀룰러 데이터 사용을 제한하시겠습니까?</string>
+  <string name="restrict_cellular_access_dialog_summary">이 기능은 셀룰러 네트워크만 사용할 때 네트워크 연결이 필요한 앱의 정상적인 작동을 방해할 수 있습니다.\n\n앱의 설정에서 데이터 사용량을 조절할 수 있는 설정을 찾을 수 있습니다.</string>
   <!-- Label for settings shortcut: carrier selection -->
+  <string name="shortcut_carrier_title">네트워크 영업자</string>
 </resources>
