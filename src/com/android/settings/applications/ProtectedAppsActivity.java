@@ -71,6 +71,7 @@ public class ProtectedAppsActivity extends Activity {
     private boolean mWaitUserAuth = false;
     private boolean mUserIsAuth = false;
     private Intent mTargetIntent;
+    private int mOrientation;
 
     private HashSet<ComponentName> mProtectedApps = new HashSet<ComponentName>();
 
@@ -104,6 +105,7 @@ public class ProtectedAppsActivity extends Activity {
 
         if (!mUserIsAuth) {
             // Require unlock
+            mWaitUserAuth = true;
             Intent lockPattern = new Intent(this, LockPatternActivity.class);
             startActivityForResult(lockPattern, REQ_ENTER_PATTERN);
         } else {
@@ -112,6 +114,8 @@ public class ProtectedAppsActivity extends Activity {
                 launchTargetActivityInfoAndFinish();
             }
         }
+
+        mOrientation = getResources().getConfiguration().orientation;
     }
 
     @Override
@@ -164,8 +168,10 @@ public class ProtectedAppsActivity extends Activity {
     public void onPause() {
         super.onPause();
 
-        // Don't stick around
-        if (mWaitUserAuth && !mUserIsAuth) {
+        // Close this app to prevent unauthorized access when
+        // 1) not waiting for authorization and
+        // 2) there is no portrait/landscape mode switching
+        if (!mWaitUserAuth && (mOrientation == getResources().getConfiguration().orientation)) {
             finish();
         }
     }
@@ -178,7 +184,7 @@ public class ProtectedAppsActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case REQ_ENTER_PATTERN:
-                mWaitUserAuth = true;
+                mWaitUserAuth = false;
                 switch (resultCode) {
                     case RESULT_OK:
                         //Nothing to do, proceed!
@@ -194,7 +200,7 @@ public class ProtectedAppsActivity extends Activity {
                 }
                 break;
             case REQ_RESET_PATTERN:
-                mWaitUserAuth = true;
+                mWaitUserAuth = false;
                 mUserIsAuth = false;
         }
     }
@@ -241,7 +247,7 @@ public class ProtectedAppsActivity extends Activity {
     }
 
     private void resetLock() {
-        mWaitUserAuth = false;
+        mWaitUserAuth = true;
         Intent lockPattern = new Intent(LockPatternActivity.RECREATE_PATTERN, null,
                 this, LockPatternActivity.class);
         startActivityForResult(lockPattern, REQ_RESET_PATTERN);
