@@ -16,6 +16,7 @@
 package com.android.settings.profiles.actions.item;
 
 import android.content.Context;
+import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -83,10 +84,16 @@ public class ConnectionOverrideItem implements Item {
                 break;
             case ConnectionSettings.PROFILE_CONNECTION_2G3G4G:
                 if (settings.getSubId() != SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
-                    final String displayName = SubscriptionManager.from(context)
-                            .getActiveSubscriptionInfo(settings.getSubId())
-                            .getDisplayName()
-                            .toString();
+                    final SubscriptionInfo subInfo = SubscriptionManager.from(context)
+                            .getActiveSubscriptionInfo(settings.getSubId());
+                    final String displayName;
+                    if (subInfo.getDisplayName() != null) {
+                        displayName = subInfo.getDisplayName().toString();
+                    } else if (subInfo.getCarrierName() != null) {
+                        displayName = subInfo.getCarrierName().toString();
+                    } else {
+                        displayName = String.valueOf(subInfo.getSimSlotIndex());
+                    }
                     return context.getString(R.string.toggle2g3g4g_msim, displayName);
                 }
                 r = R.string.toggle2g3g4g;
