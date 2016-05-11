@@ -1019,8 +1019,10 @@ public class InstalledAppDetails extends AppInfoBase
     private final BroadcastReceiver mCheckKillProcessesReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            updateForceStopButton(getResultCode() != Activity.RESULT_CANCELED);
-            refreshUi();
+            if (getActivity() != null && !getActivity().isDestroyed()) {
+                updateForceStopButton(getResultCode() != Activity.RESULT_CANCELED);
+                refreshUi();
+            }
         }
     };
 
