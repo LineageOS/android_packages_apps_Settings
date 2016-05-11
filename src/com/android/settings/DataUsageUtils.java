@@ -20,6 +20,8 @@ public class DataUsageUtils {
     private static final int DATAUSAGE_SERVICE_ALARM_ID = 0x102030;
     private static boolean DEBUG = true;
 
+    private static final String sWhereString = DataUsageContract.UID + " = ? ";
+
     public static void addApp(Context context, int uid, String label) {
         if (DEBUG) {
             Log.v(TAG, "addApp: uid:" + uid + " label:" + label);
@@ -42,7 +44,7 @@ public class DataUsageUtils {
         }
         context.getContentResolver().delete(
                 DataUsageContract.CONTENT_URI,
-                DataUsageContract.UID + " = ? ",
+                sWhereString,
                 new String [] { String.valueOf(uid)}
         );
     }
@@ -66,43 +68,52 @@ public class DataUsageUtils {
         context.getContentResolver().update(
                 DataUsageContract.CONTENT_URI,
                 values,
-                DataUsageContract.UID + " = ? ",
+                sWhereString,
                 new String [] { String.valueOf(uid)}
         );
     }
 
     public static boolean isDbEnabled(Context context) {
         boolean dbEnabled = false;
-        Cursor cursor = context.getContentResolver().query(
-                DataUsageContract.CONTENT_URI,
-                null,
-                DataUsageContract.UID + " = ? ",
-                new String [] { String.valueOf("0") },
-                null
-        );
-
-        if (cursor != null) {
-            cursor.close();
-            dbEnabled = true;
+        Cursor cursor = null;
+        try {
+            cursor = context.getContentResolver().query(
+                    DataUsageContract.CONTENT_URI,
+                    null,
+                    sWhereString,
+                    new String[]{"0"},
+                    null
+            );
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+                dbEnabled = true;
+            }
         }
+
         return dbEnabled;
     }
 
 
     public static boolean isAppEnabled(Context context, int uid) {
         boolean appEnabled = false;
-        Cursor cursor = context.getContentResolver().query(
-                DataUsageContract.CONTENT_URI,
-                null,
-                DataUsageContract.UID + " = ? ",
-                new String [] { String.valueOf(uid) },
-                null
-        );
-        if (cursor != null) {
-            if (cursor.moveToFirst()) {
-                appEnabled = cursor.getInt(DataUsageContract.COLUMN_OF_ENABLE) == 1;
+        Cursor cursor = null;
+
+        try {
+            cursor = context.getContentResolver().query(
+                    DataUsageContract.CONTENT_URI,
+                    null,
+                    sWhereString,
+                    new String[]{String.valueOf(uid)},
+                    null
+            );
+        } finally {
+            if (cursor != null) {
+                if (cursor.moveToFirst()) {
+                    appEnabled = cursor.getInt(DataUsageContract.COLUMN_OF_ENABLE) == 1;
+                }
+                cursor.close();
             }
-            cursor.close();
         }
 
         if (DEBUG) {
@@ -119,3 +130,4 @@ public class DataUsageUtils {
         context.sendBroadcast(intent);
     }
 }
+
