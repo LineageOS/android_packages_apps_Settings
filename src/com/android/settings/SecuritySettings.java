@@ -348,7 +348,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
             // Add live lock screen preference if supported
             PreferenceGroup generalCategory = (PreferenceGroup)
                     root.findPreference(KEY_GENERAL_CATEGORY);
-            if (pm.hasSystemFeature(LIVE_LOCK_SCREEN_FEATURE) && generalCategory != null) {
+            if (pm.hasSystemFeature(LIVE_LOCK_SCREEN_FEATURE) && generalCategory != null && Utils.isUserOwner()) {
                 boolean moveToTop = getResources().getBoolean(
                         R.bool.config_showLiveLockScreenSettingsFirst);
 
