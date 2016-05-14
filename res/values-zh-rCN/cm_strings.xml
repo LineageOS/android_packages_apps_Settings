@@ -17,6 +17,9 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="other">还需 <xliff:g id="step_count">%1$d</xliff:g> 步就可以启用开发者选项。</item>
+  </plurals>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
   <string name="show_dev_on_cm">您已经启用了开发者选项！</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
@@ -254,7 +257,6 @@
   <!-- Lights settings, LED notification -->
   <string name="led_notification_title">指示灯设置</string>
   <string name="led_notification_text">LED 灯被“设置”启用</string>
-  <string name="notification_light_no_apps_summary">若要添加单个应用控制，请激活“%1$s”并按下菜单栏上的“\u002b”</string>
   <!-- Setting checkbox title for Whether to enable Android debugging support on the phone. -->
   <string name="enable_adb_cm">Android 调试</string>
   <!-- Setting checkbox summary for Whether to enable Android debugging support on the phone -->
@@ -424,7 +426,6 @@
   <string name="app_ops_allowed_count">允许 <xliff:g id="count" example="2 times">%s</xliff:g></string>
   <string name="app_ops_ignored_count">拒绝 <xliff:g id="count" example="2 times">%s</xliff:g></string>
   <string name="app_ops_both_count">允许 <xliff:g id="count">%1$s</xliff:g>，拒绝 <xliff:g id="count">%2$s</xliff:g></string>
-  <string name="app_ops_disabled_by_optimization">已被电池优化禁用</string>
   <!-- App ops menu options -->
   <string name="app_ops_show_user_apps">显示用户应用</string>
   <string name="app_ops_show_system_apps">显示内置应用</string>
@@ -511,9 +512,6 @@
   <!-- Buttons - Enable navbar -->
   <string name="disable_navkeys_title">启用屏幕上的导航栏</string>
   <string name="disable_navkeys_summary">启用屏幕上导航栏并禁用硬件按钮</string>
-  <!-- tap-to-wake -->
-  <string name="double_tap_to_wake_title">双击唤醒</string>
-  <string name="double_tap_to_wake_summary">双击屏幕来开启屏幕显示</string>
   <!-- tap-to-sleep -->
   <string name="double_tap_to_sleep_title">双击以睡眠</string>
   <string name="double_tap_to_sleep_summary">双击状态栏以关闭屏幕显示</string>
@@ -537,6 +535,14 @@
   <string name="color_red_title">红</string>
   <string name="color_green_title">绿</string>
   <string name="color_blue_title">蓝</string>
+  <!-- Hardware tunables - Gamma calibration -->
+  <string name="gamma_tuning_title_head">伽玛校准</string>
+  <string name="gamma_tuning_summary_head">调整伽玛值</string>
+  <string name="gamma_tuning_control_set_header">组 <xliff:g id="index">%d</xliff:g></string>
+  <!-- used if no name provided by overlay -->
+  <string name="gamma_tuning_contrast">对比度</string>
+  <string name="gamma_tuning_brightness">亮度</string>
+  <string name="gamma_tuning_saturation">饱和度</string>
   <!-- Launch music player when headset is connected -->
   <string name="headset_connect_player_title">启动音乐播放器</string>
   <string name="headset_connect_player_summary">插入耳机时启动默认音乐播放器</string>
@@ -675,7 +681,7 @@
   <string name="status_bar_notif_count_summary">显示未读通知的数量</string>
   <string name="status_bar_quick_qs_pulldown_title">快速下拉</string>
   <string name="status_bar_quick_qs_pulldown_summary">从状态栏的%1$s边缘下拉开启快速设置面板</string>
-  <string name="status_bar_quick_qs_pulldown_summary_left">左侧</string>
+  <string name="status_bar_quick_qs_pulldown_summary_left">左</string>
   <string name="status_bar_quick_qs_pulldown_summary_right">右侧</string>
   <string name="status_bar_quick_qs_pulldown_off">关闭</string>
   <string name="status_bar_quick_qs_pulldown_left">左</string>
@@ -962,40 +968,4 @@
   <string name="interruptions_ignore_while_media_summary">当通知到达时，不要降低媒体播放音量</string>
   <!-- CM Legal -->
   <string name="cmlicense_title">CyanogenMod 法律信息</string>
-  <!-- Menu label for reset the battery stats -->
-  <string name="menu_stats_reset">重置统计数据</string>
-  <!-- Reset stats confirmation dialog's message -->
-  <string name="reset_stats_msg">即将重置电池使用数据</string>
-  <!-- Dock battery not present message -->
-  <string name="dock_battery_not_present">基座电池不存在</string>
-  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging on Dock AC. -->
-  <string name="battery_info_status_charging_dock_ac">正在通过基座交流电充电</string>
-  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging over Dock USB. -->
-  <string name="battery_info_status_charging_dock_usb">正在通过基座 USB 充电</string>
-  <string name="restrict_app_wlan_title">禁止应用使用 Wi\u2011Fi</string>
-  <string name="restrict_app_wlan_summary">防止应用使用 Wi\u2011Fi 数据连接</string>
-  <string name="restrict_app_cellular_title">禁止应用使用移动数据</string>
-  <string name="restrict_app_cellular_summary">防止应用使用移动网络数据连接</string>
-  <string name="privacy_guard_internet_category">互联网</string>
-  <!-- Weather -->
-  <string name="weather_settings_title">天气</string>
-  <string name="weather_settings_no_services_prompt">没有安装天气提供商服务</string>
-  <string name="weather_settings_button">提供商设置</string>
-  <string name="background_data_access">后台数据访问</string>
-  <string name="allow_background_both">仅通过移动数据 &amp; Wi\u2011Fi</string>
-  <string name="allow_background_wlan">仅通过 Wi\u2011Fi</string>
-  <string name="allow_background_none">没有访问权限</string>
-  <string name="mobile_data_alert">移动数据警报</string>
-  <string name="mobile_data_alert_summary">当应用使用了大量的数据时通知</string>
-  <string name="data_usage_menu_enable_data_alerts">启用数据用量警报</string>
-  <string name="data_usage_menu_disable_data_alerts">禁用数据用量警报</string>
-  <string name="data_usage_menu_reset_stats">重置数据用量统计</string>
-  <string name="reset_data_stats_msg">这将清除过去和现在的所有数据跟踪信息</string>
-  <string name="reset_stats_confirm">确认</string>
-  <string name="restrict_cellular_access_title">限制访问移动数据</string>
-  <string name="restrict_cellular_access_summary">禁用移动网络的数据访问</string>
-  <string name="restrict_cellular_access_dialog_title">限制访问移动数据？</string>
-  <string name="restrict_cellular_access_dialog_summary">此功能在仅有移动数据网络时可能会导致依赖网络访问的应用停止工作。\n\n您可以在设置中找到对于该应用更加合适的数据使用情况控制。</string>
-  <!-- Label for settings shortcut: carrier selection -->
-  <string name="shortcut_carrier_title">网络运营商</string>
 </resources>

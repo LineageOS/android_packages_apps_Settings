@@ -105,6 +105,7 @@
   <string name="rename_dialog_hint">Angi profilnavn</string>
   <!-- Reset Profiles -->
   <string name="profile_reset_title">Tilbakestill</string>
+  <string name="profile_reset_message">Slette alle brukeropprettede profiler og app grupper og gjenopprette dem til standard?</string>
   <!-- Delete confimation messages -->
   <string name="profile_app_delete_confirm">Fjerne denne appen?</string>
   <!-- Profile network mode -->
@@ -289,6 +290,7 @@
   <string name="app_ops_summaries_read_calendar">les kalender</string>
   <string name="app_ops_summaries_modify_calendar">endre kalender</string>
   <string name="app_ops_summaries_wifi_scan">Wi-Fi skanning</string>
+  <string name="app_ops_summaries_notification">varsling/toast</string>
   <string name="app_ops_summaries_cell_scan">Celle skann</string>
   <string name="app_ops_summaries_call_phone">ring telefon</string>
   <string name="app_ops_summaries_read_sms">les SMS</string>
@@ -320,14 +322,21 @@
   <string name="app_ops_summaries_keep_awake">hold våken</string>
   <string name="app_ops_summaries_monitor_location">skjerm plassering</string>
   <string name="app_ops_summaries_monitor_high_power_location">overvåk kraftkrevende plassering</string>
+  <string name="app_ops_summaries_get_usage_stats">få brukstatistikker</string>
   <string name="app_ops_summaries_mute_unmute_microphone">Demp/fjern demping mikrofon</string>
   <string name="app_ops_summaries_toast_window">vise toastmeldinger</string>
   <string name="app_ops_summaries_project_media">Prosjekt media</string>
   <string name="app_ops_summaries_activate_vpn">aktiver VPN</string>
+  <string name="app_ops_summaries_write_wallpaper">skrive bakgrunn</string>
+  <string name="app_ops_summaries_assist_structure">hjelpestruktur</string>
+  <string name="app_ops_summaries_assist_screenshot">hjelpeskjermbilde</string>
+  <string name="app_ops_summaries_read_phone_state">lese telefontilstand</string>
   <string name="app_ops_summaries_add_voicemail">legg til mobilsvar</string>
   <string name="app_ops_summaries_use_sip">bruk SIP</string>
   <string name="app_ops_summaries_make_call">foreta anrop</string>
   <string name="app_ops_summaries_use_fingerprint">bruk fingeravtrykk</string>
+  <string name="app_ops_summaries_use_body_sensors">bruke enhetssensorer</string>
+  <string name="app_ops_summaries_read_cell_broadcasts">lese cellekringkastinger</string>
   <string name="app_ops_summaries_read_external_storage">lese ekstern lagring</string>
   <string name="app_ops_summaries_write_external_storage">skriv til ekstern lagring</string>
   <string name="app_ops_summaries_turn_screen_on">slå skjermen på</string>
@@ -492,9 +501,6 @@
   <!-- Buttons - Enable navbar -->
   <string name="disable_navkeys_title">Aktiverer navigasjonsbar på skjermen</string>
   <string name="disable_navkeys_summary">Aktiverer navigasjonsbar på skjermen og deaktiver hardware knapper</string>
-  <!-- tap-to-wake -->
-  <string name="double_tap_to_wake_title">Dobbelttapp for å vekke</string>
-  <string name="double_tap_to_wake_summary">Dobbelttrykk på skjermen for å aktivere displayet</string>
   <!-- tap-to-sleep -->
   <string name="double_tap_to_sleep_title">Dobbeltapp for å sove</string>
   <string name="double_tap_to_sleep_summary">Dobbelttapp på statuslinjen for å slå av skjermen</string>
@@ -518,6 +524,14 @@
   <string name="color_red_title">Rød</string>
   <string name="color_green_title">Grønn</string>
   <string name="color_blue_title">Blå</string>
+  <!-- Hardware tunables - Gamma calibration -->
+  <string name="gamma_tuning_title_head">Gamma kalibrering</string>
+  <string name="gamma_tuning_summary_head">Justere gammaverdiene</string>
+  <string name="gamma_tuning_control_set_header">Gruppe <xliff:g id="index">%d</xliff:g></string>
+  <!-- used if no name provided by overlay -->
+  <string name="gamma_tuning_contrast">Kontrast</string>
+  <string name="gamma_tuning_brightness">Lysstyrke</string>
+  <string name="gamma_tuning_saturation">Metning</string>
   <!-- Launch music player when headset is connected -->
   <string name="headset_connect_player_title">Start musikk app</string>
   <string name="headset_connect_player_summary">Start standard musikk app når hodesett er tilkoblet</string>
@@ -922,6 +936,7 @@
   <string name="factory_reset_warning_text_message">Alle kontoene, appene, appdataene og systeminnstillingene dine fjernes fra denne enheten. Dette kan ikke angres.</string>
   <!-- Live lock screen -->
   <!-- Live lock screen title -->
+  <string name="live_lock_screen_title">Levende skjermlås</string>
   <!-- Live lock screen summary -->
   <!-- Live lock screen settings content description -->
   <string name="live_lock_screen_settings_button">Innstillinger</string>
@@ -930,16 +945,4 @@
   <string name="interruptions_ignore_while_media_summary">Ikke Reduser media avspillingsvolumet når en melding ankommer</string>
   <!-- CM Legal -->
   <string name="cmlicense_title">CyanogenMod juridisk</string>
-  <!-- Menu label for reset the battery stats -->
-  <string name="menu_stats_reset">Tilbakestill statistikk</string>
-  <!-- Reset stats confirmation dialog's message -->
-  <string name="reset_stats_msg">Batteriloggstatistikken vil bli tilbakestilt</string>
-  <!-- Dock battery not present message -->
-  <string name="dock_battery_not_present">Dokkbatteriet er ikke til stede</string>
-  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging on Dock AC. -->
-  <string name="battery_info_status_charging_dock_ac">Lader på dokk AC</string>
-  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging over Dock USB. -->
-  <string name="battery_info_status_charging_dock_usb">Lader via dokk-USB</string>
-  <!-- Weather -->
-  <!-- Label for settings shortcut: carrier selection -->
 </resources>

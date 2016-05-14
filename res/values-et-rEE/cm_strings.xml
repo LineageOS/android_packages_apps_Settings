@@ -450,9 +450,6 @@
   <!-- Buttons - Enable navbar -->
   <string name="disable_navkeys_title">Luba ekraani navigeerimisriba</string>
   <string name="disable_navkeys_summary">Luba ekraani navigeerimisriba ja keela riistvaralised nupud</string>
-  <!-- tap-to-wake -->
-  <string name="double_tap_to_wake_title">Topeltkoputa ärkamiseks</string>
-  <string name="double_tap_to_wake_summary">Topeltkoputa ekraanil selle sisselülitamiseks</string>
   <!-- tap-to-sleep -->
   <string name="double_tap_to_sleep_title">Topelt koputus ekraani väljalülitamiseks</string>
   <string name="double_tap_to_sleep_summary">Topeltpuudutage olekuriba ekraani väljalülitamiseks</string>
@@ -476,6 +473,14 @@
   <string name="color_red_title">Punane</string>
   <string name="color_green_title">Roheline</string>
   <string name="color_blue_title">Sinine</string>
+  <!-- Hardware tunables - Gamma calibration -->
+  <string name="gamma_tuning_title_head">Heleduse kalibreerimine</string>
+  <string name="gamma_tuning_summary_head">Kohenda heleduse väärtuseid</string>
+  <string name="gamma_tuning_control_set_header">Rühmita <xliff:g id="index">%d</xliff:g></string>
+  <!-- used if no name provided by overlay -->
+  <string name="gamma_tuning_contrast">Kontrast</string>
+  <string name="gamma_tuning_brightness">Heledus</string>
+  <string name="gamma_tuning_saturation">Küllastus</string>
   <!-- Launch music player when headset is connected -->
   <string name="headset_connect_player_title">Käivita muusika rakendus</string>
   <string name="headset_connect_player_summary">Käivita vaikimisi muusika rakendus peakomplekti ühendamisel</string>
@@ -801,7 +806,6 @@ mis ei ohusta sinu privaatsust ega isiklikku infot. Teave saadetakse peale igat 
   <string name="advanced">Edasijõudnute valikud</string>
   <string name="link_volume_option_title">Ühenda helina toon &amp; teavituse toonid</string>
   <!-- Edit access point labels: PPP number -->
-  <!-- APNs screen message indicating new APN user is adding is a duplicate -->
   <string name="sim_disabled">keelatud</string>
   <string name="sim_missing">puuduv või vigane</string>
   <string name="sim_enabler_airplane_on">Toimingut ei saa sooritada, kui lennukirežiim on aktiveeritud.</string>
@@ -844,8 +848,6 @@ mis ei ohusta sinu privaatsust ega isiklikku infot. Teave saadetakse peale igat 
   <string name="factory_reset_erase_sd_card_summary">Kustuta kõik andmed SD-kaardilt, sealhulgas muusika ja fotod</string>
   <string name="factory_reset_warning_text_reset_now">TAASKÄIVITA NÜÜD</string>
   <string name="factory_reset_warning_text_message">Kõik teie kontod, rakendused, rakenduste andmed ja süsteemi sätted eemaldatakse sellest seadmest. Seda ei ole võimalik tagasi pöörata.</string>
-  <!-- Tethering & portable hotspot other category -->
-  <!-- Wi-Fi tethering inactivity timeout -->
   <!-- Live lock screen -->
   <!-- Live lock screen title -->
   <!-- Live lock screen summary -->
@@ -856,16 +858,4 @@ mis ei ohusta sinu privaatsust ega isiklikku infot. Teave saadetakse peale igat 
   <string name="interruptions_ignore_while_media_summary">Ära alanda meedia helitugevust teavituse saabumisel</string>
   <!-- CM Legal -->
   <string name="cmlicense_title">CyanogenMod juriidiline info</string>
-  <!-- Menu label for reset the battery stats -->
-  <string name="menu_stats_reset">Nulli statistika</string>
-  <!-- Reset stats confirmation dialog's message -->
-  <string name="reset_stats_msg">Aku statistika ajalugu nullitakse</string>
-  <!-- Dock battery not present message -->
-  <string name="dock_battery_not_present">Doki aku puudub</string>
-  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging on Dock AC. -->
-  <string name="battery_info_status_charging_dock_ac">Laen doki AC-ga</string>
-  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging over Dock USB. -->
-  <string name="battery_info_status_charging_dock_usb">Laen üle doki USB</string>
-  <!-- Weather -->
-  <!-- Label for settings shortcut: carrier selection -->
 </resources>

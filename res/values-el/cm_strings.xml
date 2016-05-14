@@ -258,7 +258,6 @@
   <!-- Lights settings, LED notification -->
   <string name="led_notification_title">Ρυθμίσεις LED</string>
   <string name="led_notification_text">Το LED ενεργοποιήθηκε από τις ρυθμίσεις</string>
-  <string name="notification_light_no_apps_summary">Για προσαρμογή ένδειξης ανά εφαρμογή, ενεργοποιήστε το \'%1$s\' και πιέστε \'\u002b\' στη γραμμή μενού</string>
   <!-- Setting checkbox title for Whether to enable Android debugging support on the phone. -->
   <string name="enable_adb_cm">Εντοπισμός σφαλμάτων Android</string>
   <!-- Setting checkbox summary for Whether to enable Android debugging support on the phone -->
@@ -428,7 +427,6 @@
   <string name="app_ops_allowed_count">Επιτράπηκε <xliff:g id="count" example="2 φορές">%s</xliff:g></string>
   <string name="app_ops_ignored_count">Δεν επιτράπηκε <xliff:g id="count" example="2 φορές">%s</xliff:g></string>
   <string name="app_ops_both_count">Επιτράπηκε <xliff:g id="count">%1$s</xliff:g>, δεν επιτράπηκε <xliff:g id="count">%2$s</xliff:g></string>
-  <string name="app_ops_disabled_by_optimization">Απενεργοποιήθηκε από τη βελτιστοποίηση μπαταρίας</string>
   <!-- App ops menu options -->
   <string name="app_ops_show_user_apps">Εμφάνιση εφαρμογών χρήστη</string>
   <string name="app_ops_show_system_apps">Εμφάνιση ενσωματωμένων εφαρμογών</string>
@@ -515,9 +513,6 @@
   <!-- Buttons - Enable navbar -->
   <string name="disable_navkeys_title">Ενεργοποίηση γραμμής πλοήγησης</string>
   <string name="disable_navkeys_summary">Ενεργοποίηση της γραμμής πλοήγησης στην οθόνη και απενεργοποίηση των φυσικών πλήκτρων</string>
-  <!-- tap-to-wake -->
-  <string name="double_tap_to_wake_title">Διπλό χτύπημα για αφύπνιση</string>
-  <string name="double_tap_to_wake_summary">Διπλό χτύπημα στην οθόνη για αφύπνιση της συσκευής</string>
   <!-- tap-to-sleep -->
   <string name="double_tap_to_sleep_title">Διπλό χτύπημα για αναστολή</string>
   <string name="double_tap_to_sleep_summary">Διπλό χτύπημα στη γραμμή κατάστασης για αναστολή της συσκευής</string>
@@ -541,6 +536,14 @@
   <string name="color_red_title">Κόκκινο</string>
   <string name="color_green_title">Πράσινο</string>
   <string name="color_blue_title">Μπλε</string>
+  <!-- Hardware tunables - Gamma calibration -->
+  <string name="gamma_tuning_title_head">Βελτίωση γάμμα</string>
+  <string name="gamma_tuning_summary_head">Βελτίωση επιπέδων γάμμα της οθόνης</string>
+  <string name="gamma_tuning_control_set_header">Ομάδα <xliff:g id="index">%d</xliff:g></string>
+  <!-- used if no name provided by overlay -->
+  <string name="gamma_tuning_contrast">Αντίθεση</string>
+  <string name="gamma_tuning_brightness">Φωτεινότητα</string>
+  <string name="gamma_tuning_saturation">Κορεσμός</string>
   <!-- Launch music player when headset is connected -->
   <string name="headset_connect_player_title">Εκκίνηση εφαρμογής μουσικής</string>
   <string name="headset_connect_player_summary">Εκκίνηση της προεπιλεγμένης εφαρμογής μουσικής κατά τη σύνδεση ακουστικών</string>
@@ -679,8 +682,8 @@
   <string name="status_bar_notif_count_summary">Εμφάνιση του αριθμού των ειδοποιήσεων που εκκρεμούν στη γραμμή κατάστασης</string>
   <string name="status_bar_quick_qs_pulldown_title">Γρήγορο τράβηγμα</string>
   <string name="status_bar_quick_qs_pulldown_summary">Τραβώντας προς τα κάτω την %1$s άκρη της γραμμής κατάστασης εμφανίζονται οι Γρήγορες ρυθμίσεις</string>
-  <string name="status_bar_quick_qs_pulldown_summary_left">αριστερή</string>
-  <string name="status_bar_quick_qs_pulldown_summary_right">δεξιά</string>
+  <string name="status_bar_quick_qs_pulldown_summary_left">Αριστερά</string>
+  <string name="status_bar_quick_qs_pulldown_summary_right">Δεξιά</string>
   <string name="status_bar_quick_qs_pulldown_off">Ανενεργό</string>
   <string name="status_bar_quick_qs_pulldown_left">Αριστερά</string>
   <string name="status_bar_quick_qs_pulldown_right">Δεξιά</string>
@@ -969,41 +972,4 @@
   <string name="interruptions_ignore_while_media_summary">Να μη μειώνεται η ένταση της αναπαραγωγής πολυμέσων όταν φτάνει μια ειδοποίηση</string>
   <!-- CM Legal -->
   <string name="cmlicense_title">Νομικές πληροφορίες CyanogenMod</string>
-  <!-- Menu label for reset the battery stats -->
-  <string name="menu_stats_reset">Επαναφορά στατιστικών</string>
-  <!-- Reset stats confirmation dialog's message -->
-  <string name="reset_stats_msg">Θα γίνει επαναφορά των στατιστικών μπαταρίας</string>
-  <!-- Dock battery not present message -->
-  <string name="dock_battery_not_present">Δεν υπάρχει μπαταρία dock</string>
-  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging on Dock AC. -->
-  <string name="battery_info_status_charging_dock_ac">Φόρτιση με AC βάσης σύνδεσης</string>
-  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging over Dock USB. -->
-  <string name="battery_info_status_charging_dock_usb">Φόρτιση μέσω USB βάσης σύνδεσης</string>
-  <string name="restrict_app_wlan_title">Απενεργοποίηση χρήσης Wi\u2011Fi για την εφαρμογή</string>
-  <string name="restrict_app_wlan_summary">Αποτροπή εφαρμογής από τη χρήση σύνδεσης Wi\u2011Fi</string>
-  <string name="restrict_app_cellular_title">Απενεργοποίηση χρήσης δεδομένων για την εφαρμογή</string>
-  <string name="restrict_app_cellular_summary">Αποτροπή εφαρμογής από τη χρήση δεδομένων κινητής τηλεφωνίας</string>
-  <string name="privacy_guard_internet_category">Διαδίκτυο</string>
-  <!-- Weather -->
-  <string name="weather_settings_title">Καιρός</string>
-  <string name="weather_settings_no_services_prompt">Δεν υπάρχουν εγκατεστημένοι πάροχοι καιρού</string>
-  <string name="weather_settings_button">Ρυθμίσεις παρόχου</string>
-  <string name="weather_settings_activity_not_found">Δεν είναι δυνατό το άνοιγμα του μενού ρυθμίσεων αυτού του παρόχου</string>
-  <string name="background_data_access">Πρόσβαση δεδομένων στο παρασκήνιο</string>
-  <string name="allow_background_both">Μέσω δεδομένων κινητής τηλεφωνίας &amp; Wi\u2011Fi</string>
-  <string name="allow_background_wlan">Μόνο μέσω Wi\u2011Fi</string>
-  <string name="allow_background_none">Χωρίς πρόσβαση</string>
-  <string name="mobile_data_alert">Προειδοποίηση δεδομένων κινητής τηλεφωνίας</string>
-  <string name="mobile_data_alert_summary">Ειδοποίηση όταν η εφαρμογή χρησιμοποιεί ένα σημαντικό ποσό δεδομένων</string>
-  <string name="data_usage_menu_enable_data_alerts">Ενεργοποίηση των προειδοποιήσεων χρήσης δεδομένων</string>
-  <string name="data_usage_menu_disable_data_alerts">Απενεργοποίηση των προειδοποιήσεων χρήσης δεδομένων</string>
-  <string name="data_usage_menu_reset_stats">Επαναφορά στατιστικών δεδομένων</string>
-  <string name="reset_data_stats_msg">Αυτό θα διαγράψει όλες τις καταγεγραμμένες πληροφορίες χρήσης δεδομένων στη συσκευή σας</string>
-  <string name="reset_stats_confirm">Επιβεβαίωση</string>
-  <string name="restrict_cellular_access_title">Περιορισμός πρόσβασης δεδομένων</string>
-  <string name="restrict_cellular_access_summary">Απενεργοποίηση της πρόσβασης δεδομένων σε δίκτυα κινητής τηλεφωνίας</string>
-  <string name="restrict_cellular_access_dialog_title">Περιορισμός πρόσβασης δεδομένων;</string>
-  <string name="restrict_cellular_access_dialog_summary">Αυτή η δυνατότητα μπορεί να προκαλέσει μια εφαρμογή που εξαρτάται από την πρόσβαση στο δίκτυο να σταματήσει να λειτουργεί όταν υπάρχουν μόνο δίκτυα κινητής τηλεφωνίας διαθέσιμα.\n\nΜπορείτε να βρείτε πιο κατάλληλους ελέγχους της χρήσης δεδομένων στις ρυθμίσεις που είναι διαθέσιμες μέσα από την εφαρμογή.</string>
-  <!-- Label for settings shortcut: carrier selection -->
-  <string name="shortcut_carrier_title">Εταιρίες δικτύου</string>
 </resources>

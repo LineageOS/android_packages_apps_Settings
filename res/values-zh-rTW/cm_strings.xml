@@ -458,9 +458,6 @@
   <!-- Buttons - Enable navbar -->
   <string name="disable_navkeys_title">啟用螢幕上的導覽列</string>
   <string name="disable_navkeys_summary">啟用螢幕上的導航欄和停用硬件按鈕</string>
-  <!-- tap-to-wake -->
-  <string name="double_tap_to_wake_title">輕按兩下即可喚醒</string>
-  <string name="double_tap_to_wake_summary">輕點螢幕兩次來喚醒手機</string>
   <!-- tap-to-sleep -->
   <string name="double_tap_to_sleep_title">輕按兩下即可休眠</string>
   <string name="double_tap_to_sleep_summary">輕點兩次狀態欄來關閉螢幕</string>
@@ -484,6 +481,14 @@
   <string name="color_red_title">紅色</string>
   <string name="color_green_title">綠色</string>
   <string name="color_blue_title">藍色</string>
+  <!-- Hardware tunables - Gamma calibration -->
+  <string name="gamma_tuning_title_head">伽瑪校準</string>
+  <string name="gamma_tuning_summary_head">調校伽瑪值</string>
+  <string name="gamma_tuning_control_set_header"><xliff:g id="index">%d</xliff:g>群組</string>
+  <!-- used if no name provided by overlay -->
+  <string name="gamma_tuning_contrast">對比度</string>
+  <string name="gamma_tuning_brightness">亮度</string>
+  <string name="gamma_tuning_saturation">飽和度</string>
   <!-- Launch music player when headset is connected -->
   <string name="headset_connect_player_title">啟動音樂應用程式</string>
   <string name="headset_connect_player_summary">插入耳機時啟動預設音樂應用程式</string>
@@ -793,7 +798,6 @@
   <string name="advanced">進階</string>
   <string name="link_volume_option_title">同步鈴聲和通知音量</string>
   <!-- Edit access point labels: PPP number -->
-  <!-- APNs screen message indicating new APN user is adding is a duplicate -->
   <string name="sim_disabled">已停用</string>
   <string name="sim_missing">遺失或毀損</string>
   <string name="sim_enabler_airplane_on">飛行模式開啟时無法進行此操作。</string>
@@ -834,8 +838,6 @@
   <string name="factory_reset_erase_sd_card_summary">移除SD卡上所有資料，包括音樂和相片。</string>
   <string name="factory_reset_warning_text_reset_now">現在重置</string>
   <string name="factory_reset_warning_text_message">您所有帳戶、應用程式、應用程式資料及系統設置將從此設備上移除，並不可逆轉。</string>
-  <!-- Tethering & portable hotspot other category -->
-  <!-- Wi-Fi tethering inactivity timeout -->
   <!-- Live lock screen -->
   <!-- Live lock screen title -->
   <!-- Live lock screen summary -->
@@ -846,11 +848,4 @@
   <string name="interruptions_ignore_while_media_summary">有通知時，不減少媒體播放的音量</string>
   <!-- CM Legal -->
   <string name="cmlicense_title">CyanogenMod 法律條款</string>
-  <!-- Menu label for reset the battery stats -->
-  <!-- Reset stats confirmation dialog's message -->
-  <!-- Dock battery not present message -->
-  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging on Dock AC. -->
-  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging over Dock USB. -->
-  <!-- Weather -->
-  <!-- Label for settings shortcut: carrier selection -->
 </resources>

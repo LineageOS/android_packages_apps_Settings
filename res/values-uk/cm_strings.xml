@@ -501,9 +501,6 @@
   <!-- Buttons - Enable navbar -->
   <string name="disable_navkeys_title">Екранні кнопки</string>
   <string name="disable_navkeys_summary">Увімкнути панель навігації і вимкнути апаратні сенсорні кнопки</string>
-  <!-- tap-to-wake -->
-  <string name="double_tap_to_wake_title">Подв. натискання прокидає</string>
-  <string name="double_tap_to_wake_summary">Двічі натиснути на екран, щоб увімкнути його</string>
   <!-- tap-to-sleep -->
   <string name="double_tap_to_sleep_title">Вимикати екран при подвійному натисканні</string>
   <string name="double_tap_to_sleep_summary">Двічі натисніть на рядок стану, аби вимкнути екран</string>
@@ -527,6 +524,14 @@
   <string name="color_red_title">Червоний</string>
   <string name="color_green_title">Зелений</string>
   <string name="color_blue_title">Синій</string>
+  <!-- Hardware tunables - Gamma calibration -->
+  <string name="gamma_tuning_title_head">Калібрування гамми</string>
+  <string name="gamma_tuning_summary_head">Налаштуйте параметри гамми</string>
+  <string name="gamma_tuning_control_set_header">Група <xliff:g id="index">%d</xliff:g></string>
+  <!-- used if no name provided by overlay -->
+  <string name="gamma_tuning_contrast">Контраст</string>
+  <string name="gamma_tuning_brightness">Яскравість</string>
+  <string name="gamma_tuning_saturation">Насиченість</string>
   <!-- Launch music player when headset is connected -->
   <string name="headset_connect_player_title">Запуск програвача</string>
   <string name="headset_connect_player_summary">Запускати програвач при під’єднанні навушників</string>
@@ -857,7 +862,6 @@
   <string name="advanced">Додатково</string>
   <string name="link_volume_option_title">Зв’язати гучність дзвінка та сповіщень</string>
   <!-- Edit access point labels: PPP number -->
-  <!-- APNs screen message indicating new APN user is adding is a duplicate -->
   <string name="sim_disabled">вимкнено</string>
   <string name="sim_missing">відсутній або несправний</string>
   <string name="sim_enabler_airplane_on">Не вдалося виконати операцію, коли увімкнено режим польоту.</string>
@@ -900,8 +904,6 @@
   <string name="factory_reset_erase_sd_card_summary">Видалити всі дані на SD-карті, у тому числі музику і фотографії</string>
   <string name="factory_reset_warning_text_reset_now">СКИНУТИ ЗАРАЗ</string>
   <string name="factory_reset_warning_text_message">Всі ваші облікові записи, додатки, дані програми і налаштування системи будуть видалені з цього пристрою. Це не можливо буде скасувати.</string>
-  <!-- Tethering & portable hotspot other category -->
-  <!-- Wi-Fi tethering inactivity timeout -->
   <!-- Live lock screen -->
   <!-- Live lock screen title -->
   <!-- Live lock screen summary -->
@@ -912,16 +914,4 @@
   <string name="interruptions_ignore_while_media_summary">Не приглушувати відтворення медіа при надходженні сповіщення</string>
   <!-- CM Legal -->
   <string name="cmlicense_title">Політика конфіденційності CyanogenMod</string>
-  <!-- Menu label for reset the battery stats -->
-  <string name="menu_stats_reset">Скинути статистику</string>
-  <!-- Reset stats confirmation dialog's message -->
-  <string name="reset_stats_msg">Історія і статистика акумулятора будуть скинуті</string>
-  <!-- Dock battery not present message -->
-  <string name="dock_battery_not_present">Акумулятор док-станції відсутній</string>
-  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging on Dock AC. -->
-  <string name="battery_info_status_charging_dock_ac">Заряджаємось від блока живлення док-станції</string>
-  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging over Dock USB. -->
-  <string name="battery_info_status_charging_dock_usb">Заряджаємось від док-станції по USB</string>
-  <!-- Weather -->
-  <!-- Label for settings shortcut: carrier selection -->
 </resources>

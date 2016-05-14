@@ -17,6 +17,11 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="one">Jesteś teraz <xliff:g id="step_count">%1$d</xliff:g> krok od włączenia opcji programistycznych.</item>
+    <item quantity="few">Jesteś teraz <xliff:g id="step_count">%1$d</xliff:g> kroki od włączenia opcji programistycznych.</item>
+    <item quantity="other">Jesteś teraz <xliff:g id="step_count">%1$d</xliff:g> kroków od włączenia opcji programistycznych.</item>
+  </plurals>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
   <string name="show_dev_on_cm">Aktywowałeś opcje programistyczne!</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
@@ -509,9 +514,6 @@
   <!-- Buttons - Enable navbar -->
   <string name="disable_navkeys_title">Włącz ekranowy pasek nawigacji</string>
   <string name="disable_navkeys_summary">Włącz ekranowy pasek nawigacji i wyłącz przyciski sprzętowe</string>
-  <!-- tap-to-wake -->
-  <string name="double_tap_to_wake_title">Wybudzanie podwójnym dotknięciem</string>
-  <string name="double_tap_to_wake_summary">Dotknij dwukrotnie ekranu, aby włączyć podświetlenie</string>
   <!-- tap-to-sleep -->
   <string name="double_tap_to_sleep_title">Dwukrotnie dotknij, aby uśpić</string>
   <string name="double_tap_to_sleep_summary">Dotknij dwukrotnie pasek stanu, aby zablokować ekran</string>
@@ -535,6 +537,14 @@
   <string name="color_red_title">Czerwony</string>
   <string name="color_green_title">Zielony</string>
   <string name="color_blue_title">Niebieski</string>
+  <!-- Hardware tunables - Gamma calibration -->
+  <string name="gamma_tuning_title_head">Kalibracja gamma</string>
+  <string name="gamma_tuning_summary_head">Tuning wartości gamma</string>
+  <string name="gamma_tuning_control_set_header">Grupa <xliff:g id="index">%d</xliff:g></string>
+  <!-- used if no name provided by overlay -->
+  <string name="gamma_tuning_contrast">Kontrast</string>
+  <string name="gamma_tuning_brightness">Jasność</string>
+  <string name="gamma_tuning_saturation">Nasycenie</string>
   <!-- Launch music player when headset is connected -->
   <string name="headset_connect_player_title">Uruchom aplikację muzyki</string>
   <string name="headset_connect_player_summary">Uruchom domyślną aplikację muzyki po podłączeniu słuchawek</string>
@@ -961,23 +971,4 @@
   <string name="interruptions_ignore_while_media_summary">Nie zmniejszaj głośności odtwarzanych mediów, po odebraniu powiadomienia</string>
   <!-- CM Legal -->
   <string name="cmlicense_title">Informacje prawne CyanogenMod</string>
-  <!-- Menu label for reset the battery stats -->
-  <string name="menu_stats_reset">Resetuj statystyki</string>
-  <!-- Reset stats confirmation dialog's message -->
-  <string name="reset_stats_msg">Statystyki baterii zostaną zresetowane</string>
-  <!-- Dock battery not present message -->
-  <string name="dock_battery_not_present">Bateria doku nie jest pokazywana</string>
-  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging on Dock AC. -->
-  <string name="battery_info_status_charging_dock_ac">Ładowanie dokiem AC</string>
-  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging over Dock USB. -->
-  <string name="battery_info_status_charging_dock_usb">Ładowanie dokiem USB</string>
-  <string name="restrict_app_wlan_title">Wyłącz użycie Wi\u2011Fi przez aplikację</string>
-  <string name="restrict_app_wlan_summary">Uniemożliwia aplikacji na korzystanie z Wi\u2011Fi</string>
-  <string name="restrict_app_cellular_title">Wyłącz użycie danych mobilnych przez aplikację</string>
-  <string name="restrict_app_cellular_summary">Uniemożliwia aplikacji na korzystanie z danych mobilnych</string>
-  <string name="privacy_guard_internet_category">Internet</string>
-  <!-- Weather -->
-  <string name="weather_settings_title">Pogoda</string>
-  <!-- Label for settings shortcut: carrier selection -->
-  <string name="shortcut_carrier_title">Operatorzy sieci</string>
 </resources>
