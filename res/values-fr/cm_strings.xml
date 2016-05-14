@@ -514,9 +514,6 @@ Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étapes de l\'a
   <!-- Buttons - Enable navbar -->
   <string name="disable_navkeys_title">Activer la barre de navigation à l\'écran</string>
   <string name="disable_navkeys_summary">Activer la barre de navigation à l\'écran et désactiver les touches physiques</string>
-  <!-- tap-to-wake -->
-  <string name="double_tap_to_wake_title">Appui double pour réveiller</string>
-  <string name="double_tap_to_wake_summary">Appui double sur l\'écran pour l\'allumer</string>
   <!-- tap-to-sleep -->
   <string name="double_tap_to_sleep_title">Appui double pour mettre en veille</string>
   <string name="double_tap_to_sleep_summary">Appui double sur la barre d\'état pour éteindre l\'écran</string>
@@ -540,6 +537,14 @@ Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étapes de l\'a
   <string name="color_red_title">Rouge</string>
   <string name="color_green_title">Vert</string>
   <string name="color_blue_title">Bleu</string>
+  <!-- Hardware tunables - Gamma calibration -->
+  <string name="gamma_tuning_title_head">Calibrage du gamma</string>
+  <string name="gamma_tuning_summary_head">Ajuster les valeurs du gamma</string>
+  <string name="gamma_tuning_control_set_header">Groupe <xliff:g id="index">%d</xliff:g></string>
+  <!-- used if no name provided by overlay -->
+  <string name="gamma_tuning_contrast">Contraste</string>
+  <string name="gamma_tuning_brightness">Luminosité</string>
+  <string name="gamma_tuning_saturation">Saturation</string>
   <!-- Launch music player when headset is connected -->
   <string name="headset_connect_player_title">Lancer le lecteur de musique</string>
   <string name="headset_connect_player_summary">Lancer le lecteur de musique par défaut au branchement du casque</string>
@@ -855,6 +860,7 @@ Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étapes de l\'a
   <string name="menu_hidden_apps_delete">Réinitialiser</string>
   <string name="menu_hidden_apps_reset_lock">Réinitialiser schéma de déverrouillage</string>
   <string name="protected_apps">Applications protégées</string>
+  <string name="protected_apps_summary">Gérer quelles applications sont protégées par un verrou de sécurité</string>
   <string name="saving_protected_components">Enregistrement de l\'état du composant\u2026</string>
   <string name="pa_login_username_hint">Nom d\'utilisateur (e-mail)</string>
   <string name="pa_login_password_hint">Mot de passe</string>
@@ -963,16 +969,4 @@ Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étapes de l\'a
   <string name="interruptions_ignore_while_media_summary">Ne pas réduire le volume de lecture de médias lors d\'une notification</string>
   <!-- CM Legal -->
   <string name="cmlicense_title">Infos légales CyanogenMod</string>
-  <!-- Menu label for reset the battery stats -->
-  <string name="menu_stats_reset">Réinitialiser les statistiques</string>
-  <!-- Reset stats confirmation dialog's message -->
-  <string name="reset_stats_msg">Les statistiques de la batterie vont être réinitialisées</string>
-  <!-- Dock battery not present message -->
-  <string name="dock_battery_not_present">Dock de batterie absent</string>
-  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging on Dock AC. -->
-  <string name="battery_info_status_charging_dock_ac">Chargement sur secteur du dock</string>
-  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging over Dock USB. -->
-  <string name="battery_info_status_charging_dock_usb">Chargement par l\'USB du dock</string>
-  <!-- Weather -->
-  <!-- Label for settings shortcut: carrier selection -->
 </resources>

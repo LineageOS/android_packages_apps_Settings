@@ -486,9 +486,6 @@
   <!-- Buttons - Enable navbar -->
   <string name="disable_navkeys_title">Activare bară navig pe ecran</string>
   <string name="disable_navkeys_summary">Activare bara navigare pe ecran și dezactivează butoanele hardware</string>
-  <!-- tap-to-wake -->
-  <string name="double_tap_to_wake_title">Dublă-apăsare pentru trezire</string>
-  <string name="double_tap_to_wake_summary">Atingeți de două ori ecranul pentru a activa afișajul</string>
   <!-- tap-to-sleep -->
   <string name="double_tap_to_sleep_title">Dublă-apăsare pentru stand-by</string>
   <string name="double_tap_to_sleep_summary">Atingeți de două ori bara de stare pentru a dezactiva afișarea</string>
@@ -512,6 +509,14 @@
   <string name="color_red_title">Roșu</string>
   <string name="color_green_title">Verde</string>
   <string name="color_blue_title">Albastru</string>
+  <!-- Hardware tunables - Gamma calibration -->
+  <string name="gamma_tuning_title_head">Calibrare gama</string>
+  <string name="gamma_tuning_summary_head">Modificare valori gama</string>
+  <string name="gamma_tuning_control_set_header">Grup <xliff:g id="index">%d</xliff:g></string>
+  <!-- used if no name provided by overlay -->
+  <string name="gamma_tuning_contrast">Contrast</string>
+  <string name="gamma_tuning_brightness">Luminozitate</string>
+  <string name="gamma_tuning_saturation">Saturație</string>
   <!-- Launch music player when headset is connected -->
   <string name="headset_connect_player_title">Lansează aplicație muzică</string>
   <string name="headset_connect_player_summary">Lansează aplicația implicită de muzică când se conectează casca audio</string>
@@ -809,6 +814,7 @@
   <string name="pa_pattern_or_fingerprint_header">Pentru deblocare trebuie să desenați modelul sau să utilizați amprenta</string>
   <!-- Contributors cloud activity -->
   <string name="contributors_cloud_fragment_title">Contribuitori</string>
+  <string name="contributors_cloud_failed_message">Nu se pot încărca datele contributorilor</string>
   <string name="contributor_info_msg">
         <![CDATA[<b>Nume:</b> <xliff:g id="name">%1$s</xliff:g><br/><br/>
                  <b>Pseudonim:</b> <xliff:g id="nick">%2$s</xliff:g><br/><br/>
@@ -888,17 +894,4 @@
   <!-- Live lock screen settings screen, caption for when live lock screens are disabled -->
   <!-- CM Legal -->
   <string name="cmlicense_title">Juridic CyanogenMod</string>
-  <!-- Menu label for reset the battery stats -->
-  <string name="menu_stats_reset">Resetare statistici</string>
-  <!-- Reset stats confirmation dialog's message -->
-  <string name="reset_stats_msg">Istoricul bateriei va fi resetat</string>
-  <!-- Dock battery not present message -->
-  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging on Dock AC. -->
-  <string name="battery_info_status_charging_dock_ac">Încărcare în stativ AC</string>
-  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging over Dock USB. -->
-  <string name="battery_info_status_charging_dock_usb">Încărcare prin stativ USB</string>
-  <string name="privacy_guard_internet_category">Internet</string>
-  <!-- Weather -->
-  <string name="weather_settings_title">Vremea</string>
-  <!-- Label for settings shortcut: carrier selection -->
 </resources>

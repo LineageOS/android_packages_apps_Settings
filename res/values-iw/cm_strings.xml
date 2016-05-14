@@ -253,13 +253,11 @@
   <string name="notification_light_missed_call_title">שיחה שלא נענתה</string>
   <string name="notification_light_voicemail_title">תא קולי</string>
   <string name="notification_light_screen_on">נוריות התראה כאשר המסך מופעל</string>
-  <string name="notification_light_zen_mode">אורות התראה במצב \"נא לא להפריע\"</string>
   <string name="notification_light_use_multiple_leds">נוריות LED מרובות</string>
   <string name="keywords_lights_brightness_level">עמעם בהירות נוריות</string>
   <!-- Lights settings, LED notification -->
   <string name="led_notification_title">הגדרות נורית</string>
   <string name="led_notification_text">נורית LED מופעלת בהגדרות</string>
-  <string name="notification_light_no_apps_summary">כדי להוסיף בקרה ברמת יישום בודד, הפעילו את \"%1$s\" ולחצו על \"\u002b\" בשורת התפריטים</string>
   <!-- Setting checkbox title for Whether to enable Android debugging support on the phone. -->
   <string name="enable_adb_cm">איתור באגים של אנדרואיד</string>
   <!-- Setting checkbox summary for Whether to enable Android debugging support on the phone -->
@@ -429,7 +427,6 @@
   <string name="app_ops_allowed_count"><xliff:g id="count" example="2 times">%s</xliff:g> אושרו</string>
   <string name="app_ops_ignored_count"><xliff:g id="count" example="2 times">%s</xliff:g> נחסמו</string>
   <string name="app_ops_both_count"><xliff:g id="count">%1$s</xliff:g> אושרו, <xliff:g id="count">%2$s</xliff:g> נחסמו</string>
-  <string name="app_ops_disabled_by_optimization">מושבת על-ידי שיפורי סוללה</string>
   <!-- App ops menu options -->
   <string name="app_ops_show_user_apps">הצג יישומי משתמש</string>
   <string name="app_ops_show_system_apps">הצג יישומים מובנים</string>
@@ -516,9 +513,6 @@
   <!-- Buttons - Enable navbar -->
   <string name="disable_navkeys_title">הפעל לחצני ניווט על המסך</string>
   <string name="disable_navkeys_summary">אפשר לחצני ניווט על המסך והשבת לחצנים פיזיים</string>
-  <!-- tap-to-wake -->
-  <string name="double_tap_to_wake_title">הקשה כפולה כדי להעיר</string>
-  <string name="double_tap_to_wake_summary">הקש פעמיים כדי להפעיל את התצוגה</string>
   <!-- tap-to-sleep -->
   <string name="double_tap_to_sleep_title">הקשה כפולה לכיבוי מסך</string>
   <string name="double_tap_to_sleep_summary">הקש פעמיים בשורת המצב כדי לכבות את המסך</string>
@@ -542,6 +536,14 @@
   <string name="color_red_title">אדום</string>
   <string name="color_green_title">ירוק</string>
   <string name="color_blue_title">כחול</string>
+  <!-- Hardware tunables - Gamma calibration -->
+  <string name="gamma_tuning_title_head">כיול גאמא</string>
+  <string name="gamma_tuning_summary_head">שנה ערכי גאמא</string>
+  <string name="gamma_tuning_control_set_header">קבוצה <xliff:g id="index">%d</xliff:g></string>
+  <!-- used if no name provided by overlay -->
+  <string name="gamma_tuning_contrast">ניגודיות</string>
+  <string name="gamma_tuning_brightness">בהירות</string>
+  <string name="gamma_tuning_saturation">רוויה</string>
   <!-- Launch music player when headset is connected -->
   <string name="headset_connect_player_title">הפעל נגן מוזיקה</string>
   <string name="headset_connect_player_summary">הפעל את נגן המוזיקה המוגדר כברירת המחדל בעת חיבור אוזניות</string>
@@ -857,7 +859,7 @@
   <string name="menu_hidden_apps_delete">איפוס</string>
   <string name="menu_hidden_apps_reset_lock">איפוס נעילת דפוס</string>
   <string name="protected_apps">יישומים מוגנים</string>
-  <string name="protected_apps_summary">נהל אילו יישומים מוחבאים מאחורי נעילה מאובטחת</string>
+  <string name="protected_apps_summary">נהל אילו יישומים מוסתרים מאחורי נעילה מאובטחת</string>
   <string name="saving_protected_components">שמירת מצב רכיב\u2026</string>
   <string name="pa_login_username_hint">שם משתמש (דוא\"ל)</string>
   <string name="pa_login_password_hint">סיסמה</string>
@@ -953,16 +955,6 @@
   <string name="factory_reset_erase_sd_card_summary">מחק את כל הנתונים על כרטיס הזיכרון, כולל מוזיקה ותמונות</string>
   <string name="factory_reset_warning_text_reset_now">אפס עכשיו</string>
   <string name="factory_reset_warning_text_message">כל החשבונות, היישומים (כולל נתוניהם) והגדרות המערכת שלך יוסרו ממכשיר זה. פעולה זו אינה הפיכה.</string>
-  <!-- Tethering & portable hotspot other category -->
-  <string name="tethering_other_category_text">אחר</string>
-  <!-- Wi-Fi tethering inactivity timeout -->
-  <string name="hotstpot_inactivity_timeout_text">זמן קצוב לנקודת רשת ציבורית של Wi\u2011Fi</string>
-  <string name="hotstpot_inactivity_timeout_never">אף פעם</string>
-  <string name="hotstpot_inactivity_timeout_1_minute">דקה אחת</string>
-  <string name="hotstpot_inactivity_timeout_5_minutes">5 דקות</string>
-  <string name="hotstpot_inactivity_timeout_10_minutes">10 דקות</string>
-  <string name="hotstpot_inactivity_timeout_never_summary_text">נקוד רשת ציבורית ניידת של Wi\u2011Fi לא תיכבה לעולם מעצמה</string>
-  <string name="hotstpot_inactivity_timeout_summary_text">נקודת רשת ציבורית ניידת של Wi\u2011Fi תיכבה לאחר <xliff:g id="timeout">%1$s</xliff:g></string>
   <!-- Live lock screen -->
   <!-- Live lock screen title -->
   <string name="live_lock_screen_title">מסך נעילה חי</string>
@@ -976,39 +968,4 @@
   <string name="interruptions_ignore_while_media_summary">אל תנמיך את עוצמת המוזיקה כאשר התראה מגיעה</string>
   <!-- CM Legal -->
   <string name="cmlicense_title">CyanogenMod משפטי</string>
-  <!-- Menu label for reset the battery stats -->
-  <string name="menu_stats_reset">איפוס סטטיסטיקות</string>
-  <!-- Reset stats confirmation dialog's message -->
-  <string name="reset_stats_msg">היסטוריית הסוללה שלך עומדת להתאפס</string>
-  <!-- Dock battery not present message -->
-  <string name="dock_battery_not_present">סוללה חיצונית לא נוכחת</string>
-  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging on Dock AC. -->
-  <string name="battery_info_status_charging_dock_ac">מטעין דרך חיבור AC</string>
-  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging over Dock USB. -->
-  <string name="battery_info_status_charging_dock_usb">מטעין דרך חיבור USB</string>
-  <string name="restrict_app_wlan_title">השבת את שימוש היישום ב- Wi\u2011Fi</string>
-  <string name="restrict_app_wlan_summary">מונע מיישום מלהשתמש בחיבור נתוני Wi\u2011Fi</string>
-  <string name="restrict_app_cellular_title">השבת את שימוש היישום באינטרנט סלולרי</string>
-  <string name="restrict_app_cellular_summary">מונע מיישום מלהשתמש בחיבור נתונים סלולריים</string>
-  <string name="privacy_guard_internet_category">אינטרנט</string>
-  <!-- Weather -->
-  <string name="weather_settings_title">מזג אוויר</string>
-  <string name="weather_settings_no_services_prompt">לא מותקנים שירותי ספקי מזג אוויר</string>
-  <string name="weather_settings_button">הגדרות ספק</string>
-  <string name="background_data_access">גישה לנתוני רקע</string>
-  <string name="allow_background_both">מעל נתונים סלולריים ו- Wi\u2011Fi</string>
-  <string name="allow_background_wlan">רק מעל Wi\u2011Fi</string>
-  <string name="allow_background_none">אין גישה</string>
-  <string name="mobile_data_alert">התראת נתונים סלולריים</string>
-  <string name="mobile_data_alert_summary">מתריע כאשר יישום משתמש בכמות נתונים משמעותית</string>
-  <string name="data_usage_menu_enable_data_alerts">הפעל התראות שימוש נתונים</string>
-  <string name="data_usage_menu_disable_data_alerts">השבתת התראות שימוש נתונים</string>
-  <string name="data_usage_menu_reset_stats">איפוס סטטיסטיקות נתונים</string>
-  <string name="reset_data_stats_msg">פעולה זו תנקה את כל המידע שנאסף בהווה ובעבר על מעקב אחר נתונים</string>
-  <string name="reset_stats_confirm">אישור</string>
-  <string name="restrict_cellular_access_title">הגבל גישה לנתונים סלולריים</string>
-  <string name="restrict_cellular_access_summary">השבתת גישה לנתונים ברשתות סלולריות</string>
-  <string name="restrict_cellular_access_dialog_title">להגביל גישה לנתונים סלולריים?</string>
-  <string name="restrict_cellular_access_dialog_summary">תכונה זו עלולה לגרום להפסקת פעולתו של יישום התלוי בגישה לרשת כאשר קיימת זמינות לרשתות סלולריות בלבד.\n\nתוכל למצוא פקדים מתאימים יותר לשימוש בנתונים, בהגדרות הזמינות בתוך היישום.</string>
-  <!-- Label for settings shortcut: carrier selection -->
 </resources>

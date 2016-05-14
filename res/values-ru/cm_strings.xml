@@ -514,9 +514,6 @@
   <!-- Buttons - Enable navbar -->
   <string name="disable_navkeys_title">Экранные кнопки</string>
   <string name="disable_navkeys_summary">Включить экранную панель навигации и отключить аппаратные кнопки</string>
-  <!-- tap-to-wake -->
-  <string name="double_tap_to_wake_title">Включение при двойном нажатии</string>
-  <string name="double_tap_to_wake_summary">Дважды коснитесь экрана, чтобы вывести устройство из спящего режима</string>
   <!-- tap-to-sleep -->
   <string name="double_tap_to_sleep_title">Выключать экран при двойном нажатии</string>
   <string name="double_tap_to_sleep_summary">Дважды коснитесь строки состояния, чтобы перевести устройство в спящий режим</string>
@@ -540,6 +537,14 @@
   <string name="color_red_title">Красный</string>
   <string name="color_green_title">Зеленый</string>
   <string name="color_blue_title">Синий</string>
+  <!-- Hardware tunables - Gamma calibration -->
+  <string name="gamma_tuning_title_head">Гамма</string>
+  <string name="gamma_tuning_summary_head">Настройка гамма-коррекции экрана</string>
+  <string name="gamma_tuning_control_set_header">Группа <xliff:g id="index">%d</xliff:g></string>
+  <!-- used if no name provided by overlay -->
+  <string name="gamma_tuning_contrast">Контрастность</string>
+  <string name="gamma_tuning_brightness">Яркость</string>
+  <string name="gamma_tuning_saturation">Насыщенность</string>
   <!-- Launch music player when headset is connected -->
   <string name="headset_connect_player_title">Автозапуск плеера</string>
   <string name="headset_connect_player_summary">Запускать плеер при подключении наушников</string>
@@ -964,22 +969,4 @@
   <string name="interruptions_ignore_while_media_summary">Не снижать громкость воспроизведения мультимедиа при получении уведомлений</string>
   <!-- CM Legal -->
   <string name="cmlicense_title">Политика конфиденциальности CyanogenMod</string>
-  <!-- Menu label for reset the battery stats -->
-  <string name="menu_stats_reset">Сброс статистики</string>
-  <!-- Reset stats confirmation dialog's message -->
-  <string name="reset_stats_msg">История использования батареи будет удалена</string>
-  <!-- Dock battery not present message -->
-  <string name="dock_battery_not_present">Нет батареи док-станции</string>
-  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging on Dock AC. -->
-  <string name="battery_info_status_charging_dock_ac">Зарядка от адаптера док-станции</string>
-  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging over Dock USB. -->
-  <string name="battery_info_status_charging_dock_usb">Зарядка через USB док-станции</string>
-  <string name="restrict_app_wlan_title">Запретить исп. Wi-Fi</string>
-  <string name="restrict_app_wlan_summary">Не разрешать приложению передачу данных по сетям Wi-Fi</string>
-  <string name="restrict_app_cellular_title">Запретить исп. моб. данные</string>
-  <string name="restrict_app_cellular_summary">Не разрешать приложению передачу данных по мобильным сетям</string>
-  <string name="privacy_guard_internet_category">Интернет</string>
-  <!-- Weather -->
-  <string name="weather_settings_title">Погода</string>
-  <!-- Label for settings shortcut: carrier selection -->
 </resources>

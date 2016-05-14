@@ -133,7 +133,7 @@
   <!-- Profile Settings sound modes labels -->
   <string name="sound_mode">Režim upozornění</string>
   <string name="ringer_mode">Režim vyzvánění</string>
-  <string name="lights_mode">Režim světelné signalizace</string>
+  <string name="lights_mode">Režim světelné indikace</string>
   <string name="vibrate_mode">Režim vibrací</string>
   <string name="choose_soundtone">Zvolte tón upozornění</string>
   <string name="choose_ringtone">Zvolte vyzváněcí melodii</string>
@@ -219,7 +219,7 @@
   <string name="navigation_bar_arrow_keys_summary">Zobrazit levý a pravý kurzor při psaní. Potlačí IME přepínač.</string>
   <string name="navigation_bar_recents_title">Akce dlouhého stisku tlačítka „Nedávné“</string>
   <!-- Notification light dialogs -->
-  <string name="edit_light_settings">Upravit světelnou signalizaci</string>
+  <string name="edit_light_settings">Upravit nastavení osvětlení</string>
   <string name="pulse_speed_title">Délka impulsu a rychlost</string>
   <string name="default_time">Normální</string>
   <string name="custom_time">Vlastní</string>
@@ -259,7 +259,6 @@
   <!-- Lights settings, LED notification -->
   <string name="led_notification_title">Nastavení světelné signalizace</string>
   <string name="led_notification_text">LED světlo povolené v nastavení</string>
-  <string name="notification_light_no_apps_summary">Chcete-li přidat řízení jednotlivých aplikací, aktivujte „%1$s“ a použijte tlačítko „\u002b“ v panelu nabídky</string>
   <!-- Setting checkbox title for Whether to enable Android debugging support on the phone. -->
   <string name="enable_adb_cm">Ladění systému Android</string>
   <!-- Setting checkbox summary for Whether to enable Android debugging support on the phone -->
@@ -429,7 +428,6 @@
   <string name="app_ops_allowed_count">Povoleno <xliff:g id="count" example="2 times">%s</xliff:g></string>
   <string name="app_ops_ignored_count">Zakázáno <xliff:g id="count" example="2 times">%s</xliff:g></string>
   <string name="app_ops_both_count">Povoleno <xliff:g id="count">%1$s</xliff:g>, zakázáno <xliff:g id="count">%2$s</xliff:g></string>
-  <string name="app_ops_disabled_by_optimization">Zakázáno optimalizací baterie</string>
   <!-- App ops menu options -->
   <string name="app_ops_show_user_apps">Zobrazit uživatelské aplikace</string>
   <string name="app_ops_show_system_apps">Zobrazit systémové aplikace</string>
@@ -516,9 +514,6 @@
   <!-- Buttons - Enable navbar -->
   <string name="disable_navkeys_title">Povolit navigační lištu na obrazovce</string>
   <string name="disable_navkeys_summary">Povolit navigační lištu na obrazovce a zakázat hardwarová tlačítka</string>
-  <!-- tap-to-wake -->
-  <string name="double_tap_to_wake_title">Probuzení dvojím dotykem</string>
-  <string name="double_tap_to_wake_summary">Dvojitým poklepáním zapnout obrazovku</string>
   <!-- tap-to-sleep -->
   <string name="double_tap_to_sleep_title">Dvojím klepnutím uspat</string>
   <string name="double_tap_to_sleep_summary">Dvojitým poklepáním na stavovou lištu vypnout obrazovku</string>
@@ -542,6 +537,14 @@
   <string name="color_red_title">Červená</string>
   <string name="color_green_title">Zelená</string>
   <string name="color_blue_title">Modrá</string>
+  <!-- Hardware tunables - Gamma calibration -->
+  <string name="gamma_tuning_title_head">Gamma kalibrace</string>
+  <string name="gamma_tuning_summary_head">Přizpůsobení hodnot gamma</string>
+  <string name="gamma_tuning_control_set_header">Skupina <xliff:g id="index">%d</xliff:g></string>
+  <!-- used if no name provided by overlay -->
+  <string name="gamma_tuning_contrast">Kontrast</string>
+  <string name="gamma_tuning_brightness">Jas</string>
+  <string name="gamma_tuning_saturation">Sytost</string>
   <!-- Launch music player when headset is connected -->
   <string name="headset_connect_player_title">Spustit aplikaci pro přehrávání hudby</string>
   <string name="headset_connect_player_summary">Pokud jsou připojena sluchátka, spustit výchozí aplikaci pro přehrávání hudby</string>
@@ -659,7 +662,7 @@
   <string name="volume_keys_control_ring_stream_summary_on">Tlačítka hlasitosti ovládají hlasitost vyzvánění</string>
   <string name="volume_keys_control_ring_stream_summary_off">Tlačítka hlasitosti ovládají hlasitost médií</string>
   <string name="category_calibration">Kalibrace</string>
-  <string name="display_and_lights">Zobrazení a signalizace</string>
+  <string name="display_and_lights">Zobrazení a světla</string>
   <!-- Category title for Charging sounds (Power state change) specific Settings.
          [CHAR LIMIT=40] -->
   <string name="power_notifications_category_title">Zvuk nabíječky</string>
@@ -965,39 +968,4 @@
   <string name="interruptions_ignore_while_media_summary">Nesnižovat hlasitost přehrávané hudby při oznámení</string>
   <!-- CM Legal -->
   <string name="cmlicense_title">Právní ujednání CyanogenMod</string>
-  <!-- Menu label for reset the battery stats -->
-  <string name="menu_stats_reset">Resetovat statistiky</string>
-  <!-- Reset stats confirmation dialog's message -->
-  <string name="reset_stats_msg">Bude vynulována historie statistiky baterie</string>
-  <!-- Dock battery not present message -->
-  <string name="dock_battery_not_present">Baterie doku není k dispozici</string>
-  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging on Dock AC. -->
-  <string name="battery_info_status_charging_dock_ac">Nabíjení pomocí napájení doku</string>
-  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging over Dock USB. -->
-  <string name="battery_info_status_charging_dock_usb">Nabíjení pomocí USB doku</string>
-  <string name="restrict_app_wlan_title">Zakázat aplikaci používat Wi\u2011Fi</string>
-  <string name="restrict_app_wlan_summary">Zabrání aplikaci využívat datové připojení Wi\u2011Fi</string>
-  <string name="restrict_app_cellular_title">Zakázat aplikaci používat mobilní data</string>
-  <string name="restrict_app_cellular_summary">Zabrání aplikaci využívat datové připojení mobilních dat</string>
-  <string name="privacy_guard_internet_category">Internet</string>
-  <!-- Weather -->
-  <string name="weather_settings_title">Počasí</string>
-  <string name="weather_settings_no_services_prompt">Nejsou nainstalovány žádné služby poskytovatele počasí</string>
-  <string name="weather_settings_button">Nastavení poskytovatele</string>
-  <string name="background_data_access">Přístup k datům na pozadí</string>
-  <string name="allow_background_both">Přes mobilní data a Wi\u2011Fi</string>
-  <string name="allow_background_wlan">Pouze přes Wi\u2011Fi</string>
-  <string name="allow_background_none">Bez přístupu</string>
-  <string name="mobile_data_alert">Upozornění mobilních dat</string>
-  <string name="mobile_data_alert_summary">Upozornit, pokud aplikace využije veliké množství přenášených dat</string>
-  <string name="data_usage_menu_enable_data_alerts">Povolit upozornění využití dat</string>
-  <string name="data_usage_menu_disable_data_alerts">Zakázat upozornění využití dat</string>
-  <string name="data_usage_menu_reset_stats">Vyčistit statistiku přenesených dat</string>
-  <string name="reset_data_stats_msg">Tímto dojde k vymazání všech minulých i aktuálních sledovacích informací</string>
-  <string name="reset_stats_confirm">Potvrdit</string>
-  <string name="restrict_cellular_access_title">Omezit přístup k mobilním datům</string>
-  <string name="restrict_cellular_access_summary">Zakázat přístup k datům na mobilních sítích</string>
-  <string name="restrict_cellular_access_dialog_title">Omezit přístup k mobilním datům?</string>
-  <string name="restrict_cellular_access_dialog_summary">Tato vlastnost může způsobit zastavení funkčnosti některých aplikací, které jsou závislé na přístupu k datům a zařízení je právě připojeno pouze k mobilní datové síti.\n\nVhodnějsí omezení využití dat je možné nalézt v ovládání používání datových sítí v nastavení aplikace.</string>
-  <!-- Label for settings shortcut: carrier selection -->
 </resources>

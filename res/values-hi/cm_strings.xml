@@ -448,9 +448,6 @@
   <!-- Buttons - Enable navbar -->
   <string name="disable_navkeys_title">ऑन-स्क्रीन नेविगेशन पट्टी को सक्षम करें</string>
   <string name="disable_navkeys_summary">ऑ-स्क्रीन नेविगेशन पट्टी को सक्षम करें और हार्डवेयर बटनों को अक्षम करें</string>
-  <!-- tap-to-wake -->
-  <string name="double_tap_to_wake_title">जगाने के लिए दो बार टैप करें</string>
-  <string name="double_tap_to_wake_summary">डिस्प्ले को चालू करने के लिए स्क्रीन पर दो बार टैप करें</string>
   <!-- tap-to-sleep -->
   <string name="double_tap_to_sleep_title">निद्रा के लिए दो बार टैप करें</string>
   <string name="double_tap_to_sleep_summary">डिस्प्ले को बंद करने के लिए स्थिति पट्टी पर दो बार टैप करें</string>
@@ -474,6 +471,14 @@
   <string name="color_red_title">लाल</string>
   <string name="color_green_title">हरा</string>
   <string name="color_blue_title">नीला</string>
+  <!-- Hardware tunables - Gamma calibration -->
+  <string name="gamma_tuning_title_head">गामा अंशांकन</string>
+  <string name="gamma_tuning_summary_head">गामा मानों को समायोजित करें</string>
+  <string name="gamma_tuning_control_set_header">समूह <xliff:g id="index">%d</xliff:g></string>
+  <!-- used if no name provided by overlay -->
+  <string name="gamma_tuning_contrast">कोंट्रास्ट</string>
+  <string name="gamma_tuning_brightness">चमक</string>
+  <string name="gamma_tuning_saturation">संतृप्ति</string>
   <!-- Launch music player when headset is connected -->
   <string name="headset_connect_player_title">संगीत ऐप को चालू करें</string>
   <string name="headset_connect_player_summary">जब हेटसेट कनेक्ट किया जाए, तो डिफ़ॉल्ट संगीत ऐप को चालू करें</string>
@@ -775,7 +780,6 @@
   <string name="advanced">उन्नत</string>
   <string name="link_volume_option_title">रिंगटोन और अधिसूचना वोल्यूमों को जोड़ें</string>
   <!-- Edit access point labels: PPP number -->
-  <!-- APNs screen message indicating new APN user is adding is a duplicate -->
   <string name="sim_disabled">अक्षम</string>
   <string name="sim_missing">अनुपस्थित या दोषपूर्ण</string>
   <string name="sim_enabler_airplane_on">विमान मोड चालू होने पर यह कार्य करने में असमर्थ।</string>
@@ -818,8 +822,6 @@
   <string name="factory_reset_erase_sd_card_summary">संगीत और फ़ोटो सहित एसडी कार्ड में मौजूद सभी डेटा को मिटा दें</string>
   <string name="factory_reset_warning_text_reset_now">अभी रीसेट करें</string>
   <string name="factory_reset_warning_text_message">इस उपकरण से आपके सभी खाते, ऐप, ऐप डेटा, और सिस्टम सेटिंग हटा दिए जाएँगे। इसे पलटा नहीं जा सकेगा।</string>
-  <!-- Tethering & portable hotspot other category -->
-  <!-- Wi-Fi tethering inactivity timeout -->
   <!-- Live lock screen -->
   <!-- Live lock screen title -->
   <!-- Live lock screen summary -->
@@ -830,16 +832,4 @@
   <string name="interruptions_ignore_while_media_summary">जब कोई अधिसूचना आए, तो माध्यम प्लेबैक वोल्यूम को कम नहीं करें</string>
   <!-- CM Legal -->
   <string name="cmlicense_title">सियानोजेनमोड क़ानूनी</string>
-  <!-- Menu label for reset the battery stats -->
-  <string name="menu_stats_reset">आँकड़े रीसेट करें</string>
-  <!-- Reset stats confirmation dialog's message -->
-  <string name="reset_stats_msg">बैटरी इतिहास आँकड़ा रीसेट किया जाने वाला है</string>
-  <!-- Dock battery not present message -->
-  <string name="dock_battery_not_present">बैटरी को डॉक करें अनुपस्थित है</string>
-  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging on Dock AC. -->
-  <string name="battery_info_status_charging_dock_ac">डॉक एसी पर चार्ज हो रहा है</string>
-  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging over Dock USB. -->
-  <string name="battery_info_status_charging_dock_usb">डॉक यूएसबी पर चार्ज हो रहा है</string>
-  <!-- Weather -->
-  <!-- Label for settings shortcut: carrier selection -->
 </resources>

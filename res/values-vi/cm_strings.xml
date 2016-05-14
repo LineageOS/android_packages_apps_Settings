@@ -512,9 +512,6 @@
   <!-- Buttons - Enable navbar -->
   <string name="disable_navkeys_title">Kích hoạt thanh điều hướng trên màn hình</string>
   <string name="disable_navkeys_summary">Kích hoạt thanh điều hướng trên màn hình và vô hiệu hóa các phím cứng</string>
-  <!-- tap-to-wake -->
-  <string name="double_tap_to_wake_title">Chạm hai lần để bật màn hình</string>
-  <string name="double_tap_to_wake_summary">Chạm hai lần trên màn hình để bật màn hình hiển thị</string>
   <!-- tap-to-sleep -->
   <string name="double_tap_to_sleep_title">Chạm hai lần để tắt màn hình</string>
   <string name="double_tap_to_sleep_summary">Chạm hai lần vào thanh trạng thái để tắt màn hình hiển thị</string>
@@ -538,6 +535,14 @@
   <string name="color_red_title">Đỏ</string>
   <string name="color_green_title">Xanh lá</string>
   <string name="color_blue_title">Xanh dương</string>
+  <!-- Hardware tunables - Gamma calibration -->
+  <string name="gamma_tuning_title_head">Hiệu chuẩn gamma</string>
+  <string name="gamma_tuning_summary_head">Tinh chỉnh giá trị gamma</string>
+  <string name="gamma_tuning_control_set_header">Nhóm <xliff:g id="index">%d</xliff:g></string>
+  <!-- used if no name provided by overlay -->
+  <string name="gamma_tuning_contrast">Độ tương phản</string>
+  <string name="gamma_tuning_brightness">Độ sáng</string>
+  <string name="gamma_tuning_saturation">Độ bão hòa</string>
   <!-- Launch music player when headset is connected -->
   <string name="headset_connect_player_title">Khởi động ứng dụng nghe nhạc</string>
   <string name="headset_connect_player_summary">Khởi động ứng dụng nghe nhạc mặc định khi cắm tai nghe</string>
@@ -853,6 +858,7 @@
   <string name="menu_hidden_apps_delete">Đặt lại</string>
   <string name="menu_hidden_apps_reset_lock">Đặt lại mẫu hình mở khóa</string>
   <string name="protected_apps">Các ứng dụng được bảo vệ</string>
+  <string name="protected_apps_summary">Quản lý các ứng dụng được ẩn sau khóa an toàn</string>
   <string name="saving_protected_components">Đang lưu trạng thái thành phần\u2026</string>
   <string name="pa_login_username_hint">Tên người dùng (email)</string>
   <string name="pa_login_password_hint">Mật khẩu</string>
@@ -961,16 +967,4 @@
   <string name="interruptions_ignore_while_media_summary">Không làm giảm âm lượng phát lại media khi một thông báo đến</string>
   <!-- CM Legal -->
   <string name="cmlicense_title">Bộ phận pháp chế của CyanogenMod</string>
-  <!-- Menu label for reset the battery stats -->
-  <string name="menu_stats_reset">Thiết lập lại thống kê</string>
-  <!-- Reset stats confirmation dialog's message -->
-  <string name="reset_stats_msg">Thống kê lịch sử pin đang được thiết lập lại</string>
-  <!-- Dock battery not present message -->
-  <string name="dock_battery_not_present">Không có pin ở đế sạc</string>
-  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging on Dock AC. -->
-  <string name="battery_info_status_charging_dock_ac">Đang sạc trên AC của đế</string>
-  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging over Dock USB. -->
-  <string name="battery_info_status_charging_dock_usb">Đang sạc qua USB của đế</string>
-  <!-- Weather -->
-  <!-- Label for settings shortcut: carrier selection -->
 </resources>
