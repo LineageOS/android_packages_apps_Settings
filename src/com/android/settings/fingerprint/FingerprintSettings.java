@@ -740,8 +740,12 @@ public class FingerprintSettings extends SubSettings {
             try {
                 ((Activity) ctx).startActivityForResult(intent, 0);
             } catch (ActivityNotFoundException e) {
-                Log.w(FingerprintSettingsFragment.TAG,
-                        "Actvity was not found for intent, " + intent.toString());
+                if (intent != null) {
+                    Log.w(FingerprintSettingsFragment.TAG,
+                            "Actvity was not found for intent, " + intent.toString());
+                } else {
+                    Log.e(FingerprintSettingsFragment.TAG, "Intent was null");
+                }
             }
         }
 
