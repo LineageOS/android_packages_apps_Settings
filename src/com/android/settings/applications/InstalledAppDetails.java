@@ -256,13 +256,11 @@ public class InstalledAppDetails extends AppInfoBase
     /** Returns if the supplied package is device owner or profile owner of at least one user */
     private boolean isProfileOrDeviceOwner(String packageName) {
         List<UserInfo> userInfos = mUserManager.getUsers();
-        DevicePolicyManager dpm = (DevicePolicyManager)
-                getContext().getSystemService(Context.DEVICE_POLICY_SERVICE);
-        if (packageName.equals(dpm.getDeviceOwner())) {
+        if (packageName.equals(mDpm.getDeviceOwner())) {
             return true;
         }
         for (UserInfo userInfo : userInfos) {
-            ComponentName cn = dpm.getProfileOwnerAsUser(userInfo.id);
+            ComponentName cn = mDpm.getProfileOwnerAsUser(userInfo.id);
             if (cn != null && cn.getPackageName().equals(packageName)) {
                 return true;
             }
