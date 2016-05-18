@@ -45,6 +45,24 @@
             android:scaleType="centerCrop"
             android:src="@drawable/regulatory_info"
             android:visibility="gone"/>
+        <TextView
+            android:id="@+id/fccId"
+            android:textColor="@color/regulatory_text_color"
+            android:textSize="14sp"
+            android:padding="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+        <TextView
+            android:id="@+id/additionalInfo"
+            android:textColor="@color/regulatory_text_color"
+            android:textSize="14sp"
+            android:padding="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
     </LinearLayout>
 </ScrollView>
 

@@ -45,6 +45,8 @@ import com.android.settings.deviceinfo.Status;
 public class RegulatoryInfoDisplayActivity extends Activity implements
         DialogInterface.OnDismissListener {
     private final String REGULATORY_INFO_RESOURCE = "regulatory_info";
+    private final String REGULATORY_INFO_FCC_ID = "regulatory_info_fcc_id";
+    private final String ADDITIONAL_INFO_STRING_RES_NAME = "regulatory_info_additional_info";
 
     /**
      * Display the regulatory info graphic in a dialog window.
@@ -99,6 +101,24 @@ public class RegulatoryInfoDisplayActivity extends Activity implements
                     ? View.VISIBLE : View.GONE);
             icCode.setText(icCodes);
         }
+        if (resources.getBoolean(R.bool.config_show_fcc_id_enable)) {
+            int fccStringResId = getStringResIdForResName(REGULATORY_INFO_FCC_ID);
+            if (fccStringResId != 0) {
+                TextView fccIdTextView = (TextView) view.findViewById(R.id.fccId);
+                fccIdTextView.setVisibility(View.VISIBLE);
+                String fccInfo = resources.getString(R.string.regulatory_info_fcc_id_label) + ": "
+                        + resources.getString(fccStringResId);
+                fccIdTextView.setText(fccInfo);
+            }
+        }
+        if (resources.getBoolean(R.bool.config_show_additional_info_enable)) {
+            int addInfoStringResId = getStringResIdForResName(ADDITIONAL_INFO_STRING_RES_NAME);
+            if (addInfoStringResId != 0) {
+                TextView addInfoTextView = (TextView) view.findViewById(R.id.additionalInfo);
+                addInfoTextView.setVisibility(View.VISIBLE);
+                addInfoTextView.setText(addInfoStringResId);
+            }
+        }
         builder.setView(view);
         builder.show();
     }
@@ -119,6 +139,11 @@ public class RegulatoryInfoDisplayActivity extends Activity implements
             }
         }
         return resId;
+    }
+
+    private int getStringResIdForResName(String resName) {
+        return getResources().getIdentifier(
+                resName, "string", getPackageName());
     }
 
     @Override
