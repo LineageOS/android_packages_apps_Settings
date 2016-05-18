@@ -99,9 +99,12 @@
   <!-- Profiles - system settings -->
   <string name="profile_system_settings_title">Axustes del Sistema</string>
   <string name="profile_lockmode_title">Mou Bloquéu de pantalla</string>
+  <string name="profile_lockmode_policy_disabled_summary">Esta opción del perfil ta deshabilitada por una política del alministrador de preseos</string>
   <string name="profile_lockmode_insecure_summary">Nun pidir PIN o contraseña</string>
   <string name="profile_lockmode_disabled_summary">Desactivar el bloquéu de pantalla</string>
   <string name="profile_airplanemode_title">Mou avión</string>
+  <string name="profile_brightness_title">Rellumu de pantalla</string>
+  <string name="profile_brightness_override_summary">Afitar a %1$d%%</string>
   <!-- Connection override toggles (not all are used at this time ) -->
   <string name="toggleWifi">Wi\u2011Fi</string>
   <string name="toggleWifiAp">Puntu d\'accesu Wi\u2011Fi</string>
@@ -119,6 +122,7 @@
   <string name="hardware_keys_menu_key_title">Botón Menú</string>
   <string name="hardware_keys_assist_key_title">Botón Gueta</string>
   <string name="hardware_keys_appswitch_key_title">Botón Recientes</string>
+  <string name="hardware_keys_camera_key_title">Botón Cámara</string>
   <string name="hardware_keys_volume_keys_title">Botones de volume</string>
   <string name="hardware_keys_short_press_title">Aición pulsación curtia</string>
   <string name="hardware_keys_long_press_title">Aición pulsación llarga</string>
@@ -132,6 +136,9 @@
   <string name="hardware_keys_action_launch_camera">Abrir cámara</string>
   <string name="hardware_keys_action_sleep">Apagar la pantalla</string>
   <string name="hardware_keys_action_last_app">Cabera aplicación</string>
+  <string name="camera_sleep_on_release_title">Vista rápida</string>
+  <string name="camera_sleep_on_release_summary">Una llixera pulsación del botón, va dexar la pantalla encesa hasta qu\'esti se llibere</string>
+  <string name="camera_launch_title">Llanzar cámara</string>
   <string name="volbtn_music_controls_title">Control multimedia</string>
   <string name="volbtn_music_controls_summary">Cuando la pantalla tea apagada, una pulsación prollongada de los controles de volume, va avanzar o retroceder sobre les pistes de música actives</string>
   <string name="volbtn_cursor_control_title">Control del cursor</string>
@@ -140,6 +147,9 @@
   <string name="volbtn_cursor_control_on_reverse">Los botones xubir y baxar volume van mover el cursor a derecha y esquierda respeutivamente</string>
   <string name="swap_volume_buttons_title">Reorientar</string>
   <string name="swap_volume_buttons_summary">Intercamudar los botones de control de volume al xirar la pantalla</string>
+  <string name="volume_keys_control_ring_stream_title">Remanar el volume de llamada</string>
+  <string name="volume_keys_control_ring_stream_summary_on">Les tecles de volume remanen el volume de llamada</string>
+  <string name="volume_keys_control_ring_stream_summary_off">Les tecles de volume remanen el volume multimedia</string>
   <string name="power_end_call_title">Finar llamada</string>
   <string name="power_end_call_summary">Calcando\'l botón d\'apagáu, va finar la llamada en cursu</string>
   <string name="button_wake_title">Esconsoñar preséu</string>
@@ -180,10 +190,13 @@
   <string name="color_enhancement_title">Ameyoramientu de color</string>
   <string name="color_enhancement_summary">Ameyorar dinámicamente el color de la pantalla</string>
   <!-- Blacklist preferences -->
+  <string name="blacklist_title">Llista de númberos bloquiaos</string>
+  <string name="blacklist_edit_dialog_title">Editar númberu teléfonu bloquiáu</string>
   <string name="blacklist_prefs">Axustes</string>
   <string name="blacklist_button_delete">Desaniciar</string>
   <string name="blacklist_empty_text">Nun tienes númberos bloquiaos. Amiesta una entrada tocando\'l botón Amestar (+).</string>
   <string name="blacklist_summary_disabled">Deshabilitada</string>
+  <string name="blacklist_summary">Nun vas recibir llamaes o mensaxes de los númberos incluyíos na llista prieta de llamaes</string>
   <string name="blacklist_notify">Amosar notificación</string>
   <string name="blacklist_private_numbers_title">Númberos privaos</string>
   <string name="blacklist_private_numbers_summary_disabled">Nun bloquiar llamaes de númberos privaos</string>
@@ -198,8 +211,10 @@
   <string name="blacklist_regex_summary">Usar \u00AB.\u00BB como comodín y \u00AB*\u00BB pa repetición. Por exemplu \u00AB123.*\u00BB va bloquiar númberos qu\'entamen por 123 y \u00AB.*123.*\u00BB va bloquiar númberos que contengan 123</string>
   <string name="blacklist_policy_block_calls">Bloquiar llamaes entrantes</string>
   <string name="blacklist_policy_block_messages">Bloquiar mensaxes entrantes</string>
+  <string name="blacklist_bad_number_add">Nun pudo amestase un númberu inválidu a la llista prieta</string>
   <!-- Blacklist management -->
   <string name="remove_blacklist_number_title">Quitar númberu</string>
+  <string name="remove_blacklist_entry">¿Quies desaniciar esti númberu teléfonu bloquiáu?</string>
   <string name="select_contact">Seleicionar contautu</string>
   <!-- Protected apps lockpattern reset button -->
   <string name="lockpattern_reset_button">Restaurar el patrón</string>
@@ -255,6 +270,7 @@
   <string name="phone_service_state">Voz: <xliff:g id="voice_state">%1$s</xliff:g>, datos: <xliff:g id="data_state">%2$s</xliff:g></string>
   <!--- Tap To Wake -->
   <string name="double_tap_to_wake_title">Doble toque pa esconsoñar</string>
+  <string name="double_tap_to_wake_summary">Calca dos vegaes na pantalla pa prendela</string>
   <!-- Proximity wake -->
   <string name="proximity_wake_title">Prevenir encendíu accidental</string>
   <string name="proximity_wake_summary">Comprobar el sensor de proximidá enantes de prender la pantalla</string>
@@ -299,6 +315,7 @@
   <string name="development_shortcut_summary">Habilitar los métodos abreviaos de xestión d\'aplicación na llista d\'aplicaciones recientes</string>
   <!-- tap-to-sleep -->
   <string name="double_tap_to_sleep_title">Doble toque pa bloquiar</string>
+  <string name="double_tap_to_sleep_summary">Calca dos vegaes na barra d\'estáu p\'apagar la pantalla</string>
   <!-- Turn on display when power connected; turn off display when power disconnected -->
   <string name="wake_when_plugged_or_unplugged_title">Prender con cargador</string>
   <string name="wake_when_plugged_or_unplugged_summary">Prender la pantalla al coneutar o desconeutar el cargador</string>
@@ -320,6 +337,7 @@
   <string name="navigation_bar_reset_message">¿Quies desaniciar los axustes actuales y restaurar la disposición por defeutu?</string>
   <string name="navigation_bar_arrow_keys_title">Amosar fleches al escribir</string>
   <string name="navigation_bar_arrow_keys_summary">Amosar los cursores esquierda y derecha mentanto la escritura. Troca al seleutor IME.</string>
+  <string name="navigation_bar_recents_title">Pulsación llarga en recientes</string>
   <string name="header_category_personalization">Personalización</string>
   <!-- Status bar -->
   <string name="status_bar_title">Barra d\'estáu</string>
@@ -385,9 +403,13 @@
   <string name="notification_light_default_value">Por defeutu</string>
   <string name="notification_light_missed_call_title">Llamada perdida</string>
   <string name="notification_light_voicemail_title">Buzón de voz</string>
+  <string name="notification_light_use_multiple_leds">Múltiples LEDs</string>
+  <string name="keywords_lights_brightness_level">amatagar el rellumu de los leds</string>
   <!-- Sound & notification > Sound section: Title for the option defining the default notification ringtone. [CHAR LIMIT=30] -->
   <string name="notification_ringtone_title_cm">Tonu de notificación</string>
   <!-- Launch music player when headset is connected -->
+  <string name="headset_connect_player_title">Llanzar aplicación de música</string>
+  <string name="headset_connect_player_summary">Llanza l\'aplicación de música por defeutu al coneutase los auriculares</string>
   <!-- Whether to display IME switcher notifcation -->
   <string name="ime_switcher_notify">Seleutor d\'iconu</string>
   <string name="ime_switcher_notify_summary">Amosar l\'iconu de seleición del métodu d\'entrada</string>
@@ -533,6 +555,7 @@
   <!-- Profiles -->
   <string name="profile_menu_delete_title">Desaniciar</string>
   <string name="profile_action_none">Dexar ensin cambeos</string>
+  <string name="profile_action_system">Sistema por defeutu</string>
   <string name="profile_action_disable">Apagar</string>
   <string name="profile_action_enable">Prender</string>
   <string name="profile_trigger_a2dp_connect">Al coneutar A2DP</string>
@@ -545,7 +568,11 @@
   <string name="profile_setup_setup_triggers_title_config">Modificar eventos: <xliff:g id="profile_name">%1$s</xliff:g></string>
   <string name="profile_setup_actions_title">Paso 2: Configurar aiciones</string>
   <string name="profile_setup_actions_title_config">Reconfigurar aiciones</string>
+  <string name="profile_appgroups_manage">Grupos d\'aplicaciones</string>
+  <string name="profile_appgroup_manage">Xestionar grupu d\'apps</string>
   <!-- Title for application group setting screen -->
+  <string name="profile_appgroups_title">Grupos d\'aplicaciones</string>
+  <string name="profile_new_appgroup">Grupu d\'apps nuevu</string>
   <string name="profile_delete_appgroup">¿Desaniciar esti grupu d\'aplicaciones?</string>
   <string name="profile_appgroup_name_prompt">Introduz un nome pal grupu d\'aplicaciones nuevu</string>
   <string name="profile_appgroup_name_title">Nome</string>
@@ -553,9 +580,11 @@
   <string name="profile_app_delete_confirm">¿Desaniciar esta aplicación?</string>
   <!-- Profile Settings sound modes labels -->
   <string name="sound_mode">Mou de notificación</string>
+  <string name="ringer_mode">Mou de soníu</string>
   <string name="lights_mode">Mou lluces</string>
   <string name="vibrate_mode">Mou vibración</string>
   <string name="choose_soundtone">Esbillar tonu d\'avisu</string>
+  <string name="choose_ringtone">Esbillar tonu</string>
   <!-- Sound settings screen, setting option name to pick ringtone (a list dialog comes up)-->
   <string name="soundtone_title">Tonu d\'avisos</string>
   <string name="no_bluetooth_triggers">Nun hai preseos Bluetooth empareyaos.\n
@@ -659,9 +688,12 @@ Calca pa empareyar el preséu Bluetooth enantes de configurar los disparadores.<
   <!-- string resources for USB OTG & UICC features -->
   <string name="storage_usb">Almacenamientu USB</string>
   <string name="storage_uicc">Almacenamientu UICC</string>
+  <string name="sdcard_eject" product="default">Desmontar tarxeta SD</string>
+  <string name="sdcard_eject_summary" product="default">Desmontar tarxeta SD pa estrayela con seguridá</string>
   <string name="sd_card_format" product="default">Desaniciar tarxeta SD</string>
   <string name="sd_card_format_summary" product="default">Desanicia tolos datos de la tarxeta SD, como la música y les semeyes</string>
   <string name="sdcard_mount" product="default">Montar tarxeta SD</string>
+  <string name="sdcard_insert_summary" product="default">Inxerta una tarxeta SD pal so montaxe</string>
   <string name="usb_eject" product="default">Desmontar almacenamientu USB</string>
   <string name="usb_eject_summary" product="default">Desmontar l\'amacenamientu USB pa estrayer con seguridá</string>
   <string name="usb_format" product="default">Desaniciar almacenamientu USB</string>
@@ -678,27 +710,39 @@ Calca pa empareyar el preséu Bluetooth enantes de configurar los disparadores.<
   <string name="usb_settings_enable_ums_title">¿Activar almacenamientu masivu?</string>
   <!-- Message of dialog asking user to confirm before enabling UMS. [CHAR LIMIT=NONE] -->
   <string name="usb_settings_enable_ums_message">Les aplicaciones y componentes del sistema dependen del almacenamientu primariu, que ta siempre disponible. Esta carauterística fraña esa funcionalidá. Recomiéndase usar MTP en so llugar. ¿Daveres que quies activar l\'almacenamientu masivu?</string>
+  <string name="dlg_confirm_sdcard_unmount_title" product="default">¿Desmontar tarxeta SD?</string>
   <string name="dlg_confirm_usb_unmount_title" product="default">¿Desmontar almacenamientu USB?</string>
   <string name="dlg_confirm_uicc_unmount_title" product="default">¿Desmontar almacenamientu UICC?</string>
+  <string name="dlg_confirm_sdcard_unmount_text" product="default">Si desactives la tarxeta SD, van parase dalgunes aplicaciones que tas usando y nun van tar disponibles hasta que vuelvas activala.</string>
   <string name="dlg_confirm_usb_unmount_text" product="default">Si desmontes l\'almacenamientu USB, dalgunes aplicaciones qu\'uses van detenese y puen dexar de tar disponibles hasta que vuelvas montar l\'almacenamientu USB.</string>
   <string name="dlg_confirm_uicc_unmount_text" product="default">Si desmontes l\'almacenamientu UICC, dalgunes aplicaciones qu\'uses van detenese y puen dexar de tar disponibles hasta que vuelvas montar l\'almacenamientu UICC.</string>
+  <string name="dlg_error_sdcard_unmount_text" product="default">Nun pudo desactivase la tarxeta SD. Vuelvi intentalo dempués.</string>
   <string name="dlg_error_usb_unmount_text" product="default">Nun pudo desmontase l\'almacenamientu USB. Inténtalo dempués.</string>
   <string name="dlg_error_uicc_unmount_text" product="default">Nun pudo desmontase l\'almacenamientu UICC. Inténtalo dempués.</string>
+  <string name="sdcard_unmount_inform_text" product="default">Desmontaráse la tarxeta de memoria.</string>
   <string name="usb_unmount_inform_text" product="default">Va desactivase l\'almacenamientu USB.</string>
   <string name="uicc_unmount_inform_text" product="default">Va desmontase l\'almacenamientu UICC.</string>
+  <string name="sdcard_media_format_desc" product="default">¿Desaniciar la tarxeta SD? ¡Perderás <b>tolos</b> datos na tarxeta!</string>
   <string name="usb_media_format_desc" product="default">¿Desaniciar l\'almacenamientu USB? ¡Vas perder <b>tolos datos</b> del almacenamientu!</string>
   <string name="uicc_media_format_desc" product="default">¿Desaniciar l\'almacenamientu UICC? ¡Vas perder <b>tolos datos</b> del almacenamientu!</string>
+  <string name="sdcard_media_format_button_text" product="default">Desaniciar tarxeta SD</string>
   <string name="usb_media_format_button_text" product="default">Desaniciar almacenamientu USB</string>
   <string name="uicc_media_format_button_text" product="default">Desaniciar almacenamientu UICC</string>
+  <string name="sdcard_media_format_final_desc" product="default">¿Quies desaniciar la tarxeta SD y desaniciar tolos ficheros? Esta aición nun pue desfacese.</string>
   <string name="usb_media_format_final_desc" product="default">¿Desaniciar l\'almacenamientu USB, esborrando tolos ficheros almacenaos dientro? ¡Esta aición nun pue desfacese!</string>
   <string name="uicc_media_format_final_desc" product="default">¿Desaniciar l\'almacenamientu UICC, esborrando tolos ficheros almacenaos dientro? ¡Esta aición nun pue desfacese!</string>
   <string name="sdcard_media_format_gesture_explanation" product="default">Necesites dibuxar el to patrón de desbloquéu pa confirmar que quies desaniciar la tarxeta SD.</string>
   <string name="usb_media_format_gesture_explanation" product="default">Necesites dibuxar el patrón de desbloquéu pa confirmar que quies desaniciar l\'almacenamientu USB.</string>
   <string name="uicc_media_format_gesture_explanation" product="default">Necesites dibuxar el to patrón de desbloquéu pa confirmar que quies desaniciar l\'almacenamientu UICC.</string>
   <!-- Storage menu, label for internal media storage -->
+  <string name="internal_sd_format">Desaniciar almacenamientu internu</string>
   <string name="internal_sd_format_summary">Desanicia tolos datos nel almacenamientu de medios internu, como música y semeyes</string>
   <!-- Media & phone storage settings screen, label for check box to erase media storage [CHAR LIMIT=30] -->
+  <string name="master_clear_desc_erase_internal_storage">\n\nPa llimpiar la música, imáxenes y otros datos del usuariu, l\'<b>almacenamientu internu</b> precisa de desaniciase.</string>
+  <string name="erase_internal_storage">Desaniciar almacenamientu internu</string>
+  <string name="erase_internal_storage_description">Desaniciar tolos datos del almacenamientu internu, como música y semeyes</string>
   <!-- Rescan storage -->
+  <string name="storage_rescan_media">Guetar otra vegada por preseos d\'almacenamientu</string>
   <!-- [CHAR LIMIT=130] Location mode screen, sub category for IZat Location -->
   <string name="location_category_enhanced_location">Allugamientu ameyoráu (IZat)</string>
   <!-- [CHAR LIMIT=NONE] App ops settings summary, on main settings screen. If clicked, the user is taken to a settings screen for app operations -->
@@ -729,6 +773,7 @@ Calca pa empareyar el preséu Bluetooth enantes de configurar los disparadores.<
   <string name="usb_charging_summary">Deshabilitar toles tresferencies de datos col equipu y cargar el preséu per aciu del puertu USB</string>
   <string name="usb_sdcard_title">Almacenamientu masivu (UMS)</string>
   <string name="usb_sdcard_summary">Permítite tresferir ficheros ente\'l to ordenador y la tarxeta SD montándola como preséu flash</string>
+  <string name="usb_not_connected">Agora l\'USB ta desconeutáu</string>
   <string name="external_storage_turn_on">L\'almacenamientu esternu activóse</string>
   <string name="external_storage_turn_off">L\'almacenamientu esternu desactivóse</string>
   <string name="stats_collection_title">Colleición de datos</string>
@@ -755,6 +800,7 @@ Calca pa empareyar el preséu Bluetooth enantes de configurar los disparadores.<
   <string name="select_custom_activity_title">Seleicionar actividá personalizada</string>
   <!-- Battery : Automatic performance profiles -->
   <string name="autoperf_title">Habilitar los perfiles por aplicación</string>
+  <string name="autoperf_summary">Escoyer automáticamente\'l mou de batería afayadizu pa delles aplicaciones</string>
   <string name="perf_profile_title">Mou batería</string>
   <!-- Development : Force high-end graphics -->
   <string name="pref_force_highend_gfx_title">Forciar los gráficos d\'alta resolución</string>
@@ -771,8 +817,11 @@ Calca pa empareyar el preséu Bluetooth enantes de configurar los disparadores.<
   <!-- Whether the dots will be drawn when using the lockscreen pattern -->
   <string name="lockpattern_settings_enable_dots_title">Amosar puntos del patrón</string>
   <!-- Whether the keyguard will directly pass to password entry -->
+  <string name="lock_directly_show_password">Amosar direutamente la contraseña</string>
   <!-- Whether the keyguard will directly pass to pattern view -->
+  <string name="lock_directly_show_pattern">Amosar direutamente\'l patrón</string>
   <!-- Whether the keyguard will directly pass to PIN entry -->
+  <string name="lock_directly_show_pin">Amosar direutamente la entrada PIN</string>
   <!-- Screen security -->
   <string name="unlock_quick_unlock_control_title">Desbloquéu rápidu</string>
   <string name="unlock_quick_unlock_control_summary">Desbloquiar automáticamente cuando s\'introduz el PIN/clave correutu</string>
@@ -782,6 +831,13 @@ Calca pa empareyar el preséu Bluetooth enantes de configurar los disparadores.<
   <string name="notification_volume_option_title">Volume de notificación</string>
   <!-- Notification drawer -->
   <string name="notification_drawer_title">Área de notificación</string>
+  <string name="quick_pulldown_title">Baxada rápida</string>
+  <string name="quick_pulldown_summary">El borde %1$s de la barra de notificaciones va desplegar el panel d\'axustes rápidos</string>
+  <string name="quick_pulldown_summary_left">Esquierda</string>
+  <string name="quick_pulldown_summary_right">Derecha</string>
+  <string name="quick_pulldown_off">Non</string>
+  <string name="quick_pulldown_left">Esquierda</string>
+  <string name="quick_pulldown_right">Derecha</string>
   <!-- Weather in status bar header -->
   <string name="status_bar_show_weather_title">Amosar clima</string>
   <string name="status_bar_show_weather_summary">Amuesa\'l clima debaxo\'l panel d\'axustes rápidos</string>
@@ -811,6 +867,8 @@ Calca pa empareyar el preséu Bluetooth enantes de configurar los disparadores.<
   <string name="qs_tile_lte">LTE</string>
   <string name="qs_tile_volume_panel">Panel de volume</string>
   <string name="qs_tile_screen_timeout">Tiempu d\'espera de pantalla</string>
+  <string name="qs_tile_usb_tether">USB tethering</string>
+  <string name="qs_tile_heads_up">Notificaciones emerxentes</string>
   <string name="qs_tile_ambient_display">Pantalla ambiente</string>
   <string name="qs_tile_battery_saver">Aforrador d\'enerxía</string>
   <string name="qs_dynamic_tile_next_alarm">Alarma siguiente</string>
@@ -920,13 +978,31 @@ Calca pa empareyar el preséu Bluetooth enantes de configurar los disparadores.<
   <!-- LiveDisplay -->
   <string name="live_display_summary">Optimiza la to pantalla basándose na hora\'l día y les condiciones ambientales p\'ameyorar la llexibilidá y amenorgar el cansanciu de güeyos</string>
   <string name="live_display_color_temperature_title">Temperatura de color</string>
+  <string name="live_display_color_temperature_summary">Día: <xliff:g id="day_temperature">%1$d</xliff:g>K Nueche: <xliff:g id="night_temperature">%2$d</xliff:g>K</string>
+  <string name="live_display_color_temperature_label"><xliff:g id="degrees">%1$d</xliff:g>K</string>
+  <string name="live_display_day">Día</string>
+  <string name="live_display_night">Nueche</string>
+  <string name="live_display_enhance_color_title">Ameyorar colores</string>
+  <string name="live_display_color_profile_title">Pefil de color</string>
+  <string name="live_display_color_profile_standard_title">Estándar</string>
+  <string name="live_display_color_profile_natural_title">Natural</string>
+  <string name="live_display_color_profile_dynamic_title">Dinámicu</string>
+  <string name="live_display_color_profile_cinema_title">Cine</string>
+  <string name="live_display_color_profile_astronomy_title">Astronomía</string>
+  <string name="live_display_color_profile_basic_summary">Usa la pantalla ensin calibrar</string>
   <!-- Anonymous Statistics #CM -->
   <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
+  <string name="anonymous_statistics_warning_title">Tocante a</string>
+  <string name="enable_reporting_title">Activar unviu d\'estadístiques</string>
+  <string name="preview_data_title">Previsualizar datos</string>
+  <string name="view_stats_title">Ver estadístiques</string>
   <string name="anonymous_learn_more">Deprendi más</string>
   <!-- Anonymous Statistics - Preview -->
+  <string name="preview_id_title">ID única</string>
   <string name="preview_device_title">Preséu</string>
   <string name="preview_version_title">Versión</string>
   <string name="preview_country_title">País</string>
+  <string name="preview_carrier_title">Operadora móvil</string>
   <!-- Heads up -->
   <string name="summary_heads_up_enabled">Tán habilitaos los avisos emerxentes</string>
   <string name="summary_heads_up_disabled">Tán deshabilitaos los avisos emerxentes</string>
@@ -936,9 +1012,15 @@ Calca pa empareyar el preséu Bluetooth enantes de configurar los disparadores.<
   <string name="lock_to_cyanogen_title">Proteición de preséu</string>
   <!-- MSIM SIM status -->
   <!-- Factory reset strings -->
+  <string name="factory_reset_erase_sd_card_summary">Desanicia tolos datos na tarxeta SD, incluyendo música y semeyes</string>
+  <string name="factory_reset_warning_text_reset_now">REAFITAR AGORA</string>
+  <string name="factory_reset_warning_text_message">Desaniciaránse d\'esti preséu toles cuentes, aplicaciones, datos d\'aplicaciones y axustes del sistema. Esto nun pue desfacese.</string>
   <!-- Wi-Fi filters -->
+  <string name="wifi_show_all">Amosalo too</string>
   <!-- Wi-Fi region code -->
+  <string name="wifi_setting_countrycode_title">Códigu de rexón Wi\u2011Fi</string>
   <!-- Wi-Fi settings screen, setting summary for setting the wifi frequency band [CHAR LIMIT=50]-->
+  <string name="wifi_setting_countrycode_summary">Especificar el códigu de rexón pa Wi\u2011Fi</string>
   <!-- Wi-Fi settings screen, error message when the frequency band could not be set [CHAR LIMIT=50]. -->
   <string name="wifi_setting_countrycode_error">Hebo un fallu al afitar el códigu de rexón.</string>
   <!-- Wi-Fi region countries -->
@@ -963,6 +1045,7 @@ Calca pa empareyar el preséu Bluetooth enantes de configurar los disparadores.<
   <!-- Title for preference that guides the user through creating a fingerprint [CHAR LIMIT=22] -->
   <string name="unlock_set_unlock_fingerprint_title">Buelgues dixitales</string>
   <!-- List item title to add a new fingerprint in fingerprint list screen -->
+  <string name="fingerprint_item_add_new_fingerprint">Amestar buelga dixital nueva</string>
   <!-- Title for preference in fingerprint lockscreen settings, takes user to fingerprint list -->
   <!-- Summary for preference in fingerprint lockscreen settings, takes user to fingerprint list -->
   <!-- Info explaining the backup lock which is used for fingerprint -->
@@ -980,6 +1063,7 @@ Calca pa empareyar el preséu Bluetooth enantes de configurar los disparadores.<
   <!-- Fingerprint enrollment scan fingerprint title -->
   <!-- Fingerprint enrollment scan fingerprint instructions -->
   <!-- Fingerprint enrollment error title during first step only -->
+  <string name="fingerprint_enrollment_error_title_wrong_sensor">Por favor, inténtalo de nueves</string>
   <!-- Fingerprint enrollment error message -->
   <!-- Fingerprint enrollment error instructions -->
   <!-- Fingerprint enrollment half way break title -->
@@ -989,13 +1073,17 @@ Calca pa empareyar el preséu Bluetooth enantes de configurar los disparadores.<
   <!-- Next button title for finding sensor -->
   <!-- Next button title for finding sensor -->
   <!-- Next button title for finding sensor -->
+  <string name="fingerprint_enrollment_done_label">Fecho</string>
   <!-- Wrong fingerprint sensor dialog title -->
+  <string name="fingerprint_dialog_title_wrong_sensor">Ups, eso nun ye\'l to sensor</string>
   <!-- Wrong fingerprint sensor dialog message -->
   <!-- Failed fingerprint enrollment dialog title -->
   <!-- Failed fingerprint enrollment dialog message -->
   <!-- Failed fingerprint enrollment button label -->
   <!-- Successful scan title for first successful scan -->
+  <string name="fingerprint_successful_scan_title_first">¡Perfeuto! Agora repiti</string>
   <!-- Successful scan title for second to last successful scan -->
+  <string name="fingerprint_successful_scan_final">Una vegada más, por favor</string>
   <!-- Successful scan title for all other successful scans -->
   <!-- Fingerprint enrollment error titles -->
   <string name="fingerprint_enrollment_error_title_3">Hmm, daqué foi mal</string>
@@ -1014,4 +1102,5 @@ Calca pa empareyar el preséu Bluetooth enantes de configurar los disparadores.<
   <!-- Keep screen on strings -->
   <string name="keep_screen_on_never">Enxamás</string>
   <!-- Contributors cloud activity -->
+  <string name="contributors_cloud_fragment_title">Collaboradores</string>
 </resources>
