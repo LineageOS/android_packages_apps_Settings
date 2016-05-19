@@ -51,10 +51,11 @@ public class ResetAppsHelper implements DialogInterface.OnClickListener,
     private final NetworkPolicyManager mNpm;
     private final AppOpsManager mAom;
     private final Context mContext;
+    private final ResetCompletedCallback mResetCompletedCallback;
 
     private AlertDialog mResetDialog;
 
-    public ResetAppsHelper(Context context) {
+    public ResetAppsHelper(Context context, ResetCompletedCallback callback) {
         mContext = context;
         mPm = context.getPackageManager();
         mIPm = IPackageManager.Stub.asInterface(ServiceManager.getService("package"));
@@ -63,6 +64,7 @@ public class ResetAppsHelper implements DialogInterface.OnClickListener,
         mWvus = IWebViewUpdateService.Stub.asInterface(ServiceManager.getService("webviewupdate"));
         mNpm = NetworkPolicyManager.from(context);
         mAom = (AppOpsManager) context.getSystemService(Context.APP_OPS_SERVICE);
+        mResetCompletedCallback = callback;
     }
 
     public void onRestoreInstanceState(Bundle savedInstanceState) {
@@ -143,8 +145,13 @@ public class ResetAppsHelper implements DialogInterface.OnClickListener,
                         mNpm.setUidPolicy(uid, POLICY_NONE);
                     }
                 }
+                mResetCompletedCallback.onResetCompleted();
             }
         });
+    }
+
+    public interface ResetCompletedCallback {
+        public void onResetCompleted();
     }
 
     private boolean isNonEnableableFallback(String packageName) {
