@@ -33,6 +33,7 @@ public class PrivacySettings extends SettingsPreferenceFragment {
 
     private static final String KEY_BLACKLIST = "blacklist";
     private static final String KEY_STATS = "cmstats";
+    private static final String LOGGER_PACKAGE = "com.cyngn.logger";
 
     private PreferenceScreen mBlacklist;
 
@@ -57,6 +58,12 @@ public class PrivacySettings extends SettingsPreferenceFragment {
             // No telephony, remove dependent options
             PreferenceScreen root = getPreferenceScreen();
             root.removePreference(mBlacklist);
+        }
+
+        // Logger
+        // Only add if device has Logger installed
+        if (Utils.isPackageInstalled(getActivity(), LOGGER_PACKAGE)) {
+            addPreferencesFromResource(R.xml.security_settings_logger);
         }
     }
 
