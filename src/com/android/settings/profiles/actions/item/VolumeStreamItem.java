@@ -18,7 +18,6 @@ package com.android.settings.profiles.actions.item;
 import cyanogenmod.profiles.StreamSettings;
 import android.content.Context;
 import android.media.AudioManager;
-import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +29,6 @@ import com.android.settings.profiles.actions.ItemListAdapter;
 public class VolumeStreamItem implements Item {
     private int mStreamId;
     private StreamSettings mStreamSettings;
-    private boolean mEnabled;
 
     public VolumeStreamItem(int streamId, StreamSettings streamSettings) {
         mStreamId = streamId;
@@ -44,7 +42,7 @@ public class VolumeStreamItem implements Item {
 
     @Override
     public boolean isEnabled() {
-        return mEnabled;
+        return true;
     }
 
     @Override
@@ -71,15 +69,6 @@ public class VolumeStreamItem implements Item {
                     denominator, numerator));
         } else {
             desc.setText(context.getString(R.string.profile_action_none));
-        }
-
-        final boolean volumeLinkNotification = Settings.Secure.getInt(context
-                .getContentResolver(), Settings.Secure.VOLUME_LINK_NOTIFICATION, 1) == 1;
-        mEnabled = true;
-        if (mStreamId == AudioManager.STREAM_NOTIFICATION && volumeLinkNotification) {
-            mEnabled = false;
-            text.setEnabled(false);
-            desc.setEnabled(false);
         }
 
         return view;
