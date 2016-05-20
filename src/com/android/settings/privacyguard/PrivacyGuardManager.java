@@ -17,6 +17,7 @@
 package com.android.settings.privacyguard;
 
 import android.app.FragmentTransaction;
+import android.os.Build;
 import android.view.animation.AnimationUtils;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -297,9 +298,8 @@ public class PrivacyGuardManager extends Fragment
         return true;
     }
 
-
     private boolean shouldShowSystemApps() {
-        return mPreferences.getBoolean("show_system_apps", false);
+        return mPreferences.getBoolean("show_system_apps", false) && !("user".equals(Build.TYPE));
     }
 
     public static class HelpDialogFragment extends DialogFragment {
