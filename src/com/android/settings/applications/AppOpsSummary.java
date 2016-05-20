@@ -26,6 +26,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceFrameLayout;
 import android.support.v13.app.FragmentPagerAdapter;
@@ -186,7 +187,7 @@ public class AppOpsSummary extends InstrumentedFragment {
     }
 
     private boolean shouldShowSystemApps() {
-        return mPreferences.getBoolean("show_system_apps", true);
+        return mPreferences.getBoolean("show_system_apps", true) && !("user".equals(Build.TYPE));
     }
 
     @Override
@@ -204,7 +205,11 @@ public class AppOpsSummary extends InstrumentedFragment {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.appops_manager, menu);
         menu.findItem(R.id.show_user_apps).setChecked(shouldShowUserApps());
-        menu.findItem(R.id.show_system_apps).setChecked(shouldShowSystemApps());
+        if (("user".equals(Build.TYPE))) {
+            menu.removeItem(R.id.show_system_apps);
+        } else {
+            menu.findItem(R.id.show_system_apps).setChecked(shouldShowSystemApps());
+        }
     }
 
     private void resetCounters() {
