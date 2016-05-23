@@ -46,6 +46,30 @@
       "revId": "a44a9e8f6e915045fbb8b1fadbd0b40da33b7ef0",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5faad753_c50e488c",
+        "filename": "src/com/android/settings/cyanogenmod/DisplayRotation.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 9045
+      },
+      "writtenOn": "2016-05-23T19:11:19Z",
+      "side": 1,
+      "message": "With your patch, the overlay would control whether to show the toggle at all - so devices who never had this to enabled (phones I\u0027m guessing) will still never be able to enable it.\n\nI was suggesting to use the existing overlay as the default value, but allow even those users to toggle it on",
+      "parentUuid": "5faad753_654434b8",
+      "range": {
+        "startLine": 107,
+        "startChar": 44,
+        "endLine": 107,
+        "endChar": 63
+      },
+      "revId": "a44a9e8f6e915045fbb8b1fadbd0b40da33b7ef0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
