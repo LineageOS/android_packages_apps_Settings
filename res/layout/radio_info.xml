@@ -293,6 +293,38 @@
             <TextView android:id="@+id/dnsCheckState" style="@style/info_value" />
         </LinearLayout>
 
+        <!-- Turn on/off prop for MBN Auto Loading -->
+        <Button android:id="@+id/mbn_auto_load"
+                android:textSize="14sp"
+                android:layout_marginTop="8dip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+        <!-- Turn on/off prop for forcing VoLTE avail overlay -->
+        <Button android:id="@+id/volte_avail_ovr"
+                android:textSize="14sp"
+                android:layout_marginTop="8dip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+        <!-- Turn on/off prop for forcing VT avail overlay -->
+        <Button android:id="@+id/vt_avail_ovr"
+                android:textSize="14sp"
+                android:layout_marginTop="8dip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+        <!-- Turn on/off prop for forcing WFC avail overlay -->
+        <Button android:id="@+id/wfc_avail_ovr"
+                android:textSize="14sp"
+                android:layout_marginTop="8dip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
         <!-- Launch OEM-specific Info/Settings Activity (if any) -->
         <Button android:id="@+id/oem_info"
                 android:textSize="14sp"
