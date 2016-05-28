@@ -323,6 +323,15 @@ public class RadioInfo extends Activity {
         dnsCheckToggleButton = (Button) findViewById(R.id.dns_check_toggle);
         dnsCheckToggleButton.setOnClickListener(mDnsCheckButtonHandler);
 
+        mbnAutoLoadButton = (Button) findViewById(R.id.mbn_auto_load);
+        mbnAutoLoadButton.setOnClickListener(mMbnAutoLoadHandler);
+        volteAvailOvrButton = (Button) findViewById(R.id.volte_avail_ovr);
+        volteAvailOvrButton.setOnClickListener(mVolteAvailOvrHandler);
+        vtAvailOvrButton = (Button) findViewById(R.id.vt_avail_ovr);
+        vtAvailOvrButton.setOnClickListener(mVtAvailOvrHandler);
+        wfcAvailOvrButton = (Button) findViewById(R.id.wfc_avail_ovr);
+        wfcAvailOvrButton.setOnClickListener(mWfcAvailOvrHandler);
+
         oemInfoButton = (Button) findViewById(R.id.oem_info);
         oemInfoButton.setOnClickListener(mOemInfoButtonHandler);
         PackageManager pm = getPackageManager();
@@ -370,6 +379,10 @@ public class RadioInfo extends Activity {
         updateLteRamDumpState();
         updateProperties();
         updateDnsCheckState();
+        updateMbnAutoLoadState();
+        updateVolteAvailOvrState();
+        updateVtAvailOvrState();
+        updateWfcAvailOvrState();
 
         log("onResume: register phone & data intents");
 
@@ -1094,6 +1107,98 @@ public class RadioInfo extends Activity {
             updateDnsCheckState();
         }
     };
+
+    static final String PROPERTY_SW_MBN_UPDATE = "persist.radio.sw_mbn_update";
+    private Button mbnAutoLoadButton;
+    OnClickListener mMbnAutoLoadHandler = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            SystemProperties.set(PROPERTY_SW_MBN_UPDATE, (isMbnAutoLoad() ? "0" : "1"));
+            updateMbnAutoLoadState();
+        }
+    };
+
+    private boolean isMbnAutoLoad() {
+        return SystemProperties.getBoolean(PROPERTY_SW_MBN_UPDATE, false);
+    }
+
+    private void updateMbnAutoLoadState() {
+        log("updateMbnAutoLoadState isMbnAutoLoad()=" + isMbnAutoLoad());
+        String buttonText = isMbnAutoLoad() ?
+                            getString(R.string.radio_info_mbn_auto_load_on_label) :
+                            getString(R.string.radio_info_mbn_auto_load_off_label);
+        mbnAutoLoadButton.setText(buttonText);
+    }
+
+    static final String PROPERTY_SW_MBN_VOLTE = "persist.radio.sw_mbn_volte";
+    static final String PROPERTY_VOLTE_AVAIL_OVR = "persist.dbg.volte_avail_ovr";
+    private Button volteAvailOvrButton;
+    OnClickListener mVolteAvailOvrHandler = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            SystemProperties.set(PROPERTY_SW_MBN_VOLTE, (isVolteAvailOvr() ? "0" : "1"));
+            SystemProperties.set(PROPERTY_VOLTE_AVAIL_OVR, (isVolteAvailOvr() ? "0" : "1"));
+            updateVolteAvailOvrState();
+        }
+    };
+
+    private boolean isVolteAvailOvr() {
+        return SystemProperties.getBoolean(PROPERTY_VOLTE_AVAIL_OVR, false);
+    }
+
+    private void updateVolteAvailOvrState() {
+        log("updateVolteAvailOvrState isVolteAvailOvr()=" + isVolteAvailOvr());
+        String buttonText = isVolteAvailOvr() ?
+                            getString(R.string.radio_info_volte_avail_ovr_on_label) :
+                            getString(R.string.radio_info_volte_avail_ovr_off_label);
+        volteAvailOvrButton.setText(buttonText);
+    }
+
+    static final String PROPERTY_VT_AVAIL_OVR = "persist.dbg.vt_avail_ovr";
+    private Button vtAvailOvrButton;
+    OnClickListener mVtAvailOvrHandler = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            SystemProperties.set(PROPERTY_VT_AVAIL_OVR, (isVtAvailOvr() ? "0" : "1"));
+            updateVtAvailOvrState();
+        }
+    };
+
+    private boolean isVtAvailOvr() {
+        return SystemProperties.getBoolean(PROPERTY_VT_AVAIL_OVR, false);
+    }
+
+    private void updateVtAvailOvrState() {
+        log("updateVtAvailOvrState isVtAvailOvr()=" + isVtAvailOvr());
+        String buttonText = isVtAvailOvr() ?
+                            getString(R.string.radio_info_vt_avail_ovr_on_label) :
+                            getString(R.string.radio_info_vt_avail_ovr_off_label);
+        vtAvailOvrButton.setText(buttonText);
+    }
+
+    static final String PROPERTY_DATA_IWLAN_ENABLE = "persist.data.iwlan.enable";
+    static final String PROPERTY_WFC_AVAIL_OVR = "persist.dbg.wfc_avail_ovr";
+    private Button wfcAvailOvrButton;
+    OnClickListener mWfcAvailOvrHandler = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            SystemProperties.set(PROPERTY_DATA_IWLAN_ENABLE, (isWfcAvailOvr() ? "false" : "true"));
+            SystemProperties.set(PROPERTY_WFC_AVAIL_OVR, (isWfcAvailOvr() ? "0" : "1"));
+            updateWfcAvailOvrState();
+        }
+    };
+
+    private boolean isWfcAvailOvr() {
+        return SystemProperties.getBoolean(PROPERTY_WFC_AVAIL_OVR, false);
+    }
+
+    private void updateWfcAvailOvrState() {
+        log("updateWfcAvailOvrState isWfcAvailOvr()=" + isWfcAvailOvr());
+        String buttonText = isWfcAvailOvr() ?
+                            getString(R.string.radio_info_wfc_avail_ovr_on_label) :
+                            getString(R.string.radio_info_wfc_avail_ovr_off_label);
+        wfcAvailOvrButton.setText(buttonText);
+    }
 
     OnClickListener mOemInfoButtonHandler = new OnClickListener() {
         public void onClick(View v) {
