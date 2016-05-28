@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5faad753_97b2bde5",
+        "filename": "res/values/config.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2016-05-28T08:02:55Z",
+      "side": 1,
+      "message": "This bool is redundant - it essentially has the same meaning as \u0027hardware_version_value is not empty\u0027-",
+      "revId": "bed34b2e647b3a5a1d55483ccff259ee532a0e90",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5faad753_b7b579cf",
+        "filename": "src/com/android/settings/DeviceInfoSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2016-05-28T08:02:55Z",
+      "side": 1,
+      "message": "Can use\n\n!TextUtils.isEmpty(getString(R.string.hardware_version_value))",
+      "revId": "bed34b2e647b3a5a1d55483ccff259ee532a0e90",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
