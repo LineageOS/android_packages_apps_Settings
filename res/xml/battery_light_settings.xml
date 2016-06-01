@@ -27,6 +27,12 @@
             android:defaultValue="@bool/def_battery_light_enabled" />
 
         <com.android.settings.cyanogenmod.CMSystemSettingSwitchPreference
+            android:key="battery_light_segmented"
+            android:title="@string/battery_light_segmented_title"
+            android:defaultValue="@bool/def_battery_light_segmented"
+            android:dependency="battery_light_enabled" />
+
+        <com.android.settings.cyanogenmod.CMSystemSettingSwitchPreference
             android:key="battery_light_pulse"
             android:title="@string/battery_low_pulse_title"
             android:defaultValue="@bool/def_battery_light_pulse"
