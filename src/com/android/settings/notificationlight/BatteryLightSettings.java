@@ -44,6 +44,7 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
     private static final String FULL_COLOR_PREF = "full_color";
     private static final String LIGHT_ENABLED_PREF = "battery_light_enabled";
     private static final String PULSE_ENABLED_PREF = "battery_light_pulse";
+    private static final String SEGMENTED_ENABLED_PREF = "battery_light_segmented";
 
     private PreferenceGroup mColorPrefs;
     private ApplicationLightPreference mLowColorPref;
@@ -51,6 +52,7 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
     private ApplicationLightPreference mFullColorPref;
     private CMSystemSettingSwitchPreference mLightEnabledPref;
     private CMSystemSettingSwitchPreference mPulseEnabledPref;
+    private CMSystemSettingSwitchPreference mSegmentedEnabledPref;
 
     private static final int MENU_RESET = Menu.FIRST;
 
@@ -70,10 +72,18 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
 
         mLightEnabledPref = (CMSystemSettingSwitchPreference) prefSet.findPreference(LIGHT_ENABLED_PREF);
         mPulseEnabledPref = (CMSystemSettingSwitchPreference) prefSet.findPreference(PULSE_ENABLED_PREF);
+        mSegmentedEnabledPref = (CMSystemSettingSwitchPreference) prefSet.findPreference(SEGMENTED_ENABLED_PREF);
+
+        boolean useSegmentedBatteryLed = getResources().getBoolean(
+                org.cyanogenmod.platform.internal.R.bool.config_useSegmentedBatteryLed);
 
         if (!getResources().getBoolean(com.android.internal.R.bool.config_ledCanPulse) ||
-                getResources().getBoolean(org.cyanogenmod.platform.internal.R.bool.config_useSegmentedBatteryLed)) {
+                useSegmentedBatteryLed) {
             mGeneralPrefs.removePreference(mPulseEnabledPref);
+        }
+
+        if (!useSegmentedBatteryLed) {
+            mGeneralPrefs.removePreference(mSegmentedEnabledPref);
         }
 
         // Does the Device support changing battery LED colors?
