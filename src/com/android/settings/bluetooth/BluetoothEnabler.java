@@ -21,6 +21,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Handler;
 import android.provider.Settings;
 import android.widget.CompoundButton;
 import android.widget.Switch;
@@ -40,6 +41,20 @@ public final class BluetoothEnabler implements CompoundButton.OnCheckedChangeLis
     private boolean mValidListener;
     private final LocalBluetoothAdapter mLocalAdapter;
     private final IntentFilter mIntentFilter;
+    private int oldState = BluetoothAdapter.STATE_OFF;
+    final Handler mHandler = new Handler();
+    StateChanger mStateChanger;
+
+    public final class StateChanger implements Runnable {
+        private int newState;
+        public StateChanger(int _newState) {
+            this.newState = _newState;
+        }
+        public void run() {
+            oldState = newState;
+            handleStateChanged(newState);
+        }
+    }
 
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
@@ -47,7 +62,17 @@ public final class BluetoothEnabler implements CompoundButton.OnCheckedChangeLis
             // Broadcast receiver is always running on the UI thread here,
             // so we don't need consider thread synchronization.
             int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, BluetoothAdapter.ERROR);
-            handleStateChanged(state);
+            // Spam guard
+            if (((oldState == BluetoothAdapter.STATE_TURNING_ON) && (state == BluetoothAdapter.STATE_ON)) ||
+                ((oldState == BluetoothAdapter.STATE_TURNING_OFF) && (state == BluetoothAdapter.STATE_OFF))) {
+                mStateChanger = new StateChanger(state);
+                mHandler.postDelayed(mStateChanger, 2000);
+            } else {
+                mHandler.removeCallbacks(mStateChanger);
+                mStateChanger = new StateChanger(state);
+                mHandler.post(mStateChanger);
+                //handleStateChanged(state);
+            }
         }
     };
 
