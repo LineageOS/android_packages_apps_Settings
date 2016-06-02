@@ -27,4 +27,10 @@
 	android:title="@string/nettraffic_settings_title"
         android:summary="@string/nettraffic_settings_summary" />
 
+    <PreferenceScreen
+	android:fragment="com.android.settings.aim.fragments.ClockSettings" 
+	android:key="pure_clock_settings"
+	android:title="@string/clock_settings_title"
+	android:summary="@string/clock_settings_summary" />
+
 </PreferenceScreen>
