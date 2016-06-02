@@ -18,6 +18,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
   <plurals name="show_dev_countdown_cm">
+    <item quantity="one">شما اکنون <xliff:g id="step_count">%1$d</xliff:g> ضربه با فعال‌سازی ابزارهای توسعه فاصله دارید.</item>
     <item quantity="other">شما اکنون <xliff:g id="step_count">%1$d</xliff:g> ضربه با فعال‌سازی ابزارهای توسعه فاصله دارید.</item>
   </plurals>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
@@ -881,4 +882,9 @@
   <string name="interruptions_ignore_while_media_summary">میزان صدای رسانه هنگام دریافت اعلان کم نشود</string>
   <!-- CM Legal -->
   <string name="cmlicense_title">موارد حقوقی سایانوژن‌مود</string>
+  <!-- Per app controls for LP keyguard notifications -->
+  <string name="app_notification_show_on_keyguard_title">نمایش در قفل صفحه</string>
+  <string name="app_notification_show_on_keyguard_summary">نمایش اعلان‌های این برنامه در قفل صفحه</string>
+  <string name="app_notification_no_ongoing_on_keyguard_title">غیرفعال کردن اعلان‌های پایدار در قفل صفحه</string>
+  <string name="app_notification_no_ongoing_on_keyguard_summary">اعلان‌های پایدار این برنامه هرگز در قفل صفحه نشان داده نشود</string>
 </resources>
