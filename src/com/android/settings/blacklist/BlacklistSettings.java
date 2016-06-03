@@ -73,8 +73,11 @@ public class BlacklistSettings extends ListFragment
     private static final int COLUMN_PHONE = 2;
     private static final int COLUMN_MESSAGE = 3;
 
+    private static final String ENTRY_DIALOG_FRAGMENT_KEY = "entry_dialog";
+
     private BaseSystemSettingSwitchBar mEnabledSwitch;
     private boolean mLastEnabledState;
+    private EntryEditDialogFragment mEntryDialogFragment;
 
     private BlacklistAdapter mAdapter;
     private Cursor mCursor;
@@ -86,6 +89,20 @@ public class BlacklistSettings extends ListFragment
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = getActivity();
+
+        if (savedInstanceState != null) {
+            mEntryDialogFragment = (EntryEditDialogFragment)
+                    getFragmentManager().getFragment(savedInstanceState, ENTRY_DIALOG_FRAGMENT_KEY);
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (mEntryDialogFragment != null) {
+            getFragmentManager().putFragment(outState, ENTRY_DIALOG_FRAGMENT_KEY,
+                    mEntryDialogFragment);
+        }
     }
 
     @Override
@@ -196,8 +213,10 @@ public class BlacklistSettings extends ListFragment
     }
 
     private void showEntryEditDialog(long id) {
-        EntryEditDialogFragment fragment = EntryEditDialogFragment.newInstance(id);
-        fragment.show(getFragmentManager(), "blacklist_edit");
+        if (mEntryDialogFragment == null) {
+            mEntryDialogFragment = EntryEditDialogFragment.newInstance(id);
+        }
+        mEntryDialogFragment.show(getFragmentManager(), "blacklist_edit");
     }
 
     private void updateEnabledState() {
