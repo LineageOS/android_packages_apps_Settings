@@ -116,7 +116,7 @@ public class EntryEditDialogFragment extends DialogFragment
             public void onClick(View v) {
                 EntryEditDialogFragment parent = EntryEditDialogFragment.this;
                 DialogFragment confirm = DeleteConfirmationFragment.newInstance(parent);
-                confirm.show(getFragmentManager(), "delete_confirm");
+                confirm.show(getChildFragmentManager(), "delete_confirm");
             }
         });
 
@@ -299,7 +299,6 @@ public class EntryEditDialogFragment extends DialogFragment
         }
         public static DialogFragment newInstance(EntryEditDialogFragment parent) {
             DialogFragment fragment = new DeleteConfirmationFragment();
-            fragment.setTargetFragment(parent, 0);
             return fragment;
         }
 
@@ -317,7 +316,7 @@ public class EntryEditDialogFragment extends DialogFragment
 
         @Override
         public void onClick(DialogInterface dialog, int which) {
-            EntryEditDialogFragment parent = (EntryEditDialogFragment) getTargetFragment();
+            EntryEditDialogFragment parent = (EntryEditDialogFragment) getParentFragment();
             parent.onDeleteConfirmResult(which == DialogInterface.BUTTON_POSITIVE);
         }
     }
