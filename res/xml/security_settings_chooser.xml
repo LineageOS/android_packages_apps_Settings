@@ -61,6 +61,13 @@
             android:title="@string/lockscreen_weather_enabled_title"
             android:defaultValue="false"/>
 
+        <PreferenceScreen
+            android:key="lockscreen_wallpaper"
+            android:title="@string/lockscreen_wallpaper_title" >
+            <intent
+                android:action="android.intent.action.SET_KEYGUARD_WALLPAPER" />
+        </PreferenceScreen>
+
     </PreferenceCategory>
 
 </PreferenceScreen>
