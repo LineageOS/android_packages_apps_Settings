@@ -303,13 +303,6 @@ public class ManageApplications extends InstrumentedFragment
             lv.setItemsCanFocus(true);
             lv.setTextFilterEnabled(true);
             mListView = lv;
-            mApplications = new ApplicationsAdapter(mApplicationsState, this, mFilter);
-            if (savedInstanceState != null) {
-                mApplications.mHasReceivedLoadEntries =
-                        savedInstanceState.getBoolean(EXTRA_HAS_ENTRIES, false);
-            }
-            mListView.setAdapter(mApplications);
-            mListView.setRecyclerListener(mApplications);
 
             Utils.prepareCustomPreferencesList(container, mRootView, mListView, false);
         }
@@ -319,8 +312,6 @@ public class ManageApplications extends InstrumentedFragment
         if (container instanceof PreferenceFrameLayout) {
             ((PreferenceFrameLayout.LayoutParams) mRootView.getLayoutParams()).removeBorders = true;
         }
-
-        createHeader();
 
         mResetAppsHelper.onRestoreInstanceState(savedInstanceState);
 
@@ -366,6 +357,14 @@ public class ManageApplications extends InstrumentedFragment
             FrameLayout pinnedHeader = (FrameLayout) mRootView.findViewById(R.id.pinned_header);
             AppHeader.createAppHeader(getActivity(), null, mVolumeName, null, pinnedHeader);
         }
+        mApplications = new ApplicationsAdapter(mApplicationsState, this, mFilter);
+        if (savedInstanceState != null) {
+            mApplications.mHasReceivedLoadEntries =
+                    savedInstanceState.getBoolean(EXTRA_HAS_ENTRIES, false);
+        }
+        mListView.setAdapter(mApplications);
+        mListView.setRecyclerListener(mApplications);
+        createHeader();
     }
 
     private int getDefaultFilter() {
@@ -623,7 +622,10 @@ public class ManageApplications extends InstrumentedFragment
 
     @Override
     public void onResetCompleted() {
-        mApplications.mExtraInfoBridge.onPackageListChanged();
+        /* mExtraInfoBridge can be null when doing reset app preference without
+         * any changes on apps */
+        if (mApplications.mExtraInfoBridge != null)
+            mApplications.mExtraInfoBridge.onPackageListChanged();
     }
 
     static class FilterSpinnerAdapter extends ArrayAdapter<CharSequence> {
