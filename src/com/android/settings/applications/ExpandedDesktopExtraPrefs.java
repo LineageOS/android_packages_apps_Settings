@@ -28,6 +28,7 @@ import android.provider.Settings;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.ListPreference;
 import android.view.WindowManager;
+import android.view.WindowManagerGlobal;
 import android.view.WindowManagerPolicyControl;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
@@ -56,9 +57,17 @@ public class ExpandedDesktopExtraPrefs extends SettingsPreferenceFragment
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.expanded_desktop_prefs);
-        mExpandedDesktopStyle = getExpandedDesktopStyle();
-        createPreferences();
+        boolean hasNavigationBar = true;
+        try {
+            hasNavigationBar = WindowManagerGlobal.getWindowManagerService().hasNavigationBar();
+        } catch (RemoteException e) {
+            // Do nothing
+        }
+        if (hasNavigationBar) {
+            addPreferencesFromResource(R.xml.expanded_desktop_prefs);
+            mExpandedDesktopStyle = getExpandedDesktopStyle();
+            createPreferences();
+        }
     }
 
     @Override
