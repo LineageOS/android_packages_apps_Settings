@@ -16,8 +16,10 @@
 
 package com.android.settings.cyanogenmod;
 
+import android.app.admin.DevicePolicyManager;
 import com.android.internal.widget.LockPatternUtils;
 import com.android.settings.SecuritySettings;
+import com.android.settings.TrustAgentUtils;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.SearchIndexableRaw;
 
@@ -108,6 +110,21 @@ public class LockscreenSettingsAlias extends SecuritySettings {
                 data.title = res.getString(R.string.live_lock_screen_title);
                 data.screenTitle = screenTitle;
                 result.add(data);
+            }
+
+            // Advanced
+            final LockPatternUtils lockPatternUtils = new LockPatternUtils(context);
+            if (lockPatternUtils.isSecure(MY_USER_ID)) {
+                ArrayList<TrustAgentUtils.TrustAgentComponentInfo> agents =
+                        getActiveTrustAgents(context.getPackageManager(), lockPatternUtils,
+                                context.getSystemService(DevicePolicyManager.class));
+                for (int i = 0; i < agents.size(); i++) {
+                    final TrustAgentUtils.TrustAgentComponentInfo agent = agents.get(i);
+                    data = new SearchIndexableRaw(context);
+                    data.title = agent.title;
+                    data.screenTitle = screenTitle;
+                    result.add(data);
+                }
             }
 
             return result;
