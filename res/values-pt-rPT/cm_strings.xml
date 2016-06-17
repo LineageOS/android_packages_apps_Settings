@@ -396,7 +396,7 @@
   <string name="notification_light_title">Luz de notificação</string>
   <string name="notification_light_general_title">Geral</string>
   <string name="notification_light_applist_title">Aplicações</string>
-  <string name="notification_light_phonelist_title">Telemóvel</string>
+  <string name="notification_light_phonelist_title">Telefone</string>
   <string name="notification_light_use_custom">Utilizar valores personalizados</string>
   <string name="notification_light_default_value">Padrão</string>
   <string name="notification_light_missed_call_title">Chamada perdida</string>
@@ -460,6 +460,7 @@
   <string name="app_ops_summaries_media_volume">volume de multimédia</string>
   <string name="app_ops_summaries_alarm_volume">volume do alarme</string>
   <string name="app_ops_summaries_notification_volume">volume de notificações</string>
+  <string name="app_ops_summaries_bluetooth_volume">Volume do bluetooth</string>
   <string name="app_ops_summaries_keep_awake">manter o ecrã ligado</string>
   <string name="app_ops_summaries_monitor_location">vigiar a localização</string>
   <string name="app_ops_summaries_monitor_high_power_location">vigiar a localização de potência alta</string>
@@ -513,6 +514,7 @@
   <string name="app_ops_labels_media_volume">Volume multimédia</string>
   <string name="app_ops_labels_alarm_volume">Volume do alarme</string>
   <string name="app_ops_labels_notification_volume">Volume das notificações</string>
+  <string name="app_ops_labels_bluetooth_volume">Volume do bluetooth</string>
   <string name="app_ops_labels_keep_awake">Manter o ecrã ligado</string>
   <string name="app_ops_labels_get_usage_stats">Obter estatísticas de utilização</string>
   <string name="app_ops_labels_mute_unmute_microphone">Silenciar/ativar microfone</string>
@@ -520,6 +522,7 @@
   <string name="app_ops_labels_project_media">Projetar multimédia</string>
   <string name="app_ops_labels_activate_vpn">Ativar VPN</string>
   <string name="app_ops_labels_wifi_change">Mudar Wi\u2011Fi</string>
+  <string name="app_ops_labels_bluetooth_change">Alterar bluetooth</string>
   <string name="app_ops_labels_send_mms">Enviar MMS</string>
   <string name="app_ops_labels_read_mms">Ler MMS</string>
   <string name="app_ops_labels_write_mms">Escrever MMS</string>
@@ -579,6 +582,7 @@
   <string name="choose_ringtone">Selecione o toque do telefone</string>
   <!-- Sound settings screen, setting option name to pick ringtone (a list dialog comes up)-->
   <string name="soundtone_title">Toque de notificação</string>
+  <string name="no_bluetooth_triggers">Não há dispositivos bluetooth emparelhados.\nToque para emparelhar um dispositivo Bluetooth antes de configurar os atuadores.</string>
   <string name="no_wifi_triggers">Não há pontos de acesso Wi\u2011Fi configurados.\nToque para conectar o Wi\u2011Fi antes de configurar os atuadores.</string>
   <string name="no_triggers_configured">Não há atuadores configurados. Toque para adicionar.</string>
   <string name="no_triggers_configured_nfc">Toque para establecer um novo atuador NFC.</string>
@@ -789,21 +793,35 @@
   <string name="select_custom_app_title">Selecione uma aplicação personalizada</string>
   <string name="select_custom_activity_title">Selecione uma atividade personalizada</string>
   <!-- Performance settings -->
+  <string name="performance_settings_title">Desempenho</string>
   <!-- Performance Settings : I/O scheduler settings title -->
+  <string name="io_scheds_title">Escalonador I/O</string>
   <!-- Performance Settings : I/O scheduler settings sub items -->
+  <string name="io_sched_title">Escalonador I/O</string>
   <!-- Performance Settings : Performance profile settings -->
   <string name="perf_profile_title">Modo de bateria</string>
   <!-- Performance : Force high-end graphics -->
   <string name="pref_force_highend_gfx_title">Forçar gráficos de alta qualidade</string>
   <string name="pref_force_highend_gfx_summary">Ativa os efeitos visuais de alta qualidade como as barras de estado/navegação transparentes (requer reinicialização)</string>
   <!-- Performance Settings : Warning dialog -->
+  <string name="performance_settings_warning_title">Prosseguir com cautela</string>
+  <string name="performance_settings_warning">Estas definições são experimentais e quaisquer alterações feitas poderão causar instabilidade, falhas de sistema, perda de dados ou falha de hardware.\n\nPedimos que não nos enviem relatórios de erros se alguma destas definições for alterada.</string>
   <!-- Performance Settings : Set on boot option -->
+  <string name="performance_set_on_boot">Definir no arranque</string>
+  <string name="performance_set_on_boot_summary">Repor definições no arranque</string>
   <!-- Performance Settings : Processor Settings -->
   <!-- Performance Settings : Processor settings title -->
+  <string name="processor_title">Processador</string>
   <!-- Performance Settings : Processor settings sub items -->
+  <string name="cpu_cur_freq_title">Frequência atual do CPU</string>
+  <string name="cpu_governors_title">Governador do CPU</string>
+  <string name="cpu_min_freq_title">Frequência mínima do CPU</string>
+  <string name="cpu_max_freq_title">Frequência máxima do CPU</string>
   <!-- Automatic performance profiles -->
   <string name="autoperf_title">Ativar perfis por aplicação</string>
+  <string name="autoperf_summary">Escolher automaticamemte o perfil de desempenho adequado para várias aplicações</string>
   <!-- Performance menu, graphics options category -->
+  <string name="graphics_title">Gráficos e renderização</string>
   <!-- EdgeGesture service -->
   <string name="edge_gesture_service_title">Bloquear eventos de gestos</string>
   <string name="edge_gesture_service_summary">Não enviar às aplicações eventos de toque para os gestos na barra de navegação e estado</string>
@@ -1012,6 +1030,7 @@
   <string name="lock_to_cyanogen_create_account_msg">O dispositivo usa a palavra-passe da conta Cyanogen OS para proteger o seu dispositivo no caso de uma reposição dos dados de fábrica. Precisará de criar uma conta Cyanogen OS.</string>
   <string name="lock_to_cyanogen_disable_msg">Desativar esta funcionalidade permitirá que utilizadores não autorizados restaurem o telefone para os padrões de fábrica se ele for roubado. Os seus dados pessoais não podem ser protegidos. Quer desativar esta funcionalidade?</string>
   <string name="lock_to_cyanogen_master_clear_warning">A proteção do dispositivo está ativada. Por favor, desative-a para continuar a repor o seu dispositivo.</string>
+  <string name="bluetooth_pan_profile_summary_use_for_error">Erro de ligação; a partilha de internet por bluetooth está ativada neste dispositivo?</string>
   <!-- MSIM SIM status -->
   <string name="sim_card_status_title">Estado do SIM %d</string>
   <string name="sim_card_lock_settings_title">Definições de bloqueio do SIM %d</string>
