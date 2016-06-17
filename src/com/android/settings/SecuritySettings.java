@@ -1010,20 +1010,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
                 result.add(data);
             }
 
-            // Advanced
-            final LockPatternUtils lockPatternUtils = new LockPatternUtils(context);
-            if (lockPatternUtils.isSecure(MY_USER_ID)) {
-                ArrayList<TrustAgentComponentInfo> agents =
-                        getActiveTrustAgents(context.getPackageManager(), lockPatternUtils,
-                                context.getSystemService(DevicePolicyManager.class));
-                for (int i = 0; i < agents.size(); i++) {
-                    final TrustAgentComponentInfo agent = agents.get(i);
-                    data = new SearchIndexableRaw(context);
-                    data.title = agent.title;
-                    data.screenTitle = screenTitle;
-                    result.add(data);
-                }
-            }
+
             return result;
         }
 
@@ -1032,8 +1019,6 @@ public class SecuritySettings extends SettingsPreferenceFragment
             final List<String> keys = new ArrayList<String>();
 
             LockPatternUtils lockPatternUtils = new LockPatternUtils(context);
-            // Add options for lock/unlock screen
-            int resId = getResIdForLockUnlockScreen(context, lockPatternUtils);
 
             // Do not display SIM lock for devices without an Icc card
             TelephonyManager tm = TelephonyManager.getDefault();
