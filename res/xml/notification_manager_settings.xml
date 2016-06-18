@@ -38,6 +38,12 @@
             android:title="@string/lock_screen_notifications_title"
             android:persistent="false" />
 
+    <!-- Protect lockscreen notification actions -->
+    <com.android.settings.cyanogenmod.CMSecureSettingSwitchPreference
+            android:key="lock_screen_notification_protect_actions"
+            android:title="@string/lock_screen_protect_notification_actions_title"
+            android:summary="@string/lock_screen_protect_notification_actions_summary" />
+
     <!-- App notifications -->
     <PreferenceScreen
             android:key="app_notifications"

@@ -20,6 +20,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.preference.PreferenceCategory;
+import android.preference.SwitchPreference;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.util.Log;
@@ -42,10 +43,13 @@ public class NotificationManagerSettings extends SettingsPreferenceFragment
     private static final String TAG = NotificationManagerSettings.class.getSimpleName();
 
     private static final String KEY_LOCK_SCREEN_NOTIFICATIONS = "lock_screen_notifications";
+    private static final String KEY_LOCK_SCREEN_NOTIFICATION_PROTECT_ACTIONS =
+            "lock_screen_notification_protect_actions";
 
     private boolean mSecure;
     private int mLockscreenSelectedValue;
     private DropDownPreference mLockscreen;
+    private SwitchPreference mProtectLockscreenNotificationActions;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -58,6 +62,8 @@ public class NotificationManagerSettings extends SettingsPreferenceFragment
     // === Lockscreen (public / private) notifications ===
 
     private void initLockscreenNotifications() {
+        mProtectLockscreenNotificationActions = (SwitchPreference)
+                findPreference(KEY_LOCK_SCREEN_NOTIFICATION_PROTECT_ACTIONS);
         mLockscreen = (DropDownPreference) findPreference(KEY_LOCK_SCREEN_NOTIFICATIONS);
         if (mLockscreen == null) {
             Log.i(TAG, "Preference not found: " + KEY_LOCK_SCREEN_NOTIFICATIONS);
@@ -87,6 +93,8 @@ public class NotificationManagerSettings extends SettingsPreferenceFragment
                 Settings.Secure.putInt(getContentResolver(),
                         Settings.Secure.LOCK_SCREEN_SHOW_NOTIFICATIONS, enabled ? 1 : 0);
                 mLockscreenSelectedValue = val;
+                mProtectLockscreenNotificationActions.setEnabled(mLockscreenSelectedValue ==
+                        R.string.lock_screen_notifications_summary_show && mSecure);
                 return true;
             }
         });
@@ -102,6 +110,8 @@ public class NotificationManagerSettings extends SettingsPreferenceFragment
                 allowPrivate ? R.string.lock_screen_notifications_summary_show :
                         R.string.lock_screen_notifications_summary_hide;
         mLockscreen.setSelectedValue(mLockscreenSelectedValue);
+        mProtectLockscreenNotificationActions.setEnabled(mLockscreenSelectedValue ==
+                R.string.lock_screen_notifications_summary_show && mSecure);
     }
 
     private boolean getLockscreenNotificationsEnabled() {
