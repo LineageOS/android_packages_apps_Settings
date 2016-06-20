@@ -56,11 +56,14 @@ public class SimDialogActivity extends Activity {
 
     public static String PREFERRED_SIM = "preferred_sim";
     public static String DIALOG_TYPE_KEY = "dialog_type";
+    public static String HIDE_ALWAYS_ASK_KEY = "hide_always_ask";
     public static final int INVALID_PICK = -1;
     public static final int DATA_PICK = 0;
     public static final int CALLS_PICK = 1;
     public static final int SMS_PICK = 2;
     public static final int PREFERRED_PICK = 3;
+
+    private boolean mHideAlwaysAsk = false;
 
     private IExtTelephony mExtTelephony = IExtTelephony.Stub.
             asInterface(ServiceManager.getService("extphone"));
@@ -70,6 +73,7 @@ public class SimDialogActivity extends Activity {
         super.onCreate(savedInstanceState);
         final Bundle extras = getIntent().getExtras();
         final int dialogType = extras.getInt(DIALOG_TYPE_KEY, INVALID_PICK);
+        mHideAlwaysAsk = extras.getBoolean(HIDE_ALWAYS_ASK_KEY, false);
 
         switch (dialogType) {
             case DATA_PICK:
@@ -248,8 +252,10 @@ public class SimDialogActivity extends Activity {
                     telecomManager.getCallCapablePhoneAccounts().listIterator();
             PhoneAccountHandle defaultPhoneAccount =
                     telecomManager.getUserSelectedOutgoingPhoneAccount();
-            list.add(getResources().getString(R.string.sim_calls_ask_first_prefs_title));
-            callsSubInfoList.add(null);
+            if (!mHideAlwaysAsk) {
+                list.add(getResources().getString(R.string.sim_calls_ask_first_prefs_title));
+                callsSubInfoList.add(null);
+            }
             while (phoneAccounts.hasNext()) {
                 final PhoneAccount phoneAccount =
                         telecomManager.getPhoneAccount(phoneAccounts.next());
@@ -268,8 +274,10 @@ public class SimDialogActivity extends Activity {
                 }
             }
         } else if ((id == SMS_PICK)){
-            list.add(getResources().getString(R.string.sim_calls_ask_first_prefs_title));
-            smsSubInfoList.add(null);
+            if (!mHideAlwaysAsk) {
+                list.add(getResources().getString(R.string.sim_calls_ask_first_prefs_title));
+                smsSubInfoList.add(null);
+            }
             SubscriptionInfo defaultSub = subscriptionManager.getActiveSubscriptionInfo(
                     SubscriptionManager.getDefaultSmsSubId());
             boolean isSMSPrompt = false;
@@ -345,6 +353,9 @@ public class SimDialogActivity extends Activity {
                 finish();
             }
         });
+        // make sure the user doesn't click out accidentally and we keep spamming them
+        // with dialogs
+        dialog.setCancelable(false);
 
         return dialog;
 
