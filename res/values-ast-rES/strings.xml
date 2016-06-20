@@ -26,7 +26,9 @@
   <!-- Strings for Dialog deny button -->
   <string name="deny">Refugar</string>
   <!-- Strings for Dialog close button [CHAR LIMIT=20] -->
+  <string name="dlg_close">Zarrar</string>
   <!-- Strings for Dialog switch button [CHAR LIMIT=20] -->
+  <string name="dlg_switch">Camudar</string>
   <!-- Device Info -->
   <!-- Device Info screen. Used for a status item's value when the proper value is not known -->
   <string name="device_info_default">Desconocíu</string>
@@ -195,6 +197,7 @@
   <!-- Bluetooth settings.  Message for disconnecting from all profiles of a bluetooth device. [CHAR LIMIT=NONE] -->
   <string name="bluetooth_disconnect_all_profiles">Va finar la conexón con&lt;br&gt;&lt;b&gt;<xliff:g id="DEVICE_NAME">%1$s</xliff:g>&lt;/b&gt;.</string>
   <!-- Bluetooth Settings. text displayed when user has restriction DISALLOW_CONFIG_BLUETOOTH [CHAR LIMIT=NONE]-->
+  <string name="bluetooth_empty_list_user_restricted">Nun tienes permisu pa camudar los axustes de Bluetooth.</string>
   <!-- Bluetooth Visibility message.  This message informs the user that their device is now visible to other bluetooth devices.  [CHAR LIMIT=NONE] -->
   <!-- Bluetooth Visibility discoonect question.  Asks the user if they wish to disconnect a paired bluetooth device.  [CHAR LIMIT=50] -->
   <string name="bluetooth_is_disconnect_question">Desconeutar <xliff:g id="device_name">%1$s</xliff:g>?</string>
@@ -224,6 +227,7 @@
   <!-- Strings for dialog title when asking to the user whether to allow an app to enable discovery mode -->
   <string name="bluetooth_permission_request">"Solicitú de permisu de Bluetooth"</string>
   <!-- This string asks the user whether or not to allow an app to enable bluetooth. [CHAR LIMIT=100] -->
+  <string name="bluetooth_ask_enablement">Una app quier activar Bluetooth nesti preséu.</string>
   <!-- Strings for asking to the user whether to allow an app to enable discovery mode -->
   <string name="bluetooth_ask_discovery" product="tablet">Una aplicación quier facer visible la to tablet pa otros preseos Bluetooth mientres <xliff:g id="TIMEOUT">%1$d</xliff:g> segundos.</string>
   <!-- Strings for asking to the user whether to allow an app to enable discovery mode -->
@@ -261,13 +265,17 @@
   <!-- Bluetooth phone book permission Alert Activity text [CHAR LIMIT=none] -->
   <string name="bluetooth_pb_acceptance_dialog_text">%1$s quier acceder a los contautos y al historial de llamaes. ¿Quies permitir l\'accesu a %2$s?</string>
   <!-- Bluetooth phone book permission Alert Activity checkbox text [CHAR LIMIT=none] -->
+  <string name="bluetooth_remember_choice">Nun volver a entrugar</string>
   <!--FIXME SHOULD BE REMOVED AND ALL LANG VERSIONS FIXED TO ABOVE NAME -->
+  <string name="bluetooth_pb_remember_choice">Nun volver a entrugar</string>
   <!-- Activity label of BluetoothMessagePermissionActivity, also used as Strings in the permission dialog [CHAR LIMIT=none] -->
   <string name="bluetooth_map_request">"Solicitú d'accesu a mensaxes"</string>
   <!-- Bluetooth message permission Alert Activity text [CHAR LIMIT=none] -->
   <string name="bluetooth_map_acceptance_dialog_text">%1$s quier acceder a los mensaxes. ¿Quies permitir l\'accesu a %2$s?</string>
   <!-- Activity label of BluetoothMessagePermissionActivity for SIM access profile. Also used as Strings in the permission dialog [CHAR LIMIT=none] -->
+  <string name="bluetooth_sap_request">"Solicitú d'accesu a SIM"</string>
   <!-- Bluetooth SIM access permission Alert Activity text [CHAR LIMIT=none] -->
+  <string name="bluetooth_sap_acceptance_dialog_text"><xliff:g id="device_name">%1$s</xliff:g> quier acceder a la to tarxeta SIM. Dar laude pal accesu de la tarxeta SIM, deshabilitará los datos de coneutividá nel to preséu na duración de la conexón. ¿Dar accesu a <xliff:g id="device_name">%2$s</xliff:g>?</string>
   <!-- Date & time settings screen title -->
   <string name="date_and_time">Data y hora</string>
   <!-- The title of the activity to pick a time zone. -->
@@ -312,12 +320,15 @@
   <!-- HTTP proxy settings. Button to get rid of error box-->
   <string name="proxy_error_dismiss">Aceutar</string>
   <!-- HTTP proxy settings. The error if the hostname is not valid -->
+  <string name="proxy_error_invalid_host">El nome de host inxertáu nun ye válidu.</string>
   <!-- HTTP proxy settings. The error if the exclusion list is not valid -->
+  <string name="proxy_error_invalid_exclusion_list">La llista d\'esclusión qu\'escribisti nun ye correcta. Escribi una llista separtada por comes de dominios escluyíos.</string>
   <!-- HTTP proxy settings. Error msg -->
   <string name="proxy_error_empty_port">Tienes de completar el campu de puertu.</string>
   <!-- HTTP proxy settings. Error msg -->
   <string name="proxy_error_empty_host_set_port">El campu de puertu tien de tar baleru si\'l campu de host tamién lo ta.</string>
   <!-- HTTP proxy settings. Error msg -->
+  <string name="proxy_error_invalid_port">El nome de host inxertáu nun ye válidu.</string>
   <!-- HTTP proxy settings. Warning message about limited application support [CHAR LIMIT=100]-->
   <string name="proxy_warning_limited_support">El restolador usa\'l proxy HTTP, pero nun puen usalu otres aplicaciones.</string>
   <!-- HTTP proxy settings. Title for Proxy-Auto Config URL.  [CHAR LIMIT=25] -->
@@ -417,7 +428,9 @@
   <!-- Message when the SD card is being used by the computer as mass storage -->
   <string name="sdcard_settings_mass_storage_status" product="default">La tarxeta SD ta usándose como preséu d\'almacenamientu masivu.</string>
   <!-- Message when it is safe to remove the SD card [CHAR LIMIT=30] -->
+  <string name="sdcard_settings_unmounted_status" product="nosdcard">Ye seguro estrayer l\'almacenamientu USB.</string>
   <!-- Message when it is safe to remove the SD card -->
+  <string name="sdcard_settings_unmounted_status" product="default">Ye seguro estrayer la tarxeta SD.</string>
   <!-- Error message when the SD card was removed without properly unmounting [CHAR LIMIT=30] -->
   <string name="sdcard_settings_bad_removal_status" product="nosdcard">USB estrayíu n\'usu</string>
   <!-- Error message when the SD card was removed without properly unmounting -->
@@ -483,11 +496,14 @@
   <!-- Wireless Settings screen title for things like Wi-Fi, bluetooth, airplane mode. -->
   <string name="wireless_networks_settings_title">Conexones inalámbriques y redes</string>
   <!-- Main Settings screen settings summary text for the "Wireless controls" setting -->
+  <string name="radio_controls_summary">Alministrar Wi‑Fi, Bluetooth, mou avión, redes móviles y redes VPN</string>
   <!-- check box cellular data title [CHAR LIMIT=30] -->
+  <string name="cellular_data_title">Datos móviles</string>
   <!-- check box Calls title [CHAR LIMIT=30] -->
   <string name="calls_title">Llamaes</string>
   <!-- check box SMS Messges title [CHAR LIMIT=30] -->
   <!-- check box cellular data summary [CHAR LIMIT=41] -->
+  <string name="cellular_data_summary">Permitir usu de datos en redes móviles</string>
   <!-- check box to allow data usage when roaming [CHAR LIMIT=41] -->
   <string name="allow_data_usage_title">Permitir usu de datos n\'itinerancia</string>
   <!-- mobile network settings screen, setting check box title -->
@@ -567,11 +583,13 @@
   <!-- Security settings screen, setting option summary to change screen timeout -->
   <string name="lock_after_timeout_summary">Tres <xliff:g id="TIMEOUT_STRING">%1$s</xliff:g> dempués de suspender</string>
   <!-- Security settings screen, setting option summary to change screen timeout, with additional explanation-->
+  <string name="lock_immediately_summary_with_exception">Inmediatamente dempués de la suspensión, sacante cuando <xliff:g id="trust_agent_name">%1$s</xliff:g> caltién la pantalla desbloquiada</string>
   <!-- Security settings screen, setting option summary to change screen timeout, with additional explanation-->
   <string name="lock_after_timeout_summary_with_exception"><xliff:g id="timeout_string">%1$s</xliff:g> dempués d\'activar el mou de suspensión, sacante si <xliff:g id="trust_agent_name">%2$s</xliff:g> caltién el preséu desbloquiáu</string>
   <!-- Text shown next to checkbox for showing owner info on LockScreen [CHAR LIMIT=50]-->
   <string name="show_owner_info_on_lockscreen_label">Amosar datos del propietariu na pantalla de bloquéu</string>
   <!-- Text shown for title of owner info setting [CHAR LIMIT=20]-->
+  <string name="owner_info_settings_title">Mensaxe bloq. pant.</string>
   <!-- Text shown for title of settings checkbox to enable widgets [CHAR LIMIT=20]-->
   <string name="security_enable_widgets_title">Habilitar widgets</string>
   <!-- Summary for settings checkbox to disable widgets when the setting has been disabled by an installed device admin [CHAR LIMIT=50] -->
@@ -579,7 +597,9 @@
   <!-- Text shown for summary of owner info setting (if none set) [CHAR LIMIT=40]-->
   <string name="owner_info_settings_summary">Ensin seguridá</string>
   <!-- Description of how many characters are used in owner info [CHAR LIMIT=40]-->
+  <string name="owner_info_settings_status"><xliff:g id="count" example="90">%1$d</xliff:g> / <xliff:g id="count" example="100">%2$d</xliff:g></string>
   <!-- Hint text shown in owner info edit text [CHAR LIMIT=50] -->
+  <string name="owner_info_settings_edit_text_hint">Por exemplu, Android de Xurde.</string>
   <!-- Text shown for title of user info setting [CHAR LIMIT=20]-->
   <string name="user_info_settings_title">Información del usuariu</string>
   <!-- Text shown next to checkbox for showing profile info on LockScreen [CHAR LIMIT=50]-->
@@ -602,20 +622,34 @@
   <string name="security_passwords_title">Contraseñes</string>
   <!-- Fingerprint enrollment and settings -->
   <!-- Title shown for menu item that launches fingerprint settings or enrollment [CHAR LIMIT=22] -->
+  <string name="security_settings_fingerprint_preference_title">Buelga dixital</string>
   <!-- Fingerprint managment category title - configuration options for managing enrolled fingerprints [CHAR LIMIT=22] -->
+  <string name="fingerprint_manage_category_title">Remanar buelgues dixitales</string>
   <!-- Fingerprint category title - configuration options for managing fingerprint enrollment [CHAR LIMIT=22] -->
+  <string name="fingerprint_usage_category_title">Usar buelga dixital pa</string>
   <!-- Preference to add another fingerprint -->
+  <string name="fingerprint_add_title">Amestar buelga dixital</string>
   <!-- switch for allowing fingerprint to be used for keyguard -->
+  <string name="fingerprint_enable_keyguard_toggle_title">bloquéu de pantalla</string>
   <!-- message shown for menu item that launches fingerprint settings or enrollment -->
+  <plurals name="security_settings_fingerprint_preference_summary">
+    <item quantity="one">Configuróse <xliff:g id="count">%1$d</xliff:g> buelga dixital</item>
+    <item quantity="other">Configuráronsese <xliff:g id="count">%1$d</xliff:g> buelgues dixitales</item>
+  </plurals>
   <!-- message shown in summary field when no fingerprints are registered -->
   <!-- Introduction title shown in fingerprint enrollment dialog [CHAR LIMIT=29] -->
+  <string name="security_settings_fingerprint_enroll_onboard_title">Configuración de buelga dixital</string>
   <!-- Introduction message shown in fingerprint enrollment dialog when the user needs to choose an
          alternate screen unlock (pin, pattern or password) as a backup to fingerprint. -->
+  <string name="security_settings_fingerprint_enroll_onboard_message">Si quies usar la to buelga dixital pa desbloquiar la pantalla o confirmar compres, tienes de facer lo siguiente:</string>
   <!-- Introduction message shown in fingerprint enrollment dialog, first item to describe what
          the user needs to do. -->
+  <string name="security_settings_fingerprint_enroll_onboard_message_1">Axustar el métodu secundariu de bloquéu de pantalla</string>
   <!-- Introduction message shown in fingerprint enrollment dialog, second item to describe what
          the user needs to do. -->
+  <string name="security_settings_fingerprint_enroll_onboard_message_2">Amestar buelga dixital</string>
   <!-- Introduction title shown in fingerprint enrollment to introduce the fingerprint feature[CHAR LIMIT=29] -->
+  <string name="security_settings_fingerprint_enroll_introduction_title">Desbloquiar con buelga dixital</string>
   <!-- Introduction detail message shown in fingerprint enrollment dialog [CHAR LIMIT=NONE]-->
   <!-- Introduction detail message shown in fingerprint enrollment dialog to warn the user [CHAR LIMIT=NONE]-->
   <!-- Link text shown bellow the warning to learn morn about fingerprint risk [CHAR LIMIT=22]-->
@@ -636,10 +670,14 @@
   <!-- Title shown in fingerprint enrollment dialog to begin enrollment [CHAR LIMIT=29]-->
   <!-- Message shown in fingerprint enrollment dialog to begin enrollment [CHAR LIMIT=NONE] -->
   <!-- Title shown in fingerprint enrollment dialog to repeat touching the fingerprint sensor [CHAR LIMIT=29] -->
+  <string name="security_settings_fingerprint_enroll_repeat_title">¡Perfeuto! Agora repiti</string>
   <!-- Message shown in fingerprint enrollment dialog to repeat touching the fingerprint sensor [CHAR LIMIT=NONE] -->
   <!-- Title shown in fingerprint enrollment dialog once enrollment is completed [CHAR LIMIT=29] -->
+  <string name="security_settings_fingerprint_enroll_finish_title">¡Amestóse la buelga!</string>
   <!-- Message shown in fingerprint enrollment dialog once enrollment is completed -->
+  <string name="security_settings_fingerprint_enroll_finish_message">Siempres que veas esti iconu, podrás usar la to buelga pa identificate o dar laude a una merca.</string>
   <!-- Message shown when fingerprint enrollment is completed during setup wizard [CHAR LIMIT=NONE] -->
+  <string name="setup_fingerprint_enroll_finish_message">Namái toca\'l sensor de buelgues pa esconsoñar y desbloquiar el to preséu.</string>
   <!-- Message shown when fingerprint enrollment is completed, telling user about the fingerprint icon that will be shown whenever they can use their fingerprint [CHAR LIMIT=NONE] -->
   <!-- Title of the dialog shown when the user tries to skip fingerprint setup, asking them to confirm the action [CHAR LIMIT=40] -->
   <!-- Content of the dialog shown when the user tries to skip fingerprint setup, asking them to confirm the action [CHAR LIMIT=NONE] -->
@@ -659,9 +697,13 @@
   <!-- Text shown in fingerprint enroll when we didn't observe progress for a few seconds. [CHAR LIMIT=100] -->
   <!-- Text shown when "Add fingerprint" button is disabled -->
   <!-- Title shown in a dialog which asks the user to confirm when the last fingerprint gets deleted by him. [CHAR LIMIT=35]-->
+  <string name="fingerprint_last_delete_title">¿Desaniciar toles buelgues?</string>
   <!-- Message shown in a dialog which asks the user to confirm when the last fingerprint gets deleted by him. [CHAR LIMIT=NONE]-->
+  <string name="fingerprint_last_delete_message">Nun sedrás a usar les tos buelgues pa desbloquiar el teléfonu, dar laude a merques o roblar n\'aplicaciones con elles.</string>
   <!-- Button to confirm the last removing the last fingerprint. [CHAR LIMIT=20]-->
+  <string name="fingerprint_last_delete_confirm">Sí, desaniciar</string>
   <!-- Content description for the fingerprint icon when the user is prompted to enter his credentials. Not shown on the screen. [CHAR LIMIT=NONE] -->
+  <string name="confirm_fingerprint_icon_content_description">Usa la to buelga pa siguir.</string>
   <!-- Title of the preferences category for preference items to control encryption -->
   <string name="crypt_keeper_settings_title">Cifráu</string>
   <!-- Title of the preferences item to control encryption -->
@@ -1024,8 +1066,11 @@
   <!-- Wifi Display settings. The dropdown menu title for choosing listen channel during certification process. [CHAR LIMIT=40] -->
   <!-- Wifi Display settings. The dropdown menu title for choosing operating channel during certification process. [CHAR LIMIT=40] -->
   <!-- Wifi 2.4GHz is used as an universal itendifier for 2.4GHz band -->
+  <string name="wifi_band_24ghz">2.4 GHz</string>
   <!-- Wifi Internal 5GHz as an universal itendifier for 5GHz band -->
+  <string name="wifi_band_5ghz">5 GHz</string>
   <!-- Link speed on Wifi Status screen -->
+  <string name="link_speed">%1$d Mbps</string>
   <!-- Wifi Alert message when tapping on a preference for a config locked down by device owner. [CHAR LIMIT=200] -->
   <!-- NFC settings -->
   <!-- Used in the 1st-level settings screen to turn on NFC -->
@@ -1417,6 +1462,10 @@
   <!-- Wireless networks, item title to go into the WFC settings [CHAR LIMIT=30] -->
   <!-- WFC mode [CHAR LIMIT=30] -->
   <!-- WFC mode dialog [CHAR LIMIT=30] -->
+  <string-array name="wifi_calling_mode_values">
+    <item>"2"</item>
+    <item>"1"</item>
+  </string-array>
   <!-- Wi-Fi Calling settings. Text displayed when Wi-Fi Calling is off -->
   <!-- Sound and alerts settings -->
   <!-- Main Settings screen setting option name to go into the display settings screen -->
@@ -1548,6 +1597,7 @@
   <string name="auto_brightness_summary">Optimiza\'l nivel de rellumu pa la lluz disponible</string>
   <!-- Sound & display settings screen, setting option name to change the user interface theme [CHAR LIMIT=30] -->
   <!-- Sound & display settings screen, setting option summary to change the user interface theme [CHAR LIMIT=100] -->
+  <string name="night_mode_summary">%s</string>
   <!-- Sound & display settings screen, theme setting value to prefer a light-colored user interface [CHAR LIMIT=30] -->
   <!-- Sound & display settings screen, theme setting value to prefer a dark-colored user interface [CHAR LIMIT=30] -->
   <!-- Sound & display settings screen, theme setting value to automatically switch between a light- or dark-colored user interface [CHAR LIMIT=30] -->
@@ -1761,6 +1811,7 @@
   <!-- SD card & phone storage settings title. Displayed as a title when showing the total usage of audio files in /sdcard on the device. Below it will be a number like "123.4 MB" indicating used storage. [CHAR LIMIT=50] -->
   <string name="memory_music_usage">Audiu (música, tonos, etc.)</string>
   <!-- SD card & phone storage settings title. Displayed as a title when showing the total usage of misc files on the device. Below it will be a number like "123.4 MB" indicating used storage. [CHAR LIMIT=50] -->
+  <string name="memory_media_misc_usage">Otros ficheros</string>
   <!-- Storage item representing all cached data on device. [CHAR LIMIT=48] -->
   <string name="memory_media_cache_usage">Datos almacenaos en caché</string>
   <!-- SD card & phone storage settings item title that will result in the phone unmounting the SD card.  This will be done before the user phyiscally removes the SD card from the phone.  Kind of like the "Safely remove" on some operating systems.   [CHAR LIMIT=25] -->
@@ -1808,7 +1859,9 @@
   <!-- SD card eject error dialog title   [CHAR LIMIT=30] -->
   <!-- SD card eject error dialog title   -->
   <!-- SD card eject error dialog text   [CHAR LIMIT=NONE] -->
+  <string name="dlg_error_unmount_text" product="nosdcard">Nun pudo desmontase l\'almacenamientu USB. Inténtalo dempués.</string>
   <!-- SD card eject error dialog text   -->
+  <string name="dlg_error_unmount_text" product="default">Nun pudo desmontase la tarxeta SD. Inténtalo dempués.</string>
   <!-- SD card unmount informative text   [CHAR LIMIT=NONE] -->
   <string name="unmount_inform_text" product="nosdcard">Va desactivase l\'almacenamientu USB.</string>
   <!-- SD card unmount informative text   [CHAR LIMIT=NONE] -->
@@ -1824,15 +1877,23 @@
   <!-- Storage setting.  Menu option for renaming a storage device [CHAR LIMIT=30]-->
   <string name="storage_menu_rename">Camudar nome</string>
   <!-- Storage setting.  Menu option for mounting a storage device [CHAR LIMIT=30]-->
+  <string name="storage_menu_mount">Montar</string>
   <!-- Storage setting.  Menu option for unmounting a storage device [CHAR LIMIT=30]-->
+  <string name="storage_menu_unmount">Espulsar</string>
   <!-- Storage setting.  Menu option for erasing and formatting a storage device [CHAR LIMIT=30]-->
+  <string name="storage_menu_format">Formatu</string>
   <!-- Storage setting.  Menu option for erasing and formatting a storage device [CHAR LIMIT=30]-->
+  <string name="storage_menu_format_public">Formatiar como almac. portátil</string>
   <!-- Storage setting.  Menu option for erasing and formatting a storage device [CHAR LIMIT=30]-->
+  <string name="storage_menu_format_private">Formatiar como almac. internu</string>
   <!-- Storage setting.  Menu option for migrating data to a storage device [CHAR LIMIT=30]-->
+  <string name="storage_menu_migrate">Migrar los datos</string>
   <!-- Storage setting.  Menu option for forgetting a storage device [CHAR LIMIT=30]-->
   <string name="storage_menu_forget">Desaniciar</string>
   <!-- Storage setting.  Menu option for setting up a storage device [CHAR LIMIT=30]-->
+  <string name="storage_menu_set_up">Configurar</string>
   <!-- Storage setting.  Menu option for exploring a storage device [CHAR LIMIT=30]-->
+  <string name="storage_menu_explore">Esplorar</string>
   <!-- Storage setting.  Title for USB transfer settings [CHAR LIMIT=30]-->
   <string name="storage_title_usb">Conexón USB a equipu</string>
   <!-- Storage setting.  USB connection category [CHAR LIMIT=30]-->
@@ -1844,26 +1905,48 @@
   <!-- Storage setting.  Title for PTP checkbox [CHAR LIMIT=30]-->
   <string name="usb_ptp_title">Cámara (PTP)</string>
   <!-- Storage setting.  Summary for PTP checkbox [CHAR LIMIT=NONE]-->
+  <string name="usb_ptp_summary">Permitir tresferir semeyes col software de la cámara y ficheros a equipos que nun almitan MTP</string>
   <!-- Storage setting.  Title for MIDI checkbox [CHAR LIMIT=30]-->
+  <string name="usb_midi_title">MIDI</string>
   <!-- Storage setting.  Summary for MIDI checkbox [CHAR LIMIT=NONE]-->
+  <string name="usb_midi_summary">Permite que les apps compatibles con MIDI funcionen con software MIDI per aciu d\'USB nel to equipu.</string>
   <!-- Section header above list of other users storage [CHAR LIMIT=32] -->
   <string name="storage_other_users">Otros usuarios</string>
   <!-- Section header above list of internal storage devices [CHAR LIMIT=30]-->
+  <string name="storage_internal_title">Almacenamientu del preséu</string>
   <!-- Section header above list of external storage devices [CHAR LIMIT=30]-->
+  <string name="storage_external_title">Almacenamientu portátil</string>
   <!-- Summary of a single storage volume, constrasting available and total storage space. [CHAR LIMIT=48]-->
+  <string name="storage_volume_summary"><xliff:g id="used" example="1.2GB">%1$s</xliff:g> n\'usu de <xliff:g id="total" example="32GB">%2$s</xliff:g></string>
   <!-- Summary of a single storage volume used space. [CHAR LIMIT=24] -->
+  <string name="storage_size_large"><xliff:g id="number" example="128">^1</xliff:g>"<small><small> <xliff:g id="unit" example="KB">^2</xliff:g>"</small></small></string>
   <!-- Summary of a single storage volume total space. [CHAR LIMIT=48]-->
+  <string name="storage_volume_used">Usaos de <xliff:g id="total" example="32GB">%1$s</xliff:g></string>
   <!-- Summary of a single storage volume total space. [CHAR LIMIT=48]-->
+  <string name="storage_volume_used_total">Usu total de <xliff:g id="total" example="32GB">%1$s</xliff:g></string>
   <!-- Toast informing that storage mount operation was successful. [CHAR LIMIT=64]-->
+  <string name="storage_mount_success"><xliff:g id="name" example="SD card">%1$s</xliff:g> ta montáu</string>
   <!-- Toast informing that storage unmount operation failed. [CHAR LIMIT=64]-->
+  <string name="storage_mount_failure">Nun pudo montase <xliff:g id="name" example="SD card">%1$s</xliff:g></string>
   <!-- Toast informing that storage unmount operation was successful. [CHAR LIMIT=64]-->
+  <string name="storage_unmount_success"><xliff:g id="name" example="SD card">%1$s</xliff:g> espulsóse de mou seguru</string>
   <!-- Toast informing that storage unmount operation failed. [CHAR LIMIT=64]-->
+  <string name="storage_unmount_failure"><xliff:g id="name" example="SD card">%1$s</xliff:g> nun pudo espulsase de mou seguru</string>
   <!-- Toast informing that storage format operation was successful. [CHAR LIMIT=64]-->
+  <string name="storage_format_success"><xliff:g id="name" example="SD card">%1$s</xliff:g> formatióse</string>
   <!-- Toast informing that storage format operation failed. [CHAR LIMIT=64]-->
+  <string name="storage_format_failure">Nun pudo montase <xliff:g id="name" example="SD card">%1$s</xliff:g></string>
   <!-- Title of dialog prompting user to rename a storage volume [CHAR LIMIT=32]-->
+  <string name="storage_rename_title">Renomar almacenamientu</string>
   <!-- Dialog body informing user about an unmounted storage device. [CHAR LIMIT=NONE]-->
+  <string name="storage_dialog_unmounted">Esti <xliff:g id="name" example="SD card">^1</xliff:g> espulsóse de mou seguru pero aínda ta disponible.
+\n\nPa usar <xliff:g id="name" example="SD card">^1</xliff:g>, tienes d\'activalu primero.</string>
   <!-- Dialog body informing user about an unmountable storage device. [CHAR LIMIT=NONE]-->
+  <string name="storage_dialog_unmountable"><xliff:g id="name" example="SD card">^1</xliff:g> ta toyíu.
+\n\nPa usar <xliff:g id="name" example="SD card">^1</xliff:g>, tienes de configuralo primero.</string>
   <!-- Dialog body informing user about an unsupported storage device. [CHAR LIMIT=NONE]-->
+  <string name="storage_dialog_unsupported">Esti preséu nun sofita <xliff:g id="name" example="SD card">^1</xliff:g>.
+\n\nPa usar <xliff:g id="name" example="SD card">^1</xliff:g> nesti preséu, tienes de configuralo primero.</string>
   <!-- Body of dialog informing user about consequences of formatting an internal storage device [CHAR LIMIT=NONE]-->
   <!-- Body of dialog informing user about consequences of ejecting an internal storage device [CHAR LIMIT=NONE]-->
   <!-- Body of dialog informing user about consequences of forgetting an internal storage device [CHAR LIMIT=NONE]-->
@@ -1872,7 +1955,9 @@
   <!-- Item title describing storage used by apps [CHAR LIMIT=48]-->
   <string name="storage_detail_apps">Aplicaciones</string>
   <!-- Item title describing storage used by images [CHAR LIMIT=48]-->
+  <string name="storage_detail_images">Imáxenes</string>
   <!-- Item title describing storage used by videos [CHAR LIMIT=48]-->
+  <string name="storage_detail_videos">Vídeos</string>
   <!-- Item title describing storage used by audio [CHAR LIMIT=48]-->
   <string name="storage_detail_audio">Audiu</string>
   <!-- Item title describing storage used by cached data [CHAR LIMIT=48]-->
@@ -1887,6 +1972,7 @@
   <!-- Title of wizard choice to use storage device as internal storage [CHAR LIMIT=64] -->
   <!-- Summary of wizard choice to use storage device as internal storage [CHAR LIMIT=NONE] -->
   <!-- Title of wizard step prompting user to format a storage device [CHAR LIMIT=32] -->
+  <string name="storage_wizard_format_confirm_title">Formatiar como almacenamientu internu</string>
   <!-- Body of wizard step prompting user to format a storage device [CHAR LIMIT=NONE] -->
   <!-- Title of wizard step prompting user to format a storage device [CHAR LIMIT=32] -->
   <!-- Body of wizard step prompting user to format a storage device [CHAR LIMIT=NONE] -->
@@ -1896,12 +1982,16 @@
   <!-- Title of wizard step prompting user to migrate data to new storage [CHAR LIMIT=32] -->
   <!-- Body of wizard step prompting user to migrate data to new storage [CHAR LIMIT=NONE] -->
   <!-- Title of wizard choice to migrate data right now [CHAR LIMIT=64] -->
+  <string name="storage_wizard_migrate_now">Mover agora</string>
   <!-- Title of wizard choice to migrate data at later time [CHAR LIMIT=NONE] -->
+  <string name="storage_wizard_migrate_later">Mover más sero</string>
   <!-- Title of wizard step prompting user to start data migration [CHAR LIMIT=32] -->
+  <string name="storage_wizard_migrate_confirm_title">Mover datos agora</string>
   <!-- Body of wizard step providing details about data migration [CHAR LIMIT=NONE] -->
   <!-- Title of wizard button prompting user to start data migration [CHAR LIMIT=32] -->
   <string name="storage_wizard_migrate_confirm_next">Mover</string>
   <!-- Title of wizard step showing migration progress [CHAR LIMIT=32] -->
+  <string name="storage_wizard_migrate_progress_title">Moviendo datos\u2026</string>
   <!-- Body of wizard step providing details about data migration [CHAR LIMIT=NONE] -->
   <!-- Title of wizard step indicating that storage is ready [CHAR LIMIT=32] -->
   <!-- Body of wizard step indicating that external storage is ready [CHAR LIMIT=NONE] -->
@@ -2067,6 +2157,7 @@
   <!-- USB tethered subtext - shown when USB is connected and being tethered -->
   <string name="usb_tethering_active_subtext">Ancláu a rede</string>
   <!-- USB storage subtext - shown when tethering is disabled because USB storage is active -->
+  <string name="usb_tethering_storage_active_subtext">Nun pue facese l\'anclaxe a rede si l\'almacenamientu USB ta n\'usu</string>
   <!-- USB unavailable subtext - shown when USB is not connected -->
   <string name="usb_tethering_unavailable_subtext">USB non coneutáu</string>
   <!-- USB unavailable subtext - shown when USB is not connected -->
@@ -2077,24 +2168,37 @@
   <!-- Label for bluetooth tether checkbox [CHAR LIMIT=25]-->
   <string name="bluetooth_tether_checkbox_text">Anclaxe de Bluetooth</string>
   <!-- Bluetooth available subtext - shown when Bluetooth tethering is turned on but it is not currently tethered to any devices [CHAR LIMIT=50]-->
+  <string name="bluetooth_tethering_available_subtext" product="tablet">Compartiendo conexón a Internet de la tablet</string>
   <!-- Bluetooth available subtext - shown when Bluetooth tethering is turned on but it is not currently tethered to any devices [CHAR LIMIT=50]-->
+  <string name="bluetooth_tethering_available_subtext" product="default">Compartiendo conexón a Internet del teléfonu</string>
   <!-- Bluetooth connected subtext - shown when a device is tethered over Bluetooth [CHAR LIMIT=60]-->
+  <string name="bluetooth_tethering_device_connected_subtext" product="tablet">Compartiendo conexón a Internet de la tablet con 1 preséu</string>
   <!-- Bluetooth connected subtext - shown when a device is tethered over Bluetooth [CHAR LIMIT=60]-->
+  <string name="bluetooth_tethering_device_connected_subtext" product="default">Compartiendo conexón a Internet del teléfonu con 1 preséu</string>
   <!-- Bluetooth connected subtext - shown when multiple devices are tethered over Bluetooth [CHAR LIMIT=60]-->
+  <string name="bluetooth_tethering_devices_connected_subtext" product="tablet">Compartiendo conexón a Internet de la tablet con <xliff:g id="connectedDeviceCount">%1$d</xliff:g> preseos</string>
   <!-- Bluetooth connected subtext - shown when multiple devices are tethered over Bluetooth [CHAR LIMIT=60]-->
+  <string name="bluetooth_tethering_devices_connected_subtext" product="default">Compartiendo conexón a Internet del teléfonu con <xliff:g id="connectedDeviceCount">%1$d</xliff:g> preseos</string>
   <!-- Bluetooth tethering off subtext - shown when Bluetooth Tethering is turned off [CHAR LIMIT=50]-->
+  <string name="bluetooth_tethering_off_subtext_config">Compartiendo la conexón a Internet de <xliff:g id="device_name">%1$d</xliff:g></string>
   <!-- Bluetooth tethering off subtext - shown when Bluetooth Tethering is turned off [CHAR LIMIT=50]-->
+  <string name="bluetooth_tethering_off_subtext" product="tablet">Nun se ta compartiendo conexón a Internet de la tablet</string>
   <!-- Bluetooth tethering off subtext - shown when Bluetooth Tethering is turned off [CHAR LIMIT=50]-->
+  <string name="bluetooth_tethering_off_subtext" product="default">Nun se ta compartiendo conexón a Internet del teléfonu</string>
   <!-- Bluetooth errored subtext - shown when Bluetooth is broken for some reason [CHAR LIMIT=50]-->
   <string name="bluetooth_tethering_errored_subtext">Non ancláu</string>
   <!-- Bluetooth Tethering settings. Error message shown when trying to connect an 8th device [CHAR LIMIT=50]-->
+  <string name="bluetooth_tethering_overflow_error">Nun pue anclase a más de <xliff:g id="maxConnection">%1$d</xliff:g> preseos.</string>
   <!-- Bluetooth Tethering settings.  Message for untethering from a bluetooth device [CHAR LIMIT=50]-->
   <string name="bluetooth_untether_blank">Va desactivase l\'anclaxe a rede de <xliff:g id="DEVICE_NAME">%1$s</xliff:g>.</string>
   <!-- Tethering help button - calls up a web view with general tethering info -->
   <string name="tethering_help_button_text">Ayuda</string>
   <!-- Wireless controls, item title to go into the network settings -->
+  <string name="network_settings_title">Redes móviles</string>
   <!-- Mobile plan [CHAR LIMIT=35]-->
+  <string name="manage_mobile_plan_title" translatable="true">Plan móvil</string>
   <!-- SMS Application [CHAR LIMIT=35]-->
+  <string name="sms_application_title" translatable="true">Aplicación de SMS</string>
   <string name="sms_change_default_dialog_title" translatable="true">¿Camudar aplicación de SMS?</string>
   <string name="sms_change_default_dialog_text" translatable="true">Usar <xliff:g id="new_app">%1$s</xliff:g> en cuenta de <xliff:g id="current_app">%2$s</xliff:g> como aplicación de SMS?</string>
   <string name="sms_change_default_no_previous_dialog_text" translatable="true">¿Usar <xliff:g id="NEW_APP">%s</xliff:g> como aplicación de SMS?</string>
@@ -2140,17 +2244,31 @@
   <!-- [CHAR LIMIT=30] Location mode screen, screen title -->
   <string name="location_mode_screen_title">Mou de llocalización</string>
   <!-- [CHAR LIMIT=130] Location mode screen, description for high accuracy mode -->
+  <string name="location_mode_high_accuracy_description">Usar GPS, Wi-Fi, Bluetooth o redes móviles pa determinar la llocalización </string>
   <!-- [CHAR LIMIT=130] Location mode screen, description for battery saving mode -->
+  <string name="location_mode_battery_saving_description">Usar Wi-Fi, Bluetooth o redes móviles pa determinar la llocalización</string>
   <!-- [CHAR LIMIT=130] Location mode screen, description for sensors only mode -->
+  <string name="location_mode_sensors_only_description">Determinar llocalización con GPS</string>
   <!-- Help menu label [CHAR LIMIT=20] Location settings screen, overflow menu that takes the user
       to scanning settings activity -->
+  <string name="location_menu_scanning">Analizando</string>
   <!-- [CHAR LIMIT=30] Wireless background scanning settings screen, screen title -->
+  <string name="location_scanning_screen_title">Analizando</string>
   <!-- [CHAR LIMIT=130] Preference title for Wi-Fi always scanning -->
+  <string name="location_scanning_wifi_always_scanning_title">Escanéu Wi‑Fi</string>
   <!-- Preference description text for Wi-Fi always scanning -->
+  <string name="location_scanning_wifi_always_scanning_description">Ameyorar precisión de la llocalización
+      permitiendo que los servicios y les apps del sistema deteuten redes Wi-Fi en cualquier momentu.</string>
   <!-- [CHAR LIMIT=130] Description text for Bluetooth always scanning -->
+  <string name="location_scanning_bluetooth_always_scanning_title">Escanéu de Bluetooth</string>
   <!-- Description text for Bluetooth always scanning -->
+  <string name="location_scanning_bluetooth_always_scanning_description">
+        Ameyorar precisión de la llocalización permitiendo que los servicios y les apps del sistema deteuten preseos
+        Bluetooth en cualquier momentu.</string>
   <!-- [CHAR LIMIT=30] Security & location settings screen, setting check box label for Google location service (cell ID, wifi, etc.) -->
+  <string name="location_network_based">Llocalización de Wi-Fi y rede móvil</string>
   <!-- [CHAR LIMIT=130] Security & location settings screen, setting summary for Google location service check box-->
+  <string name="location_neighborhood_level">Permitir que les apps usen el serviciu de llocalización de Google pa calcular el to allugamientu (van unviase datos anónimos a Google)</string>
   <!-- [CHAR LIMIT=130] Security & location settings screen, setting summary when Use wireless networks check box is selected, for wifi-only devices -->
   <string name="location_neighborhood_level_wifi">Llocalización determinada por Wi-Fi</string>
   <!-- [CHAR LIMIT=30] Security & location settings screen, setting check box label for GPS satellites -->
@@ -2187,6 +2305,7 @@
   <!-- About phone settings screen, setting option name to see a list of contributors -->
   <string name="contributors_title">Collaboradores</string>
   <!-- About phone settings screen, setting option name to show Manual [CHAR LIMIT=25] -->
+  <string name="manual">Manual</string>
   <!-- About phone settings screen, setting option name to show regulatory information [CHAR LIMIT=25] -->
   <string name="regulatory_information">Información regulatoria</string>
   <!-- Note: this may be replaced by a more-specific title of the activity that will get launched -->
@@ -2205,7 +2324,9 @@
   <!-- About phone settings screen, setting option name to see wallpapers attributions values -->
   <string name="wallpaper_attributions_values">Fornidores d\'imáxenes de satélite:\n©2014 CNES / Astrium, DigitalGlobe, Bluesky</string>
   <!-- Phone Manual -->
+  <string name="settings_manual_activity_title">Manual</string>
   <!-- About phone settings screen, Manual dialog message when manual cannot be loaded -->
+  <string name="settings_manual_activity_unavailable">Hebo un fallu al cargar el manual.</string>
   <!-- Title for actual Settings license activity. -->
   <!-- About phone settings, Legal information setting option name and title of dialog box holding license info -->
   <string name="settings_license_activity_title">Llicencies de códigu abiertu</string>
@@ -2218,6 +2339,7 @@
   <!-- About phone settings, Safety Legal information setting option name and title of dialog box holding safety legal info -->
   <string name="settings_safetylegal_activity_title">Información de seguridá</string>
   <!-- About phone settings screen, Safety legal dialog message when data network is not connected -->
+  <string name="settings_safetylegal_activity_unreachable">Nun tienes conexón de datos. Pa ver esta información, vete a %s dende cualquier equipu coneutáu a Internet.</string>
   <!-- About phone settings screen, Safety Legal dialog title until the link is fully loaded -->
   <string name="settings_safetylegal_activity_loading">Cargando…</string>
   <!-- Lock Pattern settings -->
@@ -2234,7 +2356,9 @@
   <!-- Header on password confirm screen [CHAR LIMIT=30] -->
   <string name="lockpassword_confirm_your_pin_header">Confirma\'l númberu PIN</string>
   <!-- Header on password confirm screen if second password doesn't match the first. [CHAR LIMIT=30] -->
+  <string name="lockpassword_confirm_passwords_dont_match">Les contraseñes nun concasen</string>
   <!-- Header on pin confirm screen if second pin doesn't match the first. [CHAR LIMIT=30]-->
+  <string name="lockpassword_confirm_pins_dont_match">Los númberos PIN nun concasen</string>
   <!-- Header shown to ask the user to select an unlock method [CHAR LIMIT=30] -->
   <string name="lockpassword_choose_lock_generic_header">Métodu de desbloquéu</string>
   <!-- Toast shown if setting password was successful -->
@@ -2245,18 +2369,24 @@
   <string name="lockpassword_pattern_set_toast">Afitóse\'l patrón.</string>
   <!-- Message to be used to explain the user that he needs to enter his pattern to continue a
          particular operation. [CHAR LIMIT=70]-->
+  <string name="lockpassword_confirm_your_pattern_generic">Pa continuar, usa\'l patrón del preséu.</string>
   <!-- Message to be used to explain the user that he needs to enter his PIN to continue a
          particular operation. [CHAR LIMIT=70]-->
+  <string name="lockpassword_confirm_your_pin_generic">Pa continuar, inxerta\'l PIN del preséu.</string>
   <!-- Message to be used to explain the user that he needs to enter his password to continue a
          particular operation. [CHAR LIMIT=70]-->
+  <string name="lockpassword_confirm_your_password_generic">Pa continuar, inxerta la contraseña del preséu.</string>
   <!-- Security & location settings screen, change security method screen instruction if user
          enters incorrect PIN [CHAR LIMIT=30] -->
   <!-- Security & location settings screen, change security method screen instruction if user
          enters incorrect password [CHAR LIMIT=30] -->
+  <string name="lockpassword_invalid_password">Contraseña incorreuta</string>
   <!-- Security & location settings screen, change unlock pattern screen instruction if user
          draws incorrect pattern [CHAR LIMIT=30] -->
+  <string name="lockpattern_need_to_unlock_wrong">Patrón incorreutu</string>
   <!-- Lock Pattern settings -->
   <!-- Security & location settings screen, header -->
+  <string name="lock_settings_title">Seguranza de preséu</string>
   <!-- Security & location settings screen, setting option name -->
   <string name="lockpattern_change_lock_pattern_label">Camudar patrón desbloquéu</string>
   <!-- Security & location settings screen, change unlock pattern screen instruction when the user chooses "Change unlock pattern".  We first ask the user toe nter the current pattern, and this is the message seen -->
@@ -2304,6 +2434,7 @@
   <string name="lockpattern_settings_help_how_to_record">Cómo crear un patrón de desbloquéu</string>
   <!-- Security & location settings screen, confirm unlock pattern screen hint at the bottom after
          too many incorrect attempts [CHAR LIMIT=120]-->
+  <string name="lockpattern_too_many_failed_confirmation_attempts">Abondos intento incorreutos. Vuelvi intentalo en <xliff:g id="number">%d</xliff:g> segundos.</string>
   <!-- Displayed when user launches a widget configuration activity that was uninstalled -->
   <string name="activity_not_found">L\'aplicación nun ta instalada nel teléfonu.</string>
   <!-- Applications Settings -->
@@ -2338,6 +2469,7 @@
   <!-- Manage applications, individual application info screen, section heading for stuff relating to an app's storage settings. -->
   <string name="storage_label">Almacenamientu</string>
   <!-- Manage applications, individual application info screen,  heading for settings related to controlling whether this app is the default for some actions -->
+  <string name="auto_launch_label">Abrir de mou predetermináu</string>
   <!-- Manage applications, individual application info screen,  heading for settings related to controlling whether this app is the default for some actions *and* whether the app was given permission by the user to create widgets -->
   <string name="auto_launch_label_generic">Valores predeterminaos</string>
   <!-- Manage applications, individual application info screen,  heading for settings related to controlling application screen compatibility -->
@@ -2381,7 +2513,9 @@
   <!-- Manage applications, restore updated system application to factory version -->
   <string name="app_factory_reset">Desinstalar anovamientos</string>
   <!-- Manage applications, individual application info screen, screen, message text under Launch by default heading. This is present if the app is set as a default for some actions. -->
+  <string name="auto_launch_enable_text">Escoyisti aniciar esta app de mou predetermináu pa dalgunes aiciones.</string>
   <!-- Manage applications, individual application info screen, screen, message text under Launch by default heading. This is present if the app was given user permission to create widgets. -->
+  <string name="always_allow_bind_appwidgets_text">Permitisti qu\'esta aplicación pueda crear widgets y acceder a los datos.</string>
   <!-- Manage applications, individual application screen, text under Launch by default heading if the app is NOT a default for actions -->
   <string name="auto_launch_disable_text">Nun s\'afitaron valores predeterminaos</string>
   <!-- Manage applications, individual application screen, button label under Launch by default heading.  This is used to clear any default actions that may be assigned to this app.  -->
@@ -2403,6 +2537,7 @@
   <!-- [CHAR LIMIT=25] Manage applications screen, menu item.  Show background cached processes. -->
   <string name="show_background_processes">Procesos en caché</string>
   <!-- [CHAR LIMIT=NONE] Advanced applications screen, preference title.  Choose the emergency application. -->
+  <string name="default_emergency_app">Aplicación d\'emerxencia</string>
   <!-- [CHAR LIMIT=NONE] Manage applications screen, menu item.  Reset all of user's app preferences. -->
   <string name="reset_app_preferences">Restablecer preferencies</string>
   <!-- [CHAR LIMIT=NONE] Manage applications screen, menu item.  Title of dialog to confirm resetting user's app preferences. -->
@@ -2442,6 +2577,7 @@
   <!-- [CHAR LIMIT=15] Manage applications, label for chart showing internal storage use. -->
   <string name="internal_storage">Almacenamientu internu</string>
   <!-- [CHAR LIMIT=30] Title for internal device storage that is capitalized for placement as a phrase into another sentence -->
+  <string name="internal_storage_sentence">almacenamientu internu</string>
   <!-- [CHAR LIMIT=15] Manage applications, label for chart showing SD card storage use. -->
   <string name="sd_card_storage" product="nosdcard">Almacenamientu USB</string>
   <!-- [CHAR LIMIT=15] Manage applications, label for chart showing SD card storage use. -->
@@ -2451,13 +2587,16 @@
   <!-- Manage applications, individual application screen, confirmation dialog title. Displays when user selects to "Clear data". -->
   <string name="clear_data_dlg_title">¿Desaniciar datos de l\'aplicación?</string>
   <!-- Manage applications, individual application screen, confirmation dialog message. Displays when user selects to "Clear data". It warns the user of the consequences of clearing the data for an app. -->
+  <string name="clear_data_dlg_text">Tolos datos d\'esta aplicación van desaniciase de mou permanente. Esto inclúi tolos ficheros, axustes, cuentes, bases de datos, etc.</string>
   <!-- Manage applications, individual application screen, confirmation dialog button. Displays when user selects to "Clear data". Goes through with the clearing of the data. -->
   <string name="dlg_ok">Aceutar</string>
   <!-- Manage applications, individual application screen, confirmation dialog button. Displays when user selects to "Clear data". -->
   <string name="dlg_cancel">Encaboxar</string>
   <!-- Manage applications, individual application dialog box title. Shown when the user somehow got into a state where it wants to manage some app that isn't found. -->
   <!-- Manage applications, individual application dialog box message. Shown when the user somehow got into a state where it wants to manage some app that isn't found. -->
+  <string name="app_not_found_dlg_text"> Nun s\'atopó l\'aplicación na llista d\'aplicaciones instalaes.</string>
   <!-- Manage applications, individual application dialog box message. Shown when there was an error trying to clear the data. -->
+  <string name="clear_data_failed">Nun pudieron llipiase los datos d\'aplicaciones.</string>
   <!-- Manage applications, factory reset dialog title for system applications. -->
   <string name="app_factory_reset_dlg_title">¿Desinstalar aplicaciones?</string>
   <!-- Manage applications, factory reset option dialog text for system applications. -->
@@ -2465,6 +2604,7 @@
   <!-- Manage applications, title for dialog if clear data fails-->
   <string name="clear_failed_dlg_title">Desaniciar datos</string>
   <!-- Manage applications, text for dialog if clear data fails-->
+  <string name="clear_failed_dlg_text">Nun pudieron llimpiase los datos de l\'aplicación.</string>
   <!-- Manage applications, individual application info screen, text that appears under the "Permissions" heading. This describes the permissions that the application has. -->
   <string name="security_settings_desc" product="tablet">Esta aplicación pue acceder a los siguientes elementos de la tablet:</string>
   <!-- Manage applications, individual application info screen, text that appears under the "Permissions" heading. This describes the permissions that the application has. -->
@@ -2490,7 +2630,9 @@
   <!-- Manage applications, text for permission to send to premium SMS short codes. [CHAR LIMIT=40] -->
   <string name="security_settings_premium_sms_desc">Unviar SMS premium</string>
   <string name="computing_size">Calculando…</string>
+  <string name="invalid_size_value">Nun pudo calculase\'l tamañu del paquete.</string>
   <!-- String displayed when list is empty -->
+  <string name="empty_list_msg">Nun tienes instalada nenguna aplicación esterna.</string>
   <!-- Manage applications, version string displayed in app snippet -->
   <string name="version_text">versión <xliff:g id="VERSION_NUM">%1$s</xliff:g></string>
   <!-- Manage applications, text for Move button -->
@@ -2508,12 +2650,16 @@
   <string name="moving">Moviendo</string>
   <!-- Manage applications, text for move error messages -->
   <string name="insufficient_storage">Nun hai espaciu abondu d\'almacenamientu.</string>
+  <string name="does_not_exist">L\'aplicación nun esiste.</string>
   <string name="app_forward_locked">L\'aplicación ta protexida escontra copies.</string>
+  <string name="invalid_location">L\'allugamientu d\'instalación nun ye válidu.</string>
+  <string name="system_package">Los anovamientos del sistema nun pue instalase en medios esternos.</string>
   <string name="force_stop_dlg_title">¿Forciar detención?</string>
   <!-- [CHAR LIMIT=200] Manage applications, text for dialog when killing persistent apps-->
   <string name="force_stop_dlg_text">Si se detién una aplicación, ye dable que nun funcione correcho.</string>
   <!-- Manage applications, text for dialog when moving an app -->
   <!-- Manage applications, text for dialog moving an app -->
+  <string name="move_app_failed_dlg_text">Nun pudo movese l\'aplicación. <xliff:g id="reason">%1$s</xliff:g></string>
   <!-- Manage applications, application installation location title -->
   <string name="app_install_location_title">Llocalización d\'instalación preferida</string>
   <!-- Manage applications. application installation location summary -->
@@ -2521,7 +2667,9 @@
   <!-- [CHAR LIMIT=30] Manage applications, title for dialog when disabling apps -->
   <string name="app_disable_dlg_title">¿Inhabilitar aplicación integrada?</string>
   <!-- [CHAR LIMIT=30] Manage applications, label for option to disable app -->
+  <string name="app_disable_dlg_positive">Deshabilitar app</string>
   <!-- [CHAR LIMIT=200] Manage applications, text for dialog when disabling apps -->
+  <string name="app_disable_dlg_text">Si deshabilites esta app, ye dable qu\'otres apps nun funcionen correutamente.</string>
   <!-- [CHAR LIMIT=NONE] Manage applications, title for dialog when disabling updated apps -->
   <string name="app_special_disable_dlg_title">¿Quies desaniciar los datos ya inhabilitar l\'aplicación?</string>
   <!-- [CHAR LIMIT=NONE] Manage applications, text for dialog when disabling update apps -->
@@ -3203,6 +3351,7 @@
   <!-- Label for power consumed by the flashlight -->
   <string name="power_flashlight">Llinterna</string>
   <!-- Label for power consumed by the camera -->
+  <string name="power_camera">Cámara</string>
   <!-- Label for power consumed by Wi-Fi -->
   <string name="power_wifi">Wi-Fi</string>
   <!-- Label for power consumed by Bluetooth -->
@@ -3245,6 +3394,7 @@
   <!-- Label for Video usage time -->
   <string name="usage_type_video">Videu</string>
   <!-- Label for Camera usage time -->
+  <string name="usage_type_camera">Cámara</string>
   <!-- Label for Flashlight usage time -->
   <string name="usage_type_flashlight">Llinterna</string>
   <!-- Label for time that a feature has been on -->
@@ -3362,7 +3512,9 @@
   <!-- [CHAR LIMIT=NONE] Name of OS "process" for all zram memory -->
   <!-- [CHAR LIMIT=NONE] Name of OS "process" for base memory needed for caches -->
   <!-- [CHAR LIMIT=NONE] Label for item showing details of average RAM use -->
+  <string name="process_stats_ram_use">Usu de RAM</string>
   <!-- [CHAR LIMIT=NONE] Label for item showing details of average RAM use -->
+  <string name="process_stats_bg_ram_use">Usu de RAM ( de fondu)</string>
   <!-- [CHAR LIMIT=NONE] Label for item showing percent of time spent running -->
   <string name="process_stats_run_time">Duración</string>
   <!-- [CHAR LIMIT=NONE] Subtitle for process stats processes list -->
@@ -3400,6 +3552,7 @@
   <!-- [CHAR LIMIT=NONE] Menu for manage apps to control whether system processes are shown -->
   <string name="menu_show_system">Amosar sistema</string>
   <!-- [CHAR LIMIT=NONE] Menu for manage apps to control whether system processes are hidden -->
+  <string name="menu_hide_system">Anubrir sistema</string>
   <!-- [CHAR LIMIT=NONE] Menu for process stats to control whether stats are shown
          as percentages-->
   <!-- [CHAR LIMIT=NONE] Menu for process stats to control whether computation should be based
@@ -3913,6 +4066,7 @@
   <!-- Formatter in AccountSyncSettings for each application we wish to synchronize, e.g. "Sync Calendar" -->
   <string name="sync_item_title"><xliff:g id="authority" example="Calendar">%s</xliff:g></string>
   <!-- Title of dialog shown when you can't manually sync an item because it's disabled -->
+  <string name="cant_sync_dialog_title">Nun pue sincronizase de mou manual</string>
   <!-- Messaage shown in dialog when you can't manually sync -->
   <string name="cant_sync_dialog_message">La sincronización d\'esti elementu nun ta disponible nesti momentu. Pa modificar la preferencia, activa temporalmente les conexones automátiques y la sincronización automática.</string>
   <string name="wimax_settings">4G</string>
@@ -4040,11 +4194,16 @@
   <!-- UI debug setting: simulate secondary display devices using overlays [CHAR LIMIT=25] -->
   <string name="overlay_display_devices_title">Simular pantallaes secundaries</string>
   <!-- UI debug setting: enable/disable debug multi-window ui [CHAR LIMIT=25] -->
+  <string name="enable_multi_window">Mou multi ventana</string>
   <!-- setting Checkbox summary whether to enable debug multi-window ui [CHAR_LIMIT=50] -->
+  <string name="enable_multi_window_summary">Actividaes múltiples na pantalla al empar.</string>
+  <string name="confirm_enable_multi_window_title">¿Habilitar mou multi ventana?</string>
   <!-- Warning dialog message to confirm user wishes to enable experimental multi-window mode feature -->
+  <string name="confirm_enable_multi_window_text">ALVERTENCIA: Esto ye una carauterística peresperimental que permite actividaes múltiples na pantalla al empar pente la interfaz d\'Aplicaciones recientes. Delles aplicaciones puen cascar o nun furrular correutamente al usase con esta carauterística.</string>
   <!-- Preference category for application debugging development settings. [CHAR LIMIT=25] -->
   <string name="debug_applications_category">Aplicaciones</string>
   <!-- UI debug setting: immediately destroy activities? [CHAR LIMIT=25] -->
+  <string name="immediately_destroy_activities">Nun caltener actividaes</string>
   <!-- UI debug setting: immediately destroy activities summary [CHAR LIMIT=50] -->
   <string name="immediately_destroy_activities_summary">Destruir actividaes cuando l\'usuariu dexe d\'usales</string>
   <!-- UI debug setting: limit number of running background processes [CHAR LIMIT=25] -->
@@ -4064,6 +4223,7 @@
   <!-- Title for app usage. [CHAR LIMIT=40] -->
   <string name="data_usage_app_info_label">INFORMACIÓN D\'APLICACIÓN</string>
   <!-- Title for cellular data usage. [CHAR LIMIT=40] -->
+  <string name="data_usage_cellular_data">Datos móviles</string>
   <!-- Title for setting data limit. [CHAR LIMIT=40] -->
   <string name="data_usage_data_limit">Afitar llende de datos</string>
   <!-- Title for option to pick visible time range from a list available usage periods. [CHAR LIMIT=25] -->
@@ -4093,7 +4253,9 @@
   <!-- Title for menu option to show details for all SIM cards. [CHAR LIMIT=26] -->
   <string name="data_usage_menu_sim_cards">Tarxetes SIM</string>
   <!-- Title for menu option to show details for all cellular networks. [CHAR LIMIT=26] -->
+  <string name="data_usage_menu_cellular_networks">Redes móviles</string>
   <!-- Summary String for Cellular data enable toggle. [CHAR LIMIT=33] -->
+  <string name="data_usage_cellular_data_summary">Posáu na llende</string>
   <!--  Title for menu option to enable global auto-sync of personal account data [CHAR LIMIT=30] -->
   <string name="account_settings_menu_auto_sync">Sincronización automática</string>
   <!--  Title for menu option to enable global auto-sync of personal account data [CHAR LIMIT=30] -->
@@ -4113,7 +4275,9 @@
   <!-- Label for application which has its data usage restricted. [CHAR LIMIT=16] -->
   <string name="data_usage_app_restricted">con restricción</string>
   <!-- Body of dialog shown to request confirmation that mobile data will be disabled. [CHAR LIMIT=NONE] -->
+  <string name="data_usage_disable_mobile">¿Desactivar datos móviles?</string>
   <!-- Checkbox label that will disable mobile network data connection when user-defined limit is reached. [CHAR LIMIT=26] -->
+  <string name="data_usage_disable_mobile_limit">Afitar llende de datos móviles</string>
   <!-- Checkbox label that will disable 4G network data connection when user-defined limit is reached. [CHAR LIMIT=26] -->
   <string name="data_usage_disable_4g_limit">Llendar datos 4G</string>
   <!-- Checkbox label that will disable 2G-3G network data connection when user-defined limit is reached. [CHAR LIMIT=26] -->
@@ -4125,14 +4289,17 @@
   <!-- Tab title for showing Ethernet data usage. [CHAR LIMIT=10] -->
   <string name="data_usage_tab_ethernet">Ethernet</string>
   <!-- Tab title for showing combined mobile data usage. [CHAR LIMIT=20] -->
+  <string name="data_usage_tab_mobile">Móvil</string>
   <!-- Tab title for showing 4G data usage. [CHAR LIMIT=10] -->
   <string name="data_usage_tab_4g">4G</string>
   <!-- Tab title for showing 2G and 3G data usage. [CHAR LIMIT=10] -->
   <string name="data_usage_tab_3g">2G-3G</string>
   <!-- Title shown when current operation applies to mobile networks. [CHAR LIMIT=20] -->
+  <string name="data_usage_list_mobile">Móvil</string>
   <!-- Title shown when current operation applies to no networks. [CHAR LIMIT=20] -->
   <string name="data_usage_list_none">Nenguna</string>
   <!-- Toggle switch title for enabling all mobile data network connections. [CHAR LIMIT=32] -->
+  <string name="data_usage_enable_mobile">Datos móviles</string>
   <!-- Toggle switch title for enabling 2G and 3G data network connections. [CHAR LIMIT=32] -->
   <string name="data_usage_enable_3g">Datos 2G-3G</string>
   <!-- Toggle switch title for enabling 4G data network connection. [CHAR LIMIT=32] -->
@@ -4146,6 +4313,7 @@
   <!-- Checkbox label that restricts background data usage of a specific application. [CHAR LIMIT=40] -->
   <string name="data_usage_app_restrict_background">Restrinxir datos d\'apps de fondu</string>
   <!-- Summary message for checkbox that restricts background data usage of a specific application. [CHAR LIMIT=64] -->
+  <string name="data_usage_app_restrict_background_summary">Deshabilita los datos de fondu en redes móviles.</string>
   <!-- Summary message for checkbox that restricts background data usage of a specific application when no networks have been limited. [CHAR LIMIT=84] -->
   <!-- Title of dialog shown when user restricts background data usage of a specific application. [CHAR LIMIT=48] -->
   <string name="data_usage_app_restrict_dialog_title">¿Restrinxir conexones automátiques?</string>
@@ -4197,6 +4365,7 @@
   <string name="data_usage_metered_title">Restricciones de rede</string>
   <!-- Dialog body for selecting paid networks. [CHAR LIMIT=NONE] -->
   <!-- Header for list of mobile networks. [CHAR LIMIT=32] -->
+  <string name="data_usage_metered_mobile">Redes móviles</string>
   <!-- Header for list of Wi-Fi networks. [CHAR LIMIT=32] -->
   <string name="data_usage_metered_wifi">Redes Wi‑Fi d\'usu midíu</string>
   <!-- Body text prompting user to enable Wi-Fi to configure metered networks. [CHAR LIMIT=64] -->
@@ -4263,6 +4432,7 @@
   <!-- Button label to disconnect from a VPN profile. [CHAR LIMIT=40] -->
   <string name="vpn_disconnect">Desconeutar</string>
   <!-- Field label to show the version number for a VPN app. [CHAR LIMIT=40] -->
+  <string name="vpn_version">Versión <xliff:g id="version" example="3.3.0">%s</xliff:g></string>
   <!-- Preference title for VPN settings. [CHAR LIMIT=40] -->
   <string name="vpn_title">VPN</string>
   <!-- Preference title to create a new VPN profile. [CHAR LIMIT=40] -->
@@ -4346,6 +4516,7 @@
   <!-- User settings summary for a restricted profile [CHAR LIMIT=50] -->
   <string name="user_summary_restricted_profile">Perfil llendáu</string>
   <!-- User settings warning that restricted profile needs a screen lock [CHAR LIMIT=NONE] -->
+  <string name="user_need_lock_message">Enantes que pueas crear un perfil restrinxíu, precisarás configurar una pantalla de bloquéu pa protexer les tos aplicaciones y datos personales.</string>
   <!-- User settings dialog button to set screen lock [CHAR LIMIT=25] -->
   <string name="user_set_lock_button">Afitar bloquéu</string>
   <!-- User summary to indicate that user is currently not set up [CHAR LIMIT=100] -->
@@ -4363,6 +4534,7 @@
   <!-- Title for add user type dialog [CHAR LIMIT=45] -->
   <string name="user_add_user_type_title">Amestar</string>
   <!-- Summary for add user action, when it's disabled [CHAR LIMIT=100] -->
+  <string name="user_add_max_count">Pues amestar fasta <xliff:g id="user_count">%1$d</xliff:g> usuarios</string>
   <!-- Summary for add user entry in the choice dialog [CHAR LIMIT=none] -->
   <string name="user_add_user_item_summary">Los usuarios tienen conteníu y aplicaciones propios</string>
   <!-- Summary for add restricted profile entry in the choice dialog [CHAR LIMIT=none] -->
@@ -4374,6 +4546,7 @@
   <!-- Title for add user confirmation dialog [CHAR LIMIT=30] -->
   <string name="user_add_user_title">Amestar usuariu nuevu?</string>
   <!-- Message for add user confirmation dialog - long version. [CHAR LIMIT=none] -->
+  <string name="user_add_user_message_long">Pues compartir esti preséu con otra xente creando usuarios adicionales. Cada usuariu tien el so propiu espaciu que podrán personalizar coles aplicaciones, fondu de pantalla y más. Los usuarios tamién puen configurar axustes como\'l Wi\u2011 qu\'afeuten a toos.\n\nCuando amiestes un usuariu nuevu, esa persona precisa configurar el so espaciu.\n\nCualesquier usuariu pue anovar aplicaciones d\'otros usuarios.</string>
   <!-- Message for add user confirmation dialog - short version. [CHAR LIMIT=none] -->
   <string name="user_add_user_message_short">Cuando amiestes un usuariu nuevu, esa persona necesita configurar el so espaciu.\n\nCualesquier usuariu pue anovar les aplicaciones pa tolos otros usuarios. </string>
   <!-- Title of dialog to setup a new user [CHAR LIMIT=30] -->
@@ -4387,7 +4560,9 @@
   <!-- Button text to setup the new user later [CHAR LIMIT=25] -->
   <string name="user_setup_button_setup_later">Agora non</string>
   <!-- Message to secondary users that only owner can manage users [CHAR LIMIT=none] -->
+  <string name="user_cannot_manage_message" product="tablet">Namái\u2019l dueñu la tableta pue xestionar usuarios.</string>
   <!-- Message to secondary users that only owner can manage users [CHAR LIMIT=none] -->
+  <string name="user_cannot_manage_message" product="default">Namái\u2019l dueñu\u2019l teléfonu pue xestionar usuarios.</string>
   <!-- Message to limited users that they cannot add accounts [CHAR LIMIT=100] -->
   <string name="user_cannot_add_accounts_message">Los perfiles restrinxíos nun puen amestar cuentes</string>
   <!-- User details remove user menu [CHAR LIMIT=20] -->
@@ -4407,10 +4582,13 @@
   <!-- Work profile removal confirmation title [CHAR LIMIT=25] -->
   <string name="work_profile_confirm_remove_title">Desaniciar perfil de trabayu?</string>
   <!-- User (self) removal confirmation message [CHAR LIMIT=none] -->
+  <string name="user_confirm_remove_self_message" product="tablet">Vas perder el to espaciu y datos nesta tablet. Nun pues desfacer esta aición.</string>
   <!-- User (self) removal confirmation message [CHAR LIMIT=none] -->
+  <string name="user_confirm_remove_self_message" product="default">Vas perder el to espaciu y datos nesti teléfonu. Nun pues desfacer esta aición.</string>
   <!-- User removal confirmation message [CHAR LIMIT=none] -->
   <string name="user_confirm_remove_message">Van desaniciase toles apps y datos.</string>
   <!-- Work profile removal confirmation message [CHAR LIMIT=none] -->
+  <string name="work_profile_confirm_remove_message">Van desaniciase toles aplicaciones y datos nesti perfil si sigues.</string>
   <!-- User profile removal confirmation message [CHAR LIMIT=none] -->
   <string name="user_profile_confirm_remove_message">Van desaniciase toles apps y datos.</string>
   <!-- Setting label to show that a new user is being added [CHAR LIMIT=30] -->
@@ -4467,6 +4645,7 @@
   <!-- String indicating the label of the default payment app and a description of its state; eg Google Wallet - MasterCard 1234 -->
   <!-- Header for what to do when the open app supports TapPay: use the default set app, or the open app -->
   <!-- Always use the default app (independent of what app is open) -->
+  <string name="nfc_payment_favor_default">Siempres</string>
   <!-- If open app supports TapPay, use that app instead of the default -->
   <!-- Header for a dialog asking the user which payment app to use -->
   <!-- Header for text explaning how to pay at a payment terminal in a store -->
@@ -4731,9 +4910,12 @@
   <!-- Sound & notification > Sound section: Title for the Interruptions option and associated settings page. [CHAR LIMIT=30] -->
   <!-- Sound & notification > Sound section: Title for the Priority interruptions option and associated settings page. [CHAR LIMIT=30] -->
   <!-- Sound & notification > Sound section: Title for the zen mode automation option and associated settings page. [CHAR LIMIT=30] -->
+  <string name="zen_mode_automation_settings_title">Regles automátiques</string>
   <!-- Sound & notification > Sound section: Zen mode option: Important interruptions [CHAR LIMIT=60] -->
   <!-- Sound & notification > Sound section: Zen mode option: Alarms only [CHAR LIMIT=60] -->
+  <string name="zen_mode_option_alarms">Namái alarmes</string>
   <!-- Sound & notification > Sound section: Zen mode option: No interruptions [CHAR LIMIT=60] -->
+  <string name="zen_mode_option_no_interruptions">Silenciu total</string>
   <!-- Sound & notification > Sound section: Zen mode combined summary + condition line [CHAR LIMIT=60] -->
   <!-- Sound & notification > Sound section: Title for the option defining the phone ringtone. [CHAR LIMIT=30] -->
   <string name="ringtone_title">Tonu del teléfonu</string>
@@ -4772,6 +4954,7 @@
   <!-- Sound & notification > Other sounds: Title for the option enabling touch sounds for screen locking sounds. [CHAR LIMIT=30] -->
   <string name="screen_locking_sounds_title">Soníos al bloquiar pantalla</string>
   <!-- Sound & notification > Other sounds: Title for the option enabling charging sounds. [CHAR LIMIT=30] -->
+  <string name="charging_sounds_title">Soníos de carga</string>
   <!-- Sound & notification > Other sounds: Title for the option enabling docking sounds. [CHAR LIMIT=30] -->
   <string name="docking_sounds_title">Soníos al coneutar</string>
   <!-- Sound & notification > Other sounds: Title for the option enabling touch sounds. [CHAR LIMIT=30] -->
@@ -4807,9 +4990,11 @@
           listener, displayed as a dialog message. [CHAR LIMIT=NONE] -->
   <!-- Sound & notification > Advanced section: Title for managing Do Not Disturb access option. [CHAR LIMIT=40] -->
   <!-- Sound & notification > Do Not Disturb access > Text to display when the list is empty. [CHAR LIMIT=NONE] -->
+  <string name="zen_access_empty_text">Denguna aplicación instalada solicitó l\'accesu a Nun molestar</string>
   <!-- [CHAR LIMIT=NONE] Text when loading app list in notification settings -->
   <string name="loading_notification_apps">Cargando apps...</string>
   <!-- [CHAR LIMIT=NONE] App notification settings: Block option title -->
+  <string name="app_notification_block_title">Bloquialo too</string>
   <!-- [CHAR LIMIT=NONE] App notification settings: Block option description-->
   <string name="app_notification_block_summary">Nunca nun amosar notificaciones d\'esta aplicación</string>
   <!-- [CHAR LIMIT=NONE] App notification settings: Priority option title -->
@@ -4827,6 +5012,7 @@
   <!-- [CHAR LIMIT=20] Notification settings: App notifications dialog dismiss button caption -->
   <string name="app_notifications_dialog_done">Fecho</string>
   <!-- [CHAR LIMIT=40] Zen mode settings: Rule name option and edit dialog title -->
+  <string name="zen_mode_rule_name">Nome de regla</string>
   <!-- [CHAR LIMIT=40] Zen mode settings: Rule name hint text -->
   <!-- [CHAR LIMIT=100] Zen mode settings: Warning text for invalid zen rule names -->
   <!-- [CHAR LIMIT=40] Zen mode settings: Add rule menu option name -->
@@ -4850,6 +5036,7 @@
   <!-- [CHAR LIMIT=40] Zen mode settings: Event-based rule reply option title -->
   <!-- [CHAR LIMIT=40] Zen mode settings: Event-based rule reply option value: Yes, Maybe, or Not replied -->
   <!-- [CHAR LIMIT=40] Zen mode settings: Event-based rule reply option value: Yes or Maybe -->
+  <string name="zen_mode_event_rule_reply_yes_or_maybe">Sí o quiciabes</string>
   <!-- [CHAR LIMIT=40] Zen mode settings: Event-based rule reply option value: Yes -->
   <string name="zen_mode_event_rule_reply_yes">Sí</string>
   <!-- [CHAR LIMIT=40] Zen mode settings: Text to display if rule isn't found -->
@@ -4970,20 +5157,27 @@
   <!-- Preference label for app default launch settings [CHAR LIMIT=35]-->
   <!-- Summary for app storage preference [CHAR LIMIT=15] -->
   <!-- Category name for App Launch -->
+  <string name="app_launch_supported_domain_urls_title">Enllaces sofitaos</string>
   <!-- Summary for app storage preference -->
   <!-- Internal storage label -->
+  <string name="storage_type_internal">memoria interna</string>
   <!-- External storage label -->
+  <string name="storage_type_external">memoria esterna</string>
   <!-- Summary describing internal storage for applications [CHAR LIMIT=25] -->
+  <string name="storage_type_internal">memoria interna</string>
   <!-- Summary describing external storage for applications [CHAR LIMIT=25] -->
+  <string name="storage_type_external">memoria esterna</string>
   <!-- Title for data usage screen when entered from app info [CHAR LIMIT=30] -->
   <string name="app_data_usage">Usu de datos d\'aplicación</string>
   <!-- Summary for data usage preference [CHAR LIMIT=15] -->
   <!-- Title of storage preference to control where app is stored -->
+  <string name="storage_used">Almacenamientu usáu</string>
   <!-- Title of button to change storage [CHAR LIMIT=25] -->
   <!-- Title of dialog to change storage [CHAR LIMIT=25] -->
   <!-- Label for notification settings for an specific app [CHAR LIMIT=40] -->
   <string name="notifications_label">Notificaciones</string>
   <!-- App notification summary with notifications enabled [CHAR LIMIT=40] -->
+  <string name="notifications_enabled">Normal</string>
   <!-- App notification summary with notifications disabled [CHAR LIMIT=40] -->
   <string name="notifications_disabled">Bloquiar</string>
   <!-- App notification summary with notifications sensitive [CHAR LIMIT=40] -->
@@ -5000,6 +5194,7 @@
   <!-- Launch defaults preference summary with some set [CHAR LIMIT=40] -->
   <!-- Launch defaults preference summary with none set [CHAR LIMIT=40] -->
   <!-- Label for showing all apps in list [CHAR LIMIT=30] -->
+  <string name="filter_all_apps">Toles apliciones</string>
   <!-- Label for showing enabled apps in list [CHAR LIMIT=30] -->
   <!-- Label for showing personal apps in list [CHAR LIMIT=30] -->
   <string name="filter_personal_apps">Personal</string>
@@ -5018,6 +5213,7 @@
   <string name="advanced_apps">Axustes avanzaos</string>
   <!-- Title for application configuration settings [CHAR LIMIT=30] -->
   <!-- Warning toast shown when data usage screen can't find specified app -->
+  <string name="unknown_app">Aplicación desconocida</string>
   <!-- Title for profile selection dialog [CHAR LIMIT=30] -->
   <!-- Label for list that shows all permissions -->
   <!-- Summary of permissions currently granted to apps [CHAR LIMIT=45] -->
@@ -5044,44 +5240,62 @@
   <!-- [CHAR_LIMIT=NONE] Warning message about security implications of setting an assistant,
          displayed as a dialog message when the user selects an assistant. -->
   <!-- Label for the button to acknowledge assistant security implications. [CHAR LIMIT=30] -->
+  <string name="assistant_security_warning_agree">Aceuto</string>
   <!-- Label for the button to bail out assistant security implications. [CHAR LIMIT=30] -->
+  <string name="assistant_security_warning_disagree">Refugo</string>
   <!-- Title for Choose voice input dialog [CHAR LIMIT=30] -->
   <!-- Title for Default Browser settings [CHAR LIMIT=30] -->
+  <string name="default_browser_title">Aplicación de restolador</string>
   <!-- Summary for No Default Browser settings [CHAR LIMIT=45] -->
   <!--  Title for Default Phone app settings [CHAR LIMIT=30] -->
+  <string name="default_phone_title">Aplicación de teléfonu</string>
   <!-- Label of default app for current setting [CHAR LIMIT=40] -->
   <!-- Title of app storage screen [CHAR LIMIT=30] -->
+  <string name="apps_storage">Almacenamientu d\'aplicaciones</string>
   <!-- Title of usage access screen [CHAR LIMIT=30] -->
+  <string name="usage_access">Accesu d\'usu</string>
   <!-- Label for setting which controls whether app has usage access [CHAR LIMIT=45] -->
   <!-- Link to the apps page for app usage settings [CHAR LIMIT=45] -->
+  <string name="app_usage_preference">Preferencies d\'usu d\'aplicaciones</string>
   <!-- Description of the usage access setting [CHAR LIMIT=NONE] -->
   <!-- Title for screen showing recent memory usage of device [CHAR LIMIT=30]-->
+  <string name="memory_settings_title">Memoria</string>
   <!-- Title for screen showing recent memory usage of specific app [CHAR LIMIT=30]-->
   <string name="memory_details_title">Detalles de memoria</string>
   <!-- Description of app always running [CHAR LIMIT=45] -->
   <!-- Description of app sometimes running [CHAR LIMIT=45] -->
   <!-- Description of app rarely running [CHAR LIMIT=45] -->
   <!-- Maximum memory usage key [CHAR LIMIT=25] -->
+  <string name="memory_max_use">Máximu</string>
   <!-- Average memory usage key [CHAR LIMIT=25] -->
+  <string name="memory_avg_use">Promediu</string>
   <!-- Maximum memory used by an app [CHAR LIMIT=25] -->
   <!-- Average memory used by an app [CHAR LIMIT=25] -->
   <!-- Formatting for memory description [CHAR LIMIT=25] -->
   <!-- Label for process [CHAR LIMIT=25] -->
   <!-- Label for list to control apps that ignore battery saving restrictions [CHAR LIMIT=27]-->
+  <string name="high_power_apps">Optimización de batería</string>
   <!-- Filter for apps allowed to use a lot of power [CHAR LIMIT=25] -->
+  <string name="high_power_filter_on">Nun s\'optimizó</string>
   <!-- Summary of app allowed to use a lot of power [CHAR LIMIT=60] -->
+  <string name="high_power_on">Inorando optimización de batería</string>
   <!-- Summary of app not allowed to use a lot of power [CHAR LIMIT=60] -->
+  <string name="high_power_off">Optimizando usu de batería</string>
   <!-- Summary of app which doesn't have a battery optimization setting [CHAR LIMIT=60] -->
+  <string name="high_power_system">Nun ta disponible la optimización de batería</string>
   <!-- Description of high power switch [CHAR LIMIT=NONE] -->
   <!-- Description of number of apps with high power turned on [CHAR LIMIT=NONE] -->
   <!-- Title of prompt dialog app can invoke to turn off optimization [CHAR LIMIT=NONE] -->
+  <string name="high_power_prompt_title">¿Inorar optimizaciones de batería?</string>
   <!-- Body text of prompt dialog app can invoke to turn off optimization [CHAR LIMIT=NONE] -->
   <!-- Summary of power usage for an app [CHAR LIMIT=NONE] -->
   <!-- Summary for app with no battery usage [CHAR LIMIT=NONE] -->
+  <string name="no_battery_summary">Ensin usu de batería dende la cabera carga completa</string>
   <!-- Link to an apps notification settings [CHAR LIMIT=50] -->
   <string name="app_notification_preferences">Axustes d\'aplicación</string>
   <!-- Turn on settings for system ui tuner [CHAR LIMIT=40] -->
   <!-- Label for button that leads to more permissions [CHAR LIMIT=40] -->
+  <string name="additional_permissions">Permisos adicionales</string>
   <!-- Description of how many more permissions to view on next page [CHAR LIMIT=30] -->
   <!-- Title of one of the choices in a dialog (with title defined in usb_use) that lets the user
          select what the USB connection for this device should be used for. This choice
@@ -5090,34 +5304,45 @@
   <!-- Decription of one of the choices in a dialog (with title defined in usb_use) that lets the
          user select what the USB connection for this device should be used for. This choice
          is for charging only. -->
+  <string name="usb_use_charging_only_desc">Namái carga esti preséu</string>
   <!-- Title of one of the choices in a dialog (with title defined in usb_use) that lets the user
          select what the USB connection for this device should be used for. This choice
          is for powering the other device only. -->
+  <string name="usb_use_power_only">Fonte d\'enerxía</string>
   <!-- Decription of one of the choices in a dialog (with title defined in usb_use) that lets the
          user select what the USB connection for this device should be used for. This choice
          is for powering the other device only. -->
+  <string name="usb_use_power_only_desc">Carga l\'otru preséu coneutáu</string>
   <!-- Title of one of the choices in a dialog (with title defined in usb_use) that lets the user
          select what the USB connection for this device should be used for. This choice
          is for transferring files via MTP. -->
+  <string name="usb_use_file_transfers">Tresferencies de ficheros</string>
   <!-- Description of one of the choices in a dialog (with title defined in usb_use) that lets the user
          select what the USB connection for this device should be used for. This choice
          is for transferring files via MTP. -->
+  <string name="usb_use_file_transfers_desc">Tresfier ficheros a Linux, Mac o Windows (MTP)</string>
   <!-- Title of one of the choices in a dialog (with title defined in usb_use) that lets the user
          select what the USB connection for this device should be used for. This choice
          is for transferring photos via PTP. -->
+  <string name="usb_use_photo_transfers">Tresferencia de ficheros (PTP)</string>
   <!-- Description of one of the choices in a dialog (with title defined in usb_use) that lets the user
          select what the USB connection for this device should be used for. This choice
          is for transferring photos via PTP. -->
+  <string name="usb_use_photo_transfers_desc">Tresferir semeyes o ficheros si MTP nun ta sofitáu (PTP)</string>
   <!-- Title of one of the choices in a dialog (with title defined in usb_use) that lets the user
          select what the USB connection for this device should be used for. This choice
          is for entering MIDI mode. -->
+  <string name="usb_use_MIDI">MIDI</string>
   <!-- Description of one of the choices in a dialog (with title defined in usb_use) that lets the user
          select what the USB connection for this device should be used for. This choice
          is for entering MIDI mode. -->
+  <string name="usb_use_MIDI_desc">Usa\'l preséu pa la entrada de MIDI</string>
   <!-- The title used in a dialog which lets the user select what the USB connection
          for this device should be used for. Choices are usb_use_charging_only,
          usb_use_file_transfer, use_use_photo_transfer, and usb_use_MIDI -->
+  <string name="usb_use">Usar USB pa</string>
   <!-- Settings item title for inactive apps [CHAR LIMIT=35] -->
+  <string name="inactive_apps_title">Aplicaciones inactives</string>
   <!-- Settings item summary for inactive app [CHAR LIMIT=100] -->
   <!-- Settings item summary for active app [CHAR LIMIT=100] -->
   <!-- Title for the "context" preference to determine whether assist can access the data currently displayed on-screen [CHAR LIMIT=40] -->
@@ -5128,30 +5353,42 @@
   <!-- Label for average memory use section [CHAR LIMIT=30] -->
   <!-- Label for maximum memory use section [CHAR LIMIT=30] -->
   <!-- Label for app list of memory use [CHAR LIMIT=30] -->
+  <string name="memory_usage">Usu de memoria</string>
   <!-- Label for app list of memory use [CHAR LIMIT=30] -->
   <string name="app_list_memory_use">Usu d\'aplicación</string>
   <!-- Label for details about an app's memory use [CHAR LIMIT=30] -->
+  <string name="memory_details">Detalles</string>
   <!-- Summary for how much memory an app has used [CHAR LIMIT=NONE] -->
   <!-- Summary for no memory use for an app [CHAR LIMIT=NONE] -->
+  <string name="no_memory_use_summary">Nun s\'usó memoria nes caberes 3 hores</string>
   <!-- Menu item for Sorting list by average memory use [CHAR LIMIT=NONE]-->
   <!-- Menu item for Sorting list by maximum memory use [CHAR LIMIT=NONE] -->
   <!-- Label for the current performance of the device [CHAR LIMIT=25] -->
+  <string name="memory_performance">Rindimientu</string>
   <!-- Label for total memory of device [CHAR LIMIT=25] -->
+  <string name="total_memory">Memoria total</string>
   <!-- Label for average memory usage of device [CHAR LIMIT=25] -->
   <!-- Label for free memory of device [CHAR LIMIT=25] -->
   <string name="free_memory">Llibre</string>
   <!-- Label for button that leads to list of apps and their memory usage [CHAR LIMIT=40]-->
+  <string name="memory_usage_apps">Memoria usada poles aplicaciones</string>
   <!-- Description of number of apps using memory [CHAR LIMIT=NONE] -->
   <!-- Label for frequency that the app is runnig (e.g. always, sometimes, etc.) [CHAR LIMIT=25] -->
   <string name="running_frequency">Frecuencia</string>
   <!-- Label for maximum amount of memory app has used [CHAR LIMIT=25] -->
+  <string name="memory_maximum_usage">Usu máximu</string>
   <!-- Summary of data item when no data usage [CHAR LIMIT=40] -->
+  <string name="no_data_usage">Nun s\'usaron datos</string>
   <!-- Zen mode access settings - title for warning dialog when enabling access [CHAR LIMIT=NONE] -->
   <!-- Zen mode access settings - summary for warning dialog when enabling access [CHAR LIMIT=NONE] -->
   <!-- Ignore battery optimizations on label [CHAR LIMIT=30] -->
+  <string name="ignore_optimizations_on">Nun optimizar</string>
   <!-- Ignore battery optimizations off label [CHAR LIMIT=30] -->
+  <string name="ignore_optimizations_off">Optimizar</string>
   <!-- Ignore battery optimizations on description [CHAR LIMIT=NONE] -->
+  <string name="ignore_optimizations_on_desc">Quiciabes escose aína la batería</string>
   <!-- Ignore battery optimizations off description [CHAR LIMIT=NONE] -->
+  <string name="ignore_optimizations_off_desc">Aconséyase pa mayor vida de batería</string>
   <!-- Ignore battery optimizations dialog title [CHAR LIMIT=NONE] -->
   <!-- Label for None item in AppListPreference [CHAR LIMIT=40] -->
   <string name="app_list_preference_none">Ensin seguridá</string>
@@ -5171,6 +5408,7 @@
   <!-- Main settings screen item's title to go into the overlay settings screen [CHAR LIMIT=30] -->
   <!-- Summary of number of apps currently can draw overlays [CHAR LIMIT=60] -->
   <!-- Label for showing apps that can draw overlays [CHAR LIMIT=45] -->
+  <string name="filter_overlay_apps">Aplicaciones con permisu</string>
   <!-- Summary of app allowed to draw overlay [CHAR LIMIT=60] -->
   <string name="system_alert_window_on">Sí</string>
   <!-- Summary of app not allowed to draw overlay [CHAR LIMIT=60] -->
@@ -5185,6 +5423,7 @@
   <!-- Link to the apps page for WRITE_SETTINGS settings [CHAR LIMIT=52] -->
   <!-- Label for setting which controls whether app can write system settings [CHAR LIMIT=45] -->
   <!-- Description of the write system settings [CHAR LIMIT=NONE] -->
+  <string name="write_settings_description">Esti permisu permite qu\'una aplicación modifique los axustes del sistema.</string>
   <!-- Summary of app allowed to write system settings [CHAR LIMIT=45] -->
   <string name="write_settings_on">Sí</string>
   <!-- Summary of app not allowed to write system settings [CHAR LIMIT=45] -->
@@ -5194,7 +5433,18 @@
   <!-- Title of setting that controls gesture to open camera by double tapping the power button [CHAR LIMIT=40] -->
   <!-- Description of setting that controls gesture to open camera by double tapping the power button [CHAR LIMIT=NONE] -->
   <!-- Name of each color mode for the display. [CHAR LIMIT=40] -->
+  <string-array name="color_mode_names">
+    <item>Vibrant (default)</item>
+    <item>Natural</item>
+    <item>Estándar</item>
+  </string-array>
   <!-- Description of each color mode for the display. [CHAR LIMIT=NONE] -->
+  <string-array name="color_mode_descriptions">
+    <item>Colores ameyoraos</item>
+    <item>Natural colors as seen by the eye</item>
+    <item>Colors optimized for digital content</item>
+  </string-array>
   <!-- Name of feature to change color setting for the display [CHAR LIMIT=60] -->
   <!-- Description of feature to change color setting for the display [CHAR LIMIT=NONE] -->
+  <string name="picture_color_mode_desc">Usar sRGB</string>
 </resources>
