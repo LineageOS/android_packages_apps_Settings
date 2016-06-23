@@ -19,6 +19,8 @@ package com.android.settings.fingerprint;
 import android.content.Intent;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.settings.ChooseLockSettingsHelper;
@@ -48,6 +50,14 @@ public class FingerprintEnrollFindSensor extends FingerprintEnrollBase {
         }
         mAnimation = (FingerprintLocationAnimationView) findViewById(
                 R.id.fingerprint_sensor_location_animation);
+        boolean isSensorOnFront = getResources().getBoolean(R.bool.config_fingerprintSensorOnFront);
+        if (isSensorOnFront) {
+            TextView message = (TextView) findViewById(R.id.find_sensor_message);
+            message.setText(getString(
+                    R.string.security_settings_fingerprint_enroll_find_sensor_front_message));
+            findViewById(R.id.fingerprint_sensor_location_front_overlay)
+                    .setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
