@@ -22,6 +22,7 @@ import android.hardware.fingerprint.FingerprintManager;
 import android.hardware.fingerprint.FingerprintSensorPropertiesInternal;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
@@ -42,6 +43,11 @@ import java.util.List;
  */
 public class FingerprintEnrollFindSensor extends BiometricEnrollBase implements
         BiometricEnrollSidecar.Listener {
+
+    private static final int SENSOR_LOCATION_BACK = 0;
+    private static final int SENSOR_LOCATION_FRONT = 1;
+    private static final int SENSOR_LOCATION_LEFT = 2;
+    private static final int SENSOR_LOCATION_RIGHT = 3;
 
     @Nullable
     private FingerprintFindSensorAnimation mAnimation;
@@ -82,7 +88,18 @@ public class FingerprintEnrollFindSensor extends BiometricEnrollBase implements
             );
         } else {
             setHeaderText(R.string.security_settings_fingerprint_enroll_find_sensor_title);
-            setDescriptionText(R.string.security_settings_fingerprint_enroll_find_sensor_message);
+            int sensorLocation = getResources().getInteger(R.integer.config_fingerprintSensorLocation);
+            if (sensorLocation < SENSOR_LOCATION_BACK || sensorLocation > SENSOR_LOCATION_RIGHT) {
+                sensorLocation = SENSOR_LOCATION_BACK;
+            }
+            final String location = getResources().getStringArray(
+                    R.array.security_settings_fingerprint_sensor_locations)[sensorLocation];
+            setDescriptionText(getString(
+                    R.string.security_settings_fingerprint_enroll_find_sensor_message_cm, location));
+            if (sensorLocation == SENSOR_LOCATION_FRONT) {
+                findViewById(R.id.fingerprint_sensor_location_front_overlay)
+                        .setVisibility(View.VISIBLE);
+            }
         }
 
         // This is an entry point for SetNewPasswordController, e.g.
