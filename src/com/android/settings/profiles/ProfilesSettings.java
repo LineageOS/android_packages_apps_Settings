@@ -254,6 +254,8 @@ public class ProfilesSettings extends SettingsPreferenceFragment
             getPreferenceScreen().removeAll(); // empty it
         } else {
             refreshList();
+            mProfileManager.setActiveProfile(
+                    mProfileManager.getActiveProfile().getUuid());
         }
     }
 
