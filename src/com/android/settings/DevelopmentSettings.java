@@ -97,6 +97,7 @@ import com.android.settingslib.RestrictedSwitchPreference;
 
 import cyanogenmod.providers.CMSettings;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -210,6 +211,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
     private static final String ROOT_ACCESS_KEY = "root_access";
     private static final String ROOT_ACCESS_PROPERTY = "persist.sys.root_access";
+    private static final String SUPERUSER_BINARY_PATH = "/system/xbin/su";
 
     private static final String ROOT_APPOPS_KEY = "root_appops";
 
@@ -553,6 +555,13 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mRootAppops.setOnPreferenceClickListener(this);
 
         if (!removeRootOptionsIfRequired()) {
+            if (isRootForAppsAvailable()) {
+                mRootAccess.setEntries(R.array.root_access_entries);
+                mRootAccess.setEntryValues(R.array.root_access_values);
+            } else {
+                mRootAccess.setEntries(R.array.root_access_entries_adb);
+                mRootAccess.setEntryValues(R.array.root_access_values_adb);
+            }
             mAllPrefs.add(mRootAccess);
             mAllPrefs.add(mRootAppops);
         }
@@ -908,6 +917,17 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         if (mRootAppops != null) {
             mRootAppops.setEnabled(isRootForAppsEnabled());
         }
+    }
+
+    private boolean isRootForAppsAvailable() {
+        boolean exists = false;
+        try {
+            File f = new File(SUPERUSER_BINARY_PATH);
+            exists = f.exists();
+        } catch (SecurityException e) {
+            // Ignore
+        }
+        return exists;
     }
 
     public static boolean isRootForAppsEnabled() {
