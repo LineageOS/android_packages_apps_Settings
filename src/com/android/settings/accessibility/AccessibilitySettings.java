@@ -101,6 +101,7 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
     static final String EXTRA_SETTINGS_TITLE = "settings_title";
     static final String EXTRA_COMPONENT_NAME = "component_name";
     static final String EXTRA_SETTINGS_COMPONENT_NAME = "settings_component_name";
+    static final String EXTRA_APPLICABLE_COMPONENTS = "accessibility_applicable_components";
 
     // Timeout before we update the services if packages are added/removed
     // since the AccessibilityManagerService has to do that processing first
@@ -446,6 +447,8 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
                 description = getString(R.string.accessibility_service_default_description);
             }
             extras.putString(EXTRA_SUMMARY, description);
+
+            extras.putStringArray(EXTRA_APPLICABLE_COMPONENTS, info.packageNames);
 
             String settingsClassName = info.getSettingsActivityName();
             if (!TextUtils.isEmpty(settingsClassName)) {

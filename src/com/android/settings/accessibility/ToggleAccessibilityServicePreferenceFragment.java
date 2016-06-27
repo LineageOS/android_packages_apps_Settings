@@ -30,11 +30,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.UserHandle;
+import android.preference.ListPreference;
+import android.preference.Preference;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -85,6 +88,8 @@ public class ToggleAccessibilityServicePreferenceFragment
         super.onCreate(savedInstanceState);
         mLockPatternUtils = new LockPatternUtils(getActivity());
     }
+
+    TextView packages;
 
     @Override
     public void onResume() {

@@ -17,17 +17,23 @@
 package com.android.settings.accessibility;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityManager;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.settings.R;
@@ -36,14 +42,20 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.widget.SwitchBar;
 import com.android.settings.widget.ToggleSwitch;
 
+import java.util.ArrayList;
+
 public abstract class ToggleFeaturePreferenceFragment
         extends SettingsPreferenceFragment {
+
+    private Bundle mArguments;
 
     protected SwitchBar mSwitchBar;
     protected ToggleSwitch mToggleSwitch;
 
     protected String mPreferenceKey;
     protected Preference mSummaryPreference;
+    protected TextView mDescriptionText;
+    protected ListView mApplicableApplicationsList;
 
     protected CharSequence mSettingsTitle;
     protected Intent mSettingsIntent;
@@ -60,6 +72,9 @@ public abstract class ToggleFeaturePreferenceFragment
                 super.onBindView(view);
                 final TextView summaryView = (TextView) view.findViewById(android.R.id.summary);
                 summaryView.setText(getSummary());
+                mDescriptionText = (TextView) view.findViewById(R.id.packageDescription);
+                mApplicableApplicationsList = (ListView) view.findViewById(R.id.packageList);
+                setupApplicablePackagesListView();
                 sendAccessibilityEvent(summaryView);
             }
 
@@ -78,9 +93,11 @@ public abstract class ToggleFeaturePreferenceFragment
                 }
             }
         };
+
+
         mSummaryPreference.setSelectable(false);
         mSummaryPreference.setPersistent(false);
-        mSummaryPreference.setLayoutResource(R.layout.text_description_preference);
+        mSummaryPreference.setLayoutResource(R.layout.accessibility_text_description);
         preferenceScreen.addPreference(mSummaryPreference);
     }
 
@@ -147,6 +164,7 @@ public abstract class ToggleFeaturePreferenceFragment
             getPreferenceScreen().removePreference(mSummaryPreference);
             return;
         }
+        mArguments = arguments;
 
         // Key.
         mPreferenceKey = arguments.getString(AccessibilitySettings.EXTRA_PREFERENCE_KEY);
@@ -174,5 +192,48 @@ public abstract class ToggleFeaturePreferenceFragment
         } else {
             getPreferenceScreen().removePreference(mSummaryPreference);
         }
+
+    }
+
+    private void setupApplicablePackagesListView() {
+        if (mArguments == null) {
+            return;
+        }
+
+        if (mArguments.containsKey(AccessibilitySettings.EXTRA_APPLICABLE_COMPONENTS)) {
+            String[] packagesComponentNames = mArguments.getStringArray(
+                    AccessibilitySettings.EXTRA_APPLICABLE_COMPONENTS);
+            if (packagesComponentNames != null && packagesComponentNames.length > 0) {
+                ApplicablePackagesAdapter adapter = new ApplicablePackagesAdapter(getActivity());
+                adapter.setPackages(componentNamesToPackages(packagesComponentNames));
+                mApplicableApplicationsList.setAdapter(adapter);
+                mDescriptionText.setText(
+                        getActivity().getResources().getString(R.string.sandbox_application_access));
+            } else {
+                mDescriptionText.setText(
+                        getActivity().getResources().getString(R.string.global_application_access));
+            }
+        } else {
+            mDescriptionText.setText(
+                    getActivity().getResources().getString(R.string.global_application_access));
+        }
+    }
+
+    private ArrayList<ApplicablePackage> componentNamesToPackages(String[] rawPackages) {
+        ArrayList<ApplicablePackage> parsedPackages
+                = new ArrayList<ApplicablePackage>();
+
+        PackageManager pm = getActivity().getPackageManager();
+        for (String rawPackage : rawPackages) {
+            try {
+                Drawable d = pm.getApplicationIcon(rawPackage);
+                String title = pm.getApplicationLabel(
+                        pm.getApplicationInfo(rawPackage, PackageManager.GET_META_DATA)).toString();
+                parsedPackages.add(new ApplicablePackage(title, d));
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        return parsedPackages;
     }
 }
