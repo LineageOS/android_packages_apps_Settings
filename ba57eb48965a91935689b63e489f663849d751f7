@@ -2,6 +2,86 @@
   "comments": [
     {
       "key": {
+        "uuid": "3fa7e38b_b855e11f",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 9045
+      },
+      "writtenOn": "2016-06-28T20:54:43Z",
+      "side": 1,
+      "message": "extra logs can go if this is working as you expect",
+      "revId": "ba57eb48965a91935689b63e489f663849d751f7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fa7e38b_58306d08",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 9045
+      },
+      "writtenOn": "2016-06-28T20:54:43Z",
+      "side": 1,
+      "message": "usually no new line necessary here",
+      "revId": "ba57eb48965a91935689b63e489f663849d751f7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fa7e38b_183af5e6",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 9045
+      },
+      "writtenOn": "2016-06-28T20:54:43Z",
+      "side": 1,
+      "message": "you could default to these in the XML, and then set the special root case if we detect it?",
+      "range": {
+        "startLine": 486,
+        "startChar": 16,
+        "endLine": 487,
+        "endChar": 75
+      },
+      "revId": "ba57eb48965a91935689b63e489f663849d751f7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fa7e38b_98582557",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 9045
+      },
+      "writtenOn": "2016-06-28T20:54:43Z",
+      "side": 1,
+      "message": "nit: method could be private scoped.\n\nCan this ever throw a file not found exception or any other IO error?",
+      "range": {
+        "startLine": 847,
+        "startChar": 4,
+        "endLine": 847,
+        "endChar": 10
+      },
+      "revId": "ba57eb48965a91935689b63e489f663849d751f7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fa7e38b_38133110",
         "filename": "src/com/android/settings/DevelopmentSettings.java",
         "patchSetId": 2
@@ -49,6 +129,29 @@
       "side": 1,
       "message": "Huh, usually you\u0027d get an SELinux search or read triggered. If it\u0027s not happening, then that\u0027s fine.",
       "parentUuid": "3fa7e38b_f81d990f",
+      "revId": "ba57eb48965a91935689b63e489f663849d751f7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fa7e38b_783529f7",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 9045
+      },
+      "writtenOn": "2016-06-28T20:54:43Z",
+      "side": 1,
+      "message": "would look cleaner to put this in a constant up top",
+      "range": {
+        "startLine": 848,
+        "startChar": 26,
+        "endLine": 848,
+        "endChar": 43
+      },
       "revId": "ba57eb48965a91935689b63e489f663849d751f7",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
