@@ -23,6 +23,10 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.content.Intent;
+import android.content.Context;
+
+
 
 public class CmRadioInfo extends Activity {
     private final String TAG = "CmRadioInfo";
@@ -33,6 +37,7 @@ public class CmRadioInfo extends Activity {
     private Button wfcAvailOvrButton;
     private Button adbRadioLog;
     private Button diagLog;
+    private Button radioProp;
 
     static final String PROPERTY_SW_MBN_UPDATE = "persist.radio.sw_mbn_update";
     static final String PROPERTY_SW_MBN_VOLTE = "persist.radio.sw_mbn_volte";
@@ -66,6 +71,9 @@ public class CmRadioInfo extends Activity {
 
         diagLog = (Button) findViewById(R.id.diag_log);
         diagLog.setOnClickListener(mDiagLogHandler);
+
+        radioProp = (Button) findViewById(R.id.radio_prop);
+        radioProp.setOnClickListener(mRadioPropHandler);
     }
 
     @Override
@@ -214,4 +222,12 @@ public class CmRadioInfo extends Activity {
     private void log(String s) {
         Log.d(TAG, "[Phone] " + s);
     }
+
+    OnClickListener mRadioPropHandler = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intentRadioPropHandler = new Intent(CmRadioInfo.this, CmRadioPropDisplay.class);
+            startActivity(intentRadioPropHandler);
+        }
+    };
 }

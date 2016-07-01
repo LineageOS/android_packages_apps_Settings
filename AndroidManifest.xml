@@ -1986,6 +1986,15 @@
             </intent-filter>
         </activity>
 
+
+        <activity android:label="@string/cm_radio_prop_display" android:name="CmRadioPropDisplay" android:parentActivityName="CmRadioInfo"
+            android:process="com.android.phone">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <!-- Suspect activity alias: targetActivity is Settings itself, does not define a name. Remove? -->
         <activity-alias android:name="ProxySelector"
             android:label="@string/proxy_settings_label"
