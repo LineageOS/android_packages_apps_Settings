@@ -128,6 +128,7 @@ public class InstalledAppDetails extends AppInfoBase
     public static final int UNINSTALL_ALL_USERS_MENU = 1;
     public static final int UNINSTALL_UPDATES = 2;
     public static final int OPEN_PROTECTED_APPS = 3;
+    public static final int PLAY_STORE = 4;
 
     // Result code identifiers
     public static final int REQUEST_UNINSTALL = 0;
@@ -443,6 +444,9 @@ public class InstalledAppDetails extends AppInfoBase
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.add(0, PLAY_STORE, 0, R.string.app_play_store)
+                .setIcon(R.drawable.ic_menu_play_store)
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
         menu.add(0, UNINSTALL_UPDATES, 0, R.string.app_factory_reset)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
         menu.add(0, UNINSTALL_ALL_USERS_MENU, 1, R.string.uninstall_all_users_text)
@@ -482,6 +486,11 @@ public class InstalledAppDetails extends AppInfoBase
 
         menu.findItem(OPEN_PROTECTED_APPS).setVisible(mPackageInfo != null &&
                 mPackageInfo.applicationInfo != null && mPackageInfo.applicationInfo.protect);
+
+        // Utils.isSystemPackage doesn't include all aosp built apps, like Contacts etc. Add them
+        // and grab the Google Play Store itself (com.android.vending) in the process
+        menu.findItem(PLAY_STORE).setVisible(!Utils.isSystemPackage(getContext().getResources(), mPm, mPackageInfo)
+                && !isAospOrStore(mAppEntry.info.packageName));
     }
 
     @Override
@@ -497,6 +506,10 @@ public class InstalledAppDetails extends AppInfoBase
                 // Verify protection for toggling protected component status
                 Intent protectedApps = new Intent(getActivity(), LockPatternActivity.class);
                 startActivityForResult(protectedApps, REQUEST_TOGGLE_PROTECTION);
+                return true;
+            case PLAY_STORE:
+                openPlayStore(mAppEntry.info.packageName);
+                return true;
         }
         return false;
     }
@@ -726,6 +739,18 @@ public class InstalledAppDetails extends AppInfoBase
                         .create();
         }
         return null;
+    }
+
+    private void openPlayStore(String packageName) {
+        // Launch an intent to the play store entry
+        String playURL = "https://play.google.com/store/apps/details?id=" + packageName;
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(playURL));
+        startActivity(i);
+    }
+
+    private boolean isAospOrStore(String packageName) {
+        return packageName.contains("com.android");
     }
 
     private void uninstallPkg(String packageName, boolean allUsers, boolean andDisable) {
