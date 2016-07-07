@@ -1441,11 +1441,9 @@ public class InstalledAppDetails extends AppInfoBase
     private final BroadcastReceiver mCheckKillProcessesReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            final boolean enabled = getResultCode() != Activity.RESULT_CANCELED;
-            Log.d(LOG_TAG, "Got broadcast response: Restart status for "
-                    + mAppEntry.info.packageName + " " + enabled);
-            updateForceStopButton(enabled);
-            refreshUi();
+            if (getActivity() != null && !getActivity().isDestroyed()) {
+                updateForceStopButton(getResultCode() != Activity.RESULT_CANCELED);
+            }
         }
     };
 
