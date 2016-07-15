@@ -215,6 +215,10 @@ public class DisplayTemperature extends DialogPreference {
 
             mSeekBar.setMax((MAX - MIN) / STEP);
             mSeekBar.setOnSeekBarChangeListener(this);
+
+            // init text value
+            int p = mSeekBar.getProgress();
+            onProgressChanged(mSeekBar, p, false);
         }
 
         @Override
