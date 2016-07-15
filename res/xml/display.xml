@@ -90,7 +90,7 @@
                 android:key="proximity_on_wake"
                 android:title="@string/proximity_wake_title"
                 android:summary="@string/proximity_wake_summary"
-                android:defaultValue="true" />
+                android:defaultValue="@*cyanogenmod.platform:bool/config_proximityCheckOnWakeEnabledByDefault" />
 
         <!-- Seconds before sleep -->
         <ListPreference
