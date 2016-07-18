@@ -31,6 +31,8 @@ import android.widget.TextView;
 
 import com.android.settings.R;
 
+import org.cyanogenmod.internal.util.MathUtils;
+
 import cyanogenmod.hardware.LiveDisplayConfig;
 import cyanogenmod.hardware.LiveDisplayManager;
 
@@ -205,15 +207,37 @@ public class DisplayTemperature extends DialogPreference {
         private final SeekBar mSeekBar;
         private final TextView mValue;
 
-        private static final int MIN = 1000;
-        private static final int MAX = 10000;
+        private final int mMin;
+        private final int mMax;
+
+        private final int mBalanceMin;
+        private final int mBalanceMax;
+
+        private final int mBarMax;
+
+        private final boolean mUseBalance;
+        private final double[] mBalanceCurve;
+
         private static final int STEP = 100;
 
         public ColorTemperatureSeekBar(SeekBar seekBar, TextView value) {
             mSeekBar = seekBar;
             mValue = value;
+            mMin = mConfig.getColorTemperatureRange().getLower();
+            mMax = mConfig.getColorTemperatureRange().getUpper();
+            mBalanceMin = mConfig.getColorBalanceRange().getLower();
+            mBalanceMax = mConfig.getColorBalanceRange().getUpper();
+            mUseBalance = mConfig.hasFeature(LiveDisplayManager.FEATURE_COLOR_BALANCE) &&
+                    ((mBalanceMin != 0) || (mBalanceMax != 0));
 
-            mSeekBar.setMax((MAX - MIN) / STEP);
+            if (mUseBalance) {
+                mBalanceCurve = MathUtils.powerCurve(mMin, mConfig.getDefaultDayTemperature(), mMax);
+                mBarMax = mBalanceMax - mBalanceMin;
+            } else {
+                mBalanceCurve = null;
+                mBarMax = (mMax - mMin) / STEP;
+            }
+            mSeekBar.setMax(mBarMax);
             mSeekBar.setOnSeekBarChangeListener(this);
         }
 
@@ -222,17 +246,34 @@ public class DisplayTemperature extends DialogPreference {
             if (fromUser) {
                 updateTemperature(true);
             }
+
+            String displayValue;
+            if (mUseBalance) {
+                displayValue = String.valueOf(Math.round((float)MathUtils.linearToPowerCurve(
+                        mBalanceCurve, progress)));
+            } else {
+                displayValue = String.valueOf(progress * STEP + mMin);
+            }
             mValue.setText(mContext.getResources().getString(
-                    R.string.live_display_color_temperature_label, progress * STEP + MIN));
+                    R.string.live_display_color_temperature_label, displayValue));
         }
 
         public void setProgress(int progress) {
-            int p = Math.max(progress, MIN) - MIN;
+            if (mUseBalance) {
+                float z = (float)MathUtils.powerCurveToLinear(mBalanceCurve, (double)progress);
+                mSeekBar.setProgress(Math.round(z * mBarMax));
+                return;
+            }
+            int p = Math.max(progress, mMin) - mMin;
             mSeekBar.setProgress(Math.round((float) p / STEP));
         }
 
         public int getProgress() {
-            return mSeekBar.getProgress() * STEP + MIN;
+            if (mUseBalance) {
+                return Math.round((float)MathUtils.linearToPowerCurve(
+                        mBalanceCurve, mSeekBar.getProgress()));
+            }
+            return mSeekBar.getProgress() * STEP + mMin;
         }
 
         @Override
