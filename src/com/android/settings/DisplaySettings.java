@@ -177,9 +177,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
 
         mLiveDisplayPreference = (PreferenceScreen) findPreference(KEY_LIVEDISPLAY);
-        if (!LiveDisplayManager.getInstance(getActivity()).getConfig().isAvailable()) {
-            displayPrefs.removePreference(mLiveDisplayPreference);
-        }
+
 
         mScreenSaverPreference = findPreference(KEY_SCREEN_SAVER);
         if (mScreenSaverPreference != null
