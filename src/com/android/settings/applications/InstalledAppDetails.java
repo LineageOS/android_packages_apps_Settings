@@ -479,7 +479,8 @@ public class InstalledAppDetails extends AppInfoBase
                     uninstallUpdatesItem, mAppsControlDisallowedAdmin);
         }
 
-        menu.findItem(OPEN_PROTECTED_APPS).setVisible(mPackageInfo.applicationInfo.protect);
+        menu.findItem(OPEN_PROTECTED_APPS).setVisible(mPackageInfo != null &&
+                mPackageInfo.applicationInfo != null && mPackageInfo.applicationInfo.protect);
     }
 
     @Override
