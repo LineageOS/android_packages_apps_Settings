@@ -32,12 +32,17 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.ResolveInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.content.ServiceConnection;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.nfc.NfcAdapter;
 import android.nfc.NfcManager;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.RemoteException;
 import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.os.UserManager;
@@ -58,6 +63,8 @@ import com.android.settings.nfc.NfcEnabler;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settingslib.RestrictedLockUtils;
+import java.lang.Exception;
+import java.lang.Override;
 import com.android.settingslib.RestrictedPreference;
 import org.codeaurora.wfcservice.IWFCService;
 import org.codeaurora.wfcservice.IWFCServiceCB;
@@ -66,9 +73,17 @@ import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.os.RemoteException;
 
+import java.lang.String;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import org.codeaurora.ims.internal.IQtiImsExt;
+import org.codeaurora.ims.QtiImsException;
+import org.codeaurora.ims.QtiImsExtListenerBaseImpl;
+import org.codeaurora.ims.internal.IQtiImsExtListener;
+import org.codeaurora.ims.QtiImsExtManager;
+import org.codeaurora.ims.utils.QtiImsExtUtils;
 
 public class WirelessSettings extends SettingsPreferenceFragment implements Indexable {
     private static final String TAG = "WirelessSettings";
@@ -92,6 +107,12 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
 
     public static final String EXIT_ECM_RESULT = "exit_ecm_result";
     public static final int REQUEST_CODE_EXIT_ECM = 1;
+
+    /*add for VoLTE Preferred on/off Begin*/
+    private static final String IMS_SERVICE_PKG_NAME = "org.codeaurora.ims";
+    private static final int MSG_ID_VOLTE_PREFERENCE_UPDATED_RESPONSE = 0x01;
+    private static final int MSG_ID_VOLTE_PREFERENCE_QUERIED_RESPONCE = 0X02;
+    /*add for VoLTE Preferred on/off end*/
 
     private AirplaneModeEnabler mAirplaneModeEnabler;
     private SwitchPreference mAirplaneModePreference;
@@ -180,13 +201,13 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
     @Override
     public void onDestroy() {
         unbindWFCService();
-
         super.onDestroy();
     }
 
     private static final String VOICE_OVER_LTE = "voice_over_lte";
     private SwitchPreference mVoLtePreference;
     private boolean mLteEnabled = false;
+    private QtiImsExtManager mImsExtManager = null;
     /**
      * Invoked on each preference click in this hierarchy, overrides
      * PreferenceFragment's implementation.  Used to make sure we track the
@@ -205,7 +226,16 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
         } else if (preference == findPreference(KEY_MANAGE_MOBILE_PLAN)) {
             onManageMobilePlanClick();
         } else if (mLteEnabled && preference == mVoLtePreference) {
-            ImsManager.setEnhanced4gLteModeSetting(getActivity(), mVoLtePreference.isChecked());
+            boolean translateValue = mVoLtePreference.isChecked();
+            if(mImsExtManager != null) {
+                try{
+                    mImsExtManager.updateVoltePreference(mImsExtManager.getImsPhoneId(),
+                        translateValue?1:0, imsInterfaceListener);
+                } catch (QtiImsException e) {
+                    Log.e(TAG, e.toString());
+                }
+            }
+
         } else if (preference == findPreference(KEY_MOBILE_NETWORK_SETTINGS)
                 && mIsNetworkSettingsAvailable) {
             onMobileNetworkSettingsClick();
@@ -515,14 +545,25 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
             // Grey out if provisioning is not available.
             p.setEnabled(!TetherSettings
                     .isProvisioningNeededButUnavailable(getActivity()));
-        mLteEnabled = getActivity().getResources().getBoolean(R.bool.config_voice_over_lte_enabled);
-        mVoLtePreference = (SwitchPreference) findPreference(VOICE_OVER_LTE);
-        if (mLteEnabled) {
-            mVoLtePreference.setChecked(
-                    ImsManager.isEnhanced4gLteModeSettingEnabledByUser(getActivity()));
-        } else {
-            getPreferenceScreen().removePreference(mVoLtePreference);
-        }
+
+            mLteEnabled = getActivity().getResources()
+                    .getBoolean(com.android.internal.R.bool.config_volte_preferred);
+            mVoLtePreference = (SwitchPreference) findPreference(VOICE_OVER_LTE);
+            if (mLteEnabled) {
+                mVoLtePreference.setEnabled(false);
+                mImsExtManager = QtiImsExtManager.getInstance();
+                if(mImsExtManager != null) {
+                    try {
+                        Log.d(TAG,"queryVoltePreference!");
+                        mImsExtManager.queryVoltePreference(mImsExtManager.getImsPhoneId(),
+                                imsInterfaceListener);
+                    } catch (QtiImsException e) {
+                        Log.e(TAG, e.toString());
+                    }
+                }
+            } else {
+                getPreferenceScreen().removePreference(mVoLtePreference);
+            }
         }
 
     }
@@ -682,4 +723,71 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
             }
         };
 
+    /*add for VoLTE Preferred on/off begin*/
+    /**
+     * add Listener to get volte preference update and query response;
+    */
+    private IQtiImsExtListener imsInterfaceListener = new QtiImsExtListenerBaseImpl() {
+        @Override
+        public void onVoltePreferenceUpdated(int result) {
+            Log.d(TAG, "voltePreferenceUpdated, result = " + result);
+            Message msg = mImsResponseHandler.obtainMessage();
+            msg.what = MSG_ID_VOLTE_PREFERENCE_UPDATED_RESPONSE;
+            msg.arg1 = result;
+            msg.sendToTarget();
+        }
+
+        @Override
+        public void onVoltePreferenceQueried(int result, int mode) {
+            Log.d(TAG, "voltePreferenceQueried, result = " + result + " mode = " + mode);
+            Message msg = mImsResponseHandler.obtainMessage();
+            msg.what = MSG_ID_VOLTE_PREFERENCE_QUERIED_RESPONCE;
+            msg.arg1 = result;
+            msg.arg2 = mode;
+            msg.sendToTarget();
+        }
+    };
+
+    private Handler mImsResponseHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case MSG_ID_VOLTE_PREFERENCE_UPDATED_RESPONSE:
+                    int updateResult = msg.arg1;
+                    if(updateResult == QtiImsExtUtils.QTI_IMS_REQUEST_ERROR) {
+                        mVoLtePreference.setChecked(!mVoLtePreference.isChecked());
+                    }
+                    try{
+                        Settings.Global.putInt(getActivity().getContentResolver(),
+                                Settings.Global.VOLTE_PREFERRED_ON,
+                                mVoLtePreference.isChecked()? 1 : 0);
+                    }catch (Exception e) {
+
+                    }
+                    break;
+                case MSG_ID_VOLTE_PREFERENCE_QUERIED_RESPONCE:
+                    int queryResult = msg.arg1;
+                    int mode = msg.arg2;
+                    int value = Settings.Global.getInt(getActivity()
+                            .getContentResolver(), Settings.Global.VOLTE_PREFERRED_ON, 1);
+                    Log.d(TAG, "Local setting status = " + value);
+                    mVoLtePreference.setEnabled(true);
+                    mVoLtePreference.setChecked(value == 1 ? true : false);
+                    if((queryResult == QtiImsExtUtils.QTI_IMS_REQUEST_SUCCESS) && (mode != value)) {
+                       try {
+                            if(mImsExtManager != null) {
+                                mImsExtManager.updateVoltePreference(
+                                        mImsExtManager.getImsPhoneId(),
+                                        value,
+                                        imsInterfaceListener);
+                            }
+                        } catch (QtiImsException e) {
+                            Log.e(TAG, e.toString());
+                        }
+                    }
+                    break;
+            }
+        }
+    };
+    /*add for VoLTE Preferred on/off end*/
 }
