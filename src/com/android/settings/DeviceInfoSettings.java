@@ -17,6 +17,8 @@
 package com.android.settings;
 
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -43,6 +45,7 @@ import android.text.format.DateFormat;
 import android.util.Log;
 import android.widget.Toast;
 
+import cyanogenmod.hardware.CMHardwareManager;
 import com.android.internal.logging.MetricsLogger;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Index;
@@ -91,10 +94,13 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_CM_UPDATES = "cm_updates";
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
+    static final int TAPS_TO_SHOW_DEVICEID = 7;
 
     long[] mHits = new long[3];
     int mDevHitCountdown;
+    int mDevIdCountdown;
     Toast mDevHitToast;
+    Toast mDevIdToast;
 
     @Override
     protected int getMetricsCategory() {
@@ -134,7 +140,10 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         setStringSummary(KEY_DEVICE_MODEL, Build.MODEL);
         setStringSummary(KEY_BUILD_NUMBER, Build.DISPLAY);
         findPreference(KEY_BUILD_NUMBER).setEnabled(true);
-        findPreference(KEY_KERNEL_VERSION).setSummary(getFormattedKernelVersion());
+
+        final Preference kernelPref = findPreference(KEY_KERNEL_VERSION);
+        kernelPref.setEnabled(true);
+        kernelPref.setSummary(getFormattedKernelVersion());
         findPreference(KEY_MOD_VERSION).setSummary(
                 cyanogenmod.os.Build.CYANOGENMOD_DISPLAY_VERSION);
         findPreference(KEY_MOD_VERSION).setEnabled(true);
@@ -227,6 +236,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
                 Context.MODE_PRIVATE).getBoolean(DevelopmentSettings.PREF_SHOW,
                         android.os.Build.TYPE.equals("eng")) ? -1 : TAPS_TO_BE_A_DEVELOPER;
         mDevHitToast = null;
+        mDevIdCountdown = TAPS_TO_SHOW_DEVICEID;
+        mDevIdToast = null;
     }
 
     @Override
@@ -263,6 +274,42 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
                     Log.e(LOG_TAG, "Unable to start activity " + intent.toString());
                 }
             }
+        } else if (preference.getKey().equals(KEY_KERNEL_VERSION)) {
+
+            mDevIdCountdown --;
+            if (mDevIdCountdown == 0) {
+                final CMHardwareManager hwMgr = CMHardwareManager.getInstance(getActivity().getApplicationContext());
+                final String deviceID = hwMgr.getUniqueDeviceId();
+                CharSequence msg;
+                if (deviceID == null) {
+                    msg = getText(R.string.show_device_id_failed_cm);
+                }
+                else {
+                    final ClipboardManager clipboardMgr = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                    clipboardMgr.setPrimaryClip(ClipData.newPlainText(getResources().
+                                    getString(R.string.show_device_id_clipboard_label),
+                            deviceID));
+                    msg = getResources().getString(
+                            R.string.show_device_id_copied_cm, deviceID);
+                }
+
+                mDevIdToast = Toast.makeText(getActivity(), msg,
+                        Toast.LENGTH_LONG);
+                mDevIdToast.show();
+                mDevIdCountdown = TAPS_TO_SHOW_DEVICEID;
+            }
+            else if (mDevIdCountdown > 0
+                    && mDevIdCountdown < (TAPS_TO_SHOW_DEVICEID-2)) {
+
+                if (mDevIdToast != null) {
+                    mDevIdToast.cancel();
+                }
+                mDevIdToast = Toast.makeText(getActivity(), getResources().getQuantityString(
+                        R.plurals.show_device_id_countdown_cm, mDevIdCountdown, mDevIdCountdown),
+                        Toast.LENGTH_SHORT);
+                mDevIdToast.show();
+            }
+
         } else if (preference.getKey().equals(KEY_BUILD_NUMBER)) {
             // Don't enable developer options for secondary users.
             if (UserHandle.myUserId() != UserHandle.USER_OWNER) return true;
