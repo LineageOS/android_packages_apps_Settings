@@ -96,7 +96,7 @@
         <com.android.settings.cyanogenmod.CMSecureSettingSwitchPreference
             android:key="lock_screen_blur_enabled"
             android:title="@string/lockscreen_blur_enabled_title"
-            android:defaultValue="true"/>
+            android:defaultValue="@*cyanogenmod.platform:bool/config_lock_screen_blur_default"/>
 
         <com.android.settings.cyanogenmod.CMSecureSettingSwitchPreference
             android:key="lock_screen_weather_enabled"
