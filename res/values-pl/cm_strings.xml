@@ -17,6 +17,11 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="one">Jesteś teraz <xliff:g id="step_count">%1$d</xliff:g> krok od włączenia opcji programistycznych.</item>
+    <item quantity="few">Jesteś teraz <xliff:g id="step_count">%1$d</xliff:g> kroki od włączenia opcji programistycznych.</item>
+    <item quantity="other">Jesteś teraz <xliff:g id="step_count">%1$d</xliff:g> kroków od włączenia opcji programistycznych.</item>
+  </plurals>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
   <string name="show_dev_on_cm">Aktywowałeś opcje programistyczne!</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
@@ -691,8 +696,8 @@
   <string name="status_bar_notif_count_summary">Wyświetla licznik oczekujących powiadomień</string>
   <string name="status_bar_quick_qs_pulldown_title">Szybkie rozwijanie</string>
   <string name="status_bar_quick_qs_pulldown_summary">%1$s krawędź ekranu rozwija szybkie ustawienia</string>
-  <string name="status_bar_quick_qs_pulldown_summary_left">Lewo</string>
-  <string name="status_bar_quick_qs_pulldown_summary_right">Prawo</string>
+  <string name="status_bar_quick_qs_pulldown_summary_left">Lewa</string>
+  <string name="status_bar_quick_qs_pulldown_summary_right">Prawa</string>
   <string name="status_bar_quick_qs_pulldown_off">Wyłączony</string>
   <string name="status_bar_quick_qs_pulldown_left">Lewa</string>
   <string name="status_bar_quick_qs_pulldown_right">Prawa</string>

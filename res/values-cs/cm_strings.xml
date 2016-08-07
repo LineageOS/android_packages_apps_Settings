@@ -133,7 +133,7 @@
   <!-- Profile Settings sound modes labels -->
   <string name="sound_mode">Režim upozornění</string>
   <string name="ringer_mode">Režim vyzvánění</string>
-  <string name="lights_mode">Režim světelné signalizace</string>
+  <string name="lights_mode">Režim světelné indikace</string>
   <string name="vibrate_mode">Režim vibrací</string>
   <string name="choose_soundtone">Zvolte tón upozornění</string>
   <string name="choose_ringtone">Zvolte vyzváněcí melodii</string>
@@ -232,7 +232,7 @@
   <string name="navigation_bar_arrow_keys_summary">Zobrazit levý a pravý kurzor při psaní. Potlačí IME přepínač.</string>
   <string name="navigation_bar_recents_title">Akce dlouhého stisku tlačítka „Nedávné“</string>
   <!-- Notification light dialogs -->
-  <string name="edit_light_settings">Upravit světelnou signalizaci</string>
+  <string name="edit_light_settings">Upravit nastavení osvětlení</string>
   <string name="pulse_speed_title">Délka impulsu a rychlost</string>
   <string name="default_time">Normální</string>
   <string name="custom_time">Vlastní</string>
@@ -550,6 +550,7 @@
   <string name="volume_adjust_sounds_title">Zvuk při změně hlasitosti</string>
   <!-- Hardware tunables - Vibrator intensity -->
   <string name="vibrator_intensity_title">Intenzita vibrací</string>
+  <string name="vibrator_warning">Nedoporučuje se použít hodnoty větší než %1$d%%</string>
   <!-- Hardware tunables - Color calibration -->
   <string name="color_calibration_title">Barevná kalibrace</string>
   <string name="color_calibration_summary">Kalibrovat barvy obrazovky</string>
@@ -678,7 +679,7 @@
   <string name="volume_keys_control_ring_stream_summary_on">Tlačítka hlasitosti ovládají hlasitost vyzvánění</string>
   <string name="volume_keys_control_ring_stream_summary_off">Tlačítka hlasitosti ovládají hlasitost médií</string>
   <string name="category_calibration">Kalibrace</string>
-  <string name="display_and_lights">Zobrazení a signalizace</string>
+  <string name="display_and_lights">Zobrazení a světla</string>
   <!-- Category title for Charging sounds (Power state change) specific Settings.
          [CHAR LIMIT=40] -->
   <string name="power_notifications_category_title">Zvuk nabíječky</string>
@@ -699,8 +700,8 @@
   <string name="status_bar_notif_count_summary">Zobrazí počet nezobrazených upozornění v oznamovací oblasti</string>
   <string name="status_bar_quick_qs_pulldown_title">Rychlé stažení nabídky</string>
   <string name="status_bar_quick_qs_pulldown_summary">Tažením dolů z %1$s strany stavové lišty se vysune rychlé nastavení</string>
-  <string name="status_bar_quick_qs_pulldown_summary_left">Vlevo</string>
-  <string name="status_bar_quick_qs_pulldown_summary_right">Vpravo</string>
+  <string name="status_bar_quick_qs_pulldown_summary_left">Nalevo</string>
+  <string name="status_bar_quick_qs_pulldown_summary_right">Napravo</string>
   <string name="status_bar_quick_qs_pulldown_off">Vypnuto</string>
   <string name="status_bar_quick_qs_pulldown_left">Nalevo</string>
   <string name="status_bar_quick_qs_pulldown_right">Napravo</string>
@@ -1076,4 +1077,5 @@
   <string name="security_settings_fingerprint_sensor_location_left">levá strana</string>
   <string name="security_settings_fingerprint_sensor_location_right">pravá strana</string>
   <!-- SIM status format string -->
+  <string name="sim_status_format_string">Hlas: <xliff:g id="voice_status">%1$s</xliff:g> / Data: <xliff:g id="data_status">%2$s</xliff:g></string>
 </resources>
