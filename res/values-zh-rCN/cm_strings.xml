@@ -17,6 +17,9 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="other">还需 <xliff:g id="step_count">%1$d</xliff:g> 步就可以启用开发者选项。</item>
+  </plurals>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
   <string name="show_dev_on_cm">您已经启用了开发者选项！</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
@@ -695,7 +698,7 @@
   <string name="status_bar_notif_count_summary">显示未读通知的数量</string>
   <string name="status_bar_quick_qs_pulldown_title">快速下拉</string>
   <string name="status_bar_quick_qs_pulldown_summary">从状态栏的%1$s边缘下拉开启快速设置面板</string>
-  <string name="status_bar_quick_qs_pulldown_summary_left">左侧</string>
+  <string name="status_bar_quick_qs_pulldown_summary_left">左</string>
   <string name="status_bar_quick_qs_pulldown_summary_right">右侧</string>
   <string name="status_bar_quick_qs_pulldown_off">关闭</string>
   <string name="status_bar_quick_qs_pulldown_left">左</string>
