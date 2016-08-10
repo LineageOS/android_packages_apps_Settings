@@ -23,6 +23,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.android.settings.ButtonSettings;
+import com.android.settings.DisplaySettings;
 import com.android.settings.R;
 import com.android.settings.Utils;
 import com.android.settings.contributors.ContributorsCloudFragment;
@@ -43,6 +44,7 @@ public class BootReceiver extends BroadcastReceiver {
             ButtonSettings.restoreKeyDisabler(ctx);
             VibratorIntensity.restore(ctx);
             InputMethodAndLanguageSettings.restore(ctx);
+            DisplaySettings.restore(ctx);
             setRestoredTunable(ctx);
         }
 
