@@ -459,8 +459,9 @@ public class SecuritySettings extends SettingsPreferenceFragment
             if (!um.hasUserRestriction(UserManager.DISALLOW_CONFIG_CREDENTIALS)) {
                 Preference credentialStorageType = root.findPreference(KEY_CREDENTIAL_STORAGE_TYPE);
 
+                boolean isHardwareBacked = (mKeyStore != null) && (mKeyStore.isHardwareBacked());
                 final int storageSummaryRes =
-                        mKeyStore.isHardwareBacked() ? R.string.credential_storage_type_hardware
+                        isHardwareBacked ? R.string.credential_storage_type_hardware
                                 : R.string.credential_storage_type_software;
                 credentialStorageType.setSummary(storageSummaryRes);
             } else {
