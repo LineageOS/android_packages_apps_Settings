@@ -32,7 +32,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
-import com.android.internal.logging.MetricsLogger;
+import com.android.internal.logging.MetricsProto.MetricsEvent;
 
 import java.util.ArrayList;
 
@@ -151,7 +151,7 @@ public class FeaturePreferences extends InstrumentedFragment {
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.FEATURE_PREFERENCES;
+        return MetricsEvent.FEATURE_PREFERENCES;
     }
 
     private class SettingsListAdapter extends ArrayAdapter<CheckBoxPreference> {
