@@ -1048,15 +1048,6 @@ public class SettingsActivity extends SettingsDrawerActivity
      */
     private Fragment switchToFragment(String fragmentName, Bundle args, boolean validate,
             boolean addToBackStack, int titleResId, CharSequence title, boolean withTransition) {
-        if (fragmentName.equals(SimSettings.class.getName())){
-            Log.i(LOG_TAG, "switchToFragment, launch simSettings  ");
-            Intent provisioningIntent =
-                    new Intent("com.android.settings.sim.SIM_SUB_INFO_SETTINGS");
-            startActivity(provisioningIntent);
-            finish();
-            return null;
-        }
-
         if (LTE_4G_FRAGMENT.equals(fragmentName)) {
             Intent newIntent = new Intent("android.settings.SETTINGS");
             newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -1087,7 +1078,6 @@ public class SettingsActivity extends SettingsDrawerActivity
             SystemUpdateHandle ();
             return null;
         }
-
 
         if (validate && !isValidFragment(fragmentName)) {
             throw new IllegalArgumentException("Invalid fragment for this activity: "
