@@ -43,6 +43,7 @@
                     android:targetClass="@string/additional_system_update_menu" />
         </PreferenceScreen>
 
+
         <!-- LineageOS Updates -->
         <cyanogenmod.preference.SelfRemovingPreference android:key="cm_updates"
                 android:title="@string/cmupdate_settings_title"
@@ -53,6 +54,12 @@
                     android:targetPackage="org.lineageos.updater"
                     android:targetClass="com.cyanogenmod.updater.UpdatesActivity" />
         </cyanogenmod.preference.SelfRemovingPreference>
+
+        <!-- Changelog -->
+        <PreferenceScreen android:key="aim_changelog"
+            android:title="@string/changelog_title"
+            android:summary="@string/changelog_summary"
+            android:fragment="com.android.settings.aim.fragments.Changelog" />
 
         <!-- Device status - launches activity -->
         <PreferenceScreen android:key="status_info"
