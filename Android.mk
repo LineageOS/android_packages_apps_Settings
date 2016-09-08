@@ -1,7 +1,5 @@
 LOCAL_PATH:= $(call my-dir)
 
-include $(LOCAL_PATH)/library.mk
-
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := \
