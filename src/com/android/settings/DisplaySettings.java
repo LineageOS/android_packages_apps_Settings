@@ -111,11 +111,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private static final int DLG_FONTSIZE_CHANGE_WARNING = 2;
 
-    private static final String KEY_NETWORK_NAME_DISPLAYED = "network_operator_display";
-    private static final String SHOW_NETWORK_NAME_MODE = "show_network_name_mode";
-    private static final int SHOW_NETWORK_NAME_ON = 1;
-    private static final int SHOW_NETWORK_NAME_OFF = 0;
-
     private static final String FONT_SIZE_MINIMUM = "0.95";
     private static final String FONT_SIZE_SMALL = "1.0";
     private static final String FONT_SIZE_MEDIUM = "1.05";
@@ -135,7 +130,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mAutoBrightnessPreference;
     private SwitchPreference mCameraGesturePreference;
     private SwitchPreference mCameraDoubleTapPowerGesturePreference;
-    private SwitchPreference mNetworkNameDisplayedPreference = null;
 
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
@@ -183,16 +177,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             mAutoBrightnessPreference.setOnPreferenceChangeListener(this);
         } else {
             removePreference(KEY_AUTO_BRIGHTNESS);
-        }
-
-        boolean enableOperatorName = this.getResources().
-                getBoolean(com.android.internal.R.bool.config_showOperatorNameInStatusBar);
-        if(enableOperatorName) {
-            mNetworkNameDisplayedPreference = (SwitchPreference) findPreference(
-                KEY_NETWORK_NAME_DISPLAYED);
-            mNetworkNameDisplayedPreference.setOnPreferenceChangeListener(this);
-        } else {
-            removePreference(KEY_NETWORK_NAME_DISPLAYED);
         }
 
         if (!NightDisplayController.isAvailable(activity)) {
@@ -460,12 +444,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             mAutoBrightnessPreference.setChecked(brightnessMode != SCREEN_BRIGHTNESS_MODE_MANUAL);
         }
 
-        if (mNetworkNameDisplayedPreference != null) {
-            int showNetworkNameMode = Settings.System.getInt(getContentResolver(),
-                    SHOW_NETWORK_NAME_MODE, SHOW_NETWORK_NAME_ON); //default is ON
-            mNetworkNameDisplayedPreference.setChecked(showNetworkNameMode != 0);
-        }
-
         // Update lift-to-wake if it is available.
         if (mLiftToWakePreference != null) {
             int value = Settings.Secure.getInt(getContentResolver(), WAKE_GESTURE_ENABLED, 0);
@@ -537,11 +515,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             boolean auto = (Boolean) objValue;
             Settings.System.putInt(getContentResolver(), SCREEN_BRIGHTNESS_MODE,
                     auto ? SCREEN_BRIGHTNESS_MODE_AUTOMATIC : SCREEN_BRIGHTNESS_MODE_MANUAL);
-        }
-        if (preference == mNetworkNameDisplayedPreference) {
-            boolean isShow = (Boolean) objValue;
-            Settings.System.putInt(getContentResolver(), SHOW_NETWORK_NAME_MODE,
-                    isShow ? SHOW_NETWORK_NAME_ON : SHOW_NETWORK_NAME_OFF);
         }
         if (preference == mLiftToWakePreference) {
             boolean value = (Boolean) objValue;
