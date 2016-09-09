@@ -31,9 +31,11 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import android.support.v7.widget.RecyclerView;
+
 import com.android.settings.R;
 import com.android.settings.SetupWizardUtils;
-import com.android.setupwizardlib.SetupWizardListLayout;
+import com.android.setupwizardlib.SetupWizardRecyclerLayout;
 import com.android.setupwizardlib.view.NavigationBar;
 
 /**
@@ -46,7 +48,7 @@ public class WifiSettingsForSetupWizard extends WifiSettings {
 
     private static final String TAG = "WifiSettingsForSetupWizard";
 
-    private SetupWizardListLayout mLayout;
+    private SetupWizardRecyclerLayout mLayout;
     private View mAddOtherNetworkItem;
     private TextView mEmptyFooter;
     private View mMacAddressFooter;
@@ -55,11 +57,13 @@ public class WifiSettingsForSetupWizard extends WifiSettings {
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        mLayout = (SetupWizardListLayout)
-                inflater.inflate(R.layout.setup_wifi_layout, container, false);
-        final ListView list = mLayout.getListView();
+        super.onCreateView(inflater, container, savedInstanceState);
 
-        mAddOtherNetworkItem = inflater.inflate(R.layout.setup_wifi_add_network, list, false);
+        mLayout = (SetupWizardRecyclerLayout)
+                inflater.inflate(R.layout.setup_wifi_layout, container, false);
+        final RecyclerView list = mLayout.getRecyclerView();
+
+ /**       mAddOtherNetworkItem = inflater.inflate(R.layout.setup_wifi_add_network, list, false);
         list.addFooterView(mAddOtherNetworkItem, null, true);
         mAddOtherNetworkItem.setOnClickListener(new OnClickListener() {
             @Override
@@ -71,7 +75,7 @@ public class WifiSettingsForSetupWizard extends WifiSettings {
         });
 
         mMacAddressFooter = inflater.inflate(R.layout.setup_wifi_mac_address, list, false);
-        list.addFooterView(mMacAddressFooter, null, false);
+        list.addFooterView(mMacAddressFooter, null, false); */
 
         final NavigationBar navigationBar = mLayout.getNavigationBar();
         if (navigationBar != null) {
