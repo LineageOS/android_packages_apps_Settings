@@ -55,6 +55,8 @@ public class WifiSettingsForSetupWizard extends WifiSettings {
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
+
         mLayout = (SetupWizardListLayout)
                 inflater.inflate(R.layout.setup_wifi_layout, container, false);
         final ListView list = mLayout.getListView();
