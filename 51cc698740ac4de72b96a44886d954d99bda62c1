@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fa4df85_06e7a514",
+        "filename": "src/com/android/settings/DisplaySettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2016-09-10T11:33:16Z",
+      "side": 1,
+      "message": "could do the null check only once:\nif (mDozePreference !\u003d null) {\n    if (isDozeAvailable(activity)) {\n        ...\n    } else if (displayPrefs !\u003d null) {\n        ...\n    }\n}",
+      "revId": "51cc698740ac4de72b96a44886d954d99bda62c1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
