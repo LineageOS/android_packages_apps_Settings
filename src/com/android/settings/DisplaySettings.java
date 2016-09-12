@@ -93,8 +93,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             = "camera_double_tap_power_gesture";
     private static final String KEY_WALLPAPER = "wallpaper";
     private static final String KEY_VR_DISPLAY_PREF = "vr_display_pref";
-    private static final String KEY_NOTIFICATION_LIGHTS = "notification_lights";
-    private static final String KEY_BATTERY_LIGHTS = "battery_lights";
+    private static final String KEY_NOTIFICATION_LIGHT = "notification_light";
+    private static final String KEY_BATTERY_LIGHT = "battery_light";
 
     private Preference mFontSizePref;
 
@@ -431,12 +431,12 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private void initPulse(PreferenceCategory parent) {
         if (!getResources().getBoolean(
                 com.android.internal.R.bool.config_intrusiveNotificationLed)) {
-            parent.removePreference(parent.findPreference(KEY_NOTIFICATION_LIGHTS));
+            parent.removePreference(parent.findPreference(KEY_NOTIFICATION_LIGHT));
         }
         if (!getResources().getBoolean(
                 com.android.internal.R.bool.config_intrusiveBatteryLed)
                 || UserHandle.myUserId() != UserHandle.USER_OWNER) {
-            parent.removePreference(parent.findPreference(KEY_BATTERY_LIGHTS));
+            parent.removePreference(parent.findPreference(KEY_BATTERY_LIGHT));
         }
         if (parent.getPreferenceCount() == 0) {
             getPreferenceScreen().removePreference(parent);
@@ -580,6 +580,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     if (!context.getResources().getBoolean(
                             com.android.internal.R.bool.config_dreamsSupported)) {
                         result.add(KEY_SCREEN_SAVER);
+                    }
+                    if (!context.getResources().getBoolean(
+                            com.android.internal.R.bool.config_intrusiveNotificationLed)) {
+                        result.add(KEY_NOTIFICATION_LIGHT);
+                    }
+                    if (!context.getResources().getBoolean(
+                            com.android.internal.R.bool.config_intrusiveBatteryLed)) {
+                        result.add(KEY_BATTERY_LIGHT);
                     }
                     if (!isAutomaticBrightnessAvailable(context.getResources())) {
                         result.add(KEY_AUTO_BRIGHTNESS);
