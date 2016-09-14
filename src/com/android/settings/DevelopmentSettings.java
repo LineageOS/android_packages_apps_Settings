@@ -483,6 +483,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         }
 
         mOtaDisableAutomaticUpdate = findAndInitSwitchPref(OTA_DISABLE_AUTOMATIC_UPDATE_KEY);
+        removePreference(OTA_DISABLE_AUTOMATIC_UPDATE_KEY);
 
         mColorModePreference = (ColorModePreference) findPreference(KEY_COLOR_MODE);
         mColorModePreference.updateCurrentAndSupported();
