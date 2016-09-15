@@ -56,6 +56,8 @@ import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.service.persistentdata.PersistentDataBlockManager;
 import android.os.UserManager;
+import android.preference.CheckBoxPreference;
+import android.preference.ListPreference;
 import android.os.storage.IMountService;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
@@ -205,6 +207,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
     private static final String TERMINAL_APP_PACKAGE = "com.android.terminal";
 
+    private static final String ADVANCED_REBOOT_KEY = "advanced_reboot";
+
     private static final String KEY_CONVERT_FBE = "convert_to_file_encryption";
 
     private static final String OTA_DISABLE_AUTOMATIC_UPDATE_KEY = "ota_disable_automatic_update";
@@ -308,6 +312,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private Object mSelectedRootValue;
     private PreferenceScreen mDevelopmentTools;
 
+    private SwitchPreference mAdvancedReboot;
+
     private final ArrayList<Preference> mAllPrefs = new ArrayList<Preference>();
 
     private final ArrayList<SwitchPreference> mResetSwitchPrefs
@@ -390,12 +396,14 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mForceAllowOnExternal = findAndInitSwitchPref(FORCE_ALLOW_ON_EXTERNAL_KEY);
         mPassword = (PreferenceScreen) findPreference(LOCAL_BACKUP_PASSWORD);
         mAllPrefs.add(mPassword);
+	mAdvancedReboot = findAndInitSwitchPref(ADVANCED_REBOOT_KEY);
 
         if (!mUm.isAdminUser()) {
             disableForUser(mEnableAdb);
             disableForUser(mClearAdbKeys);
             disableForUser(mEnableTerminal);
             disableForUser(mPassword);
+	    disableForUser(mAdvancedReboot);
         }
 
         mDebugAppPref = findPreference(DEBUG_APP_KEY);
@@ -738,6 +746,18 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         }
         updateBluetoothDisableAbsVolumeOptions();
         updateRootAccessOptions();
+        updateAdvancedRebootOptions();
+    }
+
+    private void writeAdvancedRebootOptions() {
+        Settings.Secure.putInt(getActivity().getContentResolver(),
+                Settings.Secure.ADVANCED_REBOOT,
+                mAdvancedReboot.isChecked() ? 1 : 0);
+    }
+
+    private void updateAdvancedRebootOptions() {
+        mAdvancedReboot.setChecked(Settings.Secure.getInt(getActivity().getContentResolver(),
+                Settings.Secure.ADVANCED_REBOOT, 0) != 0);
     }
 
     private void resetDangerousOptions() {
@@ -1967,6 +1987,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             writeColorTemperature();
         } else if (preference == mUSBAudio) {
             writeUSBAudioOptions();
+        } else if (preference == mAdvancedReboot) {
+            writeAdvancedRebootOptions();
         } else if (preference == mForceResizable) {
             writeForceResizableOptions();
         } else if (INACTIVE_APPS_KEY.equals(preference.getKey())) {
