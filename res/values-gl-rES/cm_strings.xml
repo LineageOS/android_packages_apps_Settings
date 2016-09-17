@@ -60,6 +60,7 @@
   <!-- Profiles settings  -->
   <string name="profiles_settings_title">Perfís do sistema</string>
   <string name="profiles_add">Engadir</string>
+  <string name="profile_menu_delete">Eliminar</string>
   <string name="profile_settings_title">Perfil</string>
   <string name="profile_empty_list_profiles_off">Para configurar e empregar os perfís do sistema, actívaos.</string>
   <string name="profile_trigger_configure">Configurar un disparador</string>
@@ -243,6 +244,7 @@
   <string name="camera_sleep_on_release_title">Vista rápida</string>
   <string name="camera_sleep_on_release_summary">Unha leve pulsación manterá a pantalla acendida ata que se solte o botón</string>
   <string name="camera_launch_title">Iniciar a cámara</string>
+  <string name="camera_launch_summary">Unha pulsación longa activará a cámara</string>
   <string name="volbtn_music_controls_title">Control de reprodución</string>
   <string name="volbtn_music_controls_summary">Cando a pantalla estea apagada, se preme as teclas de volume, buscaranse pistas de música</string>
   <string name="volbtn_cursor_control_title">Control do cursor</string>
@@ -257,8 +259,14 @@
   <string name="home_answer_call_title">Coller chamada</string>
   <string name="home_answer_call_summary">Ao premer o botón de inicio, collerase a chamada entrante</string>
   <!-- Backlight brightness settings screen -->
+  <string name="adaptive_backlight_title">Retroiluminación adaptable</string>
+  <string name="adaptive_backlight_summary">Axusta de forma intelixente o brillo da retroiluminación da pantalla, axudando así á duración da batería</string>
   <!-- Sunlight readability enhancement screen -->
+  <string name="sunlight_enhancement_title">Mellora baixo luz solar</string>
+  <string name="sunlight_enhancement_summary">Aumentar a luminosidade e lexibilidade da pantalla baixo luz solar brillante</string>
   <!-- Color enhancement settings screen -->
+  <string name="color_enhancement_title">Realce da cor</string>
+  <string name="color_enhancement_summary">Realzar dinamicamente a cor da pantalla</string>
   <!-- Key backlight -->
   <string name="button_backlight_title">Contraluz</string>
   <string name="button_backlight_enabled">Iluminar os botóns</string>
@@ -275,6 +283,14 @@
   <!-- Power menu -->
   <string name="power_menu_title">Menú de apagado</string>
   <string name="power_menu_reboot_title">Menú de reinicio</string>
+  <string name="power_menu_screenshot_title">Captura de pantalla</string>
+  <string name="power_menu_airplane_title">Modo avión</string>
+  <string name="power_menu_users_title">Selector de usuario</string>
+  <string name="power_menu_settings_title">Atallos da configuración</string>
+  <string name="power_menu_lockdown_title">Bloqueo de dispositivo</string>
+  <string name="power_menu_bug_report_title">Informe de erros</string>
+  <string name="power_menu_sound_title">Panel de sonido</string>
+  <string name="power_menu_bug_report_disabled">O informe de erros está desativado nas opcións de desenvolvemento</string>
   <!-- Buttons - Enable navbar -->
   <!-- tap-to-sleep -->
   <!-- Proximity wake -->
@@ -361,6 +377,24 @@
   <!-- Voice Wakeup -->
   <string name="voice_wakeup_needs_dial_permission_warning">Espertar por voz necesita ter permiso sobre as chamadas de móbil para seleccionar un contacto de marcación directa.</string>
   <!-- Blacklist preferences -->
+  <string name="blacklist_title">Lista de números bloqueados</string>
+  <string name="blacklist_edit_dialog_title">Editar número de telefono bloqueado</string>
+  <string name="blacklist_prefs">Axustes</string>
+  <string name="blacklist_button_delete">Eliminar</string>
+  <string name="blacklist_empty_text">Non hay números na lista de números bloqueados. Engade un novo tocando o botón de Engadir (+).</string>
+  <string name="blacklist_disabled_empty_text">Para evitar que o chamen ou envíen mensaxes algúns números de teléfono, active a lista de bloqueo.</string>
+  <string name="blacklist_summary_disabled">Desactivada</string>
+  <string name="blacklist_summary">Non recibirá chamadas nin mensaxes dos números incluídos na lista de números bloqueados</string>
+  <string name="blacklist_notify">Amosar notificacións</string>
+  <string name="blacklist_private_numbers_title">Números privados</string>
+  <string name="blacklist_private_numbers_summary_disabled">Non bloquear as chamadas feitas dende números privados</string>
+  <string name="blacklist_private_numbers_summary">Bloquear <xliff:g id="type">%s</xliff:g> recibidas de números privados</string>
+  <string name="blacklist_unknown_numbers_title">Números descoñecidos</string>
+  <string name="blacklist_unknown_numbers_summary_disabled">Non bloquear chamadas ou mensaxes de números que non estean na lista de contactos</string>
+  <string name="blacklist_unknown_numbers_summary">Bloquear <xliff:g id="type">%s</xliff:g> de números que non estean na lista de contactos</string>
+  <string name="blacklist_summary_type_calls_only">chamadas</string>
+  <string name="blacklist_summary_type_messages_only">mensaxes</string>
+  <string name="blacklist_summary_type_calls_and_messages">chamadas e mensaxes</string>
   <!-- Blacklist management -->
   <!-- Sms security limit -->
   <string name="app_security_title">Seguranza das aplicacións</string>
@@ -424,6 +458,7 @@
   <!-- Live lock screen title -->
   <!-- Live lock screen summary -->
   <!-- Live lock screen settings content description -->
+  <string name="live_lock_screen_settings_button">Axustes</string>
   <!-- Live lock screen settings screen, caption for when live lock screens are disabled -->
   <!-- CM Legal -->
   <!-- Per app controls for LP keyguard notifications -->
