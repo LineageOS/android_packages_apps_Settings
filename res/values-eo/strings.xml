@@ -16,7 +16,9 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Strings for Dialog yes button -->
+  <string name="yes">"Jes"</string>
   <!-- Strings for Dialog no button -->
+  <string name="no">"Ne"</string>
   <!-- Strings for Dialog create button -->
   <!-- Strings for Dialog allow button -->
   <!-- Strings for Dialog deny button -->
@@ -24,6 +26,7 @@
   <!-- Strings for Dialog switch button [CHAR LIMIT=20] -->
   <!-- Device Info -->
   <!-- Device Info screen. Used for a status item's value when the proper value is not known -->
+  <string name="device_info_default">Nekonata</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
   <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
   <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
@@ -63,6 +66,7 @@
   <!-- Phone Info screen. Status label.  Used for diagnostic info screens, precise translation isn't needed -->
   <!-- Phone Info screen. Status label.  Used for diagnostic info screens, precise translation isn't needed -->
   <!-- Used for diagnostic info screens, precise translation isn't needed -->
+  <string name="radioInfo_unknown">nekonata</string>
   <!-- Phone Info screen. Units shown after a value.  Used for diagnostic info screens, precise translation isn't needed -->
   <!-- Phone Info screen. Units shown after a value.  Used for diagnostic info screens, precise translation isn't needed -->
   <!-- Phone Info screen. Units shown after a value.  Used for diagnostic info screens, precise translation isn't needed -->
@@ -81,6 +85,7 @@
   <!-- Title for a notification shown. [CHAR LIMIT=25] -->
   <!-- Title for a notification shown. -->
   <!-- Battery Info screen. Value for a status item.  Used for diagnostic info screens, precise translation isn't needed -->
+  <string name="battery_info_status_unknown">Nekonata</string>
   <!-- [CHAR_LIMIT=20] Battery use screen.  Battery status shown in chart label when charging from an unknown source.  -->
   <!-- [CHAR_LIMIT=20] Battery use screen.  Battery status shown in chart label when charging on AC.  -->
   <!-- [CHAR_LIMIT=20] Battery use screen.  Battery status shown in chart label when charging over USB.  -->
@@ -178,6 +183,7 @@
   <!-- HTTP proxy settings. Title for Proxy-Auto Config URL.  [CHAR LIMIT=25] -->
   <!-- HTTP proxy settings. Hint for Proxy-Auto Config URL. -->
   <!-- Radio Info screen. Label for a status item.  Used for diagnostic info screens, precise translation isn't needed -->
+  <string name="radio_info_signal_location_label">Loko:</string>
   <!-- Radio Info screen. Label for a status item.  Used for diagnostic info screens, precise translation isn't needed -->
   <!-- Radio Info screen. Label for a status item.  Used for diagnostic info screens, precise translation isn't needed -->
   <!-- Radio Info screen. Label for a status item.  Used for diagnostic info screens, precise translation isn't needed -->
@@ -237,6 +243,7 @@
   <!-- Used in setup wizard Wi-Fi screen. The button label for going to the next screen and submitting. [CHAR LIMIT=20] -->
   <!-- LocalePicker -->
   <!-- Title for the locale picker activity -->
+  <string name="language_picker_title">Lingvo</string>
   <!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action.  For example, suppose you click on the "Share" menu item in the Browser.  Since you can share the webpage URL via many communication methods, this dialog would come up with choices like "Email", "IM", etc.  This is a generic message, and the previous example is a single possible scenario (so please don't assume it's for the browser or anything :) ). -->
   <!-- Do not translate. -->
   <!-- The title of the activity to see random device info. -->
@@ -250,12 +257,15 @@
   <!-- NEW STUFF -->
   <!-- ======================================================================================= -->
   <!-- Button label for generic cancel action [CHAR LIMIT=20] -->
+  <string name="cancel">Nuligi</string>
   <!-- Button label for generic OK action [CHAR LIMIT=20] -->
   <!-- Button label for generic forget action [CHAR LIMIT=20] -->
   <!-- Button label for generic save action [CHAR LIMIT=20] -->
   <!-- Button label for generic done action [CHAR LIMIT=20] -->
   <!-- Title of the Settings activity shown within the application itself. -->
+  <string name="settings_label">Agordoj</string>
   <!-- Title of the Settings activity shown in the Launcher. [CHAR LIMIT=20] -->
+  <string name="settings_label_launcher">Agordoj</string>
   <!-- Label for option to select a settings panel as a shortcut -->
   <!-- Wireless controls settings screen, setting check box label -->
   <!-- Main Settings screen settings title for things like airplane mode, tethering, NFC, VPN.  This will take you to another screen with those settings.  [CHAR LIMIT=30] -->
@@ -322,11 +332,13 @@
   <!-- Text shown for title of profile info setting [CHAR LIMIT=20]-->
   <!-- Main Settings screen setting option title for the item to take you to the Accounts screen [CHAR LIMIT=22] -->
   <!-- Main Settings screen setting option title for the item to take you to the location screen -->
+  <string name="location_settings_title">Loko</string>
   <!-- Main Settings screen setting option title for the item to take you to the accounts screen [CHAR LIMIT=22] -->
   <!-- Main Settings screen setting option title for the item to take you to the security screen -->
   <!-- Main Settings screen setting option summary text for the item tot ake you to the security and location screen -->
   <!-- Main Settings screen setting option summary text for the item to take you to the CDMA security and location screen -->
   <!-- In the security screen, the header title for settings related to  Passwords-->
+  <string name="security_passwords_title">Pasvortoj</string>
   <!-- Fingerprint enrollment and settings -->
   <!-- Title shown for menu item that launches fingerprint settings or enrollment [CHAR LIMIT=22] -->
   <!-- Fingerprint managment category title - configuration options for managing enrolled fingerprints [CHAR LIMIT=22] -->
@@ -347,6 +359,7 @@
   <!-- Introduction detail message shown in fingerprint enrollment dialog to warn the user [CHAR LIMIT=NONE]-->
   <!-- Link text shown bellow the warning to learn morn about fingerprint risk [CHAR LIMIT=22]-->
   <!-- Button text to cancel enrollment from the introduction [CHAR LIMIT=22] -->
+  <string name="security_settings_fingerprint_enroll_introduction_cancel">Nuligi</string>
   <!-- Button text to continue to the next screen from the introduction [CHAR LIMIT=22] -->
   <!-- Introduction title shown in fingerprint enrollment dialog to locate the sensor [CHAR LIMIT=29] -->
   <!-- Message shown in fingerprint enrollment dialog to locate the sensor -->
@@ -426,6 +439,7 @@
   <!-- Title for preference that guides the user through creating an unlock PIN (Personal Identification Number) [CHAR LIMIT=22] -->
   <!-- Summary for preference that guides the user through creating an unlock PIN (Personal Identification Number) [CHAR LIMIT=45] -->
   <!-- Title for preference that guides the user through creating an unlock password [CHAR LIMIT=22] -->
+  <string name="unlock_set_unlock_password_title">Pasvorto</string>
   <!-- Title for preference that guides the user through creating an unlock password [CHAR LIMIT=45] -->
   <!-- Summary specifying that this is the current screen lock setting [CHAR LIMIT=45] -->
   <!-- Summary for preference that has been disabled by because of the DevicePolicyAdmin, or because device encryption is enabled, or because there are credentials in the credential storage [CHAR LIMIT=50] -->
@@ -434,6 +448,7 @@
   <!-- Summary for "Configure lockscreen" when security pattern is enabled [CHAR LIMIT=45] -->
   <!-- Summary for "Configure lockscreen" when security PIN is enabled [CHAR LIMIT=45] -->
   <!-- Summary for "Configure lockscreen" when security password is enabled [CHAR LIMIT=45] -->
+  <string name="unlock_set_unlock_mode_password">Pasvorto</string>
   <!-- Footer text in when choosing screen lock type during setup wizard, telling the user that
          they can add fingerprint after they complete setup wizard. The text "Settings > Security"
          should match settings_label and security_settings_title [CHAR LIMIT=NONE] -->
@@ -473,7 +488,9 @@
   <!-- [CHAR_LIMIT=NONE] Error shown when the user tries to set an ascending or descending sequence of digits -->
   <!-- Label for ChoosePassword/PIN OK button -->
   <!-- Label for ChoosePassword/PIN OK button -->
+  <string name="lockpassword_cancel_label">Nuligi</string>
   <!-- Label for LockPatternTutorial Cancel button -->
+  <string name="lockpattern_tutorial_cancel_label">Nuligi</string>
   <!-- Label for LockPatternTutorial Continue button -->
   <!-- Toast shown when lock pattern or password successfully setup. [CHAR LIMIT=64] -->
   <!-- In the security screen, the header title for settings related to device admins -->
@@ -681,6 +698,7 @@
   <!-- Label for the EAP identity of the network -->
   <!-- Label for the EAP anonymous identity of the network -->
   <!-- Label for the password of the secured network -->
+  <string name="wifi_password">Pasvorto</string>
   <!-- Label for the check box to show password -->
   <!-- Label for the RadioGroup to choose wifi ap band -->
   <!-- Label for the radio button to choose wifi ap 2.4 GHz band -->
@@ -705,6 +723,7 @@
   <!-- Button label to save a Wi-Fi network configuration -->
   <!-- Failured notification for save -->
   <!-- Button label to dismiss the dialog -->
+  <string name="wifi_cancel">Nuligi</string>
   <!-- Button for skipping a step after having been warned of a potential concern [CHAR LIMIT=30] -->
   <!-- Button for going to the previous screen or step [CHAR LIMIT=20] -->
   <!-- Text warning about skipping Wi-Fi with a mobile connect (tablet) [CHAR LIMIT=NONE]-->
@@ -729,6 +748,7 @@
   <!-- Wifi Advanced settings.  Used as a label under the shortcut icon that goes to Wifi advanced settings. [CHAR LIMIT=20] -->
   <!-- Menu item to save the IP settings -->
   <!-- Menu ietm to cancel the IP settings -->
+  <string name="wifi_ip_settings_menu_cancel">Nuligi</string>
   <!-- Error message if the IP address is not valid [CHAR LIMIT=50]-->
   <!-- Error message if the gateway is not valid [CHAR LIMIT=50]-->
   <!-- Error message if the dns is not valid [CHAR LIMIT=50]-->
@@ -824,6 +844,10 @@
   <!-- Wireless networks, item title to go into the WFC settings [CHAR LIMIT=30] -->
   <!-- WFC mode [CHAR LIMIT=30] -->
   <!-- WFC mode dialog [CHAR LIMIT=30] -->
+  <string-array name="wifi_calling_mode_values">
+    <item>"2"</item>
+    <item>"1"</item>
+  </string-array>
   <!-- Wi-Fi Calling settings. Text displayed when Wi-Fi Calling is off -->
   <!-- Sound and alerts settings -->
   <!-- Main Settings screen setting option name to go into the display settings screen -->
@@ -914,6 +938,7 @@
   <!-- Dream settings screen, action label, when to dream -->
   <!-- Dream settings screen, button label to start dreaming -->
   <!-- Dream settings screen, button label for settings for a specific screensaver -->
+  <string name="screensaver_settings_button">Agordoj</string>
   <!-- Sound & display settings screen, setting option name to change whether the screen adjusts automatically based on lighting conditions -->
   <!-- [CHAR LIMIT=40] Display settings screen, setting option name to change whether the device wakes up when a lift gesture is detected. -->
   <!-- [CHAR LIMIT=30] Display settings screen, setting option name to change whether the ambient display feature is enabled. -->
@@ -944,6 +969,7 @@
   <!-- SIM card lock settings screen, toast after not entering correct SIM PIN [CHAR LIMIT=40] -->
   <!-- SIM card lock settings screen, SIM PIN dialog button labels: [CHAR LIMIT=40] -->
   <!-- SIM card lock settings screen, SIM PIN dialog button labels: [CHAR LIMIT=40] -->
+  <string name="sim_enter_cancel">Nuligi</string>
   <!-- Multiple SIMs found title.  [CHAR LIMIT=40] -->
   <!-- Multiple SIMs found summary.  [CHAR LIMIT=100] -->
   <!-- Title asking user if they wish to change the default sim for cellular data.  [CHAR LIMIT=30] -->
@@ -980,6 +1006,7 @@
   <!-- Do not translate. About phone, status item title -->
   <!-- About tablet, status item title.  The Mobile Directory Number [CHAR LIMIT=30] -->
   <!-- About phone, status item title.  The phone number of the current device [CHAR LIMIT=30] -->
+  <string name="status_number" product="default">Mia telefonnumero</string>
   <!-- About phone, status item title.  The phone MIN number of the current device.-->
   <!-- About phone, status item title.  The phone MSID number of the current device.-->
   <!-- About phone, status item title.  The phone PRL Version of the current device.-->
@@ -992,6 +1019,7 @@
   <!-- About phone, status item title. The  current cell tower signal strength -->
   <!-- About phone, status item title, The status for roaming.  For example, the value might be "Not roaming" -->
   <!-- About phone, status item title. The cell carrier that the user is connected to.  -->
+  <string name="status_operator">Reto</string>
   <!-- About phone, status item title.  The MAC address of the Wi-Fi network adapter. -->
   <!-- About phone, status item title.  The bluetooth adapter's hardware address-->
   <!-- About phone, status item title.  The hardware serial number. [CHAR LIMIT=30]-->
@@ -1086,6 +1114,7 @@
   <!-- Title of dialog confirming that user wants to forget an internal storage device [CHAR LIMIT=32]-->
   <!-- Body of dialog confirming that user wants to forget an internal storage device [CHAR LIMIT=NONE]-->
   <!-- Item title describing storage used by apps [CHAR LIMIT=48]-->
+  <string name="storage_detail_apps">Aplikaĵoj</string>
   <!-- Item title describing storage used by images [CHAR LIMIT=48]-->
   <!-- Item title describing storage used by videos [CHAR LIMIT=48]-->
   <!-- Item title describing storage used by audio [CHAR LIMIT=48]-->
@@ -1131,12 +1160,15 @@
   <!-- Screen title after user selects APNs setting option -->
   <!-- Edit access point label summary text when no value has been set -->
   <!-- Edit access point labels: A label the user can give to the APN to allow him to differentiate it from the others -->
+  <string name="apn_name">Nomo</string>
   <!-- Edit access point labels: The actual access point name-->
   <!-- Edit access point labels: The addess of the proxy to use for this APN -->
   <!-- Edit access point labels: The port number of the proxy to use for this APN -->
   <!-- Edit access point labels: The username that will be used when conencting to this APN-->
   <!-- Edit access point labels: The password that will be used when connecting to this APN -->
+  <string name="apn_password">Pasvorto</string>
   <!-- Edit access point labels: The server address to conenct to for this APN -->
+  <string name="apn_server">Servilo</string>
   <!-- Edit access point labels: -->
   <!-- Edit access point labels: The proxy to use for MMS (multimedia messages)-->
   <!-- Edit access point labels: The port on the proxy used for MMS-->
@@ -1157,6 +1189,7 @@
   <!-- Edit access point screen menu option to delete this APN -->
   <!-- APNs screen menu option to create a brand spanking new APN -->
   <!-- Edit access point screen menu option to save the user's changes for this APN to the persistent storage -->
+  <string name="menu_save">Konservi</string>
   <!-- Edit access point screen menu option to discard the user's changes for this APN -->
   <!-- APN error dialog title -->
   <!-- APN error dialog messages: -->
@@ -1362,6 +1395,7 @@
   <!-- Applications settings screen, setting option name for the user to go to the screen to manage installed applications  -->
   <!-- Applications settings screen, setting option summary for the user to go to the screen to manage installed applications  -->
   <!-- Applications settings title, on main settings screen. If clicked, the user is taken to a settings screen full of application settings-->
+  <string name="applications_settings">Aplikaĵoj</string>
   <!-- Applications settings summary, on main settings screen. The summary for the "Applications" item on the main settings screen. Describes what settings are accessible from the "Applications" screen. -->
   <!-- Applications settings screen heading. The header for the Application settings screen. -->
   <!-- Applications settings screen, setting check box title. If checked, the system allows installation of applications that are downloaded from random places, such as web sites.  -->
@@ -1390,6 +1424,7 @@
   <!--  Manage applications, individual application info screen, label under Storage heading.  The amount of space taken up by the app's data on USB storage [CHARSIZE=40] -->
   <!--  Manage applications, individual application info screen, label under Storage heading.  The amount of space taken up by the app's data on the SD card [CHARSIZE=40] -->
   <!-- Manage applications, individual application info screen, button label under Storage heading. Button to remove the application from the system. -->
+  <string name="uninstall_text">Malinstali</string>
   <!-- Manage applications, individual application info screen, menu item to uninstall an application for all users. -->
   <!-- [CHAR LIMIT=NONE] Manage applications, individual application info screen, button label under Storage heading. Button to install an application for the user. -->
   <!-- [CHAR LIMIT=25] Manage applications, individual application info screen, button label under Storage heading. Button to disable an existing application. -->
@@ -1405,6 +1440,7 @@
   <!-- Manage applications, individual application screen, checkbox to control compatibility mode.  -->
   <!-- TODO: Remove it once the same entry in SettingsLib is translated. -->
   <!-- Manage apps, individual app screen, substituted for the application's label when the app's label CAN NOT be determined.-->
+  <string name="unknown">Nekonata</string>
   <!-- [CHAR LIMIT=25] Manage applications screen, menu item.  Sorts all of the apps in the list alphabetically. -->
   <!-- Manage applications screen, menu item. Sorts all of the apps in the list based on their file size.  This is used to uninstall when space is getting low. -->
   <!-- [CHAR LIMIT=25] Manage applications screen, menu item.  Show running services. -->
@@ -1440,6 +1476,7 @@
   <!-- Manage applications, individual application screen, confirmation dialog message. Displays when user selects to "Clear data". It warns the user of the consequences of clearing the data for an app. -->
   <!-- Manage applications, individual application screen, confirmation dialog button. Displays when user selects to "Clear data". Goes through with the clearing of the data. -->
   <!-- Manage applications, individual application screen, confirmation dialog button. Displays when user selects to "Clear data". -->
+  <string name="dlg_cancel">Nuligi</string>
   <!-- Manage applications, individual application dialog box title. Shown when the user somehow got into a state where it wants to manage some app that isn't found. -->
   <!-- Manage applications, individual application dialog box message. Shown when the user somehow got into a state where it wants to manage some app that isn't found. -->
   <!-- Manage applications, individual application dialog box message. Shown when there was an error trying to clear the data. -->
@@ -1515,6 +1552,7 @@
          used by system. -->
   <!-- [CHAR LIMIT=20] Running processes/services header: prefix for line showing RAM
          used by apps. -->
+  <string name="running_processes_header_apps_prefix">Aplikaĵoj</string>
   <!-- [CHAR LIMIT=20] Running processes/services header: prefix for line showing RAM
          that is free. -->
   <!-- [CHAR LIMIT=20] Running processes/services header: prefix for line showing total RAM
@@ -1528,6 +1566,7 @@
   <!-- Title for list of services. -->
   <!-- Running service details, stop a service that has started itself. -->
   <!-- Running service details, manage a service that is running for some other reason. -->
+  <string name="service_manage">Agordoj</string>
   <!-- Running service details, default description for services that are started. -->
   <!-- Running service details, description for running heavy-weight process. -->
   <!-- Running service details, description for background process. -->
@@ -1544,6 +1583,7 @@
   <!-- On Language & keyboard settings screen, heading. Inside the "Language & keyboard settings" screen, this is the header for settings that relate to language (select the system language, user dictionary for the language). -->
   <!-- On Language & keyboard settings screen, heading. Inside the "Language & keyboard settings" screen, this is the header for settings that relate to keyboard (enable/disable each keyboard, settings for each keyboard). -->
   <!-- On Text & language settings screen, setting option name. title of the setting to take the user to a screen to select the locale. -->
+  <string name="phone_language">Lingvo</string>
   <!-- On Text & language settings screen, setting option name. summary of the setting to take the user to a screen to select the locale. -->
   <!-- On Text & language settings screen, setting option name. title of the setting to enable autoreplace of entered text. auto replace is a feature that will automatically correct mistyped words. -->
   <!-- On Text & language settings screen, setting summary.  This is the summary for the "Auto-replace" setting. -->
@@ -1558,7 +1598,9 @@
   <!-- Warning message about security implications of enabling a spell checker, displayed as a dialog
          message when the user selects to enable a spell checker. -->
   <!-- Image button description for spell checker quick settings. -->
+  <string name="spellchecker_quick_settings">Agordoj</string>
   <!-- Image button description for spell checker language. -->
+  <string name="spellchecker_language">Lingvo</string>
   <!-- Toast that settings for an application is failed to open. -->
   <!-- On Language & input settings screen, heading. Inside the "Language & input settings" screen, this is the header for settings that relate to mouse and trackpad devices. [CHAR LIMIT=40] -->
   <!-- On Language & input settings screen, setting summary.  Setting for mouse pointer speed. [CHAR LIMIT=35] -->
@@ -1584,13 +1626,16 @@
   <!-- User dictionary settings. Label to put before the word field (that's the word that will actually be added to the user dictionary when OK is pressed). [CHAR LIMIT=20] -->
   <!-- User dictionary settings. Label to put before the shortcut field (once a shortcut is registered, the user can type the shortcut and get the word it points to in the suggestions). [CHAR LIMIT=20] -->
   <!-- User dictionary settings. Label to put before the language field. [CHAR LIMIT=20] -->
+  <string name="user_dict_settings_add_locale_option_name">Lingvo:</string>
   <!-- User dictionary settings. Hint for the text field to type the word to add to the user dictionary. [CHAR LIMIT=35] -->
   <!-- User dictionary settings. Hint for the text field to type the optional shortcut to add to the user dictionary. [CHAR LIMIT=35] -->
   <!-- User dictionary settings. The title of the dialog to edit an existing word in the user dictionary. -->
   <!-- User dictionary settings. The title of the context menu item to edit the current word -->
+  <string name="user_dict_settings_context_menu_edit_title">Redakti</string>
   <!-- User dictionary settings. The title of the context menu item to delete the current word -->
   <!-- User dictionary settings. The text to show when there are no user-defined words in the dictionary  [CHAR LIMIT=200] -->
   <!-- User dictionary settings. The list item to choose to insert a word into the user dictionary for all languages -->
+  <string name="user_dict_settings_all_languages">Por ĉiuj lingvoj</string>
   <!-- User dictionary settings. The text to show for the option that shows the entire list of supported locales to choose one [CHAR LIMIT=30] -->
   <!-- This is for diagnostics screen. The title of a screen with various items realted to launching screens that will giev the user info. For example, it contains "Phone information" and "Battery information" -->
   <!-- In the Testing screen.  The item title of the activity that shows a bunch of phone-related information.  -->
@@ -1605,7 +1650,9 @@
   <!-- An option to always hide input method selector [CHAR LIMIT=25] -->
   <!-- Title for configuring input method settings [CHAR LIMIT=35] -->
   <!-- Title for settings of each IME [CHAR LIMIT=25] -->
+  <string name="input_method_settings">Agordoj</string>
   <!-- Spoken description for IME settings image button [CHAR LIMIT=NONE] -->
+  <string name="input_method_settings_button">Agordoj</string>
   <!-- Title for settings of active input methods in each IME [CHAR LIMIT=35] -->
   <!-- Title for settings whether or not the framework will select input methods in an IME based on the current system locale. [CHAR LIMIT=35] -->
   <!-- Input Methods Settings localized format string for generating the appropriate "Foo settings" menu label for the Input Method named "Foo" [CHAR LIMIT=35] -->
@@ -1699,6 +1746,7 @@
   <!-- label for usage time -->
   <!-- Accessibility settings -->
   <!-- Settings title in main settings screen for accessibility settings -->
+  <string name="accessibility_settings">Alirebleco</string>
   <!-- Settings title for accessibility settings screen -->
   <!-- Title for the accessibility preference category of accessibility services. [CHAR LIMIT=25] -->
   <!-- Title for the accessibility preference category of system related preferences. [CHAR LIMIT=25] -->
@@ -1731,12 +1779,14 @@
   <!-- Label for protanomaly (red-green color blindness) [CHAR LIMIT=45] -->
   <!-- Label for tritanomaly (blue-yellow color blindness) [CHAR LIMIT=45] -->
   <!-- Title for accessibility menu item to lauch a settings activity. [CHAR LIMIT=15] -->
+  <string name="accessibility_menu_item_settings">Agordoj</string>
   <!-- Summary for the enabled state of an accessibility feature. [CHAR LIMIT=10] -->
   <!-- Summary for the disabled state of an accessibility feature. [CHAR LIMIT=10] -->
   <!-- Summary when an accessibility feature or ime is not permitted. [CHAR LIMIT=40] -->
   <!-- Title for the preference category containing the video caption preview. [CHAR LIMIT=35] -->
   <!-- Title for the preference catgeory containing standard video caption options. [CHAR LIMIT=35] -->
   <!-- Title for the preference to change video caption locale. [CHAR LIMIT=35] -->
+  <string name="captioning_locale">Lingvo</string>
   <!-- Title for the preference to change video caption text size. [CHAR LIMIT=35] -->
   <!-- Title for the preference category containing video caption property presets. [CHAR LIMIT=35] -->
   <!-- Title for the preference catgeory containing custom video caption properties. [CHAR LIMIT=35] -->
@@ -1785,6 +1835,7 @@
   <!-- Title for the prompt shown as a placeholder if no accessibility serivices are installed. [CHAR LIMIT=50] -->
   <!-- Default description for an accessibility serivice if the latter doesn't provide one. [CHAR LIMIT=NONE] -->
   <!-- Accessibility settings: button for lauching settings for an accessibility service -->
+  <string name="settings_button">Agordoj</string>
   <!-- Printing settings -->
   <!-- Title in main settings screen for printing settings [CHAR LIMIT=15] -->
   <!-- Title for print service settings screen [CHAR LIMIT=25] -->
@@ -1795,6 +1846,7 @@
   <!-- Title for the prompt shown as a placeholder if no print serivices are installed. [CHAR LIMIT=50] -->
   <!-- Title for the prompt shown as a placeholder if no printers are found while searching. [CHAR LIMIT=50] -->
   <!-- Title for print menu item to launch a settings activity. [CHAR LIMIT=25] -->
+  <string name="print_menu_item_settings">Agordoj</string>
   <!-- Title for print menu item to launch the add printers activity. [CHAR LIMIT=25] -->
   <!-- Summary for the enabled state of a print feature. [CHAR LIMIT=10] -->
   <!-- Summary for the disabled state of a print feature. [CHAR LIMIT=10] -->
@@ -1807,6 +1859,7 @@
   <!-- Title for the print job settings screen. [CHAR LIMIT=25] -->
   <!-- Title for the button to restart a print job. [CHAR LIMIT=25] -->
   <!-- Title for the button to cancel a print job. [CHAR LIMIT=25] -->
+  <string name="print_cancel">Nuligi</string>
   <!-- Template for the summary of a print job. [CHAR LIMIT=25] -->
   <!-- Template for the label of the state for a ongoing print job. [CHAR LIMIT=25] -->
   <!-- Template for the label for a cancelling print job. [CHAR LIMIT=25] -->
@@ -1922,6 +1975,7 @@
   <!-- [CHAR_LIMIT=40] Battery saver: Label for feature, title + menu item -->
   <!-- [CHAR_LIMIT=40] Battery saver: Title for automatic entry option -->
   <!-- [CHAR_LIMIT=40] Battery saver: Value for automatic entry option: Never -->
+  <string name="battery_saver_turn_on_automatically_never">Neniam</string>
   <!-- [CHAR_LIMIT=40] Battery saver: Value for automatic entry option: pct% battery -->
   <!-- Process Stats strings -->
   <!-- [CHAR LIMIT=NONE] Activity title for Process Stats summary -->
@@ -2003,6 +2057,7 @@
   <!-- On main TTS Settings screen, in default settings section, setting default pitch for synthesized voice -->
   <!-- On main TTS Settings screen, summary for default pitch for synthesized voice -->
   <!-- On main TTS Settings screen, in default settings section, setting default language for synthesized voice -->
+  <string name="tts_default_lang_title">Lingvo</string>
   <!-- Entry in the TTS engine language/locale picker, when selected will try to default to the system language [CHAR LIMIT=50] -->
   <!-- On main TTS Settings screen, language summary if it can't default to system language [CHAR LIMIT=50] -->
   <!-- On main TTS Settings screen, summary for default language for synthesized voice -->
@@ -2064,6 +2119,7 @@
   <!-- Spoken description for the Wi-Fi power control gadget. -->
   <!-- Spoken description for the Bluetooth power control gadget. -->
   <!-- Spoken description for the Location power control gadget. -->
+  <string name="gadget_location">Loko</string>
   <!-- Spoken description for the data synchronization gadget. -->
   <!-- Template for brightness gadget toggle button description. -->
   <!-- Brightness gadget value used to describe automatic brightness state. -->
@@ -2183,6 +2239,7 @@
          Used in SetupWizard for XLarge screen [CHAR LIMIT=10] -->
   <!-- Button label to dismiss the dialog.
          Used in SetupWizard for XLarge screen [CHAR LIMIT=10] -->
+  <string name="wifi_setup_cancel">Nuligi</string>
   <!-- The message shown above available networks when the device is scanning
          available networks [CHAR LIMIT=35] -->
   <!-- Message shown above available network when there's no connected network.
@@ -2244,10 +2301,12 @@
   <!-- Data synchronization settings screen, checkbox setting option name. Controls whether Gmail should be synced.  Should use "Gmail" to refer to this app.-->
   <!-- Data synchronization settings screen, checkbox setting option name. Controls whether Calendar shoudl be synced. -->
   <!-- Data synchronization settings screen, checkbox setting option name -->
+  <string name="sync_contacts">Kontaktoj</string>
   <!-- Message introducing the user to Google Sync. -->
   <!-- Header title for those settings relating to application syncing. -->
   <!-- Header for data and synchronization -->
   <!-- Preference item that lets the user change password -->
+  <string name="preference_change_password_title">Ŝanĝi pasvorton</string>
   <!-- Header that appears at the top of Account Settings screen -->
   <!-- Button label to remove current account -->
   <!-- Title shown in AddAccount -->
@@ -2409,8 +2468,10 @@
   <!-- Label displaying current network data usage limit threshold. [CHAR LIMIT=18] -->
   <!-- TODO: Remove it once the same entry in SettingsLib is translated. -->
   <!-- Title of data usage item that represents all uninstalled applications. [CHAR LIMIT=48] -->
+  <string name="data_usage_uninstalled_apps">Forigitaj aplikaĵoj</string>
   <!-- TODO: Remove it once the same entry in SettingsLib is translated. -->
   <!-- Title of data usage item that represents all uninstalled applications or removed users. [CHAR LIMIT=48] -->
+  <string name="data_usage_uninstalled_apps_users">Forigitaj aplikaĵoj kaj uzantoj</string>
   <!-- Combination of total network bytes sent and received by an application. [CHAR LIMIT=NONE] -->
   <!-- Label displaying total network data transferred during a specific time period. [CHAR LIMIT=64] -->
   <!-- Label displaying total network data transferred during a specific time period, including a disclaimer that contrasts device versus carrier reporting. [CHAR LIMIT=80] -->
@@ -2439,11 +2500,13 @@
   <!-- Input label for the forwarding routes of a VPN profile. [CHAR LIMIT=40] -->
   <!-- Input label for the username of a VPN profile. [CHAR LIMIT=40] -->
   <!-- Input label for the password of a VPN profile. [CHAR LIMIT=40] -->
+  <string name="vpn_password">Pasvorto</string>
   <!-- Checkbox label to save the username and the password in a VPN profile. [CHAR LIMIT=40] -->
   <!-- Hint for not using an optional feature in a VPN profile. [CHAR LIMIT=40] -->
   <!-- Option to not use a CA certificate to verify the VPN server. [CHAR LIMIT=40] -->
   <!-- Option to use the server certificate received from the VPN server. [CHAR LIMIT=40] -->
   <!-- Button label to cancel changing a VPN profile. [CHAR LIMIT=40] -->
+  <string name="vpn_cancel">Nuligi</string>
   <!-- Button label to finish editing a VPN profile. [CHAR LIMIT=40] -->
   <!-- Button label to save a VPN profile. [CHAR LIMIT=40] -->
   <!-- Button label to connect to a VPN profile. [CHAR LIMIT=40] -->
@@ -2477,6 +2540,7 @@
   <!-- Prompt for the user to confirm the new full-backup password by re-entering it -->
   <!-- Button label for setting the user's new full-backup password -->
   <!-- Button label for cancelling the new-password operation and retaining the user's previous full-backup password -->
+  <string name="backup_pw_cancel_button_text">Nuligi</string>
   <!-- A menu item in "About phone" that allows the user to update the phone with settings
     from their cell phone carrier. The use of the string is similar to the string
     "system_update_settings_list_item_title" in this project. [CHAR LIMIT=25] -->
@@ -2502,6 +2566,7 @@
   <!-- User summary to indicate that restricted profile is currently not set up [CHAR LIMIT=100] -->
   <!-- User summary to indicate that a work profile is currently not set up [CHAR LIMIT=100] -->
   <!-- User information string to represent the owner of the device [CHAR LIMIT=25] -->
+  <string name="user_owner">Posedanto</string>
   <!-- User settings title for current user entry "You" user. [CHAR LIMIT=30] -->
   <!-- Title for the preference to enter the nickname of the userto display in the user switcher [CHAR LIMIT=25]-->
   <!-- Title for add user type dialog [CHAR LIMIT=45] -->
@@ -2539,10 +2604,13 @@
   <!-- Delete button text [CHAR LIMIT=25] -->
   <!-- TODO: Remove it once the same entry in SettingsLib is translated. -->
   <!-- Title for Guest user [CHAR LIMIT=35] -->
+  <string name="user_guest">Gasto</string>
   <!-- Label for item to exit guest mode [CHAR LIMIT=35] -->
+  <string name="user_exit_guest_title">Forigi gaston</string>
   <!-- Title of dialog to user to confirm exiting guest. [CHAR LIMIT=50] -->
   <!-- Message to user to confirm exiting guest. [CHAR LIMIT=none] -->
   <!-- Label for button in confirmation dialog when exiting guest session [CHAR LIMIT=35] -->
+  <string name="user_exit_guest_dialog_remove">Forigi</string>
   <!-- Title of preference to enable calling[CHAR LIMIT=40] -->
   <!-- Title of preference to enable calling and SMS [CHAR LIMIT=45] -->
   <!-- Title of preference to remove the user [CHAR LIMIT=35] -->
@@ -2567,6 +2635,7 @@
   <!-- String indicating the label of the default payment app and a description of its state; eg Google Wallet - MasterCard 1234 -->
   <!-- Header for what to do when the open app supports TapPay: use the default set app, or the open app -->
   <!-- Always use the default app (independent of what app is open) -->
+  <string name="nfc_payment_favor_default">Ĉiam</string>
   <!-- If open app supports TapPay, use that app instead of the default -->
   <!-- Header for a dialog asking the user which payment app to use -->
   <!-- Header for text explaning how to pay at a payment terminal in a store -->
@@ -2650,6 +2719,7 @@
   <!-- Restrictions summary for allowing NFC transfers (tablet) [CHAR LIMIT=100] -->
   <!-- Restrictions summary for allowing NFC transfers (phone) [CHAR LIMIT=100] -->
   <!-- Restrictions title for allowing location sharing [CHAR LIMIT=35] -->
+  <string name="restriction_location_enable_title">Loko</string>
   <!-- Restrictions summary for allowing location sharing [CHAR LIMIT=100] -->
   <!-- Wizard back button label [CHAR LIMIT=25] -->
   <!-- Wizard next button label [CHAR LIMIT=25] -->
@@ -2698,8 +2768,10 @@
   <!-- When a SIM preference hasn't been selected yet, this string is displayed as the pref summary until the user chooses a SIM subscription from the preference list [CHAR LIMIT=50] -->
   <!--Dashboard strings-->
   <!-- Text to describe the dashboard fragment title [CHAR LIMIT=16] -->
+  <string name="dashboard_title">Agordoj</string>
   <!-- Search strings -->
   <!-- Text to describe the search results fragment title [CHAR LIMIT=16] -->
+  <string name="search_results_title">Agordoj</string>
   <!-- Text used as a search hint into the search box -->
   <!-- Text used as a search hint into the search box -->
   <!-- Text used to identify the search query suggestions / recent searches -->
@@ -2793,6 +2865,7 @@
   <!-- [CHAR LIMIT=40] Zen mode settings: Delete rule dialog button caption -->
   <!-- [CHAR LIMIT=40] Zen mode settings: External rule type -->
   <!-- [CHAR LIMIT=40] Zen mode settings: External rule type name if unknown -->
+  <string name="zen_mode_rule_type_unknown">Nekonata</string>
   <!-- [CHAR LIMIT=40] Zen mode settings: Configure external rule -->
   <!-- [CHAR LIMIT=40] Zen mode settings: Schedule rule type name -->
   <!-- [CHAR LIMIT=NONE] Zen mode settings: Schedule rule toast hint when enabled -->
@@ -2807,6 +2880,7 @@
   <!-- [CHAR LIMIT=40] Zen mode settings: Event-based rule reply option value: Yes, Maybe, or Not replied -->
   <!-- [CHAR LIMIT=40] Zen mode settings: Event-based rule reply option value: Yes or Maybe -->
   <!-- [CHAR LIMIT=40] Zen mode settings: Event-based rule reply option value: Yes -->
+  <string name="zen_mode_event_rule_reply_yes">Jes</string>
   <!-- [CHAR LIMIT=40] Zen mode settings: Text to display if rule isn't found -->
   <!-- [CHAR LIMIT=40] Zen mode settings: Rule summary template (when enabled) -->
   <!-- [CHAR LIMIT=40] Zen mode settings: Time-based rule days option title -->
@@ -3064,6 +3138,7 @@
   <!-- Title of draw overlay screen [CHAR LIMIT=30] -->
   <!-- Settings title in main settings screen for SYSTEM_ALERT_WINDOW [CHAR LIMIT=45] -->
   <!-- Title for the apps with SYSTEM_ALERT_WINDOW permission/privilege [CHAR LIMIT=20] -->
+  <string name="system_alert_window_apps_title">Aplikaĵoj</string>
   <!-- Title for the apps that are allowed to draw on top of other apps [CHAR LIMIT=60] -->
   <!-- Label for setting which controls whether app can draw overlays [CHAR LIMIT=45] -->
   <!-- Link to the apps page for SYSTEM_ALERT_WINDOW settings [CHAR LIMIT=45] -->
@@ -3073,7 +3148,9 @@
   <!-- Summary of number of apps currently can draw overlays [CHAR LIMIT=60] -->
   <!-- Label for showing apps that can draw overlays [CHAR LIMIT=45] -->
   <!-- Summary of app allowed to draw overlay [CHAR LIMIT=60] -->
+  <string name="system_alert_window_on">Jes</string>
   <!-- Summary of app not allowed to draw overlay [CHAR LIMIT=60] -->
+  <string name="system_alert_window_off">Ne</string>
   <!-- Write Settings settings -->
   <!-- Settings title in main settings screen for WRITE_SETTINGS [CHAR LIMIT=30] -->
   <!-- Keyword for WRITE_SETTINGS -->
@@ -3085,7 +3162,9 @@
   <!-- Label for setting which controls whether app can write system settings [CHAR LIMIT=45] -->
   <!-- Description of the write system settings [CHAR LIMIT=NONE] -->
   <!-- Summary of app allowed to write system settings [CHAR LIMIT=45] -->
+  <string name="write_settings_on">Jes</string>
   <!-- Summary of app not allowed to write system settings [CHAR LIMIT=45] -->
+  <string name="write_settings_off">Ne</string>
   <!-- Title of setting that controls gesture to open camera [CHAR LIMIT=40] -->
   <!-- Description of setting that controls gesture to open camera [CHAR LIMIT=NONE] -->
   <!-- Title of setting that controls gesture to open camera by double tapping the power button [CHAR LIMIT=40] -->
