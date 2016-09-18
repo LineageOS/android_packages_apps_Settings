@@ -413,8 +413,10 @@ public class InstalledAppDetails extends AppInfoBase
         mUpdatedSysApp = (mAppEntry.info.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0;
         menu.findItem(UNINSTALL_UPDATES).setVisible(mUpdatedSysApp && !mAppControlRestricted);
 
-        if (mPackageInfo.applicationInfo != null) {
+        if (mPackageInfo != null && mPackageInfo.applicationInfo != null) {
             menu.findItem(OPEN_PROTECTED_APPS).setVisible(mPackageInfo.applicationInfo.protect);
+        } else {
+            menu.findItem(OPEN_PROTECTED_APPS).setVisible(false);
         }
     }
 
