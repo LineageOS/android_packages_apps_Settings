@@ -20,6 +20,12 @@
     xmlns:settings="http://schemas.android.com/apk/res-auto"
     android:title="@string/power_menu_setting_name">
 
+    <lineageos.preference.LineageSecureSettingSwitchPreference
+        android:key="advanced_reboot"
+        android:title="@string/advanced_reboot_title"
+        android:summary="@string/advanced_reboot_summary"
+        android:defaultValue="false" />
+
     <Preference
         android:key="gesture_global_actions_panel_summary"
         android:title="@string/cards_passes_sentence"
