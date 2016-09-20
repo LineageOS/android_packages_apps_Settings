@@ -43,12 +43,49 @@
     <!-- Hostname setting -->
     <string name="device_hostname">Device hostname</string>
 
+    <!-- Hotspot lineage extras -->
+    <string name="tethering_allow_vpn_upstreams_title">Allow clients to use VPNs</string>
+    <string name="tethering_allow_vpn_upstreams_summary">Permit hotspot clients to use this device\u2019s VPN connections for upstream connectivity</string>
+
+    <!-- Increasing ring tone volume -->
+    <string name="increasing_ring_volume_option_title">Increasing ring volume</string>
+    <string name="increasing_ring_min_volume_title">Start volume</string>
+    <string name="increasing_ring_ramp_up_time_title">Ramp-up time</string>
+
     <!-- Lock screen cover art -->
     <string name="lockscreen_media_art_title">Display media cover art</string>
+
+    <!-- Lock screen pattern size -->
+    <string name="lock_pattern_size_3" translatable="false">3 \u00d7 3</string>
+    <string name="lock_pattern_size_4" translatable="false">4 \u00d7 4</string>
+    <string name="lock_pattern_size_5" translatable="false">5 \u00d7 5</string>
+    <string name="lock_pattern_size_6" translatable="false">6 \u00d7 6</string>
+    <string name="lock_settings_picker_pattern_size_message">Choose a pattern size</string>
+    <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
+    <string name="lockpattern_settings_enable_error_path_title">Show pattern error</string>
+    <!-- Whether the dots will be drawn when using the lockscreen pattern -->
+    <string name="lockpattern_settings_enable_dots_title">Show pattern dots</string>
+
+    <!-- Notification sound timeout -->
+    <string name="app_notification_sound_timeout_title">Minimum time between notification sounds</string>
+    <string name="app_notification_sound_timeout_summary_template">Allow sounds or vibration no more than once every <xliff:g id="duration">%1$s</xliff:g></string>
+    <string name="app_notification_sound_timeout_value_none">No restriction</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 seconds</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 seconds</string>
+    <string name="app_notification_sound_timeout_value_1_minute">1 minute</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 minutes</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 minutes</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30 minutes</string>
+
+    <!-- Lock screen visualizer -->
+    <string name="lockscreen_visualizer_title">Display music visualizer</string>
 
     <!-- PIN scramble -->
     <string name="unlock_scramble_pin_layout_title">Scramble layout</string>
     <string name="unlock_scramble_pin_layout_summary">Scramble PIN layout when unlocking device</string>
+
+    <!-- Volume link notification -->
+    <string name="volume_link_notification_title">Link ring &amp; notification volumes</string>
 
     <!-- Whether the keyguard will directly show the lock entry -->
     <string name="directly_show_lock">Direct unlock</string>
@@ -76,4 +113,8 @@
     <!-- Proximity wake -->
     <string name="proximity_wake_title">Prevent accidental wake-up</string>
     <string name="proximity_wake_summary">Check the proximity sensor prior to waking up screen</string>
+
+    <!-- Wake on plug -->
+    <string name="wake_when_plugged_or_unplugged_title">Wake on plug</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Turn the screen on when connecting or disconnecting a power source</string>
 </resources>
