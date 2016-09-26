@@ -714,10 +714,11 @@ public class TetherSettings extends RestrictedSettingsFragment
         if (preference == mUsbTether) {
             if (showNoSimCardDialog(getActivity())) {
                 ((SwitchPreference) preference).setChecked(false);
-            } else if (mUsbTether.isChecked() && mUsbEnable) {
-                //save the current wifi status for restore
-                mIsWifiEnabled = mWifiStatusManager.isWifiEnabled();
-
+            } else if (mUsbTether.isChecked()) {
+                if (mUsbEnable) {
+                    //save the current wifi status for restore
+                    mIsWifiEnabled = mWifiStatusManager.isWifiEnabled();
+                }
                 if (isFirstUseUSBTethering(getActivity())) {
                     showFirstUseUSBTetheringDialog(getActivity());
                 }
