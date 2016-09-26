@@ -43,6 +43,11 @@
         settings:keywords="@string/keywords_display_auto_brightness"
         android:summary="@string/auto_brightness_summary" />
 
+    <!-- Rotation -->
+    <org.lineageos.internal.lineageparts.LineagePartsPreference
+        android:key="rotation"
+        lineage:requiresFeature="android.hardware.sensor.accelerometer" />
+
     <com.android.settingslib.RestrictedPreference
         android:key="wallpaper"
         android:title="@string/wallpaper_settings_title"
@@ -61,9 +66,10 @@
         android:entries="@array/screen_timeout_entries"
         android:entryValues="@array/screen_timeout_values" />
 
+    <!-- Disabled on Lineage
     <SwitchPreference
         android:key="auto_rotate"
-        android:title="@string/accelerometer_title" />
+        android:title="@string/accelerometer_title" /> -->
 
     <Preference
         android:key="color_mode"
