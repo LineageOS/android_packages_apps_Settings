@@ -77,6 +77,10 @@
                 android:title="@string/device_feedback">
         </PreferenceScreen>
 
+		<!-- Contributors cloud -->
+		<org.cyanogenmod.internal.cmparts.CMPartsPreference
+                android:key="contributors" />
+
         <!-- Device hardware model -->
         <Preference android:key="device_model"
                 android:enabled="false"
