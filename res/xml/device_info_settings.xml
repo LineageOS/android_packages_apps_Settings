@@ -82,6 +82,10 @@
                 android:title="@string/device_feedback">
         </PreferenceScreen>
 
+        <!-- Contributors cloud -->
+        <org.cyanogenmod.internal.cmparts.CMPartsPreference
+                android:key="contributors" />
+
         <!-- Device hardware model -->
         <com.android.settings.DividerPreference
                 android:key="device_model"
