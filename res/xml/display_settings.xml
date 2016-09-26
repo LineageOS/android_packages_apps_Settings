@@ -16,6 +16,7 @@
 
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:lineage="http://schemas.android.com/apk/res/lineageos.platform"
     xmlns:settings="http://schemas.android.com/apk/res-auto"
     android:key="display_settings_screen"
     android:title="@string/display_settings"
@@ -108,6 +109,11 @@
             android:title="@string/accelerometer_title"
             settings:keywords="@string/keywords_auto_rotate"
             settings:controller="com.android.settings.display.AutoRotatePreferenceController"/>
+
+        <org.lineageos.internal.lineageparts.LineagePartsPreference
+            android:key="rotation"
+            lineage:replacesKey="auto_rotate"
+            lineage:requiresFeature="android.hardware.sensor.accelerometer" />
 
         <SwitchPreference
             android:key="display_white_balance"
