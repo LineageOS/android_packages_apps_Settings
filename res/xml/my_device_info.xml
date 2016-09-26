@@ -71,10 +71,15 @@
         settings:allowDividerAbove="true"
         settings:searchable="false"/>
 
+    <!-- Contributors cloud -->
+    <org.lineageos.internal.lineageparts.LineagePartsPreference
+        android:key="contributors"
+        android:order="16"/>
+
     <!-- Regulatory labels -->
     <Preference
         android:key="regulatory_info"
-        android:order="16"
+        android:order="17"
         android:title="@string/regulatory_labels">
         <intent android:action="android.settings.SHOW_REGULATORY_INFO"/>
     </Preference>
@@ -82,7 +87,7 @@
     <!-- Safety & regulatory manual -->
     <Preference
         android:key="safety_info"
-        android:order="17"
+        android:order="18"
         android:title="@string/safety_and_regulatory_info">
         <intent android:action="android.settings.SHOW_SAFETY_AND_REGULATORY_INFO"/>
     </Preference>
@@ -90,7 +95,7 @@
     <!-- SIM status -->
     <Preference
         android:key="sim_status"
-        android:order="18"
+        android:order="19"
         android:title="@string/sim_status_title"
         settings:keywords="@string/keywords_sim_status"
         android:summary="@string/summary_placeholder"
