@@ -114,16 +114,10 @@
             settings:keywords="@string/keywords_auto_rotate"
             settings:controller="com.android.settings.display.AutoRotatePreferenceController"/>
 
-        <!--
-            Auto-rotation preference that will be shown when device state based auto-rotation
-            settings are available.
-          -->
-        <Preference
-            android:key="device_state_auto_rotate"
-            android:title="@string/accelerometer_title"
-            android:fragment="com.android.settings.display.DeviceStateAutoRotateDetailsFragment"
-            settings:keywords="@string/keywords_auto_rotate"
-            settings:controller="com.android.settings.display.DeviceStateAutoRotateOverviewController"/>
+        <lineageos.preference.LineagePartsPreference
+            android:key="rotation"
+            settings:replacesKey="auto_rotate"
+            settings:requiresFeature="android.hardware.sensor.accelerometer" />
 
         <Preference
             android:key="screen_resolution"
