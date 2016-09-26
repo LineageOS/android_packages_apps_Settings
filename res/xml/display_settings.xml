@@ -146,6 +146,12 @@
             settings:keywords="@string/keywords_auto_rotate"
             settings:controller="com.android.settings.display.DeviceStateAutoRotateOverviewController"/>
 
+        <lineageos.preference.LineagePartsPreference
+            android:key="rotation"
+            settings:replacesKey="auto_rotate"
+            settings:requiresConfig="@*com.android.settings:bool/config_show_advanced_rotation_settings"
+            settings:requiresFeature="android.hardware.sensor.accelerometer" />
+
         <Preference
             android:key="screen_resolution"
             android:title="@string/screen_resolution_title"
