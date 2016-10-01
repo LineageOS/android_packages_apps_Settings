@@ -2198,19 +2198,9 @@
                 android:value="com.android.settings.fuelgauge.PowerUsageSummary" />
         </activity-alias>
 
-        <activity android:name="Settings$BatterySaverSettingsActivity"
-                android:label="@string/battery_saver"
-                android:icon="@drawable/ic_settings_battery"
-                android:taskAffinity="">
-            <intent-filter android:priority="1">
-                <action android:name="android.settings.BATTERY_SAVER_SETTINGS" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.fuelgauge.BatterySaverSettings" />
-            <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
-                android:value="true" />
-        </activity>
+        <!-- Performance profiles -->
+        <org.lineageos.internal.lineageparts.LineagePartsPreference
+            android:key="perf_profile_settings" />
 
         <activity android:name=".fuelgauge.BatterySaverModeVoiceActivity"
                 android:label="@string/power_usage_summary_title"
