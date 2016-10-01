@@ -370,7 +370,6 @@ public class SimStatus extends SettingsPreferenceFragment {
     void updateSignalStrength(SignalStrength signalStrength) {
         if (mSignalStrength != null) {
             final int state = mPhone.getServiceState().getState();
-            Resources r = getResources();
 
             if ((ServiceState.STATE_OUT_OF_SERVICE == state) ||
                     (ServiceState.STATE_POWER_OFF == state)) {
@@ -389,7 +388,7 @@ public class SimStatus extends SettingsPreferenceFragment {
                 signalAsu = 0;
             }
 
-            mSignalStrength.setSummary(r.getString(R.string.sim_signal_strength,
+            mSignalStrength.setSummary(mRes.getString(R.string.sim_signal_strength,
                         signalDbm, signalAsu));
         }
     }
@@ -443,6 +442,11 @@ public class SimStatus extends SettingsPreferenceFragment {
                 }
 
                 mPhone = phone;
+                //avoid left at TelephonyManager Memory leak before create a new PhoneStateLister
+                if (mPhoneStateListener != null && mTelephonyManager != null) {
+                    mTelephonyManager.listen(mPhoneStateListener,
+                            PhoneStateListener.LISTEN_NONE);
+                }
                 mPhoneStateListener = new PhoneStateListener(mSir.getSubscriptionId()) {
                     @Override
                     public void onDataConnectionStateChanged(int state) {
@@ -468,10 +472,7 @@ public class SimStatus extends SettingsPreferenceFragment {
         public void onTabChanged(String tabId) {
             final int slotId = Integer.parseInt(tabId);
             mSir = mSelectableSubInfos.get(slotId);
-            if (mPhoneStateListener != null) {
-                mTelephonyManager.listen(mPhoneStateListener,
-                        PhoneStateListener.LISTEN_NONE);
-            }
+
             // The User has changed tab; update the SIM information.
             updatePhoneInfos();
             mTelephonyManager.listen(mPhoneStateListener,
