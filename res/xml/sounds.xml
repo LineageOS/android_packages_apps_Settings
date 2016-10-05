@@ -121,4 +121,15 @@
                 android:dialogTitle="@string/vibrator_intensity_title"
                 android:persistent="false"/>
     </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="misc"
+        android:title="@string/category_misc">
+
+        <!-- Display notification when headset is connected -->
+        <SwitchPreference
+            android:key="headset_notification"
+            android:title="@string/headset_notification_title"
+            android:persistent="false" />
+    </PreferenceCategory>
 </PreferenceScreen>
