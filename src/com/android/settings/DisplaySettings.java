@@ -70,6 +70,8 @@ import static android.provider.Settings.System.SCREEN_OFF_TIMEOUT;
 
 import static com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 
+import cyanogenmod.hardware.CMHardwareManager;
+
 public class DisplaySettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, Indexable {
     private static final String TAG = "DisplaySettings";
@@ -582,6 +584,17 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     }
                     if (!isVrDisplayModeAvailable(context)) {
                         result.add(KEY_VR_DISPLAY_PREF);
+                    }
+                    if (!context.getResources().getBoolean(
+                            org.cyanogenmod.platform.internal.R.bool.config_proximityCheckOnWake)) {
+                        result.add("proximity_on_wake");
+                    }
+                    final CMHardwareManager hardware = CMHardwareManager.getInstance(context);
+                    if (!hardware.isSupported(CMHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY)) {
+                        result.add("high_touch_sensitivity_enable");
+                    }
+                    if (!hardware.isSupported(CMHardwareManager.FEATURE_TOUCH_HOVERING)) {
+                        result.add("feature_touch_hovering");
                     }
                     return result;
                 }
