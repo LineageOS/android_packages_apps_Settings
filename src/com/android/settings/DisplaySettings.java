@@ -70,6 +70,8 @@ import static android.provider.Settings.System.SCREEN_OFF_TIMEOUT;
 
 import static com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 
+import cyanogenmod.hardware.CMHardwareManager;
+
 public class DisplaySettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, Indexable {
     private static final String TAG = "DisplaySettings";
@@ -92,6 +94,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             = "camera_double_tap_power_gesture";
     private static final String KEY_WALLPAPER = "wallpaper";
     private static final String KEY_VR_DISPLAY_PREF = "vr_display_pref";
+    private static final String KEY_PROXIMITY_WAKE = "proximity_on_wake";
+    private static final String KEY_HIGH_TOUCH_SENSITIVITY = "high_touch_sensitivity_enable";
+    private static final String KEY_TOUCH_HOVERING = "feature_touch_hovering";
 
     private Preference mFontSizePref;
 
@@ -104,6 +109,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mAutoBrightnessPreference;
     private SwitchPreference mCameraGesturePreference;
     private SwitchPreference mCameraDoubleTapPowerGesturePreference;
+    private SwitchPreference mProximityCheckOnWakePreference;
+    private SwitchPreference mHighTouchSensitivity;
+    private SwitchPreference mTouchHovering;
 
     @Override
     protected int getMetricsCategory() {
@@ -274,6 +282,19 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             final int currentNightMode = uiManager.getNightMode();
             mNightModePreference.setValue(String.valueOf(currentNightMode));
             mNightModePreference.setOnPreferenceChangeListener(this);
+        }
+
+        final CMHardwareManager hardware = CMHardwareManager.getInstance(activity);
+        mHighTouchSensitivity = (SwitchPreference) findPreference(KEY_HIGH_TOUCH_SENSITIVITY);
+        if (!hardware.isSupported(CMHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY)) {
+            displayPrefs.removePreference(mHighTouchSensitivity);
+            mHighTouchSensitivity = null;
+        }
+
+        mTouchHovering = (SwitchPreference) findPreference(KEY_TOUCH_HOVERING);
+        if (!hardware.isSupported(CMHardwareManager.FEATURE_TOUCH_HOVERING)) {
+            displayPrefs.removePreference(mTouchHovering);
+            mTouchHovering = null;
         }
     }
 
@@ -582,6 +603,17 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     }
                     if (!isVrDisplayModeAvailable(context)) {
                         result.add(KEY_VR_DISPLAY_PREF);
+                    }
+                    if (!context.getResources().getBoolean(
+                            org.cyanogenmod.platform.internal.R.bool.config_proximityCheckOnWake)) {
+                        result.add(KEY_PROXIMITY_WAKE);
+                    }
+                    final CMHardwareManager hardware = CMHardwareManager.getInstance(context);
+                    if (!hardware.isSupported(CMHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY)) {
+                        result.add(KEY_HIGH_TOUCH_SENSITIVITY);
+                    }
+                    if (!hardware.isSupported(CMHardwareManager.FEATURE_TOUCH_HOVERING)) {
+                        result.add(KEY_TOUCH_HOVERING);
                     }
                     return result;
                 }
