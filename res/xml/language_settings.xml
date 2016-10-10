@@ -133,6 +133,12 @@
                 android:persistent="false" />
 
         <SwitchPreference
+                android:key="spen_detection"
+                android:title="@string/spen_detection_title"
+                android:summary="@string/spen_detection_summary"
+                android:defaultValue="false" />
+
+        <SwitchPreference
                 android:key="touchscreen_hovering"
                 android:title="@string/touchscreen_hovering_title"
                 android:summary="@string/touchscreen_hovering_summary"

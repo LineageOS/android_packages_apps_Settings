@@ -94,6 +94,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
     private static final String KEY_POINTER_SETTINGS_CATEGORY = "pointer_settings_category";
     private static final String KEY_PREVIOUSLY_ENABLED_SUBTYPES = "previously_enabled_subtypes";
     private static final String KEY_TOUCHSCREEN_HOVERING = "touchscreen_hovering";
+    private static final String KEY_SPEN_DETECTION = "spen_detection";
     private static final String KEY_TRACKPAD_SETTINGS = "gesture_pad_settings";
     private static final String KEY_STYLUS_GESTURES = "stylus_gestures";
     private static final String KEY_STYLUS_ICON_ENABLED = "stylus_icon_enabled";
@@ -115,6 +116,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
     private ListPreference mShowInputMethodSelectorPref;
     private SwitchPreference mStylusIconEnabled;
     private SwitchPreference mTouchscreenHovering;
+    private SwitchPreference mSpenDetection;
     private PreferenceCategory mKeyboardSettingsCategory;
     private PreferenceCategory mHardKeyboardCategory;
     private PreferenceCategory mGameControllerCategory;
@@ -203,11 +205,20 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         mStylusIconEnabled = (SwitchPreference) findPreference(KEY_STYLUS_ICON_ENABLED);
 
         mTouchscreenHovering = (SwitchPreference) findPreference(KEY_TOUCHSCREEN_HOVERING);
+        mSpenDetection = (SwitchPreference) findPreference(KEY_SPEN_DETECTION);
 
         if (pointerSettingsCategory != null) {
             if (!getResources().getBoolean(com.android.internal.R.bool.config_stylusGestures)) {
                 pointerSettingsCategory.removePreference(mStylusGestures);
                 pointerSettingsCategory.removePreference(mStylusIconEnabled);
+            }
+
+            if (!mHardware.isSupported(CMHardwareManager.FEATURE_SPEN_DETECTION)) {
+                pointerSettingsCategory.removePreference(mSpenDetection);
+                mSpenDetection = null;
+            } else {
+                mSpenDetection.setChecked(
+                        mHardware.get(CMHardwareManager.FEATURE_SPEN_DETECTION));
             }
 
             if (!mHardware.isSupported(CMHardwareManager.FEATURE_TOUCH_HOVERING)) {
@@ -426,6 +437,12 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
             CMSettings.Secure.putInt(getActivity().getContentResolver(),
                     CMSettings.Secure.FEATURE_TOUCH_HOVERING,
                     touchHoveringEnable ? 1 : 0);
+            return true;
+        } else if (preference == mSpenDetection) {
+            boolean spendetectionEnable = mSpenDetection.isChecked();
+            CMSettings.Secure.putInt(getActivity().getContentResolver(),
+                    CMSettings.Secure.FEATURE_SPEN_DETECTION,
+                    spendetectionEnable ? 1 : 0);
             return true;
         } else if (preference instanceof PreferenceScreen) {
             if (preference.getFragment() != null) {
