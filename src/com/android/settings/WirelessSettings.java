@@ -507,7 +507,7 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
             p.setTitle(com.android.settingslib.Utils.getTetheringLabel(cm));
 
             if (this.getResources().getBoolean(
-                    R.bool.config_tethering_settings_display_summary_Tmobile)){
+                    R.bool.config_tethering_settings_display_summary)){
                 RestrictedPreference rp = (RestrictedPreference) p;
                 rp.useAdminDisabledSummary(false);
                 p.setSummary(R.string.tethering_settings_summary);

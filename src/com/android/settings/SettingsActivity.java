@@ -1052,7 +1052,9 @@ public class SettingsActivity extends SettingsDrawerActivity
             Log.i(LOG_TAG, "switchToFragment, launch simSettings  ");
             Intent provisioningIntent =
                     new Intent("com.android.settings.sim.SIM_SUB_INFO_SETTINGS");
-            startActivity(provisioningIntent);
+            if (!getPackageManager().queryIntentActivities(provisioningIntent, 0).isEmpty()) {
+                startActivity(provisioningIntent);
+            }
             finish();
             return null;
         }
