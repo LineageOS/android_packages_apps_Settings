@@ -30,6 +30,7 @@ import android.util.ArraySet;
 import android.util.Log;
 
 import com.android.settings.SettingsActivity;
+import com.android.settings.cyanogenmod.RemoteSummaryProvider;
 import com.android.settingslib.drawer.DashboardCategory;
 import com.android.settingslib.drawer.SettingsDrawerActivity;
 import com.android.settingslib.drawer.Tile;
@@ -131,8 +132,7 @@ public class SummaryLoader {
     private SummaryProvider getSummaryProvider(Tile tile) {
         if (!mActivity.getPackageName().equals(tile.intent.getComponent().getPackageName())) {
             // Not within Settings, can't load Summary directly.
-            // TODO: Load summary indirectly.
-            return null;
+            return RemoteSummaryProvider.createSummaryProvider(mActivity, this, tile);
         }
         Bundle metaData = getMetaData(tile);
         if (metaData == null) {
