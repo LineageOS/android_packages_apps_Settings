@@ -140,6 +140,15 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+            android:key="interface"
+            android:title="@string/interface_label">
+
+        <!-- Expanded desktop -->
+        <org.cyanogenmod.internal.cmparts.CMPartsPreference
+                android:key="expanded_desktop_settings" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
             android:key="lights"
             android:title="@string/lights_label">
 
