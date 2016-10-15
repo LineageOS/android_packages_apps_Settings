@@ -111,6 +111,15 @@
         android:title="@string/doze_title"
         android:summary="@string/doze_summary" />
 
+    <lineageos.preference.RemotePreference
+        android:key="doze_device_settings"
+        android:title="@string/doze_title"
+        android:summary="@string/doze_summary"
+        lineage:replacesKey="doze">
+        <intent
+            android:action="org.lineageos.settings.device.DOZE_SETTINGS" />
+    </lineageos.preference.RemotePreference>
+
     <SwitchPreference
         android:key="tap_to_wake"
         android:title="@string/tap_to_wake"
