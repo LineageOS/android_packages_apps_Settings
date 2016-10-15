@@ -122,6 +122,13 @@
             android:summary="@string/doze_summary"
             settings:controller="com.android.settings.display.AmbientDisplayNotificationsPreferenceController" />
 
+        <lineageos.preference.RemotePreference
+            android:key="doze_device_settings"
+            android:title="@string/ambient_display_screen_title"
+            settings:replacesKey="ambient_display_always_on|ambient_display_notification">
+            <intent android:action="org.lineageos.settings.device.DOZE_SETTINGS" />
+        </lineageos.preference.RemotePreference>
+
     </PreferenceCategory>
 
     <!-- Work profile settings are at the bottom with high order value to avoid users thinking that
