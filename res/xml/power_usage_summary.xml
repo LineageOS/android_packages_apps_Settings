@@ -17,6 +17,7 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    xmlns:lineage="http://schemas.android.com/apk/res/lineageos.platform"
     android:title="@string/power_usage_summary_title"
     settings:keywords="@string/keywords_battery">
 
@@ -79,6 +80,15 @@
             android:key="ambient_display_battery"
             android:title="@string/ambient_display_screen_title"
             android:fragment="com.android.settings.display.AmbientDisplaySettings" />
+
+        <lineageos.preference.RemotePreference
+            android:key="doze_device_settings_battery"
+            android:title="@string/doze_title"
+            android:summary="@string/doze_summary"
+            lineage:replacesKey="ambient_display_battery">
+            <intent
+                android:action="org.lineageos.settings.device.DOZE_SETTINGS" />
+        </lineageos.preference.RemotePreference>
 
     </PreferenceCategory>
 

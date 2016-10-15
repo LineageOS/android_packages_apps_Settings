@@ -99,6 +99,15 @@
         android:title="@string/ambient_display_screen_title"
         android:fragment="com.android.settings.display.AmbientDisplaySettings" />
 
+    <lineageos.preference.RemotePreference
+        android:key="doze_device_settings"
+        android:title="@string/doze_title"
+        android:summary="@string/doze_summary"
+        lineage:replacesKey="ambient_display">
+        <intent
+            android:action="org.lineageos.settings.device.DOZE_SETTINGS" />
+    </lineageos.preference.RemotePreference>
+
     <!-- Hide night mode for now
     <ListPreference
         android:key="night_mode"
