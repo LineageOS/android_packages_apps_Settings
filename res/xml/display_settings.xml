@@ -130,6 +130,13 @@
         settings:controller="com.android.settings.security.screenlock.LockScreenPreferenceController"
         settings:userRestriction="no_ambient_display" />
 
+    <lineageos.preference.RemotePreference
+        android:key="doze_device_settings"
+        android:title="@string/ambient_display_screen_title"
+        lineage:replacesKey="ambient_display">
+        <intent android:action="org.lineageos.settings.device.DOZE_SETTINGS" />
+    </lineageos.preference.RemotePreference>
+
     <SwitchPreference
         android:key="camera_gesture"
         android:title="@string/camera_gesture_title"
