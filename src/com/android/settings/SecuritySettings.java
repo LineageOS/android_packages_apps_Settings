@@ -31,6 +31,7 @@ import android.hardware.fingerprint.Fingerprint;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.os.ServiceManager;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.preference.ListPreference;
@@ -449,26 +450,34 @@ public class SecuritySettings extends SettingsPreferenceFragment
                 updateSmsSecuritySummary(smsSecurityCheck);
             }
 
-            // Show password
-            mShowPassword = (SwitchPreference) root.findPreference(KEY_SHOW_PASSWORD);
-            mResetCredentials = root.findPreference(KEY_RESET_CREDENTIALS);
-
-            // Credential storage
+            // needed by Credential storage and Application install sections
             final UserManager um = (UserManager) getActivity().getSystemService(Context.USER_SERVICE);
-            mKeyStore = KeyStore.getInstance(); // needs to be initialized for onResume()
-            if (!um.hasUserRestriction(UserManager.DISALLOW_CONFIG_CREDENTIALS)) {
-                Preference credentialStorageType = root.findPreference(KEY_CREDENTIAL_STORAGE_TYPE);
 
-                final int storageSummaryRes =
-                        mKeyStore.isHardwareBacked() ? R.string.credential_storage_type_hardware
-                                : R.string.credential_storage_type_software;
-                credentialStorageType.setSummary(storageSummaryRes);
-            } else {
-                PreferenceGroup credentialsManager = (PreferenceGroup)
-                        root.findPreference(KEY_CREDENTIALS_MANAGER);
-                credentialsManager.removePreference(root.findPreference(KEY_RESET_CREDENTIALS));
-                credentialsManager.removePreference(root.findPreference(KEY_CREDENTIALS_INSTALL));
-                credentialsManager.removePreference(root.findPreference(KEY_CREDENTIAL_STORAGE_TYPE));
+            // Both "Show password" and "Credential storage" options depend on having a KeyStore.
+            // However, KeyStore assumes that there's an android.security.keystore service around.
+            // Let's validate if it indeed exists here, to avoid breakage.
+            if (ServiceManager.getService("android.security.keystore") != null) {
+                // Show password
+                mShowPassword = (SwitchPreference) root.findPreference(KEY_SHOW_PASSWORD);
+                mResetCredentials = root.findPreference(KEY_RESET_CREDENTIALS);
+
+                // Credential storage
+                mKeyStore = KeyStore.getInstance(); // needs to be initialized for onResume()
+
+                if (!um.hasUserRestriction(UserManager.DISALLOW_CONFIG_CREDENTIALS)) {
+                    Preference credentialStorageType = root.findPreference(KEY_CREDENTIAL_STORAGE_TYPE);
+
+                    final int storageSummaryRes =
+                            mKeyStore.isHardwareBacked() ? R.string.credential_storage_type_hardware
+                                    : R.string.credential_storage_type_software;
+                    credentialStorageType.setSummary(storageSummaryRes);
+                } else {
+                    PreferenceGroup credentialsManager = (PreferenceGroup)
+                            root.findPreference(KEY_CREDENTIALS_MANAGER);
+                    credentialsManager.removePreference(root.findPreference(KEY_RESET_CREDENTIALS));
+                    credentialsManager.removePreference(root.findPreference(KEY_CREDENTIALS_INSTALL));
+                    credentialsManager.removePreference(root.findPreference(KEY_CREDENTIAL_STORAGE_TYPE));
+                }
             }
 
             // Application install
