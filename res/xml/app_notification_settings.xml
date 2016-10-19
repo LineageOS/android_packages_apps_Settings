@@ -86,6 +86,14 @@
         android:title="@string/app_notification_override_dnd_title"
         android:summary="@string/app_notification_override_dnd_summary"/>
 
+    <com.android.settings.RestrictedListPreference
+        android:key="sound_timeout"
+        android:title="@string/app_notification_sound_timeout_title"
+        android:entries="@array/app_notification_sound_timeout_entries"
+        android:entryValues="@array/app_notification_sound_timeout_values"
+        android:order="1003"
+        android:persistent="false" />
+
         <Preference
             android:key="app_link"
             android:order="1003"
