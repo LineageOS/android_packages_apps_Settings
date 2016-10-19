@@ -47,6 +47,7 @@ public class NotificationBackend {
         row.priority = getHighPriority(row.pkg, row.uid);
         row.peekable = getPeekable(row.pkg, row.uid);
         row.sensitive = getSensitive(row.pkg, row.uid);
+        row.soundTimeout = getNotificationSoundTimeout(row.pkg, row.uid);
         return row;
     }
 
@@ -149,6 +150,25 @@ public class NotificationBackend {
         }
     }
 
+    public long getNotificationSoundTimeout(String pkg, int uid) {
+        try {
+            return sINM.getPackageNotificationSoundTimeout(pkg, uid);
+        } catch (Exception e) {
+            Log.w(TAG, "Error calling NoMan", e);
+            return 0;
+        }
+    }
+
+    public boolean setNotificationSoundTimeout(String pkg, int uid, long timeout) {
+        try {
+            sINM.setPackageNotificationSoundTimeout(pkg, uid, timeout);
+            return true;
+        } catch (Exception e) {
+            Log.w(TAG, "Error calling NoMan", e);
+            return false;
+        }
+    }
+
     static class Row {
         public String section;
     }
@@ -164,6 +184,7 @@ public class NotificationBackend {
         public boolean peekable;
         public boolean sensitive;
         public boolean first;  // first app in section
+        public long soundTimeout;
     }
 
 }
