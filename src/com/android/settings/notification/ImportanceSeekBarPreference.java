@@ -172,6 +172,8 @@ public class ImportanceSeekBarPreference extends SeekBarPreference implements
                 return getContext().getString(R.string.notification_importance_blocked);
             case NotificationListenerService.Ranking.IMPORTANCE_MIN:
                 return getContext().getString(R.string.notification_importance_min);
+            case NotificationListenerService.Ranking.IMPORTANCE_VERY_LOW:
+                return getContext().getString(R.string.notification_importance_very_low);
             case NotificationListenerService.Ranking.IMPORTANCE_LOW:
                 return getContext().getString(R.string.notification_importance_low);
             case NotificationListenerService.Ranking.IMPORTANCE_DEFAULT:
