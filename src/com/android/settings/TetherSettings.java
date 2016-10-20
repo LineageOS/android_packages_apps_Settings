@@ -728,7 +728,7 @@ public class TetherSettings extends RestrictedSettingsFragment
         }
 
         if (choice == TETHERING_USB) {
-            if(mUsbTether.isChecked()) {
+            if(mUsbTether.isChecked() && mUsbEnable) {
                 mWifiManager.setWifiEnabled(false);
             }
         }
