@@ -18,6 +18,9 @@ package com.android.settings;
 
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.ActivityManagerNative;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.UiModeManager;
 import android.app.WallpaperManager;
 import android.app.admin.DevicePolicyManager;
@@ -25,12 +28,15 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.ComponentName;
 import android.content.pm.PackageManager;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.RemoteException;
 import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.os.UserManager;
@@ -43,12 +49,16 @@ import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.internal.view.RotationPolicy;
 import com.android.settings.accessibility.ToggleFontSizePreferenceFragment;
 import com.android.settings.dashboard.SummaryLoader;
+import com.android.settings.display.ScreenZoomPreference;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settingslib.RestrictedLockUtils;
@@ -70,14 +80,20 @@ import static android.provider.Settings.System.SCREEN_OFF_TIMEOUT;
 import static com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 
 public class DisplaySettings extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener, Indexable {
+        Preference.OnPreferenceChangeListener, 
+        WarnedPreference.OnPreferenceValueChangeListener,
+        WarnedPreference.OnPreferenceClickListener, Indexable {
     private static final String TAG = "DisplaySettings";
 
     /** If there is no setting in the provider, use this. */
+    public static final String KEY_IS_CHECKED = "is_checked";
+    public static final String FILE_FONT_WARING = "font_waring";
+
     private static final int FALLBACK_SCREEN_TIMEOUT_VALUE = 30000;
 
     private static final String KEY_SCREEN_TIMEOUT = "screen_timeout";
     private static final String KEY_FONT_SIZE = "font_size";
+    private static final String KEY_FONT_SIZE_MODE = "font_size_mode";
     private static final String KEY_SCREEN_SAVER = "screensaver";
     private static final String KEY_LIFT_TO_WAKE = "lift_to_wake";
     private static final String KEY_DOZE = "doze";
@@ -88,14 +104,26 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_CAMERA_GESTURE = "camera_gesture";
     private static final String KEY_CAMERA_DOUBLE_TAP_POWER_GESTURE
             = "camera_double_tap_power_gesture";
+
     private static final String KEY_WALLPAPER = "wallpaper";
     private static final String KEY_VR_DISPLAY_PREF = "vr_display_pref";
+
+    private static final int DLG_FONTSIZE_CHANGE_WARNING = 2;
+
     private static final String KEY_NETWORK_NAME_DISPLAYED = "network_operator_display";
     private static final String SHOW_NETWORK_NAME_MODE = "show_network_name_mode";
     private static final int SHOW_NETWORK_NAME_ON = 1;
     private static final int SHOW_NETWORK_NAME_OFF = 0;
 
+    private static final String FONT_SIZE_MINIMUM = "0.95";
+    private static final String FONT_SIZE_SMALL = "1.0";
+    private static final String FONT_SIZE_MEDIUM = "1.05";
+    private static final String FONT_SIZE_LARGE = "1.15";
+    private static final String FONT_SIZE_VERYLARGE = "1.30";
+
     private Preference mFontSizePref;
+    private ScreenZoomPreference mScreenZoomPref;
+    private WarnedPreference mDialogPref;
 
     private TimeoutListPreference mScreenTimeoutPreference;
     private ListPreference mNightModePreference;
@@ -107,6 +135,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mCameraGesturePreference;
     private SwitchPreference mCameraDoubleTapPowerGesturePreference;
     private SwitchPreference mNetworkNameDisplayedPreference = null;
+
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
+    private boolean isRJILMode;
+    private final Configuration mCurConfig = new Configuration();
 
     @Override
     protected int getMetricsCategory() {
@@ -121,6 +154,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
         addPreferencesFromResource(R.xml.display_settings);
 
+        mSharedPreferences = getContext().getSharedPreferences(FILE_FONT_WARING,
+                Activity.MODE_PRIVATE);
+        mEditor = mSharedPreferences.edit();
+
         mScreenSaverPreference = findPreference(KEY_SCREEN_SAVER);
         if (mScreenSaverPreference != null
                 && getResources().getBoolean(
@@ -129,8 +166,16 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
 
         mScreenTimeoutPreference = (TimeoutListPreference) findPreference(KEY_SCREEN_TIMEOUT);
-
-        mFontSizePref = findPreference(KEY_FONT_SIZE);
+        isRJILMode = getResources().getBoolean(R.bool.show_font_size_config);
+        if(isRJILMode) {
+            removePreference(KEY_FONT_SIZE);
+            mDialogPref = (WarnedPreference) findPreference(KEY_FONT_SIZE_MODE);
+            mDialogPref.setPreferenceValueChangeListener(this);
+            mDialogPref.setOnPreferenceClickListener(this);
+        } else {
+            removePreference(KEY_FONT_SIZE_MODE);
+            mFontSizePref = findPreference(KEY_FONT_SIZE);
+        }
 
         if (isAutomaticBrightnessAvailable(getResources())) {
             mAutoBrightnessPreference = (SwitchPreference) findPreference(KEY_AUTO_BRIGHTNESS);
@@ -269,6 +314,18 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
     }
 
+    @Override
+    public void onPreferenceClick(Preference preference) {
+        if (preference == mDialogPref) {
+                if(isRJILMode) {
+                    mDialogPref.showDialog(null);
+                    if(mDialogPref.getDialog() != null) {
+                        mDialogPref.getDialog().show();
+                    }
+                }
+        }
+    }
+
     private static boolean allowAllRotations(Context context) {
         return Resources.getSystem().getBoolean(
                 com.android.internal.R.bool.config_allowAllRotations);
@@ -340,6 +397,15 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         preference.setSummary(summary);
     }
 
+    public void readFontSizePreference(WarnedPreference pref) {
+        try {
+            mCurConfig.updateFrom(ActivityManagerNative.getDefault().getConfiguration());
+        } catch (RemoteException e) {
+            Log.w(TAG, "Unable to retrieve font size");
+        }
+        pref.setSummary(pref.getWarnedPreferenceSummary());
+    }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -363,8 +429,36 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         disablePreferenceIfManaged(KEY_WALLPAPER, UserManager.DISALLOW_SET_WALLPAPER);
     }
 
+    @Override
+    public Dialog onCreateDialog(int dialogId) {
+        if(dialogId == DLG_FONTSIZE_CHANGE_WARNING){
+            final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            final View dialog_view = getActivity().getLayoutInflater().
+                    inflate(R.layout.dialog_fontwaring, null);
+            builder.setView(dialog_view);
+            final CheckBox cb_showagain = (CheckBox)dialog_view.findViewById(R.id.showagain);
+            TextView ok_message = (TextView)dialog_view.findViewById(R.id.ok_message);
+            ok_message.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mEditor.putBoolean(KEY_IS_CHECKED, cb_showagain.isChecked());
+                    mEditor.commit();
+                    writeFontSizePreference(FONT_SIZE_VERYLARGE);
+                    removeDialog(DLG_FONTSIZE_CHANGE_WARNING);
+                    mDialogPref.waringDialogOk();
+                }
+            });
+            return builder.create();
+        }
+        return null;
+    }
+
     private void updateState() {
-        updateFontSizeSummary();
+        if(isRJILMode) {
+            readFontSizePreference(mDialogPref);
+        } else {
+            updateFontSizeSummary();
+        }
         updateScreenSaverSummary();
 
         // Update auto brightness if it is available.
@@ -429,6 +523,17 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         final int index = ToggleFontSizePreferenceFragment.fontSizeValueToIndex(currentScale,
                 strEntryValues);
         mFontSizePref.setSummary(entries[index]);
+    }
+
+    public void writeFontSizePreference(Object objValue) {
+        try {
+            if(objValue != null) {
+                mCurConfig.fontScale = Float.parseFloat(objValue.toString());
+                ActivityManagerNative.getDefault().updatePersistentConfiguration(mCurConfig);
+            }
+        } catch (RemoteException e) {
+            Log.w(TAG, "Unable to save font size");
+        }
     }
 
     @Override
@@ -529,6 +634,30 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             mLoader.setSummary(this, mContext.getString(auto ? R.string.display_summary_on
                     : R.string.display_summary_off));
         }
+    }
+
+    @Override
+    public void onPreferenceValueChange(Preference preference, Object newValue) {
+        final String rb_textValue = newValue.toString();
+        final Resources res = getContext().getResources();
+        if(res.getString(R.string.choose_font_VeryLarge).equals(rb_textValue)) {
+            if(!mSharedPreferences.getBoolean(KEY_IS_CHECKED,false)) {
+                if(mDialogPref.getDialog() != null && mDialogPref.getDialog().isShowing()) {
+                    showDialog(DLG_FONTSIZE_CHANGE_WARNING);
+                }
+            } else {
+                writeFontSizePreference(FONT_SIZE_VERYLARGE);
+            }
+        } else if(res.getString(R.string.choose_font_Large).equals(rb_textValue)) {
+            writeFontSizePreference(FONT_SIZE_LARGE);
+        } else if(res.getString(R.string.choose_font_Medium).equals(rb_textValue)) {
+            writeFontSizePreference(FONT_SIZE_MEDIUM);
+        } else if(res.getString(R.string.choose_font_Small).equals(rb_textValue)) {
+            writeFontSizePreference(FONT_SIZE_SMALL);
+        } else if(res.getString(R.string.choose_font_Minimum).equals(rb_textValue)) {
+            writeFontSizePreference(FONT_SIZE_MINIMUM);
+        }
+
     }
 
     public static final SummaryLoader.SummaryProviderFactory SUMMARY_PROVIDER_FACTORY
