@@ -121,6 +121,12 @@
         android:title="@string/root_access"
         android:persistent="false" />
 
+    <cyanogenmod.preference.CMSecureSettingSwitchPreference
+        android:key="show_su_indicator"
+        android:title="@string/show_su_indicator_title"
+        android:summary="@string/show_su_indicator_summary"
+        android:defaultValue="false" />
+
     <Preference
         android:key="root_appops"
         android:title="@string/root_appops_title"
