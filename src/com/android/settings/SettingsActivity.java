@@ -238,7 +238,6 @@ public class SettingsActivity extends SettingsDrawerActivity
 
     private static final String ACTION_TIMER_SWITCH = "qualcomm.intent.action.TIMER_SWITCH";
 
-    private static final String LTE_4G_FRAGMENT = "com.android.settings.Lte4GEnableSetting";
     private static final String PROFILEMGR_MAIN_FRAGMENT = "com.android.settings.ProfileMgrMain";
     private static final String MOBILENETWORK_FRAGMENT = "com.android.settings.MobileNetworkMain";
     private static final String SYSTEM_UPDATE = "android.settings.SystemUpdateActivity";
@@ -259,7 +258,6 @@ public class SettingsActivity extends SettingsDrawerActivity
             Settings.DataUsageSummaryActivity.class.getName(),
             Settings.RoamingSettingsActivity.class.getName(),
             Settings.SimSettingsActivity.class.getName(),
-            Settings.Lte4GEnableActivity.class.getName(),
             Settings.WirelessSettingsActivity.class.getName(),
             //device_section
             Settings.HomeSettingsActivity.class.getName(),
@@ -1081,14 +1079,6 @@ public class SettingsActivity extends SettingsDrawerActivity
             return null;
         }
 
-        if (LTE_4G_FRAGMENT.equals(fragmentName)) {
-            Intent newIntent = new Intent("android.settings.SETTINGS");
-            newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(newIntent);
-            finish();
-            return null;
-        }
-
         if (PROFILEMGR_MAIN_FRAGMENT.equals(fragmentName)) {
             Intent profilemgrIntent = new Intent();
             profilemgrIntent.setAction("com.codeaurora.STARTPROFILE");
@@ -1213,10 +1203,6 @@ public class SettingsActivity extends SettingsDrawerActivity
         setTileEnabled(new ComponentName(packageName,
                         Settings.AccessibilitySettingsActivity.class.getName()),
                 !getResources().getBoolean(R.bool.config_settings_rjil_layout), isAdmin, pm);
-
-        setTileEnabled(new ComponentName(packageName,
-                Settings.Lte4GEnableActivity.class.getName()),
-                getResources().getBoolean(R.bool.config_4gsettings_enabled), isAdmin, pm);
 
         setTileEnabled(new ComponentName(packageName,
                 Settings.DataUsageSummaryActivity.class.getName()),
