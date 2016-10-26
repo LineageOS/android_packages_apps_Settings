@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:androidprv="http://schemas.android.com/apk/prv/res/android"
+        xmlns:lineage="http://schemas.android.com/apk/res/lineageos.platform"
         package="com.android.settings"
         coreApp="true"
         android:sharedUserId="android.uid.system">
@@ -923,7 +924,8 @@
         <activity android:name="Settings$NightDisplaySuggestionActivity"
             android:enabled="@*android:bool/config_nightDisplayAvailable"
             android:taskAffinity=""
-            android:icon="@drawable/ic_settings_night_display">
+            android:icon="@drawable/ic_settings_night_display"
+            lineage:requiresFeature="!org.lineageos.livedisplay">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.android.settings.suggested.category.FIRST_IMPRESSION" />

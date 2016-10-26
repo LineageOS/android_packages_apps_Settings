@@ -34,7 +34,8 @@
         android:fragment="com.android.settings.display.NightDisplaySettings"
         android:widgetLayout="@null"
         settings:widgetLayout="@null"
-        settings:keywords="@string/keywords_display_night_display" />
+        settings:keywords="@string/keywords_display_night_display"
+        lineage:requiresFeature="!org.lineageos.livedisplay" />
 
     <!-- Cross-listed item, if you change this, also change it in power_usage_summary.xml -->
     <SwitchPreference
