@@ -1177,7 +1177,7 @@ public class SettingsActivity extends SettingsDrawerActivity
         boolean hasBackupActivity = false;
         if (!useDefaultBackup) {
             try {
-                Intent intent = Intent.parseUri(backupIntent, 0);
+                intent = Intent.parseUri(backupIntent, 0);
                 hasBackupActivity = !getPackageManager().queryIntentActivities(intent, 0).isEmpty();
             } catch (URISyntaxException e) {
                 Log.e(LOG_TAG, "Invalid backup intent URI!", e);

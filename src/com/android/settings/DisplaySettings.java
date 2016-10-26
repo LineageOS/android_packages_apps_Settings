@@ -184,16 +184,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 }
             }
 
-            mCameraDoubleTapPowerGesturePreference =
-                    (SwitchPreference) findPreference(KEY_CAMERA_DOUBLE_TAP_POWER_GESTURE);
-            if (mCameraDoubleTapPowerGesturePreference != null) {
-                if (isCameraDoubleTapPowerGestureAvailable(getResources())) {
-                    mCameraDoubleTapPowerGesturePreference.setOnPreferenceChangeListener(this);
-                } else {
-                    displayPrefs.removePreference(mCameraDoubleTapPowerGesturePreference);
-                }
-            }
-
             DropDownPreference rotatePreference =
                     (DropDownPreference) findPreference(KEY_AUTO_ROTATE);
             if (rotatePreference != null) {
