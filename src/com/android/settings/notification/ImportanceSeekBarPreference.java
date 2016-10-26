@@ -168,19 +168,23 @@ public class ImportanceSeekBarPreference extends SeekBarPreference implements
 
     private String getProgressSummary(int progress) {
         switch (progress) {
-            case NotificationListenerService.Ranking.IMPORTANCE_NONE:
+            /* We are not using the constants here because the value of IMPORTANCE_VERY_LOW
+             * is actually 6, meaning that it would appear above IMPORTANCE_MAX.
+             * Instead, use the position in the slider.
+             */
+            case 0: // NotificationListenerService.Ranking.IMPORTANCE_NONE:
                 return getContext().getString(R.string.notification_importance_blocked);
-            case NotificationListenerService.Ranking.IMPORTANCE_MIN:
+            case 1: // NotificationListenerService.Ranking.IMPORTANCE_MIN:
                 return getContext().getString(R.string.notification_importance_min);
-            case NotificationListenerService.Ranking.IMPORTANCE_VERY_LOW:
+            case 2: // NotificationListenerService.Ranking.IMPORTANCE_VERY_LOW:
                 return getContext().getString(R.string.notification_importance_very_low);
-            case NotificationListenerService.Ranking.IMPORTANCE_LOW:
+            case 3: // NotificationListenerService.Ranking.IMPORTANCE_LOW:
                 return getContext().getString(R.string.notification_importance_low);
-            case NotificationListenerService.Ranking.IMPORTANCE_DEFAULT:
+            case 4: // NotificationListenerService.Ranking.IMPORTANCE_DEFAULT:
                 return getContext().getString(R.string.notification_importance_default);
-            case NotificationListenerService.Ranking.IMPORTANCE_HIGH:
+            case 5: // NotificationListenerService.Ranking.IMPORTANCE_HIGH:
                 return getContext().getString(R.string.notification_importance_high);
-            case NotificationListenerService.Ranking.IMPORTANCE_MAX:
+            case 6: // NotificationListenerService.Ranking.IMPORTANCE_MAX:
                 return getContext().getString(R.string.notification_importance_max);
             default:
                 return getContext().getString(R.string.notification_importance_unspecified);
