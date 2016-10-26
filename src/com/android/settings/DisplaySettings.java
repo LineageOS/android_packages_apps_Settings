@@ -55,6 +55,7 @@ public class DisplaySettings extends DashboardFragment {
 
     private static final String KEY_SCREEN_TIMEOUT = "screen_timeout";
     private static final String KEY_AMBIENT_DISPLAY = "ambient_display";
+    private static final String KEY_NIGHT_LIGHT = "night_display";
 
     @Override
     public int getMetricsCategory() {
@@ -131,6 +132,7 @@ public class DisplaySettings extends DashboardFragment {
                     keys.add(KEY_DISPLAY_SIZE);
                     keys.add(WallpaperPreferenceController.KEY_WALLPAPER);
                     keys.add(KEY_AMBIENT_DISPLAY);
+                    keys.add(KEY_NIGHT_LIGHT);
                     if (!context.getResources().getBoolean(
                             org.lineageos.platform.internal.R.bool.config_proximityCheckOnWake)) {
                         keys.add(KEY_PROXIMITY_ON_WAKE);
