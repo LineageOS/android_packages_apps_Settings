@@ -33,7 +33,8 @@
         android:title="@string/night_display_title"
         android:fragment="com.android.settings.display.NightDisplaySettings"
         settings:widgetLayout="@null"
-        settings:keywords="@string/keywords_display_night_display" />
+        settings:keywords="@string/keywords_display_night_display"
+        lineage:requiresFeature="!org.lineageos.livedisplay" />
 
     <SwitchPreference
         android:key="auto_brightness"
