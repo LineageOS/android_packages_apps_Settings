@@ -118,6 +118,18 @@
                 android:title="@string/security_patch"
                 android:summary="@string/device_info_default"/>
 
+        <!-- Device security patch level -->
+        <Preference android:key="device_security_patch"
+            style="?android:preferenceInformationStyle"
+            android:title="@string/device_security_patch"
+            android:summary="@string/device_info_default"/>
+
+        <!-- OEM security patch level -->
+        <Preference android:key="oem_security_patch"
+            style="?android:preferenceInformationStyle"
+            android:title="@string/oem_security_patch"
+            android:summary="@string/device_info_default"/>
+
         <!-- Device FCC equipment id -->
         <Preference android:key="fcc_equipment_id"
                 style="?android:preferenceInformationStyle"
