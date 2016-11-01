@@ -17,6 +17,7 @@
 package com.android.settings;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -83,6 +84,10 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_BASEBAND_VERSION = "baseband_version";
     private static final String KEY_FIRMWARE_VERSION = "firmware_version";
     private static final String KEY_SECURITY_PATCH = "security_patch";
+    private static final String KEY_DEVICE_SECURITY_PATCH = "device_security_patch";
+    private static final String PROPERTY_DEVICE_PATCH = "ro.build.version.dev_security";
+    private static final String KEY_OEM_SECURITY_PATCH = "oem_security_patch";
+    private static final String PROPERTY_OEM_PATCH = "ro.build.version.oem_security";
     private static final String KEY_UPDATE_SETTING = "additional_system_update_settings";
     private static final String KEY_EQUIPMENT_ID = "fcc_equipment_id";
     private static final String PROPERTY_EQUIPMENT_ID = "ro.ril.fccid";
@@ -120,12 +125,14 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
 
         setStringSummary(KEY_FIRMWARE_VERSION, Build.VERSION.RELEASE);
         findPreference(KEY_FIRMWARE_VERSION).setEnabled(true);
+
+        SimpleDateFormat template = new SimpleDateFormat("yyyy-MM-dd");
+        String format = DateFormat.getBestDateTimePattern(Locale.getDefault(), "dMMMMyyyy");
+
         String patch = Build.VERSION.SECURITY_PATCH;
         if (!"".equals(patch)) {
             try {
-                SimpleDateFormat template = new SimpleDateFormat("yyyy-MM-dd");
                 Date patchDate = template.parse(patch);
-                String format = DateFormat.getBestDateTimePattern(Locale.getDefault(), "dMMMMyyyy");
                 patch = DateFormat.format(format, patchDate).toString();
             } catch (ParseException e) {
                 // broken parse; fall through and use the raw string
@@ -133,8 +140,36 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
             setStringSummary(KEY_SECURITY_PATCH, patch);
         } else {
             getPreferenceScreen().removePreference(findPreference(KEY_SECURITY_PATCH));
-
         }
+
+        patch = SystemProperties.get(PROPERTY_DEVICE_PATCH, "2015-11-01");
+        if (!"".equals(patch)) {
+            try {
+                Date patchDate = template.parse(patch);
+                patch = DateFormat.format(format, patchDate).toString();
+            } catch (ParseException e) {
+                // broken parse; fall through and use the raw string
+            }
+            setStringSummary(KEY_DEVICE_SECURITY_PATCH, patch);
+            findPreference(KEY_DEVICE_SECURITY_PATCH).setEnabled(true);
+        } else {
+            getPreferenceScreen().removePreference(findPreference(KEY_DEVICE_SECURITY_PATCH));
+        }
+
+        patch = SystemProperties.get(PROPERTY_OEM_PATCH, "");
+        if (!"".equals(patch)) {
+            try {
+                Date patchDate = template.parse(patch);
+                patch = DateFormat.format(format, patchDate).toString();
+            } catch (ParseException e) {
+                // broken parse; fall through and use the raw string
+            }
+            setStringSummary(KEY_OEM_SECURITY_PATCH, patch);
+            findPreference(KEY_OEM_SECURITY_PATCH).setEnabled(true);
+        } else {
+            getPreferenceScreen().removePreference(findPreference(KEY_OEM_SECURITY_PATCH));
+        }
+
         setValueSummary(KEY_BASEBAND_VERSION, "gsm.version.baseband");
         setValueSummary(KEY_EQUIPMENT_ID, PROPERTY_EQUIPMENT_ID);
         setStringSummary(KEY_DEVICE_MODEL, Build.MODEL);
@@ -381,6 +416,22 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
                     Log.e(LOG_TAG, "Unable to start activity " + intent.toString());
                 }
             }
+        } else if (preference.getKey().equals(KEY_DEVICE_SECURITY_PATCH)) {
+            new AlertDialog.Builder(getContext())
+                    .setTitle(R.string.device_security_patch)
+                    .setMessage(R.string.device_sec_patch_message)
+                    .setPositiveButton(android.R.string.ok, null)
+                    .create()
+                    .show();
+            return true;
+        } else if (preference.getKey().equals(KEY_OEM_SECURITY_PATCH)) {
+            new AlertDialog.Builder(getContext())
+                    .setTitle(R.string.oem_security_patch)
+                    .setMessage(R.string.oem_sec_patch_message)
+                    .setPositiveButton(android.R.string.ok, null)
+                    .create()
+                    .show();
+            return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
