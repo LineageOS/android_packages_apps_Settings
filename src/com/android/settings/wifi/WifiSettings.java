@@ -904,7 +904,9 @@ public class WifiSettings extends RestrictedSettingsFragment
 
     @Override
     public void onAccessPointChanged(AccessPoint accessPoint) {
-        ((LongPressAccessPointPreference) accessPoint.getTag()).refresh();
+        try {
+            ((LongPressAccessPointPreference) accessPoint.getTag()).refresh();
+        } catch (NullPointerException ig) {}
     }
 
     @Override
