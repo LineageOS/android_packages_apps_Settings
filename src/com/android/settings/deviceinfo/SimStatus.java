@@ -62,6 +62,7 @@ import com.android.settings.Utils;
 
 import java.util.List;
 
+import org.codeaurora.ims.utils.QtiImsExtUtils;
 
 /**
  * Display the following information
@@ -288,12 +289,10 @@ public class SimStatus extends SettingsPreferenceFragment {
             networktype = "4G";
         }
 
-        String property = SystemProperties.get("persist.radio.atel.carrier");
-        boolean isCarrierOneSupported = "405854".equals(property);
-        if (isCarrierOneSupported) {
+        if (QtiImsExtUtils.isCarrierOneSupported()) {
             if (TelephonyManager.NETWORK_TYPE_LTE == actualDataNetworkType ||
                     TelephonyManager.NETWORK_TYPE_LTE == actualVoiceNetworkType) {
-                if (mTelephonyManager.isImsRegistered()) {
+                if (mTelephonyManager.isImsRegisteredForSubscriber(subId)) {
                     networktype = getResources().
                             getString(R.string.lte_data_and_voice_calling_enabled);
                 } else {
