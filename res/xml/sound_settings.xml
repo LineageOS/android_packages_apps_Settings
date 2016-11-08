@@ -181,6 +181,12 @@
         android:title="@string/charging_sounds_title"
         android:order="-40"/>
 
+    <!-- Custom charging sounds -->
+    <lineageos.preference.LineagePartsPreference
+        android:key="charging_sounds_settings"
+        settings:requiresConfig="@bool/config_show_charging_sounds"
+        settings:replacesKey="charging_sounds" />
+
     <!-- Docking sounds -->
     <SwitchPreference
         android:key="docking_sounds"
