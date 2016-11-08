@@ -630,7 +630,7 @@ public class WifiSettings extends RestrictedSettingsFragment
      * the strength of network and the security for it.
      */
     @Override
-    public void onAccessPointsChanged() {
+    public synchronized void onAccessPointsChanged() {
         // Safeguard from some delayed event handling
         if (getActivity() == null) return;
         if (isUiRestricted()) {
@@ -903,7 +903,7 @@ public class WifiSettings extends RestrictedSettingsFragment
     }
 
     @Override
-    public void onAccessPointChanged(AccessPoint accessPoint) {
+    public synchronized void onAccessPointChanged(AccessPoint accessPoint) {
         try {
             ((LongPressAccessPointPreference) accessPoint.getTag()).refresh();
         } catch (NullPointerException ig) {}
