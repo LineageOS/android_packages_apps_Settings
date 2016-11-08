@@ -12,6 +12,8 @@
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
      See the License for the specific language governing permissions and
      limitations under the License.
+     android:fragment="com.android.systemui.tuner.PowerNotificationControlsFragment"/>
+
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
@@ -29,5 +31,12 @@
             android:key="lock_screen_notifications"
             android:title="@string/lock_screen_notifications_title"
             android:summary="%s" />
+
+    <!-- importance -->
+    <PreferenceScreen
+        android:key="power_notification_controls"
+        android:title="@string/tuner_full_importance_settings">
+        <intent android:action="com.android.settings.action.POWER_NOTIF_CONTROLS" />
+    </PreferenceScreen>
 
 </PreferenceScreen>
