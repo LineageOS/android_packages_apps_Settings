@@ -49,12 +49,9 @@ public class FingerprintEnrollIntroduction extends FingerprintEnrollBase {
             learnMoreButton.setVisibility(View.GONE);
         } else {
             learnMoreButton.setOnClickListener(this);
-        }
-
-        final View learnMoreButton = findViewById(R.id.learn_more_button);
-        learnMoreButton.setOnClickListener(this);
-        if (Global.getInt(getContentResolver(), Global.DEVICE_PROVISIONED, 0) == 0) {
-            learnMoreButton.setVisibility(View.GONE);
+            if (Global.getInt(getContentResolver(), Global.DEVICE_PROVISIONED, 0) == 0) {
+                learnMoreButton.setVisibility(View.GONE);
+            }
         }
 
         final int passwordQuality = new ChooseLockSettingsHelper(this).utils()
