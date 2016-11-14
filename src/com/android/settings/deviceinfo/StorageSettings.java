@@ -166,12 +166,13 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
         for (VolumeInfo vol : volumes) {
             if (vol.getType() == VolumeInfo.TYPE_PRIVATE) {
                 final int color = COLOR_PRIVATE[privateCount++ % COLOR_PRIVATE.length];
+                boolean isInternal = vol.getId() == VolumeInfo.ID_PRIVATE_INTERNAL;
                 mInternalCategory.addPreference(
-                        new StorageVolumePreference(context, vol, color, sTotalInternalStorage));
+                        new StorageVolumePreference(context, vol, color, isInternal ? sTotalInternalStorage : vol.getPath().getTotalSpace()));
                 if (vol.isMountedReadable()) {
                     final File path = vol.getPath();
                     privateUsedBytes += path.getTotalSpace() - path.getFreeSpace();
-                    if (sTotalInternalStorage > 0) {
+                    if (isInternal && sTotalInternalStorage > 0) {
                         privateTotalBytes = sTotalInternalStorage;
                     } else {
                         privateTotalBytes += path.getTotalSpace();
@@ -276,8 +277,9 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
 
             if (vol.getType() == VolumeInfo.TYPE_PRIVATE) {
                 final Bundle args = new Bundle();
+                boolean isInternal = vol.getId() == VolumeInfo.ID_PRIVATE_INTERNAL;
                 args.putString(VolumeInfo.EXTRA_VOLUME_ID, vol.getId());
-                PrivateVolumeSettings.setVolumeSize(args, sTotalInternalStorage);
+                PrivateVolumeSettings.setVolumeSize(args, isInternal ? sTotalInternalStorage : vol.getPath().getTotalSpace());
                 startFragment(this, PrivateVolumeSettings.class.getCanonicalName(),
                         -1, 0, args);
                 return true;
@@ -503,7 +505,8 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
                 if (path == null) {
                     continue;
                 }
-                if (info.getType() == VolumeInfo.TYPE_PRIVATE && sTotalInternalStorage > 0) {
+                if (info.getType() == VolumeInfo.TYPE_PRIVATE && info.getId() == VolumeInfo.ID_PRIVATE_INTERNAL
+                         && sTotalInternalStorage > 0) {
                     privateTotalBytes = sTotalInternalStorage;
                 } else {
                     privateTotalBytes += path.getTotalSpace();
