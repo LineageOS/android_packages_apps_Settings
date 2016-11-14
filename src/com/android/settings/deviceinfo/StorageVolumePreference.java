@@ -46,8 +46,7 @@ public class StorageVolumePreference extends Preference {
     private int mColor;
     private int mUsedPercent = -1;
 
-    // TODO: ideally, VolumeInfo should have a total physical size.
-    public StorageVolumePreference(Context context, VolumeInfo volume, int color, long totalBytes) {
+    public StorageVolumePreference(Context context, VolumeInfo volume, int color) {
         super(context);
 
         mStorageManager = context.getSystemService(StorageManager.class);
@@ -69,10 +68,8 @@ public class StorageVolumePreference extends Preference {
         if (volume.isMountedReadable()) {
             // TODO: move statfs() to background thread
             final File path = volume.getPath();
-            if (totalBytes <= 0) {
-                totalBytes = path.getTotalSpace();
-            }
             final long freeBytes = path.getFreeSpace();
+            final long totalBytes = path.getTotalSpace();
             final long usedBytes = totalBytes - freeBytes;
 
             final String used = Formatter.formatFileSize(context, usedBytes);
