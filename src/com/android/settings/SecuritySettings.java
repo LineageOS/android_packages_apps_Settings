@@ -64,6 +64,10 @@ import com.android.settingslib.RestrictedLockUtils;
 import com.android.settingslib.RestrictedPreference;
 import com.android.settingslib.RestrictedSwitchPreference;
 
+import cyanogenmod.providers.CMSettings;
+
+import org.cyanogenmod.internal.util.CmLockPatternUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -1009,20 +1013,23 @@ public class SecuritySettings extends SettingsPreferenceFragment
     public static class SecuritySubSettings extends SettingsPreferenceFragment
             implements OnPreferenceChangeListener {
 
+        private static final String KEY_DIRECTLY_SHOW = "directlyshow";
         private static final String KEY_VISIBLE_PATTERN = "visiblepattern";
         private static final String KEY_LOCK_AFTER_TIMEOUT = "lock_after_timeout";
         private static final String KEY_OWNER_INFO_SETTINGS = "owner_info_settings";
         private static final String KEY_POWER_INSTANTLY_LOCKS = "power_button_instantly_locks";
 
         // These switch preferences need special handling since they're not all stored in Settings.
-        private static final String SWITCH_PREFERENCE_KEYS[] = { KEY_LOCK_AFTER_TIMEOUT,
-                KEY_VISIBLE_PATTERN, KEY_POWER_INSTANTLY_LOCKS };
+        private static final String SWITCH_PREFERENCE_KEYS[] = { KEY_DIRECTLY_SHOW,
+                 KEY_LOCK_AFTER_TIMEOUT, KEY_VISIBLE_PATTERN, KEY_POWER_INSTANTLY_LOCKS };
 
+        private SwitchPreference mDirectlyShow;
         private TimeoutListPreference mLockAfter;
         private SwitchPreference mVisiblePattern;
         private SwitchPreference mPowerButtonInstantlyLocks;
         private RestrictedPreference mOwnerInfoPref;
 
+        private ChooseLockSettingsHelper mChooseLockSettingsHelper;
         private LockPatternUtils mLockPatternUtils;
         private DevicePolicyManager mDPM;
 
@@ -1035,6 +1042,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
         public void onCreate(Bundle icicle) {
             super.onCreate(icicle);
             mLockPatternUtils = new LockPatternUtils(getContext());
+            mChooseLockSettingsHelper = new ChooseLockSettingsHelper(getActivity());
             mDPM = getContext().getSystemService(DevicePolicyManager.class);
             createPreferenceHierarchy();
         }
@@ -1044,6 +1052,11 @@ public class SecuritySettings extends SettingsPreferenceFragment
             super.onResume();
 
             createPreferenceHierarchy();
+
+            final CmLockPatternUtils cmLockPatternUtils = mChooseLockSettingsHelper.cmUtils();
+            if (mDirectlyShow != null) {
+                mDirectlyShow.setChecked(cmLockPatternUtils.shouldPassToSecurityView(MY_USER_ID));
+            }
 
             if (mVisiblePattern != null) {
                 mVisiblePattern.setChecked(mLockPatternUtils.isVisiblePatternEnabled(
@@ -1075,6 +1088,9 @@ public class SecuritySettings extends SettingsPreferenceFragment
                     new LockPatternUtils(getContext()),
                     ManagedLockPasswordProvider.get(getContext(), MY_USER_ID));
             addPreferencesFromResource(resid);
+
+            // directly show
+            mDirectlyShow = (SwitchPreference) findPreference(KEY_DIRECTLY_SHOW);
 
             // lock after preference
             mLockAfter = (TimeoutListPreference) findPreference(KEY_LOCK_AFTER_TIMEOUT);
@@ -1219,8 +1235,11 @@ public class SecuritySettings extends SettingsPreferenceFragment
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {
             String key = preference.getKey();
+            final CmLockPatternUtils cmLockPatternUtils = mChooseLockSettingsHelper.cmUtils();
             if (KEY_POWER_INSTANTLY_LOCKS.equals(key)) {
                 mLockPatternUtils.setPowerButtonInstantlyLocks((Boolean) value, MY_USER_ID);
+            } else if (KEY_DIRECTLY_SHOW.equals(key)) {
+                cmLockPatternUtils.setPassToSecurityView((Boolean) value, MY_USER_ID);
             } else if (KEY_LOCK_AFTER_TIMEOUT.equals(key)) {
                 int timeout = Integer.parseInt((String) value);
                 try {

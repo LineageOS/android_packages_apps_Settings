@@ -20,6 +20,11 @@
                   xmlns:cm="http://schemas.android.com/apk/res/cyanogenmod.platform"
                   android:title="@string/settings_label">
 
+        <SwitchPreference
+            android:key="directlyshow"
+            android:persistent="false"
+            android:title="@string/lock_directly_show_password"/>
+
         <com.android.settings.TimeoutListPreference
                 android:key="lock_after_timeout"
                 android:title="@string/lock_after_timeout"
