@@ -46,6 +46,7 @@ public class WifiApEnabler {
     ConnectivityManager mCm;
     private String[] mWifiRegexs;
     private boolean mEnabling = false;
+    private boolean mWaitForWifiStateChange = false;
     private static final String ACTION_HOTSPOT_POST_CONFIGURE = "Hotspot_PostConfigure";
     private static final String ACTION_EXTRA = "choice";
     public static final int TETHERING_WIFI      = 0;
@@ -64,7 +65,8 @@ public class WifiApEnabler {
                 } else {
                     handleWifiApStateChanged(state, WifiManager.SAP_START_FAILURE_GENERAL);
                 }
-            } else if (ConnectivityManager.ACTION_TETHER_STATE_CHANGED.equals(action)) {
+            }
+            else if (ConnectivityManager.ACTION_TETHER_STATE_CHANGED.equals(action)) {
                 ArrayList<String> available = intent.getStringArrayListExtra(
                         ConnectivityManager.EXTRA_AVAILABLE_TETHER);
                 ArrayList<String> active = intent.getStringArrayListExtra(
@@ -115,6 +117,37 @@ public class WifiApEnabler {
             mSwitch.setSummary(mOriginalSummary);
             mSwitch.setEnabled(false);
         }
+    }
+
+    public void setSoftapEnabled(boolean enable) {
+        int wifiSavedState = 0;
+        /**
+         * Check if we have to wait for the WIFI_STATE_CHANGED intent
+         * before we re-enable the Checkbox.
+         */
+        if (!enable) {
+            try {
+                wifiSavedState = Settings.Global.getInt(mContext.getContentResolver(),
+                        Settings.Global.WIFI_SAVED_STATE);
+            } catch (Settings.SettingNotFoundException e) {
+                ;
+            }
+            /**
+             * If Wi-Fi is turned of as part of SoftAp turn on process,
+             * we need to restore, Wi-Fi state after SoftAp turn Off.
+             * WIFI_SAVED_STATE inficates the state.
+             */
+            if (wifiSavedState == 1) {
+                mWaitForWifiStateChange = true;
+            }
+        }
+        if (TetherUtil.setWifiTethering(enable, mContext)) {
+            /* Disable here, enabled on receiving success broadcast */
+            mSwitch.setEnabled(false);
+        } else {
+            mSwitch.setSummary(R.string.wifi_error);
+        }
+
     }
 
     public void setChecked(boolean Checked) {
