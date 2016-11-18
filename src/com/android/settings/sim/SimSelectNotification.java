@@ -52,7 +52,7 @@ public class SimSelectNotification extends BroadcastReceiver {
         // Do not create notifications on single SIM devices or when provisiong i.e. Setup Wizard
         // or User selection of fallback user preference is disabled.
         if (numSlots < 2 || isInProvisioning ||
-                !SystemProperties.getBoolean("persist.radio.aosp_usr_pref_sel", false)) {
+                !SystemProperties.getBoolean("persist.radio.aosp_usr_pref_sel", true)) {
             Log.d(TAG, " no of slots " + numSlots + " provision = " + isInProvisioning);
             return;
         }
