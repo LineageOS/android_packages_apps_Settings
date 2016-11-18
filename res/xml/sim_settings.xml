@@ -22,6 +22,10 @@
             android:title="@string/sim_settings_title"/>
 
     <PreferenceCategory
+        android:key="mobile_network"
+        android:title="@string/sim_mobile_network_settings_category_title" />
+
+    <PreferenceCategory
             android:key="sim_activities"
             android:title="@string/sim_pref_divider" >
 
@@ -42,9 +46,5 @@
             android:title="@string/sms_messages_title" />
 
     </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="mobile_network"
-        android:title="@string/sim_mobile_network_settings_category_title" />
 
 </PreferenceScreen>
