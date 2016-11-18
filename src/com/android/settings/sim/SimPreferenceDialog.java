@@ -179,6 +179,13 @@ public class SimPreferenceDialog extends Activity {
             }
         });
 
+        mBuilder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                finish();
+            }
+        });
+
         mBuilder.create().show();
     }
 
