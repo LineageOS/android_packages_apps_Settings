@@ -36,7 +36,7 @@ import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.SystemProperties;
 import android.preference.Preference;
-import android.preference.PreferenceScreen;
+import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceCategory;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
@@ -69,7 +69,8 @@ import com.android.internal.telephony.TelephonyProperties;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SimSettings extends RestrictedSettingsFragment implements Indexable {
+public class SimSettings extends RestrictedSettingsFragment implements Indexable,
+        OnPreferenceClickListener {
     private static final String TAG = "SimSettings";
     private static final boolean DBG = false;
 
@@ -156,6 +157,10 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
 
         IntentFilter intentFilter = new IntentFilter(ACTION_UICC_MANUAL_PROVISION_STATUS_CHANGED);
         mContext.registerReceiver(mReceiver, intentFilter);
+
+        findPreference(KEY_CELLULAR_DATA).setOnPreferenceClickListener(this);
+        findPreference(KEY_CALLS).setOnPreferenceClickListener(this);
+        findPreference(KEY_SMS).setOnPreferenceClickListener(this);
     }
 
     @Override
@@ -197,6 +202,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
                 SubscriptionManager.INVALID_SUBSCRIPTION_ID;
             SimPreference simPreference = new SimEnablerPreference(mContext, sir, i);
             simPreference.setOrder(i-mNumSlots);
+            simPreference.setOnPreferenceClickListener(this);
             mSimCards.addPreference(simPreference);
             mAvailableSubInfos.add(sir);
             if (sir != null && (isSubProvisioned(i))) {
@@ -212,6 +218,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             mobileNetworkPref.setIntent(mobileNetworkIntent);
             mobileNetworkPref.setEnabled(
                     subscriptionId != SubscriptionManager.INVALID_SUBSCRIPTION_ID);
+            mobileNetworkPref.setOnPreferenceClickListener(this);
             mMobileNetwork.addPreference(mobileNetworkPref);
         }
         updateAllOptions();
@@ -325,8 +332,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     }
 
     @Override
-    public boolean onPreferenceTreeClick(final PreferenceScreen preferenceScreen,
-            final Preference preference) {
+    public boolean onPreferenceClick(Preference preference) {
         final Context context = mContext;
         Intent intent = new Intent(context, SimDialogActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
