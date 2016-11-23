@@ -24,6 +24,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.SystemProperties;
 import android.provider.SearchIndexableResource;
+import android.support.v7.preference.OnPreferenceClickListener;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.PreferenceScreen;
@@ -48,7 +49,8 @@ import com.android.settings.search.Indexable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SimSettings extends RestrictedSettingsFragment implements Indexable {
+public class SimSettings extends RestrictedSettingsFragment implements Indexable,
+        OnPreferenceClickListener {
     private static final String TAG = "SimSettings";
     private static final boolean DBG = false;
 
@@ -104,6 +106,10 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         mAvailableSubInfos = new ArrayList<SubscriptionInfo>(mNumSlots);
         mSelectableSubInfos = new ArrayList<SubscriptionInfo>();
         SimSelectNotification.cancelNotification(getActivity());
+
+        findPreference(KEY_CELLULAR_DATA).setOnPreferenceClickListener(this);
+        findPreference(KEY_CALLS).setOnPreferenceClickListener(this);
+        findPreference(KEY_SMS).setOnPreferenceClickListener(this);
     }
 
     private final SubscriptionManager.OnSubscriptionsChangedListener mOnSubscriptionsChangeListener
@@ -135,6 +141,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
                     SubscriptionManager.INVALID_SUBSCRIPTION_ID;
             SimPreference simPreference = new SimPreference(getPrefContext(), sir, i);
             simPreference.setOrder(i-mNumSlots);
+            simPreference.setOnPreferenceClickListener(this);
             mSimCards.addPreference(simPreference);
             mAvailableSubInfos.add(sir);
             if (sir != null) {
@@ -151,6 +158,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             mobileNetworkPref.setIntent(mobileNetworkIntent);
             mobileNetworkPref.setEnabled(
                     subscriptionId != SubscriptionManager.INVALID_SUBSCRIPTION_ID);
+            mobileNetworkPref.setOnPreferenceClickListener(this);
             mMobileNetwork.addPreference(mobileNetworkPref);
         }
         updateAllOptions();
@@ -275,7 +283,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     }
 
     @Override
-    public boolean onPreferenceTreeClick(final Preference preference) {
+    public boolean onPreferenceClick(final Preference preference) {
         final Context context = mContext;
         Intent intent = new Intent(context, SimDialogActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
