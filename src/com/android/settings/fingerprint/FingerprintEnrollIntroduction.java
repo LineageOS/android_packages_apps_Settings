@@ -25,6 +25,7 @@ import android.hardware.fingerprint.FingerprintManager;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.os.UserManager;
+import android.provider.Settings.Global;
 import android.text.Annotation;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
@@ -69,9 +70,15 @@ public class FingerprintEnrollIntroduction extends FingerprintEnrollBase
         final RecyclerItemAdapter adapter = (RecyclerItemAdapter) layout.getAdapter();
         adapter.setOnItemSelectedListener(this);
         Item item = (Item) adapter.findItemById(R.id.fingerprint_introduction_message);
+        String linkUrl = getString(R.string.help_url_fingerprint);
+        if (Global.getInt(getContentResolver(), Global.DEVICE_PROVISIONED, 0) == 0) {
+            // If the device is not provisioned, help intents from HelpUtils will be null, so don't
+            // show the link at all.
+            linkUrl = "";
+        }
         item.setTitle(LearnMoreSpan.linkify(
                 getText(R.string.security_settings_fingerprint_enroll_introduction_message),
-                getString(R.string.help_url_fingerprint)));
+                linkUrl));
         // setupwizard library automatically sets the divider inset to
         // R.dimen.suw_items_icon_divider_inset. We adjust this back to 0 as we do not want
         // an inset within settings.
@@ -187,6 +194,10 @@ public class FingerprintEnrollIntroduction extends FingerprintEnrollBase
         public void onClick(View widget) {
             Context ctx = widget.getContext();
             Intent intent = HelpUtils.getHelpIntent(ctx, getURL(), ctx.getClass().getName());
+            if (intent == null) {
+                Log.w(LearnMoreSpan.TAG, "Null help intent.");
+                return;
+            }
             try {
                 // This needs to be startActivityForResult even though we do not care about the
                 // actual result because the help app needs to know about who invoked it.
