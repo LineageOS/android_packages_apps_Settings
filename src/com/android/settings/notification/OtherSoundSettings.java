@@ -41,6 +41,9 @@ import com.android.settings.Utils;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
+import cyanogenmod.hardware.CMHardwareManager;
+import cyanogenmod.providers.CMSettings;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -211,6 +214,11 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
 
         mBootSounds = (SwitchPreference) findPreference(KEY_BOOT_SOUNDS);
         mBootSounds.setChecked(SystemProperties.getBoolean(PROPERTY_BOOT_SOUNDS, true));
+
+        final CMHardwareManager hardware = CMHardwareManager.getInstance(mContext);
+        if (!hardware.isSupported(CMHardwareManager.FEATURE_VIBRATOR)) {
+            removePreference(CMSettings.Secure.VIBRATOR_INTENSITY);
+        }
     }
 
     @Override
