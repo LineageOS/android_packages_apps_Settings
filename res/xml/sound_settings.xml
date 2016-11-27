@@ -60,6 +60,12 @@
                 android:key="vibrate_when_ringing"
                 android:title="@string/vibrate_when_ringing_title" />
 
+        <!-- CMHW vibration intensity -->
+        <com.android.settings.hardware.VibratorIntensity
+                android:key="vibration_intensity"
+                android:title="@string/vibrator_intensity_title"
+                android:dialogTitle="@string/vibrator_intensity_title"
+                android:persistent="false"/>
 
         <!-- Interruptions -->
         <com.android.settingslib.RestrictedPreference
