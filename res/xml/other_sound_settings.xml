@@ -72,4 +72,12 @@
             android:title="@string/emergency_tone_title"
             android:summary="%s" />
 
+    <!-- CMHW vibration intensity -->
+    <com.android.settings.hardware.VibratorIntensity
+            android:key="vibration_intensity"
+            android:title="@string/vibrator_intensity_title"
+            android:dialogTitle="@string/vibrator_intensity_title"
+            android:persistent="false"/>
+
+
 </PreferenceScreen>
