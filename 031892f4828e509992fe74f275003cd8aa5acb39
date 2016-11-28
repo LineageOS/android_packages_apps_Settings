@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5f681702_c99e7306",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 9199
+      },
+      "writtenOn": "2016-11-28T15:15:37Z",
+      "side": 1,
+      "message": "please remove if this is no longer a work in progress",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "031892f4828e509992fe74f275003cd8aa5acb39",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f681702_23f0e9c9",
         "filename": "src/com/android/settings/wifi/WifiApEnabler.java",
         "patchSetId": 3
@@ -36,6 +59,30 @@
       "writtenOn": "2016-11-27T19:14:57Z",
       "side": 1,
       "message": "if (!enable) {\n    mWaitForWifiStateChange \u003d (Settings.Global.getInt(mContext.getContentResolver(),\n                        Settings.Global.WIFI_SAVED_STATE, 0) \u003d\u003d 1);\n}",
+      "range": {
+        "startLine": 123,
+        "startChar": 8,
+        "endLine": 143,
+        "endChar": 9
+      },
+      "revId": "031892f4828e509992fe74f275003cd8aa5acb39",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f681702_69991f1e",
+        "filename": "src/com/android/settings/wifi/WifiApEnabler.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 9199
+      },
+      "writtenOn": "2016-11-28T15:15:37Z",
+      "side": 1,
+      "message": "don\u0027t forget the try catch though",
+      "parentUuid": "5f681702_63bb01e5",
       "range": {
         "startLine": 123,
         "startChar": 8,
