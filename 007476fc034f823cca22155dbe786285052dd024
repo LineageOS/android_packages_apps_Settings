@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f681702_2cf0d590",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2016-11-28T20:24:31Z",
+      "side": 1,
+      "message": "mHotspotInactivity.setValue(\n    (wifiConfig \u003d\u003d null) ? \"0\" : Long.toString(wifiConfig.wifiApInactivityTimeout));\nmHotspotInactivityTimeout.setSummary(String.format(\n        getString(R.string.hotstpot_inactivity_timeout_summary_text,\n                mHotspotInactivityTimeout.getEntry())));\n\nShould maybe be enough? Value\"0\" should anyway get the \"never\"-string, right?",
+      "range": {
+        "startLine": 308,
+        "startChar": 8,
+        "endLine": 322,
+        "endChar": 9
+      },
+      "revId": "007476fc034f823cca22155dbe786285052dd024",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
