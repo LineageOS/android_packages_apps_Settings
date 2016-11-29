@@ -17,4 +17,15 @@
     android:title="@string/aim_buttons_title"
     android:layout="@layout/tab"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+
+    <PreferenceScreen
+            android:key="hardware_keys"
+            android:fragment="com.android.settings.aim.fragments.HardwareKeys"
+            android:title="@string/aim_hardware_keys_title" />
+
+    <PreferenceScreen
+            android:key="powermenu_category"
+            android:fragment="com.android.settings.aim.fragments.PowerMenuSettings"
+            android:title="@string/aim_power_menu_title" />
+
 </PreferenceScreen>
