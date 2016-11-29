@@ -17,9 +17,15 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to show Device Id -->
+  <plurals name="show_device_id_countdown_cm">
+    <item quantity="other">端末IDを問い合わせるまであと<xliff:g id="step_count">%1$d</xliff:g>ステップです。</item>
+  </plurals>
   <!--  Device Info screen. Confirmation that Device ID is copied to clipboard -->
+  <string name="show_device_id_copied_cm">端末ID:[<xliff:g id="device_id">%1$s</xliff:g>]をクリップボードにコピーしました</string>
   <!--  Device Info screen. Confirmation that Device ID is not available -->
+  <string name="show_device_id_failed_cm">端末IDはこのビルドでは利用できません</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Label for the deviceID text put to clipboard -->
+  <string name="show_device_id_clipboard_label">端末ID</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
   <plurals name="show_dev_countdown_cm">
     <item quantity="other">開発者向けオプションが有効になるまであと<xliff:g id="step_count">%1$d</xliff:g>ステップです。</item>
@@ -32,7 +38,7 @@
   <string name="development_tools_title">開発ツール</string>
   <!-- Development shortcut -->
   <string name="development_shortcut_title">開発用ショートカット</string>
-  <string name="development_shortcut_summary">最近使ったアプリ一覧でアプリの管理のショートカットを有効にする</string>
+  <string name="development_shortcut_summary">アプリ履歴でアプリの管理のショートカットを有効にする</string>
   <!-- Setting checkbox title for root access -->
   <string name="root_access">ルートアクセス</string>
   <string name="root_access_warning_title">ルートアクセスを許可しますか？</string>
@@ -235,7 +241,7 @@
   <string name="navigation_bar_reset_message">現在の設定を削除してデフォルトのレイアウトに戻しますか？</string>
   <string name="navigation_bar_arrow_keys_title">入力中は矢印キーを表示</string>
   <string name="navigation_bar_arrow_keys_summary">入力中は左右の矢印ボタンを表示します。IMEの切り替えアイコンは無効になります。</string>
-  <string name="navigation_bar_recents_title">最近使ったアプリボタンの長押しの動作</string>
+  <string name="navigation_bar_recents_title">履歴ボタンの長押しの動作</string>
   <!-- Notification light dialogs -->
   <string name="edit_light_settings">ライトの設定を編集</string>
   <string name="pulse_speed_title">点滅時間と点滅速度</string>
@@ -467,7 +473,7 @@
   <string name="hardware_keys_back_key_title">戻るボタン</string>
   <string name="hardware_keys_menu_key_title">メニューボタン</string>
   <string name="hardware_keys_assist_key_title">検索ボタン</string>
-  <string name="hardware_keys_appswitch_key_title">最近使ったアプリボタン</string>
+  <string name="hardware_keys_appswitch_key_title">履歴ボタン</string>
   <string name="hardware_keys_camera_key_title">カメラボタン</string>
   <string name="hardware_keys_volume_keys_title">音量ボタン</string>
   <string name="hardware_keys_short_press_title">短く押したときの動作</string>
@@ -475,7 +481,7 @@
   <string name="hardware_keys_double_tap_title">ダブルタップの動作</string>
   <string name="hardware_keys_action_nothing">なし</string>
   <string name="hardware_keys_action_menu">メニューを開く/閉じる</string>
-  <string name="hardware_keys_action_app_switch">最近使ったアプリ一覧</string>
+  <string name="hardware_keys_action_app_switch">アプリ履歴</string>
   <string name="hardware_keys_action_search">検索アシスタント</string>
   <string name="hardware_keys_action_voice_search">音声検索</string>
   <string name="hardware_keys_action_in_app_search">アプリ内検索</string>
@@ -656,7 +662,7 @@
   <string name="gestures_action_back">戻る</string>
   <string name="gestures_action_menu">メニュー</string>
   <string name="gestures_action_search">検索を呼び出す</string>
-  <string name="gestures_action_recent">最近使ったアプリ</string>
+  <string name="gestures_action_recent">アプリ履歴</string>
   <!-- Stylus gestures -->
   <string name="stylus_app_not_installed">%sはインストールされていません</string>
   <!-- Touchscreen hovering -->
@@ -796,8 +802,8 @@
   <string name="kill_app_longpress_back">戻るボタンでアプリを終了</string>
   <string name="kill_app_longpress_back_summary">戻るボタンの長押しでフォアグラウンドアプリを終了する</string>
   <!-- Show/Hide Search Bar -->
-  <string name="recents_show_searchbar">最近使ったアプリメニューに検索バーを表示</string>
-  <string name="keywords_recents_show_searchbar">最近使ったアプリ 有効化 無効化 表示 非表示 検索バー</string>
+  <string name="recents_show_searchbar">アプリ履歴メニューに検索バーを表示</string>
+  <string name="keywords_recents_show_searchbar">アプリ履歴 有効化 無効化 表示 非表示 検索バー</string>
   <!-- Voice Wakeup -->
   <string name="voice_wakeup_settings_title">音声起動</string>
   <string name="voice_wakeup_retrain_title">声を再登録</string>
@@ -821,8 +827,8 @@
   <string name="blacklist_private_numbers_summary_disabled">非通知番号からの着信を拒否しない</string>
   <string name="blacklist_private_numbers_summary">非通知番号からの<xliff:g id="type">%s</xliff:g>を拒否する</string>
   <string name="blacklist_unknown_numbers_title">不明な番号</string>
-  <string name="blacklist_unknown_numbers_summary_disabled">連絡帳に登録されていない番号からの着信やメッセージを拒否しない</string>
-  <string name="blacklist_unknown_numbers_summary">連絡帳に登録されていない番号からの<xliff:g id="type">%s</xliff:g>を拒否する</string>
+  <string name="blacklist_unknown_numbers_summary_disabled">連絡先に登録されていない番号からの着信やメッセージを拒否しない</string>
+  <string name="blacklist_unknown_numbers_summary">連絡先に登録されていない番号からの<xliff:g id="type">%s</xliff:g>を拒否する</string>
   <string name="blacklist_summary_type_calls_only">着信</string>
   <string name="blacklist_summary_type_messages_only">メッセージ</string>
   <string name="blacklist_summary_type_calls_and_messages">着信とメッセージ</string>
@@ -942,6 +948,11 @@
   <string name="zen_mode_summary_selected_callers">選択した発信者</string>
   <!-- [CHAR LIMIT=50] Like zen_mode_summary_selected_messages, but part of a list, so lower case if needed -->
   <string name="zen_mode_summary_selected_messages">選択したメッセージ</string>
+  <!-- Allow vibration in zen mode -->
+  <string name="zen_mode_vibration">バイブレーション</string>
+  <string name="zen_mode_vibration_never">振動しない</string>
+  <string name="zen_mode_vibration_calls_only">着信のみ振動する</string>
+  <string name="zen_mode_vibration_calls_and_notifications">着信と通知で振動する</string>
   <!-- About phone settings screen, setting option dialog title to show regulatory information [CHAR LIMIT=25] -->
   <!-- SAR information -->
   <string name="maximum_head_level">頭部: %1$s W/kg</string>
@@ -1047,6 +1058,16 @@
   <string name="app_notification_show_on_keyguard_summary">このアプリからの通知をロック画面に表示する</string>
   <string name="app_notification_no_ongoing_on_keyguard_title">常駐する通知をロック画面で無効化</string>
   <string name="app_notification_no_ongoing_on_keyguard_summary">このアプリからの常駐する通知をロック画面に表示しない</string>
+  <!-- Notification sound timeout -->
+  <string name="app_notification_sound_timeout_title">通知音の最小間隔</string>
+  <string name="app_notification_sound_timeout_summary_template"><xliff:g id="duration">%1$s</xliff:g>間に1回以上の通知音またはバイブレーションを許可しない</string>
+  <string name="app_notification_sound_timeout_value_none">無制限</string>
+  <string name="app_notification_sound_timeout_value_10_seconds">10秒</string>
+  <string name="app_notification_sound_timeout_value_30_seconds">30秒</string>
+  <string name="app_notification_sound_timeout_value_1_minute">1分</string>
+  <string name="app_notification_sound_timeout_value_5_minutes">5分</string>
+  <string name="app_notification_sound_timeout_value_15_minutes">10分</string>
+  <string name="app_notification_sound_timeout_value_30_minutes">30分</string>
   <!-- CmRadioInfo -->
   <string name="cm_radio_info_label">拡張無線通信コントロール</string>
   <!-- Radio Control (IMS/MBN etc.) -->

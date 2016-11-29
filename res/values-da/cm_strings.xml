@@ -20,6 +20,7 @@
   <!--  Device Info screen. Confirmation that Device ID is copied to clipboard -->
   <!--  Device Info screen. Confirmation that Device ID is not available -->
   <!-- [CHAR LIMIT=NONE] Device Info screen. Label for the deviceID text put to clipboard -->
+  <string name="show_device_id_clipboard_label">Enheds-ID</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
   <plurals name="show_dev_countdown_cm">
     <item quantity="one">Du er nu <xliff:g id="step_count">%1$d</xliff:g> skridt fra at aktivere Indstillinger for udviklere.</item>
@@ -43,6 +44,7 @@
   <string name="root_access_adb">Kun ADB</string>
   <string name="root_access_all">Apps og ADB</string>
   <!-- Preference link for root appops -->
+  <string name="root_appops_title">Administrer root adgang</string>
   <!-- NFC PreferenceCategory title -->
   <string name="nfc_title_category">NFC</string>
   <!-- About phone screen, CyanogenMod version -->
@@ -600,7 +602,11 @@
   <string name="live_display_color_profile_basic_title">Grundlæggende</string>
   <string name="live_display_color_profile_basic_summary">Brug skærmen ukalibreret</string>
   <!-- LiveDisplay : Picture Adjustment -->
+  <string name="picture_adjustment_title">Billedjustering</string>
+  <string name="picture_adjustment_summary">Justerer farvetone, mætning, lysstyrke og kontrast</string>
+  <string name="adj_hue_title">Farvetone</string>
   <string name="adj_saturation_title">Farvemætning</string>
+  <string name="adj_intensity_title">Lysstyrke</string>
   <string name="adj_contrast_title">Kontrast</string>
   <!-- Whether to display IME switcher notifcation -->
   <string name="ime_switcher_notify">Ikon for valg</string>
@@ -919,6 +925,7 @@
   <!-- [CHAR LIMIT=50] Like zen_mode_summary_selected_callers, but part of a list, so lower case if needed -->
   <!-- [CHAR LIMIT=50] Like zen_mode_summary_selected_messages, but part of a list, so lower case if needed -->
   <string name="zen_mode_summary_selected_messages">valgte beskeder</string>
+  <!-- Allow vibration in zen mode -->
   <!-- About phone settings screen, setting option dialog title to show regulatory information [CHAR LIMIT=25] -->
   <!-- SAR information -->
   <string name="maximum_head_level">Hoved: %1$s W/kg</string>
@@ -1017,6 +1024,7 @@
   <string name="app_notification_show_on_keyguard_summary">Vis meddelelser fra denne app på låseskærmen</string>
   <string name="app_notification_no_ongoing_on_keyguard_title">Deaktivere vedvarende meddelelser på låseskærmen</string>
   <string name="app_notification_no_ongoing_on_keyguard_summary">Vis aldrig vedvarende meddelelser fra denne app på låseskærmen</string>
+  <!-- Notification sound timeout -->
   <!-- CmRadioInfo -->
   <string name="cm_radio_info_label">Udvidet radiokontrol</string>
   <!-- Radio Control (IMS/MBN etc.) -->

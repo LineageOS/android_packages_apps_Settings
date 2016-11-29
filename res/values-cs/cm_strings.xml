@@ -17,9 +17,17 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to show Device Id -->
+  <plurals name="show_device_id_countdown_cm">
+    <item quantity="one">Jste <xliff:g id="step_count">%1$d</xliff:g> krok od dotazu na ID zařízení.</item>
+    <item quantity="few">Jste <xliff:g id="step_count">%1$d </xliff:g> kroky od dotazu na ID zařízení.</item>
+    <item quantity="other">Jste <xliff:g id="step_count">%1$d </xliff:g> kroků od dotazu na ID zařízení.</item>
+  </plurals>
   <!--  Device Info screen. Confirmation that Device ID is copied to clipboard -->
+  <string name="show_device_id_copied_cm">ID zařízení: [<xliff:g id="device_id">%1$s</xliff:g>] zkopírováno do schránky</string>
   <!--  Device Info screen. Confirmation that Device ID is not available -->
+  <string name="show_device_id_failed_cm">Na tomto sestavení není ID zařízení k dispozici</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Label for the deviceID text put to clipboard -->
+  <string name="show_device_id_clipboard_label">ID zařízení</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
   <plurals name="show_dev_countdown_cm">
     <item quantity="one">Už jste jen <xliff:g id="step_count">%1$d</xliff:g> krok od povolení vývojářských nastavení.</item>
@@ -943,6 +951,11 @@
   <string name="zen_mode_summary_selected_callers">vybrané kontakty</string>
   <!-- [CHAR LIMIT=50] Like zen_mode_summary_selected_messages, but part of a list, so lower case if needed -->
   <string name="zen_mode_summary_selected_messages">vybrané zprávy</string>
+  <!-- Allow vibration in zen mode -->
+  <string name="zen_mode_vibration">Vibrace</string>
+  <string name="zen_mode_vibration_never">Nevibrovat</string>
+  <string name="zen_mode_vibration_calls_only">Vibrovat pouze při volání</string>
+  <string name="zen_mode_vibration_calls_and_notifications">Vibrovat při volání a oznámení</string>
   <!-- About phone settings screen, setting option dialog title to show regulatory information [CHAR LIMIT=25] -->
   <!-- SAR information -->
   <string name="maximum_head_level">Hlava: %1$s W/kg</string>
@@ -1048,6 +1061,16 @@
   <string name="app_notification_show_on_keyguard_summary">Zobrazit upozornění z aplikace na zamykací obrazovce</string>
   <string name="app_notification_no_ongoing_on_keyguard_title">Zakázat trvalé upozornění na zamykací obrazovce</string>
   <string name="app_notification_no_ongoing_on_keyguard_summary">Nikdy nezobrazovat trvalé upozornění na zamykací obrazovce</string>
+  <!-- Notification sound timeout -->
+  <string name="app_notification_sound_timeout_title">Minimální doba mezi zvuky oznámení</string>
+  <string name="app_notification_sound_timeout_summary_template">Povolit zvuky nebo vibrace ne více než jednou každých <xliff:g id="duration">%1$s</xliff:g></string>
+  <string name="app_notification_sound_timeout_value_none">Bez omezení</string>
+  <string name="app_notification_sound_timeout_value_10_seconds">10 sekund</string>
+  <string name="app_notification_sound_timeout_value_30_seconds">30 sekund</string>
+  <string name="app_notification_sound_timeout_value_1_minute">1 minuta</string>
+  <string name="app_notification_sound_timeout_value_5_minutes">5 minut</string>
+  <string name="app_notification_sound_timeout_value_15_minutes">10 minut</string>
+  <string name="app_notification_sound_timeout_value_30_minutes">30 minut</string>
   <!-- CmRadioInfo -->
   <string name="cm_radio_info_label">Rozšířené řízení rádia</string>
   <!-- Radio Control (IMS/MBN etc.) -->

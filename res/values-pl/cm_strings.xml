@@ -17,9 +17,17 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to show Device Id -->
+  <plurals name="show_device_id_countdown_cm">
+    <item quantity="one">Jesteś <xliff:g id="step_count">%1$d</xliff:g> krok od zapytania o ID urządzenia.</item>
+    <item quantity="few">Jesteś <xliff:g id="step_count">%1$d</xliff:g> kroki od zapytania o ID urządzenia.</item>
+    <item quantity="other">Jesteś <xliff:g id="step_count">%1$d</xliff:g> kroków od zapytania o ID urządzenia.</item>
+  </plurals>
   <!--  Device Info screen. Confirmation that Device ID is copied to clipboard -->
+  <string name="show_device_id_copied_cm">ID urządzenia: [<xliff:g id="device_id">%1$s</xliff:g>] skopiowane do schowka</string>
   <!--  Device Info screen. Confirmation that Device ID is not available -->
+  <string name="show_device_id_failed_cm">Identyfikator urządzenia jest niedostępny w tej kompilacji</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Label for the deviceID text put to clipboard -->
+  <string name="show_device_id_clipboard_label">Identyfikator urządzenia</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
   <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
   <string name="show_dev_on_cm">Aktywowałeś opcje programistyczne!</string>
@@ -935,6 +943,7 @@
   <string name="zen_mode_summary_selected_callers">wybrani rozmówcy</string>
   <!-- [CHAR LIMIT=50] Like zen_mode_summary_selected_messages, but part of a list, so lower case if needed -->
   <string name="zen_mode_summary_selected_messages">wybrane wiadomości</string>
+  <!-- Allow vibration in zen mode -->
   <!-- About phone settings screen, setting option dialog title to show regulatory information [CHAR LIMIT=25] -->
   <!-- SAR information -->
   <string name="maximum_head_level">Głowa: %1$s W/kg</string>
@@ -1034,11 +1043,19 @@
   <!-- title for lock screen blur preference -->
   <string name="lockscreen_blur_enabled_title">Rozmycie tła</string>
   <!-- title for lock screen weather preference -->
+  <string name="lockscreen_weather_enabled_title">Pokaż pogodę</string>
   <!-- Per app controls for LP keyguard notifications -->
   <string name="app_notification_show_on_keyguard_title">Pokaż na ekranie blokady</string>
   <string name="app_notification_show_on_keyguard_summary">Pokaż powiadomienia z tej aplikacji na ekranie blokady</string>
   <string name="app_notification_no_ongoing_on_keyguard_title">Wyłącz trwałe powiadomienia na ekranie blokady</string>
   <string name="app_notification_no_ongoing_on_keyguard_summary">Nigdy nie pokazuj trwałych powiadomień z tej aplikacji na ekranie blokady</string>
+  <!-- Notification sound timeout -->
+  <string name="app_notification_sound_timeout_value_10_seconds">10 sekund</string>
+  <string name="app_notification_sound_timeout_value_30_seconds">30 sekund</string>
+  <string name="app_notification_sound_timeout_value_1_minute">1 min</string>
+  <string name="app_notification_sound_timeout_value_5_minutes">5 min</string>
+  <string name="app_notification_sound_timeout_value_15_minutes">10 min</string>
+  <string name="app_notification_sound_timeout_value_30_minutes">30 minut</string>
   <!-- CmRadioInfo -->
   <string name="cm_radio_info_label">Rozszerzona kontrola radiowa</string>
   <!-- Radio Control (IMS/MBN etc.) -->

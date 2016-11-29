@@ -295,7 +295,7 @@
   <!-- Setting checkbox title for Whether to enable Android debugging support on the phone. -->
   <string name="enable_adb_cm">Razhroščevanje Android</string>
   <!-- Setting checkbox summary for Whether to enable Android debugging support on the phone -->
-  <string name="enable_adb_summary_cm">Omogoči vmesnik Android Debug Bridge (ADB)</string>
+  <string name="enable_adb_summary_cm">Omogoči vmesnik Androidov most za razhroščevanje (ADB)</string>
   <!-- Android debugging over WiFi -->
   <string name="adb_over_network">ADB preko omrežja</string>
   <string name="adb_over_network_summary">Omogoči razhroščevanje TCP/IP preko omrežnih vmesnikov (Wi\u2011Fi, omrežja USB). Ta nastavitev se ob ponovnem zagonu ponastavi</string>
@@ -630,7 +630,7 @@
   <string name="adj_contrast_title">Kontrast</string>
   <!-- Whether to display IME switcher notifcation -->
   <string name="ime_switcher_notify">Ikona izbirnika</string>
-  <string name="ime_switcher_notify_summary">Prikaži ikono izbirnika metode za vnos</string>
+  <string name="ime_switcher_notify_summary">Prikaži ikono izbirnika načina vnosa</string>
   <!-- Heads up -->
   <string name="heads_up_notifications">Obvestila na zaslonu</string>
   <string name="summary_heads_up_enabled">Pojavna obvestila so omogočena</string>
@@ -961,6 +961,11 @@
   <string name="zen_mode_summary_selected_callers">izbrani klicatelji</string>
   <!-- [CHAR LIMIT=50] Like zen_mode_summary_selected_messages, but part of a list, so lower case if needed -->
   <string name="zen_mode_summary_selected_messages">izbrana sporočila</string>
+  <!-- Allow vibration in zen mode -->
+  <string name="zen_mode_vibration">Vibriranje</string>
+  <string name="zen_mode_vibration_never">Ne vibriraj</string>
+  <string name="zen_mode_vibration_calls_only">Vibriraj samo za klice</string>
+  <string name="zen_mode_vibration_calls_and_notifications">Vibriraj za klice in obvestila</string>
   <!-- About phone settings screen, setting option dialog title to show regulatory information [CHAR LIMIT=25] -->
   <!-- SAR information -->
   <string name="maximum_head_level">Glava: %1$s W/kg</string>
@@ -1066,6 +1071,16 @@
   <string name="app_notification_show_on_keyguard_summary">Na zaklenjenem zaslonu prikaži obvestila iz te aplikacije</string>
   <string name="app_notification_no_ongoing_on_keyguard_title">Onem. vztr. obv. na zas. za zakl.</string>
   <string name="app_notification_no_ongoing_on_keyguard_summary">Nikoli ne prikaži vztrajnih obvestil iz te aplikacije na zaklenjenem zaslonu</string>
+  <!-- Notification sound timeout -->
+  <string name="app_notification_sound_timeout_title">Najmanjši čas med zvoki obvestil</string>
+  <string name="app_notification_sound_timeout_summary_template">Najmanjši čas med zvoki ali vibriranji: <xliff:g id="duration">%1$s</xliff:g></string>
+  <string name="app_notification_sound_timeout_value_none">Brez omejitev</string>
+  <string name="app_notification_sound_timeout_value_10_seconds">10 s</string>
+  <string name="app_notification_sound_timeout_value_30_seconds">30 s</string>
+  <string name="app_notification_sound_timeout_value_1_minute">1 min.</string>
+  <string name="app_notification_sound_timeout_value_5_minutes">5 min.</string>
+  <string name="app_notification_sound_timeout_value_15_minutes">10 min.</string>
+  <string name="app_notification_sound_timeout_value_30_minutes">30 min.</string>
   <!-- CmRadioInfo -->
   <string name="cm_radio_info_label">Izboljšan nadzor oddajnika</string>
   <!-- Radio Control (IMS/MBN etc.) -->

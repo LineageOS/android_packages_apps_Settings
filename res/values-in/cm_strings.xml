@@ -17,9 +17,15 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to show Device Id -->
+  <plurals name="show_device_id_countdown_cm">
+    <item quantity="other"><xliff:g id="step_count">%1$d</xliff:g> langkah dari meminta ID Perangkat.</item>
+  </plurals>
   <!--  Device Info screen. Confirmation that Device ID is copied to clipboard -->
+  <string name="show_device_id_copied_cm">Perangkat ID: [<xliff:g id="device_id">%1$s </xliff:g>] disalin ke papan klip</string>
   <!--  Device Info screen. Confirmation that Device ID is not available -->
+  <string name="show_device_id_failed_cm">ID perangkat ini tidak tersedia pada build ini</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Label for the deviceID text put to clipboard -->
+  <string name="show_device_id_clipboard_label">ID perangkat</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
   <plurals name="show_dev_countdown_cm">
     <item quantity="other"><xliff:g id="step_count">%1$d</xliff:g> langkah lagi untuk mengaktifkan opsi pengembang.</item>
@@ -194,7 +200,7 @@
   <!-- Profiles -->
   <string name="profile_menu_delete_title">Hapus</string>
   <string name="profile_action_none">Tinggalkan tanpa perubahan</string>
-  <string name="profile_action_system">Sistem baku</string>
+  <string name="profile_action_system">Sistem standar</string>
   <string name="profile_action_disable">Matikan</string>
   <string name="profile_action_enable">Hidupkan</string>
   <string name="profile_trigger_a2dp_connect">Pada saat A2DP terhubung</string>
@@ -229,10 +235,10 @@
   <string name="navigation_bar_left_summary">Tempatkan bilah navigasi di sebelah kiri layar dalam modus lanskap</string>
   <string name="navigation_bar_title">Tombol dan tata letak</string>
   <string name="navigation_bar_help_text">Untuk memulai ketuk ikon ubah untuk membuka bilah navigasi untuk diubah.\n\nAnda dapat mengetuk sebuah ikon untuk mengubah pintasan, atau tekan lama sebuah ikon untuk menata kembali tata letaknya.\n\nKetuk \'Simpan\' untuk melakukan perubahan, atau \'Kembalikan ke semula\' untuk mengatur tata letak ke pengaturan baku.</string>
-  <string name="navigation_restore_button_text">Kembalikan\nke pengaturan baku</string>
+  <string name="navigation_restore_button_text">Kembalikan\nke standar</string>
   <string name="navigation_edit_button_text">Edit</string>
   <string name="navigation_save_button_text">Simpan</string>
-  <string name="navigation_bar_reset_message">Hapus pengaturan saat ini dan kembalikan tata letak baku?</string>
+  <string name="navigation_bar_reset_message">Hapus pengaturan saat ini dan kembalikan tata letak bawaan?</string>
   <string name="navigation_bar_arrow_keys_title">Tampilkan tombol panah saat mengetik</string>
   <string name="navigation_bar_arrow_keys_summary">Tampilkan tombol kursor kiri dan kanan saat mengetik. Menggantikan pengubah IME.</string>
   <string name="navigation_bar_recents_title">Tindakan untuk menekan lama terbaru</string>
@@ -268,7 +274,7 @@
   <string name="notification_light_applist_title">Aplikasi</string>
   <string name="notification_light_phonelist_title">Telepon</string>
   <string name="notification_light_use_custom">Gunakan nilai khusus</string>
-  <string name="notification_light_default_value">Baku</string>
+  <string name="notification_light_default_value">Standar</string>
   <string name="notification_light_missed_call_title">Panggilan yang tidak terjawab</string>
   <string name="notification_light_voicemail_title">Pesan suara</string>
   <string name="notification_light_screen_on">Lampu dengan layar yang menyala</string>
@@ -299,7 +305,7 @@
   <string name="app_ops_categories_media">Media</string>
   <string name="app_ops_categories_device">Perangkat</string>
   <string name="app_ops_categories_bootup">Lakukan but</string>
-  <string name="app_ops_categories_su">Akses punca (root)</string>
+  <string name="app_ops_categories_su">Akses root</string>
   <!-- User display names for app ops codes - extension of AOSP -->
   <string name="app_ops_summaries_coarse_location">lokasi yang kasar</string>
   <string name="app_ops_summaries_fine_location">lokasi yang baik</string>
@@ -369,7 +375,7 @@
   <string name="app_ops_summaries_start_at_boot">mulai saat boot</string>
   <string name="app_ops_summaries_toggle_nfc">hidup/matikan NFC</string>
   <string name="app_ops_summaries_toggle_mobile_data">hidup/matikan data selular</string>
-  <string name="app_ops_summaries_superuser">akses punca (root)</string>
+  <string name="app_ops_summaries_superuser">akses root</string>
   <!-- User display names for app ops codes - extension of AOSP -->
   <string name="app_ops_labels_coarse_location">Lokasi gersang</string>
   <string name="app_ops_labels_fine_location">Lokasi yang baik</string>
@@ -564,7 +570,7 @@
   <string name="color_blue_title">Biru</string>
   <!-- Launch music player when headset is connected -->
   <string name="headset_connect_player_title">Buka aplikasi musik</string>
-  <string name="headset_connect_player_summary">Jalankan aplikasi musik baku saat set kepala tersambung</string>
+  <string name="headset_connect_player_summary">Jalankan aplikasi musik bawaan saat headset tersambung</string>
   <!-- WiFi auto-configure priorities -->
   <string name="wifi_auto_config_priorities">Prioritas otomatis</string>
   <string name="auto_brightness_reset_button">Set ulang</string>
@@ -632,7 +638,7 @@
   <string name="lcd_density">Kerapatan LCD</string>
   <string name="dialog_title_lcd_density">Kerapatan LCD</string>
   <string name="lcd_density_value_format">%d DPI</string>
-  <string name="lcd_density_default_value_format">%d DPI (baku)</string>
+  <string name="lcd_density_default_value_format">%d DPI (standar)</string>
   <string name="restarting_ui">Memulai kembali UI\u2026</string>
   <!-- Stylus Icon -->
   <string name="stylus_icon_enabled_title">Tampilkan ikon saat menggunakan stilus</string>
@@ -790,7 +796,7 @@
   <string name="expanded_nothing_to_show">Untuk menambahkan konfigurasi khusus pada setiap aplikasi untuk kondisi diperluas, atur \"Diaktifkan untuk semua\" ke posisi tidak aktif</string>
   <string name="expanded_enabled_for_all">Diaktifkan untuk semua</string>
   <string name="expanded_desktop_style">Gaya destop yang diperluas</string>
-  <string name="expanded_desktop_style_description">Pilih gaya baku destop yang diperluas</string>
+  <string name="expanded_desktop_style_description">Pilih gaya standar perluasan desktop</string>
   <string name="expanded_desktop_title">Pilihan destop yang diperluas</string>
   <!-- Kill app long-press back -->
   <string name="kill_app_longpress_back">Matikan aplikasi dengan tombol kembali</string>
@@ -881,7 +887,7 @@
   <string name="pa_login_incorrect_login">Login tidak benar</string>
   <string name="pa_pattern_or_fingerprint_header">Harus menggambar pola atau menggunakan sidik jari untuk membuka</string>
   <!-- Contributors cloud activity -->
-  <string name="contributors_cloud_fragment_title">Penyumbang</string>
+  <string name="contributors_cloud_fragment_title">Kontributor</string>
   <string name="contributors_cloud_loading_message">Memuat data kontributor\u2026</string>
   <string name="contributors_cloud_failed_message">Tidak dapat memuat data kontributor</string>
   <string name="contributor_info_menu">Info kontributor</string>
@@ -925,7 +931,7 @@
   <string name="sub_activate_failed">Aktivasi gagal.</string>
   <string name="sub_deactivate_success">SIM dinonaktifkan.</string>
   <string name="sub_deactivate_failed">Penonaktifan gagal.</string>
-  <string name="primary_sub_select_title">Langganan 3G/LTE baku</string>
+  <string name="primary_sub_select_title">Standar 3G/LTE berlangganan</string>
   <string name="select_sim_card">Pilih kartu SIM</string>
   <!-- MSIM SIM status -->
   <string name="sim_card_status_title">Status %d SIM</string>
@@ -942,6 +948,11 @@
   <string name="zen_mode_summary_selected_callers">penelepon terpilih</string>
   <!-- [CHAR LIMIT=50] Like zen_mode_summary_selected_messages, but part of a list, so lower case if needed -->
   <string name="zen_mode_summary_selected_messages">pesan terpilih</string>
+  <!-- Allow vibration in zen mode -->
+  <string name="zen_mode_vibration">Getaran</string>
+  <string name="zen_mode_vibration_never">Jangan bergetar</string>
+  <string name="zen_mode_vibration_calls_only">Hanya bergetar untuk panggilan</string>
+  <string name="zen_mode_vibration_calls_and_notifications">Bergetar untuk panggilan dan pemberitahuan</string>
   <!-- About phone settings screen, setting option dialog title to show regulatory information [CHAR LIMIT=25] -->
   <!-- SAR information -->
   <string name="maximum_head_level">Kepala: %1$s W/kg</string>
@@ -1011,7 +1022,7 @@
   <string name="privacy_guard_internet_category">Internet</string>
   <!-- Weather -->
   <string name="weather_settings_title">Cuaca</string>
-  <string name="weather_settings_no_services_prompt">Layanan penyedia cuaca belum diinstal</string>
+  <string name="weather_settings_no_services_prompt">Tidak ada layanan penyedia cuaca terpasang</string>
   <string name="weather_settings_button">Pengaturan penyedia</string>
   <string name="weather_settings_activity_not_found">Tidak dapat membuka menu pengaturan untuk penyedia ini</string>
   <string name="weather_settings_add_weather_provider">Tambahkan penyedia cuaca</string>
@@ -1047,6 +1058,16 @@
   <string name="app_notification_show_on_keyguard_summary">Tampilkan pemberitahuan dari aplikasi ini pada layar kunci</string>
   <string name="app_notification_no_ongoing_on_keyguard_title">Tiadakan pemberitahuan tetap pada layar kunci</string>
   <string name="app_notification_no_ongoing_on_keyguard_summary">Tidak pernah menampilkan pemberitahuan tetap dari aplikasi ini pada layar kunci</string>
+  <!-- Notification sound timeout -->
+  <string name="app_notification_sound_timeout_title">Waktu minimum antara suara pemberitahuan</string>
+  <string name="app_notification_sound_timeout_summary_template">Memungkinkan suara atau getaran tidak lebih dari sekali setiap <xliff:g id="duration">%1$s </xliff:g></string>
+  <string name="app_notification_sound_timeout_value_none">Tidak ada pembatasan</string>
+  <string name="app_notification_sound_timeout_value_10_seconds">10 detik</string>
+  <string name="app_notification_sound_timeout_value_30_seconds">30 detik</string>
+  <string name="app_notification_sound_timeout_value_1_minute">1 menit</string>
+  <string name="app_notification_sound_timeout_value_5_minutes">5 menit</string>
+  <string name="app_notification_sound_timeout_value_15_minutes">10 menit</string>
+  <string name="app_notification_sound_timeout_value_30_minutes">30 menit</string>
   <!-- CmRadioInfo -->
   <string name="cm_radio_info_label">Tingkatkan kontrol radio</string>
   <!-- Radio Control (IMS/MBN etc.) -->
