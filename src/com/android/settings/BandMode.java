@@ -164,6 +164,10 @@ public class BandMode extends Activity {
             int size = bands[0];
 
             if (size > 0) {
+                // Always show Band 0, ie Automatic
+                item = new BandListItem(0);
+                mBandListAdapter.add(item);
+
                 for (int i=0; i<=size; i++) {
                     item = new BandListItem(bands[i]);
                     mBandListAdapter.add(item);
