@@ -94,6 +94,24 @@
       "revId": "d1552395a251150c82a546500ea91c32e15badf9",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f681702_050a0725",
+        "filename": "src/com/android/settings/BandMode.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2016-12-01T17:46:36Z",
+      "side": 1,
+      "message": "This is a misdocumentation in the RIL class. RILC sends size as first array item, but the RIL class accounts for that when converting to a Java int array. The documentation of queryAvailableBandModes doesn\u0027t account for that though.",
+      "parentUuid": "5f681702_85673726",
+      "revId": "d1552395a251150c82a546500ea91c32e15badf9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
