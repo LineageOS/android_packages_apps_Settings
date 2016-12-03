@@ -243,7 +243,7 @@
   <string name="navigation_bar_reset_message">Eliminar as definições atuais e restaurar o esquema padrão?</string>
   <string name="navigation_bar_arrow_keys_title">Mostrar teclas de seta enquanto escreve</string>
   <string name="navigation_bar_arrow_keys_summary">Mostrar os botões de cursor para a esquerda e para a direita enquanto escreve. Sobrepõe-se à definição do teclado.</string>
-  <string name="navigation_bar_recents_title">Ação de pressão longa no botão de aplicações recentes</string>
+  <string name="navigation_bar_recents_title">Ação de pressão longa no botão de Visão geral</string>
   <!-- Notification light dialogs -->
   <string name="edit_light_settings">Editar definições de luz</string>
   <string name="pulse_speed_title">Duração e velocidade da luz ao piscar</string>
@@ -471,11 +471,11 @@
   <string name="unlock_scramble_pin_layout_summary">Apresentar aleatoriamente a disposição do teclado numérico, quando desbloquear com PIN</string>
   <string name="button_pref_title">Botões</string>
   <string name="hardware_keys_power_key_title">Botão ligar/desligar</string>
-  <string name="hardware_keys_home_key_title">Botão Home</string>
-  <string name="hardware_keys_back_key_title">Botão voltar</string>
+  <string name="hardware_keys_home_key_title">Botão Página Inicial</string>
+  <string name="hardware_keys_back_key_title">Botão Anterior</string>
   <string name="hardware_keys_menu_key_title">Botão Menu</string>
-  <string name="hardware_keys_assist_key_title">Botão Pesquisa</string>
-  <string name="hardware_keys_appswitch_key_title">Botão de aplicações recentes</string>
+  <string name="hardware_keys_assist_key_title">Botão de pesquisa</string>
+  <string name="hardware_keys_appswitch_key_title">Botão de Visão geral</string>
   <string name="hardware_keys_camera_key_title">Botão da câmara</string>
   <string name="hardware_keys_volume_keys_title">Botões de volume</string>
   <string name="hardware_keys_short_press_title">Pressão rápida</string>
@@ -490,7 +490,7 @@
   <string name="hardware_keys_action_launch_camera">Iniciar a câmara</string>
   <string name="hardware_keys_action_sleep">Desligar o ecrã</string>
   <string name="hardware_keys_action_last_app">Última aplicação</string>
-  <string name="camera_sleep_on_release_title">Vista rápida</string>
+  <string name="camera_sleep_on_release_title">Apresentação rápida</string>
   <string name="camera_sleep_on_release_summary">Pressionar até metade irá manter o ecrã ligado apenas enquanto o botão estiver pressionado</string>
   <string name="camera_launch_title">Iniciar a câmara</string>
   <string name="camera_launch_summary">Pressionar algum tempo e depois soltar iniciará a câmara</string>
@@ -506,12 +506,12 @@
   <string name="swap_volume_buttons_summary">Trocar os botões de volume quando o ecrã é rodado</string>
   <string name="button_wake_title">Acordar o dispositivo</string>
   <string name="home_answer_call_title">Atender chamada</string>
-  <string name="home_answer_call_summary">Pressionar o botão Home irá atender a chamada recebida atual</string>
+  <string name="home_answer_call_summary">Pressionar o botão Página Inicial irá atender a chamada recebida atual</string>
   <!-- Backlight brightness settings screen -->
   <string name="adaptive_backlight_title">Luz de fundo adaptativa</string>
   <string name="adaptive_backlight_summary">Variar de forma inteligente a luz de fundo do ecrã para ajudar a maximizar a vida da bateria</string>
   <!-- Sunlight readability enhancement screen -->
-  <string name="sunlight_enhancement_title">Melhoramento do ecrã</string>
+  <string name="sunlight_enhancement_title">Melhoramento do ecrã sob luz solar</string>
   <string name="sunlight_enhancement_summary">Aumentar a luminosidade e legibilidade do ecrã sob luz solar brilhante</string>
   <!-- Color enhancement settings screen -->
   <string name="color_enhancement_title">Realce de cor</string>
@@ -552,7 +552,7 @@
   <string name="double_tap_to_sleep_summary">Dê um toque duplo na barra de estado para desligar o dispositivo</string>
   <!-- Proximity wake -->
   <string name="proximity_wake_title">Impedir o ecrã de se ligar acidentalmente</string>
-  <string name="proximity_wake_summary">Verificar o sensor de proximidade antes de ligar o ecrã</string>
+  <string name="proximity_wake_summary">Verificar o sensor de proximidade antes de acordar o dispositivo com gestos</string>
   <!-- Turn on display when power connected; turn off display when power disconnected -->
   <string name="wake_when_plugged_or_unplugged_title">Ligar ecrã ao detetar carregador</string>
   <string name="wake_when_plugged_or_unplugged_summary">Ativar o ecrã quando conectar ou desconectar uma fonte de energia</string>
@@ -660,7 +660,7 @@
   <string name="gestures_double_spen_title_head">Duplo toque</string>
   <!-- Gestures Options -->
   <string name="gestures_action_empty">Sem ação</string>
-  <string name="gestures_action_home">Home</string>
+  <string name="gestures_action_home">Página Inicial</string>
   <string name="gestures_action_back">Voltar</string>
   <string name="gestures_action_menu">Menu</string>
   <string name="gestures_action_search">Invocar pesquisa</string>
@@ -801,8 +801,8 @@
   <string name="expanded_desktop_style_description">Escolha o estilo padrão da área de trabalho expandida</string>
   <string name="expanded_desktop_title">Opções da área de trabalho expandida</string>
   <!-- Kill app long-press back -->
-  <string name="kill_app_longpress_back">Fechar aplicação no botão Voltar</string>
-  <string name="kill_app_longpress_back_summary">Fechar a aplicação em primeiro plano com pressão longa no botão Voltar</string>
+  <string name="kill_app_longpress_back">Fechar aplicação no botão Anterior</string>
+  <string name="kill_app_longpress_back_summary">Fechar a aplicação em primeiro plano com pressão longa no botão Anterior</string>
   <!-- Show/Hide Search Bar -->
   <string name="recents_show_searchbar">Mostrar a barra de pesquisa no menu de aplicações recentes</string>
   <string name="keywords_recents_show_searchbar">recente recentes desativar ativar mostrar ocultar pesquisa barra barra de pesquisa</string>
@@ -834,7 +834,7 @@
   <string name="blacklist_summary_type_calls_only">chamadas</string>
   <string name="blacklist_summary_type_messages_only">mensagens</string>
   <string name="blacklist_summary_type_calls_and_messages">chamadas e mensagens</string>
-  <string name="blacklist_regex_title">Utilizar caracteres especiais</string>
+  <string name="blacklist_regex_title">Utilizar expressões regulares</string>
   <string name="blacklist_regex_summary">Use . como um joker e * para repetição. Por exemplo, 123.* bloqueia números que comecem com 123 e .*123.* bloqueia números que contenham 123</string>
   <string name="blacklist_policy_block_calls">Bloquear chamadas recebidas</string>
   <string name="blacklist_policy_block_messages">Bloquear mensagens recebidas</string>

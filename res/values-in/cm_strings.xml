@@ -49,7 +49,7 @@
   <string name="root_access_all">Aplikasi dan ADB</string>
   <!-- Preference link for root appops -->
   <string name="root_appops_title">Kelola akses root</string>
-  <string name="root_appops_summary">Lihat dan kontrol aturan root</string>
+  <string name="root_appops_summary">Lihat dan kontrol aturan akses root</string>
   <!-- NFC PreferenceCategory title -->
   <string name="nfc_title_category">Komunikasi jarak dekat</string>
   <!-- About phone screen, CyanogenMod version -->
@@ -287,7 +287,7 @@
   <string name="led_notification_text">Lampu LED yang diaktifkan oleh pengaturan</string>
   <string name="notification_light_no_apps_summary">Untuk menambahkan kontrol pada setiap aplikasi, aktifkan \'%1$s\' dan tekan \'\u002b\' pada bilah menu</string>
   <!-- Setting checkbox title for Whether to enable Android debugging support on the phone. -->
-  <string name="enable_adb_cm">Perbaikan galat fungsi Android</string>
+  <string name="enable_adb_cm">Android debugging</string>
   <!-- Setting checkbox summary for Whether to enable Android debugging support on the phone -->
   <string name="enable_adb_summary_cm">Aktifkan antarmuka Android Debug Bridge (adb)</string>
   <!-- Android debugging over WiFi -->
@@ -296,8 +296,8 @@
   <!-- Warning for Adb over Network -->
   <string name="adb_over_network_warning">PERINGATAN: Ketika ADB melalui jaringan diaktifkan, ponsel Anda terbuka terhadap intrusi pada semua jaringan yang terhubung!\n\nHanya gunakan fitur ini ketika Anda terhubung pada jaringan tepercaya\n\nApakah Anda benar-benar ingin mengaktifkan fungsi ini?</string>
   <!-- Setting checkbox summary for displaying USB debugging notification -->
-  <string name="adb_notify">Pemberitahuan perbaikan galat fungsi</string>
-  <string name="adb_notify_summary">Tampilkan pemberitahuan apabila perbaikan galat fungsi USB atau jaringan diaktifkan</string>
+  <string name="adb_notify">Pemberitahuan debugging</string>
+  <string name="adb_notify_summary">Tampilkan pemberitahuan bila USB atau jaringan debugging diaktifkan</string>
   <!-- Names of categories of app ops tabs - extension of AOSP -->
   <string name="app_ops_categories_location">Lokasi</string>
   <string name="app_ops_categories_personal">Pribadi</string>
@@ -464,7 +464,7 @@
   <string name="app_ops_reset_confirm_mesg">Apakah Anda yakin ingin mengatur ulang penghitung?</string>
   <string name="ok">Oke</string>
   <!-- Hostname setting -->
-  <string name="device_hostname">Nama hos perangkat</string>
+  <string name="device_hostname">Nama host perangkat</string>
   <string name="unlock_scramble_pin_layout_title">Tata letak acak</string>
   <string name="unlock_scramble_pin_layout_summary">Acak tata letak PIN saat membuka perangkat</string>
   <string name="button_pref_title">Tombol</string>
@@ -550,7 +550,6 @@
   <string name="double_tap_to_sleep_summary">Ketuk dua kali pada status bar untuk mematikan tampilan</string>
   <!-- Proximity wake -->
   <string name="proximity_wake_title">Mencegah bangun yang tidak disengaja</string>
-  <string name="proximity_wake_summary">Periksa sensor kedekatan sebelum membangunkan layar</string>
   <!-- Turn on display when power connected; turn off display when power disconnected -->
   <string name="wake_when_plugged_or_unplugged_title">Bangun saat pengisi daya di pasang</string>
   <string name="wake_when_plugged_or_unplugged_summary">Aktifkan layar ketika menghubungkan atau melepaskan sumber daya</string>
@@ -694,9 +693,9 @@
   <!-- Sound settings, charging sounds label for ringtone == none -->
   <string name="power_notifications_ringtone_silent">Senyap</string>
   <!-- Status bar -->
-  <string name="status_bar_title">Bilah status</string>
+  <string name="status_bar_title">Status bar</string>
   <string name="status_bar_toggle_brightness">Kontrol kecerahan</string>
-  <string name="status_bar_toggle_brightness_summary">Sesuaikan kecerahan dengan menggeser di bilah status</string>
+  <string name="status_bar_toggle_brightness_summary">Sesuaikan kecerahan dengan menggeser di status bar</string>
   <string name="status_bar_notif_count_title">Tampilkan hitungan pemberitahuan</string>
   <string name="status_bar_notif_count_summary">Tampilkan jumlah pemberitahuan yang tertunda</string>
   <string name="status_bar_quick_qs_pulldown_title">Keruntuhan cepat</string>
@@ -737,7 +736,7 @@
   <string name="edge_gesture_service_summary">Jangan kirim acara sentuhan untuk navigasi dan gerakan bar status untuk aplikasi</string>
   <!-- Keep screen on strings -->
   <string name="keep_screen_on_never">Tidak pernah</string>
-  <string name="keep_screen_on_debugging">Saat perbaikan galat fungsi USB</string>
+  <string name="keep_screen_on_debugging">Saat USB debugging</string>
   <string name="keep_screen_on_charging">Saat mengisi daya</string>
   <!-- Privacy Settings Header item -->
   <string name="privacy_settings_cyanogenmod_title">Privasi</string>
@@ -895,7 +894,7 @@
         <![CDATA[<b>Nama:</b> <xliff:g id="name">%1$s</xliff:g><br/><br/>
                  <b>Nick:</b> <xliff:g id="nick">%2$s</xliff:g><br/><br/>
                  <b>Commits:</b> <xliff:g id="commits">%3$s</xliff:g>]]></string>
-  <string name="contributions_info_menu">Info sumbangan</string>
+  <string name="contributions_info_menu">Info kontribusi</string>
   <string name="contributions_info_msg">
 <![CDATA[<b>Jumlah kontributor:</b> <xliff:g id="total_contributors">%1$s</xliff:g><br/><br/>
                  <b>Jumlah kontribusi:</b> <xliff:g id="total_commits">%2$s</xliff:g><br/><br/>
