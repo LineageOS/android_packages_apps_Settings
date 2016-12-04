@@ -23,6 +23,7 @@ import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.util.Log;
 import android.util.SparseBooleanArray;
+import android.support.v7.preference.Preference;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
@@ -31,6 +32,7 @@ import java.util.ArrayList;
 
 import static android.net.NetworkPolicyManager.POLICY_NONE;
 import static android.net.NetworkPolicyManager.POLICY_REJECT_METERED_BACKGROUND;
+import static android.net.NetworkPolicyManager.POLICY_REJECT_ON_DATA;
 
 public class DataSaverBackend {
 
@@ -44,6 +46,8 @@ public class DataSaverBackend {
     private final ArrayList<Listener> mListeners = new ArrayList<>();
     private SparseBooleanArray mWhitelist;
     private SparseBooleanArray mBlacklist;
+
+    private AppDataUsage appDataUsage;
 
     // TODO: Staticize into only one.
     public DataSaverBackend(Context context) {
@@ -131,9 +135,13 @@ public class DataSaverBackend {
         loadBlacklist();
     }
 
-    public void setIsBlacklisted(int uid, String packageName, boolean blacklisted) {
-        mPolicyManager.setUidPolicy(
-                uid, blacklisted ? POLICY_REJECT_METERED_BACKGROUND : POLICY_NONE);
+    public void setIsBlacklisted(int uid, String packageName, boolean blacklisted, Preference preference) {
+
+        if (preference == appDataUsage.getRestrictBackground()) {
+            mPolicyManager.setUidPolicy(uid, blacklisted ? POLICY_REJECT_METERED_BACKGROUND : POLICY_NONE);
+        } else {
+            mPolicyManager.setUidPolicy(uid, blacklisted ? POLICY_REJECT_ON_DATA : POLICY_NONE);
+        }
         if (blacklisted) {
             MetricsLogger.action(mContext, MetricsEvent.ACTION_DATA_SAVER_BLACKLIST, packageName);
         }
