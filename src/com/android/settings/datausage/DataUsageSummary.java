@@ -69,6 +69,7 @@ public class DataUsageSummary extends DataUsageBase implements Indexable {
     private static final String KEY_STATUS_HEADER = "status_header";
     private static final String KEY_LIMIT_SUMMARY = "limit_summary";
     private static final String KEY_RESTRICT_BACKGROUND = "restrict_background";
+    private static final String KEY_RESTRICT_DATA = "restrict_cellular_access";
 
     private DataUsageController mDataUsageController;
     private SummaryPreference mSummaryPreference;
@@ -96,6 +97,7 @@ public class DataUsageSummary extends DataUsageBase implements Indexable {
         }
         if (!hasMobileData || !isAdmin()) {
             removePreference(KEY_RESTRICT_BACKGROUND);
+            removePreference(KEY_RESTRICT_DATA);
         }
         if (hasMobileData) {
             List<SubscriptionInfo> subscriptions =
@@ -440,6 +442,7 @@ public class DataUsageSummary extends DataUsageBase implements Indexable {
 
                 if (hasMobileData) {
                     keys.add(KEY_RESTRICT_BACKGROUND);
+                    keys.add(KEY_RESTRICT_DATA);
                 }
 
                 return keys;
