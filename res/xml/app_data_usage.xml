@@ -58,6 +58,11 @@
         android:title="@string/unrestricted_app_title"
         android:summary="@string/unrestricted_app_summary" />
 
+    <SwitchPreference
+        android:key="restrict_data_access"
+        android:title="@string/restrict_data_access_title"
+        android:summary="@string/restrict_data_access_summary" />
+
     <PreferenceCategory
         android:key="app_list"
         android:title="@string/data_usage_other_apps" />
