@@ -75,6 +75,7 @@ public class AppDataUsage extends DataUsageBase implements Preference.OnPreferen
     private static final String KEY_APP_LIST = "app_list";
     private static final String KEY_CYCLE = "cycle";
     private static final String KEY_UNRESTRICTED_DATA = "unrestricted_data_saver";
+    private static final String KEY_RESTRICT_DATA = "restrict_cellular_access";
 
     private static final int LOADER_CHART_DATA = 2;
 
@@ -84,6 +85,7 @@ public class AppDataUsage extends DataUsageBase implements Preference.OnPreferen
     private Preference mBackgroundUsage;
     private Preference mAppSettings;
     private SwitchPreference mRestrictBackground;
+    private SwitchPreference mRestrictData;
     private PreferenceCategory mAppList;
 
     private Drawable mIcon;
@@ -165,6 +167,7 @@ public class AppDataUsage extends DataUsageBase implements Preference.OnPreferen
                 }
             }
             if (!UserHandle.isApp(mAppItem.key)) {
+                removePreference(KEY_RESTRICT_DATA);
                 removePreference(KEY_UNRESTRICTED_DATA);
                 removePreference(KEY_RESTRICT_BACKGROUND);
             } else {
@@ -172,6 +175,8 @@ public class AppDataUsage extends DataUsageBase implements Preference.OnPreferen
                 mRestrictBackground.setOnPreferenceChangeListener(this);
                 mUnrestrictedData = (SwitchPreference) findPreference(KEY_UNRESTRICTED_DATA);
                 mUnrestrictedData.setOnPreferenceChangeListener(this);
+                mRestrictData = (SwitchPreference) findPreference(KEY_RESTRICT_DATA);
+                mRestrictData.setOnPreferenceChangeListener(this);
             }
             mDataSaverBackend = new DataSaverBackend(getContext());
             mAppSettings = findPreference(KEY_APP_SETTINGS);
@@ -220,6 +225,7 @@ public class AppDataUsage extends DataUsageBase implements Preference.OnPreferen
                 mLabel = Utils.getUserLabel(getActivity(), info);
                 mPackageName = getActivity().getPackageName();
             }
+            removePreference(KEY_RESTRICT_DATA);
             removePreference(KEY_UNRESTRICTED_DATA);
             removePreference(KEY_APP_SETTINGS);
             removePreference(KEY_RESTRICT_BACKGROUND);
@@ -258,7 +264,7 @@ public class AppDataUsage extends DataUsageBase implements Preference.OnPreferen
         if (com.android.settings.Utils.isMonkeyRunning()) {
             return false;
         }
-        if (preference == mRestrictBackground) {
+        if (preference == mRestrictBackground || preference == mRestrictData) {
             mDataSaverBackend.setIsBlacklisted(mAppItem.key, mPackageName, !(Boolean) newValue);
             return true;
         } else if (preference == mUnrestrictedData) {
@@ -280,15 +286,23 @@ public class AppDataUsage extends DataUsageBase implements Preference.OnPreferen
     }
 
     private void updatePrefs() {
-        updatePrefs(getAppRestrictBackground(), getUnrestrictData());
+        updatePrefs(getAppRestrictBackground(), getUnrestrictData(), getAppRestrictData());
     }
 
-    private void updatePrefs(boolean restrictBackground, boolean unrestrictData) {
+    private void updatePrefs(boolean restrictBackground, boolean unrestrictData, boolean restrictData) {
+        if (mRestrictData != null) {
+            mRestrictData.setChecked(!restrictData);
+        }
         if (mRestrictBackground != null) {
-            mRestrictBackground.setChecked(!restrictBackground);
+			if (restrictData){
+				mRestrictBackground.setVisible(false);
+            } else {
+				mRestrictBackground.setVisible(true);
+				mRestrictBackground.setChecked(!restrictBackground);
+			}
         }
         if (mUnrestrictedData != null) {
-            if (restrictBackground) {
+            if (restrictBackground || restrictData) {
                 mUnrestrictedData.setVisible(false);
             } else {
                 mUnrestrictedData.setVisible(true);
@@ -332,6 +346,11 @@ public class AppDataUsage extends DataUsageBase implements Preference.OnPreferen
         final int uid = mAppItem.key;
         final int uidPolicy = services.mPolicyManager.getUidPolicy(uid);
         return (uidPolicy & POLICY_REJECT_METERED_BACKGROUND) != 0;
+    }
+    private boolean getAppRestrictData() {
+        final int uid = mAppItem.key;
+        final int uidPolicy = services.mPolicyManager.getUidPolicy(uid);
+        return (uidPolicy & POLICY_REJECT_ON_DATA) != 0;
     }
 
     private boolean getUnrestrictData() {
@@ -430,14 +449,14 @@ public class AppDataUsage extends DataUsageBase implements Preference.OnPreferen
     @Override
     public void onWhitelistStatusChanged(int uid, boolean isWhitelisted) {
         if (mAppItem.uids.get(uid, false)) {
-            updatePrefs(getAppRestrictBackground(), isWhitelisted);
+            updatePrefs(getAppRestrictBackground(), isWhitelisted, getAppRestrictData());
         }
     }
 
     @Override
     public void onBlacklistStatusChanged(int uid, boolean isBlacklisted) {
         if (mAppItem.uids.get(uid, false)) {
-            updatePrefs(isBlacklisted, getUnrestrictData());
+            updatePrefs(isBlacklisted, getUnrestrictData(), isBlacklisted);
         }
     }
 }
