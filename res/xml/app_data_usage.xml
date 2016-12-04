@@ -48,6 +48,10 @@
         android:key="app_settings"
         android:title="@string/data_usage_app_settings" />
 
+    <PreferenceCategory
+        android:key="data_usage_app_restrict_data_category"
+        android:title="@string/data_usage_app_restrict_data_category_title" >
+
     <SwitchPreference
         android:key="restrict_background"
         android:title="@string/data_usage_app_restrict_background"
@@ -59,9 +63,20 @@
         android:summary="@string/unrestricted_app_summary" />
 
     <SwitchPreference
-        android:key="restrict_data_access"
-        android:title="@string/restrict_data_access_title"
-        android:summary="@string/restrict_data_access_summary" />
+        android:key="restrict_all_data"
+        android:title="@string/data_usage_app_restrict_all_data_title"
+        android:summary="@string/data_usage_app_restrict_all_data_summary" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="data_usage_app_restrict_wifi_category"
+        android:title="@string/data_usage_app_restrict_wifi_category_title" >
+
+    <SwitchPreference
+        android:key="restrict_all_wifi"
+        android:title="@string/data_usage_app_restrict_all_wifi_title"
+        android:summary="@string/data_usage_app_restrict_all_wifi_summary" />
+    </PreferenceCategory>
 
     <PreferenceCategory
         android:key="app_list"
