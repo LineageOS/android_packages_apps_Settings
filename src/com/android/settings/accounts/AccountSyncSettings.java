@@ -39,6 +39,8 @@ import android.os.UserHandle;
 import android.os.UserManager;
 import android.support.v7.preference.Preference;
 import android.text.TextUtils;
+import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -52,6 +54,7 @@ import android.widget.TextView;
 import com.google.android.collect.Lists;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
+import com.android.internal.telephony.OperatorSimInfo;
 import com.android.settings.R;
 import com.android.settings.Utils;
 import com.android.settingslib.RestrictedLockUtils;
@@ -81,6 +84,9 @@ public class AccountSyncSettings extends AccountPreferenceBase {
     private ArrayList<SyncStateSwitchPreference> mSwitches =
                 new ArrayList<SyncStateSwitchPreference>();
     private ArrayList<SyncAdapterType> mInvisibleAdapters = Lists.newArrayList();
+
+    private final String SIM1_ACCOUNT_NAME = "SIM1";
+    private final String SIM2_ACCOUNT_NAME = "SIM2";
 
     @Override
     public Dialog onCreateDialog(final int id) {
@@ -562,6 +568,20 @@ public class AccountSyncSettings extends AccountPreferenceBase {
         if (mAccount != null) {
             mProviderIcon.setImageDrawable(getDrawableForType(mAccount.type));
             mProviderId.setText(getLabelForType(mAccount.type));
+            //Sim Icon Customisation feature change
+            OperatorSimInfo operatorSimInfo = new OperatorSimInfo(getActivity().
+                    getApplicationContext());
+            boolean isCustomSimFeatureEnabled = operatorSimInfo.
+                    isOperatorFeatureEnabled();
+            if (isCustomSimFeatureEnabled) {
+                String accountName = mAccount.name;
+                if (accountName.equalsIgnoreCase(SIM1_ACCOUNT_NAME)) {
+                    showOperatorSimIcon(0, operatorSimInfo);
+                } else if (accountName.equalsIgnoreCase(SIM2_ACCOUNT_NAME)) {
+                    showOperatorSimIcon(1, operatorSimInfo);
+                }
+            }
+
         }
     }
 
@@ -569,4 +589,18 @@ public class AccountSyncSettings extends AccountPreferenceBase {
     protected int getHelpResource() {
         return R.string.help_url_accounts;
     }
+
+    private void showOperatorSimIcon(int slotIndex, OperatorSimInfo operatorSimInfo) {
+       boolean isSimTypeOperator = operatorSimInfo.isSimTypeOperator(slotIndex);
+       if (isSimTypeOperator) {
+           mProviderIcon.setImageDrawable(operatorSimInfo.getOperatorDrawable());
+           mUserId.setText(operatorSimInfo.getOperatorDisplayName());
+       } else {
+           mProviderIcon.setImageDrawable(operatorSimInfo.getGenericSimDrawable());
+           int subId = SubscriptionManager.getSubId(slotIndex)[0];
+           String operatorName = TelephonyManager.from(getActivity().
+                   getApplicationContext()).getSimOperator(subId);
+           mUserId.setText(operatorName);
+       }
+   }
 }
