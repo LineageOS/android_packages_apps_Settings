@@ -22,6 +22,29 @@
       "revId": "826183b92e8ec28d0b2f72db3bbfc4530b5257c3",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f681702_e7ac1c8e",
+        "filename": "src/com/android/settings/datausage/AppDataUsage.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 15060
+      },
+      "writtenOn": "2016-12-06T19:12:38Z",
+      "side": 1,
+      "message": "not sure if this is correct or if in both onWhitelistStatusChanged and onBlacklistStatusChanged we should use getAppRestrictData() for the boolean restrictData of updatePrefs. Otherwise, in onBlacklistStatusChanged, the boolean restrictData is currently following the value of the boolean restrictBackground.",
+      "range": {
+        "startLine": 462,
+        "startChar": 60,
+        "endLine": 462,
+        "endChar": 73
+      },
+      "revId": "826183b92e8ec28d0b2f72db3bbfc4530b5257c3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
