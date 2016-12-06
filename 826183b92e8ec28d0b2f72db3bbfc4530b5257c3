@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f681702_a7c50491",
+        "filename": "src/com/android/settings/datausage/AppDataUsage.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 15060
+      },
+      "writtenOn": "2016-12-06T18:09:11Z",
+      "side": 1,
+      "message": "there might be a problem here since if either mRestrictData or mRestrictBackground are true the policy uid is set to POLICY_REJECT_METERED_BACKGROUND which is incorrect. Not sure how we would implement it to take POLICY_REJECT_ON_DATA in one case and POLICY_REJECT_METERED_BACKGROUND in the other. will try looking into this now\n\npublic void setIsBlacklisted(int uid, String packageName, boolean blacklisted) {\n        mPolicyManager.setUidPolicy(\n                uid, blacklisted ? POLICY_REJECT_METERED_BACKGROUND : POLICY_NONE);\n        if (blacklisted) {\n            MetricsLogger.action(mContext, MetricsEvent.ACTION_DATA_SAVER_BLACKLIST, packageName);\n        }\n    }",
+      "range": {
+        "startLine": 268,
+        "startChar": 46,
+        "endLine": 268,
+        "endChar": 76
+      },
+      "revId": "826183b92e8ec28d0b2f72db3bbfc4530b5257c3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
