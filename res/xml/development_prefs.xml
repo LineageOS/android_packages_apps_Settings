@@ -51,10 +51,11 @@
         android:title="@string/bt_hci_snoop_log"
         android:summary="@string/bt_hci_snoop_log_summary"/>
 
-    <SwitchPreference
+    <com.android.settingslib.RestrictedSwitchPreference
         android:key="oem_unlock_enable"
         android:title="@string/oem_unlock_enable"
-        android:summary="@string/oem_unlock_enable_summary"/>
+        android:summary="@string/oem_unlock_enable_summary"
+        settings:useAdditionalSummary="true"/>
 
     <PreferenceScreen
         android:key="running_apps"
@@ -146,6 +147,13 @@
             android:dialogTitle="@string/select_logd_size_dialog_title"
             android:entries="@array/select_logd_size_titles"
             android:entryValues="@array/select_logd_size_values" />
+
+        <ListPreference
+            android:key="select_logpersist"
+            android:title="@string/select_logpersist_title"
+            android:dialogTitle="@string/select_logpersist_dialog_title"
+            android:entries="@array/select_logpersist_titles"
+            android:entryValues="@array/select_logpersist_values" />
 
     </PreferenceCategory>
 
@@ -320,11 +328,6 @@
             android:title="@string/strict_mode"
             android:summary="@string/strict_mode_summary"/>
 
-        <SwitchPreference
-            android:key="show_cpu_usage"
-            android:title="@string/show_cpu_usage"
-            android:summary="@string/show_cpu_usage_summary"/>
-
         <ListPreference
             android:key="track_frame_time"
             android:title="@string/track_frame_time"
@@ -371,6 +374,10 @@
             android:key="force_resizable_activities"
             android:title="@string/force_resizable_activities"
             android:summary="@string/force_resizable_activities_summary"/>
+
+        <Preference
+            android:key="reset_shortcut_manager_throttling"
+            android:title="@string/reset_shortcut_manager_throttling" />
      </PreferenceCategory>
 
 </PreferenceScreen>

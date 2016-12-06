@@ -24,6 +24,7 @@ import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Icon;
 import android.provider.Settings;
+import android.os.Bundle;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.util.ArrayMap;
@@ -36,6 +37,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
+
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.internal.util.ArrayUtils;
@@ -54,6 +56,10 @@ import java.util.List;
 public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.DashboardItemHolder>
         implements View.OnClickListener {
     public static final String TAG = "DashboardAdapter";
+    private static final String STATE_SUGGESTION_LIST = "suggestion_list";
+    private static final String STATE_CATEGORY_LIST = "category_list";
+    private static final String STATE_IS_SHOWING_ALL = "is_showing_all";
+    private static final String STATE_SUGGESTION_MODE = "suggestion_mode";
     private static final int NS_SPACER = 0;
     private static final int NS_SUGGESTION = 1000;
     private static final int NS_ITEMS = 2000;
@@ -90,21 +96,33 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
     private Condition mExpandedCondition = null;
     private SuggestionParser mSuggestionParser;
 
-    public DashboardAdapter(Context context, SuggestionParser parser) {
+    public DashboardAdapter(Context context, SuggestionParser parser, Bundle savedInstanceState,
+                List<Condition> conditions) {
         mContext = context;
         mCache = new IconCache(context);
         mLte4GEnabler = new Lte4GEnabler(mContext, new Switch(mContext));
         mSuggestionParser = parser;
+        mConditions = conditions;
 
         setHasStableIds(true);
-        setShowingAll(true);
+
+        boolean showAll = true;
+        if (savedInstanceState != null) {
+            mSuggestions = savedInstanceState.getParcelableArrayList(STATE_SUGGESTION_LIST);
+            mCategories = savedInstanceState.getParcelableArrayList(STATE_CATEGORY_LIST);
+            showAll = savedInstanceState.getBoolean(STATE_IS_SHOWING_ALL, true);
+            mSuggestionMode = savedInstanceState.getInt(
+                    STATE_SUGGESTION_MODE, SUGGESTION_MODE_DEFAULT);
+        }
+        setShowingAll(showAll);
     }
 
     public List<Tile> getSuggestions() {
         return mSuggestions;
     }
 
-    public void setSuggestions(List<Tile> suggestions) {
+    public void setCategoriesAndSuggestions(List<DashboardCategory> categories,
+            List<Tile> suggestions) {
         mSuggestions = suggestions;
         recountItems();
     }
@@ -213,16 +231,12 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
         countItem(null, R.layout.suggestion_header, hasSuggestions, NS_SPACER);
         resetCount();
         if (mSuggestions != null) {
-            int maxSuggestions = mSuggestionMode == SUGGESTION_MODE_DEFAULT
-                    ? Math.min(DEFAULT_SUGGESTION_COUNT, mSuggestions.size())
-                    : mSuggestionMode == SUGGESTION_MODE_EXPANDED ? mSuggestions.size()
-                    : 0;
+            int maxSuggestions = getDisplayableSuggestionCount();
             for (int i = 0; i < mSuggestions.size(); i++) {
                 countItem(mSuggestions.get(i), R.layout.suggestion_tile, i < maxSuggestions,
                         NS_SUGGESTION);
             }
         }
-        countItem(null, R.layout.dashboard_spacer, true, NS_SPACER);
         resetCount();
         for (int i = 0; mCategories != null && i < mCategories.size(); i++) {
             DashboardCategory category = mCategories.get(i);
@@ -262,6 +276,14 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
             mIds.add(mId + nameSpace);
         }
         mId++;
+    }
+
+    private int getDisplayableSuggestionCount() {
+        final int suggestionSize = mSuggestions.size();
+        return mSuggestionMode == SUGGESTION_MODE_DEFAULT
+                ? Math.min(DEFAULT_SUGGESTION_COUNT, suggestionSize)
+                : mSuggestionMode == SUGGESTION_MODE_EXPANDED
+                        ? suggestionSize : 0;
     }
 
     @Override
@@ -368,9 +390,28 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
     }
 
     private void onBindSuggestionHeader(final DashboardItemHolder holder) {
-        holder.icon.setImageResource(hasMoreSuggestions() ? R.drawable.ic_expand_more
+        final boolean moreSuggestions = hasMoreSuggestions();
+        final int undisplayedSuggestionCount =
+                mSuggestions.size() - getDisplayableSuggestionCount();
+        holder.icon.setImageResource(moreSuggestions ? R.drawable.ic_expand_more
                 : R.drawable.ic_expand_less);
         holder.title.setText(mContext.getString(R.string.suggestions_title, mSuggestions.size()));
+        String summaryContentDescription;
+        if (moreSuggestions) {
+            summaryContentDescription = mContext.getResources().getQuantityString(
+                    R.plurals.settings_suggestion_header_summary_hidden_items,
+                    undisplayedSuggestionCount, undisplayedSuggestionCount);
+        } else {
+            summaryContentDescription = mContext.getString(R.string.condition_expand_hide);
+        }
+        holder.summary.setContentDescription(summaryContentDescription);
+
+        if (undisplayedSuggestionCount == 0) {
+            holder.summary.setText(null);
+        } else {
+            holder.summary.setText(
+                    mContext.getString(R.string.suggestions_summary, undisplayedSuggestionCount));
+        }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -494,6 +535,19 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
             packageName = suggestion.intent.getComponent().getClassName();
         }
         return packageName;
+    }
+
+    void onSaveInstanceState(Bundle outState) {
+        if (mSuggestions != null) {
+            outState.putParcelableArrayList(STATE_SUGGESTION_LIST,
+                    new ArrayList<Tile>(mSuggestions));
+        }
+        if (mCategories != null) {
+            outState.putParcelableArrayList(STATE_CATEGORY_LIST,
+                    new ArrayList<DashboardCategory>(mCategories));
+        }
+        outState.putBoolean(STATE_IS_SHOWING_ALL, mIsShowingAll);
+        outState.putInt(STATE_SUGGESTION_MODE, mSuggestionMode);
     }
 
     private static class IconCache {
