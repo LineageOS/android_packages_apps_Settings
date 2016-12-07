@@ -224,6 +224,7 @@ public class UserSettings extends SettingsPreferenceFragment
             mMePreference.setSummary(R.string.user_admin);
         }
         mAddUser = (DimmableIconPreference) findPreference(KEY_ADD_USER);
+        mAddUser.useAdminDisabledSummary(false);
         // Determine if add user/profile button should be visible
         if (mUserCaps.mCanAddUser && Utils.isDeviceProvisioned(getActivity())) {
             mAddUser.setOnPreferenceClickListener(this);
@@ -621,9 +622,9 @@ public class UserSettings extends SettingsPreferenceFragment
         }
     }
 
-    private boolean emergencyInfoActivityPresent() {
+    private static boolean emergencyInfoActivityPresent(Context context) {
         Intent intent = new Intent(ACTION_EDIT_EMERGENCY_INFO).setPackage("com.android.emergency");
-        List<ResolveInfo> infos = getContext().getPackageManager().queryIntentActivities(intent, 0);
+        List<ResolveInfo> infos = context.getPackageManager().queryIntentActivities(intent, 0);
         if (infos == null || infos.isEmpty()) {
             return false;
         }
@@ -869,7 +870,7 @@ public class UserSettings extends SettingsPreferenceFragment
                     mUserCaps.mDisallowAddUser ? mUserCaps.mEnforcedAdmin : null);
         }
 
-        if (emergencyInfoActivityPresent()) {
+        if (emergencyInfoActivityPresent(getContext())) {
             mEmergencyInfoPreference.setOnPreferenceClickListener(this);
             mEmergencyInfoPreference.setOrder(Preference.DEFAULT_ORDER);
             preferenceScreen.addPreference(mEmergencyInfoPreference);
@@ -1151,6 +1152,12 @@ public class UserSettings extends SettingsPreferenceFragment
                                 R.string.user_add_user_or_profile_menu
                                 : R.string.user_add_user_menu);
                         data.screenTitle = res.getString(R.string.user_settings_title);
+                        result.add(data);
+                    }
+                    if (emergencyInfoActivityPresent(context)) {
+                        data = new SearchIndexableRaw(context);
+                        data.title = res.getString(R.string.emergency_info_title);
+                        data.screenTitle = res.getString(R.string.emergency_info_title);
                         result.add(data);
                     }
                     return result;

@@ -39,6 +39,13 @@
                 android:summary="@string/network_name_displayed_summary"
                 android:persistent="false" />
 
+        <com.android.settings.display.NightDisplayPreference
+                android:key="night_display"
+                android:title="@string/night_display_title"
+                android:fragment="com.android.settings.display.NightDisplaySettings"
+                android:widgetLayout="@null"
+                settings:keywords="@string/keywords_display_night_display" />
+
         <!-- Hide night mode for now
         <ListPreference
             android:key="night_mode"
@@ -52,8 +59,11 @@
                 android:key="wallpaper"
                 android:title="@string/wallpaper_settings_title"
                 settings:keywords="@string/keywords_display_wallpaper"
-                android:fragment="com.android.settings.WallpaperTypeSettings"
-                settings:useAdminDisabledSummary="true" />
+                settings:useAdminDisabledSummary="true" >
+                <intent
+                        android:targetPackage="@string/config_wallpaper_picker_package"
+                        android:targetClass="@string/config_wallpaper_picker_class" />
+        </com.android.settingslib.RestrictedPreference>
 
         <com.android.settings.TimeoutListPreference
                 android:key="screen_timeout"
@@ -66,11 +76,6 @@
                 android:key="camera_gesture"
                 android:title="@string/camera_gesture_title"
                 android:summary="@string/camera_gesture_desc" />
-
-        <SwitchPreference
-                android:key="camera_double_tap_power_gesture"
-                android:title="@string/camera_double_tap_power_gesture_title"
-                android:summary="@string/camera_double_tap_power_gesture_desc" />
 
         <PreferenceScreen
                 android:key="screensaver"

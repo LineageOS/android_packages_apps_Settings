@@ -33,6 +33,8 @@ public class SummaryPreference extends Preference {
     private String mUnits;
 
     private int mLeft, mMiddle, mRight;
+    private boolean mColorsSet = false;
+    private boolean mChartEnabled = true;
     private float mLeftRatio, mMiddleRatio, mRightRatio;
     private String mStartLabel;
     private String mEndLabel;
@@ -40,8 +42,13 @@ public class SummaryPreference extends Preference {
     public SummaryPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
         setLayoutResource(R.layout.settings_summary_preference);
-        mLeft = context.getColor(R.color.summary_default_start);
-        mRight = context.getColor(R.color.summary_default_end);
+    }
+
+    public void setChartEnabled(boolean enabled) {
+        if (mChartEnabled != enabled) {
+            mChartEnabled = enabled;
+            notifyChanged();
+        }
     }
 
     public void setAmount(String amount) {
@@ -77,6 +84,7 @@ public class SummaryPreference extends Preference {
         mLeft = left;
         mMiddle = middle;
         mRight = right;
+        mColorsSet = true;
         notifyChanged();
     }
 
@@ -85,10 +93,18 @@ public class SummaryPreference extends Preference {
         super.onBindViewHolder(holder);
 
         LinearColorBar colorBar = (LinearColorBar) holder.itemView.findViewById(R.id.color_bar);
-        colorBar.setRatios(mLeftRatio, mMiddleRatio, mRightRatio);
-        colorBar.setColors(mLeft, mMiddle, mRight);
 
-        if (!TextUtils.isEmpty(mStartLabel) || !TextUtils.isEmpty(mEndLabel)) {
+        if (mChartEnabled) {
+            colorBar.setVisibility(View.VISIBLE);
+            colorBar.setRatios(mLeftRatio, mMiddleRatio, mRightRatio);
+            if (mColorsSet) {
+                colorBar.setColors(mLeft, mMiddle, mRight);
+            }
+        } else {
+            colorBar.setVisibility(View.GONE);
+        }
+
+        if (mChartEnabled && (!TextUtils.isEmpty(mStartLabel) || !TextUtils.isEmpty(mEndLabel))) {
             holder.findViewById(R.id.label_bar).setVisibility(View.VISIBLE);
             ((TextView) holder.findViewById(android.R.id.text1)).setText(mStartLabel);
             ((TextView) holder.findViewById(android.R.id.text2)).setText(mEndLabel);

@@ -24,20 +24,25 @@ import android.telecom.TelecomManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+
 import com.android.settings.AppListPreference;
+import com.android.settings.R;
 import com.android.settings.SelfAvailablePreference;
+import com.android.settings.Utils;
 
 import java.util.List;
 import java.util.Objects;
 
 public class DefaultPhonePreference extends AppListPreference implements SelfAvailablePreference {
-    private final Context mContext;
-
     public DefaultPhonePreference(Context context, AttributeSet attrs) {
         super(context, attrs);
-
-        mContext = context.getApplicationContext();
         loadDialerApps();
+    }
+
+    @Override
+    protected CharSequence getConfirmationMessage(String value) {
+        return Utils.isPackageDirectBootAware(getContext(), value) ? null
+                : getContext().getText(R.string.direct_boot_unaware_dialog_message);
     }
 
     @Override
@@ -77,9 +82,13 @@ public class DefaultPhonePreference extends AppListPreference implements SelfAva
             return false;
         }
 
-        final UserManager um =
-                (UserManager) context.getSystemService(Context.USER_SERVICE);
-        return !um.hasUserRestriction(UserManager.DISALLOW_OUTGOING_CALLS);
+        final UserManager um = (UserManager) context.getSystemService(Context.USER_SERVICE);
+        final boolean hasUserRestriction =
+                um.hasUserRestriction(UserManager.DISALLOW_OUTGOING_CALLS);
+        final CharSequence[] entries = getEntries();
+        return !hasUserRestriction
+                && entries != null
+                && entries.length > 0;
     }
 
     public static boolean hasPhonePreference(String pkg, Context context) {

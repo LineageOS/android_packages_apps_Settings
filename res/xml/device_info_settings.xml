@@ -15,6 +15,7 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:settings="http://schemas.android.com/apk/res-auto"
         android:title="@string/about_settings">
 
         <!-- System update settings - launches activity -->
@@ -35,10 +36,8 @@
         <!-- Device status - launches activity -->
         <PreferenceScreen android:key="status_info"
                 android:title="@string/device_status"
-                android:summary="@string/device_status_summary">
-            <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.android.settings"
-                    android:targetClass="com.android.settings.Settings$StatusActivity" />
+                android:summary="@string/device_status_summary"
+                android:fragment="com.android.settings.deviceinfo.Status">
         </PreferenceScreen>
 
         <!-- Manual -->
@@ -56,8 +55,14 @@
 
         <PreferenceScreen
                 android:key="regulatory_info"
-                android:title="@string/regulatory_information">
+                android:title="@string/regulatory_labels">
             <intent android:action="android.settings.SHOW_REGULATORY_INFO" />
+        </PreferenceScreen>
+
+        <PreferenceScreen
+                android:key="safety_info"
+                android:title="@string/safety_and_regulatory_info">
+                <intent android:action="android.settings.SHOW_SAFETY_AND_REGULATORY_INFO" />
         </PreferenceScreen>
 
         <!-- Feedback on the device -->
@@ -66,11 +71,15 @@
         </PreferenceScreen>
 
         <!-- Device hardware model -->
-        <Preference android:key="device_model"
+        <com.android.settings.DividerPreference
+                android:key="device_model"
                 android:enabled="false"
                 android:shouldDisableView="false"
-                android:title="@string/model_number"
-                android:summary="@string/device_info_default"/>
+                android:selectable="false"
+                android:title="@string/model_info"
+                android:summary="@string/device_info_default"
+                settings:allowDividerAbove="true"
+                settings:allowDividerBelow="true"/>
 
         <!-- Device firmware version -->
         <Preference android:key="firmware_version"
@@ -80,18 +89,23 @@
                 android:summary="@string/device_info_default"/>
 
         <!-- Security patch level -->
-        <Preference android:key="security_patch"
-                android:enabled="false"
-                android:shouldDisableView="false"
+        <PreferenceScreen android:key="security_patch"
                 android:title="@string/security_patch"
-                android:summary="@string/device_info_default"/>
+                android:summary="@string/device_info_default">
+                <intent android:action="android.intent.action.VIEW"
+                        android:data="https://source.android.com/security/bulletin/" />
+        </PreferenceScreen>
 
         <!-- Device FCC equipment id -->
-        <Preference android:key="fcc_equipment_id"
+        <com.android.settings.DividerPreference
+                android:key="fcc_equipment_id"
                 android:enabled="false"
                 android:shouldDisableView="false"
+                android:selectable="false"
                 android:title="@string/fcc_equipment_id"
-                android:summary="@string/device_info_default"/>
+                android:summary="@string/device_info_default"
+                settings:allowDividerAbove="true"
+                settings:allowDividerBelow="true"/>
 
         <!-- Device MBN version -->
         <Preference android:key="mbn_version"
@@ -100,18 +114,26 @@
                 android:summary="@string/device_info_default"/>
 
         <!-- Device Baseband version -->
-        <Preference android:key="baseband_version"
+        <com.android.settings.DividerPreference
+                android:key="baseband_version"
                 android:enabled="false"
                 android:shouldDisableView="false"
+                android:selectable="false"
                 android:title="@string/baseband_version"
-                android:summary="@string/device_info_default"/>
+                android:summary="@string/device_info_default"
+                settings:allowDividerAbove="true"
+                settings:allowDividerBelow="true"/>
 
         <!-- Device Kernel version -->
-        <Preference android:key="kernel_version"
+        <com.android.settings.DividerPreference
+                android:key="kernel_version"
                 android:enabled="false"
                 android:shouldDisableView="false"
+                android:selectable="false"
                 android:title="@string/kernel_version"
-                android:summary="@string/device_info_default"/>
+                android:summary="@string/device_info_default"
+                settings:allowDividerAbove="true"
+                settings:allowDividerBelow="true"/>
 
         <!-- Detailed build version -->
         <Preference android:key="build_number"
@@ -127,10 +149,14 @@
 		android:summary="@string/device_info_default"/>
 
         <!-- SELinux status information -->
-        <Preference android:key="selinux_status"
+        <com.android.settings.DividerPreference
+                android:key="selinux_status"
                 android:enabled="false"
                 android:shouldDisableView="false"
+                android:selectable="false"
                 android:title="@string/selinux_status"
-                android:summary="@string/selinux_status_enforcing"/>
+                android:summary="@string/selinux_status_enforcing"
+                settings:allowDividerAbove="true"
+                settings:allowDividerBelow="true"/>
 
 </PreferenceScreen>
