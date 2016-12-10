@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f681702_c3b2a2e6",
+        "filename": "src/com/android/settings/datausage/AppDataUsage.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 15060
+      },
+      "writtenOn": "2016-12-10T20:26:34Z",
+      "side": 1,
+      "message": "I am using this fucntion to get the value given to mRestrictBackground in order to determine the policy DataSaverBackend.setIsBlackListed should use. I need this value for the operation (preference \u003d\u003d mRestrictBackground) in DataSaverBackend. I am not sure that this is implemented properly.",
+      "range": {
+        "startLine": 128,
+        "startChar": 4,
+        "endLine": 130,
+        "endChar": 5
+      },
+      "revId": "0a55914f38a8a115282083e56b6734aa4793c2c5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f681702_150e9533",
+        "filename": "src/com/android/settings/datausage/DataSaverBackend.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 15060
+      },
+      "writtenOn": "2016-12-10T20:26:34Z",
+      "side": 1,
+      "message": "does it need initializing (\u003d new AppDataUsage()) for the purpose of its usage below?",
+      "range": {
+        "startLine": 50,
+        "startChar": 25,
+        "endLine": 50,
+        "endChar": 37
+      },
+      "revId": "0a55914f38a8a115282083e56b6734aa4793c2c5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
