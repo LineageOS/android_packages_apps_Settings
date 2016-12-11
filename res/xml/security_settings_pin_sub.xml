@@ -69,4 +69,12 @@
             android:defaultValue="true"
             cm:requiresConfig="@*android:bool/config_ui_blur_enabled" />
 
+        <cyanogenmod.preference.CMSecureSettingSwitchPreference
+            android:key="lock_screen_blur_wallpaper"
+            android:title="@string/lockscreen_blur_wallpaper_title"
+            android:summary="@string/lockscreen_blur_wallpaper_summary"
+            android:defaultValue="false"
+            android:dependency="lock_screen_blur_enabled"
+            cm:requiresConfig="@*android:bool/config_ui_blur_enabled" />
+
 </PreferenceScreen>
