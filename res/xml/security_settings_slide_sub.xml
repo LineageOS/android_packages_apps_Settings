@@ -42,4 +42,13 @@
             android:title="@string/lockscreen_weather_enabled_title"
             android:defaultValue="false"/>
 
+        <cyanogenmod.preference.CMSecureSettingDropDownPreference
+            android:key="lock_screen_blur"
+            android:title="@string/lock_screen_blur_title"
+            android:summary="%s"
+            android:entries="@array/lock_screen_blur_entries"
+            android:entryValues="@array/lock_screen_blur_values"
+            android:defaultValue="2"
+            cm:requiresConfig="@*android:bool/config_uiBlurEnabled" />
+
 </PreferenceScreen>
