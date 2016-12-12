@@ -34,6 +34,41 @@
       "revId": "f3e3c82edcb46f21e7215a9916040d08930a2246",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f681702_d5d40fc0",
+        "filename": "src/com/android/settings/notification/ConfigureNotificationSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 7880
+      },
+      "writtenOn": "2016-12-12T23:43:36Z",
+      "side": 1,
+      "message": "See line 118",
+      "parentUuid": "5f681702_554bdfae",
+      "revId": "f3e3c82edcb46f21e7215a9916040d08930a2246",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f681702_35dbc3ed",
+        "filename": "src/com/android/settings/notification/ConfigureNotificationSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 7880
+      },
+      "writtenOn": "2016-12-12T23:43:36Z",
+      "side": 1,
+      "message": "Can\u0027t we do\n\nfinal PreferenceCategory category \u003d (PreferenceCategory) findPreference(\"lights\");\n\nhere? This way, we can get rid of the changes in lines 52 and 61.",
+      "revId": "f3e3c82edcb46f21e7215a9916040d08930a2246",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
