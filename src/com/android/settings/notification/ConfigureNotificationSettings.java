@@ -27,6 +27,7 @@ import android.os.UserHandle;
 import android.os.UserManager;
 import android.provider.Settings;
 import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v7.preference.TwoStatePreference;
 import android.util.Log;
@@ -48,6 +49,7 @@ public class ConfigureNotificationSettings extends SettingsPreferenceFragment {
     private static final String TAG = "ConfigNotiSettings";
 
     private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
+    private static final String KEY_LIGHTS = "lights";
     private static final String KEY_LOCK_SCREEN_NOTIFICATIONS = "lock_screen_notifications";
     private static final String KEY_LOCK_SCREEN_PROFILE_NOTIFICATIONS =
             "lock_screen_notifications_profile";
@@ -56,6 +58,7 @@ public class ConfigureNotificationSettings extends SettingsPreferenceFragment {
 
     private Context mContext;
 
+    private PreferenceCategory mNotificationCategory;
     private TwoStatePreference mNotificationPulse;
     private RestrictedDropDownPreference mLockscreen;
     private RestrictedDropDownPreference mLockscreenProfile;
@@ -112,15 +115,16 @@ public class ConfigureNotificationSettings extends SettingsPreferenceFragment {
     // === Pulse notification light ===
 
     private void initPulse() {
+        mNotificationCategory = (PreferenceCategory) findPreference(KEY_LIGHTS);
         mNotificationPulse =
-                (TwoStatePreference) getPreferenceScreen().findPreference(KEY_NOTIFICATION_PULSE);
+                (TwoStatePreference) mNotificationCategory.findPreference(KEY_NOTIFICATION_PULSE);
         if (mNotificationPulse == null) {
             Log.i(TAG, "Preference not found: " + KEY_NOTIFICATION_PULSE);
             return;
         }
         if (!getResources()
                 .getBoolean(com.android.internal.R.bool.config_intrusiveNotificationLed)) {
-            getPreferenceScreen().removePreference(mNotificationPulse);
+            mNotificationCategory.removePreference(mNotificationPulse);
         } else {
             updatePulse();
             mNotificationPulse.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
