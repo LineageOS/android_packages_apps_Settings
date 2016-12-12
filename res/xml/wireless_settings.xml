@@ -102,4 +102,14 @@
         android:key="voice_over_lte"
         android:title="@string/volte_preferred"
         android:persistent="false"/>
+
+    <!-- Network reset -->
+    <com.android.settingslib.RestrictedPreference
+        android:key="network_reset"
+        android:title="@string/reset_network_title"
+        settings:keywords="@string/keywords_network_reset"
+        settings:userRestriction="no_network_reset"
+        settings:useAdminDisabledSummary="true"
+        android:fragment="com.android.settings.ResetNetwork" />
+
 </PreferenceScreen>

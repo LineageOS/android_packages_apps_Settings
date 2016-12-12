@@ -155,6 +155,14 @@
         <item>1.30</item>
     </string-array>
 
+    <string-array name="entryvalues_font_size_rjil" translatable="false">
+        <item>0.95</item>
+        <item>1.0</item>
+        <item>1.05</item>
+        <item>1.15</item>
+        <item>1.30</item>
+    </string-array>
+
     <!-- Wi-Fi settings -->
 
     <!-- Match this with the order of NetworkInfo.DetailedState. --> <skip />
@@ -1100,5 +1108,21 @@
         <item>45507</item>
         <item>46003</item>
         <item>46011</item>
+        <item>46012</item>
     </string-array>
+
+    <!-- Automatic storage management settings. The amount of days for the automatic storage manager
+         to retain. These are shown in a list dialog. [CHAR LIMIT=70] -->
+    <string-array name="automatic_storage_management_days">
+        <item>Over 30 days old</item>
+        <item>Over 60 days old</item>
+        <item>Over 90 days old</item>
+    </string-array>
+
+    <string-array name="automatic_storage_management_days_values" translatable="false">
+        <item>30</item>
+        <item>60</item>
+        <item>90</item>
+    </string-array>
+
 </resources>
