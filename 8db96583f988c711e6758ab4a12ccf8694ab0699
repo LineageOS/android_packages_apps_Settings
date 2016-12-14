@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f681702_2531c8a3",
+        "filename": "src/com/android/settings/datausage/AppDataUsage.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 15060
+      },
+      "writtenOn": "2016-12-14T23:14:43Z",
+      "side": 1,
+      "message": "unsure if the last two statements are necessary if import android.net.NetworkPolicyManager is imported as a whole. my IDE wanted all these statements therefore this is why they are here.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 69
+      },
+      "revId": "8db96583f988c711e6758ab4a12ccf8694ab0699",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f681702_85289c34",
+        "filename": "src/com/android/settings/datausage/AppDataUsage.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 15060
+      },
+      "writtenOn": "2016-12-14T23:14:43Z",
+      "side": 1,
+      "message": "Unsure if they need initializing on top of declaration.\nAlso unsure if this is the place to declare these variables (I put them here to make them private variables of this class)",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 39
+      },
+      "revId": "8db96583f988c711e6758ab4a12ccf8694ab0699",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f681702_652bc02f",
+        "filename": "src/com/android/settings/datausage/AppDataUsage.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 15060
+      },
+      "writtenOn": "2016-12-14T23:14:43Z",
+      "side": 1,
+      "message": "As stated previously: I am using this fucntion to get the value given to mRestrictBackground in order to determine the policy DataSaverBackend.setIsBlackListed should use. I need this value for the operation (preference \u003d\u003d mRestrictBackground) in DataSaverBackend. I am not sure that this is implemented properly.\nI am also unsure if blacklisting apps that will have data completely blocked is necessary in DataSaverBackend since DataSaver takes care of restricting background data only.",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 129,
+        "endChar": 5
+      },
+      "revId": "8db96583f988c711e6758ab4a12ccf8694ab0699",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f681702_85dd3c44",
+        "filename": "src/com/android/settings/datausage/AppDataUsage.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 15060
+      },
+      "writtenOn": "2016-12-14T23:14:43Z",
+      "side": 1,
+      "message": "I think this might be an issue. Please let me know if the ChangeListener can be removed.",
+      "range": {
+        "startLine": 197,
+        "startChar": 16,
+        "endLine": 198,
+        "endChar": 85
+      },
+      "revId": "8db96583f988c711e6758ab4a12ccf8694ab0699",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f681702_25d6e828",
+        "filename": "src/com/android/settings/datausage/AppDataUsage.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 15060
+      },
+      "writtenOn": "2016-12-14T23:14:43Z",
+      "side": 1,
+      "message": "unsure if this is badly implemented. I changed this from the first patch sets to something that makes more sense, but at least it used to show the button when unticking Enable Background Data whereas now it crashes the settings app every time this Enable Background Data is switched off.",
+      "range": {
+        "startLine": 325,
+        "startChar": 8,
+        "endLine": 332,
+        "endChar": 9
+      },
+      "revId": "8db96583f988c711e6758ab4a12ccf8694ab0699",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f681702_c5e61417",
+        "filename": "src/com/android/settings/datausage/AppDataUsage.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 15060
+      },
+      "writtenOn": "2016-12-14T23:14:43Z",
+      "side": 1,
+      "message": "as said before: this might be bad. might be better to set it to getAppRestrictData() in both Blacklist and Whitelist status change",
+      "range": {
+        "startLine": 545,
+        "startChar": 60,
+        "endLine": 545,
+        "endChar": 73
+      },
+      "revId": "8db96583f988c711e6758ab4a12ccf8694ab0699",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f681702_a5e158ff",
+        "filename": "src/com/android/settings/datausage/DataSaverBackend.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 15060
+      },
+      "writtenOn": "2016-12-14T23:14:43Z",
+      "side": 1,
+      "message": "see AppDataUsage",
+      "range": {
+        "startLine": 140,
+        "startChar": 12,
+        "endLine": 140,
+        "endChar": 62
+      },
+      "revId": "8db96583f988c711e6758ab4a12ccf8694ab0699",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
