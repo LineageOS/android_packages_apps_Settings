@@ -177,8 +177,8 @@ public class Index {
         public List<SearchIndexableData> dataToDelete;
         public Map<String, List<String>> nonIndexableKeys;
 
-        public boolean forceUpdate = false;
-        public boolean fullIndex = true;
+        public boolean forceUpdate;
+        public boolean fullIndex;
 
         public UpdateData() {
             dataToUpdate = new ArrayList<SearchIndexableData>();
@@ -1164,17 +1164,6 @@ public class Index {
         }
         return result.toString();
     }
-
-    private int getResId(Context context, AttributeSet set, int[] attrs, int resId) {
-        final TypedArray sa = context.obtainStyledAttributes(set, attrs);
-        final TypedValue tv = sa.peekValue(resId);
-
-        if (tv != null && tv.type == TypedValue.TYPE_STRING) {
-            return tv.resourceId;
-        } else {
-            return 0;
-        }
-   }
 
     /**
      * A private class for updating the Index database

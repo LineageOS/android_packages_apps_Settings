@@ -32,6 +32,8 @@ package com.android.settings;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.AsyncResult;
 import android.os.Bundle;
@@ -58,6 +60,8 @@ public class Lte4GEnabler {
     public static final String SETTING_PREF_NETWORK_BAND = "network_band_preferred";
     private static final Uri URI_PHONE_FEATURE = Uri
             .parse("content://com.qualcomm.qti.phonefeature.FEATURE_PROVIDER");
+    private static final String SHAREPREFERENCE_FIFE_NAME = "PREVIOUS_NW_TYPE";
+    private static final String SHAREPREFERENCE_PRI_NW = "privious_network_type";
     private static final int sPhoneCount = TelephonyManager.getDefault().getPhoneCount();
     private static final int LTE_FULL = 1;
     private static final int LTE_TDD = 2;
@@ -69,6 +73,7 @@ public class Lte4GEnabler {
     private static MyHandler mHandler;
     private SubscriptionManager mSubscriptionManager;
     private String[] mCtMccMncs;
+    private int mPreviousNetworkType = Phone.NT_MODE_LTE_TDSCDMA_CDMA_EVDO_GSM_WCDMA;
 
     public Lte4GEnabler(Context context, Switch sw) {
         mContext = context;
@@ -215,6 +220,14 @@ public class Lte4GEnabler {
                 setPrefNetwork(ddsSlotId, networkType);
             }
         } else {
+            int ddsSlotId = mSubscriptionManager.getSlotId(mSubscriptionManager.
+                    getDefaultDataSubscriptionId());
+            mPreviousNetworkType = getPreferredNetworkType(ddsSlotId);
+            SharedPreferences sharedPreferences = mContext.getSharedPreferences(
+                    SHAREPREFERENCE_FIFE_NAME,  Context.MODE_PRIVATE);
+            Editor editor = sharedPreferences.edit();
+            editor.putInt(SHAREPREFERENCE_PRI_NW, mPreviousNetworkType);
+            editor.commit();
             for (int i = 0; i < sPhoneCount; i++) {
                 int networkType = getProperNwMode(i);
                 storeNwModeIntoDb(i, networkType);
@@ -240,8 +253,17 @@ public class Lte4GEnabler {
 
     private int getProperNwMode(int phoneId) {
         boolean isCtCardPresent = isCtCard(phoneId);
-        int lteNwMode = isCtCardPresent ? Phone.NT_MODE_LTE_CDMA_EVDO_GSM_WCDMA :
+        SharedPreferences sharedPreferences = mContext.getSharedPreferences(
+                SHAREPREFERENCE_FIFE_NAME,  Context.MODE_PRIVATE);
+        mPreviousNetworkType = sharedPreferences.getInt(SHAREPREFERENCE_PRI_NW,
+                Phone.NT_MODE_LTE_TDSCDMA_CDMA_EVDO_GSM_WCDMA);
+        int lteNwMode;
+        if (mPreviousNetworkType != Phone.NT_MODE_LTE_TDSCDMA_CDMA_EVDO_GSM_WCDMA) {
+            lteNwMode = mPreviousNetworkType;
+        } else {
+            lteNwMode = isCtCardPresent ? Phone.NT_MODE_LTE_TDSCDMA_CDMA_EVDO_GSM_WCDMA :
                 Phone. NT_MODE_LTE_TDSCDMA_GSM_WCDMA;
+        }
         int nwMode = isCtCardPresent ? Phone.NT_MODE_GLOBAL :
                 Phone.NT_MODE_TDSCDMA_GSM_WCDMA;
         return mSwitch.isChecked() ? lteNwMode : nwMode;

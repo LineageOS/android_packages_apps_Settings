@@ -214,6 +214,12 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
                 getPreferenceScreen().removePreference(pref);
             }
         }
+        // Remove regulatory labels if no activity present to handle intent.
+        removePreferenceIfActivityMissing(
+                KEY_REGULATORY_INFO, Settings.ACTION_SHOW_REGULATORY_INFO);
+
+        removePreferenceIfActivityMissing(
+                "safety_info", "android.settings.SHOW_SAFETY_AND_REGULATORY_INFO");
     }
 
     @Override
@@ -310,13 +316,20 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
                         Toast.LENGTH_LONG);
                 mDevHitToast.show();
             }
+        } else if (preference.getKey().equals(KEY_SECURITY_PATCH)) {
+            if (getPackageManager().queryIntentActivities(preference.getIntent(), 0).isEmpty()) {
+                // Don't send out the intent to stop crash
+                Log.w(LOG_TAG, "Stop click action on " + KEY_SECURITY_PATCH + ": "
+                        + "queryIntentActivities() returns empty" );
+                return true;
+            }
         } else if (preference.getKey().equals(KEY_DEVICE_FEEDBACK)) {
             sendFeedback();
         } else if(preference.getKey().equals(KEY_SYSTEM_UPDATE_SETTINGS)) {
             CarrierConfigManager configManager =
                     (CarrierConfigManager) getSystemService(Context.CARRIER_CONFIG_SERVICE);
             PersistableBundle b = configManager.getConfig();
-            if (b.getBoolean(CarrierConfigManager.KEY_CI_ACTION_ON_SYS_UPDATE_BOOL)) {
+            if (b != null && b.getBoolean(CarrierConfigManager.KEY_CI_ACTION_ON_SYS_UPDATE_BOOL)) {
                 ciActionOnSysUpdate(b);
             }
         }
@@ -354,6 +367,16 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
             } catch (RuntimeException e) {
                 Log.d(LOG_TAG, "Property '" + property + "' missing and no '"
                         + preference + "' preference");
+            }
+        }
+    }
+
+    private void removePreferenceIfActivityMissing(String preferenceKey, String action) {
+        final Intent intent = new Intent(action);
+        if (getPackageManager().queryIntentActivities(intent, 0).isEmpty()) {
+            Preference pref = findPreference(preferenceKey);
+            if (pref != null) {
+                getPreferenceScreen().removePreference(pref);
             }
         }
     }
