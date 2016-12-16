@@ -280,6 +280,7 @@
   <!-- Lights settings, LED notification -->
   <string name="led_notification_title">Lysindstillinger</string>
   <string name="led_notification_text">LED-lys aktiveret via indstillinger</string>
+  <string name="notification_light_no_apps_summary">Aktivér \'%1$s\' og tryk på \'\u002b\' på menulinjen for at tilføje per app-kontrol</string>
   <!-- Setting checkbox title for Whether to enable Android debugging support on the phone. -->
   <string name="enable_adb_cm">Android-fejlfinding</string>
   <!-- Setting checkbox summary for Whether to enable Android debugging support on the phone -->
@@ -388,6 +389,7 @@
   <string name="app_ops_labels_receive_sms">Modtag SMS/MMS</string>
   <string name="app_ops_labels_receive_emergency_sms">Modtag nød-SMS</string>
   <string name="app_ops_labels_receive_mms">Modtag SMS/MMS</string>
+  <string name="app_ops_labels_receive_wap_push">Modtag WAP push</string>
   <string name="app_ops_labels_send_sms">Send SMS/MMS</string>
   <string name="app_ops_labels_read_icc_sms">Læs ICC SMS</string>
   <string name="app_ops_labels_write_icc_sms">Skriv ICC SMS</string>
@@ -1025,6 +1027,13 @@
   <string name="app_notification_no_ongoing_on_keyguard_title">Deaktivere vedvarende meddelelser på låseskærmen</string>
   <string name="app_notification_no_ongoing_on_keyguard_summary">Vis aldrig vedvarende meddelelser fra denne app på låseskærmen</string>
   <!-- Notification sound timeout -->
+  <string name="app_notification_sound_timeout_value_none">Ingen begrænsning</string>
+  <string name="app_notification_sound_timeout_value_10_seconds">10 sekunder</string>
+  <string name="app_notification_sound_timeout_value_30_seconds">30 sekunder</string>
+  <string name="app_notification_sound_timeout_value_1_minute">1 minut</string>
+  <string name="app_notification_sound_timeout_value_5_minutes">5 minutter</string>
+  <string name="app_notification_sound_timeout_value_15_minutes">10 minutter</string>
+  <string name="app_notification_sound_timeout_value_30_minutes">30 minutter</string>
   <!-- CmRadioInfo -->
   <string name="cm_radio_info_label">Udvidet radiokontrol</string>
   <!-- Radio Control (IMS/MBN etc.) -->
@@ -1045,5 +1054,10 @@
   <string name="not_available_with_app">Ikke tilgængelig med %1$s</string>
   <!-- Format string for fingerprint location message -->
   <!-- Fingerprint sensor locations -->
+  <string name="security_settings_fingerprint_sensor_location_back">tilbage</string>
+  <string name="security_settings_fingerprint_sensor_location_front">front</string>
+  <string name="security_settings_fingerprint_sensor_location_left">venstre side</string>
+  <string name="security_settings_fingerprint_sensor_location_right">højre side</string>
   <!-- SIM status format string -->
+  <string name="sim_status_format_string">Stemme: <xliff:g id="voice_state">%1$s</xliff:g>, data: <xliff:g id="data_state">%2$s</xliff:g></string>
 </resources>
