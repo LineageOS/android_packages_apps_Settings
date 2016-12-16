@@ -151,6 +151,9 @@
   <string name="volbtn_cursor_control_on_reverse">Helitugevuse üles/alla liigutab kursorit paremale/vasakule</string>
   <string name="swap_volume_buttons_title">Ümberorienteerima</string>
   <string name="swap_volume_buttons_summary">Vaheta helitugevusklahvid ekraani pööramisel</string>
+  <string name="volume_keys_control_ring_stream_title">Muuda helina tooni tugevust</string>
+  <string name="volume_keys_control_ring_stream_summary_on">Helitugevusnupud reguleerivad helina tooni tugevust</string>
+  <string name="volume_keys_control_ring_stream_summary_off">Helitugevusnupud reguleerivad meedia helitugevust</string>
   <string name="power_end_call_title">Lõpeta kõne</string>
   <string name="power_end_call_summary">Toite nupu vajutus lõpetab käimasoleva kõne</string>
   <string name="button_wake_title">Ärata seade</string>
@@ -289,6 +292,7 @@
   <string name="privacy_guard_reset_text">Algseadistamise õigused?</string>
   <string name="privacy_guard_help_text">Sellel ekraanil saate puudutusega valida milliste rakenduste jaoks aktiveeritakse Privaatsuse Kaitse. Valitud rakendustele ei võimaldata ligipääsu isiklikele andmetele, nagu näiteks kontaktid, sõnumid või kõnelogi. Pikk vajutus rakendusel avab detailide kuva.\n\nSisseehitatud rakendused ei ole vaikimisi kuvatud, kuid on võimalik nähtavaks teha vastavas menüü valikus.</string>
   <string name="privacy_guard_manager_show_system_apps">Kuva sisse-ehitatud rakendused</string>
+  <string name="privacy_guard_notification_title">Kuva teavitus</string>
   <string name="app_ops_btn_text">Modifitseeri</string>
   <!-- Increasing ring tone volume -->
   <string name="increasing_ring_volume_option_title">Kasvav helisemistugevus</string>
@@ -405,6 +409,7 @@
   <string name="notification_light_missed_call_title">vastamata kõne</string>
   <string name="notification_light_voicemail_title">Kõnepost</string>
   <string name="notification_light_screen_on">Tuled koos ekraaniga</string>
+  <string name="notification_light_use_multiple_leds">Mitu LEDi</string>
   <string name="keywords_lights_brightness_level">hämarda ledide heledust</string>
   <!-- Sound & notification > Sound section: Title for the option defining the default notification ringtone. [CHAR LIMIT=30] -->
   <string name="notification_ringtone_title_cm">Teavituse toon</string>
@@ -817,8 +822,11 @@
   <!-- Whether the dots will be drawn when using the lockscreen pattern -->
   <string name="lockpattern_settings_enable_dots_title">Näita mustri punkte</string>
   <!-- Whether the keyguard will directly pass to password entry -->
+  <string name="lock_directly_show_password">Näita otse paroolisisestust</string>
   <!-- Whether the keyguard will directly pass to pattern view -->
+  <string name="lock_directly_show_pattern">Näita otse mustrit</string>
   <!-- Whether the keyguard will directly pass to PIN entry -->
+  <string name="lock_directly_show_pin">Näita otse PIN koodi sisestust</string>
   <!-- Screen security -->
   <string name="unlock_quick_unlock_control_title">Kiire lahtilukustamine</string>
   <string name="unlock_quick_unlock_control_summary">Ava automaatselt, kui on sisestatud õige PIN-kood/parool</string>
@@ -869,6 +877,7 @@
   <string name="qs_tile_heads_up">Etteteavitus</string>
   <string name="qs_tile_ambient_display">Ambient kuva</string>
   <string name="qs_tile_sync">Sünk</string>
+  <string name="qs_tile_battery_saver">Akusäästja</string>
   <string name="qs_dynamic_tile_next_alarm">Järgmine alarm</string>
   <string name="qs_dynamic_tile_ime_selector">IME valija</string>
   <string name="qs_dynamic_tile_su">Root ligipääs</string>
@@ -917,6 +926,7 @@
   <string name="lockscreen_message">Koputage ikooni vasakult või paremalt, et määrata lukustuskuva otsetee.</string>
   <string name="lockscreen_choose_action_title">Valige toiming</string>
   <string name="lockscreen_visualizer_title">Näita muusika visualiseerijat</string>
+  <string name="nfc_title_category">NFC</string>
   <!-- WhisperPush -->
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Halda turvalise SMS seadeid</string>
@@ -974,6 +984,8 @@
   <string name="interruptions_ignore_while_media_title">Enneta heli sumbumist</string>
   <string name="interruptions_ignore_while_media_summary">Ära alanda meedia helitugevust teavituse saabumisel</string>
   <string name="none_is_silent_title">Ära kunagi vaigista alarme</string>
+  <string name="none_is_silent_summary_on">Alarme ei eirata vaikses režiimis</string>
+  <string name="none_is_silent_summary_off">Alarme eiratakse tummas režiimis</string>
   <string name="allow_lights_title">Luba märguandetuled</string>
   <!-- LiveDisplay -->
   <string name="live_display_summary">Optimiseeri oma ekraan vastavalt päeva ajale ja ümbritsevatele tingimustele, et parandada loetavust ning vähendada silmade pinget</string>
@@ -1054,6 +1066,11 @@ mis ei ohusta sinu privaatsust ega isiklikku infot. Teave saadetakse peale igat 
   <string name="factory_reset_warning_text_reset_now">TAASKÄIVITA NÜÜD</string>
   <string name="factory_reset_warning_text_message">Kõik teie kontod, rakendused, rakenduste andmed ja süsteemi sätted eemaldatakse sellest seadmest. Seda ei ole võimalik tagasi pöörata.</string>
   <!-- Wi-Fi filters -->
+  <string name="wifi_show_all">Näita kõiki</string>
+  <string name="wifi_show_protected">Näita kaitstud võrke</string>
+  <string name="wifi_show_open">Näita avatud võrke</string>
+  <string name="wifi_empty_list_protected">Ei ühtki turvatud Wi\u2011Fi võrku</string>
+  <string name="wifi_empty_list_open">Ei ühtki avatud Wi\u2011Fi võrku</string>
   <!-- Wi-Fi region code -->
   <string name="wifi_setting_countrycode_title">Wi\u2011Fi regioonikood</string>
   <!-- Wi-Fi settings screen, setting summary for setting the wifi frequency band [CHAR LIMIT=50]-->
@@ -1096,7 +1113,9 @@ mis ei ohusta sinu privaatsust ega isiklikku infot. Teave saadetakse peale igat 
   <!-- Title for dialog that shows when the user cannot add anymore fingers -->
   <string name="fingerprint_dialog_title_max_fingers_reached">Sõrmejälgede maksimumhulk saavutatud</string>
   <!-- Message for dialog that shows when the user cannot add anymore fingers -->
+  <string name="fingerprint_dialog_msg_max_fingers_reached">Sa võid registreerida vaid <xliff:g id="finger" example="5">%d</xliff:g> sõrmejälge. Kustuta eksisteeriv sõrmejälg.</string>
   <!-- Title for number of finger prints enrolled -->
+  <string name="fingerprint_title_manage_fingerprints"><xliff:g id="finger">%d</xliff:g> <xliff:g id="max">%d</xliff:g>\'st sõrmejäljest registreeritud</string>
   <!-- Description for managing fingerprints -->
   <string name="manage_fingerprints_description">Sõrmejälgede kasutamine võimaldab telefoni kiiresti avada ning teha fotosid.</string>
   <!-- Fingerprint enrollment introduction title -->

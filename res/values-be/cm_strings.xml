@@ -60,9 +60,9 @@
   <string name="profile_populate_profile_from_state">Стварыць профіль з бягучых налад прылады?</string>
   <string name="profile_menu_fill_from_state">Выкарыстоўваць бягучыя налады</string>
   <string name="profile_remove_current_profile">Немагчыма выдаліць бягучы профіль!</string>
-  <string name="profile_app_group_category_title">Апавяшчэнні</string>
+  <string name="profile_app_group_category_title">Паведамленьні</string>
   <string name="profile_app_group_item_instructions">Дадаць ці выдаліць групы</string>
-  <string name="profile_app_group_item_instructions_summary">Змена налад апавяшчэнняў для груп дадаткаў у гэтым профілі</string>
+  <string name="profile_app_group_item_instructions_summary">Дадаць, альбо выдаліць дадаткі, для якіх будуць зьменены налады</string>
   <!-- Profile mode options. -->
   <string name="profile_entries_on">Укл.</string>
   <string name="profile_entries_off">Выкл.</string>
@@ -312,8 +312,8 @@
   <!-- Warning for Adb over Network -->
   <string name="adb_over_network_warning">УВАГА: калі ўключана адладка па сетцы, прылада адкрыта для некантралюемага доступу з усіх падлучаных сетак!\n\nСкарыстайце гэту функцыю толькі тады, калі вы падлучаны да давераных сетак.\n\nВы сапраўды хочаце ўключыць гэту функцыю?</string>
   <!-- Setting checkbox summary for displaying USB debugging notification -->
-  <string name="adb_notify">Апавяшчэнне пра адладку</string>
-  <string name="adb_notify_summary">Паказваць апавяшчэнне пра ўлучаны рэжым адладкі па USB ці па сетцы</string>
+  <string name="adb_notify">Паведамленьні наладжваньня</string>
+  <string name="adb_notify_summary">Паказваць паведамленьне аб тым, што задзейнічана наладка па USB ці сетцы</string>
   <!-- Hostname setting -->
   <string name="device_hostname">Сеткавае імя прылады</string>
   <!-- Development shortcut -->
@@ -332,17 +332,17 @@
   <string name="disable_navkeys_title">Экранныя кнопкі</string>
   <string name="disable_navkeys_summary">Уключыць панэль навігацыі і адключыць апаратныя сэнсорныя кнопкі</string>
   <!-- Navigation Bar -->
-  <string name="navigation_bar_category">Радок стану</string>
+  <string name="navigation_bar_category">Навігацыйны радок</string>
   <string name="navigation_bar_left_title">Рэжым ляўшы</string>
   <string name="navigation_bar_left_summary">Адлюстроўваць радок стану злева ў альбомнай арыентацыі экрана</string>
-  <string name="navigation_bar_title">Кнопкі і іх размяшчэнне</string>
-  <string name="navigation_bar_help_text">Для разблакоўкі панэлі навігацыі і пачатку рэдагавання дакраніцеся значка праўкі.\n\nДакраніцеся віртуальнай кнопкі для змены функцыі ці ўтрымвайце яе для перасоўвання.\n\nпасля гэтага націсніце \"Захаваць\" для пацверджання змен ці \"Аднавіць\", каб вярнуць стандартныя налады.</string>
+  <string name="navigation_bar_title">Кнопкі і іх месцазнаходжаньне</string>
+  <string name="navigation_bar_help_text">Для разблакаваньня навігацыйнага радка і пачатку рэдагаваньня краніся значыка праўкі.\n\nДакраніцеся віртуальнай кнопкі для зьмены функцыі ці ўтрымлівай яе для перасоўваньня.\n\nпасьля гэтага націсьні \"Захаваць\" для пацверджаньня змен ці \"Аднавіць\", каб вярнуць першапачатковыя налады.</string>
   <string name="navigation_restore_button_text">Узнавіць\n</string>
   <string name="navigation_edit_button_text">Рэдагаваць</string>
   <string name="navigation_save_button_text">Захаваць</string>
-  <string name="navigation_bar_reset_message">Выдаліць бягучыя налады і ўзнавіць стандартны набор?</string>
+  <string name="navigation_bar_reset_message">Выдаліць бягучыя налады і ўзнавіць першапачатковы набор?</string>
   <string name="navigation_bar_arrow_keys_title">Перасоўванне курсора</string>
-  <string name="navigation_bar_arrow_keys_summary">Адлюстроўваць кнопкі перасоўвання курсора налева ці направа пры ўводзе. Кнопка выбару метаду ўводу адлюстроўвацца не будзе.</string>
+  <string name="navigation_bar_arrow_keys_summary">Адлюстроўваць кнопкі перасоўваньня курсора налева ці направа падчас друкаваньня. Кнопка выбару метаду ўводу адлюстроўвацца не будзе.</string>
   <string name="navigation_bar_recents_title">Доўгі націск кнопкі \"Агляд\"</string>
   <string name="header_category_personalization">Персаналізацыя</string>
   <!-- Status bar -->
@@ -398,7 +398,7 @@
   <string name="battery_low_pulse_title">Мігацець пры нізкім роўні зарада</string>
   <string name="battery_light_list_title">Колеры</string>
   <string name="battery_light_low_color_title">Батарэя разраджана</string>
-  <string name="battery_light_medium_color_title">Зарадка</string>
+  <string name="battery_light_medium_color_title">Энэрганазапашванне</string>
   <string name="battery_light_full_color_title">Цалкам зараджаны</string>
   <!-- Lights settings screen, notification light settings -->
   <string name="notification_light_title">Індыкатар падзей</string>
@@ -413,7 +413,7 @@
   <string name="notification_light_use_multiple_leds">Некалькі светадыёдаў</string>
   <string name="keywords_lights_brightness_level">бляклая яскравасць</string>
   <!-- Sound & notification > Sound section: Title for the option defining the default notification ringtone. [CHAR LIMIT=30] -->
-  <string name="notification_ringtone_title_cm">Гук апавяшчэння</string>
+  <string name="notification_ringtone_title_cm">Гук паведамленьня</string>
   <!-- Launch music player when headset is connected -->
   <string name="headset_connect_player_title">Аўтазапуск плэера</string>
   <string name="headset_connect_player_summary">Запускаць плэер пры падлучэнні завушнікаў</string>
@@ -422,9 +422,9 @@
   <string name="ime_switcher_notify_summary">Адлюстроўваць пераключальнік метаду ўводу пры адкрыцці тэкставых палёў</string>
   <!-- Per app controls for LP keyguard notifications -->
   <string name="app_notification_show_on_keyguard_title">На экране блакавання</string>
-  <string name="app_notification_show_on_keyguard_summary">Паказваць апавяшчэнні з гэтага дадатку на экране блакавання</string>
-  <string name="app_notification_no_ongoing_on_keyguard_title">Адключыць шторазовыя апавяшчэнні пра блакаванне экрана</string>
-  <string name="app_notification_no_ongoing_on_keyguard_summary">Не паказваць шторазовыя апавяшчэнні з гэтага дадатку на экране блакавання</string>
+  <string name="app_notification_show_on_keyguard_summary">Паказваць паведамленьні гэтага дадатку на экране блакаваньня</string>
+  <string name="app_notification_no_ongoing_on_keyguard_title">Не паказваць паведамленьні на экране блакаваньня</string>
+  <string name="app_notification_no_ongoing_on_keyguard_summary">Не паказваць паведамленьні гэтага дадатку на экране блакаваньня</string>
   <!-- High touch sensitivity -->
   <string name="high_touch_sensitivity_title">Рэжым пальчаткаў</string>
   <string name="high_touch_sensitivity_summary">Павялічваць адчувальнасць экрана для магчымасці працы ў пальчатках</string>
@@ -457,7 +457,7 @@
   <string name="app_ops_summaries_write_icc_sms">запіс SMS на SIM-карту</string>
   <string name="app_ops_summaries_modify_settings">змена налад</string>
   <string name="app_ops_summaries_draw_on_top">адлюстраванне па-над іншымі элементамі</string>
-  <string name="app_ops_summaries_access_notifications">доступ да апавяшчэнняў</string>
+  <string name="app_ops_summaries_access_notifications">дазволіць паведамленьні</string>
   <string name="app_ops_summaries_camera">камера</string>
   <string name="app_ops_summaries_record_audio">запіс аўдыя</string>
   <string name="app_ops_summaries_play_audio">прайграванне аўдыя</string>
@@ -549,7 +549,7 @@
   <!-- App ops categories -->
   <string name="app_ops_categories_location">Месцазнаходжанне</string>
   <string name="app_ops_categories_personal">Асабістыя дадзеныя</string>
-  <string name="app_ops_categories_messaging">Гутарка</string>
+  <string name="app_ops_categories_messaging">Паведамленьні</string>
   <string name="app_ops_categories_media">Мультымедыя</string>
   <string name="app_ops_categories_device">Прылада</string>
   <string name="app_ops_categories_bootup">Загрузка</string>
@@ -776,7 +776,7 @@
   <string name="sim_enabler_disabling">Дэактывацыя <xliff:g id="name">%s</xliff:g>\u2026</string>
   <string name="sim_enabler_deactivate">Адключыць</string>
   <string name="primary_sub_select_title">Аператар 3G/LTE па змаўчанні</string>
-  <string name="usb_charging_title">Толькі зарадка</string>
+  <string name="usb_charging_title">Толькі назапашванне</string>
   <string name="usb_charging_summary">Адключае памен дадзенымі з кампутарам і выкарыстоўвае USB-порт толькі для зарадкі батарэі</string>
   <string name="usb_sdcard_title">USB-назапашвальнік (UMS)</string>
   <string name="usb_sdcard_summary">Дазваляе перадаваць файлы шляхам выкарыстання SD-карты прылады ў якасці здымнага дыска</string>
@@ -811,10 +811,10 @@
   <string name="perf_profile_title">Энергаспажыванне</string>
   <!-- Development : Force high-end graphics -->
   <string name="pref_force_highend_gfx_title">Высакаякасная графіка</string>
-  <string name="pref_force_highend_gfx_summary">ыкарыстоўваць эфекты, адключаныя для прылад з нізкай прадукцыйнасцю, напрыклад, празрыстасць радка стану і панэлі навігацыі (патрабуецца перазагрузка)</string>
+  <string name="pref_force_highend_gfx_summary">Задзейнічаць высокаякасныя візуальныя эфэкты такія як празрыстасьць навігацыйнага радку, радок стану (неабходна перазапусканьне)</string>
   <!-- EdgeGesture service -->
   <string name="edge_gesture_service_title">Блакіяваць падзеі жэстаў</string>
-  <string name="edge_gesture_service_summary">Не перадаваць дадаткам жэсты паказу радка стану і панэлі навігацыі</string>
+  <string name="edge_gesture_service_summary">Не перадаваць дадаткам жэсты паказу радка стану і радок навігацыі</string>
   <!-- CM Legal -->
   <string name="cmlicense_title">Палітыка прыватнасці CyanogenMod</string>
   <string name="settings_cmlicense_activity_title">Палітыка прыватнасці CyanogenMod</string>
@@ -914,7 +914,7 @@
   <string name="power_menu_expanded_desktop">Пашыраны экран</string>
   <string name="expanded_hide_nothing">Нічога не хаваць</string>
   <string name="expanded_hide_status">Хаваць радок стану</string>
-  <string name="expanded_hide_navigation">Хаваць панэль навігацыі</string>
+  <string name="expanded_hide_navigation">Схаваць навігацыйны радок</string>
   <string name="expanded_hide_both">Хаваць абедзве</string>
   <string name="expanded_nothing_to_show">Для налады параметраў пашыранага экрана для асобных дадаткаў, перавядзіце пераключальнік \"Уключыць для ўсіх\" у адключаны стан</string>
   <string name="expanded_enabled_for_all">Уключыць для ўсіх</string>
