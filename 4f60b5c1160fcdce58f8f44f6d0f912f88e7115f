@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f681702_b9acdc35",
+        "filename": "src/com/android/settings/datausage/AppDataUsage.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 15060
+      },
+      "writtenOn": "2016-12-18T08:08:56Z",
+      "side": 1,
+      "message": "12-18 03:33:53.541  9577  9577 E AndroidRuntime: FATAL EXCEPTION: main\n12-18 03:33:53.541  9577  9577 E AndroidRuntime: Process: com.android.settings, PID: 9577\n12-18 03:33:53.541  9577  9577 E AndroidRuntime: java.lang.NullPointerException: Attempt to invoke virtual method \u0027void android.net.NetworkPolicyManager.addUidPolicy(int, int)\u0027 on a null object reference\n12-18 03:33:53.541  9577  9577 E AndroidRuntime: \tat com.android.settings.datausage.AppDataUsage.setAppRestrictData(AppDataUsage.java:380)\n12-18 03:33:53.541  9577  9577 E AndroidRuntime: \tat com.android.settings.datausage.AppDataUsage.onPreferenceChange(AppDataUsage.java:282)\n12-18 03:33:53.541  9577  9577 E AndroidRuntime: \tat android.support.v7.preference.Preference.callChangeListener(Preference.java:914)\n12-18 03:33:53.541  9577  9577 E AndroidRuntime: \tat android.support.v7.preference.TwoStatePreference.onClick(TwoStatePreference.java:66)\n12-18 03:33:53.541  9577  9577 E AndroidRuntime: \tat android.support.v7.preference.Preference.performClick(Preference.java:976)\n12-18 03:33:53.541  9577  9577 E AndroidRuntime: \tat android.support.v7.preference.Preference.performClick(Preference.java:961)\n12-18 03:33:53.541  9577  9577 E AndroidRuntime: \tat android.support.v14.preference.SwitchPreference.performClick(SwitchPreference.java:212)\n12-18 03:33:53.541  9577  9577 E AndroidRuntime: \tat android.support.v7.preference.Preference$1.onClick(Preference.java:148)\n12-18 03:33:53.541  9577  9577 E AndroidRuntime: \tat android.view.View.performClick(View.java:5637)\n12-18 03:33:53.541  9577  9577 E AndroidRuntime: \tat android.view.View$PerformClick.run(View.java:22433)\n12-18 03:33:53.541  9577  9577 E AndroidRuntime: \tat android.os.Handler.handleCallback(Handler.java:751)\n12-18 03:33:53.541  9577  9577 E AndroidRuntime: \tat android.os.Handler.dispatchMessage(Handler.java:95)\n12-18 03:33:53.541  9577  9577 E AndroidRuntime: \tat android.os.Looper.loop(Looper.java:154)\n12-18 03:33:53.541  9577  9577 E AndroidRuntime: \tat android.app.ActivityThread.main(ActivityThread.java:6126)\n12-18 03:33:53.541  9577  9577 E AndroidRuntime: \tat java.lang.reflect.Method.invoke(Native Method)\n12-18 03:33:53.541  9577  9577 E AndroidRuntime: \tat com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:886)\n12-18 03:33:53.541  9577  9577 E AndroidRuntime: \tat com.android.internal.os.ZygoteInit.main(ZygoteInit.java:776)",
+      "revId": "4f60b5c1160fcdce58f8f44f6d0f912f88e7115f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
