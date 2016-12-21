@@ -50,6 +50,7 @@ public class ConfigureWifiSettings extends SettingsPreferenceFragment
     private static final String KEY_MAC_ADDRESS = "mac_address";
     private static final String KEY_SAVED_NETWORKS = "saved_networks";
     private static final String KEY_CURRENT_IP_ADDRESS = "current_ip_address";
+    private static final String KEY_FREQUENCY_BAND = "frequency_band";
     private static final String KEY_NOTIFY_OPEN_NETWORKS = "notify_open_networks";
     private static final String KEY_SLEEP_POLICY = "sleep_policy";
     private static final String KEY_CELLULAR_FALLBACK = "wifi_cellular_data_fallback";
@@ -129,6 +130,24 @@ public class ConfigureWifiSettings extends SettingsPreferenceFragment
             getPreferenceScreen().removePreference(mWifiAssistantPreference);
         }
 
+        ListPreference frequencyPref = (ListPreference) findPreference(KEY_FREQUENCY_BAND);
+
+        if (mWifiManager.isDualBandSupported()) {
+            frequencyPref.setOnPreferenceChangeListener(this);
+            int value = mWifiManager.getFrequencyBand();
+            if (value != -1) {
+                frequencyPref.setValue(String.valueOf(value));
+                updateFrequencyBandSummary(frequencyPref, value);
+            } else {
+                Log.e(TAG, "Failed to fetch frequency band");
+            }
+        } else {
+            if (frequencyPref != null) {
+                // null if it has already been removed before resume
+                getPreferenceScreen().removePreference(frequencyPref);
+            }
+        }
+
         ListPreference sleepPolicyPref = (ListPreference) findPreference(KEY_SLEEP_POLICY);
         if (sleepPolicyPref != null) {
             if (Utils.isWifiOnly(context)) {
@@ -198,7 +217,17 @@ public class ConfigureWifiSettings extends SettingsPreferenceFragment
         final Context context = getActivity();
         String key = preference.getKey();
 
-        if (KEY_WIFI_ASSISTANT.equals(key)) {
+        if (KEY_FREQUENCY_BAND.equals(key)) {
+            try {
+                int value = Integer.parseInt((String) newValue);
+                mWifiManager.setFrequencyBand(value, true);
+                updateFrequencyBandSummary(preference, value);
+            } catch (NumberFormatException e) {
+                Toast.makeText(context, R.string.wifi_setting_frequency_band_error,
+                        Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        } else if (KEY_WIFI_ASSISTANT.equals(key)) {
             NetworkScorerAppManager.NetworkScorerAppData wifiAssistant =
                     NetworkScorerAppManager.getScorer(context, (String) newValue);
             if (wifiAssistant == null) {
@@ -257,6 +286,11 @@ public class ConfigureWifiSettings extends SettingsPreferenceFragment
         wifiIpAddressPref.setSummary(ipAddress == null ?
                 context.getString(R.string.status_unavailable) : ipAddress);
         wifiIpAddressPref.setSelectable(false);
+    }
+
+    private void updateFrequencyBandSummary(Preference frequencyBandPref, int index) {
+        String[] summaries = getResources().getStringArray(R.array.wifi_frequency_band_entries);
+        frequencyBandPref.setSummary(summaries[index]);
     }
 
     private void initWifiAssistantPreference(
