@@ -17,9 +17,15 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to show Device Id -->
+  <plurals name="show_device_id_countdown_cm">
+    <item quantity="other">您只需完成剩餘的 <xliff:g id="step_count">%1$d</xliff:g> 個步驟，即可查詢裝置 ID。</item>
+  </plurals>
   <!--  Device Info screen. Confirmation that Device ID is copied to clipboard -->
+  <string name="show_device_id_copied_cm">裝置 ID：[<xliff:g id="device_id">%1$s</xliff:g>] 已複製到剪貼簿</string>
   <!--  Device Info screen. Confirmation that Device ID is not available -->
+  <string name="show_device_id_failed_cm">裝置 ID 在此版本中不可用</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Label for the deviceID text put to clipboard -->
+  <string name="show_device_id_clipboard_label">裝置 ID</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
   <plurals name="show_dev_countdown_cm">
     <item quantity="other">剩下 <xliff:g id="step_count">%1$d</xliff:g> 個步驟啟用開發人員選項。</item>
@@ -36,13 +42,16 @@
   <!-- Setting checkbox title for root access -->
   <string name="root_access">Root 權限</string>
   <string name="root_access_warning_title">允許 root 權限？</string>
-  <string name="root_access_warning_message">允許應用程式要求 root 權限是很危險的，而且可能會影響您系統的安全！</string>
+  <string name="root_access_warning_message">允許應用程式請求 root 權限是很危險的，而且可能會影響您系統的安全！</string>
   <string name="root_access_none">已停用</string>
   <string name="root_access_apps">僅限應用程式</string>
   <string name="root_access_adb">僅限 ADB</string>
   <string name="root_access_all">應用程式與 ADB</string>
   <!-- Preference link for root appops -->
+  <string name="root_appops_title">管理 root 存取權限</string>
+  <string name="root_appops_summary">查看和控制 root 規則</string>
   <!-- NFC PreferenceCategory title -->
+  <string name="nfc_title_category">NFC</string>
   <!-- About phone screen, CyanogenMod version -->
   <string name="mod_version">CyanogenMod 版本</string>
   <string name="mod_version_default">未知</string>
@@ -76,18 +85,18 @@
   <string name="profiles_add">新增</string>
   <string name="profile_menu_delete">刪除</string>
   <string name="profile_settings_title">設定檔</string>
-  <string name="profile_empty_list_profiles_off">開啟設定檔功能以設定與使用設定檔。</string>
+  <string name="profile_empty_list_profiles_off">開啟設定檔功能即可設定與使用設定檔。</string>
   <string name="profile_trigger_configure">設定觸發器</string>
   <string name="profile_write_nfc_tag">寫到 NFC 標籤</string>
-  <string name="profile_write_touch_tag">輕觸標籤以寫入</string>
+  <string name="profile_write_touch_tag">觸碰標籤即可寫入</string>
   <string name="profile_write_success">標籤寫入成功</string>
   <string name="profile_write_failed">標籤寫入失敗！</string>
   <string name="profile_selected">選取的設定檔：%1$s</string>
-  <string name="profile_nfc_text">將設定檔寫入 NFC 標籤允許透過輕按標籤來選取此設定檔。再次輕按將會回到之前選取的設定檔。</string>
+  <string name="profile_nfc_text">將設定檔寫入至 NFC 標籤允許透過輕觸標籤來選取此設定檔。再次輕觸將會回到之前選取的設定檔。</string>
   <string name="profile_unknown_nfc_tag">未知的設定檔</string>
   <string name="profile_add_nfc_text">此 NFC 標籤指向了一個未知的設定檔，連結此 NFC 標籤到現有的設定檔將允許您以後選取那個設定檔。</string>
   <string name="profile_select">選取設定檔</string>
-  <string name="profile_remove_dialog_message">刪除設定檔「%1$s」？</string>
+  <string name="profile_remove_dialog_message">移除設定檔「%1$s」？</string>
   <string name="profile_populate_profile_from_state">使用目前的裝置設定配置設定檔嗎?</string>
   <string name="profile_menu_fill_from_state">匯入目前裝置的設定</string>
   <string name="profile_remove_current_profile">無法刪除目前的設定檔</string>
@@ -153,7 +162,7 @@
   <!-- Profiles - system settings -->
   <string name="profile_system_settings_title">系統設定</string>
   <string name="profile_lockmode_title">鎖定螢幕模式</string>
-  <string name="profile_lockmode_policy_disabled_summary">此設定檔被裝置管理員禁用</string>
+  <string name="profile_lockmode_policy_disabled_summary">此設定檔被裝置管理員停用</string>
   <string name="profile_lockmode_insecure_summary">不要詢問 PIN 或密碼</string>
   <string name="profile_lockmode_disabled_summary">停用鎖定螢幕</string>
   <string name="profile_airplanemode_title">飛航模式</string>
@@ -165,14 +174,17 @@
   <string name="toggleWifiAp">可攜式 Wi\u2011Fi 無線基地台</string>
   <string name="toggleBluetooth">藍牙</string>
   <string name="toggleGPS">GPS</string>
-  <string name="toggleData">數據連接</string>
+  <string name="toggleData">數據連線</string>
   <string name="toggleSync">自動同步資料</string>
   <string name="toggle2g3g4g">首選網路類型</string>
   <string name="toggle2g3g4g_msim">網路類型偏好 (%1$s)</string>
   <string name="toggleNfc">NFC</string>
   <!-- Wi-Fi region code -->
+  <string name="wifi_setting_countrycode_title">Wi\u2011Fi區碼</string>
   <!-- Wi-Fi settings screen, setting summary for setting the wifi frequency band [CHAR LIMIT=50]-->
+  <string name="wifi_setting_countrycode_summary">指定Wi\u2011Fi區碼</string>
   <!-- Wi-Fi settings screen, error message when the frequency band could not be set [CHAR LIMIT=50]. -->
+  <string name="wifi_setting_countrycode_error">設定區碼時遇到問題。</string>
   <string name="wifi_countrycode_us">美國</string>
   <string name="wifi_countrycode_ca">加拿大，台灣</string>
   <string name="wifi_countrycode_de">德國</string>
@@ -211,25 +223,25 @@
   <string name="profile_appgroup_name_title">名稱</string>
   <string name="duplicate_appgroup_name">重複的應用程式群組名稱！</string>
   <string name="profile_app_delete_confirm">移除此應用程式？</string>
-  <string name="no_bluetooth_triggers">沒有藍牙設備配對。 \n在配置觸發器之前，點擊配對藍牙設備。</string>
-  <string name="no_wifi_triggers">沒有已設定的 Wi\u2011Fi 連結。 \n設定前輕按以連接 Wi\u2011Fi</string>
-  <string name="no_triggers_configured">觸法器未設定，輕按以新建。</string>
-  <string name="no_triggers_configured_nfc">輕觸以設置一個新的 NFC 觸發器。</string>
+  <string name="no_bluetooth_triggers">沒有藍牙裝置配對。 \n在配置觸發器之前，輕觸配對藍牙裝置。</string>
+  <string name="no_wifi_triggers">沒有已設定的 Wi\u2011Fi 連結。 \n設定前輕觸即可連線 Wi\u2011Fi</string>
+  <string name="no_triggers_configured">觸發器未設定，輕觸即可建立。</string>
+  <string name="no_triggers_configured_nfc">輕觸即可設定新的 NFC 觸發器。</string>
   <string name="profile_setup_setup_triggers_description">請選擇啟動此設定檔的觸發器</string>
   <string name="profile_setup_actions_description">現在配置設定檔啟動時將發生的操作</string>
   <!-- Navigation Bar -->
-  <string name="navigation_bar_category">導覽列</string>
+  <string name="navigation_bar_category">導航列</string>
   <string name="navigation_bar_left_title">左撇子模式</string>
-  <string name="navigation_bar_left_summary">橫向模式下將導覽列置於螢幕左側</string>
-  <string name="navigation_bar_title">按鈕與配置</string>
-  <string name="navigation_bar_help_text">要開始編輯，請輕觸編輯圖示來解鎖導航列的編輯功能。\n\n您可以輕觸一個圖示來變更它的捷徑，或長按一個圖示以變更它的外觀。\n\n輕觸 \"儲存\" 以確認您的變更，或 \"還原預設值\" 以重設外觀為預設設定。</string>
+  <string name="navigation_bar_left_summary">橫向模式下將導航列置於螢幕左側</string>
+  <string name="navigation_bar_title">按鍵與配置</string>
+  <string name="navigation_bar_help_text">要開始編輯，請輕觸編輯圖示來解鎖導航列的編輯功能。\n\n您可以輕觸一個圖示來變更它的捷徑，或長按一個圖示以變更它的外觀。\n\n輕觸「儲存」以確認您的變更，或「還原預設值」以重設外觀為預設設定。</string>
   <string name="navigation_restore_button_text">還原\n預設</string>
   <string name="navigation_edit_button_text">編輯</string>
   <string name="navigation_save_button_text">儲存</string>
   <string name="navigation_bar_reset_message">刪除目前的設定並還原預設的佈局嗎？</string>
   <string name="navigation_bar_arrow_keys_title">輸入時顯示方向鍵</string>
   <string name="navigation_bar_arrow_keys_summary">輸入時顯示游標鍵。取代輸入法切換器。</string>
-  <string name="navigation_bar_recents_title">多工按鈕長按動作</string>
+  <string name="navigation_bar_recents_title">多工鍵長按動作</string>
   <!-- Notification light dialogs -->
   <string name="edit_light_settings">編輯指示燈設定</string>
   <string name="pulse_speed_title">呼吸燈長度與速度</string>
@@ -265,21 +277,24 @@
   <string name="notification_light_default_value">預設</string>
   <string name="notification_light_missed_call_title">未接來電</string>
   <string name="notification_light_voicemail_title">語音信箱</string>
-  <string name="notification_light_zen_mode">在勿擾模式下啟用指示燈</string>
+  <string name="notification_light_screen_on">螢幕開啟時依然啟用指示燈</string>
+  <string name="notification_light_zen_mode">在勿干擾模式下啟用指示燈</string>
+  <string name="notification_light_use_multiple_leds">多重 LED</string>
+  <string name="keywords_lights_brightness_level">降低 LED 亮度</string>
   <string name="notification_light_automagic">自動選擇顏色</string>
   <!-- Lights settings, LED notification -->
   <string name="led_notification_title">指示燈設定</string>
   <string name="led_notification_text">已透過設定啟用 LED 指示燈</string>
   <string name="notification_light_no_apps_summary">若要控制個別應用程式，在功能列中啟動 \'%1$s\' 和 \'\u002b\'</string>
   <!-- Setting checkbox title for Whether to enable Android debugging support on the phone. -->
-  <string name="enable_adb_cm">Android 調試</string>
+  <string name="enable_adb_cm">Android 偵錯</string>
   <!-- Setting checkbox summary for Whether to enable Android debugging support on the phone -->
   <string name="enable_adb_summary_cm">啟用 Android Debug Bridge (adb) 介面</string>
   <!-- Android debugging over WiFi -->
   <string name="adb_over_network">網路 ADB</string>
-  <string name="adb_over_network_summary">啟用透過網絡介面 (Wi-Fi、USB 網絡) 進行 TCP/IP 偵錯。此設定會於重啟後重設</string>
+  <string name="adb_over_network_summary">啟用透過網路介面 (Wi\u2011Fi、USB 網路) 進行 TCP/IP 偵錯。該設定會在重新啟動後重設</string>
   <!-- Warning for Adb over Network -->
-  <string name="adb_over_network_warning">警告：當啟用網路 ADB 時，您的手機將開放於所有已連接的網路！\n\n建議您已連接到信任的網路才使用此功能。\n\n您確定你想啟用此功能嗎？</string>
+  <string name="adb_over_network_warning">警告：當啟用網路 ADB 時，您的手機將開放於所有已連線的網路！\n\n建議您已連線到信任的網路才使用此功能。\n\n您確定您想啟用此功能嗎？</string>
   <!-- Setting checkbox summary for displaying USB debugging notification -->
   <string name="adb_notify">偵錯通知</string>
   <string name="adb_notify_summary">當啟用 USB 或 網路偵錯時顯示通知</string>
@@ -323,7 +338,7 @@
   <string name="app_ops_summaries_play_audio">播放音訊</string>
   <string name="app_ops_summaries_read_clipboard">讀取剪貼簿</string>
   <string name="app_ops_summaries_modify_clipboard">修改剪貼簿</string>
-  <string name="app_ops_summaries_media_buttons">媒體按鈕</string>
+  <string name="app_ops_summaries_media_buttons">媒體鍵</string>
   <string name="app_ops_summaries_audio_focus">音訊焦點</string>
   <string name="app_ops_summaries_master_volume">主音量</string>
   <string name="app_ops_summaries_voice_volume">語音音量</string>
@@ -340,6 +355,9 @@
   <string name="app_ops_summaries_toast_window">顯示浮動通知</string>
   <string name="app_ops_summaries_project_media">媒體投放</string>
   <string name="app_ops_summaries_activate_vpn">啟用 VPN</string>
+  <string name="app_ops_summaries_write_wallpaper">設定桌布</string>
+  <string name="app_ops_summaries_assist_structure">協助結構</string>
+  <string name="app_ops_summaries_assist_screenshot">協助螢幕截圖</string>
   <string name="app_ops_summaries_read_phone_state">讀取手機狀態</string>
   <string name="app_ops_summaries_add_voicemail">新增語音郵件</string>
   <string name="app_ops_summaries_use_sip">使用 SIP</string>
@@ -352,11 +370,11 @@
   <string name="app_ops_summaries_write_external_storage">寫到外部存儲空間</string>
   <string name="app_ops_summaries_turn_screen_on">開啟螢幕</string>
   <string name="app_ops_summaries_get_accounts">取得帳戶</string>
-  <string name="app_ops_summaries_toggle_wifi">切換 Wi-Fi</string>
-  <string name="app_ops_summaries_toggle_bluetooth">切換藍芽</string>
+  <string name="app_ops_summaries_toggle_wifi">切換至 Wi-Fi</string>
+  <string name="app_ops_summaries_toggle_bluetooth">切換至藍牙</string>
   <string name="app_ops_summaries_start_at_boot">在開機時啟動</string>
-  <string name="app_ops_summaries_toggle_nfc">切換 NFC</string>
-  <string name="app_ops_summaries_toggle_mobile_data">切換行動網路</string>
+  <string name="app_ops_summaries_toggle_nfc">切換至 NFC</string>
+  <string name="app_ops_summaries_toggle_mobile_data">切換至行動數據</string>
   <string name="app_ops_summaries_superuser">Root 權限</string>
   <!-- User display names for app ops codes - extension of AOSP -->
   <string name="app_ops_labels_coarse_location">粗略位置</string>
@@ -407,6 +425,9 @@
   <string name="app_ops_labels_toast_window">顯示 toasts 通知</string>
   <string name="app_ops_labels_project_media">媒體投放</string>
   <string name="app_ops_labels_activate_vpn">啟用 VPN</string>
+  <string name="app_ops_labels_write_wallpaper">設定桌布</string>
+  <string name="app_ops_labels_assist_structure">協助結構</string>
+  <string name="app_ops_labels_assist_screenshot">協助螢幕截圖</string>
   <string name="app_ops_labels_read_phone_state">讀取電話狀態</string>
   <string name="app_ops_labels_add_voicemail">新增語音郵件</string>
   <string name="app_ops_labels_use_sip">使用 SIP</string>
@@ -419,11 +440,11 @@
   <string name="app_ops_labels_write_external_storage">寫到外部存儲空間</string>
   <string name="app_ops_labels_turn_screen_on">開啟螢幕</string>
   <string name="app_ops_labels_get_accounts">取得帳戶</string>
-  <string name="app_ops_labels_toggle_wifi">切換 Wi-Fi</string>
-  <string name="app_ops_labels_toggle_bluetooth">切換藍芽</string>
+  <string name="app_ops_labels_toggle_wifi">切換至 Wi-Fi</string>
+  <string name="app_ops_labels_toggle_bluetooth">切換至藍牙</string>
   <string name="app_ops_labels_start_at_boot">在開機時啟動</string>
-  <string name="app_ops_labels_toggle_nfc">切換 NFC</string>
-  <string name="app_ops_labels_toggle_mobile_data">切換行動網路</string>
+  <string name="app_ops_labels_toggle_nfc">切換至 NFC</string>
+  <string name="app_ops_labels_toggle_mobile_data">切換至行動數據</string>
   <string name="app_ops_labels_superuser">Root 權限</string>
   <!-- App ops permissions -->
   <string name="app_ops_permissions_allowed">允許</string>
@@ -434,6 +455,7 @@
   <string name="app_ops_allowed_count">已允許 <xliff:g id="count" example="2 times">%s</xliff:g></string>
   <string name="app_ops_ignored_count">已拒絕 <xliff:g id="count" example="2 times">%s</xliff:g></string>
   <string name="app_ops_both_count">已允許  <xliff:g id="count">%1$s</xliff:g>，已拒絕 <xliff:g id="count">%2$s</xliff:g></string>
+  <string name="app_ops_disabled_by_optimization">透過電池最佳化停用</string>
   <!-- App ops menu options -->
   <string name="app_ops_show_user_apps">顯示使用者應用程式</string>
   <string name="app_ops_show_system_apps">顯示內建應用程式</string>
@@ -446,7 +468,7 @@
   <string name="unlock_scramble_pin_layout_title">亂序布局</string>
   <string name="unlock_scramble_pin_layout_summary">解鎖裝置時使用亂序 PIN 布局</string>
   <string name="button_pref_title">按鍵</string>
-  <string name="hardware_keys_power_key_title">電源按鈕</string>
+  <string name="hardware_keys_power_key_title">電源鍵</string>
   <string name="hardware_keys_home_key_title">主螢幕鍵</string>
   <string name="hardware_keys_back_key_title">返回鍵</string>
   <string name="hardware_keys_menu_key_title">選單鍵</string>
@@ -456,7 +478,7 @@
   <string name="hardware_keys_volume_keys_title">音量鍵</string>
   <string name="hardware_keys_short_press_title">短按動作</string>
   <string name="hardware_keys_long_press_title">長按動作</string>
-  <string name="hardware_keys_double_tap_title">輕按兩下動作</string>
+  <string name="hardware_keys_double_tap_title">輕觸兩次動作</string>
   <string name="hardware_keys_action_nothing">無動作</string>
   <string name="hardware_keys_action_menu">開啟/關閉選單</string>
   <string name="hardware_keys_action_app_switch">最近使用程式切換器</string>
@@ -466,7 +488,10 @@
   <string name="hardware_keys_action_launch_camera">啟動相機</string>
   <string name="hardware_keys_action_sleep">關閉螢幕</string>
   <string name="hardware_keys_action_last_app">最後一個應用程式</string>
+  <string name="camera_sleep_on_release_title">螢幕窺視</string>
+  <string name="camera_sleep_on_release_summary">僅有當按住按鍵時，半按鍵即可保持螢幕開啟。</string>
   <string name="camera_launch_title">開啟相機</string>
+  <string name="camera_launch_summary">按住並放開將會啟動相機</string>
   <string name="volbtn_music_controls_title">播放控制</string>
   <string name="volbtn_music_controls_summary">螢幕關閉時，長按音量鍵將可以改變音樂曲目</string>
   <string name="volbtn_cursor_control_title">鍵盤游標控制</string>
@@ -474,15 +499,15 @@
   <string name="volbtn_cursor_control_on">音量上/下使游標左/右移動</string>
   <string name="volbtn_cursor_control_on_reverse">音量上/下使游標右/左移動</string>
   <string name="power_end_call_title">結束通話</string>
-  <string name="power_end_call_summary">按下電源按鈕將會結束目前通話</string>
+  <string name="power_end_call_summary">按下電源鍵將會結束目前通話</string>
   <string name="swap_volume_buttons_title">調整方向</string>
   <string name="swap_volume_buttons_summary">旋轉螢幕時交換上/下音量鍵</string>
   <string name="button_wake_title">喚醒裝置</string>
   <string name="home_answer_call_title">接聽電話</string>
-  <string name="home_answer_call_summary">按主螢幕鍵將會接通當前來電</string>
+  <string name="home_answer_call_summary">按主螢幕鍵將會接通目前來電</string>
   <!-- Backlight brightness settings screen -->
   <string name="adaptive_backlight_title">自動背光調整</string>
-  <string name="adaptive_backlight_summary">在使用中動態調整螢幕背光亮度，以最佳化電池使用時間</string>
+  <string name="adaptive_backlight_summary">在使用中動態調整螢幕背光亮度，即可最佳化電池使用時間</string>
   <!-- Sunlight readability enhancement screen -->
   <string name="sunlight_enhancement_title">陽光增強</string>
   <string name="sunlight_enhancement_summary">在明亮的陽光下提高螢幕亮度和可讀性</string>
@@ -493,20 +518,20 @@
   <string name="button_backlight_title">背光</string>
   <string name="button_backlight_enabled">開啟按鈕背光</string>
   <string name="keyboard_backlight_enabled">開啟鍵盤背光</string>
-  <string name="button_backlight_seekbar_title">按鈕亮度</string>
+  <string name="button_backlight_seekbar_title">按鍵亮度</string>
   <string name="keyboard_backlight_seekbar_title">鍵盤亮度</string>
-  <string name="backlight_timeout_title">背光自動關閉時間</string>
+  <string name="backlight_timeout_title">背光逾時</string>
   <string name="backlight_timeout_unlimited">不要關閉</string>
   <string name="backlight_summary_disabled">已停用</string>
   <string name="backlight_summary_enabled_with_timeout">啟用 <xliff:g id="timeout">%s</xliff:g></string>
   <string name="backlight_summary_enabled">已啟用</string>
   <!-- Gesture Settings -->
   <!-- Settings main menu entry -->
-  <string name="gesture_settings_title">手勢操作</string>
+  <string name="gesture_settings_title">手勢</string>
   <!-- Power menu -->
   <string name="power_menu_title">電源功能表</string>
   <string name="power_menu_reboot_title">重新啟動選單</string>
-  <string name="power_menu_screenshot_title">螢幕擷取</string>
+  <string name="power_menu_screenshot_title">螢幕截圖</string>
   <string name="power_menu_airplane_title">飛航模式</string>
   <string name="power_menu_users_title">使用者切換器</string>
   <string name="power_menu_settings_title">設定捷徑</string>
@@ -515,19 +540,20 @@
   <string name="power_menu_sound_title">音效面板</string>
   <string name="power_menu_bug_report_disabled">已在開發人員選項中停用錯誤報告</string>
   <!-- Buttons - Enable navbar -->
-  <string name="disable_navkeys_title">啟用螢幕上的導覽列</string>
-  <string name="disable_navkeys_summary">啟用螢幕上的導航欄和停用硬件按鈕</string>
+  <string name="disable_navkeys_title">啟用螢幕上的導航列</string>
+  <string name="disable_navkeys_summary">啟用螢幕上的導航列和停用硬體按鍵</string>
   <!-- tap-to-wake -->
-  <string name="double_tap_to_wake_title">輕按兩下即可喚醒</string>
+  <string name="double_tap_to_wake_title">輕觸兩次即可喚醒</string>
   <string name="double_tap_to_wake_summary">輕點螢幕兩次來喚醒手機</string>
   <!-- tap-to-sleep -->
-  <string name="double_tap_to_sleep_title">輕按兩下即可休眠</string>
-  <string name="double_tap_to_sleep_summary">輕點兩次狀態欄來關閉螢幕</string>
+  <string name="double_tap_to_sleep_title">輕觸兩次即可休眠</string>
+  <string name="double_tap_to_sleep_summary">輕觸兩次狀態列來關閉螢幕</string>
   <!-- Proximity wake -->
   <string name="proximity_wake_title">防止意外喚醒</string>
+  <string name="proximity_wake_summary">手勢觸發喚醒前檢查接近感應器</string>
   <!-- Turn on display when power connected; turn off display when power disconnected -->
   <string name="wake_when_plugged_or_unplugged_title">接上或移除電源時喚醒</string>
-  <string name="wake_when_plugged_or_unplugged_summary">連接或拔除電源時開啟螢幕</string>
+  <string name="wake_when_plugged_or_unplugged_summary">接上或拔除電源時開啟螢幕</string>
   <!-- Font size sample text. This needs to be a very short string, as it is shown in
     multiple font sizes in a limited amount of space. -->
   <string name="font_size_sample">範例</string>
@@ -535,6 +561,7 @@
   <string name="volume_adjust_sounds_title">音量調整指示音</string>
   <!-- Hardware tunables - Vibrator intensity -->
   <string name="vibrator_intensity_title">震動強度</string>
+  <string name="vibrator_warning">數值不建議大於%1$d%%</string>
   <!-- Hardware tunables - Color calibration -->
   <string name="color_calibration_title">顏色校準</string>
   <string name="color_calibration_summary">校準螢幕上的顏色</string>
@@ -545,19 +572,20 @@
   <string name="headset_connect_player_title">啟動音樂應用程式</string>
   <string name="headset_connect_player_summary">插入耳機時啟動預設音樂應用程式</string>
   <!-- WiFi auto-configure priorities -->
+  <string name="wifi_auto_config_priorities">自動優先順序</string>
   <string name="auto_brightness_reset_button">重設</string>
   <!-- Display : Rotation  -->
   <string name="display_rotation_title">旋轉</string>
   <string name="display_rotation_disabled">已停用</string>
   <string name="display_rotation_unit">度</string>
-  <string name="display_lockscreen_rotation_title">旋轉鎖定畫面</string>
+  <string name="display_lockscreen_rotation_title">旋轉鎖定螢幕</string>
   <string name="display_rotation_category_title">旋轉模式</string>
   <string name="display_rotation_0_title">0 度</string>
   <string name="display_rotation_90_title">90 度</string>
   <string name="display_rotation_180_title">180 度</string>
   <string name="display_rotation_270_title">270 度</string>
   <!-- LiveDisplay -->
-  <string name="live_display_summary">基於日夜和環境條件調整您的螢幕色溫，以改善可讀性和減少眼睛疲勞</string>
+  <string name="live_display_summary">根據日夜和環境條件調整您的螢幕色溫，即可改善可讀性和減少眼睛疲勞</string>
   <string name="live_display_mode">顯示模式</string>
   <string name="live_display_color_temperature_title">色溫</string>
   <string name="live_display_color_temperature_summary">白天：<xliff:g id="day_temperature">%1$d</xliff:g>K 夜晚：<xliff:g id="night_temperature">%2$d</xliff:g>K</string>
@@ -570,17 +598,29 @@
   <string name="live_display_low_power_summary">在不降低亮度的情況下調整顯示以降低耗電</string>
   <string name="live_display_enhance_color_title">增強色彩</string>
   <string name="live_display_enhance_color_summary">為色調、 風景和其他圖片提高色調</string>
+  <string name="live_display_color_profile_title">色彩設定檔</string>
   <string name="live_display_color_profile_standard_title">標準</string>
+  <string name="live_display_color_profile_standard_summary">準確的色彩和明亮的白色</string>
   <string name="live_display_color_profile_natural_title">自然</string>
+  <string name="live_display_color_profile_natural_summary">現實的色彩和自然的膚色</string>
   <string name="live_display_color_profile_dynamic_title">動態</string>
+  <string name="live_display_color_profile_dynamic_summary">增強的色彩和明亮的白色</string>
   <string name="live_display_color_profile_cinema_title">劇院</string>
   <string name="live_display_color_profile_cinema_summary">完美重現影片色彩</string>
+  <string name="live_display_color_profile_astronomy_title">天文學</string>
+  <string name="live_display_color_profile_astronomy_summary">深紅色即可保護夜間視力</string>
   <string name="live_display_color_profile_photography_title">攝影</string>
   <string name="live_display_color_profile_photography_summary">完美重現照片色彩</string>
   <string name="live_display_color_profile_basic_title">基本</string>
   <string name="live_display_color_profile_basic_summary">使用未校正的顯示</string>
+  <string name="live_display_color_profile_adaptive_title">自動調節</string>
+  <string name="live_display_color_profile_adaptive_summary">自動按環境條件調節顏色</string>
   <!-- LiveDisplay : Picture Adjustment -->
+  <string name="picture_adjustment_title">調整圖片</string>
+  <string name="picture_adjustment_summary">調整色相、 飽和度、 強度和對比度</string>
+  <string name="adj_hue_title">色相</string>
   <string name="adj_saturation_title">飽和度</string>
+  <string name="adj_intensity_title">強度</string>
   <string name="adj_contrast_title">對比度</string>
   <!-- Whether to display IME switcher notifcation -->
   <string name="ime_switcher_notify">輸入法選擇器圖示</string>
@@ -592,14 +632,14 @@
   <!-- Bluetooth settings.  A checkbox to set if we should accept all the file types regardless of their presence in MIME type whitelist -->
   <string name="bluetooth_accept_all_files">接受所有檔案類型</string>
   <!-- High touch sensitivity -->
-  <string name="high_touch_sensitivity_title">高觸摸靈敏度</string>
+  <string name="high_touch_sensitivity_title">高觸控靈敏度</string>
   <string name="high_touch_sensitivity_summary">增加觸控螢幕的靈敏度，因此戴著手套也可以使用手機</string>
   <!-- Display & Lights screen, setting options for LCD density -->
   <string name="lcd_density">LCD密度</string>
   <string name="dialog_title_lcd_density">LCD密度</string>
   <string name="lcd_density_value_format">DPI %d</string>
   <string name="lcd_density_default_value_format">%d DPI (預設值)</string>
-  <string name="restarting_ui">重新開機 UI\u2026</string>
+  <string name="restarting_ui">正在重新啟動使用者介面\u2026</string>
   <!-- Stylus Icon -->
   <string name="stylus_icon_enabled_title">使用觸控筆時顯示圖示</string>
   <string name="stylus_icon_enabled_summary">使用觸控筆漂浮或繪圖時顯示指標圖示</string>
@@ -608,14 +648,14 @@
   <string name="category_spen_title">觸控筆手勢</string>
   <string name="enable_subcat_title">觸控筆</string>
   <string name="enable_spen_title_head">啟用手勢</string>
-  <string name="enable_spen_summary_head">按住觸控筆按鈕以使用滑動手勢</string>
+  <string name="enable_spen_summary_head">按住觸控筆按鍵以使用滑動手勢</string>
   <string name="gestures_subcat_title">手勢</string>
   <string name="gestures_left_spen_title_head">向左滑動</string>
   <string name="gestures_right_spen_title_head">向右滑動</string>
   <string name="gestures_up_spen_title_head">向上滑動</string>
   <string name="gestures_down_spen_title_head">向下滑動</string>
   <string name="gestures_long_spen_title_head">長按</string>
-  <string name="gestures_double_spen_title_head">輕按兩下</string>
+  <string name="gestures_double_spen_title_head">輕觸兩次</string>
   <!-- Gestures Options -->
   <string name="gestures_action_empty">無動作</string>
   <string name="gestures_action_home">首頁</string>
@@ -633,6 +673,12 @@
   <string name="increasing_ring_min_volume_title">開始音量</string>
   <string name="increasing_ring_ramp_up_time_title">漸強時間</string>
   <!-- LTO download data over wi-fi only -->
+  <string name="lto_download_data_wifi_only">GPS 輔助資料已下載</string>
+  <string name="lto_download_data_wifi_only_on">透過任何網絡</string>
+  <string name="lto_download_data_wifi_only_off">僅透過 Wi\u2011Fi 網路</string>
+  <string name="volume_keys_control_ring_stream_title">控制鈴聲音量</string>
+  <string name="volume_keys_control_ring_stream_summary_on">音量鍵控制鈴聲音量</string>
+  <string name="volume_keys_control_ring_stream_summary_off">音量鍵控制媒體音量</string>
   <string name="category_calibration">校正</string>
   <string name="display_and_lights">顯示與指示燈</string>
   <!-- Category title for Charging sounds (Power state change) specific Settings.
@@ -658,13 +704,13 @@
   <string name="status_bar_quick_qs_pulldown_summary_left">居左</string>
   <string name="status_bar_quick_qs_pulldown_summary_right">居右</string>
   <string name="status_bar_quick_qs_pulldown_off">關閉</string>
-  <string name="status_bar_quick_qs_pulldown_left">居左</string>
-  <string name="status_bar_quick_qs_pulldown_right">居右</string>
+  <string name="status_bar_quick_qs_pulldown_left">靠左</string>
+  <string name="status_bar_quick_qs_pulldown_right">靠右</string>
   <!-- Status bar - Clock -->
-  <string name="status_bar_clock_style_title">時鐘風格</string>
-  <string name="status_bar_clock_style_right">居右</string>
-  <string name="status_bar_clock_style_left">居左</string>
-  <string name="status_bar_clock_style_center">中間</string>
+  <string name="status_bar_clock_style_title">時鐘樣式</string>
+  <string name="status_bar_clock_style_right">靠右</string>
+  <string name="status_bar_clock_style_left">靠左</string>
+  <string name="status_bar_clock_style_center">置中</string>
   <string name="status_bar_clock_style_hidden">隱藏</string>
   <string name="status_bar_am_pm_title">上午/下午樣式</string>
   <string name="status_bar_am_pm_info">24小時制時鐘已啟用</string>
@@ -688,7 +734,7 @@
   <string name="status_bar_icons_summary">控制顯示哪些狀態列圖示</string>
   <!-- EdgeGesture service -->
   <string name="edge_gesture_service_title">攔截手勢觸控事件</string>
-  <string name="edge_gesture_service_summary">不向應用程式傳送導覽列與狀態列手勢的觸控事件</string>
+  <string name="edge_gesture_service_summary">不向應用程式傳送導航列與狀態列手勢的觸控事件</string>
   <!-- Keep screen on strings -->
   <string name="keep_screen_on_never">永不</string>
   <string name="keep_screen_on_debugging">在 USB 偵錯時</string>
@@ -704,22 +750,26 @@
   <string name="privacy_guard_help_title">說明</string>
   <string name="privacy_guard_reset_title">重設</string>
   <string name="privacy_guard_reset_text">重設權限？</string>
-  <string name="privacy_guard_help_text">在此畫面您只要輕按應用程式即可選擇是否對其啟用隱私守衛。被選取的應用程式將不能存取您的個人資料，例如聯絡人、訊息或通話記錄。長按應用程式可開啟其應用程式資訊畫面。\n\n內建應用程式預設不會顯示，但是可從選單中開啟顯示。</string>
+  <string name="privacy_guard_help_text">在此畫面您只要輕觸應用程式即可選擇是否對其啟用隱私守衛。被選取的應用程式將不能存取您的個人資料，例如聯絡人、訊息或通話記錄。長按應用程式可開啟其應用程式資訊畫面。\n\n內建應用程式預設不會顯示，但是可從選單中開啟顯示。</string>
   <string name="privacy_guard_manager_show_system_apps">顯示系統應用程式</string>
   <string name="privacy_guard_advanced_settings_title">進階</string>
+  <string name="privacy_guard_notification_title">顯示通知</string>
   <!-- Sizes for pattern lockscreen -->
   <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
   <string name="lockpattern_settings_enable_error_path_title">顯示解鎖圖形錯誤</string>
   <!-- Whether the dots will be drawn when using the lockscreen pattern -->
   <string name="lockpattern_settings_enable_dots_title">顯示解鎖圖形點</string>
   <!-- Whether the keyguard will directly pass to password entry -->
+  <string name="lock_directly_show_password">直接顯示密碼輸入框</string>
   <!-- Whether the keyguard will directly pass to pattern view -->
+  <string name="lock_directly_show_pattern">直接顯示圖形密碼輸入</string>
   <!-- Whether the keyguard will directly pass to PIN entry -->
+  <string name="lock_directly_show_pin">直接顯示 PIN 碼輸入框</string>
   <!-- lock screen visualizer -->
   <string name="lockscreen_visualizer_title">顯示音樂視覺效果</string>
   <!-- lock screen disabled by QS tile warning -->
   <string name="lockscreen_disabled_by_qs_tile_title">經由快速設定瓷磚停用</string>
-  <string name="lockscreen_disabled_by_qs_tile_summary">點擊以啟用螢幕鎖定</string>
+  <string name="lockscreen_disabled_by_qs_tile_summary">輕觸即可啟用螢幕鎖定</string>
   <string name="lockscreen_disabled_by_qs_tile_summary_enabled">螢幕鎖定已啟用</string>
   <!-- Battery saver -->
   <string name="battery_saver_threshold">省電助手的閾值</string>
@@ -727,6 +777,7 @@
   <string name="battery_saver_summary_unavailable">無法在充電時啟用</string>
   <!-- Battery : Automatic performance profiles -->
   <string name="autoperf_title">啟用應用程式專屬 (per-app) 設定檔</string>
+  <string name="autoperf_summary">為不同應用程式自動選擇合適的電池模式</string>
   <string name="perf_profile_title">電池模式</string>
   <!-- Memory -->
   <string name="memory_startup_apps_title">開機時啟動的應用程式</string>
@@ -737,22 +788,22 @@
   <string name="advanced_reboot_summary">當解鎖後，加入重啟進入 recovery 或 bootloader 或進行軟重啟的選項至電源選單</string>
   <string name="category_interface">介面</string>
   <!-- Expanded desktop -->
-  <string name="power_menu_expanded_desktop">擴展桌面</string>
+  <string name="power_menu_expanded_desktop">延伸桌面</string>
   <string name="expanded_hide_nothing">不隱藏</string>
   <string name="expanded_hide_status">隱藏狀態列</string>
-  <string name="expanded_hide_navigation">隱藏導覽列</string>
+  <string name="expanded_hide_navigation">隱藏導航列</string>
   <string name="expanded_hide_both">全部隱藏</string>
-  <string name="expanded_nothing_to_show">若要添加一個讓應用程式啟動的擴展狀態，請先關閉“全部開啟”</string>
-  <string name="expanded_enabled_for_all">啟動全部</string>
-  <string name="expanded_desktop_style">擴展桌面樣式</string>
-  <string name="expanded_desktop_style_description">選擇個默認的擴展桌面樣式</string>
-  <string name="expanded_desktop_title">擴展桌面選項</string>
+  <string name="expanded_nothing_to_show">若要新增一個讓應用程式啟動的延伸狀態，請先關閉「全部啟用」</string>
+  <string name="expanded_enabled_for_all">全部啟用</string>
+  <string name="expanded_desktop_style">延伸桌面樣式</string>
+  <string name="expanded_desktop_style_description">選擇個預設的延伸桌面樣式</string>
+  <string name="expanded_desktop_title">延伸桌面選項</string>
   <!-- Kill app long-press back -->
-  <string name="kill_app_longpress_back">返回按鈕可終止應用程式</string>
+  <string name="kill_app_longpress_back">返回鍵可終止應用程式</string>
   <string name="kill_app_longpress_back_summary">長按返回鍵終止前景應用程式</string>
   <!-- Show/Hide Search Bar -->
   <string name="recents_show_searchbar">在最近使用總覽中顯示搜尋列</string>
-  <string name="keywords_recents_show_searchbar">最近 最近 停用 啟用 顯示 隱藏 搜索欄 搜索欄</string>
+  <string name="keywords_recents_show_searchbar">最近 最近 停用 啟用 顯示 隱藏 搜尋列 搜尋列</string>
   <!-- Voice Wakeup -->
   <string name="voice_wakeup_settings_title">語音喚醒</string>
   <string name="voice_wakeup_retrain_title">重新訓練您的語音</string>
@@ -767,7 +818,7 @@
   <string name="blacklist_edit_dialog_title">更改已封鎖的電話號碼</string>
   <string name="blacklist_prefs">設定</string>
   <string name="blacklist_button_delete">刪除</string>
-  <string name="blacklist_empty_text">您沒有任何已封鎖的號碼，輕觸新增 (+) 按鈕加入號碼。</string>
+  <string name="blacklist_empty_text">您沒有任何已封鎖的號碼，輕觸新增 (+) 按鍵加入號碼。</string>
   <string name="blacklist_disabled_empty_text">為了防止某些電話號碼打電話或傳簡訊給您，請啟用已封鎖來電者名單功能。</string>
   <string name="blacklist_summary_disabled">已停用</string>
   <string name="blacklist_summary">您將不會收到任何在已封鎖來電者名單上的電話號碼的來電或簡訊</string>
@@ -807,9 +858,9 @@
   <string name="anonymous_statistics_title">CyanogenMod 統計</string>
   <string name="anonymous_statistics_summary">加入匿名統計報告以協助改進 CyanogenMod</string>
   <string name="anonymous_statistics_warning_title">關於</string>
-  <string name="anonymous_statistics_warning">加入 CyanogenMod 統計將允許非個人資料被提交到 CyanogenMod 的開發者，
+  <string name="anonymous_statistics_warning">加入 CyanogenMod 統計將允許非個人資料被提交到 CyanogenMod 的開發人員，
         以追蹤每個裝置上的獨特安裝。提交的資訊包含一個唯一識別碼，此識別碼並不會泄露您的隱私或個人資料。
-        該資料在每次開機時被提交。\n\n輕按預覽資料以預覽被提交資料的例子。</string>
+        該資料在每次開機時被提交。\n\n輕觸預覽資料以預覽被提交資料的例子。</string>
   <string name="enable_reporting_title">啟用報告</string>
   <string name="preview_data_title">預覽資料</string>
   <string name="view_stats_title">檢視統計</string>
@@ -829,21 +880,29 @@
   <string name="menu_hidden_apps_delete">重設</string>
   <string name="menu_hidden_apps_reset_lock">重設圖形鎖</string>
   <string name="protected_apps">受保護的應用程式</string>
+  <string name="protected_apps_summary">管理安全鎖下隱藏的應用程式</string>
   <string name="saving_protected_components">儲存組件狀態\u2026</string>
-  <string name="pa_login_username_hint">使用者名稱（電子郵件）</string>
   <string name="pa_login_password_hint">密碼</string>
   <string name="pa_login_submit_button">登入</string>
   <string name="pa_login_checking_password">正在檢查帳戶\u2026</string>
   <string name="pa_login_incorrect_login">登入不正確</string>
-  <string name="pa_pattern_or_fingerprint_header">必須使用圖形或指紋解鎖</string>
+  <string name="pa_pattern_or_fingerprint_header">必須使用解鎖圖形或指紋解鎖</string>
   <!-- Contributors cloud activity -->
   <string name="contributors_cloud_fragment_title">貢獻者</string>
   <string name="contributors_cloud_loading_message">貢獻者名單載入中\u2026</string>
+  <string name="contributors_cloud_failed_message">無法載入貢獻者資料</string>
   <string name="contributor_info_menu">貢獻者名單</string>
+  <string name="contributor_info_msg"> <![CDATA[<b>名稱：</b> <xliff:g id="name">%1$s</xliff:g><br/><br/>
+          <b>暱稱：</b> <xliff:g id="nick">%2$s</xliff:g><br/><br/>
+          <b>提交：</b> <xliff:g id="commits">%3$s</xliff:g>]]></string>
   <string name="contributions_info_menu">貢獻者名單</string>
+  <string name="contributions_info_msg">
+        <![CDATA[<b>總貢獻者：</b> <xliff:g id="total_contributors">%1$s</xliff:g><br/><br/>
+                 <b>總認可：</b> <xliff:g id="total_commits">%2$s</xliff:g><br/><br/>
+                 <b>最後一次更新：</b> <xliff:g id="date">%3$s</xliff:g>]]></string>
   <string name="category_sounds">音效</string>
   <string name="notification_manager">通知</string>
-  <string name="lockscreen_settings">鎖定畫面</string>
+  <string name="lockscreen_settings">鎖定螢幕</string>
   <string name="category_lights">指示燈</string>
   <string name="category_volume">音量</string>
   <string name="category_vibrate">震動</string>
@@ -851,11 +910,13 @@
   <string name="title_general">一般</string>
   <string name="advanced">進階</string>
   <string name="link_volume_option_title">同步鈴聲和通知音量</string>
-  <string name="lcd_density_prompt_message">有些應用程式可能無法在非標準 DPI 下運行。\n\n這將重啟您的設備。</string>
+  <string name="lcd_density_prompt_message">有些應用程式可能無法在非標準 DPI 下執行。\n\n這將重新啟動您的裝置。</string>
   <!-- Edit access point labels: PPP number -->
+  <string name="apn_ppp_number">APN PPP 電話號碼</string>
   <!-- APNs screen message indicating new APN user is adding is a duplicate -->
   <string name="duplicate_apn_error_title">重覆的 APN</string>
   <string name="duplicate_apn_error_message">此 APN 已存在，請放棄或修改參數。</string>
+  <string name="sim_enabler_summary"><xliff:g id="displayName">%1$s</xliff:g>是<xliff:g id="status" example="disabled">%2$s</xliff:g></string>
   <string name="sim_disabled">已停用</string>
   <string name="sim_missing">遺失或毀損</string>
   <string name="sim_enabler_need_disable_sim">SIM 卡將被停用，確定要繼續嗎？</string>
@@ -865,7 +926,7 @@
   <string name="sim_enabler_in_call">通話時無法進行此操作。</string>
   <string name="sim_enabler_both_inactive">無法停用所有 SIM 卡</string>
   <string name="sim_enabler_enabling">啟用中\u2026</string>
-  <string name="sim_enabler_disabling">禁用中\u2026</string>
+  <string name="sim_enabler_disabling">正在停用\u2026</string>
   <string name="sub_activate_success">SIM 卡已經啟用。</string>
   <string name="sub_activate_failed">啟用失敗。</string>
   <string name="sub_deactivate_success">SIM 卡已經停用。</string>
@@ -874,7 +935,7 @@
   <string name="select_sim_card">選擇 SIM 卡</string>
   <!-- MSIM SIM status -->
   <string name="sim_card_status_title">Sim 卡 %d 狀態</string>
-  <string name="sim_card_lock_settings_title">Sim 卡 %d 鎖定設置</string>
+  <string name="sim_card_lock_settings_title">Sim 卡 %d 鎖定設定</string>
   <string name="sim_card_summary_empty">沒有插入Sim卡</string>
   <string name="sim_mobile_network_settings_category_title">行動網路設定</string>
   <string name="sim_mobile_network_settings_title">Sim 卡 %d 設定</string>
@@ -884,9 +945,14 @@
   <!-- [CHAR LIMIT=50] Like zen_mode_events, but part of a list, so lower case if needed -->
   <string name="zen_mode_summary_events">事件</string>
   <!-- [CHAR LIMIT=50] Like zen_mode_summary_selected_callers, but part of a list, so lower case if needed -->
+  <string name="zen_mode_summary_selected_callers">已選的來電者</string>
   <!-- [CHAR LIMIT=50] Like zen_mode_summary_selected_messages, but part of a list, so lower case if needed -->
   <string name="zen_mode_summary_selected_messages">已選的訊息</string>
   <!-- Allow vibration in zen mode -->
+  <string name="zen_mode_vibration">震動</string>
+  <string name="zen_mode_vibration_never">不震動</string>
+  <string name="zen_mode_vibration_calls_only">僅來電震動</string>
+  <string name="zen_mode_vibration_calls_and_notifications">通話和通知震動</string>
   <!-- About phone settings screen, setting option dialog title to show regulatory information [CHAR LIMIT=25] -->
   <!-- SAR information -->
   <string name="maximum_head_level">頭部：%1$s W/kg</string>
@@ -902,45 +968,63 @@
   <!-- label for usage time -->
   <string name="usage_time_label_cm">使用時間：</string>
   <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
+  <string name="master_clear_desc_cm" product="tablet">該操作將從您的平板電腦<b>內部存儲裝置</b>清除所有資料，其中包括：\n\n <li>您的裝置帳戶</li>\n<li>系統和應用程式的資料及設定</li> \n <li>已下載的應用程式</li></string>
   <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
+  <string name="master_clear_desc_cm" product="default">該操作將從您的手機<b>內部存儲裝置</b>清除所有資料，其中包括：\n\n <li>您的裝置帳戶</li>\n<li>系統和應用程式的資料及設定</li> \n <li>已下載的應用程式</li></string>
   <!-- Factory reset strings -->
   <string name="factory_reset_instructions_title">個人資料和應用程式</string>
-  <string name="factory_reset_instructions_summary">這將移除在此設備上您所有帳戶、應用程式、應用程式資料及系統設置</string>
+  <string name="factory_reset_instructions_summary">這將移除在此裝置上您所有帳戶、應用程式、應用程式資料及系統設定</string>
   <string name="factory_reset_personal_content">個人內容</string>
   <string name="factory_reset_erase_stored_content">移除存儲內容</string>
-  <string name="factory_reset_erase_stored_content_summary">移除音樂、相片、視頻及其他儲存在此設備上的用戶資料</string>
-  <string name="factory_reset_erase_stored_content_summary_forced">移除音樂、相片、視頻及其他儲存在此設備上的用戶資料。\n\n<b>由於設備加密，無法儲存內容。</b></string>
+  <string name="factory_reset_erase_stored_content_summary">移除音樂、照片、影片及其他儲存在此裝置上的使用者資料</string>
+  <string name="factory_reset_erase_stored_content_summary_forced">移除音樂、照片、影片及其他儲存在此裝置上的使用者資料。\n\n<b>由於裝置加密，無法儲存內容。</b></string>
   <string name="factory_reset_erase_sd_card">格式化SD卡</string>
   <string name="factory_reset_erase_sd_card_summary">移除SD卡上所有資料，包括音樂和相片。</string>
   <string name="factory_reset_warning_text_reset_now">現在重置</string>
-  <string name="factory_reset_warning_text_message">您所有帳戶、應用程式、應用程式資料及系統設置將從此設備上移除，並不可逆轉。</string>
+  <string name="factory_reset_warning_text_message">您所有帳戶、應用程式、應用程式資料及系統設定將從此裝置上移除，並不可逆轉。</string>
   <!-- Tethering & portable hotspot other category -->
   <string name="tethering_other_category_text">其他</string>
   <!-- Wi-Fi tethering inactivity timeout -->
+  <string name="hotstpot_inactivity_timeout_text">Wi\u2011Fi 熱點逾時</string>
   <string name="hotstpot_inactivity_timeout_never">永不</string>
   <string name="hotstpot_inactivity_timeout_1_minute">1 分鐘</string>
   <string name="hotstpot_inactivity_timeout_5_minutes">5 分鐘</string>
   <string name="hotstpot_inactivity_timeout_10_minutes">10 分鐘</string>
+  <string name="hotstpot_inactivity_timeout_never_summary_text">可攜式 Wi\u2011Fi 熱點將永不逾時</string>
+  <string name="hotstpot_inactivity_timeout_summary_text">可攜式 Wi\u2011Fi 熱點將於 <xliff:g id="timeout">%1$s</xliff:g> 後逾時</string>
   <!-- Live lock screen -->
   <!-- Live lock screen title -->
+  <string name="live_lock_screen_title">活動鎖定螢幕</string>
   <!-- Live lock screen summary -->
+  <string name="live_lock_screen_summary">啟用並設定活動鎖定螢幕</string>
   <!-- Live lock screen settings content description -->
   <string name="live_lock_screen_settings_button">設定</string>
   <!-- Live lock screen settings screen, caption for when live lock screens are disabled -->
+  <string name="live_lock_screen_settings_disabled_prompt">要查看可用的活動鎖定螢幕，請啟用活動鎖定螢幕。</string>
   <string name="interruptions_ignore_while_media_title">防止聲音回避</string>
   <string name="interruptions_ignore_while_media_summary">有通知時，不減少媒體播放的音量</string>
   <!-- CM Legal -->
   <string name="cmlicense_title">CyanogenMod 法律條款</string>
   <!-- Menu label for reset the battery stats -->
+  <string name="menu_stats_reset">重設統計</string>
   <!-- Reset stats confirmation dialog's message -->
+  <string name="reset_stats_msg">將會重設電池記錄數據</string>
   <!-- Dock battery not present message -->
+  <string name="dock_battery_not_present">座架電池不存在</string>
   <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging on Dock AC. -->
+  <string name="battery_info_status_charging_dock_ac">正在 AC 插口上充電</string>
   <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging over Dock USB. -->
+  <string name="battery_info_status_charging_dock_usb">正在透過 USB 插口充電</string>
+  <string name="restrict_app_wlan_title">停用應用程式使用 Wi\u2011Fi</string>
+  <string name="restrict_app_wlan_summary">防止應用程式使用 Wi\u2011Fi 數據連線</string>
+  <string name="restrict_app_cellular_title">停用應用程式使用行動網路</string>
+  <string name="restrict_app_cellular_summary">防止應用程式使用行動數據連線</string>
   <string name="privacy_guard_internet_category">網路</string>
   <!-- Weather -->
   <string name="weather_settings_title">天氣</string>
   <string name="weather_settings_no_services_prompt">沒有安裝任何天氣服務</string>
   <string name="weather_settings_button">服務選項</string>
+  <string name="weather_settings_activity_not_found">無法為此天氣服務啟動設定選單</string>
   <string name="weather_settings_add_weather_provider">新增天氣服務</string>
   <string name="weather_settings_general_settings_title">一般</string>
   <string name="weather_settings_providers_title">天氣服務</string>
@@ -948,9 +1032,21 @@
   <string name="weather_settings_temp_celsius">攝氏</string>
   <string name="weather_settings_temp_fahrenheit">華氏</string>
   <string name="weather_settings_keyword">天氣</string>
+  <string name="background_data_access">背景資料存取權限</string>
+  <string name="allow_background_both">透過行動數據和 Wi\u2011Fi</string>
+  <string name="allow_background_wlan">僅限 Wi-Fi</string>
+  <string name="allow_background_none">無存取權限</string>
+  <string name="mobile_data_alert">行動數據警報</string>
+  <string name="mobile_data_alert_summary">當應用程式使用大量數據時通知</string>
   <string name="data_usage_menu_enable_data_alerts">啟用資料使用警告</string>
-  <string name="data_usage_menu_disable_data_alerts">關閉資料使用警告</string>
+  <string name="data_usage_menu_disable_data_alerts">停用資料使用警告</string>
+  <string name="data_usage_menu_reset_stats">重設資料統計資料</string>
+  <string name="reset_data_stats_msg">這將清除所有過去和現在的追蹤資料</string>
   <string name="reset_stats_confirm">確認</string>
+  <string name="restrict_cellular_access_title">限制行動數據存取</string>
+  <string name="restrict_cellular_access_summary">停用行動數據資料存取權限</string>
+  <string name="restrict_cellular_access_dialog_title">限制行動數據存取？</string>
+  <string name="restrict_cellular_access_dialog_summary">此功能可能會導致依賴於網路存取的應用程式停止工作時，只有行動網路可用。\n\n您可以在應用程式中的可用設定中找到更合適的使用數據控制。</string>
   <!-- Label for settings shortcut: carrier selection -->
   <string name="shortcut_carrier_title">電信業者</string>
   <!-- title for lock screen blur preference -->
@@ -959,17 +1055,44 @@
   <string name="lockscreen_weather_enabled_title">顯示天氣資訊</string>
   <!-- Per app controls for LP keyguard notifications -->
   <string name="app_notification_show_on_keyguard_title">在鎖定螢幕上顯示</string>
-  <string name="app_notification_show_on_keyguard_summary">在鎖定畫面中顯示此應用程式的通知</string>
-  <string name="app_notification_no_ongoing_on_keyguard_title">在鎖屏上停用持久通知</string>
-  <string name="app_notification_no_ongoing_on_keyguard_summary">在鎖屏上不再顯示來自此應用程式的持久通知</string>
+  <string name="app_notification_show_on_keyguard_summary">在鎖定螢幕中顯示此應用程式的通知</string>
+  <string name="app_notification_no_ongoing_on_keyguard_title">在鎖定螢幕上停用持續性通知</string>
+  <string name="app_notification_no_ongoing_on_keyguard_summary">在鎖定螢幕上不再顯示來自此應用程式的持續性通知</string>
   <!-- Notification sound timeout -->
+  <string name="app_notification_sound_timeout_title">通知音效之間的最短時間</string>
+  <string name="app_notification_sound_timeout_summary_template">允許音效或震動每一次不超過 <xliff:g id="duration">%1$s</xliff:g></string>
+  <string name="app_notification_sound_timeout_value_none">無限制</string>
+  <string name="app_notification_sound_timeout_value_10_seconds">10 秒</string>
+  <string name="app_notification_sound_timeout_value_30_seconds">30 秒</string>
+  <string name="app_notification_sound_timeout_value_1_minute">1 分鐘</string>
+  <string name="app_notification_sound_timeout_value_5_minutes">5 分鐘</string>
+  <string name="app_notification_sound_timeout_value_15_minutes">10 分鐘</string>
+  <string name="app_notification_sound_timeout_value_30_minutes">30 分鐘</string>
   <!-- CmRadioInfo -->
   <string name="cm_radio_info_label">加強無線管理</string>
   <!-- Radio Control (IMS/MBN etc.) -->
+  <string name="cm_radio_info_mbn_auto_load_on_label">關閉MBN自動存取</string>
+  <string name="cm_radio_info_mbn_auto_load_off_label">開啟MBN自動存取</string>
   <string name="cm_radio_info_volte_avail_ovr_on_label">關閉 VoLTE 偵錯</string>
+  <string name="cm_radio_info_volte_avail_ovr_off_label">開啟 VoLTE 偵錯</string>
+  <string name="cm_radio_info_vt_avail_ovr_on_label">關閉 VT 偵錯</string>
+  <string name="cm_radio_info_vt_avail_ovr_off_label">開啟 VT 偵錯</string>
+  <string name="cm_radio_info_wfc_avail_ovr_on_label">關閉 WFC 偵錯</string>
+  <string name="cm_radio_info_wfc_avail_ovr_off_label">開啟 WFC 偵錯</string>
+  <string name="cm_radio_info_adb_log_on_label">關閉 ADB 無線電記錄</string>
+  <string name="cm_radio_info_adb_log_off_label">開啟 ADB 無線電記錄</string>
+  <string name="cm_radio_info_diag_log_on_label">關閉診斷記錄</string>
+  <string name="cm_radio_info_diag_log_off_label">開啟診斷記錄</string>
   <!-- Lock screen wallpaper -->
   <string name="lockscreen_wallpaper_title">桌布</string>
+  <string name="not_available_with_app">不適用於 %1$s</string>
   <!-- Format string for fingerprint location message -->
+  <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">在您的手機 <xliff:g id="sensor_location">%1$s</xliff:g> 找到指紋感應器。</string>
   <!-- Fingerprint sensor locations -->
+  <string name="security_settings_fingerprint_sensor_location_back">後置</string>
+  <string name="security_settings_fingerprint_sensor_location_front">前置</string>
+  <string name="security_settings_fingerprint_sensor_location_left">左側</string>
+  <string name="security_settings_fingerprint_sensor_location_right">右側</string>
   <!-- SIM status format string -->
+  <string name="sim_status_format_string">語音︰ <xliff:g id="voice_status">%1$s </xliff:g> / 資料︰ <xliff:g id="data_status">%2$s </xliff:g></string>
 </resources>
