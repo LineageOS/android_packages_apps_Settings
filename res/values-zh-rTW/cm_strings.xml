@@ -18,7 +18,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to show Device Id -->
   <plurals name="show_device_id_countdown_cm">
-    <item quantity="other">您只需完成剩餘的 <xliff:g id="step_count">%1$d</xliff:g> 個步驟，即可查詢裝置 ID。</item>
+    <item quantity="other">您僅需完成剩餘的 <xliff:g id="step_count">%1$d</xliff:g> 個步驟，即可查詢裝置 ID。</item>
   </plurals>
   <!--  Device Info screen. Confirmation that Device ID is copied to clipboard -->
   <string name="show_device_id_copied_cm">裝置 ID：[<xliff:g id="device_id">%1$s</xliff:g>] 已複製到剪貼簿</string>
@@ -102,7 +102,7 @@
   <string name="profile_remove_current_profile">無法刪除目前的設定檔</string>
   <string name="profile_app_group_category_title">覆蓋通知</string>
   <string name="profile_app_group_item_instructions">新增或移除群組</string>
-  <string name="profile_app_group_item_instructions_summary">添加或刪除覆蓋通知應用程式到此設定檔</string>
+  <string name="profile_app_group_item_instructions_summary">新增或刪除覆蓋通知應用程式到此設定檔</string>
   <!-- Profile mode options. -->
   <string name="profile_entries_on">開啟</string>
   <string name="profile_entries_off">關閉</string>
@@ -234,7 +234,7 @@
   <string name="navigation_bar_left_title">左撇子模式</string>
   <string name="navigation_bar_left_summary">橫向模式下將導航列置於螢幕左側</string>
   <string name="navigation_bar_title">按鍵與配置</string>
-  <string name="navigation_bar_help_text">要開始編輯，請輕觸編輯圖示來解鎖導航列的編輯功能。\n\n您可以輕觸一個圖示來變更它的捷徑，或長按一個圖示以變更它的外觀。\n\n輕觸「儲存」以確認您的變更，或「還原預設值」以重設外觀為預設設定。</string>
+  <string name="navigation_bar_help_text">要開始編輯，請輕觸編輯圖示來解鎖導航列的編輯功能。\n\n您可以輕觸一個圖示來更改它的捷徑，或長按一個圖示即可更改它的外觀。\n\n輕觸「儲存」即可確認您的更改，或「還原預設值」即可重設外觀為預設設定。</string>
   <string name="navigation_restore_button_text">還原\n預設</string>
   <string name="navigation_edit_button_text">編輯</string>
   <string name="navigation_save_button_text">儲存</string>
@@ -285,7 +285,7 @@
   <!-- Lights settings, LED notification -->
   <string name="led_notification_title">指示燈設定</string>
   <string name="led_notification_text">已透過設定啟用 LED 指示燈</string>
-  <string name="notification_light_no_apps_summary">若要控制個別應用程式，在功能列中啟動 \'%1$s\' 和 \'\u002b\'</string>
+  <string name="notification_light_no_apps_summary">若要控制個別應用程式，請啟動「%1$s」然後按下選單列中的「\u002b」</string>
   <!-- Setting checkbox title for Whether to enable Android debugging support on the phone. -->
   <string name="enable_adb_cm">Android 偵錯</string>
   <!-- Setting checkbox summary for Whether to enable Android debugging support on the phone -->
@@ -359,15 +359,15 @@
   <string name="app_ops_summaries_assist_structure">協助結構</string>
   <string name="app_ops_summaries_assist_screenshot">協助螢幕截圖</string>
   <string name="app_ops_summaries_read_phone_state">讀取手機狀態</string>
-  <string name="app_ops_summaries_add_voicemail">新增語音郵件</string>
+  <string name="app_ops_summaries_add_voicemail">新增語音信箱</string>
   <string name="app_ops_summaries_use_sip">使用 SIP</string>
   <string name="app_ops_summaries_make_call">撥打電話</string>
   <string name="app_ops_summaries_use_fingerprint">使用指紋</string>
   <string name="app_ops_summaries_use_body_sensors">使用人體感應器</string>
   <string name="app_ops_summaries_read_cell_broadcasts">讀取區域廣播</string>
   <string name="app_ops_summaries_mock_location">模擬位置</string>
-  <string name="app_ops_summaries_read_external_storage">讀取外部存儲空間</string>
-  <string name="app_ops_summaries_write_external_storage">寫到外部存儲空間</string>
+  <string name="app_ops_summaries_read_external_storage">讀取外部儲存空間</string>
+  <string name="app_ops_summaries_write_external_storage">寫入外部儲存空間</string>
   <string name="app_ops_summaries_turn_screen_on">開啟螢幕</string>
   <string name="app_ops_summaries_get_accounts">取得帳戶</string>
   <string name="app_ops_summaries_toggle_wifi">切換至 Wi-Fi</string>
@@ -436,8 +436,8 @@
   <string name="app_ops_labels_use_body_sensors">使用人體感應器</string>
   <string name="app_ops_labels_read_cell_broadcasts">讀取區域廣播</string>
   <string name="app_ops_labels_mock_location">模擬位置</string>
-  <string name="app_ops_labels_read_external_storage">讀取外部存儲空間</string>
-  <string name="app_ops_labels_write_external_storage">寫到外部存儲空間</string>
+  <string name="app_ops_labels_read_external_storage">讀取外部儲存空間</string>
+  <string name="app_ops_labels_write_external_storage">寫入外部儲存空間</string>
   <string name="app_ops_labels_turn_screen_on">開啟螢幕</string>
   <string name="app_ops_labels_get_accounts">取得帳戶</string>
   <string name="app_ops_labels_toggle_wifi">切換至 Wi-Fi</string>
@@ -529,7 +529,7 @@
   <!-- Settings main menu entry -->
   <string name="gesture_settings_title">手勢</string>
   <!-- Power menu -->
-  <string name="power_menu_title">電源功能表</string>
+  <string name="power_menu_title">電源選單</string>
   <string name="power_menu_reboot_title">重新啟動選單</string>
   <string name="power_menu_screenshot_title">螢幕截圖</string>
   <string name="power_menu_airplane_title">飛航模式</string>
@@ -674,7 +674,7 @@
   <string name="increasing_ring_ramp_up_time_title">漸強時間</string>
   <!-- LTO download data over wi-fi only -->
   <string name="lto_download_data_wifi_only">GPS 輔助資料已下載</string>
-  <string name="lto_download_data_wifi_only_on">透過任何網絡</string>
+  <string name="lto_download_data_wifi_only_on">透過任何網路</string>
   <string name="lto_download_data_wifi_only_off">僅透過 Wi\u2011Fi 網路</string>
   <string name="volume_keys_control_ring_stream_title">控制鈴聲音量</string>
   <string name="volume_keys_control_ring_stream_summary_on">音量鍵控制鈴聲音量</string>
@@ -750,7 +750,7 @@
   <string name="privacy_guard_help_title">說明</string>
   <string name="privacy_guard_reset_title">重設</string>
   <string name="privacy_guard_reset_text">重設權限？</string>
-  <string name="privacy_guard_help_text">在此畫面您只要輕觸應用程式即可選擇是否對其啟用隱私守衛。被選取的應用程式將不能存取您的個人資料，例如聯絡人、訊息或通話記錄。長按應用程式可開啟其應用程式資訊畫面。\n\n內建應用程式預設不會顯示，但是可從選單中開啟顯示。</string>
+  <string name="privacy_guard_help_text">在此螢幕您只要輕觸應用程式即可選擇是否對其啟用隱私守衛。被選取的應用程式將不能存取您的個人資料，例如聯絡人、訊息或通話記錄。長按應用程式可開啟其應用程式資訊螢幕。\n\n內建應用程式預設不會顯示，但是可從選單中開啟顯示。</string>
   <string name="privacy_guard_manager_show_system_apps">顯示系統應用程式</string>
   <string name="privacy_guard_advanced_settings_title">進階</string>
   <string name="privacy_guard_notification_title">顯示通知</string>
@@ -785,7 +785,7 @@
   <string name="notification_ringtone_title_cm">通知鈴聲</string>
   <!-- Advanced reboot options -->
   <string name="advanced_reboot_title">進階重新啟動</string>
-  <string name="advanced_reboot_summary">當解鎖後，加入重啟進入 recovery 或 bootloader 或進行軟重啟的選項至電源選單</string>
+  <string name="advanced_reboot_summary">當解鎖後，加入重新啟動進入 Recovery、Bootloader 或進行軟體重新啟動的選項至電源選單</string>
   <string name="category_interface">介面</string>
   <!-- Expanded desktop -->
   <string name="power_menu_expanded_desktop">延伸桌面</string>
@@ -818,7 +818,7 @@
   <string name="blacklist_edit_dialog_title">更改已封鎖的電話號碼</string>
   <string name="blacklist_prefs">設定</string>
   <string name="blacklist_button_delete">刪除</string>
-  <string name="blacklist_empty_text">您沒有任何已封鎖的號碼，輕觸新增 (+) 按鍵加入號碼。</string>
+  <string name="blacklist_empty_text">您沒有任何已封鎖的號碼，輕觸新增 (+) 按鍵新增號碼。</string>
   <string name="blacklist_disabled_empty_text">為了防止某些電話號碼打電話或傳簡訊給您，請啟用已封鎖來電者名單功能。</string>
   <string name="blacklist_summary_disabled">已停用</string>
   <string name="blacklist_summary">您將不會收到任何在已封鎖來電者名單上的電話號碼的來電或簡訊</string>
@@ -970,12 +970,12 @@
   <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
   <string name="master_clear_desc_cm" product="tablet">該操作將從您的平板電腦<b>內部存儲裝置</b>清除所有資料，其中包括：\n\n <li>您的裝置帳戶</li>\n<li>系統和應用程式的資料及設定</li> \n <li>已下載的應用程式</li></string>
   <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
-  <string name="master_clear_desc_cm" product="default">該操作將從您的手機<b>內部存儲裝置</b>清除所有資料，其中包括：\n\n <li>您的裝置帳戶</li>\n<li>系統和應用程式的資料及設定</li> \n <li>已下載的應用程式</li></string>
+  <string name="master_clear_desc_cm" product="default">該操作將從您的手機<b>內部儲存空間</b>清除所有資料，其中包括：\n\n <li>您的裝置帳戶</li>\n<li>系統和應用程式的資料及設定</li> \n <li>已下載的應用程式</li></string>
   <!-- Factory reset strings -->
   <string name="factory_reset_instructions_title">個人資料和應用程式</string>
   <string name="factory_reset_instructions_summary">這將移除在此裝置上您所有帳戶、應用程式、應用程式資料及系統設定</string>
   <string name="factory_reset_personal_content">個人內容</string>
-  <string name="factory_reset_erase_stored_content">移除存儲內容</string>
+  <string name="factory_reset_erase_stored_content">移除儲存空間</string>
   <string name="factory_reset_erase_stored_content_summary">移除音樂、照片、影片及其他儲存在此裝置上的使用者資料</string>
   <string name="factory_reset_erase_stored_content_summary_forced">移除音樂、照片、影片及其他儲存在此裝置上的使用者資料。\n\n<b>由於裝置加密，無法儲存內容。</b></string>
   <string name="factory_reset_erase_sd_card">格式化SD卡</string>
