@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2015 The CyanogenMod Project
+ *           (C) 2017 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,8 +47,7 @@ public class StatsUploadJobService extends JobService {
     private static final boolean DEBUG = Log.isLoggable(TAG, Log.DEBUG);
 
     public static final String KEY_JOB_TYPE = "job_type";
-    public static final int JOB_TYPE_CYANOGEN = 1;
-    public static final int JOB_TYPE_CMORG = 2;
+    public static final int JOB_TYPE_CMORG = 1;
 
     public static final String KEY_UNIQUE_ID = "uniqueId";
     public static final String KEY_DEVICE_NAME = "deviceName";
@@ -114,25 +114,6 @@ public class StatsUploadJobService extends JobService {
             int jobType = extras.getInt(KEY_JOB_TYPE, -1);
             if (!isCancelled()) {
                 switch (jobType) {
-                    case JOB_TYPE_CYANOGEN:
-                        try {
-                            JSONObject json = new JSONObject();
-                            json.put("optOut", optOut);
-                            json.put("uniqueId", deviceId);
-                            json.put("deviceName", deviceName);
-                            json.put("version", deviceVersion);
-                            json.put("country", deviceCountry);
-                            json.put("carrier", deviceCarrier);
-                            json.put("carrierId", deviceCarrierId);
-                            json.put("timestamp", timeStamp);
-
-                            success = uploadToCyanogen(json);
-                        } catch (IOException | JSONException e) {
-                            Log.e(TAG, "Could not upload stats checkin to cyanogen server", e);
-                            success = false;
-                        }
-                        break;
-
                     case JOB_TYPE_CMORG:
                         try {
                             success = uploadToCM(deviceId, deviceName, deviceVersion, deviceCountry,
@@ -190,83 +171,6 @@ public class StatsUploadJobService extends JobService {
             urlConnection.disconnect();
         }
 
-    }
-
-    private boolean uploadToCyanogen(JSONObject json)
-            throws IOException, JSONException {
-        String authToken = getAuthToken();
-
-        if (authToken.isEmpty()) {
-            Log.w(TAG, "no auth token!");
-        }
-
-        URL url = new URL(getString(R.string.stats_cyanogen_url));
-        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-        try {
-            urlConnection.setInstanceFollowRedirects(true);
-            urlConnection.setDoInput(true);
-            urlConnection.setDoOutput(true);
-
-            urlConnection.setRequestProperty("Accept-Encoding", "identity");
-            urlConnection.setRequestProperty("Authorization", authToken);
-            urlConnection.setRequestProperty("Content-Type", "application/json");
-
-            OutputStream os = urlConnection.getOutputStream();
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-            writer.write(json.toString());
-            writer.flush();
-            writer.close();
-            os.close();
-
-            urlConnection.connect();
-
-            final int responseCode = urlConnection.getResponseCode();
-            final boolean success = responseCode == HttpURLConnection.HTTP_OK;
-
-            final String response = getResponse(urlConnection, !success);
-            if (DEBUG)
-                Log.d(TAG, "server responseCode: " + responseCode +", response=" + response);
-
-            if (!success) {
-                Log.w(TAG, "failed sending, server returned: " + response);
-            }
-            return success;
-        } finally {
-            urlConnection.disconnect();
-        }
-    }
-
-    private String getAuthToken() {
-        HttpURLConnection urlConnection = null;
-        try {
-            URL url = new URL(getString(R.string.stats_cyanogen_token_url));
-            urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setInstanceFollowRedirects(true);
-            urlConnection.setDoInput(true);
-
-            urlConnection.setRequestProperty("Accept-Encoding", "identity");
-            urlConnection.setRequestProperty("Content-Type", "text/plain");
-
-            urlConnection.connect();
-
-            final int responseCode = urlConnection.getResponseCode();
-            final boolean success = responseCode == HttpURLConnection.HTTP_OK;
-            if (DEBUG) Log.d(TAG, "server auth response code=" + responseCode);
-            final String response = getResponse(urlConnection, !success);
-            if (DEBUG)
-                Log.d(TAG, "server auth response=" + response);
-
-            if (success) {
-                return response;
-            }
-        } catch (IOException e) {
-            Log.e(TAG, "error getting auth token", e);
-        } finally {
-            if (urlConnection != null) {
-                urlConnection.disconnect();
-            }
-        }
-        return "";
     }
 
     private String getResponse(HttpURLConnection httpUrlConnection, boolean errorStream)
