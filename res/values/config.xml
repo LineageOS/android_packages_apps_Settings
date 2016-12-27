@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright (C) 2007 The Android Open Source Project
+               (C) 2017 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -50,10 +51,8 @@
     <!-- Config to enable duplicate APN checking. When true, disallows adding new duplicate APNs -->
     <bool name="config_enable_duplicate_apn_checking">false</bool>
 
-    <!-- Metrics server endpoints -->
+    <!-- Metrics server endpoint -->
     <string name="stats_cm_url">https://stats.cyanogenmod.org/submit</string>
-    <string name="stats_cyanogen_url">https://shopvac.cyngn.com/community/heartbeat</string>
-    <string name="stats_cyanogen_token_url">https://account.cyngn.com/api/v1/community/heartbeat_token</string>
 
     <!-- Display ro.product.name above Device model -->
     <bool name="config_displayDeviceName">false</bool>

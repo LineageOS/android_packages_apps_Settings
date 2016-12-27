@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2015 The CyanogenMod Project
+ *           (C) 2017 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,38 +52,23 @@ public class ReportingService extends IntentService {
         String deviceCarrierId = Utilities.getCarrierId(getApplicationContext());
         boolean optOut = intent.getBooleanExtra(EXTRA_OPTING_OUT, false);
 
-        final int cyanogenJobId = AnonymousStats.getNextJobId(getApplicationContext());
         final int cmOrgJobId = AnonymousStats.getNextJobId(getApplicationContext());
 
-        if (DEBUG) Log.d(TAG, "scheduling jobs id: " + cyanogenJobId + ", " + cmOrgJobId);
+        if (DEBUG) Log.d(TAG, "scheduling job id: " + cmOrgJobId);
 
-        PersistableBundle cyanogenBundle = new PersistableBundle();
-        cyanogenBundle.putBoolean(StatsUploadJobService.KEY_OPT_OUT, optOut);
-        cyanogenBundle.putString(StatsUploadJobService.KEY_DEVICE_NAME, deviceName);
-        cyanogenBundle.putString(StatsUploadJobService.KEY_UNIQUE_ID, deviceId);
-        cyanogenBundle.putString(StatsUploadJobService.KEY_VERSION, deviceVersion);
-        cyanogenBundle.putString(StatsUploadJobService.KEY_COUNTRY, deviceCountry);
-        cyanogenBundle.putString(StatsUploadJobService.KEY_CARRIER, deviceCarrier);
-        cyanogenBundle.putString(StatsUploadJobService.KEY_CARRIER_ID, deviceCarrierId);
-        cyanogenBundle.putLong(StatsUploadJobService.KEY_TIMESTAMP, System.currentTimeMillis());
-
-        // get snapshot and persist it
-        PersistableBundle cmBundle = new PersistableBundle(cyanogenBundle);
+        PersistableBundle cmBundle = new PersistableBundle();
+        cmBundle.putBoolean(StatsUploadJobService.KEY_OPT_OUT, optOut);
+        cmBundle.putString(StatsUploadJobService.KEY_DEVICE_NAME, deviceName);
+        cmBundle.putString(StatsUploadJobService.KEY_UNIQUE_ID, deviceId);
+        cmBundle.putString(StatsUploadJobService.KEY_VERSION, deviceVersion);
+        cmBundle.putString(StatsUploadJobService.KEY_COUNTRY, deviceCountry);
+        cmBundle.putString(StatsUploadJobService.KEY_CARRIER, deviceCarrier);
+        cmBundle.putString(StatsUploadJobService.KEY_CARRIER_ID, deviceCarrierId);
+        cmBundle.putLong(StatsUploadJobService.KEY_TIMESTAMP, System.currentTimeMillis());
 
         // set job types
-        cyanogenBundle.putInt(StatsUploadJobService.KEY_JOB_TYPE,
-                StatsUploadJobService.JOB_TYPE_CYANOGEN);
         cmBundle.putInt(StatsUploadJobService.KEY_JOB_TYPE,
                 StatsUploadJobService.JOB_TYPE_CMORG);
-
-        // schedule cyanogen stats upload
-        js.schedule(new JobInfo.Builder(cyanogenJobId, new ComponentName(getPackageName(),
-                StatsUploadJobService.class.getName()))
-                .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
-                .setMinimumLatency(1000)
-                .setExtras(cyanogenBundle)
-                .setPersisted(true)
-                .build());
 
         // schedule cmorg stats upload
         js.schedule(new JobInfo.Builder(cmOrgJobId, new ComponentName(getPackageName(),
