@@ -136,6 +136,8 @@ import com.android.settingslib.drawer.DashboardCategory;
 import com.android.settingslib.drawer.SettingsDrawerActivity;
 import com.android.settingslib.drawer.Tile;
 
+import org.cyanogenmod.internal.util.PackageManagerUtils;
+
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
@@ -1044,6 +1046,17 @@ public class SettingsActivity extends SettingsDrawerActivity
      */
     private Fragment switchToFragment(String fragmentName, Bundle args, boolean validate,
             boolean addToBackStack, int titleResId, CharSequence title, boolean withTransition) {
+
+        final String simSettingsPackage = "com.qualcomm.qti.simsettings";
+        if (PackageManagerUtils.isAppInstalled(this, simSettingsPackage)
+                    && fragmentName.equals(SimSettings.class.getName())) {
+            Intent intent = new Intent("com.android.settings.sim.SIM_SUB_INFO_SETTINGS");
+            intent.setPackage(simSettingsPackage);
+            startActivity(intent);
+            finish();
+            return null;
+        }
+
         if (validate && !isValidFragment(fragmentName)) {
             throw new IllegalArgumentException("Invalid fragment for this activity: "
                     + fragmentName);
