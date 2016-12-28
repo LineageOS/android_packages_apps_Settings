@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2012 The CyanogenMod Project
+ *           (C) 2017 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,27 +48,12 @@ public class ReportingServiceManager extends BroadcastReceiver {
         }
     }
 
-    /**
-     * opt out if we haven't yet
-     */
-    public static void initiateOptOut(Context context) {
-        final boolean optOutReported = CMSettings.Secure.getIntForUser(context.getContentResolver(),
-                CMSettings.Secure.STATS_COLLECTION_REPORTED, 0, UserHandle.USER_OWNER) == 1;
-        if (!optOutReported) {
-            Intent intent = new Intent();
-            intent.setClass(context, ReportingService.class);
-            intent.putExtra(ReportingService.EXTRA_OPTING_OUT, true);
-            context.startServiceAsUser(intent, UserHandle.OWNER);
-        }
-    }
-
     public static void setAlarm(Context context) {
         SharedPreferences prefs = AnonymousStats.getPreferences(context);
         if (prefs.contains(AnonymousStats.ANONYMOUS_OPT_IN)) {
             migrate(context, prefs);
         }
         if (!Utilities.isStatsCollectionEnabled(context)) {
-            initiateOptOut(context);
             return;
         }
         long lastSynced = prefs.getLong(AnonymousStats.ANONYMOUS_LAST_CHECKED, 0);

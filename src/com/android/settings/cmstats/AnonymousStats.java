@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2015 The CyanogenMod Project
+ *           (C) 2017 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,14 +21,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import android.os.UserHandle;
-import android.preference.Preference;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-
-import cyanogenmod.providers.CMSettings;
 
 import org.cyanogenmod.internal.logging.CMMetricsLogger;
 
@@ -40,10 +35,6 @@ public class AnonymousStats extends SettingsPreferenceFragment {
     /* package */ static final String KEY_LAST_JOB_ID = "last_job_id";
     /* package */ static final int QUEUE_MAX_THRESHOLD = 1000;
 
-    public static final String KEY_STATS = "stats_collection";
-
-    SwitchPreference mStatsSwitch;
-
     public static SharedPreferences getPreferences(Context context) {
         return context.getSharedPreferences(PREF_FILE_NAME, 0);
     }
@@ -52,23 +43,6 @@ public class AnonymousStats extends SettingsPreferenceFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.anonymous_stats);
-        mStatsSwitch = (SwitchPreference) findPreference(KEY_STATS);
-    }
-
-    @Override
-    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        if (preference == mStatsSwitch) {
-            boolean checked = mStatsSwitch.isChecked();
-            if (checked) {
-                // clear opt out flags
-                CMSettings.Secure.putIntForUser(getContentResolver(),
-                        CMSettings.Secure.STATS_COLLECTION_REPORTED, 0, UserHandle.USER_OWNER);
-            }
-            // will initiate opt out sequence if necessary
-            ReportingServiceManager.setAlarm(getActivity());
-            return true;
-        }
-        return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
     public static void updateLastSynced(Context context) {
