@@ -119,10 +119,11 @@ public class StatsUploadJobService extends JobService {
                 switch (jobType) {
                     case JOB_TYPE_CMORG:
                         try {
-                            success = uploadToCM(deviceId, deviceName, deviceVersion, deviceCountry,
-                                    deviceCarrier, deviceCarrierId);
-                        } catch (IOException e) {
-                            Log.e(TAG, "Could not upload stats checkin to commnity server", e);
+                            JSONObject json = buildStatsRequest(deviceId, deviceName,
+                                    deviceVersion, deviceCountry, deviceCarrier, deviceCarrierId);
+                            success = uploadToCM(json);
+                        } catch (IOException | JSONException e) {
+                            Log.e(TAG, "Could not upload stats checkin to community server", e);
                             success = false;
                         }
                         break;
@@ -141,24 +142,32 @@ public class StatsUploadJobService extends JobService {
         }
     }
 
+    private JSONObject buildStatsRequest(String deviceId, String deviceName, String deviceVersion,
+                                         String deviceCountry, String deviceCarrier,
+                                         String deviceCarrierId) throws JSONException {
+        JSONObject request = new JSONObject();
+        request.put("device_hash", deviceId);
+        request.put("device_name", deviceName);
+        request.put("device_version", deviceVersion);
+        request.put("device_country", deviceCountry);
+        request.put("device_carrier", deviceCarrier);
+        request.put("device_carrier_id", deviceCarrierId);
+        return request;
+    }
 
-    private boolean uploadToCM(String deviceId, String deviceName, String deviceVersion,
-                               String deviceCountry, String deviceCarrier, String deviceCarrierId)
-            throws IOException {
-
-        final Uri uri = Uri.parse(getString(R.string.stats_cm_url)).buildUpon()
-                .appendQueryParameter("device_hash", deviceId)
-                .appendQueryParameter("device_name", deviceName)
-                .appendQueryParameter("device_version", deviceVersion)
-                .appendQueryParameter("device_country", deviceCountry)
-                .appendQueryParameter("device_carrier", deviceCarrier)
-                .appendQueryParameter("device_carrier_id", deviceCarrierId).build();
+    private boolean uploadToCM(JSONObject json) throws IOException {
+        final Uri uri = Uri.parse(getString(R.string.stats_cm_url));
         URL url = new URL(uri.toString());
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
         try {
             urlConnection.setInstanceFollowRedirects(true);
             urlConnection.setDoOutput(true);
-            urlConnection.connect();
+            urlConnection.setDoInput(true);
+            urlConnection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+
+            OutputStream os = urlConnection.getOutputStream();
+            os.write(json.toString().getBytes("UTF-8"));
+            os.close();
 
             final int responseCode = urlConnection.getResponseCode();
             if (DEBUG) Log.d(TAG, "cm server response code=" + responseCode);
