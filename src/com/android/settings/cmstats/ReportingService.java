@@ -103,7 +103,7 @@ public class ReportingService extends Service {
 
             // report to the cmstats service
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("https://stats.cyanogenmod.org/submit");
+            HttpPost httpPost = new HttpPost("https://stats.lineageos.org/api/v1/stats");
             boolean success = false;
 
             try {
