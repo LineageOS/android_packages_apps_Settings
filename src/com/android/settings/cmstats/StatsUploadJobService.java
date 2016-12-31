@@ -163,7 +163,7 @@ public class StatsUploadJobService extends JobService {
                                boolean optOut)
             throws IOException {
 
-        final Uri uri = Uri.parse(getString(R.string.stats_cm_url)).buildUpon()
+        final Uri uri = Uri.parse(getString(R.string.stats_lineage_url)).buildUpon()
                 .appendQueryParameter("opt_out", optOut ? "1" : "0")
                 .appendQueryParameter("device_hash", deviceId)
                 .appendQueryParameter("device_name", deviceName)
@@ -200,7 +200,7 @@ public class StatsUploadJobService extends JobService {
             Log.w(TAG, "no auth token!");
         }
 
-        URL url = new URL(getString(R.string.stats_cyanogen_url));
+        URL url = new URL(getString(R.string.stats_lineage_heartbeat_url));
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
         try {
             urlConnection.setInstanceFollowRedirects(true);
@@ -239,7 +239,7 @@ public class StatsUploadJobService extends JobService {
     private String getAuthToken() {
         HttpURLConnection urlConnection = null;
         try {
-            URL url = new URL(getString(R.string.stats_cyanogen_token_url));
+            URL url = new URL(getString(R.string.stats_lineage_token_url));
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setInstanceFollowRedirects(true);
             urlConnection.setDoInput(true);
