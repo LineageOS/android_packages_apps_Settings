@@ -91,6 +91,30 @@
       "revId": "2a5616f6a18f3af99c2b7cadfa7bbeb7446eb963",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa3479d7_7b63131b",
+        "filename": "src/com/android/settings/datausage/AppDataUsage.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 15060
+      },
+      "writtenOn": "2017-01-03T14:33:48Z",
+      "side": 1,
+      "message": "isBlacklisted makes the button worse. so the current bug (button activating but disappearing, but if quitting the window and returning to it, it then refreshes and appears as it should), must be lying somewhere else (likely somewhere in this file)\n\nthe feature works as intended but the UI is not showing the results of the activation properly",
+      "parentUuid": "fa3479d7_1873edb2",
+      "range": {
+        "startLine": 485,
+        "startChar": 60,
+        "endLine": 485,
+        "endChar": 80
+      },
+      "revId": "2a5616f6a18f3af99c2b7cadfa7bbeb7446eb963",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
