@@ -185,7 +185,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         if (DBG) log("[updateSmsValues] mSubInfoList=" + mSubInfoList);
 
         if (sir != null) {
-            simPref.setSummary(sir.getDisplayName());
+            simPref.setSummary(getSummary(sir));
             simPref.setEnabled(mSelectableSubInfos.size() > 1);
         } else if (sir == null) {
             simPref.setSummary(R.string.sim_selection_required_pref);
@@ -203,7 +203,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         final boolean ecbMode = SystemProperties.getBoolean(
                 TelephonyProperties.PROPERTY_INECM_MODE, false);
         if (sir != null) {
-            simPref.setSummary(sir.getDisplayName());
+            simPref.setSummary(getSummary(sir));
             // Enable data preference in msim mode and call state idle
             simPref.setEnabled((mSelectableSubInfos.size() > 1) && callStateIdle && !ecbMode);
         } else if (sir == null) {
@@ -220,6 +220,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             telecomManager.getUserSelectedOutgoingPhoneAccount();
         final List<PhoneAccountHandle> allPhoneAccounts =
             telecomManager.getCallCapablePhoneAccounts();
+        final SubscriptionInfo sir = mSubscriptionManager.getDefaultVoiceSubscriptionInfo();
 
         simPref.setTitle(R.string.calls_title);
         PhoneAccount phoneAccount = null;
@@ -228,8 +229,20 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         }
         simPref.setSummary(phoneAccount == null
                 ? mContext.getResources().getString(R.string.sim_calls_ask_first_prefs_title)
-                : (String)phoneAccount.getLabel());
+                : getSummary(sir));
         simPref.setEnabled(allPhoneAccounts.size() > 1);
+    }
+
+    private String getSummary(SubscriptionInfo sir) {
+        if (sir == null)
+            return "";
+
+        String summary = sir.getDisplayName().toString();
+        if (TextUtils.isEmpty(summary) || TextUtils.getTrimmedLength(summary) == 0) {
+            summary = String.format(getResources().getString(R.string.sim_card_number_title),
+                    (sir.getSimSlotIndex() + 1));
+        }
+        return summary;
     }
 
     @Override
