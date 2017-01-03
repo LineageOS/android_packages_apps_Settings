@@ -156,6 +156,11 @@ public class SimPreferenceDialog extends Activity {
                 final EditText nameText = (EditText)mDialogLayout.findViewById(R.id.sim_name);
 
                 String displayName = nameText.getText().toString();
+                if (TextUtils.isEmpty(displayName) ||
+                        TextUtils.getTrimmedLength(displayName) == 0) {
+                    displayName = String.format(res.getString(R.string.sim_default_name),
+                            (mSubInfoRecord.getSimSlotIndex() + 1));
+                }
                 int subId = mSubInfoRecord.getSubscriptionId();
                 mSubInfoRecord.setDisplayName(displayName);
                 mSubscriptionManager.setDisplayName(displayName, subId,
