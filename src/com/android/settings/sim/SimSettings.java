@@ -184,11 +184,10 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         simPref.setTitle(R.string.sms_messages_title);
         if (DBG) log("[updateSmsValues] mSubInfoList=" + mSubInfoList);
 
+        simPref.setSummary(getSummary(sir));
         if (sir != null) {
-            simPref.setSummary(sir.getDisplayName());
             simPref.setEnabled(mSelectableSubInfos.size() > 1);
         } else if (sir == null) {
-            simPref.setSummary(R.string.sim_selection_required_pref);
             simPref.setEnabled(mSelectableSubInfos.size() >= 1);
         }
     }
@@ -202,12 +201,11 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         boolean callStateIdle = isCallStateIdle();
         final boolean ecbMode = SystemProperties.getBoolean(
                 TelephonyProperties.PROPERTY_INECM_MODE, false);
+        simPref.setSummary(getSummary(sir));
         if (sir != null) {
-            simPref.setSummary(sir.getDisplayName());
             // Enable data preference in msim mode and call state idle
             simPref.setEnabled((mSelectableSubInfos.size() > 1) && callStateIdle && !ecbMode);
         } else if (sir == null) {
-            simPref.setSummary(R.string.sim_selection_required_pref);
             // Enable data preference in msim mode and call state idle
             simPref.setEnabled((mSelectableSubInfos.size() >= 1) && callStateIdle && !ecbMode);
         }
@@ -216,20 +214,35 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     private void updateCallValues() {
         final Preference simPref = findPreference(KEY_CALLS);
         final TelecomManager telecomManager = TelecomManager.from(mContext);
-        final PhoneAccountHandle phoneAccountHandle =
-            telecomManager.getUserSelectedOutgoingPhoneAccount();
         final List<PhoneAccountHandle> allPhoneAccounts =
             telecomManager.getCallCapablePhoneAccounts();
+        final SubscriptionInfo sir = mSubscriptionManager.getDefaultVoiceSubscriptionInfo();
 
         simPref.setTitle(R.string.calls_title);
-        PhoneAccount phoneAccount = null;
-        if (phoneAccountHandle != null) {
-            phoneAccount = telecomManager.getPhoneAccount(phoneAccountHandle);
-        }
-        simPref.setSummary(phoneAccount == null
-                ? mContext.getResources().getString(R.string.sim_calls_ask_first_prefs_title)
-                : (String)phoneAccount.getLabel());
+        simPref.setSummary(getSummary(sir));
         simPref.setEnabled(allPhoneAccounts.size() > 1);
+    }
+
+    private String getSimName(SubscriptionInfo sir) {
+        String summary = "";
+        if (sir != null) {
+            summary = sir.getDisplayName().toString();
+            if (TextUtils.isEmpty(summary) || TextUtils.getTrimmedLength(summary) == 0) {
+                summary = String.format(mContext.getResources().getString(
+                        R.string.sim_card_number_title), sir.getSimSlotIndex() + 1);
+            }
+        }
+        return summary;
+    }
+
+    private String getSummary(SubscriptionInfo sir) {
+        String summary;
+        if (sir != null) {
+            summary = getSimName(sir);
+        } else {
+            summary = mContext.getResources().getString(R.string.sim_selection_required_pref);
+        }
+        return summary;
     }
 
     @Override
@@ -328,10 +341,11 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             setTitle(String.format(mContext.getResources()
                     .getString(R.string.sim_editor_title), (mSlotId + 1)));
             if (mSubInfoRecord != null) {
+                String displayName = getSimName(mSubInfoRecord);
                 if (TextUtils.isEmpty(getPhoneNumber(mSubInfoRecord))) {
-                    setSummary(mSubInfoRecord.getDisplayName());
+                    setSummary(displayName);
                 } else {
-                    setSummary(mSubInfoRecord.getDisplayName() + " - " +
+                    setSummary(displayName + " - " +
                             PhoneNumberUtils.createTtsSpannable(getPhoneNumber(mSubInfoRecord)));
                     setEnabled(true);
                 }

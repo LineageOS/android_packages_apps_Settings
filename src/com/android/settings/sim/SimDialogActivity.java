@@ -29,6 +29,7 @@ import android.telecom.TelecomManager;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -226,8 +227,10 @@ public class SimDialogActivity extends Activity {
             for (int i = 0; i < selectableSubInfoLength; ++i) {
                 final SubscriptionInfo sir = subInfoList.get(i);
                 CharSequence displayName = sir.getDisplayName();
-                if (displayName == null) {
-                    displayName = "";
+                if (TextUtils.isEmpty(displayName) ||
+                        TextUtils.getTrimmedLength(displayName) == 0) {
+                    displayName = String.format(getResources().getString(
+                            R.string.sim_card_number_title), sir.getSimSlotIndex() + 1);
                 }
                 list.add(displayName.toString());
             }
@@ -316,7 +319,12 @@ public class SimDialogActivity extends Activity {
                         .getDrawable(R.drawable.ic_live_help));
                 holder.icon.setAlpha(OPACITY);
             } else {
-                holder.title.setText(sir.getDisplayName());
+                String displayName = sir.getDisplayName().toString();
+                if (TextUtils.isEmpty(displayName)) {
+                    displayName = String.format(getResources().getString(
+                            R.string.sim_card_number_title), sir.getSimSlotIndex() + 1);
+                }
+                holder.title.setText(displayName);
                 holder.summary.setText(sir.getNumber());
                 holder.icon.setImageBitmap(sir.createIconBitmap(mContext));
             }
