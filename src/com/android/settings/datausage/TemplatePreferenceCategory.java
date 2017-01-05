@@ -20,7 +20,9 @@ import android.support.v7.preference.Preference;
 import android.util.AttributeSet;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
+import android.text.TextUtils;
 import com.android.settings.DividedCategory;
+import com.android.settings.R;
 
 public class TemplatePreferenceCategory extends DividedCategory implements TemplatePreference {
 
@@ -55,9 +57,11 @@ public class TemplatePreferenceCategory extends DividedCategory implements Templ
             SubscriptionManager sm = SubscriptionManager.from(getContext());
             SubscriptionInfo info = sm.getActiveSubscriptionInfo(mSubId);
             CharSequence name = info != null ? info.getDisplayName() : null;
-            if (name != null) {
-                setTitle(name);
+            if (TextUtils.isEmpty(name) || TextUtils.getTrimmedLength(name) == 0) {
+                name = String.format(getContext().getString(R.string.sim_card_number_title),
+                        info.getSimSlotIndex() + 1);
             }
+            setTitle(name);
         }
         for (int i = 0; i < getPreferenceCount(); i++) {
             ((TemplatePreference) getPreference(i)).setTemplate(mTemplate, mSubId, services);
