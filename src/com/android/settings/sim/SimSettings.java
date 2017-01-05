@@ -27,6 +27,7 @@ import android.provider.SearchIndexableResource;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.PreferenceScreen;
+import android.support.v7.preference.PreferenceViewHolder;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
@@ -37,6 +38,8 @@ import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.internal.telephony.TelephonyProperties;
@@ -71,7 +74,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     private List<SubscriptionInfo> mSubInfoList = null;
     private List<SubscriptionInfo> mSelectableSubInfos = null;
     private PreferenceScreen mSimCards = null;
-    private PreferenceCategory mMobileNetwork;
     private SubscriptionManager mSubscriptionManager;
     private int mNumSlots;
     private Context mContext;
@@ -101,7 +103,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
 
         mNumSlots = tm.getSimCount();
         mSimCards = (PreferenceScreen)findPreference(SIM_CARD_CATEGORY);
-        mMobileNetwork = (PreferenceCategory) findPreference(MOBILE_NETWORK_CATEGORY);
         mAvailableSubInfos = new ArrayList<SubscriptionInfo>(mNumSlots);
         mSelectableSubInfos = new ArrayList<SubscriptionInfo>();
         SimSelectNotification.cancelNotification(getActivity());
@@ -124,7 +125,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
                 mSimCards.removePreference(pref);
             }
         }
-        mMobileNetwork.removeAll();
         mAvailableSubInfos.clear();
         mSelectableSubInfos.clear();
 
@@ -141,18 +141,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             if (sir != null) {
                 mSelectableSubInfos.add(sir);
             }
-
-            Intent mobileNetworkIntent = new Intent();
-            mobileNetworkIntent.setComponent(new ComponentName(
-                        "com.android.phone", "com.android.phone.MobileNetworkSettings"));
-            SubscriptionManager.putPhoneIdAndSubIdExtra(mobileNetworkIntent, i, subscriptionId);
-            Preference mobileNetworkPref = new Preference(getActivity());
-            mobileNetworkPref.setTitle(
-                    getString(R.string.sim_mobile_network_settings_title, (i + 1)));
-            mobileNetworkPref.setIntent(mobileNetworkIntent);
-            mobileNetworkPref.setEnabled(
-                    subscriptionId != SubscriptionManager.INVALID_SUBSCRIPTION_ID);
-            mMobileNetwork.addPreference(mobileNetworkPref);
         }
         updateAllOptions();
     }
@@ -328,6 +316,9 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         public SimPreference(Context context, SubscriptionInfo subInfoRecord, int slotId) {
             super(context);
 
+            setLayoutResource(R.layout.preference_sim_icon);
+            setWidgetLayoutResource(R.layout.preference_sim);
+
             mContext = context;
             mSubInfoRecord = subInfoRecord;
             mSlotId = slotId;
@@ -355,6 +346,28 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
                 setFragment(null);
                 setEnabled(false);
             }
+        }
+
+        @Override
+        public void onBindViewHolder(PreferenceViewHolder view) {
+            ImageView simSettings = (ImageView) view.findViewById(R.id.simSettings);
+            if (simSettings != null) {
+                final int subscriptionId = mSubInfoRecord != null ?
+                    mSubInfoRecord.getSubscriptionId() :
+                    SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+                Intent mobileNetworkIntent = new Intent();
+                mobileNetworkIntent.setComponent(new ComponentName(
+                        "com.android.phone", "com.android.phone.MobileNetworkSettings"));
+                SubscriptionManager.putPhoneIdAndSubIdExtra(mobileNetworkIntent, mSlotId,
+                        subscriptionId);
+                simSettings.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mContext.startActivity(mobileNetworkIntent);
+                    }
+                });
+            }
+            super.onBindViewHolder(view);
         }
 
         private int getSlotId() {
