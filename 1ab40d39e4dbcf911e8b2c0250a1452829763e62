@@ -60,6 +60,24 @@
     },
     {
       "key": {
+        "uuid": "fa3479d7_dc755233",
+        "filename": "src/com/android/settings/sim/SimSettings.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2017-01-05T06:44:48Z",
+      "side": 1,
+      "message": "Additionally the String.format is redundant. This works as well:\n\ngetString(R.string.sim_card_number_title, sir.getSimSlotIndex() + 1);\n\n(as this is a fragment, it has its own getString() method, redirecting to getActivity().getString()).",
+      "parentUuid": "fa3479d7_fc913653",
+      "revId": "1ab40d39e4dbcf911e8b2c0250a1452829763e62",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa3479d7_1c951a40",
         "filename": "src/com/android/settings/sim/SimSettings.java",
         "patchSetId": 6
@@ -71,6 +89,23 @@
       "writtenOn": "2017-01-05T06:03:40Z",
       "side": 1,
       "message": "mContext.getStrinf",
+      "revId": "1ab40d39e4dbcf911e8b2c0250a1452829763e62",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa3479d7_bc728e47",
+        "filename": "src/com/android/settings/sim/SimSettings.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2017-01-05T06:44:48Z",
+      "side": 1,
+      "message": "Can shorten this to\n\nprivate String getSummary(SubscriptionInfo sir) {\n    if (sir !\u003d null) {\n        return getSimName(sir);\n    }\n    return getString(R.string.sim_selection_required_pref);\n}",
       "revId": "1ab40d39e4dbcf911e8b2c0250a1452829763e62",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
