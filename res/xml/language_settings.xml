@@ -38,11 +38,13 @@
     <!-- User dictionary preference title and fragment will be set programmatically. -->
     <PreferenceScreen
             android:key="key_user_dictionary_settings"
-            android:title="@string/user_dict_settings_title"
-            />
+            android:title="@string/user_dict_settings_title"/>
 
     <PreferenceCategory
         android:title="@string/keyboard_and_input_methods_category">
+        <PreferenceScreen
+               android:key="current_input_method"
+               android:title="@string/current_input_method"/>
         <PreferenceScreen
             android:title="@string/virtual_keyboard_category"
             android:fragment="com.android.settings.inputmethod.VirtualKeyboardFragment" />
