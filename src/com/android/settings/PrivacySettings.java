@@ -298,15 +298,6 @@ public class PrivacySettings extends SettingsPreferenceFragment implements Index
     }
 
     private static boolean collectDiagnosticsEnabled(Context context) {
-        if (!context.getResources().getBoolean(R.bool.config_collect_diagnostics_enabled)) {
-            return false;
-        }
-
-        try {
-            return context.getPackageManager().getPackageInfo(
-                    "com.tmobile.pr.mytmobile", 0) != null;
-        } catch(PackageManager.NameNotFoundException e) {
-            return false;
-        }
+        return context.getResources().getBoolean(R.bool.config_collect_diagnostics_enabled);
     }
 }
