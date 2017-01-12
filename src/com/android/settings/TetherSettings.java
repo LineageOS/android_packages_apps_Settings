@@ -621,8 +621,7 @@ public class TetherSettings extends RestrictedSettingsFragment
                 getPrefContext().startActivity(intent);
                 ((HotspotPreference)preference).setChecked(false);
                 return false;
-            } else if(checkWifiConnectivityState(getActivity())
-                      && !mWifiManager.getWifiStaSapConcurrency()) {
+            } else if(checkWifiConnectivityState(getActivity())) {
                 showTurnOffWifiDialog(getActivity());
                 startTethering(TETHERING_WIFI);
             } else {
