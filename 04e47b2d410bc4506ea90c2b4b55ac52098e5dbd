@@ -38,6 +38,24 @@
     },
     {
       "key": {
+        "uuid": "da3975d1_9451eada",
+        "filename": "res/xml/app_data_usage.xml",
+        "patchSetId": 20
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 3075
+      },
+      "writtenOn": "2017-01-12T20:17:46Z",
+      "side": 1,
+      "message": "They should be nested inside the XML PreferenceCategory node. ie change /\u003e to \u003e at the end of \u003cPreferenceCategory block above and then close it after the switches below  with \u003c/PreferenceCategory\u003e.  Right now, removing the preference category in code wouldn\u0027t remove these switches.  My bad ;-)\n\nI can fix all these things later (across all 3x projects).  You\u0027re welcome to fix anything up in the meantime, Oliver.",
+      "parentUuid": "da3975d1_f44a7626",
+      "revId": "04e47b2d410bc4506ea90c2b4b55ac52098e5dbd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da3975d1_34f35e0c",
         "filename": "res/xml/app_data_usage.xml",
         "patchSetId": 20
