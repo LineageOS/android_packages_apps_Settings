@@ -110,12 +110,6 @@
                 android:title="@string/tap_to_wake"
                 android:summary="@string/tap_to_wake_summary" />
 
-        <com.android.settings.WarnedPreference
-                android:key="font_size_mode"
-                android:title="@string/title_font_size"
-                settings:keywords="@string/keywords_display_font_size"
-                android:summary="@string/summary_font_size" />
-
         <!-- Prevent accidental wake-up -->
         <cyanogenmod.preference.CMSystemSettingSwitchPreference
                 android:key="proximity_on_wake"
