@@ -261,9 +261,7 @@ public class TetherSettings extends RestrictedSettingsFragment
             getPreferenceScreen().removePreference(mCreateNetwork);
         }
 
-        final boolean configHideBluetoothAndHelpMenu = getResources().getBoolean(
-                R.bool.config_hide_bluetooth_menu);
-        if (!bluetoothAvailable || configHideBluetoothAndHelpMenu) {
+        if (!bluetoothAvailable) {
             getPreferenceScreen().removePreference(mBluetoothTether);
         } else {
             BluetoothPan pan = mBluetoothPan.get();
