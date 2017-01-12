@@ -1043,27 +1043,6 @@
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.DisplaySettings" />
         </activity-alias>
-            <activity android:name="Settings$SMQQtiFeedbackActivity"
-                android:label="@string/qtifeedback_settings_title"
-                android:icon="@drawable/ic_settings_qti_feedback"
-                android:enabled="false"
-                android:taskAffinity="">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-            <intent-filter android:priority="5">
-                <action android:name="com.android.settings.action.SETTINGS" />
-            </intent-filter>
-            <meta-data android:name="com.android.settings.category"
-                android:value="com.android.settings.category.system" />
-            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="@string/qtifeedback_intent_action" />
-            <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
-                android:value="true" />
-            <meta-data android:name="com.android.settings.summary"
-                android:resource="@string/qtifeedback_settings_subtitle" />
-        </activity>
 
         <activity android:name="Settings$NightDisplaySettingsActivity"
                 android:label="@string/night_display_title"

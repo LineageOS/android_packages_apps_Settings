@@ -246,7 +246,6 @@ public class SettingsActivity extends SettingsDrawerActivity
 
     private CharSequence mInitialTitle;
     private int mInitialTitleResId;
-    private SmqSettings mSMQ;
 
     // Show only these settings for restricted users
     private String[] SETTINGS_FOR_RESTRICTED = {
@@ -571,8 +570,6 @@ public class SettingsActivity extends SettingsDrawerActivity
         if (intent.getBooleanExtra(EXTRA_HIDE_DRAWER, false)) {
             setIsDrawerPresent(false);
         }
-
-        mSMQ = new SmqSettings(getApplicationContext());
 
         mDevelopmentPreferences = getSharedPreferences(DevelopmentSettings.PREF_FILE,
                 Context.MODE_PRIVATE);
@@ -1059,15 +1056,6 @@ public class SettingsActivity extends SettingsDrawerActivity
      */
     private Fragment switchToFragment(String fragmentName, Bundle args, boolean validate,
             boolean addToBackStack, int titleResId, CharSequence title, boolean withTransition) {
-
-        if (fragmentName.equals(getString(R.string.qtifeedback_intent_action))){
-             final Intent newIntent = new Intent(getString(R.string.qtifeedback_intent_action));
-             newIntent.addCategory("android.intent.category.DEFAULT");
-             startActivity(newIntent);
-             finish();
-             return null;
-        }
-
         if (fragmentName.equals(SimSettings.class.getName())){
             Log.i(LOG_TAG, "switchToFragment, launch simSettings  ");
             Intent provisioningIntent =
@@ -1101,6 +1089,7 @@ public class SettingsActivity extends SettingsDrawerActivity
             SystemUpdateHandle ();
             return null;
         }
+
 
         if (validate && !isValidFragment(fragmentName)) {
             throw new IllegalArgumentException("Invalid fragment for this activity: "
@@ -1175,11 +1164,6 @@ public class SettingsActivity extends SettingsDrawerActivity
         final boolean isAdmin = um.isAdminUser();
 
         String packageName = getPackageName();
-        if(mSMQ.isShowSmqSettings()){
-            setTileEnabled(new ComponentName(packageName, Settings.SMQQtiFeedbackActivity.class.getName()),
-                mSMQ.isShowSmqSettings(), isAdmin, pm);
-        }
-
         setTileEnabled(new ComponentName(packageName, WifiSettingsActivity.class.getName()),
                 pm.hasSystemFeature(PackageManager.FEATURE_WIFI), isAdmin, pm);
 
