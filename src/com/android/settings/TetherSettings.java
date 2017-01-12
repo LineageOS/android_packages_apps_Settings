@@ -745,8 +745,6 @@ public class TetherSettings extends RestrictedSettingsFragment
                 }
                 if (isFirstUseUSBTethering(getActivity())) {
                     showFirstUseUSBTetheringDialog(getActivity());
-                } else if(checkWifiConnectivityState(getActivity())) {
-                    showTurnOffWifiDialog(getActivity());
                 }
                 startTethering(TETHERING_USB);
             } else {
