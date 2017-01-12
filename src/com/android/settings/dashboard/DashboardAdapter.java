@@ -16,15 +16,14 @@
 package com.android.settings.dashboard;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ResolveInfo;
-import android.text.TextUtils;
+import android.util.Log;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Icon;
 import android.os.Bundle;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
@@ -67,7 +66,6 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
 
     private static final int DEFAULT_SUGGESTION_COUNT = 2;
 
-    private static final String SYSTEM_UPDATE_INTENT = "android.settings.SYSTEM_UPDATE_SETTINGS";
     private final List<Object> mItems = new ArrayList<>();
     private final List<Integer> mTypes = new ArrayList<>();
     private final List<Integer> mIds = new ArrayList<>();
@@ -389,18 +387,6 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.dashboard_tile) {
-            if (mContext.getResources().getBoolean(R.bool.config_settings_rjil_layout)
-            &&((Tile) v.getTag()).title.equals(mContext.getResources()
-                    .getString(R.string.system_update_settings_list_item_title))){
-                Intent newIntent = new Intent(SYSTEM_UPDATE_INTENT);
-                PackageManager pm = mContext.getPackageManager();
-                List<ResolveInfo> list = pm.queryIntentActivities(
-                        newIntent, 0);
-                int listSize =list.size();
-                if (listSize < 1) {
-                    return;
-                }
-            }
             ((SettingsActivity) mContext).openTile((Tile) v.getTag());
             return;
         }
