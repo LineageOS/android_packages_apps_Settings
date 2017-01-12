@@ -168,8 +168,9 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
     public void onMobileNetworkSettingsClick() {
         log("onMobileNetworkSettingsClick:");
         final Intent intent = new Intent(Intent.ACTION_MAIN);
-        log("qti MobileNetworkSettings Enabled");
-        // prepare intent to start qti MobileNetworkSettings activity
+        log("Qcom Proprietary MobileNetworkSettings Enabled");
+        // prepare intent to start MobileNetworkSettings activity from
+        // Qcom Proprietary
         intent.setComponent(new ComponentName("com.qualcomm.qti.networksetting",
                "com.qualcomm.qti.networksetting.MobileNetworkSettings"));
         startActivity(intent);
