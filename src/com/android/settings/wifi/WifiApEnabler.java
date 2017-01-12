@@ -16,14 +16,10 @@
 
 package com.android.settings.wifi;
 
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
@@ -32,12 +28,10 @@ import android.os.UserHandle;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
 import com.android.settings.HotspotPreference;
-import com.android.settings.TetherSettings;
 import com.android.settings.R;
 import com.android.settings.datausage.DataSaverBackend;
 import com.android.settingslib.TetherUtil;
-import android.app.AlertDialog;
-import android.app.Dialog;
+
 import java.util.ArrayList;
 
 public class WifiApEnabler {
@@ -54,9 +48,7 @@ public class WifiApEnabler {
     private boolean mEnabling = false;
     private static final String ACTION_HOTSPOT_POST_CONFIGURE = "Hotspot_PostConfigure";
     private static final String ACTION_EXTRA = "choice";
-    private static final String KEY_FIRST_HOTSPOT_ACTIVATED = "FirstHotspotActivated";
-    private static final String MY_PREF_FILE = "MY_PERFS";
-    public static final int TETHERING_WIFI = 0;
+    public static final int TETHERING_WIFI      = 0;
 
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
@@ -172,52 +164,6 @@ public class WifiApEnabler {
         }
     }
 
-    private void showWifiTetheringLearning(final Context ctx) {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
-        builder.setTitle(ctx.getResources().getString(R.string.mobile_hotspot_help_dialog_title));
-        builder.setMessage(ctx.getResources().getString(R.string.mobile_hotspot_help_dialog_text));
-        builder.setPositiveButton(ctx.getResources().getString(R.string.yes), null);
-        builder.setCancelable(false);
-        builder.show();
-    }
-
-
-    private void showWifiTetheringActivatedDialog(final Context ctx) {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
-        builder.setTitle(ctx.getResources().getString(R.string.learn_hotspot_dialog_title));
-        builder.setMessage(ctx.getResources().getString(R.string.learn_hotspot_dialog_text));
-        builder.setPositiveButton(ctx.getResources().getString(R.string.yes),
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        showWifiTetheringLearning(ctx);
-                    }
-                });
-        builder.setNegativeButton(ctx.getResources().getString(R.string.skip_label), null);
-        builder.setCancelable(false);
-        builder.show();
-    }
-
-    private boolean isNeedShowActivated (final Context ctx) {
-        SharedPreferences sharedPreferences = ctx.getSharedPreferences(
-                MY_PREF_FILE, Activity.MODE_PRIVATE);
-        Editor editor = sharedPreferences.edit();
-        boolean isFirstUse = sharedPreferences.getBoolean(KEY_FIRST_HOTSPOT_ACTIVATED,true);
-        if (isFirstUse) {
-            editor = sharedPreferences.edit();
-            editor.putBoolean(KEY_FIRST_HOTSPOT_ACTIVATED, false);
-            editor.commit();
-        }
-        return isFirstUse;
-    }
-
-    private void showActivatedDialog(final Context ctx) {
-        if (ctx.getResources().getBoolean(R.bool.config_hotspot_need_show_activated_dialog)
-                && isNeedShowActivated(ctx)) {
-            showWifiTetheringActivatedDialog(ctx);
-        }
-    }
-
     private void handleWifiApStateChanged(int state, int reason) {
         boolean enableWifiApSettingsExt = mContext.getResources().getBoolean(
                 R.bool.show_wifi_hotspot_settings);
@@ -237,7 +183,6 @@ public class WifiApEnabler {
                     hSwitch.setChecked(true);
                     /* Doesnt need the airplane check */
                     hSwitch.setEnabled(!mDataSaverBackend.isDataSaverEnabled());
-                    showActivatedDialog(mContext);
                     break;
                 case WifiManager.WIFI_AP_STATE_DISABLING:
                     hSwitch.setSummary(R.string.wifi_tether_stopping);

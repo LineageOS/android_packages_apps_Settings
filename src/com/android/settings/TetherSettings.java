@@ -157,6 +157,7 @@ public class TetherSettings extends RestrictedSettingsFragment
     private boolean mUsbEnable = false;
     private WifiManager mWifiStatusManager;
     private boolean mIsWifiEnabled = false;
+    private boolean mHaveWifiApConfig = false;
 
     @Override
     protected int getMetricsCategory() {
@@ -280,6 +281,24 @@ public class TetherSettings extends RestrictedSettingsFragment
         mUsbEnable = getResources().getBoolean(R.bool.config_usb_line_enable);
         mWifiStatusManager= (WifiManager) getActivity().getSystemService(
                 Context.WIFI_SERVICE);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(mWifiManager != null) {
+            WifiConfiguration config = mWifiManager.getWifiApConfiguration();
+            boolean isNotNoneSecurity = config.getAuthType() > WifiConfiguration.KeyMgmt.NONE;
+            // WifiConfiguration.KeyMgmt be used to management schemes,
+            // WifiConfiguration.preSharedKey for use with WPA-PSK, it's password,
+            // if preSharedKey is empty, the WifiConfiguration need to set password.
+            if(isNotNoneSecurity) {
+                mHaveWifiApConfig = config.preSharedKey != null &&
+                    !config.preSharedKey.isEmpty();
+            } else {
+                mHaveWifiApConfig = true;
+            }
+        }
     }
 
     @Override
@@ -609,20 +628,6 @@ public class TetherSettings extends RestrictedSettingsFragment
                 == TelephonyManager.SIM_STATE_READY);
     }
 
-    private boolean checkWifiApConfig() {
-        WifiConfiguration config = mWifiManager.getWifiApConfiguration();
-        boolean isNotNoneSecurity = config.getAuthType() > WifiConfiguration.KeyMgmt.NONE;
-        // WifiConfiguration.KeyMgmt be used to management schemes,
-        // WifiConfiguration.preSharedKey for use with WPA-PSK, it's password,
-        // if preSharedKey is empty, the WifiConfiguration need to set password.
-        if(isNotNoneSecurity) {
-            return config.preSharedKey != null &&
-                !config.preSharedKey.isEmpty();
-        } else {
-            return true;
-        }
-    }
-
     @Override
     public boolean onPreferenceChange(Preference preference, Object value) {
         boolean enable = (Boolean) value;
@@ -633,7 +638,7 @@ public class TetherSettings extends RestrictedSettingsFragment
                 ((HotspotPreference)preference).setChecked(false);
                 return false;
             } else if(enableWifiApSettingsExt &&
-                (isNeedShowHelp(getPrefContext()) || !checkWifiApConfig())) {
+                (isNeedShowHelp(getPrefContext()) || !mHaveWifiApConfig)) {
                 Intent intent = new Intent();
                 intent.setAction(ACTION_HOTSPOT_PRE_CONFIGURE);
                 intent.setPackage("com.qualcomm.qti.extsettings");
