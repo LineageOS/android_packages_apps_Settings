@@ -70,7 +70,6 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
-import static com.android.settings.deviceinfo.StorageSettings.TAG;
 
 /**
  * Panel showing summary and actions for a {@link VolumeInfo#TYPE_PRIVATE}

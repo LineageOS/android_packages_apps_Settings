@@ -91,8 +91,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_NIGHT_DISPLAY = "night_display";
     private static final String KEY_NIGHT_MODE = "night_mode";
     private static final String KEY_CAMERA_GESTURE = "camera_gesture";
-    private static final String KEY_CAMERA_DOUBLE_TAP_POWER_GESTURE
-            = "camera_double_tap_power_gesture";
 
     private static final String KEY_WALLPAPER = "wallpaper";
     private static final String KEY_VR_DISPLAY_PREF = "vr_display_pref";
@@ -107,7 +105,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mTapToWakePreference;
     private SwitchPreference mAutoBrightnessPreference;
     private SwitchPreference mCameraGesturePreference;
-    private SwitchPreference mCameraDoubleTapPowerGesturePreference;
 
     @Override
     protected int getMetricsCategory() {
