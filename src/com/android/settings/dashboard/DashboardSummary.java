@@ -224,10 +224,6 @@ public class DashboardSummary extends InstrumentedFragment
             return;
         }
 
-        List<DashboardCategory> categories =
-                ((SettingsActivity) getActivity()).getDashboardCategories();
-        mAdapter.setCategories(categories);
-
         // recheck to see if any suggestions have been changed.
         new SuggestionLoader().execute();
     }
