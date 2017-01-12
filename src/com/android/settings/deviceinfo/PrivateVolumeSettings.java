@@ -70,7 +70,6 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
-import android.util.Log;
 import static com.android.settings.deviceinfo.StorageSettings.TAG;
 
 /**
@@ -93,8 +92,6 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
     private static final String EXTRA_VOLUME_SIZE = "volume_size";
 
     private static final String AUTHORITY_MEDIA = "com.android.providers.media.documents";
-    private static final String STORAGE_CLEANUP_PACKAGE = "com.qti.storagecleaner";
-    private static final String STORAGE_CLENUP_CLASS = "com.qti.storagecleaner.CleanerActivity";
 
     private static final int[] ITEMS_NO_SHOW_SHARED = new int[] {
             R.string.storage_detail_apps,
@@ -402,7 +399,6 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
         final MenuItem unmount = menu.findItem(R.id.storage_unmount);
         final MenuItem format = menu.findItem(R.id.storage_format);
         final MenuItem migrate = menu.findItem(R.id.storage_migrate);
-        final MenuItem cleanUp = menu.findItem(R.id.storage_cleanup);
         final MenuItem manage = menu.findItem(R.id.storage_free);
 
         // Actions live in menu for non-internal private volumes; they're shown
@@ -427,12 +423,9 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
         // Only offer to migrate when not current storage
         final VolumeInfo privateVol = getActivity().getPackageManager()
                 .getPrimaryStorageCurrentVolume();
-
         migrate.setVisible((privateVol != null)
                 && (privateVol.getType() == VolumeInfo.TYPE_PRIVATE)
                 && !Objects.equals(mVolume, privateVol));
-
-        cleanUp.setVisible(getResources().getBoolean(R.bool.enable_storage_cleanup));
     }
 
     @Override
@@ -461,9 +454,6 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
                 intent.putExtra(VolumeInfo.EXTRA_VOLUME_ID, mVolume.getId());
                 startActivity(intent);
                 return true;
-            case R.id.storage_cleanup:
-                startStorageCleanupActivity();
-                return true;
             case R.id.storage_free:
                 final Intent deletion_helper_intent =
                         new Intent(StorageManager.ACTION_MANAGE_STORAGE);
@@ -471,16 +461,6 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private void startStorageCleanupActivity() {
-        try {
-            Intent i = new Intent();
-            i.setClassName(STORAGE_CLEANUP_PACKAGE, STORAGE_CLENUP_CLASS);
-            startActivity(i);
-        } catch (ActivityNotFoundException e) {
-            Log.e(TAG, "Can't start storage cleanup activity");
-        }
     }
 
     @Override
