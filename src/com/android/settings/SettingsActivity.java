@@ -235,7 +235,6 @@ public class SettingsActivity extends SettingsDrawerActivity
 
     private static final String ACTION_TIMER_SWITCH = "qualcomm.intent.action.TIMER_SWITCH";
 
-    private static final String PROFILEMGR_MAIN_FRAGMENT = "com.android.settings.ProfileMgrMain";
     private String mFragmentClass;
     private String mActivityAction;
 
@@ -260,7 +259,6 @@ public class SettingsActivity extends SettingsDrawerActivity
             Settings.PowerUsageSummaryActivity.class.getName(),
             Settings.GestureSettingsActivity.class.getName(),
             //personal_section
-            Settings.ProfileMgrMainActivity.class.getName(),
             Settings.LocationSettingsActivity.class.getName(),
             Settings.SecuritySettingsActivity.class.getName(),
             Settings.InputMethodAndLanguageSettingsActivity.class.getName(),
@@ -1057,16 +1055,6 @@ public class SettingsActivity extends SettingsDrawerActivity
             return null;
         }
 
-        if (PROFILEMGR_MAIN_FRAGMENT.equals(fragmentName)) {
-            Intent profilemgrIntent = new Intent();
-            profilemgrIntent.setAction("com.codeaurora.STARTPROFILE");
-            profilemgrIntent.setPackage("com.android.profile");
-            startActivity(profilemgrIntent);
-            finish();
-            return null;
-        }
-
-
         if (validate && !isValidFragment(fragmentName)) {
             throw new IllegalArgumentException("Invalid fragment for this activity: "
                     + fragmentName);
@@ -1152,10 +1140,6 @@ public class SettingsActivity extends SettingsDrawerActivity
         setTileEnabled(new ComponentName(packageName,
                 Settings.PrintSettingsActivity.class.getName()),
                 pm.hasSystemFeature(PackageManager.FEATURE_PRINTING), isAdmin, pm);
-
-        setTileEnabled(new ComponentName(packageName,
-                Settings.ProfileMgrMainActivity.class.getName()),
-                getResources().getBoolean(R.bool.config_profilemgrmain_enabled), isAdmin, pm);
 
         final boolean showDev = mDevelopmentPreferences.getBoolean(
                     DevelopmentSettings.PREF_SHOW, android.os.Build.TYPE.equals("eng"))
