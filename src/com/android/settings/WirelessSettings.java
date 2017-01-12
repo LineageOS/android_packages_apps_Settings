@@ -133,11 +133,9 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
     private UserManager mUm;
 
     boolean mIsNetworkSettingsAvailable = false;
-    boolean mProvisioningVWiFiEnabled  = false;
 
     private static final int MANAGE_MOBILE_PLAN_DIALOG_ID = 1;
     private static final String SAVED_MANAGE_MOBILE_PLAN_MSG = "mManageMobilePlanMessage";
-    private final String KEY = "persist.sys.provisioning";
 
     private Preference mButtonWfc;
     private boolean mEnhancedWFCSettingsEnabled = false;
@@ -459,16 +457,6 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
             });
         } else {
             mButtonWfc = (PreferenceScreen) findPreference(KEY_WFC_SETTINGS);
-            mProvisioningVWiFiEnabled = this.getResources().
-                    getBoolean(R.bool.config_provision_wificalling_pref);
-                if (mProvisioningVWiFiEnabled) {
-                    String value = SystemProperties.get(KEY,"false");
-                    if (!Boolean.parseBoolean(value)) {
-                        final Context context = getActivity();
-                        ImsManager.setWfcSetting(context, false);
-                    }
-                    mButtonWfc.setEnabled(Boolean.parseBoolean(value));
-                }
             removePreference(KEY_WFC_ENHANCED_SETTINGS);
         }
 
