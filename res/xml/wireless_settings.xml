@@ -29,18 +29,6 @@
         settings:keywords="@string/keywords_wifi_calling"
         android:fragment="com.android.settings.WifiCallingSettings" />
 
-    <PreferenceScreen
-        android:key="wifi_calling_enhanced_settings"
-        android:title="@string/wifi_calling_settings_title"
-        android:summaryOff="@null"
-        android:summaryOn="@null"
-        android:persistent="false">
-        <intent
-            android:action="android.intent.action.MAIN"
-            android:targetPackage="com.qualcomm.qti.wfcservice"
-            android:targetClass="com.qualcomm.qti.wfcservice.WifiCallingEnhancedSettings" />
-    </PreferenceScreen>
-
     <com.android.settingslib.RestrictedPreference
         android:fragment="com.android.settings.TetherSettings"
         android:key="tether_settings"
