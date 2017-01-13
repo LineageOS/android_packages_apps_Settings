@@ -154,6 +154,12 @@ public class FeaturePreferences extends InstrumentedFragment {
         return MetricsEvent.FEATURE_PREFERENCES;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateActiveCustomPreferences();
+    }
+
     private class SettingsListAdapter extends ArrayAdapter<CheckBoxPreference> {
 
         public SettingsListAdapter(Context context, ArrayList<CheckBoxPreference> items) {
