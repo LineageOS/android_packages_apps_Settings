@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2016 The DirtyUnicorns Project
+     Copyright (C) 2016-2017 The DirtyUnicorns Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -44,7 +44,7 @@
         android:entryValues="@array/smartbar_button_animation_values"
         android:summary="@string/smartbar_button_animation_summary" />
 
-<!--    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+    <com.android.settings.aim.Preferences.SystemSettingSwitchPreference
         android:key="navbar_tint_switch"
         android:title="@string/navbar_tint_switch"
         android:defaultValue="false" />
@@ -53,14 +53,21 @@
         android:key="navbar_button_color"
         android:title="@string/navbar_button_color"
         android:defaultValue="0xffffffff"
-	android:dependency="navbar_tint_switch"/> -->
+	android:dependency="navbar_tint_switch"/>
 		
-    <com.android.settings.kangdroid.KangDroidSeekBarPreference
+    <com.android.settings.aim.Preferences.CustomSeekBarPreference
         android:key="navbar_buttons_alpha"
         android:title="@string/navbar_buttons_alpha_title"
         settings:max="255"
         settings:min="0"
         settings:units=""
         android:persistent="false" />
+
+    <com.android.settings.aim.Preferences.SecureSettingSwitchPreference
+        android:key="one_handed_mode_ui"
+        android:title="@string/one_handed_mode_title"
+        android:summary="@string/one_handed_mode_summary"
+        android:defaultValue="false" />
+
 
 </PreferenceScreen>
