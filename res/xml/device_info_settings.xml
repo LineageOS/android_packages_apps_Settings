@@ -34,13 +34,13 @@
                     android:targetClass="@string/additional_system_update_menu" />
         </PreferenceScreen>
 
-        <!-- CyanogenMod Updates -->
+        <!-- LineageOS Updates -->
         <PreferenceScreen android:key="cm_updates"
                 android:title="@string/cmupdate_settings_title"
                 android:summary="@string/system_update_settings_list_item_summary">
             <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.cyanogenmod.updater"
-                    android:targetClass="com.cyanogenmod.updater.UpdatesSettings" />
+                    android:targetPackage="org.lineageos.updater"
+                    android:targetClass="com.cyanogenmod.updater.UpdatesActivity" />
         </PreferenceScreen>
 
         <!-- Device status - launches activity -->
