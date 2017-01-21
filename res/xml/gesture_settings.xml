@@ -19,6 +19,9 @@
     android:title="@string/gesture_preference_title"
     settings:keywords="@string/keywords_gesture">
 
+    <org.cyanogenmod.internal.cmparts.CMPartsPreference
+        android:key="touchscreen_gesture_settings" />
+
     <com.android.settings.gestures.GesturePreference
         android:key="gesture_swipe_down_fingerprint"
         android:title="@string/fingerprint_swipe_for_notifications_title"
