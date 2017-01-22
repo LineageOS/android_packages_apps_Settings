@@ -22,6 +22,12 @@
 	<!-- Aim Rom Banner -->
 	<PreferenceScreen android:layout="@layout/banner" android:key="od_banner" />
 
+             <!-- About Devs -->
+         <PreferenceScreen
+         android:key="dev_info"
+         android:title="@string/dev_info"
+         android:fragment="com.android.settings.devs" />
+      
         <!-- System update settings - launches activity -->
         <PreferenceScreen android:key="system_update_settings"
                 android:title="@string/system_update_settings_list_item_title"
