@@ -377,7 +377,7 @@
   <string name="app_ops_summaries_toggle_bluetooth">превключване на Bluetooth</string>
   <string name="app_ops_summaries_start_at_boot">изпълнява се при стартиране</string>
   <string name="app_ops_summaries_toggle_nfc">активиране/деактивиране NFC</string>
-  <string name="app_ops_summaries_toggle_mobile_data">Превключване клетъчен данни</string>
+  <string name="app_ops_summaries_toggle_mobile_data">Включване / Изключване на мобилни данни</string>
   <string name="app_ops_summaries_superuser">Администраторски достъп</string>
   <!-- User display names for app ops codes - extension of AOSP -->
   <string name="app_ops_labels_coarse_location">Приблизително местоположение</string>
@@ -447,7 +447,7 @@
   <string name="app_ops_labels_toggle_bluetooth">Превключване на Bluetooth</string>
   <string name="app_ops_labels_start_at_boot">Изпълнява се при стартиране</string>
   <string name="app_ops_labels_toggle_nfc">активиране/деактивиране NFC</string>
-  <string name="app_ops_labels_toggle_mobile_data">Превключване клетъчен данни</string>
+  <string name="app_ops_labels_toggle_mobile_data">Включване / Изключване на мобилни данни</string>
   <string name="app_ops_labels_superuser">Администраторски достъп</string>
   <!-- App ops permissions -->
   <string name="app_ops_permissions_allowed">Позволено</string>
@@ -626,8 +626,8 @@
   <string name="adj_intensity_title">Интензивност</string>
   <string name="adj_contrast_title">Контраст</string>
   <!-- Whether to display IME switcher notifcation -->
-  <string name="ime_switcher_notify">Селектор на икона</string>
-  <string name="ime_switcher_notify_summary">Покажи метода на въвеждане на селектирана икона</string>
+  <string name="ime_switcher_notify">Икона на селектор</string>
+  <string name="ime_switcher_notify_summary">Покажи метода за въвеждане на селекторна икона</string>
   <!-- Heads up -->
   <string name="heads_up_notifications">Изскачащи известия</string>
   <string name="summary_heads_up_enabled">Изскачащите известия са разрешени</string>
@@ -745,7 +745,7 @@
   <!-- Privacy Settings Header item -->
   <string name="privacy_settings_cyanogenmod_title">Поверителност</string>
   <!-- Privacy Guard -->
-  <string name="privacy_guard_default_title">Активирайте по подразбиране</string>
+  <string name="privacy_guard_default_title">Активиране по подразбиране</string>
   <string name="privacy_guard_default_summary">Активира защитен режим за нови приложения</string>
   <string name="privacy_guard_manager_title">Защитен режим</string>
   <string name="privacy_guard_manager_summary">Управлявайте, кои приложения да имат достъп до вашите лични данни</string>
@@ -858,10 +858,7 @@
   <string name="no_filters_title">Няма зададени филтри</string>
   <!-- Anonymous Statistics #CM -->
   <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
-  <string name="anonymous_statistics_title">Статистики</string>
-  <string name="anonymous_statistics_summary">Помогнете да направим LineageOS по-добър, като разрешите да събира анонимни статистически данни</string>
   <string name="anonymous_statistics_warning_title">Информация</string>
-  <string name="anonymous_statistics_warning">Ще позволи на LineageOS Statistics да изпраща не лична информация  на разработчиците от LineageOS, за проследяване на инсталациите в устройството. Предоставената информация включва уникален идентификатор, който не застрашава вашата поверителност или лични данни. Данните се подават по време на всяко зареждане.\n\nПример за данните, които са подадени.</string>
   <string name="enable_reporting_title">Разреши отчитане</string>
   <string name="preview_data_title">Визуализиране на данните</string>
   <string name="view_stats_title">Преглед на статистиките</string>
@@ -890,18 +887,18 @@
   <string name="pa_login_incorrect_login">Влизането е неуспешно</string>
   <string name="pa_pattern_or_fingerprint_header">Начертай фигура или използвай пръстов отпечатък за да отключиш</string>
   <!-- Contributors cloud activity -->
-  <string name="contributors_cloud_fragment_title">Сътрудници</string>
-  <string name="contributors_cloud_loading_message">Зареждане на данните за сътрудници\u2026</string>
-  <string name="contributors_cloud_failed_message">Данните за сътрудници не могат да бъдат заредени</string>
+  <string name="contributors_cloud_fragment_title">Разработчици</string>
+  <string name="contributors_cloud_loading_message">Зареждане на данните за разработчици\u2026</string>
+  <string name="contributors_cloud_failed_message">Неуспех при изтеглянето на информация за разработчиците</string>
   <string name="contributor_info_menu">Потребителска информация</string>
   <string name="contributor_info_msg">
         <![CDATA[<b>Име:</b> <xliff:g id="name">%1$s</xliff:g><br/><br/>
                  <b>Ник:</b> <xliff:g id="nick">%2$s</xliff:g><br/><br/>
                  <b>Ангажира:</b> <xliff:g id="commits">%3$s</xliff:g>]]></string>
-  <string name="contributions_info_menu">Информация за потребители</string>
+  <string name="contributions_info_menu">Обща информация</string>
   <string name="contributions_info_msg">
-        <![CDATA[<b>Общо сътрудници:</b> <xliff:g id="total_contributors">%1$s</xliff:g><br/><br/>
-                 <b>Общо ангажира:</b> <xliff:g id="total_commits">%2$s</xliff:g><br/><br/>
+        <![CDATA[<b>Брой разработчици:</b> <xliff:g id="total_contributors">%1$s</xliff:g><br/><br/>
+                 <b>Брой промени:</b> <xliff:g id="total_commits">%2$s</xliff:g><br/><br/>
                  <b>Последна актуализация:</b> <xliff:g id="date">%3$s</xliff:g>]]></string>
   <string name="category_sounds">Звуци</string>
   <string name="notification_manager">Известия</string>
@@ -1024,7 +1021,7 @@
   <string name="restrict_app_cellular_summary">Забрани предаването на данните от приложенията през мобилни мрежи</string>
   <string name="privacy_guard_internet_category">Интернет</string>
   <!-- Weather -->
-  <string name="weather_settings_title">Прогноза за времето</string>
+  <string name="weather_settings_title">Прогноза на времето</string>
   <string name="weather_settings_no_services_prompt">Няма инсталиран доставчик на време</string>
   <string name="weather_settings_button">Настройки на доставчика</string>
   <string name="weather_settings_activity_not_found">Неуспешно стартиране на меню \"Настройки\" на този доставчик</string>
@@ -1034,7 +1031,7 @@
   <string name="weather_settings_temp_units_title">Температурни единици</string>
   <string name="weather_settings_temp_celsius">Целзий</string>
   <string name="weather_settings_temp_fahrenheit">Фаренхайт</string>
-  <string name="weather_settings_keyword">Прогноза за времето</string>
+  <string name="weather_settings_keyword">времето</string>
   <string name="background_data_access">Достъп до данни на заден план</string>
   <string name="allow_background_both">Надвишени мобилни данни &amp; Wi\u2011Fi</string>
   <string name="allow_background_wlan">Само над Wi\u2011Fi</string>
