@@ -88,7 +88,7 @@
   <string name="profiles_add">Legg til</string>
   <string name="profile_menu_delete">Slett</string>
   <string name="profile_settings_title">Profil</string>
-  <string name="profile_empty_list_profiles_off">For å konfigurere å bruke system profiler, aktiverer profiler.</string>
+  <string name="profile_empty_list_profiles_off">For å konfigurere og bruke system profiler, må du aktivere profiler.</string>
   <string name="profile_trigger_configure">Konfigurer utløseren</string>
   <string name="profile_write_nfc_tag">Skriv til NFC tag</string>
   <string name="profile_write_touch_tag">Touch Tag for å skrive</string>
@@ -103,9 +103,9 @@
   <string name="profile_populate_profile_from_state">Konfigurere profilen ved hjelp av gjeldende innstillinger?</string>
   <string name="profile_menu_fill_from_state">Importer gjeldende innstillinger</string>
   <string name="profile_remove_current_profile">Kan ikke slette gjeldende profil!</string>
-  <string name="profile_app_group_category_title">Overstyring av notifikasjoner</string>
+  <string name="profile_app_group_category_title">Overstyring av varsler</string>
   <string name="profile_app_group_item_instructions">Legg til eller fjern grupper</string>
-  <string name="profile_app_group_item_instructions_summary">Legg til eller fjern apper som overstyrer notifikasjonsvarsler på denne profilen</string>
+  <string name="profile_app_group_item_instructions_summary">Legg til eller fjern apper som overstyrer varsler på denne profilen</string>
   <!-- Profile mode options. -->
   <string name="profile_entries_on">På</string>
   <string name="profile_entries_off">Av</string>
@@ -145,14 +145,14 @@
   <string name="profile_trigger_disconnect">Ved frakobling</string>
   <string name="profile_trigger_notrigger">Ingen utløser</string>
   <!-- Profile Settings sound modes labels -->
-  <string name="sound_mode">Notifikasjonsmodus</string>
+  <string name="sound_mode">Varslingsmodus</string>
   <string name="ringer_mode">Ringemodus</string>
   <string name="lights_mode">Lys-modus</string>
   <string name="vibrate_mode">Vibrasjonsmodus</string>
-  <string name="choose_soundtone">Velg notifikasjonstone</string>
+  <string name="choose_soundtone">Velg varslingstone</string>
   <string name="choose_ringtone">Velg ringetone</string>
   <!-- Sound settings screen, setting option name to pick ringtone (a list dialog comes up)-->
-  <string name="soundtone_title">Notifikasjonstone</string>
+  <string name="soundtone_title">Varslingstone</string>
   <!-- Title for application group setting screen -->
   <string name="profile_appgroups_title">App grupper</string>
   <string name="profile_applist_title">Apper</string>
@@ -272,7 +272,7 @@
   <string name="battery_light_medium_color_title">Lading</string>
   <string name="battery_light_full_color_title">Fulladet</string>
   <!-- Lights settings screen, notification light settings -->
-  <string name="notification_light_title">Notifikasjonslys</string>
+  <string name="notification_light_title">Varslingslys</string>
   <string name="notification_light_general_title">Generelt</string>
   <string name="notification_light_applist_title">Apper</string>
   <string name="notification_light_phonelist_title">Telefon</string>
@@ -300,7 +300,7 @@
   <string name="adb_over_network_warning">Advarsel: Når ADB over nettverk er aktivert, er telefonen åpen for angrep på alle tilkoblede nettverk! \n\nKun bruk denne funksjonen når du er koblet på klarerte nettverk.\n\nVil du aktivere denne funksjonen?</string>
   <!-- Setting checkbox summary for displaying USB debugging notification -->
   <string name="adb_notify">Feilsøkingsvarsel</string>
-  <string name="adb_notify_summary">Vis en melding når USB eller nettverksfeilsøking er aktivert</string>
+  <string name="adb_notify_summary">Vis et varsel når USB eller nettverksfeilsøking er aktivert</string>
   <!-- Names of categories of app ops tabs - extension of AOSP -->
   <string name="app_ops_categories_location">Posisjon</string>
   <string name="app_ops_categories_personal">Personlig</string>
@@ -335,7 +335,7 @@
   <string name="app_ops_summaries_write_icc_sms">skriv ICC SMS</string>
   <string name="app_ops_summaries_modify_settings">endre innstillinger</string>
   <string name="app_ops_summaries_draw_on_top">tegne på topp</string>
-  <string name="app_ops_summaries_access_notifications">adgang til varsler</string>
+  <string name="app_ops_summaries_access_notifications">tilgang til varsler</string>
   <string name="app_ops_summaries_camera">kamera</string>
   <string name="app_ops_summaries_record_audio">spille inn lyd</string>
   <string name="app_ops_summaries_play_audio">spille av lyd</string>
@@ -405,7 +405,7 @@
   <string name="app_ops_labels_write_icc_sms">Skriv ICC SMS</string>
   <string name="app_ops_labels_modify_settings">Endre innstillinger</string>
   <string name="app_ops_labels_draw_on_top">Trekk fra toppen</string>
-  <string name="app_ops_labels_access_notifications">Tilgangsvarsler</string>
+  <string name="app_ops_labels_access_notifications">Tilgang til varsler</string>
   <string name="app_ops_labels_camera">Kamera</string>
   <string name="app_ops_labels_record_audio">spille inn lyd</string>
   <string name="app_ops_labels_play_audio">Spill av lyd</string>
@@ -553,6 +553,7 @@
   <string name="double_tap_to_sleep_summary">Dobbelttapp på statuslinjen for å slå av skjermen</string>
   <!-- Proximity wake -->
   <string name="proximity_wake_title">Hindre utilsiktet vekking</string>
+  <string name="proximity_wake_summary">Sjekk nærhetssensor før oppvekkinger utløst av bevegelser</string>
   <!-- Turn on display when power connected; turn off display when power disconnected -->
   <string name="wake_when_plugged_or_unplugged_title">Våkne ved tilkobling av strøm</string>
   <string name="wake_when_plugged_or_unplugged_summary">Slå skjermen på når du kobler til eller kobler fra en strømkilde</string>
@@ -628,7 +629,7 @@
   <string name="ime_switcher_notify">Valgikon</string>
   <string name="ime_switcher_notify_summary">Viser inndatametode snarvei</string>
   <!-- Heads up -->
-  <string name="heads_up_notifications">Flytende notifikasjoner</string>
+  <string name="heads_up_notifications">Flytende varsler</string>
   <string name="summary_heads_up_enabled">Popup varsler er aktivert</string>
   <string name="summary_heads_up_disabled">popupvarsler er deaktivert</string>
   <!-- Bluetooth settings.  A checkbox to set if we should accept all the file types regardless of their presence in MIME type whitelist -->
@@ -692,7 +693,7 @@
   <!-- Sound settings, Charging sounds vibrate enable/disable, setting check box label -->
   <string name="power_notifications_vibrate_title">Vibrer</string>
   <!-- Sound settings, Charging sounds ringtone selection, preference label -->
-  <string name="power_notifications_ringtone_title">Notifikasjonslyd</string>
+  <string name="power_notifications_ringtone_title">Varslingslyd</string>
   <!-- Sound settings, charging sounds label for ringtone == none -->
   <string name="power_notifications_ringtone_silent">Stille</string>
   <!-- Status bar -->
@@ -700,7 +701,7 @@
   <string name="status_bar_toggle_brightness">Lysstyrkekontroll</string>
   <string name="status_bar_toggle_brightness_summary">Juster lysstyrken ved å sveipe over statuslinjen</string>
   <string name="status_bar_notif_count_title">Vis antall varsler</string>
-  <string name="status_bar_notif_count_summary">Vise antall ventende notifikasjoner</string>
+  <string name="status_bar_notif_count_summary">Vis antall ventende varsler</string>
   <string name="status_bar_quick_qs_pulldown_title">Rask rullegardinmeny</string>
   <string name="status_bar_quick_qs_pulldown_summary">%1$s kanten av statusbaren drar ned hurtiginnstillinger</string>
   <string name="status_bar_quick_qs_pulldown_summary_left">Venstre</string>
@@ -857,10 +858,7 @@
   <string name="no_filters_title">Ingen filtre valgt</string>
   <!-- Anonymous Statistics #CM -->
   <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
-  <string name="anonymous_statistics_title">LineageOS statistikk</string>
-  <string name="anonymous_statistics_summary">Hjelp oss å gjøre LineageOS bedre ved å velge å sende inn anonym statistikkrapportering</string>
   <string name="anonymous_statistics_warning_title">Om</string>
-  <string name="anonymous_statistics_warning">Ved å bli med i LineageOS statistikk vil ikke-personlige data bli sendt til utvilkerne av LineageOS for å spore antall unike installasjoner spredt over typer enheter. Informasjonen som sendes inkluderer en unik identitetskode, som ikke kompromitterer ditt personvern eller dine personlige data. Data blir sendt ved hver oppstart.\n\nFor ett eksempel over data som blir sendt, trykk på Forhåndsvis Data.</string>
   <string name="enable_reporting_title">Aktiver rapportering</string>
   <string name="preview_data_title">Forhåndsvis data</string>
   <string name="view_stats_title">Vis statistikk</string>

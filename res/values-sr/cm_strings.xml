@@ -555,6 +555,7 @@
   <string name="double_tap_to_sleep_summary">Двапут додирни статусну траку да искључиш дисплеј</string>
   <!-- Proximity wake -->
   <string name="proximity_wake_title">Спречи случајно буђење</string>
+  <string name="proximity_wake_summary">Провери сензор близине пре примене геста буђења</string>
   <!-- Turn on display when power connected; turn off display when power disconnected -->
   <string name="wake_when_plugged_or_unplugged_title">Пробуди на утикачу</string>
   <string name="wake_when_plugged_or_unplugged_summary">Укључи екран код повезивања или искључивања са извора напајања</string>
@@ -859,10 +860,7 @@
   <string name="no_filters_title">Нема постављених филтера</string>
   <!-- Anonymous Statistics #CM -->
   <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
-  <string name="anonymous_statistics_title">Статистике LineageOS-а</string>
-  <string name="anonymous_statistics_summary">Помози да LineageOS буде бољи слањем анонимних статистика</string>
   <string name="anonymous_statistics_warning_title">О</string>
-  <string name="anonymous_statistics_warning">Омогућавањем слања LineageOS статистикe дозволиће се да се нелични подаци доставе развојном тиму LineageOS-а како би се пратио број појединачних инсталација на различите уређаје. Информације које се шаљу садрже јединствену идентификацију која не компромитује приватност или личне податке. Подаци се шаљу при сваком покретању уређаја.\n\nЗа пример података који се шаљу, додирните преглед података.</string>
   <string name="enable_reporting_title">Омогући извештавање</string>
   <string name="preview_data_title">Преглед података</string>
   <string name="view_stats_title">Погледај статистике</string>
@@ -953,6 +951,10 @@
   <!-- [CHAR LIMIT=50] Like zen_mode_summary_selected_messages, but part of a list, so lower case if needed -->
   <string name="zen_mode_summary_selected_messages">одабране поруке</string>
   <!-- Allow vibration in zen mode -->
+  <string name="zen_mode_vibration">Вибрација</string>
+  <string name="zen_mode_vibration_never">Без вибрације</string>
+  <string name="zen_mode_vibration_calls_only">Вибрирај само за позиве</string>
+  <string name="zen_mode_vibration_calls_and_notifications">Вибрирај за позиве и поруке</string>
   <!-- About phone settings screen, setting option dialog title to show regulatory information [CHAR LIMIT=25] -->
   <!-- SAR information -->
   <string name="maximum_head_level">Глава: %1$s W/kg</string>
@@ -1059,6 +1061,15 @@
   <string name="app_notification_no_ongoing_on_keyguard_title">Онемогућити трајна обавештења на закључаном екрану</string>
   <string name="app_notification_no_ongoing_on_keyguard_summary">Никад не приказуј трајна обавештења ове апликације на закључаном екрану</string>
   <!-- Notification sound timeout -->
+  <string name="app_notification_sound_timeout_title">Минимални период између звукова поруке</string>
+  <string name="app_notification_sound_timeout_summary_template">Дозволи звукове или вибрацију не више од једном сваких <xliff:g id="duration">%1$s</xliff:g></string>
+  <string name="app_notification_sound_timeout_value_none">Без ograničenja</string>
+  <string name="app_notification_sound_timeout_value_10_seconds">10 секунди</string>
+  <string name="app_notification_sound_timeout_value_30_seconds">30 секунди</string>
+  <string name="app_notification_sound_timeout_value_1_minute">1 минут</string>
+  <string name="app_notification_sound_timeout_value_5_minutes">5 минута</string>
+  <string name="app_notification_sound_timeout_value_15_minutes">10 минута</string>
+  <string name="app_notification_sound_timeout_value_30_minutes">30 минута</string>
   <!-- CmRadioInfo -->
   <string name="cm_radio_info_label">Проширена радио контрола</string>
   <!-- Radio Control (IMS/MBN etc.) -->
