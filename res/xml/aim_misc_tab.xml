@@ -28,4 +28,9 @@
                android:summary="@string/show_su_indicator_summary"
                android:defaultValue="true" />
 
+ <PreferenceScreen
+             android:id="@+id/alarm_blocker"
+             android:fragment="com.android.settings.aim.fragments.AlarmBlocker"
+             android:title="@string/alarm_blocker" />
+
 </PreferenceScreen>
