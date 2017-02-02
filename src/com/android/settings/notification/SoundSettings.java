@@ -165,6 +165,9 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
                     initVolumePreference(KEY_RING_VOLUME, AudioManager.STREAM_RING,
                             com.android.internal.R.drawable.ic_audio_ring_notif_mute);
         } else {
+            mRingOrNotificationPreference =
+                    initVolumePreference(KEY_NOTIFICATION_VOLUME, AudioManager.STREAM_NOTIFICATION,
+                            com.android.internal.R.drawable.ic_audio_ring_notif_mute);
             removePreference(KEY_RING_VOLUME);
             removePreference("volume_link_notification");
         }
@@ -275,12 +278,13 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     }
 
     private void updateRingOrNotificationPreference() {
-        if (mRingOrNotificationPreference == null) return;
         mRingOrNotificationPreference.showIcon(mSuppressor != null
                 ? com.android.internal.R.drawable.ic_audio_ring_notif_mute
                 : mRingerMode == AudioManager.RINGER_MODE_VIBRATE || wasRingerModeVibrate()
                 ? com.android.internal.R.drawable.ic_audio_ring_notif_vibrate
-                : R.drawable.ic_audio_ring);
+                : mVoiceCapable
+                ? R.drawable.ic_audio_ring
+                : com.android.internal.R.drawable.ic_audio_ring_notif);
     }
 
     private boolean wasRingerModeVibrate() {
