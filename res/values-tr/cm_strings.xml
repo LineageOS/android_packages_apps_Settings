@@ -18,9 +18,16 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to show Device Id -->
+  <plurals name="show_device_id_countdown_cm">
+    <item quantity="one">Cihaz ID\'sini görmekten <xliff:g id="step_count">%1$d</xliff:g> adım uzaktasınız.</item>
+    <item quantity="other">Cihaz ID\'sini görmekten <xliff:g id="step_count">%1$d</xliff:g> adım uzaktasınız.</item>
+  </plurals>
   <!--  Device Info screen. Confirmation that Device ID is copied to clipboard -->
+  <string name="show_device_id_copied_cm">Cihaz ID:[<xliff:g id="device_id">%1$s</xliff:g>] panoya kopyalandı</string>
   <!--  Device Info screen. Confirmation that Device ID is not available -->
+  <string name="show_device_id_failed_cm">Bu sürümde Cihaz ID mevcut değil</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Label for the deviceID text put to clipboard -->
+  <string name="show_device_id_clipboard_label">Cihaz ID</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
   <plurals name="show_dev_countdown_cm">
     <item quantity="one">Geliştirici ayarlarının etkinleştirilmesi için <xliff:g id="step_count">%1$d</xliff:g> adım kaldı.</item>
@@ -44,6 +51,8 @@
   <string name="root_access_adb">Sadece ADB</string>
   <string name="root_access_all">Uygulamalar ve ADB</string>
   <!-- Preference link for root appops -->
+  <string name="root_appops_title">Root erişimini yönet</string>
+  <string name="root_appops_summary">Root kurallarını görüntüle ve kontrol et</string>
   <!-- NFC PreferenceCategory title -->
   <string name="nfc_title_category">NFC</string>
   <!-- About phone screen, LineageOS version -->
@@ -544,6 +553,7 @@
   <string name="double_tap_to_sleep_summary">Ekranı kapatmak için durum çubuğuna iki defa dokunun</string>
   <!-- Proximity wake -->
   <string name="proximity_wake_title">Yanlış uyandırmaları önle</string>
+  <string name="proximity_wake_summary">Jestler tarafından tetiklenen uyanmadan önce yakınlık sensörünü kontrol edin</string>
   <!-- Turn on display when power connected; turn off display when power disconnected -->
   <string name="wake_when_plugged_or_unplugged_title">Takıp çıkarmada uyan</string>
   <string name="wake_when_plugged_or_unplugged_summary">Bir güç kaynağına bağlanırken ya da bağlantısını keserken ekranı aç</string>
@@ -554,6 +564,7 @@
   <string name="volume_adjust_sounds_title">Ses arttırma tonları</string>
   <!-- Hardware tunables - Vibrator intensity -->
   <string name="vibrator_intensity_title">Titreşim yoğunluğu</string>
+  <string name="vibrator_warning">%1$d%% değerinden daha yüksek değerler tavsiye edilmez</string>
   <!-- Hardware tunables - Color calibration -->
   <string name="color_calibration_title">Renk kalibrasyonu</string>
   <string name="color_calibration_summary">Ekran renklerini kalibre edin</string>
@@ -605,8 +616,14 @@
   <string name="live_display_color_profile_photography_summary">Fotoğraflar için mükemmel renk sunumu</string>
   <string name="live_display_color_profile_basic_title">Temel</string>
   <string name="live_display_color_profile_basic_summary">Ekranı ayarlanmamış şekilde kullan</string>
+  <string name="live_display_color_profile_adaptive_title">Uyarlanabilir</string>
+  <string name="live_display_color_profile_adaptive_summary">Renkleri ortam koşullarına uydur</string>
   <!-- LiveDisplay : Picture Adjustment -->
+  <string name="picture_adjustment_title">Resim ayarlama</string>
+  <string name="picture_adjustment_summary">Ton, doygunluk, yoğunluğu ve kontrastı ayarla</string>
+  <string name="adj_hue_title">Renk Tonu</string>
   <string name="adj_saturation_title">Doygunluk</string>
+  <string name="adj_intensity_title">Yoğunluk</string>
   <string name="adj_contrast_title">Karşıtlık</string>
   <!-- Whether to display IME switcher notifcation -->
   <string name="ime_switcher_notify">Seçici simgesi</string>
@@ -841,7 +858,10 @@
   <string name="no_filters_title">Hiçbir filtre ayarlanmadı</string>
   <!-- Anonymous Statistics #CM -->
   <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
+  <string name="anonymous_statistics_title">LineageOS istatistikleri</string>
+  <string name="anonymous_statistics_summary">LineageOS\'u geliştirmeye yardım etmek için anonim istatistik göndermeyi kabul edin</string>
   <string name="anonymous_statistics_warning_title">Hakkında</string>
+  <string name="anonymous_statistics_warning">LineageOS İstatistiklerine dahil olmak kişisel olmayan verilerin LineageOS geliştiricilerine cihazlar arasındaki benzersiz yüklemeleri takip etmeleri için gönderilmesine izin verir. Bu bilgi, kişisel bilgi içermeyen ve gizliliğinizi tehdit etmeyen bir benzersiz numara da içerir. Veri her başlangıçta gönderilir.\n\nGönderilecek verinin örneğini görmek için Veriyi Önizle butonunu kullanın.</string>
   <string name="enable_reporting_title">Raporlamayı etkinleştir</string>
   <string name="preview_data_title">Veriyi önizle</string>
   <string name="view_stats_title">İstatistikleri görüntüle</string>
@@ -932,6 +952,10 @@
   <!-- [CHAR LIMIT=50] Like zen_mode_summary_selected_messages, but part of a list, so lower case if needed -->
   <string name="zen_mode_summary_selected_messages">seçili mesajlar</string>
   <!-- Allow vibration in zen mode -->
+  <string name="zen_mode_vibration">Titreşim</string>
+  <string name="zen_mode_vibration_never">Titreşim yok</string>
+  <string name="zen_mode_vibration_calls_only">Sadece çağrılarda titret</string>
+  <string name="zen_mode_vibration_calls_and_notifications">Arama ve bildirimlerde titret</string>
   <!-- About phone settings screen, setting option dialog title to show regulatory information [CHAR LIMIT=25] -->
   <!-- SAR information -->
   <string name="maximum_head_level">Baş: %1$s W/kg</string>
@@ -1029,6 +1053,7 @@
   <!-- Label for settings shortcut: carrier selection -->
   <string name="shortcut_carrier_title">Ağ operatörleri</string>
   <!-- title for lock screen blur preference -->
+  <string name="lockscreen_blur_enabled_title">Bulanık arkaplan</string>
   <!-- title for lock screen weather preference -->
   <string name="lockscreen_weather_enabled_title">Hava durumunu göster</string>
   <!-- Per app controls for LP keyguard notifications -->
@@ -1037,10 +1062,40 @@
   <string name="app_notification_no_ongoing_on_keyguard_title">Kilit ekranında kalıcı bildirimleri devre dışı bırak</string>
   <string name="app_notification_no_ongoing_on_keyguard_summary">Kilit ekranında bu uygulamanın kalıcı bildirimlerini asla gösterme</string>
   <!-- Notification sound timeout -->
+  <string name="app_notification_sound_timeout_title">Bildirim sesleri arasında en az zaman</string>
+  <string name="app_notification_sound_timeout_summary_template">Bir defadan fazla olmayacak şekilde her <xliff:g id="duration">%1$s</xliff:g>\'da bir titreme veya sese izin ver</string>
+  <string name="app_notification_sound_timeout_value_none">Kısıtlama yok</string>
+  <string name="app_notification_sound_timeout_value_10_seconds">10 saniye</string>
+  <string name="app_notification_sound_timeout_value_30_seconds">30 Saniye</string>
+  <string name="app_notification_sound_timeout_value_1_minute">1 dakika</string>
+  <string name="app_notification_sound_timeout_value_5_minutes">5 dakika</string>
+  <string name="app_notification_sound_timeout_value_15_minutes">10 dakika</string>
+  <string name="app_notification_sound_timeout_value_30_minutes">30 dakika</string>
   <!-- CmRadioInfo -->
+  <string name="cm_radio_info_label">Gelişmiş radyo kontrolü</string>
   <!-- Radio Control (IMS/MBN etc.) -->
+  <string name="cm_radio_info_mbn_auto_load_on_label">MBN otomatik yüklemeyi kapat</string>
+  <string name="cm_radio_info_mbn_auto_load_off_label">MBN otomatik yüklemeyi aç</string>
+  <string name="cm_radio_info_volte_avail_ovr_on_label">VoLTE hata ayıklamayı kapat</string>
+  <string name="cm_radio_info_volte_avail_ovr_off_label">VoLTE hata ayıklamayı aç</string>
+  <string name="cm_radio_info_vt_avail_ovr_on_label">VT hata ayıklamayı kapat</string>
+  <string name="cm_radio_info_vt_avail_ovr_off_label">VT hata ayıklamayı aç</string>
+  <string name="cm_radio_info_wfc_avail_ovr_on_label">WFC hata ayıklamayı kapat</string>
+  <string name="cm_radio_info_wfc_avail_ovr_off_label">WFC hata ayıklamayı aç</string>
+  <string name="cm_radio_info_adb_log_on_label">ADB radyo log kapat</string>
+  <string name="cm_radio_info_adb_log_off_label">ADB radyo log aç</string>
+  <string name="cm_radio_info_diag_log_on_label">Diag log kapat</string>
+  <string name="cm_radio_info_diag_log_off_label">Diag log aç</string>
   <!-- Lock screen wallpaper -->
+  <string name="lockscreen_wallpaper_title">Duvar kağıdı</string>
+  <string name="not_available_with_app">%1$s için uygun değil</string>
   <!-- Format string for fingerprint location message -->
+  <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Telefonunuzdaki <xliff:g id="sensor_location">%1$s</xliff:g> üzerinde parmak izi sensörünü bulun.</string>
   <!-- Fingerprint sensor locations -->
+  <string name="security_settings_fingerprint_sensor_location_back">geri</string>
+  <string name="security_settings_fingerprint_sensor_location_front">ön</string>
+  <string name="security_settings_fingerprint_sensor_location_left">sol taraf</string>
+  <string name="security_settings_fingerprint_sensor_location_right">sağ taraf</string>
   <!-- SIM status format string -->
+  <string name="sim_status_format_string">Ses: <xliff:g id="voice_state">%1$s</xliff:g>, veri: <xliff:g id="data_state">%2$s</xliff:g></string>
 </resources>

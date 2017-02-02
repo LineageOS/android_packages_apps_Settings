@@ -18,9 +18,16 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to show Device Id -->
+  <plurals name="show_device_id_countdown_cm">
+    <item quantity="one">Usted está a <xliff:g id="step_count">%1$d</xliff:g> paso de obtener el ID del dispositivo.</item>
+    <item quantity="other">Usted está a <xliff:g id="step_count">%1$d</xliff:g> pasos de obtener el ID del dispositivo.</item>
+  </plurals>
   <!--  Device Info screen. Confirmation that Device ID is copied to clipboard -->
+  <string name="show_device_id_copied_cm">ID del dispositivo: [<xliff:g id="device_id">%1$s </xliff:g>] copiada al portapapeles</string>
   <!--  Device Info screen. Confirmation that Device ID is not available -->
+  <string name="show_device_id_failed_cm">ID del dispositivo no está disponible en esta versión</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Label for the deviceID text put to clipboard -->
+  <string name="show_device_id_clipboard_label">ID del dispositivo</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
   <plurals name="show_dev_countdown_cm">
     <item quantity="one">Ahora estás a <xliff:g id="step_count">%1$d</xliff:g> paso de habilitar las opciones de desarrollo.</item>
@@ -44,6 +51,8 @@
   <string name="root_access_adb">Solo ADB</string>
   <string name="root_access_all">Aplicaciones y ADB</string>
   <!-- Preference link for root appops -->
+  <string name="root_appops_title">Gestión del acceso administrativo (root)</string>
+  <string name="root_appops_summary">Ver y controlar las reglas de la raíz</string>
   <!-- NFC PreferenceCategory title -->
   <string name="nfc_title_category">NFC</string>
   <!-- About phone screen, LineageOS version -->
