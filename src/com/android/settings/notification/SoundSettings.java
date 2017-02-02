@@ -165,6 +165,9 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
                     initVolumePreference(KEY_RING_VOLUME, AudioManager.STREAM_RING,
                             com.android.internal.R.drawable.ic_audio_ring_notif_mute);
         } else {
+            mRingOrNotificationPreference =
+                    initVolumePreference(KEY_NOTIFICATION_VOLUME, AudioManager.STREAM_NOTIFICATION,
+                            com.android.internal.R.drawable.ic_audio_ring_notif_mute);
             removePreference(KEY_RING_VOLUME);
             removePreference("volume_link_notification");
         }
