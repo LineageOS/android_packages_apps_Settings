@@ -280,7 +280,9 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
                 ? com.android.internal.R.drawable.ic_audio_ring_notif_mute
                 : mRingerMode == AudioManager.RINGER_MODE_VIBRATE || wasRingerModeVibrate()
                 ? com.android.internal.R.drawable.ic_audio_ring_notif_vibrate
-                : R.drawable.ic_audio_ring);
+                : mVoiceCapable
+                ? R.drawable.ic_audio_ring
+                : com.android.internal.R.drawable.ic_audio_ring_notif);
     }
 
     private boolean wasRingerModeVibrate() {
