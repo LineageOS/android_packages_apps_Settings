@@ -18,9 +18,15 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to show Device Id -->
+  <plurals name="show_device_id_countdown_cm">
+    <item quantity="other">Bạn đang còn <xliff:g id="step_count">%1$d</xliff:g> bước để truy vấn ID thiết bị.</item>
+  </plurals>
   <!--  Device Info screen. Confirmation that Device ID is copied to clipboard -->
+  <string name="show_device_id_copied_cm">ID thiết bị:[<xliff:g id="device_id">%1$s</xliff:g>] đã sao chép vào bảng tạm</string>
   <!--  Device Info screen. Confirmation that Device ID is not available -->
+  <string name="show_device_id_failed_cm">ID thiết bị không có sẵn trên bản dựng này</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Label for the deviceID text put to clipboard -->
+  <string name="show_device_id_clipboard_label">ID thiết bị</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
   <plurals name="show_dev_countdown_cm">
     <item quantity="other">Hiện tại bạn còn <xliff:g id="step_count">%1$d</xliff:g> bước nữa để bật cài đặt nhà phát triển.</item>
@@ -43,6 +49,8 @@
   <string name="root_access_adb">Chỉ cho ADB</string>
   <string name="root_access_all">Cả ứng dụng và ADB</string>
   <!-- Preference link for root appops -->
+  <string name="root_appops_title">Quản lý truy cập root</string>
+  <string name="root_appops_summary">Xem và kiểm soát các truy cập root</string>
   <!-- NFC PreferenceCategory title -->
   <string name="nfc_title_category">NFC</string>
   <!-- About phone screen, LineageOS version -->
@@ -543,6 +551,7 @@
   <string name="double_tap_to_sleep_summary">Chạm hai lần vào thanh trạng thái để tắt màn hình hiển thị</string>
   <!-- Proximity wake -->
   <string name="proximity_wake_title">Ngăn ngừa tình cờ mở màn hình</string>
+  <string name="proximity_wake_summary">Kiểm tra cảm biến tiệm cận trước khi đánh thức được kích hoạt bằng cử chỉ</string>
   <!-- Turn on display when power connected; turn off display when power disconnected -->
   <string name="wake_when_plugged_or_unplugged_title">Sáng màn hình khi cắm sạc</string>
   <string name="wake_when_plugged_or_unplugged_summary">Bật màn hình khi kết nối hoặc ngắt kết nối nguồn điện</string>
@@ -553,6 +562,7 @@
   <string name="volume_adjust_sounds_title">Âm thanh điều chỉnh âm lượng</string>
   <!-- Hardware tunables - Vibrator intensity -->
   <string name="vibrator_intensity_title">Cường độ rung</string>
+  <string name="vibrator_warning">Giá trị cao hơn %1$d%% không được khuyến cáo</string>
   <!-- Hardware tunables - Color calibration -->
   <string name="color_calibration_title">Hiệu chỉnh màu sắc</string>
   <string name="color_calibration_summary">Hiệu chỉnh màu sắc trên màn hình</string>
@@ -604,8 +614,14 @@
   <string name="live_display_color_profile_photography_summary">Tái tạo màu sắc hoàn hảo cho hình ảnh</string>
   <string name="live_display_color_profile_basic_title">Cơ bản</string>
   <string name="live_display_color_profile_basic_summary">Dùng màn hình không hiệu chỉnh</string>
+  <string name="live_display_color_profile_adaptive_title">Thích nghi</string>
+  <string name="live_display_color_profile_adaptive_summary">Màu sắc thích ứng với điều kiện môi trường xung quanh</string>
   <!-- LiveDisplay : Picture Adjustment -->
+  <string name="picture_adjustment_title">Hiệu chỉnh hình ảnh</string>
+  <string name="picture_adjustment_summary">Hiệu chỉnh tông màu, bão hòa, cường độ và độ tương phản</string>
+  <string name="adj_hue_title">Tông màu</string>
   <string name="adj_saturation_title">Độ bão hòa</string>
+  <string name="adj_intensity_title">Cường độ</string>
   <string name="adj_contrast_title">Độ tương phản</string>
   <!-- Whether to display IME switcher notifcation -->
   <string name="ime_switcher_notify">Biểu tượng trình chọn</string>
@@ -840,7 +856,10 @@
   <string name="no_filters_title">Chưa thiết lập bộ lọc</string>
   <!-- Anonymous Statistics #CM -->
   <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
+  <string name="anonymous_statistics_title">Thống kê LineageOS</string>
+  <string name="anonymous_statistics_summary">Giúp làm cho LineageOS tốt hơn bằng cách chọn vào báo cáo số liệu thống kê ẩn danh</string>
   <string name="anonymous_statistics_warning_title">Thông tin</string>
+  <string name="anonymous_statistics_warning">Chọn tham gia Thống kê LineageOS sẽ cho phép gửi dữ liệu không liên quan đến cá nhân đến những nhà phát triển của LineageOS để theo dõi số lượt cài đặt duy nhất trên các thiết bị. Thông tin đã gửi sẽ bao gồm một ký hiệu nhận dạng duy nhất, nó sẽ không ảnh hưởng đến sự riêng tư hoặc dữ liệu cá nhân của bạn. Dữ liệu được gửi vào mỗi lần khởi động.\n\nĐể xem mẫu dữ liệu được gửi, chạm vào Xem trước dữ liệu.</string>
   <string name="enable_reporting_title">Cho phép báo cáo</string>
   <string name="preview_data_title">Xem trước dữ liệu</string>
   <string name="view_stats_title">Xem thống kê</string>
@@ -931,6 +950,10 @@
   <!-- [CHAR LIMIT=50] Like zen_mode_summary_selected_messages, but part of a list, so lower case if needed -->
   <string name="zen_mode_summary_selected_messages">tin nhắn đã chọn</string>
   <!-- Allow vibration in zen mode -->
+  <string name="zen_mode_vibration">Rung</string>
+  <string name="zen_mode_vibration_never">Không rung</string>
+  <string name="zen_mode_vibration_calls_only">Chỉ rung cho các cuộc gọi</string>
+  <string name="zen_mode_vibration_calls_and_notifications">Rung cho cuộc gọi và thông báo</string>
   <!-- About phone settings screen, setting option dialog title to show regulatory information [CHAR LIMIT=25] -->
   <!-- SAR information -->
   <string name="maximum_head_level">Đầu: %1$s W/kg</string>
@@ -1028,6 +1051,7 @@
   <!-- Label for settings shortcut: carrier selection -->
   <string name="shortcut_carrier_title">Nhà điều hành mạng</string>
   <!-- title for lock screen blur preference -->
+  <string name="lockscreen_blur_enabled_title">Nền mờ</string>
   <!-- title for lock screen weather preference -->
   <string name="lockscreen_weather_enabled_title">Hiển thị thời tiết</string>
   <!-- Per app controls for LP keyguard notifications -->
@@ -1036,10 +1060,40 @@
   <string name="app_notification_no_ongoing_on_keyguard_title">Tắt thông báo liên tục trên màn hình khóa</string>
   <string name="app_notification_no_ongoing_on_keyguard_summary">Không bao giờ hiển thị các thông báo liên tục từ ứng dụng này trên màn hình khóa</string>
   <!-- Notification sound timeout -->
+  <string name="app_notification_sound_timeout_title">Thời gian tối thiểu giữa các âm thanh thông báo</string>
+  <string name="app_notification_sound_timeout_summary_template">Cho phép âm thanh hoặc rung không nhiều hơn một lần mỗi <xliff:g id="duration">%1$s</xliff:g></string>
+  <string name="app_notification_sound_timeout_value_none">Không giới hạn</string>
+  <string name="app_notification_sound_timeout_value_10_seconds">10 giây</string>
+  <string name="app_notification_sound_timeout_value_30_seconds">30 giây</string>
+  <string name="app_notification_sound_timeout_value_1_minute">1 phút</string>
+  <string name="app_notification_sound_timeout_value_5_minutes">5 phút</string>
+  <string name="app_notification_sound_timeout_value_15_minutes">10 phút</string>
+  <string name="app_notification_sound_timeout_value_30_minutes">30 phút</string>
   <!-- CmRadioInfo -->
+  <string name="cm_radio_info_label">Điều khiển radio tăng cường</string>
   <!-- Radio Control (IMS/MBN etc.) -->
+  <string name="cm_radio_info_mbn_auto_load_on_label">Tắt MBN tự động tải</string>
+  <string name="cm_radio_info_mbn_auto_load_off_label">Bật MBN tự động tải</string>
+  <string name="cm_radio_info_volte_avail_ovr_on_label">Tắt gỡ lỗi VoLTE</string>
+  <string name="cm_radio_info_volte_avail_ovr_off_label">Bật gỡ lỗi VoLTE</string>
+  <string name="cm_radio_info_vt_avail_ovr_on_label">Tắt gỡ lỗi VT</string>
+  <string name="cm_radio_info_vt_avail_ovr_off_label">Tắt gỡ lỗi VT</string>
+  <string name="cm_radio_info_wfc_avail_ovr_on_label">Tắt gỡ lỗi WFC</string>
+  <string name="cm_radio_info_wfc_avail_ovr_off_label">Bật gỡ lỗi WFC</string>
+  <string name="cm_radio_info_adb_log_on_label">Tắt nhật ký ADB radio</string>
+  <string name="cm_radio_info_adb_log_off_label">Bật nhật ký ADB radio</string>
+  <string name="cm_radio_info_diag_log_on_label">Tắt nhật ký Diag</string>
+  <string name="cm_radio_info_diag_log_off_label">Bật nhật ký Diag</string>
   <!-- Lock screen wallpaper -->
+  <string name="lockscreen_wallpaper_title">Hình nền</string>
+  <string name="not_available_with_app">Không có sẵn với %1$s</string>
   <!-- Format string for fingerprint location message -->
+  <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Xác định vị trí cảm biến vân tay trên <xliff:g id="sensor_location">%1$s</xliff:g> điện thoại của bạn.</string>
   <!-- Fingerprint sensor locations -->
+  <string name="security_settings_fingerprint_sensor_location_back">quay lại</string>
+  <string name="security_settings_fingerprint_sensor_location_front">trước</string>
+  <string name="security_settings_fingerprint_sensor_location_left">cạnh trái</string>
+  <string name="security_settings_fingerprint_sensor_location_right">cạnh phải</string>
   <!-- SIM status format string -->
+  <string name="sim_status_format_string">Thoại: <xliff:g id="voice_status">%1$s</xliff:g> / Dữ liệu: <xliff:g id="data_status">%2$s</xliff:g></string>
 </resources>
