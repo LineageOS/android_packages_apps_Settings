@@ -69,6 +69,12 @@
             android:icon="@drawable/ic_freedomhub_ico"
             android:title="@string/quicksettings_title" />
 	
-      </PreferenceCategory>
+    <com.android.settings.aim.Preferences.SecureSettingSwitchPreference
+        android:key="qs_easy_toggle"
+        android:title="@string/qs_easy_toggle_title"
+        android:summary="@string/qs_easy_toggle_summary"
+        android:defaultValue="false" />
+  
+    </PreferenceCategory>
 
 </PreferenceScreen>
