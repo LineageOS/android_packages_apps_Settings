@@ -58,6 +58,7 @@
   <string name="app_ops_categories_media">Media</string>
   <string name="app_ops_categories_device">Device</string>
   <string name="app_ops_categories_bootup">Bootup</string>
+  <string name="app_ops_categories_su">Root access</string>
   <!-- User display names for app ops codes - extension of AOSP -->
   <string name="app_ops_summaries_coarse_location">coarse location</string>
   <string name="app_ops_summaries_fine_location">fine location</string>
@@ -101,7 +102,6 @@
   <string name="app_ops_summaries_keep_awake">keep awake</string>
   <string name="app_ops_summaries_monitor_location">monitor location</string>
   <string name="app_ops_summaries_monitor_high_power_location">monitor high power location</string>
-  <string name="app_ops_summaries_get_usage_stats">get usage stats</string>
   <string name="app_ops_summaries_mute_unmute_microphone">mute/unmute microphone</string>
   <string name="app_ops_summaries_toast_window">display toasts</string>
   <string name="app_ops_summaries_project_media">project media</string>
@@ -212,6 +212,8 @@
   <string name="touchscreen_hovering_title">Touchscreen hovering</string>
   <string name="touchscreen_hovering_summary">Allows you to hover the screen like a mouse in web browsers, remote desktops, etc</string>
   <!-- Whether to display IME switcher notifcation -->
+  <string name="ime_switcher_notify">Selector icon</string>
+  <string name="ime_switcher_notify_summary">Display input method selector icon</string>
   <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
   <!-- Stylus Icon -->
   <string name="stylus_icon_enabled_title">Show icon when using stylus</string>
@@ -249,10 +251,32 @@
   <string name="cmlicense_title">LineageOS legal</string>
   <!-- Format string for fingerprint location message -->
   <!-- Fingerprint sensor locations -->
+  <!-- Wi-Fi region code -->
+  <string name="wifi_setting_countrycode_title">Wi\u2011Fi region code</string>
+  <!-- Wi-Fi settings screen, setting summary for setting the wifi frequency band [CHAR LIMIT=50]-->
+  <string name="wifi_setting_countrycode_summary">Specify the region code for Wi\u2011Fi</string>
+  <!-- Wi-Fi settings screen, error message when the frequency band could not be set [CHAR LIMIT=50]. -->
+  <string name="wifi_setting_countrycode_error">There was a problem setting the region code.</string>
+  <!-- Wake on plug -->
+  <string name="wake_when_plugged_or_unplugged_title">Wake on plug</string>
+  <string name="wake_when_plugged_or_unplugged_summary">Turn the screen on when connecting or disconnecting a power source</string>
+  <!-- Heads-up -->
+  <!-- Encryption password -->
   <!-- Tethering & portable hotspot other category -->
   <!-- Wi-Fi tethering inactivity timeout -->
   <string name="hotstpot_inactivity_timeout_never">Never</string>
-  <!-- Wake on plug -->
-  <string name="wake_when_plugged_or_unplugged_title">Wake on plug</string>
-  <!-- Heads-up -->
+  <!-- Per-app data restrictions -->
+  <!-- Title for switch to block app data usage [CHAR LIMIT=30] -->
+  <!-- Summary for switch to block app data usage [CHAR LIMIT=NONE] -->
+  <!-- Title for switch to block app data usage [CHAR LIMIT=30] -->
+  <!-- Summary for switch to block app data usage [CHAR LIMIT=NONE] -->
+  <!-- Volume link notification -->
+  <string name="volume_link_notification_title">Link ringtone &amp; notification volumes</string>
+  <!-- Launch music player when headset is connected -->
+  <!-- Update recovery -->
+  <string name="update_recovery_on_warning">NOTICE: When this feature is enabled, your installed recovery will be replaced by one included with the current version of the running OS.\n\nYour recovery will be updated along with upgrades to your system, helping to ensure compatibility with future versions.\n\nWould you like to enable this feature?</string>
+  <string name="update_recovery_off_warning">WARNING: When this feature is disabled, your installed recovery will not be updated with OS upgrades.\n\nFuture OS updates may not install with outdated or custom recovery versions.\n\nDo you really want to disable this feature?</string>
+  <!-- Status bar - double tap to sleep -->
+  <string name="status_bar_double_tap_to_sleep_title">Double-tap to sleep</string>
+  <string name="status_bar_double_tap_to_sleep_summary">Double-tap on the status bar to turn off the display</string>
 </resources>

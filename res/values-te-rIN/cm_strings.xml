@@ -49,7 +49,6 @@
   <string name="mod_api_level_default">తెలియదు</string>
   <!-- About phone screen, build date -->
   <string name="build_date">నిర్మించబడిన తేదీ</string>
-  <string name="build_date_default">2015-01-01-0000</string>
   <!-- CM Updater -->
   <string name="cmupdate_settings_title">సయనోజెన్ మోడ్ అప్డేట్లు</string>
   <!-- Names of categories of app ops tabs - extension of AOSP -->
@@ -59,6 +58,7 @@
   <string name="app_ops_categories_media">మీడియా</string>
   <string name="app_ops_categories_device">పరికరం</string>
   <string name="app_ops_categories_bootup">బూటప్</string>
+  <string name="app_ops_categories_su">మూల ప్రాప్తి</string>
   <!-- User display names for app ops codes - extension of AOSP -->
   <string name="app_ops_summaries_coarse_location">సరైనది కాని స్థానం</string>
   <string name="app_ops_summaries_fine_location">ఖచ్చితమైన స్థానం</string>
@@ -103,7 +103,6 @@
   <string name="app_ops_summaries_keep_awake">సక్రియంగా ఉంచండి</string>
   <string name="app_ops_summaries_monitor_location">మానిటర్ స్థానం</string>
   <string name="app_ops_summaries_monitor_high_power_location">మానిటర్ యొక్క అధిక శక్తివంతమైన స్థానం</string>
-  <string name="app_ops_summaries_get_usage_stats">వినియోగ గణాంకాలను పొందుము</string>
   <string name="app_ops_summaries_mute_unmute_microphone">మైక్రోఫోన్ మ్యూట్/అన్‌మ్యూట్ చేయుము</string>
   <string name="app_ops_summaries_toast_window">టోస్ట్ నోటిఫికేషనును డిస్ప్లే చేయుము</string>
   <string name="app_ops_summaries_project_media">మీడియాను ప్రదర్శించుము</string>
@@ -127,6 +126,7 @@
   <string name="app_ops_summaries_toggle_bluetooth">బ్లూటూతును ద్విక్రియ చేయుము</string>
   <string name="app_ops_summaries_start_at_boot">బూట్ వద్ద ప్రారంభించుము</string>
   <string name="app_ops_summaries_toggle_nfc">NFCను ద్విక్రియ చేయుము</string>
+  <string name="app_ops_summaries_toggle_mobile_data">మొబైల్ డేటాను ద్విక్రియం చేయుము</string>
   <string name="app_ops_summaries_superuser">మూలాంశ ప్రాప్యత</string>
   <!-- User display names for app ops codes - extension of AOSP -->
   <string name="app_ops_labels_coarse_location">ముతక స్థానం</string>
@@ -196,6 +196,7 @@
   <string name="app_ops_labels_toggle_bluetooth">బ్లూటూతును ద్విక్రియ చేయుము</string>
   <string name="app_ops_labels_start_at_boot">బూట్ వద్ద ప్రారంభించుము</string>
   <string name="app_ops_labels_toggle_nfc">NFCను ద్విక్రియ చేయుము</string>
+  <string name="app_ops_labels_toggle_mobile_data">మొబైల్ డేటాను ద్విక్రియ చేయుము</string>
   <string name="app_ops_labels_superuser">మూల ప్రాప్తి</string>
   <!-- App ops permissions -->
   <string name="app_ops_permissions_allowed">అనుమతించబడింది</string>
@@ -267,6 +268,8 @@
   <string name="touchscreen_hovering_title">టచ్ స్క్రీన్ యొక్క హోవరింగ్ స్వభావం</string>
   <string name="touchscreen_hovering_summary">వెబ్ బౌజర్లు, రిమోట్ డెస్క్‌టాప్‌లు, మొదలైన వాటిలో మౌస్ వలే తెరను హోవర్ చేయడానికి అనుమతిస్తుంది</string>
   <!-- Whether to display IME switcher notifcation -->
+  <string name="ime_switcher_notify">సెలెక్టర్ చిహ్నం</string>
+  <string name="ime_switcher_notify_summary">ఇన్పుట్ ప్రక్రియను ఎంచుకునే చిహ్నాన్ని ప్రదర్శించుము</string>
   <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
   <!-- Stylus Icon -->
   <string name="stylus_icon_enabled_title">స్టైలస్ ఉపయోగించేటప్పుడు చిహ్నాన్ని చూపుము</string>
@@ -304,6 +307,17 @@
   <string name="cmlicense_title">సయనోజెన్ మోడ్ లీగల్</string>
   <!-- Format string for fingerprint location message -->
   <!-- Fingerprint sensor locations -->
+  <!-- Wi-Fi region code -->
+  <string name="wifi_setting_countrycode_title">Wi\u2011Fi ప్రాంతం కోడ్</string>
+  <!-- Wi-Fi settings screen, setting summary for setting the wifi frequency band [CHAR LIMIT=50]-->
+  <string name="wifi_setting_countrycode_summary">Wi\u2011Fiకు ప్రాంతం కోడును పేర్కొనుము</string>
+  <!-- Wi-Fi settings screen, error message when the frequency band could not be set [CHAR LIMIT=50]. -->
+  <string name="wifi_setting_countrycode_error">ప్రాంతం కోడును సెట్ చేయడంలో సమస్య ఉంది.</string>
+  <!-- Wake on plug -->
+  <string name="wake_when_plugged_or_unplugged_title">మేల్కొలుపు ప్లగ్</string>
+  <string name="wake_when_plugged_or_unplugged_summary">విద్యుత్ ఆధారాన్ని అనుసంధానం చేసేటప్పుడు లేదా తొలిగించేటప్పుడు స్క్రీనును ఆన్ చేయండి</string>
+  <!-- Heads-up -->
+  <!-- Encryption password -->
   <!-- Tethering & portable hotspot other category -->
   <string name="tethering_other_category_text">ఇతర</string>
   <!-- Wi-Fi tethering inactivity timeout -->
@@ -312,7 +326,20 @@
   <string name="hotstpot_inactivity_timeout_1_minute">1 నిమిషం</string>
   <string name="hotstpot_inactivity_timeout_5_minutes">5 నిమిషాలు</string>
   <string name="hotstpot_inactivity_timeout_10_minutes">10 నిమిషాలు</string>
-  <!-- Wake on plug -->
-  <string name="wake_when_plugged_or_unplugged_title">మేల్కొలుపు ప్లగ్</string>
-  <!-- Heads-up -->
+  <string name="hotstpot_inactivity_timeout_never_summary_text">పోర్టబుల్ Wifi\u2011Fi హాట్స్పాట్ ఎప్పుడూ గడువు ముగియడానికి ఉంటుంది</string>
+  <string name="hotstpot_inactivity_timeout_summary_text">పోర్టబుల్ Wifi\u2011Fi హాట్స్పాట్ <xliff:g id="timeout">%1$s</xliff:g> తరువాత గడువు ముగియడానికి ఉంటుంది </string>
+  <!-- Per-app data restrictions -->
+  <!-- Title for switch to block app data usage [CHAR LIMIT=30] -->
+  <!-- Summary for switch to block app data usage [CHAR LIMIT=NONE] -->
+  <!-- Title for switch to block app data usage [CHAR LIMIT=30] -->
+  <!-- Summary for switch to block app data usage [CHAR LIMIT=NONE] -->
+  <!-- Volume link notification -->
+  <string name="volume_link_notification_title">రింగ్ టోన్ మరియు నోటిఫికేషన్ వాల్యూములను అనుసంధానించుము</string>
+  <!-- Launch music player when headset is connected -->
+  <!-- Update recovery -->
+  <string name="update_recovery_on_warning">గమనిక: ఈ విశేషాంశాన్ని అమలు చేసినప్పుడు, అప్పుడు నడుస్తున్న OS యొక్క ప్రస్తుత సంస్కరణతో పాటుగా చేర్చబడిన దానితో మీ యొక్క ఇన్స్టాల్డ్ మెమరీ భర్తీ చేయబడుతుంది. \n\nభవిష్యత్ సంస్కరణలతో సరితూగేలా ఉండేందుకై మీ పునరుద్ధరణ మీ యొక్క సిస్టమ్ ఆధునీకరణలతో అప్ గ్రేడ్  చేయబడుతుంది.  \n\nమీరు ఈ విశేషాంశం అమలు చేయాలనుకుంటున్నారా?</string>
+  <string name="update_recovery_off_warning">హెచ్చ్జరిక: ఈ లక్షణం నిలిపివేయబడినప్పుడు, మీ యొక్క వ్యవస్థాపించబడిన పునరుద్ధరణ OS ఉన్నతీకరణలతో నవీకరించబడదు.\n\nభవిష్యత్ OS నవీకరణలు కాలంచెల్లిన లేదా అనుకూల పునరుద్దరణ సంస్కరణలతో వ్యవస్థాపించకబడపోవచ్చు.\n\nమీరి నిజంగా ఈ లక్షణాన్ని నిలిపివేయాలని అనుకుంటున్నారా?</string>
+  <!-- Status bar - double tap to sleep -->
+  <string name="status_bar_double_tap_to_sleep_title">నిర్వీర్యం చేయడానికి రెండుసార్లు ట్యాప్ చేయండి</string>
+  <string name="status_bar_double_tap_to_sleep_summary">డిస్ప్లేను ఆపివేయడానికి స్టేటస్ బార్ పైన రెండుసార్లు ట్యాప్ చేయండి</string>
 </resources>

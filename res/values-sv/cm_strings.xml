@@ -59,6 +59,7 @@
   <string name="app_ops_categories_media">Media</string>
   <string name="app_ops_categories_device">Enhet</string>
   <string name="app_ops_categories_bootup">Uppstart</string>
+  <string name="app_ops_categories_su">Root-åtkomst</string>
   <!-- User display names for app ops codes - extension of AOSP -->
   <string name="app_ops_summaries_coarse_location">grov lokalisering</string>
   <string name="app_ops_summaries_fine_location">fin lokalisering</string>
@@ -103,7 +104,6 @@
   <string name="app_ops_summaries_keep_awake">håll vaken</string>
   <string name="app_ops_summaries_monitor_location">övervaka plats</string>
   <string name="app_ops_summaries_monitor_high_power_location">övervaka högenergiplats</string>
-  <string name="app_ops_summaries_get_usage_stats">få användningsstatistik</string>
   <string name="app_ops_summaries_mute_unmute_microphone">Slå på/av mikrofonen</string>
   <string name="app_ops_summaries_toast_window">visa toasts</string>
   <string name="app_ops_summaries_project_media">projektmedia</string>
@@ -127,6 +127,7 @@
   <string name="app_ops_summaries_toggle_bluetooth">växla Bluetooth</string>
   <string name="app_ops_summaries_start_at_boot">starta vid uppstart</string>
   <string name="app_ops_summaries_toggle_nfc">växla NFC</string>
+  <string name="app_ops_summaries_toggle_mobile_data">växla mobildata</string>
   <string name="app_ops_summaries_superuser">root-åtkomst</string>
   <!-- User display names for app ops codes - extension of AOSP -->
   <string name="app_ops_labels_coarse_location">Grov lokalisering</string>
@@ -196,6 +197,7 @@
   <string name="app_ops_labels_toggle_bluetooth">Växla Bluetooth</string>
   <string name="app_ops_labels_start_at_boot">Starta vid uppstart</string>
   <string name="app_ops_labels_toggle_nfc">Växla NFC</string>
+  <string name="app_ops_labels_toggle_mobile_data">Växla mobildata</string>
   <string name="app_ops_labels_superuser">Rootåtkomst</string>
   <!-- App ops permissions -->
   <string name="app_ops_permissions_allowed">Tillåten</string>
@@ -236,6 +238,7 @@
   <!-- Memory -->
   <string name="memory_startup_apps_title">Appar startade vid uppstart</string>
   <!-- Advanced restart options -->
+  <string name="advanced_reboot_title">Avancerad omstart</string>
   <!-- PIN scramble -->
   <string name="unlock_scramble_pin_layout_title">Kasta om layout</string>
   <string name="unlock_scramble_pin_layout_summary">Kasta om PIN-layout vid upplåsning av enheten</string>
@@ -268,6 +271,8 @@
   <string name="touchscreen_hovering_title">Tryckskärm-hovring</string>
   <string name="touchscreen_hovering_summary">Låter dig hovra över skärmen som en mus i webbläsare, fjärrskrivbord, etc</string>
   <!-- Whether to display IME switcher notifcation -->
+  <string name="ime_switcher_notify">Väljarikonen</string>
+  <string name="ime_switcher_notify_summary">Visa ikonen för inmatningsväxlare</string>
   <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
   <!-- Stylus Icon -->
   <string name="stylus_icon_enabled_title">Visa ikon vid användning av pekpenna</string>
@@ -305,6 +310,17 @@
   <string name="cmlicense_title">LineageOS Juridik</string>
   <!-- Format string for fingerprint location message -->
   <!-- Fingerprint sensor locations -->
+  <!-- Wi-Fi region code -->
+  <string name="wifi_setting_countrycode_title">Wi\u2011Fi-regionskod</string>
+  <!-- Wi-Fi settings screen, setting summary for setting the wifi frequency band [CHAR LIMIT=50]-->
+  <string name="wifi_setting_countrycode_summary">Ange regionskoden för Wi\u2011Fi</string>
+  <!-- Wi-Fi settings screen, error message when the frequency band could not be set [CHAR LIMIT=50]. -->
+  <string name="wifi_setting_countrycode_error">Det uppstod ett problem vid inställningen av regionskoden.</string>
+  <!-- Wake on plug -->
+  <string name="wake_when_plugged_or_unplugged_title">Vakna vid koppling</string>
+  <string name="wake_when_plugged_or_unplugged_summary">Starta skärmen vid anslutning till eller frånkoppling från strömkälla</string>
+  <!-- Heads-up -->
+  <!-- Encryption password -->
   <!-- Tethering & portable hotspot other category -->
   <string name="tethering_other_category_text">Annan</string>
   <!-- Wi-Fi tethering inactivity timeout -->
@@ -313,7 +329,20 @@
   <string name="hotstpot_inactivity_timeout_1_minute">1 minut</string>
   <string name="hotstpot_inactivity_timeout_5_minutes">5 minuter</string>
   <string name="hotstpot_inactivity_timeout_10_minutes">10 minuter</string>
-  <!-- Wake on plug -->
-  <string name="wake_when_plugged_or_unplugged_title">Vakna vid koppling</string>
-  <!-- Heads-up -->
+  <string name="hotstpot_inactivity_timeout_never_summary_text">Ingen tidsgräns för Mobil Wi\u2011Fi hotspot</string>
+  <string name="hotstpot_inactivity_timeout_summary_text">Tidsgräns för Mobil Wi\u2011Fi hotspot: <xliff:g id="timeout">%1$s </xliff:g></string>
+  <!-- Per-app data restrictions -->
+  <!-- Title for switch to block app data usage [CHAR LIMIT=30] -->
+  <!-- Summary for switch to block app data usage [CHAR LIMIT=NONE] -->
+  <!-- Title for switch to block app data usage [CHAR LIMIT=30] -->
+  <!-- Summary for switch to block app data usage [CHAR LIMIT=NONE] -->
+  <!-- Volume link notification -->
+  <string name="volume_link_notification_title">Länka ringsignals- och aviseringsvolym</string>
+  <!-- Launch music player when headset is connected -->
+  <!-- Update recovery -->
+  <string name="update_recovery_on_warning">OBSERVERA: När denna funktion är aktiverad, kommer din installerade Recovery att ersättas av en som ingår i den aktuella versionen av ditt nuvarande OS.\n\nRecovery kommer att uppdateras med uppgraderingar till ditt system, detta bidrar till att säkerställa kompatibilitet med framtida versioner.\n\nVill du aktivera den här funktionen?</string>
+  <string name="update_recovery_off_warning">VARNING: När denna funktion är inaktiverad, kommer din installerade Recovery inte att uppdateras med OS-uppgraderingar.\n\nFramtida OS-uppdateringar kan komma att inte kunna installeras med inaktuella eller anpassade Recovery-versioner.\n\nVill du verkligen inaktivera denna funktion?</string>
+  <!-- Status bar - double tap to sleep -->
+  <string name="status_bar_double_tap_to_sleep_title">Dubbeltryck för att släcka</string>
+  <string name="status_bar_double_tap_to_sleep_summary">Dubbeltryck på statusfältet för att stänga av skärmen</string>
 </resources>

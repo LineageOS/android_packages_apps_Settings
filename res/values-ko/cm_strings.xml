@@ -57,6 +57,7 @@
   <string name="app_ops_categories_media">미디어</string>
   <string name="app_ops_categories_device">장치</string>
   <string name="app_ops_categories_bootup">부팅</string>
+  <string name="app_ops_categories_su">루트 권한</string>
   <!-- User display names for app ops codes - extension of AOSP -->
   <string name="app_ops_summaries_coarse_location">대략적인 위치</string>
   <string name="app_ops_summaries_fine_location">자세한 위치</string>
@@ -101,7 +102,6 @@
   <string name="app_ops_summaries_keep_awake">켜짐 유지</string>
   <string name="app_ops_summaries_monitor_location">위치 추적</string>
   <string name="app_ops_summaries_monitor_high_power_location">고성능 위치 추적</string>
-  <string name="app_ops_summaries_get_usage_stats">사용 통계 얻음</string>
   <string name="app_ops_summaries_mute_unmute_microphone">마이크 켜기/끄기</string>
   <string name="app_ops_summaries_toast_window">팝업 표시</string>
   <string name="app_ops_summaries_project_media">미리 보기</string>
@@ -125,6 +125,7 @@
   <string name="app_ops_summaries_toggle_bluetooth">블루투스 켜기/끄기</string>
   <string name="app_ops_summaries_start_at_boot">부팅할 때 시작</string>
   <string name="app_ops_summaries_toggle_nfc">NFC 켜기/끄기</string>
+  <string name="app_ops_summaries_toggle_mobile_data">셀룰러 데이터 켜기/끄기</string>
   <string name="app_ops_summaries_superuser">루트 권한</string>
   <!-- User display names for app ops codes - extension of AOSP -->
   <string name="app_ops_labels_coarse_location">대략적인 위치</string>
@@ -194,6 +195,7 @@
   <string name="app_ops_labels_toggle_bluetooth">블루투스 켜기/끄기</string>
   <string name="app_ops_labels_start_at_boot">부팅시 시작</string>
   <string name="app_ops_labels_toggle_nfc">NFC 켜기/끄기</string>
+  <string name="app_ops_labels_toggle_mobile_data">셀룰러 데이터 켜기/끄기</string>
   <string name="app_ops_labels_superuser">루트 권한</string>
   <!-- App ops permissions -->
   <string name="app_ops_permissions_allowed">허가</string>
@@ -255,7 +257,6 @@
   <string name="pa_login_incorrect_login">로그인에 실패하였습니다</string>
   <string name="pa_pattern_or_fingerprint_header">잠금을 해제하려면 패턴을 그리거나 지문 인식을 사용해야 합니다</string>
   <!-- title for lock screen weather preference -->
-  <string name="lockscreen_weather_enabled_title">날씨 표시</string>
   <!-- title for lock screen blur preference -->
   <!-- Proximity wake -->
   <string name="proximity_wake_title">실수로 화면 켜기 방지</string>
@@ -266,6 +267,8 @@
   <string name="touchscreen_hovering_title">터치스크린 호버링</string>
   <string name="touchscreen_hovering_summary">웹 브라우저나 원격 데스크톱과 같은 앱에서 마우스처럼 화면에 호버링하여 사용할 수 있습니다.</string>
   <!-- Whether to display IME switcher notifcation -->
+  <string name="ime_switcher_notify">입력기 전환 알림</string>
+  <string name="ime_switcher_notify_summary">입력기 전환키 표시</string>
   <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
   <!-- Stylus Icon -->
   <string name="stylus_icon_enabled_title">스타일러스 사용 시 아이콘 표시</string>
@@ -303,6 +306,17 @@
   <string name="cmlicense_title">LineageOS 법적 고지</string>
   <!-- Format string for fingerprint location message -->
   <!-- Fingerprint sensor locations -->
+  <!-- Wi-Fi region code -->
+  <string name="wifi_setting_countrycode_title">Wi\u2011Fi 지역 코드</string>
+  <!-- Wi-Fi settings screen, setting summary for setting the wifi frequency band [CHAR LIMIT=50]-->
+  <string name="wifi_setting_countrycode_summary">Wi\u2011Fi 지역 코드를 지정하기</string>
+  <!-- Wi-Fi settings screen, error message when the frequency band could not be set [CHAR LIMIT=50]. -->
+  <string name="wifi_setting_countrycode_error">지역 코드 설정에 문제가 발생했습니다.</string>
+  <!-- Wake on plug -->
+  <string name="wake_when_plugged_or_unplugged_title">충전 시 켜짐</string>
+  <string name="wake_when_plugged_or_unplugged_summary">전원이 연결되거나 분리될 때 화면 켜기</string>
+  <!-- Heads-up -->
+  <!-- Encryption password -->
   <!-- Tethering & portable hotspot other category -->
   <string name="tethering_other_category_text">기타</string>
   <!-- Wi-Fi tethering inactivity timeout -->
@@ -311,7 +325,20 @@
   <string name="hotstpot_inactivity_timeout_1_minute">1분</string>
   <string name="hotstpot_inactivity_timeout_5_minutes">5분</string>
   <string name="hotstpot_inactivity_timeout_10_minutes">10분</string>
-  <!-- Wake on plug -->
-  <string name="wake_when_plugged_or_unplugged_title">충전 시 켜짐</string>
-  <!-- Heads-up -->
+  <string name="hotstpot_inactivity_timeout_never_summary_text">휴대용 Wi\u2011Fi 핫스팟을 자동 종료하지 않음</string>
+  <string name="hotstpot_inactivity_timeout_summary_text">휴대용 Wi\u2011Fi 핫스팟이 <xliff:g id="timeout">%1$s</xliff:g>간 활동이 없을 경우 끔</string>
+  <!-- Per-app data restrictions -->
+  <!-- Title for switch to block app data usage [CHAR LIMIT=30] -->
+  <!-- Summary for switch to block app data usage [CHAR LIMIT=NONE] -->
+  <!-- Title for switch to block app data usage [CHAR LIMIT=30] -->
+  <!-- Summary for switch to block app data usage [CHAR LIMIT=NONE] -->
+  <!-- Volume link notification -->
+  <string name="volume_link_notification_title">통화 벨소리와 알림 벨소리 연결</string>
+  <!-- Launch music player when headset is connected -->
+  <!-- Update recovery -->
+  <string name="update_recovery_on_warning">주의: 이 기능이 활성화되면 기기의 리커버리가 현재의 OS에 포함된 리커버리로 대체됩니다.\n\n기기의 리커버리는 이 후 업데이트의 호환성을 확인하여 시스템 업그레이드와 같이 업데이트될 것입니다.\n\n이 기능을 활성화하시겠습니까?</string>
+  <string name="update_recovery_off_warning">주의: 이 기능이 비활성화되면 기기의 리커버리는 OS 업그레이드와 함께 업데이트되지 않습니다.\n\n이 후 기기의 OS 업데이트는 이전 리커리나 커스텀 리커버리로는 업데이트되지 않을 수 있습니다.\n\n이 기능을 정말로 비활성화하시겠습니까?</string>
+  <!-- Status bar - double tap to sleep -->
+  <string name="status_bar_double_tap_to_sleep_title">탭하여 화면 끄기</string>
+  <string name="status_bar_double_tap_to_sleep_summary">상태 표시줄에 더블 탭하여 화면 끄기</string>
 </resources>
