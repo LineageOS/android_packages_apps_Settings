@@ -34,9 +34,9 @@
     <item quantity="other">Estás a <xliff:g id="step_count">%1$d</xliff:g> pasos de activar las configuraciones de desarrollo.</item>
   </plurals>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
-  <string name="show_dev_on_cm">¡Has habilitado las configuraciones de desarrollo!</string>
+  <string name="show_dev_on_cm">¡Has activado los ajustes de desarrollo!</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
-  <string name="show_dev_already_cm">No es necesario. Las configuraciones de desarrollo ya están habilitadas.</string>
+  <string name="show_dev_already_cm">No es necesario. Los ajustes de desarrollo ya están activos.</string>
   <!-- Launch Dev Tools -->
   <string name="development_tools_title">Herramientas de desarrollo</string>
   <!-- Development shortcut -->
@@ -46,7 +46,7 @@
   <string name="root_access">Acceso root</string>
   <string name="root_access_warning_title">¿Permitir acceso root?</string>
   <string name="root_access_warning_message">¡Permitir que las aplicaciones tengan acceso root es muy peligroso y puede comprometer la seguridad del dispositivo!</string>
-  <string name="root_access_none">Deshabilitado</string>
+  <string name="root_access_none">Desactivado</string>
   <string name="root_access_apps">Solo aplicaciones</string>
   <string name="root_access_adb">Solo ADB</string>
   <string name="root_access_all">Aplicaciones y ADB</string>
@@ -91,7 +91,7 @@
   <string name="profile_empty_list_profiles_off">Para configurar y usar los perfiles del sistema, actívalos previamente.</string>
   <string name="profile_trigger_configure">Configurar el disparador</string>
   <string name="profile_write_nfc_tag">Escribir en etiqueta NFC</string>
-  <string name="profile_write_touch_tag">Tocar etiqueta para escribir</string>
+  <string name="profile_write_touch_tag">Pulsa la etiqueta para escribir</string>
   <string name="profile_write_success">Etiqueta escrita correctamente</string>
   <string name="profile_write_failed">¡Error al escribir la etiqueta!</string>
   <string name="profile_selected">Perfil seleccionado: %1$s</string>
@@ -131,7 +131,7 @@
   <string name="profile_networkmode_2g3g4g">2G/3G/LTE</string>
   <!-- Profile Config screen PreferenceGroup titles -->
   <string name="profile_volumeoverrides_title">Volumen</string>
-  <string name="connection_state_enabled">Habilitar</string>
+  <string name="connection_state_enabled">Activar</string>
   <string name="volume_override_summary">Establecer a %1$s/%2$s</string>
   <string name="profile_volume_override_checkbox_label">Anular volumen</string>
   <!-- Menu item for managing profiles -->
@@ -498,7 +498,7 @@
   <string name="volbtn_music_controls_title">Control multimedia</string>
   <string name="volbtn_music_controls_summary">Cuando la pantalla esté apagada, una pulsación prolongada de los controles de volumen avanzará o retrocederá sobre las pistas de música activas</string>
   <string name="volbtn_cursor_control_title">Control del cursor</string>
-  <string name="volbtn_cursor_control_off">Deshabilitada</string>
+  <string name="volbtn_cursor_control_off">Desactivada</string>
   <string name="volbtn_cursor_control_on">Los botones subir y bajar volumen moverán el cursor a izquierda y derecha, respectivamente</string>
   <string name="volbtn_cursor_control_on_reverse">Los botones subir y bajar volumen moverán el cursor a derecha e izquierda, respectivamente</string>
   <string name="power_end_call_title">Finalizar llamada</string>
@@ -525,9 +525,9 @@
   <string name="keyboard_backlight_seekbar_title">Brillo del teclado</string>
   <string name="backlight_timeout_title">Tiempo de iluminación</string>
   <string name="backlight_timeout_unlimited">No apagar</string>
-  <string name="backlight_summary_disabled">Deshabilitada</string>
+  <string name="backlight_summary_disabled">Desactivada</string>
   <string name="backlight_summary_enabled_with_timeout">Habilitada durante <xliff:g id="timeout">%s</xliff:g></string>
-  <string name="backlight_summary_enabled">Habilitada</string>
+  <string name="backlight_summary_enabled">Activado</string>
   <!-- Gesture Settings -->
   <!-- Settings main menu entry -->
   <string name="gesture_settings_title">Gestos</string>
@@ -543,14 +543,14 @@
   <string name="power_menu_sound_title">Panel de sonido</string>
   <string name="power_menu_bug_report_disabled">Los informes de error están desactivados en las configuraciones de desarrollo</string>
   <!-- Buttons - Enable navbar -->
-  <string name="disable_navkeys_title">Habilitar barra de navegación en pantalla</string>
+  <string name="disable_navkeys_title">Activar barra de navegación en pantalla</string>
   <string name="disable_navkeys_summary">Habilitar barra de navegación en pantalla y deshabilitar los botones de hardware</string>
   <!-- tap-to-wake -->
   <string name="double_tap_to_wake_title">Doble toque para activar</string>
-  <string name="double_tap_to_wake_summary">Encender la pantalla mediante un doble toque sobre ella</string>
+  <string name="double_tap_to_wake_summary">Pulsa dos veces la pantalla para encenderla</string>
   <!-- tap-to-sleep -->
   <string name="double_tap_to_sleep_title">Doble toque para suspender</string>
-  <string name="double_tap_to_sleep_summary">Apagar la pantalla mediante un doble toque sobre la barra de estado</string>
+  <string name="double_tap_to_sleep_summary">Pulsa dos veces la barra de estado para apagar la pantalla</string>
   <!-- Proximity wake -->
   <string name="proximity_wake_title">Prevenir activación accidental</string>
   <string name="proximity_wake_summary">Compruebe el sensor de proximidad antes de despertar mediante gestos</string>
@@ -579,7 +579,7 @@
   <string name="auto_brightness_reset_button">Restablecer</string>
   <!-- Display : Rotation  -->
   <string name="display_rotation_title">Rotación</string>
-  <string name="display_rotation_disabled">Deshabilitada</string>
+  <string name="display_rotation_disabled">Desactivada</string>
   <string name="display_rotation_unit">grados</string>
   <string name="display_lockscreen_rotation_title">Girar la pantalla bloqueada</string>
   <string name="display_rotation_category_title">Modos de rotación</string>
@@ -630,8 +630,8 @@
   <string name="ime_switcher_notify_summary">Mostrar el icono de selección del método de entrada</string>
   <!-- Heads up -->
   <string name="heads_up_notifications">Notificaciones emergentes</string>
-  <string name="summary_heads_up_enabled">Las notificaciones emergentes están habilitadas</string>
-  <string name="summary_heads_up_disabled">Las notificaciones emergentes están deshabilitadas</string>
+  <string name="summary_heads_up_enabled">Las notificaciones emergentes están activadas</string>
+  <string name="summary_heads_up_disabled">Las notificaciones emergentes están desactivadas</string>
   <!-- Bluetooth settings.  A checkbox to set if we should accept all the file types regardless of their presence in MIME type whitelist -->
   <string name="bluetooth_accept_all_files">Aceptar todos los tipos de archivo</string>
   <!-- High touch sensitivity -->
@@ -650,7 +650,7 @@
   <string name="gestures_settings_title">Gestos del lápiz</string>
   <string name="category_spen_title">Gestos del lápiz</string>
   <string name="enable_subcat_title">Lápiz</string>
-  <string name="enable_spen_title_head">Habilitar gestos</string>
+  <string name="enable_spen_title_head">Activar gestos</string>
   <string name="enable_spen_summary_head">Usar gestos con el botón del lápiz pulsado</string>
   <string name="gestures_subcat_title">Gestos</string>
   <string name="gestures_left_spen_title_head">Deslizar a la izquierda</string>
@@ -688,7 +688,7 @@
          [CHAR LIMIT=40] -->
   <string name="power_notifications_category_title">Cargador</string>
   <!-- Sound settings, Charging sounds enable/disable, setting check box label -->
-  <string name="power_notifications_enable_title">Habilitar</string>
+  <string name="power_notifications_enable_title">Activar</string>
   <string name="power_notifications_enable_summary">Reproducir un sonido al conectar o desconectar el cargador</string>
   <!-- Sound settings, Charging sounds vibrate enable/disable, setting check box label -->
   <string name="power_notifications_vibrate_title">Vibrar</string>
@@ -745,15 +745,15 @@
   <!-- Privacy Settings Header item -->
   <string name="privacy_settings_cyanogenmod_title">Privacidad</string>
   <!-- Privacy Guard -->
-  <string name="privacy_guard_default_title">Habilitada de forma predeterminada</string>
-  <string name="privacy_guard_default_summary">Habilitar la privacidad de forma predeterminada para nuevas aplicaciones</string>
+  <string name="privacy_guard_default_title">Activada de forma predeterminada</string>
+  <string name="privacy_guard_default_summary">Activar de forma predeterminada para nuevas aplicaciones</string>
   <string name="privacy_guard_manager_title">Privacidad</string>
   <string name="privacy_guard_manager_summary">Gestionar las aplicaciones que podrán acceder a los datos personales</string>
   <string name="privacy_guard_no_user_apps">No hay aplicaciones instaladas</string>
   <string name="privacy_guard_help_title">Ayuda</string>
   <string name="privacy_guard_reset_title">Restablecer</string>
   <string name="privacy_guard_reset_text">¿Restablecer permisos?</string>
-  <string name="privacy_guard_help_text">En esta pantalla puedes elegir las aplicaciones para las que se activará Privacy Guard tocando sobre ellas. Las aplicaciones seleccionadas no podrán acceder a tu información personal, como contactos, mensajes o registro de llamadas. Realiza una pulsación prolongada para ver la pantalla de detalles de la aplicación.\n\nLas aplicaciones del sistema no se muestran de forma predeterminada pero pueden mostrarse seleccionando la opción de menú correspondiente.</string>
+  <string name="privacy_guard_help_text">En esta pantalla puedes elegir las aplicaciones para las que se activará Privacy Guard pulsando sobre ellas. Las aplicaciones seleccionadas no podrán acceder a tu información personal, como contactos, mensajes o registro de llamadas. Realiza una pulsación larga para ver la pantalla de detalles de la aplicación.\n\nLas aplicaciones del sistema no se muestran de forma predeterminada pero pueden mostrarse seleccionando la opción de menú correspondiente.</string>
   <string name="privacy_guard_manager_show_system_apps">Mostrar aplicaciones del sistema</string>
   <string name="privacy_guard_advanced_settings_title">Avanzado</string>
   <string name="privacy_guard_notification_title">Mostrar notificación</string>
@@ -779,7 +779,7 @@
   <string name="battery_saver_summary">Reducir el rendimiento y limitar los datos en segundo plano</string>
   <string name="battery_saver_summary_unavailable">No disponible mientras se carga</string>
   <!-- Battery : Automatic performance profiles -->
-  <string name="autoperf_title">Habilitar perfiles por aplicación</string>
+  <string name="autoperf_title">Activar perfiles por aplicación</string>
   <string name="autoperf_summary">Elige automáticamente un modo de batería adecuado para diversas aplicaciones</string>
   <string name="perf_profile_title">Modo de batería</string>
   <!-- Memory -->
@@ -797,7 +797,7 @@
   <string name="expanded_hide_navigation">Ocultar la barra de navegación</string>
   <string name="expanded_hide_both">Ocultar ambas</string>
   <string name="expanded_nothing_to_show">Para añadir un ajuste personalizado por aplicación para el estado ampliado, configurar \"Activado para todos\" en la posición de apagado</string>
-  <string name="expanded_enabled_for_all">Habilitado para todos</string>
+  <string name="expanded_enabled_for_all">Activado para todos</string>
   <string name="expanded_desktop_style">Estilo de escritorio ampliado</string>
   <string name="expanded_desktop_style_description">Elige un valor predeterminado para el estilo del escritorio ampliado</string>
   <string name="expanded_desktop_title">Opciones del escritorio ampliado</string>
@@ -821,9 +821,9 @@
   <string name="blacklist_edit_dialog_title">Editar número de teléfono bloqueado</string>
   <string name="blacklist_prefs">Opciones</string>
   <string name="blacklist_button_delete">Eliminar</string>
-  <string name="blacklist_empty_text">No hay números en la lista de números bloqueados. Añade una entrada tocando el botón (+).</string>
+  <string name="blacklist_empty_text">No hay números en la lista de números bloqueados. Añade una entrada pulsando el botón (+).</string>
   <string name="blacklist_disabled_empty_text">Activa la lista de números bloqueados para evitar que te llamen o manden mensajes.</string>
-  <string name="blacklist_summary_disabled">Deshabilitada</string>
+  <string name="blacklist_summary_disabled">Desactivada</string>
   <string name="blacklist_summary">No recibirás llamadas ni mensajes de los números incluidos en la lista de números bloqueados</string>
   <string name="blacklist_notify">Mostrar notificación</string>
   <string name="blacklist_private_numbers_title">Números privados</string>
@@ -999,7 +999,7 @@
   <!-- Live lock screen title -->
   <string name="live_lock_screen_title">Pantalla bloqueada animada</string>
   <!-- Live lock screen summary -->
-  <string name="live_lock_screen_summary">Habilitar y configurar pantallas bloqueadas animadas</string>
+  <string name="live_lock_screen_summary">Activa y configura las pantallas de bloqueo animadas</string>
   <!-- Live lock screen settings content description -->
   <string name="live_lock_screen_settings_button">Opciones</string>
   <!-- Live lock screen settings screen, caption for when live lock screens are disabled -->
