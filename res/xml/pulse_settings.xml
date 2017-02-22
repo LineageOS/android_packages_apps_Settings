@@ -54,7 +54,7 @@
             android:key="pulse_1"
             android:title="@string/pulse_custom_dimen_category" >
 
-      <com.android.settings.kangdroid.SeekBarPreference
+      <com.android.settings.aim.Preferences.CustomSeekBarPreference
             android:key="pulse_custom_dimen"
             android:title="@string/pulse_custom_dimen"
             android:max="30"
@@ -65,7 +65,7 @@
             android:persistent="false"
 	    android:dependency="pulse_1" />
 
-      <com.android.settings.kangdroid.SeekBarPreference
+      <com.android.settings.aim.Preferences.CustomSeekBarPreference
             android:key="pulse_custom_div"
             android:title="@string/pulse_custom_div"
             android:max="23"
@@ -76,7 +76,7 @@
             android:persistent="false" 
 	    android:dependency="pulse_1"/>
 
-      <com.android.settings.kangdroid.SeekBarPreference
+      <com.android.settings.aim.Preferences.CustomSeekBarPreference
             android:key="pulse_filled_block_size"
             android:title="@string/pulse_filled_block_size"
             android:max="4"
@@ -88,7 +88,7 @@
 	    android:dependency="pulse_1" />
 
 
-      <com.android.settings.kangdroid.SeekBarPreference
+      <com.android.settings.aim.Preferences.CustomSeekBarPreference
             android:key="pulse_empty_block_size"
             android:title="@string/pulse_empty_block_size"
             android:max="4"
@@ -100,7 +100,7 @@
 	    android:dependency="pulse_1"/>
 
 
-      <com.android.settings.kangdroid.SeekBarPreference
+      <com.android.settings.aim.Preferences.CustomSeekBarPreference
             android:key="pulse_custom_fudge_factor"
             android:title="@string/pulse_custom_fudge_factor"
             android:max="4"
@@ -111,7 +111,7 @@
             android:persistent="false" 
 	    android:dependency="pulse_1"/>
 
-      <com.android.settings.kangdroid.SeekBarPreference
+      <com.android.settings.aim.Preferences.CustomSeekBarPreference
             android:key="fling_pulse_lavalamp_speed"
             android:title="@string/lavamp_solid_speed_title"
             android:max="30000"
@@ -125,10 +125,19 @@
 	</PreferenceCategory>
 
 	<PreferenceCategory
+
             android:key="pulse_2"
             android:title="@string/pulse_solid_dimen_category" >
 
-      <com.android.settings.kangdroid.SeekBarPreference
+        <com.dirtyunicorns.dutweaks.preference.CustomSeekBarPreference
+            android:key="pulse_solid_units_opacity"
+            android:title="@string/pulse_solid_units_opacity"
+            settings:max="255"
+            settings:min="0"
+            android:dependency="pulse_2"/>
+
+
+      <com.android.settings.aim.Preferences.CustomSeekBarPreference
             android:key="pulse_solid_fudge_factor"
             android:title="@string/pulse_solid_fudge_factor"
             android:max="7"
@@ -139,7 +148,7 @@
             android:dependency="pulse_2"
             android:persistent="false" />
 
-      <com.android.settings.kangdroid.SeekBarPreference
+      <com.android.settings.aim.Preferences.CustomSeekBarPreference
             android:key="lavamp_solid_speed"
             android:title="@string/lavamp_solid_speed_title"
             android:max="30000"
