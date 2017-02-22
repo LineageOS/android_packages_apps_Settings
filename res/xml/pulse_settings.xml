@@ -129,6 +129,15 @@
             android:key="pulse_2"
             android:title="@string/pulse_solid_dimen_category" >
 
+
+        <com.dirtyunicorns.dutweaks.preference.CustomSeekBarPreference
+            android:key="pulse_solid_units_count"
+            android:title="@string/pulse_solid_units_count"
+            settings:max="128"
+            settings:interval="16"
+            settings:min="32"
+            android:dependency="pulse_2"/>
+
         <com.dirtyunicorns.dutweaks.preference.CustomSeekBarPreference
             android:key="pulse_solid_units_opacity"
             android:title="@string/pulse_solid_units_opacity"
