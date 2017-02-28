@@ -17,6 +17,7 @@
 package com.android.settings.deviceinfo;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceViewHolder;
@@ -42,6 +43,7 @@ public class StorageSummaryPreference extends Preference {
 
     @Override
     public void onBindViewHolder(PreferenceViewHolder view) {
+        Resources res = getContext().getResources();
         final ProgressBar progress = (ProgressBar) view.findViewById(android.R.id.progress);
         if (mPercent != -1) {
             progress.setVisibility(View.VISIBLE);
@@ -52,7 +54,7 @@ public class StorageSummaryPreference extends Preference {
         }
 
         final TextView summary = (TextView) view.findViewById(android.R.id.summary);
-        summary.setTextColor(Color.parseColor("#8a000000"));
+        summary.setTextColor(res.getColor(R.color.storage_summary_used_text_color));
 
         super.onBindViewHolder(view);
     }
