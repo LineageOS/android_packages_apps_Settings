@@ -43,6 +43,7 @@ import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.PreferenceScreen;
+import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -95,11 +96,28 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
     private TelephonyManager mTm;
     private PackageManager mPm;
     private UserManager mUm;
+    private SubscriptionManager mSm;
 
     private static final int MANAGE_MOBILE_PLAN_DIALOG_ID = 1;
     private static final String SAVED_MANAGE_MOBILE_PLAN_MSG = "mManageMobilePlanMessage";
 
     private PreferenceScreen mButtonWfc;
+
+    private final SubscriptionManager.OnSubscriptionsChangedListener mOnSubscriptionsChangeListener
+            = new SubscriptionManager.OnSubscriptionsChangedListener() {
+        @Override
+        public void onSubscriptionsChanged() {
+            updateMobileNetworkSettings();
+        }
+    };
+
+    private void updateMobileNetworkSettings() {
+        Preference pref = findPreference(KEY_MOBILE_NETWORK_SETTINGS);
+        if (pref != null) {
+            pref.setEnabled(!mAirplaneModePreference.isChecked() &&
+                    mSm.getActiveSubscriptionInfoCount() > 0);
+        }
+    }
 
     /**
      * Invoked on each preference click in this hierarchy, overrides
@@ -109,13 +127,16 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
         log("onPreferenceTreeClick: preference=" + preference);
-        if (preference == mAirplaneModePreference && Boolean.parseBoolean(
-                SystemProperties.get(TelephonyProperties.PROPERTY_INECM_MODE))) {
-            // In ECM mode launch ECM app dialog
-            startActivityForResult(
-                new Intent(TelephonyIntents.ACTION_SHOW_NOTICE_ECM_BLOCK_OTHERS, null),
-                REQUEST_CODE_EXIT_ECM);
-            return true;
+        if (preference == mAirplaneModePreference) {
+            updateMobileNetworkSettings();
+            if (Boolean.parseBoolean(
+                    SystemProperties.get(TelephonyProperties.PROPERTY_INECM_MODE))) {
+                // In ECM mode launch ECM app dialog
+                startActivityForResult(
+                    new Intent(TelephonyIntents.ACTION_SHOW_NOTICE_ECM_BLOCK_OTHERS, null),
+                    REQUEST_CODE_EXIT_ECM);
+                return true;
+            }
         } else if (preference == findPreference(KEY_MANAGE_MOBILE_PLAN)) {
             onManageMobilePlanClick();
         } else if (preference == findPreference(KEY_CELL_BROADCAST_SETTINGS)) {
@@ -247,6 +268,7 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
         mTm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
         mPm = getPackageManager();
         mUm = (UserManager) getSystemService(Context.USER_SERVICE);
+        mSm = (SubscriptionManager) getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
 
         addPreferencesFromResource(R.xml.wireless_settings);
 
@@ -325,6 +347,8 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
                         UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS, UserHandle.myUserId())) {
             removePreference(KEY_MOBILE_NETWORK_SETTINGS);
             removePreference(KEY_MANAGE_MOBILE_PLAN);
+        } else {
+            updateMobileNetworkSettings();
         }
         // Remove Mobile Network Settings and Manage Mobile Plan
         // if config_show_mobile_plan sets false.
@@ -421,6 +445,8 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
             broadcastSettingsPref.checkRestrictionAndSetDisabled(
                     UserManager.DISALLOW_CONFIG_CELL_BROADCASTS);
         }
+
+        mSm.addOnSubscriptionsChangedListener(mOnSubscriptionsChangeListener);
     }
 
     @Override
@@ -440,6 +466,8 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
         if (mNfcEnabler != null) {
             mNfcEnabler.pause();
         }
+
+        mSm.removeOnSubscriptionsChangedListener(mOnSubscriptionsChangeListener);
     }
 
     @Override
