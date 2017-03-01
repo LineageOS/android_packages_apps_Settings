@@ -33,10 +33,21 @@
             android:title="@string/advanced_reboot_title"
             android:summary="@string/advanced_reboot_summary" />
 
+    <PreferenceCategory
+            android:key="category_fp"
+            android:title="@string/fp_category_title">
+
     <com.android.settings.aim.Preferences.SystemSettingSwitchPreference
             android:key="fingerprint_success_vib"
             android:title="@string/fprint_sucess_vib_title"
             android:summary="@string/fprint_sucess_vib_summary"
             android:defaultValue="true" />
+
+    <SwitchPreference
+            android:key="fp_unlock_keystore"
+  	    android:title="@string/fp_unlock_keystore_title"
+  	    android:summary="@string/fp_unlock_keystore_summary"
+       	    android:persistent="false" />
+            </PreferenceCategory>
 
 </PreferenceScreen>
