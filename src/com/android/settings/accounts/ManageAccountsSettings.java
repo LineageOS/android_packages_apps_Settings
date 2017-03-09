@@ -32,6 +32,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -74,7 +75,7 @@ public class ManageAccountsSettings extends AccountPreferenceBase
 
     // If an account type is set, then show only accounts of that type
     private String mAccountType;
-    // Temporary hack, to deal with backward compatibility 
+    // Temporary hack, to deal with backward compatibility
     private Account mFirstAccount;
 
     @Override
@@ -382,15 +383,18 @@ public class ManageAccountsSettings extends AccountPreferenceBase
     }
 
     /**
-     * Filters through the preference list provided by GoogleLoginService.
+     * Recursively filters through the preference list provided by GoogleLoginService.
      *
      * This method removes all the invalid intent from the list, adds account name as extra into the
      * intent, and hack the location settings to start it as a fragment.
      */
-    private void updatePreferenceIntents(PreferenceScreen prefs) {
+    private void updatePreferenceIntents(PreferenceGroup prefs) {
         PackageManager pm = getActivity().getPackageManager();
         for (int i = 0; i < prefs.getPreferenceCount();) {
             Preference pref = prefs.getPreference(i);
+            if (pref instanceof PreferenceGroup) {
+                updatePreferenceIntents((PreferenceGroup) pref);
+            }
             Intent intent = pref.getIntent();
             if (intent != null) {
                 // Hack. Launch "Location" as fragment instead of as activity.
