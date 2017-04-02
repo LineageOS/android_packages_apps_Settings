@@ -83,6 +83,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_MOD_VERSION = "mod_version";
     private static final String KEY_MOD_BUILD_DATE = "build_date";
     private static final String KEY_MOD_API_LEVEL = "mod_api_level";
+    private static final String KEY_AIM_VERSION = "aim_version";
+    private static final String KEY_ABOUT_DEV_INFO = "about_dev_info";
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
 
@@ -130,6 +132,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         setStringSummary(KEY_DEVICE_MODEL, Build.MODEL);
         setStringSummary(KEY_BUILD_NUMBER, Build.DISPLAY);
         findPreference(KEY_BUILD_NUMBER).setEnabled(true);
+        setValueSummary(KEY_AIM_VERSION, "ro.aim.version");
+        findPreference(KEY_AIM_VERSION).setEnabled(true);
         //setValueSummary(KEY_QGP_VERSION, PROPERTY_QGP_VERSION);
         // Remove QGP Version if property is not present
         //removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_QGP_VERSION,
@@ -226,6 +230,10 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
 
         removePreferenceIfActivityMissing(
                 "safety_info", "android.settings.SHOW_SAFETY_AND_REGULATORY_INFO");
+
+        // Remove Some Stuffs
+        removePreference(KEY_MOD_VERSION);
+        removePreference(KEY_MOD_API_LEVEL);
     }
 
     @Override
