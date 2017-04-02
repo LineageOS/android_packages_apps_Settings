@@ -52,6 +52,13 @@
         android:title="@string/carrier_title" 
         android:icon="@drawable/ic_freedomhub_ico" />
  
+       
+       <PreferenceScreen
+            android:key="quicksettings"
+            android:fragment="com.android.settings.aim.fragments.QuickSettings"
+            android:icon="@drawable/ic_freedomhub_ico"
+            android:title="@string/quicksettings_title" />
+	
       </PreferenceCategory>
 
 </PreferenceScreen>
