@@ -30,5 +30,12 @@
         android:icon="@drawable/ic_freedomhub_ico"
         android:summary="@string/nettraffic_settings_summary" />
 
-         </PreferenceCategory>
+        <com.android.settings.aim.Preferences.SystemSettingSwitchPreference
+            android:key="roaming_indicator_icon"
+            android:title="@string/roaming_indicator_icon_title"
+            android:summary="@string/roaming_indicator_icon_summary"
+            android:defaultValue="true"/>  
+
+       </PreferenceCategory>
+
 </PreferenceScreen>
