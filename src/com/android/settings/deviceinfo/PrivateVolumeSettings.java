@@ -173,6 +173,16 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
         // Find the emulated shared storage layered above this private volume
         mSharedVolume = mStorageManager.findEmulatedForPrivate(mVolume);
 
+        if (mSharedVolume == null) {
+            // Use Primary Physical storage
+            mSharedVolume = mStorageManager.getPrimaryPhysicalVolume();
+
+            if (mSharedVolume != null) {
+                // Adjust SystemSize by substracting the total space of Primary Physical Volume
+                mSystemSize = mTotalSize - sharedDataSize - mSharedVolume.getPath().getTotalSpace();
+            }
+        }
+
         mMeasure = new StorageMeasurement(context, mVolume, mSharedVolume);
         mMeasure.setReceiver(mReceiver);
 
