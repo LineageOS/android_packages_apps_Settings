@@ -36,6 +36,7 @@ import android.os.storage.StorageEventListener;
 import android.os.storage.StorageManager;
 import android.os.storage.VolumeInfo;
 import android.os.storage.VolumeRecord;
+import android.os.SystemProperties;
 import android.provider.DocumentsContract;
 import android.provider.Settings;
 import android.support.v7.preference.Preference;
@@ -172,6 +173,16 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
 
         // Find the emulated shared storage layered above this private volume
         mSharedVolume = mStorageManager.findEmulatedForPrivate(mVolume);
+
+        if (mSharedVolume == null) {
+            // Use Primary Physical storage
+            mSharedVolume = mStorageManager.getPrimaryPhysicalVolume();
+
+            if (mSharedVolume != null) {
+                // Adjust SystemSize by substracting the total space of Primary Physical Volume
+                mSystemSize = mTotalSize - sharedDataSize - mSharedVolume.getPath().getTotalSpace();
+            }
+        }
 
         mMeasure = new StorageMeasurement(context, mVolume, mSharedVolume);
         mMeasure.setReceiver(mReceiver);
