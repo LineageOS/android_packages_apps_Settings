@@ -36,6 +36,7 @@ import android.os.storage.StorageEventListener;
 import android.os.storage.StorageManager;
 import android.os.storage.VolumeInfo;
 import android.os.storage.VolumeRecord;
+import android.os.SystemProperties;
 import android.provider.DocumentsContract;
 import android.provider.Settings;
 import android.support.v7.preference.Preference;
@@ -133,6 +134,9 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
 
     private boolean mNeedsUpdate;
 
+    private final boolean mPrimaryPhysical = SystemProperties.getBoolean(
+                    StorageManager.PROP_PRIMARY_PHYSICAL, false);
+
     private boolean isVolumeValid() {
         return (mVolume != null) && (mVolume.getType() == VolumeInfo.TYPE_PRIVATE)
                 && mVolume.isMountedReadable();
@@ -170,9 +174,14 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
             mSystemSize = 0;
         }
 
-        // Find the emulated shared storage layered above this private volume
-        mSharedVolume = mStorageManager.findEmulatedForPrivate(mVolume);
-
+        if (mPrimaryPhysical) {
+            // Use Primary Physical storage
+            mSharedVolume = mStorageManager.getPrimaryPhysicalVolume();
+            mSystemSize = mTotalSize - sharedDataSize - mSharedVolume.getPath().getTotalSpace();
+        } else {
+            // Find the emulated shared storage layered above this private volume
+            mSharedVolume = mStorageManager.findEmulatedForPrivate(mVolume);
+        }
         mMeasure = new StorageMeasurement(context, mVolume, mSharedVolume);
         mMeasure.setReceiver(mReceiver);
 
