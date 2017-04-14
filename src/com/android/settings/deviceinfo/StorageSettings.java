@@ -180,7 +180,7 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
             if (vol.getType() == VolumeInfo.TYPE_PRIVATE) {
                 final long volumeTotalBytes = PrivateStorageInfo.getTotalSize(vol,
                         sTotalInternalStorage);
-                final int color = COLOR_PRIVATE[privateCount++ % COLOR_PRIVATE.length];
+                final int color = colorPrivate[privateCount++ % colorPrivate.length];
                 mInternalCategory.addPreference(
                         new StorageVolumePreference(context, vol, color, volumeTotalBytes));
                 if (vol.isMountedReadable()) {
