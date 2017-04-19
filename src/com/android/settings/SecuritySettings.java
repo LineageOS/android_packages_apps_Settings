@@ -1029,16 +1029,21 @@ public class SecuritySettings extends SettingsPreferenceFragment
         private static final String KEY_OWNER_INFO_SETTINGS = "owner_info_settings";
         private static final String KEY_POWER_INSTANTLY_LOCKS = "power_button_instantly_locks";
         private static final String KEY_DIRECTLY_SHOW_LOCK = "directly_show_lock";
+        private static final String KEY_BLUR_ENABLED = "lock_screen_blur_enabled";
+        private static final String KEY_BLUR_HIDE_WALLPAPER = "lock_screen_blur_hide_wallpaper";
 
         // These switch preferences need special handling since they're not all stored in Settings.
         private static final String SWITCH_PREFERENCE_KEYS[] = { KEY_LOCK_AFTER_TIMEOUT,
-                KEY_VISIBLE_PATTERN, KEY_POWER_INSTANTLY_LOCKS, KEY_DIRECTLY_SHOW_LOCK };
+                KEY_VISIBLE_PATTERN, KEY_POWER_INSTANTLY_LOCKS, KEY_DIRECTLY_SHOW_LOCK,
+                KEY_BLUR_ENABLED };
 
         private TimeoutListPreference mLockAfter;
         private SwitchPreference mVisiblePattern;
         private SwitchPreference mPowerButtonInstantlyLocks;
         private SwitchPreference mDirectlyShowLock;
         private RestrictedPreference mOwnerInfoPref;
+        private SwitchPreference mBlurEnabled;
+        private SwitchPreference mBlurHideWallpaper;
 
         private LockPatternUtils mLockPatternUtils;
         private ChooseLockSettingsHelper mChooseLockSettingsHelper;
@@ -1076,6 +1081,9 @@ public class SecuritySettings extends SettingsPreferenceFragment
             if (mDirectlyShowLock != null) {
                 mDirectlyShowLock.setChecked(cmLockPatternUtils.shouldPassToSecurityView(
                         MY_USER_ID));
+            }
+            if (mBlurEnabled != null && mBlurHideWallpaper != null) {
+                mBlurHideWallpaper.setEnabled(mBlurEnabled.isChecked());
             }
 
             updateOwnerInfo();
@@ -1145,6 +1153,9 @@ public class SecuritySettings extends SettingsPreferenceFragment
                     }
                 }
             }
+
+            mBlurEnabled = (SwitchPreference) findPreference(KEY_BLUR_ENABLED);
+            mBlurHideWallpaper = (SwitchPreference) findPreference(KEY_BLUR_HIDE_WALLPAPER);
 
             for (int i = 0; i < SWITCH_PREFERENCE_KEYS.length; i++) {
                 final Preference pref = findPreference(SWITCH_PREFERENCE_KEYS[i]);
@@ -1263,6 +1274,10 @@ public class SecuritySettings extends SettingsPreferenceFragment
                 updateLockAfterPreferenceSummary();
             } else if (KEY_VISIBLE_PATTERN.equals(key)) {
                 mLockPatternUtils.setVisiblePatternEnabled((Boolean) value, MY_USER_ID);
+            } else if (KEY_BLUR_ENABLED.equals(key)) {
+                if (mBlurHideWallpaper != null) {
+                    mBlurHideWallpaper.setEnabled((Boolean) value);
+                }
             }
             return true;
         }
