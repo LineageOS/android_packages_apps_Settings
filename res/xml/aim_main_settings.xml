@@ -21,16 +21,11 @@
     android:layout="@layout/tab"
     android:title="@string/aim_title">
 
-     <PreferenceScreen
+         <!-- Statusbar -->  
+         <PreferenceScreen
                 android:id="@+id/status_bar_settings"
                 android:title="@string/aim_statusbar_title"
                 android:fragment="com.android.settings.aim.tabs.StatusBar" />
- 
-    <!-- Recent settings -->
-    <PreferenceScreen
-            android:id="@+id/recents_settings"
-            android:fragment="com.android.settings.aim.tabs.Recents"
-            android:title="@string/aim_recents_settings_title" />
 
       <!-- Misc -->
         <PreferenceScreen
@@ -43,5 +38,12 @@
             android:key="ui_settings"
             android:title="@string/aim_ui_title"
            android:fragment="com.android.settings.aim.tabs.Ui" />
+    
+    <!-- Buttons -->
+        <PreferenceScreen
+            android:key="buttonsettings_category"
+            android:title="@string/aim_buttons_title"
+            android:fragment="com.android.settings.aim.tabs.Buttons"  />
+
 
 </PreferenceScreen>

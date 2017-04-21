@@ -38,7 +38,7 @@ import com.android.settings.SettingsPreferenceFragment;
 
 import com.android.settings.aim.tabs.StatusBar;
 import com.android.settings.aim.tabs.Ui;
-import com.android.settings.aim.tabs.Recents;
+import com.android.settings.aim.tabs.Buttons;
 import com.android.settings.aim.tabs.Misc;
 
 import com.android.settings.aim.PagerSlidingTabStrip;
@@ -97,7 +97,7 @@ public class MainSettings extends SettingsPreferenceFragment {
             super(fm);
             frags[0] = new StatusBar();
             frags[1] = new Ui();
-            frags[2] = new Recents();
+            frags[2] = new Buttons();
             frags[3] = new Misc();
         }
 
@@ -122,7 +122,7 @@ public class MainSettings extends SettingsPreferenceFragment {
         titleString = new String[]{
             getString(R.string.aim_statusbar_title),
             getString(R.string.aim_ui_title),
-            getString(R.string.aim_recents_settings_title),
+            getString(R.string.aim_buttons_title),
             getString(R.string.aim_misc_title)};
         return titleString;
     }
