@@ -1,4 +1,4 @@
-package com.android.settings.aim;
+package com.android.settings.aim.fragments;
 
 import android.app.Activity;
 import android.content.Context;
@@ -22,7 +22,7 @@ import com.android.settings.Utils;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
-public class AnimationSettings extends SettingsPreferenceFragment implements
+public class Animations extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
 

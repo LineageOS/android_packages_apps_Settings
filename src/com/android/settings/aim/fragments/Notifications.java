@@ -9,7 +9,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 */
-package com.android.settings.aim;
+package com.android.settings.aim.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -30,14 +30,14 @@ import com.android.settings.Utils;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
-public class RecentsSettings extends SettingsPreferenceFragment implements
+public class Notifications extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.aim_recents);
+        addPreferencesFromResource(R.xml.aim_notification_drawer);
     }
 
 
@@ -45,6 +45,8 @@ public class RecentsSettings extends SettingsPreferenceFragment implements
         final String key = preference.getKey();
         return true;
     }
+
+
 
     @Override
     protected int getMetricsCategory() {
