@@ -30,6 +30,7 @@ import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -52,6 +53,8 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ProtectedAppsActivity extends Activity {
+    private static final String TAG = ProtectedAppsActivity.class.getSimpleName();
+
     private static final int REQ_ENTER_PATTERN = 1;
     private static final int REQ_RESET_PATTERN = 2;
 
@@ -62,6 +65,7 @@ public class ProtectedAppsActivity extends Activity {
 
     private static final int MENU_RESET = 0;
     private static final int MENU_RESET_LOCK = 1;
+    private static final int MENU_POST_MESSAGE = 2;
 
     private PackageManager mPackageManager;
 
@@ -219,6 +223,22 @@ public class ProtectedAppsActivity extends Activity {
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
         menu.add(0, MENU_RESET_LOCK, 0, R.string.menu_hidden_apps_reset_lock)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+
+        MenuItem postMessageItem = menu.add(
+                0, MENU_POST_MESSAGE, 0,
+                R.string.menu_hidden_apps_post_message);
+        postMessageItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+        postMessageItem.setCheckable(true);
+        boolean postMessageEnabled = false;
+        try {
+            postMessageEnabled = CMSettings.Secure.getInt(
+                    getContentResolver(),
+                    CMSettings.Secure.PROTECTED_COMPONENT_POST_MSG) == 1;
+        } catch (CMSettings.CMSettingNotFoundException e) {
+            Log.d(TAG, "Protected app post message setting not found");
+        }
+        postMessageItem.setChecked(postMessageEnabled);
+
         return true;
     }
 
@@ -255,6 +275,17 @@ public class ProtectedAppsActivity extends Activity {
         startActivityForResult(lockPattern, REQ_RESET_PATTERN);
     }
 
+    private boolean storePostMessageEnable(boolean enabled) {
+        boolean success = CMSettings.Secure.putInt(
+                getContentResolver(),
+                CMSettings.Secure.PROTECTED_COMPONENT_POST_MSG,
+                enabled ? 1 : 0);
+        if (!success) {
+            Log.e(TAG, "Unable to store protect app post message setting");
+        }
+        return success;
+    }
+
     private List<AppEntry> refreshApps() {
         Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
         mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
@@ -276,6 +307,12 @@ public class ProtectedAppsActivity extends Activity {
             case MENU_RESET_LOCK:
                 resetLock();
                 return true;
+            case MENU_POST_MESSAGE: {
+                boolean postMessageEnabled = !item.isChecked();
+                if (storePostMessageEnable(postMessageEnabled))
+                    item.setChecked(postMessageEnabled);
+                return true;
+            }
             case android.R.id.home:
                 finish();
                 return true;
