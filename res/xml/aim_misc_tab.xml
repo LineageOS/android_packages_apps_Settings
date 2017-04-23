@@ -16,6 +16,11 @@
 	android:title="@string/aim_misc_title"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
             
+<PreferenceScreen
+         android:key="dev_info"
+         android:title="@string/dev_info"
+         android:fragment="com.android.settings.devs" />
+
 <com.android.settings.aim.Preferences.SystemSettingSwitchPreference
                android:key="show_su_indicator"
                android:title="@string/show_su_indicator_title"
