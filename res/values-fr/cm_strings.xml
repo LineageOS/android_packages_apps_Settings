@@ -19,8 +19,11 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to show Device Id -->
   <!--  Device Info screen. Confirmation that Device ID is copied to clipboard -->
+  <string name="show_device_id_copied_cm">ID de périphérique : [<xliff:g id="device_id">%1$s</xliff:g>] copiée dans le presse-papiers</string>
   <!--  Device Info screen. Confirmation that Device ID is not available -->
+  <string name="show_device_id_failed_cm">L\'ID de périphérique n’est pas disponible dans cette version</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Label for the deviceID text put to clipboard -->
+  <string name="show_device_id_clipboard_label">ID de l\'appareil</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
   <plurals name="show_dev_countdown_cm">
     <item quantity="one">Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étape de l\'activation des paramètres de développement.
@@ -547,6 +550,7 @@ Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étapes de l\'a
   <string name="double_tap_to_sleep_summary">Appui double sur la barre d\'état pour éteindre l\'écran</string>
   <!-- Proximity wake -->
   <string name="proximity_wake_title">Empêcher un réveil accidentel</string>
+  <string name="proximity_wake_summary">Vérifiez le capteur de proximité avant de déclencher la sortie du mode veille en utilisant les gestes</string>
   <!-- Turn on display when power connected; turn off display when power disconnected -->
   <string name="wake_when_plugged_or_unplugged_title">Réveiller au branchement</string>
   <string name="wake_when_plugged_or_unplugged_summary">Allumer l\'écran lors du branchement ou du débranchement d\'une source d\'alimentation</string>
@@ -557,6 +561,7 @@ Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étapes de l\'a
   <string name="volume_adjust_sounds_title">Son lors du réglage du volume</string>
   <!-- Hardware tunables - Vibrator intensity -->
   <string name="vibrator_intensity_title">Intensité du vibreur</string>
+  <string name="vibrator_warning">Les valeurs supérieurs à %1$d%% ne sont pas recommandées</string>
   <!-- Hardware tunables - Color calibration -->
   <string name="color_calibration_title">Calibrage des couleurs</string>
   <string name="color_calibration_summary">Calibrer les couleurs de l\'écran</string>
@@ -608,7 +613,12 @@ Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étapes de l\'a
   <string name="live_display_color_profile_photography_summary">Reproduction parfaite des couleurs pour les photos</string>
   <string name="live_display_color_profile_basic_title">Basique</string>
   <string name="live_display_color_profile_basic_summary">Utiliser l\'écran sans étalonnage</string>
+  <string name="live_display_color_profile_adaptive_title">Adaptatif</string>
+  <string name="live_display_color_profile_adaptive_summary">Les couleurs s\'adaptent aux conditions ambiantes</string>
   <!-- LiveDisplay : Picture Adjustment -->
+  <string name="picture_adjustment_title">Ajustement de l\'image</string>
+  <string name="picture_adjustment_summary">Ajustement de la teinte, la saturation, l\'intensité et le contraste</string>
+  <string name="adj_hue_title">Teinte</string>
   <string name="adj_saturation_title">Saturation</string>
   <string name="adj_intensity_title">Intensité</string>
   <string name="adj_contrast_title">Contraste</string>
@@ -691,6 +701,7 @@ Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étapes de l\'a
   <string name="status_bar_notif_count_summary">Afficher le nombre de notifications en attente</string>
   <string name="status_bar_quick_qs_pulldown_title">Ouverture rapide</string>
   <string name="status_bar_quick_qs_pulldown_summary">Tirer le côté %1$s pour ouvrir la configuration rapide</string>
+  <string name="status_bar_quick_qs_pulldown_summary_left">Gauche</string>
   <string name="status_bar_quick_qs_pulldown_summary_right">Droite</string>
   <string name="status_bar_quick_qs_pulldown_off">Désactivé</string>
   <string name="status_bar_quick_qs_pulldown_left">Gauche</string>
@@ -844,7 +855,10 @@ Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étapes de l\'a
   <string name="no_filters_title">Aucun filtre défini</string>
   <!-- Anonymous Statistics #CM -->
   <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
+  <string name="anonymous_statistics_title">Statistiques LineageOS</string>
+  <string name="anonymous_statistics_summary">Contribuez à rendre LineageOS meilleure en envoyant des rapports de statistiques anonymes</string>
   <string name="anonymous_statistics_warning_title">À propos</string>
+  <string name="anonymous_statistics_warning">Adhérer aux statistiques LineageOS autorisera l\'envoi de données non-personnelles aux développeurs de LineageOS, dans le but de tracer les installations sur chaque appareil. Les informations transmises contiennent un identifiant unique de l\'appareil, qui ne compromet en aucune manière votre vie privée ou vos données personnelles. Les données sont envoyées à chaque démarrage du système.\n\nPour visualiser un exemple de données pouvant être envoyées, appuyez sur Prévisualiser les données.</string>
   <string name="enable_reporting_title">Activer l\'envoi</string>
   <string name="preview_data_title">Prévisualiser les données</string>
   <string name="view_stats_title">Afficher les statistiques</string>
@@ -1036,6 +1050,7 @@ Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étapes de l\'a
   <!-- Label for settings shortcut: carrier selection -->
   <string name="shortcut_carrier_title">Opérateurs réseau</string>
   <!-- title for lock screen blur preference -->
+  <string name="lockscreen_blur_enabled_title">Arrière-plan flou</string>
   <!-- title for lock screen weather preference -->
   <string name="lockscreen_weather_enabled_title">Afficher la météo</string>
   <!-- Per app controls for LP keyguard notifications -->
@@ -1054,9 +1069,23 @@ Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étapes de l\'a
   <string name="app_notification_sound_timeout_value_15_minutes">10 minutes</string>
   <string name="app_notification_sound_timeout_value_30_minutes">30 minutes</string>
   <!-- CmRadioInfo -->
+  <string name="cm_radio_info_label">Renforcer le contrôle radio</string>
   <!-- Radio Control (IMS/MBN etc.) -->
+  <string name="cm_radio_info_mbn_auto_load_on_label">Désactiver le chargement automatique MBN</string>
+  <string name="cm_radio_info_mbn_auto_load_off_label">Activer le chargement automatique MBN</string>
+  <string name="cm_radio_info_volte_avail_ovr_on_label">Désactiver le débogage VoLTE</string>
+  <string name="cm_radio_info_volte_avail_ovr_off_label">Activer le débogage VoLTE</string>
+  <string name="cm_radio_info_vt_avail_ovr_on_label">Désactiver le débogage VT</string>
+  <string name="cm_radio_info_vt_avail_ovr_off_label">Activer le débogage VT</string>
+  <string name="cm_radio_info_wfc_avail_ovr_on_label">Désactiver le débogage WFC</string>
+  <string name="cm_radio_info_wfc_avail_ovr_off_label">Activer le débogage WFC</string>
+  <string name="cm_radio_info_adb_log_on_label">Désactiver la journalisation radio ADB</string>
+  <string name="cm_radio_info_adb_log_off_label">Activer la journalisation radio ADB</string>
+  <string name="cm_radio_info_diag_log_on_label">Désactiver la journalisation Diag</string>
+  <string name="cm_radio_info_diag_log_off_label">Activer la journalisation Diag</string>
   <!-- Lock screen wallpaper -->
   <string name="lockscreen_wallpaper_title">Fond d\'écran</string>
+  <string name="not_available_with_app">Non disponible avec %1$s</string>
   <!-- Format string for fingerprint location message -->
   <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Localiser le capteur d’empreintes digitales sur <xliff:g id="sensor_location">%1$s </xliff:g> de votre téléphone.</string>
   <!-- Fingerprint sensor locations -->
@@ -1065,4 +1094,5 @@ Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étapes de l\'a
   <string name="security_settings_fingerprint_sensor_location_left">le côté gauche</string>
   <string name="security_settings_fingerprint_sensor_location_right">le côté droit</string>
   <!-- SIM status format string -->
+  <string name="sim_status_format_string">Voix : <xliff:g id="voice_status">%1$s</xliff:g> / Données : <xliff:g id="data_status">%2$s</xliff:g></string>
 </resources>

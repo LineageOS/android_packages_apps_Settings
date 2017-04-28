@@ -30,6 +30,11 @@
   <!-- [CHAR LIMIT=NONE] Device Info screen. Label for the deviceID text put to clipboard -->
   <string name="show_device_id_clipboard_label">Identyfikator urządzenia</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="one">Jesteś o <xliff:g id="step_count">%1$d</xliff:g> krok od włączenia ustawień programisty.</item>
+    <item quantity="few">Jesteś <xliff:g id="step_count">%1$d</xliff:g> kroki od włączenia ustawień programisty.</item>
+    <item quantity="other">Jesteś <xliff:g id="step_count">%1$d</xliff:g> kroków od włączenia ustawień programisty.</item>
+  </plurals>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
   <string name="show_dev_on_cm">Aktywowałeś opcje programistyczne!</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
@@ -613,6 +618,7 @@
   <string name="live_display_color_profile_adaptive_title">Adaptacyjny</string>
   <string name="live_display_color_profile_adaptive_summary">Dostosowanie kolorów do warunków otoczenia</string>
   <!-- LiveDisplay : Picture Adjustment -->
+  <string name="picture_adjustment_summary">Dostosuj odcień, nasycenie, intensywność i kontrast</string>
   <string name="adj_saturation_title">Nasycenie</string>
   <string name="adj_contrast_title">Kontrast</string>
   <!-- Whether to display IME switcher notifcation -->
@@ -848,6 +854,7 @@
   <string name="no_filters_title">Nie wybrano filtrów</string>
   <!-- Anonymous Statistics #CM -->
   <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
+  <string name="anonymous_statistics_title">Statystyki LineageOS</string>
   <string name="anonymous_statistics_warning_title">O...</string>
   <string name="enable_reporting_title">Włącz raportowanie</string>
   <string name="preview_data_title">Podgląd danych</string>

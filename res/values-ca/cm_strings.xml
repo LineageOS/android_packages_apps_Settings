@@ -25,7 +25,7 @@
   <!--  Device Info screen. Confirmation that Device ID is copied to clipboard -->
   <string name="show_device_id_copied_cm">ID del dispositiu:[<xliff:g id="device_id">%1$s</xliff:g>] copiat al portapapers</string>
   <!--  Device Info screen. Confirmation that Device ID is not available -->
-  <string name="show_device_id_failed_cm">L\'ID del dispositiu no està disponible en aquesta elaboració</string>
+  <string name="show_device_id_failed_cm">L\'ID del dispositiu no està disponible en aquesta compilació</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Label for the deviceID text put to clipboard -->
   <string name="show_device_id_clipboard_label">ID del dispositiu</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
@@ -56,7 +56,7 @@
   <!-- NFC PreferenceCategory title -->
   <string name="nfc_title_category">NFC</string>
   <!-- About phone screen, LineageOS version -->
-  <string name="mod_version">LineageOS versió</string>
+  <string name="mod_version">Versió de LineageOS</string>
   <string name="mod_version_default">Desconegut</string>
   <!-- About phone screen, Device model -->
   <string name="device_model">Model del dispositiu</string>
@@ -66,7 +66,7 @@
   <string name="mod_api_level">Nivell de l\'API de LineageOS</string>
   <string name="mod_api_level_default">Desconegut</string>
   <!-- About phone screen, build date -->
-  <string name="build_date">Data d\'elaboració</string>
+  <string name="build_date">Data de compilació</string>
   <!-- CM Updater -->
   <string name="cmupdate_settings_title">Actualitzacions LineageOS</string>
   <!-- Settings switch for updating Cyanogen recovery -->
@@ -120,7 +120,7 @@
   <string name="rename_dialog_hint">Introdueix el nom del perfil</string>
   <!-- Reset Profiles -->
   <string name="profile_reset_title">Restableix</string>
-  <string name="profile_reset_message">Vols esborrar tots els perfils creats per l\'usuari i els grups d\'aplicacions i restaurar-los als ajustaments predeterminats?</string>
+  <string name="profile_reset_message">Vols esborrar tots els perfils creats per l\'usuari i els grups d\'aplicacions i restaurar-los a la configuració de fàbrica?</string>
   <!-- Delete confimation messages -->
   <string name="profile_app_delete_confirm">Vols treure aquesta aplicació?</string>
   <!-- Profile network mode -->
@@ -237,11 +237,11 @@
   <string name="navigation_bar_left_title">Mode esquerrà</string>
   <string name="navigation_bar_left_summary">Col·loca la barra de navegació al costat esquerre de la pantalla en el mode horitzontal</string>
   <string name="navigation_bar_title">Botons i disposició</string>
-  <string name="navigation_bar_help_text">Per començar pica sobre la icona edita per desbloquejar l\'edició de la barra de navegació.\n\nPots picar una icona per canviar la seva drecera, o fer una pulsació llarga en una icona per reordenar la disposició.\n\nPica \'Desa\' per efectuar els canvis, o \'Restaura predeterminats\' per restaurar la disposició als ajustaments predeterminats.</string>
+  <string name="navigation_bar_help_text">Per començar pica sobre la icona edita per desbloquejar l\'edició de la barra de navegació.\n\nPots picar una icona per canviar la seva drecera, o fer una pulsació llarga en una icona per reordenar la disposició.\n\nPica \'Desa\' per efectuar els canvis, o \'Restaura predeterminats\' per restaurar la disposició a la configuració per defecte.</string>
   <string name="navigation_restore_button_text">Restaura\nels valors per defecte</string>
   <string name="navigation_edit_button_text">Edita</string>
   <string name="navigation_save_button_text">Desa</string>
-  <string name="navigation_bar_reset_message">Vols esborrar els ajustaments actuals i restaurar la disposició predeterminada?</string>
+  <string name="navigation_bar_reset_message">Vols esborrar les configuracions actuals i restaurar la disposició per defecte?</string>
   <string name="navigation_bar_arrow_keys_title">Mostra tecles de les fletxes mentre escrius</string>
   <string name="navigation_bar_arrow_keys_summary">Mostra els botons dels cursors esquerra i dreta mentre escrius. Això anul·la el commutador IME.</string>
   <string name="navigation_bar_recents_title">Recents amb l\'acció pulsació llarga</string>
@@ -286,7 +286,7 @@
   <string name="keywords_lights_brightness_level">atenua la lluminositat dels leds</string>
   <string name="notification_light_automagic">Tria els colors automàticament</string>
   <!-- Lights settings, LED notification -->
-  <string name="led_notification_title">Ajustaments de llums</string>
+  <string name="led_notification_title">Configuració de llums</string>
   <string name="led_notification_text">Llum LED habilitat per ajustos</string>
   <string name="notification_light_no_apps_summary">Per afegir control específic per aplicació, activa \'%1$s\' i prem \"\u002b\" a la barra de menú</string>
   <!-- Setting checkbox title for Whether to enable Android debugging support on the phone. -->
@@ -295,7 +295,7 @@
   <string name="enable_adb_summary_cm">Habilita la interfície del pont de depuració d\'Android (adb)</string>
   <!-- Android debugging over WiFi -->
   <string name="adb_over_network">ADB sobre la xarxa</string>
-  <string name="adb_over_network_summary">Activa la depuració TCP/IP sobre interfícies de xarxa (Wi\u2011Fi, xarxes USB). Aquest ajustament es desactiva en reiniciar</string>
+  <string name="adb_over_network_summary">Activa la depuració TCP/IP sobre interfícies de xarxa (Wi\u2011Fi, xarxes USB). Aquesta configuració es desactivarà en reiniciar</string>
   <!-- Warning for Adb over Network -->
   <string name="adb_over_network_warning">ADVERTÈNCIA: Quan l\'ADB sobre xarxa està activat, el teu telèfon està obert a intrusions en totes les xarxes connectades! \n\nFes servir aquesta característica només quan estiguis connectat en xarxes de confiança.\n\nRealment vols activar aquesta funció?</string>
   <!-- Setting checkbox summary for displaying USB debugging notification -->
@@ -544,7 +544,7 @@
   <string name="power_menu_bug_report_disabled">Els informes d\'error estan deshabilitats a les opcions de desenvolupament</string>
   <!-- Buttons - Enable navbar -->
   <string name="disable_navkeys_title">Habilita bar nav en pantalla</string>
-  <string name="disable_navkeys_summary">Habilita la barra de navegació en pantalla y deshabilitar els botons físics</string>
+  <string name="disable_navkeys_summary">Habilita la barra de navegació en pantalla i deshabilita els botons físics</string>
   <!-- tap-to-wake -->
   <string name="double_tap_to_wake_title">Pica dues vegades per encendre</string>
   <string name="double_tap_to_wake_summary">Pica dues vegades a la pantalla per encendre la pantalla</string>
@@ -603,11 +603,11 @@
   <string name="live_display_enhance_color_summary">Millora la vividesa del color dels tons de la pell, paisatges i altres imatges</string>
   <string name="live_display_color_profile_title">Perfil de color</string>
   <string name="live_display_color_profile_standard_title">Estàndard</string>
-  <string name="live_display_color_profile_standard_summary">Colors precisos i blancs brillants</string>
+  <string name="live_display_color_profile_standard_summary">Colors precisos i blancs lluminosos</string>
   <string name="live_display_color_profile_natural_title">Natural</string>
   <string name="live_display_color_profile_natural_summary">Colors realistes i tons de la pell</string>
   <string name="live_display_color_profile_dynamic_title">Dinàmic</string>
-  <string name="live_display_color_profile_dynamic_summary">Colors realçats i blancs brillants</string>
+  <string name="live_display_color_profile_dynamic_summary">Colors realçats i blancs lluminosos</string>
   <string name="live_display_color_profile_cinema_title">Cinema</string>
   <string name="live_display_color_profile_cinema_summary">Reproducció perfecta de color per a vídeo</string>
   <string name="live_display_color_profile_astronomy_title">Astronomia</string>
@@ -676,7 +676,7 @@
   <string name="increasing_ring_min_volume_title">Volum inicial</string>
   <string name="increasing_ring_ramp_up_time_title">Durada del crescendo</string>
   <!-- LTO download data over wi-fi only -->
-  <string name="lto_download_data_wifi_only">Descàrrega de dades assistides de GPS</string>
+  <string name="lto_download_data_wifi_only">Baixada de dades assistides de GPS</string>
   <string name="lto_download_data_wifi_only_on">Sobre qualsevol xarxa</string>
   <string name="lto_download_data_wifi_only_off">Només sobre xarxes Wi\u2011Fi</string>
   <string name="volume_keys_control_ring_stream_title">Controla el volum de la trucada</string>
@@ -971,12 +971,12 @@
   <!-- label for usage time -->
   <string name="usage_time_label_cm">Durada d\'utilització:</string>
   <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
-  <string name="master_clear_desc_cm" product="tablet">Això esborrarà totes les dades de <b>l\'emmagatzematge intern</b> de la teva tauleta, incloent-hi:\n\n<li>Els teus comptes al dispositiu</li>\n<li>el sistema i les dades i els ajustaments de les aplicacions</li>\n<li>Les aplicacions descarregades</li></string>
+  <string name="master_clear_desc_cm" product="tablet">Això esborrarà totes les dades de <b>l\'emmagatzematge intern</b> de la teva tauleta, incloent-hi:\n\n<li>Els teus comptes al dispositiu</li>\n<li>el sistema i les dades i les configuracions de les aplicacions</li>\n<li>Les aplicacions baixades</li></string>
   <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
-  <string name="master_clear_desc_cm" product="default">Això esborrarà totes les dades de <b>l\'emmagatzematge intern</b> del teu telèfon, incloent-hi:\n\n<li>Els teus comptes al dispositiu</li>\n<li>el sistema i les dades i els ajustaments de les aplicacions</li>\n<li>Les aplicacions descarregades</li></string>
+  <string name="master_clear_desc_cm" product="default">Això esborrarà totes les dades de <b>l\'emmagatzematge intern</b> del teu telèfon, incloent-hi:\n\n<li>Els teus comptes al dispositiu</li>\n<li>el sistema i les dades i les configuracions de les aplicacions</li>\n<li>Les aplicacions baixades</li></string>
   <!-- Factory reset strings -->
   <string name="factory_reset_instructions_title">Dades personals i aplicacions</string>
-  <string name="factory_reset_instructions_summary">Això esborrarà tots els teus comptes, aplicacions, dades d\'aplicacions i ajustaments del sistema en aquest dispositiu</string>
+  <string name="factory_reset_instructions_summary">Això esborrarà tots els teus comptes, aplicacions, dades d\'aplicacions i configuracions del sistema en aquest dispositiu</string>
   <string name="factory_reset_personal_content">Contingut personal</string>
   <string name="factory_reset_erase_stored_content">Esborra el contingut emmagatzemat</string>
   <string name="factory_reset_erase_stored_content_summary">Esborra la música, fotos, vídeos, i altres dades d\'usuari emmagatzemades en aquest dispositiu</string>
@@ -984,7 +984,7 @@
   <string name="factory_reset_erase_sd_card">Formata la targeta SD</string>
   <string name="factory_reset_erase_sd_card_summary">Esborra totes les dades a la targeta SD, incloent-hi la música i les fotos</string>
   <string name="factory_reset_warning_text_reset_now">RESTABLEIX ARA</string>
-  <string name="factory_reset_warning_text_message">S\'eliminaran tots els teus comptes, aplicacions, dades d\'aplicacions i ajustaments del sistema d\'aquest dispositiu. Això no es pot revertir.</string>
+  <string name="factory_reset_warning_text_message">S\'eliminaran tots els teus comptes, aplicacions, dades d\'aplicacions i configuracions del sistema d\'aquest dispositiu. Això no es podrà revertir.</string>
   <!-- Tethering & portable hotspot other category -->
   <string name="tethering_other_category_text">Altres</string>
   <!-- Wi-Fi tethering inactivity timeout -->

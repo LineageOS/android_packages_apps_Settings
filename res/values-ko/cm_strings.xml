@@ -18,12 +18,18 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to show Device Id -->
+  <plurals name="show_device_id_countdown_cm">
+    <item quantity="other">장치 ID를 보려면 <xliff:g id="step_count">%1$d</xliff:g>회 더 누르세요.</item>
+  </plurals>
   <!--  Device Info screen. Confirmation that Device ID is copied to clipboard -->
+  <string name="show_device_id_copied_cm">장치 ID:[<xliff:g id="device_id">%1$s</xliff:g>]이(가) 클립보드에 복사되었습니다</string>
   <!--  Device Info screen. Confirmation that Device ID is not available -->
+  <string name="show_device_id_failed_cm">이 빌드 버전에서는 장치 ID를 사용할 수 없습니다</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Label for the deviceID text put to clipboard -->
+  <string name="show_device_id_clipboard_label">장치 ID</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
   <plurals name="show_dev_countdown_cm">
-    <item quantity="other">개발자 설정을 활성화하려면 <xliff:g id="step_count">%1$d</xliff:g>회 더 누르십시오.</item>
+    <item quantity="other">개발자 설정을 활성화하려면 <xliff:g id="step_count">%1$d</xliff:g>회 더 누르세요.</item>
   </plurals>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
   <string name="show_dev_on_cm">개발자 설정이 활성화되었습니다.</string>
@@ -43,6 +49,8 @@
   <string name="root_access_adb">ADB만</string>
   <string name="root_access_all">애플리케이션과 ADB</string>
   <!-- Preference link for root appops -->
+  <string name="root_appops_title">루트 권한 관리</string>
+  <string name="root_appops_summary">루트 권한 정책 편집 및 보기</string>
   <!-- NFC PreferenceCategory title -->
   <string name="nfc_title_category">NFC</string>
   <!-- About phone screen, LineageOS version -->
@@ -367,7 +375,7 @@
   <string name="app_ops_summaries_toggle_bluetooth">블루투스 켜기/끄기</string>
   <string name="app_ops_summaries_start_at_boot">부팅할 때 시작</string>
   <string name="app_ops_summaries_toggle_nfc">NFC 켜기/끄기</string>
-  <string name="app_ops_summaries_toggle_mobile_data">셀룰러 데이터 켜기/끄기</string>
+  <string name="app_ops_summaries_toggle_mobile_data">이동 통신망 데이터 켜기/끄기</string>
   <string name="app_ops_summaries_superuser">루트 권한</string>
   <!-- User display names for app ops codes - extension of AOSP -->
   <string name="app_ops_labels_coarse_location">대략적인 위치</string>
@@ -437,7 +445,7 @@
   <string name="app_ops_labels_toggle_bluetooth">블루투스 켜기/끄기</string>
   <string name="app_ops_labels_start_at_boot">부팅시 시작</string>
   <string name="app_ops_labels_toggle_nfc">NFC 켜기/끄기</string>
-  <string name="app_ops_labels_toggle_mobile_data">셀룰러 데이터 켜기/끄기</string>
+  <string name="app_ops_labels_toggle_mobile_data">이동 통신망 데이터 켜기/끄기</string>
   <string name="app_ops_labels_superuser">루트 권한</string>
   <!-- App ops permissions -->
   <string name="app_ops_permissions_allowed">허가</string>
@@ -543,6 +551,7 @@
   <string name="double_tap_to_sleep_summary">상태 표시줄에 더블 탭하여 화면 끄기</string>
   <!-- Proximity wake -->
   <string name="proximity_wake_title">실수로 화면 켜기 방지</string>
+  <string name="proximity_wake_summary">제스처에 의해 깨워지기 전에 근접 센서 확인</string>
   <!-- Turn on display when power connected; turn off display when power disconnected -->
   <string name="wake_when_plugged_or_unplugged_title">충전 시 켜짐</string>
   <string name="wake_when_plugged_or_unplugged_summary">전원이 연결되거나 분리될 때 화면 켜기</string>
@@ -553,6 +562,7 @@
   <string name="volume_adjust_sounds_title">소리 크기 조정</string>
   <!-- Hardware tunables - Vibrator intensity -->
   <string name="vibrator_intensity_title">진동 세기</string>
+  <string name="vibrator_warning">%1$d%%보다 더 높은 값은 권장하지 않습니다</string>
   <!-- Hardware tunables - Color calibration -->
   <string name="color_calibration_title">색상 보정</string>
   <string name="color_calibration_summary">화면의 색상을 보정합니다</string>
@@ -604,8 +614,14 @@
   <string name="live_display_color_profile_photography_summary">사진을 위한 완벽한 색 재현력</string>
   <string name="live_display_color_profile_basic_title">기본</string>
   <string name="live_display_color_profile_basic_summary">디스플레이를 보정하지 않은 상태로 사용</string>
+  <string name="live_display_color_profile_adaptive_title">적응형</string>
+  <string name="live_display_color_profile_adaptive_summary">주변 상황에 맞는 색상 적용</string>
   <!-- LiveDisplay : Picture Adjustment -->
+  <string name="picture_adjustment_title">사진 조정</string>
+  <string name="picture_adjustment_summary">색조, 채도, 명도 및 대비 조정</string>
+  <string name="adj_hue_title">색조</string>
   <string name="adj_saturation_title">채도</string>
+  <string name="adj_intensity_title">명도</string>
   <string name="adj_contrast_title">명암비</string>
   <!-- Whether to display IME switcher notifcation -->
   <string name="ime_switcher_notify">입력기 전환 알림</string>
@@ -686,6 +702,8 @@
   <string name="status_bar_notif_count_summary">읽지 않은 알림 숫자 표시</string>
   <string name="status_bar_quick_qs_pulldown_title">빠른 설정 내리기</string>
   <string name="status_bar_quick_qs_pulldown_summary">상태 바의 %1$s 끝에서는 빠른 설정을 내립니다.</string>
+  <string name="status_bar_quick_qs_pulldown_summary_left">왼쪽</string>
+  <string name="status_bar_quick_qs_pulldown_summary_right">오른쪽</string>
   <string name="status_bar_quick_qs_pulldown_off">끄기</string>
   <string name="status_bar_quick_qs_pulldown_left">왼쪽</string>
   <string name="status_bar_quick_qs_pulldown_right">오른쪽</string>
@@ -838,7 +856,10 @@
   <string name="no_filters_title">필터가 설정되지 않음</string>
   <!-- Anonymous Statistics #CM -->
   <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
+  <string name="anonymous_statistics_title">LineageOS 통계</string>
+  <string name="anonymous_statistics_summary">익명의 통계 자료를 보내 LineageOS 개선에 도움 주기</string>
   <string name="anonymous_statistics_warning_title">정보</string>
+  <string name="anonymous_statistics_warning">LineageOS 통계를 사용하면 장치 고유의 설치 상태를 추적하기 위해 개인 정보를 포함하지 않은 정보가 LineageOS의 개발자에게 전송됩니다. 정보는 매번 부팅할 때마다 전송됩니다.\n\n전송되는 정보를 보려면 데이터 미리 보기를 누르세요.</string>
   <string name="enable_reporting_title">보고 활성화</string>
   <string name="preview_data_title">데이터 미리 보기</string>
   <string name="view_stats_title">통계 보기</string>
@@ -917,7 +938,7 @@
   <string name="sim_card_status_title">SIM %d 상태</string>
   <string name="sim_card_lock_settings_title">SIM %d 잠금 설정</string>
   <string name="sim_card_summary_empty">SIM 카드가 삽입 되지 않음</string>
-  <string name="sim_mobile_network_settings_category_title">셀룰러 네트워크 설정</string>
+  <string name="sim_mobile_network_settings_category_title">이동 통신망 네트워크 설정</string>
   <string name="sim_mobile_network_settings_title">SIM %d 설정</string>
   <!-- Zen mode allowed event setting summary items -->
   <!-- [CHAR LIMIT=50] Like zen_mode_reminders, but part of a list, so lower case if needed-->
@@ -929,6 +950,10 @@
   <!-- [CHAR LIMIT=50] Like zen_mode_summary_selected_messages, but part of a list, so lower case if needed -->
   <string name="zen_mode_summary_selected_messages">선택한 메세지</string>
   <!-- Allow vibration in zen mode -->
+  <string name="zen_mode_vibration">진동</string>
+  <string name="zen_mode_vibration_never">진동 안 함</string>
+  <string name="zen_mode_vibration_calls_only">전화 수신 시에만 진동</string>
+  <string name="zen_mode_vibration_calls_and_notifications">전화 및 알림 수신 시 진동</string>
   <!-- About phone settings screen, setting option dialog title to show regulatory information [CHAR LIMIT=25] -->
   <!-- SAR information -->
   <string name="maximum_head_level">머리: %1$s W/kg</string>
@@ -993,44 +1018,82 @@
   <string name="battery_info_status_charging_dock_usb">독 USB로 충전중</string>
   <string name="restrict_app_wlan_title">앱의 Wi\u2011Fi 사용 끄기</string>
   <string name="restrict_app_wlan_summary">앱이 Wi\u2011Fi 데이터 연결을 사용하지 않도록 설정</string>
-  <string name="restrict_app_cellular_title">앱의 모바일 데이터 사용 끄기</string>
-  <string name="restrict_app_cellular_summary">앱이 모바일 데이터 연결을 하지 않도록 설정</string>
+  <string name="restrict_app_cellular_title">앱의 이동 통신망 데이터 사용 끄기</string>
+  <string name="restrict_app_cellular_summary">앱이 이동 통신망 데이터 연결을 하지 않도록 설정</string>
   <string name="privacy_guard_internet_category">인터넷</string>
   <!-- Weather -->
   <string name="weather_settings_title">날씨</string>
   <string name="weather_settings_no_services_prompt">날씨 제공자 서비스 설치되지 않음</string>
   <string name="weather_settings_button">제공자 설정</string>
   <string name="weather_settings_activity_not_found">이 제공자의 설정 메뉴를 열 수 없습니다</string>
+  <string name="weather_settings_add_weather_provider">날씨 공급자 추가</string>
   <string name="weather_settings_general_settings_title">일반</string>
+  <string name="weather_settings_providers_title">공급자</string>
+  <string name="weather_settings_temp_units_title">온도 단위</string>
+  <string name="weather_settings_temp_celsius">섭씨</string>
+  <string name="weather_settings_temp_fahrenheit">화씨</string>
+  <string name="weather_settings_keyword">날씨</string>
   <string name="background_data_access">백그라운드 데이터 사용</string>
-  <string name="allow_background_both">셀룰러 데이터와 Wi\u2011Fi를 통해</string>
+  <string name="allow_background_both">이동 통신망 데이터와 Wi\u2011Fi를 통해</string>
   <string name="allow_background_wlan">Wi\u2011Fi에서만</string>
   <string name="allow_background_none">허용하지 않음</string>
-  <string name="mobile_data_alert">셀룰러 데이터 경고</string>
+  <string name="mobile_data_alert">이동 통신망 데이터 경고</string>
   <string name="mobile_data_alert_summary">앱이 많은 데이터를 사용할 때 알림</string>
   <string name="data_usage_menu_enable_data_alerts">데이터 사용량 경고 켜기</string>
   <string name="data_usage_menu_disable_data_alerts">데이터 사용량 경고 끄기</string>
   <string name="data_usage_menu_reset_stats">데이터 통계 초기화</string>
   <string name="reset_data_stats_msg">과거와 현재의 데이터 정보를 모두 삭제합니다</string>
   <string name="reset_stats_confirm">확인</string>
-  <string name="restrict_cellular_access_title">셀룰러 데이터 사용 제한</string>
-  <string name="restrict_cellular_access_summary">셀룰러 네트워크에서 데이터 사용을 끄기</string>
-  <string name="restrict_cellular_access_dialog_title">셀룰러 데이터 사용을 제한하시겠습니까?</string>
-  <string name="restrict_cellular_access_dialog_summary">이 기능은 셀룰러 네트워크만 사용할 때 네트워크 연결이 필요한 앱의 정상적인 작동을 방해할 수 있습니다.\n\n앱의 설정에서 데이터 사용량을 조절할 수 있는 설정을 찾을 수 있습니다.</string>
+  <string name="restrict_cellular_access_title">이동 통신망 데이터 사용 제한</string>
+  <string name="restrict_cellular_access_summary">이동 통신망 네트워크에서 데이터 사용을 끄기</string>
+  <string name="restrict_cellular_access_dialog_title">이동 통신망 데이터 사용을 제한하시겠습니까?</string>
+  <string name="restrict_cellular_access_dialog_summary">이 기능은 이동 통신망 네트워크만 사용할 때 네트워크 연결이 필요한 앱의 정상적인 작동을 방해할 수 있습니다.\n\n앱의 설정에서 데이터 사용량을 조절할 수 있는 설정을 찾을 수 있습니다.</string>
   <!-- Label for settings shortcut: carrier selection -->
   <string name="shortcut_carrier_title">네트워크 영업자</string>
   <!-- title for lock screen blur preference -->
+  <string name="lockscreen_blur_enabled_title">배경 흐림 효과</string>
   <!-- title for lock screen weather preference -->
+  <string name="lockscreen_weather_enabled_title">날씨 표시</string>
   <!-- Per app controls for LP keyguard notifications -->
   <string name="app_notification_show_on_keyguard_title">잠금 화면에 표시</string>
   <string name="app_notification_show_on_keyguard_summary">잠금화면에 알림을 표시</string>
   <string name="app_notification_no_ongoing_on_keyguard_title">상주 알림을 잠금화면에 표시하지 않음</string>
   <string name="app_notification_no_ongoing_on_keyguard_summary">이 앱의 상주 알림을 잠금화면에 표시하지 않음</string>
   <!-- Notification sound timeout -->
+  <string name="app_notification_sound_timeout_title">알림 소리 최소 간격</string>
+  <string name="app_notification_sound_timeout_summary_template">매 <xliff:g id="duration">%1$s</xliff:g>마다 한 번씩만 소리 또는 진동을 허용합니다</string>
+  <string name="app_notification_sound_timeout_value_none">제한 없음</string>
+  <string name="app_notification_sound_timeout_value_10_seconds">10초</string>
+  <string name="app_notification_sound_timeout_value_30_seconds">30초</string>
+  <string name="app_notification_sound_timeout_value_1_minute">1분</string>
+  <string name="app_notification_sound_timeout_value_5_minutes">5분</string>
+  <string name="app_notification_sound_timeout_value_15_minutes">10분</string>
+  <string name="app_notification_sound_timeout_value_30_minutes">30분</string>
   <!-- CmRadioInfo -->
+  <string name="cm_radio_info_label">향상된 무선 통신 제어</string>
   <!-- Radio Control (IMS/MBN etc.) -->
+  <string name="cm_radio_info_mbn_auto_load_on_label">MBN 자동 로드 끄기</string>
+  <string name="cm_radio_info_mbn_auto_load_off_label">MBN 자동 로드 켜기</string>
+  <string name="cm_radio_info_volte_avail_ovr_on_label">VoLTE 디버그 끄기</string>
+  <string name="cm_radio_info_volte_avail_ovr_off_label">VoLTE 디버그 켜기</string>
+  <string name="cm_radio_info_vt_avail_ovr_on_label">VT 디버그 끄기</string>
+  <string name="cm_radio_info_vt_avail_ovr_off_label">VT 디버그 켜기</string>
+  <string name="cm_radio_info_wfc_avail_ovr_on_label">WFC 디버그 끄기</string>
+  <string name="cm_radio_info_wfc_avail_ovr_off_label">WFC 디버그 켜기</string>
+  <string name="cm_radio_info_adb_log_on_label">ADB 무선 통신 로그 끄기</string>
+  <string name="cm_radio_info_adb_log_off_label">ADB 무선 통신 로그 켜기</string>
+  <string name="cm_radio_info_diag_log_on_label">Diag 로그 끄기</string>
+  <string name="cm_radio_info_diag_log_off_label">Diag 로그 켜기</string>
   <!-- Lock screen wallpaper -->
+  <string name="lockscreen_wallpaper_title">배경화면</string>
+  <string name="not_available_with_app">%1$s 앱으로 사용할 수 없습니다</string>
   <!-- Format string for fingerprint location message -->
+  <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">휴대전화의 <xliff:g id="sensor_location">%1$s</xliff:g>에서 지문 인식 센서를 찾으세요.</string>
   <!-- Fingerprint sensor locations -->
+  <string name="security_settings_fingerprint_sensor_location_back">뒤쪽</string>
+  <string name="security_settings_fingerprint_sensor_location_front">앞쪽</string>
+  <string name="security_settings_fingerprint_sensor_location_left">왼쪽 측면</string>
+  <string name="security_settings_fingerprint_sensor_location_right">오른쪽 측면</string>
   <!-- SIM status format string -->
+  <string name="sim_status_format_string">음성: <xliff:g id="voice_status">%1$s</xliff:g> / 데이터: <xliff:g id="data_status">%2$s</xliff:g></string>
 </resources>

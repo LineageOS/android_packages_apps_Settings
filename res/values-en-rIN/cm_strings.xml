@@ -18,9 +18,16 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to show Device Id -->
+  <plurals name="show_device_id_countdown_cm">
+    <item quantity="one">You are now <xliff:g id="step_count">%1$d</xliff:g> step away from querying Device ID.</item>
+    <item quantity="other">You are now <xliff:g id="step_count">%1$d</xliff:g> steps away from querying Device ID.</item>
+  </plurals>
   <!--  Device Info screen. Confirmation that Device ID is copied to clipboard -->
+  <string name="show_device_id_copied_cm">Device ID:[<xliff:g id="device_id">%1$s</xliff:g>] copied to clipboard</string>
   <!--  Device Info screen. Confirmation that Device ID is not available -->
+  <string name="show_device_id_failed_cm">Device ID is not available on this build</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Label for the deviceID text put to clipboard -->
+  <string name="show_device_id_clipboard_label">Device ID</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
   <plurals name="show_dev_countdown_cm">
     <item quantity="one">You are now <xliff:g id="step_count">%1$d</xliff:g> step away from enabling development settings.</item>
@@ -44,6 +51,8 @@
   <string name="root_access_adb">ADB only</string>
   <string name="root_access_all">Apps and ADB</string>
   <!-- Preference link for root appops -->
+  <string name="root_appops_title">Manage root accesses</string>
+  <string name="root_appops_summary">View and control the root rules</string>
   <!-- NFC PreferenceCategory title -->
   <string name="nfc_title_category">NFC</string>
   <!-- About phone screen, LineageOS version -->
@@ -171,6 +180,7 @@
   <string name="toggleData">Data connection</string>
   <string name="toggleSync">Auto-sync data</string>
   <string name="toggle2g3g4g">Preferred network type</string>
+  <string name="toggle2g3g4g_msim">Preferred network type (%1$s)</string>
   <string name="toggleNfc">NFC</string>
   <!-- Wi-Fi region code -->
   <string name="wifi_setting_countrycode_title">Wi\u2011Fi region code</string>
@@ -271,11 +281,14 @@
   <string name="notification_light_missed_call_title">Missed call</string>
   <string name="notification_light_voicemail_title">Voicemail</string>
   <string name="notification_light_screen_on">Lights with screen on</string>
+  <string name="notification_light_zen_mode">Lights in Do Not Disturb mode</string>
   <string name="notification_light_use_multiple_leds">Multiple LEDs</string>
   <string name="keywords_lights_brightness_level">dim leds brightness</string>
+  <string name="notification_light_automagic">Choose colours automatically</string>
   <!-- Lights settings, LED notification -->
   <string name="led_notification_title">Light settings</string>
   <string name="led_notification_text">LED light enabled by settings</string>
+  <string name="notification_light_no_apps_summary">To add per app control, activate \'%1$s\' and press \'\u002b\' on the menu bar</string>
   <!-- Setting checkbox title for Whether to enable Android debugging support on the phone. -->
   <string name="enable_adb_cm">Android debugging</string>
   <!-- Setting checkbox summary for Whether to enable Android debugging support on the phone -->
@@ -336,6 +349,7 @@
   <string name="app_ops_summaries_media_volume">media volume</string>
   <string name="app_ops_summaries_alarm_volume">alarm volume</string>
   <string name="app_ops_summaries_notification_volume">notification volume</string>
+  <string name="app_ops_summaries_bluetooth_volume">bluetooth volume</string>
   <string name="app_ops_summaries_keep_awake">keep awake</string>
   <string name="app_ops_summaries_monitor_location">monitor location</string>
   <string name="app_ops_summaries_monitor_high_power_location">monitor high power location</string>
@@ -344,8 +358,30 @@
   <string name="app_ops_summaries_toast_window">display toasts</string>
   <string name="app_ops_summaries_project_media">project media</string>
   <string name="app_ops_summaries_activate_vpn">activate VPN</string>
+  <string name="app_ops_summaries_write_wallpaper">write wallpaper</string>
+  <string name="app_ops_summaries_assist_structure">assist structure</string>
+  <string name="app_ops_summaries_assist_screenshot">assist screenshot</string>
+  <string name="app_ops_summaries_read_phone_state">read phone state</string>
+  <string name="app_ops_summaries_add_voicemail">add voicemail</string>
+  <string name="app_ops_summaries_use_sip">use SIP</string>
+  <string name="app_ops_summaries_make_call">make call</string>
+  <string name="app_ops_summaries_use_fingerprint">use fingerprint</string>
+  <string name="app_ops_summaries_use_body_sensors">use body sensors</string>
+  <string name="app_ops_summaries_read_cell_broadcasts">read cell broadcasts</string>
+  <string name="app_ops_summaries_mock_location">mock location</string>
+  <string name="app_ops_summaries_read_external_storage">read external storage</string>
+  <string name="app_ops_summaries_write_external_storage">write to external storage</string>
+  <string name="app_ops_summaries_turn_screen_on">turn screen on</string>
+  <string name="app_ops_summaries_get_accounts">get accounts</string>
+  <string name="app_ops_summaries_toggle_wifi">toggle Wi-Fi</string>
+  <string name="app_ops_summaries_toggle_bluetooth">toggle bluetooth</string>
+  <string name="app_ops_summaries_start_at_boot">start at boot</string>
+  <string name="app_ops_summaries_toggle_nfc">toggle NFC</string>
+  <string name="app_ops_summaries_toggle_mobile_data">toggle cellular data</string>
   <string name="app_ops_summaries_superuser">root access</string>
   <!-- User display names for app ops codes - extension of AOSP -->
+  <string name="app_ops_labels_coarse_location">Coarse location</string>
+  <string name="app_ops_labels_fine_location">Fine location</string>
   <string name="app_ops_labels_gps">GPS</string>
   <string name="app_ops_labels_vibrate">Vibrate</string>
   <string name="app_ops_labels_read_contacts">Read contacts</string>
@@ -354,11 +390,19 @@
   <string name="app_ops_labels_modify_call_log">Modify call log</string>
   <string name="app_ops_labels_read_calendar">Read calendar</string>
   <string name="app_ops_labels_modify_calendar">Modify calendar</string>
+  <string name="app_ops_labels_wifi_scan">Wi-Fi scan</string>
   <string name="app_ops_labels_notification">Notification/Toast</string>
+  <string name="app_ops_labels_cell_scan">Cell scan</string>
   <string name="app_ops_labels_call_phone">Call phone</string>
+  <string name="app_ops_labels_read_sms">Read SMS</string>
+  <string name="app_ops_labels_write_sms">Write SMS</string>
   <string name="app_ops_labels_receive_sms">Receive SMS</string>
+  <string name="app_ops_labels_receive_emergency_sms">Receive emergency SMS</string>
   <string name="app_ops_labels_receive_mms">Receive MMS</string>
+  <string name="app_ops_labels_receive_wap_push">Receive WAP push</string>
   <string name="app_ops_labels_send_sms">Send SMS</string>
+  <string name="app_ops_labels_read_icc_sms">Read ICC SMS</string>
+  <string name="app_ops_labels_write_icc_sms">Write ICC SMS</string>
   <string name="app_ops_labels_modify_settings">Modify settings</string>
   <string name="app_ops_labels_draw_on_top">Draw on top</string>
   <string name="app_ops_labels_access_notifications">Access notifications</string>
@@ -377,10 +421,33 @@
   <string name="app_ops_labels_notification_volume">Notification volume</string>
   <string name="app_ops_labels_bluetooth_volume">Bluetooth volume</string>
   <string name="app_ops_labels_keep_awake">Keep awake</string>
+  <string name="app_ops_labels_monitor_location">Monitor location</string>
+  <string name="app_ops_labels_monitor_high_power_location">Monitor high power location</string>
+  <string name="app_ops_labels_get_usage_stats">Get usage stats</string>
   <string name="app_ops_labels_mute_unmute_microphone">Mute/unmute microphone</string>
   <string name="app_ops_labels_toast_window">Display toasts</string>
   <string name="app_ops_labels_project_media">Project media</string>
   <string name="app_ops_labels_activate_vpn">Activate VPN</string>
+  <string name="app_ops_labels_write_wallpaper">Write wallpaper</string>
+  <string name="app_ops_labels_assist_structure">Assist structure</string>
+  <string name="app_ops_labels_assist_screenshot">Assist screenshot</string>
+  <string name="app_ops_labels_read_phone_state">Read phone state</string>
+  <string name="app_ops_labels_add_voicemail">Add voicemail</string>
+  <string name="app_ops_labels_use_sip">Use SIP</string>
+  <string name="app_ops_labels_make_call">Make call</string>
+  <string name="app_ops_labels_use_fingerprint">Use fingerprint</string>
+  <string name="app_ops_labels_use_body_sensors">Use body sensors</string>
+  <string name="app_ops_labels_read_cell_broadcasts">Read cell broadcasts</string>
+  <string name="app_ops_labels_mock_location">Mock location</string>
+  <string name="app_ops_labels_read_external_storage">Read external storage</string>
+  <string name="app_ops_labels_write_external_storage">Write to external storage</string>
+  <string name="app_ops_labels_turn_screen_on">Turn screen on</string>
+  <string name="app_ops_labels_get_accounts">Get accounts</string>
+  <string name="app_ops_labels_toggle_wifi">Toggle Wi-Fi</string>
+  <string name="app_ops_labels_toggle_bluetooth">Toggle bluetooth</string>
+  <string name="app_ops_labels_start_at_boot">Start at boot</string>
+  <string name="app_ops_labels_toggle_nfc">Toggle NFC</string>
+  <string name="app_ops_labels_toggle_mobile_data">Toggle cellular data</string>
   <string name="app_ops_labels_superuser">Root access</string>
   <!-- App ops permissions -->
   <string name="app_ops_permissions_allowed">Allowed</string>
@@ -391,6 +458,7 @@
   <string name="app_ops_allowed_count">Allowed <xliff:g id="count" example="2 times">%s</xliff:g></string>
   <string name="app_ops_ignored_count">Denied <xliff:g id="count" example="2 times">%s</xliff:g></string>
   <string name="app_ops_both_count">Allowed <xliff:g id="count">%1$s</xliff:g>, denied <xliff:g id="count">%2$s</xliff:g></string>
+  <string name="app_ops_disabled_by_optimization">Disabled by battery optimisation</string>
   <!-- App ops menu options -->
   <string name="app_ops_show_user_apps">Show user apps</string>
   <string name="app_ops_show_system_apps">Show built-in apps</string>
@@ -485,6 +553,7 @@
   <string name="double_tap_to_sleep_summary">Double-tap on the status bar to turn off the display</string>
   <!-- Proximity wake -->
   <string name="proximity_wake_title">Prevent accidental wake-up</string>
+  <string name="proximity_wake_summary">Check the proximity sensor prior to wake-ups triggered by gestures</string>
   <!-- Turn on display when power connected; turn off display when power disconnected -->
   <string name="wake_when_plugged_or_unplugged_title">Wake on plug</string>
   <string name="wake_when_plugged_or_unplugged_summary">Turn the screen on when connecting or disconnecting a power source</string>
@@ -495,6 +564,7 @@
   <string name="volume_adjust_sounds_title">Volume adjustment sounds</string>
   <!-- Hardware tunables - Vibrator intensity -->
   <string name="vibrator_intensity_title">Vibrator intensity</string>
+  <string name="vibrator_warning">Values higher than %1$d%% are not recommended</string>
   <!-- Hardware tunables - Color calibration -->
   <string name="color_calibration_title">Color calibration</string>
   <string name="color_calibration_summary">Calibrate on-screen colors</string>
@@ -546,8 +616,14 @@
   <string name="live_display_color_profile_photography_summary">Perfect color reproduction for photos</string>
   <string name="live_display_color_profile_basic_title">Basic</string>
   <string name="live_display_color_profile_basic_summary">Use the display uncalibrated</string>
+  <string name="live_display_color_profile_adaptive_title">Adaptive</string>
+  <string name="live_display_color_profile_adaptive_summary">Colours adapt to ambient conditions</string>
   <!-- LiveDisplay : Picture Adjustment -->
+  <string name="picture_adjustment_title">Picture adjustment</string>
+  <string name="picture_adjustment_summary">Adjust hue, saturation, intensity, and contrast</string>
+  <string name="adj_hue_title">Hue</string>
   <string name="adj_saturation_title">Saturation</string>
+  <string name="adj_intensity_title">Intensity</string>
   <string name="adj_contrast_title">Contrast</string>
   <!-- Whether to display IME switcher notifcation -->
   <string name="ime_switcher_notify">Selector icon</string>
@@ -657,6 +733,8 @@
   <string name="status_bar_battery_percentage_text_inside">Inside the icon</string>
   <string name="status_bar_battery_percentage_text_next">Next to the icon</string>
   <!-- Status bar - icon blacklist -->
+  <string name="status_bar_icons_title">Status bar icons</string>
+  <string name="status_bar_icons_summary">Control which status bar icons are shown</string>
   <!-- EdgeGesture service -->
   <string name="edge_gesture_service_title">Block gesture touch events</string>
   <string name="edge_gesture_service_summary">Don\'t send touch events for navigation and status bar gestures to apps</string>
@@ -693,6 +771,9 @@
   <!-- lock screen visualizer -->
   <string name="lockscreen_visualizer_title">Display music visualizer</string>
   <!-- lock screen disabled by QS tile warning -->
+  <string name="lockscreen_disabled_by_qs_tile_title">Disabled by quick settings tile</string>
+  <string name="lockscreen_disabled_by_qs_tile_summary">Tap to enable the lock screen</string>
+  <string name="lockscreen_disabled_by_qs_tile_summary_enabled">Lock screen enabled!</string>
   <!-- Battery saver -->
   <string name="battery_saver_threshold">Battery saver threshold</string>
   <string name="battery_saver_summary">Reduce performance and limit background data</string>
@@ -702,6 +783,7 @@
   <string name="autoperf_summary">Automatically choose an appropriate battery mode for various apps</string>
   <string name="perf_profile_title">Battery mode</string>
   <!-- Memory -->
+  <string name="memory_startup_apps_title">Apps started on boot</string>
   <!-- Sound & notification > Sound section: Title for the option defining the default notification ringtone. [CHAR LIMIT=30] -->
   <string name="notification_ringtone_title_cm">Notification tone</string>
   <!-- Advanced reboot options -->
@@ -730,6 +812,7 @@
   <string name="voice_wakeup_retrain_title">Retrain your voice</string>
   <string name="voice_wakeup_activity_title">Activity to launch</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
+  <string name="voice_wakeup_needs_dial_permission_warning">Voice Wakeup needs to have phone call permissions to select a Direct Dial contact.</string>
   <string name="picker_activities">Activities</string>
   <string name="select_custom_app_title">Select custom app</string>
   <string name="select_custom_activity_title">Select custom activity</string>
@@ -775,7 +858,12 @@
   <string name="no_filters_title">No filters set</string>
   <!-- Anonymous Statistics #CM -->
   <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
+  <string name="anonymous_statistics_title">LineageOS statistics</string>
+  <string name="anonymous_statistics_summary">Help make LineageOS better by opting into anonymous statistics reporting</string>
   <string name="anonymous_statistics_warning_title">About</string>
+  <string name="anonymous_statistics_warning">Opting into LineageOS Statistics will allow non-personal data to be submitted to the
+        developers of LineageOS to track unique installations across devices. The information submitted includes an unique identifier,
+        which does not compromise your privacy or personal data. The data is submitted during each boot.\n\nFor an example of the data that is submitted, tap on Preview Data.</string>
   <string name="enable_reporting_title">Enable reporting</string>
   <string name="preview_data_title">Preview data</string>
   <string name="view_stats_title">View stats</string>
@@ -795,12 +883,14 @@
   <string name="menu_hidden_apps_delete">Reset</string>
   <string name="menu_hidden_apps_reset_lock">Reset pattern lock</string>
   <string name="protected_apps">Protected apps</string>
+  <string name="protected_apps_summary">Manage which apps are hidden behind a secure lock</string>
   <string name="saving_protected_components">Saving component state\u2026</string>
   <string name="pa_login_username_hint">Username (email)</string>
   <string name="pa_login_password_hint">Password</string>
   <string name="pa_login_submit_button">Sign in</string>
   <string name="pa_login_checking_password">Checking account\u2026</string>
   <string name="pa_login_incorrect_login">Login was incorrect</string>
+  <string name="pa_pattern_or_fingerprint_header">Must draw pattern or use fingerprint to unlock</string>
   <!-- Contributors cloud activity -->
   <string name="contributors_cloud_fragment_title">Contributors</string>
   <string name="contributors_cloud_loading_message">Loading contributors data\u2026</string>
@@ -825,25 +915,49 @@
   <string name="title_general">General</string>
   <string name="advanced">Advanced</string>
   <string name="link_volume_option_title">Link ringtone &amp; notification volumes</string>
+  <string name="lcd_density_prompt_message">Some apps may not function at non-standard DPI.\n\nThis will restart your device.</string>
   <!-- Edit access point labels: PPP number -->
+  <string name="apn_ppp_number">APN PPP phone number</string>
   <!-- APNs screen message indicating new APN user is adding is a duplicate -->
+  <string name="duplicate_apn_error_title">Duplicate APN</string>
+  <string name="duplicate_apn_error_message">This APN already exists. Discard or change parameters.</string>
+  <string name="sim_enabler_summary"><xliff:g id="displayName">%1$s</xliff:g> is <xliff:g id="status" example="disabled">%2$s</xliff:g></string>
   <string name="sim_disabled">disabled</string>
   <string name="sim_missing">missing or faulty</string>
+  <string name="sim_enabler_need_disable_sim">SIM card will be deactivated. Do you want to continue?</string>
+  <string name="sim_enabler_will_disable_sim_title">Attention</string>
+  <string name="sim_enabler_need_switch_data_service">This SIM will be disabled and SIM <xliff:g id="slotid">%1$s</xliff:g> will be used for data services. Are you sure you want to continue?</string>
   <string name="sim_enabler_airplane_on">Unable to perform the operation while airplane mode is on.</string>
   <string name="sim_enabler_in_call">Unable to perform the operation while in call.</string>
   <string name="sim_enabler_both_inactive">Can\'t disable all SIM cards</string>
+  <string name="sim_enabler_enabling">Activating\u2026</string>
+  <string name="sim_enabler_disabling">Deactivating\u2026</string>
+  <string name="sub_activate_success">SIM activated.</string>
+  <string name="sub_activate_failed">Activation failed.</string>
+  <string name="sub_deactivate_success">SIM deactivated.</string>
+  <string name="sub_deactivate_failed">Deactivation failed.</string>
   <string name="primary_sub_select_title">Default 3G/LTE subscription</string>
+  <string name="select_sim_card">Select SIM card</string>
   <!-- MSIM SIM status -->
   <string name="sim_card_status_title">SIM %d status</string>
   <string name="sim_card_lock_settings_title">SIM %d lock settings</string>
   <string name="sim_card_summary_empty">SIM not inserted</string>
+  <string name="sim_mobile_network_settings_category_title">Cellular network settings</string>
   <string name="sim_mobile_network_settings_title">SIM %d settings</string>
   <!-- Zen mode allowed event setting summary items -->
   <!-- [CHAR LIMIT=50] Like zen_mode_reminders, but part of a list, so lower case if needed-->
+  <string name="zen_mode_summary_reminders">reminders</string>
   <!-- [CHAR LIMIT=50] Like zen_mode_events, but part of a list, so lower case if needed -->
+  <string name="zen_mode_summary_events">events</string>
   <!-- [CHAR LIMIT=50] Like zen_mode_summary_selected_callers, but part of a list, so lower case if needed -->
+  <string name="zen_mode_summary_selected_callers">selected callers</string>
   <!-- [CHAR LIMIT=50] Like zen_mode_summary_selected_messages, but part of a list, so lower case if needed -->
+  <string name="zen_mode_summary_selected_messages">selected messages</string>
   <!-- Allow vibration in zen mode -->
+  <string name="zen_mode_vibration">Vibration</string>
+  <string name="zen_mode_vibration_never">Don\'t vibrate</string>
+  <string name="zen_mode_vibration_calls_only">Only vibrate for calls</string>
+  <string name="zen_mode_vibration_calls_and_notifications">Vibrate for calls and notifications</string>
   <!-- About phone settings screen, setting option dialog title to show regulatory information [CHAR LIMIT=25] -->
   <!-- SAR information -->
   <string name="maximum_head_level">Head: %1$s W/kg</string>
@@ -853,8 +967,11 @@
   <string name="ic_code_full">IC: %1$s</string>
   <string name="sim_ringtone_title">SIM %d ringtone</string>
   <!-- label for application name -->
+  <string name="app_name_label_cm">App:</string>
   <!-- label for last time used -->
+  <string name="last_time_used_label_cm">Last time used:</string>
   <!-- label for usage time -->
+  <string name="usage_time_label_cm">Usage time:</string>
   <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
   <string name="master_clear_desc_cm" product="tablet">This will erase all data from your tablet\'s <b>internal storage</b>, including:\n\n<li>Your device accounts</li>\n<li>System and app data and settings</li>\n<li>Downloaded apps</li></string>
   <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
@@ -871,14 +988,24 @@
   <string name="factory_reset_warning_text_reset_now">RESET NOW</string>
   <string name="factory_reset_warning_text_message">All your accounts, apps, app data, and system settings will be removed from this device. This cannot be reversed.</string>
   <!-- Tethering & portable hotspot other category -->
+  <string name="tethering_other_category_text">Other</string>
   <!-- Wi-Fi tethering inactivity timeout -->
+  <string name="hotstpot_inactivity_timeout_text">Wi\u2011Fi hotspot timeout</string>
   <string name="hotstpot_inactivity_timeout_never">Never</string>
+  <string name="hotstpot_inactivity_timeout_1_minute">1 minute</string>
+  <string name="hotstpot_inactivity_timeout_5_minutes">5 minutes</string>
+  <string name="hotstpot_inactivity_timeout_10_minutes">10 minutes</string>
+  <string name="hotstpot_inactivity_timeout_never_summary_text">Portable Wi\u2011Fi hotspot will never timeout</string>
+  <string name="hotstpot_inactivity_timeout_summary_text">Portable Wi\u2011Fi hotspot will timeout after <xliff:g id="timeout">%1$s</xliff:g></string>
   <!-- Live lock screen -->
   <!-- Live lock screen title -->
+  <string name="live_lock_screen_title">Live lock screen</string>
   <!-- Live lock screen summary -->
+  <string name="live_lock_screen_summary">Enable and configure Live lock screens</string>
   <!-- Live lock screen settings content description -->
   <string name="live_lock_screen_settings_button">Settings</string>
   <!-- Live lock screen settings screen, caption for when live lock screens are disabled -->
+  <string name="live_lock_screen_settings_disabled_prompt">To view available Live lock screens, turn Live lock screens on.</string>
   <string name="interruptions_ignore_while_media_title">Prevent audio ducking</string>
   <string name="interruptions_ignore_while_media_summary">Do not reduce media playback volume when a notification arrives</string>
   <!-- CM Legal -->
@@ -893,10 +1020,42 @@
   <string name="battery_info_status_charging_dock_ac">Charging on dock AC</string>
   <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging over Dock USB. -->
   <string name="battery_info_status_charging_dock_usb">Charging over dock USB</string>
+  <string name="restrict_app_wlan_title">Disable app Wi\u2011Fi usage</string>
+  <string name="restrict_app_wlan_summary">Prevent app from using Wi\u2011Fi data connection</string>
+  <string name="restrict_app_cellular_title">Disable app cellular usage</string>
+  <string name="restrict_app_cellular_summary">Prevent app from using cellular data connection</string>
+  <string name="privacy_guard_internet_category">Internet</string>
   <!-- Weather -->
+  <string name="weather_settings_title">Weather</string>
+  <string name="weather_settings_no_services_prompt">No weather provider services installed</string>
+  <string name="weather_settings_button">Provider settings</string>
+  <string name="weather_settings_activity_not_found">Unable to launch the settings menu of this provider</string>
+  <string name="weather_settings_add_weather_provider">Add weather provider</string>
   <string name="weather_settings_general_settings_title">General</string>
+  <string name="weather_settings_providers_title">Providers</string>
+  <string name="weather_settings_temp_units_title">Temperature unit</string>
+  <string name="weather_settings_temp_celsius">Celsius</string>
+  <string name="weather_settings_temp_fahrenheit">Fahrenheit</string>
+  <string name="weather_settings_keyword">weather</string>
+  <string name="background_data_access">Background data access</string>
+  <string name="allow_background_both">Over cellular data &amp; Wi\u2011Fi</string>
+  <string name="allow_background_wlan">Only over Wi\u2011Fi</string>
+  <string name="allow_background_none">No access</string>
+  <string name="mobile_data_alert">Cellular data alert</string>
+  <string name="mobile_data_alert_summary">Notify when the app uses a significant amount of data</string>
+  <string name="data_usage_menu_enable_data_alerts">Enable data usage alerts</string>
+  <string name="data_usage_menu_disable_data_alerts">Disable data usage alerts</string>
+  <string name="data_usage_menu_reset_stats">Reset data statistics</string>
+  <string name="reset_data_stats_msg">This will clear all past and present data tracking information</string>
+  <string name="reset_stats_confirm">Confirm</string>
+  <string name="restrict_cellular_access_title">Restrict cellular data access</string>
+  <string name="restrict_cellular_access_summary">Disable data access on cellular networks</string>
+  <string name="restrict_cellular_access_dialog_title">Restrict cellular data access?</string>
+  <string name="restrict_cellular_access_dialog_summary">This feature may cause an app that depends on network access to stop working when only cellular networks are available.\n\nYou can find more appropriate data usage controls in the settings available within the app.</string>
   <!-- Label for settings shortcut: carrier selection -->
+  <string name="shortcut_carrier_title">Network operators</string>
   <!-- title for lock screen blur preference -->
+  <string name="lockscreen_blur_enabled_title">Blur background</string>
   <!-- title for lock screen weather preference -->
   <string name="lockscreen_weather_enabled_title">Show weather</string>
   <!-- Per app controls for LP keyguard notifications -->
@@ -905,10 +1064,40 @@
   <string name="app_notification_no_ongoing_on_keyguard_title">Disable persistent notification on lock screen</string>
   <string name="app_notification_no_ongoing_on_keyguard_summary">Never show persistent notifications from this app on the lock screen</string>
   <!-- Notification sound timeout -->
+  <string name="app_notification_sound_timeout_title">Minimum time between notification sounds</string>
+  <string name="app_notification_sound_timeout_summary_template">Allow sounds or vibration no more than once every <xliff:g id="duration">%1$s</xliff:g></string>
+  <string name="app_notification_sound_timeout_value_none">No restriction</string>
+  <string name="app_notification_sound_timeout_value_10_seconds">10 seconds</string>
+  <string name="app_notification_sound_timeout_value_30_seconds">30 seconds</string>
+  <string name="app_notification_sound_timeout_value_1_minute">1 minute</string>
+  <string name="app_notification_sound_timeout_value_5_minutes">5 minutes</string>
+  <string name="app_notification_sound_timeout_value_15_minutes">10 minutes</string>
+  <string name="app_notification_sound_timeout_value_30_minutes">30 minutes</string>
   <!-- CmRadioInfo -->
+  <string name="cm_radio_info_label">Enhanced radio control</string>
   <!-- Radio Control (IMS/MBN etc.) -->
+  <string name="cm_radio_info_mbn_auto_load_on_label">Turn off MBN auto load</string>
+  <string name="cm_radio_info_mbn_auto_load_off_label">Turn on MBN auto load</string>
+  <string name="cm_radio_info_volte_avail_ovr_on_label">Turn off VoLTE debug</string>
+  <string name="cm_radio_info_volte_avail_ovr_off_label">Turn on VoLTE debug</string>
+  <string name="cm_radio_info_vt_avail_ovr_on_label">Turn off VT debug</string>
+  <string name="cm_radio_info_vt_avail_ovr_off_label">Turn on VT debug</string>
+  <string name="cm_radio_info_wfc_avail_ovr_on_label">Turn off WFC debug</string>
+  <string name="cm_radio_info_wfc_avail_ovr_off_label">Turn on WFC debug</string>
+  <string name="cm_radio_info_adb_log_on_label">Turn off ADB radio log</string>
+  <string name="cm_radio_info_adb_log_off_label">Turn on ADB radio log</string>
+  <string name="cm_radio_info_diag_log_on_label">Turn off Diag log</string>
+  <string name="cm_radio_info_diag_log_off_label">Turn on Diag log</string>
   <!-- Lock screen wallpaper -->
+  <string name="lockscreen_wallpaper_title">Wallpaper</string>
+  <string name="not_available_with_app">Not available with %1$s</string>
   <!-- Format string for fingerprint location message -->
+  <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Locate the fingerprint sensor on the <xliff:g id="sensor_location">%1$s</xliff:g> of your phone.</string>
   <!-- Fingerprint sensor locations -->
+  <string name="security_settings_fingerprint_sensor_location_back">back</string>
+  <string name="security_settings_fingerprint_sensor_location_front">front</string>
+  <string name="security_settings_fingerprint_sensor_location_left">left side</string>
+  <string name="security_settings_fingerprint_sensor_location_right">right side</string>
   <!-- SIM status format string -->
+  <string name="sim_status_format_string">Voice: <xliff:g id="voice_status">%1$s</xliff:g> / Data: <xliff:g id="data_status">%2$s</xliff:g></string>
 </resources>
