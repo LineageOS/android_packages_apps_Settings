@@ -104,6 +104,15 @@ xmlns:android="http://schemas.android.com/apk/res/android"
                android:data="https://forum.xda-developers.com/member.php?u=7550463" />
         </PreferenceScreen>
 
+<PreferenceScreen
+            android:title="@string/dev_4"
+    android:summary="@string/dev4_description"
+    android:icon="@drawable/ic_devs_pc" >
+    <intent
+               android:action="android.intent.action.VIEW"
+               android:data="https://github.com/klabit87" />
+        </PreferenceScreen>
+
 </PreferenceCategory>
 
 </PreferenceScreen>
