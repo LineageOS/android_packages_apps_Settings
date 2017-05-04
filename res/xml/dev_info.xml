@@ -112,7 +112,20 @@ xmlns:android="http://schemas.android.com/apk/res/android"
                android:action="android.intent.action.VIEW"
                android:data="https://github.com/klabit87" />
         </PreferenceScreen>
-
 </PreferenceCategory>
+
+
+<PreferenceCategory
+              android:key="maintainers"
+              android:title="@string/maintainers_header" >
+
+<PreferenceScreen
+            android:title="@string/main_5"
+            android:summary="@string/main_description"
+            android:icon="@drawable/ic_devs_phone">
+</PreferenceScreen>
+
+
+    </PreferenceCategory>
 
 </PreferenceScreen>
