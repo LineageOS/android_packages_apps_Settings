@@ -18,12 +18,6 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/high_power_apps">
 
-    <PreferenceScreen
-        android:fragment="com.android.settings.aim.fragments.NetworkTrafficSettings"
-        android:key="pure_nettraffic_settings"
-        android:title="@string/nettraffic_settings_title"
-        android:summary="@string/nettraffic_settings_summary" />
-
     <SwitchPreference
         android:key="high_power_switch"
         android:summary="@string/high_power_desc"
