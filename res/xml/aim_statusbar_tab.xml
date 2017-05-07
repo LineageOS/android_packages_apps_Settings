@@ -21,4 +21,10 @@
     android:layout="@layout/tab"
     android:title="@string/aim_statusbar_title">
 
+    <PreferenceScreen
+	android:fragment="com.android.settings.aim.fragments.NetworkTrafficSettings"
+	android:key="pure_nettraffic_settings"
+	android:title="@string/nettraffic_settings_title"
+        android:summary="@string/nettraffic_settings_summary" />
+
 </PreferenceScreen>
