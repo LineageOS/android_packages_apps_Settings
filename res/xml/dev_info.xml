@@ -34,6 +34,12 @@ xmlns:android="http://schemas.android.com/apk/res/android"
    android:key="AIMROM_social"
               android:title="@string/social_header" >
 
+        <!-- Changelog -->
+        <PreferenceScreen android:key="aim_changelog"
+            android:title="@string/changelog_title"
+            android:summary="@string/changelog_summary"
+            android:fragment="com.android.settings.aim.fragments.Changelog" />
+
         <PreferenceScreen
             android:title="@string/AIMROM_web"
     android:summary="@string/AIMROM_web_description"

@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2016 Nitrogen Project
+    Copyright (C) 2016
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
     limitations under the License.
  */
 
-package com.android.settings.fragments.Changelog;
+package com.android.settings.aim.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
