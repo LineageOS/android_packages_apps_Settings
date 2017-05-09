@@ -156,7 +156,18 @@
                 settings:allowDividerAbove="true"
                 settings:allowDividerBelow="true" />
 
-        <!-- Security patch level -->
+        <!-- AIM ROM Maintainer -->
+        <com.android.settings.DividerPreference
+                android:key="aim_maintainer"
+                android:enabled="false"
+                android:shouldDisableView="false"
+                android:selectable="false"
+                android:title="@string/aim_maintainer"
+                android:summary="@string/aim_maintainer_default"
+                settings:allowDividerAbove="true"
+                settings:allowDividerBelow="true"/>
+
+       <!-- Security patch level -->
         <PreferenceScreen android:key="security_patch"
                 android:title="@string/security_patch"
                 android:summary="@string/device_info_default">

@@ -46,6 +46,8 @@ import com.android.settingslib.RestrictedLockUtils;
 import com.android.internal.os.RegionalizationEnvironment;
 import com.android.internal.os.IRegionalizationService;
 
+import java.lang.System;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -85,6 +87,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_MOD_API_LEVEL = "mod_api_level";
     private static final String KEY_AIM_VERSION = "aim_version";
     private static final String KEY_AIM_CHANGELOG = "aim_changelog";
+    private static final String KEY_AIM_MAINTAINER = "aim_maintainer";
+    private static final String PROPERTY_AIM_MAINTAINER = "ro.aim.maintainer";
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
 
@@ -136,7 +140,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         findPreference(KEY_BUILD_NUMBER).setEnabled(true);
         setValueSummary(KEY_AIM_VERSION, "ro.aim.version");
         findPreference(KEY_AIM_VERSION).setEnabled(true);
-        //setValueSummary(KEY_QGP_VERSION, PROPERTY_QGP_VERSION);
+        setValueSummary(KEY_AIM_MAINTAINER, PROPERTY_AIM_MAINTAINER);
+         //setValueSummary(KEY_QGP_VERSION, PROPERTY_QGP_VERSION);
         // Remove QGP Version if property is not present
         //removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_QGP_VERSION,
         //        PROPERTY_QGP_VERSION);
@@ -184,6 +189,10 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         // Remove Equipment id preference if FCC ID is not set by RIL
         removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_EQUIPMENT_ID,
                 PROPERTY_EQUIPMENT_ID);
+
+        // Remove Maintainers preference if KEY_AIM_MAINTAINER is unset
+        removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_AIM_MAINTAINER,
+                PROPERTY_AIM_MAINTAINER);
 
         // Remove Baseband version if wifi-only device
         if (Utils.isWifiOnly(getActivity())) {
