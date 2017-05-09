@@ -70,7 +70,6 @@ public class Settings extends SettingsActivity {
     public static class BackgroundCheckSummaryActivity extends SettingsActivity { /* empty */ }
     public static class StorageUseActivity extends SettingsActivity { /* empty */ }
     public static class DevelopmentSettingsActivity extends SettingsActivity { /* empty */ }
-    public static class SubstratumActivity extends SettingsActivity { /* empty */ }
     public static class AccessibilitySettingsActivity extends SettingsActivity { /* empty */ }
     public static class CaptioningSettingsActivity extends SettingsActivity { /* empty */ }
     public static class AccessibilityInversionSettingsActivity extends SettingsActivity { /* empty */ }

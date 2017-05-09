@@ -239,9 +239,6 @@ public class SettingsActivity extends SettingsDrawerActivity
 
     private static final String MAGISK_FRAGMENT = "com.android.settings.MagiskManager";
 
-    private static final String SUBSTRATUM_FRAGMENT = "com.android.settings.Substratum";
-
-
     private String mFragmentClass;
     private String mActivityAction;
 
@@ -1054,16 +1051,10 @@ public class SettingsActivity extends SettingsDrawerActivity
     private Fragment switchToFragment(String fragmentName, Bundle args, boolean validate,
             boolean addToBackStack, int titleResId, CharSequence title, boolean withTransition) {
 
-
          if (MAGISK_FRAGMENT.equals(fragmentName)) {
             Intent magiskIntent = new Intent();
             magiskIntent.setClassName("com.topjohnwu.magisk", "com.topjohnwu.magisk.SplashActivity");
             startActivity(magiskIntent);
-
-        if (SUBSTRATUM_FRAGMENT.equals(fragmentName)) {
-            Intent substratumIntent = new Intent();
-            substratumIntent.setClassName("projekt.substratum", "projekt.substratum.LaunchActivity");
-            startActivity(substratumIntent);
             finish();
             return null;
         }
@@ -1161,16 +1152,6 @@ public class SettingsActivity extends SettingsDrawerActivity
         setTileEnabled(new ComponentName(packageName,
                         Settings.DevelopmentSettingsActivity.class.getName()),
                 showDev, isAdmin, pm);
-
-        // Remove Substratum if not installed
-        boolean subSupported = false;
-        try {
-            subSupported = (getPackageManager().getPackageInfo("projekt.substratum", 0).versionCode >= 0);
-        } catch (PackageManager.NameNotFoundException e) {
-        }
-        setTileEnabled(new ComponentName(packageName,
-                        Settings.SubstratumActivity.class.getName()),
-                subSupported, isAdmin, pm);
 
         // Reveal development-only quick settings tiles
         DevelopmentTiles.setTilesEnabled(this, showDev);
