@@ -32,8 +32,21 @@
                android:icon="@drawable/ic_freedomhub_ico"
                android:defaultValue="true" />
                   
+   <!-- incall  vibration -->
+   <PreferenceCategory
+        android:key="aim_incall"
+        android:title="@string/incall_vibration_category" >
+
+    <PreferenceScreen
+            android:key="incall_vib"
+            android:title="@string/aim_incall"
+            android:summary="@string/aim_incall_summary"
+            android:icon="@drawable/ic_freedomhub_ico"
+            android:fragment="com.android.settings.aim.InCallSettings" />   
        
-       <!-- alarm blocker -->
+        </PreferenceCategory>
+    
+   <!-- alarm blocker -->
         <PreferenceScreen
              android:id="@+id/alarm_blocker"
              android:fragment="com.android.settings.aim.fragments.AlarmBlocker"
