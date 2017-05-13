@@ -39,4 +39,10 @@
             android:layout="@layout/preference_systemappremover"
             android:title="@string/system_app_remover" />
 
+<!-- Screenshot sounds -->
+     <com.android.settings.aim.Preferences.SystemSettingSwitchPreference
+        android:key="screenshot_sound"
+        android:title="@string/screenshot_sound_title"
+        android:defaultValue="true" />
+
 </PreferenceScreen>
