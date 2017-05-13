@@ -15,34 +15,42 @@
         android:layout="@layout/tab"
 	android:title="@string/aim_misc_title"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
-            
+       
+       <!--  about aimrom -->  
        <PreferenceScreen
          android:key="dev_info"
          android:title="@string/dev_info"
+         android:summary="@string/dev_info_summary"
          android:icon="@drawable/ic_aim_amify"
          android:fragment="com.android.settings.devs" />
 
+        <!-- fuck su -->
         <com.android.settings.aim.Preferences.SystemSettingSwitchPreference
                android:key="show_su_indicator"
                android:title="@string/show_su_indicator_title"
                android:summary="@string/show_su_indicator_summary"
+               android:icon="@drawable/ic_freedomhub_ico"
                android:defaultValue="true" />
 
+        <!-- alarm blocker -->
         <PreferenceScreen
              android:id="@+id/alarm_blocker"
              android:fragment="com.android.settings.aim.fragments.AlarmBlocker"
+             android:icon="@drawable/ic_freedomhub_ico"
              android:title="@string/alarm_blocker" />
 
+        <!-- system app remover -->
         <PreferenceScreen
             android:key="systemappremover"
             android:fragment="com.android.settings.aim.fragments.SystemappRemover"
             android:layout="@layout/preference_systemappremover"
             android:title="@string/system_app_remover" />
 
-<!-- Screenshot sounds -->
+     <!-- Screenshot sounds -->
      <com.android.settings.aim.Preferences.SystemSettingSwitchPreference
         android:key="screenshot_sound"
         android:title="@string/screenshot_sound_title"
+        android:icon="@drawable/ic_freedomhub_ico"
         android:defaultValue="true" />
 
 </PreferenceScreen>
