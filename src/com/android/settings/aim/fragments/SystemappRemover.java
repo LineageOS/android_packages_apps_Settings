@@ -13,7 +13,7 @@
  *
  *=========================================================================
  */
-package com.android.settings.aim.Preferences;
+package com.android.settings.aim.fragments;
 
 import java.io.BufferedWriter;
 import java.io.DataOutputStream;
