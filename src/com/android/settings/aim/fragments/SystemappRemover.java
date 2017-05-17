@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
+import java.util.ListIterator;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -46,7 +47,18 @@ import android.widget.Toast;
 
 import com.android.settings.R;
 
-public class SystemappRemover extends Fragment {
+import com.android.settings.SettingsPreferenceFragment;
+import com.android.internal.logging.MetricsProto.MetricsEvent;
+import com.android.internal.logging.MetricsLogger;
+
+public class SystemappRemover extends SettingsPreferenceFragment {
+
+
+    @Override
+    protected int getMetricsCategory() {
+        return MetricsEvent.AMIFY;
+    }
+
     private final int STARTUP_DIALOG = 1;
     private final int DELETE_DIALOG = 2;
     private final int DELETE_MULTIPLE_DIALOG = 3;
@@ -55,6 +67,7 @@ public class SystemappRemover extends Fragment {
     private ArrayList<String> mSysApp;
     private boolean startup =true;
     public final String systemPath = "/system/app/";
+    public final String systemPrivPath = "/system/priv-app/";
     protected Process superUser;
     protected DataOutputStream dos;
 
@@ -80,17 +93,21 @@ public class SystemappRemover extends Fragment {
 
         // create arraylist of apps not to be removed
         final ArrayList<String> safetyList = new ArrayList<String>();
-        safetyList.add("CertInstaller.apk");
-        safetyList.add("DrmProvider.apk");
-        safetyList.add("PackageInstaller.apk");
-        safetyList.add("Superuser.apk");
-        safetyList.add("TelephonyProvider.apk");
+        safetyList.add("CertInstaller");
+        safetyList.add("DrmProvider");
+        safetyList.add("PackageInstaller");
+        safetyList.add("Superuser");
+        safetyList.add("TelephonyProvider");
 
-        // create arraylist from /system/app content
+        // create arraylist from /system/app and /system/priv-app content
         File system = new File(systemPath);
-        String[] sysappArray = system.list();
+        File systemPriv = new File(systemPrivPath);
+        String[] sysappArray = combine(system.list(), systemPriv.list());
         mSysApp = new ArrayList<String>(
                 Arrays.asList(sysappArray));
+         
+         // remove .odex files from list
+            filterOdex();
 
         // remove "apps not to be removed" from list and sort list
         mSysApp.removeAll(safetyList);
@@ -124,7 +141,7 @@ public class SystemappRemover extends Fragment {
                 String item = null;
                 int len = lv.getCount();
                 SparseBooleanArray checked = lv.getCheckedItemPositions();
-                for (int i = lv.getCount() - 1; i > 0; i--) {
+                for (int i = lv.getCount() - 1; i >= 0; i--) {
                     if (checked.get(i)) {
                         item = mSysApp.get(i);
                     }
@@ -226,6 +243,24 @@ public class SystemappRemover extends Fragment {
         }
         // show warning dialog
         alert.show();
+    }
+  
+        private String[] combine(String[] a, String[] b) {
+        int length = a.length + b.length;
+        String[] result = new String[length];
+        System.arraycopy(a, 0, result, 0, a.length);
+        System.arraycopy(b, 0, result, a.length, b.length);
+        return result;
+    }
+
+    private void filterOdex() {
+        ListIterator<String> it = mSysApp.listIterator();
+        while ( it.hasNext() ) {
+            String str = it.next();
+            if ( str.endsWith(".odex") ) {
+                it.remove();
+            }
+        }
     }
 
     // profile select dialog
@@ -388,8 +423,18 @@ public class SystemappRemover extends Fragment {
 
         protected Void doInBackground(String... params) {
             for (String appName : params) {
+                String odexAppName = appName.replaceAll(".apk$", ".odex");
+                String basePath = systemPath;
+                 File app = new File(systemPath + appName);
+
+                if( ! app.exists() )
+                    basePath = systemPrivPath;
                 try {
-                    dos.writeBytes("\n" + "rm -rf '" + systemPath + appName + "'\n");
+                    dos.writeBytes("\n" + "rm -rf '" + basePath + "*" + appName + "'\n");
+                    // needed in case user is using odexed ROM
+                    File odex = new File(basePath + odexAppName);
+                    if( odex.exists() )
+                         dos.writeBytes("\n" + "rm -rf '" + basePath + odexAppName + "'\n");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
