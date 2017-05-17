@@ -18,22 +18,29 @@
     android:layout="@layout/tab"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+  <PreferenceCategory
+ 	android:title="@string/custom_buttons_category" >
+ 
     <PreferenceScreen
             android:key="hardware_keys"
+            android:summary="hardwarekey_summary"
             android:fragment="com.android.settings.aim.fragments.HardwareKeys"
             android:title="@string/aim_hardware_keys_title" />
 
     <PreferenceScreen
             android:key="powermenu_category"
             android:fragment="com.android.settings.aim.fragments.PowerMenuSettings"
+            android:summary="powermenu_summary"
             android:title="@string/aim_power_menu_title" />
 
     <cyanogenmod.preference.CMSecureSettingSwitchPreference
             android:key="advanced_reboot"
             android:title="@string/advanced_reboot_title"
             android:summary="@string/advanced_reboot_summary" />
-
-    <PreferenceCategory
+     
+     </PreferenceCategory>
+             
+   <PreferenceCategory
             android:key="category_fp"
             android:title="@string/fp_category_title">
 

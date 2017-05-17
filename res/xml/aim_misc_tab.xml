@@ -23,7 +23,7 @@
          android:summary="@string/dev_info_summary"
          android:icon="@drawable/ic_aim_amify"
          android:fragment="com.android.settings.devs" />
-
+     
         <!-- fuck su -->
         <com.android.settings.aim.Preferences.SystemSettingSwitchPreference
                android:key="show_su_indicator"
@@ -31,26 +31,45 @@
                android:summary="@string/show_su_indicator_summary"
                android:icon="@drawable/ic_freedomhub_ico"
                android:defaultValue="true" />
-
-        <!-- alarm blocker -->
+                  
+       
+       <!-- alarm blocker -->
         <PreferenceScreen
              android:id="@+id/alarm_blocker"
              android:fragment="com.android.settings.aim.fragments.AlarmBlocker"
              android:icon="@drawable/ic_freedomhub_ico"
              android:title="@string/alarm_blocker" />
-
-        <!-- system app remover -->
+     
+       <!-- system app remover -->
         <PreferenceScreen
             android:key="systemappremover"
             android:fragment="com.android.settings.aim.fragments.SystemappRemover"
-            android:layout="@layout/preference_systemappremover"
+            android:icon="@drawable/ic_freedomhub_ico"
             android:title="@string/system_app_remover" />
 
-     <!-- Screenshot sounds -->
+   <PreferenceCategory
+    android:title="@string/sound_misc_category" >  
+   
+    <!-- Screenshot sounds -->
      <com.android.settings.aim.Preferences.SystemSettingSwitchPreference
         android:key="screenshot_sound"
         android:title="@string/screenshot_sound_title"
         android:icon="@drawable/ic_freedomhub_ico"
         android:defaultValue="true" />
+
+    <!-- Link ringtone and notification volumes -->
+        <com.android.settings.aim.Preferences.SystemSettingSwitchPreference
+                android:key="volume_link_notification"
+                android:title="@string/volume_link_notification_title"
+                android:icon="@drawable/ic_freedomhub_ico"
+                android:defaultValue="true" />
+           
+       <!-- Launch music player when headset is connected -->
+        <com.android.settings.aim.Preferences.SystemSettingSwitchPreference
+                android:key="headset_connect_player"
+                android:title="@string/headset_connect_player_title"
+                android:summary="@string/headset_connect_player_summary" />
+  
+       </PreferenceCategory>                       
 
 </PreferenceScreen>

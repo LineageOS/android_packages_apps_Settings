@@ -32,13 +32,29 @@
             android:title="@string/aim_notification_drawer_title"
             android:fragment="com.android.settings.aim.fragments.Notifications" /> -->
 
+     <PreferenceCategory
+ 	 android:title="@string/customui_category" >
+     
      <com.android.settings.display.DensityPreference
             android:key="density"
             android:icon="@drawable/ic_freedomhub_ico"
             android:summary="@string/density_summary"
             android:title="@string/developer_smallest_width" />
 
-     <com.android.settings.aim.Preferences.SystemSettingSwitchPreference
+     <ListPreference
+                android:key="night_mode"
+                android:title="@string/night_mode_title"
+                settings:keywords="@string/keywords_display_night_mode"
+                android:summary="@string/night_mode_summary"
+                android:entries="@array/night_mode_entries"
+                android:entryValues="@array/night_mode_values" />
+
+      </PreferenceCategory>
+     
+    <PreferenceCategory
+     android:title="@string/lockscreen_category" >
+
+    <com.android.settings.aim.Preferences.SystemSettingSwitchPreference
         android:key="lockscreen_media_metadata"
         android:title="@string/media_art_title"
         android:summary="@string/media_art_summary"
@@ -51,5 +67,7 @@
                android:summary="@string/lockscreen_enable_qs_summary"
                android:icon="@drawable/ic_freedomhub_ico"
                android:defaultValue="true" />
+
+     </PreferenceCategory>
 
 </PreferenceScreen>

@@ -21,6 +21,8 @@
     android:layout="@layout/tab"
     android:title="@string/aim_statusbar_title">
 
+    <PreferenceCategory
+ 	 android:title="@string/statusbar_category" >
     <PreferenceScreen
 	android:fragment="com.android.settings.aim.fragments.NetworkTrafficSettings"
 	android:key="pure_nettraffic_settings"
@@ -33,5 +35,7 @@
 	android:key="pure_clock_settings"
 	android:title="@string/clock_settings_title"
 	android:summary="@string/clock_settings_summary" />
+     
+      </PreferenceCategory>
 
 </PreferenceScreen>
