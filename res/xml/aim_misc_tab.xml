@@ -58,16 +58,17 @@
         android:defaultValue="true" />
 
     <!-- Link ringtone and notification volumes -->
-        <com.android.settings.aim.Preferences.SystemSettingSwitchPreference
+         <cyanogenmod.preference.SecureSettingSwitchPreference
                 android:key="volume_link_notification"
                 android:title="@string/volume_link_notification_title"
                 android:icon="@drawable/ic_freedomhub_ico"
                 android:defaultValue="true" />
            
        <!-- Launch music player when headset is connected -->
-        <com.android.settings.aim.Preferences.SystemSettingSwitchPreference
+         <cyanogenmod.preference.CMSystemSettingSwitchPreference
                 android:key="headset_connect_player"
                 android:title="@string/headset_connect_player_title"
+                android:icon="@drawable/ic_freedomhub_ico"
                 android:summary="@string/headset_connect_player_summary" />
   
        </PreferenceCategory>                       
