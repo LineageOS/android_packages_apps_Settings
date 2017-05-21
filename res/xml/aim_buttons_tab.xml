@@ -24,18 +24,21 @@
     <PreferenceScreen
             android:key="hardware_keys"
             android:summary="hardwarekey_summary"
+            android:icon="@drawable/ic_freedomhub_ico"
             android:fragment="com.android.settings.aim.fragments.HardwareKeys"
             android:title="@string/aim_hardware_keys_title" />
 
     <PreferenceScreen
             android:key="powermenu_category"
             android:fragment="com.android.settings.aim.fragments.PowerMenuSettings"
+            android:icon="@drawable/ic_freedomhub_ico"     
             android:summary="powermenu_summary"
             android:title="@string/aim_power_menu_title" />
 
     <cyanogenmod.preference.CMSecureSettingSwitchPreference
             android:key="advanced_reboot"
             android:title="@string/advanced_reboot_title"
+             android:icon="@drawable/ic_freedomhub_ico"       
             android:summary="@string/advanced_reboot_summary" />
      
      </PreferenceCategory>
@@ -47,13 +50,15 @@
     <com.android.settings.aim.Preferences.SystemSettingSwitchPreference
             android:key="fingerprint_success_vib"
             android:title="@string/fprint_sucess_vib_title"
+            android:icon="@drawable/ic_freedomhub_ico"
             android:summary="@string/fprint_sucess_vib_summary"
             android:defaultValue="true" />
 
     <SwitchPreference
             android:key="fp_unlock_keystore"
   	    android:title="@string/fp_unlock_keystore_title"
-  	    android:summary="@string/fp_unlock_keystore_summary"
+  	    android:icon="@drawable/ic_freedomhub_ico"
+            android:summary="@string/fp_unlock_keystore_summary"
        	    android:persistent="false" />
             </PreferenceCategory>
 

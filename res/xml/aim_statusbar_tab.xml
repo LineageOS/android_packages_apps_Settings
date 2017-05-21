@@ -30,4 +30,21 @@
         android:icon="@drawable/ic_freedomhub_ico"
         android:summary="@string/nettraffic_settings_summary" />
 
+        <com.android.settings.aim.Preferences.SystemSettingSwitchPreference
+            android:key="roaming_indicator_icon"
+            android:title="@string/roaming_indicator_icon_title"
+            android:summary="@string/roaming_indicator_icon_summary"
+            android:icon="@drawable/ic_freedomhub_ico"
+            android:defaultValue="true"/>  
+
+     <!-- Double tap to sleep -->
+    <cyanogenmod.preference.CMSystemSettingSwitchPreference
+         android:key="double_tap_sleep_gesture"
+         android:title="@string/status_bar_double_tap_to_sleep_title"
+         android:icon="@drawable/ic_freedomhub_ico"
+         android:summary="@string/status_bar_double_tap_to_sleep_summary"
+         android:defaultValue="true" />
+ 
+      </PreferenceCategory>
+
 </PreferenceScreen>
