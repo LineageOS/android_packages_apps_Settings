@@ -41,14 +41,11 @@
             android:summary="@string/density_summary"
             android:title="@string/developer_smallest_width" />
 
-     <ListPreference
-            android:key="night_mode"
-            android:title="@string/night_mode_title"
-            settings:keywords="@string/keywords_display_night_mode"
-            android:summary="@string/night_mode_summary"
+      <PreferenceScreen
+            android:key="daynight"
+            android:fragment="com.android.settings.aim.fragments.DayNightSettings"
             android:icon="@drawable/ic_freedomhub_ico"
-            android:entries="@array/night_mode_entries"
-            android:entryValues="@array/night_mode_values" /> 
+            android:title="@string/daynight_title" />
 
       </PreferenceCategory>
      
