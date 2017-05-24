@@ -76,14 +76,14 @@ public class PulseSettings extends SettingsPreferenceFragment implements
     ListPreference mRenderMode;
     SwitchPreference mLavaLampEnabled;
     ColorPickerPreference mPulseColor;
-    SeekBarPreference mCustomDimen;
-    SeekBarPreference mCustomDiv;
-    SeekBarPreference mFilled;
-    SeekBarPreference mEmpty;
-    SeekBarPreference mFudge;
-    SeekBarPreference mSolidFudge;
-    SeekBarPreference mSolidSpeed;
-    SeekBarPreference mFadingSpeed;
+    CustomSeekBarPreference mCustomDimen;
+    CustomSeekBarPreference mCustomDiv;
+    CustomSeekBarPreference mFilled;
+    CustomSeekBarPreference mEmpty;
+    CustomSeekBarPreference mFudge;
+    CustomSeekBarPreference mSolidFudge;
+    CustomSeekBarPreference mSolidSpeed;
+    CustomSeekBarPreference mFadingSpeed;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -122,35 +122,35 @@ public class PulseSettings extends SettingsPreferenceFragment implements
         mLavaLampEnabled.setOnPreferenceChangeListener(this);
 
         mCustomDimen =
-                    (SeekBarPreference) findPreference(CUSTOM_DIMEN);
+                    (CustomSeekBarPreference) findPreference(CUSTOM_DIMEN);
         int customdimen = Settings.Secure.getIntForUser(getContentResolver(),
                     Settings.Secure.PULSE_CUSTOM_DIMEN, 14,
                     UserHandle.USER_CURRENT);
         mCustomDimen.setValue(customdimen / 1);
         mCustomDimen.setOnPreferenceChangeListener(this);
 
-        mCustomDiv = (SeekBarPreference) findPreference(CUSTOM_DIV);
+        mCustomDiv = (CustomSeekBarPreference) findPreference(CUSTOM_DIV);
         int customdiv = Settings.Secure.getIntForUser(getContentResolver(),
                     Settings.Secure.PULSE_CUSTOM_DIV, 8,
                     UserHandle.USER_CURRENT);
         mCustomDiv.setValue(customdiv / 1);
         mCustomDiv.setOnPreferenceChangeListener(this);
         
-        mFilled = (SeekBarPreference)  findPreference(PULSE_BLOCK);
+        mFilled = (CustomSeekBarPreference)  findPreference(PULSE_BLOCK);
         int filled = Settings.Secure.getIntForUser(getContentResolver(),
                     Settings.Secure.PULSE_FILLED_BLOCK_SIZE, 2,
                     UserHandle.USER_CURRENT);
         mFilled.setValue(filled / 1);
         mFilled.setOnPreferenceChangeListener(this);
         
-        mEmpty = (SeekBarPreference) findPreference(EMPTY_BLOCK);
+        mEmpty = (CustomSeekBarPreference) findPreference(EMPTY_BLOCK);
         int empty = Settings.Secure.getIntForUser(getContentResolver(),
                     Settings.Secure.PULSE_EMPTY_BLOCK_SIZE, 1,
                     UserHandle.USER_CURRENT);
         mEmpty.setValue(empty / 1);
         mEmpty.setOnPreferenceChangeListener(this);
         
-        mFudge = (SeekBarPreference) findPreference(FUDGE_FACOR);
+        mFudge = (CustomSeekBarPreference) findPreference(FUDGE_FACOR);
         int fudge = Settings.Secure.getIntForUser(getContentResolver(),
                     Settings.Secure.PULSE_CUSTOM_FUDGE_FACTOR, 2,
                     UserHandle.USER_CURRENT);
@@ -160,7 +160,7 @@ public class PulseSettings extends SettingsPreferenceFragment implements
         PreferenceCategory solidBarsCat = (PreferenceCategory)findPreference("pulse_2");
         solidBarsCat.setEnabled(renderMode == RENDER_STYLE_SOLID_LINES);
 
-        mSolidFudge = (SeekBarPreference) findPreference(SOLID_FUDGE);
+        mSolidFudge = (CustomSeekBarPreference) findPreference(SOLID_FUDGE);
         int solidfudge = Settings.Secure.getIntForUser(getContentResolver(),
                     Settings.Secure.PULSE_SOLID_FUDGE_FACTOR, 2,
                     UserHandle.USER_CURRENT);
@@ -168,14 +168,14 @@ public class PulseSettings extends SettingsPreferenceFragment implements
         mSolidFudge.setOnPreferenceChangeListener(this);
 
         mSolidSpeed =
-                    (SeekBarPreference) findPreference(SOLID_LAVAMP_SPEED);
+                    (CustomSeekBarPreference) findPreference(SOLID_LAVAMP_SPEED);
         int speed = Settings.Secure.getInt(getContentResolver(),
                     Settings.Secure.PULSE_LAVALAMP_SOLID_SPEED, 10000);
         mSolidSpeed.setValue(speed / 1);
         mSolidSpeed.setOnPreferenceChangeListener(this);
 
         mFadingSpeed =
-                    (SeekBarPreference) findPreference(FADING_LAVAMP_SPEED);
+                    (CustomSeekBarPreference) findPreference(FADING_LAVAMP_SPEED);
         int fspeed = Settings.Secure.getInt(getContentResolver(),
                     Settings.Secure.FLING_PULSE_LAVALAMP_SPEED, 10000);
         mFadingSpeed.setValue(fspeed / 1);
