@@ -48,7 +48,14 @@
             android:key="eos_fling_lavalamp"
             android:title="@string/eos_fling_lavalamp_title"
             android:summary="@string/eos_fling_lavalamp_summary"
-            android:dependency="eos_fling_show_pulse" />	
+            android:dependency="eos_fling_show_pulse" />
+
+        <com.android.settings.aim.Preferences.CustomSeekBarPreference
+            android:key="pulse_custom_buttons_opacity"
+            android:title="@string/pulse_custom_buttons_opacity_title"
+            android:max="255"
+            settings:min="0"
+            android:dependency="eos_fling_show_pulse"/>
       
 	<PreferenceCategory
             android:key="pulse_1"
