@@ -68,6 +68,9 @@ public class PulseSettings extends SettingsPreferenceFragment implements
     private static final String SOLID_FUDGE = "pulse_solid_fudge_factor";
     private static final String SOLID_LAVAMP_SPEED = "lavamp_solid_speed";
     private static final String FADING_LAVAMP_SPEED = "fling_pulse_lavalamp_speed";
+    private static final String PULSE_SOLID_UNITS_COUNT = "pulse_solid_units_count";
+    private static final String PULSE_SOLID_UNITS_OPACITY = "pulse_solid_units_opacity";
+    private static final String PULSE_CUSTOM_BUTTONS_OPACITY = "pulse_custom_buttons_opacity";
 
     private static final int MENU_RESET = Menu.FIRST;
     private static final int DLG_RESET = 0;

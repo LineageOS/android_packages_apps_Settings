@@ -28,6 +28,7 @@ import android.os.Parcelable;
 import android.support.v7.preference.Preference;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -42,7 +43,7 @@ import com.android.settings.R;
 public class ColorPickerPreference extends Preference implements
         Preference.OnPreferenceClickListener, ColorPickerDialog.OnColorChangedListener {
 
-    View mView;
+    PreferenceViewHolder mView;
     ColorPickerDialog mDialog;
     LinearLayout widgetFrameView;
     private int mValue = Color.BLACK;
@@ -85,9 +86,9 @@ public class ColorPickerPreference extends Preference implements
     }
 
     @Override
-    protected void onBindView(View view) {
+    protected void onBindView(PreferenceViewHolder view) {
         mView = view;
-        super.onBindView(view);
+        super.onBindViewHolder(view);
 
         widgetFrameView = ((LinearLayout) view
                 .findViewById(android.R.id.widget_frame));
