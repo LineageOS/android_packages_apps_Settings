@@ -47,6 +47,12 @@
             android:icon="@drawable/ic_freedomhub_ico"
             android:title="@string/daynight_title" />
 
+      <PreferenceScreen
+            android:key="main_nav_bar"
+            android:fragment="com.android.settings.aim.navbar.NavBarSettings"
+            android.icon="@drawable/ic_freedomhub_ico"
+            android:title="@string/main_nav_bar_title" />
+
       </PreferenceCategory>
      
     <PreferenceCategory
@@ -67,5 +73,6 @@
                android:defaultValue="true" />
 
      </PreferenceCategory>
+
 
 </PreferenceScreen>

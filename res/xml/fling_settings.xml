@@ -30,41 +30,41 @@
         android:key="eos_actions_swipe_category"
         android:title="@string/fling_swipe_actions" >
 
-        <com.android.settings.rr.ActionPreference
+        <com.android.settings.aim.navbar.ActionPreference
             android:key="fling_short_right"
             android:title="@string/fling_short_swipe_right"
             android:summary="@string/fling_def_summary" >
-        </com.android.settings.rr.ActionPreference>
+        </com.android.settings.aim.navbar.ActionPreference>
 
-        <com.android.settings.rr.ActionPreference
+        <com.android.settings.aim.navbar.ActionPreference
             android:key="fling_short_left"
             android:title="@string/fling_short_swipe_left"
             android:summary="@string/fling_def_summary" >
-        </com.android.settings.rr.ActionPreference>
+        </com.android.settings.aim.navbar.ActionPreference>
 
-        <com.android.settings.rr.ActionPreference
+        <com.android.settings.aim.navbar.ActionPreference
             android:key="fling_long_right"
             android:title="@string/fling_long_swipe_right"
             android:summary="@string/fling_def_summary" >
-        </com.android.settings.rr.ActionPreference>
+        </com.android.settings.aim.navbar.ActionPreference>
 
-        <com.android.settings.rr.ActionPreference
+        <com.android.settings.aim.navbar.ActionPreference
             android:key="fling_long_left"
             android:title="@string/fling_long_swipe_left"
             android:summary="@string/fling_def_summary" >
-        </com.android.settings.rr.ActionPreference>
+        </com.android.settings.aim.navbar.ActionPreference>
 
-        <com.android.settings.rr.ActionPreference
+        <com.android.settings.aim.navbar.ActionPreference
             android:key="fling_right_up"
             android:title="@string/fling_right_up_swipe"
             android:summary="@string/fling_def_summary" >
-        </com.android.settings.rr.ActionPreference>
+        </com.android.settings.aim.navbar.ActionPreference>
 
-        <com.android.settings.rr.ActionPreference
+        <com.android.settings.aim.navbar.ActionPreference
             android:key="fling_left_up"
             android:title="@string/fling_left_up_swipe"
             android:summary="@string/fling_def_summary" >
-        </com.android.settings.rr.ActionPreference>
+        </com.android.settings.aim.navbar.ActionPreference>
      </PreferenceCategory>
 
      <PreferenceCategory
@@ -78,41 +78,41 @@
             android:summary="@string/fling_split_bar_policy"
             android:title="@string/info_pref_note_title" />
 
-        <com.android.settings.rr.ActionPreference
+        <com.android.settings.aim.navbar.ActionPreference
             android:key="single_right_tap"
             android:title="@string/fling_single_tap"
             android:summary="@string/fling_def_summary" >
-        </com.android.settings.rr.ActionPreference>
+        </com.android.settings.aim.navbar.ActionPreference>
 
-        <com.android.settings.rr.ActionPreference
+        <com.android.settings.aim.navbar.ActionPreference
             android:key="single_left_tap"
             android:title="@string/fling_single_left_tap"
             android:summary="@string/fling_def_summary" >
-        </com.android.settings.rr.ActionPreference>
+        </com.android.settings.aim.navbar.ActionPreference>
 
-        <com.android.settings.rr.ActionPreference
+        <com.android.settings.aim.navbar.ActionPreference
             android:key="double_right_tap"
             android:title="@string/fling_double_tap"
             android:summary="@string/fling_def_summary" >
-        </com.android.settings.rr.ActionPreference>
+        </com.android.settings.aim.navbar.ActionPreference>
         
-        <com.android.settings.rr.ActionPreference
+        <com.android.settings.aim.navbar.ActionPreference
             android:key="double_left_tap"
             android:title="@string/fling_double_left_tap"
             android:summary="@string/fling_def_summary" >
-        </com.android.settings.rr.ActionPreference>
+        </com.android.settings.aim.navbar.ActionPreference>
 
-        <com.android.settings.rr.ActionPreference
+        <com.android.settings.aim.navbar.ActionPreference
             android:key="long_right_press"
             android:title="@string/fling_long_press"
             android:summary="@string/fling_def_summary" >
-        </com.android.settings.rr.ActionPreference>
+        </com.android.settings.aim.navbar.ActionPreference>
 
-        <com.android.settings.rr.ActionPreference
+        <com.android.settings.aim.navbar.ActionPreference
             android:key="long_left_press"
             android:title="@string/fling_long_left_press"
             android:summary="@string/fling_def_summary" >
-        </com.android.settings.rr.ActionPreference>
+        </com.android.settings.aim.navbar.ActionPreference>
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -181,7 +181,7 @@
             android:summary="@string/fling_long_swipe_summary"
             android:title="@string/fling_long_swipe_title" />
 
-        <com.android.settings.kangdroid.KangDroidSeekBarPreference
+        <com.android.settings.aim.Preferences.CustomSeekBarPreference
             android:key="du_fling_longpress_pref"
             android:title="@string/fling_longpress_title"
             settings:max="350"
