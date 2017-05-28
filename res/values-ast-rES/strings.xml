@@ -55,6 +55,7 @@
   <!-- Phone Info screen. Ims Status - Unregistered.  Used for diagnostic info screens, precise translation isn't needed -->
   <!-- Phone Info screen. Ims Feature Status label.  Used for diagnostic info screens, precise translation isn't needed -->
   <!-- Phone Info screen. Ims Feature status label.  Used for diagnostic info screens, precise translation isn't needed -->
+  <string name="radio_info_ims_feature_status_unavailable">Non disponible</string>
   <!-- Phone Info screen. IMS Registration.  Used for diagnostic info screens, precise translation isn't needed -->
   <!-- Phone Info screen. Status label.  Used for diagnostic info screens, precise translation isn't needed -->
   <!-- Phone Info screen. Status label.  Used for diagnostic info screens, precise translation isn't needed -->
@@ -339,6 +340,7 @@ Teníemos un Palaciu…\n
   <string name="wireless_networks_settings_title">Conexones y redes</string>
   <!-- Main Settings screen settings summary text for the "Wireless controls" setting -->
   <!-- check box cellular data title [CHAR LIMIT=30] -->
+  <string name="cellular_data_title">Datos móviles</string>
   <!-- check box Calls title [CHAR LIMIT=30] -->
   <string name="calls_title">Llamaes</string>
   <!-- check box SMS Messges title [CHAR LIMIT=30] -->
@@ -728,6 +730,7 @@ Teníemos un Palaciu…\n
   <!-- Wifi Display settings. The status summary for connected devices. [CHAR LIMIT=40] -->
   <!-- Wifi Display settings. The status summary for devices that's already in use. [CHAR LIMIT=40] -->
   <!-- Wifi Display settings. The status summary for devices that's not available. [CHAR LIMIT=40] -->
+  <string name="wifi_display_status_not_available">Non disponible</string>
   <!-- Wifi Display settings. Image description for device details button. This opens the screen to rename, unpair, etc. a single device. -->
   <!-- Wifi Display settings. Options dialog.  The title of the dialog. [CHAR LIMIT=40] -->
   <!-- Wifi Display settings. Options dialog.  The forget button text. [CHAR LIMIT=20] -->
@@ -759,6 +762,7 @@ Teníemos un Palaciu…\n
   <!-- Used to describe the on state of the Android Beam feature [CHAR LIMIT=NONE] -->
   <!-- Used to describe the off state of the Android Beam feature [CHAR LIMIT=NONE] -->
   <!-- Used to describe the enabled state of the Android Beam feature when NFC, which it relies on, is turned off [CHAR LIMIT=NONE] -->
+  <string name="android_beam_disabled_summary">Non disponible porque\'l NFC ta desactivao</string>
   <!-- Used in the Android Beam sharing preferences screen. This phrase is a trademark. [CHAR LIMIT=32] -->
   <string name="android_beam_label">Android Beam</string>
   <!-- Explanation of the Android Beam feature in the Android Beam settings panel. The use of "beam" here is as a verb and not considered trademarked. [CHAR LIMIT=NONE] -->
@@ -1268,6 +1272,7 @@ Teníemos un Palaciu…\n
   <!-- About phone, status item title.  The bluetooth adapter's hardware address-->
   <!-- About phone, status item title.  The hardware serial number. [CHAR LIMIT=30]-->
   <!-- About phone, status item value if the actual value is not available. -->
+  <string name="status_unavailable">Non disponible</string>
   <!-- About phone, status item title.  How long the device has been running since its last reboot. -->
   <!-- About phone, status item title.  How much time the device has had its main CPU awake. -->
   <!-- SD card & phone storage settings screen heading. This is displayed above items that pertain to the phone's internal storage  -->
@@ -2619,6 +2624,7 @@ Teníemos un Palaciu…\n
   <!-- Title for menu option to enable global auto-sync of account data -->
   <!-- Title for menu option to show details for all SIM cards. [CHAR LIMIT=26] -->
   <!-- Title for menu option to show details for all cellular networks. [CHAR LIMIT=26] -->
+  <string name="data_usage_menu_cellular_networks">Redes móviles</string>
   <!-- Summary String for Cellular data enable toggle. [CHAR LIMIT=33] -->
   <!--  Title for menu option to enable global auto-sync of personal account data [CHAR LIMIT=30] -->
   <!--  Title for menu option to enable global auto-sync of personal account data [CHAR LIMIT=30] -->
@@ -2686,6 +2692,7 @@ Teníemos un Palaciu…\n
   <!-- Dialog title for selecting metered networks. [CHAR LIMIT=25] -->
   <!-- Dialog body for selecting paid networks. [CHAR LIMIT=NONE] -->
   <!-- Header for list of mobile networks. [CHAR LIMIT=32] -->
+  <string name="data_usage_metered_mobile">Redes móviles</string>
   <!-- Header for list of Wi-Fi networks. [CHAR LIMIT=32] -->
   <!-- Body text prompting user to enable Wi-Fi to configure metered networks. [CHAR LIMIT=64] -->
   <!-- Disclaimer string for data usage measured by device. [CHAR LIMIT=80] -->
@@ -2864,7 +2871,9 @@ Teníemos un Palaciu…\n
   <!-- NFC payment settings -->
   <string name="nfc_payment_settings_title">Tocar y pagar</string>
   <!-- Caption for button linking to a page explaining how Tap and Pay works-->
+  <string name="nfc_payment_how_it_works">Cómo funciona</string>
   <!-- String shown when there are no NFC payment applications installed -->
+  <string name="nfc_payment_no_apps">Paga nes tiendes col to teléfonu</string>
   <!-- Header text that can be clicked on to change the default payment app -->
   <!-- Summary text that is shown when no default app is set -->
   <!-- String indicating the label of the default payment app and a description of its state; eg Google Wallet - MasterCard 1234 -->
@@ -2873,6 +2882,7 @@ Teníemos un Palaciu…\n
   <!-- If open app supports TapPay, use that app instead of the default -->
   <!-- Header for a dialog asking the user which payment app to use -->
   <!-- Header for text explaning how to pay at a payment terminal in a store -->
+  <string name="nfc_how_it_works_title">Pagando na terminal</string>
   <!-- Content for text explaning how to pay at a payment terminal in a store -->
   <!-- Button the user can click to indicate he understood and dismiss the screen -->
   <!-- NFC More... title.  [CHAR LIMIT=40] -->
@@ -3543,6 +3553,7 @@ Teníemos un Palaciu…\n
   <!-- Button to show less top-level settings items [CHAR LIMIT=20] -->
   <!-- Wi-Fi state - Disconnected [CHAR LIMIT=NONE] -->
   <!-- Summary of data usage [CHAR LIMIT=NONE] -->
+  <string name="data_usage_summary_format"><xliff:g id="amount" example="50%">%1$s</xliff:g> de datos usaos</string>
   <!-- Summary of notifications [CHAR LIMIT=NONE] -->
   <!-- Summary of notifications when no apps are blocked [CHAR LIMIT=NONE] -->
   <string name="notification_summary_none">Toles aplicaciones puen unviar</string>
@@ -3582,6 +3593,7 @@ Teníemos un Palaciu…\n
   <!-- Title of condition that cellular data is off [CHAR LIMIT=30] -->
   <!-- Summary of condition that cellular data is off [CHAR LIMIT=NONE] -->
   <!-- Title of condition that background data is off [CHAR LIMIT=30] -->
+  <string name="condition_bg_data_title">L\'aforrador de datos ta activáu</string>
   <!-- Summary of condition that background data is off [CHAR LIMIT=NONE] -->
   <!-- Title of condition that work mode is off [CHAR LIMIT=30] -->
   <!-- Summary of condition that work mode is off [CHAR LIMIT=NONE] -->
@@ -3600,8 +3612,11 @@ Teníemos un Palaciu…\n
   <!-- Label for category for data usage [CHAR LIMIT=30] -->
   <string name="usage">Usu</string>
   <!-- Label for cellular data usage in data usage screen [CHAR LIMIT=60] -->
+  <string name="cellular_data_usage">Usu de datos móviles</string>
   <!-- Label for wifi data usage in data usage screen [CHAR LIMIT=60] -->
+  <string name="wifi_data_usage">Usu de datos del Wi-Fi</string>
   <!-- Label for ethernet data usage in data usage screen [CHAR LIMIT=60] -->
+  <string name="ethernet_data_usage">Usu de datos d\'ethernet</string>
   <!-- Label for section about wifi in data usage screen [CHAR LIMIT=60] -->
   <!-- Label for section about ethernet in data usage screen [CHAR LIMIT=60] -->
   <!-- Format string for amount of cellular data used [CHAR LIMIT=30] -->
@@ -3627,6 +3642,7 @@ Teníemos un Palaciu…\n
          [CHAR LIMIT=50] -->
   <!-- Description of number of apps allowed to ignore Data Saver [CHAR LIMIT=NONE] -->
   <!-- Name of Data Saver screens [CHAR LIMIT=30] -->
+  <string name="data_saver_title">Aforrador de datos</string>
   <!-- Button that leads to list of apps with unrestricted data access [CHAR LIMIT=60] -->
   <!-- Description of message shown when app is blacklisted for background data access [CHAR LIMIT=NONE] -->
   <!-- Summary for the Data Saver feature being on [CHAR LIMIT=NONE] -->
@@ -3697,6 +3713,7 @@ Teníemos un Palaciu…\n
   <!-- Title of screen controlling which apps have access to send premium SMS messages [CHAR LIMIT=60] -->
   <!-- [CHAR LIMIT=25] Bluetooth is disabled. -->
   <!-- [CHAR LIMIT=60] Name of dev option called demo mode -->
+  <string name="demo_mode">Mou demostración</string>
   <!-- Title text for connecting to customer support [CHAR LIMIT=80]-->
   <!-- Title text for connecting to 24/7 available customer support [CHAR LIMIT=80]-->
   <!-- Content description for connecting customer support. The "24 7" part indicates
