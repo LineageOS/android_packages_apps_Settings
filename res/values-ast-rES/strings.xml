@@ -235,6 +235,7 @@ Teníemos un Palaciu…\n
   <!-- Radio Info screen. Label for a status item.  Used for diagnostic info screens, precise translation isn't needed -->
   <!-- Radio Info screen. Label for a status item.  Used for diagnostic info screens, precise translation isn't needed -->
   <!-- Radio Info screen. Label for a status item.  Used for diagnostic info screens, precise translation isn't needed -->
+  <string name="radio_info_imei_label">IMEI:</string>
   <!-- Radio Info screen. Label for a status item.  Used for diagnostic info screens, precise translation isn't needed -->
   <!-- Radio Info screen. Label for a status item.  Used for diagnostic info screens, precise translation isn't needed -->
   <!-- Radio Info screen. Label for a status item.  Used for diagnostic info screens, precise translation isn't needed -->
@@ -280,7 +281,9 @@ Teníemos un Palaciu…\n
   <!-- Error message when the SD card was removed without properly unmounting -->
   <!-- Label for used bytes on the SD card -->
   <!-- Message when it is scanning the SD card for new files [CHAR LIMIT=30]  -->
+  <string name="sdcard_settings_scanning_status" product="nosdcard">Escaniando medios nel almacenamientu USB\u2026</string>
   <!-- Message when it is scanning the SD card for new files -->
+  <string name="sdcard_settings_scanning_status" product="default">Escaniando medios na tarxeta SD\u2026</string>
   <!-- Message when the SD card is mounted as read only [CHAR LIMIT=30] -->
   <!-- Message when the SD card is mounted as read only -->
   <!-- Used in setup wizard Wi-Fi screen.  The button label for going to the next screen without submitting. [CHAR LIMIT=20] -->
@@ -306,6 +309,7 @@ Teníemos un Palaciu…\n
   <!-- Label for an accessibility action that removes the currently selected language from the the ordered language list [CHAR LIMIT=20] -->
   <!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action.  For example, suppose you click on the "Share" menu item in the Browser.  Since you can share the webpage URL via many communication methods, this dialog would come up with choices like "Email", "IM", etc.  This is a generic message, and the previous example is a single possible scenario (so please don't assume it's for the browser or anything :) ). -->
   <!-- Do not translate. -->
+  <string name="debug_intent_sender_label">Debug intent sender</string>
   <!-- The title of the activity to see random device info. -->
   <!-- The title of the activity to adjust display settings -->
   <!-- The title of the activity to see phone info -->
@@ -339,6 +343,7 @@ Teníemos un Palaciu…\n
   <!-- Wireless Settings screen title for things like Wi-Fi, bluetooth, airplane mode. -->
   <string name="wireless_networks_settings_title">Conexones y redes</string>
   <!-- Main Settings screen settings summary text for the "Wireless controls" setting -->
+  <string name="radio_controls_summary">Xestiona\'l Wi‑Fi, Bluetooth, mou avión, redes móviles y VPNs</string>
   <!-- check box cellular data title [CHAR LIMIT=30] -->
   <string name="cellular_data_title">Datos móviles</string>
   <!-- check box Calls title [CHAR LIMIT=30] -->
@@ -853,6 +858,7 @@ Teníemos un Palaciu…\n
   <!-- Text displayed when WPS fails due to authentication issues [CHAR LIMIT=150] -->
   <!-- Text displayed when WPS fails due to another session [CHAR LIMIT=150] -->
   <!-- Label for the SSID of the network -->
+  <string name="wifi_ssid">Nome de rede</string>
   <!-- Hint for a text field to enter the SSID of a hidden wifi network. [CHAR LIMIT=35] -->
   <string name="wifi_ssid_hint">Introduz el SSID</string>
   <!-- Label for the security of the connection -->
@@ -1224,11 +1230,16 @@ Teníemos un Palaciu…\n
   <!-- About phone screen, list item title.  Takes the user to the screen for seeing and installing system updates. [CHAR LIMIT=40] -->
   <!-- About phone screen, list item summary.  Takes the user to the screen for seeing and installing system updates. [CHAR LIMIT=40] -->
   <!-- About phone screen, status item label  [CHAR LIMIT=40] -->
+  <string name="firmware_version">Versión d\'Android</string>
   <!-- About phone screen, status item label  [CHAR LIMIT=60] -->
+  <string name="security_patch">Nivel de parche de seguranza d\'Android</string>
   <!-- About phone screen, status item label  [CHAR LIMIT=40] -->
+  <string name="model_info">Modelu</string>
   <!-- About phone screen, fcc equipment id label  [CHAR LIMIT=40] -->
   <!-- About phone screen,  setting option name  [CHAR LIMIT=40] -->
+  <string name="baseband_version">Versión de banda base</string>
   <!-- About phone screen,  setting option name  [CHAR LIMIT=40] -->
+  <string name="kernel_version">Versión del kernel</string>
   <!-- About phone screen,  setting option name  [CHAR LIMIT=40] -->
   <!-- About phone screen,  setting option name  [CHAR LIMIT=40] -->
   <!-- About phone screen,  setting option name  [CHAR LIMIT=40] -->
@@ -1267,6 +1278,7 @@ Teníemos un Palaciu…\n
   <!-- About phone, status item title. The  current cell tower signal strength -->
   <!-- About phone, status item title, The status for roaming.  For example, the value might be "Not roaming" -->
   <!-- About phone, status item title. The cell carrier that the user is connected to.  -->
+  <string name="status_operator">Rede</string>
   <!-- About phone, status item title.  The MAC address of the Wi-Fi network adapter. -->
   <string name="status_wifi_mac_address">Direición MAC de Wi‑Fi</string>
   <!-- About phone, status item title.  The bluetooth adapter's hardware address-->
@@ -1540,31 +1552,47 @@ Teníemos un Palaciu…\n
   <!-- Ask user to insert a SIM card [CHAR_ LIMIT=50]-->
   <!-- Ask user to connect to the internet [CHAR_ LIMIT=50]-->
   <!-- Security & location settings screen, section header for settings relating to location -->
+  <string name="location_title">El mio allugamientu</string>
   <!-- [CHAR LIMIT=30] Title for managed profile location switch  -->
   <!-- [CHAR LIMIT=30] Location settings screen, setting preference screen box label for location mode -->
+  <string name="location_mode_title">Mou</string>
   <!-- [CHAR LIMIT=30] Location settings screen, high accuracy location mode -->
   <!-- [CHAR LIMIT=30] Location settings screen, battery saving location mode -->
   <!-- [CHAR LIMIT=30] Location settings screen, device only location mode -->
   <string name="location_mode_sensors_only_title">Namái nel preséu</string>
   <!-- [CHAR LIMIT=30] Location settings screen, location off mode -->
+  <string name="location_mode_location_off_title">Allugamientu desactiváu</string>
   <!-- [CHAR LIMIT=30] Location settings screen, sub category for recent location requests -->
+  <string name="location_category_recent_location_requests">Solicitúes recientes d\'allugamientu</string>
   <!-- Location settings screen, displayed when there's no recent app accessing location -->
+  <string name="location_no_recent_apps">Apocayá denguna aplicación solicitó l\'allugamientu</string>
   <!-- [CHAR LIMIT=30] Location settings screen, sub category for location services -->
+  <string name="location_category_location_services">Servicios d\'allugamientu</string>
   <!-- [CHAR LIMIT=30] Location settings screen, recent location requests high battery use-->
   <!-- [CHAR LIMIT=30] Location settings screen, recent location requests low battery use-->
   <!-- [CHAR LIMIT=30] Location mode screen, screen title -->
+  <string name="location_mode_screen_title">Mou de llocalización</string>
   <!-- [CHAR LIMIT=130] Location mode screen, description for high accuracy mode -->
+  <string name="location_mode_high_accuracy_description">Usa\'l GPS, Wi\u2011Fi, Bluetooth o redes móviles pa determinar l\'allugamientu </string>
   <!-- [CHAR LIMIT=130] Location mode screen, description for battery saving mode -->
+  <string name="location_mode_battery_saving_description">Usa\'l Wi\u2011Fi, Bluetooth o redes móviles pa determinar l\'allugamientu</string>
   <!-- [CHAR LIMIT=130] Location mode screen, description for sensors only mode -->
+  <string name="location_mode_sensors_only_description">Usa\'l GPS pa determinar l\'allugamientu</string>
   <!-- Help menu label [CHAR LIMIT=20] Location settings screen, overflow menu that takes the user
       to scanning settings activity -->
+  <string name="location_menu_scanning">Escanéu</string>
   <!-- [CHAR LIMIT=30] Wireless background scanning settings screen, screen title -->
+  <string name="location_scanning_screen_title">Escanéu</string>
   <!-- [CHAR LIMIT=130] Preference title for Wi-Fi always scanning -->
+  <string name="location_scanning_wifi_always_scanning_title">Escanéu Wi‑Fi</string>
   <!-- Preference description text for Wi-Fi always scanning -->
   <!-- [CHAR LIMIT=130] Description text for Bluetooth always scanning -->
+  <string name="location_scanning_bluetooth_always_scanning_title">Escanéu Bluetooth</string>
   <!-- Description text for Bluetooth always scanning -->
   <!-- [CHAR LIMIT=30] Security & location settings screen, setting check box label for Google location service (cell ID, wifi, etc.) -->
+  <string name="location_network_based">Allugamientu de Wi\u2011Fi y rede móvil</string>
   <!-- [CHAR LIMIT=130] Security & location settings screen, setting summary for Google location service check box-->
+  <string name="location_neighborhood_level">Dexa que\u2019l serviciu d\u2019allugamientu de Google calcule aína\u2019l to allugamientu. Recoyeránse y unviaránse datos anónimos a Google.</string>
   <!-- [CHAR LIMIT=130] Security & location settings screen, setting summary when Use wireless networks check box is selected, for wifi-only devices -->
   <!-- [CHAR LIMIT=30] Security & location settings screen, setting check box label for GPS satellites -->
   <!-- [CHAR LIMIT=100] Security & location settings screen, setting check box summary for GPS satellites on a tablet -->
@@ -1575,9 +1603,13 @@ Teníemos un Palaciu…\n
   <!-- [CHAR_LIMIT=30] Security & location settings screen, setting check box label for Google search -->
   <string name="use_location_title">Allugamientu y gueta de Google</string>
   <!-- [CHAR_LIMIT=100] Security & location settings screen, setting check box summary for Google search -->
+  <string name="use_location_summary">Dexa que Google use\'l to allugamientu p\'ameyorar los resultaos de gueta y otros servicios</string>
   <!-- [CHAR LIMIT=45] Label for turning on/off location access completely. -->
+  <string name="location_access_title">Acceder al mio allugmientu</string>
   <!-- [CHAR LIMIT=none] Description text for location access switch -->
+  <string name="location_access_summary">Dexa que les aplicaciones que pidieren el permisu usen la to información d\'allugamientu</string>
   <!-- [CHAR LIMIT=45] Section heading for location sources -->
+  <string name="location_sources_heading">Fontes d\'allugamientu</string>
   <!-- About -->
   <!-- Main settings screen, setting title for the user to go into the About phone screen -->
   <string name="about_settings" product="tablet">Tocante a la tableta</string>
@@ -1587,6 +1619,7 @@ Teníemos un Palaciu…\n
   <string name="about_settings" product="emulator">Tocante al preséu emuláu</string>
   <!-- Main settings screen, setting summary for the user to go into the About phone screen-->
   <!-- About phone settings screen, setting option name to go to dialog that shows legal info -->
+  <string name="legal_information">Información llegal</string>
   <!-- About phone settings screen, setting option name to see a list of contributors -->
   <!-- About phone settings screen, setting option name to show Manual [CHAR LIMIT=25] -->
   <!-- About phone settings screen, setting option name to show regulatory labels [CHAR LIMIT=25] -->
@@ -1755,6 +1788,7 @@ Teníemos un Palaciu…\n
   <!-- Manage applications, individual application screen, checkbox to control compatibility mode.  -->
   <!-- TODO: Remove it once the same entry in SettingsLib is translated. -->
   <!-- Manage apps, individual app screen, substituted for the application's label when the app's label CAN NOT be determined.-->
+  <string name="unknown">Desconozse</string>
   <!-- [CHAR LIMIT=25] Manage applications screen, menu item.  Sorts all of the apps in the list alphabetically. -->
   <!-- Manage applications screen, menu item. Sorts all of the apps in the list based on their file size.  This is used to uninstall when space is getting low. -->
   <!-- [CHAR LIMIT=25] Manage applications screen, menu item.  Show running services. -->
@@ -1860,6 +1894,7 @@ Teníemos un Palaciu…\n
   <!-- Text to label a process entry with the process name. -->
   <!-- TODO: Remove it once the same entry in SettingsLib is translated. -->
   <!-- [CHAR LIMIT=NONE] Label of a running process that represents another user -->
+  <string name="running_process_item_user_label">Usuariu: <xliff:g id="USER_NAME">%1$s</xliff:g></string>
   <!-- [CHAR LIMIT=NONE] Label of a running process that represents a removed -->
   <!-- Descriptive text of a running process: singular process, singular service. -->
   <!-- Descriptive text of a running process: singular process, plural service. -->
@@ -2300,6 +2335,7 @@ Teníemos un Palaciu…\n
   <!-- [CHAR LIMIT=NONE] Label OS "process" app -->
   <!-- [CHAR LIMIT=NONE] Name of OS "process" for all native processes -->
   <!-- [CHAR LIMIT=NONE] Name of OS "process" for all kernel memory -->
+  <string name="process_stats_os_kernel">Kernel</string>
   <!-- [CHAR LIMIT=NONE] Name of OS "process" for all zram memory -->
   <!-- [CHAR LIMIT=NONE] Name of OS "process" for base memory needed for caches -->
   <!-- [CHAR LIMIT=NONE] Label for item showing details of average RAM use -->
@@ -2315,8 +2351,10 @@ Teníemos un Palaciu…\n
   <!-- [CHAR LIMIT=NONE] Subtitle for process stats memory state details for list of memory use -->
   <string name="mem_use_subtitle">Usu de memoria</string>
   <!-- [CHAR LIMIT=NONE] Type of memory use associated with the kernel -->
+  <string name="mem_use_kernel_type">Kernel</string>
   <!-- [CHAR LIMIT=NONE] Type of memory use associated with native processes -->
   <!-- [CHAR LIMIT=NONE] Type of memory use associated with kernel caches -->
+  <string name="mem_use_kernel_cache_type">Cachés del kernel</string>
   <!-- [CHAR LIMIT=NONE] Type of memory use associated with kernel zram swap -->
   <!-- [CHAR LIMIT=NONE] Type of memory use that is available/free -->
   <!-- [CHAR LIMIT=NONE] Total of all memory use -->
@@ -2503,6 +2541,7 @@ Teníemos un Palaciu…\n
   <string name="wifi_setup_cancel">Encaboxar</string>
   <!-- The message shown above available networks when the device is scanning
          available networks [CHAR LIMIT=35] -->
+  <string name="wifi_setup_status_scanning">Escaniando redes\u2026</string>
   <!-- Message shown above available network when there's no connected network.
          Used in Wifi Setup For Setup Wizard with XL screen. -->
   <!-- Message shown above available networks when a user clicked one of available
@@ -2781,6 +2820,8 @@ Teníemos un Palaciu…\n
     "system_update_settings_list_item_title" in this project. [CHAR LIMIT=25] -->
   <!-- These statuses are displayed when a device was built with SE Android supoprt.
     These are displayed by the settings app in the about section. -->
+  <string name="selinux_status_permissive">Permisivu</string>
+  <string name="selinux_status_enforcing">Obligatoriu</string>
   <!-- Notification of installed CA Certs -->
   <!-- Shows up when there is a user SSL CA Cert installed on the
          device.  Indicates to the user that SSL traffic can be intercepted.  [CHAR LIMIT=NONE] -->
@@ -2932,6 +2973,7 @@ Teníemos un Palaciu…\n
   <!-- Help URL, Manage Storage [DO NOT TRANSLATE]-->
   <!-- Help URL, Android is upgrading [DO NOT TRANSLATE] -->
   <!-- User account title [CHAR LIMIT=30] -->
+  <string name="user_account_title">Cuenta pal conteníu</string>
   <!-- User picture title [CHAR LIMIT=30] -->
   <!-- Extreme threats title.  [CHAR LIMIT=30] -->
   <!-- Extreme threats summary.  [CHAR LIMIT=62] -->
@@ -2947,6 +2989,7 @@ Teníemos un Palaciu…\n
   <!-- Call Manager settings summary.  [CHAR LIMIT=50] -->
   <!-- Cell Broadcast settings title.  [CHAR LIMIT=50] -->
   <!-- Network operators settings title.  [CHAR LIMIT=50] -->
+  <string name="network_operators_settings">Operadores de rede</string>
   <!-- Access point names title.  [CHAR LIMIT=50] -->
   <!-- Enhaced 4G LTE Mode title.  [CHAR LIMIT=50] -->
   <!-- Enhaced 4G LTE Mode summary.  [CHAR LIMIT=100] -->
@@ -2974,6 +3017,7 @@ Teníemos un Palaciu…\n
   <!-- Restrictions title for allowing location sharing [CHAR LIMIT=35] -->
   <string name="restriction_location_enable_title">Allugamientu</string>
   <!-- Restrictions summary for allowing location sharing [CHAR LIMIT=100] -->
+  <string name="restriction_location_enable_summary">Dexa que les aplicaciones usen la to información d\'allugamientu</string>
   <!-- Wizard back button label [CHAR LIMIT=25] -->
   <!-- Wizard next button label [CHAR LIMIT=25] -->
   <!-- Wizard next button label [CHAR LIMIT=25] -->
@@ -3033,6 +3077,17 @@ Teníemos un Palaciu…\n
   <!-- Text used to identify the search query suggestions / recent searches -->
   <!-- Text used to identify the search results -->
   <!--Search Keywords [CHAR LIMIT=NONE]-->
+  <string name="keywords_wifi_calling">wifi, wi-fi, llamada, llamaes, llamar</string>
+  <string name="keywords_home">llanzador</string>
+  <string name="keywords_display">pantalla, pantalla táutil</string>
+  <string name="keywords_display_font_size">tamañu de testu</string>
+  <string name="keywords_printing">imprentadora</string>
+  <string name="keywords_sounds">bip d\'altavoz</string>
+  <string name="keywords_app">RAM</string>
+  <string name="keywords_location_mode">precisión</string>
+  <string name="keywords_accounts">cuenta</string>
+  <string name="keywords_all_apps">aplicaciones, apps, baxar, descargues, sistema</string>
+  <string name="keywords_app_permissions">aplicaciones, permisos, seguranza</string>
   <!-- NFC Wi-Fi pairing/setup strings-->
   <!-- Write NFC tag for Wi-Fi pairing/setup title [CHAR_LIMIT=30]-->
   <!-- Text for button to confirm writing tag -->
@@ -3246,6 +3301,7 @@ Teníemos un Palaciu…\n
   <!-- [CHAR LIMIT=35] Feedback on the device -->
   <!-- Full package name of OEM preferred device feedback reporter [DO NOT TRANSLATE] -->
   <!-- PIN entry dialog title for entering the administrator PIN [CHAR LIMIT=none] -->
+  <string name="restr_pin_enter_admin_pin">Introduz el PIN del alministrador</string>
   <!-- Switch On/Off  -->
   <!-- [CHAR LIMIT=28] Screen pinning title -->
   <!-- [CHAR LIMIT=300] Screen pinning description -->
@@ -3263,6 +3319,7 @@ Teníemos un Palaciu…\n
   <!-- [CHAR LIMIT=70] Don't rotate when screen is turned option -->
   <!-- Title and summary for SIM Status -->
   <!-- Title for IMEI preference [CHAR LIMIT=30] -->
+  <string name="imei_information_title">Información d\'IMEI</string>
   <!-- Encryption interstitial title. This screen asks the user whether the device will ask for a PIN / pattern / password before the device starts up. [CHAR LIMIT=30] -->
   <!-- Encryption interstitial button to continue with the shown setting.  Appears on screen that asks the user to opt in/out of encrypting device with a pin/pattern/password. [CHAR LIMIT=NONE] -->
   <!-- Message shown on encryption interstitial to ask the user whether or not they want to use a PIN to encrypt the device. [CHAR LIMIT=NONE] -->
@@ -3285,6 +3342,7 @@ Teníemos un Palaciu…\n
   <!-- Message for encryption dialog telling the user that Talkback and other accessibility services will be disabled. -->
   <!-- [CHAR LIMIT=NONE] Dialog body explaining that the app just selected by the user will not work after a reboot until until after the user enters their credentials, such as a PIN or password. -->
   <!-- Title and summary for SIM Status -->
+  <string name="imei_information_title">Información d\'IMEI</string>
   <!-- New strings needed for App Info 2 -->
   <!-- Preference label for app default launch settings [CHAR LIMIT=35]-->
   <!-- Summary for app storage preference [CHAR LIMIT=15] -->
