@@ -13,7 +13,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-package com.android.settings.aim.fragments.carrierlabel;
+package com.android.settings.aim.fragments;
 
 import android.app.ActivityManager;
 import android.app.AlertDialog;
@@ -74,7 +74,7 @@ public class CarrierLabel extends SettingsPreferenceFragment implements
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsEvent.RESURRECTED;
+        return MetricsEvent.AIM;
     }
 
     @Override
