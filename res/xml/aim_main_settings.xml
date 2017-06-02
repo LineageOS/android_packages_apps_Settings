@@ -45,11 +45,10 @@
             android:title="@string/aim_buttons_title"
             android:fragment="com.android.settings.aim.tabs.Buttons"  />
 
-
-     <!-- Buttons -->
-        <PreferenceScreen
-            android:key="buttonsettings_category"
-            android:title="@string/aim_buttons_title"
-            android:fragment="com.android.settings.aim.tabs.Buttons"  />
+  <!-- Recent tab -->
+    <PreferenceScreen
+            android:fragment="com.android.settings.aim.fragments.RecentSettings"
+            android:key="aim_recent_settings"
+            android:title="@string/recent_settings_title"/>
 
 </PreferenceScreen>
