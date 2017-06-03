@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.aim.fragments;
+package com.android.settings.aim.tabs;
 
 import android.os.Bundle;
 import android.support.v7.preference.PreferenceScreen;
