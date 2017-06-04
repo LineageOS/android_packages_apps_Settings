@@ -18,8 +18,14 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to show Device Id -->
+  <plurals name="show_device_id_countdown_cm">
+    <item quantity="one">Du er nu <xliff:g id="step_count">%1$d</xliff:g> skridt fra at anmode om enheds-ID\'et.</item>
+    <item quantity="other">Du er nu <xliff:g id="step_count">%1$d</xliff:g> skridt fra at anmode om enheds-ID\'et.</item>
+  </plurals>
   <!--  Device Info screen. Confirmation that Device ID is copied to clipboard -->
+  <string name="show_device_id_copied_cm">Enheds-ID:[<xliff:g id="device_id">%1$s</xliff:g>] kopieret til udklipsholder</string>
   <!--  Device Info screen. Confirmation that Device ID is not available -->
+  <string name="show_device_id_failed_cm">Enheds-ID er ikke tilgængeligt i dette build</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Label for the deviceID text put to clipboard -->
   <string name="show_device_id_clipboard_label">Enheds-ID</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
@@ -46,6 +52,7 @@
   <string name="root_access_all">Apps og ADB</string>
   <!-- Preference link for root appops -->
   <string name="root_appops_title">Administrer root adgang</string>
+  <string name="root_appops_summary">Vis og kontrollér rootreglerne</string>
   <!-- NFC PreferenceCategory title -->
   <string name="nfc_title_category">NFC</string>
   <!-- About phone screen, LineageOS version -->
@@ -365,6 +372,7 @@
   <string name="app_ops_summaries_read_external_storage">læs eksternt lager</string>
   <string name="app_ops_summaries_write_external_storage">skriv til eksternt lager</string>
   <string name="app_ops_summaries_turn_screen_on">tænd skærmen</string>
+  <string name="app_ops_summaries_get_accounts">hent konti</string>
   <string name="app_ops_summaries_toggle_wifi">Wi-Fi til/fra</string>
   <string name="app_ops_summaries_toggle_bluetooth">bluetooth til/fra</string>
   <string name="app_ops_summaries_start_at_boot">start ved opstart</string>
@@ -384,6 +392,7 @@
   <string name="app_ops_labels_modify_calendar">Ændre kalender</string>
   <string name="app_ops_labels_wifi_scan">Wi-Fi skanning</string>
   <string name="app_ops_labels_notification">Skriv notifikation</string>
+  <string name="app_ops_labels_cell_scan">Mobilnetværksskanning</string>
   <string name="app_ops_labels_call_phone">Opkald til telefon</string>
   <string name="app_ops_labels_read_sms">Læs SMS</string>
   <string name="app_ops_labels_write_sms">Skriv SMS</string>
@@ -413,6 +422,7 @@
   <string name="app_ops_labels_bluetooth_volume">Lydstyrke for Bluetooth</string>
   <string name="app_ops_labels_keep_awake">Hold vågen</string>
   <string name="app_ops_labels_monitor_location">Overvåg placering</string>
+  <string name="app_ops_labels_monitor_high_power_location">Overvåg placering ved højt strømforbrug</string>
   <string name="app_ops_labels_get_usage_stats">Få brugsstatistik</string>
   <string name="app_ops_labels_mute_unmute_microphone">Mikrofon til/fra</string>
   <string name="app_ops_labels_toast_window">Vis toastbeskeder</string>
@@ -432,6 +442,7 @@
   <string name="app_ops_labels_read_external_storage">Læs eksternt lager</string>
   <string name="app_ops_labels_write_external_storage">Skriv til eksternt lager</string>
   <string name="app_ops_labels_turn_screen_on">Tænd skærmen</string>
+  <string name="app_ops_labels_get_accounts">Hent konti</string>
   <string name="app_ops_labels_toggle_wifi">Wi-Fi til/fra</string>
   <string name="app_ops_labels_toggle_bluetooth">Bluetooth til/fra</string>
   <string name="app_ops_labels_start_at_boot">Start ved opstart</string>
@@ -553,6 +564,7 @@
   <string name="volume_adjust_sounds_title">Lyd for lydstyrkejustering</string>
   <!-- Hardware tunables - Vibrator intensity -->
   <string name="vibrator_intensity_title">Vibrator-intensitet</string>
+  <string name="vibrator_warning">Værdier højere end %1$d%% anbefales ikke</string>
   <!-- Hardware tunables - Color calibration -->
   <string name="color_calibration_title">Farvekalibrering</string>
   <string name="color_calibration_summary">Kalibrér skærmfarver</string>
@@ -604,6 +616,8 @@
   <string name="live_display_color_profile_photography_summary">Perfekt farvegengivelse for fotos</string>
   <string name="live_display_color_profile_basic_title">Grundlæggende</string>
   <string name="live_display_color_profile_basic_summary">Brug skærmen ukalibreret</string>
+  <string name="live_display_color_profile_adaptive_title">Selvjusterende</string>
+  <string name="live_display_color_profile_adaptive_summary">Farver tilpasses omgivelser</string>
   <!-- LiveDisplay : Picture Adjustment -->
   <string name="picture_adjustment_title">Billedjustering</string>
   <string name="picture_adjustment_summary">Justerer farvetone, mætning, lysstyrke og kontrast</string>
@@ -798,6 +812,7 @@
   <string name="voice_wakeup_retrain_title">Træn din stemme igen</string>
   <string name="voice_wakeup_activity_title">Aktivitet, som skal startes</string>
   <string name="voice_wakeup_default_activity">Google Now</string>
+  <string name="voice_wakeup_needs_dial_permission_warning">Stemmevækning er nødt til at have tilladelser til opkald for at vælge en Direct Dial-kontakt.</string>
   <string name="picker_activities">Aktiviteter</string>
   <string name="select_custom_app_title">Vælg brugerdefineret app</string>
   <string name="select_custom_activity_title">Vælg brugerdefineret aktivitet</string>
@@ -843,7 +858,10 @@
   <string name="no_filters_title">Der er ingen filtre</string>
   <!-- Anonymous Statistics #CM -->
   <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
+  <string name="anonymous_statistics_title">LineageOS-statistikker</string>
+  <string name="anonymous_statistics_summary">Hjælp med at gøre LineageOS bedre ved at deltage i rapportering af anonyme statistikker</string>
   <string name="anonymous_statistics_warning_title">Om</string>
+  <string name="anonymous_statistics_warning">Deltagelse af LineageOS-statistikker vil tillade ikke-personlige data, der skal forelægges for udviklerne af LineageOS, at spore unikke installationer på tværs af enheder. De indsendte oplysninger omfatter en entydig indikator, som ikke kompromitterer dit privatliv eller personlige data. Dataene indsendes under hver opstart.\n\nFor et eksempel på de data, der er indsendt, skal du trykke på Få vist data.</string>
   <string name="enable_reporting_title">Aktivér rapportering</string>
   <string name="preview_data_title">Få vist data</string>
   <string name="view_stats_title">Vis statistikker</string>
@@ -863,17 +881,23 @@
   <string name="menu_hidden_apps_delete">Nulstil</string>
   <string name="menu_hidden_apps_reset_lock">Nulstil mønster lås</string>
   <string name="protected_apps">Beskyttede apps</string>
+  <string name="protected_apps_summary">Administrer, hvilke apps, der er skjult bag en sikker lås</string>
   <string name="saving_protected_components">Gemmer komponenttilstand\u2026</string>
   <string name="pa_login_username_hint">Brugernavn (e-mail)</string>
   <string name="pa_login_password_hint">Adgangskode</string>
   <string name="pa_login_submit_button">Log ind</string>
   <string name="pa_login_checking_password">Kontrollerer konto\u2026</string>
   <string name="pa_login_incorrect_login">Login var forkert</string>
+  <string name="pa_pattern_or_fingerprint_header">Skal tegne mønster eller bruge fingeraftryk til at låse op</string>
   <!-- Contributors cloud activity -->
   <string name="contributors_cloud_fragment_title">Bidragydere</string>
   <string name="contributors_cloud_loading_message">Indlæser bidragyderdata\u2026</string>
   <string name="contributors_cloud_failed_message">Kan ikke indlæse bidragyderdata</string>
   <string name="contributor_info_menu">Bidragyder info</string>
+  <string name="contributor_info_msg">
+        <![CDATA[<b>Navn:</b> <xliff:g id="name">%1$s</xliff:g><br/><br/>
+                 <b>Kaldenavn:</b> <xliff:g id="nick">%2$s</xliff:g><br/><br/>
+                 <b>Bidrag:</b> <xliff:g id="commits">%3$s</xliff:g>]]></string>
   <string name="contributions_info_menu">Bidrag-info</string>
   <string name="contributions_info_msg">
         <![CDATA[<b>Bidragsydere i alt:</b> <xliff:g id="total_contributors">%1$s</xliff:g><br/><br/>
@@ -889,6 +913,7 @@
   <string name="title_general">Generelt</string>
   <string name="advanced">Avanceret</string>
   <string name="link_volume_option_title">Forbind ringe- og meddelelseslydstyrke</string>
+  <string name="lcd_density_prompt_message">Nogle apps fungerer muligvis ikke på en ikke-standard DPI.\n\nDette vil genstarte din enhed.</string>
   <!-- Edit access point labels: PPP number -->
   <string name="apn_ppp_number">APN PPP telefonnummer</string>
   <!-- APNs screen message indicating new APN user is adding is a duplicate -->
@@ -923,9 +948,14 @@
   <!-- [CHAR LIMIT=50] Like zen_mode_events, but part of a list, so lower case if needed -->
   <string name="zen_mode_summary_events">begivenheder</string>
   <!-- [CHAR LIMIT=50] Like zen_mode_summary_selected_callers, but part of a list, so lower case if needed -->
+  <string name="zen_mode_summary_selected_callers">udvalgte opkaldere</string>
   <!-- [CHAR LIMIT=50] Like zen_mode_summary_selected_messages, but part of a list, so lower case if needed -->
   <string name="zen_mode_summary_selected_messages">valgte beskeder</string>
   <!-- Allow vibration in zen mode -->
+  <string name="zen_mode_vibration">Vibration</string>
+  <string name="zen_mode_vibration_never">Vibrér ikke</string>
+  <string name="zen_mode_vibration_calls_only">Vibrér kun ved opkald</string>
+  <string name="zen_mode_vibration_calls_and_notifications">Vibrér ved opkald og notifikationer</string>
   <!-- About phone settings screen, setting option dialog title to show regulatory information [CHAR LIMIT=25] -->
   <!-- SAR information -->
   <string name="maximum_head_level">Hoved: %1$s W/kg</string>
@@ -995,7 +1025,9 @@
   <string name="privacy_guard_internet_category">Internet</string>
   <!-- Weather -->
   <string name="weather_settings_title">Vejr</string>
+  <string name="weather_settings_no_services_prompt">Ingen vejrtjenester er installeret</string>
   <string name="weather_settings_button">Udbyderindstillinger</string>
+  <string name="weather_settings_activity_not_found">Kunne ikke åbne indstillingsmenuen for denne udbyder</string>
   <string name="weather_settings_add_weather_provider">Tilføj vejrudbyder</string>
   <string name="weather_settings_general_settings_title">Generelt</string>
   <string name="weather_settings_providers_title">Udbydere</string>
@@ -1003,16 +1035,21 @@
   <string name="weather_settings_temp_celsius">Celsius</string>
   <string name="weather_settings_temp_fahrenheit">Fahrenheit</string>
   <string name="weather_settings_keyword">vejr</string>
+  <string name="background_data_access">Baggrundsdataadgang</string>
+  <string name="allow_background_both">Over mobildata &amp; Wi\u2011Fi</string>
   <string name="allow_background_wlan">Kun via Wi\u2011Fi</string>
   <string name="allow_background_none">Ingen adgang</string>
   <string name="mobile_data_alert">Mobildata alarm</string>
+  <string name="mobile_data_alert_summary">Giv besked, når appen bruger en betydelig mængde data</string>
   <string name="data_usage_menu_enable_data_alerts">Aktiver advarsler for dataforbrug</string>
   <string name="data_usage_menu_disable_data_alerts">Desktiver advarsler for dataforbrug</string>
   <string name="data_usage_menu_reset_stats">Nulstil datastatistik</string>
+  <string name="reset_data_stats_msg">Dette vil rydde al tidligere og nuværende datasporingsinformation</string>
   <string name="reset_stats_confirm">Bekræft</string>
   <string name="restrict_cellular_access_title">Begræns adgang for mobildata</string>
   <string name="restrict_cellular_access_summary">Deaktiver adgang til data på mobilnetværk</string>
   <string name="restrict_cellular_access_dialog_title">Begræns adgang for mobildata?</string>
+  <string name="restrict_cellular_access_dialog_summary">Denne funktion kan medføre, at en app, som er afhængig af netværksadgang, ikke længere virker, hvis der kun er mobilnetværk tilgængeligt.\n\nDu kan finde flere relevante kontrolelementer til databrug i de tilgængelige indstillinger i appen.</string>
   <!-- Label for settings shortcut: carrier selection -->
   <string name="shortcut_carrier_title">Netværksoperatører</string>
   <!-- title for lock screen blur preference -->
@@ -1025,6 +1062,8 @@
   <string name="app_notification_no_ongoing_on_keyguard_title">Deaktivere vedvarende meddelelser på låseskærmen</string>
   <string name="app_notification_no_ongoing_on_keyguard_summary">Vis aldrig vedvarende meddelelser fra denne app på låseskærmen</string>
   <!-- Notification sound timeout -->
+  <string name="app_notification_sound_timeout_title">Minimumstid mellem notifikationslyde</string>
+  <string name="app_notification_sound_timeout_summary_template">Tillad ikke lyde eller vibration mere en en gang hvert <xliff:g id="duration">%1$s</xliff:g></string>
   <string name="app_notification_sound_timeout_value_none">Ingen begrænsning</string>
   <string name="app_notification_sound_timeout_value_10_seconds">10 sekunder</string>
   <string name="app_notification_sound_timeout_value_30_seconds">30 sekunder</string>
@@ -1051,6 +1090,7 @@
   <string name="lockscreen_wallpaper_title">Baggrund</string>
   <string name="not_available_with_app">Ikke tilgængelig med %1$s</string>
   <!-- Format string for fingerprint location message -->
+  <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Find fingerprint sensoren på <xliff:g id="sensor_location">%1$s</xliff:g> af din telefon.</string>
   <!-- Fingerprint sensor locations -->
   <string name="security_settings_fingerprint_sensor_location_back">tilbage</string>
   <string name="security_settings_fingerprint_sensor_location_front">front</string>

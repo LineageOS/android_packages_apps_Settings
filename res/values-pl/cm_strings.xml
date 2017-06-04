@@ -554,6 +554,7 @@
   <string name="double_tap_to_sleep_summary">Dotknij dwukrotnie pasek stanu, aby zablokować ekran</string>
   <!-- Proximity wake -->
   <string name="proximity_wake_title">Zapobiega przypadkowemu wybudzeniu</string>
+  <string name="proximity_wake_summary">Sprawdź czujnik zbliżeniowy przed wybudzeniem wywołanym przez gesty</string>
   <!-- Turn on display when power connected; turn off display when power disconnected -->
   <string name="wake_when_plugged_or_unplugged_title">Wybudź przy podłączaniu</string>
   <string name="wake_when_plugged_or_unplugged_summary">Włącz ekran podczas podłączania i odłączania od źródła zasilania</string>
@@ -564,6 +565,7 @@
   <string name="volume_adjust_sounds_title">Dźwięk regulacji głośności</string>
   <!-- Hardware tunables - Vibrator intensity -->
   <string name="vibrator_intensity_title">Siła wibracji</string>
+  <string name="vibrator_warning">Wartości wyższe niż %1$d%% nie są zalecane</string>
   <!-- Hardware tunables - Color calibration -->
   <string name="color_calibration_title">Kalibracja kolorów</string>
   <string name="color_calibration_summary">Kalibruje wyświetlane kolory</string>
@@ -618,8 +620,11 @@
   <string name="live_display_color_profile_adaptive_title">Adaptacyjny</string>
   <string name="live_display_color_profile_adaptive_summary">Dostosowanie kolorów do warunków otoczenia</string>
   <!-- LiveDisplay : Picture Adjustment -->
+  <string name="picture_adjustment_title">Dostosowanie obrazu</string>
   <string name="picture_adjustment_summary">Dostosuj odcień, nasycenie, intensywność i kontrast</string>
+  <string name="adj_hue_title">Odcień</string>
   <string name="adj_saturation_title">Nasycenie</string>
+  <string name="adj_intensity_title">Intensywność</string>
   <string name="adj_contrast_title">Kontrast</string>
   <!-- Whether to display IME switcher notifcation -->
   <string name="ime_switcher_notify">Ikona selektora</string>
@@ -855,7 +860,11 @@
   <!-- Anonymous Statistics #CM -->
   <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
   <string name="anonymous_statistics_title">Statystyki LineageOS</string>
+  <string name="anonymous_statistics_summary">Pomóż ulepszyć LineageOS, pozwalając na wysyłanie anonimowych statystyk</string>
   <string name="anonymous_statistics_warning_title">O...</string>
+  <string name="anonymous_statistics_warning">Wyrażenie zgody na udział w Statystykach LineageOS zezwoli na przesył anonimowych danych do
+        developerów LineageOS, aby śledzić ilość unikalnych instalacji na urządzeniach . Informacje zawierają unikalny identyfikator,
+       który nie narusza twojej prywatności lub prywatnych danych. Dane są wysyłane przy każdym uruchomieniu.\n\nAby zobaczyć przykład przesyłanych danych naciśnij Podgląd Danych.</string>
   <string name="enable_reporting_title">Włącz raportowanie</string>
   <string name="preview_data_title">Podgląd danych</string>
   <string name="view_stats_title">Zobacz statystyki</string>
@@ -946,6 +955,10 @@
   <!-- [CHAR LIMIT=50] Like zen_mode_summary_selected_messages, but part of a list, so lower case if needed -->
   <string name="zen_mode_summary_selected_messages">wybrane wiadomości</string>
   <!-- Allow vibration in zen mode -->
+  <string name="zen_mode_vibration">Wibracje</string>
+  <string name="zen_mode_vibration_never">Nie wibruj</string>
+  <string name="zen_mode_vibration_calls_only">Wibruj tylko przy połączeniach</string>
+  <string name="zen_mode_vibration_calls_and_notifications">Wibruj dla połączeń i powiadomień</string>
   <!-- About phone settings screen, setting option dialog title to show regulatory information [CHAR LIMIT=25] -->
   <!-- SAR information -->
   <string name="maximum_head_level">Głowa: %1$s W/kg</string>
@@ -1052,6 +1065,9 @@
   <string name="app_notification_no_ongoing_on_keyguard_title">Wyłącz trwałe powiadomienia na ekranie blokady</string>
   <string name="app_notification_no_ongoing_on_keyguard_summary">Nigdy nie pokazuj trwałych powiadomień z tej aplikacji na ekranie blokady</string>
   <!-- Notification sound timeout -->
+  <string name="app_notification_sound_timeout_title">Minimalny czas między dźwiękami powiadomień</string>
+  <string name="app_notification_sound_timeout_summary_template">Zezwól na dźwięki i wibracje, nie więcej niż jeden raz co każde <xliff:g id="duration">%1$s </xliff:g></string>
+  <string name="app_notification_sound_timeout_value_none">Brak ograniczeń</string>
   <string name="app_notification_sound_timeout_value_10_seconds">10 sekund</string>
   <string name="app_notification_sound_timeout_value_30_seconds">30 sekund</string>
   <string name="app_notification_sound_timeout_value_1_minute">1 min</string>
@@ -1084,4 +1100,5 @@
   <string name="security_settings_fingerprint_sensor_location_left">lewa strona</string>
   <string name="security_settings_fingerprint_sensor_location_right">prawa strona</string>
   <!-- SIM status format string -->
+  <string name="sim_status_format_string">Połączenie: <xliff:g id="voice_status">%1$s</xliff:g> / Dane: <xliff:g id="data_status">%2$s</xliff:g></string>
 </resources>

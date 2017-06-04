@@ -43,16 +43,16 @@
   <string name="development_shortcut_title">Atajo del desarrollador</string>
   <string name="development_shortcut_summary">Activar los accesos directos de gestión de la aplicación en la lista de aplicaciones recientes</string>
   <!-- Setting checkbox title for root access -->
-  <string name="root_access">Acceso administrativo</string>
-  <string name="root_access_warning_title">¿Permitir acceso administrativo?</string>
-  <string name="root_access_warning_message">¡Permitir a las aplicaciones solicitar acceso administrativo es muy peligroso y puede comprometer la seguridad del sistema!</string>
+  <string name="root_access">Acceso de Superusuario (root)</string>
+  <string name="root_access_warning_title">¿Permitir acceso de Superusuario?</string>
+  <string name="root_access_warning_message">¡Permitir a las aplicaciones solicitar acceso de Superusuario es muy peligroso y puede comprometer la seguridad del sistema!</string>
   <string name="root_access_none">Desactivado</string>
   <string name="root_access_apps">Solo aplicaciones</string>
   <string name="root_access_adb">Solo ADB</string>
   <string name="root_access_all">Aplicaciones y ADB</string>
   <!-- Preference link for root appops -->
-  <string name="root_appops_title">Gestionar acceso administrativo (root)</string>
-  <string name="root_appops_summary">Ver y controlar las reglas administrativas</string>
+  <string name="root_appops_title">Gestionar acceso de Superusuario (root)</string>
+  <string name="root_appops_summary">Ver y controlar las reglas de Superusuario</string>
   <!-- NFC PreferenceCategory title -->
   <string name="nfc_title_category">NFC</string>
   <!-- About phone screen, LineageOS version -->
@@ -226,9 +226,9 @@
   <string name="profile_appgroup_name_title">Nombre</string>
   <string name="duplicate_appgroup_name">¡Nombre de grupo de aplicación duplicado!</string>
   <string name="profile_app_delete_confirm">¿Quitar esta aplicación?</string>
-  <string name="no_bluetooth_triggers">No hay dispositivos Bluetooth emparejados. \nPulsar para emparejar el dispositivo Bluetooth antes de configurar los eventos.</string>
-  <string name="no_wifi_triggers">No hay puntos de acceso Wi\u2011Fi configurados. \nPulsa para activar la conexión Wi\u2011Fi antes de configurar los eventos.</string>
-  <string name="no_triggers_configured">No hay eventos configurados. Pulsa para añadir más.</string>
+  <string name="no_bluetooth_triggers">Sin dispositivos Bluetooth emparejados. \nPulsa para emparejar el dispositivo Bluetooth antes de configurar los eventos.</string>
+  <string name="no_wifi_triggers">Sin puntos de acceso Wi\u2011Fi configurados. \nPulsa para activar la conexión Wi\u2011Fi antes de configurar los eventos.</string>
+  <string name="no_triggers_configured">Sin eventos configurados. Pulsa para añadir más.</string>
   <string name="no_triggers_configured_nfc">Pulsa para configurar un nuevo evento NFC.</string>
   <string name="profile_setup_setup_triggers_description">Selecciona qué eventos activarán este perfil</string>
   <string name="profile_setup_actions_description">Ahora configura qué sucederá al activar el perfil</string>
@@ -308,7 +308,7 @@
   <string name="app_ops_categories_media">Multimedia</string>
   <string name="app_ops_categories_device">Dispositivo</string>
   <string name="app_ops_categories_bootup">Arranque</string>
-  <string name="app_ops_categories_su">Acceso administrativo</string>
+  <string name="app_ops_categories_su">Acceso de Superusuario (root)</string>
   <!-- User display names for app ops codes - extension of AOSP -->
   <string name="app_ops_summaries_coarse_location">ubicación aproximada</string>
   <string name="app_ops_summaries_fine_location">ubicación precisa</string>
@@ -378,7 +378,7 @@
   <string name="app_ops_summaries_start_at_boot">iniciar en el arranque</string>
   <string name="app_ops_summaries_toggle_nfc">alternar NFC</string>
   <string name="app_ops_summaries_toggle_mobile_data">alternar datos móviles</string>
-  <string name="app_ops_summaries_superuser">acceso administrativo</string>
+  <string name="app_ops_summaries_superuser">acceso de Superusuario (root)</string>
   <!-- User display names for app ops codes - extension of AOSP -->
   <string name="app_ops_labels_coarse_location">Ubicación aproximada</string>
   <string name="app_ops_labels_fine_location">Ubicación precisa</string>
@@ -404,7 +404,7 @@
   <string name="app_ops_labels_read_icc_sms">Leer mensajes ICC</string>
   <string name="app_ops_labels_write_icc_sms">Editar mensajes ICC</string>
   <string name="app_ops_labels_modify_settings">Modificar ajustes</string>
-  <string name="app_ops_labels_draw_on_top">Dibujar sobre</string>
+  <string name="app_ops_labels_draw_on_top">Mostrar encima</string>
   <string name="app_ops_labels_access_notifications">Acceso a notificaciones</string>
   <string name="app_ops_labels_camera">Cámara</string>
   <string name="app_ops_labels_record_audio">Grabar sonido</string>
@@ -448,7 +448,7 @@
   <string name="app_ops_labels_start_at_boot">Iniciar en el arranque</string>
   <string name="app_ops_labels_toggle_nfc">Alternar NFC</string>
   <string name="app_ops_labels_toggle_mobile_data">Alternar datos móviles</string>
-  <string name="app_ops_labels_superuser">Acceso administrativo</string>
+  <string name="app_ops_labels_superuser">Acceso de Superusuario (root)</string>
   <!-- App ops permissions -->
   <string name="app_ops_permissions_allowed">Permitir</string>
   <string name="app_ops_permissions_ignored">Ignorado</string>
@@ -821,7 +821,7 @@
   <string name="blacklist_edit_dialog_title">Editar número de teléfono bloqueado</string>
   <string name="blacklist_prefs">Ajustes</string>
   <string name="blacklist_button_delete">Borrar</string>
-  <string name="blacklist_empty_text">No hay números en la lista de números bloqueados. Añade una entrada pulsando el botón (+).</string>
+  <string name="blacklist_empty_text">Sin números en la lista de números bloqueados. Añade una entrada pulsando el botón (+).</string>
   <string name="blacklist_disabled_empty_text">Activa la lista de números bloqueados para evitar que te llamen o manden mensajes.</string>
   <string name="blacklist_summary_disabled">Desactivada</string>
   <string name="blacklist_summary">No recibirás llamadas ni mensajes de los números incluidos en la lista de números bloqueados</string>
@@ -855,7 +855,7 @@
   <string name="spam_last_blocked_title">Último bloqueado %1$s</string>
   <string name="block_notifications_title">Filtrar notificaciones</string>
   <string name="block_notifications_summary">Gestionar filtros y notificaciones bloqueadas</string>
-  <string name="no_filters_title">No hay filtros establecidos</string>
+  <string name="no_filters_title">Sin filtros establecidos</string>
   <!-- Anonymous Statistics #CM -->
   <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
   <string name="anonymous_statistics_title">Estadísticas de LineageOS</string>
@@ -888,7 +888,7 @@
   <string name="pa_login_submit_button">Iniciar sesión</string>
   <string name="pa_login_checking_password">Comprobando cuenta\u2026</string>
   <string name="pa_login_incorrect_login">El inicio de sesión fue incorrecto</string>
-  <string name="pa_pattern_or_fingerprint_header">Se debe dibujar el patrón o usar huellas dactilares para desbloquear</string>
+  <string name="pa_pattern_or_fingerprint_header">Debes dibujar el patrón o utilizar huellas digitales para desbloquear</string>
   <!-- Contributors cloud activity -->
   <string name="contributors_cloud_fragment_title">Colaboradores</string>
   <string name="contributors_cloud_loading_message">Cargando datos de colaboradores\u2026</string>
@@ -926,7 +926,7 @@
   <string name="sim_enabler_will_disable_sim_title">Atención</string>
   <string name="sim_enabler_need_switch_data_service">Se desactivará esta SIM y la SIM <xliff:g id="slotid">%1$s</xliff:g> se utilizará para servicios de datos. ¿Deseas continuar?</string>
   <string name="sim_enabler_airplane_on">No se puede realizar la operación mientras esté activado el modo avión.</string>
-  <string name="sim_enabler_in_call">No se puede realizar la operación mientras haya una llamada en curso.</string>
+  <string name="sim_enabler_in_call">Imposible realizar la operación mientras haya una llamada en curso.</string>
   <string name="sim_enabler_both_inactive">No es posible desactivar todas las tarjetas SIM</string>
   <string name="sim_enabler_enabling">Activando\u2026</string>
   <string name="sim_enabler_disabling">Desactivando\u2026</string>
@@ -1025,7 +1025,7 @@
   <string name="privacy_guard_internet_category">Internet</string>
   <!-- Weather -->
   <string name="weather_settings_title">El tiempo</string>
-  <string name="weather_settings_no_services_prompt">No hay servicios de proveedores del clima instalados</string>
+  <string name="weather_settings_no_services_prompt">Sin servicios de proveedores del clima instalados</string>
   <string name="weather_settings_button">Ajustes del proveedor</string>
   <string name="weather_settings_activity_not_found">No se puede iniciar el menú de ajustes de este proveedor</string>
   <string name="weather_settings_add_weather_provider">Añadir proveedor del clima</string>
