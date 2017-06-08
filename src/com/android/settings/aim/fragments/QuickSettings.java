@@ -13,7 +13,7 @@ import android.text.TextUtils;
 import android.view.View;
 
 import com.android.settings.R;
-import com.android.settings.aim.Preference.CustomSeekBarPreference;
+import com.android.settings.aim.Preferences.CustomSeekBarPreference;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
