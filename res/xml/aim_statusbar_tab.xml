@@ -23,14 +23,24 @@
 
     <PreferenceCategory
  	 android:title="@string/statusbar_category" >
-    <PreferenceScreen
+    
+   <!--Battery bar coustumization --> 
+   <Preference
+        android:key="batterybar"
+        android:title="@string/battery_bar_title"
+        android:icon="@drawable/ic_freedomhub_ico"
+        android:fragment="com.android.settings.aim.fragments.BatteryBar" />
+
+  <!--Network traffic -->  
+ <PreferenceScreen
 	android:fragment="com.android.settings.aim.fragments.NetworkTrafficSettings"
 	android:key="pure_nettraffic_settings"
 	android:title="@string/nettraffic_settings_title"
         android:icon="@drawable/ic_freedomhub_ico"
         android:summary="@string/nettraffic_settings_summary" />
 
-        <com.android.settings.aim.Preferences.SystemSettingSwitchPreference
+    <!-- Roaming indicator -->    
+    <com.android.settings.aim.Preferences.SystemSettingSwitchPreference
             android:key="roaming_indicator_icon"
             android:title="@string/roaming_indicator_icon_title"
             android:summary="@string/roaming_indicator_icon_summary"
@@ -52,7 +62,7 @@
         android:title="@string/carrier_title" 
         android:icon="@drawable/ic_freedomhub_ico" />
  
-       
+       <!-- Qs tiles small -->
        <PreferenceScreen
             android:key="quicksettings"
             android:fragment="com.android.settings.aim.fragments.QuickSettings"
