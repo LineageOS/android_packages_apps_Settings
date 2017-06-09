@@ -23,7 +23,8 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
     android-support-v14-preference \
     jsr305 \
     settings-logtags \
-    org.cyanogenmod.platform.internal
+    org.cyanogenmod.platform.internal \
+    glide
 
 LOCAL_MODULE_TAGS := optional
 
