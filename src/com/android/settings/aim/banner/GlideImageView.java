@@ -55,6 +55,6 @@ public class GlideImageView extends ImageView
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-	Glide.with(this.getContext()).load(R.raw.banner).asGif().crossFade().into(this);
+	Glide.with(this.getContext()).load(R.raw.aim_banner).asGif().crossFade().into(this);
     }
 }
