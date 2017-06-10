@@ -38,4 +38,11 @@
         android:entryValues="@array/immersive_recents_values"
         android:persistent="false" />
 
+    <com.android.settings.aim.Preferences.SystemSettingSwitchPreference
+            android:key="recents_use_grid"
+            android:title="@string/recents_use_grid_title"
+            android:summary="@string/recents_use_grid_summary"
+            android:icon="@drawable/ic_freedomhub_ico"
+            android:defaultValue="true" />
+
 </PreferenceScreen> 
