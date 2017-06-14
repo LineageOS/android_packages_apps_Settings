@@ -100,6 +100,8 @@ public class SimPreferenceDialog extends Activity {
         mTintSelectorPos = pos;
 
         EditText nameText = (EditText)mDialogLayout.findViewById(R.id.sim_name);
+        int textLength = nameText.getText().length();
+        nameText.setSelection(textLength, textLength);
         nameText.setText(savedInstanceState.getString(SIM_NAME));
     }
 
@@ -107,7 +109,8 @@ public class SimPreferenceDialog extends Activity {
         final Resources res = mContext.getResources();
         EditText nameText = (EditText)mDialogLayout.findViewById(R.id.sim_name);
         nameText.setText(mSubInfoRecord.getDisplayName());
-
+        int textLength = nameText.getText().length();
+        nameText.setSelection(textLength, textLength);
         final Spinner tintSpinner = (Spinner) mDialogLayout.findViewById(R.id.spinner);
         SelectColorAdapter adapter = new SelectColorAdapter(mContext,
                 R.layout.settings_color_picker_item, mColorStrings);
@@ -157,7 +160,8 @@ public class SimPreferenceDialog extends Activity {
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
                 final EditText nameText = (EditText)mDialogLayout.findViewById(R.id.sim_name);
-
+                int textLength = nameText.getText().length();
+                nameText.setSelection(textLength, textLength);
                 String displayName = nameText.getText().toString();
                 int subId = mSubInfoRecord.getSubscriptionId();
                 mSubInfoRecord.setDisplayName(displayName);
