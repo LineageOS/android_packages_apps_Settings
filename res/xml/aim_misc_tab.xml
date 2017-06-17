@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2017 AIM-ROM
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout="@layout/tab"
+	android:title="@string/aim_misc_title"
+        xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+       
+       <!--  about aimrom -->  
+       <PreferenceScreen
+         android:key="dev_info"
+         android:title="@string/dev_info"
+         android:summary="@string/dev_info_summary"
+         android:icon="@drawable/ic_aim_amify"
+         android:fragment="com.android.settings.devs" />
+     
+        <!-- fuck su -->
+        <com.android.settings.aim.Preferences.SystemSettingSwitchPreference
+               android:key="show_su_indicator"
+               android:title="@string/show_su_indicator_title"
+               android:summary="@string/show_su_indicator_summary"
+               android:icon="@drawable/ic_freedomhub_ico"
+               android:defaultValue="true" />
+                  
+   <!-- incall  vibration -->
+   <PreferenceCategory
+        android:key="aim_incall"
+        android:title="@string/incall_vibration_category" >
+
+    <PreferenceScreen
+            android:key="incall_vib"
+            android:title="@string/aim_incall"
+            android:summary="@string/aim_incall_summary"
+            android:icon="@drawable/ic_freedomhub_ico"
+            android:fragment="com.android.settings.aim.InCallSettings" />   
+       
+        </PreferenceCategory>
+    
+   <!-- alarm blocker -->
+        <PreferenceScreen
+             android:id="@+id/alarm_blocker"
+             android:fragment="com.android.settings.aim.fragments.AlarmBlocker"
+             android:icon="@drawable/ic_freedomhub_ico"
+             android:title="@string/alarm_blocker" />
+     
+       <!-- system app remover -->
+        <PreferenceScreen
+            android:key="systemappremover"
+            android:fragment="com.android.settings.aim.fragments.SystemappRemover"
+            android:icon="@drawable/ic_freedomhub_ico"
+            android:title="@string/system_app_remover" />
+
+   <com.android.settings.aim.Preferences.SystemSettingSwitchPreference
+         android:key="three_finger_gesture"
+         android:title="@string/three_finger_gesture"
+         android:summary="@string/three_finger_gesture_summary"
+         android:icon="@drawable/ic_freedomhub_ico"
+         android:defaultValue="false" />
+
+   <PreferenceCategory
+    android:title="@string/sound_misc_category" >  
+   
+    <!-- Screenshot sounds -->
+     <com.android.settings.aim.Preferences.SystemSettingSwitchPreference
+        android:key="screenshot_sound"
+        android:title="@string/screenshot_sound_title"
+        android:icon="@drawable/ic_freedomhub_ico"
+        android:defaultValue="true" />
+
+    <!-- Link ringtone and notification volumes -->
+         <cyanogenmod.preference.SecureSettingSwitchPreference
+                android:key="volume_link_notification"
+                android:title="@string/volume_link_notification_title"
+                android:icon="@drawable/ic_freedomhub_ico"
+                android:defaultValue="true" />
+           
+       <!-- Launch music player when headset is connected -->
+         <cyanogenmod.preference.CMSystemSettingSwitchPreference
+                android:key="headset_connect_player"
+                android:title="@string/headset_connect_player_title"
+                android:icon="@drawable/ic_freedomhub_ico"
+                android:summary="@string/headset_connect_player_summary" />
+  
+       </PreferenceCategory>                       
+
+</PreferenceScreen>

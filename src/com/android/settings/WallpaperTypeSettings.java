@@ -16,6 +16,7 @@
 
 package com.android.settings;
 
+import android.app.WallpaperManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -24,16 +25,23 @@ import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.search.SearchIndexableRaw;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class WallpaperTypeSettings extends SettingsPreferenceFragment implements Indexable {
+
+    private static final int OPTIONS_MENU_RESET = Menu.FIRST;
 
     @Override
     protected int getMetricsCategory() {
@@ -51,6 +59,7 @@ public class WallpaperTypeSettings extends SettingsPreferenceFragment implements
 
         addPreferencesFromResource(R.xml.wallpaper_settings);
         populateWallpaperTypes();
+        setHasOptionsMenu(true);
     }
 
     private void populateWallpaperTypes() {
@@ -76,6 +85,27 @@ public class WallpaperTypeSettings extends SettingsPreferenceFragment implements
             pref.setIcon(info.loadIcon(pm));
             parent.addPreference(pref);
         }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        MenuItem actionItem = menu.add(0, OPTIONS_MENU_RESET, 0, R.string.menu_restore)
+                .setIcon(R.drawable.ic_menu_restore);
+        actionItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == OPTIONS_MENU_RESET) {
+            try {
+                WallpaperManager wpManager = WallpaperManager.getInstance(getActivity());
+                wpManager.clear(WallpaperManager.FLAG_SYSTEM|WallpaperManager.FLAG_LOCK);
+                Toast.makeText(getActivity(), R.string.reset_wallpaper_notice, Toast.LENGTH_LONG).show();
+            } catch (IOException e) {
+            }
+            return true;
+        }
+        return false;
     }
 
     public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =

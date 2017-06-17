@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2017 AIMROM
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+
+<PreferenceScreen
+xmlns:android="http://schemas.android.com/apk/res/android"
+        android:title="About AIMROM">
+
+<PreferenceCategory
+              android:key="about"
+              android:title="@string/AIMROM_about_info" >
+
+        <PreferenceScreen
+    android:summary="@string/AIMROM_about_info_summary" >
+            <intent
+               android:action="android.intent.action.VIEW"
+               android:data="@string/AIMROM_google_plus_link" />              
+      </PreferenceScreen>
+
+     </PreferenceCategory>
+
+<PreferenceCategory
+   android:key="AIMROM_social"
+              android:title="@string/social_header" >
+
+        <!-- Changelog -->
+        <PreferenceScreen android:key="aim_changelog"
+            android:title="@string/changelog_title"
+            android:summary="@string/changelog_summary"
+            android:icon="@drawable/ic_changelog_ico"
+            android:fragment="com.android.settings.aim.fragments.Changelog" />
+
+        <PreferenceScreen
+            android:title="@string/AIMROM_web"
+    android:summary="@string/AIMROM_web_description"
+    android:icon="@drawable/ic_social_web" >
+    <intent
+               android:action="android.intent.action.VIEW"
+               android:data="@string/AIMROM_web_link" />
+        </PreferenceScreen>
+
+        <PreferenceScreen
+            android:title="@string/AIMROM_google_plus"
+    android:summary="@string/AIMROM_google_plus_description"
+    android:icon="@drawable/ic_social_google_plus" >
+    <intent
+               android:action="android.intent.action.VIEW"
+               android:data="@string/AIMROM_google_plus_link" />
+        </PreferenceScreen>
+
+        <PreferenceScreen
+            android:title="@string/AIMROM_telegram"
+    android:summary="@string/AIMROM_telegram_description"
+    android:icon="@drawable/ic_social_telegram" >
+    <intent
+               android:action="android.intent.action.VIEW"
+               android:data="@string/AIMROM_telegram_link" />
+        </PreferenceScreen>
+
+        <PreferenceScreen
+            android:title="@string/AIMROM_github"
+    android:summary="@string/AIMROM_github_description"
+    android:icon="@drawable/ic_social_github" >
+    <intent
+               android:action="android.intent.action.VIEW"
+               android:data="@string/AIMROM_github_link" />
+        </PreferenceScreen>
+
+    <PreferenceScreen
+            android:title="@string/donate"
+    android:summary="@string/donate_description"
+    android:icon="@drawable/ic_donate_aim" >
+    <intent
+               android:action="android.intent.action.VIEW"
+               android:data="@string/donation_link" />
+        </PreferenceScreen>
+
+</PreferenceCategory>
+
+
+<PreferenceCategory
+              android:key="AIMROM_dev"
+              android:title="@string/devs_header" >
+
+        <PreferenceScreen
+            android:title="@string/dev_1"
+    android:summary="@string/dev1_description"
+    android:icon="@drawable/ic_devs_pc" >
+    <intent
+               android:action="android.intent.action.VIEW"
+               android:data="https://plus.google.com/communities/111507505190229665939" />
+        </PreferenceScreen>
+
+       <PreferenceScreen
+            android:title="@string/dev_2"
+    android:summary="@string/dev2_description"
+    android:icon="@drawable/ic_devs_pc" >
+    <intent
+               android:action="android.intent.action.VIEW"
+               android:data="https://plus.google.com/108470470067103585242" />
+        </PreferenceScreen>
+
+ <PreferenceScreen
+            android:title="@string/dev_3"
+    android:summary="@string/dev3_description"
+    android:icon="@drawable/ic_devs_pc" >
+    <intent
+               android:action="android.intent.action.VIEW"
+               android:data="https://forum.xda-developers.com/member.php?u=7550463" />
+        </PreferenceScreen>
+
+<PreferenceScreen
+            android:title="@string/dev_4"
+    android:summary="@string/dev4_description"
+    android:icon="@drawable/ic_devs_pc" >
+    <intent
+               android:action="android.intent.action.VIEW"
+               android:data="https://forum.xda-developers.com/member.php?u=4168602" />
+        </PreferenceScreen>
+</PreferenceCategory>
+
+
+<PreferenceCategory
+              android:key="maintainers"
+              android:title="@string/maintainers_header" >
+<!-- maintainers add from here -->
+<PreferenceScreen
+            android:title="@string/main_5"
+            android:summary="@string/main5_description"
+            android:icon="@drawable/ic_devs_phone">
+</PreferenceScreen>
+
+<PreferenceScreen
+            android:title="@string/main_6"
+            android:summary="@string/main6_description"
+            android:icon="@drawable/ic_devs_phone">
+</PreferenceScreen>
+     
+<PreferenceScreen
+            android:title="@string/main_7"
+            android:summary="@string/main7_description"
+            android:icon="@drawable/ic_devs_phone">
+</PreferenceScreen>
+
+<PreferenceScreen
+            android:title="@string/main_8"
+            android:summary="@string/main8_description"
+            android:icon="@drawable/ic_devs_phone">
+</PreferenceScreen>
+
+<PreferenceScreen
+            android:title="@string/main_9"
+            android:summary="@string/main9_description"
+            android:icon="@drawable/ic_devs_phone">
+</PreferenceScreen>  
+
+<PreferenceScreen
+            android:title="@string/main_10"
+            android:summary="@string/main10_description"
+            android:icon="@drawable/ic_devs_phone">
+</PreferenceScreen>  
+
+<PreferenceScreen
+            android:title="@string/main_11"
+            android:summary="@string/main11_description"
+            android:icon="@drawable/ic_devs_phone">
+</PreferenceScreen>  
+ 
+<PreferenceScreen
+            android:title="@string/main_12"
+            android:summary="@string/main12_description"
+            android:icon="@drawable/ic_devs_phone">
+</PreferenceScreen>  
+     
+<PreferenceScreen
+
+            android:title="@string/main_13"
+            android:summary="@string/main13_description"
+            android:icon="@drawable/ic_devs_phone">
+  </PreferenceScreen>
+  
+  <PreferenceScreen
+            android:title="@string/main_14"
+            android:summary="@string/main14_description"
+            android:icon="@drawable/ic_devs_phone">
+</PreferenceScreen>       
+  
+  <PreferenceScreen
+            android:title="@string/main_15"
+            android:summary="@string/main15_description"
+            android:icon="@drawable/ic_devs_phone">
+ </PreferenceScreen>
+     
+  <PreferenceScreen
+            android:title="@string/main_16"
+            android:summary="@string/main16_description"
+            android:icon="@drawable/ic_devs_phone">
+ </PreferenceScreen>
+
+ <PreferenceScreen
+            android:title="@string/main_17"
+            android:summary="@string/main17_description"
+            android:icon="@drawable/ic_devs_phone">
+ </PreferenceScreen>
+
+ <PreferenceScreen
+            android:title="@string/main_18"
+            android:summary="@string/main18_description"
+            android:icon="@drawable/ic_devs_phone">
+ </PreferenceScreen>
+
+ <PreferenceScreen
+            android:title="@string/main_19"
+            android:summary="@string/main19_description"
+            android:icon="@drawable/ic_devs_phone">
+ </PreferenceScreen>
+
+ <PreferenceScreen
+            android:title="@string/main_20"
+            android:summary="@string/main20_description"
+            android:icon="@drawable/ic_devs_phone">
+ </PreferenceScreen>
+     
+ <PreferenceScreen
+            android:title="@string/main_21"
+            android:summary="@string/main21_description"
+            android:icon="@drawable/ic_devs_phone">
+
+ </PreferenceScreen>
+        
+   <PreferenceScreen
+            android:title="@string/main_22"
+            android:summary="@string/main22_description"
+            android:icon="@drawable/ic_devs_phone">
+   </PreferenceScreen>
+
+   <PreferenceScreen
+            android:title="@string/main_23"
+            android:summary="@string/main23_description"
+            android:icon="@drawable/ic_devs_phone">
+   </PreferenceScreen>   
+
+   <PreferenceScreen
+            android:title="@string/main_24"
+            android:summary="@string/main24_description"
+            android:icon="@drawable/ic_devs_phone">
+   </PreferenceScreen> 
+
+   <PreferenceScreen
+            android:title="@string/main_25"
+            android:summary="@string/main25_description"
+            android:icon="@drawable/ic_devs_phone">
+   </PreferenceScreen> 
+     
+   <PreferenceScreen
+            android:title="@string/main_26"
+            android:summary="@string/main26_description"
+            android:icon="@drawable/ic_devs_phone">
+   </PreferenceScreen>
+ 
+   </PreferenceCategory>
+
+</PreferenceScreen>

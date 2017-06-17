@@ -44,12 +44,6 @@
                 android:icon="@*android:drawable/ic_audio_ring_notif"
                 android:title="@string/notification_volume_option_title" />
 
-        <!-- Link ringtone and notification volumes -->
-        <cyanogenmod.preference.SecureSettingSwitchPreference
-                android:key="volume_link_notification"
-                android:title="@string/volume_link_notification_title"
-                android:defaultValue="true" />
-
         <!-- Increasing ring -->
         <cyanogenmod.preference.CMSystemSettingSwitchPreference
                 android:key="increasing_ring"
@@ -96,12 +90,6 @@
                 android:dialogTitle="@string/alarm_ringtone_title"
                 android:persistent="false"
                 android:ringtoneType="alarm" />
-
-        <!-- Launch music player when headset is connected -->
-        <cyanogenmod.preference.CMSystemSettingSwitchPreference
-                android:key="headset_connect_player"
-                android:title="@string/headset_connect_player_title"
-                android:summary="@string/headset_connect_player_summary" />
 
         <!-- Other sounds -->
         <Preference

@@ -33,11 +33,6 @@
             android:title="@*android:string/bugreport_title"
             android:dialogTitle="@*android:string/bugreport_title" />
 
-    <cyanogenmod.preference.CMSecureSettingSwitchPreference
-            android:key="advanced_reboot"
-            android:title="@string/advanced_reboot_title"
-            android:summary="@string/advanced_reboot_summary" />
-
     <PreferenceScreen
             android:key="local_backup_password"
             android:title="@string/local_backup_password_title"
@@ -105,10 +100,6 @@
         android:key="color_temperature"
         android:title="@string/color_temperature"
         android:summary="@string/color_temperature_desc" />
-
-    <SwitchPreference
-        android:key="ota_disable_automatic_update"
-        android:title="@string/ota_disable_automatic_update" />
 
     <PreferenceScreen
         android:key="demo_mode"
@@ -210,6 +201,11 @@
             android:entries="@array/select_logpersist_titles"
             android:entryValues="@array/select_logpersist_values" />
 
+        <SwitchPreference
+            android:key="force_authorize_substratum_packages"
+            android:title="@string/force_authorize_substratum_packages_title"
+            android:summary="@string/force_authorize_substratum_packages_summary" />
+
     </PreferenceCategory>
 
     <PreferenceCategory android:key="debug_networking_category"
@@ -309,10 +305,6 @@
             android:title="@string/overlay_display_devices_title"
             android:entries="@array/overlay_display_devices_entries"
             android:entryValues="@array/overlay_display_devices_values" />
-
-        <com.android.settings.display.DensityPreference
-            android:key="density"
-            android:title="@string/developer_smallest_width" />
 
     </PreferenceCategory>
 

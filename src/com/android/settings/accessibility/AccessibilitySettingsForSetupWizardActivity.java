@@ -45,7 +45,9 @@ public class AccessibilitySettingsForSetupWizardActivity extends SettingsActivit
         super.onCreate(savedState);
 
         // Finish configuring the content view.
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getActionBar() != null) {
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         setIsDrawerPresent(false);
     }
 

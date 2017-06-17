@@ -45,6 +45,8 @@ import android.support.v7.preference.PreferenceCategory;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.android.settings.util.Helpers;
+
 import com.android.internal.app.NightDisplayController;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
@@ -385,7 +387,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
         // Update doze if it is available.
         if (mDozePreference != null) {
-            int value = Settings.Secure.getInt(getContentResolver(), DOZE_ENABLED, 1);
+            int value = Settings.Secure.getInt(getContentResolver(), DOZE_ENABLED, 0);
             mDozePreference.setChecked(value != 0);
         }
 
@@ -455,6 +457,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 final UiModeManager uiManager = (UiModeManager) getSystemService(
                         Context.UI_MODE_SERVICE);
                 uiManager.setNightMode(value);
+                Helpers.restartSystemUI();
+
             } catch (NumberFormatException e) {
                 Log.e(TAG, "could not persist night mode setting", e);
             }

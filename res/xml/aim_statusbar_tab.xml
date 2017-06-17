@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2017 AIM-ROM
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<PreferenceScreen
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    android:layout="@layout/tab"
+    android:title="@string/aim_statusbar_title">
+
+    <PreferenceCategory
+ 	 android:title="@string/statusbar_category" >
+    
+   <!--Battery bar coustumization --> 
+   <Preference
+        android:key="batterybar"
+        android:title="@string/battery_bar_title"
+        android:icon="@drawable/ic_freedomhub_ico"
+        android:fragment="com.android.settings.aim.fragments.BatteryBar" />
+
+  <!--Network traffic -->  
+ <PreferenceScreen
+	android:fragment="com.android.settings.aim.fragments.NetworkTrafficSettings"
+	android:key="pure_nettraffic_settings"
+	android:title="@string/nettraffic_settings_title"
+        android:icon="@drawable/ic_freedomhub_ico"
+        android:summary="@string/nettraffic_settings_summary" />
+
+    <!-- Roaming indicator -->    
+    <com.android.settings.aim.Preferences.SystemSettingSwitchPreference
+            android:key="roaming_indicator_icon"
+            android:title="@string/roaming_indicator_icon_title"
+            android:summary="@string/roaming_indicator_icon_summary"
+            android:icon="@drawable/ic_freedomhub_ico"
+            android:defaultValue="true"/>  
+
+        <!-- Double tap to sleep -->
+        <cyanogenmod.preference.CMSystemSettingSwitchPreference
+        android:key="double_tap_sleep_gesture"
+        android:title="@string/status_bar_double_tap_to_sleep_title"
+        android:icon="@drawable/ic_freedomhub_ico"
+        android:summary="@string/status_bar_double_tap_to_sleep_summary"
+        android:defaultValue="true" />
+
+        <!-- Custom carrier label -->
+        <PreferenceScreen
+        android:key="aim_carrier"
+        android:fragment="com.android.settings.aim.fragments.CarrierLabel"
+        android:title="@string/carrier_title" 
+        android:icon="@drawable/ic_freedomhub_ico" />
+ 
+       <!-- Qs tiles small -->
+       <PreferenceScreen
+            android:key="quicksettings"
+            android:fragment="com.android.settings.aim.fragments.QuickSettings"
+            android:icon="@drawable/ic_freedomhub_ico"
+            android:title="@string/quicksettings_title" />
+	
+    <com.android.settings.aim.Preferences.SecureSettingSwitchPreference
+        android:key="qs_easy_toggle"
+        android:title="@string/qs_easy_toggle_title"
+        android:summary="@string/qs_easy_toggle_summary"
+        android:defaultValue="false" />
+  
+    </PreferenceCategory>
+
+</PreferenceScreen>

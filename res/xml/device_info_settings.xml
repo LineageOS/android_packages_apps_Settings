@@ -19,44 +19,28 @@
         xmlns:settings="http://schemas.android.com/apk/res-auto"
         android:title="@string/about_settings">
 
-        <!-- System update settings - launches activity -->
-        <PreferenceScreen android:key="system_update_settings"
-                android:title="@string/system_update_settings_list_item_title"
-                android:summary="@string/system_update_settings_list_item_summary">
-            <intent android:action="android.settings.SYSTEM_UPDATE_SETTINGS" />
-        </PreferenceScreen>
+	<!-- Aim Rom Banner -->
+	<PreferenceScreen 
+          android:layout="@layout/banner" 
+          android:key="od_banner" />
 
-
-        <PreferenceScreen android:key="additional_system_update_settings"
-                          android:title="@string/additional_system_update_settings_list_item_title">
-            <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="@string/additional_system_update"
-                    android:targetClass="@string/additional_system_update_menu" />
-        </PreferenceScreen>
-
-        <!-- LineageOS Updates -->
-        <cyanogenmod.preference.SelfRemovingPreference android:key="cm_updates"
-                android:title="@string/cmupdate_settings_title"
-                android:summary="@string/system_update_settings_list_item_summary"
-                cm:requiresOwner="true"
-                cm:requiresPackage="org.lineageos.updater">
-            <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="org.lineageos.updater"
-                    android:targetClass="com.cyanogenmod.updater.UpdatesActivity" />
-        </cyanogenmod.preference.SelfRemovingPreference>
+             <!-- About Devs -->
+         <PreferenceScreen
+         android:key="dev_info"
+         android:title="@string/dev_info"
+         android:fragment="com.android.settings.devs" />
+      
+        <!-- Changelog -->
+        <PreferenceScreen android:key="aim_changelog"
+            android:title="@string/changelog_title"
+            android:summary="@string/changelog_summary"
+            android:fragment="com.android.settings.aim.fragments.Changelog" />
 
         <!-- Device status - launches activity -->
         <PreferenceScreen android:key="status_info"
                 android:title="@string/device_status"
                 android:summary="@string/device_status_summary"
                 android:fragment="com.android.settings.deviceinfo.Status">
-        </PreferenceScreen>
-
-        <!-- Manual -->
-        <PreferenceScreen
-                android:key="manual"
-                android:title="@string/manual">
-            <intent android:action="android.settings.SHOW_MANUAL" />
         </PreferenceScreen>
 
         <!-- Legal Information -->
@@ -104,6 +88,17 @@
                 settings:allowDividerAbove="true"
                 settings:allowDividerBelow="true"/>
 
+        <!-- AIMROM -->
+        <com.android.settings.DividerPreference
+                android:key="aim_version"
+                android:enabled="false"
+                android:shouldDisableView="false"
+                android:selectable="true"
+                android:title="@string/aim_version"
+                android:summary="@string/aim_version_default"
+                settings:allowDividerAbove="true"
+		settings:allowDividerBelow="true"/>
+
         <!-- Device firmware version -->
         <Preference android:key="firmware_version"
                 android:enabled="false"
@@ -129,7 +124,18 @@
                 settings:allowDividerAbove="true"
                 settings:allowDividerBelow="true" />
 
-        <!-- Security patch level -->
+        <!-- AIM ROM Maintainer -->
+        <com.android.settings.DividerPreference
+                android:key="aim_maintainer"
+                android:enabled="false"
+                android:shouldDisableView="false"
+                android:selectable="false"
+                android:title="@string/aim_maintainer"
+                android:summary="@string/aim_maintainer_default"
+                settings:allowDividerAbove="true"
+                settings:allowDividerBelow="true"/>
+
+       <!-- Security patch level -->
         <PreferenceScreen android:key="security_patch"
                 android:title="@string/security_patch"
                 android:summary="@string/device_info_default">
@@ -154,6 +160,7 @@
                 android:shouldDisableView="false"
                 android:title="@string/mbn_version"
                 android:summary="@string/device_info_default"/>
+
 
         <!-- Device Baseband version -->
         <com.android.settings.DividerPreference
